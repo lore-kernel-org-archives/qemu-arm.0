@@ -1,162 +1,330 @@
-Received: by 10.223.197.9 with SMTP id q9csp174865wrf;
-        Wed, 4 Oct 2017 21:34:01 -0700 (PDT)
-X-Received: by 10.55.98.205 with SMTP id w196mr22179555qkb.322.1507178041367;
-        Wed, 04 Oct 2017 21:34:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507178041; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp180841wrf;
+        Wed, 4 Oct 2017 21:44:53 -0700 (PDT)
+X-Received: by 10.55.48.210 with SMTP id w201mr28255179qkw.117.1507178693114;
+        Wed, 04 Oct 2017 21:44:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507178693; cv=none;
         d=google.com; s=arc-20160816;
-        b=DX2XvDCS/+TIIzjNKAyqmG2tavW+HjpqwCfp4l2RtTLjaQBZiymTkXxgCQHLYubqoI
-         a+shZDn26CpOGrx7dyCp9TqH0weA8EJBpTm05WTluPEsR85zUp+vLQWbB+CEy7VEbcls
-         gpjhYqEW0G4zQayTxxs18vP+Worir9pqqCyaOl5ZhjO4n40y1K1lNzM747Vb9u9vHCEw
-         gCXbC3Z+kiCk/c/6YSPCAgP8CpW+kVdZ7fa28dTFGYZZOghPD6O6YM9XoLKI5Z59L7hL
-         5QB8VI3Ph9/+OlunNMetxxvIZZWIp9D3t1n4rWqVM666vs4vlRRP0Xy0SYUbzcGGX0wI
-         52pA==
+        b=EMHlV/nZQuCy3W9tz/axQN4j5cRaf9J2TVxWKGzl58ab3CKoDWOpu/3mr9+AtrkK29
+         9Sapu8rf0x+Czrq0/6uA7Ve6loQESBFKcmIbHeNc1ctVFVXYuv/1txU14oh/wBL686dB
+         kBJeQ+DFyODDKwyKnRW/aBLMAhNv6D1oDmlvNFL3jvSa+HlXF703mEJZAq0kWN5x2PQW
+         aWYmQ5MvNKeVOmI3gpsvJAOq9krEmC3p8PW+QctmfgGBYkL8xJvGpAix4XgAH9xtA0VR
+         XEHY+MucsjtY8ZcGBgztIaNSMqDVfX/x92Mz7kuz4q+n1SegZs3/IlpCIt0Zl4cnCFQF
+         /thQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:to
          :dkim-signature:arc-authentication-results;
-        bh=bhh+jf6ETm/ZSLqVDBBRizheoHkxbh3jrsdCqqS7qYI=;
-        b=GH3fFFH1LYVsgDqv7AsdQLlqDKUK3bDElmihhLb2uA0RniBeZmo9JoLf+LzqfN8rg3
-         2Aodqg+s0mAm1EtSHNxuvjYTJKn8gkY390WxM8zZ2/M7wKjFiFpiqAUc4xjp+ewGp1Qp
-         CBA5SYHovn8VZoh/COaTWP9/htSY9FgSJo1ZKNQYN3wqTd8YWhQIDMEd2mMQh9T6SUPF
-         7KFzQsYy820sGsLr5o4J2aqIcyFSDQ0rgYixgcLlXfgl0PF5uH3txkTFj+6Z4i1K7dRM
-         ypMKcTgspI4WCYaZcbS/Ltbx+NUCoCvNfU8TvXrEOPPszfDZHqN8Yl53Z/BtkwoXlIA1
-         SpKw==
+        bh=Bw3bnef0oNLXGtYLHKbtPNP5767xVVQLUZ6lzAsbqfA=;
+        b=NL5hb4T2zd6XyvwB9RvEYAowvrKACnFIS2goxzQcSZZhC0v+w4JXE0VkPNL5ciduNI
+         fp2DbjFIFRWtKsczEiuQ35XKyGlMGrpvLbL3cVKLZ3nZkQth09edVlPoCo+Vnc9sAGSV
+         vzX10tExKItgovrFqiV9faUg4ctiXByo2ILh8Zudl/ukx5TR34G6eC4ROGkPuDblzje2
+         97BRhkjGVUWin6Ahun+6SY3onxq3kgzrUSNE6umdnJZyZCxb2px1Xxf6KP4TBs6PZEED
+         V8wourAVfq+gbPpiP5e32FW+hHWnolF0kWZMW1Tb0zw56mjyXXo2PblHOyUoEoaAj5uH
+         RaaA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iYyuwxrE;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BCT+yqL7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u15si7702427qkl.17.2017.10.04.21.34.01
+        by mx.google.com with ESMTPS id p190si4168786qkc.549.2017.10.04.21.44.52
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 04 Oct 2017 21:34:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 04 Oct 2017 21:44:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iYyuwxrE;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37736 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BCT+yqL7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:37761 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dzxrE-0006ug-SW
-	for alex.bennee@linaro.org; Thu, 05 Oct 2017 00:34:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52779)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1dzy1k-0000mE-KS
+	for alex.bennee@linaro.org; Thu, 05 Oct 2017 00:44:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54337)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dzxqO-0006dN-TM
-	for qemu-devel@nongnu.org; Thu, 05 Oct 2017 00:33:09 -0400
+	id 1dzy1Z-0000km-RJ
+	for qemu-arm@nongnu.org; Thu, 05 Oct 2017 00:44:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dzxqL-0005j5-QH
-	for qemu-devel@nongnu.org; Thu, 05 Oct 2017 00:33:08 -0400
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:35910)
+	id 1dzy1Y-0007hd-Go
+	for qemu-arm@nongnu.org; Thu, 05 Oct 2017 00:44:41 -0400
+Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:34484)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dzxqL-0005im-L3; Thu, 05 Oct 2017 00:33:05 -0400
-Received: by mail-qk0-x242.google.com with SMTP id z14so9325820qkg.3;
-	Wed, 04 Oct 2017 21:33:05 -0700 (PDT)
+	id 1dzy1T-0007gS-EQ; Thu, 05 Oct 2017 00:44:35 -0400
+Received: by mail-qk0-x243.google.com with SMTP id b124so6735357qke.1;
+	Wed, 04 Oct 2017 21:44:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=bhh+jf6ETm/ZSLqVDBBRizheoHkxbh3jrsdCqqS7qYI=;
-	b=iYyuwxrEyizSHlx6C85IffS2rcxP8Qtrn/d3URXphSNcn2HdsfsruIhfYF4ApRo4lA
-	KG4deQkY1wNzwQfyy7VQpdmUlDL0Hjl4kqAItfcNbyuZnjOEf66VkEJUPrAzSe+NurHc
-	JUwAnjtG8GR5TcyAjNuTgPTEbzWyI8KbVWHgcPGUeuVDZ6o6Sh7tZ0JhM29F2CFcZ9c7
-	LRSlvppJbu8svwxDSL314xTFtO/rflNRSm0xUEn1bRbPL2ejIHB4s0IhxnqOLUaLvBr1
-	i4Z7nxCqV6NJx51WM+KyQTk55SIVPm69Nnzp36smbrXcwbPi1YcCps2prtAeeJuYy+8Q
-	ORLg==
+	bh=Bw3bnef0oNLXGtYLHKbtPNP5767xVVQLUZ6lzAsbqfA=;
+	b=BCT+yqL7G5k4nJimVPIE3t7I4/WJ2Px5y9/Ab7kbM8wX43P/b9Trv7D108gFyJmYAv
+	7cJQCLqu5HEwLmTACb+P2/5fWG8oEn2eZ/hpjUw/0RQMVTlER14MexacvJN06+Wx+zha
+	j+9gl4HGl6vAhDasIoWP9L67EM9JdzL0QjLAf0Wdh5Bzt+uIVFsHkbjC9/B61K28CZwT
+	Ng/epwXgGZZ5x4LPOsWsohT3AdKVV86Rq7ZNR3KV8wA6METhE+GD6Th68OmAGBLd9HbD
+	1IetU2VhQhBJysf0B2GSA4GO9gnJCw81RIWC3HXjyPd5IoC2pFc26/6z/TMVOTuKDp+H
+	3HGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=bhh+jf6ETm/ZSLqVDBBRizheoHkxbh3jrsdCqqS7qYI=;
-	b=o6PKvg/unCIdthaiuiQ31py0P0UMP8YRsVvNXXjRSuEO9FrIZR49DMfEL3R4lCDJtg
-	qFLpEGZ+nLh6+jofJOtHfjKSfO7IDu54rehSxS3JnctkS6/7N8n4SzBBIA2E2NQ1ZfUI
-	9+xHwzvFVSjMe+P8EVM4gEUUMObhLiAk78h4cXQ4OeAtFV0q2IEd3iuzksyl3r2NVMhi
-	iD8ZNUrpyEShOWsDSfdyIZ79j4kZK17TA9Lm6IJtkSrOXfRFNl3yfOHtx5mkc7UAqGNy
-	mIsaOscF0l6atmBIhsSz7tn2eBzn6LsJAhLgk6EiHPDChvca22XykHUcqi1x7HVEINYp
-	v5zw==
-X-Gm-Message-State: AMCzsaWCFGPDSOLbya/l2vO+nO06FaVqDFj8pJSkNo1jhPxQPKJVbuRC
-	HfeHYEkUIJKCY9l4B6op74I=
-X-Google-Smtp-Source: AOwi7QAcQULeiCNiWcsXpnRYayyccAE4Mvi9Iq+qmtYRws2/j0JeUL1lXgQXJ/mfAPdyouoFxxt2hQ==
-X-Received: by 10.55.72.81 with SMTP id v78mr27904308qka.333.1507177985042;
-	Wed, 04 Oct 2017 21:33:05 -0700 (PDT)
+	bh=Bw3bnef0oNLXGtYLHKbtPNP5767xVVQLUZ6lzAsbqfA=;
+	b=A+cGMwLkITofW18wBsBANfmWrN79lxPRX5oMDTG36ITrpGobkTOsSWZHPcRFczeb3t
+	dC+dyoxWlEzdNbN8VrREqhnpuOEOfQQmsZvvwxxtCOLbikzPG7UQ5F25odM2xjbkB2IT
+	xWE8F9UJ4slDcNxedXKMr9jGDu/yzvL7nQ1r+XGy2ZbmdpPRbv7TXekamKsm3sVzvvhl
+	0HNjxotx2jzuTKUbwTol9clD5F1bLuxpDMVwZT/7S67UjWYQYnqVHpvHgFVD2hAGtqnF
+	0l1ZJPpYsaKS2/g7t16coYu7P5qKc2dcWmqIN3OCNRepMq3Sag72pfnRqn4vTlOS6GX5
+	IyUg==
+X-Gm-Message-State: AMCzsaUFotvW+xdLVhxsbjRv4VJu9howjq2wFT23UEiWsc2+ki3avjec
+	20PwPwmFCSS2KxY92joobms=
+X-Google-Smtp-Source: AOwi7QCpu/BFJsycUFU7CUE9DSqQlSZuhDfOuaGbsVkLFSI7HpRMQNcDBbnFQWcr67zthAVCfJdi7g==
+X-Received: by 10.55.17.33 with SMTP id b33mr28344607qkh.58.1507178674496;
+	Wed, 04 Oct 2017 21:44:34 -0700 (PDT)
 Received: from [192.168.1.240] ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id
-	u133sm10899354qka.92.2017.10.04.21.33.02
+	by smtp.gmail.com with ESMTPSA id 36sm4318192qtr.42.2017.10.04.21.44.32
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 04 Oct 2017 21:33:04 -0700 (PDT)
+	Wed, 04 Oct 2017 21:44:33 -0700 (PDT)
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 References: <1506092407-26985-1-git-send-email-peter.maydell@linaro.org>
-	<1506092407-26985-21-git-send-email-peter.maydell@linaro.org>
+	<1506092407-26985-3-git-send-email-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <e03aefd1-81bb-10b0-f325-fdce7e60c7a6@amsat.org>
-Date: Thu, 5 Oct 2017 01:33:01 -0300
+Message-ID: <63505593-53ea-90ba-f2ba-72cadfd1179f@amsat.org>
+Date: Thu, 5 Oct 2017 01:44:25 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.3.0
 MIME-Version: 1.0
-In-Reply-To: <1506092407-26985-21-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1506092407-26985-3-git-send-email-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::242
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH 20/20] nvic: Add missing code
- for writing SHCSR.HARDFAULTPENDED bit
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400d:c09::243
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 02/20] target/arm: Don't switch
+ to target stack early in v7M exception return
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: patches@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: j7/Ehr6Cf5QL
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wABkwaqFyU5s
 
-On 09/22/2017 12:00 PM, Peter Maydell wrote:
-> When we added support for the new SHCSR bits in v8M in commit
-> 437d59c17e9 the code to support writing to the new HARDFAULTPENDED
-> bit was accidentally only added for non-secure writes; the
-> secure banked version of the bit should also be writable.
+On 09/22/2017 11:59 AM, Peter Maydell wrote:
+> Currently our M profile exception return code switches to the
+> target stack pointer relatively early in the process, before
+> it tries to pop the exception frame off the stack. This is
+> awkward for v8M for two reasons:
+>  * in v8M the process vs main stack pointer is not selected
+>    purely by the value of CONTROL.SPSEL, so updating SPSEL
+>    and relying on that to switch to the right stack pointer
+>    won't work
+>  * the stack we should be reading the stack frame from and
+>    the stack we will eventually switch to might not be the
+>    same if the guest is doing strange things
+> 
+> Change our exception return code to use a 'frame pointer'
+> to read the exception frame rather than assuming that we
+> can switch the live stack pointer this early.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/intc/armv7m_nvic.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-> index bd1d5d3..22d5e6e 100644
-> --- a/hw/intc/armv7m_nvic.c
-> +++ b/hw/intc/armv7m_nvic.c
-> @@ -1230,6 +1230,7 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
-
-        if (attrs.secure) {
-
-if banked then arch is v8M,
-
->              s->sec_vectors[ARMV7M_EXCP_BUS].enabled = (value & (1 << 17)) != 0;
->              s->sec_vectors[ARMV7M_EXCP_USAGE].enabled =
->                  (value & (1 << 18)) != 0;
-> +            s->sec_vectors[ARMV7M_EXCP_HARD].pending = (value & (1 << 21)) != 0;
-
-therefore this bit is present.
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
->              /* SecureFault not banked, but RAZ/WI to NS */
->              s->vectors[ARMV7M_EXCP_SECURE].active = (value & (1 << 4)) != 0;
->              s->vectors[ARMV7M_EXCP_SECURE].enabled = (value & (1 << 19)) != 0;
+> ---
+>  target/arm/helper.c | 127 +++++++++++++++++++++++++++++++++++++++-------------
+>  1 file changed, 95 insertions(+), 32 deletions(-)
+> 
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 8be78ea..f13b99d 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -6040,16 +6040,6 @@ static void v7m_push(CPUARMState *env, uint32_t val)
+>      stl_phys(cs->as, env->regs[13], val);
+>  }
+>  
+> -static uint32_t v7m_pop(CPUARMState *env)
+> -{
+> -    CPUState *cs = CPU(arm_env_get_cpu(env));
+> -    uint32_t val;
+> -
+> -    val = ldl_phys(cs->as, env->regs[13]);
+> -    env->regs[13] += 4;
+> -    return val;
+> -}
+> -
+>  /* Return true if we're using the process stack pointer (not the MSP) */
+>  static bool v7m_using_psp(CPUARMState *env)
+>  {
+> @@ -6141,6 +6131,40 @@ void HELPER(v7m_bxns)(CPUARMState *env, uint32_t dest)
+>      env->regs[15] = dest & ~1;
+>  }
+>  
+> +static uint32_t *get_v7m_sp_ptr(CPUARMState *env, bool secure, bool threadmode,
+> +                                bool spsel)
+> +{
+> +    /* Return a pointer to the location where we currently store the
+> +     * stack pointer for the requested security state and thread mode.
+> +     * This pointer will become invalid if the CPU state is updated
+> +     * such that the stack pointers are switched around (eg changing
+> +     * the SPSEL control bit).
+> +     * Compare the v8M ARM ARM pseudocode LookUpSP_with_security_mode().
+> +     * Unlike that pseudocode, we require the caller to pass us in the
+> +     * SPSEL control bit value; this is because we also use this
+> +     * function in handling of pushing of the callee-saves registers
+> +     * part of the v8M stack frame, and in that case the SPSEL bit
+> +     * comes from the exception return magic LR value.
+> +     */
+> +    bool want_psp = threadmode && spsel;
+> +
+> +    if (secure == env->v7m.secure) {
+> +        /* Currently switch_v7m_sp switches SP as it updates SPSEL,
+> +         * so the SP we want is always in regs[13].
+> +         * When we decouple SPSEL from the actually selected SP
+> +         * we need to check want_psp against v7m_using_psp()
+> +         * to see whether we need regs[13] or v7m.other_sp.
+> +         */
+> +        return &env->regs[13];
+> +    } else {
+> +        if (want_psp) {
+> +            return &env->v7m.other_ss_psp;
+> +        } else {
+> +            return &env->v7m.other_ss_msp;
+> +        }
+> +    }
+> +}
+> +
+>  static uint32_t arm_v7m_load_vector(ARMCPU *cpu)
+>  {
+>      CPUState *cs = CPU(cpu);
+> @@ -6212,6 +6236,7 @@ static void v7m_push_stack(ARMCPU *cpu)
+>  static void do_v7m_exception_exit(ARMCPU *cpu)
+>  {
+>      CPUARMState *env = &cpu->env;
+> +    CPUState *cs = CPU(cpu);
+>      uint32_t excret;
+>      uint32_t xpsr;
+>      bool ufault = false;
+> @@ -6219,6 +6244,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+>      bool return_to_handler = false;
+>      bool rettobase = false;
+>      bool exc_secure = false;
+> +    bool return_to_secure;
+>  
+>      /* We can only get here from an EXCP_EXCEPTION_EXIT, and
+>       * gen_bx_excret() enforces the architectural rule
+> @@ -6286,6 +6312,9 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+>          g_assert_not_reached();
+>      }
+>  
+> +    return_to_secure = arm_feature(env, ARM_FEATURE_M_SECURITY) &&
+> +        (excret & R_V7M_EXCRET_S_MASK);
+> +
+>      switch (excret & 0xf) {
+>      case 1: /* Return to Handler */
+>          return_to_handler = true;
+> @@ -6315,32 +6344,66 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+>          return;
+>      }
+>  
+> -    /* Switch to the target stack.  */
+> +    /* Set CONTROL.SPSEL from excret.SPSEL. For QEMU this currently
+> +     * causes us to switch the active SP, but we will change this
+> +     * later to not do that so we can support v8M.
+> +     */
+>      switch_v7m_sp(env, return_to_sp_process);
+> -    /* Pop registers.  */
+> -    env->regs[0] = v7m_pop(env);
+> -    env->regs[1] = v7m_pop(env);
+> -    env->regs[2] = v7m_pop(env);
+> -    env->regs[3] = v7m_pop(env);
+> -    env->regs[12] = v7m_pop(env);
+> -    env->regs[14] = v7m_pop(env);
+> -    env->regs[15] = v7m_pop(env);
+> -    if (env->regs[15] & 1) {
+> -        qemu_log_mask(LOG_GUEST_ERROR,
+> -                      "M profile return from interrupt with misaligned "
+> -                      "PC is UNPREDICTABLE\n");
+> -        /* Actual hardware seems to ignore the lsbit, and there are several
+> -         * RTOSes out there which incorrectly assume the r15 in the stack
+> -         * frame should be a Thumb-style "lsbit indicates ARM/Thumb" value.
+> +
+> +    {
+> +        /* The stack pointer we should be reading the exception frame from
+> +         * depends on bits in the magic exception return type value (and
+> +         * for v8M isn't necessarily the stack pointer we will eventually
+> +         * end up resuming execution with). Get a pointer to the location
+> +         * in the CPU state struct where the SP we need is currently being
+> +         * stored; we will use and modify it in place.
+> +         * We use this limited C variable scope so we don't accidentally
+> +         * use 'frame_sp_p' after we do something that makes it invalid.
+> +         */
+> +        uint32_t *frame_sp_p = get_v7m_sp_ptr(env,
+> +                                              return_to_secure,
+> +                                              !return_to_handler,
+> +                                              return_to_sp_process);
+> +        uint32_t frameptr = *frame_sp_p;
+> +
+> +        /* Pop registers. TODO: make these accesses use the correct
+> +         * attributes and address space (S/NS, priv/unpriv) and handle
+> +         * memory transaction failures.
+>           */
+> -        env->regs[15] &= ~1U;
+> +        env->regs[0] = ldl_phys(cs->as, frameptr);
+> +        env->regs[1] = ldl_phys(cs->as, frameptr + 0x4);
+> +        env->regs[2] = ldl_phys(cs->as, frameptr + 0x8);
+> +        env->regs[3] = ldl_phys(cs->as, frameptr + 0xc);
+> +        env->regs[12] = ldl_phys(cs->as, frameptr + 0x10);
+> +        env->regs[14] = ldl_phys(cs->as, frameptr + 0x14);
+> +        env->regs[15] = ldl_phys(cs->as, frameptr + 0x18);
+> +        if (env->regs[15] & 1) {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "M profile return from interrupt with misaligned "
+> +                          "PC is UNPREDICTABLE\n");
+> +            /* Actual hardware seems to ignore the lsbit, and there are several
+> +             * RTOSes out there which incorrectly assume the r15 in the stack
+> +             * frame should be a Thumb-style "lsbit indicates ARM/Thumb" value.
+> +             */
+> +            env->regs[15] &= ~1U;
+> +        }
+> +        xpsr = ldl_phys(cs->as, frameptr + 0x1c);
+> +
+> +        /* Commit to consuming the stack frame */
+> +        frameptr += 0x20;
+> +        /* Undo stack alignment (the SPREALIGN bit indicates that the original
+> +         * pre-exception SP was not 8-aligned and we added a padding word to
+> +         * align it, so we undo this by ORing in the bit that increases it
+> +         * from the current 8-aligned value to the 8-unaligned value. (Adding 4
+> +         * would work too but a logical OR is how the pseudocode specifies it.)
+> +         */
+> +        if (xpsr & XPSR_SPREALIGN) {
+> +            frameptr |= 4;
+> +        }
+> +        *frame_sp_p = frameptr;
+>      }
+> -    xpsr = v7m_pop(env);
+> +    /* This xpsr_write() will invalidate frame_sp_p as it may switch stack */
+>      xpsr_write(env, xpsr, ~XPSR_SPREALIGN);
+> -    /* Undo stack alignment.  */
+> -    if (xpsr & XPSR_SPREALIGN) {
+> -        env->regs[13] |= 4;
+> -    }
+>  
+>      /* The restored xPSR exception field will be zero if we're
+>       * resuming in Thread mode. If that doesn't match what the
 > 

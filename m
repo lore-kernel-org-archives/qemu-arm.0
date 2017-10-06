@@ -1,135 +1,118 @@
-Received: by 10.223.197.9 with SMTP id q9csp1239449wrf;
-        Fri, 29 Sep 2017 19:29:53 -0700 (PDT)
-X-Received: by 10.237.33.188 with SMTP id l57mr9375984qtc.270.1506738592990;
-        Fri, 29 Sep 2017 19:29:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506738592; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp1670391wrf;
+        Fri, 6 Oct 2017 06:48:59 -0700 (PDT)
+X-Received: by 10.200.46.233 with SMTP id i38mr3150245qta.330.1507297739506;
+        Fri, 06 Oct 2017 06:48:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507297739; cv=none;
         d=google.com; s=arc-20160816;
-        b=V1GmVruG1aSJkxcrd7j8GS5EMgwsdm2z+Y2d2GbB5caSMKUsieCMFtnto+8UQkG06m
-         5CPDcQP7pLT96WyLaHcyKobJCLvsapLa6l1j5+MPELINuCIIC17csdJ5dZ1qZkYVix2y
-         Xp8WEsFkoRaQ4EwhglYSKKrb9pEPSehPCOLa+65L5cgo4ygjvKQda3IZZpARsZwUzREh
-         Y8VWFnhPQ0iu0GFKEDKQWcQwfVBf/4eRSjMXZPiJoNdmtopmGqJtfy3RMNNls3P599g5
-         VTrD3fVBDwuoIyQiKzZh9DCXpuV8WnnkSYLdVTAa1NjFJUH0/YvtseyI8xxRgZI48sOp
-         TZgw==
+        b=pf+2cdvHh+VFw88IVoUmGeNmUW6tu40DRg80U8PKD6BV6ppNu1qz17BFPqfGgNN5ij
+         LA1qz0gm185LnJUrrjfJZlZTvoeDle6Rkdda7bJwDdETBPwmeuV1ZeiidDmVdnJdjlie
+         I1KJWn2/n0GJYPQOsDYO10DZqzIeDEKh/hReKnitbPFmXi3FaX/t/xX2oWXj9GnUzvzX
+         v+tfiI0q/Ty3qE6+y3pHvTD+0YPnu3snEQvBZfkiPkh62lf2ofCvV+XHz9ZNnlAJzGgW
+         Vge987h9A91ecCwNrYF0nNPPSAd0URFIPVkJC5I4BUpakdj5r93Mldw/bJ7qmeTxbZjd
+         t6ig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=QUnNAuAh/v4M3hXFm1vW0LZhLQa1VBmIvRZ9MDH16KQ=;
-        b=dpBiW2PoPZOp77H0s6J9LBtlXAmmNPO3Dg+8cYe9OP4hk7HmB7fy1amUCzaZlu8ZZU
-         CR4neb+gwpjugeUE/KBOjsntoehWUrqO08hqEytpFck1+hgLhJTGDyjJMCB5A3th2me8
-         VMA/LJwuNRdMUljle1M92dFJ0iF7I9Biefe4aFneaumlfkhVmrzKjtmDnnpL8Oqfgi2M
-         eO3JEa0spMDBQ1bxgzFmwEb97JoKu1sWTEy9yQp/OKSlyvE9fu8qqMlBPI7KACQZSe5Q
-         0IgHWqmMjIPrXGU3039xx7QYr7QaSSKHhWe5RS+Ev8GTN8RzDoMYtDNdSpLlLk5SVe8B
-         e0UA==
+        bh=/J5dvBnbGmaPgqEEm2Sxw7gFB9zuNMpeC0gVBt9Bw1w=;
+        b=nhU+HZSKxklvhfLVKFWlzlns/Il+K6NI+3E2L+oq8IxfOpjlLd1seorgUjxw2Fwuc8
+         FgAfNuN6SxBl6pwXtjfMAsRRdY8kgF2wdRQb67LW9wYvNTmWvQVaCI9vTLF3czIkYGYp
+         el0WH5FPiGGFMMRjAU4iwAe3aEJ0gIVmwJeVgaDtJfnqrAFMCwPexXkosNdfVLp1K78Y
+         jyq/SEMbwtbJyTStQVYcYNynmw4RCq0Uh6pfzUA61xs5M2KdWll3Y6kiWc6DDloXjInl
+         zlrpUqpM/0uPJdAXU84Q5cDSAjj9xsd7XR73lCcHUGBhBkn3UH2ZfNdb5A/3DRpq1tH8
+         UT8A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RYIslfC5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@gnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@gnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@gnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=d+eJLjhJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j19si320193qkh.286.2017.09.29.19.29.52
+        by mx.google.com with ESMTPS id e123si718285qka.489.2017.10.06.06.48.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 29 Sep 2017 19:29:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@gnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 06 Oct 2017 06:48:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RYIslfC5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@gnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@gnu.org
-Received: from localhost ([::1]:37872 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=d+eJLjhJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45021 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@gnu.org>)
-	id 1dy7XK-0007Ip-Pg
-	for alex.bennee@linaro.org; Fri, 29 Sep 2017 22:29:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52348)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1e0Szq-00012Z-Tn
+	for alex.bennee@linaro.org; Fri, 06 Oct 2017 09:48:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42586)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dy7Uq-0005mP-JK
-	for qemu-devel@nongnu.org; Fri, 29 Sep 2017 22:27:17 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1e0SzY-0000xl-Ri
+	for qemu-arm@nongnu.org; Fri, 06 Oct 2017 09:48:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dy7Un-0007SL-P1
-	for qemu-devel@nongnu.org; Fri, 29 Sep 2017 22:27:16 -0400
-Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:34774)
+	(envelope-from <peter.maydell@linaro.org>) id 1e0SzU-00058j-L4
+	for qemu-arm@nongnu.org; Fri, 06 Oct 2017 09:48:40 -0400
+Received: from mail-wr0-x22f.google.com ([2a00:1450:400c:c0c::22f]:45755)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dy7Un-0007SD-JC; Fri, 29 Sep 2017 22:27:13 -0400
-Received: by mail-oi0-x243.google.com with SMTP id l81so585348oib.1;
-	Fri, 29 Sep 2017 19:27:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=QUnNAuAh/v4M3hXFm1vW0LZhLQa1VBmIvRZ9MDH16KQ=;
-	b=RYIslfC56pXxAadEqUwvvab7ScpbEXvy9L4cAB+ezbx5aFbr2y/2bAG220G6YYQ+Nl
-	I9hydYm153+O8ZhV4iWm4oFMYSyDoj8zDMI0x0+ZAMjooKh7Vz5FE3QHbF2PnCmPMnEU
-	pu0tPHCyHKOLnaOE0SQzhuB/B6JC4VMKJeb8J/5FCZRfArvPb4bmz0eXaCTDawQP0OUK
-	H9eLZkOjcVPRQjmxp5IlLt2nDds8lCwlsoJdBXTwp1C+LLR2XWQ4Sy/kHsIW2VTYJ88+
-	7o/tLkerST1fKiE24u46Hq2hpQdjcbuiBQBfkHdnVt5euH0XloYx0VVpps+PObP7wsfo
-	XSOA==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1e0SzU-00057o-Fr
+	for qemu-arm@nongnu.org; Fri, 06 Oct 2017 09:48:36 -0400
+Received: by mail-wr0-x22f.google.com with SMTP id k7so2082044wre.2
+	for <qemu-arm@nongnu.org>; Fri, 06 Oct 2017 06:48:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=/J5dvBnbGmaPgqEEm2Sxw7gFB9zuNMpeC0gVBt9Bw1w=;
+	b=d+eJLjhJEnLknOSoJKEyLfPiarETB7GjFzMvakKMuFhH31ztOjdsMxCHroHv8x8c3O
+	yFCfv4ZT58L9aUDChQuA9AaPVTb9rQlC/9/qm4Psz5EbU8F3OIahlLzZIHAxbXYuGLuZ
+	ObNMCS+7nS6IxVFbGvT5BAgh2RSZ3AA69WwII=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=QUnNAuAh/v4M3hXFm1vW0LZhLQa1VBmIvRZ9MDH16KQ=;
-	b=fFScFdmgrmp7deDQqRpJlzELg3xUadaWFmgd7oydJz3nzXlSt/H+wUngKgkNdzT7+j
-	aIqd9oNPbnr409jEHG77bzwsOeiE78TmlJJboczxWQwXnvUVPTjT1BE2CmQsYfBhiB3A
-	KEyWjVvNRXNo02jWxpPNViza/3yCrxkZmnnPVyUM7zoZSc22TwnBXRxJYaBwtRWIyUrV
-	R85yNLRDvEwp1hPC86SClsZietQq+OdFU6RlIN4Tk1PfCI1x+bpcK5mt5jLOxqWy2BYW
-	r8BpPo+s2RLenKY4qv0uzIMptZMOUr94wT/jcnf8V3UszXyhQ7RYX4xs95/wQPzI5GVF
-	0CIg==
-X-Gm-Message-State: AMCzsaW6haVL2Ftq6qxpPryd3OXp3bzwkpof4VaNhHmpFKFLt/uuflaI
-	qBpAgOC4vsMNnp/XHLg+vJ0=
-X-Google-Smtp-Source: AOwi7QDjCQCnBat6YWD6ThHzqhN8yAti5jXgo/6YK1nZI6BsOoA+F104QHJsO4dj5LgiGHXYGjsM3g==
-X-Received: by 10.157.31.98 with SMTP id x31mr3798197otx.58.1506738433017;
-	Fri, 29 Sep 2017 19:27:13 -0700 (PDT)
-Received: from [192.168.109.31] ([64.125.109.186])
-	by smtp.gmail.com with ESMTPSA id
-	q10sm2663224oth.64.2017.09.29.19.27.12
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 29 Sep 2017 19:27:12 -0700 (PDT)
-To: Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm@nongnu.org
-References: <20170918195100.17593-1-andrew.smirnov@gmail.com>
-	<20170918195100.17593-6-andrew.smirnov@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <9a757d6e-6745-9df4-7199-d55ee2510d8f@amsat.org>
-Date: Fri, 29 Sep 2017 21:17:26 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=/J5dvBnbGmaPgqEEm2Sxw7gFB9zuNMpeC0gVBt9Bw1w=;
+	b=tsHUmW+6ACp1kVH1p61x2OUzgxd5oKMhkQEdX8C75BT5/xVqyRgdCLvkE6kTNLQtaA
+	UOmvcEEWWFeVr9BpLoPbSiUGEsjhheUU4hv38lmOWBcqkXpmpmQhgoAgQ/IaPMgTSVC5
+	FZlLU63CazvTxRYp6REBr9ufKouWAKUHRvWp2rslS5eKzuPfwI32yP/ps1ZywnQ20gzo
+	CIHOegjacf9aM9CbL6jFSPB3rgTgDaN7YnUEytBQqTVh1fogFV90RIDTVcjf366EUXAc
+	58pEVdAO+rgkkx66YEE3TgIFNuUwrQfgMm06QkUp3HT8q07qKUj6MFUic56ftc4EY0so
+	vBoQ==
+X-Gm-Message-State: AMCzsaU9o3dcVm4duKJN57gzY1GCHUzXPueksNOwLSkE9T9l7DnvCdjf
+	1WMvCG9if1haD2POk6Z+ZOrgrh3UPDDcMtzC+Os1ig==
+X-Google-Smtp-Source: AOwi7QDfmkopBb9mcNsfyZlJW9rWy0jZzTDfwZdy9mwrhnh2PMBoyXuMEDJUGRAtcxDVkjTu5vjkUVoOYtBeyWZMXao=
+X-Received: by 10.223.147.166 with SMTP id 35mr2361495wrp.90.1507297715384;
+	Fri, 06 Oct 2017 06:48:35 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20170918195100.17593-6-andrew.smirnov@gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Received: by 10.223.128.207 with HTTP; Fri, 6 Oct 2017 06:48:14 -0700 (PDT)
+In-Reply-To: <20170918195100.17593-3-andrew.smirnov@gmail.com>
+References: <20170918195100.17593-1-andrew.smirnov@gmail.com>
+	<20170918195100.17593-3-andrew.smirnov@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 6 Oct 2017 14:48:14 +0100
+Message-ID: <CAFEAcA9M9ZpcAHB4eZ2zh9jA6YSWpLoEPiAznnL2-SSdJoW+Mw@mail.gmail.com>
+To: Andrey Smirnov <andrew.smirnov@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::243
-Subject: Re: [Qemu-devel] [PATCH 05/17] imx_fec: Use ENET_FTRL to determine
- truncation length
-X-BeenThere: qemu-devel@gnu.org
+X-Received-From: 2a00:1450:400c:c0c::22f
+Subject: Re: [Qemu-arm] [PATCH 02/17] imx_fec: Do not calculate FEC
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.gnu.org>
-List-Unsubscribe: <https://lists.gnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@gnu.org?subject=unsubscribe>
-List-Archive: <http://lists.gnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@gnu.org>
-List-Help: <mailto:qemu-devel-request@gnu.org?subject=help>
-List-Subscribe: <https://lists.gnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@gnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
-	qemu-devel@nongnu.org, yurovsky@gmail.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@gnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@gnu.org>
-X-TUID: 1tk68hxQLQcQ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Jason Wang <jasowang@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Andrey Yurovsky <yurovsky@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DMFn2QHM12pA
 
-Hi Andrey,
-
-On 09/18/2017 04:50 PM, Andrey Smirnov wrote:
-> Frame truncation length, TRUNC_FL, is determined by the contents of
-> ENET_FTRL register, so convert the code to use it instead of a
-> hardcoded constant.
-> 
+On 18 September 2017 at 20:50, Andrey Smirnov <andrew.smirnov@gmail.com> wrote:
+> Save some computation time and avoid calculating CRC's frame
+>
 > Cc: Peter Maydell <peter.maydell@linaro.org>
 > Cc: Jason Wang <jasowang@redhat.com>
 > Cc: qemu-devel@nongnu.org
@@ -137,38 +120,47 @@ On 09/18/2017 04:50 PM, Andrey Smirnov wrote:
 > Cc: yurovsky@gmail.com
 > Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 > ---
->   hw/net/imx_fec.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
-> 
+>  hw/net/imx_fec.c | 9 +++------
+>  1 file changed, 3 insertions(+), 6 deletions(-)
+>
 > diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
-> index 767402909d..989c11be5f 100644
+> index 88b4b049d7..75822344fc 100644
 > --- a/hw/net/imx_fec.c
 > +++ b/hw/net/imx_fec.c
-> @@ -1050,8 +1050,8 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
->       size += 4;
->   
->       /* Huge frames are truncted.  */
-> -    if (size > ENET_MAX_FRAME_SIZE) {
-> -        size = ENET_MAX_FRAME_SIZE;
-> +    if (size > s->regs[ENET_FTRL]) {
-> +        size = s->regs[ENET_FTRL]; >           flags |= ENET_BD_TR | ENET_BD_LG;
->       }
+> @@ -1032,9 +1032,7 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
+>      IMXENETBufDesc bd;
+>      uint32_t flags = 0;
+>      uint32_t addr;
+> -    uint32_t crc;
+>      uint32_t buf_addr;
+> -    uint8_t *crc_ptr;
+>      unsigned int buf_len;
+>      size_t size = len;
+>
+> @@ -1048,8 +1046,6 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
+>
+>      /* 4 bytes for the CRC.  */
+>      size += 4;
+> -    crc = cpu_to_be32(crc32(~0, buf, size));
+> -    crc_ptr = (uint8_t *) &crc;
+>
+>      /* Huge frames are truncted.  */
+>      if (size > ENET_MAX_FRAME_SIZE) {
+> @@ -1090,9 +1086,10 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
+>          dma_memory_write(&address_space_memory, buf_addr, buf, buf_len);
+>          buf += buf_len;
+>          if (size < 4) {
+> +            const uint8_t zeros[4] = { 0 };
+> +
+>              dma_memory_write(&address_space_memory, buf_addr + buf_len,
+> -                             crc_ptr, 4 - size);
+> -            crc_ptr += 4 - size;
+> +                             zeros, 4 - size);
+>          }
+>          bd.flags &= ~ENET_BD_E;
+>          if (size == 0) {
 
-for this to be ok you need to update imx_enet_write(), such:
+This looks a bit odd. Doesn't the hardware calculate the CRC here?
 
-      case ENET_FTRL:
--        s->regs[index] = value & 0x00003fff;
-+        value &= 0x00003fff;
-+        if (value > ENET_MAX_FRAME_SIZE) {
-+            warn_report("%s: guest requested bigger "
-+                        "frame size than QEMU supports "
-+                        "(%u > %u)", value,
-+                        ENET_MAX_FRAME_SIZE);
-+            value = ENET_MAX_FRAME_SIZE;
-+        }
-+        s->regs[index] = value;
-          break;
-
-Regards,
-
-Phil.
+thanks
+-- PMM

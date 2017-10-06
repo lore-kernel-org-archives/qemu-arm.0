@@ -1,522 +1,255 @@
-Received: by 10.223.197.9 with SMTP id q9csp1720603wrf;
-        Fri, 6 Oct 2017 07:38:52 -0700 (PDT)
-X-Received: by 10.237.34.56 with SMTP id n53mr3335907qtc.140.1507300732496;
-        Fri, 06 Oct 2017 07:38:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507300732; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp1725647wrf;
+        Fri, 6 Oct 2017 07:44:21 -0700 (PDT)
+X-Received: by 10.200.52.56 with SMTP id u53mr3360819qtb.16.1507301060966;
+        Fri, 06 Oct 2017 07:44:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507301060; cv=none;
         d=google.com; s=arc-20160816;
-        b=AiZP9n6g9H5PBkjaloFGIw7R4WJ6ryA4c6FdksEKyUqw0N3trdrpzlX4/ndIrcPc0W
-         hb9I70+KwZrGiE0pINj5byeA9RYFQuA4BDmVEKbESSVb/wpjT3Bvu0TZd/8gHUAPxCu6
-         s+d+Q8HPYzUsXa5fqddlYVHBUiJHNoXgRMMad+rze6VrVMrqP5tu8bZgkP0iiBa/BLOm
-         ZSKjHFdCCvtRymc6JMoICkdzAcPlgmWyk1OnnPOoMUeAT3msREgkZ5JxROGDYaAUkWGH
-         UMyyd/D5+1Cnugn9TlCJc4TVjesFC7+8M4Y7ade+vTG1xbnYiXthmKdiJTXva2VVCPFF
-         RxEQ==
+        b=xPzOF153BgRPwruMnXEbZN0kCiO9TFp9Zuqv0R+MKh/QBVo6j+tikO13t0nH6xhHCD
+         rHg8GcFV+MgLDWp3G9s4c4D6bP7gKrHrfEGEuBE4NIlI+lXt9Muu0k3tACRTLe+LrYU1
+         1W0i3cqfkK/V3toIE/Ihzsg/TZSA3MdmYBlKwE8Tn18apBp27THcjwlQHo0w7viL57ab
+         Gjb1mLP7q/T/n0MkGKCOoxp7hZFSfLZBCtGSxZTNfx0uPVTPViOXA+fxi4nSvwUY7vAA
+         FkRTkhLECvP8GIv3GdQgheQhU7WZgDDIz5gE5HHurGZLE13/vHTxmpT8FnZ8WThnwWor
+         8/iQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=6tYTrhEvKPSy6mse8dJ0S+s5047Z1z9Kp0W2fCZkQWs=;
-        b=XGiJ58Oux9fAQJ7NTHA+iGhL9Xk9UyEVkhuEy8U46QYF1gDq5LL63fYYgFaZNAq5OQ
-         QUL91Ad5XYrKy/OT3zL7GqOTFVnzpGr3PgyRnGeM4ZFBnIIBbwN/SQYAfiUA5vVmEEsy
-         z6IayE36fHxoPg6OW37lTMnaQQw7uo8MrhKQci7qg6r50Xo2lO58lHxx5EfFp9zzQblM
-         bnZuTdTaWRC52GlQxnifmS+OKImkp59Ym+YiXUp7eQhrIuYiVc4uKO7lZFIhVM6nfgs/
-         WeqTMuS6gt7+9kduNqX9ZSlf1Zt4ijZvRZrqcOIL4LVTWMchCiZwdlWAWqrUTOF87b7I
-         JsgQ==
+        bh=q3+R3GZ/0v8rGZWl5A1D0MTw4Lg2/OLeA8gNkZEJo58=;
+        b=JK8+2VT2VoEZ0CzYRcOuqtbUh9YlIjdn8eJFnPW9I5Y61merOT6JT2HEgdhrVADGoV
+         2MzD6og4u5JXLyBGbW8k28hbuCXwEyRXIbNGVESOaZqRGraMW6pasnIKYprhlnxRtQVA
+         SrdXchFaqBvhd2UGLw22WUsjdkQjDZIkSch9EUbBM/XUUlE94D59HTSMhUhpP0CH5zOF
+         b5NQ/TgblMYwf71Rd9EOzDlzOq8kg7pmVcvKgdxGMC+DEbhlMzes9yeKVkqFcyI8fxo/
+         j2wtClScPDc5wlR4CpAo5VfV6JHKsxTlcOUJmSufWILpy4P8SbCVOZCU3R1ChHPCzfh1
+         XsKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=APfR1kQV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=RouIvOym;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l10si1361628qtj.6.2017.10.06.07.38.52
+        by mx.google.com with ESMTPS id r194si1344991qke.494.2017.10.06.07.44.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 06 Oct 2017 07:38:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 06 Oct 2017 07:44:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=APfR1kQV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=RouIvOym;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45303 helo=lists.gnu.org)
+Received: from localhost ([::1]:45325 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e0Tm7-0006g1-VF
-	for alex.bennee@linaro.org; Fri, 06 Oct 2017 10:38:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57156)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1e0TrQ-0001LP-Ie
+	for alex.bennee@linaro.org; Fri, 06 Oct 2017 10:44:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58593)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e0Tlv-0006eL-HW
-	for qemu-arm@nongnu.org; Fri, 06 Oct 2017 10:38:41 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1e0TqS-0000pj-4j
+	for qemu-devel@nongnu.org; Fri, 06 Oct 2017 10:43:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e0Tlt-0000LI-Ew
-	for qemu-arm@nongnu.org; Fri, 06 Oct 2017 10:38:39 -0400
-Received: from mail-wr0-x234.google.com ([2a00:1450:400c:c0c::234]:52376)
+	(envelope-from <peter.maydell@linaro.org>) id 1e0TqQ-000503-RN
+	for qemu-devel@nongnu.org; Fri, 06 Oct 2017 10:43:20 -0400
+Received: from mail-wm0-x22f.google.com ([2a00:1450:400c:c09::22f]:55756)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1e0Tlt-0000KK-5D
-	for qemu-arm@nongnu.org; Fri, 06 Oct 2017 10:38:37 -0400
-Received: by mail-wr0-x234.google.com with SMTP id k62so13172542wrc.9
-	for <qemu-arm@nongnu.org>; Fri, 06 Oct 2017 07:38:36 -0700 (PDT)
+	id 1e0TqQ-0004zO-I2
+	for qemu-devel@nongnu.org; Fri, 06 Oct 2017 10:43:18 -0400
+Received: by mail-wm0-x22f.google.com with SMTP id u138so8374196wmu.4
+	for <qemu-devel@nongnu.org>; Fri, 06 Oct 2017 07:43:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=6tYTrhEvKPSy6mse8dJ0S+s5047Z1z9Kp0W2fCZkQWs=;
-	b=APfR1kQVOmxH/eBzJmKT7xHt8XjxAq8G6qUajurBeuYlQvCfjyeQCjLayDBRDrItK4
-	Lbr535Xi4/d69jqnTk1rMxfLwcJCtwx+XIkkm3DlL5jKbfYXiErjLLyIrqLa1wK1PtkQ
-	lKuE13bIfZW78WoxamgRpPT+/dBwuKfqGv69o=
+	:cc; bh=q3+R3GZ/0v8rGZWl5A1D0MTw4Lg2/OLeA8gNkZEJo58=;
+	b=RouIvOymG5VQ04rJXe3HQBAouaJHW+eUr3i7Q9E94c9yVe7v40Iv76O7gSmGqTHlpl
+	tey/WwZEGaxoK/pF1bXF0ie8J1FrXAiPjx9YoAWRE+7EMvPrUyRpAkRqhac/qJkQCsjC
+	kRUhL0KcGtF2DMiw5zhOFCAiT7NiaN1QTz34Q=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=6tYTrhEvKPSy6mse8dJ0S+s5047Z1z9Kp0W2fCZkQWs=;
-	b=igcn9hhfEzLaKLP9Feke2AU64hNqLPXNZBwYsPAoAODtjwTtrVoR2ZkEe7eILWa+ep
-	dNmQTUUMh1ymVzcnu0rUyVsj1zvMF9c8plRfkJRz5umviGXAoK2kLkVVVhF4lwsEpTXj
-	LRFMyslGuU0k7xDRq+W8g3pJ9a2ppstK9eO+F3L9x9nUNtzecqYJGD+utZEo+/5J/Dod
-	49ahikELGJ6XpuFyBjeTIjFAsXQBVUuXsfrf1aW7hEEFcQeP+1p3RFz96P1I2735wE5J
-	Sbg2ErhfSfdAUS95w0BBWKnILpBy6sFG0byfLfteyAR4ZF4ug0d9BhxM2+UC+xZ/2Y8G
-	Pj9g==
-X-Gm-Message-State: AMCzsaXbMlhttZiMg7qP7pE/o05zgkOrEGvqK2ZgqPvBg18pKFt5Qzh1
-	mNM4sz7qfRWTFez4somSAhIdPSvoFidnsNxZbQQa0A==
-X-Google-Smtp-Source: AOwi7QB4ixlm/4jBUXAYHOkGKzbs4AUEuxo8we2UYMJsoIh1YPl4FTiXX8mMxWJE6VYPrbQPwSFcoUBjS58g+lVGWgE=
-X-Received: by 10.223.197.13 with SMTP id q13mr2512618wrf.272.1507300715777;
-	Fri, 06 Oct 2017 07:38:35 -0700 (PDT)
+	bh=q3+R3GZ/0v8rGZWl5A1D0MTw4Lg2/OLeA8gNkZEJo58=;
+	b=DVFSnCsDXrMQSUkV28xH6RXcPVu/Q0RMVGWr8JSP0vQp7tqk6HhUe6b9iSUl2dtpQR
+	Djr2xn4Y+Dwmax5U+KZNIiG2gbMLOFkUiwyQbe3TAVx1kdvRNWTwdykrxZ8OXxORjdqO
+	zUSBtCeuTXcidxAo5pMRkEmTTitcdDs2UbG2R1pz5U1Ygm4OijhBDy0AG6M4myxCIqxO
+	AfQKVAQhKE1ewQo6VzSdgkwzlc9uWgpaRNFxwSWmTVXjVZr/Q4huxXlT34BCj8Jq/6kF
+	UkCItLXsd0mKqIpm0xcP5IUBz9lTan3dHkgPWf7HFGo7EMdqWuKhGYBzTYws8eAebVlZ
+	VCzw==
+X-Gm-Message-State: AMCzsaXdcsuVGjyZ3hLc5DjbplbY7HLeS7HNSnug2CPcp4VEfNoUvuA6
+	ptyheWqz+RV7kdFweNooIdKohVFpgW0yXMrLj4iR3Q==
+X-Google-Smtp-Source: AOwi7QBkh9TXJY2TcLURbWab6qr+pNDM6YwV/chVpwkLoTFSOu0Yl5M/E+aLEt4eHzV/btinKFyaD3+6dHR4Nk7r9yY=
+X-Received: by 10.28.113.196 with SMTP id d65mr1857865wmi.151.1507300997334;
+	Fri, 06 Oct 2017 07:43:17 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.223.128.207 with HTTP; Fri, 6 Oct 2017 07:38:15 -0700 (PDT)
-In-Reply-To: <20170918195100.17593-17-andrew.smirnov@gmail.com>
+Received: by 10.223.128.207 with HTTP; Fri, 6 Oct 2017 07:42:56 -0700 (PDT)
+In-Reply-To: <20170918195100.17593-18-andrew.smirnov@gmail.com>
 References: <20170918195100.17593-1-andrew.smirnov@gmail.com>
-	<20170918195100.17593-17-andrew.smirnov@gmail.com>
+	<20170918195100.17593-18-andrew.smirnov@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 6 Oct 2017 15:38:15 +0100
-Message-ID: <CAFEAcA_a_YLw4u5SwCF-L_n630iiJJwyphbKc2M-orvFs7dERg@mail.gmail.com>
+Date: Fri, 6 Oct 2017 15:42:56 +0100
+Message-ID: <CAFEAcA-wjuFzQuxOGz2UbjL6qSO7H75WzKHPVrqhT40QMaLLog@mail.gmail.com>
 To: Andrey Smirnov <andrew.smirnov@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::234
-Subject: Re: [Qemu-arm] [PATCH 16/17] i.MX: Add i.MX7 SOC implementation.
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:400c:c09::22f
+Subject: Re: [Qemu-devel] [PATCH 17/17] Implement support for i.MX7 Sabre
+ board
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
 	Andrey Yurovsky <yurovsky@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gHMq5W8Ztw36
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 5ketq1UFUisu
 
-On 18 September 2017 at 20:50, Andrey Smirnov <andrew.smirnov@gmail.com> wrote:
-> For now we only support the following devices:
->     * up to 2 Cortex A9 cores (SMP works with PSCI)
->     * A7 MPCORE (identical to A15 MPCORE)
->     * 7 i.MX UARTs
->     * 1 CCM device
->     * 2 Ethernet controllers (FEC)
->     * 3 SD controllers (USDHC)
->     * 1 SNVS device
->     * 1 WDT device
->
+On 18 September 2017 at 20:51, Andrey Smirnov <andrew.smirnov@gmail.com> wrote:
 > Cc: Peter Maydell <peter.maydell@linaro.org>
 > Cc: qemu-devel@nongnu.org
 > Cc: qemu-arm@nongnu.org
 > Cc: yurovsky@gmail.com
 > Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 > ---
->  default-configs/arm-softmmu.mak |   1 +
->  hw/arm/Makefile.objs            |   2 +
->  hw/arm/fsl-imx7.c               | 327 ++++++++++++++++++++++++++++++++++++++++
->  include/hw/arm/fsl-imx7.h       | 114 ++++++++++++++
->  4 files changed, 444 insertions(+)
->  create mode 100644 hw/arm/fsl-imx7.c
->  create mode 100644 include/hw/arm/fsl-imx7.h
->
-> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-> index bbdd3c1d8b..98396a3ad2 100644
-> --- a/default-configs/arm-softmmu.mak
-> +++ b/default-configs/arm-softmmu.mak
-> @@ -118,6 +118,7 @@ CONFIG_ALLWINNER_A10=y
->  CONFIG_FSL_IMX6=y
->  CONFIG_FSL_IMX31=y
->  CONFIG_FSL_IMX25=y
-> +CONFIG_FSL_IMX7=y
->
->  CONFIG_IMX_I2C=y
+>  hw/arm/Makefile.objs   |   2 +-
+>  hw/arm/mcimx7d-sabre.c | 100 +++++++++++++++++++++++++++++++++++++++++++++++++
+>  2 files changed, 101 insertions(+), 1 deletion(-)
+>  create mode 100644 hw/arm/mcimx7d-sabre.c
 >
 > diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-> index a2e56ecaae..33f6051ae3 100644
+> index 33f6051ae3..fc4a963de8 100644
 > --- a/hw/arm/Makefile.objs
 > +++ b/hw/arm/Makefile.objs
-> @@ -19,3 +19,5 @@ obj-$(CONFIG_FSL_IMX31) += fsl-imx31.o kzm.o
+> @@ -19,5 +19,5 @@ obj-$(CONFIG_FSL_IMX31) += fsl-imx31.o kzm.o
 >  obj-$(CONFIG_FSL_IMX6) += fsl-imx6.o sabrelite.o
 >  obj-$(CONFIG_ASPEED_SOC) += aspeed_soc.o aspeed.o
 >  obj-$(CONFIG_MPS2) += mps2.o
-> +obj-$(CONFIG_FSL_IMX7) += fsl-imx7.o
-> +
-> diff --git a/hw/arm/fsl-imx7.c b/hw/arm/fsl-imx7.c
+> -obj-$(CONFIG_FSL_IMX7) += fsl-imx7.o
+> +obj-$(CONFIG_FSL_IMX7) += fsl-imx7.o mcimx7d-sabre.o
+>
+> diff --git a/hw/arm/mcimx7d-sabre.c b/hw/arm/mcimx7d-sabre.c
 > new file mode 100644
-> index 0000000000..bd01bb7f59
+> index 0000000000..34e3933db8
 > --- /dev/null
-> +++ b/hw/arm/fsl-imx7.c
-> @@ -0,0 +1,327 @@
+> +++ b/hw/arm/mcimx7d-sabre.c
+> @@ -0,0 +1,100 @@
 > +/*
 > + * Copyright (c) 2017, Impinj, Inc.
 > + *
-> + * i.MX7 SoC definitions
+> + * MCIMX7D_SABRE Board System emulation.
 > + *
 > + * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
 > + *
-> + * Based on hw/arm/fsl-imx6.c
+> + * This code is licensed under the GPL, version 2 or later.
+> + * See the file `COPYING' in the top level directory.
 > + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License as published by
-> + * the Free Software Foundation; version 2 of the License.
-
-We pretty strongly prefer GPL-2-or-later for new code, not 2-only.
-
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-> + * GNU General Public License for more details.
+> + * It (partially) emulates a mcimx7d_sabre board, with a Freescale
+> + * i.MX7 SoC
 > + */
 > +
 > +#include "qemu/osdep.h"
 > +#include "qapi/error.h"
 > +#include "qemu-common.h"
 > +#include "hw/arm/fsl-imx7.h"
+> +#include "hw/boards.h"
 > +#include "sysemu/sysemu.h"
+> +#include "sysemu/device_tree.h"
 > +#include "qemu/error-report.h"
+> +#include "sysemu/qtest.h"
+> +#include "net/net.h"
 > +
-> +#define NAME_SIZE 20
+> +typedef struct {
+> +    FslIMX7State soc;
+> +    MemoryRegion ram;
+> +} MCIMX7Sabre;
 > +
-> +#define for_each_cpu(i)     for (i = 0; i < smp_cpus; i++)
-
-Just open-code this, please.
-
-> +
-> +static void fsl_imx7_init(Object *obj)
+> +static void mcimx7d_add_psci_node(const struct arm_boot_info *boot_info, void *fdt)
 > +{
-> +    BusState *sysbus = sysbus_get_default();
-> +    FslIMX7State *s = FSL_IMX7(obj);
-> +    char name[NAME_SIZE];
+> +    const char comp[] = "arm,psci-0.2\0arm,psci";
+> +
+> +    qemu_fdt_add_subnode(fdt, "/psci");
+> +    qemu_fdt_setprop(fdt, "/psci", "compatible", comp, sizeof(comp));
+> +    qemu_fdt_setprop_string(fdt, "/psci", "method", "smc");
+> +}
+
+You shouldn't need this -- we should just be able to work with whatever
+the real hardware's device tree is. ("virt" is a special case because
+we create our own device tree there.)
+
+> +
+> +static void mcimx7d_sabre_init(MachineState *machine)
+> +{
+> +    static struct arm_boot_info boot_info;
+> +    MCIMX7Sabre *s = g_new0(MCIMX7Sabre, 1);
+> +    Object *soc;
 > +    int i;
 > +
-> +    if (smp_cpus > FSL_IMX7_NUM_CPUS) {
-> +        error_report("%s: Only %d CPUs are supported (%d requested)",
-> +                     TYPE_FSL_IMX7, FSL_IMX7_NUM_CPUS, smp_cpus);
+> +    if (machine->ram_size > FSL_IMX7_MMDC_SIZE) {
+> +        error_report("RAM size " RAM_ADDR_FMT " above max supported (%08x)",
+> +                     machine->ram_size, FSL_IMX7_MMDC_SIZE);
 > +        exit(1);
 > +    }
 > +
-> +    for_each_cpu(i) {
-> +        object_initialize(&s->cpu[i], sizeof(s->cpu[i]),
-> +                          "cortex-a7-" TYPE_ARM_CPU);
-> +        snprintf(name, NAME_SIZE, "cpu%d", i);
-> +        object_property_add_child(obj, name, OBJECT(&s->cpu[i]),
-> +                                  &error_fatal);
-> +    }
+> +    boot_info = (struct arm_boot_info) {
+> +        .loader_start = FSL_IMX7_MMDC_ADDR,
+> +        .board_id = -1,
+> +        .ram_size = machine->ram_size,
+> +        .kernel_filename = machine->kernel_filename,
+> +        .kernel_cmdline = machine->kernel_cmdline,
+> +        .initrd_filename = machine->initrd_filename,
+> +        .nb_cpus = smp_cpus,
+> +        .modify_dtb = mcimx7d_add_psci_node,
+> +    };
 > +
-> +    /*
-> +     * A7MPCORE
-> +     */
-> +    object_initialize(&s->a7mpcore, sizeof(s->a7mpcore), TYPE_A15MPCORE_PRIV);
-
-Stealing the A15MPCORE device for a7 is kind of ugly, but I can't
-decide what would be better instead...
-
-> +    qdev_set_parent_bus(DEVICE(&s->a7mpcore), sysbus);
-> +    object_property_add_child(obj, "a7mpcore",
-> +                              OBJECT(&s->a7mpcore), &error_fatal);
+> +    object_initialize(&s->soc, sizeof(s->soc), TYPE_FSL_IMX7);
+> +    soc = OBJECT(&s->soc);
+> +    object_property_add_child(OBJECT(machine), "soc", soc, &error_fatal);
+> +    object_property_set_bool(soc, true, "realized", &error_fatal);
 > +
-> +    /*
-> +     * CCM
-> +     */
-> +    object_initialize(&s->ccm, sizeof(s->ccm), TYPE_IMX7_CCM);
-> +    qdev_set_parent_bus(DEVICE(&s->ccm), sysbus);
-> +    object_property_add_child(obj, "ccm", OBJECT(&s->ccm), &error_fatal);
+> +    memory_region_allocate_system_memory(&s->ram, NULL, "mcimx7d-sabre.ram",
+> +                                         machine->ram_size);
+> +    memory_region_add_subregion(get_system_memory(),
+> +                                FSL_IMX7_MMDC_ADDR, &s->ram);
 > +
-> +    /*
-> +     * UART
-> +     */
-> +    for (i = 0; i < FSL_IMX7_NUM_UARTS; i++) {
-> +            object_initialize(&s->uart[i], sizeof(s->uart[i]), TYPE_IMX_SERIAL);
-> +            qdev_set_parent_bus(DEVICE(&s->uart[i]), sysbus);
-> +            snprintf(name, NAME_SIZE, "uart%d", i);
-> +            object_property_add_child(obj, name, OBJECT(&s->uart[i]),
-> +                                      &error_fatal);
-> +    }
-> +
-> +    /*
-> +     * Ethernet
-> +     */
-> +    for (i = 0; i < FSL_IMX7_NUM_ETHS; i++) {
-> +            object_initialize(&s->eth[i], sizeof(s->eth[i]), TYPE_IMX_ENET);
-> +            qdev_set_parent_bus(DEVICE(&s->eth[i]), sysbus);
-> +            snprintf(name, NAME_SIZE, "eth%d", i);
-> +            object_property_add_child(obj, name, OBJECT(&s->eth[i]),
-> +                                      &error_fatal);
-> +    }
-> +
-> +    /*
-> +     * SDHCI
-> +     */
 > +    for (i = 0; i < FSL_IMX7_NUM_USDHCS; i++) {
-> +            object_initialize(&s->usdhc[i], sizeof(s->usdhc[i]),
-> +                              TYPE_IMX_USDHC);
-> +            qdev_set_parent_bus(DEVICE(&s->usdhc[i]), sysbus);
-> +            snprintf(name, NAME_SIZE, "usdhc%d", i);
-> +            object_property_add_child(obj, name, OBJECT(&s->usdhc[i]),
-> +                                      &error_fatal);
+> +        BusState *bus;
+> +        DeviceState *carddev;
+> +        DriveInfo *di;
+> +        BlockBackend *blk;
+> +
+> +        di = drive_get_next(IF_SD);
+> +        blk = di ? blk_by_legacy_dinfo(di) : NULL;
+> +        bus = qdev_get_child_bus(DEVICE(&s->soc.usdhc[i]), "sd-bus");
+> +        carddev = qdev_create(bus, TYPE_SD_CARD);
+> +        qdev_prop_set_drive(carddev, "drive", blk, &error_fatal);
+> +        object_property_set_bool(OBJECT(carddev), true, "realized", &error_fatal);
 > +    }
 > +
-> +    /*
-> +     * SNVS
-> +     */
-> +    object_initialize(&s->snvs, sizeof(s->snvs), TYPE_IMX7_SNVS);
-> +    qdev_set_parent_bus(DEVICE(&s->snvs), sysbus);
-> +    object_property_add_child(obj, "snvs", OBJECT(&s->snvs), &error_fatal);
-> +
-> +    /*
-> +     * Watchdog
-> +     */
-> +    for (i = 0; i < FSL_IMX7_NUM_WDTS; i++) {
-> +            object_initialize(&s->wdt[i], sizeof(s->wdt[i]), TYPE_IMX2_WDT);
-> +            qdev_set_parent_bus(DEVICE(&s->wdt[i]), sysbus);
-> +            snprintf(name, NAME_SIZE, "wdt%d", i);
-> +            object_property_add_child(obj, name, OBJECT(&s->wdt[i]),
-> +                                      &error_fatal);
+> +    if (!qtest_enabled()) {
+> +        arm_load_kernel(&s->soc.cpu[0], &boot_info);
 > +    }
 > +}
 > +
-> +static void fsl_imx7_realize(DeviceState *dev, Error **errp)
+> +static void mcimx7d_sabre_machine_init(MachineClass *mc)
 > +{
-> +    FslIMX7State *s = FSL_IMX7(dev);
-> +    Object *o;
-> +    int i;
-> +    qemu_irq irq;
-> +
-> +    for_each_cpu(i) {
-> +       o = OBJECT(&s->cpu[i]);
-> +
-> +        object_property_set_int(o, QEMU_PSCI_CONDUIT_SMC,
-> +                                "psci-conduit", &error_abort);
-> +
-> +        object_property_set_bool(o, false, "has_el3", &error_abort);
+> +    mc->desc = "Freescale i.MX7 DUAL SABRE (Cortex A7)";
+> +    mc->init = mcimx7d_sabre_init;
+> +    mc->max_cpus = FSL_IMX7_NUM_CPUS;
+> +    mc->ignore_memory_transaction_failures = true;
 
-Does this SoC's CPU really not have EL3?
-
-> +
-> +        /* On uniprocessor, the CBAR is set to 0 */
-> +        if (smp_cpus > 1) {
-> +            object_property_set_int(o, FSL_IMX7_A7MPCORE_ADDR,
-> +                                    "reset-cbar", &error_abort);
-> +        }
-> +
-> +        if (i) {
-> +            /* Secondary CPUs start in PSCI powered-down state */
-> +            object_property_set_bool(o, true,
-> +                                     "start-powered-off", &error_abort);
-> +        }
-> +
-> +        object_property_set_bool(o, true, "realized", &error_abort);
-> +    }
-> +
-> +    /*
-> +     * A7MPCORE
-> +     */
-> +    object_property_set_int(OBJECT(&s->a7mpcore), smp_cpus, "num-cpu",
-> +                            &error_abort);
-> +    object_property_set_int(OBJECT(&s->a7mpcore),
-> +                            FSL_IMX7_MAX_IRQ + GIC_INTERNAL,
-> +                            "num-irq", &error_abort);
-> +
-> +    object_property_set_bool(OBJECT(&s->a7mpcore), true, "realized",
-> +                             &error_abort);
-> +
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->a7mpcore), 0, FSL_IMX7_A7MPCORE_ADDR);
-> +
-> +    for_each_cpu(i) {
-> +        SysBusDevice *sbd = SYS_BUS_DEVICE(&s->a7mpcore);
-> +        DeviceState  *d   = DEVICE(qemu_get_cpu(i));
-> +
-> +        irq = qdev_get_gpio_in(d, ARM_CPU_IRQ);
-> +        sysbus_connect_irq(sbd, i, irq);
-> +        irq = qdev_get_gpio_in(d, ARM_CPU_FIQ);
-> +        sysbus_connect_irq(sbd, i + smp_cpus, irq);
-> +    }
-> +
-> +    /*
-> +     * CCM
-> +     */
-> +    object_property_set_bool(OBJECT(&s->ccm), true, "realized", &error_abort);
-> +
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->ccm), 0, FSL_IMX7_CCM_ADDR);
-> +
-> +    /*
-> +     * UART
-> +     */
-> +    for (i = 0; i < FSL_IMX7_NUM_UARTS; i++) {
-> +        static const hwaddr FSL_IMX7_UARTn_ADDR[FSL_IMX7_NUM_UARTS] = {
-> +            FSL_IMX7_UART1_ADDR,
-> +            FSL_IMX7_UART2_ADDR,
-> +            FSL_IMX7_UART3_ADDR,
-> +            FSL_IMX7_UART4_ADDR,
-> +            FSL_IMX7_UART5_ADDR,
-> +            FSL_IMX7_UART6_ADDR,
-> +            FSL_IMX7_UART7_ADDR,
-> +        };
-> +
-> +        static const int FSL_IMX7_UARTn_IRQ[FSL_IMX7_NUM_UARTS] = {
-> +            FSL_IMX7_UART1_IRQ,
-> +            FSL_IMX7_UART2_IRQ,
-> +            FSL_IMX7_UART3_IRQ,
-> +            FSL_IMX7_UART4_IRQ,
-> +            FSL_IMX7_UART5_IRQ,
-> +            FSL_IMX7_UART6_IRQ,
-> +            FSL_IMX7_UART7_IRQ,
-> +        };
-> +
-> +
-> +        if (i < MAX_SERIAL_PORTS) {
-> +            Chardev *chr;
-> +            chr = serial_hds[i];
-> +
-> +            if (!chr) {
-> +                char *label = g_strdup_printf("imx7.uart%d", i + 1);
-> +                chr = qemu_chr_new(label, "null");
-> +                g_free(label);
-> +                serial_hds[i] = chr;
-> +            }
-
-I think the conclusion we've come to about chardevs is that the
-UART should handle being passed a NULL chardev, rather than the
-board code having to create a dummy chardev to pass to it.
-
-> +
-> +            qdev_prop_set_chr(DEVICE(&s->uart[i]), "chardev", chr);
-> +        }
-> +
-> +        object_property_set_bool(OBJECT(&s->uart[i]), true, "realized",
-> +                                 &error_abort);
-> +
-> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->uart[i]), 0, FSL_IMX7_UARTn_ADDR[i]);
-> +
-> +        irq = qdev_get_gpio_in(DEVICE(&s->a7mpcore), FSL_IMX7_UARTn_IRQ[i]);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart[i]), 0, irq);
-> +    }
-> +
-> +    /*
-> +     * Etherenet
-
-Typo: "Ethernet"
-
-> +     */
-> +    for (i = 0; i < FSL_IMX7_NUM_ETHS; i++) {
-> +        static const hwaddr FSL_IMX7_ENETn_ADDR[FSL_IMX7_NUM_ETHS] = {
-> +            FSL_IMX7_ENET1_ADDR,
-> +            FSL_IMX7_ENET2_ADDR,
-> +        };
-> +
-> +        qdev_set_nic_properties(DEVICE(&s->eth[i]), &nd_table[i]);
-> +        object_property_set_bool(OBJECT(&s->eth[i]), true, "realized",
-> +                                 &error_abort);
-> +
-> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->eth[i]), 0, FSL_IMX7_ENETn_ADDR[i]);
-> +
-> +        irq = qdev_get_gpio_in(DEVICE(&s->a7mpcore), FSL_IMX7_ENET_IRQ(i, 0));
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->eth[i]), 0, irq);
-> +        irq = qdev_get_gpio_in(DEVICE(&s->a7mpcore), FSL_IMX7_ENET_IRQ(i, 3));
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->eth[i]), 1, irq);
-> +    }
-> +
-> +    /*
-> +     * USDHC
-> +     */
-> +    for (i = 0; i < FSL_IMX7_NUM_USDHCS; i++) {
-> +        static const hwaddr FSL_IMX7_USDHCn_ADDR[FSL_IMX7_NUM_USDHCS] = {
-> +            FSL_IMX7_USDHC1_ADDR,
-> +            FSL_IMX7_USDHC2_ADDR,
-> +            FSL_IMX7_USDHC3_ADDR,
-> +        };
-> +
-> +        static const int FSL_IMX7_USDHCn_IRQ[FSL_IMX7_NUM_USDHCS] = {
-> +            FSL_IMX7_USDHC1_IRQ,
-> +            FSL_IMX7_USDHC2_IRQ,
-> +            FSL_IMX7_USDHC3_IRQ,
-> +        };
-> +
-> +        object_property_set_bool(OBJECT(&s->usdhc[i]), true, "realized",
-> +                                 &error_abort);
-> +
-> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->usdhc[i]), 0,
-> +                        FSL_IMX7_USDHCn_ADDR[i]);
-> +
-> +        irq = qdev_get_gpio_in(DEVICE(&s->a7mpcore), FSL_IMX7_USDHCn_IRQ[i]);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->usdhc[i]), 0, irq);
-> +    }
-> +
-> +    /*
-> +     * SNVS
-> +     */
-> +    object_property_set_bool(OBJECT(&s->snvs), true, "realized", &error_abort);
-> +
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->snvs), 0, FSL_IMX7_SNVS_ADDR);
-> +
-> +    /*
-> +     * Watchdog
-> +     */
-> +    for (i = 0; i < FSL_IMX7_NUM_WDTS; i++) {
-> +        static const hwaddr FSL_IMX7_WDOGn_ADDR[FSL_IMX7_NUM_WDTS] = {
-> +            FSL_IMX7_WDOG1_ADDR,
-> +            FSL_IMX7_WDOG2_ADDR,
-> +            FSL_IMX7_WDOG3_ADDR,
-> +            FSL_IMX7_WDOG4_ADDR,
-> +        };
-> +
-> +        object_property_set_bool(OBJECT(&s->wdt[i]), true, "realized",
-> +                                 &error_abort);
-> +
-> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->wdt[i]), 0, FSL_IMX7_WDOGn_ADDR[i]);
-> +    }
-> +}
-> +
-> +static void fsl_imx7_class_init(ObjectClass *oc, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(oc);
-> +
-> +    dc->realize = fsl_imx7_realize;
-> +
-> +    /*
-> +     * Reason: creates an ARM CPU, thus use after free(), see
-> +     * arm_cpu_class_init()
-> +     */
-
-I think this is the wrong reason (we've fixed that problem, IIRC).
-You do want this not to be user-creatable, but the reason is
-/* Reason: uses serial_hds and nd_table in realize() */
-(compare the reason text in the aspeed/allwinner/digic/xlnx-zynqmp
-SoC device objects).
-
-> +    dc->user_creatable = false;
-> +    dc->desc = "i.MX7 SOC";
-> +}
-> +
-> +static const TypeInfo fsl_imx7_type_info = {
-> +    .name = TYPE_FSL_IMX7,
-> +    .parent = TYPE_DEVICE,
-> +    .instance_size = sizeof(FslIMX7State),
-> +    .instance_init = fsl_imx7_init,
-> +    .class_init = fsl_imx7_class_init,
-> +};
-> +
-> +static void fsl_imx7_register_types(void)
-> +{
-> +    type_register_static(&fsl_imx7_type_info);
-> +}
-> +type_init(fsl_imx7_register_types)
+Please don't set this flag on new board models -- it is only
+for legacy existing board models (where we don't know what
+running guest code might be broken by turning bad accesses
+into guest aborts. For a new board model, you should leave
+the flag unset and instead stub out any devices that you
+need to using create_unimplemented_device() so that your
+guest code boots.
 
 thanks
 -- PMM

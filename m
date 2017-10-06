@@ -1,98 +1,97 @@
-Received: by 10.223.197.9 with SMTP id q9csp1695934wrf;
-        Fri, 6 Oct 2017 07:13:29 -0700 (PDT)
-X-Received: by 10.55.138.135 with SMTP id m129mr20509979qkd.214.1507299209018;
-        Fri, 06 Oct 2017 07:13:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507299209; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp1696439wrf;
+        Fri, 6 Oct 2017 07:13:59 -0700 (PDT)
+X-Received: by 10.200.4.39 with SMTP id v39mr2945756qtg.15.1507299239453;
+        Fri, 06 Oct 2017 07:13:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507299239; cv=none;
         d=google.com; s=arc-20160816;
-        b=wk07BRQ1c6eDlbb7qeNGa7Z7pxi2QrvlBiQVxpVQU9L3ArLcxNP+orcbZ2aNx4h3CL
-         Cr1O0bd2WHha88LXHgcr8x42mZ/peHL34lc5YG41E9dDGXUpBVaImqN0yCIzXJij5CoC
-         lUwd2/3dK4iMZUd9UdLcw1ozzu6xmzS6K3eon+qjgzs9QW/dT0rtdRlmSO8jyDt3Vjmb
-         yEf/u5h/xoQ3QnwcLnaVHzpfMdh7q6h8ndobit+/RIdQiBtvon1u04nGwE63Mek/Q0Zb
-         9NMXX7H9yIlY2e8VvS4cd2gwss/C9V76lgQBhzlnyUNvLocL9erxxlqMLWlyRaJnkgcm
-         hABQ==
+        b=Lz3SU6yo8HinIwWXtTtT3wMOcQBZr5+apgmoLKPAdNUsbNu8blPTpFJ5JJ9C2I5aM8
+         Ia8loCGSldcF3oQBxSvMz5BrYUapyajLWY/nXOXd44K40RwPoMxIxzy2oHRm0ZlseitX
+         ud4VfXCMuImnhJyKo07OiDtRDJRBj3Ae9axi/oTNvvHb99CsecIi39HzUNRDQ1bUlKR0
+         ppN+j9FumasCPoe7p7yCbds8uvTzh1hfcq/Jg/5wDVneB51zaQ3zyXdtO3Nn9pG+Dvon
+         FG3eXCW3Ai1ev/jLvcrJwejk4uMU1fw8KJ8mbThYdnuzuotJQJb407ueCDU0YDHCN1vB
+         GzZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=0zTu+VpRZ2pOmuWDaL0hePar2kJhTV8Akv8+ScwriG4=;
-        b=CM2VnSQlrPd6jI3suJa3O6uZA+W6RPe3vvHdi7qQE2jRI7XHQSo7QX7JwGg5MwjCTP
-         uIjoskFjmBAaKauDxdkGoWam1+1JmhhSsmBKQifDwz/Q2EsI4Czkc8LoKEVTDObIuJqX
-         VSokYKX/RDWIEV7zX1y8jvnaq9RbQOpaLJW+YUoj5RFGzZv74yoMtNhlPfyxFwM7nIQz
-         Astr6+WSNf068ofIglC4l+XNjFF37LaeB6Mna2RhFVXtP7b6nuG3R3Md2kIgIjyowrKO
-         kiDSXVxK0cUMDLQRK1e8Fv1YhUMUPbYpx9sAsrzANWFC9Nxk80tLREfoVE06LZQUNLYq
-         7law==
+        bh=jIUdAZsohlT6IArq/xp7IW3ebzb4rd+B6ky7VRJUgpY=;
+        b=ZDq2UxRI+JqEvMW6jnTZ/UIZSRWIhsX02xpTjNv7kyef6W0WkljLZNMejVQ+DEyNnZ
+         2L/ZYxq8XkJckqYWvI0Yv3zDp74tnGyo/u3GkxfSRYMFNphnxYQtR/ZImpByF51cJqeW
+         QFSigj+XNJeSgc8LCigRuVA1Qi6Ufd1jFfD5p5SSCzuduEgor+gN4llEPiKg9monKz/u
+         Rs61eEqLFQzH9P5pUJmRHwEIckEayoofKsYA9ZfQWjq+dhX04GXipXYBfHd57QiOuCGk
+         N8i1nFq8gILdC656RzPhLr+2u3uMWEQhHcdScZvcDZ2yyvIEL686qnyiLgXutlYPuxos
+         +6Xw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=aScW6TI/;
+       dkim=fail header.i=@linaro.org header.s=google header.b=R2qpvpe5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q128si1313777qkf.453.2017.10.06.07.13.28
+        by mx.google.com with ESMTPS id m53si99552qta.78.2017.10.06.07.13.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 06 Oct 2017 07:13:28 -0700 (PDT)
+        Fri, 06 Oct 2017 07:13:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=aScW6TI/;
+       dkim=fail header.i=@linaro.org header.s=google header.b=R2qpvpe5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45187 helo=lists.gnu.org)
+Received: from localhost ([::1]:45190 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e0TNY-0003sz-Gv
-	for alex.bennee@linaro.org; Fri, 06 Oct 2017 10:13:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50193)
+	id 1e0TO3-0004Ea-0K
+	for alex.bennee@linaro.org; Fri, 06 Oct 2017 10:13:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50976)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e0TLI-0002AP-GE
-	for qemu-arm@nongnu.org; Fri, 06 Oct 2017 10:11:13 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1e0TNq-0004C6-3b
+	for qemu-arm@nongnu.org; Fri, 06 Oct 2017 10:13:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e0TLG-00030f-Bu
-	for qemu-arm@nongnu.org; Fri, 06 Oct 2017 10:11:08 -0400
-Received: from mail-wm0-x232.google.com ([2a00:1450:400c:c09::232]:53235)
+	(envelope-from <peter.maydell@linaro.org>) id 1e0TNp-0005cS-8K
+	for qemu-arm@nongnu.org; Fri, 06 Oct 2017 10:13:46 -0400
+Received: from mail-wm0-x235.google.com ([2a00:1450:400c:c09::235]:57115)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1e0TLG-0002zY-3R
-	for qemu-arm@nongnu.org; Fri, 06 Oct 2017 10:11:06 -0400
-Received: by mail-wm0-x232.google.com with SMTP id k4so8193109wmc.1
-	for <qemu-arm@nongnu.org>; Fri, 06 Oct 2017 07:11:06 -0700 (PDT)
+	id 1e0TNp-0005ba-1h
+	for qemu-arm@nongnu.org; Fri, 06 Oct 2017 10:13:45 -0400
+Received: by mail-wm0-x235.google.com with SMTP id l68so8196111wmd.5
+	for <qemu-arm@nongnu.org>; Fri, 06 Oct 2017 07:13:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=0zTu+VpRZ2pOmuWDaL0hePar2kJhTV8Akv8+ScwriG4=;
-	b=aScW6TI/cP21NumRcKG54OptAuUFtnXmot0OPFs3CcEzcDeRWe3e8eEzdaKeJlsfHJ
-	7G3vEetESEqKkyR+khCk3QKQIriyUCwsJPrVxId7j392L7ryRyIJWBYT89NvGUQyeTYO
-	Gj3nTV0DknmcI+e9OQFDptpBOPRdSRwBHG9TE=
+	:cc; bh=jIUdAZsohlT6IArq/xp7IW3ebzb4rd+B6ky7VRJUgpY=;
+	b=R2qpvpe5OaJIpSIuVSMejtaHNm2zbAkRAYbMewINC26pZsUNLgYr4EnqR4ZVccZ59U
+	7bspEsNnHFTTMHM2czXp9gjZyRYCcX5LuSgp7Onjy8WgXc55GkXCcuSitm3YyPz35s7U
+	EzkIxcZKHJeJB1TkojPpelcxT/qiCtGQ3WDyo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=0zTu+VpRZ2pOmuWDaL0hePar2kJhTV8Akv8+ScwriG4=;
-	b=nXlYdCE0b4vJRo7NAppg7cjAJEXN97YTgcc0R/y0EAVM7so8zuTK8VFxOGZPe7/FO4
-	sxHA+G4Qs/24qu/rP4++rVjbFs1BD9zxW8Re0zGrmImKm4cPZXigA4p6LGuFm8hKHOJi
-	0uHSSEqUo/onstZ2aZzgY9h0fKCLePON2FdpMFoNNJxukZOQKMQR2fCTIZ0qkKK5VhFq
-	3YYsIdrHTIjvjFU3LisU/rPQ2W71TU8hiHQ3NC6vfZLVCRJBO8XxmxGaYm4ndyEJyg2n
-	S8qUowRRmgYFKqAyF+uov8dluuc7+/SCeuoRaUjYU+xGdwh4u1yCx45Nlp33RX2cxg3l
-	Q3MA==
-X-Gm-Message-State: AMCzsaX1myKBiiscWu3eC7XAb8wdvXKTH0gx4wplnAUbFQ9xk6+zW9lH
-	/q2MCD6oU9R36f/WbmRadna7UMUneuHskXkIcL5zgw==
-X-Google-Smtp-Source: AOwi7QDiYRxxmkd3CrTnNAEPrE1b8TpQ9pwafCBIMLiil4vQ3NVoxM9TLYeCj4Fu9wiys2UOgVdalaBzPT1+wMQ/sUc=
-X-Received: by 10.28.113.196 with SMTP id d65mr1777981wmi.151.1507299064887;
-	Fri, 06 Oct 2017 07:11:04 -0700 (PDT)
+	bh=jIUdAZsohlT6IArq/xp7IW3ebzb4rd+B6ky7VRJUgpY=;
+	b=OoCtHNI8NfunejZfY+2PeP2zLxPTEd4WMoqNbN0Kgag6ZdYPkphw3Vrbz4Gl9i9OLA
+	69BB204zbQ252ku5a+MX/BkpsVSAdst/rKGDCtA30O7KfsbDNaiJqUOnJl0Id+g5Rg5d
+	JG8umM+XZvZ2K7M4GygMPSXLKm54LyZMc+OXJg//+72wK+9keu2ocBPBhNbr378dBxBz
+	GYxuk6Fwi2f5U5puUOfdd6wwLqdqDeefRF49leE11BgD6X4YwooLDAl0MUFN1JZykhD3
+	Kc/L7BHQmVVjMgnz4gu+kSLw8cJKQh9ft2Q11Ak1HU2yd5C/xC1qKLPfwJAgmRUXgu6S
+	4InQ==
+X-Gm-Message-State: AMCzsaVvhnzec9RLYW+W5RABBXPAAd5A+O3M1fWL10MPLUbcIpA/foxe
+	9/IbrnzyoAIcj57ataq0doIQKJmxEpsBWA4AWvlDKQ==
+X-Google-Smtp-Source: AOwi7QDbDj66+CCpCcubvSBzlRrjKRDxDQdbc5xBk/eLSWsSWySA/AxhuEGEnUBKZ9pG2f9YD0umxHRQbb+iBe811HQ=
+X-Received: by 10.28.236.203 with SMTP id h72mr1999849wmi.147.1507299222809;
+	Fri, 06 Oct 2017 07:13:42 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.223.128.207 with HTTP; Fri, 6 Oct 2017 07:10:44 -0700 (PDT)
-In-Reply-To: <20170918195100.17593-9-andrew.smirnov@gmail.com>
+Received: by 10.223.128.207 with HTTP; Fri, 6 Oct 2017 07:13:22 -0700 (PDT)
+In-Reply-To: <20170918195100.17593-16-andrew.smirnov@gmail.com>
 References: <20170918195100.17593-1-andrew.smirnov@gmail.com>
-	<20170918195100.17593-9-andrew.smirnov@gmail.com>
+	<20170918195100.17593-16-andrew.smirnov@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 6 Oct 2017 15:10:44 +0100
-Message-ID: <CAFEAcA_5Yt4a3gE8pHAdE9RnY-SZoucMkt8CParasA1YQxKUfg@mail.gmail.com>
+Date: Fri, 6 Oct 2017 15:13:22 +0100
+Message-ID: <CAFEAcA_3vf8=0VhZVWX=1RQBqshvWNgHn=LrUw8BBtkUtDig0Q@mail.gmail.com>
 To: Andrey Smirnov <andrew.smirnov@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::232
-Subject: Re: [Qemu-arm] [PATCH 08/17] imx_fec: Add support for multiple Tx
- DMA rings
+X-Received-From: 2a00:1450:400c:c09::235
+Subject: Re: [Qemu-arm] [PATCH 15/17] include/qemu: Add sizes.h from Linux
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,317 +103,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Jason Wang <jasowang@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
 	Andrey Yurovsky <yurovsky@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aIXbFL+K2Isu
+X-TUID: Y+35f3M9Z6M4
 
 On 18 September 2017 at 20:50, Andrey Smirnov <andrew.smirnov@gmail.com> wrote:
-> More recent version of the IP block support more than one Tx DMA ring,
-> so add the code implementing that feature.
+> Add sizes.h from Linux to have a more readable way of specifying
+> MemoryRegion sizes.
 >
 > Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: Jason Wang <jasowang@redhat.com>
 > Cc: qemu-devel@nongnu.org
 > Cc: qemu-arm@nongnu.org
 > Cc: yurovsky@gmail.com
 > Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
-
-I'm surprised this doesn't mean "we have a property on the device
-to indicate what IP version it is, which the boards set". Or are
-all our current boards mismodelling their ethernet devices with the
-wrong number of TX rings ?
-
 > ---
->  hw/net/imx_fec.c         | 97 +++++++++++++++++++++++++++++++++++++++---------
->  include/hw/net/imx_fec.h | 23 +++++++++++-
->  2 files changed, 101 insertions(+), 19 deletions(-)
+>  include/qemu/sizes.h | 47 +++++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 47 insertions(+)
+>  create mode 100644 include/qemu/sizes.h
 >
-> diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
-> index bd62d7a75f..6045ffe673 100644
-> --- a/hw/net/imx_fec.c
-> +++ b/hw/net/imx_fec.c
-> @@ -196,6 +196,17 @@ static const char *imx_eth_reg_name(IMXFECState *s, uint32_t index)
->      }
->  }
->
-> +static const VMStateDescription vmstate_imx_eth_tx_ring = {
-> +    .name = "fec-tx-ring",
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .fields = (VMStateField[]) {
-> +        VMSTATE_UINT32(descriptor, IMXFECTxRing),
-> +        VMSTATE_UINT32(tdsr, IMXFECTxRing),
-> +        VMSTATE_END_OF_LIST()
-> +    },
-> +};
-> +
->  static const VMStateDescription vmstate_imx_eth = {
->      .name = TYPE_IMX_FEC,
->      .version_id = 2,
-> @@ -203,8 +214,10 @@ static const VMStateDescription vmstate_imx_eth = {
->      .fields = (VMStateField[]) {
->          VMSTATE_UINT32_ARRAY(regs, IMXFECState, ENET_MAX),
->          VMSTATE_UINT32(rx_descriptor, IMXFECState),
-> -        VMSTATE_UINT32(tx_descriptor, IMXFECState),
-> -
-> +        VMSTATE_STRUCT_ARRAY(tx_ring, IMXFECState,
-> +                             ENET_TX_RING_NUM,
-> +                             1, vmstate_imx_eth_tx_ring,
-> +                             IMXFECTxRing),
->          VMSTATE_UINT32(phy_status, IMXFECState),
->          VMSTATE_UINT32(phy_control, IMXFECState),
->          VMSTATE_UINT32(phy_advertise, IMXFECState),
+> diff --git a/include/qemu/sizes.h b/include/qemu/sizes.h
+> new file mode 100644
+> index 0000000000..9aedb9f8f6
+> --- /dev/null
+> +++ b/include/qemu/sizes.h
+> @@ -0,0 +1,47 @@
+> +/*
+> + * Copy of include/linux/sizes.h
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+> + */
 
-This breaks migration compatibility, so you need to figure out
-how you want to handle that. The simple solution is to increment
-the version_id and minimum_version_id fields in vmstate_imx_eth;
-that will mean migration from an old QEMU to a new one doesn't
-work but it fails in a clean way. The complex way is to put the
-new state into a migration subsection with a .needed function
-to determine whether to use it or not. For imx I think we can
-get away with the simple solution.
+Not really convinced of the utility, and it's gpl-2-only, so no thanks.
 
-> @@ -407,7 +420,7 @@ static void imx_fec_do_tx(IMXFECState *s)
->      int frame_size = 0, descnt = 0;
->      uint8_t frame[ENET_MAX_FRAME_SIZE];
->      uint8_t *ptr = frame;
-> -    uint32_t addr = s->tx_descriptor;
-> +    uint32_t addr = s->tx_ring[0].descriptor;
->
->      while (descnt++ < IMX_MAX_DESC) {
->          IMXFECBufDesc bd;
-> @@ -448,17 +461,38 @@ static void imx_fec_do_tx(IMXFECState *s)
->          }
->      }
->
-> -    s->tx_descriptor = addr;
-> +    s->tx_ring[0].descriptor = addr;
->
->      imx_eth_update(s);
->  }
->
-> -static void imx_enet_do_tx(IMXFECState *s)
-> +static void imx_enet_do_tx(IMXFECState *s, uint32_t index)
->  {
->      int frame_size = 0, descnt = 0;
->      uint8_t frame[ENET_MAX_FRAME_SIZE];
->      uint8_t *ptr = frame;
-> -    uint32_t addr = s->tx_descriptor;
-> +    IMXFECTxRing *ring;
-> +    uint32_t addr;
-> +
-> +    switch (index) {
-> +    case ENET_TDAR:
-> +        ring = &s->tx_ring[0];
-> +        break;
-> +    case ENET_TDAR1:
-> +        ring = &s->tx_ring[1];
-> +        break;
-> +    case ENET_TDAR2:
-> +        ring = &s->tx_ring[2];
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: bogus value for index %x\n",
-> +                      __func__, index);
-> +        abort();
-> +        break;
-> +    }
-> +
-> +    addr = ring->descriptor;
->
->      while (descnt++ < IMX_MAX_DESC) {
->          IMXENETBufDesc bd;
-> @@ -502,32 +536,32 @@ static void imx_enet_do_tx(IMXFECState *s)
->              ptr = frame;
->              frame_size = 0;
->              if (bd.option & ENET_BD_TX_INT) {
-> -                s->regs[ENET_EIR] |= ENET_INT_TXF;
-> +                s->regs[ENET_EIR] |= ring->int_txf;
->              }
->          }
->          if (bd.option & ENET_BD_TX_INT) {
-> -            s->regs[ENET_EIR] |= ENET_INT_TXB;
-> +            s->regs[ENET_EIR] |= ring->int_txb;
->          }
->          bd.flags &= ~ENET_BD_R;
->          /* Write back the modified descriptor.  */
->          imx_enet_write_bd(&bd, addr);
->          /* Advance to the next descriptor.  */
->          if ((bd.flags & ENET_BD_W) != 0) {
-> -            addr = s->regs[ENET_TDSR];
-> +            addr = s->regs[ring->tdsr];
->          } else {
->              addr += sizeof(bd);
->          }
->      }
->
-> -    s->tx_descriptor = addr;
-> +    ring->descriptor = addr;
->
->      imx_eth_update(s);
->  }
->
-> -static void imx_eth_do_tx(IMXFECState *s)
-> +static void imx_eth_do_tx(IMXFECState *s, uint32_t index)
->  {
->      if (!s->is_fec && (s->regs[ENET_ECR] & ENET_ECR_EN1588)) {
-> -        imx_enet_do_tx(s);
-> +        imx_enet_do_tx(s, index);
->      } else {
->          imx_fec_do_tx(s);
->      }
-> @@ -586,7 +620,22 @@ static void imx_eth_reset(DeviceState *d)
->      }
->
->      s->rx_descriptor = 0;
-> -    s->tx_descriptor = 0;
-> +
-> +    s->tx_ring[0].tdsr = ENET_TDSR;
-> +    s->tx_ring[1].tdsr = ENET_TDSR1;
-> +    s->tx_ring[2].tdsr = ENET_TDSR2;
-> +
-> +    s->tx_ring[0].int_txf = ENET_INT_TXF;
-> +    s->tx_ring[1].int_txf = ENET_INT_TXF1;
-> +    s->tx_ring[2].int_txf = ENET_INT_TXF2;
-> +
-> +    s->tx_ring[0].int_txb = ENET_INT_TXB;
-> +    s->tx_ring[1].int_txb = ENET_INT_TXB1;
-> +    s->tx_ring[2].int_txb = ENET_INT_TXB2;
-> +
-> +    s->tx_ring[0].descriptor = 0;
-> +    s->tx_ring[1].descriptor = 0;
-> +    s->tx_ring[2].descriptor = 0;
->
->      /* We also reset the PHY */
->      phy_reset(s);
-> @@ -814,10 +863,12 @@ static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
->              s->regs[index] = 0;
->          }
->          break;
-> +    case ENET_TDAR1:    /* FALLTHROUGH */
-> +    case ENET_TDAR2:    /* FALLTHROUGH */
->      case ENET_TDAR:
->          if (s->regs[ENET_ECR] & ENET_ECR_ETHEREN) {
->              s->regs[index] = ENET_TDAR_TDAR;
-> -            imx_eth_do_tx(s);
-> +            imx_eth_do_tx(s, index);
->          }
->          s->regs[index] = 0;
->          break;
-> @@ -829,8 +880,12 @@ static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
->          if ((s->regs[index] & ENET_ECR_ETHEREN) == 0) {
->              s->regs[ENET_RDAR] = 0;
->              s->rx_descriptor = s->regs[ENET_RDSR];
-> -            s->regs[ENET_TDAR] = 0;
-> -            s->tx_descriptor = s->regs[ENET_TDSR];
-> +            s->regs[ENET_TDAR]  = 0;
-> +            s->regs[ENET_TDAR1] = 0;
-> +            s->regs[ENET_TDAR2] = 0;
-> +            s->tx_ring[0].descriptor = s->regs[ENET_TDSR];
-> +            s->tx_ring[1].descriptor = s->regs[ENET_TDSR1];
-> +            s->tx_ring[2].descriptor = s->regs[ENET_TDSR2];
->          }
->          break;
->      case ENET_MMFR:
-> @@ -908,7 +963,15 @@ static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
->          } else {
->              s->regs[index] = value & ~7;
->          }
-> -        s->tx_descriptor = s->regs[index];
-> +        s->tx_ring[0].descriptor = s->regs[index];
-> +        break;
-> +    case ENET_TDSR1:
-> +        s->regs[index] = value & ~7;
-> +        s->tx_ring[1].descriptor = s->regs[index];
-> +        break;
-> +    case ENET_TDSR2:
-> +        s->regs[index] = value & ~7;
-> +        s->tx_ring[2].descriptor = s->regs[index];
->          break;
->      case ENET_MRBR:
->          s->regs[index] = value & 0x00003ff0;
-> diff --git a/include/hw/net/imx_fec.h b/include/hw/net/imx_fec.h
-> index 20a6aa98b4..40bd29771f 100644
-> --- a/include/hw/net/imx_fec.h
-> +++ b/include/hw/net/imx_fec.h
-> @@ -52,6 +52,8 @@
->  #define ENET_TFWR              81
->  #define ENET_FRBR              83
->  #define ENET_FRSR              84
-> +#define ENET_TDSR1             89
-> +#define ENET_TDSR2             92
->  #define ENET_RDSR              96
->  #define ENET_TDSR              97
->  #define ENET_MRBR              98
-> @@ -66,6 +68,8 @@
->  #define ENET_FTRL              108
->  #define ENET_TACC              112
->  #define ENET_RACC              113
-> +#define ENET_TDAR1             121
-> +#define ENET_TDAR2             123
->  #define ENET_MIIGSK_CFGR       192
->  #define ENET_MIIGSK_ENR        194
->  #define ENET_ATCR              256
-> @@ -106,13 +110,18 @@
->  #define ENET_INT_WAKEUP        (1 << 17)
->  #define ENET_INT_TS_AVAIL      (1 << 16)
->  #define ENET_INT_TS_TIMER      (1 << 15)
-> +#define ENET_INT_TXF2          (1 <<  7)
-> +#define ENET_INT_TXB2          (1 <<  6)
-> +#define ENET_INT_TXF1          (1 <<  3)
-> +#define ENET_INT_TXB1          (1 <<  2)
->
->  #define ENET_INT_MAC           (ENET_INT_HB | ENET_INT_BABR | ENET_INT_BABT | \
->                                  ENET_INT_GRA | ENET_INT_TXF | ENET_INT_TXB | \
->                                  ENET_INT_RXF | ENET_INT_RXB | ENET_INT_MII | \
->                                  ENET_INT_EBERR | ENET_INT_LC | ENET_INT_RL | \
->                                  ENET_INT_UN | ENET_INT_PLR | ENET_INT_WAKEUP | \
-> -                                ENET_INT_TS_AVAIL)
-> +                                ENET_INT_TS_AVAIL | ENET_INT_TXF1 | ENET_INT_TXB1 |\
-> +                                ENET_INT_TXF2 | ENET_INT_TXB2)
->
->  /* RDAR */
->  #define ENET_RDAR_RDAR         (1 << 24)
-> @@ -233,6 +242,15 @@ typedef struct {
->
->  #define ENET_BD_BDU            (1 << 31)
->
-> +#define ENET_TX_RING_NUM       3
-> +
-> +typedef struct IMXFECTxRing {
-> +    uint32_t descriptor;
-> +    uint32_t tdsr;
-> +    uint32_t int_txf;
-> +    uint32_t int_txb;
-
-Why aren't the int_txf and int_txb fields in the migration state?
-What are they for? It looks from the code like they're just constants
-indicating the tx interrupt bits to use for this tx ring, in which
-case they'd be better implemented using a utility function which
-returns the tx bit when given a ring number, I think.
-
-> +} IMXFECTxRing;
-> +
->  typedef struct IMXFECState {
->      /*< private >*/
->      SysBusDevice parent_obj;
-> @@ -245,7 +263,8 @@ typedef struct IMXFECState {
->
->      uint32_t regs[ENET_MAX];
->      uint32_t rx_descriptor;
-> -    uint32_t tx_descriptor;
-> +
-> +    IMXFECTxRing tx_ring[ENET_TX_RING_NUM];
->
->      uint32_t phy_status;
->      uint32_t phy_control;
-> --
-> 2.13.5
-
-
-thanks
 -- PMM

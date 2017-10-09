@@ -1,98 +1,98 @@
-Received: by 10.223.197.9 with SMTP id q9csp2696340wrf;
-        Mon, 9 Oct 2017 10:48:05 -0700 (PDT)
-X-Received: by 10.200.37.230 with SMTP id f35mr16879611qtf.335.1507571284972;
-        Mon, 09 Oct 2017 10:48:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507571284; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp2696933wrf;
+        Mon, 9 Oct 2017 10:48:49 -0700 (PDT)
+X-Received: by 10.55.221.68 with SMTP id n65mr10478148qki.27.1507571329233;
+        Mon, 09 Oct 2017 10:48:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507571329; cv=none;
         d=google.com; s=arc-20160816;
-        b=L2uQQgz89YDb/6C94h+ziJSFS5a5KYWdLOVakYOHYOkka6vgSrLM36p7U5XEUinW4G
-         4XSQr5G11E1VBd2YDzQ1c92DnmV2K3ecUBqz/mfdktynkHmzRasnWZdm+I3TBQFXIGW8
-         G1LtoGmvmfo/Nz1ccrSmSLzwMaLz9e+R193BZDUXhPiwBSEa4LV0OvLQsxJjTAP9HQ7J
-         yBn5OZ3k8eA5bh/Ah1EHLetRRvSiw2NvXNgHuec7/0RJbU8C9OMn8q9iOGK4fpaAOl8I
-         urA108CJNRDmFXeXi1mzPPqE0CV8Ks0iSFUigyVBqkJuMYmJl08NI61obh7XYsdxDAgX
-         8tZw==
+        b=hfWwyvLAGyHpCGapDae3t++oAveptppiQL8tGG1rRu1Vy4ZDY/cwhsN8BktwtCwUIV
+         xvOlgyxfx3A3m/JuFsx9iSlNCct3QDYE8O9oVrNWcFujSr23eI0swELEHK+Idwr+oLmW
+         pXo6FYTqUVTH1Op5f2wjwlFxx5xJ92pBhCqo+DVuENfRPsJbctL/DxVGakYfJ6Yv0AM+
+         2jJz/e9We9VimELDx3HK04iWpzD9JL+bS+XxwkvuZoc5I88poQHC5ITLZj8IVQiffcGw
+         j2U/rl+2Ch69p5wimLkaKCP+67bCGJMf0ZVUDNEA50kR4863z3sGBhsg1Q0CZ5s7U1Sp
+         IT+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=XFbJpMRt8Jt+UpuZswtltTXHhY44TKYvwxtL6fvc//w=;
-        b=Ssg8XfQS5ELqP66t+mRlRu9z4mkBFRi+VHLIwxsBXHEosTLXj1hwH210PLR61Tfeoi
-         slkkZQ1wxZm9jq4FuNT75i42FsgxDF4V20CGEvwIE8cyY5KYgTeY5Zp2XuMqs8NJ9Jc2
-         fv7HC9ZUbQAMDItu9BIOTgGTvI3nNPJKICl1V37zJi5NdSNzsQHMLZUJ3vYZBOqjvAma
-         5jl4Uc7uq4PafX/q+MT0Z1S+1Mm4YvHlN0nZd59dnHhk7UtSuiAdP8R31hnFJXtC8RC7
-         a2TaGtweis5KbtzTOjJVAnAm+QXy86IjdBj+cguI0aIOGUQ4cm9GEe6uBE5IePpkJi43
-         Z/aA==
+        bh=oQd+kr2OWeuBRJ1mOuEEPhJtTDizubnUQ7FUV8ijIXw=;
+        b=yoOIQ6gfoMRi3qzuKzYtHg3nVlqmj1JS5oFtmpXKT2hJifAIB0D+Vzlt9cuR2ZGwCR
+         5kAATdwEcXV7Of3tiX6BjmG8V4AgpOsEu0fL4OfWNBjsqQicm9fm2IEuFuAI8S6vxZAA
+         nZcdje5bMaLb3ws1YL4fvJZbAs8f/ZIEvGfYVY1EMmqyxatleu3GptQ6ELaCCoOKM7yR
+         8iThukybvGh8FAui7qPkqOzMVHBE1+jHmNG+XGRDUuIjNhnfpy3V9Fm1mTir9RALmAuE
+         jQ+mLjY0B2UeuJ5AU1BboUHTqN1kMLatxAM/Gp6UGftvFA4qfuhr8jbW0okTXMlI1LKg
+         r5DQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XrSI5BJV;
+       dkim=fail header.i=@linaro.org header.s=google header.b=MQa44Ucc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x2si1257673qkc.265.2017.10.09.10.48.04
+        by mx.google.com with ESMTPS id b70si1456019qkg.531.2017.10.09.10.48.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 09 Oct 2017 10:48:04 -0700 (PDT)
+        Mon, 09 Oct 2017 10:48:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XrSI5BJV;
+       dkim=fail header.i=@linaro.org header.s=google header.b=MQa44Ucc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59112 helo=lists.gnu.org)
+Received: from localhost ([::1]:59115 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e1c9s-00073f-Gy
-	for alex.bennee@linaro.org; Mon, 09 Oct 2017 13:48:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57207)
+	id 1e1cAa-0007Pv-PH
+	for alex.bennee@linaro.org; Mon, 09 Oct 2017 13:48:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57305)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e1c9k-00073V-Cj
-	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 13:47:57 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1e1cAO-0007OZ-MM
+	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 13:48:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e1c9j-000601-Kn
-	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 13:47:56 -0400
-Received: from mail-wm0-x230.google.com ([2a00:1450:400c:c09::230]:54675)
+	(envelope-from <peter.maydell@linaro.org>) id 1e1cAN-0006Pf-Th
+	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 13:48:36 -0400
+Received: from mail-wm0-x22b.google.com ([2a00:1450:400c:c09::22b]:56926)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1e1c9j-0005zZ-El
-	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 13:47:55 -0400
-Received: by mail-wm0-x230.google.com with SMTP id i124so25594449wmf.3
-	for <qemu-arm@nongnu.org>; Mon, 09 Oct 2017 10:47:55 -0700 (PDT)
+	id 1e1cAN-0006PF-NE
+	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 13:48:35 -0400
+Received: by mail-wm0-x22b.google.com with SMTP id l68so25586161wmd.5
+	for <qemu-arm@nongnu.org>; Mon, 09 Oct 2017 10:48:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=XFbJpMRt8Jt+UpuZswtltTXHhY44TKYvwxtL6fvc//w=;
-	b=XrSI5BJVUKYFlbmbZZWbo8LZfjwJBVuCYa4AnF6RZw7UHKLKLwTRO2i/0IiXsSemF5
-	noMTixFN9X1h1qp6O+jFgAziSczPeiwgL+PqAyvhx4QM5VBdf11Z5EuqluipDbooxOKF
-	edgeunJ13fauE7jj9+lXw9/ioEMqJVL8fbMZ0=
+	:cc; bh=oQd+kr2OWeuBRJ1mOuEEPhJtTDizubnUQ7FUV8ijIXw=;
+	b=MQa44Uccv48b1eRQjHebar28rbgqGGwWFrgRlHBvI3+h1b3VWUVZRlY0q1pvZ74gJ+
+	80BmISshTo5f8wJ8VaHxOJElbXuVErUD4sncb+LLnZ9yacDB1Rawi2BGU8D3kOaqhZq4
+	tkybnAE/oa7SZZrJ4GVYHzUwVO63bNbpVPmNQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=XFbJpMRt8Jt+UpuZswtltTXHhY44TKYvwxtL6fvc//w=;
-	b=DEd6sQSMfj8aH/zQlLcTL20d+f9MoxiTInm06m/wRvAYyf8sKMq2NwUQ7GmAWVBDpD
-	78aTx5VORZB2D83Un3LgAXtaY1rCcsWYHSJbUHIeusztm5vOg0VE6S+HhldwbWbdOC9Q
-	Jg2MJ4HprhXb6aO3FdlJ05veheh7wz1QQOgPP0Bd3fGL6lXCUWcxZ2NXxAvbcgZhmuae
-	skuvXtx7QvtOm/Ntj1QuPBb8NikNyJVMf1Qs9pbLhCQ15Hd3nmAEqAW3+r/04X4Q+mnM
-	/uGl6HmZHB34YC8hj3NtxmsSEN8ZsmfX5xvv71/Dy314aDZFq9Z3DuQQgKqgz035R6hV
-	+5ZQ==
-X-Gm-Message-State: AMCzsaXi26Wh6f1FSt3zvZOUdB+coA0dROE6+dxBk2ATMRujjnLVA738
-	TbP2Ba3+2kQ78NvBn8yB4/C81ku8Rmm795W7zbaJEA==
-X-Google-Smtp-Source: AOwi7QBEfCDRB75arylCEa4FftFpEim5Rpt7SqzsPkHGShMgW10z907BZiAJD5+UvfMw58SHGR9pHEEZuFkA1PGcb38=
-X-Received: by 10.28.22.66 with SMTP id 63mr8630896wmw.11.1507571274323; Mon,
-	09 Oct 2017 10:47:54 -0700 (PDT)
+	bh=oQd+kr2OWeuBRJ1mOuEEPhJtTDizubnUQ7FUV8ijIXw=;
+	b=L1iOCKBgNnwSo8RFZogaQNVEdiv51nSh9zVKX+bevbZIipIJbNo3immo3aAL+GsaLs
+	SgWE8h+5ZKbYfEPwuNWqJ3CJQqZlCRLbZGd8jhm0TAY4t6OEdIGNFCIIJhvS3/JSxxYb
+	e0/Qq3I40cm/56Yx3duoiJcwoo5pxO4XASGMpichvy3L7ZoC7eH7cfBW+4hPkeoTTY2Y
+	s1ucigUdmNQWLpuyVqw+0eYBHzO5pylSSACHwMyaMDPf2JLunwQsOzCscdN0bD1J60ix
+	SrvZ2UAPfPVdsA09Hir2QntPG8BDXFzbGFF1EDIGpAMqcPu3FHqynlVvFsRNa00/ZneZ
+	B4Dg==
+X-Gm-Message-State: AMCzsaX9JXMcXgJxsKy+FahBNGHDG/ulMCGvu53QRX+OZGtnkLqJ8oAh
+	nn+3zXjEqPh8mIbLR1fb8h0djavGtj3CRa0dfuK3mg==
+X-Google-Smtp-Source: AOwi7QDXmZoWzRn/4Fqt1V9XrV8+ibnemVfyco40DoifdRglg7ZKGTFyKSeMtWSw6X4Qo1miEognJolCNkgtvoQuqWw=
+X-Received: by 10.28.236.203 with SMTP id h72mr9795061wmi.147.1507571314643;
+	Mon, 09 Oct 2017 10:48:34 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.223.128.207 with HTTP; Mon, 9 Oct 2017 10:47:33 -0700 (PDT)
-In-Reply-To: <1504286483-23327-16-git-send-email-eric.auger@redhat.com>
+Received: by 10.223.128.207 with HTTP; Mon, 9 Oct 2017 10:48:14 -0700 (PDT)
+In-Reply-To: <1504286483-23327-20-git-send-email-eric.auger@redhat.com>
 References: <1504286483-23327-1-git-send-email-eric.auger@redhat.com>
-	<1504286483-23327-16-git-send-email-eric.auger@redhat.com>
+	<1504286483-23327-20-git-send-email-eric.auger@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 9 Oct 2017 18:47:33 +0100
-Message-ID: <CAFEAcA-BfvNFMFpiQd-XwGPYGasV3D-w3oDcqfHRoAXOAT17Fg@mail.gmail.com>
+Date: Mon, 9 Oct 2017 18:48:14 +0100
+Message-ID: <CAFEAcA-J4FTDWzSTYbo=UcX7h5DCddd+K3XRW_umQ8XzKqrQgw@mail.gmail.com>
 To: Eric Auger <eric.auger@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::230
-Subject: Re: [Qemu-arm] [PATCH v7 15/20] hw/arm/sysbus-fdt: Pass the
- VirtMachineState to the node creation functions
+X-Received-From: 2a00:1450:400c:c09::22b
+Subject: Re: [Qemu-arm] [PATCH v7 19/20] hw/arm/smmuv3: [not for upstream]
+ add SMMU_CMD_TLBI_NH_VA_AM handling
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -118,47 +118,25 @@ Cc: Radha Mohan <mohun106@gmail.com>, Andrew Jones <drjones@redhat.com>,
 	Prem Mallappa <prem.mallappa@gmail.com>, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1z03dlMITrtc
+X-TUID: iXBkufmtdG2l
 
 On 1 September 2017 at 18:21, Eric Auger <eric.auger@redhat.com> wrote:
-> The VirtMachineState contains some dt phandles that will be used
-> in some node creation functions. For instance we plan to use the
-> PCI host controller phandle in the smmu node creation function. So
-> let's pass the VirtMachineState handle down to the node creation
-> functions by enhancing the involved datatypes.
+> SMMUV3 does not support any IOVA range TLBI command:
+> SMMU_CMD_TLBI_NH_VA invalidates TLB entries by page.
+> That's an issue when running DPDK on guest. DPDK uses
+> hugepages but each time a hugepage is mapped on guest side,
+> a storm of SMMU_CMD_TLBI_NH_VA commands get sent by the
+> guest smmuv3 driver and trapped by QEMU for VFIO replay.
+>
+> Let's get prepared to handle implementation defined commands,
+> SMMU_CMD_TLBI_NH_VA_VM, which invalidate a range of IOVAs.
+>
+> Upon this command, we notify the whole range in one host.
 >
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> ---
->  hw/arm/sysbus-fdt.c         | 3 +++
->  hw/arm/virt.c               | 1 +
->  include/hw/arm/sysbus-fdt.h | 2 ++
->  3 files changed, 6 insertions(+)
->
-> diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
-> index d68e3dc..d92a983 100644
-> --- a/hw/arm/sysbus-fdt.c
-> +++ b/hw/arm/sysbus-fdt.c
-> @@ -36,6 +36,7 @@
->  #include "hw/vfio/vfio-platform.h"
->  #include "hw/vfio/vfio-calxeda-xgmac.h"
->  #include "hw/vfio/vfio-amd-xgbe.h"
-> +#include "hw/arm/virt.h"
->  #include "hw/arm/fdt.h"
->
->  /*
-> @@ -47,6 +48,7 @@ typedef struct PlatformBusFDTData {
->      int irq_start; /* index of the first IRQ usable by platform bus devices */
->      const char *pbus_node_name; /* name of the platform bus node */
->      PlatformBusDevice *pbus;
-> +    VirtMachineState *vms;
->  } PlatformBusFDTData;
 
-sysbus-fdt isn't virt specific, so this doesn't belong here.
-
-More generally, why is sysbus-fdt involved in this at all?
-I expected that instantiating and wiring up the SMMU would
-be the job of hw/arm/virt.c, like any other device we
-might have on the board.
+Definite NACK for this, I'm afraid. We should emulate the
+hardware, not new things of our own devising.
 
 thanks
 -- PMM

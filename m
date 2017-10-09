@@ -1,94 +1,72 @@
-Received: by 10.25.0.6 with SMTP id 6csp193069lfa;
-        Wed, 31 May 2017 00:15:37 -0700 (PDT)
-X-Received: by 10.55.183.67 with SMTP id h64mr28148379qkf.218.1496214937144;
-        Wed, 31 May 2017 00:15:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1496214937; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp2470170wrf;
+        Mon, 9 Oct 2017 06:49:02 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QD95ZKd/+IMFo2oFR5yFb5bFaYMc42gLMOMOZSI61QvLj1FScpI/cJCt1A7PxBRGcihA5ot
+X-Received: by 10.200.56.193 with SMTP id g1mr11982372qtc.67.1507556942334;
+        Mon, 09 Oct 2017 06:49:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507556942; cv=none;
         d=google.com; s=arc-20160816;
-        b=d2veaAZYnMzwf5sbhmB4nFhIx3AU76C4GH1nio8S1gCYSqBCm2CwDmFs4KQNMRwjbE
-         cVk75lYlLtybLJWtWX5525lztFHaTyY+5a22GE7WytsiM5u1mt6IW8Wp2WoIKJcek8JL
-         NksTmsQPubTz2wv6HTB2+Jol0TfGOaIIJhDsPg/DRBGIFPhZWlyQXFTaAZOOxggFF6qf
-         7wyfobodUMX+P/P/Lnx1zEfD832ftc91MavZ5j76X6qn3auP7gM501S+eDycSNcMN64Z
-         eAXdeZWv62uajPfJcJQtOkWFI7P8S6mUBp91jDMbe5o3lRwbwT9HwNt4bkMUktHBUXJO
-         9AJQ==
+        b=kbtDCRDDVTBzyVOv7nYqc5OdTCNtbEgldRsrNi41N0Xrc7RQ4gbRMcL0hKh7MDum0j
+         zyn1ayY0IfUVmHr/G4ihfyuxxVf4RZN+4wTdshJzFbJvFTlp/uZ565Sas3D08b+YgXZp
+         K+EPvZCDMcb1C15qkMH0msqBaV+24Wu3vNoBno4oUzRYW9h3+9avTADsTSlDzN11mGoE
+         7oRvi2q89SlbueSgfSXxE4ReBb23jwp37S9MD8dIm2Kz8VfdRwbw66zhFAHoUiGIgH/2
+         NboPOrycU7fppfxlGwdLsxtbI8IJH/1HNgTN85IFPaMj2QoWSYLBtEZ3lb9dDAeQAXox
+         eVWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:dkim-filter:dmarc-filter
-         :arc-authentication-results;
-        bh=uH31Nyc/A0pK4Tq9LHlcfq/TAseHHW2Zul3w00yBn18=;
-        b=quL5JIsHRfB3v0pFuS3wotIYUO79oC7pLKhZLz8fsSweVOFJAPlrsAsK+vQcWsHkUN
-         oJZQnl8XT2nf3uhqDWK7tGRyi57exLvF5u4qOuEl4V58R3bN55Cpa1CrO+SlaYFatGPg
-         Aieyakj8/dXGNfYREfEZYAyXlwZ0ILmIJrKmtge6zro3rWkB8dBeZmVcO2FsZxs9EKp9
-         it6n9TblOq9tumExgIEqoqxu5R4kkJO8fL0bFWll22+Tmg7WG9Lrb7VETIkilGvT9Jwu
-         BSOnTWjRbS8Fp+T/OJWztUBVxWerw1jZQPQDPDMjy8ru5sMWyN5CTsrwcifWccwxlwyg
-         qVTQ==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=LGIVxSmqV0Y2+kGBIH9c1nY2ZcPEumJZr/CqF3MXwLA=;
+        b=xIRX2WFTlo22UNIzO1gfJYXt2vr4bCBlJs4AK5jth6UgQA0wK336bFVhiAI0LtEN9z
+         IqIfvkJGHsYdbJHHlITe5o5voARcC0F2vLMAMyrherxYrDC9fxitx3wNPT2MnrDHCLeU
+         77Gwue4mXDrzoplFMHWs3whhNL53jni4BF0P5jjimdv9CWqrwk+WqRW0htvvTWXv9NtE
+         ZVngVoYpGdzV0npAKMzhFCc82QZFqk2s5XxeE0EIfood7VoHSkE5UIGhNoXQoMeFChDy
+         3IA55ibv/0DraVECx9XZq4XbJ11HipQzr0WoOCdwJmdwrg0Xvzqt1YyJHHRj+eFYpyqp
+         CtzA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 6si15482921qtz.241.2017.05.31.00.15.36
+        by mx.google.com with ESMTPS id x141si1662251qkb.235.2017.10.09.06.49.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 31 May 2017 00:15:37 -0700 (PDT)
+        Mon, 09 Oct 2017 06:49:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57684 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57992 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dFxqw-0001jG-Ed
-	for alex.bennee@linaro.org; Wed, 31 May 2017 03:15:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32786)
+	id 1e1YQX-0001HP-PF
+	for alex.bennee@linaro.org; Mon, 09 Oct 2017 09:49:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43371)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dFxqk-0001e0-Aj
-	for qemu-arm@nongnu.org; Wed, 31 May 2017 03:15:28 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1e1YQL-0001GI-13
+	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 09:48:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1dFxqg-0006SM-7m
-	for qemu-arm@nongnu.org; Wed, 31 May 2017 03:15:22 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52794)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1dFxqg-0006S2-28; Wed, 31 May 2017 03:15:18 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C8D7334A6;
-	Wed, 31 May 2017 07:15:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com C8D7334A6
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eric.auger@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com C8D7334A6
-Received: from localhost.localdomain (ovpn-116-222.ams2.redhat.com
-	[10.36.116.222])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 14A967D4EF;
-	Wed, 31 May 2017 07:15:13 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1494697399-352-1-git-send-email-eric.auger@redhat.com>
-	<1494697399-352-5-git-send-email-eric.auger@redhat.com>
-	<CAFEAcA-GCKfxEpy9p=k7NzoY2zez-KVXNMuAx-ruW5t27ZMgQQ@mail.gmail.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <2c81529b-6916-8dd6-eee9-45e5768d82ca@redhat.com>
-Date: Wed, 31 May 2017 09:15:12 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-GCKfxEpy9p=k7NzoY2zez-KVXNMuAx-ruW5t27ZMgQQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Wed, 31 May 2017 07:15:17 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [RFC v4 4/5] hw/arm/virt: Add 2.10 machine type
+	(envelope-from <pm215@archaic.org.uk>) id 1e1YQJ-00044G-WF
+	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 09:48:49 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37778)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1e1YQJ-0003zX-Oe; Mon, 09 Oct 2017 09:48:47 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1e1YQF-0004Zo-KS; Mon, 09 Oct 2017 14:48:43 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Mon,  9 Oct 2017 14:48:38 +0100
+Message-Id: <1507556919-24992-9-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1507556919-24992-1-git-send-email-peter.maydell@linaro.org>
+References: <1507556919-24992-1-git-send-email-peter.maydell@linaro.org>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH 8/9] target/arm: Support some Thumb insns being
+ always unconditional
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,45 +78,91 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Radha Mohan <mohun106@gmail.com>, Andrew Jones <drjones@redhat.com>,
-	Trey Cain <tcain@qti.qualcomm.com>,
-	Radha.Chintakuntla@cavium.com, Sunil.Goutham@cavium.com,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Christoffer Dall <christoffer.dall@linaro.org>,
-	prem.mallappa@gmail.com, eric.auger.pro@gmail.com
+Cc: patches@linaro.org, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iyaADpA/QnJm
+X-TUID: fOlHFqsDgS+X
 
-Hi Peter,
+A few Thumb instructions are always unconditional even inside an
+IT block (as opposed to being UNPREDICTABLE if used inside an
+IT block): BKPT, the v8M SG instruction, and the A profile
+HLT (debug halt) instruction.
 
-On 30/05/2017 18:04, Peter Maydell wrote:
-> On 13 May 2017 at 18:43, Eric Auger <eric.auger@redhat.com> wrote:
->> The new machine type allows smmuv3 instantiation. A new option
->> is introduced to turn the feature on/off (off by default).
-> 
-> Should we go for default-on, or would that break guests?
-> For other things added to the virt board I think the
-> approach we've taken has been:
->  * if this is just an extra device, simply provide it in the
->    new virt-n.nn machine by default
->  * if this is something that changes how the machine behaves
->    even for code that doesn't care about that feature (eg
->    EL2, EL3, since they change what mode you start in on boot)
->    then default it to off
->  * if the feature only works with TCG and not KVM then
->    maybe default it to off
+This means we need to suppress the jump-over-instruction-on-condfail
+code generation (though the IT state still advances as usual and
+subsequent insns in the IT block may be conditional).
 
-OK thanks for the guidelines. I put it off by default since it can
-largely degrade the performance in some use cases. Also instantiating
-the smmu can also induce some option changes at other levels: for
-instance virtio-pci devices may be used along with iommu_platform option
-for the guest to use dma ops.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/translate.c | 48 +++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 47 insertions(+), 1 deletion(-)
 
-Thanks
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 5838e67..9d16760 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -12115,6 +12115,52 @@ static void arm_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+        in init_disas_context by adjusting max_insns.  */
+ }
+ 
++static bool thumb_insn_is_unconditional(DisasContext *s, uint32_t insn)
++{
++    /* Return true if this Thumb insn is always unconditional,
++     * even inside an IT block. This is true of only a very few
++     * instructions: BKPT, HLT, and SG.
++     *
++     * A larger class of instructions are UNPREDICTABLE if used
++     * inside an IT block; we do not need to detect those here, because
++     * what we do by default (perform the cc check and update the IT
++     * bits state machine) is a permitted CONSTRAINED UNPREDICTABLE
++     * choice for those situations.
++     *
++     * insn is either a 16-bit or a 32-bit instruction; the two are
++     * distinguishable because for the 16-bit case the top 16 bits
++     * are zeroes, and that isn't a valid 32-bit encoding.
++     */
++    if ((insn & 0xffffff00) == 0xbe00) {
++        /* BKPT */
++        return true;
++    }
++
++    if ((insn & 0xffffffc0) == 0xba80 && arm_dc_feature(s, ARM_FEATURE_V8) &&
++        !arm_dc_feature(s, ARM_FEATURE_M)) {
++        /* HLT: v8A only. This is unconditional even when it is going to
++         * UNDEF; see the v8A ARM ARM DDI0487B.a H3.3.
++         * For v7 cores this was a plain old undefined encoding and so
++         * honours its cc check. (We might be using the encoding as
++         * a semihosting trap, but we don't change the cc check behaviour
++         * on that account, because a debugger connected to a real v7A
++         * core and emulating semihosting traps by catching the UNDEF
++         * exception would also only see cases where the cc check passed.
++         * No guest code should be trying to do a HLT semihosting trap
++         * in an IT block anyway.
++         */
++        return true;
++    }
++
++    if (insn == 0xe97fe97f && arm_dc_feature(s, ARM_FEATURE_V8) &&
++        arm_dc_feature(s, ARM_FEATURE_M)) {
++        /* SG: v8M only */
++        return true;
++    }
++
++    return false;
++}
++
+ static void thumb_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+ {
+     DisasContext *dc = container_of(dcbase, DisasContext, base);
+@@ -12136,7 +12182,7 @@ static void thumb_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+         dc->pc += 2;
+     }
+ 
+-    if (dc->condexec_mask) {
++    if (dc->condexec_mask && !thumb_insn_is_unconditional(dc, insn)) {
+         uint32_t cond = dc->condexec_cond;
+ 
+         if (cond != 0x0e) {     /* Skip conditional when condition is AL. */
+-- 
+2.7.4
 
-Eric
-> 
-> thanks
-> -- PMM
-> 

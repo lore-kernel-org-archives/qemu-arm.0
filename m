@@ -1,71 +1,72 @@
-Received: by 10.223.197.9 with SMTP id q9csp2470222wrf;
-        Mon, 9 Oct 2017 06:49:06 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QAFe5cQlTkLqcofB1W+fF1O5VVVk0nmTlbBZObimSemC57i83idmkM6hRHnTtplpxrkCX83
-X-Received: by 10.237.59.198 with SMTP id s6mr14964614qte.281.1507556946774;
-        Mon, 09 Oct 2017 06:49:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507556946; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp2470272wrf;
+        Mon, 9 Oct 2017 06:49:09 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QDZLe/RG6SSfCXRiHHi4mnRpttD4i8cHfYeoTNSR0qyukkr05wfkUXlKYdhSkGGEBlRtxT2
+X-Received: by 10.237.58.7 with SMTP id n7mr14885348qte.205.1507556949279;
+        Mon, 09 Oct 2017 06:49:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507556949; cv=none;
         d=google.com; s=arc-20160816;
-        b=zG7URhKNPfryyUI2DLTTZ2JUqDdm66/yU9KBfc7MatJYgV+GRUrVsUneCcjVqsMKjP
-         Fjg1BKAYlcQg7Fv7doFqF1sNoN44BEfWGPnttrdLl6/jdH/bmT/6iU1aD0Vhrd+QSxoU
-         +GkkJwKD52ujglWYkD/jnrx0nPlC9CfHdEwBgt5vpaY0MkvWXPK3YcnYclwTr34buYER
-         ZNR8dbpO2z419WUWOwyAdv9kxMOihx/5w2AwY7SC9i3HnZCELYvxASmUdyJ5az30wLjv
-         AUCQ7145skUflZgMKbZqEIV23viHBwXjAlAvdLH3IKUJcAm7zqo2rZtpJ1GJ3iZs5FW3
-         lt7g==
+        b=SXlOgD0uRF33tkcuBFJT+dm+4DIUGGTvddUyJJSTgk/8hywWJZRFQ6k1nd3pADB4d2
+         B9HUcHQ7xlzz88/oJ1e61qXjLdmeJOYDbRRB7I4Bn9Rrhagg+1jIm5xH7ch/viDNuOcd
+         ZlyKkRIqBigle+lx3bg6IGPI88Qcqt6p0wYrsmnam76DzTuN6Z/veW7/Bs8l6yLS/FPe
+         Vk59AKw78CGrGQR69miUd6t6q9ThxV5HWrZhRRZqRpaokbU35tt9sqlnHKmhsVVTvmdz
+         BtvMUf368UanUG/xKsvwh3A2kpg1o2fPWilJTjpRZ0N3r1nQOQWDTxNxva5czuCBIzO2
+         CheA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=HfkvtX/5ex7btrwBCHOLOHxshPqOEyQgHN6qs1CgxiQ=;
-        b=TIugqEh4G+ihdyJZrjDHhTayuqwYHe7r7GZLDlI5JyrstrEkYfMPDNuNvrJ12dF/4e
-         KAnkXM4uNvNapjl0vASwk7CYvL5fXEt9Y8uxj/Hz4bjVP7zhAyf68gMEik8Z+GFuEGEp
-         WEuaClHPRhTiQfPl/BidjaLLy/K1kewNdTyhnoPnMkXkZryQJuRdJzpcGFMF8dUzKyVL
-         XmQj2+CKGaCVjHWheQlNEHbg8DvcizoIDuieA3hNcXpQY7l0sFbWKNU2qezKZLyvOCHs
-         WWK1DfHjDvDrcEnpb3AAgKtRK/J1uuq38EaWHLKIXJPg2YKkfgazP86OAKjtgFxyCgG8
-         f8PA==
+        bh=RTIgApJRaK/i4iWNBjTprubZ65FNC6P8cp5+ka6vUK0=;
+        b=zu5UHErICeiNy0PbNBFnXheWo/kyHghBja4+y60KeguYl+4pBFCJ4OAx7peZ38WmRC
+         klKicWbDrarOQ8xwzsX32KkeP+fIJMk9kX6boZl5Vnh+G5B8fmmMbKtYRQ8y8qAQt19x
+         UfOl5eEXkUpglNhtixX5ND1g6sy1Pwu+78nmawza536Sz0KORCiDlxVIHJWSaV5ins8H
+         yXQyaAsnfVEdVGE444Az2ooAlmASImFiCVLfBlSDpSOgmUFHvsqZU0U3uAk/WpgFwma4
+         2SdOvh3K5lmcQEMnsVptdT6DLVGN/y3e3FzmFD8SdF82PEHP2p5laX8NxUn/LvU3zZn8
+         EnHw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q15si1020905qte.2.2017.10.09.06.49.06
+        by mx.google.com with ESMTPS id b16si561497qkh.258.2017.10.09.06.49.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 09 Oct 2017 06:49:06 -0700 (PDT)
+        Mon, 09 Oct 2017 06:49:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57993 helo=lists.gnu.org)
+Received: from localhost ([::1]:57994 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e1YQc-0001Jo-6n
-	for alex.bennee@linaro.org; Mon, 09 Oct 2017 09:49:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43403)
+	id 1e1YQe-0001Mb-N4
+	for alex.bennee@linaro.org; Mon, 09 Oct 2017 09:49:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43445)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1e1YQM-0001HD-Uo
-	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 09:48:52 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1e1YQP-0001Ik-W6
+	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 09:48:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1e1YQM-00045W-2G
-	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 09:48:51 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1e1YQO-000473-2o
+	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 09:48:53 -0400
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37778)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1e1YQL-0003zX-R4; Mon, 09 Oct 2017 09:48:49 -0400
+	id 1e1YQN-0003zX-RF; Mon, 09 Oct 2017 09:48:51 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1e1YQE-0004ZG-UP; Mon, 09 Oct 2017 14:48:42 +0100
+	id 1e1YQG-0004a4-8e; Mon, 09 Oct 2017 14:48:44 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Mon,  9 Oct 2017 14:48:37 +0100
-Message-Id: <1507556919-24992-8-git-send-email-peter.maydell@linaro.org>
+Date: Mon,  9 Oct 2017 14:48:39 +0100
+Message-Id: <1507556919-24992-10-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1507556919-24992-1-git-send-email-peter.maydell@linaro.org>
 References: <1507556919-24992-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 7/9] target-arm: Simplify insn_crosses_page()
+Subject: [Qemu-arm] [PATCH 9/9] target/arm: Implement SG instruction corner
+ cases
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,68 +81,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YX1sKAdW3Blg
+X-TUID: sum8fsGGrwkE
 
-Recent changes have left insn_crosses_page() more complicated
-than it needed to be:
- * it's only called from thumb_tr_translate_insn() so we know
-   for certain that we're looking at a Thumb insn
- * the caller's check for dc->pc >= dc->next_page_start - 3
-   means that dc->pc can't possibly be 4 aligned, so there's
-   no need to check that (the check was partly there to ensure
-   that we didn't treat an ARM insn as Thumb, I think)
- * we now have thumb_insn_is_16bit() which lets us do a precise
-   check of the length of the next insn, rather than opencoding
-   an inaccurate check
+The common situation of the SG instruction is that it is
+executed from S&NSC memory by a CPU in NS state. That case
+is handled by v7m_handle_execute_nsc(). However the instruction
+also has defined behaviour in a couple of other cases:
+ * SG instruction in NS memory (behaves as a NOP)
+ * SG in S memory but CPU already secure (clears IT bits and
+   does nothing else)
+ * SG instruction in v8M without Security Extension (NOP)
 
-Simplify it down to just loading the first half of the insn
-and calling thumb_insn_is_16bit() on it.
+These can be implemented in translate.c.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/translate.c | 27 ++++++---------------------
- 1 file changed, 6 insertions(+), 21 deletions(-)
+ target/arm/translate.c | 23 ++++++++++++++++++++++-
+ 1 file changed, 22 insertions(+), 1 deletion(-)
 
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 8d3203e..5838e67 100644
+index 9d16760..3db6d73 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -11875,29 +11875,14 @@ static bool insn_crosses_page(CPUARMState *env, DisasContext *s)
- {
-     /* Return true if the insn at dc->pc might cross a page boundary.
-      * (False positives are OK, false negatives are not.)
-+     * We know this is a Thumb insn, and our caller ensures we are
-+     * only called if dc->pc is less than 4 bytes from the page
-+     * boundary, so we cross the page if the first 16 bits indicate
-+     * that this is a 32 bit insn.
-      */
--    uint16_t insn;
-+    uint16_t insn = arm_lduw_code(env, s->pc, s->sctlr_b);
- 
--    if ((s->pc & 3) == 0) {
--        /* At a 4-aligned address we can't be crossing a page */
--        return false;
--    }
--
--    /* This must be a Thumb insn */
--    insn = arm_lduw_code(env, s->pc, s->sctlr_b);
--
--    if ((insn >> 11) >= 0x1d) {
--        /* Top five bits 0b11101 / 0b11110 / 0b11111 : this is the
--         * First half of a 32-bit Thumb insn. Thumb-1 cores might
--         * end up actually treating this as two 16-bit insns (see the
--         * code at the start of disas_thumb2_insn()) but we don't bother
--         * to check for that as it is unlikely, and false positives here
--         * are harmless.
--         */
--        return true;
--    }
--    /* Definitely a 16-bit insn, can't be crossing a page. */
--    return false;
-+    return !thumb_insn_is_16bit(s, insn);
- }
- 
- static int arm_tr_init_disas_context(DisasContextBase *dcbase,
+@@ -9781,7 +9781,28 @@ static int disas_thumb2_insn(DisasContext *s, uint32_t insn)
+              * - load/store doubleword, load/store exclusive, ldacq/strel,
+              *   table branch.
+              */
+-            if (insn & 0x01200000) {
++            if (insn == 0xe97fe97f && arm_dc_feature(s, ARM_FEATURE_M) &&
++                arm_dc_feature(s, ARM_FEATURE_V8)) {
++                /* 0b1110_1001_0111_1111_1110_1001_0111_111
++                 *  - SG (v8M only)
++                 * The bulk of the behaviour for this instruction is implemented
++                 * in v7m_handle_execute_nsc(), which deals with the insn when
++                 * it is executed by a CPU in non-secure state from memory
++                 * which is Secure & NonSecure-Callable.
++                 * Here we only need to handle the remaining cases:
++                 *  * in NS memory (including the "security extension not
++                 *    implemented" case) : NOP
++                 *  * in S memory but CPU already secure (clear IT bits)
++                 * We know that the attribute for the memory this insn is
++                 * in must match the current CPU state, because otherwise
++                 * get_phys_addr_pmsav8 would have generated an exception.
++                 */
++                if (s->v8m_secure) {
++                    /* Like the IT insn, we don't need to generate any code */
++                    s->condexec_cond = 0;
++                    s->condexec_mask = 0;
++                }
++            } else if (insn & 0x01200000) {
+                 /* 0b1110_1000_x11x_xxxx_xxxx_xxxx_xxxx_xxxx
+                  *  - load/store dual (post-indexed)
+                  * 0b1111_1001_x10x_xxxx_xxxx_xxxx_xxxx_xxxx
 -- 
 2.7.4
 

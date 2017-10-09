@@ -1,150 +1,809 @@
-Received: by 10.223.197.9 with SMTP id q9csp2593062wrf;
-        Mon, 9 Oct 2017 08:57:51 -0700 (PDT)
-X-Received: by 10.55.43.227 with SMTP id r96mr10466016qkr.216.1507564671818;
-        Mon, 09 Oct 2017 08:57:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507564671; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp2614635wrf;
+        Mon, 9 Oct 2017 09:18:11 -0700 (PDT)
+X-Received: by 10.200.50.113 with SMTP id y46mr14759342qta.315.1507565891646;
+        Mon, 09 Oct 2017 09:18:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507565891; cv=none;
         d=google.com; s=arc-20160816;
-        b=XA0fMbbO+G4feOadds4r0o2Qs/GuUTo1IAaFWt1qvTpQWuMtM4fNZjQPbmjmd5Y67g
-         cbBN0sRHDqi4H7Rb8AxOjU7DOyHQ3wa1tz1M0Af+CGBnR2Zkh8blOtDy/jNdrrh90IRT
-         LIxQkdfWQOI9TPdy5vRIibPapLtVdy2xk3dPrPh57w2Z9G6dri2nJxtS2vsIH3ihfwKP
-         ScNQHWVH9uXKxLdkjQmvHy6GZoSVvOLeysXykafDiSRhd8UC6VHRmhHSqOnRelwcnV71
-         enO1HBK2JfyqVpM7QJ4nCUnkAtzx0xyRopERRiE07dJNIteavvFgqlVDZQLkAOLH+fTW
-         1vMg==
+        b=a04iMrvuAhb1sQ795et6tAXRx0evFkJz4/gSFXmIjifR1Jge3DB4GULpNMj4FoVymO
+         2cmzsK+aOSEMgnQVBndDYNfFZgJFe27/Lu8/3xxOXOGpULA6NC/CQ1oNTzGF8d2JkGMk
+         +0irR/lRlEZX1OJ5Uh6SBYLuNNPsmHQsjYgjyP2OfziXg0MHMENMjRr6+i4bOkCiEU1w
+         vJaiaXAZwl4J6mP6e5f6eQse2IT0j1vzfay2bwJftZ51S6UFZCdCvSOATaUzKZD3tW/9
+         PCE6lu4+8b+VszIB611RbKJevWzW3aGF0G8cFr1bq9CecI7EAeufAWLt9q7Mj/Gno+eA
+         Gelg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=t+cw0MvXDMrUOpTgcfZaqQTE3uP1kHVuuhBZ77P8I8I=;
-        b=v4sMeaIaqqIDtdiQ6UTUTaeLjZkk5ovDAmfSIrXhfucFpK6wI3HxCUL2GTBQ12gdXu
-         3k6S7mwh6E109DWk95OD5uFl/Dal6aaSkdBeGTcg8mrEYDQcVnxD48f58/WFF+tN/50m
-         Py2MyGKLK/IQvqsLpuvejmzhVw4V5A0wV7yf8H6ZVMLrr4mOE4fs9LZCRy9+seK0toCl
-         t9w1vjKikJLrnejaAdvWFzE6KDb7efCQLH6bTfLubUcBl9BS6vLJIQxSrMrZGdS4UQUm
-         BMXraMdwIYovnyNy/1XfeUwagmtPM2dj5gpPpC19SnZR9+7OJ9yau7JD4qAjiv/1JiZT
-         QIIw==
+        bh=k2s0wlz+jFhf3VTT9uTg0+ToVzK8nEQ//1a4dRLvBLA=;
+        b=qkQtLcAKR5z5DfnjwZpNiaxir+p66E60zdngU2jtGKm3y9MvW1GxaBF3x4qgJp5x/8
+         J1Q3nPmvDSxhGErcJDB00uydOU2nNg+SZp/VPNhpElT87ooF5UE37iZP9GQAk0uzKtny
+         U/MyRteSm/HbDCWIYo+vF0N1YW5Web+Evsc48v2yCML94Gp/hEYc8uhsUIpGwTMiT1oC
+         CaiaiesHtwU0boJxu0o53eTVa4irSorYWSt72cqRWWW8QixGQcU0QULqkWEAXutlIVw9
+         zarFg5jCrfhgrTXdzBFINIST4dXXkOM19b2TpBWCgunrq2NY+hP/yByPi+PM3zfM+P5M
+         IJ1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=V/mlTy03;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=YUSnrhgJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f83si2817881qkb.318.2017.10.09.08.57.51
+        by mx.google.com with ESMTPS id v63si479661qki.337.2017.10.09.09.18.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 09 Oct 2017 08:57:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 09 Oct 2017 09:18:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=V/mlTy03;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:58511 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=YUSnrhgJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58749 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e1aRD-0001iv-9X
-	for alex.bennee@linaro.org; Mon, 09 Oct 2017 11:57:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51339)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1e1akt-0007a9-3M
+	for alex.bennee@linaro.org; Mon, 09 Oct 2017 12:18:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58952)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1e1aPL-0000ZL-Rg
-	for qemu-devel@nongnu.org; Mon, 09 Oct 2017 11:55:56 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1e1ake-0007XE-Jg
+	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 12:17:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1e1aPL-0007Ky-4T
-	for qemu-devel@nongnu.org; Mon, 09 Oct 2017 11:55:55 -0400
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:35130)
+	(envelope-from <peter.maydell@linaro.org>) id 1e1akb-0005xi-K7
+	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 12:17:56 -0400
+Received: from mail-wm0-x22d.google.com ([2a00:1450:400c:c09::22d]:54355)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
-	id 1e1aPJ-0007HW-1q; Mon, 09 Oct 2017 11:55:53 -0400
-Received: by mail-qk0-x241.google.com with SMTP id w63so15056304qkd.2;
-	Mon, 09 Oct 2017 08:55:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1e1akb-0005wP-7m
+	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 12:17:53 -0400
+Received: by mail-wm0-x22d.google.com with SMTP id i124so24936359wmf.3
+	for <qemu-arm@nongnu.org>; Mon, 09 Oct 2017 09:17:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=t+cw0MvXDMrUOpTgcfZaqQTE3uP1kHVuuhBZ77P8I8I=;
-	b=V/mlTy03tmni1XHnFt+AV5AtJ4pPH8CjFDygWzcBQLVqKpZc+VV6sLNl8vkJ64gQa8
-	KNtZqNgF8M1seIXyA4cwZ2xwg/1rwE4WLKp+9tBNIaGdtd9s595iuY0LM7T/PbRsVzgV
-	KZ2TaPjCCcUUgUsSErCqlbpQ+OG2h0aYxuP/qxI05p+OLRIWEqwuvmEUVMyg4pZmUDuX
-	ipwmWC5+Cc/HrDrUTfhlMWvpHQfMkd5K1KUbE/eYsiP3TZMCxb2qeNiSiTcAMLpJNVrY
-	RlIBTgK7CH+XHlFAwod80ICMofeOx+kwkVZOadQKMK/li96K3UdjWJnFmHlc3FTlKf3t
-	Z/ZA==
+	:cc; bh=k2s0wlz+jFhf3VTT9uTg0+ToVzK8nEQ//1a4dRLvBLA=;
+	b=YUSnrhgJzEyelGp/2RM71jtqH/XcbuJWMaCN6kCYIerubecPQMK805ZvKyRPRAiLuo
+	a9H9e6R1f3yQk8RDx7KelqBxhTId0WaB2Y1YNiZ45aSgInLUn0gyNEXN8YAY9OUCs6Zk
+	A66JAOsosEq/d0eVD4y8XwGYfRU8ZhXmjZtgk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=t+cw0MvXDMrUOpTgcfZaqQTE3uP1kHVuuhBZ77P8I8I=;
-	b=G88iWI9WSsw4ItQtozo7oWRNN2LAlyAFw9x4qqfXDKghaOwyjhyI4OX68a4TB7rE41
-	ekwFZy8NmeadvltHomThNr5h1+PqzOZIUQlyCUS9wziIIW2fwHKoK/3NSQQWElJigw33
-	H0IQvcmfhdyCEx4h9GAvUlmt9/Ahg4hwIAEB53rIYl5mFhenbSiIPsniNt9A9dUu8n0t
-	4siWHql599nR+SX6U5x+2r3OmekQs56T/UGtBlB5qBCkGKLca/FfULi/qOJNAIbbJHMT
-	J29NoOu4krpSW0PCCT+ahtFVTl97e0ypmG39zBO0C9JamxZp+CYqaECCZlKEiOBehosk
-	W2+g==
-X-Gm-Message-State: AMCzsaUa+c1d2zB9L0PjqEm0JNRIsxGKISXE0kcd2Vom1KkWfSUTF67V
-	Fon53k2p3bmwX3AXaDTaaxtFBUWuJi7DhSTzM2/jog==
-X-Google-Smtp-Source: AOwi7QDeOdH1MzfjA1BvrNLIFOLm/B73teRtfJSH02jBsmB24nz4m8Rf77BX0HQVQlda51Ruqqg+764erAa5VDZRxG8=
-X-Received: by 10.55.186.71 with SMTP id k68mr10219840qkf.100.1507564552393;
-	Mon, 09 Oct 2017 08:55:52 -0700 (PDT)
+	bh=k2s0wlz+jFhf3VTT9uTg0+ToVzK8nEQ//1a4dRLvBLA=;
+	b=IDr5sstIG+bBy5azMTa/qyhCMe2g88OQAVdP2TAAlJphzkyXD7xIsF+e/HBSQC4coy
+	vJaeXOZ7Jd5Q+3Y113obOdoVkg8hgMLFh8trQhkNIdmwcf9PkLy/wLDOIKMmwRTyGfYt
+	J8fe+SafOB4eZL/vNTWEGiLHW8wpI8BJxjkASYFnMtBebgMjR7uQebZaCLDwe5alJGlI
+	VRpXEeSJCb8A/OdepnVE7pJoFOYxAlJBjmeHwhfLuG/4POzPypMlHecth5tsyTyd5XSZ
+	Op1qevEOY+Gu1AvkkLCE/a4HhmqrlLcZ4jwhTlODAkySCWCZy0sIo5JoxcProujel65m
+	B7Xg==
+X-Gm-Message-State: AMCzsaUbZ2UBDaEjg5Qn/QWhSD8exJXujgK3LCc30qNl1HawUARHCpiI
+	gglbUjH7ehqU29rbor7Ealo24O+oYeUuTOhWL3zbBw==
+X-Google-Smtp-Source: AOwi7QAKARuDFq/pPHigtfQ3sLunq1/xpHoF/0hq+7Y6MFtvNh3XxtZsPZrZb7hNkbQK8uubAC6xTxz4UNvaaZQzLnc=
+X-Received: by 10.28.23.3 with SMTP id 3mr8337287wmx.62.1507565871821; Mon, 09
+	Oct 2017 09:17:51 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.140.94.165 with HTTP; Mon, 9 Oct 2017 08:55:51 -0700 (PDT)
-In-Reply-To: <CAFEAcA_3vf8=0VhZVWX=1RQBqshvWNgHn=LrUw8BBtkUtDig0Q@mail.gmail.com>
-References: <20170918195100.17593-1-andrew.smirnov@gmail.com>
-	<20170918195100.17593-16-andrew.smirnov@gmail.com>
-	<CAFEAcA_3vf8=0VhZVWX=1RQBqshvWNgHn=LrUw8BBtkUtDig0Q@mail.gmail.com>
-From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Date: Mon, 9 Oct 2017 08:55:51 -0700
-Message-ID: <CAHQ1cqEJ6OJHL+gTAtXnNJPKUhu3mbYkMWWC=95fOxK9_VFMWA@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
+Received: by 10.223.128.207 with HTTP; Mon, 9 Oct 2017 09:17:31 -0700 (PDT)
+In-Reply-To: <1504286483-23327-6-git-send-email-eric.auger@redhat.com>
+References: <1504286483-23327-1-git-send-email-eric.auger@redhat.com>
+	<1504286483-23327-6-git-send-email-eric.auger@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 9 Oct 2017 17:17:31 +0100
+Message-ID: <CAFEAcA8grP_zo6uuB=rxM6jc9e3swrnNAunDGX8ZvEDz4a9s7A@mail.gmail.com>
+To: Eric Auger <eric.auger@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
-Subject: Re: [Qemu-devel] [PATCH 15/17] include/qemu: Add sizes.h from Linux
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:400c:c09::22d
+Subject: Re: [Qemu-arm] [PATCH v7 05/20] hw/arm/smmuv3: Skeleton
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	Andrey Yurovsky <yurovsky@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jqoD/Thn6zBj
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Radha Mohan <mohun106@gmail.com>, Andrew Jones <drjones@redhat.com>,
+	Trey Cain <tcain@qti.qualcomm.com>,
+	Radha.Chintakuntla@cavium.com, Sunil.Goutham@cavium.com,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	jean-philippe.brucker@arm.com, Tomasz Nowicki <tn@semihalf.com>,
+	Will Deacon <will.deacon@arm.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	Peter Xu <peterx@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	Christoffer Dall <christoffer.dall@linaro.org>,
+	robin.murphy@arm.com, wtownsen@redhat.com,
+	Bharat Bhushan <bharat.bhushan@nxp.com>,
+	Prem Mallappa <prem.mallappa@gmail.com>, eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: r8qMxwa3zVo/
 
-On Fri, Oct 6, 2017 at 7:13 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 18 September 2017 at 20:50, Andrey Smirnov <andrew.smirnov@gmail.com> wrote:
->> Add sizes.h from Linux to have a more readable way of specifying
->> MemoryRegion sizes.
->>
->> Cc: Peter Maydell <peter.maydell@linaro.org>
->> Cc: qemu-devel@nongnu.org
->> Cc: qemu-arm@nongnu.org
->> Cc: yurovsky@gmail.com
->> Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
->> ---
->>  include/qemu/sizes.h | 47 +++++++++++++++++++++++++++++++++++++++++++++++
->>  1 file changed, 47 insertions(+)
->>  create mode 100644 include/qemu/sizes.h
->>
->> diff --git a/include/qemu/sizes.h b/include/qemu/sizes.h
->> new file mode 100644
->> index 0000000000..9aedb9f8f6
->> --- /dev/null
->> +++ b/include/qemu/sizes.h
->> @@ -0,0 +1,47 @@
->> +/*
->> + * Copy of include/linux/sizes.h
->> + *
->> + * This program is free software; you can redistribute it and/or modify
->> + * it under the terms of the GNU General Public License version 2 as
->> + * published by the Free Software Foundation.
->> + */
+On 1 September 2017 at 18:21, Eric Auger <eric.auger@redhat.com> wrote:
+> From: Prem Mallappa <prem.mallappa@broadcom.com>
 >
-> Not really convinced of the utility, and it's gpl-2-only, so no thanks.
+> This patch implements a skeleton for the smmuv3 device.
+> Datatypes and register definitions are introduced. The MMIO
+> region, the interrupts and the queue are initialized (PRI is
+> not supported).
+>
+> Only the MMIO read operation is implemented here.
+>
+> Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>
+> ---
+> v6 -> v7:
+> - split into several patches
+>
+> v5 -> v6:
+> - Use IOMMUMemoryregion
+> - regs become uint32_t and fix 64b MMIO access (.impl)
+> - trace_smmuv3_write/read_mmio take the size param
+>
+> v4 -> v5:
+> - change smmuv3_translate proto (IOMMUAccessFlags flag)
+> - has_stagex replaced by is_ste_stagex
+> - smmu_cfg_populate removed
+> - added smmuv3_decode_config and reworked error management
+> - remwork the naming of IOMMU mrs
+> - fix SMMU_CMDQ_CONS offset
+>
+> v3 -> v4
+> - smmu_irq_update
+> - fix hash key allocation
+> - set smmu_iommu_ops
+> - set SMMU_REG_CR0,
+> - smmuv3_translate: ret.perm not set in bypass mode
+> - use trace events
+> - renamed STM2U64 into L1STD_L2PTR and STMSPAN into L1STD_SPAN
+> - rework smmu_find_ste
+> - fix tg2granule in TT0/0b10 corresponds to 16kB
+>
+> v2 -> v3:
+> - move creation of include/hw/arm/smmuv3.h to this patch to fix compil issue
+> - compilation allowed
+> - fix sbus allocation in smmu_init_pci_iommu
+> - restructure code into headers
+> - misc cleanups
+> ---
+>  hw/arm/Makefile.objs     |   2 +-
+>  hw/arm/smmuv3-internal.h | 201 +++++++++++++++++++++++++++++++++++++++
+>  hw/arm/smmuv3.c          | 239 +++++++++++++++++++++++++++++++++++++++++++++++
+>  hw/arm/trace-events      |   3 +
+>  include/hw/arm/smmuv3.h  |  79 ++++++++++++++++
+>  5 files changed, 523 insertions(+), 1 deletion(-)
+>  create mode 100644 hw/arm/smmuv3-internal.h
+>  create mode 100644 hw/arm/smmuv3.c
+>  create mode 100644 include/hw/arm/smmuv3.h
+>
+> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+> index 5b2d38d..a7c808b 100644
+> --- a/hw/arm/Makefile.objs
+> +++ b/hw/arm/Makefile.objs
+> @@ -19,4 +19,4 @@ obj-$(CONFIG_FSL_IMX31) += fsl-imx31.o kzm.o
+>  obj-$(CONFIG_FSL_IMX6) += fsl-imx6.o sabrelite.o
+>  obj-$(CONFIG_ASPEED_SOC) += aspeed_soc.o aspeed.o
+>  obj-$(CONFIG_MPS2) += mps2.o
+> -obj-$(CONFIG_ARM_SMMUV3) += smmu-common.o
+> +obj-$(CONFIG_ARM_SMMUV3) += smmu-common.o smmuv3.o
+> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+> new file mode 100644
+> index 0000000..488acc8
+> --- /dev/null
+> +++ b/hw/arm/smmuv3-internal.h
+> @@ -0,0 +1,201 @@
+> +/*
+> + * ARM SMMUv3 support - Internal API
+> + *
+> + * Copyright (C) 2014-2016 Broadcom Corporation
+> + * Copyright (c) 2017 Red Hat, Inc.
+> + * Written by Prem Mallappa, Eric Auger
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation, either version 2 of the License, or
+> + * (at your option) any later version.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + *
+> + * You should have received a copy of the GNU General Public License along
+> + * with this program; if not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#ifndef HW_ARM_SMMU_V3_INTERNAL_H
+> +#define HW_ARM_SMMU_V3_INTERNAL_H
+> +
+> +#include "trace.h"
+> +#include "qemu/error-report.h"
+> +#include "hw/arm/smmu-common.h"
+> +
+> +/*****************************
+> + * MMIO Register
+> + *****************************/
+> +enum {
+> +    SMMU_REG_IDR0            = 0x0,
+> +
+> +/* IDR0 Field Values and supported features */
+> +
+> +#define SMMU_IDR0_S2P      1  /* stage 2 */
+> +#define SMMU_IDR0_S1P      1  /* stage 1 */
+> +#define SMMU_IDR0_TTF      2  /* Aarch64 only - not Aarch32 (LPAE) */
+
+Two capital As in AArch32 and AArch64.
+
+> +#define SMMU_IDR0_COHACC   1  /* IO coherent access */
+> +#define SMMU_IDR0_HTTU     2  /* Access and Dirty flag update */
+> +#define SMMU_IDR0_HYP      0  /* Hypervisor Stage 1 contexts */
+> +#define SMMU_IDR0_ATS      0  /* PCIe RC ATS */
+> +#define SMMU_IDR0_ASID16   1  /* 16-bit ASID */
+> +#define SMMU_IDR0_PRI      0  /* Page Request Interface */
+> +#define SMMU_IDR0_VMID16   0  /* 16-bit VMID */
+> +#define SMMU_IDR0_CD2L     0  /* 2-level Context Descriptor table */
+> +#define SMMU_IDR0_STALL    1  /* Stalling fault model */
+> +#define SMMU_IDR0_TERM     1  /* Termination model behaviour */
+> +#define SMMU_IDR0_STLEVEL  1  /* Multi-level Stream Table */
+> +
+> +#define SMMU_IDR0_S2P_SHIFT      0
+> +#define SMMU_IDR0_S1P_SHIFT      1
+> +#define SMMU_IDR0_TTF_SHIFT      2
+> +#define SMMU_IDR0_COHACC_SHIFT   4
+> +#define SMMU_IDR0_HTTU_SHIFT     6
+> +#define SMMU_IDR0_HYP_SHIFT      9
+> +#define SMMU_IDR0_ATS_SHIFT      10
+> +#define SMMU_IDR0_ASID16_SHIFT   12
+> +#define SMMU_IDR0_PRI_SHIFT      16
+> +#define SMMU_IDR0_VMID16_SHIFT   18
+> +#define SMMU_IDR0_CD2L_SHIFT     19
+> +#define SMMU_IDR0_STALL_SHIFT    24
+> +#define SMMU_IDR0_TERM_SHIFT     26
+> +#define SMMU_IDR0_STLEVEL_SHIFT  27
+
+Optional, but you might look at whether you like the FIELD()
+macro in include/hw/registerfields.h for defining shift and
+mask constants.
+
+> +
+> +    SMMU_REG_IDR1            = 0x4,
+> +#define SMMU_IDR1_SIDSIZE 16
+> +    SMMU_REG_IDR2            = 0x8,
+> +    SMMU_REG_IDR3            = 0xc,
+> +    SMMU_REG_IDR4            = 0x10,
+> +    SMMU_REG_IDR5            = 0x14,
+> +#define SMMU_IDR5_GRAN_SHIFT 4
+> +#define SMMU_IDR5_GRAN       0b101 /* GRAN4K, GRAN64K */
+> +#define SMMU_IDR5_OAS        4     /* 44 bits */
+> +    SMMU_REG_IIDR            = 0x1c,
+> +    SMMU_REG_CR0             = 0x20,
+> +
+> +#define SMMU_CR0_SMMU_ENABLE (1 << 0)
+> +#define SMMU_CR0_PRIQ_ENABLE (1 << 1)
+> +#define SMMU_CR0_EVTQ_ENABLE (1 << 2)
+> +#define SMMU_CR0_CMDQ_ENABLE (1 << 3)
+> +#define SMMU_CR0_ATS_CHECK   (1 << 4)
+> +
+> +    SMMU_REG_CR0_ACK         = 0x24,
+> +    SMMU_REG_CR1             = 0x28,
+> +    SMMU_REG_CR2             = 0x2c,
+> +
+> +    SMMU_REG_STATUSR         = 0x40,
+> +
+> +    SMMU_REG_IRQ_CTRL        = 0x50,
+> +    SMMU_REG_IRQ_CTRL_ACK    = 0x54,
+> +
+> +#define SMMU_IRQ_CTRL_GERROR_EN (1 << 0)
+> +#define SMMU_IRQ_CTRL_EVENT_EN  (1 << 1)
+> +#define SMMU_IRQ_CTRL_PRI_EN    (1 << 2)
+> +
+> +    SMMU_REG_GERROR          = 0x60,
+> +
+> +#define SMMU_GERROR_CMDQ           (1 << 0)
+> +#define SMMU_GERROR_EVENTQ_ABT     (1 << 2)
+> +#define SMMU_GERROR_PRIQ_ABT       (1 << 3)
+> +#define SMMU_GERROR_MSI_CMDQ_ABT   (1 << 4)
+> +#define SMMU_GERROR_MSI_EVENTQ_ABT (1 << 5)
+> +#define SMMU_GERROR_MSI_PRIQ_ABT   (1 << 6)
+> +#define SMMU_GERROR_MSI_GERROR_ABT (1 << 7)
+> +#define SMMU_GERROR_SFM_ERR        (1 << 8)
+> +
+> +    SMMU_REG_GERRORN         = 0x64,
+> +    SMMU_REG_GERROR_IRQ_CFG0 = 0x68,
+> +    SMMU_REG_GERROR_IRQ_CFG1 = 0x70,
+> +    SMMU_REG_GERROR_IRQ_CFG2 = 0x74,
+> +
+> +    /* SMMU_BASE_RA Applies to STRTAB_BASE, CMDQ_BASE and EVTQ_BASE */
+> +#define SMMU_BASE_RA        (1ULL << 62)
+> +    SMMU_REG_STRTAB_BASE     = 0x80,
+> +    SMMU_REG_STRTAB_BASE_CFG = 0x88,
+> +
+> +    SMMU_REG_CMDQ_BASE       = 0x90,
+> +    SMMU_REG_CMDQ_PROD       = 0x98,
+> +    SMMU_REG_CMDQ_CONS       = 0x9c,
+> +    /* CMD Consumer (CONS) */
+> +#define SMMU_CMD_CONS_ERR_SHIFT        24
+> +#define SMMU_CMD_CONS_ERR_BITS         7
+> +
+> +    SMMU_REG_EVTQ_BASE       = 0xa0,
+> +    SMMU_REG_EVTQ_PROD       = 0xa8,
+> +    SMMU_REG_EVTQ_CONS       = 0xac,
+> +    SMMU_REG_EVTQ_IRQ_CFG0   = 0xb0,
+> +    SMMU_REG_EVTQ_IRQ_CFG1   = 0xb8,
+> +    SMMU_REG_EVTQ_IRQ_CFG2   = 0xbc,
+> +
+> +    SMMU_REG_PRIQ_BASE       = 0xc0,
+> +    SMMU_REG_PRIQ_PROD       = 0xc8,
+> +    SMMU_REG_PRIQ_CONS       = 0xcc,
+> +    SMMU_REG_PRIQ_IRQ_CFG0   = 0xd0,
+> +    SMMU_REG_PRIQ_IRQ_CFG1   = 0xd8,
+> +    SMMU_REG_PRIQ_IRQ_CFG2   = 0xdc,
+> +
+> +    SMMU_ID_REGS_OFFSET      = 0xfd0,
+> +
+> +    /* Secure registers are not used for now */
+> +    SMMU_SECURE_OFFSET       = 0x8000,
+> +};
+> +
+> +/**********************
+> + * Data Structures
+> + **********************/
+> +
+> +struct __smmu_data2 {
+> +    uint32_t word[2];
+> +};
+
+Don't use __ prefixes -- those are reserved for the system.
+But these structures look a bit like they're not very useful
+anyway.
+
+> +
+> +struct __smmu_data8 {
+> +    uint32_t word[8];
+> +};
+> +
+> +struct __smmu_data16 {
+> +    uint32_t word[16];
+> +};
+> +
+> +struct __smmu_data4 {
+> +    uint32_t word[4];
+> +};
+> +
+> +typedef struct __smmu_data4  Cmd; /* Command Entry */
+> +typedef struct __smmu_data8  Evt; /* Event Entry */
+> +
+> +/*****************************
+> + *  Register Access Primitives
+> + *****************************/
+> +
+> +static inline void smmu_write32_reg(SMMUV3State *s, uint32_t addr, uint32_t val)
+> +{
+> +    s->regs[addr >> 2] = val;
+> +}
+> +
+> +static inline void smmu_write64_reg(SMMUV3State *s, uint32_t addr, uint64_t val)
+> +{
+> +    addr >>= 2;
+> +    s->regs[addr] = extract64(val, 0, 32);
+> +    s->regs[addr + 1] = extract64(val, 32, 32);
+> +}
+> +
+> +static inline uint32_t smmu_read32_reg(SMMUV3State *s, uint32_t addr)
+> +{
+> +    return s->regs[addr >> 2];
+> +}
+> +
+> +static inline uint64_t smmu_read64_reg(SMMUV3State *s, uint32_t addr)
+> +{
+> +    addr >>= 2;
+> +    return s->regs[addr] | ((uint64_t)(s->regs[addr + 1]) << 32);
+> +}
+
+This kind of thing is why I'm not a fan of implementing device
+register state as an array.
+
+> +
+> +static inline int smmu_enabled(SMMUV3State *s)
+> +{
+> +    return smmu_read32_reg(s, SMMU_REG_CR0) & SMMU_CR0_SMMU_ENABLE;
+> +}
+> +
+> +#endif
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> new file mode 100644
+> index 0000000..0a7cd1c
+> --- /dev/null
+> +++ b/hw/arm/smmuv3.c
+> @@ -0,0 +1,239 @@
+> +/*
+> + * Copyright (C) 2014-2016 Broadcom Corporation
+> + * Copyright (c) 2017 Red Hat, Inc.
+> + * Written by Prem Mallappa, Eric Auger
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation, either version 2 of the License, or
+> + * (at your option) any later version.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + *
+> + * You should have received a copy of the GNU General Public License along
+> + * with this program; if not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/boards.h"
+> +#include "sysemu/sysemu.h"
+> +#include "hw/sysbus.h"
+> +#include "hw/pci/pci.h"
+> +#include "exec/address-spaces.h"
+> +#include "trace.h"
+> +#include "qemu/error-report.h"
+> +
+> +#include "hw/arm/smmuv3.h"
+> +#include "smmuv3-internal.h"
+> +
+> +static void smmuv3_init_regs(SMMUV3State *s)
+> +{
+> +    uint32_t data =
+> +        SMMU_IDR0_STLEVEL << SMMU_IDR0_STLEVEL_SHIFT |
+> +        SMMU_IDR0_TERM    << SMMU_IDR0_TERM_SHIFT    |
+> +        SMMU_IDR0_STALL   << SMMU_IDR0_STALL_SHIFT   |
+> +        SMMU_IDR0_VMID16  << SMMU_IDR0_VMID16_SHIFT  |
+> +        SMMU_IDR0_PRI     << SMMU_IDR0_PRI_SHIFT     |
+> +        SMMU_IDR0_ASID16  << SMMU_IDR0_ASID16_SHIFT  |
+> +        SMMU_IDR0_ATS     << SMMU_IDR0_ATS_SHIFT     |
+> +        SMMU_IDR0_HYP     << SMMU_IDR0_HYP_SHIFT     |
+> +        SMMU_IDR0_HTTU    << SMMU_IDR0_HTTU_SHIFT    |
+> +        SMMU_IDR0_COHACC  << SMMU_IDR0_COHACC_SHIFT  |
+> +        SMMU_IDR0_TTF     << SMMU_IDR0_TTF_SHIFT     |
+> +        SMMU_IDR0_S1P     << SMMU_IDR0_S1P_SHIFT     |
+> +        SMMU_IDR0_S2P     << SMMU_IDR0_S2P_SHIFT;
+> +
+> +    smmu_write32_reg(s, SMMU_REG_IDR0, data);
+> +
+> +#define SMMU_QUEUE_SIZE_LOG2  19
+> +    data =
+> +        1 << 27 |                    /* Attr Types override */
+> +        SMMU_QUEUE_SIZE_LOG2 << 21 | /* Cmd Q size */
+> +        SMMU_QUEUE_SIZE_LOG2 << 16 | /* Event Q size */
+> +        SMMU_QUEUE_SIZE_LOG2 << 11 | /* PRI Q size */
+> +        0  << 6 |                    /* SSID not supported */
+> +        SMMU_IDR1_SIDSIZE;
+> +
+> +    smmu_write32_reg(s, SMMU_REG_IDR1, data);
+> +
+> +    s->sid_size = SMMU_IDR1_SIDSIZE;
+> +
+> +    data = SMMU_IDR5_GRAN << SMMU_IDR5_GRAN_SHIFT | SMMU_IDR5_OAS;
+> +
+> +    smmu_write32_reg(s, SMMU_REG_IDR5, data);
+> +}
+> +
+> +static void smmuv3_init_queues(SMMUV3State *s)
+> +{
+> +    s->cmdq.prod = 0;
+> +    s->cmdq.cons = 0;
+> +    s->cmdq.wrap.prod = 0;
+> +    s->cmdq.wrap.cons = 0;
+> +
+> +    s->evtq.prod = 0;
+> +    s->evtq.cons = 0;
+> +    s->evtq.wrap.prod = 0;
+> +    s->evtq.wrap.cons = 0;
+> +
+> +    s->cmdq.entries = SMMU_QUEUE_SIZE_LOG2;
+> +    s->cmdq.ent_size = sizeof(Cmd);
+> +    s->evtq.entries = SMMU_QUEUE_SIZE_LOG2;
+> +    s->evtq.ent_size = sizeof(Evt);
+> +}
+> +
+> +static void smmuv3_init(SMMUV3State *s)
+> +{
+> +    smmuv3_init_regs(s);
+> +    smmuv3_init_queues(s);
+> +}
+> +
+> +static inline void smmu_update_base_reg(SMMUV3State *s, uint64_t *base,
+> +                                        uint64_t val)
+> +{
+> +    *base = val & ~(SMMU_BASE_RA | 0x3fULL);
+> +}
+> +
+> +static void smmu_write_mmio_fixup(SMMUV3State *s, hwaddr *addr)
+> +{
+> +    switch (*addr) {
+> +    case 0x100a8: case 0x100ac:         /* Aliasing => page0 registers */
+> +    case 0x100c8: case 0x100cc:
+> +        *addr ^= (hwaddr)0x10000;
+> +    }
+
+Maybe we should just take advantage of the CONSTRAINED UNPREDICTABLE
+choice to have page0 and page1 be exact aliases, and have
+   addr &= ~0x10000;
+unconditionally?
+
+> +}
+> +
+> +static void smmu_write_mmio(void *opaque, hwaddr addr,
+> +                            uint64_t val, unsigned size)
+> +{
+> +}
+> +
+> +static uint64_t smmu_read_mmio(void *opaque, hwaddr addr, unsigned size)
+> +{
+> +    SMMUState *sys = opaque;
+> +    SMMUV3State *s = SMMU_V3_DEV(sys);
+> +    uint64_t val;
+> +
+> +    smmu_write_mmio_fixup(s, &addr);
+> +
+> +    /* Primecell/Corelink ID registers */
+> +    switch (addr) {
+> +    case 0xFF0 ... 0xFFC:
+> +    case 0xFDC ... 0xFE4:
+> +        val = 0;
+
+Section "6.3.72 ID_REGS" in the spec defines what these registers
+should read as, and it's not all-zeroes. We can claim to be an ARM
+implementation, as we do with the GIC.
+
+> +        error_report("addr:0x%"PRIx64" val:0x%"PRIx64, addr, val);
+
+error_report for the guest reading the ID regs ??
+
+
+> +        break;
+> +    case SMMU_REG_STRTAB_BASE ... SMMU_REG_CMDQ_BASE:
+> +    case SMMU_REG_EVTQ_BASE:
+> +    case SMMU_REG_PRIQ_BASE ... SMMU_REG_PRIQ_IRQ_CFG1:
+> +        val = smmu_read64_reg(s, addr);
+> +        break;
+> +    default:
+> +        val = (uint64_t)smmu_read32_reg(s, addr);
+> +        break;
+> +    }
+> +
+> +    trace_smmuv3_read_mmio(addr, val, size);
+> +    return val;
+> +}
+> +
+> +static const MemoryRegionOps smmu_mem_ops = {
+> +    .read = smmu_read_mmio,
+> +    .write = smmu_write_mmio,
+> +    .endianness = DEVICE_LITTLE_ENDIAN,
+> +    .valid = {
+> +        .min_access_size = 4,
+> +        .max_access_size = 8,
+> +    },
+> +    .impl = {
+> +        .min_access_size = 4,
+> +        .max_access_size = 8,
+> +    },
+> +};
+> +
+> +static void smmu_init_irq(SMMUV3State *s, SysBusDevice *dev)
+> +{
+> +    int i;
+> +
+> +    for (i = 0; i < ARRAY_SIZE(s->irq); i++) {
+> +        sysbus_init_irq(dev, &s->irq[i]);
+> +    }
+> +}
+> +
+> +static void smmu_reset(DeviceState *dev)
+> +{
+> +    SMMUV3State *s = SMMU_V3_DEV(dev);
+> +    smmuv3_init(s);
+> +}
+> +
+> +static void smmu_realize(DeviceState *d, Error **errp)
+> +{
+> +    SMMUState *sys = SMMU_SYS_DEV(d);
+> +    SMMUV3State *s = SMMU_V3_DEV(sys);
+> +    SysBusDevice *dev = SYS_BUS_DEVICE(d);
+> +
+> +    memory_region_init_io(&sys->iomem, OBJECT(s),
+> +                          &smmu_mem_ops, sys, TYPE_SMMU_V3_DEV, 0x20000);
+> +
+> +    sys->mrtypename = g_strdup(TYPE_SMMUV3_IOMMU_MEMORY_REGION);
+> +
+> +    sysbus_init_mmio(dev, &sys->iomem);
+> +
+> +    smmu_init_irq(s, dev);
+> +}
+> +
+> +static const VMStateDescription vmstate_smmuv3 = {
+> +    .name = "smmuv3",
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT32_ARRAY(regs, SMMUV3State, SMMU_NREGS),
+> +        VMSTATE_END_OF_LIST(),
+> +    },
+> +};
+> +
+> +static void smmuv3_instance_init(Object *obj)
+> +{
+> +    /* Nothing much to do here as of now */
+> +}
+> +
+> +static void smmuv3_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->reset   = smmu_reset;
+> +    dc->vmsd    = &vmstate_smmuv3;
+> +    dc->realize = smmu_realize;
+> +}
+> +
+> +static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
+> +                                                  void *data)
+> +{
+> +}
+> +
+> +static const TypeInfo smmuv3_type_info = {
+> +    .name          = TYPE_SMMU_V3_DEV,
+> +    .parent        = TYPE_SMMU_DEV_BASE,
+> +    .instance_size = sizeof(SMMUV3State),
+> +    .instance_init = smmuv3_instance_init,
+> +    .class_data    = NULL,
+
+What?
+
+> +    .class_size    = sizeof(SMMUV3Class),
+> +    .class_init    = smmuv3_class_init,
+> +};
+> +
+> +static const TypeInfo smmuv3_iommu_memory_region_info = {
+> +    .parent = TYPE_IOMMU_MEMORY_REGION,
+> +    .name = TYPE_SMMUV3_IOMMU_MEMORY_REGION,
+> +    .class_init = smmuv3_iommu_memory_region_class_init,
+> +};
+> +
+> +static void smmuv3_register_types(void)
+> +{
+> +    type_register(&smmuv3_type_info);
+> +    type_register(&smmuv3_iommu_memory_region_info);
+> +}
+> +
+> +type_init(smmuv3_register_types)
+> +
+> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
+> index c67cd39..8affbf7 100644
+> --- a/hw/arm/trace-events
+> +++ b/hw/arm/trace-events
+> @@ -14,3 +14,6 @@ smmu_page_walk_level_block_pte(int stage, int level, uint64_t baseaddr, uint64_t
+>  smmu_page_walk_level_table_pte(int stage, int level, uint64_t baseaddr, uint64_t pteaddr, uint64_t pte, uint64_t address) "stage=%d, level=%d base@=0x%"PRIx64" pte@=0x%"PRIx64" pte=0x%"PRIx64" next table address = 0x%"PRIx64
+>  smmu_get_pte(uint64_t baseaddr, int index, uint64_t pteaddr, uint64_t pte) "baseaddr=0x%"PRIx64" index=0x%x, pteaddr=0x%"PRIx64", pte=0x%"PRIx64
+>  smmu_set_translated_address(hwaddr iova, hwaddr pa) "iova = 0x%"PRIx64" -> pa = 0x%"PRIx64
+> +
+> +#hw/arm/smmuv3.c
+> +smmuv3_read_mmio(hwaddr addr, uint64_t val, unsigned size) "addr: 0x%"PRIx64" val:0x%"PRIx64" size: 0x%x"
+> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
+> new file mode 100644
+> index 0000000..0c8973d
+> --- /dev/null
+> +++ b/include/hw/arm/smmuv3.h
+> @@ -0,0 +1,79 @@
+> +/*
+> + * Copyright (C) 2014-2016 Broadcom Corporation
+> + * Copyright (c) 2017 Red Hat, Inc.
+> + * Written by Prem Mallappa, Eric Auger
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation, either version 2 of the License, or
+> + * (at your option) any later version.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + *
+> + * You should have received a copy of the GNU General Public License along
+> + * with this program; if not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#ifndef HW_ARM_SMMUV3_H
+> +#define HW_ARM_SMMUV3_H
+> +
+> +#include "hw/arm/smmu-common.h"
+> +
+> +#define TYPE_SMMUV3_IOMMU_MEMORY_REGION "smmuv3-iommu-memory-region"
+> +
+> +#define SMMU_NREGS            0x200
+> +
+> +typedef struct SMMUQueue {
+> +     hwaddr base;
+> +     uint32_t prod;
+> +     uint32_t cons;
+> +     union {
+> +          struct {
+> +               uint8_t prod:1;
+> +               uint8_t cons:1;
+> +          };
+> +          uint8_t unused;
+> +     } wrap;
+
+This is an inefficient way to represent the prod/cons registers.
+Those are carefully arranged so that the wrap bit is just above
+the queue index, so that you can implement the wrap bit toggling
+by considering the register as an N+1 width integer for
+increment purposes, but an N width register for indexing
+into the queue. For QEMU we should just have a uint32_t prod;
+and then we can always increment (including wrap bit handling)
+with 'prod++', we can get the index into the queue with
+'prod & some_mask', and the register read/write would be
+handled using a mask that's 1 bit wider than some_mask (plus
+any other high bits in the same register).
+
+This also means you don't need weird special casing to
+handle the architected behaviour for what happens to the
+value in a queue register when the guest changes the queue
+size (see eg the spec description of SMMU_EVENTQ_CONS in
+6.3.29).
+
+> +
+> +     uint16_t entries;           /* Number of entries */
+> +     uint8_t  ent_size;          /* Size of entry in bytes */
+> +     uint8_t  shift;             /* Size in log2 */
+> +} SMMUQueue;
+> +
+> +typedef struct SMMUV3State {
+> +    SMMUState     smmu_state;
+> +
+> +    /* Local cache of most-frequently used registers */
+> +#define SMMU_FEATURE_2LVL_STE (1 << 0)
+> +    uint32_t     features;
+> +    uint16_t     sid_size;
+> +    uint16_t     sid_split;
+> +    uint64_t     strtab_base;
+> +
+> +    uint32_t    regs[SMMU_NREGS];
+> +
+> +    qemu_irq     irq[4];
+> +    SMMUQueue    cmdq, evtq;
+
+This data structure setup means you have some register state
+you're keeping in potentially two places: regs[X] and also
+in fields in SMMUQueue. This is awkward for vmstate save/restore
+and it doesn't look like you quite get it right. You can either:
+ * only save/restore the regs[] in vmstate, treating those as
+   the canonical source of data, and have a post-load hook to
+   reload the info into the SMMUQueue fields
+ * don't have info in regs[] for queue registers, instead keeping
+   the data canonically in the SMMUQueue fields, and have
+   vmstate fields for migrating the SMMUQueue fields
+
+> +
+> +} SMMUV3State;
+> +
+> +typedef enum {
+> +    SMMU_IRQ_EVTQ,
+> +    SMMU_IRQ_PRIQ,
+> +    SMMU_IRQ_CMD_SYNC,
+> +    SMMU_IRQ_GERROR,
+> +} SMMUIrq;
+> +
+> +typedef struct {
+> +    SMMUBaseClass smmu_base_class;
+> +} SMMUV3Class;
+> +
+> +#define TYPE_SMMU_V3_DEV   "smmuv3"
+> +#define SMMU_V3_DEV(obj) OBJECT_CHECK(SMMUV3State, (obj), TYPE_SMMU_V3_DEV)
+> +#define SMMU_V3_DEVICE_GET_CLASS(obj)                              \
+> +    OBJECT_GET_CLASS(SMMUBaseClass, (obj), TYPE_SMMU_V3_DEV)
+> +
+> +#endif
+> --
+> 2.5.5
 >
 
-OK, will drop in v2.
-
-Thanks,
-Andrey Smironv
+thanks
+-- PMM

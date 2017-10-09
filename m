@@ -1,97 +1,98 @@
-Received: by 10.223.197.9 with SMTP id q9csp4953132wrf;
-        Tue, 17 Oct 2017 12:52:54 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+T3AvVY3zWuZWOoOebjir1Ia3O+u+pJ47xE2bcpp3BP0ZyQlVAxBsc/FoQ0qyEUDbrdK3b0
-X-Received: by 10.55.186.71 with SMTP id k68mr8316470qkf.100.1508269974627;
-        Tue, 17 Oct 2017 12:52:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508269974; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp2825124wrf;
+        Mon, 9 Oct 2017 13:25:55 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QBXZO7BiqIvT46uFX9ueIz5OGvhFZyWCYneN5J5FvE5sAPcID9woFCGuQZay7b5ufAB2g8+
+X-Received: by 10.55.197.194 with SMTP id k63mr11214583qkl.208.1507580755234;
+        Mon, 09 Oct 2017 13:25:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507580755; cv=none;
         d=google.com; s=arc-20160816;
-        b=NQPtt7l1Q9ZpAqaU6+0c1EWhnkGOwEUUFNgb1Dlm5xtr4uZFziOelGAmLXbfGULzXr
-         OCXpF5V62y+NpxEXvmxJSpoaUYY865hierTzO3LTTVVfgkFC32neP4JvdeEqLX86XZQD
-         SSjbRJoNDMWoAraLLapK93xdZ+qxRD5GMh6ltXYR36ULo9EeTxsnXoCPXuTcNMIWhLEi
-         qrA+VMSE4Tqo3DIlVkiMwFI5rgIdlwMCcs+Vg4/Z7iWvE/4xpIi67qoWJ9tH1EiflQoy
-         r/Z3KOvJo0UGmqZvCZRgJfLx9qxhuKdsj9HqNyhhjAPA8vio6ywI1wO9AMIOfDFFrz3u
-         V5tQ==
+        b=EIbO96P5so7nvwNCb5Upctw5+gnDXJC350DL9C/w9waJZ4O0Kp1V1Ydp32D49ae9Gq
+         btscW8jBsZtaNOeAFBRDQu8qEK5nwcSgLTow9gT9cm1Sp2neAQt0f9xRQ6dNCSQzlkPV
+         +gyYslK9Cv7Ri9xo/wI8mGrMIalfc/IqIW+ei29j/auiCtXK8MoTeDIYiHIjLwqvTcFB
+         TN3d7zdbun3QfxW5tYpFIt3YpAszofZwxUqSPLQ14QwYZOKQjPjS2Zw+EEJmlvxnAQUW
+         pr0sxol5nEp+U1B+w+9BAiQUBvDv64LZGhX98pbYBFDAgm6OUZbbtEQri6LF58rm91Fr
+         PjFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date
          :dmarc-filter:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=qFYmvxQjZ9VOn3xMRZ2PvrJzPwXSktBZiaBKkoPxqLA=;
-        b=xb+RmzWP0to6upHNYsTNHqhzdYTLrb11l07iSF8BMTovWEpvmHegC+LEm4CgWkUl4B
-         9aW36nHPLutXhYHvX/Xa9Sy23mVYcWjSJmMT2kkA9iPjfrhUlF5O8dER+nq28IKNOkTp
-         MbWrUVj0wV5640HybgOkuWAAGSkfKouMKfKgeMwxnWWwzWUwKyVuIREok9mna7J/Q+jT
-         wbVEIZHp4nsvhUw5i1l8XiaA1EgsssqSy58/arFidl5DYsV+aP20x0x5BMYTxJvqJSmJ
-         HjUKX2Jg5T0Mu+9vna5nCJGHNrHwY7TdK9dNzyIS9E32pO4fYXmIp4KxFvNAArLRWNp3
-         JmCw==
+        bh=6hrwAs8tQ8pNVaXv9AqjwN6kWZq+dZHPED3vdiN0Xzk=;
+        b=P06uAO9C/HRdy12H8x+PNTcrethOcDXnK+g6SsCVtBmE2tL4Z9zQOD86wPK5eZfsBW
+         4X+YJOblDuZVTVZ9e8o5IwoHa0zE0cjXuxD058LhvEix0l5v3l2RNErItkR59s+JWhHq
+         RxOk1D9lm2ag7IfxSUJdhw0R5JWBAJe6NZdRL7rLl95E6f+OmV6S1LWygmSAKV8CTpub
+         ATTqmVmazgXi7Dc1B19Ml47yU/omyEN0HAu4lc5W674OYrPrltkRpYTqCbl0zvwFJd5Y
+         fO4kW/EiUcFte/qgWqoKFG+IJbQDFYRLHoHFXjTjxDUcwQfFzNUWT4nR19kh54YyJIrr
+         p/vg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=fIYSRSXM;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=fIYSRSXM;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=YB6pBg3n;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=ly009IxQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z57si3312445qta.43.2017.10.17.12.52.54
+        by mx.google.com with ESMTPS id v64si839927qkd.54.2017.10.09.13.25.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 17 Oct 2017 12:52:54 -0700 (PDT)
+        Mon, 09 Oct 2017 13:25:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=fIYSRSXM;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=fIYSRSXM;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=YB6pBg3n;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=ly009IxQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41297 helo=lists.gnu.org)
+Received: from localhost ([::1]:59692 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e4Xv2-0000Df-I4
-	for alex.bennee@linaro.org; Tue, 17 Oct 2017 15:52:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55393)
+	id 1e1ecb-0007pS-37
+	for alex.bennee@linaro.org; Mon, 09 Oct 2017 16:25:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46008)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alindsay@codeaurora.org>) id 1e4Xuw-0000DZ-6p
-	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 15:52:47 -0400
+	(envelope-from <alindsay@codeaurora.org>) id 1e1ecR-0007pN-Bz
+	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 16:25:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alindsay@codeaurora.org>) id 1e4Xut-00004q-47
-	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 15:52:46 -0400
-Received: from smtp.codeaurora.org ([198.145.29.96]:40320)
+	(envelope-from <alindsay@codeaurora.org>) id 1e1ecO-0007Hm-6J
+	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 16:25:43 -0400
+Received: from smtp.codeaurora.org ([198.145.29.96]:33246)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <alindsay@codeaurora.org>)
-	id 1e4Xus-0008UH-Qp; Tue, 17 Oct 2017 15:52:43 -0400
+	id 1e1ecN-0007HA-SW; Mon, 09 Oct 2017 16:25:40 -0400
 Received: by smtp.codeaurora.org (Postfix, from userid 1000)
-	id 90D83607EF; Tue, 17 Oct 2017 19:52:41 +0000 (UTC)
+	id 36F20609F2; Mon,  9 Oct 2017 20:25:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1508269961;
-	bh=mFTvbtNmDLh7NA6VrqOZPrpMqD/3Khzz3hwyh76RbD4=;
+	s=default; t=1507580738;
+	bh=Is6KMXCE+cE1AHiVdh2cB9xMz5vG9XrMsFLugnRNE/k=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=fIYSRSXMIr57ucZIo1JPQhhD4WmbpfuuZ6oIJgOkl4FaKtpIPpOYOCh/GjnB6vNDn
-	Vpy8ybMb2ebPyjAmfMwxWnxResJHNHuj1f9+ManKyC45SrK/HD31VvKSgJseZCpg6G
-	3JrGtldtr6rFPTNnxkNidzaWOBzSgrL9XUOXBBck=
+	b=YB6pBg3nh1mC9TmoX3gXDG2T+3aDpkn0TcBeL5PPcI9KhYfhrPCX3E7TweOXYKQEy
+	xsXESM7fJ9JD11YGcBh47P0NF8uq1JOs/f7l2m169PcOUC5D2xhPVoT9pOYCppv6lP
+	YxWNH9D7rgwbyZQAyY2rBB8C/NofjhJxt/fMkI9w=
 Received: from codeaurora.org (global_nat1_iad_fw.qualcomm.com [129.46.232.65])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
 	(Authenticated sender: alindsay@smtp.codeaurora.org)
-	by smtp.codeaurora.org (Postfix) with ESMTPSA id 4B42A607B4;
-	Tue, 17 Oct 2017 19:52:40 +0000 (UTC)
+	by smtp.codeaurora.org (Postfix) with ESMTPSA id 4E3CE611A1;
+	Mon,  9 Oct 2017 20:25:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1508269961;
-	bh=mFTvbtNmDLh7NA6VrqOZPrpMqD/3Khzz3hwyh76RbD4=;
+	s=default; t=1507580736;
+	bh=Is6KMXCE+cE1AHiVdh2cB9xMz5vG9XrMsFLugnRNE/k=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=fIYSRSXMIr57ucZIo1JPQhhD4WmbpfuuZ6oIJgOkl4FaKtpIPpOYOCh/GjnB6vNDn
-	Vpy8ybMb2ebPyjAmfMwxWnxResJHNHuj1f9+ManKyC45SrK/HD31VvKSgJseZCpg6G
-	3JrGtldtr6rFPTNnxkNidzaWOBzSgrL9XUOXBBck=
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 4B42A607B4
+	b=ly009IxQVtSVtw9qqeERQ3hfJB0tafcAtuMNHLkIZIac75KfV7Qvc9qlylJIWCmJX
+	z+J7c5+gJCAlwEghY47WIyD+fGyvTb2pykmW1jXGJSuIXJvcoRq9dlVMz9ZFbpU1p6
+	jh77PDKYBMXu356j2FRFMRFDQaE3poozikcjBZCQ=
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 4E3CE611A1
 Authentication-Results: pdx-caf-mail.web.codeaurora.org;
 	dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: pdx-caf-mail.web.codeaurora.org;
 	spf=none smtp.mailfrom=alindsay@codeaurora.org
-Date: Tue, 17 Oct 2017 15:52:38 -0400
+Date: Mon, 9 Oct 2017 16:25:32 -0400
 From: Aaron Lindsay <alindsay@codeaurora.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20171017195238.GC22177@codeaurora.org>
+Message-ID: <20171009202532.GB3676@codeaurora.org>
 References: <1506737310-21880-1-git-send-email-alindsay@codeaurora.org>
-	<CAFEAcA_f=7XjUs7BNQksidnBKofc8SxYtfjMtmfYMuPeo8NXug@mail.gmail.com>
+	<20171009144641.GA3676@codeaurora.org>
+	<CAFEAcA9xYJVy2mSo=CmmHDTfELLaEpzbDx=SubsmJQQY9fwxeg@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAFEAcA_f=7XjUs7BNQksidnBKofc8SxYtfjMtmfYMuPeo8NXug@mail.gmail.com>
+In-Reply-To: <CAFEAcA9xYJVy2mSo=CmmHDTfELLaEpzbDx=SubsmJQQY9fwxeg@mail.gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
@@ -115,46 +116,60 @@ Cc: Michael Spradling <mspradli@codeaurora.org>,
 	qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gcaeyIotsltK
+X-TUID: gqDaBrvPbnpE
 
-On Oct 17 16:09, Peter Maydell wrote:
-> On 30 September 2017 at 03:08, Aaron Lindsay <alindsay@codeaurora.org> wrote:
-> > The ARM PMU implementation currently contains a basic cycle counter, but it is
-> > often useful to gather counts of other events and filter them based on
-> > execution mode. These patches flesh out the implementations of various PMU
-> > registers including PM[X]EVCNTR and PM[X]EVTYPER, add a struct definition to
-> > represent arbitrary counter types, implement mode filtering, and add
-> > instruction, cycle, and software increment events.
-> >
-> > I am particularly interested in feedback on the following two patches because I
-> > think I'm likely Doing It Wrong:
-> >  [1] target/arm: Filter cycle counter based on PMCCFILTR_EL0
-> >  [2] target/arm: PMU: Add instruction and cycle events
-> >
-> > In order to implement mode filtering in an event-driven way, [1] adds a pair of
-> > calls to pmu_sync() surrounding every update to a register/variable which may
-> > affect whether any counter is currently filtered. These pmu_sync() calls
-> > ultimately call cpu_get_icount_raw() for enabled instruction and cycle counters
-> > when using icount. Unfortunately, cpu->can_do_io may otherwise be zero for
-> > these calls so the current implementation in [2] temporarily sets can_do_io to
-> > 1. I haven't see any ill side effects from this in my testing, but it doesn't
-> > seem like the right way to handle this.
+On Oct 09 19:27, Peter Maydell wrote:
+> On 9 October 2017 at 15:46, Aaron Lindsay <alindsay@codeaurora.org> wrote:
+> > Unfortunately I'm not sure who to add other than the current recipients,
+> > but I'm eager for feedback and would love to work this into something
+> > that will allow for using the full ARM PMU.
 > 
-> I've now reviewed the early stuff and provided what I hope is
-> a useful direction for the mode-filtering, so I'm not going to
-> look at the patches at the tail end on this version of the series.
+> Hi -- I do have this on my review queue, but unfortunately it's
+> sitting behind some other fairly chunky hard-to-review patchsets.
 
-Thank you, your review has been very helpful - the next pass of the
-mode-filtering patch will be more maintainable.
+No problem - I'll wait my turn.
 
-> > I would like to eventually add sending interrupts on counter overflow.
-> > Suggestions for the best direction to handle this are most welcome.
+> As a first quick "is this going in the right direction" review based
+> pretty much only on the cover letter:
 > 
-> Check out how the helper.c timer interrupts are wired up
-> (the CPU object exposes outbound irq lines, which then get
-> wired up by the board to the GIC.)
+> What extra events do you want to try to support in the emulated PMU?
+> Part of the reason we only support the cycle counter is because
+>  (1) a lot of the events in a real PMU would be hard to support
+>  (2) it's not clear to me that exposing events to the guest would be
+>      very useful to it anyway -- performance profiling of guest code
+>      running under emulation is fraught with difficulty
+> 
+> Giving more of an idea of what your use case is would help in
+> evaluating these patches.
 
-Thanks for the pointer - I'll take a look.
+My goal isn't to expose events concerned with microarchitectural
+performance, but rather those that can help characterize architectural
+behavior (initially instructions and maybe branches, but perhaps
+anything in ARM ARM D5.10.4: "Common architectural event numbers"). We
+use a number of platforms at different points along the accuracy/speed
+trade-off continuum, and it is convenient to use self-hosted tools that
+we can expect to work on all of them.
+
+For instance, implementing the instruction counter allows us to stop
+processes after executing prescribed numbers of instructions and resume
+them on other platforms for further study (using CRIU). It can also be
+useful to get a `perf` profile based on instruction count to get a rough
+idea of where an application is spending its time.
+
+> Some of what you're doing looks like it's fixing bugs in our current
+> implementation, which is definitely fine in principle.
+
+Yes, I believe patches 1-5 are fairly straightforward fixes, with the
+later patches getting into the more invasive changes.
+
+> I haven't looked at the icount related stuff (and I can never remember
+> how it works either) but fiddling with can_do_io does sound like it's not
+> the right approach...
+
+Agreed. Perhaps part of the same offense as the pmu_sync() calls
+scattered around - I was unable to find a better way to drive the mode
+filtering, and am more than glad to pursue a different approach if
+pointed in the right direction.
 
 -Aaron
 

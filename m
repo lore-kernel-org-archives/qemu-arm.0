@@ -1,100 +1,103 @@
-Received: by 10.223.197.9 with SMTP id q9csp2527920wrf;
-        Mon, 9 Oct 2017 07:48:14 -0700 (PDT)
-X-Received: by 10.55.46.196 with SMTP id u187mr9628107qkh.174.1507560493982;
-        Mon, 09 Oct 2017 07:48:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507560493; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp2533558wrf;
+        Mon, 9 Oct 2017 07:54:26 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QAzaHRW2HDF5bu6FPklrkbMRWvfvq2Yg4Q8Nt/T8I9Ma0IIngjqpMVJVleSWOW9Y+l/2fIQ
+X-Received: by 10.55.74.138 with SMTP id x132mr7285807qka.239.1507560866087;
+        Mon, 09 Oct 2017 07:54:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507560866; cv=none;
         d=google.com; s=arc-20160816;
-        b=DQvVLxjAW7wHOHy3OTHPlNgBuAYlc3TLHjMIp9hDgONQgBd2Q0C3IfuPP1pD739H0Y
-         bNtz1M0WoS3B6vL5yKlh7Iu74ftKwy+Cs98EmkcImCCXrP9vcpu1ualquN2x2gZClbcx
-         ZNfQALzcKIrTf0Y2Ds+u5o48PX7VRhygBH3KnwGEkXFLWHIldn4WrfDqeVaUls4xrKBZ
-         Y/xwQ7txnkAaIbd2S0ZzkiPP9GSQp/VKlW84rRdC5cmUK3emcXNGzWbnId+NN86luFCr
-         y80wpahVQpKSBYFz/C2hzUDNr6ImUfpRhfjsARCALCJExoQ1qFJNzd/Dhq66Z3vkhHxo
-         RdVg==
+        b=ujhPWzAfb3nFoPstu4a+83PTQxUQxRYy6JPpSg2CaE45qqcOEhkIjOakmzXhSvdsu1
+         pMFdIPIzaItJZ1uNNyNp1pCXIf458ZixHphSUE7FfCqZuZEjhmGnLTiyg5aoHI3evgIK
+         RAaJhmT8G7UlOubqlPZGBGA2ARVbVL7t5uHfKyjCWvsktC4ra1uPjwA4uncWp39oItAH
+         mK88SkCySWEGBJygOsEHMpPDaVsHbo3Er2+u25znf8PfzhIZUeW4+0ar0ZP78gyj5NPk
+         NXVLKXAEdQSTNqxF+5mrjEwWU+ZaxC83He3FPCPhTitqfKN9ogONfDDR65/N/kZ2WlsP
+         xjow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dmarc-filter:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=f9Or1PXrSFqPfyHzgDO0z6qGkWM8EN7eXH38NXaOKcE=;
-        b=oMTYPKhXsn3qwj5rv3QEqMVPyQT1E2QEIjkWFud5ZwAoTPbS5z4moR3cjdKS1czC74
-         WBt9Efr+AG6tMsJDGNFP4HwTJ8nkWAbmmrXfY8XJ5rnkaJYXWGRyCTOgEakkpENptZYn
-         MYE+PmrG8fefHhT+fk9t8pAR3u4oBAligjJiRcpuqFbK0ZApCuCdmv0yjtYmIGIjJWGy
-         6ZuCs0n0C1+0FfNPK4irDx41LxOqn+YWKN3Kde4eNsYhWEBvPpRR+ua5h2YEV0WUkY4J
-         2uUHr0vbCXUQP+UXt61ru2/Y304td81AvW/wv5kDRxKttaNDKgQT6wUOIUVDUcg2/O+A
-         Z/fw==
+        bh=kRRLlVRlBJxo78lOCOsXBsQsAEsrsAqAfMHzZqiyLh0=;
+        b=UzIuksaBRLxQaruV56Zw8W5NmdycN5sc0HvKzle+9zI2pUNetUaNT0FuEzwJUjS5PE
+         sbw4xif2tD3p2cMWH3tiARbW+501vMWp17SsS/LwqPaXAHAwXWzcd0ZkhNg0mJCeXwbr
+         MezL5VTcBAi0j193BxEu1d2yQYVUE5SmAgRCkoN8FFfxsaFWqjuPFF7W+Q9gnufqi6fu
+         VxOSlYREAyyzNsauQCnzeO4+YrhGqrhN2sWyxh7T2OYJ3BgKPQcrsTCWFYwL1ajjhOIw
+         h0FffWcn/C+jbFbLPCtNJpqS6eTFT24XMZ9cg7FBCLZegFab5JJarKm23QNR9tKL/oM0
+         X9sA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IMkZLLtC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=SYRstFMp;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=OLZ+ZZdy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v26si1191252qtf.378.2017.10.09.07.48.13
+        by mx.google.com with ESMTPS id 32si4812989qtf.422.2017.10.09.07.54.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 09 Oct 2017 07:48:13 -0700 (PDT)
+        Mon, 09 Oct 2017 07:54:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IMkZLLtC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:58254 helo=lists.gnu.org)
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=SYRstFMp;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=OLZ+ZZdy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:58269 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e1ZLp-0000XX-Dl
-	for alex.bennee@linaro.org; Mon, 09 Oct 2017 10:48:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33260)
+	id 1e1ZRp-0002DC-ME
+	for alex.bennee@linaro.org; Mon, 09 Oct 2017 10:54:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34591)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1e1ZLe-0000V1-0I
-	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 10:48:03 -0400
+	(envelope-from <alindsay@codeaurora.org>) id 1e1ZRi-0002Ct-ND
+	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 10:54:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1e1ZLa-0005Zb-1f
-	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 10:48:02 -0400
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:37299)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
-	id 1e1ZLZ-0005ZC-Tr; Mon, 09 Oct 2017 10:47:57 -0400
-Received: by mail-qk0-x241.google.com with SMTP id a12so13817232qka.4;
-	Mon, 09 Oct 2017 07:47:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=f9Or1PXrSFqPfyHzgDO0z6qGkWM8EN7eXH38NXaOKcE=;
-	b=IMkZLLtCuz/h41YNtMYEijSJc+64Hd/7M0akOzVtkIV6BN4JMi0DcQwoCFp+2odNYO
-	TsSbGl/SGFWh1siehfCK0D6nyTU9CWP1EcsGRn/NBFYWkNTSoZ2nW/pqV3brGm3yjSRo
-	GJbAm/2fsSgNngtI6SpGKuSmHPqJx6zgLAelUfbmS1tZuCFEBL/CMYtJ+zt/ywqt5VB5
-	X4ZG2yjvXGeWFoxGjv0nBJLG6O2oMd7hdydmCHimTF+T2Vm+UKcfjhYm9GjBYZzdlc2G
-	AtJ7HCGT62o56HMxLBjss945wV5Qb++YuOrQJBigH2MJyPOm4Fj3wy7Upk3qzAAOG6KA
-	6BaA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=f9Or1PXrSFqPfyHzgDO0z6qGkWM8EN7eXH38NXaOKcE=;
-	b=kPPpOhzQxV4KnDjD9+NmByCf2C0UFTroVggGIPUcYkXXLM/YVHOhpi9D/te7HHMWv0
-	8IKmjkqeQ/5hjF2ZYYaFRVrQv548q5YJB1HLlpdF865kER7kcgtPgh9+2efnNJXYW9Sv
-	CdKah5ExqhrJidH31S8IeeI02b+By7JAJCjKTyDMbiw3tqSyctCMtMDdfqa8Rj0QFfhE
-	i+c/3CNVtieErejg2ZUfcGX4tYItwI6P6WulorcXNmeXkQbIqDZiEQs0AxqtcjJLYf3I
-	yYekbausUaCJot28MX5yACoD/P8P+PgVODvBcUngWvXWVI6F/n2LX105hOIcef/5haO4
-	3nKw==
-X-Gm-Message-State: AMCzsaUaFjazjxrf5uGAQ6I7z1+CezhPmT7YKjob6B420FnZGL7uI43R
-	p+QU74XuGzuW8893PjbNuUKP4GKGN9oBnK7HyY8=
-X-Google-Smtp-Source: AOwi7QDPfhKeI/gKmZOa8RXCM7fArx37MYmMM+Kdc3iDin5WmBMHhCWjlqg7P04pg8tF53oVKMpmrhZ/OpBisuOctZ8=
-X-Received: by 10.55.127.7 with SMTP id a7mr10023433qkd.45.1507560476851; Mon,
-	09 Oct 2017 07:47:56 -0700 (PDT)
+	(envelope-from <alindsay@codeaurora.org>) id 1e1ZRf-0000mJ-JO
+	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 10:54:18 -0400
+Received: from smtp.codeaurora.org ([198.145.29.96]:60012)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <alindsay@codeaurora.org>)
+	id 1e1ZRf-0000lC-9P; Mon, 09 Oct 2017 10:54:15 -0400
+Received: by smtp.codeaurora.org (Postfix, from userid 1000)
+	id AABE66330B; Mon,  9 Oct 2017 14:46:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
+	s=default; t=1507560852;
+	bh=HcDiFJruxlCuac1rcI7d+SxoenZr5/LGA+xdjTl+0Kg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=SYRstFMpuga3EoGRNtWu5yo8s+6t2ofiNsxS9nf+e9lWTtbe0W+cU0DBmDnitdD8B
+	ECsvO60WTqt8Bc2tgQYw4q9Dv5vfQWYs0gEsXLX7zaRwq6UcYYCnqvhxhdyuBoTwDj
+	GEVVKBoQK+TNvlx0LNmstqOwqaotZmCAe82Fbfco=
+Received: from codeaurora.org (global_nat1_iad_fw.qualcomm.com [129.46.232.65])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	(Authenticated sender: alindsay@smtp.codeaurora.org)
+	by smtp.codeaurora.org (Postfix) with ESMTPSA id 4A46A63038;
+	Mon,  9 Oct 2017 14:46:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
+	s=default; t=1507560409;
+	bh=HcDiFJruxlCuac1rcI7d+SxoenZr5/LGA+xdjTl+0Kg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=OLZ+ZZdy1dgxXYYvpUxIQ8FWaP7oqzgU0v5+mF4vxPuKo19XgzfKgaEdEtMCwVSYA
+	vO6iE8+JZeDbklpYM9bSvzFZ7OZypi2ycG+F6OEHMg85Z0w5OvDeLdoFCN5TJ4nEmA
+	8Ik/PwyopnT3do8zLhNHJymd6zINjp7j8bX2ydF8=
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 4A46A63038
+Authentication-Results: pdx-caf-mail.web.codeaurora.org;
+	dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: pdx-caf-mail.web.codeaurora.org;
+	spf=none smtp.mailfrom=alindsay@codeaurora.org
+Date: Mon, 9 Oct 2017 10:46:42 -0400
+From: Aaron Lindsay <alindsay@codeaurora.org>
+To: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Alistair Francis <alistair.francis@xilinx.com>, Wei Huang <wei@redhat.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Message-ID: <20171009144641.GA3676@codeaurora.org>
+References: <1506737310-21880-1-git-send-email-alindsay@codeaurora.org>
 MIME-Version: 1.0
-Received: by 10.140.94.165 with HTTP; Mon, 9 Oct 2017 07:47:56 -0700 (PDT)
-In-Reply-To: <CAFEAcA9M9ZpcAHB4eZ2zh9jA6YSWpLoEPiAznnL2-SSdJoW+Mw@mail.gmail.com>
-References: <20170918195100.17593-1-andrew.smirnov@gmail.com>
-	<20170918195100.17593-3-andrew.smirnov@gmail.com>
-	<CAFEAcA9M9ZpcAHB4eZ2zh9jA6YSWpLoEPiAznnL2-SSdJoW+Mw@mail.gmail.com>
-From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Date: Mon, 9 Oct 2017 07:47:56 -0700
-Message-ID: <CAHQ1cqEQpgr1Qgwr9rUnpiUXs_=jKSnzpJFQ=Q6GK+5vpT-x6A@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
-Subject: Re: [Qemu-arm] [PATCH 02/17] imx_fec: Do not calculate FEC
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1506737310-21880-1-git-send-email-alindsay@codeaurora.org>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 198.145.29.96
+Subject: Re: [Qemu-arm] [PATCH v2 00/13] More fully implement ARM PMUv3
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,74 +109,82 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Jason Wang <jasowang@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Andrey Yurovsky <yurovsky@gmail.com>
+Cc: Michael Spradling <mspradli@codeaurora.org>, qemu-devel@nongnu.org,
+	Digant Desai <digantd@codeaurora.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +zKk4ENXJvDo
+X-TUID: CPSPPnUgPQPV
 
-On Fri, Oct 6, 2017 at 6:48 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 18 September 2017 at 20:50, Andrey Smirnov <andrew.smirnov@gmail.com> wrote:
->> Save some computation time and avoid calculating CRC's frame
->>
->> Cc: Peter Maydell <peter.maydell@linaro.org>
->> Cc: Jason Wang <jasowang@redhat.com>
->> Cc: qemu-devel@nongnu.org
->> Cc: qemu-arm@nongnu.org
->> Cc: yurovsky@gmail.com
->> Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
->> ---
->>  hw/net/imx_fec.c | 9 +++------
->>  1 file changed, 3 insertions(+), 6 deletions(-)
->>
->> diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
->> index 88b4b049d7..75822344fc 100644
->> --- a/hw/net/imx_fec.c
->> +++ b/hw/net/imx_fec.c
->> @@ -1032,9 +1032,7 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
->>      IMXENETBufDesc bd;
->>      uint32_t flags = 0;
->>      uint32_t addr;
->> -    uint32_t crc;
->>      uint32_t buf_addr;
->> -    uint8_t *crc_ptr;
->>      unsigned int buf_len;
->>      size_t size = len;
->>
->> @@ -1048,8 +1046,6 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
->>
->>      /* 4 bytes for the CRC.  */
->>      size += 4;
->> -    crc = cpu_to_be32(crc32(~0, buf, size));
->> -    crc_ptr = (uint8_t *) &crc;
->>
->>      /* Huge frames are truncted.  */
->>      if (size > ENET_MAX_FRAME_SIZE) {
->> @@ -1090,9 +1086,10 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
->>          dma_memory_write(&address_space_memory, buf_addr, buf, buf_len);
->>          buf += buf_len;
->>          if (size < 4) {
->> +            const uint8_t zeros[4] = { 0 };
->> +
->>              dma_memory_write(&address_space_memory, buf_addr + buf_len,
->> -                             crc_ptr, 4 - size);
->> -            crc_ptr += 4 - size;
->> +                             zeros, 4 - size);
->>          }
->>          bd.flags &= ~ENET_BD_E;
->>          if (size == 0) {
->
-> This looks a bit odd. Doesn't the hardware calculate the CRC here?
->
+Ping!
 
-It does, it just seemed to me that since the hardware also has a "CRC
-error" bit in its status register, there would be few if any users of
-the actual calculated CRC value. Given how eTSEC emulation layer gets
-away without calculating CRC I thought that it might be possible to
-have this optimization here as well.
+Unfortunately I'm not sure who to add other than the current recipients,
+but I'm eager for feedback and would love to work this into something
+that will allow for using the full ARM PMU. 
 
-I can drop this patch if this seems risky.
+I've also updated Peter Crosthwaite's email since the xilinx one appears
+to be stale.
 
-Thanks,
-Andrey Smirnov
+-Aaron
+
+On Sep 29 22:08, Aaron Lindsay wrote:
+> The ARM PMU implementation currently contains a basic cycle counter, but it is
+> often useful to gather counts of other events and filter them based on
+> execution mode. These patches flesh out the implementations of various PMU
+> registers including PM[X]EVCNTR and PM[X]EVTYPER, add a struct definition to
+> represent arbitrary counter types, implement mode filtering, and add
+> instruction, cycle, and software increment events.
+> 
+> I am particularly interested in feedback on the following two patches because I
+> think I'm likely Doing It Wrong:
+>  [1] target/arm: Filter cycle counter based on PMCCFILTR_EL0
+>  [2] target/arm: PMU: Add instruction and cycle events
+> 
+> In order to implement mode filtering in an event-driven way, [1] adds a pair of
+> calls to pmu_sync() surrounding every update to a register/variable which may
+> affect whether any counter is currently filtered. These pmu_sync() calls
+> ultimately call cpu_get_icount_raw() for enabled instruction and cycle counters
+> when using icount. Unfortunately, cpu->can_do_io may otherwise be zero for
+> these calls so the current implementation in [2] temporarily sets can_do_io to
+> 1. I haven't see any ill side effects from this in my testing, but it doesn't
+> seem like the right way to handle this.
+> 
+> I would like to eventually add sending interrupts on counter overflow.
+> Suggestions for the best direction to handle this are most welcome.  
+> 
+> Thanks for any feedback,
+> Aaron
+> 
+> Aaron Lindsay (13):
+>   target/arm: A53: Initialize PMCEID[0]
+>   target/arm: Check PMCNTEN for whether PMCCNTR is enabled
+>   target/arm: Reorganize PMCCNTR read, write, sync
+>   target/arm: Mask PMU register writes based on PMCR_EL0.N
+>   target/arm: Allow AArch32 access for PMCCFILTR
+>   target/arm: Filter cycle counter based on PMCCFILTR_EL0
+>   target/arm: Implement PMOVSSET
+>   target/arm: Split arm_ccnt_enabled into generic pmu_counter_enabled
+>   target/arm: Add array for supported PMU events, generate PMCEID[01]
+>   target/arm: Finish implementation of PM[X]EVCNTR and PM[X]EVTYPER
+>   target/arm: PMU: Add instruction and cycle events
+>   target/arm: PMU: Set PMCR.N to 4
+>   target/arm: Implement PMSWINC
+> 
+>  target/arm/cpu.c       |  10 +-
+>  target/arm/cpu.h       |  34 +++-
+>  target/arm/cpu64.c     |   2 +
+>  target/arm/helper.c    | 535 +++++++++++++++++++++++++++++++++++++++++--------
+>  target/arm/kvm64.c     |   2 +
+>  target/arm/machine.c   |   2 +
+>  target/arm/op_helper.c |   4 +
+>  7 files changed, 500 insertions(+), 89 deletions(-)
+> 
+> -- 
+> Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies, Inc.
+> Qualcomm Technologies, Inc. is a member of the
+> Code Aurora Forum, a Linux Foundation Collaborative Project.
+> 
+
+-- 
+Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies, Inc.
+Qualcomm Technologies, Inc. is a member of the
+Code Aurora Forum, a Linux Foundation Collaborative Project.

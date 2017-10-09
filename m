@@ -1,153 +1,171 @@
-Received: by 10.223.197.9 with SMTP id q9csp2664629wrf;
-        Mon, 9 Oct 2017 10:12:31 -0700 (PDT)
-X-Received: by 10.55.90.199 with SMTP id o190mr11087663qkb.180.1507569151478;
-        Mon, 09 Oct 2017 10:12:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507569151; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp2666571wrf;
+        Mon, 9 Oct 2017 10:14:25 -0700 (PDT)
+X-Received: by 10.55.197.152 with SMTP id k24mr9525884qkl.178.1507569265595;
+        Mon, 09 Oct 2017 10:14:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507569265; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dd4YijsTOCSkKIjn1UlP5VcWepQPcNxQ/gFyWbfUIPPg9pw1Bi4AQe4risgIFTwMHg
-         QdLnO+UEH5en4GY80sS8YdYf0AolUxi+5a1D5fOOK9qB5JihmjMENh41hRY0LWSH3ea5
-         j4+cwOdJtZxIvC1FdTR12QYf+ap5jqkjrrZfw9XtmjLapxiTFPocLDqsGky1mjpxsWvW
-         bGNKb/9lP59z15I/dWx6WkTQ9DPpvCIRNfK/H/iE4jMK41VNG69s4X4tzDbdZaY9KISh
-         8Do/F7rP3gRlxy1N6TUKruHM3PDornPan7liP58TPyFJflI3+NqRY/3UN/3GqiwFy3nJ
-         w0gA==
+        b=nqTcgPvOTGs7o9jV1AIroksMRgecD4HSx/CSsLfC7hdRD+Mh/ncsVT9srUk+s7Fj+9
+         279FKEuAxlYy9NDoCq3fuDfuRIFuVQGwNRnx8C2iDnVXZckZdf0+AqfReIvpXWyPHFm6
+         S/pnasP2nBxquDp6I18jzOXtKdjMrDnlTQUubtefxXjLYxi8d74dUFrAUqk6vSg1mzDT
+         jGPyS5F9y/AJ7gOjqsky7WRgfWWnJ6Q6uGD+pJS3TlFX9rZYgp2BUbaAgc0oYDhC6KYs
+         BZYFpqzzr9HmvFANgIrc4gRmKptQ4KrD8wAauiNCcIhTbjx8xDw/9oWJt4sCMxLVs+1a
+         AfDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=VPA3RLfD5hsy7cENC+EH/9nxxyDhNDgLGBncmUUt468=;
-        b=IiKWqqWDxphi5/zu6h3D4dIyHElF9Yc8gj9WhqKmvq4ShclR7YGcn5GvisCk30qriG
-         aZF8CuEWhP5roG10IQ1TX1A6FnRXtGZBWAlrcqEY5CdNc8ajP6tGuvkes0pc4a3G34tw
-         p7aZ6C0UTv4w7dXCQ1cDlWBtqA/7cIqDpLic3/kLoLCtxZBuJNvhx8udXd0LDCi/rtWL
-         sV/ue6oM/++PEbKqXXMJrGDMT246cPbn9IcTJ/XbhXvPyxA5KW/ulVRlzvJUMJO/tBbL
-         PFcIRcMB1St7M7UG98h35fwB9HemOeq63ycjqeF3iMrRd1/GbDYmMbxDLmZM1MS3m0Al
-         wDhA==
+        bh=9NP+eARie8R3T2O6MVgkSVevMEHn9HBQmr8moBz1ioA=;
+        b=CQ+ADcujuauhnZnOK90e8g4xzVyVYIDMoy3EuA96PMRK5gRQxVvBtaFgkeUeS4zdvR
+         OBP546hnwiZV0BxQTa4QBQ3fj1Fr29dVia3G4IftnJyQt2CfbRiomTU2Hgjn/1okl8YX
+         ulTwxyxaqmguGC+Ep5Ba7H3+w36dK+furxcILHoRfmTmbrMSs1QyI7YSDgfLM1Dz5WzG
+         UP1gIUbIHC3UnvYeC6YieYZldlXg40Y1nM1uuQsjwLTysGadfnFmSSTjse0FkV8ohMtJ
+         Lt98jGMHWQ6KQWBbSHwkQtpXgl1irJGLjua6LhWBakeHQ39YhGZEER8RBUWNueoHTqqF
+         aN0w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=CiNlNTXt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Jw8WPK2q;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m4si2489746qkc.75.2017.10.09.10.12.31
+        by mx.google.com with ESMTPS id c16si6720499qkj.104.2017.10.09.10.14.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 09 Oct 2017 10:12:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 09 Oct 2017 10:14:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=CiNlNTXt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Jw8WPK2q;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58958 helo=lists.gnu.org)
+Received: from localhost ([::1]:58964 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e1bbT-0004rA-1B
-	for alex.bennee@linaro.org; Mon, 09 Oct 2017 13:12:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47280)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1e1bdJ-0005s6-4U
+	for alex.bennee@linaro.org; Mon, 09 Oct 2017 13:14:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48014)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e1bZ5-0003RC-M0
-	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 13:10:09 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1e1bbv-0005Dg-Fz
+	for qemu-devel@nongnu.org; Mon, 09 Oct 2017 13:13:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e1bZ4-0003es-H9
-	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 13:10:03 -0400
-Received: from mail-wm0-x229.google.com ([2a00:1450:400c:c09::229]:51781)
+	(envelope-from <peter.maydell@linaro.org>) id 1e1bbu-0005ed-JN
+	for qemu-devel@nongnu.org; Mon, 09 Oct 2017 13:12:59 -0400
+Received: from mail-wm0-x231.google.com ([2a00:1450:400c:c09::231]:50189)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1e1bZ4-0003dQ-9z
-	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 13:10:02 -0400
-Received: by mail-wm0-x229.google.com with SMTP id f4so25374757wme.0
-	for <qemu-arm@nongnu.org>; Mon, 09 Oct 2017 10:10:02 -0700 (PDT)
+	id 1e1bbu-0005e3-DX
+	for qemu-devel@nongnu.org; Mon, 09 Oct 2017 13:12:58 -0400
+Received: by mail-wm0-x231.google.com with SMTP id u138so24381387wmu.5
+	for <qemu-devel@nongnu.org>; Mon, 09 Oct 2017 10:12:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=VPA3RLfD5hsy7cENC+EH/9nxxyDhNDgLGBncmUUt468=;
-	b=CiNlNTXtx0++kAlmKKQCNWTE/r+nBYV1xfBj4V6BNTvjn2MMSfMKUi2kdsiRxEtFBu
-	vKe37XTYMZNxgNf0UhjWdnrLNxrpypAmp0QbS0pDo1eB+ahNMxftK8Mn+GjgpLuPOVQh
-	qflj0qVJNCpw3n9+9y47QqpFffMo86e9ED0iU=
+	:cc; bh=9NP+eARie8R3T2O6MVgkSVevMEHn9HBQmr8moBz1ioA=;
+	b=Jw8WPK2q3Y3Mc3xWTNMhso8gSivSwFo+QQkrLr7kSrkVBQRJ5pDKd92T/HdWcw3ylR
+	kJoNywVwIeNFtSjD+6qIgqOOMQA7cRTgf3+6/GklVS48W1Q5E6aNS42XBbhwvs1lQj6A
+	daRwWC8Zkdg0F2WBwBeffsRQyse2+Kb4oSI2w=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=VPA3RLfD5hsy7cENC+EH/9nxxyDhNDgLGBncmUUt468=;
-	b=oNeJgVtxgvHBBnYjjJEI+UFqvzZBA/9fTwfuaGK/eAz2hX+tCreNPHttMxrrlBggoM
-	XPSxLCAphcWpyE7uzc8krXHEBR7LK9mLio6sqVrx25zgifCmvO8kFyR/4S7avGS7LjUM
-	iMr/jxXc82CP6ft5AUAMLGbXC6WsfsrAB7SC/kk4bIuq6PCmqzk36TLUUL9qFPUxNcp9
-	WXad5GYovsN1ArXCVier0N5o36c78M8WB65QPIh/KMFO7FzpDYkeBRr4CZumFBRLbwgM
-	8CWvBtZUPJWJmjTZTznxyIMqzlB5zY5OurMLCe8n/YPa/sgLXYm3mX31T+wbsVuICal/
-	wd9Q==
-X-Gm-Message-State: AMCzsaX1oeECL3oxCbm2vvgWqR0yjrwH+RJqDbeKcyTR1Z0UCVMs2ER7
-	9zfFNdYBbBOSoUTKglf0fJyhABP+cO3iaR+22719FA==
-X-Google-Smtp-Source: AOwi7QD2L0bNTdYalHYy0sfKDNV4dlWSHv7PZaDk3krUl2uMCbjVxLnC/+SkIDEHcH/eTMvCZCYlJKAVegEgP3KDpuI=
-X-Received: by 10.223.175.56 with SMTP id z53mr11479343wrc.177.1507569001341; 
-	Mon, 09 Oct 2017 10:10:01 -0700 (PDT)
+	bh=9NP+eARie8R3T2O6MVgkSVevMEHn9HBQmr8moBz1ioA=;
+	b=MH58lZ0fcR3anzeI9gOF47mu8J3P1VhtHdh3VpSfLUvpmcU1FVSp9m39oQUntABr7q
+	qNkhT/nqPj/yOJvo48T1nH3djYhqjaaunu8KdM4jcUKwqz9bHE3W1Ukvqr9XB9EPJGzJ
+	HRrnabRMCPWoeaQrJo16/bgaJ5JLRxnaFeL5mWqp5wLcFLt9jhpcqHegtaKvMNj70G7/
+	NmMkjJQalgxYIBC8ofGrSWm9KCPbQEWCkEpTKTaMlo8pybSt1mfuPgRr5MSJJNy/D0aM
+	2Bhf5c/8/C5N9eUX0TvkWAunsfWjsQlrAhdZds2Nfv8tDCCgVzf+mtcXBXZKXVJR6UPP
+	vvOg==
+X-Gm-Message-State: AMCzsaWz7smxvxQb+iOEXLzDLFP6TA9HBwISiOOTS3hoF08ywj88PIsY
+	ZLXm1breQiEAyDWisq6AskFDHZ8odbZjW5ZipNjBRA==
+X-Google-Smtp-Source: AOwi7QDQdIkM8PyjvrOoluBfDm5ML3W04rglmhs0P1HdkAKAlFEw59vdutalJIJsDI+omxm3gzf8IMUXkuaAMyHQa7s=
+X-Received: by 10.28.113.196 with SMTP id d65mr8025267wmi.151.1507569177402;
+	Mon, 09 Oct 2017 10:12:57 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.223.128.207 with HTTP; Mon, 9 Oct 2017 10:09:40 -0700 (PDT)
-In-Reply-To: <CAHQ1cqGy5xaqf4sVT34fv=cRDTDhpi2Vfx01SA2+cvdYqiArPA@mail.gmail.com>
-References: <20170918195100.17593-1-andrew.smirnov@gmail.com>
-	<20170918195100.17593-17-andrew.smirnov@gmail.com>
-	<CAFEAcA_a_YLw4u5SwCF-L_n630iiJJwyphbKc2M-orvFs7dERg@mail.gmail.com>
-	<CAHQ1cqGy5xaqf4sVT34fv=cRDTDhpi2Vfx01SA2+cvdYqiArPA@mail.gmail.com>
+Received: by 10.223.128.207 with HTTP; Mon, 9 Oct 2017 10:12:36 -0700 (PDT)
+In-Reply-To: <1504286483-23327-8-git-send-email-eric.auger@redhat.com>
+References: <1504286483-23327-1-git-send-email-eric.auger@redhat.com>
+	<1504286483-23327-8-git-send-email-eric.auger@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 9 Oct 2017 18:09:40 +0100
-Message-ID: <CAFEAcA-MyTaffU7mEV3XH95NOvFmaKm2a=VkFbDU6n6dwTpuRA@mail.gmail.com>
-To: Andrey Smirnov <andrew.smirnov@gmail.com>
+Date: Mon, 9 Oct 2017 18:12:36 +0100
+Message-ID: <CAFEAcA-QNCreM0JQZYgHpE5kwXoidrY=gxzSfSgMJsEZ_5D=Jg@mail.gmail.com>
+To: Eric Auger <eric.auger@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::229
-Subject: Re: [Qemu-arm] [PATCH 16/17] i.MX: Add i.MX7 SOC implementation.
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:400c:c09::231
+Subject: Re: [Qemu-devel] [PATCH v7 07/20] hw/arm/smmuv3: Queue helpers
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	Andrey Yurovsky <yurovsky@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: q5DXAkPWeW2h
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Radha Mohan <mohun106@gmail.com>, Andrew Jones <drjones@redhat.com>,
+	Trey Cain <tcain@qti.qualcomm.com>,
+	Radha.Chintakuntla@cavium.com, Sunil.Goutham@cavium.com,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	jean-philippe.brucker@arm.com, Tomasz Nowicki <tn@semihalf.com>,
+	Will Deacon <will.deacon@arm.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	Peter Xu <peterx@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	Christoffer Dall <christoffer.dall@linaro.org>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	robin.murphy@arm.com, wtownsen@redhat.com,
+	Bharat Bhushan <bharat.bhushan@nxp.com>,
+	Prem Mallappa <prem.mallappa@gmail.com>, eric.auger.pro@gmail.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6kWn6d95fYil
 
-On 9 October 2017 at 17:18, Andrey Smirnov <andrew.smirnov@gmail.com> wrote:
-> On Fri, Oct 6, 2017 at 7:38 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
->> On 18 September 2017 at 20:50, Andrey Smirnov <andrew.smirnov@gmail.com> wrote:
->>> +static void fsl_imx7_realize(DeviceState *dev, Error **errp)
->>> +{
->>> +    FslIMX7State *s = FSL_IMX7(dev);
->>> +    Object *o;
->>> +    int i;
->>> +    qemu_irq irq;
->>> +
->>> +    for_each_cpu(i) {
->>> +       o = OBJECT(&s->cpu[i]);
->>> +
->>> +        object_property_set_int(o, QEMU_PSCI_CONDUIT_SMC,
->>> +                                "psci-conduit", &error_abort);
->>> +
->>> +        object_property_set_bool(o, false, "has_el3", &error_abort);
->>
->> Does this SoC's CPU really not have EL3?
->>
+On 1 September 2017 at 18:21, Eric Auger <eric.auger@redhat.com> wrote:
+> We introduce helpers to read/write into the circular queues.
+> smmuv3_read_cmdq and smmuv3_write_evtq will become static
+> later on.
 >
-> The SoC support TrustZone, so I thing it does have EL3. This setting
-> however was breaking SMP support(I can't remember more details) and
-> that's why I added the code setting it to "false".
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-The idea is that for new boards (where we start from "no guest
-code works") we try to model the hardware correctly from the
-start, ie figure out why SMP doesn't work if you say you have
-EL3 (probably because either you need to provide boot code
-for the other CPUs or implement a power controller, depending
-on how SMP secondary CPU start works on this hardware).
-Existing board models that were added before we got EL3 working
-tend to set has_el3 to false even though the h/w we're modelling
-has EL3, because they're maintaining backwards compatibility with
-previous released versions of QEMU where we didn't implement EL3.
-New boards don't have that back-compat requirement, so if it's
-not too hard to get it working from the start that's preferable.
+See comments on a previous patch where I suggest a better
+way to implement the queue increment/wrapping handling.
+
+> +typedef enum {
+> +    CMD_Q_EMPTY,
+> +    CMD_Q_FULL,
+> +    CMD_Q_PARTIALLY_FILLED,
+> +} SMMUQStatus;
+> +
+> +#define Q_ENTRY(q, idx)  (q->base + q->ent_size * idx)
+> +#define Q_WRAP(q, pc)    ((pc) >> (q)->shift)
+> +#define Q_IDX(q, pc)     ((pc) & ((1 << (q)->shift) - 1))
+> +
+> +static inline SMMUQStatus __smmu_queue_status(SMMUV3State *s, SMMUQueue *q)
+
+No __ prefixes, please.
+
+> +{
+> +    uint32_t prod = Q_IDX(q, q->prod);
+> +    uint32_t cons = Q_IDX(q, q->cons);
+> +
+> +    if ((prod == cons) && (q->wrap.prod != q->wrap.cons)) {
+> +        return CMD_Q_FULL;
+> +    } else if ((prod == cons) && (q->wrap.prod == q->wrap.cons)) {
+> +        return CMD_Q_EMPTY;
+> +    }
+> +    return CMD_Q_PARTIALLY_FILLED;
+> +}
+> +#define smmu_is_q_full(s, q) (__smmu_queue_status(s, q) == CMD_Q_FULL)
+> +#define smmu_is_q_empty(s, q) (__smmu_queue_status(s, q) == CMD_Q_EMPTY)
+> +
+> +static inline int __smmu_q_enabled(SMMUV3State *s, uint32_t q)
+> +{
+> +    return smmu_read32_reg(s, SMMU_REG_CR0) & q;
+> +}
+> +#define smmu_cmd_q_enabled(s) __smmu_q_enabled(s, SMMU_CR0_CMDQ_ENABLE)
+> +#define smmu_evt_q_enabled(s) __smmu_q_enabled(s, SMMU_CR0_EVTQ_ENABLE)
+
+This code seems to be rather macro-happy.
 
 thanks
 -- PMM

@@ -1,97 +1,106 @@
-Received: by 10.223.159.82 with SMTP id f18csp2111287wrg;
-        Fri, 24 Nov 2017 05:39:23 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMbuKvrZ5wrSRPPhpdceRn6TZH9hdGAQ/8/1g54Tsp1rMmPryQN69VIyMiCKtj1nx28p+Uhk
-X-Received: by 10.129.86.214 with SMTP id k205mr11874863ywb.478.1511530763722;
-        Fri, 24 Nov 2017 05:39:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1511530763; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp1919535wrf;
+        Sun, 8 Oct 2017 17:04:27 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QDIeRUS18YTjIQTpssYFu+KD4zVhYe9J8zWVbWTRlPaVAEaOATUcdk2G8VWvkW7y87IjxmE
+X-Received: by 10.55.92.195 with SMTP id q186mr6634844qkb.154.1507507467854;
+        Sun, 08 Oct 2017 17:04:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507507467; cv=none;
         d=google.com; s=arc-20160816;
-        b=fC3fw2UL5KSn844xBdohwOJTFqL3SB4l/pRJHFbN7jxdj4jS3s0ecVD7szT5eBtAJr
-         qcb5AzdPJkkp7C8M1C8ETT1RjEt/hloSm8yWpYnIgV66MaYrNO8CTYDvCRPapGsZXoPV
-         hSaJ/RXM5CHig17z/FzoNmtbifGUmhSeoK+l8HUiuQWMBRWRk6XFma1Zv/8AIoaNUS12
-         hvN8+6JZAPOR9ZK0Up9bciBKeNI4QY9aEkrF39mLLRFyKnpUPSYTsGGpOm7hH7K3Ezq6
-         uocOivyBURAn+wtNAHeVImAwkW2Q96oZUQNd3p0+CjQT4Lzd7DGUTXMFm8madBRYoMEt
-         8uGA==
+        b=HWknNkguGAWziytbXDo9irJuFygBOWF8cVOHStvoGqUdzgzzZmXzooTt5h9QSfpFL/
+         /TjeQzRT1QMLTO3P1Z5Q/TJJrXw9XRxC7wuStaJLCueEVrrgl5YclXpqTSiOD/SMOdHj
+         jeBSneCJcuXtfnOqQ8dSQuUB36RG8c5NlRFUPU5T49gPnbgAmtiSCVNR2onUkaYQtxw3
+         vIqfdsynKm6qbizEMeMbgU4+3IdYkh7JBwx6BtVCjZ23+h8eXwhP9nWJFdIIEfSro4Ps
+         diIF1NOh8MK4znBklBw9OzJAnFC8ce6HOlrBq10IzCIosgPufjn734yBoopn/HYoHswp
+         sV5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:mime-version:references
+         :in-reply-to:date:to:from:message-id:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=nr0fCyK5XoXJIyQmpfggr+kvGmq1kw2M8K5bAZGEhUY=;
-        b=y3b/XsjmjdKv1yzS8aFq24F0yN8na34RZgqMQ2Ub2Vnn989bUvTGgLHGT9gAgA4TSu
-         CntU7qUKPS/BDybtpZjZC9MfjORh6MYieSK6rK2UKo33a2LhnyNaSZxE+bunPwQiLZt0
-         wfQkw1E8t5HDHFUILiyRyh2yACQUA8M+iN6MjDPlpxNifJq+10sQtzbrxaeRetceZKWr
-         7R44f3L2E+BJvXSMRtWFaFELiZrgWjPhh0iHm0MyQQaCKpqu3msMFIW28LwkLQ/fJwHS
-         RJ1j4CH4EHQxMg6A0CWrK/VFNziNH9ri4bq+A4rFOc1DPZeahipY3/KzQkGaVwTSiYq7
-         diBg==
+        bh=DYZhfeR/pzFk8uG7GC4IAjG78JdtY3lcvZL2vFqE834=;
+        b=vGv23N/y2rL+0TFqD8uAhAilbayjdu4fpgoBf3lw8PDH3W2K4AfvzKJtZraUN8z8VL
+         APfLIP8kQUIlCTZwh/a64tPkDSVAbbU3WtVpAoBq6ZwUxx/h7mTuVli7IWh90xBpyHDv
+         pTvp8fPw9eqA8BGqjEGz4b7FccpyTUo2lnQwWsvRyfQ1LfOlHNALXLKl/XI4j1lxY0Rg
+         SV4GCax/cJoxU/bP/97Z9eV3v946rlzvf7XoRgXFabBhe+M0hODdlMevhVgi9S7Pv40T
+         PacwBm0hyl+U2gJGVNQbtUzX1Mx8DInapHyTiBZ6AR2viMQeP2kG4emcgx4Gxjn+56ID
+         VrOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=kIwqGS+2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=cl+j2slr;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=VlMiErvk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f11si2336254ywa.339.2017.11.24.05.39.23
+        by mx.google.com with ESMTPS id t6si3104773qkd.88.2017.10.08.17.04.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 24 Nov 2017 05:39:23 -0800 (PST)
+        Sun, 08 Oct 2017 17:04:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=kIwqGS+2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49327 helo=lists.gnu.org)
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=cl+j2slr;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=VlMiErvk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:55528 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eIECR-0007lA-2j
-	for alex.bennee@linaro.org; Fri, 24 Nov 2017 08:39:23 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47763)
+	id 1e1LYZ-0007DR-EA
+	for alex.bennee@linaro.org; Sun, 08 Oct 2017 20:04:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42450)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eIEC6-0007kh-9v
-	for qemu-arm@nongnu.org; Fri, 24 Nov 2017 08:39:08 -0500
+	(envelope-from <andrew@aj.id.au>) id 1e1LYS-0007DL-T1
+	for qemu-arm@nongnu.org; Sun, 08 Oct 2017 20:04:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eIEC5-0008J1-7U
-	for qemu-arm@nongnu.org; Fri, 24 Nov 2017 08:39:02 -0500
-Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:34464)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eIEC5-0008Ir-2R
-	for qemu-arm@nongnu.org; Fri, 24 Nov 2017 08:39:01 -0500
-Received: by mail-oi0-x244.google.com with SMTP id a75so15104826oib.1
-	for <qemu-arm@nongnu.org>; Fri, 24 Nov 2017 05:39:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=nr0fCyK5XoXJIyQmpfggr+kvGmq1kw2M8K5bAZGEhUY=;
-	b=kIwqGS+2vSpAiJbPThkc90JNYAzr7TqRSGZRa/eG22RhSa72ssUqQzhn5/bfKfaIXc
-	xDTRjZit9ubA1480632kcmCwsLWd0+zd3sEkmfLuCyF7gW4paDI2wOWPjaGjkwYVgrlY
-	zTkL0OOSCPhrOC2cXiQ5FubnFhOMECpoRV6zI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=nr0fCyK5XoXJIyQmpfggr+kvGmq1kw2M8K5bAZGEhUY=;
-	b=o8T8wDIuwxL8jmkHhUvYR/icrFFERaVoxLl/VZgemjx5PHSO9lBlNU8NA1sZ6ntSwX
-	DIeR8tgeZ7A9QH+Serjd9KMQ0Ds/TjdWI1Ga25VZF9kwKusUqy830+y/rIcyABAYyr7H
-	F8fRQylruFE24om7zWJH23D6MbCz8AlqxuUWjGUt0RL4FDONhH5yfi9NEIB/b+HLDzkY
-	dUmqDPvJlg2mIH+uuB2CLSUiGjH6axMo7tTIxUrBAexgbdjQAzXvBjpnzTe2A9pKtQoc
-	l4AzQN5wYDtMllaLlbFvGQieQtlMHl/OnRPPOTxO5Nn1I9yYiRFLlNOQrnI7KAQ6h6NM
-	2Ubg==
-X-Gm-Message-State: AJaThX7QJvBthlBVf3W5OIgMpokKqmeJymVmQM5NKimw9ojvSC62ynd0
-	rMD+qZtlMFcKoa7W4FUNDsPzXylKbeF+2sAP8oc/8g==
-X-Received: by 10.202.83.22 with SMTP id h22mr8722975oib.8.1511530740172; Fri,
-	24 Nov 2017 05:39:00 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.157.63.74 with HTTP; Fri, 24 Nov 2017 05:38:39 -0800 (PST)
-In-Reply-To: <1511530238-18318-4-git-send-email-eric.auger@redhat.com>
-References: <1511530238-18318-1-git-send-email-eric.auger@redhat.com>
-	<1511530238-18318-4-git-send-email-eric.auger@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 24 Nov 2017 13:38:39 +0000
-Message-ID: <CAFEAcA-ro5AkFt-eAhDX+AhDv5HDs6oezS9UYuT+jsMy5jYMWw@mail.gmail.com>
-To: Eric Auger <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::244
-Subject: Re: [Qemu-arm] [PATCH v4 3/4] linux-headers: update to pre 4.15-rc0
+	(envelope-from <andrew@aj.id.au>) id 1e1LYP-0004Ls-Ni
+	for qemu-arm@nongnu.org; Sun, 08 Oct 2017 20:04:20 -0400
+Received: from out1-smtp.messagingengine.com ([66.111.4.25]:58137)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <andrew@aj.id.au>)
+	id 1e1LYP-0004Ku-Ak; Sun, 08 Oct 2017 20:04:17 -0400
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id 69F0F20BF3;
+	Sun,  8 Oct 2017 20:04:15 -0400 (EDT)
+Received: from frontend2 ([10.202.2.161])
+	by compute4.internal (MEProxy); Sun, 08 Oct 2017 20:04:15 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=cc
+	:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc
+	:x-sasl-enc; s=fm1; bh=DYZhfeR/pzFk8uG7GC4IAjG78JdtY3lcvZL2vFqE8
+	34=; b=cl+j2slrecZrax30sEnBhMPFO8bfTKXSaHODLb5FgeOmG59SqVbh1ZOHJ
+	Akj7WVG+cFPZ+E5Rc+oXCen+GeTfXjed6oKykfXTJK/f5qC5X29BWM5QkhLuVKoU
+	ZTNKAl4Nvd0pGBigr2ZALk3/1uL/Sh82QL2Qq5hjNXgEZsw5NOwlfUBlw1zh4ypT
+	Pvy+O0hwEhU+yvl64YY2DQvtQmygi4pObpDARtWMSuVVM5FZV+VmPoDwCALWeGb1
+	7QUSXJvcCKjnW6CFbMqgLi7mrZtxKkPSgpr/odqTbrNcqnY9+TJglt2vHTdClKk0
+	xNW5M2GbWR33YH/WzGndEIXfJ0knQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-sender
+	:x-me-sender:x-sasl-enc:x-sasl-enc; s=fm1; bh=DYZhfeR/pzFk8uG7GC
+	4IAjG78JdtY3lcvZL2vFqE834=; b=VlMiErvk1OEWNIvZvXx9b2gbLvz01aZRvC
+	2aF3vQJB+3B1fPHoQNYcLKpLnM5fz7VvhVvFkTP8LSjA6iCyMxz6mpz1BhZcGZTu
+	kkXyxKXgtZAJYA8so1yu7s7e8SBhCClDROByTnNjnn9csa74pP1iI7XyMdjvSEHS
+	Qv1jwycswIsHc542vqUxidbrkhnzvSVyroeAy4Uzh6I9/17Gm/NeTrgJ9PK5NYqX
+	74qEs9OvmHVmR0ej9Ufpq55hs3FZwncr/XOHpCmnGozUD/URNYolA9oNIj3v3YKY
+	CgB7U9DEe0eHXGxNt2pGA5U3de7+7Xjuo5xbmpG0qTfhOtyOf3FQ==
+X-ME-Sender: <xms:_7zaWf5CPW3GyF1pLTbYogI_J-HJJnITr9RA5RMUIp1i4pAL4F6GCw>
+X-Sasl-enc: 3j+RDnvhjyOMJ2atWo534EArwPADI1/4miRfriiDY8X4 1507507454
+Received: from keelia (unknown [203.0.153.9])
+	by mail.messagingengine.com (Postfix) with ESMTPA id E42FA247A6;
+	Sun,  8 Oct 2017 20:04:12 -0400 (EDT)
+Message-ID: <1507507449.5452.147.camel@aj.id.au>
+From: Andrew Jeffery <andrew@aj.id.au>
+To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, Peter Maydell
+	<peter.maydell@linaro.org>
+Date: Mon, 09 Oct 2017 10:34:09 +1030
+In-Reply-To: <20170920070135.31379-2-clg@kaod.org>
+References: <20170920070135.31379-1-clg@kaod.org>
+	<20170920070135.31379-2-clg@kaod.org>
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-oY3VsICoF9BwTCvYHlV6"
+X-Mailer: Evolution 3.22.6-1ubuntu1 
+Mime-Version: 1.0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.111.4.25
+Subject: Re: [Qemu-arm] [PATCH v2 1/6] aspeed: add support for the
+ witherspoon-bmc board
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,75 +112,163 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, Vijay Kilari <vijay.kilari@gmail.com>,
-	Juan Quintela <quintela@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>, wu.wubin@huawei.com,
-	wanghaibin.wang@huawei.com, Christoffer Dall <christoffer.dall@linaro.org>,
-	eric.auger.pro@gmail.com
+Cc: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ugw5XpAo2fUL
+X-TUID: GHgvvnwsrLH9
 
-On 24 November 2017 at 13:30, Eric Auger <eric.auger@redhat.com> wrote:
-> Update headers against post v4.14 and pre v4.15-rc0.
->
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+
+--=-oY3VsICoF9BwTCvYHlV6
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, 2017-09-20 at 09:01 +0200, C=C3=A9dric Le Goater wrote:
+> The Witherspoon boards are OpenPOWER system hosting POWER9 Processors.
+> Let's add support for their BMC including a couple of I2C devices as
+> found on real HW.
+>=C2=A0
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 > ---
->  include/standard-headers/asm-s390/virtio-ccw.h     |   1 +
->  include/standard-headers/asm-x86/hyperv.h          | 394 +--------------------
->  include/standard-headers/linux/input-event-codes.h |   2 +
->  include/standard-headers/linux/input.h             |   1 +
->  include/standard-headers/linux/pci_regs.h          |  45 ++-
->  linux-headers/asm-arm/kvm.h                        |   8 +
->  linux-headers/asm-arm/kvm_para.h                   |   1 +
->  linux-headers/asm-arm/unistd.h                     |   2 +
->  linux-headers/asm-arm64/kvm.h                      |   8 +
->  linux-headers/asm-arm64/unistd.h                   |   1 +
->  linux-headers/asm-powerpc/epapr_hcalls.h           |   1 +
->  linux-headers/asm-powerpc/kvm.h                    |   1 +
->  linux-headers/asm-powerpc/kvm_para.h               |   1 +
->  linux-headers/asm-powerpc/unistd.h                 |   1 +
->  linux-headers/asm-s390/kvm.h                       |   1 +
->  linux-headers/asm-s390/kvm_para.h                  |   1 +
->  linux-headers/asm-s390/unistd.h                    |   4 +-
->  linux-headers/asm-x86/kvm.h                        |   1 +
->  linux-headers/asm-x86/kvm_para.h                   |   2 +-
->  linux-headers/asm-x86/unistd.h                     |   1 +
->  linux-headers/linux/kvm.h                          |   2 +
->  linux-headers/linux/kvm_para.h                     |   1 +
->  linux-headers/linux/psci.h                         |   1 +
->  linux-headers/linux/userfaultfd.h                  |   1 +
->  linux-headers/linux/vfio.h                         |   1 +
->  linux-headers/linux/vfio_ccw.h                     |   1 +
->  linux-headers/linux/vhost.h                        |   1 +
+> =C2=A0hw/arm/aspeed.c | 49 ++++++++++++++++++++++++++++++++++++++++++++++=
++++
+> =C2=A01 file changed, 49 insertions(+)
+>=C2=A0
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index ab895ad490af..81f522f711ae 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -46,6 +46,7 @@ enum {
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0PALMETTO_BMC,
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0AST2500_EVB,
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ROMULUS_BMC,
+> +=C2=A0=C2=A0=C2=A0=C2=A0WITHERSPOON_BMC,
+> =C2=A0};
+> =C2=A0
+> =C2=A0/* Palmetto hardware value: 0x120CE416 */
+> @@ -83,8 +84,12 @@ enum {
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0SCU_AST2500_HW_STRA=
+P_ACPI_ENABLE |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0\
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0SCU_HW_STRAP_SPI_MO=
+DE(SCU_HW_STRAP_SPI_MASTER))
+> =C2=A0
+> +/* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) *=
+/
+> +#define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
+> +
+> =C2=A0static void palmetto_bmc_i2c_init(AspeedBoardState *bmc);
+> =C2=A0static void ast2500_evb_i2c_init(AspeedBoardState *bmc);
+> +static void witherspoon_bmc_i2c_init(AspeedBoardState *bmc);
+> =C2=A0
+> =C2=A0static const AspeedBoardConfig aspeed_boards[] =3D {
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0[PALMETTO_BMC] =3D {
+> @@ -110,6 +115,14 @@ static const AspeedBoardConfig aspeed_boards[] =3D {
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.spi_model =3D "mx6=
+6l1g45g",
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.num_cs=C2=A0=C2=A0=
+=C2=A0=C2=A0=3D 2,
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0},
+> +=C2=A0=C2=A0=C2=A0=C2=A0[WITHERSPOON_BMC]=C2=A0=C2=A0=3D {
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.soc_name=C2=A0=C2=A0=3D=
+ "ast2500-a1",
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.hw_strap1 =3D WITHERSPO=
+ON_BMC_HW_STRAP1,
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.fmc_model =3D "mx25l256=
+35e",
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.spi_model =3D "mx66l1g4=
+5g",
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.num_cs=C2=A0=C2=A0=C2=
+=A0=C2=A0=3D 2,
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.i2c_init=C2=A0=C2=A0=3D=
+ witherspoon_bmc_i2c_init,
+> +=C2=A0=C2=A0=C2=A0=C2=A0},
+> =C2=A0};
+> =C2=A0
+> =C2=A0#define FIRMWARE_ADDR 0x0
+> @@ -337,11 +350,47 @@ static const TypeInfo romulus_bmc_type =3D {
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.class_init =3D romulus_bmc_class_init,
+> =C2=A0};
+> =C2=A0
+> +static void witherspoon_bmc_i2c_init(AspeedBoardState *bmc)
+> +{
+> +=C2=A0=C2=A0=C2=A0=C2=A0AspeedSoCState *soc =3D &bmc->soc;
+> +
+> +=C2=A0=C2=A0=C2=A0=C2=A0i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc-=
+>i2c), 4), "tmp423", 0x4c);
+> +=C2=A0=C2=A0=C2=A0=C2=A0i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc-=
+>i2c), 5), "tmp423", 0x4c);
+> +
+> +=C2=A0=C2=A0=C2=A0=C2=A0i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc-=
+>i2c), 9), "tmp105", 0x4a);
 
-> --- a/include/standard-headers/asm-x86/hyperv.h
-> +++ b/include/standard-headers/asm-x86/hyperv.h
-> @@ -1,393 +1 @@
-> -#ifndef _ASM_X86_HYPERV_H
-> -#define _ASM_X86_HYPERV_H
-> -
-> -#include "standard-headers/linux/types.h"
-> -
-> -/*
-> - * The below CPUID leaves are present if VersionAndFeatures.HypervisorPresent
-> - * is set by CPUID(HvCpuIdFunctionVersionAndFeatures).
-> - */
-> -#define HYPERV_CPUID_VENDOR_AND_MAX_FUNCTIONS  0x40000000
-> -#define HYPERV_CPUID_INTERFACE                 0x40000001
-> -#define HYPERV_CPUID_VERSION                   0x40000002
-> -#define HYPERV_CPUID_FEATURES                  0x40000003
-> -#define HYPERV_CPUID_ENLIGHTMENT_INFO          0x40000004
-> -#define HYPERV_CPUID_IMPLEMENT_LIMITS          0x40000005
-> -
-> -#define HYPERV_HYPERVISOR_PRESENT_BIT          0x80000000
-> -#define HYPERV_CPUID_MIN                       0x40000005
-> -#define HYPERV_CPUID_MAX                       0x4000ffff
+Looks like I need to track down newer versions of the schematics I have.
 
-Did you test building on x86 host? It's hard to see how the
-code in QEMU that uses these HYPERV #defines will still compile.
+> +}
+> +
+> +static void witherspoon_bmc_init(MachineState *machine)
+> +{
+> +=C2=A0=C2=A0=C2=A0=C2=A0aspeed_board_init(machine, &aspeed_boards[WITHER=
+SPOON_BMC]);
+> +}
+> +
+> +static void witherspoon_bmc_class_init(ObjectClass *oc, void *data)
+> +{
+> +=C2=A0=C2=A0=C2=A0=C2=A0MachineClass *mc =3D MACHINE_CLASS(oc);
+> +
+> +=C2=A0=C2=A0=C2=A0=C2=A0mc->desc =3D "OpenPOWER Witherspoon BMC (ARM1176=
+)";
+> +=C2=A0=C2=A0=C2=A0=C2=A0mc->init =3D witherspoon_bmc_init;
+> +=C2=A0=C2=A0=C2=A0=C2=A0mc->max_cpus =3D 1;
+> +=C2=A0=C2=A0=C2=A0=C2=A0mc->no_sdcard =3D 1;
+> +=C2=A0=C2=A0=C2=A0=C2=A0mc->no_floppy =3D 1;
+> +=C2=A0=C2=A0=C2=A0=C2=A0mc->no_cdrom =3D 1;
+> +=C2=A0=C2=A0=C2=A0=C2=A0mc->no_parallel =3D 1;
+> +=C2=A0=C2=A0=C2=A0=C2=A0mc->ignore_memory_transaction_failures =3D true;
 
-thanks
--- PMM
+Aside from the issue with the above as pointed out by Peter,
+
+Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
+
+> +}
+> +
+> +static const TypeInfo witherspoon_bmc_type =3D {
+> +=C2=A0=C2=A0=C2=A0=C2=A0.name =3D MACHINE_TYPE_NAME("witherspoon-bmc"),
+> +=C2=A0=C2=A0=C2=A0=C2=A0.parent =3D TYPE_MACHINE,
+> +=C2=A0=C2=A0=C2=A0=C2=A0.class_init =3D witherspoon_bmc_class_init,
+> +};
+> +
+> =C2=A0static void aspeed_machine_init(void)
+> =C2=A0{
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0type_register_static(&palmetto_bmc_type);
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0type_register_static(&ast2500_evb_type);
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0type_register_static(&romulus_bmc_type);
+> +=C2=A0=C2=A0=C2=A0=C2=A0type_register_static(&witherspoon_bmc_type);
+> =C2=A0}
+> =C2=A0
+> =C2=A0type_init(aspeed_machine_init)
+--=-oY3VsICoF9BwTCvYHlV6
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIcBAABCgAGBQJZ2rz5AAoJEJ0dnzgO5LT5NGwQAJRBPI/LN5+DXxFkXTKijyeR
+gaYlkVmp0dvTh+5AhV2oEoruY/uEcZReiEeN+f9mI4Fp2JCln9QlV0V+UBkv66Xo
+zNA/+cPtvo43DkzKKSwilInWvB7h1xvyiJaPGjUc510ivfVYP2SnB6MCMsiStS+r
+AjUqUY9BcDua17UjmrJ5X/gomt+tUr+qYZoCT5Cg4SeogP9CbKauLHR0zwzGH8eS
+4NTgmwXQc50mtnSfipzzxgMJzZlbxR79vMollMpvEgvYVXkphQwlmiEr2XFYZ26v
+vLLaC2r3gegajihb552eoRHoN/DM/l2PXgNPSMst65C3LBwpii4xCcNOReosbeTk
+Y6eOa8NGlb0ylUoXd5cnikhsdeJkdLQVDPfDW+XsnyK3gMnpqevjnsLx65+ihGHx
+PWa0e99yhvDB8oy0e5GoPfPmlOYiIPitgdZRa6STonpTYkUwN+SPBuf7ZmUyVDwh
+JNcBOrE4bYWSmR+Gylw4jGJnrazsyZAOjXcANCvfn3d+sSk3Lci8frXXRu76Hbhj
+00DurB8nVQcxnh84oLZQ9Vv2uWlSLRChSbe0KNtIXFv09kZRQ9yhOlvH5GFMG+1g
+jJ3JKCBwhbSauYisXu6p2sOOQJUcDP2hdtE7F7b9EusWavUWHrV1kc5Ww07H427W
++iGKo3UggKWMXJq/H0sK
+=o0nP
+-----END PGP SIGNATURE-----
+
+--=-oY3VsICoF9BwTCvYHlV6--
+

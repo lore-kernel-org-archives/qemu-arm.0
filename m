@@ -1,100 +1,98 @@
-Received: by 10.223.197.9 with SMTP id q9csp2625960wrf;
-        Mon, 9 Oct 2017 09:30:39 -0700 (PDT)
-X-Received: by 10.55.78.72 with SMTP id c69mr5165672qkb.105.1507566639457;
-        Mon, 09 Oct 2017 09:30:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507566639; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp2653842wrf;
+        Mon, 9 Oct 2017 10:02:34 -0700 (PDT)
+X-Received: by 10.55.166.77 with SMTP id p74mr10498034qke.264.1507568553972;
+        Mon, 09 Oct 2017 10:02:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507568553; cv=none;
         d=google.com; s=arc-20160816;
-        b=XxpKbmq0ItYttO9sHIr/f5vOpHFfqYEELhJ0vvnU2QItw5Tmc+jLMuYqNyRXEpHtru
-         MdfXzLlJac3rvp97H26aRA19SY2ZLRgiypruafXxz8ULZ1KVulZUIxfhctRHg3YYUE3o
-         M+Fa79ZCEy9u2HRAgBze4maSf9zPzulSlq76/qcTGv5nF6P9sHkjVu2KVhAPjbiDkYNT
-         ZVjYZ8G3EICjzIXUlk+/hJ2cH19dfmRQ9NZOxRJB0r4T9zySVuqcHlfFf3So1TAm/T1C
-         edVgjsDd7W/g0zynW7W/otYrAAiOhEMVve03B6tM/WEjllCVIXQygI3Ja9bbeRh63p3V
-         OkPw==
+        b=SqCCboi+NUFAf7K15wPoLhw6xBQOr7Mlyy9rNj+Z6LxMq650wgdySmJRGu8gWNOnwU
+         Y+H+j/1Ym+W+RBdZ1qszQyz8bMuJtczGNGHhuvZncSt7mCJAY+OaA2/LCBtKEJ/b8BXl
+         MQCiEhtd0cteZYZ/qBabguwtxV6Fc+eR16rzs8TTytEqc0Yg7YzNhD826cZFfG8rWBBN
+         MzQprO59S1FMBSbdAOlpUmwiZ7O2AElHWRE6L7AdQhgkKwrCMT7DPpw09VoMtib9H979
+         Xet/nNpPy5PuIMI/IZ7ef42RoSOF2Xdp/aCN/hThKNudPSiay2G2FReoBWopa04FaXum
+         11SA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=blLa9bHfVLSO1FBf8kDEQncta3Fl6mSZ2mgZjOkGTT4=;
-        b=dN7ujXGGT8+ZLwfCen/yydLjcbKYab/PPDJhzgB7Of/symbNzJJziirvNw1FBrTCoa
-         aBB55PwTuhAv+Zx777sgduaS7ojoUX2jx+tiK9MQpSmF0nENaIWHbFHBVD3llqXrVqcx
-         te8vl/uCm+xrfsRzlND2aW1GvyVIioYoMqEeZAhfjdqJRZgVxmiFwDcvi+BKe+CtaZvo
-         1DHqFNG2MOYIO1fOak/KaCgVVjk6fq9mWqzDQR6OMmNo0sKpRZqwZlP56MBjtghYC1c4
-         JZ3E9DKzGufx788rRryKOO1Fh4rbKIOwNb2gbxKuejFN5MZBAJJ/+rgZyr01o5tW2MvD
-         lyRg==
+        bh=hpmdTa6otWt7JRf7tvLq8C++4/tzZs7iUJrnqs9Zt7c=;
+        b=BT7pkKpPhMLhCS0KOJYWRlUYYgb/cocWeY2Osb/iEVDaUirXqFWElniAJFzOtR71xm
+         kRc11seGYvd8gisRtcWaElmsXCjXOC8EL4tQpPB2xHDDt4xYzIoAliit0W2UcyLdIi+w
+         iNzSP/XEUsrW4To4CvDCOyYqS96ZQ9P+ikfWNYrqZZ0e3Fgd2f/PMy5Q2qzLu3U4AO5d
+         HJMOdjvjaaqj8ckprz61Jkfwr6wmIZb7xRrVHiafkQYUcdeblQhIn8egPKBkuAM4pdOO
+         lAReML/cU70DV67et1aFXTw8myoNgzrk176hIR6DCDy4D7wMk3P9RmLxgI4FvwcDSA+B
+         Cbzw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OHfHb6Q/;
+       dkim=fail header.i=@linaro.org header.s=google header.b=a1CM+1Ov;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s188si3598819qkb.145.2017.10.09.09.30.39
+        by mx.google.com with ESMTPS id i3si1091493qkf.274.2017.10.09.10.02.33
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 09 Oct 2017 09:30:39 -0700 (PDT)
+        Mon, 09 Oct 2017 10:02:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OHfHb6Q/;
+       dkim=fail header.i=@linaro.org header.s=google header.b=a1CM+1Ov;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:58796 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58911 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e1awx-0003TO-0V
-	for alex.bennee@linaro.org; Mon, 09 Oct 2017 12:30:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33436)
+	id 1e1bRp-0006Rf-F1
+	for alex.bennee@linaro.org; Mon, 09 Oct 2017 13:02:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44878)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1e1awn-0003TD-9N
-	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 12:30:33 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1e1bRd-0006PJ-Lv
+	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 13:02:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1e1awg-0006GL-VK
-	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 12:30:29 -0400
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:35718)
+	(envelope-from <peter.maydell@linaro.org>) id 1e1bRU-0008Oa-29
+	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 13:02:21 -0400
+Received: from mail-wm0-x231.google.com ([2a00:1450:400c:c09::231]:57288)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
-	id 1e1awg-0006FQ-Lw; Mon, 09 Oct 2017 12:30:22 -0400
-Received: by mail-qk0-x242.google.com with SMTP id w63so15119758qkd.2;
-	Mon, 09 Oct 2017 09:30:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1e1bRT-0008O2-OD
+	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 13:02:12 -0400
+Received: by mail-wm0-x231.google.com with SMTP id l68so25259813wmd.5
+	for <qemu-arm@nongnu.org>; Mon, 09 Oct 2017 10:02:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=blLa9bHfVLSO1FBf8kDEQncta3Fl6mSZ2mgZjOkGTT4=;
-	b=OHfHb6Q/WA4pjpGx9YwOajcMAuQAMhiFz9E1Fg5YmuhkGEQedoQNwAvwJCQK2mi0Qz
-	Tp6SwqJ4V29Wnt/3FQj4+RaLXHvNHlanOxOZHfI712P2FnSpX45Oycn5ztLoLCvpXi2+
-	EMdGP65Udg1lQR92volZtbpATlOiHeVhW2OQXK8I6TShMiH1gyzDrgKBPvKtcDit9JYs
-	lg8MCWYXPKAk/25fk4kUI9aPWB4uhU2r7jydSBjOHOxRQ1FLFQmfvtNT87kPHc49Qu5Z
-	bzWFKfocqe4DLxrN8vjLrnkqDm7jCxyLSEUNa2XX1w2igvLOCBmRhGv137BUETJan+bS
-	uNSA==
+	:cc; bh=hpmdTa6otWt7JRf7tvLq8C++4/tzZs7iUJrnqs9Zt7c=;
+	b=a1CM+1Ov5zKM3Hui7P3NuaQybN5e7Vf3v318RtduaRGpvLc+/E+KbtMT9TJJ6u9u1E
+	OcNPGIJOYkS880I9zYt7Aa3REk/05QpWn4HOQFYGTn2BdGqGBYz28iiVbSC68mMxNDca
+	sPXMLO8H8DVIjqUK2g6oHQNS8UyFic7I0FENw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=blLa9bHfVLSO1FBf8kDEQncta3Fl6mSZ2mgZjOkGTT4=;
-	b=J2E5tL/r/a6yMXJixEo1S81ghEhqb5qHIg30c1BzAOLD1mFk71KOdYuOzl7SNrcw/8
-	uUl7jI+AN7pPq4fwYc1P90nrKcn9frF+I4V8WLSX9/p7UyVrwxUKXkk1GypfPyasbIvT
-	3ZxuG9HX2wXgcGDpwxgQRpMtCHutsj1Md3ByjCsFbCG71NsOnciuxNbLV1uiw3x+YiQU
-	2bckT44Q0/BDMR1yZ/qI64+BuuSstiNB+U27QPFZw2pqFOb29UIXbRDXPPGHjBBH4SD9
-	2ha+WwLWHm+2Jn7W9ccALAoxKwPLvCV9wPXEWf/l9uO4xEmtiEBb++de4dLP2ITRA7fX
-	FqGw==
-X-Gm-Message-State: AMCzsaXjSbbIwx2SREcQC6hAZD2aL/wPKZNCPJY6NS4cdrTEap4GGz+u
-	gG4CJwNkXfYI2ifEgOSJ9nQMoy1YHlh29ofS/SY=
-X-Google-Smtp-Source: AOwi7QAl/FEa8w1wdWxpikRfog+8ulQ86mli5QbfjryTM+hod6imjZlng7jVVu4GfcrDvBEDI+/HWb+Fe7Z56cdq/2A=
-X-Received: by 10.55.201.135 with SMTP id m7mr10458581qkl.97.1507566621826;
-	Mon, 09 Oct 2017 09:30:21 -0700 (PDT)
+	bh=hpmdTa6otWt7JRf7tvLq8C++4/tzZs7iUJrnqs9Zt7c=;
+	b=hCCltgbyW1MK/vlQ6sY9bKPJFD+zHWyZZ2FBKyIH9V57ET6Kt/PxU/LqhxAPXgv20w
+	0UpqvJpFJI5N5SjuRsv5ZLy/RLvYXV3U5TStOUwqFF8XO3p/j9lsBnw5kPcgmpwCTOmp
+	7u9lOS24ZBDboYnnW/KU81CfYUXURnxbNNJBzXi7GYDhvD4rcs2XygMksvC2XONOCp3M
+	cXdcA0oyR5Qk5FebsZ3EfAPWcAvg5DiIkJAqz8/IeQ1BdKmLtf+5cGcr5+XVjizU2uQy
+	JIC2e+0an3gp2hpmzvZ2Sm0zD95idQiE7PTZrcKGUtie+Oz8kCAoqdhp76kMh2Kjn6f2
+	likw==
+X-Gm-Message-State: AMCzsaXOob+63DBEY7o1mI6zgqrJFLdu5f0937ge1JfY4p5iwsaCk3Cm
+	0Gg+xys5yZElX45qSbeAxkvJiS4iBVv3KYKNzqOqpw==
+X-Google-Smtp-Source: AOwi7QABOGXBef0t7xFjE3jCo1YSPYlI3wGImjRlaKQC5HKtz8z58Ri23mlqBwyiVfie6fFpduavap0DatA+KiDUjJE=
+X-Received: by 10.28.22.66 with SMTP id 63mr8536951wmw.11.1507568530411; Mon,
+	09 Oct 2017 10:02:10 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.140.94.165 with HTTP; Mon, 9 Oct 2017 09:30:21 -0700 (PDT)
-In-Reply-To: <CAFEAcA-wjuFzQuxOGz2UbjL6qSO7H75WzKHPVrqhT40QMaLLog@mail.gmail.com>
-References: <20170918195100.17593-1-andrew.smirnov@gmail.com>
-	<20170918195100.17593-18-andrew.smirnov@gmail.com>
-	<CAFEAcA-wjuFzQuxOGz2UbjL6qSO7H75WzKHPVrqhT40QMaLLog@mail.gmail.com>
-From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Date: Mon, 9 Oct 2017 09:30:21 -0700
-Message-ID: <CAHQ1cqF5c=kq9USPUb9DdH9AePEVMxOV_MhAY6bHMV6H4Zm6FQ@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
+Received: by 10.223.128.207 with HTTP; Mon, 9 Oct 2017 10:01:49 -0700 (PDT)
+In-Reply-To: <1504286483-23327-7-git-send-email-eric.auger@redhat.com>
+References: <1504286483-23327-1-git-send-email-eric.auger@redhat.com>
+	<1504286483-23327-7-git-send-email-eric.auger@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 9 Oct 2017 18:01:49 +0100
+Message-ID: <CAFEAcA_kWEeNTNrAucGuMKfN0iMg9hZcM8KnS-cst+ehGVtqsA@mail.gmail.com>
+To: Eric Auger <eric.auger@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::242
-Subject: Re: [Qemu-arm] [PATCH 17/17] Implement support for i.MX7 Sabre board
+X-Received-From: 2a00:1450:400c:c09::231
+Subject: Re: [Qemu-arm] [PATCH v7 06/20] hw/arm/smmuv3: Wired IRQ and GERROR
+ helpers
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,165 +104,170 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	Andrey Yurovsky <yurovsky@gmail.com>
+Cc: Radha Mohan <mohun106@gmail.com>, Andrew Jones <drjones@redhat.com>,
+	Trey Cain <tcain@qti.qualcomm.com>,
+	Radha.Chintakuntla@cavium.com, Sunil.Goutham@cavium.com,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	jean-philippe.brucker@arm.com, Tomasz Nowicki <tn@semihalf.com>,
+	Will Deacon <will.deacon@arm.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	Peter Xu <peterx@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	Christoffer Dall <christoffer.dall@linaro.org>,
+	robin.murphy@arm.com, wtownsen@redhat.com,
+	Bharat Bhushan <bharat.bhushan@nxp.com>,
+	Prem Mallappa <prem.mallappa@gmail.com>, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3xSf+pf45aTr
+X-TUID: a4N7byuzotMB
 
-On Fri, Oct 6, 2017 at 7:42 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 18 September 2017 at 20:51, Andrey Smirnov <andrew.smirnov@gmail.com> wrote:
->> Cc: Peter Maydell <peter.maydell@linaro.org>
->> Cc: qemu-devel@nongnu.org
->> Cc: qemu-arm@nongnu.org
->> Cc: yurovsky@gmail.com
->> Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
->> ---
->>  hw/arm/Makefile.objs   |   2 +-
->>  hw/arm/mcimx7d-sabre.c | 100 +++++++++++++++++++++++++++++++++++++++++++++++++
->>  2 files changed, 101 insertions(+), 1 deletion(-)
->>  create mode 100644 hw/arm/mcimx7d-sabre.c
->>
->> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
->> index 33f6051ae3..fc4a963de8 100644
->> --- a/hw/arm/Makefile.objs
->> +++ b/hw/arm/Makefile.objs
->> @@ -19,5 +19,5 @@ obj-$(CONFIG_FSL_IMX31) += fsl-imx31.o kzm.o
->>  obj-$(CONFIG_FSL_IMX6) += fsl-imx6.o sabrelite.o
->>  obj-$(CONFIG_ASPEED_SOC) += aspeed_soc.o aspeed.o
->>  obj-$(CONFIG_MPS2) += mps2.o
->> -obj-$(CONFIG_FSL_IMX7) += fsl-imx7.o
->> +obj-$(CONFIG_FSL_IMX7) += fsl-imx7.o mcimx7d-sabre.o
->>
->> diff --git a/hw/arm/mcimx7d-sabre.c b/hw/arm/mcimx7d-sabre.c
->> new file mode 100644
->> index 0000000000..34e3933db8
->> --- /dev/null
->> +++ b/hw/arm/mcimx7d-sabre.c
->> @@ -0,0 +1,100 @@
->> +/*
->> + * Copyright (c) 2017, Impinj, Inc.
->> + *
->> + * MCIMX7D_SABRE Board System emulation.
->> + *
->> + * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
->> + *
->> + * This code is licensed under the GPL, version 2 or later.
->> + * See the file `COPYING' in the top level directory.
->> + *
->> + * It (partially) emulates a mcimx7d_sabre board, with a Freescale
->> + * i.MX7 SoC
->> + */
->> +
->> +#include "qemu/osdep.h"
->> +#include "qapi/error.h"
->> +#include "qemu-common.h"
->> +#include "hw/arm/fsl-imx7.h"
->> +#include "hw/boards.h"
->> +#include "sysemu/sysemu.h"
->> +#include "sysemu/device_tree.h"
->> +#include "qemu/error-report.h"
->> +#include "sysemu/qtest.h"
->> +#include "net/net.h"
->> +
->> +typedef struct {
->> +    FslIMX7State soc;
->> +    MemoryRegion ram;
->> +} MCIMX7Sabre;
->> +
->> +static void mcimx7d_add_psci_node(const struct arm_boot_info *boot_info, void *fdt)
->> +{
->> +    const char comp[] = "arm,psci-0.2\0arm,psci";
->> +
->> +    qemu_fdt_add_subnode(fdt, "/psci");
->> +    qemu_fdt_setprop(fdt, "/psci", "compatible", comp, sizeof(comp));
->> +    qemu_fdt_setprop_string(fdt, "/psci", "method", "smc");
->> +}
+On 1 September 2017 at 18:21, Eric Auger <eric.auger@redhat.com> wrote:
+> We introduce some helpers to handle wired IRQs and especially
+> GERROR interrupt. SMMU writes GERROR register on GERROR event
+> and SW acks GERROR interrupts by setting GERRORn.
 >
-> You shouldn't need this -- we should just be able to work with whatever
-> the real hardware's device tree is. ("virt" is a special case because
-> we create our own device tree there.)
+> The Wired interrupts are edge sensitive.
 >
-
-Upstream kernel for i.MX7 relies on PSCI to support SMP and this is a
-kind of DT fixup that would normally be done by a PSCI-compatible
-bootloader. I can remove this code, but it would effectively disable
-SMP on vanilla DT/kernel combos.
-
->> +
->> +static void mcimx7d_sabre_init(MachineState *machine)
->> +{
->> +    static struct arm_boot_info boot_info;
->> +    MCIMX7Sabre *s = g_new0(MCIMX7Sabre, 1);
->> +    Object *soc;
->> +    int i;
->> +
->> +    if (machine->ram_size > FSL_IMX7_MMDC_SIZE) {
->> +        error_report("RAM size " RAM_ADDR_FMT " above max supported (%08x)",
->> +                     machine->ram_size, FSL_IMX7_MMDC_SIZE);
->> +        exit(1);
->> +    }
->> +
->> +    boot_info = (struct arm_boot_info) {
->> +        .loader_start = FSL_IMX7_MMDC_ADDR,
->> +        .board_id = -1,
->> +        .ram_size = machine->ram_size,
->> +        .kernel_filename = machine->kernel_filename,
->> +        .kernel_cmdline = machine->kernel_cmdline,
->> +        .initrd_filename = machine->initrd_filename,
->> +        .nb_cpus = smp_cpus,
->> +        .modify_dtb = mcimx7d_add_psci_node,
->> +    };
->> +
->> +    object_initialize(&s->soc, sizeof(s->soc), TYPE_FSL_IMX7);
->> +    soc = OBJECT(&s->soc);
->> +    object_property_add_child(OBJECT(machine), "soc", soc, &error_fatal);
->> +    object_property_set_bool(soc, true, "realized", &error_fatal);
->> +
->> +    memory_region_allocate_system_memory(&s->ram, NULL, "mcimx7d-sabre.ram",
->> +                                         machine->ram_size);
->> +    memory_region_add_subregion(get_system_memory(),
->> +                                FSL_IMX7_MMDC_ADDR, &s->ram);
->> +
->> +    for (i = 0; i < FSL_IMX7_NUM_USDHCS; i++) {
->> +        BusState *bus;
->> +        DeviceState *carddev;
->> +        DriveInfo *di;
->> +        BlockBackend *blk;
->> +
->> +        di = drive_get_next(IF_SD);
->> +        blk = di ? blk_by_legacy_dinfo(di) : NULL;
->> +        bus = qdev_get_child_bus(DEVICE(&s->soc.usdhc[i]), "sd-bus");
->> +        carddev = qdev_create(bus, TYPE_SD_CARD);
->> +        qdev_prop_set_drive(carddev, "drive", blk, &error_fatal);
->> +        object_property_set_bool(OBJECT(carddev), true, "realized", &error_fatal);
->> +    }
->> +
->> +    if (!qtest_enabled()) {
->> +        arm_load_kernel(&s->soc.cpu[0], &boot_info);
->> +    }
->> +}
->> +
->> +static void mcimx7d_sabre_machine_init(MachineClass *mc)
->> +{
->> +    mc->desc = "Freescale i.MX7 DUAL SABRE (Cortex A7)";
->> +    mc->init = mcimx7d_sabre_init;
->> +    mc->max_cpus = FSL_IMX7_NUM_CPUS;
->> +    mc->ignore_memory_transaction_failures = true;
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 >
-> Please don't set this flag on new board models -- it is only
-> for legacy existing board models (where we don't know what
-> running guest code might be broken by turning bad accesses
-> into guest aborts. For a new board model, you should leave
-> the flag unset and instead stub out any devices that you
-> need to using create_unimplemented_device() so that your
-> guest code boots.
+> ---
+>
+> Is CMD_SYNC interrupt enabled somewhere?
+> ---
+>  hw/arm/smmuv3-internal.h | 20 ++++++++++++++++++
+>  hw/arm/smmuv3.c          | 55 ++++++++++++++++++++++++++++++++++++++++++++++++
+>  hw/arm/trace-events      |  2 ++
+>  3 files changed, 77 insertions(+)
+>
+> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+> index 488acc8..2b44ee2 100644
+> --- a/hw/arm/smmuv3-internal.h
+> +++ b/hw/arm/smmuv3-internal.h
+> @@ -198,4 +198,24 @@ static inline int smmu_enabled(SMMUV3State *s)
+>      return smmu_read32_reg(s, SMMU_REG_CR0) & SMMU_CR0_SMMU_ENABLE;
+>  }
+>
+> +/*****************************
+> + * Interrupts
+> + *****************************/
+> +
+> +#define smmu_evt_irq_enabled(s)                   \
+> +    (smmu_read64_reg(s, SMMU_REG_IRQ_CTRL) & SMMU_IRQ_CTRL_EVENT_EN)
+> +#define smmu_gerror_irq_enabled(s)                  \
+> +    (smmu_read64_reg(s, SMMU_REG_IRQ_CTRL) & SMMU_IRQ_CTRL_GERROR_EN)
+> +#define smmu_pri_irq_enabled(s)                 \
+> +    (smmu_read64_reg(s, SMMU_REG_IRQ_CTRL) & SMMU_IRQ_CTRL_PRI_EN)
+> +
+> +#define SMMU_PENDING_GERRORS(s) \
+> +    (smmu_read32_reg(s, SMMU_REG_GERROR) ^ \
+> +     smmu_read32_reg(s, SMMU_REG_GERRORN))
 
-That flag didn't exist when I started porting this board and I only
-discovered it a couple of hours before I prepared v1 of the patchset,
-since I didn't want to submit the code that wouldn't work but didn't
-have time to implements all of the missing blocks. I'll update v2, to
-get rid of it.
+Hiding this XOR inside a macro is very confusing.
 
-Thanks,
-Andrey Smirnov
+> +
+> +#define SMMU_CMDQ_ERR(s) (SMMU_PENDING_GERRORS(s) & SMMU_GERROR_CMDQ)
+> +
+> +void smmuv3_irq_trigger(SMMUV3State *s, SMMUIrq irq, uint32_t gerror_val);
+> +void smmuv3_write_gerrorn(SMMUV3State *s, uint32_t gerrorn);
+> +
+>  #endif
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index 0a7cd1c..468134f 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -29,6 +29,61 @@
+>  #include "hw/arm/smmuv3.h"
+>  #include "smmuv3-internal.h"
+>
+> +/**
+> + * smmuv3_irq_trigger - pulse @irq if enabled and update
+> + * GERROR register in case of GERROR interrupt
+> + *
+> + * @irq: irq type
+> + * @gerror: gerror new value, only relevant if @irq is GERROR
+> + */
+> +void smmuv3_irq_trigger(SMMUV3State *s, SMMUIrq irq, uint32_t gerror_val)
+> +{
+> +    uint32_t pending_gerrors = SMMU_PENDING_GERRORS(s);
+> +    bool pulse = false;
+> +
+> +    switch (irq) {
+> +    case SMMU_IRQ_EVTQ:
+> +        pulse = smmu_evt_irq_enabled(s);
+> +        break;
+> +    case SMMU_IRQ_PRIQ:
+> +        pulse = smmu_pri_irq_enabled(s);
+> +        break;
+> +    case SMMU_IRQ_CMD_SYNC:
+> +        pulse = true;
+> +        break;
+> +    case SMMU_IRQ_GERROR:
+> +    {
+> +        /* don't toggle an already pending error */
+> +        bool new_gerrors = ~pending_gerrors & gerror_val;
+> +        uint32_t gerror = smmu_read32_reg(s, SMMU_REG_GERROR);
+> +
+> +        smmu_write32_reg(s, SMMU_REG_GERROR, gerror | new_gerrors);
+
+The SMMU toggles GERROR bits to indicate that they have been
+set, it doesn't just set them to 1.
+
+> +
+> +        /* pulse the GERROR irq only if all fields were acked */
+> +        pulse = smmu_gerror_irq_enabled(s) && !pending_gerrors;
+> +        break;
+> +    }
+> +    }
+> +    if (pulse) {
+> +            trace_smmuv3_irq_trigger(irq,
+> +                                     smmu_read32_reg(s, SMMU_REG_GERROR),
+> +                                     SMMU_PENDING_GERRORS(s));
+> +            qemu_irq_pulse(s->irq[irq]);
+
+qemu_irq_pulse() is very rarely the right thing for an interrupt
+line, but it looks like it's right here (per spec 3.18.2).
+
+> +    }
+> +}
+> +
+> +void smmuv3_write_gerrorn(SMMUV3State *s, uint32_t gerrorn)
+> +{
+> +    uint32_t pending_gerrors = SMMU_PENDING_GERRORS(s);
+> +    uint32_t sanitized;
+> +
+> +    /* Make sure SW does not toggle irqs that are not active */
+
+If it does, this is CONSTRAINED UNPREDICTABLE. That is worth
+remarking in either a comment or a LOG_GUEST_ERROR warning.
+
+> +    sanitized = gerrorn & pending_gerrors;
+
+This isn't right -- if you want to sanitize the result
+being written then you need to make it only change bits
+that are in pending_errors, but this expression allows
+the guest to write a 0 to a field that is for a non-pending
+error. (Or you could just not sanitize at all, that's allowed
+by the CONSTRAINED UNPREDICTABLE.)
+
+> +
+> +    smmu_write32_reg(s, SMMU_REG_GERRORN, sanitized);
+> +    trace_smmuv3_write_gerrorn(gerrorn, sanitized, SMMU_PENDING_GERRORS(s));
+> +}
+> +
+>  static void smmuv3_init_regs(SMMUV3State *s)
+>  {
+>      uint32_t data =
+> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
+> index 8affbf7..c1ce8eb 100644
+> --- a/hw/arm/trace-events
+> +++ b/hw/arm/trace-events
+> @@ -17,3 +17,5 @@ smmu_set_translated_address(hwaddr iova, hwaddr pa) "iova = 0x%"PRIx64" -> pa =
+>
+>  #hw/arm/smmuv3.c
+>  smmuv3_read_mmio(hwaddr addr, uint64_t val, unsigned size) "addr: 0x%"PRIx64" val:0x%"PRIx64" size: 0x%x"
+> +smmuv3_irq_trigger(int irq, uint32_t gerror, uint32_t pending) "irq=%d gerror=0x%x pending gerrors=0x%x"
+> +smmuv3_write_gerrorn(uint32_t gerrorn, uint32_t sanitized, uint32_t pending) "gerrorn=0x%x sanitized=0x%x pending=0x%x"
+> --
+> 2.5.5
+
+thanks
+-- PMM

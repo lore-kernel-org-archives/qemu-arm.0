@@ -1,99 +1,88 @@
-Received: by 10.223.197.9 with SMTP id q9csp3524462wrf;
-        Tue, 10 Oct 2017 05:54:45 -0700 (PDT)
-X-Received: by 10.55.178.65 with SMTP id b62mr14119904qkf.348.1507640085693;
-        Tue, 10 Oct 2017 05:54:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507640085; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp3552177wrf;
+        Tue, 10 Oct 2017 06:21:38 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QDO78UO2t1DRtSF9OSzjaALlhWZfKGPx9ftJdt964gp3PBR6medM1xmhQEVSf+Cyra/QEkf
+X-Received: by 10.55.108.135 with SMTP id h129mr3906000qkc.111.1507641698528;
+        Tue, 10 Oct 2017 06:21:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507641698; cv=none;
         d=google.com; s=arc-20160816;
-        b=G1lqXCMGW0lkZiPhJ1Oo8FL4RM1QXW/A37aQGfur8woWcBQgzExVRxXLfDgIsYKaxL
-         2QtyZic1mccCV57b0qPW1QjUbBf4vd3IwcW76r0WwO1sN7dsgFpGe6iFPd9A3Ko2JnGF
-         cwzWMXiFRO71bz5Cr8T831UCmgJTmIxGHE7ik4As60mB3eBaYf+s9//0p4CTlue/ZQeS
-         SRsHVcxWamO+oM87+F7Q/B6o6NAI800Xsf1Ii7SvqMCYKJdLkY7rXBrbaP5W9jD+/D1h
-         8y8HiFUgCqXIp3WKdpWe3hGWK9bwd1giKmXWTe2aqbNYHbzdjvwHq2TqnyYxYuDsa3bG
-         pBXw==
+        b=dUnVboiXPhPFWkXu2t1MrpXoj59sd3LWlamJxbfVWaQKM3VijQfWfgI8AMwTk8JDOJ
+         HOEvy3zO/W/rhkuaIt2B0YnfwZ8J7rm3xvMRXpWsDQTGz+9hik59BNbCvakPm3hbsxJh
+         mavM+mh4dRa9PtLfpiCkwp8moXBgLUVAru4TLb2MvpQnoieqb5boPXEaaNvt+kUGwPk/
+         6hh4tbJRiv7MiVCbM15rrTfqWYHMbiNbUmq6Ku0F50FbtIw2M6z+gX+rdazdLizVLNuB
+         QRRH3nLNEplars9t3mTRa4OAh65/OAr+7hw6pL91lAVjXjlTo93YpeJiMdusyy/VCrxW
+         MbVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=B1sQKbpP7aA/0CX3tP6aAv5d+DNfJ9lX48DGO/TirxI=;
-        b=jcT2G3SJLgeP/NtWqZDSGINmhDlB6/B8H8P+l3wIrADL3h86G7wcZezhpen8CkOwOS
-         e2Krrj+3jeygo0wDkypaNa859Jq/+p3gP8cpRI5d3Gxgp/Vk1WmlFvXhpkn9KAxYpK9k
-         4KAM2xNT98S94McaHvArEbgBcvAG/HetqIHD5zUEc1EuBvTVDeFT0ak2PWsXySjbsYrx
-         FQy20kU8qUbtidCH/FjSP/v0vTf8S4uyINMx6fYDIKiBU3VZR1DgwD7DteyjYES+XNfJ
-         ahyipG39A5QUckopKwKG0YJrQDhs2ghLKxVeadGnR5P2/L0rqj/yqJZZZOn+L0ELi6HM
-         2gag==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
+         :arc-authentication-results;
+        bh=uBv3GndVOJKDqj6pEBpoEkjGfsGROSmhhn6D6Vvq/TI=;
+        b=eSH7QqChn27FhE1WAb1S4hBU66zET9H6o30zCNCVEb6smPRIeY1b62jx5tmV10GHod
+         3cxxe00gOnAXB/tLMGyPUpJGjWQJDAs1ll0nOMshiFtmzwDKa2EaW1tfZ85dNrZeGf3M
+         Xqk2G39HcBmABxb+NUdOH3vqyo2yUKczudfbx2lAS6q6xh7UNaNspmsJxwqnZ2obpOiG
+         J5EIRViMs7hoVIcRRQIL1ppCZVQSsG1E0ko8wLlr/o90j6x9gbUJsUGNZ7eqaWdFFc56
+         x1+d7xxtBPKQiGmRr3aWZPXJlD5NOeJfiAbjSaWDAGmHdV9jyNGRVW2wUWuV81TmgFtH
+         2ziw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=DLfIpDy8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h135si3819811qka.140.2017.10.10.05.54.45
+        by mx.google.com with ESMTPS id b76si8616130qka.347.2017.10.10.06.21.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 10 Oct 2017 05:54:45 -0700 (PDT)
+        Tue, 10 Oct 2017 06:21:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=DLfIpDy8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34941 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:35058 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e1u3X-0003FT-DR
-	for alex.bennee@linaro.org; Tue, 10 Oct 2017 08:54:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49070)
+	id 1e1uTY-0001po-6O
+	for alex.bennee@linaro.org; Tue, 10 Oct 2017 09:21:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55168)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e1u3N-0003EX-CB
-	for qemu-arm@nongnu.org; Tue, 10 Oct 2017 08:54:34 -0400
+	(envelope-from <clg@kaod.org>) id 1e1uTG-0001nn-Th
+	for qemu-arm@nongnu.org; Tue, 10 Oct 2017 09:21:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e1u3F-0004FF-Kq
-	for qemu-arm@nongnu.org; Tue, 10 Oct 2017 08:54:33 -0400
-Received: from mail-wm0-x22f.google.com ([2a00:1450:400c:c09::22f]:51430)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1e1u3F-0004Ep-DT
-	for qemu-arm@nongnu.org; Tue, 10 Oct 2017 08:54:25 -0400
-Received: by mail-wm0-x22f.google.com with SMTP id f4so5052131wme.0
-	for <qemu-arm@nongnu.org>; Tue, 10 Oct 2017 05:54:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=B1sQKbpP7aA/0CX3tP6aAv5d+DNfJ9lX48DGO/TirxI=;
-	b=DLfIpDy8ICRQfpQv0SOGQInsU8kA017FNuhI02iMQNcswiY00TRb/ABCIdnq+pDRQA
-	4kMnlE2A7Zfw3clnjGWuNlYtGCEntLqFONSa8idKnlNDpQ5SUzBw+xfG72oWyFD1MfsJ
-	sh0g/+W6jKxq1p0VuWCT0/XnnVHru/jxEX3NI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=B1sQKbpP7aA/0CX3tP6aAv5d+DNfJ9lX48DGO/TirxI=;
-	b=BaFhLRMrFfaJwc+foRe7D8c5sTz0hqq4mP5nDPgfBwa+uhCXiZjNnnLwwyK6+4rzBi
-	WTgQq6hFrnxKY00317odwOEr3rYaoQJdZ9S0PVsd2dgvDU1j0Gmk+pWdPkkarNdcNTiS
-	QbwSLk+yi0/hoSa+R3gYd3Bf2KZmmdnwRDRyadYTxayX5a+OeExVwLLMME7jq31xUBpZ
-	CcWM1GPJFo/8LbFI1SXgRGsWhmQqffAAjWso0XMjtzbdxU+bKArO9gIc9cB4bPlXSoeC
-	PyY2GaEciPsxy9S6SAGlY2mWN5QImLBZ5lWm+A/qIEfeEtWpwt62mZAqr4vOTKvxDvkw
-	7yTA==
-X-Gm-Message-State: AMCzsaUVvQQN9sF7M1W9cCjMZ/8e3nzuGiZh2vG60PqaeGTlEUraUJG6
-	Jqu9YboyMOiQjsgLKgC2yVUttSVsIrp3e9UPfub9rQ==
-X-Google-Smtp-Source: AOwi7QB+eQ40wfcgnrUsmTc9PlnbK0VME8aoIsIb+mCiBYkD5UcTu6uVc1chRnD98jyb+kLyowTZydZbLCwECi8X0BM=
-X-Received: by 10.223.147.166 with SMTP id 35mr14399023wrp.90.1507640064285;
-	Tue, 10 Oct 2017 05:54:24 -0700 (PDT)
+	(envelope-from <clg@kaod.org>) id 1e1uTA-00035O-RN
+	for qemu-arm@nongnu.org; Tue, 10 Oct 2017 09:21:18 -0400
+Received: from 10.mo178.mail-out.ovh.net ([46.105.76.150]:44029)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1e1uTA-00033l-KO
+	for qemu-arm@nongnu.org; Tue, 10 Oct 2017 09:21:12 -0400
+Received: from player728.ha.ovh.net (b6.ovh.net [213.186.33.56])
+	by mo178.mail-out.ovh.net (Postfix) with ESMTP id 9052D5A401
+	for <qemu-arm@nongnu.org>; Tue, 10 Oct 2017 15:21:09 +0200 (CEST)
+Received: from zorba.kaod.org (deibp9eh1--blueice3n7.emea.ibm.com
+	[195.212.29.177]) (Authenticated sender: postmaster@kaod.org)
+	by player728.ha.ovh.net (Postfix) with ESMTPSA id D64805400A1;
+	Tue, 10 Oct 2017 15:21:02 +0200 (CEST)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20170920070135.31379-1-clg@kaod.org>
+	<20170920070135.31379-2-clg@kaod.org>
+	<CAFEAcA9-dmTD3v1YU7Wr5EcA53z=c_WxS0K1+1zbw16q=vj-vQ@mail.gmail.com>
+	<f3871f0a-7df2-a5e0-1770-8df04bb76750@kaod.org>
+	<CAFEAcA-kJ-qEoo-2ZWaH0XPv-cJA4O3wZAW=FwmM5nUU4-mVBg@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <900ffff3-3667-7e17-bf38-7c6a520ed838@kaod.org>
+Date: Tue, 10 Oct 2017 15:21:02 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-Received: by 10.223.128.207 with HTTP; Tue, 10 Oct 2017 05:54:03 -0700 (PDT)
-In-Reply-To: <20170920201737.25723-4-f4bug@amsat.org>
-References: <20170920201737.25723-1-f4bug@amsat.org>
-	<20170920201737.25723-4-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 10 Oct 2017 13:54:03 +0100
-Message-ID: <CAFEAcA_wci=BT69jDM6uNa=JCM=b5GD4pO2vRQUNi6cX-B1QGA@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <CAFEAcA-kJ-qEoo-2ZWaH0XPv-cJA4O3wZAW=FwmM5nUU4-mVBg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Ovh-Tracer-Id: 14502998177632586692
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedttddrtddtgdeggecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::22f
-Subject: Re: [Qemu-arm] [PATCH v11 3/5] msf2: Add Smartfusion2 SPI controller
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 46.105.76.150
+Subject: Re: [Qemu-arm] [PATCH v2 1/6] aspeed: add support for the
+ witherspoon-bmc board
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,52 +94,69 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair@alistair23.me>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Jdr+5rVjKpxd
+X-TUID: Jp3PsFbAm0Lz
 
-On 20 September 2017 at 21:17, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
-> wrote:
-> From: Subbaraya Sundeep <sundeep.lkml@gmail.com>
->
-> Modelled Microsemi's Smartfusion2 SPI controller.
->
-> Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
-> Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
-> Tested-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+On 10/10/2017 11:54 AM, Peter Maydell wrote:
+> On 10 October 2017 at 10:19, C=C3=A9dric Le Goater <clg@kaod.org> wrote=
+:
+>> On 10/06/2017 05:10 PM, Peter Maydell wrote:
+>>>> +    mc->ignore_memory_transaction_failures =3D true;
+>>>
+>>> Please don't set this flag for new board models, it is only
+>>> for our legacy existing ones. Instead implement any devices
+>>> that you need for guest code to boot (stub them out with
+>>> create_unimplemented_device() if you like).
+>>
+>> I have dug into this a little more and it seems that it is
+>> required for the Aspeed bootloader (a modified u-boot) which
+>> uses static variables in early init phases. So legacy firmwares
+>> won't work in QEMU but will on real HW.
+>>
+>> It's fine with me but what is the goal of the approach ? Force
+>> SoC providers into fixing their FW when they use QEMU ?
+>=20
+> The goal is to model hardware correctly. Hardware gives
+> aborts if you touch a physical address with no device there,
+> and so QEMU's model should do the same. If you have guest
+> code that touches a physical address and blows up because
+> of an abort (but doesn't when run on h/w) then either:
+>  * it is trying to probe a device that exists in real h/w:
+>    you need to provide a stub implementation in QEMU
+>  * the SoC's bus fabric really doesn't pass aborts back
+>    to the CPU; I think this is unlikely, but you can model
+>    it at the SoC level with a suitable default memory region
 
-> +#define FRAMESZ_MASK         0x1F
+well, that is case it seems.=20
 
-> +static void set_fifodepth(MSSSpiState *s)
-> +{
-> +    unsigned int size =3D s->regs[R_SPI_DFSIZE] & FRAMESZ_MASK;
-> +
-> +    if (size <=3D 8) {
-> +        s->fifo_depth =3D 32;
-> +    } else if (size <=3D 16) {
-> +        s->fifo_depth =3D 16;
-> +    } else if (size <=3D 32) {
-> +        s->fifo_depth =3D 8;
-> +    } else {
-> +        s->fifo_depth =3D 4;
-> +    }
-> +}
+Anyhow, I found the required fixes in u-boot, so I will go with=20
+ignore_memory_transaction_failures=3Dfalse with this new machine.
 
-Hi. Coverity points out (CID 1381483) that the "else" case here
-is dead code, because the FRAMESZ_MASK of 0x1F means that size
-cannot be 32 or more.
+Thanks,
 
-Paolo kindly checked up with the spec at
-https://www.eecs.umich.edu/courses/eecs373/readings/Actel_SmartFusion_MSS_U=
-serGuide.pdf
-which says that this register's field is bits [5:0] which
-would imply an 0x3f mask is needed. On the other hand it also
-says that "maximum value is 32", so what is the else clause
-doing anyway?
+C.=20
+=20
+> The purpose of the flag is purely for existing board models,
+> where it is impossible to enable the correct (abort)
+> behaviour without possibly breaking guest code images that
+> work for people using released QEMU code. On a new board
+> model we don't have that problem and we can get it right
+> from the start. If we don't get it right from the start
+> then we will never have a chance to fix it in future.
+>=20
+> Our mismodelling of this (not turning accesses to invalid
+> addresses into CPU aborts) meant that in the past it was
+> possible to be lazy when implementing a board model and
+> just not model half the hardware at all. Now it isn't,
+> but I don't think that adding a set of calls to
+> create_unimplemented_device() is a significant imposition.
+>=20
+> thanks
+> -- PMM
+>=20
 
-thanks
--- PMM

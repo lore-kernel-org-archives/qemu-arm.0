@@ -1,142 +1,179 @@
-Received: by 10.223.197.9 with SMTP id q9csp3564800wrf;
-        Tue, 10 Oct 2017 06:34:13 -0700 (PDT)
-X-Received: by 10.200.19.75 with SMTP id f11mr19486966qtj.321.1507642453881;
-        Tue, 10 Oct 2017 06:34:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507642453; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp3637688wrf;
+        Tue, 10 Oct 2017 07:49:04 -0700 (PDT)
+X-Received: by 10.55.19.98 with SMTP id d95mr14724627qkh.123.1507646944463;
+        Tue, 10 Oct 2017 07:49:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507646944; cv=none;
         d=google.com; s=arc-20160816;
-        b=JDRQDrZi+3WXOY40lz8ko6lKCHc77dHw4FroWdHX1zhR4RYlz6zxn/FSe5GfGt76Ya
-         ECRYm5vcBp2kmd2gDBMn7gRDOJYDpItBdte2H3zEcpUO/4OYR02ggt24BKspiCD+Iia3
-         0vF+UdXOvsz87dY5P24I3JVn7JsZRllb5wcfXppKllv3qY3Sh7MG1kiLK5GHMupAwgjq
-         0508XpjjmGttEzBhktLvFbJ6OrvUKaHrYH7mpJmqcd5uQMxHmmwY+cN51vRhzhQhqZeE
-         +M43SJWqaXX2i9dpqU+zbr5TyVTyA3/vR2Rfn2vOM+gD0zwRIdLsMrLWGkRQy2oECSy9
-         bOiQ==
+        b=EDmqsJBCN6UMLDdDm/P8eMpqfhcAZlVme4QRw9qpP78QOqvejmr4w8vzdytfkz3Iv5
+         lCB/ir8rmtPKOaj9TmnazQ1sFD8gyx6Wdj4L8fbGHXWrRdkll+HipZVTshbZ/djO/Aqk
+         2RXXyP+l3JqU1xjcYrKuT5BzvhCTvnbrkzjZmxUFILwN0Ryox5+zOOJ1QduHmxsOVGKm
+         aojBanWj/+fXqvQ8xTImHJr0o501y7zUAydbXe6CTtR/x+0wDdSfQVZf4eQ0myicWfsy
+         n05JZG9Td5eQygw3893X/XQgDM9JrzPRJK0ImcIQnSnVQkTI9aTcmpQMjYjqAhx8iEJw
+         uuMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=Xzm5lie6Prj14HHxiay+vzBu73jkQETslqvQInjzeW0=;
-        b=PX7h85DvJsA1pK7OjPe2iAzK53JziEkJm+qyEDCONdiRoJEMrRK42J9Z/bATDj9vou
-         SqcU/Vhy6PEAcUYmOB6616dgEqF4+HxzlxAazCNDGcWqhFLAEWefhPcZJtDtzK42iQ0t
-         mDh5TkjSL8+cTp53Go+HZfLpi1uLy/hsiwr2KYftB4FmHBmU2ybkPgRWiO5kSuG0953Z
-         rEc/A6y1j8sy4f4kBpbO3j6Vb2cIJttGbGO+OSXpL9UalsyOJrINlh5MgG/5x1hDCGzW
-         lIR8zxWMvsHHaguxQsoaANuKZAXu3Gj2uXS/H7pAP8yLyoG4mrxcpA4b0Hl85F7Tl4qB
-         f0iw==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature:arc-authentication-results;
+        bh=x31vu5InvpTLGEogDKkBiQgb1p0lC+p9QyNVzQvvKuo=;
+        b=UneGrv9af1jway8QOFMvnYkZPSgW4GTC/xhHLDyB0ybAZHcDqi64DeJy+JbVbFEUJJ
+         Lqxmlb1I6DVl4m1jGD0+xJ49HfUmOyMoLwHEmzDq4FC8SRoxCyWfkAlX1V1mS13FojMi
+         mGI73RbKv1l18bZSFwQzRqUCrVWSqsTNq6E9Za6C5y5JwjRbU2fjGUTi35PwPEQ+QC9A
+         fQUqF5ptE3F6YIF9VJ1MlbnLkCXl8IXxPdUIL1Q7XMxk3e3pzaq5vbW3AJja2YukD5sa
+         Nv7ZiEtY6LhT2xddFG7+XJSNmgIGvWcwKNS/mx314c/N4ptHtTgrZxf45yZMhBiPtv8a
+         k4ig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=MTolcJwp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TLK+TAwS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p65si4308044qke.91.2017.10.10.06.34.13
+        by mx.google.com with ESMTPS id b97si9352449qkh.76.2017.10.10.07.49.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 10 Oct 2017 06:34:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 10 Oct 2017 07:49:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=MTolcJwp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35122 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TLK+TAwS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:35453 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e1ufj-0000Lz-Ok
-	for alex.bennee@linaro.org; Tue, 10 Oct 2017 09:34:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59424)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1e1vqA-0001r2-5e
+	for alex.bennee@linaro.org; Tue, 10 Oct 2017 10:49:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57569)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e1ueV-0008MS-Sc
-	for qemu-devel@nongnu.org; Tue, 10 Oct 2017 09:32:56 -0400
+	(envelope-from <edgar.iglesias@gmail.com>) id 1e1vps-0001ld-TU
+	for qemu-arm@nongnu.org; Tue, 10 Oct 2017 10:48:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e1ueV-0000us-0S
-	for qemu-devel@nongnu.org; Tue, 10 Oct 2017 09:32:55 -0400
-Received: from mail-wm0-x235.google.com ([2a00:1450:400c:c09::235]:46891)
+	(envelope-from <edgar.iglesias@gmail.com>) id 1e1vpr-0005w8-Rz
+	for qemu-arm@nongnu.org; Tue, 10 Oct 2017 10:48:44 -0400
+Received: from mail-lf0-x234.google.com ([2a00:1450:4010:c07::234]:55244)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1e1ueU-0000ua-OH
-	for qemu-devel@nongnu.org; Tue, 10 Oct 2017 09:32:54 -0400
-Received: by mail-wm0-x235.google.com with SMTP id m72so5230541wmc.1
-	for <qemu-devel@nongnu.org>; Tue, 10 Oct 2017 06:32:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=Xzm5lie6Prj14HHxiay+vzBu73jkQETslqvQInjzeW0=;
-	b=MTolcJwpgsbbc314uHVYOZEz5LTYuNYjLoUmPcKVz+oETG2ALImedhUeyo3aJ7ib/O
-	2rJcrn24+fwN1izDNOUWTYNUDKMTOVV6Nkv7DqPLUsKqMq7mCvXEP/MgAU6FNot3Wj5R
-	wwru8ATQiFj28425hedbB5nbpVO6tfj2TuDS0=
+	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
+	id 1e1vpn-0005tK-6v; Tue, 10 Oct 2017 10:48:39 -0400
+Received: by mail-lf0-x234.google.com with SMTP id d10so29013013lfg.11;
+	Tue, 10 Oct 2017 07:48:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=x31vu5InvpTLGEogDKkBiQgb1p0lC+p9QyNVzQvvKuo=;
+	b=TLK+TAwS0nCpgfpbfgv4vr6Vn0gleOq0JSx5jsLPXzBoMcKp1lB5X9iNQvrQBUUWgI
+	fq1NFVVpYlrhJXuO/sVGnVB+IZo8LZx6PX7wX/aEHTLzxIeoz8f94GcdkZgf8QEmy8fW
+	IoXkT+IOwXb9hSqs9Fkl9AGQzjJUdq7uaumTT2yiJII5uAvnwEtRKpp8I31J7yL7GMhu
+	H9YrELuEau3WSHvtz6DywwJOnbggnx9J+YzMZ+cS6CGaIj40TAFCQCDhqWjHdUxn/yTw
+	LBXQWlgSFbeAjHIx8gZ1qN41GcgvAo6RF2COLKVYHtQsUtdot9asgx6pA47TESgLBQ3j
+	LudA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=Xzm5lie6Prj14HHxiay+vzBu73jkQETslqvQInjzeW0=;
-	b=l+q3bhYsnD5vuakP6jOUg18A9BZ0L0uYVGO4fDujlpq///5+9shQe9Yuy6Wj5DGmgt
-	4DQauykg26CkyrBGs66qe34iAyHWDWqnB01NARjXWa7Zg8zmnfwzPmV2IxmMdsiWjDKu
-	kfvuvvMQKpam4pE12SPtTM8tFT9vHt3yT/GbYjlCuSN4ExbdQidgqmmvqRyPhuixzGN/
-	O9q+aiYQYADXaC2nSH1caInGIWjVyOlhNTI5CHco7ILezRrjAQlZ06rMlKF2sRWVktPd
-	EL2vJJizw+IQ9y11t358ANRd7TD+z+6dno4ESgZaZMYcQp01n9eIvHP/ybTG0mH7kF2I
-	wqrQ==
-X-Gm-Message-State: AMCzsaVzJcJCUGIb0TcxRYbnPcQRHVVPIvovBarmfhp8oeszMlAvjHVJ
-	GTquf7vkcTT1JjQkOpjOvgSs/x6jIAE1N6y7gOVhrQ==
-X-Google-Smtp-Source: AOwi7QB3ZypYhIPaLILSFKzcDCMZzxEdQQL1L6EpBr5m0IWxP1cnVCeWSkmo2hkyU6UDOswBMgdnqM7MwgqSsnFA0ow=
-X-Received: by 10.223.186.201 with SMTP id w9mr12306876wrg.230.1507642373555; 
-	Tue, 10 Oct 2017 06:32:53 -0700 (PDT)
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=x31vu5InvpTLGEogDKkBiQgb1p0lC+p9QyNVzQvvKuo=;
+	b=nkUir0N3cgSSiWc7Gspd5bc8DSzwHiFwCFFRippVEm6iPV6WDeeyv2dt2kfsHk8O4f
+	FO3/3xme9ykQbMA3QDvAHVhx93Z+McDB6NBKGALrpFQv9FBYgU8QND5xRwQ36einjohK
+	uYJPYZ9Gxsj9xRY9CLvgMI8t+HKtvnRIdlSj2sb3VTf8YYMSJ1DQL+UZxv1YzbUasUwB
+	L0fzdBbRrYoeEMHLor8Wm7yJhJ+fTqPscmzMS/MJzPOrNz4Cbmt4BkFK/gUXO1SheLmc
+	9wfB00SWK5YsZUwMZemhsNtRWLk6fXPCfR8KYEHR7O/NZ4QbuhMBlcPM72Zpw1Ehc/jp
+	ZhTA==
+X-Gm-Message-State: AMCzsaVTWWkNqPtaP3oXXhVrRb+cM7W2fb5xdUcYl0+NDAOeVzY9wccH
+	9licsrOAmGb3kEd0RirUn74=
+X-Google-Smtp-Source: AOwi7QCbjo1uNGmJkzJ+Zq0O8TlOHNQg0FdRZzG4rnDbqUB6SR/tHmL/APnt8kxYoJfy38FBySgtwg==
+X-Received: by 10.25.222.202 with SMTP id i71mr5533029lfl.177.1507646916302;
+	Tue, 10 Oct 2017 07:48:36 -0700 (PDT)
+Received: from gmail.com (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
+	by smtp.gmail.com with ESMTPSA id
+	z204sm1815883lff.33.2017.10.10.07.48.35
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 10 Oct 2017 07:48:35 -0700 (PDT)
+Date: Tue, 10 Oct 2017 16:48:34 +0200
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Alistair Francis <alistair.francis@xilinx.com>
+Message-ID: <20171010144834.GC5553@toto>
+References: <cover.1505929556.git.alistair.francis@xilinx.com>
+	<20171008222029.GA29979@toto>
+	<CAKmqyKMEbQ3JbqMxeeOTBV92ixRVDfw1wFi57xNKGyF82DSC_Q@mail.gmail.com>
 MIME-Version: 1.0
-Received: by 10.223.128.207 with HTTP; Tue, 10 Oct 2017 06:32:32 -0700 (PDT)
-In-Reply-To: <48144f71-c876-0e89-f01e-cbfe87687aee@kaod.org>
-References: <20170920070135.31379-1-clg@kaod.org>
-	<20170920070135.31379-2-clg@kaod.org>
-	<1507507449.5452.147.camel@aj.id.au>
-	<48144f71-c876-0e89-f01e-cbfe87687aee@kaod.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 10 Oct 2017 14:32:32 +0100
-Message-ID: <CAFEAcA-oJrvJqpdw_7ybBH3oy0ykaVd7SsM_Xx+d9yY9ZXmDkA@mail.gmail.com>
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAKmqyKMEbQ3JbqMxeeOTBV92ixRVDfw1wFi57xNKGyF82DSC_Q@mail.gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::235
-Subject: Re: [Qemu-devel] [PATCH v2 1/6] aspeed: add support for the
- witherspoon-bmc board
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4010:c07::234
+Subject: Re: [Qemu-arm] [PATCH v3 0/8] Add the ZynqMP PMU and IPI
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nfASyduJWVGK
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +K0zaodUsDeK
 
-On 10 October 2017 at 14:30, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
-> On 10/09/2017 02:04 AM, Andrew Jeffery wrote:
->> On Wed, 2017-09-20 at 09:01 +0200, C=C3=A9dric Le Goater wrote:
->>> +static void witherspoon_bmc_i2c_init(AspeedBoardState *bmc)
->>> +{
->>> +    AspeedSoCState *soc =3D &bmc->soc;
->>> +
->>> +    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 4), "tmp423=
-", 0x4c);
->>> +    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 5), "tmp423=
-", 0x4c);
->>> +
->>> +    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 9), "tmp105=
-", 0x4a);
->>
->> Looks like I need to track down newer versions of the schematics I have.
->
-> the device on the board is a tmp275 but the tmp105 model is compatible.
+On Mon, Oct 09, 2017 at 05:12:39PM -0700, Alistair Francis wrote:
+> On Sun, Oct 8, 2017 at 3:20 PM, Edgar E. Iglesias
+> <edgar.iglesias@xilinx.com> wrote:
+> > On Wed, Sep 20, 2017 at 03:01:31PM -0700, Alistair Francis wrote:
+> >>
+> >> This series adds the ZynqMP Power Management Unit (PMU) machine with basic
+> >> functionality.
+> >>
+> >> The machine only has the
+> >>  - CPU
+> >>  - Memory
+> >>  - Interrupt controller
+> >>  - IPI device
+> >>
+> >> connected, but that is enough to run some of the ROM and firmware
+> >> code on the machine
+> >>
+> >> The series also adds the IPI device and connects it to the ZynqMP ARM
+> >> side and the ZynqMP PMU. These IPI devices don't connect between the ARM
+> >> and MicroBlaze instances though.
+> >>
+> >> v3:
+> >>  - Add the interrupt controller
+> >>  - Replace some of the error_fatals with errp
+> >>  - Fix the PMU CPU name
+> >
+> > Hi Alistair,
+> >
+> >
+> > Sorry for the super long delay...
+> >
+> > I think this mostly looks good but I was wondering if we really need
+> > to have a board specific (zcu102) PMU?
+> 
+> It doesn't have to be board specific. What I wanted though was an SoC
+> and a machine so that maybe one day we could add the PMU SoC to the
+> ARM ZCU102 machine. After that it was hard to think of a name to
+> differentiate the SoC and the machine. Do you have a recommendation on
+> names?
 
-This kind of deviation from the real hardware is worth having
-a comment to document, I think.
 
-thanks
--- PMM
+Hi Alistair,
+
+Yes, I agree with your approach but I got a little confused by the names.
+
+I think all the stuff that is inside the PMU subsystem architecture-wise
+should have generic PMU names (no ZCU102). I.e the ROM, the RAM, the IOModule,
+interrupt controller etc.
+
+The IPI block can be outside of the PMU module and be instantiated by the
+board or perhaps better if we could reuse some of the ZynqMP modules
+instantiated by the ZCU102 machine to get a CPU-less PS for the PMU
+to interact with. Or something along those lines.
+How does that sound?
+
+Best regards,
+Edgar

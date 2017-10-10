@@ -1,99 +1,93 @@
-Received: by 10.223.197.9 with SMTP id q9csp2987200wrf;
-        Mon, 9 Oct 2017 17:13:29 -0700 (PDT)
-X-Received: by 10.55.170.15 with SMTP id t15mr10670896qke.232.1507594409174;
-        Mon, 09 Oct 2017 17:13:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507594409; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp3317353wrf;
+        Tue, 10 Oct 2017 01:30:03 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QCSPqdUanDHgf/euYilCK5Z65s4Go5BHD0HCLw7hty0y9vKUum2P4kQH0wriGfvHboOgWTy
+X-Received: by 10.55.127.70 with SMTP id a67mr12185942qkd.90.1507624203834;
+        Tue, 10 Oct 2017 01:30:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507624203; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ta2/EwVDy+jqs89FY/gFmXq39cbxzmTsOJnCdx38tvGubNZVGHKArOgUbEP6028/KP
-         XYvuPU5Q4porx3vnsDEug5VVWctJIUk2srxoypyWBGNPM7Lmn9vGW7i8pGQpNjeY+enr
-         XDjKVfhJCCiSI9fnXU2tMdQ2ZC2aFFnn0XHp2r9M+QhSKoxHVrPVgSUDSvmtJZXld5l1
-         CPLJn300MGVnRfUKmfk0aP0LwP8P3I89ZPZy/QkwhdHBzZmbH/umm6ejA8iImSNCmvqY
-         wsdtRt6OAT/gawEQGWc5O+c/eWusfMCdBBNX45SSPsnjINvYv/+LPgvsY2keKqBbXmOM
-         JsBQ==
+        b=iYiJdBZYTMcl8KsF114aUlu1jHnfVVXSHeyi1f4osstYfxZQzjJed0MUupj6VOGt+N
+         OQEPxN3KGUQBEMcSTU6RnJBU1PW055L2HF21FNJp4pbJjn9+KN0vPRBVM9LrFVARHX/i
+         qxu1S1R5VQCo0Gu6BLKCEmgFo8o7T0/zOebzng3MPEuGA1DtSOG2Gui9oFUDD45a31nw
+         Hq8S5jKcJGUhY1rJ813iiQTzrso3Wv07qvApISs/I34HWvIIxL15nkrGNkABEgGLNoD9
+         Aplr3lam074ww5CdyeYZXDqo/5V/TMzq8I5ch4Ksm0qPyMqhj8oqeYhuV7IagVtRcS/W
+         z0RA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:references:to:from:dmarc-filter
          :arc-authentication-results;
-        bh=ml+jAqVGKNty0fO+LdRW1QPlKHacJMh9BEMhM2KlPH0=;
-        b=seOsJYteFnbYOPc5jA7VA9bVFue/llg64BhYGghhxgCmJgBqmaLkpTd/9Q7qg95uUn
-         tLNMxn/L9LkFKyv4sRYVQQGBW/qx4V9C+nLli9QajMIfIaDzddAIAH0fJvOpY5JnAzMO
-         8J/o4oAdoCR2L86nq6h4De1ZUD2WD2eHjBWmE/FzwRiUeeuDLctEDxmBZrchjHCu+Cf0
-         Zz+iV1YaNKuS624AO6HwiLeslzSmuH06pTFrVmYV9KTllHO35y9PGnPnEdqCy/gtO3sD
-         QOs/h/RbPEpVceh2N6pMZTsmq5RBNQ7X6GLAkobNIB3ntvqKgQxd4kfaUgUDh1zOqlzF
-         Q3jg==
+        bh=xdEMazfx6K1xxFfCvQldQPoV0HRDeafZs40VvTwRMcc=;
+        b=isiiRjaHgTOZx1P/lXPZAFseAJoiBBnavqaQiyizY01GfrSpSH5iZW5c4R0zhuXOQ7
+         kSHQR1q4QHgbMUotsmOr+OPhIJKf+vmrRi9nO9BgLxxYQ0+gkBX8P32tFnM5VS0t4BIs
+         uWH2OmJOjwyFAtVzn5BrhBY2r2P2dPX2Yosi9lvqSnwyCEM1i2gd1nTB5h/IgObLD1qX
+         wCskj3VB3tuLcX8pMk1CdHb6q9DTmofUN/2cTW8gtaFKvS6Vb4a+zuMMsZZR5Ecbb7Ff
+         y3x0aOOC2Apa2i15Qr2Jty1DqQG3csj/x+drNIS+/3ChpMUnCNgLG7BskXdgfIDpZ1c5
+         BUFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HpAGq2Ng;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 38si1284877qtz.236.2017.10.09.17.13.28
+        by mx.google.com with ESMTPS id v7si2413066qtj.158.2017.10.10.01.30.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 09 Oct 2017 17:13:29 -0700 (PDT)
+        Tue, 10 Oct 2017 01:30:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HpAGq2Ng;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60390 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33473 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e1iAo-0005Gg-Re
-	for alex.bennee@linaro.org; Mon, 09 Oct 2017 20:13:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44353)
+	id 1e1pvN-0008M5-Q1
+	for alex.bennee@linaro.org; Tue, 10 Oct 2017 04:30:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53250)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1e1iAc-0005FK-Nn
-	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 20:13:15 -0400
+	(envelope-from <thuth@redhat.com>) id 1e1pvE-0008M0-DP
+	for qemu-arm@nongnu.org; Tue, 10 Oct 2017 04:29:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1e1iAb-0004eH-Qc
-	for qemu-arm@nongnu.org; Mon, 09 Oct 2017 20:13:14 -0400
-Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:38687)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1e1iAZ-0004dK-9j; Mon, 09 Oct 2017 20:13:11 -0400
-Received: by mail-wm0-x241.google.com with SMTP id q124so23007337wmb.5;
-	Mon, 09 Oct 2017 17:13:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc;
-	bh=ml+jAqVGKNty0fO+LdRW1QPlKHacJMh9BEMhM2KlPH0=;
-	b=HpAGq2NgrNHSt4tUxCyDIaZFYwyeisXnriN62j7O+ct+eSHiZLjG1Kr1hyJDG4h7fa
-	isXmmq+XLpaE5EF2YKhtb6/S5O9mv1LRyT9UJYL+bZH0Q4G/hfwCrBIpO31yEGnlH/XC
-	DW5AzdDdKso0EKcRdNutNxvnVssVqzrgJwGTGq43SK1S32IhqaNXmDcsCGR37/0b9kfJ
-	eoFZQ7s4+GnsUIAvl9O3AbL9FbC+tx3DEP7lObkKk0RsVFn9igKmTPWJ/Iu/9wGoEQq6
-	ABrJr0MBfm0YO37A61xZ2y69YXXgcSKisme9UTf7fUy9oITjAiLbVzagF/p0dmdzteL8
-	NmeA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc;
-	bh=ml+jAqVGKNty0fO+LdRW1QPlKHacJMh9BEMhM2KlPH0=;
-	b=CFX9sayIf0/C1qZfyDAdr2qdYq6d/vJuUmDdm71U6+hp2VCY8yeUYsziGOFUI7asR5
-	gi9SRixVUaJayElkESIqszler6G18PXgXXOiZMdmatmGufe2IwH4KDbsWaeuQU/c3zZf
-	oFOCjaMyeSS4tAdfbHaVsZSRc2z2MoKt0lnrV7F2eg5vOglQC19LQPiLK7M+UnofWrHT
-	zsBgXUvNurhy9C6x6I4dTGWz01agn6w6JWfL/S0kVEBhR6WGPdSBhJjKUddRuQW5U+HP
-	GavxoBcEmG6SrgGQ1V7+3L+AKrinVvHnI96Zqwd0kaOLOnmFVOQpObncgiUsue09dDg5
-	xIUw==
-X-Gm-Message-State: AMCzsaUYfe4iJMSF3fgY+Ls72v31rlEPLoycH9scCXGtBzPMRgC1vvaD
-	yKzs0+x5omfUJExb9sc+3ZtkjhPyp9qtfbdfEr8=
-X-Google-Smtp-Source: AOwi7QB4hxszUtMsKQuYctBgAQj4bDfDw2yt730I47hl0gGWRpcil5xOiiJq5153bOUcvyYIiHuLzZI56IsY9x4cevo=
-X-Received: by 10.223.144.71 with SMTP id h65mr10928853wrh.41.1507594390274;
-	Mon, 09 Oct 2017 17:13:10 -0700 (PDT)
+	(envelope-from <thuth@redhat.com>) id 1e1pvA-00014r-CG
+	for qemu-arm@nongnu.org; Tue, 10 Oct 2017 04:29:52 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48402)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1e1pvA-00011g-3e; Tue, 10 Oct 2017 04:29:48 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 31D4483F45;
+	Tue, 10 Oct 2017 08:29:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 31D4483F45
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=thuth@redhat.com
+Received: from [10.36.116.161] (ovpn-116-161.ams2.redhat.com [10.36.116.161])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4942160464;
+	Tue, 10 Oct 2017 08:29:42 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+References: <1506524313-20037-1-git-send-email-thuth@redhat.com>
+Message-ID: <e5e8a117-f055-cd1e-e805-8e1e336eb897@redhat.com>
+Date: Tue, 10 Oct 2017 10:29:40 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-Received: by 10.28.157.2 with HTTP; Mon, 9 Oct 2017 17:12:39 -0700 (PDT)
-In-Reply-To: <20171008222029.GA29979@toto>
-References: <cover.1505929556.git.alistair.francis@xilinx.com>
-	<20171008222029.GA29979@toto>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Mon, 9 Oct 2017 17:12:39 -0700
-X-Google-Sender-Auth: 9veDuLk-bwZS8iSLzpZdoE6yOQI
-Message-ID: <CAKmqyKMEbQ3JbqMxeeOTBV92ixRVDfw1wFi57xNKGyF82DSC_Q@mail.gmail.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::241
-Subject: Re: [Qemu-arm] [PATCH v3 0/8] Add the ZynqMP PMU and IPI
+In-Reply-To: <1506524313-20037-1-git-send-email-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Tue, 10 Oct 2017 08:29:46 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] disas: Always initialize
+ read_memory_inner_func properly
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,95 +99,72 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>
+Cc: Julian Brown <julian@codesourcery.com>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JIYaU7uZ8wxH
+X-TUID: KEAPzLj8Orz5
 
-On Sun, Oct 8, 2017 at 3:20 PM, Edgar E. Iglesias
-<edgar.iglesias@xilinx.com> wrote:
-> On Wed, Sep 20, 2017 at 03:01:31PM -0700, Alistair Francis wrote:
->>
->> This series adds the ZynqMP Power Management Unit (PMU) machine with basic
->> functionality.
->>
->> The machine only has the
->>  - CPU
->>  - Memory
->>  - Interrupt controller
->>  - IPI device
->>
->> connected, but that is enough to run some of the ROM and firmware
->> code on the machine
->>
->> The series also adds the IPI device and connects it to the ZynqMP ARM
->> side and the ZynqMP PMU. These IPI devices don't connect between the ARM
->> and MicroBlaze instances though.
->>
->> v3:
->>  - Add the interrupt controller
->>  - Replace some of the error_fatals with errp
->>  - Fix the PMU CPU name
->
-> Hi Alistair,
->
->
-> Sorry for the super long delay...
->
-> I think this mostly looks good but I was wondering if we really need
-> to have a board specific (zcu102) PMU?
+On 27.09.2017 16:58, Thomas Huth wrote:
+> I've recently seen this with valgrind while running the HMP tester:
+> 
+> ==22373== Conditional jump or move depends on uninitialised value(s)
+> ==22373==    at 0x4A41FD: arm_disas_set_info (cpu.c:504)
+> ==22373==    by 0x3867A7: monitor_disas (disas.c:390)
+> ==22373==    by 0x38E80E: memory_dump (monitor.c:1339)
+> ==22373==    by 0x38FA43: handle_hmp_command (monitor.c:3123)
+> ==22373==    by 0x38FB9E: qmp_human_monitor_command (monitor.c:613)
+> ==22373==    by 0x4E3124: qmp_marshal_human_monitor_command (qmp-marshal.c:1736)
+> ==22373==    by 0x769678: do_qmp_dispatch (qmp-dispatch.c:104)
+> ==22373==    by 0x769678: qmp_dispatch (qmp-dispatch.c:131)
+> ==22373==    by 0x38B734: handle_qmp_command (monitor.c:3853)
+> ==22373==    by 0x76ED07: json_message_process_token (json-streamer.c:105)
+> ==22373==    by 0x78D40A: json_lexer_feed_char (json-lexer.c:323)
+> ==22373==    by 0x78D4CD: json_lexer_feed (json-lexer.c:373)
+> ==22373==    by 0x38A08D: monitor_qmp_read (monitor.c:3895)
+> 
+> And indeed, in monitor_disas, the read_memory_inner_func variable was
+> not initialized, but arm_disas_set_info() expects this to be NULL
+> or a valid pointer. Let's properly set this to NULL in the
+> INIT_DISASSEMBLE_INFO to fix it in all functions that use the
+> disassemble_info struct.
+> 
+> Fixes: f7478a92dd9ee2276bfaa5b7317140d3f9d6a53b ("Fix Thumb-1 BE32 execution")
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  disas.c             | 1 -
+>  include/disas/bfd.h | 1 +
+>  2 files changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/disas.c b/disas.c
+> index d6a1eb9..54eea3f 100644
+> --- a/disas.c
+> +++ b/disas.c
+> @@ -190,7 +190,6 @@ void target_disas(FILE *out, CPUState *cpu, target_ulong code,
+>  
+>      s.cpu = cpu;
+>      s.info.read_memory_func = target_read_memory;
+> -    s.info.read_memory_inner_func = NULL;
+>      s.info.buffer_vma = code;
+>      s.info.buffer_length = size;
+>      s.info.print_address_func = generic_print_address;
+> diff --git a/include/disas/bfd.h b/include/disas/bfd.h
+> index b01e002..d99da68 100644
+> --- a/include/disas/bfd.h
+> +++ b/include/disas/bfd.h
+> @@ -479,6 +479,7 @@ int generic_symbol_at_address(bfd_vma, struct disassemble_info *);
+>    (INFO).buffer_vma = 0, \
+>    (INFO).buffer_length = 0, \
+>    (INFO).read_memory_func = buffer_read_memory, \
+> +  (INFO).read_memory_inner_func = NULL, \
+>    (INFO).memory_error_func = perror_memory, \
+>    (INFO).print_address_func = generic_print_address, \
+>    (INFO).print_insn = NULL, \
+> 
 
-It doesn't have to be board specific. What I wanted though was an SoC
-and a machine so that maybe one day we could add the PMU SoC to the
-ARM ZCU102 machine. After that it was hard to think of a name to
-differentiate the SoC and the machine. Do you have a recommendation on
-names?
+Ping?
 
-Thanks,
-Alistair
+ Thomas
 
->
-> Best regards,
-> Edgar
->
->
->
->>
->>
->>
->> Alistair Francis (8):
->>   xlnx-zynqmp-pmu: Initial commit of the ZynqMP PMU
->>   xlnx-zynqmp-pmu: Add the CPU and memory
->>   aarch64-softmmu.mak: Use an ARM specific config
->>   xlnx-pmu-iomod-intc: Add the PMU Interrupt controller
->>   xlnx-zynqmp-pmu: Connect the PMU interrupt controller
->>   xlnx-zynqmp-ipi: Initial version of the Xilinx IPI device
->>   xlnx-zynqmp-pmu: Connect the IPI device to the PMU
->>   xlnx-zynqmp: Connect the IPI device to the ZynqMP SoC
->>
->>  default-configs/aarch64-softmmu.mak    |   1 +
->>  default-configs/microblaze-softmmu.mak |   1 +
->>  hw/arm/Makefile.objs                   |   2 +-
->>  hw/arm/xlnx-zynqmp.c                   |  14 +
->>  hw/display/Makefile.objs               |   2 +-
->>  hw/dma/Makefile.objs                   |   2 +-
->>  hw/intc/Makefile.objs                  |   2 +
->>  hw/intc/xlnx-pmu-iomod-intc.c          | 554 +++++++++++++++++++++++++++++++++
->>  hw/intc/xlnx-zynqmp-ipi.c              | 377 ++++++++++++++++++++++
->>  hw/microblaze/Makefile.objs            |   1 +
->>  hw/microblaze/xlnx-zynqmp-pmu.c        | 200 ++++++++++++
->>  include/hw/arm/xlnx-zynqmp.h           |   2 +
->>  include/hw/intc/xlnx-pmu-iomod-intc.h  |  58 ++++
->>  include/hw/intc/xlnx-zynqmp-ipi.h      |  57 ++++
->>  14 files changed, 1270 insertions(+), 3 deletions(-)
->>  create mode 100644 hw/intc/xlnx-pmu-iomod-intc.c
->>  create mode 100644 hw/intc/xlnx-zynqmp-ipi.c
->>  create mode 100644 hw/microblaze/xlnx-zynqmp-pmu.c
->>  create mode 100644 include/hw/intc/xlnx-pmu-iomod-intc.h
->>  create mode 100644 include/hw/intc/xlnx-zynqmp-ipi.h
->>
->> --
->> 2.11.0
->>

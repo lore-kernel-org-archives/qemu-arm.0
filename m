@@ -1,102 +1,110 @@
-Received: by 10.223.197.9 with SMTP id q9csp3824473wrf;
-        Tue, 10 Oct 2017 10:59:53 -0700 (PDT)
-X-Received: by 10.237.60.154 with SMTP id d26mr19218695qtf.227.1507658393174;
-        Tue, 10 Oct 2017 10:59:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507658393; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp45406wrf;
+        Tue, 10 Oct 2017 16:36:34 -0700 (PDT)
+X-Received: by 10.55.148.194 with SMTP id w185mr16480327qkd.354.1507678594498;
+        Tue, 10 Oct 2017 16:36:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507678594; cv=none;
         d=google.com; s=arc-20160816;
-        b=U7neFODcKS/Sk1l1ZkL8/aIvpZ0+EdXQq/Dy5X2OJYEDEAUTO9O5q+Fzvem+Omns/M
-         Yh+8wbxS2TVBdebLzgocVc7pZDdM92Txe4DDK7yuer87IKJpl7GAZTzVr5AprD51j7+F
-         a5n43b4Cf/BRFJHYhZcpeq9J/WIvWTtMRRWExUhlaB3qoYi1/X7Rrrd0fjGkfDsJ1A+E
-         Vl15WT5Rax5+b56st3LzwhOebLYUL4yX8sf6LNsGqepzvpUFdSjSX7FoaOrRHilEMy/G
-         drgtY9Qceh8oBjLhgvrQTXaILwwjbH1pJK2iuEsnNcf3LHAnyNKeJkQL4/+g2V8MuKcG
-         XKjA==
+        b=FJpzyz0BLXTcEJQxRMgIkSL6hLW+Yfd7n75Z19ljPFA069iKEZUNXtuUIk0RSRqt9a
+         P4XWMStThR3SV7BBCBsVvTosNIaukEYzgl7I2u27SSQBHPlL73wUxqEoBw4DY9PE8unn
+         ZHphfUgoYaFLoTLoXIhQKZxfbjj15qI/36gBZvYg74INdPQafRHG5YY7QPlfqUZiKpNA
+         t6KClzdjyesil43ovCxqn+XrwdoXw4v+Uk753skNHx1kn1oKWOo6Lxb7DIPgjLPDLCEO
+         MRXFpAuZvm6IJ7tNw887AnMib4gVCHc+JEr/uZUAmiFe53yDmN1fQLgbgeyryzvHZfA6
+         hmrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature
          :arc-authentication-results;
-        bh=Vp66oPe2PtbiViiAHpBhBw+p3Ge6eAfcuj/KI9gfoM8=;
-        b=ZT7AXkB4EXwAvDMWeucCKgQAmoaynZix+xyRFRl2wgMSb2AYCBCX+AxWco7dJi1Ahb
-         clZAXC5HMl6Tvrh57+1PLnx2tOwzuqS9wn+ftsXlySnVpgP0BKNl9Wg9lveAUJQZe4tU
-         eA3JgYA4c+0+yGRKle2rTOey/HuFXBOIqy7zNFuasF5xWrep4pVh/aDWTmqQ6+Ma7cum
-         GouGDcjB/OWGhdYTfw4FMNxHrFQm8TeVPenAy6zljadJb9B0fNAAQZDkSTyWyDJPqHxj
-         T7Wk1Og9sZwjQq/AlAnYLfeWeC+lh0rGKZdCudHwfLXOWSsKRZ2ky/dU/lniNwFKYDlb
-         0ybQ==
+        bh=lioHmKZo6648LvHIRgZxiqDvUXXDH+LreVXUOuPswTU=;
+        b=zyNtTkPwBg+Ihj5yNxfy/pAJvSDBMowG/kRRqlfHw6yA7hhtgcuALzZNtmBSh29o9x
+         jHZtAaBcs2SwP2MzXq8xITmy0KIOEwvDxs2CrVad3+gXXi1uR5Sg5nqEgE6hbwPtbB8F
+         0YLAh47oTZeixIsM5XNPXz8g2f91xB6k4VocvFRlMl9XvrbnRZ13NBJnKkdt5eD095W+
+         StbJ+fHSbyt42OQa87IBQHc+RJgXvqn6UIsUN6y7fp0ijsA5ni3p8pGAdsQZwBKkyOGE
+         +NP1N6QnCYXleljeiOqejhiyZClD2jZd3eLELoOfXD1T9OX6PAZnng1GfexE+vr9cpNJ
+         5WgA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DOtBl+Z5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@linaro.org header.s=google header.b=PHmFB1AL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y140si147645qky.192.2017.10.10.10.59.52
+        by mx.google.com with ESMTPS id x5si5365089qtd.228.2017.10.10.16.36.33
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 10 Oct 2017 10:59:53 -0700 (PDT)
+        Tue, 10 Oct 2017 16:36:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DOtBl+Z5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36473 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=PHmFB1AL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:37826 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e1yoo-0001Mc-Uo
-	for alex.bennee@linaro.org; Tue, 10 Oct 2017 13:59:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33882)
+	id 1e244e-000612-82
+	for alex.bennee@linaro.org; Tue, 10 Oct 2017 19:36:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38579)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1e1yog-0001MT-AT
-	for qemu-arm@nongnu.org; Tue, 10 Oct 2017 13:59:44 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1e244V-00060W-D4
+	for qemu-arm@nongnu.org; Tue, 10 Oct 2017 19:36:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1e1yoe-0003YG-CI
-	for qemu-arm@nongnu.org; Tue, 10 Oct 2017 13:59:42 -0400
-Received: from mail-wm0-x230.google.com ([2a00:1450:400c:c09::230]:53025)
+	(envelope-from <richard.henderson@linaro.org>) id 1e244S-0007oo-3C
+	for qemu-arm@nongnu.org; Tue, 10 Oct 2017 19:36:23 -0400
+Received: from mail-pg0-x22b.google.com ([2607:f8b0:400e:c05::22b]:48822)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1e1yoe-0003Xw-4Q; Tue, 10 Oct 2017 13:59:40 -0400
-Received: by mail-wm0-x230.google.com with SMTP id k4so7663146wmc.1;
-	Tue, 10 Oct 2017 10:59:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc;
-	bh=Vp66oPe2PtbiViiAHpBhBw+p3Ge6eAfcuj/KI9gfoM8=;
-	b=DOtBl+Z5BiXfhpUl8ns+bs0hAsn8Nq1c4bwtj9LolknBTmm3cf15xUegYryUa64FRg
-	QRYgN7eRy83Rds4iPzFUWAWyS4aLt+TG9lUoFVQZVKWUfoRYXDoq0wbl8jAU4+HyfHLr
-	bChOxP2bw6cocTM4bEuBWLWn85k46cOoO+n4bDLBEgaqg0dP+q6TPi1Vz4yTtXUV+mjP
-	gLy4TaUezypU7q4Fhgl3fmL1YWFk8R2+eWLOXg6h0YhN3QG4YXcwpbQTNJagaDPpLza1
-	mTwfN5SVKPiwOGgWVIuniJ1pVDaS68j73K3Hwqjwb3Qr9/61WwHdPCkNM8ZWF6Iefx02
-	UM5A==
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1e244R-0007mO-Rb
+	for qemu-arm@nongnu.org; Tue, 10 Oct 2017 19:36:20 -0400
+Received: by mail-pg0-x22b.google.com with SMTP id v78so14986pgb.5
+	for <qemu-arm@nongnu.org>; Tue, 10 Oct 2017 16:36:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=lioHmKZo6648LvHIRgZxiqDvUXXDH+LreVXUOuPswTU=;
+	b=PHmFB1ALRAx8vS+IufQU7dx/5oigW59VgfqgRHdD+inJZrrx9jcbWreHNcnKAGgB5I
+	tg+f9KyvJ3UwQCb9U8fn7quSoRxhhZyoH9msdYDBM4G4OVuzFSHUmP4aWO/2uEhbTa7S
+	6fWbug/Npw4+qUGaLmCwAEwfnkyWATlkxe6T0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc;
-	bh=Vp66oPe2PtbiViiAHpBhBw+p3Ge6eAfcuj/KI9gfoM8=;
-	b=LTJ9NWhaacBx/ftBl6XHjFxArfQJT3AxeiZEDj+NieiYJxa6gbMnzavsZ6uT63cAU3
-	U1cfgedNNwHTq8ZNov/pmPfA3knEpNKFKdPSMEkpjH7mAgmv9cpavN+YEqo421ngfEyY
-	Qx4rDJ+6zpeIr4ZDhIX2NYI3veQ7zQ1u/055j8V2vdf7+TgrH8Tpxn+aqYUF4uvZqf0h
-	dqYNcMTHO8b0uZ29zHRyjZqgGOcXnHn4srTbWnNx09NpptIhptusI94HVLy1h9dQ4/ie
-	R5LtPWH7mywvnR3FBh+LF4eudK1EbBK7+ORG8QzDt/j5h6m6UzxzJYTUwCL+d5Jos7/Z
-	J1UA==
-X-Gm-Message-State: AMCzsaXd1XOY8hqOxuK71Xw1wn5BP5w4GYwAj4MU7pqOBtk/nWFe3NkD
-	5TGxUlGp47ouEEgGD0FK6vGMhwhb5bRRhYf1kcHm+g==
-X-Google-Smtp-Source: AOwi7QC8zCbp/FbYCaO41rP3qGjjZQrx+Mad8z14S8ycdICFR+fcIIIO6d9Ye6Uc/lDVcAatLXF+8teq3Saa8Sy4jYg=
-X-Received: by 10.223.131.65 with SMTP id 59mr12358488wrd.66.1507658378693;
-	Tue, 10 Oct 2017 10:59:38 -0700 (PDT)
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=lioHmKZo6648LvHIRgZxiqDvUXXDH+LreVXUOuPswTU=;
+	b=EsWb3+x3U2TxKv46q0UQJjtnjzcZ95Gl593JfmCThu/tDYWQjMaeflZJTQ8NefsIVY
+	lbh0ej2tJ8yH/JSNl/1bI1wSbRrqNLlCpHIQYsTRnG7/QLNmCHNgi5qEsGJHZPdid+G4
+	E/3t7q1lLpvcTbK/GxDH7QiLU0Ca+n7JaI1pDcuOXwqFWh1U1KYuMbz6+zkabNn1x/Cq
+	gnBm8Fhdg6VjL2W131qfaaWrNubf4CtjBLVPPjpIXsia0FVtcaNftfFJGVLPDc1aZ5OK
+	O9Zan7OuZMqG7Lh7nn/kAdS0d1CsfoS8rlKpGs/Wp4JxhLtyFvpeOgeyB+aMhfxrrXQN
+	44zA==
+X-Gm-Message-State: AMCzsaUp6kPOl/1CCZJ8VEturcCCD0LdXmYe1ecBLd9Fvkj8jMnTcS8b
+	xYogPganeNm7rpj1igzsL6qElA==
+X-Google-Smtp-Source: AOwi7QAdL8n20EJztE2Iaj//W7KzVflDYY7RTuNG+whEOPdTHgni9jpp5Pa/i7OQ3h+nrrIVgJkuUg==
+X-Received: by 10.84.198.164 with SMTP id p33mr13458339pld.89.1507678577150;
+	Tue, 10 Oct 2017 16:36:17 -0700 (PDT)
+Received: from bigtime.twiddle.net (97-126-104-76.tukw.qwest.net.
+	[97.126.104.76]) by smtp.gmail.com with ESMTPSA id
+	z1sm20908533pge.45.2017.10.10.16.36.15
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 10 Oct 2017 16:36:16 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <1507556919-24992-1-git-send-email-peter.maydell@linaro.org>
+	<1507556919-24992-2-git-send-email-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <82dbe23c-9023-ad60-5386-c29dd4022c54@linaro.org>
+Date: Tue, 10 Oct 2017 16:36:14 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-Received: by 10.28.157.2 with HTTP; Tue, 10 Oct 2017 10:59:08 -0700 (PDT)
-In-Reply-To: <20171010144834.GC5553@toto>
-References: <cover.1505929556.git.alistair.francis@xilinx.com>
-	<20171008222029.GA29979@toto>
-	<CAKmqyKMEbQ3JbqMxeeOTBV92ixRVDfw1wFi57xNKGyF82DSC_Q@mail.gmail.com>
-	<20171010144834.GC5553@toto>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Tue, 10 Oct 2017 10:59:08 -0700
-X-Google-Sender-Auth: V6KWOSzZDMgnBedl_Lnx3E16spU
-Message-ID: <CAKmqyKMTqZA+t77XV3s2aicsbHHbF8h96w=dmWO9VHJkE0Uw8w@mail.gmail.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <1507556919-24992-2-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::230
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 0/8] Add the ZynqMP PMU and
- IPI
+X-Received-From: 2607:f8b0:400e:c05::22b
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/9] target/arm: Add M profile
+ secure MMU index values to get_a32_user_mem_index()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,80 +116,22 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>
+Cc: Richard Henderson <rth@twiddle.net>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: I+rBRW3LHxKS
+X-TUID: u18KZiMRyEyp
 
-On Tue, Oct 10, 2017 at 7:48 AM, Edgar E. Iglesias
-<edgar.iglesias@gmail.com> wrote:
-> On Mon, Oct 09, 2017 at 05:12:39PM -0700, Alistair Francis wrote:
->> On Sun, Oct 8, 2017 at 3:20 PM, Edgar E. Iglesias
->> <edgar.iglesias@xilinx.com> wrote:
->> > On Wed, Sep 20, 2017 at 03:01:31PM -0700, Alistair Francis wrote:
->> >>
->> >> This series adds the ZynqMP Power Management Unit (PMU) machine with basic
->> >> functionality.
->> >>
->> >> The machine only has the
->> >>  - CPU
->> >>  - Memory
->> >>  - Interrupt controller
->> >>  - IPI device
->> >>
->> >> connected, but that is enough to run some of the ROM and firmware
->> >> code on the machine
->> >>
->> >> The series also adds the IPI device and connects it to the ZynqMP ARM
->> >> side and the ZynqMP PMU. These IPI devices don't connect between the ARM
->> >> and MicroBlaze instances though.
->> >>
->> >> v3:
->> >>  - Add the interrupt controller
->> >>  - Replace some of the error_fatals with errp
->> >>  - Fix the PMU CPU name
->> >
->> > Hi Alistair,
->> >
->> >
->> > Sorry for the super long delay...
->> >
->> > I think this mostly looks good but I was wondering if we really need
->> > to have a board specific (zcu102) PMU?
->>
->> It doesn't have to be board specific. What I wanted though was an SoC
->> and a machine so that maybe one day we could add the PMU SoC to the
->> ARM ZCU102 machine. After that it was hard to think of a name to
->> differentiate the SoC and the machine. Do you have a recommendation on
->> names?
->
->
-> Hi Alistair,
->
-> Yes, I agree with your approach but I got a little confused by the names.
->
-> I think all the stuff that is inside the PMU subsystem architecture-wise
-> should have generic PMU names (no ZCU102). I.e the ROM, the RAM, the IOModule,
-> interrupt controller etc.
+On 10/09/2017 06:48 AM, Peter Maydell wrote:
+> Add the M profile secure MMU index values to the switch in
+> get_a32_user_mem_index() so that LDRT/STRT work correctly
+> rather than asserting at translate time.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/arm/translate.c | 4 ++++
+>  1 file changed, 4 insertions(+)
 
-Ok I can rename them to the ZynqMP PMU (the machine/board) and the
-ZynqMP PMU SoC. Does that work?
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
->
-> The IPI block can be outside of the PMU module and be instantiated by the
-> board or perhaps better if we could reuse some of the ZynqMP modules
-> instantiated by the ZCU102 machine to get a CPU-less PS for the PMU
-> to interact with. Or something along those lines.
-> How does that sound?>
 
-I'm a little unclear what you mean here.
-
-Thanks,
-Alistair
-
-> Best regards,
-> Edgar
->
+r~

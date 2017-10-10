@@ -1,160 +1,139 @@
-Received: by 10.223.197.9 with SMTP id q9csp6952wrf;
-        Thu, 28 Sep 2017 15:39:41 -0700 (PDT)
-X-Received: by 10.200.41.105 with SMTP id z38mr3409226qtz.106.1506638381822;
-        Thu, 28 Sep 2017 15:39:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506638381; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp3690278wrf;
+        Tue, 10 Oct 2017 08:39:06 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QB2p8YWuz60vPmp/HPMWYo/ULLq4JtZKkqrodvpY8B2xu044aohPlw3LcFj7lmDIjDeBBq4
+X-Received: by 10.237.37.76 with SMTP id w12mr14730804qtc.201.1507649946640;
+        Tue, 10 Oct 2017 08:39:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507649946; cv=none;
         d=google.com; s=arc-20160816;
-        b=pxRPxyPutTBiw21RiChAR5oalrqimBXcYkNNQSDsuIFaLFC4vcqLYX945/YIRrCI5y
-         +DdDziuABWx8WrfER9MUveSJ8tbQo+blhx7P905RxA7mpzv2YzjEtEpJfAazHH4IaP93
-         Jf4diN3N0Ih+APc2LIqKh9Z/aWWlVvXWGGImMAi+0EDtjh/RsK9OQsMuuMaSJScZm/5N
-         N6sGqxKX7fsllK6ZpCq5BOIBPLNByO967X/v+1z9/THGOlq0GvQkYbauuqbm9KtC0J3k
-         /lY/vNhkgyojMzM1bkHJQTS2PkkYTjnclOzW+jmAtwOb4q8sn/ASdk6Chjs8/kOkVraS
-         eMOw==
+        b=qa+C6Se36rhJAgdf25SthxSdpRQjBllD+ZQ2ppu66mrxOgtuCpEJa1nOM3YauMIta3
+         /5HqV7u920jngQQwq2NkgBNH6dN6+dmp1aQ8U1oSShgv3G1eL0usTAYqjNJcgM3t32Pq
+         9ZFovVFqKLrcRKrf9ILyGnuiK0Q/mkjy8YehVk2kN2aTO94LlV2Vl4UFcp0kDRLDNAKf
+         HWlaAdsb0fIz1BOBjUHqqPgV0qkwn1I2QO8aOcR16mcoWOR50X+DVnwLhUncznQu44+Q
+         XFISmUX/fefNupHaiMRmW72bIx5CU/odTc7p6EAEcpeq4YOuSMcA4c28DM1Ae32vsaEJ
+         h6FA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
          :arc-authentication-results;
-        bh=qHJMnMejRW95H6eBk2uL9avn741XyZn9iRscKM10lD4=;
-        b=ktgp02uX4kT5iW/C7frS2XSrY7DXW6Z0uAlO+Rb+iKf/yTEVa3DF+uakChum6AAnfw
-         Nt82WjfJTo1nXguIvda1DEQ0MIi0aqgGKr2rUUSRYJ+cdR6lkJApfL5OnRzqrBleQW1q
-         52EecDrg2JDTnBOLqDHo0JpZZwJwVzo4WGR9D8GWdhtPhfn48XHDiwZ/bc7Hiu1MDtXR
-         6O9dX6PYOWrbm/PJPCVriSJ50BLrvnMCcnCAdZGsjHYU9q6jnsT4iW9MZ6LVeKnLSq7U
-         1SExNw++9R7tZm638njltK6qUtr7gxTt18xeeY1gk/D4gP2Tn51wQz5nF2t8xRtwTvsm
-         DhBQ==
+        bh=piJl5DQvMmtRuCIIREKu8Zv9VJ9c7CQ+36qaRIdbZaw=;
+        b=ZahQjcfc3Dk2burU1GFvoqd9cntAtrNhNjx+AKrmY+89UoJk9JgPjyKbZbjI/QqUXL
+         8nO99h/9hOpFBp+/S2l9YaRGHxOfihzV+uYXVtW8uu2GHOswWALAEK93QyW4G4oLSqr9
+         lXJMRIBeM/sEiRTtmsXjff5A8VB+xqHi3nS8mebaCyzZ/FE3yVStcfda9GAwGsDsFgFi
+         QraDgkf9qGQxF7jnJClG4B98mDdVW4cB14/YDtq4MUogWYx+3eS7UDPYhzq7wDaUlJWa
+         YeRJ7/p00nwflyUxDMi8+qYuVGrIM5mTrp87eIC0Rb3oGZQCgUy+m6OckdbBB/0JKOQy
+         TgqA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iTjLTIj+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@gnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@gnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@gnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s2si1680228qts.67.2017.09.28.15.39.41
+        by mx.google.com with ESMTPS id r29si3779567qtb.243.2017.10.10.08.39.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Sep 2017 15:39:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@gnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 10 Oct 2017 08:39:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iTjLTIj+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@gnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@gnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:32941 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:35659 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@gnu.org>)
-	id 1dxhT1-00055B-IB
-	for alex.bennee@linaro.org; Thu, 28 Sep 2017 18:39:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53425)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1e1wca-0007kZ-Cu
+	for alex.bennee@linaro.org; Tue, 10 Oct 2017 11:39:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46039)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dxhRy-0004VD-Tr
-	for qemu-arm@nongnu.org; Thu, 28 Sep 2017 18:38:35 -0400
+	(envelope-from <clg@kaod.org>) id 1e1wcP-0007jI-7Z
+	for qemu-arm@nongnu.org; Tue, 10 Oct 2017 11:38:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dxhRy-0005YT-4D
-	for qemu-arm@nongnu.org; Thu, 28 Sep 2017 18:38:34 -0400
-Received: from mail-wr0-x243.google.com ([2a00:1450:400c:c0c::243]:38847)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1dxhRs-0005Mg-AA; Thu, 28 Sep 2017 18:38:28 -0400
-Received: by mail-wr0-x243.google.com with SMTP id 45so757736wry.5;
-	Thu, 28 Sep 2017 15:38:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=qHJMnMejRW95H6eBk2uL9avn741XyZn9iRscKM10lD4=;
-	b=iTjLTIj+Y/x/o0Im/rJ3GGms2JU8rL0VSZMHTyF3VaoqwAlLqG2+Fk15lfwuVIwTI7
-	hAtnnAzX2bRDWwUxCXwJo+l8a984WYQi858d41VEZPHp0ieU3fheJk+jJvuJqy7sbdTI
-	6PnshLyj/ubG4z3ecuKtkq5h4sPyDJ/rAESZqjJuEkplPcGMMd/CdDucomTAfS5QNvMf
-	UeMY51fmn04Ujisl8yAAHgFOuFgvLZJFSQA63EnQ/D6CRvTuh3ZfSLEKPZZYwBwL8E3X
-	i0sWEpUqvIRyWvXN5Ch48o/ROaV+u8r5NfdIuNy1VPS+zTZ/4PHH8YVf0s5rFCN3O2av
-	mWUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=qHJMnMejRW95H6eBk2uL9avn741XyZn9iRscKM10lD4=;
-	b=GS0jO023JjA6z0gfNUG8SX5ZZES2Dwf9qABi1jIGgud2RmB9lgwjabPgxmQ2oHjSuh
-	bgzV9lLe2UvG0GP0RFkKlAePGxdqATYCAIgn/RpLYNK8VYQLEGVxXoRSGMFlTXz04+sa
-	IHsBr2i+JkCiApKba09cfP+YN6wUgW823tQw7zn24ndCbUmV2EAeUM56vogCyqzd0Qfo
-	0aJNZ0HjfUknscDKw9scMtl/Z1ENnponX89U6tWEDfF7+Y9NQB4tCo//f51jBOJ29av3
-	oTFR5NNfL4Brihp0E2Ju3Pwdi0lVsInwSZLEoE1p1WG54717nQt7uhCJ6/37cyOYPHlH
-	mkww==
-X-Gm-Message-State: AHPjjUjCjIr0R4EW0OqZabOsgUJX43931EaLZ2cx9pxeZM1i2IMzQGIc
-	0jWgxUdILyiQ9Mnm2TlmAqBFPez7CUoCW2+xqts=
-X-Google-Smtp-Source: AOwi7QDY33Zlf5rkBtKEKHTkCqsNM9kbPHJTD1/76wo1HKOxTjBcS/4v0+PkvWVuLZ4ZV0Ss/KvTQFsTkvtxMcIjo8A=
-X-Received: by 10.223.136.119 with SMTP id e52mr5118779wre.225.1506638305905; 
-	Thu, 28 Sep 2017 15:38:25 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.28.135.139 with HTTP; Thu, 28 Sep 2017 15:37:55 -0700 (PDT)
-In-Reply-To: <CAFEAcA_G8Md3k6EAqoN1=GCcXoCq_8vAUZ_qjOZp5GbnnfmcrA@mail.gmail.com>
-References: <cover.1506384414.git.alistair.francis@xilinx.com>
-	<e9eb34b7a508fbe3b89bb8b8aa8141f018871081.1506384414.git.alistair.francis@xilinx.com>
-	<1788278d-9437-34a0-4a17-d7914d459f77@redhat.com>
-	<CAFEAcA_G8Md3k6EAqoN1=GCcXoCq_8vAUZ_qjOZp5GbnnfmcrA@mail.gmail.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 28 Sep 2017 15:37:55 -0700
-Message-ID: <CAKmqyKM9e2R2f3BorZJ9R1XMaAwNRxvCEPGrSm3Jh=O=PnJ-_A@mail.gmail.com>
+	(envelope-from <clg@kaod.org>) id 1e1wcM-0000dJ-3m
+	for qemu-arm@nongnu.org; Tue, 10 Oct 2017 11:38:53 -0400
+Received: from 7.mo178.mail-out.ovh.net ([46.105.58.91]:35678)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1e1wcL-0000b9-U2
+	for qemu-arm@nongnu.org; Tue, 10 Oct 2017 11:38:50 -0400
+Received: from player728.ha.ovh.net (b6.ovh.net [213.186.33.56])
+	by mo178.mail-out.ovh.net (Postfix) with ESMTP id B594758BA0
+	for <qemu-arm@nongnu.org>; Tue, 10 Oct 2017 17:38:41 +0200 (CEST)
+Received: from zorba.kaod.org (deibp9eh1--blueice3n7.emea.ibm.com
+	[195.212.29.177]) (Authenticated sender: postmaster@kaod.org)
+	by player728.ha.ovh.net (Postfix) with ESMTPSA id 137FD54007A;
+	Tue, 10 Oct 2017 17:38:31 +0200 (CEST)
 To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::243
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v1 1/8] Replace all occurances
- of __FUNCTION__ with __func__
-X-BeenThere: qemu-arm@gnu.org
+References: <20170920070135.31379-1-clg@kaod.org>
+	<20170920070135.31379-2-clg@kaod.org>
+	<CAFEAcA9-dmTD3v1YU7Wr5EcA53z=c_WxS0K1+1zbw16q=vj-vQ@mail.gmail.com>
+	<f3871f0a-7df2-a5e0-1770-8df04bb76750@kaod.org>
+	<CAFEAcA-kJ-qEoo-2ZWaH0XPv-cJA4O3wZAW=FwmM5nUU4-mVBg@mail.gmail.com>
+	<900ffff3-3667-7e17-bf38-7c6a520ed838@kaod.org>
+	<CAFEAcA-tZG-mVMk-kfxZz3oKOSBr9QDpwJWc_CSvqc7An8NNbg@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <cf00417c-86a6-cf7c-eea7-b1b46d9b2cc1@kaod.org>
+Date: Tue, 10 Oct 2017 17:38:31 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA-tZG-mVMk-kfxZz3oKOSBr9QDpwJWc_CSvqc7An8NNbg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Ovh-Tracer-Id: 16824885259841801156
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedttddrtddtgdejudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 46.105.58.91
+Subject: Re: [Qemu-arm] [PATCH v2 1/6] aspeed: add support for the
+ witherspoon-bmc board
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.gnu.org>
-List-Unsubscribe: <https://lists.gnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@gnu.org?subject=unsubscribe>
-List-Archive: <http://lists.gnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@gnu.org>
-List-Help: <mailto:qemu-arm-request@gnu.org?subject=help>
-List-Subscribe: <https://lists.gnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@gnu.org?subject=subscribe>
-Cc: Stefano Stabellini <sstabellini@kernel.org>, Fam Zheng <famz@redhat.com>,
-	Qemu-block <qemu-block@nongnu.org>, Juan Quintela <quintela@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	John Snow <jsnow@redhat.com>, Yongbok Kim <yongbok.kim@imgtec.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	"open list:X86" <xen-devel@lists.xenproject.org>,
-	Eric Blake <eblake@redhat.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@gnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@gnu.org>
-X-TUID: ptNLUUOkscy/
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: X1x22S7GVK/s
 
-On Wed, Sep 27, 2017 at 4:47 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 26 September 2017 at 06:32, Eric Blake <eblake@redhat.com> wrote:
->> On 09/25/2017 07:08 PM, Alistair Francis wrote:
->>> diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
->>> index 58005b6619..32687afced 100644
->>> --- a/hw/arm/nseries.c
->>> +++ b/hw/arm/nseries.c
->>> @@ -463,7 +463,7 @@ static uint32_t mipid_txrx(void *opaque, uint32_t cmd, int len)
->>>      uint8_t ret;
->>>
->>>      if (len > 9) {
->>> -        hw_error("%s: FIXME: bad SPI word width %i\n", __FUNCTION__, len);
->>> +        hw_error("%s: FIXME: bad SPI word width %i\n", __func__, len);
+On 10/10/2017 03:24 PM, Peter Maydell wrote:
+> On 10 October 2017 at 14:21, C=C3=A9dric Le Goater <clg@kaod.org> wrote=
+:
+>> On 10/10/2017 11:54 AM, Peter Maydell wrote:
+>>> The goal is to model hardware correctly. Hardware gives
+>>> aborts if you touch a physical address with no device there,
+>>> and so QEMU's model should do the same. If you have guest
+>>> code that touches a physical address and blows up because
+>>> of an abort (but doesn't when run on h/w) then either:
+>>>  * it is trying to probe a device that exists in real h/w:
+>>>    you need to provide a stub implementation in QEMU
+>>>  * the SoC's bus fabric really doesn't pass aborts back
+>>>    to the CPU; I think this is unlikely, but you can model
+>>>    it at the SoC level with a suitable default memory region
 >>
->> Not this patch's problem, but it would probably be simpler if hw_error()
->> were a macro that automatically prefixed __func__, rather than making
->> every caller have to supply it themselves.
->
-> I'm not sure there's a great deal of benefit to that change, because
-> use of hw_error() in new code is rarely correct (it does an abort()
-> so it should never be used for guest-triggered conditions, which is
-> about the only time that you might be interested in a guest register
-> dump rather than just asserting). Most of its existing uses are in
-> crufty old device models.
+>> well, that is case it seems.
+>=20
+> If it is, then we should model the SoC that way, ie find
+> out from the hardware docs what part of the bus fabric
+> ignores decode errors and use memory regions with the
+> right default behaviour to cover the relevant address
+> ranges.
 
-Ok, another excuse to leave it out :)
+The addresses generating memory fault errors are all in=20
+the region where the BMC SPI Flash Memory is mapped :=20
+[ 20000000-2FFFFFFF ]
+
+but we should not be doing any writes there. I will make
+some inquiries.
 
 Thanks,
-Alistair
 
->
-> thanks
-> -- PMM
+C.=20

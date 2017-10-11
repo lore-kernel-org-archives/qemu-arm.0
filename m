@@ -1,110 +1,110 @@
-Received: by 10.223.197.9 with SMTP id q9csp142727wrf;
-        Tue, 10 Oct 2017 19:19:05 -0700 (PDT)
-X-Received: by 10.55.94.196 with SMTP id s187mr16222112qkb.88.1507688345534;
-        Tue, 10 Oct 2017 19:19:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507688345; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp161384wrf;
+        Tue, 10 Oct 2017 19:53:04 -0700 (PDT)
+X-Received: by 10.55.159.77 with SMTP id i74mr17522995qke.329.1507690384412;
+        Tue, 10 Oct 2017 19:53:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507690384; cv=none;
         d=google.com; s=arc-20160816;
-        b=fks6DMatonPuWOEn6SVeEBiuB0V6IsOziddYH+Lt1X7VesY/YoLhelZ+R4VG9vS2OR
-         GAxOdKDg3gk9GQaz0iRUExpB/XC5qPLkR4HBHtyG95o0uHF2L4S82gEc2jkOyETEcnb1
-         WWIEJWQG4Ywk5P1eev6HAGwVzbsAY2r6GFXAq26mWD2h9HLPXtpAXxBM7D/knGEBFOLQ
-         gWTyFD+9GUG32h6rD55MW4G5Jb9aKhoQ+b70Jf1L/+IuXCi3Hh0kSAEdw3QuStfWQupg
-         3jbkW7C2yArzJd0qVN0yvG5fDY4gIaFdkg7Qsr+5EyQxK6P4MYJkP6TV0G3TV+IJ5nFG
-         YWYQ==
+        b=c9DNe8Y9m6X8DxQcFaeiXDQOkvATd9PlQdhmoF5ms9/lL9e0Ci/2qF+1hrfk8tir0M
+         sMZE19yYEjd3AdSLBJhzYWm9bR42hg0X0vyWDtswc8BzKcL2sBtENKutImiE4rPzX03W
+         Lq8caH0oSB3wYB9LIiKTniL0eFcC2Df89jz/QdKNl+WWZULy6a9jWj7pKofmGRMNJiDU
+         xOHBJwxoxO4xvwaerzAXIobRGkeIFIoWARebPcvdB8nad3eF/Jv82k/i5wycuoFdV8c1
+         rbqjgLMOVy88Ws6rjkSJ00wuLZO3IkxXq8/2F4qt5YdGXTv+4/JU0gdAac/OxLSiX9w5
+         3/hw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to:dkim-signature
          :arc-authentication-results;
-        bh=rbXPDzx0Tmx0NSGcCe91kXxg890817hFV/R/rY9Nhfg=;
-        b=fQ22ypseBbzWttLwTUaiuIok0UJzLaxh47gJ7APYkHuVvnLnHolmpxLs713ut+fi5e
-         WSOMiNXaCtkG81B9ld3XaaxCKBcpAZLVVS+7uOsiSWpm3Zcc7IzhUvOKVBX0jToOGRvz
-         j3QTSjm/TIY+/BpniwB8FZFLy8u0Wvnq9/tdpRMVJWTqQGdeSCMQjkKFIZPS5Jl4kQ49
-         c19nFiHphq/FsPhepcOfg0FT+sFYcePWlR80C6OvknWfwO2OVRS/DJXT4oH60tOxWTON
-         EdX3vGbEfIdhiWR+adWkFmYcxmyLez94RnzaX4J7oNWEcPkTcLV0RJM4SR+gHR9ru3V/
-         wB9w==
+        bh=Hw+OJgHo+noLQc5QXB3gKeOA67tKbwgCQ1M9rriY/5c=;
+        b=GlxNVOUm8emLVr+uHahKhNNeJJv49ThF6SOJY4PviC+Bdt2BZc0uZWkL0ydj6RQEGO
+         4AcN6Q92p/GKOF8gquX9yaxRHelt6gbA0KwDwVIrjkpr74yVsT3cOJcBH9ifzNlARhQk
+         7R/yEnMaNuP8EKty+QMCSpn3dfHJ9tGpKDIOGSyq5waSfxyu//KUGfjuKjAuTPJfZH91
+         L6XDOhJ8PIWal9tXEGnhbG+r8oWOaGmLYWIypkhLzG3mdH3KJWPHz6NlQS5BXOzUottR
+         hojGeqOokXDlw7r3PpOtGESE75Vcukx6VpPVKeZAz4nguBDxiOzvi9NfH5mrOj4ojdlI
+         srUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=UbkDZB+7;
+       dkim=fail header.i=@linaro.org header.s=google header.b=fLG8JRxx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e186si563244qkb.320.2017.10.10.19.19.05
+        by mx.google.com with ESMTPS id 32si242311qtf.422.2017.10.10.19.53.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 10 Oct 2017 19:19:05 -0700 (PDT)
+        Tue, 10 Oct 2017 19:53:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=UbkDZB+7;
+       dkim=fail header.i=@linaro.org header.s=google header.b=fLG8JRxx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38181 helo=lists.gnu.org)
+Received: from localhost ([::1]:38234 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e26bv-0007h1-8G
-	for alex.bennee@linaro.org; Tue, 10 Oct 2017 22:19:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45157)
+	id 1e278o-000426-Bs
+	for alex.bennee@linaro.org; Tue, 10 Oct 2017 22:53:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54813)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1e26bl-0007ge-IU
-	for qemu-arm@nongnu.org; Tue, 10 Oct 2017 22:18:54 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1e278c-00041b-PE
+	for qemu-arm@nongnu.org; Tue, 10 Oct 2017 22:52:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1e26bd-0005Nc-TY
-	for qemu-arm@nongnu.org; Tue, 10 Oct 2017 22:18:49 -0400
-Received: from mail-pf0-x229.google.com ([2607:f8b0:400e:c00::229]:45733)
+	(envelope-from <richard.henderson@linaro.org>) id 1e278Y-0005xQ-QP
+	for qemu-arm@nongnu.org; Tue, 10 Oct 2017 22:52:50 -0400
+Received: from mail-pf0-x22f.google.com ([2607:f8b0:400e:c00::22f]:47137)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1e26bd-0005NR-Mj
-	for qemu-arm@nongnu.org; Tue, 10 Oct 2017 22:18:45 -0400
-Received: by mail-pf0-x229.google.com with SMTP id d28so361101pfe.2
-	for <qemu-arm@nongnu.org>; Tue, 10 Oct 2017 19:18:45 -0700 (PDT)
+	id 1e278Y-0005x6-Ik
+	for qemu-arm@nongnu.org; Tue, 10 Oct 2017 22:52:46 -0400
+Received: by mail-pf0-x22f.google.com with SMTP id z11so395240pfk.4
+	for <qemu-arm@nongnu.org>; Tue, 10 Oct 2017 19:52:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=subject:to:cc:references:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=rbXPDzx0Tmx0NSGcCe91kXxg890817hFV/R/rY9Nhfg=;
-	b=UbkDZB+7mTwo3rnQg1K0/S2nTSNsej1xsCfjHjWGKsmzeX0yEMiEY+UlBjvgn6PL9d
-	oDPX22mt30EI36oYAgn3vEC7jtNUjT/WoDSGrYGHyNnws0X28OyLEJh+w+eGK5AqWHZn
-	92H24q02OQ2GhNq1EAFAZnhxFGbTF4ldHiy+E=
+	bh=Hw+OJgHo+noLQc5QXB3gKeOA67tKbwgCQ1M9rriY/5c=;
+	b=fLG8JRxx6qoq/hxrkj08ATKEIPadWDgO6UM0/DqfxS+JTVyZjnM56apa5APx8XUD+t
+	iS26awAHQHsxBj7WVn/8/Ke3gKxDgljAnmRulGDG0HB7UdCwfE2bAXoBM0chUwSW1AiA
+	VgI8kVe7aJdLh3eh1ggq4MIQgrYBDTt5v3TkA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=rbXPDzx0Tmx0NSGcCe91kXxg890817hFV/R/rY9Nhfg=;
-	b=j45IkjEP87qu6SiEIdZ7Aj0XG2tnUOEUDjq4k1jeN0KngoUqcwzr9fmBwfoNsz1gHl
-	uE1PLINvzIfJ0xh/U1YS6nWrMiS4QhohDwNPKlGx/h/N4OEGRccJlI7XKblCztGMNCEF
-	cHMvZeIHd+gZUYm4tRgzxocDrphhDQ+ZS+Z97RODUhMUvNLay9mOZyfeYjcUuEOLGF1p
-	bomJgMTxQYqnPcXkGSqRaN2kj+JmMK94FF/HNKsvPgcX6vULNzAXHHJc1kvodHZyemVQ
-	mv2M3p6pQxcykDt2yRkjGGHmmJ9kxg0lSBz3omoZelanoQnGfCQqD8HccVfPAQvTk5Wn
-	1aZg==
-X-Gm-Message-State: AMCzsaVodg4h3PntqMjD+/6iuOe/799UVNSC8WWO0ut191PKSdHLdpvq
-	uZmsQ+gCNBl5DpdE65SXc4MBXg==
-X-Google-Smtp-Source: AOwi7QCXt50PbQTlzUoW4jF0Yx3Rw+rYjZNzEto69g0ciwQDYyZARMh8lp98voOu4GoQIjFH+AUvzg==
-X-Received: by 10.98.102.82 with SMTP id a79mr15609636pfc.109.1507688324824;
-	Tue, 10 Oct 2017 19:18:44 -0700 (PDT)
+	bh=Hw+OJgHo+noLQc5QXB3gKeOA67tKbwgCQ1M9rriY/5c=;
+	b=K4YbgupJ120UWOp7kMcTxvGk88GNMSZWhqaQ5h9+zzRhiu1lpFBGvvCpmJdEF1CG14
+	RFiqt4BdaKgcgv8r8xqUflHTKLDEZDeaJimUnL4sd1MHuTExyHYDeLqYHEgruIaOZD0o
+	ycJyYY+cIfz2rKebpW+m1Z9hVyHsKou3FIVMmz2/ko52t4H93d6TJ1pGMSu8+aL88LQ8
+	SKpvQqAWxvDuSaEhmjmFHsfIXLP9n1+p44y/8GPtYI7VVzf8UcP/S/PeyrqlpHeOjAZi
+	Vuy4I58AZzUhYx55XqOUn6MCOWOGqXj+9T1nNMmZj0fHGusyXUREjgSeTB9UUo2qkGWL
+	Pkbg==
+X-Gm-Message-State: AMCzsaUUajEl1OaEyWt53S01P2lIrdrQgKwGw9x6elZKjrEv3GPDSLgc
+	/yQGmbLWVSxmWjLAYQu3dTLoSg==
+X-Google-Smtp-Source: AOwi7QC03jFTVWmLHLRbpz7BzKGbbIovhSnWircEvlRaPpl52E1Q/qV7b/sJAQnxAkcohIhGPNQsHA==
+X-Received: by 10.159.194.133 with SMTP id y5mr13833137pln.85.1507690365345;
+	Tue, 10 Oct 2017 19:52:45 -0700 (PDT)
 Received: from bigtime.twiddle.net (97-126-104-76.tukw.qwest.net.
 	[97.126.104.76]) by smtp.gmail.com with ESMTPSA id
-	m69sm22071405pfk.54.2017.10.10.19.18.43
+	z65sm17021568pgb.50.2017.10.10.19.52.43
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 10 Oct 2017 19:18:43 -0700 (PDT)
+	Tue, 10 Oct 2017 19:52:44 -0700 (PDT)
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 References: <1507556919-24992-1-git-send-email-peter.maydell@linaro.org>
-	<1507556919-24992-7-git-send-email-peter.maydell@linaro.org>
+	<1507556919-24992-9-git-send-email-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <520fa164-103e-c09d-67af-5d0e9d8ebb9b@linaro.org>
-Date: Tue, 10 Oct 2017 19:18:42 -0700
+Message-ID: <3bab968b-3476-55c2-ba7d-ffd2b902e532@linaro.org>
+Date: Tue, 10 Oct 2017 19:52:42 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.3.0
 MIME-Version: 1.0
-In-Reply-To: <1507556919-24992-7-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1507556919-24992-9-git-send-email-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c00::229
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 6/9] target/arm: Pull Thumb insn
- word loads up to top level
+X-Received-From: 2607:f8b0:400e:c00::22f
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 8/9] target/arm: Support some
+ Thumb insns being always unconditional
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -119,29 +119,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Richard Henderson <rth@twiddle.net>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wiP3fJq4iqzJ
+X-TUID: yeUurIiOtpei
 
 On 10/09/2017 06:48 AM, Peter Maydell wrote:
-> +    if ((insn >> 11) == 0x1e && (s->pc < s->next_page_start - 3)) {
-> +        /* 0b1111_0xxx_xxxx_xxxx : BL/BLX prefix, and the suffix
-> +         * is not on the next page; we merge this into a 32-bit
-> +         * insn.
-> +         */
-> +        return false;
-> +    }
-> +    /* 0b1110_1xxx_xxxx_xxxx : BLX suffix (or UNDEF);
-> +     * 0b1111_1xxx_xxxx_xxxx : BL suffix;
-> +     * 0b1111_0xxx_xxxx_xxxx : BL/BLX prefix on the end of a page
-> +     *  -- handle as single 16 bit insn
-> +     */
+> -    if (dc->condexec_mask) {
+> +    if (dc->condexec_mask && !thumb_insn_is_unconditional(dc, insn)) {
+>          uint32_t cond = dc->condexec_cond;
+>  
+>          if (cond != 0x0e) {     /* Skip conditional when condition is AL. */
 
-I really had to search to find docs for this.  I suspect it's quite clear in v5
-manuals, but I didn't have one handy and arm.com seems to have dropped
-everything before v6M.  However, I did see a footnote in v7M that explained.
+Don't you still need to advance the condexec_mask?
 
-But, everything appears to be in order.  It's a nice cleanup.
+For HLT it doesn't matter, clearly.
+I'm not sure what happens to an IT block for debug breakpoints.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+But SG behaves as NOP when in non-secure memory.
+That would seem to require that
+
+	itft	eq
+	add	r1, r0, r0
+	sg
+	add	r2, r0, r0
+	add	r3, r0, r0
+
+should modify both r1 and r2 for T and r3 should be unconditional.  If you
+don't advance condexec_mask, it would seem that r2 gets F and r3 gets T.
 
 
 r~

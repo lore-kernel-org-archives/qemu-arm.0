@@ -1,100 +1,97 @@
-Received: by 10.223.197.9 with SMTP id q9csp1533425wrf;
-        Thu, 12 Oct 2017 03:37:25 -0700 (PDT)
-X-Received: by 10.200.52.235 with SMTP id x40mr2734219qtb.135.1507804645120;
-        Thu, 12 Oct 2017 03:37:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507804645; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp1593596wrf;
+        Thu, 12 Oct 2017 04:53:06 -0700 (PDT)
+X-Received: by 10.200.4.29 with SMTP id v29mr3227557qtg.76.1507809186379;
+        Thu, 12 Oct 2017 04:53:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507809186; cv=none;
         d=google.com; s=arc-20160816;
-        b=YFlPnKAoY8jLGNnZM69g2YDUHKMxUW35+lgYlg9twYD5Y1Q6Be3uR5wZTPhBpGwO/1
-         5QLK1KpdXFfq8BvqAgQ4XAhq1nUxzsFuvqDrLVQcXvS4q7SvOVBP4rvYFoytnKDn4rw8
-         atRo5l3Uug5KAVL4Mkx6dznul9Ze2RH87bQ3fO8w/y1iMBtfHYUtD9NyIYrVdXWRHsMx
-         wuwOxOKvWupLIJne9pfNjdNDgsFy61E8WPbHKPE4B2srXt2g6Afx/LnLnI5fMW+X3NeK
-         GeGxMKPkl2lACexM7nHyRrLJhza7/ky/2Lbj7URIB8RuIXNjPRUorP+FnwOuHFQDAAT+
-         pm+A==
+        b=S52PN19Mh3vcylXlGxBKJsxZ/tY8GBz1JgZlfMx27OhDqg8YC5sF5O/0yOSZgoITnE
+         uDy8HA5b8VDVrJfepUDUXUECCyEZbsgceZNscwYS9JDp5kdzfyOP+Pn06mcc99Trx4vU
+         DK/VZf8+U8sUaAkJPkpMk+nmQONz3Sb7EEP7GlOV7oRH2r50CxY3FLXIp/b5k9EC5+0Y
+         HA4svhRUapRrAzZGQs0fRWTXEjDBq1dVpErqmvv7YxglY5RcFhYakNCC9mrYt/QMoRjV
+         eo1G6rOiKv8rYVSLZFDUeUy9JFrlAemn55Irc/GPeJQktMJkvrsVQT4r+oF84opGlhc7
+         /IUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=g9fukNC5suo+HUzH2QCCHMvOnWhgruNf2oQ+Bp1FtoY=;
-        b=Irr0E0pedybUC0hH/20IYM7dyrqq8PV6bk4B/THrkRUM/akfhj1adws2giX5MYCfY1
-         Tiqqu+U/FtaFI871w6fKr0iX8e71jD9ARZbSCTjN8sfLfV0wTA1RBgS8Iuui5/DswnE8
-         ALrbEpS+JHi5UAy93z8sF38GDt/Er5TdulHX6jid0Re69KRmCtepQqSc8+I0Xkx0UoV2
-         UuWZgW2eUFfDTDy+2sQzAgkglvDsKi2pLhJnOWE7c0b7AUuNsULwQ90O+NqLHaeka1WT
-         HTCzF8U4doP86bahPeYNHR+3E1nkS/qQV9H948BaP0FkgR/Dj1VoiAqPtkVfm4jo0GJF
-         Jtpg==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=62M1zMD00Af9Dsiw2Pdk4KXbzwqSIIHnaCoGvXkmX/g=;
+        b=C1JOSkt6WMYRQWOwDKEhBDOHvRmxqfCrb28oN6SyaPOZr5VKKmH+qL6zm7UYQa3mvB
+         LEhznGQHuu2aLrgLJjfBwUrUsYlx4oln7yb8YCcOP721NvfA18JZTZotad9O3QNalOpn
+         yhhf/NI6B1qmoJEyRO5SXMvIz7c+MAJPifcT1BKck6PP7iWSKdB6K6B+dZPOEYtR1aRa
+         +6z4wWSwPULXSFrsbmZdspHPq7qPwkFlBwTCeVs6wQIoq54+nB73GMLQpIginfW2TX0u
+         lv2n0XvKjqdY9n/CtqWxQRqlDZ6YjJTf+cPlkBQjjqlM0BptHTlsefGUzZD3pupjvCej
+         CERw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=cU08Vuc/;
+       dkim=fail header.i=@linaro.org header.s=google header.b=EE+EWdK+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r77si313702qka.111.2017.10.12.03.37.24
+        by mx.google.com with ESMTPS id e197si343587qka.347.2017.10.12.04.53.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 12 Oct 2017 03:37:25 -0700 (PDT)
+        Thu, 12 Oct 2017 04:53:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=cU08Vuc/;
+       dkim=fail header.i=@linaro.org header.s=google header.b=EE+EWdK+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44714 helo=lists.gnu.org)
+Received: from localhost ([::1]:44912 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e2ari-0006Q9-Pu
-	for alex.bennee@linaro.org; Thu, 12 Oct 2017 06:37:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54399)
+	id 1e2c2x-0002t8-Sx
+	for alex.bennee@linaro.org; Thu, 12 Oct 2017 07:53:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49084)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e2arX-0006Of-0W
-	for qemu-arm@nongnu.org; Thu, 12 Oct 2017 06:37:12 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1e2c2l-0002rr-FI
+	for qemu-arm@nongnu.org; Thu, 12 Oct 2017 07:52:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e2arV-0007h0-Ka
-	for qemu-arm@nongnu.org; Thu, 12 Oct 2017 06:37:11 -0400
-Received: from mail-wm0-x234.google.com ([2a00:1450:400c:c09::234]:50114)
+	(envelope-from <peter.maydell@linaro.org>) id 1e2c2k-0006FR-EQ
+	for qemu-arm@nongnu.org; Thu, 12 Oct 2017 07:52:51 -0400
+Received: from mail-wm0-x22f.google.com ([2a00:1450:400c:c09::22f]:54289)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1e2arV-0007ge-EE
-	for qemu-arm@nongnu.org; Thu, 12 Oct 2017 06:37:09 -0400
-Received: by mail-wm0-x234.google.com with SMTP id b189so11828564wmd.4
-	for <qemu-arm@nongnu.org>; Thu, 12 Oct 2017 03:37:09 -0700 (PDT)
+	id 1e2c2k-0006Ej-3p
+	for qemu-arm@nongnu.org; Thu, 12 Oct 2017 07:52:50 -0400
+Received: by mail-wm0-x22f.google.com with SMTP id i124so12593471wmf.3
+	for <qemu-arm@nongnu.org>; Thu, 12 Oct 2017 04:52:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=g9fukNC5suo+HUzH2QCCHMvOnWhgruNf2oQ+Bp1FtoY=;
-	b=cU08Vuc/vxpfcO2WVnZm+lrqLek1oqZpeMHnhiWOO3VFBNvhiS5mu7YXAFUnX+Vl5V
-	+9TEETejQMZal/r7CUB9GPmSQZk3TIkw1YnPLEaADZCcAhM1fmgCDDo+c7uzwncsJtNQ
-	QUKVx/pepdX52uoYKR8sj/+bC2FejrvMptFaY=
+	:cc; bh=62M1zMD00Af9Dsiw2Pdk4KXbzwqSIIHnaCoGvXkmX/g=;
+	b=EE+EWdK+Sv01V4pixb1bshPvVxafCaGhBJZTOxQknBefj46NDIX4xy4OHULfcvytYZ
+	YOd6XMY5Zvp6Kg+wWMjRoUEjpvSqGUkBT2LMlP1d24Qvmexwmvry1xZwLFGeS/AwUz6y
+	t/94ulEAoa7XmxfBSX+wZgA8gYCm1Er87/isM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=g9fukNC5suo+HUzH2QCCHMvOnWhgruNf2oQ+Bp1FtoY=;
-	b=Hmgy765D991dX1poBflTmt1Kfrqh01G6nIQyPYNBFB5Zo5s3R3JQMTnENeKn8aGmev
-	aNVXw3J1JgkB4QIiWD0HgUVYA4JYnA26Ahu0BFymHZaO5HD/ZxZMJBfgHvT7PRz02gER
-	3i3adsalZocmFaM86bexZXJkG+rAXtMllO5Q5HZTVDLL87lxJY4L4x+044Q6jFYLrtfk
-	L0jI8QAHHNAJZWgEXSrs0cc3iW1e+BdqHhF0O/8Wl5kK52Ttc33E7VuJBnehDMXX+hv6
-	dizDZPWwwR7uf0+NdWqB11gZg3DR6JnKEZwjgpAHZHUgLugOVYQvawSoD7pScmgZADMF
-	X2wg==
-X-Gm-Message-State: AMCzsaV8odnO6IrxP4QE+d1Fl4wbO8/Yk1iPcBFZBTjXPpYPi9YF/sYv
-	pa9e2Irn7n2PAAfgQWfwxGu08qQFBwavn7KNLDcWDg==
-X-Google-Smtp-Source: AOwi7QAW/QsOZzV0en5pqrJ5KbxMHDzv4Nxo6VWo6d8iFJO61qRINn01ZoKEfkofVy+kdfHfXywLKCII2nQOGrGVT6g=
-X-Received: by 10.28.236.203 with SMTP id h72mr1638672wmi.147.1507804628205;
-	Thu, 12 Oct 2017 03:37:08 -0700 (PDT)
+	:message-id:subject:to:cc;
+	bh=62M1zMD00Af9Dsiw2Pdk4KXbzwqSIIHnaCoGvXkmX/g=;
+	b=Mu67UZzVRj5q4ZMy2GvvRIptUSCrWEGHdckUtddnh7Td2Pbu26RXKlpBIEgJet+O+S
+	WQuRulFfqU8NomhOcVRfVCOdrZFV8tbec1sYsktZQYa/tdI7gLnjtwUYBrj0WSN6RL/a
+	Pc7aFrKf7j1WH0ldVei/nTIcMuLN4E3geDFQCcvcNLdOLXLjvidgbR10EYXGkn3CeRm5
+	q6w8uh7V3zuApGvVDUiRFAH9In9/b3v0YFR4RKxPS0arE+V8g3bTnXK5cMF/dFM2YGjM
+	GlEbOAvhOtsTqPTFRoARRnZ21JAnLDt+yZz/eKn5b4t34wYiQQs8YK8/XyQXWLwlsK+l
+	KxfQ==
+X-Gm-Message-State: AMCzsaVY0iBxN9nZIG/aCBka2b5TXaAML/PxmEXZr9CZUbAQc7e6EfX/
+	SBisra8Mh1ClJnMu8u018ySfXJNTUUYqvO81vXgUeQ==
+X-Google-Smtp-Source: AOwi7QBtPR6IumrHn7CBATy2rTTLXfavihC2FPVQpJLgA4Ii5oVnfsBtPviYmIbhMqSUbIMDuWlcJJ4dtTis37yeSkc=
+X-Received: by 10.223.197.13 with SMTP id q13mr2130052wrf.272.1507809168735;
+	Thu, 12 Oct 2017 04:52:48 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.223.139.195 with HTTP; Thu, 12 Oct 2017 03:36:47 -0700 (PDT)
-In-Reply-To: <73b7916a-4bb3-3913-ed6f-23e5c3e4fa23@redhat.com>
+Received: by 10.223.139.195 with HTTP; Thu, 12 Oct 2017 04:52:28 -0700 (PDT)
+In-Reply-To: <1506524205-20763-4-git-send-email-eric.auger@redhat.com>
 References: <1506524205-20763-1-git-send-email-eric.auger@redhat.com>
-	<CAFEAcA_UfXaO-KEgXb+GSUT=XhQar_gxshUV_GWO_axcZ0R4sA@mail.gmail.com>
-	<73b7916a-4bb3-3913-ed6f-23e5c3e4fa23@redhat.com>
+	<1506524205-20763-4-git-send-email-eric.auger@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 12 Oct 2017 11:36:47 +0100
-Message-ID: <CAFEAcA8OcaNJ3ZU=LFeCP0A_Kd__OTb-svZL7_dqjaBH=uRtog@mail.gmail.com>
-To: Auger Eric <eric.auger@redhat.com>
+Date: Thu, 12 Oct 2017 12:52:28 +0100
+Message-ID: <CAFEAcA-a-7F0Ftj-hiYx2awxT7fYNpHnqe9nsj_S3Ps4Rb5wNw@mail.gmail.com>
+To: Eric Auger <eric.auger@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::234
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 0/3] vITS Reset
+X-Received-From: 2a00:1450:400c:c09::22f
+Subject: Re: [Qemu-arm] [RFC 3/3] hw/intc/arm_gicv3_its: Implement reset
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,80 +105,140 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jones <drjones@redhat.com>, Vijay Kilari <vijay.kilari@gmail.com>,
 	Juan Quintela <quintela@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
 	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Christoffer Dall <christoffer.dall@linaro.org>,
-	wanghaibin.wang@huawei.com, wu.wubin@huawei.com, eric.auger.pro@gmail.com
+	qemu-arm <qemu-arm@nongnu.org>, wu.wubin@huawei.com,
+	wanghaibin.wang@huawei.com, Christoffer Dall <christoffer.dall@linaro.org>,
+	eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8DpmHxG8T/fU
+X-TUID: 5Qufb1yiXPvU
 
-On 11 October 2017 at 17:06, Auger Eric <eric.auger@redhat.com> wrote:
-> On 09/10/2017 20:17, Peter Maydell wrote:
->> It's not clear to me why we need a new KVM device attribute
->> for doing ITS reset. The usual approach for this is:
->>  * system reset causes QEMU's device model reset code
->>    to reset state structure values to whatever their
->>    reset value is
->>  * we write those values up into the kernel, which is
->>    sufficient to reset it
->>
->> What goes wrong with that in the case of the ITS?
->> In particular, if GITS_CTLR.Enabled is 0 then I think the
->> kernel should not be trying to read guest memory tables.
+On 27 September 2017 at 15:56, Eric Auger <eric.auger@redhat.com> wrote:
+> Currently the ITS is not reset and this causes trouble
+> when state backup is initiated before the guest has initialized
+> the ITS registers and especially GITS_CBASER<n>.
 >
-> We discussed that on the kernel thread and Christoffer seemed to prefer
-> an IOTCL instead of individual register writes
-> (https://www.spinics.net/lists/kvm-arm/msg27211.html)
+> We are likely to save register values set before the reset/
+> restart. The register values may not be consistent with the
+> data structures in RAM.
 >
-> The IOCTL empties the ITS cached data (list of collection, list of
-> devices and list of LPIs) while it is not obvious the reset of BASER<n>
-> would mandate that. Eventually in my kernel series I also voided the
-> list on BASER<n>.valid toggling from 1 to 0.
-
-OK, I guess that makes sense -- in hardware, the device
-has extra internal state (the cached stuff) which isn't
-visible in its register interface. So we want to provide
-an API which is morally equivalent to the hardware reset line
-to tell the ITS to drop that internal state.
-
-> Spec also says:
-> If a write to GITS.CTLR changes the Enabled field from 1 to 0, the
-> Interrupt Translation Space must ensure
-> that both:
-> =E2=80=A2 Any caches containing mapping data are made consistent with ext=
-ernal
-> memory.
-> =E2=80=A2 GITS_CTLR.Quiescent =3D=3D 0 until all caches are consistent wi=
-th external
-> memory.
+> So let's use the ITS KVM device new combo,
+> KVM_DEV_ARM_VGIC_GRP_CTRL/KVM_DEV_ARM_ITS_CTRL_RESET
+> to explicitly force the in-kernel emulated reset.
 >
-> I aknowledge I don't really get at which moment we are supposed to void
-> the caches.
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>  hw/intc/arm_gicv3_its_common.c         |  5 ++---
+>  hw/intc/arm_gicv3_its_kvm.c            | 22 ++++++++++++++++++----
+>  include/hw/intc/arm_gicv3_its_common.h |  1 +
+>  3 files changed, 21 insertions(+), 7 deletions(-)
+>
+> diff --git a/hw/intc/arm_gicv3_its_common.c b/hw/intc/arm_gicv3_its_common.c
+> index 68b20fc..a2fe561 100644
+> --- a/hw/intc/arm_gicv3_its_common.c
+> +++ b/hw/intc/arm_gicv3_its_common.c
+> @@ -129,15 +129,14 @@ static void gicv3_its_common_reset(DeviceState *dev)
+>      s->creadr = 0;
+>      s->iidr = 0;
+>      memset(&s->baser, 0, sizeof(s->baser));
+> -
+> -    gicv3_its_post_load(s, 0);
 
-This is the interface for a software controlled clean powerdown:
- * OS writes 0 to Enabled
- * ITS finishes anything it is currently in the middle of
- * ITS updates any info that it currently has only in its internal
-   cache so that it is also reflected in the external memory
-   data structures
- * ITS sets Quiescent to 1 to tell the OS it has finished this process
-   (and may no longer access guest RAM after this point)
- * OS can now unmap the RAM that the ITS tables are in,
-   tell the h/w to power off the GIC/ITS, etc
+This doesn't look right as it means we won't write the QEMU
+initial device register values up to the kernel. I think we
+want to do that as well as call the specific reset ioctl,
+so that both userspace and the kernel are consistent in
+their idea of what's going on.
 
-It's a multistep process where the ITS gets the opportunity to
-write memory in the middle. I think in theory there's no obligation
-to actually drop the cached data when you set Quiescent to 1,
-provided that you validate that when the OS sets Enabled back to
-1 all your cached data is still valid, because that's
-indistinguishable from dropping the cache and then repopulating it.
+>  }
+>
+>  static void gicv3_its_common_class_init(ObjectClass *klass, void *data)
+>  {
+>      DeviceClass *dc = DEVICE_CLASS(klass);
+> +    GICv3ITSCommonClass *c = ARM_GICV3_ITS_COMMON_CLASS(klass);
+>
+> -    dc->reset = gicv3_its_common_reset;
+> +    c->parent_reset = gicv3_its_common_reset;
+>      dc->vmsd = &vmstate_its;
+>  }
 
-For the unclean powerdown (yanking the cord out of the back of the
-machine), which is what qemu's reset is, we don't give the ITS
-the option to write memory, it just has to effectively drop
-any internal data structures it was using. So it needs a KVM
-API that's different from the register-access API.
+This isn't how we handle this for the arm_gicv3_kvm.c and arm_gic_kvm.c
+code which has a subclass reset/parent class reset. What we do there is:
+ * the parent_reset field is in the subclass's Class struct
+ * the subclass's reset function calls the parent_reset function
+ * the subclass's class_init function sets parent_reset to whatever
+   the old dc->reset was before setting dc->reset to its own reset
+   function
+
+I think we should be consistent in how we do this.
+
+> diff --git a/hw/intc/arm_gicv3_its_kvm.c b/hw/intc/arm_gicv3_its_kvm.c
+> index 120b86d..3c2e724 100644
+> --- a/hw/intc/arm_gicv3_its_kvm.c
+> +++ b/hw/intc/arm_gicv3_its_kvm.c
+> @@ -156,10 +156,6 @@ static void kvm_arm_its_post_load(GICv3ITSState *s)
+>      Error *err = NULL;
+>      int i;
+>
+> -    if (!s->iidr) {
+> -        return;
+> -    }
+> -
+
+This looks like an unrelated change, or at least not one mentioned
+in the commit message?
+
+>      kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_ITS_REGS,
+>                        GITS_IIDR, &s->iidr, true, &error_abort);
+>
+> @@ -195,6 +191,23 @@ static void kvm_arm_its_post_load(GICv3ITSState *s)
+>                        GITS_CTLR, &s->ctlr, true, &error_abort);
+>  }
+>
+> +static void kvm_arm_its_reset(DeviceState *dev)
+> +{
+> +    GICv3ITSState *s = ARM_GICV3_ITS_COMMON(dev);
+> +    GICv3ITSCommonClass *c = ARM_GICV3_ITS_COMMON_GET_CLASS(s);
+> +
+> +    c->parent_reset(dev);
+> +
+> +    if (!kvm_device_check_attr(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_CTRL,
+> +                               KVM_DEV_ARM_ITS_CTRL_RESET)) {
+> +        error_report("ITS KVM: reset is not supported by the kernel");
+> +        return;
+> +    }
+> +
+> +    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_CTRL,
+> +                      KVM_DEV_ARM_ITS_CTRL_RESET, NULL, true, &error_abort);
+> +}
+> +
+>  static Property kvm_arm_its_props[] = {
+>      DEFINE_PROP_LINK("parent-gicv3", GICv3ITSState, gicv3, "kvm-arm-gicv3",
+>                       GICv3State *),
+> @@ -211,6 +224,7 @@ static void kvm_arm_its_class_init(ObjectClass *klass, void *data)
+>      icc->send_msi = kvm_its_send_msi;
+>      icc->pre_save = kvm_arm_its_pre_save;
+>      icc->post_load = kvm_arm_its_post_load;
+> +    dc->reset = kvm_arm_its_reset;
+>  }
+>
+>  static const TypeInfo kvm_arm_its_info = {
+> diff --git a/include/hw/intc/arm_gicv3_its_common.h b/include/hw/intc/arm_gicv3_its_common.h
+> index fd1fe64..c158e9f 100644
+> --- a/include/hw/intc/arm_gicv3_its_common.h
+> +++ b/include/hw/intc/arm_gicv3_its_common.h
+> @@ -79,6 +79,7 @@ struct GICv3ITSCommonClass {
+>      int (*send_msi)(GICv3ITSState *s, uint32_t data, uint16_t devid);
+>      void (*pre_save)(GICv3ITSState *s);
+>      void (*post_load)(GICv3ITSState *s);
+> +    void (*parent_reset)(DeviceState *dev);
+>  };
+>
+>  typedef struct GICv3ITSCommonClass GICv3ITSCommonClass;
+> --
+> 2.5.5
+>
 
 thanks
 -- PMM

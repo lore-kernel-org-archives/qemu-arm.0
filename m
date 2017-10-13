@@ -1,181 +1,269 @@
-Received: by 10.223.161.27 with SMTP id o27csp736479wro;
-        Tue, 24 Oct 2017 08:54:04 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+QSu0snmjY/ChyK3uR920/JaEEMi41MKB43VEqIFp+nLZ4WRebisAfE8Z6Rcve1GeAmbRcD
-X-Received: by 10.129.47.10 with SMTP id v10mr11031041ywv.332.1508860444395;
-        Tue, 24 Oct 2017 08:54:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508860444; cv=none;
-        d=google.com; s=arc-20160816;
-        b=X1sTppbPC6V35bmrrtyXPeq40rBrau7NJcz9mKM4ltRrg4hYJR3tcRlG3/tuWrHneE
-         FYQclDZDmGjc/VZR0leDl9jvqfFQ8UxmqSlnoeMikJ/cfxUp9gcrd8mXhmSL1Gzv1iZo
-         ad4jFvxz6dW2k4PGM6TI1YttMTd5BmWCMUdoIcvYUvn0WETNhglV3XGg33L8Hgqf/pqJ
-         suwlLo1hOb+z95W+evugUX6hTetDpmU1tD7II+j1aWOnNTjI6UgRy0DcqcIZwYZCRjye
-         rwp34n5TYKdbH7SrPj478zffPKseSr2NGpBPuM6c059jP4TOSlGKmMC4iLQDJrrUsTEe
-         RsXQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=p5WezB8fIuvIHKiQ8LDpB3oUL510QywD1ef5zbm064w=;
-        b=Bwn0PLkEhjJmgA0yWY8bH5ny441f87ZpJsDMECGgxoJ4uRq6tJTvVlpsn3o9iELi7P
-         jG5Ws6yCXtbsfIvYMFPIujY561HhjtY+E6STRj3gS2mXesvTcLOP8Y+CKgefuAvbNPEV
-         H+0eWGVacm0YC1Y68N9PjYFL/jA0IuXXlkSrwmZWFVmls7oCF0BOMuEuGtbHt/C9ijC7
-         z88+8FxU8l+F8dJmKbjA8pChigzdA7dnJJi5SBgh0VhYjKwK+Iwa6dz6xtY18Kcmznzo
-         +lATD9ujMKSPaodswfcvESbnF859RitOgRcnVy/2AW1GgpDc5f0+FDkbs0lF6k0NHWSo
-         GE3Q==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JF+bI0bL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i9si88736ybb.276.2017.10.24.08.54.04
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 24 Oct 2017 08:54:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JF+bI0bL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44381 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e71Wl-00020V-S0
-	for alex.bennee@linaro.org; Tue, 24 Oct 2017 11:54:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40510)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e71Wa-000204-6K
-	for qemu-arm@nongnu.org; Tue, 24 Oct 2017 11:53:53 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e71WZ-0002ju-F1
-	for qemu-arm@nongnu.org; Tue, 24 Oct 2017 11:53:52 -0400
-Received: from mail-wr0-x236.google.com ([2a00:1450:400c:c0c::236]:51889)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1e71WZ-0002jR-7s
-	for qemu-arm@nongnu.org; Tue, 24 Oct 2017 11:53:51 -0400
-Received: by mail-wr0-x236.google.com with SMTP id j15so9029889wre.8
-	for <qemu-arm@nongnu.org>; Tue, 24 Oct 2017 08:53:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=p5WezB8fIuvIHKiQ8LDpB3oUL510QywD1ef5zbm064w=;
-	b=JF+bI0bL7Cfvybh9E5tuHpMBxxH1vqFGPj47sXuG5k1VrORTl5ZS7fp2s73cnJPy2g
-	DrQ6DISEontAKNh9d1TElcmtSxIb6796MntJrApqI4Tl2klzBmWuG4ZpZbi79fXHOIaj
-	urCVYJpggbW/XPsJ8LUAG9iQgyUHswE1YyeV4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=p5WezB8fIuvIHKiQ8LDpB3oUL510QywD1ef5zbm064w=;
-	b=kxWYgfpPmc/K89wLsZ9AZE+S2hW0BoEQGxRlP3n68hE0594Mp5x4VXKu7oMTIbdOro
-	LJduRDNWcgNqaOHiXm0SxFu8tTn169WoDt/u2spkfAGyQPwjGzR5XfHrAYxQCJWeIo/P
-	4IYi0wxp4t2uMviXsYnf3yZN+sn4NJoWopMD4j0geLdJHuDrnE2/xN3kCKnh1Uob0iaR
-	cCmmKJuE7R0K5ARnT5zAHmVj+6DrGvIbUnwYpy4++ZrVLsiDvOOyTMmiDOs4NJSDhaO6
-	O0jtjouZpUaqRYdryyxNz1br+SmT3qNOTj+UQ7iHmTe0O6AqSdDLyeYiGqLhH3gmo7lr
-	hDQw==
-X-Gm-Message-State: AMCzsaWRIjGVaxziV9mh6KM7rG+yQrDdB/GuQ+0KMGcOFdnFFCwT9WCO
-	yC5pFRQ1Hie93UXA5FK1MsuGfD/l3gpPRsACVgwCuA==
-X-Received: by 10.223.169.80 with SMTP id u74mr10899519wrc.178.1508860430055; 
-	Tue, 24 Oct 2017 08:53:50 -0700 (PDT)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id v10sm2211799wrb.92.2017.10.13.09.24.44
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 13 Oct 2017 09:24:48 -0700 (PDT)
+Received: from zen.linaroharston (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTP id 376273E0AA7;
+	Fri, 13 Oct 2017 17:24:39 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: richard.henderson@linaro.org
+Cc: peter.maydell@linaro.org,
+	qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [RFC PATCH 11/30] target/arm: implement half-precision F(MIN|MAX)(V|NMV)
+Date: Fri, 13 Oct 2017 17:24:19 +0100
+Message-Id: <20171013162438.32458-12-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.14.1
+In-Reply-To: <20171013162438.32458-1-alex.bennee@linaro.org>
+References: <20171013162438.32458-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Received: by 10.223.161.5 with HTTP; Tue, 24 Oct 2017 08:53:29 -0700 (PDT)
-In-Reply-To: <alpine.DEB.2.10.1710211105550.27209@sstabellini-ThinkPad-X260>
-References: <alpine.DEB.2.10.1710211105550.27209@sstabellini-ThinkPad-X260>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 24 Oct 2017 16:53:29 +0100
-Message-ID: <CAFEAcA_-b5kb=_jDeDbCGugmzvcuUGKvWV0myThVJuTDbg9jNA@mail.gmail.com>
-To: Stefano Stabellini <sstabellini@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::236
-Subject: Re: [Qemu-arm] [PATCH v2] fix WFI/WFE length in syndrome register
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 44IFgc6tCc4U
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: Rrx1AgKkUMki
 
-On 21 October 2017 at 19:09, Stefano Stabellini <sstabellini@kernel.org> wrote:
-> WFI/E are often, but not always, 4 bytes long. When they are, we need to
-> set ARM_EL_IL_SHIFT in the syndrome register.
->
-> Pass the instruction length to HELPER(wfi), use it to decrement pc
-> appropriately and to pass an is_16bit flag to syn_wfx, which sets
-> ARM_EL_IL_SHIFT if needed.
->
-> Signed-off-by: Stefano Stabellini <sstabellini@kernel.org>
+This implements the half-precision variants of the across vector
+reduction operations. This involves a re-factor of the reduction code
+which more closely matches the ARM ARM order (and handles 8 element
+reductions).
 
-> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-> index a39b9d3..6f74589 100644
-> --- a/target/arm/translate-a64.c
-> +++ b/target/arm/translate-a64.c
-> @@ -11380,17 +11380,20 @@ static void aarch64_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
->              gen_helper_yield(cpu_env);
->              break;
->          case DISAS_WFI:
-> +        {
-> +            TCGv_i32 tmp = tcg_const_i32((dc->insn & (1U << 31)) ? 4 : 2);
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
-This is the A64 translator, we know that WFI (like every instruction)
-is 32 bit.
+--
+v1
+  - dropped the advsimd_2a stuff
+---
+ target/arm/helper-a64.c    |  18 ++++++
+ target/arm/helper-a64.h    |   4 ++
+ target/arm/translate-a64.c | 147 ++++++++++++++++++++++++++++-----------------
+ 3 files changed, 115 insertions(+), 54 deletions(-)
 
->              /* This is a special case because we don't want to just halt the CPU
->               * if trying to debug across a WFI.
->               */
->              gen_a64_set_pc_im(dc->pc);
-> -            gen_helper_wfi(cpu_env);
-> +            gen_helper_wfi(cpu_env, tmp);
-
-As Philippe says, you need to free the TCG temp here.
-
->              /* The helper doesn't necessarily throw an exception, but we
->               * must go back to the main loop to check for interrupts anyway.
->               */
->              tcg_gen_exit_tb(0);
->              break;
->          }
-> +        }
->      }
->
->      /* Functions above can change dc->pc, so re-align db->pc_next */
-> diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index 4da1a4c..a89518f 100644
-> --- a/target/arm/translate.c
-> +++ b/target/arm/translate.c
-> @@ -12325,12 +12325,15 @@ static void arm_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
->              /* nothing more to generate */
->              break;
->          case DISAS_WFI:
-> -            gen_helper_wfi(cpu_env);
-> +        {
-> +            TCGv_i32 tmp = tcg_const_i32((dc->insn & (1U << 31)) ? 4 : 2);
-
-This won't work, because dc->insn is only populated by the translate-a64.c
-A64 translator, not by the A32/T32 code. I guess 'principle of least
-surprise' suggests we should populate it for Thumb and ARM too.
-
-> +            gen_helper_wfi(cpu_env, tmp);
->              /* The helper doesn't necessarily throw an exception, but we
->               * must go back to the main loop to check for interrupts anyway.
->               */
->              tcg_gen_exit_tb(0);
->              break;
-> +        }
->          case DISAS_WFE:
->              gen_helper_wfe(cpu_env);
->              break;
-
-thanks
--- PMM
+diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
+index d9df82cff5..a0c20faabc 100644
+--- a/target/arm/helper-a64.c
++++ b/target/arm/helper-a64.c
+@@ -537,3 +537,21 @@ uint64_t HELPER(paired_cmpxchg64_be)(CPUARMState *env, uint64_t addr,
+ 
+     return !success;
+ }
++
++/*
++ * AdvSIMD half-precision
++ */
++
++#define ADVSIMD_HELPER(name, suffix) HELPER(glue(glue(advsimd_, name), suffix))
++
++#define ADVSIMD_HALFOP(name) \
++float16 ADVSIMD_HELPER(name, h)(float16 a, float16 b, void *fpstp) \
++{ \
++    float_status *fpst = fpstp; \
++    return float16_ ## name(a, b, fpst);    \
++}
++
++ADVSIMD_HALFOP(min)
++ADVSIMD_HALFOP(max)
++ADVSIMD_HALFOP(minnum)
++ADVSIMD_HALFOP(maxnum)
+diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
+index 6f9eaba533..b774431f1f 100644
+--- a/target/arm/helper-a64.h
++++ b/target/arm/helper-a64.h
+@@ -44,3 +44,7 @@ DEF_HELPER_FLAGS_3(crc32_64, TCG_CALL_NO_RWG_SE, i64, i64, i64, i32)
+ DEF_HELPER_FLAGS_3(crc32c_64, TCG_CALL_NO_RWG_SE, i64, i64, i64, i32)
+ DEF_HELPER_FLAGS_4(paired_cmpxchg64_le, TCG_CALL_NO_WG, i64, env, i64, i64, i64)
+ DEF_HELPER_FLAGS_4(paired_cmpxchg64_be, TCG_CALL_NO_WG, i64, env, i64, i64, i64)
++DEF_HELPER_3(advsimd_maxh, f16, f16, f16, ptr)
++DEF_HELPER_3(advsimd_minh, f16, f16, f16, ptr)
++DEF_HELPER_3(advsimd_maxnumh, f16, f16, f16, ptr)
++DEF_HELPER_3(advsimd_minnumh, f16, f16, f16, ptr)
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index a39b9d3633..1282d14c58 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -5602,26 +5602,80 @@ static void disas_simd_zip_trn(DisasContext *s, uint32_t insn)
+     tcg_temp_free_i64(tcg_resh);
+ }
+ 
+-static void do_minmaxop(DisasContext *s, TCGv_i32 tcg_elt1, TCGv_i32 tcg_elt2,
+-                        int opc, bool is_min, TCGv_ptr fpst)
+-{
+-    /* Helper function for disas_simd_across_lanes: do a single precision
+-     * min/max operation on the specified two inputs,
+-     * and return the result in tcg_elt1.
+-     */
+-    if (opc == 0xc) {
+-        if (is_min) {
+-            gen_helper_vfp_minnums(tcg_elt1, tcg_elt1, tcg_elt2, fpst);
+-        } else {
+-            gen_helper_vfp_maxnums(tcg_elt1, tcg_elt1, tcg_elt2, fpst);
+-        }
++/*
++ * do_reduction_op helper
++ *
++ * This mirrors the Reduce() pseudocode in the ARM ARM. It is
++ * important for correct NaN propagation that we do these
++ * operations in exactly the order specified by the pseudocode.
++ *
++ * This is a recursive function, TCG temps should be freed by the
++ * calling function once it is done with the values.
++ */
++static TCGv_i32 do_reduction_op(DisasContext *s, int fpopcode, int rn,
++                                int esize, int size, int vmap, TCGv_ptr fpst)
++{
++    if (esize == size) {
++        int element;
++        TCGMemOp msize = esize == 16 ? MO_16 : MO_32;
++        TCGv_i32 tcg_elem;
++
++        /* We should have one register left here */
++        assert(ctpop8(vmap) == 1);
++        element = ctz32(vmap);
++        assert(element < 8);
++
++        tcg_elem = tcg_temp_new_i32();
++        read_vec_element_i32(s, tcg_elem, rn, element, msize);
++        return tcg_elem;
+     } else {
+-        assert(opc == 0xf);
+-        if (is_min) {
+-            gen_helper_vfp_mins(tcg_elt1, tcg_elt1, tcg_elt2, fpst);
+-        } else {
+-            gen_helper_vfp_maxs(tcg_elt1, tcg_elt1, tcg_elt2, fpst);
++        int bits = size / 2;
++        int shift = ctpop8(vmap) / 2;
++        int vmap_lo = (vmap >> shift) & vmap;
++        int vmap_hi = (vmap & ~vmap_lo);
++        TCGv_i32 tcg_hi, tcg_lo, tcg_res;
++
++        tcg_hi = do_reduction_op(s, fpopcode, rn, esize, bits, vmap_hi, fpst);
++        tcg_lo = do_reduction_op(s, fpopcode, rn, esize, bits, vmap_lo, fpst);
++        tcg_res = tcg_temp_new_i32();
++
++        /* base fpopcode = 0x0c NMV, 0x0f V
++                           0x10 MIN, 0x00 MAX
++                           0x20 F32, 0x00 FP16
++         */
++        switch(fpopcode) {
++        case 0x0c: /* fmaxnmv half-precision */
++            gen_helper_advsimd_maxnumh(tcg_res, tcg_lo, tcg_hi, fpst);
++            break;
++        case 0x0f: /* fmaxv half-precision */
++            gen_helper_advsimd_maxh(tcg_res, tcg_lo, tcg_hi, fpst);
++            break;
++        case 0x1c: /* fminnmv half-precision */
++            gen_helper_advsimd_minnumh(tcg_res, tcg_lo, tcg_hi, fpst);
++            break;
++        case 0x1f: /* fminv half-precision */
++            gen_helper_advsimd_minh(tcg_res, tcg_lo, tcg_hi, fpst);
++            break;
++        case 0x2c: /* fmaxnmv */
++            gen_helper_vfp_maxnums(tcg_res, tcg_lo, tcg_hi, fpst);
++            break;
++        case 0x2f: /* fmaxv */
++            gen_helper_vfp_maxs(tcg_res, tcg_lo, tcg_hi, fpst);
++            break;
++        case 0x3c: /* fminnmv */
++            gen_helper_vfp_minnums(tcg_res, tcg_lo, tcg_hi, fpst);
++            break;
++        case 0x3f: /* fminv */
++            gen_helper_vfp_mins(tcg_res, tcg_lo, tcg_hi, fpst);
++            break;
++        default:
++            fprintf(stderr, "%s: fpopcode %x not handled\n", __func__, fpopcode);
++            break;
+         }
++
++        tcg_temp_free_i32(tcg_hi);
++        tcg_temp_free_i32(tcg_lo);
++        return tcg_res;
+     }
+ }
+ 
+@@ -5663,16 +5717,21 @@ static void disas_simd_across_lanes(DisasContext *s, uint32_t insn)
+         break;
+     case 0xc: /* FMAXNMV, FMINNMV */
+     case 0xf: /* FMAXV, FMINV */
+-        if (!is_u || !is_q || extract32(size, 0, 1)) {
+-            unallocated_encoding(s);
+-            return;
+-        }
+-        /* Bit 1 of size field encodes min vs max, and actual size is always
+-         * 32 bits: adjust the size variable so following code can rely on it
++        /* Bit 1 of size field encodes min vs max and the actual size
++         * depends on the encoding of the U bit. If not set (and FP16
++         * enabled) then we do half-precision float instead of single
++         * precision.
+          */
+         is_min = extract32(size, 1, 1);
+         is_fp = true;
+-        size = 2;
++        if (!is_u && arm_dc_feature(s, ARM_FEATURE_V8_FP16)) {
++            size = 1;
++        } else if (!is_u || !is_q || extract32(size, 0, 1)) {
++            unallocated_encoding(s);
++            return;
++        } else {
++            size = 2;
++        }
+         break;
+     default:
+         unallocated_encoding(s);
+@@ -5729,38 +5788,18 @@ static void disas_simd_across_lanes(DisasContext *s, uint32_t insn)
+ 
+         }
+     } else {
+-        /* Floating point ops which work on 32 bit (single) intermediates.
++        /* Floating point vector reduction ops which work across 32
++         * bit (single) or 16 bit (half-precision) intermediates.
+          * Note that correct NaN propagation requires that we do these
+          * operations in exactly the order specified by the pseudocode.
+          */
+-        TCGv_i32 tcg_elt1 = tcg_temp_new_i32();
+-        TCGv_i32 tcg_elt2 = tcg_temp_new_i32();
+-        TCGv_i32 tcg_elt3 = tcg_temp_new_i32();
+         TCGv_ptr fpst = get_fpstatus_ptr();
+-
+-        assert(esize == 32);
+-        assert(elements == 4);
+-
+-        read_vec_element(s, tcg_elt, rn, 0, MO_32);
+-        tcg_gen_extrl_i64_i32(tcg_elt1, tcg_elt);
+-        read_vec_element(s, tcg_elt, rn, 1, MO_32);
+-        tcg_gen_extrl_i64_i32(tcg_elt2, tcg_elt);
+-
+-        do_minmaxop(s, tcg_elt1, tcg_elt2, opcode, is_min, fpst);
+-
+-        read_vec_element(s, tcg_elt, rn, 2, MO_32);
+-        tcg_gen_extrl_i64_i32(tcg_elt2, tcg_elt);
+-        read_vec_element(s, tcg_elt, rn, 3, MO_32);
+-        tcg_gen_extrl_i64_i32(tcg_elt3, tcg_elt);
+-
+-        do_minmaxop(s, tcg_elt2, tcg_elt3, opcode, is_min, fpst);
+-
+-        do_minmaxop(s, tcg_elt1, tcg_elt2, opcode, is_min, fpst);
+-
+-        tcg_gen_extu_i32_i64(tcg_res, tcg_elt1);
+-        tcg_temp_free_i32(tcg_elt1);
+-        tcg_temp_free_i32(tcg_elt2);
+-        tcg_temp_free_i32(tcg_elt3);
++        int fpopcode = opcode | is_min << 4 | is_u << 5;
++        int vmap = (1 << elements) - 1;
++        TCGv_i32 tcg_res32 = do_reduction_op(s, fpopcode, rn, esize,
++                                             (is_q ? 128 : 64), vmap, fpst);
++        tcg_gen_extu_i32_i64(tcg_res, tcg_res32);
++        tcg_temp_free_i32(tcg_res32);
+         tcg_temp_free_ptr(fpst);
+     }
+ 
+@@ -5882,7 +5921,7 @@ static void handle_simd_dupg(DisasContext *s, int is_q, int rd, int rn,
+ {
+     int size = ctz32(imm5);
+     int esize = 8 << size;
+-    int elements = (is_q ? 128 : 64)/esize;
++    int elements = (is_q ? 128 : 64) / esize;
+     int i = 0;
+ 
+     if (size > 3 || ((size == 3) && !is_q)) {
+-- 
+2.14.1

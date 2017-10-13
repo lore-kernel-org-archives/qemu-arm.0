@@ -1,146 +1,138 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id 9sm1885815wml.24.2017.10.13.09.24.46
+        by smtp.gmail.com with ESMTPSA id n19sm1941695wrn.52.2017.10.13.09.31.58
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 13 Oct 2017 09:24:49 -0700 (PDT)
+        Fri, 13 Oct 2017 09:31:58 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id A38283E0D9C;
-	Fri, 13 Oct 2017 17:24:39 +0100 (BST)
+	by zen.linaro.local (Postfix) with ESMTP id 553483E10E9;
+	Fri, 13 Oct 2017 17:24:40 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: richard.henderson@linaro.org
 Cc: peter.maydell@linaro.org,
 	qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RFC PATCH 17/30] target/arm/translate-a64.c: add FP16 FMULX
-Date: Fri, 13 Oct 2017 17:24:25 +0100
-Message-Id: <20171013162438.32458-18-alex.bennee@linaro.org>
+Subject: [RFC PATCH 26/30] tests/test-softfloat: add a simple test framework
+Date: Fri, 13 Oct 2017 17:24:34 +0100
+Message-Id: <20171013162438.32458-27-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.14.1
 In-Reply-To: <20171013162438.32458-1-alex.bennee@linaro.org>
 References: <20171013162438.32458-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Qvo8ZTw7Qld7
+X-TUID: mF3Q4rgw4zr5
+
+This is a simple pattern based framework for testing our softfloat
+implementation. It is easier to use while debugging softfloat itself
+than indirectly with a tool like risu.
+
+As the softfloat library is built against given targets we need a
+version per target architecture we build.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/helper-a64.c    | 18 ++++++++++++++++++
- target/arm/helper-a64.h    |  1 +
- target/arm/translate-a64.c | 45 +++++++++++++++++++++++++++++++++++----------
- 3 files changed, 54 insertions(+), 10 deletions(-)
+ tests/Makefile.include |  8 ++++++-
+ tests/test-softfloat.c | 58 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 65 insertions(+), 1 deletion(-)
+ create mode 100644 tests/test-softfloat.c
 
-diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-index 8ef15c4c45..dd26675d5c 100644
---- a/target/arm/helper-a64.c
-+++ b/target/arm/helper-a64.c
-@@ -559,3 +559,21 @@ ADVSIMD_HALFOP(min)
- ADVSIMD_HALFOP(max)
- ADVSIMD_HALFOP(minnum)
- ADVSIMD_HALFOP(maxnum)
-+
-+/* Data processing - scalar floating-point and advanced SIMD */
-+
-+float16 HELPER(advsimd_mulxh)(float16 a, float16 b, void *fpstp)
-+{
-+    float_status *fpst = fpstp;
-+
-+    a = float16_squash_input_denormal(a, fpst);
-+    b = float16_squash_input_denormal(b, fpst);
-+
-+    if ((float16_is_zero(a) && float16_is_infinity(b)) ||
-+        (float16_is_infinity(a) && float16_is_zero(b))) {
-+        /* 2.0 with the sign bit set to sign(A) XOR sign(B) */
-+        return make_float16((1U << 14) |
-+                            ((float16_val(a) ^ float16_val(b)) & (1U << 15)));
-+    }
-+    return float16_mul(a, b, fpst);
-+}
-diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
-index a4ce87970e..0f97eb607f 100644
---- a/target/arm/helper-a64.h
-+++ b/target/arm/helper-a64.h
-@@ -52,3 +52,4 @@ DEF_HELPER_3(advsimd_maxh, f16, f16, f16, ptr)
- DEF_HELPER_3(advsimd_minh, f16, f16, f16, ptr)
- DEF_HELPER_3(advsimd_maxnumh, f16, f16, f16, ptr)
- DEF_HELPER_3(advsimd_minnumh, f16, f16, f16, ptr)
-+DEF_HELPER_3(advsimd_mulxh, f16, f16, f16, ptr)
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index f687bab214..d12106695f 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -10648,7 +10648,7 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
-         }
-         /* fall through */
-     case 0x9: /* FMUL, FMULX */
--        if (!extract32(size, 1, 1)) {
-+        if (!extract32(size, 1, 1) && !arm_dc_feature(s, ARM_FEATURE_V8_FP16)) {
-             unallocated_encoding(s);
-             return;
-         }
-@@ -10660,18 +10660,30 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
-     }
+diff --git a/tests/Makefile.include b/tests/Makefile.include
+index 4ca15e6817..8bf1dfd19a 100644
+--- a/tests/Makefile.include
++++ b/tests/Makefile.include
+@@ -156,6 +156,10 @@ check-unit-y += tests/ptimer-test$(EXESUF)
+ gcov-files-ptimer-test-y = hw/core/ptimer.c
+ check-unit-y += tests/test-qapi-util$(EXESUF)
+ gcov-files-test-qapi-util-y = qapi/qapi-util.c
++check-unit-y += tests/test-softfloat$(EXESUF)
++gcov-files-test-softfloat-y = fpu/softfloat.c
++check-unit-y += tests/test-softfloat-aarch64$(EXESUF)
++gcov-files-test-softfloat-aarch64-y = fpu/softfloat.c
  
-     if (is_fp) {
--        /* low bit of size indicates single/double */
--        size = extract32(size, 0, 1) ? 3 : 2;
--        if (size == 2) {
-+        /* convert insn encoded size to TCGMemOp size */
-+        switch (size) {
-+        case 0: /* half-precision */
-+            size = MO_16;
-+            index = h << 2 | l << 1 | m;
-+            break;
-+        case 2: /* single precision */
-+            size = MO_32;
-             index = h << 1 | l;
--        } else {
-+            rm |= (m << 4);
-+            break;
-+        case 3: /* double precision */
-+            size = MO_64;
-             if (l || !is_q) {
-                 unallocated_encoding(s);
-                 return;
-             }
-             index = h;
-+            rm |= (m << 4);
-+            break;
-+        default:
-+            g_assert_not_reached();
-+            break;
-         }
--        rm |= (m << 4);
-     } else {
-         switch (size) {
-         case 1:
-@@ -10805,10 +10817,23 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
-                 gen_helper_vfp_muladds(tcg_res, tcg_op, tcg_idx, tcg_res, fpst);
-                 break;
-             case 0x9: /* FMUL, FMULX */
--                if (u) {
--                    gen_helper_vfp_mulxs(tcg_res, tcg_op, tcg_idx, fpst);
--                } else {
--                    gen_helper_vfp_muls(tcg_res, tcg_op, tcg_idx, fpst);
-+                switch (size) {
-+                case 1:
-+                    if (u) {
-+                        gen_helper_advsimd_mulxh(tcg_res, tcg_op, tcg_idx, fpst);
-+                    } else {
-+                        g_assert_not_reached();
-+                    }
-+                    break;
-+                case 2:
-+                    if (u) {
-+                        gen_helper_vfp_mulxs(tcg_res, tcg_op, tcg_idx, fpst);
-+                    } else {
-+                        gen_helper_vfp_muls(tcg_res, tcg_op, tcg_idx, fpst);
-+                    }
-+                    break;
-+                default:
-+                    g_assert_not_reached();
-                 }
-                 break;
-             case 0xc: /* SQDMULH */
+ check-block-$(CONFIG_POSIX) += tests/qemu-iotests-quick.sh
+ 
+@@ -555,7 +559,7 @@ test-obj-y = tests/check-qnum.o tests/check-qstring.o tests/check-qdict.o \
+ 	tests/rcutorture.o tests/test-rcu-list.o \
+ 	tests/test-qdist.o tests/test-shift128.o \
+ 	tests/test-qht.o tests/qht-bench.o tests/test-qht-par.o \
+-	tests/atomic_add-bench.o
++	tests/atomic_add-bench.o tests/test-softfloat.o
+ 
+ $(test-obj-y): QEMU_INCLUDES += -Itests
+ QEMU_CFLAGS += -I$(SRC_PATH)/tests
+@@ -604,6 +608,8 @@ tests/test-qht-par$(EXESUF): tests/test-qht-par.o tests/qht-bench$(EXESUF) $(tes
+ tests/qht-bench$(EXESUF): tests/qht-bench.o $(test-util-obj-y)
+ tests/test-bufferiszero$(EXESUF): tests/test-bufferiszero.o $(test-util-obj-y)
+ tests/atomic_add-bench$(EXESUF): tests/atomic_add-bench.o $(test-util-obj-y)
++tests/test-softfloat$(EXESUF): tests/test-softfloat.o $(BUILD_DIR)/aarch64-softmmu/fpu/softfloat.o
++tests/test-softfloat-aarch64$(EXESUF): tests/test-softfloat.o $(BUILD_DIR)/aarch64-softmmu/fpu/softfloat.o
+ 
+ tests/test-qdev-global-props$(EXESUF): tests/test-qdev-global-props.o \
+ 	hw/core/qdev.o hw/core/qdev-properties.o hw/core/hotplug.o\
+diff --git a/tests/test-softfloat.c b/tests/test-softfloat.c
+new file mode 100644
+index 0000000000..d7b740e1cb
+--- /dev/null
++++ b/tests/test-softfloat.c
+@@ -0,0 +1,58 @@
++/*
++ * Copyright (C) 2017, Linaro
++ * Author: Alex Bennée <alex.bennee@linaro.org>
++ *
++ * License: GNU GPL, version 2 or later.
++ *   See the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include "fpu/softfloat.h"
++
++typedef struct {
++    float_status initial_status;
++    float16 in;
++    float16 out;
++    uint8_t final_exception_flags;
++} f16_test_data;
++
++static void test_f16_round_to_int(void)
++{
++    int i;
++    float16 out;
++    float_status flags, *fp = &flags;
++    f16_test_data test_data[] = {
++        { { /* defaults */ }, 0x87FF, 0x8000 },
++        { { /* defaults */ }, 0xE850, 0xE850 },
++        { { /* defaults */ }, 0x0000, 0x0000 },
++        { { /* defaults */ }, 0x857F, 0x8000 },
++        { { /* defaults */ }, 0x74FB, 0x74FB },
++        /* from risu 3b4:       4ef98945        frintp  v5.8h, v10.8h */
++        { { .float_detect_tininess = 1, .float_rounding_mode = 2}, 0x06b1, 0x3c00, 0 },
++        { { .float_detect_tininess = 1, .float_rounding_mode = 2}, 0x6966, 0x6966, 0 },
++        { { .float_detect_tininess = 1, .float_rounding_mode = 2}, 0x83c0, 0x8000, 0 },
++        { { .float_detect_tininess = 1, .float_rounding_mode = 2}, 0xa619, 0x8000, 0 },
++        { { .float_detect_tininess = 1, .float_rounding_mode = 2}, 0x9cf4, 0x8000, 0 },
++        { { .float_detect_tininess = 1, .float_rounding_mode = 2}, 0xee11, 0xee11, 0 },
++        { { .float_detect_tininess = 1, .float_rounding_mode = 2}, 0xee5c, 0xee5c, 0 },
++        { { .float_detect_tininess = 1, .float_rounding_mode = 2}, 0x8004, 0x8000, 0 }
++    };
++
++    for (i = 0; i < ARRAY_SIZE(test_data); ++i) {
++        flags = test_data[i].initial_status;
++        out = float16_round_to_int(test_data[i].in, fp);
++
++        if (!(test_data[i].out == out)) {
++            fprintf(stderr, "%s[%d]: expected %#04x got %#04x\n",
++                    __func__, i, test_data[i].out, out);
++            g_test_fail();
++        }
++    }
++}
++
++int main(int argc, char *argv[])
++{
++    g_test_init(&argc, &argv, NULL);
++    g_test_add_func("/softfloat/f16/round_to_int", test_f16_round_to_int);
++    return g_test_run();
++}
 -- 
 2.14.1

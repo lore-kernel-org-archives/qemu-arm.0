@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id c45sm1611907wrg.97.2017.10.13.09.32.02
+        by smtp.gmail.com with ESMTPSA id 17sm2914846wru.32.2017.10.13.09.32.04
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 13 Oct 2017 09:32:03 -0700 (PDT)
+        Fri, 13 Oct 2017 09:32:12 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id EB3443E0FB9;
+	by zen.linaro.local (Postfix) with ESMTP id C553C3E0FA1;
 	Fri, 13 Oct 2017 17:24:39 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: richard.henderson@linaro.org
@@ -12,169 +12,60 @@ Cc: peter.maydell@linaro.org,
 	qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RFC PATCH 21/30] target/arm/translate-a64: add FP16 2-reg misc compare (zero)
-Date: Fri, 13 Oct 2017 17:24:29 +0100
-Message-Id: <20171013162438.32458-22-alex.bennee@linaro.org>
+Subject: [RFC PATCH 19/30] Fix mask for AdvancedSIMD 2 reg misc
+Date: Fri, 13 Oct 2017 17:24:27 +0100
+Message-Id: <20171013162438.32458-20-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.14.1
 In-Reply-To: <20171013162438.32458-1-alex.bennee@linaro.org>
 References: <20171013162438.32458-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 2kumTsLQoXcl
+X-TUID: cEOLa81huZnK
 
-I re-use the existing handle_2misc_fcmp_zero handler and tweak it
-slightly to deal with the half-precision case.
+While the group encoding declares bit 28 a zero it is set for
+FCMGT (zero)
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/helper-a64.c    | 39 +++++++++++++++++++++++++++++++++++++++
- target/arm/helper-a64.h    |  6 ++++++
- target/arm/translate-a64.c | 25 ++++++++++++++++++-------
- 3 files changed, 63 insertions(+), 7 deletions(-)
+ target/arm/translate-a64.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
-diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-index dd26675d5c..b62d77aec4 100644
---- a/target/arm/helper-a64.c
-+++ b/target/arm/helper-a64.c
-@@ -577,3 +577,42 @@ float16 HELPER(advsimd_mulxh)(float16 a, float16 b, void *fpstp)
-     }
-     return float16_mul(a, b, fpst);
- }
-+
-+
-+/*
-+ * Floating point comparisons produce an integer result.
-+ * Softfloat routines return 0/1, which we convert to the 0/-1 Neon requires.
-+ */
-+uint32_t HELPER(advsimd_ceq_f16)(float16 a, float16 b, void *fpstp)
-+{
-+    float_status *fpst = fpstp;
-+    return -float16_eq_quiet(a, b, fpst);
-+}
-+
-+uint32_t HELPER(advsimd_cge_f16)(float16 a, float16 b, void *fpstp)
-+{
-+    float_status *fpst = fpstp;
-+    return -float16_le(b, a, fpst);
-+}
-+
-+uint32_t HELPER(advsimd_cgt_f16)(float16 a, float16 b, void *fpstp)
-+{
-+    float_status *fpst = fpstp;
-+    return -float16_lt(b, a, fpst);
-+}
-+
-+uint32_t HELPER(advsimd_acge_f16)(float16 a, float16 b, void *fpstp)
-+{
-+    float_status *fpst = fpstp;
-+    float16 f0 = float16_abs(a);
-+    float16 f1 = float16_abs(b);
-+    return -float16_le(f1, f0, fpst);
-+}
-+
-+/* uint32_t HELPER(advsimd_acgt_f16)(float16 a, float16 b, void *fpstp) */
-+/* { */
-+/*     float_status *fpst = fpstp; */
-+/*     float16 f0 = float16_abs(a); */
-+/*     float16 f1 = float16_abs(b); */
-+/*     return -float16_lt(f1, f0, fpst); */
-+/* } */
-diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
-index 0f97eb607f..952869f43e 100644
---- a/target/arm/helper-a64.h
-+++ b/target/arm/helper-a64.h
-@@ -53,3 +53,9 @@ DEF_HELPER_3(advsimd_minh, f16, f16, f16, ptr)
- DEF_HELPER_3(advsimd_maxnumh, f16, f16, f16, ptr)
- DEF_HELPER_3(advsimd_minnumh, f16, f16, f16, ptr)
- DEF_HELPER_3(advsimd_mulxh, f16, f16, f16, ptr)
-+
-+DEF_HELPER_3(advsimd_ceq_f16, i32, f16, f16, ptr)
-+DEF_HELPER_3(advsimd_cge_f16, i32, f16, f16, ptr)
-+DEF_HELPER_3(advsimd_cgt_f16, i32, f16, f16, ptr)
-+DEF_HELPER_3(advsimd_acge_f16, i32, f16, f16, ptr)
-+DEF_HELPER_3(advsimd_acgt_f16, i32, f16, f16, ptr)
 diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 7792cea9f5..623b0b3fab 100644
+index 11990daff4..7792cea9f5 100644
 --- a/target/arm/translate-a64.c
 +++ b/target/arm/translate-a64.c
-@@ -7785,6 +7785,7 @@ static void handle_2misc_fcmp_zero(DisasContext *s, int opcode,
-         TCGv_i32 tcg_res = tcg_temp_new_i32();
-         NeonGenTwoSingleOPFn *genfn;
-         bool swap = false;
-+        bool hp = (size == 1 ? true : false);
-         int pass, maxpasses;
- 
-         switch (opcode) {
-@@ -7792,7 +7793,7 @@ static void handle_2misc_fcmp_zero(DisasContext *s, int opcode,
-             swap = true;
-             /* fall through */
-         case 0x2c: /* FCMGT (zero) */
--            genfn = gen_helper_neon_cgt_f32;
-+            genfn = hp ? gen_helper_advsimd_cgt_f16 : gen_helper_neon_cgt_f32;
-             break;
-         case 0x2d: /* FCMEQ (zero) */
-             genfn = gen_helper_neon_ceq_f32;
-@@ -7814,7 +7815,7 @@ static void handle_2misc_fcmp_zero(DisasContext *s, int opcode,
-         }
- 
-         for (pass = 0; pass < maxpasses; pass++) {
--            read_vec_element_i32(s, tcg_op, rn, pass, MO_32);
-+            read_vec_element_i32(s, tcg_op, rn, pass, hp ? MO_16 : MO_32);
-             if (swap) {
-                 genfn(tcg_res, tcg_zero, tcg_op, fpst);
-             } else {
-@@ -7823,7 +7824,7 @@ static void handle_2misc_fcmp_zero(DisasContext *s, int opcode,
-             if (is_scalar) {
-                 write_fp_sreg(s, rd, tcg_res);
-             } else {
--                write_vec_element_i32(s, tcg_res, rd, pass, MO_32);
-+                write_vec_element_i32(s, tcg_res, rd, pass, hp ? MO_16 : MO_32);
-             }
-         }
-         tcg_temp_free_i32(tcg_res);
-@@ -9809,6 +9810,9 @@ static void disas_simd_three_reg_same_fp16(DisasContext *s, uint32_t insn)
-         case 0x2: /* FADD */
-             gen_helper_advsimd_addh(tcg_res, tcg_op1, tcg_op2, fpst);
-             break;
-+        case 0x6: /* FMAX */
-+            gen_helper_advsimd_maxh(tcg_res, tcg_op1, tcg_op2, fpst);
-+            break;
-         case 0x23: /* FMUL */
-             gen_helper_advsimd_mulh(tcg_res, tcg_op1, tcg_op2, fpst);
-             break;
-@@ -10580,21 +10584,28 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
+@@ -10571,10 +10571,10 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
+ /* AdvSIMD two reg misc FP16
+  *   31  30  29 28       24  23 22 21       17 16    12 11 10 9    5 4    0
+  * +---+---+---+-----------+---+-------------+--------+-----+------+------+
+- * | 0 | 1 | U | 1 1 1 1 0 | a | 1 1 1 1 0 0 | opcode | 1 0 |  Rn  |  Rd  |
++ * | 0 | Q | U | 1 1 1 1 0 | a | 1 1 1 1 0 0 | opcode | 1 0 |  Rn  |  Rd  |
+  * +---+---+---+-----------+---+-------------+--------+-----+------+------+
+- *   mask: 1101 1111 0111 1110 0000 1100 0000 0000 0xdf7e 0c00
+- *   val:  0101 1110 0111 1000 0000 1000 0000 0000 0x5e78 0800
++ *   mask: 1001 1111 0111 1110 0000 1100 0000 0000 0x9f7e 0c00
++ *   val:  0001 1110 0111 1000 0000 1000 0000 0000 0x1e78 0800
+  * Half-precision variants of two-reg misc.
+  */
  static void disas_simd_two_reg_misc_fp16(DisasContext *s, uint32_t insn)
- {
-     int fpop, opcode, a;
-+    int rn, rd;
+@@ -11304,7 +11304,7 @@ static const AArch64DecodeTable data_proc_simd[] = {
+     { 0x5e000000, 0xff208c00, disas_crypto_three_reg_sha },
+     { 0x5e280800, 0xff3e0c00, disas_crypto_two_reg_sha },
+     { 0x0e400400, 0x9f60c400, disas_simd_three_reg_same_fp16 },
+-    { 0x5e780800, 0xdf7e0c00, disas_simd_two_reg_misc_fp16 },
++    { 0x0e780800, 0x8f7e0c00, disas_simd_two_reg_misc_fp16 },
+     { 0x00000000, 0x00000000, NULL }
+ };
  
-     if (!arm_dc_feature(s, ARM_FEATURE_V8_FP16)) {
+@@ -11318,6 +11318,8 @@ static void disas_data_proc_simd(DisasContext *s, uint32_t insn)
+     if (fn) {
+         fn(s, insn);
+     } else {
++        fprintf(stderr, "%s: failed to find %#4x @ %#" PRIx64 "\n",
++                __func__, insn, s->pc);
          unallocated_encoding(s);
-         return;
      }
- 
--    if (!fp_access_check(s)) {
--        return;
--    }
--
-     opcode = extract32(insn, 12, 4);
-     a = extract32(insn, 23, 1);
-     fpop = deposit32(opcode, 5, 1, a);
- 
-+    rn = extract32(insn, 5, 5);
-+    rd = extract32(insn, 0, 5);
-+
-     switch (fpop) {
-+    case 0x2c: /* FCMGT (zero) */
-+    case 0x2d: /* FCMEQ (zero) */
-+    case 0x2e: /* FCMLT (zero) */
-+    case 0x6c: /* FCMGE (zero) */
-+    case 0x6d: /* FCMLE (zero) */
-+        handle_2misc_fcmp_zero(s, fpop, true, 0, false, 1, rn, rd);
-+        break;
-     default:
-         fprintf(stderr,"%s: insn %#04x fpop %#2x\n", __func__, insn, fpop);
-         g_assert_not_reached();
+ }
 -- 
 2.14.1

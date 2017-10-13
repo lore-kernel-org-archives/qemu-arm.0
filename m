@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id t143sm933960wmt.45.2017.10.13.09.31.58
+        by smtp.gmail.com with ESMTPSA id g26sm1978426wra.14.2017.10.13.09.31.58
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
         Fri, 13 Oct 2017 09:31:58 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 0A6583E1038;
+	by zen.linaro.local (Postfix) with ESMTP id 8B69A3E138C;
 	Fri, 13 Oct 2017 17:24:40 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: richard.henderson@linaro.org
@@ -12,71 +12,64 @@ Cc: peter.maydell@linaro.org,
 	qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RFC PATCH 22/30] target/arm/translate-a64.c: add FP16 FAGCT to AdvSIMD 3 Same
-Date: Fri, 13 Oct 2017 17:24:30 +0100
-Message-Id: <20171013162438.32458-23-alex.bennee@linaro.org>
+Subject: [RFC PATCH 29/30] tests/test-softfloat: add f16_to_int16 conversion test
+Date: Fri, 13 Oct 2017 17:24:37 +0100
+Message-Id: <20171013162438.32458-30-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.14.1
 In-Reply-To: <20171013162438.32458-1-alex.bennee@linaro.org>
 References: <20171013162438.32458-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: e26C5bgcp3w2
+X-TUID: BCJnhgax5OZX
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/helper-a64.c    | 14 +++++++-------
- target/arm/helper-a64.h    |  1 -
- target/arm/translate-a64.c |  3 +++
- 3 files changed, 10 insertions(+), 8 deletions(-)
+ tests/test-softfloat.c | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
 
-diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-index b62d77aec4..137866732d 100644
---- a/target/arm/helper-a64.c
-+++ b/target/arm/helper-a64.c
-@@ -609,10 +609,10 @@ uint32_t HELPER(advsimd_acge_f16)(float16 a, float16 b, void *fpstp)
-     return -float16_le(f1, f0, fpst);
- }
+diff --git a/tests/test-softfloat.c b/tests/test-softfloat.c
+index d7b740e1cb..e1f356572d 100644
+--- a/tests/test-softfloat.c
++++ b/tests/test-softfloat.c
+@@ -16,6 +16,31 @@ typedef struct {
+     uint8_t final_exception_flags;
+ } f16_test_data;
  
--/* uint32_t HELPER(advsimd_acgt_f16)(float16 a, float16 b, void *fpstp) */
--/* { */
--/*     float_status *fpst = fpstp; */
--/*     float16 f0 = float16_abs(a); */
--/*     float16 f1 = float16_abs(b); */
--/*     return -float16_lt(f1, f0, fpst); */
--/* } */
-+uint32_t HELPER(advsimd_acgt_f16)(float16 a, float16 b, void *fpstp)
++static void test_f16_convert_to_int(void)
 +{
-+    float_status *fpst = fpstp;
-+    float16 f0 = float16_abs(a);
-+    float16 f1 = float16_abs(b);
-+    return -float16_lt(f1, f0, fpst);
++    int i;
++    float16 out;
++    float_status flags, *fp = &flags;
++    f16_test_data test_data[] = {
++        /* from risu fcvtps  v23.4h, v16.4h */
++        { { .float_rounding_mode = float_round_up}, 0xa619, 0xb860, 0 },
++        { { .float_rounding_mode = float_round_up}, 0x83c0, 0xff91, 0 },
++        { { .float_rounding_mode = float_round_up}, 0x6966, 0x0001, 0 },
++        { { .float_rounding_mode = float_round_up}, 0x06b1, 0x0001, 0 },
++    };
++
++    for (i = 0; i < ARRAY_SIZE(test_data); ++i) {
++        flags = test_data[i].initial_status;
++        out = float16_to_int16(test_data[i].in, fp);
++
++        if (!(test_data[i].out == out)) {
++            fprintf(stderr, "%s[%d]: expected %#04x got %#04x\n",
++                    __func__, i, test_data[i].out, out);
++            g_test_fail();
++        }
++    }
 +}
-diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
-index 952869f43e..66c4062ea5 100644
---- a/target/arm/helper-a64.h
-+++ b/target/arm/helper-a64.h
-@@ -53,7 +53,6 @@ DEF_HELPER_3(advsimd_minh, f16, f16, f16, ptr)
- DEF_HELPER_3(advsimd_maxnumh, f16, f16, f16, ptr)
- DEF_HELPER_3(advsimd_minnumh, f16, f16, f16, ptr)
- DEF_HELPER_3(advsimd_mulxh, f16, f16, f16, ptr)
--
- DEF_HELPER_3(advsimd_ceq_f16, i32, f16, f16, ptr)
- DEF_HELPER_3(advsimd_cge_f16, i32, f16, f16, ptr)
- DEF_HELPER_3(advsimd_cgt_f16, i32, f16, f16, ptr)
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 623b0b3fab..4ad470d9e8 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -9819,6 +9819,9 @@ static void disas_simd_three_reg_same_fp16(DisasContext *s, uint32_t insn)
-         case 0x27: /* FDIV */
-             gen_helper_advsimd_divh(tcg_res, tcg_op1, tcg_op2, fpst);
-             break;
-+        case 0x35: /* FACGT */
-+            gen_helper_advsimd_acgt_f16(tcg_res, tcg_op1, tcg_op2, fpst);
-+            break;
-         default:
-             fprintf(stderr,"%s: insn %#04x, fpop %#2x @ %#" PRIx64 "\n",
-                     __func__, insn, fpopcode, s->pc);
++
+ static void test_f16_round_to_int(void)
+ {
+     int i;
+@@ -54,5 +79,6 @@ int main(int argc, char *argv[])
+ {
+     g_test_init(&argc, &argv, NULL);
+     g_test_add_func("/softfloat/f16/round_to_int", test_f16_round_to_int);
++    g_test_add_func("/softfloat/f16/convert_to_int", test_f16_convert_to_int);
+     return g_test_run();
+ }
 -- 
 2.14.1

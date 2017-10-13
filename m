@@ -1,98 +1,81 @@
-Received: by 10.223.197.9 with SMTP id q9csp477736wrf;
-        Fri, 13 Oct 2017 00:44:20 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QC0ZDcQ0mSW9cjACgIE7BydBZKxrQaPmSayPUr3rTnfwUNll2LXQYLoGnEx8/nrEnx9S1Nm
-X-Received: by 10.200.46.132 with SMTP id h4mr798736qta.88.1507880660897;
-        Fri, 13 Oct 2017 00:44:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507880660; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp804984wrf;
+        Fri, 13 Oct 2017 07:29:51 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QBJbcKT8Gqc4Wwtx9xTsAwtY33dISkttVuI4JILQ7azAQuiNLVDLQ6e2MbB2AxSVtlAEdSv
+X-Received: by 10.200.6.6 with SMTP id d6mr2415544qth.230.1507904991453;
+        Fri, 13 Oct 2017 07:29:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507904991; cv=none;
         d=google.com; s=arc-20160816;
-        b=ApzSVVQxyrwPQXrTA2uhlPOni2SKYaY8jgISMU7/PTxLm6VK48RYI0Mdvk9RFoxCA9
-         yg21pXCs7bxwlKJPhSVsmL0xot3RBzYrlumwNak6mzv+9nrvbTAkVTZq5OwUuVZCTeu+
-         QuCc52hPbOiwkqdup5BXt8X9TsmYirblubowatZ6aUr9AEU6a4xhxXfxm1boEF6Qkzt0
-         V3KBnWXoxaT/o6sOpMpVHsBThtWnP8Y4zz/ia+srX9EtPY2EiqAVT1JQKA69IK7z2vrD
-         n8/8EYFkVoCU4nfD61MQ5qKvQz7MyWgdbi73P3zmx8QgARoNoCenjfcCEwP6p1PnM3lQ
-         Vgiw==
+        b=S6dQ0Fm+Sym7h4u8QExvqDGzNZyPYZlu+pUwbIo49UrBobyIM0qExtQ1GVSeg9f3X8
+         8HlnM/ybRFsMSHdDbZMRIegv7wVX+OKIoT5Twz4PoiwYxW1tf1LHbijfHRHagkv3U5Zm
+         VuyQ543D7jqsG29XNJlOwKfkjcL77WPcmqlUczTmNAooxP/0/ggKucH8UW5QKbuA5hw5
+         ToA3QDFAmL5p74QZgQiIJeTKXrhGC2BCixcOo6v02ID49I1Vl7zUcXBs+exsOyjV+pyN
+         B7qmdYzvidzMs4sK/B7q1WC1z56n5s4lD66JWARn8EhMDwv4Bky+EjiouS9KGNAjjmGf
+         a7nw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:dmarc-filter
-         :arc-authentication-results;
-        bh=XdseiboXda6P3anSBRNYVcNl54lZ2093HhM/9duLhrc=;
-        b=e+lxofldTJ1xIEZXJpDy78hD4VB9ztdSLj7Xc+WGvI8IPq4Oth8iQL+17dwiQlaD5Q
-         WGr09ESK/mxrmZwmbOmLOp/FIu1Z76fPUHVnFiyxBABxFQK0LASK/0qsxQX8k972aLY8
-         8DI1YQdBW6y9ZlzOT9FnRTKJPsVJQKEfL7nIu71l11ZhaG+ipRkna5aIQD4AiJCuSod0
-         +4WPlNCYz5/ZjHZnMP5UiOz1x4YcjQIrzVo/3OSfv2I8V/quu9gbfeFHZF/b9SLq82Se
-         ktszCW3WkSBVDSvL7pwE2C8z3OjtSQsleMs7TcAoK8+P+IujllafOUdHCRV6jO+vyBWD
-         WijQ==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=QLl1fhBx+7Rzdu15jFzaTIYXVdfCvMu3y6FuP55w7E8=;
+        b=Gtp6zEsy/gaPoNkrvW+dY3UPT4zK8jFbMaweH2vOaGOzvfRDrXmgPnFeW+Hj5uY5sL
+         WtYXuEfctP9nK3Y65jc8wEo1Lr0LgFtNfeagbTvKfErIqgBOvaSKfvZB1sURNJ0gFqw1
+         ed3U4QG1c3J1V6oB4wZiWzYwL/svvyBvUocDqCdfxTuG4DBPb6vokYABFWt1QwwFTr0b
+         k1We5R4ccGpawibsA4wW94oY2zejtFB5b9QueFJPktQ+C6eSnT5HykXxJnngmssYATSb
+         uAMoC0iRRHZM+Or3TVOy8osftSnOXC2Vk5bjR3nfviLljgZ7fKTFsbsTag4lcKEFbYkd
+         3ewg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o70si305345qki.353.2017.10.13.00.44.20
+        by mx.google.com with ESMTPS id r15si915744qtk.70.2017.10.13.07.29.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 13 Oct 2017 00:44:20 -0700 (PDT)
+        Fri, 13 Oct 2017 07:29:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48804 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:50560 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e2udm-0002mj-Km
-	for alex.bennee@linaro.org; Fri, 13 Oct 2017 03:44:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47261)
+	id 1e30yC-00058f-Kf
+	for alex.bennee@linaro.org; Fri, 13 Oct 2017 10:29:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41019)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1e2udf-0002mT-5U
-	for qemu-arm@nongnu.org; Fri, 13 Oct 2017 03:44:12 -0400
+	(envelope-from <clg@kaod.org>) id 1e30xz-000568-QK
+	for qemu-arm@nongnu.org; Fri, 13 Oct 2017 10:29:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1e2udc-000820-2k
-	for qemu-arm@nongnu.org; Fri, 13 Oct 2017 03:44:11 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:38308)
+	(envelope-from <clg@kaod.org>) id 1e30xv-0000ZY-RH
+	for qemu-arm@nongnu.org; Fri, 13 Oct 2017 10:29:35 -0400
+Received: from 5.mo4.mail-out.ovh.net ([188.165.44.50]:47621)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1e2udb-00081a-Q9; Fri, 13 Oct 2017 03:44:08 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7AFC17AEA3;
-	Fri, 13 Oct 2017 07:44:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 7AFC17AEA3
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=eric.auger@redhat.com
-Received: from localhost.localdomain (ovpn-117-172.ams2.redhat.com
-	[10.36.117.172])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id AAEE05D6A4;
-	Fri, 13 Oct 2017 07:43:53 +0000 (UTC)
-To: "Tian, Kevin" <kevin.tian@intel.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-References: <1505807208-9063-1-git-send-email-eric.auger@redhat.com>
-	<CAFEAcA-0MK18DakmNPRXCNYbDpBvzE0h12nNjg7zr+F_m0EnDw@mail.gmail.com>
-	<f3a263b7-27e6-26df-592d-a34902bab6fe@redhat.com>
-	<CAFEAcA_2RaRsvm_=V4iDNk_vMOtiWUZs3-SdMh+DSYqGyPE0PQ@mail.gmail.com>
-	<08ce288c-610c-4dea-927d-262e7b75051f@redhat.com>
-	<AADFC41AFE54684AB9EE6CBC0274A5D190E139B0@SHSMSX151.ccr.corp.intel.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <4ce3a29a-6105-88ef-8b90-75658285dd78@redhat.com>
-Date: Fri, 13 Oct 2017 09:43:52 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1e30xv-0000W8-LJ
+	for qemu-arm@nongnu.org; Fri, 13 Oct 2017 10:29:31 -0400
+Received: from player159.ha.ovh.net (b9.ovh.net [213.186.33.59])
+	by mo4.mail-out.ovh.net (Postfix) with ESMTP id 4C06EE60B7
+	for <qemu-arm@nongnu.org>; Fri, 13 Oct 2017 16:29:22 +0200 (CEST)
+Received: from zorba.kaod.org.com (LFbn-1-2231-173.w90-76.abo.wanadoo.fr
+	[90.76.52.173]) (Authenticated sender: clg@kaod.org)
+	by player159.ha.ovh.net (Postfix) with ESMTPSA id 74164480095;
+	Fri, 13 Oct 2017 16:29:14 +0200 (CEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 13 Oct 2017 16:28:47 +0200
+Message-Id: <20171013142852.916-2-clg@kaod.org>
+X-Mailer: git-send-email 2.13.6
+In-Reply-To: <20171013142852.916-1-clg@kaod.org>
+References: <20171013142852.916-1-clg@kaod.org>
 MIME-Version: 1.0
-In-Reply-To: <AADFC41AFE54684AB9EE6CBC0274A5D190E139B0@SHSMSX151.ccr.corp.intel.com>
-Content-Type: text/plain; charset=utf-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Fri, 13 Oct 2017 07:44:06 +0000 (UTC)
+Content-Type: text/plain; charset=UTF-8
+X-Ovh-Tracer-Id: 14826412925235596049
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedttddrtdeigdejkecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v4 00/16] VIRTIO-IOMMU device
+X-Received-From: 188.165.44.50
+Subject: [Qemu-arm] [PATCH v3 1/6] aspeed: add support for the
+ witherspoon-bmc board
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,138 +87,132 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
-	"jean-philippe.brucker@arm.com" <jean-philippe.brucker@arm.com>,
-	Tomasz Nowicki <tn@semihalf.com>, Will Deacon <will.deacon@arm.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, Peter Xu <peterx@redhat.com>,
-	Marc Zyngier <marc.zyngier@arm.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	"linuc.decode@gmail.com" <linuc.decode@gmail.com>,
-	Bharat Bhushan <bharat.bhushan@nxp.com>,
-	Christoffer Dall <christoffer.dall@linaro.org>,
-	"eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: o5qvL3PUIHBm
+X-TUID: D517HnM49rcb
 
-Hi Kevin,
+The Witherspoon boards are OpenPOWER system hosting POWER9 Processors.
+Let's add support for their BMC including a couple of I2C devices as
+found on real HW.
 
-On 13/10/2017 09:01, Tian, Kevin wrote:
->> From: Auger Eric [mailto:eric.auger@redhat.com]
->> Sent: Thursday, October 12, 2017 6:10 PM
->>
->> Hi Peter,
->>
->> On 12/10/2017 11:54, Peter Maydell wrote:
->>> On 11 October 2017 at 17:08, Auger Eric <eric.auger@redhat.com> wrote=
-:
->>>> Hi Peter,
->>>>
->>>> On 11/10/2017 16:56, Peter Maydell wrote:
->>>>> On 19 September 2017 at 08:46, Eric Auger <eric.auger@redhat.com>
->> wrote:
->>>>>> This series implements the virtio-iommu device.
->>>>>>
->>>>>> This v4 is an upgrade to v0.4 spec [1] and applies on QEMU v2.10.0=
-.
->>>>>> - probe request support although no reserved region is returned at
->>>>>>   the moment
->>>>>> - unmap semantics less strict, as specified in v0.4
->>>>>> - device registration, attach/detach revisited
->>>>>> - split into smaller patches to ease review
->>>>>> - propose a way to inform the IOMMU mr about the page_size_mask
->>>>>>   of underlying HW IOMMU, if any
->>>>>> - remove warning associated with the translation of the MSI doorbe=
-ll
->>>>>>
->>>>>> The device gets instantiated using the "-device virtio-iommu-devic=
-e"
->>>>>> option. It currently works with ARM virt machine only, as the mach=
-ine
->>>>>> must handle the dt binding between the virtio-mmio "iommu" node
->> and
->>>>>> the PCI host bridge node.
->>>>>
->>>>> Could this work on x86, or is it inherently arm-only?
->>>>
->>>> Yes this is the goal. At the moment the ACPI probing is not yet prop=
-erly
->>>> specified but a Q35 prototype was developed in the Red Hat Virt team=
-.
->>>> This will be presented at the KVM forum.
->>>
->>> Since I have very little familiarity with virtio or iommu code,
->>> I'd be much happier if this was reviewed as a generic virtio-iommu
->>> by the x86/virtio devs and then the arm specific parts done second...
->>
->> Understood. I was rather expecting you to review the smmuv3 emulation
->> code which you did, in a comprehensive manner ;-), and many thanks for
->> that.
->>
->> Note sure this is time yet to get this RFC reviewed as
->> - the v0.4 virtio-iommu driver it relies on was not officially submitt=
-ed,
->> - the virtio-iommu specification review has not really been reviewed,
->> - the ACPI probing method has not been discussed yet.
->>
->> Jean-Philippe, please correct me if I am wrong.
->>
->> So to me, this is pure RFC at the moment.
->>>
->>> I'm also not clear on what we're expecting the recommended or normal
->>> way to do device passthrough is going to be -- this virtio-mmio,
->>> or presenting the guest with an SMMUv3 interface? Do we really
->>> need to implement both ?
->>
->> I think the KVM forum is the right place to sync as both approaches wi=
-ll
->> be presented and some pros/cons + performance figures will be given.
->>
->> As we talk about choosing, there is one alternative that was suggested
->> on the ML by Alex & Michael but never really get considered yet and
->> maybe should be: using intel iommu emulation code for ARM. I
->> aknowledge
->> this deserves a thorough impact study on kernel and FW side but I woul=
-d
->> be happy to get your opinion about the QEMU side. Would you have a by-
->> principle rejection of this idea to instantiate such an Intel device i=
-n
->> mach virt or would it be something you would be ready to consider?
->>
->=20
-> bear posting a link to Alex/Michael's comment? interesting to know
-> the rationale...
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
+---
 
-This was suggested here for instance:
+ Changes since v2:
 
-https://lkml.org/lkml/2017/7/12/579
+ - removed 'ignore_memory_transaction_failures' flag on the machine.
+   Will require a couple of fixes in the legacy U-Boot accessing wrongly
+   the bss before the DRAM is initialized.
 
-I think rationale was
-- this is an emulated platform so there is more freedom
-- vtd emulation code is rather stable
-- it has pieces missing on smmu: cachine mode, IOTLB invalidation
-command with addr_mask,
-- intel iommu driver implements deferred IOTLB Invalidation which boosts
-perf
+   The HW drops the write access surely because the SMC controller is
+   configured in autoread mode by default. I don't know how to model
+   this behavior in QEMU. I think we would need suppport to boot from
+   a MMIO region.
 
-But problems I foresee are:
-- MSI handling. ARM MSI doorbells can be anywhere in the GPA address
-space whereas Intel has MSIs within the APIC window: [FEE0_0000h =E2=80=93
-FEF0_000h]. So I suspect the MSI handling may not work at kernel level.
-- intel IOMMU input/output address ranges and page sizes may be
-different from ARM ones.
-- ARM uses ACPI IORT for binding RC <-> IOMMU <-> MSI controller whereas
-Intel uses other tables
-- Intel's dmar kernel code must be compiled/enabled on ARM
+ - Added a comment on the I2C device used.
 
-So personally I don't think this solution is viable but I prefer this
-gets discussed on the ML.
+ hw/arm/aspeed.c | 49 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 49 insertions(+)
 
-Thanks
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index ab895ad490af..5e0b9a184b9c 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -46,6 +46,7 @@ enum {
+     PALMETTO_BMC,
+     AST2500_EVB,
+     ROMULUS_BMC,
++    WITHERSPOON_BMC,
+ };
+=20
+ /* Palmetto hardware value: 0x120CE416 */
+@@ -83,8 +84,12 @@ enum {
+         SCU_AST2500_HW_STRAP_ACPI_ENABLE |                              =
+\
+         SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER))
+=20
++/* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) *=
+/
++#define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
++
+ static void palmetto_bmc_i2c_init(AspeedBoardState *bmc);
+ static void ast2500_evb_i2c_init(AspeedBoardState *bmc);
++static void witherspoon_bmc_i2c_init(AspeedBoardState *bmc);
+=20
+ static const AspeedBoardConfig aspeed_boards[] =3D {
+     [PALMETTO_BMC] =3D {
+@@ -110,6 +115,14 @@ static const AspeedBoardConfig aspeed_boards[] =3D {
+         .spi_model =3D "mx66l1g45g",
+         .num_cs    =3D 2,
+     },
++    [WITHERSPOON_BMC]  =3D {
++        .soc_name  =3D "ast2500-a1",
++        .hw_strap1 =3D WITHERSPOON_BMC_HW_STRAP1,
++        .fmc_model =3D "mx25l25635e",
++        .spi_model =3D "mx66l1g45g",
++        .num_cs    =3D 2,
++        .i2c_init  =3D witherspoon_bmc_i2c_init,
++    },
+ };
+=20
+ #define FIRMWARE_ADDR 0x0
+@@ -337,11 +350,47 @@ static const TypeInfo romulus_bmc_type =3D {
+     .class_init =3D romulus_bmc_class_init,
+ };
+=20
++static void witherspoon_bmc_i2c_init(AspeedBoardState *bmc)
++{
++    AspeedSoCState *soc =3D &bmc->soc;
++
++    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 4), "tmp423",=
+ 0x4c);
++    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 5), "tmp423",=
+ 0x4c);
++
++    /* The Witherspoon expects a TMP275 but a TMP105 is compatible */
++    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 9), "tmp105",=
+ 0x4a);
++}
++
++static void witherspoon_bmc_init(MachineState *machine)
++{
++    aspeed_board_init(machine, &aspeed_boards[WITHERSPOON_BMC]);
++}
++
++static void witherspoon_bmc_class_init(ObjectClass *oc, void *data)
++{
++    MachineClass *mc =3D MACHINE_CLASS(oc);
++
++    mc->desc =3D "OpenPOWER Witherspoon BMC (ARM1176)";
++    mc->init =3D witherspoon_bmc_init;
++    mc->max_cpus =3D 1;
++    mc->no_sdcard =3D 1;
++    mc->no_floppy =3D 1;
++    mc->no_cdrom =3D 1;
++    mc->no_parallel =3D 1;
++}
++
++static const TypeInfo witherspoon_bmc_type =3D {
++    .name =3D MACHINE_TYPE_NAME("witherspoon-bmc"),
++    .parent =3D TYPE_MACHINE,
++    .class_init =3D witherspoon_bmc_class_init,
++};
++
+ static void aspeed_machine_init(void)
+ {
+     type_register_static(&palmetto_bmc_type);
+     type_register_static(&ast2500_evb_type);
+     type_register_static(&romulus_bmc_type);
++    type_register_static(&witherspoon_bmc_type);
+ }
+=20
+ type_init(aspeed_machine_init)
+--=20
+2.13.6
 
-Eric
->=20
-> Thanks
-> Kevin
->=20

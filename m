@@ -1,284 +1,180 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id f84sm872845wme.44.2017.10.13.09.31.59
+        by smtp.gmail.com with ESMTPSA id c45sm1611907wrg.97.2017.10.13.09.32.02
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
         Fri, 13 Oct 2017 09:32:03 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id D771E3E0FA4;
+	by zen.linaro.local (Postfix) with ESMTP id EB3443E0FB9;
 	Fri, 13 Oct 2017 17:24:39 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: richard.henderson@linaro.org
 Cc: peter.maydell@linaro.org,
 	qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Aurelien Jarno <aurelien@aurel32.net>
-Subject: [RFC PATCH 20/30] softfloat: half-precision compare functions
-Date: Fri, 13 Oct 2017 17:24:28 +0100
-Message-Id: <20171013162438.32458-21-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [RFC PATCH 21/30] target/arm/translate-a64: add FP16 2-reg misc compare (zero)
+Date: Fri, 13 Oct 2017 17:24:29 +0100
+Message-Id: <20171013162438.32458-22-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.14.1
 In-Reply-To: <20171013162438.32458-1-alex.bennee@linaro.org>
 References: <20171013162438.32458-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: opdmdLbbkhkD
+X-TUID: 2kumTsLQoXcl
 
-This is mostly a mechanical conversion of the float32 variants of the
-same name with some judicious search/replace and some constants
-changed.
+I re-use the existing handle_2misc_fcmp_zero handler and tweak it
+slightly to deal with the half-precision case.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- fpu/softfloat.c         | 216 ++++++++++++++++++++++++++++++++++++++++++++++++
- include/fpu/softfloat.h |   8 ++
- 2 files changed, 224 insertions(+)
+ target/arm/helper-a64.c    | 39 +++++++++++++++++++++++++++++++++++++++
+ target/arm/helper-a64.h    |  6 ++++++
+ target/arm/translate-a64.c | 25 ++++++++++++++++++-------
+ 3 files changed, 63 insertions(+), 7 deletions(-)
 
-diff --git a/fpu/softfloat.c b/fpu/softfloat.c
-index ff967f5525..fdb2999c41 100644
---- a/fpu/softfloat.c
-+++ b/fpu/softfloat.c
-@@ -3884,6 +3884,222 @@ float16 float16_div(float16 a, float16 b, float_status *status)
- 
+diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
+index dd26675d5c..b62d77aec4 100644
+--- a/target/arm/helper-a64.c
++++ b/target/arm/helper-a64.c
+@@ -577,3 +577,42 @@ float16 HELPER(advsimd_mulxh)(float16 a, float16 b, void *fpstp)
+     }
+     return float16_mul(a, b, fpst);
  }
++
++
++/*
++ * Floating point comparisons produce an integer result.
++ * Softfloat routines return 0/1, which we convert to the 0/-1 Neon requires.
++ */
++uint32_t HELPER(advsimd_ceq_f16)(float16 a, float16 b, void *fpstp)
++{
++    float_status *fpst = fpstp;
++    return -float16_eq_quiet(a, b, fpst);
++}
++
++uint32_t HELPER(advsimd_cge_f16)(float16 a, float16 b, void *fpstp)
++{
++    float_status *fpst = fpstp;
++    return -float16_le(b, a, fpst);
++}
++
++uint32_t HELPER(advsimd_cgt_f16)(float16 a, float16 b, void *fpstp)
++{
++    float_status *fpst = fpstp;
++    return -float16_lt(b, a, fpst);
++}
++
++uint32_t HELPER(advsimd_acge_f16)(float16 a, float16 b, void *fpstp)
++{
++    float_status *fpst = fpstp;
++    float16 f0 = float16_abs(a);
++    float16 f1 = float16_abs(b);
++    return -float16_le(f1, f0, fpst);
++}
++
++/* uint32_t HELPER(advsimd_acgt_f16)(float16 a, float16 b, void *fpstp) */
++/* { */
++/*     float_status *fpst = fpstp; */
++/*     float16 f0 = float16_abs(a); */
++/*     float16 f1 = float16_abs(b); */
++/*     return -float16_lt(f1, f0, fpst); */
++/* } */
+diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
+index 0f97eb607f..952869f43e 100644
+--- a/target/arm/helper-a64.h
++++ b/target/arm/helper-a64.h
+@@ -53,3 +53,9 @@ DEF_HELPER_3(advsimd_minh, f16, f16, f16, ptr)
+ DEF_HELPER_3(advsimd_maxnumh, f16, f16, f16, ptr)
+ DEF_HELPER_3(advsimd_minnumh, f16, f16, f16, ptr)
+ DEF_HELPER_3(advsimd_mulxh, f16, f16, f16, ptr)
++
++DEF_HELPER_3(advsimd_ceq_f16, i32, f16, f16, ptr)
++DEF_HELPER_3(advsimd_cge_f16, i32, f16, f16, ptr)
++DEF_HELPER_3(advsimd_cgt_f16, i32, f16, f16, ptr)
++DEF_HELPER_3(advsimd_acge_f16, i32, f16, f16, ptr)
++DEF_HELPER_3(advsimd_acgt_f16, i32, f16, f16, ptr)
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 7792cea9f5..623b0b3fab 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -7785,6 +7785,7 @@ static void handle_2misc_fcmp_zero(DisasContext *s, int opcode,
+         TCGv_i32 tcg_res = tcg_temp_new_i32();
+         NeonGenTwoSingleOPFn *genfn;
+         bool swap = false;
++        bool hp = (size == 1 ? true : false);
+         int pass, maxpasses;
  
-+/*----------------------------------------------------------------------------
-+| Returns 1 if the half-precision floating-point value `a' is equal to
-+| the corresponding value `b', and 0 otherwise.  The invalid exception is
-+| raised if either operand is a NaN.  Otherwise, the comparison is performed
-+| according to the IEC/IEEE Standard for Binary Floating-Point Arithmetic.
-+*----------------------------------------------------------------------------*/
-+
-+int float16_eq(float16 a, float16 b, float_status *status)
-+{
-+    uint32_t av, bv;
-+    a = float16_squash_input_denormal(a, status);
-+    b = float16_squash_input_denormal(b, status);
-+
-+    if (    ( ( extractFloat16Exp( a ) == 0x1F ) && extractFloat16Frac( a ) )
-+         || ( ( extractFloat16Exp( b ) == 0x1F ) && extractFloat16Frac( b ) )
-+       ) {
-+        float_raise(float_flag_invalid, status);
-+        return 0;
-+    }
-+    av = float16_val(a);
-+    bv = float16_val(b);
-+    return ( av == bv ) || ( (uint32_t) ( ( av | bv )<<1 ) == 0 );
-+}
-+
-+/*----------------------------------------------------------------------------
-+| Returns 1 if the half-precision floating-point value `a' is less than
-+| or equal to the corresponding value `b', and 0 otherwise.  The invalid
-+| exception is raised if either operand is a NaN.  The comparison is performed
-+| according to the IEC/IEEE Standard for Binary Floating-Point Arithmetic.
-+*----------------------------------------------------------------------------*/
-+
-+int float16_le(float16 a, float16 b, float_status *status)
-+{
-+    flag aSign, bSign;
-+    uint32_t av, bv;
-+    a = float16_squash_input_denormal(a, status);
-+    b = float16_squash_input_denormal(b, status);
-+
-+    if (    ( ( extractFloat16Exp( a ) == 0x1F ) && extractFloat16Frac( a ) )
-+         || ( ( extractFloat16Exp( b ) == 0x1F ) && extractFloat16Frac( b ) )
-+       ) {
-+        float_raise(float_flag_invalid, status);
-+        return 0;
-+    }
-+    aSign = extractFloat16Sign( a );
-+    bSign = extractFloat16Sign( b );
-+    av = float16_val(a);
-+    bv = float16_val(b);
-+    if ( aSign != bSign ) return aSign || ( (uint32_t) ( ( av | bv )<<1 ) == 0 );
-+    return ( av == bv ) || ( aSign ^ ( av < bv ) );
-+
-+}
-+
-+/*----------------------------------------------------------------------------
-+| Returns 1 if the half-precision floating-point value `a' is less than
-+| the corresponding value `b', and 0 otherwise.  The invalid exception is
-+| raised if either operand is a NaN.  The comparison is performed according
-+| to the IEC/IEEE Standard for Binary Floating-Point Arithmetic.
-+*----------------------------------------------------------------------------*/
-+
-+int float16_lt(float16 a, float16 b, float_status *status)
-+{
-+    flag aSign, bSign;
-+    uint32_t av, bv;
-+    a = float16_squash_input_denormal(a, status);
-+    b = float16_squash_input_denormal(b, status);
-+
-+    if (    ( ( extractFloat16Exp( a ) == 0x1F ) && extractFloat16Frac( a ) )
-+         || ( ( extractFloat16Exp( b ) == 0x1F ) && extractFloat16Frac( b ) )
-+       ) {
-+        float_raise(float_flag_invalid, status);
-+        return 0;
-+    }
-+    aSign = extractFloat16Sign( a );
-+    bSign = extractFloat16Sign( b );
-+    av = float16_val(a);
-+    bv = float16_val(b);
-+    if ( aSign != bSign ) return aSign && ( (uint32_t) ( ( av | bv )<<1 ) != 0 );
-+    return ( av != bv ) && ( aSign ^ ( av < bv ) );
-+
-+}
-+
-+/*----------------------------------------------------------------------------
-+| Returns 1 if the half-precision floating-point values `a' and `b' cannot
-+| be compared, and 0 otherwise.  The invalid exception is raised if either
-+| operand is a NaN.  The comparison is performed according to the IEC/IEEE
-+| Standard for Binary Floating-Point Arithmetic.
-+*----------------------------------------------------------------------------*/
-+
-+int float16_unordered(float16 a, float16 b, float_status *status)
-+{
-+    a = float16_squash_input_denormal(a, status);
-+    b = float16_squash_input_denormal(b, status);
-+
-+    if (    ( ( extractFloat16Exp( a ) == 0x1F ) && extractFloat16Frac( a ) )
-+         || ( ( extractFloat16Exp( b ) == 0x1F ) && extractFloat16Frac( b ) )
-+       ) {
-+        float_raise(float_flag_invalid, status);
-+        return 1;
-+    }
-+    return 0;
-+}
-+
-+/*----------------------------------------------------------------------------
-+| Returns 1 if the half-precision floating-point value `a' is equal to
-+| the corresponding value `b', and 0 otherwise.  Quiet NaNs do not cause an
-+| exception.  The comparison is performed according to the IEC/IEEE Standard
-+| for Binary Floating-Point Arithmetic.
-+*----------------------------------------------------------------------------*/
-+
-+int float16_eq_quiet(float16 a, float16 b, float_status *status)
-+{
-+    a = float16_squash_input_denormal(a, status);
-+    b = float16_squash_input_denormal(b, status);
-+
-+    if (    ( ( extractFloat16Exp( a ) == 0x1F ) && extractFloat16Frac( a ) )
-+         || ( ( extractFloat16Exp( b ) == 0x1F ) && extractFloat16Frac( b ) )
-+       ) {
-+        if (float16_is_signaling_nan(a, status)
-+         || float16_is_signaling_nan(b, status)) {
-+            float_raise(float_flag_invalid, status);
-+        }
-+        return 0;
-+    }
-+    return ( float16_val(a) == float16_val(b) ) ||
-+            ( (uint32_t) ( ( float16_val(a) | float16_val(b) )<<1 ) == 0 );
-+}
-+
-+/*----------------------------------------------------------------------------
-+| Returns 1 if the half-precision floating-point value `a' is less than or
-+| equal to the corresponding value `b', and 0 otherwise.  Quiet NaNs do not
-+| cause an exception.  Otherwise, the comparison is performed according to the
-+| IEC/IEEE Standard for Binary Floating-Point Arithmetic.
-+*----------------------------------------------------------------------------*/
-+
-+int float16_le_quiet(float16 a, float16 b, float_status *status)
-+{
-+    flag aSign, bSign;
-+    uint32_t av, bv;
-+    a = float16_squash_input_denormal(a, status);
-+    b = float16_squash_input_denormal(b, status);
-+
-+    if (    ( ( extractFloat16Exp( a ) == 0x1F ) && extractFloat16Frac( a ) )
-+         || ( ( extractFloat16Exp( b ) == 0x1F ) && extractFloat16Frac( b ) )
-+       ) {
-+        if (float16_is_signaling_nan(a, status)
-+         || float16_is_signaling_nan(b, status)) {
-+            float_raise(float_flag_invalid, status);
-+        }
-+        return 0;
-+    }
-+    aSign = extractFloat16Sign( a );
-+    bSign = extractFloat16Sign( b );
-+    av = float16_val(a);
-+    bv = float16_val(b);
-+    if ( aSign != bSign ) return aSign || ( (uint32_t) ( ( av | bv )<<1 ) == 0 );
-+    return ( av == bv ) || ( aSign ^ ( av < bv ) );
-+
-+}
-+
-+/*----------------------------------------------------------------------------
-+| Returns 1 if the half-precision floating-point value `a' is less than
-+| the corresponding value `b', and 0 otherwise.  Quiet NaNs do not cause an
-+| exception.  Otherwise, the comparison is performed according to the IEC/IEEE
-+| Standard for Binary Floating-Point Arithmetic.
-+*----------------------------------------------------------------------------*/
-+
-+int float16_lt_quiet(float16 a, float16 b, float_status *status)
-+{
-+    flag aSign, bSign;
-+    uint32_t av, bv;
-+    a = float16_squash_input_denormal(a, status);
-+    b = float16_squash_input_denormal(b, status);
-+
-+    if (    ( ( extractFloat16Exp( a ) == 0x1F ) && extractFloat16Frac( a ) )
-+         || ( ( extractFloat16Exp( b ) == 0x1F ) && extractFloat16Frac( b ) )
-+       ) {
-+        if (float16_is_signaling_nan(a, status)
-+         || float16_is_signaling_nan(b, status)) {
-+            float_raise(float_flag_invalid, status);
-+        }
-+        return 0;
-+    }
-+    aSign = extractFloat16Sign( a );
-+    bSign = extractFloat16Sign( b );
-+    av = float16_val(a);
-+    bv = float16_val(b);
-+    if ( aSign != bSign ) return aSign && ( (uint32_t) ( ( av | bv )<<1 ) != 0 );
-+    return ( av != bv ) && ( aSign ^ ( av < bv ) );
-+
-+}
-+
-+/*----------------------------------------------------------------------------
-+| Returns 1 if the half-precision floating-point values `a' and `b' cannot
-+| be compared, and 0 otherwise.  Quiet NaNs do not cause an exception.  The
-+| comparison is performed according to the IEC/IEEE Standard for Binary
-+| Floating-Point Arithmetic.
-+*----------------------------------------------------------------------------*/
-+
-+int float16_unordered_quiet(float16 a, float16 b, float_status *status)
-+{
-+    a = float16_squash_input_denormal(a, status);
-+    b = float16_squash_input_denormal(b, status);
-+
-+    if (    ( ( extractFloat16Exp( a ) == 0x1F ) && extractFloat16Frac( a ) )
-+         || ( ( extractFloat16Exp( b ) == 0x1F ) && extractFloat16Frac( b ) )
-+       ) {
-+        if (float16_is_signaling_nan(a, status)
-+         || float16_is_signaling_nan(b, status)) {
-+            float_raise(float_flag_invalid, status);
-+        }
-+        return 1;
-+    }
-+    return 0;
-+}
-+
- /* Half precision floats come in two formats: standard IEEE and "ARM" format.
-    The latter gains extra exponent range by omitting the NaN/Inf encodings.  */
+         switch (opcode) {
+@@ -7792,7 +7793,7 @@ static void handle_2misc_fcmp_zero(DisasContext *s, int opcode,
+             swap = true;
+             /* fall through */
+         case 0x2c: /* FCMGT (zero) */
+-            genfn = gen_helper_neon_cgt_f32;
++            genfn = hp ? gen_helper_advsimd_cgt_f16 : gen_helper_neon_cgt_f32;
+             break;
+         case 0x2d: /* FCMEQ (zero) */
+             genfn = gen_helper_neon_ceq_f32;
+@@ -7814,7 +7815,7 @@ static void handle_2misc_fcmp_zero(DisasContext *s, int opcode,
+         }
  
-diff --git a/include/fpu/softfloat.h b/include/fpu/softfloat.h
-index f1d79b6d03..76a8310780 100644
---- a/include/fpu/softfloat.h
-+++ b/include/fpu/softfloat.h
-@@ -350,6 +350,14 @@ float16 float16_add(float16, float16, float_status *status);
- float16 float16_sub(float16, float16, float_status *status);
- float16 float16_mul(float16, float16, float_status *status);
- float16 float16_div(float16, float16, float_status *status);
-+int float16_eq(float16, float16, float_status *status);
-+int float16_le(float16, float16, float_status *status);
-+int float16_lt(float16, float16, float_status *status);
-+int float16_unordered(float16, float16, float_status *status);
-+int float16_eq_quiet(float16, float16, float_status *status);
-+int float16_le_quiet(float16, float16, float_status *status);
-+int float16_lt_quiet(float16, float16, float_status *status);
-+int float16_unordered_quiet(float16, float16, float_status *status);
+         for (pass = 0; pass < maxpasses; pass++) {
+-            read_vec_element_i32(s, tcg_op, rn, pass, MO_32);
++            read_vec_element_i32(s, tcg_op, rn, pass, hp ? MO_16 : MO_32);
+             if (swap) {
+                 genfn(tcg_res, tcg_zero, tcg_op, fpst);
+             } else {
+@@ -7823,7 +7824,7 @@ static void handle_2misc_fcmp_zero(DisasContext *s, int opcode,
+             if (is_scalar) {
+                 write_fp_sreg(s, rd, tcg_res);
+             } else {
+-                write_vec_element_i32(s, tcg_res, rd, pass, MO_32);
++                write_vec_element_i32(s, tcg_res, rd, pass, hp ? MO_16 : MO_32);
+             }
+         }
+         tcg_temp_free_i32(tcg_res);
+@@ -9809,6 +9810,9 @@ static void disas_simd_three_reg_same_fp16(DisasContext *s, uint32_t insn)
+         case 0x2: /* FADD */
+             gen_helper_advsimd_addh(tcg_res, tcg_op1, tcg_op2, fpst);
+             break;
++        case 0x6: /* FMAX */
++            gen_helper_advsimd_maxh(tcg_res, tcg_op1, tcg_op2, fpst);
++            break;
+         case 0x23: /* FMUL */
+             gen_helper_advsimd_mulh(tcg_res, tcg_op1, tcg_op2, fpst);
+             break;
+@@ -10580,21 +10584,28 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
+ static void disas_simd_two_reg_misc_fp16(DisasContext *s, uint32_t insn)
+ {
+     int fpop, opcode, a;
++    int rn, rd;
  
- int float16_is_quiet_nan(float16, float_status *status);
- int float16_is_signaling_nan(float16, float_status *status);
+     if (!arm_dc_feature(s, ARM_FEATURE_V8_FP16)) {
+         unallocated_encoding(s);
+         return;
+     }
+ 
+-    if (!fp_access_check(s)) {
+-        return;
+-    }
+-
+     opcode = extract32(insn, 12, 4);
+     a = extract32(insn, 23, 1);
+     fpop = deposit32(opcode, 5, 1, a);
+ 
++    rn = extract32(insn, 5, 5);
++    rd = extract32(insn, 0, 5);
++
+     switch (fpop) {
++    case 0x2c: /* FCMGT (zero) */
++    case 0x2d: /* FCMEQ (zero) */
++    case 0x2e: /* FCMLT (zero) */
++    case 0x6c: /* FCMGE (zero) */
++    case 0x6d: /* FCMLE (zero) */
++        handle_2misc_fcmp_zero(s, fpop, true, 0, false, 1, rn, rd);
++        break;
+     default:
+         fprintf(stderr,"%s: insn %#04x fpop %#2x\n", __func__, insn, fpop);
+         g_assert_not_reached();
 -- 
 2.14.1

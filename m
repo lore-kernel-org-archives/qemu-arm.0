@@ -1,168 +1,160 @@
-Received: by 10.28.71.27 with SMTP id u27csp1264884wma;
-        Tue, 13 Feb 2018 05:18:11 -0800 (PST)
-X-Google-Smtp-Source: AH8x226m53wondQWI7THqMrUV2VrBT73cOTXv4Oxz4/Ci90meg3tS593xzSj4BHf7N5BHD/GI1y7
-X-Received: by 10.37.100.3 with SMTP id y3mr708846ybb.180.1518527891630;
-        Tue, 13 Feb 2018 05:18:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518527891; cv=none;
-        d=google.com; s=arc-20160816;
-        b=rkIPMnNhoBH1JMQYYUsztGnRqjkcLM3IrovMw7m9YHuXns+URlYDP/6xdGoZYc3DDa
-         IdzWV35tB8dJULQy0oMzIulLWHXAssB6WfCxoZCnWuNHPU7PAAL8hBxqP7VHTbyi+HrU
-         +r/4kyYTvUPf/6fJj7VKH4lErsItrzPZX1lrCEpt70kWy+zP+LtMyiqY4WEeC0d/x4/o
-         wbA3yFxUocf3xkWgB/LnnGN+w43xR58WhHaUqP+tfG6sFYo6zLhxiXmAf2WTXoCj3gAC
-         tGIZRKILgFo2Nw63xHX5T/SRsnZAjzHv+lv3CvrdjChPiBuJG+ZjTGLgrvFc94otHZax
-         KMrg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=/Q3SjziH/1fYUr0vdcFV6GbKFG2jVdRN+3/mpA6Jy44=;
-        b=GLoAJduJEkbzQ2gSrHjJJoOqSY8juRmhWFC1YiHFyuaBdTlkIff4chQlREXxCm3cyu
-         m/VlfWuqyZ36/RNMiQhJgkhyIq/Eg4Dol2YNflSnk7g1eA4jFLBgYR9Z9+WF7WPmoN9l
-         x0o2IDpK8ZdpAUrq39OaYVavfltaVAF4iFtegpdLEK9j6Xg7hp508szuj2GfaVD9mO7R
-         PJO1oIJYj/gHCLKtlSfrbVmlp+S4bu5cwcUEBZ9Xqvn358RSDb4N0RDwfFRoYIcYq+CX
-         7rs5XYJeCXojWye7R8vM8arCHTuNrLhJIAajx+AXtXlVISN6f+3xpQ1qyi6IjexdZaib
-         P1wg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=H+groc+L;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m62si948651ywe.448.2018.02.13.05.18.11
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 13 Feb 2018 05:18:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=H+groc+L;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57092 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1elaTL-0003J9-2r
-	for alex.bennee@linaro.org; Tue, 13 Feb 2018 08:18:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36555)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1elaMf-0006BD-4T
-	for qemu-arm@nongnu.org; Tue, 13 Feb 2018 08:11:18 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1elaMd-0003LP-OX
-	for qemu-arm@nongnu.org; Tue, 13 Feb 2018 08:11:17 -0500
-Received: from mail-ot0-x235.google.com ([2607:f8b0:4003:c0f::235]:42421)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1elaMd-0003Ku-Ii
-	for qemu-arm@nongnu.org; Tue, 13 Feb 2018 08:11:15 -0500
-Received: by mail-ot0-x235.google.com with SMTP id a7so17242847otk.9
-	for <qemu-arm@nongnu.org>; Tue, 13 Feb 2018 05:11:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=/Q3SjziH/1fYUr0vdcFV6GbKFG2jVdRN+3/mpA6Jy44=;
-	b=H+groc+L2x7hCQB67ytuqC+vOagyzOr9QykhPMQIC23xnZOZKsp+IDbGHGtzD3OO0i
-	LpUtoA01/v0Ybrio/FX4BQJ+zM5VZS89Hxw1OCs/JbwtAq0TAJ1d1Ge4FOc1/s0ELrZf
-	ubrxJyLmfhAwIKAQVzbkIRBruUW6OUPFrYQo0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=/Q3SjziH/1fYUr0vdcFV6GbKFG2jVdRN+3/mpA6Jy44=;
-	b=BeAS40x29HIVnDy77qaOF+zy8vJtx6CHaFueubS8tqUG2O/qm+Cps3LGhswTaLvWIx
-	ClEWEWb9M3doVeHwZfCyzBg5mzny1cTu9NhIIgk8QbE7Dn5oq3XNqlxnWGXzQYNqVKIq
-	n5V/7Nj6xkWkwuxxA3pyAIcmYX3zm49ZM8l//Qu8jqv6Yr9sfGfWi6+fKSmBh0vbx3Tf
-	hp99S76PtX8I8FJXxOY1eY1ZFtuL9BnOX/OjtLsrhLnW4qpl0CytaIG837Es8h7Qp/vO
-	yQjfoiMs71PlRgrXqH9bMTIeEwAOtZnXSQj2a7/+VuSgOojRMWjWrBQik6jIYN+WBBxP
-	rfqA==
-X-Gm-Message-State: APf1xPBngjiwfsd/K1IK571yj0pbd7ueomu83K3IvPdf/3ntgw5lsjFL
-	5fXYrTYj6W5p0oVHV1Yr7V5KCm4eMfsfhZa/FdSMdA==
-X-Received: by 10.157.13.72 with SMTP id 66mr774545oti.116.1518527474927; Tue,
-	13 Feb 2018 05:11:14 -0800 (PST)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id m28sm1206874wmi.20.2017.10.13.09.24.38
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 13 Oct 2017 09:24:38 -0700 (PDT)
+Received: from zen.linaroharston (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTP id 68DE63E05FB;
+	Fri, 13 Oct 2017 17:24:38 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: richard.henderson@linaro.org
+Cc: peter.maydell@linaro.org,
+	qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [RFC PATCH 00/30] v8.2 half-precision support (work-in-progress)
+Date: Fri, 13 Oct 2017 17:24:08 +0100
+Message-Id: <20171013162438.32458-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.14.1
 MIME-Version: 1.0
-Received: by 10.157.3.23 with HTTP; Tue, 13 Feb 2018 05:10:54 -0800 (PST)
-In-Reply-To: <2f4fd465-ab3a-d75d-ca91-86417b84ba9c@lauterbach.com>
-References: <d23a2730-a103-6336-0658-e12fa9b0193f@lauterbach.com>
-	<CAFEAcA-tc+-+KLcMPB=BV0zCmO6t7tuKHM4=kyRf_Xx0aCCidA@mail.gmail.com>
-	<2f4fd465-ab3a-d75d-ca91-86417b84ba9c@lauterbach.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 13 Feb 2018 13:10:54 +0000
-Message-ID: <CAFEAcA8ZMjCVgWTVLkExSK78s7yYfUS4iRUq-aLEeSWJnqngCA@mail.gmail.com>
-To: Abdallah Bouassida <abdallah.bouassida@lauterbach.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::235
-Subject: Re: [Qemu-arm] [PATCH V2] target-arm:Add a dynamic XML-description
- of the cp-registers to GDB
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Khaled Jmal <khaled.jmal@lauterbach.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +wKM3piX1KKl
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: xVaTHfO3WKoB
 
-On 13 February 2018 at 12:51, Abdallah Bouassida
-<abdallah.bouassida@lauterbach.com> wrote:
+Hi,
 
->> Hi. I tried applying this patch to review it, but unfortunately your
->> email client has made a complete mess of it. In particular:
->>   * it is wrapping long lines
->>   * it is converting all the leading space characters to unicode
->>     non-breaking space characters
->>
->> which means that it won't apply. Can you resend using something that
->> doesn't mangle plaintext, please?
->
-> Hi Peter,
->
-> Thanks for the review!
-> I'm sorry, I wasn't aware of such a wrapping problem. So, here it is the
-> patch as
-> a plain text email.
->
->
-> Best regards,
-> Abdallah
->
->  gdbstub.c              | 18 +++++++++++
->  include/qom/cpu.h      |  3 ++
->  target/arm/cpu.c       |  3 ++
->  target/arm/cpu.h       | 18 +++++++++++
->  target/arm/gdbstub.c   | 87
-> ++++++++++++++++++++++++++++++++++++++++++++++++++
->  target/arm/gdbstub64.c | 25 +++++++++++++++
->  target/arm/helper.c    |  3 +-
->  7 files changed, 155 insertions(+), 2 deletions(-)
->
-> diff --git a/gdbstub.c b/gdbstub.c
-> index f1d5148..f54053f 100644
-> --- a/gdbstub.c
-> +++ b/gdbstub.c
-> @@ -670,10 +670,20 @@ static const char *get_feature_xml(const char *p,
-> const char **newp,
+This is the current state of ARM v8.2 half precision operations. There
+are two halves to this effort, expanding our copy of softfloat to
+include the requisite operations and then plumbing in the appropriate
+helpers and tcg generation code into the ARM front end.
 
-I'm afraid your email client is still wrapping long lines, as you can
-see here. It is also doing the space-to-unicode-non-breaking-space
-transformation.
+I'm posting this today as I wanted to get feedback before too many
+assumptions where baked into what is already a large patch series
+which will likely be giant by the time it is finished.
 
-It looks like you're using Thunderbird, in which case this might help:
-https://www.kernel.org/doc/html/v4.11/process/email-clients.html#thunderbird-gui
+SoftFloat
+=========
 
-It suggests disabling sending of format=flowed and wrapping of
-long lines for patch emails.
+Previously I had pondered if switching to the newer SoftFloat3 would
+be a worthwhile. While the upstream project is certainly open to
+accepting patches it would be a slow process given the changes we've
+made over the years. As a result I've decided to stick with expanding
+our current code.
 
-Alternatively if you plan to send more patch mails in future
-you might look into configuring the git-send-email command.
+Most of the helpers have been done fairly mechanically by copying the
+float32 equivalent, filing off the 32's, replacing with 16's and
+adjusting the constants appropriately (min/max exp, NaNs etc). I've
+done this in conjunction with reading the SoftFloat3 code as a sanity
+check although in places the design is a little different.
 
-thanks
--- PMM
+Some bits of the softfloat code were a bit magical to me so I've added
+additional comments and re-written the flow to be a bit more obvious.
+Currently there a whole bunch of checkpatch things to fix, now we
+"own" this copy of softfloat I'm intending for the new code to follow
+our own internal coding standards.
+
+The tests/test-softfloat is slightly hacked up. I do want to build one
+for each configured target as softfloat varies depending on the target
+parameters but I couldn't quite get it to work with:
+
+  @@ -156,10 +158,11 @@ check-unit-y += tests/ptimer-test$(EXESUF)
+   gcov-files-ptimer-test-y = hw/core/ptimer.c
+   check-unit-y += tests/test-qapi-util$(EXESUF)
+   gcov-files-test-qapi-util-y = qapi/qapi-util.c
+  -check-unit-y += tests/test-softfloat$(EXESUF)
+  -gcov-files-test-softfloat-y = fpu/softfloat.c
+  -check-unit-y += tests/test-softfloat-aarch64$(EXESUF)
+  -gcov-files-test-softfloat-aarch64-y = fpu/softfloat.c
+  +
+  +# We built a softfloat test for each variant of softfloat we have
+  +$(foreach TARGET,$(TARGETS),\
+  +	$(eval check-unit-y += tests/test-softfloat-$(TARGET)$(EXESUF)) \
+  +	$(eval gcov-files-test-softfloat-$(TARGET)-y = fpu/softfloat.c))
+
+   check-block-$(CONFIG_POSIX) += tests/qemu-iotests-quick.sh
+
+  @@ -608,8 +611,9 @@ tests/test-qht-par$(EXESUF): tests/test-qht-par.o tests/qht-bench$(EXESUF) $(tes
+   tests/qht-bench$(EXESUF): tests/qht-bench.o $(test-util-obj-y)
+   tests/test-bufferiszero$(EXESUF): tests/test-bufferiszero.o $(test-util-obj-y)
+   tests/atomic_add-bench$(EXESUF): tests/atomic_add-bench.o $(test-util-obj-y)
+  -tests/test-softfloat$(EXESUF): tests/test-softfloat.o $(BUILD_DIR)/aarch64-softmmu/fpu/softfloat.o
+  -tests/test-softfloat-aarch64$(EXESUF): tests/test-softfloat.o $(BUILD_DIR)/aarch64-softmmu/fpu/softfloat.o
+  +# There is a softfloat test target for each system type/softfloat build
+  +$(foreach TARGET,$(TARGETS),\
+  +	$(eval tests/test-softfloat-$(TARGET)$(EXESUF): tests/test-softfloat.o $(BUILD_DIR)/$(TARGET)-softmmu/fpu/softfloat.o))
+
+I think it would be nice to add some softfloat unit tests so any
+pointers welcome.
+
+ARM Vector Code
+===============
+
+The code follows the existing decompose into chunks and call helpers
+methodology. I was originally going to base this directly on top of
+Richard's TCGvec support but realised this would introduce a
+dependency that might complicate further development. I have ended up
+copy and pasting a bunch of the loop code, see lines like:
+
+  for (pass = 0; pass < (is_q ? 8 : 4); pass++) {
+  ...
+  .. stuff per element ..
+  ...
+  }
+
+I wonder if more of that could be factored away into a common iterator
+which could be more easily converted when the vector code is ready.
+For now following the existing conventions hopefully makes it easier
+to review.
+
+
+Alex Bennée (30):
+  linux-user/main: support dfilter
+  arm: introduce ARM_V8_FP16 feature bit
+  include/exec/helper-head.h: support f16 in helper calls
+  target/arm/cpu.h: update comment for half-precision values
+  softfloat: implement propagateFloat16NaN
+  fpu/softfloat: implement float16_squash_input_denormal
+  fpu/softfloat: implement float16_abs helper
+  softfloat: add half-precision expansions for MINMAX fns
+  softfloat: propagate signalling NaNs in MINMAX
+  softfloat: improve comments on ARM NaN propagation
+  target/arm: implement half-precision F(MIN|MAX)(V|NMV)
+  target/arm/translate-a64.c: handle_3same_64 comment fix
+  target/arm/translate-a64.c: AdvSIMD scalar 3 Same FP16 initial decode
+  softfloat: 16 bit helpers for shr, clz and rounding and packing
+  softfloat: half-precision add/sub/mul/div support
+  target/arm/translate-a64.c: add FP16 FADD/FMUL/FDIV to AdvSIMD 3 Same
+    (!sub)
+  target/arm/translate-a64.c: add FP16 FMULX
+  target/arm/translate-a64.c: add AdvSIMD scalar two-reg misc skeleton
+  Fix mask for AdvancedSIMD 2 reg misc
+  softfloat: half-precision compare functions
+  target/arm/translate-a64: add FP16 2-reg misc compare (zero)
+  target/arm/translate-a64.c: add FP16 FAGCT to AdvSIMD 3 Same
+  softfloat: add float16_rem and float16_muladd (!CHECK)
+  disas_simd_indexed: support half-precision operations
+  softfloat: float16_round_to_int
+  tests/test-softfloat: add a simple test framework
+  target/arm/translate-a64.c: add FP16 FRINTP to 2 reg misc
+  softfloat: float16_to_int16 conversion
+  tests/test-softfloat: add f16_to_int16 conversion test
+  target/arm/translate-a64.c: add FP16 FCVTPS to 2 reg misc
+
+ fpu/softfloat-macros.h     |   39 ++
+ fpu/softfloat-specialize.h |  105 ++++-
+ fpu/softfloat.c            | 1121 +++++++++++++++++++++++++++++++++++++++++++-
+ include/exec/helper-head.h |    3 +
+ include/fpu/softfloat.h    |   37 ++
+ linux-user/main.c          |    7 +
+ target/arm/cpu.h           |    2 +
+ target/arm/cpu64.c         |    1 +
+ target/arm/helper-a64.c    |  122 +++++
+ target/arm/helper-a64.h    |   17 +
+ target/arm/translate-a64.c |  420 ++++++++++++++---
+ tests/Makefile.include     |    8 +-
+ tests/test-softfloat.c     |   84 ++++
+ 13 files changed, 1883 insertions(+), 83 deletions(-)
+ create mode 100644 tests/test-softfloat.c
+
+-- 
+2.14.1

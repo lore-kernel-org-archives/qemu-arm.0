@@ -1,93 +1,82 @@
-Received: by 10.223.150.237 with SMTP id u100csp2828365wrb;
-        Mon, 6 Nov 2017 08:35:20 -0800 (PST)
-X-Received: by 10.223.144.71 with SMTP id h65mr13608433wrh.41.1509986120937;
-        Mon, 06 Nov 2017 08:35:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1509986120; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp1597482wrf;
+        Sat, 14 Oct 2017 02:58:04 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QD0o4DmT3QJnGB7UVMN4seJC+z+Oe1VzzLUEtwP9WnZLwUbS9Sfpuj7EHd67KxGrkihyLH0
+X-Received: by 10.223.198.130 with SMTP id j2mr3756929wrg.52.1507975084857;
+        Sat, 14 Oct 2017 02:58:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507975084; cv=none;
         d=google.com; s=arc-20160816;
-        b=exLgbifTZx8xKJOi8kUE5Lp+TC01+UXN3rabP5/tqJ4E7/o60VFcCJFSlARjrRtHmr
-         x1NwcqskxKj9bW/iEN4OWP8NyM36zL6oXEnZssggVXvu4MCv2KFIGttSaUgf37QTewUI
-         t6PQPaATyYQtWEVg/CvsIQFT6oZ7fEJRLv++eeZwE8AnIutymjs7xoQ8ElVbCm07i4G7
-         nj2CmodAchCs/dLUaZ/ogf4O0KaHjbfDL5PdqT2T68qKWKP15eKc2A7Xk7ocLYvkVRIc
-         dKYcEFE2EGX+v8SOMIIpiFC81CwDjbOztV99lL/P9DYI3SNCZowzAHyPISDJmIoHYi0Q
-         RFsw==
+        b=JTjz0QjT7HrrqDEtJqEJy/Yxc595tG9kQnaBWi3+e1+0shR3WQLYlkBK2z8H9VSvFc
+         aYdI9G6xobqGUituGx0xRoaMog2obxr/1++kRRg1Wcb92PoC6sFp9Zr7Pttq38LAOaQw
+         7nycRijdp9qVDDQSuQQZ3zT3qrJChe6ALT6oevOuB854+ZvuIGAHX2+fS5QFM9Kq6z6v
+         7DMRsoMdik01iQ60hJ70rMaIgIzB3zUrG9Ex9ieswXQiS9utg2h1DmqotH422/ZPbRz9
+         94o4Ilep3kLsxIe9wSu8SmyA/ozis1peQrJzY7UH9YJxhWhVflLbMsaUxkRdq3TR8NKv
+         2yVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
          :arc-authentication-results;
-        bh=9DACZTq7gQ2mlD2HwuLc6nX0LPNuhoblrOpnBFA0Gp0=;
-        b=QYnJhgBFizOjOT2UJx9+DuyogKO7wr/M89snfOlRm8rqJ5IZzQXauCom3FedIwoPSx
-         RFN0oDui2Ycj0P1CtA88EF/POMMQ2EEON0GPKoSB14baLjKXurGpThJokzVf/cir0F+I
-         XPjxXMnkZM2vmIphOtX/j+3byLkfjXSHzedwGpZMtljJ+oFmDcKtJRu8BdJUSdg3d9te
-         subyUrJrqiKYXcQ9uBL8xh4JqgzvdS6uhSOy+ps4iLtcTkD1C2wx/ni/S0B39Zie2f3c
-         /wH6QWt7lT/cAYI62HsvqVj6AVkkm8Jba0aAP8MDQoM0nHQDIZ6lGvl+GanVWbDnC3Gj
-         ZJiw==
+        bh=G1IcksUDf8hNG7x+f0+8ZFYhZPjGyHSy5zpIay7/pWQ=;
+        b=TKf2yTmeeDIThGU22eu5PcRxNN2a+8qgGm9DL5xgFagMMvcxv+db6bMhHXmOfXLLtg
+         kFtIk1+Vu1RMGeifpKslSvyrxfajF0yMaxHgtk3d/+IUkWWWpX8qfjiulCqcvSEN78iu
+         c3jb433Rgqw349abCAh7kYUZcBmiEv+N7Am7o1wLPWs9G03wDmsSKl81S5r6HCPNxZAv
+         TdX2gvTqUw3HtI1EV/jSisnnFwpMoTHpgEHG1nN3ksNhMZgGnpmPu/CtRGfvSjROfH97
+         M0idzGeIW+JZ1XOMdrGw03YZgifTSzxwu24LRfKX5aRe2vb/4Xqtb4r4R13JIj1a3BSs
+         Rg8g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eDv7QQiq;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id q2sor2116901wma.88.2017.11.06.08.35.20
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 06 Nov 2017 08:35:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       spf=neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+Return-Path: <laurent@vivier.eu>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.187])
+        by mx.google.com with ESMTPS id a12si2209704wmi.204.2017.10.14.02.58.04
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 14 Oct 2017 02:58:04 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.187;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eDv7QQiq;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=9DACZTq7gQ2mlD2HwuLc6nX0LPNuhoblrOpnBFA0Gp0=;
-        b=eDv7QQiqKEE62WvllmNWXXLBAz51eUmmlN9yeZzCZvMTCqSYeNr1xloeIE1BTkJhUk
-         AJ4ECT+CLeuIA2PlDz6WiamgHgnu/65Xfw+vjNjmlR5w2q1Uwyxb4/p54x9KKIOjEg5z
-         n4sMn8ueqGLFCrbnCdY6Hsz0cLufdceA7Zqo0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=9DACZTq7gQ2mlD2HwuLc6nX0LPNuhoblrOpnBFA0Gp0=;
-        b=EHOEtX6+O2deHZPdgBqQfHBI2K3N4K+DMqLnFDQdQ17ia9Jpke2ZjSaN/Z/k6v23+E
-         E9kBdoT5IG/EVRWFC/xnGu5M5mkj2IdaNbEkTjKFNcu8gDYA6Iy9SDKs3uKJ8fzq7nUD
-         T06UxQeA6OL63dg07dz1CpQvTj4Vw48TJ4J5WbQ4+2IMqstICsnQyRmoPBte0BMKgC+V
-         J4zag4Kas0kACW8OB0EsdnrFVy8jr9FQY0AjBTx5ogvd0NJmJEzozGmZpWJliY3hL6Ng
-         4fT0fBw91maXsmOjionttT1X5ekg5hG8k1XCTKdQLZiaBGRUcWz2CdGd3NPN6KGqGxI6
-         auSw==
-X-Gm-Message-State: AJaThX4JPTqbFcRjQ9LHF62haV8K7IeM62cL5woaGSvKFmWLDp06mYBk
-	fBfFGb2ka9ewxQ4znyBYB5xVsQzeyh1uCgPZDoQlQNlYhfA=
-X-Google-Smtp-Source: ABhQp+RwdhgHv+C/W2kfFTTHjtWHKThbqY0E0VMc01l7tlOyOS442NVXnsc3HBGr5DJ1X2JZLd4CyxBDVGlT02td0KE=
-X-Received: by 10.28.14.195 with SMTP id 186mr5609291wmo.56.1509986120460;
- Mon, 06 Nov 2017 08:35:20 -0800 (PST)
+       spf=neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+ (mreue006 [212.227.15.167]) with ESMTPSA (Nemesis) id
+ 0LZYSm-1dOUjP3IZ2-00lUUz; Sat, 14 Oct 2017 11:58:03 +0200
+Subject: Re: [RFC PATCH 01/30] linux-user/main: support dfilter
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ richard.henderson@linaro.org
+Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Riku Voipio <riku.voipio@iki.fi>
+References: <20171013162438.32458-1-alex.bennee@linaro.org>
+ <20171013162438.32458-2-alex.bennee@linaro.org>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <c0988952-236b-a31b-5d63-bd1f0642f8dd@vivier.eu>
+Date: Sat, 14 Oct 2017 11:58:02 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-Received: by 10.223.161.5 with HTTP; Mon, 6 Nov 2017 08:34:59 -0800 (PST)
-In-Reply-To: <871slbs7iv.fsf@linaro.org>
-References: <1509732813-22957-1-git-send-email-peter.maydell@linaro.org> <871slbs7iv.fsf@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 6 Nov 2017 16:34:59 +0000
-Message-ID: <CAFEAcA-02WxVWayj=ZZS9Wq+6herJm2=jdKbfDAV1iYMvLUTBA@mail.gmail.com>
-Subject: Re: [Qemu-arm] [PATCH] nvic: Fix ARMv7M MPU_RBAR reads
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	"patches@linaro.org" <patches@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: yaiaKZt7Evd+
+In-Reply-To: <20171013162438.32458-2-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K0:YIJp7vTjqb41YfYGkf03yPfLNAsYfJfXYf8vRAlPG0Russ9ka+M
+ W4DDvoQpYjCIkTWkgoD/v9Gq0sO7D/zEIfFTkOXCeZIMkLd33Za6Y1mo6OhpTR9DvL2pTJM
+ qqqEpYT0DErQTeRvyq34Xm2AbF7xg8N/nRSZ4PRmtQQ/6LHEPAXIAYCV5NBwTAHA3li1yeo
+ nDcEEAgZ00livGhkH5m0g==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:1xe6hOuf85s=:i65uOvcJgEyQyqsCPLkAEa
+ sock/oMUPsc95re+XBIOhu/HIk+kt8zQVfe4Eko8yfSbxO3A8vCKkbUFeDnUyqix7y7gu3dGu
+ UbN/sCMzpolJoaMFgWnL+nbGf3quKP/KWMb7ceObeF97YNh6uycUBp6iLuLmABMJsveD69lGp
+ /iH/hfLeXenSfxezT26JalDhDj5Yp6vnyMK7JEl0hKNPa3W8xeTTkQDaERKKreEBODIF1zJG3
+ Q0IQkKPZGXeUh2hrPtAmElBbagidJ4uNiLnjuCuRYG2qxsbhfsJgNjfvfEr06kYD5FIVukyji
+ 6d8E++ksyH/kWP3w92TXbvzgM3TJBOo38phyhupNgKWvR4MXG/X9UD2Pxr10OD0OEGre0v67k
+ shsFJZ20y7too3T2OESlGOxnW5EGg7ADevilvxSah7CZmm/TXe60asdmfRieimKPoi6OsFmq6
+ +4kGSPOMlcolT41WBBxxIipUR0F2R6Kqm5ji9mySp4h+RITQHcylYVsMNa6Yt67KOL8hrNcTT
+ nDhzlXUvbv/KjZS/jDhHIFgVy2Bh9IED90QhiV22u9sUsDoikfqaUfHKMX7gCQ6xQDZfNZY8/
+ o/yitNHo05OBq19KGipoSslym69+S0OTUxUEj9MVqg629CuhUB1gK6mo1HjFOALbWDLsc4gcb
+ 56roErn/Vlf1WU5SmlZt8ZLqfvvRYGU9u8RY9p6ypyelpSN86+85Nty2xoTG5RXRU5jdc/x0Q
+ /RvaMRX6oF2MrwaXhyHUlcRrQDzLr5LQRUxt09w33N3wocW9CUZmybNOWXY=
+X-TUID: oqzv7fGllGKc
 
-On 6 November 2017 at 16:20, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
->
-> Peter Maydell <peter.maydell@linaro.org> writes:
->
->> Fix an incorrect mask expression in the handling of v7M MPU_RBAR
->> reads that meant that we would always report the ADDR field as zero.
->
-> nit: you could extend that to: "..as zero because we mask it when
-> written".
+Le 13/10/2017 à 18:24, Alex Bennée a écrit :
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>  linux-user/main.c | 7 +++++++
+>  1 file changed, 7 insertions(+)
+> 
+> diff --git a/linux-user/main.c b/linux-user/main.c
+> index 829f974662..5072aa855b 100644
 
-The ADDR field is bits [31:5], so it's true even if we don't
-mask on writes.
-
-thanks
--- PMM
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>

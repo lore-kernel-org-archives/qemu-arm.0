@@ -1,101 +1,90 @@
-Received: by 10.223.172.38 with SMTP id v35csp3803541wrc;
-        Tue, 26 Sep 2017 10:04:36 -0700 (PDT)
-X-Received: by 10.55.209.79 with SMTP id s76mr16685462qki.238.1506445476755;
-        Tue, 26 Sep 2017 10:04:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506445476; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp2241368wrf;
+        Sat, 14 Oct 2017 20:38:13 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+RK/RqfcxnqRuClhU8VS7zwi3sSSrM/UiqjcOqdqbeJTlGSZgr9sgoNGpWUJ8hc8E4qGqfL
+X-Received: by 10.200.1.136 with SMTP id x8mr9337335qtf.259.1508038693573;
+        Sat, 14 Oct 2017 20:38:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508038693; cv=none;
         d=google.com; s=arc-20160816;
-        b=PEbWgPXxQVikwRT866WCqATWJa7IBA9EPCGTsqEhqoa/F+vVQ27vuuPNjInZHi9npS
-         uwX6AZcM1cHp5ZLpwWR+PrY8EpQfkS3w5nkl9FNmPeot679ZeRf0F5RpSBjFzn7h7/yZ
-         ettXsYNy8lJ0682pkhhTff7DZS5K3rwb9KGgZsPvyx2J6LvKDIWRzxDHPBpkB3+9+b/V
-         1XBdM8GW6f/UUVyDS/92QcWlEjdT34C1WTxrgVC4srY1+87vd3NfSJBU74aPhk5jGsOz
-         n5BLmGVkX8DWezwTOolSX5zCjYtkCT03GcMs99Ro6OzL086htkZ+Bq1DK+sqJizx+uns
-         PQZQ==
+        b=DtJoU4vJgQorG6M+O1zOXfRbD9LRhv1FQWS0+Zu90CegfQLgDyZh+G444yJtr4/s5m
+         NLlukZWmhCQoEERkHBv6mN/2wTl31VCMOG9q4v/mTnhx6qysKj6ClrDTHYv+UHj9eoKM
+         Z+qffAMYAHT/frCmy8mSeA4yd+fw/XDL3CXf/UyUOrHZoBzIR7kodOdNkbsOWSRflEAB
+         FciKa6dzAZw0nLCccXLvIoXoeYkH6cDLMQLptBeZyfH4fu9bWfjvRB60LgMJZZLG6o3O
+         Hjqh38fEgSZXIpqAP+f9+i8WFmz8ECVo27sTwWZV/y1PGBol+CdN1R8BXqMB6RLCmJd+
+         Bt2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=SPOpOpjQnUCh3JtSNkAfbs0PXPag5qYVBNBW4oR9RFo=;
-        b=xFHhuuQP18PkMwm+KKxumoEQE1EzbTrxiGB9fJ5n49jwI1jZHXYW1BSh3q4GfOmDXN
-         EUGcBfuTvWcjbjvPzr7DL246vhfPsC5W4h7ltFNYYjkOHAyyhbFBBzIsNQxY87RbvvG7
-         muZBGJZ/fxMzWnNCx08W9R3vKI7K8gvYYk2Zqy7DU5mpuGZGjcR18YfqNDkjDjGe+P8X
-         SA3hKUQHGnFb5syCjPz25uDehEYdJLPNB7IcS0L0tYLGMhMeVuvHgys1Nt7eKbtGDWRb
-         ELbR2PJP5EM1RWSbJjgiHIIDN0P6gt0cYg1d8ZhLKevMyVqUm8RStbhOW5bU3fGRJYJg
-         YACA==
+         :list-unsubscribe:list-id:precedence:subject:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dmarc-filter:arc-authentication-results;
+        bh=qWqKcoQ1VnDc/0uq+FkAGfzzNMXp9CZ/VdMaySTqiUQ=;
+        b=TWh6RjBT1VOf1/oGxH+SFrlE7qwKRBV7CjfJMFe4xvjJ3Ia6OCgPnK86F1PXUoIa7w
+         wVY4qu6RgmzSel2DQfpOlPe1kA4mztOYrSVa0yE9EsweaD9Dow4nTyhAGd5+JtquLW4j
+         D5QBWOy44dKArYMeqRS+Ie4q3z3Rpp4sgc8M9iDv4y1CmbYzlr9XzL03YLoRL3TUTbDz
+         Y9ediLJxNfwwTN324W7xyMO1X0WYPZ90JPJayd8koSGMNg/d138A6Syo0DQ3Dop+p1Sf
+         AWB9VNHn9UCTCrR/UczOTLnRs0fuHpOgOzVkGQo418chzlDX/i/rdxkc/7foBDeVtDdD
+         /PCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mJOfcwhq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 53si1171078qty.157.2017.09.26.10.04.36
+        by mx.google.com with ESMTPS id t187si3976933qkc.275.2017.10.14.20.38.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 26 Sep 2017 10:04:36 -0700 (PDT)
+        Sat, 14 Oct 2017 20:38:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mJOfcwhq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:50362 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56014 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dwtHe-0008Mr-I1
-	for alex.bennee@linaro.org; Tue, 26 Sep 2017 13:04:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49662)
+	id 1e3Zkg-0005yy-N1
+	for alex.bennee@linaro.org; Sat, 14 Oct 2017 23:38:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49263)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dwtHT-0008JX-Is
-	for qemu-arm@nongnu.org; Tue, 26 Sep 2017 13:04:27 -0400
+	(envelope-from <mst@redhat.com>) id 1e3ZWx-00030E-5W
+	for qemu-arm@nongnu.org; Sat, 14 Oct 2017 23:24:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dwtHN-0005aR-Bu
-	for qemu-arm@nongnu.org; Tue, 26 Sep 2017 13:04:23 -0400
-Received: from mail-wr0-x244.google.com ([2a00:1450:400c:c0c::244]:36816)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1dwtHJ-0005Xg-Mc; Tue, 26 Sep 2017 13:04:13 -0400
-Received: by mail-wr0-x244.google.com with SMTP id g50so2866404wra.3;
-	Tue, 26 Sep 2017 10:04:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc;
-	bh=SPOpOpjQnUCh3JtSNkAfbs0PXPag5qYVBNBW4oR9RFo=;
-	b=mJOfcwhqZFUhNQcK7TVyOKAw/9005+lCJd4rL24OAl1uToguSOrqt9P50XAIfRXxDF
-	UCDKZWNi/7L9K7/GqdedTzgZWe6XXR8svNqEoKu6pJqzL/P+QRO7EMdsiJQTA9qBPoaC
-	nHa7SDv0VMLiOVQHOaUZV6TJsZtK8nmZ6PuxaZFA+CjULwkbT3bo9Pgvz5W+B833sDTJ
-	oeTfRqk1S0/NJxSw+wP9Xm1p4rmpJS8Xid7rY/LoLMBlq06JQGyB/vS78gzgQG9/hBIy
-	dJBLQ98cPG9/WlXHkhHU8qyyF1EJBE/u2gfjP7zmqjZ0xAXhJk52kc4SIkYtW4iQbuAC
-	PU2A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc;
-	bh=SPOpOpjQnUCh3JtSNkAfbs0PXPag5qYVBNBW4oR9RFo=;
-	b=bXSwH4owk839fnG0zVBsccbnmmAZXUsuPWe/miYjn9ZtziKrKqpu8sC5rhqwGd+PL3
-	+BvmEUVm9HeDg5H4Qc6ANk06Cu/9BKnWwhzyNCGXNe8tkT1Jx1YKqdkWmwqiG4/JvZT/
-	6yH1KlFzRUo0nrmtPn0O9gRsNKZ3/7KjRtEmdVQI97S1dBhfB8tAGK2qyirbBisHfClp
-	vpt4bduIwqy4q0yaHcb/snLhNDc5vu4msdLSayOPP4ALj3UFPeghYWVUl3wCUf5l7suu
-	FOaBngfidhOYep0kqTjSUkhO9lfq9upNM0ow73vlYwbJfTzXQAgS9inXt4ghr9LkYIO9
-	J5ow==
-X-Gm-Message-State: AHPjjUj2yT9GeZYb696z27hw8IewsH79mqS1p7/zCY7nS8kf6AZXSY87
-	+U9Uz2m6JfQgYJ3kxh2p0R95Hzl68YDlKThZCnM=
-X-Google-Smtp-Source: AOwi7QAE91UXvlEYXfkIcUHX+EesWHr2enJ+Cqp9ja8dCWaarTDRtH7h1DB4UMdUIq2cQbypgZoy7v+TGwqykR1qRhE=
-X-Received: by 10.223.169.143 with SMTP id b15mr10919560wrd.127.1506445452512; 
-	Tue, 26 Sep 2017 10:04:12 -0700 (PDT)
+	(envelope-from <mst@redhat.com>) id 1e3ZWt-000759-1k
+	for qemu-arm@nongnu.org; Sat, 14 Oct 2017 23:23:59 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50618)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <mst@redhat.com>)
+	id 1e3ZWs-00074e-Gi; Sat, 14 Oct 2017 23:23:54 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id F0E7213A8F;
+	Sun, 15 Oct 2017 03:23:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com F0E7213A8F
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=mst@redhat.com
+Received: from redhat.com (ovpn-120-178.rdu2.redhat.com [10.10.120.178])
+	by smtp.corp.redhat.com (Postfix) with SMTP id 6A9F65D9CC;
+	Sun, 15 Oct 2017 03:23:39 +0000 (UTC)
+Date: Sun, 15 Oct 2017 06:23:38 +0300
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: qemu-devel@nongnu.org
+Message-ID: <1508036858-13479-19-git-send-email-mst@redhat.com>
+References: <1508036858-13479-1-git-send-email-mst@redhat.com>
 MIME-Version: 1.0
-Received: by 10.28.135.139 with HTTP; Tue, 26 Sep 2017 10:03:41 -0700 (PDT)
-In-Reply-To: <cbcf25a4-db9c-910f-fdbc-b7620d013b14@redhat.com>
-References: <1506441116-16627-1-git-send-email-thuth@redhat.com>
-	<CAKmqyKOCsyCHnaNzo_zrRQjZi30ENdPoSc+dFehHvevm-9nrZg@mail.gmail.com>
-	<cbcf25a4-db9c-910f-fdbc-b7620d013b14@redhat.com>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Tue, 26 Sep 2017 10:03:41 -0700
-X-Google-Sender-Auth: OveU2hl9mTYqPFcJUqtM2fPFEpg
-Message-ID: <CAKmqyKO2jfVZ9d1epxVWKMy9FUfByCoVXMV4JQ-qGAV=vzKwnQ@mail.gmail.com>
-To: Thomas Huth <thuth@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::244
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/arm/xlnx-zynqmp: Mark the
- "xlnx, zynqmp" device with user_creatable = false
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1508036858-13479-1-git-send-email-mst@redhat.com>
+X-Mutt-Fcc: =sent
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Sun, 15 Oct 2017 03:23:53 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PULL 18/26] pci: Add INTERFACE_CONVENTIONAL_PCI_DEVICE
+ to Conventional PCI devices
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,43 +96,1238 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Gerd Hoffmann <kraxel@redhat.com>, Jiri Slaby <jslaby@suse.cz>,
+	Hannes Reinecke <hare@suse.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Alberto Garcia <berto@igalia.com>, qemu-block@nongnu.org,
+	Alexander Graf <agraf@suse.de>,
+	=?utf-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
+	Marcel Apfelbaum <marcel@redhat.com>, xen-devel@lists.xenproject.org,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Artyom Tarasenko <atar4qemu@gmail.com>, Jiri Pirko <jiri@resnulli.us>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Anthony PERARD <anthony.perard@citrix.com>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
+	Yongbok Kim <yongbok.kim@imgtec.com>, John Snow <jsnow@redhat.com>,
+	Richard Henderson <rth@twiddle.net>, qemu-ppc@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uxBBHn6aXxDe
+X-TUID: cJbyrRXORuO9
 
-On Tue, Sep 26, 2017 at 9:52 AM, Thomas Huth <thuth@redhat.com> wrote:
-> On 26.09.2017 18:36, Alistair Francis wrote:
->> On Tue, Sep 26, 2017 at 8:51 AM, Thomas Huth <thuth@redhat.com> wrote:
->>> The device uses serial_hds in its realize function and thus can't be
->>> used twice. Apart from that, the comma in its name makes it quite hard
->>> to use for the user anyway, since a comma is normally used to separate
->>> the device name from its properties when using the "-device" parameter
->>> or the "device_add" HMP command.
->>
->> Is it worth changing the name now then as well?
->
-> Not sure, was there a reason for this name? E.g. is it used in a device
-> tree somewhere somehow? Anyway, with user_creatable = false, I think it
-> is not so urgent anymore to change it.
+From: Eduardo Habkost <ehabkost@redhat.com>
 
-I don't think there was a specific reason. Maybe it was copied from a
-device tree, but I'm not tied to keeping the comma. Maybe that's
-something we can investigate in the future.
+Add INTERFACE_CONVENTIONAL_PCI_DEVICE to all direct subtypes of
+TYPE_PCI_DEVICE, except:
 
-Thanks,
-Alistair
+1) The ones that already have INTERFACE_PCIE_DEVICE set:
 
->
->>> Signed-off-by: Thomas Huth <thuth@redhat.com>
->>
->> Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
->
-> Thanks!
->
->  Thomas
->
+* base-xhci
+* e1000e
+* nvme
+* pvscsi
+* vfio-pci
+* virtio-pci
+* vmxnet3
+
+2) base-pci-bridge
+
+Not all PCI bridges are Conventional PCI devices, so
+INTERFACE_CONVENTIONAL_PCI_DEVICE is added only to the subtypes
+that are actually Conventional PCI:
+
+* dec-21154-p2p-bridge
+* i82801b11-bridge
+* pbm-bridge
+* pci-bridge
+
+The direct subtypes of base-pci-bridge not touched by this patch
+are:
+
+* xilinx-pcie-root: Already marked as PCIe-only.
+* pcie-pci-bridge: Already marked as PCIe-only.
+* pcie-port: all non-abstract subtypes of pcie-port are already
+  marked as PCIe-only devices.
+
+3) megasas-base
+
+Not all megasas devices are Conventional PCI devices, so the
+interface names are added to the subclasses registered by
+megasas_register_types(), according to information in the
+megasas_devices[] array.
+
+"megasas-gen2" already implements INTERFACE_PCIE_DEVICE, so add
+INTERFACE_CONVENTIONAL_PCI_DEVICE only to "megasas".
+
+Acked-by: Alberto Garcia <berto@igalia.com>
+Acked-by: John Snow <jsnow@redhat.com>
+Acked-by: Anthony PERARD <anthony.perard@citrix.com>
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+Reviewed-by: Marcel Apfelbaum <marcel@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+---
+ hw/acpi/piix4.c                     |  1 +
+ hw/audio/ac97.c                     |  4 ++++
+ hw/audio/es1370.c                   |  4 ++++
+ hw/audio/intel-hda.c                |  4 ++++
+ hw/char/serial-pci.c                | 12 ++++++++++++
+ hw/display/cirrus_vga.c             |  4 ++++
+ hw/display/qxl.c                    |  4 ++++
+ hw/display/sm501.c                  |  4 ++++
+ hw/display/vga-pci.c                |  4 ++++
+ hw/display/vmware_vga.c             |  4 ++++
+ hw/i2c/smbus_ich9.c                 |  4 ++++
+ hw/i386/amd_iommu.c                 |  4 ++++
+ hw/i386/kvm/pci-assign.c            |  4 ++++
+ hw/i386/pc_piix.c                   |  4 ++++
+ hw/i386/xen/xen_platform.c          |  4 ++++
+ hw/i386/xen/xen_pvdevice.c          |  4 ++++
+ hw/ide/ich.c                        |  4 ++++
+ hw/ide/pci.c                        |  4 ++++
+ hw/ipack/tpci200.c                  |  4 ++++
+ hw/isa/i82378.c                     |  4 ++++
+ hw/isa/lpc_ich9.c                   |  1 +
+ hw/isa/piix4.c                      |  4 ++++
+ hw/isa/vt82c686.c                   | 16 ++++++++++++++++
+ hw/mips/gt64xxx_pci.c               |  4 ++++
+ hw/misc/edu.c                       |  5 +++++
+ hw/misc/ivshmem.c                   |  4 ++++
+ hw/misc/macio/macio.c               |  4 ++++
+ hw/misc/pci-testdev.c               |  4 ++++
+ hw/net/e1000.c                      |  4 ++++
+ hw/net/eepro100.c                   |  4 ++++
+ hw/net/ne2000.c                     |  4 ++++
+ hw/net/pcnet-pci.c                  |  4 ++++
+ hw/net/rocker/rocker.c              |  4 ++++
+ hw/net/rtl8139.c                    |  4 ++++
+ hw/net/sungem.c                     |  4 ++++
+ hw/net/sunhme.c                     |  4 ++++
+ hw/pci-bridge/dec.c                 |  8 ++++++++
+ hw/pci-bridge/i82801b11.c           |  4 ++++
+ hw/pci-bridge/pci_bridge_dev.c      |  1 +
+ hw/pci-bridge/pci_expander_bridge.c |  8 ++++++++
+ hw/pci-host/apb.c                   |  8 ++++++++
+ hw/pci-host/bonito.c                |  4 ++++
+ hw/pci-host/gpex.c                  |  4 ++++
+ hw/pci-host/grackle.c               |  4 ++++
+ hw/pci-host/piix.c                  |  8 ++++++++
+ hw/pci-host/ppce500.c               |  4 ++++
+ hw/pci-host/prep.c                  |  4 ++++
+ hw/pci-host/q35.c                   |  4 ++++
+ hw/pci-host/uninorth.c              | 16 ++++++++++++++++
+ hw/pci-host/versatile.c             |  4 ++++
+ hw/ppc/ppc4xx_pci.c                 |  4 ++++
+ hw/scsi/esp-pci.c                   |  4 ++++
+ hw/scsi/lsi53c895a.c                |  4 ++++
+ hw/scsi/megasas.c                   |  4 ++++
+ hw/scsi/mptsas.c                    |  4 ++++
+ hw/sd/sdhci.c                       |  4 ++++
+ hw/sh4/sh_pci.c                     |  4 ++++
+ hw/sparc64/sun4u.c                  |  4 ++++
+ hw/usb/hcd-ehci-pci.c               |  4 ++++
+ hw/usb/hcd-ohci.c                   |  4 ++++
+ hw/usb/hcd-uhci.c                   |  4 ++++
+ hw/vfio/pci-quirks.c                |  4 ++++
+ hw/watchdog/wdt_i6300esb.c          |  4 ++++
+ hw/xen/xen_pt.c                     |  4 ++++
+ 64 files changed, 296 insertions(+)
+
+diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
+index f4fd590..a0fb1ce 100644
+--- a/hw/acpi/piix4.c
++++ b/hw/acpi/piix4.c
+@@ -718,6 +718,7 @@ static const TypeInfo piix4_pm_info = {
+     .interfaces = (InterfaceInfo[]) {
+         { TYPE_HOTPLUG_HANDLER },
+         { TYPE_ACPI_DEVICE_IF },
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
+         { }
+     }
+ };
+diff --git a/hw/audio/ac97.c b/hw/audio/ac97.c
+index 959c786..337402e 100644
+--- a/hw/audio/ac97.c
++++ b/hw/audio/ac97.c
+@@ -1431,6 +1431,10 @@ static const TypeInfo ac97_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof (AC97LinkState),
+     .class_init    = ac97_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void ac97_register_types (void)
+diff --git a/hw/audio/es1370.c b/hw/audio/es1370.c
+index dd7c23d..59cf252 100644
+--- a/hw/audio/es1370.c
++++ b/hw/audio/es1370.c
+@@ -1082,6 +1082,10 @@ static const TypeInfo es1370_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof (ES1370State),
+     .class_init    = es1370_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void es1370_register_types (void)
+diff --git a/hw/audio/intel-hda.c b/hw/audio/intel-hda.c
+index 18a50a8..a3e670c 100644
+--- a/hw/audio/intel-hda.c
++++ b/hw/audio/intel-hda.c
+@@ -1263,6 +1263,10 @@ static const TypeInfo intel_hda_info = {
+     .instance_size = sizeof(IntelHDAState),
+     .class_init    = intel_hda_class_init,
+     .abstract      = true,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static const TypeInfo intel_hda_info_ich6 = {
+diff --git a/hw/char/serial-pci.c b/hw/char/serial-pci.c
+index 303104d..cb0d04c 100644
+--- a/hw/char/serial-pci.c
++++ b/hw/char/serial-pci.c
+@@ -250,6 +250,10 @@ static const TypeInfo serial_pci_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCISerialState),
+     .class_init    = serial_pci_class_initfn,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static const TypeInfo multi_2x_serial_pci_info = {
+@@ -257,6 +261,10 @@ static const TypeInfo multi_2x_serial_pci_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCIMultiSerialState),
+     .class_init    = multi_2x_serial_pci_class_initfn,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static const TypeInfo multi_4x_serial_pci_info = {
+@@ -264,6 +272,10 @@ static const TypeInfo multi_4x_serial_pci_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCIMultiSerialState),
+     .class_init    = multi_4x_serial_pci_class_initfn,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void serial_pci_register_types(void)
+diff --git a/hw/display/cirrus_vga.c b/hw/display/cirrus_vga.c
+index afc290a..b4d5798 100644
+--- a/hw/display/cirrus_vga.c
++++ b/hw/display/cirrus_vga.c
+@@ -3162,6 +3162,10 @@ static const TypeInfo cirrus_vga_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCICirrusVGAState),
+     .class_init    = cirrus_vga_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void cirrus_vga_register_types(void)
+diff --git a/hw/display/qxl.c b/hw/display/qxl.c
+index d92fe05..99365c3 100644
+--- a/hw/display/qxl.c
++++ b/hw/display/qxl.c
+@@ -2432,6 +2432,10 @@ static const TypeInfo qxl_pci_type_info = {
+     .instance_size = sizeof(PCIQXLDevice),
+     .abstract = true,
+     .class_init = qxl_pci_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void qxl_primary_class_init(ObjectClass *klass, void *data)
+diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+index 9aa515b..6eddac9 100644
+--- a/hw/display/sm501.c
++++ b/hw/display/sm501.c
+@@ -1843,6 +1843,10 @@ static const TypeInfo sm501_pci_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(SM501PCIState),
+     .class_init    = sm501_pci_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void sm501_register_types(void)
+diff --git a/hw/display/vga-pci.c b/hw/display/vga-pci.c
+index ac9a764..7adb89f 100644
+--- a/hw/display/vga-pci.c
++++ b/hw/display/vga-pci.c
+@@ -338,6 +338,10 @@ static const TypeInfo vga_pci_type_info = {
+     .instance_size = sizeof(PCIVGAState),
+     .abstract = true,
+     .class_init = vga_pci_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void vga_class_init(ObjectClass *klass, void *data)
+diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
+index 4a64b41..cdc3fed 100644
+--- a/hw/display/vmware_vga.c
++++ b/hw/display/vmware_vga.c
+@@ -1350,6 +1350,10 @@ static const TypeInfo vmsvga_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(struct pci_vmsvga_state_s),
+     .class_init    = vmsvga_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void vmsvga_register_types(void)
+diff --git a/hw/i2c/smbus_ich9.c b/hw/i2c/smbus_ich9.c
+index ea51e09..e47556c 100644
+--- a/hw/i2c/smbus_ich9.c
++++ b/hw/i2c/smbus_ich9.c
+@@ -119,6 +119,10 @@ static const TypeInfo ich9_smb_info = {
+     .parent = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(ICH9SMBState),
+     .class_init = ich9_smb_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void ich9_smb_register(void)
+diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
+index 334938a..ad8155c 100644
+--- a/hw/i386/amd_iommu.c
++++ b/hw/i386/amd_iommu.c
+@@ -1227,6 +1227,10 @@ static const TypeInfo amdviPCI = {
+     .name = "AMDVI-PCI",
+     .parent = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(AMDVIPCIState),
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void amdvi_iommu_memory_region_class_init(ObjectClass *klass, void *data)
+diff --git a/hw/i386/kvm/pci-assign.c b/hw/i386/kvm/pci-assign.c
+index 33e20cb..d8559d8 100644
+--- a/hw/i386/kvm/pci-assign.c
++++ b/hw/i386/kvm/pci-assign.c
+@@ -1864,6 +1864,10 @@ static const TypeInfo assign_info = {
+     .instance_size      = sizeof(AssignedDevice),
+     .class_init         = assign_class_init,
+     .instance_init      = assigned_dev_instance_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void assign_register_types(void)
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index 9ff79b1..1a56465 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -1055,6 +1055,10 @@ static TypeInfo isa_bridge_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCIDevice),
+     .class_init = isa_bridge_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void pt_graphics_register_types(void)
+diff --git a/hw/i386/xen/xen_platform.c b/hw/i386/xen/xen_platform.c
+index 9ba7474..056b87d 100644
+--- a/hw/i386/xen/xen_platform.c
++++ b/hw/i386/xen/xen_platform.c
+@@ -517,6 +517,10 @@ static const TypeInfo xen_platform_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCIXenPlatformState),
+     .class_init    = xen_platform_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void xen_platform_register_types(void)
+diff --git a/hw/i386/xen/xen_pvdevice.c b/hw/i386/xen/xen_pvdevice.c
+index c093b34..f748823 100644
+--- a/hw/i386/xen/xen_pvdevice.c
++++ b/hw/i386/xen/xen_pvdevice.c
+@@ -127,6 +127,10 @@ static const TypeInfo xen_pv_type_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(XenPVDevice),
+     .class_init    = xen_pv_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void xen_pv_register_types(void)
+diff --git a/hw/ide/ich.c b/hw/ide/ich.c
+index 9472a60..8dd0ced 100644
+--- a/hw/ide/ich.c
++++ b/hw/ide/ich.c
+@@ -184,6 +184,10 @@ static const TypeInfo ich_ahci_info = {
+     .instance_size = sizeof(AHCIPCIState),
+     .instance_init = pci_ich9_ahci_init,
+     .class_init    = ich_ahci_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void ich_ahci_register_types(void)
+diff --git a/hw/ide/pci.c b/hw/ide/pci.c
+index d53ff53..25f1d36 100644
+--- a/hw/ide/pci.c
++++ b/hw/ide/pci.c
+@@ -453,6 +453,10 @@ static const TypeInfo pci_ide_type_info = {
+     .parent = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCIIDEState),
+     .abstract = true,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void pci_ide_register_types(void)
+diff --git a/hw/ipack/tpci200.c b/hw/ipack/tpci200.c
+index 4dfa6b3..da05c85 100644
+--- a/hw/ipack/tpci200.c
++++ b/hw/ipack/tpci200.c
+@@ -646,6 +646,10 @@ static const TypeInfo tpci200_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(TPCI200State),
+     .class_init    = tpci200_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void tpci200_register_types(void)
+diff --git a/hw/isa/i82378.c b/hw/isa/i82378.c
+index 4d29a99..d20ea4c 100644
+--- a/hw/isa/i82378.c
++++ b/hw/isa/i82378.c
+@@ -138,6 +138,10 @@ static const TypeInfo i82378_type_info = {
+     .instance_size = sizeof(I82378State),
+     .instance_init = i82378_init,
+     .class_init = i82378_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void i82378_register_types(void)
+diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
+index de8fbb7..ec3c9f7 100644
+--- a/hw/isa/lpc_ich9.c
++++ b/hw/isa/lpc_ich9.c
+@@ -823,6 +823,7 @@ static const TypeInfo ich9_lpc_info = {
+     .interfaces = (InterfaceInfo[]) {
+         { TYPE_HOTPLUG_HANDLER },
+         { TYPE_ACPI_DEVICE_IF },
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
+         { }
+     }
+ };
+diff --git a/hw/isa/piix4.c b/hw/isa/piix4.c
+index f811eba..6b8bc3f 100644
+--- a/hw/isa/piix4.c
++++ b/hw/isa/piix4.c
+@@ -132,6 +132,10 @@ static const TypeInfo piix4_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PIIX4State),
+     .class_init    = piix4_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void piix4_register_types(void)
+diff --git a/hw/isa/vt82c686.c b/hw/isa/vt82c686.c
+index 50dc83d..c129985 100644
+--- a/hw/isa/vt82c686.c
++++ b/hw/isa/vt82c686.c
+@@ -301,6 +301,10 @@ static const TypeInfo via_ac97_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(VT686AC97State),
+     .class_init    = via_ac97_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void vt82c686b_mc97_realize(PCIDevice *dev, Error **errp)
+@@ -341,6 +345,10 @@ static const TypeInfo via_mc97_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(VT686MC97State),
+     .class_init    = via_mc97_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ /* vt82c686 pm init */
+@@ -419,6 +427,10 @@ static const TypeInfo via_pm_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(VT686PMState),
+     .class_init    = via_pm_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static const VMStateDescription vmstate_via = {
+@@ -502,6 +514,10 @@ static const TypeInfo via_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(VT82C686BState),
+     .class_init    = via_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void vt82c686b_register_types(void)
+diff --git a/hw/mips/gt64xxx_pci.c b/hw/mips/gt64xxx_pci.c
+index e8b2eef..5a9dad9 100644
+--- a/hw/mips/gt64xxx_pci.c
++++ b/hw/mips/gt64xxx_pci.c
+@@ -1232,6 +1232,10 @@ static const TypeInfo gt64120_pci_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCIDevice),
+     .class_init    = gt64120_pci_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void gt64120_class_init(ObjectClass *klass, void *data)
+diff --git a/hw/misc/edu.c b/hw/misc/edu.c
+index 01acacf..34eb05d 100644
+--- a/hw/misc/edu.c
++++ b/hw/misc/edu.c
+@@ -408,12 +408,17 @@ static void edu_class_init(ObjectClass *class, void *data)
+ 
+ static void pci_edu_register_types(void)
+ {
++    static InterfaceInfo interfaces[] = {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    };
+     static const TypeInfo edu_info = {
+         .name          = "edu",
+         .parent        = TYPE_PCI_DEVICE,
+         .instance_size = sizeof(EduState),
+         .instance_init = edu_instance_init,
+         .class_init    = edu_class_init,
++        .interfaces = interfaces,
+     };
+ 
+     type_register_static(&edu_info);
+diff --git a/hw/misc/ivshmem.c b/hw/misc/ivshmem.c
+index b3ef3ec..a5a4682 100644
+--- a/hw/misc/ivshmem.c
++++ b/hw/misc/ivshmem.c
+@@ -1010,6 +1010,10 @@ static const TypeInfo ivshmem_common_info = {
+     .instance_size = sizeof(IVShmemState),
+     .abstract      = true,
+     .class_init    = ivshmem_common_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static const VMStateDescription ivshmem_plain_vmsd = {
+diff --git a/hw/misc/macio/macio.c b/hw/misc/macio/macio.c
+index 9aa7e75..44f91d1 100644
+--- a/hw/misc/macio/macio.c
++++ b/hw/misc/macio/macio.c
+@@ -426,6 +426,10 @@ static const TypeInfo macio_type_info = {
+     .instance_init = macio_instance_init,
+     .abstract      = true,
+     .class_init    = macio_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void macio_register_types(void)
+diff --git a/hw/misc/pci-testdev.c b/hw/misc/pci-testdev.c
+index 7d59902..32041f5 100644
+--- a/hw/misc/pci-testdev.c
++++ b/hw/misc/pci-testdev.c
+@@ -326,6 +326,10 @@ static const TypeInfo pci_testdev_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCITestDevState),
+     .class_init    = pci_testdev_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void pci_testdev_register_types(void)
+diff --git a/hw/net/e1000.c b/hw/net/e1000.c
+index cae9518..c0abee4 100644
+--- a/hw/net/e1000.c
++++ b/hw/net/e1000.c
+@@ -1687,6 +1687,10 @@ static const TypeInfo e1000_base_info = {
+     .instance_init = e1000_instance_init,
+     .class_size    = sizeof(E1000BaseClass),
+     .abstract      = true,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static const E1000Info e1000_devices[] = {
+diff --git a/hw/net/eepro100.c b/hw/net/eepro100.c
+index a7b9f77..80b8f47 100644
+--- a/hw/net/eepro100.c
++++ b/hw/net/eepro100.c
+@@ -2116,6 +2116,10 @@ static void eepro100_register_types(void)
+         type_info.class_init = eepro100_class_init;
+         type_info.instance_size = sizeof(EEPRO100State);
+         type_info.instance_init = eepro100_instance_init;
++        type_info.interfaces = (InterfaceInfo[]) {
++            { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++            { },
++        };
+ 
+         type_register(&type_info);
+     }
+diff --git a/hw/net/ne2000.c b/hw/net/ne2000.c
+index 798d681..3938e6d 100644
+--- a/hw/net/ne2000.c
++++ b/hw/net/ne2000.c
+@@ -786,6 +786,10 @@ static const TypeInfo ne2000_info = {
+     .instance_size = sizeof(PCINE2000State),
+     .class_init    = ne2000_class_init,
+     .instance_init = ne2000_instance_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void ne2000_register_types(void)
+diff --git a/hw/net/pcnet-pci.c b/hw/net/pcnet-pci.c
+index 0acf8a4..0ae5ca4 100644
+--- a/hw/net/pcnet-pci.c
++++ b/hw/net/pcnet-pci.c
+@@ -365,6 +365,10 @@ static const TypeInfo pcnet_info = {
+     .instance_size = sizeof(PCIPCNetState),
+     .class_init    = pcnet_class_init,
+     .instance_init = pcnet_instance_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void pci_pcnet_register_types(void)
+diff --git a/hw/net/rocker/rocker.c b/hw/net/rocker/rocker.c
+index 9273473..823a29d 100644
+--- a/hw/net/rocker/rocker.c
++++ b/hw/net/rocker/rocker.c
+@@ -1525,6 +1525,10 @@ static const TypeInfo rocker_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(Rocker),
+     .class_init    = rocker_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void rocker_register_types(void)
+diff --git a/hw/net/rtl8139.c b/hw/net/rtl8139.c
+index d6c8188..a6b2a9f 100644
+--- a/hw/net/rtl8139.c
++++ b/hw/net/rtl8139.c
+@@ -3444,6 +3444,10 @@ static const TypeInfo rtl8139_info = {
+     .instance_size = sizeof(RTL8139State),
+     .class_init    = rtl8139_class_init,
+     .instance_init = rtl8139_instance_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void rtl8139_register_types(void)
+diff --git a/hw/net/sungem.c b/hw/net/sungem.c
+index dffa0c9..6aa8d11 100644
+--- a/hw/net/sungem.c
++++ b/hw/net/sungem.c
+@@ -1437,6 +1437,10 @@ static const TypeInfo sungem_info = {
+     .instance_size = sizeof(SunGEMState),
+     .class_init    = sungem_class_init,
+     .instance_init = sungem_instance_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { }
++    }
+ };
+ 
+ static void sungem_register_types(void)
+diff --git a/hw/net/sunhme.c b/hw/net/sunhme.c
+index 60277ad..b1efa1b 100644
+--- a/hw/net/sunhme.c
++++ b/hw/net/sunhme.c
+@@ -968,6 +968,10 @@ static const TypeInfo sunhme_info = {
+     .class_init    = sunhme_class_init,
+     .instance_size = sizeof(SunHMEState),
+     .instance_init = sunhme_instance_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { }
++    }
+ };
+ 
+ static void sunhme_register_types(void)
+diff --git a/hw/pci-bridge/dec.c b/hw/pci-bridge/dec.c
+index eb275e1..84492d5 100644
+--- a/hw/pci-bridge/dec.c
++++ b/hw/pci-bridge/dec.c
+@@ -79,6 +79,10 @@ static const TypeInfo dec_21154_pci_bridge_info = {
+     .parent        = TYPE_PCI_BRIDGE,
+     .instance_size = sizeof(PCIBridge),
+     .class_init    = dec_21154_pci_bridge_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ PCIBus *pci_dec_21154_init(PCIBus *parent_bus, int devfn)
+@@ -138,6 +142,10 @@ static const TypeInfo dec_21154_pci_host_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCIDevice),
+     .class_init    = dec_21154_pci_host_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void pci_dec_21154_device_class_init(ObjectClass *klass, void *data)
+diff --git a/hw/pci-bridge/i82801b11.c b/hw/pci-bridge/i82801b11.c
+index 2c1b747..cb522bf 100644
+--- a/hw/pci-bridge/i82801b11.c
++++ b/hw/pci-bridge/i82801b11.c
+@@ -106,6 +106,10 @@ static const TypeInfo i82801b11_bridge_info = {
+     .parent        = TYPE_PCI_BRIDGE,
+     .instance_size = sizeof(I82801b11Bridge),
+     .class_init    = i82801b11_bridge_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void d2pbr_register(void)
+diff --git a/hw/pci-bridge/pci_bridge_dev.c b/hw/pci-bridge/pci_bridge_dev.c
+index 4373f1d..d56f663 100644
+--- a/hw/pci-bridge/pci_bridge_dev.c
++++ b/hw/pci-bridge/pci_bridge_dev.c
+@@ -238,6 +238,7 @@ static const TypeInfo pci_bridge_dev_info = {
+     .instance_finalize = pci_bridge_dev_instance_finalize,
+     .interfaces = (InterfaceInfo[]) {
+         { TYPE_HOTPLUG_HANDLER },
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
+         { }
+     }
+ };
+diff --git a/hw/pci-bridge/pci_expander_bridge.c b/hw/pci-bridge/pci_expander_bridge.c
+index ff59abf..8c8ac73 100644
+--- a/hw/pci-bridge/pci_expander_bridge.c
++++ b/hw/pci-bridge/pci_expander_bridge.c
+@@ -316,6 +316,10 @@ static const TypeInfo pxb_dev_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PXBDev),
+     .class_init    = pxb_dev_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void pxb_pcie_dev_realize(PCIDevice *dev, Error **errp)
+@@ -350,6 +354,10 @@ static const TypeInfo pxb_pcie_dev_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PXBDev),
+     .class_init    = pxb_pcie_dev_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void pxb_register_types(void)
+diff --git a/hw/pci-host/apb.c b/hw/pci-host/apb.c
+index b709456..1edf57f 100644
+--- a/hw/pci-host/apb.c
++++ b/hw/pci-host/apb.c
+@@ -836,6 +836,10 @@ static const TypeInfo pbm_pci_host_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCIDevice),
+     .class_init    = pbm_pci_host_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void pbm_host_class_init(ObjectClass *klass, void *data)
+@@ -883,6 +887,10 @@ static const TypeInfo pbm_pci_bridge_info = {
+     .parent        = TYPE_PCI_BRIDGE,
+     .class_init    = pbm_pci_bridge_class_init,
+     .instance_size = sizeof(PBMPCIBridge),
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void pbm_iommu_memory_region_class_init(ObjectClass *klass, void *data)
+diff --git a/hw/pci-host/bonito.c b/hw/pci-host/bonito.c
+index 89133a9..9f61e27 100644
+--- a/hw/pci-host/bonito.c
++++ b/hw/pci-host/bonito.c
+@@ -833,6 +833,10 @@ static const TypeInfo bonito_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCIBonitoState),
+     .class_init    = bonito_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void bonito_pcihost_class_init(ObjectClass *klass, void *data)
+diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
+index be25245..4090793 100644
+--- a/hw/pci-host/gpex.c
++++ b/hw/pci-host/gpex.c
+@@ -166,6 +166,10 @@ static const TypeInfo gpex_root_info = {
+     .parent = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(GPEXRootState),
+     .class_init = gpex_root_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void gpex_register(void)
+diff --git a/hw/pci-host/grackle.c b/hw/pci-host/grackle.c
+index 2e281f6..38cd279 100644
+--- a/hw/pci-host/grackle.c
++++ b/hw/pci-host/grackle.c
+@@ -142,6 +142,10 @@ static const TypeInfo grackle_pci_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCIDevice),
+     .class_init = grackle_pci_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void pci_grackle_class_init(ObjectClass *klass, void *data)
+diff --git a/hw/pci-host/piix.c b/hw/pci-host/piix.c
+index dec345f..a7e2256 100644
+--- a/hw/pci-host/piix.c
++++ b/hw/pci-host/piix.c
+@@ -696,6 +696,10 @@ static const TypeInfo piix3_pci_type_info = {
+     .instance_size = sizeof(PIIX3State),
+     .abstract = true,
+     .class_init = pci_piix3_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void piix3_class_init(ObjectClass *klass, void *data)
+@@ -750,6 +754,10 @@ static const TypeInfo i440fx_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCII440FXState),
+     .class_init    = i440fx_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ /* IGD Passthrough Host Bridge. */
+diff --git a/hw/pci-host/ppce500.c b/hw/pci-host/ppce500.c
+index becc0ee..39cd244 100644
+--- a/hw/pci-host/ppce500.c
++++ b/hw/pci-host/ppce500.c
+@@ -516,6 +516,10 @@ static const TypeInfo e500_host_bridge_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PPCE500PCIBridgeState),
+     .class_init    = e500_host_bridge_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static Property pcihost_properties[] = {
+diff --git a/hw/pci-host/prep.c b/hw/pci-host/prep.c
+index 8b293ba..92eed0f 100644
+--- a/hw/pci-host/prep.c
++++ b/hw/pci-host/prep.c
+@@ -372,6 +372,10 @@ static const TypeInfo raven_info = {
+     .parent = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(RavenPCIState),
+     .class_init = raven_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static Property raven_pcihost_properties[] = {
+diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
+index 1ff648e..ddaa7d1 100644
+--- a/hw/pci-host/q35.c
++++ b/hw/pci-host/q35.c
+@@ -591,6 +591,10 @@ static const TypeInfo mch_info = {
+     .parent = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(MCHPCIState),
+     .class_init = mch_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void q35_register(void)
+diff --git a/hw/pci-host/uninorth.c b/hw/pci-host/uninorth.c
+index 6cf5e59..ea5c265 100644
+--- a/hw/pci-host/uninorth.c
++++ b/hw/pci-host/uninorth.c
+@@ -374,6 +374,10 @@ static const TypeInfo unin_main_pci_host_info = {
+     .parent = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCIDevice),
+     .class_init = unin_main_pci_host_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void u3_agp_pci_host_class_init(ObjectClass *klass, void *data)
+@@ -398,6 +402,10 @@ static const TypeInfo u3_agp_pci_host_info = {
+     .parent = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCIDevice),
+     .class_init = u3_agp_pci_host_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void unin_agp_pci_host_class_init(ObjectClass *klass, void *data)
+@@ -422,6 +430,10 @@ static const TypeInfo unin_agp_pci_host_info = {
+     .parent = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCIDevice),
+     .class_init = unin_agp_pci_host_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void unin_internal_pci_host_class_init(ObjectClass *klass, void *data)
+@@ -446,6 +458,10 @@ static const TypeInfo unin_internal_pci_host_info = {
+     .parent = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCIDevice),
+     .class_init = unin_internal_pci_host_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void pci_unin_main_class_init(ObjectClass *klass, void *data)
+diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
+index aa1fdf7..6394a52 100644
+--- a/hw/pci-host/versatile.c
++++ b/hw/pci-host/versatile.c
+@@ -487,6 +487,10 @@ static const TypeInfo versatile_pci_host_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCIDevice),
+     .class_init    = versatile_pci_host_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static Property pci_vpb_properties[] = {
+diff --git a/hw/ppc/ppc4xx_pci.c b/hw/ppc/ppc4xx_pci.c
+index 6953f8b..4765dce 100644
+--- a/hw/ppc/ppc4xx_pci.c
++++ b/hw/ppc/ppc4xx_pci.c
+@@ -359,6 +359,10 @@ static const TypeInfo ppc4xx_host_bridge_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCIDevice),
+     .class_init    = ppc4xx_host_bridge_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void ppc4xx_pcihost_class_init(ObjectClass *klass, void *data)
+diff --git a/hw/scsi/esp-pci.c b/hw/scsi/esp-pci.c
+index e295d88..419fc66 100644
+--- a/hw/scsi/esp-pci.c
++++ b/hw/scsi/esp-pci.c
+@@ -398,6 +398,10 @@ static const TypeInfo esp_pci_info = {
+     .parent = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCIESPState),
+     .class_init = esp_pci_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ typedef struct {
+diff --git a/hw/scsi/lsi53c895a.c b/hw/scsi/lsi53c895a.c
+index a67ee07..191505d 100644
+--- a/hw/scsi/lsi53c895a.c
++++ b/hw/scsi/lsi53c895a.c
+@@ -2246,6 +2246,10 @@ static const TypeInfo lsi_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(LSIState),
+     .class_init    = lsi_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void lsi53c810_class_init(ObjectClass *klass, void *data)
+diff --git a/hw/scsi/megasas.c b/hw/scsi/megasas.c
+index 535ee26..d5eae62 100644
+--- a/hw/scsi/megasas.c
++++ b/hw/scsi/megasas.c
+@@ -2468,6 +2468,10 @@ static struct MegasasInfo megasas_devices[] = {
+         .is_express = false,
+         .vmsd = &vmstate_megasas_gen1,
+         .props = megasas_properties_gen1,
++        .interfaces = (InterfaceInfo[]) {
++            { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++            { },
++        },
+     },{
+         .name = TYPE_MEGASAS_GEN2,
+         .desc = "LSI MegaRAID SAS 2108",
+diff --git a/hw/scsi/mptsas.c b/hw/scsi/mptsas.c
+index d05fa9f..f6db1b0 100644
+--- a/hw/scsi/mptsas.c
++++ b/hw/scsi/mptsas.c
+@@ -1439,6 +1439,10 @@ static const TypeInfo mptsas_info = {
+     .parent = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(MPTSASState),
+     .class_init = mptsas1068_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void mptsas_register_types(void)
+diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+index 6d6a791..b064a08 100644
+--- a/hw/sd/sdhci.c
++++ b/hw/sd/sdhci.c
+@@ -1315,6 +1315,10 @@ static const TypeInfo sdhci_pci_info = {
+     .parent = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(SDHCIState),
+     .class_init = sdhci_pci_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static Property sdhci_sysbus_properties[] = {
+diff --git a/hw/sh4/sh_pci.c b/hw/sh4/sh_pci.c
+index 38395c0..cbb01af 100644
+--- a/hw/sh4/sh_pci.c
++++ b/hw/sh4/sh_pci.c
+@@ -179,6 +179,10 @@ static const TypeInfo sh_pci_host_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCIDevice),
+     .class_init    = sh_pci_host_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void sh_pci_device_class_init(ObjectClass *klass, void *data)
+diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+index c3280aa..8282651 100644
+--- a/hw/sparc64/sun4u.c
++++ b/hw/sparc64/sun4u.c
+@@ -275,6 +275,10 @@ static const TypeInfo ebus_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(EbusState),
+     .class_init    = ebus_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ #define TYPE_OPENPROM "openprom"
+diff --git a/hw/usb/hcd-ehci-pci.c b/hw/usb/hcd-ehci-pci.c
+index 6dedcb8..8c0fc53 100644
+--- a/hw/usb/hcd-ehci-pci.c
++++ b/hw/usb/hcd-ehci-pci.c
+@@ -170,6 +170,10 @@ static const TypeInfo ehci_pci_type_info = {
+     .instance_finalize = usb_ehci_pci_finalize,
+     .abstract = true,
+     .class_init = ehci_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void ehci_data_class_init(ObjectClass *klass, void *data)
+diff --git a/hw/usb/hcd-ohci.c b/hw/usb/hcd-ohci.c
+index 17beedd..d4c0293 100644
+--- a/hw/usb/hcd-ohci.c
++++ b/hw/usb/hcd-ohci.c
+@@ -2146,6 +2146,10 @@ static const TypeInfo ohci_pci_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(OHCIPCIState),
+     .class_init    = ohci_pci_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static Property ohci_sysbus_properties[] = {
+diff --git a/hw/usb/hcd-uhci.c b/hw/usb/hcd-uhci.c
+index e3562a4..836b11f 100644
+--- a/hw/usb/hcd-uhci.c
++++ b/hw/usb/hcd-uhci.c
+@@ -1323,6 +1323,10 @@ static const TypeInfo uhci_pci_type_info = {
+     .class_size    = sizeof(UHCIPCIDeviceClass),
+     .abstract = true,
+     .class_init = uhci_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void uhci_data_class_init(ObjectClass *klass, void *data)
+diff --git a/hw/vfio/pci-quirks.c b/hw/vfio/pci-quirks.c
+index 14291c2..60ad5fb 100644
+--- a/hw/vfio/pci-quirks.c
++++ b/hw/vfio/pci-quirks.c
+@@ -1198,6 +1198,10 @@ static TypeInfo vfio_pci_igd_lpc_bridge_info = {
+     .name = "vfio-pci-igd-lpc-bridge",
+     .parent = TYPE_PCI_DEVICE,
+     .class_init = vfio_pci_igd_lpc_bridge_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void vfio_pci_igd_register_types(void)
+diff --git a/hw/watchdog/wdt_i6300esb.c b/hw/watchdog/wdt_i6300esb.c
+index 49b3cd1..e596b08 100644
+--- a/hw/watchdog/wdt_i6300esb.c
++++ b/hw/watchdog/wdt_i6300esb.c
+@@ -463,6 +463,10 @@ static const TypeInfo i6300esb_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(I6300State),
+     .class_init    = i6300esb_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void i6300esb_register_types(void)
+diff --git a/hw/xen/xen_pt.c b/hw/xen/xen_pt.c
+index 375efa6..01df341 100644
+--- a/hw/xen/xen_pt.c
++++ b/hw/xen/xen_pt.c
+@@ -964,6 +964,10 @@ static const TypeInfo xen_pci_passthrough_info = {
+     .instance_size = sizeof(XenPCIPassthroughState),
+     .instance_finalize = xen_pci_passthrough_finalize,
+     .class_init = xen_pci_passthrough_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
+ };
+ 
+ static void xen_pci_passthrough_register_types(void)
+-- 
+MST
+

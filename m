@@ -1,103 +1,88 @@
-Received: by 10.182.158.201 with SMTP id ww9csp603887obb;
-        Thu, 17 Dec 2015 11:41:01 -0800 (PST)
-X-Received: by 10.140.130.22 with SMTP id 22mr60641681qhc.99.1450381261106;
-        Thu, 17 Dec 2015 11:41:01 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v20si12693736qge.51.2015.12.17.11.41.01
+Received: by 10.223.197.9 with SMTP id q9csp2726922wrf;
+        Sun, 15 Oct 2017 09:55:02 -0700 (PDT)
+X-Received: by 10.28.135.209 with SMTP id j200mr5370950wmd.40.1508086502599;
+        Sun, 15 Oct 2017 09:55:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508086502; cv=none;
+        d=google.com; s=arc-20160816;
+        b=OVY1TvwC3BhjsBHmKYdnyQuXDJdsd6j9wCB/hmUh0QF2Btz5pJrpq+wmwx5MjEDjnx
+         2xey6NLAOTDrWBucc4Yb5x0Gd6fL8VYILzEGlBTaiMOCR8Dxc4WScsmvsb5R3bQjF7cS
+         5IHoZBx/xfOpdMcim/RBIysF9PHCkFKpo/b5ZPHuxmIH56d1HbKtg5BGHJT/JE/NmX/I
+         kiGt7Bc0XgRmjcj3vqFWR04w2c7jzcQpXN/EElXao9ZjrdR7VZFZZBsHVAI5wh/eSAZv
+         nWVynZ7pce/d80QS8D3qaG2/32BBvhY+MIhLO+dPVAanCb38hu60aAfadvRcMVgvwCzl
+         Bj5g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=+cYj9immOWusJUvANlWmd60Cfs8rkReulXkHtZdgOtQ=;
+        b=s2OyhOzeS+Jba2Xc4OPnPGW591QRwQVjm90v2pOdnRP20F7xKjmz9s3ssodnoc9cmh
+         Z8rLC2M2m4bfuJ5dV5r4Qk9oQQKpQqi3Ib470ukHnZZdGVcrgiDppA6KbtOP0gzCVTEd
+         HTPdSWbjiGFdlFJWNbUOLQDg/5vjJrqST4fBoh8KH7PkKDO5/aEcO7YeOx+1ukmosbTU
+         sRuASs8wfivF14ns0TZjY+lxpb9FO5QQu30DrCAKkCv3l4WUosmkcOoraClA5kjNoJWb
+         lcjdBylImhjF2f0OggCnUwJc6c6BRwQfv6tBSSF7Q9x0s7YZlbKBcmipYmIKuBsUU9sZ
+         Awgw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LWfk/edd;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id y85sor1411926wmd.52.2017.10.15.09.55.02
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 17 Dec 2015 11:41:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (Google Transport Security);
+        Sun, 15 Oct 2017 09:55:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:56678 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a9eQ8-0003lf-S1
-	for alex.bennee@linaro.org; Thu, 17 Dec 2015 14:41:00 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58279)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1a9eOB-0001Ph-LC
-	for qemu-devel@nongnu.org; Thu, 17 Dec 2015 14:39:00 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1a9eOA-0002xB-Mn
-	for qemu-devel@nongnu.org; Thu, 17 Dec 2015 14:38:59 -0500
-Received: from mail-vk0-x236.google.com ([2607:f8b0:400c:c05::236]:33817)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1a9eOA-0002wo-BU
-	for qemu-devel@nongnu.org; Thu, 17 Dec 2015 14:38:58 -0500
-Received: by mail-vk0-x236.google.com with SMTP id j66so52743981vkg.1
-	for <qemu-devel@nongnu.org>; Thu, 17 Dec 2015 11:38:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=BcFR0lYewKGjsqFvVSZal3v6Lk6TYyNnQKfGZQG9PCg=;
-	b=NYHragq/V1uFpkzxXyscQNkcCJCaTgNn+h0PaGsZ/JSwZVgeCKbSlJ3vWPuS31Gbg0
-	d46t7FxV89EqmOh/ry66hUc/ukWttDiH/BtrGLsrV92ld7s34j6XD/dB7h7zKHX6j1z8
-	QA4A7QwOOFQD2jBsV0ymLo0mR4IFK3h9QohSs=
+       dkim=pass header.i=@linaro.org header.s=google header.b=LWfk/edd;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=+cYj9immOWusJUvANlWmd60Cfs8rkReulXkHtZdgOtQ=;
+        b=LWfk/eddx02k1nht5dtW+zCMMuhEGTerlIF0u1+fUjeNtg/qfCiTYVVquqzlE1LF5e
+         juPqkOYeO4bwVMgOYpHAZcEQf9jCttPEJr6MOG7cadvOxf3IJ8avXX0lGSwRlLHinpfJ
+         0SNSKZwJt9Ar/MKbhzg7mSuix8S15ieaSN/So=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=BcFR0lYewKGjsqFvVSZal3v6Lk6TYyNnQKfGZQG9PCg=;
-	b=Mk2S6n5Ow1f4k4q6uc6HRutfTj0v3ddtIJmd2k7qJF83M9gau9R3G+ASNGdaG4ePrW
-	ztnkjLVNC1Hqa2WLFI82+T/pQ8c3jafXRZU05z0zzuDjhgGdBHZIJc+Mol+DDiDRZ5Nw
-	DmaoZT0mIbr/sCb4DFVQ4O7LfA9RELWNs86/b8xiswbKQZOTla47qHWs3utauiYAs+IZ
-	TqTeABZx32OFW8wWN7/TLvJlI0hY8b5pSVYrj5FX3+4XME7BKcjsVy4Uc46UU1/HWXqT
-	uYn0OOuVTkCj0rcu8G38Jiv88ad1qh84H1dxX/s2u+UFcBd+LkhU45QX3WrzIKm+p24D
-	ZLZQ==
-X-Gm-Message-State: ALoCoQlqbibDQEjZHpCQXDyXsoaL3IGpAgsgLnDTiOJNRWADX2BqoFPZBEZGavn/g6hGE2/yNKXtRBWMyV2U9UDy7EyMW4E3pg48V/zvGrMMzi7IjMXJtjc=
-X-Received: by 10.31.194.21 with SMTP id s21mr37596467vkf.92.1450381137960;
-	Thu, 17 Dec 2015 11:38:57 -0800 (PST)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=+cYj9immOWusJUvANlWmd60Cfs8rkReulXkHtZdgOtQ=;
+        b=EhV0hYcSIcw9+RPE99ZywlBN0uaYjiUt1E9RSB8jbwnzcJ6qfzgNyTiGYpjfDQlkSD
+         h/k6cvmWGHz74nswCqqR2AfOBB8WqCyD6TPGkGJ7eqBdpZJfpo6pQAcmKMP51+SFR7L8
+         uCxLgjWp6bnkZgUjmXZn72Yq8Pw/ZPTOkCIE+nTMUsy+JsoDhsirWf9Rs6Xd9E4QRa+y
+         chlzOhrxIwZdFopZPFVzrhjPiBtO9AMHgaYjsbHFCxqTKMsO5xY7GtbLjzMj2mTdnhTK
+         ThK0Tc13H+tsLPeZi0uAq64QoNAk/wY0dU2Exw5Fw2Dw276wDqgYMvYittfO9KohhVNe
+         vXnA==
+X-Gm-Message-State: AMCzsaUgi3R6Ea2tJ1dlkuCcky5WvgUvU/L2+Dj6HRpUdD6v4PJXmiXJ
+	bGdLdhNc9osr7tIKbj09TvohVCg2ZS5TA3xqr+TH5Rniq38=
+X-Google-Smtp-Source: ABhQp+STvFQvJZJnOd2r+ftjLcEEtrG3Sct4Vsam1tJ8iEeF1S+UoXWed6WTeb/V/Yefu8qHJWFKgzaTCFfs7kaI4ps=
+X-Received: by 10.28.23.3 with SMTP id 3mr5353680wmx.62.1508086502217; Sun, 15
+ Oct 2017 09:55:02 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Thu, 17 Dec 2015 11:38:38 -0800 (PST)
-In-Reply-To: <1449101933-24928-1-git-send-email-mdavidsaver@gmail.com>
-References: <1449101933-24928-1-git-send-email-mdavidsaver@gmail.com>
+Received: by 10.223.139.195 with HTTP; Sun, 15 Oct 2017 09:54:41 -0700 (PDT)
+In-Reply-To: <20171013162438.32458-11-alex.bennee@linaro.org>
+References: <20171013162438.32458-1-alex.bennee@linaro.org> <20171013162438.32458-11-alex.bennee@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 17 Dec 2015 19:38:38 +0000
-Message-ID: <CAFEAcA_Gcy67o4YRnrULU9AZ=A21CWE1kcFSKjx9+X75wXnrNQ@mail.gmail.com>
-To: Michael Davidsaver <mdavidsaver@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::236
-Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-devel] [PATCH v2 00/26] armv7m: exception handling, MPU,
-	and more
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dHtDedAi7PZq
+Date: Sun, 15 Oct 2017 17:54:41 +0100
+Message-ID: <CAFEAcA9vcZa-v1gxLD0kjGO5zxwmZnNioLy6daEc0MtJJOY5VA@mail.gmail.com>
+Subject: Re: [RFC PATCH 10/30] softfloat: improve comments on ARM NaN propagation
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: Richard Henderson <richard.henderson@linaro.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	qemu-arm <qemu-arm@nongnu.org>, Aurelien Jarno <aurelien@aurel32.net>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: vucXIbQsOMKt
 
-On 3 December 2015 at 00:18, Michael Davidsaver <mdavidsaver@gmail.com> wrote:
-> All,
->
-> Second revision of ARMv7-M exception handling patchset, which now adds
-> MPU support (as well as can be done).
+On 13 October 2017 at 17:24, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
+e:
+> Mention the pseudo-code fragment from which this is based and correct
+> the spelling of signalling.
 
-I just sent this as a followup to the v1 cover letter by mistake;
-here it is again:
-
-Thanks for sending out v2. I've now reviewed all the patches in the
-set up to the start of the MPU related ones. I think it's probably
-better if we work on getting the NVIC related patches into a mergeable
-state and then come back to the MPU as a second series -- the patchset
-is already quite large.
-
-We do want MPU support for our M profile models, but I think it'll
-be faster to concentrate on one thing at a time.
+We are following the IEEE spec here, which spells it "signaling"
+with one 'l', being American. (The ARM ARM also uses the one-l
+spelling.)
 
 thanks
 -- PMM

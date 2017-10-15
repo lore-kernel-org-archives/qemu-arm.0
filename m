@@ -1,154 +1,96 @@
-Received: by 10.182.105.169 with SMTP id gn9csp588977obb;
-        Thu, 12 Nov 2015 13:32:12 -0800 (PST)
-X-Received: by 10.129.35.8 with SMTP id j8mr17759423ywj.188.1447363932602;
-        Thu, 12 Nov 2015 13:32:12 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e205si11079707ywb.81.2015.11.12.13.32.12
+Received: by 10.223.197.9 with SMTP id q9csp2700535wrf;
+        Sun, 15 Oct 2017 09:13:11 -0700 (PDT)
+X-Received: by 10.99.182.66 with SMTP id v2mr6261191pgt.325.1508083991594;
+        Sun, 15 Oct 2017 09:13:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508083991; cv=none;
+        d=google.com; s=arc-20160816;
+        b=IKkexT7BnBnHxuKNUX2FsvuUvhuzH7gLfZ6tx2i/u6yZ2xjavgXJ9vQLhiy1iawq7a
+         mp5tV7KxHKrBA/0AMRqewwZuamiabXFBnsg94EehHXUBIJHjBLqjvCoZ85356WmkSFCl
+         aNNTuAvTew+fqaJNAHHQX7fJ9JxFBkOLwAJyeZZ2mA57A7P3qrJGPZvM18XivjJfeUy/
+         r3i1uPA04dwnoHUYVm5Iu3E4+pY7l0FNJoUrgEJ+oaTZnbFulC6Mjr6oe8jNzQbsmJyL
+         drcUWcXl/XCINSj6vqmNA/xGQsif+FGC2qrT0zfMK3vGiErfTm8GezSTCtfb+klsqTeg
+         Ukng==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature:arc-authentication-results;
+        bh=C2LKHnkZjY8LXIcrtW09uSQQnnkaUQldmy/Hb70rEEc=;
+        b=croWuXNmujKd6MIo4/s3MGSOD4g9PfnEZXtsKii1Xfhl8t2Jf611TJ2U/+Z+ot0CIw
+         6Kcl2W2+oDl3gUhqyDtIAGVxUo9JX/kztvl7KcdDkuzn/G+rXqvil5JM1W2kM1SpcVc0
+         NlNW1CFVAl4FwHUq+NADIPEMh9T3UY76Uc6z9W+LNquh0aIFzjlz6pEGFo8+/G5ojydL
+         YsroUUkpkUBzM8USk2yrxPmmJjwoGXDMlIxRUqOZ5A7gGA/jfRWLUVqjdr5GHTQg4g3H
+         Nal/usDGMn8OCLwRNcHAKZl3mV6ZVFg+Ficv2AXyjeS0WeyF9Kr0LD3ecBigdeb3fAl3
+         sHnA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FNcg9SWJ;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2sor27016pgc.144.2017.10.15.09.13.11
         for <alex.bennee@linaro.org>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Thu, 12 Nov 2015 13:32:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (Google Transport Security);
+        Sun, 15 Oct 2017 09:13:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro_org.20150623.gappssmtp.com
-Received: from localhost ([::1]:49852 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ZwzTX-0004jU-0e
-	for alex.bennee@linaro.org; Thu, 12 Nov 2015 16:32:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37901)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZwzTU-0004gb-1r
-	for qemu-arm@nongnu.org; Thu, 12 Nov 2015 16:32:09 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZwzTS-0002EO-Tl
-	for qemu-arm@nongnu.org; Thu, 12 Nov 2015 16:32:07 -0500
-Received: from mail-yk0-x234.google.com ([2607:f8b0:4002:c07::234]:35070)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZwzTS-0002EG-PD
-	for qemu-arm@nongnu.org; Thu, 12 Nov 2015 16:32:06 -0500
-Received: by ykba77 with SMTP id a77so115020836ykb.2
-	for <qemu-arm@nongnu.org>; Thu, 12 Nov 2015 13:32:06 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b=FNcg9SWJ;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=linaro_org.20150623.gappssmtp.com; s=20150623;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=Ogy/qrdBqjbv7G0X7faxxOghBgt/Xv84wxYsk5UyFM4=;
-	b=E7Ncv9f7ZSGlpmBlm8+76cNZ4U0xUmufBvduKiwPSb//IbampJkOiL0HWNy6xENmxZ
-	XR8l8+XD8qIyw7hVVrGhbePJOBW9esxyba3YpxLI2fRHE7qxssQFHlbS1osVGMkfknvy
-	UWYcZOMprC1/sNmP+vQVxmr4BCaeeeKWBT2eFo/aiv1evYV27NUa2nO/4TX5RiMh/tQP
-	i03geLgXSbKPeWW1X1Pbul5i+WmeqipSXblC7kZArOTgbm59dcO9Wn9IOqoiNQAiCS1Q
-	Wh+jRwtpHh88H/Zr5lMv9VeSMjVpgBUXPhgKHuFWj/wEo2t1fJ4wYxPxerbEWiGUAS7J
-	ZSOg==
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=C2LKHnkZjY8LXIcrtW09uSQQnnkaUQldmy/Hb70rEEc=;
+        b=FNcg9SWJZ+siO5bkn1u9ccei0EJuGpxUMBdnZQBHccyBtQrJqxpoKNd0nxsuhq5hNw
+         SwXNAJFwK0KrPGfvTA+1P+dh8LbSxlVdbIokeWRsG/N+dhEhCRalJ9w19olMEzY4SpSN
+         ovx/WZdvyKbH4039Fw31d9/KVpvbjtf40cgF8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=Ogy/qrdBqjbv7G0X7faxxOghBgt/Xv84wxYsk5UyFM4=;
-	b=fRh/sBoTmAigGxLr2tFeFd+o+DgfVVfVnqWEOHHnj8eodk2nH//1FxrRaK2E5mU1U5
-	G7TnDgUQH+8fCF+f0WX0z4Ttha1YDuG/M94rRw6JL595lVazkIfYSUhgIOj6rVcfDfen
-	N7ANkMNG8TLTtqn4ep7DRMS46GuMZD8Fu5KIiiK+B0NPMAcb9jpEI4zEbv3WqiRge68Z
-	zYTM71aMTxYAXJnN3BFhzlU7mTzOvhFmNtW8e+Ppjd070+5QND9yYVZcjhgmtU2mDZak
-	q5QgXZqFhLETnnkI19SZJE2/pI6snZh7uUc2Z2d04KSX/Sd9wAEKPhPsn0EBrqNKJ9WL
-	j1Lg==
-X-Gm-Message-State: ALoCoQknICH9DnG6Jn+u1b+/9pcVtZE/Oa5Uk5txMp5/DskS0wrUUN6LgjSSWQqCr6QLrtOTKH/q
-X-Received: by 10.129.98.5 with SMTP id w5mr542406ywb.333.1447363926448; Thu,
-	12 Nov 2015 13:32:06 -0800 (PST)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=C2LKHnkZjY8LXIcrtW09uSQQnnkaUQldmy/Hb70rEEc=;
+        b=CzN3tdrRdrsi3NWp99ydxk4uD8A5rw+TwUppnQ3szr5/W9CkhNRyW4MQmyWE0b46wk
+         719JmZXHhIgSsZ/tAaZ09qayDsGhVJDUz2I7F3vNxDPROu5FY05qg2aDy9H+bcMAfRcM
+         e8qgNSsVMxn6YtxCHrkH5Qa9s4uu8UOl72w/mdHdRqFBwa8PRA4oSvQVaRX1DhTNBmxQ
+         uJQd5BsB4XO0Z5K8y3zp7RmiURTBiiKLQjLbaf/Mue5B65iszaM1SnaXhjMg+hBnOYIr
+         BYb5XjToL19PnfQ7XBuzB/2QdqPUq1Vtv+z56X7Af8T10Z+mZQq7u+zVEoOBWSp/1X0u
+         RBZw==
+X-Gm-Message-State: AMCzsaVMa9m84SUjGRHZnSX43aFURxQjSS8nR1Hxz1O0iX6wiTyFQOGm
+	oBRKv8zgq01g/1lKMRXJnUyo7ZVT
+X-Google-Smtp-Source: AOwi7QAZ003OJiYGfa2PMsMAQR8IMcXqwbGLzWG4FpsLhGEWtgimVXZFf4+o88Vtlq3l4kBZSlrp/w==
+X-Received: by 10.101.82.8 with SMTP id o8mr6065027pgp.404.1508083991025;
+        Sun, 15 Oct 2017 09:13:11 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from cloudburst.twiddle.net (97-126-104-76.tukw.qwest.net. [97.126.104.76])
+        by smtp.gmail.com with ESMTPSA id d76sm13034707pfk.69.2017.10.15.09.13.09
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 15 Oct 2017 09:13:09 -0700 (PDT)
+Subject: Re: [RFC PATCH 09/30] softfloat: propagate signalling NaNs in MINMAX
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Aurelien Jarno <aurelien@aurel32.net>
+References: <20171013162438.32458-1-alex.bennee@linaro.org>
+ <20171013162438.32458-10-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <035e1431-faa8-9c85-168a-6e7dfb377017@linaro.org>
+Date: Sun, 15 Oct 2017 09:13:07 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Thu, 12 Nov 2015 13:31:47 -0800 (PST)
-In-Reply-To: <da12a1acf1328d40eec6ca59c9e1baa150b7f18a.1447350661.git.crosthwaite.peter@gmail.com>
-References: <da12a1acf1328d40eec6ca59c9e1baa150b7f18a.1447350661.git.crosthwaite.peter@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 12 Nov 2015 21:31:47 +0000
-Message-ID: <CAFEAcA-8u8MshmE3ROXxHWKXPhNVn7_i8C9vcHVqQ5FC8LZGhA@mail.gmail.com>
-To: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:4002:c07::234
-Cc: qemu-arm@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>,
-	Guenter Roeck <linux@roeck-us.net>,
-	Alistair Francis <alistair.francis@xilinx.com>
-Subject: Re: [Qemu-arm] [PATCH for-2.5 v5 1/1] hw/misc: Add support for ADC
- controller in Xilinx Zynq 7000
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QSrM1udBx2BF
+In-Reply-To: <20171013162438.32458-10-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: 8w8jKKWyMfUF
 
-On 12 November 2015 at 17:54, Peter Crosthwaite
-<crosthwaite.peter@gmail.com> wrote:
-> From: Guenter Roeck <linux@roeck-us.net>
->
-> Add support for the Xilinx XADC core used in Zynq 7000.
->
-> References:
-> - Zynq-7000 All Programmable SoC Technical Reference Manual
-> - 7 Series FPGAs and Zynq-7000 All Programmable SoC XADC
->   Dual 12-Bit 1 MSPS Analog-to-Digital Converter
->
-> Tested with Linux using QEMU machine xilinx-zynq-a9 with devicetree
-> files zynq-zc702.dtb and zynq-zc706.dtb, and kernel configuration
-> multi_v7_defconfig.
->
-> Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
-> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> [ PC changes:
->   * Changed macro names to match TRM where possible
->   * Made programmers model macro scheme consistent
->   * Dropped XADC_ZYNQ_ prefix on local macros
->   * Fix ALM field width
->   * Update threshold-comparison interrupts in _update_ints()
->   * factored out DFIFO pushes into helper. Renamed to "push/pop"
->   * Changed xadc_reg to 10 bits and added OOB check.
->   * Reduced scope of MCTL reset to just stop channel coms.
->   * Added dummy read data to write commands
->   * Changed _ to - seperators in string names and filenames
->   * Dropped ------------ in header comment
->   * Catchall'ed _update_ints() in _write handler.
->   * Minor whitespace changes.
->   * Use ZYNQ_XADC_FIFO_DEPTH instead of ARRAY_SIZE()
-> ]
-> Signed-off-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-> ---
-> v5:
->     Fix compile warning
-> v4:
->     Addressed Alistair review
->     Minor whitespace changes
->     Use ZYNQ_XADC_FIFO_DEPTH instead of ARRAY_SIZE()
-> v3:
->     See [PC changes] in commit message
-> v2:
->     Use extract32()
->     Merge zynq_xadc_reset() and _zynq_xadc_reset() into one function
->     Use "xlnx,zynq_xadc"
->     Move device model to include/hw/misc/zynq_xadc.h
->     irq -> qemu_irq
->     xadc_dfifo_depth -> xadc_dfifo_entries
->     Dropped unnecessary comments
->     Merged zynq_xadc_realize() into zynq_xadc_init()
->
->  hw/arm/xilinx_zynq.c        |   6 +
->  hw/misc/Makefile.objs       |   1 +
->  hw/misc/zynq-xadc.c         | 302 ++++++++++++++++++++++++++++++++++++++++++++
->  include/hw/misc/zynq-xadc.h |  46 +++++++
->  4 files changed, 355 insertions(+)
->  create mode 100644 hw/misc/zynq-xadc.c
->  create mode 100644 include/hw/misc/zynq-xadc.h
->
+On 10/13/2017 09:24 AM, Alex Bennée wrote:
+> -            if (float ## s ## _is_quiet_nan(a, status) &&               \
+> +            if (float ## s ## _is_signaling_nan(a, status) ||           \
+> +                float ## s ## _is_signaling_nan(b, status)) {           \
+> +                propagateFloat ## s ## NaN(a, b, status);               \
 
-Applied to master, thanks.
+Missing a return here?
 
--- PMM
+
+r~

@@ -1,217 +1,132 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp1431722wrd;
-        Sun, 9 Sep 2018 03:29:51 -0700 (PDT)
-X-Received: by 2002:a5b:b51:: with SMTP id b17-v6mr4946980ybr.143.1536488991498;
-        Sun, 09 Sep 2018 03:29:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1536488991; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp3883902wrf;
+        Mon, 16 Oct 2017 13:10:22 -0700 (PDT)
+X-Received: by 10.159.197.73 with SMTP id d9mr9772330plo.415.1508184621956;
+        Mon, 16 Oct 2017 13:10:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508184621; cv=none;
         d=google.com; s=arc-20160816;
-        b=mbRl2Ut2lqvx+NySkZP82zjHPxpWj9EhWzlM86bMqECCNJnmklNekCwpXGL63uDGFQ
-         rQxXsMcc7+RgKOb+cko36rqWyOSqCkAysPba4Oezqx5ozgyZsYq2F2nQ46x2RCJz3qxF
-         x1RQ7ptxKGMrLgcFXqQDATxRbPD0IcktrJsZwV85AGjIN3c6EvcR/w9r9nUNDXjkntDN
-         /GTH0fYJ5ViQfPIvNhER7SYFVicJlvAIYAgPdkhK5IJtZEHs2bEe/uD5FP9n673YXykf
-         94wUoLy+Z0zfIGSjfF16u3lDTlh60tmOn7SvxBSvhZDtGeXQLX2Q5N+Fcw4uRKq58LYY
-         lEfw==
+        b=omsFWr4ZAFByM3K+JoaTOjmiWnySMyG1vxKiM0uvjG9GrwufbaKDBE8ssNbQWb1Xvv
+         WX0OYTOlx5TI6iHafT59Gxe9LGii3a7qJ4awb1QVix2h5K6vJtWEJpIIYG9MNPGxH06G
+         lyHwWuNtrdfrmTpRfNrGzcmf0MDN5EjSGJuJc3lnE3Rc3S781U3UUOUXJL5Rosm15mo/
+         mzQt1smaqrcU7QWxLyQJi3+rgwrUCBPgA9BOOIdR36gHWAsoufdp2pAs9frYpRktxSu/
+         PCeDQeqqdMZGpYAkMmTE+4MqQGR0ajWaLQxrGuej/944OYo2gNRFvK5B5m9j/tuEOfoU
+         Fihg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature;
-        bh=0SyVQV08+8F3ovTpTyrWx8+0SDts3qy4GBVVz4j0UZM=;
-        b=TLgYiq+jun2j7anJCzfcnXKO9CTwDbacWmHJG4FyAXMTU2fx95OzyUWKoMP3czntdX
-         BcBzz0wTpZWrEc3wp8YoAxeNFEZyWfsnnz1fT0PZQJeMNFBEI09cb53lEm5bg5bNyy4T
-         grxTVvma0oEJl4lHhIK4UKPEua5AkMSbIsTPo+iCCXji1fTBe5LtoKePZyn5A1daqGgN
-         lL8/FYwvACumDzoy7BqTxhWgnwEE6tKUyQos48MyphaOEkyYaG6KNzC8TtQn0LefTu+N
-         McavNgMTUNjRRrtMr7dpkGRGmLe+UvhLZ6Rm/F8xqF5NzX2GuhB1EiJ6Hu/bjDTIl04K
-         0/jA==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature:arc-authentication-results;
+        bh=ObqBv66cePDz9Kjp5bwDaARknJ2rfJejrs2IU9tem50=;
+        b=g+LKhshbb1CY+00T4iyxawRe/3bSKmWoeyNcrZRg4mh2K8Sv/AeLorn8ITB/4j0L+E
+         0rNz+pjXd4Pl3uztBxgSmTl/GyvJ1AOheN12giHeryNgeqkb2BBJ5Ui4jgifVK+Qp/vm
+         eF5LGI92BsmiVBxSV+cFZ0fiHDjURAlTQSmmxu2kFGiCUYGqdqyPamFxJ8+IUJvpOR5U
+         /XM/zLK3a5OiSm/O9LI57od9YrdK7WVigkYX6K7RBbudo8NNZOLgbpGkP/skcNm4gA94
+         N0M7X5wFyMNhaD06QzZmu4xnNiqXSz6KWWP1zt73RtSJ1v1IIpEOewPC+BGJw1oLau0M
+         3x2g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PKeXspKO;
-       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=A5PfokOT;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <hongbo.zhang@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id g10-v6sor2491174ywc.299.2018.09.09.03.29.51
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id l5sor1752779pli.125.2017.10.16.13.10.21
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sun, 09 Sep 2018 03:29:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Mon, 16 Oct 2017 13:10:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PKeXspKO;
-       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=A5PfokOT;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=0SyVQV08+8F3ovTpTyrWx8+0SDts3qy4GBVVz4j0UZM=;
-        b=PKeXspKOfIuZuapkY2ayAsXIHpVnQxBWiXVkg9mghJO6wZgfKn0x7x2pVVs9O5Bk9i
-         PiApZBqh6c5M8yYUBgq47zizLBHd5Q3cecv3NzNiz9fm03a8uckbNJLraY4ErCVn04Hv
-         ud1sB92xJ4mmSfaE/AyKAfWDq1p3tuk7bZba0=
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=ObqBv66cePDz9Kjp5bwDaARknJ2rfJejrs2IU9tem50=;
+        b=A5PfokOTNeGusso7NdSmu8l/vsfNp/jCPRSb1gcB9I/TMaeZPOgF2TXM5uT3a4A2Kr
+         MyP+rZlYXQZNTad0C8UjqTVtMksJXMtiNiZg0NZzdX91YhaY9mSu6+PmSgrxADsUnl1k
+         0ryM/9xEveqZR0WkGJhl1hfpLypgMWViJtyHY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=0SyVQV08+8F3ovTpTyrWx8+0SDts3qy4GBVVz4j0UZM=;
-        b=nqg3sXqpkNn55PgSwdKkCKa7kJHJqy3Mpk21wDgjpGpMt4w/EMAHC0nfMpqYvcPRtR
-         Gjn44243id0GiYMT2uAiP7cNGkDw3KKSC/fudXKs1+A6ic/LMDg7Dx6TEkHYjM7X5dZn
-         zlXb/XXh5GythsF2Izve9u7uL1kJ/X6oYImjY+J0yxMNuuU2gQYHhYXbVJJ/qxamylaS
-         Md4x2ksHjYf4uBhEHK36JiUsJ+DvJB/3hZXKSSF5Hua10M/aaD9HrlAyzkMXhXsjXu42
-         LJq3w/0pAbXOsh1PylhSUDkV06B1BaEchHusVw0y16odVF8NHMvXdJjLKcoKBweTifOP
-         Q3Gg==
-X-Gm-Message-State: APzg51AUk2dl1Sizs876GYhQ8HICag28bdUdN8/G8isY+3hU7xf37lqK
-	+hKqGaJ/yDQqn46QQocwRymJYt8fsOajv2frqisIQehy
-X-Google-Smtp-Source: ANB0VdaW1zNYaH7Qn+ttnE2E2UFQG7Ccv6X3LokCxrt3z1gX92Up08H+Scq8N1OV9YnbgV4W0vEBfqD66wjStpzjIw8=
-X-Received: by 2002:a81:9dc8:: with SMTP id u191-v6mr8146605ywg.274.1536488991106;
- Sun, 09 Sep 2018 03:29:51 -0700 (PDT)
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=ObqBv66cePDz9Kjp5bwDaARknJ2rfJejrs2IU9tem50=;
+        b=piU6J5n9NVkztnjSUSsIJW1y6DO1bpE4G4ImTm7IB44Gh2OIS5i47I9zFdIbFB++Ko
+         MSA5u0FW01TPszikFK1YBmwP/4LYsdOuRLZj7dQuxocc29U9wISrCzFa/SR2GSQOnnd8
+         99sjJSmfG4dnRXn84mo0q+jXdYrppXm3XNnFPPbYSPwzsJn1W68dkIYrklhZ4zM7M6kR
+         baMKATmbQyobfsOS8kjo7EKdD+HE1t9Gq2ABaJoH+zU+LQKkIgjuI5fkLqoY+/uh6Fz5
+         6oVPtJ5oN9czfAFoM7/3iOa89hSqNAUteyKaNbAVJKT+HKthON+daf16STTv1kdY3CO+
+         kp5w==
+X-Gm-Message-State: AMCzsaU8Fth8BnNIURLRrzIG/6aBvNIdAhtXh4yQfzdKnO4BRJGcsJEx
+	jR6TG7Z+VvqXFJy2sa4zY7cvaFCQ
+X-Google-Smtp-Source: AOwi7QCeBOhvh3+XSxIJ6PgWpGOCkXKHt58s2d9E2e9rVu6+1aiXrGNZb55l/Q+S8WfO1wRGTUs9jA==
+X-Received: by 10.159.253.142 with SMTP id q14mr9918202pls.82.1508184621486;
+        Mon, 16 Oct 2017 13:10:21 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from cloudburst.twiddle.net (97-126-104-76.tukw.qwest.net. [97.126.104.76])
+        by smtp.gmail.com with ESMTPSA id 77sm17494915pfl.133.2017.10.16.13.10.19
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 16 Oct 2017 13:10:20 -0700 (PDT)
+Subject: Re: [RFC PATCH 11/30] target/arm: implement half-precision
+ F(MIN|MAX)(V|NMV)
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20171013162438.32458-1-alex.bennee@linaro.org>
+ <20171013162438.32458-12-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <d1091101-7397-54a6-70b9-8c46df86a3a2@linaro.org>
+Date: Mon, 16 Oct 2017 13:10:18 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-Received: by 2002:a25:58c5:0:0:0:0:0 with HTTP; Sun, 9 Sep 2018 03:29:50 -0700 (PDT)
-In-Reply-To: <20180905150033.ntsvj4vtqzcreiwi@kamzik.brq.redhat.com>
-References: <CAHmQWvC4Kp1CAeCe8ZTGtSeG7fnT=Xen4GFKfnhTBWUCJdQV+g@mail.gmail.com>
- <20180829134219.cmyqipnvukk6k2rp@kamzik.brq.redhat.com> <CAHmQWvA5t7zbbDDM0UvuKSL_Z8ey+x+vOGZumYjwsq0FC5AHGA@mail.gmail.com>
- <20180830083117.iekobw7l3arkt24m@bivouac.eciton.net> <CAFEAcA_s+9-4PYHyx_aAnxwt4e=VH77uBG7rC4JA++nOyjAaPw@mail.gmail.com>
- <20180830100233.nr6fm3npy57zl4xx@bivouac.eciton.net> <CAKv+Gu9r+1OBOSUBW_KpDEEoKyc=iwW4zVEe04-_JUnJtSGupQ@mail.gmail.com>
- <CAHmQWvBDjMeBpe9Puv+oRii3JrVULW_+AYJL9WV1tXT7F7ALfg@mail.gmail.com>
- <20180905120248.unyh6q4msvyx4f43@kamzik.brq.redhat.com> <CAHmQWvAD2Zaz94AxoAScBT8jL8WZqiTMdiuzKPxrZ_3Uvk5ihg@mail.gmail.com>
- <20180905150033.ntsvj4vtqzcreiwi@kamzik.brq.redhat.com>
-From: Hongbo Zhang <hongbo.zhang@linaro.org>
-Date: Sun, 9 Sep 2018 18:29:50 +0800
-Message-ID: <CAHmQWvBPG7LBuFOPr4wq+w_jczN8mWFv3fPywFdB8P+c98Dqnw@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v2 2/2] hw/arm: Add Arm Enterprise machine type
-To: Andrew Jones <drjones@redhat.com>
-Cc: Ard Biesheuvel <ard.biesheuvel@linaro.org>, Peter Maydell <peter.maydell@linaro.org>, 
-	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	Leif Lindholm <leif.lindholm@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: s7aYmzUf87tv
+In-Reply-To: <20171013162438.32458-12-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: 0+LpUX//hz86
 
-Well, thank you all for the discussions, we achieved some agreement,
-and there are still things for further review.
-The v3 patch has been sent out, we can move there and review/discuss
-the updated patch now.
+On 10/13/2017 09:24 AM, Alex Bennée wrote:
+> +/*
+> + * do_reduction_op helper
+> + *
+> + * This mirrors the Reduce() pseudocode in the ARM ARM. It is
+> + * important for correct NaN propagation that we do these
+> + * operations in exactly the order specified by the pseudocode.
+> + *
+> + * This is a recursive function, TCG temps should be freed by the
+> + * calling function once it is done with the values.
+> + */
+> +static TCGv_i32 do_reduction_op(DisasContext *s, int fpopcode, int rn,
+> +                                int esize, int size, int vmap, TCGv_ptr fpst)
+> +{
+> +    if (esize == size) {
+> +        int element;
+> +        TCGMemOp msize = esize == 16 ? MO_16 : MO_32;
+> +        TCGv_i32 tcg_elem;
+> +
+> +        /* We should have one register left here */
+> +        assert(ctpop8(vmap) == 1);
 
-Thanks.
+I think you should match the ctpop to the size of vmap.  It's true you only
+need uint8_t at present, so maybe use that?  At least it's self-consistent.
 
-On 5 September 2018 at 23:00, Andrew Jones <drjones@redhat.com> wrote:
-> On Wed, Sep 05, 2018 at 10:09:46PM +0800, Hongbo Zhang wrote:
->> On 5 September 2018 at 20:02, Andrew Jones <drjones@redhat.com> wrote:
->> > On Wed, Sep 05, 2018 at 06:08:57PM +0800, Hongbo Zhang wrote:
->> >> On 30 August 2018 at 21:29, Ard Biesheuvel <ard.biesheuvel@linaro.org> wrote:
->> >> > On 30 August 2018 at 12:02, Leif Lindholm <leif.lindholm@linaro.org> wrote:
->> >> >> On Thu, Aug 30, 2018 at 09:39:33AM +0100, Peter Maydell wrote:
->> >> >>> On 30 August 2018 at 09:31, Leif Lindholm <leif.lindholm@linaro.org> wrote:
->> >> >>> > On Thu, Aug 30, 2018 at 03:07:29PM +0800, Hongbo Zhang wrote:
->> >> >>> >> @Ard, @Leif, is there any possibility to remove all the DT nodes?
->> >> >>> >> On real hardware, how does UEFI find the memory size and CPU number?
->> >> >>> >
->> >> >>> > Usually by asking some form of SCP/PMU.
->> >> >>> > So until we have rock-solid multi-cpu-instance (making terms up here,
->> >> >>> > there may be a proper name already?) support upstream, we need to take
->> >> >>> > shortcuts.
->> >> >>>
->> >> >>> I would expect that you'd want a "faked-on-the-QEMU end" SCP
->> >> >>> communications endpoint to start with anyway. We have one of
->> >> >>> those for vexpress, for instance.
->> >> >>
->> >> >> Ah, I wasn't aware we did!
->> >> >>
->> >> >> In that case - sure, that is probably the more sensible solution.
->> >> >> Does it emulate SCMI?
->> >> >>
->> >> >
->> >> > The purpose of the SBSA/SBBR qemu machine is prototyping the
->> >> > interactions between rich firmware and the OS for things like RAS,
->> >> > secure variable storage for UEFI or capsule update.
->> >> >
->> >> > How exactly the firmware figures out how many CPUs and how much memory
->> >> > we are running with is out of scope for this, and so I don't think
->> >> > there is a need to build something from scratch here: DT will do just
->> >> > fine, given that both EDK2 and ARM-TF have working DT code for these
->> >> > things.
->> >>
->> >> Ard, we need to clarify which DT nodes should be kept in SBSA-ref QEMU.
->> >> I've researched and tested, there are 3 kinds of DT nodes in the
->> >> current 'virt' machine:
->> >>
->> >> a) CPU DT node, because it is dynamic according to input parameters,
->> >> and we don't want to get it by other way, so we agreed to keep it.
->> >
->> > I have a patch series on the list[*] (which I need to refresh) that
->> > would also add a generated cpu-map node. I think the SBSA-ref machine
->> > may be interested in testing more complex cpu topologies, but that won't
->> > be easy to do with ACPI boot guests unless the topology is hard coded.
->> > How will sbsa-ref know when it should use a hard coded cpu topology vs.
->> > a dynamic number of cpus in a flat topology?
->> >
->> If I understand you question correctly: for the cpu topology, firmware
->> always get CPU DT from QEMU (which is generated dynamically form
->> command parameter), so it is always dynamic, not hard coded in this
->> case.
->> (and then firmware may translate this DT and insert it into a whole
->> ACPI to load OS, it is up to the firmware developer)
->
-> I doubt firmware developers will want to generate ACPI tables. Maybe
-> multiple tables can be pre-generated and then selected by firmware
-> using a parameter passed to it from QEMU through the DT though.
->
->>
->> And I even considered, do we really need dynamic CPU nodes for such
->> platform?
->
-> That was my question. If you do, then I think things get complicated
-> quick.
->
->> memory size has to be dynamic, but it isn't in DT.
->
-> Memory size is in the DT. Making it dynamic may also be complicated
-> though unless you only want one chunk of contiguous memory. If you
-> want to represent SBSA machines that have multiple NUMA nodes and/or
-> gaps in the physical address space, then your ACPI tables will not
-> be patched easily. I.e. you'll want static ACPI tables regarding
-> different memory configurations too.
->
->>
->> > [*] http://lists.nongnu.org/archive/html/qemu-devel/2018-07/msg01170.html
->> >
->> >> b) GIC, UART, Timer (and RTC?) nodes, these nodes are now used by
->> >> UEFI, if removed, UEFI needs a rework to not rely on them any longer.
->> >
->> > Will sbsa-ref support GICv2? If so, then timer and pmu DT nodes will
->> > need to have their irqflags fields modified depending on the number of
->> > configured CPUs.
->> >
->> No, I removed the GICv2 in next patch.
->>
->> >> c) All the other devices nodes, such as GPIO, PCIE etc, currently the
->> >> UEFI doesn't need them, so UEFI can boot with them removed.
->> >>
->> >> How about b) and c)?
->> >> my idea is to keep a) only, remove b) and thus a UEFI modification
->> >> accordingly is to be done, c) can be removed freely.
->> >
->> > So UEFI would learn to augment static DTBs with QEMU generated
->> > DT nodes and/or other auxiliary info from QEMU passed to it
->> > through the "guest DT" (which is now looking more like a guest
->> > firmware configuration description)? Is it worth it? Why not
->> > just require the entire DTB to be provided by the user on the
->> > QEMU command line and completely ignore QEMU parameters like
->> > '-smp'?
->> >
->> UEFI loads OS by ACPI, not DT for this machine.
->> But UEFI has to handle DT too, becuase there is DT passing info from
->> ARMTF to UEFI, and this dynamic CPU DT as well.
->> I think every thing UEFI gets from DT should translated into ACPI,
->> again,it is my understaning now, it is up to firmware developers.
->>
->> "entire DTB provided by the user on the QEMU command line", you mean
->> firmware can use it to load OS? it is not fine, some featurs such as
->> RAS, may still need ACPI, so ACPI is to be used to load OS on this
->> sbsa-ref machine.
->
-> If booting the guest with ACPI is the plan, but using QEMU's ACPI
-> generation is not the plan. Then either firmware will have to reinvent
-> that generation (unlikely) or multiple ACPI tables representing all
-> the desired configs will need to be pre-generated and made selectable
-> in some way. Either by choosing from multiple UEFI builds where each
-> build has one set of tables, or by having all the tables in one UEFI
-> build and then adding some UEFI code to select them based on parameters
-> it can get from QEMU through DT.
->
-> Thanks,
-> drew
+> +        tcg_hi = do_reduction_op(s, fpopcode, rn, esize, bits, vmap_hi, fpst);
+> +        tcg_lo = do_reduction_op(s, fpopcode, rn, esize, bits, vmap_lo, fpst);
+> +        tcg_res = tcg_temp_new_i32();
+
+You can re-use one of the two inputs for the output, fwiw.
+
+> +        /* Bit 1 of size field encodes min vs max and the actual size
+> +         * depends on the encoding of the U bit. If not set (and FP16
+> +         * enabled) then we do half-precision float instead of single
+> +         * precision.
+>           */
+>          is_min = extract32(size, 1, 1);
+>          is_fp = true;
+> -        size = 2;
+> +        if (!is_u && arm_dc_feature(s, ARM_FEATURE_V8_FP16)) {
+> +            size = 1;
+
+You do still need to check size[0] == 0.
+
+
+r~

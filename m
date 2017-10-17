@@ -1,97 +1,98 @@
-Received: by 10.223.197.9 with SMTP id q9csp4655636wrf;
-        Tue, 17 Oct 2017 07:22:22 -0700 (PDT)
-X-Received: by 10.55.127.66 with SMTP id a63mr12027680qkd.90.1508250142228;
-        Tue, 17 Oct 2017 07:22:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508250142; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp4688660wrf;
+        Tue, 17 Oct 2017 07:57:44 -0700 (PDT)
+X-Received: by 10.55.119.70 with SMTP id s67mr17675870qkc.294.1508252264388;
+        Tue, 17 Oct 2017 07:57:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508252264; cv=none;
         d=google.com; s=arc-20160816;
-        b=HgAFqMmpPWU2LbHpIsM/2cPlPPBBE/8KvzvV9Bor2brvHvFkYcPBmmegKasWWIwGWB
-         EsXu1wn0Rcp3XOZxrCsCVKGSm7RsdNGKNLGLG56jniOF0+SY35Ko7tp7uLRVx+hXErpf
-         MNtdgONEcLJMCKb8jIpmHbovqAPZ2I+Y2c9ST0P5KiVclb7Qm/RMG2uB3bz+kecHNilr
-         45YpWTvbL0Lciayato8m2poDsuOvcH8V5E9/JqQFIX29n2FAdNM5FYamAgC0/B2W6iIG
-         MmtoF+JbvF/fIAuIMtwDvfR186KEuSFw/VwSKOuX4GVeppsWN69jIILySfCirpRhKS9D
-         6N9g==
+        b=wkQhFkxMOnFckHeVZ8CKKWRus0uOKHicoFIW5fhOXMqNqXjhKkM6e/o2l3V/tMykjI
+         fHkI9nOT6ddL5H1zWveLB6ljtblNYAnZN1nLNa8VcX1nsY2IrRGFu+uBmsfa6cwpVnMB
+         ZQwrhXraiR1yuCRhjKSCRpLLWdYWq8eCIN1FHxXOybX6Jq/MQAKtkYl5xbJB8rh9pcB+
+         P/wn8aCq4IxJovLMB7fltE25nLSaM9CMZUyduZwt+85ACJOQVEQGyfE7ATMwruN7gzBC
+         ZIRCztN9LjJHcfYC5x5GBU9ARZdinfc8J4iNBY2k094KpUIi/A7aEHn68xdOff33EE+D
+         kdFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=uXn7fDlVA1c00Pzca9UJDGvtPGYSmMvfmqTS0+eAHTY=;
-        b=feVBNBhVAs+QuEgi8H63aHkj2P/tmv1KWDteQ5zyq145oaRlm9ggq9YCYNwei873jn
-         aGk3+1SSmVe/tL2+gz8m2niYMmkOf4c7NWlC2Z1XLzFAJ7L8lMYIib3KfHdkmJ9V+9A7
-         NvNWEE51kjrxYUxp8y7IvzV95qs//WGY5v+dvLQ1KQUdoRvdRjxcVAR/N/is+hq6cMvF
-         Sk7IaVJEz/rXFyzKPGTuEudo0v83qp2OwWmvDFt4agQCmrkm+0sFcJ7tvS2LCce98kW0
-         x4xnplqzo/0lJgHmeYLl9R4F0CFOnSRIzACeSJtnBMQs28iuWhQ4vJ+01krC+0Cp6byJ
-         dloA==
+        bh=OXWWae5uL6p7SaD4MK+MDBuN4Y68l2/L9YIMkpFXmN0=;
+        b=rVzCy8sB0ZTnkUYvHY1NXbWzbKCgF2tlForQN3scTUjXjIPdlb6rPsVrlaR3mlNqgG
+         VqXAp340kuGDjOqS/jdmyGDqM6/fI+cRTFolog9OksxSSsngISuneUnSMP7XPPlMopQa
+         joD3PHLWxyaXAFdBnlRTF+7CzfCMRl9NHo2UUL5ZmtNttuktc4rlmnxTzSaPRpnCXA0K
+         +vR9uhMGPscTvWeUutu4yg1Vi7aAVEB8dgcFCXstuYONnl4uWbfYNMdpaY4ND7kZlYJA
+         ASTOdhjFg3FFUZqy2S1zDNB7osnJo0soQYdeFQ9BKOjtmgvCLERyrrUo1lqJdgGdsowH
+         5oHw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=A0PW8Bqi;
+       dkim=fail header.i=@linaro.org header.s=google header.b=QoHWe7mS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d54si3546812qtk.305.2017.10.17.07.22.21
+        by mx.google.com with ESMTPS id t56si3516130qte.286.2017.10.17.07.57.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 17 Oct 2017 07:22:22 -0700 (PDT)
+        Tue, 17 Oct 2017 07:57:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=A0PW8Bqi;
+       dkim=fail header.i=@linaro.org header.s=google header.b=QoHWe7mS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39806 helo=lists.gnu.org)
+Received: from localhost ([::1]:39944 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e4Sl9-0001yJ-VE
-	for alex.bennee@linaro.org; Tue, 17 Oct 2017 10:22:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60480)
+	id 1e4TJO-00021S-7Z
+	for alex.bennee@linaro.org; Tue, 17 Oct 2017 10:57:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43658)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e4Sj6-0000Pu-QI
-	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 10:20:19 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1e4TJH-000217-Fd
+	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 10:57:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e4Sj5-0003XA-DV
-	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 10:20:12 -0400
-Received: from mail-wr0-x230.google.com ([2a00:1450:400c:c0c::230]:51449)
+	(envelope-from <peter.maydell@linaro.org>) id 1e4TJG-0008M8-4r
+	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 10:57:35 -0400
+Received: from mail-wr0-x22c.google.com ([2a00:1450:400c:c0c::22c]:50895)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1e4Sj5-0003WH-34
-	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 10:20:11 -0400
-Received: by mail-wr0-x230.google.com with SMTP id j14so1867861wre.8
-	for <qemu-arm@nongnu.org>; Tue, 17 Oct 2017 07:20:11 -0700 (PDT)
+	id 1e4TJF-0008LQ-VY
+	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 10:57:34 -0400
+Received: by mail-wr0-x22c.google.com with SMTP id q42so2003878wrb.7
+	for <qemu-arm@nongnu.org>; Tue, 17 Oct 2017 07:57:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=uXn7fDlVA1c00Pzca9UJDGvtPGYSmMvfmqTS0+eAHTY=;
-	b=A0PW8Bqiv9tMs/1l3SBvFmgmk9VvwuAT15PcwIx3aE7oMdjnAdJUuKEXMz7rLC0FVO
-	3jSZ1k7yW0RpFu15A9QVUmWpGWamck2TOlWuyq3BI4y9UjfwTscEKnJJptS40Vbys2ye
-	SWmpunVqf+z7tB5a0Q21CBDREqKGxeT7jlx9Y=
+	:cc; bh=OXWWae5uL6p7SaD4MK+MDBuN4Y68l2/L9YIMkpFXmN0=;
+	b=QoHWe7mSa/BZFf58G8Ywep//Ad/59fZjH3auSbZiTg01PaGIh6M2c2Bb46aOUZc3O9
+	84xma4CZrQQTJqF4l2moPoUlXvg2dAQUwVpMT3xsMNtsFdVMd/2gw4z13Z04OfLLYnB9
+	dBMSrfbbG+n0DnqmliUkeHhdBWC8dMFKWbR7Y=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=uXn7fDlVA1c00Pzca9UJDGvtPGYSmMvfmqTS0+eAHTY=;
-	b=ZM4zDCCfdWDhvcwXczMsyq5R9PM3O1iKaKycfrd4yDcsn4sIM1j1DHyrCM4XaTODwg
-	I9ddYYOlk/Eu89k0OzRxj3VMHB+RgngdHIL/9+WrCCohK2bhhv8ZTA9KXc9eWzHz38nS
-	WlCuygnKwdvNINOg0bDeKxRxQ/aZCEidnDJi4hwPBBs5eZuCENcuSkDNFzihEkyPWdw5
-	3Tp+Jcpe/ct+JHowWX2Fph3b8GsW5aXWepKA0ch5VmNTovgs9HSOd0Vf5YWhEEU5twQb
-	PMTDBF7j0f0Dhi5Y2laOGDkGebVcys4I3HRCvNIVkKVadluI+7zZfaNfCsAqkPGLzxyM
-	8IGg==
-X-Gm-Message-State: AMCzsaXgk/dw9uTLosy7rfTndswKV9Ug7ESl7X5w0b+LRQp1tSDwn7Y3
-	tqO9YKzIji9J5UhQ01g5LqfKtEI8vr3aiyh7NcPWXg==
-X-Google-Smtp-Source: ABhQp+TDxlzD++5snoinCJ1L+ZygULxz3hfsRJeB8m0Ae0GEwDl1gSnKZxJaN84ey99jP2hKhS3lDUrXQJe8yK+LPPE=
-X-Received: by 10.223.160.233 with SMTP id n38mr4270278wrn.177.1508250009860; 
-	Tue, 17 Oct 2017 07:20:09 -0700 (PDT)
+	bh=OXWWae5uL6p7SaD4MK+MDBuN4Y68l2/L9YIMkpFXmN0=;
+	b=NRYRv3mJel/dfV6VCZ4VWecq40+tY6pin84HkkCFio+pj1FHz7bBFpUXtdtKdEIUEi
+	ZCrMyXXukii7YCrFs3rnZAyYH7WtN9yJTu55guTRb6NGRv74Vwjn87hgVmBbAHPPHlF0
+	wlnmBNEjnb9ISbJwq+dliq2bNPNl4CeVwh47A0WVZI0ahzh+HbX3j1wKoAicYAhn950Z
+	KFEjSVM4ZvCFaccjoZoOxLwyMxjfyqdjEm8UsZ4zjuK/6/4BBMRfEGL8gbr0Pwzhcblj
+	cMITKAK1X6gnSeNoU0bXmjM5ioGRyvC8FdMOPMCeO/xHoRoN9RLQSB1uv9tBraW5thBg
+	l0PA==
+X-Gm-Message-State: AMCzsaWuINIXkeWYGR2NXSHvnkdVHaiZzZm62UGeuDkYnPqE9ZgJlmVn
+	vADPwXiQYMTGsscLvCKt+av9w4VxR4YZCnKqock9gg==
+X-Google-Smtp-Source: ABhQp+TQ66Pje40X2x3pwOlJ42eLhGa6kdKlxeWXgmh9mD3/vjn0TPSEgM1ilONsffvsh1hhNx1qQtne7u6zeMl30bY=
+X-Received: by 10.223.197.19 with SMTP id q19mr4309623wrf.272.1508252252429;
+	Tue, 17 Oct 2017 07:57:32 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.223.139.195 with HTTP; Tue, 17 Oct 2017 07:19:49 -0700 (PDT)
-In-Reply-To: <1506737310-21880-8-git-send-email-alindsay@codeaurora.org>
+Received: by 10.223.139.195 with HTTP; Tue, 17 Oct 2017 07:57:11 -0700 (PDT)
+In-Reply-To: <1506737310-21880-7-git-send-email-alindsay@codeaurora.org>
 References: <1506737310-21880-1-git-send-email-alindsay@codeaurora.org>
-	<1506737310-21880-8-git-send-email-alindsay@codeaurora.org>
+	<1506737310-21880-7-git-send-email-alindsay@codeaurora.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 17 Oct 2017 15:19:49 +0100
-Message-ID: <CAFEAcA_1J2xZpnv9dNBeSH5ZvMvBujp3XHPK1SfypjFMU1OBSg@mail.gmail.com>
+Date: Tue, 17 Oct 2017 15:57:11 +0100
+Message-ID: <CAFEAcA8H-Zv0HRiMTSYFqkR0Wx7npB_N_ze9h0oovVa1tMHDRQ@mail.gmail.com>
 To: Aaron Lindsay <alindsay@codeaurora.org>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::230
-Subject: Re: [Qemu-arm] [PATCH 07/13] target/arm: Implement PMOVSSET
+X-Received-From: 2a00:1450:400c:c0c::22c
+Subject: Re: [Qemu-arm] [PATCH 06/13] target/arm: Filter cycle counter based
+ on PMCCFILTR_EL0
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,117 +104,55 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
-	Michael Spradling <mspradli@codeaurora.org>,
+Cc: Michael Spradling <mspradli@codeaurora.org>,
 	Digant Desai <digantd@codeaurora.org>,
 	QEMU Developers <qemu-devel@nongnu.org>,
 	Alistair Francis <alistair.francis@xilinx.com>,
 	qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZmgSM4s413nO
+X-TUID: BPAOyF+vLF/V
 
 On 30 September 2017 at 03:08, Aaron Lindsay <alindsay@codeaurora.org> wrote:
-> Also modify it to be stored as a uint64_t
+> The pmu_counter_filtered and pmu_sync functions are generic (as opposed
+> to PMCCNTR-specific) to allow for the implementation of other events.
 >
-> Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
-> ---
->  target/arm/cpu.h    |  2 +-
->  target/arm/helper.c | 27 ++++++++++++++++++++++++---
->  2 files changed, 25 insertions(+), 4 deletions(-)
->
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 811b1fe..365a809 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -325,7 +325,7 @@ typedef struct CPUARMState {
->          uint32_t c9_data;
->          uint64_t c9_pmcr; /* performance monitor control register */
->          uint64_t c9_pmcnten; /* perf monitor counter enables */
-> -        uint32_t c9_pmovsr; /* perf monitor overflow status */
-> +        uint64_t c9_pmovsr; /* perf monitor overflow status */
+> RFC: I know that many of the locations of the calls to pmu_sync are
+> problematic when icount is enabled because can_do_io will not be set.
+> The documentation says that for deterministic execution, IO must only be
+> performed by the last instruction of a thread block.
 
-This is a bug fix, so it should go in its own patch. Specifically,
-we already have an AArch64 sysreg PMOVSCLR_EL0 which has
-      .fieldoffset = offsetof(CPUARMState, cp15.c9_pmovsr),
-so we should have made the CPUARMState field 64 bits when we
-added it. (I think without this bugfix reads of the AArch64
-reg will return data from the adjoining field in the struct.)
+Yes. You need to arrange that gen_io_start() and gen_io_end()
+are called around the generation of code for operations that might
+do IO or care about the state of the clock, and that we end the TB
+after gen_io_end().
 
+> Because
+> cpu_handle_interrupt() and cpu_handle_exception() are actually made
+> outside of a thread block, is it safe to set can_do_io=1 for them to
+> allow this to succeed? Is there a better mechanism for handling this?
 
->          uint32_t c9_pmuserenr; /* perf monitor user enable */
->          uint64_t c9_pmselr; /* perf monitor counter selection register */
->          uint64_t c9_pminten; /* perf monitor interrupt enables */
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 74e90c5..3932ac0 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -1150,9 +1150,17 @@ static void pmcntenclr_write(CPUARMState *env, const ARMCPRegInfo *ri,
->  static void pmovsr_write(CPUARMState *env, const ARMCPRegInfo *ri,
->                           uint64_t value)
->  {
-> +    value &= PMU_COUNTER_MASK(env);
->      env->cp15.c9_pmovsr &= ~value;
->  }
->
-> +static void pmovsset_write(CPUARMState *env, const ARMCPRegInfo *ri,
-> +                         uint64_t value)
-> +{
-> +    value &= PMU_COUNTER_MASK(env);
-> +    env->cp15.c9_pmovsr |= value;
-> +}
-> +
->  static void pmxevtyper_write(CPUARMState *env, const ARMCPRegInfo *ri,
->                               uint64_t value)
->  {
-> @@ -1317,10 +1325,10 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
->        .fieldoffset = offsetof(CPUARMState, cp15.c9_pmcnten),
->        .writefn = pmcntenclr_write },
->      { .name = "PMOVSR", .cp = 15, .crn = 9, .crm = 12, .opc1 = 0, .opc2 = 3,
-> -      .access = PL0_RW, .fieldoffset = offsetof(CPUARMState, cp15.c9_pmovsr),
-> -      .accessfn = pmreg_access,
-> +      .access = PL0_RW, .accessfn = pmreg_access,
-> +      .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pmovsr),
+From my reading of the code, can_do_io should already be 1
+when these functions are called. It's only set to 0 just
+before we call tcg_qemu_tb_exec() and then set back to 1
+immediately after (see cpu_tb_exec()).
 
-Is this just reshuffling the order of .field initializers?
+In general, the approach you have here looks like it's going to
+be pretty invasive and also hard to keep working right. I think
+we can come up with something a bit better.
 
->        .writefn = pmovsr_write,
-> -      .raw_writefn = raw_write },
-> +      .raw_writefn = raw_write, .resetvalue = 0 },
+Specifically, the filtering criteria effectively only change
+when we change exception level, right? (since you can only
+change security state as part of an exception level change).
+We already have a mechanism for getting a callback when the EL
+changes -- arm_register_el_change_hook(). (We would need to
+upgrade it to support more than one hook function.)
 
-.resetvalue 0 is the default, but it doesn't hurt to specify it
-explicitly I guess.
-
->      { .name = "PMOVSCLR_EL0", .state = ARM_CP_STATE_AA64,
->        .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 12, .opc2 = 3,
->        .access = PL0_RW, .accessfn = pmreg_access,
-> @@ -1328,6 +1336,19 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
->        .fieldoffset = offsetof(CPUARMState, cp15.c9_pmovsr),
->        .writefn = pmovsr_write,
->        .raw_writefn = raw_write },
-> +    { .name = "PMOVSSET", .cp = 15, .crn = 9, .crm = 14, .opc1 = 0, .opc2 = 3,
-> +      .access = PL0_RW, .accessfn = pmreg_access,
-> +      .type = ARM_CP_ALIAS,
-> +      .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pmovsr),
-> +      .writefn = pmovsset_write,
-> +      .raw_writefn = raw_write },
-> +    { .name = "PMOVSSET_EL0", .state = ARM_CP_STATE_AA64,
-> +      .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 14, .opc2 = 3,
-> +      .access = PL0_RW, .accessfn = pmreg_access,
-> +      .type = ARM_CP_ALIAS,
-> +      .fieldoffset = offsetof(CPUARMState, cp15.c9_pmovsr),
-> +      .writefn = pmovsset_write,
-> +      .raw_writefn = raw_write },
-
-You can implement these using a single STATE_BOTH regdef, I think.
-Also, there's a standard order for the fields which goes
-.cp .opc0 .opc1 .crn .crm .opc2
-(you can often omit the .cp as the default is 15).
-
-We need to be a bit careful here, because the AArch32 PMMOVSET
-register isn't implemented in ARMv7 until v7VE. So we need to
-put the regdef somewhere else...
-
+You still need to get the io-count handling right, but there
+are many fewer places that need to change (just the codegen
+for calls to exception-return helpers, I think) and they already
+end the TB, so you don't have the complexity of trying to end the
+TB in places you didn't before, you just need the gen_io_start/end.
 
 thanks
 -- PMM

@@ -1,77 +1,98 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp4554120wru;
-        Mon, 30 Jul 2018 22:27:05 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpdya0O54kzV5P25OL+rEZubogyi19WpVAZaMT3SluSrnrtUhyo3LDwnkPynotfsgk4U9kE/
-X-Received: by 2002:a37:6249:: with SMTP id w70-v6mr18421484qkb.312.1533014825387;
-        Mon, 30 Jul 2018 22:27:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1533014825; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp4563955wrf;
+        Tue, 17 Oct 2017 05:49:14 -0700 (PDT)
+X-Received: by 10.55.79.74 with SMTP id d71mr12000342qkb.5.1508244554857;
+        Tue, 17 Oct 2017 05:49:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508244554; cv=none;
         d=google.com; s=arc-20160816;
-        b=06a9ufHpiJGZKpPI2VpiiBLCmUK+Joo6W9c5GFfh5e+H6q9vegbABqpZ6eXuSu0mhv
-         7o35QlUJUZKeA/X6GYhu4M0aWZBuzO/4cxQyZvKTW6/wUt5reTNZMVr6V6k41hAF4hMT
-         r93a5EHLSMqSekLFJKRDHuvY/gzortH5oHxOL4aHatNOu0ykGYJkzzbkd3djQsd7klyW
-         VVFQQNWCgaI1HtzeeK//hzjdxh8o+tpCiamgPeeXnILwKF1J07B9jUeiDw028DdvvXwO
-         0P/+pdD5JNlrdHWFlswUi5hGIjaemvpyJ/5jBIt6+U9FZkvIjhfEOcqrpICpsVhBmXUf
-         QdZw==
+        b=YV825ni9/EdngbCqcGp/ogGgqKdTH83XfL+0Schv61cOAffwBbdNOHWG69vraNqeOz
+         MQSRuLosZ8WG0e1RByB32p4++BT/NmSlwlHTzV9GYOsEF449ohRf7xHu8ST0Mq425P8N
+         JUq3Q2pV+PuCZUCkUnH6RT09oxHnNbkp7ntEPpERKJa2jcxv04qcFf8ihXsnqzPazVFY
+         o0eAe/weFMiZLx92GInSTlq4ZdoBaPb8CxYWLQK6jb1T3Nfy7fgps/nAEfkK/jzeFZZY
+         eognb4setR/7Y4WpqWcWOgVErE0oggesSSOI/zJQaG3DEtjnb3RrF2y/IERyoZ7Vm4uo
+         xO1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:subject:date:to
-         :from:resent-from:content-transfer-encoding:mime-version:message-id
-         :in-reply-to:resent-message-id:resent-date
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=LocHyxtbOh7sZ4yFnmieeGUTFYtMiO32KGu5rdgrjH0=;
-        b=Rhos5Z8Uih1He7iYePPI2BiPSBd8lwk3zVWB6y+vO8E6eLXXrDJaDibobDZVSXZ8RE
-         jgWIMEvPL0JVqYXBBbIkgrdGQEzuM2YEA3GxFy3k9B3jOsFA69Hwc2eridbcjaa/Uol5
-         8Y2UNtOWonAQxW9MUjBElOZH7f2r4QLg8KqobaPUOfWSIeAZHnbmqbhV3WuCP+RqVz9Z
-         bXaascBCKpcjvnrfj1qZ0g2GUi8f8UFX1eM+qTXEWPl4EYa27gFIlKiuzOavt7kWe1GQ
-         ARNEBjjxkkY9+1WApN0D6kd23V2Do+fWeCSGDoIRBnCGQJ/K2MGMvS+K0W75iyIoq7No
-         Y+kQ==
+        bh=Af9k4V2I+a0pHKKSS8phzxGxqzBz3YJJtS/EbXxPrSM=;
+        b=RH5I5fZeEibGwZKtfDgfNsQr7T44cklBXVXFirBZp3TLpg8oedjKS7zc306JOij1qi
+         fSWLkfnFHM4ZdI/R10z+W0Eoa1zXyeqigoaj291wDZxeX/DSoe7N7Y86Ccwf8uIdtHom
+         B0NsuTn9scGmec62BFS16SHsnZaQE58mNbZ9NOh0NVN96ywsvI+L0tYb9gPlXptfGYH8
+         kmUjOfdEciN1ZCMaxNm4eUmXH0a+lP7DSLugDbIr7LifYRy1hmb4/zKz5n6r1DTggSLp
+         CrnQ3aIjtgEClQLBQx/W1xzgBB8Vb552G39RpKR+3lqxl6xI08p7mdZI4zpkUE0rB+9l
+         Su/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=gWWsdDb/;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o6-v6si4825517qvi.277.2018.07.30.22.27.05
+        by mx.google.com with ESMTPS id s47si279915qtg.164.2017.10.17.05.49.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 30 Jul 2018 22:27:05 -0700 (PDT)
+        Tue, 17 Oct 2017 05:49:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57088 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=gWWsdDb/;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:38441 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fkNBY-0007TR-U2
-	for alex.bennee@linaro.org; Tue, 31 Jul 2018 01:27:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35575)
+	id 1e4RJ1-0003jo-H7
+	for alex.bennee@linaro.org; Tue, 17 Oct 2017 08:49:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47534)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1fkNBO-0007So-MR
-	for qemu-arm@nongnu.org; Tue, 31 Jul 2018 01:26:55 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1e4RIp-0003j9-Cl
+	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 08:49:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1fkNBM-0002Gb-Kk
-	for qemu-arm@nongnu.org; Tue, 31 Jul 2018 01:26:54 -0400
-Resent-Date: Tue, 31 Jul 2018 01:26:54 -0400
-Resent-Message-Id: <E1fkNBM-0002Gb-Kk@eggs.gnu.org>
-Received: from sender-of-o51.zoho.com ([135.84.80.216]:21131)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
-	id 1fkNBM-0002GC-CS
-	for qemu-arm@nongnu.org; Tue, 31 Jul 2018 01:26:52 -0400
-Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
-	mx.zohomail.com with SMTPS id 1533014783229670.0025675415435;
-	Mon, 30 Jul 2018 22:26:23 -0700 (PDT)
-In-Reply-To: <20180730162458.23186-1-peter.maydell@linaro.org>
-Message-ID: <153301478211.27456.14651007722843160778@502c9da6d61e>
+	(envelope-from <peter.maydell@linaro.org>) id 1e4RIo-0007nk-JI
+	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 08:48:59 -0400
+Received: from mail-wm0-x22f.google.com ([2a00:1450:400c:c09::22f]:51601)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1e4RIo-0007n5-Cc
+	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 08:48:58 -0400
+Received: by mail-wm0-x22f.google.com with SMTP id f4so3738444wme.0
+	for <qemu-arm@nongnu.org>; Tue, 17 Oct 2017 05:48:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=Af9k4V2I+a0pHKKSS8phzxGxqzBz3YJJtS/EbXxPrSM=;
+	b=gWWsdDb/W/KZLoj3Olo1IItz344dXquvKX3ZrKoneeBpMOWFxwlqYdkZXkTtzzwTdB
+	YP0+0aw+pEQnFOaEc6srCFTLbS4sNSrymo1/rPPdWkifub4XKOK78JLtd607U1MYPdJ9
+	xemL0rXaT0IqfUeAAGa4/YJ6PV4kvDovcNXKE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=Af9k4V2I+a0pHKKSS8phzxGxqzBz3YJJtS/EbXxPrSM=;
+	b=qFwZQyP2wZfuifO3u/dFd0uJHEyuEkHJHNmzOSJ6U4eUqnEksnk+voheiDG96ugPWQ
+	HvGzYHB7YRnBVYT4ZEQeS7M91zt3xbjPrtMUNqcuTfMSWYvczzXRHw7sfC9acGDhiw7D
+	T/0desXvUae5iXPMBPb4qzOuK5kOSA41UfGkEQREuVqzVMj25Rtk37Y8Td1Du95N1ZaE
+	1W29KFl9F8DyCBNdzw0RZBsIwjKF9ViaAVW/YnmbWu9VQNZT+EpTNXqjxa7nx1RvAgtz
+	UfYTJ5WbyF9JWrKZ3ozFlCwr3vx0V14pEcTwmXnmoLMfoNcXAWR2L90zOiqkJ6v/srlA
+	5JTA==
+X-Gm-Message-State: AMCzsaVyKSk8xQHastUtmXOPL4L8sLq5xqyCE4gbIl4LAirMq9BQtH5X
+	/zEPNWdzi+B/Lhsuiw8XNz0OUsqOR39XvthFXoEkEg==
+X-Google-Smtp-Source: ABhQp+SIg20bN+pWtcuJ1p8kkrESjnlwkzRTu//ahBI5kw2uQ1X+9XamBUljcvkfc43NK+B6Dq0YSElE/PB92QkZuLo=
+X-Received: by 10.28.23.3 with SMTP id 3mr3370877wmx.62.1508244537105; Tue, 17
+	Oct 2017 05:48:57 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: peter.maydell@linaro.org
-Date: Mon, 30 Jul 2018 22:26:23 -0700 (PDT)
-X-ZohoMailClient: External
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 135.84.80.216
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 0/5] mps2: Implement FPGAIO
- counters and dual-timer
+Received: by 10.223.139.195 with HTTP; Tue, 17 Oct 2017 05:48:36 -0700 (PDT)
+In-Reply-To: <1492623684-25799-3-git-send-email-alindsay@codeaurora.org>
+References: <1492623684-25799-1-git-send-email-alindsay@codeaurora.org>
+	<1492623684-25799-3-git-send-email-alindsay@codeaurora.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 17 Oct 2017 13:48:36 +0100
+Message-ID: <CAFEAcA8jQCtXtgYhR0W_rmyLSNmFHqgc-WEy-Anbcj_PF5-4WQ@mail.gmail.com>
+To: Aaron Lindsay <alindsay@codeaurora.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::22f
+Subject: Re: [Qemu-arm] [PATCH 02/13] target/arm: Check PMCNTEN for whether
+ PMCCNTR is enabled
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -83,55 +104,32 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, famz@redhat.com, qemu-devel@nongnu.org,
-	patches@linaro.org
+Cc: qemu-arm <qemu-arm@nongnu.org>, Michael Spradling <mspradli@codeaurora.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Yjb9+UnFUsDw
+X-TUID: c8iSdAdlvxNf
 
-SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
-LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1l
-c3NhZ2UtaWQ6IDIwMTgwNzMwMTYyNDU4LjIzMTg2LTEtcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3Jn
-ClN1YmplY3Q6IFtRZW11LWRldmVsXSBbUEFUQ0ggMC81XSBtcHMyOiBJbXBsZW1lbnQgRlBHQUlP
-IGNvdW50ZXJzIGFuZCBkdWFsLXRpbWVyCgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jp
-bi9iYXNoCgpCQVNFPWJhc2UKbj0xCnRvdGFsPSQoZ2l0IGxvZyAtLW9uZWxpbmUgJEJBU0UuLiB8
-IHdjIC1sKQpmYWlsZWQ9MAoKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApn
-aXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVzIFRydWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRp
-ZmYuYWxnb3JpdGhtIGhpc3RvZ3JhbQoKY29tbWl0cz0iJChnaXQgbG9nIC0tZm9ybWF0PSVIIC0t
-cmV2ZXJzZSAkQkFTRS4uKSIKZm9yIGMgaW4gJGNvbW1pdHM7IGRvCiAgICBlY2hvICJDaGVja2lu
-ZyBQQVRDSCAkbi8kdG90YWw6ICQoZ2l0IGxvZyAtbiAxIC0tZm9ybWF0PSVzICRjKS4uLiIKICAg
-IGlmICEgZ2l0IHNob3cgJGMgLS1mb3JtYXQ9ZW1haWwgfCAuL3NjcmlwdHMvY2hlY2twYXRjaC5w
-bCAtLW1haWxiYWNrIC07IHRoZW4KICAgICAgICBmYWlsZWQ9MQogICAgICAgIGVjaG8KICAgIGZp
-CiAgICBuPSQoKG4rMSkpCmRvbmUKCmV4aXQgJGZhaWxlZAo9PT0gVEVTVCBTQ1JJUFQgRU5EID09
-PQoKVXBkYXRpbmcgM2M4Y2Y1YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRiZDg4ODcxMzM4NApTd2l0
-Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rlc3QnCmRkYjcwNTQ0YTggaHcvYXJtL21wczI6IFdpcmUg
-dXAgZHVhbC10aW1lciBpbiBtcHMyLWFuMzg1IGFuZCBtcHMyLWFuNTExCmJkYjUwNDYwZjQgaHcv
-YXJtL2lvdGtpdDogV2lyZSB1cCB0aGUgZHVhbHRpbWVyCjAwOGE3NjhlMTIgaHcvdGltZXIvY21z
-ZGstYXBiLWR1YWx0aW1lcjogSW1wbGVtZW50IENNU0RLIGR1YWwgdGltZXIgbW9kdWxlCjVhMDA4
-YTM1NDUgaHcvbWlzYy9tcHMyLWZwZ2FpbzogSW1wbGVtZW50IFBTQ05UUiBhbmQgQ09VTlRFUgo3
-NTJjNjU1OTFlIGh3L21pc2MvbXBzMi1mcGdhaW86IEltcGxlbWVudCAxSHogYW5kIDEwMEh6IGNv
-dW50ZXJzCgo9PT0gT1VUUFVUIEJFR0lOID09PQpDaGVja2luZyBQQVRDSCAxLzU6IGh3L21pc2Mv
-bXBzMi1mcGdhaW86IEltcGxlbWVudCAxSHogYW5kIDEwMEh6IGNvdW50ZXJzLi4uCkVSUk9SOiBz
-cGFjZXMgcmVxdWlyZWQgYXJvdW5kIHRoYXQgJyonIChjdHg6VnhWKQojMTMxOiBGSUxFOiBody9t
-aXNjL21wczItZnBnYWlvLmM6MTkzOgorICAgIC5zdWJzZWN0aW9ucyA9IChjb25zdCBWTVN0YXRl
-RGVzY3JpcHRpb24qW10pIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgXgoKdG90YWw6IDEgZXJyb3JzLCAwIHdhcm5pbmdzLCAxMjMgbGluZXMgY2hlY2tlZAoK
-WW91ciBwYXRjaCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2Yg
-dGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50
-YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoKQ2hlY2tpbmcgUEFUQ0ggMi81
-OiBody9taXNjL21wczItZnBnYWlvOiBJbXBsZW1lbnQgUFNDTlRSIGFuZCBDT1VOVEVSLi4uCkNo
-ZWNraW5nIFBBVENIIDMvNTogaHcvdGltZXIvY21zZGstYXBiLWR1YWx0aW1lcjogSW1wbGVtZW50
-IENNU0RLIGR1YWwgdGltZXIgbW9kdWxlLi4uCldBUk5JTkc6IGFkZGVkLCBtb3ZlZCBvciBkZWxl
-dGVkIGZpbGUocyksIGRvZXMgTUFJTlRBSU5FUlMgbmVlZCB1cGRhdGluZz8KIzUwOiAKbmV3IGZp
-bGUgbW9kZSAxMDA2NDQKCnRvdGFsOiAwIGVycm9ycywgMSB3YXJuaW5ncywgNjE3IGxpbmVzIGNo
-ZWNrZWQKCllvdXIgcGF0Y2ggaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYg
-YW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRo
-ZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KQ2hlY2tpbmcgUEFU
-Q0ggNC81OiBody9hcm0vaW90a2l0OiBXaXJlIHVwIHRoZSBkdWFsdGltZXIuLi4KQ2hlY2tpbmcg
-UEFUQ0ggNS81OiBody9hcm0vbXBzMjogV2lyZSB1cCBkdWFsLXRpbWVyIGluIG1wczItYW4zODUg
-YW5kIG1wczItYW41MTEuLi4KPT09IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNvbW1hbmQgZXhpdGVk
-IHdpdGggY29kZTogMQoKCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRj
-aGV3IFtodHRwOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBw
-YXRjaGV3LWRldmVsQHJlZGhhdC5jb20=
+On 19 April 2017 at 18:41, Aaron Lindsay <alindsay@codeaurora.org> wrote:
+> Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
+> ---
+>  target/arm/helper.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 8cb7a94..8888391 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -964,7 +964,7 @@ static inline bool arm_ccnt_enabled(CPUARMState *env)
+>  {
+>      /* This does not support checking PMCCFILTR_EL0 register */
+>
+> -    if (!(env->cp15.c9_pmcr & PMCRE)) {
+> +    if (!(env->cp15.c9_pmcr & PMCRE) || !(env->cp15.c9_pmcnten & (1 << 31))) {
+>          return false;
+>      }
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

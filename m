@@ -1,100 +1,104 @@
-Received: by 10.223.197.9 with SMTP id q9csp4734418wrf;
-        Tue, 17 Oct 2017 08:41:18 -0700 (PDT)
-X-Received: by 10.200.52.149 with SMTP id w21mr20568819qtb.75.1508254878388;
-        Tue, 17 Oct 2017 08:41:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508254878; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp4736060wrf;
+        Tue, 17 Oct 2017 08:43:02 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+SkIwH2E9U5OiJgVevIeFH0rwTbGXj7YkroHdCsYCJkTJJuB0vWZSc+VYraS+u0mQUnJfjY
+X-Received: by 10.55.149.70 with SMTP id x67mr19343451qkd.62.1508254982885;
+        Tue, 17 Oct 2017 08:43:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508254982; cv=none;
         d=google.com; s=arc-20160816;
-        b=eb3GBwo6JqU0EIWSQPBSne9k22RhrfajtaWibxZ1q/JKSVi3WvVJ8NYwSxYIwwIpsR
-         P6O7dVGA9ZtoKQDnTsRIpLfIl4bIf0svumeAr166DwtviMUCtG8INAxNqSynwmLCGx17
-         r5WasweFkDYyhcRSo9zAqzcW9fIgSaCGSE3CqMmLe57vQm6wktCiqbQyV4FTWe55RVTF
-         9yXq9NZMsMGvSkJiWkcUjZ/xb4+ABxBkUZwgKoCn0m/JcL1QctfLimo1usVFG/fdeOn6
-         zSMOjUvkpwaPcSKfUBPSF2tS9c917KjQ1jiaNSh/S4ihyYJzViXT6GqcIVLCDJ/iF6uT
-         +vLg==
+        b=dOCu3U4b4XHQrScS67MeXPrgNFOCTM28PaWHJ7iJsrs5J4wud7OEfZPpOy1TVR07VX
+         hw92BlxVlYMs0vRLw8IiWpbCRz1KQT0uxeRYsQMA5qxMfKd9Ym3Hx1AAZeFKteMjFa6g
+         aKimHlnqB2LUQn2IHrT+WlGh+hyB47UaU7W8vvyGWEpArFfcHqyr9FGlsMWRlK6170Hj
+         D2WfvPUkUlo0VE7UQ0RCVxRiYGijAf8n0SLu9hUDovM/MqOJTAl9igDg1Bv+OLz2WsTO
+         jPinvkuEeG3fMmMwl89R/qLrSO8w4ScgjSost22o8wkg1/uXe5wbqyYRthIctAj3EkoG
+         QphQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=RKk0au0WLTnpNJW0u0053W58JYCV9twQGISEnnKFrco=;
-        b=J5bTKEucYguga5xRB78iQ5sgYDHw1ryVDuhiGj5dgik7hUAL+ggGOLe37LsE/If52t
-         kXF9HRPNu7XT0Rb5tgRsEjZdh9YKh2fTNfSHksYdTRmP4ZOrXhhj3IvAibpYNZRUxpyt
-         tCQmZR64ACN2oqQ1mjJctawt0tEUxiCTnRgcgXjOP3hXwLoJBZhjEw4S7qAb/4/RcrJA
-         R4Hu7o7gp7+MLI11t90jW8yeF/0BhQpGqWQNKoifQQX50c2DFw2ICQI7X0DJk5ufUTyY
-         sVWMAkX/IeZyXUmonbBVZbtkDBcfHf84J6vU3nOzP7dtPo3F2CGmjJUu1KECxmLty6R3
-         Frvg==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dmarc-filter:dkim-signature:dkim-signature
+         :arc-authentication-results;
+        bh=+ri9JyPtjea3yg/Zr9aAwHj7V5cQYqHwSfYu878D358=;
+        b=cg83dYOUsMbeKATr5yi6zYA6Flo9ESYEENSp23a8eXEg+rNiqbMC2uKsID0X3W1aXy
+         xu4ZLdH/f4I3P+TjwYU8kG1f5/dUk37mKrXXX8iKJmqRhp71SNY7NHXwXWpHKwna8t+I
+         tHA/Gzg1sQGoCudZ3Yg2VjjRYsRbuZYdTj+m6SQ60BlzD2MY9SK8hxMErECZktxyXn/I
+         ZB+cXE8k1G7bwbk++uQ9btqjFvhO+ZmOxk8UOTSwA0tJ+FkOEdeKSQW2XQccgwkj1svW
+         85vcWNRymiGg+a8ir7SxmucKS13BCkU9fhDqQbQM2zTyGleHmdlrC2MoLuhc2nczuZS8
+         xWuA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=M1fxlF7R;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=VonthBb+;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=Nb1dAta+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u123si922855qkh.184.2017.10.17.08.41.17
+        by mx.google.com with ESMTPS id n16si8933694qtb.48.2017.10.17.08.43.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 17 Oct 2017 08:41:18 -0700 (PDT)
+        Tue, 17 Oct 2017 08:43:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=M1fxlF7R;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40105 helo=lists.gnu.org)
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=VonthBb+;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=Nb1dAta+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:40111 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e4TzY-0006wV-48
-	for alex.bennee@linaro.org; Tue, 17 Oct 2017 11:41:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55850)
+	id 1e4U1E-0008N1-LQ
+	for alex.bennee@linaro.org; Tue, 17 Oct 2017 11:43:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56687)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e4Txx-0005dl-8a
-	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 11:39:38 -0400
+	(envelope-from <alindsay@codeaurora.org>) id 1e4U12-0008KZ-8G
+	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 11:42:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e4Txw-0007Hm-4w
-	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 11:39:37 -0400
-Received: from mail-wr0-x236.google.com ([2a00:1450:400c:c0c::236]:49876)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1e4Txv-0007HX-Ul
-	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 11:39:36 -0400
-Received: by mail-wr0-x236.google.com with SMTP id g90so2150809wrd.6
-	for <qemu-arm@nongnu.org>; Tue, 17 Oct 2017 08:39:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=RKk0au0WLTnpNJW0u0053W58JYCV9twQGISEnnKFrco=;
-	b=M1fxlF7RBR+v+Y4LMI1d2myZ41JDzmc1FJLAz26OgdHJCr7/lN7JDk04gwFSr6o7Wn
-	sM82HU55DcldH9cSvM/wkT61cx1dUyrmZa1pPdABosdRJyySW5PXahHaWRezRlTbKT8W
-	9jg9YUBDCncmVpGSvPzSQet534kG135Z9tQvQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=RKk0au0WLTnpNJW0u0053W58JYCV9twQGISEnnKFrco=;
-	b=S9HX76tSQwwUEkMgGcpQ6JtpBx/GzjVRCHhZV6brlZqJyFv8+XOrcH4BiAPLMf9V3X
-	OTcNF9nCbrKWrjFB9IdFByZH9QyU8jh8AzKNizUXe/TvCx7t5rk6CaNpmseG/A4VLvhh
-	srDTg9pe69h3sXIkfU3yIKqywSupdvPMly0SYbnSoZvOgBJIvnDA1zcA72Gk+Vvanx92
-	cy5LTCl23crV36bezblF0TpJ7m+fiVXFUcUAGkidfIQZ23ExsatjWOpkcKh/G9siSfSa
-	uFiZLy1/9556cI9iwFhFpNJbhd7mAdfrTOtyOIYHUtIj3WHGNzzmq2spXjq2b4XrTdv9
-	7/jA==
-X-Gm-Message-State: AMCzsaUvcXtPQwwmk10ijv8QGlfuHg48xI/Uog4FfIBOd0p7pdxh2ABS
-	eYuMCc5Ll12LHzhArJISeNXzP6G4yqohBiZN6DchmA==
-X-Google-Smtp-Source: ABhQp+Qkz/xnjO7YAcTQG6CePIPTU2NPrsu1oBGfWwB37tL3TDxevhIcjBgYUqOeVaSLJCi2UvJm9xFxGZLtRUNtEZ8=
-X-Received: by 10.223.197.19 with SMTP id q19mr4441310wrf.272.1508254774791;
-	Tue, 17 Oct 2017 08:39:34 -0700 (PDT)
+	(envelope-from <alindsay@codeaurora.org>) id 1e4U0z-0008Vc-J8
+	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 11:42:48 -0400
+Received: from smtp.codeaurora.org ([198.145.29.96]:33860)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <alindsay@codeaurora.org>)
+	id 1e4U0z-0008TE-8W; Tue, 17 Oct 2017 11:42:45 -0400
+Received: by smtp.codeaurora.org (Postfix, from userid 1000)
+	id 0E13A607BA; Tue, 17 Oct 2017 15:42:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
+	s=default; t=1508254964;
+	bh=D3dD0iXAccrAO62Fgsbd3HhdPWupHyT0UpqNOKzK0oM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=VonthBb+MUnqGEmHWvHrqbRGZ+mSJ6TM0pIG9SAIskDtTs4gfqpiKMkVFtL88nSN6
+	4qONiCd8jlFyWdlbRk1NGOGKBIWScnbXmh8x8dMbjZROmKZj6kL/JkagzyJDFXiAIR
+	lQEs6c8Bablf/5COl0bqYk9jutFERGvxL4pnfm24=
+Received: from codeaurora.org (global_nat1_iad_fw.qualcomm.com [129.46.232.65])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	(Authenticated sender: alindsay@smtp.codeaurora.org)
+	by smtp.codeaurora.org (Postfix) with ESMTPSA id D4DE3607B3;
+	Tue, 17 Oct 2017 15:42:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
+	s=default; t=1508254963;
+	bh=D3dD0iXAccrAO62Fgsbd3HhdPWupHyT0UpqNOKzK0oM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Nb1dAta+W0BkPrrMtf8AoUzkvmCG0rGYdvBP80cNx4e8WquMwR+J+j12NxD1OxdNx
+	90e6LgplddQ4oJH+11r9riJLGu/+MCIAXA/x1SLr6x2zr4l4IWRPUfH0NWpRMVQrt7
+	f0SsICa+7gxTsK/H5lA2puglIlZGKLqAqiGzBt3s=
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org D4DE3607B3
+Authentication-Results: pdx-caf-mail.web.codeaurora.org;
+	dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: pdx-caf-mail.web.codeaurora.org;
+	spf=none smtp.mailfrom=alindsay@codeaurora.org
+Date: Tue, 17 Oct 2017 11:42:41 -0400
+From: Aaron Lindsay <alindsay@codeaurora.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20171017154240.GF3676@codeaurora.org>
+References: <1506737310-21880-1-git-send-email-alindsay@codeaurora.org>
+	<1506737310-21880-5-git-send-email-alindsay@codeaurora.org>
+	<CAFEAcA94pxKuPZZgKOMXyW8xteHTBWz-JM6mGOX-ot6OeBt-tw@mail.gmail.com>
 MIME-Version: 1.0
-Received: by 10.223.139.195 with HTTP; Tue, 17 Oct 2017 08:39:14 -0700 (PDT)
-In-Reply-To: <20171013142852.916-2-clg@kaod.org>
-References: <20171013142852.916-1-clg@kaod.org>
-	<20171013142852.916-2-clg@kaod.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 17 Oct 2017 16:39:14 +0100
-Message-ID: <CAFEAcA-gYYbQu-Nuds3E0Aw7j0OdD5_ySm=EdMb1_FzxEoMTBQ@mail.gmail.com>
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::236
-Subject: Re: [Qemu-arm] [PATCH v3 1/6] aspeed: add support for the
- witherspoon-bmc board
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA94pxKuPZZgKOMXyW8xteHTBWz-JM6mGOX-ot6OeBt-tw@mail.gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 198.145.29.96
+Subject: Re: [Qemu-arm] [PATCH 04/13] target/arm: Mask PMU register writes
+ based on PMCR_EL0.N
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,48 +110,121 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	Joel Stanley <joel@jms.id.au>
+Cc: Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
+	Michael Spradling <mspradli@codeaurora.org>,
+	Digant Desai <digantd@codeaurora.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: H5cLemZO1oGv
+X-TUID: KAoSGpYM7QF6
 
-On 13 October 2017 at 15:28, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
-> The Witherspoon boards are OpenPOWER system hosting POWER9 Processors.
-> Let's add support for their BMC including a couple of I2C devices as
-> found on real HW.
->
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
-> ---
->
->  Changes since v2:
->
->  - removed 'ignore_memory_transaction_failures' flag on the machine.
->    Will require a couple of fixes in the legacy U-Boot accessing wrongly
->    the bss before the DRAM is initialized.
->
->    The HW drops the write access surely because the SMC controller is
->    configured in autoread mode by default. I don't know how to model
->    this behavior in QEMU. I think we would need suppport to boot from
->    a MMIO region.
+On Oct 17 14:41, Peter Maydell wrote:
+> On 30 September 2017 at 03:08, Aaron Lindsay <alindsay@codeaurora.org> wrote:
+> > This is in preparation for enabling counters other than PMCCNTR
+> >
+> > Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
+> > ---
+> >  target/arm/helper.c | 24 +++++++++++++++---------
+> >  1 file changed, 15 insertions(+), 9 deletions(-)
+> >
+> > diff --git a/target/arm/helper.c b/target/arm/helper.c
+> > index ecf8c55..54070a3 100644
+> > --- a/target/arm/helper.c
+> > +++ b/target/arm/helper.c
+> > @@ -30,11 +30,6 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
+> >                                 hwaddr *phys_ptr, MemTxAttrs *txattrs, int *prot,
+> >                                 target_ulong *page_size_ptr, uint32_t *fsr,
+> >                                 ARMMMUFaultInfo *fi);
+> > -
+> > -/* Definitions for the PMCCNTR and PMCR registers */
+> > -#define PMCRD   0x8
+> > -#define PMCRC   0x4
+> > -#define PMCRE   0x1
+> >  #endif
+> >
+> >  static int vfp_gdb_get_reg(CPUARMState *env, uint8_t *buf, int reg)
+> > @@ -876,6 +871,17 @@ static const ARMCPRegInfo v6_cp_reginfo[] = {
+> >      REGINFO_SENTINEL
+> >  };
+> >
+> > +/* Definitions for the PMU registers */
+> > +#define PMCRN   0xf800
+> 
+> We usually name this kind of whole-field mask value something like PMCRN_MASK.
+> 
+> (We also have a FIELD() macro in hw/registerfields.h for defining
+> mask/length/shift constants; though it can be a bit verbose in
+> the length of the names it uses, so I don't insist on its use
+> if you don't like the results. I'm on the fence myself about it.)
 
-It is actually possible now -- see hw/ssi/xilinx_spips.c and the
-request_mmio_ptr code. It's a bit experimental at the moment
-though (in particular it breaks migration, a thing which we
-seem to have forgotten to fix for this release cycle :-( )
+Will do.
 
-The other similar thing we have is the flash devices, which
-allow execution, but requires that the guest doesn't try to
-execute at the same time as it's put the flash into
-reads-like-a-device mode.
+> > +#define PMCRN_SHIFT 11
+> > +#define PMCRD   0x8
+> > +#define PMCRC   0x4
+> > +#define PMCRE   0x1
+> > +
+> > +#define PMU_NUM_COUNTERS(env) ((env->cp15.c9_pmcr & PMCRN) >> PMCRN_SHIFT)
+> > +/* Bits allowed to be set/cleared for PMCNTEN* and PMINTEN* */
+> > +#define PMU_COUNTER_MASK(env) ((1 << 31) | ((1 << PMU_NUM_COUNTERS(env)) - 1))
+> > +
+> >  static CPAccessResult pmreg_access(CPUARMState *env, const ARMCPRegInfo *ri,
+> >                                     bool isread)
+> >  {
+> > @@ -1060,14 +1066,14 @@ static void pmccfiltr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+> >  static void pmcntenset_write(CPUARMState *env, const ARMCPRegInfo *ri,
+> >                              uint64_t value)
+> >  {
+> > -    value &= (1 << 31);
+> > +    value &= (PMU_COUNTER_MASK(env) | (1 << 31));
+> 
+> PMU_COUNTER_MASK always contains bit 31, so why do we manually OR it in
+> again here?
 
-How are you modelling this bit of the address space at the moment?
-A "reads like RAM but writes are ignored" lump of memory is easy...
+I forgot I'd also included the cycle counter in PMU_COUNTER_MASK... I'll
+remove the duplication here and in pmcntenclr_write below.
 
-In any case we can deal with this as a later patchset.
+> >      env->cp15.c9_pmcnten |= value;
+> >  }
+> >
+> >  static void pmcntenclr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+> >                               uint64_t value)
+> >  {
+> > -    value &= (1 << 31);
+> > +    value &= (PMU_COUNTER_MASK(env) | (1 << 31));
+> >      env->cp15.c9_pmcnten &= ~value;
+> >  }
+> >
+> > @@ -1115,14 +1121,14 @@ static void pmintenset_write(CPUARMState *env, const ARMCPRegInfo *ri,
+> >                               uint64_t value)
+> >  {
+> >      /* We have no event counters so only the C bit can be changed */
+> > -    value &= (1 << 31);
+> > +    value &= PMU_COUNTER_MASK(env);
+> >      env->cp15.c9_pminten |= value;
+> >  }
+> >
+> >  static void pmintenclr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+> >                               uint64_t value)
+> >  {
+> > -    value &= (1 << 31);
+> > +    value &= PMU_COUNTER_MASK(env);
+> >      env->cp15.c9_pminten &= ~value;
+> >  }
+> >
+> > --
+> > Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies, Inc.\nQualcomm Technologies, Inc. is a member of the\nCode Aurora Forum, a Linux Foundation Collaborative Project.
+> 
+> Shouldn't these '\n' in your sig be literal line breaks? :-)
 
-thanks
--- PMM
+Yes :( ...apparently `git config` doesn't interpret them as I expected.
+
+> thanks
+> -- PMM
+
+-- 
+Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies, Inc.
+Qualcomm Technologies, Inc. is a member of the
+Code Aurora Forum, a Linux Foundation Collaborative Project.

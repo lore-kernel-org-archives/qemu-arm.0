@@ -1,98 +1,100 @@
-Received: by 10.223.197.9 with SMTP id q9csp4688660wrf;
-        Tue, 17 Oct 2017 07:57:44 -0700 (PDT)
-X-Received: by 10.55.119.70 with SMTP id s67mr17675870qkc.294.1508252264388;
-        Tue, 17 Oct 2017 07:57:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508252264; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp4692824wrf;
+        Tue, 17 Oct 2017 08:01:49 -0700 (PDT)
+X-Received: by 10.176.86.70 with SMTP id z6mr11050858uaa.103.1508252509557;
+        Tue, 17 Oct 2017 08:01:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508252509; cv=none;
         d=google.com; s=arc-20160816;
-        b=wkQhFkxMOnFckHeVZ8CKKWRus0uOKHicoFIW5fhOXMqNqXjhKkM6e/o2l3V/tMykjI
-         fHkI9nOT6ddL5H1zWveLB6ljtblNYAnZN1nLNa8VcX1nsY2IrRGFu+uBmsfa6cwpVnMB
-         ZQwrhXraiR1yuCRhjKSCRpLLWdYWq8eCIN1FHxXOybX6Jq/MQAKtkYl5xbJB8rh9pcB+
-         P/wn8aCq4IxJovLMB7fltE25nLSaM9CMZUyduZwt+85ACJOQVEQGyfE7ATMwruN7gzBC
-         ZIRCztN9LjJHcfYC5x5GBU9ARZdinfc8J4iNBY2k094KpUIi/A7aEHn68xdOff33EE+D
-         kdFg==
+        b=tHsd2EMm/lhJRLcfUD1qByTJb+gF+n2EvoNMPWH/8cCvhw+sQUBHcYzn5L71iKMgqU
+         opGdyWqkDFnyIVJ3F+0GU5if8aP35QEABP3YHe6PhgbluPddYLkbfBVMInqB4GNMDUGC
+         0FvvPYYkmvo5wOUs21bgfvbjnmjcAafn440uhY8gDIHxx+XaqkOQg6uuIWAjdXlWvFLs
+         i12DmZGkSl0ulp5aFPO9Dyxj2m/7p/22pZlGH2MynRcj1qAWfVmm4FdiOQ+QElvvNWeN
+         4UOtsu0YY+EKUC1MEZdYLPvUIGESB7T4VeSNa0voBiFZWPdJSynJ7Ju9NuScf0ff9RSk
+         0isQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=OXWWae5uL6p7SaD4MK+MDBuN4Y68l2/L9YIMkpFXmN0=;
-        b=rVzCy8sB0ZTnkUYvHY1NXbWzbKCgF2tlForQN3scTUjXjIPdlb6rPsVrlaR3mlNqgG
-         VqXAp340kuGDjOqS/jdmyGDqM6/fI+cRTFolog9OksxSSsngISuneUnSMP7XPPlMopQa
-         joD3PHLWxyaXAFdBnlRTF+7CzfCMRl9NHo2UUL5ZmtNttuktc4rlmnxTzSaPRpnCXA0K
-         +vR9uhMGPscTvWeUutu4yg1Vi7aAVEB8dgcFCXstuYONnl4uWbfYNMdpaY4ND7kZlYJA
-         ASTOdhjFg3FFUZqy2S1zDNB7osnJo0soQYdeFQ9BKOjtmgvCLERyrrUo1lqJdgGdsowH
-         5oHw==
+        bh=YU59wc8X2R9zGSeviVnOkb7jrI5Hf7UMc0rsau96c4E=;
+        b=FkLFFEaT7YmfZVcgnClfCV8mhVhz7FMihB321oVsfDMAntTgyOKgGgCwHMXgyfQSxj
+         W9XtHsWNj0WhsolWWikyL100DQlbqJkP9w9zKyKPzfunSqmVs0X0mkFuGsy5j3LDQgdl
+         fRaZ7IJ1AcNxMIhBu8VpSwZfaofpoHwHCxUUbH4EKqsw/jVNThoscQjEVGU+nc7OKL6T
+         nnlGDhzrs4BPvD9b31nLHwxS9kss1ZYKuwbEiXtTPRGN7Jt5OSliYcEQnm4iSQnwAR5S
+         Y3c1EzCQ0gWDw534pOsXBwEWLpx+8LzNW7DO1+SAW6gWBtH2qx8nG3NKgFnFWgC66eBx
+         19xA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=QoHWe7mS;
+       dkim=fail header.i=@linaro.org header.s=google header.b=KCaUFqxo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t56si3516130qte.286.2017.10.17.07.57.43
+        by mx.google.com with ESMTPS id j33si2528499uad.353.2017.10.17.08.01.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 17 Oct 2017 07:57:44 -0700 (PDT)
+        Tue, 17 Oct 2017 08:01:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=QoHWe7mS;
+       dkim=fail header.i=@linaro.org header.s=google header.b=KCaUFqxo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39944 helo=lists.gnu.org)
+Received: from localhost ([::1]:39971 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e4TJO-00021S-7Z
-	for alex.bennee@linaro.org; Tue, 17 Oct 2017 10:57:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43658)
+	id 1e4TNK-0005O7-Pc
+	for alex.bennee@linaro.org; Tue, 17 Oct 2017 11:01:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45021)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e4TJH-000217-Fd
-	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 10:57:36 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1e4TMi-0004uC-Vr
+	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 11:01:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e4TJG-0008M8-4r
-	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 10:57:35 -0400
-Received: from mail-wr0-x22c.google.com ([2a00:1450:400c:c0c::22c]:50895)
+	(envelope-from <peter.maydell@linaro.org>) id 1e4TMZ-0001TU-Of
+	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 11:01:09 -0400
+Received: from mail-wm0-x233.google.com ([2a00:1450:400c:c09::233]:51288)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1e4TJF-0008LQ-VY
-	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 10:57:34 -0400
-Received: by mail-wr0-x22c.google.com with SMTP id q42so2003878wrb.7
-	for <qemu-arm@nongnu.org>; Tue, 17 Oct 2017 07:57:33 -0700 (PDT)
+	id 1e4TMZ-0001T8-I3
+	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 11:00:59 -0400
+Received: by mail-wm0-x233.google.com with SMTP id f4so4580607wme.0
+	for <qemu-arm@nongnu.org>; Tue, 17 Oct 2017 08:00:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=OXWWae5uL6p7SaD4MK+MDBuN4Y68l2/L9YIMkpFXmN0=;
-	b=QoHWe7mSa/BZFf58G8Ywep//Ad/59fZjH3auSbZiTg01PaGIh6M2c2Bb46aOUZc3O9
-	84xma4CZrQQTJqF4l2moPoUlXvg2dAQUwVpMT3xsMNtsFdVMd/2gw4z13Z04OfLLYnB9
-	dBMSrfbbG+n0DnqmliUkeHhdBWC8dMFKWbR7Y=
+	:cc; bh=YU59wc8X2R9zGSeviVnOkb7jrI5Hf7UMc0rsau96c4E=;
+	b=KCaUFqxoDC3EIGhd65V2THBGF/g0xDsm+A9mccimB7xxT4ho5vIVlryshmw4dWJkOR
+	pAe4SpH22ye3RXpV+9oArTHgVZtbai//LkE0oOfEQy1oGJ7FeQcJi9e8TOEGlE+SGgQQ
+	vAnvyCHGDXP1DdJonNCsDqKpjke7tUOmjTrv8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=OXWWae5uL6p7SaD4MK+MDBuN4Y68l2/L9YIMkpFXmN0=;
-	b=NRYRv3mJel/dfV6VCZ4VWecq40+tY6pin84HkkCFio+pj1FHz7bBFpUXtdtKdEIUEi
-	ZCrMyXXukii7YCrFs3rnZAyYH7WtN9yJTu55guTRb6NGRv74Vwjn87hgVmBbAHPPHlF0
-	wlnmBNEjnb9ISbJwq+dliq2bNPNl4CeVwh47A0WVZI0ahzh+HbX3j1wKoAicYAhn950Z
-	KFEjSVM4ZvCFaccjoZoOxLwyMxjfyqdjEm8UsZ4zjuK/6/4BBMRfEGL8gbr0Pwzhcblj
-	cMITKAK1X6gnSeNoU0bXmjM5ioGRyvC8FdMOPMCeO/xHoRoN9RLQSB1uv9tBraW5thBg
-	l0PA==
-X-Gm-Message-State: AMCzsaWuINIXkeWYGR2NXSHvnkdVHaiZzZm62UGeuDkYnPqE9ZgJlmVn
-	vADPwXiQYMTGsscLvCKt+av9w4VxR4YZCnKqock9gg==
-X-Google-Smtp-Source: ABhQp+TQ66Pje40X2x3pwOlJ42eLhGa6kdKlxeWXgmh9mD3/vjn0TPSEgM1ilONsffvsh1hhNx1qQtne7u6zeMl30bY=
-X-Received: by 10.223.197.19 with SMTP id q19mr4309623wrf.272.1508252252429;
-	Tue, 17 Oct 2017 07:57:32 -0700 (PDT)
+	bh=YU59wc8X2R9zGSeviVnOkb7jrI5Hf7UMc0rsau96c4E=;
+	b=gpyVtblwL7bPXllpHqM8QXyKilmYcAgcm05eqlgesAoz1UVu0TJ6xvU/MeBu1BZdeZ
+	GIFbyQTCoW1e3ILO62Co1dko/nA3uNf7ovnJAmVyPz3629RdPdef17QretsXLrmkXgQr
+	vafX6t2gBo3jRx2Kmitfp9Thhah35vd+tf6DUl1nrTJbRtBSm6MlUta9mmswrFN88588
+	I+J13QiCHH9tr2p4rAOIgxdnpw3xfz5QwK2cCUH15x/lkJbd2qbHQK7ksDt8pZLA98g+
+	iwnjTlmEHDsO8NAplAko2Spzwqsf9BlvhdcBRLtH1QPx1eJnefHBKUz65qtg0ZgfoH0E
+	LEbg==
+X-Gm-Message-State: AMCzsaXyXXLiPXJDRF9hMQbPbeJhfY5uYwgZUnOsBTjGvGJ47OSGbbdZ
+	Yv9653E+3K9S9Nc+00EuTcLVFJc9aPracZiZIfL47g==
+X-Google-Smtp-Source: ABhQp+TDfYO+hHwuIGdGY765JFr5V7LghFefZKL44w6+S8nhRgzlVxmSwzVJHTe3kdWACeaoiq76DZgfF8XeC2N9i/M=
+X-Received: by 10.28.236.203 with SMTP id h72mr4158818wmi.147.1508252458429;
+	Tue, 17 Oct 2017 08:00:58 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.223.139.195 with HTTP; Tue, 17 Oct 2017 07:57:11 -0700 (PDT)
-In-Reply-To: <1506737310-21880-7-git-send-email-alindsay@codeaurora.org>
+Received: by 10.223.139.195 with HTTP; Tue, 17 Oct 2017 08:00:37 -0700 (PDT)
+In-Reply-To: <20171017145940.GD3676@codeaurora.org>
 References: <1506737310-21880-1-git-send-email-alindsay@codeaurora.org>
-	<1506737310-21880-7-git-send-email-alindsay@codeaurora.org>
+	<1506737310-21880-3-git-send-email-alindsay@codeaurora.org>
+	<CAFEAcA_zwAu4Zt0-2Qy9euBzYQgD19EnnoWwa+ZNzidWwkmEcA@mail.gmail.com>
+	<20171017145940.GD3676@codeaurora.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 17 Oct 2017 15:57:11 +0100
-Message-ID: <CAFEAcA8H-Zv0HRiMTSYFqkR0Wx7npB_N_ze9h0oovVa1tMHDRQ@mail.gmail.com>
+Date: Tue, 17 Oct 2017 16:00:37 +0100
+Message-ID: <CAFEAcA8U72AL=7mMduf2Bqvh9Tq1TnE_GCkrD7R1F5B-R73j=w@mail.gmail.com>
 To: Aaron Lindsay <alindsay@codeaurora.org>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::22c
-Subject: Re: [Qemu-arm] [PATCH 06/13] target/arm: Filter cycle counter based
- on PMCCFILTR_EL0
+X-Received-From: 2a00:1450:400c:c09::233
+Subject: Re: [Qemu-arm] [PATCH 02/13] target/arm: Check PMCNTEN for whether
+ PMCCNTR is enabled
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,55 +106,28 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Michael Spradling <mspradli@codeaurora.org>,
+Cc: Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
+	Michael Spradling <mspradli@codeaurora.org>,
 	Digant Desai <digantd@codeaurora.org>,
 	QEMU Developers <qemu-devel@nongnu.org>,
 	Alistair Francis <alistair.francis@xilinx.com>,
 	qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BPAOyF+vLF/V
+X-TUID: emrDBE2dL/PI
 
-On 30 September 2017 at 03:08, Aaron Lindsay <alindsay@codeaurora.org> wrote:
-> The pmu_counter_filtered and pmu_sync functions are generic (as opposed
-> to PMCCNTR-specific) to allow for the implementation of other events.
+On 17 October 2017 at 15:59, Aaron Lindsay <alindsay@codeaurora.org> wrote:
+> On Oct 17 13:49, Peter Maydell wrote:
+>> I keep replying to your v1 patchset by mistake -- can you use
+>> the git format-patch options to put make the subject prefix
+>> be "[PATCH v3]" for the next round in all the patchmails to
+>> help keep the versions distinct, please?
 >
-> RFC: I know that many of the locations of the calls to pmu_sync are
-> problematic when icount is enabled because can_do_io will not be set.
-> The documentation says that for deterministic execution, IO must only be
-> performed by the last instruction of a thread block.
+> Yes, and I apologize for the nuisance. Also, thanks - I didn't know
+> about the `-v, --reroll-count` option and must have gotten distracted
+> between updating the subject to be 'v2' for the cover letter and the patches.
 
-Yes. You need to arrange that gen_io_start() and gen_io_end()
-are called around the generation of code for operations that might
-do IO or care about the state of the clock, and that we end the TB
-after gen_io_end().
-
-> Because
-> cpu_handle_interrupt() and cpu_handle_exception() are actually made
-> outside of a thread block, is it safe to set can_do_io=1 for them to
-> allow this to succeed? Is there a better mechanism for handling this?
-
-From my reading of the code, can_do_io should already be 1
-when these functions are called. It's only set to 0 just
-before we call tcg_qemu_tb_exec() and then set back to 1
-immediately after (see cpu_tb_exec()).
-
-In general, the approach you have here looks like it's going to
-be pretty invasive and also hard to keep working right. I think
-we can come up with something a bit better.
-
-Specifically, the filtering criteria effectively only change
-when we change exception level, right? (since you can only
-change security state as part of an exception level change).
-We already have a mechanism for getting a callback when the EL
-changes -- arm_register_el_change_hook(). (We would need to
-upgrade it to support more than one hook function.)
-
-You still need to get the io-count handling right, but there
-are many fewer places that need to change (just the codegen
-for calls to exception-return helpers, I think) and they already
-end the TB, so you don't have the complexity of trying to end the
-TB in places you didn't before, you just need the gen_io_start/end.
+There's also --subject-prefix if you need more flexibility than -v.
 
 thanks
 -- PMM

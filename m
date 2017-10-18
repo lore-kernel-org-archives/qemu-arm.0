@@ -1,136 +1,120 @@
-Received: by 10.223.159.82 with SMTP id f18csp905249wrg;
-        Tue, 21 Nov 2017 08:51:37 -0800 (PST)
-X-Received: by 10.202.240.65 with SMTP id o62mr1845972oih.300.1511283097496;
-        Tue, 21 Nov 2017 08:51:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1511283097; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp5130540wrf;
+        Tue, 17 Oct 2017 17:11:08 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+RgK+udUODcXiBFrNqXM0vY03vvtbJd5Gk9mqfi2HCk367SswLjbCF/DjL6tRZnQC3UB+pM
+X-Received: by 10.55.154.84 with SMTP id c81mr139393qke.43.1508285468043;
+        Tue, 17 Oct 2017 17:11:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508285468; cv=none;
         d=google.com; s=arc-20160816;
-        b=wDj7dn0fAtDK3d3PrsbslY3nI5mLslGozTFI8+QVEa246drIBZLdCAT96/3pVLyrfS
-         97ozs6saCQYJRLKK6SvjoVV5V6C66Jq1GEkfQmOZ5Ps5FJupk6y0ESdVdK9weCVyM2aX
-         DYMFVg3YL0NLTMmHXSydwyxXehWXcZ5yXgXNZDXFUj1pqhgMe4OZoY39vwrrF6EIiIjj
-         vTHYkz+qIFt3Xr952dDcubW7jCzY+Rmb8WTOnNSXcbO845Bj+VeslgjlXZwk54ATfIRn
-         xoOOKeIxiq7lXNIzhlrwM+EbrnDDmqSX0up4pJ4l4A+xaRLQfclCLyGo4NVZ+BD4SkM6
-         Q/gQ==
+        b=wA3owyTXv2cT+qe6hZatIFo7xuZ9K/lyy1SawvEqvku9UNTGxURPm53z4Bb/lWIXt3
+         aZKjg9OH6lVx2RMgKMxTtoSZOREAO/kbZXekBx4mmC0UC9GKImUO+TX3dqLKT9lgqZqQ
+         qTQMyu2/gUX/rf/0mTGyNUWd1FRDt4syIv4h9hXoISVWWZxEK/rlIIinPyKUrC9ma595
+         DbTM2PKGw88Ju/jURa412CxzauJNSeOTHXT8Y3ahV1uZzHKsbaJcM86Qmg+rKHsTHv8I
+         y8ZxyN2ViYpY9yiLoJ/RVbDPCDt6B0y5jsaDmSdOj3kjJ3SqlOA7MluGWgBT3sbJclUw
+         7Ydg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=XkpICOBwQkplJWGtbJ+BFNZ6zrrBCdjoSMt9MGjDclw=;
-        b=L9fgFbcC4zim0teULNDgVq7MZLA9lR4zuhz3tm4aK/bx0kw6xi0yN4+t+qgPZE/ZIu
-         0EnnbcKOvKdyW/XPfgioFWe++bYqzQQBvH1VLlV0Rx7FnaqyfAWzyVVBz/Ig+nPos7pN
-         4na/rMuD9Vfio5sPDhYWmh8LzvSLNHVRlkwxJazvpTrBW6MNbxJ74y5Qf/ErhnBOOW6q
-         fzWBxTq5hfaJ/0+GswFrulviBjNevP4zFzwdEBr2KlCCJL2tiJ02V7kcZjE/h5mqQdQf
-         MA17xiSmMZMagLt/FdqcnhDFYIF4jjKbEqJJAj452c7sHq8VYRYHa+PY8q/5TTQJoix2
-         wh+Q==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
+         :message-id:to:from:date:dmarc-filter:arc-authentication-results;
+        bh=QdtUVePvjnUKf7ayaPJEzlFP3poU4VGvehcv5+w+noY=;
+        b=TSlD9dZkCfOMnRLr6W+FCUOYSVHsOxvEF4Sn3lgm4mlae3LzDGfrmvaaeBGFP1sqh3
+         HhR8ODY65hwDgpCdLmxaRUOGjtFBobgIJ0x6oUDt1Al1rGxFxJYRqQGI5l5ZjbtBagCE
+         n/TgjS29R34ljKISZkk67wtqS/1GboYqX2uVWo/YF3c2yipA27791OE9mSjosjdbeFaU
+         DfaG0URBbuWN2xBffCOI8Scx2MiSdI1/fuoINCXLruatL9DUPR9supHI3272k0eivzDA
+         mXWVmvrQemZquYOXmolBM4jCaaMjJYqAkmVxyWB5JPyWafmj6tesqcdK4tR/A2949oKs
+         dTQg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hZHoEOSH;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id j81sor4496984oih.116.2017.11.21.08.51.37
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id q16si1406851qkh.107.2017.10.17.17.11.07
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 21 Nov 2017 08:51:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 17 Oct 2017 17:11:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hZHoEOSH;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=XkpICOBwQkplJWGtbJ+BFNZ6zrrBCdjoSMt9MGjDclw=;
-        b=hZHoEOSH6NQA+mdwmI64UGo0D4nT+jzScz7eNkzVDaMSmY0JA4VCDJyCzh1mlBwVnj
-         5Qf5qFwsH5tsF70q/Ibml8C/NMyt4JOtjd3SBv4BI4ZAPmmSmpY/6au4hxsytpMjgdvY
-         3mtF5Q/1U5kqA7rKVB6234yx+P039B9V9z1R4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=XkpICOBwQkplJWGtbJ+BFNZ6zrrBCdjoSMt9MGjDclw=;
-        b=hql7Gc3Qyn/IYPHhDm3LPBvfm+/4f9mIpmF7EKRBAKXS8GokubeJbOgvyixm9f8DUh
-         LI8NzXfiWfpl2cBC2Bj8e2cShKxdwCk7By8njRbcsuvxupW0b9b+fjLuMqktQx9pMiLx
-         OnFRCQvUgMOvjMnHKI3rA/UieNumhcwAI5tf5Ik7oatC3wnR27DMcMJhToG6yVdt+Y/z
-         JEOyPiaEZOHwV3KUYIB1AL6B0Mty7axqlp8cEhLmmZzbNcxBNBtjU4sJJ2aBTlnHpS2Z
-         ls7XJ7LIZGqVwVUizFDSg84P19Qz+MYDI1MdrNy5fAg76q3PiQKNlfGG37/HFw4nMQqA
-         l1CA==
-X-Gm-Message-State: AJaThX61eWjYWjAEN11yGpqK7OQaICRYv/4floUba+SXkQQ2mdbalGNT
-	pgOydJ9pM/4F7NLNEIwtNcdeOcFBmBdKpbZMqQrpQCCt74k=
-X-Google-Smtp-Source: AGs4zMaL3/6Wde24MB2fmPq92Fm5mMGEu9RindvkKs6PscRMZ2QfdKYi33gw6o1vmdrm1bMUu821UH9LQXsqiqKPkxI=
-X-Received: by 10.202.114.22 with SMTP id p22mr10699606oic.327.1511283096838;
- Tue, 21 Nov 2017 08:51:36 -0800 (PST)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:41955 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1e4bwv-0000mU-RG
+	for alex.bennee@linaro.org; Tue, 17 Oct 2017 20:11:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54132)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <sstabellini@kernel.org>) id 1e4bwo-0000mD-2N
+	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 20:10:58 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <sstabellini@kernel.org>) id 1e4bwk-00042r-2O
+	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 20:10:58 -0400
+Received: from mail.kernel.org ([198.145.29.99]:55074)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <sstabellini@kernel.org>)
+	id 1e4bwj-00041x-Sr; Tue, 17 Oct 2017 20:10:54 -0400
+Received: from [10.0.0.56] (c-24-130-70-9.hsd1.ca.comcast.net [24.130.70.9])
+	(using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 4D47221879;
+	Wed, 18 Oct 2017 00:10:51 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4D47221879
+Authentication-Results: mail.kernel.org;
+	dmarc=none (p=none dis=none) header.from=kernel.org
+Authentication-Results: mail.kernel.org;
+	spf=none smtp.mailfrom=sstabellini@kernel.org
+Date: Tue, 17 Oct 2017 17:10:50 -0700 (PDT)
+From: Stefano Stabellini <sstabellini@kernel.org>
+X-X-Sender: sstabellini@sstabellini-ThinkPad-X260
+To: qemu-devel@nongnu.org
+Message-ID: <alpine.DEB.2.10.1710171708130.27209@sstabellini-ThinkPad-X260>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Received: by 10.157.63.74 with HTTP; Tue, 21 Nov 2017 08:51:16 -0800 (PST)
-In-Reply-To: <20171107150558.22131-1-alex.bennee@linaro.org>
-References: <20171107150558.22131-1-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 21 Nov 2017 16:51:16 +0000
-Message-ID: <CAFEAcA8-kyLTiaJxfwmWx-85qZ2W31V8whqLot9hPX5AizCZng@mail.gmail.com>
-Subject: Re: [RISU PATCH 00/10] Initial support for SVE
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Dave P Martin <Dave.Martin@arm.com>, QEMU Developers <qemu-devel@nongnu.org>, 
-	qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: N5ZcOZLf+Biw
+Content-Type: TEXT/PLAIN; charset=US-ASCII
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 198.145.29.99
+Subject: [Qemu-arm] [PATCH] aarch64: advertise the GIC system register
+ interface
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, julien.grall@arm.com, sstabellini@kernel.org,
+	qemu-arm@nongnu.org, xen-devel@lists.xen.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: VZbc+kGYZ60T
 
-On 7 November 2017 at 15:05, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
-> Hi,
->
-> These patches apply on-top of the last clean-up series:
->
->   Subject: [RISU PATCH 0/7] Add @Group support and some aarch64.risu clea=
-nups
->   Date: Tue, 31 Oct 2017 14:54:37 +0000
->   Message-Id: <20171031145444.13766-1-alex.bennee@linaro.org>
->
-> This series adds support for SVE to RISU. Most of the initial patches
-> are plumbing changes to better support arch specific option flags
-> (cleaning up a TODO in the process). I also needed to ensure configure
-> actually honoured CPPFLAGS so it could be passed yet to be released
-> headers.
->
-> The actual guts of the SVE support is in 3 patches. One to risugen so
-> it can generate random values for the vector registers. If this isn't
-> done you get inconsistent runs because of left over junk in the
-> registers. The remaining two patches add support for copying the SVE
-> vectors from the signal context and dumping any differences found.
->
-> To test this I ran on the Foundation model with:
->
->   ${RTSM_MODEL} --no-secure-memory --gicv3 --data=3D${BL1_FIRMWARE}@0x0 -=
--data=3D${FIP_FIRMWARE}@0x8000000 \
->                 --semihost --network nat --network-nat-ports=3D8022=3D22 =
---block-device ${DISK_IMAGE}
->
-> With my hacked up copy of secure firmware to ensure SVE is enabled.
-> You also need a kernel with SVE support:
->
->   Subject: [PATCH v5 00/30] ARM Scalable Vector Extension (SVE)
->   Date: Tue, 31 Oct 2017 15:50:52 +0000
->   Message-Id: <1509465082-30427-1-git-send-email-Dave.Martin@arm.com>
->
-> My testing so far has been to ensure that each run on the foundation
-> model is deterministic (same m5sum on each trace) and that differences
-> are printed out when the user-space vector length is tweaked
-> (/proc/sys/abi/sve_default_vector_length).
->
->
-> Alex Benn=C3=A9e (10):
->   build-all-arches: drop -t (for tty) from docker invocation
->   risu.c: split out setting up options
->   risu.c: add missing --trace longopt
->   risu: move optional args to each architecture
->   configure: allow repeated invocation of configure in build dir
->   configure: support CPPFLAGS
->   risugen: add --sve support
->   aarch64.risu: initial SVE instruction
->   risu_reginfo_aarch64: add reginfo_copy_sve
->   risu_reginfo_aarch64: add SVE support to reginfo_dump_mismatch
+Advertise the presence of the GIC system register interface (1<<24)
+according to H9.248 of the ARM ARM.
 
-I've applied patches 1, 2, 3, 5, 6 to risu master.
+This patch allows Xen to boot on QEMU aarch64.
 
-thanks
--- PMM
+Signed-off-by: Stefano Stabellini <sstabellini@kernel.org>
+
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 670c07a..a451763 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -136,7 +136,7 @@ static void aarch64_a57_initfn(Object *obj)
+     cpu->id_isar3 = 0x01112131;
+     cpu->id_isar4 = 0x00011142;
+     cpu->id_isar5 = 0x00011121;
+-    cpu->id_aa64pfr0 = 0x00002222;
++    cpu->id_aa64pfr0 = 0x01002222;
+     cpu->id_aa64dfr0 = 0x10305106;
+     cpu->pmceid0 = 0x00000000;
+     cpu->pmceid1 = 0x00000000;
+@@ -196,7 +196,7 @@ static void aarch64_a53_initfn(Object *obj)
+     cpu->id_isar3 = 0x01112131;
+     cpu->id_isar4 = 0x00011142;
+     cpu->id_isar5 = 0x00011121;
+-    cpu->id_aa64pfr0 = 0x00002222;
++    cpu->id_aa64pfr0 = 0x01002222;
+     cpu->id_aa64dfr0 = 0x10305106;
+     cpu->id_aa64isar0 = 0x00011120;
+     cpu->id_aa64mmfr0 = 0x00001122; /* 40 bit physical addr */

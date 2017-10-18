@@ -1,98 +1,99 @@
-Received: by 10.223.197.9 with SMTP id q9csp5243671wrf;
-        Tue, 17 Oct 2017 20:16:06 -0700 (PDT)
-X-Received: by 10.200.25.112 with SMTP id g45mr1225343qtk.40.1508296566900;
-        Tue, 17 Oct 2017 20:16:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508296566; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp5248744wrf;
+        Tue, 17 Oct 2017 20:24:05 -0700 (PDT)
+X-Received: by 10.55.27.25 with SMTP id b25mr621847qkb.144.1508297045339;
+        Tue, 17 Oct 2017 20:24:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508297045; cv=none;
         d=google.com; s=arc-20160816;
-        b=npsljTKvXqy2G9e1qlOzoPy9Zc5BJdqxIeLK0xGhpv3Y89LXo81yIIPoa6AZaq8sZ5
-         p0Kq8ZpGEWQDa123H1YdyWUY+b0XJr6/Uko1RxQC+GNViTZJ9eQpVvxa4BnE5+QahZ6J
-         Eb9MaPHLuzt17r+kM390gUp3yjdmmmO2c6nnXftvdzHjNzxK+N0VNR0NiBhpDyeCtmov
-         ECq5mLDm30omOoPLPPFbsfewO2+EUtR/b2zP5/MloYuYYVcR9yza02Xr0am5vhObyoKD
-         BmzMf2eqLS6hKyRIJh7Ka+Jv1BI9j3FXCf9oqGX6sVHNBXyJEI3CEvM4ufKf92QsvRp/
-         lqog==
+        b=Ax00+Z2rkWL66PP3GJcjCEjIEX335Ly8GlEnml3wq7aaAkKC9aJzbzZ8x45FpFe2hi
+         jWOXjdu5WESf8E8Qd1E6YWlTj+N2/rbZYzHItPLCFZQPeJts7Qf3CER8EH6qu2wQIw6U
+         E0u5b4uj/ZwkEwSouw07eN824jz/8gh2sMcRYiC5WWtC1y3XVLQNlWBg1qvzsL58ybop
+         rxPEMRHRH5cWBIs2ujbUnXOqGJIciNJFT4/LMFkAqy+rl3ymh8/PNHzl8BI5Yh1qhs1h
+         rH14qsKi8Wz+pLljeiYRdLhPvJgXDlDApMdVjLBCes9sZ1JyAVlpRxfQnVCgTvMGaPwy
+         tj4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=8N6dCO28/Wy2h/SBv/GrgADh5XkaViNQK9+Ob0JBreI=;
-        b=DcRgWUwrZG3DkNLa7p/4ADm5zpoCN0H9u3r/5k1dcw+L3Ow7YVKytbo7+Z0ZLvS3/4
-         pbjPTGBMFoQMT3RxggoYprkCyJbDQRoBipc5idF5PSC4YzTAlXx4PAOO2DaCTVQDGBiR
-         WKXyeT5qvibmcH81xIt/nGFNy8+vq3RU/L1B3cUe18CpwY2eyXiCsZH5WoC26/CQVunJ
-         c58ClXUJW4UEfecHgEOUGujsLWLrr0T2mmL0Bw+bRKrb2YCJMJO/4Ulc8d1jRhJ+oWp4
-         xShvEuQBfJzOgU4DaY5x5HybMoKMH10FId1JE+90Urb9gldWRYmIFeSgHb5XfbkPuylg
-         yx7w==
+        bh=w+jryWpHQGT7v/1bPE7vFSNrJGedaTOZmVlh/NItdh8=;
+        b=NeZl9w9TPlEAuUkFx9ld4rymkzGmOTKdmgXmS+x1F8tgqKudmWoo3FGdvffTroHP33
+         0ImfGWW2XD3FfMNydTRCAhudpBMQfYHE175aNxNi5be7qnjUkPQ3bgWsqCGczyCMoDt+
+         Aej1M7w0opObu06N9aHRSeupSjNoUbymBoKhcAlcGKbtTosA6JYEdQph7xCJxB3GxuYZ
+         0XipNFgy9IBuzRsSoVkihtoh5IRrZdhYBE2fX+AcPFM9SLOkRsjkk7APwka+MvlFCG04
+         XcgIcbfQWBaKTHMpPYzO+TOwd9BsycmEmvxf3X3FMO0WcSs6Cyt7fjfZAr/eoLoQ2REv
+         rNzg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WSwLeqm9;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PFoFsgqS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j8si6347772qth.184.2017.10.17.20.16.06
+        by mx.google.com with ESMTPS id e8si4146252qtk.427.2017.10.17.20.24.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 17 Oct 2017 20:16:06 -0700 (PDT)
+        Tue, 17 Oct 2017 20:24:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WSwLeqm9;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PFoFsgqS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42349 helo=lists.gnu.org)
+Received: from localhost ([::1]:42370 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e4epw-0003X6-KZ
-	for alex.bennee@linaro.org; Tue, 17 Oct 2017 23:16:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44507)
+	id 1e4exf-00054B-05
+	for alex.bennee@linaro.org; Tue, 17 Oct 2017 23:24:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47613)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1e4epl-0003Uh-VS
-	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 23:15:54 -0400
+	(envelope-from <sundeep.lkml@gmail.com>) id 1e4exT-00052s-4K
+	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 23:23:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1e4epk-0002Cv-Uc
-	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 23:15:53 -0400
-Received: from mail-vk0-x243.google.com ([2607:f8b0:400c:c05::243]:47755)
+	(envelope-from <sundeep.lkml@gmail.com>) id 1e4exS-0000FH-2P
+	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 23:23:51 -0400
+Received: from mail-vk0-x22f.google.com ([2607:f8b0:400c:c05::22f]:48349)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
-	id 1e4epi-0002A4-Io; Tue, 17 Oct 2017 23:15:50 -0400
-Received: by mail-vk0-x243.google.com with SMTP id j2so2439392vki.4;
-	Tue, 17 Oct 2017 20:15:49 -0700 (PDT)
+	id 1e4exP-0000Dq-Oi; Tue, 17 Oct 2017 23:23:47 -0400
+Received: by mail-vk0-x22f.google.com with SMTP id g69so2453391vke.5;
+	Tue, 17 Oct 2017 20:23:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=8N6dCO28/Wy2h/SBv/GrgADh5XkaViNQK9+Ob0JBreI=;
-	b=WSwLeqm9/rieKUnibHCYrRRHCQ0M+2shCWxk0vULKpAZn4Bw39Tzy5AsBMnIYQQqtK
-	Hr23Tdg+FG0Dr2IXDU5ly1tXxo/cHrpTtd8OrIAjJ0GKZQ2XdhGaF8aum6DkDmeWN5LF
-	j+yH43EWSFwUtb+Pn/S7L3zuNAOE1ThtLEgzG7C2LkwN+wwyki3Uns3HQ+h6fqkt0/c2
-	NnBapo4fyH9mSAUJZzqGxI5YVBalX7CsdpQgd6ZqixHpHq0q8KEx/iywCCHPPzSukgaB
-	bu2e6t6YOqS2dxBXlgZQyKrB2dq78cUbDHDrBTObUEw8E6IHwlaBEhVPYbAYKGA+vadt
-	aXrQ==
+	:cc; bh=w+jryWpHQGT7v/1bPE7vFSNrJGedaTOZmVlh/NItdh8=;
+	b=PFoFsgqSrORcOeYL0KrqnHRMWn0UQZcEfY5xeGSKvXRPapxQrneAB5t4zajWOJ4KaJ
+	mashUyOEGxGUwv8Tac6ilX8u0vedBaJT2xs/udqY7zSL/d+GUV8qDes006HGqsHR/bLK
+	cEYkhhZrj35urvxmI/3Jgtr6Ur74vacuiYQNLX2ISRTmqthzcLY1WhKcGatKeR7qhlza
+	dM6IWm8NPTSuW910b2sy1N32ZclzBiRruuNZ5uKKMm1wxaE2B4Qolp023JiBkUMb4MmQ
+	wivmNCpAAEPQZHxV/crwAxlwzzh0ZzjVq+HjlvscpNC3d3824Z/lrFKckitMIHbEpjTF
+	r8Rw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=8N6dCO28/Wy2h/SBv/GrgADh5XkaViNQK9+Ob0JBreI=;
-	b=bW9yNYpGdXzEQMrIqoDpMGxjEFh6GRe2nS+KmDdlUyKKiXuARnPQzVc3YtQg/Y/wO2
-	pcOyL0FrD8TnrFSoEvEaCJBI7pV12J9nq+sJ2ZdtxbOzsIxn/0wq06X9g+2tYVIfauTW
-	6fYIPBrAqP2MbAJDwCzRCVuwDV/uQiDIwcFe/YOiabAiCpzCoJgjqPs4rYNfjHpPCoLZ
-	6Kyhx7R6LuJaY1qjlZHXBwPX7PtOIji22OYoGWarRTmmicKUk6K1jGo8/JvUwfbhy20i
-	k4e84koCbq1Mgb6DZFgZiLvDyIg1xnPvF38NcUGf+tuIgOMIDYfJSzk5Jky3IaMygymB
-	ui0A==
-X-Gm-Message-State: AMCzsaXN5yKgspRaGtWjq8TcC9K0zFj6DfLdKF+vPCXbly3/uMHcnJK/
-	rNbCJt6E5SI61f8jVAiXmeN3Ly3NrCeCtWtaVZs=
-X-Google-Smtp-Source: ABhQp+RQZJ3MDmm+KdZmsuPnGZEcNaX0RocW5moAxgbJJKLWfIXjo3YyA/VCcYwwzI0/moeHRtUuesotcUF8KEUjEuw=
-X-Received: by 10.31.141.206 with SMTP id p197mr4596176vkd.53.1508296548829;
-	Tue, 17 Oct 2017 20:15:48 -0700 (PDT)
+	bh=w+jryWpHQGT7v/1bPE7vFSNrJGedaTOZmVlh/NItdh8=;
+	b=M1/BL1ZPRiNN6L+KVoXG9tCUxb3xTbat/AHzCtMZqKYghKJVvTH8ROuewfol8Pjaq0
+	GN7Eh5wlQv/IO30sScnLX3lv/n0um48xaABiCqd2bAD6stbVesR+IW4+vNjlv+qhr5yz
+	nwX0ETSqyJ6/ybgSPDfasZospQ6N0oib071QBLLMBWB0H8S9ovxLXxxoD+5Rdd+q1xwf
+	exTeRGq3C0CLBa8aEfw9O7+2yNPtArGBjNB6QCVszwpKf3wUOlFxAJEw1/h7OpN0KAUM
+	pV0MUVEpvmnicgyBaxTkF2u18QHmhVta0GHWYwwkLCq6tSmcvQaTdp8MPkQZgfK15YWN
+	bjjA==
+X-Gm-Message-State: AMCzsaVGpyd360cY0PSoBynXI7aOop6LY+pm1iOjPvYLwoJxOSMJhQQK
+	1FS5/Oja9qAtERKtdgJzg6Mo3jBe7i+jLtnC9uo=
+X-Google-Smtp-Source: ABhQp+TuYtBjJPvefB6GENykgzNgPSSU5DgA6e2y4iIusFLBLicxe8wlGAds4trF6BLqztvhcDttmCeTCC+JXChrRZE=
+X-Received: by 10.31.60.211 with SMTP id j202mr2001651vka.134.1508297027173;
+	Tue, 17 Oct 2017 20:23:47 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.159.63.6 with HTTP; Tue, 17 Oct 2017 20:15:48 -0700 (PDT)
-In-Reply-To: <CAFEAcA-vg31x5q7f1poJfHfrwKTrHEZo2Btua6o9xREHUzd8hQ@mail.gmail.com>
+Received: by 10.159.63.6 with HTTP; Tue, 17 Oct 2017 20:23:46 -0700 (PDT)
+In-Reply-To: <CALHRZupURgAaiktM-mgWHud_2C07hNLY48BUbkbXE7ZV7EXqaQ@mail.gmail.com>
 References: <1508176489-9002-1-git-send-email-sundeep.lkml@gmail.com>
 	<CAFEAcA-vg31x5q7f1poJfHfrwKTrHEZo2Btua6o9xREHUzd8hQ@mail.gmail.com>
+	<CALHRZupURgAaiktM-mgWHud_2C07hNLY48BUbkbXE7ZV7EXqaQ@mail.gmail.com>
 From: sundeep subbaraya <sundeep.lkml@gmail.com>
-Date: Wed, 18 Oct 2017 08:45:48 +0530
-Message-ID: <CALHRZupURgAaiktM-mgWHud_2C07hNLY48BUbkbXE7ZV7EXqaQ@mail.gmail.com>
+Date: Wed, 18 Oct 2017 08:53:46 +0530
+Message-ID: <CALHRZupdK7C4vGvN+e8B_8qqhoAFx2ts6Zi=TfSejvNyGHA7rw@mail.gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary="001a1142641402518e055bc9a8ce"
+Content-Type: multipart/alternative; boundary="001a11437e048543ae055bc9c45a"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400c:c05::243
+X-Received-From: 2607:f8b0:400c:c05::22f
 Subject: Re: [Qemu-arm] [Qemu devel PATCH] msf2: Remove dead code reported
  by Coverity
 X-BeenThere: qemu-arm@nongnu.org
@@ -113,80 +114,100 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	Alistair Francis <alistair23@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /WwjHhwR0z42
+X-TUID: 7DUUWiN02hAv
 
---001a1142641402518e055bc9a8ce
+--001a11437e048543ae055bc9c45a
 Content-Type: text/plain; charset="UTF-8"
 
 Hi Peter,
 
-On Tue, Oct 17, 2017 at 8:58 PM, Peter Maydell <peter.maydell@linaro.org>
+On Wed, Oct 18, 2017 at 8:45 AM, sundeep subbaraya <sundeep.lkml@gmail.com>
 wrote:
 
-> On 16 October 2017 at 18:54, Subbaraya Sundeep <sundeep.lkml@gmail.com>
+> Hi Peter,
+>
+> On Tue, Oct 17, 2017 at 8:58 PM, Peter Maydell <peter.maydell@linaro.org>
 > wrote:
-> > Fixed incorrect frame size mask, validated maximum frame
-> > size in spi_write and removed dead code.
-> >
-> > Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
-> > ---
-> >  hw/ssi/mss-spi.c | 8 +++++---
-> >  1 file changed, 5 insertions(+), 3 deletions(-)
-> >
-> > diff --git a/hw/ssi/mss-spi.c b/hw/ssi/mss-spi.c
-> > index 5a8e308..1e49cbc 100644
-> > --- a/hw/ssi/mss-spi.c
-> > +++ b/hw/ssi/mss-spi.c
-> > @@ -76,9 +76,10 @@
-> >  #define C_BIGFIFO            (1 << 29)
-> >  #define C_RESET              (1 << 31)
-> >
-> > -#define FRAMESZ_MASK         0x1F
-> > +#define FRAMESZ_MASK         0x3F
-> >  #define FMCOUNT_MASK         0x00FFFF00
-> >  #define FMCOUNT_SHIFT        8
-> > +#define FRAMESZ_MAX          32
-> >
-> >  static void txfifo_reset(MSSSpiState *s)
-> >  {
-> > @@ -106,8 +107,6 @@ static void set_fifodepth(MSSSpiState *s)
-> >          s->fifo_depth = 16;
-> >      } else if (size <= 32) {
 >
-> Shouldn't this just be "} else {" now ?
+>> On 16 October 2017 at 18:54, Subbaraya Sundeep <sundeep.lkml@gmail.com>
+>> wrote:
+>> > Fixed incorrect frame size mask, validated maximum frame
+>> > size in spi_write and removed dead code.
+>> >
+>> > Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+>> > ---
+>> >  hw/ssi/mss-spi.c | 8 +++++---
+>> >  1 file changed, 5 insertions(+), 3 deletions(-)
+>> >
+>> > diff --git a/hw/ssi/mss-spi.c b/hw/ssi/mss-spi.c
+>> > index 5a8e308..1e49cbc 100644
+>> > --- a/hw/ssi/mss-spi.c
+>> > +++ b/hw/ssi/mss-spi.c
+>> > @@ -76,9 +76,10 @@
+>> >  #define C_BIGFIFO            (1 << 29)
+>> >  #define C_RESET              (1 << 31)
+>> >
+>> > -#define FRAMESZ_MASK         0x1F
+>> > +#define FRAMESZ_MASK         0x3F
+>> >  #define FMCOUNT_MASK         0x00FFFF00
+>> >  #define FMCOUNT_SHIFT        8
+>> > +#define FRAMESZ_MAX          32
+>> >
+>> >  static void txfifo_reset(MSSSpiState *s)
+>> >  {
+>> > @@ -106,8 +107,6 @@ static void set_fifodepth(MSSSpiState *s)
+>> >          s->fifo_depth = 16;
+>> >      } else if (size <= 32) {
+>>
+>> Shouldn't this just be "} else {" now ?
+>>
+>> Yes. I will send v2.
 >
-> Yes. I will send v2.
+
+Also I will log guest error if frame size is greater than 32.
 
 Thanks,
 Sundeep
 
->          s->fifo_depth = 8;
-> > -    } else {
-> > -        s->fifo_depth = 4;
-> >      }
-> >  }
+
 >
-> thanks
-> -- PMM
+> Thanks,
+> Sundeep
+>
+> >          s->fifo_depth = 8;
+>> > -    } else {
+>> > -        s->fifo_depth = 4;
+>> >      }
+>> >  }
+>>
+>> thanks
+>> -- PMM
+>>
+>
 >
 
---001a1142641402518e055bc9a8ce
+--001a11437e048543ae055bc9c45a
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 <div dir=3D"ltr">Hi Peter,<br><div class=3D"gmail_extra"><br><div class=3D"=
-gmail_quote">On Tue, Oct 17, 2017 at 8:58 PM, Peter Maydell <span dir=3D"lt=
-r">&lt;<a href=3D"mailto:peter.maydell@linaro.org" target=3D"_blank">peter.=
-maydell@linaro.org</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quot=
-e" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">=
-<span class=3D"">On 16 October 2017 at 18:54, Subbaraya Sundeep &lt;<a href=
-=3D"mailto:sundeep.lkml@gmail.com">sundeep.lkml@gmail.com</a>&gt; wrote:<br=
->
+gmail_quote">On Wed, Oct 18, 2017 at 8:45 AM, sundeep subbaraya <span dir=
+=3D"ltr">&lt;<a href=3D"mailto:sundeep.lkml@gmail.com" target=3D"_blank">su=
+ndeep.lkml@gmail.com</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_qu=
+ote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex=
+"><div dir=3D"ltr">Hi Peter,<br><div class=3D"gmail_extra"><br><div class=
+=3D"gmail_quote"><div><div class=3D"h5">On Tue, Oct 17, 2017 at 8:58 PM, Pe=
+ter Maydell <span dir=3D"ltr">&lt;<a href=3D"mailto:peter.maydell@linaro.or=
+g" target=3D"_blank">peter.maydell@linaro.org</a>&gt;</span> wrote:<br><blo=
+ckquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #c=
+cc solid;padding-left:1ex"><span>On 16 October 2017 at 18:54, Subbaraya Sun=
+deep &lt;<a href=3D"mailto:sundeep.lkml@gmail.com" target=3D"_blank">sundee=
+p.lkml@gmail.com</a>&gt; wrote:<br>
 &gt; Fixed incorrect frame size mask, validated maximum frame<br>
 &gt; size in spi_write and removed dead code.<br>
 &gt;<br>
 &gt; Signed-off-by: Subbaraya Sundeep &lt;<a href=3D"mailto:sundeep.lkml@gm=
-ail.com">sundeep.lkml@gmail.com</a>&gt;<br>
+ail.com" target=3D"_blank">sundeep.lkml@gmail.com</a>&gt;<br>
 &gt; ---<br>
 &gt;=C2=A0 hw/ssi/mss-spi.c | 8 +++++---<br>
 &gt;=C2=A0 1 file changed, 5 insertions(+), 3 deletions(-)<br>
@@ -215,11 +236,17 @@ t;&lt; 29)<br>
 &gt;=C2=A0 =C2=A0 =C2=A0 } else if (size &lt;=3D 32) {<br>
 <br>
 </span>Shouldn&#39;t this just be &quot;} else {&quot; now ?<br>
-<span class=3D""><br>
-</span></blockquote><div>Yes. I will send v2.<br><br></div><div>Thanks,<br>=
-</div><div>Sundeep<br><br></div><blockquote class=3D"gmail_quote" style=3D"=
-margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><span class=
-=3D"">&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;fifo_depth =3D 8;<br>
+<span><br>
+</span></blockquote></div></div><div>Yes. I will send v2.<br></div></div></=
+div></div></blockquote><div><br></div><div>Also I will log guest error if f=
+rame size is greater than 32.<br><br></div><div>Thanks,<br></div><div>Sunde=
+ep<br>=C2=A0 <br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 =
+0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><div dir=3D"ltr"><div=
+ class=3D"gmail_extra"><div class=3D"gmail_quote"><div><br></div><div>Thank=
+s,<br></div><div>Sundeep<br><br></div><span class=3D""><blockquote class=3D=
+"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding=
+-left:1ex"><span>&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;fifo_depth =
+=3D 8;<br>
 &gt; -=C2=A0 =C2=A0 } else {<br>
 &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;fifo_depth =3D 4;<br>
 &gt;=C2=A0 =C2=A0 =C2=A0 }<br>
@@ -227,6 +254,7 @@ margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><span class=
 <br>
 </span>thanks<br>
 -- PMM<br>
+</blockquote></span></div><br></div></div>
 </blockquote></div><br></div></div>
 
---001a1142641402518e055bc9a8ce--
+--001a11437e048543ae055bc9c45a--

@@ -1,237 +1,232 @@
-Received: by 10.223.159.82 with SMTP id f18csp1393134wrg;
-        Mon, 27 Nov 2017 02:44:36 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMYIyg6+UXHFfOZoxOPiW+9yA2GO9kpFAbYSTfySzLEXx4fkZUN0aLzgy+XeOrlmaUVx/U96
-X-Received: by 10.98.201.216 with SMTP id l85mr16908066pfk.217.1511779476836;
-        Mon, 27 Nov 2017 02:44:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1511779476; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp5243671wrf;
+        Tue, 17 Oct 2017 20:16:06 -0700 (PDT)
+X-Received: by 10.200.25.112 with SMTP id g45mr1225343qtk.40.1508296566900;
+        Tue, 17 Oct 2017 20:16:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508296566; cv=none;
         d=google.com; s=arc-20160816;
-        b=uWhCnVD4Szs1hwL2FIpXZ8wV7PlAlwfQI3eP+ItbS3Tzp6ipERwXqkD1Cp7M6iT9HY
-         AR493GoFZMknZw8UtDYQsN17nyxIXggwOb9ijqFQAnaym6SPj2PPSi3z627C93hwE14F
-         g7OMNmK1Kalx16GtlWXEMG8Sc8HvvEWFuzDTEssqrNw8CEFe1dC1EOlI5S/wYAsaujMo
-         LxUqwgBGWfR7rj1kdL1wQzPdxOVIDvOgdDnTVSx1Akp2QK3Oy3EuySP+KmefQvRfP4xG
-         UyRQxLdLyADEqDOm1n0AZchjhQpHOkyJp7BhozO9Co7wKMlrp4m4oH1fIF2VWX5hOsGV
-         0gXA==
+        b=npsljTKvXqy2G9e1qlOzoPy9Zc5BJdqxIeLK0xGhpv3Y89LXo81yIIPoa6AZaq8sZ5
+         p0Kq8ZpGEWQDa123H1YdyWUY+b0XJr6/Uko1RxQC+GNViTZJ9eQpVvxa4BnE5+QahZ6J
+         Eb9MaPHLuzt17r+kM390gUp3yjdmmmO2c6nnXftvdzHjNzxK+N0VNR0NiBhpDyeCtmov
+         ECq5mLDm30omOoPLPPFbsfewO2+EUtR/b2zP5/MloYuYYVcR9yza02Xr0am5vhObyoKD
+         BmzMf2eqLS6hKyRIJh7Ka+Jv1BI9j3FXCf9oqGX6sVHNBXyJEI3CEvM4ufKf92QsvRp/
+         lqog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:arc-authentication-results;
-        bh=ZpJ6NLL9i0bZ9ERnfzz/0EWSNTlzPzKS5i44gsYwZ4I=;
-        b=b/FaGEUfoHzi5XpIt26xuDdxjw9XZzGPh7dJeR4+iS6msFJ+c3pn/9YO5Tq/CiI4mT
-         SfcZC1A+vHq7eTiPhHoRjSzm4fILGGjZ0j8wNh4Zpa+cMdwzC5xi8/cm6IMuMqOxA24l
-         6cUSCwaldaWNPetip4Nhoot88EzrSIHyzSkYzqWi8PbgPE/Rso+6joky2XaXadAoydJ9
-         HLY4VeFIbgymKwkgu4x3XVY9qlJBOKk2oXDsSF8IsRA3QvIkwlOcqusOlLx0VGbDz16Y
-         HcF4FBU95TEuZG9Daw5xxr3CeOR3UpCzhdPk+ThbutCJW5zsuobHkysukz8ybtbPiSXa
-         i1HQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=8N6dCO28/Wy2h/SBv/GrgADh5XkaViNQK9+Ob0JBreI=;
+        b=DcRgWUwrZG3DkNLa7p/4ADm5zpoCN0H9u3r/5k1dcw+L3Ow7YVKytbo7+Z0ZLvS3/4
+         pbjPTGBMFoQMT3RxggoYprkCyJbDQRoBipc5idF5PSC4YzTAlXx4PAOO2DaCTVQDGBiR
+         WKXyeT5qvibmcH81xIt/nGFNy8+vq3RU/L1B3cUe18CpwY2eyXiCsZH5WoC26/CQVunJ
+         c58ClXUJW4UEfecHgEOUGujsLWLrr0T2mmL0Bw+bRKrb2YCJMJO/4Ulc8d1jRhJ+oWp4
+         xShvEuQBfJzOgU4DaY5x5HybMoKMH10FId1JE+90Urb9gldWRYmIFeSgHb5XfbkPuylg
+         yx7w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id t11si23462099plq.683.2017.11.27.02.44.36;
-        Mon, 27 Nov 2017 02:44:36 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WSwLeqm9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id j8si6347772qth.184.2017.10.17.20.16.06
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 17 Oct 2017 20:16:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1751677AbdK0Kod (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 5 others); Mon, 27 Nov 2017 05:44:33 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2178 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1751598AbdK0Koc (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 27 Nov 2017 05:44:32 -0500
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.60])
-        by Forcepoint Email with ESMTP id 9D7735564F959;
-        Mon, 27 Nov 2017 18:44:25 +0800 (CST)
-Received: from localhost.localdomain (10.143.28.90) by
- DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server id
- 14.3.361.1; Mon, 27 Nov 2017 18:44:21 +0800
-From:   Dongjiu Geng <gengdongjiu@huawei.com>
-To:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
-        <zhaoshenglong@huawei.com>, <peter.maydell@linaro.org>,
-        <mtosatti@redhat.com>, <james.morse@arm.com>, <lersek@redhat.com>,
-        <marc.zyngier@arm.com>, <christoffer.dall@linaro.org>,
-        <rth@twiddle.net>, <ehabkost@redhat.com>, <kvm@vger.kernel.org>,
-        <guohanjun@huawei.com>, <lijinyue@huawei.com>,
-        <huangshaoyu@huawei.com>, <wuquanming@huawei.com>,
-        <zhengqiang10@huawei.com>, <linuxarm@huawei.com>,
-        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Subject: [PATCH v13 07/12] target-arm: handle SError interrupt exception from the guest OS
-Date:   Tue, 28 Nov 2017 02:49:50 +0800
-Message-ID: <1511808595-24158-8-git-send-email-gengdongjiu@huawei.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1511808595-24158-1-git-send-email-gengdongjiu@huawei.com>
-References: <1511808595-24158-1-git-send-email-gengdongjiu@huawei.com>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WSwLeqm9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:42349 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1e4epw-0003X6-KZ
+	for alex.bennee@linaro.org; Tue, 17 Oct 2017 23:16:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44507)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <sundeep.lkml@gmail.com>) id 1e4epl-0003Uh-VS
+	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 23:15:54 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <sundeep.lkml@gmail.com>) id 1e4epk-0002Cv-Uc
+	for qemu-arm@nongnu.org; Tue, 17 Oct 2017 23:15:53 -0400
+Received: from mail-vk0-x243.google.com ([2607:f8b0:400c:c05::243]:47755)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
+	id 1e4epi-0002A4-Io; Tue, 17 Oct 2017 23:15:50 -0400
+Received: by mail-vk0-x243.google.com with SMTP id j2so2439392vki.4;
+	Tue, 17 Oct 2017 20:15:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=8N6dCO28/Wy2h/SBv/GrgADh5XkaViNQK9+Ob0JBreI=;
+	b=WSwLeqm9/rieKUnibHCYrRRHCQ0M+2shCWxk0vULKpAZn4Bw39Tzy5AsBMnIYQQqtK
+	Hr23Tdg+FG0Dr2IXDU5ly1tXxo/cHrpTtd8OrIAjJ0GKZQ2XdhGaF8aum6DkDmeWN5LF
+	j+yH43EWSFwUtb+Pn/S7L3zuNAOE1ThtLEgzG7C2LkwN+wwyki3Uns3HQ+h6fqkt0/c2
+	NnBapo4fyH9mSAUJZzqGxI5YVBalX7CsdpQgd6ZqixHpHq0q8KEx/iywCCHPPzSukgaB
+	bu2e6t6YOqS2dxBXlgZQyKrB2dq78cUbDHDrBTObUEw8E6IHwlaBEhVPYbAYKGA+vadt
+	aXrQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=8N6dCO28/Wy2h/SBv/GrgADh5XkaViNQK9+Ob0JBreI=;
+	b=bW9yNYpGdXzEQMrIqoDpMGxjEFh6GRe2nS+KmDdlUyKKiXuARnPQzVc3YtQg/Y/wO2
+	pcOyL0FrD8TnrFSoEvEaCJBI7pV12J9nq+sJ2ZdtxbOzsIxn/0wq06X9g+2tYVIfauTW
+	6fYIPBrAqP2MbAJDwCzRCVuwDV/uQiDIwcFe/YOiabAiCpzCoJgjqPs4rYNfjHpPCoLZ
+	6Kyhx7R6LuJaY1qjlZHXBwPX7PtOIji22OYoGWarRTmmicKUk6K1jGo8/JvUwfbhy20i
+	k4e84koCbq1Mgb6DZFgZiLvDyIg1xnPvF38NcUGf+tuIgOMIDYfJSzk5Jky3IaMygymB
+	ui0A==
+X-Gm-Message-State: AMCzsaXN5yKgspRaGtWjq8TcC9K0zFj6DfLdKF+vPCXbly3/uMHcnJK/
+	rNbCJt6E5SI61f8jVAiXmeN3Ly3NrCeCtWtaVZs=
+X-Google-Smtp-Source: ABhQp+RQZJ3MDmm+KdZmsuPnGZEcNaX0RocW5moAxgbJJKLWfIXjo3YyA/VCcYwwzI0/moeHRtUuesotcUF8KEUjEuw=
+X-Received: by 10.31.141.206 with SMTP id p197mr4596176vkd.53.1508296548829;
+	Tue, 17 Oct 2017 20:15:48 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.143.28.90]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: PRX145pYh7t8
+Received: by 10.159.63.6 with HTTP; Tue, 17 Oct 2017 20:15:48 -0700 (PDT)
+In-Reply-To: <CAFEAcA-vg31x5q7f1poJfHfrwKTrHEZo2Btua6o9xREHUzd8hQ@mail.gmail.com>
+References: <1508176489-9002-1-git-send-email-sundeep.lkml@gmail.com>
+	<CAFEAcA-vg31x5q7f1poJfHfrwKTrHEZo2Btua6o9xREHUzd8hQ@mail.gmail.com>
+From: sundeep subbaraya <sundeep.lkml@gmail.com>
+Date: Wed, 18 Oct 2017 08:45:48 +0530
+Message-ID: <CALHRZupURgAaiktM-mgWHud_2C07hNLY48BUbkbXE7ZV7EXqaQ@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: multipart/alternative; boundary="001a1142641402518e055bc9a8ce"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400c:c05::243
+Subject: Re: [Qemu-arm] [Qemu devel PATCH] msf2: Remove dead code reported
+ by Coverity
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Alistair Francis <alistair23@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /WwjHhwR0z42
 
-When guest OS happens SError interrupt(SEI), it will trap to
-host. Host check the Asynchronous Error Type(ESR_ELx.AET). If
-it the error has not been propagated and has not (yet) been
-architecturally consumed by the PE, it will return to use space
-with error code KVM_SEI_SEV_RECOVERABLE.
+--001a1142641402518e055bc9a8ce
+Content-Type: text/plain; charset="UTF-8"
 
-Qemu receive this exception exit, check whether KVM support to
-set ESR(exception syndrome registers) value. If support, it sets
-the ESR value using a new IOCTL.
+Hi Peter,
 
-This handling is only supported in AArch64 platform, not supported
-in AArch32 platform.
+On Tue, Oct 17, 2017 at 8:58 PM, Peter Maydell <peter.maydell@linaro.org>
+wrote:
 
-Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-Signed-off-by: Quanming Wu <wuquanming@huawei.com>
----
-Address James and Marc's comments to set ESR and inject SEI by user space
-in [1]
+> On 16 October 2017 at 18:54, Subbaraya Sundeep <sundeep.lkml@gmail.com>
+> wrote:
+> > Fixed incorrect frame size mask, validated maximum frame
+> > size in spi_write and removed dead code.
+> >
+> > Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+> > ---
+> >  hw/ssi/mss-spi.c | 8 +++++---
+> >  1 file changed, 5 insertions(+), 3 deletions(-)
+> >
+> > diff --git a/hw/ssi/mss-spi.c b/hw/ssi/mss-spi.c
+> > index 5a8e308..1e49cbc 100644
+> > --- a/hw/ssi/mss-spi.c
+> > +++ b/hw/ssi/mss-spi.c
+> > @@ -76,9 +76,10 @@
+> >  #define C_BIGFIFO            (1 << 29)
+> >  #define C_RESET              (1 << 31)
+> >
+> > -#define FRAMESZ_MASK         0x1F
+> > +#define FRAMESZ_MASK         0x3F
+> >  #define FMCOUNT_MASK         0x00FFFF00
+> >  #define FMCOUNT_SHIFT        8
+> > +#define FRAMESZ_MAX          32
+> >
+> >  static void txfifo_reset(MSSSpiState *s)
+> >  {
+> > @@ -106,8 +107,6 @@ static void set_fifodepth(MSSSpiState *s)
+> >          s->fifo_depth = 16;
+> >      } else if (size <= 32) {
+>
+> Shouldn't this just be "} else {" now ?
+>
+> Yes. I will send v2.
 
-[1]:
-https://lkml.org/lkml/2017/3/20/441
-https://lkml.org/lkml/2017/3/20/516
+Thanks,
+Sundeep
 
-Below is the log that Qemu inject SError with specify ESR and guest happen exception:
+>          s->fifo_depth = 8;
+> > -    } else {
+> > -        s->fifo_depth = 4;
+> >      }
+> >  }
+>
+> thanks
+> -- PMM
+>
 
- Bad mode in Error handler detected, code 0xbe000c11 -- SError
- CPU: 0 PID: 539 Comm: devmem Tainted: G      D         4.1.0+ #20
- Hardware name: linux,dummy-virt (DT)
- task: ffffffc019aad600 ti: ffffffc008134000 task.ti: ffffffc008134000
- PC is at 0x405cc0
- LR is at 0x40ce80
- pc : [<0000000000405cc0>] lr : [<000000000040ce80>] pstate: 60000000
- sp : ffffffc008137ff0
- x29: 0000007fd9e80790 x28: 0000000000000000
- x27: 00000000000000ad x26: 000000000049c000
- x25: 000000000048904b x24: 000000000049c000
- x23: 0000000040600000 x22: 0000007fd9e808d0
- x21: 0000000000000002 x20: 0000000000000000
- x19: 0000000000000020 x18: 0000000000000000
- x17: 0000000000405cc0 x16: 000000000049c698
- x15: 0000000000005798 x14: 0000007f93875f1c
- x13: 0000007f93a8ccb0 x12: 0000000000000137
- x11: 0000000000000000 x10: 0000000000000000
- x9 : 0000000000000000 x8 : 00000000000000de
- x7 : 0000000000000000 x6 : 0000000000002000
- x5 : 0000000040600000 x4 : 0000000000000003
- x3 : 0000000000000001 x2 : 00000000000f123b
- x1 : 0000000000000008 x0 : 000000000047a048
----
- target/arm/internals.h |  4 ++++
- target/arm/kvm.c       |  3 +++
- target/arm/kvm32.c     |  6 ++++++
- target/arm/kvm64.c     | 34 ++++++++++++++++++++++++++++++++++
- target/arm/kvm_arm.h   |  8 ++++++++
- 5 files changed, 55 insertions(+)
+--001a1142641402518e055bc9a8ce
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 1f6efef..cd26a9d 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -233,9 +233,13 @@ enum arm_exception_class {
- #define ARM_EL_EC_SHIFT 26
- #define ARM_EL_IL_SHIFT 25
- #define ARM_EL_ISV_SHIFT 24
-+#define ARM_EL_AET_SHIFT 10
- #define ARM_EL_IL (1 << ARM_EL_IL_SHIFT)
- #define ARM_EL_ISV (1 << ARM_EL_ISV_SHIFT)
- 
-+/* Asynchronous Error Type */
-+#define KVM_SEI_SEV_RECOVERABLE 1
-+
- /* Utility functions for constructing various kinds of syndrome value.
-  * Note that in general we follow the AArch64 syndrome values; in a
-  * few cases the value in HSR for exceptions taken to AArch32 Hyp
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 7c17f0d..d85e36a 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -593,6 +593,9 @@ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
-             ret = EXCP_DEBUG;
-         } /* otherwise return to guest */
-         break;
-+    case KVM_EXIT_EXCEPTION:
-+        kvm_arm_handle_exception(cs, run);
-+        break;
-     default:
-         qemu_log_mask(LOG_UNIMP, "%s: un-handled exit reason %d\n",
-                       __func__, run->exit_reason);
-diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
-index 069da0c..8ce56fd 100644
---- a/target/arm/kvm32.c
-+++ b/target/arm/kvm32.c
-@@ -493,6 +493,12 @@ bool kvm_arm_handle_debug(CPUState *cs, struct kvm_debug_exit_arch *debug_exit)
-     return false;
- }
- 
-+bool kvm_arm_handle_exception(CPUState *cs, struct kvm_run *run)
-+{
-+    qemu_log_mask(LOG_UNIMP, "%s: not implemented\n", __func__);
-+    return false;
-+}
-+
- int kvm_arch_insert_hw_breakpoint(target_ulong addr,
-                                   target_ulong len, int type)
- {
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index af8ebc9..2d0eb32 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -986,3 +986,37 @@ static bool kvm_can_set_vcpu_esr(struct KVMState *state)
-     int ret = kvm_check_extension(state, KVM_CAP_ARM_INJECT_SERROR_ESR);
-     return (ret) ? true : false;
- }
-+
-+static bool kvm_inject_arm_sei(CPUState *cs, unsigned int error_code)
-+{
-+    int ret;
-+    /* IMPLEMENTATION DEFINED syndrome by default */
-+    uint32_t syndrome = ARM_EL_ISV;
-+
-+    if (kvm_can_set_vcpu_esr(cs->kvm_state)) {
-+        if (error_code == KVM_SEI_SEV_RECOVERABLE) {
-+            /* Set Recoverable Asynchronous SError interrupt Type */
-+            syndrome = (3 << ARM_EL_AET_SHIFT) | 0x11;
-+        }
-+        ret = kvm_vcpu_ioctl(cs, KVM_ARM_INJECT_SERROR_ESR, &syndrome);
-+        if (ret < 0) {
-+            fprintf(stderr, "KVM_ARM_SET_SERROR_ESR failed: %s\n",
-+                    strerror(-ret));
-+            abort();
-+        }
-+
-+        return true;
-+    }
-+
-+    return false;
-+}
-+
-+bool kvm_arm_handle_exception(CPUState *cs, struct kvm_run *run)
-+{
-+    int exception = run->ex.exception;
-+    unsigned int error_code = run->ex.error_code;
-+    if (exception == EC_SERROR) {
-+        return kvm_inject_arm_sei(cs, error_code);
-+    }
-+    return false;
-+}
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index 633d088..b2a7933 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -288,4 +288,12 @@ static inline const char *its_class_name(void)
-     }
- }
- 
-+/**
-+ * kvm_arm_handle_exception:
-+ * @cs: CPUState
-+ * @run: KVM RUN structure
-+ *
-+ * Returns: TRUE if the SError exception was successfully handled
-+ */
-+bool kvm_arm_handle_exception(CPUState *cs, struct kvm_run *run);
- #endif
--- 
-1.8.3.1
+<div dir=3D"ltr">Hi Peter,<br><div class=3D"gmail_extra"><br><div class=3D"=
+gmail_quote">On Tue, Oct 17, 2017 at 8:58 PM, Peter Maydell <span dir=3D"lt=
+r">&lt;<a href=3D"mailto:peter.maydell@linaro.org" target=3D"_blank">peter.=
+maydell@linaro.org</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quot=
+e" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">=
+<span class=3D"">On 16 October 2017 at 18:54, Subbaraya Sundeep &lt;<a href=
+=3D"mailto:sundeep.lkml@gmail.com">sundeep.lkml@gmail.com</a>&gt; wrote:<br=
+>
+&gt; Fixed incorrect frame size mask, validated maximum frame<br>
+&gt; size in spi_write and removed dead code.<br>
+&gt;<br>
+&gt; Signed-off-by: Subbaraya Sundeep &lt;<a href=3D"mailto:sundeep.lkml@gm=
+ail.com">sundeep.lkml@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 hw/ssi/mss-spi.c | 8 +++++---<br>
+&gt;=C2=A0 1 file changed, 5 insertions(+), 3 deletions(-)<br>
+&gt;<br>
+&gt; diff --git a/hw/ssi/mss-spi.c b/hw/ssi/mss-spi.c<br>
+&gt; index 5a8e308..1e49cbc 100644<br>
+&gt; --- a/hw/ssi/mss-spi.c<br>
+&gt; +++ b/hw/ssi/mss-spi.c<br>
+&gt; @@ -76,9 +76,10 @@<br>
+&gt;=C2=A0 #define C_BIGFIFO=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (1 &l=
+t;&lt; 29)<br>
+&gt;=C2=A0 #define C_RESET=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+(1 &lt;&lt; 31)<br>
+&gt;<br>
+&gt; -#define FRAMESZ_MASK=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00x1F<br>
+&gt; +#define FRAMESZ_MASK=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00x3F<br>
+&gt;=C2=A0 #define FMCOUNT_MASK=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00x00FFFF00=
+<br>
+&gt;=C2=A0 #define FMCOUNT_SHIFT=C2=A0 =C2=A0 =C2=A0 =C2=A0 8<br>
+&gt; +#define FRAMESZ_MAX=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 32<br>
+&gt;<br>
+&gt;=C2=A0 static void txfifo_reset(MSSSpiState *s)<br>
+&gt;=C2=A0 {<br>
+&gt; @@ -106,8 +107,6 @@ static void set_fifodepth(MSSSpiState *s)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;fifo_depth =3D 16;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 } else if (size &lt;=3D 32) {<br>
+<br>
+</span>Shouldn&#39;t this just be &quot;} else {&quot; now ?<br>
+<span class=3D""><br>
+</span></blockquote><div>Yes. I will send v2.<br><br></div><div>Thanks,<br>=
+</div><div>Sundeep<br><br></div><blockquote class=3D"gmail_quote" style=3D"=
+margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><span class=
+=3D"">&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;fifo_depth =3D 8;<br>
+&gt; -=C2=A0 =C2=A0 } else {<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;fifo_depth =3D 4;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 }<br>
+&gt;=C2=A0 }<br>
+<br>
+</span>thanks<br>
+-- PMM<br>
+</blockquote></div><br></div></div>
+
+--001a1142641402518e055bc9a8ce--

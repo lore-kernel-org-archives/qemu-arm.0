@@ -1,153 +1,163 @@
-Received: by 10.223.159.74 with SMTP id f10csp2437700wrg;
-        Mon, 11 Dec 2017 03:12:27 -0800 (PST)
-X-Google-Smtp-Source: ACJfBovhI3E7sG9UHrvIEri8JrxNclfSaWrpD3FMZGgiQf1MsD1ENraBT1kgYF70TI5LbCtZmNbV
-X-Received: by 10.129.162.2 with SMTP id z2mr7624ywg.89.1512990747827;
-        Mon, 11 Dec 2017 03:12:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1512990747; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp7006857wrf;
+        Thu, 19 Oct 2017 09:42:25 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+QelD5ECsnLTljY7Nm85BVzmf09R9HK5D4Y3++LND3KYQ7e0WJa7/oHju7GZUbkWM5cFNKe
+X-Received: by 10.55.25.85 with SMTP id k82mr2635298qkh.223.1508431345337;
+        Thu, 19 Oct 2017 09:42:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508431345; cv=none;
         d=google.com; s=arc-20160816;
-        b=oIr2DkUvBnvqLSGmINQ3PVXgX1BmrJAhidFe+uzHI2ZWF7Kc03JPblEw6VUbbSIfFr
-         2t5JtxaRb/9oB+d1Pol1e25HIAhYJgItjh5IhDsX/Qd5zNFrpfkb5lOFWLtYxE0/xXHg
-         R2SjpRVQQyDUhx5DKgMZb1lrxWTBhGyH3zf9kiguU+gOlGO/4aqnwt7fduRBf2tHIl4i
-         9hM1AIMrrilcJwhXgKUqfzNWK5QM4uVZ6zS7NsezkTCwTHjpQTL3GP4gntWWcTHuQeEp
-         dRbay2fA4kFSHaM1QdIJ3cUNXPnBB8RvQduhvFGm2KXoigdbY1idcGNNoKY+3UYKlglP
-         a8VQ==
+        b=rltaztKU8Kpx96iCZEXFVgbR63uUlcNtW4MVqIp0tID6TbWO5X7LfUlqZ8OKy1Imxy
+         Qm2heSEkGvBCswxbzPDqVbYU/JlMxVPIhDKduUgOCRjXfR66EidOTlvDvnVf3I6gXQrv
+         AYrk+yqi9sxny8D06wDIBeYoKaWR9k0xZRY9mYmklvdR25lTYfINVNdCEuPtEWXHNNyZ
+         l6jnz06kNUPNNFeWV2a2IyDvfXQixuA80iagk8VkDvBohab52Xt+IpS65lLOJ2hBeFhy
+         KeWvmWwZEei2MseF4RAa4sfUvKun2EVd9mt7oow6F3Dq5Elz1mKShUG6o9NWcPh/PVM0
+         NMIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
          :arc-authentication-results;
-        bh=e2ghdRLQtHiAi/aOVo3MyaSTjho4g8FXAqezH5gHw4M=;
-        b=DeCM7uw7Hy1v7fw451Ybnx/1PKfw6L6CZN2NTXKNUN6Qx/z5GEMGbUYV3Zhg+fSJfl
-         1/Sc+gvCwquPa3++DzqIvV3dpmUM5ClQVCVyw8HvSGahAWQ7exEOizBHfYizZHXqtXHU
-         q3/Yjr2dxgsTpm5Sb1RmJPJOD63mD0pBfxM+pPZz/jU3OOQVi9UmZl1p+a2OpbTjSmj1
-         KcGXXwa1V0HZdHpsVpG6I4P0AF4gRRKK4sD2biCpV7QU36S08zZoJP5Bf7YrZnvQvLG3
-         lK0yzOr6SJuKO43XKPs2gLk/eII2D/opYas8NBAFNdca4drtjhoOk2BXVB6Nv0yYKWwJ
-         zQMw==
+        bh=cRQeTMgs+F/urWe+7xr9sNXZybviOL8WfBxUyHtkUKs=;
+        b=YGh7hvL2TmXLK84sQPdJuYNt1w8RX0gVcitu1wt3R+Wc1irPuJLG6WtxYxjqDdm87u
+         PxxyumdKbJeRpC1DcJDEFecnrLzQU0OO+Izw6HyeWWmhWlZ++0Vdz4LebzGBWiNWZAAb
+         2w7GvkOylj4KbL1qSZk3PC40V17JaNJw8JTWGqlAZ3DiIetBngnKTtrSvYTccI1L8iWE
+         vdyCSm2u7m3ymW9kUD+iG5A9tuzf3WhkIYhRuhMNSYlAMhFKVV5OoE5yJAbnr+/IqB3C
+         rpzDCfD7J07f2ZYrd4xgD+7OKHIwonwCxRj3t7YQibwrCRS+zfMcqFke9SarCmJwAYCf
+         s/hg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZZoNmgzB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s67si3099152ywf.183.2017.12.11.03.12.27
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
+        by mx.google.com with ESMTPS id y41si3084649qty.434.2017.10.19.09.42.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 11 Dec 2017 03:12:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 19 Oct 2017 09:42:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZZoNmgzB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52293 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:50168 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eOM0Z-0005Cq-7b
-	for alex.bennee@linaro.org; Mon, 11 Dec 2017 06:12:27 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51561)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1e5Dtn-0005gC-1L
+	for alex.bennee@linaro.org; Thu, 19 Oct 2017 12:42:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32813)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eOM0O-0005Bo-IB
-	for qemu-arm@nongnu.org; Mon, 11 Dec 2017 06:12:17 -0500
+	(envelope-from <clg@kaod.org>) id 1e5Dne-00011L-VV
+	for qemu-devel@nongnu.org; Thu, 19 Oct 2017 12:36:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eOM0I-0005gC-P2
-	for qemu-arm@nongnu.org; Mon, 11 Dec 2017 06:12:16 -0500
-Received: from mail-ot0-x231.google.com ([2607:f8b0:4003:c0f::231]:34855)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eOM0I-0005fi-JR
-	for qemu-arm@nongnu.org; Mon, 11 Dec 2017 06:12:10 -0500
-Received: by mail-ot0-x231.google.com with SMTP id q3so14375937oth.2
-	for <qemu-arm@nongnu.org>; Mon, 11 Dec 2017 03:12:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=e2ghdRLQtHiAi/aOVo3MyaSTjho4g8FXAqezH5gHw4M=;
-	b=ZZoNmgzBDRN6Zsn4nPHmadGSgBXXvovI41Sz7jis0KM9+Mw+XBo7qReOP88GfAVHx+
-	+X9v1w46ZeYoknRVAwJRAHRysZr3iMcaARnjVC7ZztEE32H0H9GRJ9k1zFlICXSZtlfT
-	HYYuMPOFHVF08Jky8XWMY0zN/iz4cbpgPK33g=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=e2ghdRLQtHiAi/aOVo3MyaSTjho4g8FXAqezH5gHw4M=;
-	b=YTVJ67FQ2Fg8mnnThes5NETZTvi6HvoiVWC6WPhsZLC+dIEkrYXPAqYJAh8v5C19nz
-	eqL2FnOmxe/Jc5IR6yzbGCeQQQ0t2+4nymt/X4G06N/kHfN+z5QM1BrDQl/PBMEiT8Cr
-	hwtJ4g2vo6ryiuE3sIGavWTDxL2M4qzMq0FSU2nmYSogiNKOI5PKEn3bEOM9mrlwavp+
-	x4DFg8jhq3x4/53neIf5X0h71N7zIPb5FUbHL39E43DgK6f58Tqsp6O61SdApaIBZbGX
-	01UdcSYIqeD4kW9rnuhyl7rI1uwHo4N9ACDB58rWvIcdP6TWfy+ZEaILZ+PgVeUYBbKP
-	wTxA==
-X-Gm-Message-State: AJaThX5Xkn19fiGBKG4x5u9X6D83AXa2hGA2gq53YKHqRLoyWRWwVnA8
-	GbWmcMwuGDhtOC9dnEQnp0WGEWgyo4dA+NjWTxYTHw==
-X-Received: by 10.157.80.24 with SMTP id a24mr31787163oth.335.1512990729913;
-	Mon, 11 Dec 2017 03:12:09 -0800 (PST)
+	(envelope-from <clg@kaod.org>) id 1e5DnZ-0003JO-Us
+	for qemu-devel@nongnu.org; Thu, 19 Oct 2017 12:36:02 -0400
+Received: from 6.mo5.mail-out.ovh.net ([178.32.119.138]:49707)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1e5DnZ-0003In-Ok
+	for qemu-devel@nongnu.org; Thu, 19 Oct 2017 12:35:57 -0400
+Received: from player786.ha.ovh.net (b6.ovh.net [213.186.33.56])
+	by mo5.mail-out.ovh.net (Postfix) with ESMTP id 2E08B1461D8
+	for <qemu-devel@nongnu.org>; Thu, 19 Oct 2017 18:35:56 +0200 (CEST)
+Received: from zorba.kaod.org (LFbn-1-2231-173.w90-76.abo.wanadoo.fr
+	[90.76.52.173]) (Authenticated sender: clg@kaod.org)
+	by player786.ha.ovh.net (Postfix) with ESMTPSA id 9A6778007E;
+	Thu, 19 Oct 2017 18:35:49 +0200 (CEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 19 Oct 2017 18:35:38 +0200
+Message-Id: <20171019163546.2039-1-clg@kaod.org>
+X-Mailer: git-send-email 2.13.6
 MIME-Version: 1.0
-Received: by 10.157.63.74 with HTTP; Mon, 11 Dec 2017 03:11:49 -0800 (PST)
-In-Reply-To: <20171211105546.16466-1-ppandit@redhat.com>
-References: <20171211105546.16466-1-ppandit@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 11 Dec 2017 11:11:49 +0000
-Message-ID: <CAFEAcA9=AzBE7CCGwHZtueyXzEGXXXSAb0ynhc-+6tzQfk5jrQ@mail.gmail.com>
-To: P J P <ppandit@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::231
-Subject: Re: [Qemu-arm] [PATCH] display: check irq handler index before
- access
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: text/plain; charset=UTF-8
+X-Ovh-Tracer-Id: 15306609234974575377
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedttddrudekgddutdehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 178.32.119.138
+Subject: [Qemu-devel] [PATCH v6 0/8] aspeed: add a witherspoon-bmc machine
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Prasad J Pandit <pjp@fedoraproject.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Qemu Developers <qemu-devel@nongnu.org>, Moguofang <moguofang@huawei.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HItrV11RhRDH
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 5l/T5r0Q5zOf
 
-On 11 December 2017 at 10:55, P J P <ppandit@redhat.com> wrote:
-> From: Prasad J Pandit <pjp@fedoraproject.org>
->
-> The ctz32() routine could return value greater than
-> TC6393XB_GPIOS=16. This could lead to an OOB array access.
-> Add check to avoid it.
->
-> Reported-by: Moguofang <moguofang@huawei.com>
-> Signed-off-by: Prasad J Pandit <pjp@fedoraproject.org>
-> ---
->  hw/display/tc6393xb.c | 4 ++++
->  1 file changed, 4 insertions(+)
->
-> diff --git a/hw/display/tc6393xb.c b/hw/display/tc6393xb.c
-> index 74d10af3d4..78292cb847 100644
-> --- a/hw/display/tc6393xb.c
-> +++ b/hw/display/tc6393xb.c
-> @@ -175,6 +175,10 @@ static void tc6393xb_gpio_handler_update(TC6393xbState *s)
->
->      for (diff = s->prev_level ^ level; diff; diff ^= 1 << bit) {
->          bit = ctz32(diff);
-> +        if (bit >= TC6393XB_GPIOS) {
-> +            fprintf(stderr, "TC6393xb: no GPIO pin %d\n", bit);
-> +            return;
-> +        }
->          qemu_set_irq(s->handler[bit], (level >> bit) & 1);
->      }
+Hello,
 
-It would be more sensible to just mask off the top bits of
-'level' before starting the loop, rather than checking every
-time around the loop:
-   level &= MAKE_64BIT_MASK(0, TC6493XB_GPIOS);
+This series adds a new Aspeed machine to emulate the BMC of a
+Witherspoon system. It also extends the other Aspeed machines with I2C
+devices and adds a simple model for the pca9552 LED blinker present on
+the witherspoon board.
 
-Also, if we want to warn about the guest having set a GPIO
-bit we don't implement this isn't the best place to do it --
-it would make more sense to do that only if the guest writes
-something non-zero to SCR_GPO_DSR(2), and as an LOG_UNIMP warning.
-But I don't think it's worth the effort since this is only used
-on the ancient 'tosa' board.
+Thanks,
 
-thanks
--- PMM
+C.
+
+Changes since v5:
+
+ - created the ROM memory region even if there is no file backend
+   specified by the user
+
+Changes since v4:
+
+ - use a ROM memory region
+
+Changes since v3:
+
+ - introduce a dummy ROM device to catch invalid writes
+ - removed 'ignore_memory_transaction_failures' on all Aspeed machines
+ - reworked PCA9552 device :
+   . simpler I2C handles
+   . auto-increment support
+   . unit test
+
+Changes since v2:
+
+ - removed comments on the I2C buffer size pf the PCA9552 device.
+ - removed 'ignore_memory_transaction_failures' flag on the
+   witherspoon machine.
+  =20
+Changes since v1:
+
+ - introduced smbus_eeprom_init_one()
+
+
+C=C3=A9dric Le Goater (8):
+  aspeed: use a ROM memory region to catch invalid writes
+  aspeed: remove ignore_memory_transaction_failures on all boards
+  aspeed: add support for the witherspoon-bmc board
+  aspeed: add an I2C RTC device to all machines
+  smbus: add a smbus_eeprom_init_one() routine
+  aspeed: Add EEPROM I2C devices
+  misc: add pca9552 LED blinker model
+  aspeed: add the pc9552 chips to the witherspoon machine
+
+ default-configs/arm-softmmu.mak |   1 +
+ hw/arm/aspeed.c                 | 139 ++++++++++++++++++---
+ hw/i2c/smbus_eeprom.c           |  16 ++-
+ hw/misc/Makefile.objs           |   1 +
+ hw/misc/pca9552.c               | 259 ++++++++++++++++++++++++++++++++++=
+++++++
+ include/hw/i2c/smbus.h          |   1 +
+ include/hw/misc/pca9552.h       |  33 +++++
+ tests/Makefile.include          |   2 +
+ tests/pca9552-test.c            | 131 ++++++++++++++++++++
+ 9 files changed, 560 insertions(+), 23 deletions(-)
+ create mode 100644 hw/misc/pca9552.c
+ create mode 100644 include/hw/misc/pca9552.h
+ create mode 100644 tests/pca9552-test.c
+
+--=20
+2.13.6
+

@@ -1,161 +1,177 @@
-Received: by 10.223.197.9 with SMTP id q9csp6633094wrf;
-        Thu, 19 Oct 2017 03:07:17 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+SxOijjHv363AIzG4S/NnWsOH7PjophGzb3Zf0DlKrcHB0b/RSOL+lYQW1BKlSa9JKqTiJ/
-X-Received: by 10.200.40.120 with SMTP id 53mr1276928qtr.164.1508407637029;
-        Thu, 19 Oct 2017 03:07:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508407637; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp6634015wrf;
+        Thu, 19 Oct 2017 03:08:18 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+T47YLwYJiiKKaOLGzStm8ZCLEsIWEUw9ShLk2ktXY1V6SRK2dXp4bFq4/EdKXKOPzWo0A6
+X-Received: by 10.55.221.68 with SMTP id n65mr1189471qki.27.1508407698642;
+        Thu, 19 Oct 2017 03:08:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508407698; cv=none;
         d=google.com; s=arc-20160816;
-        b=mKWp8Z157FZIMIuU7tlKETFX5YO9RfHZP6T36DkyoQ3vR8sU7Wu23liqswLiuU6f7l
-         l/HOmaXEdKsv7sNniiW43fJSALx4GudIJ4R6Z2p6JGTzb1bAx3WORO4VimuUL5+7blqf
-         zOGhuS0VLDFt650MhG4MoZO/TKu74StliFXOdFAuiVtAvcH1tHS4BZPuVARo12yJz1CZ
-         b8/Ue99RoitLGAl6lGQSZwkJjtEGyjWNWAK6+EPaNlTQs/9ZGfBzq2KqmEsl2KST9dxg
-         m5wOuN5jShtEguSaTYALAAE1vaWEQRGU16MVyqUXdbOGQsnjiRZarTGaeAGTFdDm3kWB
-         d5jw==
+        b=lSm3fYI4KgeWb0CCzVwZzajmUXzAxM+AldS1RedLIYE5v2ZYQEi77okU4kMNXB7DlN
+         RMB+0sQBHMcpRZmy7667bbpKN5AOdoOJljh7kHTAxF2JlTlgQvG859BNzMzjSuny/5iI
+         kd07ExcdVaTN49pd4w2nU51Erl23bsTMo9hWNAA9ToIW+5TP8PPSPb8jyuC9gOGfNPsG
+         L/jddPav3m435dwW/GEzB/pmpnnY31a8v/hw1Sn0QkvpsgFyOkm0NUUUEmS/Xn/yhERq
+         5b1dBv8jlH2T4b7hvDC0ErxB2zOzK8iZGzquijisiTjUayWwdPCK8i2JUJ4DnBtIg3Td
+         4QvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=q3lWNaR6bLrdpf0dyFePxO1aNyJDWY1EKen+AX/8WAw=;
-        b=Mjo/55bLHfFXIyXHPrR3+DDMPDCHM5dMjvdm8NysHYeJPItNAGn1rBWux3zKP7rP4r
-         4ilBeRCWsYPRZjDMn9GqHr5m/GO9DuDkfXyEJfDP5m81MBMCMkFLNUgy1B1oZB7Uj+nE
-         aqpMf87AaV8AiRggAx9e/Mhp74CqKcYllgkrFBOIdP0atb5v8kdnZG4W4e8GF6TMkioa
-         CEyBJRmB3i8Ezr2MHZsRjvz3mYAnPfoxdyzdiXS/wDF5cH/egjh1mNpDT3rTe1QQlq5I
-         j7BK/BPdXn4gG0xeMLqFdW/FyR7+dZ+51/Giuz6o3nNIwfziz6GZwP1Nrg1OXQqDcopT
-         mNPA==
+        bh=nXf4S09mR7tSH5YJETlVM4IHoCZyh6dO5/ikXEM4XoU=;
+        b=HuxBv4n0IHJpzEjV/Ys5fH1NnehLFa3htfKVqDEkIsAwxeaTl6GvXnYztS8rop1gKU
+         8oQY5GGFNqmDoPeXbN2CFcdnFB08INPPnewtiCg+iDUACWzLsKQhXHd3SfoTkeLAZ+VL
+         Jx6eXQDlDS8kQTzXnIlxwn95lObI3sAec4+3QvTF/QQKb0RpnS3Dmd9iCVt1mP5jn9EW
+         j5zL4a5HZmu7slsU90WMj4vE8IUGfmozWgB2NAZNRwfaESKXxr57NAAehwQGl3oThnKQ
+         rge9RkAKA5F9QLMcs5FVBjyEWi76A52CahkATeV7kZNujREElIIwgrXP6yFpmN9irtvQ
+         O4SA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s45si5446966qtk.103.2017.10.19.03.07.16
+        by mx.google.com with ESMTPS id n42si1642960qtk.304.2017.10.19.03.08.18
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 19 Oct 2017 03:07:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 19 Oct 2017 03:08:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:48460 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:48469 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e57jO-0004Ti-PJ
-	for alex.bennee@linaro.org; Thu, 19 Oct 2017 06:07:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43653)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1e57kO-0005jI-B9
+	for alex.bennee@linaro.org; Thu, 19 Oct 2017 06:08:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43724)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1e57hF-00036i-KA
-	for qemu-devel@nongnu.org; Thu, 19 Oct 2017 06:05:07 -0400
+	(envelope-from <clg@kaod.org>) id 1e57hR-0003IH-Ol
+	for qemu-arm@nongnu.org; Thu, 19 Oct 2017 06:05:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1e57hC-0008Mt-Vn
-	for qemu-devel@nongnu.org; Thu, 19 Oct 2017 06:05:01 -0400
-Received: from 16.mo5.mail-out.ovh.net ([87.98.174.144]:55353)
+	(envelope-from <clg@kaod.org>) id 1e57hJ-0008Ss-Tt
+	for qemu-arm@nongnu.org; Thu, 19 Oct 2017 06:05:13 -0400
+Received: from 5.mo5.mail-out.ovh.net ([87.98.173.103]:40403)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1e57hC-0008LT-Px
-	for qemu-devel@nongnu.org; Thu, 19 Oct 2017 06:04:58 -0400
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1e57hJ-0008Rr-O2
+	for qemu-arm@nongnu.org; Thu, 19 Oct 2017 06:05:05 -0400
 Received: from player786.ha.ovh.net (b6.ovh.net [213.186.33.56])
-	by mo5.mail-out.ovh.net (Postfix) with ESMTP id 4BC30141817
-	for <qemu-devel@nongnu.org>; Thu, 19 Oct 2017 12:04:57 +0200 (CEST)
+	by mo5.mail-out.ovh.net (Postfix) with ESMTP id 805D3144047
+	for <qemu-arm@nongnu.org>; Thu, 19 Oct 2017 12:05:04 +0200 (CEST)
 Received: from zorba.kaod.org (LFbn-1-2231-173.w90-76.abo.wanadoo.fr
 	[90.76.52.173]) (Authenticated sender: clg@kaod.org)
-	by player786.ha.ovh.net (Postfix) with ESMTPSA id 1749480093;
-	Thu, 19 Oct 2017 12:04:50 +0200 (CEST)
+	by player786.ha.ovh.net (Postfix) with ESMTPSA id 476A38007B;
+	Thu, 19 Oct 2017 12:04:57 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 19 Oct 2017 12:04:07 +0200
-Message-Id: <20171019100410.26239-6-clg@kaod.org>
+Date: Thu, 19 Oct 2017 12:04:08 +0200
+Message-Id: <20171019100410.26239-7-clg@kaod.org>
 X-Mailer: git-send-email 2.13.6
 In-Reply-To: <20171019100410.26239-1-clg@kaod.org>
 References: <20171019100410.26239-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 8703487757119228689
+X-Ovh-Tracer-Id: 8705458083310832401
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedttddrudekgddvgecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 87.98.174.144
-Subject: [Qemu-devel] [PATCH v4 5/8] smbus: add a smbus_eeprom_init_one()
- routine
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 87.98.173.103
+Subject: [Qemu-arm] [PATCH v4 6/8] aspeed: Add EEPROM I2C devices
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
 	Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YbtRLaIwbzBg
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Tp2xzLy6QyNu
 
-This is an helper routine to add a single EEPROM on an I2C bus. It can
-be directly used by smbus_eeprom_init() which adds a certain number of
-EEPROMs on mips and x86 machines.
+The Aspeed boards have at least one EEPROM to hold the Vital Product
+Data (VPD).
 
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
 ---
- hw/i2c/smbus_eeprom.c  | 16 +++++++++++-----
- include/hw/i2c/smbus.h |  1 +
- 2 files changed, 12 insertions(+), 5 deletions(-)
+ hw/arm/aspeed.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-diff --git a/hw/i2c/smbus_eeprom.c b/hw/i2c/smbus_eeprom.c
-index b13ec0fe7a2a..2d24a4cd59bf 100644
---- a/hw/i2c/smbus_eeprom.c
-+++ b/hw/i2c/smbus_eeprom.c
-@@ -140,6 +140,16 @@ static void smbus_eeprom_register_types(void)
-=20
- type_init(smbus_eeprom_register_types)
-=20
-+void smbus_eeprom_init_one(I2CBus *smbus, uint8_t address, uint8_t *eepr=
-om_buf)
-+{
-+    DeviceState *dev;
-+
-+    dev =3D qdev_create((BusState *) smbus, "smbus-eeprom");
-+    qdev_prop_set_uint8(dev, "address", address);
-+    qdev_prop_set_ptr(dev, "data", eeprom_buf);
-+    qdev_init_nofail(dev);
-+}
-+
- void smbus_eeprom_init(I2CBus *smbus, int nb_eeprom,
-                        const uint8_t *eeprom_spd, int eeprom_spd_size)
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 8683388e632c..2e08eb49f443 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -17,6 +17,7 @@
+ #include "hw/arm/arm.h"
+ #include "hw/arm/aspeed_soc.h"
+ #include "hw/boards.h"
++#include "hw/i2c/smbus.h"
+ #include "qemu/log.h"
+ #include "sysemu/block-backend.h"
+ #include "sysemu/blockdev.h"
+@@ -279,11 +280,15 @@ static void palmetto_bmc_i2c_init(AspeedBoardState =
+*bmc)
  {
-@@ -150,10 +160,6 @@ void smbus_eeprom_init(I2CBus *smbus, int nb_eeprom,
-     }
+     AspeedSoCState *soc =3D &bmc->soc;
+     DeviceState *dev;
++    uint8_t *eeprom_buf =3D g_malloc0(32 * 1024);
 =20
-     for (i =3D 0; i < nb_eeprom; i++) {
--        DeviceState *eeprom;
--        eeprom =3D qdev_create((BusState *)smbus, "smbus-eeprom");
--        qdev_prop_set_uint8(eeprom, "address", 0x50 + i);
--        qdev_prop_set_ptr(eeprom, "data", eeprom_buf + (i * 256));
--        qdev_init_nofail(eeprom);
-+        smbus_eeprom_init_one(smbus, 0x50 + i, eeprom_buf + (i * 256));
-     }
+     /* The palmetto platform expects a ds3231 RTC but a ds1338 is
+      * enough to provide basic RTC features. Alarms will be missing */
+     i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 0), "ds1338",=
+ 0x68);
+=20
++    smbus_eeprom_init_one(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 0), 0x50=
+,
++                          eeprom_buf);
++
+     /* add a TMP423 temperature sensor */
+     dev =3D i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 2),
+                            "tmp423", 0x4c);
+@@ -320,6 +325,10 @@ static const TypeInfo palmetto_bmc_type =3D {
+ static void ast2500_evb_i2c_init(AspeedBoardState *bmc)
+ {
+     AspeedSoCState *soc =3D &bmc->soc;
++    uint8_t *eeprom_buf =3D g_malloc0(8 * 1024);
++
++    smbus_eeprom_init_one(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 3), 0x50=
+,
++                          eeprom_buf);
+=20
+     /* The AST2500 EVB expects a LM75 but a TMP105 is compatible */
+     i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 7), "tmp105",=
+ 0x4d);
+@@ -389,6 +398,7 @@ static const TypeInfo romulus_bmc_type =3D {
+ static void witherspoon_bmc_i2c_init(AspeedBoardState *bmc)
+ {
+     AspeedSoCState *soc =3D &bmc->soc;
++    uint8_t *eeprom_buf =3D g_malloc0(8 * 1024);
+=20
+     i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 4), "tmp423",=
+ 0x4c);
+     i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 5), "tmp423",=
+ 0x4c);
+@@ -399,6 +409,9 @@ static void witherspoon_bmc_i2c_init(AspeedBoardState=
+ *bmc)
+     /* The witherspoon board expects Epson RX8900 I2C RTC but a ds1338 i=
+s
+      * good enough */
+     i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), "ds1338"=
+, 0x32);
++
++    smbus_eeprom_init_one(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), 0x5=
+1,
++                          eeprom_buf);
  }
-diff --git a/include/hw/i2c/smbus.h b/include/hw/i2c/smbus.h
-index 544bbc19574f..666cdeb04c07 100644
---- a/include/hw/i2c/smbus.h
-+++ b/include/hw/i2c/smbus.h
-@@ -77,6 +77,7 @@ int smbus_read_block(I2CBus *bus, uint8_t addr, uint8_t=
- command, uint8_t *data);
- int smbus_write_block(I2CBus *bus, uint8_t addr, uint8_t command, uint8_=
-t *data,
-                       int len);
 =20
-+void smbus_eeprom_init_one(I2CBus *smbus, uint8_t address, uint8_t *eepr=
-om_buf);
- void smbus_eeprom_init(I2CBus *smbus, int nb_eeprom,
-                        const uint8_t *eeprom_spd, int size);
-=20
+ static void witherspoon_bmc_init(MachineState *machine)
 --=20
 2.13.6
 

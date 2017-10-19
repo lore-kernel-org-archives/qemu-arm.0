@@ -1,631 +1,335 @@
-Received: by 10.223.197.9 with SMTP id q9csp7009599wrf;
-        Thu, 19 Oct 2017 09:45:31 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+Q0kmUgTNY3erfAlVF1lKwFFclprNtHOOHdk3GwmTebD7Gf7hH9RUhh7RL5mULited/Xjh6
-X-Received: by 10.223.190.14 with SMTP id n14mr2122913wrh.18.1508431531639;
-        Thu, 19 Oct 2017 09:45:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508431531; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp7014566wrf;
+        Thu, 19 Oct 2017 09:51:13 -0700 (PDT)
+X-Received: by 10.80.167.34 with SMTP id h31mr3290942edc.43.1508431873327;
+        Thu, 19 Oct 2017 09:51:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508431873; cv=none;
         d=google.com; s=arc-20160816;
-        b=jkONIuQ6f02KKhIGPqhtY4X8kB0B+unVnu/d32r2S8I1/Z8+3y06Aa4Nsjmj9ThCb9
-         qkCQj22vJO7sYzZaLai9DvD/CqHPdJay02abHh+UFY8k8OAmp+/C2S/6/bY41i6bB8jg
-         Ey3mlOKxSiOw87s/ytBWWG8eGnqv/t3PMnyFMFZ9vnKaT3xXfyTgYjhdycQXAQMPu4Dt
-         FKlvQsd28qPDp8bGX2EUMFMTZyiM8UFB0ShyB2NtjLF/R2eWE3TEAuFk8FbQzfHk0Vvt
-         SJMGmLG4mkvy78HRMG861Uo98wXxJxyd8aSak/xJfHBteo0ssawlGG0XpUuDXt8YdbUE
-         /tdQ==
+        b=Wpkc1VPM01K8fdvpSuBWyayqFdhK/VhSuPIb/TThXJtEi8t0aK+RUQcg8p4kdT5m1U
+         N4dBsV/3ZdvibqONHLrnCRKX+cDj+NFN2P6Q78rIbtTX3k/FBzrF5brxDZdh4Yo902w+
+         Gddn/2toJTi11VzqYXg2E77zWASng7Ad6D/vuKf3c29RZVXhhYD4ZlSEJgJ0Ud7UdhuA
+         J2SMiS8p1eGpjGePozi0xL29SBlfRq8rYhg55RnZk3btoiBTUz/fzw8Yjdo0wjRFU2o4
+         1c26wd6fOvCTwa7TYGoPRpFpFbbBXL78nW4/rqRjZjyk3jnBDe+jOhNtg99JUFOMWXL+
+         86yw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=/aH2A7W/8UoSy+QjDP0DSLazpjd8Jr2alXhxrw/fUz8=;
-        b=CWhKrsz412+3SPAOxfPEA2PydPVjmtnavxNNrApp0b7ABuGZQh/dynXdc1a3Uase6E
-         adyxHoiPtyAquUGGNbIJkjUpPn7VDs5c5Wbgkt/PD22GP4Pr9xBE4N1Ug/8jvM78y4Wb
-         4qKXuvMvSL2ibEZRNWuSFKCN3LkcqghaIbA1MtlWGB9ZB6GMt07os9Y4eq4BojZFLhOS
-         LNUYvMNCwp+zCWdYX0csQcaHEBPPIq/48xOwSWbu3edUoSKaLyiBrelGi+zJfBl34sPv
-         ZqcIAE2CQK7VoAGqqQudXwQGA0Qoo7WPV1H5ZiKXxy5sZert/UkdVBiiBdmZKFtsan7V
-         GDWw==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=d+ppvuy3wEaBP5JzmVyB7ioFquY9HOA4lPxG9rN+wqU=;
+        b=VLFDt5PqX4cLWRLOIoELfoSg0YNqHEiddRCkzhnp6fdz3G/RatArbSc2aG5EYcDGSo
+         kfLzReVWVbkAqUTNJ919mI81+SX5Xb67kXVFyGsdssuXtioCsIu3Fxbcni6brve9wMQ6
+         199YV1R2aRXL7gfILnhirx7WIXDHXiHuxClrlon1Gc6g0bZEsNqkObDVti6llllxU6VM
+         RYquxvFzj975nzKgJW+ACZUo10AbV+y3egtQNWx6SOC4+i3Wk8lAR0mPmLwjM0VqZejR
+         w3OTe4oFbbhouiS5a71OVX5JUDDfsQMvi5ub0Vibt9piqbeF5x/lO6pnbvbKIgMdWDSI
+         ZCvA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=IHFhASP3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o27si5707517wro.223.2017.10.19.09.45.31
+        by mx.google.com with ESMTPS id d93si620162edd.348.2017.10.19.09.51.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 19 Oct 2017 09:45:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 19 Oct 2017 09:51:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:50185 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=IHFhASP3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:50225 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e5Dwo-0008Rf-Fd
-	for alex.bennee@linaro.org; Thu, 19 Oct 2017 12:45:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33439)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1e5E2K-0005Oh-5I
+	for alex.bennee@linaro.org; Thu, 19 Oct 2017 12:51:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38582)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1e5DoS-0001fa-3F
-	for qemu-devel@nongnu.org; Thu, 19 Oct 2017 12:36:54 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1e5E25-0005Lg-U5
+	for qemu-arm@nongnu.org; Thu, 19 Oct 2017 12:50:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1e5DoO-0003or-40
-	for qemu-devel@nongnu.org; Thu, 19 Oct 2017 12:36:52 -0400
-Received: from 8.mo5.mail-out.ovh.net ([178.32.116.78]:44359)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1e5DoN-0003oB-QD
-	for qemu-devel@nongnu.org; Thu, 19 Oct 2017 12:36:48 -0400
-Received: from player786.ha.ovh.net (b6.ovh.net [213.186.33.56])
-	by mo5.mail-out.ovh.net (Postfix) with ESMTP id 731BE14622A
-	for <qemu-devel@nongnu.org>; Thu, 19 Oct 2017 18:36:46 +0200 (CEST)
-Received: from zorba.kaod.org (LFbn-1-2231-173.w90-76.abo.wanadoo.fr
-	[90.76.52.173]) (Authenticated sender: clg@kaod.org)
-	by player786.ha.ovh.net (Postfix) with ESMTPSA id 3DE8380080;
-	Thu, 19 Oct 2017 18:36:39 +0200 (CEST)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 19 Oct 2017 18:35:45 +0200
-Message-Id: <20171019163546.2039-8-clg@kaod.org>
-X-Mailer: git-send-email 2.13.6
-In-Reply-To: <20171019163546.2039-1-clg@kaod.org>
-References: <20171019163546.2039-1-clg@kaod.org>
+	(envelope-from <peter.maydell@linaro.org>) id 1e5E24-0005il-I0
+	for qemu-arm@nongnu.org; Thu, 19 Oct 2017 12:50:57 -0400
+Received: from mail-wr0-x230.google.com ([2a00:1450:400c:c0c::230]:45136)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1e5E24-0005hB-8q
+	for qemu-arm@nongnu.org; Thu, 19 Oct 2017 12:50:56 -0400
+Received: by mail-wr0-x230.google.com with SMTP id k7so8995617wre.2
+	for <qemu-arm@nongnu.org>; Thu, 19 Oct 2017 09:50:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=d+ppvuy3wEaBP5JzmVyB7ioFquY9HOA4lPxG9rN+wqU=;
+	b=IHFhASP3sXAmc0chDkSq9EPiB4HjvsNPNVXwSZiv6qET4hEptkak2ENWRxHvYBEPyF
+	MKAg8Ff4OdURdJnLMkNoDyuwO2lxO17QfB+0NHQPmtPzn1gGrtDPJopbjmuEubut+9T4
+	I2exH0dAnpOwiDY+g2zO9d0mGFD0WOeJ4qH4I=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=d+ppvuy3wEaBP5JzmVyB7ioFquY9HOA4lPxG9rN+wqU=;
+	b=G9T5LBOhKNjcwA43zrAz1Yw9Vqb1cmHjBrNdjezHvn5/y6T+ld+3YNdECd5Os45/3I
+	Qi9IISgtI5UTpRUpOmmXWVF2nVAGsN7yXSiDAophBIXrzZr8mjatPpimjhSuwTCNUqc+
+	OS1vym35NQAGrBbC5R0yjVKSNX4N/eY05mkDjTuYrCzE6yztTEPNfONpZMg4QuWIKiaq
+	1LiJx3G7zRjsI8D2/xmn1A7yVn7PJ3c7AAMAgTBCwk8/M15ODngmvooqAsyIwd59DIxd
+	10R0yyt1qwj0SuXNRTJxGgw/AhKOaL5jGSPYg991HAv6hRXbZbgY92sBqINF44qd8yIe
+	X6/A==
+X-Gm-Message-State: AMCzsaUiukMWJBul35RwluqlQtfqkebaBNqZfkziKsB7T2zSW8jwS4VN
+	2P6vFPAZMYBMQl4pW+40oqWfDdHoH7l+YhI+Ra/lCg==
+X-Google-Smtp-Source: ABhQp+TIGZoQs3uzasz5J0PLY+E3dEiQtOSuxBFU8Osg7LcpA6Bq7sSFzOO6NjyhMyq0doCrwHNUzHiLrnsXwoB5yMc=
+X-Received: by 10.223.155.209 with SMTP id e17mr2148253wrc.194.1508431852434; 
+	Thu, 19 Oct 2017 09:50:52 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 15320682984384727825
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedttddrudekgddutdehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 178.32.116.78
-Subject: [Qemu-devel] [PATCH v6 7/8] misc: add pca9552 LED blinker model
-X-BeenThere: qemu-devel@nongnu.org
+Received: by 10.223.161.5 with HTTP; Thu, 19 Oct 2017 09:50:31 -0700 (PDT)
+In-Reply-To: <20171018001608.8388-1-Andrew.Baumann@microsoft.com>
+References: <20171018001608.8388-1-Andrew.Baumann@microsoft.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 19 Oct 2017 17:50:31 +0100
+Message-ID: <CAFEAcA-6saNdT9k9Oo+cMoPWR-miaDq08EhN=3pbVzbadwzOwA@mail.gmail.com>
+To: Andrew Baumann <Andrew.Baumann@microsoft.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::230
+Subject: Re: [Qemu-arm] [RFC PATCH] arm: implement cache/shareability
+ attribute bits for PAR registers
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tYSPvC9T/3SZ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Lm2DzG7DtTkZ
 
-Specs are available here :
+On 18 October 2017 at 01:16, Andrew Baumann
+<Andrew.Baumann@microsoft.com> wrote:
+> On a successful address translation instruction, PAR is supposed to
+> contain cacheability and shareability attributes determined by the
+> translation. Previous versions of QEMU returned 0 for these bits (in
+> line with the general strategy of ignoring caches and memory
+> attributes), but some guests may depend on them.
+>
+> This patch collects the attribute bits in the page-table work, and
 
-    https://www.nxp.com/docs/en/application-note/AN264.pdf
+"walk"
 
-This is a simple model supporting the basic registers for led and GPIO
-mode. The device also supports two blinking rates but not the model
-yet.
+> updates PAR with the correct attributes after translation by the MAIR
+> registers, but only in the restricted case of an LPAE descriptor with
+> no second-stage translation. Other cases log an unimplemented message,
+> and return 0 in these bits as in the prior implementation.
+> ---
 
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
----
+Hi; thanks for this patch. Looks like you forgot to add your
+signed-off-by line.
 
- Changes since v3:
+> This is my second attempt at implementing enough of the PAR attribute
+> bits to be able to boot Windows on aarch64. I'd appreciate some
+> feedback/guidance on the following:
+>
+> 1. Is adding these entirely ARM-specific fields to the generic
+>    MemTxAttrs bitfield the right approach, or would you prefer a new
+>    return field from get_phys_addr() and friends?
 
- - introduced auto-increment support
- - removed the buffer collecting bytes on the bus
- - improved reset
- - used extract32
- - added a unit test
+MemTxAttrs is for attributes of a memory transaction as they
+go out on a bus (conceptually speaking). While some of the
+cacheability info does go out on a hardware AXI bus, it
+obviously isn't formatted as an index into the MAIR registers,
+since those are entirely CPU internal. I'm not sure the
+shareability stuff goes outside the CPU at all, but I haven't
+looked closely at the AXI spec.
 
- Changes since v2:
+While you could wade into the complexities of figuring out what
+attributes we want to expose to devices via the MemTxAttrs fields,
+I would suggest keeping things internal to the CPU implementation,
+by adding another parameter to get_phys_addr() &c.
 
- - removed comments on the I2C buffer size, but kept the array. I did
-   not want to rewrite the buffer handling
+> 2. Is it acceptable to implement this piecemeal for the special LPAE
+>    case we care about, and defer the messy special cases for later? (I
+>    hope so!)
 
- default-configs/arm-softmmu.mak |   1 +
- hw/misc/Makefile.objs           |   1 +
- hw/misc/pca9552.c               | 259 ++++++++++++++++++++++++++++++++++=
-++++++
- include/hw/misc/pca9552.h       |  33 +++++
- tests/Makefile.include          |   2 +
- tests/pca9552-test.c            | 131 ++++++++++++++++++++
- 6 files changed, 427 insertions(+)
- create mode 100644 hw/misc/pca9552.c
- create mode 100644 include/hw/misc/pca9552.h
- create mode 100644 tests/pca9552-test.c
+Depends whether I look at the other parts and decide on your
+behalf that they're easy ;-)
 
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmm=
-u.mak
-index 5059d134c816..d868d1095a6c 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -16,6 +16,7 @@ CONFIG_TSC2005=3Dy
- CONFIG_LM832X=3Dy
- CONFIG_TMP105=3Dy
- CONFIG_TMP421=3Dy
-+CONFIG_PCA9552=3Dy
- CONFIG_STELLARIS=3Dy
- CONFIG_STELLARIS_INPUT=3Dy
- CONFIG_STELLARIS_ENET=3Dy
-diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-index e8f0a02f35af..e4e22880dbbc 100644
---- a/hw/misc/Makefile.objs
-+++ b/hw/misc/Makefile.objs
-@@ -7,6 +7,7 @@ common-obj-$(CONFIG_SGA) +=3D sga.o
- common-obj-$(CONFIG_ISA_TESTDEV) +=3D pc-testdev.o
- common-obj-$(CONFIG_PCI_TESTDEV) +=3D pci-testdev.o
- common-obj-$(CONFIG_EDU) +=3D edu.o
-+common-obj-$(CONFIG_PCA9552) +=3D pca9552.o
-=20
- common-obj-y +=3D unimp.o
-=20
-diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
-new file mode 100644
-index 000000000000..70ce6f038da2
---- /dev/null
-+++ b/hw/misc/pca9552.c
-@@ -0,0 +1,259 @@
-+/*
-+ * PCA9552 I2C LED blinker
-+ *
-+ *     https://www.nxp.com/docs/en/application-note/AN264.pdf
-+ *
-+ * Copyright (c) 2017, IBM Corporation.
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or
-+ * later. See the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "hw/hw.h"
-+#include "hw/misc/pca9552.h"
-+
-+/*
-+ * Bits [0:3] are used to address a specific register.
-+ */
-+#define PCA9552_INPUT0   0 /* read only input register 0 */
-+#define PCA9552_INPUT1   1 /* read only input register 1  */
-+#define PCA9552_PSC0     2 /* read/write frequency prescaler 0 */
-+#define PCA9552_PWM0     3 /* read/write PWM register 0 */
-+#define PCA9552_PSC1     4 /* read/write frequency prescaler 1 */
-+#define PCA9552_PWM1     5 /* read/write PWM register 1 */
-+#define PCA9552_LS0      6 /* read/write LED0 to LED3 selector */
-+#define PCA9552_LS1      7 /* read/write LED4 to LED7 selector */
-+#define PCA9552_LS2      8 /* read/write LED8 to LED11 selector */
-+#define PCA9552_LS3      9 /* read/write LED12 to LED15 selector */
-+
-+/*
-+ * Bit [4] is used to activate the Auto-Increment option of the
-+ * register address
-+ */
-+#define PCA9552_AUTOINC  (1 << 4)
-+
-+#define PCA9552_LED_ON   0x0
-+#define PCA9552_LED_OFF  0x1
-+#define PCA9552_LED_PWM0 0x2
-+#define PCA9552_LED_PWM1 0x3
-+
-+static uint8_t pca9552_pin_get_config(PCA9552State *s, int pin)
-+{
-+    uint8_t reg   =3D PCA9552_LS0 + (pin / 4);
-+    uint8_t shift =3D (pin % 4) << 1;
-+
-+    return extract32(s->regs[reg], shift, 2);
-+}
-+
-+static void pca9552_update_pin_input(PCA9552State *s)
-+{
-+    int i;
-+
-+    for (i =3D 0; i < s->nr_leds; i++) {
-+        uint8_t input_reg =3D PCA9552_INPUT0 + (i / 8);
-+        uint8_t input_shift =3D (i % 8);
-+        uint8_t config =3D pca9552_pin_get_config(s, i);
-+
-+        switch (config) {
-+        case PCA9552_LED_ON:
-+            s->regs[input_reg] |=3D 1 << input_shift;
-+            break;
-+        case PCA9552_LED_OFF:
-+            s->regs[input_reg] &=3D ~(1 << input_shift);
-+            break;
-+        case PCA9552_LED_PWM0:
-+        case PCA9552_LED_PWM1:
-+            /* TODO */
-+        default:
-+            break;
-+        }
-+    }
-+}
-+
-+static uint8_t pca9552_read(PCA9552State *s, uint8_t reg)
-+{
-+    switch (reg) {
-+    case PCA9552_INPUT0:
-+    case PCA9552_INPUT1:
-+    case PCA9552_PSC0:
-+    case PCA9552_PWM0:
-+    case PCA9552_PSC1:
-+    case PCA9552_PWM1:
-+    case PCA9552_LS0:
-+    case PCA9552_LS1:
-+    case PCA9552_LS2:
-+    case PCA9552_LS3:
-+        return s->regs[reg];
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: unexpected read to register =
-%d\n",
-+                      __func__, reg);
-+        return 0xFF;
-+    }
-+}
-+
-+static void pca9552_write(PCA9552State *s, uint8_t reg, uint8_t data)
-+{
-+    switch (reg) {
-+    case PCA9552_PSC0:
-+    case PCA9552_PWM0:
-+    case PCA9552_PSC1:
-+    case PCA9552_PWM1:
-+        s->regs[reg] =3D data;
-+        break;
-+
-+    case PCA9552_LS0:
-+    case PCA9552_LS1:
-+    case PCA9552_LS2:
-+    case PCA9552_LS3:
-+        s->regs[reg] =3D data;
-+        pca9552_update_pin_input(s);
-+        break;
-+
-+    case PCA9552_INPUT0:
-+    case PCA9552_INPUT1:
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: unexpected write to register=
- %d\n",
-+                      __func__, reg);
-+    }
-+}
-+
-+/*
-+ * When Auto-Increment is on, the register address is incremented
-+ * after each byte is sent to or received by the device. The index
-+ * rollovers to 0 when the maximum register address is reached.
-+ */
-+static void pca9552_autoinc(PCA9552State *s)
-+{
-+    if (s->pointer !=3D 0xFF && s->pointer & PCA9552_AUTOINC) {
-+        uint8_t reg =3D s->pointer & 0xf;
-+
-+        reg =3D (reg + 1) % (s->max_reg + 1);
-+        s->pointer =3D reg | PCA9552_AUTOINC;
-+    }
-+}
-+
-+static int pca9552_recv(I2CSlave *i2c)
-+{
-+    PCA9552State *s =3D PCA9552(i2c);
-+    uint8_t ret;
-+
-+    ret =3D pca9552_read(s, s->pointer & 0xf);
-+
-+    /*
-+     * From the Specs:
-+     *
-+     *     Important Note: When a Read sequence is initiated and the
-+     *     AI bit is set to Logic Level 1, the Read Sequence MUST
-+     *     start by a register different from 0.
-+     *
-+     * I don't know what should be done in this case, so throw an
-+     * error.
-+     */
-+    if (s->pointer =3D=3D PCA9552_AUTOINC) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Autoincrement read starting with register 0\n=
-",
-+                      __func__);
-+    }
-+
-+    pca9552_autoinc(s);
-+
-+    return ret;
-+}
-+
-+static int pca9552_send(I2CSlave *i2c, uint8_t data)
-+{
-+    PCA9552State *s =3D PCA9552(i2c);
-+
-+    /* First byte sent by is the register address */
-+    if (s->len =3D=3D 0) {
-+        s->pointer =3D data;
-+        s->len++;
-+    } else {
-+        pca9552_write(s, s->pointer & 0xf, data);
-+
-+        pca9552_autoinc(s);
-+    }
-+
-+    return 0;
-+}
-+
-+static int pca9552_event(I2CSlave *i2c, enum i2c_event event)
-+{
-+    PCA9552State *s =3D PCA9552(i2c);
-+
-+    s->len =3D 0;
-+    return 0;
-+}
-+
-+static const VMStateDescription pca9552_vmstate =3D {
-+    .name =3D "PCA9552",
-+    .version_id =3D 0,
-+    .minimum_version_id =3D 0,
-+    .fields =3D (VMStateField[]) {
-+        VMSTATE_UINT8(len, PCA9552State),
-+        VMSTATE_UINT8(pointer, PCA9552State),
-+        VMSTATE_UINT8_ARRAY(regs, PCA9552State, PCA9552_NR_REGS),
-+        VMSTATE_I2C_SLAVE(i2c, PCA9552State),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void pca9552_reset(DeviceState *dev)
-+{
-+    PCA9552State *s =3D PCA9552(dev);
-+
-+    s->regs[PCA9552_PSC0] =3D 0xFF;
-+    s->regs[PCA9552_PWM0] =3D 0x80;
-+    s->regs[PCA9552_PSC1] =3D 0xFF;
-+    s->regs[PCA9552_PWM1] =3D 0x80;
-+    s->regs[PCA9552_LS0] =3D 0x55; /* all OFF */
-+    s->regs[PCA9552_LS1] =3D 0x55;
-+    s->regs[PCA9552_LS2] =3D 0x55;
-+    s->regs[PCA9552_LS3] =3D 0x55;
-+
-+    pca9552_update_pin_input(s);
-+
-+    s->pointer =3D 0xFF;
-+    s->len =3D 0;
-+}
-+
-+static void pca9552_initfn(Object *obj)
-+{
-+    PCA9552State *s =3D PCA9552(obj);
-+
-+    /* If support for the other PCA955X devices are implemented, these
-+     * constant values might be part of class structure describing the
-+     * PCA955X device
-+     */
-+    s->max_reg =3D PCA9552_LS3;
-+    s->nr_leds =3D 16;
-+}
-+
-+static void pca9552_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+    I2CSlaveClass *k =3D I2C_SLAVE_CLASS(klass);
-+
-+    k->event =3D pca9552_event;
-+    k->recv =3D pca9552_recv;
-+    k->send =3D pca9552_send;
-+    dc->reset =3D pca9552_reset;
-+    dc->vmsd =3D &pca9552_vmstate;
-+}
-+
-+static const TypeInfo pca9552_info =3D {
-+    .name          =3D TYPE_PCA9552,
-+    .parent        =3D TYPE_I2C_SLAVE,
-+    .instance_init =3D pca9552_initfn,
-+    .instance_size =3D sizeof(PCA9552State),
-+    .class_init    =3D pca9552_class_init,
-+};
-+
-+static void pca9552_register_types(void)
-+{
-+    type_register_static(&pca9552_info);
-+}
-+
-+type_init(pca9552_register_types)
-diff --git a/include/hw/misc/pca9552.h b/include/hw/misc/pca9552.h
-new file mode 100644
-index 000000000000..5df8d6407ca7
---- /dev/null
-+++ b/include/hw/misc/pca9552.h
-@@ -0,0 +1,33 @@
-+/*
-+ * PCA9552 I2C LED blinker
-+ *
-+ * Copyright (c) 2017, IBM Corporation.
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or
-+ * later. See the COPYING file in the top-level directory.
-+ */
-+#ifndef PCA9552_H
-+#define PCA9552_H
-+
-+#include "hw/i2c/i2c.h"
-+
-+#define TYPE_PCA9552 "pca9552"
-+#define PCA9552(obj) OBJECT_CHECK(PCA9552State, (obj), TYPE_PCA9552)
-+
-+
-+#define PCA9552_NR_REGS 10
-+
-+typedef struct PCA9552State {
-+    /*< private >*/
-+    I2CSlave i2c;
-+    /*< public >*/
-+
-+    uint8_t len;
-+    uint8_t pointer;
-+
-+    uint8_t regs[PCA9552_NR_REGS];
-+    uint8_t max_reg;
-+    uint8_t nr_leds;
-+} PCA9552State;
-+
-+#endif
-diff --git a/tests/Makefile.include b/tests/Makefile.include
-index 4ca15e681703..8ac2595c8512 100644
---- a/tests/Makefile.include
-+++ b/tests/Makefile.include
-@@ -347,6 +347,7 @@ check-qtest-sparc64-y =3D tests/endianness-test$(EXES=
-UF)
- check-qtest-sparc64-y +=3D tests/prom-env-test$(EXESUF)
-=20
- check-qtest-arm-y =3D tests/tmp105-test$(EXESUF)
-+check-qtest-arm-y +=3D tests/pca9552-test$(EXESUF)
- check-qtest-arm-y +=3D tests/ds1338-test$(EXESUF)
- check-qtest-arm-y +=3D tests/m25p80-test$(EXESUF)
- gcov-files-arm-y +=3D hw/misc/tmp105.c
-@@ -739,6 +740,7 @@ tests/bios-tables-test$(EXESUF): tests/bios-tables-te=
-st.o \
- 	tests/boot-sector.o tests/acpi-utils.o $(libqos-obj-y)
- tests/pxe-test$(EXESUF): tests/pxe-test.o tests/boot-sector.o $(libqos-o=
-bj-y)
- tests/tmp105-test$(EXESUF): tests/tmp105-test.o $(libqos-omap-obj-y)
-+tests/pca9552-test$(EXESUF): tests/pca9552-test.o $(libqos-omap-obj-y)
- tests/ds1338-test$(EXESUF): tests/ds1338-test.o $(libqos-imx-obj-y)
- tests/m25p80-test$(EXESUF): tests/m25p80-test.o
- tests/i440fx-test$(EXESUF): tests/i440fx-test.o $(libqos-pc-obj-y)
-diff --git a/tests/pca9552-test.c b/tests/pca9552-test.c
-new file mode 100644
-index 000000000000..53414452a12e
---- /dev/null
-+++ b/tests/pca9552-test.c
-@@ -0,0 +1,131 @@
-+/*
-+ * QTest testcase for the PCA9552 LED blinker
-+ *
-+ * Copyright (c) 2017, IBM Corporation.
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+
-+#include "libqtest.h"
-+#include "libqos/i2c.h"
-+
-+#define PCA9552_INPUT0   0 /* read only input register 0 */
-+#define PCA9552_INPUT1   1 /* read only input register 1  */
-+#define PCA9552_PSC0     2 /* read/write frequency prescaler 0 */
-+#define PCA9552_PWM0     3 /* read/write PWM register 0 */
-+#define PCA9552_PSC1     4 /* read/write frequency prescaler 1 */
-+#define PCA9552_PWM1     5 /* read/write PWM register 1 */
-+#define PCA9552_LS0      6 /* read/write LED0 to LED3 selector */
-+#define PCA9552_LS1      7 /* read/write LED4 to LED7 selector */
-+#define PCA9552_LS2      8 /* read/write LED8 to LED11 selector */
-+#define PCA9552_LS3      9 /* read/write LED12 to LED15 selector */
-+
-+#define PCA9552_AUTOINC  (1 << 4)
-+
-+
-+#define OMAP2_I2C_1_BASE 0x48070000
-+
-+#define PCA9552_TEST_ID   "pca9552-test"
-+#define PCA9552_TEST_ADDR 0x60
-+
-+static I2CAdapter *i2c;
-+
-+static uint8_t pca9552_get8(I2CAdapter *i2c, uint8_t addr, uint8_t reg)
-+{
-+    uint8_t resp[1];
-+    i2c_send(i2c, addr, &reg, 1);
-+    i2c_recv(i2c, addr, resp, 1);
-+    return resp[0];
-+}
-+
-+static void pca9552_set8(I2CAdapter *i2c, uint8_t addr, uint8_t reg,
-+                         uint8_t value)
-+{
-+    uint8_t cmd[2];
-+    uint8_t resp[1];
-+
-+    cmd[0] =3D reg;
-+    cmd[1] =3D value;
-+    i2c_send(i2c, addr, cmd, 2);
-+    i2c_recv(i2c, addr, resp, 1);
-+    g_assert_cmphex(resp[0], =3D=3D, cmd[1]);
-+}
-+
-+static void receive_autoinc(void)
-+{
-+    uint8_t resp;
-+    uint8_t reg =3D PCA9552_LS0 | PCA9552_AUTOINC;
-+
-+    i2c_send(i2c, PCA9552_TEST_ADDR, &reg, 1);
-+
-+    /* PCA9552_LS0 */
-+    i2c_recv(i2c, PCA9552_TEST_ADDR, &resp, 1);
-+    g_assert_cmphex(resp, =3D=3D, 0x54);
-+
-+    /* PCA9552_LS1 */
-+    i2c_recv(i2c, PCA9552_TEST_ADDR, &resp, 1);
-+    g_assert_cmphex(resp, =3D=3D, 0x55);
-+
-+    /* PCA9552_LS2 */
-+    i2c_recv(i2c, PCA9552_TEST_ADDR, &resp, 1);
-+    g_assert_cmphex(resp, =3D=3D, 0x55);
-+
-+    /* PCA9552_LS3 */
-+    i2c_recv(i2c, PCA9552_TEST_ADDR, &resp, 1);
-+    g_assert_cmphex(resp, =3D=3D, 0x54);
-+}
-+
-+static void send_and_receive(void)
-+{
-+    uint8_t value;
-+
-+    value =3D pca9552_get8(i2c, PCA9552_TEST_ADDR, PCA9552_LS0);
-+    g_assert_cmphex(value, =3D=3D, 0x55);
-+
-+    value =3D pca9552_get8(i2c, PCA9552_TEST_ADDR, PCA9552_INPUT0);
-+    g_assert_cmphex(value, =3D=3D, 0x0);
-+
-+    /* Switch on LED 0 */
-+    pca9552_set8(i2c, PCA9552_TEST_ADDR, PCA9552_LS0, 0x54);
-+    value =3D pca9552_get8(i2c, PCA9552_TEST_ADDR, PCA9552_LS0);
-+    g_assert_cmphex(value, =3D=3D, 0x54);
-+
-+    value =3D pca9552_get8(i2c, PCA9552_TEST_ADDR, PCA9552_INPUT0);
-+    g_assert_cmphex(value, =3D=3D, 0x01);
-+
-+    /* Switch on LED 12 */
-+    pca9552_set8(i2c, PCA9552_TEST_ADDR, PCA9552_LS3, 0x54);
-+    value =3D pca9552_get8(i2c, PCA9552_TEST_ADDR, PCA9552_LS3);
-+    g_assert_cmphex(value, =3D=3D, 0x54);
-+
-+    value =3D pca9552_get8(i2c, PCA9552_TEST_ADDR, PCA9552_INPUT1);
-+    g_assert_cmphex(value, =3D=3D, 0x10);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    QTestState *s =3D NULL;
-+    int ret;
-+
-+    g_test_init(&argc, &argv, NULL);
-+
-+    s =3D qtest_start("-machine n800 "
-+                    "-device pca9552,bus=3Di2c-bus.0,id=3D" PCA9552_TEST=
-_ID
-+                    ",address=3D0x60");
-+    i2c =3D omap_i2c_create(OMAP2_I2C_1_BASE);
-+
-+    qtest_add_func("/pca9552/tx-rx", send_and_receive);
-+    qtest_add_func("/pca9552/rx-autoinc", receive_autoinc);
-+
-+    ret =3D g_test_run();
-+
-+    if (s) {
-+        qtest_quit(s);
-+    }
-+    g_free(i2c);
-+
-+    return ret;
-+}
---=20
-2.13.6
+> 3. Is my implementation of mair0 and mair1 (with the XXX comments)
+>    sane? I suspect it's not. I had a hard time mapping what the ARM
+>    ARM describes (e.g. in the pseudocode for AArch32.S1AttrDecode and
+>    AArch64.S1AttrDecode) to the union interpreting mair_el[0] and
+>    mair_el[1].
 
+Where the AArch64.S1AttrDecode() pseudocode says MAIR[] this is
+MAIR[S1TranslationRegime()], which in QEMU terms is
+env->cp15.mair_el[regime_el(env, mmu_idx)].
+
+For AArch32 things are a little trickier. NS MAIR0/MAIR1 are always
+in env->cp15.mair0_ns and env->cp15.mair1_ns (and if you happen to
+want the combined 64 bits MAIR1:MAIR0 then env->cp15.mair_el[1]
+will give you that). But where Secure MAIR0/MAIR1 live depends
+on whether EL3 is AArch32 or AArch64. If EL3 is AArch32 then the
+MAIR0/MAIR1 are really banked registers, and the secure copies
+are in env->cp15.mair0_s and env->cp15.mair1_s (with the MAIR1:MAIR0
+combo being in env->cp15.mair_el[3])). But if EL3 is AArch64 then
+these registers are architecturally not banked, and a secure EL1
+will be using env->cp15.mair0_ns and mair1_ns just like NS EL1.
+
+Helpfully, regime_el() abstracts away most of this, so if all
+you want is a MAIR1:MAIR0 pair you can just say
+ env->cp15.mair_el[regime_el(env, mmu_idx)];
+the same as for AArch64.
+
+We don't implement AArch32 EL2 yet, so the datastructure isn't
+quite right for it yet, but HMAIR1:HMAIR0 is in mair_el[2]
+(and the 32-bit part of the union should have uint32_t for
+hmair0 and hmair1 where it currently has _unused_mair_1).
+
+>  include/exec/memattrs.h |  3 +++
+>  target/arm/helper.c     | 57 ++++++++++++++++++++++++++++++++++++++++++++++++-
+>  2 files changed, 59 insertions(+), 1 deletion(-)
+>
+> diff --git a/include/exec/memattrs.h b/include/exec/memattrs.h
+> index d4a1642098..3f4e1d7f0d 100644
+> --- a/include/exec/memattrs.h
+> +++ b/include/exec/memattrs.h
+> @@ -37,6 +37,9 @@ typedef struct MemTxAttrs {
+>      unsigned int user:1;
+>      /* Requester ID (for MSI for example) */
+>      unsigned int requester_id:16;
+> +    /* ARM: memory cacheability and shareability attributes */
+> +    unsigned int arm_attrindx:3;
+> +    unsigned int arm_shareability:2;
+>  } MemTxAttrs;
+>
+>  /* Bus masters which don't specify any attributes will get this,
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 96113fe989..1dc1834929 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -19,6 +19,9 @@
+>  #define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurable */
+>
+>  #ifndef CONFIG_USER_ONLY
+> +static inline bool regime_using_lpae_format(CPUARMState *env,
+> +                                            ARMMMUIdx mmu_idx);
+> +
+>  static bool get_phys_addr(CPUARMState *env, target_ulong address,
+>                            MMUAccessType access_type, ARMMMUIdx mmu_idx,
+>                            hwaddr *phys_ptr, MemTxAttrs *attrs, int *prot,
+> @@ -2148,6 +2151,54 @@ static CPAccessResult ats_access(CPUARMState *env, const ARMCPRegInfo *ri,
+>      return CP_ACCESS_OK;
+>  }
+>
+> +static uint8_t get_memattrs(CPUARMState *env, ARMMMUIdx mmu_idx,
+> +                            uint8_t attrindx)
+> +{
+> +    uint64_t mair;
+> +
+> +    if (!regime_using_lpae_format(env, mmu_idx)) {
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "arm: short PTE memory attributes not implemented");
+> +        return 0; /* keep consistency with the prior implementation */
+> +    }
+> +
+> +    switch (mmu_idx) {
+> +    case ARMMMUIdx_S1E2:
+> +        mair = env->cp15.mair_el[2];
+> +        break;
+> +
+> +    case ARMMMUIdx_S1E3:
+> +        mair = env->cp15.mair_el[3];
+> +        break;
+> +
+> +    case ARMMMUIdx_S1SE0:
+> +    case ARMMMUIdx_S1SE1:
+> +        /* XXX: is this correct? */
+> +        mair = (uint64_t)env->cp15.mair1_s << 32 | env->cp15.mair0_s;
+> +        break;
+> +
+> +    case ARMMMUIdx_S1NSE0:
+> +    case ARMMMUIdx_S1NSE1:
+> +        /* XXX: is this correct? */
+> +        mair = (uint64_t)env->cp15.mair1_ns << 32 | env->cp15.mair0_ns;
+> +        break;
+
+You can and should replace all this lot with
+   mair = env->cp15.mair_el[regime_el(env, mmu_idx)];
+
+which will give you the correct answer for S1SE0, where the
+correct set of register state depends on whether EL3 is AArch32
+or not (if EL3 is AArch32 then EL3 is the controlling one for
+the Secure EL0 translation regime and the state is in mair1_s/mair0_s,
+whereas if EL3 is AArch64 then EL1 is the controlling one for
+Secure EL0 translation and the state is in mair_el[1].
+
+> +    case ARMMMUIdx_S12NSE0:
+> +    case ARMMMUIdx_S12NSE1:
+> +    case ARMMMUIdx_S2NS:
+> +        /* these cases (involving stage 2 attribute combining) are also NYI */
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "arm: stage 2 memory attributes not implemented");
+
+The way to handle the S12NS* cases is to do the attribute combining
+in the part at the top of get_phys_addr() which handles
+S12NSE0/S12NSE1 by doing the stage 1 and stage 2 translations,
+in a similar way to how we combine S1 and S2 permissions.
+
+S2NS just requires you to look up the bits in the stage 2
+translation table, there's no MAIR registers here.
+
+> +        return 0;
+> +
+> +    default:
+> +        abort(); /* M-profile code shouldn't reach here */
+> +    }
+> +
+> +    assert(attrindx <= 7);
+> +    return extract64(mair, attrindx * 8, 8);
+> +}
+> +
+>  static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
+>                               MMUAccessType access_type, ARMMMUIdx mmu_idx)
+>  {
+> @@ -2173,7 +2224,9 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
+>              if (!attrs.secure) {
+>                  par64 |= (1 << 9); /* NS */
+>              }
+> -            /* We don't set the ATTR or SH fields in the PAR. */
+> +            par64 |= (uint64_t)get_memattrs(env, mmu_idx,
+> +                                            attrs.arm_attrindx) << 56; /*ATTR*/
+
+I think this is the wrong place to try to do the lookup from
+AttrIndex[] pagetable bits to memory attributes via the MAIR*,
+because not every kind of page table does memory attributes
+that way. In particular for short descriptors with TEX remap
+disabled, the attributes are directly in the page descriptors,
+and this is also true for stage 2 translation tables.
+
+So you want the page table walk functions to directly fill in
+the information about cacheability and shareability, including
+doing lookups in MAIR registers (or PRRR/NMRR registers, which
+QEMU stores in the same CPUState fields, but they have a different
+format.)
+
+> +            par64 |= attrs.arm_shareability << 7; /* SH */
+>          } else {
+>              par64 |= 1; /* F */
+>              par64 |= (fsr & 0x3f) << 1; /* FS */
+> @@ -8929,6 +8982,8 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
+>           */
+>          txattrs->secure = false;
+>      }
+> +    txattrs->arm_attrindx = extract32(attrs, 0, 3);
+> +    txattrs->arm_shareability = extract32(attrs, 6, 2);
+>      *phys_ptr = descaddr;
+>      *page_size_ptr = page_size;
+>      return false;
+> --
+> 2.14.2
+
+thanks
+-- PMM

@@ -1,148 +1,209 @@
-Received: by 10.223.172.38 with SMTP id v35csp1506084wrc;
-        Tue, 5 Sep 2017 07:45:08 -0700 (PDT)
-X-Google-Smtp-Source: ADKCNb6jNhGPR7yVpdte6KCB+gdWlMtGIqFyNjO9DmHTm3Abhsyo/rzWCjEiS9USv81DSaDY/F6v
-X-Received: by 10.200.12.198 with SMTP id o6mr5504348qti.330.1504622708801;
-        Tue, 05 Sep 2017 07:45:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504622708; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp7025131wrf;
+        Thu, 19 Oct 2017 10:02:37 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+QD+xXBpGYx9RqBDqNKFit2mvc1HV7upDKW2nL+iXz34VCmG/M+gDOGEbRCv4EKe3UysPq7
+X-Received: by 10.28.109.28 with SMTP id i28mr2410492wmc.67.1508432557371;
+        Thu, 19 Oct 2017 10:02:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508432557; cv=none;
         d=google.com; s=arc-20160816;
-        b=pypEXYF80lAeCg6eNJ08E+gJ46jzOXBPymiL/cyqO/FEBTuULKaDI4pML4oHVAIvom
-         HklrY5K8HbrDBJWRa2fUqzd/Fuv3qZg1fmIJ/rhyLfeqdRY+KtOO+3PZ/oRcxOWDoNTw
-         7M3AlJxkoI5UyOsv+ubeMJHqo8YyWYqjf7wlddyW/BqlKOcn0+aM6rVgiTt0mukqixEQ
-         QfbQgnUjNhMuC/10M67/syz5onfGHZCmDbNNXL6JVrDWKngd+q8Ku3WnpQgx81wVhcmG
-         wxQYLP2XxmelCmn6BNHCtqdqsIrFpLkvCmGynQX57t80w6MEOVw1RjzlxHCMVdmJwWws
-         rb5Q==
+        b=qDRDdMerpJ3iCu1OTk8PI5Txbi8ycHgWOOujQc0vfd8sv5D65rYs6aE9AkdUSWWQap
+         6fGSQ59C2JtBTjCOuT2HU3ANuN0a07NqOvhyv7ko00VwqZJxlg3BPh65pJ5ux/LgghSm
+         nzNKIyk2Q2Hv/daX1ADOsENGYEL7drccahbsw7jeu1oGgEHHDlVoaV655xiVRY/1t2cB
+         vqxA3ZNaqkphdBs0yuYXt7AgGN1yNdVGOAvYsetiwTDScU8Ed2g7GaMJUG+Kmzn66ksc
+         5qopakZ5NHWyaCF1+dkM6jAzJHCE+HLvkXf+GBFOcU8JFlWE6FbNYXKWTwdMPAWACGc5
+         PWrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dmarc-filter:arc-authentication-results;
-        bh=Y13nLVGqsNhj6QU5K7M/4NkC5dfK6VnUy/JPMuVzbkE=;
-        b=UVGPFGctsRTCCtpqvag+bCVdW/qdbiC/6L4xDaYfiydIR5DGc6N4/GegLgW5w1MO9h
-         qIBWaIpw6mlwA+q3E83dYx7UC2TBYyiHU8mhN/J6+ZZGHl9H6kYmVtn5zMC9Uhxk4dxx
-         HVBAM9EtBFMgiZIJx2B0SKTpKF9xYbmeu+keF5nBUJ/Y1P6uGSw+sAYH5rdcbpJM6OtG
-         YVuMtm1fYXv6M9NEmNXUlgwL14sQFmv/7svnJShp/40I8t5Dj7urdg5ocMF7D04Wzi1Y
-         JIzZeqtrW6tnSbr+u940B8cG5VrFBvXE+O2vug49v60kXTx7/cTXY2GUomGFTDLSroaU
-         mWmg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=f8vWuMoLOoCc2nZkX/TnYYamBNwa5phpFH92O03thto=;
+        b=lW7ApfeKS0TpCgDRH/KtMFr/06/x1mKeBwFP6+oLNAOVw2b3HPrQY+4HDXpVKYGcaz
+         dfaF3vLGWYF7AtVf4APkx8cHHQ3nkcvX0FiI6mykcqpl56ivlp7vfnmLIjnZg4fPViyy
+         FB6BVraIEKlzHkcMkQrEszC4EEcwj6G26Q6rNJmHNWMbkzkgBT9MYAJCNlgrsPHcWTDX
+         XhTln5vRRkSE5R6svQEUb0mFWb5wlOhvlXzwkBnJG2aye7IW+Ei0yGaruHmJC2hPn/4e
+         oLU+5hJEZLAlcMQz1RsS/2OyXj7C+qzCmuZ7bScAM1o+02171zni72S9ssn3XEpUW4f9
+         PslQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r67si558847qka.453.2017.09.05.07.45.08
+        by mx.google.com with ESMTPS id q63si11874057wrb.533.2017.10.19.10.02.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 05 Sep 2017 07:45:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 19 Oct 2017 10:02:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59411 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:50286 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dpF6A-0001hm-K5
-	for alex.bennee@linaro.org; Tue, 05 Sep 2017 10:45:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55851)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1e5EDM-0006mH-Bd
+	for alex.bennee@linaro.org; Thu, 19 Oct 2017 13:02:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32929)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1dpF63-0001h5-Ht
-	for qemu-arm@nongnu.org; Tue, 05 Sep 2017 10:45:04 -0400
+	(envelope-from <clg@kaod.org>) id 1e5Dnl-00017z-G7
+	for qemu-devel@nongnu.org; Thu, 19 Oct 2017 12:36:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1dpF5y-0002TO-W9
-	for qemu-arm@nongnu.org; Tue, 05 Sep 2017 10:44:59 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49018)
+	(envelope-from <clg@kaod.org>) id 1e5Dng-0003O4-QL
+	for qemu-devel@nongnu.org; Thu, 19 Oct 2017 12:36:09 -0400
+Received: from 4.mo5.mail-out.ovh.net ([178.33.111.247]:42757)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1dpF5y-0002PK-QC; Tue, 05 Sep 2017 10:44:54 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id ED07574A36;
-	Tue,  5 Sep 2017 14:44:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com ED07574A36
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=drjones@redhat.com
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id C9F46679CA;
-	Tue,  5 Sep 2017 14:44:51 +0000 (UTC)
-Date: Tue, 5 Sep 2017 16:44:49 +0200
-From: Andrew Jones <drjones@redhat.com>
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1e5Dng-0003Mx-Kn
+	for qemu-devel@nongnu.org; Thu, 19 Oct 2017 12:36:04 -0400
+Received: from player786.ha.ovh.net (b6.ovh.net [213.186.33.56])
+	by mo5.mail-out.ovh.net (Postfix) with ESMTP id 48CF71461E6
+	for <qemu-devel@nongnu.org>; Thu, 19 Oct 2017 18:36:03 +0200 (CEST)
+Received: from zorba.kaod.org (LFbn-1-2231-173.w90-76.abo.wanadoo.fr
+	[90.76.52.173]) (Authenticated sender: clg@kaod.org)
+	by player786.ha.ovh.net (Postfix) with ESMTPSA id 1362680072;
+	Thu, 19 Oct 2017 18:35:56 +0200 (CEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20170905144449.yiupcvhbnfc3sakn@kamzik.brq.redhat.com>
-References: <1500471597-2517-1-git-send-email-drjones@redhat.com>
-	<1500471597-2517-5-git-send-email-drjones@redhat.com>
-	<CAFEAcA_xDei18gfdLuo5=aPM=9D9Ou6LBLfT+gtGUKgcpDC88A@mail.gmail.com>
+Date: Thu, 19 Oct 2017 18:35:39 +0200
+Message-Id: <20171019163546.2039-2-clg@kaod.org>
+X-Mailer: git-send-email 2.13.6
+In-Reply-To: <20171019163546.2039-1-clg@kaod.org>
+References: <20171019163546.2039-1-clg@kaod.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA_xDei18gfdLuo5=aPM=9D9Ou6LBLfT+gtGUKgcpDC88A@mail.gmail.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Tue, 05 Sep 2017 14:44:53 +0000 (UTC)
+Content-Type: text/plain; charset=UTF-8
+X-Ovh-Tracer-Id: 15308579559762135825
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedttddrudekgddutdehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 4/4] target/arm/kvm: pmu:
- improve error handling
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 178.33.111.247
+Subject: [Qemu-devel] [PATCH v6 1/8] aspeed: use a ROM memory region to
+ catch invalid writes
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Christoffer Dall <cdall@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, Alexander Graf <agraf@suse.de>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fsHSDJSjStHo
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: YfzeNBpQC/q9
 
-On Mon, Sep 04, 2017 at 03:17:21PM +0100, Peter Maydell wrote:
-> On 19 July 2017 at 14:39, Andrew Jones <drjones@redhat.com> wrote:
-> > If a KVM PMU init or set-irq attr call fails we just silently stop
-> > the PMU DT node generation. The only way they could fail, though,
-> > is if the attr's respective KVM has-attr call fails. But that should
-> > never happen if KVM advertises the PMU capability, because both
-> > attrs have been available since the capability was introduced. Let's
-> > just abort if this should-never-happen stuff does happen, because,
-> > if it does, then something is obviously horribly wrong.
-> >
-> > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> > ---
-> >  hw/arm/virt.c        |  9 +++------
-> >  target/arm/kvm32.c   |  3 +--
-> >  target/arm/kvm64.c   | 28 ++++++++++++++++++++--------
-> >  target/arm/kvm_arm.h | 15 ++++-----------
-> >  4 files changed, 28 insertions(+), 27 deletions(-)
-> 
-> This breaks compile on 32-bit ARM:
-> 
-> /home/peter.maydell/qemu/target/arm/kvm32.c:530:5: error: conflicting
-> types for 'kvm_arm_pmu_init'
->  int kvm_arm_pmu_init(CPUState *cs)
->      ^
-> In file included from /home/peter.maydell/qemu/target/arm/kvm32.c:21:0:
-> /home/peter.maydell/qemu/target/arm/kvm_arm.h:199:6: note: previous
-> declaration of 'kvm_arm_pmu_init' w
-> as here
->  void kvm_arm_pmu_init(CPUState *cs);
->       ^
+Some legacy firmwares access unimplemented addresses on the Aspeed SoC
+(old U-Boot code using variables in the bss when it shouldn't do).
+Let's use a ROM memory region to catch the invalid writes and support
+new boards without using the 'ignore_memory_transaction_failures'
+flag.
 
-Argh. Sorry about that. I could have sworn I compile-tested for 32-bit
-ARM. Maybe I changed the series afterwards and forgot to compile-test
-again...
+This change is breaking migration compatibility for the Aspeed
+machines.
 
-> 
-> Looks like you forgot to update the 32-bit version of the function
-> to the new API; I'll just fix up the patch in my queue.
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+---
 
-Thanks!
+ Changes since v5 :
 
-drew
+ - added a comment on migration compatibility
+ - created the ROM memory region even if there is no file backend
+   specified by the user
+
+ Changes since v4 :
+
+ - use a ROM memory region
+
+ hw/arm/aspeed.c | 51 ++++++++++++++++++++++++++++++++++++---------------
+ 1 file changed, 36 insertions(+), 15 deletions(-)
+
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index ab895ad490af..e6a890659a97 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -166,12 +166,31 @@ static void aspeed_board_init_flashes(AspeedSMCStat=
+e *s, const char *flashtype,
+     }
+ }
+=20
++/*
++ * This is to track invalid writes done in the ROM by some legacy
++ * firmwares
++ */
++static void boot_rom_write(void *opaque, hwaddr offset, uint64_t value,
++                           unsigned size)
++{
++    qemu_log_mask(LOG_GUEST_ERROR,
++                  "%s: 0x%" HWADDR_PRIx " <- 0x%" PRIx64 " [%u]\n",
++                  __func__, offset, value, size);
++}
++
++static const MemoryRegionOps boot_rom_ops =3D {
++    .write =3D boot_rom_write,
++    .endianness =3D DEVICE_NATIVE_ENDIAN,
++};
++
+ static void aspeed_board_init(MachineState *machine,
+                               const AspeedBoardConfig *cfg)
+ {
+     AspeedBoardState *bmc;
+     AspeedSoCClass *sc;
+     DriveInfo *drive0 =3D drive_get(IF_MTD, 0, 0);
++    MemoryRegion *boot_rom;
++    size_t boot_rom_size;
+=20
+     bmc =3D g_new0(AspeedBoardState, 1);
+     object_initialize(&bmc->soc, (sizeof(bmc->soc)), cfg->soc_name);
+@@ -205,22 +224,24 @@ static void aspeed_board_init(MachineState *machine=
+,
+     aspeed_board_init_flashes(&bmc->soc.fmc, cfg->fmc_model, &error_abor=
+t);
+     aspeed_board_init_flashes(&bmc->soc.spi[0], cfg->spi_model, &error_a=
+bort);
+=20
+-    /* Install first FMC flash content as a boot rom. */
++    /*
++     * create a ROM region using the default mapping window size of
++     * the FMC CS0 flash module. The window size is 64MB for the
++     * AST2400 SoC and 128MB for the AST2500 SoC, which is twice as
++     * big as needed by the flash modules of the Aspeed machines.
++     */
++    boot_rom =3D g_new(MemoryRegion, 1);
++    boot_rom_size =3D bmc->soc.fmc.flashes[0].size;
++
++    memory_region_init_rom_device(boot_rom, OBJECT(bmc), &boot_rom_ops,
++                                  NULL, "aspeed.boot_rom", boot_rom_size=
+,
++                                  &error_abort);
++    memory_region_add_subregion(get_system_memory(), FIRMWARE_ADDR,
++                                boot_rom);
++
++    /* Install first FMC flash content (if any) as a boot rom. */
+     if (drive0) {
+-        AspeedSMCFlash *fl =3D &bmc->soc.fmc.flashes[0];
+-        MemoryRegion *boot_rom =3D g_new(MemoryRegion, 1);
+-
+-        /*
+-         * create a ROM region using the default mapping window size of
+-         * the flash module. The window size is 64MB for the AST2400
+-         * SoC and 128MB for the AST2500 SoC, which is twice as big as
+-         * needed by the flash modules of the Aspeed machines.
+-         */
+-        memory_region_init_rom_nomigrate(boot_rom, OBJECT(bmc), "aspeed.=
+boot_rom",
+-                               fl->size, &error_abort);
+-        memory_region_add_subregion(get_system_memory(), FIRMWARE_ADDR,
+-                                    boot_rom);
+-        write_boot_rom(drive0, FIRMWARE_ADDR, fl->size, &error_abort);
++        write_boot_rom(drive0, FIRMWARE_ADDR, boot_rom_size, &error_abor=
+t);
+     }
+=20
+     aspeed_board_binfo.kernel_filename =3D machine->kernel_filename;
+--=20
+2.13.6
+

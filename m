@@ -1,99 +1,82 @@
-Received: by 10.223.197.9 with SMTP id q9csp3781451wrf;
-        Mon, 16 Oct 2017 11:03:25 -0700 (PDT)
-X-Received: by 10.237.37.8 with SMTP id v8mr16351593qtc.275.1508177004922;
-        Mon, 16 Oct 2017 11:03:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508177004; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp7235521wrf;
+        Thu, 19 Oct 2017 14:08:48 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+SFzMw7Erarfjmh0H8094zvqUpVgt7MhplwpUO+7zQrntWP8n3Yl/SIfsjZNhuKpGYsy8Hu
+X-Received: by 10.55.197.194 with SMTP id k63mr3929963qkl.208.1508447327469;
+        Thu, 19 Oct 2017 14:08:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508447327; cv=none;
         d=google.com; s=arc-20160816;
-        b=cR1XN3xsJcURtfoPsVpUk3epMXZhWYxjNA1O7QdAHTBPym7ssHNvELdwuevW0KC2ad
-         LTxUcylmfSCgO1/ai0qpZkek1L3rMwMH56YQrqzbwC+a73Ht78xMOkQBeQzu8KuCj/Un
-         EGsOLwsTyP79YxdegpsYzXTcwyzAJSmm+7gK4oJmPW80eaFHjloxfsq9rpkFR8qH+CsA
-         VsQOtgVknSAqKtK5ROvFx+q+h/dYFUJ+CV8HjpWNZYgZz41Mh3f1nC3aQcAQVVgEhXNk
-         kZ4YIreWvLjo6YlcnBGbU+uYMl0rkeIc8sKr9j5N4EPlP2PMoa1dTeWdAfdK1V/u61ps
-         TjkQ==
+        b=hCq9UNJCewotX0sVLM5ZoctQ48otsBKUXDpMovApgG90jzrUanYNK6mYOLc6aDBohp
+         kjNtEg9WvF1f6g1eYw9+azazndKIGGFsUqi+Le5688MS5Op/iE1iIwDozMCNpGeDbpUz
+         Ox9AagWIiNtLuMCoHvuxTqV2+Ca24Xbs7ilVzxnmqVRiCFnbYxvm7sR97YItnmCrqBUn
+         9+nuPkdOuAQ1VDLpTQK52+f5c/6tYoruy8xrf6ycMgRlk4H5o3kNGw0pi2n7yGeyKrDJ
+         xjDwdNesuB1ekjVUsASpQNGb2pm8e4cNS7R6AOFO5ex+polahiK81IZnD9Dy4qtyh5Ow
+         PG2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=uPqPsHNo5vHtAHLW1c1c1S9ji/ASsauovRo1JboM1ME=;
-        b=iSfYNUWkmujZdaTJ0u62mBmiQg6texLRrtV2yAB8N4HTxRIVTvA03UN8KXIgLyOT9k
-         Yrlp7x103Du0GYYYY1nQpw8iCNw4SHoWn3nn7aoRmXYQScqI1yIAS92qJzMTQiNSgBQa
-         kcKmiFYb9dYPJH1ku3bNk1H+ijs+zATT8HQ23zrBc3P5hoBYpJoxEOM5fC1O9pvIcv8R
-         RvunpoaIfteCbreOdzSiDUvhkoAXAFUptKia6HiWZmAzJ+75tyTMUsiJLCHXCNAlYNQ1
-         B7i5h0yyY6uSXfR8NLs3VWU04zGsdxUh58S5mrx4UYtVj8qym0QliGUdw1FhbpwvoOGg
-         iCOg==
+         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
+         :references:message-id:in-reply-to:to:from:date:dmarc-filter
+         :arc-authentication-results;
+        bh=KmxrFG2kUp4qFPmOjxQIfshIVvSgVFZVSPhaVKB10W0=;
+        b=hhSB6ZFkYqyLxJAgWrgq1dLskHdfOp0EeEv75Eyb29gf/wXm7fik/wWK0lLGwo+pPZ
+         yYtVdYl62GK3d8Wepd0hUZiqlPOutnXwA6cezRrfpX4VPa2GZDWwoDLb12Wa5Mp+SQRu
+         1OLzRY+VG8VB6YCFzk8xyllOn2RC9giqzO2VfLm8xMOFpQGPv1VQRynNiR88XKsjf609
+         j+oX5+t/7VhjYp7LlHEHfZMlRu3MnNjOevBUxcxVFmlceQbO8l55Dbco73bl/JTT0sI4
+         GwlM+jYEsQuk7sIFzKXUDFTLo9fFKrdBkKZI+3imAkL5pLyMOGK8GSZFFssQvzN8kRH7
+         htmA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EjDf/3o7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t85si2851542qkt.371.2017.10.16.11.03.24
+        by mx.google.com with ESMTPS id s22si860480qtc.233.2017.10.19.14.08.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 16 Oct 2017 11:03:24 -0700 (PDT)
+        Thu, 19 Oct 2017 14:08:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EjDf/3o7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:34464 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:51245 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e49jW-0000LQ-Nf
-	for alex.bennee@linaro.org; Mon, 16 Oct 2017 14:03:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34049)
+	id 1e5I3Z-000578-3r
+	for alex.bennee@linaro.org; Thu, 19 Oct 2017 17:08:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48473)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1e49be-0001Wv-B1
-	for qemu-arm@nongnu.org; Mon, 16 Oct 2017 13:55:15 -0400
+	(envelope-from <sstabellini@kernel.org>) id 1e5I3P-00056e-Cg
+	for qemu-arm@nongnu.org; Thu, 19 Oct 2017 17:08:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1e49bd-0007AN-Lk
-	for qemu-arm@nongnu.org; Mon, 16 Oct 2017 13:55:14 -0400
-Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:44731)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
-	id 1e49bY-00075m-9i; Mon, 16 Oct 2017 13:55:08 -0400
-Received: by mail-pf0-x241.google.com with SMTP id x7so16370510pfa.1;
-	Mon, 16 Oct 2017 10:55:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id;
-	bh=uPqPsHNo5vHtAHLW1c1c1S9ji/ASsauovRo1JboM1ME=;
-	b=EjDf/3o7c/PpCdER0kf8kOUOD+ztSOj+NIwatkgfrlyRp5yg3gXqMqUkI4D3bOh3WV
-	w1cnXtUGLAU8hBSnmYc1P4sfNtI1LoBHCzGwG+yf2M5l4LM0jGhUL5h7p+zplSVpE/z4
-	oIc19TnFzYXukPU0j5Y9iXvZkFM7MiWTKvUBeQiS/oN78cNaG6TL/LDW975QWefVu4Ie
-	jeCCFyScXK2loKXJ/KxXWb0X1vNszxstAtpiLQfWhMR0CKnC2pqJj/KOwYC66Kjr9eq2
-	inoSYb38tw5CKE3QhQ7G7//6efxtn/F8D6dsO/NN5sy3gWjlj1p0oK0Ql/vQKpwC32do
-	egbA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=uPqPsHNo5vHtAHLW1c1c1S9ji/ASsauovRo1JboM1ME=;
-	b=Z9TCkTr404238JYUfhf/+N6XEszeCyx8+JwegaDewEhLzvgv/pM/Nc9bDneJEHWq3N
-	8K2eFjR2K9wWwrgkqMxVqhguuNELIROGU6H27NA7hIMO6VxO08au3Dbk8jPUftG+31nS
-	0380O900mTGdVEtvE7XHsxn36xpYHRUqDkK6A6oCHyWSmxZtPt/xgjwvaUyJEqcUnj1y
-	uZDZ4c9aW54Oe96U9nIcdK0gmG91kFkPZ6uFO4f0Qkdqpk5lgsLk/sN5nIXm//y7p8Yp
-	rmAYjo3qmCgNwj9xkRAD49zxwEQE+3YW43YCfkcUZxSn5On/mhbW4SnmB5CS+lJgSk12
-	7S+Q==
-X-Gm-Message-State: AMCzsaUZDpZ0c1C8MWxdIllkpPH/pkPaPcpj3jxfT8PwJKsJkAt0Ya3I
-	zRbkTqwmGXs/Fe6J4posBWbGfg==
-X-Google-Smtp-Source: AOwi7QD5K6WwaG1bDhyolAwp/0J45Jwddyw6cqzTscaXzgmWB9amsJaU9quz949gRMoGYu5hcv6Img==
-X-Received: by 10.101.67.73 with SMTP id k9mr8732776pgq.188.1508176506997;
-	Mon, 16 Oct 2017 10:55:06 -0700 (PDT)
-Received: from localhost.localdomain ([124.123.70.3])
-	by smtp.gmail.com with ESMTPSA id
-	m185sm15019579pfm.181.2017.10.16.10.55.03
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Mon, 16 Oct 2017 10:55:06 -0700 (PDT)
-From: Subbaraya Sundeep <sundeep.lkml@gmail.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Date: Mon, 16 Oct 2017 23:24:49 +0530
-Message-Id: <1508176489-9002-1-git-send-email-sundeep.lkml@gmail.com>
-X-Mailer: git-send-email 2.5.0
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c00::241
-Subject: [Qemu-arm] [Qemu devel PATCH] msf2: Remove dead code reported by
- Coverity
+	(envelope-from <sstabellini@kernel.org>) id 1e5I3K-0007fa-C2
+	for qemu-arm@nongnu.org; Thu, 19 Oct 2017 17:08:35 -0400
+Received: from mail.kernel.org ([198.145.29.99]:41768)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <sstabellini@kernel.org>)
+	id 1e5I3K-0007eu-2w; Thu, 19 Oct 2017 17:08:30 -0400
+Received: from [10.149.184.130] (162-198-228-33.lightspeed.wlfrct.sbcglobal.net
+	[162.198.228.33])
+	(using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 94DC82191C;
+	Thu, 19 Oct 2017 21:08:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 94DC82191C
+Authentication-Results: mail.kernel.org;
+	dmarc=none (p=none dis=none) header.from=kernel.org
+Authentication-Results: mail.kernel.org;
+	spf=none smtp.mailfrom=sstabellini@kernel.org
+Date: Thu, 19 Oct 2017 14:08:24 -0700 (PDT)
+From: Stefano Stabellini <sstabellini@kernel.org>
+X-X-Sender: sstabellini@sstabellini-ThinkPad-X260
+To: Peter Maydell <peter.maydell@linaro.org>
+In-Reply-To: <CAFEAcA9t7i4JLbn2X5r2KqdA00fSEZPLEW4PpCsp_uyg8Gsm0A@mail.gmail.com>
+Message-ID: <alpine.DEB.2.10.1710191404250.27209@sstabellini-ThinkPad-X260>
+References: <alpine.DEB.2.10.1710181539580.27209@sstabellini-ThinkPad-X260>
+	<CAFEAcA9t7i4JLbn2X5r2KqdA00fSEZPLEW4PpCsp_uyg8Gsm0A@mail.gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 198.145.29.99
+Subject: Re: [Qemu-arm] [PATCH] don't hardcode EL1 in
+ extended_addresses_enabled
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,56 +88,127 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, f4bug@amsat.org, alistair23@gmail.com,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>, pbonzini@redhat.com,
-	imammedo@redhat.com
+Cc: Stefano Stabellini <sstabellini@kernel.org>,
+	Julien Grall <julien.grall@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Tjlx0BcUgFlb
+X-TUID: NCUaG3ARSjcK
 
-Fixed incorrect frame size mask, validated maximum frame
-size in spi_write and removed dead code.
+On Thu, 19 Oct 2017, Peter Maydell wrote:
+> On 18 October 2017 at 23:41, Stefano Stabellini <sstabellini@kernel.org> wrote:
+> > extended_addresses_enabled calls arm_el_is_aa64, hardcoding exception
+> > level 1. Instead, retrieve the current el calling arm_current_el.
+> >
+> > Signed-off-by: Stefano Stabellini <sstabellini@kernel.org>
+> >
+> > diff --git a/target/arm/internals.h b/target/arm/internals.h
+> > index 1f6efef..63507d9 100644
+> > --- a/target/arm/internals.h
+> > +++ b/target/arm/internals.h
+> > @@ -187,7 +187,7 @@ static inline unsigned int arm_pamax(ARMCPU *cpu)
+> >  static inline bool extended_addresses_enabled(CPUARMState *env)
+> >  {
+> >      TCR *tcr = &env->cp15.tcr_el[arm_is_secure(env) ? 3 : 1];
+> > -    return arm_el_is_aa64(env, 1) ||
+> > +    return arm_el_is_aa64(env, arm_current_el(env)) ||
+> >             (arm_feature(env, ARM_FEATURE_LPAE) && (tcr->raw_tcr & TTBCR_EAE));
+> >  }
+> 
+> Hmm. The current code was definitely written under a "aarch64
+> only supports EL0 and EL1" assumption, but I'm not sure
+> this change is entirely correct.
+> 
+> We use this function in 3 places:
+> 
+>  * identifying whether to flush TLBs on CONTEXTIDR writes
+>     -- using current EL seems like the right thing (but I'm not
+>        sure -- perhaps we should pass in the S/NS from which
+>        version of the 32-bit banked register is being updated
+>        rather than using arm_is_secure(env) ???)
+>  * choosing a PAR format for ATS operations
+>     -- using the current EL is closer to correct that what we
+>        have now. There are cases for a 32-bit CPU in Hyp mode that
+>        this code mishandles, but we don't support that yet.
+>  * choosing an FSR value when taking a breakpoint or watchpoint trap
+>     -- here what we want the function to mean is "what is the
+>        FSR format for the EL we're about to take this debug
+>        exception to", which isn't necessarily the answer for the
+>        current EL (consider 32 bit EL0 under a 64-bit EL1)
+> 
+> So this change will fix the PAR format for ATS operations
+> made at AArch64 EL2 when EL1 is AArch32, but it will break
+> the FSR format for breakpoints/watchpoints hit at AArch32 EL0
+> and taken to AArch64 EL1, I think.
+> 
+> We probably need to separate out these uses to not all try
+> to use the same function, and clarify what they're checking.
 
-Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
----
- hw/ssi/mss-spi.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/hw/ssi/mss-spi.c b/hw/ssi/mss-spi.c
-index 5a8e308..1e49cbc 100644
---- a/hw/ssi/mss-spi.c
-+++ b/hw/ssi/mss-spi.c
-@@ -76,9 +76,10 @@
- #define C_BIGFIFO            (1 << 29)
- #define C_RESET              (1 << 31)
+What if we do use a single extended_addresses_enabled function, but we
+pass the EL to check? I think it makes sense, but please check the
+changes below, especially the ones to arm_debug_excp_handler.
+What do you think?
+
+
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 96113fe..2298428 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -500,7 +500,7 @@ static void contextidr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     ARMCPU *cpu = arm_env_get_cpu(env);
  
--#define FRAMESZ_MASK         0x1F
-+#define FRAMESZ_MASK         0x3F
- #define FMCOUNT_MASK         0x00FFFF00
- #define FMCOUNT_SHIFT        8
-+#define FRAMESZ_MAX          32
+     if (raw_read(env, ri) != value && !arm_feature(env, ARM_FEATURE_PMSA)
+-        && !extended_addresses_enabled(env)) {
++        && !extended_addresses_enabled(env, arm_current_el(env))) {
+         /* For VMSA (when not using the LPAE long descriptor page table
+          * format) this register includes the ASID, so do a TLB flush.
+          * For PMSA it is purely a process ID and no action is needed.
+@@ -2162,7 +2162,7 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
  
- static void txfifo_reset(MSSSpiState *s)
+     ret = get_phys_addr(env, value, access_type, mmu_idx,
+                         &phys_addr, &attrs, &prot, &page_size, &fsr, &fi);
+-    if (extended_addresses_enabled(env)) {
++    if (extended_addresses_enabled(env, arm_current_el(env))) {
+         /* fsr is a DFSR/IFSR value for the long descriptor
+          * translation table format, but with WnR always clear.
+          * Convert it to a 64-bit PAR.
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 43106a2..6792df2 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -217,10 +217,10 @@ static inline unsigned int arm_pamax(ARMCPU *cpu)
+  * This is always the case if our translation regime is 64 bit,
+  * but depends on TTBCR.EAE for 32 bit.
+  */
+-static inline bool extended_addresses_enabled(CPUARMState *env)
++static inline bool extended_addresses_enabled(CPUARMState *env, unsigned int el)
  {
-@@ -106,8 +107,6 @@ static void set_fifodepth(MSSSpiState *s)
-         s->fifo_depth = 16;
-     } else if (size <= 32) {
-         s->fifo_depth = 8;
--    } else {
--        s->fifo_depth = 4;
-     }
+-    TCR *tcr = &env->cp15.tcr_el[arm_is_secure(env) ? 3 : 1];
+-    return arm_el_is_aa64(env, 1) ||
++    TCR *tcr = &env->cp15.tcr_el[el];
++    return arm_el_is_aa64(env, el) ||
+            (arm_feature(env, ARM_FEATURE_LPAE) && (tcr->raw_tcr & TTBCR_EAE));
  }
+diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
+index 3914145..4f46eb8 100644
+--- a/target/arm/op_helper.c
++++ b/target/arm/op_helper.c
+@@ -1378,7 +1378,7 @@ void arm_debug_excp_handler(CPUState *cs)
  
-@@ -301,6 +300,9 @@ static void spi_write(void *opaque, hwaddr addr,
-         if (s->enabled) {
-             break;
+             cs->watchpoint_hit = NULL;
+ 
+-            if (extended_addresses_enabled(env)) {
++            if (extended_addresses_enabled(env, arm_debug_target_el(env))) {
+                 env->exception.fsr = (1 << 9) | 0x22;
+             } else {
+                 env->exception.fsr = 0x2;
+@@ -1402,7 +1402,7 @@ void arm_debug_excp_handler(CPUState *cs)
+             return;
          }
-+        if ((value & FRAMESZ_MASK) > FRAMESZ_MAX) {
-+            break;
-+        }
-         s->regs[R_SPI_DFSIZE] = value;
-         break;
  
--- 
-2.5.0
-
+-        if (extended_addresses_enabled(env)) {
++        if (extended_addresses_enabled(env, arm_debug_target_el(env))) {
+             env->exception.fsr = (1 << 9) | 0x22;
+         } else {
+             env->exception.fsr = 0x2;

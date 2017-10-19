@@ -1,86 +1,78 @@
-Received: by 10.223.197.9 with SMTP id q9csp6777180wrf;
-        Thu, 19 Oct 2017 05:57:47 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+R5jqOAJdh+pm82ExHjCwvYbMN1izE+tFMTN6xlwSFt2wWhrnDtCqQLe0QBOIVU7j5xEeuR
-X-Received: by 10.55.149.70 with SMTP id x67mr1787210qkd.62.1508417867795;
-        Thu, 19 Oct 2017 05:57:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508417867; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp6918708wrf;
+        Thu, 19 Oct 2017 08:13:30 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+RF24JWodj/H7u3XcKoL0+5xHRltH2mhwm2NBIXc0b2Pj1LYJ79CGOhDZQRaU9gHRqfG5I7
+X-Received: by 10.55.221.68 with SMTP id n65mr2433140qki.27.1508426010242;
+        Thu, 19 Oct 2017 08:13:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508426010; cv=none;
         d=google.com; s=arc-20160816;
-        b=bXNCM9yzLHlq2Zl436mxZIctD7b9xXOlieTiHEeNjWYVtyI8zF1/BmJarUKM/HQNDO
-         CLfOhp7s9uQJjOnygkUzLxBghEkyH6Mrj1R6ybS/gwQqpmdNXMWjnmMBw7PGkhcosSJP
-         akernIyEot1j2UBKJAt+7JQ8SJBG/VbJh4Emx3HmQXvPpkb9Xz3PEacdNHPXNTnZ3Ys1
-         Zm86ZfGKEcqVDgCFsPGo+Kldm3VG01VuhG2hyjLtTOhQd8MFBWQea2DEmBnEfeyj/KEH
-         o9LrZ3Ox0fT0sywKXlEM841/e9gjPMC203QWmKRPRz1JK97HbTJdWGYKmkAGE90dSOgC
-         gsfg==
+        b=u+FZJn8JyElaWLXNJoKP3aCR/treOpFX3UfQTGFrnqYDQ71iKLE/66VHMVyYwn3ejb
+         yhKimTm4UUU/t+EB//alOLAL/nAzoKSZjeOs+GVbBeu+ASwtvxjnXEq0r2Jpzw1NYteL
+         Ovo0rNrg4I+ois85MMRD0lObW6g4sRxzdd4ldi6Q3o5faFx3fvcNwyRAv5nbtskeDHUi
+         kRw8EkX8Cituw2EQBfZSkefaiouPwDOTXKTPIRIjPofuamYinlq4L9UBgqIlX7NZzz1E
+         qCMFPCbzZL3QGwtDNFCy8DHOv6W89XsTAz5lrY5aMTuzTUGyC65mamuSbm0sz8ddJv7o
+         f4eg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
+         :content-transfer-encoding:mime-version:message-id:date:to:from
          :arc-authentication-results;
-        bh=NhkKwmn8l18oOSLQYqC9nudttbHw4sHw9oLm4/I4HYE=;
-        b=UD+9b5jFD5cGo1PuUliLKrT93GQHW842pdtnsNzvVozMlQQd6VGAGILTxAZ/CQ2GqW
-         jewOhEMq/ZY9C/wCYIFAJHxw99jUiTDShtAHOFzJVl4ZPQnrLJAjQqEMoeD7FRBvnJFz
-         jt7fUJKpvJYwpU3N8ihvSCuHFIwsWNWXIg9nhhOOuRGrJnxBEmQatCbJlMklVvQ2DyR3
-         MUtyRMX5PusWdDeMo6PbylO1N7AqzS+rAE+pfzBILVpTQoWJSLyD/wQp+i40GZZwy4LH
-         yuOaD/BxzpzJ1pxca/klqBx+tBy0GY46IjCvJiynLk9zPC0rDmHzFQT21/N75dCihu/B
-         0XXg==
+        bh=+9odtd9sKo1uvO5eIpyEzJpIESJfTns5fGYyriCxbdM=;
+        b=zOZLK9Z0s78Qjp3eaRx8p/XIvgAo9D3UbCYfrOzG6smrURruoTVC/9C6RIjVlPxvXa
+         hIy1XiJL1mGr+5fkoea6tvGl5x0ycd8d2ViLYPRc7Ziyq4Koa05tSJ0kvqgt5BEmJs0B
+         1enxAEYtMThU+pxLeej1dmK0VBGUn+lWyc1weLHGI/PTFNDda3mnIyXrTIkubefBkBUv
+         OjW8Bq2oNFIXQ+L7RhWnEZ0r4qrg0xK51wpDSzymPEWUpJrpDb29Wd/Opr3+m7M7v8+V
+         l1AFwREXGExBEInWgbkUc4ZtXzb1aGm2pox24Gi4AKZqSLa7b9ucqOGxg8yOZwpAjiVx
+         In8A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b12si13026791qta.152.2017.10.19.05.57.47
+        by mx.google.com with ESMTPS id a4si1544734qkc.153.2017.10.19.08.13.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 19 Oct 2017 05:57:47 -0700 (PDT)
+        Thu, 19 Oct 2017 08:13:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:49227 helo=lists.gnu.org)
+Received: from localhost ([::1]:49626 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e5AOP-0003uM-Hz
-	for alex.bennee@linaro.org; Thu, 19 Oct 2017 08:57:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58784)
+	id 1e5CVk-00019e-0b
+	for alex.bennee@linaro.org; Thu, 19 Oct 2017 11:13:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35120)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1e5AOF-0003u2-Dz
-	for qemu-arm@nongnu.org; Thu, 19 Oct 2017 08:57:36 -0400
+	(envelope-from <clg@kaod.org>) id 1e5CVQ-00019T-LN
+	for qemu-arm@nongnu.org; Thu, 19 Oct 2017 11:13:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1e5AOA-0006Yo-HE
-	for qemu-arm@nongnu.org; Thu, 19 Oct 2017 08:57:35 -0400
-Received: from 9.mo5.mail-out.ovh.net ([178.32.96.204]:56025)
+	(envelope-from <clg@kaod.org>) id 1e5CVM-00016L-Is
+	for qemu-arm@nongnu.org; Thu, 19 Oct 2017 11:13:08 -0400
+Received: from 9.mo5.mail-out.ovh.net ([178.32.96.204]:51418)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1e5AOA-0006Wh-Ap
-	for qemu-arm@nongnu.org; Thu, 19 Oct 2017 08:57:30 -0400
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1e5CVM-00015M-C6
+	for qemu-arm@nongnu.org; Thu, 19 Oct 2017 11:13:04 -0400
 Received: from player786.ha.ovh.net (b6.ovh.net [213.186.33.56])
-	by mo5.mail-out.ovh.net (Postfix) with ESMTP id A0032145DA9
-	for <qemu-arm@nongnu.org>; Thu, 19 Oct 2017 14:57:28 +0200 (CEST)
+	by mo5.mail-out.ovh.net (Postfix) with ESMTP id E0531145E8A
+	for <qemu-arm@nongnu.org>; Thu, 19 Oct 2017 17:13:00 +0200 (CEST)
 Received: from zorba.kaod.org (LFbn-1-2231-173.w90-76.abo.wanadoo.fr
-	[90.76.52.173]) (Authenticated sender: postmaster@kaod.org)
-	by player786.ha.ovh.net (Postfix) with ESMTPSA id 597088008D;
-	Thu, 19 Oct 2017 14:57:19 +0200 (CEST)
+	[90.76.52.173]) (Authenticated sender: clg@kaod.org)
+	by player786.ha.ovh.net (Postfix) with ESMTPSA id DA86B8008A;
+	Thu, 19 Oct 2017 17:12:52 +0200 (CEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-References: <20171019100410.26239-1-clg@kaod.org>
-	<20171019100410.26239-2-clg@kaod.org>
-	<CAFEAcA_xM93zxp-QqwXd+Fxj9LE6sPn+9zWbiL4tK1GZOqKNYw@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <ad2bd2fd-dbad-7f1c-66df-9c5d638df127@kaod.org>
-Date: Thu, 19 Oct 2017 14:57:18 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+Date: Thu, 19 Oct 2017 17:12:41 +0200
+Message-Id: <20171019151249.13663-1-clg@kaod.org>
+X-Mailer: git-send-email 2.13.6
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_xM93zxp-QqwXd+Fxj9LE6sPn+9zWbiL4tK1GZOqKNYw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Ovh-Tracer-Id: 11616472290208615364
+Content-Type: text/plain; charset=UTF-8
+X-Ovh-Tracer-Id: 13905989752713349905
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedttddrudekgdeitdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedttddrudekgdekjecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 178.32.96.204
-Subject: Re: [Qemu-arm] [PATCH v4 1/8] aspeed: introduce a dummy ROM device
- to catch invalid writes
+Subject: [Qemu-arm] [PATCH v5 0/8] aspeed: add a witherspoon-bmc machine
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,105 +85,73 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
 	Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ckrBCd5jkYSG
+X-TUID: ZNOHqPIOYFEM
 
-On 10/19/2017 01:06 PM, Peter Maydell wrote:
-> On 19 October 2017 at 11:04, C=C3=A9dric Le Goater <clg@kaod.org> wrote=
-:
->> Some legacy firmwares access unimplemented addresses on the Aspeed SoC
->> (old U-Boot code using variables in the bss when it shouldn't do).
->> Let's add a dummy ROM device to catch the invalid writes and support
->> new board without using the 'ignore_memory_transaction_failures' flags=
-.
->>
->> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
->> ---
->>  hw/arm/aspeed.c | 24 ++++++++++++++++++++++++
->>  1 file changed, 24 insertions(+)
->>
->> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
->> index ab895ad490af..e44733153819 100644
->> --- a/hw/arm/aspeed.c
->> +++ b/hw/arm/aspeed.c
->> @@ -166,6 +166,19 @@ static void aspeed_board_init_flashes(AspeedSMCSt=
-ate *s, const char *flashtype,
->>      }
->>  }
->>
->> +static void boot_rom_rw_flash_write(void *opaque, hwaddr offset, uint=
-64_t value,
->> +                              unsigned size)
->> +{
->> +    qemu_log_mask(LOG_GUEST_ERROR,
->> +                  "%s: 0x%" HWADDR_PRIx " <- 0x%" PRIx64 " [%u]\n",
->> +                  __func__, offset, value, size);
->> +}
->> +
->> +static const MemoryRegionOps boot_rom_rw_flash_ops =3D {
->> +    .write =3D boot_rom_rw_flash_write,
->> +    .endianness =3D DEVICE_NATIVE_ENDIAN,
->> +};
->> +
->>  static void aspeed_board_init(MachineState *machine,
->>                                const AspeedBoardConfig *cfg)
->>  {
->> @@ -209,6 +222,7 @@ static void aspeed_board_init(MachineState *machin=
-e,
->>      if (drive0) {
->>          AspeedSMCFlash *fl =3D &bmc->soc.fmc.flashes[0];
->>          MemoryRegion *boot_rom =3D g_new(MemoryRegion, 1);
->> +        MemoryRegion *boot_rom_rw =3D  g_new(MemoryRegion, 1);
->>
->>          /*
->>           * create a ROM region using the default mapping window size =
-of
->> @@ -221,6 +235,16 @@ static void aspeed_board_init(MachineState *machi=
-ne,
->>          memory_region_add_subregion(get_system_memory(), FIRMWARE_ADD=
-R,
->>                                      boot_rom);
->>          write_boot_rom(drive0, FIRMWARE_ADDR, fl->size, &error_abort)=
-;
->> +
->> +        /*
->> +         * Create a fake ROM region to track invalid writes done by
->> +         * some legacy firmwares
->> +         */
->> +        memory_region_init_rom_device(boot_rom_rw, NULL, &boot_rom_rw=
-_flash_ops,
->> +                                      NULL, "aspeed.boot_rom_rw", fl-=
->size,
->> +                                      &error_abort);
->> +        memory_region_add_subregion_overlap(get_system_memory(), FIRM=
-WARE_ADDR,
->> +                                            boot_rom_rw, 0);
->>      }
->=20
-> You're already (in some conditions) adding a memory region at this
-> address -- you can see it just above. I think you probably want
-> to be always creating this region in the same way, whether you
-> need to do a write_boot_rom() to it or not, rather than creating
-> two things at the same address.
+Hello,
 
-ok. I didn't think that was possible. Let me try that.
+This series adds a new Aspeed machine to emulate the BMC of a
+Witherspoon system. It also extends the other Aspeed machines with I2C
+devices and adds a simple model for the pca9552 LED blinker present on
+the witherspoon board.
 
 Thanks,
 
-C.=20
+C.
 
->=20
-> I think that currently memory_region_init_rom() regions will
-> MEMTX_DECODE_ERROR on attempts to write to them -- that's really
-> a bug, which we might be able to fix, but for now you can do
-> this with the init_rom_device() and a comment about why we
-> can't just use memory_region_init_rom().
->=20
-> thanks
-> -- PMM
->=20
+Changes since v4:
+
+ - use a ROM memory region
+
+Changes since v3:
+
+ - introduce a dummy ROM device to catch invalid writes
+ - removed 'ignore_memory_transaction_failures' on all Aspeed machines
+ - reworked PCA9552 device :
+   . simpler I2C handles
+   . auto-increment support
+   . unit test
+
+Changes since v2:
+
+ - removed comments on the I2C buffer size pf the PCA9552 device.
+ - removed 'ignore_memory_transaction_failures' flag on the
+   witherspoon machine.
+  =20
+Changes since v1:
+
+ - introduced smbus_eeprom_init_one()
+
+C=C3=A9dric Le Goater (8):
+  aspeed: use a ROM memory region to catch invalid writes
+  aspeed: remove ignore_memory_transaction_failures all boards
+  aspeed: add support for the witherspoon-bmc board
+  aspeed: add an I2C RTC device to all machines
+  smbus: add a smbus_eeprom_init_one() routine
+  aspeed: Add EEPROM I2C devices
+  misc: add pca9552 LED blinker model
+  aspeed: add the pc9552 chips to the witherspoon machine
+
+ default-configs/arm-softmmu.mak |   1 +
+ hw/arm/aspeed.c                 | 110 ++++++++++++++++-
+ hw/i2c/smbus_eeprom.c           |  16 ++-
+ hw/misc/Makefile.objs           |   1 +
+ hw/misc/pca9552.c               | 259 ++++++++++++++++++++++++++++++++++=
+++++++
+ include/hw/i2c/smbus.h          |   1 +
+ include/hw/misc/pca9552.h       |  33 +++++
+ tests/Makefile.include          |   2 +
+ tests/pca9552-test.c            | 131 ++++++++++++++++++++
+ 9 files changed, 544 insertions(+), 10 deletions(-)
+ create mode 100644 hw/misc/pca9552.c
+ create mode 100644 include/hw/misc/pca9552.h
+ create mode 100644 tests/pca9552-test.c
+
+--=20
+2.13.6
 

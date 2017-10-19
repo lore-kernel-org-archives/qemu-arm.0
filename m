@@ -1,100 +1,99 @@
-Received: by 10.223.197.9 with SMTP id q9csp6950857wrf;
-        Thu, 19 Oct 2017 08:45:45 -0700 (PDT)
-X-Received: by 10.55.76.85 with SMTP id z82mr2556716qka.183.1508427944946;
-        Thu, 19 Oct 2017 08:45:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508427944; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp6952740wrf;
+        Thu, 19 Oct 2017 08:47:47 -0700 (PDT)
+X-Received: by 10.200.50.230 with SMTP id a35mr2694506qtb.226.1508428067438;
+        Thu, 19 Oct 2017 08:47:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508428067; cv=none;
         d=google.com; s=arc-20160816;
-        b=DwYmZWfJ+y+E9k7s1LLBOJEyAOXzURTo0dlGaiZhJrjJksGI9azU9GDGDhGh02em37
-         C4pnBI6LRqrbfrS/ua/MxeXaVR6vjWnQ7r3a+QmrmseUZASrRnsz07lKn343mQFJJ59I
-         NzGzH8d2JoS1bq6ZpOqVCOFsFbG+re32O0JesOzV7XLmdnjEEp1yMKy4cQ9KwwPU8xfA
-         YpCxYHJC/kXoezjwBdJ3jo6mxuJRQz2gWo/r8LUbseVEozo7+Brxv4pRO+ioJc7VeT4q
-         bp5o5LHubbFY9EuWpghHpBlkmufEDDVA8WMBinEv9hsnFx+zl/+7f4l+zrlGFgz64V7u
-         /LAA==
+        b=At0wsrdbncyhBdzWXmHxc15vrzCGPg8DVIRlaER5iu6eheSQC/seQovcqvVtTLqGBs
+         jgr3CI3dod1N4S3t3OdCVu8Ebv+oq0elBdmdjwr35GhWluy0qn1BzDG8iG2izAgvlme2
+         4USZ7v5tPq7qJM/RbCitifUpJW7lWSaWf0U+7sKauYZXPQvhLds8yUwDW++YHGfBR8bk
+         5gvN5Dy/9vR2D9DwS69bsTeVCnoszqdqB8ZxMRLjN594PGJx4T+DAd3reWY16oXjB7e5
+         T3rG9Oy8b7O/f9gG23OrE12XCRJH8nmUsQfFEpvxfoShL1XcC6mVBChZ4Q/VCIVAnaWM
+         5+CQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:to:message-id:date:from:references
          :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=xUolPh86HyCfbyjwoeDxvMxoegRrJ/YoB1sjaE6avV0=;
-        b=j8WzOViXuMnK9E5q8C0/k03rOmTK51f8WoTEqjgsd7Roui+sK4dYzRuIQWDhZwVesN
-         3czoG7ssMANKap587gl8E73ih3AXe1MLkKRXGpU/1HRT8ZXlKQg7LFBrhNv/jlrW3y+Q
-         Ar8Lu0UnotikTvpnu6UxtgKu+JDngIJYPQqp7RZ5UEAFGU2YPZ+0z4ofYXenFaA7LceP
-         Ive21YzkzrD9Xfa8nSF0HFsBIOwUfHGrbIUcP0UvL3kuUUZfxd9qtwtJnDl1MnZQgQtp
-         0LazPnELxkgG9M4KbnYGgBJvdjAxTLxo+PgMekd90mkitkYzsCUvVzcn3FtXQZpB8k2Y
-         C1pA==
+        bh=tpWKK/o4/0hNwgk5y9i34WYn25LWKfB4u3gYq9PDtjA=;
+        b=bhHOV/0zFan5mVE0heE/vb/uoW4KA5j2QjE0vFfIWPGpbvx51YI5aoTjzvgHCxBAth
+         8NYfAorg3m8uxA2ZOejgVBUZtWVVDFDAgpF0XzlSI5ZYbG12CByDPkATPm1pYKOoznzI
+         gEB2/s3geBi3mxu2yh/fKTcCa7M1oOS/gsCmcLnDxbVdeSyFxkGDwcsaQ/4JAUaLfODJ
+         sSm+TEgEqpr92cc80svfWjvxtrrYdH1FJN7gOy5k4zt25CxDAnRd/Z2nUEkQ2SnmqBal
+         FQGNZcTYqNt6cBPhWj0LaNMx9DHHwIHamn2uqNB9xQI5A0QJ58lc6vAiwh8jf5BMuXOQ
+         cW5Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=bVTPx4gV;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Xt5xoq2l;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m29si7062526qki.30.2017.10.19.08.45.44
+        by mx.google.com with ESMTPS id y185si1725541qkd.374.2017.10.19.08.47.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 19 Oct 2017 08:45:44 -0700 (PDT)
+        Thu, 19 Oct 2017 08:47:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=bVTPx4gV;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Xt5xoq2l;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49796 helo=lists.gnu.org)
+Received: from localhost ([::1]:49808 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e5D0w-0003Eo-PC
-	for alex.bennee@linaro.org; Thu, 19 Oct 2017 11:45:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45563)
+	id 1e5D2v-0004d4-7n
+	for alex.bennee@linaro.org; Thu, 19 Oct 2017 11:47:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46446)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e5D0k-0003DJ-Be
-	for qemu-arm@nongnu.org; Thu, 19 Oct 2017 11:45:31 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1e5D2h-0004am-VM
+	for qemu-arm@nongnu.org; Thu, 19 Oct 2017 11:47:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e5D0j-0004mS-Lf
-	for qemu-arm@nongnu.org; Thu, 19 Oct 2017 11:45:30 -0400
-Received: from mail-wr0-x232.google.com ([2a00:1450:400c:c0c::232]:46498)
+	(envelope-from <peter.maydell@linaro.org>) id 1e5D2h-0005sZ-7W
+	for qemu-arm@nongnu.org; Thu, 19 Oct 2017 11:47:32 -0400
+Received: from mail-wm0-x233.google.com ([2a00:1450:400c:c09::233]:52836)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1e5D0j-0004m5-Fr
-	for qemu-arm@nongnu.org; Thu, 19 Oct 2017 11:45:29 -0400
-Received: by mail-wr0-x232.google.com with SMTP id l1so8797587wrc.3
-	for <qemu-arm@nongnu.org>; Thu, 19 Oct 2017 08:45:29 -0700 (PDT)
+	id 1e5D2h-0005s5-11
+	for qemu-arm@nongnu.org; Thu, 19 Oct 2017 11:47:31 -0400
+Received: by mail-wm0-x233.google.com with SMTP id k4so17288421wmc.1
+	for <qemu-arm@nongnu.org>; Thu, 19 Oct 2017 08:47:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
 	:cc:content-transfer-encoding;
-	bh=xUolPh86HyCfbyjwoeDxvMxoegRrJ/YoB1sjaE6avV0=;
-	b=bVTPx4gVvTBphkjNZ84AqHr9MSIq0H/vu7BCBV43xnZTg1bgi17ZKe5e51fSA1CB9F
-	zcyFSTHqYMaespoAk8ZFlxXrQSs5MS27epwkJyMMQR675mKwHORF3amRZQwqs1sYXF/A
-	dNaveVZ+7on5xjdBaSWcKAjsMgWLf04jr7T5w=
+	bh=tpWKK/o4/0hNwgk5y9i34WYn25LWKfB4u3gYq9PDtjA=;
+	b=Xt5xoq2lDxQflJu7zSHIS8V0IbcmoLdfzQTU7sH1Y4p0a9OWU/TrkCRla3Xu5OW2rv
+	EquC5NEDj6qjWcVmfQ8st/jHSgn7PPL1PUxNdUIYIgSuWsz5UdK/9ED5lt/BXhCGVKzn
+	lm4UrVZvqSA5DOGXRC2PZNVcEnrOlg8DJcn5w=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=xUolPh86HyCfbyjwoeDxvMxoegRrJ/YoB1sjaE6avV0=;
-	b=LG9sXbU1RjM08EirL+9sEE+BGWZ5xFwPRZOhmkgWk7YmB4SL9q2VL0qX2zcctjxpjP
-	9W+RQS7/33yPV/6b5s1pBmeZonbOfzqN5liI9+bPqjYKgaCxAl8zWbOVCfODeMKZZhXk
-	s842vWL4Fnij92UNygIVJkN+g3yLJdK92/MYiK2iYXjmukKJq/JLeV7VQ+Vo0EJZ9RvT
-	aE4/MULuyTINf6gue54T5PiwQ2LKIszBDAPL4e3j7uh/IikZZEsyj0q9OU+loXh0Zr1v
-	Xwe7nxzQ3H9xYzRp6AZu2SEtMCEpmYlezE0ZgSFG5bWreNUZDxHZ5NQU7SsSEeN/v8+4
-	f09g==
-X-Gm-Message-State: AMCzsaWcR3atEf2fhliUlchKJC8ato3364dKyMnpsefxjTx6Yu2j66G7
-	bs2ksTQ+OpJVbTkKx5nfx2SUBqsY++Glteg2LjxGOw==
-X-Google-Smtp-Source: ABhQp+RyT2hkrKPie4KLBESq4jPTXUkCHcuHzVasDXKnBEbIsuZDUexCLIx9tioyqrAQgocfPBEaTumt/uA8/yTgsJo=
-X-Received: by 10.223.128.164 with SMTP id 33mr1942350wrl.138.1508427928367;
-	Thu, 19 Oct 2017 08:45:28 -0700 (PDT)
+	bh=tpWKK/o4/0hNwgk5y9i34WYn25LWKfB4u3gYq9PDtjA=;
+	b=K5FsKVFC5AsTLwi+DYYLRDa4LOx80129B9ytd+lLR27yTG8vq2lwHE5GI00ffS3oF4
+	oDpO+CqX6QnO8Q75EDYvXbTPaahwqlFUTDniiiAxYjrpS3d5mAETjRjFKvCsyeKfwowm
+	1j2I92cWcPkQCxHqXfaeosD/3eX1ik1MgvCdL3/CoPxb7BPvtBGQMjT1Hb6gIVd4PPz+
+	tBSS/rYZ2C8C1pfJZygQbAHOkybpEdArwh/cGIVQSj5+nJl3LUEU20j7dP9ESoOrIxbL
+	ZxyNygHhvQT8mk002cNi4IpiQA1gbpfG/Y79kCGgt6Qowza5cJx9i+pCj5zpdEYRfyyX
+	0FSQ==
+X-Gm-Message-State: AMCzsaXvTWiLKi9/XP+BLHa9hcp76rmJEjB1XMyvnBC0WaKLFrqnAX3O
+	BKNSh0To00zyv/kIroGSU7+AuzKDhNy+KSdjQuLxcQhE
+X-Google-Smtp-Source: ABhQp+Rx8xsvEnNf3xV4i8pb36AD/ISrN2TzfXqvSGGRf9u8nUepvlHQmTU2u8sfDyHE7k2RqZunRIL9Pvu9BNfOCv0=
+X-Received: by 10.28.36.212 with SMTP id k203mr1879501wmk.127.1508428049975;
+	Thu, 19 Oct 2017 08:47:29 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.223.161.5 with HTTP; Thu, 19 Oct 2017 08:45:07 -0700 (PDT)
-In-Reply-To: <20171019151249.13663-3-clg@kaod.org>
+Received: by 10.223.161.5 with HTTP; Thu, 19 Oct 2017 08:47:09 -0700 (PDT)
+In-Reply-To: <20171019151249.13663-8-clg@kaod.org>
 References: <20171019151249.13663-1-clg@kaod.org>
-	<20171019151249.13663-3-clg@kaod.org>
+	<20171019151249.13663-8-clg@kaod.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 19 Oct 2017 16:45:07 +0100
-Message-ID: <CAFEAcA-thMBh7OQH_RwXFv7H-oanqJoObRjuotXDeX9qCOThgg@mail.gmail.com>
+Date: Thu, 19 Oct 2017 16:47:09 +0100
+Message-ID: <CAFEAcA_rmP=Ou50kJrWSF-ZgJZERoJ0gkt2+iV_xNO_hLFq7fg@mail.gmail.com>
 To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::232
-Subject: Re: [Qemu-arm] [PATCH v5 2/8] aspeed: remove
- ignore_memory_transaction_failures all boards
+X-Received-From: 2a00:1450:400c:c09::233
+Subject: Re: [Qemu-arm] [PATCH v5 7/8] misc: add pca9552 LED blinker model
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,15 +111,33 @@ Cc: Andrew Jeffery <andrew@aj.id.au>,
 	Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: c7qD6+BP0Fhv
+X-TUID: wmepmL78QqDp
 
 On 19 October 2017 at 16:12, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
-> Now that we have a dummy ROM device catching the invalid writes, we
-> can remove this flag and work on fixing the current firwmares still
-> accessing unimplemented addresses.
+> Specs are available here :
+>
+>     https://www.nxp.com/docs/en/application-note/AN264.pdf
+>
+> This is a simple model supporting the basic registers for led and GPIO
+> mode. The device also supports two blinking rates but not the model
+> yet.
 >
 > Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 > ---
+>
+>  Changes since v3:
+>
+>  - introduced auto-increment support
+>  - removed the buffer collecting bytes on the bus
+>  - improved reset
+>  - used extract32
+>  - added a unit test
+>
+>  Changes since v2:
+>
+>  - removed comments on the I2C buffer size, but kept the array. I did
+>    not want to rewrite the buffer handling
+>
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

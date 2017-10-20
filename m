@@ -1,69 +1,108 @@
-Received: by 10.223.197.9 with SMTP id q9csp8159886wrf;
-        Fri, 20 Oct 2017 10:56:21 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+SwirB+SpRlVqpK3ZlVG8A94DvG47AKAadgH/0ng30L1KemI3IH6COnlPn6nhlTttzM1ChJ
-X-Received: by 10.200.53.111 with SMTP id z44mr9020898qtb.12.1508522181138;
-        Fri, 20 Oct 2017 10:56:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508522181; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp8177226wrf;
+        Fri, 20 Oct 2017 11:16:07 -0700 (PDT)
+X-Received: by 10.55.19.228 with SMTP id 97mr7916148qkt.271.1508523367700;
+        Fri, 20 Oct 2017 11:16:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508523367; cv=none;
         d=google.com; s=arc-20160816;
-        b=LaT4Ys3s6gtBvZvEIBem5RKCLfO4FsAmBJqLTw5VkV/8pz+cZrUwNPMp9WbVbdaJjF
-         k8AhzSadWBa9sPdbgE0VOTaf23zoG/t6BwsqP/oEu3Txg4iuT5GWVTBXhQX8o/L4UCbr
-         90Ia/LI4GehK+pkHww/h41Y/8xBjxlKmYy+3LuUjDW9uIulFULeWBuBODrYaARzPy3cz
-         73q6dLhAv/09BF0+tFSLLCxw/0iWx7pQ7wVQBlFmyEkLHRtnd3PdO42n+R1R4jcu832I
-         Tk1/85Mp4e2AGpvuyFEAkVos1MFJW+z469916rwyeijFpKYguaN4mM1k+ziviwWuAT4a
-         a6eA==
+        b=zJc2rumnU5tcM6L8jh4MNQcXnKVyoQK+Whn+vXSVzlADZpmdNwvmgUwk8n//adke68
+         uCqfsJD3itoqLKIzYlcgaPa0kaqfLTWb8IEbc2OVClGOe8Xo2/ajTkCKMRaBVZD94T/X
+         n8mOUyWrCmZo2YKnT43SQgyCiDib880cw2zAYdlB0rOF1lIzNVwZuuEP6ito9Kayhg7j
+         6azRAUbY6swZo0qP5cQqlILwpdjlJw+i8+qIzb2kzaUx6TuIaZafOrnoIeo/oj8HT8WT
+         kGoQrlqGMurlegd+3tzCZsKiuXOKuWYRx1dSq8mA3SN35u4l99QQM5tcw/+SIEtuXWWV
+         RJyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature
          :arc-authentication-results;
-        bh=NZiCeSpWn2q7J5FvdwW1n6VArOoRa/x2H34QB6vQb6A=;
-        b=Q2tZZCXnCo7KDxNPgP+qqM37FxPnGC3U6jyFHiQSqsB/pMMM6TGDlpDTLtQWmKIdFz
-         Lrs6V/+5VFjako14iXtMmOFrVOeC/livSlD5XfqNf/BPTpNsWN50xUhQ+Uku3FFye9Qd
-         ZW3/oSfUPsOfPECI6jT9OCjIEpt98bqZrXXusbsMH+q4FuJggXotKKN9HgP7A5uHJylg
-         JppCwp2gsaQTi21ahAPsZLdzejhtftuBsuLm8Oy4rzJKYBefe2u3DV+l4xOwBWxg36JX
-         6J3lxZ2loNuw4LHLJitgMA2EmXY1X8D/oNDM9RktevhZBpXW98feKcZgx1T9/nfYmguC
-         Uc8g==
+        bh=hokeDt+CuTzD49TtJAa0vpEiAI9H1KqAbySQ5PTLX4s=;
+        b=n4SX7jOBRCkzN1h60REhuonUps/b9j4z9lIw57vT33mLJ2Uio4rRIR3SqwClo0VwcY
+         MrBkrbj6LVmfwl+M7P2aj68z315/rzN65LXEKMff/TDwYzc1CvABD5C/ZYpfk3HdXAPt
+         6Lx6mb2PMLg4Ja6lF3bqORIy3p7oBAjDq0GkURgGHuPpBn+eWC9DuGLVFlys8gVn/4zk
+         aywy2YKk8wl5gaqCRVUaRHUt0lOnuw6qXuQbm9W0E6er2Zovn4s9MC+OTp6ImoJqwXAe
+         b12K6G7R8808ktfhta/PeI+V7zSt0Bu+Q+HOzQs6zXDt/dQtTtK7rRateaF17OSf6WpP
+         +Cvg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Eq0XKbhu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v6si1155377qkd.105.2017.10.20.10.56.20
+        by mx.google.com with ESMTPS id f13si1233026qtf.388.2017.10.20.11.16.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 20 Oct 2017 10:56:21 -0700 (PDT)
+        Fri, 20 Oct 2017 11:16:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55147 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Eq0XKbhu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:55205 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e5bWs-00046f-Sp
-	for alex.bennee@linaro.org; Fri, 20 Oct 2017 13:56:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48537)
+	id 1e5bq1-00034b-Hh
+	for alex.bennee@linaro.org; Fri, 20 Oct 2017 14:16:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53028)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1e5bWh-00045a-Pi
-	for qemu-arm@nongnu.org; Fri, 20 Oct 2017 13:56:09 -0400
+	(envelope-from <rth7680@gmail.com>) id 1e5bps-00032B-R2
+	for qemu-arm@nongnu.org; Fri, 20 Oct 2017 14:15:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1e5bWg-0000Tb-Ir
-	for qemu-arm@nongnu.org; Fri, 20 Oct 2017 13:56:07 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37986)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1e5bWg-0000Qt-CM; Fri, 20 Oct 2017 13:56:06 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1e5bWW-0008C8-Qz; Fri, 20 Oct 2017 18:55:56 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
+	(envelope-from <rth7680@gmail.com>) id 1e5bps-0002b3-43
+	for qemu-arm@nongnu.org; Fri, 20 Oct 2017 14:15:56 -0400
+Received: from mail-pf0-x244.google.com ([2607:f8b0:400e:c00::244]:56058)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
+	id 1e5bpo-0002Zh-9H; Fri, 20 Oct 2017 14:15:52 -0400
+Received: by mail-pf0-x244.google.com with SMTP id 17so12142922pfn.12;
+	Fri, 20 Oct 2017 11:15:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=hokeDt+CuTzD49TtJAa0vpEiAI9H1KqAbySQ5PTLX4s=;
+	b=Eq0XKbhuiahnI+AV2+CNDBCwrGwcppoLwB9GGcFxsGT1zbCM2NhrNw4leUu4yv4M/F
+	P3+r9GytnB3q4P5a3Pm9J7z70joYxGpUkoU701rdqW+NyMIklX0Oltut/hBrFiq5q8wN
+	45OtE1Pck1lgjVfB8C8UzObLEO4UDSuBcZ3xuH6r72w2fXGK0GqQcvpE+l0a2oek8rl3
+	MtRjKv/hfbOMT4+JNJ4ap8hEDCdsDOpCNMPrJvjJtHd+lsZSZbPOkNMPjJ0/IshRhU+D
+	SAkfsoCIK3/EV2Pp9gZxHNRphqSsijfP7ZzVBco3xJnJB1yLPHOWh5mElCSIxPeFBXZt
+	evMg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=hokeDt+CuTzD49TtJAa0vpEiAI9H1KqAbySQ5PTLX4s=;
+	b=V/uV6FoUmbMqBrHnqdSUkaheK597N2EViFjvkozV5yM4423Um5ekjU213zAop6c70T
+	iT41G9MWNR6YBpz0fwZDSf/k/njimKvPddvAT37EycS+towHkcc4ud4FW28m7INhGjmI
+	kg+FWx5lEYqHir/rOwWdtZzrHtQGwOj2xti76E7s+J5p9tTYe8TJXp8gmkAZ+I1XHNgv
+	HGKsktuVwr5LyEX42MJUN0Mccrnry3q2F4p2u2FnRwiSvkfLcqCrCTw14JRkHQRUMYHp
+	CN/FYofehK+RYfKrGkwfUEfZSICq0ZRkj6UF84/3eq9V5Hy47vAlMAXHxP4NGuPMUrqY
+	PuTA==
+X-Gm-Message-State: AMCzsaUXvfBFBc87UVfumHHjBHL+Tsn5wApQKsx9mt72YR/cOYZJJV8R
+	4gxzYEjNB/F6o5H0r3DVNUz5Qq+u
+X-Google-Smtp-Source: ABhQp+QfkbjKpyxnXIhe2xFAvNibkVFMstxWoTkxYooUDdrMNSIOo8P9y2Brs49UmhlNZ++5RU4/zw==
+X-Received: by 10.99.61.70 with SMTP id k67mr5379786pga.113.1508523350083;
+	Fri, 20 Oct 2017 11:15:50 -0700 (PDT)
+Received: from cloudburst.twiddle.net (97-113-165-104.tukw.qwest.net.
+	[97.113.165.104]) by smtp.googlemail.com with ESMTPSA id
+	c127sm2812203pga.34.2017.10.20.11.15.48
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 20 Oct 2017 11:15:49 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Fri, 20 Oct 2017 18:56:10 +0100
-Message-Id: <1508522170-22539-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
+References: <1508522170-22539-1-git-send-email-peter.maydell@linaro.org>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <19d12a08-9ecd-8c91-4652-28773ca35d8e@twiddle.net>
+Date: Fri, 20 Oct 2017 11:15:46 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
+MIME-Version: 1.0
+In-Reply-To: <1508522170-22539-1-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH] translate.c: Fix usermode big-endian AArch32
+X-Received-From: 2607:f8b0:400e:c00::244
+Subject: Re: [Qemu-arm] [PATCH] translate.c: Fix usermode big-endian AArch32
  LDREXD and STREXD
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -76,108 +115,31 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: christophe.lyon@linaro.org, Richard Henderson <rth@twiddle.net>,
-	patches@linaro.org
+Cc: christophe.lyon@linaro.org, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3KyPQ9OVhv86
+X-TUID: gAa/YcV28e7S
 
-For AArch32 LDREXD and STREXD, architecturally the 32-bit word at the
-lowest address is always Rt and the one at addr+4 is Rt2, even if the
-CPU is big-endian. Our implementation does these with a single
-64-bit store, so if we're big-endian then we need to put the two
-32-bit halves together in the opposite order to little-endian,
-so that they end up in the right places. We were trying to do
-this with the gen_aa32_frob64() function, but that is not correct
-for the usermode emulator, because there there is a distinction
-between "load a 64 bit value" (which does a BE 64-bit access
-and doesn't need swapping) and "load two 32 bit values as one
-64 bit access" (where we still need to do the swapping, like
-system mode BE32).
+On 10/20/2017 10:56 AM, Peter Maydell wrote:
+> +        if (s->be_data) {
+> +            tcg_gen_extr_i64_i32(tmp2, tmp, t64);
+> +        } else {
+> +            tcg_gen_extr_i64_i32(tmp, tmp2, t64);
+> +        }
 
-Fixes: https://bugs.launchpad.net/qemu/+bug/1725267
+The test against be_data must be of the form s->be_data == MO_BE/LE.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-This is very much "last thing on Friday", but I'm going to be
-travelling next week so thought I'd shove it out for review
-and testing. It does fix the test case in the bug. I have
-not tested:
- * BE32 system mode
- * BE8
- * little endian :-)
+The actual bits have MO_BSWAP non-zero, and then set MO_BE/LE to either 0 or
+MO_BSWAP depending on the host endianness.
 
-This should probably be cc: stable when it gets through
-review and testing.
----
- target/arm/translate.c | 40 +++++++++++++++++++++++++++++++++++-----
- 1 file changed, 35 insertions(+), 5 deletions(-)
 
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 4da1a4c..88892e0 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -7902,9 +7902,25 @@ static void gen_load_exclusive(DisasContext *s, int rt, int rt2,
-         TCGv_i32 tmp2 = tcg_temp_new_i32();
-         TCGv_i64 t64 = tcg_temp_new_i64();
- 
--        gen_aa32_ld_i64(s, t64, addr, get_mem_index(s), opc);
-+        /* For AArch32, architecturally the 32-bit word at the lowest
-+         * address is always Rt and the one at addr+4 is Rt2, even if
-+         * the CPU is big-endian. That means we don't want to do a
-+         * gen_aa32_ld_i64(), which invokes gen_aa32_frob64() as if
-+         * for an architecturally 64-bit access, but instead do a
-+         * 64-bit access using MO_BE if appropriate and then split
-+         * the two halves.
-+         * This only makes a difference for BE32 user-mode, where
-+         * frob64() must not flip the two halves of the 64-bit data
-+         * but this code must treat BE32 user-mode like BE32 system.
-+         */
-+        TCGv a = gen_aa32_addr(s, addr, opc);
-+        tcg_gen_qemu_ld_i64(t64, a, get_mem_index(s), opc);
-         tcg_gen_mov_i64(cpu_exclusive_val, t64);
--        tcg_gen_extr_i64_i32(tmp, tmp2, t64);
-+        if (s->be_data) {
-+            tcg_gen_extr_i64_i32(tmp2, tmp, t64);
-+        } else {
-+            tcg_gen_extr_i64_i32(tmp, tmp2, t64);
-+        }
-         tcg_temp_free_i64(t64);
- 
-         store_reg(s, rt2, tmp2);
-@@ -7953,15 +7969,29 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
-         TCGv_i64 n64 = tcg_temp_new_i64();
- 
-         t2 = load_reg(s, rt2);
--        tcg_gen_concat_i32_i64(n64, t1, t2);
-+        /* For AArch32, architecturally the 32-bit word at the lowest
-+         * address is always Rt and the one at addr+4 is Rt2, even if
-+         * the CPU is big-endian. Since we're going to treat this as a
-+         * single 64-bit BE store, we need to put the two halves in the
-+         * opposite order for BE to LE, so that they end up in the right
-+         * places.
-+         * We don't want gen_aa32_frob64() because that does the wrong
-+         * thing for BE32 usermode.
-+         */
-+        if (s->be_data) {
-+            tcg_gen_concat_i32_i64(n64, t2, t1);
-+        } else {
-+            tcg_gen_concat_i32_i64(n64, t1, t2);
-+        }
-         tcg_temp_free_i32(t2);
--        gen_aa32_frob64(s, n64);
- 
-         tcg_gen_atomic_cmpxchg_i64(o64, taddr, cpu_exclusive_val, n64,
-                                    get_mem_index(s), opc);
-         tcg_temp_free_i64(n64);
- 
--        gen_aa32_frob64(s, o64);
-+        if (s->be_data) {
-+            tcg_gen_rotri_i64(o64, o64, 32);
-+        }
-         tcg_gen_setcond_i64(TCG_COND_NE, o64, o64, cpu_exclusive_val);
-         tcg_gen_extrl_i64_i32(t0, o64);
- 
--- 
-2.7.4
+> -        gen_aa32_frob64(s, o64);
+> +        if (s->be_data) {
+> +            tcg_gen_rotri_i64(o64, o64, 32);
+> +        }
+>          tcg_gen_setcond_i64(TCG_COND_NE, o64, o64, cpu_exclusive_val);
 
+We're not splitting o64 to parts.  Are you sure it shouldn't stay as frob?
+
+
+r~

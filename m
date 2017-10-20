@@ -1,94 +1,86 @@
-Received: by 10.223.188.70 with SMTP id a6csp1904261wrh;
-        Wed, 30 Aug 2017 22:23:13 -0700 (PDT)
-X-Received: by 10.80.135.242 with SMTP id 47mr509260edz.224.1504156993029;
-        Wed, 30 Aug 2017 22:23:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504156993; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp7576497wrf;
+        Thu, 19 Oct 2017 23:12:01 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+RHD1ew/ofgUzJWivz8t/7vITT3fkQH1uqGL3B0YnQn0ZPG3UGRzeaaPF1bXnK4GRNJNPH5
+X-Received: by 10.200.6.9 with SMTP id d9mr6015937qth.230.1508479921595;
+        Thu, 19 Oct 2017 23:12:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508479921; cv=none;
         d=google.com; s=arc-20160816;
-        b=mOtzn1Qth2C6rQwn7bfWNmGaT4ErfGSIqZm0RiNjphpSnrCNMQTJfalLzo9Bj4ekSz
-         jTZeF4Kow0uww0pyXX+miNnWmfEAiHphFPRxJfaN+7VKEHeqc+MVsD8vJ9t/rZ02njUh
-         xL7qXS2AK35ORjxLcZHdH7eqFFm9y8hY5Uz8BOx2XArk0BKGuNxtuJigv8IChxSqLBLC
-         jUwOQtnZ0Ah4c4kuuwBNag4ByU9rjlNM8E0kXBcYG/xti01GujmCR1n2E7pioLspQG68
-         uec8tQ0kaxgIHIzG14Df5ywKauX4YuINc1bkDbXyN/9O7eafp9NjYLAw/WG+zgRM2tUu
-         /vbg==
+        b=PuLRsl0siBPsp84/B2jpNogeOflbHe/LTlQuhMjYi3gyhf0FTByby4i3AvIoe7r6Y2
+         Rf7vk6txaRoJdVlRoCNEx1/EdzclbmJ85nkus5ZX6p7+bPhy/8uuRAc7RQopD70FaSTk
+         g7Y54cjiiOSsxtSizebj9LM0ZRWAch3NjiWXbQhKgBed6xEJ4VL2NAuIUDPaiy+FhmPs
+         pgewnPh+0cMFZ6Ey0g+vb4OwKTweUlG1ThKbVGbO2PMRa+doBs3V6c/4eG9stX+kaKyU
+         Ss7KGp7s+tolmhV9U9OlSq7Q7SKjNaXZ5twzOpgfjVebY0/HSLLSpSz0S7ifhQVzx313
+         EKPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dmarc-filter
+         :user-agent:date:message-id:from:references:to
          :arc-authentication-results;
-        bh=hZRc4mtBHF/Hy9u4TDJR1yCj3zEp49FTw2CI9JKEwA4=;
-        b=U3iHug7UGS3JzTVUuPX8vcJNqfe+jjj1yLTiYd5Vozbm0T5O934651cZugVQjo+lY3
-         eZdopkw5NkJ2aM7f/wV7HAJz6d4psjxRW4jnNSjYlN0JfQgCWSdM+IqX4yMiTUR7ijPz
-         VNJ6qy5RFwdt8FG+2n3KrLSsHNGdObsAlkgvp2ENYdbHliQKiGdfQtQhyML7iP+dhXQj
-         5N2kelg0B+LBkGFxDCqShnI2seBw4OSG2gj8/HDZpJe/yh9uP2iLAM/k4vDpg0su4dEf
-         CsHBaFQrhhi+aK18wLINkDch1/cPM1KTgE22W23Kb0ra0yhu2APF1A3L83TuL+Q98pbJ
-         7WMA==
+        bh=wyl3Ja+NCJs5pbS3sPc9WHRY1upqSQBNTg6LJxRwidI=;
+        b=MWqzQHlJD9JxN8vy7FSO2jJ6cPRUp0JtqXOrPa6cmRAGjDlpYrzN4Ewi7u+mGc0oep
+         J36BPuEwaXlpa3yPeeIjohm00/t7E0ucObjXDjJMj4k50EU1BSVExcMYPdxSrqL/8n3s
+         X/Wz4mT+yoACu1uqMbN2OTr/O7pP3GeoaA73Oprb/0eDQqDKofaOYaO6E8wXPue/jkGs
+         /KV/QDp8IrYSiztfTfDpOxxSn7+/uyTnS88eBkBjqqkji2c8O1JYnV12UnQ4gklbDzTq
+         aC1bTNW5mLAuSDh5CMFtRV0K5gRmBVorgjoXZnIUNwHqJhw/kbdlcZu3pUq/p8UgI4Z4
+         ZYPQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p30si6071262edd.429.2017.08.30.22.23.12
+        by mx.google.com with ESMTPS id v12si162452qta.252.2017.10.19.23.12.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 30 Aug 2017 22:23:13 -0700 (PDT)
+        Thu, 19 Oct 2017 23:12:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53981 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:52296 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dnHwe-0002Q7-00
-	for alex.bennee@linaro.org; Thu, 31 Aug 2017 01:23:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40619)
+	id 1e5QXH-0004Fb-6Q
+	for alex.bennee@linaro.org; Fri, 20 Oct 2017 02:11:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48804)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dnHwX-0002Q0-73
-	for qemu-arm@nongnu.org; Thu, 31 Aug 2017 01:23:06 -0400
+	(envelope-from <clg@kaod.org>) id 1e5QX6-00046s-7P
+	for qemu-arm@nongnu.org; Fri, 20 Oct 2017 02:11:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dnHwS-0003gT-Vp
-	for qemu-arm@nongnu.org; Thu, 31 Aug 2017 01:23:05 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50840)
+	(envelope-from <clg@kaod.org>) id 1e5QX2-00064C-Ti
+	for qemu-arm@nongnu.org; Fri, 20 Oct 2017 02:11:48 -0400
+Received: from 1.mo5.mail-out.ovh.net ([188.165.57.91]:53447)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1dnHwS-0003fk-Pm; Thu, 31 Aug 2017 01:23:00 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BCC0481DEE;
-	Thu, 31 Aug 2017 05:22:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com BCC0481DEE
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=thuth@redhat.com
-Received: from [10.36.116.27] (ovpn-116-27.ams2.redhat.com [10.36.116.27])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 95A825C881;
-	Thu, 31 Aug 2017 05:22:57 +0000 (UTC)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1e5QX2-00062V-IG
+	for qemu-arm@nongnu.org; Fri, 20 Oct 2017 02:11:44 -0400
+Received: from player786.ha.ovh.net (b6.ovh.net [213.186.33.56])
+	by mo5.mail-out.ovh.net (Postfix) with ESMTP id A3EC414654E
+	for <qemu-arm@nongnu.org>; Fri, 20 Oct 2017 08:11:42 +0200 (CEST)
+Received: from zorba.kaod.org (LFbn-1-2231-173.w90-76.abo.wanadoo.fr
+	[90.76.52.173]) (Authenticated sender: postmaster@kaod.org)
+	by player786.ha.ovh.net (Postfix) with ESMTPSA id E3E6F80077;
+	Fri, 20 Oct 2017 08:11:35 +0200 (CEST)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Peter Maydell <peter.maydell@linaro.org>
-References: <20170830215523.25278-1-f4bug@amsat.org>
-	<20170830215523.25278-3-f4bug@amsat.org>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <3b185bc6-d5ea-85dc-8635-e9d21914d011@redhat.com>
-Date: Thu, 31 Aug 2017 07:22:56 +0200
+References: <20171019163546.2039-1-clg@kaod.org>
+	<20171019163546.2039-8-clg@kaod.org>
+	<218244ab-1bc6-6a21-f762-1ddd9ef79011@amsat.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <0507c02b-91da-9584-18f7-a8099e35102a@kaod.org>
+Date: Fri, 20 Oct 2017 08:11:35 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.3.0
 MIME-Version: 1.0
-In-Reply-To: <20170830215523.25278-3-f4bug@amsat.org>
+In-Reply-To: <218244ab-1bc6-6a21-f762-1ddd9ef79011@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Thu, 31 Aug 2017 05:22:59 +0000 (UTC)
+X-Ovh-Tracer-Id: 10636657895013845971
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedttddrudelgddutdefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2 02/17] MAINTAINERS: add missing Versatile
- PB entry
+X-Received-From: 188.165.57.91
+Subject: Re: [Qemu-arm] [PATCH v6 7/8] misc: add pca9552 LED blinker model
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,27 +92,611 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: k73MK8v031pl
+X-TUID: d2MAdL38J3uD
 
-On 30.08.2017 23:55, Philippe Mathieu-Daud=C3=A9 wrote:
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  MAINTAINERS | 1 +
->  1 file changed, 1 insertion(+)
+On 10/20/2017 04:58 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> Hi C=C3=A9dric,
 >=20
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index b363e1b9c9..5b7891addc 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -515,6 +515,7 @@ M: Peter Maydell <peter.maydell@linaro.org>
->  L: qemu-arm@nongnu.org
->  S: Maintained
->  F: hw/*/versatile*
-> +F: hw/misc/arm_sysctl.c
+> On 10/19/2017 01:35 PM, C=C3=A9dric Le Goater wrote:
+>> Specs are available here :
+>>
+>>     https://www.nxp.com/docs/en/application-note/AN264.pdf
+>>
+>> This is a simple model supporting the basic registers for led and GPIO
+>> mode. The device also supports two blinking rates but not the model
+>> yet.
+>>
+>> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>> ---
+>>
+>>  Changes since v3:
+>>
+>>  - introduced auto-increment support
+>>  - removed the buffer collecting bytes on the bus
+>>  - improved reset
+>>  - used extract32
+>>  - added a unit test
+>>
+>>  Changes since v2:
+>>
+>>  - removed comments on the I2C buffer size, but kept the array. I did
+>>    not want to rewrite the buffer handling
+>>
+>>  default-configs/arm-softmmu.mak |   1 +
+>>  hw/misc/Makefile.objs           |   1 +
+>>  hw/misc/pca9552.c               | 259 +++++++++++++++++++++++++++++++=
++++++++++
+>>  include/hw/misc/pca9552.h       |  33 +++++
+>=20
+> If you mind using scripts/git.orderfile the review'd get easier :)
 
-I think you could also merge this into the previous patch. Anyway:
+I didn't know about it. I will take a look.
+>>  tests/Makefile.include          |   2 +
+>>  tests/pca9552-test.c            | 131 ++++++++++++++++++++
+>>  6 files changed, 427 insertions(+)
+>>  create mode 100644 hw/misc/pca9552.c
+>>  create mode 100644 include/hw/misc/pca9552.h
+>>  create mode 100644 tests/pca9552-test.c
+>>
+>> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-sof=
+tmmu.mak
+>> index 5059d134c816..d868d1095a6c 100644
+>> --- a/default-configs/arm-softmmu.mak
+>> +++ b/default-configs/arm-softmmu.mak
+>> @@ -16,6 +16,7 @@ CONFIG_TSC2005=3Dy
+>>  CONFIG_LM832X=3Dy
+>>  CONFIG_TMP105=3Dy
+>>  CONFIG_TMP421=3Dy
+>> +CONFIG_PCA9552=3Dy
+>>  CONFIG_STELLARIS=3Dy
+>>  CONFIG_STELLARIS_INPUT=3Dy
+>>  CONFIG_STELLARIS_ENET=3Dy
+>> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+>> index e8f0a02f35af..e4e22880dbbc 100644
+>> --- a/hw/misc/Makefile.objs
+>> +++ b/hw/misc/Makefile.objs
+>> @@ -7,6 +7,7 @@ common-obj-$(CONFIG_SGA) +=3D sga.o
+>>  common-obj-$(CONFIG_ISA_TESTDEV) +=3D pc-testdev.o
+>>  common-obj-$(CONFIG_PCI_TESTDEV) +=3D pci-testdev.o
+>>  common-obj-$(CONFIG_EDU) +=3D edu.o
+>> +common-obj-$(CONFIG_PCA9552) +=3D pca9552.o
+>> =20
+>>  common-obj-y +=3D unimp.o
+>> =20
+>> diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
+>> new file mode 100644
+>> index 000000000000..70ce6f038da2
+>> --- /dev/null
+>> +++ b/hw/misc/pca9552.c
+>> @@ -0,0 +1,259 @@
+>> +/*
+>> + * PCA9552 I2C LED blinker
+>> + *
+>> + *     https://www.nxp.com/docs/en/application-note/AN264.pdf
+>> + *
+>> + * Copyright (c) 2017, IBM Corporation.
+>> + *
+>> + * This work is licensed under the terms of the GNU GPL, version 2 or
+>> + * later. See the COPYING file in the top-level directory.
+>> + */
+>> +
+>> +#include "qemu/osdep.h"
+>> +#include "qemu/log.h"
+>> +#include "hw/hw.h"
+>> +#include "hw/misc/pca9552.h"
+>> +
+>> +/*
+>> + * Bits [0:3] are used to address a specific register.
+>> + */
+>> +#define PCA9552_INPUT0   0 /* read only input register 0 */
+>> +#define PCA9552_INPUT1   1 /* read only input register 1  */
+>> +#define PCA9552_PSC0     2 /* read/write frequency prescaler 0 */
+>> +#define PCA9552_PWM0     3 /* read/write PWM register 0 */
+>> +#define PCA9552_PSC1     4 /* read/write frequency prescaler 1 */
+>> +#define PCA9552_PWM1     5 /* read/write PWM register 1 */
+>> +#define PCA9552_LS0      6 /* read/write LED0 to LED3 selector */
+>> +#define PCA9552_LS1      7 /* read/write LED4 to LED7 selector */
+>> +#define PCA9552_LS2      8 /* read/write LED8 to LED11 selector */
+>> +#define PCA9552_LS3      9 /* read/write LED12 to LED15 selector */
+>=20
+> Since you use those in your test, can you move them to "hw/misc/pca9552=
+.h"?
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+yes I could stuff them under "hw/misc/pca9552_reg.h" probably.
+
+>=20
+>> +
+>> +/*
+>> + * Bit [4] is used to activate the Auto-Increment option of the
+>> + * register address
+>> + */
+>> +#define PCA9552_AUTOINC  (1 << 4)
+>=20
+> ditto
+>=20
+>> +
+>> +#define PCA9552_LED_ON   0x0
+>> +#define PCA9552_LED_OFF  0x1
+>> +#define PCA9552_LED_PWM0 0x2
+>> +#define PCA9552_LED_PWM1 0x3
+>> +
+>> +static uint8_t pca9552_pin_get_config(PCA9552State *s, int pin)
+>> +{
+>> +    uint8_t reg   =3D PCA9552_LS0 + (pin / 4);
+>> +    uint8_t shift =3D (pin % 4) << 1;
+>> +
+>> +    return extract32(s->regs[reg], shift, 2);
+>> +}
+>> +
+>> +static void pca9552_update_pin_input(PCA9552State *s)
+>> +{
+>> +    int i;
+>> +
+>> +    for (i =3D 0; i < s->nr_leds; i++) {
+>> +        uint8_t input_reg =3D PCA9552_INPUT0 + (i / 8);
+>> +        uint8_t input_shift =3D (i % 8);
+>> +        uint8_t config =3D pca9552_pin_get_config(s, i);
+>> +
+>> +        switch (config) {
+>> +        case PCA9552_LED_ON:
+>> +            s->regs[input_reg] |=3D 1 << input_shift;
+>> +            break;
+>> +        case PCA9552_LED_OFF:
+>> +            s->regs[input_reg] &=3D ~(1 << input_shift);
+>> +            break;
+>> +        case PCA9552_LED_PWM0:
+>> +        case PCA9552_LED_PWM1:
+>> +            /* TODO */
+>> +        default:
+>> +            break;
+>> +        }
+>> +    }
+>> +}
+>> +
+>> +static uint8_t pca9552_read(PCA9552State *s, uint8_t reg)
+>> +{
+>> +    switch (reg) {
+>> +    case PCA9552_INPUT0:
+>> +    case PCA9552_INPUT1:
+>> +    case PCA9552_PSC0:
+>> +    case PCA9552_PWM0:
+>> +    case PCA9552_PSC1:
+>> +    case PCA9552_PWM1:
+>> +    case PCA9552_LS0:
+>> +    case PCA9552_LS1:
+>> +    case PCA9552_LS2:
+>> +    case PCA9552_LS3:
+>> +        return s->regs[reg];
+>> +    default:
+>> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: unexpected read to regist=
+er %d\n",
+>> +                      __func__, reg);
+>> +        return 0xFF;
+>> +    }
+>> +}
+>> +
+>> +static void pca9552_write(PCA9552State *s, uint8_t reg, uint8_t data)
+>> +{
+>> +    switch (reg) {
+>> +    case PCA9552_PSC0:
+>> +    case PCA9552_PWM0:
+>> +    case PCA9552_PSC1:
+>> +    case PCA9552_PWM1:
+>> +        s->regs[reg] =3D data;
+>> +        break;
+>> +
+>> +    case PCA9552_LS0:
+>> +    case PCA9552_LS1:
+>> +    case PCA9552_LS2:
+>> +    case PCA9552_LS3:
+>> +        s->regs[reg] =3D data;
+>> +        pca9552_update_pin_input(s);
+>> +        break;
+>> +
+>> +    case PCA9552_INPUT0:
+>> +    case PCA9552_INPUT1:
+>> +    default:
+>> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: unexpected write to regis=
+ter %d\n",
+>> +                      __func__, reg);
+>> +    }
+>> +}
+>> +
+>> +/*
+>> + * When Auto-Increment is on, the register address is incremented
+>> + * after each byte is sent to or received by the device. The index
+>> + * rollovers to 0 when the maximum register address is reached.
+>> + */
+>> +static void pca9552_autoinc(PCA9552State *s)
+>> +{
+>> +    if (s->pointer !=3D 0xFF && s->pointer & PCA9552_AUTOINC) {
+>> +        uint8_t reg =3D s->pointer & 0xf;
+>> +
+>> +        reg =3D (reg + 1) % (s->max_reg + 1);
+>> +        s->pointer =3D reg | PCA9552_AUTOINC;
+>> +    }
+>> +}
+>> +
+>> +static int pca9552_recv(I2CSlave *i2c)
+>> +{
+>> +    PCA9552State *s =3D PCA9552(i2c);
+>> +    uint8_t ret;
+>> +
+>> +    ret =3D pca9552_read(s, s->pointer & 0xf);
+>> +
+>> +    /*
+>> +     * From the Specs:
+>> +     *
+>> +     *     Important Note: When a Read sequence is initiated and the
+>> +     *     AI bit is set to Logic Level 1, the Read Sequence MUST
+>> +     *     start by a register different from 0.
+>> +     *
+>> +     * I don't know what should be done in this case, so throw an
+>> +     * error.
+>> +     */
+>> +    if (s->pointer =3D=3D PCA9552_AUTOINC) {
+>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>> +                      "%s: Autoincrement read starting with register =
+0\n",
+>> +                      __func__);
+>> +    }
+>> +
+>> +    pca9552_autoinc(s);
+>> +
+>> +    return ret;
+>> +}
+>> +
+>> +static int pca9552_send(I2CSlave *i2c, uint8_t data)
+>> +{
+>> +    PCA9552State *s =3D PCA9552(i2c);
+>> +
+>> +    /* First byte sent by is the register address */
+>> +    if (s->len =3D=3D 0) {
+>> +        s->pointer =3D data;
+>> +        s->len++;
+>> +    } else {
+>> +        pca9552_write(s, s->pointer & 0xf, data);
+>> +
+>> +        pca9552_autoinc(s);
+>> +    }
+>> +
+>> +    return 0;
+>> +}
+>> +
+>> +static int pca9552_event(I2CSlave *i2c, enum i2c_event event)
+>> +{
+>> +    PCA9552State *s =3D PCA9552(i2c);
+>> +
+>> +    s->len =3D 0;
+>> +    return 0;
+>> +}
+>> +
+>> +static const VMStateDescription pca9552_vmstate =3D {
+>> +    .name =3D "PCA9552",
+>> +    .version_id =3D 0,
+>> +    .minimum_version_id =3D 0,
+>> +    .fields =3D (VMStateField[]) {
+>> +        VMSTATE_UINT8(len, PCA9552State),
+>> +        VMSTATE_UINT8(pointer, PCA9552State),
+>> +        VMSTATE_UINT8_ARRAY(regs, PCA9552State, PCA9552_NR_REGS),
+>> +        VMSTATE_I2C_SLAVE(i2c, PCA9552State),
+>> +        VMSTATE_END_OF_LIST()
+>> +    }
+>> +};
+>> +
+>> +static void pca9552_reset(DeviceState *dev)
+>> +{
+>> +    PCA9552State *s =3D PCA9552(dev);
+>> +
+>> +    s->regs[PCA9552_PSC0] =3D 0xFF;
+>> +    s->regs[PCA9552_PWM0] =3D 0x80;
+>> +    s->regs[PCA9552_PSC1] =3D 0xFF;
+>> +    s->regs[PCA9552_PWM1] =3D 0x80;
+>> +    s->regs[PCA9552_LS0] =3D 0x55; /* all OFF */
+>> +    s->regs[PCA9552_LS1] =3D 0x55;
+>> +    s->regs[PCA9552_LS2] =3D 0x55;
+>> +    s->regs[PCA9552_LS3] =3D 0x55;
+>> +
+>> +    pca9552_update_pin_input(s);
+>> +
+>> +    s->pointer =3D 0xFF;
+>> +    s->len =3D 0;
+>> +}
+>> +
+>> +static void pca9552_initfn(Object *obj)
+>> +{
+>> +    PCA9552State *s =3D PCA9552(obj);
+>> +
+>> +    /* If support for the other PCA955X devices are implemented, thes=
+e
+>> +     * constant values might be part of class structure describing th=
+e
+>> +     * PCA955X device
+>> +     */
+>> +    s->max_reg =3D PCA9552_LS3;
+>=20
+> Looks a bit weird, why not use PCA9552_NR_REGS here so pca9552_autoinc(=
+)
+> becomes simply:
+>=20
+>     reg +=3D 1;
+>     reg %=3D s->max_reg;
+>=20
+> ?
+
+because I expect someone (me, maybe) to add support for the=20
+PCA9550,1,3 devices and, in that case, regs[] could be shared=20
+and PCA9552_NR_REGS would represent the maximum of the maximum=20
+number of registers for all devices.
+=20
+>> +    s->nr_leds =3D 16;
+
+this value would change also for each device.
+
+=20
+>> +}
+>> +
+>> +static void pca9552_class_init(ObjectClass *klass, void *data)
+>> +{
+>> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
+>> +    I2CSlaveClass *k =3D I2C_SLAVE_CLASS(klass);
+>> +
+>> +    k->event =3D pca9552_event;
+>> +    k->recv =3D pca9552_recv;
+>> +    k->send =3D pca9552_send;
+>> +    dc->reset =3D pca9552_reset;
+>> +    dc->vmsd =3D &pca9552_vmstate;
+>> +}
+>> +
+>> +static const TypeInfo pca9552_info =3D {
+>> +    .name          =3D TYPE_PCA9552,
+>> +    .parent        =3D TYPE_I2C_SLAVE,
+>> +    .instance_init =3D pca9552_initfn,
+>> +    .instance_size =3D sizeof(PCA9552State),
+>> +    .class_init    =3D pca9552_class_init,
+>> +};
+>> +
+>> +static void pca9552_register_types(void)
+>> +{
+>> +    type_register_static(&pca9552_info);
+>> +}
+>> +
+>> +type_init(pca9552_register_types)
+>> diff --git a/include/hw/misc/pca9552.h b/include/hw/misc/pca9552.h
+>> new file mode 100644
+>> index 000000000000..5df8d6407ca7
+>> --- /dev/null
+>> +++ b/include/hw/misc/pca9552.h
+>> @@ -0,0 +1,33 @@
+>> +/*
+>> + * PCA9552 I2C LED blinker
+>> + *
+>> + * Copyright (c) 2017, IBM Corporation.
+>> + *
+>> + * This work is licensed under the terms of the GNU GPL, version 2 or
+>> + * later. See the COPYING file in the top-level directory.
+>> + */
+>> +#ifndef PCA9552_H
+>> +#define PCA9552_H
+>> +
+>> +#include "hw/i2c/i2c.h"
+>> +
+>> +#define TYPE_PCA9552 "pca9552"
+>> +#define PCA9552(obj) OBJECT_CHECK(PCA9552State, (obj), TYPE_PCA9552)
+>> +
+>> +
+>> +#define PCA9552_NR_REGS 10
+>=20
+> This could be an enum (or not, matter of taste).
+
+a define is fine IMO.
+
+>> +
+>> +typedef struct PCA9552State {
+>> +    /*< private >*/
+>> +    I2CSlave i2c;
+>> +    /*< public >*/
+>> +
+>> +    uint8_t len;
+>> +    uint8_t pointer;
+>> +
+>> +    uint8_t regs[PCA9552_NR_REGS];
+>> +    uint8_t max_reg;
+>> +    uint8_t nr_leds;
+>> +} PCA9552State;
+>> +
+>> +#endif
+>> diff --git a/tests/Makefile.include b/tests/Makefile.include
+>> index 4ca15e681703..8ac2595c8512 100644
+>> --- a/tests/Makefile.include
+>> +++ b/tests/Makefile.include
+>> @@ -347,6 +347,7 @@ check-qtest-sparc64-y =3D tests/endianness-test$(E=
+XESUF)
+>>  check-qtest-sparc64-y +=3D tests/prom-env-test$(EXESUF)
+>> =20
+>>  check-qtest-arm-y =3D tests/tmp105-test$(EXESUF)
+>> +check-qtest-arm-y +=3D tests/pca9552-test$(EXESUF)
+>>  check-qtest-arm-y +=3D tests/ds1338-test$(EXESUF)
+>>  check-qtest-arm-y +=3D tests/m25p80-test$(EXESUF)
+>>  gcov-files-arm-y +=3D hw/misc/tmp105.c
+>> @@ -739,6 +740,7 @@ tests/bios-tables-test$(EXESUF): tests/bios-tables=
+-test.o \
+>>  	tests/boot-sector.o tests/acpi-utils.o $(libqos-obj-y)
+>>  tests/pxe-test$(EXESUF): tests/pxe-test.o tests/boot-sector.o $(libqo=
+s-obj-y)
+>>  tests/tmp105-test$(EXESUF): tests/tmp105-test.o $(libqos-omap-obj-y)
+>> +tests/pca9552-test$(EXESUF): tests/pca9552-test.o $(libqos-omap-obj-y=
+)
+>>  tests/ds1338-test$(EXESUF): tests/ds1338-test.o $(libqos-imx-obj-y)
+>>  tests/m25p80-test$(EXESUF): tests/m25p80-test.o
+>>  tests/i440fx-test$(EXESUF): tests/i440fx-test.o $(libqos-pc-obj-y)
+>> diff --git a/tests/pca9552-test.c b/tests/pca9552-test.c
+>> new file mode 100644
+>> index 000000000000..53414452a12e
+>> --- /dev/null
+>> +++ b/tests/pca9552-test.c
+>> @@ -0,0 +1,131 @@
+>> +/*
+>> + * QTest testcase for the PCA9552 LED blinker
+>> + *
+>> + * Copyright (c) 2017, IBM Corporation.
+>> + *
+>> + * This work is licensed under the terms of the GNU GPL, version 2 or=
+ later.
+>> + * See the COPYING file in the top-level directory.
+>> + */
+>> +
+>> +#include "qemu/osdep.h"
+>> +
+>=20
+> #include "hw/misc/pca9552.h"
+>=20
+>> +#include "libqtest.h"
+>> +#include "libqos/i2c.h"
+>> +
+>> +#define PCA9552_INPUT0   0 /* read only input register 0 */
+>> +#define PCA9552_INPUT1   1 /* read only input register 1  */
+>> +#define PCA9552_PSC0     2 /* read/write frequency prescaler 0 */
+>> +#define PCA9552_PWM0     3 /* read/write PWM register 0 */
+>> +#define PCA9552_PSC1     4 /* read/write frequency prescaler 1 */
+>> +#define PCA9552_PWM1     5 /* read/write PWM register 1 */
+>> +#define PCA9552_LS0      6 /* read/write LED0 to LED3 selector */
+>> +#define PCA9552_LS1      7 /* read/write LED4 to LED7 selector */
+>> +#define PCA9552_LS2      8 /* read/write LED8 to LED11 selector */
+>> +#define PCA9552_LS3      9 /* read/write LED12 to LED15 selector */
+>> +
+>> +#define PCA9552_AUTOINC  (1 << 4)
+>> +
+>> +
+>> +#define OMAP2_I2C_1_BASE 0x48070000
+>=20
+> Can you define that in "hw/arm/omap.h" ?
+
+I suppose I can to share it with tmp105-test.c
+
+>> +
+>> +#define PCA9552_TEST_ID   "pca9552-test"
+>> +#define PCA9552_TEST_ADDR 0x60
+>> +
+>> +static I2CAdapter *i2c;
+>> +
+>> +static uint8_t pca9552_get8(I2CAdapter *i2c, uint8_t addr, uint8_t re=
+g)
+>> +{
+>> +    uint8_t resp[1];
+>> +    i2c_send(i2c, addr, &reg, 1);
+>> +    i2c_recv(i2c, addr, resp, 1);
+>> +    return resp[0];
+>> +}
+>> +
+>> +static void pca9552_set8(I2CAdapter *i2c, uint8_t addr, uint8_t reg,
+>> +                         uint8_t value)
+>> +{
+>> +    uint8_t cmd[2];
+>> +    uint8_t resp[1];
+>> +
+>> +    cmd[0] =3D reg;
+>> +    cmd[1] =3D value;
+>> +    i2c_send(i2c, addr, cmd, 2);
+>> +    i2c_recv(i2c, addr, resp, 1);
+>> +    g_assert_cmphex(resp[0], =3D=3D, cmd[1]);
+>> +}
+>> +
+>> +static void receive_autoinc(void)
+>> +{
+>> +    uint8_t resp;
+>> +    uint8_t reg =3D PCA9552_LS0 | PCA9552_AUTOINC;
+>> +
+>> +    i2c_send(i2c, PCA9552_TEST_ADDR, &reg, 1);
+>> +
+>> +    /* PCA9552_LS0 */
+>> +    i2c_recv(i2c, PCA9552_TEST_ADDR, &resp, 1);
+>> +    g_assert_cmphex(resp, =3D=3D, 0x54);
+>> +
+>> +    /* PCA9552_LS1 */
+>> +    i2c_recv(i2c, PCA9552_TEST_ADDR, &resp, 1);
+>> +    g_assert_cmphex(resp, =3D=3D, 0x55);
+>> +
+>> +    /* PCA9552_LS2 */
+>> +    i2c_recv(i2c, PCA9552_TEST_ADDR, &resp, 1);
+>> +    g_assert_cmphex(resp, =3D=3D, 0x55);
+>> +
+>> +    /* PCA9552_LS3 */
+>> +    i2c_recv(i2c, PCA9552_TEST_ADDR, &resp, 1);
+>> +    g_assert_cmphex(resp, =3D=3D, 0x54);
+>> +}
+>> +
+>> +static void send_and_receive(void)
+>> +{
+>> +    uint8_t value;
+>> +
+>> +    value =3D pca9552_get8(i2c, PCA9552_TEST_ADDR, PCA9552_LS0);
+>> +    g_assert_cmphex(value, =3D=3D, 0x55);
+>> +
+>> +    value =3D pca9552_get8(i2c, PCA9552_TEST_ADDR, PCA9552_INPUT0);
+>> +    g_assert_cmphex(value, =3D=3D, 0x0);
+>> +
+>> +    /* Switch on LED 0 */
+>> +    pca9552_set8(i2c, PCA9552_TEST_ADDR, PCA9552_LS0, 0x54);
+>> +    value =3D pca9552_get8(i2c, PCA9552_TEST_ADDR, PCA9552_LS0);
+>> +    g_assert_cmphex(value, =3D=3D, 0x54);
+>> +
+>> +    value =3D pca9552_get8(i2c, PCA9552_TEST_ADDR, PCA9552_INPUT0);
+>> +    g_assert_cmphex(value, =3D=3D, 0x01);
+>> +
+>> +    /* Switch on LED 12 */
+>> +    pca9552_set8(i2c, PCA9552_TEST_ADDR, PCA9552_LS3, 0x54);
+>> +    value =3D pca9552_get8(i2c, PCA9552_TEST_ADDR, PCA9552_LS3);
+>> +    g_assert_cmphex(value, =3D=3D, 0x54);
+>> +
+>> +    value =3D pca9552_get8(i2c, PCA9552_TEST_ADDR, PCA9552_INPUT1);
+>> +    g_assert_cmphex(value, =3D=3D, 0x10);
+>> +}
+>> +
+>> +int main(int argc, char **argv)
+>> +{
+>> +    QTestState *s =3D NULL;
+>> +    int ret;
+>> +
+>> +    g_test_init(&argc, &argv, NULL);
+>> +
+>> +    s =3D qtest_start("-machine n800 "
+>> +                    "-device pca9552,bus=3Di2c-bus.0,id=3D" PCA9552_T=
+EST_ID
+>> +                    ",address=3D0x60");
+>> +    i2c =3D omap_i2c_create(OMAP2_I2C_1_BASE);
+>> +
+>> +    qtest_add_func("/pca9552/tx-rx", send_and_receive);
+>> +    qtest_add_func("/pca9552/rx-autoinc", receive_autoinc);
+>> +
+>> +    ret =3D g_test_run();
+>> +
+>> +    if (s) {
+>> +        qtest_quit(s);
+>> +    }
+>> +    g_free(i2c);
+>> +
+>> +    return ret;
+>> +}
+>>
+>=20
+> If Peter accept to queue 1-6, I'd appreciate if you can address my few
+> suggestions then resend 7-8; else if you don't have time:
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+
+I rather address your suggestions in follow ups if you don't mind.
+
+Thanks for the review,
+
+C.
+
+> Regards,
+>=20
+> Phil.
+>=20
+

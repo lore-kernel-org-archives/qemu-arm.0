@@ -1,111 +1,96 @@
-Received: by 10.223.197.9 with SMTP id q9csp1947233wrf;
-        Sun, 8 Oct 2017 17:57:59 -0700 (PDT)
-X-Received: by 10.200.17.1 with SMTP id c1mr11347381qtj.198.1507510679102;
-        Sun, 08 Oct 2017 17:57:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507510679; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp8780072wrf;
+        Sat, 21 Oct 2017 04:10:45 -0700 (PDT)
+X-Received: by 10.55.203.5 with SMTP id d5mr9993833qkj.189.1508584244936;
+        Sat, 21 Oct 2017 04:10:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508584244; cv=none;
         d=google.com; s=arc-20160816;
-        b=bLGw9yArdsl649x3SVjrkjAHAlYJhR54i+Y2wyGwygSibHNHB2exh15D0jLW3+igWl
-         UAzcPNYDYMbQ1gUfGPghGYNMNesFdXaG/W1cuJCY6dlvD6EtS8PUqsWowea2v6/ZUT6g
-         6aGnrnLslYvzXxv/dW/xMx5KyrYYrBsGLMW5qjepl/HK8yMnoALfNNTAffGmkrWSdPDF
-         Xb/+dQ4Qrmi9Di6rh6ztuxGWeNtQcaWmHPLr8tZqR3yyCA28+6TFHgzzJAD44oDYqDG4
-         GtPmuSh7uiandoXv2an+Ptozskcbi64pLNra1W+0JBJ8Lre+EdQR84UhQU52fD1LKAbQ
-         wUOA==
+        b=tuOW5wMroSgGW+AUBPAkOIU9xbtU0zXit0ZlRa1jgzM2WIV2RYZCNnIQbg+Kgq5ghY
+         r/maV/BG8MYlJGR1qb5yAOZTWnfThLQ8kgHq82XUzVGwd+mr57eMyJtLtc0Tyc0kzk+E
+         7rZouf1dPY+VMYVJKzEW44sQ4FcFe9xBuaWs+uBv2RcyyN2Y3zZ/vPVz2z88vn/fBo+j
+         2SSq6r5ABdYyGZKbd2jx4kqNEZD48Q9GJ0mRaJ/5YihseFbsv60m069dNTnrZOdm+26A
+         +2PzlAJxtFTn/c6wKwT5p1UVSlMDZOV0qN3QlhH7QWMM86/pIAtfXRIYL3W1ITOvXjAJ
+         zKDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=vUeOsSFZIvZxn1LH7LCUcf81nYygLB1tdFBUKDbOmkE=;
-        b=mMKZhIyGw0fvFTy9WpwuXjuHHWZv1zAiwkCZbE5Jtr0/AcENBlGwVMKAgzEQc1MxWt
-         YQOXi+m0tizlMaaORwKfiSkWLycBrDXlhPbvSubqyZ6cF++q0vlBIR7rj3GLjBFjOidv
-         bzm+wNMv7AfUmfVO1HH06xXHtig/NzKblkKhc6FeSq6/0Jj3B0szS0JtfqPt68Axhs0A
-         7mb3EjQR0nDJZ2zFgzmLwoWlz00TIlkghzv8YwOW9HPb2ogh6mzbK2NW25s57M0FtKes
-         I194XP3HYeg8o79ZEQzfo3Hd5scU3XeoUU4TQqLe3HkFcHFTEVvnFO9Gxjk5nMKoR1D4
-         686A==
+        bh=68sUmoyw2rWJbj8oTuz6RD8032XdZ2zp4zxOGvTz9AU=;
+        b=uyCU94WCktUweGpSMNpteuGUdLwCn9MPaKOYU4LokeqYxY0CWL9WEiFuqRyBAurAhP
+         Xds6IX0otG/uckx2kLAFefRQRMzuQgXvbDsbqwAI72uL9OdGDtHjKZ7zUQikt9wzejzS
+         vF1MNcwJT5lCL9+CV2zjIXTK0MKSdPu1Ak04y3rTjwIxX05hsZWsXMhhQdPcBCc4miXj
+         FiCAofLwvvPF7CTLrcSUXP5TuC6TmFZ7l/CoXajE+P/NBnzQ6ZHqfeEQSWXvjn9BgFBD
+         PatPo+F7WXunceivQeNfpL+CxBl7gcjNE58jiEonF280UDr9ZVb1sVE/RybJcIZS7n6M
+         eLfQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SNg0GWYJ;
+       dkim=pass header.i=@aucklanduni.ac.nz header.s=google header.b=XtYbm1AT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x27si134180qth.249.2017.10.08.17.57.58
+        by mx.google.com with ESMTPS id s22si2558269qtc.233.2017.10.21.04.10.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 08 Oct 2017 17:57:59 -0700 (PDT)
+        Sat, 21 Oct 2017 04:10:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SNg0GWYJ;
+       dkim=pass header.i=@aucklanduni.ac.nz header.s=google header.b=XtYbm1AT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:55638 helo=lists.gnu.org)
+Received: from localhost ([::1]:57369 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e1MOM-0001Wd-Lx
-	for alex.bennee@linaro.org; Sun, 08 Oct 2017 20:57:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50709)
+	id 1e5rfu-0002YB-NJ
+	for alex.bennee@linaro.org; Sat, 21 Oct 2017 07:10:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42469)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e1MOD-0001VK-9V
-	for qemu-arm@nongnu.org; Sun, 08 Oct 2017 20:57:50 -0400
+	(envelope-from <hteh703@aucklanduni.ac.nz>) id 1e5rfn-0002Xt-GR
+	for qemu-arm@nongnu.org; Sat, 21 Oct 2017 07:10:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e1MOC-0007dy-Co
-	for qemu-arm@nongnu.org; Sun, 08 Oct 2017 20:57:49 -0400
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:52271)
+	(envelope-from <hteh703@aucklanduni.ac.nz>) id 1e5rfm-0002pj-DR
+	for qemu-arm@nongnu.org; Sat, 21 Oct 2017 07:10:35 -0400
+Received: from mail-wr0-x236.google.com ([2a00:1450:400c:c0c::236]:53381)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e1MO7-0007bQ-UJ; Sun, 08 Oct 2017 20:57:44 -0400
-Received: by mail-qt0-x241.google.com with SMTP id o52so40428636qtc.9;
-	Sun, 08 Oct 2017 17:57:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=vUeOsSFZIvZxn1LH7LCUcf81nYygLB1tdFBUKDbOmkE=;
-	b=SNg0GWYJO4CvqvAHMfp2fxP07aY2Qho25rmFjhrQtl89y0FCiN+yDmDkzFLMAqOWwS
-	/YZunl4b4HBQ8NIZPI3I97J4LhdgFKV0WsI9wugiuGEVwYYsXgUDkqVJmoaQSD2/uB50
-	neMG5jRahf3nLeheCop7MD0OlrY9xP1BsEX2wb/3ODGmnwMQYFR/qxC9NNJYOY1xUngC
-	VszbU0pppr08cZe7MQkUysv5jFrNqlhp9p6KNVkCrwL3tfUDzwyvWluUYtDe9O3o483u
-	gbRZ7wzr4q4BbN+SBtvDBQWHDIkpYh/yBJ4xmp7qoD+0z9LXP65rDz8xRtHC/j086+0T
-	RaYg==
+	(Exim 4.71) (envelope-from <hteh703@aucklanduni.ac.nz>)
+	id 1e5rfl-0002p2-WD
+	for qemu-arm@nongnu.org; Sat, 21 Oct 2017 07:10:34 -0400
+Received: by mail-wr0-x236.google.com with SMTP id u40so7397156wrf.10
+	for <qemu-arm@nongnu.org>; Sat, 21 Oct 2017 04:10:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=aucklanduni.ac.nz; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=68sUmoyw2rWJbj8oTuz6RD8032XdZ2zp4zxOGvTz9AU=;
+	b=XtYbm1ATraTPgouvsNGQlLKQB5mID2so/+pyTKQVXfWp2yQi2XUZqr71huLKmKW5Ej
+	vh6u6AwGLOsSSaAJzOLze6H2nNkz17RExKoicATX2dP100j3/AZV5wba6OonRrlo972N
+	LmgdEuyX0qdowozlWqcfmPmXkCGO3dvMzU3cM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=vUeOsSFZIvZxn1LH7LCUcf81nYygLB1tdFBUKDbOmkE=;
-	b=JGTqCN3RducEB7DxuJdQZ5RYPpxo+UGCkcT8q9UhrjV8tSmp4Zq+Mjigu9UXx/+K17
-	u2DNS+ZzWGvKrlVTjbsqjJV3Txe2qv63v0Cn0AcOXblgdSLVDeMvTu/BPsXCGuxPOZc7
-	5/MsmkE05z+Yvvn5oh2GPHtWp9TmL2xn+ROv1hE1XsjtB9WgueFpXQZBDyu6f9smOqXB
-	tdWxQdQ+E0qUon1TpdrtKAq5GSBxJKmx3eknFEljkI5W0ZAKR81AFX3DlmPruffmjhTL
-	mde8g0KWF0I5qSmRfVwTdWK2YNSza4cA85zxMz4eHxXOoi+Rew4QrhK9fUviVBH3odgX
-	llqQ==
-X-Gm-Message-State: AMCzsaWuz5NqQu7xs27LO7/ys7saL23HPxx20qpWIOCn/ElPQNjeLCSO
-	QW2jkdB6wPGH5ZYflfP5Lrg=
-X-Google-Smtp-Source: AOwi7QBkcqGWJxbSHVqXFa58pV/4ImDarJxhn5to4yYNG0VcMDL1hFAmSBC6hI77y62m6E6ssTvcOQ==
-X-Received: by 10.200.46.146 with SMTP id h18mr12768783qta.100.1507510662995; 
-	Sun, 08 Oct 2017 17:57:42 -0700 (PDT)
-Received: from [150.168.2.172] (200-127-152-82.net.prima.net.ar.
-	[200.127.152.82])
-	by smtp.gmail.com with ESMTPSA id w8sm4103291qka.88.2017.10.08.17.57.40
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 08 Oct 2017 17:57:42 -0700 (PDT)
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-References: <20170920070135.31379-1-clg@kaod.org>
-	<20170920070135.31379-4-clg@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <6f338f6a-c6cb-19e8-2d6b-48f4a931c7da@amsat.org>
-Date: Sun, 8 Oct 2017 18:35:37 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=68sUmoyw2rWJbj8oTuz6RD8032XdZ2zp4zxOGvTz9AU=;
+	b=f4CLVL5dZXE9Jv/eq6nphGYeogwQc+J1/CdXfdJml9DGE9rQM+EblRLCtipjC08NMq
+	h15j72pKzwcLXQesBDysEh67qOzOJkuwN8OjeTNeKPguzPXRyjCcjDqZagrANIURlgvB
+	pz+kbFQw3BorYHYwtpFOce3XfKRss2u22W+afpQ6dCm+87+KKicML1s4DDWLha6Se3oD
+	W9fYpusET6uTXGJ3B1Qb3mQ1Pp3Aq6qcwMDyyoopcEfU+4BQQDsGI6bnADFLZdqR184L
+	e5825iGJKlCxtkC96sIzao2urdbR5U4KF7q33MeH723ZZnSeJz+EH0pytheMJdL7kefk
+	6bFA==
+X-Gm-Message-State: AMCzsaV9EG2rnKlOo1nOXGLtqRavoBApXNqY5x32mVvjiVhak3MI1IdB
+	OkIleg9U26Hk6K2QuUv3331/GI/guzPLv39j6mcgNA==
+X-Google-Smtp-Source: ABhQp+TK18jlc1KuTfdwkOYZL9HMp/jP1wqBcfE/brD+0LmbNugxVmcB8RnYvwohw8SQZOoFDrBmZlqJCieprZMWKjA=
+X-Received: by 10.223.158.129 with SMTP id a1mr1359030wrf.179.1508584232477;
+	Sat, 21 Oct 2017 04:10:32 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20170920070135.31379-4-clg@kaod.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Received: by 10.28.102.214 with HTTP; Sat, 21 Oct 2017 04:10:31 -0700 (PDT)
+In-Reply-To: <CAFEAcA8TfRzsP2TuK9_MeP=puPV-+3ivL=R8F3LkGcnMCDLEQA@mail.gmail.com>
+References: <CAPLZ2xMgcbiJr+rbQwZxbP6chMzZ7fBcJ1q35tEbjhccQHPsow@mail.gmail.com>
+	<CAFEAcA8TfRzsP2TuK9_MeP=puPV-+3ivL=R8F3LkGcnMCDLEQA@mail.gmail.com>
+From: Hui Yie Teh <hteh703@aucklanduni.ac.nz>
+Date: Sun, 22 Oct 2017 00:10:31 +1300
+Message-ID: <CAPLZ2xM+1MwjYgmLYWo_gWctN_B10zma+X1iUKB-0G4iau_=zQ@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: multipart/alternative; boundary="089e082111604a79ea055c0ca3ce"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: Re: [Qemu-arm] [PATCH v2 3/6] smbus: add a smbus_eeprom_init_one()
- routine
+X-Received-From: 2a00:1450:400c:c0c::236
+Subject: Re: [Qemu-arm] .bss more than LM3S6965evb RAM size
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -117,69 +102,114 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org, qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
+Cc: qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TfzVYWejCZZS
+X-TUID: 4RmdtkPUuxdl
 
-On 09/20/2017 04:01 AM, Cédric Le Goater wrote:
-> This is an helper routine to add a single EEPROM on an I2C bus. It can
-> be directly used by smbus_eeprom_init() which adds a certain number of
-> EEPROMs on mips and x86 machines.
-> 
-> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+--089e082111604a79ea055c0ca3ce
+Content-Type: text/plain; charset="UTF-8"
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+I see, thanks for your reply Peter!
 
-> ---
->  hw/i2c/smbus_eeprom.c  | 16 +++++++++++-----
->  include/hw/i2c/smbus.h |  1 +
->  2 files changed, 12 insertions(+), 5 deletions(-)
-> 
-> diff --git a/hw/i2c/smbus_eeprom.c b/hw/i2c/smbus_eeprom.c
-> index b13ec0fe7a2a..2d24a4cd59bf 100644
-> --- a/hw/i2c/smbus_eeprom.c
-> +++ b/hw/i2c/smbus_eeprom.c
-> @@ -140,6 +140,16 @@ static void smbus_eeprom_register_types(void)
->  
->  type_init(smbus_eeprom_register_types)
->  
-> +void smbus_eeprom_init_one(I2CBus *smbus, uint8_t address, uint8_t *eeprom_buf)
-> +{
-> +    DeviceState *dev;
-> +
-> +    dev = qdev_create((BusState *) smbus, "smbus-eeprom");
-> +    qdev_prop_set_uint8(dev, "address", address);
-> +    qdev_prop_set_ptr(dev, "data", eeprom_buf);
-> +    qdev_init_nofail(dev);
-> +}
-> +
->  void smbus_eeprom_init(I2CBus *smbus, int nb_eeprom,
->                         const uint8_t *eeprom_spd, int eeprom_spd_size)
->  {
-> @@ -150,10 +160,6 @@ void smbus_eeprom_init(I2CBus *smbus, int nb_eeprom,
->      }
->  
->      for (i = 0; i < nb_eeprom; i++) {
-> -        DeviceState *eeprom;
-> -        eeprom = qdev_create((BusState *)smbus, "smbus-eeprom");
-> -        qdev_prop_set_uint8(eeprom, "address", 0x50 + i);
-> -        qdev_prop_set_ptr(eeprom, "data", eeprom_buf + (i * 256));
-> -        qdev_init_nofail(eeprom);
-> +        smbus_eeprom_init_one(smbus, 0x50 + i, eeprom_buf + (i * 256));
->      }
->  }
-> diff --git a/include/hw/i2c/smbus.h b/include/hw/i2c/smbus.h
-> index 544bbc19574f..666cdeb04c07 100644
-> --- a/include/hw/i2c/smbus.h
-> +++ b/include/hw/i2c/smbus.h
-> @@ -77,6 +77,7 @@ int smbus_read_block(I2CBus *bus, uint8_t addr, uint8_t command, uint8_t *data);
->  int smbus_write_block(I2CBus *bus, uint8_t addr, uint8_t command, uint8_t *data,
->                        int len);
->  
-> +void smbus_eeprom_init_one(I2CBus *smbus, uint8_t address, uint8_t *eeprom_buf);
->  void smbus_eeprom_init(I2CBus *smbus, int nb_eeprom,
->                         const uint8_t *eeprom_spd, int size);
->  
-> 
+What if I have a stack size of 2048*4 as I'm using 4 threads with that
+stack size? Will that be in the RAM as well?
+
+Also, this is the memory map of my linker:
+
+MEMORY {
+> RAM_INT (AIW) : ORIGIN = 0x20000000, LENGTH = 16M
+> ROM_INT (RX)  : ORIGIN = 0x00000000, LENGTH = 64M
+> }
+
+
+I was wondering if it means that I have 16MB of RAM and 64MB of ROM? Or
+does it not affect the original RAM and ROM sizes?
+
+
+On 21 October 2017 at 23:38, Peter Maydell <peter.maydell@linaro.org> wrote:
+
+> On 21 October 2017 at 08:31, Hui Yie Teh <hteh703@aucklanduni.ac.nz>
+> wrote:
+> > Hi,
+> >
+> > As far as I'm aware, the LM3S6965evb board on qemu has 64kB of RAM.
+> However,
+> > my application has the following sizes:
+> >
+> >>    text        data       bss         dec         hex     filename
+> >>  77540      1544     64032  143116   22f0c   o-optimize/test.exe
+> >
+> >
+> > The bss and part of the data, I believe, will be located in the RAM.
+> > However, that is more than 64kB, but my program still runs fine on the
+> > emulated board. Is there a reason why? Or am I missing something here?
+>
+> If the data runs off the end of the RAM, the image write will silently
+> write the data into nothingness, and reads will read as zeroes. If
+> your program doesn't actually use the data that's got lost it won't
+> notice, or maybe it behaves wrongly but not in ways you've noticed.
+> In this case it looks like your data+bss is 65576 bytes, which is only
+> 40 bytes off the end, so it depends what the linker has put in those
+> last 40 bytes.
+>
+> thanks
+> -- PMM
+>
+
+--089e082111604a79ea055c0ca3ce
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">I see, thanks for your reply Peter!=C2=A0<br><br>What if I=
+ have a stack size of 2048*4 as I&#39;m using 4 threads with that stack siz=
+e? Will that be in the RAM as well?<br><br>Also, this is the memory map of =
+my linker:=C2=A0<br><br><blockquote class=3D"gmail_quote" style=3D"margin:0=
+px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">M=
+EMORY {<br><span style=3D"white-space:pre">	</span>RAM_INT (AIW) : ORIGIN =
+=3D 0x20000000, LENGTH =3D 16M<br><span style=3D"white-space:pre">	</span>R=
+OM_INT (RX)=C2=A0 : ORIGIN =3D 0x00000000, LENGTH =3D 64M<br>}</blockquote>=
+<div><br></div><div>I was wondering if it means that I have 16MB of RAM and=
+ 64MB of ROM? Or does it not affect the original RAM and ROM sizes?<br><br>=
+</div></div><div class=3D"gmail_extra"><br><div class=3D"gmail_quote">On 21=
+ October 2017 at 23:38, Peter Maydell <span dir=3D"ltr">&lt;<a href=3D"mail=
+to:peter.maydell@linaro.org" target=3D"_blank">peter.maydell@linaro.org</a>=
+&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin:0 0=
+ 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><span class=3D"">On 21=
+ October 2017 at 08:31, Hui Yie Teh &lt;<a href=3D"mailto:hteh703@aucklandu=
+ni.ac.nz">hteh703@aucklanduni.ac.nz</a>&gt; wrote:<br>
+&gt; Hi,<br>
+&gt;<br>
+&gt; As far as I&#39;m aware, the LM3S6965evb board on qemu has 64kB of RAM=
+. However,<br>
+&gt; my application has the following sizes:<br>
+&gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 text=C2=A0 =C2=A0 =C2=A0 =C2=A0 data=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0bss=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0dec=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0hex=C2=A0 =C2=A0 =C2=A0filename<br>
+&gt;&gt;=C2=A0 77540=C2=A0 =C2=A0 =C2=A0 1544=C2=A0 =C2=A0 =C2=A064032=C2=
+=A0 143116=C2=A0 =C2=A022f0c=C2=A0 =C2=A0o-optimize/test.exe<br>
+&gt;<br>
+&gt;<br>
+&gt; The bss and part of the data, I believe, will be located in the RAM.<b=
+r>
+&gt; However, that is more than 64kB, but my program still runs fine on the=
+<br>
+&gt; emulated board. Is there a reason why? Or am I missing something here?=
+<br>
+<br>
+</span>If the data runs off the end of the RAM, the image write will silent=
+ly<br>
+write the data into nothingness, and reads will read as zeroes. If<br>
+your program doesn&#39;t actually use the data that&#39;s got lost it won&#=
+39;t<br>
+notice, or maybe it behaves wrongly but not in ways you&#39;ve noticed.<br>
+In this case it looks like your data+bss is 65576 bytes, which is only<br>
+40 bytes off the end, so it depends what the linker has put in those<br>
+last 40 bytes.<br>
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div><br></div>
+
+--089e082111604a79ea055c0ca3ce--

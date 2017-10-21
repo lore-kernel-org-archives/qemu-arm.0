@@ -1,103 +1,91 @@
-Received: by 10.223.172.38 with SMTP id v35csp1962175wrc;
-        Tue, 5 Sep 2017 15:47:16 -0700 (PDT)
-X-Received: by 10.55.18.96 with SMTP id c93mr869166qkh.297.1504651635955;
-        Tue, 05 Sep 2017 15:47:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504651635; cv=none;
+Received: by 10.223.197.9 with SMTP id q9csp8650545wrf;
+        Sat, 21 Oct 2017 00:31:58 -0700 (PDT)
+X-Received: by 10.237.43.99 with SMTP id p90mr10960684qtd.171.1508571117958;
+        Sat, 21 Oct 2017 00:31:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508571117; cv=none;
         d=google.com; s=arc-20160816;
-        b=TZg4trDKR8i6jbD12s4PmW72Yt4aZIvws9o0FZKOw3AcQFxasz2D8I9lNkYDKTXzXN
-         M/xiQyflU0T56VT+kVZU1/5EHaYZri+NUKKkNJvWz6FlLkLhGbCmtqviYXvhGv8akmEd
-         lh2cjgrfZtTVMkIe0EceDJQ50Nob2O/uta8OAqXawu5Lb8emTyjhygxJAKo45+IjkIip
-         WepBp1Ef9vnbuN+PXBHzqpq2/R5tmxDKzTqrXZNlEplThV2K5bTYKtWmixJRMS0TR+WE
-         3cMGcV8rFQgfPhqiek0TonhLxIE4ARIKkVjPpHe6UV57PVTaUhhiWDXYShfF7YlExfib
-         GMVA==
+        b=IeQ+nhhmm0ir93Edh9vcyQqofaDgY90ewKOdcRVZrk5VsQeHsee4kjrRUZKxvGmOkr
+         cMv+txOvSgYIziQQQYIx7ntAHEHGYXVvGb2n6JKGkD/z3rk45yKoLexEIDxfrw2kGRwn
+         F7gDA6xJQyKqbfbTOlvNslpkYg+9f7GUXv6vTjlj3o/gz950gF1LWn5qbD47E7QzACA9
+         Fr6kJmyOCuIIGlRfY2ECqVk8p47R+oBLCQW2vBAU8nyyM5i1HLJ1wz5o3NEucvfnR6gC
+         etkrobxIK8WMBGvqfs+zGao5bpOyp90yZzPXyryKMLk5CM3jv/AHI3fP9rSiVotn+e1W
+         CB3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=PS1GBt5xcNZRGt/Lby26+iIpROCk/DHeENsq9976e+Q=;
-        b=XchXZQ3XaB/dQZzr13D6CjrMkh8iS49uBGz4Jec+F0qtOG1ZxJGeM1dF1dUcABOARj
-         T3f4nWaLknGn2Buh++NWXXNYg5orr7OxEtQOXRTDspYsXNzSLFw9q6mtHK2o9OGaaThi
-         9vJIx9azUvLfj6E/dmVAx9gvrXXhGVtW6DHG04Q5iPQRUa3/GmiKvGvN2nWaV3uHvQ/C
-         5Ps5b5q7gJ4x1aoTKiIytUyexB+OveLZEvd/9JQNfA6PGwqNNqg640zd/jhfwnWX4xqs
-         lDRgOlUH69fzQajxln9l1VD+vCKvaNp4uLxzNOnxWbaJNC+SXViXwV7bHlL9pNbCx6Ff
-         XaWw==
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=Lwf4/PWIorhp1v4jEHWY8sUwb1FJna7RBcvP835sTtI=;
+        b=DqNhQHePU85OAiY6D8AvM5ASSRrvk4EtOngyPWmU6MRRvw1cgKf+L5A8v+9eZqg7WD
+         WJD4U8iKLQyZ3TehA9JRwlfwbHfSYjwxZSYKRs+1CoeTslbWviND7w66jdeLI0JnU4cA
+         fpxkmUsbltI215UsMtn9OTSbHo7YbEUS5Eh1PK3wpM7P2H5ECqvm2pyABloN+JT0d1CJ
+         GwbgZ7Uvi8BoLuIOH9fujOtXJ7rhc2ZHMWz9oLL60OZ7JPfUtnfddXIJvi0fykj+aJUB
+         Wqzx++dqFVMMwLKTvmp/kJ4bxedMGROKlxIFthj56zZ6L7lehm3JWfGk9qOfKkhS+4jT
+         2PyA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rEkykBJL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+       dkim=fail header.i=@aucklanduni.ac.nz header.s=google header.b=hCXtJ4LN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h57si1347343qtf.321.2017.09.05.15.47.15
+        by mx.google.com with ESMTPS id j61si2225647qtb.205.2017.10.21.00.31.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 05 Sep 2017 15:47:15 -0700 (PDT)
+        Sat, 21 Oct 2017 00:31:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rEkykBJL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:33432 helo=lists.gnu.org)
+       dkim=fail header.i=@aucklanduni.ac.nz header.s=google header.b=hCXtJ4LN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:56962 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dpMcj-0008GL-Hm
-	for alex.bennee@linaro.org; Tue, 05 Sep 2017 18:47:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58698)
+	id 1e5oGB-0007e2-Ox
+	for alex.bennee@linaro.org; Sat, 21 Oct 2017 03:31:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43052)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dpMcQ-0008CZ-Lh
-	for qemu-arm@nongnu.org; Tue, 05 Sep 2017 18:46:59 -0400
+	(envelope-from <hteh703@aucklanduni.ac.nz>) id 1e5oG4-0007dx-Uo
+	for qemu-arm@nongnu.org; Sat, 21 Oct 2017 03:31:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dpMcL-0000av-Pq
-	for qemu-arm@nongnu.org; Tue, 05 Sep 2017 18:46:54 -0400
-Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:37070)
+	(envelope-from <hteh703@aucklanduni.ac.nz>) id 1e5oG4-0006Rn-6P
+	for qemu-arm@nongnu.org; Sat, 21 Oct 2017 03:31:48 -0400
+Received: from mail-wr0-x22b.google.com ([2a00:1450:400c:c0c::22b]:45329)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1dpMcB-0000SD-Qe; Tue, 05 Sep 2017 18:46:39 -0400
-Received: by mail-wm0-x241.google.com with SMTP id f4so1547766wmh.4;
-	Tue, 05 Sep 2017 15:46:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=PS1GBt5xcNZRGt/Lby26+iIpROCk/DHeENsq9976e+Q=;
-	b=rEkykBJLLJHhkAnqFU4ULxz5pAItp3KPapTs6/4lLU2u21JoXW+Rg0NGxs6XWhbvdr
-	kRaBAPqq3/Xc81D9zPRfz05YoJeLfZiRc5rBvqqSCW29LGA+IzM0FekffzOgiOnIvUxB
-	B8oujAIGxM6KVPbngpOY4OHITIC1ACSEwYhrjXcqGdWXza3N+BXCLPdYAQsRRaEXrGsi
-	8KVaDNGQhKnqY63tF8z3rU9n6MjN4isQmLBsuutJuLsnwUnauBzmOnl36jPkHixuB5ky
-	dW3HIm/WTLTjrTQ2SS0Rb4vZbg9NaH9l7L8SiUU4Dzv71Jl+kueQT2gRZFLxuKSrGL3P
-	xxCA==
+	(Exim 4.71) (envelope-from <hteh703@aucklanduni.ac.nz>)
+	id 1e5oG3-0006Rf-Vi
+	for qemu-arm@nongnu.org; Sat, 21 Oct 2017 03:31:48 -0400
+Received: by mail-wr0-x22b.google.com with SMTP id y9so815725wrb.2
+	for <qemu-arm@nongnu.org>; Sat, 21 Oct 2017 00:31:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=aucklanduni.ac.nz; s=google;
+	h=mime-version:from:date:message-id:subject:to;
+	bh=Lwf4/PWIorhp1v4jEHWY8sUwb1FJna7RBcvP835sTtI=;
+	b=hCXtJ4LNWRiMIE5vXLWl9onQ02M3R3Ecjv8Pf5TPh30KFcNhzB1hcljaF3cuUw4tYt
+	dKj1TrTKBBAE/+VwVHv1KRaF6g+Uwsp4SlrzzW4wihVwHNZ3gC1CJ5E7e30usNLmmq+Y
+	2O0tXIxcEnCpqOW+UHbrG9Hy6zPIC7MndRPVg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=PS1GBt5xcNZRGt/Lby26+iIpROCk/DHeENsq9976e+Q=;
-	b=bEJJwg3SwmUhdMmaTer28QZsm/+/++RHUv0NEjxNdfw3xKsKPX87uLF8fkZVS7nnFa
-	WX2WhHlTyo+3tgF87hDP6KMNH9mp9s0NkRXqMwAbEBA0uqYRIxRptQDvcs1AzQKuXKWt
-	D2BJTjBZO0QdAMGmzW27VbDmMEm+xmUTRhGGp5UVzdMTO8L+Z0Sb1SSnW+95SdbWzN/P
-	kHh2ATdazGwOgLcRt+66k/o4m+J60gFzJWONuYmk+Ma7MJxG6ABsXrGAwS8VY0tYvODZ
-	tqBWpHyuDHUyTTvRXapXWszq3YaqDSjPnxyuyY1FBNEK7bY2wrgf+i4tOzlZ+NmtMa7m
-	1OYQ==
-X-Gm-Message-State: AHPjjUg3IOD38xoJHAFInWW7wrQlPnAnP5Jq1lpqxqbN3n2pBhssV0qF
-	oQ6H/9DydwvrxdbLrw+Yf6CjUTGZ/A==
-X-Google-Smtp-Source: ADKCNb6jjDtyLIdwSYq68RkY7W+Yrb3zHWJShGFSC1WLBalxZezhGBd4RjZfIgo0g9jdFrAcukrY2OACwPlVC7anry4=
-X-Received: by 10.28.196.202 with SMTP id u193mr276403wmf.120.1504651598467;
-	Tue, 05 Sep 2017 15:46:38 -0700 (PDT)
+	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+	bh=Lwf4/PWIorhp1v4jEHWY8sUwb1FJna7RBcvP835sTtI=;
+	b=ZbPTXxEhEF4nYPmyRpN8xwDxnCDExbBuYj+SoFmTfQDCYXbk70XQ14Uc2gUfO/Lqvw
+	dEEQsApNinaNIamMr6TZtR60sWtsAa81wo9ti1UITno/FDu3TZONo/e+8Osy2Y8vWh0q
+	Pv0i90EVY/WlkhCq84dRM9K6R+1NesoDVNFtm7vQiUE8278eFoi6Dl5wkpqWehSfsB4w
+	rKWum88MNLPK91ogkPjVfpqcstRNYmVLbs1OBZQ2oOFo3xDl/IuuuPca3gbJPd+OKtmo
+	9AOGz1HpWmLt7OZzUFlFDCHjZCC7aj21kvoSMS5HWWExj73VAkgvKbQ5OpzDItHvP3FB
+	o7bQ==
+X-Gm-Message-State: AMCzsaXCCFlUVrUIWsN3fjI8Q3vYwExd5qJ98jhrypc4XxhVhYz+NKSG
+	C++3D1WadhwmYqAFuR6+h3DPEfiT7sEYG8dxsVKSR4mO
+X-Google-Smtp-Source: ABhQp+QaFu5DivSmMolHdY4OBjsedI1beJiz3W5U3zkioIK0rhlBNrR+Hi/NMpmtstV7OWpij9HXX4+/soXWYgxtA0E=
+X-Received: by 10.223.169.239 with SMTP id b102mr6131542wrd.171.1508571106734; 
+	Sat, 21 Oct 2017 00:31:46 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.28.191.130 with HTTP; Tue, 5 Sep 2017 15:46:07 -0700 (PDT)
-In-Reply-To: <20170905221226.GZ7570@localhost.localdomain>
-References: <1504533662-198084-1-git-send-email-imammedo@redhat.com>
-	<1504533662-198084-7-git-send-email-imammedo@redhat.com>
-	<20170905213152.GG17184@localhost.localdomain>
-	<CAKmqyKPWDmVYJceYao7NkD5svWqN_fYbDoUJ4uLNFdAhv+kFwg@mail.gmail.com>
-	<20170905221226.GZ7570@localhost.localdomain>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 5 Sep 2017 15:46:07 -0700
-Message-ID: <CAKmqyKO4yRz3R0BJ+gz=UfLc0d_AoNtEAHn-SNFMzg3xo12D=Q@mail.gmail.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+Received: by 10.28.102.214 with HTTP; Sat, 21 Oct 2017 00:31:46 -0700 (PDT)
+From: Hui Yie Teh <hteh703@aucklanduni.ac.nz>
+Date: Sat, 21 Oct 2017 20:31:46 +1300
+Message-ID: <CAPLZ2xMgcbiJr+rbQwZxbP6chMzZ7fBcJ1q35tEbjhccQHPsow@mail.gmail.com>
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="001a114621eeef88ee055c0994b9"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::241
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 6/6] arm: drop intermadiate
- cpu_model -> cpu type parsing and use cpu type directly
+X-Received-From: 2a00:1450:400c:c0c::22b
+Subject: [Qemu-arm] .bss more than LM3S6965evb RAM size
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -109,87 +97,48 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Andrew Jones <drjones@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	qemu-arm <qemu-arm@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>,
-	Igor Mammedov <imammedo@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KFf7VUG5CYA6
+X-TUID: ArOrFb4D4O4G
 
-On Tue, Sep 5, 2017 at 3:12 PM, Eduardo Habkost <ehabkost@redhat.com> wrote:
-> On Tue, Sep 05, 2017 at 02:47:52PM -0700, Alistair Francis wrote:
->> On Tue, Sep 5, 2017 at 2:31 PM, Eduardo Habkost <ehabkost@redhat.com> wrote:
-> [...]
->> >> diff --git a/hw/arm/stm32f205_soc.c b/hw/arm/stm32f205_soc.c
->> >> index f61e735..1cd6374 100644
->> >> --- a/hw/arm/stm32f205_soc.c
->> >> +++ b/hw/arm/stm32f205_soc.c
->> >> @@ -112,7 +112,7 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
->> >>
->> >>      armv7m = DEVICE(&s->armv7m);
->> >>      qdev_prop_set_uint32(armv7m, "num-irq", 96);
->> >> -    qdev_prop_set_string(armv7m, "cpu-model", s->cpu_model);
->> >> +    qdev_prop_set_string(armv7m, "cpu-type", s->cpu_type);
->> >>      object_property_set_link(OBJECT(&s->armv7m), OBJECT(get_system_memory()),
->> >>                                       "memory", &error_abort);
->> >>      object_property_set_bool(OBJECT(&s->armv7m), true, "realized", &err);
->> >> @@ -200,7 +200,7 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
->> >>  }
->> >>
->> >>  static Property stm32f205_soc_properties[] = {
->> >> -    DEFINE_PROP_STRING("cpu-model", STM32F205State, cpu_model),
->> >> +    DEFINE_PROP_STRING("cpu-type", STM32F205State, cpu_type),
->> >
->> > Same as armv7m: are we 100% sure users are not setting this
->> > manually?
->>
->> In an embedded board like this it really doesn't make sense to let the
->> user overwrite the CPU. The SoC will take it as an option, but the
->> board (which creates the SoC) just blindly always uses the same CPU.
->> That feature is more for QOMificatoion then any real reason though.
->>
->
-> I'm not talking about -cpu (no user-visible change in the
-> handling of -cpu should result from this patch), but about
-> possible cases where the user set the "cpu-model" property using
-> another mechanism, like -global.  Probably it's impossible for an
-> user to override the property successfully, but I would like to
-> be sure.
+--001a114621eeef88ee055c0994b9
+Content-Type: text/plain; charset="UTF-8"
 
-Ah, that is trickier.
+Hi,
 
-I guess that is possible to do, but the object setting logic should
-handle the error gracefully and inform the user of the error.
+As far as I'm aware, the LM3S6965evb board on qemu has 64kB of RAM.
+However, my application has the following sizes:
 
->
->
->> In saying that I think a warning if the user tries to set the CPU
->> would make sense. I know that this issues comes up in other ARM boards
->> (Zynq-7000 has the same issue as well) so maybe a machine property
->> saying that the board doesn't accept custom CPUs would be a good idea.
->
-> Yeah, there are multiple cases in this patch where boards are
-> validating the CPU model, but not all boards do that.  A generic
-> MachineClass::valid_cpu_types[] field would be useful.
->
->>
->> Overall I think this patch is moving in the right direction though and
->> this CPU option being ignored existed before this series.
->
-> I agree this is going on the right direction.  However, I don't
-> see any board that ignore the CPU option: all of them seem to use
-> cpu_model when creating the CPUs, already.
+   text        data       bss         dec         hex     filename
+>  77540      1544     64032  143116   22f0c   o-optimize/test.exe
 
-The Netduino2 will ignore any CPU options and always use a Cortex-m3.
-I was wrong about Zynq-7000 though, it does respect the -cpu option.
 
-Thanks,
-Alistair
+The bss and part of the data, I believe, will be located in the RAM.
+However, that is more than 64kB, but my program still runs fine on the
+emulated board. Is there a reason why? Or am I missing something here?
 
->
-> --
-> Eduardo
+Any help would be much appreciated. Thanks.
+
+--001a114621eeef88ee055c0994b9
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><span style=3D"font-size:12.8px">Hi,=C2=A0</span><br style=
+=3D"font-size:12.8px"><br style=3D"font-size:12.8px"><span style=3D"font-si=
+ze:12.8px">As far as I&#39;m aware, the=C2=A0LM3S6965evb board on qemu has =
+64kB of RAM. However, my application has the following sizes:</span><div st=
+yle=3D"font-size:12.8px"><br><blockquote class=3D"gmail_quote" style=3D"mar=
+gin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1=
+ex">=C2=A0 =C2=A0text=C2=A0=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0 data=C2=A0=C2=A0=
+=C2=A0 =C2=A0=C2=A0=C2=A0bss=C2=A0=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 dec=
+=C2=A0=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0=C2=A0hex=C2=A0=C2=A0=C2=A0=C2=A0 fil=
+ename<br>=C2=A077540=C2=A0=C2=A0 =C2=A0=C2=A0 1544=C2=A0=C2=A0 =C2=A0 64032=
+=C2=A0 143116 =C2=A0 22f0c=C2=A0=C2=A0 o-optimize/test.exe</blockquote><p c=
+lass=3D"MsoNormal"></p><p class=3D"MsoNormal"></p><p class=3D"MsoNormal"><b=
+r></p><p class=3D"MsoNormal">The bss and part of the data, I believe, will =
+be located in the RAM. However, that is more than 64kB, but my program stil=
+l runs fine on the emulated board. Is there a reason why? Or am I missing s=
+omething here?<br><br>Any help would be much appreciated. Thanks.</p></div>=
+</div>
+
+--001a114621eeef88ee055c0994b9--

@@ -1,93 +1,84 @@
-Received: by 10.223.161.27 with SMTP id o27csp139671wro;
-        Mon, 23 Oct 2017 11:18:06 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+SV1q6eg+nAV/j8t/RYj2LRGdOM2XDulrkTS0UObqA+GbwMq3fRQuYyzAlVn4SBKEmmlFOq
-X-Received: by 10.37.69.65 with SMTP id s62mr8936739yba.322.1508782686324;
-        Mon, 23 Oct 2017 11:18:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508782686; cv=none;
+Received: by 10.223.161.27 with SMTP id o27csp162823wro;
+        Mon, 23 Oct 2017 11:48:56 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+SJVjYKvbv+77eARMJxEQjJiEaPD74zCiP9Miqh+BCwuRCuPXz4Imjc+MAmYMRMfxF1E45k
+X-Received: by 10.37.132.137 with SMTP id v9mr8681728ybk.88.1508784536808;
+        Mon, 23 Oct 2017 11:48:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508784536; cv=none;
         d=google.com; s=arc-20160816;
-        b=GMiRgSFqdeQ1/9Io4Q+Wu7EKYBLc4hAFTma2s2vImkeI7Mdx/3ZoUdeYV1RyqjIipV
-         1339niFH8XPC28/MiZXYUHIwW2ltokHRLrfR2qDV4dD3oIHUwjktVLstgxA3+Adn4AAr
-         pKzfzFDwJpIw32SJOnF+VGmfgnzmeyQWbZHb5HwyYPGeZEQ/9yg1Z5fKFTtbQLmDNV2O
-         3XHlG5lmecZPv+AfUxP+rzZ3JS1h6Q0oYs1uMN5VtX4aHeTIyldDDxZbtermO8OQ0roA
-         hlOEkP51fF//AlWumf71vLcd6k2I0WsI6LXWzXdkmvePp4+7e9IQUmkK5XDRZdXMyhZT
-         u6wg==
+        b=dmbf70myXtqHua3sd7ndpMVUsaqvht/9mUqcVTi6l6BJHMvOxRs3USFNZPCsfEOV9b
+         W7j0WttYEfWC+qsg2QHqGs7GJ+TimHKeQOl3/yysVmtJwcfx1T6M1wH/cAB3UA013VR8
+         eI0xmH65l1RGmo8hcGHVf3TQ+h2DKERhKuUr9lufuaorLR4SDNdTTZVropUor/Fl2rjl
+         S1jmlkqc3Hef6oEoQloiWi7oklRDLTLyJ+ZwsQXWGLG/3KUqLgdQbEqiMH0fAQsrS/Vd
+         WRiwplVPlLf/My7cwdoasY1BDANm5u+1ydrKO9yotetPQKkjfoqJk0MfSQZhf7T8gdJj
+         8gWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:to:from:arc-authentication-results;
-        bh=nA8p4gBpVHL0HdO3rkcCmpgZlIUFzUqc705wimLhSO4=;
-        b=LkzdXwTudvcPiUBDEXO7sOXy8ZnQOARQWAW7OI6fUntjNioDOsFi3oMIPAc6l3TWjy
-         eQDQOUA8nVgyDftgY0iA8X/JEINqh/HYocHP2Xp2CWEnqqKJSrP1S35XNhuGOFyuAtzK
-         gwU2wXEnT3w7XUK1CwudUwt74uoQFwDOV/5ZlEYqQNOaoJ9Eu6MYxWl9b36wU63YBOHz
-         EJKch967ZPWFAOO5dhEa1WR1nl/fnVivIrp+F+EUJrZH6WUpYyZgTQma23Y6ZwNY8BAU
-         MPtGo+20GEkaejTho3x90Mi/2jOj3JvilWS6OyR/u8ILXM7OHgDze+ifZBlw/wR3GgaO
-         3oQg==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dmarc-filter:arc-authentication-results;
+        bh=GTatjxyYgc9KsvCGl9tm2Una3oQWprdcxi6ZFi1ow40=;
+        b=gKSyl39mL+gEGsQJnJ53hQitlU9JD1YveENFs76XM3mV8d+2tsaUyUN5UzqaqY8bsR
+         Mhksbgp1s5PuYVMPd4z85o3mxfcyd4a/UeMfLx///UwKMxnqbb/kHhgvPe8qlx2OTsGm
+         umNLqLfOnriunBINkwCxzVMZeUYhCHHyDd/YFm1Ex8G2AaU+MJmWQkZNB2+K/MJd4B9l
+         tiQKpN+mFHHaX6Gk+yS4rr63wrhD6exZUk/K25w6C46FmRyd/AbHhORIWrUTlZHTgPzI
+         rFqbTnIOStSYdN53ik7R9u5nYiiIQ6KLhd2GMD1HwdqygYnI/P1bROzVl1R0Qj+r5XYn
+         pY6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p16si620862ywg.123.2017.10.23.11.18.06
+        by mx.google.com with ESMTPS id u9si1377378ywb.533.2017.10.23.11.48.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 23 Oct 2017 11:18:06 -0700 (PDT)
+        Mon, 23 Oct 2017 11:48:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:40043 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:40142 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e6hIb-00007C-Pc
-	for alex.bennee@linaro.org; Mon, 23 Oct 2017 14:18:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47923)
+	id 1e6hmS-0004Lv-7P
+	for alex.bennee@linaro.org; Mon, 23 Oct 2017 14:48:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58823)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dkang@isi.edu>) id 1e6hIW-000070-5k
-	for qemu-arm@nongnu.org; Mon, 23 Oct 2017 14:18:01 -0400
+	(envelope-from <thuth@redhat.com>) id 1e6hmE-0004Jh-7C
+	for qemu-arm@nongnu.org; Mon, 23 Oct 2017 14:48:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dkang@isi.edu>) id 1e6hIS-00023W-T6
-	for qemu-arm@nongnu.org; Mon, 23 Oct 2017 14:18:00 -0400
-Received: from mail-c.ads.isi.edu ([128.9.180.198]:52689)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
-	(envelope-from <dkang@isi.edu>) id 1e6hIS-00022k-Jc
-	for qemu-arm@nongnu.org; Mon, 23 Oct 2017 14:17:56 -0400
-X-IronPort-AV: E=Sophos;i="5.43,424,1503385200"; 
-   d="scan'208";a="2152168"
-Received: from usmdrmbx01.ads.isi.edu ([10.100.2.77])
-	by usmdrip03-mgmt.ads.isi.edu with ESMTP; 23 Oct 2017 11:17:55 -0700
-Received: from usarlmbx01.ads.isi.edu (10.13.52.77) by usmdrmbx01.ads.isi.edu
-	(10.100.2.77) with Microsoft SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1261.35;
-	Mon, 23 Oct 2017 11:17:56 -0700
-Received: from usarlmbx01.ads.isi.edu (10.13.52.77) by usarlmbx01.ads.isi.edu
-	(10.13.52.77) with Microsoft SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1261.35;
-	Mon, 23 Oct 2017 11:17:52 -0700
-Received: from usarlmbx01.ads.isi.edu ([fe80::5517:873:48d1:b0d1]) by
-	usarlmbx01.ads.isi.edu ([fe80::5517:873:48d1:b0d1%17]) with mapi id
-	15.01.1261.035; Mon, 23 Oct 2017 11:17:52 -0700
-From: Dong-In Kang <dkang@isi.edu>
-To: Peter Maydell <peter.maydell@linaro.org>
-Thread-Topic: [Qemu-arm] Is Cortex-R8 support planned?
-Thread-Index: AQHTTAzrfmleDsMNxkyr+k/F5i5fn6LyDoIA///iKIA=
-Date: Mon, 23 Oct 2017 18:17:52 +0000
-Message-ID: <983F5243-4E4A-49BD-BD19-BF5A1124442C@isi.edu>
-References: <42FB6EFE-F20A-42CF-8782-D8611FA79000@isi.edu>
-	<CAFEAcA-sFmpxbEP6iKMjsUJzD84n8WAzjABTKCe0KWvYpfmcZA@mail.gmail.com>
-In-Reply-To: <CAFEAcA-sFmpxbEP6iKMjsUJzD84n8WAzjABTKCe0KWvYpfmcZA@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [128.9.47.101]
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <531D614FFE6CA7449E2D8992C7EFB9C5@ads.isi.edu>
-Content-Transfer-Encoding: base64
-MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 128.9.180.198
-Subject: Re: [Qemu-arm] Is Cortex-R8 support planned?
+	(envelope-from <thuth@redhat.com>) id 1e6hm9-0002v2-VM
+	for qemu-arm@nongnu.org; Mon, 23 Oct 2017 14:48:42 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48934)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1e6hm9-0002u3-Jp; Mon, 23 Oct 2017 14:48:37 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id AE85D6A7D2;
+	Mon, 23 Oct 2017 18:48:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com AE85D6A7D2
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=thuth@redhat.com
+Received: from thh440s.redhat.com (ovpn-116-91.ams2.redhat.com [10.36.116.91])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 702365D96F;
+	Mon, 23 Oct 2017 18:48:30 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	John Snow <jsnow@redhat.com>
+Date: Mon, 23 Oct 2017 20:48:29 +0200
+Message-Id: <1508784509-29377-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Mon, 23 Oct 2017 18:48:34 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH] hw/ide/ahci: Move allwinner code into a separate
+ file
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,20 +90,276 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hnaX5VCRgkK6
+X-TUID: yOXfASH5SKJ0
 
-DQogRG9lcyBDb3J0ZXgtUjcgc3VwcG9ydCBleGlzdCBmb3IgUWVtdT8NCkkgZGlkbuKAmXQgc2Vl
-IHRoYXQuIA0KDQogRGF2aWQNCg0KT24gMTAvMjMvMTcsIDEyOjA0IFBNLCAiUGV0ZXIgTWF5ZGVs
-bCIgPHBldGVyLm1heWRlbGxAbGluYXJvLm9yZz4gd3JvdGU6DQoNCk9uIDIzIE9jdG9iZXIgMjAx
-NyBhdCAxNTo0MCwgRG9uZy1JbiBLYW5nIDxka2FuZ0Bpc2kuZWR1PiB3cm90ZToNCj4gSSBrbm93
-IHRoZXJlIGlzIG5vIHN1cHBvcnQgZm9yIENvcnRleC1SOCBndWVzdCBhcmNoaXRlY3R1cmUgbm93
-Lg0KPg0KPiBJcyBpdCBwbGFubmVkPw0KDQpJIGRvbid0IGtub3cgb2YgYW55Ym9keSB3aG8ncyBw
-bGFubmluZyB0byBkbyB0aGF0LCBuby4NCg0KPiBIb3cgbXVjaCBtYW4taG91ciB3b3VsZCBiZSBu
-ZWVkZWQgdG8gaW1wbGVtZW50IENvcnRleC1SOCBzdXBwb3J0IGZvciBRZW11Pw0KDQpJIGRvbid0
-IGtub3cgLS0geW91J2QgbmVlZCB0byBsb29rIGF0IHdoYXQgdGhlIG5ldyBmZWF0dXJlcw0KYXJl
-IGluIENvcnRleC1SNyB0aGF0IGFyZW4ndCBpbiB0aGUgZXhpc3RpbmcgQ29ydGV4LVI4DQplbXVs
-YXRpb24sIGFuZCB0aGVuIGVzdGltYXRlIGhvdyBtdWNoIHRpbWUgdGhvc2UgZmVhdHVyZXMNCndv
-dWxkIGVhY2ggdGFrZSB0byBpbXBsZW1lbnQuDQoNCnRoYW5rcw0KLS0gUE1NDQoNCg0K
+The allwinner code is only needed for the allwinner board (for which
+we also have a separate CONFIG_ALLWINNER_A10 config switch), so it
+does not make sense that we compile this for all the other boards
+that need AHCI, too. Let's move it to a separate file that is only
+compiled when CONFIG_ALLWINNER_A10 is set.
+
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/ide/Makefile.objs    |   1 +
+ hw/ide/ahci-allwinner.c | 127 ++++++++++++++++++++++++++++++++++++++++++++++++
+ hw/ide/ahci.c           |  95 ------------------------------------
+ 3 files changed, 128 insertions(+), 95 deletions(-)
+ create mode 100644 hw/ide/ahci-allwinner.c
+
+diff --git a/hw/ide/Makefile.objs b/hw/ide/Makefile.objs
+index 729e9bd..f0edca3 100644
+--- a/hw/ide/Makefile.objs
++++ b/hw/ide/Makefile.objs
+@@ -10,3 +10,4 @@ common-obj-$(CONFIG_IDE_VIA) += via.o
+ common-obj-$(CONFIG_MICRODRIVE) += microdrive.o
+ common-obj-$(CONFIG_AHCI) += ahci.o
+ common-obj-$(CONFIG_AHCI) += ich.o
++common-obj-$(CONFIG_ALLWINNER_A10) += ahci-allwinner.o
+diff --git a/hw/ide/ahci-allwinner.c b/hw/ide/ahci-allwinner.c
+new file mode 100644
+index 0000000..c3f1604
+--- /dev/null
++++ b/hw/ide/ahci-allwinner.c
+@@ -0,0 +1,127 @@
++/*
++ * QEMU Allwinner AHCI Emulation
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "qemu/osdep.h"
++#include "hw/hw.h"
++#include "qemu/error-report.h"
++#include "sysemu/block-backend.h"
++#include "sysemu/dma.h"
++#include "hw/ide/internal.h"
++#include "hw/ide/ahci_internal.h"
++
++#include "trace.h"
++
++#define ALLWINNER_AHCI_BISTAFR    ((0xa0 - ALLWINNER_AHCI_MMIO_OFF) / 4)
++#define ALLWINNER_AHCI_BISTCR     ((0xa4 - ALLWINNER_AHCI_MMIO_OFF) / 4)
++#define ALLWINNER_AHCI_BISTFCTR   ((0xa8 - ALLWINNER_AHCI_MMIO_OFF) / 4)
++#define ALLWINNER_AHCI_BISTSR     ((0xac - ALLWINNER_AHCI_MMIO_OFF) / 4)
++#define ALLWINNER_AHCI_BISTDECR   ((0xb0 - ALLWINNER_AHCI_MMIO_OFF) / 4)
++#define ALLWINNER_AHCI_DIAGNR0    ((0xb4 - ALLWINNER_AHCI_MMIO_OFF) / 4)
++#define ALLWINNER_AHCI_DIAGNR1    ((0xb8 - ALLWINNER_AHCI_MMIO_OFF) / 4)
++#define ALLWINNER_AHCI_OOBR       ((0xbc - ALLWINNER_AHCI_MMIO_OFF) / 4)
++#define ALLWINNER_AHCI_PHYCS0R    ((0xc0 - ALLWINNER_AHCI_MMIO_OFF) / 4)
++#define ALLWINNER_AHCI_PHYCS1R    ((0xc4 - ALLWINNER_AHCI_MMIO_OFF) / 4)
++#define ALLWINNER_AHCI_PHYCS2R    ((0xc8 - ALLWINNER_AHCI_MMIO_OFF) / 4)
++#define ALLWINNER_AHCI_TIMER1MS   ((0xe0 - ALLWINNER_AHCI_MMIO_OFF) / 4)
++#define ALLWINNER_AHCI_GPARAM1R   ((0xe8 - ALLWINNER_AHCI_MMIO_OFF) / 4)
++#define ALLWINNER_AHCI_GPARAM2R   ((0xec - ALLWINNER_AHCI_MMIO_OFF) / 4)
++#define ALLWINNER_AHCI_PPARAMR    ((0xf0 - ALLWINNER_AHCI_MMIO_OFF) / 4)
++#define ALLWINNER_AHCI_TESTR      ((0xf4 - ALLWINNER_AHCI_MMIO_OFF) / 4)
++#define ALLWINNER_AHCI_VERSIONR   ((0xf8 - ALLWINNER_AHCI_MMIO_OFF) / 4)
++#define ALLWINNER_AHCI_IDR        ((0xfc - ALLWINNER_AHCI_MMIO_OFF) / 4)
++#define ALLWINNER_AHCI_RWCR       ((0xfc - ALLWINNER_AHCI_MMIO_OFF) / 4)
++
++static uint64_t allwinner_ahci_mem_read(void *opaque, hwaddr addr,
++                                        unsigned size)
++{
++    AllwinnerAHCIState *a = opaque;
++    AHCIState *s = &(SYSBUS_AHCI(a)->ahci);
++    uint64_t val = a->regs[addr / 4];
++
++    switch (addr / 4) {
++    case ALLWINNER_AHCI_PHYCS0R:
++        val |= 0x2 << 28;
++        break;
++    case ALLWINNER_AHCI_PHYCS2R:
++        val &= ~(0x1 << 24);
++        break;
++    }
++    trace_allwinner_ahci_mem_read(s, a, addr, val, size);
++    return  val;
++}
++
++static void allwinner_ahci_mem_write(void *opaque, hwaddr addr,
++                                     uint64_t val, unsigned size)
++{
++    AllwinnerAHCIState *a = opaque;
++    AHCIState *s = &(SYSBUS_AHCI(a)->ahci);
++
++    trace_allwinner_ahci_mem_write(s, a, addr, val, size);
++    a->regs[addr / 4] = val;
++}
++
++static const MemoryRegionOps allwinner_ahci_mem_ops = {
++    .read = allwinner_ahci_mem_read,
++    .write = allwinner_ahci_mem_write,
++    .valid.min_access_size = 4,
++    .valid.max_access_size = 4,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++};
++
++static void allwinner_ahci_init(Object *obj)
++{
++    SysbusAHCIState *s = SYSBUS_AHCI(obj);
++    AllwinnerAHCIState *a = ALLWINNER_AHCI(obj);
++
++    memory_region_init_io(&a->mmio, OBJECT(obj), &allwinner_ahci_mem_ops, a,
++                          "allwinner-ahci", ALLWINNER_AHCI_MMIO_SIZE);
++    memory_region_add_subregion(&s->ahci.mem, ALLWINNER_AHCI_MMIO_OFF,
++                                &a->mmio);
++}
++
++static const VMStateDescription vmstate_allwinner_ahci = {
++    .name = "allwinner-ahci",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32_ARRAY(regs, AllwinnerAHCIState,
++                             ALLWINNER_AHCI_MMIO_SIZE / 4),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void allwinner_ahci_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->vmsd = &vmstate_allwinner_ahci;
++}
++
++static const TypeInfo allwinner_ahci_info = {
++    .name          = TYPE_ALLWINNER_AHCI,
++    .parent        = TYPE_SYSBUS_AHCI,
++    .instance_size = sizeof(AllwinnerAHCIState),
++    .instance_init = allwinner_ahci_init,
++    .class_init    = allwinner_ahci_class_init,
++};
++
++static void sysbus_ahci_register_types(void)
++{
++    type_register_static(&allwinner_ahci_info);
++}
++
++type_init(sysbus_ahci_register_types)
+diff --git a/hw/ide/ahci.c b/hw/ide/ahci.c
+index 32d1296..373311f 100644
+--- a/hw/ide/ahci.c
++++ b/hw/ide/ahci.c
+@@ -1737,104 +1737,9 @@ static const TypeInfo sysbus_ahci_info = {
+     .class_init    = sysbus_ahci_class_init,
+ };
+ 
+-#define ALLWINNER_AHCI_BISTAFR    ((0xa0 - ALLWINNER_AHCI_MMIO_OFF) / 4)
+-#define ALLWINNER_AHCI_BISTCR     ((0xa4 - ALLWINNER_AHCI_MMIO_OFF) / 4)
+-#define ALLWINNER_AHCI_BISTFCTR   ((0xa8 - ALLWINNER_AHCI_MMIO_OFF) / 4)
+-#define ALLWINNER_AHCI_BISTSR     ((0xac - ALLWINNER_AHCI_MMIO_OFF) / 4)
+-#define ALLWINNER_AHCI_BISTDECR   ((0xb0 - ALLWINNER_AHCI_MMIO_OFF) / 4)
+-#define ALLWINNER_AHCI_DIAGNR0    ((0xb4 - ALLWINNER_AHCI_MMIO_OFF) / 4)
+-#define ALLWINNER_AHCI_DIAGNR1    ((0xb8 - ALLWINNER_AHCI_MMIO_OFF) / 4)
+-#define ALLWINNER_AHCI_OOBR       ((0xbc - ALLWINNER_AHCI_MMIO_OFF) / 4)
+-#define ALLWINNER_AHCI_PHYCS0R    ((0xc0 - ALLWINNER_AHCI_MMIO_OFF) / 4)
+-#define ALLWINNER_AHCI_PHYCS1R    ((0xc4 - ALLWINNER_AHCI_MMIO_OFF) / 4)
+-#define ALLWINNER_AHCI_PHYCS2R    ((0xc8 - ALLWINNER_AHCI_MMIO_OFF) / 4)
+-#define ALLWINNER_AHCI_TIMER1MS   ((0xe0 - ALLWINNER_AHCI_MMIO_OFF) / 4)
+-#define ALLWINNER_AHCI_GPARAM1R   ((0xe8 - ALLWINNER_AHCI_MMIO_OFF) / 4)
+-#define ALLWINNER_AHCI_GPARAM2R   ((0xec - ALLWINNER_AHCI_MMIO_OFF) / 4)
+-#define ALLWINNER_AHCI_PPARAMR    ((0xf0 - ALLWINNER_AHCI_MMIO_OFF) / 4)
+-#define ALLWINNER_AHCI_TESTR      ((0xf4 - ALLWINNER_AHCI_MMIO_OFF) / 4)
+-#define ALLWINNER_AHCI_VERSIONR   ((0xf8 - ALLWINNER_AHCI_MMIO_OFF) / 4)
+-#define ALLWINNER_AHCI_IDR        ((0xfc - ALLWINNER_AHCI_MMIO_OFF) / 4)
+-#define ALLWINNER_AHCI_RWCR       ((0xfc - ALLWINNER_AHCI_MMIO_OFF) / 4)
+-
+-static uint64_t allwinner_ahci_mem_read(void *opaque, hwaddr addr,
+-                                        unsigned size)
+-{
+-    AllwinnerAHCIState *a = opaque;
+-    AHCIState *s = &(SYSBUS_AHCI(a)->ahci);
+-    uint64_t val = a->regs[addr/4];
+-
+-    switch (addr / 4) {
+-    case ALLWINNER_AHCI_PHYCS0R:
+-        val |= 0x2 << 28;
+-        break;
+-    case ALLWINNER_AHCI_PHYCS2R:
+-        val &= ~(0x1 << 24);
+-        break;
+-    }
+-    trace_allwinner_ahci_mem_read(s, a, addr, val, size);
+-    return  val;
+-}
+-
+-static void allwinner_ahci_mem_write(void *opaque, hwaddr addr,
+-                                     uint64_t val, unsigned size)
+-{
+-    AllwinnerAHCIState *a = opaque;
+-    AHCIState *s = &(SYSBUS_AHCI(a)->ahci);
+-
+-    trace_allwinner_ahci_mem_write(s, a, addr, val, size);
+-    a->regs[addr/4] = val;
+-}
+-
+-static const MemoryRegionOps allwinner_ahci_mem_ops = {
+-    .read = allwinner_ahci_mem_read,
+-    .write = allwinner_ahci_mem_write,
+-    .valid.min_access_size = 4,
+-    .valid.max_access_size = 4,
+-    .endianness = DEVICE_LITTLE_ENDIAN,
+-};
+-
+-static void allwinner_ahci_init(Object *obj)
+-{
+-    SysbusAHCIState *s = SYSBUS_AHCI(obj);
+-    AllwinnerAHCIState *a = ALLWINNER_AHCI(obj);
+-
+-    memory_region_init_io(&a->mmio, OBJECT(obj), &allwinner_ahci_mem_ops, a,
+-                          "allwinner-ahci", ALLWINNER_AHCI_MMIO_SIZE);
+-    memory_region_add_subregion(&s->ahci.mem, ALLWINNER_AHCI_MMIO_OFF,
+-                                &a->mmio);
+-}
+-
+-static const VMStateDescription vmstate_allwinner_ahci = {
+-    .name = "allwinner-ahci",
+-    .version_id = 1,
+-    .minimum_version_id = 1,
+-    .fields = (VMStateField[]) {
+-        VMSTATE_UINT32_ARRAY(regs, AllwinnerAHCIState,
+-                             ALLWINNER_AHCI_MMIO_SIZE/4),
+-        VMSTATE_END_OF_LIST()
+-    }
+-};
+-
+-static void allwinner_ahci_class_init(ObjectClass *klass, void *data)
+-{
+-    DeviceClass *dc = DEVICE_CLASS(klass);
+-
+-    dc->vmsd = &vmstate_allwinner_ahci;
+-}
+-
+-static const TypeInfo allwinner_ahci_info = {
+-    .name          = TYPE_ALLWINNER_AHCI,
+-    .parent        = TYPE_SYSBUS_AHCI,
+-    .instance_size = sizeof(AllwinnerAHCIState),
+-    .instance_init = allwinner_ahci_init,
+-    .class_init    = allwinner_ahci_class_init,
+-};
+-
+ static void sysbus_ahci_register_types(void)
+ {
+     type_register_static(&sysbus_ahci_info);
+-    type_register_static(&allwinner_ahci_info);
+ }
+ 
+ type_init(sysbus_ahci_register_types)
+-- 
+1.8.3.1
+

@@ -1,95 +1,95 @@
-Received: by 10.223.161.27 with SMTP id o27csp239298wro;
-        Mon, 23 Oct 2017 13:24:12 -0700 (PDT)
-X-Received: by 10.129.92.198 with SMTP id q189mr9906275ywb.417.1508790252280;
-        Mon, 23 Oct 2017 13:24:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508790252; cv=none;
+Received: by 10.223.161.27 with SMTP id o27csp240955wro;
+        Mon, 23 Oct 2017 13:26:18 -0700 (PDT)
+X-Received: by 10.37.174.148 with SMTP id b20mr2997076ybj.153.1508790378625;
+        Mon, 23 Oct 2017 13:26:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508790378; cv=none;
         d=google.com; s=arc-20160816;
-        b=ytFsNorpEpT2QQ3aCdNyMKzYEhNh6UAhdMyVP1BcGW8Gem96kgKHDzNc5QpHN42XtX
-         NN8pdlho41SIZfKWijuQ0p+irpD9cKiRyBAGzdNyFC8ionyNFiw4e72VLj/WQzWWAWcF
-         zxdjPK6IC4QgRAuA3vTomowoBnY9fqeFkiIyJeO4Mb4V8F+QT9Cv1HN0iDPCZ9UaDaCv
-         IA9/U+5s+teSoqHn1dJIWLqYJB/bvLQHETyZyMWD5DCiKRm8eQEEupx4x9DGCow8O+tM
-         1yqWM+ZapQGQ/EN07vdQ1L4bsKOxXEDrS5U28/Mk7hzyOJ0x8U3S34aOnDfsGYzKuENl
-         Gf8w==
+        b=tQGWRSvoDpUP38JyngHf0B4ZOS76BPk9TNfNHIx0n5Ly6iWP1ucAIYM8QG800G8CaI
+         VQps9D1A37MDOsbJuq72OvdNMnMrBP9rgKO4iEkaXJ+P9QFFopstAhLYv2dxLQdiJjJy
+         E4hjo3bvCCi1d0Fdd5FzhsBIy2aUknGKGMyvJdji4A93ScGFodxBMr6ZMSW7QCqSW2gw
+         rpanFlqEbMBFugbcKBgn8UrbwMuTr71RU+UHHmNqbw6CwNeIhMd85ON2t6QvmSM3WBmj
+         K9hwdc/bjoTbg2f3+pmGnttzFEbP0dbNVGe8Uocplel9+u2495rdtj/x1TwVtVPsCuEb
+         Nw0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=cP9bL3cVuA9cyOy69MzKHHd9WLcAQIG/0BWCMCP3isg=;
-        b=FTsVgASi5PSK7UvhaasxdIqKHI1AsRju4n3jHuTmKCMku84hfha3dAknz+flwBC1qK
-         fAmXX3Z9r+WHvpdPpibYID2qcs56KV+yGgk4bzv5tWn10M7tR0LY+NHR2Tf+1MMKyDsV
-         wsewv2MzrRzGpY4kKhbP+Zv8vib5jvtjVeigXEKR+Q8VkTIsRLbRyxVhIqyLq/uni5/J
-         bK6K5gIKhJJFbFW7CGFWaGosLnkpUYptixRiracBOQ9S0ueuCv/vpu42qKrViipj/EQ9
-         z8LDoGxiCY6oFDhACheQ3iuMaN32hlBlnLNIveGwGSsHtopG7uIKJkRnbF74nRKHCZpg
-         RYSw==
+        bh=EWY1y56rwLYcrZe8rnSmo2oLAKliC4aWqu9Ofm+PUjc=;
+        b=H/SA0e55yo4NaqW8ZzRakXRked0TKOaxE57cmy5LUCYGkYlo8wbXxTZG0qKXtRGuXQ
+         LPYbR/Tici+RRJfQxpO2tLe6uYhPHd8JffV4/NaUpFcQEadZjU6KsDOs/YQ/8Wmc5eg6
+         /e/OmFi2thnD+mq0XSp0YB5L9PGMQV2UzHF4ZfWmSBqJ0ZNzenzOL100FHyTcyhm9VfJ
+         LSi89YXaSxTHy3EMDH1gkMSnoLZMJ6VZa10roagjBuvO/P0A8aZdmrIQnadYzlFULqfk
+         KL/NlojTtTo+UEuTvr0YrNRCYruYADSPBt7jjxQLR5WINLMjjWVPB12T242DClWwgFmO
+         sDmQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Ubx55hTw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MlHSKOIq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v12si1402086ywi.101.2017.10.23.13.24.12
+        by mx.google.com with ESMTPS id u15si1308151ybu.216.2017.10.23.13.26.18
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 23 Oct 2017 13:24:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 23 Oct 2017 13:26:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Ubx55hTw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MlHSKOIq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:40444 helo=lists.gnu.org)
+Received: from localhost ([::1]:40461 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e6jGd-0002QN-IU
-	for alex.bennee@linaro.org; Mon, 23 Oct 2017 16:24:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46518)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1e6jIf-0003pa-W6
+	for alex.bennee@linaro.org; Mon, 23 Oct 2017 16:26:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46576)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1e6j4Y-0000Xb-JT
-	for qemu-arm@nongnu.org; Mon, 23 Oct 2017 16:11:45 -0400
+	(envelope-from <andrew.smirnov@gmail.com>) id 1e6j4c-0000ag-JP
+	for qemu-devel@nongnu.org; Mon, 23 Oct 2017 16:11:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1e6j4V-0002bl-Ey
-	for qemu-arm@nongnu.org; Mon, 23 Oct 2017 16:11:42 -0400
-Received: from mail-pf0-x244.google.com ([2607:f8b0:400e:c00::244]:44554)
+	(envelope-from <andrew.smirnov@gmail.com>) id 1e6j4a-0002e0-86
+	for qemu-devel@nongnu.org; Mon, 23 Oct 2017 16:11:46 -0400
+Received: from mail-pg0-x244.google.com ([2607:f8b0:400e:c05::244]:52103)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
-	id 1e6j4V-0002bG-4O; Mon, 23 Oct 2017 16:11:39 -0400
-Received: by mail-pf0-x244.google.com with SMTP id x7so17923622pfa.1;
-	Mon, 23 Oct 2017 13:11:39 -0700 (PDT)
+	id 1e6j4Q-0002Yp-A1; Mon, 23 Oct 2017 16:11:34 -0400
+Received: by mail-pg0-x244.google.com with SMTP id p9so12623824pgc.8;
+	Mon, 23 Oct 2017 13:11:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=cP9bL3cVuA9cyOy69MzKHHd9WLcAQIG/0BWCMCP3isg=;
-	b=Ubx55hTw0TjIWsYDLauh+XsPnd70WP1cD1ftb8vKmlvUhQ54tzsFjxvt2c5/p1CNF/
-	TMs0R4cvtyAkJsF5UqNYNnPV6Fjk9fJ+Sl0aIeXbWqLZWjLWLLS/C0B/qN/00dMcSc2n
-	c8KdjC2INbs0iTxrqnLq7JhLCnFbscKw9mQ7Xy/FbNUZmUPGZArn3fLWMWkFEzBPI24q
-	SZLZZmx95rKHPv7ME93cY5gPLoHe9YYAhgZ190bkp7jdmbi257AsXcXhEEvn90vocjdP
-	PypwhGoRZ8DiXA95TeDw9q9G86V1iVruR5YSrXrO62bM2Z+i+eThMiYL7EZjXxRXNSuY
-	h2Nw==
+	bh=EWY1y56rwLYcrZe8rnSmo2oLAKliC4aWqu9Ofm+PUjc=;
+	b=MlHSKOIqtn6pLepp0lO7p3GrqjT8nS3h+VtVBo4trCxZ0WUAOCbCHbxPBHwOILF2fM
+	6gg7PuptEjuon0En3/kEpTdtP0HcQ49W/ROocz5794+iQaPJLPVsNlY7gnOYqL2JpyxE
+	7EiMygDHD6ZibaTKYe+Keonw3cZOzNJEzZKDH/lSeFgtZETzUzCbsWaLHe3ZGsH3BDP7
+	QORPyA9ZnCAk3DfYPP5MUCrBkI8ArR/1CKqJ+VD0cQ1KXgL3hyixzBaJxmcyOVMFMWwl
+	Bl+3RcY02vByxyUyihQ4/TQU5GTA7YNJL/VCWevOg/T/fzx8ckgzuEWdcFOv3BAlvDUQ
+	LmHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:mime-version:content-transfer-encoding;
-	bh=cP9bL3cVuA9cyOy69MzKHHd9WLcAQIG/0BWCMCP3isg=;
-	b=kGS6/9giKU3V6dQv3DmTCh6FAX2ZPaod/QR+PBWF9tfJBBQaU9GeuzQ2vq0DkPJWWl
-	SEKoEJlvl9b/3C8W5Jt8rouDFHVhk/T5afNhzIDNS2NvIh6d4vbgNiUGF4TDfAh4YQun
-	QCeyk3eNRU6yUYutP8vw4I3XBQlc+ddwSbYZpWKGSIo5fa+xz6D3NWmBXydegnAo18o9
-	Rblhb0zixZxPKO/J+2RWHKHjckh433/xf3tuzbQwDsDXR8IDrycrxy17pPdAsRxE4fXY
-	V3YSZYz5UFAoS0dIENkbBAXGWFdxDwnqTPL1tSPDB21cbAuUcPROf2xO3iTxFJF9FP8q
-	TvFA==
-X-Gm-Message-State: AMCzsaXk+tRBdd/Q7mYHHeXbBF0AlBlwGyZfXG0SFctlF56n3U/JQa78
-	ZGtJa3nn+1p/Pxf3Yvmh+W+BYmtg
-X-Google-Smtp-Source: ABhQp+SsWloITJ0Urig3ukNIvAf9uwLthi/75/Qubf3W+HB2F1KvttKcODd62Ei0Ve6CRtcxajnqyg==
-X-Received: by 10.98.10.153 with SMTP id 25mr13907966pfk.60.1508789498029;
-	Mon, 23 Oct 2017 13:11:38 -0700 (PDT)
+	bh=EWY1y56rwLYcrZe8rnSmo2oLAKliC4aWqu9Ofm+PUjc=;
+	b=OxnA2d0qMLQ9BJDamFKJmaLmDt3QKt+dZmAXxSgmXpVY5u1OSWQNJhdM5Oi7LLu7T6
+	V1SFAWwqFb3JXP5HI6PwT8XwHLgkh08FvMpj8BnItGtvZhIuoQwK120C4DLtgMhysMI8
+	GzYrhz8E0VK2GyJ3kwflcC/ohm6YiHUtqY+UbmLM6+fAlZkZiPFhx9sBgZQCh5U768F5
+	3qdU+CtYAThHWf6euCFZVGdvR9CqRlRARpthnopvNjFIODtGFaOpMQVvbxS8vmRhXo73
+	sMDjVVUTW6Ycoph5oCjWuOUpWImMu7pg4pcY74eZVTVqSV7j8EDQd9QqrWGdlQC+TCIK
+	vsmQ==
+X-Gm-Message-State: AMCzsaX7Z0Ryjd6IX8SPW3AU+sIUCmdsT0Jve5P6wFhGr/w7Bzdaw8jr
+	mDMdeZAdnr4da0MAVryXiMHm8kO7
+X-Google-Smtp-Source: ABhQp+S40MRIMBGtNrYyMibWMfsUMEGdik1SSLzKsF+wp3p0C8UqZ6/onDPVkl/qSx0YUWUz4kaS9A==
+X-Received: by 10.101.65.11 with SMTP id w11mr7663253pgp.207.1508789493285;
+	Mon, 23 Oct 2017 13:11:33 -0700 (PDT)
 Received: from squirtle.westlake.spaceflightindustries.com ([173.226.206.194])
 	by smtp.gmail.com with ESMTPSA id
-	j1sm15181623pfj.108.2017.10.23.13.11.37
+	j1sm15181623pfj.108.2017.10.23.13.11.32
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 23 Oct 2017 13:11:37 -0700 (PDT)
+	Mon, 23 Oct 2017 13:11:32 -0700 (PDT)
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 To: qemu-arm@nongnu.org
-Date: Mon, 23 Oct 2017 13:10:50 -0700
-Message-Id: <20171023201055.21973-23-andrew.smirnov@gmail.com>
+Date: Mon, 23 Oct 2017 13:10:45 -0700
+Message-Id: <20171023201055.21973-18-andrew.smirnov@gmail.com>
 X-Mailer: git-send-email 2.13.5
 In-Reply-To: <20171023201055.21973-1-andrew.smirnov@gmail.com>
 References: <20171023201055.21973-1-andrew.smirnov@gmail.com>
@@ -98,32 +98,30 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c00::244
-Subject: [Qemu-arm] [PATCH v2 22/27] pci: Add support for Designware IP block
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400e:c05::244
+Subject: [Qemu-devel] [PATCH v2 17/27] i.MX: Add code to emulate i.MX7
+ IOMUXC IP block
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Andrey Smirnov <andrew.smirnov@gmail.com>,
 	Jason Wang <jasowang@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, yurovsky@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8MnF+mv8S1bw
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PC+0kf1yKjM6
 
-Add code needed to get a functional PCI subsytem when using in
-conjunction with upstream Linux guest (4.13+). Tested to work against
-"e1000e" (network adapter, using MSI interrupts) as well as
-"usb-ehci" (USB controller, using legacy PCI interrupts).
+Add minimal code needed to allow upstream Linux guest to boot.
 
 Cc: Peter Maydell <peter.maydell@linaro.org>
 Cc: Jason Wang <jasowang@redhat.com>
@@ -133,764 +131,158 @@ Cc: qemu-arm@nongnu.org
 Cc: yurovsky@gmail.com
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- default-configs/arm-softmmu.mak  |   2 +
- hw/pci-host/Makefile.objs        |   2 +
- hw/pci-host/designware.c         | 614 +++++++++++++++++++++++++++++++++++++++
- include/hw/pci-host/designware.h |  92 ++++++
- include/hw/pci/pci_ids.h         |   2 +
- 5 files changed, 712 insertions(+)
- create mode 100644 hw/pci-host/designware.c
- create mode 100644 include/hw/pci-host/designware.h
+ hw/misc/Makefile.objs         |  1 +
+ hw/misc/imx7_iomuxc.c         | 99 +++++++++++++++++++++++++++++++++++++++++++
+ include/hw/misc/imx7_iomuxc.h | 22 ++++++++++
+ 3 files changed, 122 insertions(+)
+ create mode 100644 hw/misc/imx7_iomuxc.c
+ create mode 100644 include/hw/misc/imx7_iomuxc.h
 
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-index bbdd3c1d8b..225ebbd90a 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -129,3 +129,5 @@ CONFIG_ACPI=y
- CONFIG_SMBIOS=y
- CONFIG_ASPEED_SOC=y
- CONFIG_GPIO_KEY=y
-+
-+CONFIG_PCI_DESIGNWARE=y
-diff --git a/hw/pci-host/Makefile.objs b/hw/pci-host/Makefile.objs
-index 9c7909cf44..0e2c0a123b 100644
---- a/hw/pci-host/Makefile.objs
-+++ b/hw/pci-host/Makefile.objs
-@@ -17,3 +17,5 @@ common-obj-$(CONFIG_PCI_PIIX) += piix.o
- common-obj-$(CONFIG_PCI_Q35) += q35.o
- common-obj-$(CONFIG_PCI_GENERIC) += gpex.o
- common-obj-$(CONFIG_PCI_XILINX) += xilinx-pcie.o
-+
-+common-obj-$(CONFIG_PCI_DESIGNWARE) += designware.o
-diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
+diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+index 16cee88e0f..492c535330 100644
+--- a/hw/misc/Makefile.objs
++++ b/hw/misc/Makefile.objs
+@@ -37,6 +37,7 @@ obj-$(CONFIG_IMX) += imx6_src.o
+ obj-$(CONFIG_IMX) += imx7_ccm.o
+ obj-$(CONFIG_IMX) += imx2_wdt.o
+ obj-$(CONFIG_IMX) += imx7_snvs.o
++obj-$(CONFIG_IMX) += imx7_iomuxc.o
+ obj-$(CONFIG_MILKYMIST) += milkymist-hpdmc.o
+ obj-$(CONFIG_MILKYMIST) += milkymist-pfpu.o
+ obj-$(CONFIG_MAINSTONE) += mst_fpga.o
+diff --git a/hw/misc/imx7_iomuxc.c b/hw/misc/imx7_iomuxc.c
 new file mode 100644
-index 0000000000..7ae4126d96
+index 0000000000..aa26a7485f
 --- /dev/null
-+++ b/hw/pci-host/designware.c
-@@ -0,0 +1,614 @@
++++ b/hw/misc/imx7_iomuxc.c
+@@ -0,0 +1,99 @@
 +/*
 + * Copyright (c) 2017, Impinj, Inc.
 + *
-+ * Designware PCIe IP block emulation
++ * i.MX7 IOMUXC block emulation code
 + *
-+ * This library is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU Lesser General Public
-+ * License as published by the Free Software Foundation; either
-+ * version 2 of the License, or (at your option) any later version.
++ * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
 + *
-+ * This library is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * Lesser General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU Lesser General Public
-+ * License along with this library; if not, see
-+ * <http://www.gnu.org/licenses/>.
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
 + */
 +
 +#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/pci/msi.h"
-+#include "hw/pci/pci_bridge.h"
-+#include "hw/pci/pci_host.h"
-+#include "hw/pci/pcie_port.h"
-+#include "hw/pci-host/designware.h"
++#include "hw/misc/imx7_iomuxc.h"
++#include "qemu/log.h"
 +
-+#define PCIE_PORT_LINK_CONTROL          0x710
-+
-+#define PCIE_PHY_DEBUG_R1               0x72C
-+#define PCIE_PHY_DEBUG_R1_XMLH_LINK_UP  BIT(4)
-+
-+#define PCIE_LINK_WIDTH_SPEED_CONTROL   0x80C
-+
-+#define PCIE_MSI_ADDR_LO                0x820
-+#define PCIE_MSI_ADDR_HI                0x824
-+#define PCIE_MSI_INTR0_ENABLE           0x828
-+#define PCIE_MSI_INTR0_MASK             0x82C
-+#define PCIE_MSI_INTR0_STATUS           0x830
-+
-+#define PCIE_ATU_VIEWPORT               0x900
-+#define PCIE_ATU_REGION_INBOUND         (0x1 << 31)
-+#define PCIE_ATU_REGION_OUTBOUND        (0x0 << 31)
-+#define PCIE_ATU_REGION_INDEX2          (0x2 << 0)
-+#define PCIE_ATU_REGION_INDEX1          (0x1 << 0)
-+#define PCIE_ATU_REGION_INDEX0          (0x0 << 0)
-+#define PCIE_ATU_CR1                    0x904
-+#define PCIE_ATU_TYPE_MEM               (0x0 << 0)
-+#define PCIE_ATU_TYPE_IO                (0x2 << 0)
-+#define PCIE_ATU_TYPE_CFG0              (0x4 << 0)
-+#define PCIE_ATU_TYPE_CFG1              (0x5 << 0)
-+#define PCIE_ATU_CR2                    0x908
-+#define PCIE_ATU_ENABLE                 (0x1 << 31)
-+#define PCIE_ATU_BAR_MODE_ENABLE        (0x1 << 30)
-+#define PCIE_ATU_LOWER_BASE             0x90C
-+#define PCIE_ATU_UPPER_BASE             0x910
-+#define PCIE_ATU_LIMIT                  0x914
-+#define PCIE_ATU_LOWER_TARGET           0x918
-+#define PCIE_ATU_BUS(x)                 (((x) >> 24) & 0xff)
-+#define PCIE_ATU_DEVFN(x)               (((x) >> 16) & 0xff)
-+#define PCIE_ATU_UPPER_TARGET           0x91C
-+
-+static DesignwarePCIEHost *
-+designware_pcie_root_to_host(DesignwarePCIERoot *root)
++static void imx7_iomuxc_reset(DeviceState *dev)
 +{
-+    BusState *bus = qdev_get_parent_bus(DEVICE(root));
-+    return DESIGNWARE_PCIE_HOST(bus->parent);
++    IMX7IOMUXCState *s = IMX7_IOMUXC(dev);
++
++    memset(s->regs, 0, sizeof(s->regs));
 +}
 +
-+static void designware_pcie_root_msi_write(void *opaque, hwaddr addr,
-+                                           uint64_t val, unsigned len)
++static uint64_t imx7_iomuxc_read(void *opaque, hwaddr offset,
++                               unsigned size)
 +{
-+    DesignwarePCIERoot *root = DESIGNWARE_PCIE_ROOT(opaque);
-+    DesignwarePCIEHost *host = designware_pcie_root_to_host(root);
-+
-+    root->msi.intr[0].status |= (1 << val) & root->msi.intr[0].enable;
-+
-+    if (root->msi.intr[0].status & ~root->msi.intr[0].mask) {
-+        qemu_set_irq(host->pci.irqs[0], 1);
-+    }
++    IMX7IOMUXCState *s = opaque;
++    return s->regs[offset / sizeof(uint32_t)];
 +}
 +
-+const MemoryRegionOps designware_pci_host_msi_ops = {
-+    .write = designware_pcie_root_msi_write,
++static void imx7_iomuxc_write(void *opaque, hwaddr offset,
++                            uint64_t value, unsigned size)
++{
++    IMX7IOMUXCState *s = opaque;
++    s->regs[offset / sizeof(uint32_t)] = value;
++}
++
++static const struct MemoryRegionOps imx7_iomuxc_ops = {
++    .read = imx7_iomuxc_read,
++    .write = imx7_iomuxc_write,
 +    .endianness = DEVICE_NATIVE_ENDIAN,
++    .impl = {
++        /*
++         * Our device would not work correctly if the guest was doing
++         * unaligned access. This might not be a limitation on the real
++         * device but in practice there is no reason for a guest to access
++         * this device unaligned.
++         */
++        .min_access_size = 4,
++        .max_access_size = 4,
++        .unaligned = false,
++    },
 +};
 +
-+static void designware_pcie_root_update_msi_mapping(DesignwarePCIERoot *root)
-+
++static void imx7_iomuxc_init(Object *obj)
 +{
-+    DesignwarePCIEHost *host = designware_pcie_root_to_host(root);
-+    MemoryRegion *address_space = &host->pci.memory;
-+    MemoryRegion *mem = &root->msi.iomem;
-+    const uint64_t base = root->msi.base;
-+    const bool enable = root->msi.intr[0].enable;
-+
-+    if (memory_region_is_mapped(mem)) {
-+        memory_region_del_subregion(address_space, mem);
-+        object_unparent(OBJECT(mem));
-+    }
-+
-+    if (enable) {
-+        memory_region_init_io(mem, OBJECT(root),
-+                              &designware_pci_host_msi_ops,
-+                              root, "pcie-msi", 0x1000);
-+
-+        memory_region_add_subregion(address_space, base, mem);
-+    }
-+}
-+
-+static DesignwarePCIEViewport *
-+designware_pcie_root_get_current_viewport(DesignwarePCIERoot *root)
-+{
-+    const unsigned int idx = root->atu_viewport & 0xF;
-+    const unsigned int dir = !!(root->atu_viewport & PCIE_ATU_REGION_INBOUND);
-+    return &root->viewports[dir][idx];
-+}
-+
-+static uint32_t
-+designware_pcie_root_config_read(PCIDevice *d, uint32_t address, int len)
-+{
-+    DesignwarePCIERoot *root = DESIGNWARE_PCIE_ROOT(d);
-+    DesignwarePCIEViewport *viewport =
-+        designware_pcie_root_get_current_viewport(root);
-+
-+    uint32_t val;
-+
-+    switch (address) {
-+    case PCIE_PORT_LINK_CONTROL:
-+    case PCIE_LINK_WIDTH_SPEED_CONTROL:
-+        val = 0xDEADBEEF;
-+        /* No-op */
-+        break;
-+
-+    case PCIE_MSI_ADDR_LO:
-+        val = root->msi.base;
-+        break;
-+
-+    case PCIE_MSI_ADDR_HI:
-+        val = root->msi.base >> 32;
-+        break;
-+
-+    case PCIE_MSI_INTR0_ENABLE:
-+        val = root->msi.intr[0].enable;
-+        break;
-+
-+    case PCIE_MSI_INTR0_MASK:
-+        val = root->msi.intr[0].mask;
-+        break;
-+
-+    case PCIE_MSI_INTR0_STATUS:
-+        val = root->msi.intr[0].status;
-+        break;
-+
-+    case PCIE_PHY_DEBUG_R1:
-+        val = PCIE_PHY_DEBUG_R1_XMLH_LINK_UP;
-+        break;
-+
-+    case PCIE_ATU_VIEWPORT:
-+        val = root->atu_viewport;
-+        break;
-+
-+    case PCIE_ATU_LOWER_BASE:
-+        val = viewport->base;
-+        break;
-+
-+    case PCIE_ATU_UPPER_BASE:
-+        val = viewport->base >> 32;
-+        break;
-+
-+    case PCIE_ATU_LOWER_TARGET:
-+        val = viewport->target;
-+        break;
-+
-+    case PCIE_ATU_UPPER_TARGET:
-+        val = viewport->target >> 32;
-+        break;
-+
-+    case PCIE_ATU_LIMIT:
-+        val = viewport->limit;
-+        break;
-+
-+    case PCIE_ATU_CR1:
-+    case PCIE_ATU_CR2:          /* FALLTHROUGH */
-+        val = viewport->cr[(address - PCIE_ATU_CR1) / sizeof(uint32_t)];
-+        break;
-+
-+    default:
-+        val = pci_default_read_config(d, address, len);
-+        break;
-+    }
-+
-+    return val;
-+}
-+
-+static uint64_t designware_pcie_root_data_read(void *opaque,
-+                                               hwaddr addr, unsigned len)
-+{
-+    DesignwarePCIERoot *root = DESIGNWARE_PCIE_ROOT(opaque);
-+    DesignwarePCIEViewport *viewport =
-+        designware_pcie_root_get_current_viewport(root);
-+
-+    const uint8_t busnum = PCIE_ATU_BUS(viewport->target);
-+    const uint8_t devfn  = PCIE_ATU_DEVFN(viewport->target);
-+    PCIBus    *pcibus    = PCI_DEVICE(root)->bus;
-+    PCIDevice *pcidev    = pci_find_device(pcibus, busnum, devfn);
-+
-+    if (pcidev) {
-+        addr &= PCI_CONFIG_SPACE_SIZE - 1;
-+
-+        return pci_host_config_read_common(pcidev, addr,
-+                                           PCI_CONFIG_SPACE_SIZE, len);
-+    }
-+
-+    return UINT64_MAX;
-+}
-+
-+static void designware_pcie_root_data_write(void *opaque, hwaddr addr,
-+                                            uint64_t val, unsigned len)
-+{
-+    DesignwarePCIERoot *root = DESIGNWARE_PCIE_ROOT(opaque);
-+    DesignwarePCIEViewport *viewport =
-+        designware_pcie_root_get_current_viewport(root);
-+    const uint8_t busnum = PCIE_ATU_BUS(viewport->target);
-+    const uint8_t devfn  = PCIE_ATU_DEVFN(viewport->target);
-+    PCIBus    *pcibus    = PCI_DEVICE(root)->bus;
-+    PCIDevice *pcidev    = pci_find_device(pcibus, busnum, devfn);
-+
-+    if (pcidev) {
-+        addr &= PCI_CONFIG_SPACE_SIZE - 1;
-+        pci_host_config_write_common(pcidev, addr,
-+                                     PCI_CONFIG_SPACE_SIZE,
-+                                     val, len);
-+    }
-+}
-+
-+const MemoryRegionOps designware_pci_host_conf_ops = {
-+    .read = designware_pcie_root_data_read,
-+    .write = designware_pcie_root_data_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+};
-+
-+static void designware_pcie_update_viewport(DesignwarePCIERoot *root,
-+                                            DesignwarePCIEViewport *viewport)
-+{
-+    DesignwarePCIEHost *host = designware_pcie_root_to_host(root);
-+
-+    MemoryRegion *mem     = &viewport->memory;
-+    const uint64_t target = viewport->target;
-+    const uint64_t base   = viewport->base;
-+    const uint64_t size   = (uint64_t)viewport->limit - base + 1;
-+    const bool inbound    = viewport->inbound;
-+
-+    MemoryRegion *source, *destination;
-+    const char *direction;
-+    char *name;
-+
-+    if (inbound) {
-+        source      = &host->pci.address_space_root;
-+        destination = get_system_memory();
-+        direction   = "Inbound";
-+    } else {
-+        source      = get_system_memory();
-+        destination = &host->pci.memory;
-+        direction   = "Outbound";
-+    }
-+
-+    if (memory_region_is_mapped(mem)) {
-+        /* Before we modify anything, unmap and destroy the region */
-+        memory_region_del_subregion(source, mem);
-+        object_unparent(OBJECT(mem));
-+    }
-+
-+    name = g_strdup_printf("PCI %s Viewport %p", direction, viewport);
-+
-+    switch (viewport->cr[0]) {
-+    case PCIE_ATU_TYPE_MEM:
-+        memory_region_init_alias(mem, OBJECT(root), name,
-+                                 destination, target, size);
-+        break;
-+    case PCIE_ATU_TYPE_CFG0:
-+    case PCIE_ATU_TYPE_CFG1:    /* FALLTHROUGH */
-+        if (inbound) {
-+            goto exit;
-+        }
-+
-+        memory_region_init_io(mem, OBJECT(root),
-+                              &designware_pci_host_conf_ops,
-+                              root, name, size);
-+        break;
-+    }
-+
-+    if (inbound) {
-+        memory_region_add_subregion_overlap(source, base,
-+                                            mem, -1);
-+    } else {
-+        memory_region_add_subregion(source, base, mem);
-+    }
-+
-+ exit:
-+    g_free(name);
-+}
-+
-+static void designware_pcie_root_config_write(PCIDevice *d, uint32_t address,
-+                                              uint32_t val, int len)
-+{
-+    DesignwarePCIERoot *root = DESIGNWARE_PCIE_ROOT(d);
-+    DesignwarePCIEHost *host = designware_pcie_root_to_host(root);
-+    DesignwarePCIEViewport *viewport =
-+        designware_pcie_root_get_current_viewport(root);
-+
-+    switch (address) {
-+    case PCIE_PORT_LINK_CONTROL:
-+    case PCIE_LINK_WIDTH_SPEED_CONTROL:
-+    case PCIE_PHY_DEBUG_R1:
-+        /* No-op */
-+        break;
-+
-+    case PCIE_MSI_ADDR_LO:
-+        root->msi.base &= 0xFFFFFFFF00000000ULL;
-+        root->msi.base |= val;
-+        break;
-+
-+    case PCIE_MSI_ADDR_HI:
-+        root->msi.base &= 0x00000000FFFFFFFFULL;
-+        root->msi.base |= (uint64_t)val << 32;
-+        break;
-+
-+    case PCIE_MSI_INTR0_ENABLE: {
-+        const bool update_msi_mapping = !root->msi.intr[0].enable ^ !!val;
-+
-+        root->msi.intr[0].enable = val;
-+
-+        if (update_msi_mapping) {
-+            designware_pcie_root_update_msi_mapping(root);
-+        }
-+        break;
-+    }
-+
-+    case PCIE_MSI_INTR0_MASK:
-+        root->msi.intr[0].mask = val;
-+        break;
-+
-+    case PCIE_MSI_INTR0_STATUS:
-+        root->msi.intr[0].status ^= val;
-+        if (!root->msi.intr[0].status) {
-+            qemu_set_irq(host->pci.irqs[0], 0);
-+        }
-+        break;
-+
-+    case PCIE_ATU_VIEWPORT:
-+        root->atu_viewport = val;
-+        break;
-+
-+    case PCIE_ATU_LOWER_BASE:
-+        viewport->base &= 0xFFFFFFFF00000000ULL;
-+        viewport->base |= val;
-+        break;
-+
-+    case PCIE_ATU_UPPER_BASE:
-+        viewport->base &= 0x00000000FFFFFFFFULL;
-+        viewport->base |= (uint64_t)val << 32;
-+        break;
-+
-+    case PCIE_ATU_LOWER_TARGET:
-+        viewport->target &= 0xFFFFFFFF00000000ULL;
-+        viewport->target |= val;
-+        break;
-+
-+    case PCIE_ATU_UPPER_TARGET:
-+        viewport->target &= 0x00000000FFFFFFFFULL;
-+        viewport->target |= val;
-+        break;
-+
-+    case PCIE_ATU_LIMIT:
-+        viewport->limit = val;
-+        break;
-+
-+    case PCIE_ATU_CR1:
-+        viewport->cr[0] = val;
-+        break;
-+    case PCIE_ATU_CR2:
-+        viewport->cr[1] = val;
-+
-+        if (viewport->cr[1] & PCIE_ATU_ENABLE) {
-+            designware_pcie_update_viewport(root, viewport);
-+         }
-+        break;
-+
-+    default:
-+        pci_bridge_write_config(d, address, val, len);
-+        break;
-+    }
-+}
-+
-+static int designware_pcie_root_init(PCIDevice *dev)
-+{
-+    DesignwarePCIERoot *root = DESIGNWARE_PCIE_ROOT(dev);
-+    PCIBridge *br = PCI_BRIDGE(dev);
-+    DesignwarePCIEViewport *viewport;
-+    size_t i;
-+
-+    br->bus_name  = "dw-pcie";
-+
-+    pci_set_word(dev->config + PCI_COMMAND,
-+                 PCI_COMMAND_MEMORY | PCI_COMMAND_MASTER);
-+
-+    pci_config_set_interrupt_pin(dev->config, 1);
-+    pci_bridge_initfn(dev, TYPE_PCI_BUS);
-+
-+    pcie_port_init_reg(dev);
-+
-+    pcie_cap_init(dev, 0x70, PCI_EXP_TYPE_ROOT_PORT,
-+                  0, &error_fatal);
-+
-+    msi_nonbroken = true;
-+    msi_init(dev, 0x50, 32, true, true, &error_fatal);
-+
-+    for (i = 0; i < DESIGNWARE_PCIE_NUM_VIEWPORTS; i++) {
-+        viewport = &root->viewports[DESIGNWARE_PCIE_VIEWPORT_INBOUND][i];
-+        viewport->inbound = true;
-+    }
-+
-+    /*
-+     * If no inbound iATU windows are configured, HW defaults to
-+     * letting inbound TLPs to pass in. We emulate that by exlicitly
-+     * configuring first inbound window to cover all of target's
-+     * address space.
-+     *
-+     * NOTE: This will not work correctly for the case when first
-+     * configured inbound window is window 0
-+     */
-+    viewport = &root->viewports[DESIGNWARE_PCIE_VIEWPORT_INBOUND][0];
-+    viewport->base   = 0x0000000000000000ULL;
-+    viewport->target = 0x0000000000000000ULL;
-+    viewport->limit  = UINT32_MAX;
-+    viewport->cr[0]  = PCIE_ATU_TYPE_MEM;
-+
-+    designware_pcie_update_viewport(root, viewport);
-+
-+    return 0;
-+}
-+
-+static void designware_pcie_set_irq(void *opaque, int irq_num, int level)
-+{
-+    DesignwarePCIEHost *host = DESIGNWARE_PCIE_HOST(opaque);
-+
-+    qemu_set_irq(host->pci.irqs[irq_num], level);
-+}
-+
-+static const char *designware_pcie_host_root_bus_path(PCIHostState *host_bridge,
-+                                                      PCIBus *rootbus)
-+{
-+    return "0000:00";
-+}
-+
-+
-+static void designware_pcie_root_class_init(ObjectClass *klass, void *data)
-+{
-+    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-+
-+    k->vendor_id = PCI_VENDOR_ID_SYNOPSYS;
-+    k->device_id = 0xABCD;
-+    k->revision = 0;
-+    k->class_id = PCI_CLASS_BRIDGE_HOST;
-+    k->is_express = true;
-+    k->is_bridge = true;
-+    k->init = designware_pcie_root_init;
-+    k->exit = pci_bridge_exitfn;
-+    dc->reset = pci_bridge_reset;
-+    k->config_read = designware_pcie_root_config_read;
-+    k->config_write = designware_pcie_root_config_write;
-+
-+    /*
-+     * PCI-facing part of the host bridge, not usable without the
-+     * host-facing part, which can't be device_add'ed, yet.
-+     */
-+    dc->user_creatable = false;
-+}
-+
-+static uint64_t designware_pcie_host_mmio_read(void *opaque, hwaddr addr,
-+                                               unsigned int size)
-+{
-+    PCIHostState *pci = PCI_HOST_BRIDGE(opaque);
-+    PCIDevice *device = pci_find_device(pci->bus, 0, 0);
-+
-+    return pci_host_config_read_common(device,
-+                                       addr,
-+                                       pci_config_size(device),
-+                                       size);
-+}
-+
-+static void designware_pcie_host_mmio_write(void *opaque, hwaddr addr,
-+                                            uint64_t val, unsigned int size)
-+{
-+    PCIHostState *pci = PCI_HOST_BRIDGE(opaque);
-+    PCIDevice *device = pci_find_device(pci->bus, 0, 0);
-+
-+    return pci_host_config_write_common(device,
-+                                        addr,
-+                                        pci_config_size(device),
-+                                        val, size);
-+}
-+
-+static const MemoryRegionOps designware_pci_mmio_ops = {
-+    .read       = designware_pcie_host_mmio_read,
-+    .write      = designware_pcie_host_mmio_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+};
-+
-+static AddressSpace *designware_pcie_host_set_iommu(PCIBus *bus, void *opaque,
-+                                                    int devfn)
-+{
-+    DesignwarePCIEHost *s = DESIGNWARE_PCIE_HOST(opaque);
-+
-+    return &s->pci.address_space;
-+}
-+
-+static void designware_pcie_host_realize(DeviceState *dev, Error **errp)
-+{
-+    PCIHostState *pci = PCI_HOST_BRIDGE(dev);
-+    DesignwarePCIEHost *s = DESIGNWARE_PCIE_HOST(dev);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+    size_t i;
-+
-+    for (i = 0; i < ARRAY_SIZE(s->pci.irqs); i++) {
-+        sysbus_init_irq(sbd, &s->pci.irqs[i]);
-+    }
-+
-+    memory_region_init_io(&s->mmio,
-+                          OBJECT(s),
-+                          &designware_pci_mmio_ops,
++    SysBusDevice *sd = SYS_BUS_DEVICE(obj);
++    IMX7IOMUXCState *s = IMX7_IOMUXC(obj);
++
++    memory_region_init_io(&s->iomem,
++                          obj,
++                          &imx7_iomuxc_ops,
 +                          s,
-+                          "pcie.reg", 4 * 1024);
-+    sysbus_init_mmio(sbd, &s->mmio);
-+
-+    memory_region_init(&s->pci.io, OBJECT(s), "pcie-pio", 16);
-+    memory_region_init(&s->pci.memory, OBJECT(s),
-+                       "pcie-bus-memory",
-+                       UINT64_MAX);
-+
-+    pci->bus = pci_register_bus(dev, "pcie",
-+                                designware_pcie_set_irq,
-+                                pci_swizzle_map_irq_fn,
-+                                s,
-+                                &s->pci.memory,
-+                                &s->pci.io,
-+                                0, 4,
-+                                TYPE_PCIE_BUS);
-+
-+    memory_region_init(&s->pci.address_space_root,
-+                       OBJECT(s),
-+                       "pcie-bus-address-space-root",
-+                       UINT64_MAX);
-+    memory_region_add_subregion(&s->pci.address_space_root,
-+                                0x0, &s->pci.memory);
-+    address_space_init(&s->pci.address_space,
-+                       &s->pci.address_space_root,
-+                       "pcie-bus-address-space");
-+    pci_setup_iommu(pci->bus, designware_pcie_host_set_iommu, s);
-+
-+    qdev_set_parent_bus(DEVICE(&s->root), BUS(pci->bus));
-+    qdev_init_nofail(DEVICE(&s->root));
++                          TYPE_IMX7_IOMUXC ".iomem",
++                          sizeof(s->regs));
++    sysbus_init_mmio(sd, &s->iomem);
 +}
 +
-+static void designware_pcie_host_class_init(ObjectClass *klass, void *data)
++static const VMStateDescription vmstate_imx7_iomuxc = {
++    .name = TYPE_IMX7_IOMUXC,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32_ARRAY(regs, IMX7IOMUXCState, IOMUXC_NUM),
++        VMSTATE_END_OF_LIST()
++    },
++};
++
++static void imx7_iomuxc_class_init(ObjectClass *klass, void *data)
 +{
 +    DeviceClass *dc = DEVICE_CLASS(klass);
-+    PCIHostBridgeClass *hc = PCI_HOST_BRIDGE_CLASS(klass);
 +
-+    hc->root_bus_path = designware_pcie_host_root_bus_path;
-+    dc->realize = designware_pcie_host_realize;
-+    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-+    dc->fw_name = "pci";
++    dc->reset = imx7_iomuxc_reset;
++    dc->vmsd  = &vmstate_imx7_iomuxc;
++    dc->desc  = "i.MX IOMUXC Module";
 +}
 +
-+static void designware_pcie_host_init(Object *obj)
-+{
-+    DesignwarePCIEHost *s = DESIGNWARE_PCIE_HOST(obj);
-+    DesignwarePCIERoot *root = &s->root;
-+
-+    object_initialize(root, sizeof(*root), TYPE_DESIGNWARE_PCIE_ROOT);
-+    object_property_add_child(obj, "root", OBJECT(root), NULL);
-+    qdev_prop_set_int32(DEVICE(root), "addr", PCI_DEVFN(0, 0));
-+    qdev_prop_set_bit(DEVICE(root), "multifunction", false);
-+}
-+
-+static const TypeInfo designware_pcie_root_info = {
-+    .name = TYPE_DESIGNWARE_PCIE_ROOT,
-+    .parent = TYPE_PCI_BRIDGE,
-+    .instance_size = sizeof(DesignwarePCIERoot),
-+    .class_init = designware_pcie_root_class_init,
++static const TypeInfo imx7_iomuxc_info = {
++    .name          = TYPE_IMX7_IOMUXC,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(IMX7IOMUXCState),
++    .instance_init = imx7_iomuxc_init,
++    .class_init    = imx7_iomuxc_class_init,
 +};
 +
-+static const TypeInfo designware_pcie_host_info = {
-+    .name       = TYPE_DESIGNWARE_PCIE_HOST,
-+    .parent     = TYPE_PCI_HOST_BRIDGE,
-+    .instance_size = sizeof(DesignwarePCIEHost),
-+    .instance_init = designware_pcie_host_init,
-+    .class_init = designware_pcie_host_class_init,
-+};
-+
-+static void designware_pcie_register(void)
++static void imx7_iomuxc_register_type(void)
 +{
-+    type_register_static(&designware_pcie_root_info);
-+    type_register_static(&designware_pcie_host_info);
++    type_register_static(&imx7_iomuxc_info);
 +}
-+type_init(designware_pcie_register)
-+
-+/* 00:00.0 Class 0604: 16c3:abcd */
-diff --git a/include/hw/pci-host/designware.h b/include/hw/pci-host/designware.h
++type_init(imx7_iomuxc_register_type)
+diff --git a/include/hw/misc/imx7_iomuxc.h b/include/hw/misc/imx7_iomuxc.h
 new file mode 100644
-index 0000000000..c1eabfa16b
+index 0000000000..7041a1ff42
 --- /dev/null
-+++ b/include/hw/pci-host/designware.h
-@@ -0,0 +1,92 @@
-+/*
-+ * Copyright (c) 2017, Impinj, Inc.
-+ *
-+ * Designware PCIe IP block emulation
-+ *
-+ * This library is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU Lesser General Public
-+ * License as published by the Free Software Foundation; either
-+ * version 2 of the License, or (at your option) any later version.
-+ *
-+ * This library is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * Lesser General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU Lesser General Public
-+ * License along with this library; if not, see
-+ * <http://www.gnu.org/licenses/>.
-+ */
++++ b/include/hw/misc/imx7_iomuxc.h
+@@ -0,0 +1,22 @@
++#ifndef IMX7_IOMUXC_H
++#define IMX7_IOMUXC_H
 +
-+#ifndef DESIGNWARE_H
-+#define DESIGNWARE_H
-+
-+#include "hw/hw.h"
 +#include "hw/sysbus.h"
-+#include "hw/pci/pci.h"
-+#include "hw/pci/pci_bus.h"
-+#include "hw/pci/pcie_host.h"
 +
-+#define TYPE_DESIGNWARE_PCIE_HOST "designware-pcie-host"
-+#define DESIGNWARE_PCIE_HOST(obj) \
-+     OBJECT_CHECK(DesignwarePCIEHost, (obj), TYPE_DESIGNWARE_PCIE_HOST)
++enum IMX7IOMUXCRegisters {
++    IOMUXC_NUM = 0x740 / sizeof(uint32_t),
++};
 +
-+#define TYPE_DESIGNWARE_PCIE_ROOT "designware-pcie-root"
-+#define DESIGNWARE_PCIE_ROOT(obj) \
-+     OBJECT_CHECK(DesignwarePCIERoot, (obj), TYPE_DESIGNWARE_PCIE_ROOT)
++typedef struct IMX7IOMUXCState {
++    /*< private >*/
++    SysBusDevice parent_obj;
 +
-+typedef struct DesignwarePCIEViewport {
-+    MemoryRegion memory;
++    /*< public >*/
++    MemoryRegion iomem;
++    uint32_t     regs[IOMUXC_NUM];
++} IMX7IOMUXCState;
 +
-+    uint64_t base;
-+    uint64_t target;
-+    uint32_t limit;
-+    uint32_t cr[2];
++#define TYPE_IMX7_IOMUXC "imx7-iomuxc"
++#define IMX7_IOMUXC(obj) OBJECT_CHECK(IMX7IOMUXCState, (obj), TYPE_IMX7_IOMUXC)
 +
-+    bool inbound;
-+} DesignwarePCIEViewport;
-+
-+typedef struct DesignwarePCIERoot {
-+    PCIBridge parent_obj;
-+
-+    uint32_t atu_viewport;
-+
-+#define DESIGNWARE_PCIE_VIEWPORT_OUTBOUND    0
-+#define DESIGNWARE_PCIE_VIEWPORT_INBOUND     1
-+#define DESIGNWARE_PCIE_NUM_VIEWPORTS        4
-+
-+    DesignwarePCIEViewport viewports[2][DESIGNWARE_PCIE_NUM_VIEWPORTS];
-+
-+    struct {
-+        uint64_t     base;
-+        MemoryRegion iomem;
-+
-+        struct {
-+            uint32_t enable;
-+            uint32_t mask;
-+            uint32_t status;
-+        } intr[1];
-+    } msi;
-+} DesignwarePCIERoot;
-+
-+typedef struct DesignwarePCIEHost {
-+    PCIHostState parent_obj;
-+
-+    bool link_up;
-+
-+    DesignwarePCIERoot root;
-+
-+    struct {
-+        AddressSpace address_space;
-+        MemoryRegion address_space_root;
-+
-+        MemoryRegion memory;
-+        MemoryRegion io;
-+
-+        qemu_irq     irqs[4];
-+    } pci;
-+
-+    MemoryRegion mmio;
-+} DesignwarePCIEHost;
-+
-+#endif  /* DESIGNWARE_H */
-diff --git a/include/hw/pci/pci_ids.h b/include/hw/pci/pci_ids.h
-index 3752ddc93a..e2816d054f 100644
---- a/include/hw/pci/pci_ids.h
-+++ b/include/hw/pci/pci_ids.h
-@@ -264,4 +264,6 @@
- #define PCI_VENDOR_ID_TEWS               0x1498
- #define PCI_DEVICE_ID_TEWS_TPCI200       0x30C8
- 
-+#define PCI_VENDOR_ID_SYNOPSYS           0x16C3
-+
- #endif
++#endif /* IMX7_IOMUXC_H */
 -- 
 2.13.5
 

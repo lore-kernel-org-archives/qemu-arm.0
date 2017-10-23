@@ -1,94 +1,84 @@
-Received: by 10.223.197.9 with SMTP id q9csp10603171wrf;
-        Mon, 23 Oct 2017 07:14:38 -0700 (PDT)
-X-Received: by 10.37.160.5 with SMTP id x5mr8310674ybh.129.1508768078000;
-        Mon, 23 Oct 2017 07:14:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508768077; cv=none;
+Received: by 10.223.173.229 with SMTP id w92csp1972454wrc;
+        Mon, 23 Oct 2017 08:36:14 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+RSmrKnU4PYM+HzL1X00AW79Ra4l1If9rl2B7nlkt3icZs34KfyRwg4VYpSJL9H2A3TDnuR
+X-Received: by 10.200.53.111 with SMTP id z44mr21082831qtb.12.1508772974673;
+        Mon, 23 Oct 2017 08:36:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508772974; cv=none;
         d=google.com; s=arc-20160816;
-        b=1KnapF7NbtOh4KEe7CjKaQNJO8g366QFFmPSTFfX9piqcz0u2i24HlJPEUfSck2/i+
-         FBUto4Dr5mJYUEBXm+ww1f23Lxw8eMbSokhHXolBNB9+il47HM3G6B2fe1yjSQNSp7XP
-         d035JR1PPJnrSgqk55KX/RCbpnFCL0o3/QRkeeyMqKMeelGFf4Y+LGxRb8ndas3siLWF
-         Fy3F/4DhI6ghCnjCXGC2idGfRxNsLYIGLlTtD09xRwargu6hJZwzCdWj6KL7nCgDKjOC
-         aYMxlp9nAIe5QKLzbJtw5EMOIw87Ou6JjCS2S05F0p9PbhmvrVp2uQDBoVydJmylQtZb
-         IoyQ==
+        b=VTBw5gywn3SKtEGi+Rrp+9ZJEloP8gqLZnySSPTvDbVh3dkrgnJM78EOIrrwkYVlv1
+         fOALnMU2fKN3+oj7gN3g5AKZLzckrgVlta9fUk79HjBBuJPagYjbxLFxE7TtIAWJTmeI
+         PIKpEEzo9YrZ4jpBcgi1F7KKeTGFSHJsVmqZVj3UcoDbAQ9gcIYQ8ak2H67rVhqtxpa+
+         IabGT217s5NGHQvv7QWM7Ag2I90BGALWG1mrSrDarC2cddV406kL0N8j+FwKDKA159l1
+         MfuKN3pDBSdH1J0bZxTeARPcMazGe3/K9NecOkrO1sRaVFlFYxryxE4uprcOip/HNIxa
+         uuoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=ThoSSvk1q561VPHjauyw8+W8HxEhTsWQCx9u7hF5ISo=;
-        b=b7IT1Zy9c1o7l6G6DW+7yuF/lonNB7PRNHHLduh+ntHGWeNWiamk5hJREKN2WJ7EUd
-         +xlINyJpgTyHQXUB8007fUsmvosxp/F8NUGLertzcWrUxDitL+QfIK5cSzmCA+U/Fnuq
-         c6M0dO5DcxHYDoRf1JHJvdwABq/IYBOPE1wGk9NQnicAIB9a4yOzuR3uPkZa8Hl8hf5E
-         gWKhgV4l313kC3lCc6LtTtUc80+Q1slCz+NYd4YKuAfolGA2CnCpeMFIN06/NoLtr6WI
-         33uxCfnuFCNPmtIJn9pTJ4Qw+4oFXIx5M8SyW7wUv84mz2cK9jLX1HsPJrqx54oVA6J3
-         UD3g==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dmarc-filter:arc-authentication-results;
+        bh=z4F7nrUggvejtsGgQ4so3To/fWROFUR19SGT3pckfqo=;
+        b=L4Z7HqyldJBDzrpRDyy9DouzEo04WuCgqibwncJqBBP526opF18Vfjsw2juOPAYDeH
+         2xTmHl25yReXVxRFCLvA5YUvTI4GI6sEzgDJwcdT1n9k7NEB72OKUrP6hcnvCvauqq56
+         eaqslvCGtOrPUVlO4x4zq1EisCqvnV4wXMX1v8DPyQfq8ud2AHZGGAVJYQSCuz02EQ1A
+         5R8b0j5k90KZuv2AzcPCucxVpySRaAs9KD1V0M8EBcwOwod7MNSuggbYJ78xVO2sA5J5
+         lxrXCXMyHkqO7efWXZdijjYu9kLQE+lhXtJ42laJMn0LljFbraSD4OXK/5IWVroEMLj3
+         yKNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@zx2c4.com header.s=mail header.b=l44rHMw0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=zx2c4.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c142si1309398ywh.641.2017.10.23.07.14.37
+        by mx.google.com with ESMTPS id w5si863031qtj.142.2017.10.23.08.36.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 23 Oct 2017 07:14:37 -0700 (PDT)
+        Mon, 23 Oct 2017 08:36:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@zx2c4.com header.s=mail header.b=l44rHMw0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=zx2c4.com
-Received: from localhost ([::1]:38990 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39258 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e6dUz-00082o-Dv
-	for alex.bennee@linaro.org; Mon, 23 Oct 2017 10:14:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39485)
+	id 1e6elv-0002dE-U0
+	for alex.bennee@linaro.org; Mon, 23 Oct 2017 11:36:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57192)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Jason@zx2c4.com>) id 1e6dUk-00082O-DO
-	for qemu-arm@nongnu.org; Mon, 23 Oct 2017 10:14:26 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1e6elk-0002cf-6m
+	for qemu-arm@nongnu.org; Mon, 23 Oct 2017 11:36:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Jason@zx2c4.com>) id 1e6dUf-0006XY-MM
-	for qemu-arm@nongnu.org; Mon, 23 Oct 2017 10:14:22 -0400
-Received: from frisell.zx2c4.com ([192.95.5.64]:34545)
+	(envelope-from <eric.auger@redhat.com>) id 1e6elh-0004h3-3X
+	for qemu-arm@nongnu.org; Mon, 23 Oct 2017 11:36:00 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50964)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <Jason@zx2c4.com>)
-	id 1e6dUf-0006X5-HC; Mon, 23 Oct 2017 10:14:17 -0400
-Received: by frisell.zx2c4.com (ZX2C4 Mail Server) with ESMTP id 9458a592;
-	Mon, 23 Oct 2017 14:12:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=zx2c4.com; h=mime-version
-	:in-reply-to:references:from:date:message-id:subject:to:cc
-	:content-type; s=mail; bh=ABjAIV+qCLCFCVk6Xv5CqAGBfXU=; b=l44rHM
-	w00VzKPSv4VrT4Hfs5lZrWVN0e3t+WnZrQGNtayRU8IbYtSFb2E9qGE1kfrqyEWo
-	YJQwcjbVVB2gvMz/Uq3fIW8sD8RRJNbnV0IRkNw3G8Naicu3dUY6NWgYH+gO1JC8
-	OHD7cFh0W3GcTP0ClnaGBy4QmvGvCucXWEleAH7rxrSyZ9pFoUXLORn6VX9pRMFn
-	2dcMKrr8AR21r0itafttMCA6u6oHD5wm5XPBNWV/m+vi1r/6OZQvlTAH4FCX+AAr
-	tLYxISlPDTJS8fCtVv2+B4YkyZAfrin83mQtlS5qAkvb+qsZ7l4uqSo7fLmkHouQ
-	wZD6VTZ0B7r4PZ9g==
-Received: by frisell.zx2c4.com (ZX2C4 Mail Server) with ESMTPSA id ae8dccd2
-	(TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128:NO); 
-	Mon, 23 Oct 2017 14:12:54 +0000 (UTC)
-Received: by mail-oi0-f46.google.com with SMTP id m198so30909069oig.5;
-	Mon, 23 Oct 2017 07:14:15 -0700 (PDT)
-X-Gm-Message-State: AMCzsaWXm+KVNadH1XDBcbNea/K6TkwkZAqkTlI1G27bZhby7eNQz7C3
-	4jKtHIMAR4lzX2DIGHSK4Nra0nRDtbQqjVg1eFg=
-X-Google-Smtp-Source: ABhQp+TXKOXmyh61xloDH/rw9uSf/LMx9TXbfa3iS4TYfBJK7vqBGSbFUYzqTTTymly8n2JHqxoVvHkyCXJYtQbAysY=
-X-Received: by 10.157.26.107 with SMTP id u40mr7422964otu.182.1508768054811;
-	Mon, 23 Oct 2017 07:14:14 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.74.41.205 with HTTP; Mon, 23 Oct 2017 07:14:14 -0700 (PDT)
-In-Reply-To: <CAFEAcA_PM5Fjx2Pk58h75p9vaZwFcusQdXuwy9tbDtc=EaoOJg@mail.gmail.com>
-References: <20171023122719.17199-1-Jason@zx2c4.com>
-	<CAFEAcA_PM5Fjx2Pk58h75p9vaZwFcusQdXuwy9tbDtc=EaoOJg@mail.gmail.com>
-From: "Jason A. Donenfeld" <Jason@zx2c4.com>
-Date: Mon, 23 Oct 2017 16:14:14 +0200
-X-Gmail-Original-Message-ID: <CAHmME9oMPg1LS6tB6RDUPxrXzTxdp+ZsVsbT9pLSd9QvX5S0vQ@mail.gmail.com>
-Message-ID: <CAHmME9oMPg1LS6tB6RDUPxrXzTxdp+ZsVsbT9pLSd9QvX5S0vQ@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1e6elg-0004gq-Tk; Mon, 23 Oct 2017 11:35:57 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3D5B761D1F;
+	Mon, 23 Oct 2017 15:35:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 3D5B761D1F
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=eric.auger@redhat.com
+Received: from localhost.localdomain.com (ovpn-117-27.ams2.redhat.com
+	[10.36.117.27])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 68134795B4;
+	Mon, 23 Oct 2017 15:35:47 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org, wanghaibin.wang@huawei.com
+Date: Mon, 23 Oct 2017 17:35:33 +0200
+Message-Id: <1508772937-21054-1-git-send-email-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Mon, 23 Oct 2017 15:35:55 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 192.95.5.64
-Subject: Re: [Qemu-arm] [PATCH] hw/arm/virt: support 4 serial ports
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [RFC v2 0/4] vITS Reset
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,23 +90,56 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: drjones@redhat.com, vijay.kilari@gmail.com, quintela@redhat.com,
+	dgilbert@redhat.com, wu.wubin@huawei.com, christoffer.dall@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3fjH+yy1gpjW
+X-TUID: GQNTJMNuwJnA
 
-Hey Peter,
+At the moment the ITS is not properly reset. On System reset or
+reboot, previous ITS register values and caches are left
+unchanged. Some of the registers might point to some guest RAM
+tables which are not valid anymore. This leads to state
+inconsistencies that are detected by the kernel save/restore
+code. And eventually this may cause qemu abort.
 
-I really do need more serial ports. Two, actually. I'm using qemu on
-build.wireguard.com for CI. I have normal output come on ttyS0
-(ttyAMA0) and then if it's successful, the final step is writing
-"success" into ttyS1 (ttyAMA1), so that I can confirm with certainty
-that the tests succeeded. In other words, one channel for text output
-and one channel for control messages. (And I really really don't want
-to use virtio or PCI-based stuff for this.)
+The two first patches would need to be cc'ed stable. Assuming
+patches 1-5 of "[PATCH v5 00/10] vITS Migration fixes and reset" 
+ also are cc'ed stable, they fix the above issue, without 
+implementing a dedicated ITS KVM device reset IOCTL.
+Patches 3-4 use the new reset IOCTL which clarifies the reset
+process.
 
-So I'm extending the CI on build.wireguard.com now to support ARM and
-MIPS, and things are not very smooth in the ARM world.
+The series is in RFC state as it depends on:
+[1] [PATCH v5 00/10] vITS Migration fixes and reset
 
-Jason
+Best Regards
+
+Eric
+
+The series is available at:
+https://github.com/eauger/qemu/tree/v2.10-its-reset-v2
+
+History:
+v1 -> v2:
+- Clarify why abort should be removed for save. Leave abort
+  for restore.
+- Adopt the same reset infra as vgic
+- introduce "hw/intc/arm_gicv3_its: Implement a minimalist reset"
+  which perform individual register writes. This is sufficient to
+  fix the issues without ioctl
+
+Eric Auger (4):
+  hw/intc/arm_gicv3_its: Don't abort on table save failure
+  hw/intc/arm_gicv3_its: Implement a minimalist reset
+  linux-headers: Partial header update for ITS reset
+  hw/intc/arm_gicv3_its: Implement full reset
+
+ hw/intc/arm_gicv3_its_kvm.c   | 53 +++++++++++++++++++++++++++++++++++++------
+ linux-headers/asm-arm/kvm.h   |  1 +
+ linux-headers/asm-arm64/kvm.h |  1 +
+ 3 files changed, 48 insertions(+), 7 deletions(-)
+
+-- 
+2.5.5
+

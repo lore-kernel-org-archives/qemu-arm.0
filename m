@@ -1,87 +1,130 @@
-Received: by 10.223.197.9 with SMTP id q9csp10629112wrf;
-        Mon, 23 Oct 2017 07:41:14 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+RmDTANjgo6f/cDK5nUWtqrK25bVCf9Ox7WOGHXrQWHdmyQzw8puGxu0PYEuqNFIj/b0E16
-X-Received: by 10.37.190.208 with SMTP id k16mr1456431ybm.348.1508769674827;
-        Mon, 23 Oct 2017 07:41:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508769674; cv=none;
+Received: by 10.223.161.27 with SMTP id o27csp18268wro;
+        Mon, 23 Oct 2017 08:58:53 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+RcboV19o53GsJxlhoQtWoYSM3QGG5437uEq5ViMj4WNevgFca6+2Yzsvs3IUlsj4SzsIEE
+X-Received: by 10.13.232.14 with SMTP id r14mr8850671ywe.146.1508774333185;
+        Mon, 23 Oct 2017 08:58:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508774333; cv=none;
         d=google.com; s=arc-20160816;
-        b=E9qnDVGH1/jJ5tFinGYqihu71Nb4zL/o02KUCb7NzGIEUhvK/tqVY1xL4LAlJJuo+p
-         hGxvJNrcrxXgJejOFcat+pR0SfLbH7qJ5nkTBMgVh1D7HCHbsu/Pif4WY9koYslC4ClO
-         bAJGCmWGlq1Di4NCbkSE2H3ZtkSnUpbk5DActQe/2aB6v4H92EHLjxrUA4Jva8lzR2Ue
-         XQtTBpS9EQfj6mYNqS25JWlICn72abEdnfWejCqBo8q1w+I+IdfdacHouSNey43NVolI
-         MTlULgJGyYgTwMwbg2Aox/Aet6AdFBNeDd+aUL1X7pPUdhVNgUqTAiTzN7JtT0QfbS2T
-         E1eQ==
+        b=tnUtVurlz6RUzVl0KQ4RZBbhV4IENc7k8kMr3u9kZM1bTNQataGj1yk9WL5vol6vuU
+         8bwcuX7dJOTeBV2RP55WmG+fgG9DDtyPmrGOgqahWhev4TitMLZ89b661tRkI3q91Avw
+         F5d04DoZ67Nr74nF7e3CK/8TBgGZRoO6WHk8IGPdLHjTM+97qjsVNwIoEVFKSPaiURUb
+         mC6qJgJb5Gm8WNVSgkZ+QeuzE3DB5DsFzhWUFPROuYRuJwdSgZMTckgz7j3K/DvQZOzy
+         iD1kx1+6QaxSWJ8lTrXLTy/H88L4raNlUAWqam3JN+TD0SnCcdGm1eGxgA+XiV/3niBg
+         rroQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-language:accept-language:message-id:date:thread-index
-         :thread-topic:to:from:arc-authentication-results;
-        bh=FtwRQgVtyNqjq7JuIHvwHMV9fRoYIi1hBy2Z/cH3V2s=;
-        b=Fp3BzQ9EefNod30soRxzgaF/YQmTDOAIwsuacFoIL9NTq4/6LtEAeiOwiGNYVC+RFj
-         K/nrQqpLxl+1znT47PLDFDojii5PwdDdFL8YtNrIOHZx7ZcZ7OVUvlNlWhDqbV3QN9Bh
-         E6y4uPi2R1OCMQKn/o2WNwImEebF2OJbzIC7yCmCEJNHjWawtshH3cEO21mCwnrqWXkM
-         fa/fMyctu5zSzhi9cCSx/xafAXzn9jO7xoeSbHjlYXAgmPERCL64vC1HXbMsvioUFgCT
-         P4CFe3h0PnU9KgXc8/sepeGLt8jTjdfqCL1ef3/JM5pnJX/QmAwUwB2ApgPpgluorZwm
-         pibg==
+         :spamdiagnosticmetadata:spamdiagnosticoutput:content-language
+         :accept-language:message-id:date:thread-index:thread-topic:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=3lBo8kRESkchHesd4kFdWP9FWX6X/Spz4JczNp9FTDs=;
+        b=C1rGW4i2N170hGEU2YHYEb/AKP4F4KErgEeXp/NParL1+FgDY573e4PwNpYF2u+XtS
+         pyhvofxivg57bM5VhGplX5QwXIa3T1wbQGutDxwVT9ul8UqFAnE4vzgsIUe4u9vrpKqx
+         LiY85h8irtzcC/n+fpmbWqcF8+y3LZrzfLtOz3+sbbnDUpTHioKoh/NwkG1yFseS9BcF
+         hqUZdsTQh+4uISxO5Lw1xrhAriFPi8lRp31hR6R+WOjgWRBP3xaw68wZgoLh/dmD8gfz
+         oyKgVQLrPxfTIFjUMRuoFxr/RwOMHOFtrgjIfZIBw820873X7P/tAfGA32o172/xOj0A
+         bRVg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@Enea.onmicrosoft.com header.s=selector1-enea-com header.b=pnSNXjx6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l129si1300828ywg.366.2017.10.23.07.41.14
+        by mx.google.com with ESMTPS id n16si1230011ybd.305.2017.10.23.08.58.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 23 Oct 2017 07:41:14 -0700 (PDT)
+        Mon, 23 Oct 2017 08:58:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@Enea.onmicrosoft.com header.s=selector1-enea-com header.b=pnSNXjx6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:39099 helo=lists.gnu.org)
+Received: from localhost ([::1]:39327 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e6duk-0003V8-AU
-	for alex.bennee@linaro.org; Mon, 23 Oct 2017 10:41:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45354)
+	id 1e6f7s-0000cf-MY
+	for alex.bennee@linaro.org; Mon, 23 Oct 2017 11:58:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37128)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dkang@isi.edu>) id 1e6duU-0003RG-6l
-	for qemu-arm@nongnu.org; Mon, 23 Oct 2017 10:41:03 -0400
+	(envelope-from <Cosmin.Smechea@enea.com>) id 1e6dH2-0005mL-Rm
+	for qemu-arm@nongnu.org; Mon, 23 Oct 2017 10:00:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dkang@isi.edu>) id 1e6duR-0001gG-2o
-	for qemu-arm@nongnu.org; Mon, 23 Oct 2017 10:40:58 -0400
-Received: from mail-c.ads.isi.edu ([128.9.180.198]:20204)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
-	(envelope-from <dkang@isi.edu>) id 1e6duQ-0001fX-Om
-	for qemu-arm@nongnu.org; Mon, 23 Oct 2017 10:40:54 -0400
-X-IronPort-AV: E=Sophos;i="5.43,423,1503385200"; d="scan'208,217";a="2149144"
-Received: from usmdrmbx01.ads.isi.edu ([10.100.2.77])
-	by usmdrip03-mgmt.ads.isi.edu with ESMTP; 23 Oct 2017 07:40:51 -0700
-Received: from usarlmbx01.ads.isi.edu (10.13.52.77) by usmdrmbx01.ads.isi.edu
-	(10.100.2.77) with Microsoft SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1261.35;
-	Mon, 23 Oct 2017 07:40:51 -0700
-Received: from usarlmbx01.ads.isi.edu (10.13.52.77) by usarlmbx01.ads.isi.edu
-	(10.13.52.77) with Microsoft SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1261.35;
-	Mon, 23 Oct 2017 07:40:49 -0700
-Received: from usarlmbx01.ads.isi.edu ([fe80::5517:873:48d1:b0d1]) by
-	usarlmbx01.ads.isi.edu ([fe80::5517:873:48d1:b0d1%17]) with mapi id
-	15.01.1261.035; Mon, 23 Oct 2017 07:40:49 -0700
-From: Dong-In Kang <dkang@isi.edu>
+	(envelope-from <Cosmin.Smechea@enea.com>) id 1e6dGy-0006Wr-Tt
+	for qemu-arm@nongnu.org; Mon, 23 Oct 2017 10:00:12 -0400
+Received: from mail-ve1eur01on0097.outbound.protection.outlook.com
+	([104.47.1.97]:51424
+	helo=EUR01-VE1-obe.outbound.protection.outlook.com)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <Cosmin.Smechea@enea.com>)
+	id 1e6dGy-0006No-Fz
+	for qemu-arm@nongnu.org; Mon, 23 Oct 2017 10:00:08 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Enea.onmicrosoft.com; 
+	s=selector1-enea-com;
+	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
+	bh=3lBo8kRESkchHesd4kFdWP9FWX6X/Spz4JczNp9FTDs=;
+	b=pnSNXjx6tnr0NxPlXQnK4UWdquy1ZEDR1xRVf8kE2Drbete7wqb4lq7gA6VqVvs6pqZvTAp2AMhaPbluWcqVnQvqEbnAi7aeaypcYkmrVJRkgFtQ4QfOfA9HkUcgL0lJfy3CdqG6xRj9tOU0Zxn64E4+liopwcg6aVAyutHOpyo=
+Received: from VI1PR0701MB2031.eurprd07.prod.outlook.com (10.167.209.153) by
+	DB5PR07MB1191.eurprd07.prod.outlook.com (10.169.32.25) with Microsoft
+	SMTP Server (version=TLS1_2,
+	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id
+	15.20.178.3; Mon, 23 Oct 2017 13:59:57 +0000
+Received: from VI1PR0701MB2031.eurprd07.prod.outlook.com
+	([fe80::dcbe:d99b:bc6f:3392]) by
+	VI1PR0701MB2031.eurprd07.prod.outlook.com
+	([fe80::dcbe:d99b:bc6f:3392%13]) with mapi id 15.20.0156.006;
+	Mon, 23 Oct 2017 13:59:56 +0000
+From: Cosmin Smechea <Cosmin.Smechea@enea.com>
 To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Thread-Topic: Is Cortex-R8 support planned?
-Thread-Index: AQHTTAzrfmleDsMNxkyr+k/F5i5fnw==
-Date: Mon, 23 Oct 2017 14:40:49 +0000
-Message-ID: <42FB6EFE-F20A-42CF-8782-D8611FA79000@isi.edu>
+Thread-Topic: aarch64 live migration failure between nodes with different CPU
+	revisions
+Thread-Index: AQHTTAbfRrGXc+8xekS+B1guxlwdPA==
+Date: Mon, 23 Oct 2017 13:59:56 +0000
+Message-ID: <VI1PR0701MB20317767B155FE8C60D1FA12F5460@VI1PR0701MB2031.eurprd07.prod.outlook.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-originating-ip: [128.9.47.101]
+authentication-results: spf=none (sender IP is )
+	smtp.mailfrom=Cosmin.Smechea@enea.com; 
+x-originating-ip: [193.202.22.66]
+x-ms-publictraffictype: Email
+x-microsoft-exchange-diagnostics: 1; DB5PR07MB1191;
+	20:O9fJq0SaqVy9iIVkA/qInGg42zg88KeNE8Uj26ANO/oYFR68dYoxxmKFswOVEkrIi4aQ5G5HkrKlm9rqBBuzI8P52/wvwezmonQHM0SEr6GO/g72tMmgUsgGHYawWtQHaagY35CykG5Ex03vNwNBbh8Vb9ErrfT4PgVJTMbsFm8=
+x-ms-exchange-antispam-srfa-diagnostics: SSOS;SSOR;
+x-forefront-antispam-report: SFV:SKI; SCL:-1; SFV:NSPM;
+	SFS:(10019020)(6009001)(39830400002)(346002)(376002)(199003)(189002)(288314003)(81166006)(55016002)(316002)(81156014)(9686003)(68736007)(7736002)(54356999)(54906003)(8936002)(3846002)(54896002)(2351001)(5250100002)(106356001)(105586002)(74316002)(72206003)(478600001)(86362001)(8676002)(53936002)(99286003)(2501003)(102836003)(6116002)(4326008)(189998001)(25786009)(19627405001)(6506006)(5640700003)(6436002)(66066001)(6606003)(50986999)(14454004)(33656002)(7696004)(3280700002)(2900100001)(6916009)(3660700001)(97736004)(2906002)(107886003)(101416001)(5660300001);
+	DIR:OUT; SFP:1102; SCL:1; SRVR:DB5PR07MB1191;
+	H:VI1PR0701MB2031.eurprd07.prod.outlook.com; FPR:; SPF:None;
+	PTR:InfoNoRecords; A:1; MX:1; LANG:en; 
+x-ms-office365-filtering-correlation-id: a7cea0f9-0e80-4753-8219-08d51a1e57a6
+x-microsoft-antispam: UriScan:; BCL:0; PCL:0;
+	RULEID:(22001)(4534020)(4602075)(4627075)(201703031133081)(201702281549075)(2017052603199);
+	SRVR:DB5PR07MB1191; 
+x-ms-traffictypediagnostic: DB5PR07MB1191:
+x-exchange-antispam-report-test: UriScan:;
+x-microsoft-antispam-prvs: <DB5PR07MB119126C0F61EA42574024C26F5460@DB5PR07MB1191.eurprd07.prod.outlook.com>
+x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
+	RULEID:(100000700101)(100105000095)(100000701101)(100105300095)(100000702101)(100105100095)(6040450)(2401047)(8121501046)(5005006)(93006095)(93001095)(100000703101)(100105400095)(3231020)(3002001)(10201501046)(6041248)(20161123562025)(20161123555025)(20161123564025)(20161123560025)(201703131423075)(201702281528075)(201703061421075)(201703061406153)(20161123558100)(6072148)(201708071742011)(100000704101)(100105200095)(100000705101)(100105500095);
+	SRVR:DB5PR07MB1191; BCL:0; PCL:0;
+	RULEID:(100000800101)(100110000095)(100000801101)(100110300095)(100000802101)(100110100095)(100000803101)(100110400095)(100000804101)(100110200095)(100000805101)(100110500095);
+	SRVR:DB5PR07MB1191; 
+x-forefront-prvs: 046985391D
+received-spf: None (protection.outlook.com: enea.com does not designate
+	permitted sender hosts)
+spamdiagnosticoutput: 1:99
+spamdiagnosticmetadata: NSPM
 Content-Type: multipart/alternative;
-	boundary="_000_42FB6EFEF20A42CF8782D8611FA79000isiedu_"
+	boundary="_000_VI1PR0701MB20317767B155FE8C60D1FA12F5460VI1PR0701MB2031_"
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 128.9.180.198
-Subject: [Qemu-arm] Is Cortex-R8 support planned?
+X-OriginatorOrg: enea.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a7cea0f9-0e80-4753-8219-08d51a1e57a6
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Oct 2017 13:59:56.3726 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 8cdaed89-c47e-40b8-90b5-f28ad2c3fdca
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB5PR07MB1191
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 104.47.1.97
+X-Mailman-Approved-At: Mon, 23 Oct 2017 11:58:47 -0400
+Subject: [Qemu-arm] aarch64 live migration failure between nodes with
+ different CPU revisions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,67 +136,133 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Alexandru Avadanii <Alexandru.Avadanii@enea.com>,
+	Ciprian Barbu <Ciprian.Barbu@enea.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iEGwKbSqy2oj
+X-TUID: 6Cu1zWriiZFh
 
---_000_42FB6EFEF20A42CF8782D8611FA79000isiedu_
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+--_000_VI1PR0701MB20317767B155FE8C60D1FA12F5460VI1PR0701MB2031_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-DQpIZWxsbywNCg0KSSBrbm93IHRoZXJlIGlzIG5vIHN1cHBvcnQgZm9yIENvcnRleC1SOCBndWVz
-dCBhcmNoaXRlY3R1cmUgbm93Lg0KSXMgaXQgcGxhbm5lZD8NCkhvdyBtdWNoIG1hbi1ob3VyIHdv
-dWxkIGJlIG5lZWRlZCB0byBpbXBsZW1lbnQgQ29ydGV4LVI4IHN1cHBvcnQgZm9yIFFlbXU/DQoN
-ClRoYW5rcywNCkRhdmlkDQoNCg==
+Hi,
 
---_000_42FB6EFEF20A42CF8782D8611FA79000isiedu_
-Content-Type: text/html; charset="utf-8"
-Content-ID: <E382C266A6A5C146AEEC2F225A1F47FA@ads.isi.edu>
-Content-Transfer-Encoding: base64
+Live migration fails between two connected aarch64 machines.
+QEMU emulator version 2.9.0 is used on both of these nodes.
 
-PGh0bWwgeG1sbnM6bz0idXJuOnNjaGVtYXMtbWljcm9zb2Z0LWNvbTpvZmZpY2U6b2ZmaWNlIiB4
-bWxuczp3PSJ1cm46c2NoZW1hcy1taWNyb3NvZnQtY29tOm9mZmljZTp3b3JkIiB4bWxuczptPSJo
-dHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL29mZmljZS8yMDA0LzEyL29tbWwiIHhtbG5zPSJo
-dHRwOi8vd3d3LnczLm9yZy9UUi9SRUMtaHRtbDQwIj4NCjxoZWFkPg0KPG1ldGEgaHR0cC1lcXVp
-dj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiPg0KPG1l
-dGEgbmFtZT0iVGl0bGUiIGNvbnRlbnQ9IiI+DQo8bWV0YSBuYW1lPSJLZXl3b3JkcyIgY29udGVu
-dD0iIj4NCjxtZXRhIG5hbWU9IkdlbmVyYXRvciIgY29udGVudD0iTWljcm9zb2Z0IFdvcmQgMTUg
-KGZpbHRlcmVkIG1lZGl1bSkiPg0KPHN0eWxlPjwhLS0NCi8qIEZvbnQgRGVmaW5pdGlvbnMgKi8N
-CkBmb250LWZhY2UNCgl7Zm9udC1mYW1pbHk6IkNhbWJyaWEgTWF0aCI7DQoJcGFub3NlLTE6MiA0
-IDUgMyA1IDQgNiAzIDIgNDt9DQpAZm9udC1mYWNlDQoJe2ZvbnQtZmFtaWx5OiLrp5HsnYAg6rOg
-65SVIjt9DQpAZm9udC1mYWNlDQoJe2ZvbnQtZmFtaWx5OkNhbGlicmk7DQoJcGFub3NlLTE6MiAx
-NSA1IDIgMiAyIDQgMyAyIDQ7fQ0KLyogU3R5bGUgRGVmaW5pdGlvbnMgKi8NCnAuTXNvTm9ybWFs
-LCBsaS5Nc29Ob3JtYWwsIGRpdi5Nc29Ob3JtYWwNCgl7bWFyZ2luOjBpbjsNCgltYXJnaW4tYm90
-dG9tOi4wMDAxcHQ7DQoJZm9udC1zaXplOjEyLjBwdDsNCglmb250LWZhbWlseTpDYWxpYnJpO30N
-CmE6bGluaywgc3Bhbi5Nc29IeXBlcmxpbmsNCgl7bXNvLXN0eWxlLXByaW9yaXR5Ojk5Ow0KCWNv
-bG9yOiMwNTYzQzE7DQoJdGV4dC1kZWNvcmF0aW9uOnVuZGVybGluZTt9DQphOnZpc2l0ZWQsIHNw
-YW4uTXNvSHlwZXJsaW5rRm9sbG93ZWQNCgl7bXNvLXN0eWxlLXByaW9yaXR5Ojk5Ow0KCWNvbG9y
-OiM5NTRGNzI7DQoJdGV4dC1kZWNvcmF0aW9uOnVuZGVybGluZTt9DQpzcGFuLkVtYWlsU3R5bGUx
-Nw0KCXttc28tc3R5bGUtdHlwZTpwZXJzb25hbC1jb21wb3NlOw0KCWZvbnQtZmFtaWx5OkNhbGli
-cmk7DQoJY29sb3I6d2luZG93dGV4dDt9DQpzcGFuLm1zb0lucw0KCXttc28tc3R5bGUtdHlwZTpl
-eHBvcnQtb25seTsNCgltc28tc3R5bGUtbmFtZToiIjsNCgl0ZXh0LWRlY29yYXRpb246dW5kZXJs
-aW5lOw0KCWNvbG9yOnRlYWw7fQ0KLk1zb0NocERlZmF1bHQNCgl7bXNvLXN0eWxlLXR5cGU6ZXhw
-b3J0LW9ubHk7DQoJZm9udC1mYW1pbHk6Q2FsaWJyaTt9DQpAcGFnZSBXb3JkU2VjdGlvbjENCgl7
-c2l6ZTo4LjVpbiAxMS4waW47DQoJbWFyZ2luOjEuMGluIDEuMGluIDEuMGluIDEuMGluO30NCmRp
-di5Xb3JkU2VjdGlvbjENCgl7cGFnZTpXb3JkU2VjdGlvbjE7fQ0KLS0+PC9zdHlsZT4NCjwvaGVh
-ZD4NCjxib2R5IGJnY29sb3I9IndoaXRlIiBsYW5nPSJFTi1VUyIgbGluaz0iIzA1NjNDMSIgdmxp
-bms9IiM5NTRGNzIiPg0KPGRpdiBjbGFzcz0iV29yZFNlY3Rpb24xIj4NCjxwIGNsYXNzPSJNc29O
-b3JtYWwiPjxzcGFuIHN0eWxlPSJmb250LXNpemU6MTEuMHB0Ij48bzpwPiZuYnNwOzwvbzpwPjwv
-c3Bhbj48L3A+DQo8cCBjbGFzcz0iTXNvTm9ybWFsIj48c3BhbiBzdHlsZT0iZm9udC1zaXplOjEx
-LjBwdCI+SGVsbG8sPG86cD48L286cD48L3NwYW4+PC9wPg0KPHAgY2xhc3M9Ik1zb05vcm1hbCI+
-PHNwYW4gc3R5bGU9ImZvbnQtc2l6ZToxMS4wcHQiPiZuYnNwOzxvOnA+PC9vOnA+PC9zcGFuPjwv
-cD4NCjxwIGNsYXNzPSJNc29Ob3JtYWwiPjxzcGFuIHN0eWxlPSJmb250LXNpemU6MTEuMHB0Ij5J
-IGtub3cgdGhlcmUgaXMgbm8gc3VwcG9ydCBmb3IgQ29ydGV4LVI4IGd1ZXN0IGFyY2hpdGVjdHVy
-ZSBub3cuPG86cD48L286cD48L3NwYW4+PC9wPg0KPHAgY2xhc3M9Ik1zb05vcm1hbCI+PHNwYW4g
-c3R5bGU9ImZvbnQtc2l6ZToxMS4wcHQiPklzIGl0IHBsYW5uZWQ/PG86cD48L286cD48L3NwYW4+
-PC9wPg0KPHAgY2xhc3M9Ik1zb05vcm1hbCI+PHNwYW4gc3R5bGU9ImZvbnQtc2l6ZToxMS4wcHQi
-PkhvdyBtdWNoIG1hbi1ob3VyIHdvdWxkIGJlIG5lZWRlZCB0byBpbXBsZW1lbnQgQ29ydGV4LVI4
-IHN1cHBvcnQgZm9yIFFlbXU/PG86cD48L286cD48L3NwYW4+PC9wPg0KPHAgY2xhc3M9Ik1zb05v
-cm1hbCI+PHNwYW4gc3R5bGU9ImZvbnQtc2l6ZToxMS4wcHQiPiZuYnNwOzxvOnA+PC9vOnA+PC9z
-cGFuPjwvcD4NCjxwIGNsYXNzPSJNc29Ob3JtYWwiPjxzcGFuIHN0eWxlPSJmb250LXNpemU6MTEu
-MHB0Ij5UaGFua3MsPG86cD48L286cD48L3NwYW4+PC9wPg0KPHAgY2xhc3M9Ik1zb05vcm1hbCI+
-PHNwYW4gc3R5bGU9ImZvbnQtc2l6ZToxMS4wcHQiPkRhdmlkPG86cD48L286cD48L3NwYW4+PC9w
-Pg0KPHAgY2xhc3M9Ik1zb05vcm1hbCI+PHNwYW4gc3R5bGU9ImZvbnQtc2l6ZToxMS4wcHQiPjxv
-OnA+Jm5ic3A7PC9vOnA+PC9zcGFuPjwvcD4NCjwvZGl2Pg0KPC9ib2R5Pg0KPC9odG1sPg0K
+How to reproduce:
+=3D=3D=3D START =3D=3D=3D
+Start a VM on the designated source node.
 
---_000_42FB6EFEF20A42CF8782D8611FA79000isiedu_--
+Source:
+(qemu) migrate tcp:<TARGETIP>:49160
+
+Target:
+Warning: affinity is not specified for some (1) of the 1 smp cores. Will be=
+ using default mask
+qemu-system-aarch64: -chardev pty,id=3Dcharserial0,logfile=3D/root/qemu.log=
+,logappend=3Don: char device redirected to /dev/pts/3 (label charserial0)
+qemu-system-aarch64: error while loading state for instance 0x0 of device '=
+cpu'
+qemu-system-aarch64: load of migration failed: Operation not permitted
+=3D=3D=3D END =3D=3D=3D
+
+To note is that these two machines have different CPU revisions as shown by=
+:
+root@node-4:~# cat /proc/cpuinfo | grep 'CPU revision'
+CPU revision : 1
+root@node-5:~# cat /proc/cpuinfo | grep 'CPU revision'
+CPU revision : 0
+
+
+Between two nodes with the same CPU revision the live migration works as ex=
+pected.
+
+Is there any further planned support for aarch64 that may affect this issue=
+?
+
+Regards,
+Cosmin
+
+--_000_VI1PR0701MB20317767B155FE8C60D1FA12F5460VI1PR0701MB2031_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<style type=3D"text/css" style=3D"display:none;"><!-- P {margin-top:0;margi=
+n-bottom:0;} --></style>
+</head>
+<body dir=3D"ltr">
+<div id=3D"divtagdefaultwrapper" style=3D"font-size:12pt;color:#000000;font=
+-family:Calibri,Helvetica,sans-serif;" dir=3D"ltr">
+<p></p>
+<div>Hi,</div>
+<div><br>
+</div>
+<div>Live migration fails between two connected aarch64 machines.</div>
+<div>QEMU emulator version 2.9.0 is used on both of these nodes.</div>
+<div><br>
+</div>
+<div>How to reproduce:</div>
+<div>=3D=3D=3D START =3D=3D=3D</div>
+<div>Start a VM on the designated source node.</div>
+<div><br>
+</div>
+<div>Source:&nbsp;</div>
+<div>(qemu) migrate tcp:&lt;TARGETIP&gt;:49160&nbsp;</div>
+<div><br>
+</div>
+<div>Target:&nbsp;</div>
+<div>Warning: affinity is not specified for some (1) of the 1 smp cores. Wi=
+ll be using default mask&nbsp;</div>
+<div>qemu-system-aarch64: -chardev pty,id=3Dcharserial0,logfile=3D/root/qem=
+u.log,logappend=3Don: char device redirected to /dev/pts/3 (label charseria=
+l0)&nbsp;</div>
+<div>qemu-system-aarch64: error while loading state for instance 0x0 of dev=
+ice 'cpu'&nbsp;</div>
+<div>qemu-system-aarch64: load of migration failed: Operation not permitted=
+&nbsp;</div>
+<div>=3D=3D=3D END =3D=3D=3D</div>
+<div><br>
+</div>
+<div>To note is that these two machines have different CPU revisions as sho=
+wn by:</div>
+<div>root@node-4:~# cat /proc/cpuinfo |&nbsp;<span>grep 'CPU revision'</spa=
+n></div>
+<div><span style=3D"font-size: 12pt;">CPU revision : 1</span></div>
+<div>root@node-5:~# cat /proc/cpuinfo | grep 'CPU revision'</div>
+<div><span style=3D"font-size: 12pt;">CPU revision : 0</span><br>
+</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div>Between two nodes with the same CPU revision the live migration works =
+as expected.</div>
+<div><br>
+</div>
+<div>Is there any further planned support for aarch64 that may affect this =
+issue?</div>
+<div><br>
+</div>
+<div>Regards,</div>
+<div>Cosmin</div>
+<p></p>
+<div id=3D"Signature">
+<div id=3D"divtagdefaultwrapper" style=3D"font-size: 12pt; color: rgb(0, 0,=
+ 0); background-color: rgb(255, 255, 255); font-family: Calibri, Arial, Hel=
+vetica, sans-serif, EmojiFont, &quot;Apple Color Emoji&quot;, &quot;Segoe U=
+I Emoji&quot;, NotoColorEmoji, &quot;Segoe UI Symbol&quot;, &quot;Android E=
+moji&quot;, EmojiSymbols;">
+<p></p>
+</div>
+</div>
+</div>
+</body>
+</html>
+
+--_000_VI1PR0701MB20317767B155FE8C60D1FA12F5460VI1PR0701MB2031_--

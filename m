@@ -1,106 +1,96 @@
-Received: by 10.223.197.9 with SMTP id q9csp419683wrf;
-        Wed, 11 Oct 2017 02:43:24 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QDxr72MYQSjF3Dp88bEM9vcBVr1sESfStNFjIlInfgWWLwtl1ANBdw+Gm8E60ZtXHoNvDlQ
-X-Received: by 10.55.155.86 with SMTP id d83mr17716043qke.311.1507715004413;
-        Wed, 11 Oct 2017 02:43:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507715004; cv=none;
+Received: by 10.223.161.27 with SMTP id o27csp1741577wro;
+        Wed, 25 Oct 2017 07:35:25 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+RNPnR0A0G4g77TMMNNMvJFzM3JOKKCq/J4BI/y6cN/10u5RndJe4NM73wTchy23NzsCu/v
+X-Received: by 10.37.175.131 with SMTP id g3mr1476111ybh.96.1508942125169;
+        Wed, 25 Oct 2017 07:35:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508942125; cv=none;
         d=google.com; s=arc-20160816;
-        b=HkLOzFpYyLZQslIofm4qx/E5nDfYwG6uewp01h6caMkTYpt4vu7eZRMOa8gXxo97LM
-         Z4rB8X8i7Y9AWpq/xQroNS2/UgAcSROMJStD3Jby4o4i+u6VXNB3ZGYJml78m2gmwECs
-         t1Njyp58ZaxGCscgzQIRBPxDH0El3ahNEPM4UMd7wq5q2/ILHQk+Imc9gL7pEiIGgEva
-         CYseYCCSB3p9QmwfZkxCFPtr/UqE8v5CR+TET36L/DvRUDrjj545ml9y6ZHda4UeWlop
-         gqIaUDCG+cbwS4stCol51wy7sUY9DO8w9ceod2hqxRKkFHEYMEdHMLIu97iZBBSCk0K6
-         73wg==
+        b=mLCuJy4aVEJvm+HCACHbQq+smwXcG1HtyH7oQvFl7lNc0zjepwtteyg+msbLgvBbon
+         9d2pp4/gJXzkChTpqny4HMOJiJa79y8x5hFtlQq4xGTEV9l+WR+zwGmTpN0vwlSQh4z/
+         x9zUNRFZH5xxoTT6FLgPuS6djOKXzuDnDw/lBW/qfiyoPGvW7abucC57doWUOXpnkfrB
+         L1exgpCaO+Pp47dGn+YDzZJwffo+Q6/V09vjfMlaatqDlJWsVMq34Zf6y9t2xlvllwSN
+         9UlSjofLCODlSskm4s4iUm4JfHGX0+4C00xZERxl0s/BDkWskrP/quDa3G7RxLDcvI6h
+         508g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:dmarc-filter
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=b/pTwIFByMrWvbqTMPOyzMqSqkyFD4QGCebCtc/t2nY=;
-        b=iuYZlIDOUbY1cQ7IABboGNpEKuHSwWyJltAJ4LwOPryLpOQewp85MiqTyEh6CVnT0m
-         T58ZMpLIYbH90qQXRWL/PgZ6n2HlIHjNa67FCJSPhz/JYeqvyT2/VQH6eaRVYP8g28Vf
-         un/ToXfF09JEcZYe+hS9M17aTg2d6J8WZ95eKN8n9XTH6aAsHl2srM+UPZ8IRWGX62N8
-         N6gXIgGiipKITPgLmJERvLCq7fbB8zqnOOAILGi7DZBykK5lYAFlww+HwuxX8yud8zxh
-         uufVqwiyBGu12zsxZvc2f/ze7WPtJJmXdhbiAyat9dZ54XVToh3FXJ8wsxCFAz/KoW1S
-         rxaQ==
+        bh=5jrQgAc4ITCpI+WcPi1WMA6mn8uqs26m5kncgMcgTio=;
+        b=FO+JhS4eZoIaGt5BXHVybRWTOBo8clXABWJ7pLZpDKxl89nPHtq1Rfch+iU/d6zD/7
+         gw7Nt8MnfCs5mjtW/jr4nQ0kkmkq5AYfRzLGcgZz2T0PTT6eH7LeGM13dhEZ9wGBYmBr
+         Hycg00yEj3sZycOxYApPoQHYCRjThEgk0AmshEV1r1jtC8ZZuEjCFxDd8D30k5/+0awK
+         H+OQ7OeYypUVBmqPW/Efj38JkIpJbfP/q9ymnpX4fc9wgXkRriZ6EfiybJrvreIkmFV9
+         PJJwwAOSH4RkuO377/o7rhCjxRvD7RhgYmB+ll8hMuIyvfXPGU0EfsFcsQK/PEHtcxUd
+         v6jg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=gw5DItYS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l68si4342673qte.544.2017.10.11.02.43.23
+        by mx.google.com with ESMTPS id e2si433854ybn.689.2017.10.25.07.35.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 11 Oct 2017 02:43:24 -0700 (PDT)
+        Wed, 25 Oct 2017 07:35:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=gw5DItYS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39864 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:48573 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e2DXu-0007ws-6r
-	for alex.bennee@linaro.org; Wed, 11 Oct 2017 05:43:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52596)
+	id 1e7MmC-0000j0-La
+	for alex.bennee@linaro.org; Wed, 25 Oct 2017 10:35:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46390)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1e2DXm-0007wY-Lq
-	for qemu-arm@nongnu.org; Wed, 11 Oct 2017 05:43:16 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1e7Mm5-0000iT-53
+	for qemu-arm@nongnu.org; Wed, 25 Oct 2017 10:35:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1e2DXi-00079a-Us
-	for qemu-arm@nongnu.org; Wed, 11 Oct 2017 05:43:14 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36158)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1e2DXi-00077p-M4; Wed, 11 Oct 2017 05:43:10 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E59E07E454;
-	Wed, 11 Oct 2017 09:43:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com E59E07E454
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=eric.auger@redhat.com
-Received: from localhost.localdomain (ovpn-117-172.ams2.redhat.com
-	[10.36.117.172])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 2803918990;
-	Wed, 11 Oct 2017 09:42:56 +0000 (UTC)
-To: Bharat Bhushan <bharat.bhushan@nxp.com>,
-	Linu Cherian <linuc.decode@gmail.com>
-References: <1506494000-31982-1-git-send-email-Bharat.Bhushan@nxp.com>
-	<20170927074109.GA31587@virtx40>
-	<AM5PR0401MB25450ACC804B20D93C4F2D9D9A780@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-	<9700cf30-65ed-9c55-c1b9-14bb8deb669f@redhat.com>
-	<20170927092147.GA32183@virtx40>
-	<0af599c0-f859-f90c-c999-bc4a0a678768@redhat.com>
-	<20171004114910.GA6932@virtx40>
-	<79234c56-c524-5359-de8a-f266b19821eb@redhat.com>
-	<9d173ea5-75a6-c684-7f8d-e2ec1d3eddff@redhat.com>
-	<1017080b-aa5f-4a1f-9905-e65f22717cd1@redhat.com>
-	<b740e8b7-5859-fd6a-1f1e-480aef6ef4f0@redhat.com>
-	<AM5PR0401MB254548523AC95D0A2A8A92E69A710@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-	<AM5PR0401MB254512CE483DD6E684037A629A750@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <2633883e-ed41-964b-9c27-bc36f86e9b4d@redhat.com>
-Date: Wed, 11 Oct 2017 11:42:55 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	(envelope-from <peter.maydell@linaro.org>) id 1e7Mm4-00035b-3S
+	for qemu-arm@nongnu.org; Wed, 25 Oct 2017 10:35:17 -0400
+Received: from mail-wr0-x242.google.com ([2a00:1450:400c:c0c::242]:47511)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1e7Mm3-00032X-Pn
+	for qemu-arm@nongnu.org; Wed, 25 Oct 2017 10:35:16 -0400
+Received: by mail-wr0-x242.google.com with SMTP id y39so210253wrd.4
+	for <qemu-arm@nongnu.org>; Wed, 25 Oct 2017 07:35:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=5jrQgAc4ITCpI+WcPi1WMA6mn8uqs26m5kncgMcgTio=;
+	b=gw5DItYSl+F1ccBc38tpBAcO1yqkBs/mf85zDXwIl/ReM27bsMyOSZDblqu6qZbdWe
+	FaMF64E5DiyKt4qmB+Kyf3iS0Tkw+1MIklnZ0p9C698lbCq+gSzF4DRiuY7t5NvFXI/g
+	H6w15iG4U3AedeITgY4VAIvJF/OCSVPSwtPy8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=5jrQgAc4ITCpI+WcPi1WMA6mn8uqs26m5kncgMcgTio=;
+	b=Con2PyyZSThWSzjj5xKf9WuCGMhY1olTPTIOQahLy6R+dvNV3DkFfClZ6lfu4Bs9Tf
+	yNtGu7r+mrDdP9tV9K82TxF5Lm3foP7m67yF2Y10wJYe04d0/iiprVQa+qbVShvIH0cj
+	TsO/QAOifWItM3taVGkndkDuZDCaFl3bgpQ70eP7hEBStauhhotWU+OT7w0ZZ7GrWf9+
+	QYZ+NaIzIg5gjOs193fM8oNwG/fj6wjmtZ5mlWCqv6S64fsjZlORJjUhfp4//jXrcxbY
+	weffDpKMVmY7/LHHZ63Kul9JJtgkw9Zf7yvRP+Gz9c4M4UeQwxtIBHSxupErcfJl4Y+U
+	58Sw==
+X-Gm-Message-State: AMCzsaVlApo97POyVx06C2dTHIrmPVgigeJXPUZ5NfbfHpt5JIEVkMZp
+	m8irSb/HBcrmoyM8vixYnVd2kIp+yoyJBQBZFAQmKQ==
+X-Received: by 10.223.143.54 with SMTP id p51mr2372155wrb.138.1508942114216;
+	Wed, 25 Oct 2017 07:35:14 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <AM5PR0401MB254512CE483DD6E684037A629A750@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Wed, 11 Oct 2017 09:43:09 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v4 0/5] virtio-iommu: VFIO
- integration
+Received: by 10.223.161.5 with HTTP; Wed, 25 Oct 2017 07:34:53 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.10.1710241055160.574@sstabellini-ThinkPad-X260>
+References: <alpine.DEB.2.10.1710241055160.574@sstabellini-ThinkPad-X260>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 25 Oct 2017 15:34:53 +0100
+Message-ID: <CAFEAcA_M2Y+Qv==YJtuA32ZZO78+nKG+uwr_+sJv++HC9NtmuQ@mail.gmail.com>
+To: Stefano Stabellini <sstabellini@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::242
+Subject: Re: [Qemu-arm] [PATCH v3] fix WFI/WFE length in syndrome register
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,128 +102,50 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"kevin.tian@intel.com" <kevin.tian@intel.com>,
-	"mst@redhat.com" <mst@redhat.com>,
-	"marc.zyngier@arm.com" <marc.zyngier@arm.com>,
-	"tn@semihalf.com" <tn@semihalf.com>,
-	"will.deacon@arm.com" <will.deacon@arm.com>,
-	"drjones@redhat.com" <drjones@redhat.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"linu.cherian@cavium.com" <linu.cherian@cavium.com>,
-	"bharatb.yadav@gmail.com" <bharatb.yadav@gmail.com>,
-	"robin.murphy@arm.com" <robin.murphy@arm.com>,
-	"christoffer.dall@linaro.org" <christoffer.dall@linaro.org>,
-	"eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XPZs7vQ0xAiw
+X-TUID: ModYzKNOJHZe
 
-Hi Bharat,
+On 24 October 2017 at 18:59, Stefano Stabellini <sstabellini@kernel.org> wrote:
+> WFI/E are often, but not always, 4 bytes long. When they are, we need to
+> set ARM_EL_IL_SHIFT in the syndrome register.
+>
+> Pass the instruction length to HELPER(wfi), use it to decrement pc
+> appropriately and to pass an is_16bit flag to syn_wfx, which sets
+> ARM_EL_IL_SHIFT if needed.
+>
+> Set dc->insn in both arm_tr_translate_insn and thumb_tr_translate_insn.
+>
+> Signed-off-by: Stefano Stabellini <sstabellini@kernel.org>
 
-On 10/10/2017 08:42, Bharat Bhushan wrote:
-> Hi Alex, Eric,
-> 
->> -----Original Message-----
->> From: Qemu-devel [mailto:qemu-devel-
->> bounces+bharat.bhushan=nxp.com@nongnu.org] On Behalf Of Bharat
->> Bhushan
->> Sent: Friday, October 06, 2017 9:16 AM
->> To: Auger Eric <eric.auger@redhat.com>; Linu Cherian
->> <linuc.decode@gmail.com>
->> Cc: peter.maydell@linaro.org; kevin.tian@intel.com; mst@redhat.com;
->> marc.zyngier@arm.com; tn@semihalf.com; will.deacon@arm.com;
->> drjones@redhat.com; qemu-devel@nongnu.org;
->> alex.williamson@redhat.com; qemu-arm@nongnu.org;
->> linu.cherian@cavium.com; eric.auger.pro@gmail.com;
->> robin.murphy@arm.com; christoffer.dall@linaro.org;
->> bharatb.yadav@gmail.com
->> Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH v4 0/5] virtio-iommu: VFIO
->> integration
->>
->>
->>
->>>>> Thanks
->>>>>
->>>>> Eric
->>>>>>
->>>>>> However you should be allowed to map 1 sg element of 5 pages and
->>>>>> then notify the host about this event I think. Still looking at the code...
->>>>>>
->>>>>> I still can't reproduce the issue at the moment. What kind of
->>>>>> device are you assigning?
->>>>>>
->>>>>> Thanks
->>>>>>
->>>>>> Eric
->>>>>>>
->>>>>>> Atleast vfio_get_vaddr called from vfio_iommu_map_notify in Qemu
->>>>>>> expects the map size to be a power of 2.
->>>>
->>>> Actually I missed the most important here ;-)
->>>>>>>
->>>>>>>  if (len & iotlb->addr_mask) {
->>>> This check looks suspiscious to me. In our case the len is not
->>>> modified by the previous translation and it fails, I don't see why.
->>>> It should be valid to be able to notify 5 granules.
->>>
->>> So after discussion with Alex, looks the way we notify the host
->>> currently is wrong. we set the addr_mask to the mapping/unmapping size
->>> -1 whereas this should be a page mask instead (granule size or block size?).
->>> So if the guest maps 5 x 4kB pages we should send 5 notifications for
->>> each page and not a single one. It is unclear to me if we can notify
->>> with hugepage/block page size mask. Peter may confirm/infirm this. in
->>> vsmmuv3 code I notify by granule or block size.
-> 
-> My understanding is that host provides supported page sizes (page_size_mask), and Size of each notification to host should be exactly best fit of supported page-size and/or multiples of supported page-sizes.
-> So if guest maps 20K size (single request), and supported page size is 4K, so we can still send one 20K size request.
-> Not sure I get it, why multiples of supported page-size cannot be provided in one notification to host.
-I think the IOTLB API was originally devised to manage only granule or
-block ^2 sizes. We might change this in the future but for the moment,
-with respect to this series,  I would simply recommend to stick to the
-existing API limitation and concurrently we can work on relaxing this
-constraint on another series.
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index 4da1a4c..0a7b67c 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -12124,6 +12124,7 @@ static void arm_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+>      }
+>
+>      insn = arm_ldl_code(env, dc->pc, dc->sctlr_b);
+> +    dc->insn = insn;
+>      dc->pc += 4;
+>      disas_arm_insn(dc, insn);
+>
+> @@ -12191,6 +12192,7 @@ static void thumb_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+>      }
+>
+>      insn = arm_lduw_code(env, dc->pc, dc->sctlr_b);
+> +    dc->insn = insn;
+>      is_16bit = thumb_insn_is_16bit(dc, insn);
+>      dc->pc += 2;
+>      if (!is_16bit) {
 
-Thanks
+This isn't quite in the right place, because it's before we load the
+second half of a 32 bit Thumb insn, so it won't give dc->insn the
+correct full width insn value in that case.
 
-Eric
-> 
-> Thanks
-> -Bharat
-> 
->>>
->>> Bharat, please can you add this to your TODO list?
->>>
->>> Linu, thanks a lot for the time you spent debugging this issue.
->>> Curiously on my side, it is really seldom hit but it is ...
->>
->> Thanks Linu and Eric, I added this to my todo list.
->> While I am still not able to reproduce the issue.  I tried with e1000 and now
->> try with ixgbe device. May I know which device can be used to reproduce this
->> issue?
->>
->> Thanks
->> -Bharat
->>
->>>
->>> Thanks!
->>>
->>> Eric
->>>>
->>>> Thanks
->>>>
->>>> Eric
->>>>>>>         error_report("iommu has granularity incompatible with target
->> AS");
->>>>>>>         return false;
->>>>>>>     }
->>>>>>>
->>>>>>> Just trying to understand how this is not hitting in your case.
->>>>>>>
->>>>>>>
->>>>>>
->>>>>
->>>>
-> 
+I'm going to take this patch into target-arm.next and fix it up locally
+rather than making you spin a v4.
+
+thanks
+-- PMM

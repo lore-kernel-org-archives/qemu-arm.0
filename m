@@ -1,100 +1,99 @@
-Received: by 10.223.172.38 with SMTP id v35csp1444252wrc;
-        Wed, 6 Sep 2017 16:18:49 -0700 (PDT)
-X-Received: by 10.200.34.49 with SMTP id o46mr1163973qto.194.1504739929332;
-        Wed, 06 Sep 2017 16:18:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504739929; cv=none;
+Received: by 10.223.161.27 with SMTP id o27csp1209774wro;
+        Tue, 24 Oct 2017 19:29:33 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+QVR++9HdBU7VDD00dVCbteNWipICWwdbI7kFzemBRQ87zV1u1HK3Aio79bymGFoJ5JD37U
+X-Received: by 10.37.212.143 with SMTP id m137mr452702ybf.184.1508898573200;
+        Tue, 24 Oct 2017 19:29:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508898573; cv=none;
         d=google.com; s=arc-20160816;
-        b=ILxwFAe4k5Ev3TuWfdHQrGa4q9aHJTqdJH6YJ6+YNjvwooXYRqeJoNMva8iagZrVRw
-         fV5CsyEDocJyFVI7NMyfdeQ5zcGm3bZNdBDXaplOBS82Wqe/5duGAa33AGEsOneVXQ2p
-         5+g3kFoTtZcyuujTv5e+7wh12jQRNjUzCsCLJHqYBuYQukw0xXoA3CnbRf2WlVwkvEDM
-         7HJ8RoNRIIkwstuitcPb/WTTVWDOS+QqEDQQl+pWbQQvRKPH9y2rcMUrFRB0jZXQDctk
-         NlTm5w03zsR+mI2BXVGehK0L8ESyqM6ssQ9bYS3Rjrp+OLwwx9IeYaaMgpTUReURPACI
-         jIEA==
+        b=r9DLghMIOcylTdWR2LxcC0D8mZh3XL+qRW32RocMZJHVYUz88UJ9ni4Glws3cTc37D
+         LVL0rPb6WCeNB/PdlXypD+eypKnAt4B3sHb5P5uvG+rr57EiJEyKUQPaaIliAiROZfn6
+         3EGPDX/g5gfNJsa+XMQOz2PQH5sIe4E5kDYjGd4L2YKtWzleml3uFxndL2KfFi9jnnSF
+         k4Tii+7PViphijbD4ulIrf+h7l5n1Iq2hq/1VhaLYc3sWJwYeakQIIVM/sIFe4RbZwGz
+         frc1cUh2Nn+W5zBnPV2+aN7u1g6oC/eObYCMxky33iMCSakZPGdaIGI865qiaaId28ys
+         AjEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=AKasgWAYTz3FpCWYxNf7gyTmMVeuSMkd84/ax4onWA4=;
-        b=avvFRv8/ybGDDtG4Qp920bUjgvxWGzN6abr4M/RA1rki2wbOSG/3p4BHr6UkNYpxtt
-         /tpDia80PvJ88r6QhkqilaxUKynpywYR/FDPq2AVGqJik6WA9dLx2rAdur5cc7hMRF8s
-         jXF4pkc4lEE/a+0YlHkZ7DkRpTiOYJfvwA8Polbg62PST4VTS3f3bhiw9ml3uPcNheLW
-         jRA07AfLifQHwnMD7agiwIL8XSFBtwkSdqNg1HdENG5o52lm37NSqJvbM+i1nxUFNzZL
-         J43nOQ7uyG4V8wchS+Qtos0NrN2W1o2ZEBnGyg/cHS13u5zpTPAv+tKdL5geiDZlCDQd
-         zM/Q==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=X1R6BR3c2quFfhE8WTfL1T5OX3rKqyjuMf6ZDBBUE4Q=;
+        b=jW4pysZvBDQa+LcRgp8WxekJEv2IkHPu694eDEkST4+wcGejhJ1PY976PaBMKlsQrJ
+         RsTqBw7GlKccnLfab9Z1y54HNWyCVML2+hZFmzgkcPvo9tpqhIj94qwuoljE0TgEIR3F
+         K4DLNUWXalENoS8RfwDYultdkliUCvnXnIcpI4P2cZL0oaIxbM0+R8zX+bzEgAbejCbb
+         WMyYKwPN4vma464yib16vpn0S7ACxjcUAe7m4ZgenTlUHwQWD1evye6awFuQq4+hh9eT
+         Utz2ZijpDYLUHPg/a0va5Pfi8rt3s9fKaLnpwbNLYOBtw/QWThwC9EgXNdflCI4M8DGD
+         k2aw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HMzpKaEU;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=l2NGtsJb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 52si1219455qtw.58.2017.09.06.16.18.48
+        by mx.google.com with ESMTPS id c71si256182ybh.565.2017.10.24.19.29.33
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 06 Sep 2017 16:18:49 -0700 (PDT)
+        Tue, 24 Oct 2017 19:29:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HMzpKaEU;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=l2NGtsJb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:38381 helo=lists.gnu.org)
+Received: from localhost ([::1]:46242 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dpjao-00076B-OX
-	for alex.bennee@linaro.org; Wed, 06 Sep 2017 19:18:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36125)
+	id 1e7BRk-0006Hw-LN
+	for alex.bennee@linaro.org; Tue, 24 Oct 2017 22:29:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57132)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dpjah-00073L-Sk
-	for qemu-arm@nongnu.org; Wed, 06 Sep 2017 19:18:42 -0400
+	(envelope-from <sundeep.lkml@gmail.com>) id 1e7BRb-0006HJ-BI
+	for qemu-arm@nongnu.org; Tue, 24 Oct 2017 22:29:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dpjae-0007Qp-Qy
-	for qemu-arm@nongnu.org; Wed, 06 Sep 2017 19:18:39 -0400
-Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:33590)
+	(envelope-from <sundeep.lkml@gmail.com>) id 1e7BRa-0007FK-Gh
+	for qemu-arm@nongnu.org; Tue, 24 Oct 2017 22:29:23 -0400
+Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:52654)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1dpjae-0007LJ-G4; Wed, 06 Sep 2017 19:18:36 -0400
-Received: by mail-wm0-x243.google.com with SMTP id 187so219058wmn.0;
-	Wed, 06 Sep 2017 16:18:36 -0700 (PDT)
+	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
+	id 1e7BRW-0007CB-5p; Tue, 24 Oct 2017 22:29:18 -0400
+Received: by mail-pf0-x241.google.com with SMTP id e64so21104552pfk.9;
+	Tue, 24 Oct 2017 19:29:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=AKasgWAYTz3FpCWYxNf7gyTmMVeuSMkd84/ax4onWA4=;
-	b=HMzpKaEUAzuZrhRvzXutE8KiQPN/BxpG65EA/lGcxG4bvrH57ZlxyjsXeGso3h0Vd6
-	Bwuk3coZZu0ZX6FzrVBM28jLW9mBZmxalOKrBLY4EBParXGK73zwBRr4stPvwR03/KcC
-	N3s/5f7cOyAeX9sACTx22sAntFWDPFin0F/oTa2yKBx4fLeqEMyCnwb7BvCXwAAnEbGa
-	qHZhrDmkyfFP4zv2DF/7yNjoZjObu9uWZQyi9IiO2Y/MpKDrDVYPWjZpdeqoh0b9wOWO
-	R9jSm4BsuEO/j/vvMbmxYVKoO2QfwuKwlxPaYsB2zQRoToJWidLaG1brluD8z+ynb3F/
-	qUeQ==
+	h=from:to:cc:subject:date:message-id;
+	bh=X1R6BR3c2quFfhE8WTfL1T5OX3rKqyjuMf6ZDBBUE4Q=;
+	b=l2NGtsJbQcnOxDiDGsaQ9/O+gkERzm4cZiVf3eWzA1WVrzq8bZwyFq6otZ9BxbUiA1
+	LLDWzhE6sVyFZdof9kzmT6pJLeTs6F+66Afa4EpKHaEEVbTfUu3cpD90vNxYp+5UmbcV
+	cr2AOL6A6AVgV/6GhEZNqwzXa3MDN/yK39ufbw+h4wodWFYXVY2ExT7eBGn+nRNx95Fx
+	5Uk41cFWNt0vW5VJ3oqDzwz4ii/HxaaJUgk+vjrOBTlbsfDQwnuYQ+tdBo7f2OGjzmbZ
+	/9N1gP2zomsDT0jGLz5c5dN5hhOGfDT0xhdGRr2tMl0SNG354Ln+3idmSJx45ZvMHGTy
+	ne/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=AKasgWAYTz3FpCWYxNf7gyTmMVeuSMkd84/ax4onWA4=;
-	b=jaD36PgscwJvk15tcAT85bObELI0YwQffN8Z3M1IeRroUbyCa1FxuOl6zCMPoFOMwo
-	OW93ehjc9VISfZcu4RS6VWVWykmdiTlPYqEd10kExXc/24FkHdPWFAgHgUJkcZEKG6A+
-	bSnEQa33r7Y8Fhwf/thXGNA+VUFVWMksdoDtbSloGxZerq0K281e2fgpcYw8gghMTJ89
-	xQO0ucNflymYngQKSdnVI9qELWsmZST0UTHgXCmJq5rXpdW2VigTV9UXLKrJySTh0pkD
-	2//WG66rlFL1NWqnc85oXh6FcPkxCDlGa/sUvloaalEBKl/nhQvIUV6qQedRhw8XZVjO
-	orAg==
-X-Gm-Message-State: AHPjjUg0wUhL+nqczhSFVn+mIfcn4jqhSQ505BC1XeMwX50OMsYpZHM1
-	+sdVpcstLkcHTCXOlNqr22+9ihR/hQ==
-X-Google-Smtp-Source: ADKCNb7sz5U+wlFwRA9+j8e8matCMjEDAwtdo8kpqE8Mt5GkIVUQ7S2+XMEcjEw7TjknGaftKhkXNA+7jnno+j5AWNk=
-X-Received: by 10.28.234.88 with SMTP id i85mr784053wmh.75.1504739915203; Wed,
-	06 Sep 2017 16:18:35 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.28.191.130 with HTTP; Wed, 6 Sep 2017 16:18:04 -0700 (PDT)
-In-Reply-To: <1504626814-23124-3-git-send-email-peter.maydell@linaro.org>
-References: <1504626814-23124-1-git-send-email-peter.maydell@linaro.org>
-	<1504626814-23124-3-git-send-email-peter.maydell@linaro.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 6 Sep 2017 16:18:04 -0700
-Message-ID: <CAKmqyKNidmYxd1=zpbQ_r+xm3T8P1N-HAWn1O8zuYpFAsMKbKA@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=X1R6BR3c2quFfhE8WTfL1T5OX3rKqyjuMf6ZDBBUE4Q=;
+	b=GffQMZFEn9AZGV9IDGwiTy/48R6QmuZJ+mLIjM/ZYA3DFbwVrCPdDLEhFeMZaDLcyr
+	eZ59MJJ7P+vXQHqS9YP2PNZLyIjMx7y+QC0BgF8bjspK7KmgNvRABbGHW9WyRUvqTUbl
+	wjSyQ/FZgLl2XXzsCTBslBzZJo7D4LJ21K+34d4z2Bfp38kCzcOOU1C/gIZUc8rjnDNq
+	UQeTWQJZW5hOyjP2Q2TybGBN3jdFE3yrt9iFhxuTmqRMp8NKDl2sQb87BXQg6zzmHaEf
+	3YdnpEDJQsYXCugI3/+i6ZUAHor6MHRhYPSIIMPogmQaU2OKMLRpYNSTxLdDIEFyelS4
+	DxYQ==
+X-Gm-Message-State: AMCzsaVCzMpkVfwnwPcxRzFKaZz1vy/jlhS/0m78eBU+jznh2BGSQC4D
+	X/FsLN5G7aHMKXNB6PmrdAo7EA==
+X-Received: by 10.84.131.1 with SMTP id 1mr529204pld.120.1508898556666;
+	Tue, 24 Oct 2017 19:29:16 -0700 (PDT)
+Received: from localhost.localdomain ([183.82.194.3])
+	by smtp.gmail.com with ESMTPSA id
+	x4sm2326142pfx.124.2017.10.24.19.29.13
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Tue, 24 Oct 2017 19:29:16 -0700 (PDT)
+From: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Date: Wed, 25 Oct 2017 07:59:04 +0530
+Message-Id: <1508898544-10307-1-git-send-email-sundeep.lkml@gmail.com>
+X-Mailer: git-send-email 2.5.0
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::243
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 2/3] hw/arm: Set
- ignore_memory_transaction_failures for most ARM boards
+X-Received-From: 2607:f8b0:400e:c00::241
+Subject: [Qemu-arm] [Qemu devel V4 PATCH] msf2: Remove dead code reported by
+ Coverity
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,520 +105,77 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Patch Tracking <patches@linaro.org>, Richard Henderson <rth@twiddle.net>
+Cc: peter.maydell@linaro.org, f4bug@amsat.org, alistair23@gmail.com,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+	darren.kenny@oracle.com, pbonzini@redhat.com, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OA91S0xEUYRA
+X-TUID: j7077DpAgqwQ
 
-On Tue, Sep 5, 2017 at 8:53 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> Set the MachineClass flag ignore_memory_transaction_failures
-> for almost all ARM boards. This means they retain the legacy
-> behaviour that accesses to unimplemented addresses will RAZ/WI
-> rather than aborting, when a subsequent commit adds support
-> for external aborts.
->
-> The exceptions are:
->  * virt -- we know that guests won't try to prod devices
->    that we don't describe in the device tree or ACPI tables
->  * mps2 -- this board was written to use unimplemented-device
->    for all the ranges with devices we don't yet handle
->
-> New boards should not set the flag, but instead be written
-> like the mps2.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> For the Xilinx boards:
-> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+Fixed incorrect frame size mask, validated maximum frame
+size in spi_write and removed dead code.
 
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+---
+v4:
+	changed %d to %u while logging frame size error.
+v3:
+	Added comment that [31:6] bits are reserved in R_SPI_DFSIZE
+	register and logged incorrect value too in guest error(suggested
+	by Darren).
+v2:
+	else if -> else in set_fifodepth
+	log guest error when frame size is more than 32
 
-Thanks,
-Alistair
+ hw/ssi/mss-spi.c | 18 ++++++++++++++----
+ 1 file changed, 14 insertions(+), 4 deletions(-)
 
-> ---
->  hw/arm/aspeed.c         | 3 +++
->  hw/arm/collie.c         | 1 +
->  hw/arm/cubieboard.c     | 1 +
->  hw/arm/digic_boards.c   | 1 +
->  hw/arm/exynos4_boards.c | 2 ++
->  hw/arm/gumstix.c        | 2 ++
->  hw/arm/highbank.c       | 2 ++
->  hw/arm/imx25_pdk.c      | 1 +
->  hw/arm/integratorcp.c   | 1 +
->  hw/arm/kzm.c            | 1 +
->  hw/arm/mainstone.c      | 1 +
->  hw/arm/musicpal.c       | 1 +
->  hw/arm/netduino2.c      | 1 +
->  hw/arm/nseries.c        | 2 ++
->  hw/arm/omap_sx1.c       | 2 ++
->  hw/arm/palm.c           | 1 +
->  hw/arm/raspi.c          | 1 +
->  hw/arm/realview.c       | 4 ++++
->  hw/arm/sabrelite.c      | 1 +
->  hw/arm/spitz.c          | 4 ++++
->  hw/arm/stellaris.c      | 2 ++
->  hw/arm/tosa.c           | 1 +
->  hw/arm/versatilepb.c    | 2 ++
->  hw/arm/vexpress.c       | 1 +
->  hw/arm/xilinx_zynq.c    | 1 +
->  hw/arm/xlnx-ep108.c     | 2 ++
->  hw/arm/z2.c             | 1 +
->  27 files changed, 43 insertions(+)
->
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 0c5635f..ab895ad 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -270,6 +270,7 @@ static void palmetto_bmc_class_init(ObjectClass *oc, void *data)
->      mc->no_floppy = 1;
->      mc->no_cdrom = 1;
->      mc->no_parallel = 1;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static const TypeInfo palmetto_bmc_type = {
-> @@ -302,6 +303,7 @@ static void ast2500_evb_class_init(ObjectClass *oc, void *data)
->      mc->no_floppy = 1;
->      mc->no_cdrom = 1;
->      mc->no_parallel = 1;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static const TypeInfo ast2500_evb_type = {
-> @@ -326,6 +328,7 @@ static void romulus_bmc_class_init(ObjectClass *oc, void *data)
->      mc->no_floppy = 1;
->      mc->no_cdrom = 1;
->      mc->no_parallel = 1;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static const TypeInfo romulus_bmc_type = {
-> diff --git a/hw/arm/collie.c b/hw/arm/collie.c
-> index 2e69531..8830192 100644
-> --- a/hw/arm/collie.c
-> +++ b/hw/arm/collie.c
-> @@ -64,6 +64,7 @@ static void collie_machine_init(MachineClass *mc)
->  {
->      mc->desc = "Sharp SL-5500 (Collie) PDA (SA-1110)";
->      mc->init = collie_init;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  DEFINE_MACHINE("collie", collie_machine_init)
-> diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
-> index b98e1c4..32f1edd 100644
-> --- a/hw/arm/cubieboard.c
-> +++ b/hw/arm/cubieboard.c
-> @@ -86,6 +86,7 @@ static void cubieboard_machine_init(MachineClass *mc)
->      mc->init = cubieboard_init;
->      mc->block_default_type = IF_IDE;
->      mc->units_per_default_bus = 1;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  DEFINE_MACHINE("cubieboard", cubieboard_machine_init)
-> diff --git a/hw/arm/digic_boards.c b/hw/arm/digic_boards.c
-> index 520c8e9..9f11dcd 100644
-> --- a/hw/arm/digic_boards.c
-> +++ b/hw/arm/digic_boards.c
-> @@ -155,6 +155,7 @@ static void canon_a1100_machine_init(MachineClass *mc)
->  {
->      mc->desc = "Canon PowerShot A1100 IS";
->      mc->init = &canon_a1100_init;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  DEFINE_MACHINE("canon-a1100", canon_a1100_machine_init)
-> diff --git a/hw/arm/exynos4_boards.c b/hw/arm/exynos4_boards.c
-> index 7c03ed3..f1441ec 100644
-> --- a/hw/arm/exynos4_boards.c
-> +++ b/hw/arm/exynos4_boards.c
-> @@ -189,6 +189,7 @@ static void nuri_class_init(ObjectClass *oc, void *data)
->      mc->desc = "Samsung NURI board (Exynos4210)";
->      mc->init = nuri_init;
->      mc->max_cpus = EXYNOS4210_NCPUS;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static const TypeInfo nuri_type = {
-> @@ -204,6 +205,7 @@ static void smdkc210_class_init(ObjectClass *oc, void *data)
->      mc->desc = "Samsung SMDKC210 board (Exynos4210)";
->      mc->init = smdkc210_init;
->      mc->max_cpus = EXYNOS4210_NCPUS;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static const TypeInfo smdkc210_type = {
-> diff --git a/hw/arm/gumstix.c b/hw/arm/gumstix.c
-> index d59d9ba..092ce36 100644
-> --- a/hw/arm/gumstix.c
-> +++ b/hw/arm/gumstix.c
-> @@ -128,6 +128,7 @@ static void connex_class_init(ObjectClass *oc, void *data)
->
->      mc->desc = "Gumstix Connex (PXA255)";
->      mc->init = connex_init;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static const TypeInfo connex_type = {
-> @@ -142,6 +143,7 @@ static void verdex_class_init(ObjectClass *oc, void *data)
->
->      mc->desc = "Gumstix Verdex (PXA270)";
->      mc->init = verdex_init;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static const TypeInfo verdex_type = {
-> diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
-> index 942d5a8..ba27789 100644
-> --- a/hw/arm/highbank.c
-> +++ b/hw/arm/highbank.c
-> @@ -413,6 +413,7 @@ static void highbank_class_init(ObjectClass *oc, void *data)
->      mc->block_default_type = IF_IDE;
->      mc->units_per_default_bus = 1;
->      mc->max_cpus = 4;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static const TypeInfo highbank_type = {
-> @@ -430,6 +431,7 @@ static void midway_class_init(ObjectClass *oc, void *data)
->      mc->block_default_type = IF_IDE;
->      mc->units_per_default_bus = 1;
->      mc->max_cpus = 4;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static const TypeInfo midway_type = {
-> diff --git a/hw/arm/imx25_pdk.c b/hw/arm/imx25_pdk.c
-> index 7d42c74..9f3ee14 100644
-> --- a/hw/arm/imx25_pdk.c
-> +++ b/hw/arm/imx25_pdk.c
-> @@ -148,6 +148,7 @@ static void imx25_pdk_machine_init(MachineClass *mc)
->  {
->      mc->desc = "ARM i.MX25 PDK board (ARM926)";
->      mc->init = imx25_pdk_init;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  DEFINE_MACHINE("imx25-pdk", imx25_pdk_machine_init)
-> diff --git a/hw/arm/integratorcp.c b/hw/arm/integratorcp.c
-> index d9530ed..d603af9 100644
-> --- a/hw/arm/integratorcp.c
-> +++ b/hw/arm/integratorcp.c
-> @@ -681,6 +681,7 @@ static void integratorcp_machine_init(MachineClass *mc)
->  {
->      mc->desc = "ARM Integrator/CP (ARM926EJ-S)";
->      mc->init = integratorcp_init;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  DEFINE_MACHINE("integratorcp", integratorcp_machine_init)
-> diff --git a/hw/arm/kzm.c b/hw/arm/kzm.c
-> index 3ed6577..f9c2228 100644
-> --- a/hw/arm/kzm.c
-> +++ b/hw/arm/kzm.c
-> @@ -142,6 +142,7 @@ static void kzm_machine_init(MachineClass *mc)
->  {
->      mc->desc = "ARM KZM Emulation Baseboard (ARM1136)";
->      mc->init = kzm_init;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  DEFINE_MACHINE("kzm", kzm_machine_init)
-> diff --git a/hw/arm/mainstone.c b/hw/arm/mainstone.c
-> index fb268e6..637f52c 100644
-> --- a/hw/arm/mainstone.c
-> +++ b/hw/arm/mainstone.c
-> @@ -196,6 +196,7 @@ static void mainstone2_machine_init(MachineClass *mc)
->  {
->      mc->desc = "Mainstone II (PXA27x)";
->      mc->init = mainstone_init;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  DEFINE_MACHINE("mainstone", mainstone2_machine_init)
-> diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-> index a8b3d46..ab4ba31 100644
-> --- a/hw/arm/musicpal.c
-> +++ b/hw/arm/musicpal.c
-> @@ -1718,6 +1718,7 @@ static void musicpal_machine_init(MachineClass *mc)
->  {
->      mc->desc = "Marvell 88w8618 / MusicPal (ARM926EJ-S)";
->      mc->init = musicpal_init;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  DEFINE_MACHINE("musicpal", musicpal_machine_init)
-> diff --git a/hw/arm/netduino2.c b/hw/arm/netduino2.c
-> index 3cfe332..9d34d4c 100644
-> --- a/hw/arm/netduino2.c
-> +++ b/hw/arm/netduino2.c
-> @@ -45,6 +45,7 @@ static void netduino2_machine_init(MachineClass *mc)
->  {
->      mc->desc = "Netduino 2 Machine";
->      mc->init = netduino2_init;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  DEFINE_MACHINE("netduino2", netduino2_machine_init)
-> diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
-> index 503a3b6..a32ac82 100644
-> --- a/hw/arm/nseries.c
-> +++ b/hw/arm/nseries.c
-> @@ -1425,6 +1425,7 @@ static void n800_class_init(ObjectClass *oc, void *data)
->      mc->desc = "Nokia N800 tablet aka. RX-34 (OMAP2420)";
->      mc->init = n800_init;
->      mc->default_boot_order = "";
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static const TypeInfo n800_type = {
-> @@ -1440,6 +1441,7 @@ static void n810_class_init(ObjectClass *oc, void *data)
->      mc->desc = "Nokia N810 tablet aka. RX-44 (OMAP2420)";
->      mc->init = n810_init;
->      mc->default_boot_order = "";
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static const TypeInfo n810_type = {
-> diff --git a/hw/arm/omap_sx1.c b/hw/arm/omap_sx1.c
-> index 9809106..4535617 100644
-> --- a/hw/arm/omap_sx1.c
-> +++ b/hw/arm/omap_sx1.c
-> @@ -223,6 +223,7 @@ static void sx1_machine_v2_class_init(ObjectClass *oc, void *data)
->
->      mc->desc = "Siemens SX1 (OMAP310) V2";
->      mc->init = sx1_init_v2;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static const TypeInfo sx1_machine_v2_type = {
-> @@ -237,6 +238,7 @@ static void sx1_machine_v1_class_init(ObjectClass *oc, void *data)
->
->      mc->desc = "Siemens SX1 (OMAP310) V1";
->      mc->init = sx1_init_v1;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static const TypeInfo sx1_machine_v1_type = {
-> diff --git a/hw/arm/palm.c b/hw/arm/palm.c
-> index 64cf8ca..bf070a2 100644
-> --- a/hw/arm/palm.c
-> +++ b/hw/arm/palm.c
-> @@ -274,6 +274,7 @@ static void palmte_machine_init(MachineClass *mc)
->  {
->      mc->desc = "Palm Tungsten|E aka. Cheetah PDA (OMAP310)";
->      mc->init = palmte_init;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  DEFINE_MACHINE("cheetah", palmte_machine_init)
-> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-> index 32cdc98..5941c9f 100644
-> --- a/hw/arm/raspi.c
-> +++ b/hw/arm/raspi.c
-> @@ -168,5 +168,6 @@ static void raspi2_machine_init(MachineClass *mc)
->      mc->no_cdrom = 1;
->      mc->max_cpus = BCM2836_NCPUS;
->      mc->default_ram_size = 1024 * 1024 * 1024;
-> +    mc->ignore_memory_transaction_failures = true;
->  };
->  DEFINE_MACHINE("raspi2", raspi2_machine_init)
-> diff --git a/hw/arm/realview.c b/hw/arm/realview.c
-> index 2736156..f3a49b6 100644
-> --- a/hw/arm/realview.c
-> +++ b/hw/arm/realview.c
-> @@ -398,6 +398,7 @@ static void realview_eb_class_init(ObjectClass *oc, void *data)
->      mc->desc = "ARM RealView Emulation Baseboard (ARM926EJ-S)";
->      mc->init = realview_eb_init;
->      mc->block_default_type = IF_SCSI;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static const TypeInfo realview_eb_type = {
-> @@ -414,6 +415,7 @@ static void realview_eb_mpcore_class_init(ObjectClass *oc, void *data)
->      mc->init = realview_eb_mpcore_init;
->      mc->block_default_type = IF_SCSI;
->      mc->max_cpus = 4;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static const TypeInfo realview_eb_mpcore_type = {
-> @@ -428,6 +430,7 @@ static void realview_pb_a8_class_init(ObjectClass *oc, void *data)
->
->      mc->desc = "ARM RealView Platform Baseboard for Cortex-A8";
->      mc->init = realview_pb_a8_init;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static const TypeInfo realview_pb_a8_type = {
-> @@ -443,6 +446,7 @@ static void realview_pbx_a9_class_init(ObjectClass *oc, void *data)
->      mc->desc = "ARM RealView Platform Baseboard Explore for Cortex-A9";
->      mc->init = realview_pbx_a9_init;
->      mc->max_cpus = 4;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static const TypeInfo realview_pbx_a9_type = {
-> diff --git a/hw/arm/sabrelite.c b/hw/arm/sabrelite.c
-> index 4e7ac8c..ee140e5 100644
-> --- a/hw/arm/sabrelite.c
-> +++ b/hw/arm/sabrelite.c
-> @@ -122,6 +122,7 @@ static void sabrelite_machine_init(MachineClass *mc)
->      mc->desc = "Freescale i.MX6 Quad SABRE Lite Board (Cortex A9)";
->      mc->init = sabrelite_init;
->      mc->max_cpus = FSL_IMX6_NUM_CPUS;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  DEFINE_MACHINE("sabrelite", sabrelite_machine_init)
-> diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
-> index 7f588ce..6406421 100644
-> --- a/hw/arm/spitz.c
-> +++ b/hw/arm/spitz.c
-> @@ -983,6 +983,7 @@ static void akitapda_class_init(ObjectClass *oc, void *data)
->
->      mc->desc = "Sharp SL-C1000 (Akita) PDA (PXA270)";
->      mc->init = akita_init;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static const TypeInfo akitapda_type = {
-> @@ -998,6 +999,7 @@ static void spitzpda_class_init(ObjectClass *oc, void *data)
->      mc->desc = "Sharp SL-C3000 (Spitz) PDA (PXA270)";
->      mc->init = spitz_init;
->      mc->block_default_type = IF_IDE;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static const TypeInfo spitzpda_type = {
-> @@ -1013,6 +1015,7 @@ static void borzoipda_class_init(ObjectClass *oc, void *data)
->      mc->desc = "Sharp SL-C3100 (Borzoi) PDA (PXA270)";
->      mc->init = borzoi_init;
->      mc->block_default_type = IF_IDE;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static const TypeInfo borzoipda_type = {
-> @@ -1028,6 +1031,7 @@ static void terrierpda_class_init(ObjectClass *oc, void *data)
->      mc->desc = "Sharp SL-C3200 (Terrier) PDA (PXA270)";
->      mc->init = terrier_init;
->      mc->block_default_type = IF_IDE;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static const TypeInfo terrierpda_type = {
-> diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-> index 408c1a1..b3aad23 100644
-> --- a/hw/arm/stellaris.c
-> +++ b/hw/arm/stellaris.c
-> @@ -1453,6 +1453,7 @@ static void lm3s811evb_class_init(ObjectClass *oc, void *data)
->
->      mc->desc = "Stellaris LM3S811EVB";
->      mc->init = lm3s811evb_init;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static const TypeInfo lm3s811evb_type = {
-> @@ -1467,6 +1468,7 @@ static void lm3s6965evb_class_init(ObjectClass *oc, void *data)
->
->      mc->desc = "Stellaris LM3S6965EVB";
->      mc->init = lm3s6965evb_init;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static const TypeInfo lm3s6965evb_type = {
-> diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
-> index 8b757ff..1134cf7 100644
-> --- a/hw/arm/tosa.c
-> +++ b/hw/arm/tosa.c
-> @@ -263,6 +263,7 @@ static void tosapda_machine_init(MachineClass *mc)
->      mc->desc = "Sharp SL-6000 (Tosa) PDA (PXA255)";
->      mc->init = tosa_init;
->      mc->block_default_type = IF_IDE;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  DEFINE_MACHINE("tosa", tosapda_machine_init)
-> diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
-> index b0e9f5b..76664e4 100644
-> --- a/hw/arm/versatilepb.c
-> +++ b/hw/arm/versatilepb.c
-> @@ -403,6 +403,7 @@ static void versatilepb_class_init(ObjectClass *oc, void *data)
->      mc->desc = "ARM Versatile/PB (ARM926EJ-S)";
->      mc->init = vpb_init;
->      mc->block_default_type = IF_SCSI;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static const TypeInfo versatilepb_type = {
-> @@ -418,6 +419,7 @@ static void versatileab_class_init(ObjectClass *oc, void *data)
->      mc->desc = "ARM Versatile/AB (ARM926EJ-S)";
->      mc->init = vab_init;
->      mc->block_default_type = IF_SCSI;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static const TypeInfo versatileab_type = {
-> diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
-> index 571dd36..e3acab6 100644
-> --- a/hw/arm/vexpress.c
-> +++ b/hw/arm/vexpress.c
-> @@ -752,6 +752,7 @@ static void vexpress_class_init(ObjectClass *oc, void *data)
->      mc->desc = "ARM Versatile Express";
->      mc->init = vexpress_common_init;
->      mc->max_cpus = 4;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  static void vexpress_a9_class_init(ObjectClass *oc, void *data)
-> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-> index a750959..3759cf8 100644
-> --- a/hw/arm/xilinx_zynq.c
-> +++ b/hw/arm/xilinx_zynq.c
-> @@ -326,6 +326,7 @@ static void zynq_machine_init(MachineClass *mc)
->      mc->init = zynq_init;
->      mc->max_cpus = 1;
->      mc->no_sdcard = 1;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  DEFINE_MACHINE("xilinx-zynq-a9", zynq_machine_init)
-> diff --git a/hw/arm/xlnx-ep108.c b/hw/arm/xlnx-ep108.c
-> index 860780a..c339cd4 100644
-> --- a/hw/arm/xlnx-ep108.c
-> +++ b/hw/arm/xlnx-ep108.c
-> @@ -122,6 +122,7 @@ static void xlnx_ep108_machine_init(MachineClass *mc)
->      mc->init = xlnx_ep108_init;
->      mc->block_default_type = IF_IDE;
->      mc->units_per_default_bus = 1;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  DEFINE_MACHINE("xlnx-ep108", xlnx_ep108_machine_init)
-> @@ -132,6 +133,7 @@ static void xlnx_zcu102_machine_init(MachineClass *mc)
->      mc->init = xlnx_ep108_init;
->      mc->block_default_type = IF_IDE;
->      mc->units_per_default_bus = 1;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  DEFINE_MACHINE("xlnx-zcu102", xlnx_zcu102_machine_init)
-> diff --git a/hw/arm/z2.c b/hw/arm/z2.c
-> index 1607cbd..417bc1a 100644
-> --- a/hw/arm/z2.c
-> +++ b/hw/arm/z2.c
-> @@ -370,6 +370,7 @@ static void z2_machine_init(MachineClass *mc)
->  {
->      mc->desc = "Zipit Z2 (PXA27x)";
->      mc->init = z2_init;
-> +    mc->ignore_memory_transaction_failures = true;
->  }
->
->  DEFINE_MACHINE("z2", z2_machine_init)
-> --
-> 2.7.4
->
->
+diff --git a/hw/ssi/mss-spi.c b/hw/ssi/mss-spi.c
+index 5a8e308..d60daba 100644
+--- a/hw/ssi/mss-spi.c
++++ b/hw/ssi/mss-spi.c
+@@ -76,9 +76,10 @@
+ #define C_BIGFIFO            (1 << 29)
+ #define C_RESET              (1 << 31)
+ 
+-#define FRAMESZ_MASK         0x1F
++#define FRAMESZ_MASK         0x3F
+ #define FMCOUNT_MASK         0x00FFFF00
+ #define FMCOUNT_SHIFT        8
++#define FRAMESZ_MAX          32
+ 
+ static void txfifo_reset(MSSSpiState *s)
+ {
+@@ -104,10 +105,8 @@ static void set_fifodepth(MSSSpiState *s)
+         s->fifo_depth = 32;
+     } else if (size <= 16) {
+         s->fifo_depth = 16;
+-    } else if (size <= 32) {
+-        s->fifo_depth = 8;
+     } else {
+-        s->fifo_depth = 4;
++        s->fifo_depth = 8;
+     }
+ }
+ 
+@@ -301,6 +300,17 @@ static void spi_write(void *opaque, hwaddr addr,
+         if (s->enabled) {
+             break;
+         }
++        /*
++         * [31:6] bits are reserved bits and for future use.
++         * [5:0] are for frame size. Only [5:0] bits are validated
++         * during write, [31:6] bits are untouched.
++         */
++        if ((value & FRAMESZ_MASK) > FRAMESZ_MAX) {
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: Incorrect size %u provided."
++                         "Maximum frame size is %u\n",
++                         __func__, value & FRAMESZ_MASK, FRAMESZ_MAX);
++            break;
++        }
+         s->regs[R_SPI_DFSIZE] = value;
+         break;
+ 
+-- 
+2.5.0
+

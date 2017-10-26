@@ -1,91 +1,96 @@
-Received: by 10.223.161.27 with SMTP id o27csp722389wro;
-        Thu, 26 Oct 2017 06:39:17 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+RNPBMYWC/NmgDyHeau+8oX9bPC4iQuwa1JpfcwyrxPkgTx6u9J037/jEKeOlUX14CABNXV
-X-Received: by 10.37.191.136 with SMTP id l8mr3554629ybk.474.1509025157588;
-        Thu, 26 Oct 2017 06:39:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1509025157; cv=none;
+Received: by 10.223.161.27 with SMTP id o27csp773207wro;
+        Thu, 26 Oct 2017 07:30:18 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+TF79dbeY3k9D5/y1BjFquO4CW6F6GdP8LpTaTXVJopkGSSYiQpRMwdI2G6QSPUv2OTjkpG
+X-Received: by 10.37.224.140 with SMTP id x134mr3513781ybg.440.1509028218141;
+        Thu, 26 Oct 2017 07:30:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1509028218; cv=none;
         d=google.com; s=arc-20160816;
-        b=er0xqjkrHPzA3hsOjDbszZ+E5TgayGpqh08HDBTGUhdlDEAmRsEuoIPGTuxyyNir0U
-         1Veitf4OYqInqNlACtySfrFbfLKRJ9f0nDkrZ0cuzhxGCv3ks2LI11J/F3FqmlKoEBUe
-         n1k34eNrCmIhdlEmqbJbbXsSTHFOU+xoXJ11/ie9dWl7Mt/56cWbcNM8qI/LxSzsMCfO
-         9dD6JQnqCGWFf4Nk4CbVnoDMDTSclJsRj8RN66z0gKxgb+CpfifkAeo0stC/8d/CBwTx
-         AomxhsBXe/lC1W37r6GR/2J11N74CSjZVp7zpht0AX7dQoR92fFPsI1EbijQBVAiCK4U
-         PDpA==
+        b=ObnGmMW5+sqsUC0dDFxZgelO7K05faUhfldBrK7IrrqI7OlIb80Uw6uXqvRe1YAWOX
+         cMxKJFs+xhna+qmEgDXV24JWdNFZx8h+M9CfHJpOGvzZPspTz7ZJmG/hjtvvzRAzWCTs
+         Mi0OoUUG8DPQS7c2+i6wbXogdiYzlu887gfjR1dnfpNaZYZSOyTsRgiNanjRnESY7Pjq
+         +flSUjmrnj8oAewKX8u/Et+lvDAQVJvvw9BGJCVoju6sVsMty9PIEHNGcpoUpVNh4Wws
+         y2jNuRwsoM2lKt20yn/CeTRDWK80QW5lxoocxSAV/LBkuO37NQ11jpxj266i9EziNHC1
+         Q48g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dmarc-filter:arc-authentication-results;
-        bh=uR4ZCCYGBPCE6sQb5pKB0fjjyFIaV9gGa/EhXTh/kG4=;
-        b=Ilba2UtwB+/HWpS8IQFgRPVlAb9iJiPFXByITu8jgd1eKBl/W9nJfUx+QxMgt+w8tf
-         B9XVWRQacUusBYR+uOQzS8Qr2T2XSBdeEoukjz4lZX0hxNRfFCOrzikNJ3wPrdtCVfeB
-         CzXk3obbokH8oZj2zFFMe9DA/dZccktK6rvqgH5QEKi977D8GZ7wrWLTd3TVHw1FEkmk
-         iA/okg0ixoz1s1KEWyK63ugty8CFXajkUf0cWov7WsHMifZVrpNW+CPk52kfd1By2vE7
-         DX46CQ1Eop4C0wxnx3SSYuacOSUxhpKQT2mAZl76U/8U+bhVqO1Co7ZLBRbVf56Kl1oZ
-         /2Xw==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=bQiHjmuZqywaTED/i7Xly9GyW+2j9cpvwySffkTKNbg=;
+        b=Cfzc+zW3kKErPhdgiH4gO7bUNTlArFd0tiB0yUxX39wKciTugND8K4XAwXhPj9roV0
+         DL84w0WM95SPHsxJoqEQHzEQBJIHX6hVQpJtL+GWYcY0QRxa6k8wiZY3TrEFcc2KIUjh
+         XMNEX8Q3WxWPwc9IV9Q1O6YAObW+Q2l3mTXaLN6nXLlZj9SyRuV5608M8cwHROUg4kRo
+         w+0Jir7+ahbdsCm3NaKeQ6T+iGTkXStN6cw0/P/vMnkaalgQXYHRllUsQ9DA1AUEuye6
+         5lf0lwGcZAG6BXr85hAS0PtOZWfrK+UWH2IRCIPLva5L2S9OVuzSGfQCiwnT7ttWMNJn
+         nSEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@zx2c4.com header.s=mail header.b=tgczhzkB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=zx2c4.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e127si822633ywb.645.2017.10.26.06.39.17
+Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
+        by mx.google.com with ESMTPS id u202si841139ywe.551.2017.10.26.07.30.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 26 Oct 2017 06:39:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 26 Oct 2017 07:30:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52971 helo=lists.gnu.org)
+       dkim=fail header.i=@zx2c4.com header.s=mail header.b=tgczhzkB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=zx2c4.com
+Received: from localhost ([::1]:53235 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e7iNR-00016w-0P
-	for alex.bennee@linaro.org; Thu, 26 Oct 2017 09:39:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35278)
+	id 1e7jAn-0000Jh-Ei
+	for alex.bennee@linaro.org; Thu, 26 Oct 2017 10:30:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47746)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1e7iJH-00061t-CD
-	for qemu-arm@nongnu.org; Thu, 26 Oct 2017 09:35:00 -0400
+	(envelope-from <Jason@zx2c4.com>) id 1e7ium-000394-Gz
+	for qemu-arm@nongnu.org; Thu, 26 Oct 2017 10:13:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1e7iJE-0006SH-OJ
-	for qemu-arm@nongnu.org; Thu, 26 Oct 2017 09:34:59 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:62594)
+	(envelope-from <Jason@zx2c4.com>) id 1e7iug-0005cU-Lw
+	for qemu-arm@nongnu.org; Thu, 26 Oct 2017 10:13:44 -0400
+Received: from frisell.zx2c4.com ([192.95.5.64]:37917)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1e7iJE-0006QD-Gj; Thu, 26 Oct 2017 09:34:56 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CABFA2CE97B;
-	Thu, 26 Oct 2017 13:34:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com CABFA2CE97B
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=drjones@redhat.com
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4B90B7F76F;
-	Thu, 26 Oct 2017 13:34:48 +0000 (UTC)
-Date: Thu, 26 Oct 2017 15:34:45 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: "Jason A. Donenfeld" <Jason@zx2c4.com>
-Message-ID: <20171026133445.kemzfgvpbmtcogsl@kamzik.brq.redhat.com>
+	(Exim 4.71) (envelope-from <Jason@zx2c4.com>)
+	id 1e7iug-0005al-HX; Thu, 26 Oct 2017 10:13:38 -0400
+Received: by frisell.zx2c4.com (ZX2C4 Mail Server) with ESMTP id 07bbe21a;
+	Thu, 26 Oct 2017 14:11:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=zx2c4.com; h=mime-version
+	:in-reply-to:references:from:date:message-id:subject:to:cc
+	:content-type; s=mail; bh=dlj7yJdmEjt7KilWiYqaQFN08fY=; b=tgczhz
+	kB/M6k7flLHdfhzKX86OjNhTvOKpLcb5z3Ji1VnsE4AWRZyTc6zLZRMyVDmaSzDx
+	YmsiUWvGTitoO2MtGhR1yXV6pYcjMqnV5GoQIaNyMNb1CutSoBqM8E4SYhylyaeN
+	W/NpVWtU6+F1SfVo46092U5Yjtjt6LeXPJh9+sOPJBTRrKuQMBZBzEUxSKCLeJRL
+	9NupR7VfvvGJTLBqdPUvG1tV34WZcoQ1Jvv0D7mbtbmCMukQ1e6IW47A4loU8g5A
+	3xpWo/rBPuZNePxqhHxx2EwcGm792VQMRomhztgbznarcw3SLbRtpamCUczS48yj
+	y2snMCdeOeUsZ4qw==
+Received: by frisell.zx2c4.com (ZX2C4 Mail Server) with ESMTPSA id 2d19ff14
+	(TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128:NO); 
+	Thu, 26 Oct 2017 14:11:51 +0000 (UTC)
+Received: by mail-oi0-f45.google.com with SMTP id h6so5841672oia.10;
+	Thu, 26 Oct 2017 07:13:35 -0700 (PDT)
+X-Gm-Message-State: AMCzsaX/WSEvRY4dihy+8jiQHJMxBgCV/o2bAPyWEDrse37CW2wsC6l1
+	4R23jt6qc1sy7h3/fOdnyQQREbx+LlAwKSOD0os=
+X-Received: by 10.202.204.150 with SMTP id c144mr2942690oig.343.1509027214410; 
+	Thu, 26 Oct 2017 07:13:34 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.74.41.205 with HTTP; Thu, 26 Oct 2017 07:13:33 -0700 (PDT)
+In-Reply-To: <20171026133445.kemzfgvpbmtcogsl@kamzik.brq.redhat.com>
 References: <20171023122719.17199-1-Jason@zx2c4.com>
 	<CAFEAcA_PM5Fjx2Pk58h75p9vaZwFcusQdXuwy9tbDtc=EaoOJg@mail.gmail.com>
 	<10e16ca3-175b-9f34-65e7-031b883b7201@amsat.org>
 	<CAHmME9qtBiuAEnkCeuMd7EdeZveTVa4UOf+AQhMCFye0SYJY=Q@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAHmME9qtBiuAEnkCeuMd7EdeZveTVa4UOf+AQhMCFye0SYJY=Q@mail.gmail.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Thu, 26 Oct 2017 13:34:54 +0000 (UTC)
+	<20171026133445.kemzfgvpbmtcogsl@kamzik.brq.redhat.com>
+From: "Jason A. Donenfeld" <Jason@zx2c4.com>
+Date: Thu, 26 Oct 2017 16:13:33 +0200
+X-Gmail-Original-Message-ID: <CAHmME9oyBvAV8FF9QMHyF46n8Ct6KZqThQVih2ipQmivD94Cag@mail.gmail.com>
+Message-ID: <CAHmME9oyBvAV8FF9QMHyF46n8Ct6KZqThQVih2ipQmivD94Cag@mail.gmail.com>
+To: Andrew Jones <drjones@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
+X-Received-From: 192.95.5.64
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/arm/virt: support 4 serial
  ports
 X-BeenThere: qemu-arm@nongnu.org
@@ -101,28 +106,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
 	Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
 	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hltI8E5815Q8
+X-TUID: THh/ZrCVrBMs
 
-On Tue, Oct 24, 2017 at 07:57:37PM +0200, Jason A. Donenfeld wrote:
-> Hey folks,
-> 
-> In case you're curious, this is the kind of hideous workaround
-> required until this is fixed:
-> 
-> https://git.zx2c4.com/WireGuard/commit/?id=2456a56729f7247bf88476317fed0ac822a31e92
-> 
-> Please let me know if you intend to fix this or if you will accept
-> working patches from me for it, or if you simply don't care.
->
+On Thu, Oct 26, 2017 at 3:34 PM, Andrew Jones <drjones@redhat.com> wrote:
+> You could make the PL011 user instantiate-able and make the necessary
+> changes to use the dynamic FDT node generation framework (sysbus-fdt),
+> and then you'd be able to add as many additional UARTs as you like to
+> mach-virt's platform bus. I played around with that idea once, and have
+> some patches rotting somewhere that could maybe be dug back up.
 
-You could make the PL011 user instantiate-able and make the necessary
-changes to use the dynamic FDT node generation framework (sysbus-fdt),
-and then you'd be able to add as many additional UARTs as you like to
-mach-virt's platform bus. I played around with that idea once, and have
-some patches rotting somewhere that could maybe be dug back up.
+The problem with this approach is that then different architectures
+need different fancy options, which makes things a hassle. With the
+old guarantee of each machine providing four serial ports, you could
+just do -serial 1 -serial 2 and not have to worry about it. Much
+nicer.
 
-drew
+Making FDT dynamic also sounds complicated.
+
+Could we just do the simple patch of adding four pl011s in there?

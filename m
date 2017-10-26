@@ -1,101 +1,101 @@
-Received: by 10.223.161.27 with SMTP id o27csp787493wro;
-        Thu, 26 Oct 2017 07:45:09 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+TmaSppQ/VLfdMdtRZuzucGemQ53Kt2tvZdPkZ1hrEwFhZoRDF+aiMo3pNo0f8PT+tKIkzM
-X-Received: by 10.37.189.76 with SMTP id p12mr3801855ybm.326.1509029109273;
-        Thu, 26 Oct 2017 07:45:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1509029109; cv=none;
+Received: by 10.223.161.27 with SMTP id o27csp788161wro;
+        Thu, 26 Oct 2017 07:45:53 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+RSWPTHLKmmWGujfFzSkf9t08sgt2z1wXCXtzbxh4y3n6B4NVwDI53FjFP1xy6iDe5fJNGy
+X-Received: by 10.13.226.80 with SMTP id l77mr15243561ywe.14.1509029153847;
+        Thu, 26 Oct 2017 07:45:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1509029153; cv=none;
         d=google.com; s=arc-20160816;
-        b=etpJQAkf4zxUGNxNomvZfb0UVIbZTO7PBwceEZrXfnSq/Gj58Vbzbj5+BM4vIx+GmO
-         r5Vl9i5ls3tYd8fcqRihQaD48imhsZjdnr6Bs2mFouKcTgXzkxtBmlBjohMbYSTVRlmg
-         ztn0EwI9vnterNkkN/tzwikRAHE7BTpBsDCJbR8RMWT3e7wn2w+Awn2akL3X84LJbor3
-         p+NlHw/I0W0LkY4wpApV7XmNhur2jGK9bndywSfKFzXB0VFN4/O7qdJ9+vto5SMeJjuJ
-         zXQoi8pWnQaaKiaamaG1vnk5Vt4EKKaStk8lyZv/sWN/pcPGOzP2Ho68us8drQ7XnvT9
-         hTFg==
+        b=a5iyPuUtvJpRfWLfK1AY3gMtW0Yz7t620cIvIS63XZ0mfqbnWzbe8+z7R38dh0Ngek
+         GGW3AZ7Tljz9Sfv7lxNQbintHhu7YyMeHOya/JPUt2CVQHAHK7DpD+YzWQBVBt9liwVM
+         bWv8DTX6HHT+zM/aUw9BImhaW+2hImgFe8LLoNtVWhxoB5ESB7vyRT7ZXTz94l1qwCHN
+         UCNQVV+j/YJoUZDQTvvybhqm7vFYP6F6NVnKoTSD3e5ULjrE2tsaSqJzmTQYsEmZuraw
+         x8kq5bgOj+kd8L2tN0PhJW1G4p0CClAEeuyC/4H47okgXIdbNXgdDAXFGiOsNSVJao96
+         ZIGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=iHZw5ye4lART7xddlG02EZ0nzbNioPMwYRvI4PGB+C8=;
-        b=jMC0lIb91otcw+ZETr1kZR0/nRpssTRokTKIg5sLThjfELRI7JrsGndhdRBTyv5MxU
-         JcedtoMZuZIx8SJLxsegBYPXLpZRtKhKOYkob9IYi5Njn4D+Srlm6SoG/FC6lZ7yoZcn
-         WOE9yxmjSiAYHJEJKoOK3iVh5EuFz/e8Yyr/+WU/Th1cYa3NqXCRV+MPmpJ4U9aCSrhr
-         wQqlxWHVW62xi7g2e9wZZ1KQgsNJpwV+dj4rSdgQ01TU9pnZQ5gm+fPxMzR2aLMl+VsH
-         KGiEjfRRV0TfAEtI+2vzdvERviKy9DFhGSAUcF9IznLW43dZviwOQRkkyi2nzfsvfANk
-         LG1A==
+        bh=xX3XrjeOh5zX7VURJTu/t/et+kHj9czy//HA4B0QP2g=;
+        b=U69iTyQvQCuQrUXSCJoHKWfCHQDCt1Fz6eyzpkDb9Da4fzOYLH4OYr1UznqFksF3S1
+         MxlDNaY2yqpcfHIlnPO7Fi1mkXZRVhCF4BB1wc3DrqgHUCxjBV2stL4x5/m+4hbq/mSm
+         XhCjgfw6rz7AqRrPhMDv4sE8aq8wRuo89zaXP2KpNp24YpGGGgN4YEmwuk+7kSu5UCwI
+         4LRR/3KROes+GKoVTchqoFmaSbDIOXAL0nVwi80In5ggv0BBKDwbYwY2jBUjM3xB6Nm3
+         tTF+3OPYOfVnjLY9zwtIWvjbE/dRVtdnoVMTZqOSggNhdFAmkfRdIc4JcimdhqS/gmbv
+         IIug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Hs50EryL;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iWsK7Bxo;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z21si828613ybi.40.2017.10.26.07.45.09
+        by mx.google.com with ESMTPS id n185si810992ywe.179.2017.10.26.07.45.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 26 Oct 2017 07:45:09 -0700 (PDT)
+        Thu, 26 Oct 2017 07:45:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Hs50EryL;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iWsK7Bxo;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:53321 helo=lists.gnu.org)
+Received: from localhost ([::1]:53332 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e7jPA-0003ur-Kv
-	for alex.bennee@linaro.org; Thu, 26 Oct 2017 10:45:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56005)
+	id 1e7jPt-0004gY-Bp
+	for alex.bennee@linaro.org; Thu, 26 Oct 2017 10:45:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56074)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gabriel291075@gmail.com>) id 1e7jIw-0007H7-Mj
-	for qemu-devel@nongnu.org; Thu, 26 Oct 2017 10:38:44 -0400
+	(envelope-from <gabriel291075@gmail.com>) id 1e7jIz-0007Jp-95
+	for qemu-devel@nongnu.org; Thu, 26 Oct 2017 10:38:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gabriel291075@gmail.com>) id 1e7jIv-0007hO-5U
-	for qemu-devel@nongnu.org; Thu, 26 Oct 2017 10:38:42 -0400
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:48600)
+	(envelope-from <gabriel291075@gmail.com>) id 1e7jIy-0007m3-7x
+	for qemu-devel@nongnu.org; Thu, 26 Oct 2017 10:38:45 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:46598)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <gabriel291075@gmail.com>)
-	id 1e7jIu-0007gj-Vx; Thu, 26 Oct 2017 10:38:41 -0400
-Received: by mail-qt0-x241.google.com with SMTP id f8so4553334qta.5;
-	Thu, 26 Oct 2017 07:38:40 -0700 (PDT)
+	id 1e7jIy-0007lK-4A; Thu, 26 Oct 2017 10:38:44 -0400
+Received: by mail-qt0-x243.google.com with SMTP id 1so4554110qtn.3;
+	Thu, 26 Oct 2017 07:38:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=iHZw5ye4lART7xddlG02EZ0nzbNioPMwYRvI4PGB+C8=;
-	b=Hs50EryLzGlqgbdwiO4I/8MGlUzfEBoVROvO96jzdaxmZqI15mJ0+pOWClXedCSK3b
-	fqUgFlg/M/fEGTQ9k9qAvrilzbxUIIbysqZc2yySjkzkcud1E6SYvvYOpKZo5gdzUOlo
-	oUWmx25B88SPzrxUcarHbvDpOB7diDFln26Gmjrc83VKPKw8yoHFpbBx+SnhhPzvAsnL
-	jWtEDHAkN7jGLjCy0H7VQAHmwttNEdWc5eEbSqnMS4godWyPj0uBNCQ0XPUmqi4j/mHa
-	wd5QvrwrHSeINy/BEodCrpNYw/UowrHMYY52+45e4NdQ1NzI5QGEF+fRqkf2p+d7nYR9
-	REOA==
+	bh=xX3XrjeOh5zX7VURJTu/t/et+kHj9czy//HA4B0QP2g=;
+	b=iWsK7Bxo1Eb+NNLjjuBgXd14ioWz13TKNjEhzgdolAxB1iXy2OqFxTxwKMGQVBM+QG
+	QrHs5yiD/u2pp2CTywywniDxKkh5ph4YB/w4j8n2IWdcLHon/r4eBP+FPLWIFijDui+y
+	uF6JdniOT0BeyGgVG3kh5G2/9trEAaEBTAWN1nVxTo9Wc2VdjtY/yPMNuD6UUBUWHKi8
+	26C+3WXIIs1xr+v+h570u/immk7t3jRMMM0QLuNy/Jceiq6y5PHBu9rQVHlepXtoSC1K
+	3qcl5mATtJG+mBZNYTdQWNmgNQRX810MvYjuh5r6zJ638DsmtP+nfTLWoU+DIAVWtlcX
+	WDvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=iHZw5ye4lART7xddlG02EZ0nzbNioPMwYRvI4PGB+C8=;
-	b=m7g52u0xvE0I65arX2GnmkQ8YT6EU1Z4WJJo7vpt4Wr8B9R3aaSkqxKLu+vJkBS1Au
-	/qNw6GV74AUeAa15dVrzul41HTRaTy9pgNZgDFVih281GXVb087fI8/h8oQXlJJCfqM0
-	1RC0JN9HSqPz4kCvnC8jlndPbhyzBjWn62h011506K+UTVoEizW4uVpsV2n4R7F+SElD
-	MZ4A7qro25zw+C93jEJTkIHGS7ixPWJxv44UtaoJ354SgDFg6aOqUorbG0FToYzs5gaR
-	nHMGgVhNmkzPch6AepFiNkUKHGDSJuxlAduZkx/p5C3raJqS5+TYCsPRu0mKY5VYYWpP
-	azXg==
-X-Gm-Message-State: AMCzsaWK+jsIvI11qYQ5feFYvdYlhWM10MC7GteNMw/G/ytXm/i3BSuy
-	0BXB0OTFmBGC6EeINsVP5sKES/zB
-X-Received: by 10.200.46.22 with SMTP id r22mr34272342qta.63.1509028720106;
-	Thu, 26 Oct 2017 07:38:40 -0700 (PDT)
+	bh=xX3XrjeOh5zX7VURJTu/t/et+kHj9czy//HA4B0QP2g=;
+	b=Qt8KYLwqwRjN1QWUcvaXMvMiIdmLtCS4ALbiqepA33ydkSBA2BLa5S3hYqgxQo0dRq
+	X1HS+unXcxGAprfchr87avedmuj7g7/2bQTDcTDBJeUEHneLiS9pNFCUc1fuQAUeV2d+
+	UCrI7Vn/bmhAFgwPgd0UowErY67/ka17xqdefqFamd+9abgdCTpd9DcRAIsaXAYb5XR5
+	85YRGYcMQOEku2Lq2mb2MpXN0uZrWJ5fgXvVrygeh+u6AWFrnm7pAjoYLtSObAOrVXAX
+	Dk4zEDJlklDjuBak8IBn94SIIbMIM5Vh/HmR3F5t8ACOKfh85LsIvKUNU//Cq8XVgoTE
+	c1Hw==
+X-Gm-Message-State: AMCzsaWvZbSYw5SZ53MYQdr+PqVhtoYa8CbYbNmHsQvWArIrnyI68Raw
+	lXh5wyLTtr105Ea5SLVLzRsIHcYg
+X-Received: by 10.237.60.154 with SMTP id d26mr15172954qtf.227.1509028723340; 
+	Thu, 26 Oct 2017 07:38:43 -0700 (PDT)
 Received: from localhost.localdomain ([208.94.106.99])
 	by smtp.googlemail.com with ESMTPSA id
-	l126sm3352746qkf.96.2017.10.26.07.38.39
+	l126sm3352746qkf.96.2017.10.26.07.38.42
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Thu, 26 Oct 2017 07:38:39 -0700 (PDT)
+	Thu, 26 Oct 2017 07:38:42 -0700 (PDT)
 From: Gabriel Costa <gabriel291075@gmail.com>
 X-Google-Original-From: Gabriel Costa <costa@advantech.ca>
 To: qemu-devel@nongnu.org
-Date: Thu, 26 Oct 2017 06:34:10 -0400
-Message-Id: <1509014053-28134-4-git-send-email-costa@advantech.ca>
+Date: Thu, 26 Oct 2017 06:34:13 -0400
+Message-Id: <1509014053-28134-7-git-send-email-costa@advantech.ca>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <1509014053-28134-1-git-send-email-costa@advantech.ca>
 References: <1509014053-28134-1-git-send-email-costa@advantech.ca>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: [Qemu-devel] [PATCH v5 3/5]arm: kinetis_k64_system
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: [Qemu-devel] [PATCH v6]arm: Makefiles to kinetis k64 platform
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -111,361 +111,58 @@ Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, f4bug@amsat.org,
 	Gabriel Augusto Costa <gabriel291075@gmail.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sZ3GEAt2tmEj
+X-TUID: 40tsudgxjQrR
 
 From: Gabriel Augusto Costa <gabriel291075@gmail.com>
 
-This Patch include kinetis_k64_system.c and .h
-sim means System Integration Module (SIM)
-More information about this peripheral can be found at:
-pag 291, K64P144M120SF5RM.pdf.
+This file change the Makefiles to compile the mk64fn1m0 machine.
 
 Signed-off-by: Gabriel Augusto Costa <gabriel291075@gmail.com>
 ---
- hw/misc/kinetis_k64_system.c         | 274 +++++++++++++++++++++++++++++++++++
- include/hw/misc/kinetis_k64_system.h |  52 +++++++
- 2 files changed, 326 insertions(+)
- create mode 100644 hw/misc/kinetis_k64_system.c
- create mode 100644 include/hw/misc/kinetis_k64_system.h
+ default-configs/arm-softmmu.mak | 1 +
+ hw/arm/Makefile.objs            | 1 +
+ hw/char/Makefile.objs           | 1 +
+ hw/misc/Makefile.objs           | 3 +++
+ 4 files changed, 6 insertions(+)
 
-diff --git a/hw/misc/kinetis_k64_system.c b/hw/misc/kinetis_k64_system.c
-new file mode 100644
-index 0000000..6421153
---- /dev/null
-+++ b/hw/misc/kinetis_k64_system.c
-@@ -0,0 +1,274 @@
-+/*
-+ * Kinetis K64 peripheral microcontroller emulation.
-+ *
-+ * Copyright (c) 2017 Advantech Wireless
-+ * Written by Gabriel Costa <gabriel291075@gmail.com>
-+ *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License version 2 or
-+ *  (at your option) any later version.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/sysbus.h"
-+#include "qemu/log.h"
-+#include "hw/misc/kinetis_k64_system.h"
-+
-+static const VMStateDescription vmstate_kinetis_k64_sim = {
-+    .name = TYPE_KINETIS_K64_SIM,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(SOPT1, kinetis_k64_sim_state),
-+        VMSTATE_UINT32(SOPT1CFG, kinetis_k64_sim_state),
-+        VMSTATE_UINT32(SOPT2, kinetis_k64_sim_state),
-+        VMSTATE_UINT32(SOPT4, kinetis_k64_sim_state),
-+        VMSTATE_UINT32(SOPT5, kinetis_k64_sim_state),
-+        VMSTATE_UINT32(SOPT7, kinetis_k64_sim_state),
-+        VMSTATE_UINT32(SDID, kinetis_k64_sim_state),
-+        VMSTATE_UINT32(SCGC1, kinetis_k64_sim_state),
-+        VMSTATE_UINT32(SCGC2, kinetis_k64_sim_state),
-+        VMSTATE_UINT32(SCGC3, kinetis_k64_sim_state),
-+        VMSTATE_UINT32(SCGC4, kinetis_k64_sim_state),
-+        VMSTATE_UINT32(SCGC5, kinetis_k64_sim_state),
-+        VMSTATE_UINT32(SCGC6, kinetis_k64_sim_state),
-+        VMSTATE_UINT32(SCGC7, kinetis_k64_sim_state),
-+        VMSTATE_UINT32(CLKDIV1, kinetis_k64_sim_state),
-+        VMSTATE_UINT32(CLKDIV2, kinetis_k64_sim_state),
-+        VMSTATE_UINT32(FCFG1, kinetis_k64_sim_state),
-+        VMSTATE_UINT32(FCFG2, kinetis_k64_sim_state),
-+        VMSTATE_UINT32(UIDH, kinetis_k64_sim_state),
-+        VMSTATE_UINT32(UIDMH, kinetis_k64_sim_state),
-+        VMSTATE_UINT32(UIDML, kinetis_k64_sim_state),
-+        VMSTATE_UINT32(UIDL, kinetis_k64_sim_state),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void kinetis_k64_sim_reset(DeviceState *dev)
-+{
-+    kinetis_k64_sim_state *s = KINETIS_K64_SIM(dev);
-+
-+    s->SOPT1 = 0x00008000;
-+    s->SOPT1CFG = 0x00000000;
-+    s->SOPT2 = 0x00001000;
-+    s->SOPT4 = 0x00000000;
-+    s->SOPT5 = 0x00000000;
-+    s->SOPT7 = 0x00000000;
-+    s->SDID = 0x00000000;
-+    s->SCGC1 = 0x00000000;
-+    s->SCGC2 = 0x00000000;
-+    s->SCGC3 = 0x00000000;
-+    s->SCGC4 = 0xF0100030;
-+    s->SCGC5 = 0x00040182;
-+    s->SCGC6 = 0x40000001;
-+    s->SCGC7 = 0x00000006;
-+    s->CLKDIV1 = 0x00000000;
-+    s->CLKDIV2 = 0x00000000;
-+    s->FCFG1 = 0xFF000000;
-+    s->FCFG2 = 0x00000000;
-+    s->UIDH = 0x00000000;
-+    s->UIDMH = 0x00000000;
-+    s->UIDML = 0x00000000;
-+    s->UIDL = 0x00000000;
-+}
-+
-+static void kinetis_k64_sim_write(void *opaque, hwaddr offset, uint64_t value,
-+        unsigned size)
-+{
-+    kinetis_k64_sim_state *s = (kinetis_k64_sim_state *)opaque;
-+
-+    value &= 0xFFFFFFFF;
-+
-+    switch (offset) {
-+    case 0x0000:
-+        s->SOPT1 = value;
-+        break;
-+    case 0x0004:
-+        s->SOPT1CFG = value;
-+        break;
-+    case 0x1004:
-+        s->SOPT2 = value;
-+        break;
-+    case 0x100C:
-+        s->SOPT4 = value;
-+        break;
-+    case 0x1010:
-+        s->SOPT5 = value;
-+        break;
-+    case 0x1018:
-+        s->SOPT7 = value;
-+        break;
-+    case 0x1024:
-+        s->SDID = value;
-+        break;
-+    case 0x1028:
-+        s->SCGC1 = value;
-+        break;
-+    case 0x102C:
-+        s->SCGC2 = value;
-+        break;
-+    case 0x1030:
-+        s->SCGC3 = value;
-+        break;
-+    case 0x1034:
-+        s->SCGC4 = value;
-+        break;
-+    case 0x1013:
-+        s->SCGC5 = value;
-+        break;
-+    case 0x103C:
-+        s->SCGC6 = value;
-+        break;
-+    case 0x1040:
-+        s->SCGC7 = value;
-+        break;
-+    case 0x1044:
-+        s->CLKDIV1 = value;
-+        break;
-+    case 0x1048:
-+        s->CLKDIV2 = value;
-+        break;
-+    case 0x104C:
-+        s->FCFG1 = value;
-+        break;
-+    case 0x1050:
-+        s->FCFG2 = value;
-+        break;
-+    case 0x1054:
-+        s->UIDH = value;
-+        break;
-+    case 0x1058:
-+        s->UIDMH = value;
-+        break;
-+    case 0x105C:
-+        s->UIDML = value;
-+        break;
-+    case 0x1060:
-+        s->UIDL = value;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                "kinetis_k64_sim: write at bad offset 0x%x\n", (int)offset);
-+    }
-+}
-+
-+static uint64_t kinetis_k64_sim_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    kinetis_k64_sim_state *s = (kinetis_k64_sim_state *)opaque;
-+    uint32_t value;
-+
-+    switch (offset) {
-+    case 0x0000:
-+        value = s->SOPT1;
-+        break;
-+    case 0x0004:
-+        value = s->SOPT1CFG;
-+        break;
-+    case 0x1004:
-+        value = s->SOPT2;
-+        break;
-+    case 0x100C:
-+        value = s->SOPT4;
-+        break;
-+    case 0x1010:
-+        value = s->SOPT5;
-+        break;
-+    case 0x1018:
-+        value = s->SOPT7;
-+        break;
-+    case 0x1024:
-+        value = s->SDID;
-+        break;
-+    case 0x1028:
-+        value = s->SCGC1;
-+        break;
-+    case 0x102C:
-+        value = s->SCGC2;
-+        break;
-+    case 0x1030:
-+        value = s->SCGC3;
-+        break;
-+    case 0x1034:
-+        value = s->SCGC4;
-+        break;
-+    case 0x1013:
-+        value = s->SCGC5;
-+        break;
-+    case 0x103C:
-+        value = s->SCGC6;
-+        break;
-+    case 0x1040:
-+        value = s->SCGC7;
-+        break;
-+    case 0x1044:
-+        value = s->CLKDIV1;
-+        break;
-+    case 0x1048:
-+        value = s->CLKDIV2;
-+        break;
-+    case 0x104C:
-+        value = s->FCFG1;
-+        break;
-+    case 0x1050:
-+        value = s->FCFG2;
-+        break;
-+    case 0x1054:
-+        value = s->UIDH;
-+        break;
-+    case 0x1058:
-+        value = s->UIDMH;
-+        break;
-+    case 0x105C:
-+        value = s->UIDML;
-+        break;
-+    case 0x1060:
-+        value = s->UIDL;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                "kinetis_k64_sim: read at bad offset 0x%x\n", (int)offset);
-+        return 0;
-+    }
-+    return value;
-+}
-+
-+static const MemoryRegionOps kinetis_k64_sim_ops = {
-+    .read = kinetis_k64_sim_read,
-+    .write = kinetis_k64_sim_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+};
-+
-+static void kinetis_k64_sim_init(Object *obj)
-+{
-+    kinetis_k64_sim_state *s = KINETIS_K64_SIM(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &kinetis_k64_sim_ops, s,
-+            TYPE_KINETIS_K64_SIM, 0x2000);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static void kinetis_k64_sim_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->vmsd = &vmstate_kinetis_k64_sim;
-+    dc->reset = kinetis_k64_sim_reset;
-+    dc->desc = "Kinetis K64 series SIM";
-+}
-+
-+static const TypeInfo kinetis_k64_sim_info = {
-+    .name          = TYPE_KINETIS_K64_SIM,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(kinetis_k64_sim_state),
-+    .instance_init = kinetis_k64_sim_init,
-+    .class_init    = kinetis_k64_sim_class_init,
-+};
-+
-+static void kinetis_k64_sim_register_types(void)
-+{
-+    type_register_static(&kinetis_k64_sim_info);
-+}
-+
-+type_init(kinetis_k64_sim_register_types)
-diff --git a/include/hw/misc/kinetis_k64_system.h b/include/hw/misc/kinetis_k64_system.h
-new file mode 100644
-index 0000000..8774eaa
---- /dev/null
-+++ b/include/hw/misc/kinetis_k64_system.h
-@@ -0,0 +1,52 @@
-+/*
-+ * Kinetis K64 peripheral microcontroller emulation.
-+ *
-+ * Copyright (c) 2017 Advantech Wireless
-+ * Written by Gabriel Costa <gabriel291075@gmail.com>
-+ *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License version 2 or
-+ *  (at your option) any later version.
-+ */
-+
-+#ifndef KINETIS_SYSTEM_H
-+#define KINETIS_SYSTEM_H
-+
-+#include "hw/sysbus.h"
-+#include "hw/hw.h"
-+
-+#define TYPE_KINETIS_K64_SIM "kinetis_k64_sim"
-+#define KINETIS_K64_SIM(obj) \
-+    OBJECT_CHECK(kinetis_k64_sim_state, (obj), TYPE_KINETIS_K64_SIM)
-+
-+typedef struct {
-+    SysBusDevice parent_obj;
-+
-+    MemoryRegion iomem;
-+
-+    uint32_t SOPT1;
-+    uint32_t SOPT1CFG;
-+    uint32_t SOPT2;
-+    uint32_t SOPT4;
-+    uint32_t SOPT5;
-+    uint32_t SOPT7;
-+    uint32_t SDID;
-+    uint32_t SCGC1;
-+    uint32_t SCGC2;
-+    uint32_t SCGC3;
-+    uint32_t SCGC4;
-+    uint32_t SCGC5;
-+    uint32_t SCGC6;
-+    uint32_t SCGC7;
-+    uint32_t CLKDIV1;
-+    uint32_t CLKDIV2;
-+    uint32_t FCFG1;
-+    uint32_t FCFG2;
-+    uint32_t UIDH;
-+    uint32_t UIDMH;
-+    uint32_t UIDML;
-+    uint32_t UIDL;
-+
-+} kinetis_k64_sim_state;
-+
-+#endif
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+index 5059d13..a835d4f
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -130,3 +130,4 @@ CONFIG_SMBIOS=y
+ CONFIG_ASPEED_SOC=y
+ CONFIG_GPIO_KEY=y
+ CONFIG_MSF2=y
++CONFIG_KINETIS_K64=y
+diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+index 2794e08..874a38a
+--- a/hw/arm/Makefile.objs
++++ b/hw/arm/Makefile.objs
+@@ -20,3 +20,4 @@ obj-$(CONFIG_FSL_IMX6) += fsl-imx6.o sabrelite.o
+ obj-$(CONFIG_ASPEED_SOC) += aspeed_soc.o aspeed.o
+ obj-$(CONFIG_MPS2) += mps2.o
+ obj-$(CONFIG_MSF2) += msf2-soc.o msf2-som.o
++obj-$(CONFIG_KINETIS_K64) += mk64fn1m0.o
+diff --git a/hw/char/Makefile.objs b/hw/char/Makefile.objs
+index 1bcd37e..75b194c
+--- a/hw/char/Makefile.objs
++++ b/hw/char/Makefile.objs
+@@ -31,3 +31,4 @@ common-obj-$(CONFIG_SCLPCONSOLE) += sclpconsole.o sclpconsole-lm.o
+ 
+ obj-$(CONFIG_VIRTIO) += virtio-serial-bus.o
+ obj-$(CONFIG_TERMINAL3270) += terminal3270.o
++obj-$(CONFIG_KINETIS_K64) += kinetis_k64_uart.o
+diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+index 19202d9..c5c8589
+--- a/hw/misc/Makefile.objs
++++ b/hw/misc/Makefile.objs
+@@ -61,3 +61,6 @@ obj-$(CONFIG_AUX) += auxbus.o
+ obj-$(CONFIG_ASPEED_SOC) += aspeed_scu.o aspeed_sdmc.o
+ obj-y += mmio_interface.o
+ obj-$(CONFIG_MSF2) += msf2-sysreg.o
++obj-$(CONFIG_KINETIS_K64) += kinetis_k64_mcg.o
++obj-$(CONFIG_KINETIS_K64) += kinetis_k64_pmux.o
++obj-$(CONFIG_KINETIS_K64) += kinetis_k64_system.o
 -- 
 2.1.4
 

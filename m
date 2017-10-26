@@ -1,99 +1,93 @@
-Received: by 10.223.161.27 with SMTP id o27csp514141wro;
-        Thu, 26 Oct 2017 02:38:29 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+RecC5J/ghpcDnGAr+Nz/k81y5AR0hxyeCZ1/jNZ+k2O58dPaUmUAa5V6DSQzTdY7KFchvR
-X-Received: by 10.129.123.135 with SMTP id w129mr14664742ywc.299.1509010709791;
-        Thu, 26 Oct 2017 02:38:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1509010709; cv=none;
+Received: by 10.223.161.27 with SMTP id o27csp722389wro;
+        Thu, 26 Oct 2017 06:39:17 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+RNPBMYWC/NmgDyHeau+8oX9bPC4iQuwa1JpfcwyrxPkgTx6u9J037/jEKeOlUX14CABNXV
+X-Received: by 10.37.191.136 with SMTP id l8mr3554629ybk.474.1509025157588;
+        Thu, 26 Oct 2017 06:39:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1509025157; cv=none;
         d=google.com; s=arc-20160816;
-        b=SedPjggMcIMBv6HUnGt7WhIeBy+p4lq6emMC4vdNgb3mAWgESq07VAfI7WyreajBfl
-         /WmEI9C/pnD3o2WPV1K2spgAlG2OazlCBrHX9rjNKHnL5WT2rcQnlBHX+2XrqP77MrA0
-         0UHTVY4TC0F56Fke0/R2vBycZlcdldyj6hePm9Zoni6lHwMntH9znndD6E2dj6c2Bp7v
-         3GCE7bHFd5/2ws0yGOy90/sf3hAfVhfDvZwSU5vKhuVBkCoglSEXc91sxAWs2nUTJpry
-         /dVb1Xz8lCM3whEhDJ2j/OyUD6WXa3L9ZsrsY6ePhYX+UwxkmFHoTbRmG5t166cdBtZr
-         o+tg==
+        b=er0xqjkrHPzA3hsOjDbszZ+E5TgayGpqh08HDBTGUhdlDEAmRsEuoIPGTuxyyNir0U
+         1Veitf4OYqInqNlACtySfrFbfLKRJ9f0nDkrZ0cuzhxGCv3ks2LI11J/F3FqmlKoEBUe
+         n1k34eNrCmIhdlEmqbJbbXsSTHFOU+xoXJ11/ie9dWl7Mt/56cWbcNM8qI/LxSzsMCfO
+         9dD6JQnqCGWFf4Nk4CbVnoDMDTSclJsRj8RN66z0gKxgb+CpfifkAeo0stC/8d/CBwTx
+         AomxhsBXe/lC1W37r6GR/2J11N74CSjZVp7zpht0AX7dQoR92fFPsI1EbijQBVAiCK4U
+         PDpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=9cZISm/Mxc63mNx1I+2y5N4Iysre5x4mD5gbLfrbgh4=;
-        b=zRkTzm8NqWhA96L7mIeT/P+wAFB0vMNk8kxAFjRrB3bDIOWcOkm0bOB2dwocIo3ngR
-         wp6SfuiOuOYR6p5xzBne9ifyM+kwPRyP/o4A4v4sZWLCSaoUMciM+1YDVHez0tWztjvi
-         iaCrrcuULTNphkeq2qtp4lAybFDJcesc3g9huM53olxmMBudIgJpPJE7Mmpyliu9uU7F
-         PEZqffihTdDV2AeXrPVf8g5iSw/G86le4R+sYjACZI68RsBz4H/OZU4yfeE71/5QOddD
-         vmdUlgHejAK7/1AZ1RL2h/Ts/y76a1If3Hm31L59kCkSw596/jnHS5MDHJ2R/dPHp9Nm
-         A/zQ==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dmarc-filter:arc-authentication-results;
+        bh=uR4ZCCYGBPCE6sQb5pKB0fjjyFIaV9gGa/EhXTh/kG4=;
+        b=Ilba2UtwB+/HWpS8IQFgRPVlAb9iJiPFXByITu8jgd1eKBl/W9nJfUx+QxMgt+w8tf
+         B9XVWRQacUusBYR+uOQzS8Qr2T2XSBdeEoukjz4lZX0hxNRfFCOrzikNJ3wPrdtCVfeB
+         CzXk3obbokH8oZj2zFFMe9DA/dZccktK6rvqgH5QEKi977D8GZ7wrWLTd3TVHw1FEkmk
+         iA/okg0ixoz1s1KEWyK63ugty8CFXajkUf0cWov7WsHMifZVrpNW+CPk52kfd1By2vE7
+         DX46CQ1Eop4C0wxnx3SSYuacOSUxhpKQT2mAZl76U/8U+bhVqO1Co7ZLBRbVf56Kl1oZ
+         /2Xw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZmOownJX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r3si305291ywl.369.2017.10.26.02.38.29
+        by mx.google.com with ESMTPS id e127si822633ywb.645.2017.10.26.06.39.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 26 Oct 2017 02:38:29 -0700 (PDT)
+        Thu, 26 Oct 2017 06:39:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZmOownJX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:51825 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52971 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e7ecP-0007lv-8L
-	for alex.bennee@linaro.org; Thu, 26 Oct 2017 05:38:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43458)
+	id 1e7iNR-00016w-0P
+	for alex.bennee@linaro.org; Thu, 26 Oct 2017 09:39:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35278)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1e7ecB-0007k8-4I
-	for qemu-arm@nongnu.org; Thu, 26 Oct 2017 05:38:16 -0400
+	(envelope-from <drjones@redhat.com>) id 1e7iJH-00061t-CD
+	for qemu-arm@nongnu.org; Thu, 26 Oct 2017 09:35:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1e7ecA-0005WE-3a
-	for qemu-arm@nongnu.org; Thu, 26 Oct 2017 05:38:15 -0400
-Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:47759)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1e7ec7-0005TI-Qd; Thu, 26 Oct 2017 05:38:11 -0400
-Received: by mail-wm0-x243.google.com with SMTP id r196so6703835wmf.2;
-	Thu, 26 Oct 2017 02:38:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=9cZISm/Mxc63mNx1I+2y5N4Iysre5x4mD5gbLfrbgh4=;
-	b=ZmOownJXXGMm/N42xqe7IQYO/EXvFwzYzB5RrjpsJeRseYkzyA8m7R/b9iRt6cvKTn
-	yI+EToHJFkVjcrj64E1Hv9Wv+AqqK0yFUxJtWQ8aMU713X4bU4lUT7SNkb02zXd1EW5R
-	PhRBSG6MnNuZP3ZaZDNx95U5dJnwYti6L1DhpLVglfglUEGcNx26SymnNimiYgJrfdOT
-	bjPZ4IVHbgsY1niULMssDVqKhuSpzxf09Szip9nCHu8qLRqN3oe088jqkmBMsemNK5iB
-	0OUUTt4VyjBYDuX3Mp8LZRTVd1YOMUsXDcr9dongi42I3nQQf/7y32H7AtH0fGDYEVG7
-	1ZPQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=9cZISm/Mxc63mNx1I+2y5N4Iysre5x4mD5gbLfrbgh4=;
-	b=nG7BNKAmxepyw+ajThQ8hOkp7zMhcCVGXhb9T4W1G2+3oeJjQifh1Hls8tO6vf7vwO
-	qwZRfUMKPyHO+XC4cnRCNpk4UxnXGWxzXQUkw5/ZyjHPplK5Ei887Tqi7E3z74O1jKXc
-	FWuuKNKCI1JGl4mmlam//yFGldhNRwTP7FjgQjykERIiYbHbws1PPVO22ElNZfSz6VE0
-	mcOkb8KRjHrLqlqR2Np0gkpZORFBmzN4xLfUdqIZDg+xmVDJB7wM65ILrJwYcw5BA8GX
-	iOjbbvwir19OG6doQVHTeP+qbsv5Jl9CT7j8f3UksR0SBYCWiwlaHHB06VqhcNpqKuV1
-	Vi8A==
-X-Gm-Message-State: AMCzsaW8gAnLoXGV5UwZ7cA4ebBGJdlzQ+c9VyMCmYaWwVLTDFt2T1xg
-	VfLeHA8S8dZZq0IP2jZB/yPo/FVTZrNks+AjSV0=
-X-Received: by 10.28.230.77 with SMTP id d74mr944003wmh.75.1509010690408; Thu,
-	26 Oct 2017 02:38:10 -0700 (PDT)
+	(envelope-from <drjones@redhat.com>) id 1e7iJE-0006SH-OJ
+	for qemu-arm@nongnu.org; Thu, 26 Oct 2017 09:34:59 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:62594)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <drjones@redhat.com>)
+	id 1e7iJE-0006QD-Gj; Thu, 26 Oct 2017 09:34:56 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id CABFA2CE97B;
+	Thu, 26 Oct 2017 13:34:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com CABFA2CE97B
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=drjones@redhat.com
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4B90B7F76F;
+	Thu, 26 Oct 2017 13:34:48 +0000 (UTC)
+Date: Thu, 26 Oct 2017 15:34:45 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: "Jason A. Donenfeld" <Jason@zx2c4.com>
+Message-ID: <20171026133445.kemzfgvpbmtcogsl@kamzik.brq.redhat.com>
+References: <20171023122719.17199-1-Jason@zx2c4.com>
+	<CAFEAcA_PM5Fjx2Pk58h75p9vaZwFcusQdXuwy9tbDtc=EaoOJg@mail.gmail.com>
+	<10e16ca3-175b-9f34-65e7-031b883b7201@amsat.org>
+	<CAHmME9qtBiuAEnkCeuMd7EdeZveTVa4UOf+AQhMCFye0SYJY=Q@mail.gmail.com>
 MIME-Version: 1.0
-Received: by 10.28.157.2 with HTTP; Thu, 26 Oct 2017 02:37:39 -0700 (PDT)
-In-Reply-To: <1508898544-10307-1-git-send-email-sundeep.lkml@gmail.com>
-References: <1508898544-10307-1-git-send-email-sundeep.lkml@gmail.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 26 Oct 2017 11:37:39 +0200
-Message-ID: <CAKmqyKPJ2Dh4skNnPBpkKFjAMB5Uh9vfy7FEMeiBNMatoKzhwg@mail.gmail.com>
-To: Subbaraya Sundeep <sundeep.lkml@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::243
-Subject: Re: [Qemu-arm] [Qemu devel V4 PATCH] msf2: Remove dead code
- reported by Coverity
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAHmME9qtBiuAEnkCeuMd7EdeZveTVa4UOf+AQhMCFye0SYJY=Q@mail.gmail.com>
+User-Agent: Mutt/1.6.0.1 (2016-04-01)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Thu, 26 Oct 2017 13:34:54 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/arm/virt: support 4 serial
+ ports
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,84 +99,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	darren.kenny@oracle.com, qemu-arm <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: X49RuR7IVqlT
+X-TUID: hltI8E5815Q8
 
-On Wed, Oct 25, 2017 at 4:29 AM, Subbaraya Sundeep
-<sundeep.lkml@gmail.com> wrote:
-> Fixed incorrect frame size mask, validated maximum frame
-> size in spi_write and removed dead code.
+On Tue, Oct 24, 2017 at 07:57:37PM +0200, Jason A. Donenfeld wrote:
+> Hey folks,
+> 
+> In case you're curious, this is the kind of hideous workaround
+> required until this is fixed:
+> 
+> https://git.zx2c4.com/WireGuard/commit/?id=2456a56729f7247bf88476317fed0ac822a31e92
+> 
+> Please let me know if you intend to fix this or if you will accept
+> working patches from me for it, or if you simply don't care.
 >
-> Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
 
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+You could make the PL011 user instantiate-able and make the necessary
+changes to use the dynamic FDT node generation framework (sysbus-fdt),
+and then you'd be able to add as many additional UARTs as you like to
+mach-virt's platform bus. I played around with that idea once, and have
+some patches rotting somewhere that could maybe be dug back up.
 
-> ---
-> v4:
->         changed %d to %u while logging frame size error.
-> v3:
->         Added comment that [31:6] bits are reserved in R_SPI_DFSIZE
->         register and logged incorrect value too in guest error(suggested
->         by Darren).
-> v2:
->         else if -> else in set_fifodepth
->         log guest error when frame size is more than 32
->
->  hw/ssi/mss-spi.c | 18 ++++++++++++++----
->  1 file changed, 14 insertions(+), 4 deletions(-)
->
-> diff --git a/hw/ssi/mss-spi.c b/hw/ssi/mss-spi.c
-> index 5a8e308..d60daba 100644
-> --- a/hw/ssi/mss-spi.c
-> +++ b/hw/ssi/mss-spi.c
-> @@ -76,9 +76,10 @@
->  #define C_BIGFIFO            (1 << 29)
->  #define C_RESET              (1 << 31)
->
-> -#define FRAMESZ_MASK         0x1F
-> +#define FRAMESZ_MASK         0x3F
->  #define FMCOUNT_MASK         0x00FFFF00
->  #define FMCOUNT_SHIFT        8
-> +#define FRAMESZ_MAX          32
->
->  static void txfifo_reset(MSSSpiState *s)
->  {
-> @@ -104,10 +105,8 @@ static void set_fifodepth(MSSSpiState *s)
->          s->fifo_depth = 32;
->      } else if (size <= 16) {
->          s->fifo_depth = 16;
-> -    } else if (size <= 32) {
-> -        s->fifo_depth = 8;
->      } else {
-> -        s->fifo_depth = 4;
-> +        s->fifo_depth = 8;
->      }
->  }
->
-> @@ -301,6 +300,17 @@ static void spi_write(void *opaque, hwaddr addr,
->          if (s->enabled) {
->              break;
->          }
-> +        /*
-> +         * [31:6] bits are reserved bits and for future use.
-> +         * [5:0] are for frame size. Only [5:0] bits are validated
-> +         * during write, [31:6] bits are untouched.
-> +         */
-> +        if ((value & FRAMESZ_MASK) > FRAMESZ_MAX) {
-> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: Incorrect size %u provided."
-> +                         "Maximum frame size is %u\n",
-> +                         __func__, value & FRAMESZ_MASK, FRAMESZ_MAX);
-> +            break;
-> +        }
->          s->regs[R_SPI_DFSIZE] = value;
->          break;
->
-> --
-> 2.5.0
->
+drew

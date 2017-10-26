@@ -1,96 +1,100 @@
-Received: by 10.223.161.27 with SMTP id o27csp773207wro;
-        Thu, 26 Oct 2017 07:30:18 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+TF79dbeY3k9D5/y1BjFquO4CW6F6GdP8LpTaTXVJopkGSSYiQpRMwdI2G6QSPUv2OTjkpG
-X-Received: by 10.37.224.140 with SMTP id x134mr3513781ybg.440.1509028218141;
-        Thu, 26 Oct 2017 07:30:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1509028218; cv=none;
+Received: by 10.223.161.27 with SMTP id o27csp780047wro;
+        Thu, 26 Oct 2017 07:36:46 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+Tmsx4bUbmPSYI8qC+OJvzJShAirep3JqZKkD3ItJ9rFbSVw6VpZ01ZobmwKnDpPlvaPhdz
+X-Received: by 10.37.170.113 with SMTP id s104mr1189410ybi.66.1509028606542;
+        Thu, 26 Oct 2017 07:36:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1509028606; cv=none;
         d=google.com; s=arc-20160816;
-        b=ObnGmMW5+sqsUC0dDFxZgelO7K05faUhfldBrK7IrrqI7OlIb80Uw6uXqvRe1YAWOX
-         cMxKJFs+xhna+qmEgDXV24JWdNFZx8h+M9CfHJpOGvzZPspTz7ZJmG/hjtvvzRAzWCTs
-         Mi0OoUUG8DPQS7c2+i6wbXogdiYzlu887gfjR1dnfpNaZYZSOyTsRgiNanjRnESY7Pjq
-         +flSUjmrnj8oAewKX8u/Et+lvDAQVJvvw9BGJCVoju6sVsMty9PIEHNGcpoUpVNh4Wws
-         y2jNuRwsoM2lKt20yn/CeTRDWK80QW5lxoocxSAV/LBkuO37NQ11jpxj266i9EziNHC1
-         Q48g==
+        b=GwamvsftPvjfj3fw3PHUxklwj/OzHqv76Vh3iiUuOXVAjynft4norGh6doHFGebMYD
+         5MQES8oh/nxSM5QYebs5yM6hbJNyjiCP8kGR+g0Hq7ER8SvveJ1eXObUyVvWOzId5DH0
+         v1G2sqcPi4/Bwu1gOWRGSiHyKo5EvXO8azk1Yiwb1HVroYyodC1dhdA63aJsXiQRsZ9y
+         HOeqXoYTdbzxJ26nF47ENx5sE7zZ0NUW9oYx1dehGI9hmtjKlJvRagNV2YrFSD+OUo2a
+         gu2NZ5eh9e5ESsRRSexJ4Xd9sPTRg/sPPIyo4gO0piCjgXjcT1UcZ2WsXEy8Jg8m/nVm
+         U4lQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=bQiHjmuZqywaTED/i7Xly9GyW+2j9cpvwySffkTKNbg=;
-        b=Cfzc+zW3kKErPhdgiH4gO7bUNTlArFd0tiB0yUxX39wKciTugND8K4XAwXhPj9roV0
-         DL84w0WM95SPHsxJoqEQHzEQBJIHX6hVQpJtL+GWYcY0QRxa6k8wiZY3TrEFcc2KIUjh
-         XMNEX8Q3WxWPwc9IV9Q1O6YAObW+Q2l3mTXaLN6nXLlZj9SyRuV5608M8cwHROUg4kRo
-         w+0Jir7+ahbdsCm3NaKeQ6T+iGTkXStN6cw0/P/vMnkaalgQXYHRllUsQ9DA1AUEuye6
-         5lf0lwGcZAG6BXr85hAS0PtOZWfrK+UWH2IRCIPLva5L2S9OVuzSGfQCiwnT7ttWMNJn
-         nSEw==
+        bh=C2icBD95VSE0AkV/yv+bqJ83vktnQw4oNTXhuQkrhsQ=;
+        b=epm/sebYs2x29dyh4C/Lp5Jz+TXm3nSRyV4/tJS/QcR9S2B7tCJ3DwlCrqVzR2PenC
+         rhnEaHqQTFwjqjD9A/OukI5EB1SnTPAwpwnHLviOHvv9O6Q0TsWuiB8motr7C5GYzb3i
+         +mkqUgEsX+IU6P8Hj3QIdSCnsucoZfiKkPSM70Ir78L3cSonUijsNVOxO3rbZVt28SvF
+         Ry1qAv5n7HhOQyV+y8xEODVJF8ZLW89yhWw6cXlwTM30jRZbvw6Exp9lR1WK++zYDtoY
+         R0T+DUd5uwcEhybPkXnh70pSRSql+zf3Ba5SYGTSrxpqgBstANsXsvf7EiT6wSe19td2
+         UFbA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@zx2c4.com header.s=mail header.b=tgczhzkB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=zx2c4.com
+       dkim=fail header.i=@linaro.org header.s=google header.b=fY4uQTy1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id u202si841139ywe.551.2017.10.26.07.30.17
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id d6si813780ybd.570.2017.10.26.07.36.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 26 Oct 2017 07:30:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Thu, 26 Oct 2017 07:36:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@zx2c4.com header.s=mail header.b=tgczhzkB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=zx2c4.com
-Received: from localhost ([::1]:53235 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=fY4uQTy1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53270 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e7jAn-0000Jh-Ei
-	for alex.bennee@linaro.org; Thu, 26 Oct 2017 10:30:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47746)
+	id 1e7jH4-0005XD-0m
+	for alex.bennee@linaro.org; Thu, 26 Oct 2017 10:36:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55236)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Jason@zx2c4.com>) id 1e7ium-000394-Gz
-	for qemu-arm@nongnu.org; Thu, 26 Oct 2017 10:13:45 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1e7jGp-0005V8-3v
+	for qemu-arm@nongnu.org; Thu, 26 Oct 2017 10:36:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Jason@zx2c4.com>) id 1e7iug-0005cU-Lw
-	for qemu-arm@nongnu.org; Thu, 26 Oct 2017 10:13:44 -0400
-Received: from frisell.zx2c4.com ([192.95.5.64]:37917)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <Jason@zx2c4.com>)
-	id 1e7iug-0005al-HX; Thu, 26 Oct 2017 10:13:38 -0400
-Received: by frisell.zx2c4.com (ZX2C4 Mail Server) with ESMTP id 07bbe21a;
-	Thu, 26 Oct 2017 14:11:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=zx2c4.com; h=mime-version
-	:in-reply-to:references:from:date:message-id:subject:to:cc
-	:content-type; s=mail; bh=dlj7yJdmEjt7KilWiYqaQFN08fY=; b=tgczhz
-	kB/M6k7flLHdfhzKX86OjNhTvOKpLcb5z3Ji1VnsE4AWRZyTc6zLZRMyVDmaSzDx
-	YmsiUWvGTitoO2MtGhR1yXV6pYcjMqnV5GoQIaNyMNb1CutSoBqM8E4SYhylyaeN
-	W/NpVWtU6+F1SfVo46092U5Yjtjt6LeXPJh9+sOPJBTRrKuQMBZBzEUxSKCLeJRL
-	9NupR7VfvvGJTLBqdPUvG1tV34WZcoQ1Jvv0D7mbtbmCMukQ1e6IW47A4loU8g5A
-	3xpWo/rBPuZNePxqhHxx2EwcGm792VQMRomhztgbznarcw3SLbRtpamCUczS48yj
-	y2snMCdeOeUsZ4qw==
-Received: by frisell.zx2c4.com (ZX2C4 Mail Server) with ESMTPSA id 2d19ff14
-	(TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128:NO); 
-	Thu, 26 Oct 2017 14:11:51 +0000 (UTC)
-Received: by mail-oi0-f45.google.com with SMTP id h6so5841672oia.10;
-	Thu, 26 Oct 2017 07:13:35 -0700 (PDT)
-X-Gm-Message-State: AMCzsaX/WSEvRY4dihy+8jiQHJMxBgCV/o2bAPyWEDrse37CW2wsC6l1
-	4R23jt6qc1sy7h3/fOdnyQQREbx+LlAwKSOD0os=
-X-Received: by 10.202.204.150 with SMTP id c144mr2942690oig.343.1509027214410; 
-	Thu, 26 Oct 2017 07:13:34 -0700 (PDT)
+	(envelope-from <peter.maydell@linaro.org>) id 1e7jGm-0006Ng-HV
+	for qemu-arm@nongnu.org; Thu, 26 Oct 2017 10:36:29 -0400
+Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:46443)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1e7jGm-0006Mt-AA
+	for qemu-arm@nongnu.org; Thu, 26 Oct 2017 10:36:28 -0400
+Received: by mail-wm0-x244.google.com with SMTP id m72so8442436wmc.1
+	for <qemu-arm@nongnu.org>; Thu, 26 Oct 2017 07:36:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=C2icBD95VSE0AkV/yv+bqJ83vktnQw4oNTXhuQkrhsQ=;
+	b=fY4uQTy1my9lFBK+cFol52txssro7V+RgAKAHYWV6jIbnNLVHEGsGnKdD+Tm0+3IuC
+	Uw6o2aKChOF6shBETSl8YHdeN+yZ9UPP9Ozhd7RojyeJcDDI1orGjbQQeWTVSPsyk0H8
+	/l4o0rExX8bCcX/3keru7qF7wXB0Xf7gmUdYE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=C2icBD95VSE0AkV/yv+bqJ83vktnQw4oNTXhuQkrhsQ=;
+	b=K+SUZtAxk35PnKFHalEKL8DBgs+oYSmfqg3/hR8r5SsPUkzUz6cLeviKmzq57wn6dz
+	2qpSIZTQNhq/0YXcxESPxHXTt1FTWyAPcD269eTLkJ1kO7aTjhhDtoHAydN3u8IhqErR
+	Jyu6ChWoBD+mNRVdRJ/5vcxu9EqQJ4tbFjwfDwtFNPmc5ZSFsHak4PmAlSZfJRnkGTqg
+	BmNNrnSnV75ZmHAIljsbFGFX9l12xcE0ftqEO2lgbpBrkANMYUkmsADqDpVIczAR3orI
+	7pxf0u4p3pLZDJ19BX1b5ehIALVy5oRm6hZU5ev4ajFtouyToXAFcVPIYOtaQfp57Ewl
+	PzOg==
+X-Gm-Message-State: AMCzsaX28D0RxyJsD/2sjIX0laXgop9JPijjoHSgG+eIxhTMMbFEq54M
+	+s7gX9+xVllkck9NuJAr+VT+RV/qfkbp+Yj0AJdLWQ==
+X-Received: by 10.28.92.136 with SMTP id q130mr1693085wmb.35.1509028587128;
+	Thu, 26 Oct 2017 07:36:27 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.74.41.205 with HTTP; Thu, 26 Oct 2017 07:13:33 -0700 (PDT)
-In-Reply-To: <20171026133445.kemzfgvpbmtcogsl@kamzik.brq.redhat.com>
+Received: by 10.223.161.5 with HTTP; Thu, 26 Oct 2017 07:36:06 -0700 (PDT)
+In-Reply-To: <CAHmME9oyBvAV8FF9QMHyF46n8Ct6KZqThQVih2ipQmivD94Cag@mail.gmail.com>
 References: <20171023122719.17199-1-Jason@zx2c4.com>
 	<CAFEAcA_PM5Fjx2Pk58h75p9vaZwFcusQdXuwy9tbDtc=EaoOJg@mail.gmail.com>
 	<10e16ca3-175b-9f34-65e7-031b883b7201@amsat.org>
 	<CAHmME9qtBiuAEnkCeuMd7EdeZveTVa4UOf+AQhMCFye0SYJY=Q@mail.gmail.com>
 	<20171026133445.kemzfgvpbmtcogsl@kamzik.brq.redhat.com>
-From: "Jason A. Donenfeld" <Jason@zx2c4.com>
-Date: Thu, 26 Oct 2017 16:13:33 +0200
-X-Gmail-Original-Message-ID: <CAHmME9oyBvAV8FF9QMHyF46n8Ct6KZqThQVih2ipQmivD94Cag@mail.gmail.com>
-Message-ID: <CAHmME9oyBvAV8FF9QMHyF46n8Ct6KZqThQVih2ipQmivD94Cag@mail.gmail.com>
-To: Andrew Jones <drjones@redhat.com>
+	<CAHmME9oyBvAV8FF9QMHyF46n8Ct6KZqThQVih2ipQmivD94Cag@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 26 Oct 2017 15:36:06 +0100
+Message-ID: <CAFEAcA8O6YyS1tSzaydckFpsqpb8HXgW5PJe-VTWud_5YGdW5A@mail.gmail.com>
+To: "Jason A. Donenfeld" <Jason@zx2c4.com>
 Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 192.95.5.64
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::244
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/arm/virt: support 4 serial
  ports
 X-BeenThere: qemu-arm@nongnu.org
@@ -104,27 +108,34 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Andrew Jones <drjones@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>,
 	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
 	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: THh/ZrCVrBMs
+X-TUID: 9zFSgOLUPNrV
 
-On Thu, Oct 26, 2017 at 3:34 PM, Andrew Jones <drjones@redhat.com> wrote:
-> You could make the PL011 user instantiate-able and make the necessary
-> changes to use the dynamic FDT node generation framework (sysbus-fdt),
-> and then you'd be able to add as many additional UARTs as you like to
-> mach-virt's platform bus. I played around with that idea once, and have
-> some patches rotting somewhere that could maybe be dug back up.
+On 26 October 2017 at 15:13, Jason A. Donenfeld <Jason@zx2c4.com> wrote:
+> The problem with this approach is that then different architectures
+> need different fancy options, which makes things a hassle. With the
+> old guarantee of each machine providing four serial ports
 
-The problem with this approach is that then different architectures
-need different fancy options, which makes things a hassle. With the
-old guarantee of each machine providing four serial ports, you could
-just do -serial 1 -serial 2 and not have to worry about it. Much
-nicer.
+This has *never* been guaranteed or indeed true. It's just happened
+to be true for the x86 PC machine and perhaps for some others that
+you've been using. For instance, the MIPS boston board only has
+one uart. highbank has one. integratorcp has 2. The microblaze
+boards only have one uart. And so on. In cases where we're
+modelling real hardware, if the real board only has one UART
+then we're only going to provide one UART, so in some cases you
+just have to deal with that and have some way in your communication
+protocol to multiplex across a single communications channel.
 
-Making FDT dynamic also sounds complicated.
+> Could we just do the simple patch of adding four pl011s in there?
 
-Could we just do the simple patch of adding four pl011s in there?
+I'm still thinking about this. (You definitely can't have four,
+though, because we already have 2 in the trustzone-enabled
+config, so we can only add another 2.)
+
+thanks
+-- PMM

@@ -1,105 +1,123 @@
-Received: by 10.223.161.27 with SMTP id o27csp761762wro;
-        Tue, 24 Oct 2017 09:19:25 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+Re40lrlbfUoKEsztTqY6+TvNoixtmCgGRwaf1E3uCrfkU/0AEO9j14QNVnubwU8fxmvN7z
-X-Received: by 10.129.116.193 with SMTP id p184mr11288478ywc.131.1508861965600;
-        Tue, 24 Oct 2017 09:19:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508861965; cv=none;
+Received: by 10.223.161.27 with SMTP id o27csp1507639wro;
+        Sun, 29 Oct 2017 06:17:15 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+QyQBqluruPIXlkxOxUZqVX5kUhgJfsUDtFXdRsxUXMBU4qKcdjK7mm23GK7NYrG7jrAg3C
+X-Received: by 10.37.160.35 with SMTP id x32mr3858765ybh.387.1509283034957;
+        Sun, 29 Oct 2017 06:17:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1509283034; cv=none;
         d=google.com; s=arc-20160816;
-        b=UCmBLYUivXoyGIZT4SFNXkdWVp0PRIImQc1d6QV9U1ZJFEvDLW5sVntn4sbBye2W/6
-         rgz/G2TbNRyX/7Tj8+mG6DR86Pg+tUt8qlhn2NsYdiN1vIoGrnSSb5OrRBlDyrrAQQ2v
-         uYDbKjkW5VlR3VkDPuurT49bPmh0safRAo9gZ9CZAh9sVJBkO53Ycsl0tW4xyPwPMqFu
-         GY97Wq394P+DR+aYK2Gq9FATohmezO59/9FT2/1UbIpHElJIo7L+4mgw2r3K1GGIW85l
-         l6bGSxSXRcIG0DmAptZ//MLka2jZ4qw0QfmyfSoaqlzDPKZo3faQzb7sO90HDFdbiE8C
-         CYLA==
+        b=c/E/FxylfAkDPEnpHBOmP0hdmoQd0RVxzSDeltRQCLNFm2icf33dWpjAhheJJpRKT/
+         vtgmg0Y1rtjvE8piZabtb3HL660mmcKNFZ4CKjFXpwRTTfA6a+imLeVWuNfwciyeRQxM
+         yD1dfaOxoUDHteCWAE7DsADyyyCE7frFfOgExGLekhPaCnnShysRe7IVV+3WeQfPiVsv
+         X370MhqRUtNgcmqVAFKDBjh8Z5H3sV0mr2ZLTyC9PlWi/IHN/STceIkZ+Irqqs3MNTYD
+         xokPY07W62qyVux441LLVYZBMZsCBQdYaE4IcYTCs1BTf5NwnEP22aCg7nJ5xY0L7Pyd
+         WwLQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :arc-authentication-results;
-        bh=v8s2Ajchir47vpXbrjzEiuubGT0uj+2O/NbPSUzCgik=;
-        b=s/29eugYH0K3gOQNPUbnjKmpeQipxpfWzNjkI3Fd7doWNLvBa4PyKHtTLPa/filIPL
-         cDAqsCKfRxegsv07PDIcH7Y6cARntPkPF0/LFZTVzz8G6sJ+fCpT5x4HYmV4Ln166uW9
-         j9T5zRB9aLuW0U103jqQG6RzaHWXfO2febPuCyzJa+g6enrtDqAnf0nLSc/ol+kkuTP4
-         vAmK5kVr89A2YAsxelcW+7RIaK4vw0O08eoxrdFz38nXtsFiDsOyf8sV/6yx1yJHoGVO
-         3AievSr+fTED5mm8K005ZQ+rIJnjFWCUM49cxupzUUD11NkBOb7W1rPq2wCcLYtQDv0e
-         vmiw==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:subject
+         :mime-version:message-id:date:user-agent:references:in-reply-to:to
+         :from:dmarc-filter:arc-authentication-results;
+        bh=x5k7jNcDKfD77NDpSaa1In6AW+hTr+uaUKWoLWD0/lc=;
+        b=kiSOkaewgXuyH8LPnFQhSt1rcW7XqS/juvCMIRsmZWaGHv8SLNWsvAjV0//78HZW4h
+         idhtzwu//BGUKQPayF/NThauMNnqB7RlQ6oKKYvgtPUIMWh8iBxR0zNSnc5fTWKuMV9q
+         CzVS50KFdJbowgQEJg9W8aurNxyr1IZbdbLRyL2JE0urpu2XJ9EWTzQR0tXu+/1UcAUW
+         At1+SzsZfDBnpXOvJpzQPDRvM6zXXriexJf2wascyAB34DduwkbtOPVe/lgFfbD00dxY
+         0G+enORFxMOKNAdYXyrEQJok2skUGzjEMLSiTMWHem+x5hNBPRcBOtOdzbGQJvWIYzzN
+         lWMA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c8si96723ywl.646.2017.10.24.09.19.25
+        by mx.google.com with ESMTPS id b5si2044177ywa.673.2017.10.29.06.17.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 24 Oct 2017 09:19:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sun, 29 Oct 2017 06:17:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:44574 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36384 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e71vJ-0001pJ-3R
-	for alex.bennee@linaro.org; Tue, 24 Oct 2017 12:19:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46764)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1e8nSk-0000LH-C6
+	for alex.bennee@linaro.org; Sun, 29 Oct 2017 09:17:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46755)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <prvs=463712e83=anthony.perard@citrix.com>)
-	id 1e71uN-0001UH-J0
-	for qemu-devel@nongnu.org; Tue, 24 Oct 2017 12:18:28 -0400
+	(envelope-from <quintela@redhat.com>) id 1e8nSa-0000KH-04
+	for qemu-arm@nongnu.org; Sun, 29 Oct 2017 09:17:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <prvs=463712e83=anthony.perard@citrix.com>)
-	id 1e71uM-0004R6-Gk
-	for qemu-devel@nongnu.org; Tue, 24 Oct 2017 12:18:27 -0400
-Received: from smtp.citrix.com ([66.165.176.89]:20607)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
-	(envelope-from <prvs=463712e83=anthony.perard@citrix.com>)
-	id 1e71uH-0004Ob-TF; Tue, 24 Oct 2017 12:18:22 -0400
-X-IronPort-AV: E=Sophos;i="5.43,428,1503360000"; d="scan'208";a="447940085"
-Date: Tue, 24 Oct 2017 17:15:27 +0100
-From: Anthony PERARD <anthony.perard@citrix.com>
+	(envelope-from <quintela@redhat.com>) id 1e8nSW-0006oR-Qi
+	for qemu-arm@nongnu.org; Sun, 29 Oct 2017 09:17:03 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50570)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <quintela@redhat.com>)
+	id 1e8nSW-0006o7-KG; Sun, 29 Oct 2017 09:17:00 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 4ADACC058EAF;
+	Sun, 29 Oct 2017 13:16:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 4ADACC058EAF
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=quintela@redhat.com
+Received: from localhost (ovpn-116-114.ams2.redhat.com [10.36.116.114])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 119C55D6A3;
+	Sun, 29 Oct 2017 13:16:52 +0000 (UTC)
+From: Juan Quintela <quintela@redhat.com>
 To: Alistair Francis <alistair.francis@xilinx.com>
-Message-ID: <20171024161527.GG1885@perard.uk.xensource.com>
+In-Reply-To: <ad7c1de551fbc497743e4dd60335a75cb5365a15.1508390588.git.alistair.francis@xilinx.com>
+	(Alistair Francis's message of "Thu, 19 Oct 2017 09:15:41 -0700")
 References: <cover.1508390588.git.alistair.francis@xilinx.com>
 	<ad7c1de551fbc497743e4dd60335a75cb5365a15.1508390588.git.alistair.francis@xilinx.com>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.3 (gnu/linux)
+Date: Sun, 29 Oct 2017 14:16:53 +0100
+Message-ID: <87efpmccvu.fsf@secure.laptop>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <ad7c1de551fbc497743e4dd60335a75cb5365a15.1508390588.git.alistair.francis@xilinx.com>
-User-Agent: Mutt/1.9.1 (2017-09-22)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 66.165.176.89
-Subject: Re: [Qemu-devel] [PATCH v3 01/46] Replace all occurances of
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Sun, 29 Oct 2017 13:16:59 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v3 01/46] Replace all occurances of
  __FUNCTION__ with __func__
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: quintela@redhat.com
 Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
 	Stefano Stabellini <sstabellini@kernel.org>,
 	Fam Zheng <famz@redhat.com>, qemu-block@nongnu.org,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	John Snow <jsnow@redhat.com>,
-	Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org,
-	armbru@redhat.com, qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+	John Snow <jsnow@redhat.com>, qemu-devel@nongnu.org,
+	armbru@redhat.com, Yongbok Kim <yongbok.kim@imgtec.com>,
+	qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
 	Stefan Hajnoczi <stefanha@redhat.com>, xen-devel@lists.xenproject.org,
-	Yongbok Kim <yongbok.kim@imgtec.com>, alistair23@gmail.com,
+	Anthony Perard <anthony.perard@citrix.com>, alistair23@gmail.com,
+	Andrzej Zaborowski <balrogg@gmail.com>,
 	Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Q02MshADNT+o
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XLtjeTU7JWU5
 
-On Thu, Oct 19, 2017 at 09:15:41AM -0700, Alistair Francis wrote:
+Alistair Francis <alistair.francis@xilinx.com> wrote:
 > Replace all occurs of __FUNCTION__ except for the check in checkpatch
 > with the non GCC specific __func__.
-> 
+>
 > One line in hcd-musb.c was manually tweaked to pass checkpatch.
-> 
+>
 > Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
 > Cc: Gerd Hoffmann <kraxel@redhat.com>
 > Cc: Andrzej Zaborowski <balrogg@gmail.com>
@@ -119,7 +137,24 @@ On Thu, Oct 19, 2017 at 09:15:41AM -0700, Alistair Francis wrote:
 > Reviewed-by: Eric Blake <eblake@redhat.com>
 > Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
-Reviewed-by: Anthony PERARD <anthony.perard@citrix.com>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
 
--- 
-Anthony PERARD
+
+> diff --git a/audio/audio_int.h b/audio/audio_int.h
+> index 5bcb1c60e1..543b1bd8d5 100644
+> --- a/audio/audio_int.h
+> +++ b/audio/audio_int.h
+> @@ -253,7 +253,7 @@ static inline int audio_ring_dist (int dst, int src, int len)
+>  #define AUDIO_STRINGIFY(n) AUDIO_STRINGIFY_(n)
+>  
+>  #if defined _MSC_VER || defined __GNUC__
+> -#define AUDIO_FUNC __FUNCTION__
+> +#define AUDIO_FUNC __func__
+>  #else
+>  #define AUDIO_FUNC __FILE__ ":" AUDIO_STRINGIFY (__LINE__)
+>  #endif
+
+Unrelated to this patch ....
+Do we really support other compilers than msc and gcc?
+
+Later, Juan.

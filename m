@@ -1,152 +1,198 @@
-Received: by 10.223.161.27 with SMTP id o27csp2035172wro;
-        Sun, 29 Oct 2017 20:28:09 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+ScY0FizqKuPM9urRgoYd/zAM3ysO3eSazWiRKgP/z5V1HxKExeyTt43dY2Ue6ofnoZ36pW
-X-Received: by 10.13.233.197 with SMTP id s188mr5512571ywe.23.1509334089144;
-        Sun, 29 Oct 2017 20:28:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1509334089; cv=none;
+Received: by 10.223.161.27 with SMTP id o27csp3006894wro;
+        Mon, 30 Oct 2017 15:57:44 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+Rhfz5OM4TwEDX/sVQU9VtiZPfExLsq4iEVUfjJSJhrtOexb9yiK5q2k3x31A7mtUJuJapB
+X-Received: by 10.37.223.129 with SMTP id w123mr6619255ybg.288.1509404264569;
+        Mon, 30 Oct 2017 15:57:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1509404264; cv=none;
         d=google.com; s=arc-20160816;
-        b=ggeYtbtzydAEHLLTcjfW0uenxEMawB2T9cEQu4Q05cKkVnXLaKhdTYA6ASZYKiF864
-         JHMgo8ZQIYhRGDJsllcpcTpQmDKSoum7OsRYmxQ03HqrPhDISWaoij2mfJ7g7IzfERQd
-         hcoD0xCGrzxZJqcu0SBg5GvAcXjZuIOC1UtlaDeOq8k9385pSEQ82SCSwYgXSgCtoLRi
-         LIx9/ScBQHd23yApK1cXUgtsPes7/2Kf3QFoPQdgN2+mqOh6Jm34n2RynVx/NGNYoXM9
-         U4/52SXreTRTE32t66tISKTdaQL/9hvOGZ7U2Ug4PqawoONPuIloHGAhp+kpxFnsuY5c
-         OnxQ==
+        b=XN5S6uHy4bImqRpIcqF6SCmDtrVudHTdLgecDXdFYkyLlTqrApV6ML7kEmd0ALEh7D
+         Pb7F4lIFCQ1nBdiQMXhS5oAqdXVXexjuIh/BGw8Y8VDw9vSBAg7T5oj6KMKXIqSKNg1a
+         G3twpksNu9B+IKgcXXLuf0BLhDwraWbOm6xRHMY9ha9gruziL23k3I8/iN6HZ8E20mn1
+         6H7piso4QIABHG7ninCrA4Sj4iu0WWd1hRXtZ+SVRsGrVZ56zxtGmAD4ZqmjpO+P2SrK
+         /5jYQQrthxglQsFtiMFa6Im+gab0qcWcr33IYfg2Ta4Ql7tF28dURIp7i1DBT5alo/uE
+         2S+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=ER91t1vzbUDyVUMOrThVbEm3Hp+lOinvah4b2Yu0Kyo=;
-        b=HcGbrgV0KVp7D7VulavOUHwXXYV8QbkDlGVoWlyTNQpuaZXvfqCwbm9ct+TWAuXfwh
-         Ios5ZI/uJm1zuO9UXVx+HIvwiKBSECxkVRuParT9ihMupAtUuNvpjz4w+klpCbhmdph+
-         2XUtuvfFjAX7zdIpBS3e95o69ay+cUckqDNWVMg5Gr4aBcE7uqg2+oOAfjSZVV+YibGB
-         MA3dngEfrK96T3kOhi1IEcYNl46Z+EfsF84AUKHwlkU80JKpKhD9K4HgTBnH4WvAWnYA
-         fQ7AIFTmVWJxbPa/Yd4YvwuqFltCPQOLCc9k56MLR6iN1+eee5eSiNEPh3UcXzZhyTAp
-         JZXw==
+         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
+         :references:message-id:in-reply-to:to:from:date:dmarc-filter
+         :arc-authentication-results;
+        bh=z1HIMUonGpIEZecH8Z40j117gKLGPmnBtLYI//4w0P0=;
+        b=hdhWBes3vI5uSW9E37bXHd1ve6VQXZRKQbZX5oStxBlLwwlaQIZKRJ8lrlVtqDYFOF
+         aw7Vz1/T0QnU4DI99Y/f6hCzyeijdtRElYo9zvG9v34uEcFDJwHQXIyKDUhdnwJwJocP
+         DMVlwFEeJjkNVpARfP6uafQl9zBy467C+PLSXHitLDAX92g/ZqsVo9RBkJqvUq1M5BUB
+         4rJTvc0LOW+Ofg4OMXHUoCdQ0QnFr+1KAeiOoFnzzad+hmhB1bVJilxKToBksZcs9Df1
+         cFszm0rBcQJQVQLnFhUoaJtdSRMq62ZieZE2uZIxoC4DpZEV5k2wf9ywffBxw8ZS3Sod
+         Jk4w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=E76AbaWD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j133si2359018ywc.257.2017.10.29.20.28.08
+        by mx.google.com with ESMTPS id k6si11176ywb.85.2017.10.30.15.57.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 29 Oct 2017 20:28:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 30 Oct 2017 15:57:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=E76AbaWD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:38516 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:42922 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e90kC-0001RN-Kl
-	for alex.bennee@linaro.org; Sun, 29 Oct 2017 23:28:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36232)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1e9J04-0002o3-2c
+	for alex.bennee@linaro.org; Mon, 30 Oct 2017 18:57:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41396)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e90jK-00019v-T8
-	for qemu-devel@nongnu.org; Sun, 29 Oct 2017 23:27:15 -0400
+	(envelope-from <sstabellini@kernel.org>) id 1e9Izx-0002nx-3s
+	for qemu-arm@nongnu.org; Mon, 30 Oct 2017 18:57:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e90jH-0004ik-Pw
-	for qemu-devel@nongnu.org; Sun, 29 Oct 2017 23:27:14 -0400
-Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:47863)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e90jH-0004iJ-KY; Sun, 29 Oct 2017 23:27:11 -0400
-Received: by mail-qt0-x243.google.com with SMTP id z50so14757758qtj.4;
-	Sun, 29 Oct 2017 20:27:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=ER91t1vzbUDyVUMOrThVbEm3Hp+lOinvah4b2Yu0Kyo=;
-	b=E76AbaWDn7KDQA/8fIrQvqx9Iw+ZDLajHjWkiqMTzYnw+ZXYbp1TwsG4S3/lMVueBY
-	jhd9609fdRqetXFQjLofVAy8Fj8DN3KgxJjDJ008HIkb/a6Jnr8r7cK8FmAv3HSamY/K
-	JPS1PDaqK7aolFnk+xjWxQDLL0H1sns/Tx4QiZZRDKX9+ECPfS+UUJUcZZWv7TWTyWM0
-	1AbIbur4Z5C3lLJ6CzTh1UXdR3tiT3dw7rXVVg97gmqcWgQ2+7KGufVm306d7drNMj/K
-	+BiILyoLgGm7h2PofThL87BHq3gKsZqLsi2QejmpLXj0vq1Im1gdbe2V/zkQ6vC1OQHp
-	6ftg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=ER91t1vzbUDyVUMOrThVbEm3Hp+lOinvah4b2Yu0Kyo=;
-	b=ZSlEcDfXZ3Kz0VbRK8/GCwH4FXPHckKLQz3DVDgbdI7gvayTVBivlRKDpxkV24TD5D
-	N3yDzFtlLkJozyd+seZh6kwMvVkaXxXt/c32WD5+/J0g+WHKaQM3jP9p/Tzj+KEuJ5yx
-	noqchLrbm2dLQRNiHMXQq6ncS35DDkRtbc5VcI8BmXZTobo3aixD/lQ2jrZ/TY1hABDD
-	/CZ96fe1fvI4ZtUHHcNnaP9HNwDjC2fSetD4gi9Mji9lun3KkBciPDwAdyOZ/Tz9TlK/
-	FNHauMkGTL9aoEhZKaRgiWdoxM3ap4yk2GCDQ+ZTdCdFiAC/8tI/KZJ47NUXnIGBML/R
-	at6Q==
-X-Gm-Message-State: AMCzsaVy+JCmePCtAN5PWuoo0NAitnOZxNB9UFSr7xqH6AWoYaPXv49T
-	8bP3JZxXixXdQwNjv5kPoMQRuX/f
-X-Received: by 10.200.43.252 with SMTP id n57mr11800509qtn.141.1509334031181; 
-	Sun, 29 Oct 2017 20:27:11 -0700 (PDT)
-Received: from x1.local ([181.93.89.178]) by smtp.gmail.com with ESMTPSA id
-	t81sm4231534qka.37.2017.10.29.20.27.08
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 29 Oct 2017 20:27:10 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>
-Date: Mon, 30 Oct 2017 00:25:21 -0300
-Message-Id: <20171030032521.2441-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.15.0.rc2
-In-Reply-To: <08178b4217d1692297b8c9620b6d13a80bfb6822.1509175660.git.alistair.francis@xilinx.com>
-References: <08178b4217d1692297b8c9620b6d13a80bfb6822.1509175660.git.alistair.francis@xilinx.com>
+	(envelope-from <sstabellini@kernel.org>) id 1e9Izu-0005XF-12
+	for qemu-arm@nongnu.org; Mon, 30 Oct 2017 18:57:37 -0400
+Received: from mail.kernel.org ([198.145.29.99]:53538)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <sstabellini@kernel.org>)
+	id 1e9Izt-0005V1-O3; Mon, 30 Oct 2017 18:57:33 -0400
+Received: from [10.149.184.130] (162-198-228-33.lightspeed.wlfrct.sbcglobal.net
+	[162.198.228.33])
+	(using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 08514218B4;
+	Mon, 30 Oct 2017 22:57:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 08514218B4
+Authentication-Results: mail.kernel.org;
+	dmarc=none (p=none dis=none) header.from=kernel.org
+Authentication-Results: mail.kernel.org;
+	spf=none smtp.mailfrom=sstabellini@kernel.org
+Date: Mon, 30 Oct 2017 15:57:30 -0700 (PDT)
+From: Stefano Stabellini <sstabellini@kernel.org>
+X-X-Sender: sstabellini@sstabellini-ThinkPad-X260
+To: Peter Maydell <peter.maydell@linaro.org>
+In-Reply-To: <CAFEAcA8pvLNGReghJp0QATbBtC-KCgPqQheKnY=KzDPcjdym3g@mail.gmail.com>
+Message-ID: <alpine.DEB.2.10.1710301444460.7297@sstabellini-ThinkPad-X260>
+References: <alpine.DEB.2.10.1710251623560.574@sstabellini-ThinkPad-X260>
+	<CAFEAcA8pvLNGReghJp0QATbBtC-KCgPqQheKnY=KzDPcjdym3g@mail.gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::243
-Subject: [Qemu-devel] [PATCH v3] xlnx-zcu102: Specify the number of max CPUs
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: TEXT/PLAIN; charset=US-ASCII
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 198.145.29.99
+Subject: Re: [Qemu-arm] [PATCH v2] don't hardcode EL1 in
+ extended_addresses_enabled
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: alistair23@gmail.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pc0TCq/enrfd
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Stefano Stabellini <sstabellini@kernel.org>,
+	Julien Grall <julien.grall@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: k8mgutYyQutx
 
-From: Alistair Francis <alistair.francis@xilinx.com>
+On Mon, 30 Oct 2017, Peter Maydell wrote:
+> On 26 October 2017 at 00:28, Stefano Stabellini <sstabellini@kernel.org> wrote:
+> > extended_addresses_enabled calls arm_el_is_aa64, hardcoding exception
+> > level 1. Instead, add an additional "el" argument to
+> > extended_addresses_enabled.
+> >
+> > The caller will pass the right value. In most cases, it will be
+> > arm_current_el(env). However, arm_debug_excp_handler will
+> > use arm_debug_target_el(env), as the target el for a debug trap can be
+> > different from the current el.
+> >
+> > Signed-off-by: Stefano Stabellini <sstabellini@kernel.org>
+> 
+> I have some longer comments below about what a mess this whole
+> area is. Fixing some of that requires some heavy refactoring,
+> which I don't want to do just now since we're about to go into
+> softfreeze for the next release.
+> 
+> What's the specific situation/bug that you're trying to fix with
+> this patch? You don't say in the commit message.
+> We should be able to put in a point fix to deal with whatever it is,
+> but it's hard to suggest what that would be without the detail
+> of what exactly we're getting wrong. (It's the PAR format stuff,
+> right? But which ATS instruction are you using, from which
+> exception level, with which register width, for which stage
+> 1 page table format and stage 1 guest register width?)
 
-Specify the number of CPUs that can run on ZynqMP.
+Thank you for understanding, I am not really up for heavy refactoring
+in QEMU right now :-)
 
-Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
-V3:
- - Fix my ASCII noncompliant last name in Reviewed-by tag :(
- - added Tested-by for what it's worth
- 
-V2:
- - Use macros
+Yes, I am trying to fix the AT instruction, which is used by Xen for
+address translations. Xen always runs at EL2. do_ats_write takes the
+wrong path because extended_addresses_enabled assumes EL1.
 
- hw/arm/xlnx-zcu102.c | 1 +
- 1 file changed, 1 insertion(+)
+To go more into details, virt_to_maddr translates a Xen virtual address
+into a physical address. Xen implements virt_to_maddr as:
 
-diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
-index 519a16ed98..e2d15a1c9d 100644
---- a/hw/arm/xlnx-zcu102.c
-+++ b/hw/arm/xlnx-zcu102.c
-@@ -240,6 +240,7 @@ static void xlnx_zcu102_machine_class_init(ObjectClass *oc, void *data)
-     mc->block_default_type = IF_IDE;
-     mc->units_per_default_bus = 1;
-     mc->ignore_memory_transaction_failures = true;
-+    mc->max_cpus = XLNX_ZYNQMP_NUM_APU_CPUS + XLNX_ZYNQMP_NUM_RPU_CPUS;
- }
- 
- static const TypeInfo xlnx_zcu102_machine_init_typeinfo = {
--- 
-2.15.0.rc2
+  static inline paddr_t __virt_to_maddr(vaddr_t va)
+  {
+      uint64_t par = va_to_par(va);
+      return (par & PADDR_MASK & PAGE_MASK) | (va & ~PAGE_MASK);
+  }
 
+Where va_to_par is:
+
+  #define ATS1HR          p15,4,c7,c8,0   /* Address Translation Stage 1 Hyp. Read */
+  static inline uint64_t __va_to_par(vaddr_t va)
+  {
+      uint64_t par, tmp;
+      tmp = READ_CP64(PAR);
+      WRITE_CP32(va, ATS1HR);
+      isb(); /* Ensure result is available. */
+      par = READ_CP64(PAR);
+      WRITE_CP64(tmp, PAR);
+      return par;
+  }
+
+This is what breaks Xen 64-bit booting on qemu-system-aarch64.
+
+For completeness, I'll also point out other uses of ATS instructions in
+Xen.
+
+Xen uses the following to translate a guest virtual address into a
+physical address (Xen has no saying in the guest pagetable format or
+register width):
+
+  #define ATS12NSOPR      p15,0,c7,c8,4   /* Address Translation Stage 1+2 Non-Secure Kernel Read */
+  #define ATS12NSOPW      p15,0,c7,c8,5   /* Address Translation Stage 1+2 Non-Secure Kernel Write */
+  static inline uint64_t gva_to_ma_par(vaddr_t va, unsigned int flags)
+  {
+      uint64_t par, tmp;
+      tmp = READ_CP64(PAR);
+      if ( (flags & GV2M_WRITE) == GV2M_WRITE )
+          WRITE_CP32(va, ATS12NSOPW);
+      else
+          WRITE_CP32(va, ATS12NSOPR);
+      isb(); /* Ensure result is available. */
+      par = READ_CP64(PAR);
+      WRITE_CP64(tmp, PAR);
+      return par;
+  }
+
+Finally, Xen uses the following to translate guest virtual addresses
+into pseudo-physical addresses:
+
+  #define ATS1CPR         p15,0,c7,c8,0   /* Address Translation Stage 1. Non-Secure Kernel Read */
+  #define ATS1CPW         p15,0,c7,c8,1   /* Address Translation Stage 1. Non-Secure Kernel Write */
+  
+  static inline uint64_t gva_to_ipa_par(vaddr_t va, unsigned int flags)
+  {
+      uint64_t par, tmp;
+      tmp = READ_CP64(PAR);
+      if ( (flags & GV2M_WRITE) == GV2M_WRITE )
+          WRITE_CP32(va, ATS1CPW);
+      else
+          WRITE_CP32(va, ATS1CPR);
+      isb(); /* Ensure result is available. */
+      par = READ_CP64(PAR);
+      WRITE_CP64(tmp, PAR);
+      return par;
+  }

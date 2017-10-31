@@ -1,104 +1,106 @@
-Received: by 10.223.161.27 with SMTP id o27csp3865193wro;
-        Tue, 31 Oct 2017 08:47:05 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+QKqhY1hGwpkmSAIqmffqktKUfBt9OelLEt1xcMcAEriWN5yJyTbmDBqluCmLI4ZG/TkFWd
-X-Received: by 10.129.47.10 with SMTP id v10mr1518160ywv.332.1509464825853;
-        Tue, 31 Oct 2017 08:47:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1509464825; cv=none;
+Received: by 10.223.161.27 with SMTP id o27csp3865395wro;
+        Tue, 31 Oct 2017 08:47:17 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+Rm8gU6Qq9O+iqk/caPIxXAbsLLHmQ8jmJtgYKXliTwfS1G8YCy9SgmQaMC07bU8gxK7QAP
+X-Received: by 10.129.137.2 with SMTP id z2mr1519502ywf.159.1509464837022;
+        Tue, 31 Oct 2017 08:47:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1509464837; cv=none;
         d=google.com; s=arc-20160816;
-        b=mPugDzcHb6bGIjt/Dq7wxYiHOF+ujeCLvGT6l/T3f7h5ChcFSKRBYcg9rCjsMu9CP3
-         7zaK7KFRRyNVjTIgm+MytpKUOSrantEm2bYSf1AZkA01E/mymcldpxZQonfLqlFWIHts
-         dF1h8nhXo1i2YGng/0hfqdKM8T5k1Lek05OmDcTxz1GAUoGRrBREyN83EDXtZmb0GD2d
-         wq+443PdU/rghmwK6BwOHIneu+r7guTSTGrfRZ4yfetHKGnjNeaSLCOs2rLzh9cywGJY
-         EcN56+6MrUJ8KedqrEI6Ju8OwH07ubb/NsonqkPKCVDSnlC9mwVTsV6kwAyX1KIgjNte
-         Goyg==
+        b=jIExCDED5XbMR95U9KllSvr1WdtHxHedjk/aebt7R4nhs8eZzSuSah6isIuVPVnah7
+         L44DpEYrJKnXwIQNne+Be1K3we9OxgpH7QnH/HroOWKbrl3nNUJX+UkZRBYBXg4/HIDy
+         B7PD8IfE3jiaj9eBDbHHSWM2nhgVY4lUNqtdHz7Ok84uEax9/GIzJYeVt2CQprKiSILU
+         rAP462UoKG95tGNrCNsKb8LbPmFlSPD+0KBA/0MQpdzu57MimlIsfav9aF3vpKvsL0wN
+         SINkPCJZc2jPR4rGsyonsUb5miirATYHIAgo4PKkzrvfTOJNXlT9GtIXne21yi8mgckm
+         gshg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:message-id
-         :date:to:from:arc-authentication-results;
-        bh=2W3aRvDM0CCXsyy6mbDlZ8aNonyF8DxiPkryjJm+YX8=;
-        b=IE/QQO0Zxnr6CYXKRd3WW7k3Q7wJJ7AFIXH0/rslJ3T23WBS79YXTAZWgoI2RN+Kyj
-         jFwziBELGmiI9stv5twMn7pqOB6HV2+gSsT/5OPrsmiVdsr9J3MFCZV041hq4V+zoPd1
-         aNCs1rpxzIc0KgcPMsunq3jD0paI5TDY/XIEhchb2e3AEBwX8mBuIi9olSLz5YPHwBUp
-         gc5dmvSlZ8+BGEEmv8t0B9trUUpa53SmwMeOlHaT5hSGRn2MPncLWM0JgWe+UJYDKYZ3
-         x75FawYCSoH9w+JEK1MX5dVEwHvDyoAu1NfWT8BbvdmyB7QIRfurVvEzKuOh8tg8P4LS
-         T6OA==
+         :list-unsubscribe:list-id:precedence:subject:mime-version:references
+         :in-reply-to:message-id:date:to:from:arc-authentication-results;
+        bh=JvezX04Y7n8Keh2U1ZhN8PLYnKG5hRPU97l6UJO/13o=;
+        b=jkGrMALCUllhFR9uqvVXWR5VIiuC4V5VbU8XWpWhhwIHAJdXWPeaVycWlYbYf2/RYn
+         IlXkIRhmEJC+3Uw/Cq2Vh9vpl/1QK3eqoXqi9eLVXXqFhJw/LHCAdbvIjBgGi228brPs
+         eccss7F+nnNrRGCd3ISGDxHQq/qNm/2bOYAt4SaW6yHLvF7UinU+kBBmeUJ+qYPUO+Vv
+         P1p1GoUWr4wzXeFgliYRSZ9C4c/CLLPe3+zCgspWUz3e5n8pcsdP5gvKE+xxDFiZEwgf
+         XIQVAqC/vdeGAg14L7gvskqf2ilxaHo93rmfUvUyq5aoCoLXOptjEo9MUog3Uup2SjNg
+         wZmQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x67si476388ybh.444.2017.10.31.08.47.05
+        by mx.google.com with ESMTPS id j8si425191ybm.655.2017.10.31.08.47.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 31 Oct 2017 08:47:05 -0700 (PDT)
+        Tue, 31 Oct 2017 08:47:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46276 helo=lists.gnu.org)
+Received: from localhost ([::1]:46277 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e9Ykr-0002Ga-9f
-	for alex.bennee@linaro.org; Tue, 31 Oct 2017 11:47:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46809)
+	id 1e9Yl2-0002RW-FY
+	for alex.bennee@linaro.org; Tue, 31 Oct 2017 11:47:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46914)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <Michael.Nawrocki@gtri.gatech.edu>)
-	id 1e9YjS-0001TB-LO
-	for qemu-devel@nongnu.org; Tue, 31 Oct 2017 11:45:39 -0400
+	id 1e9YjY-0001WX-HC
+	for qemu-devel@nongnu.org; Tue, 31 Oct 2017 11:45:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <Michael.Nawrocki@gtri.gatech.edu>)
-	id 1e9YjP-0007QU-J1
-	for qemu-devel@nongnu.org; Tue, 31 Oct 2017 11:45:38 -0400
-Received: from relay2.gtri.gatech.edu ([130.207.199.168]:52289)
+	id 1e9YjW-0007d7-8q
+	for qemu-devel@nongnu.org; Tue, 31 Oct 2017 11:45:44 -0400
+Received: from relay2.gtri.gatech.edu ([130.207.199.168]:52470)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <Michael.Nawrocki@gtri.gatech.edu>)
-	id 1e9YjP-0007P6-Em
-	for qemu-devel@nongnu.org; Tue, 31 Oct 2017 11:45:35 -0400
-X-ASG-Debug-ID: 1509464733-0768e41b30561b30001-jgbH7p
+	id 1e9YjW-0007bk-1Y
+	for qemu-devel@nongnu.org; Tue, 31 Oct 2017 11:45:42 -0400
+X-ASG-Debug-ID: 1509464739-0768e41b2f561b60001-jgbH7p
 Received: from jekyll.core.gtri.org (jekyll.core.gtri.org [10.41.1.48]) by
-	relay2.gtri.gatech.edu with ESMTP id zne1CpSGWAc8IOA7
+	relay2.gtri.gatech.edu with ESMTP id h5UF1vmXlHdyktBt
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA256 bits=128
-	verify=NO); Tue, 31 Oct 2017 11:45:33 -0400 (EDT)
+	verify=NO); Tue, 31 Oct 2017 11:45:39 -0400 (EDT)
 X-Barracuda-Envelope-From: Michael.Nawrocki@gtri.gatech.edu
 Received: from tybee.core.gtri.org (10.41.1.49) by jekyll.core.gtri.org
 	(10.41.1.48) with Microsoft SMTP Server (version=TLS1_2,
 	cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1034.26;
-	Tue, 31 Oct 2017 11:45:33 -0400
+	Tue, 31 Oct 2017 11:45:40 -0400
 Received: from tia-mxn-d01.ctisl.gtri.org (130.207.205.130) by
 	tybee.core.gtri.org (10.41.1.49) with Microsoft SMTP Server
 	(version=TLS1_2, 
 	cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1034.26;
-	Tue, 31 Oct 2017 11:45:32 -0400
+	Tue, 31 Oct 2017 11:45:39 -0400
 From: Mike Nawrocki <michael.nawrocki@gtri.gatech.edu>
 To: <qemu-devel@nongnu.org>, <qemu-block@nongnu.org>, <qemu-arm@nongnu.org>,
 	<qemu-ppc@nongnu.org>
-Date: Tue, 31 Oct 2017 11:44:05 -0400
-X-ASG-Orig-Subj: [PATCH 0/2] Add 8-byte wide AMD flash support,
-	partial interleaving
-Message-ID: <20171031154407.4184-1-michael.nawrocki@gtri.gatech.edu>
+Date: Tue, 31 Oct 2017 11:44:07 -0400
+X-ASG-Orig-Subj: [PATCH 2/2] Add support for flash interleaving of AMD chips
+Message-ID: <20171031154407.4184-3-michael.nawrocki@gtri.gatech.edu>
 X-Mailer: git-send-email 2.14.2
+In-Reply-To: <20171031154407.4184-1-michael.nawrocki@gtri.gatech.edu>
+References: <20171031154407.4184-1-michael.nawrocki@gtri.gatech.edu>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [130.207.205.130]
 X-ClientProxiedBy: apatlisdmfe4.core.gtri.org (10.41.47.104) To
 	tybee.core.gtri.org (10.41.1.49)
 X-Barracuda-Connect: jekyll.core.gtri.org[10.41.1.48]
-X-Barracuda-Start-Time: 1509464733
+X-Barracuda-Start-Time: 1509464739
 X-Barracuda-Encrypted: ECDHE-RSA-AES128-SHA256
 X-Barracuda-URL: https://130.207.199.168:443/cgi-mod/mark.cgi
 X-Virus-Scanned: by bsmtpd at gtri.gatech.edu
-X-Barracuda-Scan-Msg-Size: 973
+X-Barracuda-Scan-Msg-Size: 12662
 X-Barracuda-BRTS-Status: 1
-X-Barracuda-Spam-Score: 0.00
-X-Barracuda-Spam-Status: No, SCORE=0.00 using global scores of TAG_LEVEL=1000.0
-	QUARANTINE_LEVEL=1000.0 KILL_LEVEL=1000.0 tests=
+X-Barracuda-Spam-Score: 0.50
+X-Barracuda-Spam-Status: No, SCORE=0.50 using global scores of TAG_LEVEL=1000.0
+	QUARANTINE_LEVEL=1000.0 KILL_LEVEL=1000.0 tests=BSF_RULE7568M
 X-Barracuda-Spam-Report: Code version 3.2, rules version 3.2.3.44359
 	Rule breakdown below
 	pts rule name              description
 	---- ----------------------
 	--------------------------------------------------
+	0.50 BSF_RULE7568M          Custom Rule 7568M
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
 X-Received-From: 130.207.199.168
-Subject: [Qemu-devel] [PATCH 0/2] Add 8-byte wide AMD flash support,
- partial interleaving
+Subject: [Qemu-devel] [PATCH 2/2] Add support for flash interleaving of AMD
+ chips
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -116,29 +118,288 @@ Cc: kwolf@redhat.com, Mike Nawrocki <michael.nawrocki@gtri.gatech.edu>,
 	mreitz@redhat.com, david@gibson.dropbear.id.au
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bpTLB+wkewE9
+X-TUID: vyJAqrSGwlP8
 
-This patch set does a few things. First, it switches the AMD CFI flash MMIO
-operations from the old MMIO API to the new one. Second, it enables 8-byte
-wide flash arrays. Finally, it supports rudimentary interleaving of notional
-flash "chips". It is expected that commands will be sent to all "chips"
-simultaneously. See the example in the second patch for more details. This
-behavior is used by drivers for the PPMC7400 PowerPC evaluation board.
+Flash interleaving is partially supported using the new interleave_num
+parameter, which indicates how many "devices" comprise the flash array.
+The supported flash access pattern is one where commands are sent to all
+devices simultaneously and the read result is duplicated according to
+the interleave number. For example, given a flash array of width 8,
+interleave 4, the command sequence
 
-Mike Nawrocki (2):
-  Add 8-byte access to AMD CFI devices
-  Add support for flash interleaving of AMD chips
+0x00AA00AA00AA00AA
+0x0055005500550055
+0x0090009000900090
 
- hw/arm/digic_boards.c    |   2 +-
- hw/arm/musicpal.c        |   4 +-
- hw/arm/xilinx_zynq.c     |   2 +-
- hw/block/pflash_cfi02.c  | 210 ++++++++++++++++++++++++++---------------------
- hw/lm32/lm32_boards.c    |   4 +-
- hw/ppc/ppc405_boards.c   |  15 ++--
- hw/sh4/r2d.c             |   2 +-
- include/hw/block/flash.h |   1 +
- 8 files changed, 132 insertions(+), 108 deletions(-)
+sends the auto-select command sequence. If a read to address 0 is
+issued, the user would expect the following: 0x0001000100010001 to
+identify the AMD device array.
 
+Issuing commands to individual members of the flash array is not
+supported.
+
+Signed-off-by: Mike Nawrocki <michael.nawrocki@gtri.gatech.edu>
+---
+ hw/arm/digic_boards.c    |  2 +-
+ hw/arm/musicpal.c        |  4 ++--
+ hw/arm/xilinx_zynq.c     |  2 +-
+ hw/block/pflash_cfi02.c  | 38 +++++++++++++++++++++++++++++++++++++-
+ hw/lm32/lm32_boards.c    |  4 ++--
+ hw/ppc/ppc405_boards.c   | 15 ++++++---------
+ hw/sh4/r2d.c             |  2 +-
+ include/hw/block/flash.h |  1 +
+ 8 files changed, 51 insertions(+), 17 deletions(-)
+
+diff --git a/hw/arm/digic_boards.c b/hw/arm/digic_boards.c
+index 9f11dcd11f..7f039a989a 100644
+--- a/hw/arm/digic_boards.c
++++ b/hw/arm/digic_boards.c
+@@ -133,7 +133,7 @@ static void digic4_add_k8p3215uqb_rom(DigicBoardState *s, hwaddr addr,
+                           NULL, FLASH_K8P3215UQB_SECTOR_SIZE,
+                           FLASH_K8P3215UQB_SIZE / FLASH_K8P3215UQB_SECTOR_SIZE,
+                           DIGIC4_ROM_MAX_SIZE / FLASH_K8P3215UQB_SIZE,
+-                          4,
++                          4, 1,
+                           0x00EC, 0x007E, 0x0003, 0x0001,
+                           0x0555, 0x2aa, 0);
+ 
+diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
+index b648770882..5d98cd1eac 100644
+--- a/hw/arm/musicpal.c
++++ b/hw/arm/musicpal.c
+@@ -1640,14 +1640,14 @@ static void musicpal_init(MachineState *machine)
+                               "musicpal.flash", flash_size,
+                               blk, 0x10000, (flash_size + 0xffff) >> 16,
+                               MP_FLASH_SIZE_MAX / flash_size,
+-                              2, 0x00BF, 0x236D, 0x0000, 0x0000,
++                              2, 1, 0x00BF, 0x236D, 0x0000, 0x0000,
+                               0x5555, 0x2AAA, 1);
+ #else
+         pflash_cfi02_register(0x100000000ULL-MP_FLASH_SIZE_MAX, NULL,
+                               "musicpal.flash", flash_size,
+                               blk, 0x10000, (flash_size + 0xffff) >> 16,
+                               MP_FLASH_SIZE_MAX / flash_size,
+-                              2, 0x00BF, 0x236D, 0x0000, 0x0000,
++                              2, 1, 0x00BF, 0x236D, 0x0000, 0x0000,
+                               0x5555, 0x2AAA, 0);
+ #endif
+ 
+diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+index 1836a4ed45..ea85333104 100644
+--- a/hw/arm/xilinx_zynq.c
++++ b/hw/arm/xilinx_zynq.c
+@@ -210,7 +210,7 @@ static void zynq_init(MachineState *machine)
+                           dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
+                           FLASH_SECTOR_SIZE,
+                           FLASH_SIZE/FLASH_SECTOR_SIZE, 1,
+-                          1, 0x0066, 0x0022, 0x0000, 0x0000, 0x0555, 0x2aa,
++                          1, 1, 0x0066, 0x0022, 0x0000, 0x0000, 0x0555, 0x2aa,
+                               0);
+ 
+     dev = qdev_create(NULL, "xilinx,zynq_slcr");
+diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
+index 0aed0ab218..b0f86584c5 100644
+--- a/hw/block/pflash_cfi02.c
++++ b/hw/block/pflash_cfi02.c
+@@ -28,11 +28,28 @@
+  * - unlock bypass command
+  * - CFI queries
+  *
+- * It does not support flash interleaving.
+  * It does not implement boot blocs with reduced size
+  * It does not implement software data protection as found in many real chips
+  * It does not implement erase suspend/resume commands
+  * It does not implement multiple sectors erase
++ *
++ * Flash interleaving is partially supported using the interleave_num
++ * parameter, which indicates how many "devices" comprise the flash array.
++ * The supported flash access pattern is one where commands are sent to all
++ * devices simultaneously and the read result is duplicated according to the
++ * interleave number. For example, given a flash array of width 8,
++ * interleave 4, the command sequence
++ *
++ * 0x00AA00AA00AA00AA
++ * 0x0055005500550055
++ * 0x0090009000900090
++ *
++ * sends the auto-select command sequence. If a read to address 0 is
++ * issued, the user would expect the following:
++ * 0x0001000100010001
++ * to identify the AMD device array.
++ *
++ * Issuing commands to individual members of the flash array is not supported.
+  */
+ 
+ #include "qemu/osdep.h"
+@@ -97,6 +114,7 @@ struct pflash_t {
+     int read_counter; /* used for lazy switch-back to rom mode */
+     char *name;
+     void *storage;
++    uint8_t interleave_num; /* number of devices that comprise the array */
+ };
+ 
+ /*
+@@ -144,6 +162,8 @@ static uint64_t pflash_read(pflash_t *pfl, hwaddr offset,
+     hwaddr boff;
+     uint64_t ret;
+     uint8_t *p;
++    int i;
++    uint8_t intlv_shift = (pfl->width / pfl->interleave_num) << 3;
+ 
+     DPRINTF("%s: offset " TARGET_FMT_plx "\n", __func__, offset);
+     ret = -1;
+@@ -231,6 +251,10 @@ static uint64_t pflash_read(pflash_t *pfl, hwaddr offset,
+         case 0x00:
+         case 0x01:
+             ret = boff & 0x01 ? pfl->ident1 : pfl->ident0;
++            for (i = 1; i < pfl->interleave_num; ++i) {
++                ret = (ret << intlv_shift) | ret;
++            }
++
+             break;
+         case 0x02:
+             ret = 0x00; /* Pretend all sectors are unprotected */
+@@ -241,6 +265,9 @@ static uint64_t pflash_read(pflash_t *pfl, hwaddr offset,
+             if (ret == (uint8_t)-1) {
+                 goto flash_read;
+             }
++            for (i = 1; i < pfl->interleave_num; ++i) {
++                ret <<= intlv_shift;
++            }
+             break;
+         default:
+             goto flash_read;
+@@ -253,6 +280,9 @@ static uint64_t pflash_read(pflash_t *pfl, hwaddr offset,
+     case 0x30:
+         /* Status register read */
+         ret = pfl->status;
++        for (i = 1; i < pfl->interleave_num; ++i) {
++            ret <<= intlv_shift;
++        }
+         DPRINTF("%s: status %" PRIx64 "\n", __func__, ret);
+         /* Toggle bit 6 */
+         pfl->status ^= 0x40;
+@@ -263,6 +293,9 @@ static uint64_t pflash_read(pflash_t *pfl, hwaddr offset,
+             ret = 0;
+         else
+             ret = pfl->cfi_table[boff];
++        for (i = 1; i < pfl->interleave_num; ++i) {
++            ret <<= intlv_shift;
++        }
+         break;
+     }
+ 
+@@ -745,6 +778,7 @@ static Property pflash_cfi02_properties[] = {
+     DEFINE_PROP_UINT16("unlock-addr0", struct pflash_t, unlock_addr0, 0),
+     DEFINE_PROP_UINT16("unlock-addr1", struct pflash_t, unlock_addr1, 0),
+     DEFINE_PROP_STRING("name", struct pflash_t, name),
++    DEFINE_PROP_UINT8("interleave_num", struct pflash_t, interleave_num, 1),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+@@ -776,6 +810,7 @@ pflash_t *pflash_cfi02_register(hwaddr base,
+                                 hwaddr size,
+                                 BlockBackend *blk, uint32_t sector_len,
+                                 int nb_blocs, int nb_mappings, int width,
++                                int interleave_num,
+                                 uint16_t id0, uint16_t id1,
+                                 uint16_t id2, uint16_t id3,
+                                 uint16_t unlock_addr0, uint16_t unlock_addr1,
+@@ -798,6 +833,7 @@ pflash_t *pflash_cfi02_register(hwaddr base,
+     qdev_prop_set_uint16(dev, "unlock-addr0", unlock_addr0);
+     qdev_prop_set_uint16(dev, "unlock-addr1", unlock_addr1);
+     qdev_prop_set_string(dev, "name", name);
++    qdev_prop_set_uint32(dev, "interleave_num", MAX(interleave_num, 1));
+     qdev_init_nofail(dev);
+ 
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
+diff --git a/hw/lm32/lm32_boards.c b/hw/lm32/lm32_boards.c
+index 002d638edd..523121142f 100644
+--- a/hw/lm32/lm32_boards.c
++++ b/hw/lm32/lm32_boards.c
+@@ -116,7 +116,7 @@ static void lm32_evr_init(MachineState *machine)
+     pflash_cfi02_register(flash_base, NULL, "lm32_evr.flash", flash_size,
+                           dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
+                           flash_sector_size, flash_size / flash_sector_size,
+-                          1, 2, 0x01, 0x7e, 0x43, 0x00, 0x555, 0x2aa, 1);
++                          1, 2, 1, 0x01, 0x7e, 0x43, 0x00, 0x555, 0x2aa, 1);
+ 
+     /* create irq lines */
+     env->pic_state = lm32_pic_init(qemu_allocate_irq(cpu_irq_handler, cpu, 0));
+@@ -209,7 +209,7 @@ static void lm32_uclinux_init(MachineState *machine)
+     pflash_cfi02_register(flash_base, NULL, "lm32_uclinux.flash", flash_size,
+                           dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
+                           flash_sector_size, flash_size / flash_sector_size,
+-                          1, 2, 0x01, 0x7e, 0x43, 0x00, 0x555, 0x2aa, 1);
++                          1, 2, 1, 0x01, 0x7e, 0x43, 0x00, 0x555, 0x2aa, 1);
+ 
+     /* create irq lines */
+     env->pic_state = lm32_pic_init(qemu_allocate_irq(cpu_irq_handler, env, 0));
+diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
+index e92db2c66a..04d318ca65 100644
+--- a/hw/ppc/ppc405_boards.c
++++ b/hw/ppc/ppc405_boards.c
+@@ -241,9 +241,8 @@ static void ref405ep_init(MachineState *machine)
+ #endif
+         pflash_cfi02_register((uint32_t)(-bios_size),
+                               NULL, "ef405ep.bios", bios_size,
+-                              blk, 65536, fl_sectors, 1,
+-                              2, 0x0001, 0x22DA, 0x0000, 0x0000, 0x555, 0x2AA,
+-                              1);
++                              blk, 65536, fl_sectors, 1, 2, 1,
++                              0x0001, 0x22DA, 0x0000, 0x0000, 0x555, 0x2AA, 1);
+         fl_idx++;
+     } else
+ #endif
+@@ -539,9 +538,8 @@ static void taihu_405ep_init(MachineState *machine)
+ #endif
+         pflash_cfi02_register((uint32_t)(-bios_size),
+                               NULL, "taihu_405ep.bios", bios_size,
+-                              blk, 65536, fl_sectors, 1,
+-                              4, 0x0001, 0x22DA, 0x0000, 0x0000, 0x555, 0x2AA,
+-                              1);
++                              blk, 65536, fl_sectors, 1, 4, 1,
++                              0x0001, 0x22DA, 0x0000, 0x0000, 0x555, 0x2AA, 1);
+         fl_idx++;
+     } else
+ #endif
+@@ -586,9 +584,8 @@ static void taihu_405ep_init(MachineState *machine)
+                blk_name(blk));
+ #endif
+         pflash_cfi02_register(0xfc000000, NULL, "taihu_405ep.flash", bios_size,
+-                              blk, 65536, fl_sectors, 1,
+-                              4, 0x0001, 0x22DA, 0x0000, 0x0000, 0x555, 0x2AA,
+-                              1);
++                              blk, 65536, fl_sectors, 1, 4, 1,
++                              0x0001, 0x22DA, 0x0000, 0x0000, 0x555, 0x2AA, 1);
+         fl_idx++;
+     }
+     /* Register CLPD & LCD display */
+diff --git a/hw/sh4/r2d.c b/hw/sh4/r2d.c
+index 458ed83297..696175dad6 100644
+--- a/hw/sh4/r2d.c
++++ b/hw/sh4/r2d.c
+@@ -293,7 +293,7 @@ static void r2d_init(MachineState *machine)
+     pflash_cfi02_register(0x0, NULL, "r2d.flash", FLASH_SIZE,
+                           dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
+                           (16 * 1024), FLASH_SIZE >> 16,
+-                          1, 4, 0x0000, 0x0000, 0x0000, 0x0000,
++                          1, 4, 1, 0x0000, 0x0000, 0x0000, 0x0000,
+                           0x555, 0x2aa, 0);
+ 
+     /* NIC: rtl8139 on-board, and 2 slots. */
+diff --git a/include/hw/block/flash.h b/include/hw/block/flash.h
+index 67c3aa329e..b23e3e3030 100644
+--- a/include/hw/block/flash.h
++++ b/include/hw/block/flash.h
+@@ -25,6 +25,7 @@ pflash_t *pflash_cfi02_register(hwaddr base,
+                                 hwaddr size,
+                                 BlockBackend *blk, uint32_t sector_len,
+                                 int nb_blocs, int nb_mappings, int width,
++                                int interleave_num,
+                                 uint16_t id0, uint16_t id1,
+                                 uint16_t id2, uint16_t id3,
+                                 uint16_t unlock_addr0, uint16_t unlock_addr1,
 -- 
 2.14.2
 

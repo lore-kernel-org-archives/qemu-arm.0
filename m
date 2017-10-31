@@ -1,136 +1,159 @@
-Received: by 10.223.161.27 with SMTP id o27csp3942111wro;
-        Tue, 31 Oct 2017 10:02:43 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+QqmN0/KCTB0T8oYgQXDVFsuYCUvjfacfWoO4HKsWeMRPhF3/Chg8dMTs0ZEnKlIagrHOLH
-X-Received: by 10.129.29.5 with SMTP id d5mr1655523ywd.243.1509469363619;
-        Tue, 31 Oct 2017 10:02:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1509469363; cv=none;
+Received: by 10.223.161.27 with SMTP id o27csp3947943wro;
+        Tue, 31 Oct 2017 10:07:32 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+TgKfjV9wW4LQ3X6qT8lnXF9r/Zcq8TsME9g6EXbzaKMMScRi90S7PRGHc2soT3seuym4BS
+X-Received: by 10.129.98.9 with SMTP id w9mr1748708ywb.274.1509469651943;
+        Tue, 31 Oct 2017 10:07:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1509469651; cv=none;
         d=google.com; s=arc-20160816;
-        b=vKu+4W46geqjbBa3Be+8tmlOlgqTkbuUF2bTVHwH0vkDckIK0WlKBVGKt7HM3+2XK/
-         Kja3WAGaV8mey92SIb6cdktXKf+ErR6S0bYGtetLeMncj9eVb22ZqiaFTp+4fnq/camp
-         bOEnZmryJHccci8xP9mzplLWq2CrjzeizYVI9Vsz+9XxfjTbxkcnxvFMR0xBMTZ4bRPE
-         NDidCvc8yAeuSREBsWjVq6THR6BmL1PVw+ulG6lfOxUNtMF00+mC30siRyQfkVrrZH5S
-         oOB9V4l4tGba5020b74sLJrJMg7xDqRMV0o+y7c2D256eYMthHzlf1x3vt6mn87LJbUi
-         /aig==
+        b=0P+jR62+P1jIK6uzErHVABhPrPLQMAxNCCLQfGxePPaKzBV7HW/mkDjQXuSW23jQpN
+         cSBpA+G4PNjTXF3+wMiEU1b13K92dHE4qKbY6/zAkw9EQYZtNczxEJTsoyMgHOGX/X/q
+         arSFimOlB68lZEDu6dXpMVkHwoBjzUQFKIgi80+aIRg/7BNUyP5css8JKqzWlzTLUpFc
+         Zw4g3x36vl44Kg2g16Uj/xXLzLZ/rJzD3W7JaRX5HDIQNN+GK01MbEo5FIVXuRXh3eXk
+         59cW7NKVqsY/IFzegNscz8VDH+GXe7h1g5kKvvnAzVESLOLCshcqCyrbuoCfqr43JQqU
+         AbRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
+         :references:message-id:in-reply-to:to:from:date:dmarc-filter
          :arc-authentication-results;
-        bh=EmhzCKA/z6a5wNfEU44dk0OewAZHM+grCcLGEhsNvXo=;
-        b=wruRBJFokU1RgueYYtZ3CdeNVi7qzVz5PpRlLWzed2Uy+hdkGSgYYZyQe4IYJR2uCO
-         8PYYqPLOmzFmzbiEvBswI0S/YVMC0FqymfMKi1NmEa94EnWrk4K/4lNyHLUKLUurApf/
-         5aaTeFNUsmO8E2Dd4PJptzbV5kbnv155+MkuCUeEdFBWBo91ZxOyU6t35t5jF+CA0aIZ
-         1WtH4asHuIwULjI2AshZPe3Ad7q51RLZaQp7VNslX5SnRa0zN6l6enmwlx0KRO3lpFkV
-         /uqBFDQmsz/IOxvbPAsR0ZrsWAmMfcQitxn8Iq5U2OFc8o++m953GtPyVAyn6CQTCcSi
-         wbSQ==
+        bh=RpOyvBgP6qylN5Mg4JpqaURD/KN/HkLSbSwD0/eFVu4=;
+        b=Q7DoqPgyPKJriN67ChXKFbDxt7V5GURfOBrP1SYIF9/6UsZktcvuBJCyF3h9ayNM6L
+         1+FVFJm4M7yexr1VxQ9lBs6sqxVeMWBC8yBJhl0WFc+2J6ZsXlrAHkYpyeA2TT6qGRuc
+         k3nfSxuYprroFwLYvNvy31slf6kU08RVzZiGarOMOYHE1RpaunONmE9KXlDRexK8Cy85
+         815ucEUtadgB44K3V7GR1SKWc15BO90fpHfAQYvRZem3cW2x5yPwPy7b5hZsAhNjIJIa
+         jLq3Y+8ZmCzzB+SE/7udoQu1K2Yi34iPZRQsKLlCbkx0BUgSA/cQSkh10tELCTnnsIt9
+         a+eA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=HS4VBW25;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w128si478717ybw.413.2017.10.31.10.02.43
+        by mx.google.com with ESMTPS id 127si474108yby.570.2017.10.31.10.07.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 31 Oct 2017 10:02:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 31 Oct 2017 10:07:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=HS4VBW25;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46627 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:46642 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e9Zw3-0003qd-3i
-	for alex.bennee@linaro.org; Tue, 31 Oct 2017 13:02:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37961)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1e9a0h-0005Nw-9b
+	for alex.bennee@linaro.org; Tue, 31 Oct 2017 13:07:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39514)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e9Zub-00038Y-Ju
-	for qemu-devel@nongnu.org; Tue, 31 Oct 2017 13:01:14 -0400
+	(envelope-from <sstabellini@kernel.org>) id 1e9a0N-0005JR-Ik
+	for qemu-arm@nongnu.org; Tue, 31 Oct 2017 13:07:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e9ZuW-0004ZH-0d
-	for qemu-devel@nongnu.org; Tue, 31 Oct 2017 13:01:13 -0400
-Received: from mail-wr0-x244.google.com ([2a00:1450:400c:c0c::244]:44044)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1e9ZuV-0004Xn-PJ
-	for qemu-devel@nongnu.org; Tue, 31 Oct 2017 13:01:07 -0400
-Received: by mail-wr0-x244.google.com with SMTP id z55so16613241wrz.1
-	for <qemu-devel@nongnu.org>; Tue, 31 Oct 2017 10:01:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=EmhzCKA/z6a5wNfEU44dk0OewAZHM+grCcLGEhsNvXo=;
-	b=HS4VBW259jBj+j8rfJB4J6/yZbc1tf1WBp0X9N80+f0ljIIKkuMLYofrlESWG/aIyd
-	6Uy470C8H0C7NPf9p9uTTxLYtrzd2+y5YEfA9F5pxXeUxIYp8+SDFCeN8iI+tQPvzb2T
-	VASJBjo7Q3Wthlg/0+a52ogKf4kMAMmFxHcY4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=EmhzCKA/z6a5wNfEU44dk0OewAZHM+grCcLGEhsNvXo=;
-	b=QB8YBWslt+mdn3P64Gp+oO50uu2tqbt/MExcyB0Ien4g/zGlbfe39t4mPe92iJyibw
-	5Yx7k+dSXtVhLhhcEB4VGHmDeFBfBs6g3OUvZSX6Inb2IDlnJrpuEOtIgsKI58pvugLd
-	HtwCR5RdN08wJTuGUuPcS4qK0EZ5EY+OmGw67vDV4r1fKEXubtKJD1ScCwex4/SUJN+u
-	f82RzU2hRBIPkRo7ZGOYiruPhmnbJu49PAqaRc1o60YW2IRj/6ExQISxl6wh4LboNpf/
-	2pmTC/P8SY+mtzzP0f6dAdQbA+v9Dbdawe9YVbeMDyTbCkQeePTBhbUrnSqCEvjefHXG
-	gjZg==
-X-Gm-Message-State: AMCzsaUwaB/zVb94hfgOBomCYtHcD8moCR9Tk9D4wQA9waNhA+7+8QR9
-	PlN04YJg7CxJQLqqKIcvuJPhq30W3PjT+Rq3R1eTOA==
-X-Received: by 10.223.157.11 with SMTP id k11mr2530531wre.281.1509469266464;
-	Tue, 31 Oct 2017 10:01:06 -0700 (PDT)
+	(envelope-from <sstabellini@kernel.org>) id 1e9a0I-0004zv-LA
+	for qemu-arm@nongnu.org; Tue, 31 Oct 2017 13:07:11 -0400
+Received: from mail.kernel.org ([198.145.29.99]:37722)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <sstabellini@kernel.org>)
+	id 1e9a0I-0004zZ-DD; Tue, 31 Oct 2017 13:07:06 -0400
+Received: from [10.0.0.56] (c-24-130-70-9.hsd1.ca.comcast.net [24.130.70.9])
+	(using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 3CD5A21881;
+	Tue, 31 Oct 2017 17:07:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3CD5A21881
+Authentication-Results: mail.kernel.org;
+	dmarc=none (p=none dis=none) header.from=kernel.org
+Authentication-Results: mail.kernel.org;
+	spf=none smtp.mailfrom=sstabellini@kernel.org
+Date: Tue, 31 Oct 2017 10:07:03 -0700 (PDT)
+From: Stefano Stabellini <sstabellini@kernel.org>
+X-X-Sender: sstabellini@sstabellini-ThinkPad-X260
+To: Peter Maydell <peter.maydell@linaro.org>
+In-Reply-To: <CAFEAcA9GEpxHtPpe3OSZ5eycLB50i5Q_us8dzOjiUj1HxoFnKA@mail.gmail.com>
+Message-ID: <alpine.DEB.2.10.1710311001380.13766@sstabellini-ThinkPad-X260>
+References: <alpine.DEB.2.10.1710251623560.574@sstabellini-ThinkPad-X260>
+	<CAFEAcA8pvLNGReghJp0QATbBtC-KCgPqQheKnY=KzDPcjdym3g@mail.gmail.com>
+	<alpine.DEB.2.10.1710301444460.7297@sstabellini-ThinkPad-X260>
+	<CAFEAcA9GEpxHtPpe3OSZ5eycLB50i5Q_us8dzOjiUj1HxoFnKA@mail.gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Received: by 10.223.161.5 with HTTP; Tue, 31 Oct 2017 10:00:45 -0700 (PDT)
-In-Reply-To: <20171031154407.4184-1-michael.nawrocki@gtri.gatech.edu>
-References: <20171031154407.4184-1-michael.nawrocki@gtri.gatech.edu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 31 Oct 2017 17:00:45 +0000
-Message-ID: <CAFEAcA8Cv1+E9v3dSqPkUDd7s9zp=V+UJ1V7oXJBWzwnQdzFSg@mail.gmail.com>
-To: Mike Nawrocki <michael.nawrocki@gtri.gatech.edu>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::244
-Subject: Re: [Qemu-devel] [PATCH 0/2] Add 8-byte wide AMD flash support,
- partial interleaving
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: TEXT/PLAIN; charset=US-ASCII
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 198.145.29.99
+Subject: Re: [Qemu-arm] [PATCH v2] don't hardcode EL1 in
+ extended_addresses_enabled
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Qemu-block <qemu-block@nongnu.org>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	Michael Walle <michael@walle.cc>, qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Jan Kiszka <jan.kiszka@web.de>, Max Reitz <mreitz@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BMlX9d0QTbx8
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Stefano Stabellini <sstabellini@kernel.org>,
+	Julien Grall <julien.grall@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 14BDCeZ2iMBH
 
-On 31 October 2017 at 15:44, Mike Nawrocki
-<michael.nawrocki@gtri.gatech.edu> wrote:
-> This patch set does a few things. First, it switches the AMD CFI flash MMIO
-> operations from the old MMIO API to the new one. Second, it enables 8-byte
-> wide flash arrays. Finally, it supports rudimentary interleaving of notional
-> flash "chips". It is expected that commands will be sent to all "chips"
-> simultaneously. See the example in the second patch for more details. This
-> behavior is used by drivers for the PPMC7400 PowerPC evaluation board.
+On Tue, 31 Oct 2017, Peter Maydell wrote:
+> On 30 October 2017 at 22:57, Stefano Stabellini <sstabellini@kernel.org> wrote:
+> > On Mon, 30 Oct 2017, Peter Maydell wrote:
+> >> What's the specific situation/bug that you're trying to fix with
+> >> this patch? You don't say in the commit message.
+> >> We should be able to put in a point fix to deal with whatever it is,
+> >> but it's hard to suggest what that would be without the detail
+> >> of what exactly we're getting wrong. (It's the PAR format stuff,
+> >> right? But which ATS instruction are you using, from which
+> >> exception level, with which register width, for which stage
+> >> 1 page table format and stage 1 guest register width?)
+> >
+> > Thank you for understanding, I am not really up for heavy refactoring
+> > in QEMU right now :-)
+> >
+> > Yes, I am trying to fix the AT instruction, which is used by Xen for
+> > address translations. Xen always runs at EL2. do_ats_write takes the
+> > wrong path because extended_addresses_enabled assumes EL1.
+> >
+> > To go more into details, virt_to_maddr translates a Xen virtual address
+> > into a physical address. Xen implements virt_to_maddr as:
+> >
+> >   static inline paddr_t __virt_to_maddr(vaddr_t va)
+> >   {
+> >       uint64_t par = va_to_par(va);
+> >       return (par & PADDR_MASK & PAGE_MASK) | (va & ~PAGE_MASK);
+> >   }
+> >
+> > Where va_to_par is:
+> >
+> >   #define ATS1HR          p15,4,c7,c8,0   /* Address Translation Stage 1 Hyp. Read */
+> >   static inline uint64_t __va_to_par(vaddr_t va)
+> >   {
+> >       uint64_t par, tmp;
+> >       tmp = READ_CP64(PAR);
+> >       WRITE_CP32(va, ATS1HR);
+> >       isb(); /* Ensure result is available. */
+> >       par = READ_CP64(PAR);
+> >       WRITE_CP64(tmp, PAR);
+> >       return par;
+> >   }
+> >
+> > This is what breaks Xen 64-bit booting on qemu-system-aarch64.
+> 
+> I'm confused. You say this is 64-bit booting, but the code you quote
+> here looks like it's doing 32-bit cp15 accesses, not 64-bit mrs/msr
+> sysreg accesses.
+> 
+> We definitely don't support 32-bit Hyp mode right now.
+> 
+> Could you please answer all of:
+> >> which ATS instruction are you using, from which
+> >> exception level, with which register width, for which stage
+> >> 1 page table format and stage 1 guest register width?)
 
-I'm confused by the interleaving part. Can you explain how this
-differs from the interleaving we already support in pflash_cfi01.c
-via setting width, device-width and max-device-width ? (see the comment
-in the pflash_cfi01_properties[] array about how those settings
-interact). If it is the same thing, we should really implement it
-in the same way for both kinds of flash device.
+Sorry Peter, I copy/pasted the values from arm32/page.h instead of
+arm64/page.h in Xen :-/
 
-thanks
--- PMM
+Xen is running at EL2, 64-bit (aarch64). The ATS instruction is "at
+s1e2r", used to translate Xen virtual addresses into physical addresses.
+This is what breaks.

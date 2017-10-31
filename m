@@ -1,115 +1,82 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp4933600wrt;
-        Mon, 15 Oct 2018 13:52:27 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV60/8xq8jcBnG/Nuo8NnAZCj11EeQJmKeB/Nf+U53P2oVLDYAmMWO16qMy5Wz4UBgz5rUM9S
-X-Received: by 2002:a37:d95d:: with SMTP id u90-v6mr18313643qki.244.1539636747900;
-        Mon, 15 Oct 2018 13:52:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539636747; cv=none;
+Received: by 10.223.161.27 with SMTP id o27csp3940856wro;
+        Tue, 31 Oct 2017 10:01:44 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+QTqKYHCJSB54Kbr6gKYIAwyndJsWLQbDynOvcUtgOMqxzjv5RHtQATT+rFAnv/pRGlHo/Z
+X-Received: by 10.129.48.10 with SMTP id w10mr1751810yww.378.1509469304130;
+        Tue, 31 Oct 2017 10:01:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1509469304; cv=none;
         d=google.com; s=arc-20160816;
-        b=TJFeLLlskCwLfT67K54UH2ZVm+JXb/Fy9ecOfPJAa22mvQlGb8s3AujVrtSe3i3AGj
-         cgo7C2CJeYc56f9x4cYVF9r215pS0q8STUVekoDZHv9cqXG6zMZmySr52CiWgbmXP3Uo
-         8DA9hbQ0BySjJyfhthV1kbPuW+yMyZ5arBwVR8omwrrFZqFf1X6enFGrdSOiQEnoibDE
-         zM4pETQBjbe/YosrHmRVvBePT8vFbJgWraQ4uF5vsRBNwiBRIDj4GL0upi+T7b9v8ctl
-         W/70XRXwk/MUsbWiULhZITN8VwH4fkoIqPSQ5ZszUUB0kVsk6vFP2Ij7geQj4nQsAfR/
-         FcRw==
+        b=WIuQ+0xLikQqs1lMB4msoJuH7gyyEmE/pItW/74aySn+T/342poXeIOjTYbcOBXjN6
+         cLGqGjtvjfNrdpQbWaXpEU40qPiRUyZTE208oc1FNo4oE1aRYt59/PYK5rAwGSuDHNPO
+         JfCwf4AIfOgcw23u0+OG1jq0Es2nV+BSYffg7HsSSt/zgvd3bb3LaSWTNPr4c4x2mcSA
+         1GPHGLxhd0+ItXlvElk2ElLF80jK4bigeHJQkzhmEWgaHlsxp5eUmIn3ZHipwM+YZEc1
+         //XvQuuEuaL+9WYHGorubBqVGNpdzzR7Yrcvrx27a2tuua2v4KsKn7DceVt1L5KZ/PO2
+         m2Pg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature;
-        bh=EfCBV8O2KHhKv77TwaYwoB2A8iuDsdttc0CQsMr9mfI=;
-        b=K0HcUWRS55gYauJFC/ZZ5VG9xNrNgowY56q+s3H76bxC5by0P63DND5lqtViLG/lOa
-         oXzQFl9Zn1Omy+gwK6zMweks7Os4AWEeZahICHQb6RHXM6DqSEHxgMLqxQYG2tWwZ2W3
-         jHmKg7aYbMo5zAdVh4OAQWA2RfeuKe+I2XWmarpKSHjI+DqBZsCnE2u35cm4ZhhNP4Iv
-         pmeSK4/cMPK2oCJSy18B/Dhe1JWj/6Kdj24DyVYZ6L/59NSrALN0VS0givpG2oB1Qp6h
-         7uGrVjuB3DiJczVTD5DdoyyXTzcZ+brjvbKSrJJKnvfJ2v3H4jRip80QiSQGcScBQcAt
-         pF4Q==
+         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
+         :references:message-id:in-reply-to:to:from:date:dmarc-filter
+         :arc-authentication-results;
+        bh=WgT+69+Ph4G/9uypcV731Qx1rN4H7ISDcwxgoNIVLV8=;
+        b=DrLdEDSdxpPRd0PBoAiqlYHaGQ2tPz8LejmiPEPBqnHFL+75W6QEC5DmJdZ/fl12Jo
+         ukwR2cQyGcU/2aTDDRMSngUNkz4xiXva/hB8c/B0B9i7a6vIomH446ZRQQiky5pfTd47
+         k8wbXEklp0bqJd+p/xzhHnHuu/Tnih+boxjXwkWjOV9oFhqa7aTWPvKvNpHQV8gHN6j1
+         VYgdGMR1z7EzKm335C2eQI0eb+9EVV9QxX+874IASx/TjD5zO5sTLuyHzd1uDE3ei/nO
+         My9KM54Xs7wvvu8kCoX0AFa9fBZqdZOgTm1ZqlEDCfCd2+sxrTYW5tmY29gmGSx2B1Es
+         +sFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NhLY+ycI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m62-v6si1089566qkd.89.2018.10.15.13.52.27
+        by mx.google.com with ESMTPS id t10si532465ywl.58.2017.10.31.10.01.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 15 Oct 2018 13:52:27 -0700 (PDT)
+        Tue, 31 Oct 2017 10:01:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NhLY+ycI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54834 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:46625 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gC9ql-0002Gb-1L
-	for alex.bennee@linaro.org; Mon, 15 Oct 2018 16:52:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34032)
+	id 1e9Zv5-0003KV-JL
+	for alex.bennee@linaro.org; Tue, 31 Oct 2017 13:01:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38021)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gC9qc-0002GR-Mi
-	for qemu-arm@nongnu.org; Mon, 15 Oct 2018 16:52:21 -0400
+	(envelope-from <sstabellini@kernel.org>) id 1e9Zuo-0003HK-5q
+	for qemu-arm@nongnu.org; Tue, 31 Oct 2017 13:01:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gC9qR-0004S5-1F
-	for qemu-arm@nongnu.org; Mon, 15 Oct 2018 16:52:12 -0400
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:41693)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1gC9qN-0004IQ-Kn
-	for qemu-arm@nongnu.org; Mon, 15 Oct 2018 16:52:03 -0400
-Received: by mail-pf1-x441.google.com with SMTP id m77-v6so10275708pfi.8
-	for <qemu-arm@nongnu.org>; Mon, 15 Oct 2018 13:51:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=EfCBV8O2KHhKv77TwaYwoB2A8iuDsdttc0CQsMr9mfI=;
-	b=NhLY+ycIfHM6t9BrAlhbiXgZ5z/gj72j1DhZWdqQjbskmI6FFguOQBoaq+vFRZIzna
-	2vin60cTIQStUnYf5b1BCRd42fLae5N+Nk6vOkc9A1jZcq6JlttGujVuP/ApQeMS83Be
-	XQZACdRIv8RJoh4if6Tyt0GzH1bZMyUsYsy5I=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=EfCBV8O2KHhKv77TwaYwoB2A8iuDsdttc0CQsMr9mfI=;
-	b=B+1nmz7j9K/ZPrE9YeSc4lWw0TWi3CVFHqG15wfrVYSDRcUNTvNyY2/QixFAi6DWTz
-	qjby2Wr5G42jLCkaER5AzwKGf7zW+cVDGyXuN8BGISV7nXe87vsr5zipgVf5hv5CylHM
-	irQ++5dOKoe0njIK+wnp5x2/HrBf0b46OxuUAqKPMR4BAJjbqNOl6rF4koRlXPxvZsUa
-	v5nMFQGuRARwX23CHxX6shJI7lE/bb2z9MVd7dK/nseC1r2qRG3u6XTT+tMiIgvLeJAN
-	GyqFtK0S27j+qxCVXA0Rg2SzezdkOKYboOvWf1TWGOCeHSkudvtPgf1WKc4eB8wmJL+X
-	N+MA==
-X-Gm-Message-State: ABuFfohMgYzFrXzpv4vyEvq7hCFq0v0dR6pILAp6koM0lpsWspdknjn5
-	VTsHcANFBM8NyZ5Cjj0W4bSM4A==
-X-Received: by 2002:a62:4b09:: with SMTP id
-	y9-v6mr19084389pfa.93.1539636714316; 
-	Mon, 15 Oct 2018 13:51:54 -0700 (PDT)
-Received: from cloudburst.twiddle.net (174-21-9-133.tukw.qwest.net.
-	[174.21.9.133]) by smtp.gmail.com with ESMTPSA id
-	n82-v6sm17553418pfg.21.2018.10.15.13.51.52
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 15 Oct 2018 13:51:53 -0700 (PDT)
-To: Aaron Lindsay <aclindsa@gmail.com>, qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	Wei Huang <wei@redhat.com>, 
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-References: <20181010203735.27918-1-aclindsa@gmail.com>
-	<20181010203735.27918-7-aclindsa@gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <b58c1b9d-f3d7-198e-e31e-d276effc42a9@linaro.org>
-Date: Mon, 15 Oct 2018 13:51:51 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.2.1
+	(envelope-from <sstabellini@kernel.org>) id 1e9Zuj-0004hD-BR
+	for qemu-arm@nongnu.org; Tue, 31 Oct 2017 13:01:26 -0400
+Received: from mail.kernel.org ([198.145.29.99]:37312)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <sstabellini@kernel.org>)
+	id 1e9Zuj-0004ft-4b; Tue, 31 Oct 2017 13:01:21 -0400
+Received: from [10.0.0.56] (c-24-130-70-9.hsd1.ca.comcast.net [24.130.70.9])
+	(using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 6C37D2190B;
+	Tue, 31 Oct 2017 17:01:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C37D2190B
+Authentication-Results: mail.kernel.org;
+	dmarc=none (p=none dis=none) header.from=kernel.org
+Authentication-Results: mail.kernel.org;
+	spf=none smtp.mailfrom=sstabellini@kernel.org
+Date: Tue, 31 Oct 2017 10:01:10 -0700 (PDT)
+From: Stefano Stabellini <sstabellini@kernel.org>
+X-X-Sender: sstabellini@sstabellini-ThinkPad-X260
+To: Peter Maydell <peter.maydell@linaro.org>
+In-Reply-To: <CAFEAcA8jwN81ZBCLA8HW=q5GAWKmZ=kAZAP9vGNN8RYkzYe=Pw@mail.gmail.com>
+Message-ID: <alpine.DEB.2.10.1710310959490.13766@sstabellini-ThinkPad-X260>
+References: <alpine.DEB.2.10.1710171708130.27209@sstabellini-ThinkPad-X260>
+	<CAFEAcA9zXAmNPL8TsLKSPbm8Er_KLK8Ubwth6=nL6WD87OmBQw@mail.gmail.com>
+	<CAFEAcA8jwN81ZBCLA8HW=q5GAWKmZ=kAZAP9vGNN8RYkzYe=Pw@mail.gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-In-Reply-To: <20181010203735.27918-7-aclindsa@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::441
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v6 06/14] target/arm: Filter
- cycle counter based on PMCCFILTR_EL0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 198.145.29.99
+Subject: Re: [Qemu-arm] [PATCH] aarch64: advertise the GIC system register
+ interface
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -121,32 +88,66 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Michael Spradling <mspradli@codeaurora.org>, qemu-devel@nongnu.org,
-	Digant Desai <digantd@codeaurora.org>
+Cc: julien.grall@arm.com, Stefano Stabellini <sstabellini@kernel.org>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	"xen-devel@lists.xen.org" <xen-devel@lists.xen.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zFYnrBdrdJUb
+X-TUID: a89Sx+SDrJbJ
 
-On 10/10/18 1:37 PM, Aaron Lindsay wrote:
-> --- a/target/arm/machine.c
-> +++ b/target/arm/machine.c
-> @@ -584,7 +584,7 @@ static int cpu_pre_save(void *opaque)
->  {
->      ARMCPU *cpu = opaque;
->  
-> -    pmccntr_op_start(&cpu->env);
-> +    pmu_op_start(&cpu->env);
+On Tue, 31 Oct 2017, Peter Maydell wrote:
+> On 19 October 2017 at 15:46, Peter Maydell <peter.maydell@linaro.org> wrote:
+> > On 18 October 2017 at 01:10, Stefano Stabellini <sstabellini@kernel.org> wrote:
+> >> Advertise the presence of the GIC system register interface (1<<24)
+> >> according to H9.248 of the ARM ARM.
+> >>
+> >> This patch allows Xen to boot on QEMU aarch64.
+> >>
+> >> Signed-off-by: Stefano Stabellini <sstabellini@kernel.org>
+> >>
+> >> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> >> index 670c07a..a451763 100644
+> >> --- a/target/arm/cpu64.c
+> >> +++ b/target/arm/cpu64.c
+> >> @@ -136,7 +136,7 @@ static void aarch64_a57_initfn(Object *obj)
+> >>      cpu->id_isar3 = 0x01112131;
+> >>      cpu->id_isar4 = 0x00011142;
+> >>      cpu->id_isar5 = 0x00011121;
+> >> -    cpu->id_aa64pfr0 = 0x00002222;
+> >> +    cpu->id_aa64pfr0 = 0x01002222;
+> >>      cpu->id_aa64dfr0 = 0x10305106;
+> >>      cpu->pmceid0 = 0x00000000;
+> >>      cpu->pmceid1 = 0x00000000;
+> >> @@ -196,7 +196,7 @@ static void aarch64_a53_initfn(Object *obj)
+> >>      cpu->id_isar3 = 0x01112131;
+> >>      cpu->id_isar4 = 0x00011142;
+> >>      cpu->id_isar5 = 0x00011121;
+> >> -    cpu->id_aa64pfr0 = 0x00002222;
+> >> +    cpu->id_aa64pfr0 = 0x01002222;
+> >>      cpu->id_aa64dfr0 = 0x10305106;
+> >>      cpu->id_aa64isar0 = 0x00011120;
+> >>      cpu->id_aa64mmfr0 = 0x00001122; /* 40 bit physical addr */
+> >
+> > Whoops -- we missed this when we added the GICv3 support, because
+> > Linux doesn't check it.
+> >
+> > Applied to target-arm.next, thanks.
+> 
+> Unfortunately I've just noticed that this breaks booting Linux
+> in the "not using gicv3" case. This is because we don't actually
+> define the GICv3 cpu interface registers unless the board
+> instantiates a GICv3. We mustn't advertise the GICv3 sysregs
+> in the ID register unless we actually have them.
+> 
+> Not sure how best to fix this -- it's a consequence of the
+> design decision we made to have the sysregs implementation
+> be in the gicv3 code. There's no useful feature bit in the CPU
+> to hang this off either, it's an effect of whether the board
+> model happens to wire up a gicv3 or not. So we can only figure
+> this out fairly late on (probably at CPU reset time), which
+> is a bit tedious for getting ID reg values right.
+> 
+> In the meantime I've dropped this patch from target-arm.next.
 
-Does it make sense to move this patch earlier so that these hooks are modified
-once?  No big deal if not.
-
-
-> +static inline bool pmu_counter_enabled(CPUARMState *env, uint8_t counter)
-
-Drop the inline.  This function is pretty big; we should let the compiler choose.
-
-Otherwise,
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-
-r~
+Fixing QEMU is harder than I expected. Would it be possible to update
+id_aa64pfr0 at CPU reset time? Like cpu->id_aa64pfr0 |= 0x01000000; ?

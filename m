@@ -1,107 +1,92 @@
-Received: by 10.25.0.6 with SMTP id 6csp48140lfa;
-        Thu, 11 May 2017 20:36:26 -0700 (PDT)
-X-Received: by 10.200.43.169 with SMTP id m38mr1677834qtm.281.1494560186092;
-        Thu, 11 May 2017 20:36:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494560186; cv=none;
+Received: by 10.223.161.27 with SMTP id o27csp1099247wro;
+        Wed, 1 Nov 2017 10:34:38 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+STwsTZzU1zOPNZjvtT8FZoeqNcsk2Gz1/b5FKR+nY+4WUWlco5tDTjtloFpQJA/W6gNj9f
+X-Received: by 10.129.88.136 with SMTP id m130mr432170ywb.410.1509557678516;
+        Wed, 01 Nov 2017 10:34:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1509557678; cv=none;
         d=google.com; s=arc-20160816;
-        b=nUatsf3TM7NCOKW3TLLlwawRZPQAvGlZGtsOrlJFYRQud/4QddnlNJIgBvUAYDfel1
-         bfGJzH48G+Tj5prJeFl6j0x7U00TnA1Cj75ZlMXCcCoRQ9KdMZSDCYSlfuLVu60QLXhb
-         AzGCR8nl7AgKUbCcm2AbgYxdgcqhmm575bz90OwX4l3rBsMFMXwZ6ZjOji9gZ1Yna/qx
-         Xno0nEl50D0pLA9dmWqI4auVDyMuNMBmqSihNGsK1WSfEbaJK5HXO6eD6gemzr8dfEnk
-         OOVGtepBGKeOyrUAv2MsaHroa/ODMaBTCWFJUVHCcR/Nf+SamTRm/XhaiTigzSPIgJ72
-         GsXw==
+        b=vvb32ayRWJF0DuNL32tpuHwBHBfM28X+q6dFENEYSyTOXO5xbcvEYtq/1x0ArGZ0ej
+         tQitnhrh0rcoSgYCDyQDn99LEAs1873SrfY+fF+S2OSdAAkuD2b7xT6G9E2S6EwM2nVy
+         PxkL/cU7r+mHH3ORoN4ipKWvk17yEK+MQpNiR7HS+o2X6ps+xXg/0Rh0IPyA2O1ZhRmQ
+         fdf6zZ7JP9Lf84G3bt6ZUSifnadgYCrgjz0BobKixi2w5DS4GO73+WZkQlAvFjma3/lT
+         1MTforpGF6+fDme0otp7pRc09AmbxD4icEam9GRf8wL4wYuAKJmv/mRaMCPw/FNVJBVw
+         AtaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=nhTGRxVfoJ7Ah/YLU6COAHFDl7Y4Ci8qhe51bjgzQXc=;
-        b=MgrWM2jBR4fR5c2BCd6igPFVp+3jyI0OhYFwIeNd2EgoY/vXgvjpro5TihalDz4ApZ
-         Me2mxYGyn2/a448hvtrbmp6btopBYlEpbc+r6gun7wDwVXtXcx8NntgiNzMEE+C8PIkF
-         +ohGRvgdFCkpgeDBsARtjs834crvHsqN7L5l+8ly1/SlejLtVbsIOpsGYDnu1Sx9JLKH
-         j/Nb1P6IdIboxqsNA3fesgbNuB6szHN44+idAK6FTE6W6gTNhXGNztO4bmmohTrEz5CH
-         W3iWLKu8mifo/8owuZMs9qqATSpshHaM1lpnIsR3cdWcfX3yO/CggzOShJ9oYY/pPofz
-         rLuQ==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dmarc-filter
+         :arc-authentication-results;
+        bh=YHhTpDyCWjRIOo2VGfxSMjcaIfDaXajseJGRuW60G8c=;
+        b=vWapI2N0qdWJDgvxj/wIAmGgFmLWtB5S0FRTlJ1IF/iLMCY82aoBlY88KnTfu4z+zz
+         Lh4zbllBqCbhC/68w8CNUfLalnvWQWwtZ8MjbBeuRt7qjkpi1MWmLVCRKBuyw1ZK7dc4
+         PvLqZj81pgNwUCJS9wtGmRX56QlbiCmi1VTWoCuNYAfr9++K34yuujJkCvVWL/5HDfey
+         da56WIlwrIK32AlR28RW+Gt7n1rzwBb7SetjrXdDJZ/bo/63Aaxavf9VXrznZMWp385q
+         +4PdiJn1J5N0sWGPzFl4KAOc5SBixEgQsbVSAsRIa2bOvOIVjNMzPOWEyZ7Z7IAAW3Fj
+         oOgA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 15si2152971qtu.248.2017.05.11.20.36.25
+        by mx.google.com with ESMTPS id e64si236146ybe.357.2017.11.01.10.34.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 11 May 2017 20:36:26 -0700 (PDT)
+        Wed, 01 Nov 2017 10:34:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51151 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57095 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d91NR-0006c9-HG
-	for alex.bennee@linaro.org; Thu, 11 May 2017 23:36:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47283)
+	id 1e9wuT-00044G-Ur
+	for alex.bennee@linaro.org; Wed, 01 Nov 2017 13:34:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36305)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1d91NK-0006Zs-Tt
-	for qemu-arm@nongnu.org; Thu, 11 May 2017 23:36:19 -0400
+	(envelope-from <thuth@redhat.com>) id 1e9wuN-00044A-0K
+	for qemu-arm@nongnu.org; Wed, 01 Nov 2017 13:34:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1d91NK-0003eh-4G
-	for qemu-arm@nongnu.org; Thu, 11 May 2017 23:36:18 -0400
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:35437)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1d91NE-0003cp-TK; Thu, 11 May 2017 23:36:12 -0400
-Received: by mail-qt0-x241.google.com with SMTP id r58so5366380qtb.2;
-	Thu, 11 May 2017 20:36:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=nhTGRxVfoJ7Ah/YLU6COAHFDl7Y4Ci8qhe51bjgzQXc=;
-	b=saq/o/O9iOxF4meuv42d7hLJHLuPQuyhgUdSNspUlyDYoXb80FUKFZ8sPpsEAcFvMS
-	Dnt1/ThvckOroxFmrkxHML+cuZ5Yyb2uy0DX3dg7VKUUOyT8+kqp3YGr6lcLHN8hZwRW
-	Wc9VvVCbRVad2PoSNia0sVY6WnewB8dJkvfeZE/QrcZf300IUitCSUv2nm2Fc6+XpIQg
-	dlwAKI7irrzAsNRMwKfEpCBKN5rcvZt+emjDOLMMUwqKNuX2sOXArw1YPrxrB6waIRIe
-	GeN1D/m/Tzp+ERL85K9uZ5PUN5WYLG1etZucqJdG2Kfv34VxcEeB/C7az1m8kEel4rhe
-	t1pQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=nhTGRxVfoJ7Ah/YLU6COAHFDl7Y4Ci8qhe51bjgzQXc=;
-	b=h5SZbx+r++4hXUXCmVbcH9YUlamM/UiMYJqtld5riOf6GI8rS5Xfa0nNPirEexSvWX
-	n0gHtLWmJGShK84kfSePsxCmrdEYip4BxGZuaJ96smsX5yZ6/M8c7vUqCBI0ye7l4pDo
-	8As6uVmRdxfwjayqo6xNWe9Jv5MnF44JhjKu/oBW0scWA4tDyJtGEDsanqyvHkaaSmks
-	NqDk+livS1oJ7EZQGYaq7iIERNZ2ZnIADg2nYG6gh9/KoEfHI1eP5im9iVWCDVunOGox
-	tnOFZLpszKNek/5m+TkNq48hroPjUaE5Xw8Y/ZkS22r5xqvCmzb84R/s4fFfyguKivgV
-	prvw==
-X-Gm-Message-State: AODbwcB4phSmvdva3zl0F0356oIg/qE527MOCtQl7Z0BFwkzmHTAOfVH
-	XfYzcp5Ys1JyPg==
-X-Received: by 10.237.53.149 with SMTP id c21mr1831176qte.191.1494560172376;
-	Thu, 11 May 2017 20:36:12 -0700 (PDT)
-Received: from localhost.localdomain ([138.117.48.226])
-	by smtp.gmail.com with ESMTPSA id
-	m188sm1443267qkc.5.2017.05.11.20.36.10
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 11 May 2017 20:36:11 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>,
-	qemu-arm@nongnu.org
-Date: Fri, 12 May 2017 00:35:40 -0300
-Message-Id: <20170512033543.6789-3-f4bug@amsat.org>
-X-Mailer: git-send-email 2.11.0
-In-Reply-To: <20170512033543.6789-1-f4bug@amsat.org>
-References: <20170512033543.6789-1-f4bug@amsat.org>
+	(envelope-from <thuth@redhat.com>) id 1e9wuJ-0004na-TY
+	for qemu-arm@nongnu.org; Wed, 01 Nov 2017 13:34:31 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55426)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1e9wuJ-0004nD-Li; Wed, 01 Nov 2017 13:34:27 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 37918C050904;
+	Wed,  1 Nov 2017 17:34:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 37918C050904
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=thuth@redhat.com
+Received: from [10.36.116.121] (ovpn-116-121.ams2.redhat.com [10.36.116.121])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id EF3655D757;
+	Wed,  1 Nov 2017 17:34:24 +0000 (UTC)
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+References: <20171025093535.10175-1-richard.henderson@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <4ab3bd81-925c-a281-614c-2cd87fce38b5@redhat.com>
+Date: Wed, 1 Nov 2017 18:34:23 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: [Qemu-arm] [PATCH v3 2/5] target/arm: optimize rev16() using
- extract op
+In-Reply-To: <20171025093535.10175-1-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Wed, 01 Nov 2017 17:34:26 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PULL 00/51] tcg queued patches
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -113,42 +98,71 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: peter.maydell@linaro.org, "Emilio G. Cota" <cota@braap.org>,
+	qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mKbncOSaYEhy
+X-TUID: lB/HGQjla5Ru
 
-Patch created mechanically using Coccinelle script via:
+On 25.10.2017 11:34, Richard Henderson wrote:
+> Primarily Emilio's work toward removing tb_lock, with fixes.
+> But there are some other tcg-related patches that are queued.
+> 
+> r~
+> 
+> The following changes since commit 3d7196d43bfe12efe98568cb60057e273652b99b:
+> 
+>   Merge remote-tracking branch 'remotes/kraxel/tags/usb-20171023-pull-request' into staging (2017-10-24 16:05:57 +0100)
+> 
+> are available in the git repository at:
+> 
+>   git://github.com/rth7680/qemu.git tags/pull-tcg-20171025
+> 
+> for you to fetch changes up to cc689485ee3e9dca05765326ee8fd619a6ec48f0:
+> 
+>   translate-all: exit from tb_phys_invalidate if qht_remove fails (2017-10-24 13:53:42 -0700)
+> 
+> ----------------------------------------------------------------
+> TCG patch queue
+> 
+> ----------------------------------------------------------------
+> Emilio G. Cota (25):
+>       tcg: define CF_PARALLEL and use it for TB hashing along with CF_COUNT_MASK
+>       tcg: convert tb->cflags reads to tb_cflags(tb)
+>       target/arm: check CF_PARALLEL instead of parallel_cpus
+>       target/hppa: check CF_PARALLEL instead of parallel_cpus
+>       target/i386: check CF_PARALLEL instead of parallel_cpus
+>       target/m68k: check CF_PARALLEL instead of parallel_cpus
+>       target/s390x: check CF_PARALLEL instead of parallel_cpus
+>       target/sh4: check CF_PARALLEL instead of parallel_cpus
+>       target/sparc: check CF_PARALLEL instead of parallel_cpus
+>       tcg: check CF_PARALLEL instead of parallel_cpus
+>       cpu-exec: lookup/generate TB outside exclusive region during step_atomic
+>       translate-all: use a binary search tree to track TBs in TBContext
+>       exec-all: rename tb_free to tb_remove
+>       translate-all: report correct avg host TB size
+>       tcg: take tb_ctx out of TCGContext
+>       tcg: define tcg_init_ctx and make tcg_ctx a pointer
+>       gen-icount: fold exitreq_label into TCGContext
+>       tcg: introduce **tcg_ctxs to keep track of all TCGContext's
+>       tcg: distribute profiling counters across TCGContext's
+>       tcg: allocate optimizer temps with tcg_malloc
+>       osdep: introduce qemu_mprotect_rwx/none
+>       translate-all: use qemu_protect_rwx/none helpers
+>       tcg: introduce regions to split code_gen_buffer
+>       tcg: enable multiple TCG contexts in softmmu
 
-    $ spatch --macro-file scripts/cocci-macro-file.h --in-place \
-        --sp-file scripts/coccinelle/tcg_gen_extract.cocci --dir target
+Seems like something in this patch series broke a couple of ARM boards
+(smdkc210, nuri, raspi2, xlnx-ep108 and xlnx-zcu102). With current
+master branch, I just get this error:
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- target/arm/translate-a64.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+$ aarch64-softmmu/qemu-system-aarch64  -machine raspi2
+**
+ERROR:/home/thuth/devel/qemu/tcg/tcg.c:537:tcg_register_thread:
+assertion failed: (n < max_cpus)
+Aborted (core dumped)
 
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 24de30d92c..7ea130107e 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -4038,14 +4038,12 @@ static void handle_rev16(DisasContext *s, unsigned int sf,
-     tcg_gen_andi_i64(tcg_tmp, tcg_rn, 0xffff);
-     tcg_gen_bswap16_i64(tcg_rd, tcg_tmp);
- 
--    tcg_gen_shri_i64(tcg_tmp, tcg_rn, 16);
--    tcg_gen_andi_i64(tcg_tmp, tcg_tmp, 0xffff);
-+    tcg_gen_extract_i64(tcg_tmp, tcg_rn, 16, 0xffff);
-     tcg_gen_bswap16_i64(tcg_tmp, tcg_tmp);
-     tcg_gen_deposit_i64(tcg_rd, tcg_rd, tcg_tmp, 16, 16);
- 
-     if (sf) {
--        tcg_gen_shri_i64(tcg_tmp, tcg_rn, 32);
--        tcg_gen_andi_i64(tcg_tmp, tcg_tmp, 0xffff);
-+        tcg_gen_extract_i64(tcg_tmp, tcg_rn, 32, 0xffff);
-         tcg_gen_bswap16_i64(tcg_tmp, tcg_tmp);
-         tcg_gen_deposit_i64(tcg_rd, tcg_rd, tcg_tmp, 32, 16);
- 
--- 
-2.11.0
+Could you please have a look at this?
 
+ Thanks,
+  Thomas

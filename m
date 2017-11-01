@@ -1,112 +1,100 @@
-Received: by 10.223.150.237 with SMTP id u100csp1229052wrb;
-        Wed, 8 Nov 2017 04:37:49 -0800 (PST)
-X-Google-Smtp-Source: ABhQp+TCu1tk6yYFRIY4jae1jxhHq6N+aoOkRgLoGVVyyMzRJnsK3uRCtVNSHSVFaVHkfbCHUSWk
-X-Received: by 10.37.171.229 with SMTP id v92mr208575ybi.499.1510144669775;
-        Wed, 08 Nov 2017 04:37:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510144669; cv=none;
+Received: by 10.223.161.27 with SMTP id o27csp1261423wro;
+        Wed, 1 Nov 2017 13:36:39 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+TH+bBMZWN/wQQ1KDFDFXK1w+W6Ch7VghS/TJs958ujn1BylpKE7q0z1M9wQ9ryBBID7JZp
+X-Received: by 10.129.120.213 with SMTP id t204mr763431ywc.513.1509568599673;
+        Wed, 01 Nov 2017 13:36:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1509568599; cv=none;
         d=google.com; s=arc-20160816;
-        b=0sxWzAMWNhQtJ18c/9N+BbwXB8NgxgZaYNI/n6A+PFutqkEiiMDGeBI+hkFzEJ3y+L
-         Vax43n7F1AinNnFWE4NfuBrLe+mhqWVCKyca3Eb9f+4GxR3s4NFprfvyuPApPAwh9Luj
-         YRoOFtIjibQeKR5cSK8bvshwipNaoEzvuHwN1aBlDm77wBsFwDDUPH0E/yEuZjlLzcyX
-         kvBAIvptr2RgxANOUF7atklJBWt6EmLNMRaqxqG8QMUFoqAb+SaZxnxvHR98+Z7RUy3k
-         FHde2d6itmr+9TkCv0gTO369Q2cA6S77YKEAtTgZ0ZI0ADR3QkddiRhIX0huex8qSjjD
-         s7oA==
+        b=0ajtaTkM4QMEdMNP1fu/BgwRYvJG3wEAThZ9VVhC61xnn13i/OiAAMIAGIvH9ZYMb5
+         07CIEAkG9gxC4YwVHHKDAvK8eo5ZvslRSIk5aMztt9QRKnbfPNZ51KMedSHItE2AUI5W
+         cBy6QhvJXA3V/wRp1G7AaWfDguIuUzMPIL7gvj6q5CBw2u/cMBSmFc4lyvsmQEX0wq0T
+         WprsMk2eMwJf/Mlh2cfnRPJFWK5S0p1KdoATYZwUCI5/Fon1iG8QnL2zOqp9TXAQCqEG
+         /6+Ohn0rv5eIUSJZgl3TSUE/Etazb+W/o6KOkappgcKTaA3zjEc3enyxfBGChp3OATin
+         ngdA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=5IMo+8EO+DRFrdfjdGkmCayjczUGEoFz+KZfpAv6Eho=;
-        b=Syzh/4VMJgHijPIk05sYD/MaTnzhY/Rw5tWz6/eAOJhUd14zfmoUYW1woo5nYQAlBc
-         8hW9JMPbpnxIwXVumNHB1Ielcn1j+4BEKNGh65E4EgJL0p4nyxDT16ameXNWFIZdkTYT
-         xS8HLGBXKzNGN9F7xXbGdievaiojTxuxhZAUAtRPHDFZidiTLL5d+pJeH/0vb726yl9Q
-         A4aYGqT223vpW3+TIhybhTNBxWAN8SLyiM/RUAgSpg/ACoC5mXFsX/uUW6P6dySIW0Xo
-         IItYjIzd+EtI5zo7qlaCLuairAbshOanXEFIn08ZWHN3rA++v+eZ/BzcGSTjxZgG5uRY
-         g5iQ==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature:dkim-signature:arc-authentication-results;
+        bh=rbm9RQvSCMJBjlK84BCHx+uDVxnneO1br+AFC8eNwXQ=;
+        b=l3Np+9lqf6PtTOfhzkY+JDRPRXN9r5Px4RDlsbJnMieGSCgwe4ikC9w1//Jfhpgk+L
+         g3ZjwBR1m+0xHHIUgy9PxN4HH6hAETZro7gqRpRuCvp5YZDHYVJIfVWatRI0+Wb/mpwS
+         BDkc2Mcy1TRJMcJenpdVIlKoRxxkX7TGp6r/ExVLfMAjFhPH0YUnGMozkiPJWxH3t6Ly
+         8Nqw54VDBxk+/Nv+QSPZinDao4lRLpH5jN1y+xM9IkfsChTknMH9ng/GoSs8vgyifiil
+         T106A3EDSGXvuuvRgZJ4pmxvUnDpNEy0PtmGyEhc0vp+580xUsZSGFQ796nf71hEn77n
+         Y8Lw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bQlKuQJs;
+       dkim=fail header.i=@braap.org header.s=mesmtp header.b=VPkou6j8;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=sMErBNOq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h6si876128ybm.152.2017.11.08.04.37.49
+        by mx.google.com with ESMTPS id 202si350236ywp.130.2017.11.01.13.36.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 08 Nov 2017 04:37:49 -0800 (PST)
+        Wed, 01 Nov 2017 13:36:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bQlKuQJs;
+       dkim=fail header.i=@braap.org header.s=mesmtp header.b=VPkou6j8;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=sMErBNOq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:59246 helo=lists.gnu.org)
+Received: from localhost ([::1]:57617 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eCPc5-0004qo-8w
-	for alex.bennee@linaro.org; Wed, 08 Nov 2017 07:37:49 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48121)
+	id 1e9zkd-0003z8-2h
+	for alex.bennee@linaro.org; Wed, 01 Nov 2017 16:36:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56545)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eCPbx-0004nd-7w
-	for qemu-arm@nongnu.org; Wed, 08 Nov 2017 07:37:42 -0500
+	(envelope-from <cota@braap.org>) id 1e9zkS-0003z1-CB
+	for qemu-arm@nongnu.org; Wed, 01 Nov 2017 16:36:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eCPbt-0003fl-Di
-	for qemu-arm@nongnu.org; Wed, 08 Nov 2017 07:37:41 -0500
-Received: from mail-qk0-x233.google.com ([2607:f8b0:400d:c09::233]:50850)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eCPbo-0003d8-2Y; Wed, 08 Nov 2017 07:37:32 -0500
-Received: by mail-qk0-x233.google.com with SMTP id p7so3061224qkd.7;
-	Wed, 08 Nov 2017 04:37:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=5IMo+8EO+DRFrdfjdGkmCayjczUGEoFz+KZfpAv6Eho=;
-	b=bQlKuQJslIaaZ8GXAzarKFelCPxbe1EBYbWi19TfRBqeuZk+L2kDgWTCOB2wEFw9XF
-	N3bl0VDJEYci1iEcL3GwgRSBGqpCetpFhGPPRnMXYixfUawDTs/q85/z3olJhjYISb9n
-	F/YtlJEKldpCDGnZv9rfLMbSRDB5A/jffUcRJ/+LKS6jTsqBzvJirg4qRBtBBfxinCYK
-	QCbYPv62451nwN027TAh81dvsSCK4hl+KWwmVvslJGba1RE8GyPu1b7C6bHPrBV+2LJe
-	aHOiS/t6R3dVGSXySTgx67bac6QAb7krADSBxLtyfD84K+lwXGKgjkLlLO5z/f/Pq0Nt
-	5LFw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=5IMo+8EO+DRFrdfjdGkmCayjczUGEoFz+KZfpAv6Eho=;
-	b=fPhWjw66UuhsI05rexHg4+3dyyCEqKq0Qp9VruRvpTLUOaPdv/gMcM3PBkW79VKL0P
-	YS78+pYIQ9Bpi+fWgos+i1KKqtDSpDZFr65A52/d3eEgnT4LBs8q7RonqbKPUyiHy7bq
-	/WDrfqRT/nYfoQlBGgfmU+ECEMLJIEBpRzhiaq2Tg/TIbFoUj8wJkpBKVJyGhFtzkHLh
-	ABenEdXt4rSyy6b02sLPcvCTprHirsv3Fz+dcR7PVMVVXA3NJumNrE8Klcr3/CX7CKLU
-	Vi7lp1ttP5SJizOUSo3v/+1tOzdYNuE0/e6TqXAO3p6eUa5IYyYEoutPTBHaQQKfnUlk
-	8yzA==
-X-Gm-Message-State: AJaThX587VtWqBAQrNvo2X4mUNj6CEdr9S4c8hF22/NHDGyDNXgl/yUr
-	FrUBxL7TpPqgssbG9eXgC0RfYQUenqM=
-X-Received: by 10.233.221.66 with SMTP id r63mr502959qkf.79.1510144651101;
-	Wed, 08 Nov 2017 04:37:31 -0800 (PST)
-Received: from [192.168.1.240] ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id j7sm2555766qth.25.2017.11.08.04.37.28
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 08 Nov 2017 04:37:30 -0800 (PST)
-To: "Emilio G. Cota" <cota@braap.org>, qemu-devel@nongnu.org
-References: <1510087611-1851-1-git-send-email-cota@braap.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <49151b79-7ec4-b728-1ea9-d5c393a5bada@amsat.org>
-Date: Wed, 8 Nov 2017 09:37:26 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.4.0
+	(envelope-from <cota@braap.org>) id 1e9zkN-0000mE-Eb
+	for qemu-arm@nongnu.org; Wed, 01 Nov 2017 16:36:28 -0400
+Received: from out4-smtp.messagingengine.com ([66.111.4.28]:53807)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <cota@braap.org>)
+	id 1e9zkN-0000iV-0h; Wed, 01 Nov 2017 16:36:23 -0400
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id E7E182081E;
+	Wed,  1 Nov 2017 16:36:20 -0400 (EDT)
+Received: from frontend2 ([10.202.2.161])
+	by compute4.internal (MEProxy); Wed, 01 Nov 2017 16:36:20 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
+	:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc; s=
+	mesmtp; bh=rbm9RQvSCMJBjlK84BCHx+uDVxnneO1br+AFC8eNwXQ=; b=VPkou
+	6j8MyDucw8C0Do6dHsH4OV9OdKjL6NoWFKOp6aJBE30vsBUmuVVgjCHGkf8NEHUA
+	kIalLzv5Vu+qrsLroy6aE+uqMFwFQjAuEuh8Ls4TBT6JjrzILRLifEj9fCXwo/xp
+	sXeQDApFLAntb7bKvnVWScJUiP/mM02Azj2U5U=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-sender
+	:x-me-sender:x-sasl-enc; s=fm1; bh=rbm9RQvSCMJBjlK84BCHx+uDVxnne
+	O1br+AFC8eNwXQ=; b=sMErBNOq5Od3HjpuRx78P0hRO6IPr5dOoyJ4Bk7kSb+H0
+	3YTxUwO0ECMBEbzSBuqdxACJTpdEhImS4C78h9HAc5J067cD2H5Qg+unrDoHuF7/
+	p2k5LfSmicwQRAWgmzZLVaTOKP0X62t64dH44wDnZqT+bXdSUrg4rQKiPugCQysx
+	qlxbfZtqqQ7KOkgccpCwFJXWtQJ2nOkC8jxVZMsQB9mbQbE68CS3BIMn8V9q6ucE
+	XUktU9uQ9OtmTr03qy/cd5T4PvijUqiP3XVMKV+I/2TiAxO3E5OnbAC7gAo6e3K4
+	i3DfG1+J3ki3aLedjIR5BFSINf47N8aRCUxHOWXRA==
+X-ME-Sender: <xms:RDD6WXcYT269Wlj4pM8pEeGk8XiWOwd3AvHXsLrr-EQIHflESxSNEQ>
+Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
+	by mail.messagingengine.com (Postfix) with ESMTPA id B3DCE24731;
+	Wed,  1 Nov 2017 16:36:20 -0400 (EDT)
+Date: Wed, 1 Nov 2017 16:36:20 -0400
+From: "Emilio G. Cota" <cota@braap.org>
+To: Thomas Huth <thuth@redhat.com>
+Message-ID: <20171101203620.GA17963@flamenco>
+References: <20171025093535.10175-1-richard.henderson@linaro.org>
+	<4ab3bd81-925c-a281-614c-2cd87fce38b5@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <1510087611-1851-1-git-send-email-cota@braap.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::233
-Subject: Re: [Qemu-arm] [PATCH] arm/translate-a64: mark path as unreachable
- to eliminate warning
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <4ab3bd81-925c-a281-614c-2cd87fce38b5@redhat.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.111.4.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PULL 00/51] tcg queued patches
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -118,74 +106,142 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org,
+	Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4kImfojmqUkY
+X-TUID: g/RL/DlE0Nv1
 
-On 11/07/2017 05:46 PM, Emilio G. Cota wrote:
-> Fixes the following warning when compiling with gcc 5.4.0 with -O1
-> optimizations and --enable-debug:
+On Wed, Nov 01, 2017 at 18:34:23 +0100, Thomas Huth wrote:
+> Seems like something in this patch series broke a couple of ARM boards
+> (smdkc210, nuri, raspi2, xlnx-ep108 and xlnx-zcu102). With current
+> master branch, I just get this error:
 > 
-> target/arm/translate-a64.c: In function ‘aarch64_tr_translate_insn’:
-> target/arm/translate-a64.c:2361:8: error: ‘post_index’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
->      if (!post_index) {
->         ^
-> target/arm/translate-a64.c:2307:10: note: ‘post_index’ was declared here
->      bool post_index;
->           ^
-> target/arm/translate-a64.c:2386:8: error: ‘writeback’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
->      if (writeback) {
->         ^
-> target/arm/translate-a64.c:2308:10: note: ‘writeback’ was declared here
->      bool writeback;
->           ^
+> $ aarch64-softmmu/qemu-system-aarch64  -machine raspi2
+> **
+> ERROR:/home/thuth/devel/qemu/tcg/tcg.c:537:tcg_register_thread:
+> assertion failed: (n < max_cpus)
+> Aborted (core dumped)
 > 
-> Note that idx comes from selecting 2 bits, and therefore its value
-> can be at most 3.
-> 
-> Signed-off-by: Emilio G. Cota <cota@braap.org>
+> Could you please have a look at this?
 
-Acked-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Turns out some boards initialize a fixed number of vcpus, which
+can be > max_cpus.
 
-> ---
->  target/arm/translate-a64.c | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-> index caca05a..625ef2d 100644
-> --- a/target/arm/translate-a64.c
-> +++ b/target/arm/translate-a64.c
-> @@ -2340,28 +2340,30 @@ static void disas_ldst_reg_imm9(DisasContext *s, uint32_t insn,
->      switch (idx) {
->      case 0:
->      case 2:
->          post_index = false;
->          writeback = false;
->          break;
->      case 1:
->          post_index = true;
->          writeback = true;
->          break;
->      case 3:
->          post_index = false;
->          writeback = true;
->          break;
-> +    default:
-> +        g_assert_not_reached();
->      }
->  
->      if (rn == 31) {
->          gen_check_sp_alignment(s);
->      }
->      tcg_addr = read_cpu_reg_sp(s, rn, 1);
->  
->      if (!post_index) {
->          tcg_gen_addi_i64(tcg_addr, tcg_addr, imm9);
->      }
->  
->      if (is_vector) {
->          if (is_store) {
->              do_fp_st(s, rt, tcg_addr, size);
-> 
+The below fixes the issue for me, although I'm not entirely happy
+with it because if -{smp,max}_cpus < machine_class->max_cpus, some
+TCG regions will be wasted. Not a huge deal (in most cases it will be
+2MB per unused vCPU), but a better fix might be to just honour -max_cpus
+for these boards. We might just not care enough though.
+
+		Emilio
+
+---8<---
+
+Subject: [PATCH] hw: define and use machine_class->max_cpus_override
+
+max_cpus needs to be an upper bound on the number of vCPUs
+initialized; otherwise TCG region initialization breaks.
+
+Some boards initialize a hard-coded number of vCPUs; mark this
+with machine_class->max_cpus_override so that max_cpus is
+set to machine_class->max_cpus when set.
+
+Update the ARM boards that hard-code max_cpus, thereby letting
+them boot again.
+
+Reported-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Emilio G. Cota <cota@braap.org>
+---
+ hw/arm/exynos4_boards.c | 2 ++
+ hw/arm/raspi.c          | 1 +
+ hw/arm/xlnx-zcu102.c    | 3 +++
+ include/hw/boards.h     | 3 ++-
+ vl.c                    | 4 ++++
+ 5 files changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/hw/arm/exynos4_boards.c b/hw/arm/exynos4_boards.c
+index f1441ec..7071505 100644
+--- a/hw/arm/exynos4_boards.c
++++ b/hw/arm/exynos4_boards.c
+@@ -189,6 +189,7 @@ static void nuri_class_init(ObjectClass *oc, void *data)
+     mc->desc = "Samsung NURI board (Exynos4210)";
+     mc->init = nuri_init;
+     mc->max_cpus = EXYNOS4210_NCPUS;
++    mc->max_cpus_override = 1;
+     mc->ignore_memory_transaction_failures = true;
+ }
+ 
+@@ -205,6 +206,7 @@ static void smdkc210_class_init(ObjectClass *oc, void *data)
+     mc->desc = "Samsung SMDKC210 board (Exynos4210)";
+     mc->init = smdkc210_init;
+     mc->max_cpus = EXYNOS4210_NCPUS;
++    mc->max_cpus_override = 1;
+     mc->ignore_memory_transaction_failures = true;
+ }
+ 
+diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+index 5941c9f..bf4eec3 100644
+--- a/hw/arm/raspi.c
++++ b/hw/arm/raspi.c
+@@ -167,6 +167,7 @@ static void raspi2_machine_init(MachineClass *mc)
+     mc->no_floppy = 1;
+     mc->no_cdrom = 1;
+     mc->max_cpus = BCM2836_NCPUS;
++    mc->max_cpus_override = 1;
+     mc->default_ram_size = 1024 * 1024 * 1024;
+     mc->ignore_memory_transaction_failures = true;
+ };
+diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
+index e2d15a1..f7e0004 100644
+--- a/hw/arm/xlnx-zcu102.c
++++ b/hw/arm/xlnx-zcu102.c
+@@ -185,6 +185,8 @@ static void xlnx_ep108_machine_class_init(ObjectClass *oc, void *data)
+     mc->block_default_type = IF_IDE;
+     mc->units_per_default_bus = 1;
+     mc->ignore_memory_transaction_failures = true;
++    mc->max_cpus = XLNX_ZYNQMP_NUM_APU_CPUS + XLNX_ZYNQMP_NUM_RPU_CPUS;
++    mc->max_cpus_override = 1;
+ }
+ 
+ static const TypeInfo xlnx_ep108_machine_init_typeinfo = {
+@@ -241,6 +243,7 @@ static void xlnx_zcu102_machine_class_init(ObjectClass *oc, void *data)
+     mc->units_per_default_bus = 1;
+     mc->ignore_memory_transaction_failures = true;
+     mc->max_cpus = XLNX_ZYNQMP_NUM_APU_CPUS + XLNX_ZYNQMP_NUM_RPU_CPUS;
++    mc->max_cpus_override = 1;
+ }
+ 
+ static const TypeInfo xlnx_zcu102_machine_init_typeinfo = {
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index 191a5b3..724be45 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -176,7 +176,8 @@ struct MachineClass {
+         no_sdcard:1,
+         has_dynamic_sysbus:1,
+         pci_allow_0_address:1,
+-        legacy_fw_cfg_order:1;
++        legacy_fw_cfg_order:1,
++        max_cpus_override:1;
+     int is_default;
+     const char *default_machine_opts;
+     const char *default_boot_order;
+diff --git a/vl.c b/vl.c
+index ec29909..b2f056a 100644
+--- a/vl.c
++++ b/vl.c
+@@ -4336,6 +4336,10 @@ int main(int argc, char **argv, char **envp)
+                      machine_class->name, machine_class->max_cpus);
+         exit(1);
+     }
++    /* some machines initialize a hard-coded number of cpus */
++    if (machine_class->max_cpus_override) {
++        max_cpus = machine_class->max_cpus;
++    }
+ 
+     /*
+      * Get the default machine options from the machine if it is not already
+-- 
+2.7.4
+

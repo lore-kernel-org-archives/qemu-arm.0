@@ -1,98 +1,98 @@
-Received: by 10.223.150.237 with SMTP id u100csp165284wrb;
-        Fri, 3 Nov 2017 05:38:24 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+RnB+0Th0dQwy2PoDHL/KhgzdbH6kmR6cWS2gyrWtraBNRH1EV3ZZQpvj1AJECUXPUyezUC
-X-Received: by 10.13.255.199 with SMTP id p190mr4598994ywf.180.1509712704442;
-        Fri, 03 Nov 2017 05:38:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1509712704; cv=none;
+Received: by 10.223.161.27 with SMTP id o27csp2053829wro;
+        Thu, 2 Nov 2017 05:53:34 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+SiYGXZlaLcb6hWUDejKDDqF38WPPRBB4r9/bOYOmrK1XQ6Hs8gxAugjzmuTY/VEd2Ja2n9
+X-Received: by 10.37.80.2 with SMTP id e2mr2142835ybb.449.1509627214881;
+        Thu, 02 Nov 2017 05:53:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1509627214; cv=none;
         d=google.com; s=arc-20160816;
-        b=XYb0Zu3WQ1cCqgZbHQhOAWF4P5gEVB8SiMM+34Ae/Az5khDikCTs703liugf2GSAbZ
-         +5BR32svr9CCnAH5HKZ42EYxuBRb2BkEKvb5RjMLAv1C+gACXi4dPF+j6NHSKMfykpc9
-         C4JSZXPnJ5LgiPNb17+sO0ZhH+D9OzJ5OUohoGVrfy863plT8IM9I242ODRZdt0e2zYN
-         CB1TCbtOxsC4FqLq6fB236n8+vD9PZrEMdRldfWebLqKTMxb933QLU6Rv4ljTGR7OUUb
-         +TxxxZ3prrE9YTCUX19jRZjwDrmsRJD1eH9NulF00MaBc6+p0O1iy15ASOt5hMVuM+4p
-         7fCg==
+        b=YS0Ke//2EWoLiEVx6PtEloivhGubuXotLZU7MZkvKdjedNqvFOGlOdQpYG7FjZjoS7
+         z+7FBgSQhrgwEXhm7I+761YjgZZevU83BpBoH1PAYfuyS1rKbbjx/zrfe3arKrY3J3xa
+         4u8mvUaYWOkepQpAr/FGUE+l/XP7heHaVae7Uvg/D2wKm/ARAzAUcb0d5MDPL1QB3r/2
+         rDNBk2GDkRvgxVJQAvCffVzZ3hIzQ8WEy2aIIM2erJU0xMUiWghw8Gb40Ea8YM5uONQR
+         CHMx9uM6N6G2gKH/Bzl/hAyyntFMKuw9UDvGLJ7EEeG/OYA6Ho8uSvaDrLbbezdoY3GB
+         wGSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dmarc-filter:dkim-signature:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=jZdScDr6Wf/iX2yl04N35dfCNdEPV3I0KnCB0e3/7a8=;
-        b=q0lvzfU7hCsE1ND1NKPj+fvcNIxACDomYI9HlHmfO8Q+98Vqys9xfLxrgvrdNobgpX
-         LYHbatTETk55QSQaVFS7pSMFoHVybHtgzz8iJjjs/jmgHyERrif1Ia/iOFYhrYhvrtv4
-         AK1Aoa1osNh7h6RkNHWXhLoBLZAdTX+XHeATIBdYW9UJhS9RvDGMbUZMIaJzDt/EkfP7
-         vAzlb5PHaAi3V3pZVbJQHUl9QTRnbNsLcu9g5EC62I3NMJT8tNaLnwv+DZT0wyA5R5RG
-         hYWgz8pFbhW6StJDiuFFLWYsARQC11T74IOijuIKNoa4/x9LAqPBDq7LrNWc0+tOsGW5
-         XGIA==
+        bh=d2XUgTMXsZ2/oZ2TvsIh7yItjTTuq4TZHua/jBW3lmY=;
+        b=DWmRH3Yrdh7ms+31BFgFDbJJnj4e68p7e7SJxsz2Iy6Dzgj6NclckaH0YawV2PvQQZ
+         zLGROlOGsnZwUS3nQRgYQ9Jy75l5hHm/bSS65K89FT8YHpvTOqrXF2hjM44qeWZHKx8H
+         IAeGlR9hnTmb9jg+bH2ukSnNAtZfmIXZuUqvkMKYhufdz+hTSq4RDah3nMz3/Xg7z4CB
+         YeAT+8cGR4XS9YlSY8Bf976JalyE/KdjJmKpvhK4ietQRcNZIYF/CBvQv5T8e7bT2Gl4
+         BoM/adOpVIxlfSsnkSkB+mSBPhgN0DboIHsKbtS5NTf0IjO55Q0pkYJMK4P/pCLUtyf7
+         n3Mg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=fmYsu5hd;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=fmYsu5hd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@linaro.org header.s=google header.b=jQEFUbL7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z8si483751ybg.276.2017.11.03.05.38.24
+        by mx.google.com with ESMTPS id u9si714339ybu.739.2017.11.02.05.53.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 03 Nov 2017 05:38:24 -0700 (PDT)
+        Thu, 02 Nov 2017 05:53:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=fmYsu5hd;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=fmYsu5hd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36520 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=jQEFUbL7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60227 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eAbEt-0000mz-Rb
-	for alex.bennee@linaro.org; Fri, 03 Nov 2017 08:38:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48045)
+	id 1eAF02-000256-CK
+	for alex.bennee@linaro.org; Thu, 02 Nov 2017 08:53:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44460)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shankerd@codeaurora.org>) id 1eAbEm-0000lf-15
-	for qemu-arm@nongnu.org; Fri, 03 Nov 2017 08:38:17 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1eAEzt-00024A-4p
+	for qemu-arm@nongnu.org; Thu, 02 Nov 2017 08:53:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shankerd@codeaurora.org>) id 1eAbEh-0002TH-1r
-	for qemu-arm@nongnu.org; Fri, 03 Nov 2017 08:38:16 -0400
-Received: from smtp.codeaurora.org ([198.145.29.96]:45730)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <shankerd@codeaurora.org>)
-	id 1eAbEg-0002Rj-Rp; Fri, 03 Nov 2017 08:38:10 -0400
-Received: by smtp.codeaurora.org (Postfix, from userid 1000)
-	id B92C66079D; Fri,  3 Nov 2017 12:38:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1509712688;
-	bh=bBmmM3HD1en8neI4O1iIadQqnIe6vXDU8LGHXGMDPvc=;
-	h=From:To:Cc:Subject:Date:From;
-	b=fmYsu5hdcB9nOCpUAPGcES7PVSuit1ZaWtUdm9jL9gxaNmXxUz6CgXokt+axjfDuV
-	jE71cM4683zUR+S1kqKUqOsyQsKllIhskKAEdAQbJmsSqK+dfSfkcCp5MRZlUDqQlp
-	Dys8rZycbm/eMzUTLfNpHgHPAPccjF4fxBej7US4=
-Received: from shankerd-ubuntu.qualcomm.com (i-global254.qualcomm.com
-	[199.106.103.254])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
-	(No client certificate requested)
-	(Authenticated sender: shankerd@smtp.codeaurora.org)
-	by smtp.codeaurora.org (Postfix) with ESMTPSA id E835360313;
-	Fri,  3 Nov 2017 12:38:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1509712688;
-	bh=bBmmM3HD1en8neI4O1iIadQqnIe6vXDU8LGHXGMDPvc=;
-	h=From:To:Cc:Subject:Date:From;
-	b=fmYsu5hdcB9nOCpUAPGcES7PVSuit1ZaWtUdm9jL9gxaNmXxUz6CgXokt+axjfDuV
-	jE71cM4683zUR+S1kqKUqOsyQsKllIhskKAEdAQbJmsSqK+dfSfkcCp5MRZlUDqQlp
-	Dys8rZycbm/eMzUTLfNpHgHPAPccjF4fxBej7US4=
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org E835360313
-Authentication-Results: pdx-caf-mail.web.codeaurora.org;
-	dmarc=none (p=none dis=none) header.from=codeaurora.org
-Authentication-Results: pdx-caf-mail.web.codeaurora.org;
-	spf=none smtp.mailfrom=shankerd@codeaurora.org
-From: Shanker Donthineni <shankerd@codeaurora.org>
-To: Eric Auger <eric.auger@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-Date: Fri,  3 Nov 2017 07:37:51 -0500
-Message-Id: <1509712671-16299-1-git-send-email-shankerd@codeaurora.org>
-X-Mailer: git-send-email 1.9.1
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 198.145.29.96
-Subject: [Qemu-arm] [PATCH] hw/intc/arm_gicv3_its: Fix the VM termination in
- vm_change_state_handler()
+	(envelope-from <peter.maydell@linaro.org>) id 1eAEzs-0007nr-8N
+	for qemu-arm@nongnu.org; Thu, 02 Nov 2017 08:53:25 -0400
+Received: from mail-wm0-x22e.google.com ([2a00:1450:400c:c09::22e]:48801)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1eAEzs-0007mx-2h
+	for qemu-arm@nongnu.org; Thu, 02 Nov 2017 08:53:24 -0400
+Received: by mail-wm0-x22e.google.com with SMTP id p75so10886748wmg.3
+	for <qemu-arm@nongnu.org>; Thu, 02 Nov 2017 05:53:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=d2XUgTMXsZ2/oZ2TvsIh7yItjTTuq4TZHua/jBW3lmY=;
+	b=jQEFUbL7VVvLzO2d0GbPrVXqGJYlXULRey1EptQncyJnkDPLWI/X9UxxVhBnc+M8/q
+	B5hCcYyUjlDmZL0RCwmlRADbPhdyGJoASELYOdPCo6ntrBC4i8kmdaxr4Z2+9lDupgZk
+	wGFoPHhJ6Y1XGWqDj6yDTJZ8Jjp26RzYEGaE8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=d2XUgTMXsZ2/oZ2TvsIh7yItjTTuq4TZHua/jBW3lmY=;
+	b=Eh3Ypa3rnVniFHa2CaYoZoHpc6K/IdcA1aFSFEUe8Qd8/GTSo8guyHihGtZcVLpFMz
+	VQNad0PhujApgSVpFaTJdZwOzhRi5siy7XC6HgjN+sXO5OO7wY1/1o2KKJ5e3DqwaZXb
+	wPTQhdpDvGQ3hdBLixdtLTT8taDTD4Od5eODEF8dp9YNdQDAGwjfq44j7UVbQ76tRYbn
+	VP1fDQbAn6F2ZbUpGVRIG3pS7Etw8EYOGETzYlhOq7bFH7y1gUgu/2qbTgNtPBO42ptQ
+	mUGV7GN3/kr29Kl1pLHQErglpOpss+E/CNnBiAxgAJG96QmAdtLlkSPHXpVJU2MPWdpe
+	CmMQ==
+X-Gm-Message-State: AMCzsaUm9ETZgr/TKlU54MOm8SdFKOYiMPi+sySxPKb7SZmzmbFj7VaT
+	nr560pIUTS+uchLTebrB24x/uki6pZq/4tt50wgkUw==
+X-Received: by 10.28.46.136 with SMTP id u130mr1427546wmu.127.1509627202756;
+	Thu, 02 Nov 2017 05:53:22 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.223.161.5 with HTTP; Thu, 2 Nov 2017 05:53:02 -0700 (PDT)
+In-Reply-To: <1508772937-21054-2-git-send-email-eric.auger@redhat.com>
+References: <1508772937-21054-1-git-send-email-eric.auger@redhat.com>
+	<1508772937-21054-2-git-send-email-eric.auger@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 2 Nov 2017 12:53:02 +0000
+Message-ID: <CAFEAcA81ogq6py71ejK7JD52A8LrQz1v92M1HZPCfPVBZy1vww@mail.gmail.com>
+To: Eric Auger <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::22e
+Subject: Re: [Qemu-arm] [RFC v2 1/4] hw/intc/arm_gicv3_its: Don't abort on
+ table save failure
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,50 +104,44 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
-	Shanker Donthineni <shankerd@codeaurora.org>
+Cc: Andrew Jones <drjones@redhat.com>, Vijay Kilari <vijay.kilari@gmail.com>,
+	Juan Quintela <quintela@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>, wu.wubin@huawei.com,
+	wanghaibin.wang@huawei.com, Christoffer Dall <christoffer.dall@linaro.org>,
+	eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8+PQZUFNtqKb
+X-TUID: dkeCcLWtgBWT
 
-The commit cddafd8f353d ("hw/intc/arm_gicv3_its: Implement state save
-/restore") breaks the backward compatibility with the older kernels
-where vITS save/restore support is not available. The vmstate function
-vm_change_state_handler() should not be registered if the running kernel
-doesn't support ITS save/restore feature. Otherwise VM instance will be
-killed whenever vmstate callback function is invoked.
+On 23 October 2017 at 16:35, Eric Auger <eric.auger@redhat.com> wrote:
+> The ITS is not fully properly reset at the moment. Caches are
+> not emptied.
+>
+> After a reset, in case we attempt to save the state before
+> the bound devices have registered their MSIs and after the
+> 1st level table has been allocated by the ITS driver
+> (device BASER is valid), the first level entries are still
+> invalid. If the device cache is not empty (devices registered
+> before the reset), vgic_its_save_device_tables fails with -EINVAL.
+> This causes a QEMU abort().
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Reported-by: wanghaibin <wanghaibin.wang@huawei.com>
+>
+> ---
+>
+> this patch would deserve being cc'ed stable (2.10)
+> This goes along with patches 1-5 of
+> [PATCH v5 00/10] vITS Migration fixes and reset, candidate
+> for being cc'ed stable
+> ---
 
-Observed a virtual machine shutdown with QEMU-2.10+linux-4.11 when testing
-the reboot command "virsh reboot <domain> --mode acpi" instead of reboot.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-KVM Error: 'KVM_SET_DEVICE_ATTR failed: Group 4 attr 0x00000000000001'
+We could/should put this patch into qemu now, right (it's
+the rest of the series that's RFC) ?
 
-Signed-off-by: Shanker Donthineni <shankerd@codeaurora.org>
----
- hw/intc/arm_gicv3_its_kvm.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/hw/intc/arm_gicv3_its_kvm.c b/hw/intc/arm_gicv3_its_kvm.c
-index 39903d5..9b00ce5 100644
---- a/hw/intc/arm_gicv3_its_kvm.c
-+++ b/hw/intc/arm_gicv3_its_kvm.c
-@@ -111,13 +111,13 @@ static void kvm_arm_its_realize(DeviceState *dev, Error **errp)
-             error_free(s->migration_blocker);
-             return;
-         }
-+    } else {
-+        qemu_add_vm_change_state_handler(vm_change_state_handler, s);
-     }
- 
-     kvm_msi_use_devid = true;
-     kvm_gsi_direct_mapping = false;
-     kvm_msi_via_irqfd_allowed = kvm_irqfds_enabled();
--
--    qemu_add_vm_change_state_handler(vm_change_state_handler, s);
- }
- 
- /**
--- 
-Qualcomm Datacenter Technologies, Inc. on behalf of the Qualcomm Technologies, Inc.
-Qualcomm Technologies, Inc. is a member of the Code Aurora Forum, a Linux Foundation Collaborative Project.
-
+thanks
+-- PMM

@@ -1,87 +1,93 @@
-Received: by 10.223.150.237 with SMTP id u100csp4169134wrb;
-        Fri, 10 Nov 2017 12:24:09 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMZOBcumxIbwPwSxA+qdPNASShEddWg4Tm8KISLpZ1OpeOSTb77Rx+ILZ/IlSGZmkxmCisO8
-X-Received: by 10.13.202.148 with SMTP id m142mr1110707ywd.246.1510345449103;
-        Fri, 10 Nov 2017 12:24:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510345449; cv=none;
+Received: by 10.223.161.27 with SMTP id o27csp2552893wro;
+        Thu, 2 Nov 2017 13:56:45 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+S/6C3gq8ESmGV8y9GTJE+CfY5Dy6gj6KIvRxykzk2whCMQ4j6HqbR3dpSyx6gYrrPo3mMj
+X-Received: by 10.129.161.199 with SMTP id y190mr3136221ywg.281.1509656205549;
+        Thu, 02 Nov 2017 13:56:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1509656205; cv=none;
         d=google.com; s=arc-20160816;
-        b=UNtcXRbomUOKTOs2T+Xe334k3xB7892/iL+V2bnVpUGyRXMIhaLoV4SkhRuyr0dDeg
-         dY5lHioESo/7vJz0fFmN7BSgTElqxoz+TklMLHindZZIyv0dyfJB+qJ3M2CHrXDaP5+u
-         ELL1/uS3f16WcBO469tfRrhtkXiRgrlexAwC1UsWd99X8h9ztbRPQACAoOArk9IMQHNt
-         16OY6kwPrnudBkOT/FCiQyKnGHMIQBOa+UrVIXvG1nkHPrKR7ybRp/PEgdmpZs1TP56Z
-         1jxJSc5Jq+lmvgvCw5MLaPZCbfTru9d+uwVoHM6115wbBb5yRJ/23axzw/hJbjoKymHQ
-         Gk6g==
+        b=VMAGiEPLVVHvN8AQsqp/sTdzZNMTWz89XY3gt23+x+PGItRYX6HJJGFhDqucbH4G7N
+         +WTP71L0220hM2aWNDYQYbnsKLcCSdlQF8AyDHAlfPheAFwSDDp9R/BOvbgK0CC9f9Vy
+         SXeFrgX1YTNLdW8ykX5JDMALH2cHc4/ryjYwM57fh+mn1AtgS+xF8nHcDHtO5lGA7mwb
+         6G7sFzKEtnVZawSle4EGXNQ2ZXv5kiXYaGQgRq+wF4JH2SE69sgIUYlGMWq2QiwQH+RA
+         zO+5ClDvfzP2c5swSumvpFOVSj5pnP7WttYIHskyVv91CeKtxebeWHsLYmzxXRvo1rsp
+         T46w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dmarc-filter
          :arc-authentication-results;
-        bh=VtBpEzYK//65qGEdKRDz1x8Wg3Mb6ixx8HWnf2QgSA0=;
-        b=GwxhEJogkeguBbhhbJtQOFnfwgWdBIcwPwCt5QPKWvzJSyEKkSe/PjBMy6sbaFnj+l
-         J9icZNPbe4oDYP7r/qbkLHAeZjiQ/IHo/ezImTxgBDLicvoQIxsNQqPvmIqPRQHq7Pfv
-         Mb2RCo2Pwql5/56e5w2cqCZZuXIBR/lQnjlV2mW17+JXBoBZPCxs4j0+bNrZLzXRCHtb
-         rdbEAIcnue09mmyYY3Mu/KdF1e1VnG9Bxp462g2xC3W9S2Nb7t079Y8pWrrd4rwEOadh
-         CjBrQsPKfV7iE0WYtVCC54bQaz2K9gzI0Idq9msnLqzAo10TIl3RZqe5nG8TEzh4+mmg
-         gonQ==
+        bh=Z2BtoQJh5eA2Bes5L/BvEkz2Yw//JbX/v5xJDzGrm+s=;
+        b=y5oyQG4Ap5689U6OYDlGZR1gtWFJ9b3uucgkGN/tQwJKeCygA8cVk/ogDb0VL+Hr/n
+         AHD+xEWROB9b3U20X7AJ9+5sdfktnRYf6jHcs7JXtdPlM5XoWq6ZDjFDV7Av44Z1Q1TK
+         8/h3aeSxNg4oE4kWB1IFvBdYeV63hciaAt5gznAteQW/Ffashl2vTNAx4/WQcarqzT5G
+         0Z8nIqMRwAzvOuFQ8m7T8Zl1o6kBScVSiJw5WZlXa5QWQNOIrJXYyks44hl13cTDLNgg
+         fa32uYGjdTumtKobrb32tYGNPD4NEJWVR22l6Huwa9ZzLk6d9rv5SxnCsnTzHqLXAqVd
+         NmLg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d19si2333394ybj.674.2017.11.10.12.24.08
+        by mx.google.com with ESMTPS id s66si956622ywg.310.2017.11.02.13.56.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 10 Nov 2017 12:24:09 -0800 (PST)
+        Thu, 02 Nov 2017 13:56:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43353 helo=lists.gnu.org)
+Received: from localhost ([::1]:33870 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eDFqS-0006Tr-Gt
-	for alex.bennee@linaro.org; Fri, 10 Nov 2017 15:24:08 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53328)
+	id 1eAMXd-0001hB-1Y
+	for alex.bennee@linaro.org; Thu, 02 Nov 2017 16:56:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41798)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1eDFqG-0006TX-7H
-	for qemu-arm@nongnu.org; Fri, 10 Nov 2017 15:23:57 -0500
+	(envelope-from <jsnow@redhat.com>) id 1eAMXW-0001fa-31
+	for qemu-arm@nongnu.org; Thu, 02 Nov 2017 16:56:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1eDFqC-0001L4-9Q
-	for qemu-arm@nongnu.org; Fri, 10 Nov 2017 15:23:56 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:33092)
+	(envelope-from <jsnow@redhat.com>) id 1eAMXO-0005zA-Nr
+	for qemu-arm@nongnu.org; Thu, 02 Nov 2017 16:56:33 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:58638)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1eDFqC-0001IQ-3N; Fri, 10 Nov 2017 15:23:52 -0500
+	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
+	id 1eAMXO-0005wY-Hc; Thu, 02 Nov 2017 16:56:30 -0400
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
 	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 49CB25D9FE;
-	Fri, 10 Nov 2017 20:23:50 +0000 (UTC)
-Received: from localhost (ovpn-116-2.gru2.redhat.com [10.97.116.2])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 29AF017A8F;
-	Fri, 10 Nov 2017 20:23:46 +0000 (UTC)
-Date: Fri, 10 Nov 2017 18:23:45 -0200
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: "Emilio G. Cota" <cota@braap.org>
-Message-ID: <20171110202345.GU3111@localhost.localdomain>
-References: <1510343626-25861-1-git-send-email-cota@braap.org>
-	<1510343626-25861-2-git-send-email-cota@braap.org>
+	by mx1.redhat.com (Postfix) with ESMTPS id 7E5F385547;
+	Thu,  2 Nov 2017 20:56:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 7E5F385547
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=jsnow@redhat.com
+Received: from [10.18.17.35] (dhcp-17-35.bos.redhat.com [10.18.17.35])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D89FE60618;
+	Thu,  2 Nov 2017 20:56:28 +0000 (UTC)
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+References: <1508784509-29377-1-git-send-email-thuth@redhat.com>
+From: John Snow <jsnow@redhat.com>
+Message-ID: <2aa7bf9c-cceb-fdf7-4eac-5d318c854518@redhat.com>
+Date: Thu, 2 Nov 2017 16:56:28 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1510343626-25861-2-git-send-email-cota@braap.org>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.9.1 (2017-09-22)
+In-Reply-To: <1508784509-29377-1-git-send-email-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Fri, 10 Nov 2017 20:23:50 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.28]);
+	Thu, 02 Nov 2017 20:56:29 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH for 2.11 1/5] qom: move
- CPUClass.tcg_initialize to a global
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/ide/ahci: Move allwinner
+ code into a separate file
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,38 +99,27 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	qemu-arm@nongnu.org, Marcel Apfelbaum <marcel@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cbYzMceyX3yS
+X-TUID: I0lV6Hrr//SJ
 
-On Fri, Nov 10, 2017 at 02:53:42PM -0500, Emilio G. Cota wrote:
-> 55c3cee ("qom: Introduce CPUClass.tcg_initialize", 2017-10-24)
-> introduces a per-CPUClass bool that we check so that the target CPU
-> is initialized for TCG only once. This works well except when
-> we end up creating more than one CPUClass, in which case we end
-> up incorrectly initializing TCG more than once, i.e. once for
-> each CPUClass.
-> 
-> This can be replicated with:
->   $ aarch64-softmmu/qemu-system-aarch64 -machine xlnx-zcu102 -smp 6 \
->       -global driver=xlnx,,zynqmp,property=has_rpu,value=on
-> In this case the class name of the "RPUs" is prefixed by "cortex-r5-",
-> whereas the "regular" CPUs are prefixed by "cortex-a53-". This
-> results in two CPUClass instances being created.
-> 
-> Fix it by introducing a static variable, so that only the first
-> target CPU being initialized will initialize the target-dependent
-> part of TCG, regardless of CPUClass instances.
-> 
-> Fixes: 55c3ceef61fcf06fc98ddc752b7cce788ce7680b
-> Signed-off-by: Emilio G. Cota <cota@braap.org>
 
-Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
 
--- 
-Eduardo
+On 10/23/2017 02:48 PM, Thomas Huth wrote:
+> The allwinner code is only needed for the allwinner board (for which
+> we also have a separate CONFIG_ALLWINNER_A10 config switch), so it
+> does not make sense that we compile this for all the other boards
+> that need AHCI, too. Let's move it to a separate file that is only
+> compiled when CONFIG_ALLWINNER_A10 is set.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+
+Belated, as it's already merged to master, but:
+
+Thanks, applied to my IDE tree:
+
+https://github.com/jnsnow/qemu/commits/ide
+https://github.com/jnsnow/qemu.git
+
+--js

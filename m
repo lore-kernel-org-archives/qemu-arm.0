@@ -1,422 +1,190 @@
-Received: by 10.223.161.27 with SMTP id o27csp3866903wro;
-        Tue, 31 Oct 2017 08:48:40 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+QH4xjHA7dD2MpxEcYW/OFMR4V9IREWwe3W1SN3wyHkX0awi8as9cz/sVhDewMAQveQ3G0v
-X-Received: by 10.129.169.69 with SMTP id g66mr1504355ywh.501.1509464920182;
-        Tue, 31 Oct 2017 08:48:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1509464920; cv=none;
+Received: by 10.223.161.27 with SMTP id o27csp1573268wro;
+        Wed, 1 Nov 2017 20:32:30 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+QdCnakcp2/4141cIGHLJ9Hxctf6rR5fc+WTiYQy3MwPSTWvuG8NgpU+1Vx5o8W9E0v/jJs
+X-Received: by 10.37.7.193 with SMTP id 184mr1378463ybh.413.1509593550161;
+        Wed, 01 Nov 2017 20:32:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1509593550; cv=none;
         d=google.com; s=arc-20160816;
-        b=QOBT7x6IIs7whzxbSnlYxroZMJMgSJLGfYZfwqp3RcACb8V6uJAyBXy634xQdzAWMJ
-         qxDW75VgcLVK2DrQwZVnL6hrIQjRxZ4qG/jEckxRb8H+LRQsBTGDfAjGmXrGZtwgk1OI
-         EVWSJCGhjMJaST3/TLQPk/gfcoc8eI9E7x8tBnoS+0+SSZ37N5j1OxMP17vNO2vmj1UX
-         JX8NO4oojMksZnJBhdWHx1C6nV6Nz0O1c5HMQhOiaJEEuAmz7k/z4rOPtW1E03pKNa56
-         0aHxUxbGt4e48rM04T36sy8HCqeNZScKXs+Qbl+xORGZeYdj48W6xUUE/Fbhc1gYy/hO
-         DyvQ==
+        b=XgKvk2Ab+GZd1vcIekbWZDkLAKudkdnbZXC6i9xL5RukvWHW4U+thivPbiQLHuPchP
+         MfgZxBBTRoTGB4EkRPAvXVqgCyMSgvYY06l5qEqPJHfY3Li+hdQj0OntsrGhKsAv0Y/j
+         sFWz4k3HlBhQw8qZDS+dZq4yp2TspJXtpKOFs8rlH1sqeMBPdb+qbKZxda4b/8t70bSB
+         CaGcyJHhqSo1mZzhLLMq0m+c3Ogp+lJU1oBks0YcanPT6NBR75zzBUAiweTQBPepM1Ld
+         urCYtvkXY+bsQOdBXGwfDCyLdEcREXSTBfV2ysyzHeKh1ozEi7AvU7XKPKpkLMcCHQMx
+         NmVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:references
-         :in-reply-to:message-id:date:to:from:arc-authentication-results;
-        bh=LNjQkCbu2fe5gCmR/UcRWsR1tKHHmAgvlC5e2A/Tzic=;
-        b=TxOmvzh2mlMXBVUpd9KLrLyBdxCImPyvPsq2xTYlLD4861Oms3fPZoFF97qnz3g/0k
-         O89v+7PJT95rzO0dVJ3RCjBQ3ZXSfEYB6QwV8lDvxKSAUz3qfIzfMLRBn81C9Begx+mY
-         L4CzaxlHuox6o/8uVkTGq/vLi3Lm5r1xHeCkJ+gRAE1oTpVjE8YsRzwigSxWGGLMseT3
-         h4L4c9olUdXnT5W6zK6f+j15x0lhcGifsaEX6AappAaAb57zTDa4BVewDl1iAdf/8Yx0
-         +jtSxEin/6krAt13XEDTpyYdbP3x3VoT4VfEFihrrZ0veKoyaobDknQ7L0uRkOZyMPGD
-         CYew==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=VIn995Wm5IAUN8Zop0qd40mtSU6Lfamu9rm1CsgE9PE=;
+        b=emsRG7m7U2cQjEClaIRiivadXJ7t0AAureRGtvB/j3UtJAKSLEqruSgFTuqS3aFy+8
+         oXek69xX6Cd3XkUjDwOOQ3cIJebrJH+FLSYWWsKCMAWTNhzsg8mEhyIiHa7AWrNmZ6it
+         mYUmXJECwXzJfT6MgDqO5UPtgVkKPIw4/ogeTEv2ZwLaMYPcIk0Tyv6abhQoPmcdTCnf
+         rLancIsqi4kOxWxWREBQl3olrh7FPILuVNdLsCxE3pBQ/sNfmsfFlGTKgCizVR9Vqqse
+         mpEJXESUwQJsqhp9aHy4RuYIdwwFIyqQ0Qsgo9irD6zA8p+L1ymrA5MXNtKFEOumy7cb
+         9t8A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lLYYk/Qk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e135si405184ybf.294.2017.10.31.08.48.39
+        by mx.google.com with ESMTPS id e69si502683ybb.713.2017.11.01.20.32.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 31 Oct 2017 08:48:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 01 Nov 2017 20:32:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46282 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lLYYk/Qk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:58516 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e9YmN-0003QU-Lm
-	for alex.bennee@linaro.org; Tue, 31 Oct 2017 11:48:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46854)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eA6F3-0007Nt-LI
+	for alex.bennee@linaro.org; Wed, 01 Nov 2017 23:32:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60919)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Michael.Nawrocki@gtri.gatech.edu>)
-	id 1e9YjV-0001Tt-C8
-	for qemu-devel@nongnu.org; Tue, 31 Oct 2017 11:45:43 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eA6Eo-0007H7-8b
+	for qemu-arm@nongnu.org; Wed, 01 Nov 2017 23:32:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Michael.Nawrocki@gtri.gatech.edu>)
-	id 1e9YjT-0007Yn-EJ
-	for qemu-devel@nongnu.org; Tue, 31 Oct 2017 11:45:41 -0400
-Received: from relay2.gtri.gatech.edu ([130.207.199.168]:52382)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <Michael.Nawrocki@gtri.gatech.edu>)
-	id 1e9YjT-0007WZ-A3
-	for qemu-devel@nongnu.org; Tue, 31 Oct 2017 11:45:39 -0400
-X-ASG-Debug-ID: 1509464737-0768e41b30561b70001-jgbH7p
-Received: from kiawah.core.gtri.org (kiawah.core.gtri.org [10.41.31.71]) by
-	relay2.gtri.gatech.edu with ESMTP id UQeylM5lNNk0gP6e
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA256 bits=128
-	verify=NO); Tue, 31 Oct 2017 11:45:37 -0400 (EDT)
-X-Barracuda-Envelope-From: Michael.Nawrocki@gtri.gatech.edu
-Received: from tybee.core.gtri.org (10.41.1.49) by kiawah.core.gtri.org
-	(10.41.31.71) with Microsoft SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1034.26;
-	Tue, 31 Oct 2017 11:45:37 -0400
-Received: from tia-mxn-d01.ctisl.gtri.org (130.207.205.130) by
-	tybee.core.gtri.org (10.41.1.49) with Microsoft SMTP Server
-	(version=TLS1_2, 
-	cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1034.26;
-	Tue, 31 Oct 2017 11:45:37 -0400
-From: Mike Nawrocki <michael.nawrocki@gtri.gatech.edu>
-To: <qemu-devel@nongnu.org>, <qemu-block@nongnu.org>, <qemu-arm@nongnu.org>,
-	<qemu-ppc@nongnu.org>
-Date: Tue, 31 Oct 2017 11:44:06 -0400
-X-ASG-Orig-Subj: [PATCH 1/2] Add 8-byte access to AMD CFI devices
-Message-ID: <20171031154407.4184-2-michael.nawrocki@gtri.gatech.edu>
-X-Mailer: git-send-email 2.14.2
-In-Reply-To: <20171031154407.4184-1-michael.nawrocki@gtri.gatech.edu>
-References: <20171031154407.4184-1-michael.nawrocki@gtri.gatech.edu>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eA6En-0006P9-2A
+	for qemu-arm@nongnu.org; Wed, 01 Nov 2017 23:32:14 -0400
+Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:47557)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eA6Eh-0006NI-IM; Wed, 01 Nov 2017 23:32:07 -0400
+Received: by mail-qt0-x244.google.com with SMTP id z50so5137789qtj.4;
+	Wed, 01 Nov 2017 20:32:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:references:cc:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=VIn995Wm5IAUN8Zop0qd40mtSU6Lfamu9rm1CsgE9PE=;
+	b=lLYYk/QkxnTtJbKL5MIyJc4vVhNy+smhFVelsj3Mu47AZVlzO6BV/XImsNgKY6DXdX
+	JurksRhNX6FMT7ucbIL9Mmskik6JINu1FPaWy1wd6vyZjidYF+PeGT38SguRyfCHaj5F
+	mu4u5qGLnz/wdrF2gaJ1s3zEiKUnVl/7g9044fXIEdOvj8hylhfOFcqyG3tLeoEPFxvZ
+	qDvZ+B57lU9cvCdJo9FTr3AhYHxNecahMfiNyjQOaJXAX2cl12WMJh6RzLXZ/Y9GRfQq
+	BQoQhW4DDpNSPfGM6zdybBxMW19YPocsHTsYIpMUxh30PBPhMcbzuiqPJn00gyR7DMus
+	QKlA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:references:cc:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=VIn995Wm5IAUN8Zop0qd40mtSU6Lfamu9rm1CsgE9PE=;
+	b=uZ0oDBBGTYJ1iOXhN/tdwhkjVd0MLnJSLY7ltCHxNVdHcsST2BmfliA2OLxDhtYiVv
+	7suhcB86vguuRqreBMdp2xh4leEKlqe6k6GMdNEfVM5sANuhqsl/jACEHUvv23nNQhw/
+	23moGd7UtjEwUscMT8PP1txu5RRV5pvQRvpEwwArE5biwBX8JVwBcH3cdYfSD5mOfwMS
+	FRCoEbXh4yj7CjD+8bKdhSi6ixWh1SIbi/ClHL1eQ82a+m3Gg/FkTqc5De6o4TBWhfXL
+	tux9GpW21XH84XHtup52jDJ4XMk0e6PY98b9KXK1tyIsGteMjU+PXcnbnXFrQ4MNyvzn
+	D9qg==
+X-Gm-Message-State: AMCzsaWoCb+4XO5YLgdcEUWrViV6ECxp771u/inHpLbODcUUEt1KFzCw
+	ae5cxfvw3veGkMFgOL+dLdIQzY9f
+X-Received: by 10.200.53.200 with SMTP id l8mr3247701qtb.49.1509593526840;
+	Wed, 01 Nov 2017 20:32:06 -0700 (PDT)
+Received: from [192.168.1.240] ([181.93.89.178])
+	by smtp.gmail.com with ESMTPSA id s5sm1458286qkc.70.2017.11.01.20.32.04
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 01 Nov 2017 20:32:06 -0700 (PDT)
+To: Domen Puncer Kugler <domen@cba.si>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	Konrad Frederic <fred.konrad@greensocs.com>
+References: <CAB1b2sgGrJbpC5vDMJ2D2kPms_4cGmyfMjpcww4nj6rfNZaF9Q@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <70579e6d-0fb2-c6d8-9541-0eea53272db2@amsat.org>
+Date: Thu, 2 Nov 2017 00:31:57 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.4.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [130.207.205.130]
-X-ClientProxiedBy: apatlisdmfe4.core.gtri.org (10.41.47.104) To
-	tybee.core.gtri.org (10.41.1.49)
-X-Barracuda-Connect: kiawah.core.gtri.org[10.41.31.71]
-X-Barracuda-Start-Time: 1509464737
-X-Barracuda-Encrypted: ECDHE-RSA-AES128-SHA256
-X-Barracuda-URL: https://130.207.199.168:443/cgi-mod/mark.cgi
-X-Virus-Scanned: by bsmtpd at gtri.gatech.edu
-X-Barracuda-Scan-Msg-Size: 10491
-X-Barracuda-BRTS-Status: 1
-X-Barracuda-Spam-Score: 0.00
-X-Barracuda-Spam-Status: No, SCORE=0.00 using global scores of TAG_LEVEL=1000.0
-	QUARANTINE_LEVEL=1000.0 KILL_LEVEL=1000.0 tests=
-X-Barracuda-Spam-Report: Code version 3.2, rules version 3.2.3.44359
-	Rule breakdown below
-	pts rule name              description
-	---- ----------------------
-	--------------------------------------------------
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 130.207.199.168
-Subject: [Qemu-devel] [PATCH 1/2] Add 8-byte access to AMD CFI devices
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <CAB1b2sgGrJbpC5vDMJ2D2kPms_4cGmyfMjpcww4nj6rfNZaF9Q@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::244
+Subject: Re: [Qemu-arm] 
+ =?utf-8?q?=5BQemu-trivial=5D_=5BPATCH=5D_hw/timer/arm?=
+ =?utf-8?q?v7m=5Fsystick=3A_Fix_default_system=5Fclock=5Fscale=2E_Resolves?=
+ =?utf-8?q?_SIGFPE_divide_by_zero=2E=EF=BF=BC?=
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: kwolf@redhat.com, Mike Nawrocki <michael.nawrocki@gtri.gatech.edu>,
-	magnus.damm@gmail.com, alistair.francis@xilinx.com,
-	michael@walle.cc, jan.kiszka@web.de, edgar.iglesias@gmail.com,
-	mreitz@redhat.com, david@gibson.dropbear.id.au
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kHh+kRgLGvPR
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-trivial@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: q4+6WkW6PZdL
 
-This adds 8-byte wide access support to AMD CFI flash devices.
-Additionally, it migrates the MMIO operations from old_mmio to the new
-API.
+Hi Domen,
 
-Signed-off-by: Mike Nawrocki <michael.nawrocki@gtri.gatech.edu>
----
- hw/block/pflash_cfi02.c | 172 +++++++++++++++++++++++-------------------------
- 1 file changed, 81 insertions(+), 91 deletions(-)
+Please have a look at the Contribute/SubmitAPatch guidelines for QEMU,
+in particular about CC'ing the maintainers so your patch won't get lost:
 
-diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
-index c81ddd3a99..0aed0ab218 100644
---- a/hw/block/pflash_cfi02.c
-+++ b/hw/block/pflash_cfi02.c
-@@ -18,7 +18,7 @@
-  */
- 
- /*
-- * For now, this code can emulate flashes of 1, 2 or 4 bytes width.
-+ * For now, this code can emulate flashes of 1, 2, 4, or 8 bytes width.
-  * Supported commands/modes are:
-  * - flash read
-  * - flash write
-@@ -138,11 +138,11 @@ static void pflash_timer (void *opaque)
-     pfl->cmd = 0;
- }
- 
--static uint32_t pflash_read (pflash_t *pfl, hwaddr offset,
--                             int width, int be)
-+static uint64_t pflash_read(pflash_t *pfl, hwaddr offset,
-+                            int width, int be)
- {
-     hwaddr boff;
--    uint32_t ret;
-+    uint64_t ret;
-     uint8_t *p;
- 
-     DPRINTF("%s: offset " TARGET_FMT_plx "\n", __func__, offset);
-@@ -158,6 +158,8 @@ static uint32_t pflash_read (pflash_t *pfl, hwaddr offset,
-         boff = boff >> 1;
-     else if (pfl->width == 4)
-         boff = boff >> 2;
-+    else if (pfl->width == 8)
-+        boff = boff >> 3;
-     switch (pfl->cmd) {
-     default:
-         /* This should never happen : reset state & treat it as a read*/
-@@ -200,6 +202,27 @@ static uint32_t pflash_read (pflash_t *pfl, hwaddr offset,
-             }
- //            DPRINTF("%s: data offset %08x %08x\n", __func__, offset, ret);
-             break;
-+        case 8:
-+            if (be) {
-+                ret = (uint64_t)p[offset] << 56;
-+                ret |= (uint64_t)p[offset + 1] << 48;
-+                ret |= (uint64_t)p[offset + 2] << 40;
-+                ret |= (uint64_t)p[offset + 3] << 32;
-+                ret |= (uint64_t)p[offset + 4] << 24;
-+                ret |= (uint64_t)p[offset + 5] << 16;
-+                ret |= (uint64_t)p[offset + 6] << 8;
-+                ret |= (uint64_t)p[offset + 7];
-+            } else {
-+                ret = (uint64_t)p[offset];
-+                ret |= (uint64_t)p[offset + 1] << 8;
-+                ret |= (uint64_t)p[offset + 2] << 16;
-+                ret |= (uint64_t)p[offset + 3] << 24;
-+                ret |= (uint64_t)p[offset + 4] << 32;
-+                ret |= (uint64_t)p[offset + 5] << 40;
-+                ret |= (uint64_t)p[offset + 6] << 48;
-+                ret |= (uint64_t)p[offset + 7] << 56;
-+            }
-+            break;
-         }
-         break;
-     case 0x90:
-@@ -222,14 +245,15 @@ static uint32_t pflash_read (pflash_t *pfl, hwaddr offset,
-         default:
-             goto flash_read;
-         }
--        DPRINTF("%s: ID " TARGET_FMT_plx " %x\n", __func__, boff, ret);
-+        DPRINTF("%s: ID " TARGET_FMT_plx " %" PRIx64 "\n", __func__,
-+                boff, ret);
-         break;
-     case 0xA0:
-     case 0x10:
-     case 0x30:
-         /* Status register read */
-         ret = pfl->status;
--        DPRINTF("%s: status %x\n", __func__, ret);
-+        DPRINTF("%s: status %" PRIx64 "\n", __func__, ret);
-         /* Toggle bit 6 */
-         pfl->status ^= 0x40;
-         break;
-@@ -246,8 +270,7 @@ static uint32_t pflash_read (pflash_t *pfl, hwaddr offset,
- }
- 
- /* update flash content on disk */
--static void pflash_update(pflash_t *pfl, int offset,
--                          int size)
-+static void pflash_update(pflash_t *pfl, int offset, int size)
- {
-     int offset_end;
-     if (pfl->blk) {
-@@ -260,8 +283,8 @@ static void pflash_update(pflash_t *pfl, int offset,
-     }
- }
- 
--static void pflash_write (pflash_t *pfl, hwaddr offset,
--                          uint32_t value, int width, int be)
-+static void pflash_write(pflash_t *pfl, hwaddr offset,
-+                         uint64_t value, int width, int be)
- {
-     hwaddr boff;
-     uint8_t *p;
-@@ -275,17 +298,19 @@ static void pflash_write (pflash_t *pfl, hwaddr offset,
- #endif
-         goto reset_flash;
-     }
--    DPRINTF("%s: offset " TARGET_FMT_plx " %08x %d %d\n", __func__,
--            offset, value, width, pfl->wcycle);
-+    DPRINTF("%s: offset " TARGET_FMT_plx " %08" PRIx64 " %d %d\n",
-+            __func__, offset, value, width, pfl->wcycle);
-     offset &= pfl->chip_len - 1;
- 
--    DPRINTF("%s: offset " TARGET_FMT_plx " %08x %d\n", __func__,
--            offset, value, width);
-+    DPRINTF("%s: offset " TARGET_FMT_plx " %08" PRIx64 " %d\n",
-+            __func__, offset, value, width);
-     boff = offset & (pfl->sector_len - 1);
-     if (pfl->width == 2)
-         boff = boff >> 1;
-     else if (pfl->width == 4)
-         boff = boff >> 2;
-+    else if (pfl->width == 8)
-+        boff = boff >> 3;
-     switch (pfl->wcycle) {
-     case 0:
-         /* Set the device in I/O access mode if required */
-@@ -346,8 +371,8 @@ static void pflash_write (pflash_t *pfl, hwaddr offset,
-             /* We need another unlock sequence */
-             goto check_unlock0;
-         case 0xA0:
--            DPRINTF("%s: write data offset " TARGET_FMT_plx " %08x %d\n",
--                    __func__, offset, value, width);
-+            DPRINTF("%s: write data offset " TARGET_FMT_plx
-+                    " %08" PRIx64 " %d\n", __func__, offset, value, width);
-             p = pfl->storage;
-             if (!pfl->ro) {
-                 switch (width) {
-@@ -379,6 +404,28 @@ static void pflash_write (pflash_t *pfl, hwaddr offset,
-                     }
-                     pflash_update(pfl, offset, 4);
-                     break;
-+                case 8:
-+                    if (be) {
-+                        p[offset] &= value >> 56;
-+                        p[offset + 1] &= value >> 48;
-+                        p[offset + 2] &= value >> 40;
-+                        p[offset + 3] &= value >> 32;
-+                        p[offset + 4] &= value >> 24;
-+                        p[offset + 5] &= value >> 16;
-+                        p[offset + 6] &= value >> 8;
-+                        p[offset + 7] &= value;
-+                    } else {
-+                        p[offset] &= value;
-+                        p[offset + 1] &= value >> 8;
-+                        p[offset + 2] &= value >> 16;
-+                        p[offset + 3] &= value >> 24;
-+                        p[offset + 4] &= value >> 32;
-+                        p[offset + 5] &= value >> 40;
-+                        p[offset + 6] &= value >> 48;
-+                        p[offset + 7] &= value >> 56;
-+                    }
-+                    pflash_update(pfl, offset, 8);
-+                    break;
-                 }
-             }
-             pfl->status = 0x00 | ~(value & 0x80);
-@@ -494,103 +541,46 @@ static void pflash_write (pflash_t *pfl, hwaddr offset,
-     pfl->cmd = 0;
- }
- 
--
--static uint32_t pflash_readb_be(void *opaque, hwaddr addr)
--{
--    return pflash_read(opaque, addr, 1, 1);
--}
--
--static uint32_t pflash_readb_le(void *opaque, hwaddr addr)
--{
--    return pflash_read(opaque, addr, 1, 0);
--}
--
--static uint32_t pflash_readw_be(void *opaque, hwaddr addr)
-+static uint64_t pflash_read_le(void *opaque, hwaddr addr, unsigned size)
- {
-     pflash_t *pfl = opaque;
--
--    return pflash_read(pfl, addr, 2, 1);
-+    return pflash_read(pfl, addr, size, 0);
- }
- 
--static uint32_t pflash_readw_le(void *opaque, hwaddr addr)
-+static uint64_t pflash_read_be(void *opaque, hwaddr addr, unsigned size)
- {
-     pflash_t *pfl = opaque;
--
--    return pflash_read(pfl, addr, 2, 0);
-+    return pflash_read(pfl, addr, size, 1);
- }
- 
--static uint32_t pflash_readl_be(void *opaque, hwaddr addr)
-+static void pflash_write_le(void *opaque, hwaddr addr, uint64_t data,
-+                            unsigned size)
- {
-     pflash_t *pfl = opaque;
--
--    return pflash_read(pfl, addr, 4, 1);
-+    pflash_write(pfl, addr, data, size, 0);
- }
- 
--static uint32_t pflash_readl_le(void *opaque, hwaddr addr)
-+static void pflash_write_be(void *opaque, hwaddr addr, uint64_t data,
-+                            unsigned size)
- {
-     pflash_t *pfl = opaque;
--
--    return pflash_read(pfl, addr, 4, 0);
--}
--
--static void pflash_writeb_be(void *opaque, hwaddr addr,
--                             uint32_t value)
--{
--    pflash_write(opaque, addr, value, 1, 1);
--}
--
--static void pflash_writeb_le(void *opaque, hwaddr addr,
--                             uint32_t value)
--{
--    pflash_write(opaque, addr, value, 1, 0);
--}
--
--static void pflash_writew_be(void *opaque, hwaddr addr,
--                             uint32_t value)
--{
--    pflash_t *pfl = opaque;
--
--    pflash_write(pfl, addr, value, 2, 1);
--}
--
--static void pflash_writew_le(void *opaque, hwaddr addr,
--                             uint32_t value)
--{
--    pflash_t *pfl = opaque;
--
--    pflash_write(pfl, addr, value, 2, 0);
--}
--
--static void pflash_writel_be(void *opaque, hwaddr addr,
--                             uint32_t value)
--{
--    pflash_t *pfl = opaque;
--
--    pflash_write(pfl, addr, value, 4, 1);
--}
--
--static void pflash_writel_le(void *opaque, hwaddr addr,
--                             uint32_t value)
--{
--    pflash_t *pfl = opaque;
--
--    pflash_write(pfl, addr, value, 4, 0);
-+    pflash_write(pfl, addr, data, size, 1);
- }
- 
- static const MemoryRegionOps pflash_cfi02_ops_be = {
--    .old_mmio = {
--        .read = { pflash_readb_be, pflash_readw_be, pflash_readl_be, },
--        .write = { pflash_writeb_be, pflash_writew_be, pflash_writel_be, },
--    },
-+    .read = pflash_read_be,
-+    .write = pflash_write_be,
-     .endianness = DEVICE_NATIVE_ENDIAN,
-+    .valid.max_access_size = 8,
-+    .impl.max_access_size = 8,
- };
- 
- static const MemoryRegionOps pflash_cfi02_ops_le = {
--    .old_mmio = {
--        .read = { pflash_readb_le, pflash_readw_le, pflash_readl_le, },
--        .write = { pflash_writeb_le, pflash_writew_le, pflash_writel_le, },
--    },
-+    .read = pflash_read_le,
-+    .write = pflash_write_le,
-     .endianness = DEVICE_NATIVE_ENDIAN,
-+    .valid.max_access_size = 8,
-+    .impl.max_access_size = 8,
- };
- 
- static void pflash_cfi02_realize(DeviceState *dev, Error **errp)
--- 
-2.14.2
+https://wiki.qemu.org/Contribute/SubmitAPatch#CC_the_relevant_maintainer
 
+$ ./scripts/get_maintainer.pl -f hw/timer/armv7m_systick.c
+Peter Maydell <peter.maydell@linaro.org> (maintainer:ARM cores)
+qemu-arm@nongnu.org (open list:ARM cores)
+
+^ Cc'ing them how.
+
+On 11/01/2017 05:59 PM, Domen Puncer Kugler wrote:
+> Fix default system_clock_scale. Resolves SIGFPE divide by zero.
+> 
+> Netduino platform code does not provide a way to set
+> system_clock_scale, so it remains 0.
+> This causes a divide by zero, when emulated code asks systick for
+> current timer value:
+>     (s->tick - (t + 1)) / systick_scale(s)) + 1;
+> Patch fixes this by providing a default value.
+
+See the thread around this reply:
+http://lists.nongnu.org/archive/html/qemu-devel/2017-06/msg06678.html
+
+> 
+> Also replaces a magic number an with already defined constant:
+>     #define SYSTICK_SCALE 1000ULL
+> 
+> 
+> Signed-off-by: Domen Puncer Kugler <domen@cba.si>
+> ---
+> 
+> diff --git a/hw/timer/armv7m_systick.c b/hw/timer/armv7m_systick.c
+> index df8d2804b3..651f8030a8 100644
+> --- a/hw/timer/armv7m_systick.c
+> +++ b/hw/timer/armv7m_systick.c
+> @@ -25,15 +25,15 @@
+>  #define SYSTICK_CLKSOURCE (1 << 2)
+>  #define SYSTICK_COUNTFLAG (1 << 16)
+> 
+> -int system_clock_scale;
+> +uint64_t system_clock_scale = SYSTICK_SCALE;
+> 
+>  /* Conversion factor from qemu timer to SysTick frequencies.  */
+> -static inline int64_t systick_scale(SysTickState *s)
+> +static inline uint64_t systick_scale(SysTickState *s)
+>  {
+>      if (s->control & SYSTICK_CLKSOURCE) {
+>          return system_clock_scale;
+>      } else {
+> -        return 1000;
+> +        return SYSTICK_SCALE;
+>      }
+>  }
+> 
+
+Regards,
+
+Phil.

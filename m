@@ -1,116 +1,70 @@
-Received: by 10.223.161.27 with SMTP id o27csp1573268wro;
-        Wed, 1 Nov 2017 20:32:30 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+QdCnakcp2/4141cIGHLJ9Hxctf6rR5fc+WTiYQy3MwPSTWvuG8NgpU+1Vx5o8W9E0v/jJs
-X-Received: by 10.37.7.193 with SMTP id 184mr1378463ybh.413.1509593550161;
-        Wed, 01 Nov 2017 20:32:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1509593550; cv=none;
+Received: by 10.223.161.27 with SMTP id o27csp1967486wro;
+        Thu, 2 Nov 2017 04:33:12 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+Tj4GmNw/5nw1nhGDN3QeV/u6DkXLgWHwfOu9Z6q5D0OMV1iQWDPCORfCNRqu7ytVs6IeFZ
+X-Received: by 10.37.27.132 with SMTP id b126mr1912909ybb.329.1509622392580;
+        Thu, 02 Nov 2017 04:33:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1509622392; cv=none;
         d=google.com; s=arc-20160816;
-        b=XgKvk2Ab+GZd1vcIekbWZDkLAKudkdnbZXC6i9xL5RukvWHW4U+thivPbiQLHuPchP
-         MfgZxBBTRoTGB4EkRPAvXVqgCyMSgvYY06l5qEqPJHfY3Li+hdQj0OntsrGhKsAv0Y/j
-         sFWz4k3HlBhQw8qZDS+dZq4yp2TspJXtpKOFs8rlH1sqeMBPdb+qbKZxda4b/8t70bSB
-         CaGcyJHhqSo1mZzhLLMq0m+c3Ogp+lJU1oBks0YcanPT6NBR75zzBUAiweTQBPepM1Ld
-         urCYtvkXY+bsQOdBXGwfDCyLdEcREXSTBfV2ysyzHeKh1ozEi7AvU7XKPKpkLMcCHQMx
-         NmVg==
+        b=S0F6cQaAN3o0evvwOiRpIyJxihEbFLY/jrqNI75O8hViryq0IujeLhWqntjveefiTn
+         IWSlLbwh0NzrkMCk/ruHu7r+XvdD2KoRaTgFsbrUAZcP5FtXWGPT2OAZGB6KB68uMzir
+         Jrsc1/gz47jMSFsZ9Jn46B29CACQDbhsjztyHtlpe9RmQyONdKjYGOHCtVvJ+Ep0rcLc
+         IYxpvE8gpHDhiMleN0+UPzQ+jspzJrW3pkJoRcPWXOTGyw+/ht+85jW0PkNWsJS8TByk
+         vul8mfQAoGvFYbdAmNRQy0iPpXifEwHtNtmDnDvYLwvr09IZ5gpu/38zUaN97ZdOOqPM
+         Yupw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=VIn995Wm5IAUN8Zop0qd40mtSU6Lfamu9rm1CsgE9PE=;
-        b=emsRG7m7U2cQjEClaIRiivadXJ7t0AAureRGtvB/j3UtJAKSLEqruSgFTuqS3aFy+8
-         oXek69xX6Cd3XkUjDwOOQ3cIJebrJH+FLSYWWsKCMAWTNhzsg8mEhyIiHa7AWrNmZ6it
-         mYUmXJECwXzJfT6MgDqO5UPtgVkKPIw4/ogeTEv2ZwLaMYPcIk0Tyv6abhQoPmcdTCnf
-         rLancIsqi4kOxWxWREBQl3olrh7FPILuVNdLsCxE3pBQ/sNfmsfFlGTKgCizVR9Vqqse
-         mpEJXESUwQJsqhp9aHy4RuYIdwwFIyqQ0Qsgo9irD6zA8p+L1ymrA5MXNtKFEOumy7cb
-         9t8A==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :arc-authentication-results;
+        bh=8JxDy1pwxfTCd20t6quAPjqTPT2Rivz4Mpt6uBS18uM=;
+        b=xjQ87SA1KmsYCNb1Cxuq0XJs6V8w1xD9P18yWdWy18AW6qGRzAvNWltv1wjkK/p6kc
+         7yfAbaHCD1zupNmOHghs7e9PIMkfnwsbadTXoFJQ++7Zzi4IODPhv8wITZBh8bU+52iU
+         L6wyevLK8VHmZC6/5ok1WO5rtS8xjvNqOQAFpWVlHTHn+Koc57op/Nw1XdEReI/1y8gM
+         3EIwOK7kjGQRDgZdaFv48M/InqDemSZtHCDP3GkiI1yQebZThgBbnzR5Z6rHZR+nHvTQ
+         LC3p1jmk0lZdLwn0I38XXzMZvL50yKj8xtNLZmQagsRBgnapP7TXawbqQxlPSX6sZYlv
+         16Kg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lLYYk/Qk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e69si502683ybb.713.2017.11.01.20.32.29
+        by mx.google.com with ESMTPS id c131si714812ywb.297.2017.11.02.04.33.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 01 Nov 2017 20:32:30 -0700 (PDT)
+        Thu, 02 Nov 2017 04:33:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lLYYk/Qk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:58516 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59735 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eA6F3-0007Nt-LI
-	for alex.bennee@linaro.org; Wed, 01 Nov 2017 23:32:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60919)
+	id 1eADkG-0006z7-0C
+	for alex.bennee@linaro.org; Thu, 02 Nov 2017 07:33:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43547)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eA6Eo-0007H7-8b
-	for qemu-arm@nongnu.org; Wed, 01 Nov 2017 23:32:15 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1eADk6-0006z0-3Z
+	for qemu-arm@nongnu.org; Thu, 02 Nov 2017 07:33:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eA6En-0006P9-2A
-	for qemu-arm@nongnu.org; Wed, 01 Nov 2017 23:32:14 -0400
-Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:47557)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eA6Eh-0006NI-IM; Wed, 01 Nov 2017 23:32:07 -0400
-Received: by mail-qt0-x244.google.com with SMTP id z50so5137789qtj.4;
-	Wed, 01 Nov 2017 20:32:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:references:cc:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=VIn995Wm5IAUN8Zop0qd40mtSU6Lfamu9rm1CsgE9PE=;
-	b=lLYYk/QkxnTtJbKL5MIyJc4vVhNy+smhFVelsj3Mu47AZVlzO6BV/XImsNgKY6DXdX
-	JurksRhNX6FMT7ucbIL9Mmskik6JINu1FPaWy1wd6vyZjidYF+PeGT38SguRyfCHaj5F
-	mu4u5qGLnz/wdrF2gaJ1s3zEiKUnVl/7g9044fXIEdOvj8hylhfOFcqyG3tLeoEPFxvZ
-	qDvZ+B57lU9cvCdJo9FTr3AhYHxNecahMfiNyjQOaJXAX2cl12WMJh6RzLXZ/Y9GRfQq
-	BQoQhW4DDpNSPfGM6zdybBxMW19YPocsHTsYIpMUxh30PBPhMcbzuiqPJn00gyR7DMus
-	QKlA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=VIn995Wm5IAUN8Zop0qd40mtSU6Lfamu9rm1CsgE9PE=;
-	b=uZ0oDBBGTYJ1iOXhN/tdwhkjVd0MLnJSLY7ltCHxNVdHcsST2BmfliA2OLxDhtYiVv
-	7suhcB86vguuRqreBMdp2xh4leEKlqe6k6GMdNEfVM5sANuhqsl/jACEHUvv23nNQhw/
-	23moGd7UtjEwUscMT8PP1txu5RRV5pvQRvpEwwArE5biwBX8JVwBcH3cdYfSD5mOfwMS
-	FRCoEbXh4yj7CjD+8bKdhSi6ixWh1SIbi/ClHL1eQ82a+m3Gg/FkTqc5De6o4TBWhfXL
-	tux9GpW21XH84XHtup52jDJ4XMk0e6PY98b9KXK1tyIsGteMjU+PXcnbnXFrQ4MNyvzn
-	D9qg==
-X-Gm-Message-State: AMCzsaWoCb+4XO5YLgdcEUWrViV6ECxp771u/inHpLbODcUUEt1KFzCw
-	ae5cxfvw3veGkMFgOL+dLdIQzY9f
-X-Received: by 10.200.53.200 with SMTP id l8mr3247701qtb.49.1509593526840;
-	Wed, 01 Nov 2017 20:32:06 -0700 (PDT)
-Received: from [192.168.1.240] ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id s5sm1458286qkc.70.2017.11.01.20.32.04
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 01 Nov 2017 20:32:06 -0700 (PDT)
-To: Domen Puncer Kugler <domen@cba.si>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	Konrad Frederic <fred.konrad@greensocs.com>
-References: <CAB1b2sgGrJbpC5vDMJ2D2kPms_4cGmyfMjpcww4nj6rfNZaF9Q@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <70579e6d-0fb2-c6d8-9541-0eea53272db2@amsat.org>
-Date: Thu, 2 Nov 2017 00:31:57 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.4.0
-MIME-Version: 1.0
-In-Reply-To: <CAB1b2sgGrJbpC5vDMJ2D2kPms_4cGmyfMjpcww4nj6rfNZaF9Q@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+	(envelope-from <pm215@archaic.org.uk>) id 1eADk4-0007Sw-P5
+	for qemu-arm@nongnu.org; Thu, 02 Nov 2017 07:33:02 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:38112)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1eADk4-0007Pu-IY; Thu, 02 Nov 2017 07:33:00 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1eADjw-0002cf-1u; Thu, 02 Nov 2017 11:32:52 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Thu,  2 Nov 2017 11:33:20 +0000
+Message-Id: <1509622400-13351-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::244
-Subject: Re: [Qemu-arm] 
- =?utf-8?q?=5BQemu-trivial=5D_=5BPATCH=5D_hw/timer/arm?=
- =?utf-8?q?v7m=5Fsystick=3A_Fix_default_system=5Fclock=5Fscale=2E_Resolves?=
- =?utf-8?q?_SIGFPE_divide_by_zero=2E=EF=BF=BC?=
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH v2] translate.c: Fix usermode big-endian AArch32
+ LDREXD and STREXD
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -122,69 +76,103 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org
+Cc: christophe.lyon@linaro.org, Richard Henderson <rth@twiddle.net>,
+	patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: q4+6WkW6PZdL
+X-TUID: 2JvA6m7gemwP
 
-Hi Domen,
+For AArch32 LDREXD and STREXD, architecturally the 32-bit word at the
+lowest address is always Rt and the one at addr+4 is Rt2, even if the
+CPU is big-endian. Our implementation does these with a single
+64-bit store, so if we're big-endian then we need to put the two
+32-bit halves together in the opposite order to little-endian,
+so that they end up in the right places. We were trying to do
+this with the gen_aa32_frob64() function, but that is not correct
+for the usermode emulator, because there there is a distinction
+between "load a 64 bit value" (which does a BE 64-bit access
+and doesn't need swapping) and "load two 32 bit values as one
+64 bit access" (where we still need to do the swapping, like
+system mode BE32).
 
-Please have a look at the Contribute/SubmitAPatch guidelines for QEMU,
-in particular about CC'ing the maintainers so your patch won't get lost:
+Fixes: https://bugs.launchpad.net/qemu/+bug/1725267
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+Changes v1->v2:
+ * use correct "s->be_data == MO_BE" check for bigendian
+ * don't mangle the data from the atomic-cmpxchg before
+   comparing against expected value
+ * tcg_temp_free() the TCGv from gen_aa32_addr()
+ * name that TCGv "taddr" rather than "a"...
 
-https://wiki.qemu.org/Contribute/SubmitAPatch#CC_the_relevant_maintainer
+ target/arm/translate.c | 39 ++++++++++++++++++++++++++++++++++-----
+ 1 file changed, 34 insertions(+), 5 deletions(-)
 
-$ ./scripts/get_maintainer.pl -f hw/timer/armv7m_systick.c
-Peter Maydell <peter.maydell@linaro.org> (maintainer:ARM cores)
-qemu-arm@nongnu.org (open list:ARM cores)
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 6ba4ae9..0ed03d7 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -7903,9 +7903,27 @@ static void gen_load_exclusive(DisasContext *s, int rt, int rt2,
+         TCGv_i32 tmp2 = tcg_temp_new_i32();
+         TCGv_i64 t64 = tcg_temp_new_i64();
+ 
+-        gen_aa32_ld_i64(s, t64, addr, get_mem_index(s), opc);
++        /* For AArch32, architecturally the 32-bit word at the lowest
++         * address is always Rt and the one at addr+4 is Rt2, even if
++         * the CPU is big-endian. That means we don't want to do a
++         * gen_aa32_ld_i64(), which invokes gen_aa32_frob64() as if
++         * for an architecturally 64-bit access, but instead do a
++         * 64-bit access using MO_BE if appropriate and then split
++         * the two halves.
++         * This only makes a difference for BE32 user-mode, where
++         * frob64() must not flip the two halves of the 64-bit data
++         * but this code must treat BE32 user-mode like BE32 system.
++         */
++        TCGv taddr = gen_aa32_addr(s, addr, opc);
++
++        tcg_gen_qemu_ld_i64(t64, taddr, get_mem_index(s), opc);
++        tcg_temp_free(taddr);
+         tcg_gen_mov_i64(cpu_exclusive_val, t64);
+-        tcg_gen_extr_i64_i32(tmp, tmp2, t64);
++        if (s->be_data == MO_BE) {
++            tcg_gen_extr_i64_i32(tmp2, tmp, t64);
++        } else {
++            tcg_gen_extr_i64_i32(tmp, tmp2, t64);
++        }
+         tcg_temp_free_i64(t64);
+ 
+         store_reg(s, rt2, tmp2);
+@@ -7954,15 +7972,26 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
+         TCGv_i64 n64 = tcg_temp_new_i64();
+ 
+         t2 = load_reg(s, rt2);
+-        tcg_gen_concat_i32_i64(n64, t1, t2);
++        /* For AArch32, architecturally the 32-bit word at the lowest
++         * address is always Rt and the one at addr+4 is Rt2, even if
++         * the CPU is big-endian. Since we're going to treat this as a
++         * single 64-bit BE store, we need to put the two halves in the
++         * opposite order for BE to LE, so that they end up in the right
++         * places.
++         * We don't want gen_aa32_frob64() because that does the wrong
++         * thing for BE32 usermode.
++         */
++        if (s->be_data == MO_BE) {
++            tcg_gen_concat_i32_i64(n64, t2, t1);
++        } else {
++            tcg_gen_concat_i32_i64(n64, t1, t2);
++        }
+         tcg_temp_free_i32(t2);
+-        gen_aa32_frob64(s, n64);
+ 
+         tcg_gen_atomic_cmpxchg_i64(o64, taddr, cpu_exclusive_val, n64,
+                                    get_mem_index(s), opc);
+         tcg_temp_free_i64(n64);
+ 
+-        gen_aa32_frob64(s, o64);
+         tcg_gen_setcond_i64(TCG_COND_NE, o64, o64, cpu_exclusive_val);
+         tcg_gen_extrl_i64_i32(t0, o64);
+ 
+-- 
+2.7.4
 
-^ Cc'ing them how.
-
-On 11/01/2017 05:59 PM, Domen Puncer Kugler wrote:
-> Fix default system_clock_scale. Resolves SIGFPE divide by zero.
-> 
-> Netduino platform code does not provide a way to set
-> system_clock_scale, so it remains 0.
-> This causes a divide by zero, when emulated code asks systick for
-> current timer value:
->     (s->tick - (t + 1)) / systick_scale(s)) + 1;
-> Patch fixes this by providing a default value.
-
-See the thread around this reply:
-http://lists.nongnu.org/archive/html/qemu-devel/2017-06/msg06678.html
-
-> 
-> Also replaces a magic number an with already defined constant:
->     #define SYSTICK_SCALE 1000ULL
-> 
-> 
-> Signed-off-by: Domen Puncer Kugler <domen@cba.si>
-> ---
-> 
-> diff --git a/hw/timer/armv7m_systick.c b/hw/timer/armv7m_systick.c
-> index df8d2804b3..651f8030a8 100644
-> --- a/hw/timer/armv7m_systick.c
-> +++ b/hw/timer/armv7m_systick.c
-> @@ -25,15 +25,15 @@
->  #define SYSTICK_CLKSOURCE (1 << 2)
->  #define SYSTICK_COUNTFLAG (1 << 16)
-> 
-> -int system_clock_scale;
-> +uint64_t system_clock_scale = SYSTICK_SCALE;
-> 
->  /* Conversion factor from qemu timer to SysTick frequencies.  */
-> -static inline int64_t systick_scale(SysTickState *s)
-> +static inline uint64_t systick_scale(SysTickState *s)
->  {
->      if (s->control & SYSTICK_CLKSOURCE) {
->          return system_clock_scale;
->      } else {
-> -        return 1000;
-> +        return SYSTICK_SCALE;
->      }
->  }
-> 
-
-Regards,
-
-Phil.

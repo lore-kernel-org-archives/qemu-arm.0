@@ -1,131 +1,123 @@
-Received: by 10.223.161.27 with SMTP id o27csp2214133wro;
-        Thu, 2 Nov 2017 08:08:56 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+TVxVVkfC3x3K8rsZIQUAE/Pn+REv+Bd3P4UFRHLfN9TYUW9sFmx+spzCNsaULY4/dfBz64
-X-Received: by 10.37.55.71 with SMTP id e68mr2345701yba.369.1509635336174;
-        Thu, 02 Nov 2017 08:08:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1509635336; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp243878wrb;
+        Fri, 3 Nov 2017 13:27:02 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+Sohkl0hOqpW2PkRyEPfJ3Ney2zNsydD3bR5n1Dwc7cdNvC9PGKRgVL9g0BSwQe0t42BOHY
+X-Received: by 10.37.217.86 with SMTP id q83mr5212544ybg.137.1509740822112;
+        Fri, 03 Nov 2017 13:27:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1509740822; cv=none;
         d=google.com; s=arc-20160816;
-        b=YSl9h0bpMJjC/0N9lQ0yT3FtEDSHLevyG+51OXPytf7x8BFGS2sfFi3gWqldlkbGV9
-         NySk2q/gOM9q2ScrvjZPjJodA9I6v3ZTouWZ/MIpGr7LwtOk/6p5Up47n67xGqL8xw4z
-         o4nKhEmMSItpDQI8at/wD59NN27V+yXhTQT+gEe82wXcUozsI/jQ8l0NTY6Xz8Mhlbf2
-         s0sHeXtDMdPiYA/WfLE4XoWu25wCoFn9B0OY9Zvd809Uon8DlczvFw81WAIapqA2w3cP
-         C0hfP9Nq+OjUQz7U8B6bbpAkrjE9ES+JGLFDEPzDx+gDFOnOYZSX0vZyIvyJKDnkz8NU
-         SVng==
+        b=CrCTj/JspFkU8vhNPitzxpXmpWuZmr96VerwHLS7D96+YPlPCsiGUfUG513NYzJDzF
+         CBXCbmEpjGusLKjEWMS2czzeyAEFRlmiEdLb3GWkYsTcy3l+PHETs/npuXGKYKirBWBr
+         ahuYPYR2czlT7pKIrLEH0g7DNvhhZ4n18FzbSfCAKXZkT9LRqf4UY3QLbCr06NIuGYzI
+         iZG5ZA6VYorkwjc4tA7J/XD7QByWywpm89Hp0cKdF60jUv+S4XlEwyYxtbXbOeDyS0hh
+         tnenQguy9qsb9wNZ2ObR7EgS9nFVKfqftqNOHdl/0Rk0VZVrOghP1KVoixJWi9ha8omA
+         tcYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
          :arc-authentication-results;
-        bh=acWItrS8zp+T2MnhHjg/pUCZR9CGz5vRaVr97dtpUr0=;
-        b=dKws2Df/FXKd5M07BKyCOu3gnSbWlk8zoPwByAm+/z4YOKseVQqlqmScgWizfvNA+k
-         o+W4CzOFWssSveaNM3vHBulicuj4mK6nhn9J4Kh+279KjyOFqvf2SwfRvckLDFmtScuZ
-         hWMnDmu39nLxxkqGuXN9iX8+inGzyXs8NLtLVFgS7k/f3snzGMaA9zuMU2GwRpbwbOvo
-         fiLvdO4RJM1iIRs+XQsAU2UViUL48TdnDVUWay93sPL3rHltcLv/lhFHpEwYgGhgNJUJ
-         AeWChU16XaDDoUmjvZ9Y46DWAQm0CWBkvto7NHyvwZCuB0DQX1XyOcwap5shThDc9wBO
-         cu3Q==
+        bh=+oGqavDCt75jxSnBWYKj0dey77GS1nANvSJMHFf9Klg=;
+        b=ZTUErebWG0UIJFE2+NFAzGcltI+Yv5bwsEGcGOWCsflVWBm1Bm8fMmyFGPA/sJyso3
+         Y4pZLa4gmR16Oh6vuuSqSR9eKbcI9mGMephqTuBIcZGKJCr4SrWpeMTI8xgd/W2E+uqN
+         GBMkkIcJIMoLCDGWA6cO/OEjeQrJJL98au3FudxcYAhwCexoRJSq/1Viqt27xfntqYy8
+         eZ6VsyTr+nBBYFcOcB3J+1utgVMuqPFhW4aqMhIWYZui58BeVG+tBELgT39zfrxcNLuZ
+         oku9a57mF2cOkADYFa6hLFvDbnAcnsD6DcHExd8rGzDqd4FIzT3lrC8Ux9ZOHUr8+OwD
+         HtJw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=DAdIKKTg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z4si801884yba.390.2017.11.02.08.08.56
+        by mx.google.com with ESMTPS id a64si1649625ywf.483.2017.11.03.13.27.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 02 Nov 2017 08:08:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 03 Nov 2017 13:27:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=DAdIKKTg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60689 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:38332 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eAH71-0006Jo-LT
-	for alex.bennee@linaro.org; Thu, 02 Nov 2017 11:08:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48890)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eAiYP-0001Y6-Cx
+	for alex.bennee@linaro.org; Fri, 03 Nov 2017 16:27:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49125)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eAH5t-0005eZ-LD
-	for qemu-devel@nongnu.org; Thu, 02 Nov 2017 11:07:46 -0400
+	(envelope-from <laurent@vivier.eu>) id 1eAiYB-0001WJ-9m
+	for qemu-arm@nongnu.org; Fri, 03 Nov 2017 16:26:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eAH5s-0005lo-Rb
-	for qemu-devel@nongnu.org; Thu, 02 Nov 2017 11:07:45 -0400
-Received: from mail-wr0-x244.google.com ([2a00:1450:400c:c0c::244]:44996)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eAH5s-0005jX-Lk
-	for qemu-devel@nongnu.org; Thu, 02 Nov 2017 11:07:44 -0400
-Received: by mail-wr0-x244.google.com with SMTP id z55so5339830wrz.1
-	for <qemu-devel@nongnu.org>; Thu, 02 Nov 2017 08:07:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=acWItrS8zp+T2MnhHjg/pUCZR9CGz5vRaVr97dtpUr0=;
-	b=DAdIKKTgKRAUltA8U95B0oKe8xsPk9gPuTU6u5lTwMN3UG+tOcoFcmVgJkn1dU0cwn
-	n4oxJuCVcbycA2XGar1GET/sizq5C3dE3xJ/ptoW5lCulKQm6VSlmlsQwOWoW/NYam04
-	Twdskwf1oQ0knfd3xOL8l2CAM/tvLDMzn5aBw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=acWItrS8zp+T2MnhHjg/pUCZR9CGz5vRaVr97dtpUr0=;
-	b=rLSQe5kZ/9OpZXFt7igI84dPvlbuOvQlU6XXpO9Hc1neHkppDbsZ3xyJ0N7+BN4bbX
-	3RvDwGTy12ImYMZ695KcWn/ijAK/VuucPuOlclUNNu+7/7Pe3zaq7yT2tPOT/HghU6Z+
-	YhZo0qnzOLZ6cNn8yYpgX2e2txS0DHd1uZkBYmMGEjjrMQnS9IhMXpkYA75shKkForD3
-	6Z9+5nQSte4qI8+Svv0b7gltPAyuqgKqvE+dyeXANFnxwrk4Z4cU/FNmtCl8ls4aXtjO
-	oDCzRxIa3WwO8uD0BlnKEp1Tcm5RTD480TAnycwNE5Vik+9mhjf0wvJIGXhI48JjvBpb
-	SEYw==
-X-Gm-Message-State: AMCzsaWEuzKG3Xnl9URJofqFmT2gk7pB+t0cSejX4k8/2fLsqi/+WhiK
-	taneDjnHc4rO/5wnIDbTUjXilfSwNwK0LyOz6tCzgw==
-X-Received: by 10.223.171.161 with SMTP id s30mr3118201wrc.194.1509635263680; 
-	Thu, 02 Nov 2017 08:07:43 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.223.161.5 with HTTP; Thu, 2 Nov 2017 08:07:23 -0700 (PDT)
-In-Reply-To: <1509519537-6964-1-git-send-email-thuth@redhat.com>
-References: <1509519537-6964-1-git-send-email-thuth@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 2 Nov 2017 15:07:23 +0000
-Message-ID: <CAFEAcA9e7GAMmHjp9-nOy5AAiZL+CnW_OUbg89LpaT=3AoDnoA@mail.gmail.com>
-To: Thomas Huth <thuth@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::244
-Subject: Re: [Qemu-devel] [PATCH 0/3] hw/arm: Mark the "fsl,
- imx" devices with user_creatable = false
-X-BeenThere: qemu-devel@nongnu.org
+	(envelope-from <laurent@vivier.eu>) id 1eAiY8-0000Ww-6v
+	for qemu-arm@nongnu.org; Fri, 03 Nov 2017 16:26:47 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:56763)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1eAiY7-0000Vz-Tq; Fri, 03 Nov 2017 16:26:44 -0400
+Received: from localhost.localdomain ([78.238.229.36]) by
+	mrelayeu.kundenserver.de (mreue003 [212.227.15.167]) with ESMTPSA
+	(Nemesis)
+	id 0LtRzc-1d9qwo1HF6-010qMj; Fri, 03 Nov 2017 21:26:26 +0100
+From: Laurent Vivier <laurent@vivier.eu>
+To: qemu-devel@nongnu.org
+Date: Fri,  3 Nov 2017 21:26:20 +0100
+Message-Id: <20171103202624.5956-1-laurent@vivier.eu>
+X-Mailer: git-send-email 2.13.6
+X-Provags-ID: V03:K0:u+P7CfbXo6wneojhqQ1Dm2ZUX2XQYr0rBk4/9OaUvu1jaS753JA
+	D4UxEKFTvX/0Bhi1EwOd3JYxkqte4ehz/ppyAVefWzEU+UfvdpdaE5WonsxQYFOGai8R58X
+	or/10bid9FMHwQARwIzs64htKgmIEMw44gwOHWhUPApnVJIh4wsr2+8hw0CO9Fh1051v8ds
+	i2+NYLZ5jKqtU4t45Fllg==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:d3AxEeaWnkM=:61yGKIlfNB46ykyNPgoRny
+	WF89YAYyZ/FOrNdHUPx/V9A/XFVOZhOKSs02JBvmao54BEysm9pqqsj03moWV5n7hoyaWTL1I
+	RUMEKlE5/l1ufJpr5pu7VBWesElrhtnnT1PfCwhaQlXmzfZtwXAoOIj0ctReNz90TrZx2CEQD
+	j7cBOvaC3APr8poQ8qAo58s1S/bIEfzjnR3X6ak0j8t06ESFjZoBCuOMba/01cVUg1JVN5+av
+	6sybkX000OP9AfaHa4OKZcjkB16E01LwDd6+5NBD7RJRRd+c2uppzP0c7sFVdJIBJrnvDOmiD
+	b2sYoF9nls/a6MdH8i+g8udeadR6lJWfDo84KzS45vTIIc8on5ADUqxd8nL7I1ultJGcCskS/
+	rGD+Oad7YqhQjczJRLhquwG3WMobNodmahV1HQ5CXGw/Vo+eMMAjO80TvTAAxTNJPaVgfz6jd
+	9GoWLcXFbIO9e6ESOo6yG1WTCrjVMs2DwKMj7IQNjtpnTJSIALLI19vL9fURectJRmYpesW3I
+	B+hL9T+1dQEUWyPATocECjxWrrraz4a/YPXWsXGYOk2F/wKu9/d9iYSnG7Y0lT84A6nW8IdoW
+	WJ+j71APa7pQnQ04a0AALFn7qQ3Uqr7z1i001NWcwrQrD3DOQAKCYBBD5cyUsf6b12D7pU+1C
+	R8ZFpJ4lD6fXMQQ6y+XbiH1Sdh8p3Xrr8NLty9Lq3oXITlo5npU3BFX7rCEeFq5plLZX0UAon
+	41Y8oyfSuN3noFhJ7iZW/kP2mAxOFglIAPjDmg==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 212.227.126.131
+Subject: [Qemu-arm] [PATCH 0/4] softfloat: fix some helper definitions
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9hf9bzo79TZz
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org,
+	Stafford Horne <shorne@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: l+jHAMCTImxw
 
-On 1 November 2017 at 06:58, Thomas Huth <thuth@redhat.com> wrote:
-> These devices can not be used by the user directly and cause QEMU
-> to abort() if the user tried it anyway. So simply mark the devices
-> with user_creatable = false to avoid that the users can run into
-> this unpleasant situation.
->
-> Thomas Huth (3):
->   hw/arm: Mark the "fsl,imx6" device with user_creatable = false
->   hw/arm: Mark the "fsl,imx25" device with user_creatable = false
->   hw/arm: Mark the "fsl,imx31" device with user_creatable = false
->
->  hw/arm/fsl-imx25.c | 6 +++++-
->  hw/arm/fsl-imx31.c | 6 +++++-
->  hw/arm/fsl-imx6.c  | 3 ++-
->  3 files changed, 12 insertions(+), 3 deletions(-)
+This series fixes some errors found by
+enabling USE_SOFTFLOAT_STRUCT_TYPES.
 
+Most of them are helpers using int types
+instead of float types.
+This also requires the use of floatXX_val()
+and make_floatXX().
 
+Laurent Vivier (4):
+  arm: fix float64 helper definitions
+  openrisc: fix float32 and float64 helper definitions
+  tricore: use make_float32() and float32_val()
+  softfloat: use floatXX_val() in XX_minmax()
 
-Applied to target-arm.next, thanks.
+ fpu/softfloat.c              |  8 +++----
+ target/arm/helper-a64.h      |  6 ++---
+ target/openrisc/fpu_helper.c | 52 ++++++++++++++++++++++----------------------
+ target/openrisc/helper.h     | 20 ++++++++---------
+ target/tricore/fpu_helper.c  | 34 ++++++++++++++---------------
+ 5 files changed, 60 insertions(+), 60 deletions(-)
 
--- PMM
+-- 
+2.13.6
+

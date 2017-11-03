@@ -1,103 +1,108 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id p80sm555183wmf.42.2017.09.25.17.08.27
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 25 Sep 2017 17:08:27 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 360E33E019C;
-	Tue, 26 Sep 2017 01:08:27 +0100 (BST)
-References: <20170919150313.10833-1-richard.henderson@linaro.org> <20170919150313.10833-7-richard.henderson@linaro.org>
-User-agent: mu4e 0.9.19; emacs 26.0.60
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: Re: [Qemu-devel] [PATCH v2 6/8] arm: Support Capstone in disas_set_info
-In-reply-to: <20170919150313.10833-7-richard.henderson@linaro.org>
-Date: Tue, 26 Sep 2017 01:08:27 +0100
-Message-ID: <87a81iqq2s.fsf@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-TUID: pHYQlvHswHhX
+Received: by 10.223.150.237 with SMTP id u100csp128074wrb;
+        Fri, 3 Nov 2017 11:13:14 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+TpG/SChFW0Z1+Xt61xCaIpXuJ3FT4cQnZQ6qm2X9zDBP4daet/Lrr3KtQxfRX6ONKc1Gb4
+X-Received: by 10.37.106.86 with SMTP id f83mr4995283ybc.332.1509732794446;
+        Fri, 03 Nov 2017 11:13:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1509732794; cv=none;
+        d=google.com; s=arc-20160816;
+        b=YIZyhkt83Wga2tCW8omePs28EzU/0gRYh9YB0ZsnMPdBwxxiRrq2ihwM7jEoU2QLn5
+         Qbq1Id08z83anapKRK6dM7oEmM0vYIUvSXjJ6eBjbLtdkxWOvVVv1qayWrKRla4fqiTO
+         pXpdYlMcBs6n1xnD9H8XX+ZyWvJfC1dyYG4+1DHEr5r72rBt4cxKGeEKBHg0AeQAFaVJ
+         8tJ3CRKvwrcDTDuEI8CMnMXxXHFSUuVZUDPmlHztqk+CQ8gdXRn9VchmT+pkn0CknUjl
+         WUBA7VhOTFcstwXph7NCP2RfruC8Nkx1DZHLsMNCFyeq7r/O4HSHINTNxMMPOUftvjhs
+         jefg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :arc-authentication-results;
+        bh=utVzXj62nawxjBGop6kRmvl0DDBGSdvhykAAt3XDWbk=;
+        b=GjKRGI70/a8ErpFJ/X6TQaIB09ggg3EUl3nEob3gtLUvhghnIrRLwPIt8Il2NtMdAO
+         ZQHP5R250A21TFd50twg3kwfO8yI0kdI4kRZid8OOdCFISie+2AHGK6dBpqPMwG6KzSL
+         7AjE888kGvJ6WYXpYzpsWXfTcsEU8Qv7mX6bm2/sURLoPVnEgjrNKcU93gdkahleAsmZ
+         SXQ10bZgwxoKPzVRBOyrp3vmCXhRcjYuWF4F8x6henGoAQUWK+7i4JqLXdfxBRqS9Wo2
+         j3/QGrSA3DJFxYQFPSW5gTlG89cWFvvST0ipjzjk0/ZD+HV7zrfa4JGCubFqkjt3Jrnm
+         vlbQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id j206si1202322ybb.707.2017.11.03.11.13.14
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 03 Nov 2017 11:13:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:37931 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eAgSv-0004bE-Tu
+	for alex.bennee@linaro.org; Fri, 03 Nov 2017 14:13:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50531)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <pm215@archaic.org.uk>) id 1eAgSp-0004ax-TT
+	for qemu-arm@nongnu.org; Fri, 03 Nov 2017 14:13:08 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <pm215@archaic.org.uk>) id 1eAgSp-0008MC-15
+	for qemu-arm@nongnu.org; Fri, 03 Nov 2017 14:13:07 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:38152)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1eAgSo-0008Kt-QE; Fri, 03 Nov 2017 14:13:06 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1eAgSl-0005GX-Mj; Fri, 03 Nov 2017 18:13:03 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Fri,  3 Nov 2017 18:13:33 +0000
+Message-Id: <1509732813-22957-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH] nvic: Fix ARMv7M MPU_RBAR reads
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: patches@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /Js/YOFmvOYq
 
+Fix an incorrect mask expression in the handling of v7M MPU_RBAR
+reads that meant that we would always report the ADDR field as zero.
 
-Richard Henderson <richard.henderson@linaro.org> writes:
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+Doesn't affect v8M, which is a different codepath.
 
-> Cc: qemu-arm@nongnu.org
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+ hw/intc/armv7m_nvic.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Tested-by: Alex Bennée <alex.bennee@linaro.org>
+diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+index be46639..5d9c883 100644
+--- a/hw/intc/armv7m_nvic.c
++++ b/hw/intc/armv7m_nvic.c
+@@ -977,7 +977,7 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
+         if (region >= cpu->pmsav7_dregion) {
+             return 0;
+         }
+-        return (cpu->env.pmsav7.drbar[region] & 0x1f) | (region & 0xf);
++        return (cpu->env.pmsav7.drbar[region] & ~0x1f) | (region & 0xf);
+     }
+     case 0xda0: /* MPU_RASR (v7M), MPU_RLAR (v8M) */
+     case 0xda8: /* MPU_RASR_A1 (v7M), MPU_RLAR_A1 (v8M) */
+-- 
+2.7.4
 
-And BTW better than libvixl at least w.r.t wfi.
-
-> ---
->  disas.c          |  3 +++
->  target/arm/cpu.c | 21 ++++++++++++++++++---
->  2 files changed, 21 insertions(+), 3 deletions(-)
->
-> diff --git a/disas.c b/disas.c
-> index 42fae735ee..ea295f9cfc 100644
-> --- a/disas.c
-> +++ b/disas.c
-> @@ -451,6 +451,7 @@ void disas(FILE *out, void *code, unsigned long size)
->      print_insn = print_insn_ppc;
->  #elif defined(__aarch64__) && defined(CONFIG_ARM_A64_DIS)
->      print_insn = print_insn_arm_a64;
-> +    s.info.cap_arch = CS_ARCH_ARM64;
->  #elif defined(__alpha__)
->      print_insn = print_insn_alpha;
->  #elif defined(__sparc__)
-> @@ -458,6 +459,8 @@ void disas(FILE *out, void *code, unsigned long size)
->      s.info.mach = bfd_mach_sparc_v9b;
->  #elif defined(__arm__)
->      print_insn = print_insn_arm;
-> +    s.info.cap_arch = CS_ARCH_ARM;
-> +    /* TCG only generates code for arm mode.  */
->  #elif defined(__MIPSEB__)
->      print_insn = print_insn_big_mips;
->  #elif defined(__MIPSEL__)
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 412e94c7ad..53320709ac 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -33,6 +33,7 @@
->  #include "sysemu/sysemu.h"
->  #include "sysemu/hw_accel.h"
->  #include "kvm_arm.h"
-> +#include "disas/capstone.h"
->
->  static void arm_cpu_set_pc(CPUState *cs, vaddr value)
->  {
-> @@ -482,10 +483,24 @@ static void arm_disas_set_info(CPUState *cpu, disassemble_info *info)
->  #if defined(CONFIG_ARM_A64_DIS)
->          info->print_insn = print_insn_arm_a64;
->  #endif
-> -    } else if (env->thumb) {
-> -        info->print_insn = print_insn_thumb1;
-> +        info->cap_arch = CS_ARCH_ARM64;
->      } else {
-> -        info->print_insn = print_insn_arm;
-> +        int cap_mode;
-> +        if (env->thumb) {
-> +            info->print_insn = print_insn_thumb1;
-> +            cap_mode = CS_MODE_THUMB;
-> +        } else {
-> +            info->print_insn = print_insn_arm;
-> +            cap_mode = CS_MODE_ARM;
-> +        }
-> +        if (arm_feature(env, ARM_FEATURE_V8)) {
-> +            cap_mode |= CS_MODE_V8;
-> +        }
-> +        if (arm_feature(env, ARM_FEATURE_M)) {
-> +            cap_mode |= CS_MODE_MCLASS;
-> +        }
-> +        info->cap_arch = CS_ARCH_ARM;
-> +        info->cap_mode = cap_mode;
->      }
->      if (bswap_code(arm_sctlr_b(env))) {
->  #ifdef TARGET_WORDS_BIGENDIAN
-
-
---
-Alex Bennée

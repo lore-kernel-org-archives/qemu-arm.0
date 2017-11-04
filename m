@@ -1,86 +1,115 @@
-Received: by 10.223.150.237 with SMTP id u100csp244266wrb;
-        Fri, 3 Nov 2017 13:27:32 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+Qv4mXuWW4IZ/2uuPNFfTXiHUTM9l5iZGcQZ9XgRHu2Dkzfd1sLdk1Q3KfppbmAHoJzhtRT
-X-Received: by 10.37.92.2 with SMTP id q2mr5151599ybb.260.1509740852818;
-        Fri, 03 Nov 2017 13:27:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1509740852; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp1036889wrb;
+        Sat, 4 Nov 2017 09:19:18 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+S/DHeBPNXvFuH8SCVgIQAF8Sy1Jqh7JVevWjjHk9YkabLlcdifrGjbtpIEbmlzm+obP53b
+X-Received: by 10.37.209.215 with SMTP id i206mr6800988ybg.395.1509812358449;
+        Sat, 04 Nov 2017 09:19:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1509812358; cv=none;
         d=google.com; s=arc-20160816;
-        b=CYVJIinjzPm0q8UXqWZ/WjuJkuTvIXRs9WaHPWIC6hsn8Bji/vOTErMKEGJkg/vecS
-         8qDXuhI3kJz7N3u0ZEx3oNEty9sylaR31Z5m/C+HaP30j0fMzwdUyMPp5semnpvFLyTF
-         J4MSmmG3RUZjWvP6bqaJWGAo+oFoxr4RhKrGO+MxMLhAuDt5Hh/yXeE8L9C3ZuyL7UNE
-         1jrGLL+iM+5r6exQTaEwXAZiXCAJiSfwxAXw+r5ASk+w+yv+Gd023RqwqvHp1H2zdRn7
-         28ITjBQLyeGM4OAChf6Bul77PKEq4D5cfptOegTlTR+eeToaoyLjPSAIi1za4CEtc7U/
-         g1IQ==
+        b=ypmJcys2RjQ3d0+V8X62yMeXIvMT614956193s5IM/RY3CXjDRM9NuPPS+n6e6gZuy
+         //NYEjK+P7qwls/ubo4rDahgeIi3m325V2N0osoEt3HJ70+tWao3RO6qqpOTlWqBsGd5
+         9903iRgcaYskEzeLdBjtxRZVJMaES+BbWB3Yg0BNuXUnWm1WChgdDYN+Fqr+am6GDPrj
+         f1u6/emHquCe+xkyWq675DnesVhzYC40eFOBDDma39Lj9l7tZWN0jGVHkhlvOReI9gwI
+         8TCunKCvrCwrG8uVYPJMHWYs0AiMbsjQaDPLD/xtT6UL3liPNR32seE/0CPqg//nYUIv
+         lvgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=SPsRyjReZHCcXVB1V/l3dS4ev5jCij5vjneEhr/EUWs=;
-        b=Xd71XVNwUC8U0Td8faBxU7l4rfvHm9fDu0A2jfQQ6tAMgEsVUc4a2JzzjSxr38vOfg
-         aCIj7eSljiCuuAt56L3OBC0nRNkyw1UX6fLZq4A8L4V6E7FRItXtotKXVBKQOTeTWjQc
-         FZP/TpkToTazdUUpRH/HsAEX7wcVLuIIOoJm6DoDopdKlTm8mKBbKShKvVV2NaiTC3CA
-         NciitoxquY1n6LLM8qfrOwxGhEkBU4yTO6vf6/AKLLxxbgI+5g9pjs8XsxBO7RWnL0yQ
-         KVi8QsgRucmXEL52Jg/OVT446B408TnvqVgr7JVLPUI3snhrdwuOB7V/mXh4Pe7iIRkw
-         cb8g==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=c02YumRrkKRR0By/7UeQ/IR69rvG0OhLNPQGBRhOOxA=;
+        b=vfftaV8YG7IIFr6Vz1vMQu5drapmM4dLfYokKJCZ9kngHvpoNfvwpPAiAlRbTl2TkQ
+         NEJ64oYKHk7ToBqi8Ipzx8ua/kEMb1kt5z+7oH4fzxgLQA7HGV22zk8WwJtkyoIXmclj
+         WXN2vbB2xTaMbyMicR5C0y4NsEZhNqPH1MGpqTEOqtwdPGOC/rGBD9goOAjraB/3oBRL
+         8/LXxy5JnnME1V081zUhiHZ1zsWYvOkRUc49pkEKlpFglCppCfjEU/mPzUamdWfi7Pde
+         I7bOqJeru4aN3JxgZ1+VuLMAHxRgrgQlZquuhBgYV0jpjZnfhVgewKZHa9RNwOxJupky
+         WlqA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=L2aK31ub;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l14si1500599ybm.757.2017.11.03.13.27.32
+        by mx.google.com with ESMTPS id w15si1958967ybk.102.2017.11.04.09.19.18
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 03 Nov 2017 13:27:32 -0700 (PDT)
+        Sat, 04 Nov 2017 09:19:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=L2aK31ub;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:38339 helo=lists.gnu.org)
+Received: from localhost ([::1]:41596 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eAiYu-00025G-3x
-	for alex.bennee@linaro.org; Fri, 03 Nov 2017 16:27:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49193)
+	id 1eB1AD-000092-T7
+	for alex.bennee@linaro.org; Sat, 04 Nov 2017 12:19:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57225)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1eAiYF-0001Yt-Bc
-	for qemu-arm@nongnu.org; Fri, 03 Nov 2017 16:26:52 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eB1A2-00006r-M0
+	for qemu-arm@nongnu.org; Sat, 04 Nov 2017 12:19:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1eAiYD-0000dX-W7
-	for qemu-arm@nongnu.org; Fri, 03 Nov 2017 16:26:51 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:55657)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1eAiY8-0000WJ-KF; Fri, 03 Nov 2017 16:26:44 -0400
-Received: from localhost.localdomain ([78.238.229.36]) by
-	mrelayeu.kundenserver.de (mreue003 [212.227.15.167]) with ESMTPSA
-	(Nemesis)
-	id 0MflE8-1dnXM72wUu-00NA1Z; Fri, 03 Nov 2017 21:26:28 +0100
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Date: Fri,  3 Nov 2017 21:26:22 +0100
-Message-Id: <20171103202624.5956-3-laurent@vivier.eu>
-X-Mailer: git-send-email 2.13.6
-In-Reply-To: <20171103202624.5956-1-laurent@vivier.eu>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eB19z-0006Wx-I3
+	for qemu-arm@nongnu.org; Sat, 04 Nov 2017 12:19:06 -0400
+Received: from mail-qk0-x236.google.com ([2607:f8b0:400d:c09::236]:55333)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eB19z-0006WV-DM; Sat, 04 Nov 2017 12:19:03 -0400
+Received: by mail-qk0-x236.google.com with SMTP id x195so937989qkb.12;
+	Sat, 04 Nov 2017 09:19:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=c02YumRrkKRR0By/7UeQ/IR69rvG0OhLNPQGBRhOOxA=;
+	b=L2aK31ubrlQW7ujR+PmfgNwzxtOyIKZLv+h/UaJTYymXfX9BcRMbc1qkApK685eSgv
+	+fvhzV/BjxIPqTq4sAsbPTkhRfQq92vkVi7xpN4XpbUqT3xmJOIO5f2vQNPVsL3HAp/u
+	oWbXDjRxkXKzE+zcSbRfbPOTEHZFvVT6INMmbxnpPpzifXMhPF4p7ufdWFQUD2kOrEFb
+	/rdWcy9oabEWYbZlPKV24g8fVGYis3+gHMDZB1zmLLcjE69bxZjyR+6TH8QU0nzrzkED
+	Y7iRCIU8EYu+rgeVJV0gjM64KRXEdaQjxJM2CRpKPvjIr05K6gvHutYWeushHdApeZaq
+	8iIA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=c02YumRrkKRR0By/7UeQ/IR69rvG0OhLNPQGBRhOOxA=;
+	b=Ojs7h7chfiUbnW4mqxlc6MFwv00gHHheslfM0OqV0EwEUBflaounzBj9b6HsnU0vvZ
+	YIP4GlmxLWFLpHX60OzYYj9O06c5mCVILzX+JUzWgdcq0KQIZz8L5XRCJ3H3HmJjIFaI
+	IpboUkNJNcXKy/wDXO3mFT3JyGK52Y1lx9ocQ5zdy96HX1uMwb5BN1vd0Ru2LdKdzGAY
+	ec6AS5f7FXVVuv5IWENlH+k9uiVlKCmxd82ILeZk+kbWzSJ8inu5K7xDMkG1SXPmUylT
+	CNZoXj0tkk5YxGjeqVncCE7+oTfywk4BVeSimTv7uJKGV5NbPHFLY9qvpYqCICFd5IcG
+	FEFw==
+X-Gm-Message-State: AMCzsaVb1yju6HRwNlhjJnmSn6FPslbEEW07Ifwm8TvqVqJ0BoEfNrRq
+	ilJKC906MrXdIAyp4FRnsrs=
+X-Received: by 10.55.115.130 with SMTP id o124mr14548707qkc.83.1509812342177; 
+	Sat, 04 Nov 2017 09:19:02 -0700 (PDT)
+Received: from [192.168.1.240] ([181.93.89.178])
+	by smtp.gmail.com with ESMTPSA id
+	g128sm5424093qkb.16.2017.11.04.09.18.59
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sat, 04 Nov 2017 09:19:01 -0700 (PDT)
+To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
 References: <20171103202624.5956-1-laurent@vivier.eu>
-X-Provags-ID: V03:K0:tXCMgKZdZEId52KYrmNKJ3P4gEbzOFfLi03UtFlurG32p8+khyu
-	zbN4NZpVvsRuQw2tzZ4a44qRvc1+o7m5RFMOnLt0Pv2VteIkW0LyFXMaGAn/fMJViI2euOS
-	17ruPhegcL1xfDxAAEL4OIVDnzgKUy9tG9rS9NdLR2KI5vik/M/TeZcy5vKNlB5hX98si4M
-	xEv9n8N5AJX3yeaex4FQQ==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:HJY8xxFoM5s=:tm9CRsoeDJvrEIn9gphEA8
-	lzZMn4Pz6grfxDo/C2kCaJnlfP9rFAbVPwaE/SHj9nhr1biHH2cfLbECfLoiHNixWN/CBDctY
-	3nloGsIGCJXAYWM1tLUtwTahpDDCpZOvjdlyw0XTRvITkesOhJ8WPR6ubnMdOM1AerxwV1ve3
-	H6zzup0thJLFgPaSa3EzjmPnH0AqN2wQxLIwUtHAeun4sdx7pu40XFVh2gyCVVt5xfQlZwKPD
-	7taWyBZHqNqRFPAW4kcgZDNlwCZEZfwA1i/p/QN+o3wAzCAfjt1J8faUNA+SYPgchcHzuWJUt
-	soX5D8MEB8hfDz0R/QB+9TyaBR3BYYzytI2nPALGLfCK6QHYwqb9dbxzs6iXyV09gFaY1DOUt
-	ZaiAt680RSV+Zk+AKete5BDdywe1Vq4W1Y3yOMidx6L3DCNE8dNefww5Fq/maesPktl0EJvND
-	xVll6lcDRFT2jevF717B5P3bAWTiTE3ibgDttIaoo2UbhM3NePaeKiDubn7MXaqoFmPs/e1rS
-	5tf4RGov+XVbQ6OcdvZH9li2XWgqUwUafhEwv3RP6d2tfYy7QkY7NuhRcGupNjo02KwtkuKs6
-	o3v1toGIWZbZBHXQer/UNIrplQ9WSCW04cV0EGl+aV7aGHz2j9kLAmRqjIWBpo4oNWOZjO+9N
-	2MtdSdM3C+rW627b5nofdGySj0w+DhjRSI4zNHa6vVuKa8LwlK8LTiDBRPO7u1lQy6xlS/H/+
-	jo8z9uxHj7NuROHohOov+PzKK9PfP6QMe7mg/A==
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 212.227.126.130
-Subject: [Qemu-arm] [PATCH 2/4] openrisc: fix float32 and float64 helper
- definitions
+	<db255c93-a4c6-216d-8ea3-10f340a916f6@amsat.org>
+	<257f2a30-6607-cb14-3bbf-27b95d962cf4@amsat.org>
+	<89487dfd-f941-871f-e822-68a6fbace6fe@vivier.eu>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <23b10dc0-2bb6-b53d-dfaa-a641630f8aaf@amsat.org>
+Date: Sat, 4 Nov 2017 13:18:59 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.4.0
+MIME-Version: 1.0
+In-Reply-To: <89487dfd-f941-871f-e822-68a6fbace6fe@vivier.eu>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::236
+Subject: Re: [Qemu-arm] [PATCH 0/4] softfloat: fix some helper definitions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,237 +121,72 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org,
-	Stafford Horne <shorne@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Stafford Horne <shorne@gmail.com>,
+	qemu-arm@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +plyya1zUsBA
+X-TUID: vC9NjC6mFJTr
 
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- target/openrisc/fpu_helper.c | 52 ++++++++++++++++++++++----------------------
- target/openrisc/helper.h     | 20 ++++++++---------
- 2 files changed, 36 insertions(+), 36 deletions(-)
+On 11/04/2017 05:55 AM, Laurent Vivier wrote:
+> Le 03/11/2017 à 22:51, Philippe Mathieu-Daudé a écrit :
+>>> On 11/03/2017 05:26 PM, Laurent Vivier wrote:
+>>>> This series fixes some errors found by
+>>>> enabling USE_SOFTFLOAT_STRUCT_TYPES.
+>> [...]
+>>>
+>>> I'm getting those errors:
+>>>
+>>> $ make subdir-arm-softmmu -j2
+>>>
+>>> /source/qemu/migration/vmstate-types.c:430:5: error: conversion to
+>>> non-scalar type requested
+>>>      qemu_put_be64(f, float64_val(*v));
+>>>      ^~~~~~~~~~~~~
+>>> make: *** [migration/vmstate-types.o] Error 1
+[...]
+> 
+> These series doesn't fix all the problems, only the easiest to fix...
+> 
+> for this one, you need:
+> 
+> diff --git a/migration/vmstate-types.c b/migration/vmstate-types.c
+> index 48184c380d..0c273d616a 100644
+> --- a/migration/vmstate-types.c
+> +++ b/migration/vmstate-types.c
+> @@ -425,7 +425,7 @@ static int get_float64(QEMUFile *f, void *pv, size_t
+> size,
+>  static int put_float64(QEMUFile *f, void *pv, size_t size, VMStateField
+> *field,
+>                         QJSON *vmdesc)
+>  {
+> -    uint64_t *v = pv;
+> +    float64 *v = pv;
+> 
+>      qemu_put_be64(f, float64_val(*v));
+>      return 0;
 
-diff --git a/target/openrisc/fpu_helper.c b/target/openrisc/fpu_helper.c
-index 1375cea948..f84f8bf26a 100644
---- a/target/openrisc/fpu_helper.c
-+++ b/target/openrisc/fpu_helper.c
-@@ -66,9 +66,9 @@ static inline void update_fpcsr(OpenRISCCPU *cpu)
-     }
- }
- 
--uint64_t HELPER(itofd)(CPUOpenRISCState *env, uint64_t val)
-+float64 HELPER(itofd)(CPUOpenRISCState *env, uint64_t val)
- {
--    uint64_t itofd;
-+    float64 itofd;
-     OpenRISCCPU *cpu = openrisc_env_get_cpu(env);
- 
-     set_float_exception_flags(0, &cpu->env.fp_status);
-@@ -78,9 +78,9 @@ uint64_t HELPER(itofd)(CPUOpenRISCState *env, uint64_t val)
-     return itofd;
- }
- 
--uint32_t HELPER(itofs)(CPUOpenRISCState *env, uint32_t val)
-+float32 HELPER(itofs)(CPUOpenRISCState *env, uint32_t val)
- {
--    uint32_t itofs;
-+    float32 itofs;
-     OpenRISCCPU *cpu = openrisc_env_get_cpu(env);
- 
-     set_float_exception_flags(0, &cpu->env.fp_status);
-@@ -90,7 +90,7 @@ uint32_t HELPER(itofs)(CPUOpenRISCState *env, uint32_t val)
-     return itofs;
- }
- 
--uint64_t HELPER(ftoid)(CPUOpenRISCState *env, uint64_t val)
-+uint64_t HELPER(ftoid)(CPUOpenRISCState *env, float32 val)
- {
-     uint64_t ftoid;
-     OpenRISCCPU *cpu = openrisc_env_get_cpu(env);
-@@ -102,7 +102,7 @@ uint64_t HELPER(ftoid)(CPUOpenRISCState *env, uint64_t val)
-     return ftoid;
- }
- 
--uint32_t HELPER(ftois)(CPUOpenRISCState *env, uint32_t val)
-+uint32_t HELPER(ftois)(CPUOpenRISCState *env, float32 val)
- {
-     uint32_t ftois;
-     OpenRISCCPU *cpu = openrisc_env_get_cpu(env);
-@@ -117,10 +117,10 @@ uint32_t HELPER(ftois)(CPUOpenRISCState *env, uint32_t val)
- #define FLOAT_OP(name, p) void helper_float_##_##p(void)
- 
- #define FLOAT_CALC(name)                                                  \
--uint64_t helper_float_ ## name ## _d(CPUOpenRISCState *env,               \
--                                     uint64_t fdt0, uint64_t fdt1)        \
-+float64 helper_float_ ## name ## _d(CPUOpenRISCState *env,                \
-+                                    float64 fdt0, float64 fdt1)          \
- {                                                                         \
--    uint64_t result;                                                      \
-+    float64 result;                                                       \
-     OpenRISCCPU *cpu = openrisc_env_get_cpu(env);                         \
-     set_float_exception_flags(0, &cpu->env.fp_status);                    \
-     result = float64_ ## name(fdt0, fdt1, &cpu->env.fp_status);           \
-@@ -128,10 +128,10 @@ uint64_t helper_float_ ## name ## _d(CPUOpenRISCState *env,               \
-     return result;                                                        \
- }                                                                         \
-                                                                           \
--uint32_t helper_float_ ## name ## _s(CPUOpenRISCState *env,               \
--                                     uint32_t fdt0, uint32_t fdt1)        \
-+float32 helper_float_ ## name ## _s(CPUOpenRISCState *env,                \
-+                                    float32 fdt0, float32 fdt1)           \
- {                                                                         \
--    uint32_t result;                                                      \
-+    float32 result;                                                       \
-     OpenRISCCPU *cpu = openrisc_env_get_cpu(env);                         \
-     set_float_exception_flags(0, &cpu->env.fp_status);                    \
-     result = float32_ ## name(fdt0, fdt1, &cpu->env.fp_status);           \
-@@ -147,11 +147,11 @@ FLOAT_CALC(rem)
- #undef FLOAT_CALC
- 
- 
--uint64_t helper_float_madd_d(CPUOpenRISCState *env, uint64_t a,
--                             uint64_t b, uint64_t c)
-+float64 helper_float_madd_d(CPUOpenRISCState *env, float64 a,
-+                             float64 b, float64 c)
- {
-     OpenRISCCPU *cpu = openrisc_env_get_cpu(env);
--    uint64_t result;
-+    float64 result;
-     set_float_exception_flags(0, &cpu->env.fp_status);
-     /* Note that or1ksim doesn't use merged operation.  */
-     result = float64_mul(b, c, &cpu->env.fp_status);
-@@ -160,11 +160,11 @@ uint64_t helper_float_madd_d(CPUOpenRISCState *env, uint64_t a,
-     return result;
- }
- 
--uint32_t helper_float_madd_s(CPUOpenRISCState *env, uint32_t a,
--                             uint32_t b, uint32_t c)
-+float32 helper_float_madd_s(CPUOpenRISCState *env, float32 a,
-+                             float32 b, float32 c)
- {
-     OpenRISCCPU *cpu = openrisc_env_get_cpu(env);
--    uint32_t result;
-+    float32 result;
-     set_float_exception_flags(0, &cpu->env.fp_status);
-     /* Note that or1ksim doesn't use merged operation.  */
-     result = float32_mul(b, c, &cpu->env.fp_status);
-@@ -176,7 +176,7 @@ uint32_t helper_float_madd_s(CPUOpenRISCState *env, uint32_t a,
- 
- #define FLOAT_CMP(name)                                                   \
- uint64_t helper_float_ ## name ## _d(CPUOpenRISCState *env,               \
--                                     uint64_t fdt0, uint64_t fdt1)        \
-+                                    float64 fdt0, float64 fdt1)           \
- {                                                                         \
-     int res;                                                              \
-     OpenRISCCPU *cpu = openrisc_env_get_cpu(env);                         \
-@@ -187,7 +187,7 @@ uint64_t helper_float_ ## name ## _d(CPUOpenRISCState *env,               \
- }                                                                         \
-                                                                           \
- uint32_t helper_float_ ## name ## _s(CPUOpenRISCState *env,               \
--                                             uint32_t fdt0, uint32_t fdt1)\
-+                                    float32 fdt0, float32 fdt1)           \
- {                                                                         \
-     int res;                                                              \
-     OpenRISCCPU *cpu = openrisc_env_get_cpu(env);                         \
-@@ -205,7 +205,7 @@ FLOAT_CMP(lt)
- 
- #define FLOAT_CMPNE(name)                                                 \
- uint64_t helper_float_ ## name ## _d(CPUOpenRISCState *env,               \
--                                     uint64_t fdt0, uint64_t fdt1)        \
-+                                     float64 fdt0, float64 fdt1)          \
- {                                                                         \
-     int res;                                                              \
-     OpenRISCCPU *cpu = openrisc_env_get_cpu(env);                         \
-@@ -216,7 +216,7 @@ uint64_t helper_float_ ## name ## _d(CPUOpenRISCState *env,               \
- }                                                                         \
-                                                                           \
- uint32_t helper_float_ ## name ## _s(CPUOpenRISCState *env,               \
--                                     uint32_t fdt0, uint32_t fdt1)        \
-+                                     float32 fdt0, float32 fdt1)          \
- {                                                                         \
-     int res;                                                              \
-     OpenRISCCPU *cpu = openrisc_env_get_cpu(env);                         \
-@@ -231,7 +231,7 @@ FLOAT_CMPNE(ne)
- 
- #define FLOAT_CMPGT(name)                                                 \
- uint64_t helper_float_ ## name ## _d(CPUOpenRISCState *env,               \
--                                     uint64_t fdt0, uint64_t fdt1)        \
-+                                     float64 fdt0, float64 fdt1)          \
- {                                                                         \
-     int res;                                                              \
-     OpenRISCCPU *cpu = openrisc_env_get_cpu(env);                         \
-@@ -242,7 +242,7 @@ uint64_t helper_float_ ## name ## _d(CPUOpenRISCState *env,               \
- }                                                                         \
-                                                                           \
- uint32_t helper_float_ ## name ## _s(CPUOpenRISCState *env,               \
--                                     uint32_t fdt0, uint32_t fdt1)        \
-+                                     float32 fdt0, float32 fdt1)          \
- {                                                                         \
-     int res;                                                              \
-     OpenRISCCPU *cpu = openrisc_env_get_cpu(env);                         \
-@@ -256,7 +256,7 @@ FLOAT_CMPGT(gt)
- 
- #define FLOAT_CMPGE(name)                                                 \
- uint64_t helper_float_ ## name ## _d(CPUOpenRISCState *env,               \
--                                     uint64_t fdt0, uint64_t fdt1)        \
-+                                     float64 fdt0, float64 fdt1)          \
- {                                                                         \
-     int res;                                                              \
-     OpenRISCCPU *cpu = openrisc_env_get_cpu(env);                         \
-@@ -267,7 +267,7 @@ uint64_t helper_float_ ## name ## _d(CPUOpenRISCState *env,               \
- }                                                                         \
-                                                                           \
- uint32_t helper_float_ ## name ## _s(CPUOpenRISCState *env,               \
--                                     uint32_t fdt0, uint32_t fdt1)        \
-+                                     float32 fdt0, float32 fdt1)          \
- {                                                                         \
-     int res;                                                              \
-     OpenRISCCPU *cpu = openrisc_env_get_cpu(env);                         \
-diff --git a/target/openrisc/helper.h b/target/openrisc/helper.h
-index 4fd1a6bb8e..081606527b 100644
---- a/target/openrisc/helper.h
-+++ b/target/openrisc/helper.h
-@@ -24,17 +24,17 @@ DEF_HELPER_FLAGS_1(ove_ov, TCG_CALL_NO_WG, void, env)
- DEF_HELPER_FLAGS_1(ove_cyov, TCG_CALL_NO_WG, void, env)
- 
- /* float */
--DEF_HELPER_FLAGS_2(itofd, TCG_CALL_NO_WG, i64, env, i64)
--DEF_HELPER_FLAGS_2(itofs, TCG_CALL_NO_WG, i32, env, i32)
--DEF_HELPER_FLAGS_2(ftoid, TCG_CALL_NO_WG, i64, env, i64)
--DEF_HELPER_FLAGS_2(ftois, TCG_CALL_NO_WG, i32, env, i32)
-+DEF_HELPER_FLAGS_2(itofd, TCG_CALL_NO_WG, f64, env, i64)
-+DEF_HELPER_FLAGS_2(itofs, TCG_CALL_NO_WG, f32, env, i32)
-+DEF_HELPER_FLAGS_2(ftoid, TCG_CALL_NO_WG, i64, env, f32)
-+DEF_HELPER_FLAGS_2(ftois, TCG_CALL_NO_WG, i32, env, f32)
- 
--DEF_HELPER_FLAGS_4(float_madd_s, TCG_CALL_NO_WG, i32, env, i32, i32, i32)
--DEF_HELPER_FLAGS_4(float_madd_d, TCG_CALL_NO_WG, i64, env, i64, i64, i64)
-+DEF_HELPER_FLAGS_4(float_madd_s, TCG_CALL_NO_WG, f32, env, f32, f32, f32)
-+DEF_HELPER_FLAGS_4(float_madd_d, TCG_CALL_NO_WG, f64, env, f64, f64, f64)
- 
- #define FOP_CALC(op)                                            \
--DEF_HELPER_FLAGS_3(float_ ## op ## _s, TCG_CALL_NO_WG, i32, env, i32, i32) \
--DEF_HELPER_FLAGS_3(float_ ## op ## _d, TCG_CALL_NO_WG, i64, env, i64, i64)
-+DEF_HELPER_FLAGS_3(float_ ## op ## _s, TCG_CALL_NO_WG, f32, env, f32, f32) \
-+DEF_HELPER_FLAGS_3(float_ ## op ## _d, TCG_CALL_NO_WG, f64, env, f64, f64)
- FOP_CALC(add)
- FOP_CALC(sub)
- FOP_CALC(mul)
-@@ -43,8 +43,8 @@ FOP_CALC(rem)
- #undef FOP_CALC
- 
- #define FOP_CMP(op)                                              \
--DEF_HELPER_FLAGS_3(float_ ## op ## _s, TCG_CALL_NO_WG, i32, env, i32, i32) \
--DEF_HELPER_FLAGS_3(float_ ## op ## _d, TCG_CALL_NO_WG, i64, env, i64, i64)
-+DEF_HELPER_FLAGS_3(float_ ## op ## _s, TCG_CALL_NO_WG, i32, env, f32, f32) \
-+DEF_HELPER_FLAGS_3(float_ ## op ## _d, TCG_CALL_NO_WG, i64, env, f64, f64)
- FOP_CMP(eq)
- FOP_CMP(lt)
- FOP_CMP(le)
--- 
-2.13.6
+If you respin with this one you can add my Reviewed-by + Tested-by.
 
+Another error:
+
+$ make subdir-aarch64-softmmu
+[...]
+  CC      target/arm/helper-a64.o
+/source/qemu/target/arm/helper-a64.c: In function ‘helper_simd_tbl’:
+/source/qemu/target/arm/helper-a64.c:162:38: error: incompatible type
+for argument 1 of ‘extract64’
+             uint64_t val = extract64(env->vfp.regs[elt], bitidx, 8);
+                                      ^~~
+In file included from /source/qemu/include/qemu/bitmap.h:16:0,
+                 from /source/qemu/include/hw/qdev-core.h:6,
+                 from /source/qemu/include/qom/cpu.h:23,
+                 from /source/qemu/target/arm/cpu-qom.h:23,
+                 from /source/qemu/target/arm/cpu.h:39,
+                 from /source/qemu/target/arm/helper-a64.c:21:
+/source/qemu/include/qemu/bitops.h:316:24: note: expected ‘uint64_t {aka
+long unsigned int}’ but argument is of type ‘float64 {aka struct
+<anonymous>}’
+ static inline uint64_t extract64(uint64_t value, int start, int length)
+                        ^~~~~~~~~
+make: *** [target/arm/helper-a64.o] Error 1

@@ -1,106 +1,104 @@
-Received: by 10.223.161.27 with SMTP id o27csp365175wro;
-        Wed, 25 Oct 2017 23:00:08 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+TIV1Euj/fHketcJOj+hbdCmT/0wsEBFQ9iOjs5JywiYAWI/KakMp4BoDFYrep+CNjuxnEw
-X-Received: by 10.37.210.19 with SMTP id j19mr2716925ybg.476.1508997608712;
-        Wed, 25 Oct 2017 23:00:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508997608; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp3024673wrb;
+        Mon, 6 Nov 2017 12:13:55 -0800 (PST)
+X-Google-Smtp-Source: ABhQp+SUkoRzMy9n7/7XIdhpGhoHFPtd2yEi4naU3rIvJ52lOOwDBhuqDVyTOOUSaHbOsDtoc5Dm
+X-Received: by 10.37.135.9 with SMTP id a9mr10395831ybl.3.1509999235056;
+        Mon, 06 Nov 2017 12:13:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1509999235; cv=none;
         d=google.com; s=arc-20160816;
-        b=ng2cyps7+4rnTuudG14ziDY8Y7tlM6l2bYun3Y3V8J+bUuNBnIdqlfR24Nfir7WQb2
-         jTiyw3Yua6yINpVEiAvc+92kAo4igmQ2Rw2Cx1kbSQrJ5KdukFnqwKyZFjKpnwkliKLe
-         03tDUTE6bHwj07z2PTAJElZbnzug4YkfNDsKjg1HKIVtRvMVfmAiPkIrDLxkvu0y52xf
-         d5EYmtDeYq2hsTX5VF+8tHDkjoG2GsXppbuHIcPv+htAEv/MH/DG91kTVeiA4bTvauIF
-         O5eBdgTjGLds0k3psvQhfr9ZUJFHA6HANe1/+i8foYYwYjPbmhas+bLlifP95dR4ZcbD
-         Z/dw==
+        b=sfL9H22L/KrtkzzX3vJPy/IyIqXzVH+jGmIOtOiglpm3qVajnZy+h8ecZ7nfcIIPJ2
+         SuXg4CTrtH6BIrfKW8pT46klpxnYlFNCF8wKuYHH7KnmLshamLxNKtBkiTBCeqDJT8Gv
+         u/lMnkrGcMkp65gGccJcD8UTuXPFPkYHmxeg9P8Gya2uPeCP5bbKmi01CNEWOYGd0yXD
+         2eCCFNq4Ll9IMVsg8WUSnwh4EdQPH/aheVUucxTZsAZL+n21X2sOJnhqoWrTrT+VzU1U
+         D4R4OEbYLwVEdNnT0TGi6FWEEOwKYFh7slTt0sx08MAEumoPWJu6Be8EnvsYsoWTEekC
+         Jtyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=5YGSVLzg+I/wti68bGWTOoCDbEYHrhyiaqb5eKdA22E=;
-        b=Kyh50BDD+cZhax7VxUfQfBDKgIIzBxhufsACwW26TQ6aEqPwt7IuGauG6dK5CbPF4y
-         jd1T9aTEJXHCwdim/yFwy83aE9fBAnVYlUsLMY6Etd2Rx6h9dEjJ/xc6Jnf3amaYayDb
-         WxJnze+pQygHjEC1g+ChdmPTbGQXAj6OXByYyCgDaqk/GKJkAM2w369XMDetcfvSFWK7
-         vFPAnToS/ezUFdshZXZtCDacJ7znN61cEo5cOe0fDDfzLY6J2JKJC5J/+QJOdvpMYUMF
-         EDkLa9LlPhrfLRwH8MqXa2Ardk14pV4NKX6QHKGGWOSsCMslbgnpTlnXmGfz/GNoStgE
-         iW9A==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature:dkim-signature:arc-authentication-results;
+        bh=hpHLb5KJ09xsKPzv00vdilMG/C4sqCdvthnOJoOC+a8=;
+        b=zkgOHhGq69aG82gKrgAwWUc8Bf0ySm6LdUNQ5lfHyOKUjx61oZfpZUp/SDaVRoKBkT
+         ERqV/tYoT98gJXdOcTeXwgjEoWOdbinqNkA6EHIdsSD3SKBu4rpRNnz6LXqRPrnWrMgJ
+         VVlWl6wQFw9ZhmRaxxswzC1BFCd0fsbTHefAIJU4IFSJSnD5F1dnlUwhf8uRyNVLTdsE
+         5mYuS7FoozOFfmXgGYjbY4XmEAx0jKmKMGiR9vmlR4EBJIy4tcyrQVAiYWg1g6Xy0rpz
+         ptJftAt5sjTnqejlTcGNrDfbn7qZDDricBy5P5es603fgiW+eH+LbX5I3FTb5GuXQCIZ
+         a2HA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XS5hqR0s;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+       dkim=fail header.i=@braap.org header.s=mesmtp header.b=ee2tGTjj;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=OWsSkSEC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y75si668375yby.547.2017.10.25.23.00.08
+        by mx.google.com with ESMTPS id u6si2708450ybk.607.2017.11.06.12.13.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 25 Oct 2017 23:00:08 -0700 (PDT)
+        Mon, 06 Nov 2017 12:13:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XS5hqR0s;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:51094 helo=lists.gnu.org)
+       dkim=fail header.i=@braap.org header.s=mesmtp header.b=ee2tGTjj;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=OWsSkSEC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:50113 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e7bD6-00083c-5E
-	for alex.bennee@linaro.org; Thu, 26 Oct 2017 02:00:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55433)
+	id 1eBnmM-00023Z-ET
+	for alex.bennee@linaro.org; Mon, 06 Nov 2017 15:13:54 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46544)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1e7bCu-00082I-QZ
-	for qemu-arm@nongnu.org; Thu, 26 Oct 2017 01:59:57 -0400
+	(envelope-from <cota@braap.org>) id 1eBnm7-0001yl-P1
+	for qemu-arm@nongnu.org; Mon, 06 Nov 2017 15:13:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1e7bCt-0003w6-Qr
-	for qemu-arm@nongnu.org; Thu, 26 Oct 2017 01:59:56 -0400
-Received: from mail-ua0-x243.google.com ([2607:f8b0:400c:c08::243]:56204)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
-	id 1e7bCr-0003rp-4V; Thu, 26 Oct 2017 01:59:53 -0400
-Received: by mail-ua0-x243.google.com with SMTP id b11so1663641uae.12;
-	Wed, 25 Oct 2017 22:59:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to; 
-	bh=5YGSVLzg+I/wti68bGWTOoCDbEYHrhyiaqb5eKdA22E=;
-	b=XS5hqR0skgByyHf8nrV6dubGHXqRl0acT/6HIAXP+XOvoZJQrPn679jxZfhQ4yDh5h
-	YuOsP9KZKhzw8XHxjMFwy8dC/M1PUqRBhhG67pYaqSrdDr55fOPZKHxAkbjP4m38sV0b
-	jnjKH2BNZaxuQG/TI9Pw6pemYBq1aldkzXA7IXb9FbZlrIplrqpKSBVFwwoEzuEpM3os
-	bjv2TvEC2EogiuOmQRZeAvWaGou60JqACSgGuKy3nrm2xOBymMbPqVwyYlHdn+tHJaTy
-	dTFozSDsjvsveiyjT+Kjx3G4OHhW7cqJwM222IbQbmrdps1HopscWGEVxXNe1lPQsdSk
-	ypqA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to;
-	bh=5YGSVLzg+I/wti68bGWTOoCDbEYHrhyiaqb5eKdA22E=;
-	b=bPXDzBpPd4fm96n6YJsmJRE+sYyMMEugRC6DkHuWUVJXOctRAo3v9jRCqCF2tsM5jk
-	ecatZgroYUHTue7iR5XAR5HtKvMKg6RnZYOXlSwKXglu+Ug8Fn+815zxL+2PUdJ3ymck
-	UOJig3qIRNXGZp0edHugsr+VvQHm2K6Y0urGRa+GPxnOqK/1ZGviUslCjniMrrlyb0k5
-	c5WkhBtnwADsNl/5fE27hee49TXJaCHtd40igLFQU5nN15TuBbFy+8EE4d6qvhgSln0z
-	K/vxTaXaFDiy8xpQfLuf2cdk2T7pWzq76gNEqQ0C67CZl8m5GdtUUTsEDBXWsBJAOmy+
-	UIOg==
-X-Gm-Message-State: AMCzsaVpwgym5gomkvX8HIxBji9FMJDMNlaGMifr8bXHlDyFi5antmVZ
-	ehKtzD2IjYeRaOi64XELIOtl+Y1GN5uZtROoUBs=
-X-Received: by 10.159.54.107 with SMTP id s40mr3421617uad.95.1508997592256;
-	Wed, 25 Oct 2017 22:59:52 -0700 (PDT)
+	(envelope-from <cota@braap.org>) id 1eBnm4-00052K-HZ
+	for qemu-arm@nongnu.org; Mon, 06 Nov 2017 15:13:39 -0500
+Received: from out4-smtp.messagingengine.com ([66.111.4.28]:36705)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <cota@braap.org>)
+	id 1eBnm4-00051K-4n; Mon, 06 Nov 2017 15:13:36 -0500
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id 5B4B120D1F;
+	Mon,  6 Nov 2017 15:13:33 -0500 (EST)
+Received: from frontend2 ([10.202.2.161])
+	by compute4.internal (MEProxy); Mon, 06 Nov 2017 15:13:33 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
+	:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc; s=
+	mesmtp; bh=hpHLb5KJ09xsKPzv00vdilMG/C4sqCdvthnOJoOC+a8=; b=ee2tG
+	TjjqW9fIS7lyCWIVs5HYlrGaD9vwTX8d1pO8SZnL1ELmeBErIzi7oJMv+pi1hPhA
+	HVKmClGGSY0nzhzMJ8Rx1wa6Dw9j9OidvPMuEL4MH8oDKvrMDMuEHqBDDYrCAExj
+	PsDX/DSBsNOTkDEFv8MoZVbx/9ZteSVlh5dmN4=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-sender
+	:x-me-sender:x-sasl-enc; s=fm1; bh=hpHLb5KJ09xsKPzv00vdilMG/C4sq
+	CdvthnOJoOC+a8=; b=OWsSkSECG7ZuRZChBNDhXBnD5L+HCBeo7Io1sWW+F4q7d
+	AgC4jWhgvNPoEDmwMk08PB0ctrYejTEPOvNDSODa+1pddoos5OIUVXSvmTnaZ/Fq
+	7LsHQQdmnudaBJzxgXyzdPkzxzNxJXsHqgPPlZpPw9F5IEmMoAUwG9ixvplMFadc
+	iUsCQDN47T7axzz2Zdte9mgHNuU7sgSL7YFWBz1u/fVQtHcjGIUEYRkEL0Lg6BHx
+	O6vWNxW/HNZMWDBQDp9dHYNTZGcvJjsJGqxfslzD4zV96mwShcYdCqgcTquiEOdL
+	WSjXD06A4wp2kMXL3AmJiK2YQRuAQhzbFACBFVqBg==
+X-ME-Sender: <xms:bcIAWqwF2_X-ghr9yOU9Zz564kXY1U2t8tTQdlw4KH3H9MJCB0U9gg>
+Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 135F724E82;
+	Mon,  6 Nov 2017 15:13:33 -0500 (EST)
+Date: Mon, 6 Nov 2017 15:13:32 -0500
+From: "Emilio G. Cota" <cota@braap.org>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Message-ID: <20171106201332.GA2152@flamenco>
+References: <1509734853-3014-1-git-send-email-cota@braap.org>
+	<20171103185610.GA3907@flamenco>
+	<20171103200233.GI3111@localhost.localdomain>
+	<20171103222407.GA22411@flamenco>
+	<20171106141022.GO3111@localhost.localdomain>
 MIME-Version: 1.0
-Received: by 10.159.63.6 with HTTP; Wed, 25 Oct 2017 22:59:51 -0700 (PDT)
-In-Reply-To: <20171025084542.g65k7bv65j6nhaby@starbug-vm.ie.oracle.com>
-References: <1508898544-10307-1-git-send-email-sundeep.lkml@gmail.com>
-	<20171025084542.g65k7bv65j6nhaby@starbug-vm.ie.oracle.com>
-From: sundeep subbaraya <sundeep.lkml@gmail.com>
-Date: Thu, 26 Oct 2017 11:29:51 +0530
-Message-ID: <CALHRZurvgp-eHqBWqwSaU6AGMg9L4vwJTHNv0z4FoAd4eeAVfw@mail.gmail.com>
-To: Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, 
-	qemu-arm <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
-	Alistair Francis <alistair23@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>
-Content-Type: multipart/alternative; boundary="001a114698be7412c5055c6ce15a"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400c:c08::243
-Subject: Re: [Qemu-arm] [Qemu-devel] [Qemu devel V4 PATCH] msf2: Remove dead
- code reported by Coverity
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20171106141022.GO3111@localhost.localdomain>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.111.4.28
+Subject: Re: [Qemu-arm] [PATCH] hw: add .min_cpus and .default_cpus fields
+ to machine_class
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,211 +110,88 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
+	Marcel Apfelbaum <marcel@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oOZ/X78ZQsaa
+X-TUID: NgJkfchPLjhy
 
---001a114698be7412c5055c6ce15a
-Content-Type: text/plain; charset="UTF-8"
+On Mon, Nov 06, 2017 at 12:10:22 -0200, Eduardo Habkost wrote:
+> IMO, initialization state doesn't belong to CPUClass.  We already
+> have a single accelerator object in MachineState::accelerator,
+> and tcg_initialized could be moved to a AccelState::initialized
+> field.
 
-On Wed, Oct 25, 2017 at 2:15 PM, Darren Kenny <darren.kenny@oracle.com>
-wrote:
+I don't know how to cleanly get AccelState from a CPUClass pointer
+(as I said I'm not familiar with object code / qom) -- suggestions
+welcome! The best I could come up in the limited time I have for
+this is to use a static bool, as shown below.
 
-> LGTM now, thanks.
->
-> Reviewed-by: Darren Kenny <darren.kenny@oracle.com>
->
 
-Thanks Darren,
+---8<---
 
-Sundeep
+Subject: [PATCH] qom: move CPUClass.tcg_initialize to a global
 
->
-> Thanks,
->
-> Darren.
->
->
-> On Wed, Oct 25, 2017 at 07:59:04AM +0530, Subbaraya Sundeep wrote:
->
->> Fixed incorrect frame size mask, validated maximum frame
->> size in spi_write and removed dead code.
->>
->> Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
->> ---
->> v4:
->>         changed %d to %u while logging frame size error.
->> v3:
->>         Added comment that [31:6] bits are reserved in R_SPI_DFSIZE
->>         register and logged incorrect value too in guest error(suggested
->>         by Darren).
->> v2:
->>         else if -> else in set_fifodepth
->>         log guest error when frame size is more than 32
->>
->> hw/ssi/mss-spi.c | 18 ++++++++++++++----
->> 1 file changed, 14 insertions(+), 4 deletions(-)
->>
->> diff --git a/hw/ssi/mss-spi.c b/hw/ssi/mss-spi.c
->> index 5a8e308..d60daba 100644
->> --- a/hw/ssi/mss-spi.c
->> +++ b/hw/ssi/mss-spi.c
->> @@ -76,9 +76,10 @@
->> #define C_BIGFIFO            (1 << 29)
->> #define C_RESET              (1 << 31)
->>
->> -#define FRAMESZ_MASK         0x1F
->> +#define FRAMESZ_MASK         0x3F
->> #define FMCOUNT_MASK         0x00FFFF00
->> #define FMCOUNT_SHIFT        8
->> +#define FRAMESZ_MAX          32
->>
->> static void txfifo_reset(MSSSpiState *s)
->> {
->> @@ -104,10 +105,8 @@ static void set_fifodepth(MSSSpiState *s)
->>         s->fifo_depth = 32;
->>     } else if (size <= 16) {
->>         s->fifo_depth = 16;
->> -    } else if (size <= 32) {
->> -        s->fifo_depth = 8;
->>     } else {
->> -        s->fifo_depth = 4;
->> +        s->fifo_depth = 8;
->>     }
->> }
->>
->> @@ -301,6 +300,17 @@ static void spi_write(void *opaque, hwaddr addr,
->>         if (s->enabled) {
->>             break;
->>         }
->> +        /*
->> +         * [31:6] bits are reserved bits and for future use.
->> +         * [5:0] are for frame size. Only [5:0] bits are validated
->> +         * during write, [31:6] bits are untouched.
->> +         */
->> +        if ((value & FRAMESZ_MASK) > FRAMESZ_MAX) {
->> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: Incorrect size %u
->> provided."
->> +                         "Maximum frame size is %u\n",
->> +                         __func__, value & FRAMESZ_MASK, FRAMESZ_MAX);
->> +            break;
->> +        }
->>         s->regs[R_SPI_DFSIZE] = value;
->>         break;
->>
->> --
->> 2.5.0
->>
->>
->>
+55c3cee ("qom: Introduce CPUClass.tcg_initialize", 2017-10-24)
+introduces a per-CPUClass bool that we check so that the target CPU
+is initialized for TCG only once. This works well except when
+we end up creating more than one CPUClass, in which case we end
+up incorrectly initializing TCG more than once, i.e. once for
+each CPUClass.
 
---001a114698be7412c5055c6ce15a
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+This can be replicated with:
+  $ aarch64-softmmu/qemu-system-aarch64 -machine xlnx-zcu102 -smp 6 \
+      -global driver=xlnx,,zynqmp,property=has_rpu,value=on
+In this case the class name of the "RPUs" is prefixed by "cortex-r5-",
+whereas the "regular" CPUs are prefixed by "cortex-a53-". This
+results in two CPUClass instances being created.
 
-<div dir=3D"ltr"><br><div class=3D"gmail_extra"><br><div class=3D"gmail_quo=
-te">On Wed, Oct 25, 2017 at 2:15 PM, Darren Kenny <span dir=3D"ltr">&lt;<a =
-href=3D"mailto:darren.kenny@oracle.com" target=3D"_blank">darren.kenny@orac=
-le.com</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=3D"=
-margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">LGTM now, th=
-anks.<br>
-<br>
-Reviewed-by: Darren Kenny &lt;<a href=3D"mailto:darren.kenny@oracle.com" ta=
-rget=3D"_blank">darren.kenny@oracle.com</a>&gt;<br></blockquote><div><br></=
-div><div>Thanks Darren,</div><div><br></div><div>Sundeep=C2=A0</div><blockq=
-uote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc =
-solid;padding-left:1ex">
-<br>
-Thanks,<br>
-<br>
-Darren.<div class=3D"HOEnZb"><div class=3D"h5"><br>
-<br>
-On Wed, Oct 25, 2017 at 07:59:04AM +0530, Subbaraya Sundeep wrote:<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">
-Fixed incorrect frame size mask, validated maximum frame<br>
-size in spi_write and removed dead code.<br>
-<br>
-Signed-off-by: Subbaraya Sundeep &lt;<a href=3D"mailto:sundeep.lkml@gmail.c=
-om" target=3D"_blank">sundeep.lkml@gmail.com</a>&gt;<br>
----<br>
-v4:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 changed %d to %u while logging frame size error=
-.<br>
-v3:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 Added comment that [31:6] bits are reserved in =
-R_SPI_DFSIZE<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 register and logged incorrect value too in gues=
-t error(suggested<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 by Darren).<br>
-v2:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 else if -&gt; else in set_fifodepth<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 log guest error when frame size is more than 32=
-<br>
-<br>
-hw/ssi/mss-spi.c | 18 ++++++++++++++----<br>
-1 file changed, 14 insertions(+), 4 deletions(-)<br>
-<br>
-diff --git a/hw/ssi/mss-spi.c b/hw/ssi/mss-spi.c<br>
-index 5a8e308..d60daba 100644<br>
---- a/hw/ssi/mss-spi.c<br>
-+++ b/hw/ssi/mss-spi.c<br>
-@@ -76,9 +76,10 @@<br>
-#define C_BIGFIFO=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (1 &lt;&lt; 29)<=
-br>
-#define C_RESET=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (1 &lt;&lt;=
- 31)<br>
-<br>
--#define FRAMESZ_MASK=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00x1F<br>
-+#define FRAMESZ_MASK=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00x3F<br>
-#define FMCOUNT_MASK=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00x00FFFF00<br>
-#define FMCOUNT_SHIFT=C2=A0 =C2=A0 =C2=A0 =C2=A0 8<br>
-+#define FRAMESZ_MAX=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 32<br>
-<br>
-static void txfifo_reset(MSSSpiState *s)<br>
-{<br>
-@@ -104,10 +105,8 @@ static void set_fifodepth(MSSSpiState *s)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;fifo_depth =3D 32;<br>
-=C2=A0 =C2=A0 } else if (size &lt;=3D 16) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;fifo_depth =3D 16;<br>
--=C2=A0 =C2=A0 } else if (size &lt;=3D 32) {<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;fifo_depth =3D 8;<br>
-=C2=A0 =C2=A0 } else {<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;fifo_depth =3D 4;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;fifo_depth =3D 8;<br>
-=C2=A0 =C2=A0 }<br>
-}<br>
-<br>
-@@ -301,6 +300,17 @@ static void spi_write(void *opaque, hwaddr addr,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (s-&gt;enabled) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 /*<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* [31:6] bits are reserved bits and for =
-future use.<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* [5:0] are for frame size. Only [5:0] b=
-its are validated<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* during write, [31:6] bits are untouche=
-d.<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0*/<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if ((value &amp; FRAMESZ_MASK) &gt; FRAMESZ_MA=
-X) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &=
-quot;%s: Incorrect size %u provided.&quot;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0&quot;Maximum frame size is %u\n&quot;,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0__func__, value &amp; FRAMESZ_MASK, FRAMESZ_MAX);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_SPI_DFSIZE] =3D value;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-<br>
--- <br>
-2.5.0<br>
-<br>
-<br>
-</blockquote>
-</div></div></blockquote></div><br></div></div>
+Fix it by introducing a static variable, so that only the first
+target CPU being initialized will initialize the target-dependent
+part of TCG, regardless of CPUClass instances.
 
---001a114698be7412c5055c6ce15a--
+Fixes: 55c3ceef61fcf06fc98ddc752b7cce788ce7680b
+Signed-off-by: Emilio G. Cota <cota@braap.org>
+---
+ exec.c            | 5 +++--
+ include/qom/cpu.h | 1 -
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/exec.c b/exec.c
+index 97a24a8..8b579c0 100644
+--- a/exec.c
++++ b/exec.c
+@@ -792,11 +792,12 @@ void cpu_exec_initfn(CPUState *cpu)
+ void cpu_exec_realizefn(CPUState *cpu, Error **errp)
+ {
+     CPUClass *cc = CPU_GET_CLASS(cpu);
++    static bool tcg_target_initialized;
+ 
+     cpu_list_add(cpu);
+ 
+-    if (tcg_enabled() && !cc->tcg_initialized) {
+-        cc->tcg_initialized = true;
++    if (tcg_enabled() && !tcg_target_initialized) {
++        tcg_target_initialized = true;
+         cc->tcg_initialize();
+     }
+ 
+diff --git a/include/qom/cpu.h b/include/qom/cpu.h
+index fa4b0c9..c2fa151 100644
+--- a/include/qom/cpu.h
++++ b/include/qom/cpu.h
+@@ -209,7 +209,6 @@ typedef struct CPUClass {
+     /* Keep non-pointer data at the end to minimize holes.  */
+     int gdb_num_core_regs;
+     bool gdb_stop_before_watchpoint;
+-    bool tcg_initialized;
+ } CPUClass;
+ 
+ #ifdef HOST_WORDS_BIGENDIAN
+-- 
+2.7.4
+

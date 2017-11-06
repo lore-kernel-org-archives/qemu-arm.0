@@ -1,159 +1,262 @@
-Received: by 10.223.150.237 with SMTP id u100csp2532639wrb;
-        Mon, 6 Nov 2017 03:14:34 -0800 (PST)
-X-Google-Smtp-Source: ABhQp+SCngbuWpoph5/4ns6/IICWBLs+mieId4OJSGxrJy8l7m15542llShHowGvYpt/LAqLA9eH
-X-Received: by 10.37.123.7 with SMTP id w7mr3410749ybc.18.1509966874269;
-        Mon, 06 Nov 2017 03:14:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1509966874; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp2688178wrb;
+        Mon, 6 Nov 2017 06:10:46 -0800 (PST)
+X-Google-Smtp-Source: ABhQp+QSzDO1991hRKX6InaBNpRIMxEfv0PSW/BDp8hEeINhPJb/IJsgoMEgIljlFBZ0+lBFv9zJ
+X-Received: by 10.129.229.2 with SMTP id s2mr9623249ywl.90.1509977445920;
+        Mon, 06 Nov 2017 06:10:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1509977445; cv=none;
         d=google.com; s=arc-20160816;
-        b=D0DyEl1Y9cYmHEQFlXm6JCYKHqR5godPllN9PjvTdHD5ZpEBWFd0VPEnKeL8uU1vOF
-         yHvI5iJA9kig2VNZkUHAS6CdTBfqPPX7d5uXDCrQ6MBNOA45klQRId2akr9mreu5QwQH
-         6piLbHjw3pTchiKtTuJW59WkgJkH7PNr/dt3qa/+1/XTic4bxHKhQyyDderrtbPHtoP0
-         VslgpS+tQ2P8BSHpwAm0A29LZMpLKB7Ck2EN0ZvmqIgI3dis8HErcc6ZfdL1bMVgLv+w
-         N/gIknknUheO7LprDdUJDLbK8vnJ7dNWFI1m3+cwwSK6CI8ExO6G5bnvf+und3aGIRbI
-         BiAw==
+        b=hjj0LQJhbjKQgr3RHUuYgNmDZr0/yOitFjPLmjerytpG+6symeL3qw7NKEjeN41X4B
+         /QIyp398cdUNX3o2R5L0Jqi7cB1ECHFAOb0yGMXa3gOTLp9093uKUXkYPh1WQQQO2CLX
+         ZQeMYZQEyeeRdgVfoYAn0vafFZLb3xhkGYthGYVvzAEzmDjj4I/vGuVOIveFfTU0ZcYW
+         wfMCBjV2L2gmcncKporHNzKcTkl+kVSPbhAYq6IX+RQq1SPnfI3Dk4lM8l/4DOINzhr6
+         ly/QEM766eXHNjX+Btyg/av6Cs7UxdqRARmGSVAsHbvOnbF9u3t1LsOizVuuGR4lNAl8
+         CHpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=J5GYBzeGBPLRwJGpubYkZw0ss+jgb7Istnpn524eLzE=;
-        b=mMNbBmiOtibO1OrH10+dTUIgXHM+gBntETo7vXADT9ePjW0SjC+ZcRZQ4MZp2hChm9
-         wmBxj7LNEvmNXAEGGOWK+fudopFfkr72+5c01b25f+ndZvdk/FgA7IzLX3mH0Q+BBehG
-         FmWaKahwd3ejdGeQHE6Rd6SHUhhpEM7jb+99wMQQRi+Sp0/dTVm/9koquqNEYGwKFqoy
-         csJqb6nAD/Vh9jlthOWtMO3Iooz3NM/+IOqX6wwu028p0BJCmM5TPO5d+or0/MqMJQh2
-         ISKjYKNKb1rbZpCL7Cc8p1N4Y3OgJ4fpknDZyXSA5Hppi7q5IuYVHf2FYv/SJR7nacqw
-         mdOg==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dmarc-filter:arc-authentication-results;
+        bh=OiOXhq0GR8aWM7MHWLc0dW/Z/NfsdODoSZPmzVXjmF0=;
+        b=lNf1D7n3GIOJE5LNmBl/4ALeiERAOEGmvI3ve/CfUNbqejTcRhPTHU0lTTfo4vsYSA
+         Rn3OYeRo0eeNk5nK3iT65i/Vl7oZAqxkDGbxUO8zFJxje9gxq/8KyPAeQNWmfUJJlXsQ
+         Kd/t+Tr+QJ7wPo5ZrOCUNKFDGoS8B6XRM6cxrazixVxIQsj1qGw4nX3KVSkr37PE3gva
+         eM72SgcRJTnomQmrmFwtly4wFGNjLHbDjoJ5yq/a5Mm5RBDsrdYEBxkssGPNv35RPyjO
+         njWHxM/g/rqqeHXPh0G4vf3i4uJKVD3ClyX4I+DRcmR9QcB9o246WFFwVPoCDG1Bxqyb
+         aIkw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ah6NwFU2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t18si2665669ywg.332.2017.11.06.03.14.34
+        by mx.google.com with ESMTPS id t7si2747557ywh.747.2017.11.06.06.10.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 06 Nov 2017 03:14:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 06 Nov 2017 06:10:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ah6NwFU2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47491 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:48399 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eBfMP-0003Bb-Ov
-	for alex.bennee@linaro.org; Mon, 06 Nov 2017 06:14:33 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56121)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eBi6v-0002df-9l
+	for alex.bennee@linaro.org; Mon, 06 Nov 2017 09:10:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56331)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eBfLV-0002nv-2j
-	for qemu-devel@nongnu.org; Mon, 06 Nov 2017 06:13:37 -0500
+	(envelope-from <ehabkost@redhat.com>) id 1eBi6k-0002dY-WE
+	for qemu-arm@nongnu.org; Mon, 06 Nov 2017 09:10:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eBfLU-00085j-2K
-	for qemu-devel@nongnu.org; Mon, 06 Nov 2017 06:13:37 -0500
-Received: from mail-wm0-x22b.google.com ([2a00:1450:400c:c09::22b]:56433)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eBfLT-00085A-SP
-	for qemu-devel@nongnu.org; Mon, 06 Nov 2017 06:13:36 -0500
-Received: by mail-wm0-x22b.google.com with SMTP id z3so13347875wme.5
-	for <qemu-devel@nongnu.org>; Mon, 06 Nov 2017 03:13:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=J5GYBzeGBPLRwJGpubYkZw0ss+jgb7Istnpn524eLzE=;
-	b=ah6NwFU24eBV0/BjFe6CPj+LSx6hmZIypuDmdVzQRBAgK+NgnAZ5hxj/zaR9suVzrY
-	L22dFGMmfelKPEVGkCdehwkNfkyRPzfpLLMzAjOurXi8h+aDTYaJME1b8/5QHjss/NTM
-	Syw2XaM4JSOtb+zN6aU2MorLwenL4swwwJdjY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=J5GYBzeGBPLRwJGpubYkZw0ss+jgb7Istnpn524eLzE=;
-	b=HM7aUH2E8sTnQdPetOHLn+wn7RZQc9VTCuz5KK23i4UIlucnEZtJyj2Wb4FVmBsHcX
-	4hpuW8ZdUdYGvV5yCTVt76EJfvHZaF75Sj7KDHDQdFzBPfYPKaXSPDZ6wYFBQZrUNwxI
-	A+sUtl2EXIiVIWIlebsgRE0+DsD/wO4AGzhqbPjMzNdXulj1pc/V8N8qtR8Xa6b+zqf+
-	RJ2OfunV6/5s7us84MJ1eCSvU51T8fPyti+NLM5c+NXHGYdhb5I9s1XwK2evZZqAZnx3
-	c8HvIINYbEL3HrNlyWVV2eqLps6cyGtnpwUxC9V773JlHjvPrXFasv5KWyjUocpRfmmE
-	NSCA==
-X-Gm-Message-State: AJaThX4/kWmpVO5fJaEF0QJ9UHSSJGJl1plrxrJm7CHKeAk0+9GHp10s
-	QoVdCqpeUuUo4QVlAiQHPREUOKk2Mp/zdzxpV0oCSA==
-X-Received: by 10.28.46.136 with SMTP id u130mr4346911wmu.127.1509966814719;
-	Mon, 06 Nov 2017 03:13:34 -0800 (PST)
+	(envelope-from <ehabkost@redhat.com>) id 1eBi6g-0000CL-LK
+	for qemu-arm@nongnu.org; Mon, 06 Nov 2017 09:10:34 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:53498)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1eBi6g-0000Bh-BJ; Mon, 06 Nov 2017 09:10:30 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 711A57F7DA;
+	Mon,  6 Nov 2017 14:10:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 711A57F7DA
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=ehabkost@redhat.com
+Received: from localhost (ovpn-116-35.gru2.redhat.com [10.97.116.35])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id ED1EE60C91;
+	Mon,  6 Nov 2017 14:10:23 +0000 (UTC)
+Date: Mon, 6 Nov 2017 12:10:22 -0200
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: "Emilio G. Cota" <cota@braap.org>
+Message-ID: <20171106141022.GO3111@localhost.localdomain>
+References: <1509734853-3014-1-git-send-email-cota@braap.org>
+	<20171103185610.GA3907@flamenco>
+	<20171103200233.GI3111@localhost.localdomain>
+	<20171103222407.GA22411@flamenco>
 MIME-Version: 1.0
-Received: by 10.223.161.5 with HTTP; Mon, 6 Nov 2017 03:13:14 -0800 (PST)
-In-Reply-To: <0686ba45-7a77-f5b0-537d-07e2c3438e5e@redhat.com>
-References: <1508772937-21054-1-git-send-email-eric.auger@redhat.com>
-	<1508772937-21054-2-git-send-email-eric.auger@redhat.com>
-	<CAFEAcA81ogq6py71ejK7JD52A8LrQz1v92M1HZPCfPVBZy1vww@mail.gmail.com>
-	<0686ba45-7a77-f5b0-537d-07e2c3438e5e@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 6 Nov 2017 11:13:14 +0000
-Message-ID: <CAFEAcA8_yta5s9rsfahqBVBJfqAE_LpU2tmuQz3kcn33OfHsmA@mail.gmail.com>
-To: Auger Eric <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::22b
-Subject: Re: [Qemu-devel] [RFC v2 1/4] hw/intc/arm_gicv3_its: Don't abort on
- table save failure
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20171103222407.GA22411@flamenco>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.9.1 (2017-09-22)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Mon, 06 Nov 2017 14:10:28 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH] hw: add .min_cpus and .default_cpus fields
+ to machine_class
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Wei Huang <wei@redhat.com>, Andrew Jones <drjones@redhat.com>,
-	Vijay Kilari <vijay.kilari@gmail.com>, Juan Quintela <quintela@redhat.com>,
-	qemu-stable <qemu-stable@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>, wu.wubin@huawei.com,
-	wanghaibin.wang@huawei.com, Christoffer Dall <christoffer.dall@linaro.org>,
-	eric.auger.pro@gmail.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /jgCMfi+Vsyb
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
+	Marcel Apfelbaum <marcel@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: NKrioKvlGxy8
 
-On 6 November 2017 at 10:09, Auger Eric <eric.auger@redhat.com> wrote:
-> Hi Peter,
->
-> On 02/11/2017 13:53, Peter Maydell wrote:
->> On 23 October 2017 at 16:35, Eric Auger <eric.auger@redhat.com> wrote:
->>> The ITS is not fully properly reset at the moment. Caches are
->>> not emptied.
->>>
->>> After a reset, in case we attempt to save the state before
->>> the bound devices have registered their MSIs and after the
->>> 1st level table has been allocated by the ITS driver
->>> (device BASER is valid), the first level entries are still
->>> invalid. If the device cache is not empty (devices registered
->>> before the reset), vgic_its_save_device_tables fails with -EINVAL.
->>> This causes a QEMU abort().
->>>
->>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>> Reported-by: wanghaibin <wanghaibin.wang@huawei.com>
->>>
->>> ---
->>>
->>> this patch would deserve being cc'ed stable (2.10)
->>> This goes along with patches 1-5 of
->>> [PATCH v5 00/10] vITS Migration fixes and reset, candidate
->>> for being cc'ed stable
->>> ---
->>
->> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
->>
->> We could/should put this patch into qemu now, right (it's
->> the rest of the series that's RFC) ?
->
-> Yes that's correct.
+On Fri, Nov 03, 2017 at 06:24:07PM -0400, Emilio G. Cota wrote:
+> On Fri, Nov 03, 2017 at 21:02:33 +0100, Eduardo Habkost wrote:
+> > On Fri, Nov 03, 2017 at 02:56:10PM -0400, Emilio G. Cota wrote:
+> > > On Fri, Nov 03, 2017 at 14:47:33 -0400, Emilio G. Cota wrote:
+> > > > diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
+> > > > index e2d15a1..395d1b5 100644
+> > > > --- a/hw/arm/xlnx-zcu102.c
+> > > > +++ b/hw/arm/xlnx-zcu102.c
+> (snip)
+> > > 
+> > > Should we update max_cpus to just NUM_APU_CPUS as well for these boards?
+> > > -smp 5 or 6 (NUM_APU + NUM_RPU) still gets us 4 vCPUs.
+> > > 
+> > > I see there's code for RPU cpus but it seems disabled at compile-time
+> > > at xlnx-zynqmp.c:431:
+> > >    DEFINE_PROP_BOOL("has_rpu", XlnxZynqMPState, has_rpu, false)
+> > > Or is there a run-time way to override this?
+> > 
+> > Device properties can be overridden using -global, e.g.:
+> > 
+> >   -global driver=xlnx,,zynqmp,property=has_rpu,value=on
+> > 
+> > (",," is how commas are escaped in QEMU options)
+> 
+> Very interesting! This raises two separate issues.
+> 
+> 1. Using this feature breaks 55c3cee ("qom: Introduce CPUClass.tcg_initialize",
+>   2017-10-24). For instance:
+> 	qemu-system-aarch64 -machine xlnx-zcu102 \
+> 	 -global driver=xlnx,,zynqmp,property=has_rpu,value=on
+>   This will try to initialize TCG twice. The reason is that the second
+>   set of CPUs (the "RPUs") is of a different "object type name", which ends
+>   up as a different CPUClass. In xlnx-zynqmp.c:
+> 
+>     for (i = 0; i < XLNX_ZYNQMP_NUM_RPU_CPUS; i++) {
+>         char *name;
+> 
+>         object_initialize(&s->rpu_cpu[i], sizeof(s->rpu_cpu[i]),
+>                           "cortex-r5-" TYPE_ARM_CPU);
+>   This hunk only runs when we use the -global override.
+> 
+>   This other hunk always runs. It initializes the "APUs":
+>       for (i = 0; i < XLNX_ZYNQMP_NUM_APU_CPUS; i++) {
+>         object_initialize(&s->apu_cpu[i], sizeof(s->apu_cpu[i]),
+>                           "cortex-a53-" TYPE_ARM_CPU);
+> 
+>   A trivial, ugly fix would be to either use the same "object name"
+>   for both sets of CPUs or (re)introduce a static variable in
+>   arm_translate_init.
+>   I'd prefer to be able to set tcg_initialized field directly for
+>   the RPU's CPUClass. Is that possible? I don't know much about
+>   qom/object code, so any good suggestion here would be appreciated.
 
-OK. I have applied 1/4 (and none of the rest) to target-arm.next,
-with a cc-stable annotation.
+IMO, initialization state doesn't belong to CPUClass.  We already
+have a single accelerator object in MachineState::accelerator,
+and tcg_initialized could be moved to a AccelState::initialized
+field.
 
-thanks
--- PMM
+> 
+> 2. Coming back to the original problem: given that we can get
+>   additional vCPUs, I think we need an additional flag to signal
+>   this. Otherwise we'll have to always do "max_cpus = mc.max_cpus",
+>   which for most machines would be a huge waste of TCG regions.
+>   See delta below.
+> 
+> Thanks,
+> 
+> 		Emilio
+> 
+> diff --git a/include/hw/boards.h b/include/hw/boards.h
+> index 62f160e..8c8ce51 100644
+> --- a/include/hw/boards.h
+> +++ b/include/hw/boards.h
+> @@ -103,6 +103,7 @@ typedef struct {
+>  /**
+>   * MachineClass:
+>   * @max_cpus: maximum number of CPUs supported. Default: 1
+> + * @force_max_cpus: if set, force the global max_cpus to match @max_cpus
+>   * @min_cpus: minimum number of CPUs supported. Default: 1
+>   * @default_cpus: number of CPUs instantiated if none are specified. Default: 1
+>   * @get_hotplug_handler: this function is called during bus-less
+
+If we have a field containing the default value for smp_cpus
+(default_cpus), what about a default_max_cpus field for the
+default value of max_cpus?  This could make the rules a bit
+easier to follow.
+
+(But I wonder if there's a way we can do this without introducing
+another MachineClass field and making the initialization code
+more complex.)
+
+The fact that MachineClass::max_cpus and the 'max_cpus' globals
+have completely different meanings makes this confusing enough.
+Maybe we should rename the 'max_cpus' global variable to
+'max_hotplug_cpus'.
+
+
+> @@ -181,7 +182,8 @@ struct MachineClass {
+>          no_sdcard:1,
+>          has_dynamic_sysbus:1,
+>          pci_allow_0_address:1,
+> -        legacy_fw_cfg_order:1;
+> +        legacy_fw_cfg_order:1,
+> +        force_max_cpus;
+>      int is_default;
+>      const char *default_machine_opts;
+>      const char *default_boot_order;
+> diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
+> index 395d1b5..e406dc3 100644
+> --- a/hw/arm/xlnx-zcu102.c
+> +++ b/hw/arm/xlnx-zcu102.c
+> @@ -186,6 +186,7 @@ static void xlnx_ep108_machine_class_init(ObjectClass *oc, void *data)
+>      mc->units_per_default_bus = 1;
+>      mc->ignore_memory_transaction_failures = true;
+>      mc->max_cpus = XLNX_ZYNQMP_NUM_APU_CPUS + XLNX_ZYNQMP_NUM_RPU_CPUS;
+> +    mc->force_max_cpus = 1;
+>      mc->min_cpus = XLNX_ZYNQMP_NUM_APU_CPUS;
+>      mc->default_cpus = XLNX_ZYNQMP_NUM_APU_CPUS;
+>  }
+> @@ -244,6 +245,7 @@ static void xlnx_zcu102_machine_class_init(ObjectClass *oc, void *data)
+>      mc->units_per_default_bus = 1;
+>      mc->ignore_memory_transaction_failures = true;
+>      mc->max_cpus = XLNX_ZYNQMP_NUM_APU_CPUS + XLNX_ZYNQMP_NUM_RPU_CPUS;
+> +    mc->force_max_cpus = 1;
+>      mc->min_cpus = XLNX_ZYNQMP_NUM_APU_CPUS;
+>      mc->default_cpus = XLNX_ZYNQMP_NUM_APU_CPUS;
+>  }
+> diff --git a/vl.c b/vl.c
+> index 3ca5ee8..a21183d 100644
+> --- a/vl.c
+> +++ b/vl.c
+> @@ -4339,6 +4339,15 @@ int main(int argc, char **argv, char **envp)
+>          max_cpus = machine_class->default_cpus;
+>      }
+>  
+> +    /*
+> +     * Some boards can instantiate additional CPUs, e.g. by overriding
+> +     * device params via -global arguments, so they enforce the value
+> +     * that max_cpus should take.
+> +     */
+> +    if (machine_class->force_max_cpus) {
+> +        max_cpus = machine_class->max_cpus;
+> +    }
+> +
+>      /* sanity-check smp_cpus and max_cpus */
+>      if (smp_cpus < machine_class->min_cpus) {
+>          error_report("Invalid SMP CPUs %d. The min CPUs "
+
+-- 
+Eduardo

@@ -1,94 +1,105 @@
-Received: by 10.223.150.237 with SMTP id u100csp2688178wrb;
-        Mon, 6 Nov 2017 06:10:46 -0800 (PST)
-X-Google-Smtp-Source: ABhQp+QSzDO1991hRKX6InaBNpRIMxEfv0PSW/BDp8hEeINhPJb/IJsgoMEgIljlFBZ0+lBFv9zJ
-X-Received: by 10.129.229.2 with SMTP id s2mr9623249ywl.90.1509977445920;
-        Mon, 06 Nov 2017 06:10:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1509977445; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp2783412wrb;
+        Mon, 6 Nov 2017 07:48:45 -0800 (PST)
+X-Google-Smtp-Source: ABhQp+RzXhaKzxLmOPRDLCf1x9WQ9QrLmLm0Q9cs0OkIPZbsh5LFVAa7mBn0pI80QtQf253xBhAb
+X-Received: by 10.37.28.65 with SMTP id c62mr10248750ybc.301.1509983325581;
+        Mon, 06 Nov 2017 07:48:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1509983325; cv=none;
         d=google.com; s=arc-20160816;
-        b=hjj0LQJhbjKQgr3RHUuYgNmDZr0/yOitFjPLmjerytpG+6symeL3qw7NKEjeN41X4B
-         /QIyp398cdUNX3o2R5L0Jqi7cB1ECHFAOb0yGMXa3gOTLp9093uKUXkYPh1WQQQO2CLX
-         ZQeMYZQEyeeRdgVfoYAn0vafFZLb3xhkGYthGYVvzAEzmDjj4I/vGuVOIveFfTU0ZcYW
-         wfMCBjV2L2gmcncKporHNzKcTkl+kVSPbhAYq6IX+RQq1SPnfI3Dk4lM8l/4DOINzhr6
-         ly/QEM766eXHNjX+Btyg/av6Cs7UxdqRARmGSVAsHbvOnbF9u3t1LsOizVuuGR4lNAl8
-         CHpQ==
+        b=TjitqUyn78XE7xSlng1jNlz9ZTSNOi9qO3gh8tc7x1RstDPVW7Ve4VrpKwHXy1G/xU
+         PHGQAhXnDw6Aqgyn7TbSM7PDiBvPrP4JZs6udekoM12YctMFwSz82rZOAEF5cKvAXDAn
+         /rS48lAbc6AIi0iz6S5ufUtDk8qSHw10nOO4wTIpnujPUs8JG7W//vPH/BVx8ZBE0X7G
+         d8/DlwBRhKulzZZ8gy29p34O3PApDfSmOpqBDRWKmNp8zLbfuc+mjdK0uajLhHPQfjwY
+         dZ+Jb00QPoEq/OPo0q1l6M8EONODb+e16XtfPGuKiRoGcADqTccF2OuOuBXKhv9dmdYY
+         zSTQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dmarc-filter:arc-authentication-results;
-        bh=OiOXhq0GR8aWM7MHWLc0dW/Z/NfsdODoSZPmzVXjmF0=;
-        b=lNf1D7n3GIOJE5LNmBl/4ALeiERAOEGmvI3ve/CfUNbqejTcRhPTHU0lTTfo4vsYSA
-         Rn3OYeRo0eeNk5nK3iT65i/Vl7oZAqxkDGbxUO8zFJxje9gxq/8KyPAeQNWmfUJJlXsQ
-         Kd/t+Tr+QJ7wPo5ZrOCUNKFDGoS8B6XRM6cxrazixVxIQsj1qGw4nX3KVSkr37PE3gva
-         eM72SgcRJTnomQmrmFwtly4wFGNjLHbDjoJ5yq/a5Mm5RBDsrdYEBxkssGPNv35RPyjO
-         njWHxM/g/rqqeHXPh0G4vf3i4uJKVD3ClyX4I+DRcmR9QcB9o246WFFwVPoCDG1Bxqyb
-         aIkw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=ns/VTSSJDM8QxFDFgYy70kNSnTqY+1rSy92OOo54vl8=;
+        b=oPqwqjAWSO9YacLCiospJvxMDN85kEM7JihneRtkytMCBv0ZCPkrHuP1iCOkNdmPxp
+         licIUurN8LMwdJEFcGZ/ELJsLUd16dhxU8vPZenowpqupXdLmcS8LrCWGhP3ZUMS6QEC
+         X7hU41iX0QL3KO73rwd/yEpX6y9HjRDnSmL/6t1cc2hnKFuZ5k1K/mpx5qIZUcK8/y21
+         imlExSL3qihJbTaZ7HEMETwx54wBSXGvNjlt3tNSB/rK8TJV7BdsdW/4JkQrp8795/GH
+         n3Bv8i1d/Y0nkeMrJQz34ShpUwzli4GetRFU9TJZO2PB554xKDy0J4mSCYRbMlTPEwCd
+         ktCA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KwI57nCN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t7si2747557ywh.747.2017.11.06.06.10.45
+        by mx.google.com with ESMTPS id 203si861097ywr.412.2017.11.06.07.48.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 06 Nov 2017 06:10:45 -0800 (PST)
+        Mon, 06 Nov 2017 07:48:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KwI57nCN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48399 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:48757 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eBi6v-0002df-9l
-	for alex.bennee@linaro.org; Mon, 06 Nov 2017 09:10:45 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56331)
+	id 1eBjdl-00071K-11
+	for alex.bennee@linaro.org; Mon, 06 Nov 2017 10:48:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33275)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1eBi6k-0002dY-WE
-	for qemu-arm@nongnu.org; Mon, 06 Nov 2017 09:10:39 -0500
+	(envelope-from <andrew.smirnov@gmail.com>) id 1eBjdZ-00070h-G3
+	for qemu-arm@nongnu.org; Mon, 06 Nov 2017 10:48:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1eBi6g-0000CL-LK
-	for qemu-arm@nongnu.org; Mon, 06 Nov 2017 09:10:34 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:53498)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1eBi6g-0000Bh-BJ; Mon, 06 Nov 2017 09:10:30 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 711A57F7DA;
-	Mon,  6 Nov 2017 14:10:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 711A57F7DA
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=ehabkost@redhat.com
-Received: from localhost (ovpn-116-35.gru2.redhat.com [10.97.116.35])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id ED1EE60C91;
-	Mon,  6 Nov 2017 14:10:23 +0000 (UTC)
-Date: Mon, 6 Nov 2017 12:10:22 -0200
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: "Emilio G. Cota" <cota@braap.org>
-Message-ID: <20171106141022.GO3111@localhost.localdomain>
-References: <1509734853-3014-1-git-send-email-cota@braap.org>
-	<20171103185610.GA3907@flamenco>
-	<20171103200233.GI3111@localhost.localdomain>
-	<20171103222407.GA22411@flamenco>
+	(envelope-from <andrew.smirnov@gmail.com>) id 1eBjdW-0000Lu-Cg
+	for qemu-arm@nongnu.org; Mon, 06 Nov 2017 10:48:33 -0500
+Received: from mail-pg0-x243.google.com ([2607:f8b0:400e:c05::243]:44211)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
+	id 1eBjdW-0000Lf-70; Mon, 06 Nov 2017 10:48:30 -0500
+Received: by mail-pg0-x243.google.com with SMTP id j3so8524898pga.1;
+	Mon, 06 Nov 2017 07:48:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=ns/VTSSJDM8QxFDFgYy70kNSnTqY+1rSy92OOo54vl8=;
+	b=KwI57nCN6UlDYzOsOJmOk7Xbqu4beG9kUX0qXYA56VNYa72S7YrJNKacsuqk4nzvuY
+	EQjiOlQ/+nRtSNr6QnAs73xOq4FL6desXXHXnTtbH58ZEsoeRkuIAlb4/VYYry4qBQjW
+	TrvU8ItWPn0VrXvo27kZ6WItQSLzjW2SpPdokXcR/oCWBtIzJ1gh+aWaPZMcJZFYgdxK
+	7keqm1+kZ8bwgowviglJ4DV4qUTEh0uAmWvITm602qS1PIdsN3mr1Oyweiq3ZEqkdJjC
+	Cj/UChkZjPGzhRk6aZf16P6J8zN1t1q7+01hO4o+vNRepKhPyLFw2bKM0bMNbDyyZBOK
+	4zhg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references:mime-version:content-transfer-encoding;
+	bh=ns/VTSSJDM8QxFDFgYy70kNSnTqY+1rSy92OOo54vl8=;
+	b=R0Ogw3NGldveboX+M40/6VkfvRzbH6lb2+w3y/PHmXD1JrfDewg/BEXwO13aAqqt2Q
+	de7FTM1UhSF7i6M8QdndtMV0/DcJ6IlTRfwsiUoRcT4+4ASQ6wSkpE088/bjFcCnwcpq
+	dZPXwjx/b+GFnW/SVGTtuaeE2dsUqIyLG1HPybFw1RmHdzbmGJH8fp751S9BRZ8iZ+hS
+	GdjaMEV6trhJ/Zt2b4GZwHuVezMNxWYgYpospdSpb61EO4lq2YtxOPCpJNyZs2UFzssZ
+	TEbVxhrY5X60wnQcmDX5Jj7yMcisxmbw1CgX1DrFIELA12hpNhVDpLOzWnqUdvX5+7bq
+	vaJg==
+X-Gm-Message-State: AMCzsaWTt4XUT5nh9VJrpV4bd2EsEJCUBO+8o2zTDM2NB4k/LELZYw/G
+	NGN7XU9hjXWjAXYdoxZH3orwxWzBgk8=
+X-Received: by 10.98.158.211 with SMTP id f80mr17037515pfk.156.1509983308836; 
+	Mon, 06 Nov 2017 07:48:28 -0800 (PST)
+Received: from squirtle.lan (c-24-22-235-96.hsd1.wa.comcast.net.
+	[24.22.235.96]) by smtp.gmail.com with ESMTPSA id
+	x1sm22719590pfh.113.2017.11.06.07.48.27
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Mon, 06 Nov 2017 07:48:28 -0800 (PST)
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+To: qemu-arm@nongnu.org
+Date: Mon,  6 Nov 2017 07:47:44 -0800
+Message-Id: <20171106154813.19936-2-andrew.smirnov@gmail.com>
+X-Mailer: git-send-email 2.13.6
+In-Reply-To: <20171106154813.19936-1-andrew.smirnov@gmail.com>
+References: <20171106154813.19936-1-andrew.smirnov@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20171103222407.GA22411@flamenco>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.9.1 (2017-09-22)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Mon, 06 Nov 2017 14:10:28 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH] hw: add .min_cpus and .default_cpus fields
- to machine_class
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c05::243
+Subject: [Qemu-arm] [PATCH v3 01/30] imx_fec: Do not link to netdev
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,163 +111,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
-	Marcel Apfelbaum <marcel@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>,
+	Jason Wang <jasowang@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, yurovsky@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NKrioKvlGxy8
+X-TUID: BCjJmQC+pgvJ
 
-On Fri, Nov 03, 2017 at 06:24:07PM -0400, Emilio G. Cota wrote:
-> On Fri, Nov 03, 2017 at 21:02:33 +0100, Eduardo Habkost wrote:
-> > On Fri, Nov 03, 2017 at 02:56:10PM -0400, Emilio G. Cota wrote:
-> > > On Fri, Nov 03, 2017 at 14:47:33 -0400, Emilio G. Cota wrote:
-> > > > diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
-> > > > index e2d15a1..395d1b5 100644
-> > > > --- a/hw/arm/xlnx-zcu102.c
-> > > > +++ b/hw/arm/xlnx-zcu102.c
-> (snip)
-> > > 
-> > > Should we update max_cpus to just NUM_APU_CPUS as well for these boards?
-> > > -smp 5 or 6 (NUM_APU + NUM_RPU) still gets us 4 vCPUs.
-> > > 
-> > > I see there's code for RPU cpus but it seems disabled at compile-time
-> > > at xlnx-zynqmp.c:431:
-> > >    DEFINE_PROP_BOOL("has_rpu", XlnxZynqMPState, has_rpu, false)
-> > > Or is there a run-time way to override this?
-> > 
-> > Device properties can be overridden using -global, e.g.:
-> > 
-> >   -global driver=xlnx,,zynqmp,property=has_rpu,value=on
-> > 
-> > (",," is how commas are escaped in QEMU options)
-> 
-> Very interesting! This raises two separate issues.
-> 
-> 1. Using this feature breaks 55c3cee ("qom: Introduce CPUClass.tcg_initialize",
->   2017-10-24). For instance:
-> 	qemu-system-aarch64 -machine xlnx-zcu102 \
-> 	 -global driver=xlnx,,zynqmp,property=has_rpu,value=on
->   This will try to initialize TCG twice. The reason is that the second
->   set of CPUs (the "RPUs") is of a different "object type name", which ends
->   up as a different CPUClass. In xlnx-zynqmp.c:
-> 
->     for (i = 0; i < XLNX_ZYNQMP_NUM_RPU_CPUS; i++) {
->         char *name;
-> 
->         object_initialize(&s->rpu_cpu[i], sizeof(s->rpu_cpu[i]),
->                           "cortex-r5-" TYPE_ARM_CPU);
->   This hunk only runs when we use the -global override.
-> 
->   This other hunk always runs. It initializes the "APUs":
->       for (i = 0; i < XLNX_ZYNQMP_NUM_APU_CPUS; i++) {
->         object_initialize(&s->apu_cpu[i], sizeof(s->apu_cpu[i]),
->                           "cortex-a53-" TYPE_ARM_CPU);
-> 
->   A trivial, ugly fix would be to either use the same "object name"
->   for both sets of CPUs or (re)introduce a static variable in
->   arm_translate_init.
->   I'd prefer to be able to set tcg_initialized field directly for
->   the RPU's CPUClass. Is that possible? I don't know much about
->   qom/object code, so any good suggestion here would be appreciated.
+Binding to a particular netdev doesn't seem to belong to this layer
+and should probably be done as a part of board or SoC specific code.
 
-IMO, initialization state doesn't belong to CPUClass.  We already
-have a single accelerator object in MachineState::accelerator,
-and tcg_initialized could be moved to a AccelState::initialized
-field.
+Convert all of the users of this IP block to use
+qdev_set_nic_properties() instead.
 
-> 
-> 2. Coming back to the original problem: given that we can get
->   additional vCPUs, I think we need an additional flag to signal
->   this. Otherwise we'll have to always do "max_cpus = mc.max_cpus",
->   which for most machines would be a huge waste of TCG regions.
->   See delta below.
-> 
-> Thanks,
-> 
-> 		Emilio
-> 
-> diff --git a/include/hw/boards.h b/include/hw/boards.h
-> index 62f160e..8c8ce51 100644
-> --- a/include/hw/boards.h
-> +++ b/include/hw/boards.h
-> @@ -103,6 +103,7 @@ typedef struct {
->  /**
->   * MachineClass:
->   * @max_cpus: maximum number of CPUs supported. Default: 1
-> + * @force_max_cpus: if set, force the global max_cpus to match @max_cpus
->   * @min_cpus: minimum number of CPUs supported. Default: 1
->   * @default_cpus: number of CPUs instantiated if none are specified. Default: 1
->   * @get_hotplug_handler: this function is called during bus-less
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Jason Wang <jasowang@redhat.com>
+Cc: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Cc: yurovsky@gmail.com
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
+---
+ hw/arm/fsl-imx6.c | 1 +
+ hw/net/imx_fec.c  | 2 --
+ 2 files changed, 1 insertion(+), 2 deletions(-)
 
-If we have a field containing the default value for smp_cpus
-(default_cpus), what about a default_max_cpus field for the
-default value of max_cpus?  This could make the rules a bit
-easier to follow.
-
-(But I wonder if there's a way we can do this without introducing
-another MachineClass field and making the initialization code
-more complex.)
-
-The fact that MachineClass::max_cpus and the 'max_cpus' globals
-have completely different meanings makes this confusing enough.
-Maybe we should rename the 'max_cpus' global variable to
-'max_hotplug_cpus'.
-
-
-> @@ -181,7 +182,8 @@ struct MachineClass {
->          no_sdcard:1,
->          has_dynamic_sysbus:1,
->          pci_allow_0_address:1,
-> -        legacy_fw_cfg_order:1;
-> +        legacy_fw_cfg_order:1,
-> +        force_max_cpus;
->      int is_default;
->      const char *default_machine_opts;
->      const char *default_boot_order;
-> diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
-> index 395d1b5..e406dc3 100644
-> --- a/hw/arm/xlnx-zcu102.c
-> +++ b/hw/arm/xlnx-zcu102.c
-> @@ -186,6 +186,7 @@ static void xlnx_ep108_machine_class_init(ObjectClass *oc, void *data)
->      mc->units_per_default_bus = 1;
->      mc->ignore_memory_transaction_failures = true;
->      mc->max_cpus = XLNX_ZYNQMP_NUM_APU_CPUS + XLNX_ZYNQMP_NUM_RPU_CPUS;
-> +    mc->force_max_cpus = 1;
->      mc->min_cpus = XLNX_ZYNQMP_NUM_APU_CPUS;
->      mc->default_cpus = XLNX_ZYNQMP_NUM_APU_CPUS;
->  }
-> @@ -244,6 +245,7 @@ static void xlnx_zcu102_machine_class_init(ObjectClass *oc, void *data)
->      mc->units_per_default_bus = 1;
->      mc->ignore_memory_transaction_failures = true;
->      mc->max_cpus = XLNX_ZYNQMP_NUM_APU_CPUS + XLNX_ZYNQMP_NUM_RPU_CPUS;
-> +    mc->force_max_cpus = 1;
->      mc->min_cpus = XLNX_ZYNQMP_NUM_APU_CPUS;
->      mc->default_cpus = XLNX_ZYNQMP_NUM_APU_CPUS;
->  }
-> diff --git a/vl.c b/vl.c
-> index 3ca5ee8..a21183d 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -4339,6 +4339,15 @@ int main(int argc, char **argv, char **envp)
->          max_cpus = machine_class->default_cpus;
->      }
->  
-> +    /*
-> +     * Some boards can instantiate additional CPUs, e.g. by overriding
-> +     * device params via -global arguments, so they enforce the value
-> +     * that max_cpus should take.
-> +     */
-> +    if (machine_class->force_max_cpus) {
-> +        max_cpus = machine_class->max_cpus;
-> +    }
-> +
->      /* sanity-check smp_cpus and max_cpus */
->      if (smp_cpus < machine_class->min_cpus) {
->          error_report("Invalid SMP CPUs %d. The min CPUs "
-
+diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
+index 26fd214004..2ed7146c52 100644
+--- a/hw/arm/fsl-imx6.c
++++ b/hw/arm/fsl-imx6.c
+@@ -385,6 +385,7 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+                                             spi_table[i].irq));
+     }
+ 
++    qdev_set_nic_properties(DEVICE(&s->eth), &nd_table[0]);
+     object_property_set_bool(OBJECT(&s->eth), true, "realized", &err);
+     if (err) {
+         error_propagate(errp, err);
+diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+index 90e6ee35ba..88b4b049d7 100644
+--- a/hw/net/imx_fec.c
++++ b/hw/net/imx_fec.c
+@@ -1171,8 +1171,6 @@ static void imx_eth_realize(DeviceState *dev, Error **errp)
+ 
+     qemu_macaddr_default_if_unset(&s->conf.macaddr);
+ 
+-    s->conf.peers.ncs[0] = nd_table[0].netdev;
+-
+     s->nic = qemu_new_nic(&imx_eth_net_info, &s->conf,
+                           object_get_typename(OBJECT(dev)),
+                           DEVICE(dev)->id, s);
 -- 
-Eduardo
+2.13.6
+

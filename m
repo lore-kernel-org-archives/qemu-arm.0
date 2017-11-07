@@ -1,153 +1,90 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id l16sm12961256wma.19.2017.11.09.06.50.44
+        by smtp.gmail.com with ESMTPSA id c143sm12618980wmd.0.2017.11.07.07.06.09
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 09 Nov 2017 06:50:45 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 618723E0126;
-	Thu,  9 Nov 2017 14:50:44 +0000 (GMT)
-References: <20171107150558.22131-1-alex.bennee@linaro.org> <20171107150558.22131-8-alex.bennee@linaro.org> <20171109122144.GA22781@e103592.cambridge.arm.com>
-User-agent: mu4e 1.0-alpha0; emacs 26.0.90
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Dave Martin <Dave.Martin@arm.com>
-Cc: "peter.maydell\@linaro.org" <peter.maydell@linaro.org>, "qemu-devel\@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm\@nongnu.org" <qemu-arm@nongnu.org>
-Subject: Re: [RISU PATCH 07/10] risugen: add --sve support
-In-reply-to: <20171109122144.GA22781@e103592.cambridge.arm.com>
-Date: Thu, 09 Nov 2017 14:50:44 +0000
-Message-ID: <87a7zvqzej.fsf@linaro.org>
+        Tue, 07 Nov 2017 07:06:10 -0800 (PST)
+Received: from zen.linaroharston (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTP id 878893E02F1;
+	Tue,  7 Nov 2017 15:06:09 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: peter.maydell@linaro.org
+Cc: Dave.Martin@arm.com,
+	qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [RISU PATCH 00/10] Initial support for SVE
+Date: Tue,  7 Nov 2017 15:05:48 +0000
+Message-Id: <20171107150558.22131-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.14.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: mSyYczgv8Kwn
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: JhN9nNYzX9ZV
+
+Hi,
+
+These patches apply on-top of the last clean-up series:
+
+  Subject: [RISU PATCH 0/7] Add @Group support and some aarch64.risu cleanups
+  Date: Tue, 31 Oct 2017 14:54:37 +0000
+  Message-Id: <20171031145444.13766-1-alex.bennee@linaro.org>
+
+This series adds support for SVE to RISU. Most of the initial patches
+are plumbing changes to better support arch specific option flags
+(cleaning up a TODO in the process). I also needed to ensure configure
+actually honoured CPPFLAGS so it could be passed yet to be released
+headers.
+
+The actual guts of the SVE support is in 3 patches. One to risugen so
+it can generate random values for the vector registers. If this isn't
+done you get inconsistent runs because of left over junk in the
+registers. The remaining two patches add support for copying the SVE
+vectors from the signal context and dumping any differences found.
+
+To test this I ran on the Foundation model with:
+
+  ${RTSM_MODEL} --no-secure-memory --gicv3 --data=${BL1_FIRMWARE}@0x0 --data=${FIP_FIRMWARE}@0x8000000 \
+                --semihost --network nat --network-nat-ports=8022=22 --block-device ${DISK_IMAGE}
+
+With my hacked up copy of secure firmware to ensure SVE is enabled.
+You also need a kernel with SVE support:
+
+  Subject: [PATCH v5 00/30] ARM Scalable Vector Extension (SVE)
+  Date: Tue, 31 Oct 2017 15:50:52 +0000
+  Message-Id: <1509465082-30427-1-git-send-email-Dave.Martin@arm.com>
+
+My testing so far has been to ensure that each run on the foundation
+model is deterministic (same m5sum on each trace) and that differences
+are printed out when the user-space vector length is tweaked
+(/proc/sys/abi/sve_default_vector_length).
 
 
-Dave Martin <Dave.Martin@arm.com> writes:
+Alex Bennée (10):
+  build-all-arches: drop -t (for tty) from docker invocation
+  risu.c: split out setting up options
+  risu.c: add missing --trace longopt
+  risu: move optional args to each architecture
+  configure: allow repeated invocation of configure in build dir
+  configure: support CPPFLAGS
+  risugen: add --sve support
+  aarch64.risu: initial SVE instruction
+  risu_reginfo_aarch64: add reginfo_copy_sve
+  risu_reginfo_aarch64: add SVE support to reginfo_dump_mismatch
 
-> On Tue, Nov 07, 2017 at 03:05:55PM +0000, Alex Benn=C3=A9e wrote:
->> This is similar to the approach used by the FP/simd data in so far as
->> we generate a block of random data and then load into it. As there are
->> no post-index SVE operations we need to emit an additional incp
->> instruction to generate our offset into the array.
->>
->> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->> ---
->>  risugen        |  3 +++
->>  risugen_arm.pm | 57 ++++++++++++++++++++++++++++++++++++++++++++++++++-=
-------
->>  2 files changed, 53 insertions(+), 7 deletions(-)
->>
->> diff --git a/risugen b/risugen
->> index aba4bb7..0ac8e86 100755
->> --- a/risugen
->> +++ b/risugen
->> @@ -317,6 +317,7 @@ sub main()
->>      my $condprob =3D 0;
->>      my $fpscr =3D 0;
->>      my $fp_enabled =3D 1;
->> +    my $sve_enabled =3D 1;
->>      my $big_endian =3D 0;
->>      my ($infile, $outfile);
->>
->> @@ -334,6 +335,7 @@ sub main()
->>                  },
->>                  "be" =3D> sub { $big_endian =3D 1; },
->>                  "no-fp" =3D> sub { $fp_enabled =3D 0; },
->> +                "sve" =3D> sub { $sve_enabled =3D 1; },
->>          ) or return 1;
->>      # allow "--pattern re,re" and "--pattern re --pattern re"
->>      @pattern_re =3D split(/,/,join(',',@pattern_re));
->> @@ -361,6 +363,7 @@ sub main()
->>          'fpscr' =3D> $fpscr,
->>          'numinsns' =3D> $numinsns,
->>          'fp_enabled' =3D> $fp_enabled,
->> +        'sve_enabled' =3D> $sve_enabled,
->>          'outfile' =3D> $outfile,
->>          'details' =3D> \%insn_details,
->>          'keys' =3D> \@insn_keys,
->> diff --git a/risugen_arm.pm b/risugen_arm.pm
->> index 2f10d58..8d1e1fd 100644
->> --- a/risugen_arm.pm
->> +++ b/risugen_arm.pm
->> @@ -472,9 +472,47 @@ sub write_random_aarch64_fpdata()
->>      }
->>  }
->>
->> -sub write_random_aarch64_regdata($)
->> +sub write_random_aarch64_svedata()
->>  {
->> -    my ($fp_enabled) =3D @_;
->> +    # Load SVE registers
->> +    my $align =3D 16;
->> +    my $vl =3D 16;                             # number of vqs
->
-> Would this be better phrased
->
-> 	my $vq =3D 16;				# quadwords per vector
->
->> +    my $datalen =3D (32 * $vl * 16) + $align;
->> +
->> +    write_pc_adr(0, (3 * 4) + ($align - 1)); # insn 1
->> +    write_align_reg(0, $align);              # insn 2
->> +    write_jump_fwd($datalen);                # insn 3
->> +
->> +    # align safety
->> +    for (my $i =3D 0; $i < ($align / 4); $i++) {
->> +        # align with nops
->> +        insn32(0xd503201f);
->> +    };
->> +
->> +    for (my $rt =3D 0; $rt <=3D 31; $rt++) {
->> +        for (my $q =3D 0; $q < $vl; $q++) {
->> +            write_random_fpreg_var(4); # quad
->> +        }
->> +    }
->> +
->> +    # Reset all the predicate registers to all true
->> +    for (my $p =3D 0; $p < 16; $p++) {
->> +        insn32(0x2518e3e0 | $p);
->> +    }
->> +
->> +    # there is no post index load so we do this by hand
->> +    write_mov_ri(1, 0);
->> +    for (my $rt =3D 0; $rt <=3D 31; $rt++) {
->> +        # ld1d    z0.d, p0/z, [x0, x1, lsl #3]
->> +        insn32(0xa5e14000 | $rt);
->> +        # incp    x1, p0.d
->> +        insn32(0x25ec8801);
->
-> You could avoid this with the unpredicated form LDR (vector).
-> (LD1x scalar+immediate doesn't provide enough immediate range).
->
-> 	# ldr	z$rt, [x0, #$rt, mul vl]
-> 	insn32(0x85804000 + $rt + (($rt & 7) << 10) + (($rt & 0x18) << 13));
->
-> which is what the kernel does.
+ README                 |   6 +++
+ aarch64.risu           |  24 ++++++++++
+ build-all-archs        |   2 +-
+ configure              |   5 +-
+ risu.c                 |  57 +++++++++++++++++-----
+ risu.h                 |   6 ++-
+ risu_reginfo_aarch64.c | 126 +++++++++++++++++++++++++++++++++++++++++++++++++
+ risu_reginfo_aarch64.h |   8 ++++
+ risu_reginfo_arm.c     |  11 +++++
+ risu_reginfo_m68k.c    |   3 ++
+ risu_reginfo_ppc64.c   |   3 ++
+ risugen                |   3 ++
+ risugen_arm.pm         |  57 +++++++++++++++++++---
+ 13 files changed, 286 insertions(+), 25 deletions(-)
 
-Ahh thanks.
-
-> No harm in exercising different instructions though!  The kernel uses
-> embarrassingly few.
-
-Well that's what the actual random instructions are for. I haven't yet
-considered if we need to group things together to properly exercise the
-predicate code. So far RISU doesn't exercise conditional branches as
-it's hard to do that without generating code that would lock up. It's
-very much the "easy 80%" of instructions we target.
-
-> Does it matter that the stride will depend on the actual current VL?
-> If x0 just points to a block of random data, I guess it doesn't matter:
-> some trailing data remains unused, but that doesn't make the used data
-> any less random.
-
-Not really. We do try and re-generate every N instructions so all the
-floats don't just denormalise.
-
->
-> [...]
->
-> Cheers
-> ---Dave
-
-
---
-Alex Benn=C3=A9e
+-- 
+2.14.2

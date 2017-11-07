@@ -1,80 +1,97 @@
-Received: by 10.223.150.237 with SMTP id u100csp318423wrb;
-        Tue, 7 Nov 2017 09:57:53 -0800 (PST)
-X-Google-Smtp-Source: ABhQp+QhAGhCsnKbt1jsHQnTiSxFQJwJsxnQi1T19ywukr61893WmCnLpHTh7PQJ7jezll0ASTag
-X-Received: by 10.129.99.195 with SMTP id x186mr12304346ywb.30.1510077473260;
-        Tue, 07 Nov 2017 09:57:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510077473; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp324948wrb;
+        Tue, 7 Nov 2017 10:03:22 -0800 (PST)
+X-Google-Smtp-Source: ABhQp+RKGImhTPKgTdE4OwoCJrlQZDbSjI+a3PShFSYxFNJ7egF7Bz2UFr8ylz59usU4+iv6Jq4i
+X-Received: by 10.129.34.196 with SMTP id i187mr12705700ywi.487.1510077802611;
+        Tue, 07 Nov 2017 10:03:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510077802; cv=none;
         d=google.com; s=arc-20160816;
-        b=PmlbtntNmfM6vO0f43ypPL9XAmqb4agR9E86Ks9OAJaj42f+0tFFgd9Qy2bDRL+3Ry
-         YXYirddmfXZsT38U5LzQv65o/KPrd2bIfFNqz0izEcIQijaMKT0YS95t3EzTvl/y7PEK
-         IviN+XQnObGoKDc8zhmuvn6/QoYr0Rl7//oxs66S1eBcvTAk3cPDWiJTA/CsngetC77t
-         74h/Lp/SojXpmzZojMySEPDAJQRfs/ggumehNXWZ+pmMpOp1uq51nN+Ktqbowelc6MGr
-         ipjhTqKgH96Cne6bcckuob2SW2tOOKwz7ZELNfpMJRe651epiO67WVJ9qCMd1lZER5LB
-         k7Bw==
+        b=jviTd2XcpIL0+ehTI7pDwck1s+KYwL4mvsfUub1lcPRTLeXIZSphkfLitz4Gf/Uw3m
+         UVW0o/3XLEaB5ofi3Aw1QgzlIKdduh6nFz/F3wvzF5OJ1dm+N64bgTUo+W83/ftJDNo0
+         V+AZVX6umofXeMmFhtKP9M5//vQtwENATusn6n0vSNG0WBVd6LKD8fS+yVNKeI/BLZG5
+         0E8IgRoDw2GOVZl5yTllgvxD8phSnnwWm/4lKLJPCTr4guNScSHOAkH0zDSOg2RoXE23
+         HcUHrTZ/udRYkFryUGZF1GVf+vCTe5wbjN6RSgfl5UeJYNS2kktPu9k2oK0+2B7+tFIS
+         1iIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
-         :references:message-id:in-reply-to:to:from:date:dmarc-filter
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=CjGf9AOEJVefnJa4TwGVLUgz1a2vhtOSjEOUAmqDOnI=;
-        b=yKIE+aU27YdrEucUQAyIN0ICYwtjzRWHbbpH9LnJ9FMpAXBes4TuI6DLM5ZtKaRMSU
-         5CkX3aiUMfYZqqbuKBy45fxXnYdP0qbqnLRKG0gRJ4mQDDGmK8zfyqsLLOXDe8kmozPb
-         qRyqff4ZEacxemqNiwoYafs/jqeruZ7pd/3Yd6u2a18eV30rzMyYJmEka1TKugRPkk6R
-         uicgZCzpv250ES8O3fyB3gWnBFO24k6EkapbpWnQVM7/GFVeQEObJ2OrhAckDZ5ouhKV
-         HW4FCRgkEYZejp2LVZ2rlietpxe1VfiuhF7QZ/FxL7GYqoAVy6fSPDr8/uHoFLPZrf1r
-         BqVg==
+        bh=/LPldSJW2NTs92rrLwMAmtpbzUHFdier1QMiIrm2BXA=;
+        b=JwUv06BqkQI0cuCMBa6m9SWGlC6BmjQruvDAxXrzy8rD0wjrSd02SyVYWyoyCbczO5
+         c+LP7eI8/bXuuXn7FDcfhQtAxN/llE0nptSthFK4QL6Bfi1pvzs4bbAa/Cf62p0r4jHO
+         rT9My6XTK62zsSFj6mFeCYh1+XxY/ZB1vahwMfsxM2v3+j9IGZ5QuxRhv/A88LXFIISo
+         R51j7TlBOnJws/zSVO9DJEzx2UkvJoyxWDfDLXmitJQfzSTHYZWFtT+Jv88hMw7ebQI+
+         QtSA2tn1a927QKCd/o2DgKfprMqPoLSQlB8qJDmLLRfWebbEL28ch57DxyD78LvUS8IG
+         NR2A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@linaro.org header.s=google header.b=LxFSZBSf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 194si375339ybl.242.2017.11.07.09.57.52
+        by mx.google.com with ESMTPS id t12si412238ybt.71.2017.11.07.10.03.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 07 Nov 2017 09:57:53 -0800 (PST)
+        Tue, 07 Nov 2017 10:03:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:55176 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=LxFSZBSf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55204 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eC88G-0006Fb-IJ
-	for alex.bennee@linaro.org; Tue, 07 Nov 2017 12:57:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42229)
+	id 1eC8Da-000064-2E
+	for alex.bennee@linaro.org; Tue, 07 Nov 2017 13:03:22 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43491)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sstabellini@kernel.org>) id 1eC888-0006FH-1B
-	for qemu-arm@nongnu.org; Tue, 07 Nov 2017 12:57:44 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1eC8C7-0007ZF-7l
+	for qemu-arm@nongnu.org; Tue, 07 Nov 2017 13:01:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sstabellini@kernel.org>) id 1eC884-0005aD-S9
-	for qemu-arm@nongnu.org; Tue, 07 Nov 2017 12:57:44 -0500
-Received: from mail.kernel.org ([198.145.29.99]:53166)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <sstabellini@kernel.org>)
-	id 1eC884-0005Zb-Jc; Tue, 07 Nov 2017 12:57:40 -0500
-Received: from sstabellini-ThinkPad-X260.attlocal.net
-	(162-198-228-37.lightspeed.wlfrct.sbcglobal.net [162.198.228.37])
-	(using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 23C4F218D0;
-	Tue,  7 Nov 2017 17:57:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 23C4F218D0
-Authentication-Results: mail.kernel.org;
-	dmarc=none (p=none dis=none) header.from=kernel.org
-Authentication-Results: mail.kernel.org;
-	spf=none smtp.mailfrom=sstabellini@kernel.org
-Date: Tue, 7 Nov 2017 09:57:38 -0800 (PST)
-From: Stefano Stabellini <sstabellini@kernel.org>
-X-X-Sender: sstabellini@sstabellini-ThinkPad-X260
-To: Peter Maydell <peter.maydell@linaro.org>
-In-Reply-To: <CAFEAcA9txp80bxgV5dYCPx7xoxqgutpbLyZ7PDkkL_OfVjSxYA@mail.gmail.com>
-Message-ID: <alpine.DEB.2.10.1711070957150.30448@sstabellini-ThinkPad-X260>
+	(envelope-from <peter.maydell@linaro.org>) id 1eC8C1-0000fe-JJ
+	for qemu-arm@nongnu.org; Tue, 07 Nov 2017 13:01:51 -0500
+Received: from mail-wr0-x233.google.com ([2a00:1450:400c:c0c::233]:48051)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1eC8C1-0000dS-Di
+	for qemu-arm@nongnu.org; Tue, 07 Nov 2017 13:01:45 -0500
+Received: by mail-wr0-x233.google.com with SMTP id k61so62470wrc.4
+	for <qemu-arm@nongnu.org>; Tue, 07 Nov 2017 10:01:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=/LPldSJW2NTs92rrLwMAmtpbzUHFdier1QMiIrm2BXA=;
+	b=LxFSZBSftnV9NagnZ6VmB3fUomndNpjMqHs2j6NOGULXIN1k7lw1aRC2A4TAt9EQj9
+	NTrrHjghC0Yw/B4vAjlw4il+UUs8thrktZW7Lg8NoyJS2BaqdmdjStraXLESACkAMuBn
+	pGzZSGItycYvsO8s89wWJZFbBM3pQ9CWlFFK4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=/LPldSJW2NTs92rrLwMAmtpbzUHFdier1QMiIrm2BXA=;
+	b=GCz/Q7UWf3T1zXobjc1P3CFbqf3BfckE/cj2FrdbTur0igPsApLvaB8DafKkJh6zHG
+	7IcIP/iXpHOiuuz/I6AbHMdAEv5RrTk1ICNiLMihgOTpE2YQenCbAymqN8a3to4ih4Sq
+	pgjTz4WiddqEeJ5Zmg1Cwu37cfDouqCDj4DawenpOmg7AwdY7VCHrkD6zUoZ5JNevk66
+	TQNCHkVwCXgAGOQInc0EXQqh/fNjSAPOy9+9Gs8X7N+ksHtK4esBA+piEj7c50HVJ8pn
+	wVwGBKYihQo0W3xSh1ZAbbcJCMC3lTYiCjzLbwDXA455STxiz1n+F3xXtCFpiKyaDK0h
+	r8zw==
+X-Gm-Message-State: AJaThX68uZKLsdk93Pax/+rgbademKE/p9xAkV9HEwCHRuiP+P2s8wqc
+	ORvuRvt/dDhGKIuVAFaJxFeqZqnE34NCBr4QYbqFZA==
+X-Received: by 10.223.151.212 with SMTP id t20mr2229038wrb.2.1510077704258;
+	Tue, 07 Nov 2017 10:01:44 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.223.161.5 with HTTP; Tue, 7 Nov 2017 10:01:23 -0800 (PST)
+In-Reply-To: <alpine.DEB.2.10.1711070957150.30448@sstabellini-ThinkPad-X260>
 References: <alpine.DEB.2.10.1711061412330.30448@sstabellini-ThinkPad-X260>
 	<CAFEAcA9txp80bxgV5dYCPx7xoxqgutpbLyZ7PDkkL_OfVjSxYA@mail.gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 198.145.29.99
+	<alpine.DEB.2.10.1711070957150.30448@sstabellini-ThinkPad-X260>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 7 Nov 2017 18:01:23 +0000
+Message-ID: <CAFEAcA8=Yrn53odaaSp+fvZ96sdLX4B5ZGZqf8FgYNjpCwYE+w@mail.gmail.com>
+To: Stefano Stabellini <sstabellini@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::233
 Subject: Re: [Qemu-arm] [PATCH v2] aarch64: advertise the GIC system
  register interface
 X-BeenThere: qemu-arm@nongnu.org
@@ -88,47 +105,28 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: julien.grall@arm.com, Stefano Stabellini <sstabellini@kernel.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+Cc: julien.grall@arm.com, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
 	"xen-devel@lists.xen.org" <xen-devel@lists.xen.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: o6B7zYh44YTF
+X-TUID: t+dYW8vKoF2P
 
-On Tue, 7 Nov 2017, Peter Maydell wrote:
-> On 6 November 2017 at 22:16, Stefano Stabellini <sstabellini@kernel.org> wrote:
-> > When QEMU emulates a GICv3, it needs to advertise the presence of the
-> > system register interface, which is done via id_aa64pfr0.
-> >
-> > To do that, and at the same time to avoid advertising the presence of
-> > the system register interface when it is actually not available, set a
-> > boolean property in machvirt_init. Check on the boolean property from
-> > register_cp_regs_for_features and set id_aa64pfr0 accordingly.
-> >
-> > Signed-off-by: Stefano Stabellini <sstabellini@kernel.org>
-> >
-> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index 9e18b41..369d36b 100644
-> > --- a/hw/arm/virt.c
-> > +++ b/hw/arm/virt.c
-> > @@ -1401,6 +1401,9 @@ static void machvirt_init(MachineState *machine)
-> >              object_property_set_link(cpuobj, OBJECT(secure_sysmem),
-> >                                       "secure-memory", &error_abort);
-> >          }
-> > +        if (vms->gic_version == 3) {
-> > +            object_property_set_bool(cpuobj, true, "gicv3-sysregs", NULL);
-> > +        }
-> >
-> >          object_property_set_bool(cpuobj, true, "realized", NULL);
-> >          object_unref(cpuobj);
-> 
-> I thought about this on the cycle into work this morning, and I
-> think that rather than require every board that uses gicv3
-> to set a property on the CPU, we should change the definition
-> of the id_aa64pfr0 register so that rather than being ARM_CP_CONST
-> it has a readfn, and then at runtime we can get that readfn to
-> add in the right bit if env->gicv3state is non-null.
-> 
-> I'll put together a patch this afternoon.
+On 7 November 2017 at 17:57, Stefano Stabellini <sstabellini@kernel.org> wrote:
+> On Tue, 7 Nov 2017, Peter Maydell wrote:
+>> I thought about this on the cycle into work this morning, and I
+>> think that rather than require every board that uses gicv3
+>> to set a property on the CPU, we should change the definition
+>> of the id_aa64pfr0 register so that rather than being ARM_CP_CONST
+>> it has a readfn, and then at runtime we can get that readfn to
+>> add in the right bit if env->gicv3state is non-null.
+>>
+>> I'll put together a patch this afternoon.
+>
+> Great, please CC me when you do, I'll help you test the patch.
 
-Great, please CC me when you do, I'll help you test the patch.
+http://patchwork.ozlabs.org/patch/835300/ -- should already be
+in your inbox somewhere...
+
+thanks
+-- PMM

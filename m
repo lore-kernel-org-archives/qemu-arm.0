@@ -1,98 +1,92 @@
-Received: by 10.223.150.237 with SMTP id u100csp430903wrb;
-        Tue, 7 Nov 2017 11:55:06 -0800 (PST)
-X-Google-Smtp-Source: ABhQp+Sw/ZYKduj+/XGWoM8dCmmgR7S6c5PKJB8pn+oCGaeiwfpUgAE26p29jg+ZDQ+xixDZGy/a
-X-Received: by 10.129.158.208 with SMTP id v199mr12464354ywg.49.1510084506162;
-        Tue, 07 Nov 2017 11:55:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510084506; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp435731wrb;
+        Tue, 7 Nov 2017 12:00:47 -0800 (PST)
+X-Google-Smtp-Source: ABhQp+RTyoqU/21CP8bkOSuqHXLC9OGXfExBHQPLS/6VIXc/g8CPWZPCmbhDhxjsz3KOvAb5fFo2
+X-Received: by 10.37.195.198 with SMTP id t189mr7978270ybf.73.1510084847807;
+        Tue, 07 Nov 2017 12:00:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510084847; cv=none;
         d=google.com; s=arc-20160816;
-        b=wuO7A0tAAdoXF5Ap6g8f1myYapNyaGfPSv5y1rQArIxawN623IH2TJ74yIlvcqX0U6
-         G/MI5PA5RqojRXX4HhFP36pfPpDBRFkdja1hVE90jWcHMCx+vbUt1cDUQ4D9lYYV1TKD
-         fFOJe36uwDzpnscXs5f9lv2nVULeF/qmmbHXa39d0yaLKNIsX/om+x8S4MqGpaHq3scf
-         vEmmzhClK1tGkqo2xBA4Xqd1cNqy4+B86EPCT4lAD0J4M1xRHa1pp7vtVd+LOg/8+EMm
-         TMhnTktmoi9k+cGGbYjyO+M2nYJtLi4blkYZz/JBeOTyQAh5a6cpcEfDPBQBCviUmtxp
-         HmGg==
+        b=i5V/KOrBBJiuuVUlorjr8o3hPC2ObrcWxmW9ligfBCG4mVY7r6C0kRVgwwK55Bescq
+         FCNco9AIiMnCTZEceoTDUC/TQ6flEJHTQKxhil3jNviEss4dalgQQaQyjdC2y4v212S1
+         +fJ9iJEJ12Jffnrpkj1GxZnC6bA5tuxrRJlheYcE6KysvJ3LSI9ajuxxBXPnodX4+PDo
+         sRfRUEWE/YsSnzC6c/+LDaWmuwJuO5kTs0OI2aCQaO+EM0vFB/Kyd/f/YGy60aWLa00X
+         CJMDSDYoWWNRHuO1R+sTO4Bo4yKXEipC6F1eS+Hx/ALywf6V6Mycj9BpsuoRq49FKIlc
+         DjEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date
          :dmarc-filter:arc-authentication-results;
-        bh=R/Q+2SgUfnlhhVz5HRw+9tW8WyZC3nAHm9CqEHuswVs=;
-        b=LFdJ+mWswlctYTtPRktN77fwjhtKivmAgDGQScYDir+qNnyQp1QNgPigO74It1WMPO
-         BQnPDmELQc8y7mAbQVKtoLKsTXCJ261FtBuiIdu6AxkgVNPlwvqfFDKP/0dC4ciHNThm
-         z+FVgdILosucexYiyFO8aMstc2f7NTi8GmStiqK2CfYI+pNgbjyQXJ18Z+A6t0eHprmA
-         VKXUkXT7lZPhpulZMzslTb1DKBDtbYxM9lCysbeb2G6fViPhiD1FK5kDdSpo7oyIcRpF
-         GHFIsxflXP7P4PDp6yonwFugLVkpxaSTU/PExBlrAvUlEmLjynXLAoMo5pdANw5Nns/4
-         JA3A==
+        bh=azZgacPiadi/6DQ4n2s1s447KE6d5VNgYJe/lw3sYj8=;
+        b=CWQjYilY3mb+qjIyus+1oKLOzYBMbXu7Fi1+VUygpfgwpy+tHTuox9QrMsDTkO4Q5+
+         WX6UdNQ2FV4hLb85ZfSPNdBfRdeI7gQtStIMw1j/V8vIKPOA3zH0B+r4pxyME+FMMJtW
+         LElER9AYIhw7c0rWsqxGCWXPP4dSWaevtSrA0Oauo8aD2YuWNRSaNDTuo8UiaTIkRHKj
+         4NNdYOMvyv/0aBb/ZlSVLNxeopwrkBW1YgkfbckX44ETaW8N5A5BM+DM6DUdDo2F0v21
+         +PIfonvgOxSyj5/qup8u4Huz4Whumv8G9mTqzF5F8Rqbk0IVe5KDv3pqbaZ1v94xuS5F
+         TeAA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u28si476844ywh.406.2017.11.07.11.55.05
+        by mx.google.com with ESMTPS id q19si447404ybg.641.2017.11.07.12.00.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 07 Nov 2017 11:55:06 -0800 (PST)
+        Tue, 07 Nov 2017 12:00:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55602 helo=lists.gnu.org)
+Received: from localhost ([::1]:55622 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eC9xh-0006dv-H3
-	for alex.bennee@linaro.org; Tue, 07 Nov 2017 14:55:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48053)
+	id 1eCA3D-0007yE-8k
+	for alex.bennee@linaro.org; Tue, 07 Nov 2017 15:00:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49706)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1eC9xS-0006cj-OO
-	for qemu-arm@nongnu.org; Tue, 07 Nov 2017 14:54:53 -0500
+	(envelope-from <ehabkost@redhat.com>) id 1eCA31-0007y7-QN
+	for qemu-arm@nongnu.org; Tue, 07 Nov 2017 15:00:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1eC9xP-0005Ih-Am
-	for qemu-arm@nongnu.org; Tue, 07 Nov 2017 14:54:50 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:36964)
+	(envelope-from <ehabkost@redhat.com>) id 1eCA2y-0000Ij-NI
+	for qemu-arm@nongnu.org; Tue, 07 Nov 2017 15:00:35 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:42475)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1eC9xP-0005IW-1P; Tue, 07 Nov 2017 14:54:47 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	id 1eCA2y-0000IV-DO; Tue, 07 Nov 2017 15:00:32 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 047EB83F47;
-	Tue,  7 Nov 2017 19:54:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 047EB83F47
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 0B0D3A58A5;
+	Tue,  7 Nov 2017 20:00:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 0B0D3A58A5
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
 	spf=fail smtp.mailfrom=ehabkost@redhat.com
 Received: from localhost (ovpn-116-35.gru2.redhat.com [10.97.116.35])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 37F6E60171;
-	Tue,  7 Nov 2017 19:54:43 +0000 (UTC)
-Date: Tue, 7 Nov 2017 17:54:41 -0200
+	by smtp.corp.redhat.com (Postfix) with ESMTP id BDE415EDE0;
+	Tue,  7 Nov 2017 20:00:27 +0000 (UTC)
+Date: Tue, 7 Nov 2017 18:00:26 -0200
 From: Eduardo Habkost <ehabkost@redhat.com>
 To: Alistair Francis <alistair.francis@xilinx.com>
-Message-ID: <20171107195441.GE3111@localhost.localdomain>
-References: <1509734853-3014-1-git-send-email-cota@braap.org>
-	<20171103185610.GA3907@flamenco>
-	<20171103200233.GI3111@localhost.localdomain>
-	<20171103222407.GA22411@flamenco>
-	<20171106141022.GO3111@localhost.localdomain>
-	<20171106215454.GB2152@flamenco>
-	<20171107193251.GD3111@localhost.localdomain>
-	<CAKmqyKPOjUVV2nk7rtTudQRT=j7YGbNROoob1eALr7KJ29CCdQ@mail.gmail.com>
+Message-ID: <20171107200026.GF3111@localhost.localdomain>
+References: <cover.1510080103.git.alistair.francis@xilinx.com>
+	<949865c4381080ce685097390f69115d7f6ef111.1510080103.git.alistair.francis@xilinx.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAKmqyKPOjUVV2nk7rtTudQRT=j7YGbNROoob1eALr7KJ29CCdQ@mail.gmail.com>
+In-Reply-To: <949865c4381080ce685097390f69115d7f6ef111.1510080103.git.alistair.francis@xilinx.com>
 X-Fnord: you can see the fnord
 User-Agent: Mutt/1.9.1 (2017-09-22)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Tue, 07 Nov 2017 19:54:46 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.25]);
+	Tue, 07 Nov 2017 20:00:31 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw: add .min_cpus and
- .default_cpus fields to machine_class
+Subject: Re: [Qemu-arm] [PATCH v1 1/2] xlnx-zynqmp: Properly support the smp
+ command line option
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,321 +98,179 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org,
+	Thomas Huth <thuth@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
 	Igor Mitsyanko <i.mitsyanko@gmail.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	"Emilio G. Cota" <cota@braap.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Marcel Apfelbaum <marcel@redhat.com>, Igor Mammedov <imammedo@redhat.com>
+	qemu-devel@nongnu.org, f4bug@amsat.org, cota@braap.org,
+	qemu-arm@nongnu.org, alistair23@gmail.com,
+	Marcel Apfelbaum <marcel@redhat.com>,
+	Alistair Francis <alistair.francis@xilinx.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7qqvZDH9GYOQ
+X-TUID: kb8AiixC93DZ
 
-On Tue, Nov 07, 2017 at 11:48:13AM -0800, Alistair Francis wrote:
-> On Tue, Nov 7, 2017 at 11:32 AM, Eduardo Habkost <ehabkost@redhat.com> wrote:
-> > On Mon, Nov 06, 2017 at 04:54:54PM -0500, Emilio G. Cota wrote:
-> >> On Mon, Nov 06, 2017 at 12:10:22 -0200, Eduardo Habkost wrote:
-> >> > On Fri, Nov 03, 2017 at 06:24:07PM -0400, Emilio G. Cota wrote:
-> >> > >  /**
-> >> > >   * MachineClass:
-> >> > >   * @max_cpus: maximum number of CPUs supported. Default: 1
-> >> > > + * @force_max_cpus: if set, force the global max_cpus to match @max_cpus
-> >> > >   * @min_cpus: minimum number of CPUs supported. Default: 1
-> >> > >   * @default_cpus: number of CPUs instantiated if none are specified. Default: 1
-> >> > >   * @get_hotplug_handler: this function is called during bus-less
-> >> >
-> >> > If we have a field containing the default value for smp_cpus
-> >> > (default_cpus), what about a default_max_cpus field for the
-> >> > default value of max_cpus?  This could make the rules a bit
-> >> > easier to follow.
-> >> >
-> >> > (But I wonder if there's a way we can do this without introducing
-> >> > another MachineClass field and making the initialization code
-> >> > more complex.)
-> >>
-> >> I don't think the rules are too hard to follow, since they're trivial
-> >> for most machines because the defaults are reasonable (i.e. they
-> >> only set max_cpus, and everything else is set to 1). Some machines
-> >> though are tricky in what can and cannot support, e.g. the Xilinx
-> >> ones we've been dealing with in this thread.
-> >>
-> >> wrt .default_max_cpus instead of .force_max_cpus: it lets users
-> >> shoot themselves in the foot, so I wouldn't go this route.
-> >> For instance, what do we do if the user passes maxcpus < default_max_cpus?
-> >> max_cpus would be set to maxcpus, yet they could still pass the
-> >> -global override that instantiates two extra CPUs, and at that point
-> >> we'd fail (in TCG) without providing a meaningful error.
-> >>
-> >> We could increase maxcpus to default_max_cpus, but at that point
-> >> default_max_cpus becomes the same thing as force_max_cpus (!).
-> >>
-> >> An alternative I've come up with is to have a field that specifies how
-> >> many CPUs could be created in addition to those specified in max_cpus
-> >> (in the Xilinx case these would be the RPUs). Patch below.
-> >>
-> >> > The fact that MachineClass::max_cpus and the 'max_cpus' globals
-> >> > have completely different meanings makes this confusing enough.
-> >> > Maybe we should rename the 'max_cpus' global variable to
-> >> > 'max_hotplug_cpus'.
-> >>
-> >> I have no trouble with their different meanings, although I admit
-> >> I am now quite well acquainted with this code so my bias is strong :-)
-> >>
-> >> Thanks,
-> >>
-> >>               Emilio
-> >>
-> >> ---8<---
-> >>
-> >> Subject: [PATCH] hw: add .{additional_max,min,default}_cpus fields to
-> >>  machine_class
-> >>
-> >> max_cpus needs to be an upper bound on the number of vCPUs
-> >> initialized; otherwise TCG region initialization breaks.
-> >>
-> >> Some boards initialize a hard-coded number of vCPUs, which is not
-> >> captured by the global max_cpus. Fix it by adding the .min_cpus
-> >> field to machine_class.
-> >>
-> >> A subset of those boards can also instantiate additional vCPUs
-> >> beyond what is specified in -smp, e.g. via -global overrides. To
-> >> ensure that max_cpus remains an upper bound on the number of vCPUs
-> >> that can be instantiated, we also add the .additional_max_cpus field
-> >> to machine_class.
-> >
-> > Setting max_cpus > smp_cpus is supposed to be useful only for CPU
-> > hotplug, and this doesn't seem to be the case here.  I would
-> > prefer to make the CPU creation code not care about max_cpus at
-> > all unless it is dealing with CPU hotplug, but this would require
-> > auditing existing code that could be allocating data structures
-> > based on max_cpus.
-> >
-> > In either case, it looks like the series sent by Alistair:
-> >   Subject: [PATCH v1 0/2]  Xilinx ZCU102 fixes for 2.11
-> > makes max_additional_cpus unnecessary, doesn't it?
+On Tue, Nov 07, 2017 at 10:59:39AM -0800, Alistair Francis wrote:
+> Allow the -smp command line option to control the number of CPUs we
+> create.
 > 
-> Yes, it doesn't need the max_additional_cpus at all.
+> Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
+> ---
 > 
-> I would still like to see the default_cpus in, as I think that is
-> really useful. Otherwise 2.10 has 4 A53s and 2.11 has 1 A53 by default
-> which I think is confusing.
+>  hw/arm/xlnx-zcu102.c |  3 ++-
+>  hw/arm/xlnx-zynqmp.c | 26 ++++++++++++++++----------
+>  2 files changed, 18 insertions(+), 11 deletions(-)
+> 
+> diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
+> index e2d15a1c9d..7ec03dad42 100644
+> --- a/hw/arm/xlnx-zcu102.c
+> +++ b/hw/arm/xlnx-zcu102.c
+> @@ -235,7 +235,8 @@ static void xlnx_zcu102_machine_class_init(ObjectClass *oc, void *data)
+>  {
+>      MachineClass *mc = MACHINE_CLASS(oc);
+>  
+> -    mc->desc = "Xilinx ZynqMP ZCU102 board";
+> +    mc->desc = "Xilinx ZynqMP ZCU102 board with 4xA53s and 2xR5s based on " \
+> +               "the value of smp";
+>      mc->init = xlnx_zcu102_init;
+>      mc->block_default_type = IF_IDE;
+>      mc->units_per_default_bus = 1;
+> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+> index d4b6560194..c707c66322 100644
+> --- a/hw/arm/xlnx-zynqmp.c
+> +++ b/hw/arm/xlnx-zynqmp.c
+> @@ -98,8 +98,9 @@ static void xlnx_zynqmp_create_rpu(XlnxZynqMPState *s, const char *boot_cpu,
+>  {
+>      Error *err = NULL;
+>      int i;
+> +    int num_rpus = MIN(smp_cpus - XLNX_ZYNQMP_NUM_APU_CPUS, XLNX_ZYNQMP_NUM_RPU_CPUS);
+>  
+> -    for (i = 0; i < XLNX_ZYNQMP_NUM_RPU_CPUS; i++) {
+> +    for (i = 0; i < num_rpus; i++) {
+>          char *name;
+>  
+>          object_initialize(&s->rpu_cpu[i], sizeof(s->rpu_cpu[i]),
+> @@ -132,8 +133,9 @@ static void xlnx_zynqmp_init(Object *obj)
+>  {
+>      XlnxZynqMPState *s = XLNX_ZYNQMP(obj);
+>      int i;
+> +    int num_apus = MIN(smp_cpus, XLNX_ZYNQMP_NUM_APU_CPUS);
+>  
+> -    for (i = 0; i < XLNX_ZYNQMP_NUM_APU_CPUS; i++) {
+> +    for (i = 0; i < num_apus; i++) {
+>          object_initialize(&s->apu_cpu[i], sizeof(s->apu_cpu[i]),
+>                            "cortex-a53-" TYPE_ARM_CPU);
+>          object_property_add_child(obj, "apu-cpu[*]", OBJECT(&s->apu_cpu[i]),
+> @@ -182,6 +184,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+>      MemoryRegion *system_memory = get_system_memory();
+>      uint8_t i;
+>      uint64_t ram_size;
+> +    int num_apus = MIN(smp_cpus, XLNX_ZYNQMP_NUM_APU_CPUS);
+>      const char *boot_cpu = s->boot_cpu ? s->boot_cpu : "apu-cpu[0]";
+>      ram_addr_t ddr_low_size, ddr_high_size;
+>      qemu_irq gic_spi[GIC_NUM_SPI_INTR];
+> @@ -233,10 +236,10 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+>  
+>      qdev_prop_set_uint32(DEVICE(&s->gic), "num-irq", GIC_NUM_SPI_INTR + 32);
+>      qdev_prop_set_uint32(DEVICE(&s->gic), "revision", 2);
+> -    qdev_prop_set_uint32(DEVICE(&s->gic), "num-cpu", XLNX_ZYNQMP_NUM_APU_CPUS);
+> +    qdev_prop_set_uint32(DEVICE(&s->gic), "num-cpu", num_apus);
+>  
+>      /* Realize APUs before realizing the GIC. KVM requires this.  */
+> -    for (i = 0; i < XLNX_ZYNQMP_NUM_APU_CPUS; i++) {
+> +    for (i = 0; i < num_apus; i++) {
+>          char *name;
+>  
+>          object_property_set_int(OBJECT(&s->apu_cpu[i]), QEMU_PSCI_CONDUIT_SMC,
+> @@ -292,7 +295,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+>          }
+>      }
+>  
+> -    for (i = 0; i < XLNX_ZYNQMP_NUM_APU_CPUS; i++) {
+> +    for (i = 0; i < num_apus; i++) {
+>          qemu_irq irq;
+>  
+>          sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i,
+> @@ -307,11 +310,14 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+>      }
+>  
+>      if (s->has_rpu) {
+> -        xlnx_zynqmp_create_rpu(s, boot_cpu, &err);
+> -        if (err) {
+> -            error_propagate(errp, err);
+> -            return;
+> -        }
+> +        info_report("The 'has_rpu' property is no longer required, to use the "
+> +                    "RPUs just use -smp 6.");
+> +    }
 
-I agree with the addition of min_cpus and default_cpus.  But I
-would like to avoid making xlnx-* the only exceptional cases
-where max_additional_cpus is required, so I like the approach in
-your series.
+Is "-global driver=xlnx,,zynqmp,property=has_rpu,value=on"
+without an explicit -smp option supposed to be a supported
+configuration?
 
+0) On current master, we have this:
+
+  $ ./aarch64-softmmu/qemu-system-aarch64 -machine xlnx-zcu102 -global driver=xlnx,,zynqmp,property=has_rpu,value=on
+  **
+  ERROR:/home/ehabkost/rh/proj/virt/qemu/tcg/tcg.c:538:tcg_register_thread: assertion failed: (n < max_cpus)
+  Aborted (core dumped)
+
+1) With your patch we have this:
+
+  $ ./aarch64-softmmu/qemu-system-aarch64 -machine xlnx-zcu102 -global driver=xlnx,,zynqmp,property=has_rpu,value=on -monitor stdio
+  QEMU 2.10.50 monitor - type 'help' for more information
+  (qemu) qemu-system-aarch64: info: The 'has_rpu' property is no longer required, to use the RPUs just use -smp 6.
+  (qemu) info cpus
+  * CPU #0: thread_id=1662
+  (qemu) 
+
+2) With your patch plus Emilio's original min_cpus/default_cpus
+proposal[1], we have this:
+
+  $ ./aarch64-softmmu/qemu-system-aarch64 -machine xlnx-zcu102 -global driver=xlnx,,zynqmp,property=has_rpu,value=on -monitor stdio
+  QEMU 2.10.50 monitor - type 'help' for more information
+  (qemu) qemu-system-aarch64: info: The 'has_rpu' property is no longer required, to use the RPUs just use -smp 6.
+  (qemu) info cpus
+  * CPU #0: thread_id=7112
+    CPU #1: (halted) thread_id=7113
+    CPU #2: (halted) thread_id=7114
+    CPU #3: (halted) thread_id=7115
+  (qemu)
+
+3) With Emilio's max_additional_cpus proposal[2], we have this:
+
+  $ ./aarch64-softmmu/qemu-system-aarch64 -machine xlnx-zcu102 -global driver=xlnx,,zynqmp,property=has_rpu,value=on -monitor stdio
+  QEMU 2.10.50 monitor - type 'help' for more information
+  (qemu) info cpus
+  * CPU #0: thread_id=4045
+    CPU #1: (halted) thread_id=4046
+    CPU #2: (halted) thread_id=4047
+    CPU #3: (halted) thread_id=4048
+    CPU #4: (halted) thread_id=4049
+    CPU #5: (halted) thread_id=4050
+  (qemu) 
+
+
+Which option is preferred?  I like option #2 because it's
+simpler, but I would like to confirm this is really the intended
+behavior.
+
+
+[1] https://mid.mail-archive.com/1509734853-3014-1-git-send-email-cota@braap.org
+[2] https://mid.mail-archive.com/20171106215454.GB2152@flamenco
+
+
+> +
+> +    xlnx_zynqmp_create_rpu(s, boot_cpu, &err);
+> +    if (err) {
+> +        error_propagate(errp, err);
+> +        return;
+>      }
+>  
+>      if (!s->boot_cpu_ptr) {
+> -- 
+> 2.11.0
 > 
-> Thanks,
-> Alistair
-> 
-> >
-> >
-> >>
-> >> This commit also changes some user-facing behaviour: we now die if
-> >> -smp is below this hard-coded vCPU minimum instead of silently
-> >> ignoring the passed -smp value (sometimes announcing this by printing
-> >> a warning). However, the introduction of .default_cpus lessens the
-> >> likelihood that users will notice this: if -smp isn't set, we now
-> >> assign the value in .default_cpus to both smp_cpus and max_cpus. IOW,
-> >> if a user does not set -smp, they always get a correct number of vCPUs.
-> >>
-> >> This change fixes 3468b59 ("tcg: enable multiple TCG contexts in
-> >> softmmu", 2017-10-24), which broke TCG initialization for some
-> >> ARM boards.
-> >>
-> >> Fixes: 3468b59e18b179bc63c7ce934de912dfa9596122
-> >> Reported-by: Thomas Huth <thuth@redhat.com>
-> >> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> >> Signed-off-by: Emilio G. Cota <cota@braap.org>
-> >> ---
-> >>  hw/arm/exynos4_boards.c | 12 ++++--------
-> >>  hw/arm/raspi.c          |  2 ++
-> >>  hw/arm/xlnx-zcu102.c    |  9 ++++++++-
-> >>  include/hw/boards.h     | 10 ++++++++++
-> >>  vl.c                    | 38 +++++++++++++++++++++++++++++++++++---
-> >>  5 files changed, 59 insertions(+), 12 deletions(-)
-> >>
-> >> diff --git a/hw/arm/exynos4_boards.c b/hw/arm/exynos4_boards.c
-> >> index f1441ec..750162c 100644
-> >> --- a/hw/arm/exynos4_boards.c
-> >> +++ b/hw/arm/exynos4_boards.c
-> >> @@ -27,7 +27,6 @@
-> >>  #include "qemu-common.h"
-> >>  #include "cpu.h"
-> >>  #include "sysemu/sysemu.h"
-> >> -#include "sysemu/qtest.h"
-> >>  #include "hw/sysbus.h"
-> >>  #include "net/net.h"
-> >>  #include "hw/arm/arm.h"
-> >> @@ -129,13 +128,6 @@ exynos4_boards_init_common(MachineState *machine,
-> >>                             Exynos4BoardType board_type)
-> >>  {
-> >>      Exynos4BoardState *s = g_new(Exynos4BoardState, 1);
-> >> -    MachineClass *mc = MACHINE_GET_CLASS(machine);
-> >> -
-> >> -    if (smp_cpus != EXYNOS4210_NCPUS && !qtest_enabled()) {
-> >> -        error_report("%s board supports only %d CPU cores, ignoring smp_cpus"
-> >> -                     " value",
-> >> -                     mc->name, EXYNOS4210_NCPUS);
-> >> -    }
-> >>
-> >>      exynos4_board_binfo.ram_size = exynos4_board_ram_size[board_type];
-> >>      exynos4_board_binfo.board_id = exynos4_board_id[board_type];
-> >> @@ -189,6 +181,8 @@ static void nuri_class_init(ObjectClass *oc, void *data)
-> >>      mc->desc = "Samsung NURI board (Exynos4210)";
-> >>      mc->init = nuri_init;
-> >>      mc->max_cpus = EXYNOS4210_NCPUS;
-> >> +    mc->min_cpus = EXYNOS4210_NCPUS;
-> >> +    mc->default_cpus = EXYNOS4210_NCPUS;
-> >>      mc->ignore_memory_transaction_failures = true;
-> >>  }
-> >>
-> >> @@ -205,6 +199,8 @@ static void smdkc210_class_init(ObjectClass *oc, void *data)
-> >>      mc->desc = "Samsung SMDKC210 board (Exynos4210)";
-> >>      mc->init = smdkc210_init;
-> >>      mc->max_cpus = EXYNOS4210_NCPUS;
-> >> +    mc->min_cpus = EXYNOS4210_NCPUS;
-> >> +    mc->default_cpus = EXYNOS4210_NCPUS;
-> >>      mc->ignore_memory_transaction_failures = true;
-> >>  }
-> >>
-> >> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-> >> index 5941c9f..cd5fa8c 100644
-> >> --- a/hw/arm/raspi.c
-> >> +++ b/hw/arm/raspi.c
-> >> @@ -167,6 +167,8 @@ static void raspi2_machine_init(MachineClass *mc)
-> >>      mc->no_floppy = 1;
-> >>      mc->no_cdrom = 1;
-> >>      mc->max_cpus = BCM2836_NCPUS;
-> >> +    mc->min_cpus = BCM2836_NCPUS;
-> >> +    mc->default_cpus = BCM2836_NCPUS;
-> >>      mc->default_ram_size = 1024 * 1024 * 1024;
-> >>      mc->ignore_memory_transaction_failures = true;
-> >>  };
-> >> diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
-> >> index e2d15a1..0f1837e 100644
-> >> --- a/hw/arm/xlnx-zcu102.c
-> >> +++ b/hw/arm/xlnx-zcu102.c
-> >> @@ -185,6 +185,10 @@ static void xlnx_ep108_machine_class_init(ObjectClass *oc, void *data)
-> >>      mc->block_default_type = IF_IDE;
-> >>      mc->units_per_default_bus = 1;
-> >>      mc->ignore_memory_transaction_failures = true;
-> >> +    mc->max_cpus = XLNX_ZYNQMP_NUM_APU_CPUS;
-> >> +    mc->max_additional_cpus = XLNX_ZYNQMP_NUM_RPU_CPUS;
-> >> +    mc->min_cpus = XLNX_ZYNQMP_NUM_APU_CPUS;
-> >> +    mc->default_cpus = XLNX_ZYNQMP_NUM_APU_CPUS;
-> >>  }
-> >>
-> >>  static const TypeInfo xlnx_ep108_machine_init_typeinfo = {
-> >> @@ -240,7 +244,10 @@ static void xlnx_zcu102_machine_class_init(ObjectClass *oc, void *data)
-> >>      mc->block_default_type = IF_IDE;
-> >>      mc->units_per_default_bus = 1;
-> >>      mc->ignore_memory_transaction_failures = true;
-> >> -    mc->max_cpus = XLNX_ZYNQMP_NUM_APU_CPUS + XLNX_ZYNQMP_NUM_RPU_CPUS;
-> >> +    mc->max_cpus = XLNX_ZYNQMP_NUM_APU_CPUS;
-> >> +    mc->max_additional_cpus = XLNX_ZYNQMP_NUM_RPU_CPUS;
-> >> +    mc->min_cpus = XLNX_ZYNQMP_NUM_APU_CPUS;
-> >> +    mc->default_cpus = XLNX_ZYNQMP_NUM_APU_CPUS;
-> >>  }
-> >>
-> >>  static const TypeInfo xlnx_zcu102_machine_init_typeinfo = {
-> >> diff --git a/include/hw/boards.h b/include/hw/boards.h
-> >> index 191a5b3..be582dd 100644
-> >> --- a/include/hw/boards.h
-> >> +++ b/include/hw/boards.h
-> >> @@ -102,6 +102,13 @@ typedef struct {
-> >>
-> >>  /**
-> >>   * MachineClass:
-> >> + * @max_cpus: maximum number of CPUs supported. Default: 1
-> >> + * @max_additional_cpus: # of CPUs that can be instantiated in addition to those
-> >> + *    instantiated with -smp. For instance, if a machine has 4 main CPUs and 2
-> >> + *    optional CPUs (e.g. instantiated via -global overrides), then @max_cpus
-> >> + *    and @max_additional_cpus will be set to 4 and 2, respectively. Default: 0
-> >> + * @min_cpus: minimum number of CPUs supported. Default: 1
-> >> + * @default_cpus: number of CPUs instantiated if none are specified. Default: 1
-> >>   * @get_hotplug_handler: this function is called during bus-less
-> >>   *    device hotplug. If defined it returns pointer to an instance
-> >>   *    of HotplugHandler object, which handles hotplug operation
-> >> @@ -167,6 +174,9 @@ struct MachineClass {
-> >>      BlockInterfaceType block_default_type;
-> >>      int units_per_default_bus;
-> >>      int max_cpus;
-> >> +    int max_additional_cpus;
-> >> +    int min_cpus;
-> >> +    int default_cpus;
-> >>      unsigned int no_serial:1,
-> >>          no_parallel:1,
-> >>          use_virtcon:1,
-> >> diff --git a/vl.c b/vl.c
-> >> index ec29909..e3ee36e 100644
-> >> --- a/vl.c
-> >> +++ b/vl.c
-> >> @@ -160,8 +160,8 @@ Chardev *virtcon_hds[MAX_VIRTIO_CONSOLES];
-> >>  Chardev *sclp_hds[MAX_SCLP_CONSOLES];
-> >>  int win2k_install_hack = 0;
-> >>  int singlestep = 0;
-> >> -int smp_cpus = 1;
-> >> -unsigned int max_cpus = 1;
-> >> +int smp_cpus;
-> >> +unsigned int max_cpus;
-> >>  int smp_cores = 1;
-> >>  int smp_threads = 1;
-> >>  int acpi_enabled = 1;
-> >> @@ -4330,12 +4330,44 @@ int main(int argc, char **argv, char **envp)
-> >>      smp_parse(qemu_opts_find(qemu_find_opts("smp-opts"), NULL));
-> >>
-> >>      machine_class->max_cpus = machine_class->max_cpus ?: 1; /* Default to UP */
-> >> +    machine_class->min_cpus = machine_class->min_cpus ?: 1;
-> >> +    machine_class->default_cpus = machine_class->default_cpus ?: 1;
-> >> +
-> >> +    /* if -smp is not set, default to mc->default_cpus */
-> >> +    if (!smp_cpus) {
-> >> +        smp_cpus = machine_class->default_cpus;
-> >> +        max_cpus = machine_class->default_cpus;
-> >> +    }
-> >> +
-> >> +    /* sanity-check smp_cpus and max_cpus */
-> >> +    if (smp_cpus < machine_class->min_cpus) {
-> >> +        error_report("Invalid SMP CPUs %d. The min CPUs "
-> >> +                     "supported by machine '%s' is %d", smp_cpus,
-> >> +                     machine_class->name, machine_class->min_cpus);
-> >> +        exit(1);
-> >> +    }
-> >>      if (max_cpus > machine_class->max_cpus) {
-> >> -        error_report("Invalid SMP CPUs %d. The max CPUs "
-> >> +        error_report("Invalid max SMP CPUs %d. The max CPUs "
-> >>                       "supported by machine '%s' is %d", max_cpus,
-> >>                       machine_class->name, machine_class->max_cpus);
-> >>          exit(1);
-> >>      }
-> >> +    if (max_cpus < machine_class->min_cpus) {
-> >> +        error_report("Invalid max SMP CPUs %d. The min CPUs "
-> >> +                     "supported by machine '%s' is %d", max_cpus,
-> >> +                     machine_class->name, machine_class->min_cpus);
-> >> +        exit(1);
-> >> +    }
-> >> +
-> >> +    /*
-> >> +     * Some boards can instantiate additional CPUs, e.g. by overriding
-> >> +     * device params via -global arguments. Update max_cpus so that
-> >> +     * we are sure to have an upper bound on the maximum number of
-> >> +     * vCPUs that might be instantiated.
-> >> +     */
-> >> +    if (machine_class->max_additional_cpus) {
-> >> +        max_cpus += machine_class->max_additional_cpus;
-> >> +    }
-> >>
-> >>      /*
-> >>       * Get the default machine options from the machine if it is not already
-> >> --
-> >> 2.7.4
-> >>
-> >
-> > --
-> > Eduardo
-> >
 
 -- 
 Eduardo

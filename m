@@ -1,156 +1,215 @@
-Received: by 10.223.150.237 with SMTP id u100csp3633111wrb;
-        Tue, 7 Nov 2017 03:01:12 -0800 (PST)
-X-Google-Smtp-Source: ABhQp+QMcm8jT27LNOdPzskweq3J6M1XkQoYB0la310PnAM8b40COmMiYFJXGdqdjmmUu9q8fv7G
-X-Received: by 10.37.24.6 with SMTP id 6mr5788415yby.344.1510052471950;
-        Tue, 07 Nov 2017 03:01:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510052471; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp3720660wrb;
+        Tue, 7 Nov 2017 04:32:11 -0800 (PST)
+X-Google-Smtp-Source: ABhQp+SKpucSVZw6ju7h+xFuJmHyE7WLOTgSmbgy5Aq3sYVvVwsboEB/olh02uCIp3NFFR3LTiMe
+X-Received: by 10.37.11.72 with SMTP id 69mr12284199ybl.226.1510057931279;
+        Tue, 07 Nov 2017 04:32:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510057931; cv=none;
         d=google.com; s=arc-20160816;
-        b=FgGmvtcaOZUImepCjfCmBkJLMAynOHKKG8PLQPzLUyr6RcWP4Zzv1rZYq3k0h9tmEC
-         mD+FIVlABB4tOMQIzF4lvbAR+jc1PFY2b0gyCpT7i+adMre3EOEq+J9imqIjzhnkH3XK
-         tp6tcJh7hBqg2C8xgPtrk7l6ONG6X7o3fZpbXO2YrfXLL68AicJIRL8EEK155Ge+OFAB
-         bs+/HEBKxog75oeVwSrz4sa27lzgAYd6YmSQ2CTnpoTQzBTJxMGuBoaJnWaJfaQE/SZA
-         p2V9DGe2fR5dMwwXwmSn4z0rz7vJ17bA/6a1j+uGmGvDMnrx8yAYhFUJknUL+0iebSc1
-         DY7g==
+        b=dDne4Vf5wBxnt/+eYz/DMqQ7/VDBks6VS1YO+bCiVU3Yy57+O9Eftoa1kwaxzCqUvv
+         5YZ71z//afUAuQ++Z4pljIr/qOTqnB1MM7hr2Vqa/fNdIti1/q+scMltRwz6K3QQXPz5
+         4U5u45XhKh8CQQunouVCITPhKlcF8pg3Y/7NUZZzb004M5apfX/IEEfTH+RkSJOhc3QZ
+         Mk6ASLztKedqbAVhpv1HhiC6FUpxOU1B65VrFj5fcHYGXsCSVqJ2CCgAgUhEeIpF8rLI
+         BqbRvL71jsvyNNrDv1bYUMJfC70GGBhXrEE664Pav1uXSYWqhgmsFnBe3Gw+evjXrFF9
+         0pdA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:to:from:date:dkim-signature
-         :arc-authentication-results;
-        bh=4cGKT+GqnreWjqmrWA7qilbjmGiIU+PA1sxSe0mnNCM=;
-        b=l1RXsnhdn38lmIeAAcOK8KVJ9ygH0hrVPxyN9XDztMsOCR9lCFe6XSM2oUx6ZuuKeb
-         lFXpJSDFiemrYSNLBQ6qSbRNQ1JwsnaMKFvt3ttbK7QRqZjuGwnl68f5pgGHQQYyQv6V
-         y6dbUfL+vJFuGTF6WkdylxbJ/HTRZZ/yJOTcb7vQEbYImvWQSg8zXUF8ymDKZ5P2X73L
-         yxytEPup6fK/vc0ygmUvjqRbvmxRoCCWhc84S9ivR4Noua4O7qZ6Rxy0M4jYqYSYD4cV
-         Ahy9POIh6r41Vxc76Ojp/GqYh3RhL4GEztxNw3pcQKD/e8xpJxO6hywX90pFzjnwceCr
-         GAAw==
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dmarc-filter:arc-authentication-results;
+        bh=mFUt4xFauxVLJPi9ZJChJrYS8Lm2eCvdn6xP+osg/so=;
+        b=xiIlKbViJV0EXy9gKNPhR6pT/Sme0/IobpgvWQbEdy0hzRNtPjmTTtf+qlkpwghlZl
+         SRg0DHo9tYHtRfT4/pINXmYMfp1m/K9HX5j7pyDG7NJrfD3NqnNZXZK1pvWh9WfQxIoZ
+         RXPds2j4WRkryQtxWQoS2GwTHChYWgmmTUFcUZJKpdCDGQ4J6dcsuavvp+eTr7TuSWti
+         9Tc0h1c15DyAdtIDfOEdNHgO05DimLJ4g5QspgRka5AARUr7M+ie7Bzfc/11fNDNfrJM
+         R/g3MPPQYXjit59bljLNJxFvXx2CDjUfINHVl9N6v1HDC8Qi/EVIv3l1rO8Bhfc8l0LU
+         iFTg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=frodwMIf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h65si217206ywf.246.2017.11.07.03.01.11
+        by mx.google.com with ESMTPS id c14si238798ybn.522.2017.11.07.04.32.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 07 Nov 2017 03:01:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 07 Nov 2017 04:32:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=frodwMIf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:52638 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52981 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eC1d1-0007vZ-EB
-	for alex.bennee@linaro.org; Tue, 07 Nov 2017 06:01:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40347)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eC334-0000ic-PW
+	for alex.bennee@linaro.org; Tue, 07 Nov 2017 07:32:10 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44605)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shorne@gmail.com>) id 1eC1be-0007Dj-CD
-	for qemu-devel@nongnu.org; Tue, 07 Nov 2017 05:59:47 -0500
+	(envelope-from <ehabkost@redhat.com>) id 1eC32s-0000hq-2G
+	for qemu-arm@nongnu.org; Tue, 07 Nov 2017 07:32:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shorne@gmail.com>) id 1eC1bZ-00041x-En
-	for qemu-devel@nongnu.org; Tue, 07 Nov 2017 05:59:46 -0500
-Received: from mail-pf0-x232.google.com ([2607:f8b0:400e:c00::232]:54008)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <shorne@gmail.com>)
-	id 1eC1bZ-00041H-9T; Tue, 07 Nov 2017 05:59:41 -0500
-Received: by mail-pf0-x232.google.com with SMTP id t188so10045900pfd.10;
-	Tue, 07 Nov 2017 02:59:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:content-transfer-encoding:in-reply-to
-	:user-agent; bh=4cGKT+GqnreWjqmrWA7qilbjmGiIU+PA1sxSe0mnNCM=;
-	b=frodwMIf4P5Q0FwN8ihJ0qdjtfwpuscyDIzhKAL3Pym8h2HaR+bcr6AQKXRL+u/D3f
-	MR/sf6PxVTVCjNS9Jw+V+tLb5QVmMCsDfGjMCYlMlz4V4ACO2fFbVPokz5aOdj2pEmN+
-	Pj+Nno92VLoUlh35wqwBwXl+TSjciHCvR3XmYA7yrE0YZnwWJaSmhpYclKzwcpZmLRG5
-	uDAWPvkFIIODOK4RtMLic46CLjsSy3vPtFFBH6qNaPoFIQGP0MaC2O8PuUcXkdKqIFMh
-	/PIimzxtk1wep76IHLboOCr7e74uhOQpBXQtTcFD/7hSRlcGrSNqY0rDvHBKZRB0uX8Y
-	rGmQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:content-transfer-encoding
-	:in-reply-to:user-agent;
-	bh=4cGKT+GqnreWjqmrWA7qilbjmGiIU+PA1sxSe0mnNCM=;
-	b=WElaGriTnoRczZP70p1Ql6qnKuEpPAD2ejmBH4pGrtY4Ni/GDIqclQaslG1kxIY0fh
-	peXa6vkvGNLasbThgKtAoKG/hwjRHtuVnCfoFnS6hqbM95LKLJXUFghRc9F+8LivU0h5
-	FU2Oqf5FGgasGsSUStgmGZ6+bK6jCez3YI66u4f2qPeemPxMTP5+R+hYoIpCwGwVjksD
-	TQ8uCPML7mDkOI4DbIFi6p61BXdMjzYsajQrT1VdGhiD27W7M8E74SRTpmCzD30QY9Eh
-	udKWb+aSQ6EhPjFI6+A2sdQLDm1mP93BbtJlf67rPhbKTggm4kGBwN57PrQAUMjLKlWy
-	9XPw==
-X-Gm-Message-State: AMCzsaWkT9FCibbFA0d8Su3LYoBD/9WyDzrBWw30b43mPFbQYmR63Q33
-	8W9LeWvIL/iXG1wXG8St6BE=
-X-Received: by 10.101.96.1 with SMTP id m1mr18089202pgu.36.1510052379682;
-	Tue, 07 Nov 2017 02:59:39 -0800 (PST)
-Received: from localhost (g183.61-45-92.ppp.wakwak.ne.jp. [61.45.92.183])
-	by smtp.gmail.com with ESMTPSA id
-	e18sm2368013pfi.57.2017.11.07.02.59.38
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 07 Nov 2017 02:59:39 -0800 (PST)
-Date: Tue, 7 Nov 2017 19:59:37 +0900
-From: Stafford Horne <shorne@gmail.com>
-To: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <20171107105937.GM29237@lianli.shorne-pla.net>
-References: <20171103202624.5956-1-laurent@vivier.eu>
-	<20171103202624.5956-3-laurent@vivier.eu>
-	<20171104212011.GK29237@lianli.shorne-pla.net>
-	<1356a4f9-86a2-7b18-a67b-93dc6dadec4f@vivier.eu>
+	(envelope-from <ehabkost@redhat.com>) id 1eC32p-0000TR-D3
+	for qemu-arm@nongnu.org; Tue, 07 Nov 2017 07:31:58 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:36218)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1eC32p-0000Ss-4P; Tue, 07 Nov 2017 07:31:55 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id EA5C1A999;
+	Tue,  7 Nov 2017 12:31:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com EA5C1A999
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=ehabkost@redhat.com
+Received: from localhost (ovpn-116-35.gru2.redhat.com [10.97.116.35])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id E43EC60C90;
+	Tue,  7 Nov 2017 12:31:50 +0000 (UTC)
+Date: Tue, 7 Nov 2017 10:31:49 -0200
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Alistair Francis <alistair.francis@xilinx.com>
+Message-ID: <20171107123149.GZ3111@localhost.localdomain>
+References: <1509734853-3014-1-git-send-email-cota@braap.org>
+	<20171103185610.GA3907@flamenco>
+	<20171103200233.GI3111@localhost.localdomain>
+	<20171103222407.GA22411@flamenco>
+	<20171106141022.GO3111@localhost.localdomain>
+	<20171106201332.GA2152@flamenco>
+	<CAKmqyKO41gHX1Y0+rq8wMygf+ZoZLvOJPzqhfviPsgbDGHecsQ@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <1356a4f9-86a2-7b18-a67b-93dc6dadec4f@vivier.eu>
+In-Reply-To: <CAKmqyKO41gHX1Y0+rq8wMygf+ZoZLvOJPzqhfviPsgbDGHecsQ@mail.gmail.com>
+X-Fnord: you can see the fnord
 User-Agent: Mutt/1.9.1 (2017-09-22)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c00::232
-Subject: Re: [Qemu-devel] [PATCH 2/4] openrisc: fix float32 and float64
- helper definitions
-X-BeenThere: qemu-devel@nongnu.org
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Tue, 07 Nov 2017 12:31:54 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw: add .min_cpus and
+ .default_cpus fields to machine_class
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: c1XTRaCVvfoz
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	"Emilio G. Cota" <cota@braap.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Marcel Apfelbaum <marcel@redhat.com>, Igor Mammedov <imammedo@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fe3TsQt97vqi
 
-On Sun, Nov 05, 2017 at 03:39:48PM +0100, Laurent Vivier wrote:
-> Le 04/11/2017 à 22:20, Stafford Horne a écrit :
-> > Hello,
-> > 
-> > On Fri, Nov 03, 2017 at 09:26:22PM +0100, Laurent Vivier wrote:
-> >> Signed-off-by: Laurent Vivier <laurent@vivier.eu>
-> > 
-> > There is no commit body here, do we need one?  I can see in your cover letter
-> > its mentioned this was revealed after enabling "USE_SOFTFLOAT_STRUCT_TYPES".
-> > 
-> > However, I'm just being curious why is this an issue?  In softfloat I assume we
-> > pack our own floats so having the type that goes into a uint32 register wouldnt
-> > make much difference right?
+On Mon, Nov 06, 2017 at 04:43:34PM -0800, Alistair Francis wrote:
+> On Mon, Nov 6, 2017 at 12:13 PM, Emilio G. Cota <cota@braap.org> wrote:
+> > On Mon, Nov 06, 2017 at 12:10:22 -0200, Eduardo Habkost wrote:
+> >> IMO, initialization state doesn't belong to CPUClass.  We already
+> >> have a single accelerator object in MachineState::accelerator,
+> >> and tcg_initialized could be moved to a AccelState::initialized
+> >> field.
+> >
+> > I don't know how to cleanly get AccelState from a CPUClass pointer
+> > (as I said I'm not familiar with object code / qom) -- suggestions
+> > welcome! The best I could come up in the limited time I have for
+> > this is to use a static bool, as shown below.
+
+I don't believe a TYPE_ACCEL object is created in *-user.  We can
+consider changing that, but not during 2.11 freeze.
+
+> >
+> >
+> > ---8<---
+> >
+> > Subject: [PATCH] qom: move CPUClass.tcg_initialize to a global
+> >
+> > 55c3cee ("qom: Introduce CPUClass.tcg_initialize", 2017-10-24)
+> > introduces a per-CPUClass bool that we check so that the target CPU
+> > is initialized for TCG only once. This works well except when
+> > we end up creating more than one CPUClass, in which case we end
+> > up incorrectly initializing TCG more than once, i.e. once for
+> > each CPUClass.
+> >
+> > This can be replicated with:
+> >   $ aarch64-softmmu/qemu-system-aarch64 -machine xlnx-zcu102 -smp 6 \
+> >       -global driver=xlnx,,zynqmp,property=has_rpu,value=on
+> > In this case the class name of the "RPUs" is prefixed by "cortex-r5-",
+> > whereas the "regular" CPUs are prefixed by "cortex-a53-". This
+> > results in two CPUClass instances being created.
+> >
+> > Fix it by introducing a static variable, so that only the first
+> > target CPU being initialized will initialize the target-dependent
+> > part of TCG, regardless of CPUClass instances.
+> >
+> > Fixes: 55c3ceef61fcf06fc98ddc752b7cce788ce7680b
+> > Signed-off-by: Emilio G. Cota <cota@braap.org>
 > 
-> It's not an issue. It's for consistency. We can store a float32 in an
-> uint32_t, but it's better to store float32 in float32 type.
+> This works great for me, is this ok to be applied?
 
-OK, thank you.
+It depends if we are already relying on initialization of CPUs of
+different types to be calling two different ->tcg_initialize()
+functions.  I think that's the case today, so this looks
+reasonable as a quick fix for 2.11.
 
-> And as said in include/fpu/softfloat.h:
+I would wait for an Acked-by from Richard Henderson before
+applying it, though.  Richard, what do you think?
+
 > 
-> "Use structures for soft-float types.  This prevents accidentally mixing
->  them with native int/float types."
+> Thanks,
+> Alistair
+> 
+> > ---
+> >  exec.c            | 5 +++--
+> >  include/qom/cpu.h | 1 -
+> >  2 files changed, 3 insertions(+), 3 deletions(-)
+> >
+> > diff --git a/exec.c b/exec.c
+> > index 97a24a8..8b579c0 100644
+> > --- a/exec.c
+> > +++ b/exec.c
+> > @@ -792,11 +792,12 @@ void cpu_exec_initfn(CPUState *cpu)
+> >  void cpu_exec_realizefn(CPUState *cpu, Error **errp)
+> >  {
+> >      CPUClass *cc = CPU_GET_CLASS(cpu);
+> > +    static bool tcg_target_initialized;
+> >
+> >      cpu_list_add(cpu);
+> >
+> > -    if (tcg_enabled() && !cc->tcg_initialized) {
+> > -        cc->tcg_initialized = true;
+> > +    if (tcg_enabled() && !tcg_target_initialized) {
+> > +        tcg_target_initialized = true;
+> >          cc->tcg_initialize();
+> >      }
+> >
+> > diff --git a/include/qom/cpu.h b/include/qom/cpu.h
+> > index fa4b0c9..c2fa151 100644
+> > --- a/include/qom/cpu.h
+> > +++ b/include/qom/cpu.h
+> > @@ -209,7 +209,6 @@ typedef struct CPUClass {
+> >      /* Keep non-pointer data at the end to minimize holes.  */
+> >      int gdb_num_core_regs;
+> >      bool gdb_stop_before_watchpoint;
+> > -    bool tcg_initialized;
+> >  } CPUClass;
+> >
+> >  #ifdef HOST_WORDS_BIGENDIAN
+> > --
+> > 2.7.4
+> >
+> >
 
-Thanks, I have not tested this but I trust it should not be an issue.
-
-Acked-by: Stafford Horne <shorne@gmail.com>
-
--Stafford
+-- 
+Eduardo

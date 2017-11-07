@@ -1,177 +1,270 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp2322071wrd;
-        Fri, 7 Sep 2018 16:42:49 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdZ/QnWaddi7H7u7dY7KKQTAteCdcK45qHr5MQ/rb3Xjt44QQkdGugDI/bmgCIheA4pirnJr
-X-Received: by 2002:a37:8e41:: with SMTP id q62-v6mr7598439qkd.76.1536363769056;
-        Fri, 07 Sep 2018 16:42:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1536363769; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp3244009wrb;
+        Mon, 6 Nov 2017 17:21:02 -0800 (PST)
+X-Google-Smtp-Source: ABhQp+QBnAIbPBIg9Nm1aO786Jh29unAkVsaVreVF45tqCaMHtbQZZDu+mEfT6UAQOht/fV3Qg2P
+X-Received: by 10.13.254.194 with SMTP id o185mr10694693ywf.355.1510017662246;
+        Mon, 06 Nov 2017 17:21:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510017662; cv=none;
         d=google.com; s=arc-20160816;
-        b=W7VO3OnsOs+1PSyEvSiCzzS57xc1HCL0PNwok8tGmJ80Y3M6KkqvgP3V2Fr6gv6ssQ
-         TDWkpJGOypo0cRXw3YZ3rqU6lHXLt6k0VknZzVir3UkzVP+qlDsJdGgWW94aYxlWPPLY
-         1xD9Zx8f8fhmSzaVgrS8vcpWKaV1x986o77f6PaMv2R0h4xQrtxLrwJMG+DOR2qUSdZG
-         S8WOrRNSpFqUaIYAIdIU6kDcXeShQoiAm3FSRkjl/7a+nVeeNda3ps6FVB2mhW6Rz/2w
-         SVU5ZT20HBUQ+nLYo97E1yk6pMASO8pSt54TUq4qmpiQeV/xl0RargjATCqMS+dHjhid
-         g2Jg==
+        b=rlQsi3sY+fHoQNk79OpILWSjb6v95B8I8nrzKZF7xfm4CzwBNFBc5aQTpLSrd97v4K
+         Vl92ZhF44gdMi9+z8BXQKfOAhKM1Q1PcxrAJIAm/Jnsp+LzggcYHajPlX+vFy+kQfVv5
+         2YxkbofXXQHUqPycurSHEBZQBWtBaiTlHDC+IRx1fKLAFzQMz6LSADAsu2RAIbouAtdj
+         Pqeuple6kfl5GOtNKMdzVGHf1FZ2bS9uJO+j7Tz+YmcTClBv2QSSNpeMIrFAv7tTMF1i
+         QX1yHUcSv3/yDehC2UI729I5V5uMfasF7eaBjFX4XdOQhy3YSTCxf6SKTdugo4WZWISO
+         QfYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
-         :dkim-signature;
-        bh=OwzUVG2AXMBZYW2ARlRHa1BHhylCZfEqGG+74JRCoMQ=;
-        b=i6qQ0fIp/aiGsviGnpGapGdSra4hfUGxtxjAytH0hrPvJglP4233P2xhU1xljCSS++
-         04Ma6l8sWqTJGu9YXnjJbb3QmdLTtsG+vpQXTr05LjMOt9LKPq9roWBwTxwUZSiOXEYK
-         kOd9Ugwk125epUaU5zvwj1nylOx3U/TvOKuNuVZvB0N9uFXr/apGwoMFCxbVOQlzyc+w
-         It/r6NVYey1bbFqKlzts76qduBLHaZFVC0k9Cy/mqZzkZeQWtH4LKE38BQClcOYjNi37
-         huBvFKRJ3AwJWrC5HlmM5soUgj0VDr06SnfuwDrW1WCK7gD/V0phbvqn0F9+VlH6gBAy
-         4Jfg==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=u9eEAiCstQ4LBheNmNJWxHkleWzOHuVoVoNsD1CZXC4=;
+        b=Z1JXQHTitTPleVu7NjMClXYoo0YO9F/q1VS3UFbs+lDUuIPK6J7GmcAbKjS7LGFtc4
+         hRhDLKNbuT3z5PcWGqFxmxRhfg4w8w+9XyWbBszTkQImLLQgQD8mSKSVWNuU5JTCioN1
+         nz4biS5OdguobAr2AYi+3yEwrftLj2Iv3dfQZcu/wGztq9WwtI4F+s25q8VZ/a96vFPx
+         BUn+RyXWSoxrLCxmZCUjaFka9UsRGZBzF/Dl7qM/sdPqQ2ItX2yBd+3/FexN3HTlHBmF
+         mekzVF7UWUBsnaQ3iy7MCmj7siBPdKsxhM8q4qSNzVnuzNm99f7OvqRcqGyYUcvEj2Y9
+         TQEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=T1es4Ynh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nqz4qgD0;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b22-v6si948473qkj.199.2018.09.07.16.42.48
+        by mx.google.com with ESMTPS id d10si10335ywa.514.2017.11.06.17.21.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 07 Sep 2018 16:42:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 06 Nov 2017 17:21:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=T1es4Ynh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40740 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nqz4qgD0;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:50963 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fyQOm-0000ox-J6
-	for alex.bennee@linaro.org; Fri, 07 Sep 2018 19:42:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59128)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eBsZZ-0005oi-NQ
+	for alex.bennee@linaro.org; Mon, 06 Nov 2017 20:21:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35109)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fyQOg-0000og-9h
-	for qemu-arm@nongnu.org; Fri, 07 Sep 2018 19:42:42 -0400
+	(envelope-from <alistair23@gmail.com>) id 1eBsYb-0005Rg-3b
+	for qemu-devel@nongnu.org; Mon, 06 Nov 2017 20:20:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fyQOd-0001sq-4U
-	for qemu-arm@nongnu.org; Fri, 07 Sep 2018 19:42:42 -0400
-Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:51719)
+	(envelope-from <alistair23@gmail.com>) id 1eBsYZ-00079d-Lz
+	for qemu-devel@nongnu.org; Mon, 06 Nov 2017 20:20:01 -0500
+Received: from mail-wm0-x22a.google.com ([2a00:1450:400c:c09::22a]:48380)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fyQOc-0001p8-Ta; Fri, 07 Sep 2018 19:42:39 -0400
-Received: by mail-wm0-x244.google.com with SMTP id y2-v6so16125600wma.1;
-	Fri, 07 Sep 2018 16:42:38 -0700 (PDT)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1eBsYZ-00079C-CR; Mon, 06 Nov 2017 20:19:59 -0500
+Received: by mail-wm0-x22a.google.com with SMTP id p75so566777wmg.3;
+	Mon, 06 Nov 2017 17:19:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=OwzUVG2AXMBZYW2ARlRHa1BHhylCZfEqGG+74JRCoMQ=;
-	b=T1es4YnhTZDfJsELuw35c4iRB3k8TK+seNdmbXeKekEDZw9d+UUTHNYh4Mgfzk/gQL
-	ZboBrRHbssRj2q4TGW2w9Atk1XziQiyU64cFi3CbtMIsezr/7MldKNuWG825dGqy4ZtN
-	fU62AF5Tdbp/QDwzcDXXm6H1iaiDzwS1UcYUvu4pSVv4ZGYNSM68PHWMSFbXz38F7453
-	yZRO+NhuxHwlD8gUfsknJ3qeRZ1Ea0e9hhV2rb0eDhJ3inJ8t9sPUVqWK5H2uj+GlWxh
-	fcXpvFtOBkJJUwHR8e+uVF+6h3hddbwNJhLRLY6eSwpW17xwUpKw/D+IvqS8UQF+Mwgo
-	AGAg==
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc:content-transfer-encoding;
+	bh=u9eEAiCstQ4LBheNmNJWxHkleWzOHuVoVoNsD1CZXC4=;
+	b=nqz4qgD0FFWfpc4NVGUHXKVaeJrR4qHQNuYbsYZ+/uwAONBYtb0qJ+GQS6uImLSQwF
+	gnCMNdtN/SVBA/aZkHu/UTWOrblt5gR/dudFgSTYcUmWCr7WODTJoqd3OtqPfEB7p+8F
+	P4bOEdn74p6HotWWnx3kcTEe3pLavUFegFVmGA6rqy8Ntiy5v0wGriCmhW0i4chDt4ux
+	3E5x+Q3GIvGstPf+dUXQ4t+wzF337inItN+/OvRK0zULcQGF6Dso4JcMPwcdS9Kcv0Ux
+	xRbi8awBO2cuF7h20YuhXSWLwXvPrTwiSt8po41JHdaptaymE8LrVPqBuUw+BvKTb/S4
+	X6rg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=OwzUVG2AXMBZYW2ARlRHa1BHhylCZfEqGG+74JRCoMQ=;
-	b=TBeTB8MboU6SMwvxpSw8+lxA77dubgg7JMi+9TutaSy7xAoepXXXSAQsophrAKt+KP
-	5vgLuRFelf1Jp0LKLpbL0HgOMOVoA6EUw4E6fqrHEd6lxESidi1DBFu5pt2rk7VYtcRS
-	QS7VcwQP2xPaDcveAaohTkV5QqokSYsu+2MYjomdhdTJJsyaLFOvIi0KL3LXMZA7P4Ci
-	AgS591b53byLBCpZ9RQsDXwCOVv2noYsWuglGbdP2zUYHCsDf4DL+X6/qBTZY0GiEKsQ
-	wSDrtAhtP+b9VqqGRCshyRzCGPBlCpcFYjwbbp34C2Mjz7Ws1N6aA6DWbfkSPV4yuF23
-	wsOw==
-X-Gm-Message-State: APzg51DQvrCqrVJDwRDb5g4uedFU9dV+pGDPaUfmh3kwNkIq9At3tiOi
-	/sOivtnQOpBeHYnQohI8HGXy40Db
-X-Received: by 2002:a1c:1510:: with SMTP id 16-v6mr6172582wmv.74.1536363757654;
-	Fri, 07 Sep 2018 16:42:37 -0700 (PDT)
-Received: from [192.168.43.186] (dynggepcrak-122-5-66-105.inwitelecom.net.
-	[105.66.5.122]) by smtp.gmail.com with ESMTPSA id
-	z21-v6sm5950423wmi.29.2018.09.07.16.42.31
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 07 Sep 2018 16:42:37 -0700 (PDT)
-To: Luc Michel <luc.michel@greensocs.com>, qemu-devel@nongnu.org
-References: <20180901124639.19735-1-luc.michel@greensocs.com>
-	<20180901124639.19735-3-luc.michel@greensocs.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Autocrypt: addr=f4bug@amsat.org; prefer-encrypt=mutual; keydata=
-	mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
-	u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
-	HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
-	YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
-	ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
-	dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
-	ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
-	Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
-	HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
-	Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
-	YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQJVBBMBAgA/AhsPBgsJ
-	CAcDAgYVCAIJCgsEFgIDAQIeAQIXgBYhBPqr514SkXIh3P1rsuPjLCzercDeBQJbkphvBQkm
-	loU1AAoJEOPjLCzercDeTLIP/3pzTBotxvkddIREaw2j/6RoxN1lj5hnCx/XHGF7QxAlO4uV
-	7eB6hcZxAqlt4AyNX5jcsSxNMfVNGnZ+u4ni6VdRRLUOw/QPXKGV8siK2E1zOG1GwZSCJ5zb
-	ol7gpXNnOG/+ZXDfvkfSNnpim0ahNIPX8WAaZ/qN7I1qsPGupK2JrlCot561TfIOT7KNZFAZ
-	m66Hf8MeNr8HQtn+oDk6j7g6WuIYZiqvF1MladikIZXndDMCsopXsjOikMXtoVuC/df7BlwS
-	UaM+DT47onbIfXOtsWQGd2dJhu07Kxphqlz1Uh3YA7IHsFzZkX+S9waPBEzC8YB39dkZKA2E
-	XbObk/ZTtCBLb39KTN2L7bv3Agm6wYO/hw3DQJQV3/07vW1EJd4fglQB5IY2A3eQ/ZSuRVm1
-	E1GyFszjLXKUQIKx1938zoLrUDDdWQH7bhhSvG7JWk1BKmJrIXDTDx1tvTOW2pYZuO1PNx+p
-	EhJraVuu3jtSbEfH+uPeoWtJtqSRkz1fLqp+dbha24ldPeKw4ija/YTviOem5baUlf/iNgS+
-	a0s0eoRiJFrGZFCKLGKgZYoJe1rccQR6JKKd8JpoaIQuzptcHZD4+qn8W8FUlkNWGfpTQrsN
-	iPLZt2EFOFkbjoZ2EoEByCs9nZ8ro91+lq7QfH9RFcldKLZfPEWwHPrchQ42
-Message-ID: <571adbe5-9f9a-f11c-8b0f-55e5fb01278f@amsat.org>
-Date: Fri, 7 Sep 2018 20:42:25 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.0
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc:content-transfer-encoding;
+	bh=u9eEAiCstQ4LBheNmNJWxHkleWzOHuVoVoNsD1CZXC4=;
+	b=g0cEL69VZFnwEb/bGw+ZugWSMz6+4+DWYHNIu0Oe/aKCzP2E4mgMdstidpnKSkYxkK
+	tZ1s1ukT44/Uy6ZfY5kWzsH6BfT/rFm5E2NRfAI59ehgYTDJea3Z5UjWbfe+totzM1WN
+	iuF7UDi2wKV5zyFUZSvkktznIyqnZFCuKTU+nmTGcuEsY58Jvg73CJ9vKF4In2jdTE8x
+	eiMRs8mktOlqoyIuao6MzqAYm2UReCBwIIamtDldSyvlyNOzfD5p+WgIzI6IARZdw9Hx
+	eo1US+SmHqaLi9BYV5HvsZLkLr5TdipPaV/KOF1eZl0dJRI2rsq2ZFShqXHcq+fDMgGP
+	4Bdg==
+X-Gm-Message-State: AJaThX5rYFXx+WzqNlJDcqxocOL3JyHifCV1cioYcePpcsKb2AOrhOhx
+	t1oBlS/8MwGyO6XNqNNiB1TLXtV0jl+fjhCnQR0=
+X-Received: by 10.28.145.13 with SMTP id t13mr55809wmd.40.1510017598226; Mon,
+	06 Nov 2017 17:19:58 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20180901124639.19735-3-luc.michel@greensocs.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Received: by 10.28.147.11 with HTTP; Mon, 6 Nov 2017 17:19:27 -0800 (PST)
+In-Reply-To: <3ff3c20e-fba9-2f77-5f4c-8ffe6ca0b669@amsat.org>
+References: <1509734853-3014-1-git-send-email-cota@braap.org>
+	<20171103185610.GA3907@flamenco>
+	<20171103200233.GI3111@localhost.localdomain>
+	<20171103222407.GA22411@flamenco>
+	<20171106141022.GO3111@localhost.localdomain>
+	<20171106215454.GB2152@flamenco>
+	<CAKmqyKOSOHdpzfu_WMPWo6Mh_kfmYhem0nR=BD3_hUws0tGEww@mail.gmail.com>
+	<20171106232145.GA25246@flamenco>
+	<CAKmqyKM20ibTxSFQ5FE_fzgOkcHfjXmrK36mpKswz=ZPwfMshA@mail.gmail.com>
+	<3ff3c20e-fba9-2f77-5f4c-8ffe6ca0b669@amsat.org>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Mon, 6 Nov 2017 17:19:27 -0800
+X-Google-Sender-Auth: OdxCt6c7vHBmJ3IpvYmZdGk7Kbk
+Message-ID: <CAKmqyKPYuxTEuR+xKjiPeMBwHyd78yBxXHhSQjxHgGfJ+2Wj+g@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::244
-Subject: Re: [Qemu-arm] [PATCH 02/15] gdbstub: add multiprocess support to
- '?' packets
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:400c:c09::22a
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH] hw: add .min_cpus and
+ .default_cpus fields to machine_class
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, alistair@alistair23.me,
-	mark.burton@greensocs.com, saipava@xilinx.com, edgari@xilinx.com,
-	qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AIOWJ72Mdfgn
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	"Emilio G. Cota" <cota@braap.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Marcel Apfelbaum <marcel@redhat.com>, Igor Mammedov <imammedo@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2KpNzcBUVxEv
 
-Hi Luc,
+On Mon, Nov 6, 2017 at 4:54 PM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+> On 11/06/2017 08:33 PM, Alistair Francis wrote:
+>> On Mon, Nov 6, 2017 at 3:21 PM, Emilio G. Cota <cota@braap.org> wrote:
+>>> On Mon, Nov 06, 2017 at 14:32:35 -0800, Alistair Francis wrote:
+>>>> Sorry for the silence here, I noticed these were broken just before I
+>>>> went on holidays but didn't get a chance to fix anything.
+>>>>
+>>>> For the Xilinx case I was thinking of patching the machine code to
+>>>> sanely follow the -smp option.
+>>>>
+>>>> -smp 1 -> Only create 1 A53
+>>>> -smp 4 -> Create 4 A53s
+>>>> -smp 6 -> Create all the CPUs
+>>>>
+>>>> I see a lot of advantages in not forcing the smallest number of CPUs
+>>>> to be 4 unless we really have to.
+>>>>
+>>>> I do see a nice advantage in being able to set the default smp option
+>>>> to something not 1 so the default closely matches hardware, but users
+>>>> can override that if they want to.
+>>>>
+>>>> So for the patch below I like the default_cpus option, but for Xilinx
+>>>> at least I would like to patch the logic to follow the -smp option
+>>>> instead of force a minimum.
+>>>
+>>> Agreed, honouring -smp would be the right fix.
+>>> Just note that since this is a regression we need the fix to
+>>> be in for 2.11.
+>
+> Can we revert some patches to avoid the 2.11 regression and take time to
+> see how to fix this correctly instead?
+>
+> The -smp help is:
+>
+> -smp
+> [cpus=3D]n[,maxcpus=3Dcpus][,cores=3Dcores][,threads=3Dthreads][,sockets=
+=3Dsockets]
+>
+> How would we start a Cortex-R52?
 
-On 9/1/18 9:46 AM, Luc Michel wrote:
-[...]
-> +static char *get_thread_id(const GDBState *s, CPUState *cpu,
-> +                           char *buf, size_t buf_size)
+I don't think it's unreasonable for the order to be A53s then R5s.
 
-To avoid confusion with 'int qemu_get_thread_id()' from "qemu/osdep.h",
-can we use another name such gdb_fmt_thread_id() or
-get_thread_id_string() or better?
+So once you have all 4 A53s any other CPUs you add to the -smp option
+add the R5s.
 
-> +{
-> +    if (s->multiprocess) {
-> +        snprintf(buf, buf_size, "p%02x.%02x",
-> +                 gdb_get_cpu_pid(s, cpu), cpu_gdb_index(cpu));
-> +    } else {
-> +        snprintf(buf, buf_size, "%02x", cpu_gdb_index(cpu));
-> +
+>
+> default would be: -smp cores=3D4,lockstep
+> so we can disable DCLS with: -smp cores=3D8
+>
+> having Lockstep not being 2N cores but aliased as N, the only interest
+> being injecting fault (or actually 2 cores, but 1 stopped, the guest not
+> aware of that).
 
-extra newline ;)
+We never model lockstep in QEMU, even in the Xilinx fork. We just
+disable one of the CPUs for lockstep (and fuz some of the other
+logic).
 
-> +    }
-> +
-> +    return buf;
-> +}
+>
+> The ZynqMP indeed has 6 CPUs, why not add apu/rpu options for ARM?
+>
+> 4+2=3D6 cores:
+> -smp apus=3D4,rpus=3D2
+>
+> 4+1=3D5 cores
+> -smp apus=3D4,rpus=3D2:lockstep
+
+This results in a different command line interface for this machine,
+which I think is confusing and unnecessary.
+
+>
+> There will always be 6 cores to this ZynqMP, why want to have less than
+> 4 APUs? I'd rather have 4 APUs, all of them can be offlined /
+> hotplugged, but they need to be instantiated and machine-initialized.
+
+There are lots of reasons to not have all 6 CPUs.
+
+First of all adding the R5s creates issues (GDB debugging being the
+worst offender) that most of the time people don't want when they
+aren't using the R5s.
+
+Secondly there are a lot of uses where one a single CPU is running. We
+for example have baremetal test binaries that only run on a single
+CPU. We can spin up a large number of QEMU instances to multi-thread
+running different tests. We don't need the over head of 6 CPUs just to
+run a single A53 test. It's much easier and quicker for us to run a
+single CPU instance of QEMU.
+
+Thanks,
+Alistair
+
+>
+>> Ok, I can spin up a patch for the Xilinx boards in the next day (maybe 2=
+)
+>>
+>>>
+>>> I just took a look at the non-Xilinx boards. It seems simple enough to
+>>> substitute the hard-coded value for smp_cpus, but yet again
+>>> I see "Property" structs that I'm not sure what to do with.
+>>> For instance, bcm2836.c:152:
+>>>
+>>> static Property bcm2836_props[] =3D {
+>>>     DEFINE_PROP_UINT32("enabled-cpus", BCM2836State, enabled_cpus, BCM2=
+836_NCPUS),
+>>>     DEFINE_PROP_END_OF_LIST()
+>>> };
+>>>
+>>> What is the purpose here? To enable/disable CPUs with -global args,
+>>> just like it's done for the Xilinx boards? Shouldn't we just use
+>>> -smp for that?
+>>
+>> Hmm...
+>>
+>>>
+>>> Also, note that I don't have a way to test these boards, which
+>>> explains why I'm reluctant to change board code. But of
+>>> course if board maintainers step in, I'm all for it :-)
+>>
+>> Yeah, I see.
+>>
+>> What about if we set default_cpus to the -smp option that is expected.
+>> Then on some of the older boards (like the bcm2836) we print a warning
+>> in the machine init() if the -smp option doesn't match that?
+>>
+>> That way the default args work, we allow users to specify a overwrite
+>> but we warn them that it might not work and it ensures all boards
+>> follow a similar flow.
+>>
+>> Then if we can test the boards and know that -smp 1 works we can
+>> remove the warning.
+>>
+>> Thanks,
+>> Alistair
+>>
+>>>
+>>> Thanks,
+>>>
+>>>                 Emilio
+>>>
+>>
+>

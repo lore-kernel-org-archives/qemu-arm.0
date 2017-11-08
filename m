@@ -1,95 +1,79 @@
-Received: by 10.223.150.237 with SMTP id u100csp1111085wrb;
-        Wed, 8 Nov 2017 02:34:35 -0800 (PST)
-X-Google-Smtp-Source: ABhQp+RMR8xL3xBwJdD5vqCWbZh2EmU0kFGfSRFZVn3OR495mjADUgcIREtL4rlKhhI1TQGKizQb
-X-Received: by 10.202.6.193 with SMTP id 184mr2165oig.403.1510137275311;
-        Wed, 08 Nov 2017 02:34:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510137275; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp1112922wrb;
+        Wed, 8 Nov 2017 02:36:34 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMbcp8GbvcTTO6eZBoRuW82cCdciabOBi9KYoWQJlh5Htw1rW0HsLGj+o+aVMG1QZea19DY0
+X-Received: by 10.157.0.172 with SMTP id w41mr20460oti.448.1510137394827;
+        Wed, 08 Nov 2017 02:36:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510137394; cv=none;
         d=google.com; s=arc-20160816;
-        b=cecDMZ+kl4AfwUyFNcj+bF7eb/gcl+Vskv+9zDaSlrIqu3WjWv+pND9ChFohmDWQ02
-         ofXhW8+4DTfGIseg0Y9hrRRwfG57L7ae4ADDQO6qvg2p35O3HJ2RN+RC+YFK0YGf4lPc
-         6TS40BzXGvcluyI3zBhaajZ+v/MtpFCTaYTzUZDvEEX3CYQZI+3Hp9rlXVB6xiqnAlp3
-         nHp09M54CXyldQXHnwZ7qDIzUSom9knxSq0Qw1/HAjAegx9HX2RTrwhBQ7opL6aAmqAT
-         KOn+SMdRlP0EcNN91o2x361KesIor9jwZNMEZUF12nBUfKpNxS72UbeZgBqdKXBYd5Cc
-         TqWA==
+        b=RYDYZcnbPDi+RrZR1wv2TVuzKywSew8f7z8FgzUKyea1G0WixEzIAn5yt/FRZw0PM2
+         tLzaYX05zsWdRxtIH35cFDxbl6iLQI+VJFNvdEXHR8sWxOsypsNaTN4A3YZCqQtOSmMn
+         vEmb9prMZnPdhc/Sc6pvZMstrW1f6xNOj+MfC0YtP6idTCQlUhVVCKWxlWCTB3b+Gsbw
+         fO9qpEWghKoufj3/VVTjn/6WOAYhVzMSFJvuwSniUemdC8QqTxvWZxZ0YvTQK8ipzwWK
+         a1HwExgbJtIzSbAbwjenHp9s2JAbO7zTJuieEo9AFEPwf8ko5qKypb5dlg4UEkGmLdOM
+         VJDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-transfer-encoding
          :content-disposition:mime-version:references:message-id:subject:cc
          :to:from:date:arc-authentication-results;
-        bh=UlVCZ7reGoA/faP8Jtw+Iz6o5RU6bvAlY8BjDWfwmNU=;
-        b=o0rQKWsEWGYVCWUPZK/o2IwDLGuSS0Z9Xo4Dwhd4E0Gy+rfHXKexG34JYtZp1OYkwY
-         40tDccChiQ2PHHSraaLHKn1IAM0R+I7aO9ukPgTYRU5vs9bOLkgEhZN7KXJvu6/MshQx
-         NbJGedU1AJXKczIHazSwPEBUFLWOmjooJjXVrZaopqAuXb9SoBrEisb8z3DbizZu0kwu
-         +dZf+v2diQRumODd6qJYWx77yqaQLfd+DLDY0iqu98dLqo391dCilNGLuQ0YnnqHOzZ7
-         XHGQ7yjqqL0y3CB7zAZrnW+YoLnt9W6uFKLdnXU1KIcgAO/eLHKw26oRW0HjkBvi6zmf
-         +YMA==
+        bh=6F2sQEyM/aFdQWkJnDgId18JUuGTZ0uDWtNVNA3S5QE=;
+        b=f3RpBnzPr8yxuL6yxooFRbgdRwmQPULxkO3z8CXU2JghO5MatrVueOiTn5mQ/RltwU
+         Dr993Hv8hJC+ggAFcTaGOh3KQVKEKwExBrTlKLagt9YBaOtyW/CG3FSNv/LVK7LuKjM8
+         5sQ/7KkYc8YFYcbYNS0Am6TSo8JcVvqzkKQJAf/b5f6MfQUUSnmFNtOcPB7Jl3cYnrd9
+         cjZt1691foTeo0jbVlUZCTZEqprAOS+qcD4U2ixBNWvwWxbll9YJ1hRD5LWiVf+68Zxs
+         /gRV8KKfmdpSqSc1GW+t9uCMBe1akfJU2j63BEU7DDWlc6pdiMVn4QsrLwyfCptGvvFD
+         VouQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of dave.martin@arm.com designates 217.140.101.70 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
 Return-Path: <Dave.Martin@arm.com>
 Received: from foss.arm.com (foss.arm.com. [217.140.101.70])
-        by mx.google.com with ESMTP id n188si1764645oig.337.2017.11.08.02.34.35;
-        Wed, 08 Nov 2017 02:34:35 -0800 (PST)
+        by mx.google.com with ESMTP id q69si1760112oic.332.2017.11.08.02.36.34;
+        Wed, 08 Nov 2017 02:36:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of dave.martin@arm.com designates 217.140.101.70 as permitted sender) client-ip=217.140.101.70;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of dave.martin@arm.com designates 217.140.101.70 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id BEE2414;
-	Wed,  8 Nov 2017 02:34:34 -0800 (PST)
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 5DAD414;
+	Wed,  8 Nov 2017 02:36:34 -0800 (PST)
 Received: from e103592.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.72.51.249])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D1A0A3F3DF;
-	Wed,  8 Nov 2017 02:34:33 -0800 (PST)
-Date: Wed, 8 Nov 2017 10:34:24 +0000
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 71BF03F3DF;
+	Wed,  8 Nov 2017 02:36:33 -0800 (PST)
+Date: Wed, 8 Nov 2017 10:36:31 +0000
 From: Dave Martin <Dave.Martin@arm.com>
 To: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
 Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
 	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Subject: Re: [RISU PATCH 06/10] configure: support CPPFLAGS
-Message-ID: <20171108103416.GA8971@e103592.cambridge.arm.com>
+Subject: Re: [RISU PATCH 00/10] Initial support for SVE
+Message-ID: <20171108103630.GB8971@e103592.cambridge.arm.com>
 References: <20171107150558.22131-1-alex.bennee@linaro.org>
- <20171107150558.22131-7-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20171107150558.22131-7-alex.bennee@linaro.org>
+In-Reply-To: <20171107150558.22131-1-alex.bennee@linaro.org>
 User-Agent: Mutt/1.5.23 (2014-03-12)
-X-TUID: TTNYciRENQXK
+X-TUID: 7HIjbjW39476
 
-On Tue, Nov 07, 2017 at 03:05:54PM +0000, Alex Bennée wrote:
-> Useful for accessing API's that are still brewing, e.g:
+On Tue, Nov 07, 2017 at 03:05:48PM +0000, Alex Bennée wrote:
+> Hi,
 > 
->   CROSS_PREFIX=aarch64-linux-gnu- \
->     CPPFLAGS=-I/home/alex/lsrc/qemu/risu.git/sve-headers/include \
->     ../configure
+> These patches apply on-top of the last clean-up series:
 > 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->  README    | 6 ++++++
->  configure | 1 +
->  2 files changed, 7 insertions(+)
+>   Subject: [RISU PATCH 0/7] Add @Group support and some aarch64.risu cleanups
+>   Date: Tue, 31 Oct 2017 14:54:37 +0000
+>   Message-Id: <20171031145444.13766-1-alex.bennee@linaro.org>
 > 
-> diff --git a/README b/README
-> index 9946e6e..fbe408d 100644
-> --- a/README
-> +++ b/README
-> @@ -26,6 +26,12 @@ Most useful is
->     need this if you're not building on the target system
->     (Example: CROSS_PREFIX=arm-linux-gnueabihf- )
->  
-> +Another useful flag is
-> + CPPFLAGS= which specified pre-processor flags, usually -I statements
-> +   for specifying extra include paths. Use this is you need something
+> This series adds support for SVE to RISU. Most of the initial patches
+> are plumbing changes to better support arch specific option flags
+> (cleaning up a TODO in the process). I also needed to ensure configure
+> actually honoured CPPFLAGS so it could be passed yet to be released
+> headers.
 
-s/is/if/
+Should there be a getauxval(AT_HWCAP) & HWCAP_SVE check in this series
+somewhere?
 
-> +   from new kernel headers not installed on your system.
-> +   (Example: CPPFLAGS=-I/path/to/sve-kernel-headers/include)
-> +
-
-You should probably point out that the path should refer to headers
-installed by running 'make headers_install' in the Linux source.  This
-means we really test the uapi headers properly, and I don't get spurious
-bug reports about bad headers ;)
+I don't know enough about how RISU is structured to know whether/where
+this is needed.
 
 [...]
 

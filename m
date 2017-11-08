@@ -1,100 +1,142 @@
-Received: by 10.223.150.237 with SMTP id u100csp1145001wrb;
-        Wed, 8 Nov 2017 03:12:20 -0800 (PST)
-X-Google-Smtp-Source: ABhQp+QtbueOQr+BCEpZDgiUK500zij5IT5I5Hhvx1Mg5KJeMoPta3fit0OXH2M0ApAmGJNAGLAU
-X-Received: by 10.202.188.214 with SMTP id m205mr72537oif.96.1510139539938;
-        Wed, 08 Nov 2017 03:12:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510139539; cv=none;
-        d=google.com; s=arc-20160816;
-        b=imAxiZKHsj8DwVTl3/HL58FWcYbTproe38+tsxUlH7U2Q4zcHekRRjkYu8RHurxzZo
-         4orD5/Y7Ux6YX/KyZi0WK0lSpLUv+AxB2xzyhbYFNhVqia8/Dv42cyIpL5lnHDvtJFz/
-         cV2f5dT1/wZY5t9ZED1YX+5DREUJ8PXyAVe35WjesZ9K1UKHxBa/FGP7HGFiNHR4O4ao
-         7JWvzHkCWkHfa9h3ZZIhLkzybwVBlh1ZAWhaQhDnbJc1wz7qxufWuXSzkhJlxCRoS0T+
-         nnYsoEzq5GG4ysBBEd5G3yioqhH3BKLIGBixvS0w6Wz2mpVhGGnuxHr+J5mOrJto+FZq
-         TbVQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:arc-authentication-results;
-        bh=9hQRmh0sypcC28K2fJMclX0f30NqDaw+1jMkZLjq2LQ=;
-        b=lBHh8Tf4WXVzUPgl6YoFfbU4AuZjKZ5Ndjp3w20S9f3RpjFpje/uw0gmPwgikDK74g
-         iaXzaqcQKSWruoPomDWDLmTjDxlTbwGLgctVXOKWJ8ry8YELzdBUBwbyJ1Ty/MXE6bHq
-         XiB3hDAHl24UBJrzy/bIfcTgl3kGDyDh2EVGe8QbEbhxoO0qQgYnwko0tAqQSTF/7C+C
-         jW1Zv7gu+8VeFeCMMoTzLeDvAXC32pXEcnAo7lKNWWeRcWpS0xzOuNk1hk6hAX66y9jy
-         ef2kax7k8QE2eJFj6XsvZp4nRB6jwN7EpdtASi6p5+9EQdtyFMAPi64g2mxPiI9itZvm
-         SrZQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of dave.martin@arm.com designates 217.140.101.70 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
-Return-Path: <Dave.Martin@arm.com>
-Received: from foss.arm.com (foss.arm.com. [217.140.101.70])
-        by mx.google.com with ESMTP id k62si1244966otk.128.2017.11.08.03.12.19;
-        Wed, 08 Nov 2017 03:12:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of dave.martin@arm.com designates 217.140.101.70 as permitted sender) client-ip=217.140.101.70;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of dave.martin@arm.com designates 217.140.101.70 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 03C7514;
-	Wed,  8 Nov 2017 03:12:19 -0800 (PST)
-Received: from e103592.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.72.51.249])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 1769F3F3DF;
-	Wed,  8 Nov 2017 03:12:17 -0800 (PST)
-Date: Wed, 8 Nov 2017 11:12:15 +0000
-From: Dave Martin <Dave.Martin@arm.com>
-To: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Subject: Re: [RISU PATCH 00/10] Initial support for SVE
-Message-ID: <20171108111215.GE8971@e103592.cambridge.arm.com>
-References: <20171107150558.22131-1-alex.bennee@linaro.org>
- <20171108103630.GB8971@e103592.cambridge.arm.com>
- <87mv3xqbig.fsf@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id c37sm5010934wrc.92.2017.11.08.03.41.45
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 08 Nov 2017 03:41:45 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id 385383E009E;
+	Wed,  8 Nov 2017 11:41:45 +0000 (GMT)
+References: <20171107150558.22131-1-alex.bennee@linaro.org> <20171107150558.22131-11-alex.bennee@linaro.org> <20171108105800.GD8971@e103592.cambridge.arm.com>
+User-agent: mu4e 1.0-alpha0; emacs 26.0.90
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Dave Martin <Dave.Martin@arm.com>
+Cc: "peter.maydell\@linaro.org" <peter.maydell@linaro.org>, "qemu-devel\@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm\@nongnu.org" <qemu-arm@nongnu.org>
+Subject: Re: [RISU PATCH 10/10] risu_reginfo_aarch64: add SVE support to reginfo_dump_mismatch
+In-reply-to: <20171108105800.GD8971@e103592.cambridge.arm.com>
+Date: Wed, 08 Nov 2017 11:41:45 +0000
+Message-ID: <87k1z1q9om.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <87mv3xqbig.fsf@linaro.org>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-TUID: WPWQIZOPospp
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: F7BY12/lNyOB
 
-On Wed, Nov 08, 2017 at 11:02:15AM +0000, Alex Bennée wrote:
-> 
-> Dave Martin <Dave.Martin@arm.com> writes:
-> 
-> > On Tue, Nov 07, 2017 at 03:05:48PM +0000, Alex Bennée wrote:
-> >> Hi,
-> >>
-> >> These patches apply on-top of the last clean-up series:
-> >>
-> >>   Subject: [RISU PATCH 0/7] Add @Group support and some aarch64.risu cleanups
-> >>   Date: Tue, 31 Oct 2017 14:54:37 +0000
-> >>   Message-Id: <20171031145444.13766-1-alex.bennee@linaro.org>
-> >>
-> >> This series adds support for SVE to RISU. Most of the initial patches
-> >> are plumbing changes to better support arch specific option flags
-> >> (cleaning up a TODO in the process). I also needed to ensure configure
-> >> actually honoured CPPFLAGS so it could be passed yet to be released
-> >> headers.
-> >
-> > Should there be a getauxval(AT_HWCAP) & HWCAP_SVE check in this series
-> > somewhere?
-> >
-> > I don't know enough about how RISU is structured to know whether/where
-> > this is needed.
-> 
-> That would be a saner runtime check to do but it's a balance as RISU is
-> a fairly specialist tool which kind of assumes people know what they are
-> doing.
-> 
-> The current check is on SVE_MAGIC in the header files which does mean a
-> binary compiled on an SVE headered system is now carrying about a much
-> larger register dump even when run without the --test-sve flag.
-> 
-> Whether it makes sense to be more flexible is a call I'll leave up to
-> Peter.
 
-Fair enough.  If there is anywhere useful to put it, it would serve as
-a useful example -- but as you point out, this is not a typical piece
-of userspace software...
+Dave Martin <Dave.Martin@arm.com> writes:
 
-Cheers
----Dave
+> On Tue, Nov 07, 2017 at 03:05:58PM +0000, Alex Benn=C3=A9e wrote:
+>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> ---
+>>  risu_reginfo_aarch64.c | 49 +++++++++++++++++++++++++++++++++++++++++++=
+++++++
+>>  1 file changed, 49 insertions(+)
+>>
+>> diff --git a/risu_reginfo_aarch64.c b/risu_reginfo_aarch64.c
+>> index 7c97790..8aba192 100644
+>> --- a/risu_reginfo_aarch64.c
+>> +++ b/risu_reginfo_aarch64.c
+>> @@ -141,6 +141,18 @@ int reginfo_is_eq(struct reginfo *r1, struct reginf=
+o *r2)
+>>      return memcmp(r1, r2, sizeof(*r1)) =3D=3D 0;
+>>  }
+>>
+>> +#ifdef SVE_MAGIC
+>> +static int sve_zreg_is_eq(struct reginfo *r1, struct reginfo *r2, int z)
+>> +{
+>> +    return memcmp(r1->zregs[z], r2->zregs[z], sizeof(*r1->zregs[z])) =
+=3D=3D 0;
+>> +}
+>> +
+>> +static int sve_preg_is_eq(struct reginfo *r1, struct reginfo *r2, int p)
+>> +{
+>> +    return memcmp(r1->pregs[p], r2->pregs[p], sizeof(*r1->pregs[p])) =
+=3D=3D 0;
+>> +}
+>> +#endif
+>> +
+>>  /* reginfo_dump: print state to a stream, returns nonzero on success */
+>>  int reginfo_dump(struct reginfo *ri, FILE * f)
+>>  {
+>> @@ -216,5 +228,42 @@ int reginfo_dump_mismatch(struct reginfo *m, struct=
+ reginfo *a, FILE * f)
+>>          }
+>>      }
+>>
+>> +#ifdef SVE_MAGIC
+>> +    if (test_sve) {
+>> +        if (m->vl !=3D a->vl) {
+>> +            fprintf(f, "  SVE VL  : %d vs %d\n", m->vl, a->vl);
+>> +        }
+>> +        for (i =3D 0; i < SVE_NUM_PREGS; i++) {
+>> +           if (!sve_preg_is_eq(m, a, i)) {
+>> +              int q;
+>> +              fprintf(f, "  P%2d   : ", i);
+>> +              for (q =3D 0; q < sve_vq_from_vl(m->vl); q++) {
+>> +                 fprintf(f, "%04x", m->pregs[i][q]);
+>> +              }
+>> +              fprintf(f, " vs ");
+>> +              for (q =3D 0; q < sve_vq_from_vl(m->vl); q++) {
+>> +                 fprintf(f, "%04x", a->pregs[i][q]);
+>> +              }
+>> +              fprintf(f, "\n");
+>> +            }
+>> +        }
+>> +        for (i =3D 0; i < SVE_NUM_ZREGS; i++) {
+>> +           if (!sve_zreg_is_eq(m, a, i)) {
+>> +              int q;
+>> +              char *pad=3D"";
+>> +              fprintf(f, "  Z%2d   : ", i);
+>> +              for (q =3D 0; q < sve_vq_from_vl(m->vl); q++) {
+>> +                 if (m->zregs[i][q] !=3D a->zregs[i][q]) {
+>> +                    fprintf(f, "%sq%02d: %016" PRIx64 "%016" PRIx64 " v=
+s %016" PRIx64 "%016" PRIx64"\n", pad, q,
+>> +                            (uint64_t) (m->zregs[i][q] >> 64), (uint64_=
+t) m->zregs[i][q],
+>> +                            (uint64_t) (a->zregs[i][q] >> 64), (uint64_=
+t) a->zregs[i][q]);
+>> +                    pad =3D "          ";
+>> +                 }
+>> +              }
+>> +           }
+>> +        }
+>
+> No FFR?
+>
+> Perhaps I should have explicitly encoded FFR as "P16" -- that sort of
+> works and saves some open-coding of the extra special case, but it feels
+> less correct.
+
+Oops, yeah missed that out. I'll add it to the next version.
+
+Good catch!
+
+>
+> You could do
+>
+> static int sve_preg_is_eq(uint16_t const (*p1)[SVE_VQ_MAX],
+> 				uint16_t const (*p2)[SVE_VQ_MAX])
+> {
+> 	return memcmp(p1, p2, sizeof *p1) =3D=3D 0;
+> }
+>
+> /* ... */
+>
+> sve_preg_is_eq(&r1->pregs[p], &r2->pregs[p])
+>
+> /* ... */
+>
+> sve_preg_is_eq(&r1->ffr, &r2->ffr)
+>
+> (or some variation on this theme).  ffr is a specialised predicate
+> register, so I think you can assume that it really does have the same
+> type as pregs[p].  Coding the above way will give a typcheck error if
+> not.
+
+Ahh ok thanks.
+
+>
+> Cheers
+> ---Dave
+
+
+--
+Alex Benn=C3=A9e

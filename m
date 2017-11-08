@@ -1,132 +1,179 @@
-Received: by 10.223.150.237 with SMTP id u100csp1479998wrb;
-        Wed, 8 Nov 2017 08:32:17 -0800 (PST)
-X-Received: by 10.80.151.186 with SMTP id e55mr1391533edb.91.1510158737865;
-        Wed, 08 Nov 2017 08:32:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510158737; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp1519157wrb;
+        Wed, 8 Nov 2017 09:11:12 -0800 (PST)
+X-Google-Smtp-Source: ABhQp+ThDc3YPRarQNbJWk2nNWI3P/f5LPVvY5oaI4koHCuzqya/m8BRIHuSUimrcFqqVijaBhhv
+X-Received: by 10.129.65.5 with SMTP id o5mr864631ywa.476.1510161072361;
+        Wed, 08 Nov 2017 09:11:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510161072; cv=none;
         d=google.com; s=arc-20160816;
-        b=NWuDsCQNagdLsaJ0eEA6zZjkAmY4YEeZe8PuOTXMCAyvEVgvIPiYQIqSuGT54HTjYz
-         Cuyudo4M6VpZVoGUr3eZhILlmhyosPZbLaEYN19160Vr4rkKYAHwfwH5J7I6Kec8q6p7
-         PTd6nkoZtPonnJke6v4sVZBexqVOtCvhSj1ZLKfw05TCYTX9Gg2isQrXmOGKFjgmcEqb
-         oNJIjRLtvzvlp+bblRw7pjdKPeqEuup5Mop5LqflH3b3dIFtrbjRZilKaTZJvtSWAEWR
-         7nmnW1a0n2I1Sy6FpNcw7xd3ncmF1k7csMor6PXN5BpwmBZomW7nKugBTBguqp1Uf6W2
-         v5hg==
+        b=GFBXQbe6MnB9KJAAhYjcDmAjXOqnCmrpFYQ00ozRoTlH6MjVIIa6ExzLkUSSsN3ELq
+         l+2yJiF2nNn+GGVqgfmvpzfC97VfmQCg8/U4+ZOzcL04bQ/3f0WO2aqbJ6pVuLz0ynsM
+         rvjsA8utnoTJbH+IHh9t53hev3Lis9un6eu6sZ0wiAa12zo08xXDkQhcc/csFigApMpG
+         r4WCaiYEzPFY8GvunRlkX/7gR/AoPjWiPBG404r78rCzisJ9aIHAW9vvMse1iLVUGQY0
+         4pj1wwNz8fM7ccrfDqPbJU6ypuzTX4d9bp7GFbJAxudEFk83jtNOhvJxXFdlPKtSFa1L
+         M9gQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject:sender
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
          :dkim-signature:arc-authentication-results;
-        bh=5vmjCkDTc1nu3p1plhLGFcZrGcv9M5/Il3BydB5ZBVs=;
-        b=gM0hpOKzAqkJfAkp2/Ch0TeSWEp/H/+Zq+22oTBcDAqG23I6Wk85saQlquju49vkEo
-         oMXRbZvdhSEbM39+FYcmixtx8GMRFe+J29VFhoXeTkt7W0GRySTEQKkm5tLsqBHmGWyB
-         Nkp2MVw7YTlVaJq+vx5W42OBiTzJcgQUwx5gVPWEuOxnISP1pPP05S2yHfdSNMEl9zzD
-         L8/noEJX/cSbjVv+s3b5HQbCIfRZLy26QurYZqLApoixSuNUgbJAEDH2j3v+Tt0lYUQO
-         qnU9WdP9RUy0crNmgOWwFiC9TtAbgilAC511pZAdVe1KkS3WPCFtE8BLKRm9GJfs8pxX
-         GqzQ==
+        bh=6MVgHGi3rK+63A/aQ7ffy56wLonkhLJQ52yJVuWl9ls=;
+        b=uA3hIeSGK05gCPVkNaxVN1/YhXHtc1xz4M/+ky70HnXPXM7wicBXAfY8VIWmU74Qy+
+         Z62dHZQN7IqkScb+cMK6PCDu22nkYOOt73BZl+Zt6+kSOK3IXXS0FwFpmPJQ8DQzhuVg
+         BPQw8sGaCeMfzSsPb8pfo0PjgrjCZfrJdsUQLTbhdn1JYbPm+A+EjS14yPuH4cKsQKLq
+         pXl9FGTDs8xFGsHd9JsUSLcPSYG+3RQV1RY/JpxDub01CRB53G8s3ETMMG//ewqN6rMM
+         NCfj+PHVUdSWSL/rcpQDSpwRHQ7RP1ya5Qv8PkdRRH+w108L2W1yxXS87DfCB3+R84bV
+         pG0w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rg/K5SLh;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Return-Path: <rth7680@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id h24sor2947176edj.29.2017.11.08.08.32.17
-        (Google Transport Security);
-        Wed, 08 Nov 2017 08:32:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Lat12HJG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id r128si1028655yba.2.2017.11.08.09.11.12
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Wed, 08 Nov 2017 09:11:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rg/K5SLh;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=5vmjCkDTc1nu3p1plhLGFcZrGcv9M5/Il3BydB5ZBVs=;
-        b=rg/K5SLhgjUdg8OMFBHg3lR7mVL/5mpwqYTl+++LrRsuryIUqzkCWvfeQpZYKY09c9
-         HYsJV5pR6dHjYI0H1tl0YHPc30hGMrZLLJkxoxSeTUgzmX5T4uSBone+Uqfe4aLzFZ4i
-         tD2oxrW4dflwJF5pPeGO3Z5x2DngTZKCFxx/CI05io8YOwyRrFK+RLq2Xd2+C3CnZdXe
-         KeqL0cRc5klYCuPcujCXrSMUigL5Gb2l/xFKCA2xmxlFnJqLmlFlgYwKDNg3dnp/EGDa
-         bc2hOw6KeoZCX0lxOkjyZGF5Ac7WaTkzlrUw2GUDh6AqlZbaM6ZDhDuKeZAHeVQLlaCK
-         QjnQ==
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Lat12HJG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:32818 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eCTsd-0007yF-QN
+	for alex.bennee@linaro.org; Wed, 08 Nov 2017 12:11:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58548)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <edgar.iglesias@gmail.com>) id 1eCTnV-000442-UU
+	for qemu-arm@nongnu.org; Wed, 08 Nov 2017 12:06:04 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <edgar.iglesias@gmail.com>) id 1eCTnR-0005DG-UA
+	for qemu-arm@nongnu.org; Wed, 08 Nov 2017 12:05:53 -0500
+Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:47743)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
+	id 1eCTnR-0005Bv-Jz; Wed, 08 Nov 2017 12:05:49 -0500
+Received: by mail-lf0-x241.google.com with SMTP id f125so3893132lff.4;
+	Wed, 08 Nov 2017 09:05:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=6MVgHGi3rK+63A/aQ7ffy56wLonkhLJQ52yJVuWl9ls=;
+	b=Lat12HJGZzrGVi+y9kyBQxExrznkZbJ9FYuIBWry4US1vg/5ZeYCIjxjskD7P80ith
+	TCAbOZ17nFAjgSHFY0xAqVILIf/AiGzVUdJG5M6Jc5pW79oDZ9mmFD7Oz0d9BReh15wM
+	T4XmFI5X8FNKwEt/nMfBiGPxA2m1jHEru+5NYdyTPsuK6kgR4nBwu3IGG9RzHgvKZZvX
+	Vt/XzCGsx+A3N8SBGA+JpNPySPa9+o32H8tKr8+wpAM1appkAlll9LCrbE0L8wKz8ZfV
+	RBW9xjIGwkXQGoK5RR9T9u/8UL59jq7X94qOtELU3fWoL9Lhawi8W5wWEnMl2E6fJ70N
+	uaRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=5vmjCkDTc1nu3p1plhLGFcZrGcv9M5/Il3BydB5ZBVs=;
-        b=stLxNoqnNT6XXIM26ZCz1MB+tRH16yzyNmlNYxz3IqFjlEYJdS49Rk9/Lxq+aSHvgk
-         6Pa9w5gR/8b8VPdg+MDdmS1rBCi3muKFs3z1xHvM2kYjgARo0MexTPmXmn1wtDiYYINQ
-         t+LoOTh70P1WNptQyPM8x3LLPjFeU8FxiFwcwOMhg+eLTUZDJ73EHi6sFBXhVgx9H7h0
-         cAMLu59TklauuA0KqJQ76U6brPkdHb481jAtmE07fdMMKgk5k3/fG6leVtLle0FOUrDZ
-         lTZzhubKBMCBkbULaV2AY3rTjgXo+JzKcSycrtMx5uLhLCH+v+ii5t/hm7qwH4pGj5+l
-         jGgg==
-X-Gm-Message-State: AJaThX6Omu39FhTHGUPugFkC5iZHbKWPjxeU1s1Rm+uTNL5wcj+kIviW
-	A47pI/V/ptrYiXB6j4hc84E=
-X-Google-Smtp-Source: ABhQp+SBQkwkaamM06tGmaVKrsIGw6zPTj+7ekeSxGjQQAVerz2GNsc3serfCck0FjCAxz+SGQ+1nA==
-X-Received: by 10.80.184.165 with SMTP id l34mr1359057ede.53.1510158737534;
-        Wed, 08 Nov 2017 08:32:17 -0800 (PST)
-Return-Path: <rth7680@gmail.com>
-Received: from cloudburst.twiddle.net (93-45-2-58.ip99.fastwebnet.it. [93.45.2.58])
-        by smtp.googlemail.com with ESMTPSA id w28sm4474645edl.16.2017.11.08.08.32.15
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 08 Nov 2017 08:32:16 -0800 (PST)
-Sender: Richard Henderson <rth7680@gmail.com>
-Subject: Re: [PATCH v2 2/2] target/*helper: don't check retaddr before calling
- cpu_restore_state
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- peter.maydell@linaro.org
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Michael Walle <michael@walle.cc>, Laurent Vivier <laurent@vivier.eu>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Anthony Green <green@moxielogic.com>, Chris Wulff <crwulff@gmail.com>,
- Marek Vasut <marex@denx.de>, Stafford Horne <shorne@gmail.com>,
- Alexander Graf <agraf@suse.de>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Guan Xuetao <gxt@mprc.pku.edu.cn>, "open list:S390" <qemu-s390x@nongnu.org>
-References: <20171108153245.20740-1-alex.bennee@linaro.org>
- <20171108153245.20740-3-alex.bennee@linaro.org>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <234690ff-ef05-9276-f6e9-2ecbb3d5964b@twiddle.net>
-Date: Wed, 8 Nov 2017 17:32:14 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.4.0
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=6MVgHGi3rK+63A/aQ7ffy56wLonkhLJQ52yJVuWl9ls=;
+	b=VNB32RN8ER0gYhuV2inV6EISIR8/f48f/V15jZyMqS1EZXOI9hVTsYh6NOGGqbnqis
+	6wh8tTs523c2gt4QtW1Q4HHFO/GLOpnTRmP+sdnYVBQA9yDxyjhzaPWwjnB8UEPtwBJp
+	CRiLBcTXNlzrY4GXuRUe1BWswaT1WzRok4hLMr7uw7T6or70XzjeNY4l2wKuFzDV23yt
+	oD0DoH9meTp7nn8qkl4/dSa25vSp8AFkpaORTNzy8M8Py6k5qINPN7aA9PUViLvkz8iq
+	0q2zLMczps7bMzvkYZoZYy3Mu+9oDw71VlJ/T5zCxFm3esmZ/tgiV9MBWcT63h2kB/J5
+	Z8iw==
+X-Gm-Message-State: AJaThX6n3s/w3ZzoPGQLQN4xMP/uGHPT89O902+ND09bV/415va8wsEt
+	yCYQpL0zQXiZgBC8Skil8qE=
+X-Received: by 10.46.57.25 with SMTP id g25mr557699lja.36.1510160747753;
+	Wed, 08 Nov 2017 09:05:47 -0800 (PST)
+Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+	by smtp.gmail.com with ESMTPSA id w16sm891580lje.17.2017.11.08.09.05.46
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 08 Nov 2017 09:05:46 -0800 (PST)
+Date: Wed, 8 Nov 2017 18:05:45 +0100
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Stefano Stabellini <sstabellini@kernel.org>
+Message-ID: <20171108170545.GF5553@toto>
+References: <1509719814-6191-1-git-send-email-peter.maydell@linaro.org>
+	<alpine.DEB.2.10.1711031035500.8975@sstabellini-ThinkPad-X260>
 MIME-Version: 1.0
-In-Reply-To: <20171108153245.20740-3-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: BtEw7Mq6WL3y
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.10.1711031035500.8975@sstabellini-ThinkPad-X260>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4010:c07::241
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] arm: check regime,
+ not current state, for ATS write PAR format
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org, Julien Grall <julien.grall@linaro.org>,
+	patches@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Go1cHV5kHK8b
 
-On 11/08/2017 04:32 PM, Alex Bennée wrote:
-> -        if (retaddr) {
-> -            cpu_restore_state(cs, retaddr);
-> -        }
-> +        cpu_restore_state(cs, retaddr);
->          /* Exception index and error code are already set */
->          cpu_loop_exit(cs);
+On Fri, Nov 03, 2017 at 10:36:37AM -0700, Stefano Stabellini wrote:
+> On Fri, 3 Nov 2017, Peter Maydell wrote:
+> > In do_ats_write(), rather than using extended_addresses_enabled() to
+> > decide whether the value we get back from get_phys_addr() is a 64-bit
+> > format PAR or a 32-bit one, use arm_s1_regime_using_lpae_format().
+> > 
+> > This is not really the correct answer, because the PAR format
+> > depends on the AT instruction being used, not just on the
+> > translation regime. However getting this correct requires a
+> > significant refactoring, so that get_phys_addr() returns raw
+> > information about the fault which the caller can then assemble
+> > into a suitable FSR/PAR/syndrome for its purposes, rather than
+> > get_phys_addr() returning a pre-formatted FSR.
+> > 
+> > However this change at least improves the situation by making
+> > the PAR work correctly for address translation operations done
+> > at AArch64 EL2 on the EL2 translation regime. In particular,
+> > this is necessary for Xen to be able to run in our emulation,
+> > so this seems like a safer interim fix given that we are in freeze.
+> > 
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> 
+> Tested-by: Stefano Stabellini <sstabellini@kernel.org>
 
-Not that this is wrong, but while we're cleaning things up,
-this call combo is cpu_loop_exit_restore.
+Hi,
 
-You create at least 8 of these pairs in this patch.
+This looks like an OK workaround for the moment:
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
-> +++ b/target/moxie/helper.c
-> @@ -36,9 +36,7 @@ void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
->  
->      ret = moxie_cpu_handle_mmu_fault(cs, addr, access_type, mmu_idx);
->      if (unlikely(ret)) {
-> -        if (retaddr) {
-> -            cpu_restore_state(cs, retaddr);
-> -        }
-> +        cpu_restore_state(cs, retaddr);
->      }
->      cpu_loop_exit(cs);
->  }
+Cheers,
+Edgar
 
-
-This one *should* have been such a pair, but there's an existing bug in moxie
-that should have restricted the cpu_loop_exit to inside the if.
-
-All that said,
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-
-r~
+> 
+> 
+> > ---
+> > I guess I should have a go at the "correct answer" I sketch
+> > above, but no promises about when I'll get time for that :-(
+> > 
+> >  target/arm/helper.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/target/arm/helper.c b/target/arm/helper.c
+> > index 96113fe..37af750 100644
+> > --- a/target/arm/helper.c
+> > +++ b/target/arm/helper.c
+> > @@ -2162,7 +2162,7 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
+> >  
+> >      ret = get_phys_addr(env, value, access_type, mmu_idx,
+> >                          &phys_addr, &attrs, &prot, &page_size, &fsr, &fi);
+> > -    if (extended_addresses_enabled(env)) {
+> > +    if (arm_s1_regime_using_lpae_format(env, mmu_idx)) {
+> >          /* fsr is a DFSR/IFSR value for the long descriptor
+> >           * translation table format, but with WnR always clear.
+> >           * Convert it to a 64-bit PAR.
+> > -- 
+> > 2.7.4
+> > 
+> > 

@@ -1,156 +1,147 @@
-Received: by 10.223.159.74 with SMTP id f10csp2940593wrg;
-        Mon, 18 Dec 2017 09:53:17 -0800 (PST)
-X-Google-Smtp-Source: ACJfBosL0++bjXQO90T+1rs+zZ2Rpxte4LUIFVmFPrZEvcqSoDvAqdp0+ythNXEaLgL5m9ynxE+2
-X-Received: by 10.37.189.7 with SMTP id f7mr490842ybk.193.1513619597768;
-        Mon, 18 Dec 2017 09:53:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1513619597; cv=none;
-        d=google.com; s=arc-20160816;
-        b=qGAjHeQZGL/fUOFBAwYh2PByVR5uPem7CyyLlRWhgWn71d3eY/9GA2AWh4AuB/skFp
-         BpSpzYvXxmcEaeeWJHBYuFS1cN0JOMQsjpNInd/o81nlmfnucWJQjvK74DdCe7DwA/+v
-         vEgaQCgr38lXVR7Um3PLQ8coK7luIZLpxqCAu2qC1mk2S4B/uByUxS4AUhsbD6Cr5VPe
-         ygniLf9H+zJcePC0qcKpvrFikO6j7GFETUbeD3NvlMCdYXq8PEQxJSoyRDCIKcp56VrS
-         jXcSUrEDFMJQc1jK3UUbrHemPl5DuHktOv2pkYCOrqHRRef3LD97L5S11DOI4GOXFXRT
-         XGfA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=ENRXS9h8V/c69uI8RDsb604KEPZbwbCQK6rOp4tGF+0=;
-        b=Keh1YKrJDyUVhg3pZYqfceb4E3H6HEPrDx8L7v/QERPcg7d5JYUUiql78n+hmGQ505
-         MBRm3YsewucFaQy7TyFpy7sdfWD1Wssdqa2tr1fqm3gPwWflABlXIk/llVOAzdSt9BRk
-         f0vX19Yw+Dza+lvEv+rsxGcrFiN8E+RXrlDuVGIQSc+NO179ysxwmiTCMDKhYYQW4C27
-         r+lia9IhzGKsMVCX+MVjSEKSiQAZnXhT6dH09YlmQThDH3JdhxnFMhPi/Y0gQlTXHJuL
-         BBjsqlMIe5w061fz7jBMExg2awM6s5WRLMD/Qazs9JApvyYrz6SkbsK4P8iZPwWGO5W2
-         /emg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=GAI0lLCO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i197si2519918ywe.763.2017.12.18.09.53.17
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 18 Dec 2017 09:53:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=GAI0lLCO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59399 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eQzbJ-0006Ih-63
-	for alex.bennee@linaro.org; Mon, 18 Dec 2017 12:53:17 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44397)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1eQzFO-0002gS-Ga
-	for qemu-arm@nongnu.org; Mon, 18 Dec 2017 12:30:39 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1eQzFL-0004jR-8O
-	for qemu-arm@nongnu.org; Mon, 18 Dec 2017 12:30:38 -0500
-Received: from mail-pl0-x242.google.com ([2607:f8b0:400e:c01::242]:46597)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1eQzFK-0004iF-V6
-	for qemu-arm@nongnu.org; Mon, 18 Dec 2017 12:30:35 -0500
-Received: by mail-pl0-x242.google.com with SMTP id i6so5222700plt.13
-	for <qemu-arm@nongnu.org>; Mon, 18 Dec 2017 09:30:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=ENRXS9h8V/c69uI8RDsb604KEPZbwbCQK6rOp4tGF+0=;
-	b=GAI0lLCOJPGQ20OkTy+kPEmjC6D0i+/r+6wETWvkL4Tnb47Mwr7tDySVTpoj9/bosB
-	8Ep2inBB7qL9Xl2GrR8sNyQwGnXEQ1p/8V7cfzJnCyLcJv6pX1kMKAUnzcoalvzERjhh
-	iPMruL9kjq+zWEO4HsJ4yVhW2I3iAItHULw5s=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=ENRXS9h8V/c69uI8RDsb604KEPZbwbCQK6rOp4tGF+0=;
-	b=WlxLHdfThzDwnJEyd2sxXFiYqc66OE17nx0CUb3pdKKv03TRtjPxKrYDjHERE3gAg3
-	Dl1kkF3EoslTkhnBaUSpvzghI16MBzSPwyxolT26uvbY2pgyPdxjFSb0smszqHyYk4mL
-	U6lqewTHwjkf9nY90duSLD8LQGNtDvZimGkX+6yCcZnHwSqQcJAeMpjLgJ22P8M77LRg
-	lvbRHMVbs8tFKYq12Oi1IxYOvGep4GLYvFiMzc6qNd8ELtkwUBKoclkZtCF8tWqlbWpK
-	rYLbrBbX4T97gwyPjSqRuwgQuyttns2G1qlBpE64ECsFOQiI3YJUt1qHeG0DQ2hsteXl
-	PyAg==
-X-Gm-Message-State: AKGB3mLl9Y3N5vhbiGWvLZKVaYTWj0OUcdnHrku8KGUJ/uRO6OWCAqJU
-	0ffhyoLRYJaPYQ4fwE2nJsa0JiUlUdI=
-X-Received: by 10.159.196.130 with SMTP id c2mr434568plo.123.1513618234037;
-	Mon, 18 Dec 2017 09:30:34 -0800 (PST)
-Received: from cloudburst.twiddle.net (174-21-7-63.tukw.qwest.net.
-	[174.21.7.63]) by smtp.gmail.com with ESMTPSA id
-	h69sm26553411pfe.107.2017.12.18.09.30.32
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 18 Dec 2017 09:30:33 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Mon, 18 Dec 2017 09:30:19 -0800
-Message-Id: <20171218173022.18418-7-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.14.3
-In-Reply-To: <20171218173022.18418-1-richard.henderson@linaro.org>
-References: <20171218173022.18418-1-richard.henderson@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c01::242
-Subject: [Qemu-arm] [PATCH 6/9] vmstate: Add VMSTATE_UINT64_SUB_ARRAY
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +BT6trZtGrB2
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id 89sm1383472wri.79.2017.11.08.07.32.46
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 08 Nov 2017 07:32:46 -0800 (PST)
+Received: from zen.linaroharston (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTP id B5F8F3E03B5;
+	Wed,  8 Nov 2017 15:32:45 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: peter.maydell@linaro.org
+Cc: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <rth@twiddle.net>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Subject: [PATCH v2 1/2] accel/tcg/translate-all: expand cpu_restore_state addr check
+Date: Wed,  8 Nov 2017 15:32:44 +0000
+Message-Id: <20171108153245.20740-2-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.14.2
+In-Reply-To: <20171108153245.20740-1-alex.bennee@linaro.org>
+References: <20171108153245.20740-1-alex.bennee@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: YTZAti66S3l/
 
-At the same time, move VMSTATE_UINT32_SUB_ARRAY
-beside the other UINT32 definitions.
+We are still seeing signals during translation time when we walk over
+a page protection boundary. This expands the check to ensure the host
+PC is inside the code generation buffer. The original suggestion was
+to check versus tcg_ctx.code_gen_ptr but as we now segment the
+translation buffer we have to settle for just a general check for
+being inside.
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+I've also fixed up the declaration to make it clear it can deal with
+invalid addresses. A later patch will fix up the call sites.
+
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reported-by: Peter Maydell <peter.maydell@linaro.org>
+Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Richard Henderson <rth@twiddle.net>
+
 ---
- include/migration/vmstate.h | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
+v2:
+  - add doc comment to exec-all.h
+  - retaddr->host_pc
+  - re-word comments on host_pc
+  - simplify logic as per rth suggestion
+---
+ accel/tcg/translate-all.c | 52 ++++++++++++++++++++++++++---------------------
+ include/exec/exec-all.h   | 11 ++++++++++
+ 2 files changed, 40 insertions(+), 23 deletions(-)
 
-diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
-index 88b55df5ae..8c3889433c 100644
---- a/include/migration/vmstate.h
-+++ b/include/migration/vmstate.h
-@@ -905,6 +905,9 @@ extern const VMStateInfo vmstate_info_qtailq;
- #define VMSTATE_UINT32_ARRAY(_f, _s, _n)                              \
-     VMSTATE_UINT32_ARRAY_V(_f, _s, _n, 0)
+diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
+index 34c5e28d07..e7f0329a52 100644
+--- a/accel/tcg/translate-all.c
++++ b/accel/tcg/translate-all.c
+@@ -352,36 +352,42 @@ static int cpu_restore_state_from_tb(CPUState *cpu, TranslationBlock *tb,
+     return 0;
+ }
  
-+#define VMSTATE_UINT32_SUB_ARRAY(_f, _s, _start, _num)                \
-+    VMSTATE_SUB_ARRAY(_f, _s, _start, _num, 0, vmstate_info_uint32, uint32_t)
-+
- #define VMSTATE_UINT32_2DARRAY(_f, _s, _n1, _n2)                      \
-     VMSTATE_UINT32_2DARRAY_V(_f, _s, _n1, _n2, 0)
+-bool cpu_restore_state(CPUState *cpu, uintptr_t retaddr)
++bool cpu_restore_state(CPUState *cpu, uintptr_t host_pc)
+ {
+     TranslationBlock *tb;
+     bool r = false;
++    uintptr_t check_offset;
  
-@@ -914,6 +917,9 @@ extern const VMStateInfo vmstate_info_qtailq;
- #define VMSTATE_UINT64_ARRAY(_f, _s, _n)                              \
-     VMSTATE_UINT64_ARRAY_V(_f, _s, _n, 0)
- 
-+#define VMSTATE_UINT64_SUB_ARRAY(_f, _s, _start, _num)                \
-+    VMSTATE_SUB_ARRAY(_f, _s, _start, _num, 0, vmstate_info_uint64, uint64_t)
-+
- #define VMSTATE_UINT64_2DARRAY(_f, _s, _n1, _n2)                      \
-     VMSTATE_UINT64_2DARRAY_V(_f, _s, _n1, _n2, 0)
- 
-@@ -932,9 +938,6 @@ extern const VMStateInfo vmstate_info_qtailq;
- #define VMSTATE_INT32_ARRAY(_f, _s, _n)                               \
-     VMSTATE_INT32_ARRAY_V(_f, _s, _n, 0)
- 
--#define VMSTATE_UINT32_SUB_ARRAY(_f, _s, _start, _num)                \
--    VMSTATE_SUB_ARRAY(_f, _s, _start, _num, 0, vmstate_info_uint32, uint32_t)
+-    /* A retaddr of zero is invalid so we really shouldn't have ended
+-     * up here. The target code has likely forgotten to check retaddr
+-     * != 0 before attempting to restore state. We return early to
+-     * avoid blowing up on a recursive tb_lock(). The target must have
+-     * previously survived a failed cpu_restore_state because
+-     * tb_find_pc(0) would have failed anyway. It still should be
+-     * fixed though.
++    /* The host_pc has to be in the region of current code buffer. If
++     * it is not we will not be able to resolve it here. The two cases
++     * where host_pc will not be correct are:
++     *
++     *  - fault during translation (instruction fetch)
++     *  - fault from helper (not using GETPC() macro)
++     *
++     * Either way we need return early to avoid blowing up on a
++     * recursive tb_lock() as we can't resolve it here.
++     *
++     * We are using unsigned arithmetic so if host_pc <
++     * tcg_init_ctx.code_gen_buffer check_offset will wrap to way
++     * above the code_gen_buffer_size
+      */
 -
- #define VMSTATE_INT64_ARRAY_V(_f, _s, _n, _v)                         \
-     VMSTATE_ARRAY(_f, _s, _n, _v, vmstate_info_int64, int64_t)
+-    if (!retaddr) {
+-        return r;
+-    }
+-
+-    tb_lock();
+-    tb = tb_find_pc(retaddr);
+-    if (tb) {
+-        cpu_restore_state_from_tb(cpu, tb, retaddr);
+-        if (tb->cflags & CF_NOCACHE) {
+-            /* one-shot translation, invalidate it immediately */
+-            tb_phys_invalidate(tb, -1);
+-            tb_remove(tb);
++    check_offset = host_pc - (uintptr_t) tcg_init_ctx.code_gen_buffer;
++
++    if (check_offset < tcg_init_ctx.code_gen_buffer_size) {
++        tb_lock();
++        tb = tb_find_pc(host_pc);
++        if (tb) {
++            cpu_restore_state_from_tb(cpu, tb, host_pc);
++            if (tb->cflags & CF_NOCACHE) {
++                /* one-shot translation, invalidate it immediately */
++                tb_phys_invalidate(tb, -1);
++                tb_remove(tb);
++            }
++            r = true;
+         }
+-        r = true;
++        tb_unlock();
+     }
+-    tb_unlock();
  
+     return r;
+ }
+diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+index 923ece3e9b..0f51c92adb 100644
+--- a/include/exec/exec-all.h
++++ b/include/exec/exec-all.h
+@@ -45,6 +45,17 @@ void restore_state_to_opc(CPUArchState *env, struct TranslationBlock *tb,
+                           target_ulong *data);
+ 
+ void cpu_gen_init(void);
++
++/**
++ * cpu_restore_state:
++ * @cpu: the vCPU state is to be restore to
++ * @searched_pc: the host PC the fault occurred at
++ * @return: true if state was restored, false otherwise
++ *
++ * Attempt to restore the state for a fault occurring in translated
++ * code. If the searched_pc is not in translated code no state is
++ * restored and the function returns false.
++ */
+ bool cpu_restore_state(CPUState *cpu, uintptr_t searched_pc);
+ 
+ void QEMU_NORETURN cpu_loop_exit_noexc(CPUState *cpu);
 -- 
-2.14.3
-
+2.14.2

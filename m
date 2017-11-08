@@ -1,98 +1,103 @@
-Received: by 10.223.150.237 with SMTP id u100csp1382897wrb;
-        Wed, 8 Nov 2017 07:00:58 -0800 (PST)
-X-Google-Smtp-Source: ABhQp+QUkdX4x0uEGtBc/VX/vnCsSFEh8dJ9gshUxt9I0a00BDRedplPl2SshGuXg5hJ6bJlV5b6
-X-Received: by 10.37.115.203 with SMTP id o194mr532528ybc.437.1510153258281;
-        Wed, 08 Nov 2017 07:00:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510153258; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp1413765wrb;
+        Wed, 8 Nov 2017 07:27:48 -0800 (PST)
+X-Google-Smtp-Source: ABhQp+T5bgmyhxa9bh0o1IefhvboOg+k08UdUPVjwxm+Sht9XpU+89VunPKtsiSAeXe0azW9R4H+
+X-Received: by 10.37.201.5 with SMTP id z5mr585842ybf.297.1510154868673;
+        Wed, 08 Nov 2017 07:27:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510154868; cv=none;
         d=google.com; s=arc-20160816;
-        b=px1c/uznHzI2VgURhIUacIJjnMrFYzj9uRw5AVU/Waojuw0+UoM73p7jH5VN2skPMN
-         z6gvYYOUVnHyxCWLEta4REq60Z+vL6q8DSvMt1laOFGBiBRUvB/UL2BYdENl9fjzcH75
-         F/rkm/SD3FZePbkiF08uQuyDcD6dTgABON4wuoFyvOzbNDfJHEvUTYN+xpYmDvz47Ied
-         DPiua5NpOeS5stUGdpgwVP3aSsFM7Q6gJ0q4qtuOqs7ulUiw+2FxXdyQViHoHvn1ok+f
-         Q1P+F39Ekd9lJEavPy/Cy82a5tiT33P3ZE9jXV5eChN5+APo12ViMJzTDr2+V4oH7Fzy
-         Wrbg==
+        b=k+KqIMw8+aw8Jf5WtMRn/9JWcP4XfBRMIAf5XDvq+m/FKJTqPefwjc00pCxwRmOmdi
+         KgAdkfRdXbEAbaA1wTWL8nbURHzkMJz5Z3JpGkkeKl98IS7o5pGfANtrobVziwyflzVD
+         Cqn9jHMWSDv8Ghw5A2EGzdqIFJKgdmvs3pvRi1+1kv0tgNVGbxXK3hEujoVAyFpJuzgg
+         vQ9HLAz/dK4tAReH/MJ9lJNniThaOfPj+aqJFmL6/31ZwH3pIDxTgc7SLja23YMvjeP2
+         y4ONtSFdVq5ZOuTnxE1SzMiZFffSmOC5lk+rQ/Nk5HYe3jubMUddRKUZ213waAOk8ztm
+         3aDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :mime-version:user-agent:date:message-id:organization:openpgp:from
-         :references:to:dmarc-filter:arc-authentication-results;
-        bh=FCkivlTYgcsr9DMtFgh2ihKx8+lwaCuC5ypaP2cy1e4=;
-        b=G6zE+yp7xMYtmiWsVT/C2/72epgyOZiHWjCxy3hwsVKrkssgaVn8Xg0eLSCey0YpW/
-         gNPXxzXJGzi3xv2UjFSimeu2/ki78Z8nqNoGRzpqvH57B8dWcnaMofI9i4zIc1u0V/Hy
-         1Sq7wp4nu6ZsK+kK4hbxTK5+D5q/aSiy4PV+x+/pJGozhW6HXqReN1mN1WKspP39iidg
-         247JMBEOHKWSXBiEhceBcw1W39e9ulVdH2vZDZpmgFoTPkfQeqAhRvVUgzqk3IBcRQ4S
-         MBKUtkWVXapW3O4ohV2d/ovXZO3Q5ObmzAluEbvlNPUh5ho2Hyjbmj+tsbM/b/8c8iMs
-         pSDg==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=/cp7xaFOJeKef3lLaHy6abN0WGMoBsTQCRcz3OmnZWE=;
+        b=VHi7t4TcTrkd8VO5FYaZ/iOrC8jeKnEcvFOQtI3WCrcPXfQUujORPvjSsqugMWdoPW
+         uyLRAS++Mqsk64pjTaEdb2sz9A1bB1v8jzhaM1LAjs6YFeE50lkiPx8OgfvEVN4FEFLP
+         U7lhZHQur0icDu0PZvB4GWJiN/avyerFI57M3Np78L4FrszWYmnWF23JVX6ZZodkMy3x
+         wxN1lZFvfiOyEQZ8buyI5QWCEQRJDk49/af1K9UJgex4VngAY5D5F1P9ia9h+wo512lh
+         5JZocvvsj/OuD09o1wmqYmr7tYL357+Km+fxa8sPgGrmfVBnx3S0TeGHjWPErKw/FnyO
+         fv5w==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JNlZrE0q;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t203si1037714ywe.337.2017.11.08.07.00.58
+        by mx.google.com with ESMTPS id p66si1091041ywh.631.2017.11.08.07.27.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 08 Nov 2017 07:00:58 -0800 (PST)
+        Wed, 08 Nov 2017 07:27:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JNlZrE0q;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60350 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:60446 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eCRqb-0000la-PP
-	for alex.bennee@linaro.org; Wed, 08 Nov 2017 10:00:57 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55835)
+	id 1eCSGa-0007oQ-3T
+	for alex.bennee@linaro.org; Wed, 08 Nov 2017 10:27:48 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33377)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1eCRqN-0000lA-VN
-	for qemu-arm@nongnu.org; Wed, 08 Nov 2017 10:00:51 -0500
+	(envelope-from <alistair23@gmail.com>) id 1eCSGO-0007kC-MA
+	for qemu-arm@nongnu.org; Wed, 08 Nov 2017 10:27:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1eCRqK-00038S-2s
-	for qemu-arm@nongnu.org; Wed, 08 Nov 2017 10:00:44 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:35513)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1eCRqJ-00037X-QG; Wed, 08 Nov 2017 10:00:40 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6825C62676;
-	Wed,  8 Nov 2017 15:00:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 6825C62676
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=eblake@redhat.com
-Received: from [10.10.125.14] (ovpn-125-14.rdu2.redhat.com [10.10.125.14])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id E28F26BF74;
-	Wed,  8 Nov 2017 15:00:24 +0000 (UTC)
-To: Alistair Francis <alistair23@gmail.com>,
-	Markus Armbruster <armbru@redhat.com>
+	(envelope-from <alistair23@gmail.com>) id 1eCSGN-0007qm-Oz
+	for qemu-arm@nongnu.org; Wed, 08 Nov 2017 10:27:36 -0500
+Received: from mail-wm0-x233.google.com ([2a00:1450:400c:c09::233]:56977)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1eCSGE-0007oI-5i; Wed, 08 Nov 2017 10:27:26 -0500
+Received: by mail-wm0-x233.google.com with SMTP id z3so11605309wme.5;
+	Wed, 08 Nov 2017 07:27:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=/cp7xaFOJeKef3lLaHy6abN0WGMoBsTQCRcz3OmnZWE=;
+	b=JNlZrE0q14AvdmbtaVfqnQ2/e+bq9kvHiiMIutJRQyKmcmASRwSY9PpMOpRVRVG86S
+	ydsbm10kNDe0IYOEtPCOG4Xg9g1SFtdHsQi5w/JhfxVjhN+B//cxB2aS/smJDs5ghYQK
+	464UzDCmI94+x7cxe40OYwwEqIFbevXbu8XJATJWIm43n04Ye2aOCy9c9c7YfrBLJfbS
+	lYQqK3gIOjKejpADkpOYjVpFcaBDMLLANcGI1rM5wpPbRFMZY4Mfrz4X192/JdrvNLZh
+	QPBlDav7wLySTn0+34TZZWBHZ5peTKJWDUKCWsgZEzCAgs+HrerBjl00MxRFVFujOHpI
+	pRMg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=/cp7xaFOJeKef3lLaHy6abN0WGMoBsTQCRcz3OmnZWE=;
+	b=ri8hjx01wzMlPelfynnwXBq1MP+MWFqk5B3apbZQZxdMWk/kWtEccUX0tjfQABzydU
+	53Gw9dPOikaajCgIar77aLjYr04sbmlX9xthLGzNQf7+Kq93Yz7Fytdqs6e2JKX2rrmo
+	gD+o4vrsruz04Oak2tFINqfBPtYOdREXRwpozZc5csmPjFHjw963FtQdof1DTe18uyoS
+	xWu5IrRinXCLtSprcMqw0GOjeG6VqKC+jQd9Rpk0BkqD7gpE1xZxfEBXs/GJS/Cn3G/t
+	Ly3048aU6Y0J9XaCJSA3CrtkFOQe2ClGckmrN8dgIUIQtII39GB8tnjN2bUnpeHQr5dw
+	Bf5w==
+X-Gm-Message-State: AJaThX7zRma1Ud4SnpH4CdHwHf4YEgeEE21zZvGs+63edI6waSl9tD9A
+	lZB2F/VS0ohDLCuMaSlqYxmnf/wvJDtFEshoo2s=
+X-Received: by 10.28.206.142 with SMTP id e136mr786804wmg.27.1510154845020;
+	Wed, 08 Nov 2017 07:27:25 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.28.147.11 with HTTP; Wed, 8 Nov 2017 07:26:54 -0800 (PST)
+In-Reply-To: <308c6070-e9b8-f40d-2389-96497dbe238d@redhat.com>
 References: <cover.1508390588.git.alistair.francis@xilinx.com>
 	<ad7c1de551fbc497743e4dd60335a75cb5365a15.1508390588.git.alistair.francis@xilinx.com>
 	<87efpmccvu.fsf@secure.laptop> <87bmke4cu9.fsf@dusky.pond.sub.org>
 	<51d103e9-8d6b-8c83-dd69-effe997d4813@redhat.com>
 	<87shdptdf0.fsf@dusky.pond.sub.org>
 	<CAKmqyKOhnGrbZ6tnaXgBNzdJ=LdnD9NWuWVV-LHmM3zea8OBvA@mail.gmail.com>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <308c6070-e9b8-f40d-2389-96497dbe238d@redhat.com>
-Date: Wed, 8 Nov 2017 09:00:23 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.4.0
-MIME-Version: 1.0
-In-Reply-To: <CAKmqyKOhnGrbZ6tnaXgBNzdJ=LdnD9NWuWVV-LHmM3zea8OBvA@mail.gmail.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="kF2Ne2kcFoSMjrqnDiSc2XfQb1w9bXXj2"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Wed, 08 Nov 2017 15:00:38 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
+	<308c6070-e9b8-f40d-2389-96497dbe238d@redhat.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Wed, 8 Nov 2017 07:26:54 -0800
+Message-ID: <CAKmqyKNEA41=HaDJ5A8X=UXBvWzzviG7Mv63fa2Zr0tPcxrqkQ@mail.gmail.com>
+To: Eric Blake <eblake@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::233
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 01/46] Replace all occurances
  of __FUNCTION__ with __func__
 X-BeenThere: qemu-arm@nongnu.org
@@ -107,9 +112,10 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Stefano Stabellini <sstabellini@kernel.org>, Fam Zheng <famz@redhat.com>,
-	Qemu-block <qemu-block@nongnu.org>, Juan Quintela <quintela@redhat.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	Qemu-block <qemu-block@nongnu.org>,
 	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Juan Quintela <quintela@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
 	Anthony Perard <anthony.perard@citrix.com>, qemu-arm <qemu-arm@nongnu.org>,
 	Gerd Hoffmann <kraxel@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
 	Yongbok Kim <yongbok.kim@imgtec.com>,
@@ -118,103 +124,52 @@ Cc: Stefano Stabellini <sstabellini@kernel.org>, Fam Zheng <famz@redhat.com>,
 	John Snow <jsnow@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tcuX7Z/6lz8r
+X-TUID: pkw9APip7doe
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---kF2Ne2kcFoSMjrqnDiSc2XfQb1w9bXXj2
-Content-Type: multipart/mixed; boundary="HlK2vbBoK3BTwrVSHObSjCdOTW6FxJQMW";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: Alistair Francis <alistair23@gmail.com>,
- Markus Armbruster <armbru@redhat.com>
-Cc: Juan Quintela <quintela@redhat.com>,
- Stefano Stabellini <sstabellini@kernel.org>, Fam Zheng <famz@redhat.com>,
- Qemu-block <qemu-block@nongnu.org>,
- Peter Crosthwaite <crosthwaite.peter@gmail.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Yongbok Kim <yongbok.kim@imgtec.com>, qemu-arm <qemu-arm@nongnu.org>,
- Gerd Hoffmann <kraxel@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- "open list:X86" <xen-devel@lists.xenproject.org>,
- Anthony Perard <anthony.perard@citrix.com>,
- Alistair Francis <alistair.francis@xilinx.com>, John Snow
- <jsnow@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Message-ID: <308c6070-e9b8-f40d-2389-96497dbe238d@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH v3 01/46] Replace all occurances of
- __FUNCTION__ with __func__
-References: <cover.1508390588.git.alistair.francis@xilinx.com>
- <ad7c1de551fbc497743e4dd60335a75cb5365a15.1508390588.git.alistair.francis@xilinx.com>
- <87efpmccvu.fsf@secure.laptop> <87bmke4cu9.fsf@dusky.pond.sub.org>
- <51d103e9-8d6b-8c83-dd69-effe997d4813@redhat.com>
- <87shdptdf0.fsf@dusky.pond.sub.org>
- <CAKmqyKOhnGrbZ6tnaXgBNzdJ=LdnD9NWuWVV-LHmM3zea8OBvA@mail.gmail.com>
-In-Reply-To: <CAKmqyKOhnGrbZ6tnaXgBNzdJ=LdnD9NWuWVV-LHmM3zea8OBvA@mail.gmail.com>
-
---HlK2vbBoK3BTwrVSHObSjCdOTW6FxJQMW
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-On 11/08/2017 08:51 AM, Alistair Francis wrote:
-
->>>> Let me rephrase the question: do we really support compilers that do=
-n't
->>>> understand __func__?  The presence of numerous unconditional uses of=
-
->>>> __func__ in the tree means the answer is no.  Let's replace AUDIO_FU=
-NC
->>>> by plain __func__.
+On Wed, Nov 8, 2017 at 7:00 AM, Eric Blake <eblake@redhat.com> wrote:
+> On 11/08/2017 08:51 AM, Alistair Francis wrote:
+>
+>>>>> Let me rephrase the question: do we really support compilers that don't
+>>>>> understand __func__?  The presence of numerous unconditional uses of
+>>>>> __func__ in the tree means the answer is no.  Let's replace AUDIO_FUNC
+>>>>> by plain __func__.
+>>>>
+>>>> Answered elsewhere in patch 3/46 (where we DO replace AUDIO_FUNC by
+>>>> __func__).
 >>>
->>> Answered elsewhere in patch 3/46 (where we DO replace AUDIO_FUNC by
->>> __func__).
+>>> I see.
+>>>
+>>> Put 03/46 first, so we don't have to mess with AUDIO_FUNC twice?
 >>
->> I see.
+>> I would really like to avoid that, as the conflicts will be a bit of a
+>> mess. The way I see it there will be a lot of churn no matter what,
+>> so we don't gain much by swapping the order around.
 >>
->> Put 03/46 first, so we don't have to mess with AUDIO_FUNC twice?
->=20
-> I would really like to avoid that, as the conflicts will be a bit of a
-> mess. The way I see it there will be a lot of churn no matter what,
-> so we don't gain much by swapping the order around.
->=20
-> I have a new series ready to send today, so I'm going to send that
-> through as I would like at least some of these patches to make it in
-> 2.11. After that if you think strongly the order should be changed I
-> can change it in the next version.
+>> I have a new series ready to send today, so I'm going to send that
+>> through as I would like at least some of these patches to make it in
+>> 2.11. After that if you think strongly the order should be changed I
+>> can change it in the next version.
+>
+> I think the reorder is not that hard.  Put 3/46 first (changing
+> AUDIO_FUNC to __func__), and then 1/46 doesn't have to touch any of the
+> files that used to use AUDIO_FUNC, because there is no intermediate
+> state using __FUNCTION__.
+>
+> If I'm reading it correctly, the rebase conflict is limited to a slight
+> rewording of the commit message for 3/46, and one line in 1/46 to the
+> definition of AUDIO_FUNC (that will no longer be present).
 
-I think the reorder is not that hard.  Put 3/46 first (changing
-AUDIO_FUNC to __func__), and then 1/46 doesn't have to touch any of the
-files that used to use AUDIO_FUNC, because there is no intermediate
-state using __FUNCTION__.
+That's true, it didn't end up being that hard. I'm launching my tests
+now, so I should be able to send the series out later today.
 
-If I'm reading it correctly, the rebase conflict is limited to a slight
-rewording of the commit message for 3/46, and one line in 1/46 to the
-definition of AUDIO_FUNC (that will no longer be present).
+Hopefully some of this can make it in 2.11 :)
 
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
+Thanks,
+Alistair
 
-
---HlK2vbBoK3BTwrVSHObSjCdOTW6FxJQMW--
-
---kF2Ne2kcFoSMjrqnDiSc2XfQb1w9bXXj2
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAloDHAcACgkQp6FrSiUn
-Q2r23Qf+KWVL6ncuGiLwyij++5Xtg++Irybomd+ICJpYrF5KdV2xX2jl5EZW800/
-aeseimOISxuXGTt14SnjzWC2FinRpD/X6ABjyp49CpjlT6ueglDRSXcHPS1CbJ2y
-RFjZIN1TFAAk9vI1nafOKYKQhHxiKQ/qFYCF2XNuJmDEZwE2Bf+V5qp20MqejKIQ
-0GM/PY3tAX1l921g+L+HrFUVTceyOXdCJCiy4zgzvc3nXfFv2EH2MvLuGj+XfffI
-9vcTohI0eyocQb1zbcnpF6oU7kJPEcWV9B5xwhqkb53rjv7Isb9TKf4972doSDdM
-vkCJbjm3IMRf5E7B3WwRSStCs8r26g==
-=KiGA
------END PGP SIGNATURE-----
-
---kF2Ne2kcFoSMjrqnDiSc2XfQb1w9bXXj2--
+>
+> --
+> Eric Blake, Principal Software Engineer
+> Red Hat, Inc.           +1-919-301-3266
+> Virtualization:  qemu.org | libvirt.org
+>

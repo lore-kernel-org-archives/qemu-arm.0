@@ -1,165 +1,161 @@
-Received: by 10.223.150.237 with SMTP id u100csp2910412wrb;
-        Thu, 9 Nov 2017 11:57:50 -0800 (PST)
-X-Google-Smtp-Source: ABhQp+RhIR6WY+FUoAYKoDnx1VPDXFxM57xKsNW2btDGN0OnBS4Kv43tjv1wT55h8Ur7JIJup4EU
-X-Received: by 10.129.36.209 with SMTP id k200mr654333ywk.191.1510257470575;
-        Thu, 09 Nov 2017 11:57:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510257470; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp1754414wrb;
+        Wed, 8 Nov 2017 13:30:03 -0800 (PST)
+X-Google-Smtp-Source: ABhQp+Q6J9ooQ+5T09PrcNwcK9mk94CpIh8U7NbXpn6TSX0Bb7FFqTKuI74cCzt4L+e8FNCjLu9b
+X-Received: by 10.13.197.6 with SMTP id h6mr1308475ywd.363.1510176603584;
+        Wed, 08 Nov 2017 13:30:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510176603; cv=none;
         d=google.com; s=arc-20160816;
-        b=a0llhAf7I9h44kuU/FkGEoSFRYlNPRQDkdNcbtTad47S8HIqQZKQyJeB3FXy9cXbNt
-         QfOy+vpBj+od56N3X5/b8S+PcK8oIdmZdOzg7IFizYPmMtDUD6FNFb9guBk7WiyUW3Wq
-         Knd7W2uwjkofwg3ydeFUnFlmA5Yw7u+ZejiiRIcT2Y49kSt44UoGOaRd61W0NuY5Rilk
-         t87q1SMskHddRHpxEkcnUrJUu6FuItbZi2Y3jwvJmdwjNpQWHAvPhKR+9MDwsvSqTa35
-         9taY+uLsDrRlOyah/Uf7jwK6OZVdJKdg4oZsxWsyvwF+c1+QUWrtFw2j6AcAXzFWDAl0
-         hCDg==
+        b=Q4+mr1pX+Re+PirM+fPKdCX74RV1Ox1nc8eHVGWvwrVqf5cHAb1nAid7AftzaWrVcu
+         mKPUihy8nasq8FaIpAnmmSh55dSyZpMG+fMUb02eYAN2Q9h4eSJuh7d1O9juJNA9EkNO
+         A9lhDn9F6vQQkUWY8ss25tYDeu1ev8iydVOB+mfFfBkdrkBO9F14xDVsZc28QML6iLF3
+         GBU+MxJG3RhF0E/5PUvWd9FOysywHB9fsoMM5wRWiGdmET1MK2DPyNKVrTpm76i9dKJ6
+         NyIJ/qzDdhahG3ygQ3Mna2V+x8gvLKQvykJ1G6lULEtuCJi37XO1cSZCyuKKyH1oNfCR
+         4tBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature
          :arc-authentication-results;
-        bh=OlWMTLir+dk4dycaTcghB5VboSCf5GvMCoSvFBYtpAc=;
-        b=RG9VFGlEf0pnVSOa6BYdAzHkuWgDQamdtD/dwxbYJ+1poae4iPpYVkWlLkiKMBRa0q
-         TQoDfOgpjArnXNt/ofzorVbSc1d6CT+KfMFV1Orqj1v93noCRgK1FTpIM8ts8cUFGlnH
-         icoZo6JkfhFGm7j2sxu7YJWfWyEcT9tuv7nhyYPbTg85a+GiqyEtf4paj9riOIjDk/Gs
-         5UNvld1icTrF+zWeuV0grKPU85IcQS3asur641piZjhqLDpZEM8Ba7XX8QitaBkjbjBL
-         EYIhSuWt4CFzlDFuXWv7c1GiQwSUdVuEfZLjR+9+VrxsZqe/u9O403IZL0mBu5hvVGYt
-         f4Yw==
+        bh=1dd9wOw8zpkemXGMBlnA6mg14MQ7mUD4T8xN7YlM56U=;
+        b=PrCQBCJAB836WJ8XG6JjhgDS81GHt07deWDov0UOdKkcjx+o9gLivIIeayzYN711Fm
+         9YaaXpFshqgNesWW/yE5eRU9VpcgkNyPOKhmGmbsRVViiWTa9noTX9uXXQpK/cwnBw6m
+         gBQ5S/eOF9FuIQJwjkUdudYlZWD9Z3BAANVQslwPMeAbsupfvF2HIrMS7pRGWMjnkuP/
+         Ccu+wP1d2LCIOdIzG1KDF4nv7MvRLBDAljAnXCrkdp5vuw/EzlfCBkRPyn6pSXkaWxxj
+         FbQqPBS1fsOFERNDsTE6U0dUKBbpaNva6aIdb/nIKMu6dhWyXCmNcvV6DXX+Q70atfod
+         7LDA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Vj1hkwsJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=T2gmvcTo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s189si1831625yws.386.2017.11.09.11.57.50
+        by mx.google.com with ESMTPS id f38si1225409ybi.777.2017.11.08.13.30.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 09 Nov 2017 11:57:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 08 Nov 2017 13:30:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Vj1hkwsJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:38559 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=T2gmvcTo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:33972 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eCsxS-0002Gn-4X
-	for alex.bennee@linaro.org; Thu, 09 Nov 2017 14:57:50 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56949)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eCXv9-0000tR-0h
+	for alex.bennee@linaro.org; Wed, 08 Nov 2017 16:30:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41183)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1eCswZ-0001m2-MY
-	for qemu-devel@nongnu.org; Thu, 09 Nov 2017 14:56:56 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1eCXuw-0000t5-F8
+	for qemu-arm@nongnu.org; Wed, 08 Nov 2017 16:29:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1eCswY-0005mA-UK
-	for qemu-devel@nongnu.org; Thu, 09 Nov 2017 14:56:55 -0500
-Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:50061)
+	(envelope-from <richard.henderson@linaro.org>) id 1eCXut-0003jA-DC
+	for qemu-arm@nongnu.org; Wed, 08 Nov 2017 16:29:50 -0500
+Received: from mail-wr0-x242.google.com ([2a00:1450:400c:c0c::242]:45395)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1eCswY-0005lU-Nr; Thu, 09 Nov 2017 14:56:54 -0500
-Received: by mail-wm0-x244.google.com with SMTP id b189so19410338wmd.4;
-	Thu, 09 Nov 2017 11:56:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=OlWMTLir+dk4dycaTcghB5VboSCf5GvMCoSvFBYtpAc=;
-	b=Vj1hkwsJB50PPX0TP69KEaLoKJ8Ta5zPR9QZYbjwIV9s2UywNyFOSEHj/OtTrCHPNu
-	bjbxu/5L64Rp+rPPIiO3TMOeaQFeJc9sF/pm4cCDlxDWVGjZi3iYc0MJSSYe+gA5zIh9
-	n8GQDSaPjJNrEQrBkIx28oHXU+R9/yRqjGbjrp1grWSQOsWedZxwbteFSjn9vihQt1oA
-	Luq7503XMQkjdqtzwQbJudmfnlTsj2tDqHeyzLfa8A3GheuklbzyqcyW0aMM6LzHVrAo
-	k56pk52uUdLDKkzGBl+nyavalLXMDc5Wpm/+HkRcsaDZ/sDKJ3kAgzJxc+b2u3jkj8rM
-	JOpA==
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1eCXut-0003i7-6Q
+	for qemu-arm@nongnu.org; Wed, 08 Nov 2017 16:29:47 -0500
+Received: by mail-wr0-x242.google.com with SMTP id y9so3733437wrb.2
+	for <qemu-arm@nongnu.org>; Wed, 08 Nov 2017 13:29:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=1dd9wOw8zpkemXGMBlnA6mg14MQ7mUD4T8xN7YlM56U=;
+	b=T2gmvcToQodi7NAtNeHl5lq8tzAtUah1WJ6LU9azcyqVLxdRWvV2Fftp4XymXabFmz
+	q82mC+IBWzShFYgr63QaDuKPLJBjeyohK2HSqTneWbOxvbWV+fVcZFakkOPzJEpsZn/v
+	jLlDe5ccqyzseQ9q3Ohd/3nD3s3aiINSFucUM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=OlWMTLir+dk4dycaTcghB5VboSCf5GvMCoSvFBYtpAc=;
-	b=Z0ZGPqrAcC8nFmfa1uVAQVrK0uxrKxxidW06QIdH9/vBGdmJNj3DvsK84RKnSKd9QD
-	e7GPHDvu76bnV4driMVJOqamcTnmtTk2G3fX8jRlLCH5KxM3Bz1XnaCh0TCHOFsCdAlp
-	mxzx7UezDuRbyrhIiqxwJdlBj6xDEYzVptZ1jOSpTRmXnaCZisDpNVbgeR9qw0yjOByr
-	9ABzE0sHossnPvWLXsF7ELmpMphuAUzWreKOLFhquOXlJabyt2aUoxLvvUtkovF2hXnN
-	8meor/0qqgUdpc5Qhxvksn/ksSV+Jt0aG0/8IksBUXkpdJFwMaqCSqHsjGUqD/5v1OpR
-	vLKQ==
-X-Gm-Message-State: AJaThX5lECaHNEkPG5mcnjNqGdguOtqsKT8qpNh6lYoujcNoVgLF+/FU
-	sl5TCtch5OSLhWx5Pp7pvWMEt/YdNyv5ILwuLLc=
-X-Received: by 10.28.230.77 with SMTP id d74mr702581wmh.75.1510257413148; Thu,
-	09 Nov 2017 11:56:53 -0800 (PST)
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=1dd9wOw8zpkemXGMBlnA6mg14MQ7mUD4T8xN7YlM56U=;
+	b=TeF4+yh/8HJLhKGyuXU3RGJIfnofbP4Hf8F4kTvPRw7NFIIycLUi9A/H5xF8V/6Dr7
+	HVbKOKsNnIqEmM3X/yJok8QgWNBi/tgLip58a8wsw28Q6Qyn88kEOELbJOcRJS3dho/T
+	sjL8KcH+VeWqbIg97RPpgafICZmMbI8gbm6TmyLOncMbUrJAHIMztHwwzeR9QMA+AOZj
+	WolClmDRad5S4CikI7Je2cvpXe/fzaPNnc4nLbPDAwAKVDXqjIfnP6uT4AkZLd3aTR+/
+	nTvXf+3wO8VVErbbMn+YaAzWnAyG6max2N7DDV6wmuVWsxbZJhDMmu+SYUR6K4xlAe/L
+	SRag==
+X-Gm-Message-State: AJaThX6xqZFNDMHkQBBjEa5xZ3kgG2lsiSFW9l2KJ73Kw2rHXOYjx7bB
+	0VKlnUTK+FLUCgHUSBCw1BxQOw==
+X-Received: by 10.223.161.210 with SMTP id v18mr1652039wrv.76.1510176585796;
+	Wed, 08 Nov 2017 13:29:45 -0800 (PST)
+Received: from cloudburst.twiddle.net (93-45-2-58.ip99.fastwebnet.it.
+	[93.45.2.58])
+	by smtp.gmail.com with ESMTPSA id h2sm4092054wrf.47.2017.11.08.13.29.44
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 08 Nov 2017 13:29:44 -0800 (PST)
+To: "Emilio G. Cota" <cota@braap.org>, Eduardo Habkost <ehabkost@redhat.com>
+References: <1509734853-3014-1-git-send-email-cota@braap.org>
+	<20171103185610.GA3907@flamenco>
+	<20171103200233.GI3111@localhost.localdomain>
+	<20171103222407.GA22411@flamenco>
+	<20171106141022.GO3111@localhost.localdomain>
+	<20171106201332.GA2152@flamenco>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <73e9c472-82da-b293-27cd-ca9e0ff93179@linaro.org>
+Date: Wed, 8 Nov 2017 22:29:43 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.4.0
 MIME-Version: 1.0
-Received: by 10.28.147.11 with HTTP; Thu, 9 Nov 2017 11:56:22 -0800 (PST)
-In-Reply-To: <1510228971-6005-1-git-send-email-sundeep.lkml@gmail.com>
-References: <1510228971-6005-1-git-send-email-sundeep.lkml@gmail.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 9 Nov 2017 11:56:22 -0800
-Message-ID: <CAKmqyKOzUD-u=+zW3CNJO6S_=y0u-0EiBu=YQpgmXzhW7L=vXA@mail.gmail.com>
-To: Subbaraya Sundeep <sundeep.lkml@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <20171106201332.GA2152@flamenco>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::244
-Subject: Re: [Qemu-devel] [Qemu devel PATCH] MAINTAINERS: Add entries for
- Smartfusion2
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:400c:c0c::242
+Subject: Re: [Qemu-arm] [PATCH] hw: add .min_cpus and .default_cpus fields
+ to machine_class
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /NRwUZvBv+hz
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-devel@nongnu.org,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
+	Marcel Apfelbaum <marcel@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4uT8HO05imvw
 
-On Thu, Nov 9, 2017 at 4:02 AM, Subbaraya Sundeep
-<sundeep.lkml@gmail.com> wrote:
-> add voluntarily myself as maintainer for Smartfusion2
+On 11/06/2017 09:13 PM, Emilio G. Cota wrote:
+> Subject: [PATCH] qom: move CPUClass.tcg_initialize to a global
+> 
+> 55c3cee ("qom: Introduce CPUClass.tcg_initialize", 2017-10-24)
+> introduces a per-CPUClass bool that we check so that the target CPU
+> is initialized for TCG only once. This works well except when
+> we end up creating more than one CPUClass, in which case we end
+> up incorrectly initializing TCG more than once, i.e. once for
+> each CPUClass.
+> 
+> This can be replicated with:
+>   $ aarch64-softmmu/qemu-system-aarch64 -machine xlnx-zcu102 -smp 6 \
+>       -global driver=xlnx,,zynqmp,property=has_rpu,value=on
+> In this case the class name of the "RPUs" is prefixed by "cortex-r5-",
+> whereas the "regular" CPUs are prefixed by "cortex-a53-". This
+> results in two CPUClass instances being created.
+> 
+> Fix it by introducing a static variable, so that only the first
+> target CPU being initialized will initialize the target-dependent
+> part of TCG, regardless of CPUClass instances.
 
-This should be:
-Voluntarily add myself as maintainer for Smartfusion2.
+Hah!
 
->
-> Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+So, I had been thinking of the xylinx ARM + Microblaze case, where we really do
+need two different initializations.  I never imagined that two different ARM
+parts had different CPUClasses.
 
-With the commit message fixed:
+So I guess it's my initial patch that unified this that's more buggy than not.
 
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
 
-Alistair
-
-> ---
->  MAINTAINERS | 17 +++++++++++++++++
->  1 file changed, 17 insertions(+)
->
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 0cd4d02..dae08bd 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -564,6 +564,23 @@ M: Alistair Francis <alistair@alistair23.me>
->  S: Maintained
->  F: hw/arm/netduino2.c
->
-> +MSF2 SoC
-> +M: Subbaraya Sundeep <sundeep.lkml@gmail.com>
-> +S: Maintained
-> +F: hw/arm/msf2-soc.c
-> +F: hw/misc/msf2-sysreg.c
-> +F: hw/timer/mss-timer.c
-> +F: hw/ssi/mss-spi.c
-> +F: include/hw/arm/msf2-soc.h
-> +F: include/hw/misc/msf2-sysreg.h
-> +F: include/hw/timer/mss-timer.h
-> +F: include/hw/ssi/mss-spi.h
-> +
-> +MSF2 SOM board
-> +M: Subbaraya Sundeep <sundeep.lkml@gmail.com>
-> +S: Maintained
-> +F: hw/arm/msf2-som.c
-> +
->  CRIS Machines
->  -------------
->  Axis Dev88
-> --
-> 2.5.0
->
+r~

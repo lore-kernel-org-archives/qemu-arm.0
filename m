@@ -1,99 +1,84 @@
-Received: by 10.223.150.237 with SMTP id u100csp2418411wrb;
-        Thu, 9 Nov 2017 04:04:41 -0800 (PST)
-X-Google-Smtp-Source: ABhQp+Tb3sS1DlEt+rcaQKnxhS/mVZDFv5mID8Ukq1WiW04FEwxpl6a/cEgenJInU8OcWTyBqRnZ
-X-Received: by 10.129.108.203 with SMTP id h194mr145026ywc.348.1510229081232;
-        Thu, 09 Nov 2017 04:04:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510229081; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp2515569wrb;
+        Thu, 9 Nov 2017 05:40:03 -0800 (PST)
+X-Google-Smtp-Source: ABhQp+T4BNcw1SsVEI5AikMRID83aQausWG03VbkPEWtAnoRGVTUtB3PhgX/fUItzECybhlRqft+
+X-Received: by 10.129.65.78 with SMTP id f14mr322651ywk.469.1510234803600;
+        Thu, 09 Nov 2017 05:40:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510234803; cv=none;
         d=google.com; s=arc-20160816;
-        b=MqcF1qv9Rvc2DXoCVMJkIEILpWLY5flQL7Md76/uMWYr4dMfH3i7UPvLYMz0llxyjL
-         ak2It2y8uPro6EEz1UP+1E720OfPqyCNx5hg20RTFH4+alK9/i4EMG5u/sPf8djvkr28
-         WbYUBH+n8SZ1wve/InyaJsl32FkX9gN9rYs+NmHhhN2H+6x+qyctbdmIOV/ymHNpttSN
-         BufGA6shsO8CDrzfPNxIz6QCbKtELsO+kVlWt0UtkRVKwe8vijnM4vcvLWFsb2B0exrL
-         Rul7/gcrGN75r2V1LqPEHWJZf9lw3B3qSkF1L3iWQwZdyRmf9gcjuIEc8/ypvXvW2eV2
-         Vgeg==
+        b=Z56MxLPfUR7AUexXcuyVnba+SKDmY9eSGYDbSqItkuS8peq192+qAdJv/5P/w8dQBa
+         IV6V5VToFqZdh55HUs6tjuC9AciE35o+2jDSL76tKgp8gptQotgsu/hUAUmAWl6zloxz
+         fMmCetDpG+Dbd44n6Fozr1wq+8QpaCtfkpYkmhVADt77CI8s9Ylm4atmJEaZO1YXtiwD
+         hqVr5SNAldLgHo3WNPa2iwankfiHJnd/1+PkzwX04LDci8LJr0LIIf2XhGR10uhUz20S
+         +wZNC76PD3PU+9fhJP6NylcSH0BGKdPUgOkLBLtMA9X+IXW4QpdJiJ4xq0oJjp8RerJ8
+         GcDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=PYfSYSqAbL6li02R1AMgOwzryBOgd2Xh+tOe4bhTjuc=;
-        b=QJbQKpj4OeYQJ4yjMjgHnA+oCFmxtlsMBCqbRJ450YOkGKOkbgNr+5qhiJsFr/zaPT
-         kOSYs1o/sDy1TlCDqT40/2aMG+QIClIgJo/VJ9SbZUwawIi2w9Fj+ofFIc8xpilSY/AY
-         P35CO+mo8nvLwsmUw5xrsu0WZSIvuNasKa09NSL9OtdIVycaU4q8813UXyn217OvWS6L
-         c1xp1WXWG3ECGTqgQyD6jjYGSuhoRPzOQq1p+g870cGwEJzR4hkcPvWZ/GLVHg8NBJgV
-         8K+VtKrXwz94GtFTEH2rPjjrsi6U3xkFH6/Q4Ch5vWNxYSk7j0lJ7dEtA6berIjW1IIQ
-         awRg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
+         :arc-authentication-results;
+        bh=M7/qrkOM0QNPp5p0EIuWNU7tXnze6o9hca354YrLvv0=;
+        b=Vj8SSW+JLnaQbABdRd6JqK8MXFIAVZeIMu5JQS2eT8vjKGY396pOQGPKLNSiNVaIOu
+         38yUJTvM8Ky0HtV3Y2HcXsBME2lFCrqEd8AhJDyLP485S37nvfcwqhoivgXhsgL5kRnK
+         RA1AVpeZSfs+ppEXFWqVGnglO0s0n2Ne6EdWBdztVEj53eX7z2j/RxSf/GLJDUcPATZB
+         keWwGuLOcJjXQEZOFa+GJ+IjbRB4GNzyV0gY2rYaktT8TAes3qbCH4iWNpMNohENiQQx
+         ASG+9XfnQG39L+kL2tiupFRKkNdDZCKdpnHBhwDDCS5DlRBoqX/GjlTNVo+pdrZDF6HC
+         Qmmg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eC/qQD1R;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q205si514715ybq.787.2017.11.09.04.04.41
+        by mx.google.com with ESMTPS id b124si1583902ybb.491.2017.11.09.05.40.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 09 Nov 2017 04:04:41 -0800 (PST)
+        Thu, 09 Nov 2017 05:40:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eC/qQD1R;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:36401 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:36956 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eClZY-0006bO-Nz
-	for alex.bennee@linaro.org; Thu, 09 Nov 2017 07:04:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49718)
+	id 1eCn3r-0008I5-1T
+	for alex.bennee@linaro.org; Thu, 09 Nov 2017 08:40:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42023)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1eClY7-0005uz-EQ
-	for qemu-devel@nongnu.org; Thu, 09 Nov 2017 07:03:15 -0500
+	(envelope-from <clg@kaod.org>) id 1eCmyN-0003xT-1v
+	for qemu-devel@nongnu.org; Thu, 09 Nov 2017 08:34:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1eClY1-0005vg-KP
-	for qemu-devel@nongnu.org; Thu, 09 Nov 2017 07:03:11 -0500
-Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:55348)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
-	id 1eClY1-0005vT-DO; Thu, 09 Nov 2017 07:03:05 -0500
-Received: by mail-pf0-x241.google.com with SMTP id 17so4091949pfn.12;
-	Thu, 09 Nov 2017 04:03:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id;
-	bh=PYfSYSqAbL6li02R1AMgOwzryBOgd2Xh+tOe4bhTjuc=;
-	b=eC/qQD1RoKmDqHOWmV6gZ41C19pzUOBESc/7Jht5yelXLamwGraTn7EVNIvEVfiDO8
-	wjcs4Pql+WPHOF7gbmvZtsMaj/7pNjKDZ5TKr9Rz0ojUaPpe/ZiZuhrpM+fWilpezvJ7
-	oDw+avRoXFE3bMCIVwvdECRTlXJYZ9tSxD9U7jz5XqTibgEn6DS/n50pbrIgp2dVLdbp
-	LzSpUCubfn3WClXDW0LaZrOb5uWiPiUBS8/qQaktCOgivWicoh/lqOJl/obtIbI0y7Mo
-	yQa0QBRViREurke/huXOtXoxNXrB1488Q67IjQvIi3PqqhGpZh4/AQqtyivPx3mRYjGq
-	SxoQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=PYfSYSqAbL6li02R1AMgOwzryBOgd2Xh+tOe4bhTjuc=;
-	b=E5s87QC9HDbqPP0OPhUjcdeZ2MDQyiYrnLf6vkp7snxjsBSRFoZiZmbw/ZHC3OH1ox
-	UgL0U1htZBigSXIC7Q1t5EOE0C9YpKwUhjaT+FwGZKtvyD6jj30VicC2FQdR69Gs974o
-	SvFZ3FE4LxHGX5/vSgH2g044FvsILBtGBRTF5l4MBjuysFBXpF5QjnrpAGQlFthZrtcA
-	afaJVPrzAcaTD8eyMweK3CwnmGW4C1iEHeZRNqOEWxnOe0Et5RHFQ13aA8vaePOW8icU
-	RNUs5gc5MAk9P39bl6+x7MLAfE/QhzoThaJ6wa4yL4btMjfSk5vEuI0RSUxDCiOynzUY
-	kv2Q==
-X-Gm-Message-State: AJaThX6wOyTaPDACjmGYngA88unTnY/GPlYM17AuY6ozIwN8C+mQ+Klw
-	jGWgQkGPl7H0BGVShtazIUETPw==
-X-Received: by 10.98.196.93 with SMTP id y90mr282505pff.34.1510228983504;
-	Thu, 09 Nov 2017 04:03:03 -0800 (PST)
-Received: from localhost.localdomain ([183.82.198.40])
-	by smtp.gmail.com with ESMTPSA id
-	j12sm14130684pfe.160.2017.11.09.04.03.01
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Thu, 09 Nov 2017 04:03:03 -0800 (PST)
-From: Subbaraya Sundeep <sundeep.lkml@gmail.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Date: Thu,  9 Nov 2017 17:32:51 +0530
-Message-Id: <1510228971-6005-1-git-send-email-sundeep.lkml@gmail.com>
-X-Mailer: git-send-email 2.5.0
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c00::241
-Subject: [Qemu-devel] [Qemu devel PATCH] MAINTAINERS: Add entries for
- Smartfusion2
+	(envelope-from <clg@kaod.org>) id 1eCmyG-0007qL-J8
+	for qemu-devel@nongnu.org; Thu, 09 Nov 2017 08:34:22 -0500
+Received: from 7.mo68.mail-out.ovh.net ([46.105.63.230]:52787)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1eCmyG-0007pr-9V
+	for qemu-devel@nongnu.org; Thu, 09 Nov 2017 08:34:16 -0500
+Received: from player750.ha.ovh.net (b6.ovh.net [213.186.33.56])
+	by mo68.mail-out.ovh.net (Postfix) with ESMTP id E35B99BDB2
+	for <qemu-devel@nongnu.org>; Thu,  9 Nov 2017 14:34:14 +0100 (CET)
+Received: from zorba.kaod.org (LFbn-1-2231-173.w90-76.abo.wanadoo.fr
+	[90.76.52.173]) (Authenticated sender: postmaster@kaod.org)
+	by player750.ha.ovh.net (Postfix) with ESMTPSA id BAA4D18049B;
+	Thu,  9 Nov 2017 08:24:24 +0100 (CET)
+To: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>
+References: <20171108032427.11163-1-joel@jms.id.au>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <d67d5e55-95e1-8858-2005-7df5a3c94cba@kaod.org>
+Date: Thu, 9 Nov 2017 08:24:24 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.4.0
+MIME-Version: 1.0
+In-Reply-To: <20171108032427.11163-1-joel@jms.id.au>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Ovh-Tracer-Id: 199284286230268843
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedttddriedugdegiecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 46.105.63.230
+Subject: Re: [Qemu-devel] [PATCH] hw/arm/aspeed: Unlock SCU when running
+ kernel
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,47 +90,149 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	f4bug@amsat.org, alistair23@gmail.com
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZEKeXKcFygbe
+X-TUID: TuPMZ5DgvdhJ
 
-add voluntarily myself as maintainer for Smartfusion2
+On 11/08/2017 04:24 AM, Joel Stanley wrote:
+> The ASPEED hardware contains a lock register for the SCU that disables
+> any writes to the SCU when it is locked. The machine comes up with the
+> lock enabled, but on all known hardware u-boot will unlock it and leave
+> it unlocked when loading the kernel.
+> 
+> This means the kernel expects the SCU to be unlocked. When booting from
+> an emulated ROM the normal u-boot unlock path is executed. Things don't
+> go well when booting using the -kernel command line, as u-boot does not
+> run first.
+> 
+> Change behaviour so that when a kernel is passed to the machine, set the
+> reset value of the SCU to be unlocked.
+> 
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
+> ---
+>  hw/arm/aspeed.c               | 10 ++++++++++
+>  hw/arm/aspeed_soc.c           |  2 ++
+>  hw/misc/aspeed_scu.c          |  2 ++
+>  hw/misc/aspeed_sdmc.c         |  1 -
+>  include/hw/misc/aspeed_scu.h  |  1 +
+>  include/hw/misc/aspeed_sdmc.h |  2 ++
+>  6 files changed, 17 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index ab895ad490af..179ee66624b9 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -36,6 +36,7 @@ typedef struct AspeedBoardState {
+>  typedef struct AspeedBoardConfig {
+>      const char *soc_name;
+>      uint32_t hw_strap1;
+> +    uint32_t hw_prot_key;
+>      const char *fmc_model;
+>      const char *spi_model;
+>      uint32_t num_cs;
+> @@ -186,6 +187,15 @@ static void aspeed_board_init(MachineState *machine,
+>                              &error_abort);
+>      object_property_set_int(OBJECT(&bmc->soc), cfg->num_cs, "num-cs",
+>                              &error_abort);
+> +    if (machine->kernel_filename) {
+> +        /*
+> +         * When booting with a -kernel command line there is no u-boot
+> +         * that runs to unlock the SCU. In this case set the default to
+> +         * be unlocked as the kernel expects
+> +         */
+> +        object_property_set_int(OBJECT(&bmc->soc), PROT_KEY_UNLOCK,
+> +                                "hw-prot-key", &error_abort);
+> +    }
+>      object_property_set_bool(OBJECT(&bmc->soc), true, "realized",
+>                               &error_abort);
+>  
+> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> index 5aa3d2ddd9cd..c83b7e207b86 100644
+> --- a/hw/arm/aspeed_soc.c
+> +++ b/hw/arm/aspeed_soc.c
+> @@ -154,6 +154,8 @@ static void aspeed_soc_init(Object *obj)
+>                                "hw-strap1", &error_abort);
+>      object_property_add_alias(obj, "hw-strap2", OBJECT(&s->scu),
+>                                "hw-strap2", &error_abort);
+> +    object_property_add_alias(obj, "hw-prot-key", OBJECT(&s->scu),
+> +                              "hw-prot-key", &error_abort);
+>  
+>      object_initialize(&s->fmc, sizeof(s->fmc), sc->info->fmc_typename);
+>      object_property_add_child(obj, "fmc", OBJECT(&s->fmc), NULL);
+> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+> index 95022d3607ad..c71e77729581 100644
+> --- a/hw/misc/aspeed_scu.c
+> +++ b/hw/misc/aspeed_scu.c
+> @@ -246,6 +246,7 @@ static void aspeed_scu_reset(DeviceState *dev)
+>      s->regs[SILICON_REV] = s->silicon_rev;
+>      s->regs[HW_STRAP1] = s->hw_strap1;
+>      s->regs[HW_STRAP2] = s->hw_strap2;
+> +    s->regs[PROT_KEY] = s->hw_prot_key;
+>  }
+>  
+>  static uint32_t aspeed_silicon_revs[] = {
+> @@ -299,6 +300,7 @@ static Property aspeed_scu_properties[] = {
+>      DEFINE_PROP_UINT32("silicon-rev", AspeedSCUState, silicon_rev, 0),
+>      DEFINE_PROP_UINT32("hw-strap1", AspeedSCUState, hw_strap1, 0),
+>      DEFINE_PROP_UINT32("hw-strap2", AspeedSCUState, hw_strap2, 0),
+> +    DEFINE_PROP_UINT32("hw-prot-key", AspeedSCUState, hw_prot_key, 0),
+>      DEFINE_PROP_END_OF_LIST(),
+>  };
+>  
+> diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
+> index f0b3053fae36..35dc803604f8 100644
+> --- a/hw/misc/aspeed_sdmc.c
+> +++ b/hw/misc/aspeed_sdmc.c
+> @@ -18,7 +18,6 @@
+>  
+>  /* Protection Key Register */
+>  #define R_PROT            (0x00 / 4)
+> -#define   PROT_KEY_UNLOCK     0xFC600309
 
-Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
----
- MAINTAINERS | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+why are you using the memory controller magic value ? 
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 0cd4d02..dae08bd 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -564,6 +564,23 @@ M: Alistair Francis <alistair@alistair23.me>
- S: Maintained
- F: hw/arm/netduino2.c
+
+>  /* Configuration Register */
+>  #define R_CONF            (0x04 / 4)
+> diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
+> index bd4ac013f997..f5da54e27105 100644
+> --- a/include/hw/misc/aspeed_scu.h
+> +++ b/include/hw/misc/aspeed_scu.h
+> @@ -29,6 +29,7 @@ typedef struct AspeedSCUState {
+>      uint32_t silicon_rev;
+>      uint32_t hw_strap1;
+>      uint32_t hw_strap2;
+> +    uint32_t hw_prot_key;
+>  } AspeedSCUState;
+>  
+>  #define AST2400_A0_SILICON_REV   0x02000303U
+> diff --git a/include/hw/misc/aspeed_sdmc.h b/include/hw/misc/aspeed_sdmc.h
+> index 551c8afdf4be..a1b3232c5ef3 100644
+> --- a/include/hw/misc/aspeed_sdmc.h
+> +++ b/include/hw/misc/aspeed_sdmc.h
+> @@ -16,6 +16,8 @@
+>  
+>  #define ASPEED_SDMC_NR_REGS (0x8 >> 2)
+>  
+> +#define PROT_KEY_UNLOCK 0xFC600309
+
+Ditto. Should we be using the one from SCU ? 
  
-+MSF2 SoC
-+M: Subbaraya Sundeep <sundeep.lkml@gmail.com>
-+S: Maintained
-+F: hw/arm/msf2-soc.c
-+F: hw/misc/msf2-sysreg.c
-+F: hw/timer/mss-timer.c
-+F: hw/ssi/mss-spi.c
-+F: include/hw/arm/msf2-soc.h
-+F: include/hw/misc/msf2-sysreg.h
-+F: include/hw/timer/mss-timer.h
-+F: include/hw/ssi/mss-spi.h
-+
-+MSF2 SOM board
-+M: Subbaraya Sundeep <sundeep.lkml@gmail.com>
-+S: Maintained
-+F: hw/arm/msf2-som.c
-+
- CRIS Machines
- -------------
- Axis Dev88
--- 
-2.5.0
+Now that we are externalizing this value, adding a prefix would be 
+preferable : ASPEED_SCU_ ? 
+
+Otherwise, it looks ok to me.
+
+Cheers,
+
+C. 
+
+
+> +
+>  typedef struct AspeedSDMCState {
+>      /*< private >*/
+>      SysBusDevice parent_obj;
+> 
 

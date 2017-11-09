@@ -1,179 +1,108 @@
-Received: by 10.223.150.237 with SMTP id u100csp1519157wrb;
-        Wed, 8 Nov 2017 09:11:12 -0800 (PST)
-X-Google-Smtp-Source: ABhQp+ThDc3YPRarQNbJWk2nNWI3P/f5LPVvY5oaI4koHCuzqya/m8BRIHuSUimrcFqqVijaBhhv
-X-Received: by 10.129.65.5 with SMTP id o5mr864631ywa.476.1510161072361;
-        Wed, 08 Nov 2017 09:11:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510161072; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp2223868wrb;
+        Thu, 9 Nov 2017 00:13:33 -0800 (PST)
+X-Received: by 10.80.170.28 with SMTP id o28mr4105775edc.93.1510215213415;
+        Thu, 09 Nov 2017 00:13:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510215213; cv=none;
         d=google.com; s=arc-20160816;
-        b=GFBXQbe6MnB9KJAAhYjcDmAjXOqnCmrpFYQ00ozRoTlH6MjVIIa6ExzLkUSSsN3ELq
-         l+2yJiF2nNn+GGVqgfmvpzfC97VfmQCg8/U4+ZOzcL04bQ/3f0WO2aqbJ6pVuLz0ynsM
-         rvjsA8utnoTJbH+IHh9t53hev3Lis9un6eu6sZ0wiAa12zo08xXDkQhcc/csFigApMpG
-         r4WCaiYEzPFY8GvunRlkX/7gR/AoPjWiPBG404r78rCzisJ9aIHAW9vvMse1iLVUGQY0
-         4pj1wwNz8fM7ccrfDqPbJU6ypuzTX4d9bp7GFbJAxudEFk83jtNOhvJxXFdlPKtSFa1L
-         M9gQ==
+        b=rHGB42FJqTcUX0Ave+KI+jbsW8FgCpGNWjA+n50lRP3U0Ee/1BNQYJ44rWwvWe7Hdp
+         0y4lXt91IBKoYAbHKOYrvCx+ejdTZXGT3Nzk8jwk7eliw79vU6la11CJD59MWeFRRPeZ
+         mkd9dKTGXrwsXpKDqijc9X/8XEGQ3gi+0xgUdzSzDlMCcgyR4mlnIV4UkfAYHkp7v85u
+         QPLB8/o0VrlsKEWp64hDE+bhcDxfTfkrMZVJwjkLrtQzTQfbqEwYv4nwwM8SsxImBKO9
+         q7AkuFNMUy+tzhyRXMm/aPxnogdupXfj/nAkeDm40wJQXLr+dt1e+QJieAVEiu93Upa/
+         8MdA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature:arc-authentication-results;
-        bh=6MVgHGi3rK+63A/aQ7ffy56wLonkhLJQ52yJVuWl9ls=;
-        b=uA3hIeSGK05gCPVkNaxVN1/YhXHtc1xz4M/+ky70HnXPXM7wicBXAfY8VIWmU74Qy+
-         Z62dHZQN7IqkScb+cMK6PCDu22nkYOOt73BZl+Zt6+kSOK3IXXS0FwFpmPJQ8DQzhuVg
-         BPQw8sGaCeMfzSsPb8pfo0PjgrjCZfrJdsUQLTbhdn1JYbPm+A+EjS14yPuH4cKsQKLq
-         pXl9FGTDs8xFGsHd9JsUSLcPSYG+3RQV1RY/JpxDub01CRB53G8s3ETMMG//ewqN6rMM
-         NCfj+PHVUdSWSL/rcpQDSpwRHQ7RP1ya5Qv8PkdRRH+w108L2W1yxXS87DfCB3+R84bV
-         pG0w==
+        bh=OJDqMUiL3+GTROdpfuOsCDf1mrIVjiSScQli5/VsNHA=;
+        b=qEWTwy9YmqoJQaLwrYg3SX7OoAaYw2Uq8U1zKn7zoiI3reUA39j7TgaBz6S8j7F9sY
+         7DO3QYRqh4zUOcbMl0cCmn80fFALHtOmPbmTj6rLOJHUwIkSHJcUSX+WGG6sV4+PUiS7
+         RCKmdYX4IHIAvbt+VPTcYYD5r4+SjjahXau8d/F7NmmnCTgMT8czdEEK6z4lQXDHdJTT
+         i+s8g1rheuskKjJGpBmr36cAw97AicH3LKMPiNe008KbYfFp/bXinEUwgS/AWif64lFT
+         YODVcq4oSLi0LRuDuL7+tg7B8Wh5F+0I8kDNTwJl4qpobibPNNdbMPpNxon8a9ix6c01
+         OSWw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Lat12HJG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r128si1028655yba.2.2017.11.08.09.11.12
+       dkim=pass header.i=@linaro.org header.s=google header.b=TCic3Ing;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id s9sor3842271edc.52.2017.11.09.00.13.33
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 08 Nov 2017 09:11:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (Google Transport Security);
+        Thu, 09 Nov 2017 00:13:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Lat12HJG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:32818 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eCTsd-0007yF-QN
-	for alex.bennee@linaro.org; Wed, 08 Nov 2017 12:11:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58548)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1eCTnV-000442-UU
-	for qemu-arm@nongnu.org; Wed, 08 Nov 2017 12:06:04 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1eCTnR-0005DG-UA
-	for qemu-arm@nongnu.org; Wed, 08 Nov 2017 12:05:53 -0500
-Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:47743)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
-	id 1eCTnR-0005Bv-Jz; Wed, 08 Nov 2017 12:05:49 -0500
-Received: by mail-lf0-x241.google.com with SMTP id f125so3893132lff.4;
-	Wed, 08 Nov 2017 09:05:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=6MVgHGi3rK+63A/aQ7ffy56wLonkhLJQ52yJVuWl9ls=;
-	b=Lat12HJGZzrGVi+y9kyBQxExrznkZbJ9FYuIBWry4US1vg/5ZeYCIjxjskD7P80ith
-	TCAbOZ17nFAjgSHFY0xAqVILIf/AiGzVUdJG5M6Jc5pW79oDZ9mmFD7Oz0d9BReh15wM
-	T4XmFI5X8FNKwEt/nMfBiGPxA2m1jHEru+5NYdyTPsuK6kgR4nBwu3IGG9RzHgvKZZvX
-	Vt/XzCGsx+A3N8SBGA+JpNPySPa9+o32H8tKr8+wpAM1appkAlll9LCrbE0L8wKz8ZfV
-	RBW9xjIGwkXQGoK5RR9T9u/8UL59jq7X94qOtELU3fWoL9Lhawi8W5wWEnMl2E6fJ70N
-	uaRA==
+       dkim=pass header.i=@linaro.org header.s=google header.b=TCic3Ing;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=OJDqMUiL3+GTROdpfuOsCDf1mrIVjiSScQli5/VsNHA=;
+        b=TCic3IngqeL4VEbc5gqdCRDAVQ18bZUScw2gL9KXiJgmTJslFlgFpW6A9ufohXhGJv
+         oE/x4hKKzu7DTt43ewvDa6zCiwzCK7GOjoSHSRDGwGfRfMbJYkKlLzH1onJ5vcOMMz3Z
+         ne79NugHUhr7SkWjt/4Xc5rtKHHI8vzU8E+rk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=6MVgHGi3rK+63A/aQ7ffy56wLonkhLJQ52yJVuWl9ls=;
-	b=VNB32RN8ER0gYhuV2inV6EISIR8/f48f/V15jZyMqS1EZXOI9hVTsYh6NOGGqbnqis
-	6wh8tTs523c2gt4QtW1Q4HHFO/GLOpnTRmP+sdnYVBQA9yDxyjhzaPWwjnB8UEPtwBJp
-	CRiLBcTXNlzrY4GXuRUe1BWswaT1WzRok4hLMr7uw7T6or70XzjeNY4l2wKuFzDV23yt
-	oD0DoH9meTp7nn8qkl4/dSa25vSp8AFkpaORTNzy8M8Py6k5qINPN7aA9PUViLvkz8iq
-	0q2zLMczps7bMzvkYZoZYy3Mu+9oDw71VlJ/T5zCxFm3esmZ/tgiV9MBWcT63h2kB/J5
-	Z8iw==
-X-Gm-Message-State: AJaThX6n3s/w3ZzoPGQLQN4xMP/uGHPT89O902+ND09bV/415va8wsEt
-	yCYQpL0zQXiZgBC8Skil8qE=
-X-Received: by 10.46.57.25 with SMTP id g25mr557699lja.36.1510160747753;
-	Wed, 08 Nov 2017 09:05:47 -0800 (PST)
-Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
-	by smtp.gmail.com with ESMTPSA id w16sm891580lje.17.2017.11.08.09.05.46
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 08 Nov 2017 09:05:46 -0800 (PST)
-Date: Wed, 8 Nov 2017 18:05:45 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Stefano Stabellini <sstabellini@kernel.org>
-Message-ID: <20171108170545.GF5553@toto>
-References: <1509719814-6191-1-git-send-email-peter.maydell@linaro.org>
-	<alpine.DEB.2.10.1711031035500.8975@sstabellini-ThinkPad-X260>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=OJDqMUiL3+GTROdpfuOsCDf1mrIVjiSScQli5/VsNHA=;
+        b=BgHxZQ0KnHOH3gYxpMrEevNUbLjYjhSMCbtL5XiDQ/aXP1pOuHfMYjPbrl34JjSx6K
+         6oFQX0Zfbs8BP66WfE7J9Go0mH/meI3kwnJzOgrqVgE4RknS4ZOVPNakoEfjHedISSnG
+         EnbWQsjdKGGIfZKTy5JkXqtkkUNVGBvJlbpnFFntwsJsS4XozmouAfqQ6wmw88m9DEqZ
+         utFL4fizAoUzJy41Ymg5G9rXrSJqu5Q71HuGXg2MMBZXZ2Za2a/7GnSENG060iY35wP1
+         NGVQiR5iOPEtiXmq6k4gcbnOM7RoVuiNNQyKO2vbX7VDeeLTDMx3GGERgUiTGC1x0xTA
+         pENA==
+X-Gm-Message-State: AJaThX7oQJg/qDIPq3OYMyIVW5yW8iVFknpy6x5k2zdVboq3lR7Fyu4O
+	zZ7EmgcaFkL1uLFMZrX9aaVjhL2SQy6ecw==
+X-Google-Smtp-Source: ABhQp+QUM9Q6+burQy+BaJeA/NoCbH0AKtSo1cDZbsrRtf2JzaNpcpb96ad1E1OA+rdhg07KVUKjIQ==
+X-Received: by 10.80.137.154 with SMTP id g26mr4248881edg.80.1510215213114;
+        Thu, 09 Nov 2017 00:13:33 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from cloudburst.twiddle.net (93-45-2-58.ip99.fastwebnet.it. [93.45.2.58])
+        by smtp.gmail.com with ESMTPSA id w28sm5611602edl.16.2017.11.09.00.13.32
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 09 Nov 2017 00:13:32 -0800 (PST)
+Subject: Re: [Qemu-devel] [RISU PATCH 04/10] risu: move optional args to each
+ architecture
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, Dave.Martin@arm.com, qemu-devel@nongnu.org
+References: <20171107150558.22131-1-alex.bennee@linaro.org>
+ <20171107150558.22131-5-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <7bb27c4a-6c53-69b9-dff6-aa7413b6275f@linaro.org>
+Date: Thu, 9 Nov 2017 09:13:30 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.10.1711031035500.8975@sstabellini-ThinkPad-X260>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4010:c07::241
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] arm: check regime,
- not current state, for ATS write PAR format
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, Julien Grall <julien.grall@linaro.org>,
-	patches@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Go1cHV5kHK8b
+In-Reply-To: <20171107150558.22131-5-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: V7KxsBCoUH96
 
-On Fri, Nov 03, 2017 at 10:36:37AM -0700, Stefano Stabellini wrote:
-> On Fri, 3 Nov 2017, Peter Maydell wrote:
-> > In do_ats_write(), rather than using extended_addresses_enabled() to
-> > decide whether the value we get back from get_phys_addr() is a 64-bit
-> > format PAR or a 32-bit one, use arm_s1_regime_using_lpae_format().
-> > 
-> > This is not really the correct answer, because the PAR format
-> > depends on the AT instruction being used, not just on the
-> > translation regime. However getting this correct requires a
-> > significant refactoring, so that get_phys_addr() returns raw
-> > information about the fault which the caller can then assemble
-> > into a suitable FSR/PAR/syndrome for its purposes, rather than
-> > get_phys_addr() returning a pre-formatted FSR.
-> > 
-> > However this change at least improves the situation by making
-> > the PAR work correctly for address translation operations done
-> > at AArch64 EL2 on the EL2 translation regime. In particular,
-> > this is necessary for Xen to be able to run in our emulation,
-> > so this seems like a safer interim fix given that we are in freeze.
-> > 
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> 
-> Tested-by: Stefano Stabellini <sstabellini@kernel.org>
+On 11/07/2017 04:05 PM, Alex Bennée wrote:
+> +    if (arch_long_opts) {
+> +        struct option *dptr, *sptr;
+> +        size_t osize = sizeof(default_longopts);
+> +        lopts = malloc(osize);
+> +        /* Copy default opts */
+> +        memcpy(lopts, default_longopts, osize);
+> +        dptr = lopts;
+> +        while (dptr->name) {
+> +            dptr++;
+> +        }
+> +        /* Copy extra opts */
+> +        sptr = arch_long_opts;
+> +        while (sptr->name) {
+> +            osize += sizeof(struct option);
+> +            lopts = realloc(lopts, osize);
 
-Hi,
+Count default and arch opts first?
 
-This looks like an OK workaround for the moment:
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
-Cheers,
-Edgar
-
-> 
-> 
-> > ---
-> > I guess I should have a go at the "correct answer" I sketch
-> > above, but no promises about when I'll get time for that :-(
-> > 
-> >  target/arm/helper.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/target/arm/helper.c b/target/arm/helper.c
-> > index 96113fe..37af750 100644
-> > --- a/target/arm/helper.c
-> > +++ b/target/arm/helper.c
-> > @@ -2162,7 +2162,7 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
-> >  
-> >      ret = get_phys_addr(env, value, access_type, mmu_idx,
-> >                          &phys_addr, &attrs, &prot, &page_size, &fsr, &fi);
-> > -    if (extended_addresses_enabled(env)) {
-> > +    if (arm_s1_regime_using_lpae_format(env, mmu_idx)) {
-> >          /* fsr is a DFSR/IFSR value for the long descriptor
-> >           * translation table format, but with WnR always clear.
-> >           * Convert it to a 64-bit PAR.
-> > -- 
-> > 2.7.4
-> > 
-> > 
+r~

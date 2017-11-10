@@ -1,114 +1,117 @@
-Received: by 10.223.150.237 with SMTP id u100csp3766099wrb;
-        Fri, 10 Nov 2017 05:35:38 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMZX+qa54nZxt1yVa4gVFHa6sxMBp+4I4WfRw0GG6oxfjsP1th/9sULU0xzIx3NUMFCOck6y
-X-Received: by 10.37.162.129 with SMTP id c1mr245717ybi.419.1510320938878;
-        Fri, 10 Nov 2017 05:35:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510320938; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp3770713wrb;
+        Fri, 10 Nov 2017 05:40:49 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMZVsPm3244uK0TcIP8bAaymLvNko3qELhGX3I6seSxbCRn1P6Rs209R2BqOSzNOAAK6xbCb
+X-Received: by 10.129.179.137 with SMTP id r131mr286302ywh.286.1510321249172;
+        Fri, 10 Nov 2017 05:40:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510321249; cv=none;
         d=google.com; s=arc-20160816;
-        b=PX4lGkCZ6twy6TXrvUFIBsazFHe/ZrnhOdtHJF+Mkk7e/U7SZx2kCENr8OLXJLNAn0
-         8NUvOD1wynOBMAo2YxzxCTK3ZrmRPWkCuWzuYwkKVWHtqrK876pvibL/oMShgD11+dwv
-         orY3OkwDsZ/CBNCkZ4E94SJEizMTa166Qf7HTCDtCIkW0RuVLCYe4VjYzpaZEzDhyXl6
-         N0LovbbI0ZPtlz1tpvscgqcEjYHUhNBARNeuHaaWS7bkR8k040XV9wXENbLN8n+kHefq
-         reXPbnL0FKnylIPP+YS0Mdnak2kMy0jorM7ZVOBtYXMhxJvjC7xrSWflj7Rvp8CVADQ5
-         q0OA==
+        b=cZh9fYtM3pNiebocrUSawn2ZOoQnzzxZemS4Kp3cSDhlRFkU5bjpz52WZ+7UbAh0kB
+         ZytFDs9dWzyhoKGZkBoyFlNEkOkPq/cDYLmPWRSVVAcRU+5lAYPx7ERQeR7gEm8SDDUr
+         ZwLUOyJglbgbbLELQdHVPwkLtvjETRJSNioPxokEouShYfoH4fRTzHtNpCjzriFZe17V
+         0YEoyGcdfA/dVRnPvWMa1SCATLQwx5eP6Fat8EdhiPAZ/1QjWAc0ZGI12CbtfEUr6Y/X
+         5+CkrkKg1PbSwisiSSitD0Dda9bEnXyhTKfHMGX26LCy48y2Qt5p9gb0rMbFk9b33hUh
+         LXTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:to
          :dkim-signature:arc-authentication-results;
-        bh=TIkll7NasPem3yxhKV6qwpsiyXMWhedHNd9UOBO0fow=;
-        b=pUYitx9DxcxD+BUOCwRGf2kuV26YHWxuoMOa5Baw3lj8Z8SXpRjGiM6hJtsE596Hhb
-         0glcyKPkrkZ4nTgv+80XSmpA5xf3VQCRgJFhTK6ds9aw71n1nrTUd2SLSilfpTr2nvU1
-         BXpPDJsegeOovksxOI9EbBp9PF1QKbDwZW9JiCLMKpVTaCp/yFXa8CePT4UEHvPB3Rrv
-         MkeLwczgjNBr6bJBnRmUG6+3CeQNhCV6wDG5ZcqARs7EBW16nkHPXFSvCrZ5F8nLYYva
-         9wPdVJISRMUrbxNVHzjNzu2xY0/HUrBNYm8K7QREOQlBFtUT5RGdlmfNII2eQ8ZsnRS0
-         9I7A==
+        bh=7tAhAKyj6503d5dSdbyX+pN3PUE/RUTkvu7Ftbnr0fY=;
+        b=r552xAch8OERgWAjmivAZOQbZHB/dE/E+zpHOfos/hPa+LOe3i/bizqMwKQDFMrtqy
+         njca2XEm3qm+HoymhrjZnvN+OrAJEK61JbWv6bdWh6r/tGWxCpOak+bsNt8Zn6FJhV6T
+         IfGKUXx3KjXG4i3bqy7TBQTQz79LRkk65NSJ7wNFYgii03rsUmrcfOR2h/dJa5VXKr8k
+         Dk763/+hh+A0G0prPzGT6bW1e5FQW2rWKiomxuhQwUTjWygOzdleVwDyEUDd6WPXbtMS
+         xX7hoQivFLP6zfudLrG7PnKtjQQ/6wI7RRcT4PyNX776k++t7/sOsX04Fj8wD4lWRY3d
+         rLjQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YeH47eUP;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qmYZ6qxo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x131si1033861ybg.660.2017.11.10.05.35.38
+        by mx.google.com with ESMTPS id f130si2241297ywa.339.2017.11.10.05.40.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 10 Nov 2017 05:35:38 -0800 (PST)
+        Fri, 10 Nov 2017 05:40:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YeH47eUP;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qmYZ6qxo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41763 helo=lists.gnu.org)
+Received: from localhost ([::1]:41781 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eD9T8-0008L2-B3
-	for alex.bennee@linaro.org; Fri, 10 Nov 2017 08:35:38 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52825)
+	id 1eD9Y8-0001Dk-M7
+	for alex.bennee@linaro.org; Fri, 10 Nov 2017 08:40:48 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53697)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eD9Sz-0008Ir-4h
-	for qemu-arm@nongnu.org; Fri, 10 Nov 2017 08:35:30 -0500
+	id 1eD9Y1-0001DT-4t
+	for qemu-arm@nongnu.org; Fri, 10 Nov 2017 08:40:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eD9St-00080G-B5
-	for qemu-arm@nongnu.org; Fri, 10 Nov 2017 08:35:29 -0500
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:56634)
+	id 1eD9Xw-0001Bx-4J
+	for qemu-arm@nongnu.org; Fri, 10 Nov 2017 08:40:41 -0500
+Received: from mail-qt0-x22d.google.com ([2607:f8b0:400d:c0d::22d]:44173)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eD9Ss-0007zI-Ro; Fri, 10 Nov 2017 08:35:23 -0500
-Received: by mail-qk0-x242.google.com with SMTP id 2so11065318qkg.13;
-	Fri, 10 Nov 2017 05:35:22 -0800 (PST)
+	id 1eD9Xv-0001At-W5; Fri, 10 Nov 2017 08:40:36 -0500
+Received: by mail-qt0-x22d.google.com with SMTP id 8so11833523qtv.1;
+	Fri, 10 Nov 2017 05:40:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=TIkll7NasPem3yxhKV6qwpsiyXMWhedHNd9UOBO0fow=;
-	b=YeH47eUPF7qviXxpA9OBWfcnVbyW3r+4PpHXamsOlHlSwA2oXLe7/+EgzoTVA886tH
-	O62D63ahKPMMFgEnDIbcKEAmeldolseI5FNMS67V3rbyfgM8le34uW3IM9evpOb1CS46
-	rAQKsi01ZvyK+Mp5jd/x/h2CMvhDrEZyMyf7ddLCeQGrq3KfxZP0ID9OhIgklmorBmAC
-	LIjmT7EQ7WfM6Gl7kWuzm5+KETeYB2x7KRr3XZXRQHKD/AIcVn2vR4sdJRRsLXr+59/u
-	GcOIiEQlCiRS0Lo2kuHnU9q4al+jE1GzzR1N+2TQhAyg1bKRhwc3y7XiUZbyP7wYXlgT
-	yNWQ==
+	bh=7tAhAKyj6503d5dSdbyX+pN3PUE/RUTkvu7Ftbnr0fY=;
+	b=qmYZ6qxoSowUdK4Ic7PliDzRaRl45u3rTYZEY06qf7+HfhGR1UQogIRHZieX3FKvht
+	xcARC/LdoiVnrTU/mJLE9Xd59Oci+rEbTuqLmUlbJ5bH2JJtrd2OV0S4O8e+C8MFsTR+
+	qn035qOUnqG+vD2N27AVgWIfmP0v1F/zSE/uqDXYqi2cSymk6v+iaj5uSH9gJhYnvxPb
+	X4MVAzI0RUL1E4rA2A7ybb/m0Kf/0341Seb/HgPRlZv9RjrwK5OoEm345a2rorFRx5Qf
+	Uzl1SGxZvENz0rHZGtECbGgfSS3JIz5sqJ43cYFFWfz0t77vRPQ03K7bDmiAmkp20xT5
+	YtkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=TIkll7NasPem3yxhKV6qwpsiyXMWhedHNd9UOBO0fow=;
-	b=l1EVIVGmui18E9sDwtk4U+BKtpcXONiEm+U8tLFFfUleb/NBMQCywXfU+qs8f8xZJJ
-	5rL95DD0EnZZpVx0et4Jpng3+/iz4o/mKccKkSGbOK1ePlhxvHSFrmGibXHrtNiUNL3h
-	BCH+jR4RY9s+fhPLnCYI+J9+Kev+NpN4RUxuvMkBH5cof6nu1VTRDuAFlrTerVnuSF1Q
-	F8pLjFOEUvTkC7s0e2Tl6UkcpBs2g6dm6gx+C1HRLOkiai2ULdAvOMW/XoPeu8nmTG+M
-	WnA+VK7ZlpVlT6PURdemlKFypPoxN2PWWzT8bfH8h684XMZ2azB5TxEXgomgkejl8IBe
-	RYVQ==
-X-Gm-Message-State: AJaThX4I4WVR1+ChMsRprYRlccBYXiNnGBLPxiCYHhEM8OAnJMlZ4TFP
-	y4uie/1buL172+mdf1gzi6w=
-X-Received: by 10.55.5.210 with SMTP id 201mr550664qkf.151.1510320922271;
-	Fri, 10 Nov 2017 05:35:22 -0800 (PST)
+	bh=7tAhAKyj6503d5dSdbyX+pN3PUE/RUTkvu7Ftbnr0fY=;
+	b=KqWd6SuZqnckG+8kk8FXCrdVOh93/lmvGCVtyaDF2uameK5I7cd71/0xoBX0bsmgHZ
+	xadLiqZoPFV8a3fot8zVVb4cMkqDVoI0O6wLu5BroLqGAGTAGHhRh0his6k+v2bNI5m/
+	OxrvWTxJBLFOkbpHSJctpNaejSxcRWRoWHGTfAe3g8GNg8uys1iqW1+w9CdsyVPQAGXc
+	NYqarXrNaJzjUJTEzj6sGkkCcueEQQ6JfeDafxIQzQKZSTpX8pzqQ9Fsd1WGkn8IeRDM
+	WbfZcLBtGZSZx2/L4lJhDbRSb+oG/QXi73eit/pgREYjY96Lz0uuOL7xx7TrOZzPX+uk
+	eTvQ==
+X-Gm-Message-State: AJaThX5OF68yaait1cc1x4qNZrtLuXr1qyARGGWotiWnPOqMzCQvowvA
+	yPewsSKrXEDN0AbqENml9WU=
+X-Received: by 10.200.49.92 with SMTP id h28mr617485qtb.340.1510321235361;
+	Fri, 10 Nov 2017 05:40:35 -0800 (PST)
 Received: from [192.168.1.240] ([181.93.89.178])
 	by smtp.gmail.com with ESMTPSA id
-	f63sm6192784qkj.78.2017.11.10.05.35.19
+	x80sm6319782qkx.33.2017.11.10.05.40.31
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 10 Nov 2017 05:35:21 -0800 (PST)
-To: P J P <ppandit@redhat.com>, Qemu Developers <qemu-devel@nongnu.org>,
-	Moguofang <moguofang@huawei.com>
-References: <20171109115814.28232-1-ppandit@redhat.com>
+	Fri, 10 Nov 2017 05:40:34 -0800 (PST)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1510228971-6005-1-git-send-email-sundeep.lkml@gmail.com>
+	<4beb4e47-0ff9-8251-6502-23824779edbd@amsat.org>
+	<CAFEAcA-ATtAougvALVo=48p+jVx5B+Ejq60TD9dGYEQU2ReWCQ@mail.gmail.com>
+	<5a7b721c-fe04-921b-b9d2-986c9930b00b@amsat.org>
+	<CAFEAcA_0jvR90=N9Pd+oA2U6Yy=oF7vvNV67cEAsUYQFcup9KQ@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <7441e865-c6d7-7fbf-3175-63ebdf7291e7@amsat.org>
-Date: Fri, 10 Nov 2017 10:35:18 -0300
+Message-ID: <7b0613ba-5efc-0fbd-1373-664838e6682e@amsat.org>
+Date: Fri, 10 Nov 2017 10:40:30 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.4.0
 MIME-Version: 1.0
-In-Reply-To: <20171109115814.28232-1-ppandit@redhat.com>
+In-Reply-To: <CAFEAcA_0jvR90=N9Pd+oA2U6Yy=oF7vvNV67cEAsUYQFcup9KQ@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::242
-Subject: Re: [Qemu-arm] [PATCH] highbank: validate register offset before
- access
+X-Received-From: 2607:f8b0:400d:c0d::22d
+Subject: Re: [Qemu-arm] [Qemu devel PATCH] MAINTAINERS: Add entries for
+ Smartfusion2
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -120,70 +123,76 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org, Prasad J Pandit <pjp@fedoraproject.org>,
-	Shawn Guo <shawn.guo@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Alistair Francis <alistair23@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	"Paul E. McKenney" <paulmck@linux.vnet.ibm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XuAs2e6FSVpv
+X-TUID: BcBk2l6kHgk/
 
-Hi Prasad, Moguofang.
-
-On 11/09/2017 08:58 AM, P J P wrote:
-> From: Prasad J Pandit <pjp@fedoraproject.org>
+On 11/10/2017 09:56 AM, Peter Maydell wrote:
+> On 10 November 2017 at 00:22, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>> On 11/09/2017 08:55 PM, Peter Maydell wrote:
+>>> I don't in general expect to take pull requests from
+>>> everybody listed as a maintainer in the MAINTAINERS file.
+>>> That just means "I'm going to be reviewing and should
+>>> be cc'd on patches". Pull requests are sent by people
+>>> who are maintainers for a subsystem. Rule of thumb:
+>>> unless somebody asks you to send a pull request, you
+>>> don't need to do it.
+>>
+>> Ok, please apologize my misunderstanding. I still think the M: entry
+>> stand for 'Maintainer' instead of 'Mail', and still don't understand the
+>> difference with a "Designated reviewer" (R: entry):
+>>
+>>         M: Mail patches to: FullName <address@domain>
+>>         R: Designated reviewer: FullName <address@domain>
+>>            These reviewers should be CCed on patches.
+>>
+>> "Designated reviewer" seems to duplicate the M: entry and is therefore
+>> confusing. Can we simply remove it instead?
 > 
-> An 'offset' parameter sent to highbank register r/w functions
-> could be greater than number(NUM_REGS=0x200) of hb registers,
-> leading to an OOB access issue. Add check to avoid it.
+> I hadn't realized we had an 'R:' tag in MAINTAINERS...
 > 
-> Reported-by: Moguofang (Dennis mo) <moguofang@huawei.com>
-> Signed-off-by: Prasad J Pandit <pjp@fedoraproject.org>
-> ---
->  hw/arm/highbank.c | 7 +++++++
->  1 file changed, 7 insertions(+)
+>> --
+>> Some people are not content with the amount of mail they get, and would
+>> like to be CCed on patches for areas they do not maintain.  Let them
+>> satisfy their own appetite for qemu-devel messages.
+>>
+>> Seriously: the purpose here is a bit different from the Linux kernel.
+>> While Linux uses "R" to designate non-maintainers for reviewing patches
+>> in a given area, in QEMU I would also like to use "R" so that people can
+>> delegate sending pull requests while keeping some degree of oversight.
+>> --
 > 
-> diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
-> index 354c6b25a8..94df151454 100644
-> --- a/hw/arm/highbank.c
-> +++ b/hw/arm/highbank.c
-> @@ -117,6 +117,9 @@ static void hb_regs_write(void *opaque, hwaddr offset,
->          }
->      }
->  
-> +    if (offset / 4 >= NUM_REGS) {
+> So, my view, based on what happens in practice:
+>  * "maintainer" means you are in effect accepting some responsibility
+>    for the continued maintenance of some bit of the codebase, ie
+>    you actually will review stuff
+>  * "reviewer" is a bit weird but I guess is just asking for cc:
+>    without promising to actually do anything
+>  * somebody who sends me pull requests is effectively somebody we've
+>    given the ability to make direct more-or-less unchecked commits
+>    to master, so that is given out more sparingly and for larger
+>    subsystems
 
-I'd report that:
+Thanks for clarifying this!
 
-           qemu_log_mask(LOG_UNIMP, ...
+This is more understandable (to me) than the "QEMU Maintainers" section
+entries description.
 
-Cc'ing Shawn & Rob since this might also be a LOG_GUEST_ERROR.
+> But MAINTAINERS is mostly about what submitters need to do (ie
+> who to send patchmails to), so it doesn't particularly document
+> how patches flow onward into master, which varies. (For instance
+> the block layer folks have a two-level setup where some trees
+> get merged into others before they go to master. ARM devboards
+> go through me, and "maintainer" just means I let somebody else
+> deal with the device specifics if possible but am still the
+> reviewer of last resort.)
 
-> +        return;
-> +    }
->      regs[offset/4] = value;
->  }
->  
-> @@ -124,6 +127,10 @@ static uint64_t hb_regs_read(void *opaque, hwaddr offset,
->                               unsigned size)
->  {
->      uint32_t *regs = opaque;
-> +
-> +    if (offset / 4 >= NUM_REGS) {
-
-Ditto.
-
-> +        return 0;
-> +    }
-
-From CODING_STYLE:
-
-Mixed declarations (interleaving statements and declarations within
-blocks) are generally not allowed; declarations should be at the
-beginning of blocks.
-
->      uint32_t value = regs[offset/4];
->  
->      if ((offset == 0x100) || (offset == 0x108) || (offset == 0x10C)) {
+Ok :)
 
 Regards,
 

@@ -1,49 +1,49 @@
-Received: by 10.223.150.237 with SMTP id u100csp3629171wrb;
-        Fri, 10 Nov 2017 03:14:43 -0800 (PST)
-X-Google-Smtp-Source: ABhQp+RDCk439i8xZdlJxaUBv51EO1nQMd2ztE9AU5alzG2CwpHqs3jZEaGWe9KKUsRwiJ9Q71ff
-X-Received: by 10.99.124.75 with SMTP id l11mr3875170pgn.453.1510312482884;
-        Fri, 10 Nov 2017 03:14:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510312482; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp3629213wrb;
+        Fri, 10 Nov 2017 03:14:45 -0800 (PST)
+X-Google-Smtp-Source: ABhQp+Q2AeADd7WfZgjbk+GEVsTbU1liL2EqdVVRJQ9OcsbYNLil6kzPenWvlFNt2hExcizD7yZD
+X-Received: by 10.159.230.19 with SMTP id u19mr3915242plq.84.1510312485095;
+        Fri, 10 Nov 2017 03:14:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510312485; cv=none;
         d=google.com; s=arc-20160816;
-        b=SLa/vYWnbF9LVqBfKlwpF7feVSyFwLWJPwgXaOuk5E5wZOtJqrJAadsI1X2lgQOzwX
-         MFJ8omIuu6gHp1RKvmDyiKF+9R+BUR8IR3LwbCPBhBwWnT+RPGWD61zm/fDu6PGOby4h
-         4UmE5wSG5PIkwTW3WWFJhw7rKZVBIFItsqwG6YQoVsY+R23HQ0tXgRtGfHzZwvGzTC6R
-         VifdtoU2XlXbzPZpae+g542O/ENJmGpzMPEU0qGzVEOu2yfFLcidEU8wiEC7uuk4Tbuc
-         r7u33XOwd52y59i8umfglzJ/9Ux9d8vGFjc5tpgCHKm/ZZlBOY1WSJmhiT6sVK5B5GHD
-         lRFA==
+        b=jciIe4kg531PmXwsz7Nb+6ZCNnNDCHAEvodtQszSNu+ciJPSjQpSiLfIskeLsj+qku
+         XkZvSl68x1u9xX/ortj+/9w4XCo+26LD+7awDTkiryiZR1YLqXQdy8KlgDH50Gdj8cmu
+         Utz27ipMGKeOAQ9pAdqRUkLT/zI0cvRGwWv7jF57ap8awlz563RfSMJevnY6Y2OoUD3l
+         J+kN+pCAl18idCtSxA6WM1VRnCCoVrGqppBZi9fczUIJ6SQvTiV4TF3ivyoNtWt3Dw4Z
+         YgtqX6KSKeeTygfUp5q41dVnUtksDfPCNYm1IU6mQbrCYlB3nl7J8bFoFX1LxXVeJz/A
+         7DhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:arc-authentication-results;
-        bh=K1J1UM4BvBWAKnBTWNPc3Mdn+gwQ6o+rpogBTiKlBXU=;
-        b=TEFVdxNfLCUTHHV8Qq4SV8KadL0wW2aM3GqwjGHQQbQvIQ6UBO0tL0c6VYNn0FB+kf
-         m0nEeTOk69I4twlGJcxS0qMrhzed5X+ywWH4WefK6WJ9G/Vk8bxgT4pwOS+XyxZrIx0d
-         OEcselFgpZdfiMn8QqUvyJcLjxF8luGeMwJ1ce9P80F7YZxBJn4lnEimAgQPPWShCogQ
-         WLTjcl+APnwETBDKf/JyNDwc0SQO9YyQWHllOCoWSZq4ATrcuPcri3Jv08GOiN+zvg6O
-         5zt4hQiIwG0B/T22Jw6x05Op4gsVXTYcfZGi5n0vagaP5TE6P0kgLAifGqNhQF39uCea
-         ifyw==
+        bh=jWYsK/pVpbMwZA8Esz+/W3V7vVXzWsitAB27PEhEtv4=;
+        b=RE3FG9UxuZI0h/TqCNUgnGxA9L1jzBUMl1eLv1MCFLDmfXWMQeO0ohgNWW/zHzzIrU
+         v1mJisx+whMwHOYSVBecOhasac/8Z0mEbD3vFWyxyAt7j0hY4Hu/R2RcftWp9EJiwO9q
+         W+LPBvdpjcBgO36CYnBY0uq32pxf5RkjkFYj4Sm13sIAKWXLiNS10n4118iq0UwuKr6I
+         7cQv7tFD/HkUu9X7jgxcbAiTLVuW9mDRJtPsBJtBcYn4/dnaOIGBmNt/ww1KjaOEvMRd
+         v2MbMiIyiZZwBOAxxv9W7FzdgzJu2uGTg87n4pdDphILmMvOVFdDGUAf6/oeJUZ3SDMZ
+         XuPA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id s15si8697707plp.268.2017.11.10.03.14.42;
-        Fri, 10 Nov 2017 03:14:42 -0800 (PST)
+        by mx.google.com with ESMTP id s15si8697707plp.268.2017.11.10.03.14.44;
+        Fri, 10 Nov 2017 03:14:45 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1753051AbdKJLOl (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 5 others); Fri, 10 Nov 2017 06:14:41 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:10443 "EHLO
+        id S1753021AbdKJLOe (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 5 others); Fri, 10 Nov 2017 06:14:34 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:10441 "EHLO
         szxga04-in.huawei.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1753035AbdKJLOi (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 10 Nov 2017 06:14:38 -0500
+        with ESMTP id S1752948AbdKJLOb (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 10 Nov 2017 06:14:31 -0500
 Received: from 172.30.72.58 (EHLO DGGEMS403-HUB.china.huawei.com) ([172.30.72.58])
         by dggrg04-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
-        with ESMTP id DKO46189;
-        Fri, 10 Nov 2017 19:14:10 +0800 (CST)
+        with ESMTP id DKO46195;
+        Fri, 10 Nov 2017 19:14:11 +0800 (CST)
 Received: from localhost.localdomain (10.143.28.90) by
  DGGEMS403-HUB.china.huawei.com (10.3.19.203) with Microsoft SMTP Server id
- 14.3.361.1; Fri, 10 Nov 2017 19:14:02 +0800
+ 14.3.361.1; Fri, 10 Nov 2017 19:13:59 +0800
 From:   Dongjiu Geng <gengdongjiu@huawei.com>
 To:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
         <zhaoshenglong@huawei.com>, <peter.maydell@linaro.org>,
@@ -54,9 +54,9 @@ To:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
         <huangshaoyu@huawei.com>, <wuquanming@huawei.com>,
         <zhengqiang10@huawei.com>, <linuxarm@huawei.com>,
         <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Subject: [PATCH v12 04/12] ACPI: enable APEI GHES in the configure file and build it
-Date:   Sat, 11 Nov 2017 03:19:43 +0800
-Message-ID: <1510341591-22817-5-git-send-email-gengdongjiu@huawei.com>
+Subject: [PATCH v12 01/12] ACPI: add related GHES structures and macros definition
+Date:   Sat, 11 Nov 2017 03:19:40 +0800
+Message-ID: <1510341591-22817-2-git-send-email-gengdongjiu@huawei.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1510341591-22817-1-git-send-email-gengdongjiu@huawei.com>
 References: <1510341591-22817-1-git-send-email-gengdongjiu@huawei.com>
@@ -65,46 +65,100 @@ Content-Type: text/plain
 X-Originating-IP: [10.143.28.90]
 X-CFilter-Loop: Reflected
 X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-        refid=str=0001.0A090202.5A058A05.008D,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0,
+        refid=str=0001.0A090203.5A058A05.00AA,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0,
         ip=0.0.0.0,
         so=2014-11-16 11:51:01,
         dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: b4247890d1a3baf0bfc1f7292f1229a7
+X-Mirapoint-Loop-Id: 390e22677b5509e9b8ab007518927248
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: lyv7PpauLDMu
+X-TUID: iqu8Q2gYlQ3/
 
-Add CONFIG_ACPI_APEI configuration in the arm-softmmu.mak
-and add build choice in the Makefile.objs.
+Add Generic Error Status Block structures and some macros
+definition, which refer to the ACPI 4.0 and ACPI 6.1. The
+HEST table generation and CPER record will use them.
 
 Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 ---
- default-configs/arm-softmmu.mak | 1 +
- hw/acpi/Makefile.objs           | 1 +
- 2 files changed, 2 insertions(+)
 
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-index bbdd3c1..c362113 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -129,3 +129,4 @@ CONFIG_ACPI=y
- CONFIG_SMBIOS=y
- CONFIG_ASPEED_SOC=y
- CONFIG_GPIO_KEY=y
-+CONFIG_ACPI_APEI=y
-diff --git a/hw/acpi/Makefile.objs b/hw/acpi/Makefile.objs
-index 11c35bc..bafb148 100644
---- a/hw/acpi/Makefile.objs
-+++ b/hw/acpi/Makefile.objs
-@@ -6,6 +6,7 @@ common-obj-$(CONFIG_ACPI_MEMORY_HOTPLUG) += memory_hotplug.o
- common-obj-$(CONFIG_ACPI_CPU_HOTPLUG) += cpu.o
- common-obj-$(CONFIG_ACPI_NVDIMM) += nvdimm.o
- common-obj-$(CONFIG_ACPI_VMGENID) += vmgenid.o
-+common-obj-$(CONFIG_ACPI_APEI) += hest_ghes.o
- common-obj-$(call lnot,$(CONFIG_ACPI_X86)) += acpi-stub.o
+It has been suggested to get rid of most structures that introduced in patch, the
+second patch mainly use build_append_int_noprefix() API to compose whole error status
+block and APEI table
+
+https://lkml.org/lkml/2017/8/29/187
+
+---
+ include/hw/acpi/acpi-defs.h | 49 +++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 49 insertions(+)
+
+diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+index 72be675..f955f1b 100644
+--- a/include/hw/acpi/acpi-defs.h
++++ b/include/hw/acpi/acpi-defs.h
+@@ -298,6 +298,25 @@ typedef struct AcpiMultipleApicTable AcpiMultipleApicTable;
+ #define ACPI_APIC_RESERVED              16   /* 16 and greater are reserved */
  
- common-obj-y += acpi_interface.o
+ /*
++ * ACPI 4.0 spec, "17.3.2.7 Hardware Error Notification"
++ */
++enum AcpiHestNotifyType {
++    ACPI_HEST_NOTIFY_POLLED = 0,
++    ACPI_HEST_NOTIFY_EXTERNAL = 1,
++    ACPI_HEST_NOTIFY_LOCAL = 2,
++    ACPI_HEST_NOTIFY_SCI = 3,
++    ACPI_HEST_NOTIFY_NMI = 4,
++    ACPI_HEST_NOTIFY_CMCI = 5,  /* ACPI 5.0 */
++    ACPI_HEST_NOTIFY_MCE = 6,   /* ACPI 5.0 */
++    ACPI_HEST_NOTIFY_GPIO = 7,  /* ACPI 6.0 */
++    ACPI_HEST_NOTIFY_SEA = 8,   /* ACPI 6.1 */
++    ACPI_HEST_NOTIFY_SEI = 9,   /* ACPI 6.1 */
++    ACPI_HEST_NOTIFY_GSIV = 10, /* ACPI 6.1 */
++    ACPI_HEST_NOTIFY_SDEI = 11, /* ACPI 6.2 */
++    ACPI_HEST_NOTIFY_RESERVED = 12 /* 12 and greater are reserved */
++};
++
++/*
+  * MADT sub-structures (Follow MULTIPLE_APIC_DESCRIPTION_TABLE)
+  */
+ #define ACPI_SUB_HEADER_DEF   /* Common ACPI sub-structure header */\
+@@ -474,6 +493,36 @@ struct AcpiSystemResourceAffinityTable {
+ } QEMU_PACKED;
+ typedef struct AcpiSystemResourceAffinityTable AcpiSystemResourceAffinityTable;
+ 
++/*
++ * ACPI 4.0, "17.3.2.6.1 Generic Error Data"
++ */
++#define ACPI_GEBS_UNCORRECTABLE          (1)
++/*
++ * ACPI 6.1, "18.3.2.8 Generic Hardware Error
++ * Source version 2"
++ */
++#define ACPI_HEST_SOURCE_GENERIC_ERROR_V2    (10)
++/*
++ * Table 17-12 Generic Error Status Block, ACPI 4.0,
++ * "17.3.2.6.1 Generic Error Data"
++ */
++struct AcpiGenericErrorStatus {
++    /* It is a bitmask composed of ACPI_GEBS_xxx macros */
++    uint32_t block_status;
++    uint32_t raw_data_offset;
++    uint32_t raw_data_length;
++    uint32_t data_length;
++    uint32_t error_severity;
++} QEMU_PACKED;
++typedef struct AcpiGenericErrorStatus AcpiGenericErrorStatus;
++
++enum AcpiGenericErrorSeverity {
++    ACPI_CPER_SEV_RECOVERABLE,
++    ACPI_CPER_SEV_FATAL,
++    ACPI_CPER_SEV_CORRECTED,
++    ACPI_CPER_SEV_NONE,
++};
++
+ #define ACPI_SRAT_PROCESSOR_APIC     0
+ #define ACPI_SRAT_MEMORY             1
+ #define ACPI_SRAT_PROCESSOR_x2APIC   2
 -- 
 1.8.3.1

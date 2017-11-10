@@ -1,101 +1,97 @@
-Received: by 10.223.150.237 with SMTP id u100csp4112337wrb;
-        Fri, 10 Nov 2017 11:23:16 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMb/anN+SPXHcQuRbjvx/57LngOZUFtVoP2uMzHv1lBfDexT/+hbSeyhHG3qEwc0knRvlQuj
-X-Received: by 10.37.173.23 with SMTP id y23mr974525ybi.121.1510341796641;
-        Fri, 10 Nov 2017 11:23:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510341796; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp4139501wrb;
+        Fri, 10 Nov 2017 11:54:03 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMby2YsQVSJauCgDXnR2X7Ufhf6j4dVWXEXl9v5E3fQNpPa/Kyi36ECc3VnwtPKZT1DC9ZKK
+X-Received: by 10.37.98.18 with SMTP id w18mr1012409ybb.290.1510343643772;
+        Fri, 10 Nov 2017 11:54:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510343643; cv=none;
         d=google.com; s=arc-20160816;
-        b=p8NF2rf8dhpbrQop9rlFgmBk0sR8bKkEO429myIoJkCBRlsttJoCluYifpQhJ1JF68
-         7ryYJ++YrNsaBjB7gau8EIXe/6ShuLG/PelSXPSTJXLY2ZIEI42fxApn5+BqxGjcEn1o
-         wMCIooZPo4UQamJDk/oUT8OaE0P/I8xtQHbZdz98PiI935FO24/aDf/bPr3cloKGSBtK
-         v/QC496gjvz3OMMYDhZ0/E3iFQQoUjkbwn6dDA9UXl1DTuHb1RXM+H52jSjhClpVB7/N
-         IiuYdsGXTFq/krabeaVewgjQjX9yuz9PcPIJc41nQkSNY1eWVALpbKyDg8mN5H/VJEQx
-         7kog==
+        b=cWZpO2kVZeuun0YHTMDP1sh5aAlw/4VMB6YdK9AJxl6ypmJTJZctLmGEFJlHz0lK2Y
+         1o2kC6NzodmZxL6MT31dq8eGABWNDfXxjobYBbitX6h0uV/URDNFhkXdUMRa/IHvHgbk
+         sT14WPE8eCGC1XrXb7+EUfrzmEiy/2HCoSS4Z1YJQvKsjX4PG2z4aPLFKGJ2PHe+NheZ
+         EacOVTjVHIt0UsB/B8xNxMlfdP0xl6uCrXxwx3k+V47C8QgaAjHc+4UxJwzuKkZfkljH
+         CZw5/HxxG3kUlBIlA8LPzoYcMpMsbCrRC07opcVw2jhntTk6X9BrSVGnPoru1Vxf3GAg
+         FOxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature:dkim-signature:arc-authentication-results;
-        bh=iOXftXUNKvEBdmNwWl2tADASuv6UhLrzmXK56FCV5FI=;
-        b=Pdu8rITUXr6/6Gc5tjy2N+gL1mknwWdNKXNSQstsSTF1S5+LJWhnP4jWbWqjk3WHhP
-         93CjASOkBJgS9yObh7+hFLTdH1o1fcori5IXeoxwb8f5QVABRg8eJ0fFxGnJY/LWjtpC
-         h6ZjGtEYu2+ZvDQxClYxxsILOU7cNv90n4r704SdMOddLM9pFVwpGZtIKDWkrUikpkUz
-         qD3vmGf7OWwAhGRdlQiEK9W4yH4lzIw9zJGp5G36c+Yt6HiVgrlet9E6ibIN5FVy/2US
-         DZQdFvGpD1lrLiyiV/RddbEFqNcBZlOJ9d7NF0GwR1QMWW/sWKCXY4nRwO8jIXIwzIXv
-         iJdQ==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:dkim-signature
+         :arc-authentication-results;
+        bh=r88MF40W9pSEe97d+djRzbpw1Fbz7r9nHuOys0gZuDI=;
+        b=XwaJAfxtDzfa0sPHHGHgwSJT2xcJMRQ1iBPlcmcvLD5o9jLvjIJQS8nssuUS8aMxtJ
+         Ne6J/37O1BBaIsnI7OYcJYaRC0/g2thqjYQn5TtIbrdK1iInxTl6KntPAvmQO3jKksNb
+         a5mOqegBNMOyzim70Fios0tjg4ASYmhNC9y7XbRRKzQ4nRarvqnAdADnMHXPJVcLj70V
+         tW4B/XG0142Q2VzJ4RIgIN1mfTkoPIfKh/2nbqpRIoo2qTHCH2aJ74U3FPdWRawIayD5
+         SXql3+AI0NoO681HTH1jE/wIgWvamSS2/R9EK7SC1Cn+cLKR0svIiBCnqPlTy4hzLcBF
+         gynQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@braap.org header.s=mesmtp header.b=SX3tQX9R;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=d9CxW0S3;
+       dkim=fail header.i=@braap.org header.s=mesmtp header.b=Q0rlqhn6;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=iPu7qDar;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s83si2029731yba.706.2017.11.10.11.23.16
+        by mx.google.com with ESMTPS id 67si2281213ybi.678.2017.11.10.11.54.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 10 Nov 2017 11:23:16 -0800 (PST)
+        Fri, 10 Nov 2017 11:54:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@braap.org header.s=mesmtp header.b=SX3tQX9R;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=d9CxW0S3;
+       dkim=fail header.i=@braap.org header.s=mesmtp header.b=Q0rlqhn6;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=iPu7qDar;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:43164 helo=lists.gnu.org)
+Received: from localhost ([::1]:43237 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eDEtY-0000EO-3F
-	for alex.bennee@linaro.org; Fri, 10 Nov 2017 14:23:16 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41834)
+	id 1eDFNL-0005Mj-4W
+	for alex.bennee@linaro.org; Fri, 10 Nov 2017 14:54:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47280)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1eDEtN-0000EF-7G
-	for qemu-arm@nongnu.org; Fri, 10 Nov 2017 14:23:06 -0500
+	(envelope-from <cota@braap.org>) id 1eDFNA-0005Lh-3z
+	for qemu-arm@nongnu.org; Fri, 10 Nov 2017 14:53:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1eDEtK-0008T0-2b
-	for qemu-arm@nongnu.org; Fri, 10 Nov 2017 14:23:05 -0500
-Received: from out4-smtp.messagingengine.com ([66.111.4.28]:43661)
+	(envelope-from <cota@braap.org>) id 1eDFN5-0006BL-Sr
+	for qemu-arm@nongnu.org; Fri, 10 Nov 2017 14:53:50 -0500
+Received: from out4-smtp.messagingengine.com ([66.111.4.28]:60233)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <cota@braap.org>)
-	id 1eDEtJ-0008Sh-Rh; Fri, 10 Nov 2017 14:23:01 -0500
+	id 1eDFN5-0006B6-Lw; Fri, 10 Nov 2017 14:53:47 -0500
 Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id 8D04D20AAB;
-	Fri, 10 Nov 2017 14:23:00 -0500 (EST)
+	by mailout.nyi.internal (Postfix) with ESMTP id 43A81212C8;
+	Fri, 10 Nov 2017 14:53:47 -0500 (EST)
 Received: from frontend2 ([10.202.2.161])
-	by compute4.internal (MEProxy); Fri, 10 Nov 2017 14:23:00 -0500
+	by compute4.internal (MEProxy); Fri, 10 Nov 2017 14:53:47 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
-	:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc; s=
-	mesmtp; bh=iOXftXUNKvEBdmNwWl2tADASuv6UhLrzmXK56FCV5FI=; b=SX3tQ
-	X9RcNjO0gKUFfORdiT4CwKxoupT4xDCwi+y805cmOthRetoJySVc4t7kDyWizeGX
-	tZsoTu14ZDts3A3LlEDbT1MENvqJZAEKm2y0BkUJ5Tnpn/kZCuYbOvFdzAmFor+B
-	+I0BlSrFGZzaj3qehCeRJHzsXrEPEfWt2PLU0M=
+	:date:from:in-reply-to:message-id:references:subject:to
+	:x-me-sender:x-me-sender:x-sasl-enc; s=mesmtp; bh=r88MF40W9pSEe9
+	7d+djRzbpw1Fbz7r9nHuOys0gZuDI=; b=Q0rlqhn6PmwKhGiRpAPBT4JlZWrk26
+	j+3TJMTn/X8sPx1htI6jd3S1SjD5HyzI6MGZ26g33rY1+qosVbjVb9mjjBOowBAZ
+	t5QgwBQGhiAM568T+YdzmHtWb+RKfMFUa23D22Utx5qJR4rQ0Tl/CwTQ78L9fq8D
+	XcyZdRpC6F6w4=
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm1; bh=iOXftXUNKvEBdmNwWl2tADASuv6Uh
-	LrzmXK56FCV5FI=; b=d9CxW0S3xOb5poWIiMpZ7eWZ5YFjdsV8htzgT9FRRtMYQ
-	KWPkSZPoLnB9JzKspEwBhMHhetjCtIUN5jfKF2Qy6/9Cio81fq7cQ1/hR7+orRWx
-	4Ahui0g61SJsADihq2nbBXJ4mZSjbCp4YIjmDNWQaqYI+6eFm20RxVfiqAprKe0c
-	Pc0eXuILi29kIhLTMgT2Dl1CajYOBFcTT9TbfKRkQ66wPG4NUX/ciI1hWU8L+FZD
-	QMebsDFtK6HwKiyK6kX7y0mvxJsZuGJBEM6c9eJs944/477CzmuRuwJInQxLosDS
-	YUr1Z3BBPbMd1MWt9G/NQ4gTBR6abGxoFPOLCO1kg==
-X-ME-Sender: <xms:lPwFWtkbXqWW_0P5_Su18pOawJ3BuplzQd0JTMlsKaRfNZXrNe7VMw>
+	messagingengine.com; h=cc:date:from:in-reply-to:message-id
+	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm1; bh=r88MF40W9pSEe97d+djRzbpw1Fbz7r9nHuOys0gZuDI=; b=iPu7qDar
+	9hL3Klm4xzbLfAhE8fMgjjDKdk576IsSJ29qwhCG6mXk0V5mxvlS5hwYeQ3sYecu
+	MwcOExVPik4laVpZQ17WGgIvQ+Pxrj4id+fBeTGOfa6nIa93J1WUfwcbPBBEwjca
+	eYjpNs1lu2pBmF6uPB6DiYB8KNpoEKdx2OO8iQ4TjEB5z8m1ldPGe+47xkWL8XmW
+	yr56Z1lc7MWEa6hK8v328W2iaBImeoLuSOT4xwEY4QVnFNezUI5UaoaJJw9LUL1p
+	J7tVlwntYKWaoRfkAIjgfnVqF9YVfUffPRLG1JNFY+Blr2hEOsNAEn47TCBFn6w1
+	5jczUhqTq4XIbA==
+X-ME-Sender: <xms:ywMGWokFMFmTSwzsvdvihNm7HnCs4okoL5uIQTDwSIGZQia5u-IGpQ>
 Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 4FA6D244A1;
-	Fri, 10 Nov 2017 14:23:00 -0500 (EST)
-Date: Fri, 10 Nov 2017 14:23:00 -0500
+	by mail.messagingengine.com (Postfix) with ESMTPA id 0BDEA24631;
+	Fri, 10 Nov 2017 14:53:47 -0500 (EST)
 From: "Emilio G. Cota" <cota@braap.org>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <20171110192300.GC17844@flamenco>
-References: <1509734853-3014-1-git-send-email-cota@braap.org>
-	<20171107201545.GA32606@localhost.localdomain>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20171107201545.GA32606@localhost.localdomain>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+To: qemu-devel@nongnu.org
+Date: Fri, 10 Nov 2017 14:53:44 -0500
+Message-Id: <1510343626-25861-4-git-send-email-cota@braap.org>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1510343626-25861-1-git-send-email-cota@braap.org>
+References: <1510343626-25861-1-git-send-email-cota@braap.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.111.4.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw: add .min_cpus and
- .default_cpus fields to machine_class
+Subject: [Qemu-arm] [PATCH for 2.11 3/5] xlnx-zcu102: Add an info message
+ deprecating the EP108
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,44 +104,63 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
 	Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+	Richard Henderson <richard.henderson@linaro.org>,
 	Alistair Francis <alistair.francis@xilinx.com>,
 	qemu-arm@nongnu.org, Marcel Apfelbaum <marcel@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: g50lBrojP6UH
+X-TUID: iGoyKD/d9cYX
 
-On Tue, Nov 07, 2017 at 18:15:45 -0200, Eduardo Habkost wrote:
-> On Fri, Nov 03, 2017 at 02:47:33PM -0400, Emilio G. Cota wrote:
-> > @@ -4330,12 +4330,34 @@ int main(int argc, char **argv, char **envp)
-> >      smp_parse(qemu_opts_find(qemu_find_opts("smp-opts"), NULL));
-> >  
-> >      machine_class->max_cpus = machine_class->max_cpus ?: 1; /* Default to UP */
-> > +    machine_class->min_cpus = machine_class->min_cpus ?: 1;
-> > +    machine_class->default_cpus = machine_class->default_cpus ?: 1;
-> > +
-> > +    /* if -smp is not set, default to mc->default_cpus */
-> > +    if (!smp_cpus) {
-> > +        smp_cpus = machine_class->default_cpus;
-> > +        max_cpus = machine_class->default_cpus;
-> > +    }
-> 
-> I suggest doing this before smp_parse(), so any validation of
-> smp_cpus inside smp_parse will apply to the value we're setting
-> here (e.g. the replay_add_blocker() call in smp_parse() will
-> work).
-(snip)
-> > +    if (max_cpus < machine_class->min_cpus) {
-> 
-> smp_parse() already ensures max_cpus >= smp_cpus, and you are
-> already checking if smp_cpus < machine_class->min_cpus above.  Is
-> it really possible to trigger this error message?
-> 
-> Except for that, the patch looks good to me.
+From: Alistair Francis <alistair.francis@xilinx.com>
 
-Both very good points! I've modified the patch accordingly.
+The EP108 was an early access development board that is no longer used.
+Add an info message to convert any users to the ZCU102 instead. On QEMU
+they are both identical.
 
-Thanks,
+This patch also updated the qemu-doc.texi file to indicate that the
+EP108 has been deprecated.
 
-		Emilio
+Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
+Reviewed-by: Emilio G. Cota <cota@braap.org>
+---
+ qemu-doc.texi        | 7 +++++++
+ hw/arm/xlnx-zcu102.c | 3 +++
+ 2 files changed, 10 insertions(+)
+
+diff --git a/qemu-doc.texi b/qemu-doc.texi
+index 8c10956..d383ac4 100644
+--- a/qemu-doc.texi
++++ b/qemu-doc.texi
+@@ -2537,6 +2537,13 @@ or ``ivshmem-doorbell`` device types.
+ The ``spapr-pci-vfio-host-bridge'' device type is replaced by
+ the ``spapr-pci-host-bridge'' device type.
+ 
++@section System emulator machines
++
++@subsection Xilinx EP108 (since 2.11.0)
++
++The ``xlnx-ep108'' machine has been replaced by the ``xlnx-zcu102'' machine.
++The ``xlnx-zcu102'' machine has the same features and capabilites in QEMU.
++
+ @node License
+ @appendix License
+ 
+diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
+index 7ec03da..adddd23 100644
+--- a/hw/arm/xlnx-zcu102.c
++++ b/hw/arm/xlnx-zcu102.c
+@@ -164,6 +164,9 @@ static void xlnx_ep108_init(MachineState *machine)
+ {
+     XlnxZCU102 *s = EP108_MACHINE(machine);
+ 
++    info_report("The Xilinx EP108 machine is deprecated, please use the "
++                "ZCU102 machine instead. It has the same features supported.");
++
+     xlnx_zynqmp_init(s, machine);
+ }
+ 
+-- 
+2.7.4
+

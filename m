@@ -1,78 +1,83 @@
-Received: by 10.223.150.237 with SMTP id u100csp402341wrb;
-        Sat, 11 Nov 2017 00:11:31 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMaB004Nr9GBHVGWMaYq8z7Go0jN4aqr+6Yr8lXg624434RKvLHyN343NbABo1b2r+Q0XNTI
-X-Received: by 10.129.128.1 with SMTP id q1mr2019014ywf.436.1510387891253;
-        Sat, 11 Nov 2017 00:11:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510387891; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp403637wrb;
+        Sat, 11 Nov 2017 00:13:33 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMbrg8k6h/PYGktMHvOG3hSb2btseK6DNV5S6BH7EvCPB//OMIM+Htui6tbqWPXJKC+3zIC3
+X-Received: by 10.37.184.72 with SMTP id b8mr2022594ybm.160.1510388013191;
+        Sat, 11 Nov 2017 00:13:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510388013; cv=none;
         d=google.com; s=arc-20160816;
-        b=BpjIptIlCwcMd6eS6pdhQfeYYqlpNR991y3gLQA0V5Sa/ahWaYRx9f0OdOQ8S970L8
-         PQ0F/uOQW4edeZq+kNztgZGqique/fmErTTLT0qeaAlhwMkmhNSUvQ39nIlnlzkObtBq
-         koVIGwL9CbILNjo8r/twWRNp9pO9ZIjq/FzZCLyBmmW/nIjwWqAhHL2ydn7k/IGHb29u
-         31ehKDYPC89+/Bh0ceqb6eor3y9WVp7yFhY9rzm2MzLXPgGasI0Cv6uNLabo6qBW2P8R
-         jMBw5Ui5YvT3FOPSP5Nw0WgS/RPonQnjpwxLJTuMYS88vxE01PKqDd5JVG4QSXhMg+Kl
-         eOcw==
+        b=u8mNFwtx4a5zFrvhzM9PYO8qO0KM7p3Pp/tVFFkMx4PqIR0gszwWcAXmBRrq5bSLT3
+         GXL4Tgqam2OzfBiomOJOww4t4NTgypZWHTYPjQQYeNSpocZp8Bgmq6kNfEEXA5EHKCml
+         NCGWbrEivjZ9knyB+nsGIq82CHuVHzz7LGoIwjhAMgcSYOWXbWBjzmS+d42S6P1dk7AZ
+         nDOdG+CFI7rZTK7R/b8oZjt1057JFVBFny4lE+18vn+2kVTIFcT4Kkbvx0kyT85zfD1j
+         4G7YqDX+zqd8TBI5pvKjZCk6IL9lXmZ5YQWSQ2H6KQC5cLoe0i+rDIjMJfBpoUHsIfIG
+         8pCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :arc-authentication-results;
-        bh=znLr00WbAzQcN2t3FZn7Te6Gl5U2l9hgzeKWhZxw+oE=;
-        b=jId2kqL962P5xCg3g5Y/KHz0cDypTGT9TvqMpYKsfwz9ZSF8Zfj98fQtIXioeK46XI
-         LoZxobPMBASKCLpqTI7pCLzGIFw4FnOBB2eopXqnFLr8hYYxcEvh7SXUChjjoGnd2szM
-         Jrtkkp2Gzki6Iuiq/KBI+0yNc1vB/qNvA1Z0tv7itxhDHwUQgTLzluAF+cl36Rr0u4AW
-         /WME4YcBvaFESgYaL3VjgC5alnb1A4nso0/0W5iz9S6ZfHU3dCzr0fSQVnlCIMidq7Br
-         719CzBI5kBJGa270aexy7iRpeCG2qXsKXVhxr6XlKNq+JFYXiv1hon78C/VFZhOEssoe
-         JEOA==
+         :list-unsubscribe:list-id:precedence:subject:mime-version:references
+         :message-id:in-reply-to:to:from:date:arc-authentication-results;
+        bh=NV0jjXQPbk/w4gKPf22hqah9ajQDLvv9hyIZe/EWaw0=;
+        b=LwwxkQbeq5+zaopTwdX/w0vX+Z2pSssIDdmiK4KS7XD1MV9Slzurn0j1Qo2EJyUUEY
+         m+x1mgu7dEajDoyf1Tqv245s6DO5cvgpve+LUS9E+cx+eGFFAON4qocDwMbeKm7j9Iiy
+         UCC2ilaZ58+sF3AN7H9aoo+Wa3uuTTqapJY1WEOfibrPL17IxfuyEe1giSRZHqgRawRs
+         a0TaSNaHL0zM8FZNBia5A9VZ7Awwmuea/wCNevOFi7XrxvegLwHLjf1dotrSdCh9ToOl
+         yPekCuwuEH3pDTxzu7VGKSD1jzs/Z5hqH9ObIxSe38TP4XnPZWlueY8QgYUOO1XcRVQq
+         vAQA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u124si2625063yba.51.2017.11.11.00.11.31
+        by mx.google.com with ESMTPS id w13si2863207ywi.223.2017.11.11.00.13.33
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 11 Nov 2017 00:11:31 -0800 (PST)
+        Sat, 11 Nov 2017 00:13:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44790 helo=lists.gnu.org)
+Received: from localhost ([::1]:44793 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eDQt0-0006RF-M3
-	for alex.bennee@linaro.org; Sat, 11 Nov 2017 03:11:30 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45248)
+	id 1eDQuy-00075W-Lc
+	for alex.bennee@linaro.org; Sat, 11 Nov 2017 03:13:32 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45655)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ppandit@redhat.com>) id 1eDQsu-0006R7-9k
-	for qemu-arm@nongnu.org; Sat, 11 Nov 2017 03:11:25 -0500
+	(envelope-from <ppandit@redhat.com>) id 1eDQur-00075A-K0
+	for qemu-arm@nongnu.org; Sat, 11 Nov 2017 03:13:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ppandit@redhat.com>) id 1eDQsr-0006dj-32
-	for qemu-arm@nongnu.org; Sat, 11 Nov 2017 03:11:24 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:36514)
+	(envelope-from <ppandit@redhat.com>) id 1eDQuo-0007jx-64
+	for qemu-arm@nongnu.org; Sat, 11 Nov 2017 03:13:25 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:42376)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <ppandit@redhat.com>)
-	id 1eDQsq-0006dC-TD; Sat, 11 Nov 2017 03:11:21 -0500
+	id 1eDQun-0007jS-Un; Sat, 11 Nov 2017 03:13:22 -0500
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
 	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CD5A26A7E6;
-	Sat, 11 Nov 2017 08:11:18 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-27.ams2.redhat.com
-	[10.36.116.27])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 404375D6A5;
-	Sat, 11 Nov 2017 08:11:14 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 1445AC0587D3;
+	Sat, 11 Nov 2017 08:13:21 +0000 (UTC)
+Received: from javelin (ovpn-116-27.ams2.redhat.com [10.36.116.27])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 511B75D6A5;
+	Sat, 11 Nov 2017 08:13:18 +0000 (UTC)
+Date: Sat, 11 Nov 2017 13:43:14 +0530 (IST)
 From: P J P <ppandit@redhat.com>
-To: Qemu Developers <qemu-devel@nongnu.org>
-Date: Sat, 11 Nov 2017 13:41:11 +0530
-Message-Id: <20171111081111.32724-1-ppandit@redhat.com>
+X-X-Sender: pjp@javelin
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>
+In-Reply-To: <7441e865-c6d7-7fbf-3175-63ebdf7291e7@amsat.org>
+Message-ID: <nycvar.YSQ.7.76.1711111341320.32164@wniryva>
+References: <20171109115814.28232-1-ppandit@redhat.com>
+	<7441e865-c6d7-7fbf-3175-63ebdf7291e7@amsat.org>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="0-1605813237-1510388000=:32164"
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Sat, 11 Nov 2017 08:11:19 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.32]);
+	Sat, 11 Nov 2017 08:13:21 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v1] highbank: validate register offset before
+Subject: Re: [Qemu-arm] [PATCH] highbank: validate register offset before
  access
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -85,70 +90,34 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Prasad J Pandit <pjp@fedoraproject.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-arm@nongnu.org, Shawn Guo <shawn.guo@linaro.org>,
-	Moguofang <moguofang@huawei.com>
+Cc: Rob Herring <robh@kernel.org>, Peter Maydell <peter.maydell@linaro.org>,
+	Qemu Developers <qemu-devel@nongnu.org>, qemu-arm@nongnu.org,
+	Shawn Guo <shawn.guo@linaro.org>, Moguofang <moguofang@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5I2KDV1WfJbb
+X-TUID: srkYFpbOkAJF
 
-From: Prasad J Pandit <pjp@fedoraproject.org>
+--0-1605813237-1510388000=:32164
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-An 'offset' parameter sent to highbank register r/w functions
-could be greater than number(NUM_REGS=0x200) of hb registers,
-leading to an OOB access issue. Add check to avoid it.
+  Hello Philippe,
 
-Reported-by: Moguofang (Dennis mo) <moguofang@huawei.com>
-Signed-off-by: Prasad J Pandit <pjp@fedoraproject.org>
----
- hw/arm/highbank.c | 15 ++++++++++++++-
- 1 file changed, 14 insertions(+), 1 deletion(-)
++-- On Fri, 10 Nov 2017, Philippe Mathieu-Daud=C3=A9 wrote --+
+| I'd report that:
+|=20
+|            qemu_log_mask(LOG_UNIMP, ...
+|=20
+| Cc'ing Shawn & Rob since this might also be a LOG_GUEST_ERROR.
+|=20
+| Mixed declarations (interleaving statements and declarations within
+| blocks) are generally not allowed; declarations should be at the
+| beginning of blocks.
 
-Update: log error message(via qemu_log_mask) before returning
-  -> https://lists.gnu.org/archive/html/qemu-devel/2017-11/msg01914.html
+Done. Sent a revised patch v1.
 
-diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
-index 354c6b25a8..8494dc6a48 100644
---- a/hw/arm/highbank.c
-+++ b/hw/arm/highbank.c
-@@ -34,6 +34,7 @@
- #include "hw/ide/ahci.h"
- #include "hw/cpu/a9mpcore.h"
- #include "hw/cpu/a15mpcore.h"
-+#include "qemu/log.h"
- 
- #define SMP_BOOT_ADDR           0x100
- #define SMP_BOOT_REG            0x40
-@@ -117,14 +118,26 @@ static void hb_regs_write(void *opaque, hwaddr offset,
-         }
-     }
- 
-+    if (offset / 4 >= NUM_REGS) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "highbank: bad write offset 0x%x\n", (uint32_t)offset);
-+        return;
-+    }
-     regs[offset/4] = value;
- }
- 
- static uint64_t hb_regs_read(void *opaque, hwaddr offset,
-                              unsigned size)
- {
-+    uint32_t value;
-     uint32_t *regs = opaque;
--    uint32_t value = regs[offset/4];
-+
-+    if (offset / 4 >= NUM_REGS) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "highbank: bad read offset 0x%x\n", (uint32_t)offset);
-+        return 0;
-+    }
-+    value = regs[offset/4];
- 
-     if ((offset == 0x100) || (offset == 0x108) || (offset == 0x10C)) {
-         value |= 0x30000000;
--- 
-2.13.6
-
+Thank you.
+--
+Prasad J Pandit / Red Hat Product Security Team
+47AF CE69 3A90 54AA 9045 1053 DD13 3D32 FE5B 041F
+--0-1605813237-1510388000=:32164--

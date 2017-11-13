@@ -1,232 +1,279 @@
-Received: by 10.223.150.237 with SMTP id u100csp3539348wrb;
-        Tue, 14 Nov 2017 04:20:46 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMYo4om8xN99tnDPNq7VY62unevaXZOMxtsTUk6J+KgSDPMrgRbA1PL8sITOFqeOMefwreih
-X-Received: by 10.129.197.72 with SMTP id o8mr8332575ywj.164.1510662046786;
-        Tue, 14 Nov 2017 04:20:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510662046; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp2395119wrb;
+        Mon, 13 Nov 2017 04:31:19 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMaj9bUZFZtszc+H+gwBAX9OGVc3aXktF/laNqb8F79BIz6ta/ZnFRWkkBNIHQV49XiKvkQ7
+X-Received: by 10.37.189.83 with SMTP id p19mr5234016ybm.315.1510576279356;
+        Mon, 13 Nov 2017 04:31:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510576279; cv=none;
         d=google.com; s=arc-20160816;
-        b=V81hZBoWDe9GU3c0Z7fWj0f9CYywqqKC+OviVYlyBAG8yTZn1XnE59vr7z+Fecr2fY
-         eLzRYAzgcH6+exc+jITO9oPf+XXLanVhSdwY9ICe44qhChpybbkJWXwTiuaISfgRuMi+
-         DPxtAHBHxWMe1zkU+DABUdEA+FrMR85w4ygTSRkvB96DHTeGDdQxU1bXF1VY8uwJrB0K
-         ipeO2W4iTP5TEiyKaORcTT0RgMtUXsVJUcoGYseK0jOyHANH8la2cyj+x61GXGcraoV9
-         rykiH1y+gQ6wYZUwcVCLQpWAO9wZYPzcpus/U4Se3TVaf2iZQO1fEVwLc2GBKT0y70/Q
-         JtOg==
+        b=Fdqu/FB2klQHSoiqRS9MJzGJu/IwWo1O1AKCF1dhVtOiou2SX9NsJaCKidb0GmW1vH
+         EsTzMH+ODJUo6ivGiInLOua/O94oRdkNvyvzRX79DPXPnsJv00lI+5zrI8hN3f55AvsC
+         2Ei6NqAasGvnLKnffJsqPCrJJJmk26yXgeY9H/Fy7lsM41ZnxZ8lxOBzOCZAe8AGVSM3
+         gWhlNFyueqpnp6RTX+wmqm+Fn5aflTgQ224zlIgYMRVhdRMr30F5wSLqaRc+oUU/HBnC
+         o+qazz54CDv9SvHCyivpczS6mjImM0GxnIwyMB5gaTTRfJ7KNISW/pB/HZ5sRRT+W69m
+         SUwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=P9fuo2SjsH+Rf5FFCxFFGIb1idNLCikX3ZIdoG3Wg8k=;
-        b=ivj2OjdPlr0Xaphqwl08bEPWyDPMFqBYqAw46kE7WV2/XxC0V+IjI+8Sk4DqkTxHVy
-         oHnCk6xMLM7XwM5FfatpA9kEYgd9H3vdckd9OQlG4Pz1Rlycw2/OFapCUpakewSKNxt1
-         rf76WSeITynLjETeN7Wv7eRxm2bo0JniRdwljbh4EmjDWKtBgUh+A5tEa8v4HnPyYT3l
-         pHH8b5IyhEQJkEhUg+BWq2Er0Sj7kK/QrRsgyEf54o7eOJ3mUuHA9HCQ5mbfivqqtxNs
-         z++HY2iMKxczk9zCBaUyBX3u4ar8D/b8m2AWnk5y5vL+Ol76+vSiMzUnjPBOaaMTfdBg
-         7Rcg==
+         :list-unsubscribe:list-id:precedence:subject:mime-version:references
+         :in-reply-to:message-id:date:to:from:arc-authentication-results;
+        bh=drnovajfDAxBJL2jxrrb6OmftiSuLHwwrqFkAY+B6UA=;
+        b=HIFbaQh1re3GeD0y2+lj4CP4hESIPMvS8ds4zML1uTvXu7R7FGz/ccetstQDdcvYwZ
+         AKmsnWQInVmQYuXS52mWVNFUiI8BeTJrej0b4I36KYc1behUX4Ap4nZgI3Lh/hZi4jxl
+         Lr48fwM3ka4kYM1oZu4USGIY8X1evFdQ+j9NG9vRYMVtIod22EB217ZchhmSbw3yglTm
+         ffriFCAGY2iZL9kirV68LOZAmiNa4kYLIkLrA38uC29M2q06O/goCuraYXpHjN7V6yGH
+         TfOj1/G3HduVwkgpcPACO9Of5UEHe+XE4XAomU+5DsC36BGhoY7YcOYA1vFI07PlHDTV
+         1eGg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HWzKlX/B;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s63si4091842yba.592.2017.11.14.04.20.46
+        by mx.google.com with ESMTPS id i185si3801677ywf.546.2017.11.13.04.31.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 14 Nov 2017 04:20:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 13 Nov 2017 04:31:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HWzKlX/B;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:59168 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:53968 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eEaCs-0001oi-6F
-	for alex.bennee@linaro.org; Tue, 14 Nov 2017 07:20:46 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54336)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eEDtW-0007QI-OY
+	for alex.bennee@linaro.org; Mon, 13 Nov 2017 07:31:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44515)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1eEaCg-0001oS-KL
-	for qemu-arm@nongnu.org; Tue, 14 Nov 2017 07:20:35 -0500
+	(envelope-from <zhuyijun@huawei.com>) id 1eEDs1-0006cW-S2
+	for qemu-devel@nongnu.org; Mon, 13 Nov 2017 07:29:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1eEaCc-0007RN-7H
-	for qemu-arm@nongnu.org; Tue, 14 Nov 2017 07:20:34 -0500
-Received: from mail-pg0-x241.google.com ([2607:f8b0:400e:c05::241]:52716)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
-	id 1eEaCb-0007Qt-V3; Tue, 14 Nov 2017 07:20:30 -0500
-Received: by mail-pg0-x241.google.com with SMTP id j16so9701294pgn.9;
-	Tue, 14 Nov 2017 04:20:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id;
-	bh=P9fuo2SjsH+Rf5FFCxFFGIb1idNLCikX3ZIdoG3Wg8k=;
-	b=HWzKlX/BsJj+99Q1EbbOgGCI1HvWra0rBslNbuzwD5aHxrrOuUfJFbRiDeoR2n+HW9
-	gLUxtaa9nGtc+gw7tNUYk/fmS7T/yinuSEUs+eOr7yFrO2gB6mfxIa6HtNrWxS6G7BJE
-	JdxDQ9h4NTl6w7Ohldqh/n4DZWlsGiPjUhFNbvK501l/+HGnGwBF1Ogkm0fMiHqUPVEs
-	J2kKHI/GjKwPxkWfyBZ7EzvWk8RA796iudQcngbv13wt5yUZFUF3tumYt0ZQ4m/JtpwF
-	iBcOWk4ysy39gAYbSWF5aIU/gEOg0RtSJ/pqWPMECdgF5BYhP25nXGWaxGNTSao29ESW
-	t7QA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
-	bh=P9fuo2SjsH+Rf5FFCxFFGIb1idNLCikX3ZIdoG3Wg8k=;
-	b=em1Jc9erm1J1HeSvjHwC78fIm7aotBBxt/dZtT/VV4ftz8uRpGAYfFBUq1vTjAaMo3
-	45PNyp2FFt9D8lMb6YKSY0OCm54G4VL6LnLfkyAlZqz+uvXMfpn1jKj5eLnsVROWJ3Ly
-	p8FjEFzQGU3iOWYQM8VDGbwOEE3ffrq00114OfDtNxCCDJUnSIofWrEWJN5yzxqmCgxT
-	UsZ3BztTGez7+q9JynyAZngZkgBD9HNQMAG4gexQB29xOtMN/cuNYhZOOrp7/OmAakuz
-	oiz3ffzRUkI2BchnEP0flAhMIVsp9U7ByOQ+DCiowbkErkzqrGxPeAEXwPpMOY/giqvl
-	WyZA==
-X-Gm-Message-State: AJaThX5i2Q2xaT8JDPZgj57zRx6jrSd8XUjtvpGhTaC7r9Wg2HCvchNh
-	+cgsXsTfOrBwLCcVLoi0FHA=
-X-Received: by 10.99.47.6 with SMTP id v6mr11919404pgv.452.1510662028848;
-	Tue, 14 Nov 2017 04:20:28 -0800 (PST)
-Received: from aurora.jms.id.au ([45.124.203.19])
-	by smtp.gmail.com with ESMTPSA id
-	125sm36335592pff.14.2017.11.14.04.20.23
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 14 Nov 2017 04:20:27 -0800 (PST)
-Received: by aurora.jms.id.au (sSMTP sendmail emulation);
-	Tue, 14 Nov 2017 22:50:19 +1030
-From: Joel Stanley <joel@jms.id.au>
-To: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 14 Nov 2017 22:50:18 +1030
-Message-Id: <20171114122018.12204-1-joel@jms.id.au>
-X-Mailer: git-send-email 2.14.1
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c05::241
-Subject: [Qemu-arm] [PATCH v3] hw/arm/aspeed: Unlock SCU when running kernel
-X-BeenThere: qemu-arm@nongnu.org
+	(envelope-from <zhuyijun@huawei.com>) id 1eEDrx-0000kZ-3T
+	for qemu-devel@nongnu.org; Mon, 13 Nov 2017 07:29:45 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2346)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
+	(envelope-from <zhuyijun@huawei.com>)
+	id 1eEDrw-0000hb-7j; Mon, 13 Nov 2017 07:29:41 -0500
+Received: from 172.30.72.60 (EHLO DGGEMS406-HUB.china.huawei.com)
+	([172.30.72.60])
+	by dggrg04-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
+	with ESMTP id DKT03136; Mon, 13 Nov 2017 20:29:31 +0800 (CST)
+Received: from localhost (10.177.27.25) by DGGEMS406-HUB.china.huawei.com
+	(10.3.19.206) with Microsoft SMTP Server id 14.3.361.1; Mon, 13 Nov 2017
+	20:29:22 +0800
+From: <zhuyijun@huawei.com>
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>
+Date: Mon, 13 Nov 2017 20:29:03 +0800
+Message-ID: <1510576145-23084-4-git-send-email-zhuyijun@huawei.com>
+X-Mailer: git-send-email 1.8.4.msysgit.0
+In-Reply-To: <1510576145-23084-1-git-send-email-zhuyijun@huawei.com>
+References: <1510576145-23084-1-git-send-email-zhuyijun@huawei.com>
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Originating-IP: [10.177.27.25]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020205.5A09902C.006B, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2014-11-16 11:51:01, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 8197e73b3ca87d9a208b7667f2e25e04
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+	[fuzzy]
+X-Received-From: 45.249.212.190
+Subject: [Qemu-devel] [RFC 3/5] hw/arm: add scattered RAM memory region
+ support
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: C1tm2dA3awPB
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, shameerali.kolothum.thodi@huawei.com,
+	zhaoshenglong@huawei.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: a8enmLrK/BDH
 
-The ASPEED hardware contains a lock register for the SCU that disables
-any writes to the SCU when it is locked. The machine comes up with the
-lock enabled, but on all known hardware u-boot will unlock it and leave
-it unlocked when loading the kernel.
+From: Zhu Yijun <zhuyijun@huawei.com>
 
-This means the kernel expects the SCU to be unlocked. When booting from
-an emulated ROM the normal u-boot unlock path is executed. Things don't
-go well when booting using the -kernel command line, as u-boot does not
-run first.
+Dig out reserved memory holes and collect scattered RAM memory
+regions by adding mem_list member in arm_boot_info struct.
 
-Change behaviour so that when a kernel is passed to the machine, set the
-reset value of the SCU to be unlocked.
-
-Signed-off-by: Joel Stanley <joel@jms.id.au>
+Signed-off-by: Zhu Yijun <zhuyijun@huawei.com>
 ---
-v3:
- - remove unused member from AspeedBoardConfig
-v2:
- - use the correct value for the key
- - rename it ASPEED_SCU_PROT_KEY
----
- hw/arm/aspeed.c              | 9 +++++++++
- hw/arm/aspeed_soc.c          | 2 ++
- hw/misc/aspeed_scu.c         | 5 +++--
- include/hw/misc/aspeed_scu.h | 3 +++
- 4 files changed, 17 insertions(+), 2 deletions(-)
+ hw/arm/boot.c        |   8 ++++
+ hw/arm/virt.c        | 101 ++++++++++++++++++++++++++++++++++++++++++++++++++-
+ include/hw/arm/arm.h |   1 +
+ 3 files changed, 108 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index ab895ad490af..7088c907bd23 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -186,6 +186,15 @@ static void aspeed_board_init(MachineState *machine,
-                             &error_abort);
-     object_property_set_int(OBJECT(&bmc->soc), cfg->num_cs, "num-cs",
-                             &error_abort);
-+    if (machine->kernel_filename) {
-+        /*
-+         * When booting with a -kernel command line there is no u-boot
-+         * that runs to unlock the SCU. In this case set the default to
-+         * be unlocked as the kernel expects
-+         */
-+        object_property_set_int(OBJECT(&bmc->soc), ASPEED_SCU_PROT_KEY,
-+                                "hw-prot-key", &error_abort);
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index c2720c8..30438f4 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -836,6 +836,14 @@ static void arm_load_kernel_notify(Notifier *notifier, void *data)
+      */
+     assert(!(info->secure_board_setup && kvm_enabled()));
+ 
++    /* If machine is not virt, the mem_list will empty. */
++    if (QLIST_EMPTY(&vms->bootinfo.mem_list)) {
++        RAMRegion *new = g_new(RAMRegion, 1);
++        new->base = info->loader_start;
++        new->size = info->ram_size;
++        QLIST_INSERT_HEAD(&vms->bootinfo.mem_list, new, next);
 +    }
-     object_property_set_bool(OBJECT(&bmc->soc), true, "realized",
-                              &error_abort);
++
+     info->dtb_filename = qemu_opt_get(qemu_get_machine_opts(), "dtb");
  
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index 5aa3d2ddd9cd..c83b7e207b86 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -154,6 +154,8 @@ static void aspeed_soc_init(Object *obj)
-                               "hw-strap1", &error_abort);
-     object_property_add_alias(obj, "hw-strap2", OBJECT(&s->scu),
-                               "hw-strap2", &error_abort);
-+    object_property_add_alias(obj, "hw-prot-key", OBJECT(&s->scu),
-+                              "hw-prot-key", &error_abort);
+     /* Load the kernel.  */
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index ddde5e1..ff334c1 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -56,6 +56,7 @@
+ #include "hw/smbios/smbios.h"
+ #include "qapi/visitor.h"
+ #include "standard-headers/linux/input.h"
++#include "hw/vfio/vfio-common.h"
  
-     object_initialize(&s->fmc, sizeof(s->fmc), sc->info->fmc_typename);
-     object_property_add_child(obj, "fmc", OBJECT(&s->fmc), NULL);
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index 95022d3607ad..74537ce9755d 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -85,7 +85,6 @@
- #define BMC_REV              TO_REG(0x19C)
- #define BMC_DEV_ID           TO_REG(0x1A4)
- 
--#define PROT_KEY_UNLOCK 0x1688A8A8
- #define SCU_IO_REGION_SIZE 0x1000
- 
- static const uint32_t ast2400_a0_resets[ASPEED_SCU_NR_REGS] = {
-@@ -192,7 +191,7 @@ static void aspeed_scu_write(void *opaque, hwaddr offset, uint64_t data,
-     }
- 
-     if (reg > PROT_KEY && reg < CPU2_BASE_SEG1 &&
--            s->regs[PROT_KEY] != PROT_KEY_UNLOCK) {
-+            s->regs[PROT_KEY] != ASPEED_SCU_PROT_KEY) {
-         qemu_log_mask(LOG_GUEST_ERROR, "%s: SCU is locked!\n", __func__);
-         return;
-     }
-@@ -246,6 +245,7 @@ static void aspeed_scu_reset(DeviceState *dev)
-     s->regs[SILICON_REV] = s->silicon_rev;
-     s->regs[HW_STRAP1] = s->hw_strap1;
-     s->regs[HW_STRAP2] = s->hw_strap2;
-+    s->regs[PROT_KEY] = s->hw_prot_key;
+ #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
+     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
+@@ -1225,6 +1226,98 @@ void virt_machine_done(Notifier *notifier, void *data)
+     virt_build_smbios(vms);
  }
  
- static uint32_t aspeed_silicon_revs[] = {
-@@ -299,6 +299,7 @@ static Property aspeed_scu_properties[] = {
-     DEFINE_PROP_UINT32("silicon-rev", AspeedSCUState, silicon_rev, 0),
-     DEFINE_PROP_UINT32("hw-strap1", AspeedSCUState, hw_strap1, 0),
-     DEFINE_PROP_UINT32("hw-strap2", AspeedSCUState, hw_strap2, 0),
-+    DEFINE_PROP_UINT32("hw-prot-key", AspeedSCUState, hw_prot_key, 0),
-     DEFINE_PROP_END_OF_LIST(),
++static void handle_reserved_ram_region_overlap(void)
++{
++    hwaddr cur_end, next_end;
++    RAMRegion *reg, *next_reg, *tmp_reg;
++
++    QLIST_FOREACH(reg, &reserved_ram_regions, next) {
++        next_reg = QLIST_NEXT(reg, next);
++
++        while (next_reg && next_reg->base <= (reg->base + reg->size)) {
++            next_end = next_reg->base + next_reg->size;
++            cur_end = reg->base + reg->size;
++            if (next_end > cur_end) {
++                reg->size += (next_end - cur_end);
++            }
++
++            tmp_reg = QLIST_NEXT(next_reg, next);
++            QLIST_REMOVE(next_reg, next);
++            g_free(next_reg);
++            next_reg = tmp_reg;
++        }
++    }
++}
++
++static void update_memory_regions(VirtMachineState *vms, hwaddr ram_size)
++{
++
++    RAMRegion *new, *reg, *last = NULL;
++    hwaddr virt_start, virt_end;
++    virt_start = vms->memmap[VIRT_MEM].base;
++    virt_end = virt_start + ram_size - 1;
++
++    handle_reserved_ram_region_overlap();
++
++    QLIST_FOREACH(reg, &reserved_ram_regions, next) {
++        if (reg->base >= virt_start && reg->base < virt_end) {
++            if (reg->base == virt_start) {
++                virt_start += reg->size;
++                virt_end += reg->size;
++                continue;
++            } else {
++                new = g_new(RAMRegion, 1);
++                new->base = virt_start;
++                new->size = reg->base - virt_start;
++                virt_start = reg->base + reg->size;
++            }
++
++            if (QLIST_EMPTY(&vms->bootinfo.mem_list)) {
++                QLIST_INSERT_HEAD(&vms->bootinfo.mem_list, new, next);
++            } else {
++                QLIST_INSERT_AFTER(last, new, next);
++            }
++
++            last = new;
++            ram_size -= new->size;
++            virt_end += reg->size;
++        }
++    }
++
++    if (ram_size > 0) {
++        new = g_new(RAMRegion, 1);
++        new->base = virt_start;
++        new->size = ram_size;
++
++        if (QLIST_EMPTY(&vms->bootinfo.mem_list)) {
++            QLIST_INSERT_HEAD(&vms->bootinfo.mem_list, new, next);
++        } else {
++            QLIST_INSERT_AFTER(last, new, next);
++        }
++    }
++}
++
++static void create_ram_alias(VirtMachineState *vms,
++                             MemoryRegion *sysmem,
++                             MemoryRegion *ram)
++{
++    RAMRegion *reg;
++    MemoryRegion *ram_memory;
++    char *nodename;
++    hwaddr sz = 0;
++
++    QLIST_FOREACH(reg, &vms->bootinfo.mem_list, next) {
++        nodename = g_strdup_printf("ram@%" PRIx64, reg->base);
++        ram_memory = g_new(MemoryRegion, 1);
++        memory_region_init_alias(ram_memory, NULL, nodename, ram, sz,
++                                 reg->size);
++        memory_region_add_subregion(sysmem, reg->base, ram_memory);
++        sz += reg->size;
++
++        g_free(nodename);
++    }
++}
++
+ static void virt_ram_memory_region_init(Notifier *notifier, void *data)
+ {
+     MachineState *machine = MACHINE(qdev_get_machine());
+@@ -1232,10 +1325,15 @@ static void virt_ram_memory_region_init(Notifier *notifier, void *data)
+     MemoryRegion *ram = g_new(MemoryRegion, 1);
+     VirtMachineState *vms = container_of(notifier, VirtMachineState,
+                                          ram_memory_region_init);
++    RAMRegion *first_mem_reg;
+ 
+     memory_region_allocate_system_memory(ram, NULL, "mach-virt.ram",
+                                          machine->ram_size);
+-    memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base, ram);
++    update_memory_regions(vms, machine->ram_size);
++    create_ram_alias(vms, sysmem, ram);
++
++    first_mem_reg = QLIST_FIRST(&vms->bootinfo.mem_list);
++    vms->bootinfo.loader_start = first_mem_reg->base;
+ }
+ 
+ static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
+@@ -1458,7 +1556,6 @@ static void machvirt_init(MachineState *machine)
+     vms->bootinfo.initrd_filename = machine->initrd_filename;
+     vms->bootinfo.nb_cpus = smp_cpus;
+     vms->bootinfo.board_id = -1;
+-    vms->bootinfo.loader_start = vms->memmap[VIRT_MEM].base;
+     vms->bootinfo.get_dtb = machvirt_dtb;
+     vms->bootinfo.firmware_loaded = firmware_loaded;
+     arm_load_kernel(ARM_CPU(first_cpu), &vms->bootinfo);
+diff --git a/include/hw/arm/arm.h b/include/hw/arm/arm.h
+index ce769bd..d953026 100644
+--- a/include/hw/arm/arm.h
++++ b/include/hw/arm/arm.h
+@@ -124,6 +124,7 @@ struct arm_boot_info {
+     bool secure_board_setup;
+ 
+     arm_endianness endianness;
++    QLIST_HEAD(, RAMRegion) mem_list;
  };
  
-diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
-index bd4ac013f997..d70cc0aeca61 100644
---- a/include/hw/misc/aspeed_scu.h
-+++ b/include/hw/misc/aspeed_scu.h
-@@ -29,6 +29,7 @@ typedef struct AspeedSCUState {
-     uint32_t silicon_rev;
-     uint32_t hw_strap1;
-     uint32_t hw_strap2;
-+    uint32_t hw_prot_key;
- } AspeedSCUState;
- 
- #define AST2400_A0_SILICON_REV   0x02000303U
-@@ -38,6 +39,8 @@ typedef struct AspeedSCUState {
- 
- extern bool is_supported_silicon_rev(uint32_t silicon_rev);
- 
-+#define ASPEED_SCU_PROT_KEY      0x1688A8A8
-+
- /*
-  * Extracted from Aspeed SDK v00.03.21. Fixes and extra definitions
-  * were added.
+ /**
 -- 
-2.14.1
+1.8.3.1
+
 

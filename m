@@ -1,199 +1,83 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id f132sm5275336wmf.38.2017.11.13.09.12.19
+        by smtp.gmail.com with ESMTPSA id r63sm5271431wmg.13.2017.11.13.09.16.57
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 13 Nov 2017 09:12:19 -0800 (PST)
+        Mon, 13 Nov 2017 09:16:57 -0800 (PST)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 6907A3E009E;
-	Mon, 13 Nov 2017 17:12:19 +0000 (GMT)
-References: <20171004184325.24157-1-richard.henderson@linaro.org> <20171004184325.24157-10-richard.henderson@linaro.org>
+	by zen.linaro.local (Postfix) with ESMTPS id 62F6A3E009E;
+	Mon, 13 Nov 2017 17:16:57 +0000 (GMT)
+References: <20171004184325.24157-1-richard.henderson@linaro.org>
 User-agent: mu4e 1.0-alpha2; emacs 26.0.90
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: Re: [Qemu-devel] [PATCH v1 09/12] target/arm: Decode aa64 armv8.3 fcadd
-In-reply-to: <20171004184325.24157-10-richard.henderson@linaro.org>
-Date: Mon, 13 Nov 2017 17:12:19 +0000
-Message-ID: <87o9o69k7g.fsf@linaro.org>
+Subject: Re: [Qemu-arm] [PATCH v1 00/12] ARM v8.1 simd + v8.3 complex insns
+In-reply-to: <20171004184325.24157-1-richard.henderson@linaro.org>
+Date: Mon, 13 Nov 2017 17:16:57 +0000
+Message-ID: <87mv3q9jzq.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: RsgfJJYREQYt
+X-TUID: hkEu/+zBoGCi
 
 
 Richard Henderson <richard.henderson@linaro.org> writes:
 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> This patch set depends on v3 of native-vector-registers;
+> for ease of review the whole tree is at
+>
+>   git://github.com/rth7680/qemu.git tgt-arm-cplx
+>
+> I have successfully tested all insns for AArch64 via RISU.
+> I have successfully tested everything but VCMLA for AArch32.
+>
+> The insn that doesn't match up is
+>
+>   fef3c848  vcmla.f32  q14, <illegal reg q1.5>, d8[0], #270
+>
+> for which FoundationModel is *not* signalling illegal insn.
+> I'm not really sure what it is doing -- perhaps treating the
+> insn as a coprocessor 8 nop?  I'll have to investigate further.
+>
+> In the meantime, it's surely time for a round 1 review.
 
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+OK I'm done with round 1 review, I skipped past the later complex
+instructions as I don't have access to the 8.3 ARM ARM yet (although the
+instructions are in the ASL HTML dumps).
 
-> ---
->  target/arm/helper.h         |  5 ++++
->  target/arm/advsimd_helper.c | 66 +++++++++++++++++++++++++++++++++++++++=
-++++++
->  target/arm/translate-a64.c  | 33 ++++++++++++++++++++++-
->  3 files changed, 103 insertions(+), 1 deletion(-)
->
-> diff --git a/target/arm/helper.h b/target/arm/helper.h
-> index 67583b3c2e..350e2fa0e1 100644
-> --- a/target/arm/helper.h
-> +++ b/target/arm/helper.h
-> @@ -551,6 +551,11 @@ DEF_HELPER_FLAGS_5(gvec_qrdmlah_s32, TCG_CALL_NO_RWG,
->  DEF_HELPER_FLAGS_5(gvec_qrdmlsh_s32, TCG_CALL_NO_RWG,
->                     void, ptr, ptr, ptr, ptr, i32)
->
-> +DEF_HELPER_FLAGS_5(gvec_fcadds, TCG_CALL_NO_RWG,
-> +                   void, ptr, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_5(gvec_fcaddd, TCG_CALL_NO_RWG,
-> +                   void, ptr, ptr, ptr, ptr, i32)
-> +
->  #ifdef TARGET_AARCH64
->  #include "helper-a64.h"
->  #endif
-> diff --git a/target/arm/advsimd_helper.c b/target/arm/advsimd_helper.c
-> index b0f4b02a12..fe2e0cbcef 100644
-> --- a/target/arm/advsimd_helper.c
-> +++ b/target/arm/advsimd_helper.c
-> @@ -24,6 +24,18 @@
->  #include "tcg/tcg-gvec-desc.h"
 >
 >
-> +/* Note that vector data is stored in host-endian 64-bit chunks,
-> +   so addressing units smaller than that needs a host-endian fixup.  */
-> +#ifdef HOST_WORDS_BIGENDIAN
-> +#define H1(x)  ((x) ^ 7)
-> +#define H2(x)  ((x) ^ 3)
-> +#define H4(x)  ((x) ^ 1)
-> +#else
-> +#define H1(x)  (x)
-> +#define H2(x)  (x)
-> +#define H4(x)  (x)
-> +#endif
-> +
->  #define SET_QC() env->vfp.xregs[ARM_VFP_FPSCR] |=3D CPSR_Q
+> r~
 >
->  static void clear_tail(void *vd, uintptr_t opr_sz, uintptr_t max_sz)
-> @@ -177,3 +189,57 @@ void HELPER(gvec_qrdmlsh_s32)(void *vd, void *vn, vo=
-id *vm,
->      }
->      clear_tail(d, opr_sz, simd_maxsz(desc));
->  }
-> +
-> +void HELPER(gvec_fcadds)(void *vd, void *vn, void *vm,
-> +                         void *vfpst, uint32_t desc)
-> +{
-> +    uintptr_t opr_sz =3D simd_oprsz(desc);
-> +    float32 *d =3D vd;
-> +    float32 *n =3D vn;
-> +    float32 *m =3D vm;
-> +    float_status *fpst =3D vfpst;
-> +    uint32_t neg_real =3D extract32(desc, SIMD_DATA_SHIFT, 1);
-> +    uint32_t neg_imag =3D neg_real ^ 1;
-> +    uintptr_t i;
-> +
-> +    neg_real <<=3D 31;
-> +    neg_imag <<=3D 31;
-> +
-> +    for (i =3D 0; i < opr_sz / 4; i +=3D 2) {
-> +        float32 e0 =3D n[H4(i)];
-> +        float32 e1 =3D m[H4(i + 1)] ^ neg_imag;
-> +        float32 e2 =3D n[H4(i + 1)];
-> +        float32 e3 =3D m[H4(i)] ^ neg_real;
-> +
-> +        d[H4(i)] =3D float32_add(e0, e1, fpst);
-> +        d[H4(i + 1)] =3D float32_add(e2, e3, fpst);
-> +    }
-> +    clear_tail(d, opr_sz, simd_maxsz(desc));
-> +}
-> +
-> +void HELPER(gvec_fcaddd)(void *vd, void *vn, void *vm,
-> +                         void *vfpst, uint32_t desc)
-> +{
-> +    uintptr_t opr_sz =3D simd_oprsz(desc);
-> +    float64 *d =3D vd;
-> +    float64 *n =3D vn;
-> +    float64 *m =3D vm;
-> +    float_status *fpst =3D vfpst;
-> +    uint64_t neg_real =3D extract64(desc, SIMD_DATA_SHIFT, 1);
-> +    uint64_t neg_imag =3D neg_real ^ 1;
-> +    uintptr_t i;
-> +
-> +    neg_real <<=3D 63;
-> +    neg_imag <<=3D 63;
-> +
-> +    for (i =3D 0; i < opr_sz / 8; i +=3D 2) {
-> +        float64 e0 =3D n[i];
-> +        float64 e1 =3D m[i + 1] ^ neg_imag;
-> +        float64 e2 =3D n[i + 1];
-> +        float64 e3 =3D m[i] ^ neg_real;
-> +
-> +        d[i] =3D float64_add(e0, e1, fpst);
-> +        d[i + 1] =3D float64_add(e2, e3, fpst);
-> +    }
-> +    clear_tail(d, opr_sz, simd_maxsz(desc));
-> +}
-> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-> index b02aad8cd7..f13a945c43 100644
-> --- a/target/arm/translate-a64.c
-> +++ b/target/arm/translate-a64.c
-> @@ -9890,7 +9890,8 @@ static void disas_simd_three_reg_same_extra(DisasCo=
-ntext *s, uint32_t insn)
->      int size =3D extract32(insn, 22, 2);
->      bool u =3D extract32(insn, 29, 1);
->      bool is_q =3D extract32(insn, 30, 1);
-> -    int feature;
-> +    int feature, data;
-> +    TCGv_ptr fpst;
 >
->      if (!u) {
->          unallocated_encoding(s);
-> @@ -9906,6 +9907,14 @@ static void disas_simd_three_reg_same_extra(DisasC=
-ontext *s, uint32_t insn)
->          }
->          feature =3D ARM_FEATURE_V8_1_SIMD;
->          break;
-> +    case 0xc: /* FCADD, #90 */
-> +    case 0xe: /* FCADD, #270 */
-> +        if (size !=3D 2 && (size !=3D 3 || !is_q)) { /* FIXME: fp16 supp=
-ort */
-> +            unallocated_encoding(s);
-> +            return;
-> +        }
-> +        feature =3D ARM_FEATURE_V8_FCMA;
-> +        break;
->      default:
->          unallocated_encoding(s);
->          return;
-> @@ -9952,6 +9961,28 @@ static void disas_simd_three_reg_same_extra(DisasC=
-ontext *s, uint32_t insn)
->                             0, fn_gvec_ptr);
->          break;
+> Richard Henderson (12):
+>   HACK: use objdump disas
+>   target/arm: Add ARM_FEATURE_V8_1_SIMD
+>   target/arm: Decode aa64 armv8.1 scalar three same extra
+>   target/arm: Decode aa64 armv8.1 three same extra
+>   target/arm: Decode aa64 armv8.1 scalar/vector x indexed element
+>   target/arm: Decode aa32 armv8.1 three same
+>   target/arm: Decode aa32 armv8.1 two reg and a scalar
+>   target/arm: Add ARM_FEATURE_V8_FCMA
+>   target/arm: Decode aa64 armv8.3 fcadd
+>   target/arm: Decode aa64 armv8.3 fcmla
+>   target/arm: Decode aa32 armv8.3 3-same
+>   target/arm: Decode aa32 armv8.3 2-reg-index
 >
-> +    case 0xc: /* FCADD, #90 */
-> +    case 0xe: /* FCADD, #270 */
-> +        switch (size) {
-> +        case 2:
-> +            fn_gvec_ptr =3D gen_helper_gvec_fcadds;
-> +            break;
-> +        case 3:
-> +            fn_gvec_ptr =3D gen_helper_gvec_fcaddd;
-> +            break;
-> +        default:
-> +            g_assert_not_reached();
-> +        }
-> +        data =3D extract32(opcode, 1, 1);
-> +        fpst =3D get_fpstatus_ptr();
-> +        tcg_gen_gvec_3_ptr(vec_full_reg_offset(s, rd),
-> +                           vec_full_reg_offset(s, rn),
-> +                           vec_full_reg_offset(s, rm), fpst,
-> +                           is_q ? 16 : 8, vec_full_reg_size(s),
-> +                           data, fn_gvec_ptr);
-> +        tcg_temp_free_ptr(fpst);
-> +        break;
-> +
->      default:
->          g_assert_not_reached();
->      }
+>  target/arm/cpu.h            |   2 +
+>  target/arm/helper.h         |  26 ++++
+>  disas.c                     |   2 +-
+>  linux-user/elfload.c        |  10 ++
+>  target/arm/advsimd_helper.c | 331 ++++++++++++++++++++++++++++++++++++++=
++++
+>  target/arm/cpu.c            |   2 +
+>  target/arm/cpu64.c          |   2 +
+>  target/arm/translate-a64.c  | 350 ++++++++++++++++++++++++++++++++++++++=
++-----
+>  target/arm/translate.c      | 241 +++++++++++++++++++++++++++---
+>  target/arm/Makefile.objs    |   2 +-
+>  10 files changed, 912 insertions(+), 56 deletions(-)
+>  create mode 100644 target/arm/advsimd_helper.c
 
 
 --

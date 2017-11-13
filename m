@@ -1,287 +1,89 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id c12sm11553940wrc.92.2017.11.13.08.41.17
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 13 Nov 2017 08:41:17 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 31A6F3E00A0;
-	Mon, 13 Nov 2017 16:41:10 +0000 (GMT)
-References: <20171004184325.24157-1-richard.henderson@linaro.org> <20171004184325.24157-5-richard.henderson@linaro.org>
-User-agent: mu4e 1.0-alpha2; emacs 26.0.90
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: Re: [Qemu-devel] [PATCH v1 04/12] target/arm: Decode aa64 armv8.1 three same extra
-In-reply-to: <20171004184325.24157-5-richard.henderson@linaro.org>
-Date: Mon, 13 Nov 2017 16:41:10 +0000
-Message-ID: <87vaie9lnd.fsf@linaro.org>
+Received: by 10.223.150.237 with SMTP id u100csp2643193wrb;
+        Mon, 13 Nov 2017 08:42:41 -0800 (PST)
+X-Received: by 10.223.132.101 with SMTP id 92mr7503766wrf.85.1510591361477;
+        Mon, 13 Nov 2017 08:42:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510591361; cv=none;
+        d=google.com; s=arc-20160816;
+        b=T1HRFQ6fFKH490zuHnPjz4AnYVGrjJ/Fmtr7x1QALAN2wxTRrwmYCJ8C/bZJJrILYb
+         2rQhyrlOS8MIf0luTeX+ZetYLfRnIdIdNGYoQw2Rq8pEtuHeyZb9m8QIZKwXm+WVEABG
+         /2XhZEABn+3U9yi8RJu90G0+5REBic5mnZHP/BrDWt5pGA39anYYtiUntnMueb7psF+P
+         Rxj6i9vE0Jc+IEtTN5fbjhUlLSIXxv14cXlt6TZKFKIU1do3a8hvrfobw0/eF4bRvNB0
+         XdIu/jvk4heAO+bq35huQ/pNDvwcROxMnOUx/mfgiGzSocsLXa0xPcv1S2yWROSINlcj
+         AUrw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=U4zVyYE7imONliBbeVyKx9E5oZxiBLcRVNZoao232tQ=;
+        b=uqcn4g8vo2I3AL4NkgCGLLeivIf2ti8o4jjjRbytIQQk1rQuNxN53V2UHFrY51ss4m
+         6QULeoQr3y/d4UghYDCNFyKsqscO1rKTVRlTpy09q7eqSaJmOcrSFw472l1rkPJll1hk
+         Z4+DSnHTX4ChW/S3Ze+v9IfzVpcae+CSgf9dqKbZLt/96iUMUOqFKGUws2/8yoi8SMvu
+         RVTfeXGj5uCv+cTHn1z2dKPid/y4i5SRF5zAUTupODATcKJ0n8d/QVBliGyzjoFLnhzc
+         JabSfeXkYOOM48yHB+ClRA8K48dzYz254Qd1a00U1sBlmiBMmSYq3FlNI9m5e95k6vmI
+         tBlQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=IOzcz4YS;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id q18sor6100389wre.11.2017.11.13.08.42.41
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Mon, 13 Nov 2017 08:42:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=IOzcz4YS;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=U4zVyYE7imONliBbeVyKx9E5oZxiBLcRVNZoao232tQ=;
+        b=IOzcz4YSzHJCWVzRcwP24l9CWdA48kXCd/a5CAu/vr46YN7VtE/eWTjtGfQ/bJUvrp
+         zHSjBzgM87BwC3VndA5GlLtIDr+eDxIjTnY7rMSdKpxg9VOy7Fpy/FJywbyoSIWi6bpm
+         8yaR/zC/pCSQD7THoARj8I+fis98ihbzrOYBg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=U4zVyYE7imONliBbeVyKx9E5oZxiBLcRVNZoao232tQ=;
+        b=XXoWzqBntCNGfOB7ylqZN/vj3/9OiEk6aG1SuemXhQVV4Vk6quGH2ebRZp3asMrxVA
+         bwwJmVtZVedwHcSo4c8uqhNowAiGliIyJIYvLtWbRPhaDFQaQNYqigIC8yqBcowWh6QC
+         0swVpgAiY+MXEcbUMAO9g2FjxEvnzc4yL8aWD7Vevhtbjab1XRFcWgUueuxPiYD5/Xeq
+         vl4JnIIrvH1qr12QaTBGlHdwqoiFUGcumCckrJzMeJjwP0NE43zg6V0j2u+h5CZGZOA2
+         YA2Wo0Nb5F0tZr+MtsDEb6mnc/EgiyQstCe5aMSLeTSR5ROxMI53p8SUQ2cGMoGYFRrB
+         1IJw==
+X-Gm-Message-State: AJaThX7n23+4QcAcJ47QI2IMZY44JGdTewvlJk/cw9Yy1YJIdVsGBJ4o
+	ATcUBw4QQM4bVqW9kE5vF1h2ghCHXMUUtkNK+AOAtAE8PtM=
+X-Google-Smtp-Source: AGs4zMbtdFSMS4KXJQh/EXay5lA8oZ3blMdfRs1GNvFk0sZkoOLFOQPVWV6Cant7AASaGXiPhoP+j0Vgos5b9D5KQMQ=
+X-Received: by 10.223.143.54 with SMTP id p51mr7344363wrb.138.1510591360926;
+ Mon, 13 Nov 2017 08:42:40 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Received: by 10.223.161.5 with HTTP; Mon, 13 Nov 2017 08:42:20 -0800 (PST)
+In-Reply-To: <87wp2u9m5k.fsf@linaro.org>
+References: <20171004184325.24157-1-richard.henderson@linaro.org>
+ <20171004184325.24157-4-richard.henderson@linaro.org> <87wp2u9m5k.fsf@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 13 Nov 2017 16:42:20 +0000
+Message-ID: <CAFEAcA-YAtS1FwTsgyEef2vWjLyDBmjypUVvdA6vA5kd7ZA8UQ@mail.gmail.com>
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH v1 03/12] target/arm: Decode aa64
+ armv8.1 scalar three same extra
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: Nh1kW+4YMxWu
+X-TUID: Dx8yUKQ5lxO6
 
+On 13 November 2017 at 16:30, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+> Hmm are these really NEON or should they be advsimd_qrdm....?
 
-Richard Henderson <richard.henderson@linaro.org> writes:
+NEON is the same thing as Advanced SIMD, as far as I know,
+in the same way that TrustZone and the Security Extensions are
+the same thing.
 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/helper.h         |  9 +++++
->  target/arm/advsimd_helper.c | 74 +++++++++++++++++++++++++++++++++++++++
->  target/arm/translate-a64.c  | 84 +++++++++++++++++++++++++++++++++++++++=
-++++++
->  3 files changed, 167 insertions(+)
->
-> diff --git a/target/arm/helper.h b/target/arm/helper.h
-> index ec098d8337..67583b3c2e 100644
-> --- a/target/arm/helper.h
-> +++ b/target/arm/helper.h
-> @@ -542,6 +542,15 @@ DEF_HELPER_2(dc_zva, void, env, i64)
->  DEF_HELPER_FLAGS_2(neon_pmull_64_lo, TCG_CALL_NO_RWG_SE, i64, i64, i64)
->  DEF_HELPER_FLAGS_2(neon_pmull_64_hi, TCG_CALL_NO_RWG_SE, i64, i64, i64)
->
-> +DEF_HELPER_FLAGS_5(gvec_qrdmlah_s16, TCG_CALL_NO_RWG,
-> +                   void, ptr, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_5(gvec_qrdmlsh_s16, TCG_CALL_NO_RWG,
-> +                   void, ptr, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_5(gvec_qrdmlah_s32, TCG_CALL_NO_RWG,
-> +                   void, ptr, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_5(gvec_qrdmlsh_s32, TCG_CALL_NO_RWG,
-> +                   void, ptr, ptr, ptr, ptr, i32)
-> +
->  #ifdef TARGET_AARCH64
->  #include "helper-a64.h"
->  #endif
-> diff --git a/target/arm/advsimd_helper.c b/target/arm/advsimd_helper.c
-> index 583c2b0dce..b0f4b02a12 100644
-> --- a/target/arm/advsimd_helper.c
-> +++ b/target/arm/advsimd_helper.c
-> @@ -26,6 +26,16 @@
->
->  #define SET_QC() env->vfp.xregs[ARM_VFP_FPSCR] |=3D CPSR_Q
->
-> +static void clear_tail(void *vd, uintptr_t opr_sz, uintptr_t max_sz)
-> +{
-> +    uint64_t *d =3D vd + opr_sz;
-> +    uintptr_t i;
-> +
-> +    for (i =3D opr_sz; i < max_sz; i +=3D 8) {
-> +        *d++ =3D 0;
-> +    }
-> +}
-> +
->  static uint16_t inl_qrdmlah_s16(CPUARMState *env, int16_t src1,
->                                  int16_t src2, int16_t src3)
->  {
-> @@ -51,6 +61,22 @@ uint32_t HELPER(neon_qrdmlah_s16)(CPUARMState *env, ui=
-nt32_t src1,
->      return deposit32(e1, 16, 16, e2);
->  }
->
-
-A few one line comments wouldn't go amiss for those trying to decode the
-letter salad, e.g.:
-
-/* Vector signed saturating rounding doubling multiply accumulate high
-half result */
-
-> +void HELPER(gvec_qrdmlah_s16)(void *vd, void *vn, void *vm,
-> +                              void *ve, uint32_t desc)
-> +{
-> +    uintptr_t opr_sz =3D simd_oprsz(desc);
-> +    int16_t *d =3D vd;
-> +    int16_t *n =3D vn;
-> +    int16_t *m =3D vm;
-> +    CPUARMState *env =3D ve;
-> +    uintptr_t i;
-> +
-> +    for (i =3D 0; i < opr_sz / 2; ++i) {
-> +        d[i] =3D inl_qrdmlah_s16(env, n[i], m[i], d[i]);
-> +    }
-> +    clear_tail(d, opr_sz, simd_maxsz(desc));
-> +}
-> +
->  static uint16_t inl_qrdmlsh_s16(CPUARMState *env, int16_t src1,
->                                  int16_t src2, int16_t src3)
->  {
-> @@ -76,6 +102,22 @@ uint32_t HELPER(neon_qrdmlsh_s16)(CPUARMState *env, u=
-int32_t src1,
->      return deposit32(e1, 16, 16, e2);
->  }
->
-> +void HELPER(gvec_qrdmlsh_s16)(void *vd, void *vn, void *vm,
-> +                              void *ve, uint32_t desc)
-> +{
-> +    uintptr_t opr_sz =3D simd_oprsz(desc);
-> +    int16_t *d =3D vd;
-> +    int16_t *n =3D vn;
-> +    int16_t *m =3D vm;
-> +    CPUARMState *env =3D ve;
-> +    uintptr_t i;
-> +
-> +    for (i =3D 0; i < opr_sz / 2; ++i) {
-> +        d[i] =3D inl_qrdmlsh_s16(env, n[i], m[i], d[i]);
-> +    }
-> +    clear_tail(d, opr_sz, simd_maxsz(desc));
-> +}
-> +
->  uint32_t HELPER(neon_qrdmlah_s32)(CPUARMState *env, int32_t src1,
->                                    int32_t src2, int32_t src3)
->  {
-> @@ -90,6 +132,22 @@ uint32_t HELPER(neon_qrdmlah_s32)(CPUARMState *env, i=
-nt32_t src1,
->      return ret;
->  }
->
-> +void HELPER(gvec_qrdmlah_s32)(void *vd, void *vn, void *vm,
-> +                              void *ve, uint32_t desc)
-> +{
-> +    uintptr_t opr_sz =3D simd_oprsz(desc);
-> +    int32_t *d =3D vd;
-> +    int32_t *n =3D vn;
-> +    int32_t *m =3D vm;
-> +    CPUARMState *env =3D ve;
-> +    uintptr_t i;
-> +
-> +    for (i =3D 0; i < opr_sz / 4; ++i) {
-> +        d[i] =3D helper_neon_qrdmlah_s32(env, n[i], m[i], d[i]);
-> +    }
-> +    clear_tail(d, opr_sz, simd_maxsz(desc));
-> +}
-> +
->  uint32_t HELPER(neon_qrdmlsh_s32)(CPUARMState *env, int32_t src1,
->                                    int32_t src2, int32_t src3)
->  {
-> @@ -103,3 +161,19 @@ uint32_t HELPER(neon_qrdmlsh_s32)(CPUARMState *env, =
-int32_t src1,
->      }
->      return ret;
->  }
-> +
-> +void HELPER(gvec_qrdmlsh_s32)(void *vd, void *vn, void *vm,
-> +                              void *ve, uint32_t desc)
-> +{
-> +    uintptr_t opr_sz =3D simd_oprsz(desc);
-> +    int32_t *d =3D vd;
-> +    int32_t *n =3D vn;
-> +    int32_t *m =3D vm;
-> +    CPUARMState *env =3D ve;
-> +    uintptr_t i;
-> +
-> +    for (i =3D 0; i < opr_sz / 4; ++i) {
-> +        d[i] =3D helper_neon_qrdmlsh_s32(env, n[i], m[i], d[i]);
-> +    }
-> +    clear_tail(d, opr_sz, simd_maxsz(desc));
-> +}
-> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-> index 182853e3bb..0ea47a9dff 100644
-> --- a/target/arm/translate-a64.c
-> +++ b/target/arm/translate-a64.c
-> @@ -9874,6 +9874,89 @@ static void disas_simd_three_reg_same(DisasContext=
- *s, uint32_t insn)
->      }
->  }
->
-> +/* AdvSIMD three same extra
-> + *  31   30  29 28       24 23  22  21 20  16  15 14    11  10 9  5 4  0
-> + * +---+---+---+-----------+------+---+------+---+--------+---+----+----+
-> + * | 0 | Q | U | 0 1 1 1 0 | size | 0 |  Rm  | 1 | opcode | 1 | Rn | Rd |
-> + * +---+---+---+-----------+------+---+------+---+--------+---+----+----+
-> + */
-> +static void disas_simd_three_reg_same_extra(DisasContext *s, uint32_t in=
-sn)
-> +{
-> +    void (*fn_gvec_ptr)(TCGv_ptr, TCGv_ptr, TCGv_ptr, TCGv_ptr, TCGv_i32=
-);
-> +    int rd =3D extract32(insn, 0, 5);
-> +    int rn =3D extract32(insn, 5, 5);
-> +    int opcode =3D extract32(insn, 11, 4);
-> +    int rm =3D extract32(insn, 16, 5);
-> +    int size =3D extract32(insn, 22, 2);
-> +    bool u =3D extract32(insn, 29, 1);
-> +    bool is_q =3D extract32(insn, 30, 1);
-> +    int feature;
-> +
-> +    if (!u) {
-> +        unallocated_encoding(s);
-> +        return;
-> +    }
-> +
-> +    switch (opcode) {
-> +    case 0x0: /* SQRDMLAH (vector) */
-> +    case 0x1: /* SQRDMLSH (vector) */
-> +        if (size !=3D 1 && size !=3D 2) {
-> +            unallocated_encoding(s);
-> +            return;
-> +        }
-> +        feature =3D ARM_FEATURE_V8_1_SIMD;
-> +        break;
-> +    default:
-> +        unallocated_encoding(s);
-> +        return;
-> +    }
-> +
-> +    if (!arm_dc_feature(s, feature)) {
-> +        unallocated_encoding(s);
-> +        return;
-> +    }
-> +    if (!fp_access_check(s)) {
-> +        return;
-> +    }
-> +
-> +    switch (opcode) {
-> +    case 0x0: /* SQRDMLAH (vector) */
-> +        switch (size) {
-> +        case 1:
-> +            fn_gvec_ptr =3D gen_helper_gvec_qrdmlah_s16;
-> +            break;
-> +        case 2:
-> +            fn_gvec_ptr =3D gen_helper_gvec_qrdmlah_s32;
-> +            break;
-> +        default:
-> +            g_assert_not_reached();
-> +        }
-> +        goto do_env;
-> +
-> +    case 0x1: /* SQRDMLSH (vector) */
-> +        switch (size) {
-> +        case 1:
-> +            fn_gvec_ptr =3D gen_helper_gvec_qrdmlsh_s16;
-> +            break;
-> +        case 2:
-> +            fn_gvec_ptr =3D gen_helper_gvec_qrdmlsh_s32;
-> +            break;
-> +        default:
-> +            g_assert_not_reached();
-> +        }
-> +    do_env:
-> +        tcg_gen_gvec_3_ptr(vec_full_reg_offset(s, rd),
-> +                           vec_full_reg_offset(s, rn),
-> +                           vec_full_reg_offset(s, rm), cpu_env,
-> +                           is_q ? 16 : 8, vec_full_reg_size(s),
-> +                           0, fn_gvec_ptr);
-> +        break;
-> +
-> +    default:
-> +        g_assert_not_reached();
-> +    }
-> +}
-> +
->  static void handle_2misc_widening(DisasContext *s, int opcode, bool is_q,
->                                    int size, int rn, int rd)
->  {
-> @@ -11261,6 +11344,7 @@ static void disas_crypto_two_reg_sha(DisasContext=
- *s, uint32_t insn)
->  static const AArch64DecodeTable data_proc_simd[] =3D {
->      /* pattern  ,  mask     ,  fn                        */
->      { 0x0e200400, 0x9f200400, disas_simd_three_reg_same },
-> +    { 0x0e008400, 0x9f208400, disas_simd_three_reg_same_extra },
->      { 0x0e200000, 0x9f200c00, disas_simd_three_reg_diff },
->      { 0x0e200800, 0x9f3e0c00, disas_simd_two_reg_misc },
->      { 0x0e300800, 0x9f3e0c00, disas_simd_across_lanes },
-
-Other that the comments:
-
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
---
-Alex Benn=C3=A9e
+thanks
+-- PMM

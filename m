@@ -1,349 +1,102 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id c67sm3092003wmd.25.2017.11.08.07.32.46
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 08 Nov 2017 07:32:48 -0800 (PST)
-Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id D58F43E0410;
-	Wed,  8 Nov 2017 15:32:45 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: peter.maydell@linaro.org
-Cc: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <rth@twiddle.net>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Michael Walle <michael@walle.cc>,
-	Laurent Vivier <laurent@vivier.eu>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Anthony Green <green@moxielogic.com>,
-	Chris Wulff <crwulff@gmail.com>,
-	Marek Vasut <marex@denx.de>,
-	Stafford Horne <shorne@gmail.com>,
-	Alexander Graf <agraf@suse.de>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>,
-	qemu-s390x@nongnu.org (open list:S390)
-Subject: [PATCH v2 2/2] target/*helper: don't check retaddr before calling cpu_restore_state
-Date: Wed,  8 Nov 2017 15:32:45 +0000
-Message-Id: <20171108153245.20740-3-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.14.2
-In-Reply-To: <20171108153245.20740-1-alex.bennee@linaro.org>
-References: <20171108153245.20740-1-alex.bennee@linaro.org>
+Received: by 10.223.150.237 with SMTP id u100csp2446546wrb;
+        Mon, 13 Nov 2017 05:26:29 -0800 (PST)
+X-Received: by 10.28.9.197 with SMTP id 188mr4781912wmj.20.1510579589606;
+        Mon, 13 Nov 2017 05:26:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510579589; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Bl5hmdxJKYqBHAa9NIo5JnX2u5GhY8WQQM/sncfIDLnAJQfUyjvU77RBCZvIT7uF/F
+         H5KO+noI8b12FhaXGD+ukH0rhxiMvT266LSxEW9DSvCmLKbDXIqOYdo5Fo7Xa02rclEO
+         bnqAqUKsgqubvq1Nze7cxaHpCYjzQhNsDUClw9vBHzJ+puZU3ukjEYPaft2shGgWArhb
+         vB2+7Joo5iG5szGq/WaTgBcSvu9we/Y07PnFelH5Fcouh4dmHl72Sk4IfjqplH4GbbKN
+         Ec/BuEzmmO23uPvJaIzpF6+nWpc7MSbrqBQbxr0z5qSwJdYf7MmOGgMxebaAtDqQyLlz
+         akug==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=FhrnYC1UMO6L+LXNAz6Hnax8Nyko+TuZxHauuhtMWkk=;
+        b=MP+oh59FJVGgAqXrSNDmXAzLBbsdWl3es68p2BJerxywLaTUmrCZPJ/nh1u1amjmm0
+         V7y662aHdP/P+zNtjTuQHEqEJbiPA4iuXpRTrTZv68lq8Xk9e7f+eckUPHMVV0dV//ru
+         sur7ODE7VhyEtj2UGzzmgHSeNPmPP42Zn40zjhGro4SUSF1i493XbBgldphXJY6uox4D
+         lG9uzzglZdH8d0jeu56FdgyHHCFF+BptPhWTuh4F9EzhOgX1AkYUj2lHiBMc5lPTAj92
+         XbUFp98Vizvsf7j5c/aRxtNfEW4sMJlXM6OE9a0n/Ckowg91ZJFGECTWFLfuXjTOr6J3
+         pBZg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=emZ27elY;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d195sor1688662wmd.10.2017.11.13.05.26.29
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Mon, 13 Nov 2017 05:26:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=emZ27elY;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=FhrnYC1UMO6L+LXNAz6Hnax8Nyko+TuZxHauuhtMWkk=;
+        b=emZ27elYXTjHt8Un9YZo9Ouw6Z4tZzW7iLTFBuUW9LVq0y9fyTk+aUpl6BmtW9XBVU
+         +dat0wr75kooAybeIo2nARTfR46vJk1yaU70Htfjjcv5rEp83XYZhsJqUrWbOXdD6TKY
+         TQ+sRVA9ljgzG+3twGIA942WPI5NCji6/YpLw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=FhrnYC1UMO6L+LXNAz6Hnax8Nyko+TuZxHauuhtMWkk=;
+        b=rPtg0IxEleRchllinbfbmRRbs/apu7+n3pr+/5yJDho8+AmSZQ612g+mm94Yaj7e79
+         /v2NXAVgIAiwE3bFMF9bqDICx6lhOoKZ7RymwuvGk2jbvs+gTgzd/8Zyz3Nj8o/MNDJu
+         VbGuJFZ3t4iRL8RFg8kX0ifQpxYJnjd9BAfTW0yzeWlgKLZMI25aLfayLWDXsIIlY3P9
+         Vx8reUtvlNnUUYt2CT5IgymNFmxaKXAWXY4FNsFF3QoLaDSh5g0MO34Fu/PInxPgwpSa
+         7Fbsd4+EyzIkg/R6PDjoE5JQaev71P96NviMkSFsdbQCGSvrc4HIPqmQeB7Y2CV2fGOd
+         sSKw==
+X-Gm-Message-State: AJaThX67WThjqzYCoZtYudvz6OFX63RPDFM0JMV3XJBOsDotmw1KbQsO
+	Epsn1oN/GJN1Ie/TiBFpBLHHyb7qggNIKbW5gYxBhCiUwzs=
+X-Google-Smtp-Source: AGs4zMagGfBWsIxYa+Nw6ygPdtMCuEC4cPu3SasGli/TdPR6HryUH8yo8ggjDBTbBAZ346NVH1BJlzlGCtNfh4BMaAo=
+X-Received: by 10.28.14.195 with SMTP id 186mr6266106wmo.56.1510579588997;
+ Mon, 13 Nov 2017 05:26:28 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: YVuDgckyp/gr
+Received: by 10.223.161.5 with HTTP; Mon, 13 Nov 2017 05:26:08 -0800 (PST)
+In-Reply-To: <20171108153245.20740-2-alex.bennee@linaro.org>
+References: <20171108153245.20740-1-alex.bennee@linaro.org> <20171108153245.20740-2-alex.bennee@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 13 Nov 2017 13:26:08 +0000
+Message-ID: <CAFEAcA8OHOQ_8cG=fXyoqr6f9FiEyBx6zeRu=04cyojpEZVWcQ@mail.gmail.com>
+Subject: Re: [PATCH v2 1/2] accel/tcg/translate-all: expand cpu_restore_state
+ addr check
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	Richard Henderson <rth@twiddle.net>, Paolo Bonzini <pbonzini@redhat.com>, 
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: rdWCqM387ZVs
 
-cpu_restore_state officially supports being passed an address it can't
-resolve the state for. As a result the checks in the helpers are
-superfluous and can be removed. This makes the code consistent with
-other users of cpu_restore_state.
+On 8 November 2017 at 15:32, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
+e:
+> We are still seeing signals during translation time when we walk over
+> a page protection boundary. This expands the check to ensure the host
+> PC is inside the code generation buffer. The original suggestion was
+> to check versus tcg_ctx.code_gen_ptr but as we now segment the
+> translation buffer we have to settle for just a general check for
+> being inside.
+>
+> I've also fixed up the declaration to make it clear it can deal with
+> invalid addresses. A later patch will fix up the call sites.
+>
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Reported-by: Peter Maydell <peter.maydell@linaro.org>
+> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: Richard Henderson <rth@twiddle.net>
 
-Of course this does nothing to address what to do if cpu_restore_state
-can't resolve the state but so far it seems this is handled elsewhere.
+Thanks; this fixes my test case. Patch 2 is just cleanup and looks
+like it needs rework, so I'm taking patch 1 into target-arm
+to put into master for rc1.
 
-The change was made with included coccinelle script.
-
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- scripts/coccinelle/cpu_restore_state.cocci | 12 ++++++++++++
- target/alpha/mem_helper.c                  | 12 +++---------
- target/arm/op_helper.c                     | 17 ++++-------------
- target/i386/svm_helper.c                   |  4 +---
- target/lm32/op_helper.c                    |  7 ++-----
- target/m68k/op_helper.c                    |  7 ++-----
- target/microblaze/op_helper.c              |  7 ++-----
- target/moxie/helper.c                      |  4 +---
- target/nios2/mmu.c                         |  7 ++-----
- target/openrisc/mmu_helper.c               |  7 ++-----
- target/s390x/excp_helper.c                 |  4 +---
- target/tricore/op_helper.c                 | 11 +++--------
- target/unicore32/op_helper.c               |  7 ++-----
- 13 files changed, 37 insertions(+), 69 deletions(-)
- create mode 100644 scripts/coccinelle/cpu_restore_state.cocci
-
-diff --git a/scripts/coccinelle/cpu_restore_state.cocci b/scripts/coccinelle/cpu_restore_state.cocci
-new file mode 100644
-index 0000000000..934a042382
---- /dev/null
-+++ b/scripts/coccinelle/cpu_restore_state.cocci
-@@ -0,0 +1,12 @@
-+// Remove unneeded tests before calling cpu_restore_state
-+//
-+// spatch --macro-file scripts/cocci-macro-file.h \
-+//        --sp-file ./scripts/coccinelle/cpu_restore_state.cocci \
-+//        --keep-comments --in-place --use-gitgrep --dir target
-+@@
-+identifier A;
-+expression C;
-+@@
-+-if (A) {
-+     cpu_restore_state(C, A);
-+-}
-diff --git a/target/alpha/mem_helper.c b/target/alpha/mem_helper.c
-index 3c06baa93a..6cf9bba17e 100644
---- a/target/alpha/mem_helper.c
-+++ b/target/alpha/mem_helper.c
-@@ -34,9 +34,7 @@ void alpha_cpu_do_unaligned_access(CPUState *cs, vaddr addr,
-     uint64_t pc;
-     uint32_t insn;
- 
--    if (retaddr) {
--        cpu_restore_state(cs, retaddr);
--    }
-+    cpu_restore_state(cs, retaddr);
- 
-     pc = env->pc;
-     insn = cpu_ldl_code(env, pc);
-@@ -58,9 +56,7 @@ void alpha_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
-     AlphaCPU *cpu = ALPHA_CPU(cs);
-     CPUAlphaState *env = &cpu->env;
- 
--    if (retaddr) {
--        cpu_restore_state(cs, retaddr);
--    }
-+    cpu_restore_state(cs, retaddr);
- 
-     env->trap_arg0 = addr;
-     env->trap_arg1 = access_type == MMU_DATA_STORE ? 1 : 0;
-@@ -80,9 +76,7 @@ void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
- 
-     ret = alpha_cpu_handle_mmu_fault(cs, addr, access_type, mmu_idx);
-     if (unlikely(ret != 0)) {
--        if (retaddr) {
--            cpu_restore_state(cs, retaddr);
--        }
-+        cpu_restore_state(cs, retaddr);
-         /* Exception index and error code are already set */
-         cpu_loop_exit(cs);
-     }
-diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
-index a40a84ac24..504556a697 100644
---- a/target/arm/op_helper.c
-+++ b/target/arm/op_helper.c
-@@ -175,11 +175,8 @@ void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
-     if (unlikely(ret)) {
-         ARMCPU *cpu = ARM_CPU(cs);
-         uint32_t fsc;
--
--        if (retaddr) {
--            /* now we have a real cpu fault */
--            cpu_restore_state(cs, retaddr);
--        }
-+        /* now we have a real cpu fault */
-+        cpu_restore_state(cs, retaddr);
- 
-         if (fsr & (1 << 9)) {
-             /* LPAE format fault status register : bottom 6 bits are
-@@ -210,11 +207,8 @@ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,
-     uint32_t fsr, fsc;
-     ARMMMUFaultInfo fi = {};
-     ARMMMUIdx arm_mmu_idx = core_to_arm_mmu_idx(env, mmu_idx);
--
--    if (retaddr) {
-         /* now we have a real cpu fault */
--        cpu_restore_state(cs, retaddr);
--    }
-+    cpu_restore_state(cs, retaddr);
- 
-     /* the DFSR for an alignment fault depends on whether we're using
-      * the LPAE long descriptor format, or the short descriptor format
-@@ -244,11 +238,8 @@ void arm_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
-     uint32_t fsr, fsc;
-     ARMMMUFaultInfo fi = {};
-     ARMMMUIdx arm_mmu_idx = core_to_arm_mmu_idx(env, mmu_idx);
--
--    if (retaddr) {
-         /* now we have a real cpu fault */
--        cpu_restore_state(cs, retaddr);
--    }
-+    cpu_restore_state(cs, retaddr);
- 
-     /* The EA bit in syndromes and fault status registers is an
-      * IMPDEF classification of external aborts. ARM implementations
-diff --git a/target/i386/svm_helper.c b/target/i386/svm_helper.c
-index f479239875..303106981c 100644
---- a/target/i386/svm_helper.c
-+++ b/target/i386/svm_helper.c
-@@ -584,9 +584,7 @@ void cpu_vmexit(CPUX86State *env, uint32_t exit_code, uint64_t exit_info_1,
- {
-     CPUState *cs = CPU(x86_env_get_cpu(env));
- 
--    if (retaddr) {
--        cpu_restore_state(cs, retaddr);
--    }
-+    cpu_restore_state(cs, retaddr);
- 
-     qemu_log_mask(CPU_LOG_TB_IN_ASM, "vmexit(%08x, %016" PRIx64 ", %016"
-                   PRIx64 ", " TARGET_FMT_lx ")!\n",
-diff --git a/target/lm32/op_helper.c b/target/lm32/op_helper.c
-index 2177c8ad12..7b800bbeab 100644
---- a/target/lm32/op_helper.c
-+++ b/target/lm32/op_helper.c
-@@ -150,11 +150,8 @@ void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
-     int ret;
- 
-     ret = lm32_cpu_handle_mmu_fault(cs, addr, access_type, mmu_idx);
--    if (unlikely(ret)) {
--        if (retaddr) {
--            /* now we have a real cpu fault */
--            cpu_restore_state(cs, retaddr);
--        }
-+    if (unlikely(ret)) {/* now we have a real cpu fault */
-+        cpu_restore_state(cs, retaddr);
-         cpu_loop_exit(cs);
-     }
- }
-diff --git a/target/m68k/op_helper.c b/target/m68k/op_helper.c
-index 63089511cb..3079e04c7d 100644
---- a/target/m68k/op_helper.c
-+++ b/target/m68k/op_helper.c
-@@ -45,11 +45,8 @@ void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
-     int ret;
- 
-     ret = m68k_cpu_handle_mmu_fault(cs, addr, access_type, mmu_idx);
--    if (unlikely(ret)) {
--        if (retaddr) {
--            /* now we have a real cpu fault */
--            cpu_restore_state(cs, retaddr);
--        }
-+    if (unlikely(ret)) {/* now we have a real cpu fault */
-+        cpu_restore_state(cs, retaddr);
-         cpu_loop_exit(cs);
-     }
- }
-diff --git a/target/microblaze/op_helper.c b/target/microblaze/op_helper.c
-index 1e07e21c1c..3b862faaa1 100644
---- a/target/microblaze/op_helper.c
-+++ b/target/microblaze/op_helper.c
-@@ -39,11 +39,8 @@ void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
-     int ret;
- 
-     ret = mb_cpu_handle_mmu_fault(cs, addr, access_type, mmu_idx);
--    if (unlikely(ret)) {
--        if (retaddr) {
--            /* now we have a real cpu fault */
--            cpu_restore_state(cs, retaddr);
--        }
-+    if (unlikely(ret)) {/* now we have a real cpu fault */
-+        cpu_restore_state(cs, retaddr);
-         cpu_loop_exit(cs);
-     }
- }
-diff --git a/target/moxie/helper.c b/target/moxie/helper.c
-index 330299f5a7..2ecee89f11 100644
---- a/target/moxie/helper.c
-+++ b/target/moxie/helper.c
-@@ -36,9 +36,7 @@ void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
- 
-     ret = moxie_cpu_handle_mmu_fault(cs, addr, access_type, mmu_idx);
-     if (unlikely(ret)) {
--        if (retaddr) {
--            cpu_restore_state(cs, retaddr);
--        }
-+        cpu_restore_state(cs, retaddr);
-     }
-     cpu_loop_exit(cs);
- }
-diff --git a/target/nios2/mmu.c b/target/nios2/mmu.c
-index fe9298af50..6d66a5702d 100644
---- a/target/nios2/mmu.c
-+++ b/target/nios2/mmu.c
-@@ -41,11 +41,8 @@ void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
-     int ret;
- 
-     ret = nios2_cpu_handle_mmu_fault(cs, addr, access_type, mmu_idx);
--    if (unlikely(ret)) {
--        if (retaddr) {
--            /* now we have a real cpu fault */
--            cpu_restore_state(cs, retaddr);
--        }
-+    if (unlikely(ret)) {/* now we have a real cpu fault */
-+        cpu_restore_state(cs, retaddr);
-         cpu_loop_exit(cs);
-     }
- }
-diff --git a/target/openrisc/mmu_helper.c b/target/openrisc/mmu_helper.c
-index a44d0aa51a..47cd7775b6 100644
---- a/target/openrisc/mmu_helper.c
-+++ b/target/openrisc/mmu_helper.c
-@@ -32,11 +32,8 @@ void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
- 
-     ret = openrisc_cpu_handle_mmu_fault(cs, addr, access_type, mmu_idx);
- 
--    if (ret) {
--        if (retaddr) {
--            /* now we have a real cpu fault.  */
--            cpu_restore_state(cs, retaddr);
--        }
-+    if (ret) {/* now we have a real cpu fault.  */
-+        cpu_restore_state(cs, retaddr);
-         /* Raise Exception.  */
-         cpu_loop_exit(cs);
-     }
-diff --git a/target/s390x/excp_helper.c b/target/s390x/excp_helper.c
-index e04b670663..8584ec43c1 100644
---- a/target/s390x/excp_helper.c
-+++ b/target/s390x/excp_helper.c
-@@ -554,9 +554,7 @@ void s390x_cpu_do_unaligned_access(CPUState *cs, vaddr addr,
-     S390CPU *cpu = S390_CPU(cs);
-     CPUS390XState *env = &cpu->env;
- 
--    if (retaddr) {
--        cpu_restore_state(cs, retaddr);
--    }
-+    cpu_restore_state(cs, retaddr);
-     program_interrupt(env, PGM_SPECIFICATION, ILEN_AUTO);
- }
- 
-diff --git a/target/tricore/op_helper.c b/target/tricore/op_helper.c
-index 7af202c8c0..b0307de1ea 100644
---- a/target/tricore/op_helper.c
-+++ b/target/tricore/op_helper.c
-@@ -31,9 +31,7 @@ raise_exception_sync_internal(CPUTriCoreState *env, uint32_t class, int tin,
- {
-     CPUState *cs = CPU(tricore_env_get_cpu(env));
-     /* in case we come from a helper-call we need to restore the PC */
--    if (pc) {
--        cpu_restore_state(cs, pc);
--    }
-+    cpu_restore_state(cs, pc);
- 
-     /* Tin is loaded into d[15] */
-     env->gpr_d[15] = tin;
-@@ -2804,11 +2802,8 @@ static inline void QEMU_NORETURN do_raise_exception_err(CPUTriCoreState *env,
-     CPUState *cs = CPU(tricore_env_get_cpu(env));
-     cs->exception_index = exception;
-     env->error_code = error_code;
--
--    if (pc) {
--        /* now we have a real cpu fault */
--        cpu_restore_state(cs, pc);
--    }
-+    /* now we have a real cpu fault */
-+    cpu_restore_state(cs, pc);
- 
-     cpu_loop_exit(cs);
- }
-diff --git a/target/unicore32/op_helper.c b/target/unicore32/op_helper.c
-index 0872c29faa..5a826b0e31 100644
---- a/target/unicore32/op_helper.c
-+++ b/target/unicore32/op_helper.c
-@@ -250,11 +250,8 @@ void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
-     int ret;
- 
-     ret = uc32_cpu_handle_mmu_fault(cs, addr, access_type, mmu_idx);
--    if (unlikely(ret)) {
--        if (retaddr) {
--            /* now we have a real cpu fault */
--            cpu_restore_state(cs, retaddr);
--        }
-+    if (unlikely(ret)) {/* now we have a real cpu fault */
-+        cpu_restore_state(cs, retaddr);
-         cpu_loop_exit(cs);
-     }
- }
--- 
-2.14.2
+thanks
+-- PMM

@@ -1,150 +1,150 @@
-Received: by 10.223.150.237 with SMTP id u100csp2431183wrb;
-        Mon, 13 Nov 2017 05:10:02 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMab7LWKytJAzm1rwMtXBCOWXkImG+SAJNQZIdWinl6Vh7Y4L8+/Tv54nBbDQJBWxtzCOrnl
-X-Received: by 10.129.175.101 with SMTP id x37mr2715805ywj.289.1510578602881;
-        Mon, 13 Nov 2017 05:10:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510578602; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp2448740wrb;
+        Mon, 13 Nov 2017 05:28:48 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMbs0Q4w/G+QGJAwytVckzcBdPm7IfxrBl/uplcdH1DF9lYY51qrw4nlqRFPD2sMwvtSoY7b
+X-Received: by 10.37.14.193 with SMTP id 184mr5486246ybo.156.1510579728247;
+        Mon, 13 Nov 2017 05:28:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510579728; cv=none;
         d=google.com; s=arc-20160816;
-        b=MD0J1+bOIfnJjcSaj9J09Z9Hmxh417XMI/HEAsVGb3j8QvdaXDZYERb0TgQfXo6jhs
-         IIhsItzuq/T5VIWYa+aW6Nd9eCuCf2Q3UgbBojzY297OFYrxrqDx0klWLlMJCrXN4yb2
-         /DWG+EyVsA0dP/JJidY4grfjlgJMgzB2O4IBq4C5cd3vHVhauIOGcpKAIb7kGjmW2W6I
-         TkzJ47GbkCwtrXTIAIUIl5ffofs5G7D9+9DbxWZl8TUSsHVMNHCE4d0pEMt4hisd4nVh
-         qr2th7BAmt7EPet/OPvEUQp+YqgtmlTTQCe/iRW8uC4lX/IE5WzlARHqNcbUZ5wINOIL
-         PiGQ==
+        b=KTIhndHaEIrflTcCXPC0C1cUTC6XH+ppzCdnOhYVckl9UrZ+2n/2dXAM8YACeYp87C
+         g3FHz3jQPnsT4+G1NGBz/lxB+Ocl08AQyYJOfNPsOFTyO9aYeHnK7/KDMv2yi2A3YbmW
+         0l8r8k9QVVIOSbN0Fk631p95EubNZOJgY7LkfjKEqZOhfNIvO7UNAEePYjO0vQB6+OIy
+         cdlM9lVn/7meV1FWxghAxQv1uvYp6EvSKErj2tGmlHRL8fQ3XUWlp8TTJMESshNu1o67
+         31DwjgXmgDaIpQ9h1CXKTtKCy+NOgsdsKreZMnc0tg1M8c763rlfxuWeLBDSivdJ7mjS
+         G0jw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=bUoO11mJOX0+pXO7obSFWSIjevpz57NiV5iRsB5KZo0=;
-        b=P1iCxN9/+rXhtnmXpZATdMAme3Tgii5o9hnC1hovD2MIlQ6hE6/OoAGnYSos5kstkS
-         jmqYzMbuJZ/1FVZnfou2vguW94pObzWRlqqSehZ4lswOmz+rxAznQPmITUrg4rkuRVhe
-         /DHA8WzFzWxdfnbVvs5c5Guqb1LFKL4J8m7MysWWQdNMakbCHLv0twNFPugF18/urb2E
-         5kpgddeAkN3orQJh1uBmR7W1hrsCCVjscUwmLC3d6onHFbDZAa57B97fWYwKebLrszuW
-         mSms12qebgUnWHOnc6/wbT4M2Fbc1ALYuiqGB0i4TzxkQ7FPMKg1ZzjZV4HhzO9ckPXd
-         viHA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=+yxdPilJ+9Sk+RqdQ/gbLz7XMy7Z8/zF8EBxkNuCQHk=;
+        b=JtxRjTB+dXIsHW01gb2P1UV/FLMT0DMB+QniaQsAWOiE0rxJmN6wTYstjbAy9iajgT
+         5PU4gRE7YPwBLYxgBkm7pqvuiVHIG1VD8aD8TunHY2G6K7VpzCFYiy0+9aK2VQfDsTTW
+         pcn29EGa7jSKV5Brkf97xx21CaXtCt2LEaT6och1zeAsbCrm5xPBwAzQNEvNhfKxdTTc
+         Py7opfdooBKsgzx6nKy+iQEHC13NrMnXWPzTS0akExgxwv46Ij+W57FTEZftYFFYASBG
+         yCbWPlt5rKEMcrCz0bKBHoia0Pn+zgs/gFuco97GewkDipI1Pmw3SphDhJoN1gPUglBt
+         JegA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Af0JrKcy;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EXwcDz7g;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o64si3655146ywe.731.2017.11.13.05.10.02
+        by mx.google.com with ESMTPS id x67si3438505ybh.444.2017.11.13.05.28.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 13 Nov 2017 05:10:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 13 Nov 2017 05:28:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Af0JrKcy;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54345 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EXwcDz7g;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:54427 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eEEV0-0002YO-AG
-	for alex.bennee@linaro.org; Mon, 13 Nov 2017 08:10:02 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54529)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eEEn9-0003B4-Nm
+	for alex.bennee@linaro.org; Mon, 13 Nov 2017 08:28:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32983)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eEETZ-0001s2-Jc
-	for qemu-devel@nongnu.org; Mon, 13 Nov 2017 08:08:35 -0500
+	(envelope-from <joel.stan@gmail.com>) id 1eEEmr-000324-4I
+	for qemu-arm@nongnu.org; Mon, 13 Nov 2017 08:28:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eEETY-0007XI-9U
-	for qemu-devel@nongnu.org; Mon, 13 Nov 2017 08:08:33 -0500
-Received: from mail-wr0-x22a.google.com ([2a00:1450:400c:c0c::22a]:48288)
+	(envelope-from <joel.stan@gmail.com>) id 1eEEmq-0000QB-Bt
+	for qemu-arm@nongnu.org; Mon, 13 Nov 2017 08:28:29 -0500
+Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:44489)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eEETY-0007Vv-3R
-	for qemu-devel@nongnu.org; Mon, 13 Nov 2017 08:08:32 -0500
-Received: by mail-wr0-x22a.google.com with SMTP id 15so14363084wrb.5
-	for <qemu-devel@nongnu.org>; Mon, 13 Nov 2017 05:08:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=bUoO11mJOX0+pXO7obSFWSIjevpz57NiV5iRsB5KZo0=;
-	b=Af0JrKcyzqcOjffVGjlY+vM3MSMsARISJQxQxM1/buNsz2RO4V4+lA1G2qMX878RnF
-	91CctIZpopQL6RSphxZ2t2qwqSn2LSJn+mefG2dZfu4jVNFFLFQXIe7VJMaVLuF3Y6Rd
-	XRXxhuV1huzbUG8q2O25CvpvFnD6aS/k+O9oM=
+	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
+	id 1eEEmq-0000Mz-5b; Mon, 13 Nov 2017 08:28:28 -0500
+Received: by mail-lf0-x241.google.com with SMTP id s16so18094100lfs.1;
+	Mon, 13 Nov 2017 05:28:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc:content-transfer-encoding;
+	bh=+yxdPilJ+9Sk+RqdQ/gbLz7XMy7Z8/zF8EBxkNuCQHk=;
+	b=EXwcDz7gU8C+CS6f3ql7j+xl8Ijg2nNnMwXm4zepkZkS+t/T80bzTp88AbJ9xZcXMp
+	pAQoXf8CnKW/+Xo8cqr284vuMyhhjuSgI3CPeh7rk9y58P5mvWvPxshckOcsCqkYR7uO
+	71BUjCGatOgq2Nmtv234MrHASVEqN7QvO/8fazPdey65eKpVwRiyqvApupeBae0YA82O
+	VgvJxz9ka31tU4yIZaaJv9zJMlGbkvHvNg6NlyYLJ3a0L8XMWjPLWA8Y5OyCwf9Dxb3q
+	j50OcDJZL6MXVKWSnm59ibm19Gy0XLhhrL7zfVipdyBqVcnhXEdgtTKec31bwgfl5P/E
+	lcKA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=bUoO11mJOX0+pXO7obSFWSIjevpz57NiV5iRsB5KZo0=;
-	b=a4TvQ/GGKPg1CE0sYxxDJqQoDaUaSWWv1BxhYQXhyOJQi+sv/kB73J1K8bL1fDrmRw
-	0sT9F7Py3R+m+XR767kfgnCbnMP9+yPPShCax1Oo+oPETgiP3CYChKrBvtr1P6skyNfd
-	G5sOYNy6pR7nv9SsfVmu56E0ygB+BVWzVTn8ERQnpgRDWX/Mz2qm9AABnPC2oXF6cOiw
-	itY19JBoIoQdKSblzNVabpbSigcmjx8rzTMF4CGvpDtDBOn/T42ufcwSbvlEdzSlW0NN
-	+mv84K1s/2i/8ZOQdUv54Rp2yE5w2MXAubW+d2H/QDKBCZmu8ey1NXyXqsUKzljun9Pr
-	fqQQ==
-X-Gm-Message-State: AJaThX7byXR0vBVYBiWgn15f4GXnQE1sVCepD3nSJJwUtrnFOhJgAS7+
-	OvDqjbe39tF48G/NRD/g05VK1x45OZqY92X30+4IQQ==
-X-Received: by 10.223.169.80 with SMTP id u74mr6794902wrc.178.1510578510995;
-	Mon, 13 Nov 2017 05:08:30 -0800 (PST)
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc:content-transfer-encoding;
+	bh=+yxdPilJ+9Sk+RqdQ/gbLz7XMy7Z8/zF8EBxkNuCQHk=;
+	b=iH2iqn/w0gcXZfnSeZTt+0GOrlYFcDt8THSju08LaGm06xJdywvWwMnKYMCA+8Vikx
+	kw0rGL8hCEJmhajbQCP6V/RwDfRqi0m6RUwtAdwzknCgfEHvoN7A8zz4mejt59BWeaw0
+	EArfXKJgj5mh/suQd3I6S4dc12gKPpCdg4m2+nuLjl5y1xCal/rKmbccZF3iWWqggwT9
+	NUoxKU2E6jbDxUeQTW3KQAAIFZKtAUhVww2O5I7v4KTSgx+G6RTOeFzQna8wCbJRQJp3
+	ZrkZGzmcRARUOrQbi9qLvhrUPjJWuuJkRlZ+WpYYrFvQxFNq2/R2gIUgXAIoSJ7HJA4Z
+	+gng==
+X-Gm-Message-State: AJaThX5qxkKnb1Reuy5RLt8MX+x4KQB8QO2JfKZzhAa/TAMhCVfFR8kE
+	nxHivExPV9pmQyBjz2d1/S5pOBTS1eEN3j+NBak=
+X-Received: by 10.46.88.92 with SMTP id x28mr488847ljd.138.1510579706269; Mon,
+	13 Nov 2017 05:28:26 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.223.161.5 with HTTP; Mon, 13 Nov 2017 05:08:10 -0800 (PST)
-In-Reply-To: <40a0ece3-7498-0dda-9e13-234ba09bedf1@redhat.com>
-References: <1504286483-23327-1-git-send-email-eric.auger@redhat.com>
-	<1504286483-23327-16-git-send-email-eric.auger@redhat.com>
-	<CAFEAcA-BfvNFMFpiQd-XwGPYGasV3D-w3oDcqfHRoAXOAT17Fg@mail.gmail.com>
-	<40a0ece3-7498-0dda-9e13-234ba09bedf1@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 13 Nov 2017 13:08:10 +0000
-Message-ID: <CAFEAcA_d1DzNXoJHpi9afGA-oFcPncuM3L-n8GjiLPcAyic+TA@mail.gmail.com>
-To: Auger Eric <eric.auger@redhat.com>
+Received: by 10.25.155.4 with HTTP; Mon, 13 Nov 2017 05:28:05 -0800 (PST)
+In-Reply-To: <d67d5e55-95e1-8858-2005-7df5a3c94cba@kaod.org>
+References: <20171108032427.11163-1-joel@jms.id.au>
+	<d67d5e55-95e1-8858-2005-7df5a3c94cba@kaod.org>
+From: Joel Stanley <joel@jms.id.au>
+Date: Mon, 13 Nov 2017 23:58:05 +1030
+X-Google-Sender-Auth: nhUIutrgOqXdxmJNpVGC9RYIxFQ
+Message-ID: <CACPK8Xc3gS0Og5Zbw2RE9RTjbn9xDkTB0cHGrEPUWMHe4FLV8A@mail.gmail.com>
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::22a
-Subject: Re: [Qemu-devel] [PATCH v7 15/20] hw/arm/sysbus-fdt: Pass the
- VirtMachineState to the node creation functions
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4010:c07::241
+Subject: Re: [Qemu-arm] [PATCH] hw/arm/aspeed: Unlock SCU when running kernel
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Radha Mohan <mohun106@gmail.com>, Andrew Jones <drjones@redhat.com>,
-	Trey Cain <tcain@qti.qualcomm.com>,
-	Radha.Chintakuntla@cavium.com, Sunil.Goutham@cavium.com,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	jean-philippe.brucker@arm.com, Tomasz Nowicki <tn@semihalf.com>,
-	Will Deacon <will.deacon@arm.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	Peter Xu <peterx@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Christoffer Dall <christoffer.dall@linaro.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	robin.murphy@arm.com, wtownsen@redhat.com,
-	Bharat Bhushan <bharat.bhushan@nxp.com>,
-	Prem Mallappa <prem.mallappa@gmail.com>, eric.auger.pro@gmail.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BRo3skN/MOuh
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gbocpz0IPGEn
 
-On 13 November 2017 at 13:00, Auger Eric <eric.auger@redhat.com> wrote:
-> On 09/10/2017 19:47, Peter Maydell wrote:
->> More generally, why is sysbus-fdt involved in this at all?
->> I expected that instantiating and wiring up the SMMU would
->> be the job of hw/arm/virt.c, like any other device we
->> might have on the board.
-> I wished to have the same type of option as for x86 where
-> "-device intel-iommu" is passed to the QEMU command line. smmuv3 device
-> being a SysBusDevice, a natural framework to handle its node creation
-> function is sysbus-fdt. Having a -device approach is practical to pass
-> other options to the device (this was typically the case for the
-> "caching-mode" option). On Intel there are caching-mode, passthrough
-> (pt) options.
+On Thu, Nov 9, 2017 at 5:54 PM, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+> On 11/08/2017 04:24 AM, Joel Stanley wrote:
 
-Not being able to conveniently wire up a sysbus device on the
-command line or pass it options are general problems. I don't
-think the SMMU is a special case that should work around these
-general issues by being created in a different way to everything
-else. If the "hard to pass options to the device" problem needs
-solving (which it does anyway if we want to drop '-net' for
-configuring embedded ethernet devices) we should solve it,
-not have some small set of sysbus devices be weirdly magic.
+>> --- a/hw/misc/aspeed_sdmc.c
+>> +++ b/hw/misc/aspeed_sdmc.c
+>> @@ -18,7 +18,6 @@
+>>
+>>  /* Protection Key Register */
+>>  #define R_PROT            (0x00 / 4)
+>> -#define   PROT_KEY_UNLOCK     0xFC600309
+>
+> why are you using the memory controller magic value ?
 
-thanks
--- PMM
+Oh. My bad. I think both ctags and myself became confused :)
+
+>> --- a/include/hw/misc/aspeed_sdmc.h
+>> +++ b/include/hw/misc/aspeed_sdmc.h
+>> @@ -16,6 +16,8 @@
+>>
+>>  #define ASPEED_SDMC_NR_REGS (0x8 >> 2)
+>>
+>> +#define PROT_KEY_UNLOCK 0xFC600309
+>
+> Ditto. Should we be using the one from SCU ?
+>
+> Now that we are externalizing this value, adding a prefix would be
+> preferable : ASPEED_SCU_ ?
+
+I will grab the correct value from the SCU and rename it
+ASPEED_SCU_PROT_KEY for v2.
+
+Thanks for taking a look.
+
+Cheers,
+
+Joel

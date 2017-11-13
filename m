@@ -1,153 +1,307 @@
-Received: by 10.223.150.237 with SMTP id u100csp2395081wrb;
-        Mon, 13 Nov 2017 04:31:17 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMbttXZgbzwpUQij8q4M8pRW+0MyGmRe0dpHnI/Z1Wuia0hddK94CyNJn5LSYF6lEZK+lqSK
-X-Received: by 10.129.98.213 with SMTP id w204mr5913170ywb.395.1510576277096;
-        Mon, 13 Nov 2017 04:31:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510576277; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Kf8lcL5j287budHTvT8Xn5gWU0DLON1xPJNySE1+NnToumtIDak8DmLnCv6YMBYwH8
-         /17xOMSFgNm7v5e4APF/rSoAc+Pm9rgvdYoUVxbaymXSRHn0ThzIh777CR8pGpua3KDB
-         A8wj9OfVyXkcM6Ao530hkQyC8SYDx7FFx/sg7JIiOqibkTE1lyt3V+Ksn8PxA32G9j9L
-         o2TZiKqflbsugdJUU1O/onIO7ztMttjsejAjWACdNKaSo2LpMpqHVfOXRggcMJI7bSxa
-         BqSv53dRvbmWsalPlf8mVqgLumknfkbByNL18kZdFhCdPk3p+yu/L92LUoBrGgeVwP3O
-         fgfw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:message-id
-         :date:to:from:arc-authentication-results;
-        bh=xoZO4HrHXn7FTzq2TwuHuqgqlBRMK+o7B0YcjQMUdQo=;
-        b=iikg6vumQJlBmGsoYVGuMQJ6eCyKUbDSUcIX7DgW9e1YGzKyNBq8W68C7zXfFT1K07
-         NRr67SZovkiDjeAFerwoemOl08VrOXxccC/MPWHNUGoEOJ8gvZGl/QInD3B9UHCskCxn
-         xdZpHN4Cu3g+hXOd0Dgjp51bHgsZnbHU6nrZaDO4/ROX94odQitPFQ9zlYHUxDrNFKB8
-         4q7bmXd38Y2BAoBI26n0f9xpgec1fqm0bLxjPk3d3gdPBQKVX2s5Y+oapSI9b+LLkq0Y
-         fKbvhC064Gc4VGYmKW57kO83ggPEBivQXLRxHvMVo4NZFb2x33PmkqGMQ61cF8hosAA9
-         nmPw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v134si986261ywc.335.2017.11.13.04.31.16
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 13 Nov 2017 04:31:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:53967 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eEDtU-0007Oi-GP
-	for alex.bennee@linaro.org; Mon, 13 Nov 2017 07:31:16 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44517)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhuyijun@huawei.com>) id 1eEDs2-0006cY-1v
-	for qemu-devel@nongnu.org; Mon, 13 Nov 2017 07:29:47 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhuyijun@huawei.com>) id 1eEDrx-0000kz-Qc
-	for qemu-devel@nongnu.org; Mon, 13 Nov 2017 07:29:46 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2345)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
-	(envelope-from <zhuyijun@huawei.com>)
-	id 1eEDrx-0000ha-85; Mon, 13 Nov 2017 07:29:41 -0500
-Received: from 172.30.72.60 (EHLO DGGEMS406-HUB.china.huawei.com)
-	([172.30.72.60])
-	by dggrg04-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
-	with ESMTP id DKT03134; Mon, 13 Nov 2017 20:29:30 +0800 (CST)
-Received: from localhost (10.177.27.25) by DGGEMS406-HUB.china.huawei.com
-	(10.3.19.206) with Microsoft SMTP Server id 14.3.361.1; Mon, 13 Nov 2017
-	20:29:20 +0800
-From: <zhuyijun@huawei.com>
-To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>
-Date: Mon, 13 Nov 2017 20:29:00 +0800
-Message-ID: <1510576145-23084-1-git-send-email-zhuyijun@huawei.com>
-X-Mailer: git-send-email 1.8.4.msysgit.0
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id t19sm4736379wrb.58.2017.11.13.08.30.15
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 13 Nov 2017 08:30:15 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id 8AFAE3E00A0;
+	Mon, 13 Nov 2017 16:30:15 +0000 (GMT)
+References: <20171004184325.24157-1-richard.henderson@linaro.org> <20171004184325.24157-4-richard.henderson@linaro.org>
+User-agent: mu4e 1.0-alpha2; emacs 26.0.90
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Subject: Re: [Qemu-arm] [PATCH v1 03/12] target/arm: Decode aa64 armv8.1 scalar three same extra
+In-reply-to: <20171004184325.24157-4-richard.henderson@linaro.org>
+Date: Mon, 13 Nov 2017 16:30:15 +0000
+Message-ID: <87wp2u9m5k.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.27.25]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020201.5A09902C.0073, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2014-11-16 11:51:01, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: f6d9dae1e0d52a3ff7e276c6f2eae3ba
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-	[fuzzy]
-X-Received-From: 45.249.212.190
-Subject: [Qemu-devel] [RFC 0/5] arm: Exclude reserved memory regions of
- iommu to avoid
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, shameerali.kolothum.thodi@huawei.com,
-	zhaoshenglong@huawei.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Mg3D75qIkSBE
-
-From: Zhu Yijun <zhuyijun@huawei.com>
-
-With kernel 4.11, iommu/smmu will populate the MSI IOVA reserved window and
-PCI reserved window which has to be excluded from Guest iova allocations.
-
-And on certain HiSilicon platforms (hip06/hip07), the GIC ITS and PCIe RC 
-deviates from the standard implementation will reserve the hw msi regions in
-the smmu-v3 driver which means these address regions will not be translated.
-
-https://www.spinics.net/lists/linux-pci/msg65125.html
-
-On such platforms, reserved memory regions will export like this:
-
-root:~# cat /sys/kernel/iommu_groups/7/reserved_regions
-0x00000000a8800000 0x00000000affeffff reserved
-0x00000000c6000000 0x00000000c601ffff msi
-
-However, it falls within the Qemu default virtual memory address space.
-
-Take a look at hw/arm/virt.c:
-
-[VIRT_MEM] =             { 0x40000000, RAMLIMIT_BYTES },
-    . . .
-
-    memory_region_allocate_system_memory(ram, NULL, "mach-virt.ram",
-                                                     machine->ram_size);
-memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base, ram);
-
-So suppose we allocate 4GB mem to a VM, there is a chance that the reserved
-regions will get allocated for a Guest VF DMA iova and it will fail.
-
-This patchset create holes in the Qemu RAM address space which exclude
-the sysfs exported regions.
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: SvLcQjMF22H+
 
 
-Zhu Yijun (5):
-  hw/vfio: Add function for getting reserved_region of device iommu
-    group
-  hw/arm/virt: Enable dynamic generation of guest RAM memory regions
-  hw/arm: add scattered RAM memory region support
-  hw/arm/boot: set fdt size cell of memory node from mem_list
-  hw/arm/virt-acpi-build: Build srat table according to mem_list
+Richard Henderson <richard.henderson@linaro.org> writes:
 
- hw/arm/boot.c                 | 155 +++++++++++++++++++++++++++++++-----------
- hw/arm/virt-acpi-build.c      |  40 +++++++++--
- hw/arm/virt.c                 | 120 ++++++++++++++++++++++++++++++--
- hw/vfio/common.c              |  67 ++++++++++++++++++
- hw/vfio/pci.c                 |   2 +
- hw/vfio/platform.c            |   2 +
- include/exec/memory.h         |   7 ++
- include/hw/arm/arm.h          |   1 +
- include/hw/arm/virt.h         |   1 +
- include/hw/vfio/vfio-common.h |   3 +
- 10 files changed, 347 insertions(+), 51 deletions(-)
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/helper.h         |   4 ++
+>  target/arm/advsimd_helper.c | 105 ++++++++++++++++++++++++++++++++++++++=
+++++++
+>  target/arm/translate-a64.c  |  90 +++++++++++++++++++++++++++++++++++++
+>  target/arm/Makefile.objs    |   2 +-
+>  4 files changed, 200 insertions(+), 1 deletion(-)
+>  create mode 100644 target/arm/advsimd_helper.c
+>
+> diff --git a/target/arm/helper.h b/target/arm/helper.h
+> index 64afbac59f..ec098d8337 100644
+> --- a/target/arm/helper.h
+> +++ b/target/arm/helper.h
+> @@ -350,8 +350,12 @@ DEF_HELPER_FLAGS_1(neon_rbit_u8, TCG_CALL_NO_RWG_SE,=
+ i32, i32)
+>
+>  DEF_HELPER_3(neon_qdmulh_s16, i32, env, i32, i32)
+>  DEF_HELPER_3(neon_qrdmulh_s16, i32, env, i32, i32)
+> +DEF_HELPER_4(neon_qrdmlah_s16, i32, env, i32, i32, i32)
+> +DEF_HELPER_4(neon_qrdmlsh_s16, i32, env, i32, i32, i32)
+>  DEF_HELPER_3(neon_qdmulh_s32, i32, env, i32, i32)
+>  DEF_HELPER_3(neon_qrdmulh_s32, i32, env, i32, i32)
+> +DEF_HELPER_4(neon_qrdmlah_s32, i32, env, s32, s32, s32)
+> +DEF_HELPER_4(neon_qrdmlsh_s32, i32, env, s32, s32, s32)
 
--- 
-1.8.3.1
+Hmm are these really NEON or should they be advsimd_qrdm....?
+
+>
+>  DEF_HELPER_1(neon_narrow_u8, i32, i64)
+>  DEF_HELPER_1(neon_narrow_u16, i32, i64)
+> diff --git a/target/arm/advsimd_helper.c b/target/arm/advsimd_helper.c
+> new file mode 100644
+> index 0000000000..583c2b0dce
+> --- /dev/null
+> +++ b/target/arm/advsimd_helper.c
+> @@ -0,0 +1,105 @@
+> +/*
+> + *  ARM AdvSIMD Vector Operations
+> + *
+> + *  Copyright (c) 2017 Linaro
+> + *
+> + * This library is free software; you can redistribute it and/or
+> + * modify it under the terms of the GNU Lesser General Public
+> + * License as published by the Free Software Foundation; either
+> + * version 2 of the License, or (at your option) any later version.
+> + *
+> + * This library is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+> + * Lesser General Public License for more details.
+> + *
+> + * You should have received a copy of the GNU Lesser General Public
+> + * License along with this library; if not, see <http://www.gnu.org/lice=
+nses/>.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "cpu.h"
+> +#include "exec/exec-all.h"
+> +#include "exec/helper-proto.h"
+> +#include "tcg/tcg-gvec-desc.h"
+> +
+> +
+> +#define SET_QC() env->vfp.xregs[ARM_VFP_FPSCR] |=3D CPSR_Q
+> +
+> +static uint16_t inl_qrdmlah_s16(CPUARMState *env, int16_t src1,
+> +                                int16_t src2, int16_t src3)
+> +{
+> +    /* Simplify:
+> +     * =3D ((a3 << 16) + ((e1 * e2) << 1) + (1 << 15)) >> 16
+> +     * =3D ((a3 << 15) + (e1 * e2) + (1 << 14)) >> 15
+> +     */
+> +    int32_t ret =3D (int32_t)src1 * src2;
+> +    ret =3D ((int32_t)src3 << 15) + ret + (1 << 14);
+> +    ret >>=3D 15;
+> +    if (ret !=3D (int16_t)ret) {
+> +        SET_QC();
+> +        ret =3D (ret < 0 ? -0x8000 : 0x7fff);
+> +    }
+> +    return ret;
+> +}
+> +
+> +uint32_t HELPER(neon_qrdmlah_s16)(CPUARMState *env, uint32_t src1,
+> +                                  uint32_t src2, uint32_t src3)
+> +{
+> +    uint16_t e1 =3D inl_qrdmlah_s16(env, src1, src2, src3);
+> +    uint16_t e2 =3D inl_qrdmlah_s16(env, src1 >> 16, src2 >> 16, src3 >>=
+ 16);
+> +    return deposit32(e1, 16, 16, e2);
+> +}
+> +
+> +static uint16_t inl_qrdmlsh_s16(CPUARMState *env, int16_t src1,
+> +                                int16_t src2, int16_t src3)
+> +{
+> +    /* Similarly, using subtraction:
+> +     * =3D ((a3 << 16) - ((e1 * e2) << 1) + (1 << 15)) >> 16
+> +     * =3D ((a3 << 15) - (e1 * e2) + (1 << 14)) >> 15
+> +     */
+> +    int32_t ret =3D (int32_t)src1 * src2;
+> +    ret =3D ((int32_t)src3 << 15) - ret + (1 << 14);
+> +    ret >>=3D 15;
+> +    if (ret !=3D (int16_t)ret) {
+> +        SET_QC();
+> +        ret =3D (ret < 0 ? -0x8000 : 0x7fff);
+> +    }
+> +    return ret;
+> +}
+> +
+> +uint32_t HELPER(neon_qrdmlsh_s16)(CPUARMState *env, uint32_t src1,
+> +                                  uint32_t src2, uint32_t src3)
+> +{
+> +    uint16_t e1 =3D inl_qrdmlsh_s16(env, src1, src2, src3);
+> +    uint16_t e2 =3D inl_qrdmlsh_s16(env, src1 >> 16, src2 >> 16, src3 >>=
+ 16);
+> +    return deposit32(e1, 16, 16, e2);
+> +}
+> +
+> +uint32_t HELPER(neon_qrdmlah_s32)(CPUARMState *env, int32_t src1,
+> +                                  int32_t src2, int32_t src3)
+> +{
+> +    /* Simplify similarly to int_qrdmlah_s16 above.  */
+> +    int64_t ret =3D (int64_t)src1 * src2;
+> +    ret =3D ((int64_t)src3 << 31) + ret + (1 << 30);
+> +    ret >>=3D 31;
+> +    if (ret !=3D (int32_t)ret) {
+> +        SET_QC();
+> +        ret =3D (ret < 0 ? INT32_MIN : INT32_MAX);
+> +    }
+> +    return ret;
+> +}
+> +
+> +uint32_t HELPER(neon_qrdmlsh_s32)(CPUARMState *env, int32_t src1,
+> +                                  int32_t src2, int32_t src3)
+> +{
+> +    /* Simplify similarly to int_qrdmlsh_s16 above.  */
+> +    int64_t ret =3D (int64_t)src1 * src2;
+> +    ret =3D ((int64_t)src3 << 31) - ret + (1 << 30);
+> +    ret >>=3D 31;
+> +    if (ret !=3D (int32_t)ret) {
+> +        SET_QC();
+> +        ret =3D (ret < 0 ? INT32_MIN : INT32_MAX);
+> +    }
+> +    return ret;
+> +}
+> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+> index a4380bbb15..182853e3bb 100644
+> --- a/target/arm/translate-a64.c
+> +++ b/target/arm/translate-a64.c
+> @@ -7596,6 +7596,95 @@ static void disas_simd_scalar_three_reg_same(Disas=
+Context *s, uint32_t insn)
+>      tcg_temp_free_i64(tcg_rd);
+>  }
+>
+> +/* AdvSIMD scalar three same extra
+> + *  31 30  29 28       24 23  22  21 20  16  15 14    11  10 9  5 4  0
+> + * +-----+---+-----------+------+---+------+---+--------+---+----+----+
+> + * | 0 1 | U | 1 1 1 1 0 | size | 0 |  Rm  | 1 | opcode | 1 | Rn | Rd |
+> + * +-----+---+-----------+------+---+------+---+--------+---+----+----+
+> + */
+> +static void disas_simd_scalar_three_reg_same_extra(DisasContext *s,
+> +                                                   uint32_t insn)
+> +{
+> +    int rd =3D extract32(insn, 0, 5);
+> +    int rn =3D extract32(insn, 5, 5);
+> +    int opcode =3D extract32(insn, 11, 4);
+> +    int rm =3D extract32(insn, 16, 5);
+> +    int size =3D extract32(insn, 22, 2);
+> +    bool u =3D extract32(insn, 29, 1);
+> +    TCGv_i32 ele1, ele2, ele3;
+> +    TCGv_i64 res;
+> +    int feature;
+> +
+> +    if (!u) {
+> +        unallocated_encoding(s);
+> +        return;
+> +    }
+> +
+> +    switch (opcode) {
+> +    case 0x0: /* SQRDMLAH (vector) */
+> +    case 0x1: /* SQRDMLSH (vector) */
+> +        if (size !=3D 1 && size !=3D 2) {
+> +            unallocated_encoding(s);
+> +            return;
+> +        }
+> +        feature =3D ARM_FEATURE_V8_1_SIMD;
+> +        break;
+> +    default:
+> +        unallocated_encoding(s);
+> +        return;
+> +    }
+> +
+> +    if (!arm_dc_feature(s, feature)) {
+> +        unallocated_encoding(s);
+> +        return;
+> +    }
+
+I guess this is because we are expecting additional features to be added
+to the encoding space...
+
+> +    if (!fp_access_check(s)) {
+> +        return;
+> +    }
+> +
+> +    /* Do a single operation on the lowest element in the vector.
+> +     * We use the standard Neon helpers and rely on 0 OP 0 =3D=3D 0
+> +     * with no side effects for all these operations.
+> +     * OPTME: special-purpose helpers would avoid doing some
+> +     * unnecessary work in the helper for the 16 bit cases.
+> +     */
+> +    ele1 =3D tcg_temp_new_i32();
+> +    ele2 =3D tcg_temp_new_i32();
+> +    ele3 =3D tcg_temp_new_i32();
+> +
+> +    read_vec_element_i32(s, ele1, rn, 0, size);
+> +    read_vec_element_i32(s, ele2, rm, 0, size);
+> +    read_vec_element_i32(s, ele3, rd, 0, size);
+> +
+> +    switch (opcode) {
+> +    case 0x0: /* SQRDMLAH */
+> +        if (size =3D=3D 1) {
+> +            gen_helper_neon_qrdmlah_s16(ele3, cpu_env, ele1, ele2, ele3);
+> +        } else {
+> +            gen_helper_neon_qrdmlah_s32(ele3, cpu_env, ele1, ele2, ele3);
+> +        }
+> +        break;
+> +    case 0x1: /* SQRDMLSH */
+> +        if (size =3D=3D 1) {
+> +            gen_helper_neon_qrdmlsh_s16(ele3, cpu_env, ele1, ele2, ele3);
+> +        } else {
+> +            gen_helper_neon_qrdmlsh_s32(ele3, cpu_env, ele1, ele2, ele3);
+> +        }
+> +        break;
+> +    default:
+> +        g_assert_not_reached();
+> +    }
+> +    tcg_temp_free_i32(ele1);
+> +    tcg_temp_free_i32(ele2);
+> +
+> +    res =3D tcg_temp_new_i64();
+> +    tcg_gen_extu_i32_i64(res, ele3);
+> +    tcg_temp_free_i32(ele3);
+> +
+> +    write_fp_dreg(s, rd, res);
+> +    tcg_temp_free_i64(res);
+> +}
+> +
+>  static void handle_2misc_64(DisasContext *s, int opcode, bool u,
+>                              TCGv_i64 tcg_rd, TCGv_i64 tcg_rn,
+>                              TCGv_i32 tcg_rmode, TCGv_ptr tcg_fpstatus)
+> @@ -11184,6 +11273,7 @@ static const AArch64DecodeTable data_proc_simd[] =
+=3D {
+>      { 0x0e000800, 0xbf208c00, disas_simd_zip_trn },
+>      { 0x2e000000, 0xbf208400, disas_simd_ext },
+>      { 0x5e200400, 0xdf200400, disas_simd_scalar_three_reg_same },
+> +    { 0x5e008400, 0xdf208400, disas_simd_scalar_three_reg_same_extra },
+>      { 0x5e200000, 0xdf200c00, disas_simd_scalar_three_reg_diff },
+>      { 0x5e200800, 0xdf3e0c00, disas_simd_scalar_two_reg_misc },
+>      { 0x5e300800, 0xdf3e0c00, disas_simd_scalar_pairwise },
+> diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
+> index 847fb52ee0..c2d32988f9 100644
+> --- a/target/arm/Makefile.objs
+> +++ b/target/arm/Makefile.objs
+> @@ -5,7 +5,7 @@ obj-$(call land,$(CONFIG_KVM),$(call lnot,$(TARGET_AARCH6=
+4))) +=3D kvm32.o
+>  obj-$(call land,$(CONFIG_KVM),$(TARGET_AARCH64)) +=3D kvm64.o
+>  obj-$(call lnot,$(CONFIG_KVM)) +=3D kvm-stub.o
+>  obj-y +=3D translate.o op_helper.o helper.o cpu.o
+> -obj-y +=3D neon_helper.o iwmmxt_helper.o
+> +obj-y +=3D neon_helper.o iwmmxt_helper.o advsimd_helper.o
+
+Given this is AArch64 only it makes me wonder if we should be using helper-=
+a64.h?
+
+>  obj-y +=3D gdbstub.o
+>  obj-$(TARGET_AARCH64) +=3D cpu64.o translate-a64.o helper-a64.o gdbstub6=
+4.o
+>  obj-y +=3D crypto_helper.o
 
 
+--
+Alex Benn=C3=A9e

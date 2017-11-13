@@ -1,92 +1,199 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id 19sm12028480wmn.15.2017.11.13.09.06.20
+        by smtp.gmail.com with ESMTPSA id f132sm5275336wmf.38.2017.11.13.09.12.19
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 13 Nov 2017 09:06:20 -0800 (PST)
+        Mon, 13 Nov 2017 09:12:19 -0800 (PST)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 65C8E3E009E;
-	Mon, 13 Nov 2017 17:06:20 +0000 (GMT)
-References: <20171004184325.24157-1-richard.henderson@linaro.org> <20171004184325.24157-9-richard.henderson@linaro.org>
+	by zen.linaro.local (Postfix) with ESMTPS id 6907A3E009E;
+	Mon, 13 Nov 2017 17:12:19 +0000 (GMT)
+References: <20171004184325.24157-1-richard.henderson@linaro.org> <20171004184325.24157-10-richard.henderson@linaro.org>
 User-agent: mu4e 1.0-alpha2; emacs 26.0.90
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: Re: [Qemu-arm] [PATCH v1 08/12] target/arm: Add ARM_FEATURE_V8_FCMA
-In-reply-to: <20171004184325.24157-9-richard.henderson@linaro.org>
-Date: Mon, 13 Nov 2017 17:06:20 +0000
-Message-ID: <87po8m9khf.fsf@linaro.org>
+Subject: Re: [Qemu-devel] [PATCH v1 09/12] target/arm: Decode aa64 armv8.3 fcadd
+In-reply-to: <20171004184325.24157-10-richard.henderson@linaro.org>
+Date: Mon, 13 Nov 2017 17:12:19 +0000
+Message-ID: <87o9o69k7g.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 0lk3+HeLzoq8
+X-TUID: RsgfJJYREQYt
 
 
 Richard Henderson <richard.henderson@linaro.org> writes:
 
-As per previous nit about slightly more expansive commit comment.
-Otherwise:
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 
 Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  target/arm/cpu.h     | 1 +
->  linux-user/elfload.c | 1 +
->  target/arm/cpu.c     | 1 +
->  target/arm/cpu64.c   | 1 +
->  4 files changed, 4 insertions(+)
+>  target/arm/helper.h         |  5 ++++
+>  target/arm/advsimd_helper.c | 66 +++++++++++++++++++++++++++++++++++++++=
+++++++
+>  target/arm/translate-a64.c  | 33 ++++++++++++++++++++++-
+>  3 files changed, 103 insertions(+), 1 deletion(-)
 >
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index c5c9cef834..fdf72534d0 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -1313,6 +1313,7 @@ enum arm_features {
->      ARM_FEATURE_M_SECURITY, /* M profile Security Extension */
->      ARM_FEATURE_JAZELLE, /* has (trivial) Jazelle implementation */
->      ARM_FEATURE_V8_1_SIMD, /* has ARMv8.1-SIMD */
-> +    ARM_FEATURE_V8_FCMA, /* has complex number part of v8.3 extensions. =
- */
->  };
+> diff --git a/target/arm/helper.h b/target/arm/helper.h
+> index 67583b3c2e..350e2fa0e1 100644
+> --- a/target/arm/helper.h
+> +++ b/target/arm/helper.h
+> @@ -551,6 +551,11 @@ DEF_HELPER_FLAGS_5(gvec_qrdmlah_s32, TCG_CALL_NO_RWG,
+>  DEF_HELPER_FLAGS_5(gvec_qrdmlsh_s32, TCG_CALL_NO_RWG,
+>                     void, ptr, ptr, ptr, ptr, i32)
 >
->  static inline int arm_feature(CPUARMState *env, int feature)
-> diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-> index 003d9420b7..788e46229b 100644
-> --- a/linux-user/elfload.c
-> +++ b/linux-user/elfload.c
-> @@ -541,6 +541,7 @@ static uint32_t get_elf_hwcap(void)
->      GET_FEATURE(ARM_FEATURE_V8_SHA256, ARM_HWCAP_A64_SHA2);
->      GET_FEATURE(ARM_FEATURE_CRC, ARM_HWCAP_A64_CRC32);
->      GET_FEATURE(ARM_FEATURE_V8_1_SIMD, ARM_HWCAP_A64_ASIMDRDM);
-> +    GET_FEATURE(ARM_FEATURE_V8_FCMA, ARM_HWCAP_A64_FCMA);
->  #undef GET_FEATURE
->
->      return hwcaps;
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 276c996e9f..722d2806a7 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -1604,6 +1604,7 @@ static void arm_any_initfn(Object *obj)
->      set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
->      set_feature(&cpu->env, ARM_FEATURE_CRC);
->      set_feature(&cpu->env, ARM_FEATURE_V8_1_SIMD);
-> +    set_feature(&cpu->env, ARM_FEATURE_V8_FCMA);
->      cpu->midr =3D 0xffffffff;
->  }
+> +DEF_HELPER_FLAGS_5(gvec_fcadds, TCG_CALL_NO_RWG,
+> +                   void, ptr, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_5(gvec_fcaddd, TCG_CALL_NO_RWG,
+> +                   void, ptr, ptr, ptr, ptr, i32)
+> +
+>  #ifdef TARGET_AARCH64
+>  #include "helper-a64.h"
 >  #endif
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index b05c904ad2..96320ac0d6 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -227,6 +227,7 @@ static void aarch64_any_initfn(Object *obj)
->      set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
->      set_feature(&cpu->env, ARM_FEATURE_CRC);
->      set_feature(&cpu->env, ARM_FEATURE_V8_1_SIMD);
-> +    set_feature(&cpu->env, ARM_FEATURE_V8_FCMA);
->      cpu->ctr =3D 0x80038003; /* 32 byte I and D cacheline size, VIPT ica=
-che */
->      cpu->dcz_blocksize =3D 7; /*  512 bytes */
+> diff --git a/target/arm/advsimd_helper.c b/target/arm/advsimd_helper.c
+> index b0f4b02a12..fe2e0cbcef 100644
+> --- a/target/arm/advsimd_helper.c
+> +++ b/target/arm/advsimd_helper.c
+> @@ -24,6 +24,18 @@
+>  #include "tcg/tcg-gvec-desc.h"
+>
+>
+> +/* Note that vector data is stored in host-endian 64-bit chunks,
+> +   so addressing units smaller than that needs a host-endian fixup.  */
+> +#ifdef HOST_WORDS_BIGENDIAN
+> +#define H1(x)  ((x) ^ 7)
+> +#define H2(x)  ((x) ^ 3)
+> +#define H4(x)  ((x) ^ 1)
+> +#else
+> +#define H1(x)  (x)
+> +#define H2(x)  (x)
+> +#define H4(x)  (x)
+> +#endif
+> +
+>  #define SET_QC() env->vfp.xregs[ARM_VFP_FPSCR] |=3D CPSR_Q
+>
+>  static void clear_tail(void *vd, uintptr_t opr_sz, uintptr_t max_sz)
+> @@ -177,3 +189,57 @@ void HELPER(gvec_qrdmlsh_s32)(void *vd, void *vn, vo=
+id *vm,
+>      }
+>      clear_tail(d, opr_sz, simd_maxsz(desc));
 >  }
+> +
+> +void HELPER(gvec_fcadds)(void *vd, void *vn, void *vm,
+> +                         void *vfpst, uint32_t desc)
+> +{
+> +    uintptr_t opr_sz =3D simd_oprsz(desc);
+> +    float32 *d =3D vd;
+> +    float32 *n =3D vn;
+> +    float32 *m =3D vm;
+> +    float_status *fpst =3D vfpst;
+> +    uint32_t neg_real =3D extract32(desc, SIMD_DATA_SHIFT, 1);
+> +    uint32_t neg_imag =3D neg_real ^ 1;
+> +    uintptr_t i;
+> +
+> +    neg_real <<=3D 31;
+> +    neg_imag <<=3D 31;
+> +
+> +    for (i =3D 0; i < opr_sz / 4; i +=3D 2) {
+> +        float32 e0 =3D n[H4(i)];
+> +        float32 e1 =3D m[H4(i + 1)] ^ neg_imag;
+> +        float32 e2 =3D n[H4(i + 1)];
+> +        float32 e3 =3D m[H4(i)] ^ neg_real;
+> +
+> +        d[H4(i)] =3D float32_add(e0, e1, fpst);
+> +        d[H4(i + 1)] =3D float32_add(e2, e3, fpst);
+> +    }
+> +    clear_tail(d, opr_sz, simd_maxsz(desc));
+> +}
+> +
+> +void HELPER(gvec_fcaddd)(void *vd, void *vn, void *vm,
+> +                         void *vfpst, uint32_t desc)
+> +{
+> +    uintptr_t opr_sz =3D simd_oprsz(desc);
+> +    float64 *d =3D vd;
+> +    float64 *n =3D vn;
+> +    float64 *m =3D vm;
+> +    float_status *fpst =3D vfpst;
+> +    uint64_t neg_real =3D extract64(desc, SIMD_DATA_SHIFT, 1);
+> +    uint64_t neg_imag =3D neg_real ^ 1;
+> +    uintptr_t i;
+> +
+> +    neg_real <<=3D 63;
+> +    neg_imag <<=3D 63;
+> +
+> +    for (i =3D 0; i < opr_sz / 8; i +=3D 2) {
+> +        float64 e0 =3D n[i];
+> +        float64 e1 =3D m[i + 1] ^ neg_imag;
+> +        float64 e2 =3D n[i + 1];
+> +        float64 e3 =3D m[i] ^ neg_real;
+> +
+> +        d[i] =3D float64_add(e0, e1, fpst);
+> +        d[i + 1] =3D float64_add(e2, e3, fpst);
+> +    }
+> +    clear_tail(d, opr_sz, simd_maxsz(desc));
+> +}
+> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+> index b02aad8cd7..f13a945c43 100644
+> --- a/target/arm/translate-a64.c
+> +++ b/target/arm/translate-a64.c
+> @@ -9890,7 +9890,8 @@ static void disas_simd_three_reg_same_extra(DisasCo=
+ntext *s, uint32_t insn)
+>      int size =3D extract32(insn, 22, 2);
+>      bool u =3D extract32(insn, 29, 1);
+>      bool is_q =3D extract32(insn, 30, 1);
+> -    int feature;
+> +    int feature, data;
+> +    TCGv_ptr fpst;
+>
+>      if (!u) {
+>          unallocated_encoding(s);
+> @@ -9906,6 +9907,14 @@ static void disas_simd_three_reg_same_extra(DisasC=
+ontext *s, uint32_t insn)
+>          }
+>          feature =3D ARM_FEATURE_V8_1_SIMD;
+>          break;
+> +    case 0xc: /* FCADD, #90 */
+> +    case 0xe: /* FCADD, #270 */
+> +        if (size !=3D 2 && (size !=3D 3 || !is_q)) { /* FIXME: fp16 supp=
+ort */
+> +            unallocated_encoding(s);
+> +            return;
+> +        }
+> +        feature =3D ARM_FEATURE_V8_FCMA;
+> +        break;
+>      default:
+>          unallocated_encoding(s);
+>          return;
+> @@ -9952,6 +9961,28 @@ static void disas_simd_three_reg_same_extra(DisasC=
+ontext *s, uint32_t insn)
+>                             0, fn_gvec_ptr);
+>          break;
+>
+> +    case 0xc: /* FCADD, #90 */
+> +    case 0xe: /* FCADD, #270 */
+> +        switch (size) {
+> +        case 2:
+> +            fn_gvec_ptr =3D gen_helper_gvec_fcadds;
+> +            break;
+> +        case 3:
+> +            fn_gvec_ptr =3D gen_helper_gvec_fcaddd;
+> +            break;
+> +        default:
+> +            g_assert_not_reached();
+> +        }
+> +        data =3D extract32(opcode, 1, 1);
+> +        fpst =3D get_fpstatus_ptr();
+> +        tcg_gen_gvec_3_ptr(vec_full_reg_offset(s, rd),
+> +                           vec_full_reg_offset(s, rn),
+> +                           vec_full_reg_offset(s, rm), fpst,
+> +                           is_q ? 16 : 8, vec_full_reg_size(s),
+> +                           data, fn_gvec_ptr);
+> +        tcg_temp_free_ptr(fpst);
+> +        break;
+> +
+>      default:
+>          g_assert_not_reached();
+>      }
 
 
 --

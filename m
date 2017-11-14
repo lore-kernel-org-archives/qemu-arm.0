@@ -1,65 +1,65 @@
-Received: by 10.223.150.237 with SMTP id u100csp3058583wrb;
-        Mon, 13 Nov 2017 17:20:09 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMbZYqxnBu1XYasH5rSm1AYBGDD06RwjXnck12M7OTFwrxvN+0mPkWr5E9hteNBadp4t+WUS
-X-Received: by 10.37.198.21 with SMTP id k21mr1944888ybf.14.1510622409028;
-        Mon, 13 Nov 2017 17:20:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510622409; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp3059986wrb;
+        Mon, 13 Nov 2017 17:22:17 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMZvHmmgRwHjw72xjg9vyXBCr50Pxnz6A8h8+XOM71anriUt1V8MQE6Pe32dmRfcrBVY6kjm
+X-Received: by 10.37.224.149 with SMTP id x143mr6500764ybg.440.1510622537162;
+        Mon, 13 Nov 2017 17:22:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510622537; cv=none;
         d=google.com; s=arc-20160816;
-        b=yNmq1W64bNxfjVmmDTeD8JixwdtVb/ljzFfawU+NoC7TFApAFA5DJaZ10q3V22ICir
-         Gma7ghi7SRm4ZU3AIVvhtgrqslC0IhBztT1eqrXHoPJY+co/ZzyBn/7KwnDyOny8T/Va
-         RG4ymFRZjM632TIy3Wq+Ms7lQJtIStDt1YuoMy4oY3dpY++wDW4+8rxzDr7rCbl0rDs+
-         AXdv79tue+UzPCPmU7DBqp9KsuYCuVco1VGwITB+Kq+UmeV8e1ZUYWOyYYlcTdhneJSB
-         xSCNW9lEfGXJEnZ0uCHEOgGaj1N65vSYePc/TywlJ6+27yHnZoRUrSFcDfsKpSLFmK08
-         qt6g==
+        b=Yb09ev9iR9kRN+qclpqaeX/w9HO0pi+gWQxcZlj/rnbtHPqJWDDT7zyw5sbmLElacY
+         QRu636gC1eHlsR3J1BZahKanUKiRkUgy9DbkhJUrpfl+W+ECwJKK1LWxjnchvrYqzFoP
+         5NUV6qlECSGSNpXCE9ldYYZfg3Tl2uKsi4TUPob9CaHP2VJXrYT2cVGNXIfklk5wxlnf
+         Bhs3YnYjVyx8Xq0rvxSZ+vOMyUR2I/SueEWLpJqY0WR88CLqgrrssRVXt4AIO9v4AVXl
+         1QqXeHPjSUy2923Hy+Xy3j7hBbul8Nw72Ye+5nuJG7scjnYEUuZ7/uSUObP/PDcxbs/R
+         8G9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version:references
          :in-reply-to:message-id:date:to:from:arc-authentication-results;
-        bh=drnovajfDAxBJL2jxrrb6OmftiSuLHwwrqFkAY+B6UA=;
-        b=w2PxcJGTc72VjPnuIbFA4YnYEpBJjqqpCYv9lzRqBofuOTPK9U/7m120B5e9Okh2xI
-         eAucGlJYJ8ab8YPwKCI6E6QAN5mEbBfA974YNzEEEAAUfGA2uIS05FqZ4h0jynnM9Ogq
-         xcEQXu57ZAxk9Hw24KmjqWPc7QqNtXEdktjNPn6hh++uKlwK9PAOCAmx50mDrtn0ypI/
-         dS/RwsMcQLhAF2xpd6H+a38ydjOZtCNOmEjnBwLeTj81/iVX7zJ2yRC7NncBiaqrhpbM
-         /7iOBUCrckP1ZTDPTjzuekqgJ1Fpy63x50heCglbRWFCWA5SAZzauJQnPa2oVh3hLiuD
-         oTxw==
+        bh=uv4cFh0jNl2vBy6TpsaaPs9/RYw1Dmh8nNENhWu2Vrw=;
+        b=p3rd7vX+Rm27W3C3eGS+VuQeGbp2lK7J85tos4ozUc8dgcj8ZB+RzxS9liOAexZiNx
+         x5GHvmd0vy8vbAMSaxURP/s9nvdP9xb8EI4C2SNaZ0XZPFGSIAnSawarL7OlyIXKxK8c
+         mbqjpEE5qx+3iLN0Zz7k9QFJNKpmvfUtIgHRs6t8uoOimv03+lrK4B1Wi0FQCXPg5Wmo
+         1wsR94Coe8ByYyCjFoRlBYReOp+4nHyDq0k8Bo/0zQE2DKPIxkwik8TArL3a+Gj+pmY6
+         1cEtEQd9JOcyQm5cvrsTnXzTfGyGOecAZDsTttUMVASxK+0dM7V9ID9xbz7R66sYeEyo
+         SIyw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s184si3774468ybb.659.2017.11.13.17.20.08
+        by mx.google.com with ESMTPS id y71si362149yby.642.2017.11.13.17.22.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 13 Nov 2017 17:20:09 -0800 (PST)
+        Mon, 13 Nov 2017 17:22:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:57154 helo=lists.gnu.org)
+Received: from localhost ([::1]:57169 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eEPtY-0005kh-FT
-	for alex.bennee@linaro.org; Mon, 13 Nov 2017 20:20:08 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35196)
+	id 1eEPvc-0007SH-J3
+	for alex.bennee@linaro.org; Mon, 13 Nov 2017 20:22:16 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35413)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhuyijun@huawei.com>) id 1eEPps-0002XA-Tx
-	for qemu-devel@nongnu.org; Mon, 13 Nov 2017 20:16:22 -0500
+	(envelope-from <zhuyijun@huawei.com>) id 1eEPqC-0002ly-OM
+	for qemu-devel@nongnu.org; Mon, 13 Nov 2017 20:16:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhuyijun@huawei.com>) id 1eEPpo-0003cp-Pu
-	for qemu-devel@nongnu.org; Mon, 13 Nov 2017 20:16:20 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2349)
+	(envelope-from <zhuyijun@huawei.com>) id 1eEPq9-0003pa-Ga
+	for qemu-devel@nongnu.org; Mon, 13 Nov 2017 20:16:40 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2290)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
 	(envelope-from <zhuyijun@huawei.com>)
-	id 1eEPpn-0003XX-Rc; Mon, 13 Nov 2017 20:16:16 -0500
-Received: from 172.30.72.59 (EHLO DGGEMS409-HUB.china.huawei.com)
-	([172.30.72.59])
-	by dggrg04-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
-	with ESMTP id DKT86830; Tue, 14 Nov 2017 09:16:04 +0800 (CST)
-Received: from localhost (10.177.27.25) by DGGEMS409-HUB.china.huawei.com
-	(10.3.19.209) with Microsoft SMTP Server id 14.3.361.1; Tue, 14 Nov 2017
-	09:15:57 +0800
+	id 1eEPq8-0003nz-TK; Mon, 13 Nov 2017 20:16:37 -0500
+Received: from 172.30.72.60 (EHLO DGGEMS412-HUB.china.huawei.com)
+	([172.30.72.60])
+	by dggrg05-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
+	with ESMTP id DKW85549; Tue, 14 Nov 2017 09:16:31 +0800 (CST)
+Received: from localhost (10.177.27.25) by DGGEMS412-HUB.china.huawei.com
+	(10.3.19.212) with Microsoft SMTP Server id 14.3.361.1; Tue, 14 Nov 2017
+	09:15:59 +0800
 From: <zhuyijun@huawei.com>
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>
-Date: Tue, 14 Nov 2017 09:15:52 +0800
-Message-ID: <1510622154-17224-4-git-send-email-zhuyijun@huawei.com>
+Date: Tue, 14 Nov 2017 09:15:54 +0800
+Message-ID: <1510622154-17224-6-git-send-email-zhuyijun@huawei.com>
 X-Mailer: git-send-email 1.8.4.msysgit.0
 In-Reply-To: <1510622154-17224-1-git-send-email-zhuyijun@huawei.com>
 References: <1510622154-17224-1-git-send-email-zhuyijun@huawei.com>
@@ -68,15 +68,15 @@ Content-Type: text/plain
 X-Originating-IP: [10.177.27.25]
 X-CFilter-Loop: Reflected
 X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020205.5A0A43D5.00D9, ss=1, re=0.000, recu=0.000,
+	refid=str=0001.0A020204.5A0A43EF.00F2, ss=1, re=0.000, recu=0.000,
 	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
 	so=2014-11-16 11:51:01, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 8197e73b3ca87d9a208b7667f2e25e04
+X-Mirapoint-Loop-Id: fb5d816960baf9cd40ade15de84c2a3e
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
 	[fuzzy]
-X-Received-From: 45.249.212.190
-Subject: [Qemu-devel] [RFC 3/5] hw/arm: add scattered RAM memory region
- support
+X-Received-From: 45.249.212.191
+Subject: [Qemu-devel] [RFC 5/5] hw/arm/virt-acpi-build: Build srat table
+ according to mem_list
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,187 +92,78 @@ Cc: peter.maydell@linaro.org, shameerali.kolothum.thodi@huawei.com,
 	zhaoshenglong@huawei.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hrLt06tXI2z5
+X-TUID: c+xFbprWGuXx
 
 From: Zhu Yijun <zhuyijun@huawei.com>
 
-Dig out reserved memory holes and collect scattered RAM memory
-regions by adding mem_list member in arm_boot_info struct.
+In case of accessing memory holes, we build srat table by
+traversing mem_list.
 
 Signed-off-by: Zhu Yijun <zhuyijun@huawei.com>
 ---
- hw/arm/boot.c        |   8 ++++
- hw/arm/virt.c        | 101 ++++++++++++++++++++++++++++++++++++++++++++++++++-
- include/hw/arm/arm.h |   1 +
- 3 files changed, 108 insertions(+), 2 deletions(-)
+ hw/arm/virt-acpi-build.c | 40 +++++++++++++++++++++++++++++++++++-----
+ 1 file changed, 35 insertions(+), 5 deletions(-)
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index c2720c8..30438f4 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -836,6 +836,14 @@ static void arm_load_kernel_notify(Notifier *notifier, void *data)
-      */
-     assert(!(info->secure_board_setup && kvm_enabled()));
- 
-+    /* If machine is not virt, the mem_list will empty. */
-+    if (QLIST_EMPTY(&vms->bootinfo.mem_list)) {
-+        RAMRegion *new = g_new(RAMRegion, 1);
-+        new->base = info->loader_start;
-+        new->size = info->ram_size;
-+        QLIST_INSERT_HEAD(&vms->bootinfo.mem_list, new, next);
-+    }
-+
-     info->dtb_filename = qemu_opt_get(qemu_get_machine_opts(), "dtb");
- 
-     /* Load the kernel.  */
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index ddde5e1..ff334c1 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -56,6 +56,7 @@
- #include "hw/smbios/smbios.h"
- #include "qapi/visitor.h"
- #include "standard-headers/linux/input.h"
-+#include "hw/vfio/vfio-common.h"
- 
- #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
-     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
-@@ -1225,6 +1226,98 @@ void virt_machine_done(Notifier *notifier, void *data)
-     virt_build_smbios(vms);
- }
- 
-+static void handle_reserved_ram_region_overlap(void)
-+{
-+    hwaddr cur_end, next_end;
-+    RAMRegion *reg, *next_reg, *tmp_reg;
-+
-+    QLIST_FOREACH(reg, &reserved_ram_regions, next) {
-+        next_reg = QLIST_NEXT(reg, next);
-+
-+        while (next_reg && next_reg->base <= (reg->base + reg->size)) {
-+            next_end = next_reg->base + next_reg->size;
-+            cur_end = reg->base + reg->size;
-+            if (next_end > cur_end) {
-+                reg->size += (next_end - cur_end);
-+            }
-+
-+            tmp_reg = QLIST_NEXT(next_reg, next);
-+            QLIST_REMOVE(next_reg, next);
-+            g_free(next_reg);
-+            next_reg = tmp_reg;
-+        }
-+    }
-+}
-+
-+static void update_memory_regions(VirtMachineState *vms, hwaddr ram_size)
-+{
-+
-+    RAMRegion *new, *reg, *last = NULL;
-+    hwaddr virt_start, virt_end;
-+    virt_start = vms->memmap[VIRT_MEM].base;
-+    virt_end = virt_start + ram_size - 1;
-+
-+    handle_reserved_ram_region_overlap();
-+
-+    QLIST_FOREACH(reg, &reserved_ram_regions, next) {
-+        if (reg->base >= virt_start && reg->base < virt_end) {
-+            if (reg->base == virt_start) {
-+                virt_start += reg->size;
-+                virt_end += reg->size;
-+                continue;
-+            } else {
-+                new = g_new(RAMRegion, 1);
-+                new->base = virt_start;
-+                new->size = reg->base - virt_start;
-+                virt_start = reg->base + reg->size;
-+            }
-+
-+            if (QLIST_EMPTY(&vms->bootinfo.mem_list)) {
-+                QLIST_INSERT_HEAD(&vms->bootinfo.mem_list, new, next);
-+            } else {
-+                QLIST_INSERT_AFTER(last, new, next);
-+            }
-+
-+            last = new;
-+            ram_size -= new->size;
-+            virt_end += reg->size;
-+        }
-+    }
-+
-+    if (ram_size > 0) {
-+        new = g_new(RAMRegion, 1);
-+        new->base = virt_start;
-+        new->size = ram_size;
-+
-+        if (QLIST_EMPTY(&vms->bootinfo.mem_list)) {
-+            QLIST_INSERT_HEAD(&vms->bootinfo.mem_list, new, next);
-+        } else {
-+            QLIST_INSERT_AFTER(last, new, next);
-+        }
-+    }
-+}
-+
-+static void create_ram_alias(VirtMachineState *vms,
-+                             MemoryRegion *sysmem,
-+                             MemoryRegion *ram)
-+{
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 3d78ff6..e8dd7c9 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -487,7 +487,12 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     AcpiSratProcessorGiccAffinity *core;
+     AcpiSratMemoryAffinity *numamem;
+     int i, srat_start;
+-    uint64_t mem_base;
++    hwaddr region_offset = 0;       /* region base addr offset */
++    hwaddr region_eat_size = 0;     /* region consumed size */
++    hwaddr node_mem_size = 0;
++    RAMRegion *begin_search_region = QLIST_FIRST(&vms->bootinfo.mem_list);
 +    RAMRegion *reg;
-+    MemoryRegion *ram_memory;
-+    char *nodename;
-+    hwaddr sz = 0;
 +
-+    QLIST_FOREACH(reg, &vms->bootinfo.mem_list, next) {
-+        nodename = g_strdup_printf("ram@%" PRIx64, reg->base);
-+        ram_memory = g_new(MemoryRegion, 1);
-+        memory_region_init_alias(ram_memory, NULL, nodename, ram, sz,
-+                                 reg->size);
-+        memory_region_add_subregion(sysmem, reg->base, ram_memory);
-+        sz += reg->size;
+     MachineClass *mc = MACHINE_GET_CLASS(vms);
+     const CPUArchIdList *cpu_list = mc->possible_cpu_arch_ids(MACHINE(vms));
+ 
+@@ -504,12 +509,37 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         core->flags = cpu_to_le32(1);
+     }
+ 
+-    mem_base = vms->memmap[VIRT_MEM].base;
+     for (i = 0; i < nb_numa_nodes; ++i) {
+         numamem = acpi_data_push(table_data, sizeof(*numamem));
+-        build_srat_memory(numamem, mem_base, numa_info[i].node_mem, i,
+-                          MEM_AFFINITY_ENABLED);
+-        mem_base += numa_info[i].node_mem;
++        node_mem_size = numa_info[i].node_mem;
++        QLIST_FOREACH(reg, &vms->bootinfo.mem_list, next) {
++            if (reg->base != begin_search_region->base) {
++                continue;
++            }
 +
-+        g_free(nodename);
-+    }
-+}
++            if (node_mem_size >= (reg->size - region_offset)) {
++                region_eat_size = reg->size - region_offset;
++            } else {
++                region_eat_size = node_mem_size;
++            }
 +
- static void virt_ram_memory_region_init(Notifier *notifier, void *data)
- {
-     MachineState *machine = MACHINE(qdev_get_machine());
-@@ -1232,10 +1325,15 @@ static void virt_ram_memory_region_init(Notifier *notifier, void *data)
-     MemoryRegion *ram = g_new(MemoryRegion, 1);
-     VirtMachineState *vms = container_of(notifier, VirtMachineState,
-                                          ram_memory_region_init);
-+    RAMRegion *first_mem_reg;
- 
-     memory_region_allocate_system_memory(ram, NULL, "mach-virt.ram",
-                                          machine->ram_size);
--    memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base, ram);
-+    update_memory_regions(vms, machine->ram_size);
-+    create_ram_alias(vms, sysmem, ram);
++            build_srat_memory(numamem, reg->base + region_offset,
++                              region_eat_size, i, MEM_AFFINITY_ENABLED);
 +
-+    first_mem_reg = QLIST_FIRST(&vms->bootinfo.mem_list);
-+    vms->bootinfo.loader_start = first_mem_reg->base;
- }
++            node_mem_size -= region_eat_size;
++            region_offset += region_eat_size;
++            begin_search_region = reg;
++
++            /* The region is depleted */
++            if (reg->size == region_offset) {
++                region_offset = 0;
++                begin_search_region = QLIST_NEXT(reg, next);
++            }
++
++            if (node_mem_size == 0) {
++                break;
++            }
++        }
+     }
  
- static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
-@@ -1458,7 +1556,6 @@ static void machvirt_init(MachineState *machine)
-     vms->bootinfo.initrd_filename = machine->initrd_filename;
-     vms->bootinfo.nb_cpus = smp_cpus;
-     vms->bootinfo.board_id = -1;
--    vms->bootinfo.loader_start = vms->memmap[VIRT_MEM].base;
-     vms->bootinfo.get_dtb = machvirt_dtb;
-     vms->bootinfo.firmware_loaded = firmware_loaded;
-     arm_load_kernel(ARM_CPU(first_cpu), &vms->bootinfo);
-diff --git a/include/hw/arm/arm.h b/include/hw/arm/arm.h
-index ce769bd..d953026 100644
---- a/include/hw/arm/arm.h
-+++ b/include/hw/arm/arm.h
-@@ -124,6 +124,7 @@ struct arm_boot_info {
-     bool secure_board_setup;
- 
-     arm_endianness endianness;
-+    QLIST_HEAD(, RAMRegion) mem_list;
- };
- 
- /**
+     build_header(linker, table_data, (void *)srat, "SRAT",
 -- 
 1.8.3.1
 

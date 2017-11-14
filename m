@@ -1,146 +1,101 @@
-Received: by 10.223.161.27 with SMTP id o27csp2498236wro;
-        Thu, 2 Nov 2017 12:53:16 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+QWAplZ3YIOFu5wZ5FUGgDnoLcUdUxMhoJwaZmka2Q4/ZKuBfo4xval2WZrnQOZ/7eNNscV
-X-Received: by 10.129.96.87 with SMTP id u84mr3245690ywb.329.1509652396395;
-        Thu, 02 Nov 2017 12:53:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1509652396; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp3352240wrb;
+        Tue, 14 Nov 2017 00:38:24 -0800 (PST)
+X-Received: by 10.223.151.197 with SMTP id t5mr8600723wrb.263.1510648704531;
+        Tue, 14 Nov 2017 00:38:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510648704; cv=none;
         d=google.com; s=arc-20160816;
-        b=NJhit9mxNk65ZNF1kHQWXX3/QJrG7msd+4nhN6CroIfC2ejOAGFyHgBo/WmM8KBLXw
-         327W9xc7hlNo+aSlxJ9F/rHj2Ja+dmy9TUhRib0it9cgJC8z6zydOrgbuH+SpvAASs8/
-         vdOo351cMbNHsij1t9DQcAys708U9FMMzAQYN8Cmzft4joLHxEOnXLcToS5MA3WbPs07
-         N/EArxgMZKwQyAHsPdEpbnXnll33V1Fm8bZ5kWvHlRyWHik/tl2Jfdd2kNIEzKPFAoL8
-         hzEFGWgYEZQxe7JuQzeiXl4E40PFvGZ4PyUuQ/hLXxlkAAsjFChRev7WAbIOCK6mNFnQ
-         pauw==
+        b=g18pTo4M9AkuzrQ1UeHgwzV7eMKKAV++EtiduUR9KfiguHOvpBxRAaixj1cUUYudlj
+         uYsfL+RT/GgdKZrFJD/bgFqlFnRheUR0TcJi6KT60o3UWyrvJhInkrAIMeOtyosdSz0x
+         8orVgY08vtmDqhlquz9+sb99HKJiRMIXrf0KMfutP1H4UuXvj1GKrr1Ne1G6KPSYxIJG
+         VgHNgLpStYC6YGI+vS2pbI+nbOAdYxXx4+vt45SBixLLWyJIZ7x3RRWHOjtp4EVCei0x
+         vYYZkorvkxRLajRGo6Pyfo1pgBFW8XX1nTdxGqBPHjUfoO4DFu8YtT6K7JbNbCK1wWH1
+         FBRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature:dkim-signature:arc-authentication-results;
-        bh=T8BM+1Xv861IZaK/1uZsc9F+XDjR8z6Os7a/X0Jf6n0=;
-        b=TjSB/RcqEtAOeEspNk8Z33rHXFAg/plefjRQCtT+XwIvQXPfWDDuGF5gVFDFbqm5Jh
-         N6qk1qiah7s7bJ0Ck1aPHtiHjHoWAYX2jRlT82gExxJhMg5OwMlW81G/jf/+06rSYawx
-         u6X7s5MjI9NiHkMpfHdOn6qi8rDdXyGk+ynrKLg2omoB7yknaj21t+eepp9eBNKEtxAe
-         fSVaSDyB8gwGWdY49dMF6iC1UFsPH2QYep6vuq2bd4jB1SJFrTzViIRYgnBnoByOKCXx
-         mA7ng/w1odO2YpBuW7h4gGSBPNXnPOVWvC4tDq9B6TzNg2FbHVbW4Kne61B6Dt8RV5FH
-         5xgg==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature:arc-authentication-results;
+        bh=OYnFHA96C6+u6EzuFk6aoWvGSwwb07jxFaSdVax1haM=;
+        b=nqk0aTZB7toIjNsAVROp0ZfdGdfXRcIOZilZPEJ+eA7JvmJa1y4NL5tfJy3wxU4wEv
+         bfqIC55LADFbPaY/RuPw+yyd40OFFh/NwRVkQKeF4nSPsP2kFlEi/t/9C4yptiCurR0c
+         NS+RR4XmcEdDvF8+34moMPYL60/6lyBDjAVDYXZA52OaUZ2zYZ5rQB9OGkBlack23QR9
+         6xM5dPqBcoZ+57d2DskzIr5fvR/81BVxC1BuJzTK7DE3eVYMMAJyxWW19kP2TLRZrTIQ
+         aaFfiy1LiQ9gLd8Z3w0RVlt+Qd0j+upbqy4GBhjmbpltPLVeNMBbDK3/SIfGiGYqwsip
+         Jidw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@braap.org header.s=mesmtp header.b=LL6p6mYX;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=WCEag5DH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j128si963782ywf.334.2017.11.02.12.53.16
+       dkim=pass header.i=@linaro.org header.s=google header.b=OvfL/eRg;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d63sor2485920wmd.62.2017.11.14.00.38.24
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 02 Nov 2017 12:53:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (Google Transport Security);
+        Tue, 14 Nov 2017 00:38:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@braap.org header.s=mesmtp header.b=LL6p6mYX;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=WCEag5DH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:33676 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eALYB-0003Ht-TS
-	for alex.bennee@linaro.org; Thu, 02 Nov 2017 15:53:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56488)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1eALY5-0003Hm-F3
-	for qemu-arm@nongnu.org; Thu, 02 Nov 2017 15:53:10 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1eALY1-0001QO-Hq
-	for qemu-arm@nongnu.org; Thu, 02 Nov 2017 15:53:09 -0400
-Received: from out4-smtp.messagingengine.com ([66.111.4.28]:60851)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <cota@braap.org>)
-	id 1eALY1-0001OI-Ad; Thu, 02 Nov 2017 15:53:05 -0400
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id E0AD720E50;
-	Thu,  2 Nov 2017 15:53:03 -0400 (EDT)
-Received: from frontend1 ([10.202.2.160])
-	by compute4.internal (MEProxy); Thu, 02 Nov 2017 15:53:03 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
-	:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc; s=
-	mesmtp; bh=T8BM+1Xv861IZaK/1uZsc9F+XDjR8z6Os7a/X0Jf6n0=; b=LL6p6
-	mYXcZ8iB2RQ2ES42lA5/jegDHn7aJvcgY4jej8WKLzTxJ3LnzBQjMaL6XBUDUuZc
-	7ro5vrpr9obue4acc1cxIMJ1ewZUW//Lm2KdzCn8EmTQQEJ5ll9QWWOZzIWol4Hl
-	mQCvKpH9TvGsRIYq9aetaehMaX76tv0jFPsLZM=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm1; bh=T8BM+1Xv861IZaK/1uZsc9F+XDjR8
-	z6Os7a/X0Jf6n0=; b=WCEag5DHn1RUG7whfm71rjNbqb4d0Bn8FeufU6huU9uTw
-	JDqpchTMGBfZwHEU07Yh2v3JSTU4vvhCB9QLmshC/BCNgs5ASHPicfI24hBeEJxr
-	+vWaI70CoY9aHOoRWVLh+gHsaKBU3LIKTcR//s/KgN2AZboH0IC2SBg5hZN0YBzZ
-	7Bu8GYmReyPK+11s+rA5wFg45nD04IW5q7TmG8vzpSpckIcPSwHWtZQuokdwah8o
-	RZmBLitXJ9gUx2+kvaT/q9QvCteqPgj7VuhSzjPlUtvzHMQUNFuIFa3R0Wywyrgv
-	y4NldzGtMlYCnx0XmBIXnesojO7x7JXnJF9Q5EbEw==
-X-ME-Sender: <xms:n3f7WYZBH1WgltFhHEjB1isJ0X6zBGMmHMVViGJSPQq9hrkDj99xZQ>
-Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 7AF977FAEC;
-	Thu,  2 Nov 2017 15:53:03 -0400 (EDT)
-Date: Thu, 2 Nov 2017 15:53:03 -0400
-From: "Emilio G. Cota" <cota@braap.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20171102195303.GA25452@flamenco>
-References: <20171025093535.10175-1-richard.henderson@linaro.org>
-	<4ab3bd81-925c-a281-614c-2cd87fce38b5@redhat.com>
-	<20171101203620.GA17963@flamenco>
-	<CAFEAcA-CX90dLbR8ypEidniFmORRZ8u7Pzc3fcaKJSeF9zTK1A@mail.gmail.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=OvfL/eRg;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=OYnFHA96C6+u6EzuFk6aoWvGSwwb07jxFaSdVax1haM=;
+        b=OvfL/eRgu0O5QVq7QqEvWRR8OrYHFn3ToNoUBU2msT3faDr+oeTOG6ZplAnvmeX53/
+         Yz2l7UdLQkLZXbYiAQfkpeMe4U6KPP7H0KZ1yTyi1JdMECbUpo8yBj30i2dU1U9ADuzl
+         BPyUykhbbYdv9ltpb8KP+rlEJGonfyDJer4ww=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=OYnFHA96C6+u6EzuFk6aoWvGSwwb07jxFaSdVax1haM=;
+        b=WirUOZg/khJyDo0sG86qAk8eWjoiiNy49hv+dR/HR6PbPRRxQ/b5Z8xKDdcXd6UHf7
+         9pL843Oh8OPxAp0/b3sY/akaxbhwjrEgCtONicKADhUlX5QAf5rjWGopQ06HNFDd+8Q9
+         vu7JeWe0hD2p3sZ4AHmaQKpVbPwm1dtdhlSxUzLfgOdeqIZA0Gyx6aQ1bBwLzhtJ0bp8
+         nX5xXDttOn8RCOZ9krG/6Oo/CZCYTEqcMa4S6vtN8o3zsOwZluj8rxUqIqb8kSb8GPgs
+         gC/jo0+e+10fioBWL8CGxhiM/TOn18iOPLfBbvSkN2PSpDhTU2D9i5pVGkba8xJn36NR
+         s7ng==
+X-Gm-Message-State: AJaThX4XYD56RkQMohRTxsJ1TTHv5htyMviB9nDFdLjGc37DtMmfggMq
+	RzI/HMKXBX4I+ZUveoikqa8UVs43r0lKBQ==
+X-Google-Smtp-Source: AGs4zMY4c3o7mTw4Y/tvdlwFPUrfBr+goykGy979RAdhC77m7cd4k/7aEnDs8hx5gZPK/g32VeoFOA==
+X-Received: by 10.28.230.25 with SMTP id d25mr8016586wmh.148.1510648704172;
+        Tue, 14 Nov 2017 00:38:24 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from cloudburst.twiddle.net (176.red-213-99-135.dynamicip.rima-tde.net. [213.99.135.176])
+        by smtp.gmail.com with ESMTPSA id y84sm4815107wmg.39.2017.11.14.00.38.23
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 14 Nov 2017 00:38:23 -0800 (PST)
+Subject: Re: [Qemu-arm] [PATCH v1 01/12] HACK: use objdump disas
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20171004184325.24157-1-richard.henderson@linaro.org>
+ <20171004184325.24157-2-richard.henderson@linaro.org>
+ <87ineetnux.fsf@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <45ba6528-e1ca-071a-32bb-6e1b0f86d18f@linaro.org>
+Date: Tue, 14 Nov 2017 09:38:21 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA-CX90dLbR8ypEidniFmORRZ8u7Pzc3fcaKJSeF9zTK1A@mail.gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.111.4.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PULL 00/51] tcg queued patches
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Thomas Huth <thuth@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QwiWOi8e6SHm
+In-Reply-To: <87ineetnux.fsf@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: GiCf2hM0suhW
 
-On Thu, Nov 02, 2017 at 13:38:07 +0000, Peter Maydell wrote:
-> Maybe we should allow machine models to specify:
->  * max_cpus (the most they can support; 1 if not set by board,
->    as in current code)
->  * min_cpus (the least they can support; 1 if not set by board)
->  * default_cpus (what you get if you don't ask for something else;
->    1 if not set by board)
+On 11/13/2017 12:33 PM, Alex Bennée wrote:
+>> -    if (s.info.print_insn == NULL) {
+>> +    if (1 || s.info.print_insn == NULL) {
+>>          s.info.print_insn = print_insn_od_target;
+>>      }
 > 
-> Then:
->  * these boards which always create a fixed number of CPUs
->    should set all three to the same thing
->  * boards which only create the CPUs requested by the user
->    can leave them unset (as today)
->  * the generic command line parsing code should stop with an
->    error message if the user sets max_cpus smaller than
->    the board's min_cpus setting or greater than the board's
->    max_cpus, or if they set -smp to less than the board's
->    min_cpus
+> Because? Is this being droppped now for capstone?
 
-Shouldn't we just print a warning (like we've been doing in some
-boards, e.g. nuri) and upgrade smp_cpus/max_cpus to whatever value?
-Changing this now could qualify as a regression.
+Heh.  Since you mention it, capstone can't handle ARMv8.x, x > 0 either.  This
+was so that I could pass the data through binutils master, which does support v8.3.
 
-Also, just noticed 4bd2f93 ("exynos4_boards: Silence lack
-of -smp 2 warning for qtest", 2013-11-05); I don't really know how
-"-smp 1" is built in qtest code, but doing as above breaks
-check-qtest-aarch64.
+Obviously it won't go in, but...
 
-		E.
+
+r~

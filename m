@@ -1,205 +1,115 @@
-Received: by 10.223.197.9 with SMTP id q9csp1354408wrf;
-        Fri, 6 Oct 2017 00:24:46 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QBDOWT1rrNmVYnE/iVNcLoE2zPCjQGYDuGoOXmBY9GHo9MSHtFXBpMRg+EB7PR6nnxJChzg
-X-Received: by 10.237.41.135 with SMTP id o7mr1667907qtd.222.1507274686101;
-        Fri, 06 Oct 2017 00:24:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507274686; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp3357901wrb;
+        Tue, 14 Nov 2017 00:46:18 -0800 (PST)
+X-Received: by 10.80.180.18 with SMTP id b18mr16606172edh.136.1510649178899;
+        Tue, 14 Nov 2017 00:46:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510649178; cv=none;
         d=google.com; s=arc-20160816;
-        b=OgMVGSc4qPbEWvLLPD3uhqaJqnxKtsOV1sP0x+s8heR5mbuIdSHmPlEsNRaAHuayfa
-         Fu2FOpEPnng3u9qowAEAkS6ylVyX9fG9dFHI1Hv5pA80RDcjduQguNCZtaQP8tPSQfpm
-         1uRwkob3JiekUH6qreglDPxcjheCcZRjOfbcrxEm2DJ1KMSmo+kHj3rrXuFTpAq6rlYl
-         KAhnkbQneQK753vxyw57Td8L2Kso86Zse6Uwy4ZYdD/UIneqeyG2WrRZaCn4H5cj1l1a
-         oA+m7uvw90vogfHJcsrbOj+/NrA6hX+aHSyZK1YPqbvmmJEQDh1eMDnGgGQD/camp2s6
-         olvg==
+        b=V+5HMPHnjujBOEx3RaH5scFVuhIfn4H5a0Kl2503S7PirCqCXFFvsb3iHnLmYdg9Pd
+         uR+cxz2qzbGcwPhBU4UQQmZf0iQPLgfzg0pKZACEDbnoGOxkkAz29nHy1R8jsyHfaJKo
+         rkWd7kLH8eMUQhADT2bWiHC95fMTIC3oG00u67ki02K2h2tI+qpLYlODwIAw0lbQqhmL
+         m9odrQquNQD7LNTkIssZj96ShGb5sfaTxzbRB7h4X06apfMUeOYtaji3lUTy0CMecYrO
+         Dvg6oRbLkDBi3N5JCjWNmxiYXu0LcX08munQe+aIKrfP//+oJI4Qdvkp8qRODGo4T1/K
+         FO4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:dmarc-filter
-         :arc-authentication-results;
-        bh=eW/oUpcj9bQW6wGZ6Jo+0UnFcy7dN81y/qZQ4Isn8G0=;
-        b=FagM9c5SX4PARHhTgKi9AQQI9p5vkKj4hFnNlQPu7P7DqYImenDv6G3MvNTkISuEN3
-         syuila/OONKOz6cCttpGAVmh9sJOYyYodDhD/C9Mxym/TURN7LxcTtS1FEz411wrgvyJ
-         vBY1k7FKRoH1iIH/XLzAtf02aEm5bncsacliYe/k/bBWSyg5h9FeHKkmrjtjFsyY2QXv
-         mS53+XwZkOLkGdzQe8fS4//IkoTHLHkk2kmAhyUZh39ipAIeumXLaNVAUsMxSEY0Lxmb
-         7jz23zFcFMOuDBZfJ1XSHkWzzoz8SDcHiB1F2IpT8hipnfz5okagk5YxZypVSWfoynlv
-         GU+Q==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature:arc-authentication-results;
+        bh=5t80mgUACI9T4vm3ZRTcLfNt7ozuAd5w8NyaPpafE7o=;
+        b=i2O4XKX+GsUeSm8smTvCmPTg7sSmr/yWq+TRIJSMLluLUb4psktLOOiZZZ3IWU0VJV
+         FGgrQlcDTOJGSgB5AtJb2ZublQl479jiIn0oAW2MZUj19/bX5QLUMVo26kZuWfsaQdq8
+         RzHODAeHhQHUBSWs/1DtfcAs66IlQNT+VGlg2BeLBsYHip9XHXxBu50OuLV3VCDHdBaq
+         i6EoFOUOmNlGyLtB+gronPRfSgj2OjH5g/bLM6iLVpycgXN+LujAkl3DbIILavM+duvq
+         K/c7BFfDP4D9eTH4+JCN6lPLS0aIRjILN1NlTVBZLRWAUuh1oTmO5/Wc8DXyiseX+1rB
+         CIAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a47si180606qte.86.2017.10.06.00.24.45
+       dkim=pass header.i=@linaro.org header.s=google header.b=ibzTIbz3;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id v10sor10996819edf.47.2017.11.14.00.46.18
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 06 Oct 2017 00:24:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (Google Transport Security);
+        Tue, 14 Nov 2017 00:46:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43340 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e0N01-0004hw-J1
-	for alex.bennee@linaro.org; Fri, 06 Oct 2017 03:24:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47849)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1e0Mzr-0004gQ-Cy
-	for qemu-arm@nongnu.org; Fri, 06 Oct 2017 03:24:36 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1e0Mzo-0006o8-8C
-	for qemu-arm@nongnu.org; Fri, 06 Oct 2017 03:24:35 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41624)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1e0Mzn-0006nL-W6; Fri, 06 Oct 2017 03:24:32 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CC635C0587D9;
-	Fri,  6 Oct 2017 07:24:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com CC635C0587D9
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=eric.auger@redhat.com
-Received: from localhost.localdomain (ovpn-116-45.ams2.redhat.com
-	[10.36.116.45])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 56F7960C18;
-	Fri,  6 Oct 2017 07:24:22 +0000 (UTC)
-To: Bharat Bhushan <bharat.bhushan@nxp.com>,
-	Linu Cherian <linuc.decode@gmail.com>
-References: <1506494000-31982-1-git-send-email-Bharat.Bhushan@nxp.com>
-	<20170927074109.GA31587@virtx40>
-	<AM5PR0401MB25450ACC804B20D93C4F2D9D9A780@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-	<9700cf30-65ed-9c55-c1b9-14bb8deb669f@redhat.com>
-	<20170927092147.GA32183@virtx40>
-	<0af599c0-f859-f90c-c999-bc4a0a678768@redhat.com>
-	<20171004114910.GA6932@virtx40>
-	<79234c56-c524-5359-de8a-f266b19821eb@redhat.com>
-	<9d173ea5-75a6-c684-7f8d-e2ec1d3eddff@redhat.com>
-	<1017080b-aa5f-4a1f-9905-e65f22717cd1@redhat.com>
-	<b740e8b7-5859-fd6a-1f1e-480aef6ef4f0@redhat.com>
-	<AM5PR0401MB254548523AC95D0A2A8A92E69A710@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <807c8076-af7b-da24-66d5-2c823dc1da34@redhat.com>
-Date: Fri, 6 Oct 2017 09:24:20 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+       dkim=pass header.i=@linaro.org header.s=google header.b=ibzTIbz3;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=5t80mgUACI9T4vm3ZRTcLfNt7ozuAd5w8NyaPpafE7o=;
+        b=ibzTIbz3RwAq3Key97/JKtZqd8CUyYPyMSaC4+dPCTvNSPUvnOU9spYgZe93YcQM8b
+         fssdTNsbgkCKnTFOj3OmQCVXHpFwMJa9FvXUSDQQo9pF4IYGiY2TLQAP1Krgjczh0SkP
+         U2SP0YwiZvrFvFGi+pmPGzoY6SKnYoeKlKbKU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=5t80mgUACI9T4vm3ZRTcLfNt7ozuAd5w8NyaPpafE7o=;
+        b=YJID1CyQW1pf8EwnucJeeEAzNkORS9lSELIA3YO8HofqEgcr0APpW7JYHoyzz+fH41
+         w7ddBGCLq7tyeHRs65Pfts3gxb6gyvLV90gPFe4ABjOg0AorgjWWOqeB+cPQP4brSGyz
+         RiobG9jrr8TsdPEoKHG6p2nhEZ07lou2waevSWB3ezktI4SOuYSY87jWzKsvQQx/C7Qn
+         5v7GtdyO7YpEvom4Cc26wYrw6ME14CXq5ZOMLf8JWSogCZYfCA1NQbF/MfV0LVjzrXk5
+         YH4uH/k/a12V2y2gsGOEuO09ScItBO8LiL1Ggkiwnuze4Km/NFSFZyJkRsZupUfwojYn
+         0kxw==
+X-Gm-Message-State: AJaThX4+jwUafaMItUbXlcb5koo81wF7XJ1e2/IveB2ov6FSY08N9shV
+	RztMwNrOEXIWyWWL2hAWV+GOJqZ2D9Bx5Q==
+X-Google-Smtp-Source: AGs4zMYPrxVS3yop5GaRqSf3V2tGJ8BdXiqZq/A8ryGyI9AmLpEKaKU3ujPd1EUWUPNpGgaNf4YHQw==
+X-Received: by 10.80.186.29 with SMTP id g29mr3435261edc.206.1510649178654;
+        Tue, 14 Nov 2017 00:46:18 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from cloudburst.twiddle.net (176.red-213-99-135.dynamicip.rima-tde.net. [213.99.135.176])
+        by smtp.gmail.com with ESMTPSA id s6sm14549147edc.2.2017.11.14.00.46.17
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 14 Nov 2017 00:46:17 -0800 (PST)
+Subject: Re: [Qemu-arm] [PATCH v1 06/12] target/arm: Decode aa32 armv8.1 three
+ same
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20171004184325.24157-1-richard.henderson@linaro.org>
+ <20171004184325.24157-7-richard.henderson@linaro.org>
+ <87shdi9l05.fsf@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <e8bb9454-bdbb-34ce-edb6-df31002fbb9a@linaro.org>
+Date: Tue, 14 Nov 2017 09:46:15 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.4.0
 MIME-Version: 1.0
-In-Reply-To: <AM5PR0401MB254548523AC95D0A2A8A92E69A710@AM5PR0401MB2545.eurprd04.prod.outlook.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Fri, 06 Oct 2017 07:24:31 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v4 0/5] virtio-iommu: VFIO
- integration
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"kevin.tian@intel.com" <kevin.tian@intel.com>,
-	"mst@redhat.com" <mst@redhat.com>,
-	"marc.zyngier@arm.com" <marc.zyngier@arm.com>,
-	"tn@semihalf.com" <tn@semihalf.com>,
-	"will.deacon@arm.com" <will.deacon@arm.com>,
-	"drjones@redhat.com" <drjones@redhat.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"linu.cherian@cavium.com" <linu.cherian@cavium.com>,
-	"bharatb.yadav@gmail.com" <bharatb.yadav@gmail.com>,
-	"robin.murphy@arm.com" <robin.murphy@arm.com>,
-	"christoffer.dall@linaro.org" <christoffer.dall@linaro.org>,
-	"eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: x8kXeOjWlr0J
+In-Reply-To: <87shdi9l05.fsf@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: /FN7pC4/6e4P
 
-Hi Bharat,
+On 11/13/2017 05:55 PM, Alex Bennée wrote:
+>> +        case NEON_3R_VFM_VQRDMLSH:
+>> +            if (!u) {
+>> +                /* VFM, VFMS */
+>> +                if ((5 & (1 << size)) == 0) {
+>> +                    return 1;
+>> +                }
+>> +                break;
+>> +            }
+>> +            /* VQRDMLSH */
+>> +            switch (size) {
+>> +            case 1:
+>> +                fn_gvec_ptr = gen_helper_gvec_qrdmlsh_s16;
+>> +                break;
+>> +            case 2:
+>> +                fn_gvec_ptr = gen_helper_gvec_qrdmlsh_s32;
+>> +                break;
+>> +            default:
+>> +                return 1;
+>> +            }
+>> +            goto do_vqrdmlx;
+> Could we not take the opportunity to re-factor out the common bit rather
+> than make this mega 
 
-On 06/10/2017 05:46, Bharat Bhushan wrote:
-> 
-> 
->>>> Thanks
->>>>
->>>> Eric
->>>>>
->>>>> However you should be allowed to map 1 sg element of 5 pages and
->>>>> then notify the host about this event I think. Still looking at the code...
->>>>>
->>>>> I still can't reproduce the issue at the moment. What kind of device
->>>>> are you assigning?
->>>>>
->>>>> Thanks
->>>>>
->>>>> Eric
->>>>>>
->>>>>> Atleast vfio_get_vaddr called from vfio_iommu_map_notify in Qemu
->>>>>> expects the map size to be a power of 2.
->>>
->>> Actually I missed the most important here ;-)
->>>>>>
->>>>>>  if (len & iotlb->addr_mask) {
->>> This check looks suspiscious to me. In our case the len is not
->>> modified by the previous translation and it fails, I don't see why. It
->>> should be valid to be able to notify 5 granules.
->>
->> So after discussion with Alex, looks the way we notify the host currently is
->> wrong. we set the addr_mask to the mapping/unmapping size
->> -1 whereas this should be a page mask instead (granule size or block size?).
->> So if the guest maps 5 x 4kB pages we should send 5 notifications for each
->> page and not a single one. It is unclear to me if we can notify with
->> hugepage/block page size mask. Peter may confirm/infirm this. in vsmmuv3
->> code I notify by granule or block size.
->>
->> Bharat, please can you add this to your TODO list?
->>
->> Linu, thanks a lot for the time you spent debugging this issue.
->> Curiously on my side, it is really seldom hit but it is ...
-> 
-> Thanks Linu and Eric, I added this to my todo list.
-> While I am still not able to reproduce the issue.  I tried with e1000 and now try with ixgbe device. May I know which device can be used to reproduce this issue?
+What, specifically, did you have in mind?
 
-On my side I used an i350T2 device (igb) to reproduce the issue.
 
-Thanks
-
-Eric
-> 
-> Thanks
-> -Bharat
-> 
->>
->> Thanks!
->>
->> Eric
->>>
->>> Thanks
->>>
->>> Eric
->>>>>>         error_report("iommu has granularity incompatible with target AS");
->>>>>>         return false;
->>>>>>     }
->>>>>>
->>>>>> Just trying to understand how this is not hitting in your case.
->>>>>>
->>>>>>
->>>>>
->>>>
->>>
-> 
+r~

@@ -1,65 +1,65 @@
-Received: by 10.223.150.237 with SMTP id u100csp3057322wrb;
-        Mon, 13 Nov 2017 17:18:07 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMay3WR8PFRQbk+Lf5lqtndjKaKpu4GtS/6Y2YWu2xJqtHqkPSlAWVOkTxtFBVkSVdmTQshF
-X-Received: by 10.37.211.80 with SMTP id e77mr2906750ybf.329.1510622287668;
-        Mon, 13 Nov 2017 17:18:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510622287; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp3057508wrb;
+        Mon, 13 Nov 2017 17:18:26 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMYXQOiOIry6+0CR63L+uzrBWNZ7NSamiY90Q/TfQH5dWMIP8ZAKKEX4MTHHr0pHtmN3jCfN
+X-Received: by 10.129.174.10 with SMTP id m10mr3463963ywh.189.1510622306474;
+        Mon, 13 Nov 2017 17:18:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510622306; cv=none;
         d=google.com; s=arc-20160816;
-        b=oXd83E4ZKeXcrydnSw399FMdMh+PkK/RAuQ7JZ/23pZIXlHcjnSdu6XQeZ8zsLFbNB
-         ucII4rwfSFuRAWgSniVGI6Nvb2XH4QmrFIJZIEsCUltGS5kVVqQ11ZgjhIjov3fGaz9C
-         ucI1BJW5kESonu6WEUg659Ijoz8YXy+o6UL7JM9QXd0SbjeCJbwlP/UvraEPsy2n1fdD
-         21W0lShXIIw6WvhH7EC3/hLEVAwJymKlffoeNfOLhp73awXCLerIdhUr+xjV+NKEFgEd
-         Lq8R3tSznZGeoT6Qj2xS4KsMeI3rwj2Q7is+tEQu9sA8CpHm/b2oQPTqpA8o2d5kUydX
-         QShw==
+        b=b/t5vgZASudJUQhJ/6Nnbu+fOi/80KWGMnJADUZLCyXlWqPgeSRqjhvC6TKcbXJ9HP
+         GufgQNOdWbl3mglPwc9fhPXVsSONl5WpGVUVYgC1KFDd9gLJoXQyMaDpYb/aDN3diLF/
+         UkVJOrXSvZeNo3qiZSt1Q/nEhQi146rK8slDPOngzyg/HhF2J4CthTKyApEEoQa/K7BC
+         RBp3RUi8YNbcfU26HAi0+VVPEA4znD6tfJUORZEog3eh03maZOi6J6YfzcRnL3mg3eis
+         InToB+WmTOK5gHrM9tP9rCrVjFRo83AlilZ5XTdXv1w7kuUqDjUfwasAg3mpcs+PC+Q0
+         x7PA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version:references
          :in-reply-to:message-id:date:to:from:arc-authentication-results;
-        bh=fKsZSZj52yKf80WBghyyMLKaM0MONwxSvcAC2EXo/kQ=;
-        b=XhmHHVB+hysp5jshhDE+EBpFx+JgJIKYvtQ1uxjcAePV5iZfX7dbbP5hO6p5rjUZYS
-         7n2N2f+yd8L54t8mUuIj4aYC9q/4vXE2vGpz7lrVWTWD4Jj2SsKPaRjZS1sFzmvQYec2
-         T1UZzzzteSSIbdx0kYeNh9PWB0sPWfRQHv7BstycipoUQnfXeTnkvLQH+baUawrJowyP
-         0SgZ8uVmxf2KsOsIgcJ+F9tbEuyzNNbN0Rc5PYuKiw2uRwyxnAHmZCvTZzk00p4JV+XS
-         F4tORjWw83z5W2QPZqd5GSVNWynxW/crBRpwp+VJOeg1pRiWHXDRk4rKqisndUdzKyXU
-         FQiA==
+        bh=O0LhUklQZbhcUaUW4luokRBguCcqgixSGAzXEjAUKts=;
+        b=EufcKf936ILcWMmx8YBRBqbpZtyUlhCmnIcFsn4RKMRKmP/EnfhjE+pQq/CewnyD3e
+         mmgZbv4yMw4q2kbrzjyzs4qrSimXfCmBUqfldUorcePoCS0szt5nDQN+Kcy5a1wCLtjI
+         F3cxc7iUgo8aGSkxmybqqIVTjuPDkO20rBty5Oa++K3mQ1qy5N0G0dbFnZ/czGwgyxVJ
+         VELn+ksVnuyNsX1rGq3VoNv4YlyDhBytLgvz/qdpxEudVfKsBkcxV4MIxlArnwW5wojY
+         xA7SpOZrvZZ8GgSoWxKgelnUr3NnMFMK184VEox9OjkZUBRqSntQZApfiPc6aoU4lt8d
+         A17g==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h1si3854724ywa.137.2017.11.13.17.18.07
+        by mx.google.com with ESMTPS id k22si1281367ywh.46.2017.11.13.17.18.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 13 Nov 2017 17:18:07 -0800 (PST)
+        Mon, 13 Nov 2017 17:18:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:57145 helo=lists.gnu.org)
+Received: from localhost ([::1]:57146 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eEPrb-0004Hn-1F
-	for alex.bennee@linaro.org; Mon, 13 Nov 2017 20:18:07 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35198)
+	id 1eEPrt-0004X4-Ru
+	for alex.bennee@linaro.org; Mon, 13 Nov 2017 20:18:25 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35427)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhuyijun@huawei.com>) id 1eEPpt-0002XC-2t
-	for qemu-devel@nongnu.org; Mon, 13 Nov 2017 20:16:22 -0500
+	(envelope-from <zhuyijun@huawei.com>) id 1eEPqD-0002os-OH
+	for qemu-devel@nongnu.org; Mon, 13 Nov 2017 20:16:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhuyijun@huawei.com>) id 1eEPpo-0003ck-Po
-	for qemu-devel@nongnu.org; Mon, 13 Nov 2017 20:16:21 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2350)
+	(envelope-from <zhuyijun@huawei.com>) id 1eEPqC-0003ql-Ck
+	for qemu-devel@nongnu.org; Mon, 13 Nov 2017 20:16:41 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2291)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
 	(envelope-from <zhuyijun@huawei.com>)
-	id 1eEPpn-0003Xd-RP; Mon, 13 Nov 2017 20:16:16 -0500
-Received: from 172.30.72.60 (EHLO DGGEMS407-HUB.china.huawei.com)
-	([172.30.72.60])
-	by dggrg04-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
-	with ESMTP id DKT86839; Tue, 14 Nov 2017 09:16:06 +0800 (CST)
-Received: from localhost (10.177.27.25) by DGGEMS407-HUB.china.huawei.com
-	(10.3.19.207) with Microsoft SMTP Server id 14.3.361.1; Tue, 14 Nov 2017
-	09:15:56 +0800
+	id 1eEPqB-0003pK-GF; Mon, 13 Nov 2017 20:16:40 -0500
+Received: from 172.30.72.58 (EHLO DGGEMS405-HUB.china.huawei.com)
+	([172.30.72.58])
+	by dggrg05-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
+	with ESMTP id DKW85566; Tue, 14 Nov 2017 09:16:35 +0800 (CST)
+Received: from localhost (10.177.27.25) by DGGEMS405-HUB.china.huawei.com
+	(10.3.19.205) with Microsoft SMTP Server id 14.3.361.1; Tue, 14 Nov 2017
+	09:15:58 +0800
 From: <zhuyijun@huawei.com>
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>
-Date: Tue, 14 Nov 2017 09:15:50 +0800
-Message-ID: <1510622154-17224-2-git-send-email-zhuyijun@huawei.com>
+Date: Tue, 14 Nov 2017 09:15:53 +0800
+Message-ID: <1510622154-17224-5-git-send-email-zhuyijun@huawei.com>
 X-Mailer: git-send-email 1.8.4.msysgit.0
 In-Reply-To: <1510622154-17224-1-git-send-email-zhuyijun@huawei.com>
 References: <1510622154-17224-1-git-send-email-zhuyijun@huawei.com>
@@ -68,15 +68,15 @@ Content-Type: text/plain
 X-Originating-IP: [10.177.27.25]
 X-CFilter-Loop: Reflected
 X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020205.5A0A43D6.0134, ss=1, re=0.000, recu=0.000,
+	refid=str=0001.0A020201.5A0A43F3.0052, ss=1, re=0.000, recu=0.000,
 	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
 	so=2014-11-16 11:51:01, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 4b8fec13b3fdd04b975ecdebe6c4a9bd
+X-Mirapoint-Loop-Id: 165b4da8128d720285897c371ffa0918
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
 	[fuzzy]
-X-Received-From: 45.249.212.190
-Subject: [Qemu-devel] [RFC 1/5] hw/vfio: Add function for getting
- reserved_region of device iommu group
+X-Received-From: 45.249.212.191
+Subject: [Qemu-devel] [RFC 4/5] hw/arm/boot: set fdt size cell of memory
+ node from mem_list
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,176 +92,239 @@ Cc: peter.maydell@linaro.org, shameerali.kolothum.thodi@huawei.com,
 	zhaoshenglong@huawei.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5nl/JIlHaezh
+X-TUID: a1jvt7rij35/
 
 From: Zhu Yijun <zhuyijun@huawei.com>
 
-With kernel 4.11, iommu/smmu will populate the MSI IOVA reserved window and
-PCI reserved window which has to be excluded from Guest iova allocations.
-
-However, If it falls within the Qemu default virtual memory address space,
-then reserved regions may get allocated for a Guest VF DMA iova and it will
-fail.
-
-So get those reserved regions in this patch and create some holes in the Qemu
-ram address in next patchset.
+In case of accessing memory holes, we create memory fdt node by
+traversing mem_list and adjust memory address if the addr is not
+belong to RAM memory region.
 
 Signed-off-by: Zhu Yijun <zhuyijun@huawei.com>
 ---
- hw/vfio/common.c              | 67 +++++++++++++++++++++++++++++++++++++++++++
- hw/vfio/pci.c                 |  2 ++
- hw/vfio/platform.c            |  2 ++
- include/exec/memory.h         |  7 +++++
- include/hw/vfio/vfio-common.h |  3 ++
- 5 files changed, 81 insertions(+)
+ hw/arm/boot.c | 151 ++++++++++++++++++++++++++++++++++++++++++----------------
+ 1 file changed, 109 insertions(+), 42 deletions(-)
 
-diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-index 7b2924c..01bdbbd 100644
---- a/hw/vfio/common.c
-+++ b/hw/vfio/common.c
-@@ -40,6 +40,8 @@ struct vfio_group_head vfio_group_list =
-     QLIST_HEAD_INITIALIZER(vfio_group_list);
- struct vfio_as_head vfio_address_spaces =
-     QLIST_HEAD_INITIALIZER(vfio_address_spaces);
-+struct reserved_ram_head reserved_ram_regions =
-+    QLIST_HEAD_INITIALIZER(reserved_ram_regions);
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index 30438f4..f4ca599 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -384,6 +384,25 @@ static void set_kernel_args_old(const struct arm_boot_info *info)
+     }
+ }
  
- #ifdef CONFIG_KVM
- /*
-@@ -52,6 +54,71 @@ struct vfio_as_head vfio_address_spaces =
- static int vfio_kvm_device_fd = -1;
- #endif
- 
-+void update_reserved_regions(hwaddr addr, hwaddr size)
++static char *create_memory_fdt(void *fdt, uint32_t acells, hwaddr mem_base,
++                                          uint32_t scells, hwaddr mem_len)
 +{
-+    RAMRegion *reg, *new;
++    char *nodename = NULL;
++    int rc;
 +
-+    new = g_new(RAMRegion, 1);
-+    new->base = addr;
-+    new->size = size;
-+
-+    if (QLIST_EMPTY(&reserved_ram_regions)) {
-+        QLIST_INSERT_HEAD(&reserved_ram_regions, new, next);
-+        return;
++    nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
++    qemu_fdt_add_subnode(fdt, nodename);
++    qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
++    rc = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg", acells, mem_base,
++                                      scells, mem_len);
++    if (rc < 0) {
++        fprintf(stderr, "couldn't set %s/reg\n", nodename);
++        g_free(nodename);
 +    }
 +
-+    /* make the base of reserved_ram_regions increase */
-+    QLIST_FOREACH(reg, &reserved_ram_regions, next) {
-+        if (addr > (reg->base + reg->size - 1)) {
-+            if (!QLIST_NEXT(reg, next)) {
-+                QLIST_INSERT_AFTER(reg, new, next);
-+                break;
-+            }
-+            continue;
-+        } else if (addr >= reg->base && addr <= (reg->base + reg->size - 1)) {
-+            /* discard the duplicate entry */
-+            if (addr == reg->base && size == reg->size) {
-+                g_free(new);
-+                break;
-+            } else {
-+                QLIST_INSERT_AFTER(reg, new, next);
-+                break;
-+            }
-+        } else {
-+            QLIST_INSERT_BEFORE(reg, new, next);
-+            break;
-+        }
-+    }
++    return nodename;
 +}
 +
-+void vfio_get_iommu_group_reserved_region(char *group_path)
-+{
-+    char *filename;
-+    FILE *fp;
-+    hwaddr start, end;
-+    char str[10];
-+    struct stat st;
-+
-+    filename = g_strdup_printf("%s/iommu_group/reserved_regions", group_path);
-+    if (stat(filename, &st) < 0) {
-+        g_free(filename);
-+        return;
-+    }
-+
-+    fp = fopen(filename, "r");
-+    if (!fp) {
-+        g_free(filename);
-+        return;
-+    }
-+
-+    while (fscanf(fp, "%"PRIx64" %"PRIx64" %s", &start, &end, str) != EOF) {
-+        update_reserved_regions(start, (end - start + 1));
-+    }
-+
-+    g_free(filename);
-+    fclose(fp);
-+}
-+
- /*
-  * Common VFIO interrupt disable
-  */
-diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-index c977ee3..9bffb38 100644
---- a/hw/vfio/pci.c
-+++ b/hw/vfio/pci.c
-@@ -2674,6 +2674,8 @@ static void vfio_realize(PCIDevice *pdev, Error **errp)
-     vdev->vbasedev.type = VFIO_DEVICE_TYPE_PCI;
-     vdev->vbasedev.dev = &vdev->pdev.qdev;
+ /**
+  * load_dtb() - load a device tree binary image into memory
+  * @addr:       the address to load the image at
+@@ -412,7 +431,7 @@ static int load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+     uint32_t acells, scells;
+     char *nodename;
+     unsigned int i;
+-    hwaddr mem_base, mem_len;
++    RAMRegion *reg;
  
-+    vfio_get_iommu_group_reserved_region(vdev->vbasedev.sysfsdev);
-+
-     tmp = g_strdup_printf("%s/iommu_group", vdev->vbasedev.sysfsdev);
-     len = readlink(tmp, group_path, sizeof(group_path));
-     g_free(tmp);
-diff --git a/hw/vfio/platform.c b/hw/vfio/platform.c
-index da84abf..d5bbc3a 100644
---- a/hw/vfio/platform.c
-+++ b/hw/vfio/platform.c
-@@ -578,6 +578,8 @@ static int vfio_base_device_init(VFIODevice *vbasedev, Error **errp)
-         return -errno;
+     if (binfo->dtb_filename) {
+         char *filename;
+@@ -464,49 +483,65 @@ static int load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+         goto fail;
      }
  
-+    vfio_get_iommu_group_reserved_region(vbasedev->sysfsdev);
++    /*
++     * Turn the /memory node created before into a NOP node, then create
++     * /memory@addr nodes for all numa nodes respectively.
++     */
++    qemu_fdt_nop_node(fdt, "/memory");
 +
-     tmp = g_strdup_printf("%s/iommu_group", vbasedev->sysfsdev);
-     len = readlink(tmp, group_path, sizeof(group_path));
-     g_free(tmp);
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index 5ed4042..2bcc83b 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -46,6 +46,13 @@
-         OBJECT_GET_CLASS(IOMMUMemoryRegionClass, (obj), \
-                          TYPE_IOMMU_MEMORY_REGION)
- 
-+/* Scattered RAM memory region struct */
-+typedef struct RAMRegion {
-+    hwaddr base;
-+    hwaddr size;
-+    QLIST_ENTRY(RAMRegion) next;
-+} RAMRegion;
+     if (nb_numa_nodes > 0) {
+-        /*
+-         * Turn the /memory node created before into a NOP node, then create
+-         * /memory@addr nodes for all numa nodes respectively.
+-         */
+-        qemu_fdt_nop_node(fdt, "/memory");
+-        mem_base = binfo->loader_start;
++        hwaddr reg_offset = 0; /* region base addr offset */
++        hwaddr reg_alloc_size = 0; /* region consumed size */
++        hwaddr node_mem_size = 0;
++        RAMRegion *tmp_reg = QLIST_FIRST(&binfo->mem_list);
 +
- typedef struct MemoryRegionOps MemoryRegionOps;
- typedef struct MemoryRegionMmio MemoryRegionMmio;
+         for (i = 0; i < nb_numa_nodes; i++) {
+-            mem_len = numa_info[i].node_mem;
+-            nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
+-            qemu_fdt_add_subnode(fdt, nodename);
+-            qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
+-            rc = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
+-                                              acells, mem_base,
+-                                              scells, mem_len);
+-            if (rc < 0) {
+-                fprintf(stderr, "couldn't set %s/reg for node %d\n", nodename,
+-                        i);
+-                goto fail;
+-            }
++            node_mem_size = numa_info[i].node_mem;
++            QLIST_FOREACH(reg, &binfo->mem_list, next) {
++                if (reg->base != tmp_reg->base) {
++                    continue;
++                }
  
-diff --git a/include/hw/vfio/vfio-common.h b/include/hw/vfio/vfio-common.h
-index f3a2ac9..3483ca6 100644
---- a/include/hw/vfio/vfio-common.h
-+++ b/include/hw/vfio/vfio-common.h
-@@ -161,10 +161,13 @@ VFIOGroup *vfio_get_group(int groupid, AddressSpace *as, Error **errp);
- void vfio_put_group(VFIOGroup *group);
- int vfio_get_device(VFIOGroup *group, const char *name,
-                     VFIODevice *vbasedev, Error **errp);
-+void update_reserved_regions(hwaddr addr, hwaddr size);
-+void vfio_get_iommu_group_reserved_region(char *group_path);
+-            qemu_fdt_setprop_cell(fdt, nodename, "numa-node-id", i);
+-            mem_base += mem_len;
+-            g_free(nodename);
+-        }
+-    } else {
+-        Error *err = NULL;
++                if (node_mem_size >= (reg->size - reg_offset)) {
++                    reg_alloc_size = reg->size - reg_offset;
++                } else {
++                    reg_alloc_size = node_mem_size;
++                }
  
- extern const MemoryRegionOps vfio_region_ops;
- extern QLIST_HEAD(vfio_group_head, VFIOGroup) vfio_group_list;
- extern QLIST_HEAD(vfio_as_head, VFIOAddressSpace) vfio_address_spaces;
-+extern QLIST_HEAD(reserved_ram_head, RAMRegion) reserved_ram_regions;
+-        rc = fdt_path_offset(fdt, "/memory");
+-        if (rc < 0) {
+-            qemu_fdt_add_subnode(fdt, "/memory");
+-        }
++                nodename = create_memory_fdt(fdt, acells,
++                                             reg->base + reg_offset,
++                                             scells, reg_alloc_size);
++                if (!nodename) {
++                    goto fail;
++                }
++
++                qemu_fdt_setprop_cell(fdt, nodename, "numa-node-id", i);
++                g_free(nodename);
  
- #ifdef CONFIG_LINUX
- int vfio_get_region_info(VFIODevice *vbasedev, int index,
+-        if (!qemu_fdt_getprop(fdt, "/memory", "device_type", NULL, &err)) {
+-            qemu_fdt_setprop_string(fdt, "/memory", "device_type", "memory");
++                node_mem_size -= reg_alloc_size;
++                reg_offset += reg_alloc_size;
++                tmp_reg = reg;
++
++                /* The region is depleted */
++                if (reg->size == reg_offset) {
++                    reg_offset = 0;
++                    tmp_reg = QLIST_NEXT(reg, next);
++                }
++
++                if (node_mem_size == 0) {
++                    break;
++                }
++            }
+         }
++    } else {
++        QLIST_FOREACH(reg, &binfo->mem_list, next) {
++            nodename = create_memory_fdt(fdt, acells, reg->base,
++                                         scells, reg->size);
++            if (!nodename) {
++                goto fail;
++            }
+ 
+-        rc = qemu_fdt_setprop_sized_cells(fdt, "/memory", "reg",
+-                                          acells, binfo->loader_start,
+-                                          scells, binfo->ram_size);
+-        if (rc < 0) {
+-            fprintf(stderr, "couldn't set /memory/reg\n");
+-            goto fail;
++            g_free(nodename);
+         }
+     }
+ 
+@@ -814,6 +849,35 @@ static uint64_t load_aarch64_image(const char *filename, hwaddr mem_base,
+     return size;
+ }
+ 
++/* Find the max size memory region after info->initrd_start.
++ * TODO: we may have a corner case where the memory node size may not correctly
++ * fit into kernel/initrd/dtb Image sizes.
++ * */
++static RAMRegion *find_initrd_memregion(const struct arm_boot_info *info,
++                                        hwaddr *initrd_start)
++{
++    RAMRegion *reg, *initrd_reg = NULL;
++    hwaddr max_size = 0;
++    hwaddr addr = *initrd_start;
++
++    QLIST_FOREACH(reg, &info->mem_list, next) {
++        if (addr < reg->base) {
++            if (max_size < reg->size) {
++                max_size = reg->size;
++                *initrd_start = reg->base;
++                initrd_reg = reg;
++            }
++        } else if (addr >= reg->base && addr < (reg->base + reg->size)) {
++            if (max_size < reg->base + reg->size - addr) {
++                max_size = reg->base + reg->size - addr;
++                initrd_reg = reg;
++            }
++        }
++    }
++
++    return initrd_reg;
++}
++
+ static void arm_load_kernel_notify(Notifier *notifier, void *data)
+ {
+     CPUState *cs;
+@@ -837,11 +901,11 @@ static void arm_load_kernel_notify(Notifier *notifier, void *data)
+     assert(!(info->secure_board_setup && kvm_enabled()));
+ 
+     /* If machine is not virt, the mem_list will empty. */
+-    if (QLIST_EMPTY(&vms->bootinfo.mem_list)) {
++    if (QLIST_EMPTY(&info->mem_list)) {
+         RAMRegion *new = g_new(RAMRegion, 1);
+         new->base = info->loader_start;
+         new->size = info->ram_size;
+-        QLIST_INSERT_HEAD(&vms->bootinfo.mem_list, new, next);
++        QLIST_INSERT_HEAD(&info->mem_list, new, next);
+     }
+ 
+     info->dtb_filename = qemu_opt_get(qemu_get_machine_opts(), "dtb");
+@@ -973,14 +1037,16 @@ static void arm_load_kernel_notify(Notifier *notifier, void *data)
+         uint32_t fixupcontext[FIXUP_MAX];
+ 
+         if (info->initrd_filename) {
++            RAMRegion *reg = find_initrd_memregion(info, &info->initrd_start);
++
+             initrd_size = load_ramdisk(info->initrd_filename,
+                                        info->initrd_start,
+-                                       info->ram_size -
++                                       reg->base + reg->size -
+                                        info->initrd_start);
+             if (initrd_size < 0) {
+                 initrd_size = load_image_targphys(info->initrd_filename,
+                                                   info->initrd_start,
+-                                                  info->ram_size -
++                                                  reg->base + reg->size -
+                                                   info->initrd_start);
+             }
+             if (initrd_size < 0) {
+@@ -1027,7 +1093,8 @@ static void arm_load_kernel_notify(Notifier *notifier, void *data)
+             }
+             fixupcontext[FIXUP_ARGPTR] = dtb_start;
+         } else {
+-            fixupcontext[FIXUP_ARGPTR] = info->loader_start + KERNEL_ARGS_ADDR;
++            hwaddr kernel_args_addr = info->loader_start + KERNEL_ARGS_ADDR;
++            fixupcontext[FIXUP_ARGPTR] = kernel_args_addr;
+             if (info->ram_size >= (1ULL << 32)) {
+                 fprintf(stderr, "qemu: RAM size must be less than 4GB to boot"
+                         " Linux kernel using ATAGS (try passing a device tree"
 -- 
 1.8.3.1
 

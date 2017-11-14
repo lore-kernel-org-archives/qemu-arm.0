@@ -1,99 +1,103 @@
-Received: by 10.223.150.237 with SMTP id u100csp4245253wrb;
-        Tue, 14 Nov 2017 17:14:52 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMa5mmsrY0D6r/7Hyyw/NtrlPClNJoGWe7DDCpvRfMHD2ofNr3kFaC834HcV9S5HXNVS0bet
-X-Received: by 10.37.91.135 with SMTP id p129mr3162301ybb.439.1510708492293;
-        Tue, 14 Nov 2017 17:14:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510708492; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp3026455wrb;
+        Mon, 13 Nov 2017 16:34:56 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMYyiQsidGYIfN7PrLl3dOh7o6Tphh694xu3mFMxUfjqcD3HO0aZagcIIcF+sWa72E0n7QNe
+X-Received: by 10.129.155.130 with SMTP id s124mr7503061ywg.302.1510619696735;
+        Mon, 13 Nov 2017 16:34:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510619696; cv=none;
         d=google.com; s=arc-20160816;
-        b=gXflBPuXAEMUWZzdhbWxf/Uo53NhyM1GU4PVmchQYy456QTkFZ2/JLZ6RT7NMW82QL
-         J0XfDQFB3ggj5+ibkmus20rPQDI+HruiKrEmJ9bE42Ikn6HwVzYLg9i9NY3500HEKDx8
-         z5nNl2W/VbznFqf6/OLSxpUGyLvoTZa19Q5SMICNtSoCUYHr6QGgpvJ/d4JzO0yWsS7V
-         85vS0gWm3+1UwEAzTFYlQFlPDl7hiuJ0yDz0nVQQYC0FnFYonIizpWzTOwpPTus2ZNQM
-         dRRc5d5gEijdSaknEx38oA71R/J+qX0WIqy0Z3bRdFGXyDclw9R2Q3qiTMXfAi77tEO8
-         F0bQ==
+        b=QZ6VAYPMErMMJp5zKdVWfmJy4LeITxUq+xhOSPGM/bYKkRWQoSD+cBx7ytXvH/8y5a
+         S9XMxG1eTSvClUClVGg7OrOZwXwyYxYCeZLzvDYhticXF3iMXOfSno4NXqs01vnx63EO
+         dK/muc8xufJKarxwnjNSRZEUw/9Zi8QrpoQ2sQBEHRlIKx0hFb0o8JCcdq+eDwQbZMsb
+         3hCE+UMQ5dAA/yu/CzvjXlg+ZMTJ5sFaXLuUZs8xFyC47AGmvO1IsyzqPhjCQQ+XeVNS
+         VpjbYbTKewI/6TID0SYetT8hv0E+a8HmusH/btrCy7SVvtbM3mHTefZM2uvEQzkF6T8U
+         N7JQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:mime-version:references
+         :in-reply-to:date:to:from:message-id:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=vw6p0ftco2i7XIitMWLGsYBKIinFFc/wr1dsv7cEZAA=;
-        b=B6xhrXPvJ6TQTP+ruip1c9qHd4XxblHPTqTWolIZSmRirrmrZEGEuvFkjoAuwhHTJj
-         py0nDhrwEplndeLO8fAPfDFeWVdyeSxS1zi7RbIEHwSnknOSayL9HsHsTBmWmSPzMv1W
-         ZzlAvvwXSxeFg9BLsHPeaLDwhrsYIeU82faNKT1hX7T4drRQAMq7C6W8AemPp5qKtgRp
-         OrXLjqZe4YbGBG0WLsE3ZmP3sOytAJvnub81n4EKjopxBLjvKR9iUmGFL4Bld3vOd/08
-         xUqw3ZrJw+BTbVDw23aNIi1edbkIJXHVw4215NtdMkm1/H9zp2rT3dYnSIT+YEq8N5Ua
-         Yn+g==
+        bh=eE1Nt6bZPwp57wx6oSPTXnMLWGzCop2jWYp1SkkWe0U=;
+        b=UWwKrKxqMIl89afQ/yy+Olsp+Qg9gS/Hq2MnsQZAidp+8PJMfATYdZlglNG9WcbyFv
+         sbrbLY1xMo4m54bHwBcOxOwzOLiQRDKcFvj1e4hnQddLMxn9qWBYpUzf8Dksfe7g6Uy4
+         bh+CqQsK+uEU8Lnam3TXqt6bqagL8pjf4rMlS/UYtV5xzse9E/4G44MisUMjWT0HWe6S
+         1it3uGYR9TEunr0GGBH+KhiZB5cZGTZ+xpDEk+YUyuY8ctlEgQCpB6WGBkyKE0Y72dyo
+         97YWgt5SCZou6ym3WAr9c17cF9MIAJjJgmSz1Y4FEuHU6ajezyejR1S4nHrkJOPSOOPG
+         vXHg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=edZ4vw41;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=X/srdm3c;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=TX0fCGPB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 193si2920559ybe.576.2017.11.14.17.14.52
+        by mx.google.com with ESMTPS id e11si3663474ybe.244.2017.11.13.16.34.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 14 Nov 2017 17:14:52 -0800 (PST)
+        Mon, 13 Nov 2017 16:34:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=edZ4vw41;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:34215 helo=lists.gnu.org)
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=X/srdm3c;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=TX0fCGPB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:57064 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eEmHz-0004BI-Nh
-	for alex.bennee@linaro.org; Tue, 14 Nov 2017 20:14:51 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33629)
+	id 1eEPBo-0002df-5M
+	for alex.bennee@linaro.org; Mon, 13 Nov 2017 19:34:56 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45789)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1eEmHq-0004BB-TQ
-	for qemu-arm@nongnu.org; Tue, 14 Nov 2017 20:14:43 -0500
+	(envelope-from <andrew@aj.id.au>) id 1eEPBe-0002cK-D2
+	for qemu-arm@nongnu.org; Mon, 13 Nov 2017 19:34:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1eEmHp-0008Cp-NY
-	for qemu-arm@nongnu.org; Tue, 14 Nov 2017 20:14:42 -0500
-Received: from mail-wr0-x243.google.com ([2a00:1450:400c:c0c::243]:51191)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1eEmHp-0008CO-DP; Tue, 14 Nov 2017 20:14:41 -0500
-Received: by mail-wr0-x243.google.com with SMTP id p96so19074417wrb.7;
-	Tue, 14 Nov 2017 17:14:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=vw6p0ftco2i7XIitMWLGsYBKIinFFc/wr1dsv7cEZAA=;
-	b=edZ4vw41ilZ/FBv5xlUdENaelxYAX5amJuM91NP0TfR7dAjFQtAffv5OpK9XhrSEVa
-	cWssFrMO1IAKlCO1aOgseMx6zffoPbxndgHItuOcwp60DHaWLgVZEdugQx48QPD2Nql/
-	ZA1u1opWcEadL4DgQYp+dUiepWJJGbNlbfWHaw2Xw3jKgnmbyWxZJLfFoHWwgTUpNhBf
-	3d+5mkPH9Ca8csfJE0tzeLA/7p8LOjjoOdxImem5KxbtGPgtq4VJT5zBJmZRzoRDec9z
-	8pXGCvbWqm8Cupjqpp3AXWltOJQ0v/I9gXpBqH62mD/HCzIXzvSmj/0KuamQ/Pcm9yR1
-	3nXw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=vw6p0ftco2i7XIitMWLGsYBKIinFFc/wr1dsv7cEZAA=;
-	b=PXa2YrvEKlTDgD7Jn7OEYSVRufY74xl7MtE/WKlXR7DetZiiwRjgNeTJw+clEWD/4m
-	IvmIejRrfmphtYJXbGtl5Hn1hQcjx6lb8Z22L66eHZAUCObA4wW5OVj0Cy0X5/v6sgs/
-	6NZ0wNHAGFzKtHOM42eT7jvatNODwi/nrUCscKmmf+vjPgr2HfGKE5+b5JNnePvWEa4U
-	eoK39lprwX0bBqeZ2GBrWAnVcOaHacMJzjyLdCkJJp0/6vfnaznK6nXodcO9H2521l8g
-	a6QLKAMrjD/IiV/oanDpAN6ENiSSsvOaSN9COmR+02PgQl8M+FIpeRATrqs6KWfon/iK
-	YLsQ==
-X-Gm-Message-State: AJaThX5n155ZrVDeEOA8Y1gHnvjExTDmOKGcXOFyTHDQYZC6LeGZI2lB
-	r/1fPS4TMzrdfalyiNrcRXx2AZjvgAI0ybujmVY=
-X-Received: by 10.223.182.3 with SMTP id f3mr12375803wre.127.1510708480055;
-	Tue, 14 Nov 2017 17:14:40 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.28.147.11 with HTTP; Tue, 14 Nov 2017 17:14:09 -0800 (PST)
-In-Reply-To: <1510066898-3725-1-git-send-email-peter.maydell@linaro.org>
-References: <1510066898-3725-1-git-send-email-peter.maydell@linaro.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 14 Nov 2017 17:14:09 -0800
-Message-ID: <CAKmqyKORH2jwGP4ULZv6B8=262OhznHkwOzONd9HFQoJkKzD=A@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::243
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-2.11] target/arm: Report
- GICv3 sysregs present in ID registers if needed
+	(envelope-from <andrew@aj.id.au>) id 1eEPBZ-0003vT-Ei
+	for qemu-arm@nongnu.org; Mon, 13 Nov 2017 19:34:46 -0500
+Received: from out4-smtp.messagingengine.com ([66.111.4.28]:41607)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <andrew@aj.id.au>)
+	id 1eEPBZ-0003u8-1l; Mon, 13 Nov 2017 19:34:41 -0500
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id 3E1B020A83;
+	Mon, 13 Nov 2017 19:34:39 -0500 (EST)
+Received: from frontend2 ([10.202.2.161])
+	by compute4.internal (MEProxy); Mon, 13 Nov 2017 19:34:39 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=cc
+	:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm1; bh=eE1Nt6bZPwp57wx6oSPTXnMLWGzCop2jWYp1SkkWe0U=; b=X/srdm3c
+	E+W2rL+Wz/ZDU8+fgmFAiyim6N25KSHPXIxDYb8eoOOjTAtPy90ADx4PW2u49tu1
+	Xv4gZhPk271DbouoKtKGnuiXOTnEtyzuwybKXmeCT5os5MaIaYzH8J1psNzNIni9
+	0ogAu8KxuvUEJw3GWwVHp2i9uqAI67+hdtAqSuQ2Ajc+b7MG8pNoDKSGOzpMn6nx
+	f462H6mdstEXnidxcy7L1c1Kb3oob3UXtmn9Biih94jim6MhzLus09fVQchqOlbj
+	UBMqm+RLtQmTECsrVCNIjCiSm5gX6ZizqGwQY0+HN9/EjbpuR5YFaCxcsH3vOR3A
+	8I/jEs22UC9JPQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-sender
+	:x-me-sender:x-sasl-enc; s=fm1; bh=eE1Nt6bZPwp57wx6oSPTXnMLWGzCo
+	p2jWYp1SkkWe0U=; b=TX0fCGPBT72kCaB4py+5uF5hhA+x/LOdRjtHghC1HD/Dj
+	FmXysPPF3AdcqK38/DErC5AelmcqQRkplQUIS3JLqHW5X8IelbSaHxYLSZ+IpVSS
+	ecyB7dDloD5X77ldmp1OMM2xPgJCE5CzquwQcsP620h/PDoZkqNECD1aNPffYyNY
+	6mVn7tfX7+s+o8c6RbmW283CLL9/Q6Z27ukJd6r8QNoY7+zNF5h4cUHgDzpLNzUq
+	/9hlkk+cPbdX1kebr42xlmfPZOWkLmGpZgl5fm8+aFHk9x7PR9L/KeQ+lO/q7Dtk
+	dcIO9w5o1vbfXEIlPwt0kqqH1IyRpkkTbOLeSOBDg==
+X-ME-Sender: <xms:HzoKWqfdrAu-0v9JLZ3GGVDyjWB5YxETxwtG8YMWSjprABJU-iCJKA>
+Received: from dave (unknown [203.0.153.9])
+	by mail.messagingengine.com (Postfix) with ESMTPA id EA0CB241BE;
+	Mon, 13 Nov 2017 19:34:36 -0500 (EST)
+Message-ID: <1510619669.4287.82.camel@aj.id.au>
+From: Andrew Jeffery <andrew@aj.id.au>
+To: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 14 Nov 2017 11:04:29 +1030
+In-Reply-To: <20171113132801.8562-1-joel@jms.id.au>
+References: <20171113132801.8562-1-joel@jms.id.au>
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-5ZHCzvozudbOoeAxO8cJ"
+X-Mailer: Evolution 3.26.1-1 
+Mime-Version: 1.0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.111.4.28
+Subject: Re: [Qemu-arm] [PATCH v2] hw/arm/aspeed: Unlock SCU when running
+ kernel
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,121 +109,176 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, Stefano Stabellini <sstabellini@kernel.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Patch Tracking <patches@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	=?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fqWCtdHUj9wL
+X-TUID: VvKWLbu1aEap
 
-On Tue, Nov 7, 2017 at 7:01 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> The CPU ID registers ID_AA64PFR0_EL1, ID_PFR1_EL1 and ID_PFR1
-> have a field for reporting presence of GICv3 system registers.
-> We need to report this field correctly in order for Xen to
-> work as a guest inside QEMU emulation. We mustn't incorrectly
-> claim the sysregs exist when they don't, though, or Linux will
-> crash.
->
-> Unfortunately the way we've designed the GICv3 emulation in QEMU
-> puts the system registers as part of the GICv3 device, which
-> may be created after the CPU proper has been realized. This
-> means that we don't know at the point when we define the ID
-> registers what the correct value is. Handle this by switching
-> them to calling a function at runtime to read the value, where
-> we can fill in the GIC field appropriately.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Is this going to make it into 2.11?
+--=-5ZHCzvozudbOoeAxO8cJ
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Alistair
-
+On Mon, 2017-11-13 at 23:58 +1030, Joel Stanley wrote:
+> The ASPEED hardware contains a lock register for the SCU that disables
+> any writes to the SCU when it is locked. The machine comes up with the
+> lock enabled, but on all known hardware u-boot will unlock it and leave
+> it unlocked when loading the kernel.
+>=20
+> This means the kernel expects the SCU to be unlocked. When booting from
+> an emulated ROM the normal u-boot unlock path is executed. Things don't
+> go well when booting using the -kernel command line, as u-boot does not
+> run first.
+>=20
+> Change behaviour so that when a kernel is passed to the machine, set the
+> reset value of the SCU to be unlocked.
+>=20
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
 > ---
-> In retrospect I think having the sysregs emulation in the
-> GIC device was a bit of a design error -- we should have
-> split it like the hardware does, with a defined protocol
-> between the GIC and the CPU interface. (In real hardware the
-> CPU can have the GIC system registers even though it's not
-> connected to an actual GICv3, and we don't/can't emulate
-> that with our current design.)
+> v2:
+>  - use the correct value for the key
+>  - rename it ASPEED_SCU_PROT_KEY
 > ---
->  target/arm/helper.c | 44 ++++++++++++++++++++++++++++++++++++++++----
->  1 file changed, 40 insertions(+), 4 deletions(-)
->
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index f61fb3e..35c5bd6 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -4549,6 +4549,33 @@ static void define_debug_regs(ARMCPU *cpu)
+>  hw/arm/aspeed.c              | 10 ++++++++++
+>  hw/arm/aspeed_soc.c          |  2 ++
+>  hw/misc/aspeed_scu.c         |  5 +++--
+>  include/hw/misc/aspeed_scu.h |  3 +++
+>  4 files changed, 18 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index ab895ad490af..754df8403273 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -36,6 +36,7 @@ typedef struct AspeedBoardState {
+>  typedef struct AspeedBoardConfig {
+>      const char *soc_name;
+>      uint32_t hw_strap1;
+> +    uint32_t hw_prot_key;
+
+It doesn't seem like this member is used?
+
+With respect to the patch as a whole, I was planning to implement a
+small kernel driver for the SCU to unlock it on probe but never got
+around to it. However, this seems reasonable; I always worked around it
+locally in a much more hacky fashion. It would be handy to have an
+upstream solution.
+
+Andrew
+
+>      const char *fmc_model;
+>      const char *spi_model;
+>      uint32_t num_cs;
+> @@ -186,6 +187,15 @@ static void aspeed_board_init(MachineState *machine,
+>                              &error_abort);
+>      object_property_set_int(OBJECT(&bmc->soc), cfg->num_cs, "num-cs",
+>                              &error_abort);
+> +    if (machine->kernel_filename) {
+> +        /*
+> +         * When booting with a -kernel command line there is no u-boot
+> +         * that runs to unlock the SCU. In this case set the default to
+> +         * be unlocked as the kernel expects
+> +         */
+> +        object_property_set_int(OBJECT(&bmc->soc), ASPEED_SCU_PROT_KEY,
+> +                                "hw-prot-key", &error_abort);
+> +    }
+>      object_property_set_bool(OBJECT(&bmc->soc), true, "realized",
+>                               &error_abort);
+> =20
+> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> index 5aa3d2ddd9cd..c83b7e207b86 100644
+> --- a/hw/arm/aspeed_soc.c
+> +++ b/hw/arm/aspeed_soc.c
+> @@ -154,6 +154,8 @@ static void aspeed_soc_init(Object *obj)
+>                                "hw-strap1", &error_abort);
+>      object_property_add_alias(obj, "hw-strap2", OBJECT(&s->scu),
+>                                "hw-strap2", &error_abort);
+> +    object_property_add_alias(obj, "hw-prot-key", OBJECT(&s->scu),
+> +                              "hw-prot-key", &error_abort);
+> =20
+>      object_initialize(&s->fmc, sizeof(s->fmc), sc->info->fmc_typename);
+>      object_property_add_child(obj, "fmc", OBJECT(&s->fmc), NULL);
+> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+> index 95022d3607ad..74537ce9755d 100644
+> --- a/hw/misc/aspeed_scu.c
+> +++ b/hw/misc/aspeed_scu.c
+> @@ -85,7 +85,6 @@
+>  #define BMC_REV              TO_REG(0x19C)
+>  #define BMC_DEV_ID           TO_REG(0x1A4)
+> =20
+> -#define PROT_KEY_UNLOCK 0x1688A8A8
+>  #define SCU_IO_REGION_SIZE 0x1000
+> =20
+>  static const uint32_t ast2400_a0_resets[ASPEED_SCU_NR_REGS] =3D {
+> @@ -192,7 +191,7 @@ static void aspeed_scu_write(void *opaque, hwaddr off=
+set, uint64_t data,
 >      }
+> =20
+>      if (reg > PROT_KEY && reg < CPU2_BASE_SEG1 &&
+> -            s->regs[PROT_KEY] !=3D PROT_KEY_UNLOCK) {
+> +            s->regs[PROT_KEY] !=3D ASPEED_SCU_PROT_KEY) {
+>          qemu_log_mask(LOG_GUEST_ERROR, "%s: SCU is locked!\n", __func__)=
+;
+>          return;
+>      }
+> @@ -246,6 +245,7 @@ static void aspeed_scu_reset(DeviceState *dev)
+>      s->regs[SILICON_REV] =3D s->silicon_rev;
+>      s->regs[HW_STRAP1] =3D s->hw_strap1;
+>      s->regs[HW_STRAP2] =3D s->hw_strap2;
+> +    s->regs[PROT_KEY] =3D s->hw_prot_key;
 >  }
->
-> +/* We don't know until after realize whether there's a GICv3
-> + * attached, and that is what registers the gicv3 sysregs.
-> + * So we have to fill in the GIC fields in ID_PFR/ID_PFR1_EL1/ID_AA64PFR0_EL1
-> + * at runtime.
-> + */
-> +static uint64_t id_pfr1_read(CPUARMState *env, const ARMCPRegInfo *ri)
-> +{
-> +    ARMCPU *cpu = arm_env_get_cpu(env);
-> +    uint64_t pfr1 = cpu->id_pfr1;
+> =20
+>  static uint32_t aspeed_silicon_revs[] =3D {
+> @@ -299,6 +299,7 @@ static Property aspeed_scu_properties[] =3D {
+>      DEFINE_PROP_UINT32("silicon-rev", AspeedSCUState, silicon_rev, 0),
+>      DEFINE_PROP_UINT32("hw-strap1", AspeedSCUState, hw_strap1, 0),
+>      DEFINE_PROP_UINT32("hw-strap2", AspeedSCUState, hw_strap2, 0),
+> +    DEFINE_PROP_UINT32("hw-prot-key", AspeedSCUState, hw_prot_key, 0),
+>      DEFINE_PROP_END_OF_LIST(),
+>  };
+> =20
+> diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
+> index bd4ac013f997..d70cc0aeca61 100644
+> --- a/include/hw/misc/aspeed_scu.h
+> +++ b/include/hw/misc/aspeed_scu.h
+> @@ -29,6 +29,7 @@ typedef struct AspeedSCUState {
+>      uint32_t silicon_rev;
+>      uint32_t hw_strap1;
+>      uint32_t hw_strap2;
+> +    uint32_t hw_prot_key;
+>  } AspeedSCUState;
+> =20
+>  #define AST2400_A0_SILICON_REV   0x02000303U
+> @@ -38,6 +39,8 @@ typedef struct AspeedSCUState {
+> =20
+>  extern bool is_supported_silicon_rev(uint32_t silicon_rev);
+> =20
+> +#define ASPEED_SCU_PROT_KEY      0x1688A8A8
 > +
-> +    if (env->gicv3state) {
-> +        pfr1 |= 1 << 28;
-> +    }
-> +    return pfr1;
-> +}
-> +
-> +static uint64_t id_aa64pfr0_read(CPUARMState *env, const ARMCPRegInfo *ri)
-> +{
-> +    ARMCPU *cpu = arm_env_get_cpu(env);
-> +    uint64_t pfr0 = cpu->id_aa64pfr0;
-> +
-> +    if (env->gicv3state) {
-> +        pfr0 |= 1 << 24;
-> +    }
-> +    return pfr0;
-> +}
-> +
->  void register_cp_regs_for_features(ARMCPU *cpu)
->  {
->      /* Register all the coprocessor registers based on feature bits */
-> @@ -4573,10 +4600,14 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 1, .opc2 = 0,
->                .access = PL1_R, .type = ARM_CP_CONST,
->                .resetvalue = cpu->id_pfr0 },
-> +            /* ID_PFR1 is not a plain ARM_CP_CONST because we don't know
-> +             * the value of the GIC field until after we define these regs.
-> +             */
->              { .name = "ID_PFR1", .state = ARM_CP_STATE_BOTH,
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 1, .opc2 = 1,
-> -              .access = PL1_R, .type = ARM_CP_CONST,
-> -              .resetvalue = cpu->id_pfr1 },
-> +              .access = PL1_R, .type = ARM_CP_NO_RAW,
-> +              .readfn = id_pfr1_read,
-> +              .writefn = arm_cp_write_ignore },
->              { .name = "ID_DFR0", .state = ARM_CP_STATE_BOTH,
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 1, .opc2 = 2,
->                .access = PL1_R, .type = ARM_CP_CONST,
-> @@ -4692,10 +4723,15 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->           * define new registers here.
->           */
->          ARMCPRegInfo v8_idregs[] = {
-> +            /* ID_AA64PFR0_EL1 is not a plain ARM_CP_CONST because we don't
-> +             * know the right value for the GIC field until after we
-> +             * define these regs.
-> +             */
->              { .name = "ID_AA64PFR0_EL1", .state = ARM_CP_STATE_AA64,
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 0,
-> -              .access = PL1_R, .type = ARM_CP_CONST,
-> -              .resetvalue = cpu->id_aa64pfr0 },
-> +              .access = PL1_R, .type = ARM_CP_NO_RAW,
-> +              .readfn = id_aa64pfr0_read,
-> +              .writefn = arm_cp_write_ignore },
->              { .name = "ID_AA64PFR1_EL1", .state = ARM_CP_STATE_AA64,
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 1,
->                .access = PL1_R, .type = ARM_CP_CONST,
-> --
-> 2.7.4
->
->
+>  /*
+>   * Extracted from Aspeed SDK v00.03.21. Fixes and extra definitions
+>   * were added.
+--=-5ZHCzvozudbOoeAxO8cJ
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIcBAABCgAGBQJaCjoVAAoJEJ0dnzgO5LT5+DIP/11mzFbN5rP6szkwl+V9jR/I
+8HtF+PkLshbGm67+lB8HFv0D5SsoPKjp3J6KT784VLWd5jyIWmP3U0KSIFOKDwY/
+B4cvPuzbx4Hf4jt9HGj9VNWiw+BGoW9Xkqc4+d2MWkfZioOraXt4btvHxjP3Dg8t
+cdfMytXN1bTC0sPo2IX3+kh+KE4l2RZ+OENOSlPp4JC7yi8kl1cuB5/4EFUuRDvT
+0VDjhzb/1MhfKnufDvk0uzeSoaX42DWV5TjM417KLutHooe3XyDGZ55cbJY+8qc2
+71P4saKpjxPolidoo7UOF9Wwx6zDbTR+iPqyKPgz8cL7yzaKX5/toC7ouAbvHsGn
+LbCQbMUC0ka7HJweKlk604sqjr+GSOibS+vnI/4gN2rB4gejdJ3SSuCLOmCHscxM
+HzRs1OjALX8kShWxdTuTBiFHCqa8xVEpEMGUmw3TwZIQcfZHnXNLGSRu0xt7HWKo
+Yfu6h7ICa0qqZkXWaq8rzsUxvdCqT9vxWOYxU5yzCxBkDzjLfhAu+k4/jdJSB5jQ
+KaeBNBaAZc/Om+uqKuevWE1a3ignSbKtUNvbAM7bv+vsQmkomdjL9hf29hN8SEhZ
+EajHuu+LQ56Z51kDkWCs7s+R0VN0DLkmZVtp2V9qP3PV1rmuNii6R2+jI4TxHve0
+RDmwI+a5BgdVhN+HCWmX
+=ZSX+
+-----END PGP SIGNATURE-----
+
+--=-5ZHCzvozudbOoeAxO8cJ--
+

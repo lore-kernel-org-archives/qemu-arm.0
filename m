@@ -1,137 +1,139 @@
-Received: by 10.223.150.237 with SMTP id u100csp4701000wrb;
-        Wed, 15 Nov 2017 03:57:59 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMYuCTnLFHd8vgbnqu94oyTQ8CvvqN7QhqhOeVvIeOzFGVPdpn731GHfYGFaWdEJhbUqmlYU
-X-Received: by 10.37.186.200 with SMTP id a8mr9251615ybk.56.1510747079038;
-        Wed, 15 Nov 2017 03:57:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510747079; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp4701364wrb;
+        Wed, 15 Nov 2017 03:58:22 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMYCLxwQScjfKJ/slBwuk4Ha+vwVmDEGDI7GrdKSLuzP4t7BEbWqjhJ5Xh1hyRd62Dc0ZNVe
+X-Received: by 10.37.11.19 with SMTP id 19mr2271854ybl.83.1510747102135;
+        Wed, 15 Nov 2017 03:58:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510747102; cv=none;
         d=google.com; s=arc-20160816;
-        b=CtJ7y5/oaEDurYtY/jeXT+yGra1Sf6jI/OH2EIODfc9kpPMQIWNOlHZuDFSPcgg4QH
-         NWdiWEN1aE3WCCH0iWXR8rmnq1MqUxMetP7/i78CnOMnOZtGWe/SMeLTIXOVjJi7KKhm
-         1vc6Wr/mSI2dlzyJkjFbE0aSLuM7CMEjv0DzR3awdA9NRlfwWFHkuanzn5V4KvFqH1CY
-         r6MFRXNvaOBVk1lzdseGgfSgKyUbpvPbyRxWNxmiHHEsxKJ6deirndI935AOrbrgacZe
-         77QQcOApbjAyfelIKNQEPVvJdDusvELmDf7uHrWpJ439vH0wIKGesino618rscegqs+A
-         1KPA==
+        b=VR2seSEzHsF8G49I37H6w3tggaUj9UmyqIst8SAB2V90N4hVdMgy65v8WXOcTaf4Su
+         btv4jdMXpp1KMuKMerbwjGA8ZlmvLf2tDJcyOBUZg98/h610V8IAHehq7syKZjueV+zO
+         oFwip/xzHduIHh/Gyg99PYOiG3REti3pk82/cQUEMjQcM+HN+6Xn/+7aBYp0IJ01XsjR
+         EknFb29JysVAtUK88nr4usNP+jTWRxO815FQwSWZ5Kwyzfd+DsAtIRTHCm8pq7fjfKxR
+         7uQ+p709Mdxav7DJmd2/6Nw7y8EOYO6LTsFvZdUypJMCxhVOAdoKLragmzUA5I4XX5eq
+         86+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=BiH27kpVO6hlOb2gVkOrNdFDsf8VJYwRUYnbwebNeRY=;
-        b=pHRXfFEk97BAT+3LlO0lyn1Wsv3R4jpo8HhaJrGK1v1dlLj3m8qBdSxz3CXb0O6nC7
-         lYJaQ0ntkI1VARBEzsIDEI9ACXr1E6KA5UpUCcND4xv6XNwUM1bo8oYVwmXHHS0EM9CD
-         L6bMhuCKkHZKJHD/WOtvUNgjApk1lC+Hyx+X41DOxLzGGI9b0U4nanKwJvxtdL+HZ+22
-         xLiBOqlFtLJkkAvzBo1Ob1P/G4Fbu6AftSZZuncoJvTId+tdYmFeEX3WQsr+tGf86IAp
-         EKZYFr+fZbMkl9O7wQ28njudCIePLAl1mqOU0o8beqzYqwuDvcaOKWMS4iIwm/xggmd8
-         lnVw==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=lOkNufgw1hkkYpZo8ZFujowUzZbVd9Mkn+QmClr/OQM=;
+        b=nzbj1yScZ6QHwrJzwEYngfDQ7ZH1dLNbQIecJDn5bQSBiWggn7AVAjMr3EH7GfDJ8B
+         J4oQLkQZUKTaSCATflJjdJw8OU04YPPRlmR9J61sBkiaLKW9x8lO3aRaILtAXHv0tnKG
+         VuGdo7AhERx4iLDwgXF8FN7PsmKtGIo1DaWUzFFuC21NnTiEvUbQxrL5qp/P/bOb5xRJ
+         uTo/58Cni6Ag+eMSqu1ZmsplrwjZcMI6VXEHt1xziRJyGJeSi4mKiFA9Pb1kyXey34qm
+         YwZ/2Y+BQGAdGzqQAD3ZvJ9sH9PlNQgTHiNjPee+eqnNVLGMvyo6yy1DlE5IccXR2k5z
+         lVeA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=kPeIhqrw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=XRGib3St;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m37si1264481ywh.674.2017.11.15.03.57.58
+        by mx.google.com with ESMTPS id k11si1818186ybj.110.2017.11.15.03.58.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 15 Nov 2017 03:57:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 15 Nov 2017 03:58:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=kPeIhqrw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=XRGib3St;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35703 helo=lists.gnu.org)
+Received: from localhost ([::1]:35705 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eEwKM-0006BW-IU
-	for alex.bennee@linaro.org; Wed, 15 Nov 2017 06:57:58 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52176)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eEwKj-0006Sw-JO
+	for alex.bennee@linaro.org; Wed, 15 Nov 2017 06:58:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52462)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eEwJU-0005ph-4p
-	for qemu-devel@nongnu.org; Wed, 15 Nov 2017 06:57:05 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1eEwKU-0006Os-N7
+	for qemu-arm@nongnu.org; Wed, 15 Nov 2017 06:58:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eEwJT-0003R9-ID
-	for qemu-devel@nongnu.org; Wed, 15 Nov 2017 06:57:04 -0500
-Received: from mail-wr0-x242.google.com ([2a00:1450:400c:c0c::242]:43154)
+	(envelope-from <peter.maydell@linaro.org>) id 1eEwKQ-0004EH-N2
+	for qemu-arm@nongnu.org; Wed, 15 Nov 2017 06:58:06 -0500
+Received: from mail-wr0-x243.google.com ([2a00:1450:400c:c0c::243]:51558)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eEwJT-0003QH-AY
-	for qemu-devel@nongnu.org; Wed, 15 Nov 2017 06:57:03 -0500
-Received: by mail-wr0-x242.google.com with SMTP id 4so20276098wrt.0
-	for <qemu-devel@nongnu.org>; Wed, 15 Nov 2017 03:57:02 -0800 (PST)
+	id 1eEwKQ-0004DK-GK
+	for qemu-arm@nongnu.org; Wed, 15 Nov 2017 06:58:02 -0500
+Received: by mail-wr0-x243.google.com with SMTP id z14so1459103wrb.8
+	for <qemu-arm@nongnu.org>; Wed, 15 Nov 2017 03:58:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=BiH27kpVO6hlOb2gVkOrNdFDsf8VJYwRUYnbwebNeRY=;
-	b=kPeIhqrwv3dZb9TS1LpKgmxjxF3i5rgF9uzUTePHMRPFC7jtcI250L15s3ZzovkLdJ
-	8unNLTFhviY+gh2zb4kv/at7SY/0dizGBToV2MkddFwAufL0HpSbEFxp+QycbRKR3QCo
-	H2ubhX1ieCJucFeKK1qfYXCjPAq5HG3O63QRM=
+	:cc; bh=lOkNufgw1hkkYpZo8ZFujowUzZbVd9Mkn+QmClr/OQM=;
+	b=XRGib3StyNlmNv9njcuXNjDGbytL7qJLNfe0rlgMTkyY19k2nZIasKTsUKoBAgwQ/E
+	WgoRQ+EOLvw4YpAVfkxiBK5xHnFZBVS8LGlo0Zav/RY5RbqKpMi4nlVpvE796Mqj4fhr
+	ylET41eNjqmswhSuCDmxCBGD7t9Dh/QqZWcwk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=BiH27kpVO6hlOb2gVkOrNdFDsf8VJYwRUYnbwebNeRY=;
-	b=GF8mX5E/0f70qLiC+iPqon8GqPe8Ev61VpAuDCNruPC/qNgosScQ0UKx9FnyP+3ohU
-	gkVSiYI0fBPQNZ/4NaDFOmifpQACZnykWXHxfV6Gqhsq9UcI2MRwAPwbuJRHcxiW1xui
-	iiTdts+7nd6iPKUuKr+mn+h5370i+MeRSuVgci7e5co8eVDJ8uqSNYvlWIAbJJLUIW0L
-	nT+Td8l54sd40ul936WaSSYgO4GNY18XuCqS3zigPhEfs2t1Tzc/et3ykkzQQjIo3BxB
-	X3Pg3YXMwGOM+JD0x3J9L5FLdwOsP2A+T3UNhEoPx6Q/xAA7UvRElFq7u1c5vPPUonn3
-	Dkaw==
-X-Gm-Message-State: AJaThX4ZtSw7kEPmOCldovcw4PmdwwFz9KlsdLLvhLQz6CjTX6aD6Fg4
-	L3D7st1uTZ+siRYBNdamRbPA5PSyGatocOOQ75yhDQ==
-X-Received: by 10.223.171.161 with SMTP id s30mr12312768wrc.194.1510747021907; 
-	Wed, 15 Nov 2017 03:57:01 -0800 (PST)
+	:message-id:subject:to:cc;
+	bh=lOkNufgw1hkkYpZo8ZFujowUzZbVd9Mkn+QmClr/OQM=;
+	b=pzhm+AW+BxbhwEBeoUY6N7ZmyXlj8vblzOA3csqDx/8l39AFBv6Pud9mTSNcJVxE3T
+	A7cQLCNlXda8lh4NbdxsjtU118nbIJt9ZDaTWnb3LZ+KOuZjPSQ2a/ZqYjmxcy5g1X16
+	2PURWWqut5vt8DUoCt/XDhIwbj+vhFRPzscxnN4orQdcHNwmNCKYZr0m31jexF/frw2q
+	4dEY7HM1gk4u29FcOLuoCojL0SEOY4rUflHQUgf6EaUw81rHLT/A7XTsroS+RppuuiMP
+	AiVxtjiIGrBI8eItsRJyaM+xDEWdQb9s96Ig3hlW9pgojkcxo9WcTJASMQXKEd+QU22U
+	JdSQ==
+X-Gm-Message-State: AJaThX5pb6TYMCpKvAD0ysnxW5XyQzyDW/DW4UK0wBqqoIxOYngfFVne
+	YydvoFHWk5QWt73xTB8GsHGQpZhwIpsGJL/i/Y3qxw==
+X-Received: by 10.223.169.80 with SMTP id u74mr12117470wrc.178.1510747081412; 
+	Wed, 15 Nov 2017 03:58:01 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.223.161.5 with HTTP; Wed, 15 Nov 2017 03:56:41 -0800 (PST)
-In-Reply-To: <27983ce7-8de1-620f-ca06-ee4f92dab180@kaod.org>
-References: <20171114122018.12204-1-joel@jms.id.au>
-	<27983ce7-8de1-620f-ca06-ee4f92dab180@kaod.org>
+Received: by 10.223.161.5 with HTTP; Wed, 15 Nov 2017 03:57:40 -0800 (PST)
+In-Reply-To: <CAKmqyKORH2jwGP4ULZv6B8=262OhznHkwOzONd9HFQoJkKzD=A@mail.gmail.com>
+References: <1510066898-3725-1-git-send-email-peter.maydell@linaro.org>
+	<CAKmqyKORH2jwGP4ULZv6B8=262OhznHkwOzONd9HFQoJkKzD=A@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 15 Nov 2017 11:56:41 +0000
-Message-ID: <CAFEAcA9udAJpnJVrkPcS9TrM5EAxPHn70tAjM5Bvr7HvUrqY=g@mail.gmail.com>
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Date: Wed, 15 Nov 2017 11:57:40 +0000
+Message-ID: <CAFEAcA-z_gfMr+=8c1kexo6iL--uxNVMzOnN0aox0FGAv3pHjQ@mail.gmail.com>
+To: Alistair Francis <alistair23@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::242
-Subject: Re: [Qemu-devel] [PATCH v3] hw/arm/aspeed: Unlock SCU when running
- kernel
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:400c:c0c::243
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-2.11] target/arm: Report
+ GICv3 sysregs present in ID registers if needed
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
-	Joel Stanley <joel@jms.id.au>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 22/M/j+m7p2H
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, Stefano Stabellini <sstabellini@kernel.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Patch Tracking <patches@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: IHNf1dYka6Gm
 
-On 15 November 2017 at 08:18, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
-> On 11/14/2017 01:20 PM, Joel Stanley wrote:
->> The ASPEED hardware contains a lock register for the SCU that disables
->> any writes to the SCU when it is locked. The machine comes up with the
->> lock enabled, but on all known hardware u-boot will unlock it and leave
->> it unlocked when loading the kernel.
+On 15 November 2017 at 01:14, Alistair Francis <alistair23@gmail.com> wrote:
+> On Tue, Nov 7, 2017 at 7:01 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> The CPU ID registers ID_AA64PFR0_EL1, ID_PFR1_EL1 and ID_PFR1
+>> have a field for reporting presence of GICv3 system registers.
+>> We need to report this field correctly in order for Xen to
+>> work as a guest inside QEMU emulation. We mustn't incorrectly
+>> claim the sysregs exist when they don't, though, or Linux will
+>> crash.
 >>
->> This means the kernel expects the SCU to be unlocked. When booting from
->> an emulated ROM the normal u-boot unlock path is executed. Things don't
->> go well when booting using the -kernel command line, as u-boot does not
->> run first.
+>> Unfortunately the way we've designed the GICv3 emulation in QEMU
+>> puts the system registers as part of the GICv3 device, which
+>> may be created after the CPU proper has been realized. This
+>> means that we don't know at the point when we define the ID
+>> registers what the correct value is. Handle this by switching
+>> them to calling a function at runtime to read the value, where
+>> we can fill in the GIC field appropriately.
 >>
->> Change behaviour so that when a kernel is passed to the machine, set the
->> reset value of the SCU to be unlocked.
->>
->> Signed-off-by: Joel Stanley <joel@jms.id.au>
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 >
-> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> Is this going to make it into 2.11?
 
-Thanks. Should this go into 2.11 ? It sounds like the kind of
-bugfix that ought to...
+Yes, it's supposed to go into 2.11 -- I think I just forgot
+to put it in the rc1 pullreq, but it'll go in rc2.
 
+thanks
 -- PMM

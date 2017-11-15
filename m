@@ -1,91 +1,85 @@
-Received: by 10.223.150.237 with SMTP id u100csp4867936wrb;
-        Wed, 15 Nov 2017 06:41:42 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMbIAV+81gcq51NmZVqEpSh7f7T2D4SPgHvOfAiQM1tcL40U/X2mCiLTzHpUw/uPjCckhpLI
-X-Received: by 10.13.237.131 with SMTP id w125mr1052112ywe.51.1510756902078;
-        Wed, 15 Nov 2017 06:41:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510756902; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp5097987wrb;
+        Wed, 15 Nov 2017 10:25:41 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMbYeCZw0iWVGMLOWbJSK/YRGCp017ElqZ3TV5oFb0DlG4I364bijFU5BRUqMfVCugtR365f
+X-Received: by 10.129.107.130 with SMTP id g124mr8608332ywc.86.1510770341515;
+        Wed, 15 Nov 2017 10:25:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510770341; cv=none;
         d=google.com; s=arc-20160816;
-        b=YxBxh6u307PdNHJjrq1KLX1ni3RyAh6DJhr/R+fLNzCo4CZ7rlYstn2Cv6ryr/gLQ3
-         owCBQA1yD4AlyikKc14C7xRDHT/Yrty6RwmOrfTOv4TKQowD8SRCEPKPtVMcLhoaqPPI
-         QaDdkiBagVHAfyWRfNzcNiZaojvHb8KmJs5SZ800YvA13C4Tg0D6v7hfCHYC4QiJJD6j
-         kAOMGPI6mJAH6/c2otykic+Q4D4O/CT/hadeVYMaF2ear75l6lAXKgXiOslIR5qYyHHw
-         OpqZr9sNRdwcQ994WixD5WzO3at1RWFT8jAJYwN+91LQirdFd7/FZfcHZXl58Kl+LJNy
-         ueWA==
+        b=eCXEXTrz2sSxinASiV7FObeh1SGce/dgmDCVQ0y/rxXAlmQCELId226trU/AaQdBFa
+         RyvyUJ8eQ69Po2tG4ZBvlK5RfjiUEVkivfGhONsW3xu7qNlp035ldZEzDCdU8ib4/1ki
+         N5MYOjk66beDdsi9mEJfP+TYvj0bB1ux1g7tN+uAmpTywuzTG0N/PeZcawkuuEzoG7aU
+         16WdlzzLxckPL0vsyLkLT2HLIsOjDJohNiqxQk1OCseGwI3mJN/tdlgxE4jYiCj8hsGM
+         FysX6sJEet2PvlzYJBydgEOzJjzFo37hOJhPiZhQ776B2sTkoORotn6Rnjki8XC80Mzw
+         hRxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
-         :from:arc-authentication-results;
-        bh=VVOV5k4ebNW5Siag8oZMzDPXF3GvqDvDLnzyzSGfw1A=;
-        b=O3X3DO0ZdWoDGXSZIpmv4GMpBkVEna3kSWYwEV78pBs3xPjMemP7lYhOmMpFmmmpS8
-         TnbojrdbnHoUucZ3TOql10lqRtlqMvEWwxEkIM3DCD7U5NvxyWkDpMZj4INAIRNp+pFT
-         buDdJRp3zbUWIL+7lJ25Br/2OKKv89lfnsBH0nYNFkuU5fPrdLLI83KDrTZwpu56ipeB
-         ntI6KI7rnlRs17xtVr9hhaKGnJmg0BoHY8ooO+Qtou4KL24YQlnPXF48OsvmgQO87vFL
-         yMkQtaFLIB17hoXwCi9j/tAOBU81by3qBKyfKX6ira2Rr4WzwFSRqoqMSODuhxHo7exu
-         iVkA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date:arc-authentication-results;
+        bh=vuBZ2njh7FtOgmt4h12OUOu9NhlSJPj9I5UJb2eKckU=;
+        b=F4gQ8NtRCKxTz4Iw3+z4hXOJyAwWPuJeXmq4M5i75IT6zLwsfZT20HjUz+WdMEFyjr
+         pN+fF3UQrf2DOT463chLi7fYmwjpMGmvL4Q6o+qnVYZ9iwUZb6qoeL6qFLQdOhUlrfVX
+         7KupMeiylHNq9xtmF/nF5SLbHU+/IXSH3wzLZ8Ay/Mcnqt3w/Rz2uH96vJCqmQDQoKtM
+         cDNGLIu/HVqDHTgtXxoba37uYCDGozV7x09ghYxmzl3ZiioCvki2t9jUL2AdI41ouXDE
+         /YJfm2QvcZrLGB9Zqp9JMJdonkIiaJ8ojXxCe34ARdZUT360bbR6r3UCApdqTeGzcJRx
+         oeWQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p128si1279856ybp.40.2017.11.15.06.41.41
+        by mx.google.com with ESMTPS id u123si1785740ywg.173.2017.11.15.10.25.41
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 15 Nov 2017 06:41:41 -0800 (PST)
+        Wed, 15 Nov 2017 10:25:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36478 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37324 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eEysn-0005mT-Eg
-	for alex.bennee@linaro.org; Wed, 15 Nov 2017 09:41:41 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43806)
+	id 1eF2NY-0000pq-Vk
+	for alex.bennee@linaro.org; Wed, 15 Nov 2017 13:25:41 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33428)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1eEuKW-00049e-UM
-	for qemu-arm@nongnu.org; Wed, 15 Nov 2017 04:50:02 -0500
+	(envelope-from <alex.williamson@redhat.com>) id 1eF2NG-0000iS-DT
+	for qemu-arm@nongnu.org; Wed, 15 Nov 2017 13:25:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1eEuKT-00026u-ST
-	for qemu-arm@nongnu.org; Wed, 15 Nov 2017 04:50:01 -0500
-Received: from lhrrgout.huawei.com ([194.213.3.17]:30342 helo=huawei.com)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1eEuKT-00022B-MF; Wed, 15 Nov 2017 04:49:57 -0500
-Received: from LHREML712-CAH.china.huawei.com (unknown [172.18.7.106])
-	by Forcepoint Email with ESMTP id 1442D12AC0191;
-	Wed, 15 Nov 2017 09:49:51 +0000 (GMT)
-Received: from FRAEML701-CAH.china.huawei.com (10.206.14.32) by
-	LHREML712-CAH.china.huawei.com (10.201.108.35) with Microsoft SMTP
-	Server (TLS) id 14.3.361.1; Wed, 15 Nov 2017 09:49:52 +0000
-Received: from FRAEML521-MBX.china.huawei.com ([169.254.1.209]) by
-	FRAEML701-CAH.china.huawei.com ([10.206.14.32]) with mapi id
-	14.03.0361.001; Wed, 15 Nov 2017 10:49:41 +0100
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Alex Williamson <alex.williamson@redhat.com>, Zhuyijun
-	<zhuyijun@huawei.com>
-Thread-Topic: [Qemu-devel] [RFC 1/5] hw/vfio: Add function for getting
-	reserved_region of device iommu group
-Thread-Index: AQHTXOYm3ZL42BZvgkuK5iju3HzTnqMT9TeAgAE4uHA=
-Date: Wed, 15 Nov 2017 09:49:41 +0000
-Message-ID: <5FC3163CFD30C246ABAA99954A238FA83845EDBF@FRAEML521-MBX.china.huawei.com>
+	(envelope-from <alex.williamson@redhat.com>) id 1eF2NE-0007oV-Td
+	for qemu-arm@nongnu.org; Wed, 15 Nov 2017 13:25:22 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:57710)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <alex.williamson@redhat.com>)
+	id 1eF2NE-0007nf-E8; Wed, 15 Nov 2017 13:25:20 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id A8583686A3;
+	Wed, 15 Nov 2017 18:25:18 +0000 (UTC)
+Received: from t450s.home (ovpn-116-16.phx2.redhat.com [10.3.116.16])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id B281C81BC1;
+	Wed, 15 Nov 2017 18:25:14 +0000 (UTC)
+Date: Wed, 15 Nov 2017 11:25:13 -0700
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+Message-ID: <20171115112513.3c035023@t450s.home>
+In-Reply-To: <5FC3163CFD30C246ABAA99954A238FA83845EDBF@FRAEML521-MBX.china.huawei.com>
 References: <1510622154-17224-1-git-send-email-zhuyijun@huawei.com>
 	<1510622154-17224-2-git-send-email-zhuyijun@huawei.com>
 	<20171114084735.68e87546@t450s.home>
-In-Reply-To: <20171114084735.68e87546@t450s.home>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.227.237]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+	<5FC3163CFD30C246ABAA99954A238FA83845EDBF@FRAEML521-MBX.china.huawei.com>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 194.213.3.17
-X-Mailman-Approved-At: Wed, 15 Nov 2017 09:41:25 -0500
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Wed, 15 Nov 2017 18:25:18 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 1/5] hw/vfio: Add function for
  getting reserved_region of device iommu group
 X-BeenThere: qemu-arm@nongnu.org
@@ -99,84 +93,89 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Zhaoshenglong <zhaoshenglong@huawei.com>,
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
 	"eric.auger@redhat.com" <eric.auger@redhat.com>,
 	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>
+	Zhaoshenglong <zhaoshenglong@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XxQ/7SPGW1f2
+X-TUID: U1MW3jKwnbaJ
 
-Hi Alex,
+On Wed, 15 Nov 2017 09:49:41 +0000
+Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com> wrote:
 
-> -----Original Message-----
-> From: Alex Williamson [mailto:alex.williamson@redhat.com]
-> Sent: Tuesday, November 14, 2017 3:48 PM
-> To: Zhuyijun <zhuyijun@huawei.com>
-> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
-> eric.auger@redhat.com; peter.maydell@linaro.org; Shameerali Kolothum
-> Thodi <shameerali.kolothum.thodi@huawei.com>; Zhaoshenglong
-> <zhaoshenglong@huawei.com>
-> Subject: Re: [Qemu-devel] [RFC 1/5] hw/vfio: Add function for getting
-> reserved_region of device iommu group
->=20
-> On Tue, 14 Nov 2017 09:15:50 +0800
-> <zhuyijun@huawei.com> wrote:
->=20
-> > From: Zhu Yijun <zhuyijun@huawei.com>
-> >
-> > With kernel 4.11, iommu/smmu will populate the MSI IOVA reserved
-> > window and PCI reserved window which has to be excluded from Guest iova
-> allocations.
-> >
-> > However, If it falls within the Qemu default virtual memory address
-> > space, then reserved regions may get allocated for a Guest VF DMA iova
-> > and it will fail.
-> >
-> > So get those reserved regions in this patch and create some holes in
-> > the Qemu ram address in next patchset.
-> >
-> > Signed-off-by: Zhu Yijun <zhuyijun@huawei.com>
-> > ---
-> >  hw/vfio/common.c              | 67
-> +++++++++++++++++++++++++++++++++++++++++++
-> >  hw/vfio/pci.c                 |  2 ++
-> >  hw/vfio/platform.c            |  2 ++
-> >  include/exec/memory.h         |  7 +++++
-> >  include/hw/vfio/vfio-common.h |  3 ++
-> >  5 files changed, 81 insertions(+)
->=20
-> I generally prefer the vfio interface to be more self sufficient, if ther=
-e are
-> regions the IOMMU cannot map, we should be describing those via capabilit=
-ies
-> on the container through the vfio interface.  If we're just scraping toge=
-ther
-> things from sysfs, the user can just as easily do that and provide an exp=
-licit
-> memory map for the VM taking the devices into account.=20
+> Hi Alex,
+> 
+> > -----Original Message-----
+> > From: Alex Williamson [mailto:alex.williamson@redhat.com]
+> > Sent: Tuesday, November 14, 2017 3:48 PM
+> > To: Zhuyijun <zhuyijun@huawei.com>
+> > Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
+> > eric.auger@redhat.com; peter.maydell@linaro.org; Shameerali Kolothum
+> > Thodi <shameerali.kolothum.thodi@huawei.com>; Zhaoshenglong
+> > <zhaoshenglong@huawei.com>
+> > Subject: Re: [Qemu-devel] [RFC 1/5] hw/vfio: Add function for getting
+> > reserved_region of device iommu group
+> > 
+> > On Tue, 14 Nov 2017 09:15:50 +0800
+> > <zhuyijun@huawei.com> wrote:
+> >   
+> > > From: Zhu Yijun <zhuyijun@huawei.com>
+> > >
+> > > With kernel 4.11, iommu/smmu will populate the MSI IOVA reserved
+> > > window and PCI reserved window which has to be excluded from Guest iova  
+> > allocations.  
+> > >
+> > > However, If it falls within the Qemu default virtual memory address
+> > > space, then reserved regions may get allocated for a Guest VF DMA iova
+> > > and it will fail.
+> > >
+> > > So get those reserved regions in this patch and create some holes in
+> > > the Qemu ram address in next patchset.
+> > >
+> > > Signed-off-by: Zhu Yijun <zhuyijun@huawei.com>
+> > > ---
+> > >  hw/vfio/common.c              | 67  
+> > +++++++++++++++++++++++++++++++++++++++++++  
+> > >  hw/vfio/pci.c                 |  2 ++
+> > >  hw/vfio/platform.c            |  2 ++
+> > >  include/exec/memory.h         |  7 +++++
+> > >  include/hw/vfio/vfio-common.h |  3 ++
+> > >  5 files changed, 81 insertions(+)  
+> > 
+> > I generally prefer the vfio interface to be more self sufficient, if there are
+> > regions the IOMMU cannot map, we should be describing those via capabilities
+> > on the container through the vfio interface.  If we're just scraping together
+> > things from sysfs, the user can just as easily do that and provide an explicit
+> > memory map for the VM taking the devices into account.   
+> 
+> Ok. I was under the impression that the purpose of introducing the 
+> /sys/kernel/iommu_groups/reserved_regions was to get the IOVA regions 
+> that are reserved(MSI or non-mappable) for Qemu or other apps to
+> make use of.  I think this was introduced as part of the "KVM/MSI passthrough
+> support on ARM" patch series. And if I remember correctly, Eric had 
+> an approach where the user space can retrieve all the reserved regions through
+> the VFIO_IOMMU_GET_INFO ioctl and later this idea was replaced with the 
+> sysfs interface.
+> 
+> May be I am missing something here.
 
-Ok. I was under the impression that the purpose of introducing the=20
-/sys/kernel/iommu_groups/reserved_regions was to get the IOVA regions=20
-that are reserved(MSI or non-mappable) for Qemu or other apps to
-make use of.  I think this was introduced as part of the "KVM/MSI passthrou=
-gh
-support on ARM" patch series. And if I remember correctly, Eric had=20
-an approach where the user space can retrieve all the reserved regions thro=
-ugh
-the VFIO_IOMMU_GET_INFO ioctl and later this idea was replaced with the=20
-sysfs interface.
+And sysfs is a good interface if the user wants to use it to configure
+the VM in a way that's compatible with a device.  For instance, in your
+case, a user could evaluate these reserved regions across all devices in
+a system, or even across an entire cluster, and instantiate the VM with
+a memory map compatible with hotplugging any of those evaluated
+devices (QEMU implementation of allowing the user to do this TBD).
+Having the vfio device evaluate these reserved regions only helps in
+the cold-plug case.  So the proposed solution is limited in scope and
+doesn't address similar needs on other platforms.  There is value to
+verifying that a device's IOVA space is compatible with a VM memory map
+and modifying the memory map on cold-plug or rejecting the device on
+hot-plug, but isn't that why we have an ioctl within vfio to expose
+information about the IOMMU?  Why take the path of allowing QEMU to
+rummage through sysfs files outside of vfio, implying additional
+security and access concerns, rather than filling the gap within the
+vifo API?  Thanks,
 
-May be I am missing something here.
-
-> Of course having a
-> device associated with a restricted memory map that conflicts with the de=
-fault
-> memory map for the VM implies that you can never support hot-add of such
-> devices.
-
-True.  Hot-add and migration will have issues on these platforms.
-
-Thanks,
-Shameer
+Alex

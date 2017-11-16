@@ -1,148 +1,148 @@
-Received: by 10.223.150.237 with SMTP id u100csp576772wrb;
-        Thu, 16 Nov 2017 09:02:52 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMZXSTn5WcKbNSsBIJtMzbZ79NVp6gff0y2hLERUa/X+B5RyK9Q+oElJvjTPKOojDRlgZ1DC
-X-Received: by 10.129.116.6 with SMTP id p6mr1365251ywc.136.1510851772412;
-        Thu, 16 Nov 2017 09:02:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510851772; cv=none;
+Received: by 10.223.150.237 with SMTP id u100csp579471wrb;
+        Thu, 16 Nov 2017 09:05:02 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMbrSpRXtsCvyzx553eBu5YkKug3hsSlD1zqOy8YxY5RlzwSjOaW8LqI10zXqh5pSFNHORk0
+X-Received: by 10.129.72.136 with SMTP id v130mr1392370ywa.487.1510851902273;
+        Thu, 16 Nov 2017 09:05:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1510851902; cv=none;
         d=google.com; s=arc-20160816;
-        b=LU37NSiJyR1TnVjCuuR7YJIZskthl2r6ZHPQY5snfDQ2jof9l8TLwhSxvsjQ9V6oT2
-         5Fb4wvMf62P4SdBRVmQ/wiLs0YM/iPEm4lLVXLLYXYhNpCpQAiUcQs4721Hu+6i9m92E
-         qJRH5Kasm1VG4VZpCdFPIhxhE2KuajJzH+L50sQNEubDQQXcX3IZnnQS/Y8bfSWLxUi2
-         z1vvnzz3Ua7flqWCvcPwFlbvZPV4A0Lug0Sopqa/X3QAwBaLYGoIlNA2avxASvxLO/VR
-         zmu/BiC9ZlA+/LTdt1KQNtdyhE7gt8lUSkavfZIWxR+tsi65JxLgon3lmd+ZvQ6NgYP9
-         3nWQ==
+        b=ahFu9siiyhuJERQbOEiCyrHMJgInFxyMS/xnK38oKdp5p1bq4fydJwrwNbY2FMGX+p
+         8cvmwPSKJXLkiCS4SaL2FDQOPphHaoaKqfeKFTrbG0NtSUTRHTjdwSR3iiFhkJatZcg1
+         sZQgpaWJuzV0Ev0oZ42/sQyA8zFlz3+fSqWKG/n27qIbNPeOuYRbjvtK8ZubyCNjFTZy
+         NYKeL/KeWQQEpT/n73dqlgmqFpeKmhtkJUhqYx7p+wCJurrs6aF6xAFPAV9SF9VCgYAS
+         skK3IEiqomx8G8iOs32GDzHqvwcne75GMrP6WT0IXa8Q3PmvzbzzR8TaRMYEWlmRojTF
+         m//Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=Da8GDpMg96E3fQBf7PliDy5mecGPSPkb1o6/s1PJioQ=;
-        b=oUdPzX4d630LZY/dPxKhBY1BciiVy9KSTvcloc1F4/dcIvmJ9zA2BnNA4sfaFiwmXT
-         kXStggkyhpBptqZguw0hqYPcgJaM2AFJnDnZePPd3hV+JDLHrH9ZFrzU26Buavab7L3i
-         AP1kAnZ9/FaSRHX7P3jinMTIX0hUhIKiVQ5/QUgsPyAaSxhMEmf9kRUgxs/I0BPrbugQ
-         /y2OyydvKd97PR3GaIHKh5ZsnUapZTb8vjwXxk2Rk5lgoeeAtRDHwAGDQ50P8NjG6BPY
-         sK8yD3WoZ6MWJu+BH6xG/9TLVVN5h07TkZFlEBK+UUAJLUk9z34N2tt6YN0lBLqKjkq/
-         71vw==
+        bh=+Hf5AkSgbOp1xvhPJ8iu53uo+j1N7UVQxJm1Mwh7f30=;
+        b=XnC6sjZcZaELTdClOqe/TvGfaWyFE2jottOC+C8onWy7rbzgq/3Ch3j/ICI6L/yDrE
+         BeJeXReaf8tJ2B/Sl9R3ACtfpqJ4Bxp5LAaZhho6yiFX0TUWGVlrsbUPDfziEh7drunw
+         H4G73WS7AlLqQiGkJ+8nVbxWh4iJSx0uTdsYYfv65Ul9WQw+/Z38NOHNjvetJnZgi0yb
+         epcQV0O3tIktIEY4eZRimzWHFC7Ks0OpLVhc1UP4RhLlG1LZqBKtoVCkH2v6HuYG2/nY
+         kcrA65XOIjEjUD+ZuEyey7ThqhpxAVei7qlnVLmWQsoCWCsUSwt6b9DmBl6NjBEU8GUe
+         pkbA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DLnnSAey;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i69si292535ywg.757.2017.11.16.09.02.52
+        by mx.google.com with ESMTPS id z28si300860ybi.4.2017.11.16.09.05.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 16 Nov 2017 09:02:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 16 Nov 2017 09:05:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41890 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DLnnSAey;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:41920 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eFNYx-0007WJ-RL
-	for alex.bennee@linaro.org; Thu, 16 Nov 2017 12:02:51 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41322)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eFNb3-0001IU-Mz
+	for alex.bennee@linaro.org; Thu, 16 Nov 2017 12:05:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47269)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1eFNTi-0003dl-Sq
-	for qemu-devel@nongnu.org; Thu, 16 Nov 2017 11:57:28 -0500
+	(envelope-from <alistair23@gmail.com>) id 1eFNaD-0000lq-B2
+	for qemu-arm@nongnu.org; Thu, 16 Nov 2017 12:04:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1eFNTi-0002Fz-3A
-	for qemu-devel@nongnu.org; Thu, 16 Nov 2017 11:57:26 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:44644)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <wei@redhat.com>)
-	id 1eFNTd-00023V-BY; Thu, 16 Nov 2017 11:57:21 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 862807652C;
-	Thu, 16 Nov 2017 16:57:19 +0000 (UTC)
-Received: from [10.10.124.125] (ovpn-124-125.rdu2.redhat.com [10.10.124.125])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4D6E35C885;
-	Thu, 16 Nov 2017 16:57:12 +0000 (UTC)
-To: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
-	qemu-devel@nongnu.org
-References: <1510846183-756-1-git-send-email-thuth@redhat.com>
-From: Wei Huang <wei@redhat.com>
-Message-ID: <ac117f5e-49cb-3832-c361-ca27bf574882@redhat.com>
-Date: Thu, 16 Nov 2017 10:57:05 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	(envelope-from <alistair23@gmail.com>) id 1eFNZr-0007z2-T7
+	for qemu-arm@nongnu.org; Thu, 16 Nov 2017 12:04:09 -0500
+Received: from mail-wr0-x22b.google.com ([2a00:1450:400c:c0c::22b]:52537)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1eFNZr-0007wM-MS; Thu, 16 Nov 2017 12:03:47 -0500
+Received: by mail-wr0-x22b.google.com with SMTP id o14so4534340wrf.9;
+	Thu, 16 Nov 2017 09:03:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=+Hf5AkSgbOp1xvhPJ8iu53uo+j1N7UVQxJm1Mwh7f30=;
+	b=DLnnSAeya3S6oUMKkM72ofel2Mc7hpM+RknxOpF1kcxwUQC5CY8jf98rtb1B9+lWrK
+	Vv+eGGzy4UWPpU0xhMayy/5J/aq1//YNbupTLPLRbAEr1Sx8tKH1gGrpG44xEh0RnDUU
+	/AqyqiCLDSJWm+TDKRMtncKRTxgpMu1PKHY2TDu2K2s+z7C4f4+j82IPGpEZHb4GG6VH
+	2+woW9ii01ogczulcIsCh66en7WIXTNGwiPv7kwFtkemFcZiWO8X6vQkE9ke1vcWxmtr
+	rTr03yMPiF4OgdGwPkVPbagYNPZUEorfobpC0bI0vUmiXuyWZzM7CjVNulZRdIjmGkmq
+	E1fQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=+Hf5AkSgbOp1xvhPJ8iu53uo+j1N7UVQxJm1Mwh7f30=;
+	b=eoD7NH0UKa6cCIicStrCSdhZfcOcbxme2pmgoxAWY5bwg+jpLlB0izbn0hpQ5hfnHs
+	ydpNL/y458on7hOgev1+uWfuyxRPRULvanN/MJzrkvYlNZ1+Va/+f4UJeLUtwz5cnIc8
+	r+c2HBXXRn/j3N8XAIQr0/k0Tg7WDHwDQ3Rd6vyZJ3M2PEFkw6whjJLT3tPNs3auXT41
+	+H+mUpB8/ywfH3BwJSGTqtBlsINKN87X4PjQDtjfxeAN0J9HdwQIoDznbw3l1zLjBfli
+	k46qXtGlsYHQRwLwxk1VENXeGMIwPnuFS9fsaHzXDOaZNvseP/FLogqgnsoJ0hjOg1TA
+	v5hg==
+X-Gm-Message-State: AJaThX6DZrvshVUFHuiTCJNFkI6fKUDmihSC95e1crBt7ys0EDh38tJj
+	l6P4WCpPfyF2HhnDfjLXGfG+5qxOEHSSyMefOxg=
+X-Received: by 10.223.182.3 with SMTP id f3mr2254434wre.127.1510851825846;
+	Thu, 16 Nov 2017 09:03:45 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <1510846183-756-1-git-send-email-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Thu, 16 Nov 2017 16:57:19 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH] hw/arm: Silence xlnx-ep108 deprecation
- warning during tests
-X-BeenThere: qemu-devel@nongnu.org
+Received: by 10.28.147.11 with HTTP; Thu, 16 Nov 2017 09:03:15 -0800 (PST)
+In-Reply-To: <CAFEAcA-z_gfMr+=8c1kexo6iL--uxNVMzOnN0aox0FGAv3pHjQ@mail.gmail.com>
+References: <1510066898-3725-1-git-send-email-peter.maydell@linaro.org>
+	<CAKmqyKORH2jwGP4ULZv6B8=262OhznHkwOzONd9HFQoJkKzD=A@mail.gmail.com>
+	<CAFEAcA-z_gfMr+=8c1kexo6iL--uxNVMzOnN0aox0FGAv3pHjQ@mail.gmail.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Thu, 16 Nov 2017 09:03:15 -0800
+Message-ID: <CAKmqyKNBmPRMcQ=5mq-2xAOYMMEgjJ=nxVKrzCCTqxOqiVztqQ@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::22b
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-2.11] target/arm: Report
+ GICv3 sysregs present in ID registers if needed
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, "Emilio G. Cota" <cota@braap.org>,
-	Alistair Francis <alistair.francis@xilinx.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /++8oFZikGex
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, Stefano Stabellini <sstabellini@kernel.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Patch Tracking <patches@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9zYR5PErRpI/
 
+On Wed, Nov 15, 2017 at 3:57 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 15 November 2017 at 01:14, Alistair Francis <alistair23@gmail.com> wrote:
+>> On Tue, Nov 7, 2017 at 7:01 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
+>>> The CPU ID registers ID_AA64PFR0_EL1, ID_PFR1_EL1 and ID_PFR1
+>>> have a field for reporting presence of GICv3 system registers.
+>>> We need to report this field correctly in order for Xen to
+>>> work as a guest inside QEMU emulation. We mustn't incorrectly
+>>> claim the sysregs exist when they don't, though, or Linux will
+>>> crash.
+>>>
+>>> Unfortunately the way we've designed the GICv3 emulation in QEMU
+>>> puts the system registers as part of the GICv3 device, which
+>>> may be created after the CPU proper has been realized. This
+>>> means that we don't know at the point when we define the ID
+>>> registers what the correct value is. Handle this by switching
+>>> them to calling a function at runtime to read the value, where
+>>> we can fill in the GIC field appropriately.
+>>>
+>>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>>
+>> Is this going to make it into 2.11?
+>
+> Yes, it's supposed to go into 2.11 -- I think I just forgot
+> to put it in the rc1 pullreq, but it'll go in rc2.
 
+Great! Thanks Peter
 
-On 11/16/2017 09:29 AM, Thomas Huth wrote:
-> The new deprecation warning for the xlnx-ep108 machine also pops up
-> during "make check" which is kind of confusing. Silence it if testing
-> mode is enabled.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  Note: I slightly shortened the message so that the code still fits
->  into the 80-columns limit.
-> 
->  hw/arm/xlnx-zcu102.c | 7 +++++--
->  1 file changed, 5 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
-> index 9631a53..bbe7d04 100644
-> --- a/hw/arm/xlnx-zcu102.c
-> +++ b/hw/arm/xlnx-zcu102.c
-> @@ -24,6 +24,7 @@
->  #include "qemu/error-report.h"
->  #include "exec/address-spaces.h"
->  #include "qemu/log.h"
-> +#include "sysemu/qtest.h"
->  
->  typedef struct XlnxZCU102 {
->      MachineState parent_obj;
-> @@ -164,8 +165,10 @@ static void xlnx_ep108_init(MachineState *machine)
->  {
->      XlnxZCU102 *s = EP108_MACHINE(machine);
->  
-> -    info_report("The Xilinx EP108 machine is deprecated, please use the "
-> -                "ZCU102 machine instead. It has the same features supported.");
-> +    if (!qtest_enabled()) {
-> +        info_report("The Xilinx EP108 machine is deprecated, please use the "
-> +                    "ZCU102 machine (which has the same features) instead.");
-> +    }
->  
->      xlnx_zynqmp_init(s, machine);
->  }
-> 
+Alistair
 
-I tested it and it did solve the problem.
-
-Acked-by: Wei Huang <wei@redhat.com>
+>
+> thanks
+> -- PMM

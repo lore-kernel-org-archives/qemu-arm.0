@@ -1,149 +1,87 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp5365360wru;
-        Tue, 31 Jul 2018 13:12:28 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpd3rn2fBWPI10J3pSoIC8k/OBXP+fmOXvKIwGYWmu0PKvP/VjJayZKhK72M7vxBMBauAqaj
-X-Received: by 2002:ac8:1b45:: with SMTP id p5-v6mr21530811qtk.99.1533067947969;
-        Tue, 31 Jul 2018 13:12:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1533067947; cv=none;
+Received: by 10.223.153.116 with SMTP id x107csp374685wrb;
+        Mon, 20 Nov 2017 01:27:33 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMY1ZR2Qymne3zhdmjpzQac3eSsc12igttUCpBQQFwv1HL2P2Ztwuu2RFV0E2XroG0sgTVDl
+X-Received: by 10.37.89.67 with SMTP id n64mr7760531ybb.149.1511170053752;
+        Mon, 20 Nov 2017 01:27:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1511170053; cv=none;
         d=google.com; s=arc-20160816;
-        b=HOI/n1t0N9m92VEoFNUFSKj4zKBDTcCPt3lFDz09JWW6zhCxqRFyBsW0uobwe1Q4bk
-         mgLIibdn5cOECxnYuu6YcWZDn/FGiLHL6RbtITeixbT4KK+yJ77SL5wVxouG7/ddahZG
-         Wk4vmiWYmfEk7ARlXCu5842S5i46Vs9VZVdxiTaheP34D1O5TTSRtZPjJvNvVjp5k4JG
-         9FoQL7KAQtZL4y1snq/BxpU0DROVqbcrbL3jaOa/AtLoHbRjprpuU7j+IWEsBre0JbEB
-         HDDum3h/CY2zoNJobmGyoDqv2wrkRVww6Jd7hbJ+pamgP3eFUhrd34AOiKNrLZWttHZF
-         3CBg==
+        b=ScvutOvzIpEKbIbTzDCdEhg+zoiKuFDfGwR4XX6ftyfXIbZyoMn9Crx+ShgovxhsYM
+         AupstzBTbSZJDJNMFuxbwhSmohrIOTUsdBa5nYl7eV43B7FwZm+6hmsL8ZyQhkrse7ON
+         Cky4nbUx2iMZSoRlnFSQ7EO6xgDsrd5xRF8zc9QiiFiPc0ENRSux8A/7Wn+3jxrkSH3S
+         ZQp9RDTiRdGJPqHDfeo9y16S00fJzys+ZlyEQJpJy86TRMUCT06ETG7+8bRnNUTuxnQA
+         InJ4EJ/4+Iq8NdHWjB0d/aSb2rEuoyi/q/qJjzCfqi1fyrBuNwFr2SGZsolNjprei6TO
+         0qOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:from:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:subject
-         :spamdiagnosticmetadata:spamdiagnosticoutput
-         :content-transfer-encoding:mime-version:message-id:date:to
-         :dkim-signature:arc-authentication-results;
-        bh=aHASSC2X1eJJ8VJiEEW1GEDxrm1iC4JFKQIiht4/Zuw=;
-        b=PWto9i4S2Ig0arZ5O29O7HSpwG/79b4pV78cs4A4H5d3J/XK1EYLIzMS+hEGnIrIV+
-         8dnPsPZhhOCnKRQAGGqp4jV5Dd1SKx2raV4VQMCccC5Q0i0VNJ8RbPKsHku53unRLOg4
-         k7D4fj8mi7ILwM/pgOKgH5eT6kteR/k7/GVCDZYzNa3I2wtnJ4LiRzxQNdUngdC5AnzE
-         aWEQrzJrU4RnAI81Ttb5OIGwoDYvudOtgfs1oyTvqmI6Aol5I5SdQwNciUdNLctLKwvu
-         T9jTcuIUJVqcgELKSSo/50LzVXEhqo4PchBYpe87PxHQOcUMwUeqgtooBmMgLMwmL74l
-         5h8Q==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:references:to:mime-version
+         :user-agent:from:date:message-id:arc-authentication-results;
+        bh=Zbd4VpSWmJY3366ctJLrefZdkgCa+f+Ia/SkxEj0UiI=;
+        b=kCgOEvljGcEFQ27iVM3Bp+bh69O8ThGikf+MlwBhV9Rn8v75KfqL1r2bM20PAzTZHd
+         a7Ss/XuPgHGPgn+taXHHhWy4fL9z/itFn5A1zxPTfXOf3pg/wQYdOFTN4SU1BgYwTyZd
+         R/wRwVMt9ZvUObD813nn7xHAaGRohEo/gozUIzgx0FleBSMCh91jw6rohd0D1UpU7KF9
+         DK7GwhKc2EPmsMGj7HOkk6h6sIhmQ0tVZZvIxYV6ZkvrS92ZpLHuLjsEXV/5yQ7zXKR7
+         9vRtu05nVA9rfO4fnvCLwcPnM+hVx2A0oGn8IJB+7ZE6UY1UZDbqFbXAPfsaadTttQ12
+         1Gag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@impinj.com header.s=selector1 header.b=jJFesQig;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q22-v6si7188135qte.344.2018.07.31.13.12.27
+        by mx.google.com with ESMTPS id n6si1954886ybd.402.2017.11.20.01.27.33
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 31 Jul 2018 13:12:27 -0700 (PDT)
+        Mon, 20 Nov 2017 01:27:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@impinj.com header.s=selector1 header.b=jJFesQig;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60549 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:56253 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fkb0N-0007cb-C4
-	for alex.bennee@linaro.org; Tue, 31 Jul 2018 16:12:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48344)
+	id 1eGiMX-0001v1-3l
+	for alex.bennee@linaro.org; Mon, 20 Nov 2017 04:27:33 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33371)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <tpiepho@impinj.com>) id 1fkb0B-0007cU-2G
-	for qemu-arm@nongnu.org; Tue, 31 Jul 2018 16:12:16 -0400
+	(envelope-from <zhuyijun@huawei.com>) id 1eGiMF-0001qb-98
+	for qemu-arm@nongnu.org; Mon, 20 Nov 2017 04:27:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <tpiepho@impinj.com>) id 1fkb07-0000BG-T8
-	for qemu-arm@nongnu.org; Tue, 31 Jul 2018 16:12:15 -0400
-Received: from mail-co1nam05on0731.outbound.protection.outlook.com
-	([2a01:111:f400:fe50::731]:20000
-	helo=NAM05-CO1-obe.outbound.protection.outlook.com)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <tpiepho@impinj.com>)
-	id 1fkb07-00008X-Eb; Tue, 31 Jul 2018 16:12:11 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=impinj.com;
-	s=selector1;
-	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
-	bh=xJ5xRNxdsX/6cBKMWdsKZ6KS35jqtvR5/+wiDXBuE2o=;
-	b=jJFesQigURGa5Yg7nPT14QaM4dfiAbp72LHt/Z/uLQmq/h3XlGn6JhceEtaxcqnQYZvjhPAcN8HAFKuCKgUjr/2UBK4NparyvsadLS6T7VZqlVPicrFU102QRR1lyel7thwkZNSPea2dvsZWCuOkrqo1A+9SZcs0Qk4u1FemvPU=
-Authentication-Results: spf=none (sender IP is )
-	smtp.mailfrom=tpiepho@impinj.com; 
-Received: from impinj.com (216.207.205.253) by
-	SN4PR0601MB3711.namprd06.prod.outlook.com (2603:10b6:803:4b::33) with
-	Microsoft SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.995.21;
-	Tue, 31 Jul 2018 20:11:50 +0000
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Tue, 31 Jul 2018 13:10:56 -0700
-Message-ID: <20180731201056.29257-1-tpiepho@impinj.com>
-X-Mailer: git-send-email 2.14.4
+	(envelope-from <zhuyijun@huawei.com>) id 1eGiME-0000Gs-21
+	for qemu-arm@nongnu.org; Mon, 20 Nov 2017 04:27:15 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2793)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
+	(envelope-from <zhuyijun@huawei.com>)
+	id 1eGiM9-0000Bt-1X; Mon, 20 Nov 2017 04:27:09 -0500
+Received: from 172.30.72.58 (EHLO DGGEMS407-HUB.china.huawei.com)
+	([172.30.72.58])
+	by dggrg04-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
+	with ESMTP id DLE69746; Mon, 20 Nov 2017 17:23:44 +0800 (CST)
+Received: from [127.0.0.1] (10.177.27.25) by DGGEMS407-HUB.china.huawei.com
+	(10.3.19.207) with Microsoft SMTP Server id 14.3.361.1; Mon, 20 Nov 2017
+	17:23:05 +0800
+Message-ID: <5A129EE4.2090704@huawei.com>
+Date: Mon, 20 Nov 2017 17:22:44 +0800
+From: Zhu Yijun <zhuyijun@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64;
+	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [216.207.205.253]
-X-ClientProxiedBy: DM5PR16CA0047.namprd16.prod.outlook.com
-	(2603:10b6:4:15::33) To SN4PR0601MB3711.namprd06.prod.outlook.com
-	(2603:10b6:803:4b::33)
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 79729a86-47ca-4007-20e0-08d5f721da68
-X-Microsoft-Antispam: BCL:0; PCL:0;
-	RULEID:(7020095)(4652040)(8989117)(5600074)(711020)(4534165)(4627221)(201703031133081)(201702281549075)(8990107)(2017052603328)(7153060)(7193020);
-	SRVR:SN4PR0601MB3711; 
-X-Microsoft-Exchange-Diagnostics: 1; SN4PR0601MB3711;
-	3:ivPvbWxc4/I83XvFTvvQqUS7JNuYOwNt4I0ijtGD4pu2KAtTxpDAv3qf6jBEUGrQWcSK/EONL1tqCxAkOFl9MfY58xircn74Pnevvjw91CbUaVDO2xhCP7Xl4M/UHzaFIF5KdUFStt0NGB/LCYanU0xtn+L3aFWoxkCReCgifIi0NhwaTFfqBYaITEl2c2frxuWeX6SNzZivoWRK6Xl2DcOo/OJVZGMU57hHaf+UWoW/tLIm040heUJ+eSNrfFpU;
-	25:SGu7e/RakdaKOdB+apMYZ5+NQb7yzis8x6DoiVrKZdmGvoYPlT9aoIVLr1bFrYg8pNAcGXH6+Ka61R0R9O632H7cSH7BruQZ0igc2Seywa8GRcgbzq13y+4zyW/n3lZXufUGftnrDNNPh59cpmE/q2yabaTqUYfPK68woZgc27HxhTubWt+vgW77JgU3YoKL/gRoPgA30h4qM0BxEw0K4OnJts3h2vlWIzDSwfrunNub30CNwgvyz3YRmWevmZOsSvZ5PUTiBpQKr6NPDvyTFE8yOPn5MtutIotBBVCjOyK739kJhxEZfFAzhMXqN1oK/VDaX7LHBmdPMwCP2C4XSg==;
-	31:znIVFHGcDtONunFgSI7utWXrRmGUiikCfObrviEtXuz0zk4LQeVdmbnubtL0v0qFpDWOteFFFru6ag0iNFvYDNI3wqBOgeSVtStHQRVOqZHQEROfbO53andbjKN+MOEYQDy4rdFRKYncF1TBE6j2Vwpg5+N+ZxoLoX3OTlzGjXh/6J8FjmU2ILUJxRCDTSCcttZHZjyfjA8hMRfPxPT5PvqH75J6IURmTelulWQuvM0=
-X-MS-TrafficTypeDiagnostic: SN4PR0601MB3711:
-X-Microsoft-Exchange-Diagnostics: 1; SN4PR0601MB3711;
-	20:BOhWEAtU4qsIDqCaf1jgKtm/tDYeQgMouqW6o4nPmDDdb7I+e8ueWFN6qgi1a2UUXq8D+xu22gxFh0d+IUp0GXEjXuLzv0WE+a/KTK+SfT+STNVv/eqoVQXZB2MBamf08Apra6mmnxm2czbHf4cEMRQGFw3QkbyLEYgmqO9E3XV8Kf6D7DuEZrJ4NzmfYq6r8NyxniwP2JMizSj0wxjjvVvYrynWJgoHavqs9hMsAY8SezU+S/Xyodur0Pu8JC23WN413cEl3MjFKhQW/7FEIK10IbCU3Bez7NvkpHd1Hjz2Vg+hZeVp/zwWqDMIxN6LvluuVXODv/cZu5vwyKua/pTFCX1wZzz9FF5wL+C9HSGV8WSUwvvINqqP75f4OTL/fzFkzSD5+LCbujSLESYOE7IT60Nw6yHCKtPu3Fd2hjcde4OWy6CsbgYM+h+Kp3vp2Be+Y8OT/ZFx5liOqR+7+1rhVKdQdg4o5jzWKdj+7IlackxG+uovfyJbrQFYaDPM;
-	4:y8FzNnfm2cwlR/uVVyDI2tXyGcccP3eCk4YBYP8V8IiSGyFDZ3ltVEo3B8IAhb7AZM+k7Jfqsl0LgD3r8NaIAI3AYCw3u4Dw+ybOfoiKZ3dRlaJheBbVhyVpm6hzyQYdKHlLg1qGR8O2i2oe31Dr1XpRIxA9bp7ZgyEyR7cMfM5wv15yYeTjivUeI0H2SP1YIRW/ZVVAKNGKaIyVtnIKEPTrvAnALuWrYpAVMeEXi1lmHYOs/1dlQRzdUCM40yI2Uej/qvetZSjKaXLq5HU4OQ==
-X-Microsoft-Antispam-PRVS: <SN4PR0601MB3711BF4F4A4CCB5CA5E9AAE6D32E0@SN4PR0601MB3711.namprd06.prod.outlook.com>
-X-Exchange-Antispam-Report-Test: UriScan:;
-X-MS-Exchange-SenderADCheck: 1
-X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
-	RULEID:(8211001083)(6040522)(2401047)(8121501046)(5005006)(3002001)(10201501046)(93006095)(93001095)(3231311)(944501410)(52105095)(149027)(150027)(6041310)(20161123560045)(20161123564045)(20161123562045)(20161123558120)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(6072148)(201708071742011)(7699016);
-	SRVR:SN4PR0601MB3711; BCL:0; PCL:0; RULEID:;
-	SRVR:SN4PR0601MB3711; 
-X-Forefront-PRVS: 0750463DC9
-X-Forefront-Antispam-Report: SFV:NSPM;
-	SFS:(10019020)(136003)(346002)(39850400004)(396003)(376002)(366004)(199004)(189003)(8936002)(486006)(68736007)(97736004)(5660300001)(3846002)(6116002)(25786009)(386003)(66066001)(47776003)(1857600001)(8676002)(7736002)(86362001)(305945005)(81166006)(53936002)(81156014)(36756003)(105586002)(26005)(478600001)(21086003)(16526019)(2906002)(106356001)(2870700001)(50226002)(7696005)(23676004)(186003)(107886003)(4326008)(1076002)(52116002)(50466002)(55016002)(476003)(316002)(54906003)(2616005)(956004)(69596002);
-	DIR:OUT; SFP:1102; SCL:1; SRVR:SN4PR0601MB3711; H:impinj.com;
-	FPR:; SPF:None; LANG:en; PTR:InfoNoRecords; A:1; MX:1; 
-Received-SPF: None (protection.outlook.com: impinj.com does not designate
-	permitted sender hosts)
-X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; SN4PR0601MB3711;
-	23:XruqDCf6DXtxuwiO4SHTUI1vNGOb5l6s/28tPBK?=
-	=?us-ascii?Q?uokYkPzVPYKBkXxi87LyzYdhRMmtDRfasfg/3Vu5T/JHvJIGEqcI+gM4pdIq?=
-	=?us-ascii?Q?1VCrLAov3m4TOaKaKGPRi8N8U0c5a+744NfWw42Ubvj3u9s0nl/JBh1jr5yf?=
-	=?us-ascii?Q?/OgVQqvz/54ysCIlQfVPb+cpiQcJyKAGqkmeUkhLmRm0kuN19wBO22oPk0M3?=
-	=?us-ascii?Q?1YlwPdSySh4n+7ruzFk04mY7IiRV16yie2J764Po8m3tBnuWKFU1l/gnZ4EE?=
-	=?us-ascii?Q?mM/9c5rnU/tEcKkA8Jf+oFGawaa9rfH7dLObkyhW8e+G9U6EFh7I3mf6yREn?=
-	=?us-ascii?Q?Ke8GRPDp+tZTan9jwfpV/1wqM6t5Duu4ojJPL4YCCMfc3jzVnBtLofQI6uE9?=
-	=?us-ascii?Q?rK9FWdTIQJige+btTd2cfONJtwUJtBBmRtEAzaQpB4Zk4EpN4HwAn402IwCw?=
-	=?us-ascii?Q?ujOByXI7b3UtWK/Fh+Ti8laiHvhKiyIDAL6Md22U6WwhetfngVg8AObqLaZQ?=
-	=?us-ascii?Q?7LtHuX408LLfwXpEjBT0kXfWi5mI3d63GIfWgy3EnOkAlm/c0S/h4sL5AB8W?=
-	=?us-ascii?Q?sSFxXivFT9kuL5Un2SDOg1XQqUpy1nFmv0jyv8maAxclEACaXkd3YTBYk5uj?=
-	=?us-ascii?Q?Z+ij6oPvkS30zKFELVALOBwABqsMPKyfelPr1+QWwouMyiy5n6cwD1F7UcO9?=
-	=?us-ascii?Q?PZaLeLCmYCHj76OI8QHWODki4SoUbJ3Av0qZuEJ5XvCg1Mp5OP9cL079kT4M?=
-	=?us-ascii?Q?/Q2l2VaiZgzRCP2DtXmTSnSUjEiDdPu6/s4Loo1vX8n5HvQqNdjG/3E8S5LY?=
-	=?us-ascii?Q?M1N0g453Rf5Chxj/bRG9OoJguqOuzhBontFwIu3mAYWIuT8makte/ybpbBGv?=
-	=?us-ascii?Q?UbLtdnDOi9UxQy4x2sXe1fMmTsjjsKHcL8L7lvVxpGORQOab2STUrXOlt7i+?=
-	=?us-ascii?Q?bH3d82YfsZEsh2ShfKVDHxTonHcwzdgab37ozY9DVHWxmFccxk9o7vUKLA7F?=
-	=?us-ascii?Q?lj4ipUCfn1ZPNHQe0qZr9D6dpAW+Fzu4TMqEI+b7nN2CQ4LPjbgXI30Th7UE?=
-	=?us-ascii?Q?jefJiNp3aETptWQWCpKNPMKp5bkB0CpIEkkKJFZVeWjXep+faGR5A5EfSIfz?=
-	=?us-ascii?Q?cbOB+OnISQMN/McPTpRgJU2agsPjIE+a2MT8BPsxWz5o0USDGzQOKiw=3D?=
-	=?us-ascii?Q?=3D?=
-X-Microsoft-Antispam-Message-Info: mP3qYEA5mS51QYiScEUlM5JgxJPeMIMedqO1ppR3hldDle92sadhkBBdL3+gmXnpmSjGVyWOtHxuH6Vd2/n/qDZQElnOTR1kx7j8iEvI87r+jArrkLG5j1/HNH1+LAODWLBEuPg/u3j8qg2S4awbKIZB1s1U+GMdlzz3Tcwt2oPRuNl34wfikOGdBBiSvfLRgQ5FONj0rrj7tW7emlFJYAdHR98qZKrlH/WRHRKnotiJeD3oeCAmCCtlhSrC2cS9y/l6G8NnviSE1PT27BdAgPR07ai770396yozdl86kAMHjdHVTOQURO6GC+zklx74CO/K55XIaKdghQ6YIRNePlLsgx5d5/25gTcb8asATks=
-X-Microsoft-Exchange-Diagnostics: 1; SN4PR0601MB3711;
-	6:6J2EzpfHKyWONBR7wDg0t/9H7puv1lTrHE9QNiYV8+L7CW9rzXUoimI7akxa6fl1euPgqqIKg1/6ixRDUlNogjUnrJv1/mQTHQZh9Nc4gC6FkspNRv0SQp9B5ibWtQn2VACKzFNLevb+zKwodVltPZo6WHfugUuZhxhRFhTOCs14SjoltATFEi8YXpHYG43yuhvIJ5e5QRaIHvRTgXiu/oyS+NApRTvafeR2MVQ2+I68DU+pG7bboF79zh9CF3m78Pg46Wo7ulhTef+U8GGRlyYW7AypO81mZQwSaMwK/BAu4G99dvAA7zSJGsMfD8apiWCvCcV0SGuCWf7oPbLcMvIolQx12cCjeDrk4aPAiIaib15Y1jDsp7fjusA0edqLGT7v8RWKnB0EcZwn/fPZvlnpL4EP1NuAux+D5QVHtvNnEQjXMDvA6OG1/yKwK6AJ9l7c4h0iu+n1q3smY52EkA==;
-	5:xqiHSK3pDFMZg/nh+aAY3Aylgx02xsZh5oHWto9BJOZ+pylL+KIhz/982c9YkkdiF+CpDqCUuMKLyDneLHhm6nGQwqoBpGcgc7yJyI3kmh0j3Ybsg/1i56fvySoJpdBrGb/NOCNqYO3e0G2q/b6D2y5hAq8oI1DJtR2ftsw1ISM=;
-	7:X1PUoVlmk92D5ZxvUI60//OapBBE290QnC5QzcM2NUccx2i8AwnM+uxSQPmPrd9799Oufmg+1hn4LQWYYmbbyhQ/15j2vGtw00TzbFlZ0nTFP08vGbOZHKzD4J4Y1pX/OHVj9fX0nbjSFDmuj+gfmFFyGsURE0k3INGnvYG7dU24e95Vci6moGZr9WwHbwCHk2sEKo2Zf24dx5+Ocrvv/mnry7q3+KCYu3vX/KutL7W6frBdu52uO1gDAnYyPYqt
-SpamDiagnosticOutput: 1:99
-SpamDiagnosticMetadata: NSPM
-X-OriginatorOrg: impinj.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Jul 2018 20:11:50.8375 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 79729a86-47ca-4007-20e0-08d5f721da68
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 6de70f0f-7357-4529-a415-d8cbb7e93e5e
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN4PR0601MB3711
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 2a01:111:f400:fe50::731
-Subject: [Qemu-arm] [PATCH] imx_spi: Unset XCH when TX FIFO becomes empty
+To: Andrew Jones <drjones@redhat.com>
+References: <1510622154-17224-1-git-send-email-zhuyijun@huawei.com>
+	<1510622154-17224-3-git-send-email-zhuyijun@huawei.com>
+	<20171114144708.uzh6mkmjygojfpbu@kamzik.brq.redhat.com>
+In-Reply-To: <20171114144708.uzh6mkmjygojfpbu@kamzik.brq.redhat.com>
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.27.25]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020203.5A129F21.0002, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2014-11-16 11:51:01, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 960717034aa2fc40f765b183d0d23254
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+	[fuzzy]
+X-Received-From: 45.249.212.190
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 2/5] hw/arm/virt: Enable dynamic
+ generation of guest RAM memory regions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -155,60 +93,111 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-From: Trent Piepho via Qemu-arm <qemu-arm@nongnu.org>
-Reply-To: Trent Piepho <tpiepho@impinj.com>
-Cc: Peter Chubb <peter.chubb@nicta.com.au>, Trent Piepho <tpiepho@impinj.com>
+Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org,
+	shameerali.kolothum.thodi@huawei.com, eric.auger@redhat.com,
+	qemu-arm@nongnu.org, zhaoshenglong@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: w2MDJ+CGKIre
+X-TUID: kPC+Dx1vyTsL
 
-The current emulation will clear the XCH bit when a burst finishes.
-This is not quite correct.  According to the i.MX7d referemce manual,
-Rev 0.1, =C2=A710.1.7.3:
+Hi Andrew,
 
-    This bit [XCH] is cleared automatically when all data in the TXFIFO
-    and the shift register has been shifted out.
+Thanks for your review!
 
-So XCH should be cleared when the FIFO empties, not on completion of a
-burst.  The FIFO is 64 x 32 bits =3D 2048 bits, while the max burst size
-is larger at 4096 bits.  So it's possible that the burst is not finished
-after the TXFIFO empties.
+On 2017/11/14 22:47, Andrew Jones wrote:
+> On Tue, Nov 14, 2017 at 09:15:51AM +0800, zhuyijun@huawei.com wrote:
+>> From: Zhu Yijun <zhuyijun@huawei.com>
+>>
+>> Register a ram_memory_region_init notify to allocate memory region
+>> from system memory and add them as subregions.
+>>
+>> Signed-off-by: Zhu Yijun <zhuyijun@huawei.com>
+>> ---
+>>  hw/arm/virt.c         | 21 ++++++++++++++++-----
+>>  include/hw/arm/virt.h |  1 +
+>>  2 files changed, 17 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index 9e18b41..ddde5e1 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -1225,6 +1225,19 @@ void virt_machine_done(Notifier *notifier, void *data)
+>>      virt_build_smbios(vms);
+>>  }
+>>  
+>> +static void virt_ram_memory_region_init(Notifier *notifier, void *data)
+>> +{
+>> +    MachineState *machine = MACHINE(qdev_get_machine());
+> No need to use qdev_get_machine(), you can get it with MACHINE(vms).
+OK
+>> +    MemoryRegion *sysmem = get_system_memory();
+>> +    MemoryRegion *ram = g_new(MemoryRegion, 1);
+>> +    VirtMachineState *vms = container_of(notifier, VirtMachineState,
+>> +                                         ram_memory_region_init);
+>> +
+>> +    memory_region_allocate_system_memory(ram, NULL, "mach-virt.ram",
+>> +                                         machine->ram_size);
+>> +    memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base, ram);
+>> +}
+>> +
+>>  static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
+>>  {
+>>      uint8_t clustersz = ARM_DEFAULT_CPUS_PER_CLUSTER;
+>> @@ -1258,7 +1271,6 @@ static void machvirt_init(MachineState *machine)
+>>      MemoryRegion *sysmem = get_system_memory();
+>>      MemoryRegion *secure_sysmem = NULL;
+>>      int n, virt_max_cpus;
+>> -    MemoryRegion *ram = g_new(MemoryRegion, 1);
+>>      bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
+>>  
+>>      /* We can probe only here because during property set
+>> @@ -1409,10 +1421,6 @@ static void machvirt_init(MachineState *machine)
+>>      fdt_add_cpu_nodes(vms);
+>>      fdt_add_psci_node(vms);
+>>  
+>> -    memory_region_allocate_system_memory(ram, NULL, "mach-virt.ram",
+>> -                                         machine->ram_size);
+>> -    memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base, ram);
+>> -
+>>      create_flash(vms, sysmem, secure_sysmem ? secure_sysmem : sysmem);
+>>  
+>>      create_gic(vms, pic);
+>> @@ -1462,6 +1470,9 @@ static void machvirt_init(MachineState *machine)
+>>       * Notifiers are executed in registration reverse order.
+>>       */
+>>      create_platform_bus(vms, pic);
+>> +
+>> +    vms->ram_memory_region_init.notify = virt_ram_memory_region_init;
+>> +    qemu_add_machine_init_done_notifier(&vms->ram_memory_region_init);
+> Does this notifier need to be the first one executed? If so, then a
+> comment should be added to state that. Actually the comment above
+> create_platform_bus() could be replaced with a comment above the first
+> notifier that states all notifier dependencies.
+Yes, it should be the first notifier, because reserved memory regions must get before memory node created in arm_load_kernel_notify.
+>>  }
+>>  
+>>  static bool virt_get_secure(Object *obj, Error **errp)
+>> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+>> index 33b0ff3..38906b8 100644
+>> --- a/include/hw/arm/virt.h
+>> +++ b/include/hw/arm/virt.h
+>> @@ -90,6 +90,7 @@ typedef struct {
+>>  typedef struct {
+>>      MachineState parent;
+>>      Notifier machine_done;
+>> +    Notifier ram_memory_region_init;
+>>      FWCfgState *fw_cfg;
+>>      bool secure;
+>>      bool highmem;
+>> -- 
+>> 1.8.3.1
+>>
+>>
+>>
+> Thanks,
+> drew 
+>
+> .
+>
 
-Sending a large block (> 2048 bits) with the Linux driver will use a
-burst that is larger than the TXFIFO.  After the TXFIFO has emptied XCH
-does not become unset, as the burst is not yet finished.
-
-What should happen after the TXFIFO empties is the driver will refill it
-and set XCH.  The rising edge of XCH will trigger another transfer to
-begin.  However, since the emulation does not set XCH to 0, there is no
-rising edge and the next trasfer never begins.
-
-Signed-off-by: Trent Piepho <tpiepho@impinj.com>
----
- hw/ssi/imx_spi.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
-index b66505ca49..02c38c9e47 100644
---- a/hw/ssi/imx_spi.c
-+++ b/hw/ssi/imx_spi.c
-@@ -208,8 +208,6 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
-         }
-=20
-         if (s->burst_length <=3D 0) {
--            s->regs[ECSPI_CONREG] &=3D ~ECSPI_CONREG_XCH;
--
-             if (!imx_spi_is_multiple_master_burst(s)) {
-                 s->regs[ECSPI_STATREG] |=3D ECSPI_STATREG_TC;
-                 break;
-@@ -219,6 +217,7 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
-=20
-     if (fifo32_is_empty(&s->tx_fifo)) {
-         s->regs[ECSPI_STATREG] |=3D ECSPI_STATREG_TC;
-+        s->regs[ECSPI_CONREG] &=3D ~ECSPI_CONREG_XCH;
-     }
-=20
-     /* TODO: We should also use TDR and RDR bits */
---=20
-2.14.4
 

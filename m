@@ -1,351 +1,187 @@
-Received: by 10.223.153.116 with SMTP id x107csp385855wrb;
-        Mon, 20 Nov 2017 01:40:37 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMbjWddOWnrPyDAOZYkbxH8/PTOabQvHebJF05s+/LQo6qjiZ45/MF18W0bJFHhRy0ttc/74
-X-Received: by 10.37.45.98 with SMTP id s34mr7830609ybe.39.1511170837838;
-        Mon, 20 Nov 2017 01:40:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1511170837; cv=none;
+Received: by 10.223.153.116 with SMTP id x107csp387256wrb;
+        Mon, 20 Nov 2017 01:42:17 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMb3CK5w+o4oQKf0AAHmtcPz7nPtPh3KfzILji2QQf2PhJ4fuPc/3mvcUg7O8w8RZGTmHr/m
+X-Received: by 10.37.183.201 with SMTP id u9mr7905274ybj.333.1511170937200;
+        Mon, 20 Nov 2017 01:42:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1511170937; cv=none;
         d=google.com; s=arc-20160816;
-        b=wyXW4OIvZRttB1yH8hN+K9ZAZiCtl8XbjWPleKF2g4p9QHwUzV5PJ9oxXGZT5BnAm0
-         ZkOnXslOoReu58gVlPe6gnZQOvxFw283NOl1UgXhQflcJfnxJuUhw7F2HePI5GptvDSL
-         5+n0C9BGdH0FK1qot1zAm9aZHNqzpS1dRDf0+X6xM6hxNWL9zxbvEyxRGviExHSmxVTO
-         mjSp36X5ttKoahgmBUf+nadnHeZE+moco+LKr32bltnh6h1CveAq1+44/P1UegLDRnVe
-         ZRHIxjMr6IQdTs2q+sR4gMkxbgrnw/MyBfuf3kYYW/eMQeAb854Qlan8ijGHJXgYzSav
-         td1A==
+        b=0togcTsXNk6Vxufw49LSzENRuNB7hzeSo90f7z5waJjxb1YiMK9kCtHihvFqVhtxA2
+         IxVqRSEh13MlWB59XHqyaiVXMgNmTtguo56szUXYGxTi0ziEZFmdNVLiz2OfhikS2TDi
+         Lh1d/MMuF0Zwq2vp3faSP5YstFO4vTWAtwDVYwJNE8EW2SsVAJ1QSTDtyOY0ldsiQj73
+         76typcne3/87jkyHAbWdAsbuLamhH6AgIcIb5YAptsosTxDztQpDB/GyvLZI9xq77Hf2
+         b3w7KAQ0noPPtEMz0ioSkNc28UETyfNs3FX6N9Y+tLGKKp2mYeITuLVIbCvxDKaTZJkR
+         XBDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:in-reply-to:references:to:mime-version
          :user-agent:from:date:message-id:arc-authentication-results;
-        bh=d4wYywAPVKtCzJN4ELvSKQnNkQZULRUJN9xbc+fGy0U=;
-        b=HwL7QnIjKquc4p8WOC+IPzb44YNAcriU6ZqSss6TDX3IBq982Ickvw//WGOGBNiS/b
-         pEIamrfrcCkdzbZfjodNfHzS/9OSb6i4ip9bpeLKltjihX9sT3vWoehQub5JV4bxGy7U
-         rt0Nrz2OZfKloMhyXfgHewmgE3c5H6L41yyc4ex9jH9aqsPeN/4/fDLI1awkA2fQudq+
-         gYXREHRiouxWV1jvbi5WPuIRi1vGHG8WHvIKv5UqiDggkV4oeWEOSTT3bD7Jbme7vlPI
-         t6SLtaI+y6m63L9Fk8W+7KM4JJaYsYNTU3c3esggjRzAH8If/0DmqqL1nF1Tkcd8y9Ob
-         N73Q==
+        bh=qwUCwDnEXynHSRrQOzOPddH/OV768eGomR9i4MjAOnA=;
+        b=tzK2hBjGkom5wybe5421XDvfpf2ML9r2HCgHaBwkrlxS/q2e+cCsvBpiwOcTIy8YGk
+         h2Rcb41H2j3WMdIhV5awWGEHO+xrWu3j3Ni3QjJmWMexi81U/ZjWM8gVp/1QdVzP/4uF
+         /C0VOT/UZx7ieQd998lfTwo1ijQ6hpYKuVqUekDoC/FNqPWHr5Sv0Yc3lQDSYeOt7otQ
+         +orafC/HKfOWWV3YdLAwyY/3fxU4I8N0hQgqqB4wx3ls+bLZJz1b1kmo5hAv5/d1pCUQ
+         l3OA8AQFPmim5R9ysRWUSXb1X/WFfmq3ypeJtM4kaVzh88mWLEccXsxVS0n36cCdVCeY
+         UYhg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 22si2027639ybc.729.2017.11.20.01.40.37
+        by mx.google.com with ESMTPS id p9si1991738ybk.401.2017.11.20.01.42.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 20 Nov 2017 01:40:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 20 Nov 2017 01:42:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:56317 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:56324 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eGiZB-0006eD-7l
-	for alex.bennee@linaro.org; Mon, 20 Nov 2017 04:40:37 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37450)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eGiam-0007VE-LW
+	for alex.bennee@linaro.org; Mon, 20 Nov 2017 04:42:16 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37483)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhuyijun@huawei.com>) id 1eGiYr-0006b1-QW
-	for qemu-arm@nongnu.org; Mon, 20 Nov 2017 04:40:22 -0500
+	(envelope-from <zhuyijun@huawei.com>) id 1eGiZ3-0006gH-Cm
+	for qemu-devel@nongnu.org; Mon, 20 Nov 2017 04:40:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhuyijun@huawei.com>) id 1eGiYl-0006Dg-KZ
-	for qemu-arm@nongnu.org; Mon, 20 Nov 2017 04:40:17 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2794)
+	(envelope-from <zhuyijun@huawei.com>) id 1eGiYy-0006G9-Mn
+	for qemu-devel@nongnu.org; Mon, 20 Nov 2017 04:40:29 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2795)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
 	(envelope-from <zhuyijun@huawei.com>)
-	id 1eGiYV-0005zj-V3; Mon, 20 Nov 2017 04:39:56 -0500
-Received: from 172.30.72.58 (EHLO DGGEMS405-HUB.china.huawei.com)
-	([172.30.72.58])
+	id 1eGiYx-0006Fg-UQ; Mon, 20 Nov 2017 04:40:24 -0500
+Received: from 172.30.72.60 (EHLO DGGEMS401-HUB.china.huawei.com)
+	([172.30.72.60])
 	by dggrg04-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
-	with ESMTP id DLE72073; Mon, 20 Nov 2017 17:39:41 +0800 (CST)
-Received: from [127.0.0.1] (10.177.27.25) by DGGEMS405-HUB.china.huawei.com
-	(10.3.19.205) with Microsoft SMTP Server id 14.3.361.1; Mon, 20 Nov 2017
-	17:38:57 +0800
-Message-ID: <5A12A2A9.4010007@huawei.com>
-Date: Mon, 20 Nov 2017 17:38:49 +0800
+	with ESMTP id DLE72161; Mon, 20 Nov 2017 17:40:10 +0800 (CST)
+Received: from [127.0.0.1] (10.177.27.25) by DGGEMS401-HUB.china.huawei.com
+	(10.3.19.201) with Microsoft SMTP Server id 14.3.361.1; Mon, 20 Nov 2017
+	17:39:58 +0800
+Message-ID: <5A12A2E6.5070103@huawei.com>
+Date: Mon, 20 Nov 2017 17:39:50 +0800
 From: Zhu Yijun <zhuyijun@huawei.com>
 User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64;
 	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
 MIME-Version: 1.0
 To: Andrew Jones <drjones@redhat.com>
 References: <1510622154-17224-1-git-send-email-zhuyijun@huawei.com>
-	<1510622154-17224-5-git-send-email-zhuyijun@huawei.com>
-	<20171114145101.sjol4obuna4kcmkp@kamzik.brq.redhat.com>
-In-Reply-To: <20171114145101.sjol4obuna4kcmkp@kamzik.brq.redhat.com>
+	<1510622154-17224-6-git-send-email-zhuyijun@huawei.com>
+	<20171114145150.wydvirgrrcbicvz4@kamzik.brq.redhat.com>
+In-Reply-To: <20171114145150.wydvirgrrcbicvz4@kamzik.brq.redhat.com>
 Content-Type: text/plain; charset="ISO-8859-1"
 Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.177.27.25]
 X-CFilter-Loop: Reflected
 X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A090202.5A12A2DE.00EF, ss=1, re=0.000, recu=0.000,
+	refid=str=0001.0A020201.5A12A2FB.0022, ss=1, re=0.000, recu=0.000,
 	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
 	so=2014-11-16 11:51:01, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 38dded2874d973f425dadfce9343fd14
+X-Mirapoint-Loop-Id: c4e5a6007b4a0d66eee048e14584ae8d
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
 	[fuzzy]
 X-Received-From: 45.249.212.190
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 4/5] hw/arm/boot: set fdt size
- cell of memory node from mem_list
-X-BeenThere: qemu-arm@nongnu.org
+Subject: Re: [Qemu-devel] [RFC 5/5] hw/arm/virt-acpi-build: Build srat table
+ according to mem_list
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org,
 	shameerali.kolothum.thodi@huawei.com, eric.auger@redhat.com,
 	qemu-arm@nongnu.org, zhaoshenglong@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aMlYWwu6iRGa
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: v7cLZ2GQbxsm
 
 On 2017/11/14 22:51, Andrew Jones wrote:
-> On Tue, Nov 14, 2017 at 09:15:53AM +0800, zhuyijun@huawei.com wrote:
+> On Tue, Nov 14, 2017 at 09:15:54AM +0800, zhuyijun@huawei.com wrote:
 >> From: Zhu Yijun <zhuyijun@huawei.com>
 >>
->> In case of accessing memory holes, we create memory fdt node by
->> traversing mem_list and adjust memory address if the addr is not
->> belong to RAM memory region.
+>> In case of accessing memory holes, we build srat table by
+>> traversing mem_list.
 >>
 >> Signed-off-by: Zhu Yijun <zhuyijun@huawei.com>
 >> ---
->>  hw/arm/boot.c | 151 ++++++++++++++++++++++++++++++++++++++++++----------------
->>  1 file changed, 109 insertions(+), 42 deletions(-)
+>>  hw/arm/virt-acpi-build.c | 40 +++++++++++++++++++++++++++++++++++-----
+>>  1 file changed, 35 insertions(+), 5 deletions(-)
 >>
->> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
->> index 30438f4..f4ca599 100644
->> --- a/hw/arm/boot.c
->> +++ b/hw/arm/boot.c
->> @@ -384,6 +384,25 @@ static void set_kernel_args_old(const struct arm_boot_info *info)
->>      }
->>  }
->>  
->> +static char *create_memory_fdt(void *fdt, uint32_t acells, hwaddr mem_base,
->> +                                          uint32_t scells, hwaddr mem_len)
->> +{
->> +    char *nodename = NULL;
->> +    int rc;
->> +
->> +    nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
->> +    qemu_fdt_add_subnode(fdt, nodename);
->> +    qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
->> +    rc = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg", acells, mem_base,
->> +                                      scells, mem_len);
->> +    if (rc < 0) {
->> +        fprintf(stderr, "couldn't set %s/reg\n", nodename);
->> +        g_free(nodename);
->> +    }
->> +
->> +    return nodename;
->> +}
->> +
->>  /**
->>   * load_dtb() - load a device tree binary image into memory
->>   * @addr:       the address to load the image at
->> @@ -412,7 +431,7 @@ static int load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
->>      uint32_t acells, scells;
->>      char *nodename;
->>      unsigned int i;
->> -    hwaddr mem_base, mem_len;
+>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+>> index 3d78ff6..e8dd7c9 100644
+>> --- a/hw/arm/virt-acpi-build.c
+>> +++ b/hw/arm/virt-acpi-build.c
+>> @@ -487,7 +487,12 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>>      AcpiSratProcessorGiccAffinity *core;
+>>      AcpiSratMemoryAffinity *numamem;
+>>      int i, srat_start;
+>> -    uint64_t mem_base;
+>> +    hwaddr region_offset = 0;       /* region base addr offset */
+>> +    hwaddr region_eat_size = 0;     /* region consumed size */
+>> +    hwaddr node_mem_size = 0;
+>> +    RAMRegion *begin_search_region = QLIST_FIRST(&vms->bootinfo.mem_list);
 >> +    RAMRegion *reg;
+>> +
+>>      MachineClass *mc = MACHINE_GET_CLASS(vms);
+>>      const CPUArchIdList *cpu_list = mc->possible_cpu_arch_ids(MACHINE(vms));
 >>  
->>      if (binfo->dtb_filename) {
->>          char *filename;
->> @@ -464,49 +483,65 @@ static int load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
->>          goto fail;
+>> @@ -504,12 +509,37 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>>          core->flags = cpu_to_le32(1);
 >>      }
 >>  
->> +    /*
->> +     * Turn the /memory node created before into a NOP node, then create
->> +     * /memory@addr nodes for all numa nodes respectively.
->> +     */
->> +    qemu_fdt_nop_node(fdt, "/memory");
->> +
->>      if (nb_numa_nodes > 0) {
->> -        /*
->> -         * Turn the /memory node created before into a NOP node, then create
->> -         * /memory@addr nodes for all numa nodes respectively.
->> -         */
->> -        qemu_fdt_nop_node(fdt, "/memory");
->> -        mem_base = binfo->loader_start;
->> +        hwaddr reg_offset = 0; /* region base addr offset */
->> +        hwaddr reg_alloc_size = 0; /* region consumed size */
->> +        hwaddr node_mem_size = 0;
->> +        RAMRegion *tmp_reg = QLIST_FIRST(&binfo->mem_list);
->> +
->>          for (i = 0; i < nb_numa_nodes; i++) {
->> -            mem_len = numa_info[i].node_mem;
->> -            nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
->> -            qemu_fdt_add_subnode(fdt, nodename);
->> -            qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
->> -            rc = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
->> -                                              acells, mem_base,
->> -                                              scells, mem_len);
->> -            if (rc < 0) {
->> -                fprintf(stderr, "couldn't set %s/reg for node %d\n", nodename,
->> -                        i);
->> -                goto fail;
->> -            }
->> +            node_mem_size = numa_info[i].node_mem;
->> +            QLIST_FOREACH(reg, &binfo->mem_list, next) {
->> +                if (reg->base != tmp_reg->base) {
->> +                    continue;
->> +                }
->>  
->> -            qemu_fdt_setprop_cell(fdt, nodename, "numa-node-id", i);
->> -            mem_base += mem_len;
->> -            g_free(nodename);
->> -        }
->> -    } else {
->> -        Error *err = NULL;
->> +                if (node_mem_size >= (reg->size - reg_offset)) {
->> +                    reg_alloc_size = reg->size - reg_offset;
->> +                } else {
->> +                    reg_alloc_size = node_mem_size;
->> +                }
->>  
->> -        rc = fdt_path_offset(fdt, "/memory");
->> -        if (rc < 0) {
->> -            qemu_fdt_add_subnode(fdt, "/memory");
->> -        }
->> +                nodename = create_memory_fdt(fdt, acells,
->> +                                             reg->base + reg_offset,
->> +                                             scells, reg_alloc_size);
->> +                if (!nodename) {
->> +                    goto fail;
->> +                }
->> +
->> +                qemu_fdt_setprop_cell(fdt, nodename, "numa-node-id", i);
->> +                g_free(nodename);
->>  
->> -        if (!qemu_fdt_getprop(fdt, "/memory", "device_type", NULL, &err)) {
->> -            qemu_fdt_setprop_string(fdt, "/memory", "device_type", "memory");
->> +                node_mem_size -= reg_alloc_size;
->> +                reg_offset += reg_alloc_size;
->> +                tmp_reg = reg;
->> +
->> +                /* The region is depleted */
->> +                if (reg->size == reg_offset) {
->> +                    reg_offset = 0;
->> +                    tmp_reg = QLIST_NEXT(reg, next);
->> +                }
->> +
->> +                if (node_mem_size == 0) {
->> +                    break;
->> +                }
+>> -    mem_base = vms->memmap[VIRT_MEM].base;
+>>      for (i = 0; i < nb_numa_nodes; ++i) {
+>>          numamem = acpi_data_push(table_data, sizeof(*numamem));
+>> -        build_srat_memory(numamem, mem_base, numa_info[i].node_mem, i,
+>> -                          MEM_AFFINITY_ENABLED);
+>> -        mem_base += numa_info[i].node_mem;
+>> +        node_mem_size = numa_info[i].node_mem;
+>> +        QLIST_FOREACH(reg, &vms->bootinfo.mem_list, next) {
+>> +            if (reg->base != begin_search_region->base) {
+>> +                continue;
 >> +            }
->>          }
->> +    } else {
->> +        QLIST_FOREACH(reg, &binfo->mem_list, next) {
->> +            nodename = create_memory_fdt(fdt, acells, reg->base,
->> +                                         scells, reg->size);
->> +            if (!nodename) {
->> +                goto fail;
->> +            }
->>  
->> -        rc = qemu_fdt_setprop_sized_cells(fdt, "/memory", "reg",
->> -                                          acells, binfo->loader_start,
->> -                                          scells, binfo->ram_size);
->> -        if (rc < 0) {
->> -            fprintf(stderr, "couldn't set /memory/reg\n");
->> -            goto fail;
->> +            g_free(nodename);
->>          }
->>      }
-> I think we should move the numa allocation into board specific code,
-> mach-virt, and we should also map dimms to numa nodes, rather than
-> just dividing memory up.
-
-OK, I will reconsider it.
->>  
->> @@ -814,6 +849,35 @@ static uint64_t load_aarch64_image(const char *filename, hwaddr mem_base,
->>      return size;
->>  }
->>  
->> +/* Find the max size memory region after info->initrd_start.
->> + * TODO: we may have a corner case where the memory node size may not correctly
->> + * fit into kernel/initrd/dtb Image sizes.
->> + * */
->> +static RAMRegion *find_initrd_memregion(const struct arm_boot_info *info,
->> +                                        hwaddr *initrd_start)
->> +{
->> +    RAMRegion *reg, *initrd_reg = NULL;
->> +    hwaddr max_size = 0;
->> +    hwaddr addr = *initrd_start;
 >> +
->> +    QLIST_FOREACH(reg, &info->mem_list, next) {
->> +        if (addr < reg->base) {
->> +            if (max_size < reg->size) {
->> +                max_size = reg->size;
->> +                *initrd_start = reg->base;
->> +                initrd_reg = reg;
+>> +            if (node_mem_size >= (reg->size - region_offset)) {
+>> +                region_eat_size = reg->size - region_offset;
+>> +            } else {
+>> +                region_eat_size = node_mem_size;
 >> +            }
->> +        } else if (addr >= reg->base && addr < (reg->base + reg->size)) {
->> +            if (max_size < reg->base + reg->size - addr) {
->> +                max_size = reg->base + reg->size - addr;
->> +                initrd_reg = reg;
+>> +
+>> +            build_srat_memory(numamem, reg->base + region_offset,
+>> +                              region_eat_size, i, MEM_AFFINITY_ENABLED);
+>> +
+>> +            node_mem_size -= region_eat_size;
+>> +            region_offset += region_eat_size;
+>> +            begin_search_region = reg;
+>> +
+>> +            /* The region is depleted */
+>> +            if (reg->size == region_offset) {
+>> +                region_offset = 0;
+>> +                begin_search_region = QLIST_NEXT(reg, next);
+>> +            }
+>> +
+>> +            if (node_mem_size == 0) {
+>> +                break;
 >> +            }
 >> +        }
->> +    }
->> +
->> +    return initrd_reg;
->> +}
->> +
->>  static void arm_load_kernel_notify(Notifier *notifier, void *data)
->>  {
->>      CPUState *cs;
->> @@ -837,11 +901,11 @@ static void arm_load_kernel_notify(Notifier *notifier, void *data)
->>      assert(!(info->secure_board_setup && kvm_enabled()));
->>  
->>      /* If machine is not virt, the mem_list will empty. */
->> -    if (QLIST_EMPTY(&vms->bootinfo.mem_list)) {
->> +    if (QLIST_EMPTY(&info->mem_list)) {
->>          RAMRegion *new = g_new(RAMRegion, 1);
->>          new->base = info->loader_start;
->>          new->size = info->ram_size;
->> -        QLIST_INSERT_HEAD(&vms->bootinfo.mem_list, new, next);
->> +        QLIST_INSERT_HEAD(&info->mem_list, new, next);
 >>      }
 >>  
->>      info->dtb_filename = qemu_opt_get(qemu_get_machine_opts(), "dtb");
->> @@ -973,14 +1037,16 @@ static void arm_load_kernel_notify(Notifier *notifier, void *data)
->>          uint32_t fixupcontext[FIXUP_MAX];
->>  
->>          if (info->initrd_filename) {
->> +            RAMRegion *reg = find_initrd_memregion(info, &info->initrd_start);
->> +
->>              initrd_size = load_ramdisk(info->initrd_filename,
->>                                         info->initrd_start,
->> -                                       info->ram_size -
->> +                                       reg->base + reg->size -
->>                                         info->initrd_start);
->>              if (initrd_size < 0) {
->>                  initrd_size = load_image_targphys(info->initrd_filename,
->>                                                    info->initrd_start,
->> -                                                  info->ram_size -
->> +                                                  reg->base + reg->size -
->>                                                    info->initrd_start);
->>              }
->>              if (initrd_size < 0) {
->> @@ -1027,7 +1093,8 @@ static void arm_load_kernel_notify(Notifier *notifier, void *data)
->>              }
->>              fixupcontext[FIXUP_ARGPTR] = dtb_start;
->>          } else {
->> -            fixupcontext[FIXUP_ARGPTR] = info->loader_start + KERNEL_ARGS_ADDR;
->> +            hwaddr kernel_args_addr = info->loader_start + KERNEL_ARGS_ADDR;
->> +            fixupcontext[FIXUP_ARGPTR] = kernel_args_addr;
-> What's this unrelated change for?
-
-Sorry, it makes no sense.
->>              if (info->ram_size >= (1ULL << 32)) {
->>                  fprintf(stderr, "qemu: RAM size must be less than 4GB to boot"
->>                          " Linux kernel using ATAGS (try passing a device tree"
+>>      build_header(linker, table_data, (void *)srat, "SRAT",
 >> -- 
 >> 1.8.3.1
 >>
 >>
 >>
+> Same pc-dimm assigning to NUMA node comment from last patch applies to this
+> one.
+
+ok, thanks!
+
 > Thanks,
 > drew 
 >

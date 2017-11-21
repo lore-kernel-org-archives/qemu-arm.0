@@ -1,213 +1,468 @@
-Received: by 10.223.159.82 with SMTP id f18csp507546wrg;
-        Tue, 21 Nov 2017 02:32:29 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMaEGbWB1ny5+GWDQxKQaa7xb35todwKFwc+6xJA5T2AVA0P0t7RG9NaToJ0lv0hhFWemo+s
-X-Received: by 10.84.194.228 with SMTP id h91mr8692803pld.177.1511260349489;
-        Tue, 21 Nov 2017 02:32:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1511260349; cv=none;
+Received: by 10.223.159.82 with SMTP id f18csp759827wrg;
+        Tue, 21 Nov 2017 06:39:06 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMZ/5hLa6PzfyFZe+AI/ZzkuNKkem3m/3T2Wn+YefSt8xcbMI72RsLTJeJK4MHFAAdqFcpSV
+X-Received: by 10.129.129.67 with SMTP id r64mr11565950ywf.338.1511275146224;
+        Tue, 21 Nov 2017 06:39:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1511275146; cv=none;
         d=google.com; s=arc-20160816;
-        b=EnxyHhyBkfB8/rMbU5DmwKExpKIjqSlSLpqN1ZpNuWgiTAoGawK7xPuzCSxfONcjAo
-         WVyAQb+8AMCtZMp2yb0TGruR1e4Pf1Iqmbb7v/eJiEf5phZ0zfkJ3IN/eFJRNKdzY+io
-         SonCQy7v1tmSdzPAaMkdW2Wt/VlcViNeeKmWbv/1QIeRrNPnFmVEa/z/HUzQDkLZnTxJ
-         8SGEHerH8MjrWklnDM1LWkT4D4b9qyC+swery+Klg3Tep7uzom7ADIz4HMVnz0DJ6SR4
-         VRyv6oogUzDs+y23EiwjayzlEeTKJjm3f8+/eVvbbi3A9LLy9in2DD2AIq3uCwqrwy92
-         JChA==
+        b=N2qDA7oc9Dg2v0uJw+Lukvy/D9Y2d1X33gXlzamVGEOA7sG5HKhoSAGIMhnfHd4lk9
+         RXpi8/sUYdFJovVk5GRRBb4ueUwCvzJaOzZcPub5wilUoJHjIblul1psfyl4VtB78Xoo
+         I5zQHQ14vz28M00JtmuU3UXysQIQWJHq3Q8Bl5S3xQzAdtdu8wlAcYVnmqK/sjYnrS+y
+         SUpjq0eqZWvQ4nZEaH2yI/1O29DgvCLUhmv1a68VoKc31AHYzNH4GetZJ5Hp/Az2AVRf
+         663W1YFz+AssE6MvvrXiLyclPI8IN6sXF1o9K+bd5pRAq0hRjedGqzLSIrqc8WR0Lu+q
+         aVNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:arc-authentication-results;
-        bh=zVen2lGUqU6FJcJmH0QesOrbdZceaJnNzs/UFPrhH0E=;
-        b=o9RrVayz8CX3F8JS/Yvb2NVKfCbHjCFZHDT0NADkpBzRADY0WHioj9yntaq57nHG/D
-         21gUyXeqOb+wks4mR0jQe+b6D8SJ/pSCcDQwcgBxpet27V42OY04bMlZ+13/GkHLilYk
-         4yFnu8cwebXl5BE/ZP3BZqtRxBQ2+kkGP8nWX2/MN0VvQLxjP/705kELCwc5CEHHUOgV
-         pqUaFd/4vTHGMbSJN1RX139TDyfuvB/hRPCTXZbNzDlXOypd8UPnHXXcPlw9Zu0sjXWw
-         eNGaUwHFdOcHZkz41XS37Krt2DuPHTKpxWhB4zOtDPTssiC9coWX8IPa2RncTwtY9CPY
-         LADA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=86/tIBDcCgxiEPrKCIPGZqYkJRDIrSN9h3O1G2cU3OU=;
+        b=noO4Jv12+0MVo5LT4jKvpg0HNLnq7oeiFEdujqPwkBgmw4omqpieJCykU3aMNh70NN
+         HiKqTkmgyjqKJ9aQWhhY66rQO+pBLmr2bfMo/VDXztAnEUvLtIk9G+gSxPRsc1QXtljk
+         2jrE0kVVH7SyGCpELxFgdyDDooB8JwTASlGfW83sAs7s5yEz3vNtu1xL0e5RR2nMlQqp
+         So32jScEKKwJoyZ0UF6RP2Ky1mtoosruZKK8WLxns4xD1GVaHXR42kPAg3aFqBUbiE2W
+         Px9dFmH9AOhfRFkJu81SlSySKOQ88xvfpOasUAQdJgXak6Q0LzyYyxgigezhbyOHb/eQ
+         a5LA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id 1si10611141pla.339.2017.11.21.02.32.29;
-        Tue, 21 Nov 2017 02:32:29 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@linaro.org header.s=google header.b=RgJ0c/Yu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id d20si2917064ywb.188.2017.11.21.06.39.06
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 21 Nov 2017 06:39:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1752035AbdKUKcS (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 5 others); Tue, 21 Nov 2017 05:32:18 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:10966 "EHLO
-        szxga04-in.huawei.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1752000AbdKUKby (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 21 Nov 2017 05:31:54 -0500
-Received: from 172.30.72.58 (EHLO DGGEMS402-HUB.china.huawei.com) ([172.30.72.58])
-        by dggrg04-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
-        with ESMTP id DLG39790;
-        Tue, 21 Nov 2017 18:31:45 +0800 (CST)
-Received: from localhost.localdomain (10.143.28.90) by
- DGGEMS402-HUB.china.huawei.com (10.3.19.202) with Microsoft SMTP Server id
- 14.3.361.1; Tue, 21 Nov 2017 18:31:37 +0800
-From:   Dongjiu Geng <gengdongjiu@huawei.com>
-To:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
-        <zhaoshenglong@huawei.com>, <peter.maydell@linaro.org>,
-        <mtosatti@redhat.com>, <james.morse@arm.com>, <lersek@redhat.com>,
-        <marc.zyngier@arm.com>, <christoffer.dall@linaro.org>,
-        <rth@twiddle.net>, <ehabkost@redhat.com>, <kvm@vger.kernel.org>,
-        <guohanjun@huawei.com>, <lijinyue@huawei.com>,
-        <huangshaoyu@huawei.com>, <wuquanming@huawei.com>,
-        <zhengqiang10@huawei.com>, <linuxarm@huawei.com>,
-        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
-        <dingtianhong@huawei.com>, <wangxiongfeng2@huawei.com>
-CC:     <gengdongjiu@huawei.com>
-Subject: [PATCH RESEND v12 08/12] target-arm: kvm64: inject synchronous External Abort
-Date:   Wed, 22 Nov 2017 02:37:10 +0800
-Message-ID: <1511289434-1551-9-git-send-email-gengdongjiu@huawei.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1511289434-1551-1-git-send-email-gengdongjiu@huawei.com>
-References: <1511289434-1551-1-git-send-email-gengdongjiu@huawei.com>
+       dkim=fail header.i=@linaro.org header.s=google header.b=RgJ0c/Yu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:34796 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eH9hZ-0001Rj-KA
+	for alex.bennee@linaro.org; Tue, 21 Nov 2017 09:39:05 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52272)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1eH9hM-0001Od-O3
+	for qemu-arm@nongnu.org; Tue, 21 Nov 2017 09:38:54 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1eH9hG-00065F-7c
+	for qemu-arm@nongnu.org; Tue, 21 Nov 2017 09:38:52 -0500
+Received: from mail-ot0-x235.google.com ([2607:f8b0:4003:c0f::235]:42708)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1eH9hF-00064z-Vg
+	for qemu-arm@nongnu.org; Tue, 21 Nov 2017 09:38:46 -0500
+Received: by mail-ot0-x235.google.com with SMTP id 18so10687150oty.9
+	for <qemu-arm@nongnu.org>; Tue, 21 Nov 2017 06:38:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=86/tIBDcCgxiEPrKCIPGZqYkJRDIrSN9h3O1G2cU3OU=;
+	b=RgJ0c/YumI9sEBP8IeMkkV0577upgIP1/n3YppSTEJltKp2eVdP9CXRf/nv24r0j6s
+	iukD/IvI2X3tBBLyBY4Cdtrc63Mmn6RNBXF/n14jF/n+yTHi0FfAPJKM15UoYXnLtFZt
+	xYDl3FIVXYx7ChSzULqxRMbDrAxeVHjS690Vc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=86/tIBDcCgxiEPrKCIPGZqYkJRDIrSN9h3O1G2cU3OU=;
+	b=IEhJDS4BgC6vtIrZlDD3nDgk1WSlfA1DSDj5I5phe5i0RMXmdvJybg3AzNzj69con1
+	sNR1WNKYadDiO+/4SAgfQQ+ylk1uxzOl3BUIlHC9xqea7NPmmgIERT6tCjom+vVUTqZC
+	TyE963ZkJuUi3pA7s4uTiu7Y81ftp5ReoF/d+RkuYSAaZlEa/hlx2TWA7A+myh5KcL2b
+	57KRWjkKEvEIiPbfOZP3VeBBdDjCDxlXrkmPn7XGcroQHhS9kD7dYbimBLZJCmqI9irF
+	xQOnNSVpf18qXP5/5POuEbO19jT0Q8VZGuB2zX8TTrBot5bh9shgX2SR059eEHTt7tgg
+	JMzw==
+X-Gm-Message-State: AJaThX7xl55DwFTjGviqS9bxdUfzV8cfGVun1Wf/znCQgo/81HyeNMbf
+	N/FD2mQqMQqwhOoEdXW+jqQcRUJCruai4r4mGzG/wA==
+X-Received: by 10.157.13.168 with SMTP id 37mr11509614ots.197.1511275124909;
+	Tue, 21 Nov 2017 06:38:44 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.143.28.90]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-        refid=str=0001.0A020203.5A140091.0133,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0,
-        ip=0.0.0.0,
-        so=2014-11-16 11:51:01,
-        dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 80a448c21535b32b5437eea9fc9bb299
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 1uUOAvuo2mV3
+Received: by 10.157.63.74 with HTTP; Tue, 21 Nov 2017 06:38:24 -0800 (PST)
+In-Reply-To: <1509107055-21978-3-git-send-email-costa@advantech.ca>
+References: <1509107055-21978-1-git-send-email-costa@advantech.ca>
+	<1509107055-21978-3-git-send-email-costa@advantech.ca>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 21 Nov 2017 14:38:24 +0000
+Message-ID: <CAFEAcA86ehHUQ7aKQLx9ZMu_jDOXv_mT6y5vwmAhohEikt+kJw@mail.gmail.com>
+To: Gabriel Costa <gabriel291075@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::235
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v7 2/5] arm: kinetis_k64_mcg
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xz9M/F5UDVu/
 
-Add synchronous external abort injection logic, setup
-spsr_elx, esr_elx, PSTATE, elr_elx etc, when switch to
-guest, guest will jump to the synchronous external abort
-vector table entry.
+On 27 October 2017 at 13:24, Gabriel Costa <gabriel291075@gmail.com> wrote:
+> This Patch include kinetis_k64_mcg.c/.h
+> mcg means Multipurpose Clock Generator (MCG)
+> More information about this peripheral can be found at:
+> pag 579, K64P144M120SF5RM.pdf.
 
-The ESR_ELx.DFSC is set to Synchronous external abort(0x10),
-and ESR_ELx.FnV is set to not valid(0x1), which will tell
-guest that FAR is not valid and holds an UNKNOWN value.
+"page"
 
-These value will be set to KVM related structure through
-KVM_SET_ONE_REG IOCTL.
+(Some of the remarks about commit message phrasing for the UART
+patch apply here too, though in this case it is worth
+explaining what MCG stands for.
 
-Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-Signed-off-by: Quanming Wu <wuquanming@huawei.com>
 
----
-Marc is against that KVM inject the synchronous external abort(SEA) in [1],
-so user space how to inject it. The log that Qemu injects SEA to guest is
-shown in [2].
+> Signed-off-by: Gabriel Augusto Costa <gabriel291075@gmail.com>
+> ---
+>  hw/misc/kinetis_k64_mcg.c         | 208 ++++++++++++++++++++++++++++++++++++++
+>  include/hw/misc/kinetis_k64_mcg.h |  43 ++++++++
+>  2 files changed, 251 insertions(+)
+>  create mode 100644 hw/misc/kinetis_k64_mcg.c
+>  create mode 100644 include/hw/misc/kinetis_k64_mcg.h
+>
+> diff --git a/hw/misc/kinetis_k64_mcg.c b/hw/misc/kinetis_k64_mcg.c
+> new file mode 100644
+> index 0000000..37f4201
+> --- /dev/null
+> +++ b/hw/misc/kinetis_k64_mcg.c
+> @@ -0,0 +1,208 @@
+> +/*
+> + * Kinetis K64 peripheral microcontroller emulation.
+> + *
+> + * Copyright (c) 2017 Advantech Wireless
+> + * Written by Gabriel Costa <gabriel291075@gmail.com>
+> + *
+> + *  This program is free software; you can redistribute it and/or modify
+> + *  it under the terms of the GNU General Public License version 2 or
+> + *  (at your option) any later version.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/sysbus.h"
+> +#include "qemu/log.h"
+> +#include "hw/misc/kinetis_k64_mcg.h"
+> +
+> +static const VMStateDescription vmstate_kinetis_k64_mcg = {
+> +    .name = TYPE_KINETIS_K64_MCG,
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT8(C1, kinetis_k64_mcg_state),
+> +        VMSTATE_UINT8(C2, kinetis_k64_mcg_state),
+> +        VMSTATE_UINT8(C3, kinetis_k64_mcg_state),
+> +        VMSTATE_UINT8(C4, kinetis_k64_mcg_state),
+> +        VMSTATE_UINT8(C5, kinetis_k64_mcg_state),
+> +        VMSTATE_UINT8(C6, kinetis_k64_mcg_state),
+> +        VMSTATE_UINT8(S, kinetis_k64_mcg_state),
+> +        VMSTATE_UINT8(SC, kinetis_k64_mcg_state),
+> +        VMSTATE_UINT8(ATCVH, kinetis_k64_mcg_state),
+> +        VMSTATE_UINT8(ATCVL, kinetis_k64_mcg_state),
+> +        VMSTATE_UINT8(C7, kinetis_k64_mcg_state),
+> +        VMSTATE_UINT8(C8, kinetis_k64_mcg_state),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+> +static void kinetis_k64_mcg_reset(DeviceState *dev)
+> +{
+> +    kinetis_k64_mcg_state *s = KINETIS_K64_MCG(dev);
+> +
+> +    s->C1 = 0x04;
+> +    s->C2 = 0x80;
+> +    s->C3 = 0x00;
+> +    s->C4 = 0x00;
+> +    s->C5 = 0x00;
+> +    s->C6 = 0x00;
+> +    s->S = 0x10;
 
-[1]: https://lkml.org/lkml/2017/3/2/110
-[2]:
-Taking exception 4 [Data Abort]
-...from EL0 to EL1
-...with ESR 0x24/0x92000410
-...with FAR 0x0
-...with ELR 0x40cf04
-...to EL1 PC 0xffffffc000084c00 PSTATE 0x3c5
-after kvm_inject_arm_sea
-Unhandled fault: synchronous external abort (0x92000410) at 0x0000007fa234c12c
-CPU: 0 PID: 536 Comm: devmem Not tainted 4.1.0+ #20
-Hardware name: linux,dummy-virt (DT)
-task: ffffffc019ab2b00 ti: ffffffc008134000 task.ti: ffffffc008134000
-PC is at 0x40cf04
-LR is at 0x40cdec
-pc : [<000000000040cf04>] lr : [<000000000040cdec>] pstate: 60000000
-sp : 0000007ff7b24130
-x29: 0000007ff7b24260 x28: 0000000000000000
-x27: 00000000000000ad x26: 000000000049c000
-x25: 000000000048904b x24: 000000000049c000
-x23: 0000000040600000 x22: 0000007ff7b243a0
-x21: 0000000000000002 x20: 0000000000000000
-x19: 0000000000000020 x18: 0000000000000000
-x17: 000000000049c6d0 x16: 0000007fa22c85c0
-x15: 0000000000005798 x14: 0000007fa2205f1c
-x13: 0000007fa241ccb0 x12: 0000000000000137
-x11: 0000000000000000 x10: 0000000000000000
-x9 : 0000000000000000 x8 : 00000000000000de
-x7 : 0000000000000000 x6 : 0000000000002000
-x5 : 0000000040600000 x4 : 0000000000000003
-x3 : 0000000000000001 x2 : 0000000000000000
-x1 : 0000000000000000 x0 : 0000007fa2418000
----
- target/arm/kvm64.c | 64 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 64 insertions(+)
+This is how the hardware resets, but the QEMU implementation
+doesn't have to worry about the complexities of slow hardware
+initialization or gaining and losing PLL locks. So you can also
+set bits 6 and 1 here, indicating that we have instantaneously
+initialized the oscillator and gained lock.
 
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index 2d0eb32..7f662e9 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -582,6 +582,70 @@ int kvm_arm_cpreg_level(uint64_t regidx)
-     return KVM_PUT_RUNTIME_STATE;
- }
- 
-+static int kvm_arm_cpreg_value(ARMCPU *cpu, ptrdiff_t fieldoffset)
-+{
-+    int i;
-+
-+    for (i = 0; i < cpu->cpreg_array_len; i++) {
-+        uint32_t regidx = kvm_to_cpreg_id(cpu->cpreg_indexes[i]);
-+        const ARMCPRegInfo *ri;
-+        ri = get_arm_cp_reginfo(cpu->cp_regs, regidx);
-+        if (!ri) {
-+            continue;
-+        }
-+
-+        if (ri->type & ARM_CP_NO_RAW) {
-+            continue;
-+        }
-+
-+        if (ri->fieldoffset == fieldoffset) {
-+            cpu->cpreg_values[i] = read_raw_cp_reg(&cpu->env, ri);
-+            return 0;
-+        }
-+    }
-+    return -EINVAL;
-+}
-+
-+/* Inject synchronous external abort */
-+static void kvm_inject_arm_sea(CPUState *c)
-+{
-+    ARMCPU *cpu = ARM_CPU(c);
-+    CPUARMState *env = &cpu->env;
-+    unsigned long cpsr = pstate_read(env);
-+    uint32_t esr, ret;
-+
-+    c->exception_index = EXCP_DATA_ABORT;
-+    /* Inject the exception to El1 */
-+    env->exception.target_el = 1;
-+    CPUClass *cc = CPU_GET_CLASS(c);
-+
-+    /* Set the DFSC to Synchronous external abort and FnV to not valid,
-+     * this will tell guest the FAR_EL1 is UNKNOWN.
-+     */
-+    esr = (0x10 | (1 << 10));
-+
-+    /* This exception is EL0 or EL1 fault. */
-+    if ((cpsr & 0xf) == PSTATE_MODE_EL0t) {
-+        esr |= (EC_DATAABORT << ARM_EL_EC_SHIFT);
-+    } else {
-+        esr |= (EC_DATAABORT_SAME_EL << ARM_EL_EC_SHIFT);
-+    }
-+
-+    /* In the aarch64, there is only 32-bit instruction*/
-+    esr |= ARM_EL_IL;
-+    env->exception.syndrome = esr;
-+
-+    cc->do_interrupt(c);
-+
-+    /* set ESR_EL1 */
-+    ret = kvm_arm_cpreg_value(cpu, offsetof(CPUARMState, cp15.esr_el[1]));
-+
-+    if (ret) {
-+        fprintf(stderr, "<%s> failed to set esr_el1\n", __func__);
-+        abort();
-+    }
-+}
-+
- #define AARCH64_CORE_REG(x)   (KVM_REG_ARM64 | KVM_REG_SIZE_U64 | \
-                  KVM_REG_ARM_CORE | KVM_REG_ARM_CORE_REG(x))
- 
--- 
-1.8.3.1
+> +    s->SC = 0x02;
+> +    s->ATCVH = 0x00;
+> +    s->ATCVL = 0x00;
+> +    s->C7 = 0x00;
+> +    s->C8 = 0x80;
+> +}
+> +
+> +static void kinetis_k64_mcg_write(void *opaque, hwaddr offset, uint64_t value,
+> +        unsigned size)
+> +{
+> +    kinetis_k64_mcg_state *s = (kinetis_k64_mcg_state *)opaque;
+> +
+> +    value &= 0xFF;
+> +
+> +    switch (offset) {
+> +    case 0x00:
+> +        if (value & 1 << 2) { /*IREFS*/
+> +            s->S = 0;
+> +            s->S |= 1 << 3; /*10 Enconding 2 - External ref clk is selected*/
+
+"Encoding". Spaces around the text inside /* */, please.
+
+Why clear s->S to 0 and then OR something into it?
+
+Surely we should just be changing the bits in s->S that we
+need to affect, not touching all the others?
+
+> +        }
+> +        if ((s->C1 & 0x80) && (value >> 6 == 0)) {
+
+Should we really be looking at the old value of C1 here,
+rather than the one that's beeing written?
+
+> +            s->S |= 1 << 2; /*11 Enconding 3 - Output of the PLL is selected*/
+
+This will go wrong if some of the bits in this field of
+s->S are already set.
+
+What you want to do here is copy bit 2 of C1 into bit 4
+of S, and copy bits [7:6] of C1 into bits [3:2] of S.
+There are two ways to do that:
+
+old fashioned way with bit ops:
+   s->S &= ~c0;
+   s->S |= (value >> 4);
+
+better, more comprehensible way (these functions are declared
+and documented in include/qemu/bitops.h):
+   clks = extract32(value, 6, 2);
+   s->S = deposit32(s->S, 2, 2, clks);
+
+I don't object to using raw bitwise logic ops, but if you
+want to do it that way you need to get it right...
+
+Strongly consider using the REG32 and FIELD macros from
+hw/registerfields.h as a way to define some symbolic
+constants so you don't need to use hardcoded numbers for
+bit positions and field widths.
+
+> +        }
+> +        s->C1 = value;
+> +        break;
+> +    case 0x01:
+> +        s->C2 = value;
+> +        break;
+> +    case 0x02:
+> +        s->C3 = value;
+> +        break;
+> +    case 0x03:
+> +        s->C4 = value;
+> +        break;
+> +    case 0x04:
+> +        s->C5 = value;
+> +        if (s->C5 & 1 << 6) { /*PLLCLKEN0*/
+> +            s->S |= 1 << 6;  /*LOCK0*/
+> +        }
+
+Please be consistent about whether you write the value to
+the s->whatever field first and then update the status register,
+or whether you update s->S based on value and then write
+to s->whatever afterwards.
+
+> +        break;
+> +    case 0x05:
+> +        s->C6 = value;
+> +        if (s->C6 & 1 << 6) { /*PLLS*/
+> +            s->S |= 1 << 5;  /*PLLST*/
+> +        }
+> +        break;
+> +    case 0x06:
+> +        s->S = value;
+
+The data sheet says this register is read-only!
+
+> +        break;
+> +    case 0x08:
+> +        s->SC = value;
+> +        break;
+> +    case 0x0A:
+> +        s->ATCVH = value;
+> +        break;
+> +    case 0x0B:
+> +        s->ATCVL = value;
+> +        break;
+> +    case 0x0C:
+> +        s->C7 = value;
+> +        break;
+> +    case 0x0D:
+> +        s->C8 = value;
+> +        break;
+
+Many of the bits in C7 and C8 are not writeable. Please check the
+datasheet...
+
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +            "kinetis_k64_mcg: write at bad offset %"HWADDR_PRIx"\n", offset);
+> +    }
+> +}
+> +
+> +static uint64_t kinetis_k64_mcg_read(void *opaque, hwaddr offset, unsigned size)
+> +{
+> +    kinetis_k64_mcg_state *s = (kinetis_k64_mcg_state *)opaque;
+> +    uint8_t value;
+> +
+> +    switch (offset) {
+> +    case 0x00:
+> +        value = s->C1;
+> +        break;
+> +    case 0x01:
+> +        value = s->C2;
+> +        break;
+> +    case 0x02:
+> +        value = s->C3;
+> +        break;
+> +    case 0x03:
+> +        value = s->C4;
+> +        break;
+> +    case 0x04:
+> +        value = s->C5;
+> +        break;
+> +    case 0x05:
+> +        value = s->C6;
+> +        break;
+> +    case 0x06:
+> +        value = s->S;
+> +        break;
+> +    case 0x08:
+> +        value = s->SC;
+> +        break;
+> +    case 0x0A:
+> +        value = s->ATCVH;
+> +        break;
+> +    case 0x0B:
+> +        value = s->ATCVL;
+> +        break;
+> +    case 0x0C:
+> +        value = s->C7;
+> +        break;
+> +    case 0x0D:
+> +        value = s->C8;
+> +        break;
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +            "kinetis_k64_mcg: read at bad offset %"HWADDR_PRIx"\n", offset);
+> +        return 0;
+> +    }
+> +    return value;
+> +}
+> +
+> +static const MemoryRegionOps kinetis_k64_mcg_ops = {
+> +    .read = kinetis_k64_mcg_read,
+> +    .write = kinetis_k64_mcg_write,
+> +    .endianness = DEVICE_NATIVE_ENDIAN,
+> +};
+> +
+> +static void kinetis_k64_mcg_init(Object *obj)
+> +{
+> +    kinetis_k64_mcg_state *s = KINETIS_K64_MCG(obj);
+> +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+> +
+> +    memory_region_init_io(&s->iomem, obj, &kinetis_k64_mcg_ops, s,
+> +            TYPE_KINETIS_K64_MCG, 0x1000);
+> +    sysbus_init_mmio(sbd, &s->iomem);
+> +    sysbus_init_irq(sbd, &s->irq);
+
+You create an interrupt line here but never do anything with it.
+What is it for?
+
+> +}
+> +
+> +static void kinetis_k64_mcg_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->vmsd = &vmstate_kinetis_k64_mcg;
+> +    dc->reset = kinetis_k64_mcg_reset;
+> +    dc->desc = "Kinetis K64 series MCG";
+> +}
+> +
+> +static const TypeInfo kinetis_k64_mcg_info = {
+> +    .name          = TYPE_KINETIS_K64_MCG,
+> +    .parent        = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(kinetis_k64_mcg_state),
+> +    .instance_init = kinetis_k64_mcg_init,
+> +    .class_init    = kinetis_k64_mcg_class_init,
+> +};
+> +
+> +static void kinetis_k64_mcg_register_types(void)
+> +{
+> +    type_register_static(&kinetis_k64_mcg_info);
+> +}
+> +
+> +type_init(kinetis_k64_mcg_register_types)
+> diff --git a/include/hw/misc/kinetis_k64_mcg.h b/include/hw/misc/kinetis_k64_mcg.h
+> new file mode 100644
+> index 0000000..3f105c5
+> --- /dev/null
+> +++ b/include/hw/misc/kinetis_k64_mcg.h
+> @@ -0,0 +1,43 @@
+> +/*
+> + * Kinetis K64 peripheral microcontroller emulation.
+> + *
+> + * Copyright (c) 2017 Advantech Wireless
+> + * Written by Gabriel Costa <gabriel291075@gmail.com>
+> + *
+> + *  This program is free software; you can redistribute it and/or modify
+> + *  it under the terms of the GNU General Public License version 2 or
+> + *  (at your option) any later version.
+> + */
+> +
+> +#ifndef KINETIS_MCG_H
+> +#define KINETIS_MCG_H
+> +
+> +#include "hw/sysbus.h"
+> +#include "hw/hw.h"
+> +
+> +#define TYPE_KINETIS_K64_MCG "kinetis_k64_mcg"
+> +#define KINETIS_K64_MCG(obj) \
+> +    OBJECT_CHECK(kinetis_k64_mcg_state, (obj), TYPE_KINETIS_K64_MCG)
+> +
+> +typedef struct {
+> +    SysBusDevice parent_obj;
+> +
+> +    MemoryRegion iomem;
+> +
+> +    uint8_t C1;
+> +    uint8_t C2;
+> +    uint8_t C3;
+> +    uint8_t C4;
+> +    uint8_t C5;
+> +    uint8_t C6;
+> +    uint8_t S;
+> +    uint8_t SC;
+> +    uint8_t ATCVH;
+> +    uint8_t ATCVL;
+> +    uint8_t C7;
+> +    uint8_t C8;
+
+These should all be in lower case I think.
+
+> +
+> +    qemu_irq irq;
+> +} kinetis_k64_mcg_state;
+
+Structure and type names should be in CamelCase. Please check
+the CODING_STYLE file.
+
+> +
+> +#endif
+> --
+> 2.1.4
+
+thanks
+-- PMM

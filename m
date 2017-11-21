@@ -1,135 +1,112 @@
-Received: by 10.223.159.82 with SMTP id f18csp527913wrg;
-        Thu, 23 Nov 2017 01:53:02 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMasU9Ba+9yPREzx7y+UcYm6KHqypRv8Z926Ed8Yw7RYC6S4nhbUx5f0BXQa865/OiuMkTFw
-X-Received: by 10.37.99.194 with SMTP id x185mr14737076ybb.411.1511430782384;
-        Thu, 23 Nov 2017 01:53:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1511430782; cv=none;
+Received: by 10.223.159.82 with SMTP id f18csp507004wrg;
+        Tue, 21 Nov 2017 02:31:56 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMZEbKf1YtPpey9BHrBCb4kbTepEmDMCLB5GpXI6HlDr9oQbzHn2MSVXyaqTkFTSiIhgfVw/
+X-Received: by 10.84.132.46 with SMTP id 43mr17408224ple.126.1511260316056;
+        Tue, 21 Nov 2017 02:31:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1511260316; cv=none;
         d=google.com; s=arc-20160816;
-        b=WgGvMwY4GEQxHVSIz3SZLjrnZ/hNGseozbPJ5MWgtyUAp4ufScftn4Bm+DgZqPAsqs
-         zUCF5wDF1xuPb+aR5z5Wzinj9zZ97N5haEHXFpd2c6x4GrcQKmVjtdgG2ERrRgNOub9y
-         rm5E43UvwgRIgfaVAyNQcijpUScBVsoDyGjJF+o7kGFC2mEpr/FA3Jul0LyfaHZtFenm
-         AwnLMsk/dJV4J/fqGLRsTtbcQVENllsSRJkCkyjt02hDW1iUv+gCr5ZRZc9sc5bVMJ7c
-         BXzfkcJNYiKit9I+flKzOnnJdDq0p7FslDcv0suGqpF/UfsvemYSOWCZSzJQXE2EkTOo
-         9g5A==
+        b=Ierb9bz/BD1XdmBo3YridQwQotuvrNgrQE5Ck5p6CGP7DPJT2qsIMUon2UTErBJWkR
+         UIGW3W2nj7hZoFRioP0VBzgdDBDJtRlZmrec+xBD5sXfOabr8KhFaXGQXdeWWxgxGUgm
+         LTJRtJG18ipXFWgLS94xDiupbN3dAYGxb/fUkU0Nqe7aEvkFLhieI0UXxvG60Xtdlrb2
+         3rOzUY5yoLF/X2iOni3OlVMV8XSWgD1YFy2vw9QSFxQ85jY4Sfi37v1nSvKXk+FVqqx1
+         I4eZv0DUKIE7uzpHAZjdqtE7aUYLAn3GFxp0kNQKpThlLQktRLbxawFYrX9FZDQt4Hmv
+         Tepw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=focIjQTWIlPjxWuBUPW2JcQdVH/yo3vdkn+Iwbg/KrQ=;
-        b=zwxyXwACv7L3I+oH3zmbP8UqDJ1YOe0k1gYt5teAw2TlyqxQegPNcL+HOpVQFMDbF0
-         Hx3q320zGGItIgj3NPB5z0atc1++CSFypbjq75efse0bDEkoP4atUjq8EJWhtOLDrHpv
-         eGVlCTsRCW0VPsaBXp6vW275Y84BPAjm/1vRkeN/domV0FppDd2LzgINHMutFLRXp8i8
-         /ucKZZ6nx1eXvzVWnOnw4aEmbHOeaRiU5DniOleVRFTP/9V38LVF4AxzDcMinLljrQH7
-         PTXARqub9ECFT3wF5+FpL01RuoPQBRVDloPUle9/DbHtccKUzPrjJRoyvH/aufCYek54
-         Cr5Q==
+        h=list-id:precedence:sender:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:arc-authentication-results;
+        bh=K1J1UM4BvBWAKnBTWNPc3Mdn+gwQ6o+rpogBTiKlBXU=;
+        b=UAGk/DFiFvWZTZv5WsVtZBpnyIr056iQHl1Utaw1Q/mXFsa/sfqMiurvUmN11U55EN
+         eTOlgdSynhBzO6meti6t2ZG3QjfboeK+rz+ijZU2X5QiGbTf/x6lwzXNjsJvL2hK3zyn
+         1KRM5NBVI13OjZeL0KnYT3yPXsT49Ls1o1QIgPEEfOL3iLv17Rw7jpD1xLPm42uwhfcP
+         M5eQt/hAw9sao3PIWKPa3hFoPdd/tlfNCa4lVK/+dIZHmIAsHeOwqDxBEQA8EI4nwdyb
+         FsXpOwSohYRHpokGMFGJKQW50qZpABW9I6ekMTG9sSZsP7lcolxanapFRQwkU40CNZ3f
+         ju9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=QpIttsM8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h5si3802785ybk.235.2017.11.23.01.53.02
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 23 Nov 2017 01:53:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id 1si10611141pla.339.2017.11.21.02.31.55;
+        Tue, 21 Nov 2017 02:31:56 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=QpIttsM8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43245 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eHoBp-00052M-TC
-	for alex.bennee@linaro.org; Thu, 23 Nov 2017 04:53:01 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32999)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eHoBf-00050e-H2
-	for qemu-arm@nongnu.org; Thu, 23 Nov 2017 04:52:53 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eHoBZ-0000W4-Na
-	for qemu-arm@nongnu.org; Thu, 23 Nov 2017 04:52:51 -0500
-Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:35398)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eHoBZ-0000Va-IC
-	for qemu-arm@nongnu.org; Thu, 23 Nov 2017 04:52:45 -0500
-Received: by mail-oi0-x244.google.com with SMTP id e142so12813299oih.2
-	for <qemu-arm@nongnu.org>; Thu, 23 Nov 2017 01:52:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=focIjQTWIlPjxWuBUPW2JcQdVH/yo3vdkn+Iwbg/KrQ=;
-	b=QpIttsM8xRAF5slbYUrDXjGtSw76ErM3t0Nhl8+27wDKwDa9ogbwcPUXheMnzL/yCF
-	IdL8mjd71s39feO9gWJljskfiaS/plqRYpSlFgEbFaZr8gJMQHbhoHanv7zJ3oT6dWUH
-	bFYP/PKCHWJofdnn/CNbQD92oHFCynAPo+Fq4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=focIjQTWIlPjxWuBUPW2JcQdVH/yo3vdkn+Iwbg/KrQ=;
-	b=PmF56rsezInSnm7mnfgdRN3QRQAGDyFKRB3cOoZoAdaln7GoaKAF7CL4qyx/BOr9Op
-	y35kGouel3lJyVxH/W1oSrhMyzqmpEVRH4i24SGLldfgMPK9F188M/+ALbishQ6MUm4L
-	fMmPPWuXXmDroqgt7NhBgEpSlxIwGN/FYewr08We9YplGeAUkjhK28OuBys0XxNRhCgT
-	+RPQ1RheNUJ0BmbAOkXWh7AJO5Rn+ffq0zYS/zwjrTlNVkFcGvZy6ELCYgLUOj2C3b6f
-	VDGW8CT5/MNV24JFq9+lgtyDVHgQO8nF0dcJMV/Dt9lXnqBIQra2TCVIUmuReVDjQewP
-	fagQ==
-X-Gm-Message-State: AJaThX5J3Jch1yHHNXaI3rEswSrcdZ840xhGosn8Gp3KTvMe3Mju+YeE
-	urUxQ/DddIYsYuPVVClzg+hoea2YhOMx2y3L/L5Qeg==
-X-Received: by 10.202.83.22 with SMTP id h22mr5683156oib.8.1511430764662; Thu,
-	23 Nov 2017 01:52:44 -0800 (PST)
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1752009AbdKUKbx (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 5 others); Tue, 21 Nov 2017 05:31:53 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:10962 "EHLO
+        szxga04-in.huawei.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1751988AbdKUKbv (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 21 Nov 2017 05:31:51 -0500
+Received: from 172.30.72.58 (EHLO DGGEMS402-HUB.china.huawei.com) ([172.30.72.58])
+        by dggrg04-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
+        with ESMTP id DLG39776;
+        Tue, 21 Nov 2017 18:31:40 +0800 (CST)
+Received: from localhost.localdomain (10.143.28.90) by
+ DGGEMS402-HUB.china.huawei.com (10.3.19.202) with Microsoft SMTP Server id
+ 14.3.361.1; Tue, 21 Nov 2017 18:31:33 +0800
+From:   Dongjiu Geng <gengdongjiu@huawei.com>
+To:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
+        <zhaoshenglong@huawei.com>, <peter.maydell@linaro.org>,
+        <mtosatti@redhat.com>, <james.morse@arm.com>, <lersek@redhat.com>,
+        <marc.zyngier@arm.com>, <christoffer.dall@linaro.org>,
+        <rth@twiddle.net>, <ehabkost@redhat.com>, <kvm@vger.kernel.org>,
+        <guohanjun@huawei.com>, <lijinyue@huawei.com>,
+        <huangshaoyu@huawei.com>, <wuquanming@huawei.com>,
+        <zhengqiang10@huawei.com>, <linuxarm@huawei.com>,
+        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
+        <dingtianhong@huawei.com>, <wangxiongfeng2@huawei.com>
+CC:     <gengdongjiu@huawei.com>
+Subject: [PATCH RESEND v12 04/12] ACPI: enable APEI GHES in the configure file and build it
+Date:   Wed, 22 Nov 2017 02:37:06 +0800
+Message-ID: <1511289434-1551-5-git-send-email-gengdongjiu@huawei.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1511289434-1551-1-git-send-email-gengdongjiu@huawei.com>
+References: <1511289434-1551-1-git-send-email-gengdongjiu@huawei.com>
 MIME-Version: 1.0
-Received: by 10.157.63.74 with HTTP; Thu, 23 Nov 2017 01:52:24 -0800 (PST)
-In-Reply-To: <CAHQ1cqHm1MRWaxh7v4EWgRraS4Ezrx2QdbH43ao_FOX3P6MZQA@mail.gmail.com>
-References: <20171106154813.19936-1-andrew.smirnov@gmail.com>
-	<20171106154813.19936-12-andrew.smirnov@gmail.com>
-	<CAFEAcA82Y3fWJyAUwOSxy6btutrS+FPa7sRm3AOKZM_GTcmBrA@mail.gmail.com>
-	<CAHQ1cqHm1MRWaxh7v4EWgRraS4Ezrx2QdbH43ao_FOX3P6MZQA@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 23 Nov 2017 09:52:24 +0000
-Message-ID: <CAFEAcA9FoRPWiXvtO2-mtc-Y2SgdmkH2habTcP+TY9RJZ02Bcw@mail.gmail.com>
-To: Andrey Smirnov <andrew.smirnov@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::244
-Subject: Re: [Qemu-arm] [PATCH v3 11/30] sdhci: Add i.MX specific subtype of
- SDHCI
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Jason Wang <jasowang@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	Andrey Yurovsky <yurovsky@gmail.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bCRavIFgQT3y
+Content-Type: text/plain
+X-Originating-IP: [10.143.28.90]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+        refid=str=0001.0A020204.5A14008E.00D4,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0,
+        ip=0.0.0.0,
+        so=2014-11-16 11:51:01,
+        dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: ed02a0ea2c6f99c77883c21077c309b9
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 3taVlNPZ0wjY
 
-On 22 November 2017 at 20:43, Andrey Smirnov <andrew.smirnov@gmail.com> wrote:
-> On Tue, Nov 21, 2017 at 10:02 AM, Peter Maydell
-> <peter.maydell@linaro.org> wrote:
->> On 6 November 2017 at 15:47, Andrey Smirnov <andrew.smirnov@gmail.com> wrote:
->>> +/* Controller does not provide transfer-complete interrupt when not busy */
->>> +#define SDHCI_QUIRK_NO_BUSY_IRQ    BIT(14)
->>
->> We only have one quirk, so why is it bit 14?
->>
->
-> I took that code from Linux kernel, so I tried to keep it as is (same
-> with unsigned long in quirks field).
+Add CONFIG_ACPI_APEI configuration in the arm-softmmu.mak
+and add build choice in the Makefile.objs.
 
-That's fine, but if so we should have a comment that that's what we're
-doing, so that subsequent additions by other contributors follow the
-same convention.
+Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+---
+ default-configs/arm-softmmu.mak | 1 +
+ hw/acpi/Makefile.objs           | 1 +
+ 2 files changed, 2 insertions(+)
 
-thanks
--- PMM
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+index bbdd3c1..c362113 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -129,3 +129,4 @@ CONFIG_ACPI=y
+ CONFIG_SMBIOS=y
+ CONFIG_ASPEED_SOC=y
+ CONFIG_GPIO_KEY=y
++CONFIG_ACPI_APEI=y
+diff --git a/hw/acpi/Makefile.objs b/hw/acpi/Makefile.objs
+index 11c35bc..bafb148 100644
+--- a/hw/acpi/Makefile.objs
++++ b/hw/acpi/Makefile.objs
+@@ -6,6 +6,7 @@ common-obj-$(CONFIG_ACPI_MEMORY_HOTPLUG) += memory_hotplug.o
+ common-obj-$(CONFIG_ACPI_CPU_HOTPLUG) += cpu.o
+ common-obj-$(CONFIG_ACPI_NVDIMM) += nvdimm.o
+ common-obj-$(CONFIG_ACPI_VMGENID) += vmgenid.o
++common-obj-$(CONFIG_ACPI_APEI) += hest_ghes.o
+ common-obj-$(call lnot,$(CONFIG_ACPI_X86)) += acpi-stub.o
+ 
+ common-obj-y += acpi_interface.o
+-- 
+1.8.3.1

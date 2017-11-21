@@ -1,100 +1,100 @@
-Received: by 10.223.159.82 with SMTP id f18csp969628wrg;
-        Tue, 21 Nov 2017 09:49:34 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMYV0pYByO7rFEazgMgMYvVJh+uTIYLlnAP1A/RK2S6Hu44IaorBiEzTVRtExOD1sAvSUgrg
-X-Received: by 10.37.230.80 with SMTP id d77mr11069620ybh.315.1511286573979;
-        Tue, 21 Nov 2017 09:49:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1511286573; cv=none;
+Received: by 10.223.159.82 with SMTP id f18csp985934wrg;
+        Tue, 21 Nov 2017 10:04:21 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMYdYWVjYdx6dyddPsLbQpTZrDbNBnc1UHyLP4FO8XRCS2qsE7QES7thi2IqMF/jvKAxHdBD
+X-Received: by 10.129.201.67 with SMTP id c3mr12026260ywl.202.1511287461638;
+        Tue, 21 Nov 2017 10:04:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1511287461; cv=none;
         d=google.com; s=arc-20160816;
-        b=HwXCpt+6HYkg0I4GNWqigg8Lb4wRwqgJJ9lXPrvBDsAKrgnrduin9pkleDepnie85d
-         MPXYIfv2UihqU0hxSXmKXxFpALK3P8VjQy9wdV+SyLtpA2evN5LOGo6dMgcSv+QCzUI0
-         H3RtDfOw8HUCn4PI7Wzs1Q1KsV1Ks5+aHzkoTrnYGr0LNL1xIPlWOyUJYFnqFug+3pBA
-         U64x4FdYYQCCxojYy+qumN/8a2jUHkN6UTxvP38OA0OF4TTk1ifLo1SQlLpECOgrT6xe
-         ZhRO5e2RUxchb0yhYBPdPvkPwTjX8Ebt8biqSmbcsq6sYjAyUJMOg7FI63qt7EKyMa7p
-         Tpgg==
+        b=qP8rwLSOMerF46JkmHXCvEbThTC8NjFoTFN/QhT8mRBPPFJ5QkXMe80oWd72bMc7Gv
+         X4TAeH4nMzbgvkTv/unN0i8ZP+AChsaeOo8ikLf8Pl2uEZIHS40VomQVX1qgiLgONw66
+         AqUmWSpDamq71M4WFpVQ7Rb/9v++oPK6I1IK8bKY3EFff8f5Ojm3Wzpyv9PtjnDiJuhQ
+         fWFLx/adpNyU0/6/lfe9bXOgWFVZIa0oDrSDam2OtC5YPJEd+QXEZNb4cmwPjC/S/zSZ
+         xk2zoWJWuu5cvI8BOZMpl5huMvsLHf/dHTj+DRO+Hl+vbfwBvwPnfvyk6UbStyEuFTYE
+         IH3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:to:message-id:date:from:references
          :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=x5vNQl2/3J+5pZIQiYn9kl3kfWEQPoiebzrs8fyyPu8=;
-        b=YGFn0AlmGtL67h/5udUYb+3Z43Ao2sirA+4kYhyPTaLKAKuU4Mei0nC673E47HgMAg
-         IVVA9oNVvxfk45n2nnSSpIqH9tgIQJ3II5CmgLHd00HVjF2t0e5R+a9FdgZK7peEnWt+
-         QFd7x7JHQN63sI9C4Ys5kZfrHWTrxZHuZbprZc50vvkXn2607tdkZhToFXqSRauWYk3E
-         IBdhZoJW/kLyr4NiULey1TYrJYrLkRwk1czYDg++dj7Z4fzbwUYdiry2NgoyeEk1ujoC
-         KK+Y+qTU7rdyGl8L/2fi9kS5JRc7qFCDYGbfGm9d6uYXQw/cMB0u5awBB51TY7ZNg2FU
-         fDvQ==
+        bh=ET0Pj9+F+ZB3151+mL72xEM3N2QZVX3VETkUu08FS9I=;
+        b=qxe3ZMv12S9rfiKvTFThjgp81bTiGQYsBe2/66ViTdz+s1tK8SHilsNYu5YinUmqsK
+         xWVv3JxI9US6IdvRiLecyqMghqSMvELGlWEnFNEy/GLeKteQFJ4E4TEuc7fe6KZ2ID5X
+         KgG7QtBvSM2IOVUIYUChMBtQgP7wmbAfdARu20G2n2CH6qQhS8zIDnXcm2q0BhnmyG1W
+         A/6nEk/vK4rzBBNmjtbugA/5Z8Hl01Z6S+6gBkgMgjNjnlnOBz6gQSHUeyjed8Vd5QQp
+         Ttt1Shicpjt4PLtI0R/GSNlczGAtzaYnOCGvZcAA3UME3Anvs0rOJB81OS4ibOxbiQn3
+         ggtw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YoOTR+4Z;
+       dkim=fail header.i=@linaro.org header.s=google header.b=eA1PbEsB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n3si2756028ybd.88.2017.11.21.09.49.33
+        by mx.google.com with ESMTPS id c18si2923314ywb.297.2017.11.21.10.04.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 21 Nov 2017 09:49:33 -0800 (PST)
+        Tue, 21 Nov 2017 10:04:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YoOTR+4Z;
+       dkim=fail header.i=@linaro.org header.s=google header.b=eA1PbEsB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35771 helo=lists.gnu.org)
+Received: from localhost ([::1]:35859 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eHCft-0008Pz-DA
-	for alex.bennee@linaro.org; Tue, 21 Nov 2017 12:49:33 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40518)
+	id 1eHCuD-0006ZP-3F
+	for alex.bennee@linaro.org; Tue, 21 Nov 2017 13:04:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46302)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eHCep-00086M-EP
-	for qemu-devel@nongnu.org; Tue, 21 Nov 2017 12:48:28 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1eHCt0-00068e-Q6
+	for qemu-devel@nongnu.org; Tue, 21 Nov 2017 13:03:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eHCeo-000835-Ib
-	for qemu-devel@nongnu.org; Tue, 21 Nov 2017 12:48:27 -0500
-Received: from mail-ot0-x242.google.com ([2607:f8b0:4003:c0f::242]:34285)
+	(envelope-from <peter.maydell@linaro.org>) id 1eHCsz-0005uP-Ch
+	for qemu-devel@nongnu.org; Tue, 21 Nov 2017 13:03:06 -0500
+Received: from mail-ot0-x241.google.com ([2607:f8b0:4003:c0f::241]:37728)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eHCeo-000821-EC
-	for qemu-devel@nongnu.org; Tue, 21 Nov 2017 12:48:26 -0500
-Received: by mail-ot0-x242.google.com with SMTP id o23so11262422otd.1
-	for <qemu-devel@nongnu.org>; Tue, 21 Nov 2017 09:48:26 -0800 (PST)
+	id 1eHCsz-0005uE-5s
+	for qemu-devel@nongnu.org; Tue, 21 Nov 2017 13:03:05 -0500
+Received: by mail-ot0-x241.google.com with SMTP id s4so11294923ote.4
+	for <qemu-devel@nongnu.org>; Tue, 21 Nov 2017 10:03:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
 	:cc:content-transfer-encoding;
-	bh=x5vNQl2/3J+5pZIQiYn9kl3kfWEQPoiebzrs8fyyPu8=;
-	b=YoOTR+4ZfaHoHqQuVoD5gcfy5JvFk7+cPAG87kzbEzncoM3GGUTrIU8WoyOkfTi4NU
-	RppAslUmvIuAinQxRZdggDnTc/65/jq5r7TMiPcW3g1UJJX4fUmG+0HjmE0kLjJu6EbN
-	jLKza+CbvCec76ZMh18FHWhENslZHF5vnhL5g=
+	bh=ET0Pj9+F+ZB3151+mL72xEM3N2QZVX3VETkUu08FS9I=;
+	b=eA1PbEsBFBf89dp4SLl7R6Jajrwxii8YCAuc/8mVXU/gseUxeK6H4CbEwRqyyqT8bT
+	EGXzVtaazmT8vHMABZLxglkjCNnSu68gVIPiYQDwq4SR0mtNSNmZLzCl7eSgBMtdtofO
+	6GN9WodPK5UW5npM4t+1ljOxaOfdEbRa/j5e0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=x5vNQl2/3J+5pZIQiYn9kl3kfWEQPoiebzrs8fyyPu8=;
-	b=swk5e9/vvfbmWHaUBaQismjazXOa6gdKZD4IugatAvzI4TwMwWujguIwKolT64Cm+9
-	3Aw67hvHeyZWdwTO9I9dS10/mMu1qO9V0mrcPUAKrcqq7XrrM05equSEKbDhOHClzLed
-	wcGPnTsdQuNpANXR/5+q4u0QzCQPvumbFJKIXv7WKkygVa2+6zPHf6r8+VMu75Zzhmlg
-	0KZVgbwROUycrOua8vyE+YVcGdfqwhQGsaYJEA5J2ynn+GOcNpBBuOe13YWlw+S1JYPU
-	dJyAv584VN93U2zqGAlvQwd2DYpSl03bHYosVzgMgoa2jpVrsyEDxzBgqtydZdfUOT1W
-	o3rA==
-X-Gm-Message-State: AJaThX6nHibeNW6HeTvMCjwBJcDr7f0FN9+CJdHsU0I3zchSAIH1wR8d
-	q+mLdk7z+F6rr4/miH4CkEh5XmqLfQNd/plB7N7xXLXi
-X-Received: by 10.157.80.24 with SMTP id a24mr10637962oth.335.1511286505723;
-	Tue, 21 Nov 2017 09:48:25 -0800 (PST)
+	bh=ET0Pj9+F+ZB3151+mL72xEM3N2QZVX3VETkUu08FS9I=;
+	b=aeyXo7aVvS8nqzTrceTrprsX6PhKevLJEp9oBytzOEW/hB5A56HKGZAHPHx/kp6+fa
+	Dqk7PLaXxZhGb9tJCrhCYX2t0Wjlkx5lrMekyvt6a8WCM2KQjlaYpTd6uHQ9cfGrgisu
+	WzGjzexd2LH69atB5D32zNXjITcLXtB6MA2fvlRNCvsaU6IQfCeFZq9PqFIAUH0h+53E
+	uzbuzehTHTgg/+3P/WfFPjQB5Qx7nwV5j61q7FdbOzTHBTcpy7QfopI38AKuc5vFuWLN
+	sFPFdt45M9Ap4GoYx+MFpRteJ1hS98NIV2dWoV8wMRs5rY9tTqhvx4hbPcWj3tq5jy77
+	50Ng==
+X-Gm-Message-State: AJaThX7rIbspCoFexEXR/hqU2PwxP3P1R6GkoISazvb6Lg6gjeJljETJ
+	a9r7zSZGxtgoW+yHzntRRHKcEtVB1GI8ilL+++OgRg==
+X-Received: by 10.157.90.6 with SMTP id v6mr9775993oth.54.1511287384199; Tue,
+	21 Nov 2017 10:03:04 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.157.63.74 with HTTP; Tue, 21 Nov 2017 09:48:05 -0800 (PST)
-In-Reply-To: <20171106154813.19936-11-andrew.smirnov@gmail.com>
+Received: by 10.157.63.74 with HTTP; Tue, 21 Nov 2017 10:02:43 -0800 (PST)
+In-Reply-To: <20171106154813.19936-12-andrew.smirnov@gmail.com>
 References: <20171106154813.19936-1-andrew.smirnov@gmail.com>
-	<20171106154813.19936-11-andrew.smirnov@gmail.com>
+	<20171106154813.19936-12-andrew.smirnov@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 21 Nov 2017 17:48:05 +0000
-Message-ID: <CAFEAcA8CLwzHj9-n+OJKB4GTn1u3D_4secBV_CGdFkR383EAOg@mail.gmail.com>
+Date: Tue, 21 Nov 2017 18:02:43 +0000
+Message-ID: <CAFEAcA82Y3fWJyAUwOSxy6btutrS+FPa7sRm3AOKZM_GTcmBrA@mail.gmail.com>
 To: Andrey Smirnov <andrew.smirnov@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::242
-Subject: Re: [Qemu-devel] [PATCH v3 10/30] imx_fec: Reserve full 4K page for
- the register file
+X-Received-From: 2607:f8b0:4003:c0f::241
+Subject: Re: [Qemu-devel] [PATCH v3 11/30] sdhci: Add i.MX specific subtype
+ of SDHCI
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,13 +112,15 @@ Cc: Jason Wang <jasowang@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dsyKS5QRQKCK
+X-TUID: 7CRClDrbw9Tg
 
 On 6 November 2017 at 15:47, Andrey Smirnov <andrew.smirnov@gmail.com> wrot=
 e:
-> Some i.MX SoCs (e.g. i.MX7) have FEC registers going as far as offset
-> 0x614, so to avoid getting aborts when accessing those on QEMU, extend
-> the register file to cover 4KB of address space instead of just 1K.
+> IP block found on several generations of i.MX family does not use
+> vanilla SDHCI implementation and it comes with a number of quirks.
+>
+> Introduce i.MX SDHCI subtype of SDHCI block to add code necessary to
+> support unmodified Linux guest driver.
 >
 > Cc: Peter Maydell <peter.maydell@linaro.org>
 > Cc: Jason Wang <jasowang@redhat.com>
@@ -127,29 +129,271 @@ e:
 > Cc: qemu-arm@nongnu.org
 > Cc: yurovsky@gmail.com
 > Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
-> ---
->  hw/net/imx_fec.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
-> index 48d012cad6..e236bc933c 100644
-> --- a/hw/net/imx_fec.c
-> +++ b/hw/net/imx_fec.c
-> @@ -1252,7 +1252,7 @@ static void imx_eth_realize(DeviceState *dev, Error=
- **errp)
->      SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
->
->      memory_region_init_io(&s->iomem, OBJECT(dev), &imx_eth_ops, s,
-> -                          TYPE_IMX_FEC, 0x400);
-> +                          TYPE_IMX_FEC, 0x1000);
->      sysbus_init_mmio(sbd, &s->iomem);
->      sysbus_init_irq(sbd, &s->irq[0]);
->      sysbus_init_irq(sbd, &s->irq[1]);
-> --
 
-I notice that we have an unused #define FSL_IMX25_FEC_SIZE 0x4000 in
-fsl-imx25.h, and the Linux device trees for the imx25 define the size
-of the FEC register block as 0x4000. Should this be 0x4000 ?
+Hi. Mostly this looks ok; some comments below.
+
+> ---
+>  hw/sd/sdhci-internal.h |  15 ++++++
+>  hw/sd/sdhci.c          | 127 +++++++++++++++++++++++++++++++++++++++++++=
++++++-
+>  include/hw/sd/sdhci.h  |   8 ++++
+>  3 files changed, 148 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/sd/sdhci-internal.h b/hw/sd/sdhci-internal.h
+> index 161177cf39..2a1b4b06ee 100644
+> --- a/hw/sd/sdhci-internal.h
+> +++ b/hw/sd/sdhci-internal.h
+> @@ -91,6 +91,8 @@
+>  #define SDHC_CTRL_ADMA2_32             0x10
+>  #define SDHC_CTRL_ADMA2_64             0x18
+>  #define SDHC_DMA_TYPE(x)               ((x) & SDHC_CTRL_DMA_CHECK_MASK)
+> +#define SDHC_CTRL_4BITBUS              0x02
+> +#define SDHC_CTRL_8BITBUS              0x20
+>
+>  /* R/W Power Control Register 0x0 */
+>  #define SDHC_PWRCON                    0x29
+> @@ -229,4 +231,17 @@ enum {
+>
+>  extern const VMStateDescription sdhci_vmstate;
+>
+> +
+> +#define ESDHC_MIX_CTRL                  0x48
+> +#define ESDHC_VENDOR_SPEC               0xc0
+> +#define ESDHC_DLL_CTRL                  0x60
+> +
+> +#define ESDHC_TUNING_CTRL               0xcc
+> +#define ESDHC_TUNE_CTRL_STATUS          0x68
+> +#define ESDHC_WTMK_LVL                  0x44
+> +
+> +#define ESDHC_CTRL_4BITBUS              (0x1 << 1)
+> +#define ESDHC_CTRL_8BITBUS              (0x2 << 1)
+> +
+> +
+>  #endif
+> diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+> index 6d6a791ee9..f561cc44e3 100644
+> --- a/hw/sd/sdhci.c
+> +++ b/hw/sd/sdhci.c
+> @@ -265,7 +265,8 @@ static void sdhci_send_command(SDHCIState *s)
+>              }
+>          }
+>
+> -        if ((s->norintstsen & SDHC_NISEN_TRSCMP) &&
+> +        if (!(s->quirks & SDHCI_QUIRK_NO_BUSY_IRQ) &&
+> +            (s->norintstsen & SDHC_NISEN_TRSCMP) &&
+>              (s->cmdreg & SDHC_CMD_RESPONSE) =3D=3D SDHC_CMD_RSP_WITH_BUS=
+Y) {
+>              s->norintsts |=3D SDHC_NIS_TRSCMP;
+>          }
+> @@ -1191,6 +1192,8 @@ static void sdhci_initfn(SDHCIState *s)
+>
+>      s->insert_timer =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, sdhci_raise_ins=
+ertion_irq, s);
+>      s->transfer_timer =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, sdhci_data_tr=
+ansfer, s);
+> +
+> +    s->io_ops =3D &sdhci_mmio_ops;
+>  }
+>
+>  static void sdhci_uninitfn(SDHCIState *s)
+> @@ -1347,7 +1350,7 @@ static void sdhci_sysbus_realize(DeviceState *dev, =
+Error ** errp)
+>      s->buf_maxsz =3D sdhci_get_fifolen(s);
+>      s->fifo_buffer =3D g_malloc0(s->buf_maxsz);
+>      sysbus_init_irq(sbd, &s->irq);
+> -    memory_region_init_io(&s->iomem, OBJECT(s), &sdhci_mmio_ops, s, "sdh=
+ci",
+> +    memory_region_init_io(&s->iomem, OBJECT(s), s->io_ops, s, "sdhci",
+>              SDHC_REGISTERS_MAP_SIZE);
+>      sysbus_init_mmio(sbd, &s->iomem);
+>  }
+> @@ -1386,11 +1389,131 @@ static const TypeInfo sdhci_bus_info =3D {
+>      .class_init =3D sdhci_bus_class_init,
+>  };
+>
+> +static uint64_t usdhc_read(void *opaque, hwaddr offset, unsigned size)
+> +{
+> +    SDHCIState *s =3D SYSBUS_SDHCI(opaque);
+> +    uint32_t ret;
+> +    uint16_t hostctl;
+> +
+> +    switch (offset) {
+> +    default:
+> +        return sdhci_read(opaque, offset, size);
+> +
+> +    case SDHC_HOSTCTL:
+> +        hostctl =3D SDHC_DMA_TYPE(s->hostctl) << 5;
+> +
+> +        if (s->hostctl & SDHC_CTRL_8BITBUS) {
+> +            hostctl |=3D ESDHC_CTRL_8BITBUS;
+> +        }
+> +
+> +        if (s->hostctl & SDHC_CTRL_4BITBUS) {
+> +            hostctl |=3D ESDHC_CTRL_4BITBUS;
+> +        }
+> +
+> +        ret =3D hostctl | (s->blkgap << 16) |
+> +            (s->wakcon << 24);
+> +
+> +        break;
+> +
+> +    case ESDHC_DLL_CTRL:
+> +    case ESDHC_TUNE_CTRL_STATUS:
+> +    case 0x6c:
+> +    case ESDHC_TUNING_CTRL:
+> +    case ESDHC_VENDOR_SPEC:
+> +    case ESDHC_MIX_CTRL:
+> +    case ESDHC_WTMK_LVL:
+> +        ret =3D 0;
+> +        break;
+> +    }
+> +
+> +    return ret;
+> +}
+> +
+> +static void
+> +usdhc_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
+> +{
+> +    SDHCIState *s =3D SYSBUS_SDHCI(opaque);
+> +    uint8_t hostctl =3D 0;
+> +    uint32_t value =3D (uint32_t)val;
+> +
+> +    switch (offset) {
+> +    case ESDHC_DLL_CTRL:
+> +    case ESDHC_TUNE_CTRL_STATUS:
+> +    case 0x6c:
+> +    case ESDHC_TUNING_CTRL:
+> +    case ESDHC_WTMK_LVL:
+> +    case ESDHC_VENDOR_SPEC:
+> +        break;
+> +
+> +    case SDHC_HOSTCTL:
+> +        if (value & ESDHC_CTRL_8BITBUS) {
+> +            hostctl |=3D SDHC_CTRL_8BITBUS;
+> +        }
+> +
+> +        if (value & ESDHC_CTRL_4BITBUS) {
+> +            hostctl |=3D ESDHC_CTRL_4BITBUS;
+> +        }
+> +
+> +        hostctl |=3D SDHC_DMA_TYPE(value >> 5);
+> +
+> +        value &=3D ~0xFE;
+> +        value |=3D hostctl;
+> +        value &=3D ~0xFF00;
+> +        value |=3D s->pwrcon;
+> +
+> +        sdhci_write(opaque, offset, value, size);
+
+This is pretty confusing, because we both mess about directly
+with the pwrcon field and also pass the write through
+to sdhci_write(). (a) some comments would help and (b)
+would it be clearer to just implement the different
+SDHC_HOSTCTL behaviour entirely here rather than trying to
+reuse the code in sdhci_write()? I get the impression that
+at least some of this is trying to shuffle stuff around so
+that code can unshuffle it.
+
+> +        break;
+> +
+> +    case ESDHC_MIX_CTRL:
+> +        /*
+> +         * The layout of the register is slightly different, but we
+> +         * don't care about those bits
+> +         */
+> +        s->trnmod =3D value & 0xFFFF;
+> +        break;
+> +    case SDHC_TRNMOD:
+> +        sdhci_write(opaque, offset, val | s->trnmod, size);
+
+This one's simpler, but a comment would assist.
+
+> +        break;
+> +    case SDHC_BLKSIZE:
+> +        val |=3D 0x7 << 12;
+> +    default:                    /* FALLTHROUGH */
+> +        sdhci_write(opaque, offset, val, size);
+> +        break;
+> +    }
+> +}
+> +
+> +
+> +static const MemoryRegionOps usdhc_mmio_ops =3D {
+> +    .read =3D usdhc_read,
+> +    .write =3D usdhc_write,
+> +    .valid =3D {
+> +        .min_access_size =3D 1,
+> +        .max_access_size =3D 4,
+> +        .unaligned =3D false
+> +    },
+> +    .endianness =3D DEVICE_LITTLE_ENDIAN,
+> +};
+> +
+> +static void imx_usdhc_init(Object *obj)
+> +{
+> +    SDHCIState *s =3D SYSBUS_SDHCI(obj);
+> +
+> +    s->io_ops =3D &usdhc_mmio_ops;
+> +    s->quirks =3D SDHCI_QUIRK_NO_BUSY_IRQ;
+> +}
+> +
+> +static const TypeInfo imx_usdhc_info =3D {
+> +    .name =3D TYPE_IMX_USDHC,
+> +    .parent =3D TYPE_SYSBUS_SDHCI,
+> +    .instance_init =3D imx_usdhc_init,
+> +};
+> +
+>  static void sdhci_register_types(void)
+>  {
+>      type_register_static(&sdhci_pci_info);
+>      type_register_static(&sdhci_sysbus_info);
+>      type_register_static(&sdhci_bus_info);
+> +    type_register_static(&imx_usdhc_info);
+>  }
+>
+>  type_init(sdhci_register_types)
+> diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
+> index 0f0c3f1e64..dc1856a33d 100644
+> --- a/include/hw/sd/sdhci.h
+> +++ b/include/hw/sd/sdhci.h
+> @@ -39,6 +39,7 @@ typedef struct SDHCIState {
+>      };
+>      SDBus sdbus;
+>      MemoryRegion iomem;
+> +    const MemoryRegionOps *io_ops;
+>
+>      QEMUTimer *insert_timer;       /* timer for 'changing' sd card. */
+>      QEMUTimer *transfer_timer;
+> @@ -83,8 +84,13 @@ typedef struct SDHCIState {
+>      /* Force Event Auto CMD12 Error Interrupt Reg - write only */
+>      /* Force Event Error Interrupt Register- write only */
+>      /* RO Host Controller Version Register always reads as 0x2401 */
+> +
+> +    unsigned long quirks;
+
+Don't use 'unsigned long', it differs in size from host to host.
+
+>  } SDHCIState;
+>
+> +/* Controller does not provide transfer-complete interrupt when not busy=
+ */
+> +#define SDHCI_QUIRK_NO_BUSY_IRQ    BIT(14)
+
+We only have one quirk, so why is it bit 14?
+
+> +
+>  #define TYPE_PCI_SDHCI "sdhci-pci"
+>  #define PCI_SDHCI(obj) OBJECT_CHECK(SDHCIState, (obj), TYPE_PCI_SDHCI)
+>
+> @@ -92,4 +98,6 @@ typedef struct SDHCIState {
+>  #define SYSBUS_SDHCI(obj)                               \
+>       OBJECT_CHECK(SDHCIState, (obj), TYPE_SYSBUS_SDHCI)
+>
+> +#define TYPE_IMX_USDHC "imx-usdhc"
+> +
+>  #endif /* SDHCI_H */
+> --
+> 2.13.6
 
 thanks
 -- PMM

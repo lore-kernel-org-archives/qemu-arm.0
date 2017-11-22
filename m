@@ -1,103 +1,103 @@
-Received: by 10.223.159.82 with SMTP id f18csp617315wrg;
-        Wed, 22 Nov 2017 12:25:41 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMY7PFlgEFE94+kBZo5T7E5Qk9Qtz9WU2Dq0msUu2+Y4SkI/bdzYz2yuKt1nJNVfn+AE/Z8F
-X-Received: by 10.129.61.13 with SMTP id k13mr14205863ywa.493.1511382341666;
-        Wed, 22 Nov 2017 12:25:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1511382341; cv=none;
+Received: by 10.223.159.82 with SMTP id f18csp625382wrg;
+        Wed, 22 Nov 2017 12:34:59 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMY+8mMLn1G3V5yF8WhmQtxxZM3mDPtLKGtUUKq7hYIRGBWvMy1Xwx/wUnKCN34r1t6TMn3k
+X-Received: by 10.37.185.15 with SMTP id x15mr13867131ybj.171.1511382899401;
+        Wed, 22 Nov 2017 12:34:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1511382899; cv=none;
         d=google.com; s=arc-20160816;
-        b=IWERLHkqSodMaifP3koytt+mMUb9DwJ/WzjFhKmeat4hCIsZPfA4qFsddYH5PQxFeW
-         EKBOBoN7rWqKgxgqUqjlqZtkp66BOTwTArtiNqxJ0MdUfHWqfvOqNgoiW7cvWD/zJoUl
-         3Eoc1gW1NdKB3UfJxuP0pNIlfINPkJkPA74G4MBiXpofNaKG14uIXwV6xMddAZxejuvc
-         qCwbJX+bbnVQKXuwxo66cmqqfuAufIn+orERz5rBgHn48pT1pluY4R8sXNbTFyNbIOIT
-         4E3G0fu+7xIFZBT1P+Zcy3BDf4rbVfiES33aQhoPqNwSKmZ0IrVkuGEDjt5U+HV+mpGR
-         B8RA==
+        b=fN6W15rtp8aVjoukzxdYu2zWnS1PdF+8vMEzIRxpJljQ1fgdtyThPQ3xkLFpDgFav+
+         HhrmjaIOsIyGQtSKtEo1xm/pvj050x/RnlpDbQiHvQj15QbBqUgA1tEkGiNQNhdeWGHc
+         y66z7jJqGlBNiPaarpAZx/ee3lr84qdA375TdbDftOFDLY3aqvegl8WWEgf9B9ssAdH1
+         MmEwkkon89CCSMkkVCt3ACqybVIyrr9JIv4oKDapdxgqWokrfOwCcUpLAGdDrBkqLKMr
+         u3rluwjmqauE+50t2sVcqT0JpmgF/EAxVuE8iP/wQTcp1Z/kbcKIXWLW0D19j5otUskP
+         vrzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:to:message-id:date:from:references
          :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=sQMlIvVJrnDj7Ht1aKIaAJ7TNeUPHQ8CyjkmRTo+2aI=;
-        b=Bi3EdY40i/VP4Ts5olPx+SJORs0f6Nu8SbZ+0HmyGC/yUIFErXvH4TKYj/u9vQEnxa
-         oQdMKFT8rr7d+tmk1XNjEzZsBJS69kD+uifSC7xxeStn7dlZO6LwoQdR7SNmsp/5cOji
-         KK3Wvzgp5out/360YafDcWwtkoD2IImcycs1+cYxB2+BW1dafo+xCcZfjRVWuWV3xai6
-         oYOoVqtkOFYVz+4E1TQDCcwZI9cPtzbuzwK1imJ8h7UzOnbeLwDRHD6gStTD0e6LHRGW
-         McMc37Eqeane/nv/akdWsR8SebIDzKnogIQoIK6/LHmlhidesKXq3NmJ00ffOW4ZdB82
-         UzZw==
+        bh=cnFq1+zpoBNkdWQ2/cNr5vdAJdG5MQmVQQYCjT2Prog=;
+        b=rD+1ryyu5pTgBb0tOElGY7W0X5oToEz2PqaPaq+RMe1OiYteDMGqIz5zYl2+JXMGVP
+         MM6WDSrBhUNXBZWM2hDUdvGOPp8bnj+JOPP76IaBy6iZrXgO/vat9DBlvQr4xL3v5cRG
+         UWWAzFdlnFuknenZ3h7OTm9YdA4DFgLTfMukbFRPJLLSAYzaffIIgbPIjpcFh0i/Jz0C
+         0bDHkT8WdvthRdwQhTfrDkPDzjHkX9dGU0tTXbQYHzLMFRgWVoUjz8hF2eqqgdn36fBa
+         NiPNP1TGaqdr4j9sdEW3ICNrl0dwikTqM6aeJ0TFtOOW8+rjy5cMBQdk5EVS1RkbxX1Y
+         5ukQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=u8ZXGR5Z;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RXJdjZjr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a64si3661468ywf.483.2017.11.22.12.25.41
+        by mx.google.com with ESMTPS id 2si3570338ywm.775.2017.11.22.12.34.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 22 Nov 2017 12:25:41 -0800 (PST)
+        Wed, 22 Nov 2017 12:34:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=u8ZXGR5Z;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RXJdjZjr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:41190 helo=lists.gnu.org)
+Received: from localhost ([::1]:41214 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eHbaX-0002YL-4u
-	for alex.bennee@linaro.org; Wed, 22 Nov 2017 15:25:41 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52826)
+	id 1eHbjW-0005ib-Rw
+	for alex.bennee@linaro.org; Wed, 22 Nov 2017 15:34:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55936)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1eHbaO-0002Xz-HL
-	for qemu-arm@nongnu.org; Wed, 22 Nov 2017 15:25:33 -0500
+	(envelope-from <andrew.smirnov@gmail.com>) id 1eHbjQ-0005iU-5p
+	for qemu-arm@nongnu.org; Wed, 22 Nov 2017 15:34:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1eHbaN-0006Z9-BA
-	for qemu-arm@nongnu.org; Wed, 22 Nov 2017 15:25:32 -0500
-Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:40771)
+	(envelope-from <andrew.smirnov@gmail.com>) id 1eHbjP-00029v-5O
+	for qemu-arm@nongnu.org; Wed, 22 Nov 2017 15:34:52 -0500
+Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:37713)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
-	id 1eHbaN-0006Z0-61; Wed, 22 Nov 2017 15:25:31 -0500
-Received: by mail-qt0-x242.google.com with SMTP id u42so25369834qte.7;
-	Wed, 22 Nov 2017 12:25:31 -0800 (PST)
+	id 1eHbjP-00029m-1I; Wed, 22 Nov 2017 15:34:51 -0500
+Received: by mail-qk0-x241.google.com with SMTP id 136so18444410qkd.4;
+	Wed, 22 Nov 2017 12:34:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
 	:cc:content-transfer-encoding;
-	bh=sQMlIvVJrnDj7Ht1aKIaAJ7TNeUPHQ8CyjkmRTo+2aI=;
-	b=u8ZXGR5ZokAqwBoIt+Wox9HKgsy+MxzQzobHEhoKPfpgh3V683WWSIeUdW/fVLQAIZ
-	HbMJ6cpHLnEa/NapS9le8dnOFdb+RQq61cmGGzAUEqKRfyWZtOaFe0ka5Ql4iCG6ZJ+g
-	ftmf1YktPQTNdMwX2nO/uL75Ht5bpykFWbM1qE9FPWGzEC7sTxRwF1bF8+z6MOcQ7q6H
-	fotIr+IYUiSzW/c4/nrAwdMgtNfrvuHYd7ou5K0dGYfvKMrxFgMk3p7QSUPfL8AsQDqb
-	iMbjMotDHl7qfxDBRHi+KTBfLCgKL6MzZfa4SrbUIpYtpm+A6z5S4rNHmKbFM6loZYel
-	zujg==
+	bh=cnFq1+zpoBNkdWQ2/cNr5vdAJdG5MQmVQQYCjT2Prog=;
+	b=RXJdjZjrYZNlcWYoTXOuuErEaWkPeEIWpQtYricILhHmhSCceGi3r3wYcvPzf5xqNM
+	L/njtEPk9pS97w+0znAZ16b04ukkuOOCQZ3AFGiOJlAWg7ZzpRVz16BSS+m9pR5jjVfK
+	N2d9LZuXC1lGl2VS2Xs2Ac5062+b1qFO+vbwJKsVmoebnD4qKBxcfEsBicJfadXWkAPD
+	7JTVS9vZNzDl6h4K1Pg5qghcY4N9qHxdy/F/NdiYCRA6gvlo2TIkw5l3s2FCJfzEmN5j
+	xjNq4OOoVl6uOkX5EjuITePZfo0nPtAas2prk1pu6wn5TcvDmcb5upCOgUJU1xfO0Nsk
+	z0Sg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=sQMlIvVJrnDj7Ht1aKIaAJ7TNeUPHQ8CyjkmRTo+2aI=;
-	b=R926swig9Jy/mCZH+5cCp/Wh1tGsAnxa72VFPnLcsQx+8FllvTiQoE0tlom+B1fRKm
-	mtngNXSaDgBIafW5mZUoSozv3Sg+edDoXR6PGWB5oBARVyCCkea/4YCRgdIjwHthy/Or
-	IxhfowTPLvGFxU0mJVErqBRI6Jks/ey6XEIMamTQZ4uokd7V1rTf4P0ZvK2sEhqc1hOx
-	S9AOmnEu/tTD/xqfYWiZHwFahNh76w6kdwCTuo5/qgFYIAkekrTy+O0Y3nrKGa4P6tjT
-	iGOnFsV0CYSjVZE/FQQ1N8Q0vS0jDkIwVMQ5aiYZZAV5ld1hrmVU4IB/UmCiffwmJQMy
-	W7eQ==
-X-Gm-Message-State: AJaThX7ZkcymEqdY8464SdCGJBoe/g8WNZS0OTPSraizBh+5NU989Pzq
-	gVLZVtoKWRu1yMC4KXrhiM/sS/JbOGX9Qd9wkXc=
-X-Received: by 10.200.20.152 with SMTP id l24mr23883993qtj.31.1511382330592;
-	Wed, 22 Nov 2017 12:25:30 -0800 (PST)
+	bh=cnFq1+zpoBNkdWQ2/cNr5vdAJdG5MQmVQQYCjT2Prog=;
+	b=HH6kurSa7fl7DqcqnFzxmBC/ZPLnfz5oMqzR9mq1Oft6Mqicl79jO3O6nN+QhAfzaG
+	HxQa6A8lj5eiUl/hd1sBxvRyUp83rVA0XYqUdFDu1jeQxWUIlUFK0OBzuvLk0l+EU5Kp
+	FldEgX15ik+y+dzTGWEw37R5y9qgdnbWODGDJfGw95/PZyFLXgViti4wNxmjd/6f7cyD
+	hpJMutAhP+RmplYJPg09zF7kiwDs9UaDeKMpVY8d2PwSBdK579sWga4z3plqwwuHg2Ct
+	da+L72y9yEnits28eOmauED63Ecwk2HVKeYDfSB/XmrHS716vjFJuExLagUFz5TTw6nR
+	UXgA==
+X-Gm-Message-State: AJaThX6iFKj2QLQGZ8InPPYiS1o68xuR1XtLo2OORHQlOmUvJPGAluDS
+	cnTWd+tX7JF+VF42v5C2B1W4+lcuq6ORx2AqgUs=
+X-Received: by 10.55.212.16 with SMTP id l16mr34421887qki.209.1511382890334;
+	Wed, 22 Nov 2017 12:34:50 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.140.40.243 with HTTP; Wed, 22 Nov 2017 12:25:30 -0800 (PST)
-In-Reply-To: <CAFEAcA8H=tSbr4hdz5eDqHPkmDx0qvuRNdttim3m1JB0YqPUnQ@mail.gmail.com>
+Received: by 10.140.40.243 with HTTP; Wed, 22 Nov 2017 12:34:49 -0800 (PST)
+In-Reply-To: <CAFEAcA8CLwzHj9-n+OJKB4GTn1u3D_4secBV_CGdFkR383EAOg@mail.gmail.com>
 References: <20171106154813.19936-1-andrew.smirnov@gmail.com>
-	<20171106154813.19936-8-andrew.smirnov@gmail.com>
-	<CAFEAcA8H=tSbr4hdz5eDqHPkmDx0qvuRNdttim3m1JB0YqPUnQ@mail.gmail.com>
+	<20171106154813.19936-11-andrew.smirnov@gmail.com>
+	<CAFEAcA8CLwzHj9-n+OJKB4GTn1u3D_4secBV_CGdFkR383EAOg@mail.gmail.com>
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Date: Wed, 22 Nov 2017 12:25:30 -0800
-Message-ID: <CAHQ1cqEVbbKzRD6O9SU2idMeRwi+tqB2h1eVz=QOyH1+e76=9Q@mail.gmail.com>
+Date: Wed, 22 Nov 2017 12:34:49 -0800
+Message-ID: <CAHQ1cqHe8yXt2Df_Z0fJ8W5z0_ckt7TvSU4T57y+q+bLh-R2rw@mail.gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::242
-Subject: Re: [Qemu-arm] [PATCH v3 07/30] imx_fec: Add support for multiple
- Tx DMA rings
+X-Received-From: 2607:f8b0:400d:c09::241
+Subject: Re: [Qemu-arm] [PATCH v3 10/30] imx_fec: Reserve full 4K page for
+ the register file
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -115,14 +115,15 @@ Cc: Jason Wang <jasowang@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SXYsFkqUJjrm
+X-TUID: RFelbKU512R+
 
-On Tue, Nov 21, 2017 at 9:44 AM, Peter Maydell <peter.maydell@linaro.org> w=
+On Tue, Nov 21, 2017 at 9:48 AM, Peter Maydell <peter.maydell@linaro.org> w=
 rote:
 > On 6 November 2017 at 15:47, Andrey Smirnov <andrew.smirnov@gmail.com> wr=
 ote:
->> More recent version of the IP block support more than one Tx DMA ring,
->> so add the code implementing that feature.
+>> Some i.MX SoCs (e.g. i.MX7) have FEC registers going as far as offset
+>> 0x614, so to avoid getting aborts when accessing those on QEMU, extend
+>> the register file to cover 4KB of address space instead of just 1K.
 >>
 >> Cc: Peter Maydell <peter.maydell@linaro.org>
 >> Cc: Jason Wang <jasowang@redhat.com>
@@ -131,79 +132,36 @@ ote:
 >> Cc: qemu-arm@nongnu.org
 >> Cc: yurovsky@gmail.com
 >> Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
+>> ---
+>>  hw/net/imx_fec.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+>> index 48d012cad6..e236bc933c 100644
+>> --- a/hw/net/imx_fec.c
+>> +++ b/hw/net/imx_fec.c
+>> @@ -1252,7 +1252,7 @@ static void imx_eth_realize(DeviceState *dev, Erro=
+r **errp)
+>>      SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
+>>
+>>      memory_region_init_io(&s->iomem, OBJECT(dev), &imx_eth_ops, s,
+>> -                          TYPE_IMX_FEC, 0x400);
+>> +                          TYPE_IMX_FEC, 0x1000);
+>>      sysbus_init_mmio(sbd, &s->iomem);
+>>      sysbus_init_irq(sbd, &s->irq[0]);
+>>      sysbus_init_irq(sbd, &s->irq[1]);
+>> --
 >
->>  static const VMStateDescription vmstate_imx_eth =3D {
->>      .name =3D TYPE_IMX_FEC,
->> -    .version_id =3D 2,
->> -    .minimum_version_id =3D 2,
->> +    .version_id =3D 3,
->> +    .minimum_version_id =3D 3,
->>      .fields =3D (VMStateField[]) {
->>          VMSTATE_UINT32_ARRAY(regs, IMXFECState, ENET_MAX),
->>          VMSTATE_UINT32(rx_descriptor, IMXFECState),
->> -        VMSTATE_UINT32(tx_descriptor, IMXFECState),
->> -
->> +        VMSTATE_UINT32_ARRAY(tx_descriptor, IMXFECState, ENET_TX_RING_N=
-UM),
->> +        VMSTATE_UINT32(tx_ring_num, IMXFECState),
->>          VMSTATE_UINT32(phy_status, IMXFECState),
->>          VMSTATE_UINT32(phy_control, IMXFECState),
->>          VMSTATE_UINT32(phy_advertise, IMXFECState),
->
-> tx_ring_num is constant for any particular instantiation of the device,
-> so you don't need to put it in the vmstate.
->
-> It's pretty trivial to make this vmstate compatible with the old
-> ones for the existing single-tx-descriptor devices, so we might as well:
->
-> /* Versions of this device with more than one TX descriptor
->  * save the 2nd and 3rd descriptors in a subsection, to maintain
->  * migration compatibility with previous versions of the device
->  * that only supported a single descriptor.
->  */
-> static bool txdescs_needed(void *opaque) {
->     IMXFECState *s =3D opaque;
->
->     return s->tx_ring_num > 1;
-> }
->
-> static const VMStateDescription vmstate_imx_eth_txdescs =3D {
->     .name =3D "imx.fec/txdescs",
->     .version_id =3D 1,
->     .minimum_version_id =3D 1,
->     .needed =3D txdescs_needed,
->     .fields =3D (VMStateField[]) {
->          VMSTATE_UINT32(tx_descriptor[1], IMXFECState),
->          VMSTATE_UINT32(tx_descriptor[2], IMXFECState),
->          VMSTATE_END_OF_LIST()
->     }
-> };
->
-> and then add this to the vmx_state_eth at the end:
->     .subsections =3D (const VMStateDescription*[]) {
->          &vmstate_imx_eth_txdescs,
->          NULL
->     }
->
-> Then you don't need to bump version_id/minimum_version_id on the
-> vmstate_imx_eth struct.
+> I notice that we have an unused #define FSL_IMX25_FEC_SIZE 0x4000 in
+> fsl-imx25.h, and the Linux device trees for the imx25 define the size
+> of the FEC register block as 0x4000. Should this be 0x4000 ?
 >
 
-Cool, sounds good. Will add that to the patch in v4.
-
->> @@ -791,6 +821,7 @@ static void imx_eth_write(void *opaque, hwaddr offse=
-t, uint64_t value,
->>                             unsigned size)
->>  {
->>      IMXFECState *s =3D IMX_FEC(opaque);
->> +    const bool single_tx_ring =3D s->tx_ring_num !=3D 3;
->
-> This looks odd -- I would have expected "single_tx_ring =3D
-> s->tx_ring_num =3D=3D 1" ...
-
-AFAIK the HW that's out there will have either 3 or 1 Tx ring, so
-that's why I wrote it this way. I'll change the logic to the way your
-suggest to avoid surprising the reader.
+I think the size reserved for that register file differs between
+differen SoC. E.g. it's 16K on i.MX25, as you pointed out, but 64K on
+i.MX7. It's all the same to me as long as it's greater than 0x1000.
+I'll change the code to use FSL_IMX25_FEC_SIZE since it gets rid of a
+magic number.
 
 Thanks,
 Andrey Smirnov

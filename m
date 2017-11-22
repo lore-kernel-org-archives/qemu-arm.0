@@ -1,99 +1,103 @@
-Received: by 10.223.159.82 with SMTP id f18csp612660wrg;
-        Wed, 22 Nov 2017 12:20:02 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMZxXtNFMk7Fxx4CI3TGfDbyg+7CbGeJucePjxEGyqwvS6TmFhVguU9Z79R7lyWubVl+pxkf
-X-Received: by 10.129.34.85 with SMTP id i82mr13799482ywi.271.1511382001892;
-        Wed, 22 Nov 2017 12:20:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1511382001; cv=none;
+Received: by 10.223.159.82 with SMTP id f18csp614512wrg;
+        Wed, 22 Nov 2017 12:22:13 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMZOcoojLKXpmA4FCa5xVJoKDK+nyS9pprqnGQ+nRVN+LX+C5OkHhP3RSB5DCxPlvPHEK9QC
+X-Received: by 10.37.135.9 with SMTP id a9mr4735763ybl.98.1511382133009;
+        Wed, 22 Nov 2017 12:22:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1511382133; cv=none;
         d=google.com; s=arc-20160816;
-        b=qt6+3IWOAsZ8tgykz5mNx/hPsQXpB3JELx5hNyQAVdTG6KfaWdT908iiH029tYLXfE
-         iNl7jfqGXiATP9OhsUP8r/wmLmVrOg6vR4h8Ucg/0nXIg1AH1Yb/grK1LUp0qW8OiA+c
-         5SsLOVD0XCaNwBdX0g5BlreM5lrKitCc0Y9yKTK3q0I5CazJZL0KXoHjuOJLNSX2blnZ
-         nZWlNJMuZLqlhiyQT2ewF/v/OV2pVzon9cI0CapiM4n2sZgLvTxMffw4+6rf9tWCsjIg
-         cFh/T43oV6uJOdApeNLJ+w9cw6dlVV+ezvgQqgK9G8vKoRzkB2kduVHaz1jRgXjYHJn1
-         9/FA==
+        b=GMbsc83Ae8QJ9ESSy049CAHAdc8fNrpj1r6X04+QNW4XTjflPaGNeAYKsdaZXkVysO
+         2+PUyCJ+i3UZHLt0IdDVneZVCfCREekpdLX7OpHW9lpeCwHKPaP7DwjZX3G5QTuaKy6r
+         h7i8JEXrsE04qxhhhx/Jfg3JxrGy91AAY/4ST7QPqviPnJv83NdM2U+gUERxJPXbPpLQ
+         jacOqSimS2OvtHyS2xSrS3VG2C3IAsRFnCliC+gECjVUpdUEzs6ua//5GkcIqJRL9klU
+         LWD0KHE6eGHsx7QOpy0opt+clsb9Hx+jww/9C+dzCJWDBEn+Dc9DEGPDFVpAeUbi+MOz
+         UHAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=qJeJUxSx0+539X3ccfMRnJTpFFwSvItvniVX4rUZk0A=;
-        b=L59mTuXPHcOe/Nry0jS5ZqMkBeVei5rZvJTt4oHi58RtPcsQmIGZ+M9hda0IrOu3bn
-         zve2ie0pgK4kvm2es9qMSultZS/B/7Uk7FPtUNnpaIhfGYxsfla21Jiw/riXlWEYl8Af
-         vwQfhS8vPT4+P3YOZLo2UGB0mZ58VCs3onJHfFOK1ehEg3ipVoWWgec4HomXDko5yk2C
-         VkgKKHcFFpXp0HyObkMT+Ph7gha8WsIKXZ61BB6SFAnMmEAd8OHkqQilY6s00XoAayjR
-         gWv88P5TuXEOKLQu9DieDbSMKcbP1Q4ryGCELHmNV7TQp8Os0krNsA9G/e8OCNktl51/
-         gJAw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=HPRj4zOfYlp1IO63LHjcSeHxgZ9KJeGnBZm7tcVrUyE=;
+        b=K2QvdaE329nfYT7KDpI76pPtdGJ9/6UDi52anTweTSd1bU2A5Gf6mwD38rWwe55OPk
+         06FkknEofiCPQ0dvmRUOul+vdb5gJ2cVadBt8rwkKDvlhNOcv+dK+DIfEq+rQvS2sAaM
+         2oiqW/XLVfrvrGcpmNyNzLHdW/PsP3GndFHApi8v2BvkdWksEfSTRxZdAU1qoQQ2Jaha
+         6KArBC1iKBPm6k8sYHsDJ/ylLMCvzq+cEhMdJzvgRin0D4k+bEwiLNI6HM/SPN1XfKTH
+         yej53LJrC4QAw92w6vvhgMYjHAX7YbX2QMIr/T1B2Qx7P3flYILGCp2tMNg+6E2Neujs
+         EdIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=r80WJYxS;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=M9shLkWk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b9si3617653ybj.758.2017.11.22.12.20.01
+        by mx.google.com with ESMTPS id p4si3706078ybd.318.2017.11.22.12.22.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 22 Nov 2017 12:20:01 -0800 (PST)
+        Wed, 22 Nov 2017 12:22:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=r80WJYxS;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=M9shLkWk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:41163 helo=lists.gnu.org)
+Received: from localhost ([::1]:41174 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eHbV3-0008Ne-9Z
-	for alex.bennee@linaro.org; Wed, 22 Nov 2017 15:20:01 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51407)
+	id 1eHbXA-0000ys-FL
+	for alex.bennee@linaro.org; Wed, 22 Nov 2017 15:22:12 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51990)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1eHbUn-0008La-FW
-	for qemu-arm@nongnu.org; Wed, 22 Nov 2017 15:19:47 -0500
+	(envelope-from <andrew.smirnov@gmail.com>) id 1eHbX1-0000ya-9b
+	for qemu-arm@nongnu.org; Wed, 22 Nov 2017 15:22:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1eHbUl-0004qV-Rs
-	for qemu-arm@nongnu.org; Wed, 22 Nov 2017 15:19:45 -0500
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:43913)
+	(envelope-from <andrew.smirnov@gmail.com>) id 1eHbX0-0005Vp-2p
+	for qemu-arm@nongnu.org; Wed, 22 Nov 2017 15:22:03 -0500
+Received: from mail-qt0-x22c.google.com ([2607:f8b0:400d:c0d::22c]:37806)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
-	id 1eHbUl-0004qB-LU; Wed, 22 Nov 2017 15:19:43 -0500
-Received: by mail-qk0-x241.google.com with SMTP id j202so18422424qke.10;
-	Wed, 22 Nov 2017 12:19:43 -0800 (PST)
+	id 1eHbWz-0005Vc-UZ; Wed, 22 Nov 2017 15:22:02 -0500
+Received: by mail-qt0-x22c.google.com with SMTP id d15so25390344qte.4;
+	Wed, 22 Nov 2017 12:22:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=qJeJUxSx0+539X3ccfMRnJTpFFwSvItvniVX4rUZk0A=;
-	b=r80WJYxSCxeUsWVXB3DHLu2ou0hCQmFiZng8MRkc+I1qJ6xLIIPKlYgrkp9/YF2t1i
-	7Q82jSN6RnE3Rtq8H+iWrB/Yr9qIQEGnsoVQdtS2KTz5HYWcns71T1rBAZJhlTsWUA9G
-	RDfaXvE2pDv+nNSCorwgHmgAL7eF5ebyq9Oek6GEVQGoUd11uZGzwg+rnXkxII2L0zIe
-	WpyCFeBmq8FiLoJ/SoYWbqV7jtUSGCU6V1ihMzobQO8FKlJ50eiqEUja4ZTnE96tl/a9
-	0UiuJUsQMNTYSKVnaiSKdORYokrO4trLoEv+d497Ntm9g5WamJXS2SinO5YLFEGOt1BJ
-	3DCQ==
+	:cc:content-transfer-encoding;
+	bh=HPRj4zOfYlp1IO63LHjcSeHxgZ9KJeGnBZm7tcVrUyE=;
+	b=M9shLkWkVb/i6eulGBzzLSozrJbH8U0/1NZHbvmQhwi9vNIHFadPBOWby/WU8KKvw6
+	QWJFyOvgJbAdyEo4PY6IcT8ty3/efrg73DkHeVqwMrJ8a1jZmtpZdehTn0dg0RID7ck0
+	wRkW+fR+4nYLoomWX2qGyAmaaCbpcX11D4k7geU4qAAy65hnhPSpK82JiO4GyvNuXheb
+	//loRirn2to6lnDx8BwzpNt4cloO9CCYJC8qGKHFJ/qpGFYZ82xpcQnQJQn6GGvy2esN
+	EdfpHBn9F4BKlUj0mXY55KduRoxV31W/FaUJ4fMftggZX9zwEzOwTCOrUCpPVcmp4V3N
+	TQqQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=qJeJUxSx0+539X3ccfMRnJTpFFwSvItvniVX4rUZk0A=;
-	b=Eb4FbF9rzUrIcYGAtzsPi+gS1yjAaF4Zh0vYFFvUHHtI/unZ+f8OY4+hqB7mE8OLxT
-	0Dv4/Q8Ywo/3Q4aEDxD6R27OzZAbblKqZp+ScKKlgZR/dlbtC1gocJmEfy9C9UwwMnIB
-	LYEzSmwYQwrzcBOfghMgkXktzlMPkWzaaCj/aedApp6E1ffGVg9EO/pkKHNM3at4IQjv
-	CxeBPKQIFYidfvrYs6PXOom5JAAt7T5wH000XmnPI8QXvV25JeYljt4x5h6S5YI/+KAX
-	bVp2LyKYq2J5FFazFhO98YhySXukejd+qexKYKP5dIfAiMgFqPvymlnZRcUzYPu6MKIk
-	PBIA==
-X-Gm-Message-State: AJaThX4soj5rRHcdiEYlQ1h8cXb2RsqPLARYS8JXGkJcwfVzIXVdjRAr
-	yvqSvOK7NP5x7loaP5/IN0oVxgJm2o45XdFsQ24=
-X-Received: by 10.55.5.13 with SMTP id 13mr32233258qkf.11.1511381981650; Wed,
-	22 Nov 2017 12:19:41 -0800 (PST)
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=HPRj4zOfYlp1IO63LHjcSeHxgZ9KJeGnBZm7tcVrUyE=;
+	b=fBznaPy53WxKNk56AP3zL4R0IGRqeNQ5zcOGcBEknrJ2NPaUKbQzyhHz8Of54BU8nx
+	JBedaRC654d8R2PrrgbCI+k+qRH0NnCMK76LmYfx/7M3Bzz5TCS0cpzn+ewY8NmJ01MG
+	bksS+2HzyonGq/sK+rvT8uCxW0+e1xxMnGojPXkWLMpOH+HeQidhpN/jzdBqcDQY1hXr
+	0HTAesSWJn0eG5XCOsTO826HcPTE6Vd4YxLVptadx/U5S/1GJlulbcLtpI3FTC2ykn1r
+	32R+n9P3L7rX5BvJTtJnjYetuU2GTsXPCCRRA4Q/w9cw8m6xuryif5ua9R1hblbwAjNI
+	mmRg==
+X-Gm-Message-State: AJaThX5NK5z7sD5PZMcTpIGpZIoS46f9I5BrjDJOnpR02JrHBBHUo3hs
+	I6Isl83m15hFZrA9RXKnzGqffEViQXADQM5B1IqhSQ==
+X-Received: by 10.237.62.5 with SMTP id l5mr34688516qtf.299.1511382121298;
+	Wed, 22 Nov 2017 12:22:01 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.140.40.243 with HTTP; Wed, 22 Nov 2017 12:19:41 -0800 (PST)
-In-Reply-To: <CAFEAcA8u2-o2u93OfgV8-4hTx0NwTZ1zC7DjFF6GmTXhxo3-Qg@mail.gmail.com>
+Received: by 10.140.40.243 with HTTP; Wed, 22 Nov 2017 12:22:00 -0800 (PST)
+In-Reply-To: <CAFEAcA9EhzPxayCGDOiM_6U9YSS6HK1gCgBroR=C1LM=H=FpQw@mail.gmail.com>
 References: <20171106154813.19936-1-andrew.smirnov@gmail.com>
-	<CAFEAcA8u2-o2u93OfgV8-4hTx0NwTZ1zC7DjFF6GmTXhxo3-Qg@mail.gmail.com>
+	<20171106154813.19936-5-andrew.smirnov@gmail.com>
+	<CAFEAcA9EhzPxayCGDOiM_6U9YSS6HK1gCgBroR=C1LM=H=FpQw@mail.gmail.com>
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Date: Wed, 22 Nov 2017 12:19:41 -0800
-Message-ID: <CAHQ1cqErRbmw2HGc-jY+-3P_MyOijtPry5RZaJ3GOTX+X6zD-Q@mail.gmail.com>
+Date: Wed, 22 Nov 2017 12:22:00 -0800
+Message-ID: <CAHQ1cqEW202FqhrNpXOvWTT9s-H-ZGrmdAFTeynRc6VnOia6Uw@mail.gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
-Subject: Re: [Qemu-arm] [PATCH v3 00/30] Initial i.MX7 support
+X-Received-From: 2607:f8b0:400d:c0d::22c
+Subject: Re: [Qemu-arm] [PATCH v3 04/30] imx_fec: Use ENET_FTRL to determine
+ truncation length
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -111,140 +115,74 @@ Cc: Jason Wang <jasowang@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2w4d+/O/nGPA
+X-TUID: npmJE35LeYbD
 
-On Tue, Nov 21, 2017 at 10:34 AM, Peter Maydell
-<peter.maydell@linaro.org> wrote:
-> On 6 November 2017 at 15:47, Andrey Smirnov <andrew.smirnov@gmail.com> wrote:
->> Hi everyone,
->>     - Added proper USB emulation code, so now it should be possible to
->>       emulated guest's USB bus
->
-> The patchset is huge as it is, if you add more stuff to it
-> it makes it even more likely to sink to the bottom of my
-> to-review queue...
->
-
-USB peripheral emulation had to be a part of a patch-set, either in
-dummy or a full featured form, in order to be able to boot vanilla
-Linux kernel because you insisted that I don't use
-"ignore_memory_transaction_failures". The reason why the dummy
-emulation version of it it was not a part of v2 was because I did my
-test with a bad kernel config where USB was disabled, didn't realize
-USB was essential and did not write code to support it. Now, once I
-realized it, I wrote a dummy version, and then later, while waiting
-for v2 to be reviewed, worked on proper USB emulation the code. Said
-code turned out to be comparatively trivial to the first dummy
-implementation, so instead of going through the exercise of submitting
-dummy first and then proper version later I squashed both and the
-result in v3.
-
-
->> Peter, I didn't hear anything from you about the code of
->> mcimx7d_add_psci_node(), as discussed here:
+On Tue, Nov 21, 2017 at 9:31 AM, Peter Maydell <peter.maydell@linaro.org> w=
+rote:
+> On 6 November 2017 at 15:47, Andrey Smirnov <andrew.smirnov@gmail.com> wr=
+ote:
+>> Frame truncation length, TRUNC_FL, is determined by the contents of
+>> ENET_FTRL register, so convert the code to use it instead of a
+>> hardcoded constant.
 >>
->> https://www.mail-archive.com/qemu-devel@nongnu.org/msg486874.html
+>> To avoid the case where TRUNC_FL is greater that ENET_MAX_FRAME_SIZE,
+>> increase the value of the latter to its theoretical maximum of 16K.
 >>
->> so I kept the original code intact. As I mentioned before, my goal was
->> to be able to boot into vanilla Linux kerenel and have working SMP
->> without needing to use a PSCI implementing bootloader. If that is
->> something that new board code shouldn't do, please let me know.
->
-> Broadly, board code should work the same way the real hardware
-> does, unless there's a clear reason why not.
-
-Yes, this all makes sense. As far as I understand convenience being
-able to boot Linux directly in QEMU has long been the "clear reason
-why not". Now that certain SoC specific versions of Linux are not as
-self-sufficient and can't support SMP without external help, emulating
-PSCI and doing appropriate DTB fixups for that is just an adaptaion of
-the old convenience mechanism to new times and circumstances, IMHO.
-
-> "virt" is special because it writes its own dtb entirely.
->
-> Maybe PSCI does need to be a different special case, since we're
-> emulating part of a bootloader here.
-
-OK, I'll ignore the "maybe" part and proceed as if we are in agreement
-on PSCI for v4.
-
-> But if so I think that code belongs more in hw/arm/boot.c, so that we automatically fix up the
-> dtb to say "we have psci" if we are (a) booting a kernel directly
-> and (b) the CPU has the psci-conduit property set to enable QEMU's
-> PSCI implementation.
->
-
-OK, sure, makes sense. I'll change the patch to use shared
-infrastructure for that.
-
-> (Also the code in virt.c for adding a PSCI node is considerably
-> fuller-featured than yours is.)
->
-
-Okay... My code is targeting both fixed PSCI conduit (smc) and PSCI
-implementation (0.2/1.0), implementing support for anything but that
-in my board specific code would've been, IMHO, silly. OK, I'll
-interpret that comment not as a slight, but as a request to use
-virt.c's implementation for shared infrastructure.
-
->> Thanks,
->> Andrey Smirnov
+>> Cc: Peter Maydell <peter.maydell@linaro.org>
+>> Cc: Jason Wang <jasowang@redhat.com>
+>> Cc: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>> Cc: qemu-devel@nongnu.org
+>> Cc: qemu-arm@nongnu.org
+>> Cc: yurovsky@gmail.com
+>> Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
+>> ---
+>>  hw/net/imx_fec.c         | 4 ++--
+>>  include/hw/net/imx_fec.h | 3 ++-
+>>  2 files changed, 4 insertions(+), 3 deletions(-)
 >>
->> [v2] https://lists.gnu.org/archive/html/qemu-devel/2017-10/msg05516.html
->> [v1] https://lists.gnu.org/archive/html/qemu-devel/2017-09/msg04770.html
+>> diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+>> index eb034ffd0c..dda0816fb3 100644
+>> --- a/hw/net/imx_fec.c
+>> +++ b/hw/net/imx_fec.c
+>> @@ -1052,8 +1052,8 @@ static ssize_t imx_enet_receive(NetClientState *nc=
+, const uint8_t *buf,
+>>      crc_ptr =3D (uint8_t *) &crc;
 >>
+>>      /* Huge frames are truncted.  */
+>> -    if (size > ENET_MAX_FRAME_SIZE) {
+>> -        size =3D ENET_MAX_FRAME_SIZE;
+>> +    if (size > s->regs[ENET_FTRL]) {
+>> +        size =3D s->regs[ENET_FTRL];
+>>          flags |=3D ENET_BD_TR | ENET_BD_LG;
+>>      }
 >>
->> Andrey Smirnov (30):
->>   imx_fec: Do not link to netdev
->>   imx_fec: Refactor imx_eth_enable_rx()
->>   imx_fec: Change queue flushing heuristics
->>   imx_fec: Use ENET_FTRL to determine truncation length
->>   imx_fec: Use MIN instead of explicit ternary operator
->>   imx_fec: Emulate SHIFT16 in ENETx_RACC
->>   imx_fec: Add support for multiple Tx DMA rings
->>   imx_fec: Use correct length for packet size
->>   imx_fec: Fix a typo in imx_enet_receive()
->>   imx_fec: Reserve full 4K page for the register file
->>   sdhci: Add i.MX specific subtype of SDHCI
->>   sdhci: Implement write method of ACMD12ERRSTS register
+>> diff --git a/include/hw/net/imx_fec.h b/include/hw/net/imx_fec.h
+>> index 4bc8f03ec2..0fcc4f0c71 100644
+>> --- a/include/hw/net/imx_fec.h
+>> +++ b/include/hw/net/imx_fec.h
+>> @@ -86,7 +86,6 @@
+>>  #define ENET_TCCR3             393
+>>  #define ENET_MAX               400
+>>
+>> -#define ENET_MAX_FRAME_SIZE    2032
+>>
+>>  /* EIR and EIMR */
+>>  #define ENET_INT_HB            (1 << 31)
+>> @@ -155,6 +154,8 @@
+>>  #define ENET_RCR_NLC           (1 << 30)
+>>  #define ENET_RCR_GRS           (1 << 31)
+>>
+>> +#define ENET_MAX_FRAME_SIZE    (1 << ENET_RCR_MAX_FL_LENGTH)
 >
-> Everything above here is pretty nearly ready to go in;
-> if you send that as a patchseries then it should be easy
-> to review and queue ready for 2.12 (which will open up
-> for new commits in mid-december).
->
-
-I'm not quite sure where you stand on "imx_fec: Use ENET_FTRL to
-determine truncation length", but sure, sounds good, I'll prepare the
-rest of them as a separate patch set and submit it, as soon as I get a
-chance.
-
->>   i.MX: Add code to emulate i.MX7 CCM, PMU and ANALOG IP blocks
->>   i.MX: Add code to emulate i.MX2 watchdog IP block
->>   i.MX: Add code to emulate i.MX7 SNVS IP-block
->>   i.MX: Add code to emulate GPCv2 IP block
->>   i.MX: Add code to emulate i.MX7 IOMUXC IP block
->>   i.MX: Add i.MX7 GPT variant
->>   i.MX: Add code to emulate SDMA IP block
->>   i.MX: Add code to emulate FlexCAN IP block
->>   i.MX: Add implementation of i.MX7 GPR IP block
->>   pci: Add support for Designware IP block
->>   i.MX: Add code to emulate i.MX7 USBMISC IP block
->>   i.MX: Add code to emulate i.MX7 ADC IP block
->>   i.MX: Add code to emulate i.MX7 SRC IP-block
->>   usb: Add basic code to emulate Chipidea USB IP
->>   ARM: Add basic code to emulate A7MPCore DAP block
->>   i.MX: Add code to emulate i.MX LCD block
->>   i.MX: Add i.MX7 SOC implementation.
->>   Implement support for i.MX7 Sabre board
->
-> My review in this part of the patchset is more sketchy,
-> but you can probably adjust the later patches as per
-> remarks on the earlier ones.
+> This means we now have functions with 16K local array
+> variables on the stack, which seems like a bad idea.
 >
 
-OK, no problem. I am fine on iterating on the rest of the series until
-it's in good shape.
+Can't say I see a big difference between having a 2K vs 16K buffer on
+the stack, but regardless, I am not quite clear if you are not too hot
+about this patch and want me to drop it (I am fine with it) or do you
+want me to modify it to have the emulation layer allocate said 16K
+buffer on the heap instead of a stack?
 
 Thanks,
 Andrey Smirnov

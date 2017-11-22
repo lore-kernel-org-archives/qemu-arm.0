@@ -1,86 +1,99 @@
-Received: by 10.223.150.237 with SMTP id u100csp3683773wrb;
-        Tue, 14 Nov 2017 06:47:28 -0800 (PST)
-X-Google-Smtp-Source: AGs4zManCllqSZZpqNbt0xNDwTtVFsHPYf85tjMl4AFOECFBEjmhGEtnH+OHRMQlc1A9DUcMkvm6
-X-Received: by 10.13.239.7 with SMTP id y7mr8002747ywe.122.1510670848630;
-        Tue, 14 Nov 2017 06:47:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510670848; cv=none;
+Received: by 10.223.159.82 with SMTP id f18csp612660wrg;
+        Wed, 22 Nov 2017 12:20:02 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMZxXtNFMk7Fxx4CI3TGfDbyg+7CbGeJucePjxEGyqwvS6TmFhVguU9Z79R7lyWubVl+pxkf
+X-Received: by 10.129.34.85 with SMTP id i82mr13799482ywi.271.1511382001892;
+        Wed, 22 Nov 2017 12:20:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1511382001; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dr8dZw6meJU686ZFSFEQ8eMMM5pMn1a2SOpNHAjChN8ycs2N979NrI45IYJnr7I5tO
-         SsjyBTv+U+Yg7aiYvOdXaylP14lv2JaudTxMTQj+8+Z8OmRTtep0OUJtO187fzCLmlSq
-         XruKhP+7YFk6h7msbtjf4pDq+3fqZZ9jqYYyeZNbQdG48QmbalS126rv9vWMNIKy83Wf
-         LWEHAAkXCB8waBTVk30UJEuXsS7a+JZh2zf2HeXO75Ro5o/Skrb57Hcp8vcrxOMIqVXN
-         iudcdZ54BjabdyykQmRzY3Uj7JnumotKEi0ODO0tKrYC7KbkYKKDQufebOsx+0galD67
-         NH8w==
+        b=qt6+3IWOAsZ8tgykz5mNx/hPsQXpB3JELx5hNyQAVdTG6KfaWdT908iiH029tYLXfE
+         iNl7jfqGXiATP9OhsUP8r/wmLmVrOg6vR4h8Ucg/0nXIg1AH1Yb/grK1LUp0qW8OiA+c
+         5SsLOVD0XCaNwBdX0g5BlreM5lrKitCc0Y9yKTK3q0I5CazJZL0KXoHjuOJLNSX2blnZ
+         nZWlNJMuZLqlhiyQT2ewF/v/OV2pVzon9cI0CapiM4n2sZgLvTxMffw4+6rf9tWCsjIg
+         cFh/T43oV6uJOdApeNLJ+w9cw6dlVV+ezvgQqgK9G8vKoRzkB2kduVHaz1jRgXjYHJn1
+         9/FA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=Jhsi1wijFgoTuB45kR8/ancl6phygjC+mZOIBnsAO4U=;
-        b=RxALw1yw9FGfnTBNvHw917KVxdx/4JcJY3QaHG1jTvunRnWQGPqki9z2aekNVtnRmD
-         HOLYDKk3o5R0zLKwOe8ttpXyLKOWD1htakh8qtygTNr0kVt6aXyKJT/UFQZYThgfMT0T
-         iITyp74kcl64X4HNuAeRS6S/5J8pnAfdUU9vY18JGZn0N0v7vYDVcwQJSW+u0DSximJn
-         DmGulhb34Hk3nlIlHQJQEg30CNO/UuE59SuNYQgR1jcBoDfgHGnXORhJesec0QpUJb/v
-         JEux0Tke46N1ZMKyZDoA12soBnVTVAutUW6mUymiM1ZHYlO5McKDjGz4IfsjnSaHCOxa
-         9CAQ==
+        bh=qJeJUxSx0+539X3ccfMRnJTpFFwSvItvniVX4rUZk0A=;
+        b=L59mTuXPHcOe/Nry0jS5ZqMkBeVei5rZvJTt4oHi58RtPcsQmIGZ+M9hda0IrOu3bn
+         zve2ie0pgK4kvm2es9qMSultZS/B/7Uk7FPtUNnpaIhfGYxsfla21Jiw/riXlWEYl8Af
+         vwQfhS8vPT4+P3YOZLo2UGB0mZ58VCs3onJHfFOK1ehEg3ipVoWWgec4HomXDko5yk2C
+         VkgKKHcFFpXp0HyObkMT+Ph7gha8WsIKXZ61BB6SFAnMmEAd8OHkqQilY6s00XoAayjR
+         gWv88P5TuXEOKLQu9DieDbSMKcbP1Q4ryGCELHmNV7TQp8Os0krNsA9G/e8OCNktl51/
+         gJAw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=r80WJYxS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g67si3953141yba.486.2017.11.14.06.47.28
+        by mx.google.com with ESMTPS id b9si3617653ybj.758.2017.11.22.12.20.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 14 Nov 2017 06:47:28 -0800 (PST)
+        Wed, 22 Nov 2017 12:20:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=r80WJYxS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60093 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:41163 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eEcUq-00018d-3n
-	for alex.bennee@linaro.org; Tue, 14 Nov 2017 09:47:28 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41175)
+	id 1eHbV3-0008Ne-9Z
+	for alex.bennee@linaro.org; Wed, 22 Nov 2017 15:20:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51407)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1eEcUi-00017A-S1
-	for qemu-arm@nongnu.org; Tue, 14 Nov 2017 09:47:21 -0500
+	(envelope-from <andrew.smirnov@gmail.com>) id 1eHbUn-0008La-FW
+	for qemu-arm@nongnu.org; Wed, 22 Nov 2017 15:19:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1eEcUf-0004hQ-NI
-	for qemu-arm@nongnu.org; Tue, 14 Nov 2017 09:47:20 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:45694)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1eEcUf-0004gF-DU; Tue, 14 Nov 2017 09:47:17 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 961B3C0587CB;
-	Tue, 14 Nov 2017 14:47:15 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id D91D293535;
-	Tue, 14 Nov 2017 14:47:10 +0000 (UTC)
-Date: Tue, 14 Nov 2017 15:47:08 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: zhuyijun@huawei.com
-Message-ID: <20171114144708.uzh6mkmjygojfpbu@kamzik.brq.redhat.com>
-References: <1510622154-17224-1-git-send-email-zhuyijun@huawei.com>
-	<1510622154-17224-3-git-send-email-zhuyijun@huawei.com>
+	(envelope-from <andrew.smirnov@gmail.com>) id 1eHbUl-0004qV-Rs
+	for qemu-arm@nongnu.org; Wed, 22 Nov 2017 15:19:45 -0500
+Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:43913)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
+	id 1eHbUl-0004qB-LU; Wed, 22 Nov 2017 15:19:43 -0500
+Received: by mail-qk0-x241.google.com with SMTP id j202so18422424qke.10;
+	Wed, 22 Nov 2017 12:19:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=qJeJUxSx0+539X3ccfMRnJTpFFwSvItvniVX4rUZk0A=;
+	b=r80WJYxSCxeUsWVXB3DHLu2ou0hCQmFiZng8MRkc+I1qJ6xLIIPKlYgrkp9/YF2t1i
+	7Q82jSN6RnE3Rtq8H+iWrB/Yr9qIQEGnsoVQdtS2KTz5HYWcns71T1rBAZJhlTsWUA9G
+	RDfaXvE2pDv+nNSCorwgHmgAL7eF5ebyq9Oek6GEVQGoUd11uZGzwg+rnXkxII2L0zIe
+	WpyCFeBmq8FiLoJ/SoYWbqV7jtUSGCU6V1ihMzobQO8FKlJ50eiqEUja4ZTnE96tl/a9
+	0UiuJUsQMNTYSKVnaiSKdORYokrO4trLoEv+d497Ntm9g5WamJXS2SinO5YLFEGOt1BJ
+	3DCQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=qJeJUxSx0+539X3ccfMRnJTpFFwSvItvniVX4rUZk0A=;
+	b=Eb4FbF9rzUrIcYGAtzsPi+gS1yjAaF4Zh0vYFFvUHHtI/unZ+f8OY4+hqB7mE8OLxT
+	0Dv4/Q8Ywo/3Q4aEDxD6R27OzZAbblKqZp+ScKKlgZR/dlbtC1gocJmEfy9C9UwwMnIB
+	LYEzSmwYQwrzcBOfghMgkXktzlMPkWzaaCj/aedApp6E1ffGVg9EO/pkKHNM3at4IQjv
+	CxeBPKQIFYidfvrYs6PXOom5JAAt7T5wH000XmnPI8QXvV25JeYljt4x5h6S5YI/+KAX
+	bVp2LyKYq2J5FFazFhO98YhySXukejd+qexKYKP5dIfAiMgFqPvymlnZRcUzYPu6MKIk
+	PBIA==
+X-Gm-Message-State: AJaThX4soj5rRHcdiEYlQ1h8cXb2RsqPLARYS8JXGkJcwfVzIXVdjRAr
+	yvqSvOK7NP5x7loaP5/IN0oVxgJm2o45XdFsQ24=
+X-Received: by 10.55.5.13 with SMTP id 13mr32233258qkf.11.1511381981650; Wed,
+	22 Nov 2017 12:19:41 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1510622154-17224-3-git-send-email-zhuyijun@huawei.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Tue, 14 Nov 2017 14:47:15 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 2/5] hw/arm/virt: Enable dynamic
- generation of guest RAM memory regions
+Received: by 10.140.40.243 with HTTP; Wed, 22 Nov 2017 12:19:41 -0800 (PST)
+In-Reply-To: <CAFEAcA8u2-o2u93OfgV8-4hTx0NwTZ1zC7DjFF6GmTXhxo3-Qg@mail.gmail.com>
+References: <20171106154813.19936-1-andrew.smirnov@gmail.com>
+	<CAFEAcA8u2-o2u93OfgV8-4hTx0NwTZ1zC7DjFF6GmTXhxo3-Qg@mail.gmail.com>
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+Date: Wed, 22 Nov 2017 12:19:41 -0800
+Message-ID: <CAHQ1cqErRbmw2HGc-jY+-3P_MyOijtPry5RZaJ3GOTX+X6zD-Q@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::241
+Subject: Re: [Qemu-arm] [PATCH v3 00/30] Initial i.MX7 support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,104 +105,146 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org,
-	shameerali.kolothum.thodi@huawei.com, eric.auger@redhat.com,
-	qemu-arm@nongnu.org, zhaoshenglong@huawei.com
+Cc: Jason Wang <jasowang@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+	Andrey Yurovsky <yurovsky@gmail.com>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fzt0pB//5nDq
+X-TUID: 2w4d+/O/nGPA
 
-On Tue, Nov 14, 2017 at 09:15:51AM +0800, zhuyijun@huawei.com wrote:
-> From: Zhu Yijun <zhuyijun@huawei.com>
-> 
-> Register a ram_memory_region_init notify to allocate memory region
-> from system memory and add them as subregions.
-> 
-> Signed-off-by: Zhu Yijun <zhuyijun@huawei.com>
-> ---
->  hw/arm/virt.c         | 21 ++++++++++++++++-----
->  include/hw/arm/virt.h |  1 +
->  2 files changed, 17 insertions(+), 5 deletions(-)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 9e18b41..ddde5e1 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1225,6 +1225,19 @@ void virt_machine_done(Notifier *notifier, void *data)
->      virt_build_smbios(vms);
->  }
->  
-> +static void virt_ram_memory_region_init(Notifier *notifier, void *data)
-> +{
-> +    MachineState *machine = MACHINE(qdev_get_machine());
-
-No need to use qdev_get_machine(), you can get it with MACHINE(vms).
-
-> +    MemoryRegion *sysmem = get_system_memory();
-> +    MemoryRegion *ram = g_new(MemoryRegion, 1);
-> +    VirtMachineState *vms = container_of(notifier, VirtMachineState,
-> +                                         ram_memory_region_init);
-> +
-> +    memory_region_allocate_system_memory(ram, NULL, "mach-virt.ram",
-> +                                         machine->ram_size);
-> +    memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base, ram);
-> +}
-> +
->  static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
->  {
->      uint8_t clustersz = ARM_DEFAULT_CPUS_PER_CLUSTER;
-> @@ -1258,7 +1271,6 @@ static void machvirt_init(MachineState *machine)
->      MemoryRegion *sysmem = get_system_memory();
->      MemoryRegion *secure_sysmem = NULL;
->      int n, virt_max_cpus;
-> -    MemoryRegion *ram = g_new(MemoryRegion, 1);
->      bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
->  
->      /* We can probe only here because during property set
-> @@ -1409,10 +1421,6 @@ static void machvirt_init(MachineState *machine)
->      fdt_add_cpu_nodes(vms);
->      fdt_add_psci_node(vms);
->  
-> -    memory_region_allocate_system_memory(ram, NULL, "mach-virt.ram",
-> -                                         machine->ram_size);
-> -    memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base, ram);
-> -
->      create_flash(vms, sysmem, secure_sysmem ? secure_sysmem : sysmem);
->  
->      create_gic(vms, pic);
-> @@ -1462,6 +1470,9 @@ static void machvirt_init(MachineState *machine)
->       * Notifiers are executed in registration reverse order.
->       */
->      create_platform_bus(vms, pic);
-> +
-> +    vms->ram_memory_region_init.notify = virt_ram_memory_region_init;
-> +    qemu_add_machine_init_done_notifier(&vms->ram_memory_region_init);
-
-Does this notifier need to be the first one executed? If so, then a
-comment should be added to state that. Actually the comment above
-create_platform_bus() could be replaced with a comment above the first
-notifier that states all notifier dependencies.
-
->  }
->  
->  static bool virt_get_secure(Object *obj, Error **errp)
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 33b0ff3..38906b8 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -90,6 +90,7 @@ typedef struct {
->  typedef struct {
->      MachineState parent;
->      Notifier machine_done;
-> +    Notifier ram_memory_region_init;
->      FWCfgState *fw_cfg;
->      bool secure;
->      bool highmem;
-> -- 
-> 1.8.3.1
-> 
-> 
+On Tue, Nov 21, 2017 at 10:34 AM, Peter Maydell
+<peter.maydell@linaro.org> wrote:
+> On 6 November 2017 at 15:47, Andrey Smirnov <andrew.smirnov@gmail.com> wrote:
+>> Hi everyone,
+>>     - Added proper USB emulation code, so now it should be possible to
+>>       emulated guest's USB bus
+>
+> The patchset is huge as it is, if you add more stuff to it
+> it makes it even more likely to sink to the bottom of my
+> to-review queue...
 >
 
+USB peripheral emulation had to be a part of a patch-set, either in
+dummy or a full featured form, in order to be able to boot vanilla
+Linux kernel because you insisted that I don't use
+"ignore_memory_transaction_failures". The reason why the dummy
+emulation version of it it was not a part of v2 was because I did my
+test with a bad kernel config where USB was disabled, didn't realize
+USB was essential and did not write code to support it. Now, once I
+realized it, I wrote a dummy version, and then later, while waiting
+for v2 to be reviewed, worked on proper USB emulation the code. Said
+code turned out to be comparatively trivial to the first dummy
+implementation, so instead of going through the exercise of submitting
+dummy first and then proper version later I squashed both and the
+result in v3.
+
+
+>> Peter, I didn't hear anything from you about the code of
+>> mcimx7d_add_psci_node(), as discussed here:
+>>
+>> https://www.mail-archive.com/qemu-devel@nongnu.org/msg486874.html
+>>
+>> so I kept the original code intact. As I mentioned before, my goal was
+>> to be able to boot into vanilla Linux kerenel and have working SMP
+>> without needing to use a PSCI implementing bootloader. If that is
+>> something that new board code shouldn't do, please let me know.
+>
+> Broadly, board code should work the same way the real hardware
+> does, unless there's a clear reason why not.
+
+Yes, this all makes sense. As far as I understand convenience being
+able to boot Linux directly in QEMU has long been the "clear reason
+why not". Now that certain SoC specific versions of Linux are not as
+self-sufficient and can't support SMP without external help, emulating
+PSCI and doing appropriate DTB fixups for that is just an adaptaion of
+the old convenience mechanism to new times and circumstances, IMHO.
+
+> "virt" is special because it writes its own dtb entirely.
+>
+> Maybe PSCI does need to be a different special case, since we're
+> emulating part of a bootloader here.
+
+OK, I'll ignore the "maybe" part and proceed as if we are in agreement
+on PSCI for v4.
+
+> But if so I think that code belongs more in hw/arm/boot.c, so that we automatically fix up the
+> dtb to say "we have psci" if we are (a) booting a kernel directly
+> and (b) the CPU has the psci-conduit property set to enable QEMU's
+> PSCI implementation.
+>
+
+OK, sure, makes sense. I'll change the patch to use shared
+infrastructure for that.
+
+> (Also the code in virt.c for adding a PSCI node is considerably
+> fuller-featured than yours is.)
+>
+
+Okay... My code is targeting both fixed PSCI conduit (smc) and PSCI
+implementation (0.2/1.0), implementing support for anything but that
+in my board specific code would've been, IMHO, silly. OK, I'll
+interpret that comment not as a slight, but as a request to use
+virt.c's implementation for shared infrastructure.
+
+>> Thanks,
+>> Andrey Smirnov
+>>
+>> [v2] https://lists.gnu.org/archive/html/qemu-devel/2017-10/msg05516.html
+>> [v1] https://lists.gnu.org/archive/html/qemu-devel/2017-09/msg04770.html
+>>
+>>
+>> Andrey Smirnov (30):
+>>   imx_fec: Do not link to netdev
+>>   imx_fec: Refactor imx_eth_enable_rx()
+>>   imx_fec: Change queue flushing heuristics
+>>   imx_fec: Use ENET_FTRL to determine truncation length
+>>   imx_fec: Use MIN instead of explicit ternary operator
+>>   imx_fec: Emulate SHIFT16 in ENETx_RACC
+>>   imx_fec: Add support for multiple Tx DMA rings
+>>   imx_fec: Use correct length for packet size
+>>   imx_fec: Fix a typo in imx_enet_receive()
+>>   imx_fec: Reserve full 4K page for the register file
+>>   sdhci: Add i.MX specific subtype of SDHCI
+>>   sdhci: Implement write method of ACMD12ERRSTS register
+>
+> Everything above here is pretty nearly ready to go in;
+> if you send that as a patchseries then it should be easy
+> to review and queue ready for 2.12 (which will open up
+> for new commits in mid-december).
+>
+
+I'm not quite sure where you stand on "imx_fec: Use ENET_FTRL to
+determine truncation length", but sure, sounds good, I'll prepare the
+rest of them as a separate patch set and submit it, as soon as I get a
+chance.
+
+>>   i.MX: Add code to emulate i.MX7 CCM, PMU and ANALOG IP blocks
+>>   i.MX: Add code to emulate i.MX2 watchdog IP block
+>>   i.MX: Add code to emulate i.MX7 SNVS IP-block
+>>   i.MX: Add code to emulate GPCv2 IP block
+>>   i.MX: Add code to emulate i.MX7 IOMUXC IP block
+>>   i.MX: Add i.MX7 GPT variant
+>>   i.MX: Add code to emulate SDMA IP block
+>>   i.MX: Add code to emulate FlexCAN IP block
+>>   i.MX: Add implementation of i.MX7 GPR IP block
+>>   pci: Add support for Designware IP block
+>>   i.MX: Add code to emulate i.MX7 USBMISC IP block
+>>   i.MX: Add code to emulate i.MX7 ADC IP block
+>>   i.MX: Add code to emulate i.MX7 SRC IP-block
+>>   usb: Add basic code to emulate Chipidea USB IP
+>>   ARM: Add basic code to emulate A7MPCore DAP block
+>>   i.MX: Add code to emulate i.MX LCD block
+>>   i.MX: Add i.MX7 SOC implementation.
+>>   Implement support for i.MX7 Sabre board
+>
+> My review in this part of the patchset is more sketchy,
+> but you can probably adjust the later patches as per
+> remarks on the earlier ones.
+>
+
+OK, no problem. I am fine on iterating on the rest of the series until
+it's in good shape.
+
 Thanks,
-drew 
+Andrey Smirnov

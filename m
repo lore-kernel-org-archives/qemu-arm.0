@@ -1,82 +1,96 @@
-Received: by 10.223.159.82 with SMTP id f18csp839174wrg;
-        Thu, 23 Nov 2017 06:59:15 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMZYFKZNEM2OzExZGl3s2E/hn+8x/BBljLhkrama6I8nqHPEdimPWDyxHOzuvIRGjtfcLL0P
-X-Received: by 10.129.116.6 with SMTP id p6mr16036651ywc.136.1511449155050;
-        Thu, 23 Nov 2017 06:59:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1511449155; cv=none;
+Received: by 10.223.159.82 with SMTP id f18csp864268wrg;
+        Thu, 23 Nov 2017 07:19:48 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMYRYEGBHcQW2f6SUYdnGV53floMGXDVjVq6mFsmlMVTeX1WWXwGDjmXpmpUMK5N7nfZK1ke
+X-Received: by 10.129.120.23 with SMTP id t23mr16823268ywc.513.1511450388708;
+        Thu, 23 Nov 2017 07:19:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1511450388; cv=none;
         d=google.com; s=arc-20160816;
-        b=OoAcOhi5MzIldutOhVUUnxg8VM4v//ncrIDG4DFFywFZTNpVqEvnDojWa8lez7cq1U
-         Gw5sY9oy4GcGTP0DS+/1Q1VDLeo7z8R7hNIKoEAfCj1ntvWBnCFdacYlFsoXOVH6vpf/
-         21IbPmfApg0AkoZknF/UijkZTqXCxHUQ8fnd5k2qRwqdE/RrqbPpqPLZufW0pS1i28ce
-         MEjPNwQGNiimCMJgbQ6vCFyrb/qt2/IgAnLlVzyQrXVzi8R/pNCbvvUHIBHuihsUbMSy
-         1d8Vi61Da/T2lNGs8OzMU0MZhojLaMC1z7olEod3nlAbXnofyxxXi0N6U93OEy/rAYkJ
-         6kwA==
+        b=nKtWAONXaYo0/u/KmD9Hdelgpd2dxQttHGxwquowG6IqvzbkUmrL04cZzC475SOlfl
+         tKBz/E0Rk0Dz+PlQIj68DMYsaDwSZVzpLRAULB37KRblxmHzMuYuJQ5wZaVNqIoXLXMG
+         Znr4II6lRHvGRub760Du59Etk1pwLdR8pp4JK+xulIuLXjwPAO28jZOtin3vNGgHRl3c
+         Jac+/N2VbEZ4VIF+tcVKTeN6VpwXYmqtZFN4x7/7CLkLbwYK+aApzdXpySZxW9s6KAZZ
+         OGvJulf8iB14Ip5a30UM4jBil7GUIHDh0HJI4/3WaLWuT2dg3xJz1g/J0p/Oz/ppudmf
+         m+kw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=3Kn6xdst83dgSo3faqbNB6p/REdP+nNOktTzxBaYSZA=;
-        b=l4HHLoF7ccxQVXTFckvmYnZkaloAC5TgGEkC80VHmYHvk8Drs0HWUM3ILSJHF6VynB
-         DGaVNKIIR4+TLYt4exzYfBZRrT8mbPivAKs9mAOfLv6ZHpG3kppmfYotCjZXSPg9a0K3
-         bw9L2zNtod00kwS+YDj0G+Sgyhml3ORflRu64yYB79k+NwzcTmDsGcMEafve/3PrQXVv
-         V308ak0vskRI80jyK/F83AFa37zOtqOaItNKr4AvDygvPAKxJ9bEBBrmlAutcJ/rBcIO
-         rehl2TJOznEo1+N0DovUQ6MTWgE8Mh5xs9BFtsuZgwFTKALA0f2B3FCbaE74F5nK0+Ql
-         i4Jg==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=CThzUQ6Aom5D2NiKnDmz8nsj0NHbwULLKwWoUh8mlqQ=;
+        b=tF5JsJTfAwsdOYjUQ8Ch7GpAR8i45LlqorC0PMk/c/TlO0oGbVKv2ZgD5xEUuKucrP
+         LIAML7q2x/mq3KTgWlp1Hdo1X43AquLD6xhASV1OEJUC+IiR2ZCYOrttd1QMYuMOv1WR
+         N5cQbxXI/7j8dar0HZE3Mj+JjqyQIa47SVKhOe9U/khtywsQANmRO9Fu6bwEo5iKymZX
+         vRR0vb7p8a+HZulKYJ1jyYuYUCMSJODTYCT+ByrHAY+mRDh9phyVcwQrB7mAMTuHDcut
+         z9++XA/OBY5kXwRroDVe12T7jtHSpSMvTnWYs5PbGaynq/GUmlM24xhBsmuhIoeRgzso
+         nhkg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=DgTGkBjL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u13si4327432ywl.444.2017.11.23.06.59.14
+        by mx.google.com with ESMTPS id v75si355389ywc.592.2017.11.23.07.19.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 23 Nov 2017 06:59:15 -0800 (PST)
+        Thu, 23 Nov 2017 07:19:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=DgTGkBjL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44748 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44838 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eHsyA-0003i7-E1
-	for alex.bennee@linaro.org; Thu, 23 Nov 2017 09:59:14 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39997)
+	id 1eHtI4-0005LG-5j
+	for alex.bennee@linaro.org; Thu, 23 Nov 2017 10:19:48 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40361)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1eHsvc-0001ro-T8
-	for qemu-arm@nongnu.org; Thu, 23 Nov 2017 09:56:40 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1eHtHn-0005JP-3J
+	for qemu-arm@nongnu.org; Thu, 23 Nov 2017 10:19:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1eHsvc-0007X0-5F
-	for qemu-arm@nongnu.org; Thu, 23 Nov 2017 09:56:36 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:54408)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1eHsvb-0007W0-VZ; Thu, 23 Nov 2017 09:56:36 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 13689A0B22;
-	Thu, 23 Nov 2017 14:56:35 +0000 (UTC)
-Received: from localhost.localdomain.com (ovpn-117-138.ams2.redhat.com
-	[10.36.117.138])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 632C25D6A5;
-	Thu, 23 Nov 2017 14:56:28 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
-	qemu-arm@nongnu.org, qemu-devel@nongnu.org, wanghaibin.wang@huawei.com
-Date: Thu, 23 Nov 2017 15:56:12 +0100
-Message-Id: <1511448975-28326-2-git-send-email-eric.auger@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1eHtHm-0004SC-1K
+	for qemu-arm@nongnu.org; Thu, 23 Nov 2017 10:19:31 -0500
+Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:35766)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1eHtHl-0004Rc-SX
+	for qemu-arm@nongnu.org; Thu, 23 Nov 2017 10:19:29 -0500
+Received: by mail-oi0-x242.google.com with SMTP id e142so13364977oih.2
+	for <qemu-arm@nongnu.org>; Thu, 23 Nov 2017 07:19:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=CThzUQ6Aom5D2NiKnDmz8nsj0NHbwULLKwWoUh8mlqQ=;
+	b=DgTGkBjL6KU0qNFwToOLehjGsjsVApq21h+y0IuUjuaz2X2nnD/vxKyqoAEDmeZcmW
+	I53PYIF47mLSy7XtAUUs3vSDw5SkXgA+DLSU9SaZEbPLdl22E0xZ3TSXRQshsznrmcD0
+	O8JrhQz6tX9asT+dA/jwEMjck1Od8nYX99Hrk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=CThzUQ6Aom5D2NiKnDmz8nsj0NHbwULLKwWoUh8mlqQ=;
+	b=QB+rFauw5J8mjb8Bgh0IunxYg/WRD7xSx8AEPLh+2k2JPlM1L/eC+dd3mLtmrkIP1S
+	4eywyx+T475OTzKk0S4LdCno2ObhM9sPEg7QEWtatJ4HWE51Pm3gRva4qkGRPVDCErZI
+	BCcb9btFq6gTX0rOT3QNZMoGNEtipRcfxJNDrY5aoo0/1ghCLx8yPBJLpC7QLei+mzBM
+	S1TO/Gmn+hILKUbYnV38/JkP+/PzlU1H7sdqUK7dmjAJT6DxMxxTRWHydKLGeroTAXic
+	uy691t0BtWnLRzSrrTZAsAZHdsk/IF/qVTZn/CD/qYDc6+1fZlPV9HughkQY1YYmoYjI
+	b9sQ==
+X-Gm-Message-State: AJaThX7EyBZVnFfw2seAZloSu5qslmOwsi7sjSndqs/t1G8DiNRsgvfQ
+	+y3xnOUIelZvE0RiVdhL17RxAKKYr/rWl/iTt2FxTw==
+X-Received: by 10.202.114.22 with SMTP id p22mr15855832oic.327.1511450369172; 
+	Thu, 23 Nov 2017 07:19:29 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.157.63.74 with HTTP; Thu, 23 Nov 2017 07:19:08 -0800 (PST)
 In-Reply-To: <1511448975-28326-1-git-send-email-eric.auger@redhat.com>
 References: <1511448975-28326-1-git-send-email-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Thu, 23 Nov 2017 14:56:35 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v3 1/4] hw/intc/arm_gicv3_its: Don't call post_load
- on reset
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 23 Nov 2017 15:19:08 +0000
+Message-ID: <CAFEAcA8T4cShPYONdo8hiaZKvd+zq9Uo1o5awU3rA03uu8Vsiw@mail.gmail.com>
+To: Eric Auger <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::242
+Subject: Re: [Qemu-arm] [RFC v3 0/4] vITS Reset
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -88,52 +102,38 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: drjones@redhat.com, vijay.kilari@gmail.com, quintela@redhat.com,
-	dgilbert@redhat.com, wu.wubin@huawei.com, christoffer.dall@linaro.org
+Cc: Andrew Jones <drjones@redhat.com>, Vijay Kilari <vijay.kilari@gmail.com>,
+	Juan Quintela <quintela@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>, wu.wubin@huawei.com,
+	wanghaibin.wang@huawei.com, Christoffer Dall <christoffer.dall@linaro.org>,
+	eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PIYNPVdlWINb
+X-TUID: QkX2hNBOESYH
 
-From the very beginning, post_load() was called from common
-reset. This is not standard and obliged to discriminate the
-reset case from the restore case using the iidr value.
+On 23 November 2017 at 14:56, Eric Auger <eric.auger@redhat.com> wrote:
+> At the moment the ITS is not properly reset. On System reset or
+> reboot, previous ITS register values and caches are left
+> unchanged. Some of the registers might point to some guest RAM
+> tables which are not valid anymore. This leads to state
+> inconsistencies that are detected by the kernel save/restore
+> code. And eventually this may cause qemu abort.
+>
+> This series adds vITS reset modality:
+> - the 2 first patches bring a minimalist reset through individual
+>   register writes. However, with kernel versions < 4.15, this reset
+>   is not complete (vITS caches are not voided).
+> - With kernel versions >= 4.15 we can rely on a new ITS KVM device
+>   reset IOTCL. The last 2 patches introduce the full reset.
+>
+> Patches 1-2 have all kernel dependencies resolved.
+> Patches 3-4' dependencies were pulled for v4.15-rc0 but as the tag is
+> not set, the kernel header update still is partial.
 
-Let's get rid of that call.
+We don't need the change to be tagged for us to sync with the
+kernel headers: if it's in mainline that's good enough.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- hw/intc/arm_gicv3_its_common.c | 2 --
- hw/intc/arm_gicv3_its_kvm.c    | 4 ----
- 2 files changed, 6 deletions(-)
-
-diff --git a/hw/intc/arm_gicv3_its_common.c b/hw/intc/arm_gicv3_its_common.c
-index f2cce59..2bd2f0f 100644
---- a/hw/intc/arm_gicv3_its_common.c
-+++ b/hw/intc/arm_gicv3_its_common.c
-@@ -131,8 +131,6 @@ static void gicv3_its_common_reset(DeviceState *dev)
-     s->creadr = 0;
-     s->iidr = 0;
-     memset(&s->baser, 0, sizeof(s->baser));
--
--    gicv3_its_post_load(s, 0);
- }
- 
- static void gicv3_its_common_class_init(ObjectClass *klass, void *data)
-diff --git a/hw/intc/arm_gicv3_its_kvm.c b/hw/intc/arm_gicv3_its_kvm.c
-index 6fb45df..b1b322b 100644
---- a/hw/intc/arm_gicv3_its_kvm.c
-+++ b/hw/intc/arm_gicv3_its_kvm.c
-@@ -155,10 +155,6 @@ static void kvm_arm_its_post_load(GICv3ITSState *s)
- {
-     int i;
- 
--    if (!s->iidr) {
--        return;
--    }
--
-     kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_ITS_REGS,
-                       GITS_IIDR, &s->iidr, true, &error_abort);
- 
--- 
-2.5.5
-
+thanks
+-- PMM

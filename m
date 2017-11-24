@@ -1,168 +1,132 @@
-Received: by 10.223.172.38 with SMTP id v35csp739472wrc;
-        Thu, 7 Sep 2017 14:45:01 -0700 (PDT)
-X-Received: by 10.55.104.140 with SMTP id d134mr1064092qkc.133.1504820701428;
-        Thu, 07 Sep 2017 14:45:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504820701; cv=none;
+Received: by 10.223.159.82 with SMTP id f18csp2226430wrg;
+        Fri, 24 Nov 2017 07:15:31 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMasdqkVTbWxyO5FYR2n/HQSozdkzt5dVkAbzmHFKSyQiH7CP1pVAo2JyPK4yET5ZHfIUhQR
+X-Received: by 10.37.126.7 with SMTP id z7mr18346832ybc.250.1511536531317;
+        Fri, 24 Nov 2017 07:15:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1511536531; cv=none;
         d=google.com; s=arc-20160816;
-        b=vDgqSI/VesAMTnA0uWR946qnpgiDS1OLVAMhMrudi96bgbBeRSi/hZHfrLvadvcvtF
-         BQPpHcoLcKbzQymHOm4rFLTdklpxzt0oUg1EIhvyvqYKcwuKQ2DhLtDrXKzyt99rYNHD
-         WHZNYZPvNu7pa9hA0EaGGCIRGIv6zRYD2+RNgyOLbcSdGYpqh+Mi3DTPAhDq8vrCSIFi
-         NwwmowPLwrio5asM45fM4tiiVJmWtINIou1+m45ELxqkbV1RBNaFm5QU7H+vF9PItSk7
-         s1EWDxfBpLcjUhS/tmSUdBCX9coWabj2wVJoWOM2ahqEXk9YTu3tI1ibhnDtJalrpagW
-         z0Ig==
+        b=BnzvKeoJ/EwwJLPCRbjrUjrQmICqK7qK40/OSqBjyygZPR22KnOLjCCEEcGI1/IrDm
+         m6m+Is9aOQUDExbj/PjgddWBZZoJVmzsSCzxrtonjeTiPtkibAcUwn5elEjG2BLTOXAn
+         tiymMF7zRHoiwVyGBC+UcQ91vZn955usSZxOz418IEo905Im9mSiL5qy/AdiCbciZr+s
+         iVdoHykTsoetfBoDVFFSAGf6GBipY7rwUBaiVhlTCR3h7U3GY39YJqd6skDj9tEg/wfI
+         89y2zRbM1WoYdnWZpeI4EEYzyRQNHheoh7dQJLyah25FNUlxRy6B/zqnViwe0uCH5kQq
+         pgSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=xCJqrr6/1VaWM2NBC22dc5FghfhMh19anwrDY0Mgf9A=;
-        b=FNLo22z2FMRwebSI41aNhyrMoFmlI4AfdzFUFbUmoM465nsx7bbzYzJtt9ZOq+e4ys
-         6cGEQK7/AitPCK2fZ7v70yRRbVAiwkZXy1ESgkAhG8uOxc3L1k1fQKe5PoC5jKktIaOk
-         Mo1iHPJZwtFx52MoUOb9C/HE4VeaVEB4ravX9kIWacW/oAcmU2/+Sx/3YZB7+ZcBcBpn
-         F3646o6Pt7m0bKKCSGdmmPDjHoxsYOjuFemCX7sMIfcBLM+7g1xrb+HDp9G/e/qtF2KS
-         PHjvODNUEmy1vH6g0SgjXSvnjB3WI2TvN0MU+WjFirRfTW94NYcfR2GjzEbiNxxWm3xx
-         T6/g==
+        bh=cZpR5Z6UOv9HXykEu2lbwKJEibxOmoJ2FnDR/C59HXU=;
+        b=ptQBBo6pdEGlO+fyYoI8JA271aqvwy0vxATe3jjODuz7wDotHzHSPGvxAKYxGVXdbR
+         YaVKC0FEIh46/SaEACE2NiAkcYMO6uAC+Upy+ymBxGQV0AVXLbSiuVMkJL3GRNu3HK37
+         1TZCsadl/vR8GsSY4leamYkYqk2G4S5hor5RH+cX8EYPnApC8jEY9OTctnatnvPa0Not
+         9yDMDO5Do+LH8gZcMRirlMJBZ4MunAJtSMDGZcRLVcE7PAlnzATn6q7gFgUZBTORBNt2
+         F/+IEk8KWPJV/P5cu1QLxZi1X352c3xRaLZL5CJZke6RLb95eqhP279+cMkN60qfnUFS
+         YV8w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eplhcqyP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=O0/5Rrdj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f38si367919qta.372.2017.09.07.14.45.01
+        by mx.google.com with ESMTPS id e203si4746052ywe.583.2017.11.24.07.15.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 07 Sep 2017 14:45:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 24 Nov 2017 07:15:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eplhcqyP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:42378 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=O0/5Rrdj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49771 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dq4bb-00067b-B5
-	for alex.bennee@linaro.org; Thu, 07 Sep 2017 17:44:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55249)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eIFhS-00036J-Or
+	for alex.bennee@linaro.org; Fri, 24 Nov 2017 10:15:30 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43421)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dq4bR-00061Y-Sv
-	for qemu-arm@nongnu.org; Thu, 07 Sep 2017 17:44:54 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1eIFg7-0002Tg-Us
+	for qemu-devel@nongnu.org; Fri, 24 Nov 2017 10:14:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dq4bN-0000Ps-3b
-	for qemu-arm@nongnu.org; Thu, 07 Sep 2017 17:44:49 -0400
-Received: from mail-wr0-x241.google.com ([2a00:1450:400c:c0c::241]:34986)
+	(envelope-from <peter.maydell@linaro.org>) id 1eIFg7-0008VT-5m
+	for qemu-devel@nongnu.org; Fri, 24 Nov 2017 10:14:07 -0500
+Received: from mail-oi0-x231.google.com ([2607:f8b0:4003:c06::231]:33230)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1dq4bD-0000D3-5Z; Thu, 07 Sep 2017 17:44:35 -0400
-Received: by mail-wr0-x241.google.com with SMTP id n64so416494wrb.2;
-	Thu, 07 Sep 2017 14:44:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc;
-	bh=xCJqrr6/1VaWM2NBC22dc5FghfhMh19anwrDY0Mgf9A=;
-	b=eplhcqyPFLd8DrKNrI4WoY3Erlg/1zZWiG/Jkq1z1RYRuTxu/kx9jc4BsazAeEXEqr
-	U2fY28q1UAMQlwt67oEcEFG/DiI7LxnaC3o3kND/NnY1mwsrmVJbV3r+BfKWDPNfnPG2
-	JzGALW1a3CTlcE3dqBbhf2p1M98qy97m5dsxnrdg/x9fLNr0mgCdMHDQwMidODSU170c
-	CaRlarqiImLRsDidF9i94ECev6s/lsvNJsOUxcvTkbiD7QyHYKMFVmjTFNjkrkFIU9h7
-	LFAZdwSK09aoRskptoio27l0lwjsabq8dobPQLJeAHugXSoORAkfWSODSyba2ZtsykuA
-	Wvvw==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1eIFg7-0008Uz-1h
+	for qemu-devel@nongnu.org; Fri, 24 Nov 2017 10:14:07 -0500
+Received: by mail-oi0-x231.google.com with SMTP id f135so15276432oib.0
+	for <qemu-devel@nongnu.org>; Fri, 24 Nov 2017 07:14:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=cZpR5Z6UOv9HXykEu2lbwKJEibxOmoJ2FnDR/C59HXU=;
+	b=O0/5RrdjhztK3z2Z8NpYgJs7SY/8nipEvKyDDxA0dfzzseWneo9GnxL4q2UE104Dhc
+	AgNTabTrFcI9Z94vTOIYS8fdpsaaumF2H61+WHBLOl/dup+TnQ+etYPcKs481TcZm4QH
+	njY+SzDXeJfnI1+hOGpqIkMkVfTkKBa3yZJm0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc;
-	bh=xCJqrr6/1VaWM2NBC22dc5FghfhMh19anwrDY0Mgf9A=;
-	b=SKV9frRKNYujPrEjfqDbTN2JJq7Cqi80kro6nvTY2jHqwpeqRfK2DB+7A7XIzG8K5Z
-	apXiiRRwZLSW7AQb1TZPujx1itGcLcoU0Jq9M8N1OsDjoGeA4hHCqvCjmn+hqsq6xJXB
-	nDOY3TWRo0QOD6mU4XlT9XiwA5Sf+jOxZQZqhRUVsmh3FhDYAb3YXG245VjAOUWa4vos
-	sXYyMXEDOscjdnZvtkKN2o7oy/wE1o3dkwTkcqm3gQojBhInm4dz4Z9z6DuIQl+9r9Tv
-	gXCe3lSloBj3yOECdPqq8jvJbXcG8p0yUUEQ2trgKYw0WUFuIbXWmmr5f17rG6GgZNco
-	XXBw==
-X-Gm-Message-State: AHPjjUhSZroI7ecg93DnZZ26N/e3hq8rszqIM4wBxEzrJzpcCpJ8xswf
-	x7VDZPqey4Xs7+O/If5JtdZ71qaD+g==
-X-Google-Smtp-Source: ADKCNb6VIfROp6SdlwCKZ7oV5bU3PW+Qb3ydKKQ8LuebaQWRBJK74wCk3U3RVN2vhZenxgVjHA+nktmGHXqFFow0zrE=
-X-Received: by 10.223.163.83 with SMTP id d19mr421921wrb.84.1504820672616;
-	Thu, 07 Sep 2017 14:44:32 -0700 (PDT)
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=cZpR5Z6UOv9HXykEu2lbwKJEibxOmoJ2FnDR/C59HXU=;
+	b=NHSeDI3tfCM445MpV+zq6W3iuevgMgvCvYYBFjaRJkTk8JO3C/0iKsZ4FIeFYGr15V
+	d3ZuB6lYTuY1ehU4zbVURB3wpTaEqMO+kX1Qpd223ZH+v9Zu7i/w5P/QtzVqEeKjFXhb
+	8hTMTZkKMMWPgHpbGdAvstk+S6KVCO4I4gyUfEpWaMLEDuGhYQboB/qz6mGOapWFu2Wh
+	k8J1wMl5cx5y3YBGHL/iWu1M3F06xDQ2repxJFFMWB+YcFCSSVVBl2b44VRxdAtUQ3G4
+	2zY+gtGWhWVOcasxfYfCdWATsAEXu/dmnxZyUj7bHsl2wUg1vV1WhuW+8/aog+F7ZjZt
+	8HIQ==
+X-Gm-Message-State: AJaThX73DZBLYqD6PNYfz0Qpq/HOkreF1TAIOmjqB+K2kJeNzg2fKC0b
+	3aA56jq9GHhuhjmASVWwS85Ma2HZOyJYFaBp1uGFPw==
+X-Received: by 10.202.199.134 with SMTP id x128mr19114312oif.63.1511536446452; 
+	Fri, 24 Nov 2017 07:14:06 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.28.191.130 with HTTP; Thu, 7 Sep 2017 14:44:01 -0700 (PDT)
-In-Reply-To: <20170907213525.GJ5763@toto>
-References: <cover.1504222314.git.alistair.francis@xilinx.com>
-	<20170907213525.GJ5763@toto>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Thu, 7 Sep 2017 14:44:01 -0700
-X-Google-Sender-Auth: njvul4M5fH2VhK_RCwiQ9vd9KXM
-Message-ID: <CAKmqyKNrbdGJ2n=HHeUfJOq-EUmwbY_330DGL+BD++BtrSwnxA@mail.gmail.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+Received: by 10.157.63.74 with HTTP; Fri, 24 Nov 2017 07:13:46 -0800 (PST)
+In-Reply-To: <20a7f496-5f85-f3c9-646e-aab32bdfad0f@redhat.com>
+References: <1511516626-21178-1-git-send-email-eric.auger@redhat.com>
+	<CAFEAcA-Fjpg+KC4eUzupLFf7fAco2GDmZG8nWNqSARnn9vypxA@mail.gmail.com>
+	<20a7f496-5f85-f3c9-646e-aab32bdfad0f@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 24 Nov 2017 15:13:46 +0000
+Message-ID: <CAFEAcA_4GcxNkWzZ=P1znV9Vv+ssnUo0hO9dqUHaKqkWLP6naA@mail.gmail.com>
+To: Auger Eric <eric.auger@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::241
-Subject: Re: [Qemu-arm] [PATCH Resend v2 0/5] Expose the secure and virt
- properties to the
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4003:c06::231
+Subject: Re: [Qemu-devel] [PATCH for 2.11] hw/arm/virt: Add 2.11 machine type
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sRA7mBH8UOQJ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>, eric.auger.pro@gmail.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: FYruiCkbcZeH
 
-On Thu, Sep 7, 2017 at 2:35 PM, Edgar E. Iglesias
-<edgar.iglesias@xilinx.com> wrote:
-> On Thu, Sep 07, 2017 at 08:56:55AM -0700, Alistair Francis wrote:
->>
->> The EL2 and EL3 work is working well now and interanlly we now have
->> tests that expect to start in EL3 and transition through EL2 to EL1. To
->> make this easy to run let's expose the secure property to the machine
->> and also add a virt property that can enable EL2.
->>
->> This series also does some machine/name tidying up and makes the first
->> move to deprecating the EP108 machine, which was just an early access
->> development board.
->>
->> V2:
->>  - Add a virt option for setting EL2
+On 24 November 2017 at 10:16, Auger Eric <eric.auger@redhat.com> wrote:
+> Hi Peter,
 >
+> On 24/11/17 11:11, Peter Maydell wrote:
+>> On 24 November 2017 at 09:43, Eric Auger <eric.auger@redhat.com> wrote:
+>>> Add virt-2.11 machine type.
+>>>
+>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>>
+>>> ---
+>>
+>> Argh, did we forget this again?
 >
-> Thanks Alistair!
-> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> Yes we did, please apologize for that.
 
-Thanks Edgar.
+Sorry :-)
 
-@Peter I updated the patches on the git branch I pasted earlier to
-include Edgar's review.
+I've now applied this to master.
 
-Thanks,
-Alistair
-
->
->
->
->>
->>
->>
->> Alistair Francis (5):
->>   xlnx-ep108: Rename to ZCU102
->>   xlnx-zcu102: Manually create the machines
->>   xlnx-zcu102: Add a machine level secure property
->>   xlnx-zcu102: Add a machine level virtualization property
->>   xlnx-zcu102: Mark the EP108 machine as deprecated
->>
->>  hw/arm/Makefile.objs         |   2 +-
->>  hw/arm/xlnx-ep108.c          | 137 -----------------------
->>  hw/arm/xlnx-zcu102.c         | 257 +++++++++++++++++++++++++++++++++++++++++++
->>  hw/arm/xlnx-zynqmp.c         |   3 +-
->>  include/hw/arm/xlnx-zynqmp.h |   2 +
->>  5 files changed, 262 insertions(+), 139 deletions(-)
->>  delete mode 100644 hw/arm/xlnx-ep108.c
->>  create mode 100644 hw/arm/xlnx-zcu102.c
->>
->> --
->> 2.11.0
->>
+-- PMM

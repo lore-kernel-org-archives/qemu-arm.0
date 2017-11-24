@@ -1,98 +1,97 @@
-Received: by 10.223.159.82 with SMTP id f18csp2106999wrg;
-        Fri, 24 Nov 2017 05:35:33 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMaonoht45RLg9ujRWQWA42zqNEHOxW5/5FdtSXRM7oUYEcYxdSxpMupoXE9hXWAc9gqRus1
-X-Received: by 10.37.82.212 with SMTP id g203mr14179334ybb.346.1511530533128;
-        Fri, 24 Nov 2017 05:35:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1511530533; cv=none;
+Received: by 10.223.159.82 with SMTP id f18csp2111287wrg;
+        Fri, 24 Nov 2017 05:39:23 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMbuKvrZ5wrSRPPhpdceRn6TZH9hdGAQ/8/1g54Tsp1rMmPryQN69VIyMiCKtj1nx28p+Uhk
+X-Received: by 10.129.86.214 with SMTP id k205mr11874863ywb.478.1511530763722;
+        Fri, 24 Nov 2017 05:39:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1511530763; cv=none;
         d=google.com; s=arc-20160816;
-        b=N08qReLxVUwexvB0ddYaQ/or1dhPsOeQYrf2eyF783l7a4jIDK1O51XsfeNvL2YrkC
-         SKUOooh/l2cPnlvhXcFkfrDmATTcgZ/nsmTpfEQwZ5er0w98/93/5SM6kPjpa6ngMqL/
-         CK347IuLP8FLO4ZUu0j+f/wN1oWneXBny5xUtVVXF+HvkOkqNSXR5J9qC3MVcUZcD4HZ
-         p1HsrbjXq1wW1nAmiABrUSFF9M5tg1DTEvAALB7BDj1iY0s3oU+VI9suVC+5JgX/khrL
-         gTvJpYMNT74/sTXkEm+FsZFtoG9GP2wrUqNNQuGjf3NuRxzbXFgUkcZv0Upq1EwLCapO
-         BI1w==
+        b=fC3fw2UL5KSn844xBdohwOJTFqL3SB4l/pRJHFbN7jxdj4jS3s0ecVD7szT5eBtAJr
+         qcb5AzdPJkkp7C8M1C8ETT1RjEt/hloSm8yWpYnIgV66MaYrNO8CTYDvCRPapGsZXoPV
+         hSaJ/RXM5CHig17z/FzoNmtbifGUmhSeoK+l8HUiuQWMBRWRk6XFma1Zv/8AIoaNUS12
+         hvN8+6JZAPOR9ZK0Up9bciBKeNI4QY9aEkrF39mLLRFyKnpUPSYTsGGpOm7hH7K3Ezq6
+         uocOivyBURAn+wtNAHeVImAwkW2Q96oZUQNd3p0+CjQT4Lzd7DGUTXMFm8madBRYoMEt
+         8uGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=in/R0X8KcXT+El13hz5w07MFaP6H5BbNR732SvJ088c=;
-        b=sCzKISauirQjx7neCjIxTDYU3AjTEE7RfOaJCLejRXVaofquPDvz7Q5cr2vpe0+Bme
-         Sznr0nQ+P3kad++tWVg2jE2VeUj6oCSVQsp3gupkVB5C/LP/4D6Vr7jhWXENIXKERGwY
-         E2LoFg7KkZ+B1WpXp3lzCrUJwIZ6qRHYzSjruUVkXDMIttYcbdpCefB/Uwqf4V8UTKx9
-         l2rvGYQAqwOzCpxBUyUunuS6D5e9CKlV9/2EPSBaeNfXVbjzrNKR7YIEdieZfEL3aRii
-         zjN9FoXKSVTqk1HSRSdchuYmk/NpQtEBVqy4SCGpoUqwFFrR3q/4wCeclpjojzUslxvM
-         pvDA==
+        bh=nr0fCyK5XoXJIyQmpfggr+kvGmq1kw2M8K5bAZGEhUY=;
+        b=y3b/XsjmjdKv1yzS8aFq24F0yN8na34RZgqMQ2Ub2Vnn989bUvTGgLHGT9gAgA4TSu
+         CntU7qUKPS/BDybtpZjZC9MfjORh6MYieSK6rK2UKo33a2LhnyNaSZxE+bunPwQiLZt0
+         wfQkw1E8t5HDHFUILiyRyh2yACQUA8M+iN6MjDPlpxNifJq+10sQtzbrxaeRetceZKWr
+         7R44f3L2E+BJvXSMRtWFaFELiZrgWjPhh0iHm0MyQQaCKpqu3msMFIW28LwkLQ/fJwHS
+         RJ1j4CH4EHQxMg6A0CWrK/VFNziNH9ri4bq+A4rFOc1DPZeahipY3/KzQkGaVwTSiYq7
+         diBg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=byurMTaI;
+       dkim=fail header.i=@linaro.org header.s=google header.b=kIwqGS+2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i14si4687871ybh.804.2017.11.24.05.35.32
+        by mx.google.com with ESMTPS id f11si2336254ywa.339.2017.11.24.05.39.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 24 Nov 2017 05:35:33 -0800 (PST)
+        Fri, 24 Nov 2017 05:39:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=byurMTaI;
+       dkim=fail header.i=@linaro.org header.s=google header.b=kIwqGS+2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49305 helo=lists.gnu.org)
+Received: from localhost ([::1]:49327 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eIE8i-0005G2-Jd
-	for alex.bennee@linaro.org; Fri, 24 Nov 2017 08:35:32 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46508)
+	id 1eIECR-0007lA-2j
+	for alex.bennee@linaro.org; Fri, 24 Nov 2017 08:39:23 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47763)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eIE8R-00057d-3n
-	for qemu-arm@nongnu.org; Fri, 24 Nov 2017 08:35:20 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1eIEC6-0007kh-9v
+	for qemu-arm@nongnu.org; Fri, 24 Nov 2017 08:39:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eIE8P-0005Wc-QR
-	for qemu-arm@nongnu.org; Fri, 24 Nov 2017 08:35:14 -0500
-Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:42620)
+	(envelope-from <peter.maydell@linaro.org>) id 1eIEC5-0008J1-7U
+	for qemu-arm@nongnu.org; Fri, 24 Nov 2017 08:39:02 -0500
+Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:34464)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eIE8P-0005Vf-M2
-	for qemu-arm@nongnu.org; Fri, 24 Nov 2017 08:35:13 -0500
-Received: by mail-ot0-x244.google.com with SMTP id 18so18798164oty.9
-	for <qemu-arm@nongnu.org>; Fri, 24 Nov 2017 05:35:13 -0800 (PST)
+	id 1eIEC5-0008Ir-2R
+	for qemu-arm@nongnu.org; Fri, 24 Nov 2017 08:39:01 -0500
+Received: by mail-oi0-x244.google.com with SMTP id a75so15104826oib.1
+	for <qemu-arm@nongnu.org>; Fri, 24 Nov 2017 05:39:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=in/R0X8KcXT+El13hz5w07MFaP6H5BbNR732SvJ088c=;
-	b=byurMTaInq4qB+FnP3F5kGO7BPqpVOzA9Q1NV6Om44UGlpAAe2WobdrLMqXKTcxqPd
-	ab8FETUg5z2JfjDUks1e6n9PgjzvWVTW1UVBlTeQu6HK6+dTNGgLi6nH/LMB1WjxpXur
-	c43XibE3rWZ8rptVPbRo6ROvBJ7gmlerr/MXE=
+	:cc; bh=nr0fCyK5XoXJIyQmpfggr+kvGmq1kw2M8K5bAZGEhUY=;
+	b=kIwqGS+2vSpAiJbPThkc90JNYAzr7TqRSGZRa/eG22RhSa72ssUqQzhn5/bfKfaIXc
+	xDTRjZit9ubA1480632kcmCwsLWd0+zd3sEkmfLuCyF7gW4paDI2wOWPjaGjkwYVgrlY
+	zTkL0OOSCPhrOC2cXiQ5FubnFhOMECpoRV6zI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=in/R0X8KcXT+El13hz5w07MFaP6H5BbNR732SvJ088c=;
-	b=YcsjXqNSItGhIn1VdZhnb/qbyJJmpHV+FUz+grYV+aqKBg3iCbDMkCq1tKTzN+R+nj
-	Rq5fa9NDv3mwv4y7vk3KMaS8ObuA1BOc28XS3nz+eoapRj2s2KSvgczIKEPdVHsiIh+b
-	Jzsykz69fzRbIt39Rh1CGmGINFcTCskT3GaC5wWygPghma2ZUIRgBy4X87fJsnYl5vU8
-	cZN4g1lw3RP4JQ/bzVLSuG2wQpJcvKmyp18dYStwOtgy3mEWS59JKyvy59wmr9tziEUQ
-	r3y7EAn1Bb3G+IKuuF8p8///5E/Uj59dSTSkH7iLx5fOR8MoaT+EAStEosiRCM28bFMS
-	FCbQ==
-X-Gm-Message-State: AJaThX5wOY3xg3y5bN4QGTTDqGAcOd4NfMPdru2853uUbHoqbf1/6WaL
-	sAhLfPZJWZYS+fIGZPVCpQlYj45j/31d+Ik9L3kPzQ==
-X-Received: by 10.157.37.173 with SMTP id q42mr18811064ota.116.1511530512708; 
-	Fri, 24 Nov 2017 05:35:12 -0800 (PST)
+	bh=nr0fCyK5XoXJIyQmpfggr+kvGmq1kw2M8K5bAZGEhUY=;
+	b=o8T8wDIuwxL8jmkHhUvYR/icrFFERaVoxLl/VZgemjx5PHSO9lBlNU8NA1sZ6ntSwX
+	DIeR8tgeZ7A9QH+Serjd9KMQ0Ds/TjdWI1Ga25VZF9kwKusUqy830+y/rIcyABAYyr7H
+	F8fRQylruFE24om7zWJH23D6MbCz8AlqxuUWjGUt0RL4FDONhH5yfi9NEIB/b+HLDzkY
+	dUmqDPvJlg2mIH+uuB2CLSUiGjH6axMo7tTIxUrBAexgbdjQAzXvBjpnzTe2A9pKtQoc
+	l4AzQN5wYDtMllaLlbFvGQieQtlMHl/OnRPPOTxO5Nn1I9yYiRFLlNOQrnI7KAQ6h6NM
+	2Ubg==
+X-Gm-Message-State: AJaThX7QJvBthlBVf3W5OIgMpokKqmeJymVmQM5NKimw9ojvSC62ynd0
+	rMD+qZtlMFcKoa7W4FUNDsPzXylKbeF+2sAP8oc/8g==
+X-Received: by 10.202.83.22 with SMTP id h22mr8722975oib.8.1511530740172; Fri,
+	24 Nov 2017 05:39:00 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.157.63.74 with HTTP; Fri, 24 Nov 2017 05:34:52 -0800 (PST)
-In-Reply-To: <1511530238-18318-3-git-send-email-eric.auger@redhat.com>
+Received: by 10.157.63.74 with HTTP; Fri, 24 Nov 2017 05:38:39 -0800 (PST)
+In-Reply-To: <1511530238-18318-4-git-send-email-eric.auger@redhat.com>
 References: <1511530238-18318-1-git-send-email-eric.auger@redhat.com>
-	<1511530238-18318-3-git-send-email-eric.auger@redhat.com>
+	<1511530238-18318-4-git-send-email-eric.auger@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 24 Nov 2017 13:34:52 +0000
-Message-ID: <CAFEAcA-7s8D1mts4LG81DoRM6x-wwT3mOPTcZJJ+EKi72tCjJw@mail.gmail.com>
+Date: Fri, 24 Nov 2017 13:38:39 +0000
+Message-ID: <CAFEAcA-ro5AkFt-eAhDX+AhDv5HDs6oezS9UYuT+jsMy5jYMWw@mail.gmail.com>
 To: Eric Auger <eric.auger@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::244
-Subject: Re: [Qemu-arm] [PATCH v4 2/4] hw/intc/arm_gicv3_its: Implement a
- minimalist reset
+X-Received-From: 2607:f8b0:4003:c06::244
+Subject: Re: [Qemu-arm] [PATCH v4 3/4] linux-headers: update to pre 4.15-rc0
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -113,66 +112,66 @@ Cc: Andrew Jones <drjones@redhat.com>, Vijay Kilari <vijay.kilari@gmail.com>,
 	eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SuhEv1kY+kxF
+X-TUID: Ugw5XpAo2fUL
 
 On 24 November 2017 at 13:30, Eric Auger <eric.auger@redhat.com> wrote:
-> At the moment the ITS is not properly reset and this causes
-> various bugs on save/restore. We implement a minimalist reset
-> through individual register writes but for kernel versions
-> before v4.15 this fails voiding the vITS cache. We cannot
-> claim we have a comprehensive reset (hence the error message)
-> but that's better than nothing.
+> Update headers against post v4.14 and pre v4.15-rc0.
 >
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
->
 > ---
->
-> v2 -> v3:
-> - individual register writes performed in kvm_arm_its_reset
-> - check KVM_DEV_ARM_VGIC_GRP_ITS_REGS support
-> ---
->  hw/intc/arm_gicv3_its_kvm.c | 41 +++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 41 insertions(+)
->
-> diff --git a/hw/intc/arm_gicv3_its_kvm.c b/hw/intc/arm_gicv3_its_kvm.c
-> index b1b322b..83e5268 100644
-> --- a/hw/intc/arm_gicv3_its_kvm.c
-> +++ b/hw/intc/arm_gicv3_its_kvm.c
-> @@ -28,6 +28,16 @@
->
->  #define TYPE_KVM_ARM_ITS "arm-its-kvm"
->  #define KVM_ARM_ITS(obj) OBJECT_CHECK(GICv3ITSState, (obj), TYPE_KVM_ARM_ITS)
-> +#define KVM_ARM_ITS_CLASS(klass) \
-> +     OBJECT_CLASS_CHECK(KVMARMITSClass, (klass), TYPE_KVM_ARM_ITS)
-> +#define KVM_ARM_ITS_GET_CLASS(obj) \
-> +     OBJECT_GET_CLASS(KVMARMITSClass, (obj), TYPE_KVM_ARM_ITS)
-> +
-> +typedef struct KVMARMITSClass {
-> +    GICv3ITSCommonClass parent_class;
-> +    void (*parent_reset)(DeviceState *dev);
-> +} KVMARMITSClass;
-> +
->
->  static int kvm_its_send_msi(GICv3ITSState *s, uint32_t value, uint16_t devid)
->  {
-> @@ -186,6 +196,34 @@ static void kvm_arm_its_post_load(GICv3ITSState *s)
->                        GITS_CTLR, &s->ctlr, true, &error_abort);
->  }
->
-> +static void kvm_arm_its_reset(DeviceState *dev)
-> +{
-> +    GICv3ITSState *s = ARM_GICV3_ITS_COMMON(dev);
-> +    KVMARMITSClass *c = KVM_ARM_ITS_GET_CLASS(s);
-> +    int i;
-> +
-> +    c->parent_reset(dev);
-> +
-> +    error_report("ITS KVM: full reset is not supported by the host kernel");
+>  include/standard-headers/asm-s390/virtio-ccw.h     |   1 +
+>  include/standard-headers/asm-x86/hyperv.h          | 394 +--------------------
+>  include/standard-headers/linux/input-event-codes.h |   2 +
+>  include/standard-headers/linux/input.h             |   1 +
+>  include/standard-headers/linux/pci_regs.h          |  45 ++-
+>  linux-headers/asm-arm/kvm.h                        |   8 +
+>  linux-headers/asm-arm/kvm_para.h                   |   1 +
+>  linux-headers/asm-arm/unistd.h                     |   2 +
+>  linux-headers/asm-arm64/kvm.h                      |   8 +
+>  linux-headers/asm-arm64/unistd.h                   |   1 +
+>  linux-headers/asm-powerpc/epapr_hcalls.h           |   1 +
+>  linux-headers/asm-powerpc/kvm.h                    |   1 +
+>  linux-headers/asm-powerpc/kvm_para.h               |   1 +
+>  linux-headers/asm-powerpc/unistd.h                 |   1 +
+>  linux-headers/asm-s390/kvm.h                       |   1 +
+>  linux-headers/asm-s390/kvm_para.h                  |   1 +
+>  linux-headers/asm-s390/unistd.h                    |   4 +-
+>  linux-headers/asm-x86/kvm.h                        |   1 +
+>  linux-headers/asm-x86/kvm_para.h                   |   2 +-
+>  linux-headers/asm-x86/unistd.h                     |   1 +
+>  linux-headers/linux/kvm.h                          |   2 +
+>  linux-headers/linux/kvm_para.h                     |   1 +
+>  linux-headers/linux/psci.h                         |   1 +
+>  linux-headers/linux/userfaultfd.h                  |   1 +
+>  linux-headers/linux/vfio.h                         |   1 +
+>  linux-headers/linux/vfio_ccw.h                     |   1 +
+>  linux-headers/linux/vhost.h                        |   1 +
 
-This message claims that we have a problem because of the host
-kernel version, but I can't see where we do the check on the
-host kernel that lets us avoid the error message when it's
-new enough ?
+> --- a/include/standard-headers/asm-x86/hyperv.h
+> +++ b/include/standard-headers/asm-x86/hyperv.h
+> @@ -1,393 +1 @@
+> -#ifndef _ASM_X86_HYPERV_H
+> -#define _ASM_X86_HYPERV_H
+> -
+> -#include "standard-headers/linux/types.h"
+> -
+> -/*
+> - * The below CPUID leaves are present if VersionAndFeatures.HypervisorPresent
+> - * is set by CPUID(HvCpuIdFunctionVersionAndFeatures).
+> - */
+> -#define HYPERV_CPUID_VENDOR_AND_MAX_FUNCTIONS  0x40000000
+> -#define HYPERV_CPUID_INTERFACE                 0x40000001
+> -#define HYPERV_CPUID_VERSION                   0x40000002
+> -#define HYPERV_CPUID_FEATURES                  0x40000003
+> -#define HYPERV_CPUID_ENLIGHTMENT_INFO          0x40000004
+> -#define HYPERV_CPUID_IMPLEMENT_LIMITS          0x40000005
+> -
+> -#define HYPERV_HYPERVISOR_PRESENT_BIT          0x80000000
+> -#define HYPERV_CPUID_MIN                       0x40000005
+> -#define HYPERV_CPUID_MAX                       0x4000ffff
+
+Did you test building on x86 host? It's hard to see how the
+code in QEMU that uses these HYPERV #defines will still compile.
 
 thanks
 -- PMM

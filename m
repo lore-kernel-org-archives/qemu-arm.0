@@ -1,98 +1,88 @@
-Received: by 10.223.159.82 with SMTP id f18csp2113919wrg;
-        Fri, 24 Nov 2017 05:41:48 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMaGZHFmeqDC+8h5Jo0+Lk6/25FORWFE0o5s/Up9D7WStiBb12ELXuS4jeBqZFzwrw3nP3Ro
-X-Received: by 10.37.86.10 with SMTP id k10mr14272266ybb.65.1511530908594;
-        Fri, 24 Nov 2017 05:41:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1511530908; cv=none;
+Received: by 10.223.159.82 with SMTP id f18csp2123997wrg;
+        Fri, 24 Nov 2017 05:50:58 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMaDE+ATOGza7lzp8MzNna9lFwBxMry4h70MTnoP6xH8KzlvSczqnA2X912r2D5t3W3joI1C
+X-Received: by 10.37.73.194 with SMTP id w185mr17292627yba.461.1511531458666;
+        Fri, 24 Nov 2017 05:50:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1511531458; cv=none;
         d=google.com; s=arc-20160816;
-        b=cHuyfedeCNgY7jzBhqnd/zRkMDXc46uWs1rbeATZUx8nbOnV+TryBhAlPlSexesymW
-         cfZfaNinHWxAB5VP2i8hBSUwkf7/+oNpfXFMCX+mtczn5z5UyFchd8n1ArXdjTgz9KKY
-         JmIsw4Piy24DqsajpquHVhxm+Uw5S5JDSxU+Q/aWLROFZ90v22lzurvUcgONpfLdcHse
-         1uJujVHxADfkSEklsMxvGFS6YRD2pUk12LgAgGTn1QVnjs2LHGIM5sdOpcMmFJdKz9Z9
-         9BvU2bRLLDEhGX8nHuc7kme5cYb/lALc3t1aBjWro5iJuKVOKmYkas7yh5CIrplOIKlj
-         aPsA==
+        b=H+lJ/2zI+CsJcFwV2FqBvt1atvvSiWC79JaYofeVAncVV6p1F249Zik3JUzPl4mUYh
+         XCj4oeIXi2vhv8e+/3CcPq6exuZAoqQLKc8YYWVJIkGbQX7Omu3FjDihSk0LkFtFbh3X
+         nHqIAjRQPQZKMI8hUjbaKvjzNTQju3HciDuKoVkXIGa5Y/4lkGQFwdVoFRIM/AapUUe6
+         cYwrhPd1ATmT9tadSVJr+1h5KRpa/pjfjF1hOmp8UeDyZ8F6BiJ8OqHmDU/VybG39Hs8
+         zQcMYlnTtmGSglCkvU75Rf7Qa2uhYyhIptS8u1QG8Gxu1uTckRB7G1sJyyfjkPgJDdtz
+         E6Ew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=EUk2R8RPB1VUp/i3xXE6EuWvgoLmQyCTRKDG3+wFaQQ=;
-        b=tsS8hDfYSMwyT2bY+oCVWNlgIeI/KV54i7ipjdUHnWNvcpagVtJ/q3t2DHwc/u97fg
-         ddlvX6+qy2v66D7ifR7SAZccTuRHGfmM5hwBJYybFyqsf8sSV0UVRTXGQ7tWzTX9BNlP
-         9ObInfp2KtKtWG95JPXdEnUzj+BGe//Gy7WzucxvsSGMEKy9cfHFGd3QRNSeIjYq76dU
-         HB9OnNWPH8hAZKcfXeEEqnVc1w90BwT5j4kZn2HuLk9pT2TK2pNVuTSfHdC89EItVkjp
-         sWVMU9VrSg/Fday4E9LB5dXJs/yGJhb2WIPo8oZjAe1gd+J/ztXOKdS/+kaoV1Uirr/F
-         H5Mg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=JJjyTyyEqQ3t9ZUfj3BjzwlU6m5ronUMaVBZj+8D+x0=;
+        b=SqrOpryXFbwnxj0AOSX02McddvA6K68W6FQXDslt9+CNSSTRf+JL59bRXu9yoAtQJk
+         mwEJA4jI/TKxeuWmwlQb/qSAEP4gnKeK7JS80dK3jBt5VI32QDW/dklSfhJ20ublSXJq
+         pjQAUtaQpr7+htdRlwHWxXxEX6Kf3FCg86DgRsgw0VIhE1dOhXi+RwR2pW9PuBYrbu26
+         SBKGugTNLOU1zHRoG/WDZZE06iobKY8gyUb/Rpk4oTtz3EZ3dlDrXkpvorgrM/EfV0WE
+         TD4ymZ64rWM6Fx4GLIWgJX6tGj5pp9knvFguWveJ9OVbjmbZN/jmLVYiKRKCNX6AEqe9
+         rDOA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=F8d1OGtE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r196si2739144ywe.581.2017.11.24.05.41.48
+        by mx.google.com with ESMTPS id g8si4335340ybc.356.2017.11.24.05.50.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 24 Nov 2017 05:41:48 -0800 (PST)
+        Fri, 24 Nov 2017 05:50:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=F8d1OGtE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49347 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:49378 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eIEEm-0000xN-1w
-	for alex.bennee@linaro.org; Fri, 24 Nov 2017 08:41:48 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48705)
+	id 1eIENe-00052z-33
+	for alex.bennee@linaro.org; Fri, 24 Nov 2017 08:50:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50789)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eIEEU-0000ub-Qs
-	for qemu-arm@nongnu.org; Fri, 24 Nov 2017 08:41:32 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1eIENI-0004wJ-At
+	for qemu-arm@nongnu.org; Fri, 24 Nov 2017 08:50:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eIEEU-0001EX-1E
-	for qemu-arm@nongnu.org; Fri, 24 Nov 2017 08:41:30 -0500
-Received: from mail-ot0-x242.google.com ([2607:f8b0:4003:c0f::242]:36593)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eIEET-0001E3-SN
-	for qemu-arm@nongnu.org; Fri, 24 Nov 2017 08:41:29 -0500
-Received: by mail-ot0-x242.google.com with SMTP id t79so18815246ota.3
-	for <qemu-arm@nongnu.org>; Fri, 24 Nov 2017 05:41:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=EUk2R8RPB1VUp/i3xXE6EuWvgoLmQyCTRKDG3+wFaQQ=;
-	b=F8d1OGtEnYo9xlyRPauaY0V0UkFBO3svRYuAsuTAcrIXO2Eg5K7R8MbXHUN01qGw9a
-	29Q2PQ0QtH8y+gGPWqgjK+KEiMP+JK5YS599I1x9zhyyA1Aem3WJF6/ObusPujJvLiLI
-	+SHCv4y4YzDp9D6blbJVBxckjYBIcCd6ECTLE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=EUk2R8RPB1VUp/i3xXE6EuWvgoLmQyCTRKDG3+wFaQQ=;
-	b=fXVWJ1ufCabZcEFpFrtwjUk8ymyp7gAcPty0icWjQQgmS1wF6sxd7C095FVuHsl4g2
-	IBs8jRorcSV37UlNcnN2JdsOJaDWAAob2zcXT5791brFxncwP38uWCvfx+5NNUDEB4BQ
-	ztP+jcMqmPdxh9nEVwpar5YBoCnig0jokuSBW09gGNzz5EmYjsxuNyis2wuBGkZ1TyxA
-	JiytZT1Sp1IWxpKquolAqX7kOZzqPBo29p8XGnVKcezd90SGsN/L3Go0okniQhPZ46No
-	TWQ8uvUlxgnQRJZZZeFzpcRctpUQ/UzdQiRLl9kyWXSv1JyBMQbH+yBt2kOlBnHYPhO2
-	NHYA==
-X-Gm-Message-State: AJaThX6HM4+0lED4bUPK6KYFjFDlEADjGVnjGnDQ76rI9+Oh9Wk3X/Hl
-	swKETzfDPiEMlJSGEnPY53R0OSA9CktrVNdp0AzV2g==
-X-Received: by 10.157.37.173 with SMTP id q42mr18827462ota.116.1511530889222; 
-	Fri, 24 Nov 2017 05:41:29 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.157.63.74 with HTTP; Fri, 24 Nov 2017 05:41:08 -0800 (PST)
-In-Reply-To: <1511530238-18318-2-git-send-email-eric.auger@redhat.com>
+	(envelope-from <eric.auger@redhat.com>) id 1eIENF-00072W-2l
+	for qemu-arm@nongnu.org; Fri, 24 Nov 2017 08:50:36 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:59618)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1eIENE-000723-PK; Fri, 24 Nov 2017 08:50:32 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id B432D1555A;
+	Fri, 24 Nov 2017 13:50:31 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-117-138.ams2.redhat.com
+	[10.36.117.138])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 41C1161987;
+	Fri, 24 Nov 2017 13:50:26 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <1511530238-18318-1-git-send-email-eric.auger@redhat.com>
-	<1511530238-18318-2-git-send-email-eric.auger@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 24 Nov 2017 13:41:08 +0000
-Message-ID: <CAFEAcA_54_CVmkNM=4ufFJzYT5hWhgcfjt6wGFsuVBJnnC0+4Q@mail.gmail.com>
-To: Eric Auger <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::242
-Subject: Re: [Qemu-arm] [PATCH v4 1/4] hw/intc/arm_gicv3_its: Don't call
- post_load on reset
+	<1511530238-18318-4-git-send-email-eric.auger@redhat.com>
+	<CAFEAcA-ro5AkFt-eAhDX+AhDv5HDs6oezS9UYuT+jsMy5jYMWw@mail.gmail.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <ab918176-612e-b639-7980-ebeb3db98a5a@redhat.com>
+Date: Fri, 24 Nov 2017 14:50:25 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA-ro5AkFt-eAhDX+AhDv5HDs6oezS9UYuT+jsMy5jYMWw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Fri, 24 Nov 2017 13:50:31 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v4 3/4] linux-headers: update to pre 4.15-rc0
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -113,52 +103,81 @@ Cc: Andrew Jones <drjones@redhat.com>, Vijay Kilari <vijay.kilari@gmail.com>,
 	eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eNdu0Y34OWma
+X-TUID: KQF0dQdGniOH
 
-On 24 November 2017 at 13:30, Eric Auger <eric.auger@redhat.com> wrote:
-> From the very beginning, post_load() was called from common
-> reset. This is not standard and obliged to discriminate the
-> reset case from the restore case using the iidr value.
->
-> Let's get rid of that call.
->
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> ---
->  hw/intc/arm_gicv3_its_common.c | 2 --
->  hw/intc/arm_gicv3_its_kvm.c    | 4 ----
->  2 files changed, 6 deletions(-)
->
-> diff --git a/hw/intc/arm_gicv3_its_common.c b/hw/intc/arm_gicv3_its_common.c
-> index f2cce59..2bd2f0f 100644
-> --- a/hw/intc/arm_gicv3_its_common.c
-> +++ b/hw/intc/arm_gicv3_its_common.c
-> @@ -131,8 +131,6 @@ static void gicv3_its_common_reset(DeviceState *dev)
->      s->creadr = 0;
->      s->iidr = 0;
->      memset(&s->baser, 0, sizeof(s->baser));
-> -
-> -    gicv3_its_post_load(s, 0);
->  }
->
->  static void gicv3_its_common_class_init(ObjectClass *klass, void *data)
-> diff --git a/hw/intc/arm_gicv3_its_kvm.c b/hw/intc/arm_gicv3_its_kvm.c
-> index 6fb45df..b1b322b 100644
-> --- a/hw/intc/arm_gicv3_its_kvm.c
-> +++ b/hw/intc/arm_gicv3_its_kvm.c
-> @@ -155,10 +155,6 @@ static void kvm_arm_its_post_load(GICv3ITSState *s)
->  {
->      int i;
->
-> -    if (!s->iidr) {
-> -        return;
-> -    }
-> -
->      kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_ITS_REGS,
->                        GITS_IIDR, &s->iidr, true, &error_abort);
->
-> --
+Hi Peter,
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+On 24/11/17 14:38, Peter Maydell wrote:
+> On 24 November 2017 at 13:30, Eric Auger <eric.auger@redhat.com> wrote:
+>> Update headers against post v4.14 and pre v4.15-rc0.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> ---
+>>  include/standard-headers/asm-s390/virtio-ccw.h     |   1 +
+>>  include/standard-headers/asm-x86/hyperv.h          | 394 +--------------------
+>>  include/standard-headers/linux/input-event-codes.h |   2 +
+>>  include/standard-headers/linux/input.h             |   1 +
+>>  include/standard-headers/linux/pci_regs.h          |  45 ++-
+>>  linux-headers/asm-arm/kvm.h                        |   8 +
+>>  linux-headers/asm-arm/kvm_para.h                   |   1 +
+>>  linux-headers/asm-arm/unistd.h                     |   2 +
+>>  linux-headers/asm-arm64/kvm.h                      |   8 +
+>>  linux-headers/asm-arm64/unistd.h                   |   1 +
+>>  linux-headers/asm-powerpc/epapr_hcalls.h           |   1 +
+>>  linux-headers/asm-powerpc/kvm.h                    |   1 +
+>>  linux-headers/asm-powerpc/kvm_para.h               |   1 +
+>>  linux-headers/asm-powerpc/unistd.h                 |   1 +
+>>  linux-headers/asm-s390/kvm.h                       |   1 +
+>>  linux-headers/asm-s390/kvm_para.h                  |   1 +
+>>  linux-headers/asm-s390/unistd.h                    |   4 +-
+>>  linux-headers/asm-x86/kvm.h                        |   1 +
+>>  linux-headers/asm-x86/kvm_para.h                   |   2 +-
+>>  linux-headers/asm-x86/unistd.h                     |   1 +
+>>  linux-headers/linux/kvm.h                          |   2 +
+>>  linux-headers/linux/kvm_para.h                     |   1 +
+>>  linux-headers/linux/psci.h                         |   1 +
+>>  linux-headers/linux/userfaultfd.h                  |   1 +
+>>  linux-headers/linux/vfio.h                         |   1 +
+>>  linux-headers/linux/vfio_ccw.h                     |   1 +
+>>  linux-headers/linux/vhost.h                        |   1 +
+> 
+>> --- a/include/standard-headers/asm-x86/hyperv.h
+>> +++ b/include/standard-headers/asm-x86/hyperv.h
+>> @@ -1,393 +1 @@
+>> -#ifndef _ASM_X86_HYPERV_H
+>> -#define _ASM_X86_HYPERV_H
+>> -
+>> -#include "standard-headers/linux/types.h"
+>> -
+>> -/*
+>> - * The below CPUID leaves are present if VersionAndFeatures.HypervisorPresent
+>> - * is set by CPUID(HvCpuIdFunctionVersionAndFeatures).
+>> - */
+>> -#define HYPERV_CPUID_VENDOR_AND_MAX_FUNCTIONS  0x40000000
+>> -#define HYPERV_CPUID_INTERFACE                 0x40000001
+>> -#define HYPERV_CPUID_VERSION                   0x40000002
+>> -#define HYPERV_CPUID_FEATURES                  0x40000003
+>> -#define HYPERV_CPUID_ENLIGHTMENT_INFO          0x40000004
+>> -#define HYPERV_CPUID_IMPLEMENT_LIMITS          0x40000005
+>> -
+>> -#define HYPERV_HYPERVISOR_PRESENT_BIT          0x80000000
+>> -#define HYPERV_CPUID_MIN                       0x40000005
+>> -#define HYPERV_CPUID_MAX                       0x4000ffff
+> 
+> Did you test building on x86 host? It's hard to see how the
+> code in QEMU that uses these HYPERV #defines will still compile.
 
-thanks
--- PMM
+Just test built with
+
+./configure --target-list="aarch64-softmmu arm-softmmu arm-linux-user
+x86_64-softmmu i386-softmmu" --enable-kvm --enable-trace-backends=log
+
+and it looks OK.
+
+Thanks
+
+Eric
+> 
+> thanks
+> -- PMM
+> 

@@ -1,79 +1,82 @@
-Received: by 10.223.159.82 with SMTP id f18csp2104259wrg;
-        Fri, 24 Nov 2017 05:33:20 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMaPx3S+6J+HTlx0h7JIJLPZ+TU+gj0h0h1/bfYAyxl12ap5EMj4FN9N1kHYtyPeGVg8inTW
-X-Received: by 10.129.196.12 with SMTP id j12mr19439937ywi.393.1511530400564;
-        Fri, 24 Nov 2017 05:33:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1511530400; cv=none;
+Received: by 10.223.159.82 with SMTP id f18csp2104548wrg;
+        Fri, 24 Nov 2017 05:33:35 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMb8PZhwcRPfV/YyDVL/tX2wstqt+T/uiCRNYCURC+yI8GBv3LMbPCZmHzfV+fd3Cs/NK7fX
+X-Received: by 10.129.178.72 with SMTP id q69mr8169475ywh.294.1511530415283;
+        Fri, 24 Nov 2017 05:33:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1511530415; cv=none;
         d=google.com; s=arc-20160816;
-        b=t1EKa5vn0U7u0lwHoBZgk4e72FaQNuiJyFBqrS0PFXWQ65JI+V/EPPHIRjikEWniUh
-         oL9Jk0F8TMh+s8TsdMmhGlT+0aocSDGTGCIVbY/PCgtV2wAzPlDv/6mRkS5+VRKm8CmI
-         BqLH61s2vq9ECRGwP9/YyfqZtczwuD+9fglJB2lPCy5GgvQWNAxn8PDTt7Z8wN0xO/Bo
-         5yyTNbhiInKML0hBsTcnYwL9wi4Si7N0hxYE3PLxYnbMOy1h0vrGCmxZhoxJIv+Przrl
-         E7ZmToKGZl9u2uuC6mvZxNd/vLxGxClfi9q5ttBzqgLXV/zJ8QHSUNJohlsge1B+Wi5R
-         /E1Q==
+        b=r1V4wsAAqsvWubUrHO9Z55034ycUzRLZHH6WT9PagZ3d++PaySLExz2vo+q5Xox5eW
+         OJx3BkGLD+2OrTVIHrMw8LufUPoVxS9UmmNne/ezQ04mPGIfqjXG+CGOI5f0Voxn0uEr
+         g76yRIsM1GHZtxB2yaQ8TDm8aOXx/XReX89vlh/uM/1TX119F8IaHHUPa5dn4Junkrlk
+         +KDxRlbFk4QDNX2YAyFykKLLeH1x14FPp3HuvcE/9jXqpNcad9zu2akZJjFejxmqpilX
+         IaejnxUh0dUcUsy9pqi5OhLFeulgjV3RR5xuoqW2YtpnsS3uPVstMGAV1mebM98XWkpW
+         fRLQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :arc-authentication-results;
-        bh=4YQhHizb9jJ+yy2rhzMncZpYM0oPKHHHDcVAdfgYc/Q=;
-        b=noE4YVs1NfLuq20Lsaorj1q2xysqaNKpgBgao7jXwU+yuMzCGcKZIoqCCDSzcSaN7a
-         YKfH0GwsRPqIFRY9L7cDrFyM/kOwdm4LW4OkBhOrpiHICW6lNXsleSMYPL7tWtSDGeVz
-         PwmnLMVopb/CrLZhQWc7jmPcXu2Ag9hS+cX/yMUiJvFRXEo/30lhvKg6lMadGA1YPgSN
-         FOTjvgBUYLMavmeM0xxoDzuWViLTx9TYc3NpjfWYmcPCq5s7raT2VLL0iWERqRmyeZFc
-         yvdWnATISoyyLzhC2fDiPslQtZsikoGQfjxJKFdEFEHa6cTy2+WIFikr1yKgyBDKUa1C
-         ak7w==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=vV8Xvyh//WgaW7UJMFPMJrBYQlHWF5D3TB91hSdJViM=;
+        b=CAGxNIl/EYpGpO7G5o7ZVr658TGcUZqIuNcilnL5XcDpvFH+cbI6EgsgY0pN42kGhk
+         6wqVzMnYXM+I5ubVvf7n+UbDufThz+Y+PlICoF00rqAaBSjlVc0YCrwE+gSLoklgS+6e
+         TsaVoZyZs99sGxGoJQtSTavu5h2l2WbMlei/xHsvga1qBBb3ngvqw290gF/nhrVDJVto
+         byRZKAGVGYxshY4XZhaL/DldMWGyTsVcOL6CLPa+SH4CiihVDkIr4JbcYJurELmLtc45
+         eXSMU6KaD6sqkBIhTqBeIu7GNbYPhG82jSazGOGcLrQifmh03McV6bOfeyG+cGA10mwv
+         2OhQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l29si4979360ybj.53.2017.11.24.05.33.20
+        by mx.google.com with ESMTPS id d10si4640638ybm.831.2017.11.24.05.33.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 24 Nov 2017 05:33:20 -0800 (PST)
+        Fri, 24 Nov 2017 05:33:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49287 helo=lists.gnu.org)
+Received: from localhost ([::1]:49288 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eIE6Z-0002vX-U7
-	for alex.bennee@linaro.org; Fri, 24 Nov 2017 08:33:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44987)
+	id 1eIE6o-000364-MT
+	for alex.bennee@linaro.org; Fri, 24 Nov 2017 08:33:34 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45057)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1eIE4O-0001bI-MM
-	for qemu-devel@nongnu.org; Fri, 24 Nov 2017 08:31:05 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1eIE4g-0001q2-Tw
+	for qemu-devel@nongnu.org; Fri, 24 Nov 2017 08:31:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1eIE4K-0001qT-De
-	for qemu-devel@nongnu.org; Fri, 24 Nov 2017 08:31:04 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:39356)
+	(envelope-from <eric.auger@redhat.com>) id 1eIE4d-0001ul-Ld
+	for qemu-devel@nongnu.org; Fri, 24 Nov 2017 08:31:22 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:45458)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1eIE4A-0001oM-TX; Fri, 24 Nov 2017 08:30:51 -0500
+	id 1eIE4Y-0001tk-GE; Fri, 24 Nov 2017 08:31:14 -0500
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
 	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 01B1C80B22;
-	Fri, 24 Nov 2017 13:30:50 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 94C4B47F6;
+	Fri, 24 Nov 2017 13:31:13 +0000 (UTC)
 Received: from localhost.localdomain.com (ovpn-117-138.ams2.redhat.com
 	[10.36.117.138])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 95A535D6B4;
-	Fri, 24 Nov 2017 13:30:41 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 081D25D6B2;
+	Fri, 24 Nov 2017 13:31:01 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
 	qemu-arm@nongnu.org, qemu-devel@nongnu.org, wanghaibin.wang@huawei.com
-Date: Fri, 24 Nov 2017 14:30:34 +0100
-Message-Id: <1511530238-18318-1-git-send-email-eric.auger@redhat.com>
+Date: Fri, 24 Nov 2017 14:30:38 +0100
+Message-Id: <1511530238-18318-5-git-send-email-eric.auger@redhat.com>
+In-Reply-To: <1511530238-18318-1-git-send-email-eric.auger@redhat.com>
+References: <1511530238-18318-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Fri, 24 Nov 2017 13:30:50 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.30]);
+	Fri, 24 Nov 2017 13:31:13 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PATCH v4 0/4] vITS Reset
+Subject: [Qemu-devel] [PATCH v4 4/4] hw/intc/arm_gicv3_its: Implement full
+ reset
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -90,84 +93,37 @@ Cc: wei@redhat.com, drjones@redhat.com, vijay.kilari@gmail.com,
 	christoffer.dall@linaro.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oNF9SDE3S315
+X-TUID: IynlMZK4Rqgt
 
-At the moment the ITS is not properly reset. On System reset or
-reboot, previous ITS register values and caches are left
-unchanged. Some of the registers might point to some guest RAM
-tables which are not valid anymore. This leads to state
-inconsistencies that are detected by the kernel save/restore
-code. And eventually this may cause qemu abort.
+Voiding the ITS caches is not supposed to happen via
+individual register writes. So we introduced a dedicated
+ITS KVM device ioctl to perform a cold reset of the ITS:
+KVM_DEV_ARM_VGIC_GRP_CTRL/KVM_DEV_ARM_ITS_CTRL_RESET. Let's
+use this latter if the kernel supports it.
 
-This series adds vITS reset modality:
-- the 2 first patches bring a minimalist reset through individual
-  register writes. However, with kernel versions < 4.15, this reset
-  is not complete (vITS caches are not voided).
-- With kernel versions >= 4.15 we can rely on a new ITS KVM device
-  reset IOTCL. The last 2 patches introduce the full reset.
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+---
+ hw/intc/arm_gicv3_its_kvm.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-Tested with 4.11, 4.14 and 4.15 host kernels.
-
-Best Regards
-
-Eric
-
-The series is available at:
-https://github.com/eauger/qemu/tree/2.11.0-rc2-its-reset-v4
-
-History:
-v3 -> v4:
-- replace partial linux header update by an exhaustive one
-
-v2 -> v3:
-- don't call post_load on reset (no iidr check anymore)
-
-v1 -> v2:
-- Clarify why abort should be removed for save. Leave abort
-  for restore.
-- Adopt the same reset infra as vgic
-- introduce "hw/intc/arm_gicv3_its: Implement a minimalist reset"
-  which perform individual register writes. This is sufficient to
-  fix the issues without ioctl
-
-
-Eric Auger (4):
-  hw/intc/arm_gicv3_its: Don't call post_load on reset
-  hw/intc/arm_gicv3_its: Implement a minimalist reset
-  linux-headers: update to pre 4.15-rc0
-  hw/intc/arm_gicv3_its: Implement full reset
-
- hw/intc/arm_gicv3_its_common.c                     |   2 -
- hw/intc/arm_gicv3_its_kvm.c                        |  52 ++-
- include/standard-headers/asm-s390/virtio-ccw.h     |   1 +
- include/standard-headers/asm-x86/hyperv.h          | 394 +--------------------
- include/standard-headers/linux/input-event-codes.h |   2 +
- include/standard-headers/linux/input.h             |   1 +
- include/standard-headers/linux/pci_regs.h          |  45 ++-
- linux-headers/asm-arm/kvm.h                        |   8 +
- linux-headers/asm-arm/kvm_para.h                   |   1 +
- linux-headers/asm-arm/unistd.h                     |   2 +
- linux-headers/asm-arm64/kvm.h                      |   8 +
- linux-headers/asm-arm64/unistd.h                   |   1 +
- linux-headers/asm-powerpc/epapr_hcalls.h           |   1 +
- linux-headers/asm-powerpc/kvm.h                    |   1 +
- linux-headers/asm-powerpc/kvm_para.h               |   1 +
- linux-headers/asm-powerpc/unistd.h                 |   1 +
- linux-headers/asm-s390/kvm.h                       |   1 +
- linux-headers/asm-s390/kvm_para.h                  |   1 +
- linux-headers/asm-s390/unistd.h                    |   4 +-
- linux-headers/asm-x86/kvm.h                        |   1 +
- linux-headers/asm-x86/kvm_para.h                   |   2 +-
- linux-headers/asm-x86/unistd.h                     |   1 +
- linux-headers/linux/kvm.h                          |   2 +
- linux-headers/linux/kvm_para.h                     |   1 +
- linux-headers/linux/psci.h                         |   1 +
- linux-headers/linux/userfaultfd.h                  |   1 +
- linux-headers/linux/vfio.h                         |   1 +
- linux-headers/linux/vfio_ccw.h                     |   1 +
- linux-headers/linux/vhost.h                        |   1 +
- 29 files changed, 122 insertions(+), 417 deletions(-)
-
+diff --git a/hw/intc/arm_gicv3_its_kvm.c b/hw/intc/arm_gicv3_its_kvm.c
+index 83e5268..bad593f 100644
+--- a/hw/intc/arm_gicv3_its_kvm.c
++++ b/hw/intc/arm_gicv3_its_kvm.c
+@@ -204,6 +204,13 @@ static void kvm_arm_its_reset(DeviceState *dev)
+ 
+     c->parent_reset(dev);
+ 
++    if (kvm_device_check_attr(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_CTRL,
++                               KVM_DEV_ARM_ITS_CTRL_RESET)) {
++        kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_CTRL,
++                          KVM_DEV_ARM_ITS_CTRL_RESET, NULL, true, &error_abort);
++        return;
++    }
++
+     error_report("ITS KVM: full reset is not supported by the host kernel");
+ 
+     if (!kvm_device_check_attr(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_ITS_REGS,
 -- 
 2.5.5
 

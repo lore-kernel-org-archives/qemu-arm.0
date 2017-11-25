@@ -1,202 +1,315 @@
-Received: by 10.25.159.19 with SMTP id i19csp3076344lfe;
-        Wed, 20 Jan 2016 04:20:21 -0800 (PST)
-X-Received: by 10.140.162.130 with SMTP id i124mr47307790qhi.44.1453292421795;
-        Wed, 20 Jan 2016 04:20:21 -0800 (PST)
+Received: by 10.223.159.82 with SMTP id f18csp3359061wrg;
+        Sat, 25 Nov 2017 07:16:45 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMZXuk6KR7+2LjeNtDiq56O9EgOVS4Z80KdZiBnnZdmUojVVb1lIJE4dtn5wL+2bK7n8SHUf
+X-Received: by 10.13.241.5 with SMTP id a5mr20269287ywf.427.1511623005827;
+        Sat, 25 Nov 2017 07:16:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1511623005; cv=none;
+        d=google.com; s=arc-20160816;
+        b=u05mGF7lJnDPEBrvrz7sLNFXsW7xdBfu/wnIRZRmIYeie0NW+L/Klw03ImzCIZO6K3
+         k0LTex/qaMU92/3G+msEBOxxeE1nDjzwNvCYhzCjOFfHQ3gF1mhk0dPB+bUVpOr+By9R
+         UT6VUAhlj1SbxBLi4osxbefv1pkSwZ0fjM8+m4D+U2jwETeoiqTgN1MZvzEfpzXvXqd1
+         A/6s6/Zz75VfzkTLgisPdjDAyKO6ef/MkMjF1o/8CjLIwFzEIlrro4sD1OdkYU85bdgb
+         JC3ZKpqjIPWTYXFyzYPYk9aG/KvRRmN+r0cSI5+r16fZlmepGq686iMvW59cKelVllo3
+         grIw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=WKi2/1p993c5FbD0ykGNmqhqEm+jjHeNSEXQWvvAIeo=;
+        b=fYod+6nNtZMCNcu+tIaosBIIusXhEzteiaJP+Libd4F/Jy8PhyO+58gJuO09VOiBpT
+         b/nQSKl6WlCZAmnNMwYOPTox8UXWwigUDfO8mrm3rrU8ynSiRUDgAUi2noHeBLLqknB/
+         keyvOAFB0qt/4BQax5YQj7AGzJ8gphY8DAJ7KMXfRnqGyD4wn1KcQcykHq/+7M+who2n
+         q8DVoVx6I/AZKNMwumYjvjZQElGqO6FDNxvpD60X4xEaM39xokvrnwudFZSERhYBUvjL
+         Wfl0uUVKNh1wjogaKJ3V0ycwd93IdafSY/HGV7qIhWfSYMCOBTf5KllSfw3ft0SMRGav
+         qRxg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z134si43492392qkz.51.2016.01.20.04.20.21
+        by mx.google.com with ESMTPS id m195si5143024ybf.602.2017.11.25.07.16.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 20 Jan 2016 04:20:21 -0800 (PST)
+        Sat, 25 Nov 2017 07:16:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42625 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:53447 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aLrkL-0006HR-7B
-	for alex.bennee@linaro.org; Wed, 20 Jan 2016 07:20:21 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51044)
+	id 1eIcCD-0005OA-4p
+	for alex.bennee@linaro.org; Sat, 25 Nov 2017 10:16:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47650)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1aLrkE-00068w-E2
-	for qemu-arm@nongnu.org; Wed, 20 Jan 2016 07:20:19 -0500
+	(envelope-from <ehabkost@redhat.com>) id 1eIcBt-0005Nh-Ib
+	for qemu-arm@nongnu.org; Sat, 25 Nov 2017 10:16:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1aLrkA-0002nn-4q
-	for qemu-arm@nongnu.org; Wed, 20 Jan 2016 07:20:14 -0500
-Received: from mail-ob0-x244.google.com ([2607:f8b0:4003:c01::244]:35393)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>)
-	id 1aLrk3-0002ki-Qw; Wed, 20 Jan 2016 07:20:03 -0500
-Received: by mail-ob0-x244.google.com with SMTP id tr5so459126obc.2;
-	Wed, 20 Jan 2016 04:20:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=VhiPU9yZr6W36ZSqm7aciKHM/JoZaEQnAq60E6xwEsM=;
-	b=OeuegIs5bpbDOkl98RLYZ8DFEp6y6frEOoJNuW1Buh1qQ46NNk1MU9gDyW9dgAhwxL
-	/MDcziM80LoGynRYHVzPwtkmFXX4tF65rTVIdL2wZaR0uItBKxBpXI84frPRXS8/uxTp
-	5d+T9UmNM7mkjaIq6mccn0Bb1rYWP8cRljocUGbtYkagCJ0XGwy1NetcVU8kvGnIWY+h
-	7aUkjp5r+egW0S9PPhCF1tPNhBf/ObAYTvw/42KsysVtEmxSO5uH5xzqkPeXYVrtZ7M1
-	V3gQvW9IHfIR9Xmwk1Evuu/zAWiWxkCVBl6z0wiwMGaXhaFyR67GfnQ2bLDaLnN4/AaT
-	gyfg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-type:content-disposition:in-reply-to
-	:user-agent;
-	bh=VhiPU9yZr6W36ZSqm7aciKHM/JoZaEQnAq60E6xwEsM=;
-	b=T7NiC1T5/YTirBggEezU6eM+Fr3YAw8+03puDbHz0f8jPRFeb9abfMZA4w/rFo6zob
-	lv0KdCifHye5yIawdluu/0zqdzni00Ic7M0EaivYQkxWsRRbDEYRtY3TdGBypxyuMh8N
-	vt1ulWqfdH+C29+KRhiXj/I9nE4m6uRdsbYI02NsRWCFtTomytKe+mPLx2/zWwx1irqC
-	i7ilwpcchmBz/9aLFRHLpSWimsD6laKpPBC/pBIdqCw8BZkM7E5zTUnzftVrYcnVx2PC
-	6TdITMjzR0vsNKjTs+y0V5vTiNsYkFqKPtbom+isTzEaVL4jumPx9cqcUjKzZexrzoMa
-	rRZw==
-X-Gm-Message-State: ALoCoQnhQMGy8LbLHer/92or1VuW9GjOElBuVn+oRbHPLg5O1SDmbbo3HPqhfzxBK35JYNS/WI7BgsSBts/8OMggh4dNTeq4yg==
-X-Received: by 10.60.138.67 with SMTP id qo3mr27018169oeb.80.1453292403413;
-	Wed, 20 Jan 2016 04:20:03 -0800 (PST)
-Received: from localhost (ec2-52-8-89-49.us-west-1.compute.amazonaws.com.
-	[52.8.89.49]) by smtp.gmail.com with ESMTPSA id
-	l19sm18037516oig.27.2016.01.20.04.20.01
-	(version=TLS1_2 cipher=AES128-SHA bits=128/128);
-	Wed, 20 Jan 2016 04:20:02 -0800 (PST)
-Date: Wed, 20 Jan 2016 13:19:58 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20160120121958.GV29396@toto>
-References: <1453227802-9991-1-git-send-email-peter.maydell@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1453227802-9991-1-git-send-email-peter.maydell@linaro.org>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+	(envelope-from <ehabkost@redhat.com>) id 1eIcBr-00054m-TT
+	for qemu-arm@nongnu.org; Sat, 25 Nov 2017 10:16:25 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:38052)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1eIcBr-00054c-Kk; Sat, 25 Nov 2017 10:16:23 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 48B1F37E72;
+	Sat, 25 Nov 2017 15:16:22 +0000 (UTC)
+Received: from localhost (ovpn-116-25.gru2.redhat.com [10.97.116.25])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id ABFC75D9CB;
+	Sat, 25 Nov 2017 15:16:18 +0000 (UTC)
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Sat, 25 Nov 2017 13:16:05 -0200
+Message-Id: <20171125151610.20547-2-ehabkost@redhat.com>
+In-Reply-To: <20171125151610.20547-1-ehabkost@redhat.com>
+References: <20171125151610.20547-1-ehabkost@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Sat, 25 Nov 2017 15:16:22 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4003:c01::244
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-arm] [PATCH] target-arm: Make various system registers
-	visible to EL3
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH v2 1/6] machine: Replace has_dynamic_sysbus with
+ list of allowed devices
 X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.14
+X-Mailman-Version: 2.1.21
 Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
 List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: jgross@suse.com, Peter Maydell <peter.maydell@linaro.org>,
+	Thomas Huth <thuth@redhat.com>, sstabellini@kernel.org,
+	"Michael S. Tsirkin" <mst@redhat.com>, Alexander Graf <agraf@suse.de>,
+	Anthony Perard <anthony.perard@citrix.com>, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, Marcel Apfelbaum <marcel@redhat.com>,
+	xen-devel@lists.xenproject.org, Laszlo Ersek <lersek@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MIVv+cQrWsgJ
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: OtwxbVc1nFN9
 
-On Tue, Jan 19, 2016 at 06:23:22PM +0000, Peter Maydell wrote:
-> The AArch64 system registers DACR32_EL2, IFSR32_EL2, SPSR_IRQ,
-> SPSR_ABT, SPSR_UND and SPSR_FIQ are visible and fully functional from
-> EL3 even if the CPU has no EL2 (unlike some others which are RES0
-> from EL3 in that configuration).  Move them from el2_cp_reginfo[] to
-> v8_cp_reginfo[] so they are always present.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+The existing has_dynamic_sysbus flag makes the machine accept
+every user-creatable sysbus device type on the command-line.
+Replace it with a list of allowed device types, so machines can
+easily accept some sysbus devices while rejecting others.
 
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+To keep exactly the same behavior as before, the existing
+has_dynamic_sysbus=true assignments are replaced with a
+TYPE_SYS_BUS_DEVICE entry on the allowed list.  Other patches
+will replace the TYPE_SYS_BUS_DEVICE entries with more specific
+lists of devices.
 
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Marcel Apfelbaum <marcel@redhat.com>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Alexander Graf <agraf@suse.de>
+Cc: David Gibson <david@gibson.dropbear.id.au>
+Cc: Stefano Stabellini <sstabellini@kernel.org>
+Cc: Anthony Perard <anthony.perard@citrix.com>
+Cc: qemu-arm@nongnu.org
+Cc: qemu-ppc@nongnu.org
+Cc: xen-devel@lists.xenproject.org
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+---
+Changes v1 -> v2:
+* Replace "dynamic sysbus whitelist" with "allowed sysbus devices"
+* Simply add TYPE_SYS_BUS_DEVICE to the list on existing
+  has_dynamic_sysbus=true machines, and make machine-types more
+  strict in separate patches
+---
+ include/hw/boards.h  |  5 ++++-
+ hw/arm/virt.c        |  3 ++-
+ hw/core/machine.c    | 43 +++++++++++++++++++++++++++++--------------
+ hw/i386/pc_q35.c     |  3 ++-
+ hw/ppc/e500plat.c    |  4 +++-
+ hw/ppc/spapr.c       |  3 ++-
+ hw/xen/xen_backend.c |  7 ++++++-
+ 7 files changed, 48 insertions(+), 20 deletions(-)
 
-> ---
->  target-arm/helper.c | 58 ++++++++++++++++++++++++++---------------------------
->  1 file changed, 29 insertions(+), 29 deletions(-)
-> 
-> diff --git a/target-arm/helper.c b/target-arm/helper.c
-> index e8ede3f..999c617 100644
-> --- a/target-arm/helper.c
-> +++ b/target-arm/helper.c
-> @@ -3166,6 +3166,35 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
->        .type = ARM_CP_ALIAS,
->        .fieldoffset = offsetof(CPUARMState, vfp.xregs[ARM_VFP_FPEXC]),
->        .access = PL2_RW, .accessfn = fpexc32_access },
-> +    { .name = "DACR32_EL2", .state = ARM_CP_STATE_AA64,
-> +      .opc0 = 3, .opc1 = 4, .crn = 3, .crm = 0, .opc2 = 0,
-> +      .access = PL2_RW, .resetvalue = 0,
-> +      .writefn = dacr_write, .raw_writefn = raw_write,
-> +      .fieldoffset = offsetof(CPUARMState, cp15.dacr32_el2) },
-> +    { .name = "IFSR32_EL2", .state = ARM_CP_STATE_AA64,
-> +      .opc0 = 3, .opc1 = 4, .crn = 5, .crm = 0, .opc2 = 1,
-> +      .access = PL2_RW, .resetvalue = 0,
-> +      .fieldoffset = offsetof(CPUARMState, cp15.ifsr32_el2) },
-> +    { .name = "SPSR_IRQ", .state = ARM_CP_STATE_AA64,
-> +      .type = ARM_CP_ALIAS,
-> +      .opc0 = 3, .opc1 = 4, .crn = 4, .crm = 3, .opc2 = 0,
-> +      .access = PL2_RW,
-> +      .fieldoffset = offsetof(CPUARMState, banked_spsr[BANK_IRQ]) },
-> +    { .name = "SPSR_ABT", .state = ARM_CP_STATE_AA64,
-> +      .type = ARM_CP_ALIAS,
-> +      .opc0 = 3, .opc1 = 4, .crn = 4, .crm = 3, .opc2 = 1,
-> +      .access = PL2_RW,
-> +      .fieldoffset = offsetof(CPUARMState, banked_spsr[BANK_ABT]) },
-> +    { .name = "SPSR_UND", .state = ARM_CP_STATE_AA64,
-> +      .type = ARM_CP_ALIAS,
-> +      .opc0 = 3, .opc1 = 4, .crn = 4, .crm = 3, .opc2 = 2,
-> +      .access = PL2_RW,
-> +      .fieldoffset = offsetof(CPUARMState, banked_spsr[BANK_UND]) },
-> +    { .name = "SPSR_FIQ", .state = ARM_CP_STATE_AA64,
-> +      .type = ARM_CP_ALIAS,
-> +      .opc0 = 3, .opc1 = 4, .crn = 4, .crm = 3, .opc2 = 3,
-> +      .access = PL2_RW,
-> +      .fieldoffset = offsetof(CPUARMState, banked_spsr[BANK_FIQ]) },
->      REGINFO_SENTINEL
->  };
->  
-> @@ -3293,11 +3322,6 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
->        .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 0,
->        .access = PL2_RW, .fieldoffset = offsetof(CPUARMState, cp15.hcr_el2),
->        .writefn = hcr_write },
-> -    { .name = "DACR32_EL2", .state = ARM_CP_STATE_AA64,
-> -      .opc0 = 3, .opc1 = 4, .crn = 3, .crm = 0, .opc2 = 0,
-> -      .access = PL2_RW, .resetvalue = 0,
-> -      .writefn = dacr_write, .raw_writefn = raw_write,
-> -      .fieldoffset = offsetof(CPUARMState, cp15.dacr32_el2) },
->      { .name = "ELR_EL2", .state = ARM_CP_STATE_AA64,
->        .type = ARM_CP_ALIAS,
->        .opc0 = 3, .opc1 = 4, .crn = 4, .crm = 0, .opc2 = 1,
-> @@ -3307,10 +3331,6 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
->        .type = ARM_CP_ALIAS,
->        .opc0 = 3, .opc1 = 4, .crn = 5, .crm = 2, .opc2 = 0,
->        .access = PL2_RW, .fieldoffset = offsetof(CPUARMState, cp15.esr_el[2]) },
-> -    { .name = "IFSR32_EL2", .state = ARM_CP_STATE_AA64,
-> -      .opc0 = 3, .opc1 = 4, .crn = 5, .crm = 0, .opc2 = 1,
-> -      .access = PL2_RW, .resetvalue = 0,
-> -      .fieldoffset = offsetof(CPUARMState, cp15.ifsr32_el2) },
->      { .name = "FAR_EL2", .state = ARM_CP_STATE_AA64,
->        .opc0 = 3, .opc1 = 4, .crn = 6, .crm = 0, .opc2 = 0,
->        .access = PL2_RW, .fieldoffset = offsetof(CPUARMState, cp15.far_el[2]) },
-> @@ -3319,26 +3339,6 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
->        .opc0 = 3, .opc1 = 4, .crn = 4, .crm = 0, .opc2 = 0,
->        .access = PL2_RW,
->        .fieldoffset = offsetof(CPUARMState, banked_spsr[BANK_HYP]) },
-> -    { .name = "SPSR_IRQ", .state = ARM_CP_STATE_AA64,
-> -      .type = ARM_CP_ALIAS,
-> -      .opc0 = 3, .opc1 = 4, .crn = 4, .crm = 3, .opc2 = 0,
-> -      .access = PL2_RW,
-> -      .fieldoffset = offsetof(CPUARMState, banked_spsr[BANK_IRQ]) },
-> -    { .name = "SPSR_ABT", .state = ARM_CP_STATE_AA64,
-> -      .type = ARM_CP_ALIAS,
-> -      .opc0 = 3, .opc1 = 4, .crn = 4, .crm = 3, .opc2 = 1,
-> -      .access = PL2_RW,
-> -      .fieldoffset = offsetof(CPUARMState, banked_spsr[BANK_ABT]) },
-> -    { .name = "SPSR_UND", .state = ARM_CP_STATE_AA64,
-> -      .type = ARM_CP_ALIAS,
-> -      .opc0 = 3, .opc1 = 4, .crn = 4, .crm = 3, .opc2 = 2,
-> -      .access = PL2_RW,
-> -      .fieldoffset = offsetof(CPUARMState, banked_spsr[BANK_UND]) },
-> -    { .name = "SPSR_FIQ", .state = ARM_CP_STATE_AA64,
-> -      .type = ARM_CP_ALIAS,
-> -      .opc0 = 3, .opc1 = 4, .crn = 4, .crm = 3, .opc2 = 3,
-> -      .access = PL2_RW,
-> -      .fieldoffset = offsetof(CPUARMState, banked_spsr[BANK_FIQ]) },
->      { .name = "VBAR_EL2", .state = ARM_CP_STATE_AA64,
->        .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 0, .opc2 = 0,
->        .access = PL2_RW, .writefn = vbar_write,
-> -- 
-> 1.9.1
-> 
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index 156b16f7a6..041bc08971 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -76,6 +76,9 @@ void machine_set_cpu_numa_node(MachineState *machine,
+                                const CpuInstanceProperties *props,
+                                Error **errp);
+ 
++void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const char *type);
++
++
+ /**
+  * CPUArchId:
+  * @arch_id - architecture-dependent CPU ID of present or possible CPU
+@@ -179,7 +182,6 @@ struct MachineClass {
+         no_floppy:1,
+         no_cdrom:1,
+         no_sdcard:1,
+-        has_dynamic_sysbus:1,
+         pci_allow_0_address:1,
+         legacy_fw_cfg_order:1;
+     int is_default;
+@@ -197,6 +199,7 @@ struct MachineClass {
+     bool ignore_memory_transaction_failures;
+     int numa_mem_align_shift;
+     const char **valid_cpu_types;
++    strList *allowed_dynamic_sysbus_devices;
+     bool auto_enable_numa_with_memhp;
+     void (*numa_auto_assign_ram)(MachineClass *mc, NodeInfo *nodes,
+                                  int nb_nodes, ram_addr_t size);
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 9e18b410d7..fa6dc15fcd 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1591,7 +1591,8 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+      * configuration of the particular instance.
+      */
+     mc->max_cpus = 255;
+-    mc->has_dynamic_sysbus = true;
++    /*TODO: allow only sysbus devices that really work with this machine */
++    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_SYS_BUS_DEVICE);
+     mc->block_default_type = IF_VIRTIO;
+     mc->no_cdrom = 1;
+     mc->pci_allow_0_address = true;
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 36c2fb069c..ab2ec292f3 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -335,29 +335,44 @@ static bool machine_get_enforce_config_section(Object *obj, Error **errp)
+     return ms->enforce_config_section;
+ }
+ 
+-static void error_on_sysbus_device(SysBusDevice *sbdev, void *opaque)
++void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const char *type)
+ {
+-    error_report("Option '-device %s' cannot be handled by this machine",
+-                 object_class_get_name(object_get_class(OBJECT(sbdev))));
+-    exit(1);
++    strList *item = g_new0(strList, 1);
++
++    item->value = g_strdup(type);
++    item->next = mc->allowed_dynamic_sysbus_devices;
++    mc->allowed_dynamic_sysbus_devices = item;
+ }
+ 
+-static void machine_init_notify(Notifier *notifier, void *data)
++static void validate_sysbus_device(SysBusDevice *sbdev, void *opaque)
+ {
+-    Object *machine = qdev_get_machine();
+-    ObjectClass *oc = object_get_class(machine);
+-    MachineClass *mc = MACHINE_CLASS(oc);
++    MachineState *machine = opaque;
++    MachineClass *mc = MACHINE_GET_CLASS(machine);
++    bool allowed = false;
++    strList *wl;
+ 
+-    if (mc->has_dynamic_sysbus) {
+-        /* Our machine can handle dynamic sysbus devices, we're all good */
+-        return;
++    for (wl = mc->allowed_dynamic_sysbus_devices;
++         !allowed && wl;
++         wl = wl->next) {
++        allowed |= !!object_dynamic_cast(OBJECT(sbdev), wl->value);
+     }
+ 
++    if (!allowed) {
++        error_report("Option '-device %s' cannot be handled by this machine",
++                     object_class_get_name(object_get_class(OBJECT(sbdev))));
++        exit(1);
++    }
++}
++
++static void machine_init_notify(Notifier *notifier, void *data)
++{
++    MachineState *machine = MACHINE(qdev_get_machine());
++
+     /*
+-     * Loop through all dynamically created devices and check whether there
+-     * are sysbus devices among them. If there are, error out.
++     * Loop through all dynamically created sysbus devices and check if they are
++     * all allowed.  If a device is not allowed, error out.
+      */
+-    foreach_dynamic_sysbus_device(error_on_sysbus_device, NULL);
++    foreach_dynamic_sysbus_device(validate_sysbus_device, machine);
+ }
+ 
+ HotpluggableCPUList *machine_query_hotpluggable_cpus(MachineState *machine)
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index d6060043ac..d0b0e5b422 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -299,7 +299,8 @@ static void pc_q35_machine_options(MachineClass *m)
+     m->default_machine_opts = "firmware=bios-256k.bin";
+     m->default_display = "std";
+     m->no_floppy = 1;
+-    m->has_dynamic_sysbus = true;
++    /*TODO: allow only sysbus devices that really work with this machine */
++    machine_class_allow_dynamic_sysbus_dev(m, TYPE_SYS_BUS_DEVICE);
+     m->max_cpus = 288;
+ }
+ 
+diff --git a/hw/ppc/e500plat.c b/hw/ppc/e500plat.c
+index e59e80fb9e..438118c29b 100644
+--- a/hw/ppc/e500plat.c
++++ b/hw/ppc/e500plat.c
+@@ -15,6 +15,7 @@
+ #include "hw/boards.h"
+ #include "sysemu/device_tree.h"
+ #include "sysemu/kvm.h"
++#include "hw/sysbus.h"
+ #include "hw/pci/pci.h"
+ #include "hw/ppc/openpic.h"
+ #include "kvm_ppc.h"
+@@ -63,7 +64,8 @@ static void e500plat_machine_init(MachineClass *mc)
+     mc->desc = "generic paravirt e500 platform";
+     mc->init = e500plat_init;
+     mc->max_cpus = 32;
+-    mc->has_dynamic_sysbus = true;
++    /*TODO: allow only sysbus devices that really work with this machine */
++    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_SYS_BUS_DEVICE);
+     mc->default_cpu_type = POWERPC_CPU_TYPE_NAME("e500v2_v30");
+ }
+ 
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index d682f013d4..82040cc5d1 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -3603,7 +3603,8 @@ static void spapr_machine_class_init(ObjectClass *oc, void *data)
+     mc->default_boot_order = "";
+     mc->default_ram_size = 512 * M_BYTE;
+     mc->kvm_type = spapr_kvm_type;
+-    mc->has_dynamic_sysbus = true;
++    /*TODO: allow only sysbus devices that really work with this machine */
++    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_SYS_BUS_DEVICE);
+     mc->pci_allow_0_address = true;
+     mc->get_hotplug_handler = spapr_get_hotplug_handler;
+     hc->pre_plug = spapr_machine_device_pre_plug;
+diff --git a/hw/xen/xen_backend.c b/hw/xen/xen_backend.c
+index 0f849a26d2..82380ea9ee 100644
+--- a/hw/xen/xen_backend.c
++++ b/hw/xen/xen_backend.c
+@@ -564,7 +564,12 @@ static void xen_set_dynamic_sysbus(void)
+     ObjectClass *oc = object_get_class(machine);
+     MachineClass *mc = MACHINE_CLASS(oc);
+ 
+-    mc->has_dynamic_sysbus = true;
++    /*
++     * Emulate old mc->has_dynamic_sysbus=true assignment
++     *
++     *TODO: add only Xen devices to the list
++     */
++    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_SYS_BUS_DEVICE);
+ }
+ 
+ int xen_be_register(const char *type, struct XenDevOps *ops)
+-- 
+2.13.6
+

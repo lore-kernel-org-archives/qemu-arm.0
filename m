@@ -1,272 +1,237 @@
-Received: by 10.223.197.9 with SMTP id q9csp4052831wrf;
-        Mon, 16 Oct 2017 17:20:25 -0700 (PDT)
-X-Received: by 10.55.19.98 with SMTP id d95mr16927193qkh.123.1508199625062;
-        Mon, 16 Oct 2017 17:20:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508199625; cv=none;
+Received: by 10.223.159.82 with SMTP id f18csp1393134wrg;
+        Mon, 27 Nov 2017 02:44:36 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMYIyg6+UXHFfOZoxOPiW+9yA2GO9kpFAbYSTfySzLEXx4fkZUN0aLzgy+XeOrlmaUVx/U96
+X-Received: by 10.98.201.216 with SMTP id l85mr16908066pfk.217.1511779476836;
+        Mon, 27 Nov 2017 02:44:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1511779476; cv=none;
         d=google.com; s=arc-20160816;
-        b=wETR/Nct8bZG7MtOHZRuID6m+jvXulkqGgacOW335tdTaiQM0c6PCM3ZdtkD+7DWIO
-         ifOeoJxJxwdw4jXBIDqO5GHGCap1sf0PhAM/FZI0kyl/KALaP1tGA6EmyQQgUuWnY49E
-         EEvol89SMSDLVsxBNkzDbK1ReFCE+dI1Yub8ei/xG9TfDWM3fW5g2z0MgjJA+QMLAmQi
-         fz3HdpvX20Ki4gA3bIhwS7DycywMwRzecLsOYHWw+ev+oYP24aTkCL0LewSuI/tValHa
-         rNw2qv2kNCkHt6NGo2dmXyIWQec2AYEmS147VlO35yng5x6wlFH0z7YnPBgLJOdDDlp+
-         4NnQ==
+        b=uWhCnVD4Szs1hwL2FIpXZ8wV7PlAlwfQI3eP+ItbS3Tzp6ipERwXqkD1Cp7M6iT9HY
+         AR493GoFZMknZw8UtDYQsN17nyxIXggwOb9ijqFQAnaym6SPj2PPSi3z627C93hwE14F
+         g7OMNmK1Kalx16GtlWXEMG8Sc8HvvEWFuzDTEssqrNw8CEFe1dC1EOlI5S/wYAsaujMo
+         LxUqwgBGWfR7rj1kdL1wQzPdxOVIDvOgdDnTVSx1Akp2QK3Oy3EuySP+KmefQvRfP4xG
+         UyRQxLdLyADEqDOm1n0AZchjhQpHOkyJp7BhozO9Co7wKMlrp4m4oH1fIF2VWX5hOsGV
+         0gXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=DnzqFtTaNyiYhqLieZsTUgTvnHGIrUF4UKYJGxllEyY=;
-        b=c7Jhq7MUtnaaBnL/uUSR4DFbdAkLP0eCgHzrDE3aNE5TbA5VCABB5bNqXkyKxw1kb0
-         wXB7cwYbKNjzQSSFEkNDFOZhPLGE5R+TcmxwQvUS8TRUoCfTMhp5m/fiPjd9O/ZF9DsD
-         TzqtZnbAt6N71HD3+2pb61IhCpSVGOaV7W0eLeD/VcclrcgainPNrxhn4nLE4hXt0lek
-         pgly+RlNF+l3XrWngErRmZdGMbvtzY+YQh4HNI6lTHYm4fbThO46dZBrglHQz377keGo
-         0pkYjNl1iWHWJBUJrZVfgMraJiKVCD227YeTim/BeSzZBMnLqOMdMVB5XslOILo0B2h1
-         IdJw==
+        h=list-id:precedence:sender:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:arc-authentication-results;
+        bh=ZpJ6NLL9i0bZ9ERnfzz/0EWSNTlzPzKS5i44gsYwZ4I=;
+        b=b/FaGEUfoHzi5XpIt26xuDdxjw9XZzGPh7dJeR4+iS6msFJ+c3pn/9YO5Tq/CiI4mT
+         SfcZC1A+vHq7eTiPhHoRjSzm4fILGGjZ0j8wNh4Zpa+cMdwzC5xi8/cm6IMuMqOxA24l
+         6cUSCwaldaWNPetip4Nhoot88EzrSIHyzSkYzqWi8PbgPE/Rso+6joky2XaXadAoydJ9
+         HLY4VeFIbgymKwkgu4x3XVY9qlJBOKk2oXDsSF8IsRA3QvIkwlOcqusOlLx0VGbDz16Y
+         HcF4FBU95TEuZG9Daw5xxr3CeOR3UpCzhdPk+ThbutCJW5zsuobHkysukz8ybtbPiSXa
+         i1HQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ufCg3ob8;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k198si6715886qke.395.2017.10.16.17.20.24
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 16 Oct 2017 17:20:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id t11si23462099plq.683.2017.11.27.02.44.36;
+        Mon, 27 Nov 2017 02:44:36 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ufCg3ob8;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:35742 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e4FcM-0003Ko-PC
-	for alex.bennee@linaro.org; Mon, 16 Oct 2017 20:20:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33325)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4FVM-00068g-8g
-	for qemu-devel@nongnu.org; Mon, 16 Oct 2017 20:13:09 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4FVK-00040p-O9
-	for qemu-devel@nongnu.org; Mon, 16 Oct 2017 20:13:08 -0400
-Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:50943)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4FVK-00040f-JH; Mon, 16 Oct 2017 20:13:06 -0400
-Received: by mail-qt0-x244.google.com with SMTP id f15so53183qtf.7;
-	Mon, 16 Oct 2017 17:13:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=DnzqFtTaNyiYhqLieZsTUgTvnHGIrUF4UKYJGxllEyY=;
-	b=ufCg3ob8H9EYIwBFfgdiy/zRuDxeveR+zV1towy86FLXgdkymTFYUrEQmBSvH2qj38
-	k0oHmufP91HDgUaQOM1OL5QlCnwSUkDTD2otxEcy/7Xvi8VtP6P2N9m12q3D86eAYGKa
-	fKzo/JDO/tIoEMMZIOtZZX1vYLQywBJbndyL1gxKRZj50Eh8tfeANLXn8iRXqYC+TIOU
-	js0CQzdK6Iuy74o5QdlTN2JYPW/l13wToAYAvRMvEiupzj+6BggQQEeBSpW3Yr+R8ww5
-	W3DgYFHfv+S5EB7sd37+CGfNp7Fd0W6BqXffCsWib1COYtgwuKqaCwCKdknxlb2d2Bse
-	bRPw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=DnzqFtTaNyiYhqLieZsTUgTvnHGIrUF4UKYJGxllEyY=;
-	b=SmCj6HfODmiKDEOUyxglQOYaYB1VJ6X6EXDb0SaJjzRXIH8cG0RN3w+8R69cd37keN
-	L85dwCsko/TLWGnmAzxUW/HasXGKkfC7wt9lEydbVfUXQ0Ks9v7bA15L0woMbcl+RtZb
-	FMXzSshn9tKyUDZT40WO1nCXC7YWyiMhdykw2K70JrF4YXcwCm6v0nMObKYkDlWzd5Xo
-	hUO7ZevcfBxpE30ltoN9nOxotca986wsGhGp3MarCal9SkqulruJzuq1zU+YIXGSYsX9
-	lLVKFF0yb7fXqvpbzyZVYyzmEYShuck+HkrES+xM+qQG4/+1gBXsyc+eoFYOJf6NZX7Z
-	t4lQ==
-X-Gm-Message-State: AMCzsaWeInpg8+KjqEuCrrNVWBugD/4M6yXDTpbf4OQ8AZdsk3SehcYb
-	5Ee9bKywshQoxMeh22fiTNsgblue
-X-Google-Smtp-Source: AOwi7QBtCdDe3MudQxKp/WPsUc+++nMWxTWE3d934s7T5wF5KgO8VC4HH65QFP0jGxStD9j7h2P2xw==
-X-Received: by 10.237.60.154 with SMTP id d26mr15473900qtf.227.1508199186097; 
-	Mon, 16 Oct 2017 17:13:06 -0700 (PDT)
-Received: from x1.local ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id r6sm5409043qkh.22.2017.10.16.17.13.03
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 16 Oct 2017 17:13:05 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Date: Mon, 16 Oct 2017 21:11:42 -0300
-Message-Id: <20171017001209.32276-13-f4bug@amsat.org>
-X-Mailer: git-send-email 2.15.0.rc0
-In-Reply-To: <20171017001209.32276-1-f4bug@amsat.org>
-References: <20171017001209.32276-1-f4bug@amsat.org>
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1751677AbdK0Kod (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 5 others); Mon, 27 Nov 2017 05:44:33 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2178 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1751598AbdK0Koc (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 27 Nov 2017 05:44:32 -0500
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.60])
+        by Forcepoint Email with ESMTP id 9D7735564F959;
+        Mon, 27 Nov 2017 18:44:25 +0800 (CST)
+Received: from localhost.localdomain (10.143.28.90) by
+ DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server id
+ 14.3.361.1; Mon, 27 Nov 2017 18:44:21 +0800
+From:   Dongjiu Geng <gengdongjiu@huawei.com>
+To:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
+        <zhaoshenglong@huawei.com>, <peter.maydell@linaro.org>,
+        <mtosatti@redhat.com>, <james.morse@arm.com>, <lersek@redhat.com>,
+        <marc.zyngier@arm.com>, <christoffer.dall@linaro.org>,
+        <rth@twiddle.net>, <ehabkost@redhat.com>, <kvm@vger.kernel.org>,
+        <guohanjun@huawei.com>, <lijinyue@huawei.com>,
+        <huangshaoyu@huawei.com>, <wuquanming@huawei.com>,
+        <zhengqiang10@huawei.com>, <linuxarm@huawei.com>,
+        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+Subject: [PATCH v13 07/12] target-arm: handle SError interrupt exception from the guest OS
+Date:   Tue, 28 Nov 2017 02:49:50 +0800
+Message-ID: <1511808595-24158-8-git-send-email-gengdongjiu@huawei.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1511808595-24158-1-git-send-email-gengdongjiu@huawei.com>
+References: <1511808595-24158-1-git-send-email-gengdongjiu@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::244
-Subject: [Qemu-devel] [PATCH v2 12/39] misc: remove duplicated includes
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CLLde3HxOnli
+Content-Type: text/plain
+X-Originating-IP: [10.143.28.90]
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: PRX145pYh7t8
 
-exec: housekeeping (funny since 02d0e095031)
+When guest OS happens SError interrupt(SEI), it will trap to
+host. Host check the Asynchronous Error Type(ESR_ELx.AET). If
+it the error has not been propagated and has not (yet) been
+architecturally consumed by the PE, it will return to use space
+with error code KVM_SEI_SEV_RECOVERABLE.
 
-applied using ./scripts/clean-includes
+Qemu receive this exception exit, check whether KVM support to
+set ESR(exception syndrome registers) value. If support, it sets
+the ESR value using a new IOCTL.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Acked-by: Cornelia Huck <cohuck@redhat.com>
-Reviewed-by: Anthony PERARD <anthony.perard@citrix.com>
+This handling is only supported in AArch64 platform, not supported
+in AArch32 platform.
+
+Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+Signed-off-by: Quanming Wu <wuquanming@huawei.com>
 ---
- accel/tcg/translate-all.c          | 1 -
- exec.c                             | 3 ---
- hw/arm/spitz.c                     | 1 -
- hw/char/xen_console.c              | 1 -
- hw/core/machine.c                  | 1 -
- hw/s390x/css.c                     | 1 -
- target/openrisc/exception_helper.c | 1 -
- tests/vhost-user-test.c            | 1 -
- util/qemu-sockets.c                | 1 -
- vl.c                               | 1 -
- 10 files changed, 12 deletions(-)
+Address James and Marc's comments to set ESR and inject SEI by user space
+in [1]
 
-diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-index c5ce99d549..f81afb87e6 100644
---- a/accel/tcg/translate-all.c
-+++ b/accel/tcg/translate-all.c
-@@ -31,7 +31,6 @@
- #include "tcg.h"
- #if defined(CONFIG_USER_ONLY)
- #include "qemu.h"
--#include "exec/exec-all.h"
- #if defined(__FreeBSD__) || defined(__FreeBSD_kernel__)
- #include <sys/param.h>
- #if __FreeBSD_version >= 700104
-diff --git a/exec.c b/exec.c
-index 6378714a2b..c19061465f 100644
---- a/exec.c
-+++ b/exec.c
-@@ -18,8 +18,6 @@
-  */
- #include "qemu/osdep.h"
- #include "qapi/error.h"
--#ifndef _WIN32
--#endif
+[1]:
+https://lkml.org/lkml/2017/3/20/441
+https://lkml.org/lkml/2017/3/20/516
+
+Below is the log that Qemu inject SError with specify ESR and guest happen exception:
+
+ Bad mode in Error handler detected, code 0xbe000c11 -- SError
+ CPU: 0 PID: 539 Comm: devmem Tainted: G      D         4.1.0+ #20
+ Hardware name: linux,dummy-virt (DT)
+ task: ffffffc019aad600 ti: ffffffc008134000 task.ti: ffffffc008134000
+ PC is at 0x405cc0
+ LR is at 0x40ce80
+ pc : [<0000000000405cc0>] lr : [<000000000040ce80>] pstate: 60000000
+ sp : ffffffc008137ff0
+ x29: 0000007fd9e80790 x28: 0000000000000000
+ x27: 00000000000000ad x26: 000000000049c000
+ x25: 000000000048904b x24: 000000000049c000
+ x23: 0000000040600000 x22: 0000007fd9e808d0
+ x21: 0000000000000002 x20: 0000000000000000
+ x19: 0000000000000020 x18: 0000000000000000
+ x17: 0000000000405cc0 x16: 000000000049c698
+ x15: 0000000000005798 x14: 0000007f93875f1c
+ x13: 0000007f93a8ccb0 x12: 0000000000000137
+ x11: 0000000000000000 x10: 0000000000000000
+ x9 : 0000000000000000 x8 : 00000000000000de
+ x7 : 0000000000000000 x6 : 0000000000002000
+ x5 : 0000000040600000 x4 : 0000000000000003
+ x3 : 0000000000000001 x2 : 00000000000f123b
+ x1 : 0000000000000008 x0 : 000000000047a048
+---
+ target/arm/internals.h |  4 ++++
+ target/arm/kvm.c       |  3 +++
+ target/arm/kvm32.c     |  6 ++++++
+ target/arm/kvm64.c     | 34 ++++++++++++++++++++++++++++++++++
+ target/arm/kvm_arm.h   |  8 ++++++++
+ 5 files changed, 55 insertions(+)
+
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 1f6efef..cd26a9d 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -233,9 +233,13 @@ enum arm_exception_class {
+ #define ARM_EL_EC_SHIFT 26
+ #define ARM_EL_IL_SHIFT 25
+ #define ARM_EL_ISV_SHIFT 24
++#define ARM_EL_AET_SHIFT 10
+ #define ARM_EL_IL (1 << ARM_EL_IL_SHIFT)
+ #define ARM_EL_ISV (1 << ARM_EL_ISV_SHIFT)
  
- #include "qemu/cutils.h"
- #include "cpu.h"
-@@ -51,7 +49,6 @@
- #include "trace-root.h"
++/* Asynchronous Error Type */
++#define KVM_SEI_SEV_RECOVERABLE 1
++
+ /* Utility functions for constructing various kinds of syndrome value.
+  * Note that in general we follow the AArch64 syndrome values; in a
+  * few cases the value in HSR for exceptions taken to AArch32 Hyp
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 7c17f0d..d85e36a 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -593,6 +593,9 @@ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
+             ret = EXCP_DEBUG;
+         } /* otherwise return to guest */
+         break;
++    case KVM_EXIT_EXCEPTION:
++        kvm_arm_handle_exception(cs, run);
++        break;
+     default:
+         qemu_log_mask(LOG_UNIMP, "%s: un-handled exit reason %d\n",
+                       __func__, run->exit_reason);
+diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
+index 069da0c..8ce56fd 100644
+--- a/target/arm/kvm32.c
++++ b/target/arm/kvm32.c
+@@ -493,6 +493,12 @@ bool kvm_arm_handle_debug(CPUState *cs, struct kvm_debug_exit_arch *debug_exit)
+     return false;
+ }
  
- #ifdef CONFIG_FALLOCATE_PUNCH_HOLE
--#include <fcntl.h>
- #include <linux/falloc.h>
++bool kvm_arm_handle_exception(CPUState *cs, struct kvm_run *run)
++{
++    qemu_log_mask(LOG_UNIMP, "%s: not implemented\n", __func__);
++    return false;
++}
++
+ int kvm_arch_insert_hw_breakpoint(target_ulong addr,
+                                   target_ulong len, int type)
+ {
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index af8ebc9..2d0eb32 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -986,3 +986,37 @@ static bool kvm_can_set_vcpu_esr(struct KVMState *state)
+     int ret = kvm_check_extension(state, KVM_CAP_ARM_INJECT_SERROR_ESR);
+     return (ret) ? true : false;
+ }
++
++static bool kvm_inject_arm_sei(CPUState *cs, unsigned int error_code)
++{
++    int ret;
++    /* IMPLEMENTATION DEFINED syndrome by default */
++    uint32_t syndrome = ARM_EL_ISV;
++
++    if (kvm_can_set_vcpu_esr(cs->kvm_state)) {
++        if (error_code == KVM_SEI_SEV_RECOVERABLE) {
++            /* Set Recoverable Asynchronous SError interrupt Type */
++            syndrome = (3 << ARM_EL_AET_SHIFT) | 0x11;
++        }
++        ret = kvm_vcpu_ioctl(cs, KVM_ARM_INJECT_SERROR_ESR, &syndrome);
++        if (ret < 0) {
++            fprintf(stderr, "KVM_ARM_SET_SERROR_ESR failed: %s\n",
++                    strerror(-ret));
++            abort();
++        }
++
++        return true;
++    }
++
++    return false;
++}
++
++bool kvm_arm_handle_exception(CPUState *cs, struct kvm_run *run)
++{
++    int exception = run->ex.exception;
++    unsigned int error_code = run->ex.error_code;
++    if (exception == EC_SERROR) {
++        return kvm_inject_arm_sei(cs, error_code);
++    }
++    return false;
++}
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index 633d088..b2a7933 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -288,4 +288,12 @@ static inline const char *its_class_name(void)
+     }
+ }
+ 
++/**
++ * kvm_arm_handle_exception:
++ * @cs: CPUState
++ * @run: KVM RUN structure
++ *
++ * Returns: TRUE if the SError exception was successfully handled
++ */
++bool kvm_arm_handle_exception(CPUState *cs, struct kvm_run *run);
  #endif
- 
-diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
-index feccdb00d3..ac1e15cbbc 100644
---- a/hw/arm/spitz.c
-+++ b/hw/arm/spitz.c
-@@ -29,7 +29,6 @@
- #include "sysemu/block-backend.h"
- #include "hw/sysbus.h"
- #include "exec/address-spaces.h"
--#include "sysemu/sysemu.h"
- #include "cpu.h"
- 
- #undef REG_FMT
-diff --git a/hw/char/xen_console.c b/hw/char/xen_console.c
-index 3643dfe067..5e68326c19 100644
---- a/hw/char/xen_console.c
-+++ b/hw/char/xen_console.c
-@@ -27,7 +27,6 @@
- #include "hw/hw.h"
- #include "chardev/char-fe.h"
- #include "hw/xen/xen_backend.h"
--#include "qapi/error.h"
- 
- #include <xen/io/console.h>
- 
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 36c2fb069c..c857f3f934 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -20,7 +20,6 @@
- #include "sysemu/numa.h"
- #include "qemu/error-report.h"
- #include "qemu/cutils.h"
--#include "sysemu/numa.h"
- #include "sysemu/qtest.h"
- 
- static char *machine_get_accel(Object *obj, Error **errp)
-diff --git a/hw/s390x/css.c b/hw/s390x/css.c
-index 35683d7954..2f4d40a5fb 100644
---- a/hw/s390x/css.c
-+++ b/hw/s390x/css.c
-@@ -13,7 +13,6 @@
- #include "qapi/error.h"
- #include "qapi/visitor.h"
- #include "hw/qdev.h"
--#include "qemu/error-report.h"
- #include "qemu/bitops.h"
- #include "qemu/error-report.h"
- #include "exec/address-spaces.h"
-diff --git a/target/openrisc/exception_helper.c b/target/openrisc/exception_helper.c
-index a8a5f69b05..6073a5b21c 100644
---- a/target/openrisc/exception_helper.c
-+++ b/target/openrisc/exception_helper.c
-@@ -21,7 +21,6 @@
- #include "cpu.h"
- #include "exec/exec-all.h"
- #include "exec/helper-proto.h"
--#include "exec/exec-all.h"
- #include "exception.h"
- 
- void HELPER(exception)(CPUOpenRISCState *env, uint32_t excp)
-diff --git a/tests/vhost-user-test.c b/tests/vhost-user-test.c
-index 4b98018478..e2c89ed376 100644
---- a/tests/vhost-user-test.c
-+++ b/tests/vhost-user-test.c
-@@ -21,7 +21,6 @@
- #include "libqos/libqos.h"
- #include "libqos/pci-pc.h"
- #include "libqos/virtio-pci.h"
--#include "qapi/error.h"
- 
- #include "libqos/malloc-pc.h"
- #include "hw/virtio/virtio-net.h"
-diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
-index d149383bb9..d700caef45 100644
---- a/util/qemu-sockets.c
-+++ b/util/qemu-sockets.c
-@@ -26,7 +26,6 @@
- #include "qapi/error.h"
- #include "qemu/sockets.h"
- #include "qemu/main-loop.h"
--#include "qapi/clone-visitor.h"
- #include "qapi/qobject-input-visitor.h"
- #include "qapi/qobject-output-visitor.h"
- #include "qapi-visit.h"
-diff --git a/vl.c b/vl.c
-index 0723835bbf..0d1f612629 100644
---- a/vl.c
-+++ b/vl.c
-@@ -95,7 +95,6 @@ int main(int argc, char **argv)
- #include "sysemu/kvm.h"
- #include "sysemu/hax.h"
- #include "qapi/qobject-input-visitor.h"
--#include "qapi/qobject-input-visitor.h"
- #include "qapi-visit.h"
- #include "qapi/qmp/qjson.h"
- #include "qemu/option.h"
 -- 
-2.15.0.rc0
-
+1.8.3.1

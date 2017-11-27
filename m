@@ -1,101 +1,83 @@
-Received: by 10.28.173.206 with SMTP id w197csp59646wme;
-        Fri, 12 Jan 2018 16:35:48 -0800 (PST)
-X-Google-Smtp-Source: ACJfBovi4ok57evnO7rAKxyL4ceCg3Fj/uIsdvZKxwgt70hpFNkc9uIwQYT0dteePT90qVnkOiEb
-X-Received: by 10.129.124.215 with SMTP id x206mr14673957ywc.292.1515803748463;
-        Fri, 12 Jan 2018 16:35:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515803748; cv=none;
+Received: by 10.223.159.82 with SMTP id f18csp1015533wrg;
+        Sun, 26 Nov 2017 18:20:15 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMZiYal+RHM5A7uc2OPzIb9YGmUyaUNvDAfBH6q2FUmmXQZ/gE5zPnWW00PwWuZtL19Wy86c
+X-Received: by 10.37.177.31 with SMTP id g31mr22124074ybj.379.1511749215797;
+        Sun, 26 Nov 2017 18:20:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1511749215; cv=none;
         d=google.com; s=arc-20160816;
-        b=IiqC7zYr+eWbCbWW+SG+DNqzlh4kL+3iogmA6mcIAmQbvPFGvjACTBq22E0l0uxKco
-         QuzYC6wnrZJtgvz5mEd6ZUuY9FAsLvPnlWn1DIsZHhokyIwgjPZRNswMwTJQX7EoeNKA
-         Y/iL35SKw4GNZP098oX9/kQzeQV5hWxqpqct+FqSv2jx90IMofOVqYqp4tR67M4V3RPx
-         Zh5K+Cc48wEcHiUlDjYWFdoMwBeFcf9ORmG35Z6IliT28sFz7j721VABtBd2btXp8AuU
-         qAar4ChePFCX9AB/lEIUmm/xSpByHz1IIoxX4mAoxP+ffEYlR9PdGj4tI/1pRu/nLzJK
-         08Iw==
+        b=mX1Eol1kUm6nX8aLFpn2s+ZRMNjXifqRhNPHiPK0l7lOXVHMv6c4PKp68uiKMEWtg4
+         0UVEQIsmh0tiP9jCyQL+76WJ+mVAf3Hr+h/y8vWed8bJ5hWHFJbTlvH9KQ3KlfwI8nTy
+         bVr1YzBMQPagbEju3zKvuRa7z4YX95zxYE/fttaH2zi6qSfstmH7GK14MYXO2emhref9
+         m2v//F5T8D0PXSg5mBjLOPaY/aGtE2INOAx0Ra91luuosw2MH/YRd2fN2lgzJOCr6oE7
+         B/m+wkrCBcjvBLqL79UsQceZXOR8Z5Agf/9q2VpPn0X+r0Sz4qfvIg4dZg9tCGe1G81s
+         48fw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=+e/9ZUy6dkR6k599qh/mVXENEqbubCNBdtnbLqBSLts=;
-        b=GhtjkB5R/eXxYfZpPw7XqwrT7NWq5UX0k0+BaH0j1RwuItiCRPc6N/MzWfzJKjlhhD
-         HWlLbEHjgKpCl2Q1Vov+6dV3JNnwj05W831Duk0QSR4/EuYMaWSUcbcuX2Tz5+8pXxrG
-         iyD/syY8HYfm+4G3hY8f4T2z5/dYCKkmrqfLxA8Na6VnmBZlo5pIXSfyijPHgkmbdl5Z
-         ciX2DgLb1oZ3zeoIN0RodbYB5phvJ19jfsC0na62OCWK523G3Ywvd3SjKdvtepHK22PA
-         dxFSqhKeq3ddVkBs1mvaqQmAjwL+AiptFchXB2vQCDmkVKhVODdz/iWxNeO87kk7MwTP
-         VlMQ==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature:arc-authentication-results;
+        bh=b2+I/+5QqntXgXG/gWRaENSNpChcOdUfI8n293lsYgE=;
+        b=eNtT/G7KuZ27VbJTtc/v/IAvUd4XkPMiWWBQ0a9gCRxYnVBRKwfkMkqeZ5o8pHWTL/
+         U1P/HggFy2RYK9cB3TqF5WBEpCLWoGKqBrCKi555eGRki/4n9TOKQ1++4wOA/ijLAf3n
+         /ZLLb3zzkc5gvlPQ92u5U+0FyM2EZudfpvD7c6h3ewOj5y1NbbVP6HrCABDDQM7KE8py
+         DGqZV0pjQuGw8ZM3zon/I/qiwilIZ9fhaTELdhw5t+6wm/V3TCggIsILsLrLk3chpEQB
+         Z5invBPaJxc0zsdjw0CVn01jaynT/P0YuhKLoI2TPXc5iFLC8Uhc9HDxvhJcnQDOYhin
+         8r5w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=No10H3Ii;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=qGfoN7ue;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i132si2030157ywe.557.2018.01.12.16.35.48
+        by mx.google.com with ESMTPS id g6si5661134ybg.406.2017.11.26.18.20.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Jan 2018 16:35:48 -0800 (PST)
+        Sun, 26 Nov 2017 18:20:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=No10H3Ii;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=qGfoN7ue;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51338 helo=lists.gnu.org)
+Received: from localhost ([::1]:58827 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ea9nX-0001eX-Sx
-	for alex.bennee@linaro.org; Fri, 12 Jan 2018 19:35:47 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60912)
+	id 1eJ91r-0002ky-4e
+	for alex.bennee@linaro.org; Sun, 26 Nov 2017 21:20:15 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38254)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1ea9nK-0001cn-Mu
-	for qemu-arm@nongnu.org; Fri, 12 Jan 2018 19:35:35 -0500
+	(envelope-from <dgibson@ozlabs.org>) id 1eJ91f-0002hW-O4
+	for qemu-arm@nongnu.org; Sun, 26 Nov 2017 21:20:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1ea9nJ-0006zt-47
-	for qemu-arm@nongnu.org; Fri, 12 Jan 2018 19:35:34 -0500
-Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:34318)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1ea9nF-0006xe-KX; Fri, 12 Jan 2018 19:35:29 -0500
-Received: by mail-wm0-x243.google.com with SMTP id 81so4489708wmb.1;
-	Fri, 12 Jan 2018 16:35:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-transfer-encoding;
-	bh=+e/9ZUy6dkR6k599qh/mVXENEqbubCNBdtnbLqBSLts=;
-	b=No10H3Iih8dHrgS1vS8J3q3UrZX0DulNKofTUmowbhVbQoAIAwJ998+kiMpwhB7rQ3
-	qNsTSCdQleUrVFsRcp2z5qqZxkxagq+XLtrt8/Hiod4ejaW5Y3tvlNSfLz47xE3TtsPo
-	yDsMbvntYpeEEeuci8uNyKFPwYUhjFSaAlOrITnakFpCDPeXTCneGmyPTlgYb4qVSJhX
-	iqyxYpCKmKE7RNE8t2lFzS1GZH65NNm2ZiG9JqtXiFd5X+vCxAZfHfwo6o4BV+EwAJLY
-	93UOij5BEYLiDppO2cDdDcYKa1VkFNqrqRTBoOWmNIricb2SG+PvlM/Ohz0ixWHKQjHI
-	ybWw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc:content-transfer-encoding;
-	bh=+e/9ZUy6dkR6k599qh/mVXENEqbubCNBdtnbLqBSLts=;
-	b=fugTm0/E9WBdzGNXjaYRqV+ULvOR/9lx2Rm6u65l6w7fuUVFK5wkDeTtwApgkuVKYj
-	y5mCvpsV/lecp6kO6dMSB8GEHUTwVvxnoos9KAO3bZzxARvOAPZD07nfgAFQwe27gFUQ
-	PDbMwu+Y4bqmq0VSb9aqCR3lgGEglbwkUMIYJrXxg7skKD81HK10uLf6fzDim5TL568X
-	3zkU8AqS8m4xevMd1yV5K8mmeQLg5U6buIflML0aQ6z35LV+e7djTHV1EZPeGzhns3eB
-	ZzS0JldHKu4osQSNd1bHaDadgvxHj10nOyoNUFh+sQ7z8Gxc/XXEfWEL8FRORq9bQ+fC
-	5pTQ==
-X-Gm-Message-State: AKwxytcl/y/tNCmeq/8OFL9dsGN3WWboLO5jNtiLKV4qFSN7bffT/mXm
-	6jqK4P3QkQd0rkhRlja6S9KEteOER4c/5q10Mdw=
-X-Received: by 10.28.105.214 with SMTP id z83mr5615400wmh.77.1515803728138;
-	Fri, 12 Jan 2018 16:35:28 -0800 (PST)
+	(envelope-from <dgibson@ozlabs.org>) id 1eJ91e-0001Gq-16
+	for qemu-arm@nongnu.org; Sun, 26 Nov 2017 21:20:03 -0500
+Received: from ozlabs.org ([103.22.144.67]:36503)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>) id 1eJ91d-0001GG-Dm
+	for qemu-arm@nongnu.org; Sun, 26 Nov 2017 21:20:01 -0500
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 3ylVqk6lD6z9sPm; Mon, 27 Nov 2017 13:19:46 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1511749186;
+	bh=isg8kgNcQfPOq7eY4f/zbxq6Cj8emQq66m+wTonjZcg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=qGfoN7uetKJNtkPt4BafDIwp59+tNu3tSO1U9LtGPTP5zg9NySgKEjqpmeET1z4GR
+	El7BYhiQwV51L2xGP4+qsaj9mr5jy7Dqx/BVNnmh5iDmDIbi6kz6g44y2/ZXS6H888
+	l/2oZPBZKGf/nW5R0HY2QEktyqPO/JxPT+N47IMw=
+Date: Mon, 27 Nov 2017 12:51:23 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Message-ID: <20171127015123.GA11775@umbus.fritz.box>
+References: <20171125151610.20547-1-ehabkost@redhat.com>
+	<20171125151610.20547-2-ehabkost@redhat.com>
 MIME-Version: 1.0
-Received: by 10.28.164.69 with HTTP; Fri, 12 Jan 2018 16:34:57 -0800 (PST)
-In-Reply-To: <20180111205626.23291-6-f4bug@amsat.org>
-References: <20180111205626.23291-1-f4bug@amsat.org>
-	<20180111205626.23291-6-f4bug@amsat.org>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Fri, 12 Jan 2018 16:34:57 -0800
-X-Google-Sender-Auth: 8rxAN9msoDxAJ3HeoA28J36vhks
-Message-ID: <CAKmqyKNrkCQohXX+z8JR8vq0O7-89hbXJTbuyebE3+rkuJytkw@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::243
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v6 05/21] sdhci: add DMA and
- 64-bit capabilities (Spec v2)
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="EeQfGwPcQSOJBaQU"
+Content-Disposition: inline
+In-Reply-To: <20171125151610.20547-2-ehabkost@redhat.com>
+User-Agent: Mutt/1.9.1 (2017-09-22)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 103.22.144.67
+Subject: Re: [Qemu-arm] [PATCH v2 1/6] machine: Replace has_dynamic_sysbus
+ with list of allowed devices
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,222 +89,280 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Prasad J Pandit <pjp@fedoraproject.org>,
-	=?UTF-8?Q?Gr=C3=A9gory_Estrade?= <gregory.estrade@gmail.com>,
-	Andrey Smirnov <andrew.smirnov@gmail.com>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	Sai Pavan Boddu <saipava@xilinx.com>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Clement Deschamps <clement.deschamps@antfield.fr>,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>,
-	Jean-Christophe Dubois <jcd@tribudubois.net>
+Cc: jgross@suse.com, Peter Maydell <peter.maydell@linaro.org>,
+	Thomas Huth <thuth@redhat.com>, sstabellini@kernel.org,
+	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+	Alexander Graf <agraf@suse.de>,
+	Anthony Perard <anthony.perard@citrix.com>, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, Marcel Apfelbaum <marcel@redhat.com>,
+	xen-devel@lists.xenproject.org, Laszlo Ersek <lersek@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MIfp7wk7hmaL
+X-TUID: EfoBqXbxXJyb
 
-On Thu, Jan 11, 2018 at 12:56 PM, Philippe Mathieu-Daud=C3=A9
-<f4bug@amsat.org> wrote:
-> new properties are introduced, with default value to Spec v2:
-> - adma1 (disabled, deprecated in v2)
-> - adma2 (enabled)
-> - 64bit (disabled)
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+
+--EeQfGwPcQSOJBaQU
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Sat, Nov 25, 2017 at 01:16:05PM -0200, Eduardo Habkost wrote:
+> The existing has_dynamic_sysbus flag makes the machine accept
+> every user-creatable sysbus device type on the command-line.
+> Replace it with a list of allowed device types, so machines can
+> easily accept some sysbus devices while rejecting others.
+>=20
+> To keep exactly the same behavior as before, the existing
+> has_dynamic_sysbus=3Dtrue assignments are replaced with a
+> TYPE_SYS_BUS_DEVICE entry on the allowed list.  Other patches
+> will replace the TYPE_SYS_BUS_DEVICE entries with more specific
+> lists of devices.
+>=20
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: Marcel Apfelbaum <marcel@redhat.com>
+> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> Cc: Alexander Graf <agraf@suse.de>
+> Cc: David Gibson <david@gibson.dropbear.id.au>
+> Cc: Stefano Stabellini <sstabellini@kernel.org>
+> Cc: Anthony Perard <anthony.perard@citrix.com>
+> Cc: qemu-arm@nongnu.org
+> Cc: qemu-ppc@nongnu.org
+> Cc: xen-devel@lists.xenproject.org
+> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+
+Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
+
 > ---
->  hw/sd/sdhci-internal.h | 14 +++++++-------
->  include/hw/sd/sdhci.h  |  4 ++++
->  hw/sd/sdhci.c          | 36 ++++++++++++++----------------------
->  3 files changed, 25 insertions(+), 29 deletions(-)
->
-> diff --git a/hw/sd/sdhci-internal.h b/hw/sd/sdhci-internal.h
-> index c5e26bf8f3..4ed9727ec3 100644
-> --- a/hw/sd/sdhci-internal.h
-> +++ b/hw/sd/sdhci-internal.h
-> @@ -89,12 +89,12 @@
->  FIELD(SDHC_HOSTCTL, LED_CTRL,          0, 1);
->  FIELD(SDHC_HOSTCTL, DATATRANSFERWIDTH, 1, 1); /* SD mode only */
->  FIELD(SDHC_HOSTCTL, HIGH_SPEED,        2, 1);
-> -#define SDHC_CTRL_DMA_CHECK_MASK       0x18
-> +FIELD(SDHC_HOSTCTL, DMA,               3, 2);
->  #define SDHC_CTRL_SDMA                 0x00
-> -#define SDHC_CTRL_ADMA1_32             0x08
-> +#define SDHC_CTRL_ADMA1_32             0x08 /* NOT ALLOWED since v2 */
->  #define SDHC_CTRL_ADMA2_32             0x10
-> -#define SDHC_CTRL_ADMA2_64             0x18
-> -#define SDHC_DMA_TYPE(x)               ((x) & SDHC_CTRL_DMA_CHECK_MASK)
-> +#define SDHC_CTRL_ADMA2_64             0x18 /* only v1 & v2 (v3 optional=
-) */
-> +#define SDHC_DMA_TYPE(x)               ((x) & R_SDHC_HOSTCTL_DMA_MASK)
->
->  /* R/W Power Control Register 0x0 */
->  #define SDHC_PWRCON                    0x29
-> @@ -185,19 +185,19 @@ FIELD(SDHC_ACMD12ERRSTS, INDEX_ERR,    4, 1);
->
->  /* HWInit Capabilities Register 0x05E80080 */
->  #define SDHC_CAPAB                     0x40
-> -#define SDHC_CAN_DO_ADMA2              0x00080000
-> -#define SDHC_CAN_DO_ADMA1              0x00100000
-> -#define SDHC_64_BIT_BUS_SUPPORT        (1 << 28)
->  FIELD(SDHC_CAPAB, TOCLKFREQ,           0, 6);
->  FIELD(SDHC_CAPAB, TOUNIT,              7, 1);
->  FIELD(SDHC_CAPAB, BASECLKFREQ,         8, 8);
->  FIELD(SDHC_CAPAB, MAXBLOCKLENGTH,     16, 2);
-> +FIELD(SDHC_CAPAB, ADMA2,              19, 1); /* since v2 */
-> +FIELD(SDHC_CAPAB, ADMA1,              20, 1); /* v1 only? */
->  FIELD(SDHC_CAPAB, HIGHSPEED,          21, 1);
->  FIELD(SDHC_CAPAB, SDMA,               22, 1);
->  FIELD(SDHC_CAPAB, SUSPRESUME,         23, 1);
->  FIELD(SDHC_CAPAB, V33,                24, 1);
->  FIELD(SDHC_CAPAB, V30,                25, 1);
->  FIELD(SDHC_CAPAB, V18,                26, 1);
-> +FIELD(SDHC_CAPAB, BUS64BIT,           28, 1); /* since v2 */
->
->  /* HWInit Maximum Current Capabilities Register 0x0 */
->  #define SDHC_MAXCURR                   0x48
-> diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
-> index b5b4e411ff..26b50583af 100644
-> --- a/include/hw/sd/sdhci.h
-> +++ b/include/hw/sd/sdhci.h
-> @@ -93,6 +93,7 @@ typedef struct SDHCIState {
->      bool pending_insert_quirk; /* Quirk for Raspberry Pi card insert int=
- */
->      uint8_t spec_version;
->      struct {
-> +        /* v1 */
->          uint8_t timeout_clk_freq, base_clk_freq_mhz;
->          bool timeout_clk_in_mhz;
->          uint16_t max_blk_len;
-> @@ -100,6 +101,9 @@ typedef struct SDHCIState {
->          bool high_speed;
->          bool sdma;
->          bool v33, v30, v18;
-> +        /* v2 */
-> +        bool adma1, adma2;
-> +        bool bus64;
->      } cap;
->  } SDHCIState;
->
-> diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-> index 4c1fcf2c32..e2c7ec021d 100644
-> --- a/hw/sd/sdhci.c
-> +++ b/hw/sd/sdhci.c
-> @@ -38,24 +38,6 @@
->  #define TYPE_SDHCI_BUS "sdhci-bus"
->  #define SDHCI_BUS(obj) OBJECT_CHECK(SDBus, (obj), TYPE_SDHCI_BUS)
->
-> -/* Default SD/MMC host controller features information, which will be
-> - * presented in CAPABILITIES register of generic SD host controller at r=
-eset.
-> - * If not stated otherwise:
-> - * 0 - not supported, 1 - supported, other - prohibited.
-> - */
-> -#define SDHC_CAPAB_64BITBUS       0ul        /* 64-bit System Bus Suppor=
-t */
-> -#define SDHC_CAPAB_ADMA1          1ul        /* ADMA1 support */
-> -#define SDHC_CAPAB_ADMA2          1ul        /* ADMA2 support */
-> -
-> -/* Now check all parameters and calculate CAPABILITIES REGISTER value */
-> -#if SDHC_CAPAB_64BITBUS > 1 || SDHC_CAPAB_ADMA2 > 1 || SDHC_CAPAB_ADMA1 =
-> 1
-> -#error Capabilities features can have value 0 or 1 only!
-> -#endif
-> -
-> -#define SDHC_CAPAB_REG_DEFAULT                                 \
-> -   ((SDHC_CAPAB_64BITBUS << 28) | (SDHC_CAPAB_ADMA1 << 20) |   \
-> -    (SDHC_CAPAB_ADMA2 << 19))
-> -
->  #define MASKED_WRITE(reg, mask, val)  (reg =3D (reg & (mask)) | (val))
->
->  static void sdhci_check_capab_freq_range(SDHCIState *s, const char *desc=
-,
-> @@ -72,6 +54,8 @@ static void sdhci_check_capab_freq_range(SDHCIState *s,=
- const char *desc,
->      }
->  }
->
-> +/* Default SD/MMC host controller features information, which will be
-> + * presented in CAPABILITIES register of generic SD host controller at r=
-eset. */
-
-*/ should be on a new line.
-
-Once that is fixed:
-
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
-
-Alistair
-
->  static void sdhci_init_capareg(SDHCIState *s, Error **errp)
->  {
->      uint64_t capareg =3D 0;
-> @@ -79,6 +63,10 @@ static void sdhci_init_capareg(SDHCIState *s, Error **=
-errp)
->
->      switch (s->spec_version) {
->      case 2: /* default version */
-> +        capareg =3D FIELD_DP64(capareg, SDHC_CAPAB, ADMA1, s->cap.adma1)=
-;
-> +        capareg =3D FIELD_DP64(capareg, SDHC_CAPAB, ADMA2, s->cap.adma2)=
-;
-> +        /* 64-bit System Bus Support */
-> +        capareg =3D FIELD_DP64(capareg, SDHC_CAPAB, BUS64BIT, s->cap.bus=
-64);
->
->      /* fallback */
->      case 1:
-> @@ -792,7 +780,7 @@ static void sdhci_data_transfer(void *opaque)
->
->              break;
->          case SDHC_CTRL_ADMA1_32:
-> -            if (!(s->capareg & SDHC_CAN_DO_ADMA1)) {
-> +            if (!(s->capareg & R_SDHC_CAPAB_ADMA1_MASK)) {
->                  trace_sdhci_error("ADMA1 not supported");
->                  break;
->              }
-> @@ -800,7 +788,7 @@ static void sdhci_data_transfer(void *opaque)
->              sdhci_do_adma(s);
->              break;
->          case SDHC_CTRL_ADMA2_32:
-> -            if (!(s->capareg & SDHC_CAN_DO_ADMA2)) {
-> +            if (!(s->capareg & R_SDHC_CAPAB_ADMA2_MASK)) {
->                  trace_sdhci_error("ADMA2 not supported");
->                  break;
->              }
-> @@ -808,8 +796,8 @@ static void sdhci_data_transfer(void *opaque)
->              sdhci_do_adma(s);
->              break;
->          case SDHC_CTRL_ADMA2_64:
-> -            if (!(s->capareg & SDHC_CAN_DO_ADMA2) ||
-> -                    !(s->capareg & SDHC_64_BIT_BUS_SUPPORT)) {
-> +            if (!(s->capareg & R_SDHC_CAPAB_ADMA2_MASK) ||
-> +                    !(s->capareg & R_SDHC_CAPAB_BUS64BIT_MASK)) {
->                  trace_sdhci_error("64 bit ADMA not supported");
->                  break;
->              }
-> @@ -1317,6 +1305,8 @@ static Property sdhci_properties[] =3D {
->      DEFINE_PROP_UINT16("max-block-length", SDHCIState, cap.max_blk_len, =
-512),
->      /* DMA */
->      DEFINE_PROP_BOOL("sdma", SDHCIState, cap.sdma, true),
-> +    DEFINE_PROP_BOOL("adma1", SDHCIState, cap.adma1, false),
-> +    DEFINE_PROP_BOOL("adma2", SDHCIState, cap.adma2, true),
->      /* Suspend/resume support */
->      DEFINE_PROP_BOOL("suspend", SDHCIState, cap.suspend, false),
->      /* High speed support */
-> @@ -1326,6 +1316,8 @@ static Property sdhci_properties[] =3D {
->      DEFINE_PROP_BOOL("3v0", SDHCIState, cap.v30, false),
->      DEFINE_PROP_BOOL("1v8", SDHCIState, cap.v18, false),
->
-> +    DEFINE_PROP_BOOL("64bit", SDHCIState, cap.bus64, false),
+> Changes v1 -> v2:
+> * Replace "dynamic sysbus whitelist" with "allowed sysbus devices"
+> * Simply add TYPE_SYS_BUS_DEVICE to the list on existing
+>   has_dynamic_sysbus=3Dtrue machines, and make machine-types more
+>   strict in separate patches
+> ---
+>  include/hw/boards.h  |  5 ++++-
+>  hw/arm/virt.c        |  3 ++-
+>  hw/core/machine.c    | 43 +++++++++++++++++++++++++++++--------------
+>  hw/i386/pc_q35.c     |  3 ++-
+>  hw/ppc/e500plat.c    |  4 +++-
+>  hw/ppc/spapr.c       |  3 ++-
+>  hw/xen/xen_backend.c |  7 ++++++-
+>  7 files changed, 48 insertions(+), 20 deletions(-)
+>=20
+> diff --git a/include/hw/boards.h b/include/hw/boards.h
+> index 156b16f7a6..041bc08971 100644
+> --- a/include/hw/boards.h
+> +++ b/include/hw/boards.h
+> @@ -76,6 +76,9 @@ void machine_set_cpu_numa_node(MachineState *machine,
+>                                 const CpuInstanceProperties *props,
+>                                 Error **errp);
+> =20
+> +void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const char=
+ *type);
 > +
->      /* capareg: deprecated */
->      DEFINE_PROP_UINT64("capareg", SDHCIState, capareg, UINT64_MAX),
->
-> --
-> 2.15.1
->
->
+> +
+>  /**
+>   * CPUArchId:
+>   * @arch_id - architecture-dependent CPU ID of present or possible CPU
+> @@ -179,7 +182,6 @@ struct MachineClass {
+>          no_floppy:1,
+>          no_cdrom:1,
+>          no_sdcard:1,
+> -        has_dynamic_sysbus:1,
+>          pci_allow_0_address:1,
+>          legacy_fw_cfg_order:1;
+>      int is_default;
+> @@ -197,6 +199,7 @@ struct MachineClass {
+>      bool ignore_memory_transaction_failures;
+>      int numa_mem_align_shift;
+>      const char **valid_cpu_types;
+> +    strList *allowed_dynamic_sysbus_devices;
+>      bool auto_enable_numa_with_memhp;
+>      void (*numa_auto_assign_ram)(MachineClass *mc, NodeInfo *nodes,
+>                                   int nb_nodes, ram_addr_t size);
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 9e18b410d7..fa6dc15fcd 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1591,7 +1591,8 @@ static void virt_machine_class_init(ObjectClass *oc=
+, void *data)
+>       * configuration of the particular instance.
+>       */
+>      mc->max_cpus =3D 255;
+> -    mc->has_dynamic_sysbus =3D true;
+> +    /*TODO: allow only sysbus devices that really work with this machine=
+ */
+> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_SYS_BUS_DEVICE);
+>      mc->block_default_type =3D IF_VIRTIO;
+>      mc->no_cdrom =3D 1;
+>      mc->pci_allow_0_address =3D true;
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index 36c2fb069c..ab2ec292f3 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -335,29 +335,44 @@ static bool machine_get_enforce_config_section(Obje=
+ct *obj, Error **errp)
+>      return ms->enforce_config_section;
+>  }
+> =20
+> -static void error_on_sysbus_device(SysBusDevice *sbdev, void *opaque)
+> +void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const char=
+ *type)
+>  {
+> -    error_report("Option '-device %s' cannot be handled by this machine",
+> -                 object_class_get_name(object_get_class(OBJECT(sbdev))));
+> -    exit(1);
+> +    strList *item =3D g_new0(strList, 1);
+> +
+> +    item->value =3D g_strdup(type);
+> +    item->next =3D mc->allowed_dynamic_sysbus_devices;
+> +    mc->allowed_dynamic_sysbus_devices =3D item;
+>  }
+> =20
+> -static void machine_init_notify(Notifier *notifier, void *data)
+> +static void validate_sysbus_device(SysBusDevice *sbdev, void *opaque)
+>  {
+> -    Object *machine =3D qdev_get_machine();
+> -    ObjectClass *oc =3D object_get_class(machine);
+> -    MachineClass *mc =3D MACHINE_CLASS(oc);
+> +    MachineState *machine =3D opaque;
+> +    MachineClass *mc =3D MACHINE_GET_CLASS(machine);
+> +    bool allowed =3D false;
+> +    strList *wl;
+> =20
+> -    if (mc->has_dynamic_sysbus) {
+> -        /* Our machine can handle dynamic sysbus devices, we're all good=
+ */
+> -        return;
+> +    for (wl =3D mc->allowed_dynamic_sysbus_devices;
+> +         !allowed && wl;
+> +         wl =3D wl->next) {
+> +        allowed |=3D !!object_dynamic_cast(OBJECT(sbdev), wl->value);
+>      }
+> =20
+> +    if (!allowed) {
+> +        error_report("Option '-device %s' cannot be handled by this mach=
+ine",
+> +                     object_class_get_name(object_get_class(OBJECT(sbdev=
+))));
+> +        exit(1);
+> +    }
+> +}
+> +
+> +static void machine_init_notify(Notifier *notifier, void *data)
+> +{
+> +    MachineState *machine =3D MACHINE(qdev_get_machine());
+> +
+>      /*
+> -     * Loop through all dynamically created devices and check whether th=
+ere
+> -     * are sysbus devices among them. If there are, error out.
+> +     * Loop through all dynamically created sysbus devices and check if =
+they are
+> +     * all allowed.  If a device is not allowed, error out.
+>       */
+> -    foreach_dynamic_sysbus_device(error_on_sysbus_device, NULL);
+> +    foreach_dynamic_sysbus_device(validate_sysbus_device, machine);
+>  }
+> =20
+>  HotpluggableCPUList *machine_query_hotpluggable_cpus(MachineState *machi=
+ne)
+> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+> index d6060043ac..d0b0e5b422 100644
+> --- a/hw/i386/pc_q35.c
+> +++ b/hw/i386/pc_q35.c
+> @@ -299,7 +299,8 @@ static void pc_q35_machine_options(MachineClass *m)
+>      m->default_machine_opts =3D "firmware=3Dbios-256k.bin";
+>      m->default_display =3D "std";
+>      m->no_floppy =3D 1;
+> -    m->has_dynamic_sysbus =3D true;
+> +    /*TODO: allow only sysbus devices that really work with this machine=
+ */
+> +    machine_class_allow_dynamic_sysbus_dev(m, TYPE_SYS_BUS_DEVICE);
+>      m->max_cpus =3D 288;
+>  }
+> =20
+> diff --git a/hw/ppc/e500plat.c b/hw/ppc/e500plat.c
+> index e59e80fb9e..438118c29b 100644
+> --- a/hw/ppc/e500plat.c
+> +++ b/hw/ppc/e500plat.c
+> @@ -15,6 +15,7 @@
+>  #include "hw/boards.h"
+>  #include "sysemu/device_tree.h"
+>  #include "sysemu/kvm.h"
+> +#include "hw/sysbus.h"
+>  #include "hw/pci/pci.h"
+>  #include "hw/ppc/openpic.h"
+>  #include "kvm_ppc.h"
+> @@ -63,7 +64,8 @@ static void e500plat_machine_init(MachineClass *mc)
+>      mc->desc =3D "generic paravirt e500 platform";
+>      mc->init =3D e500plat_init;
+>      mc->max_cpus =3D 32;
+> -    mc->has_dynamic_sysbus =3D true;
+> +    /*TODO: allow only sysbus devices that really work with this machine=
+ */
+> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_SYS_BUS_DEVICE);
+>      mc->default_cpu_type =3D POWERPC_CPU_TYPE_NAME("e500v2_v30");
+>  }
+> =20
+> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> index d682f013d4..82040cc5d1 100644
+> --- a/hw/ppc/spapr.c
+> +++ b/hw/ppc/spapr.c
+> @@ -3603,7 +3603,8 @@ static void spapr_machine_class_init(ObjectClass *o=
+c, void *data)
+>      mc->default_boot_order =3D "";
+>      mc->default_ram_size =3D 512 * M_BYTE;
+>      mc->kvm_type =3D spapr_kvm_type;
+> -    mc->has_dynamic_sysbus =3D true;
+> +    /*TODO: allow only sysbus devices that really work with this machine=
+ */
+> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_SYS_BUS_DEVICE);
+>      mc->pci_allow_0_address =3D true;
+>      mc->get_hotplug_handler =3D spapr_get_hotplug_handler;
+>      hc->pre_plug =3D spapr_machine_device_pre_plug;
+> diff --git a/hw/xen/xen_backend.c b/hw/xen/xen_backend.c
+> index 0f849a26d2..82380ea9ee 100644
+> --- a/hw/xen/xen_backend.c
+> +++ b/hw/xen/xen_backend.c
+> @@ -564,7 +564,12 @@ static void xen_set_dynamic_sysbus(void)
+>      ObjectClass *oc =3D object_get_class(machine);
+>      MachineClass *mc =3D MACHINE_CLASS(oc);
+> =20
+> -    mc->has_dynamic_sysbus =3D true;
+> +    /*
+> +     * Emulate old mc->has_dynamic_sysbus=3Dtrue assignment
+> +     *
+> +     *TODO: add only Xen devices to the list
+> +     */
+> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_SYS_BUS_DEVICE);
+>  }
+> =20
+>  int xen_be_register(const char *type, struct XenDevOps *ops)
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--EeQfGwPcQSOJBaQU
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlobb5kACgkQbDjKyiDZ
+s5JgiBAArSUSMABu4eiRsoYQ5vUe778ISwb6C6sXNZhCxFCBA4yX94pGcEoMTmUA
+oMgRmXep8wpQx/U0CzsBy4awtamccpT3aBRMvYfEkpB83H9dASJYSGBx06QLp1oC
+1znN65q4t49LV8vkDQamPH1JPi6J4HtTYKZtoPKeWWwgmmNN/xYPqdYj+qvv9SX9
+3+mqrodJ5Rh+eZiK6Q9qYHXKyjlfmiTTmHwt/NXJ+hxNz1ITgJAoJMAyvAtDjrxz
+B/9aBC4r1vz7HYuphvODp2vj+v5Niicy1M01uOFNFgT0zuUDeqwuTdIlASWfzOQT
+5ihBxjitB1BIddPvT2ATRPJmA61cx64KJSS4hsmJ/CSwqY0/49i7KDR7VHpuXmY4
+UWnC1bBm2oHc0VjXuff8OPdCRJhXXFC5fcxvXtU6uGUK5EhRkm1giu1TyImMd/5w
+a/66t1DoxqNyjlQS51DY4Gx1L3lp5w5Loqqmvzr9KCDf0JPtS/M0Td12PlBq2AS7
+OduaLBvyCvtRfW1RCgRkGvN48MKVI6EGXEjCK/9YC4JM/zJqS3Av+ZX/A8iPLusK
+qvDQ0K07nfeVhqRXNc4mp43y+XuIGj43JwYsFftidpF2aDQz9fnEd7UDFl0fBt83
+WiTBOrciPiDMnzjkezL2IDmNGwM2YluPlbxQlDqoNSnluniR2uA=
+=cmTC
+-----END PGP SIGNATURE-----
+
+--EeQfGwPcQSOJBaQU--

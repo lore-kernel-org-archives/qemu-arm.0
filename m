@@ -1,144 +1,162 @@
-Received: by 10.223.197.9 with SMTP id q9csp5868591wrf;
-        Wed, 18 Oct 2017 09:31:11 -0700 (PDT)
-X-Received: by 10.200.49.228 with SMTP id i33mr4087525qte.95.1508344271705;
-        Wed, 18 Oct 2017 09:31:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508344271; cv=none;
+Received: by 10.223.159.82 with SMTP id f18csp1393529wrg;
+        Mon, 27 Nov 2017 02:45:03 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMawxndGXe4OiFB/cmIRLZzZeCbMlJp7KZXaR2FWBWbw/uMWPqRLTLVCgfYQMhGmSC+/fw8S
+X-Received: by 10.98.153.18 with SMTP id d18mr30510458pfe.145.1511779503319;
+        Mon, 27 Nov 2017 02:45:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1511779503; cv=none;
         d=google.com; s=arc-20160816;
-        b=pq1nkxL0yJLjijYsGua7KBAmWWMjbLUIzfgMW6Z/YPCqukEYlM0pt8drgJ56+kUVCU
-         wtTrFvJqkG3wPCz26FpxAHLTByNiM20Yid060SR2BgQdPLdOOJ2qyuNR+0MobwP1AF1d
-         mlDF5Gy/hpTV4M+FMt5w9mi5tgtpEbmX3xC2x9DAoB8pwjVBEySytZ+UMUYVafKLXeiA
-         Q4rrima5zufOWR+XagbUYFOmcX3UDFWWFnzVBGx1UvdB+B9+iIG6419dAWMRxklZnkf0
-         x4jMW+e7G9oDUrcZ4XW62E16RMElQQklxQ9u3TKAbkh4/38qK69rWfpDSA8cF1hz+gJD
-         Vccw==
+        b=cJgmX6jLINBiKPvGMsPLDR+0W3fvGSdgcVKd3/48dRfddT4ldDvjlk4uG5spoF3IcS
+         r0ur4e/BKSmO+htoGQH0YKSbwLv41vdD/1zXLdeoPVtbwOjuaS06veAXSM1IjtMM1Fem
+         eUVZOcfKtffr/qaw5G8uMZk5JdPu8erWWQ+TWkTZJyZwt30quWUek0Lr4EnJRjCmPN5j
+         qoziQsEdWgDgM0nhQCzUAf8Dp2jKYJRLURRz8tiuQscC0HQqFQtPoD8jGOv6G6554EUT
+         RPfSXrcwuSbnAYrm4FVGebqeYmMfTJxnqRiarV28hmWo6m7JH/xnDPUT1BwAherChLTJ
+         bghw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=yy0yD6oBzwqxNAda6fAvUA/1ZssS23KItil64ZkE8F0=;
-        b=W/q7/8uZI0iGQlyMkaEFo8mbsm9+SHYbmlX2xqwwY9R/DyvfeC69/kcnLwm/86l9oD
-         w28DyvSsSVleQOiHAvBkhx57ywLRu82ttr/mVt/LUxzayDJOzyTW6EmShrSG7HvYbPjb
-         KYlR1Ftx98KTVgEI1baoMcQFfwbDyf5A6LOY5eRnxRcdh8upRh3NY+tPwm/mpka3zre7
-         0Ss/Xmk5Br2J4L//o6MlRrpUxhDFPy2q4+wAZ6wFF76jvxtG2a7MJOHPyzuRIoPbPDBe
-         vhJ4xBUOe4IvjbwlQ83DgB6KaXX/mN+4D4Zxt9FsQTmCBdTh+tTSZfwDiuvJPvqg0G51
-         hF+w==
+        h=list-id:precedence:sender:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:arc-authentication-results;
+        bh=pHjX/iaPIUVuQEH8o2n+ppTFt/KzwazOjiM7LO6Z+AA=;
+        b=AEpRgDDvqEpBs50oSsQDIXcCPOtttYovJ77/acCftCTxX9icftKL6/QkWXzYBzwZzW
+         RtWxZDoqpz17SwQXX/0twblK5GYhgegf+5wSO/0VjhHOjhg3EWaxO2dYFWMjFbulPYtL
+         cO0UNJSZjrGoU4fgAdYA19Teu4ESRAA8Xet96hfqHgGU0BbzneHTpAPNaePBvALE2M/j
+         WSih3nMiN5svJKikawtprNYybRRQgGbUcQuz00FdsK30/9/BCn73hhyvtQIAy+jpSw5E
+         rm79okFJfjBMAcExelpYQea3Mcleih6bw6EOxCVAmq79TqibVnsYMCD7JGiKSgT3JO1p
+         wKIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=GVi0XJ5D;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h138si748700qke.146.2017.10.18.09.31.11
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 18 Oct 2017 09:31:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id j24si18504689pff.153.2017.11.27.02.45.03;
+        Mon, 27 Nov 2017 02:45:03 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=GVi0XJ5D;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45541 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e4rFN-0006XE-CY
-	for alex.bennee@linaro.org; Wed, 18 Oct 2017 12:31:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41208)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e4rEN-0005q6-I4
-	for qemu-arm@nongnu.org; Wed, 18 Oct 2017 12:30:08 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e4rEM-0005VA-OZ
-	for qemu-arm@nongnu.org; Wed, 18 Oct 2017 12:30:07 -0400
-Received: from mail-wm0-x229.google.com ([2a00:1450:400c:c09::229]:53310)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1e4rEM-0005UE-Ht
-	for qemu-arm@nongnu.org; Wed, 18 Oct 2017 12:30:06 -0400
-Received: by mail-wm0-x229.google.com with SMTP id q132so11231375wmd.2
-	for <qemu-arm@nongnu.org>; Wed, 18 Oct 2017 09:30:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=yy0yD6oBzwqxNAda6fAvUA/1ZssS23KItil64ZkE8F0=;
-	b=GVi0XJ5D0dA4aLUBvbQ2tFvqgyN329ohZ320rsbgC3O7snnJImBivMzep4Dg7PGNkp
-	4x4Yq/u/Kqf7Q3nfq7KjDIOav3hCXovh3uH6MFYWrkwmdS8B5sW4tlx+vXw6+bx6O7UC
-	Ga2jDVXPXk7B5G7eiCuV9VAqPAsikb48Ua3y0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=yy0yD6oBzwqxNAda6fAvUA/1ZssS23KItil64ZkE8F0=;
-	b=C6LE6gRx+q1sAthGz1gt8nWh5JNV8pAE4DeihtZNHcYHZiOdbzngYMLcHSiTnaxhFt
-	u245Wy+P9vbrsvCTBscCjZJDDk06ulSu3QdAP4JNOVVRTxHkyJoHcl/jRjEaFld75JQU
-	gMoQUfAcylaWHHFAy6lb44K4e5Vs+EU2zByqiCvN7YPhvjBg2OfNjayapkVhXXmUhycU
-	Cg2QbwTrLiaUgJsgda1gU4QqujF7jU6XoTefggb0KvCExET46Hm/lTCa9l8rOAX7Uqnx
-	LEjXbwGd9eKsXDwumE8fhL4UC72uXR4PPQ3JkbL+npBKNyHP5u1a1QDqCNLQpdQaQWIp
-	gmDw==
-X-Gm-Message-State: AMCzsaU0MefqVGjQa9OElXCV0pRVlAEcreCmPZgMDLnajmL1SUrCjoGF
-	3l1z5slfMroo0c9edKK7VwReGVgGzUbtSK//GVdKVw==
-X-Google-Smtp-Source: ABhQp+QoLsh5N447FZsJWryjee830y745oG9IvjpX254sOU8iQ9HNn/HNHD9gmK9qC59h1KPYwMKI7Moy9Pjna69MAk=
-X-Received: by 10.28.92.136 with SMTP id q130mr6609371wmb.35.1508344203973;
-	Wed, 18 Oct 2017 09:30:03 -0700 (PDT)
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1751638AbdK0Kon (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 5 others); Mon, 27 Nov 2017 05:44:43 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:11432 "EHLO
+        szxga04-in.huawei.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1751732AbdK0Kok (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 27 Nov 2017 05:44:40 -0500
+Received: from 172.30.72.59 (EHLO DGGEMS411-HUB.china.huawei.com) ([172.30.72.59])
+        by dggrg04-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
+        with ESMTP id DLN07709;
+        Mon, 27 Nov 2017 18:44:33 +0800 (CST)
+Received: from localhost.localdomain (10.143.28.90) by
+ DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server id
+ 14.3.361.1; Mon, 27 Nov 2017 18:44:25 +0800
+From:   Dongjiu Geng <gengdongjiu@huawei.com>
+To:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
+        <zhaoshenglong@huawei.com>, <peter.maydell@linaro.org>,
+        <mtosatti@redhat.com>, <james.morse@arm.com>, <lersek@redhat.com>,
+        <marc.zyngier@arm.com>, <christoffer.dall@linaro.org>,
+        <rth@twiddle.net>, <ehabkost@redhat.com>, <kvm@vger.kernel.org>,
+        <guohanjun@huawei.com>, <lijinyue@huawei.com>,
+        <huangshaoyu@huawei.com>, <wuquanming@huawei.com>,
+        <zhengqiang10@huawei.com>, <linuxarm@huawei.com>,
+        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+Subject: [PATCH v13 11/12] hw/arm/virt: Add RAS platform version for migration
+Date:   Tue, 28 Nov 2017 02:49:54 +0800
+Message-ID: <1511808595-24158-12-git-send-email-gengdongjiu@huawei.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1511808595-24158-1-git-send-email-gengdongjiu@huawei.com>
+References: <1511808595-24158-1-git-send-email-gengdongjiu@huawei.com>
 MIME-Version: 1.0
-Received: by 10.223.161.28 with HTTP; Wed, 18 Oct 2017 09:29:43 -0700 (PDT)
-In-Reply-To: <8ded3a0e-f7da-00cd-3abd-7d4bb22a5016@kaod.org>
-References: <20171013142852.916-1-clg@kaod.org>
-	<20171013142852.916-2-clg@kaod.org>
-	<CAFEAcA-gYYbQu-Nuds3E0Aw7j0OdD5_ySm=EdMb1_FzxEoMTBQ@mail.gmail.com>
-	<8ded3a0e-f7da-00cd-3abd-7d4bb22a5016@kaod.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 18 Oct 2017 17:29:43 +0100
-Message-ID: <CAFEAcA-7+XAXTVeemQvzEfRmCoMLTBDbM7VnCS6L6k0avXRcgA@mail.gmail.com>
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::229
-Subject: Re: [Qemu-arm] [PATCH v3 1/6] aspeed: add support for the
- witherspoon-bmc board
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bRURtubFfIuD
+Content-Type: text/plain
+X-Originating-IP: [10.143.28.90]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+        refid=str=0001.0A090202.5A1BEC91.0089,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0,
+        ip=0.0.0.0,
+        so=2014-11-16 11:51:01,
+        dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 9551a392d6013e596b3e8ff46245ca4c
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 0zUK3pDWb8en
 
-On 18 October 2017 at 17:10, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
-> On 10/17/2017 05:39 PM, Peter Maydell wrote:
->> A "reads like RAM but writes are ignored" lump of memory is easy...
->
-> yes. It seems but I haven't found my way through :/
+Support this feature since version 2.10, disable it by
+default in the old version.
 
-memory_region_init_rom_device() creates a memory region
-which is backed by RAM for reads (and for debug writes,
-like ELF file loading), but backed by the usual
-device callback functions for writes. So I think you should
-just be able to use one of those but with the write
-functions doing nothing (or warning about unimp. behaviour,
-assuming that your flash devices actually have some
-kind of command behaviour for writes).
+Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+---
+Address Shannon's comments to add platform version in [1].
 
-This is how we implement the flash device with actual
-behaviour behind them.
+[1]: https://lkml.org/lkml/2017/8/25/821
+---
+ hw/arm/virt-acpi-build.c | 14 +++++++++-----
+ hw/arm/virt.c            |  4 ++++
+ include/hw/arm/virt.h    |  1 +
+ 3 files changed, 14 insertions(+), 5 deletions(-)
 
-hw/mips/boston.c actually has an example of doing a dummy
-flash device like this (though it uses
-memory_region_init_rom_device_nomigrate(), which is a bug
-because your memory contents won't get migrated if you
-do that. Use the plain function instead.)
-
-thanks
--- PMM
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 92c8c38..961b67d 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -801,10 +801,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     acpi_add_table(table_offsets, tables_blob);
+     build_spcr(tables_blob, tables->linker, vms);
+ 
+-    acpi_add_table(table_offsets, tables_blob);
+-    build_error_block(tables->hardware_errors, tables->linker);
+-    build_apei_ghes(tables_blob, tables->hardware_errors, tables->linker);
+-
++    if (!vmc->no_ras) {
++        acpi_add_table(table_offsets, tables_blob);
++        build_error_block(tables->hardware_errors, tables->linker);
++        build_apei_ghes(tables_blob, tables->hardware_errors, tables->linker);
++    }
+ 
+     if (nb_numa_nodes > 0) {
+         acpi_add_table(table_offsets, tables_blob);
+@@ -891,6 +892,7 @@ static const VMStateDescription vmstate_virt_acpi_build = {
+ 
+ void virt_acpi_setup(VirtMachineState *vms)
+ {
++    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+     AcpiBuildTables tables;
+     AcpiBuildState *build_state;
+ 
+@@ -922,7 +924,9 @@ void virt_acpi_setup(VirtMachineState *vms)
+     fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog->data,
+                     acpi_data_len(tables.tcpalog));
+ 
+-    ghes_add_fw_cfg(vms->fw_cfg, tables.hardware_errors);
++    if (!vmc->no_ras) {
++        ghes_add_fw_cfg(vms->fw_cfg, tables.hardware_errors);
++    }
+ 
+     build_state->rsdp_mr = acpi_add_rom_blob(build_state, tables.rsdp,
+                                               ACPI_BUILD_RSDP_FILE, 0);
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 68495c2..ab79988 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1732,8 +1732,12 @@ static void virt_2_9_instance_init(Object *obj)
+ 
+ static void virt_machine_2_9_options(MachineClass *mc)
+ {
++    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
++
+     virt_machine_2_10_options(mc);
+     SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_9);
++    /* memory recovery feature was introduced with 2.10 */
++    vmc->no_ras = true;
+ }
+ DEFINE_VIRT_MACHINE(2, 9)
+ 
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 33b0ff3..8fbd664 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -84,6 +84,7 @@ typedef struct {
+     bool disallow_affinity_adjustment;
+     bool no_its;
+     bool no_pmu;
++    bool no_ras;
+     bool claim_edge_triggered_timers;
+ } VirtMachineClass;
+ 
+-- 
+1.8.3.1

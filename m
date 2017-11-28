@@ -1,71 +1,81 @@
-Received: by 10.223.172.38 with SMTP id v35csp2016589wrc;
-        Sat, 16 Sep 2017 09:46:32 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QCqEAavE3kHuChjSAEJFl8V0kuwbXP2Ds049wUvvsi3w34ZycpcLhhIAYSpZ4KWojcNShoB
-X-Received: by 10.200.47.24 with SMTP id j24mr43911016qta.147.1505580392273;
-        Sat, 16 Sep 2017 09:46:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505580392; cv=none;
+Received: by 10.223.159.82 with SMTP id f18csp3043764wrg;
+        Tue, 28 Nov 2017 07:45:32 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMbeioyrlH5ChejsWG+SkENy780LgJRq9GSb0KmGPotBEcp5/XCnd2bRwIl6/x/TDJBUrG+Y
+X-Received: by 10.129.229.14 with SMTP id s14mr10266172ywl.392.1511883932445;
+        Tue, 28 Nov 2017 07:45:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1511883932; cv=none;
         d=google.com; s=arc-20160816;
-        b=OOW5YWVXlPUL+hK7G38Bldy307brBhIxpF2uwlZkP5J+n4yGoDfK8Ap3Z+yFurMjgR
-         +uyJbtb65FTLqirq/6MCYu47fVq4LuMxM4l0M7XPpS1OTfy4dozuIySRfAbZNDwgTRWw
-         zn1uR7zsMe6NBoalIde2Wh6AihngZJMOr2Z7kYZNm5HSMn6dDvN+QCFVo6A5C0SxUjie
-         RJmmuiPJsiOKdNNTQbOvKdRZ76gTm2ej24KjFq4juGr7lOS+aiJ97GDRo3v4Rs0e8hXh
-         C7PzoO+Gtn+yTtCg8FdATv2tMyxKoruxbXAfGVREYn+g8ZXvMQosSVCQbtqPdrujuMjO
-         XdiQ==
+        b=p7PKBKXb9X2AHP3kk1r9oRxF7wGBvit2Swrp/3uxHQOvacQlkfalV6u11BGSAsK5Gs
+         v7LfbsNk1BlI+FAX8AY76YYuYVmKTf2LPqlv8RwNh6s1dMqyP8sqtsfM/9PPvKqcN24L
+         h7I2IDHgsABgms/BPwLvK+x9wRu1Nzn9hTn07t/oW9Cn2rGrvIpXjieCEQX3KsA/ywgK
+         gq+0E65sdPpXH69TBDwHQI9Y3KqEjNIXhEBso6CoTxphHUR+0TAf2xT21ywY8CX8guXg
+         EcnBAACM3pJJp8ySZa3G89ai4WyVG+NVVAaLLFanBscPBKFRSsmmRDeH3L1fjru7paxO
+         c8NQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=DkV6T3eBNbS2lfHo1XOKiBwxEvuouiaSzhiWzsQxerE=;
-        b=Z9VLdysvHDF3TLR90+2YATxH21W1Ky4YGJm/R0b2tNx+fFEFhWA/MI2B6Dalec3w7Z
-         Y/FHpe5UGMDxtGHbfgD6f4SU0p+tuwAcB+k4Gyk+X9HgVQiT+vKRm0amwdbKyVJUiC6+
-         nROjbkdvceC9zjrmzFow/21KeufldZbZaXJp2OVziEYwBneglgOahyd1reITKB+5KHi3
-         haHNqxY2yK2KtpvYhe+UWQmhMQtZe4kg80FMMVeQmDvBj9UeL6p/IoHbiwECx8gFNSYI
-         8sqN2VSRIFSUC+4flb4niRPuJ3e38xzUNlPHHpvPljiM9rap3YtHUd34vwKfFg49jFPj
-         JNVg==
+        bh=SqKmvFbIIsYx8S+Sf1fhMvfZYjJhdoPkcQ8lTZQeWNg=;
+        b=D/6ZQKTHPAT3Diczt9Gwf/VYeaaZmx11Xx1+0UmDFV6yLJnIw1n1KJDgKj7/wmKFC0
+         SOO+ELTZDNsvFnBndg8evcy6GSYsrGCh3PTf0ALI88QTKZz+kel/LioqPISi5X4RURLa
+         3y04RkTYh1hRavmXcPh+PyZ/m9Ilro8tVyxQCfAUQZzPrnTrjmsmHvUGncNWqhm20pbZ
+         WwoGE0MLuLxZheswZiskYJDsuqjw0eU8pPksgtuVxaxaPOBauPsDFxi29xPIOVCz5GWv
+         CLq3y7tj6E6lg5pT/vrjZCJoi46Ep503N/1QjoFFLhJaKgn+GMipRRhUA2X3vtnxyrny
+         7Dbg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y90si3614418qtd.484.2017.09.16.09.46.31
+        by mx.google.com with ESMTPS id g203si6640352ywe.421.2017.11.28.07.45.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 16 Sep 2017 09:46:32 -0700 (PDT)
+        Tue, 28 Nov 2017 07:45:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57974 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:38528 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dtGEf-0008UW-VZ
-	for alex.bennee@linaro.org; Sat, 16 Sep 2017 12:46:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52580)
+	id 1eJi4h-0005pN-Ng
+	for alex.bennee@linaro.org; Tue, 28 Nov 2017 10:45:31 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33034)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dtGEE-0008Dy-Ko
-	for qemu-arm@nongnu.org; Sat, 16 Sep 2017 12:46:03 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1eJi1O-00014y-8W
+	for qemu-arm@nongnu.org; Tue, 28 Nov 2017 10:42:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dtGED-00079V-PV
-	for qemu-arm@nongnu.org; Sat, 16 Sep 2017 12:46:02 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37412)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1dtGED-00075o-J9; Sat, 16 Sep 2017 12:46:01 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1dtGE0-00015k-5B; Sat, 16 Sep 2017 17:45:48 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Sat, 16 Sep 2017 17:46:14 +0100
-Message-Id: <1505580378-9044-3-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1505580378-9044-1-git-send-email-peter.maydell@linaro.org>
-References: <1505580378-9044-1-git-send-email-peter.maydell@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 2/6] hw/gpio/omap_gpio.c: Don't use old_mmio
+	(envelope-from <eric.auger@redhat.com>) id 1eJi1G-0004wH-Op
+	for qemu-arm@nongnu.org; Tue, 28 Nov 2017 10:42:06 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:45504)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1eJi1G-0004uv-DN; Tue, 28 Nov 2017 10:41:58 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 788B65F7AC;
+	Tue, 28 Nov 2017 15:41:57 +0000 (UTC)
+Received: from localhost.localdomain.com (ovpn-117-138.ams2.redhat.com
+	[10.36.117.138])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id B54025C1AB;
+	Tue, 28 Nov 2017 15:41:53 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org, wanghaibin.wang@huawei.com
+Date: Tue, 28 Nov 2017 16:41:31 +0100
+Message-Id: <1511883692-11511-4-git-send-email-eric.auger@redhat.com>
+In-Reply-To: <1511883692-11511-1-git-send-email-eric.auger@redhat.com>
+References: <1511883692-11511-1-git-send-email-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Tue, 28 Nov 2017 15:41:57 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH v6 3/4] linux-headers: update to 4.15-rc1
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,71 +87,829 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
+Cc: drjones@redhat.com, vijay.kilari@gmail.com, quintela@redhat.com,
+	dgilbert@redhat.com, wu.wubin@huawei.com, christoffer.dall@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3ZM8jy6CCG8i
+X-TUID: 1AomFj2x7y4x
 
-Drop the use of old_mmio in the omap2_gpio memory ops.
+Update headers against v4.15-rc1.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- hw/gpio/omap_gpio.c | 26 ++++++++++++--------------
- 1 file changed, 12 insertions(+), 14 deletions(-)
+ include/standard-headers/asm-s390/virtio-ccw.h     |   1 +
+ include/standard-headers/asm-x86/hyperv.h          | 394 +--------------------
+ include/standard-headers/linux/input-event-codes.h |   2 +
+ include/standard-headers/linux/input.h             |   1 +
+ include/standard-headers/linux/pci_regs.h          |  45 ++-
+ linux-headers/asm-arm/kvm.h                        |   8 +
+ linux-headers/asm-arm/kvm_para.h                   |   1 +
+ linux-headers/asm-arm/unistd.h                     |   2 +
+ linux-headers/asm-arm64/kvm.h                      |   8 +
+ linux-headers/asm-arm64/unistd.h                   |   1 +
+ linux-headers/asm-powerpc/epapr_hcalls.h           |   1 +
+ linux-headers/asm-powerpc/kvm.h                    |   1 +
+ linux-headers/asm-powerpc/kvm_para.h               |   1 +
+ linux-headers/asm-powerpc/unistd.h                 |   1 +
+ linux-headers/asm-s390/kvm.h                       |   1 +
+ linux-headers/asm-s390/kvm_para.h                  |   1 +
+ linux-headers/asm-s390/unistd.h                    |   4 +-
+ linux-headers/asm-x86/kvm.h                        |   1 +
+ linux-headers/asm-x86/kvm_para.h                   |   2 +-
+ linux-headers/asm-x86/unistd.h                     |   1 +
+ linux-headers/linux/kvm.h                          |   2 +
+ linux-headers/linux/kvm_para.h                     |   1 +
+ linux-headers/linux/psci.h                         |   1 +
+ linux-headers/linux/userfaultfd.h                  |   1 +
+ linux-headers/linux/vfio.h                         |   1 +
+ linux-headers/linux/vfio_ccw.h                     |   1 +
+ linux-headers/linux/vhost.h                        |   1 +
+ 27 files changed, 74 insertions(+), 411 deletions(-)
 
-diff --git a/hw/gpio/omap_gpio.c b/hw/gpio/omap_gpio.c
-index 1df394e..17891e2 100644
---- a/hw/gpio/omap_gpio.c
-+++ b/hw/gpio/omap_gpio.c
-@@ -525,17 +525,23 @@ static void omap2_gpio_module_write(void *opaque, hwaddr addr,
-     }
- }
+diff --git a/include/standard-headers/asm-s390/virtio-ccw.h b/include/standard-headers/asm-s390/virtio-ccw.h
+index a9a4ebf..967aad3 100644
+--- a/include/standard-headers/asm-s390/virtio-ccw.h
++++ b/include/standard-headers/asm-s390/virtio-ccw.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ /*
+  * Definitions for virtio-ccw devices.
+  *
+diff --git a/include/standard-headers/asm-x86/hyperv.h b/include/standard-headers/asm-x86/hyperv.h
+index 5f95d5e..ce87d0c 100644
+--- a/include/standard-headers/asm-x86/hyperv.h
++++ b/include/standard-headers/asm-x86/hyperv.h
+@@ -1,393 +1 @@
+-#ifndef _ASM_X86_HYPERV_H
+-#define _ASM_X86_HYPERV_H
+-
+-#include "standard-headers/linux/types.h"
+-
+-/*
+- * The below CPUID leaves are present if VersionAndFeatures.HypervisorPresent
+- * is set by CPUID(HvCpuIdFunctionVersionAndFeatures).
+- */
+-#define HYPERV_CPUID_VENDOR_AND_MAX_FUNCTIONS	0x40000000
+-#define HYPERV_CPUID_INTERFACE			0x40000001
+-#define HYPERV_CPUID_VERSION			0x40000002
+-#define HYPERV_CPUID_FEATURES			0x40000003
+-#define HYPERV_CPUID_ENLIGHTMENT_INFO		0x40000004
+-#define HYPERV_CPUID_IMPLEMENT_LIMITS		0x40000005
+-
+-#define HYPERV_HYPERVISOR_PRESENT_BIT		0x80000000
+-#define HYPERV_CPUID_MIN			0x40000005
+-#define HYPERV_CPUID_MAX			0x4000ffff
+-
+-/*
+- * Feature identification. EAX indicates which features are available
+- * to the partition based upon the current partition privileges.
+- */
+-
+-/* VP Runtime (HV_X64_MSR_VP_RUNTIME) available */
+-#define HV_X64_MSR_VP_RUNTIME_AVAILABLE		(1 << 0)
+-/* Partition Reference Counter (HV_X64_MSR_TIME_REF_COUNT) available*/
+-#define HV_X64_MSR_TIME_REF_COUNT_AVAILABLE	(1 << 1)
+-/* Partition reference TSC MSR is available */
+-#define HV_X64_MSR_REFERENCE_TSC_AVAILABLE              (1 << 9)
+-
+-/* A partition's reference time stamp counter (TSC) page */
+-#define HV_X64_MSR_REFERENCE_TSC		0x40000021
+-
+-/*
+- * There is a single feature flag that signifies if the partition has access
+- * to MSRs with local APIC and TSC frequencies.
+- */
+-#define HV_X64_ACCESS_FREQUENCY_MSRS		(1 << 11)
+-
+-/*
+- * Basic SynIC MSRs (HV_X64_MSR_SCONTROL through HV_X64_MSR_EOM
+- * and HV_X64_MSR_SINT0 through HV_X64_MSR_SINT15) available
+- */
+-#define HV_X64_MSR_SYNIC_AVAILABLE		(1 << 2)
+-/*
+- * Synthetic Timer MSRs (HV_X64_MSR_STIMER0_CONFIG through
+- * HV_X64_MSR_STIMER3_COUNT) available
+- */
+-#define HV_X64_MSR_SYNTIMER_AVAILABLE		(1 << 3)
+-/*
+- * APIC access MSRs (HV_X64_MSR_EOI, HV_X64_MSR_ICR and HV_X64_MSR_TPR)
+- * are available
+- */
+-#define HV_X64_MSR_APIC_ACCESS_AVAILABLE	(1 << 4)
+-/* Hypercall MSRs (HV_X64_MSR_GUEST_OS_ID and HV_X64_MSR_HYPERCALL) available*/
+-#define HV_X64_MSR_HYPERCALL_AVAILABLE		(1 << 5)
+-/* Access virtual processor index MSR (HV_X64_MSR_VP_INDEX) available*/
+-#define HV_X64_MSR_VP_INDEX_AVAILABLE		(1 << 6)
+-/* Virtual system reset MSR (HV_X64_MSR_RESET) is available*/
+-#define HV_X64_MSR_RESET_AVAILABLE		(1 << 7)
+- /*
+-  * Access statistics pages MSRs (HV_X64_MSR_STATS_PARTITION_RETAIL_PAGE,
+-  * HV_X64_MSR_STATS_PARTITION_INTERNAL_PAGE, HV_X64_MSR_STATS_VP_RETAIL_PAGE,
+-  * HV_X64_MSR_STATS_VP_INTERNAL_PAGE) available
+-  */
+-#define HV_X64_MSR_STAT_PAGES_AVAILABLE		(1 << 8)
+-
+-/* Frequency MSRs available */
+-#define HV_FEATURE_FREQUENCY_MSRS_AVAILABLE	(1 << 8)
+-
+-/* Crash MSR available */
+-#define HV_FEATURE_GUEST_CRASH_MSR_AVAILABLE (1 << 10)
+-
+-/*
+- * Feature identification: EBX indicates which flags were specified at
+- * partition creation. The format is the same as the partition creation
+- * flag structure defined in section Partition Creation Flags.
+- */
+-#define HV_X64_CREATE_PARTITIONS		(1 << 0)
+-#define HV_X64_ACCESS_PARTITION_ID		(1 << 1)
+-#define HV_X64_ACCESS_MEMORY_POOL		(1 << 2)
+-#define HV_X64_ADJUST_MESSAGE_BUFFERS		(1 << 3)
+-#define HV_X64_POST_MESSAGES			(1 << 4)
+-#define HV_X64_SIGNAL_EVENTS			(1 << 5)
+-#define HV_X64_CREATE_PORT			(1 << 6)
+-#define HV_X64_CONNECT_PORT			(1 << 7)
+-#define HV_X64_ACCESS_STATS			(1 << 8)
+-#define HV_X64_DEBUGGING			(1 << 11)
+-#define HV_X64_CPU_POWER_MANAGEMENT		(1 << 12)
+-#define HV_X64_CONFIGURE_PROFILER		(1 << 13)
+-
+-/*
+- * Feature identification. EDX indicates which miscellaneous features
+- * are available to the partition.
+- */
+-/* The MWAIT instruction is available (per section MONITOR / MWAIT) */
+-#define HV_X64_MWAIT_AVAILABLE				(1 << 0)
+-/* Guest debugging support is available */
+-#define HV_X64_GUEST_DEBUGGING_AVAILABLE		(1 << 1)
+-/* Performance Monitor support is available*/
+-#define HV_X64_PERF_MONITOR_AVAILABLE			(1 << 2)
+-/* Support for physical CPU dynamic partitioning events is available*/
+-#define HV_X64_CPU_DYNAMIC_PARTITIONING_AVAILABLE	(1 << 3)
+-/*
+- * Support for passing hypercall input parameter block via XMM
+- * registers is available
+- */
+-#define HV_X64_HYPERCALL_PARAMS_XMM_AVAILABLE		(1 << 4)
+-/* Support for a virtual guest idle state is available */
+-#define HV_X64_GUEST_IDLE_STATE_AVAILABLE		(1 << 5)
+-/* Guest crash data handler available */
+-#define HV_X64_GUEST_CRASH_MSR_AVAILABLE		(1 << 10)
+-
+-/*
+- * Implementation recommendations. Indicates which behaviors the hypervisor
+- * recommends the OS implement for optimal performance.
+- */
+- /*
+-  * Recommend using hypercall for address space switches rather
+-  * than MOV to CR3 instruction
+-  */
+-#define HV_X64_AS_SWITCH_RECOMMENDED		(1 << 0)
+-/* Recommend using hypercall for local TLB flushes rather
+- * than INVLPG or MOV to CR3 instructions */
+-#define HV_X64_LOCAL_TLB_FLUSH_RECOMMENDED	(1 << 1)
+-/*
+- * Recommend using hypercall for remote TLB flushes rather
+- * than inter-processor interrupts
+- */
+-#define HV_X64_REMOTE_TLB_FLUSH_RECOMMENDED	(1 << 2)
+-/*
+- * Recommend using MSRs for accessing APIC registers
+- * EOI, ICR and TPR rather than their memory-mapped counterparts
+- */
+-#define HV_X64_APIC_ACCESS_RECOMMENDED		(1 << 3)
+-/* Recommend using the hypervisor-provided MSR to initiate a system RESET */
+-#define HV_X64_SYSTEM_RESET_RECOMMENDED		(1 << 4)
+-/*
+- * Recommend using relaxed timing for this partition. If used,
+- * the VM should disable any watchdog timeouts that rely on the
+- * timely delivery of external interrupts
+- */
+-#define HV_X64_RELAXED_TIMING_RECOMMENDED	(1 << 5)
+-
+-/*
+- * Virtual APIC support
+- */
+-#define HV_X64_DEPRECATING_AEOI_RECOMMENDED	(1 << 9)
+-
+-/* Recommend using the newer ExProcessorMasks interface */
+-#define HV_X64_EX_PROCESSOR_MASKS_RECOMMENDED	(1 << 11)
+-
+-/*
+- * Crash notification flag.
+- */
+-#define HV_CRASH_CTL_CRASH_NOTIFY (1ULL << 63)
+-
+-/* MSR used to identify the guest OS. */
+-#define HV_X64_MSR_GUEST_OS_ID			0x40000000
+-
+-/* MSR used to setup pages used to communicate with the hypervisor. */
+-#define HV_X64_MSR_HYPERCALL			0x40000001
+-
+-/* MSR used to provide vcpu index */
+-#define HV_X64_MSR_VP_INDEX			0x40000002
+-
+-/* MSR used to reset the guest OS. */
+-#define HV_X64_MSR_RESET			0x40000003
+-
+-/* MSR used to provide vcpu runtime in 100ns units */
+-#define HV_X64_MSR_VP_RUNTIME			0x40000010
+-
+-/* MSR used to read the per-partition time reference counter */
+-#define HV_X64_MSR_TIME_REF_COUNT		0x40000020
+-
+-/* MSR used to retrieve the TSC frequency */
+-#define HV_X64_MSR_TSC_FREQUENCY		0x40000022
+-
+-/* MSR used to retrieve the local APIC timer frequency */
+-#define HV_X64_MSR_APIC_FREQUENCY		0x40000023
+-
+-/* Define the virtual APIC registers */
+-#define HV_X64_MSR_EOI				0x40000070
+-#define HV_X64_MSR_ICR				0x40000071
+-#define HV_X64_MSR_TPR				0x40000072
+-#define HV_X64_MSR_APIC_ASSIST_PAGE		0x40000073
+-
+-/* Define synthetic interrupt controller model specific registers. */
+-#define HV_X64_MSR_SCONTROL			0x40000080
+-#define HV_X64_MSR_SVERSION			0x40000081
+-#define HV_X64_MSR_SIEFP			0x40000082
+-#define HV_X64_MSR_SIMP				0x40000083
+-#define HV_X64_MSR_EOM				0x40000084
+-#define HV_X64_MSR_SINT0			0x40000090
+-#define HV_X64_MSR_SINT1			0x40000091
+-#define HV_X64_MSR_SINT2			0x40000092
+-#define HV_X64_MSR_SINT3			0x40000093
+-#define HV_X64_MSR_SINT4			0x40000094
+-#define HV_X64_MSR_SINT5			0x40000095
+-#define HV_X64_MSR_SINT6			0x40000096
+-#define HV_X64_MSR_SINT7			0x40000097
+-#define HV_X64_MSR_SINT8			0x40000098
+-#define HV_X64_MSR_SINT9			0x40000099
+-#define HV_X64_MSR_SINT10			0x4000009A
+-#define HV_X64_MSR_SINT11			0x4000009B
+-#define HV_X64_MSR_SINT12			0x4000009C
+-#define HV_X64_MSR_SINT13			0x4000009D
+-#define HV_X64_MSR_SINT14			0x4000009E
+-#define HV_X64_MSR_SINT15			0x4000009F
+-
+-/*
+- * Synthetic Timer MSRs. Four timers per vcpu.
+- */
+-#define HV_X64_MSR_STIMER0_CONFIG		0x400000B0
+-#define HV_X64_MSR_STIMER0_COUNT		0x400000B1
+-#define HV_X64_MSR_STIMER1_CONFIG		0x400000B2
+-#define HV_X64_MSR_STIMER1_COUNT		0x400000B3
+-#define HV_X64_MSR_STIMER2_CONFIG		0x400000B4
+-#define HV_X64_MSR_STIMER2_COUNT		0x400000B5
+-#define HV_X64_MSR_STIMER3_CONFIG		0x400000B6
+-#define HV_X64_MSR_STIMER3_COUNT		0x400000B7
+-
+-/* Hyper-V guest crash notification MSR's */
+-#define HV_X64_MSR_CRASH_P0			0x40000100
+-#define HV_X64_MSR_CRASH_P1			0x40000101
+-#define HV_X64_MSR_CRASH_P2			0x40000102
+-#define HV_X64_MSR_CRASH_P3			0x40000103
+-#define HV_X64_MSR_CRASH_P4			0x40000104
+-#define HV_X64_MSR_CRASH_CTL			0x40000105
+-#define HV_X64_MSR_CRASH_CTL_NOTIFY		(1ULL << 63)
+-#define HV_X64_MSR_CRASH_PARAMS		\
+-		(1 + (HV_X64_MSR_CRASH_P4 - HV_X64_MSR_CRASH_P0))
+-
+-#define HV_X64_MSR_HYPERCALL_ENABLE		0x00000001
+-#define HV_X64_MSR_HYPERCALL_PAGE_ADDRESS_SHIFT	12
+-#define HV_X64_MSR_HYPERCALL_PAGE_ADDRESS_MASK	\
+-		(~((1ull << HV_X64_MSR_HYPERCALL_PAGE_ADDRESS_SHIFT) - 1))
+-
+-/* Declare the various hypercall operations. */
+-#define HVCALL_FLUSH_VIRTUAL_ADDRESS_SPACE	0x0002
+-#define HVCALL_FLUSH_VIRTUAL_ADDRESS_LIST	0x0003
+-#define HVCALL_NOTIFY_LONG_SPIN_WAIT		0x0008
+-#define HVCALL_FLUSH_VIRTUAL_ADDRESS_SPACE_EX  0x0013
+-#define HVCALL_FLUSH_VIRTUAL_ADDRESS_LIST_EX   0x0014
+-#define HVCALL_POST_MESSAGE			0x005c
+-#define HVCALL_SIGNAL_EVENT			0x005d
+-
+-#define HV_X64_MSR_APIC_ASSIST_PAGE_ENABLE		0x00000001
+-#define HV_X64_MSR_APIC_ASSIST_PAGE_ADDRESS_SHIFT	12
+-#define HV_X64_MSR_APIC_ASSIST_PAGE_ADDRESS_MASK	\
+-		(~((1ull << HV_X64_MSR_APIC_ASSIST_PAGE_ADDRESS_SHIFT) - 1))
+-
+-#define HV_X64_MSR_TSC_REFERENCE_ENABLE		0x00000001
+-#define HV_X64_MSR_TSC_REFERENCE_ADDRESS_SHIFT	12
+-
+-#define HV_PROCESSOR_POWER_STATE_C0		0
+-#define HV_PROCESSOR_POWER_STATE_C1		1
+-#define HV_PROCESSOR_POWER_STATE_C2		2
+-#define HV_PROCESSOR_POWER_STATE_C3		3
+-
+-#define HV_FLUSH_ALL_PROCESSORS			BIT(0)
+-#define HV_FLUSH_ALL_VIRTUAL_ADDRESS_SPACES	BIT(1)
+-#define HV_FLUSH_NON_GLOBAL_MAPPINGS_ONLY	BIT(2)
+-#define HV_FLUSH_USE_EXTENDED_RANGE_FORMAT	BIT(3)
+-
+-enum HV_GENERIC_SET_FORMAT {
+-	HV_GENERIC_SET_SPARCE_4K,
+-	HV_GENERIC_SET_ALL,
+-};
+-
+-/* hypercall status code */
+-#define HV_STATUS_SUCCESS			0
+-#define HV_STATUS_INVALID_HYPERCALL_CODE	2
+-#define HV_STATUS_INVALID_HYPERCALL_INPUT	3
+-#define HV_STATUS_INVALID_ALIGNMENT		4
+-#define HV_STATUS_INSUFFICIENT_MEMORY		11
+-#define HV_STATUS_INVALID_CONNECTION_ID		18
+-#define HV_STATUS_INSUFFICIENT_BUFFERS		19
+-
+-typedef struct _HV_REFERENCE_TSC_PAGE {
+-	uint32_t tsc_sequence;
+-	uint32_t res1;
+-	uint64_t tsc_scale;
+-	int64_t tsc_offset;
+-} HV_REFERENCE_TSC_PAGE, *PHV_REFERENCE_TSC_PAGE;
+-
+-/* Define the number of synthetic interrupt sources. */
+-#define HV_SYNIC_SINT_COUNT		(16)
+-/* Define the expected SynIC version. */
+-#define HV_SYNIC_VERSION_1		(0x1)
+-
+-#define HV_SYNIC_CONTROL_ENABLE		(1ULL << 0)
+-#define HV_SYNIC_SIMP_ENABLE		(1ULL << 0)
+-#define HV_SYNIC_SIEFP_ENABLE		(1ULL << 0)
+-#define HV_SYNIC_SINT_MASKED		(1ULL << 16)
+-#define HV_SYNIC_SINT_AUTO_EOI		(1ULL << 17)
+-#define HV_SYNIC_SINT_VECTOR_MASK	(0xFF)
+-
+-#define HV_SYNIC_STIMER_COUNT		(4)
+-
+-/* Define synthetic interrupt controller message constants. */
+-#define HV_MESSAGE_SIZE			(256)
+-#define HV_MESSAGE_PAYLOAD_BYTE_COUNT	(240)
+-#define HV_MESSAGE_PAYLOAD_QWORD_COUNT	(30)
+-
+-/* Define hypervisor message types. */
+-enum hv_message_type {
+-	HVMSG_NONE			= 0x00000000,
+-
+-	/* Memory access messages. */
+-	HVMSG_UNMAPPED_GPA		= 0x80000000,
+-	HVMSG_GPA_INTERCEPT		= 0x80000001,
+-
+-	/* Timer notification messages. */
+-	HVMSG_TIMER_EXPIRED			= 0x80000010,
+-
+-	/* Error messages. */
+-	HVMSG_INVALID_VP_REGISTER_VALUE	= 0x80000020,
+-	HVMSG_UNRECOVERABLE_EXCEPTION	= 0x80000021,
+-	HVMSG_UNSUPPORTED_FEATURE		= 0x80000022,
+-
+-	/* Trace buffer complete messages. */
+-	HVMSG_EVENTLOG_BUFFERCOMPLETE	= 0x80000040,
+-
+-	/* Platform-specific processor intercept messages. */
+-	HVMSG_X64_IOPORT_INTERCEPT		= 0x80010000,
+-	HVMSG_X64_MSR_INTERCEPT		= 0x80010001,
+-	HVMSG_X64_CPUID_INTERCEPT		= 0x80010002,
+-	HVMSG_X64_EXCEPTION_INTERCEPT	= 0x80010003,
+-	HVMSG_X64_APIC_EOI			= 0x80010004,
+-	HVMSG_X64_LEGACY_FP_ERROR		= 0x80010005
+-};
+-
+-/* Define synthetic interrupt controller message flags. */
+-union hv_message_flags {
+-	uint8_t asu8;
+-	struct {
+-		uint8_t msg_pending:1;
+-		uint8_t reserved:7;
+-	};
+-};
+-
+-/* Define port identifier type. */
+-union hv_port_id {
+-	uint32_t asu32;
+-	struct {
+-		uint32_t id:24;
+-		uint32_t reserved:8;
+-	} u;
+-};
+-
+-/* Define synthetic interrupt controller message header. */
+-struct hv_message_header {
+-	uint32_t message_type;
+-	uint8_t payload_size;
+-	union hv_message_flags message_flags;
+-	uint8_t reserved[2];
+-	union {
+-		uint64_t sender;
+-		union hv_port_id port;
+-	};
+-};
+-
+-/* Define synthetic interrupt controller message format. */
+-struct hv_message {
+-	struct hv_message_header header;
+-	union {
+-		uint64_t payload[HV_MESSAGE_PAYLOAD_QWORD_COUNT];
+-	} u;
+-};
+-
+-/* Define the synthetic interrupt message page layout. */
+-struct hv_message_page {
+-	struct hv_message sint_message[HV_SYNIC_SINT_COUNT];
+-};
+-
+-/* Define timer message payload structure. */
+-struct hv_timer_message_payload {
+-	uint32_t timer_index;
+-	uint32_t reserved;
+-	uint64_t expiration_time;	/* When the timer expired */
+-	uint64_t delivery_time;	/* When the message was delivered */
+-};
+-
+-#define HV_STIMER_ENABLE		(1ULL << 0)
+-#define HV_STIMER_PERIODIC		(1ULL << 1)
+-#define HV_STIMER_LAZY			(1ULL << 2)
+-#define HV_STIMER_AUTOENABLE		(1ULL << 3)
+-#define HV_STIMER_SINT(config)		(uint8_t)(((config) >> 16) & 0x0F)
+-
+-#endif
++        /* this is a temporary placeholder until kvm_para.h stops including it */
+diff --git a/include/standard-headers/linux/input-event-codes.h b/include/standard-headers/linux/input-event-codes.h
+index 2fa0f4e..79841b5 100644
+--- a/include/standard-headers/linux/input-event-codes.h
++++ b/include/standard-headers/linux/input-event-codes.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ /*
+  * Input event codes
+  *
+@@ -406,6 +407,7 @@
+ #define BTN_TOOL_MOUSE		0x146
+ #define BTN_TOOL_LENS		0x147
+ #define BTN_TOOL_QUINTTAP	0x148	/* Five fingers on trackpad */
++#define BTN_STYLUS3		0x149
+ #define BTN_TOUCH		0x14a
+ #define BTN_STYLUS		0x14b
+ #define BTN_STYLUS2		0x14c
+diff --git a/include/standard-headers/linux/input.h b/include/standard-headers/linux/input.h
+index 666e201..bc3e6d3 100644
+--- a/include/standard-headers/linux/input.h
++++ b/include/standard-headers/linux/input.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ /*
+  * Copyright (c) 1999-2002 Vojtech Pavlik
+  *
+diff --git a/include/standard-headers/linux/pci_regs.h b/include/standard-headers/linux/pci_regs.h
+index f8d5804..70c2b2a 100644
+--- a/include/standard-headers/linux/pci_regs.h
++++ b/include/standard-headers/linux/pci_regs.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ /*
+  *	pci_regs.h
+  *
+@@ -746,6 +747,7 @@
+ #define PCI_ERR_ROOT_FIRST_FATAL	0x00000010 /* First UNC is Fatal */
+ #define PCI_ERR_ROOT_NONFATAL_RCV	0x00000020 /* Non-Fatal Received */
+ #define PCI_ERR_ROOT_FATAL_RCV		0x00000040 /* Fatal Received */
++#define PCI_ERR_ROOT_AER_IRQ		0xf8000000 /* Advanced Error Interrupt Message Number */
+ #define PCI_ERR_ROOT_ERR_SRC	52	/* Error Source Identification */
  
--static uint32_t omap2_gpio_module_readp(void *opaque, hwaddr addr)
-+static uint64_t omap2_gpio_module_readp(void *opaque, hwaddr addr,
-+                                        unsigned size)
- {
-     return omap2_gpio_module_read(opaque, addr & ~3) >> ((addr & 3) << 3);
- }
+ /* Virtual Channel */
+@@ -939,9 +941,13 @@
+ #define PCI_SATA_SIZEOF_LONG	16
  
- static void omap2_gpio_module_writep(void *opaque, hwaddr addr,
--                uint32_t value)
-+                                     uint64_t value, unsigned size)
- {
-     uint32_t cur = 0;
-     uint32_t mask = 0xffff;
+ /* Resizable BARs */
++#define PCI_REBAR_CAP		4	/* capability register */
++#define  PCI_REBAR_CAP_SIZES		0x00FFFFF0  /* supported BAR sizes */
+ #define PCI_REBAR_CTRL		8	/* control register */
+-#define  PCI_REBAR_CTRL_NBAR_MASK	(7 << 5)	/* mask for # bars */
+-#define  PCI_REBAR_CTRL_NBAR_SHIFT	5	/* shift for # bars */
++#define  PCI_REBAR_CTRL_BAR_IDX		0x00000007  /* BAR index */
++#define  PCI_REBAR_CTRL_NBAR_MASK	0x000000E0  /* # of resizable BARs */
++#define  PCI_REBAR_CTRL_NBAR_SHIFT	5  	    /* shift for # of BARs */
++#define  PCI_REBAR_CTRL_BAR_SIZE	0x00001F00  /* BAR size */
  
-+    if (size == 4) {
-+        omap2_gpio_module_write(opaque, addr, value);
-+        return;
-+    }
+ /* Dynamic Power Allocation */
+ #define PCI_DPA_CAP		4	/* capability register */
+@@ -960,6 +966,7 @@
+ 
+ /* Downstream Port Containment */
+ #define PCI_EXP_DPC_CAP			4	/* DPC Capability */
++#define PCI_EXP_DPC_IRQ			0x1f	/* DPC Interrupt Message Number */
+ #define  PCI_EXP_DPC_CAP_RP_EXT		0x20	/* Root Port Extensions for DPC */
+ #define  PCI_EXP_DPC_CAP_POISONED_TLP	0x40	/* Poisoned TLP Egress Blocking Supported */
+ #define  PCI_EXP_DPC_CAP_SW_TRIGGER	0x80	/* Software Triggering Supported */
+@@ -995,19 +1002,25 @@
+ #define  PCI_PTM_CTRL_ENABLE		0x00000001  /* PTM enable */
+ #define  PCI_PTM_CTRL_ROOT		0x00000002  /* Root select */
+ 
+-/* L1 PM Substates */
+-#define PCI_L1SS_CAP		    4	/* capability register */
+-#define  PCI_L1SS_CAP_PCIPM_L1_2	 1	/* PCI PM L1.2 Support */
+-#define  PCI_L1SS_CAP_PCIPM_L1_1	 2	/* PCI PM L1.1 Support */
+-#define  PCI_L1SS_CAP_ASPM_L1_2		 4	/* ASPM L1.2 Support */
+-#define  PCI_L1SS_CAP_ASPM_L1_1		 8	/* ASPM L1.1 Support */
+-#define  PCI_L1SS_CAP_L1_PM_SS		16	/* L1 PM Substates Support */
+-#define PCI_L1SS_CTL1		    8	/* Control Register 1 */
+-#define  PCI_L1SS_CTL1_PCIPM_L1_2	1	/* PCI PM L1.2 Enable */
+-#define  PCI_L1SS_CTL1_PCIPM_L1_1	2	/* PCI PM L1.1 Support */
+-#define  PCI_L1SS_CTL1_ASPM_L1_2	4	/* ASPM L1.2 Support */
+-#define  PCI_L1SS_CTL1_ASPM_L1_1	8	/* ASPM L1.1 Support */
+-#define  PCI_L1SS_CTL1_L1SS_MASK	0x0000000F
+-#define PCI_L1SS_CTL2		    0xC	/* Control Register 2 */
++/* ASPM L1 PM Substates */
++#define PCI_L1SS_CAP		0x04	/* Capabilities Register */
++#define  PCI_L1SS_CAP_PCIPM_L1_2	0x00000001  /* PCI-PM L1.2 Supported */
++#define  PCI_L1SS_CAP_PCIPM_L1_1	0x00000002  /* PCI-PM L1.1 Supported */
++#define  PCI_L1SS_CAP_ASPM_L1_2		0x00000004  /* ASPM L1.2 Supported */
++#define  PCI_L1SS_CAP_ASPM_L1_1		0x00000008  /* ASPM L1.1 Supported */
++#define  PCI_L1SS_CAP_L1_PM_SS		0x00000010  /* L1 PM Substates Supported */
++#define  PCI_L1SS_CAP_CM_RESTORE_TIME	0x0000ff00  /* Port Common_Mode_Restore_Time */
++#define  PCI_L1SS_CAP_P_PWR_ON_SCALE	0x00030000  /* Port T_POWER_ON scale */
++#define  PCI_L1SS_CAP_P_PWR_ON_VALUE	0x00f80000  /* Port T_POWER_ON value */
++#define PCI_L1SS_CTL1		0x08	/* Control 1 Register */
++#define  PCI_L1SS_CTL1_PCIPM_L1_2	0x00000001  /* PCI-PM L1.2 Enable */
++#define  PCI_L1SS_CTL1_PCIPM_L1_1	0x00000002  /* PCI-PM L1.1 Enable */
++#define  PCI_L1SS_CTL1_ASPM_L1_2	0x00000004  /* ASPM L1.2 Enable */
++#define  PCI_L1SS_CTL1_ASPM_L1_1	0x00000008  /* ASPM L1.1 Enable */
++#define  PCI_L1SS_CTL1_L1SS_MASK	0x0000000f
++#define  PCI_L1SS_CTL1_CM_RESTORE_TIME	0x0000ff00  /* Common_Mode_Restore_Time */
++#define  PCI_L1SS_CTL1_LTR_L12_TH_VALUE	0x03ff0000  /* LTR_L1.2_THRESHOLD_Value */
++#define  PCI_L1SS_CTL1_LTR_L12_TH_SCALE	0xe0000000  /* LTR_L1.2_THRESHOLD_Scale */
++#define PCI_L1SS_CTL2		0x0c	/* Control 2 Register */
+ 
+ #endif /* LINUX_PCI_REGS_H */
+diff --git a/linux-headers/asm-arm/kvm.h b/linux-headers/asm-arm/kvm.h
+index fa9fae8..4392955 100644
+--- a/linux-headers/asm-arm/kvm.h
++++ b/linux-headers/asm-arm/kvm.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ /*
+  * Copyright (C) 2012 - Virtual Open Systems and Columbia University
+  * Author: Christoffer Dall <c.dall@virtualopensystems.com>
+@@ -151,6 +152,12 @@ struct kvm_arch_memory_slot {
+ 	(__ARM_CP15_REG(op1, 0, crm, 0) | KVM_REG_SIZE_U64)
+ #define ARM_CP15_REG64(...) __ARM_CP15_REG64(__VA_ARGS__)
+ 
++/* PL1 Physical Timer Registers */
++#define KVM_REG_ARM_PTIMER_CTL		ARM_CP15_REG32(0, 14, 2, 1)
++#define KVM_REG_ARM_PTIMER_CNT		ARM_CP15_REG64(0, 14)
++#define KVM_REG_ARM_PTIMER_CVAL		ARM_CP15_REG64(2, 14)
 +
-     switch (addr & ~3) {
-     case 0x00:	/* GPIO_REVISION */
-     case 0x14:	/* GPIO_SYSSTATUS */
-@@ -581,18 +587,10 @@ static void omap2_gpio_module_writep(void *opaque, hwaddr addr,
- }
++/* Virtual Timer Registers */
+ #define KVM_REG_ARM_TIMER_CTL		ARM_CP15_REG32(0, 14, 3, 1)
+ #define KVM_REG_ARM_TIMER_CNT		ARM_CP15_REG64(1, 14)
+ #define KVM_REG_ARM_TIMER_CVAL		ARM_CP15_REG64(3, 14)
+@@ -215,6 +222,7 @@ struct kvm_arch_memory_slot {
+ #define   KVM_DEV_ARM_ITS_SAVE_TABLES		1
+ #define   KVM_DEV_ARM_ITS_RESTORE_TABLES	2
+ #define   KVM_DEV_ARM_VGIC_SAVE_PENDING_TABLES	3
++#define   KVM_DEV_ARM_ITS_CTRL_RESET		4
  
- static const MemoryRegionOps omap2_gpio_module_ops = {
--    .old_mmio = {
--        .read = {
--            omap2_gpio_module_readp,
--            omap2_gpio_module_readp,
--            omap2_gpio_module_read,
--        },
--        .write = {
--            omap2_gpio_module_writep,
--            omap2_gpio_module_writep,
--            omap2_gpio_module_write,
--        },
--    },
-+    .read = omap2_gpio_module_readp,
-+    .write = omap2_gpio_module_writep,
-+    .valid.min_access_size = 1,
-+    .valid.max_access_size = 4,
-     .endianness = DEVICE_NATIVE_ENDIAN,
- };
+ /* KVM_IRQ_LINE irq field index values */
+ #define KVM_ARM_IRQ_TYPE_SHIFT		24
+diff --git a/linux-headers/asm-arm/kvm_para.h b/linux-headers/asm-arm/kvm_para.h
+index 14fab8f..baacc49 100644
+--- a/linux-headers/asm-arm/kvm_para.h
++++ b/linux-headers/asm-arm/kvm_para.h
+@@ -1 +1,2 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ #include <asm-generic/kvm_para.h>
+diff --git a/linux-headers/asm-arm/unistd.h b/linux-headers/asm-arm/unistd.h
+index 155571b..18b0825 100644
+--- a/linux-headers/asm-arm/unistd.h
++++ b/linux-headers/asm-arm/unistd.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ /*
+  *  arch/arm/include/asm/unistd.h
+  *
+@@ -35,5 +36,6 @@
+ #define __ARM_NR_usr26			(__ARM_NR_BASE+3)
+ #define __ARM_NR_usr32			(__ARM_NR_BASE+4)
+ #define __ARM_NR_set_tls		(__ARM_NR_BASE+5)
++#define __ARM_NR_get_tls		(__ARM_NR_BASE+6)
  
+ #endif /* __ASM_ARM_UNISTD_H */
+diff --git a/linux-headers/asm-arm64/kvm.h b/linux-headers/asm-arm64/kvm.h
+index d254700..4e80651 100644
+--- a/linux-headers/asm-arm64/kvm.h
++++ b/linux-headers/asm-arm64/kvm.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ /*
+  * Copyright (C) 2012,2013 - ARM Ltd
+  * Author: Marc Zyngier <marc.zyngier@arm.com>
+@@ -195,6 +196,12 @@ struct kvm_arch_memory_slot {
+ 
+ #define ARM64_SYS_REG(...) (__ARM64_SYS_REG(__VA_ARGS__) | KVM_REG_SIZE_U64)
+ 
++/* Physical Timer EL0 Registers */
++#define KVM_REG_ARM_PTIMER_CTL		ARM64_SYS_REG(3, 3, 14, 2, 1)
++#define KVM_REG_ARM_PTIMER_CVAL		ARM64_SYS_REG(3, 3, 14, 2, 2)
++#define KVM_REG_ARM_PTIMER_CNT		ARM64_SYS_REG(3, 3, 14, 0, 1)
++
++/* EL0 Virtual Timer Registers */
+ #define KVM_REG_ARM_TIMER_CTL		ARM64_SYS_REG(3, 3, 14, 3, 1)
+ #define KVM_REG_ARM_TIMER_CNT		ARM64_SYS_REG(3, 3, 14, 3, 2)
+ #define KVM_REG_ARM_TIMER_CVAL		ARM64_SYS_REG(3, 3, 14, 0, 2)
+@@ -227,6 +234,7 @@ struct kvm_arch_memory_slot {
+ #define   KVM_DEV_ARM_ITS_SAVE_TABLES           1
+ #define   KVM_DEV_ARM_ITS_RESTORE_TABLES        2
+ #define   KVM_DEV_ARM_VGIC_SAVE_PENDING_TABLES	3
++#define   KVM_DEV_ARM_ITS_CTRL_RESET		4
+ 
+ /* Device Control API on vcpu fd */
+ #define KVM_ARM_VCPU_PMU_V3_CTRL	0
+diff --git a/linux-headers/asm-arm64/unistd.h b/linux-headers/asm-arm64/unistd.h
+index 043d17a..5072cbd 100644
+--- a/linux-headers/asm-arm64/unistd.h
++++ b/linux-headers/asm-arm64/unistd.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ /*
+  * Copyright (C) 2012 ARM Ltd.
+  *
+diff --git a/linux-headers/asm-powerpc/epapr_hcalls.h b/linux-headers/asm-powerpc/epapr_hcalls.h
+index 33b3f89..6cca559 100644
+--- a/linux-headers/asm-powerpc/epapr_hcalls.h
++++ b/linux-headers/asm-powerpc/epapr_hcalls.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: ((GPL-2.0+ WITH Linux-syscall-note) OR BSD-3-Clause) */
+ /*
+  * ePAPR hcall interface
+  *
+diff --git a/linux-headers/asm-powerpc/kvm.h b/linux-headers/asm-powerpc/kvm.h
+index 8cf8f0c..61d6049 100644
+--- a/linux-headers/asm-powerpc/kvm.h
++++ b/linux-headers/asm-powerpc/kvm.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ /*
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License, version 2, as
+diff --git a/linux-headers/asm-powerpc/kvm_para.h b/linux-headers/asm-powerpc/kvm_para.h
+index 2abcc46..9beb49c 100644
+--- a/linux-headers/asm-powerpc/kvm_para.h
++++ b/linux-headers/asm-powerpc/kvm_para.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ /*
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License, version 2, as
+diff --git a/linux-headers/asm-powerpc/unistd.h b/linux-headers/asm-powerpc/unistd.h
+index a178634..36abf58 100644
+--- a/linux-headers/asm-powerpc/unistd.h
++++ b/linux-headers/asm-powerpc/unistd.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0+ WITH Linux-syscall-note */
+ /*
+  * This file contains the system call numbers.
+  *
+diff --git a/linux-headers/asm-s390/kvm.h b/linux-headers/asm-s390/kvm.h
+index 7b750ef..32d372e 100644
+--- a/linux-headers/asm-s390/kvm.h
++++ b/linux-headers/asm-s390/kvm.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ #ifndef __LINUX_KVM_S390_H
+ #define __LINUX_KVM_S390_H
+ /*
+diff --git a/linux-headers/asm-s390/kvm_para.h b/linux-headers/asm-s390/kvm_para.h
+index ff1f4e7..0dc86b3 100644
+--- a/linux-headers/asm-s390/kvm_para.h
++++ b/linux-headers/asm-s390/kvm_para.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ /*
+  * User API definitions for paravirtual devices on s390
+  *
+diff --git a/linux-headers/asm-s390/unistd.h b/linux-headers/asm-s390/unistd.h
+index 65e7e59..99223b8 100644
+--- a/linux-headers/asm-s390/unistd.h
++++ b/linux-headers/asm-s390/unistd.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ /*
+  *  S390 version
+  *
+@@ -315,7 +316,8 @@
+ #define __NR_pwritev2		377
+ #define __NR_s390_guarded_storage	378
+ #define __NR_statx		379
+-#define NR_syscalls 380
++#define __NR_s390_sthyi		380
++#define NR_syscalls 381
+ 
+ /* 
+  * There are some system calls that are not present on 64 bit, some
+diff --git a/linux-headers/asm-x86/kvm.h b/linux-headers/asm-x86/kvm.h
+index c2824d0..f3a9604 100644
+--- a/linux-headers/asm-x86/kvm.h
++++ b/linux-headers/asm-x86/kvm.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ #ifndef _ASM_X86_KVM_H
+ #define _ASM_X86_KVM_H
+ 
+diff --git a/linux-headers/asm-x86/kvm_para.h b/linux-headers/asm-x86/kvm_para.h
+index cefa127..4c300f6 100644
+--- a/linux-headers/asm-x86/kvm_para.h
++++ b/linux-headers/asm-x86/kvm_para.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ #ifndef _ASM_X86_KVM_PARA_H
+ #define _ASM_X86_KVM_PARA_H
+ 
+@@ -109,5 +110,4 @@ struct kvm_vcpu_pv_apf_data {
+ #define KVM_PV_EOI_ENABLED KVM_PV_EOI_MASK
+ #define KVM_PV_EOI_DISABLED 0x0
+ 
+-
+ #endif /* _ASM_X86_KVM_PARA_H */
+diff --git a/linux-headers/asm-x86/unistd.h b/linux-headers/asm-x86/unistd.h
+index 1f99b12..c04f638 100644
+--- a/linux-headers/asm-x86/unistd.h
++++ b/linux-headers/asm-x86/unistd.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ #ifndef _ASM_X86_UNISTD_H
+ #define _ASM_X86_UNISTD_H
+ 
+diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
+index dd8a918..ce6c2f1 100644
+--- a/linux-headers/linux/kvm.h
++++ b/linux-headers/linux/kvm.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ #ifndef __LINUX_KVM_H
+ #define __LINUX_KVM_H
+ 
+@@ -930,6 +931,7 @@ struct kvm_ppc_resize_hpt {
+ #define KVM_CAP_PPC_SMT_POSSIBLE 147
+ #define KVM_CAP_HYPERV_SYNIC2 148
+ #define KVM_CAP_HYPERV_VP_INDEX 149
++#define KVM_CAP_S390_AIS_MIGRATION 150
+ 
+ #ifdef KVM_CAP_IRQ_ROUTING
+ 
+diff --git a/linux-headers/linux/kvm_para.h b/linux-headers/linux/kvm_para.h
+index 15b24ff..8bcd0aa 100644
+--- a/linux-headers/linux/kvm_para.h
++++ b/linux-headers/linux/kvm_para.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ #ifndef __LINUX_KVM_PARA_H
+ #define __LINUX_KVM_PARA_H
+ 
+diff --git a/linux-headers/linux/psci.h b/linux-headers/linux/psci.h
+index 08d443f..ccd1773 100644
+--- a/linux-headers/linux/psci.h
++++ b/linux-headers/linux/psci.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ /*
+  * ARM Power State and Coordination Interface (PSCI) header
+  *
+diff --git a/linux-headers/linux/userfaultfd.h b/linux-headers/linux/userfaultfd.h
+index b43cf0d..ce78878 100644
+--- a/linux-headers/linux/userfaultfd.h
++++ b/linux-headers/linux/userfaultfd.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ /*
+  *  include/linux/userfaultfd.h
+  *
+diff --git a/linux-headers/linux/vfio.h b/linux-headers/linux/vfio.h
+index 4e7ab4c..4312e96 100644
+--- a/linux-headers/linux/vfio.h
++++ b/linux-headers/linux/vfio.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ /*
+  * VFIO API definition
+  *
+diff --git a/linux-headers/linux/vfio_ccw.h b/linux-headers/linux/vfio_ccw.h
+index 3a56551..5bf96c3 100644
+--- a/linux-headers/linux/vfio_ccw.h
++++ b/linux-headers/linux/vfio_ccw.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ /*
+  * Interfaces for vfio-ccw
+  *
+diff --git a/linux-headers/linux/vhost.h b/linux-headers/linux/vhost.h
+index 1e86a3d..e336395 100644
+--- a/linux-headers/linux/vhost.h
++++ b/linux-headers/linux/vhost.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ #ifndef _LINUX_VHOST_H
+ #define _LINUX_VHOST_H
+ /* Userspace interface for in-kernel virtio accelerators. */
 -- 
-2.7.4
+2.5.5
 

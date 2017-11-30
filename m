@@ -1,81 +1,81 @@
-Received: by 10.223.159.82 with SMTP id f18csp390159wrg;
-        Thu, 30 Nov 2017 00:53:34 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMZXr+aTzc1MJ8v/s+MU4y0HkX9K5svIGwOWGbmo44M4sm+HHipAcuIDKlemk4Rj3aRSrpwq
-X-Received: by 10.37.30.11 with SMTP id e11mr972987ybe.321.1512032014625;
-        Thu, 30 Nov 2017 00:53:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1512032014; cv=none;
+Received: by 10.223.159.82 with SMTP id f18csp390293wrg;
+        Thu, 30 Nov 2017 00:53:46 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMb1Mh0Q3XofU1uEwh/auqV650/CA8PuqYftLxQb3F4Gxk+u3iheb3rhW3WuogQWvvNvLpXe
+X-Received: by 10.37.172.11 with SMTP id w11mr1086920ybi.254.1512032025990;
+        Thu, 30 Nov 2017 00:53:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1512032025; cv=none;
         d=google.com; s=arc-20160816;
-        b=O95tXWLR2yE0uFvFBslEgnuE8mS+nF9t2LatPVuaCmfVXAvNHk0GkSNkFbKiQdWSDm
-         c3I4oHYxDOo+NBCJQUGSapuj5Qt9rpcV1oebHoHpUf2ZBiq9BlgoJMNQB4WHsc7wOdhN
-         YgpRWKUhj7olaSlD5IZqSlWKL7dLwo/UvT0NdeJ9O1jy7Q+UnYjLx3arVT5oQzZQYysG
-         kjg/Bxk47ijLPH2a5fMqPlKVFOHRdLnfV7nNqmTTK1NLMtlzqE3U8sqHrVJzwJcK4pb4
-         97j8KNJ3ZOn4vcOfrwyeeOa+nOwIRvoRno+bVC0YEqxUGVHpg8fh3EOeBvq0FyxuMWJ4
-         J7QQ==
+        b=kUUA2EJC663IWreF/d32sXQMdrcyBTMGSRTxpoH8CNx4B97NbtUP6vQ/onU+kaEr/Q
+         K61YfTgfVsa2YL/RJa0xddO+47nrufVZFewRCcO3t3pKUVTq2zdCoPhPJV3vMbe4WPVY
+         4z1iRbYUpSw7n4SHQszSPWT3Fq355zDr3oVvACaaeGTHIBLsHbj/i3UVvvrMl78fs68A
+         yco7Cl0+IzMLNpN6YIKtiUHsxhSOHsNSBPHERW0ifg949iyU0WEePFUPz29i1GTxwbga
+         dt5HpSKxCiyUZ2i32auuisAJRN7FHWAgDa5MK9xn86QsfqUqdagN9/1mhyYx3evDfSFd
+         GAPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=ZjXpWlZ7xFjd3vWLGQhDMGdNSpwDUKPcFygyKJlQTrI=;
-        b=apyk6Uc2EU7gSI4QKpQ08XrOSH877n9xQYpLgrRf3t/Ddfom4gZIKVUbuEqq1bd5Hj
-         wkOiDKpvR+HKGlABL4cZFP6fRFRHfz26PKv0AVT8EBow/OoeiAzZ8cBHGIQDgHSdtUxo
-         8BpXljs9hNXaayBYD6W5ucnwIxDQqjXfByLtTDe2Xjk1OYXFlKyZQgjDCU0uYlVcCFeL
-         i+oxNlM/IGdOPkQ0q55Vm7xqKPIeenga9MBFXl6TMMQ1T8BgvTtg/6KljROtEUOmZEhH
-         8njGWAbBTY19f8WVc1mWh5Uo03Qv9iU9WXYQttX/se5cGIFSL7WyvY/gUwI3GwCpFOBd
-         vztg==
+        bh=RAw/1730RAGqiLBS8/LUVrSmYOiIbXx2DTnu7nTp7Dc=;
+        b=zwrX1SJ9QiesQ/CXgwlDq69EY/4exi9GTBsdIUoWLGa0OcI9tGgE4XMWCPnZLfjDs7
+         GGPvs7Ecp+186W0C6rWjIoTodn/bnfyXaW+J5AHSXnUGqEWVN/J4X8ZQ/HYui9ny1I+4
+         /oT2gVq/xpWD1AS3qvsoQvsfICgysNYhIWO2E+rDAFvHXdpV3Z+mHyxaBs8F52x2e+tn
+         8VlZX8Mb2Go21SlH7+cylL5/1xigp+otPI0vxNJ/SnWwwnOBQvpt/OwhriGCFjiTsE4e
+         +ShTI6JR+1CmKpBV2shktJfTWeLjFjA5VnH5p6dQ10nKczot2GUeV555j1CpU1FKjnY4
+         Z6lg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n12si683697ybd.323.2017.11.30.00.53.34
+        by mx.google.com with ESMTPS id l13si711398ywm.797.2017.11.30.00.53.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 30 Nov 2017 00:53:34 -0800 (PST)
+        Thu, 30 Nov 2017 00:53:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46853 helo=lists.gnu.org)
+Received: from localhost ([::1]:46857 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eKKb8-0005Ca-3f
-	for alex.bennee@linaro.org; Thu, 30 Nov 2017 03:53:34 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48992)
+	id 1eKKbJ-0005Mr-B3
+	for alex.bennee@linaro.org; Thu, 30 Nov 2017 03:53:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49101)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1eKKau-0005AG-6o
-	for qemu-arm@nongnu.org; Thu, 30 Nov 2017 03:53:21 -0500
+	(envelope-from <thuth@redhat.com>) id 1eKKb4-0005IB-7Z
+	for qemu-arm@nongnu.org; Thu, 30 Nov 2017 03:53:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1eKKat-0006gm-64
-	for qemu-arm@nongnu.org; Thu, 30 Nov 2017 03:53:20 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:60214)
+	(envelope-from <thuth@redhat.com>) id 1eKKb3-0006t4-C6
+	for qemu-arm@nongnu.org; Thu, 30 Nov 2017 03:53:30 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:32948)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1eKKas-0006fX-Sv; Thu, 30 Nov 2017 03:53:19 -0500
+	id 1eKKb3-0006sU-5p; Thu, 30 Nov 2017 03:53:29 -0500
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
 	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BDD67C04D318;
-	Thu, 30 Nov 2017 08:53:17 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2C9884A6F3;
+	Thu, 30 Nov 2017 08:53:28 +0000 (UTC)
 Received: from thh440s.redhat.com (ovpn-116-158.ams2.redhat.com
 	[10.36.116.158])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 22A425D6A5;
-	Thu, 30 Nov 2017 08:53:14 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 5311E5D6A9;
+	Thu, 30 Nov 2017 08:53:25 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Thu, 30 Nov 2017 09:53:03 +0100
-Message-Id: <1512031988-32490-3-git-send-email-thuth@redhat.com>
+Date: Thu, 30 Nov 2017 09:53:06 +0100
+Message-Id: <1512031988-32490-6-git-send-email-thuth@redhat.com>
 In-Reply-To: <1512031988-32490-1-git-send-email-thuth@redhat.com>
 References: <1512031988-32490-1-git-send-email-thuth@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Thu, 30 Nov 2017 08:53:17 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Thu, 30 Nov 2017 08:53:28 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH for-2.12 2/7] tests/boot-serial-test: Add code to
- allow to specify our own kernel or bios
+Subject: [Qemu-arm] [PATCH for-2.12 5/7] hw/moxie/moxiesim: Add support for
+ loading a BIOS on moxiesim
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,125 +92,62 @@ Cc: Anthony Green <green@moxielogic.com>, Laurent Vivier <laurent@vivier.eu>,
 	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bXlDxaP0iAf/
+X-TUID: o0Pm4hrvoOh+
 
-QEMU only ships with some few firmware images, i.e. we can currently run
-the boot-serial test only on a very limited set of machines. But writing
-some characters to the default UART of a machine can often be done with
-some few lines of assembly, so we add the possibility to the boot-serial
-tester to use its own mini-kernels or mini-firmwares. We write such images
-then into a file that we can load with the "-kernel" or "-bios" parameter
-when we launch QEMU.
+The moxiesim machine already defines a memory region for a firmware,
+but does not provide the possibility to load an image via "-bios" yet.
+This will be needed for the boot-serial tester, so let's add support
+for "-bios" here now.
 
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- tests/Makefile.include   |  2 ++
- tests/boot-serial-test.c | 54 +++++++++++++++++++++++++++++++++++++-----------
- 2 files changed, 44 insertions(+), 12 deletions(-)
+ hw/moxie/moxiesim.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
-diff --git a/tests/Makefile.include b/tests/Makefile.include
-index c002352..41ca44c 100644
---- a/tests/Makefile.include
-+++ b/tests/Makefile.include
-@@ -297,6 +297,8 @@ gcov-files-x86_64-y = $(subst i386-softmmu/,x86_64-softmmu/,$(gcov-files-i386-y)
- 
- check-qtest-alpha-y = tests/boot-serial-test$(EXESUF)
- 
-+check-qtest-m68k-y = tests/boot-serial-test$(EXESUF)
-+
- check-qtest-mips-y = tests/endianness-test$(EXESUF)
- 
- check-qtest-mips64-y = tests/endianness-test$(EXESUF)
-diff --git a/tests/boot-serial-test.c b/tests/boot-serial-test.c
-index fa4183d..d997269 100644
---- a/tests/boot-serial-test.c
-+++ b/tests/boot-serial-test.c
-@@ -7,9 +7,10 @@
-  * or later. See the COPYING file in the top-level directory.
-  *
-  * This test is used to check that the serial output of the firmware
-- * (that we provide for some machines) contains an expected string.
-- * Thus we check that the firmware still boots at least to a certain
-- * point and so we know that the machine is not completely broken.
-+ * (that we provide for some machines) or some small mini-kernels that
-+ * we provide here contains an expected string. Thus we check that the
-+ * firmware/kernel still boots at least to a certain point and so we
-+ * know that the machine is not completely broken.
+diff --git a/hw/moxie/moxiesim.c b/hw/moxie/moxiesim.c
+index 3ba5848..00f56df 100644
+--- a/hw/moxie/moxiesim.c
++++ b/hw/moxie/moxiesim.c
+@@ -25,6 +25,7 @@
+  * THE SOFTWARE.
   */
- 
  #include "qemu/osdep.h"
-@@ -20,6 +21,9 @@ typedef struct testdef {
-     const char *machine;    /* Name of the machine */
-     const char *extra;      /* Additional parameters */
-     const char *expect;     /* Expected string in the serial output */
-+    size_t codesize;        /* Size of the kernel or bios data */
-+    const uint8_t *kernel;  /* Set in case we use our own mini kernel */
-+    const uint8_t *bios;    /* Set in case we use our own mini bios */
- } testdef_t;
++#include "qemu/error-report.h"
+ #include "qapi/error.h"
+ #include "qemu-common.h"
+ #include "cpu.h"
+@@ -41,6 +42,8 @@
+ #include "elf.h"
  
- static testdef_t tests[] = {
-@@ -72,26 +76,52 @@ done:
- static void test_machine(const void *data)
- {
-     const testdef_t *test = data;
--    char tmpname[] = "/tmp/qtest-boot-serial-XXXXXX";
--    int fd;
-+    char serialtmp[] = "/tmp/qtest-boot-serial-sXXXXXX";
-+    char codetmp[] = "/tmp/qtest-boot-serial-cXXXXXX";
-+    const char *codeparam = "";
-+    const uint8_t *code = NULL;
-+    int ser_fd;
+ #define PHYS_MEM_BASE 0x80000000
++#define FIRMWARE_BASE 0x1000
++#define FIRMWARE_SIZE (128 * 0x1000)
  
--    fd = mkstemp(tmpname);
--    g_assert(fd != -1);
-+    ser_fd = mkstemp(serialtmp);
-+    g_assert(ser_fd != -1);
-+
-+    if (test->kernel) {
-+        code = test->kernel;
-+        codeparam = "-kernel";
-+    } else if (test->bios) {
-+        code = test->bios;
-+        codeparam = "-bios";
-+    }
-+
-+    if (code) {
-+        ssize_t wlen;
-+        int code_fd;
-+
-+        code_fd = mkstemp(codetmp);
-+        g_assert(code_fd != -1);
-+        wlen = write(code_fd, code, test->codesize);
-+        g_assert(wlen == test->codesize);
-+        close(code_fd);
+ typedef struct {
+     uint64_t ram_size;
+@@ -123,8 +126,8 @@ static void moxiesim_init(MachineState *machine)
+     memory_region_init_ram(ram, NULL, "moxiesim.ram", ram_size, &error_fatal);
+     memory_region_add_subregion(address_space_mem, ram_base, ram);
+ 
+-    memory_region_init_ram(rom, NULL, "moxie.rom", 128 * 0x1000, &error_fatal);
+-    memory_region_add_subregion(get_system_memory(), 0x1000, rom);
++    memory_region_init_ram(rom, NULL, "moxie.rom", FIRMWARE_SIZE, &error_fatal);
++    memory_region_add_subregion(get_system_memory(), FIRMWARE_BASE, rom);
+ 
+     if (kernel_filename) {
+         loader_params.ram_size = ram_size;
+@@ -133,6 +136,11 @@ static void moxiesim_init(MachineState *machine)
+         loader_params.initrd_filename = initrd_filename;
+         load_kernel(cpu, &loader_params);
+     }
++    if (bios_name) {
++        if (load_image_targphys(bios_name, FIRMWARE_BASE, FIRMWARE_SIZE) < 0) {
++            error_report("Failed to load firmware '%s'", bios_name);
++        }
 +    }
  
-     /*
-      * Make sure that this test uses tcg if available: It is used as a
-      * fast-enough smoketest for that.
-      */
--    global_qtest = qtest_startf("-M %s,accel=tcg:kvm "
-+    global_qtest = qtest_startf("%s %s -M %s,accel=tcg:kvm "
-                                 "-chardev file,id=serial0,path=%s "
-                                 "-no-shutdown -serial chardev:serial0 %s",
--                                test->machine, tmpname, test->extra);
--    unlink(tmpname);
-+                                codeparam, code ? codetmp : "",
-+                                test->machine, serialtmp, test->extra);
-+    unlink(serialtmp);
-+    if (code) {
-+        unlink(codetmp);
-+    }
- 
--    check_guest_output(test, fd);
-+    check_guest_output(test, ser_fd);
-     qtest_quit(global_qtest);
- 
--    close(fd);
-+    close(ser_fd);
- }
- 
- int main(int argc, char *argv[])
+     /* A single 16450 sits at offset 0x3f8.  */
+     if (serial_hds[0]) {
 -- 
 1.8.3.1
 

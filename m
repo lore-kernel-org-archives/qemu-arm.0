@@ -1,80 +1,86 @@
-Received: by 10.223.159.82 with SMTP id f18csp648721wrg;
-        Thu, 30 Nov 2017 05:43:18 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMZjszZ1n/tAcqAR2ViLY2PD5gtbXCXZTaIP+RkxpVXQar6+mXnLUVJhpnjVKpwQpZEJWcAj
-X-Received: by 10.37.219.209 with SMTP id g200mr1437307ybf.508.1512049398664;
-        Thu, 30 Nov 2017 05:43:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1512049398; cv=none;
+Received: by 10.223.159.82 with SMTP id f18csp9759wrg;
+        Thu, 30 Nov 2017 05:55:13 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMZTWfitBlhros0xNSFNyBzeAlOgoIiTzPIqO4GDIT1WrcMKo5Ty6hZ28P8MkX/1h1hawC87
+X-Received: by 10.37.170.101 with SMTP id s92mr1534269ybi.263.1512050113560;
+        Thu, 30 Nov 2017 05:55:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1512050113; cv=none;
         d=google.com; s=arc-20160816;
-        b=h466KXQPqFAmBL3D7y2krgKroYcqr/d85gDG9rA8m45CDGdoW/Cew/6fEMha2VKmZ1
-         p4aSn8TbUDpLjOZvKqb+6RIAuVEgaQFgRW3N3jGW52IB5Ec9duY9AEbEx4kne4pHUZts
-         8m293pCA28yjQLWu3U5zXlCOXg1rXyeD+Ry2n9JCB2aPLzU13SbI8G1m68F+enbnP55H
-         vNJRgICnqsE518KobKOqzqwau7CL+ZMshCdum7z0GyuObf5rLN4bUIaG2OnHTtDOvJg5
-         bOwecAMR+xvmvIpjmk9sEKEBKBnWr2f+lRelCzmJmu/YUzBU8vb8buV7IOyEUE81Kxf7
-         de/g==
+        b=xfMFr+zO5a/Cgvb11tOt6DnPmwwmzKSIenrkPmNicwPdk1dBGIckxqF+wgifoUeUBX
+         My1wuaGeYfB4S9k4Xc3YTTQjRxrM/U9+gopRR4uWWiJsJXSo2iZDjQRvnNM4PW5UFnUr
+         /Fnhq5LBFDej/stAPIesEoAPhSyRgxEuOPBrFxQO8MGifM1JRxREbA7j+8RBdRwGyMj+
+         txBP8TcSQkaFqo/5yRZUJyjc+02dLiTwRGLJvWzF/B7MCoguX9mu0kSftnibA/aIYJop
+         OnmMh6AU8/wnmYRFUqCegWx83qgQENgpI1F+c7tIQVjVybyexcuywR5TGlw6/vqTTkRi
+         Bimw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=wgCAdzrjzqoTonsjHwRTIHNlL1UHZ7SeoLknF2u1lU0=;
-        b=I23xskRGtPKk1v6koSKto25sVeo41Y5hqHgiL2dpO4xpj/GxXDmbZfa06XkRGM/FWI
-         AVm8iGUmQWtlMcXZAjQ9GobDtIxTzuWEG7mb4yV/Zp7eV70U25h8P3Re9Jtb6j2LHWsx
-         KRTG1zVWVelR00yeheJy0WYtSmT4x8flsKNiG/IFvnTk3/8DOmKWlTldIkSo5UG1JVcG
-         ZLBM/S/88+Ltanvg/G7bvAdhIDQV7E0IGBs2o+RxtF+A6t/zfllXdVAo28GP6a7Qoyhz
-         /hnrtQg5G+5L7Bk+HURGvSV4edBtyDCTekuMNMceDd6RJqU4n2NxNeR6a4Zcok84lv4q
-         /aRg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:to:from:date:arc-authentication-results;
+        bh=ja3Nn3xLYJvEoB4uiD3O1yCFWiSslkIutq7YrN1YuGs=;
+        b=wC61wFqF7lpox74VNd3WUJzWB9S1CwWGMAu/1qkYUja0WHmwcPdfYrKBRh5cF5ywc9
+         i7Eqeev0blBnMB+PFKsG8kSRD5S5ARBqR0f761JqOPjB2J+Vu+zmy+MdGpvXhRLV8kaM
+         ELalQOlkumXvMXWhJx0Z1lPoe1h0aF/0FdD7+rMHwcjVVbwK4lpNvPYFQG8NjeZYL15F
+         Sl70/bV/bHIl1xGdINIl1dFAh02dylmM7Tg98/LbbQyJ/zVqICS256DqSeF+rFKMT2dk
+         k+j50IC86HbHprz7DXW27VdS502oSvGjKlvAdbjSo3K2Bf2DQQ+kpmnIfTvyiRO60tpW
+         YhlA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y6si784916ywf.304.2017.11.30.05.43.18
+        by mx.google.com with ESMTPS id d64si827151ybd.32.2017.11.30.05.55.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 30 Nov 2017 05:43:18 -0800 (PST)
+        Thu, 30 Nov 2017 05:55:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48345 helo=lists.gnu.org)
+Received: from localhost ([::1]:48410 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eKP7W-0007dY-0f
-	for alex.bennee@linaro.org; Thu, 30 Nov 2017 08:43:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40171)
+	id 1eKPJ3-00057F-42
+	for alex.bennee@linaro.org; Thu, 30 Nov 2017 08:55:13 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43947)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1eKP6d-00079B-QT
-	for qemu-arm@nongnu.org; Thu, 30 Nov 2017 08:42:27 -0500
+	(envelope-from <cohuck@redhat.com>) id 1eKPIv-00055g-6q
+	for qemu-arm@nongnu.org; Thu, 30 Nov 2017 08:55:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1eKP6Y-00069W-Ia
-	for qemu-arm@nongnu.org; Thu, 30 Nov 2017 08:42:23 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:32936)
+	(envelope-from <cohuck@redhat.com>) id 1eKPIq-0006rp-BT
+	for qemu-arm@nongnu.org; Thu, 30 Nov 2017 08:55:05 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:59328)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1eKP6Y-000671-7d; Thu, 30 Nov 2017 08:42:18 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
+	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
+	id 1eKPIq-0006ra-1T; Thu, 30 Nov 2017 08:55:00 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 19554356FE;
-	Thu, 30 Nov 2017 13:42:17 +0000 (UTC)
-Received: from red.redhat.com (ovpn-122-213.rdu2.redhat.com [10.10.122.213])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 28B415D6A8;
-	Thu, 30 Nov 2017 13:42:08 +0000 (UTC)
-From: Eric Blake <eblake@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Thu, 30 Nov 2017 07:41:59 -0600
-Message-Id: <20171130134159.9697-4-eblake@redhat.com>
-In-Reply-To: <20171130134159.9697-1-eblake@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id A2AD16868C;
+	Thu, 30 Nov 2017 13:54:58 +0000 (UTC)
+Received: from gondolin (dhcp-192-222.str.redhat.com [10.33.192.222])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 3E20B60621;
+	Thu, 30 Nov 2017 13:54:49 +0000 (UTC)
+Date: Thu, 30 Nov 2017 14:54:46 +0100
+From: Cornelia Huck <cohuck@redhat.com>
+To: Eric Blake <eblake@redhat.com>
+Message-ID: <20171130145446.3d47b906.cohuck@redhat.com>
+In-Reply-To: <20171130134159.9697-4-eblake@redhat.com>
 References: <20171130134159.9697-1-eblake@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+	<20171130134159.9697-4-eblake@redhat.com>
+Organization: Red Hat GmbH
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Thu, 30 Nov 2017 13:42:17 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.27]);
+	Thu, 30 Nov 2017 13:54:58 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH 3/3] maint: Fix macros with broken 'do/while(0);
- ' usage
+Subject: Re: [Qemu-arm] [PATCH 3/3] maint: Fix macros with broken
+ 'do/while(0); ' usage
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,8 +93,9 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
-	Juan Quintela <quintela@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org,
+	Gerd Hoffmann <kraxel@redhat.com>,
 	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
 	"open list:Block layer core" <qemu-block@nongnu.org>,
 	Stefan Berger <stefanb@linux.vnet.ibm.com>,
@@ -99,576 +106,86 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	"open list:S390" <qemu-s390x@nongnu.org>,
 	"open list:Xilinx Zynq" <qemu-arm@nongnu.org>,
 	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	Kevin Wolf <kwolf@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+	Kevin Wolf <kwolf@redhat.com>, Juan Quintela <quintela@redhat.com>,
 	Max Reitz <mreitz@redhat.com>, "open list:New World" <qemu-ppc@nongnu.org>,
 	Igor Mammedov <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WDlAOd0c+X2U
+X-TUID: i8Rl4Z/Rd7TZ
 
-The point of writing a macro embedded in a 'do { ... } while (0)'
-loop is so that the macro can be used as a drop-in statement with
-the caller supplying the trailing ';'.  Although our coding style
-frowns on brace-less 'if':
-  if (cond)
-    statement;
-  else
-    something else;
-the use of do/while (0) in a macro is absolutely essential for the
-purpose of avoiding a syntax error on the 'else' - but it only works
-if there is no trailing ';' in the macro (as the ';' in the code
-calling the macro would then be a second statement and cause the
-'else' to not pair to the 'if').
+On Thu, 30 Nov 2017 07:41:59 -0600
+Eric Blake <eblake@redhat.com> wrote:
 
-Many of the places touched in this code are examples of the ugly
-bit-rotting debug print statements; cleaning those up is left as
-a bite-sized task for another day.
+> The point of writing a macro embedded in a 'do { ... } while (0)'
+> loop is so that the macro can be used as a drop-in statement with
+> the caller supplying the trailing ';'.  Although our coding style
+> frowns on brace-less 'if':
+>   if (cond)
+>     statement;
+>   else
+>     something else;
+> the use of do/while (0) in a macro is absolutely essential for the
+> purpose of avoiding a syntax error on the 'else' - but it only works
+> if there is no trailing ';' in the macro (as the ';' in the code
+> calling the macro would then be a second statement and cause the
+> 'else' to not pair to the 'if').
+> 
+> Many of the places touched in this code are examples of the ugly
+> bit-rotting debug print statements; cleaning those up is left as
+> a bite-sized task for another day.
+> 
+> Found mechanically via: $ git grep -B1 'while (0);' | grep -A1 \\\\
+> 
+> Signed-off-by: Eric Blake <eblake@redhat.com>
+> ---
+>  tests/acpi-utils.h         | 8 ++++----
+>  ui/sdl_zoom_template.h     | 8 ++++----
+>  audio/paaudio.c            | 4 ++--
+>  hw/adc/stm32f2xx_adc.c     | 2 +-
+>  hw/block/m25p80.c          | 2 +-
+>  hw/char/cadence_uart.c     | 2 +-
+>  hw/char/stm32f2xx_usart.c  | 2 +-
+>  hw/display/cg3.c           | 2 +-
+>  hw/display/dpcd.c          | 2 +-
+>  hw/display/xlnx_dp.c       | 2 +-
+>  hw/dma/pl330.c             | 2 +-
+>  hw/dma/xlnx-zynq-devcfg.c  | 2 +-
+>  hw/dma/xlnx_dpdma.c        | 2 +-
+>  hw/i2c/i2c-ddc.c           | 2 +-
+>  hw/misc/auxbus.c           | 2 +-
+>  hw/misc/macio/mac_dbdma.c  | 4 ++--
+>  hw/misc/mmio_interface.c   | 2 +-
+>  hw/misc/stm32f2xx_syscfg.c | 2 +-
+>  hw/misc/zynq_slcr.c        | 2 +-
+>  hw/net/cadence_gem.c       | 2 +-
+>  hw/ssi/mss-spi.c           | 2 +-
+>  hw/ssi/stm32f2xx_spi.c     | 2 +-
+>  hw/ssi/xilinx_spi.c        | 2 +-
+>  hw/ssi/xilinx_spips.c      | 2 +-
+>  hw/timer/a9gtimer.c        | 2 +-
+>  hw/timer/cadence_ttc.c     | 2 +-
+>  hw/timer/mss-timer.c       | 2 +-
+>  hw/timer/stm32f2xx_timer.c | 2 +-
+>  hw/tpm/tpm_passthrough.c   | 2 +-
+>  hw/tpm/tpm_tis.c           | 2 +-
+>  migration/rdma.c           | 2 +-
+>  target/arm/translate-a64.c | 2 +-
+>  target/s390x/kvm.c         | 2 +-
+>  tests/tcg/test-mmap.c      | 2 +-
+>  34 files changed, 42 insertions(+), 42 deletions(-)
 
-Found mechanically via: $ git grep -B1 'while (0);' | grep -A1 \\\\
+> diff --git a/target/s390x/kvm.c b/target/s390x/kvm.c
+> index b03f583032..06d06010a4 100644
+> --- a/target/s390x/kvm.c
+> +++ b/target/s390x/kvm.c
+> @@ -58,7 +58,7 @@
+>      if (DEBUG_KVM) {                          \
+>          fprintf(stderr, fmt, ## __VA_ARGS__); \
+>      }                                         \
+> -} while (0);
+> +} while (0)
+> 
+>  #define kvm_vm_check_mem_attr(s, attr) \
+>      kvm_vm_check_attr(s, KVM_S390_VM_MEM_CTRL, attr)
 
-Signed-off-by: Eric Blake <eblake@redhat.com>
----
- tests/acpi-utils.h         | 8 ++++----
- ui/sdl_zoom_template.h     | 8 ++++----
- audio/paaudio.c            | 4 ++--
- hw/adc/stm32f2xx_adc.c     | 2 +-
- hw/block/m25p80.c          | 2 +-
- hw/char/cadence_uart.c     | 2 +-
- hw/char/stm32f2xx_usart.c  | 2 +-
- hw/display/cg3.c           | 2 +-
- hw/display/dpcd.c          | 2 +-
- hw/display/xlnx_dp.c       | 2 +-
- hw/dma/pl330.c             | 2 +-
- hw/dma/xlnx-zynq-devcfg.c  | 2 +-
- hw/dma/xlnx_dpdma.c        | 2 +-
- hw/i2c/i2c-ddc.c           | 2 +-
- hw/misc/auxbus.c           | 2 +-
- hw/misc/macio/mac_dbdma.c  | 4 ++--
- hw/misc/mmio_interface.c   | 2 +-
- hw/misc/stm32f2xx_syscfg.c | 2 +-
- hw/misc/zynq_slcr.c        | 2 +-
- hw/net/cadence_gem.c       | 2 +-
- hw/ssi/mss-spi.c           | 2 +-
- hw/ssi/stm32f2xx_spi.c     | 2 +-
- hw/ssi/xilinx_spi.c        | 2 +-
- hw/ssi/xilinx_spips.c      | 2 +-
- hw/timer/a9gtimer.c        | 2 +-
- hw/timer/cadence_ttc.c     | 2 +-
- hw/timer/mss-timer.c       | 2 +-
- hw/timer/stm32f2xx_timer.c | 2 +-
- hw/tpm/tpm_passthrough.c   | 2 +-
- hw/tpm/tpm_tis.c           | 2 +-
- migration/rdma.c           | 2 +-
- target/arm/translate-a64.c | 2 +-
- target/s390x/kvm.c         | 2 +-
- tests/tcg/test-mmap.c      | 2 +-
- 34 files changed, 42 insertions(+), 42 deletions(-)
-
-diff --git a/tests/acpi-utils.h b/tests/acpi-utils.h
-index d5ca5b6238..ac52abd0dd 100644
---- a/tests/acpi-utils.h
-+++ b/tests/acpi-utils.h
-@@ -32,7 +32,7 @@ typedef struct {
-     do {                                        \
-         memread(addr, &field, sizeof(field));   \
-         addr += sizeof(field);                  \
--    } while (0);
-+    } while (0)
-
- #define ACPI_READ_ARRAY_PTR(arr, length, addr)  \
-     do {                                        \
-@@ -40,7 +40,7 @@ typedef struct {
-         for (idx = 0; idx < length; ++idx) {    \
-             ACPI_READ_FIELD(arr[idx], addr);    \
-         }                                       \
--    } while (0);
-+    } while (0)
-
- #define ACPI_READ_ARRAY(arr, addr)                               \
-     ACPI_READ_ARRAY_PTR(arr, sizeof(arr) / sizeof(arr[0]), addr)
-@@ -56,7 +56,7 @@ typedef struct {
-         ACPI_READ_FIELD((table)->oem_revision, addr);            \
-         ACPI_READ_ARRAY((table)->asl_compiler_id, addr);         \
-         ACPI_READ_FIELD((table)->asl_compiler_revision, addr);   \
--    } while (0);
-+    } while (0)
-
- #define ACPI_ASSERT_CMP(actual, expected) do { \
-     char ACPI_ASSERT_CMP_str[5] = {}; \
-@@ -77,7 +77,7 @@ typedef struct {
-         ACPI_READ_FIELD((field).bit_offset, addr);   \
-         ACPI_READ_FIELD((field).access_width, addr); \
-         ACPI_READ_FIELD((field).address, addr);      \
--    } while (0);
-+    } while (0)
-
-
- uint8_t acpi_calc_checksum(const uint8_t *data, int len);
-diff --git a/ui/sdl_zoom_template.h b/ui/sdl_zoom_template.h
-index 3bb508b51e..6a424adfb4 100644
---- a/ui/sdl_zoom_template.h
-+++ b/ui/sdl_zoom_template.h
-@@ -34,22 +34,22 @@
- #define setRed(r, pcolor) do { \
-     *pcolor = ((*pcolor) & (~(dpf->Rmask))) + \
-               (((r) & (dpf->Rmask >> dpf->Rshift)) << dpf->Rshift); \
--} while (0);
-+} while (0)
-
- #define setGreen(g, pcolor) do { \
-     *pcolor = ((*pcolor) & (~(dpf->Gmask))) + \
-               (((g) & (dpf->Gmask >> dpf->Gshift)) << dpf->Gshift); \
--} while (0);
-+} while (0)
-
- #define setBlue(b, pcolor) do { \
-     *pcolor = ((*pcolor) & (~(dpf->Bmask))) + \
-               (((b) & (dpf->Bmask >> dpf->Bshift)) << dpf->Bshift); \
--} while (0);
-+} while (0)
-
- #define setAlpha(a, pcolor) do { \
-     *pcolor = ((*pcolor) & (~(dpf->Amask))) + \
-               (((a) & (dpf->Amask >> dpf->Ashift)) << dpf->Ashift); \
--} while (0);
-+} while (0)
-
- static void glue(sdl_zoom_rgb, BPP)(SDL_Surface *src, SDL_Surface *dst, int smooth,
-                                    SDL_Rect *dst_rect)
-diff --git a/audio/paaudio.c b/audio/paaudio.c
-index 65beb6f010..2a35e6f82c 100644
---- a/audio/paaudio.c
-+++ b/audio/paaudio.c
-@@ -89,7 +89,7 @@ static inline int PA_STREAM_IS_GOOD(pa_stream_state_t x)
-             }                                                   \
-             goto label;                                         \
-         }                                                       \
--    } while (0);
-+    } while (0)
-
- #define CHECK_DEAD_GOTO(c, stream, rerror, label)                       \
-     do {                                                                \
-@@ -107,7 +107,7 @@ static inline int PA_STREAM_IS_GOOD(pa_stream_state_t x)
-             }                                                           \
-             goto label;                                                 \
-         }                                                               \
--    } while (0);
-+    } while (0)
-
- static int qpa_simple_read (PAVoiceIn *p, void *data, size_t length, int *rerror)
- {
-diff --git a/hw/adc/stm32f2xx_adc.c b/hw/adc/stm32f2xx_adc.c
-index 90fe9de299..13f31ad2f7 100644
---- a/hw/adc/stm32f2xx_adc.c
-+++ b/hw/adc/stm32f2xx_adc.c
-@@ -37,7 +37,7 @@
-     if (STM_ADC_ERR_DEBUG >= lvl) { \
-         qemu_log("%s: " fmt, __func__, ## args); \
-     } \
--} while (0);
-+} while (0)
-
- #define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)
-
-diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index a2438b9ed2..62b5221bde 100644
---- a/hw/block/m25p80.c
-+++ b/hw/block/m25p80.c
-@@ -40,7 +40,7 @@
-         fprintf(stderr,  ": %s: ", __func__); \
-         fprintf(stderr, ## __VA_ARGS__); \
-     } \
--} while (0);
-+} while (0)
-
- /* Fields for FlashPartInfo->flags */
-
-diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
-index 6143494060..fbdbd463bb 100644
---- a/hw/char/cadence_uart.c
-+++ b/hw/char/cadence_uart.c
-@@ -33,7 +33,7 @@
- #define DB_PRINT(...) do { \
-     fprintf(stderr,  ": %s: ", __func__); \
-     fprintf(stderr, ## __VA_ARGS__); \
--    } while (0);
-+    } while (0)
- #else
-     #define DB_PRINT(...)
- #endif
-diff --git a/hw/char/stm32f2xx_usart.c b/hw/char/stm32f2xx_usart.c
-index 268e435338..07b462d4b6 100644
---- a/hw/char/stm32f2xx_usart.c
-+++ b/hw/char/stm32f2xx_usart.c
-@@ -34,7 +34,7 @@
-     if (STM_USART_ERR_DEBUG >= lvl) { \
-         qemu_log("%s: " fmt, __func__, ## args); \
-     } \
--} while (0);
-+} while (0)
-
- #define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)
-
-diff --git a/hw/display/cg3.c b/hw/display/cg3.c
-index e069c4484c..cafd9f47ef 100644
---- a/hw/display/cg3.c
-+++ b/hw/display/cg3.c
-@@ -63,7 +63,7 @@
-     if (DEBUG_CG3) { \
-         printf("CG3: " fmt , ## __VA_ARGS__); \
-     } \
--} while (0);
-+} while (0)
-
- #define TYPE_CG3 "cgthree"
- #define CG3(obj) OBJECT_CHECK(CG3State, (obj), TYPE_CG3)
-diff --git a/hw/display/dpcd.c b/hw/display/dpcd.c
-index ce92ff6e2a..943002bee5 100644
---- a/hw/display/dpcd.c
-+++ b/hw/display/dpcd.c
-@@ -39,7 +39,7 @@
-     if (DEBUG_DPCD) {                                                          \
-         qemu_log("dpcd: " fmt, ## __VA_ARGS__);                                \
-     }                                                                          \
--} while (0);
-+} while (0)
-
- #define DPCD_READABLE_AREA                      0x600
-
-diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
-index 561f828e7a..ead4e1a0e4 100644
---- a/hw/display/xlnx_dp.c
-+++ b/hw/display/xlnx_dp.c
-@@ -34,7 +34,7 @@
-     if (DEBUG_DP) {                                                            \
-         qemu_log("xlnx_dp: " fmt , ## __VA_ARGS__);                            \
-     }                                                                          \
--} while (0);
-+} while (0)
-
- /*
-  * Register offset for DP.
-diff --git a/hw/dma/pl330.c b/hw/dma/pl330.c
-index 32cf8399b8..d071049233 100644
---- a/hw/dma/pl330.c
-+++ b/hw/dma/pl330.c
-@@ -29,7 +29,7 @@
-     if (PL330_ERR_DEBUG >= lvl) {\
-         fprintf(stderr, "PL330: %s:" fmt, __func__, ## args);\
-     } \
--} while (0);
-+} while (0)
-
- #define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)
-
-diff --git a/hw/dma/xlnx-zynq-devcfg.c b/hw/dma/xlnx-zynq-devcfg.c
-index 3b10523430..12bb2e3716 100644
---- a/hw/dma/xlnx-zynq-devcfg.c
-+++ b/hw/dma/xlnx-zynq-devcfg.c
-@@ -43,7 +43,7 @@
-     if (XLNX_ZYNQ_DEVCFG_ERR_DEBUG) { \
-         qemu_log("%s: " fmt, __func__, ## args); \
-     } \
--} while (0);
-+} while (0)
-
- REG32(CTRL, 0x00)
-     FIELD(CTRL,     FORCE_RST,          31,  1) /* Not supported, wr ignored */
-diff --git a/hw/dma/xlnx_dpdma.c b/hw/dma/xlnx_dpdma.c
-index 8ceb21ddb3..077c7da9cc 100644
---- a/hw/dma/xlnx_dpdma.c
-+++ b/hw/dma/xlnx_dpdma.c
-@@ -34,7 +34,7 @@
-     if (DEBUG_DPDMA) {                                                         \
-         qemu_log("xlnx_dpdma: " fmt , ## __VA_ARGS__);                         \
-     }                                                                          \
--} while (0);
-+} while (0)
-
- /*
-  * Registers offset for DPDMA.
-diff --git a/hw/i2c/i2c-ddc.c b/hw/i2c/i2c-ddc.c
-index 6b92e95c73..199dac9e41 100644
---- a/hw/i2c/i2c-ddc.c
-+++ b/hw/i2c/i2c-ddc.c
-@@ -30,7 +30,7 @@
-     if (DEBUG_I2CDDC) {                                                        \
-         qemu_log("i2c-ddc: " fmt , ## __VA_ARGS__);                            \
-     }                                                                          \
--} while (0);
-+} while (0)
-
- /* Structure defining a monitor's characteristics in a
-  * readable format: this should be passed to build_edid_blob()
-diff --git a/hw/misc/auxbus.c b/hw/misc/auxbus.c
-index 1182745044..b4cacd664b 100644
---- a/hw/misc/auxbus.c
-+++ b/hw/misc/auxbus.c
-@@ -40,7 +40,7 @@
-     if (DEBUG_AUX) {                                                           \
-         qemu_log("aux: " fmt , ## __VA_ARGS__);                                \
-     }                                                                          \
--} while (0);
-+} while (0)
-
- #define TYPE_AUXTOI2C "aux-to-i2c-bridge"
- #define AUXTOI2C(obj) OBJECT_CHECK(AUXTOI2CState, (obj), TYPE_AUXTOI2C)
-diff --git a/hw/misc/macio/mac_dbdma.c b/hw/misc/macio/mac_dbdma.c
-index 0eddf2e700..1b2a69b3ef 100644
---- a/hw/misc/macio/mac_dbdma.c
-+++ b/hw/misc/macio/mac_dbdma.c
-@@ -52,7 +52,7 @@
-     if (DEBUG_DBDMA) { \
-         printf("DBDMA: " fmt , ## __VA_ARGS__); \
-     } \
--} while (0);
-+} while (0)
-
- #define DBDMA_DPRINTFCH(ch, fmt, ...) do { \
-     if (DEBUG_DBDMA) { \
-@@ -60,7 +60,7 @@
-             printf("DBDMA[%02x]: " fmt , (ch)->channel, ## __VA_ARGS__); \
-         } \
-     } \
--} while (0);
-+} while (0)
-
- /*
-  */
-diff --git a/hw/misc/mmio_interface.c b/hw/misc/mmio_interface.c
-index 894e9801cb..3b0e2039a3 100644
---- a/hw/misc/mmio_interface.c
-+++ b/hw/misc/mmio_interface.c
-@@ -39,7 +39,7 @@ static uint64_t mmio_interface_counter;
-     if (DEBUG_MMIO_INTERFACE) {                                                \
-         qemu_log("mmio_interface: 0x%" PRIX64 ": " fmt, s->id, ## __VA_ARGS__);\
-     }                                                                          \
--} while (0);
-+} while (0)
-
- static void mmio_interface_init(Object *obj)
- {
-diff --git a/hw/misc/stm32f2xx_syscfg.c b/hw/misc/stm32f2xx_syscfg.c
-index 7c45833d09..7f10195862 100644
---- a/hw/misc/stm32f2xx_syscfg.c
-+++ b/hw/misc/stm32f2xx_syscfg.c
-@@ -34,7 +34,7 @@
-     if (STM_SYSCFG_ERR_DEBUG >= lvl) { \
-         qemu_log("%s: " fmt, __func__, ## args); \
-     } \
--} while (0);
-+} while (0)
-
- #define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)
-
-diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
-index 44304d48be..d6bdd027ef 100644
---- a/hw/misc/zynq_slcr.c
-+++ b/hw/misc/zynq_slcr.c
-@@ -30,7 +30,7 @@
-             fprintf(stderr,  ": %s: ", __func__); \
-             fprintf(stderr, ## __VA_ARGS__); \
-         } \
--    } while (0);
-+    } while (0)
-
- #define XILINX_LOCK_KEY 0x767b
- #define XILINX_UNLOCK_KEY 0xdf0d
-diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-index 3943187572..0fa4b0dc44 100644
---- a/hw/net/cadence_gem.c
-+++ b/hw/net/cadence_gem.c
-@@ -34,7 +34,7 @@
- #define DB_PRINT(...) do { \
-     fprintf(stderr,  ": %s: ", __func__); \
-     fprintf(stderr, ## __VA_ARGS__); \
--    } while (0);
-+    } while (0)
- #else
-     #define DB_PRINT(...)
- #endif
-diff --git a/hw/ssi/mss-spi.c b/hw/ssi/mss-spi.c
-index d60daba882..185e1a3920 100644
---- a/hw/ssi/mss-spi.c
-+++ b/hw/ssi/mss-spi.c
-@@ -35,7 +35,7 @@
-     if (MSS_SPI_ERR_DEBUG >= lvl) { \
-         qemu_log("%s: " fmt "\n", __func__, ## args); \
-     } \
--} while (0);
-+} while (0)
-
- #define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)
-
-diff --git a/hw/ssi/stm32f2xx_spi.c b/hw/ssi/stm32f2xx_spi.c
-index 26a1b4ddf5..69514da9fb 100644
---- a/hw/ssi/stm32f2xx_spi.c
-+++ b/hw/ssi/stm32f2xx_spi.c
-@@ -35,7 +35,7 @@
-     if (STM_SPI_ERR_DEBUG >= lvl) { \
-         qemu_log("%s: " fmt, __func__, ## args); \
-     } \
--} while (0);
-+} while (0)
-
- #define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)
-
-diff --git a/hw/ssi/xilinx_spi.c b/hw/ssi/xilinx_spi.c
-index 33482f04de..83585bc8b2 100644
---- a/hw/ssi/xilinx_spi.c
-+++ b/hw/ssi/xilinx_spi.c
-@@ -36,7 +36,7 @@
- #define DB_PRINT(...) do { \
-     fprintf(stderr,  ": %s: ", __func__); \
-     fprintf(stderr, ## __VA_ARGS__); \
--    } while (0);
-+    } while (0)
- #else
-     #define DB_PRINT(...)
- #endif
-diff --git a/hw/ssi/xilinx_spips.c b/hw/ssi/xilinx_spips.c
-index ef56d35f2c..c070393dc9 100644
---- a/hw/ssi/xilinx_spips.c
-+++ b/hw/ssi/xilinx_spips.c
-@@ -43,7 +43,7 @@
-         fprintf(stderr,  ": %s: ", __func__); \
-         fprintf(stderr, ## __VA_ARGS__); \
-     } \
--} while (0);
-+} while (0)
-
- /* config register */
- #define R_CONFIG            (0x00 / 4)
-diff --git a/hw/timer/a9gtimer.c b/hw/timer/a9gtimer.c
-index ce1dc63911..96d534d8a8 100644
---- a/hw/timer/a9gtimer.c
-+++ b/hw/timer/a9gtimer.c
-@@ -37,7 +37,7 @@
-         fprintf(stderr,  ": %s: ", __func__); \
-         fprintf(stderr, ## __VA_ARGS__); \
-     } \
--} while (0);
-+} while (0)
-
- #define DB_PRINT(...) DB_PRINT_L(0, ## __VA_ARGS__)
-
-diff --git a/hw/timer/cadence_ttc.c b/hw/timer/cadence_ttc.c
-index 5e65fdb5a0..10056407ab 100644
---- a/hw/timer/cadence_ttc.c
-+++ b/hw/timer/cadence_ttc.c
-@@ -24,7 +24,7 @@
- #define DB_PRINT(...) do { \
-     fprintf(stderr,  ": %s: ", __func__); \
-     fprintf(stderr, ## __VA_ARGS__); \
--    } while (0);
-+    } while (0)
- #else
-     #define DB_PRINT(...)
- #endif
-diff --git a/hw/timer/mss-timer.c b/hw/timer/mss-timer.c
-index 60f1213a3b..4f814572e2 100644
---- a/hw/timer/mss-timer.c
-+++ b/hw/timer/mss-timer.c
-@@ -36,7 +36,7 @@
-     if (MSS_TIMER_ERR_DEBUG >= lvl) { \
-         qemu_log("%s: " fmt "\n", __func__, ## args); \
-     } \
--} while (0);
-+} while (0)
-
- #define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)
-
-diff --git a/hw/timer/stm32f2xx_timer.c b/hw/timer/stm32f2xx_timer.c
-index e5f5e14a90..58fc7b1188 100644
---- a/hw/timer/stm32f2xx_timer.c
-+++ b/hw/timer/stm32f2xx_timer.c
-@@ -34,7 +34,7 @@
-     if (STM_TIMER_ERR_DEBUG >= lvl) { \
-         qemu_log("%s: " fmt, __func__, ## args); \
-     } \
--} while (0);
-+} while (0)
-
- #define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)
-
-diff --git a/hw/tpm/tpm_passthrough.c b/hw/tpm/tpm_passthrough.c
-index c440aff4b2..b8253b338d 100644
---- a/hw/tpm/tpm_passthrough.c
-+++ b/hw/tpm/tpm_passthrough.c
-@@ -39,7 +39,7 @@
-     if (DEBUG_TPM) { \
-         fprintf(stderr, fmt, ## __VA_ARGS__); \
-     } \
--} while (0);
-+} while (0)
-
- #define TYPE_TPM_PASSTHROUGH "tpm-passthrough"
- #define TPM_PASSTHROUGH(obj) \
-diff --git a/hw/tpm/tpm_tis.c b/hw/tpm/tpm_tis.c
-index 42d647d363..6e08cc2033 100644
---- a/hw/tpm/tpm_tis.c
-+++ b/hw/tpm/tpm_tis.c
-@@ -105,7 +105,7 @@ struct TPMState {
-     if (DEBUG_TIS) { \
-         printf(fmt, ## __VA_ARGS__); \
-     } \
--} while (0);
-+} while (0)
-
- /* tis registers */
- #define TPM_TIS_REG_ACCESS                0x00
-diff --git a/migration/rdma.c b/migration/rdma.c
-index ca56594328..9d5a424011 100644
---- a/migration/rdma.c
-+++ b/migration/rdma.c
-@@ -88,7 +88,7 @@ static uint32_t known_capabilities = RDMA_CAPABILITY_PIN_ALL;
-             } \
-             return rdma->error_state; \
-         } \
--    } while (0);
-+    } while (0)
-
- /*
-  * A work request ID is 64-bits and we split up these bits
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 625ef2dfd2..89ffd33e87 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -400,7 +400,7 @@ static void unallocated_encoding(DisasContext *s)
-                       "at pc=%016" PRIx64 "\n",                          \
-                       __FILE__, __LINE__, insn, s->pc - 4);              \
-         unallocated_encoding(s);                                         \
--    } while (0);
-+    } while (0)
-
- static void init_tmp_a64_array(DisasContext *s)
- {
-diff --git a/target/s390x/kvm.c b/target/s390x/kvm.c
-index b03f583032..06d06010a4 100644
---- a/target/s390x/kvm.c
-+++ b/target/s390x/kvm.c
-@@ -58,7 +58,7 @@
-     if (DEBUG_KVM) {                          \
-         fprintf(stderr, fmt, ## __VA_ARGS__); \
-     }                                         \
--} while (0);
-+} while (0)
-
- #define kvm_vm_check_mem_attr(s, attr) \
-     kvm_vm_check_attr(s, KVM_S390_VM_MEM_CTRL, attr)
-diff --git a/tests/tcg/test-mmap.c b/tests/tcg/test-mmap.c
-index 3982fa2c72..cdefadfa4c 100644
---- a/tests/tcg/test-mmap.c
-+++ b/tests/tcg/test-mmap.c
-@@ -39,7 +39,7 @@ do                                                             \
-     fprintf (stderr, "FAILED at %s:%d\n", __FILE__, __LINE__); \
-     exit (EXIT_FAILURE);                                       \
-   }                                                            \
--} while (0);
-+} while (0)
-
- unsigned char *dummybuf;
- static unsigned int pagesize;
--- 
-2.14.3
-
+Acked-by: Cornelia Huck <cohuck@redhat.com>

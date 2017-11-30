@@ -1,96 +1,88 @@
-Received: by 10.223.159.82 with SMTP id f18csp560510wrg;
-        Thu, 30 Nov 2017 04:14:57 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMZ9Pp/H5QFHxWTivgznnBm+gdEldTYVjxVW+NX6hxRvITONJTyujhtjSvKvuPsdbIZ6FMT2
-X-Received: by 10.37.174.85 with SMTP id g21mr1292480ybe.218.1512044097875;
-        Thu, 30 Nov 2017 04:14:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1512044097; cv=none;
+Received: by 10.223.159.82 with SMTP id f18csp582058wrg;
+        Thu, 30 Nov 2017 04:37:28 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMY53kixwPamI/VWmL3E0iTqFgGXohpIwhLYt7psa9n+YMqSsYW/u/BToJnuHoNpm74gmHSL
+X-Received: by 10.129.181.72 with SMTP id c8mr1382754ywk.202.1512045447804;
+        Thu, 30 Nov 2017 04:37:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1512045447; cv=none;
         d=google.com; s=arc-20160816;
-        b=aoeU29mXeozluuM1B/hhsB2wYIV5nOGZtHFW1orBOjkxcfxNOIoy3TM9T1J6tBq1lG
-         M4y4DQYLQihpTeAHq18Rwfi/ceuW/8JRdsxKmKv0mxTUqm2xJf9mqNY643e9hU17DhSr
-         guvM20rNzFwuFrHTTJFBLLFgWb92IVBcamUS8RvjKf/VwmiMBKGf49ho7oZSr/K342oV
-         RGQ1Mg4WkcfeG5WVE3YB3aaVWQNxFlJXmLbvSe2NQGpaA+fuN+WxumpZ8Fkp928olbSZ
-         CdjWy+MLStP/NjM/l5d88neaN1nSwS3wJa7lS85zetUTtRgHNwBcCzAacY6A+2Xz5H4i
-         VEQw==
+        b=pFp+LoWioAbyEbgsXGTsiAS3NvM36J3kIshy7Ik8rTfo9xm2xIEoXjNpKjoWGsSF6L
+         yMgL8WmZKTZfhvG4gmpvyO/DabVIkD+1mzkwYl/dP3wEF6UNK+o2YbPgWsSdQxpJVBPy
+         xabn13KqJHIHiQvt/fKiUoWmwzpVF7eUyX5jklc88+ZKp8tJWZCGB6HxauRiLl/7jxw1
+         gt7OBAZk8q18b6PjZpz+nFeZbGTzL2UFQYshfD1anOAvP9tsib+3w6r3Z6xBbiXfvk01
+         27sFjlpCKOMEtFcfKth2SA9mC78vJ/Kz89OrWmp5C0dkJAWuZBhr3ttndPJ+piNGpMVz
+         juZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
          :arc-authentication-results;
-        bh=7rHx3ei411hrgYoE2pAQ21/atnu9FfnP9GKnT7piTnI=;
-        b=Gy4k3/RSbdna1RrvH2SmOV11Rf6fPXvTorM4hTQPdrfqlsBSRav3+Rq0L3gJQwvLuZ
-         r26EuSrqpg1huNOhV3aKj8AdjiIsUD/GxFGzK/8TNQ9oBe/75ORPEKL1W7BysWI58Jjt
-         gta89GDASPSzjiw2Z7Dg7LiLRqaWWuYnFQ3ewVuE5/hPG1UFetPCw/MfEuUQws849f2x
-         Mv8A0Ky83eJF/6PqIiJxGke/NuQfoYT7GgwjFhD5P/YMB/zWLVJOIjEf62Oy8iK+BP2N
-         mo+zPjgb2iKQrWuUBQ+7o6O1z51HND6Fn9CnrtTfmEF1oFqPWalvufBGIFYB+z9EKcyZ
-         HARg==
+        bh=wNpWrb7nPirmFWiWsJM3SuCsBIfaLmHOLz1nAblN6QA=;
+        b=OEpYZ8vYK/XHFdrahNubMY3EPrFjaHqPDzhDjdR3xB5lv1vaUg2O1nGLXlN2ptLvk0
+         k4mj1zmPr5LyZJerWgfy1QFVkVeNKaQummAykr2LQuhwwbf0DVdGxryzkcBgd4P5UTXt
+         pPQqex2yXtK5d0MA8MDr9f8oWe8xI1KE6eXKjpk3NkKIPRYvYTIK1Ocr36HRvn8jLqNx
+         2byfRTNj4qmVj9wR4Q7kdd/nkDjgoTM0wxDaMyOjHSSSUP5m89Ik0qUHkKDtiY55a0Lm
+         MN4Xo1kW6ORD/7rDv03h1m4LKP1hht7iCOG2LGVsNCPcJ/gPMmkoWF3hooiC2lpYs++v
+         UOsw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=GvTTaIFL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f188si458315ywd.32.2017.11.30.04.14.57
+        by mx.google.com with ESMTPS id c1si831825ywk.92.2017.11.30.04.37.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 30 Nov 2017 04:14:57 -0800 (PST)
+        Thu, 30 Nov 2017 04:37:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=GvTTaIFL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47639 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47763 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eKNk1-0005YN-91
-	for alex.bennee@linaro.org; Thu, 30 Nov 2017 07:14:57 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43060)
+	id 1eKO5n-0007cF-3N
+	for alex.bennee@linaro.org; Thu, 30 Nov 2017 07:37:27 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48496)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eKNjn-0005S0-S9
-	for qemu-arm@nongnu.org; Thu, 30 Nov 2017 07:14:44 -0500
+	(envelope-from <thuth@redhat.com>) id 1eKO5d-0007c7-Nw
+	for qemu-arm@nongnu.org; Thu, 30 Nov 2017 07:37:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eKNjn-00042Z-0S
-	for qemu-arm@nongnu.org; Thu, 30 Nov 2017 07:14:43 -0500
-Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:34096)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eKNjm-00042K-OB
-	for qemu-arm@nongnu.org; Thu, 30 Nov 2017 07:14:42 -0500
-Received: by mail-oi0-x244.google.com with SMTP id u193so4677441oie.1
-	for <qemu-arm@nongnu.org>; Thu, 30 Nov 2017 04:14:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=7rHx3ei411hrgYoE2pAQ21/atnu9FfnP9GKnT7piTnI=;
-	b=GvTTaIFLQtz/9xPIFX8eZRVcHYrjrbKBeEkl08sf4IJbSbh6WF7ETc8JfYamOAvx7g
-	cf81t8L+g+ATpuDaDSI7ES9jLKqOuCV/zLKBHp/m/aATrbJer0+QNu5DqqLrhzv0FP3w
-	GR/or1iYZsAGlCwt2fNRf4AMxNOAiO4bhVHEA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=7rHx3ei411hrgYoE2pAQ21/atnu9FfnP9GKnT7piTnI=;
-	b=qIM0jRLUND1/lujyqsWeV2HEeLBH2FutiVShcSCg5aVtn1FkQ+BQ0sJEeqDe9gPFj1
-	q0HcloUHL2cbnVWgWnuMQqVlogXyk5PRP8x/PUVDc+muV6ZlCA4kuGjQx3YOcR70bS8E
-	957qyBSYlMuD9kRDX2v2lattCUQdwe2oVFZnUydO5kglFSLjq+XHzlflpzkjOSh6sB/u
-	v49yoaqGYIItl5yr6uvUXwFBEY+ohd3K6RrZlFDz6WhBW/4xR1UTMWwRJM1D1Iu4bBFQ
-	oJ7cEaVmniY820kk2wdMUa/2UhwxtPyLdHjJaSxitopWMEPjrGvKTyUOcAAKeXmHGxib
-	FjAQ==
-X-Gm-Message-State: AJaThX61hOlJeieJ+FgcyTcxj/TB4WLPUy8mTCtCOoXzhsGlkMsq+n0A
-	v+dVw31/ag/tXjLWwaIHVZt1Vax4QwF1dRfbxU4cYw==
-X-Received: by 10.202.213.151 with SMTP id m145mr4456878oig.328.1512044082049; 
-	Thu, 30 Nov 2017 04:14:42 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.157.63.74 with HTTP; Thu, 30 Nov 2017 04:14:21 -0800 (PST)
-In-Reply-To: <1512031988-32490-4-git-send-email-thuth@redhat.com>
+	(envelope-from <thuth@redhat.com>) id 1eKO5a-00016N-IQ
+	for qemu-arm@nongnu.org; Thu, 30 Nov 2017 07:37:17 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:45876)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1eKO5a-00015l-9K; Thu, 30 Nov 2017 07:37:14 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 38A634DB11;
+	Thu, 30 Nov 2017 12:37:13 +0000 (UTC)
+Received: from [10.36.116.158] (ovpn-116-158.ams2.redhat.com [10.36.116.158])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5940F6031E;
+	Thu, 30 Nov 2017 12:37:11 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <1512031988-32490-1-git-send-email-thuth@redhat.com>
 	<1512031988-32490-4-git-send-email-thuth@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 30 Nov 2017 12:14:21 +0000
-Message-ID: <CAFEAcA-LBOm=kHja3QJqOw-TT3GF9-i+wJfXdL-FU5NKimknzQ@mail.gmail.com>
-To: Thomas Huth <thuth@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::244
+	<CAFEAcA-LBOm=kHja3QJqOw-TT3GF9-i+wJfXdL-FU5NKimknzQ@mail.gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <e56ccc1b-17fd-fc44-cc11-d63de2952c79@redhat.com>
+Date: Thu, 30 Nov 2017 13:37:09 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.4.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA-LBOm=kHja3QJqOw-TT3GF9-i+wJfXdL-FU5NKimknzQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Thu, 30 Nov 2017 12:37:13 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-2.12 3/7]
  tests/boot-serial-test: Add support for the mcf5208evb board
 X-BeenThere: qemu-arm@nongnu.org
@@ -110,43 +102,79 @@ Cc: Anthony Green <green@moxielogic.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0mXZRMnAYG/w
+X-TUID: TSf5YGQPIemt
 
-On 30 November 2017 at 08:53, Thomas Huth <thuth@redhat.com> wrote:
-> We can output a character quite easily here with some few lines of
-> assembly that we provide as a mini-kernel for this board.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  tests/boot-serial-test.c | 10 ++++++++++
->  1 file changed, 10 insertions(+)
->
-> diff --git a/tests/boot-serial-test.c b/tests/boot-serial-test.c
-> index d997269..dd3828c 100644
-> --- a/tests/boot-serial-test.c
-> +++ b/tests/boot-serial-test.c
-> @@ -16,6 +16,14 @@
->  #include "qemu/osdep.h"
->  #include "libqtest.h"
->
-> +static const uint8_t kernel_mcf5208[] = {
-> +    0x41, 0xf9, 0xfc, 0x06, 0x00, 0x00,     /* lea 0xfc060000,%a0 */
-> +    0x10, 0x3c, 0x00, 0x54,                 /* move.b #'T',%d0 */
-> +    0x11, 0x7c, 0x00, 0x04, 0x00, 0x08,     /* move.b #4,8(%a0)     Enable TX */
-> +    0x11, 0x40, 0x00, 0x0c,                 /* move.b %d0,12(%a0)   Print 'T' */
-> +    0x60, 0xfa                              /* bra.s  loop */
-> +};
+On 30.11.2017 13:14, Peter Maydell wrote:
+> On 30 November 2017 at 08:53, Thomas Huth <thuth@redhat.com> wrote:
+>> We can output a character quite easily here with some few lines of
+>> assembly that we provide as a mini-kernel for this board.
+>>
+>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>> ---
+>>  tests/boot-serial-test.c | 10 ++++++++++
+>>  1 file changed, 10 insertions(+)
+>>
+>> diff --git a/tests/boot-serial-test.c b/tests/boot-serial-test.c
+>> index d997269..dd3828c 100644
+>> --- a/tests/boot-serial-test.c
+>> +++ b/tests/boot-serial-test.c
+>> @@ -16,6 +16,14 @@
+>>  #include "qemu/osdep.h"
+>>  #include "libqtest.h"
+>>
+>> +static const uint8_t kernel_mcf5208[] =3D {
+>> +    0x41, 0xf9, 0xfc, 0x06, 0x00, 0x00,     /* lea 0xfc060000,%a0 */
+>> +    0x10, 0x3c, 0x00, 0x54,                 /* move.b #'T',%d0 */
+>> +    0x11, 0x7c, 0x00, 0x04, 0x00, 0x08,     /* move.b #4,8(%a0)     E=
+nable TX */
+>> +    0x11, 0x40, 0x00, 0x0c,                 /* move.b %d0,12(%a0)   P=
+rint 'T' */
+>> +    0x60, 0xfa                              /* bra.s  loop */
+>> +};
+>=20
+> This approach doesn't seem to be scalable to me -- are we
+> really going to have 50 or more fragments of hand-coded hex in
+> this file to cover the various board models?
 
-This approach doesn't seem to be scalable to me -- are we
-really going to have 50 or more fragments of hand-coded hex in
-this file to cover the various board models?
+No, since this only works for certain few boards with these criteria:
 
-I'd much rather see us have a framework for being able
-to build test blobs from source using a cross compiler
-setup (and docker or similar so anybody can rebuild
-the test blobs). That will be much easier to maintain
-and easier to extend to having tests that test other
-parts of the board or other aspects of TCG emulation.
+1) There must be a way to load such small blobs either with -kernel or
+-bios. Many boards only support loading kernels in the ELF format, and
+we certainly don't want to encode the hex-dump of such a kernel here.
+Or some boards / CPUs also support -bios, but the entry point must be at
+the end of a large image, so that also does not make sense to include
+them here.
 
-thanks
--- PMM
+2) The UART must be usable with some few lines of assembly. That's also
+not always the case.
+
+So no, this is really not meant to scale to all boards, it's just meant
+to get at least some few more test coverage, especially while we're not
+having other test mechanisms in place yet. (e.g. how long are we talking
+about reviving tests/tcg/ again already? ... some attempts have been
+made to make it compilable again, but non of the patch series has been
+included yet so far)
+
+> I'd much rather see us have a framework for being able
+> to build test blobs from source using a cross compiler
+> setup (and docker or similar so anybody can rebuild
+> the test blobs). That will be much easier to maintain
+> and easier to extend to having tests that test other
+> parts of the board or other aspects of TCG emulation.
+
+I agree that this idea is way more flexible and could cover many more
+boards, but there are also things that need to be solved first:
+Not everybody has docker / cross-compilers installed or can use them, so
+we likely need a set of pre-build binary images somewhere. But we
+certainly don't want to include megabytes of blobs in the git repository
+... so this would need to go into an external repository instead. Then
+you likely can not include this in "make check" so easily anymore
+(unless you force everybody to check out the external repository with
+the git-submodule.sh script - but I really dislike this idea) ...
+
+So yes, we should have better test coverage for almost all machines if
+possible, but I don't see that this is happening soon or could be really
+tightly integrated into "make check". I.e. the boot-serial tester could
+fill at least parts of this gap, I think.
+
+ Thomas

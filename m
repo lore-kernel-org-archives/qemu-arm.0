@@ -1,96 +1,81 @@
-Received: by 10.223.159.82 with SMTP id f18csp328885wrg;
-        Wed, 29 Nov 2017 23:24:47 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMZyh4tRtZgdrjBakO6k+Mt9Vz4k/PMroSVcjTFUroyqjpao+Il4Pxav6dpPT/HAKCgTjgKN
-X-Received: by 10.129.87.3 with SMTP id l3mr929827ywb.386.1512026686994;
-        Wed, 29 Nov 2017 23:24:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1512026686; cv=none;
+Received: by 10.223.159.82 with SMTP id f18csp390159wrg;
+        Thu, 30 Nov 2017 00:53:34 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMZXr+aTzc1MJ8v/s+MU4y0HkX9K5svIGwOWGbmo44M4sm+HHipAcuIDKlemk4Rj3aRSrpwq
+X-Received: by 10.37.30.11 with SMTP id e11mr972987ybe.321.1512032014625;
+        Thu, 30 Nov 2017 00:53:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1512032014; cv=none;
         d=google.com; s=arc-20160816;
-        b=SO1poPZm9/d6dAFEex6DyAWcRBtFMDh+81dpwrvr2rXN6N9aFtH+c3ZHxoUzh4R2kv
-         4uwqeTAKPgJYzTxAUr9zMGYZC5xE7Ivk1yV70Jt0BniNlWSOb906M0LpQAo8XnmzFZkE
-         aIuOSi4LD14FEZgt8xkI47o26BP19dXrnzN4RLhN/Mq//FTUZqqWK6uq5OpGOngTy+mj
-         U5umGIJZyDi1UaFBrZxBM0aeP03NZBKOYr3+Ths9m7MEyGSB63TLwlQaKV9tLgmGqFCc
-         cm8RaFEh25tMbhkrMk6tJGBbRxcZZ4pNoe5c9Btcd5O7sCtQVo5kU8DxHJvcnzC7MC9Q
-         CAqg==
+        b=O95tXWLR2yE0uFvFBslEgnuE8mS+nF9t2LatPVuaCmfVXAvNHk0GkSNkFbKiQdWSDm
+         c3I4oHYxDOo+NBCJQUGSapuj5Qt9rpcV1oebHoHpUf2ZBiq9BlgoJMNQB4WHsc7wOdhN
+         YgpRWKUhj7olaSlD5IZqSlWKL7dLwo/UvT0NdeJ9O1jy7Q+UnYjLx3arVT5oQzZQYysG
+         kjg/Bxk47ijLPH2a5fMqPlKVFOHRdLnfV7nNqmTTK1NLMtlzqE3U8sqHrVJzwJcK4pb4
+         97j8KNJ3ZOn4vcOfrwyeeOa+nOwIRvoRno+bVC0YEqxUGVHpg8fh3EOeBvq0FyxuMWJ4
+         J7QQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :mime-version:dkim-signature:arc-authentication-results;
-        bh=Qbv0vygRJ2GuHGrIGjRXfeOUATpTo6SB7f8ldpIfX2c=;
-        b=v0it7YA9UTMA3/QRENJT/v1aqUU6jAj/3tGG4oj+csa0TMIThcbApKn5newBVs63dD
-         Tpi7v1V8xuqywz6FzzfFitPXj67yj2xOxbKcHWud5N1BiQeukVO6CowbuVFEY+eDvzXW
-         55SmK8TqIHOOj6Gmp0ctNTyZqiMRu9ncOUT7J7i1FqbRS+J3qXkuiteL/ZtLZFrxYfmZ
-         zxd4xADed+s5OIjsC4dPzfqlWlq0PVbAJpGOJQh35DDtTq+4g3y65iepI+Z6VTMp+Wrf
-         xv4RemPQ384fyMz8DJM9esu/p8nBaaXPXYy1gKPqANUtR0hHLDwxzBh+d32zF/Ghdy4s
-         1P0g==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=ZjXpWlZ7xFjd3vWLGQhDMGdNSpwDUKPcFygyKJlQTrI=;
+        b=apyk6Uc2EU7gSI4QKpQ08XrOSH877n9xQYpLgrRf3t/Ddfom4gZIKVUbuEqq1bd5Hj
+         wkOiDKpvR+HKGlABL4cZFP6fRFRHfz26PKv0AVT8EBow/OoeiAzZ8cBHGIQDgHSdtUxo
+         8BpXljs9hNXaayBYD6W5ucnwIxDQqjXfByLtTDe2Xjk1OYXFlKyZQgjDCU0uYlVcCFeL
+         i+oxNlM/IGdOPkQ0q55Vm7xqKPIeenga9MBFXl6TMMQ1T8BgvTtg/6KljROtEUOmZEhH
+         8njGWAbBTY19f8WVc1mWh5Uo03Qv9iU9WXYQttX/se5cGIFSL7WyvY/gUwI3GwCpFOBd
+         vztg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=X49qdG9s;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j133si677194ywc.803.2017.11.29.23.24.46
+        by mx.google.com with ESMTPS id n12si683697ybd.323.2017.11.30.00.53.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 29 Nov 2017 23:24:46 -0800 (PST)
+        Thu, 30 Nov 2017 00:53:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=X49qdG9s;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:46647 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:46853 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eKJDC-0004GL-BK
-	for alex.bennee@linaro.org; Thu, 30 Nov 2017 02:24:46 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41615)
+	id 1eKKb8-0005Ca-3f
+	for alex.bennee@linaro.org; Thu, 30 Nov 2017 03:53:34 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48992)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <beyond2002@gmail.com>) id 1eKJ8A-0002mA-6c
-	for qemu-arm@nongnu.org; Thu, 30 Nov 2017 02:19:35 -0500
+	(envelope-from <thuth@redhat.com>) id 1eKKau-0005AG-6o
+	for qemu-arm@nongnu.org; Thu, 30 Nov 2017 03:53:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <beyond2002@gmail.com>) id 1eKJ89-0004fq-C1
-	for qemu-arm@nongnu.org; Thu, 30 Nov 2017 02:19:34 -0500
-Received: from mail-pg0-x236.google.com ([2607:f8b0:400e:c05::236]:36987)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <beyond2002@gmail.com>)
-	id 1eKJ89-0004eW-5h
-	for qemu-arm@nongnu.org; Thu, 30 Nov 2017 02:19:33 -0500
-Received: by mail-pg0-x236.google.com with SMTP id y6so2659450pgp.4
-	for <qemu-arm@nongnu.org>; Wed, 29 Nov 2017 23:19:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:from:date:message-id:subject:to;
-	bh=Qbv0vygRJ2GuHGrIGjRXfeOUATpTo6SB7f8ldpIfX2c=;
-	b=X49qdG9sDU5+W8Mq2kzGtclF5cOf6iQLH77vLnRxGeESoutYHkMOj/ivtpFXfJGdOu
-	qQNiutjtW/l3MGnsLjclmknYMdla9aZSiXYnC+3By9vjq74J+38urTdjVZpRjpvLlvix
-	O1B9xSiv+icSjYTtPQBdKAVwPXKO4/X4JPYL1NaFIuZOEtAd41IidoJxluOhTK2d/kMF
-	ECbmnztopwTGSj2Rm+RYTjacoaZHq+MR/TQUXPFftoLzmDNzlhYtz0Npmk6kXEEpA2X+
-	heTeWT/aDL6l5SBwNYnYcilG58e6fgzFJfwW93Z9HpkBH4aiIGLnxDlLMOGiV/w+G1hY
-	xupw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-	bh=Qbv0vygRJ2GuHGrIGjRXfeOUATpTo6SB7f8ldpIfX2c=;
-	b=BUd6yk+jSdqjeKtZEnMJNxFdILigBI/0/oWYkEeLEfwAoXu2eIZ2nMqxP3poSGXooK
-	ByoEn/wBjQom8OiC/evRDJ0qukq6LFYacbYHXuO77b3jEvgdKmMOVMeApO36aU427sf2
-	YY+QOrEIVLnsKmWjXIxFdV+8F5QA1qqrdLwnrzluLY6nDYpwcEh+MlOXTEBErRIA6f1R
-	fnnPCxK0df+U0NGjFAOUO+hQLr4bbKMcOt1xofJR3GDvdiDkfBRSbraNdiGIRnHW6m5f
-	VLe7qwcv2pGt/BGawSpY/uK93hoSEk1/+2m74uepRGh/L8UqnoEDNcozdXoE72gi15NI
-	CdrQ==
-X-Gm-Message-State: AJaThX6Pw1tqLZlBWH4mR8ABTaPMmbtJcpFU0Ecank1654wfCqGGn9UB
-	5aURdkcqNLwt8SXreZ6LrpByUG00JKVEi7rjkkTBMw==
-X-Received: by 10.98.74.148 with SMTP id c20mr5683233pfj.200.1512026371552;
-	Wed, 29 Nov 2017 23:19:31 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.100.187.166 with HTTP; Wed, 29 Nov 2017 23:19:30 -0800 (PST)
-From: Beyond <beyond2002@gmail.com>
-Date: Thu, 30 Nov 2017 15:19:30 +0800
-Message-ID: <CAFdaLgCSe_1P424cSdDnjEauUPV72zs7ttXpdRSKEdfXWAXXBQ@mail.gmail.com>
-To: qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="001a1145ba5cc47b0c055f2e1282"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c05::236
-X-Mailman-Approved-At: Thu, 30 Nov 2017 02:24:32 -0500
-Subject: [Qemu-arm] machine virt and cpu cortex-a7 not supported?
+	(envelope-from <thuth@redhat.com>) id 1eKKat-0006gm-64
+	for qemu-arm@nongnu.org; Thu, 30 Nov 2017 03:53:20 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:60214)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1eKKas-0006fX-Sv; Thu, 30 Nov 2017 03:53:19 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id BDD67C04D318;
+	Thu, 30 Nov 2017 08:53:17 +0000 (UTC)
+Received: from thh440s.redhat.com (ovpn-116-158.ams2.redhat.com
+	[10.36.116.158])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 22A425D6A5;
+	Thu, 30 Nov 2017 08:53:14 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Thu, 30 Nov 2017 09:53:03 +0100
+Message-Id: <1512031988-32490-3-git-send-email-thuth@redhat.com>
+In-Reply-To: <1512031988-32490-1-git-send-email-thuth@redhat.com>
+References: <1512031988-32490-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Thu, 30 Nov 2017 08:53:17 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH for-2.12 2/7] tests/boot-serial-test: Add code to
+ allow to specify our own kernel or bios
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,31 +87,130 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Anthony Green <green@moxielogic.com>, Laurent Vivier <laurent@vivier.eu>,
+	qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: l8jXUl2jC7px
+X-TUID: bXlDxaP0iAf/
 
---001a1145ba5cc47b0c055f2e1282
-Content-Type: text/plain; charset="UTF-8"
+QEMU only ships with some few firmware images, i.e. we can currently run
+the boot-serial test only on a very limited set of machines. But writing
+some characters to the default UART of a machine can often be done with
+some few lines of assembly, so we add the possibility to the boot-serial
+tester to use its own mini-kernels or mini-firmwares. We write such images
+then into a file that we can load with the "-kernel" or "-bios" parameter
+when we launch QEMU.
 
-When I run QEMU with such parameters:
-qemu-system-arm -M virt -cpu cortex-a7 -smp 4 -m 2G
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ tests/Makefile.include   |  2 ++
+ tests/boot-serial-test.c | 54 +++++++++++++++++++++++++++++++++++++-----------
+ 2 files changed, 44 insertions(+), 12 deletions(-)
 
-It failed with errors:
-qemu-system-arm: mach-virt: CPU type cortex-a7-arm-cpu not supported
+diff --git a/tests/Makefile.include b/tests/Makefile.include
+index c002352..41ca44c 100644
+--- a/tests/Makefile.include
++++ b/tests/Makefile.include
+@@ -297,6 +297,8 @@ gcov-files-x86_64-y = $(subst i386-softmmu/,x86_64-softmmu/,$(gcov-files-i386-y)
+ 
+ check-qtest-alpha-y = tests/boot-serial-test$(EXESUF)
+ 
++check-qtest-m68k-y = tests/boot-serial-test$(EXESUF)
++
+ check-qtest-mips-y = tests/endianness-test$(EXESUF)
+ 
+ check-qtest-mips64-y = tests/endianness-test$(EXESUF)
+diff --git a/tests/boot-serial-test.c b/tests/boot-serial-test.c
+index fa4183d..d997269 100644
+--- a/tests/boot-serial-test.c
++++ b/tests/boot-serial-test.c
+@@ -7,9 +7,10 @@
+  * or later. See the COPYING file in the top-level directory.
+  *
+  * This test is used to check that the serial output of the firmware
+- * (that we provide for some machines) contains an expected string.
+- * Thus we check that the firmware still boots at least to a certain
+- * point and so we know that the machine is not completely broken.
++ * (that we provide for some machines) or some small mini-kernels that
++ * we provide here contains an expected string. Thus we check that the
++ * firmware/kernel still boots at least to a certain point and so we
++ * know that the machine is not completely broken.
+  */
+ 
+ #include "qemu/osdep.h"
+@@ -20,6 +21,9 @@ typedef struct testdef {
+     const char *machine;    /* Name of the machine */
+     const char *extra;      /* Additional parameters */
+     const char *expect;     /* Expected string in the serial output */
++    size_t codesize;        /* Size of the kernel or bios data */
++    const uint8_t *kernel;  /* Set in case we use our own mini kernel */
++    const uint8_t *bios;    /* Set in case we use our own mini bios */
+ } testdef_t;
+ 
+ static testdef_t tests[] = {
+@@ -72,26 +76,52 @@ done:
+ static void test_machine(const void *data)
+ {
+     const testdef_t *test = data;
+-    char tmpname[] = "/tmp/qtest-boot-serial-XXXXXX";
+-    int fd;
++    char serialtmp[] = "/tmp/qtest-boot-serial-sXXXXXX";
++    char codetmp[] = "/tmp/qtest-boot-serial-cXXXXXX";
++    const char *codeparam = "";
++    const uint8_t *code = NULL;
++    int ser_fd;
+ 
+-    fd = mkstemp(tmpname);
+-    g_assert(fd != -1);
++    ser_fd = mkstemp(serialtmp);
++    g_assert(ser_fd != -1);
++
++    if (test->kernel) {
++        code = test->kernel;
++        codeparam = "-kernel";
++    } else if (test->bios) {
++        code = test->bios;
++        codeparam = "-bios";
++    }
++
++    if (code) {
++        ssize_t wlen;
++        int code_fd;
++
++        code_fd = mkstemp(codetmp);
++        g_assert(code_fd != -1);
++        wlen = write(code_fd, code, test->codesize);
++        g_assert(wlen == test->codesize);
++        close(code_fd);
++    }
+ 
+     /*
+      * Make sure that this test uses tcg if available: It is used as a
+      * fast-enough smoketest for that.
+      */
+-    global_qtest = qtest_startf("-M %s,accel=tcg:kvm "
++    global_qtest = qtest_startf("%s %s -M %s,accel=tcg:kvm "
+                                 "-chardev file,id=serial0,path=%s "
+                                 "-no-shutdown -serial chardev:serial0 %s",
+-                                test->machine, tmpname, test->extra);
+-    unlink(tmpname);
++                                codeparam, code ? codetmp : "",
++                                test->machine, serialtmp, test->extra);
++    unlink(serialtmp);
++    if (code) {
++        unlink(codetmp);
++    }
+ 
+-    check_guest_output(test, fd);
++    check_guest_output(test, ser_fd);
+     qtest_quit(global_qtest);
+ 
+-    close(fd);
++    close(ser_fd);
+ }
+ 
+ int main(int argc, char *argv[])
+-- 
+1.8.3.1
 
-I don't know how to emulate quad-core cortex-a7 board.
-Any suggestions? Thanks!
-
---001a1145ba5cc47b0c055f2e1282
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">When I run QEMU with such parameters:<div>qemu-system-arm =
--M virt -cpu cortex-a7 -smp 4 -m 2G<br></div><div><br></div><div>It failed =
-with errors:=C2=A0</div><div>qemu-system-arm: mach-virt: CPU type cortex-a7=
--arm-cpu not supported<br></div><div><br></div><div>I don&#39;t know how to=
- emulate quad-core cortex-a7 board.</div><div>Any suggestions? Thanks!=C2=
-=A0</div></div>
-
---001a1145ba5cc47b0c055f2e1282--

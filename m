@@ -1,103 +1,79 @@
-Received: by 10.223.159.82 with SMTP id f18csp653970wrg;
-        Wed, 22 Nov 2017 13:08:20 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMa0MJTpAh34qo6yId5KUYazIivNOgDR6dJfer/PtDe0uwSaT/pZeGGZ1jFPoXI9lxc9+Ma+
-X-Received: by 10.37.11.133 with SMTP id 127mr13351296ybl.226.1511384900725;
-        Wed, 22 Nov 2017 13:08:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1511384900; cv=none;
+Received: by 10.223.159.82 with SMTP id f18csp390135wrg;
+        Thu, 30 Nov 2017 00:53:32 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMaak1E4MfCWtnZPQZBDdyH+Hdo1fQeEFnJm0QR0mA9g3S5TELJkvZj7ifHdPqMM0gFWyuna
+X-Received: by 10.129.65.3 with SMTP id o3mr987790ywa.105.1512032012197;
+        Thu, 30 Nov 2017 00:53:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1512032012; cv=none;
         d=google.com; s=arc-20160816;
-        b=we5qhqUxfo2fQIAX5fwGNz7O6xNf7fzcScCWcJMWvgcQv6mwJog68FtRhSAu27Lr0I
-         FXQKSYqRsffKdN7A6UoKI88hACsnnEnfbAE7R+fCkBaXlggs9puCdKuywbz18Vm1frnX
-         NuZ+wSosjLYID9HUeUB1GU9VKz3+1bs6ko3bVViO0gdmASd2348hIEy5M1JhzupZe0XZ
-         axEey9n6x2lTZ0uuGaH0ts5ZOCqaeyF+ffwsZLI2X5RNF+8JkuJS530seYgUdHSYFBLK
-         zLBa7vI26cjSO21+cB1JaUxZ/+FbBjDEgFccWbOf0cHSoLmPM0VhOgRPOr4hFdmS58v+
-         St9A==
+        b=HZPXYYvsvVGL/uieqlVD+JXsPAbpzQPhE81z4rs21nfY3nkdGnAv2F9cwTBfWh4yAu
+         9KbiLBgAkwTr3fzJqXj7kHP7wFrkUUoP0+MiLLrEiTtk+UjiKhH580a6paFP+Ixx2/aP
+         bZR271Cl+kbDGPL1hEOdkNj8Ucz1lNrXEz7yVjfCUJ60cR6AusufJiN3THJanO0ZUzK0
+         2AIQIDy3EHmgh0g3kqZdUe8Qkqpp48AV9c6wK8PPWrRIElnkg2k4uyh4oSJaF4A8ncIu
+         6ZhmeD3S5vJndrUE6Hi5buMha+CmVAkwgMqCWeQ+5evlLqIgMHjkGoGp/HI4xVpHnaBk
+         FxDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=2rZe494DcfMZ4WFY7dG3yjlwQsWo5HyWwTYAjSua5js=;
-        b=v/IbbPX9hYHcmne2oVLy1pIruxJVUhYJBcS2g4n5Mvkmp84mzPlzcQNwWdv9z+dgsK
-         oKVQDg5ag3mH6oQ7NHpmg6z8W961ONXb1OCx6tkpEgFruoPDtmgWya7LkNjIUtkMdSvo
-         cLd0XAM07ya5kkQ90zIvPp4bkSiQkUqFKy+MN+ff3E2RcZ32ZMm3SdcdT+oBbN3TO0Ug
-         JigHvcQ72JLZ3USbYlMQVBK2iC170QMNED7CE0hcI63Git11NnMshUxTnoUSE9639IoI
-         5fjEYemf6H3ijfIz8pA2fjAZHrlZepJn5b+t5dVdnVUORAwJOkHopLmAS/zC1LyursDM
-         6Vug==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :arc-authentication-results;
+        bh=P7ucVjxX+sYnSX52080OabnQ7pGQ9acQmtq+F9koZW4=;
+        b=nwx7fwjpiVsx8vka01e3xtSdKdrORK9IWQDmRULGZR+3Jk3txAEoX0pBHOWWBPjKai
+         iqux6PtvnWXlN37+BHXujzFwXn0LnukWBH9jnV2jzZaMCF0typCn9p+bmBsGhW5o1khv
+         9lW7h5+tqONlssLJqBukBMAqWqVBk5ZldbeeVtxNvuXvT9iZjuv15M6WAFHcR+vIFa7+
+         2TMRw+hrp6AnCQqdQf7QIOUz8wWslPafplQpcFJcPjQ4vHnv8kT3aRH5aoZDkbyB1CzX
+         jwiQSxPnYrj5Ms8AvFawCdxIYpymBA3d9eXBoZy3OEhIErZqFa9rdm5IxY/vfUaTrzv6
+         kkuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LspBkCsI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v124si987670ywf.39.2017.11.22.13.08.20
+        by mx.google.com with ESMTPS id f187si717922ywb.266.2017.11.30.00.53.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 22 Nov 2017 13:08:20 -0800 (PST)
+        Thu, 30 Nov 2017 00:53:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LspBkCsI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:41327 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:46851 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eHcFo-0007GJ-3e
-	for alex.bennee@linaro.org; Wed, 22 Nov 2017 16:08:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35639)
+	id 1eKKb5-0005AU-L5
+	for alex.bennee@linaro.org; Thu, 30 Nov 2017 03:53:31 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48928)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1eHcFZ-0007EJ-Gl
-	for qemu-arm@nongnu.org; Wed, 22 Nov 2017 16:08:06 -0500
+	(envelope-from <thuth@redhat.com>) id 1eKKar-0005A1-D5
+	for qemu-arm@nongnu.org; Thu, 30 Nov 2017 03:53:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1eHcFY-0005gn-Lf
-	for qemu-arm@nongnu.org; Wed, 22 Nov 2017 16:08:05 -0500
-Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:39985)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
-	id 1eHcFY-0005gg-Gt; Wed, 22 Nov 2017 16:08:04 -0500
-Received: by mail-qt0-x244.google.com with SMTP id u42so25506276qte.7;
-	Wed, 22 Nov 2017 13:08:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=2rZe494DcfMZ4WFY7dG3yjlwQsWo5HyWwTYAjSua5js=;
-	b=LspBkCsI1vNc8tuHbOzirJUhpa8fHyU89CzVwTJKCMYhbDoAhDPF/fp9vFQBjGCoGI
-	mBnBhnbfFeKjYkLWxnugGizakiLzARP7fbbhdgA6kAIJzGPykYFHoTvhxSsMOvpcrSnT
-	32Pa3waUMcxJE2IEjiHoAmcqANAtd2hIANEnaGmlGR2ujx97GWgFoQi/7IjqsOiHKAvm
-	j9VIAJVGa1WeqC4WUqOfXhMplkusznCUiIGcSHYGJtdcE2VkSMA5X6KFXN4+2Q1ICbka
-	nQVfdzHqasphWjGwyjPf9CRcAkBtnUqOt6NoVCylZSmoBYN+NqDR74H81K3R9gnioMc2
-	l5eg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=2rZe494DcfMZ4WFY7dG3yjlwQsWo5HyWwTYAjSua5js=;
-	b=J1P1x8cpQKKCuRo4hn4Y7A6SfLlRbgezUieRCdtwdbKg08MvtvOmJxMCOcq+qLs03I
-	If8Td+R6MgnUYunvL6k2tAPAHrMlMfuVUP7Cnqly5lB6tA1IhNWZZhChKgnSOwyrfR2g
-	fpic0bS1qbPWT6zHY7sjPE44EqujQLfhHaIWiNy7/cr9XWgfv0Dg/Y5ZJOnsjN+/67BJ
-	+w8QdWr1rTXsfoBOHX9k1Y68ds94JSEwBOI3lRDbg/Uu/6G/g+I8X7H26k+CQgOsjcOZ
-	dpcaX0d6ZBE5rGPswZCaeCoaUwWXD9aKZGLpUAQQPQj/pzBOTzIXzeUzUbhHNpHM211p
-	x45w==
-X-Gm-Message-State: AJaThX7M7PiPaO2W0QyQecJB3yesUGLA0kX1HZ1y3nQFlg51Km43TbB1
-	S9Auh3oDkmIasVFAUVocTLLBZf6DqEMrxjoly0g=
-X-Received: by 10.200.54.176 with SMTP id a45mr33437876qtc.176.1511384883882; 
-	Wed, 22 Nov 2017 13:08:03 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.140.40.243 with HTTP; Wed, 22 Nov 2017 13:08:03 -0800 (PST)
-In-Reply-To: <CAFEAcA_Ug=6cYD0VD93CorVt+rv_u4WWsa_Gk3k+c18G07bDRg@mail.gmail.com>
-References: <20171106154813.19936-1-andrew.smirnov@gmail.com>
-	<20171106154813.19936-20-andrew.smirnov@gmail.com>
-	<CAFEAcA_Ug=6cYD0VD93CorVt+rv_u4WWsa_Gk3k+c18G07bDRg@mail.gmail.com>
-From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Date: Wed, 22 Nov 2017 13:08:03 -0800
-Message-ID: <CAHQ1cqGxtN=hK51v+Gtq7wngp_HKxXJv4tdRin+bKYeEKv1NKw@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::244
-Subject: Re: [Qemu-arm] [PATCH v3 19/30] i.MX: Add code to emulate SDMA IP
- block
+	(envelope-from <thuth@redhat.com>) id 1eKKam-0006cd-IP
+	for qemu-arm@nongnu.org; Thu, 30 Nov 2017 03:53:17 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:32806)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1eKKam-0006cP-C7; Thu, 30 Nov 2017 03:53:12 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2E0224E4C2;
+	Thu, 30 Nov 2017 08:53:11 +0000 (UTC)
+Received: from thh440s.redhat.com (ovpn-116-158.ams2.redhat.com
+	[10.36.116.158])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 4497F5D6A5;
+	Thu, 30 Nov 2017 08:53:08 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Thu, 30 Nov 2017 09:53:01 +0100
+Message-Id: <1512031988-32490-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Thu, 30 Nov 2017 08:53:11 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH for-2.12 0/7] Test more machines and TCG CPUs
+ automatically
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -109,43 +85,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Jason Wang <jasowang@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	Andrey Yurovsky <yurovsky@gmail.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: Anthony Green <green@moxielogic.com>, Laurent Vivier <laurent@vivier.eu>,
+	qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /m41PPGwC5Sm
+X-TUID: fIhGbGFX5mkL
 
-On Tue, Nov 21, 2017 at 10:20 AM, Peter Maydell
-<peter.maydell@linaro.org> wrote:
-> On 6 November 2017 at 15:48, Andrey Smirnov <andrew.smirnov@gmail.com> wr=
-ote:
->> Add minimal code needed to allow upstream Linux guest to boot.
->>
->> Cc: Peter Maydell <peter.maydell@linaro.org>
->> Cc: Jason Wang <jasowang@redhat.com>
->> Cc: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->> Cc: qemu-devel@nongnu.org
->> Cc: qemu-arm@nongnu.org
->> Cc: yurovsky@gmail.com
->> Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
->> ---
->>  hw/dma/Makefile.objs      |  1 +
->>  hw/dma/imx_sdma.c         | 99 ++++++++++++++++++++++++++++++++++++++++=
-+++++++
->>  include/hw/dma/imx_sdma.h | 22 +++++++++++
->>  3 files changed, 122 insertions(+)
->>  create mode 100644 hw/dma/imx_sdma.c
->>  create mode 100644 include/hw/dma/imx_sdma.h
->>
->
-> Does Linux really insist on reads-as-written behaviour?
-> (ie can you get away with just using
-> create_unimplemented_device() ?)
->
+During the 2.11 development cycle, a bunch of ARM boards were broken
+completely, and nobody noticed it for a couple of weeks. Also a lot
+of TCG CPUs do not get any test coverage at all yet (especially since
+the old tests in the tests/tcg/ are still pretty much dead today).
+So we really should improve our testing in this area.
 
-Not sure. I'll give it a try for v4.
+This patch series now tries to improve the test coverage at least a
+little bit: The second patch adds the possibility to the boot-serial
+test to also load home-brew mini-kernels and firmware blobs, and the
+following patches then add some tests for various boards / CPUs with
+some few lines of self-made assembly.
 
-Thanks,
-Andrey Smirnov
+Thomas Huth (7):
+  tests/boot-serial-test: Make sure that we check the timeout regularly
+  tests/boot-serial-test: Add code to allow to specify our own kernel or
+    bios
+  tests/boot-serial-test: Add support for the mcf5208evb board
+  tests/boot-serial-test: Add tests for microblaze boards
+  hw/moxie/moxiesim: Add support for loading a BIOS on moxiesim
+  tests/boot-serial-test: Add a test for the moxiesim machine
+  tests/boot-serial-test: Add support for the raspi2 machine
+
+ hw/moxie/moxiesim.c      |  12 +++++-
+ tests/Makefile.include   |   7 ++++
+ tests/boot-serial-test.c | 106 ++++++++++++++++++++++++++++++++++++++++-------
+ 3 files changed, 109 insertions(+), 16 deletions(-)
+
+-- 
+1.8.3.1
+

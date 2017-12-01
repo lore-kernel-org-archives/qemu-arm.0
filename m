@@ -1,135 +1,86 @@
-Received: by 10.223.159.82 with SMTP id f18csp3974954wrg;
-        Wed, 29 Nov 2017 02:12:14 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMayWZoLgdmZtf2WZp/1Afy5a+n4tkpbpyl8hU3dvRfcGtwilCpPmRUXps9E+ZezWq8+hu92
-X-Received: by 10.37.186.140 with SMTP id s12mr1370981ybg.111.1511950334584;
-        Wed, 29 Nov 2017 02:12:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1511950334; cv=none;
+Received: by 10.223.159.82 with SMTP id f18csp1519227wrg;
+        Fri, 1 Dec 2017 10:44:42 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMZCuvsoWqNA91dakdf4eRMSsHp19HNVmk22+BDYPiE9DnuozNYqenbKPDaRqCca8EBkXAqA
+X-Received: by 10.223.164.20 with SMTP id d20mr6180977wra.103.1512153882675;
+        Fri, 01 Dec 2017 10:44:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1512153882; cv=none;
         d=google.com; s=arc-20160816;
-        b=rmIWowWldbU4Y31fq143eh0WlWD3GwMVRjtankwh4pL5lCMahOsW8FxM2039cUjw3x
-         40Nj+g+6Yj3eopnX9LN8p6KlrbFSYCQE6huaA6/8usiloscehBsfikGyLkwuKwVtPRa4
-         TvrSnms4TuCdY/V1GpNnGoPmdqKIazJ6SHk0VGrq4e6s0yp+m7Fs5/xs8MCPsWRp2Jeh
-         uRUeNTD1KHGZsWFv0+JiRUYGftnvrreSjU6JdQ+rEsLSIl5UWkz1XKTWIYcAsVveXmCK
-         wRJFKDZC/RTgenr1gEqvyzV/fM5GzpYZoZ7puHKJ8Q8FeYr/xYgt/z0VHdRQo5tvAURn
-         LJhQ==
+        b=COXQWAjc6SfHB5B/0jnuESdOuLAoAlo5ZWhIXcIEoekI3bOL+W+RNIjUtV2Qz/DUtx
+         K2FLy7/uape6XYjcZ/11FfD68/9sgYeBlr/iAQic0f6TkwDme71ViW4BkwaXzRD4pVom
+         4U2yKy9kQNgQxBjS0zc+KlWG4ANmDlStBU4Z0MyuueOLynQAvsYPtZoj0VKqVc/rOOWv
+         hRCCcVew83pqzC0kDWNrKYHfrOiZqHgzCOfcvYR4Cg0tbypiAehXRYUBJUauPwIaSzkx
+         D9NtxWbtB3qk+2t/gXdJZ1V8YWJqm4sXhkdbVD3P4DsL56lBYvJj6jUY9/xnJOK8M49l
+         NJRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=3avFcD3hn45SKkokC5rhXAS3VgH/NRtl3rYwNuJcQYc=;
-        b=beHHj8UP4Qe4Rkbp1SfJlTkiQy/kmuppPIrGm4qDPJAi9IAEBXT9SSUw8AdH92namm
-         TNnwQcJ7LwM0LS/+8l0o2fk2VreuJPe56rMGGEUzH2ER1+mSV2EnM5081bxfBt4tb/Ft
-         /hTKPKyPlIL7k+mQmUKV+O7p1DVRbhAYSBylI4NPcX3G+yVTNA38neAS/uJh9aXvWc05
-         dZwqTTpfomuQrJyLM78U5i0pvc+tu0RPu96D+jF67lbMzB+ekMfg6Ten7kIekwANM2bW
-         gup34LhJdYGuMgSwzuxVRrvGVyAM74ZDQy7h3sbw9sp+7dJcM6Y848j1b3dDfy+eLjYO
-         3w9g==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :arc-authentication-results;
+        bh=ZiyKz2tijnHXQYw4L1uI76Yy8JLdizlnzYMoKMCAOEI=;
+        b=RQ3pBdUTihssOempHb/tNBnTT6AaaKdimvk58gEDxbb53gYIkfoheJxYrdfJB4LjcH
+         jpWoaSQj+T9jd2sFVwdiUCcagp81F/G3qrB1ICZh7vecTUjEsuKZ3kr4FvNXKQ2u6nKu
+         MfOFHSihiIklNHplJ3mQ3kHUSqeNzyzGDLDM9sfA8EF8KCPPmkPyS/U9KUTf88e1LGbX
+         cj2cm9xhld1KKU6yes8ulieVn3MFJHk62/KXi+a+FypU0vtMVrFbO5ehXJa26OaUf/Pu
+         UJuiIi8QCgbI3jZReyhFpjGN/ZrEghu4L5Ja1i5FMDghLPcz6KX+2b/2fSTL+A+KkriU
+         WlcA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=E2PMv8D8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q19si265106ywg.506.2017.11.29.02.12.14
+Return-Path: <pm215@archaic.org.uk>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+        by mx.google.com with ESMTPS id 7si5441157wra.41.2017.12.01.10.44.42
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 29 Nov 2017 02:12:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 01 Dec 2017 10:44:42 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=E2PMv8D8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42100 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eJzLh-0001u5-U7
-	for alex.bennee@linaro.org; Wed, 29 Nov 2017 05:12:14 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38870)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eJzLX-0001sR-FT
-	for qemu-arm@nongnu.org; Wed, 29 Nov 2017 05:12:04 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eJzLW-0005kq-Ik
-	for qemu-arm@nongnu.org; Wed, 29 Nov 2017 05:12:03 -0500
-Received: from mail-oi0-x22a.google.com ([2607:f8b0:4003:c06::22a]:35797)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eJzLW-0005k2-Cl
-	for qemu-arm@nongnu.org; Wed, 29 Nov 2017 05:12:02 -0500
-Received: by mail-oi0-x22a.google.com with SMTP id 184so2024913oii.2
-	for <qemu-arm@nongnu.org>; Wed, 29 Nov 2017 02:12:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=3avFcD3hn45SKkokC5rhXAS3VgH/NRtl3rYwNuJcQYc=;
-	b=E2PMv8D8MO6HFZ6h8+eocoH5PDHbvpHgoHDim1ObV3HntnlpWgiYZ3qUmJaJBwldF0
-	z8VLPAhNIz9tdUEdxL0g7V92GIIxR/WUFxB8OgaABCu/Pv5CQf+8biAzJOMvNMLslFi/
-	W+HqL/uU8km8gAvfwaHvccB4VFZdvRyrSxdJI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=3avFcD3hn45SKkokC5rhXAS3VgH/NRtl3rYwNuJcQYc=;
-	b=ZeoxHbTVFpxDyXTw3Cka6Rim3eh7JNXZBqcpVpba2s96SSFXsIN6ibOuw+T7ALdYkH
-	9L/eVVqT4/4bAkLujRbOAdBCJUwibXIl7G+QndehOfkA/ukKCYaSM3AOfXZivuaRTWo5
-	6YSvcT+OEuWYvaYunjNEfoNfTlEjpWqqALuHhhibCZCP2JKH5ZdCCz40prXHSKq0I3ba
-	EDZyFV0jdbqZfg3Iin8RmKl050K/2Vm+wMbljCMTURI/wBK4reneN9+krt4AFMtccXkx
-	Byqd5KPt8Gumy1u9POEgh/CBjY90dFAsGCzMqzAkpN2sT+4jxwgD66ZFhqHgs5y9TxOX
-	q8Og==
-X-Gm-Message-State: AJaThX4FdiVOrIdb8ZlEzg2QEfhDP8/iVbswZKf7X4ziF6RrN6EDkA08
-	t6e7b0H7d81FiRuE8JHF5VE1PtZ6C+YrqESsFeCE6g==
-X-Received: by 10.202.205.147 with SMTP id d141mr1592495oig.256.1511950321747; 
-	Wed, 29 Nov 2017 02:12:01 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.157.63.74 with HTTP; Wed, 29 Nov 2017 02:11:41 -0800 (PST)
-In-Reply-To: <17d7270b-9016-face-5fba-c6e321e92d88@kaod.org>
-References: <20171019151249.13663-1-clg@kaod.org>
-	<17d7270b-9016-face-5fba-c6e321e92d88@kaod.org>
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1eKqIj-000772-ML; Fri, 01 Dec 2017 18:44:41 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 29 Nov 2017 10:11:41 +0000
-Message-ID: <CAFEAcA-_7DVpck4wKsLSvpMdAZTKCFK+j3Q1F5OvAo2TT+5ZWw@mail.gmail.com>
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::22a
-Subject: Re: [Qemu-arm] [PATCH v5 0/8] aspeed: add a witherspoon-bmc machine
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yoTeT0m/tNVE
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Richard Henderson <rth@twiddle.net>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH 2/7] target/arm: Allow explicit writes to CONTROL.SPSEL in Handler mode
+Date: Fri,  1 Dec 2017 18:44:34 +0000
+Message-Id: <1512153879-5291-3-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1512153879-5291-1-git-send-email-peter.maydell@linaro.org>
+References: <1512153879-5291-1-git-send-email-peter.maydell@linaro.org>
+X-TUID: uPiTNlAzCIua
 
-On 29 November 2017 at 09:58, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
-> On 10/19/2017 05:12 PM, C=C3=A9dric Le Goater wrote:
->>  - introduce a dummy ROM device to catch invalid writes
->>  - removed 'ignore_memory_transaction_failures' on all Aspeed machines
->
-> So that was a bad idea because old firwmares run load/store loops
-> beyond the address space to guess how much RAM the SoC has.
->
-> I am wondering if it is possible to model the same behavior with
-> a MMIO region (of a correct size depending on the max ram size of
-> the SoC) and mapped beyond the RAM region to catch such accesses
-> and keep 'ignore_memory_transaction_failures' to false.
+In ARMv7M the CPU ignores explicit writes to CONTROL.SPSEL
+in Handler mode. In v8M the behaviour is slightly different:
+writes to the bit are permitted but will have no effect.
 
-Yeah, if the hardware genuinely ignores accesses to a particular
-region of the address space then you can model this with an
-appropriate background memory region. You just need to figure
-out what range of the address space it should apply to...
+We've already done the hard work to handle the value in
+CONTROL.SPSEL being out of sync with what stack pointer is
+actually in use, so all we need to do to fix this last loose
+end is to update the condition we use to guard whether we
+call write_v7m_control_spsel() on the register write.
 
-thanks
--- PMM
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/helper.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 88394d4..f21c142 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -10091,8 +10091,11 @@ void HELPER(v7m_msr)(CPUARMState *env, uint32_t maskreg, uint32_t val)
+          * thread mode; other bits can be updated by any privileged code.
+          * write_v7m_control_spsel() deals with updating the SPSEL bit in
+          * env->v7m.control, so we only need update the others.
++         * For v7M, we must just ignore explicit writes to SPSEL in handler
++         * mode; for v8M the write is permitted but will have no effect.
+          */
+-        if (!arm_v7m_is_handler_mode(env)) {
++        if (arm_feature(env, ARM_FEATURE_V8) ||
++            !arm_v7m_is_handler_mode(env)) {
+             write_v7m_control_spsel(env, (val & R_V7M_CONTROL_SPSEL_MASK) != 0);
+         }
+         env->v7m.control[env->v7m.secure] &= ~R_V7M_CONTROL_NPRIV_MASK;
+-- 
+2.7.4

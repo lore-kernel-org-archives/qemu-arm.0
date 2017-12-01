@@ -1,102 +1,89 @@
-Received: by 10.223.150.237 with SMTP id u100csp2446546wrb;
-        Mon, 13 Nov 2017 05:26:29 -0800 (PST)
-X-Received: by 10.28.9.197 with SMTP id 188mr4781912wmj.20.1510579589606;
-        Mon, 13 Nov 2017 05:26:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510579589; cv=none;
+Received: by 10.223.159.82 with SMTP id f18csp1519233wrg;
+        Fri, 1 Dec 2017 10:44:43 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMaq3jFvsSexYUsE0eoctqznKL6ZS62FXfrPyPU77E96kcjoQYx+wfd6WwN59c2CsYOjBPiK
+X-Received: by 10.46.78.1 with SMTP id c1mr5959092ljb.188.1512153883164;
+        Fri, 01 Dec 2017 10:44:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1512153883; cv=none;
         d=google.com; s=arc-20160816;
-        b=Bl5hmdxJKYqBHAa9NIo5JnX2u5GhY8WQQM/sncfIDLnAJQfUyjvU77RBCZvIT7uF/F
-         H5KO+noI8b12FhaXGD+ukH0rhxiMvT266LSxEW9DSvCmLKbDXIqOYdo5Fo7Xa02rclEO
-         bnqAqUKsgqubvq1Nze7cxaHpCYjzQhNsDUClw9vBHzJ+puZU3ukjEYPaft2shGgWArhb
-         vB2+7Joo5iG5szGq/WaTgBcSvu9we/Y07PnFelH5Fcouh4dmHl72Sk4IfjqplH4GbbKN
-         Ec/BuEzmmO23uPvJaIzpF6+nWpc7MSbrqBQbxr0z5qSwJdYf7MmOGgMxebaAtDqQyLlz
-         akug==
+        b=tMbw3PsiWIjcNcfGi4IOWIarNT+WYfORSX53e97tVhZQGKNLjE3pfisy9l4tEixINk
+         QPY0mtMEyJqc8FanReZEOvprxx4NjqeUT7GRUKexUXBZrksDgKl5HKUX/daihZcC30UJ
+         Mb97uwChQzrW5x3AzwbMVF4pZOAb36EPhRr3bqXSCM3mjIfXAHXnvTtHoilD8c7Op0jA
+         p+lDoyYkDmeJnX9b4AR10Anv6hlSdGgtVQagsno0isvMnBzDWTStdTFFCigwnJvOuy4Y
+         UIFbi5vGPpMisqihpaH7E/4PfCuqKyCLw6LcP/qsRgUEtF77LAWRiaDl8o+ic55hWZO3
+         DKXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=FhrnYC1UMO6L+LXNAz6Hnax8Nyko+TuZxHauuhtMWkk=;
-        b=MP+oh59FJVGgAqXrSNDmXAzLBbsdWl3es68p2BJerxywLaTUmrCZPJ/nh1u1amjmm0
-         V7y662aHdP/P+zNtjTuQHEqEJbiPA4iuXpRTrTZv68lq8Xk9e7f+eckUPHMVV0dV//ru
-         sur7ODE7VhyEtj2UGzzmgHSeNPmPP42Zn40zjhGro4SUSF1i493XbBgldphXJY6uox4D
-         lG9uzzglZdH8d0jeu56FdgyHHCFF+BptPhWTuh4F9EzhOgX1AkYUj2lHiBMc5lPTAj92
-         XbUFp98Vizvsf7j5c/aRxtNfEW4sMJlXM6OE9a0n/Ckowg91ZJFGECTWFLfuXjTOr6J3
-         pBZg==
+        h=message-id:date:subject:cc:to:from:arc-authentication-results;
+        bh=IOS6nGWX/ipyhGpleL35ozix5xh0TmPTPL1q4+ul1GU=;
+        b=VZFowJbiJKdaHos0jiNgcein+nNAZ/Lj5j7+wWRm2dBXuGqySiI/VmGWIRGmwfWJ0R
+         TniwK019bgtaEKWYx8GpTKX/OxGJJRJDRrgCr6cHNP5AAoxQn1kB2hbGEg54xLxi8qwM
+         qGZ4r7VV476ZG0zTQPT4sjGUOesjYZaGpTDHt0Kx1r+ZM38HtBk3Ul+kjpqko3H4+hqV
+         Xqad+uyu5M1PnyntpwPGSv/2pCgdyo2dd6YROZFhEoAeFYPy3917z3l/5Ssa4kOd4Vrt
+         VLwxV50AAHJcJ0rKnlp96zihiW8My6zboObthnAaXZ96Yta3fP7cp9RRC8U377M03g++
+         uV+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=emZ27elY;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d195sor1688662wmd.10.2017.11.13.05.26.29
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <pm215@archaic.org.uk>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+        by mx.google.com with ESMTPS id h9si2542244lfg.480.2017.12.01.10.44.42
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 13 Nov 2017 05:26:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 01 Dec 2017 10:44:43 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=emZ27elY;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=FhrnYC1UMO6L+LXNAz6Hnax8Nyko+TuZxHauuhtMWkk=;
-        b=emZ27elYXTjHt8Un9YZo9Ouw6Z4tZzW7iLTFBuUW9LVq0y9fyTk+aUpl6BmtW9XBVU
-         +dat0wr75kooAybeIo2nARTfR46vJk1yaU70Htfjjcv5rEp83XYZhsJqUrWbOXdD6TKY
-         TQ+sRVA9ljgzG+3twGIA942WPI5NCji6/YpLw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=FhrnYC1UMO6L+LXNAz6Hnax8Nyko+TuZxHauuhtMWkk=;
-        b=rPtg0IxEleRchllinbfbmRRbs/apu7+n3pr+/5yJDho8+AmSZQ612g+mm94Yaj7e79
-         /v2NXAVgIAiwE3bFMF9bqDICx6lhOoKZ7RymwuvGk2jbvs+gTgzd/8Zyz3Nj8o/MNDJu
-         VbGuJFZ3t4iRL8RFg8kX0ifQpxYJnjd9BAfTW0yzeWlgKLZMI25aLfayLWDXsIIlY3P9
-         Vx8reUtvlNnUUYt2CT5IgymNFmxaKXAWXY4FNsFF3QoLaDSh5g0MO34Fu/PInxPgwpSa
-         7Fbsd4+EyzIkg/R6PDjoE5JQaev71P96NviMkSFsdbQCGSvrc4HIPqmQeB7Y2CV2fGOd
-         sSKw==
-X-Gm-Message-State: AJaThX67WThjqzYCoZtYudvz6OFX63RPDFM0JMV3XJBOsDotmw1KbQsO
-	Epsn1oN/GJN1Ie/TiBFpBLHHyb7qggNIKbW5gYxBhCiUwzs=
-X-Google-Smtp-Source: AGs4zMagGfBWsIxYa+Nw6ygPdtMCuEC4cPu3SasGli/TdPR6HryUH8yo8ggjDBTbBAZ346NVH1BJlzlGCtNfh4BMaAo=
-X-Received: by 10.28.14.195 with SMTP id 186mr6266106wmo.56.1510579588997;
- Mon, 13 Nov 2017 05:26:28 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.223.161.5 with HTTP; Mon, 13 Nov 2017 05:26:08 -0800 (PST)
-In-Reply-To: <20171108153245.20740-2-alex.bennee@linaro.org>
-References: <20171108153245.20740-1-alex.bennee@linaro.org> <20171108153245.20740-2-alex.bennee@linaro.org>
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1eKqIi-00076c-B7; Fri, 01 Dec 2017 18:44:40 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 13 Nov 2017 13:26:08 +0000
-Message-ID: <CAFEAcA8OHOQ_8cG=fXyoqr6f9FiEyBx6zeRu=04cyojpEZVWcQ@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] accel/tcg/translate-all: expand cpu_restore_state
- addr check
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	Richard Henderson <rth@twiddle.net>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: rdWCqM387ZVs
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Richard Henderson <rth@twiddle.net>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH 0/7] armv8m: Implement TT, and other bugfixes
+Date: Fri,  1 Dec 2017 18:44:32 +0000
+Message-Id: <1512153879-5291-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
+X-TUID: gy1v8bdGWbuv
 
-On 8 November 2017 at 15:32, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
-> We are still seeing signals during translation time when we walk over
-> a page protection boundary. This expands the check to ensure the host
-> PC is inside the code generation buffer. The original suggestion was
-> to check versus tcg_ctx.code_gen_ptr but as we now segment the
-> translation buffer we have to settle for just a general check for
-> being inside.
->
-> I've also fixed up the declaration to make it clear it can deal with
-> invalid addresses. A later patch will fix up the call sites.
->
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Reported-by: Peter Maydell <peter.maydell@linaro.org>
-> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
-> Cc: Richard Henderson <rth@twiddle.net>
+The main aim of this patchseries is to implement the new-for-v8M
+TT/TTT/TTA/TTAT instructions (which take an address and do an
+MPU/SAU lookup and tell you the security state and access
+permissions for the address).
 
-Thanks; this fixes my test case. Patch 2 is just cleanup and looks
-like it needs rework, so I'm taking patch 1 into target-arm
-to put into master for rc1.
+The first part of the series is some smaller bugfixes that
+I noticed along the way, followed by a bit of refactoring
+before finally implementing TT in the last patch.
+
+(Notably, patch 4 splits the existing MNegPri and MSNegPri
+MMU indexes into two new indexes each -- when I originally
+added them I hadn't realized that "negative execution priority"
+was orthogonal to "user vs privileged", rather than implying
+privileged. This brings us up to 8 MMU indexes, but that
+should not cost us any more than having 7, so it seems a
+better approach than a more convoluted other option (which
+you can find briefly described in the patch 4 commit message).
 
 thanks
 -- PMM
+
+Peter Maydell (7):
+  target/arm: Handle SPSEL and current stack being out of sync in
+    MSP/PSP reads
+  target/arm: Allow explicit writes to CONTROL.SPSEL in Handler mode
+  target/arm: Add missing M profile case to regime_is_user()
+  target/arm: Split M profile MNegPri mmu index into user and priv
+  target/arm: Create new arm_v7m_mmu_idx_for_secstate_and_priv()
+  target/arm: Factor MPU lookup code out of get_phys_addr_pmsav8()
+  target/arm: Implement TT instruction
+
+ target/arm/cpu.h       |  68 ++++++++-----
+ target/arm/helper.h    |   2 +
+ target/arm/internals.h |   6 +-
+ target/arm/helper.c    | 268 +++++++++++++++++++++++++++++++++++++------------
+ target/arm/translate.c |  37 ++++++-
+ 5 files changed, 289 insertions(+), 92 deletions(-)
+
+-- 
+2.7.4

@@ -1,154 +1,102 @@
-Received: by 10.223.159.82 with SMTP id f18csp2229494wrg;
-        Sat, 2 Dec 2017 03:53:55 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMbImHGiY1+p9eyx2vTQAhTIK06MJzsOfn6ERzxjGsqEcaeS/7SExGiRI2NKeJmkfFRztsfa
-X-Received: by 10.129.105.213 with SMTP id e204mr5883425ywc.394.1512215635326;
-        Sat, 02 Dec 2017 03:53:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1512215635; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp628657wrg;
+        Sun, 3 Dec 2017 07:04:27 -0800 (PST)
+X-Received: by 10.98.58.208 with SMTP id v77mr12216422pfj.150.1512313467580;
+        Sun, 03 Dec 2017 07:04:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1512313467; cv=none;
         d=google.com; s=arc-20160816;
-        b=irxBpsYz+qEJYXa/AkM3L4wx4EsoeRzd923z9ygcAFmBbLpxiJP1IZU7/JMQhN+3y7
-         Y4p/wJJFta/XfC6xhLWlFKH8C+3QNNzEUfhoHLoquNe+erzycufmVsJ/jX88xNLISvUB
-         iE+tfL8ncgQAz0P8JVWwoQnYmdUJhcLMM9g3slKdReg7ROuRXaZwzrRL8rTRPuFo7FSB
-         YXvnqwU0xqtEpTVX+nMKaZz3ahfcp19PzzHckpbmdYp07Su//iSz241MPhv9jYcQ84y0
-         6Szpx61USlPH6KgKc/eKyepeWUFsHr3nas38880BvuCIWjXwqkdwZxMFbbapT4t6Dt0r
-         nxOQ==
+        b=eSXykFF3XfnF6NsnZN6l4BVG9iE4JINQly3+KXFvzZ2EUiUOKgnDbkrHSB2KgPTyK8
+         DjH0nUI3HZPSO0WARgCQc9DYPyCqfu/gad7CSs+wGbdh3nwPZPJ4eVaCsUaKEkK7cVO1
+         2pSRhMkubIB/WlHcXRuztBqVADnZLGBsBJuI7j6OxsnjALWzrJ5d4l+Gqpe9lmU17WUv
+         gFGsxITHltbuhPYEDb2QLQnteQeXjg4EJYGPPhVQe4667/R/3wASMW5bjl5Cfj202P3d
+         1g9FVkNr6HR27bolgdLNO0CvofkaQskOG7abJYxFhFGSzkboy7AFdr86DC2gFgf32GvJ
+         CBUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:subject
-         :mime-version:message-id:date:user-agent:references:in-reply-to:to
-         :from:arc-authentication-results;
-        bh=LphxuG6n9qjWxtnBBZ1GPEJV6UpEmw+Y6XieHYe2s3w=;
-        b=KzrtXyHzxP8D76frRLXMEtSGAfQ0I7bAWB6M5cIw5AaWZ+v4G0mg8ZrTPl5TbxmWXk
-         dRnFi7Vz2IMZtLAKhbIe3hdQc8Hrymp8QofXksEW2HpOOHV5DJBat3oLhTlwuuuiJSB/
-         GO2ahLNHhSpClYGPrnu/nQ+NAW+xTS44bOMvW08yyXmkB2w+scC+LS0x35jeJSEj+hUr
-         trQ/8flMd8UfD1XKNNynkvALgJZsDQWOhRWPRnHTCQJCeRz1xAY/Ki9bZ4PJ4LZqM6+l
-         umz5xr1FbQQA/7nlcdijKGBaTCX8RZnpf7Wf4Gip2DHsliDbSLbDw5eFsvwBYl4ej8M8
-         9MCQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature:arc-authentication-results;
+        bh=xBAl8LC3+kCYGX9miTUr/Wr3lv80nKbaHndnXA6iFB4=;
+        b=M06wSH8zn/P4V/TfWJnW+I0fwuKeEszMra09CIMvRcpCSSugdbuV83ZAjTEj7pErnk
+         uwohHKcEBGlJGIGT1y5UM9+/pHBDiZA3bDZVucNxSYk0t2oPXZtP0SE25wZPMaijdfpt
+         YhkJiN6HM0p5X4oNij4FpcHMfv7cnzvPp7Ub79DdFdm6RZXLUVBdd4C+tWoMNvzLnM3G
+         tWXGXqQLyZ62o2SQxsX4csvUXdzsxgcjFl8lcx4muYw/tY726Gn7nVxchcsy4Cuj54Ug
+         ELem8Od/h1ynOgLPWJ1QCo1eEkugS/ijyvtIf4om9w5xZhl33qyqwOVh5zIYfa5AIS4D
+         DShA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w10si1095329ywj.261.2017.12.02.03.53.55
+       dkim=pass header.i=@linaro.org header.s=google header.b=KQaPiC4+;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 63sor3562287pfp.145.2017.12.03.07.04.27
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 02 Dec 2017 03:53:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (Google Transport Security);
+        Sun, 03 Dec 2017 07:04:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35243 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eL6Mk-0004eb-Ne
-	for alex.bennee@linaro.org; Sat, 02 Dec 2017 06:53:54 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33262)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <quintela@redhat.com>) id 1eL6MX-0004d8-T0
-	for qemu-arm@nongnu.org; Sat, 02 Dec 2017 06:53:42 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <quintela@redhat.com>) id 1eL6MT-0001PX-VS
-	for qemu-arm@nongnu.org; Sat, 02 Dec 2017 06:53:41 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:44894)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <quintela@redhat.com>)
-	id 1eL6MT-0001P1-Km; Sat, 02 Dec 2017 06:53:37 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5CAD7C049D4F;
-	Sat,  2 Dec 2017 11:53:36 +0000 (UTC)
-Received: from localhost (ovpn-116-30.ams2.redhat.com [10.36.116.30])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id CFB1C64446;
-	Sat,  2 Dec 2017 11:53:31 +0000 (UTC)
-From: Juan Quintela <quintela@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-In-Reply-To: <20171201232433.25193-7-eblake@redhat.com> (Eric Blake's message
-	of "Fri, 1 Dec 2017 17:24:32 -0600")
-References: <20171201232433.25193-1-eblake@redhat.com>
-	<20171201232433.25193-7-eblake@redhat.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.3 (gnu/linux)
-Date: Sat, 02 Dec 2017 12:53:28 +0100
-Message-ID: <87wp25qrbb.fsf@secure.laptop>
+       dkim=pass header.i=@linaro.org header.s=google header.b=KQaPiC4+;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=xBAl8LC3+kCYGX9miTUr/Wr3lv80nKbaHndnXA6iFB4=;
+        b=KQaPiC4+hbWktV7r0gs9LrOASfJdcd8ndbVLRGj6lzBAbwCAusSVZ0mi7Qqhd3QCcF
+         aodZ1eaMj9i6I68Fdlo6+g4b+k4Ucik7HdX4IPsDA0+OZOgBrX9bwEe3EhTn0p0Dk2MG
+         CA1twu+/q+tJVpT90afWMcKFASdAAfx8TtGA0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=xBAl8LC3+kCYGX9miTUr/Wr3lv80nKbaHndnXA6iFB4=;
+        b=qnzuNvutmcVqtMai2KmYrA+coGCmlOYHtKkk30cP4p/bkntcNkx2hdUEX/KRuwJHBE
+         byO8qqbR2u6uwyjG3yLP3VHfLG4Lo/oOWuG8jQEgAfzZWJUeArtjoxummKPs2On2tx9g
+         vdzPQdiylpx9kBFJl+k0hvPuxf/9OoYIelaL0hhAnCM3Gm0fgpQvhHhFcdULU4ot566w
+         Jm6xYDnHW4atx6vbe2xk+GJK1CDmDTYhzd4PCtHaADYMHAWISNk0yraYBejmaCx6ys1A
+         OkAOIZHV/ujymbwT5ppz5qGbRN91IWf/V1KSSddtRFyXCy8oZRgkHvwxueZHyPZEp0ki
+         H5uQ==
+X-Gm-Message-State: AJaThX6QcK9pwBo4T9SloXKldf0mTjlIJ2By9HNNdpaWPbq7nUwbh63S
+	vhQrH3VwF5JW+suiarg4X2Y6hodBQMHjhA==
+X-Google-Smtp-Source: AGs4zMZx7Uz1VVbM8g3iZ/yv1YeDK+YJCr087uYBiEPECKmd7s5lfN6X3v47hOvNxdCgj4IyhmJDow==
+X-Received: by 10.98.181.25 with SMTP id y25mr16586781pfe.206.1512313466816;
+        Sun, 03 Dec 2017 07:04:26 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from cloudburst.twiddle.net (97-126-111-33.tukw.qwest.net. [97.126.111.33])
+        by smtp.gmail.com with ESMTPSA id v9sm17914698pgs.21.2017.12.03.07.04.25
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 03 Dec 2017 07:04:25 -0800 (PST)
+Subject: Re: [PATCH 3/7] target/arm: Add missing M profile case to
+ regime_is_user()
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <1512153879-5291-1-git-send-email-peter.maydell@linaro.org>
+ <1512153879-5291-4-git-send-email-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <228027a9-1b2e-82a5-64a0-bd70e6c93a29@linaro.org>
+Date: Sun, 3 Dec 2017 07:04:24 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.4.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Sat, 02 Dec 2017 11:53:36 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2 6/7] maint: Fix macros with broken
- 'do/while(0); ' usage
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: quintela@redhat.com
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org,
-	Alexander Graf <agraf@suse.de>,
-	Gerd Hoffmann <kraxel@redhat.com>, Max Reitz <mreitz@redhat.com>,
-	"open list:Block layer core" <qemu-block@nongnu.org>,
-	Stefan Berger <stefanb@linux.vnet.ibm.com>,
-	qemu-trivial@nongnu.org, armbru@redhat.com,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	"open list:S390" <qemu-s390x@nongnu.org>,
-	"open list:Xilinx Zynq" <qemu-arm@nongnu.org>,
-	Igor Mammedov <imammedo@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	Kevin Wolf <kwolf@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	"open list:New World" <qemu-ppc@nongnu.org>, pbonzini@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nw/idoW1/4A+
+In-Reply-To: <1512153879-5291-4-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: AipmJ/WkDNqB
 
-Eric Blake <eblake@redhat.com> wrote:
-> The point of writing a macro embedded in a 'do { ... } while (0)'
-> loop (particularly if the macro has multiple statements or would
-> otherwise end with an 'if' statement) is so that the macro can be
-> used as a drop-in statement with the caller supplying the
-> trailing ';'.  Although our coding style frowns on brace-less 'if':
->   if (cond)
->     statement;
->   else
->     something else;
-> that is the classic case where failure to use do/while(0) wrapping
-> would cause the 'else' to pair with any embedded 'if' in the macro
-> rather than the intended outer 'if'.  But conversely, if the macro
-> includes an embedded ';', then the same brace-less coding style
-> would now have two statements, making the 'else' a syntax error
-> rather than pairing with the outer 'if'.  Thus, even though our
-> coding style with required braces is not impacted, ending a macro
-> with ';' makes our code harder to port to projects that use
-> brace-less styles.
->
-> The change should have no semantic impact.  I was not able to
-> fully compile-test all of the changes (as some of them are
-> examples of the ugly bit-rotting debug print statements that are
-> completely elided by default, and I didn't want to recompile
-> with the necessary -D witnesses - cleaning those up is left as a
-> bite-sized task for another day); I did, however, audit that for
-> all files touched, all callers of the changed macros DID supply
-> a trailing ';' at the callsite, and did not appear to be used
-> as part of a brace-less conditional.
->
-> Found mechanically via: $ git grep -B1 'while (0);' | grep -A1 \\\\
->
-> Signed-off-by: Eric Blake <eblake@redhat.com>
-> Acked-by: Cornelia Huck <cohuck@redhat.com>
-> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-> Acked-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+On 12/01/2017 10:44 AM, Peter Maydell wrote:
+> When we added the ARMMMUIdx_MSUser MMU index we forgot to
+> add it to the case statement in regime_is_user(), so we
+> weren't treating it as unprivileged when doing MPU lookups.
+> Correct the omission.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/arm/helper.c | 1 +
+>  1 file changed, 1 insertion(+)
 
-Reviewed-by: Juan Quintela <quintela@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+
+r~

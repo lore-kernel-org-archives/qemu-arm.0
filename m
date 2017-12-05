@@ -1,72 +1,72 @@
-Received: by 10.223.159.74 with SMTP id f10csp3221521wrg;
-        Tue, 5 Dec 2017 11:50:15 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMaA6fyAuY9Mky7hDgUNI8glHGBKcJOa3q1C4nm4/ZKOKbC8gArDxeDr6xKmI9OVC01r0SSb
-X-Received: by 10.129.160.194 with SMTP id x185mr13820558ywg.39.1512503415533;
-        Tue, 05 Dec 2017 11:50:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1512503415; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp3221650wrg;
+        Tue, 5 Dec 2017 11:50:26 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMYM1WL8GDQF1ZJ+bZYRIwPTsA1JNZlsKezvexklFRmMSiTA9UpViWvSjBlEDeIY7EK6bKbV
+X-Received: by 10.37.32.138 with SMTP id g132mr9013838ybg.35.1512503426142;
+        Tue, 05 Dec 2017 11:50:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1512503426; cv=none;
         d=google.com; s=arc-20160816;
-        b=SZ5wxVU57CcBkRwM2fUvLV3d9I2qpv22bLYnhCpl1yS+gRq9nGvHSYBCQkgdrWgjIB
-         p8ZZrRiqtB02ReDSQypK5A9KkVhOPIFbuMhRmiMZBQpq3eZu8OPrftaNoGk8nAjjQWpl
-         RW3FfJjvdFdBV/tQLA6bMfvna0j6mLP5vn1GDK3GscBt7CAEz0h/sLMbdenwXDJ7BP7H
-         EqF6fwF4FQHFo0f9jecWPWgm9ecHzYY0syEZWGTQsf1AjjjsyncTxH4EQ2heWk2WXutW
-         GcNCfT+hjqoUvHSiMZTftKPSkckXzbIc3z1N1zCNmTRcmnV5u4ODX0EMGuPh+0HVD3+H
-         350g==
+        b=PwgAo5FkU2+IYvw3E1kyyVgG/YX/aMpoqg1HbYI+rguXLEoGtdBXjbzFotDFztbGnj
+         MaRuxb4eugR81VmEXFEmdnqf5RBcBg09p99sJSUvI3Ln4eGyqNKkLOPBOYFQWhfHb1B6
+         8MhYc1kKu1vh943giA/tveLExWf6hWW/GXxt3M2HBs/TQR7qRFq+O+q+YqDOL4HZ7INW
+         BFl6zXGd6tTYMaUHfos9kJlUKCb9U/zClr9oVeWoUPwbpxSeOEHDc2MCLwRzT12ud0Ub
+         304DwwAJBPDud5ZKQ7mQpDq8kKKO/kLIkKEaJL30zpvTkgdx8aYSswmhV+K2Wf6M8PjD
+         CH3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=RSqqLoMHm8ToV87W23DTughwrSw0FE0JmhihawNa4NU=;
-        b=QoUJWNS62Z2I7H6ltr1ZXJ4Jpc8XE7pFCmGrRPA5+6JDbSC5YTXoss17WVXYDT9Hp5
-         DEv1/FpVKQyUjVFuSbgzgpBLNIxg43OYD/mR6PfK1WnyHi1VhFrR9EZOi4m3igiz/KcR
-         9njwWtdxrpM7an1wa7WyoL5oxoUM5mVYrn16ZiXTWzsVyiKfzJD7HQDtTCqSXVWJnLbn
-         KKruabFKxz0G8s+jpkoLh2vd/jWftoNC8uV5O5no+zUNBEEPXFXsdonYBpWC/Hu8miNb
-         CF01c6D7srurk7fAtOhaUKSznh6O4RoM8LMtj+Zu91iBClTNKoTtlcTAZNO2CJiCIgEN
-         30zg==
+        bh=CwhYfMOiSAZu0iD7QYDviMwVBzN6EUTqx08eX+sAN+s=;
+        b=oj5VlOsSTDWqM5WJWHL2JK35HkwOQISrLNPTSKFfhEakhtQElIoDAwThJMtpIQi25T
+         cIyXlCkXace/xCoC4E3UFy7SmIgDxwXjdgGxh7S5epAwVqZRfSLaMCwgtswvlY0dr1wY
+         1TIOXYr1gtRBOw8fBKW5D7jtlTv/RrxddAmloR1LTXBTovscTJOaCGpUJcYLkhqbpBsi
+         3bng6t4HrNN9FadlkCklAPfZTvWC8Oz+hCBCxfiPZ6SSbx4wLIdl2blERSHF1uvGbDo2
+         WGiIqTqB9IET8nuho17eqdxupat4LUkWmi/QFaXTR4CnXqFItV4j4DQkHRGIYdr6UIKw
+         Rs7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n123si233173ywe.179.2017.12.05.11.50.15
+        by mx.google.com with ESMTPS id g24si238209ybj.379.2017.12.05.11.50.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 05 Dec 2017 11:50:15 -0800 (PST)
+        Tue, 05 Dec 2017 11:50:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51779 helo=lists.gnu.org)
+Received: from localhost ([::1]:51786 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eMJEM-0004f1-Qy
-	for alex.bennee@linaro.org; Tue, 05 Dec 2017 14:50:14 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56685)
+	id 1eMJEX-0004nx-GS
+	for alex.bennee@linaro.org; Tue, 05 Dec 2017 14:50:25 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56582)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eMJB5-00014H-9A
-	for qemu-arm@nongnu.org; Tue, 05 Dec 2017 14:46:52 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1eMJB1-0000zh-JW
+	for qemu-arm@nongnu.org; Tue, 05 Dec 2017 14:46:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eMJB4-0002MQ-4y
-	for qemu-arm@nongnu.org; Tue, 05 Dec 2017 14:46:51 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1eMJB0-0002Jj-73
+	for qemu-arm@nongnu.org; Tue, 05 Dec 2017 14:46:47 -0500
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:38776)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1eMJB3-0002CW-TI; Tue, 05 Dec 2017 14:46:50 -0500
+	id 1eMJAz-0002CW-Vl; Tue, 05 Dec 2017 14:46:46 -0500
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1eMJAq-0005AF-U6; Tue, 05 Dec 2017 19:46:36 +0000
+	id 1eMJAt-0005CG-OZ; Tue, 05 Dec 2017 19:46:39 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue,  5 Dec 2017 19:46:25 +0000
-Message-Id: <1512503192-2239-6-git-send-email-peter.maydell@linaro.org>
+Date: Tue,  5 Dec 2017 19:46:29 +0000
+Message-Id: <1512503192-2239-10-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1512503192-2239-1-git-send-email-peter.maydell@linaro.org>
 References: <1512503192-2239-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 05/12] target/arm: Convert get_phys_addr_lpae()
- to not return FSC values
+Subject: [Qemu-arm] [PATCH 09/12] target/arm: Use ARMMMUFaultInfo in
+ deliver_fault()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,146 +82,166 @@ Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
 	Stefano Stabellini <sstabellini@kernel.org>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XQY1Pt2FI2ND
+X-TUID: LTSzi9HG8GQG
 
-Make get_phys_addr_v6() return a fault type in the ARMMMUFaultInfo
-structure, which we convert to the FSC at the callsite.
+Now that ARMMMUFaultInfo is guaranteed to have enough information
+to construct a fault status code, we can pass it in to the
+deliver_fault() function and let it generate the correct type
+of FSR for the destination, rather than relying on the value
+provided by get_phys_addr().
+
+I don't think there are any cases the old code was getting
+wrong, but this is more obviously correct.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper.c | 41 ++++++++++++++++++-----------------------
- 1 file changed, 18 insertions(+), 23 deletions(-)
+ target/arm/op_helper.c | 79 ++++++++++++++------------------------------------
+ 1 file changed, 22 insertions(+), 57 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 1e95e3d..a2a0784 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -34,7 +34,7 @@ static bool get_phys_addr(CPUARMState *env, target_ulong address,
- static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
-                                MMUAccessType access_type, ARMMMUIdx mmu_idx,
-                                hwaddr *phys_ptr, MemTxAttrs *txattrs, int *prot,
--                               target_ulong *page_size_ptr, uint32_t *fsr,
-+                               target_ulong *page_size_ptr,
-                                ARMMMUFaultInfo *fi, ARMCacheAttrs *cacheattrs);
- 
- /* Security attributes for an address, as returned by v8m_security_lookup. */
-@@ -8277,10 +8277,9 @@ static hwaddr S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx,
-         hwaddr s2pa;
-         int s2prot;
-         int ret;
--        uint32_t fsr;
- 
-         ret = get_phys_addr_lpae(env, addr, 0, ARMMMUIdx_S2NS, &s2pa,
--                                 &txattrs, &s2prot, &s2size, &fsr, fi, NULL);
-+                                 &txattrs, &s2prot, &s2size, fi, NULL);
-         if (ret) {
-             fi->s2addr = addr;
-             fi->stage2 = true;
-@@ -8603,15 +8602,6 @@ do_fault:
-     return true;
+diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
+index a40a84a..38e6993 100644
+--- a/target/arm/op_helper.c
++++ b/target/arm/op_helper.c
+@@ -116,12 +116,13 @@ static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
  }
  
--/* Fault type for long-descriptor MMU fault reporting; this corresponds
-- * to bits [5..2] in the STATUS field in long-format DFSR/IFSR.
-- */
--typedef enum {
--    translation_fault = 1,
--    access_fault = 2,
--    permission_fault = 3,
--} MMUFaultType;
--
- /*
-  * check_s2_mmu_setup
-  * @cpu:        ARMCPU
-@@ -8713,13 +8703,13 @@ static uint8_t convert_stage2_attrs(CPUARMState *env, uint8_t s2attrs)
- static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
-                                MMUAccessType access_type, ARMMMUIdx mmu_idx,
-                                hwaddr *phys_ptr, MemTxAttrs *txattrs, int *prot,
--                               target_ulong *page_size_ptr, uint32_t *fsr,
-+                               target_ulong *page_size_ptr,
-                                ARMMMUFaultInfo *fi, ARMCacheAttrs *cacheattrs)
+ static void deliver_fault(ARMCPU *cpu, vaddr addr, MMUAccessType access_type,
+-                          uint32_t fsr, uint32_t fsc, ARMMMUFaultInfo *fi)
++                          int mmu_idx, ARMMMUFaultInfo *fi)
  {
-     ARMCPU *cpu = arm_env_get_cpu(env);
-     CPUState *cs = CPU(cpu);
-     /* Read an LPAE long-descriptor translation table. */
--    MMUFaultType fault_type = translation_fault;
-+    ARMFaultType fault_type = ARMFault_Translation;
-     uint32_t level;
-     uint32_t epd = 0;
-     int32_t t0sz, t1sz;
-@@ -8829,7 +8819,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
-         ttbr_select = 1;
-     } else {
-         /* in the gap between the two regions, this is a Translation fault */
--        fault_type = translation_fault;
-+        fault_type = ARMFault_Translation;
-         goto do_fault;
+     CPUARMState *env = &cpu->env;
+     int target_el;
+     bool same_el;
+-    uint32_t syn, exc;
++    uint32_t syn, exc, fsr, fsc;
++    ARMMMUIdx arm_mmu_idx = core_to_arm_mmu_idx(env, mmu_idx);
+ 
+     target_el = exception_target_el(env);
+     if (fi->stage2) {
+@@ -130,14 +131,21 @@ static void deliver_fault(ARMCPU *cpu, vaddr addr, MMUAccessType access_type,
+     }
+     same_el = (arm_current_el(env) == target_el);
+ 
+-    if (fsc == 0x3f) {
+-        /* Caller doesn't have a long-format fault status code. This
+-         * should only happen if this fault will never actually be reported
+-         * to an EL that uses a syndrome register. Check that here.
+-         * 0x3f is a (currently) reserved FSC code, in case the constructed
+-         * syndrome does leak into the guest somehow.
++    if (target_el == 2 || arm_el_is_aa64(env, target_el) ||
++        arm_s1_regime_using_lpae_format(env, arm_mmu_idx)) {
++        /* LPAE format fault status register : bottom 6 bits are
++         * status code in the same form as needed for syndrome
++         */
++        fsr = arm_fi_to_lfsc(fi);
++        fsc = extract32(fsr, 0, 6);
++    } else {
++        fsr = arm_fi_to_sfsc(fi);
++        /* Short format FSR : this fault will never actually be reported
++         * to an EL that uses a syndrome register. Use a (currently)
++         * reserved FSR code in case the constructed syndrome does leak
++         * into the guest somehow.
+          */
+-        assert(target_el != 2 && !arm_el_is_aa64(env, target_el));
++        fsc = 0x3f;
      }
  
-@@ -8915,7 +8905,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
-         ok = check_s2_mmu_setup(cpu, aarch64, startlevel,
-                                 inputsize, stride);
-         if (!ok) {
--            fault_type = translation_fault;
-+            fault_type = ARMFault_Translation;
-             goto do_fault;
+     if (access_type == MMU_INST_FETCH) {
+@@ -174,29 +182,13 @@ void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
+     ret = arm_tlb_fill(cs, addr, access_type, mmu_idx, &fsr, &fi);
+     if (unlikely(ret)) {
+         ARMCPU *cpu = ARM_CPU(cs);
+-        uint32_t fsc;
+ 
+         if (retaddr) {
+             /* now we have a real cpu fault */
+             cpu_restore_state(cs, retaddr);
          }
-         level = startlevel;
-@@ -9001,7 +8991,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
-     /* Here descaddr is the final physical address, and attributes
-      * are all in attrs.
+ 
+-        if (fsr & (1 << 9)) {
+-            /* LPAE format fault status register : bottom 6 bits are
+-             * status code in the same form as needed for syndrome
+-             */
+-            fsc = extract32(fsr, 0, 6);
+-        } else {
+-            /* Short format FSR : this fault will never actually be reported
+-             * to an EL that uses a syndrome register. Use a (currently)
+-             * reserved FSR code in case the constructed syndrome does leak
+-             * into the guest somehow. deliver_fault will assert that
+-             * we don't target an EL using the syndrome.
+-             */
+-            fsc = 0x3f;
+-        }
+-
+-        deliver_fault(cpu, addr, access_type, fsr, fsc, &fi);
++        deliver_fault(cpu, addr, access_type, mmu_idx, &fi);
+     }
+ }
+ 
+@@ -206,27 +198,15 @@ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,
+                                  int mmu_idx, uintptr_t retaddr)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+-    CPUARMState *env = &cpu->env;
+-    uint32_t fsr, fsc;
+     ARMMMUFaultInfo fi = {};
+-    ARMMMUIdx arm_mmu_idx = core_to_arm_mmu_idx(env, mmu_idx);
+ 
+     if (retaddr) {
+         /* now we have a real cpu fault */
+         cpu_restore_state(cs, retaddr);
+     }
+ 
+-    /* the DFSR for an alignment fault depends on whether we're using
+-     * the LPAE long descriptor format, or the short descriptor format
+-     */
+-    if (arm_s1_regime_using_lpae_format(env, arm_mmu_idx)) {
+-        fsr = (1 << 9) | 0x21;
+-    } else {
+-        fsr = 0x1;
+-    }
+-    fsc = 0x21;
+-
+-    deliver_fault(cpu, vaddr, access_type, fsr, fsc, &fi);
++    fi.type = ARMFault_Alignment;
++    deliver_fault(cpu, vaddr, access_type, mmu_idx, &fi);
+ }
+ 
+ /* arm_cpu_do_transaction_failed: handle a memory system error response
+@@ -240,10 +220,7 @@ void arm_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
+                                    MemTxResult response, uintptr_t retaddr)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+-    CPUARMState *env = &cpu->env;
+-    uint32_t fsr, fsc;
+     ARMMMUFaultInfo fi = {};
+-    ARMMMUIdx arm_mmu_idx = core_to_arm_mmu_idx(env, mmu_idx);
+ 
+     if (retaddr) {
+         /* now we have a real cpu fault */
+@@ -256,20 +233,8 @@ void arm_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
+      * Slave error (1); in QEMU we follow that.
       */
--    fault_type = access_fault;
-+    fault_type = ARMFault_AccessFlag;
-     if ((attrs & (1 << 8)) == 0) {
-         /* Access flag */
-         goto do_fault;
-@@ -9019,7 +9009,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
-         *prot = get_S1prot(env, mmu_idx, aarch64, ap, ns, xn, pxn);
-     }
+     fi.ea = (response != MEMTX_DECODE_ERROR);
+-
+-    /* The fault status register format depends on whether we're using
+-     * the LPAE long descriptor format, or the short descriptor format.
+-     */
+-    if (arm_s1_regime_using_lpae_format(env, arm_mmu_idx)) {
+-        /* long descriptor form, STATUS 0b010000: synchronous ext abort */
+-        fsr = (fi.ea << 12) | (1 << 9) | 0x10;
+-    } else {
+-        /* short descriptor form, FSR 0b01000 : synchronous ext abort */
+-        fsr = (fi.ea << 12) | 0x8;
+-    }
+-    fsc = 0x10;
+-
+-    deliver_fault(cpu, addr, access_type, fsr, fsc, &fi);
++    fi.type = ARMFault_SyncExternal;
++    deliver_fault(cpu, addr, access_type, mmu_idx, &fi);
+ }
  
--    fault_type = permission_fault;
-+    fault_type = ARMFault_Permission;
-     if (!(*prot & (1 << access_type))) {
-         goto do_fault;
-     }
-@@ -9051,8 +9041,8 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
-     return false;
- 
- do_fault:
--    /* Long-descriptor format IFSR/DFSR value */
--    *fsr = (1 << 9) | (fault_type << 2) | level;
-+    fi->type = fault_type;
-+    fi->level = level;
-     /* Tag the error as S2 for failed S1 PTW at S2 or ordinary S2.  */
-     fi->stage2 = fi->s1ptw || (mmu_idx == ARMMMUIdx_S2NS);
-     return true;
-@@ -9778,8 +9768,9 @@ static bool get_phys_addr(CPUARMState *env, target_ulong address,
-             /* S1 is done. Now do S2 translation.  */
-             ret = get_phys_addr_lpae(env, ipa, access_type, ARMMMUIdx_S2NS,
-                                      phys_ptr, attrs, &s2_prot,
--                                     page_size, fsr, fi,
-+                                     page_size, fi,
-                                      cacheattrs != NULL ? &cacheattrs2 : NULL);
-+            *fsr = arm_fi_to_lfsc(fi);
-             fi->s2addr = ipa;
-             /* Combine the S1 and S2 perms.  */
-             *prot &= s2_prot;
-@@ -9858,8 +9849,12 @@ static bool get_phys_addr(CPUARMState *env, target_ulong address,
-     }
- 
-     if (regime_using_lpae_format(env, mmu_idx)) {
--        return get_phys_addr_lpae(env, address, access_type, mmu_idx, phys_ptr,
--                                  attrs, prot, page_size, fsr, fi, cacheattrs);
-+        bool ret = get_phys_addr_lpae(env, address, access_type, mmu_idx,
-+                                      phys_ptr, attrs, prot, page_size,
-+                                      fi, cacheattrs);
-+
-+        *fsr = arm_fi_to_lfsc(fi);
-+        return ret;
-     } else if (regime_sctlr(env, mmu_idx) & SCTLR_XP) {
-         bool ret = get_phys_addr_v6(env, address, access_type, mmu_idx,
-                                     phys_ptr, attrs, prot, page_size, fi);
+ #endif /* !defined(CONFIG_USER_ONLY) */
 -- 
 2.7.4
 

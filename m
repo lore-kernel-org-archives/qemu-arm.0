@@ -1,101 +1,114 @@
-Received: by 10.223.159.74 with SMTP id f10csp148916wrg;
-        Fri, 15 Dec 2017 16:12:15 -0800 (PST)
-X-Google-Smtp-Source: ACJfBouDsk628l0g89XRWVThuJlEbneS4XU6WvLJOTL6UQXU4imVlJKbOU6NvsWIg+LHvrFlxSoq
-X-Received: by 10.13.238.70 with SMTP id x67mr8196775ywe.345.1513383135295;
-        Fri, 15 Dec 2017 16:12:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1513383135; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp3169302wrg;
+        Tue, 5 Dec 2017 10:54:55 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMZHlSDUx5d46HJD46EHAxksGlCkjShPUDPzKX8z8iyj0xeVxSiR0uEjssh1VQ1yPf0+jV7N
+X-Received: by 10.37.20.9 with SMTP id 9mr13292511ybu.283.1512500095335;
+        Tue, 05 Dec 2017 10:54:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1512500095; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y7sgq8cV0SeZRWzsfV9eYB6kmpSOxjzi3QjIK7giefcPkgzfQKvuKytlvW1b5iym0X
-         G4qi6B0/dkyeLrsGrBszlp7wTqR0W2YyJry++gAppgEQwhEJsSL2L81MDwKKsFgHCc42
-         +oVNXG/c3o8RUvpqpR6HhZZY8mjH36FvWYBGU1fv+NQ5oKAKqHSDcn0YPyiV8XKhND9b
-         eCuvSlbMAOK7VhC4EUKYY3yu2A95Qofl2LuryLLs25cpqrIv6P/gGjjoU3QrUroOQnL+
-         J2XQ2/fv+4+yJlb04Vvk+UXYvNvH9G+3bzQC6pUcCStSPjUoz2xeaIdt5Bw3egWRwzZy
-         KXQw==
+        b=he1bvPdnRR4/zK6PdTgUtOy7KZ+0U/7KNHrYC/eobjYvEIuCKktHv3xZxHC6QdNkIG
+         9kF7XJB/sMISQHUL3Hy14UBave2kA0YOI4D/qRME40prE5EZkPvJvDcbnj22wHnyIeDK
+         5szOe3cGXhkNCUh733nsYpT0PrJ2rPvc9zgc9yAIPbePMWwor2Sf4toHtane/JCvp7Oj
+         +J87ysG8lIRElIKAtqCUZ0oInC5BWGm9uhv2oNDolIbeZGqc5wQx5631NlF8m7g6TWvX
+         qKgSdy4lcEdr9NB94FEW5eEjKTCq4oyJBd68pHGcvSjbIw3Vl6ibSY3eSE3MsOtqMPFo
+         0qDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=ql+PZU/ocnIRueBMo2liBjkyootIXlEVW5npK12nr9E=;
-        b=amZqC+wFWlSUyLP/8RRxwArPOvlMvfDeIaxAH3eT2H4z9Nyrd7+764Fn9Eiu8FSb3W
-         UtzRVdKpgtR2yn8O/UXtHP70jYECj1apwVXSIhg64Jl613//vZR6VRFUE6hyO1TOh0XG
-         jjKQP0w/1Ek/96XSZxqk1vCRXayvXCo1NZm8C8gkVWpI67oLlnmhqajhH/fCsq25yaEJ
-         4bMNKprYV4jtXm3u6UsVDCt3U8VbNwSoix1H5FwZoPnWMsBdLtJITpBIYUA+VB9uv0Aa
-         aMdXcsoTJLI9m2Grvt4gDCQ30b2BsKcc1DfVgAWWjXp9xIuz9jmMJWpppHo4lf7/ZPm2
-         V1rQ==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=pPSg+zsDLfTRKTnyeML4LyYiTfm8UH2e4rsfNlGPk68=;
+        b=DnhEgqh8V6Oil1uY4U4HVWuwjvay82j6aqX4suuz/dzVMn+YQOT7u0FFQKBYNW+XGX
+         hHAHKiXxhI3967WPlJ1G0N/B+zjLQOU/0YGck7M+G+IWuY6AITbAoDOUFo7P9PK58ZTA
+         zYz7KjO5yTPwaDk01TtC/kGKoS+/R59GiH+MUXP2NYgXnFintlKM4N7DTe65uQAnjZrT
+         EdFE1sDoF7YQDoDUmTJ7jcfCDnyWjZWi56iVu/Y+sSpo5cR7UUZ72HW0LwZPzd3XBlDw
+         pOxitxA8+dpDvko0hpuM/4ZkFGJvwFsUx0pr9uorV5isZB5NtvK+UZIOIJx/ovkk3qPW
+         AZZw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=J6cOViQV;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vKs58vgz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t14si1539892ybt.71.2017.12.15.16.12.15
+        by mx.google.com with ESMTPS id o185si206674ywb.552.2017.12.05.10.54.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 15 Dec 2017 16:12:15 -0800 (PST)
+        Tue, 05 Dec 2017 10:54:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=J6cOViQV;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vKs58vgz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:48865 helo=lists.gnu.org)
+Received: from localhost ([::1]:51611 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eQ05O-0002rN-K9
-	for alex.bennee@linaro.org; Fri, 15 Dec 2017 19:12:14 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36594)
+	id 1eMIMo-0005de-Qt
+	for alex.bennee@linaro.org; Tue, 05 Dec 2017 13:54:54 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45701)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1eQ05F-0002r5-Ln
-	for qemu-arm@nongnu.org; Fri, 15 Dec 2017 19:12:06 -0500
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eMIMb-0005YT-8y
+	for qemu-arm@nongnu.org; Tue, 05 Dec 2017 13:54:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1eQ05E-0008Ub-JX
-	for qemu-arm@nongnu.org; Fri, 15 Dec 2017 19:12:05 -0500
-Received: from mail-wr0-x242.google.com ([2a00:1450:400c:c0c::242]:37170)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eMIMU-0001RT-Qo
+	for qemu-arm@nongnu.org; Tue, 05 Dec 2017 13:54:35 -0500
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:44736)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1eQ05E-0008TA-9F; Fri, 15 Dec 2017 19:12:04 -0500
-Received: by mail-wr0-x242.google.com with SMTP id k61so9397367wrc.4;
-	Fri, 15 Dec 2017 16:12:04 -0800 (PST)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eMIMO-0001OQ-A3; Tue, 05 Dec 2017 13:54:28 -0500
+Received: by mail-qt0-x242.google.com with SMTP id m59so3175756qte.11;
+	Tue, 05 Dec 2017 10:54:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-transfer-encoding;
-	bh=ql+PZU/ocnIRueBMo2liBjkyootIXlEVW5npK12nr9E=;
-	b=J6cOViQVB+EZ+ydnmvVLcM2OVFyppGNDH17T4EYNj+4AcrliN5gcYoy2Z4Sln/01sP
-	AF2YhPHb6N1lp9Lx+mfnsbffMvV84Ys1afnvnFypjVDD+njObbGGKXGtAb0VwYWvEKmj
-	GS5fw78+GMtUaTXoLBIL0OKNUuWAHhhEcT7ZmWJFcvaYqMuab3gxEsriZ7o2/xwNO3H5
-	czWYg2wQuwp8i4ZWSuBHFdRKwwYzOS+XWTy/Ek4TpQMIoICXKE9xXZGtvvY9posIxn7v
-	uVyRtsaJYqVBjQlxVRXwlmh3pOTFjVFtNPhJW0ERZSnaLiV05wBmkgxso7Mn+LjRpCge
-	3nKA==
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=pPSg+zsDLfTRKTnyeML4LyYiTfm8UH2e4rsfNlGPk68=;
+	b=vKs58vgzSFPiYnZT2nnNWwNgLUlX8pdCBSKZgQzX/aNeWHxXADjxNkZWs/b3yGlp/R
+	zhgOIxOzyauTdbGXAyCTLXoV2Iui1XhlkRPGFmA7/bT+I0xLDbuSHqCw3YYYOnOXl3o1
+	ExadJI60HLR1D4JEqNwcSixDlVrR4v4jp28VYypQZVYvYv2QPU9koj1fdNX3vaJUML3c
+	RUQyB5iPab8nYloSnkiY2S3Ck8z3LdyQAStZxxUtY+iXDEfqJOehEGvfYvB1Bx6xP+FH
+	8i21kQVR1Ze2JV/0oR4Q+Yl1sH/A1NpwRECvv5z4UkLtu5QDbe2KqxATzO9DgkgSO7Ts
+	iwUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc:content-transfer-encoding;
-	bh=ql+PZU/ocnIRueBMo2liBjkyootIXlEVW5npK12nr9E=;
-	b=iuBXBuYR/dNKWQ1sOZ/C98fm/DzKPtR9iYfteXMh5nsdts2EK0yocWcHNjkM5mNImo
-	hZvL6fnKYyp1HfEAWc9LrD8scAnldgzAi8F3reF+hwb5ryT0fkj1FfZXmVA7ZoasIfWm
-	wLU/gHqOaBPU/WtduETwE4tskenclsU62KsET2MAfhPHtFSkGOunKUYosRxaRo+8ja3I
-	04jJFywNsqaaeXOhq9KmUcMk7qaReiLuDUKq4L7CCaSdgmflEXGCiDEc4JT6bTrkUlkB
-	JhBhdhtj1PVDLRpFma0vHC9LYHsGhEAcTL/6qlmkb0Cx/GGtDWb5IT97Pn+vVQMwd92l
-	BOZA==
-X-Gm-Message-State: AKGB3mIIpau064SLrh9NVGXf15mpSlW8DdIyOO7N9BGt3q9Ba9X993O8
-	DVWqM/qszYGWaClFptuqvuAwHEe6fuj21AnIIg0=
-X-Received: by 10.223.161.158 with SMTP id u30mr11496092wru.96.1513383123221; 
-	Fri, 15 Dec 2017 16:12:03 -0800 (PST)
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=pPSg+zsDLfTRKTnyeML4LyYiTfm8UH2e4rsfNlGPk68=;
+	b=VzVvJe3J74F9CgTkc+wsrrK2j3EgbnmE/v2epGfOM+8CeulhM8t02nsq36RNFuLAdc
+	Nl6WMLUwAxcqN34QNdC7KTCjl2ReqkQYEC6ZmvmhHcBTyRidDjOztRkvYZt4oJ7SbJpp
+	YezfYK8AH3FvOIliRa1Gjsnzm25jOOm6Nx22w9RA3sCQRZxdNsUhM1K2o+hxX6RB0Vv1
+	uqlWUqUqmfODYQ6jY3lDMLRgNEViYweZP+FHPoBMHEZgXbO5BoNYwBnBnqnnsqQkbal3
+	WkAgm+upt7FmUIKkxV+ccq0Gyw/j+UiZfWyOP5gymFw0ri9BwnguOx1ej2PnQoYK87lW
+	Y5FQ==
+X-Gm-Message-State: AKGB3mJuNMzRmnTZ9nqxYX39g82N6V6WMUPyPjLQmZy2Jw1BFCddWQ/A
+	jCPTniac86Y64yPI10XKzLM=
+X-Received: by 10.200.50.165 with SMTP id z34mr2988213qta.137.1512500067585;
+	Tue, 05 Dec 2017 10:54:27 -0800 (PST)
+Received: from [192.168.1.11] ([138.117.48.211])
+	by smtp.gmail.com with ESMTPSA id c21sm458108qkg.64.2017.12.05.10.54.25
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 05 Dec 2017 10:54:26 -0800 (PST)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <1512153879-5291-1-git-send-email-peter.maydell@linaro.org>
+	<1512153879-5291-2-git-send-email-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <2d457a08-1581-6963-587d-d8d4b8367750@amsat.org>
+Date: Tue, 5 Dec 2017 15:54:23 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.4.0
 MIME-Version: 1.0
-Received: by 10.28.164.69 with HTTP; Fri, 15 Dec 2017 16:11:32 -0800 (PST)
-In-Reply-To: <20171214020025.4004-5-f4bug@amsat.org>
-References: <20171214020025.4004-1-f4bug@amsat.org>
-	<20171214020025.4004-5-f4bug@amsat.org>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Fri, 15 Dec 2017 16:11:32 -0800
-X-Google-Sender-Auth: c4BTvfLmdS6jtHhuZHWBVv-Ms-4
-Message-ID: <CAKmqyKMcPagPWoe4kJB3deccHxxzcBpoyM13+PMO-mxTuj0mEQ@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <1512153879-5291-2-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::242
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 4/8] sdhci: fix CAPAB/MAXCURR
- registers, both are 64bit and read-only
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: Re: [Qemu-arm] [PATCH 1/7] target/arm: Handle SPSEL and current
+ stack being out of sync in MSP/PSP reads
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,125 +120,62 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Prasad J Pandit <pjp@fedoraproject.org>,
-	=?UTF-8?Q?Gr=C3=A9gory_Estrade?= <gregory.estrade@gmail.com>,
-	Andrey Smirnov <andrew.smirnov@gmail.com>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	Sai Pavan Boddu <saipava@xilinx.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Clement Deschamps <clement.deschamps@antfield.fr>,
-	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
-	Andrzej Zaborowski <balrogg@gmail.com>,
-	Andrey Yurovsky <yurovsky@gmail.com>
+Cc: Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /k3WAW2XBw/T
+X-TUID: wuIvCCi9QNvY
 
-On Wed, Dec 13, 2017 at 6:00 PM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg> wrote:
-> running qtests:
->
->   $ make check-qtest-arm
->     GTESTER check-qtest-arm
->   SDHC rd_4b @0x44 not implemented
->   SDHC wr_4b @0x40 <- 0x89abcdef not implemented
->   SDHC wr_4b @0x44 <- 0x01234567 not implemented
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+On 12/01/2017 03:44 PM, Peter Maydell wrote:
+> For v8M it is possible for the CONTROL.SPSEL bit value and the
+> current stack to be out of sync. This means we need to update
+> the checks used in reads and writes of the PSP and MSP special
+> registers to use v7m_using_psp() rather than directly checking
+> the SPSEL bit in the control register.
 
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+good catch.
 
-Alistair
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 > ---
->  include/hw/sd/sdhci.h |  4 ++--
->  hw/sd/sdhci.c         | 25 ++++++++++++++++++++-----
->  2 files changed, 22 insertions(+), 7 deletions(-)
->
-> diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
-> index f8e91ce903..d5093fe3fd 100644
-> --- a/include/hw/sd/sdhci.h
-> +++ b/include/hw/sd/sdhci.h
-> @@ -75,8 +75,8 @@ typedef struct SDHCIState {
->      uint16_t acmd12errsts; /* Auto CMD12 error status register */
->      uint64_t admasysaddr;  /* ADMA System Address Register */
->
-> -    uint32_t capareg;      /* Capabilities Register */
-> -    uint32_t maxcurr;      /* Maximum Current Capabilities Register */
-> +    uint64_t capareg;      /* Capabilities Register */
-> +    uint64_t maxcurr;      /* Maximum Current Capabilities Register */
->      uint8_t  *fifo_buffer; /* SD host i/o FIFO buffer */
->      uint32_t buf_maxsz;
->      uint16_t data_count;   /* current element in FIFO buffer */
-> diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-> index d6145342fb..4d269c7ac4 100644
-> --- a/hw/sd/sdhci.c
-> +++ b/hw/sd/sdhci.c
-> @@ -99,7 +99,7 @@
->
->  static void sdhci_init_capareg(SDHCIState *s, Error **errp)
->  {
-> -    if (s->capareg =3D=3D UINT32_MAX) {
-> +    if (s->capareg =3D=3D UINT64_MAX) {
->          s->capareg =3D SDHC_CAPAB_REG_DEFAULT;
->      }
->  }
-> @@ -893,10 +893,16 @@ static uint64_t sdhci_read(void *opaque, hwaddr off=
-set, unsigned size)
->          ret =3D s->acmd12errsts;
->          break;
->      case SDHC_CAPAREG:
-> -        ret =3D s->capareg;
-> +        ret =3D (uint32_t)s->capareg;
-> +        break;
-> +    case SDHC_CAPAREG + 4:
-> +        ret =3D (uint32_t)(s->capareg >> 32);
->          break;
->      case SDHC_MAXCURR:
-> -        ret =3D s->maxcurr;
-> +        ret =3D (uint32_t)s->maxcurr;
-> +        break;
-> +    case SDHC_MAXCURR + 4:
-> +        ret =3D (uint32_t)(s->maxcurr >> 32);
->          break;
->      case SDHC_ADMAERR:
->          ret =3D  s->admaerr;
-> @@ -1117,6 +1123,15 @@ sdhci_write(void *opaque, hwaddr offset, uint64_t =
-val, unsigned size)
+>  target/arm/helper.c | 10 ++++------
+>  1 file changed, 4 insertions(+), 6 deletions(-)
+> 
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 91a9300..88394d4 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -9953,11 +9953,9 @@ uint32_t HELPER(v7m_mrs)(CPUARMState *env, uint32_t reg)
+>  
+>      switch (reg) {
+>      case 8: /* MSP */
+> -        return (env->v7m.control[env->v7m.secure] & R_V7M_CONTROL_SPSEL_MASK) ?
+> -            env->v7m.other_sp : env->regs[13];
+> +        return v7m_using_psp(env) ? env->v7m.other_sp : env->regs[13];
+>      case 9: /* PSP */
+> -        return (env->v7m.control[env->v7m.secure] & R_V7M_CONTROL_SPSEL_MASK) ?
+> -            env->regs[13] : env->v7m.other_sp;
+> +        return v7m_using_psp(env) ? env->regs[13] : env->v7m.other_sp;
+>      case 16: /* PRIMASK */
+>          return env->v7m.primask[env->v7m.secure];
+>      case 17: /* BASEPRI */
+> @@ -10059,14 +10057,14 @@ void HELPER(v7m_msr)(CPUARMState *env, uint32_t maskreg, uint32_t val)
 >          }
->          sdhci_update_irq(s);
 >          break;
-> +
-> +    case SDHC_CAPAREG:
-> +    case SDHC_CAPAREG + 4:
-> +    case SDHC_MAXCURR:
-> +    case SDHC_MAXCURR + 4:
-> +        qemu_log_mask(LOG_GUEST_ERROR, "SDHC wr_%ub @0x%02" HWADDR_PRIx
-> +                      " <- 0x%08x read-only\n", size, offset, value >> s=
-hift);
-> +        break;
-> +
->      default:
->          qemu_log_mask(LOG_UNIMP, "SDHC wr_%ub @0x%02" HWADDR_PRIx " <- 0=
-x%08x "
->                        "not implemented\n", size, offset, value >> shift)=
-;
-> @@ -1266,8 +1281,8 @@ const VMStateDescription sdhci_vmstate =3D {
->  static Property sdhci_properties[] =3D {
->      DEFINE_PROP_UINT8("sd-spec-version", SDHCIState,
->                        capabilities.spec_version, SD_HOST_SPECv2_VERS),
-> -    DEFINE_PROP_UINT32("capareg", SDHCIState, capareg, UINT32_MAX),
-> -    DEFINE_PROP_UINT32("maxcurr", SDHCIState, maxcurr, 0),
-> +    DEFINE_PROP_UINT64("capareg", SDHCIState, capareg, UINT64_MAX),
-> +    DEFINE_PROP_UINT64("maxcurr", SDHCIState, maxcurr, 0),
->      DEFINE_PROP_BOOL("pending-insert-quirk", SDHCIState, pending_insert_=
-quirk,
->                       false),
->      DEFINE_PROP_LINK("dma-memory", SDHCIState, dma_mr,
-> --
-> 2.15.1
->
->
+>      case 8: /* MSP */
+> -        if (env->v7m.control[env->v7m.secure] & R_V7M_CONTROL_SPSEL_MASK) {
+> +        if (v7m_using_psp(env)) {
+>              env->v7m.other_sp = val;
+>          } else {
+>              env->regs[13] = val;
+>          }
+>          break;
+>      case 9: /* PSP */
+> -        if (env->v7m.control[env->v7m.secure] & R_V7M_CONTROL_SPSEL_MASK) {
+> +        if (v7m_using_psp(env)) {
+>              env->regs[13] = val;
+>          } else {
+>              env->v7m.other_sp = val;
+> 

@@ -1,72 +1,72 @@
-Received: by 10.223.159.74 with SMTP id f10csp3225965wrg;
-        Tue, 5 Dec 2017 11:55:42 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMYTT5dwIpMDsYfrNh6/LvvdAnarkZF9q4LxRBwIcxH7g9OR37k9rJNBX9YXL3DVg3NndQ83
-X-Received: by 10.13.198.132 with SMTP id i126mr14320335ywd.381.1512503741961;
-        Tue, 05 Dec 2017 11:55:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1512503741; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp3226919wrg;
+        Tue, 5 Dec 2017 11:56:53 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMYDpUUZZHyvUJ6t3s2z5oHwhbzWP0tEW3zt9PJtrqtVfC4k1MXVjWUcSe+ImFlqEjifSpt0
+X-Received: by 10.37.212.131 with SMTP id m125mr13428318ybf.51.1512503813649;
+        Tue, 05 Dec 2017 11:56:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1512503813; cv=none;
         d=google.com; s=arc-20160816;
-        b=zMq3iT+ObgaepA/nExp2I+B7RfRSC1MAvCdTIGrxJ0aOZlYa6QtURHXIbj4MtuMCrH
-         NOEcF5Df2pnuRb0aSyA/K8mG5WjK1YAaeq61E7VZ3YjxGAIj+JJ3BNuU5OdkivCvF9zf
-         LKpDL2YQHhRNUUz9E7e4OzhC2GAXdTLzRFNz2t+5shiVBAkGZEZjzWfk5MWCu/Tue+fI
-         HU+U8YnWDi/IOh+4ANmCxnCKjw9nmCZhdzfdD8Z7RV36HUsC0WMTNdwst1gN2+EpW13i
-         AnQKKCsh2bP+SqHag7Bbm1E8DgQaVOX0VZQw77ir3xs0CBs7hcdCoGJuNY3nslOq71JI
-         rg9A==
+        b=SZc/zmrIvF17TMXAQ+U64LfsQg3+3utorEANx0v5jj40LVMjP7tu5/bpl4fhi8EfnO
+         uMOuCn50wEymh4lTWhLmMRfMeErh1ET0/HRPxU9axgUyP2scMQCX+vYwW5MhK21B9uRv
+         IGcp/RRxrvsNgyzs6q6uVEIcB7yXjPIIUoW7+PPeC/6FpuaCONg43PRMxDyU2gtvPBVd
+         JfYKThbtazwsfs6tZRhqjKpM3032bbSNLlSDq4BtyHLeAOi7TqQ17+4NLJ4ljgfXuN1Z
+         DBAeZFlQ7vCBfBdTpMd2oeSK17WDubdr5ZzSHa/TZ4NPEMNxySIyOncjwfVqZ9TvT63N
+         7aUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=neRQg8Auj0ijB9S4Sepgv5MmzJovGeJ3gBWpDzXuShQ=;
-        b=Gk2b3SKGMZy9fzzRUdj8Db8HySykTKxufTGKRLiiameXa8ZPWDsAcVQc7+BIV3OI60
-         kkMW4HG/LYDUAukUVk4f56SJPPVjT8ISo0DdUYB1GhCjB1EUJslWTRAOjOOXeZJAI7G/
-         frvyr4YXLJbqUyecN+DkWvigP8TpSLuqsjbUXX7mUmcZc7aEAEsNM594hXbcGOw05FpU
-         EDL8AWlVS6Hhi03Aei6s5lp4IJzHksHN/3PYwd5LAF1KQaCAVI3aEyYY5/OYgZB/vrSZ
-         CVuCbWHGolVPlFphVMwCkAuUzNbeQs0+kw4I0bQPTdHzCEjgiKR5wm744dCss4N/ANF4
-         6Yfw==
+        bh=sWCNMmZlk7oJBJqZF3oGZiW7WZkh+NCdzBVJiEpZRok=;
+        b=kDB5SQ1Mldpdqz0XBtVfQsfiihubLcbX/AoxlV3CIoBU+jh268vFK44as89gHt2aaG
+         nQKk/JiQwdkvX7tQJQIyEYp5jRYGryRPIaYg6hhZMhtmXue+yFxWkALadVLtpfbZ7tEv
+         PF5IY3laZx5SC++mQcU1fqnIphU95k0spzR7NjWWWdFKpFFdEMeOYmJN/8UN7RFWa8QO
+         NwlQ1Yq/pGdUyGuNan8sxVeXrcGnYcqw5kmW/ViLkBNHDSUnH93TYuSnl3kkyxUrTgBT
+         NvzrTW6jHkOiaauAMoYXH4/3PepaClLQJXxyRFpOFzGkdZX5wCqnCdD7iMoa7R7/3eTV
+         u66A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 125si231524ywn.671.2017.12.05.11.55.41
+        by mx.google.com with ESMTPS id r129si243784ywh.524.2017.12.05.11.56.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 05 Dec 2017 11:55:41 -0800 (PST)
+        Tue, 05 Dec 2017 11:56:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51815 helo=lists.gnu.org)
+Received: from localhost ([::1]:51829 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eMJJd-0001dp-E3
-	for alex.bennee@linaro.org; Tue, 05 Dec 2017 14:55:41 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56797)
+	id 1eMJKm-0002jT-A2
+	for alex.bennee@linaro.org; Tue, 05 Dec 2017 14:56:52 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56835)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eMJB9-00019n-IV
-	for qemu-devel@nongnu.org; Tue, 05 Dec 2017 14:46:56 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1eMJBC-0001CD-Tl
+	for qemu-devel@nongnu.org; Tue, 05 Dec 2017 14:47:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eMJB8-0002PC-JX
-	for qemu-devel@nongnu.org; Tue, 05 Dec 2017 14:46:55 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1eMJBB-0002Qh-Js
+	for qemu-devel@nongnu.org; Tue, 05 Dec 2017 14:46:58 -0500
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:38776)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1eMJB5-0002CW-TV; Tue, 05 Dec 2017 14:46:52 -0500
+	id 1eMJB7-0002CW-Rm; Tue, 05 Dec 2017 14:46:54 -0500
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1eMJAp-00059Q-Lv; Tue, 05 Dec 2017 19:46:35 +0000
+	id 1eMJAo-00058p-Dp; Tue, 05 Dec 2017 19:46:34 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue,  5 Dec 2017 19:46:23 +0000
-Message-Id: <1512503192-2239-4-git-send-email-peter.maydell@linaro.org>
+Date: Tue,  5 Dec 2017 19:46:21 +0000
+Message-Id: <1512503192-2239-2-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1512503192-2239-1-git-send-email-peter.maydell@linaro.org>
 References: <1512503192-2239-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-devel] [PATCH 03/12] target/arm: Convert get_phys_addr_v5()
- to not return FSC values
+Subject: [Qemu-devel] [PATCH 01/12] target/arm: Provide fault type enum and
+ FSR conversion functions
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,124 +82,241 @@ Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
 	Stefano Stabellini <sstabellini@kernel.org>, patches@linaro.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DFCxg1voUQKK
+X-TUID: rEfI1N4sXmRx
 
-Make get_phys_addr_v5() return a fault type in the ARMMMUFaultInfo
-structure, which we convert to the FSC at the callsite.
+Currently get_phys_addr() and its various subfunctions return
+a hard-coded fault status register value for translation
+failures. This is awkward because FSR values these days may
+be either long-descriptor format or short-descriptor format.
+Worse, the right FSR type to use doesn't depend only on the
+translation table being walked -- some cases, like fault
+info reported to AArch32 EL2 for some kinds of ATS operation,
+must be in long-descriptor format even if the translation
+table being walked was short format. We can't get those cases
+right with our current approach.
+
+Provide fields in the ARMMMUFaultInfo struct which allow
+get_phys_addr() to provide sufficient information for a caller to
+construct an FSR value themselves, and utility functions which do
+this for both long and short format FSR values, as a first step in
+switching get_phys_addr() and its children to only returning the
+failure cause in the ARMMMUFaultInfo struct.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper.c | 33 ++++++++++++++++++---------------
- 1 file changed, 18 insertions(+), 15 deletions(-)
+ target/arm/internals.h | 185 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 185 insertions(+)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 30616d9..6aed681 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -8344,11 +8344,11 @@ static uint64_t arm_ldq_ptw(CPUState *cs, hwaddr addr, bool is_secure,
- static bool get_phys_addr_v5(CPUARMState *env, uint32_t address,
-                              MMUAccessType access_type, ARMMMUIdx mmu_idx,
-                              hwaddr *phys_ptr, int *prot,
--                             target_ulong *page_size, uint32_t *fsr,
-+                             target_ulong *page_size,
-                              ARMMMUFaultInfo *fi)
- {
-     CPUState *cs = CPU(arm_env_get_cpu(env));
--    int code;
-+    int level = 1;
-     uint32_t table;
-     uint32_t desc;
-     int type;
-@@ -8362,7 +8362,7 @@ static bool get_phys_addr_v5(CPUARMState *env, uint32_t address,
-     /* Lookup l1 descriptor.  */
-     if (!get_level1_table_address(env, mmu_idx, &table, address)) {
-         /* Section translation fault if page walk is disabled by PD0 or PD1 */
--        code = 5;
-+        fi->type = ARMFault_Translation;
-         goto do_fault;
-     }
-     desc = arm_ldl_ptw(cs, table, regime_is_secure(env, mmu_idx),
-@@ -8377,21 +8377,20 @@ static bool get_phys_addr_v5(CPUARMState *env, uint32_t address,
-     domain_prot = (dacr >> (domain * 2)) & 3;
-     if (type == 0) {
-         /* Section translation fault.  */
--        code = 5;
-+        fi->type = ARMFault_Translation;
-         goto do_fault;
-     }
-+    if (type != 2) {
-+        level = 2;
-+    }
-     if (domain_prot == 0 || domain_prot == 2) {
--        if (type == 2)
--            code = 9; /* Section domain fault.  */
--        else
--            code = 11; /* Page domain fault.  */
-+        fi->type = ARMFault_Domain;
-         goto do_fault;
-     }
-     if (type == 2) {
-         /* 1Mb section.  */
-         phys_addr = (desc & 0xfff00000) | (address & 0x000fffff);
-         ap = (desc >> 10) & 3;
--        code = 13;
-         *page_size = 1024 * 1024;
-     } else {
-         /* Lookup l2 entry.  */
-@@ -8406,7 +8405,7 @@ static bool get_phys_addr_v5(CPUARMState *env, uint32_t address,
-                            mmu_idx, fi);
-         switch (desc & 3) {
-         case 0: /* Page translation fault.  */
--            code = 7;
-+            fi->type = ARMFault_Translation;
-             goto do_fault;
-         case 1: /* 64k page.  */
-             phys_addr = (desc & 0xffff0000) | (address & 0xffff);
-@@ -8429,7 +8428,7 @@ static bool get_phys_addr_v5(CPUARMState *env, uint32_t address,
-                     /* UNPREDICTABLE in ARMv5; we choose to take a
-                      * page translation fault.
-                      */
--                    code = 7;
-+                    fi->type = ARMFault_Translation;
-                     goto do_fault;
-                 }
-             } else {
-@@ -8442,18 +8441,19 @@ static bool get_phys_addr_v5(CPUARMState *env, uint32_t address,
-             /* Never happens, but compiler isn't smart enough to tell.  */
-             abort();
-         }
--        code = 15;
-     }
-     *prot = ap_to_rw_prot(env, mmu_idx, ap, domain_prot);
-     *prot |= *prot ? PAGE_EXEC : 0;
-     if (!(*prot & (1 << access_type))) {
-         /* Access permission fault.  */
-+        fi->type = ARMFault_Permission;
-         goto do_fault;
-     }
-     *phys_ptr = phys_addr;
-     return false;
- do_fault:
--    *fsr = code | (domain << 4);
-+    fi->domain = domain;
-+    fi->level = level;
-     return true;
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index aa9c91b..67b9a52 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -488,7 +488,39 @@ static inline void arm_clear_exclusive(CPUARMState *env)
  }
  
-@@ -9863,8 +9863,11 @@ static bool get_phys_addr(CPUARMState *env, target_ulong address,
-         return get_phys_addr_v6(env, address, access_type, mmu_idx, phys_ptr,
-                                 attrs, prot, page_size, fsr, fi);
-     } else {
--        return get_phys_addr_v5(env, address, access_type, mmu_idx, phys_ptr,
--                                prot, page_size, fsr, fi);
-+        bool ret = get_phys_addr_v5(env, address, access_type, mmu_idx,
-+                                    phys_ptr, prot, page_size, fi);
+ /**
++ * ARMFaultType: type of an ARM MMU fault
++ * This corresponds to the v8A pseudocode's Fault enumeration,
++ * with extensions for QEMU internal conditions.
++ */
++typedef enum ARMFaultType {
++    ARMFault_None,
++    ARMFault_AccessFlag,
++    ARMFault_Alignment,
++    ARMFault_Background,
++    ARMFault_Domain,
++    ARMFault_Permission,
++    ARMFault_Translation,
++    ARMFault_AddressSize,
++    ARMFault_SyncExternal,
++    ARMFault_SyncExternalOnWalk,
++    ARMFault_SyncParity,
++    ARMFault_SyncParityOnWalk,
++    ARMFault_AsyncParity,
++    ARMFault_AsyncExternal,
++    ARMFault_Debug,
++    ARMFault_TLBConflict,
++    ARMFault_Lockdown,
++    ARMFault_Exclusive,
++    ARMFault_ICacheMaint,
++    ARMFault_QEMU_NSCExec, /* v8M: NS executing in S&NSC memory */
++    ARMFault_QEMU_SFault, /* v8M: SecureFault INVTRAN, INVEP or AUVIOL */
++} ARMFaultType;
 +
-+        *fsr = arm_fi_to_sfsc(fi);
-+        return ret;
-     }
- }
++/**
+  * ARMMMUFaultInfo: Information describing an ARM MMU Fault
++ * @type: Type of fault
++ * @level: Table walk level (for translation, access flag and permission faults)
++ * @domain: Domain of the fault address (for non-LPAE CPUs only)
+  * @s2addr: Address that caused a fault at stage 2
+  * @stage2: True if we faulted at stage 2
+  * @s1ptw: True if we faulted at stage 2 while doing a stage 1 page-table walk
+@@ -496,12 +528,165 @@ static inline void arm_clear_exclusive(CPUARMState *env)
+  */
+ typedef struct ARMMMUFaultInfo ARMMMUFaultInfo;
+ struct ARMMMUFaultInfo {
++    ARMFaultType type;
+     target_ulong s2addr;
++    int level;
++    int domain;
+     bool stage2;
+     bool s1ptw;
+     bool ea;
+ };
  
++/**
++ * arm_fi_to_sfsc: Convert fault info struct to short-format FSC
++ * Compare pseudocode EncodeSDFSC(), though unlike that function
++ * we set up a whole FSR-format code including domain field and
++ * putting the high bit of the FSC into bit 10.
++ */
++static inline uint32_t arm_fi_to_sfsc(ARMMMUFaultInfo *fi)
++{
++    uint32_t fsc;
++
++    switch (fi->type) {
++    case ARMFault_None:
++        return 0;
++    case ARMFault_AccessFlag:
++        fsc = fi->level == 1 ? 0x3 : 0x6;
++        break;
++    case ARMFault_Alignment:
++        fsc = 0x1;
++        break;
++    case ARMFault_Permission:
++        fsc = fi->level == 1 ? 0xd : 0xf;
++        break;
++    case ARMFault_Domain:
++        fsc = fi->level == 1 ? 0x9 : 0xb;
++        break;
++    case ARMFault_Translation:
++        fsc = fi->level == 1 ? 0x5 : 0x7;
++        break;
++    case ARMFault_SyncExternal:
++        fsc = 0x8 | (fi->ea << 12);
++        break;
++    case ARMFault_SyncExternalOnWalk:
++        fsc = fi->level == 1 ? 0xc : 0xe;
++        fsc |= (fi->ea << 12);
++        break;
++    case ARMFault_SyncParity:
++        fsc = 0x409;
++        break;
++    case ARMFault_SyncParityOnWalk:
++        fsc = fi->level == 1 ? 0x40c : 0x40e;
++        break;
++    case ARMFault_AsyncParity:
++        fsc = 0x408;
++        break;
++    case ARMFault_AsyncExternal:
++        fsc = 0x406 | (fi->ea << 12);
++        break;
++    case ARMFault_Debug:
++        fsc = 0x2;
++        break;
++    case ARMFault_TLBConflict:
++        fsc = 0x400;
++        break;
++    case ARMFault_Lockdown:
++        fsc = 0x404;
++        break;
++    case ARMFault_Exclusive:
++        fsc = 0x405;
++        break;
++    case ARMFault_ICacheMaint:
++        fsc = 0x4;
++        break;
++    case ARMFault_Background:
++        fsc = 0x0;
++        break;
++    case ARMFault_QEMU_NSCExec:
++        fsc = M_FAKE_FSR_NSC_EXEC;
++        break;
++    case ARMFault_QEMU_SFault:
++        fsc = M_FAKE_FSR_SFAULT;
++        break;
++    default:
++        /* Other faults can't occur in a context that requires a
++         * short-format status code.
++         */
++        g_assert_not_reached();
++    }
++
++    fsc |= (fi->domain << 4);
++    return fsc;
++}
++
++/**
++ * arm_fi_to_lfsc: Convert fault info struct to long-format FSC
++ * Compare pseudocode EncodeLDFSC(), though unlike that function
++ * we fill in also the LPAE bit 9 of a DFSR format.
++ */
++static inline uint32_t arm_fi_to_lfsc(ARMMMUFaultInfo *fi)
++{
++    uint32_t fsc;
++
++    switch (fi->type) {
++    case ARMFault_None:
++        return 0;
++    case ARMFault_AddressSize:
++        fsc = fi->level & 3;
++        break;
++    case ARMFault_AccessFlag:
++        fsc = (fi->level & 3) | (0x2 << 2);
++        break;
++    case ARMFault_Permission:
++        fsc = (fi->level & 3) | (0x3 << 2);
++        break;
++    case ARMFault_Translation:
++        fsc = (fi->level & 3) | (0x1 << 2);
++        break;
++    case ARMFault_SyncExternal:
++        fsc = 0x10 | (fi->ea << 12);
++        break;
++    case ARMFault_SyncExternalOnWalk:
++        fsc = (fi->level & 3) | (0x5 << 2) | (fi->ea << 12);
++        break;
++    case ARMFault_SyncParity:
++        fsc = 0x18;
++        break;
++    case ARMFault_SyncParityOnWalk:
++        fsc = (fi->level & 3) | (0x7 << 2);
++        break;
++    case ARMFault_AsyncParity:
++        fsc = 0x19;
++        break;
++    case ARMFault_AsyncExternal:
++        fsc = 0x11 | (fi->ea << 12);
++        break;
++    case ARMFault_Alignment:
++        fsc = 0x21;
++        break;
++    case ARMFault_Debug:
++        fsc = 0x22;
++        break;
++    case ARMFault_TLBConflict:
++        fsc = 0x30;
++        break;
++    case ARMFault_Lockdown:
++        fsc = 0x34;
++        break;
++    case ARMFault_Exclusive:
++        fsc = 0x35;
++        break;
++    default:
++        /* Other faults can't occur in a context that requires a
++         * long-format status code.
++         */
++        g_assert_not_reached();
++    }
++
++    fsc |= 1 << 9;
++    return fsc;
++}
++
+ /* Do a page table walk and add page to TLB if possible */
+ bool arm_tlb_fill(CPUState *cpu, vaddr address,
+                   MMUAccessType access_type, int mmu_idx,
 -- 
 2.7.4
 

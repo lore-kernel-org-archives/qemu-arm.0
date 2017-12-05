@@ -1,103 +1,397 @@
-Received: by 10.28.4.212 with SMTP id 203csp4201533wme;
-        Tue, 8 May 2018 06:59:36 -0700 (PDT)
-X-Received: by 2002:aca:e889:: with SMTP id f131-v6mr24385451oih.324.1525787976190;
-        Tue, 08 May 2018 06:59:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1525787976; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp3309274wrg;
+        Tue, 5 Dec 2017 13:24:31 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMYBazW0YoJSx+MIP8A5AlVPuVkblDfdvkzAsyS8N6IcgI+6p+JO10/wqZ7t3Mb4DPq9f9Iq
+X-Received: by 10.37.80.208 with SMTP id e199mr13735944ybb.37.1512509071569;
+        Tue, 05 Dec 2017 13:24:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1512509071; cv=none;
         d=google.com; s=arc-20160816;
-        b=bn7qSoFN00rJSMu6OHu3Wu/qL5ZIT/lkJZL6KC4nDCh9nerThx7RSBqm4pvp6sZUfd
-         FiWeiVQKqzDeHw9fr4CuOtwYeggIRZ7h+exHBmaQZ+wRCckSYvYLEGmpvMaKRWXDxbIU
-         rqra1fcWVksWMMDTFTxFG2dU7+JIKoMKg4SFjnzQ/z/mal4XEtE8cncpBS2gk7NMeOcS
-         oKz8xagdfxAH4eyZMXAwS29XnX+PHsCWIyrVCpjvpYlGC7iVhgzvrcbwZDzHImBKAk6s
-         6MNZkqFNSI4xQ8vjI9oYa3O8IDCDvVNPMQME775U4XY+P1H43uXuG1CYxL2l0AkwRQVg
-         NeXQ==
+        b=szN39fMNBDIrjN47zsuWYanTL4CPlSzjP8jRR1G8wdIzvhAIoeikzUywYpl4Z+ggS/
+         nz5DEXZZVBqGhN9Ehvl9yICJl3HvjKa5OrIaS0NGwHHW9bCzgr9Lm84G5LZeKTa77KTo
+         5asMuLlX5mVuHkyQDdoo4PVtlKrAlwX7N2b1rAhMbb1EPZ0SX4v1iQeGaJrG7wFmVbpq
+         mnjbIT0b9nL1ly5Bdc6aQY58gynDAOoooAhscj3VhoPDo79/ctY51OoBBjwv3J8gubrw
+         WTV1tzRvSUcSsUX69y2sMij/sx6jiADD/c6gNec8gDmUHgtTza/E5nK5DeobMLDOne/f
+         xGPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=0TXK3JnTxg+spqBichJETNsdlknWB/XZSGznBXfcImE=;
-        b=iChv73kZENwC0cpjLToD0wyAoj65vkYLvshz03zyhpWBGWr1k+u+UVn1l524LXWmEv
-         3naNxtPzavG6l8iFu+akdc/R6neCvGKedk5Hs9nHBt46Kv6PzJWbawbeMPiT2fa+Wvgu
-         oh53qR0vMakBDgOuepiXW9gDdZUJbvty1FR8PFOxNLEc2Dum1uSkZIFDcdcSG7vIBLdk
-         7ud7NFLgMGycWaHO8XRpUeiBZpNQIMXIV4NDr6SyGuU2yJR2mLk4fwPBnqOy18RYX+ov
-         ntIjH6mu/g+1ecHSYK7ZypPRf1Z1/tzNfwFtooFM+qBQKEMQOoUf+rnzG6bJ1xqgG6B1
-         NHJg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=hKL78C9Y1pZRPAyy63/rFAh3RbKy+DY6eBMov5y/DzU=;
+        b=w+wuB6rry61nj5np8EFMgvOlUv6QHbDOQXgFXZ2Nh9zvwbzgJNNl5Yjjql5EWUO6Dz
+         9G06yk5yII5NB/PUDt+P+7YbkbHNxNAChcqhFCCseBNswhZSi6JAF40PPhnelgxRUNYR
+         ntMdSx+KALsscKNfSvW6Wg0xoLGINHrFZpudbdKo2QKheMoql5ni1S+3513HYr/p2qSJ
+         zqKweXJeWDJRbRBs7mh+ipVf3jIEqb5lTA9bLt6K22VnjmdA35yx9tz7hjZ0Pt2I8yzv
+         S2kWuvulEqs9H3NYLaJ9rNPqzLs6kED/gQoffEa/tbkQagMNot/ZCW9p0HkvUQNyJho3
+         TCBw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Rh8X8XgI;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 66-v6sor11170979otv.180.2018.05.08.06.59.36
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lYdgxcAL;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id u126si266791ywd.459.2017.12.05.13.24.31
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 08 May 2018 06:59:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 05 Dec 2017 13:24:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Rh8X8XgI;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=0TXK3JnTxg+spqBichJETNsdlknWB/XZSGznBXfcImE=;
-        b=Rh8X8XgILNDA3JM69xgPNlQED+go3w/dNg/RjbHcZ+POL2m27G1HC7puUC8xk/EnE5
-         sAVFtRdPtCieQ9BRGSeXikPRTfML49U2VMzHLAxHWc3v72ih6a/1DmZRbdm+23hmo3lo
-         9lLFKeQBAMbDdPrHP4Rj06ASLCYr1cmrrtxLs=
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lYdgxcAL;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:52117 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eMKhb-0007uU-0f
+	for alex.bennee@linaro.org; Tue, 05 Dec 2017 16:24:31 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57003)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eMKgS-0007QZ-G9
+	for qemu-devel@nongnu.org; Tue, 05 Dec 2017 16:23:22 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eMKgP-0003wQ-AB
+	for qemu-devel@nongnu.org; Tue, 05 Dec 2017 16:23:20 -0500
+Received: from mail-qt0-x22f.google.com ([2607:f8b0:400d:c0d::22f]:46331)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eMKgP-0003wI-4e; Tue, 05 Dec 2017 16:23:17 -0500
+Received: by mail-qt0-x22f.google.com with SMTP id r39so4231434qtr.13;
+	Tue, 05 Dec 2017 13:23:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=hKL78C9Y1pZRPAyy63/rFAh3RbKy+DY6eBMov5y/DzU=;
+	b=lYdgxcALhywDDyXAqMQ3jHSfgIUL20GC/+o4135Dw/HV0lWt5BQQBpoEKwIzXVDUK+
+	MY37r/wy9cKsEDGVjKm/GsP7J19BB+m5gjCS1wUZ/N9Tehay/xpRc9mEfTH6BRKJFtlQ
+	dezokPeTZGF3NB3tbW0CLzx7R/RD538a1R9yyN9wa+DRVq+14Z9UdRCsfaeY3z5KCsqB
+	aVNGsRvvmK6q9EbbHQcofkfZwH/09H/CiWdQDuqtIeRW+iQyWzKDsbsYbKR77P+d7ywG
+	QTvyuYiESpfxvkTVMlIeLf5lpIWXCljGxiq0B/zwuOyaU3EOkY0HUPWXfCnLzbjU9tL2
+	MFww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=0TXK3JnTxg+spqBichJETNsdlknWB/XZSGznBXfcImE=;
-        b=ASYmoa1U2dYbxKlmFL1spmbHDslRd6e9FnVU/7WNWa5PSuSs9AMn+njSBpDr4Ya5FW
-         XjPPPENF4h2aZRkBkYJfxdUyAyiIw3I5jhqDom64bvpKp08go96B+vZouCmhXxorcODE
-         5GlIb0Z8xM8EMKptPavGyBQB4EvcBDr7qAu41y209WcQNavzo67CPacg9adY0eK6hUZF
-         TOg7vKWr6TPd9Ga7aFnrH7K24OBLfY2NQ0bc76ND2S4vulIsyqyKOEWSJN7NautOJe3a
-         BbkhmurwBmiwWQ/Aglr0kF5xmU6B5C9q3N6dKEjtPV7zJraVfv+Brl9GKE6Pm6bCOMrF
-         NM7Q==
-X-Gm-Message-State: ALQs6tBgedwXnBZC1jJLRLULE6leAoiKUJcO0McfNJV3Hy0Dw/TsJ7CT
-	iI7q+LnCrBWpREMOFmE4ukLHOqz7Vrqk3KVL6aRFaXwEuxg=
-X-Google-Smtp-Source: AB8JxZqKyXZXA0RQA7sKMGrzf0q+X0HhApR8nMKvD9ltTABbXF+4TXmdOO/fWlWfD7s5OIq74Xkad7+OQ43MJz3RuuA=
-X-Received: by 2002:a9d:16d0:: with SMTP id s16-v6mr31150608ots.294.1525787975781;
- Tue, 08 May 2018 06:59:35 -0700 (PDT)
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=hKL78C9Y1pZRPAyy63/rFAh3RbKy+DY6eBMov5y/DzU=;
+	b=VA12sfynsKTYYM15usHiZyCo8iCsuemhrROcdBOwUYEjWY9As/C0CMX95ydvzPBRe9
+	mwAWpjf72gIqnuIv1EQ4oKUZCh+u83tAprC92K21uHPszWz6U3RtSY4We2LYBL3jYGQO
+	pBiazPQlfPfMd1lzZIx0osE9KC/nMOdm+gELlvpNlWomLAVOZFUOp64uyytAF9eFI3tT
+	dlTk8h/kbDmo6qxC7MaFaTmQ9L0cHWqz5rG9+/N4kOTj7XV9dOyq/BVAOCiMhv1P3oHV
+	ozUsO60DHDVYV2sV558k2BeuqWUVl3DfOgTbVuSeRfE0ql+NS8pgw8nhBKVmSHXH5H8U
+	oaHQ==
+X-Gm-Message-State: AKGB3mIhurpl7e7zEqdYzM/7cjKKJAXMuC6vs7qpn8zqOxCDtnNGbc3g
+	siM5v4E8YYMYP08nzGdiUfQ=
+X-Received: by 10.237.62.76 with SMTP id m12mr3005836qtf.8.1512508996206;
+	Tue, 05 Dec 2017 13:23:16 -0800 (PST)
+Received: from [192.168.1.11] ([138.117.48.211])
+	by smtp.gmail.com with ESMTPSA id
+	f206sm597541qkb.77.2017.12.05.13.23.14
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 05 Dec 2017 13:23:15 -0800 (PST)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <1512153879-5291-1-git-send-email-peter.maydell@linaro.org>
+	<1512153879-5291-5-git-send-email-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <ac246e55-a12d-6d9d-959a-47aa0334c17f@amsat.org>
+Date: Tue, 5 Dec 2017 18:23:13 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.4.0
 MIME-Version: 1.0
-Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Tue, 8 May 2018 06:59:15 -0700 (PDT)
-In-Reply-To: <87tvriv0yz.fsf@linaro.org>
-References: <20180504100547.14621-1-peter.maydell@linaro.org> <87tvriv0yz.fsf@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 8 May 2018 14:59:15 +0100
-Message-ID: <CAFEAcA99c1XNdCNs3aNwzvZJFOtmVX22kU-twDuFMLYy8an=qA@mail.gmail.com>
-Subject: Re: [PATCH] softfloat: Handle default NaN mode after pickNaNMulAdd,
- not before
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	"patches@linaro.org" <patches@linaro.org>, qemu-stable <qemu-stable@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: ObZBmJPMXv1e
+In-Reply-To: <1512153879-5291-5-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::22f
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH 4/7] target/arm: Split M profile
+ MNegPri mmu index into user and priv
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Vw6Th69pBL3V
 
-On 8 May 2018 at 12:30, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrote:
->
-> Peter Maydell <peter.maydell@linaro.org> writes:
->
->> It is implementation defined whether a multiply-add of
->> (0,inf,qnan) or (inf,0,qnan) raises InvalidaOperation or
->> not, so we let the target-specific pickNaNMulAdd function
->> handle this. This means that we must do the "return the
->> default NaN in default NaN mode" check after the call,
->> not before. Correct the ordering, and restore the comment
->> from the old propagateFloat64MulAddNaN() that warned about
->> this corner case.
->>
->> This fixes a regression from 2.11 for Arm guests where we would
->> incorrectly fail to set the Invalid flag for these cases.
->>
->> Cc: qemu-stable@nongnu.org
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->
-> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Tested-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+Hi Peter,
 
-Thanks; applied to target-arm.next.
+On 12/01/2017 03:44 PM, Peter Maydell wrote:
+> For M profile, we currently have an mmu index MNegPri for
+> "requested execution priority negative". This fails to
+> distinguish "requested execution priority negative, privileged"
+> from "requested execution priority negative, usermode", but
+> the two can return different results for MPU lookups. Fix this
+> by splitting MNegPri into MNegPriPriv and MNegPriUser, and
+> similarly for the Secure equivalent MSNegPri.
+> 
+> This takes us from 6 M profile MMU modes to 8, which means
+> we need to bump NB_MMU_MODES; this is OK since the point
+> where we are forced to reduce TLB sizes is 9 MMU modes.
+> 
+> (It would in theory be possible to stick with 6 MMU indexes:
+> {mpu-disabled,user,privileged} x {secure,nonsecure} since
+> in the MPU-disabled case the result of an MPU lookup is
+> always the same for both user and privileged code. However
+> we would then need to rework the TB flags handling to put
+> user/priv into the TB flags separately from the mmuidx.
+> Adding an extra couple of mmu indexes is simpler.)
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/arm/cpu.h       | 49 ++++++++++++++++++++++++++++---------------------
+>  target/arm/internals.h |  6 ++++--
+>  target/arm/helper.c    | 14 ++++++++++----
+>  target/arm/translate.c |  8 ++++++--
+>  4 files changed, 48 insertions(+), 29 deletions(-)
+> 
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 89d49cd..d228fe6 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -112,7 +112,7 @@ enum {
+>  #define ARM_CPU_VIRQ 2
+>  #define ARM_CPU_VFIQ 3
+>  
+> -#define NB_MMU_MODES 7
+> +#define NB_MMU_MODES 8
+>  /* ARM-specific extra insn start words:
+>   * 1: Conditional execution bits
+>   * 2: Partial exception syndrome for data aborts
+> @@ -2226,13 +2226,13 @@ static inline bool arm_excp_unmasked(CPUState *cs, unsigned int excp_idx,
+>   * They have the following different MMU indexes:
+>   *  User
+>   *  Privileged
+> - *  Execution priority negative (this is like privileged, but the
+> - *  MPU HFNMIENA bit means that it may have different access permission
+> - *  check results to normal privileged code, so can't share a TLB).
+> + *  User, execution priority negative (ie the MPU HFNMIENA bit may apply)
+> + *  Privileged, execution priority negative (ditto)
+>   * If the CPU supports the v8M Security Extension then there are also:
+>   *  Secure User
+>   *  Secure Privileged
+> - *  Secure, execution priority negative
+> + *  Secure User, execution priority negative
+> + *  Secure Privileged, execution priority negative
+>   *
+>   * The ARMMMUIdx and the mmu index value used by the core QEMU TLB code
+>   * are not quite the same -- different CPU types (most notably M profile
+> @@ -2251,6 +2251,8 @@ static inline bool arm_excp_unmasked(CPUState *cs, unsigned int excp_idx,
+>   * The constant names here are patterned after the general style of the names
+>   * of the AT/ATS operations.
+>   * The values used are carefully arranged to make mmu_idx => EL lookup easy.
+> + * For M profile we arrange them to have a bit for priv, a bit for negpri
+> + * and a bit for secure.
+>   */
+>  #define ARM_MMU_IDX_A 0x10 /* A profile */
+>  #define ARM_MMU_IDX_NOTLB 0x20 /* does not have a TLB */
+> @@ -2269,10 +2271,12 @@ typedef enum ARMMMUIdx {
+>      ARMMMUIdx_S2NS = 6 | ARM_MMU_IDX_A,
+>      ARMMMUIdx_MUser = 0 | ARM_MMU_IDX_M,
+>      ARMMMUIdx_MPriv = 1 | ARM_MMU_IDX_M,
+> -    ARMMMUIdx_MNegPri = 2 | ARM_MMU_IDX_M,
+> -    ARMMMUIdx_MSUser = 3 | ARM_MMU_IDX_M,
+> -    ARMMMUIdx_MSPriv = 4 | ARM_MMU_IDX_M,
+> -    ARMMMUIdx_MSNegPri = 5 | ARM_MMU_IDX_M,
+> +    ARMMMUIdx_MUserNegPri = 2 | ARM_MMU_IDX_M,
+> +    ARMMMUIdx_MPrivNegPri = 3 | ARM_MMU_IDX_M,
+> +    ARMMMUIdx_MSUser = 4 | ARM_MMU_IDX_M,
+> +    ARMMMUIdx_MSPriv = 5 | ARM_MMU_IDX_M,
+> +    ARMMMUIdx_MSUserNegPri = 6 | ARM_MMU_IDX_M,
+> +    ARMMMUIdx_MSPrivNegPri = 7 | ARM_MMU_IDX_M,
+>      /* Indexes below here don't have TLBs and are used only for AT system
+>       * instructions or for the first stage of an S12 page table walk.
+>       */
+> @@ -2293,10 +2297,12 @@ typedef enum ARMMMUIdxBit {
+>      ARMMMUIdxBit_S2NS = 1 << 6,
+>      ARMMMUIdxBit_MUser = 1 << 0,
+>      ARMMMUIdxBit_MPriv = 1 << 1,
+> -    ARMMMUIdxBit_MNegPri = 1 << 2,
+> -    ARMMMUIdxBit_MSUser = 1 << 3,
+> -    ARMMMUIdxBit_MSPriv = 1 << 4,
+> -    ARMMMUIdxBit_MSNegPri = 1 << 5,
+> +    ARMMMUIdxBit_MUserNegPri = 1 << 2,
+> +    ARMMMUIdxBit_MPrivNegPri = 1 << 3,
+> +    ARMMMUIdxBit_MSUser = 1 << 4,
+> +    ARMMMUIdxBit_MSPriv = 1 << 5,
+> +    ARMMMUIdxBit_MSUserNegPri = 1 << 6,
+> +    ARMMMUIdxBit_MSPrivNegPri = 1 << 7,
+>  } ARMMMUIdxBit;
 
--- PMM
+(I think the ARMMMUIdxBit enum is misleading, since this is a mask)
+
+The patch is correct, but I don't like having magic values.
+
+Can you add these ARM_MMU_IDX_M_* defines/enums?
+
+enum {
+    ARM_MMU_IDX_M_EL        0x01, /* Exception Level */
+    ARM_MMU_IDX_M_NEG       0x02,
+    ARM_MMU_IDX_M_SEC       0x04, /* Secure */
+    ARM_MMU_IDX_A           0x10, /* A profile */
+    ARM_MMU_IDX_NOTLB       0x20, /* does not have a TLB */
+    ARM_MMU_IDX_M           0x40, /* M profile */
+};
+
+>  
+>  #define MMU_USER_IDX 0
+> @@ -2322,8 +2328,7 @@ static inline int arm_mmu_idx_to_el(ARMMMUIdx mmu_idx)
+>      case ARM_MMU_IDX_A:
+>          return mmu_idx & 3;
+>      case ARM_MMU_IDX_M:
+> -        return (mmu_idx == ARMMMUIdx_MUser || mmu_idx == ARMMMUIdx_MSUser)
+> -            ? 0 : 1;
+> +        return mmu_idx & 1;
+
+So here we can use:
+
+           return mmu_idx & ARM_MMU_IDX_M_EL;
+
+>      default:
+>          g_assert_not_reached();
+>      }
+> @@ -2334,16 +2339,18 @@ static inline ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env,
+>                                                       bool secstate)
+>  {
+>      int el = arm_current_el(env);
+> -    ARMMMUIdx mmu_idx;
+> +    ARMMMUIdx mmu_idx = ARM_MMU_IDX_M;
+>  
+> -    if (el == 0) {
+> -        mmu_idx = secstate ? ARMMMUIdx_MSUser : ARMMMUIdx_MUser;
+> -    } else {
+> -        mmu_idx = secstate ? ARMMMUIdx_MSPriv : ARMMMUIdx_MPriv;
+> +    if (el != 0) {
+> +        mmu_idx |= 1;
+
+           mmu_idx |= ARM_MMU_IDX_M_EL;
+
+>      }
+> 
+>      if (armv7m_nvic_neg_prio_requested(env->nvic, secstate)) {
+> -        mmu_idx = secstate ? ARMMMUIdx_MSNegPri : ARMMMUIdx_MNegPri;
+> +        mmu_idx |= 2;
+
+           mmu_idx |= ARM_MMU_IDX_M_NEG;
+
+> +    }
+> +
+> +    if (secstate) {
+> +        mmu_idx |= 4;
+
+           mmu_idx |= ARM_MMU_IDX_M_SEC;
+
+>      }
+>  
+>      return mmu_idx;
+> diff --git a/target/arm/internals.h b/target/arm/internals.h
+> index d9cc75e..aa9c91b 100644
+> --- a/target/arm/internals.h
+> +++ b/target/arm/internals.h
+> @@ -544,15 +544,17 @@ static inline bool regime_is_secure(CPUARMState *env, ARMMMUIdx mmu_idx)
+>      case ARMMMUIdx_S1NSE1:
+>      case ARMMMUIdx_S1E2:
+>      case ARMMMUIdx_S2NS:
+> +    case ARMMMUIdx_MPrivNegPri:
+> +    case ARMMMUIdx_MUserNegPri:
+>      case ARMMMUIdx_MPriv:
+> -    case ARMMMUIdx_MNegPri:
+>      case ARMMMUIdx_MUser:
+>          return false;
+>      case ARMMMUIdx_S1E3:
+>      case ARMMMUIdx_S1SE0:
+>      case ARMMMUIdx_S1SE1:
+> +    case ARMMMUIdx_MSPrivNegPri:
+> +    case ARMMMUIdx_MSUserNegPri:
+>      case ARMMMUIdx_MSPriv:
+> -    case ARMMMUIdx_MSNegPri:
+>      case ARMMMUIdx_MSUser:
+>          return true;
+>      default:
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index c4c8d5a..14ab1f4 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -7856,11 +7856,13 @@ static inline uint32_t regime_el(CPUARMState *env, ARMMMUIdx mmu_idx)
+>      case ARMMMUIdx_S1SE1:
+>      case ARMMMUIdx_S1NSE0:
+>      case ARMMMUIdx_S1NSE1:
+> +    case ARMMMUIdx_MPrivNegPri:
+> +    case ARMMMUIdx_MUserNegPri:
+>      case ARMMMUIdx_MPriv:
+> -    case ARMMMUIdx_MNegPri:
+>      case ARMMMUIdx_MUser:
+> +    case ARMMMUIdx_MSPrivNegPri:
+> +    case ARMMMUIdx_MSUserNegPri:
+>      case ARMMMUIdx_MSPriv:
+> -    case ARMMMUIdx_MSNegPri:
+>      case ARMMMUIdx_MSUser:
+>          return 1;
+>      default:
+> @@ -7883,8 +7885,10 @@ static inline bool regime_translation_disabled(CPUARMState *env,
+>                  (R_V7M_MPU_CTRL_ENABLE_MASK | R_V7M_MPU_CTRL_HFNMIENA_MASK)) {
+>          case R_V7M_MPU_CTRL_ENABLE_MASK:
+>              /* Enabled, but not for HardFault and NMI */
+> -            return mmu_idx == ARMMMUIdx_MNegPri ||
+> -                mmu_idx == ARMMMUIdx_MSNegPri;
+> +            return mmu_idx == ARMMMUIdx_MUserNegPri ||
+> +                mmu_idx == ARMMMUIdx_MPrivNegPri ||
+> +                mmu_idx == ARMMMUIdx_MSUserNegPri ||
+> +                mmu_idx == ARMMMUIdx_MSPrivNegPri;
+
+And here we can simplify:
+
+               return mmu_idx & ARM_MMU_IDX_M_NEG;
+
+>          case R_V7M_MPU_CTRL_ENABLE_MASK | R_V7M_MPU_CTRL_HFNMIENA_MASK:
+>              /* Enabled for all cases */
+>              return false;
+> @@ -8017,6 +8021,8 @@ static inline bool regime_is_user(CPUARMState *env, ARMMMUIdx mmu_idx)
+>      case ARMMMUIdx_S1NSE0:
+>      case ARMMMUIdx_MUser:
+>      case ARMMMUIdx_MSUser:
+> +    case ARMMMUIdx_MUserNegPri:
+> +    case ARMMMUIdx_MSUserNegPri:
+>          return true;
+>      default:
+>          return false;
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index 4afb0c8..6df4d90 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -159,12 +159,16 @@ static inline int get_a32_user_mem_index(DisasContext *s)
+>          return arm_to_core_mmu_idx(ARMMMUIdx_S1SE0);
+>      case ARMMMUIdx_MUser:
+>      case ARMMMUIdx_MPriv:
+> -    case ARMMMUIdx_MNegPri:
+>          return arm_to_core_mmu_idx(ARMMMUIdx_MUser);
+> +    case ARMMMUIdx_MUserNegPri:
+> +    case ARMMMUIdx_MPrivNegPri:
+> +        return arm_to_core_mmu_idx(ARMMMUIdx_MUserNegPri);
+>      case ARMMMUIdx_MSUser:
+>      case ARMMMUIdx_MSPriv:
+> -    case ARMMMUIdx_MSNegPri:
+>          return arm_to_core_mmu_idx(ARMMMUIdx_MSUser);
+> +    case ARMMMUIdx_MSUserNegPri:
+> +    case ARMMMUIdx_MSPrivNegPri:
+> +        return arm_to_core_mmu_idx(ARMMMUIdx_MSUserNegPri);
+>      case ARMMMUIdx_S2NS:
+>      default:
+>          g_assert_not_reached();
+> 
+
+Regards,
+
+Phil.

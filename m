@@ -1,160 +1,150 @@
-Received: by 10.28.71.155 with SMTP id m27csp22303wmi;
-        Thu, 22 Mar 2018 21:31:41 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELs1MK6vd20Ih67Dt9ta4xEAkrcV+TZkrO91/c7WJJ+JGO/lS0TpJeNguHrWRkGRdzXMQBpN
-X-Received: by 10.55.215.139 with SMTP id t11mr37611827qkt.90.1521779501828;
-        Thu, 22 Mar 2018 21:31:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521779501; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp3309614wrg;
+        Tue, 5 Dec 2017 13:24:58 -0800 (PST)
+X-Received: by 10.55.192.19 with SMTP id o19mr22386124qki.148.1512509098295;
+        Tue, 05 Dec 2017 13:24:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1512509098; cv=none;
         d=google.com; s=arc-20160816;
-        b=xfe3IwEAdrncWEDfkQDHCY6fQc906hGUVtGO4BqfVE8WXiEmFctrv+8+YoWr2cbRxT
-         3klsF7ANZ/FUJ1dOvEj8+QhR4spAEFPvxGAjtxKwgPScj4XsDYRVC7uUEUot8ugZoy/7
-         6XQ+09VrnRmodsv5L0N1lZD1ZR7rcNC3lTTG607hZ1WSRail73YOQXXL0eMTSVgU9nBs
-         LcdqpKhEQ7kP/PStxNTxNsYqat4b7LI9DgY53ttNS3GLxFdK2Kg1hqGKLPkxuy9fvbsZ
-         T3L7gYTDmgtVT9eQwBKrGrVNiNBml+dRSd4yUA5zrUxM/uhR4YozgKoHBvgpqmk6EgxP
-         rbPw==
+        b=ZMsSENSgJzN2R1CC2HcNnb9QUUoUF/CrSZRzJPKVE4IAAi7jal4r14bwqq0SnjUL8Y
+         RB+tOYZ+iUUVPiTeasboH0KajhT0zKryFCG3sWMKbwBEIg8zcxY6BEiqezHw2iw2uWXb
+         hlF0ko1ab/o3tMms6v7QlJ5G3VtLBgzYO2oHIn/93A9aVGRd8hEb/j6atybNCL+96Uid
+         zY/5Ux154mhx3t+mtfMhXPK4ADaBTFHfPqBU63vnM6vmWDqSKVQbMg1qOhUtEd+H7jR1
+         4tBUAkMqOV6VQJOwAjI48m7oBvhETsUwyJdnjDG8cjX+wWvufcQi3COPMVSGv4ZSNK7T
+         4F+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=lJUASgodcFn9OKFGmR6nIQiPT6Oj9UMk3rCbB4nR7bY=;
-        b=CXon+28gxKjSmXo8Rabdv9L99iaoIZhTkdSm0yvHe/336gNYDFgeGg+eWtur9nsu3h
-         FLL35VSUGOK9R7DPGArbrT3p/QwffibzxPv3FS/wf+J2vmYlkGIaLBLuql5RTeggi5vM
-         QFcuXyeKnjvqp3AIpbkJ3bUhXSiFADP7TjfGxdUy8VDPHUqbHCCaYZHEgzpCarNDhNQG
-         sRQOZ37nDofZPNYAf/wCbJXwHF0eIdd3HX3ywomu4+lgIru8ud8JiBJfuszkIpp65Qac
-         1xIlM5mEK44DsdrFvpZFlRyDiynBT3Ng/bFT/4gvkKMCavQqvcmYIAC9aEVUdbDwDW8m
-         UsDw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+         :sender:dkim-signature:arc-authentication-results;
+        bh=J+09x2DaH6VskbojKdAn0vSYRJyK7NAPPjCsq4wJOIA=;
+        b=rfHgWaT88YmmEsU6q3mMcm7cqoWY92/+Et2xsmbgyqjq//GYcp4wRQUVIblmzGTM9w
+         Nr0Vg9iIAaBiM1Gt55HF09ZIBmCfjRnpOkupvMkKESUEH98nYRJQ03tMf3pRTWOKks0U
+         Ru1xuJhBADZEN+o/2sh5nIBawQroloHZ4XD7zr0ExP9Bmsxh+ENdteSjaqwFT4/LUlGC
+         GB4+JdMU1OKaPeZWuqgGK0n3KOfTHnYoOWuv9SN/g141OJvmJgRE+/leC1jH7Vc0gjRx
+         lBAZphlLWY9bjHj2Mi1TzMf7GhgHXMS6fkFMN3jkP14/l0YfiFhZegIn4NLIPpDMP4oh
+         rHcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ufqIDITc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a192si207415qkb.446.2018.03.22.21.31.41
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 22 Mar 2018 21:31:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UFsA4pOR;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id f4sor852003qkj.104.2017.12.05.13.24.58
+        (Google Transport Security);
+        Tue, 05 Dec 2017 13:24:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ufqIDITc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:35973 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ezEMf-0005YY-2Q
-	for alex.bennee@linaro.org; Fri, 23 Mar 2018 00:31:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60162)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <onursahin08@gmail.com>) id 1ezDr5-00067z-Rl
-	for qemu-arm@nongnu.org; Thu, 22 Mar 2018 23:59:04 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <onursahin08@gmail.com>) id 1ezDr5-0003mW-29
-	for qemu-arm@nongnu.org; Thu, 22 Mar 2018 23:59:03 -0400
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:33256)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <onursahin08@gmail.com>)
-	id 1ezDr0-0003kn-O1; Thu, 22 Mar 2018 23:58:58 -0400
-Received: by mail-qt0-x241.google.com with SMTP id i8so11301701qtj.0;
-	Thu, 22 Mar 2018 20:58:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id;
-	bh=lJUASgodcFn9OKFGmR6nIQiPT6Oj9UMk3rCbB4nR7bY=;
-	b=ufqIDITcTiLDdcE5fyJISpXAMOwcg3NEJtlVZ6nZGY1dPk2tmQK0Qyh0InwksTShPz
-	eDPI4QACADk+Vnd1i9VvYVOJsMp3DCMrCDESGf5adU0Hy+CNlG44Lk9IF2Txxw6Q+VbB
-	2D+IMDX8QkRPFYXAqU3a2cG1tqQ+XO0LDg3M4Wy75/02s+RajEcj4uLXQXagzG2bjILw
-	CwMpojTce/Gi7pUlWQfxVVdecpqWu97qx58Vcmvb6HB5o4xTPKPBKvwWbilvz4U8qFWO
-	9WcuU0zUgjLwF4n8ylSrrG7YYvwOGotJ+uQbDJHkaKVD41OTm5VpQXOarCYeYfEgDZUV
-	/zCA==
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UFsA4pOR;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:cc:references:from:openpgp:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=J+09x2DaH6VskbojKdAn0vSYRJyK7NAPPjCsq4wJOIA=;
+        b=UFsA4pOR8fKXVDaNyYiXL31O5nztZM2R5+4PVxFQ6G8W/gT86ETCx987c4Gib1X81A
+         oJwe1/BR8vpa+9Q3eTKcRZYtJgKBlDEKhNauiKoBHLpp0sVyUAmN2ytGL0g7JEz/3/Hc
+         E+GV+/ag8wI+pmaCZ0iXknrh6jR9NWKC2TMx3xge5cGgAts4VtjGZcpG7yklRE0IsFhT
+         rAM0qVFXF5pWxOPYfcj4dT1sJbwSSUtAJeEJxn/8IhqBrLve6Z/3PrijCoiyewivW73S
+         SQeFyYDhQida3wuEB7O9kPbm2IRMY0+nIUrnPbx4STq1sSDTfb4qVPhL/fDJ1hSsfP/8
+         fDbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=lJUASgodcFn9OKFGmR6nIQiPT6Oj9UMk3rCbB4nR7bY=;
-	b=skwaDr0buLrGFT1kqm45rg/ZXdnUKvCmgzXAKY66YvSI+Ijyaf2L1/4u9oBdjwZiRN
-	udDZ97C1qmFKbk6pkO+BZCyTBhAQfDx+iirx8pgZMewmRoenEetxkY5ZqC7v9sMpAYeg
-	H8B60iZ05wMHJhb9ki4Rmecm9Y5AoyIxfWCkrniuKBKQp1DTzWSNMs69WsFG8l9kXe+t
-	CRW4VTIczy82sati61onBCEwlsQfeO4tD+TDpssDkhSFINmolYi2oG//21QVSiJiU9pB
-	op0sAlRLs3qtuIPL8f6Cpgk4NhuwWOl32erqaQYxQH1fYxsbvWUaOniZqN26zSGY9NTV
-	QCPA==
-X-Gm-Message-State: AElRT7HGo5iYvcg7xx7IlEDCf52jWrA5GORzCUpo+xow+4fAvd7Lz6Tr
-	Qh3tXNH3eY4ANBehTpYllxYPAq4Q
-X-Received: by 10.237.47.227 with SMTP id m90mr40715800qtd.33.1521777537448;
-	Thu, 22 Mar 2018 20:58:57 -0700 (PDT)
-Received: from dhcp-acadmin-128-197-176-145.bu.edu (proteus.bu.edu.
-	[128.197.176.135]) by smtp.gmail.com with ESMTPSA id
-	w18sm6202079qkw.35.2018.03.22.20.58.56
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 22 Mar 2018 20:58:56 -0700 (PDT)
-From: Onur Sahin <onursahin08@gmail.com>
-To: qemu-devel@nongnu.org
-Date: Thu, 22 Mar 2018 23:58:29 -0400
-Message-Id: <1521777509-22896-1-git-send-email-onursahin08@gmail.com>
-X-Mailer: git-send-email 1.8.3.1
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::241
-X-Mailman-Approved-At: Fri, 23 Mar 2018 00:31:14 -0400
-Subject: [Qemu-arm] [PATCH] target-arm: Check undefined opcodes for SWP in
- A32 decoder
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, Onur Sahin <onursahin08@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: H48PodKLwPs6
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+         :message-id:date:user-agent:mime-version:in-reply-to
+         :content-language:content-transfer-encoding;
+        bh=J+09x2DaH6VskbojKdAn0vSYRJyK7NAPPjCsq4wJOIA=;
+        b=WUg6RIb9gLjP7Riwsmt8euT4eHcfa+EPU1D1R9ltb831UGLvE8Kh1XA3jvs+7OjKR6
+         N4PGH3+gDloTZJ2CwH6QSU23eFAdiV1VlehlpN8bM/BalttEadxNuQ3FAlPzqh2U3YrX
+         xmXjXsRXyYj+4BC5vkajZv/WznY/68VEMqfIHAL9VjfaDefUOA5mXHTViFxaV2zG5kXR
+         6WI0dPy3ZpnlFD+kN8YofGa1FhCGy9nO/sFoP00SqF8IQm64D1LsIx1V/CCiTj7/8KY7
+         tKMGR8AwxRp6l+uj7BDZCCUFN/dq49PVllAdciRuju2e7qlxinpsVC5nQgMQpuy3+aqF
+         Yhfg==
+X-Gm-Message-State: AKGB3mL08fvfmmL8haK0HA5UTWv9vX8OVBvcDULvJbEou20idsDckluB
+	06j5j965bmObv9XryuD3+48=
+X-Google-Smtp-Source: AGs4zMbic9O8uSAFz02mkjL7YzQKgKjg2JrppR2SSubj+FfzpS7E9nfOcwer0m2jTdStNLZPTxrXYw==
+X-Received: by 10.55.40.76 with SMTP id o73mr23956775qkh.301.1512509097914;
+        Tue, 05 Dec 2017 13:24:57 -0800 (PST)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from [192.168.1.11] ([138.117.48.211])
+        by smtp.gmail.com with ESMTPSA id j1sm643302qkc.5.2017.12.05.13.24.55
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 05 Dec 2017 13:24:57 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+Subject: Re: [Qemu-devel] [PATCH 5/7] target/arm: Create new
+ arm_v7m_mmu_idx_for_secstate_and_priv()
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Richard Henderson <rth@twiddle.net>
+References: <1512153879-5291-1-git-send-email-peter.maydell@linaro.org>
+ <1512153879-5291-6-git-send-email-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <db3a4f0f-361f-eeaa-9092-22d6f24528bd@amsat.org>
+Date: Tue, 5 Dec 2017 18:24:55 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.4.0
+MIME-Version: 1.0
+In-Reply-To: <1512153879-5291-6-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: q24RxqMbOC50
 
-Hi all,
+On 12/01/2017 03:44 PM, Peter Maydell wrote:
+> The TT instruction is going to need to look up the MMU index
+> for a specified security and privilege state. Refactor the
+> existing arm_v7m_mmu_idx_for_secstate() into a version that
+> lets you specify the privilege state and one that uses the
+> current state of the CPU.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-I have noticed that the decoding part in ARM/A32 does not verify the
-opcodes for SWP instructions. The opcode field ([23:20]) for SWP
-instructions should be 0 or 4, and QEMU does not check against these
-values.
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Other opcode values less than 8 are Undefined within the encoding
-space of sychronization primitives (e.g., SWP, LDREX*). See section
-A5.2.10 of ARMv7-A manual for reference. Because of the missing opcode
-check, QEMU happily executes these Undefined cases as a SWP instruction.
-
-The following fix adds proper opcode checks before assuming a valid SWP.
-
-Best,
-Onur
-
-Signed-off-by: Onur Sahin <onursahin08@gmail.com>
----
- target-arm/translate.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
-
-diff --git a/target-arm/translate.c b/target-arm/translate.c
-index bd5d5cb..fb31c12 100644
---- a/target-arm/translate.c
-+++ b/target-arm/translate.c
-@@ -8831,7 +8831,7 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-                             }
-                         }
-                         tcg_temp_free_i32(addr);
--                    } else {
-+                    } else if (!(insn & 0x00B00000)) {
-                         /* SWP instruction */
-                         rm = (insn) & 0xf;
- 
-@@ -8852,6 +8852,9 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-                         tcg_temp_free_i32(addr);
-                         store_reg(s, rd, tmp2);
-                     }
-+                    else {
-+                        goto illegal_op;
-+                    }
-                 }
-             } else {
-                 int address_offset;
--- 
-1.8.3.1
-
+> ---
+>  target/arm/cpu.h | 21 ++++++++++++++++-----
+>  1 file changed, 16 insertions(+), 5 deletions(-)
+> 
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index d228fe6..1f414fd 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -2334,14 +2334,16 @@ static inline int arm_mmu_idx_to_el(ARMMMUIdx mmu_idx)
+>      }
+>  }
+>  
+> -/* Return the MMU index for a v7M CPU in the specified security state */
+> -static inline ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env,
+> -                                                     bool secstate)
+> +/* Return the MMU index for a v7M CPU in the specified security and
+> + * privilege state
+> + */
+> +static inline ARMMMUIdx arm_v7m_mmu_idx_for_secstate_and_priv(CPUARMState *env,
+> +                                                              bool secstate,
+> +                                                              bool priv)
+>  {
+> -    int el = arm_current_el(env);
+>      ARMMMUIdx mmu_idx = ARM_MMU_IDX_M;
+>  
+> -    if (el != 0) {
+> +    if (priv) {
+>          mmu_idx |= 1;
+>      }
+>  
+> @@ -2356,6 +2358,15 @@ static inline ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env,
+>      return mmu_idx;
+>  }
+>  
+> +/* Return the MMU index for a v7M CPU in the specified security state */
+> +static inline ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env,
+> +                                                     bool secstate)
+> +{
+> +    bool priv = arm_current_el(env) != 0;
+> +
+> +    return arm_v7m_mmu_idx_for_secstate_and_priv(env, secstate, priv);
+> +}
+> +
+>  /* Determine the current mmu_idx to use for normal loads/stores */
+>  static inline int cpu_mmu_index(CPUARMState *env, bool ifetch)
+>  {
+> 

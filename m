@@ -1,150 +1,175 @@
-Received: by 10.223.159.74 with SMTP id f10csp3309614wrg;
-        Tue, 5 Dec 2017 13:24:58 -0800 (PST)
-X-Received: by 10.55.192.19 with SMTP id o19mr22386124qki.148.1512509098295;
-        Tue, 05 Dec 2017 13:24:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1512509098; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp3887799wrg;
+        Wed, 6 Dec 2017 02:31:10 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMbM3wofFLMTZQQfmoY6waD5Ki7qwtBPlwehuXPZ+7YsWzmbmOT/cLgxnNipJeueqb2oxW6r
+X-Received: by 10.37.77.65 with SMTP id a62mr10490467ybb.241.1512556269943;
+        Wed, 06 Dec 2017 02:31:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1512556269; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZMsSENSgJzN2R1CC2HcNnb9QUUoUF/CrSZRzJPKVE4IAAi7jal4r14bwqq0SnjUL8Y
-         RB+tOYZ+iUUVPiTeasboH0KajhT0zKryFCG3sWMKbwBEIg8zcxY6BEiqezHw2iw2uWXb
-         hlF0ko1ab/o3tMms6v7QlJ5G3VtLBgzYO2oHIn/93A9aVGRd8hEb/j6atybNCL+96Uid
-         zY/5Ux154mhx3t+mtfMhXPK4ADaBTFHfPqBU63vnM6vmWDqSKVQbMg1qOhUtEd+H7jR1
-         4tBUAkMqOV6VQJOwAjI48m7oBvhETsUwyJdnjDG8cjX+wWvufcQi3COPMVSGv4ZSNK7T
-         4F+w==
+        b=xZJXn34EBxEz/Kl6GIlIjyCnIHpFcyrogEXkW729WNDFd/QPsdxd6syc9qQpc70+NM
+         uTUS2e/LTJkhYPMdY8UENjErGmQMfjMuBSHc6GR8TxaPN30W901UfNE+xFf8IOkDMurl
+         dZ7B0OH72oS+GIT3vv39L9mYZiNRadKXfRL5cTOzwdow4veVAu/wVttUiBIUQXm1FFpo
+         w+DRG5gvzGr7bB4QAAGhMRptsbjjGKXUcxYNc5xj/1tIYZeiJT9G66TCf562ptNhBcLm
+         POdCC0JOzP9doUO/28jX1te9CxpKbTYZli4Y8CMRRkrDbbI+5pVZ7qoNAQlozWc9xlTr
+         Hflg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
-         :sender:dkim-signature:arc-authentication-results;
-        bh=J+09x2DaH6VskbojKdAn0vSYRJyK7NAPPjCsq4wJOIA=;
-        b=rfHgWaT88YmmEsU6q3mMcm7cqoWY92/+Et2xsmbgyqjq//GYcp4wRQUVIblmzGTM9w
-         Nr0Vg9iIAaBiM1Gt55HF09ZIBmCfjRnpOkupvMkKESUEH98nYRJQ03tMf3pRTWOKks0U
-         Ru1xuJhBADZEN+o/2sh5nIBawQroloHZ4XD7zr0ExP9Bmsxh+ENdteSjaqwFT4/LUlGC
-         GB4+JdMU1OKaPeZWuqgGK0n3KOfTHnYoOWuv9SN/g141OJvmJgRE+/leC1jH7Vc0gjRx
-         lBAZphlLWY9bjHj2Mi1TzMf7GhgHXMS6fkFMN3jkP14/l0YfiFhZegIn4NLIPpDMP4oh
-         rHcQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :references:message-id:date:thread-index:thread-topic:to:from
+         :arc-authentication-results;
+        bh=Bi4L+EQURRyJzVwu/3JRGGUHeos/elptLMbIKK0mFVY=;
+        b=TQjiY9+QHU0NU3r6M/jJ24WdbYrAQbXKGUp9vaIM60ePIUBa+OX4O2SHJGfwkWr3Ng
+         7bbyAZcmV6zjZPzCvp5cbkjcHNlXgQrg3VBL/CW6Dq1U7EtG/hmzhMi6tCzi/B/wOENY
+         4azDZlj/y+PYI/VNNtS2+bG/ErqgtL/tMuIf0a7axGp7RhyE0tS62jpk10idmZOmQab3
+         JhyM8yXCnB2JO/odlFrI+C/XrDbrt/f1N9wNdMCUnNMXL9JW739ppv1X5/Ypobkmpdbf
+         s9cbTdNHJR5JgfMLljeVMx0hCMyXioWN2DG1DMm9Gda1HrcljAnauBefOvU1aHaNR2II
+         9fcg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UFsA4pOR;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id f4sor852003qkj.104.2017.12.05.13.24.58
-        (Google Transport Security);
-        Tue, 05 Dec 2017 13:24:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id 11si562190ywy.230.2017.12.06.02.31.09
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Wed, 06 Dec 2017 02:31:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UFsA4pOR;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:openpgp:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=J+09x2DaH6VskbojKdAn0vSYRJyK7NAPPjCsq4wJOIA=;
-        b=UFsA4pOR8fKXVDaNyYiXL31O5nztZM2R5+4PVxFQ6G8W/gT86ETCx987c4Gib1X81A
-         oJwe1/BR8vpa+9Q3eTKcRZYtJgKBlDEKhNauiKoBHLpp0sVyUAmN2ytGL0g7JEz/3/Hc
-         E+GV+/ag8wI+pmaCZ0iXknrh6jR9NWKC2TMx3xge5cGgAts4VtjGZcpG7yklRE0IsFhT
-         rAM0qVFXF5pWxOPYfcj4dT1sJbwSSUtAJeEJxn/8IhqBrLve6Z/3PrijCoiyewivW73S
-         SQeFyYDhQida3wuEB7O9kPbm2IRMY0+nIUrnPbx4STq1sSDTfb4qVPhL/fDJ1hSsfP/8
-         fDbg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-         :message-id:date:user-agent:mime-version:in-reply-to
-         :content-language:content-transfer-encoding;
-        bh=J+09x2DaH6VskbojKdAn0vSYRJyK7NAPPjCsq4wJOIA=;
-        b=WUg6RIb9gLjP7Riwsmt8euT4eHcfa+EPU1D1R9ltb831UGLvE8Kh1XA3jvs+7OjKR6
-         N4PGH3+gDloTZJ2CwH6QSU23eFAdiV1VlehlpN8bM/BalttEadxNuQ3FAlPzqh2U3YrX
-         xmXjXsRXyYj+4BC5vkajZv/WznY/68VEMqfIHAL9VjfaDefUOA5mXHTViFxaV2zG5kXR
-         6WI0dPy3ZpnlFD+kN8YofGa1FhCGy9nO/sFoP00SqF8IQm64D1LsIx1V/CCiTj7/8KY7
-         tKMGR8AwxRp6l+uj7BDZCCUFN/dq49PVllAdciRuju2e7qlxinpsVC5nQgMQpuy3+aqF
-         Yhfg==
-X-Gm-Message-State: AKGB3mL08fvfmmL8haK0HA5UTWv9vX8OVBvcDULvJbEou20idsDckluB
-	06j5j965bmObv9XryuD3+48=
-X-Google-Smtp-Source: AGs4zMbic9O8uSAFz02mkjL7YzQKgKjg2JrppR2SSubj+FfzpS7E9nfOcwer0m2jTdStNLZPTxrXYw==
-X-Received: by 10.55.40.76 with SMTP id o73mr23956775qkh.301.1512509097914;
-        Tue, 05 Dec 2017 13:24:57 -0800 (PST)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from [192.168.1.11] ([138.117.48.211])
-        by smtp.gmail.com with ESMTPSA id j1sm643302qkc.5.2017.12.05.13.24.55
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 05 Dec 2017 13:24:57 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Subject: Re: [Qemu-devel] [PATCH 5/7] target/arm: Create new
- arm_v7m_mmu_idx_for_secstate_and_priv()
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Richard Henderson <rth@twiddle.net>
-References: <1512153879-5291-1-git-send-email-peter.maydell@linaro.org>
- <1512153879-5291-6-git-send-email-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <db3a4f0f-361f-eeaa-9092-22d6f24528bd@amsat.org>
-Date: Tue, 5 Dec 2017 18:24:55 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.4.0
-MIME-Version: 1.0
-In-Reply-To: <1512153879-5291-6-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:54788 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eMWyr-0007ZV-Ca
+	for alex.bennee@linaro.org; Wed, 06 Dec 2017 05:31:09 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40790)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1eMWye-0007ZA-RI
+	for qemu-arm@nongnu.org; Wed, 06 Dec 2017 05:30:58 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1eMWya-00085a-P8
+	for qemu-arm@nongnu.org; Wed, 06 Dec 2017 05:30:56 -0500
+Received: from lhrrgout.huawei.com ([194.213.3.17]:33181 helo=huawei.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1eMWya-00083O-Ht; Wed, 06 Dec 2017 05:30:52 -0500
+Received: from lhreml705-cah.china.huawei.com (unknown [172.18.7.107])
+	by Forcepoint Email with ESMTP id E5FEE3DA27D8B;
+	Wed,  6 Dec 2017 10:30:42 +0000 (GMT)
+Received: from FRAEMA705-CHM.china.huawei.com (10.206.14.54) by
+	lhreml705-cah.china.huawei.com (10.201.108.46) with Microsoft SMTP
+	Server (TLS) id 14.3.361.1; Wed, 6 Dec 2017 10:30:43 +0000
+Received: from FRAEML521-MBX.china.huawei.com ([169.254.1.156]) by
+	FRAEMA705-CHM.china.huawei.com ([169.254.5.78]) with mapi id
+	14.03.0361.001; Wed, 6 Dec 2017 11:30:34 +0100
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: Alex Williamson <alex.williamson@redhat.com>
+Thread-Topic: [Qemu-devel] [RFC 1/5] hw/vfio: Add function for getting
+	reserved_region of device iommu group
+Thread-Index: AQHTXOYm3ZL42BZvgkuK5iju3HzTnqMT9TeAgAE4uHCAAIWogIAHZLxQgABNuYCAABLrkIAYxg5w
+Date: Wed, 6 Dec 2017 10:30:33 +0000
+Message-ID: <5FC3163CFD30C246ABAA99954A238FA838622618@FRAEML521-MBX.china.huawei.com>
+References: <1510622154-17224-1-git-send-email-zhuyijun@huawei.com>
+	<1510622154-17224-2-git-send-email-zhuyijun@huawei.com>
+	<20171114084735.68e87546@t450s.home>
+	<5FC3163CFD30C246ABAA99954A238FA83845EDBF@FRAEML521-MBX.china.huawei.com>
+	<20171115112513.3c035023@t450s.home>
+	<5FC3163CFD30C246ABAA99954A238FA8384704C0@FRAEML521-MBX.china.huawei.com>
+	<20171120085745.0147df5c@t450s.home> 
+Accept-Language: en-GB, en-US
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: q24RxqMbOC50
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.202.227.237]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 194.213.3.17
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 1/5] hw/vfio: Add function for
+ getting reserved_region of device iommu group
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	Linuxarm <linuxarm@huawei.com>,
+	"eric.auger@redhat.com" <eric.auger@redhat.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	Zhaoshenglong <zhaoshenglong@huawei.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6mXzsiXZtp7t
 
-On 12/01/2017 03:44 PM, Peter Maydell wrote:
-> The TT instruction is going to need to look up the MMU index
-> for a specified security and privilege state. Refactor the
-> existing arm_v7m_mmu_idx_for_secstate() into a version that
-> lets you specify the privilege state and one that uses the
-> current state of the CPU.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Hi Alex,
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> -----Original Message-----
+> From: Shameerali Kolothum Thodi
+> Sent: Monday, November 20, 2017 4:31 PM
+> To: 'Alex Williamson' <alex.williamson@redhat.com>
+> Cc: eric.auger@redhat.com; Zhuyijun <zhuyijun@huawei.com>; qemu-
+> arm@nongnu.org; qemu-devel@nongnu.org; peter.maydell@linaro.org;
+> Zhaoshenglong <zhaoshenglong@huawei.com>; Linuxarm
+> <linuxarm@huawei.com>
+> Subject: RE: [Qemu-devel] [RFC 1/5] hw/vfio: Add function for getting
+> reserved_region of device iommu group
+[...]
+> > > > And sysfs is a good interface if the user wants to use it to
+> > > > configure the VM in a way that's compatible with a device.  For
+> > > > instance, in your case, a user could evaluate these reserved
+> > > > regions across all devices in a system, or even across an entire
+> > > > cluster, and instantiate the VM with a memory map compatible with
+> > > > hotplugging any of those evaluated devices (QEMU implementation of
+> allowing the user to do this TBD).
+> > > > Having the vfio device evaluate these reserved regions only helps
+> > > > in the cold-plug case.  So the proposed solution is limited in
+> > > > scope and doesn't address similar needs on other platforms.  There
+> > > > is value to verifying that a device's IOVA space is compatible
+> > > > with a VM memory map and modifying the memory map on cold-plug or
+> > > > rejecting the device on hot-plug, but isn't that why we have an
+> > > > ioctl within vfio to expose information about the IOMMU?  Why take
+> > > > the path of allowing QEMU to rummage through sysfs files outside
+> > > > of vfio, implying additional security and access concerns, rather
+> > > > than filling the gap within the vifo API?
+> > >
+> > > Thanks Alex for the explanation.
+> > >
+> > > I came across this patch[1] from Eric where he introduced the IOCTL
+> > interface to
+> > > retrieve the reserved regions. It looks like this can be reworked to
+> > accommodate
+> > > the above requirement.
+> >
+> > I don't think we need a new ioctl for this, nor do I think that
+> > describing the holes is the correct approach.  The existing
+> > VFIO_IOMMU_GET_INFO ioctl can be extended to support capability
+> > chains, as we've done for VFIO_DEVICE_GET_REGION_INFO.
+>=20
+> Right, as far as I can see the above mentioned patch is doing exactly the=
+ same,
+> extending the VFIO_IOMMU_GET_INFO ioctl with capability chain.
+>=20
+> > IMO, we should try to
+> > describe the available fixed IOVA regions which are available for
+> > mapping rather than describing various holes within the address space
+> > which are unavailable.  The latter method always fails to describe the
+> > end of the mappable IOVA space and gets bogged down in trying to
+> > classify the types of holes that might exist.  Thanks,
+>=20
 
-> ---
->  target/arm/cpu.h | 21 ++++++++++++++++-----
->  1 file changed, 16 insertions(+), 5 deletions(-)
-> 
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index d228fe6..1f414fd 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -2334,14 +2334,16 @@ static inline int arm_mmu_idx_to_el(ARMMMUIdx mmu_idx)
->      }
->  }
->  
-> -/* Return the MMU index for a v7M CPU in the specified security state */
-> -static inline ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env,
-> -                                                     bool secstate)
-> +/* Return the MMU index for a v7M CPU in the specified security and
-> + * privilege state
-> + */
-> +static inline ARMMMUIdx arm_v7m_mmu_idx_for_secstate_and_priv(CPUARMState *env,
-> +                                                              bool secstate,
-> +                                                              bool priv)
->  {
-> -    int el = arm_current_el(env);
->      ARMMMUIdx mmu_idx = ARM_MMU_IDX_M;
->  
-> -    if (el != 0) {
-> +    if (priv) {
->          mmu_idx |= 1;
->      }
->  
-> @@ -2356,6 +2358,15 @@ static inline ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env,
->      return mmu_idx;
->  }
->  
-> +/* Return the MMU index for a v7M CPU in the specified security state */
-> +static inline ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env,
-> +                                                     bool secstate)
-> +{
-> +    bool priv = arm_current_el(env) != 0;
-> +
-> +    return arm_v7m_mmu_idx_for_secstate_and_priv(env, secstate, priv);
-> +}
-> +
->  /* Determine the current mmu_idx to use for normal loads/stores */
->  static inline int cpu_mmu_index(CPUARMState *env, bool ifetch)
->  {
-> 
+I was going through this and noticed that it is possible to have multiple=20
+iommu domains associated with a container. If that's true, is it safe to
+make the assumption that all the domains will have the same iova
+geometry or not?
+
+Thanks,
+Shameer

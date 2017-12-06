@@ -1,99 +1,95 @@
-Received: by 10.223.159.74 with SMTP id f10csp1759548wrg;
-        Sun, 10 Dec 2017 10:25:00 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMbYz68nx13qlTWt0C9hVgquk4pxXraNhd++jV+OZQ1PNzbjKTznHaomvL6pbWYh/gKxS1fm
-X-Received: by 10.37.255.26 with SMTP id c26mr25432720ybe.252.1512930300175;
-        Sun, 10 Dec 2017 10:25:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1512930300; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp4087191wrg;
+        Wed, 6 Dec 2017 06:01:47 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMY18Aef4E1hbhtxDGZ43BsnS17Cn2mjBL/hFvl8j582P7NTye1raxJ3Vv1tN9p9nm65kQAB
+X-Received: by 10.37.58.197 with SMTP id h188mr15459442yba.227.1512568906934;
+        Wed, 06 Dec 2017 06:01:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1512568906; cv=none;
         d=google.com; s=arc-20160816;
-        b=Aqazqp+/72/R77ADq4Sfz86LOycxMrvSJuLDixduA8kml228zIeWOq1o3SQEnZ8mfy
-         HDszoTcA12xcdYtpqIYXx84bouZZJbBAAvyGd6xFE/N8N4wnnvDtU9xxIivgAgIYGZkc
-         OT2ZNg2w55fyPtglacJcGaBgGTUlvTEGsKZfgApB6Fl8afRartgh1+WqJGsrRLaxN1Z6
-         sA/1pfaO8JqugiqqsrWQgBXVBb5Pt9VVd39P4UxLwYKV5qCpYHan7qfEAqhNbHt738aT
-         XjZeskf3gHMHGtR0eE1SpcOjwIkok2s+lz3CdxsNKVv8ObvRsOKY+GVdEOEjtGQ77gun
-         /ADQ==
+        b=rpH1EOGFYzNNUkEXwC9PmJtl0sZt0B1HrqzdJ3v5Eja8MWu2y/hxEG0QiP3iwMLzSb
+         YQjvIRdgJh3V1NCGX6NOF85X81eCIrK5bOmQ/PKOROOUxIqqiMIA6760WAUfDvybbLMo
+         xjdjVGWi6bIwObcg1gGNE/KOtHukkq1lnycfRQkAgttcBtYnMzIoOnGf6/B31gtCyLw3
+         mY7zOeOrkQ13BJywLBhXlNDTuxZxrcKJl8YOn7p/rB+TWTZy6PYrG3ja7+yPSxhEgU03
+         xlgJGtzLOHfiPWN1L+F8+4H7/SkfX8HR/q/FlA7rYDxcL3PdYdEHbkJpY+A1BHaZ66iK
+         XiTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=2pZX8RJxTS76mYRrUeV9Blxgl5DUbx385xgyizL43Xo=;
-        b=WWJNSvADeH5fEMNX7uC+zaqSrVi1TVcvMbvEJI+CeFplB/oyZHBN4bbzBPMdFREt40
-         N7HdqvN6gQzl9tnKC3LUKlslX6/TRHEcWYlKS3oxnr23BWfYeUvBRG8SyFj5GumesbQh
-         3tBrZQhMbqp6E1MOPFlYMkgn6dbfBgM47H/Lxrzexmvgv9jxTJjHhiD0Dv2URTRmX9h6
-         EnIU2zCFU1GUzWfygNd7yFy3rRVAbYOOoSKLb2ELJCFo5mGh4ZPU/bYlT7G/3HjRSyEr
-         yjZERO3f/eTLJ+6niqzXFyyaEXlw5E3d5xJcPaY6+uZITuaJSHQijxQ6I3aePV3VQEl+
-         bsCQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=MHEtRJNISRxRHI6zpZwh0GMyRltO6nHDx8Ead1EetHQ=;
+        b=QNG6qr0EcEWvB2HPAW7OYWgjdhm7WOJuiJTgjrKy1M5Ye7WC8e4s5Iq1409TI435uu
+         pX22RzmMXcUz1m3C1ZXmKOOwzVrOgm3GaSJYzYRemeBq59R0AtD5KF+kQKUiqgdYqPRY
+         Ql8eBxm8/yItAM1u+wFnzA1MNmOV1tCTvavqwaAY03j2pA0G/o+lEhCZ9cjyGPWqe3gI
+         BqAPa9gmfTqYJwVByMckBXHeEdfuDveyEzX70ghdM0HuUhBh5HUm851xFGy7ueovJ1ig
+         0llfVkjUfhe9RIA/GijKnltz9uP/NBnNvPDvUBq0myukQKUeWX8mTFXna7onxJnN9SWZ
+         Qqcg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=TjiFQlUe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v194si2653031ybv.484.2017.12.10.10.25.00
+        by mx.google.com with ESMTPS id w10si234803ybb.781.2017.12.06.06.01.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 10 Dec 2017 10:25:00 -0800 (PST)
+        Wed, 06 Dec 2017 06:01:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=TjiFQlUe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45554 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:55807 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eO6Hb-0006Go-Lg
-	for alex.bennee@linaro.org; Sun, 10 Dec 2017 13:24:59 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46935)
+	id 1eMaGg-0001OZ-Dn
+	for alex.bennee@linaro.org; Wed, 06 Dec 2017 09:01:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55657)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eO6HQ-0006G8-RA
-	for qemu-arm@nongnu.org; Sun, 10 Dec 2017 13:24:49 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1eMaGS-0001MA-9u
+	for qemu-arm@nongnu.org; Wed, 06 Dec 2017 09:01:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eO6HP-00024Y-Lz
-	for qemu-arm@nongnu.org; Sun, 10 Dec 2017 13:24:48 -0500
-Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:35060)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eO6HP-00024G-HA
-	for qemu-arm@nongnu.org; Sun, 10 Dec 2017 13:24:47 -0500
-Received: by mail-ot0-x244.google.com with SMTP id q3so13018160oth.2
-	for <qemu-arm@nongnu.org>; Sun, 10 Dec 2017 10:24:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=2pZX8RJxTS76mYRrUeV9Blxgl5DUbx385xgyizL43Xo=;
-	b=TjiFQlUed2CKkzC8/TClg/mBXnCL3gYFKvC4ldLFKeACeNmLzU2cWSdP0vloDsmYNn
-	EQb8LvmBFyv32jv/hutMsfux1CFVMCyUtr82hA8XWQZXU+lgQYaft3Yet/0fGQyhPy9g
-	KCYL2KPOhw/wMM2b6m2edUXq4N5T7ddghyHsA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=2pZX8RJxTS76mYRrUeV9Blxgl5DUbx385xgyizL43Xo=;
-	b=UhLo9L1IG2mz9EYEUCBNkSspAfwnt3h48xeQvOB4fkJo3lNnB/SP1359Xn+9CrdNZ9
-	N6n5GYkkvmLOwfARPOMGxn6AENCxwWXcGpdFm3rxeyS68Y63AT8R4hBtGgGEQcUeZOjm
-	BQ5lW9ct3hPTnWXqhdC9vNMe4WHj8VC8w9Nf7Yb7Z/YsY7TwcidMCGxcIz0GknBGrpOj
-	haO/goB6A5olfHquHtbi+HkRSnhWiuA9EeM/cvkIDdadZL+AFodpLjjYVPpvwUl/gZ4v
-	9wPg3LB8rGnl5/MTsndXRLdp1bHhG6IfreccxclQdMTwou1ba+bZMGHD1ZeP7+wOczk+
-	abzg==
-X-Gm-Message-State: AJaThX7NAV9gQ9E7GDnERSwgHt3ulAubBczhdzbpjeAwT6iGXOFLD5T9
-	OF49SZTgv6KNiyPv/u+6FPiGGN7kUnpXRBODu7kfKA==
-X-Received: by 10.157.80.24 with SMTP id a24mr30465496oth.335.1512930286805;
-	Sun, 10 Dec 2017 10:24:46 -0800 (PST)
+	(envelope-from <eric.auger@redhat.com>) id 1eMaGK-0002rG-IV
+	for qemu-arm@nongnu.org; Wed, 06 Dec 2017 09:01:32 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:55572)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1eMaGK-0002qC-AV; Wed, 06 Dec 2017 09:01:24 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 4492B40F04;
+	Wed,  6 Dec 2017 14:01:23 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-23.ams2.redhat.com
+	[10.36.116.23])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id C44176266A;
+	Wed,  6 Dec 2017 14:01:18 +0000 (UTC)
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+	Alex Williamson <alex.williamson@redhat.com>
+References: <1510622154-17224-1-git-send-email-zhuyijun@huawei.com>
+	<1510622154-17224-2-git-send-email-zhuyijun@huawei.com>
+	<20171114084735.68e87546@t450s.home>
+	<5FC3163CFD30C246ABAA99954A238FA83845EDBF@FRAEML521-MBX.china.huawei.com>
+	<20171115112513.3c035023@t450s.home>
+	<5FC3163CFD30C246ABAA99954A238FA8384704C0@FRAEML521-MBX.china.huawei.com>
+	<20171120085745.0147df5c@t450s.home>
+	<5FC3163CFD30C246ABAA99954A238FA838622618@FRAEML521-MBX.china.huawei.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <e500dd54-04b6-5f19-316f-0598655751ea@redhat.com>
+Date: Wed, 6 Dec 2017 15:01:17 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Received: by 10.157.63.74 with HTTP; Sun, 10 Dec 2017 10:24:26 -0800 (PST)
-In-Reply-To: <20171208230920.GA11462@flamenco>
-References: <1507824216-29058-1-git-send-email-peter.maydell@linaro.org>
-	<1507824216-29058-9-git-send-email-peter.maydell@linaro.org>
-	<20171208230920.GA11462@flamenco>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 10 Dec 2017 18:24:26 +0000
-Message-ID: <CAFEAcA_2HH2mTrHNzyrn=e3OQgoEdCZSbL7aa+wRHi1fba-8=A@mail.gmail.com>
-To: "Emilio G. Cota" <cota@braap.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::244
-Subject: Re: [Qemu-arm] [Qemu-devel] [PULL 08/13] target/arm: Pull Thumb
- insn word loads up to top level
+In-Reply-To: <5FC3163CFD30C246ABAA99954A238FA838622618@FRAEML521-MBX.china.huawei.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Wed, 06 Dec 2017 14:01:23 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 1/5] hw/vfio: Add function for
+ getting reserved_region of device iommu group
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,31 +101,90 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	Linuxarm <linuxarm@huawei.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	Zhaoshenglong <zhaoshenglong@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zvDTWjg6X+i9
+X-TUID: KzH5uvy/lSp7
 
-On 8 December 2017 at 23:09, Emilio G. Cota <cota@braap.org> wrote:
-> On Thu, Oct 12, 2017 at 17:03:31 +0100, Peter Maydell wrote:
->> Refactor the Thumb decode to do the loads of the instruction words at
->> the top level rather than only loading the second half of a 32-bit
->> Thumb insn in the middle of the decode.
+Hi Shameer,
 
-> This commit breaks the debian-arm boot test (see [1]), boot dies at:
->
->> random: systemd urandom read with 4 bits of entropy available
->> systemd[1]: Caught <SEGV>, core dump failed.
->> systemd[1]: Freezing execution.
->
-> Sorry I noticed this so late (-rc4), for a while I thought my development
-> was causing this and didn't pay much attention to it. However, just realised
-> the problem is present on master. Bisect log below.
+On 06/12/17 11:30, Shameerali Kolothum Thodi wrote:
+> Hi Alex,
+> 
+>> -----Original Message-----
+>> From: Shameerali Kolothum Thodi
+>> Sent: Monday, November 20, 2017 4:31 PM
+>> To: 'Alex Williamson' <alex.williamson@redhat.com>
+>> Cc: eric.auger@redhat.com; Zhuyijun <zhuyijun@huawei.com>; qemu-
+>> arm@nongnu.org; qemu-devel@nongnu.org; peter.maydell@linaro.org;
+>> Zhaoshenglong <zhaoshenglong@huawei.com>; Linuxarm
+>> <linuxarm@huawei.com>
+>> Subject: RE: [Qemu-devel] [RFC 1/5] hw/vfio: Add function for getting
+>> reserved_region of device iommu group
+> [...]
+>>>>> And sysfs is a good interface if the user wants to use it to
+>>>>> configure the VM in a way that's compatible with a device.  For
+>>>>> instance, in your case, a user could evaluate these reserved
+>>>>> regions across all devices in a system, or even across an entire
+>>>>> cluster, and instantiate the VM with a memory map compatible with
+>>>>> hotplugging any of those evaluated devices (QEMU implementation of
+>> allowing the user to do this TBD).
+>>>>> Having the vfio device evaluate these reserved regions only helps
+>>>>> in the cold-plug case.  So the proposed solution is limited in
+>>>>> scope and doesn't address similar needs on other platforms.  There
+>>>>> is value to verifying that a device's IOVA space is compatible
+>>>>> with a VM memory map and modifying the memory map on cold-plug or
+>>>>> rejecting the device on hot-plug, but isn't that why we have an
+>>>>> ioctl within vfio to expose information about the IOMMU?  Why take
+>>>>> the path of allowing QEMU to rummage through sysfs files outside
+>>>>> of vfio, implying additional security and access concerns, rather
+>>>>> than filling the gap within the vifo API?
+>>>>
+>>>> Thanks Alex for the explanation.
+>>>>
+>>>> I came across this patch[1] from Eric where he introduced the IOCTL
+>>> interface to
+>>>> retrieve the reserved regions. It looks like this can be reworked to
+>>> accommodate
+>>>> the above requirement.
+>>>
+>>> I don't think we need a new ioctl for this, nor do I think that
+>>> describing the holes is the correct approach.  The existing
+>>> VFIO_IOMMU_GET_INFO ioctl can be extended to support capability
+>>> chains, as we've done for VFIO_DEVICE_GET_REGION_INFO.
+>>
+>> Right, as far as I can see the above mentioned patch is doing exactly the same,
+>> extending the VFIO_IOMMU_GET_INFO ioctl with capability chain.
+>>
+>>> IMO, we should try to
+>>> describe the available fixed IOVA regions which are available for
+>>> mapping rather than describing various holes within the address space
+>>> which are unavailable.  The latter method always fails to describe the
+>>> end of the mappable IOVA space and gets bogged down in trying to
+>>> classify the types of holes that might exist.  Thanks,
+>>
+> 
+> I was going through this and noticed that it is possible to have multiple 
+> iommu domains associated with a container. If that's true, is it safe to
+> make the assumption that all the domains will have the same iova
+> geometry or not?
+To me the answer is no.
 
-It's missed the deadline for getting fixed in 2.11, but I'll have
-a look at what's going on here.
+There are several iommu domains "underneath" a single container. You
+attach vfio groups to a container. Each of them is associated to an
+iommu group and an iommu domain. See vfio_iommu_type1_attach_group().
 
-thanks
--- PMM
+Besides, the reserved regions are per iommu group.
+
+Thanks
+
+Eric
+
+> 
+> Thanks,
+> Shameer
+> 

@@ -1,71 +1,72 @@
-Received: by 10.223.159.74 with SMTP id f10csp5601293wrg;
+Received: by 10.223.159.74 with SMTP id f10csp5601294wrg;
         Thu, 7 Dec 2017 10:15:10 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMYceUbOqUliKroN3+I9MAVrl+tYAMeQOYVKMmwcRsB1ygXpDlJZDPqins9GlwIuf5PWPyLK
-X-Received: by 10.37.224.215 with SMTP id x206mr5017762ybg.200.1512670509931;
-        Thu, 07 Dec 2017 10:15:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1512670509; cv=none;
+X-Google-Smtp-Source: AGs4zMbWVrkkSvHJ1Zs29V18wxuVR573Cu0GED1cNMwc/FjlIsG2UG4kAbgTZRt14xNcF0Gtg8G+
+X-Received: by 10.129.235.2 with SMTP id n2mr16014385ywm.180.1512670510067;
+        Thu, 07 Dec 2017 10:15:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1512670510; cv=none;
         d=google.com; s=arc-20160816;
-        b=YVAdDvdLnQl2ivMVUVzYv8OjJ+butk+qBZVDmoPpITzWXlEAlmkktkEU+oFqNbAwSp
-         rYLomv0hw7jMqWw6ETXxZB5HavxEBy60csBL5oBOqh71zv8pMbz0Ngutyr3KvpP9vJYN
-         mpKhQ3Lqmv5AqCUEQBg358kiCfGmXUQzne+VspBWSOovi2iTf4Hzj2rcUK/DyYWr9eNE
-         lEM/v6/c9k1w2on5I3MyTLpVayzLlo+UNyudZvr/qnXZC/ZlLpwxOHZrN89pDYtULdhn
-         GHHbypoVVvALFbDuH4bttykFyiMM3NEHsI4TIn5/6UNLcUdZBKTk8HdCQpv2JkvI5f+/
-         MEow==
+        b=kFsddZ4EWprPbnv0dCkf26oMi8FH9qLS+D88RyLALwNmtUY6WzaU0KR9j0XpOwDhBl
+         GolIY4qCq/vZ7UEpFt/nzNwOD4SovDhbDOnrJVBPNmQotSw7eABasICZLPMHDEVTzFNW
+         CE5rI+vtNrQN9QHVebCaK8/PzoJcYZRPqIBZ9ZLzW7RnteW2YWqmDQLor7GWdmaLjm07
+         EdZViSzNTDXhwShDebnOu+KKtjiZ+wBXI2qY7fH+/pfCAjwHVtvL0Q14X9y0B/h4+q/o
+         E/tvzMtme3E/wGC+CJMYbyXPM117KfNOLZbuMUnO/n2b26VGtbsFBj98foSciBPJIiVW
+         D9mw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=TdebkGqS8kSAy121qHa0qfoa5/4I+I/q5ImO+eNsURk=;
-        b=hsJXLkxQdKqFbCm5/E0jx9axbLhRtAdj5u3RFw7zs6/GXksaOxa5D1sYCFlGK4gX8r
-         NkHSvLrH7s8To6FQHyMXEdyyjt4+Sfky9ilN1QFX6WSttIXopBNuCLQNgy4t8zsLeF2V
-         cHUquUtnbqSVYkLaCtiJNFuVrl5b6/NIpK3lTqI+47aN7LPa9aia/pX4Hry4+82hB/d0
-         3U/PErzc1WlZLA0+eWSl6V5L6xflVf+G2y5oJ+nhaUPTc5rL5krQQRpVyOgyIRmIdiao
-         SDcU/z57zebKhwXSEE/oHdqd5SCqAwTUeIXkF2eE6kgVHDTPwk+mvNmgNEIc1arLBGC0
-         Tiqw==
+        bh=95CtNHaTIvqmexIEVk5uhKlOG1juOy3Tks+4VC4ZhII=;
+        b=Wg0BldCW274bddtA0ZEHO8c7icKwowqLyljSd5F+xb9BOBmI4fziyi8nyPbWQJQdH2
+         fbei33/kRh1m4mJnMu4Tsr/i93f+XdYCxxGZkH0UH9uaDVMwO2GW9gRqq6Wn6PsT2syK
+         AvXH94EiogR+Dg3/wYeWx+3l4HeHLN+fIHgRPZ+inKyfMFitMjAaRk4Y0u5UKW+0SgzF
+         wOqDp7bbEW5VjMMmyFTtzbUrr4AVRqG0klR1ZgfK1eWnJmCvtnwqZC/38y49Hz6e7crb
+         D8VPAkVqGV2nD+5JdstPqsE58pI20YlXaUc2TtD7xpWoL944a4AVArZHo05TaYthVCLI
+         tsVw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c8si1331985ywl.477.2017.12.07.10.15.09
+        by mx.google.com with ESMTPS id s128si1280049yws.19.2017.12.07.10.15.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 07 Dec 2017 10:15:09 -0800 (PST)
+        Thu, 07 Dec 2017 10:15:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33715 helo=lists.gnu.org)
+Received: from localhost ([::1]:33716 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eN0hR-0008Fh-DT
+	id 1eN0hR-0008GD-Fs
 	for alex.bennee@linaro.org; Thu, 07 Dec 2017 13:15:09 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38793)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38779)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eN0hI-0008FA-IQ
+	(envelope-from <pm215@archaic.org.uk>) id 1eN0hH-0008F8-Pn
 	for qemu-arm@nongnu.org; Thu, 07 Dec 2017 13:15:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eN0hH-0006mJ-NW
-	for qemu-arm@nongnu.org; Thu, 07 Dec 2017 13:15:00 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:38906)
+	(envelope-from <pm215@archaic.org.uk>) id 1eN0hG-0006lt-96
+	for qemu-arm@nongnu.org; Thu, 07 Dec 2017 13:14:59 -0500
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:38888)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1eN0hH-0006ly-G0; Thu, 07 Dec 2017 13:14:59 -0500
+	id 1eN0hF-0006li-Uu; Thu, 07 Dec 2017 13:14:58 -0500
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1eN0hG-000836-IH; Thu, 07 Dec 2017 18:14:58 +0000
+	id 1eN0hD-00081U-Qz; Thu, 07 Dec 2017 18:14:55 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Thu,  7 Dec 2017 18:14:53 +0000
-Message-Id: <1512670493-18114-7-git-send-email-peter.maydell@linaro.org>
+Date: Thu,  7 Dec 2017 18:14:49 +0000
+Message-Id: <1512670493-18114-3-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1512670493-18114-1-git-send-email-peter.maydell@linaro.org>
 References: <1512670493-18114-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 6/6] hw/arm/virt: Support -machine gic-version=max
+Subject: [Qemu-arm] [PATCH 2/6] target/arm: Query host CPU features
+ on-demand at instance init
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,72 +82,290 @@ Cc: "Richard W . M . Jones" <rjones@redhat.com>,
 	Eduardo Habkost <ehabkost@redhat.com>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Bzy0SjBebyeA
+X-TUID: yIrWUaDwKso2
 
-Add support for passing 'max' to -machine gic-version. By analogy
-with the -cpu max option, this picks the "best available" GIC version
-whether you're using KVM or TCG, so it behaves like 'host' when
-using KVM, and gives you GICv3 when using TCG.
+Currently we query the host CPU features in the class init function
+for the TYPE_ARM_HOST_CPU class, so that we can later copy them
+from the class object into the instance object in the object
+instance init function. This is awkward for implementing "-cpu max",
+which should work like "-cpu host" for KVM but like "cpu with all
+implemented features" for TCG.
 
-Also like '-cpu host', using -machine gic-version=max' means there
-is no guarantee of migration compatibility between QEMU versions;
-in future 'max' might mean '4'.
+Move the place where we store the information about the host CPU from
+a class object to static variables in kvm.c, and then in the instance
+init function call a new kvm_arm_set_cpu_features_from_host()
+function which will query the host kernel if necessary and then
+fill in the CPU instance fields.
+
+This allows us to drop the special class struct and class init
+function for TYPE_ARM_HOST_CPU entirely.
+
+We can't delay the probe until realize, because the ARM
+instance_post_init hook needs to look at the feature bits we
+set, so we need to do it in the initfn. This is safe because
+the probing doesn't affect the actual VM state (it creates a
+separate scratch VM to do its testing), but the probe might fail.
+Because we can't report errors in retrieving the host features
+in the initfn, we check this belatedly in the realize function
+(the intervening code will be able to cope with the relevant
+fields in the CPU structure being zero).
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/virt.c | 29 +++++++++++++++++++----------
- 1 file changed, 19 insertions(+), 10 deletions(-)
+ target/arm/cpu.h     |  5 +++++
+ target/arm/kvm_arm.h | 35 ++++++++++++++++++++++++-----------
+ target/arm/cpu.c     | 13 +++++++++++++
+ target/arm/kvm.c     | 36 +++++++++++++++++++-----------------
+ target/arm/kvm32.c   |  8 ++++----
+ target/arm/kvm64.c   |  8 ++++----
+ 6 files changed, 69 insertions(+), 36 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 92bd776..603ba56 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1265,16 +1265,23 @@ static void machvirt_init(MachineState *machine)
-     /* We can probe only here because during property set
-      * KVM is not available yet
-      */
--    if (!vms->gic_version) {
-+    if (vms->gic_version <= 0) {
-+        /* "host" or "max" */
-         if (!kvm_enabled()) {
--            error_report("gic-version=host requires KVM");
--            exit(1);
--        }
--
--        vms->gic_version = kvm_arm_vgic_probe();
--        if (!vms->gic_version) {
--            error_report("Unable to determine GIC version supported by host");
--            exit(1);
-+            if (vms->gic_version == 0) {
-+                error_report("gic-version=host requires KVM");
-+                exit(1);
-+            } else {
-+                /* "max": currently means 3 for TCG */
-+                vms->gic_version = 3;
-+            }
-+        } else {
-+            vms->gic_version = kvm_arm_vgic_probe();
-+            if (!vms->gic_version) {
-+                error_report(
-+                    "Unable to determine GIC version supported by host");
-+                exit(1);
-+            }
-         }
-     }
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 89d49cd..5b01cf9 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -690,6 +690,11 @@ struct ARMCPU {
+     /* Uniprocessor system with MP extensions */
+     bool mp_is_up;
  
-@@ -1539,9 +1546,11 @@ static void virt_set_gic_version(Object *obj, const char *value, Error **errp)
-         vms->gic_version = 2;
-     } else if (!strcmp(value, "host")) {
-         vms->gic_version = 0; /* Will probe later */
-+    } else if (!strcmp(value, "max")) {
-+        vms->gic_version = -1; /* Will probe later */
-     } else {
-         error_setg(errp, "Invalid gic-version value");
--        error_append_hint(errp, "Valid values are 3, 2, host.\n");
-+        error_append_hint(errp, "Valid values are 3, 2, host, max.\n");
++    /* True if we tried kvm_arm_host_cpu_features() during CPU instance_init
++     * and the probe failed (so we need to report the error in realize)
++     */
++    bool host_cpu_probe_failed;
++
+     /* The instance init functions for implementation-specific subclasses
+      * set these fields to specify the implementation-dependent values of
+      * various constant registers and reset values of non-constant
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index ff53e9f..89d1b67 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -152,20 +152,16 @@ bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
+ void kvm_arm_destroy_scratch_host_vcpu(int *fdarray);
+ 
+ #define TYPE_ARM_HOST_CPU "host-" TYPE_ARM_CPU
+-#define ARM_HOST_CPU_CLASS(klass) \
+-    OBJECT_CLASS_CHECK(ARMHostCPUClass, (klass), TYPE_ARM_HOST_CPU)
+-#define ARM_HOST_CPU_GET_CLASS(obj) \
+-    OBJECT_GET_CLASS(ARMHostCPUClass, (obj), TYPE_ARM_HOST_CPU)
+-
+-typedef struct ARMHostCPUClass {
+-    /*< private >*/
+-    ARMCPUClass parent_class;
+-    /*< public >*/
+ 
++/**
++ * ARMHostCPUFeatures: information about the host CPU (identified
++ * by asking the host kernel)
++ */
++typedef struct ARMHostCPUFeatures {
+     uint64_t features;
+     uint32_t target;
+     const char *dtb_compatible;
+-} ARMHostCPUClass;
++} ARMHostCPUFeatures;
+ 
+ /**
+  * kvm_arm_get_host_cpu_features:
+@@ -174,8 +170,16 @@ typedef struct ARMHostCPUClass {
+  * Probe the capabilities of the host kernel's preferred CPU and fill
+  * in the ARMHostCPUClass struct accordingly.
+  */
+-bool kvm_arm_get_host_cpu_features(ARMHostCPUClass *ahcc);
++bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf);
+ 
++/**
++ * kvm_arm_set_cpu_features_from_host:
++ * @cpu: ARMCPU to set the features for
++ *
++ * Set up the ARMCPU struct fields up to match the information probed
++ * from the host CPU.
++ */
++void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu);
+ 
+ /**
+  * kvm_arm_sync_mpstate_to_kvm
+@@ -200,6 +204,15 @@ void kvm_arm_pmu_init(CPUState *cs);
+ 
+ #else
+ 
++static inline void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
++{
++    /* This should never actually be called in the "not KVM" case,
++     * but set up the fields to indicate an error anyway.
++     */
++    cpu->kvm_target = QEMU_KVM_ARM_TARGET_NONE;
++    cpu->host_cpu_probe_failed = true;
++}
++
+ static inline int kvm_arm_vgic_probe(void)
+ {
+     return 0;
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 7f7a3d1..a7deb10 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -709,6 +709,19 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+     AddressSpace *as;
+ #endif
+ 
++    /* If we needed to query the host kernel for the CPU features
++     * then it's possible that might have failed in the initfn, but
++     * this is the first point where we can report it.
++     */
++    if (cpu->host_cpu_probe_failed) {
++        if (!kvm_enabled()) {
++            error_setg(errp, "The 'host' CPU type can only be used with KVM");
++        } else {
++            error_setg(errp, "Failed to retrieve host CPU features");
++        }
++        return;
++    }
++
+     cpu_exec_realizefn(cs, &local_err);
+     if (local_err != NULL) {
+         error_propagate(errp, local_err);
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 211a7bf..945696c 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -33,6 +33,8 @@ const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
+ 
+ static bool cap_has_mp_state;
+ 
++static ARMHostCPUFeatures arm_host_cpu_features;
++
+ int kvm_arm_vcpu_init(CPUState *cs)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+@@ -129,30 +131,32 @@ void kvm_arm_destroy_scratch_host_vcpu(int *fdarray)
      }
  }
  
+-static void kvm_arm_host_cpu_class_init(ObjectClass *oc, void *data)
++void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+ {
+-    ARMHostCPUClass *ahcc = ARM_HOST_CPU_CLASS(oc);
++    CPUARMState *env = &cpu->env;
+ 
+-    /* All we really need to set up for the 'host' CPU
+-     * is the feature bits -- we rely on the fact that the
+-     * various ID register values in ARMCPU are only used for
+-     * TCG CPUs.
+-     */
+-    if (!kvm_arm_get_host_cpu_features(ahcc)) {
+-        fprintf(stderr, "Failed to retrieve host CPU features!\n");
+-        abort();
++    if (!arm_host_cpu_features.dtb_compatible) {
++        if (!kvm_enabled() ||
++            !kvm_arm_get_host_cpu_features(&arm_host_cpu_features)) {
++            /* We can't report this error yet, so flag that we need to
++             * in arm_cpu_realizefn().
++             */
++            cpu->kvm_target = QEMU_KVM_ARM_TARGET_NONE;
++            cpu->host_cpu_probe_failed = true;
++            return;
++        }
+     }
++
++    cpu->kvm_target = arm_host_cpu_features.target;
++    cpu->dtb_compatible = arm_host_cpu_features.dtb_compatible;
++    env->features = arm_host_cpu_features.features;
+ }
+ 
+ static void kvm_arm_host_cpu_initfn(Object *obj)
+ {
+-    ARMHostCPUClass *ahcc = ARM_HOST_CPU_GET_CLASS(obj);
+     ARMCPU *cpu = ARM_CPU(obj);
+-    CPUARMState *env = &cpu->env;
+ 
+-    cpu->kvm_target = ahcc->target;
+-    cpu->dtb_compatible = ahcc->dtb_compatible;
+-    env->features = ahcc->features;
++    kvm_arm_set_cpu_features_from_host(cpu);
+ }
+ 
+ static const TypeInfo host_arm_cpu_type_info = {
+@@ -163,8 +167,6 @@ static const TypeInfo host_arm_cpu_type_info = {
+     .parent = TYPE_ARM_CPU,
+ #endif
+     .instance_init = kvm_arm_host_cpu_initfn,
+-    .class_init = kvm_arm_host_cpu_class_init,
+-    .class_size = sizeof(ARMHostCPUClass),
+ };
+ 
+ int kvm_arch_init(MachineState *ms, KVMState *s)
+diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
+index f925a21..cc326ea 100644
+--- a/target/arm/kvm32.c
++++ b/target/arm/kvm32.c
+@@ -28,7 +28,7 @@ static inline void set_feature(uint64_t *features, int feature)
+     *features |= 1ULL << feature;
+ }
+ 
+-bool kvm_arm_get_host_cpu_features(ARMHostCPUClass *ahcc)
++bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+ {
+     /* Identify the feature bits corresponding to the host CPU, and
+      * fill out the ARMHostCPUClass fields accordingly. To do this
+@@ -74,13 +74,13 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUClass *ahcc)
+         return false;
+     }
+ 
+-    ahcc->target = init.target;
++    ahcf->target = init.target;
+ 
+     /* This is not strictly blessed by the device tree binding docs yet,
+      * but in practice the kernel does not care about this string so
+      * there is no point maintaining an KVM_ARM_TARGET_* -> string table.
+      */
+-    ahcc->dtb_compatible = "arm,arm-v7";
++    ahcf->dtb_compatible = "arm,arm-v7";
+ 
+     for (i = 0; i < ARRAY_SIZE(idregs); i++) {
+         ret = ioctl(fdarray[2], KVM_GET_ONE_REG, &idregs[i]);
+@@ -132,7 +132,7 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUClass *ahcc)
+         set_feature(&features, ARM_FEATURE_VFP4);
+     }
+ 
+-    ahcc->features = features;
++    ahcf->features = features;
+ 
+     return true;
+ }
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 6554c30..8f8f828 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -443,7 +443,7 @@ static inline void unset_feature(uint64_t *features, int feature)
+     *features &= ~(1ULL << feature);
+ }
+ 
+-bool kvm_arm_get_host_cpu_features(ARMHostCPUClass *ahcc)
++bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+ {
+     /* Identify the feature bits corresponding to the host CPU, and
+      * fill out the ARMHostCPUClass fields accordingly. To do this
+@@ -471,8 +471,8 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUClass *ahcc)
+         return false;
+     }
+ 
+-    ahcc->target = init.target;
+-    ahcc->dtb_compatible = "arm,arm-v8";
++    ahcf->target = init.target;
++    ahcf->dtb_compatible = "arm,arm-v8";
+ 
+     kvm_arm_destroy_scratch_host_vcpu(fdarray);
+ 
+@@ -486,7 +486,7 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUClass *ahcc)
+     set_feature(&features, ARM_FEATURE_AARCH64);
+     set_feature(&features, ARM_FEATURE_PMU);
+ 
+-    ahcc->features = features;
++    ahcf->features = features;
+ 
+     return true;
+ }
 -- 
 2.7.4
 

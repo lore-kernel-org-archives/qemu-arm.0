@@ -1,167 +1,130 @@
-Received: by 10.223.159.74 with SMTP id f10csp660026wrg;
-        Fri, 8 Dec 2017 06:13:14 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMYmK4Gjx0vYrSHLquZqWYceka2txQEMAbhAFSLloVF5cc2He+10s8qjCPSOJV1Pe3+6Luzj
-X-Received: by 10.37.219.136 with SMTP id g130mr20487113ybf.13.1512742394665;
-        Fri, 08 Dec 2017 06:13:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1512742394; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp662071wrg;
+        Fri, 8 Dec 2017 06:15:07 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMaU/1j+ptyfnSiFOd2ZCKD8F9PAheCfH/98KO4r8hR7GIMj+uABTjkERFcQCx8qjCB/YP5W
+X-Received: by 10.129.43.196 with SMTP id r187mr21816706ywr.391.1512742507503;
+        Fri, 08 Dec 2017 06:15:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1512742507; cv=none;
         d=google.com; s=arc-20160816;
-        b=HPurJ8elUE6FrxTDD7Ck7FcG/NODZvEz61NtKdsMxsnMw7S3KuXMtu8kRJTlC3wct8
-         U7PK19+7WccBUtl9wss2bLtAKSRcfFi//bJETz/pUNYb2NRntWEm38MI7eiOO3Ouifye
-         D8ZNow1TCKceXAS3UTErfJgVSJ8VfFtF49FdoaiUWm9gxcXgIgdX06ALcmRTMe/kCPPt
-         NN7Yea0n/Rmys/uF2OwsxtWRIR0THFTUszfTkbsU8IkWFu9M6Q8e0FyEoX+x163tNBQR
-         Nf/VlZvlW4GaFBJMpNNNEyp1Mx3NXhlUMadES5+KFTGVoNTiOedW6uQTd9nNj6wbJaNF
-         Hf/A==
+        b=e10Nr4BgJIysnPOWcIdi8PWioJfSwtWkt+39mtc6Z1kaQQsgoA9eKJwLaFGkGgJR5v
+         QuKaC6qqbNtz6n4hvzoSZMg3ozv0Q8w1VE+Pa2iQEmu+Odg72KJP006G3OiHrSw35ucb
+         19qNMHbnN3IzsstpnRT11PXKzoILf1NsdeeHPLQjj9n2Dh9RQrH72YrgWEhLLncMODkD
+         KUMnadPpJr9rO5/cpj581dhDx5cM4kV0771Uw1N+EteySOQaC5ppCADlQlG1a0mvjVYu
+         HEPcjCDYKABwDbZU3lmn9eHSjFYz/HkubBPWfgG6/mMwNe1rnDudh9ALZdvsTJDo8LBZ
+         wZEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
          :arc-authentication-results;
-        bh=Tnbwyn7qHGnZb4tlcKgpSTQulMsKFEXIg1BOnQVyWRU=;
-        b=xh5nvancueVJ90nGcPkjlCNSnZIPX2/R7wlexE8y/fsQLM3YFGmOD6ilidyOgGTaXn
-         dgxtHFRzvDEcLtWKiA+c8mHA1LPC7yjhN4mt6Bf839lFfb8O+lgEr+8RBIxNkOqI9zGI
-         LOgOnNbpa3ubVI3ycDpg+6BuyHG7Ov77zhslaslIWNnGfIi2lDHtObpLZ0dDnupLhSpH
-         UyaJa+uflkMZN99t9fQt7uovviQckgoXuFIwab078Ghixqc1V0f5V7HYzAb/4M6IkGYK
-         fLMgpGfD9LG2+AVzbhRgx2XhS5hyEp/dNxEYyU4TApIgOiUk3p7edOcqOBkxlZRmEUiD
-         54AQ==
+        bh=utfcmAydYl1E0hq6KzqEXKDL1NHAKJX34HlXeavZtMI=;
+        b=1KBPOX19/wIhWM19s3L9gQDq9ZNcVO7AZVxPZ9QO8AzPDuAuyTRDP0SkbuRYcF0Wmz
+         cxnDoGBwk/XrZmYpQGlDFpY1hSG/ozZkxY9WkSaVgvsZDeR7aVaoTQ+ARRiDX5N/hfE8
+         EAOhpC2zcZK+acLCPX1I1PDfrd4dm323Cf8FzWYI3gtualui4SlUbiGlffC124XtLExo
+         IjPSoXIlctm18XxKtpo7JE2O+6xFhVkNO0JMZnoTNGXsy6DMdVWc3lLOHI8sIEIsBVEL
+         PXXBeUFHzOUs5tVGZ1SClGOnaUxOtI3yIiT4tnmbfn6ZBY5hFm56tQgmgWV+UDdE3122
+         vcdg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j14si1644710ybg.629.2017.12.08.06.13.14
+        by mx.google.com with ESMTPS id c12si1656765ybg.503.2017.12.08.06.15.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 08 Dec 2017 06:13:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 08 Dec 2017 06:15:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37460 helo=lists.gnu.org)
+Received: from localhost ([::1]:37465 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eNJOs-0004iS-2J
-	for alex.bennee@linaro.org; Fri, 08 Dec 2017 09:13:14 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40181)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eNJQg-0007Iy-Tv
+	for alex.bennee@linaro.org; Fri, 08 Dec 2017 09:15:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40292)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eNJOi-0004h8-Lb
-	for qemu-arm@nongnu.org; Fri, 08 Dec 2017 09:13:05 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1eNJP5-0005Ec-2O
+	for qemu-devel@nongnu.org; Fri, 08 Dec 2017 09:13:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eNJOh-0001Qz-FW
-	for qemu-arm@nongnu.org; Fri, 08 Dec 2017 09:13:04 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:38936)
+	(envelope-from <pm215@archaic.org.uk>) id 1eNJP4-0001g2-7U
+	for qemu-devel@nongnu.org; Fri, 08 Dec 2017 09:13:27 -0500
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:38940)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1eNJOh-0001Lv-7f; Fri, 08 Dec 2017 09:13:03 -0500
+	id 1eNJP2-0001eL-5m; Fri, 08 Dec 2017 09:13:24 -0500
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1eNJOX-0000pn-UE; Fri, 08 Dec 2017 14:12:53 +0000
+	id 1eNJP1-0000qV-7p; Fri, 08 Dec 2017 14:13:23 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Fri,  8 Dec 2017 14:12:52 +0000
-Message-Id: <1512742372-31517-1-git-send-email-peter.maydell@linaro.org>
+Date: Fri,  8 Dec 2017 14:13:22 +0000
+Message-Id: <1512742402-31669-1-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH] hw/intc/armv7m: Support byte and halfword
- accesses to CFSR
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [PATCH] get_phys_addr_pmsav7: Support AP=0b111 for v7M
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andy Gross <andy.gross@linaro.org>, patches@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PDw2argP8/xV
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9LtGafCd+QMY
 
-The Configurable Fault Status Register for ARMv7M and v8M is
-supposed to be byte and halfword accessible, but we were only
-implementing word accesses. Add support for the other access
-sizes, which are used by the Zephyr RTOS.
+For PMSAv7, the v7A/R Arm ARM defines that setting AP to 0b111
+is an UNPREDICTABLE reserved combination. However, for v7M
+this value is documented as having the same behaviour as 0b110:
+read-only for both privileged and unprivileged. Accept this
+value on an M profile core rather than treating it as a guest
+error and a no-access page.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reported-by: Andy Gross <andy.gross@linaro.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/armv7m_nvic.c | 38 ++++++++++++++++++++++----------------
- 1 file changed, 22 insertions(+), 16 deletions(-)
+ target/arm/helper.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 5d9c883..dc8e2f1 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -896,13 +896,6 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
-             val |= (1 << 8);
-         }
-         return val;
--    case 0xd28: /* Configurable Fault Status.  */
--        /* The BFSR bits [15:8] are shared between security states
--         * and we store them in the NS copy
--         */
--        val = cpu->env.v7m.cfsr[attrs.secure];
--        val |= cpu->env.v7m.cfsr[M_REG_NS] & R_V7M_CFSR_BFSR_MASK;
--        return val;
-     case 0xd2c: /* Hard Fault Status.  */
-         return cpu->env.v7m.hfsr;
-     case 0xd30: /* Debug Fault Status.  */
-@@ -1280,15 +1273,6 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
-         s->vectors[ARMV7M_EXCP_DEBUG].active = (value & (1 << 8)) != 0;
-         nvic_irq_update(s);
-         break;
--    case 0xd28: /* Configurable Fault Status.  */
--        cpu->env.v7m.cfsr[attrs.secure] &= ~value; /* W1C */
--        if (attrs.secure) {
--            /* The BFSR bits [15:8] are shared between security states
--             * and we store them in the NS copy.
--             */
--            cpu->env.v7m.cfsr[M_REG_NS] &= ~(value & R_V7M_CFSR_BFSR_MASK);
--        }
--        break;
-     case 0xd2c: /* Hard Fault Status.  */
-         cpu->env.v7m.hfsr &= ~value; /* W1C */
-         break;
-@@ -1667,6 +1651,14 @@ static MemTxResult nvic_sysreg_read(void *opaque, hwaddr addr,
-             val = deposit32(val, i * 8, 8, get_prio(s, hdlidx, sbank));
-         }
-         break;
-+    case 0xd28 ... 0xd2b: /* Configurable Fault Status (CFSR) */
-+        /* The BFSR bits [15:8] are shared between security states
-+         * and we store them in the NS copy
-+         */
-+        val = s->cpu->env.v7m.cfsr[attrs.secure];
-+        val |= s->cpu->env.v7m.cfsr[M_REG_NS] & R_V7M_CFSR_BFSR_MASK;
-+        val = extract32(val, (offset - 0xd28) * 8, size * 8);
-+        break;
-     case 0xfe0 ... 0xfff: /* ID.  */
-         if (offset & 3) {
-             val = 0;
-@@ -1765,6 +1757,20 @@ static MemTxResult nvic_sysreg_write(void *opaque, hwaddr addr,
-         }
-         nvic_irq_update(s);
-         return MEMTX_OK;
-+    case 0xd28 ... 0xd2b: /* Configurable Fault Status (CFSR) */
-+        /* All bits are W1C, so construct 32 bit value with 0s in
-+         * the parts not written by the access size
-+         */
-+        value <<= ((offset - 0xd28) * 8);
-+
-+        s->cpu->env.v7m.cfsr[attrs.secure] &= ~value;
-+        if (attrs.secure) {
-+            /* The BFSR bits [15:8] are shared between security states
-+             * and we store them in the NS copy.
-+             */
-+            s->cpu->env.v7m.cfsr[M_REG_NS] &= ~(value & R_V7M_CFSR_BFSR_MASK);
-+        }
-+        return MEMTX_OK;
-     }
-     if (size == 4) {
-         nvic_writel(s, offset, value, attrs);
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 91a9300..2f53dd8 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -9229,6 +9229,13 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
+                 case 6:
+                     *prot |= PAGE_READ | PAGE_EXEC;
+                     break;
++                case 7:
++                    /* for v7M, same as 6; for R profile a reserved value */
++                    if (arm_feature(env, ARM_FEATURE_M)) {
++                        *prot |= PAGE_READ | PAGE_EXEC;
++                        break;
++                    }
++                    /* fall through */
+                 default:
+                     qemu_log_mask(LOG_GUEST_ERROR,
+                                   "DRACR[%d]: Bad value for AP bits: 0x%"
+@@ -9247,6 +9254,13 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
+                 case 6:
+                     *prot |= PAGE_READ | PAGE_EXEC;
+                     break;
++                case 7:
++                    /* for v7M, same as 6; for R profile a reserved value */
++                    if (arm_feature(env, ARM_FEATURE_M)) {
++                        *prot |= PAGE_READ | PAGE_EXEC;
++                        break;
++                    }
++                    /* fall through */
+                 default:
+                     qemu_log_mask(LOG_GUEST_ERROR,
+                                   "DRACR[%d]: Bad value for AP bits: 0x%"
 -- 
 2.7.4
 

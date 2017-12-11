@@ -1,85 +1,105 @@
-Received: by 10.223.134.117 with SMTP id 50csp3063030wrw;
-        Tue, 26 Dec 2017 03:48:47 -0800 (PST)
-X-Google-Smtp-Source: ACJfBotpEFqD7luT/Pyc3OZz6BJ0vOHkZwPgNy8XVIGg0OYB4+CQV8/q76LR+7z79w4mFbC3rJCz
-X-Received: by 10.129.75.8 with SMTP id y8mr14863882ywa.100.1514288927066;
-        Tue, 26 Dec 2017 03:48:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1514288927; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp3052652wrg;
+        Mon, 11 Dec 2017 13:31:14 -0800 (PST)
+X-Google-Smtp-Source: ACJfBovks9URP6JxEB+exu3l7Tr4HVa/XqnB/6UC5mZNDdylEznC5IZyyEeT+ozZyzWZbs7cuqSm
+X-Received: by 10.37.188.67 with SMTP id d3mr1506092ybk.443.1513027874807;
+        Mon, 11 Dec 2017 13:31:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513027874; cv=none;
         d=google.com; s=arc-20160816;
-        b=pU8eH69Og+3JQB0yxTXkV3E/JvAkp+wPpqbqbhkoH59VXBLmFv0WhBn9hPRnltJowK
-         rTUFOQ0Yyjc6YUAe4UFJ0M1LlSiKNm5YRCuXB0RAA9eLwSgN6yZpl4NBQgkC5Jkfc4hM
-         9ACW84X0Sxsohk4mLMDk0dL6TCPG99t9JnWble8vyeWdLliV6VYlx81dN1lUTYCIgWX+
-         3xkbUxF1HByI3pcXq1XrypSW+qZXbn+ga9VYTmolY2h5+84Utt2kRt93w70o7b8uVO/Q
-         ElWCrH0wiBDe0pbmX/PwOd5ES20YwJn23UQhoAO48oYAs1M7Q7mOXgZZjxvkS0MTqWpb
-         GjjQ==
+        b=nW/aMlhwzJANh/EXgPPCPBkYA+WCFOAYxq8iQY1W8o5B8gl/tY78gO1AxaPcHSh2IA
+         ZsaJuEmQQrCZpD3kPdOQXbHLTqLOAYZWKXTzYwn5MD0d9i4n61jEj4hbaxSVguExzX+L
+         X9Ug3wKATmZm1XJt9soPcGEbo3qqOsLRDmzxhZ96j3yJBbv4gCLQKz3h8B2e6wD/jNjG
+         ofPM7Nk5mlY7emvlw0B3Kw2Cc4dK4H58ywBs4mvC6IL26GCsPAbbXWnIHOuzgvnpgVek
+         mpo5eteBgLxSLwl6Qq04u6ZBLeuzsL9x7f6lh9W3tehbiYxCrlcAlhe3ThHNpDIIcS21
+         PNwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :arc-authentication-results;
-        bh=GiV/Mu6InlcbImw1Nl9eCbvx54je2eihRcGCOtssRR8=;
-        b=s98roSsZ7WCVe7SBTP5mrhwnKb7U7aZX7WIaykMb76651XF4sialaxjuIRhg79U5lr
-         LwsuuWj1K9JnP9KE9J8JS5eMBbGaHN9qcDWyVmHbsqAkydF5dCeLay3VFeTAQvdzB8Hy
-         YF3baS1UBv6Jqta9goVXtqkm0Lg3p3ix7dOM6yJac1WQeAXf90i20OmGL/bx8DX7Y2aT
-         1ikI7LnkBXqTx5mvF45xJ5GZ5uOPvbdi9H/nknkt6cWqhWj/jUGVuguf2v2h7enrp5oF
-         vNoiyL25Owxn6NFqETOZYpL9JZJcORomZu4Xh0PjKPAhhSAN5AJFyN/VFctJnaoS6tya
-         2sQg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=gHgUtmN0/rGU/APCPhW0EAHnmsZlsiEW/PZANp51ENA=;
+        b=kG93Tzn2xMpPOmiRiO415y4+cQtjNm/7QMi+HdysX7NbUei0OJQJvT1eSqAxCmz5G0
+         HTG+BA+wzxi0Q1U+dpttIfE+nfjPktA54jzVaPxlUm8qMXV7XHSI+4VJTPWcvj2yNaHI
+         Q+0CRSkyR1ZFSQ5Fz1mOUrr1XrRqx4AOX+Ni3F9qv4vdu5871bxGOI19KkaCUoKpekPz
+         qkhk5fRkpcKxR+b9LKnEzMQFdZk5h7HqsaL7WmodBmMgvknBKI5JomX23D56XpdACJZP
+         EH0ghaWmj+JlUoX8FE/80f3yIFmjHldPiQ29chd13qpMD3TVo8bshVS4SPcFpL4eQjiO
+         JvLg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lqQhQHdw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 186si4095236yba.303.2017.12.26.03.48.46
+        by mx.google.com with ESMTPS id p3si1616705ybk.772.2017.12.11.13.31.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 26 Dec 2017 03:48:47 -0800 (PST)
+        Mon, 11 Dec 2017 13:31:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lqQhQHdw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37661 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:55528 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eTniw-00068Y-Js
-	for alex.bennee@linaro.org; Tue, 26 Dec 2017 06:48:46 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42919)
+	id 1eOVfO-0000ir-41
+	for alex.bennee@linaro.org; Mon, 11 Dec 2017 16:31:14 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35677)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1eTnip-00067x-QV
-	for qemu-arm@nongnu.org; Tue, 26 Dec 2017 06:48:41 -0500
+	(envelope-from <andrew.smirnov@gmail.com>) id 1eOVf4-0000iO-Ug
+	for qemu-arm@nongnu.org; Mon, 11 Dec 2017 16:30:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1eTnil-0006QL-5G
-	for qemu-arm@nongnu.org; Tue, 26 Dec 2017 06:48:39 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:48940)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1eTnik-0006Oq-Rl; Tue, 26 Dec 2017 06:48:35 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id DD66B693CC;
-	Tue, 26 Dec 2017 11:48:32 +0000 (UTC)
-Received: from hawk.localdomain (ovpn-204-56.brq.redhat.com [10.40.204.56])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 77D935D964;
-	Tue, 26 Dec 2017 11:48:31 +0000 (UTC)
-Date: Tue, 26 Dec 2017 12:48:28 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Shannon Zhao <zhaoshenglong@huawei.com>
-Message-ID: <20171226114828.lz3s5qztk6rcm2vi@hawk.localdomain>
-References: <1513925567-5184-1-git-send-email-zhaoshenglong@huawei.com>
+	(envelope-from <andrew.smirnov@gmail.com>) id 1eOVf1-0003x5-3G
+	for qemu-arm@nongnu.org; Mon, 11 Dec 2017 16:30:54 -0500
+Received: from mail-pg0-x242.google.com ([2607:f8b0:400e:c05::242]:45482)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
+	id 1eOVf0-0003us-TS; Mon, 11 Dec 2017 16:30:51 -0500
+Received: by mail-pg0-x242.google.com with SMTP id m25so11839996pgv.12;
+	Mon, 11 Dec 2017 13:30:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=gHgUtmN0/rGU/APCPhW0EAHnmsZlsiEW/PZANp51ENA=;
+	b=lqQhQHdw0B6+UVafVQP3r75nmssP9hFrUULw9eAGxvsCVB9gQQq3J61w86lP+kWQ5S
+	8SWOsQaW8xqrsnyHHnFwz+Ve6ejldRfaE4fRMFYTIw4BEbx5knOxs1/OvXfrgR/jIHD+
+	CXClDF4lgRu6inJ+Jw8utklhW/ow4yqurStigz/8tpFdvHk6lkh0iaTb4K2KjqXwpcxS
+	U3u42c0MlANxECwQMTscNGPa9RTS8rUGluebZ8tOz3A9R0A1LpbnzbKjfOejKtCKT0Xv
+	UiwxRMdfS3X0hBIFw2Pg6P8UiRB9rDvTvzy+7Zskatrd1/GOnh9uvvMkilNEZsTBlAVV
+	wGbg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references:mime-version:content-transfer-encoding;
+	bh=gHgUtmN0/rGU/APCPhW0EAHnmsZlsiEW/PZANp51ENA=;
+	b=SHBRlKOZFH7SMvFf6dyzECuxteZAkqz0N9uwCyz9arNf5+1hm4nHsL5kEJ91JRjKu1
+	PwL10PKyCSlK8kym8d/2niadtjlxERQDV5IbWBN4x8JSNt0D3bPNIMwZgPrthVn5xOT7
+	mYtJDDlc7fY+PXJQi07Cu3kAIfNgPqHt9G2//QhspMHvzGRS59xK3AM+qPeDDPo/nsFq
+	SxwlOlnPKCs57wEdu7wGSaPyaTC6kIqjR6JT8QdyCmY81IuLpqcEXjrV7wbzDlkggNOD
+	AVCsDIM2Py63b2VtbBblV9Cz1gQmqHRmaoPSvnZVtgvnclFFux1ycH081dpYMGB9vFIP
+	gtAw==
+X-Gm-Message-State: AKGB3mIhTOe3TZVZsrMT4UAx7oIQHmHKmDDyyliSoNQQ44gsW8ZltSxu
+	0vm+Qmv3h+i/dN4TBqJkzf/3y3kH
+X-Received: by 10.159.195.72 with SMTP id z8mr1628345pln.183.1513027849587;
+	Mon, 11 Dec 2017 13:30:49 -0800 (PST)
+Received: from squirtle.westlake.spaceflightindustries.com ([173.226.206.194])
+	by smtp.gmail.com with ESMTPSA id
+	q10sm25359690pgc.84.2017.12.11.13.30.48
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Mon, 11 Dec 2017 13:30:48 -0800 (PST)
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+To: qemu-arm@nongnu.org
+Date: Mon, 11 Dec 2017 13:29:56 -0800
+Message-Id: <20171211213007.7353-3-andrew.smirnov@gmail.com>
+X-Mailer: git-send-email 2.14.3
+In-Reply-To: <20171211213007.7353-1-andrew.smirnov@gmail.com>
+References: <20171211213007.7353-1-andrew.smirnov@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1513925567-5184-1-git-send-email-zhaoshenglong@huawei.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Tue, 26 Dec 2017 11:48:33 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH] Virt: ACPI: fix qemu assert due to
- re-assigned table data address
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c05::242
+Subject: [Qemu-arm] [PATCH 02/13] imx_fec: Refactor imx_eth_enable_rx()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,117 +111,58 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, lersek@redhat.com,
-	qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>,
+	Jason Wang <jasowang@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, yurovsky@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 16kFbWTSn3T2
+X-TUID: Jg+GmMcuIybG
 
-On Fri, Dec 22, 2017 at 02:52:47PM +0800, Shannon Zhao wrote:
-> acpi_data_push uses g_array_set_size to resize the memory size. If there is no
-> enough contiguous memory, the address will be changed. If we use the old value,
-> it will assert.
-> qemu-kvm: hw/acpi/bios-linker-loader.c:214: bios_linker_loader_add_checksum:
-> Assertion `start_offset < file->blob->len' failed.`
-> 
-> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
-> ---
->  hw/arm/virt-acpi-build.c | 18 +++++++++++-------
->  1 file changed, 11 insertions(+), 7 deletions(-)
-> 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 3d78ff6..5901142 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -453,6 +453,7 @@ build_spcr(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      AcpiSerialPortConsoleRedirection *spcr;
->      const MemMapEntry *uart_memmap = &vms->memmap[VIRT_UART];
->      int irq = vms->irqmap[VIRT_UART] + ARM_SPI_BASE;
-> +    int spcr_start = table_data->len;
->  
->      spcr = acpi_data_push(table_data, sizeof(*spcr));
->  
-> @@ -476,8 +477,8 @@ build_spcr(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      spcr->pci_device_id = 0xffff;  /* PCI Device ID: not a PCI device */
->      spcr->pci_vendor_id = 0xffff;  /* PCI Vendor ID: not a PCI device */
->  
-> -    build_header(linker, table_data, (void *)spcr, "SPCR", sizeof(*spcr), 2,
-> -                 NULL, NULL);
-> +    build_header(linker, table_data, (void *)(table_data->data + spcr_start),
-> +                 "SPCR", table_data->len - spcr_start, 2, NULL, NULL);
->  }
+Refactor imx_eth_enable_rx() to have more meaningfull variable name
+than 'tmp' and to reduce number of logical negations done.
 
-We don't need to change build_spcr(), as acpi_data_push() is only called
-once, so spcr == new table_data->data + old table_data->len and new
-table_data->len - spcr == sizeof(*spcr) (the size used in the only
-acpi_data_push() call)
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Jason Wang <jasowang@redhat.com>
+Cc: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Cc: yurovsky@gmail.com
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
+---
+ hw/net/imx_fec.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
->  
->  static void
-> @@ -512,8 +513,8 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->          mem_base += numa_info[i].node_mem;
->      }
->  
-> -    build_header(linker, table_data, (void *)srat, "SRAT",
-> -                 table_data->len - srat_start, 3, NULL, NULL);
-> +    build_header(linker, table_data, (void *)(table_data->data + srat_start),
-> +                 "SRAT", table_data->len - srat_start, 3, NULL, NULL);
+diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+index 88b4b049d7..8b2e4b8ffe 100644
+--- a/hw/net/imx_fec.c
++++ b/hw/net/imx_fec.c
+@@ -536,19 +536,19 @@ static void imx_eth_do_tx(IMXFECState *s)
+ static void imx_eth_enable_rx(IMXFECState *s)
+ {
+     IMXFECBufDesc bd;
+-    bool tmp;
++    bool rx_ring_full;
+ 
+     imx_fec_read_bd(&bd, s->rx_descriptor);
+ 
+-    tmp = ((bd.flags & ENET_BD_E) != 0);
++    rx_ring_full = !(bd.flags & ENET_BD_E);
+ 
+-    if (!tmp) {
++    if (rx_ring_full) {
+         FEC_PRINTF("RX buffer full\n");
+     } else if (!s->regs[ENET_RDAR]) {
+         qemu_flush_queued_packets(qemu_get_queue(s->nic));
+     }
+ 
+-    s->regs[ENET_RDAR] = tmp ? ENET_RDAR_RDAR : 0;
++    s->regs[ENET_RDAR] = rx_ring_full ? 0 : ENET_RDAR_RDAR;
+ }
+ 
+ static void imx_eth_reset(DeviceState *d)
+-- 
+2.14.3
 
-Yes, we need this fix, as there are many acpi_data_push() calls in this
-function. I guess this was the table that triggered the assert.
-
->  }
->  
->  static void
-> @@ -522,6 +523,7 @@ build_mcfg(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      AcpiTableMcfg *mcfg;
->      const MemMapEntry *memmap = vms->memmap;
->      int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
-> +    int mcfg_start = table_data->len;
->  
->      mcfg = acpi_data_push(table_data, len);
->      mcfg->allocation[0].address = cpu_to_le64(memmap[VIRT_PCIE_ECAM].base);
-> @@ -532,7 +534,8 @@ build_mcfg(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      mcfg->allocation[0].end_bus_number = (memmap[VIRT_PCIE_ECAM].size
->                                            / PCIE_MMCFG_SIZE_MIN) - 1;
->  
-> -    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
-> +    build_header(linker, table_data, (void *)(table_data->data + mcfg_start),
-> +                 "MCFG", len, 1, NULL, NULL);
->  }
-
-No need to change this one.
-
->  
->  /* GTDT */
-> @@ -651,6 +654,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->  static void build_fadt(GArray *table_data, BIOSLinker *linker,
->                         VirtMachineState *vms, unsigned dsdt_tbl_offset)
->  {
-> +    int fadt_start = table_data->len;
->      AcpiFadtDescriptorRev5_1 *fadt = acpi_data_push(table_data, sizeof(*fadt));
->      unsigned xdsdt_entry_offset = (char *)&fadt->x_dsdt - table_data->data;
->      uint16_t bootflags;
-> @@ -681,8 +685,8 @@ static void build_fadt(GArray *table_data, BIOSLinker *linker,
->          ACPI_BUILD_TABLE_FILE, xdsdt_entry_offset, sizeof(fadt->x_dsdt),
->          ACPI_BUILD_TABLE_FILE, dsdt_tbl_offset);
->  
-> -    build_header(linker, table_data,
-> -                 (void *)fadt, "FACP", sizeof(*fadt), 5, NULL, NULL);
-> +    build_header(linker, table_data, (void *)(table_data->data + fadt_start),
-> +                 "FACP", table_data->len - fadt_start, 5, NULL, NULL);
->  }
-
-No need to change this one either.
-
->  
->  /* DSDT */
-> -- 
-> 2.0.4
-> 
->
-
-Please respin only changing the one that needs the fix.
-
-Thanks,
-drew 

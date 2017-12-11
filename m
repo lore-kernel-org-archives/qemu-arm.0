@@ -1,102 +1,105 @@
-Received: by 10.223.159.74 with SMTP id f10csp3052961wrg;
-        Mon, 11 Dec 2017 13:31:34 -0800 (PST)
-X-Google-Smtp-Source: ACJfBot0RiduujJu5R+Xp+s28POmETZrS/n1Tee1igZdE0sVhCvInUAgDKNfiRqM9oFu4O3Fg4+8
-X-Received: by 10.37.233.1 with SMTP id n1mr1392399ybd.274.1513027894085;
-        Mon, 11 Dec 2017 13:31:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1513027894; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp3053041wrg;
+        Mon, 11 Dec 2017 13:31:37 -0800 (PST)
+X-Google-Smtp-Source: ACJfBovj2TYE8H6wfWl0gGI8WL29rPhbohirt9Qx/sIFCUVoTUuZHAfVBKt95PebYHQNnkyfv9BG
+X-Received: by 10.13.202.77 with SMTP id m74mr1413748ywd.408.1513027897842;
+        Mon, 11 Dec 2017 13:31:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513027897; cv=none;
         d=google.com; s=arc-20160816;
-        b=UsYPgIckiM+4YcuqBQ/jLmAB6zUgkLZBJtQiYIkH/Y07VrCz3lRZErRsibDQYvfOoP
-         I9tRvevzAXlxTBneTvBeWthCktezW97t6M1WRjPLjdeEXyFz4SCfTEYn9hbmcJHdLjh3
-         51FAXtEWpjZVQOg0pVyOIhL4z9ambURMP5lY0MrY8odIdm8eLTP42P7Pz1Lz/xnheMMQ
-         ELJmKILyimnHGiIjC43eYCRqC13Rs2ab/9mXm8LHSEVgE9dk+sXpPMhgsvyAmYFdFFJb
-         77CdDXykNXr7hBdHuglMhQwMvmoRD56NgAVciVbspA9LAFp7AWVtyTKIGwCrfhl+WBTh
-         jqeA==
+        b=gR4qMHgpo9/i5Qjug/mvf9fvssotYaUKhzb2TVWrpMJZT/I5wVaFr8Ctl5ECbq6VMQ
+         S9Qzg2zeIGwli/+3FcP73C+QPxEbnLz02rmzZz1p/TRUaTk4gMWTATsmtD8NlFk8PdMr
+         SjwMbQ2Gs/NnS+B4jRVpgyh6qs3siWpRegA3kKQyTwMSyHt8qZBLaNvjsjCmBIEMYOTM
+         GwlIMmEbEEpTjNGfOS7FqzsFtizbiGtxgFS3eJKJafsKQJiIo7zjMGhkH/J35ZoLy1z/
+         UBrYO8g3yafAcHC3nemdw6sNW7NV66KX07NN9lydjYMt4WpjH9kuyj0RQ8o4EEeSQ/ut
+         d0EA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=VGiWYx+mHGVhkBJM8+hx1Bft6rHr3zpvjmjA9JTFYl4=;
-        b=Qq/BRGO82ofB7ZtWZ1igbW7tJq+taol9JJi8XLN7lmhMoWSc4C9y0GSN95VsFwV82V
-         JmjsZzWYKbjj6W1qvvh0A9lk5pGb5DXTexJcObhuVO3RYO7AeEBfbr0blrWTCmx8kr2E
-         O/S6Zmm1DVwn/nYuG9tMGIGTFHbKOCfRzz8y4U0L5E5NFoq32FEjCNRnNAN2uQaC9G+c
-         8a3dTF6MvBG8QruTndIoC+O+kCcy8dlRdG2G6j3+saguvr1rlXhBpdg0ERthmJdeCd+2
-         HosMXQMZPD+3iUTNubY6K+QwR8zNqdeGTz9rmB60GZS3cysMuoY8/fflY29Kxi6LH92w
-         D4JA==
+        bh=okFMpTBn3CPHVnnf0sYzsV4tcjnm7uVfAD8Wu4GZgfo=;
+        b=jeNdWTbN3vWzq+AAGxQ45T3BMoGYsXDeaHyO5+HIS+omP/b2uwCDYoNXvh5o+9YiZB
+         m9YHKGAjs58fUVxLk2MdQxFZ4XPwb02+Qqw22iYVfFsyH5dCDCcpUrfBS54io8Ops4Hb
+         Ew127rXthrQWZTrYw+ZvSYIXhIJK4M2gs8jRM3BzMxOGp+yOM2JkrqGZJ4ZBd0EoUBtz
+         P/BgRRqIYU9aFQw4KR1l1D8okPIi88+rcrC1G/baYI4k/+lfn28QRyRLRiJk6J8XlBaK
+         zlnOEDCkmXdqVTtLP2N7DfTFgGzHOGTtyxQ/Uao0iGE04lqT+a2Q9GjYOtAJo1XPKwEz
+         HlGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vfP5A1Cb;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=M6OW++t0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e8si2971256ybn.149.2017.12.11.13.31.33
+        by mx.google.com with ESMTPS id n186si3161726ybc.513.2017.12.11.13.31.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 11 Dec 2017 13:31:34 -0800 (PST)
+        Mon, 11 Dec 2017 13:31:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vfP5A1Cb;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=M6OW++t0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:55532 helo=lists.gnu.org)
+Received: from localhost ([::1]:55534 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eOVfh-0000ze-DJ
-	for alex.bennee@linaro.org; Mon, 11 Dec 2017 16:31:33 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35673)
+	id 1eOVfl-000139-5H
+	for alex.bennee@linaro.org; Mon, 11 Dec 2017 16:31:37 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35678)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1eOVf4-0000iN-TM
-	for qemu-arm@nongnu.org; Mon, 11 Dec 2017 16:30:55 -0500
+	(envelope-from <andrew.smirnov@gmail.com>) id 1eOVf4-0000iP-Ul
+	for qemu-arm@nongnu.org; Mon, 11 Dec 2017 16:30:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1eOVf3-00041u-6I
+	(envelope-from <andrew.smirnov@gmail.com>) id 1eOVf2-0003ze-8j
 	for qemu-arm@nongnu.org; Mon, 11 Dec 2017 16:30:54 -0500
-Received: from mail-pf0-x244.google.com ([2607:f8b0:400e:c00::244]:44899)
+Received: from mail-pg0-x244.google.com ([2607:f8b0:400e:c05::244]:43460)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
-	id 1eOVf3-000400-11
-	for qemu-arm@nongnu.org; Mon, 11 Dec 2017 16:30:53 -0500
-Received: by mail-pf0-x244.google.com with SMTP id m26so12524336pfj.11
-	for <qemu-arm@nongnu.org>; Mon, 11 Dec 2017 13:30:52 -0800 (PST)
+	id 1eOVf2-0003xO-1p; Mon, 11 Dec 2017 16:30:52 -0500
+Received: by mail-pg0-x244.google.com with SMTP id b18so11844954pgv.10;
+	Mon, 11 Dec 2017 13:30:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=VGiWYx+mHGVhkBJM8+hx1Bft6rHr3zpvjmjA9JTFYl4=;
-	b=vfP5A1Cbv4yGjIQalqU974B7a6CADsvk37SuSEUoFI7l6jw1KKnfcpXvmThSfGqTQO
-	O4lXB7BZ/kb0mws/32G6qNC/TjUZaZunp100i0p9ZipeRga1IPWq1eiB51Z3d7/DmALN
-	xKVj4rcuTvyhnXh5k3mNE0ECfKjZ7yu2fftkF7D2N7w4wdSYL65c7WZUBovH1TZBduLw
-	Emf9bbAxSiFWrrAmv0UnW1nqj0KAvyOp1XhF1+v4kKlveZ+S6sZdTFpHW/Xl8cdaovFc
-	3zADdOimXCmiQfrUUG6PLmxMWs5du9tc0uE7nPsHeiyAAlcBOnKXpNcCExZ1qJ7olzu8
-	rN4w==
+	h=from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=okFMpTBn3CPHVnnf0sYzsV4tcjnm7uVfAD8Wu4GZgfo=;
+	b=M6OW++t0N8SEg8YBj2jGDfXYoGMLMT6n6uRCrVSz4UuLT8+2WOiltiMC/eB6Ey+v8V
+	VyKIok+i9Fw9pn/GdUkIgDMcSDguek/cjo6Bqzl20F5G8JIYQWGDbY8HGWW0h+OiS8Ru
+	4Keq7xE7kMIBbsPaTz3xv1vrpdLBpiD2fC/eokKcFkHqIUKR64QdIpcJbzMM0nSJOJ51
+	Sudc23+G5mLOyzBI+wj3e3d0HbBC1TVtg4R+glzeoPrwXoUPwR+kRBCSi8Mg6pjh163c
+	1hJ3dthASug3/+9Is1w7Od1IIo+fzjQfjmw0chFi4j6pG4RGhuxC351jliC4znyAmrFs
+	vpDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=VGiWYx+mHGVhkBJM8+hx1Bft6rHr3zpvjmjA9JTFYl4=;
-	b=IbvQR7LgLoYYNrQfHhZQ4OnpiHuG8OumUi2VCN8kk5sZekMMlfjT8d0Jfa25/GvIxf
-	6RtpOggHvTc7XVI9QFnVJE7CZG9S59MZA391bQ8l8Yph92LeBrjYy/ljQUVMu8a99ZR8
-	sbzvZpyEaeAVbY6AG56914eNl+LfZuwLfOW15gCk6wYhK4yCoPJFsLF+7v4wtzCg/CKO
-	VnWKsXU6iavfsSm1SZzvPj5awaVzx++ib5Kkb0FM1pmCJ3UyEJ+TcCSfQVsis4jCzMz+
-	4cWfDzFjcX1W8HaWz+VMM0lV/F1okqX1udngRS/0Nl/XHn7PKh5i5QH8ddTdm6s9oKSw
-	z8RA==
-X-Gm-Message-State: AKGB3mInz+Cmm78yjJbnqmttPC+3pQDohAFut+Bo0ZSOXcNIsvvMYiUj
-	suKkZMJXXutj8b2jOwqxTPV1c43A
-X-Received: by 10.84.210.137 with SMTP id a9mr1646837pli.17.1513027851742;
-	Mon, 11 Dec 2017 13:30:51 -0800 (PST)
+	:references:mime-version:content-transfer-encoding;
+	bh=okFMpTBn3CPHVnnf0sYzsV4tcjnm7uVfAD8Wu4GZgfo=;
+	b=ejeDWUkPeJO6E3t0zx0KsyG/Eo12CYxnsgh+sgtuibISHVEhxXJTbxHwfxoEEYZllQ
+	Ox0B9qllAfdYe8D9ki4msN2UtLuG1T9w/Za/tOt4P84gAfxoBuoqufDEdw8WgIqg42Eq
+	F7prvWadwxXYZGZtd6cpJ6OSgdFWfyl7O0HaJFs0SYJVbvq/rLwmE7Nz4F3FCAIxmXfq
+	LoWCII/l2CTAVmLdaKSZU2MPvj542Vg+zn6J9YIgmt8IpUxe/ANqqYkJ7BJ6HnXJBXoU
+	WlTvYnbLsfcG0vXMwwCnKoQ1qqOk3MkpkY2rgCcPk9U5VVJypMpd4y6UEDBcA+K7Bx18
+	ML6Q==
+X-Gm-Message-State: AKGB3mLVUHaZ4gAG/4xlGjzS2uh7KLpOgmJLwGR0W17y6QOfJ+pxvpoM
+	6sTKgxTFKye0f18h/ng5OqDrJVrm
+X-Received: by 10.84.217.206 with SMTP id d14mr1648407plj.132.1513027850632;
+	Mon, 11 Dec 2017 13:30:50 -0800 (PST)
 Received: from squirtle.westlake.spaceflightindustries.com ([173.226.206.194])
 	by smtp.gmail.com with ESMTPSA id
-	q10sm25359690pgc.84.2017.12.11.13.30.50
+	q10sm25359690pgc.84.2017.12.11.13.30.49
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 11 Dec 2017 13:30:50 -0800 (PST)
+	Mon, 11 Dec 2017 13:30:49 -0800 (PST)
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 To: qemu-arm@nongnu.org
-Date: Mon, 11 Dec 2017 13:29:58 -0800
-Message-Id: <20171211213007.7353-5-andrew.smirnov@gmail.com>
+Date: Mon, 11 Dec 2017 13:29:57 -0800
+Message-Id: <20171211213007.7353-4-andrew.smirnov@gmail.com>
 X-Mailer: git-send-email 2.14.3
 In-Reply-To: <20171211213007.7353-1-andrew.smirnov@gmail.com>
 References: <20171211213007.7353-1-andrew.smirnov@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c00::244
-Subject: [Qemu-arm] [PATCH 04/13] imx_fec: Move Tx frame buffer away from
- the stack
+X-Received-From: 2607:f8b0:400e:c05::244
+Subject: [Qemu-arm] [PATCH 03/13] imx_fec: Change queue flushing heuristics
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,99 +111,130 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrey Smirnov <andrew.smirnov@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>,
+	Jason Wang <jasowang@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, yurovsky@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yiUYOVMyUDFI
+X-TUID: AW0rrCRwtuPN
 
-Make Tx frame assembly buffer to be a paort of IMXFECState structure
-to avoid a concern about having large data buffer on the stack.
+In current implementation, packet queue flushing logic seem to suffer
+from a deadlock like scenario if a packet is received by the interface
+before before Rx ring is initialized by Guest's driver. Consider the
+following sequence of events:
 
+	1. A QEMU instance is started against a TAP device on Linux
+	   host, running Linux guest, e. g., something to the effect
+	   of:
+
+	   qemu-system-arm \
+	      -net nic,model=imx.fec,netdev=lan0 \
+	      netdev tap,id=lan0,ifname=tap0,script=no,downscript=no \
+	      ... rest of the arguments ...
+
+	2. Once QEMU starts, but before guest reaches the point where
+	   FEC deriver is done initializing the HW, Guest, via TAP
+	   interface, receives a number of multicast MDNS packets from
+	   Host (not necessarily true for every OS, but it happens at
+	   least on Fedora 25)
+
+	3. Recieving a packet in such a state results in
+	   imx_eth_can_receive() returning '0', which in turn causes
+	   tap_send() to disable corresponding event (tap.c:203)
+
+	4. Once Guest's driver reaches the point where it is ready to
+	   recieve packets it prepares Rx ring descriptors and writes
+	   ENET_RDAR_RDAR to ENET_RDAR register to indicate to HW that
+	   more descriptors are ready. And at this points emulation
+	   layer does this:
+
+	   	 s->regs[index] = ENET_RDAR_RDAR;
+                 imx_eth_enable_rx(s);
+
+	   which, combined with:
+
+	   	  if (!s->regs[ENET_RDAR]) {
+		     qemu_flush_queued_packets(qemu_get_queue(s->nic));
+		  }
+
+	   results in Rx queue never being flushed and corresponding
+	   I/O event beign disabled.
+
+To prevent the problem, change the code to always flush packet queue
+when ENET_RDAR transitions 0 -> ENET_RDAR_RDAR.
+
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Jason Wang <jasowang@redhat.com>
+Cc: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Cc: yurovsky@gmail.com
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- hw/net/imx_fec.c         | 22 +++++++++++-----------
- include/hw/net/imx_fec.h |  3 +++
- 2 files changed, 14 insertions(+), 11 deletions(-)
+ hw/net/imx_fec.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
-index eb034ffd0c..56cb72273c 100644
+index 8b2e4b8ffe..eb034ffd0c 100644
 --- a/hw/net/imx_fec.c
 +++ b/hw/net/imx_fec.c
-@@ -405,8 +405,7 @@ static void imx_eth_update(IMXFECState *s)
- static void imx_fec_do_tx(IMXFECState *s)
- {
-     int frame_size = 0, descnt = 0;
--    uint8_t frame[ENET_MAX_FRAME_SIZE];
--    uint8_t *ptr = frame;
-+    uint8_t *ptr = s->frame;
-     uint32_t addr = s->tx_descriptor;
+@@ -533,7 +533,7 @@ static void imx_eth_do_tx(IMXFECState *s)
+     }
+ }
  
-     while (descnt++ < IMX_MAX_DESC) {
-@@ -431,8 +430,8 @@ static void imx_fec_do_tx(IMXFECState *s)
-         frame_size += len;
-         if (bd.flags & ENET_BD_L) {
-             /* Last buffer in frame.  */
--            qemu_send_packet(qemu_get_queue(s->nic), frame, frame_size);
--            ptr = frame;
-+            qemu_send_packet(qemu_get_queue(s->nic), s->frame, frame_size);
-+            ptr = s->frame;
-             frame_size = 0;
-             s->regs[ENET_EIR] |= ENET_INT_TXF;
+-static void imx_eth_enable_rx(IMXFECState *s)
++static void imx_eth_enable_rx(IMXFECState *s, bool flush)
+ {
+     IMXFECBufDesc bd;
+     bool rx_ring_full;
+@@ -544,7 +544,7 @@ static void imx_eth_enable_rx(IMXFECState *s)
+ 
+     if (rx_ring_full) {
+         FEC_PRINTF("RX buffer full\n");
+-    } else if (!s->regs[ENET_RDAR]) {
++    } else if (flush) {
+         qemu_flush_queued_packets(qemu_get_queue(s->nic));
+     }
+ 
+@@ -807,7 +807,7 @@ static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
+         if (s->regs[ENET_ECR] & ENET_ECR_ETHEREN) {
+             if (!s->regs[index]) {
+                 s->regs[index] = ENET_RDAR_RDAR;
+-                imx_eth_enable_rx(s);
++                imx_eth_enable_rx(s, true);
+             }
+         } else {
+             s->regs[index] = 0;
+@@ -930,7 +930,7 @@ static int imx_eth_can_receive(NetClientState *nc)
+ 
+     FEC_PRINTF("\n");
+ 
+-    return s->regs[ENET_RDAR] ? 1 : 0;
++    return !!s->regs[ENET_RDAR];
+ }
+ 
+ static ssize_t imx_fec_receive(NetClientState *nc, const uint8_t *buf,
+@@ -1020,7 +1020,7 @@ static ssize_t imx_fec_receive(NetClientState *nc, const uint8_t *buf,
          }
-@@ -456,8 +455,7 @@ static void imx_fec_do_tx(IMXFECState *s)
- static void imx_enet_do_tx(IMXFECState *s)
- {
-     int frame_size = 0, descnt = 0;
--    uint8_t frame[ENET_MAX_FRAME_SIZE];
--    uint8_t *ptr = frame;
-+    uint8_t *ptr = s->frame;
-     uint32_t addr = s->tx_descriptor;
- 
-     while (descnt++ < IMX_MAX_DESC) {
-@@ -482,13 +480,13 @@ static void imx_enet_do_tx(IMXFECState *s)
-         frame_size += len;
-         if (bd.flags & ENET_BD_L) {
-             if (bd.option & ENET_BD_PINS) {
--                struct ip_header *ip_hd = PKT_GET_IP_HDR(frame);
-+                struct ip_header *ip_hd = PKT_GET_IP_HDR(s->frame);
-                 if (IP_HEADER_VERSION(ip_hd) == 4) {
--                    net_checksum_calculate(frame, frame_size);
-+                    net_checksum_calculate(s->frame, frame_size);
-                 }
-             }
-             if (bd.option & ENET_BD_IINS) {
--                struct ip_header *ip_hd = PKT_GET_IP_HDR(frame);
-+                struct ip_header *ip_hd = PKT_GET_IP_HDR(s->frame);
-                 /* We compute checksum only for IPv4 frames */
-                 if (IP_HEADER_VERSION(ip_hd) == 4) {
-                     uint16_t csum;
-@@ -498,8 +496,10 @@ static void imx_enet_do_tx(IMXFECState *s)
-                 }
-             }
-             /* Last buffer in frame.  */
--            qemu_send_packet(qemu_get_queue(s->nic), frame, len);
--            ptr = frame;
-+
-+            qemu_send_packet(qemu_get_queue(s->nic), s->frame, len);
-+            ptr = s->frame;
-+
-             frame_size = 0;
-             if (bd.option & ENET_BD_TX_INT) {
-                 s->regs[ENET_EIR] |= ENET_INT_TXF;
-diff --git a/include/hw/net/imx_fec.h b/include/hw/net/imx_fec.h
-index 62ad473b05..67993870a2 100644
---- a/include/hw/net/imx_fec.h
-+++ b/include/hw/net/imx_fec.h
-@@ -252,6 +252,9 @@ typedef struct IMXFECState {
-     uint32_t phy_int_mask;
- 
-     bool is_fec;
-+
-+    /* Buffer used to assemble a Tx frame */
-+    uint8_t frame[ENET_MAX_FRAME_SIZE];
- } IMXFECState;
- 
- #endif
+     }
+     s->rx_descriptor = addr;
+-    imx_eth_enable_rx(s);
++    imx_eth_enable_rx(s, false);
+     imx_eth_update(s);
+     return len;
+ }
+@@ -1116,7 +1116,7 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
+         }
+     }
+     s->rx_descriptor = addr;
+-    imx_eth_enable_rx(s);
++    imx_eth_enable_rx(s, false);
+     imx_eth_update(s);
+     return len;
+ }
 -- 
 2.14.3
 

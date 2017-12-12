@@ -1,91 +1,98 @@
-Received: by 10.223.159.74 with SMTP id f10csp3676744wrg;
-        Tue, 12 Dec 2017 03:06:58 -0800 (PST)
-X-Google-Smtp-Source: ACJfBotcJDNnBjjRnKD33PwW3W/374qHJ19VxgzhwMU5rMWlGS4gV7FJifOkRyalTaGnnqTSJV0H
-X-Received: by 10.129.181.82 with SMTP id c18mr889248ywk.455.1513076818555;
-        Tue, 12 Dec 2017 03:06:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1513076818; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp3681996wrg;
+        Tue, 12 Dec 2017 03:12:10 -0800 (PST)
+X-Google-Smtp-Source: ACJfBovxAQriyPHqhar6MKRD+0PPNtKZznnuS9sKLOfK989bD9DgMIeMtrsfcr1RM3/oFI542yDg
+X-Received: by 10.129.101.70 with SMTP id z67mr2540135ywb.474.1513077130361;
+        Tue, 12 Dec 2017 03:12:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513077130; cv=none;
         d=google.com; s=arc-20160816;
-        b=Fddn9A444hRnoPPrb4kFGZ3QoaOvcougJoXw09AkA+M1ytjgoOLNM1vrc03zf+nLpj
-         Byo9qBgwX7byalphPVD4GfMfv8PPsPbC2kN6bg4tgym5is1W2Q7V5HvIdvCBY0E9ZEMv
-         +bPC4iC8Qb09JE02/GSCUgWi/LfDkPRSA8MCms07SYPZxF8QsTjrNWR/FoWdTUWddxGJ
-         ylbU5U9c3/cxsNgHdzwB8A3r/xpMqp5YdTvgntD08CUndzWnjI2/UO0yUVjEHHJVTblH
-         rmn5QALoP54LIokPS7AnFFNLOxM6tEze3j9nOjAwJ+IIiy1vZA4vLKbkm1UkDd9oS3hp
-         vb0g==
+        b=pH3vmI/MtMjgTnOsBIuViiCwseFBIpq8f8a61G/uGBYTCV5qvjax0u2q/3wTY1dRWA
+         i7Lth+CqhsiZu0bPURrzo3S1CC97uoW9yiyDefa3msiuHyZXmxY3kEQgr7KRW50wH1yK
+         qKm0kr2aYNmL1aPggCK7hUCgroEceSG3d1Oori1Di4ZCOyMc99J2kqovv8zc+sRHPdmg
+         QOAjA7xEmD7Eh7T+qAIgr1gLcBHuwrzoz4R0yN/+DpiH7eRiWE2oxZK5026s1d7I0l2A
+         twSKz/O0VSwDJ1ANW7eOXlQDS0zN37GFBDEIpbwzVF6FjVmFDX66+BDh0l/tgrly8bv8
+         zE3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=QOQ3iNRQCb6roTWkaa4i33Dga1TPikV7iFbWbpao1iE=;
-        b=pnK/lMav/5atlfMRJkQXjyYo4fFTg4a3L31hUp7s4zeM2m/PwvsflA6QiLPz5EhgvO
-         DfIY8z7sD+Pj6zL6VKScGRezrfrbqfOu36Kciqf04dLsmO27tLyIMpGn5mfoBR+9RjzN
-         p2qp6zRSz8fz10NnMOr4+LFPLwYGlrW5gm/RLYWMyKGAJKe/T/Z7uF1Tq2J/gKSeWls8
-         RmzGIgC9WBYk6ngPKlkMZR8+wDwWueHXO2BWdD/5OyWrWQ3y4LMdzRLBn+4ld3aeJibw
-         OX63yhtB4eptfEWosjCGnlMZr4nuwyACex/zkZcbM8h7Rjyuig9yPl4+rUGlWjYybVAu
-         phzA==
+        bh=tk0B/gAhH5xCYobEqHLx7hp9UVvEnCDuaQx9O+2h16c=;
+        b=MiPNSHJTCJ+JlgmnVvYXX+MiSMPD116LHefI/MrRVDz2n/v+iJzrxi69fDHTJDPUQc
+         zIJdI9clo9g7GRVcwPeNnXv8gyT4k3EAk87JLsSKNEe6Iig+xmIYNGOMVmUNi8reZGga
+         lZAGYPpT6zIqcAmGNINxsIrw40cLiaxAF75wAE7L/7xbls6MfhAt2+W2vWqqPqe5HtMW
+         2YiWiHIVRVjSNVRBmbEtEw9bid0MNw7ksuz3Din9uzhW3fBRXGhEGIU3PqHeIvbcGpx9
+         /lJ7RafYg+aQMHuvzSV3rQrtx7l2j+FUdNxOoWHwYGktfjbRDO0SmAjhx8FGwLOtxykU
+         1N6A==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ia7/eW7u;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l132si3272485ywc.172.2017.12.12.03.06.58
+        by mx.google.com with ESMTPS id h14si1676471ybg.280.2017.12.12.03.12.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 12 Dec 2017 03:06:58 -0800 (PST)
+        Tue, 12 Dec 2017 03:12:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ia7/eW7u;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57648 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57666 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eOiOo-00079U-2R
-	for alex.bennee@linaro.org; Tue, 12 Dec 2017 06:06:58 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37334)
+	id 1eOiTp-0001Ks-Oz
+	for alex.bennee@linaro.org; Tue, 12 Dec 2017 06:12:09 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39316)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1eOiOg-00078H-Mj
-	for qemu-arm@nongnu.org; Tue, 12 Dec 2017 06:06:51 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1eOiTb-0001Ht-BK
+	for qemu-arm@nongnu.org; Tue, 12 Dec 2017 06:12:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1eOiOa-0004EI-OX
-	for qemu-arm@nongnu.org; Tue, 12 Dec 2017 06:06:50 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:37828)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lersek@redhat.com>)
-	id 1eOiOa-0004Dj-Fe; Tue, 12 Dec 2017 06:06:44 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 18829C058EB0;
-	Tue, 12 Dec 2017 11:06:43 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-120-105.rdu2.redhat.com
-	[10.10.120.105])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 9556E614E2;
-	Tue, 12 Dec 2017 11:06:40 +0000 (UTC)
-To: Shannon Zhao <zhaoshenglong@huawei.com>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
+	(envelope-from <peter.maydell@linaro.org>) id 1eOiTa-0008FT-Jw
+	for qemu-arm@nongnu.org; Tue, 12 Dec 2017 06:11:55 -0500
+Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:32818)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1eOiTa-0008FE-EF
+	for qemu-arm@nongnu.org; Tue, 12 Dec 2017 06:11:54 -0500
+Received: by mail-oi0-x241.google.com with SMTP id w131so13738839oiw.0
+	for <qemu-arm@nongnu.org>; Tue, 12 Dec 2017 03:11:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=tk0B/gAhH5xCYobEqHLx7hp9UVvEnCDuaQx9O+2h16c=;
+	b=ia7/eW7uwvzjrRtgOFduOKWpGgCA09AZQN35H/By2DV7XftSqvOv3lv3noIev19REU
+	43Nef9l4ZrfYtTTWjlTbVwgfLqBjUd4+oGwyhDMU/9XCAIO7o/TVcO7X3B+YIwFOe/oR
+	esiTf/ItS/rBEP7Opn1U/9ksEZvPhStJcHb28=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=tk0B/gAhH5xCYobEqHLx7hp9UVvEnCDuaQx9O+2h16c=;
+	b=noNlqvJJ1TIqTaiecr+Zb9Ab9OozmlzM3eLkkJ1iHu8tBKu2U6IWM6Hx7lcEp/faLY
+	3G2EnmJtyN5GNgk/lrtXC/0esqgzC95chNCQohi7/m1rZ8yfbYDdmXWKyekLjqrpvX/e
+	Qso1AprNOqlxqAAdBxuj3aE/fFSCV7igeupYguUOV4sAaPPK8Tg8x+jheV0R9aHe5hSS
+	Mr22jGFeVakwwLNUvTL6LP+ndBmzdYIccNMC1EIj+behRQdCVXwMkl0C78LsDAPNqGqG
+	0tawwyqV1ihnfhmNZ2rFTcvdwkL29K64vsKl4YA3kvQ4YFry+g7+qAArvbSYxHB9lIVN
+	llnA==
+X-Gm-Message-State: AKGB3mIf4tH1xHS8H+aYaCyyAyudelgZWerFqNVn1gqzMD55MVff9stm
+	fxLMaTZAZg6uQETmPv6dNtkzf6Cc+LgxCWNabVE3Gw==
+X-Received: by 10.202.199.134 with SMTP id x128mr2789772oif.63.1513077113657; 
+	Tue, 12 Dec 2017 03:11:53 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.157.63.74 with HTTP; Tue, 12 Dec 2017 03:11:33 -0800 (PST)
+In-Reply-To: <ac182406-8011-9f19-38e7-37328434095b@redhat.com>
 References: <1512745328-5109-1-git-send-email-peter.maydell@linaro.org>
 	<1512745328-5109-4-git-send-email-peter.maydell@linaro.org>
 	<5A2F6ED9.5030605@huawei.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <ac182406-8011-9f19-38e7-37328434095b@redhat.com>
-Date: Tue, 12 Dec 2017 12:06:39 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.0
-MIME-Version: 1.0
-In-Reply-To: <5A2F6ED9.5030605@huawei.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Tue, 12 Dec 2017 11:06:43 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
+	<ac182406-8011-9f19-38e7-37328434095b@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 12 Dec 2017 11:11:33 +0000
+Message-ID: <CAFEAcA_9pee99KpL4zwVS5jJuiv2MCGp79crufpU1kH1Okg-Hg@mail.gmail.com>
+To: Laszlo Ersek <lersek@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::241
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 3/3] hw/arm/virt-acpi-build: Add
  second UART to ACPI tables
 X-BeenThere: qemu-arm@nongnu.org
@@ -101,72 +108,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: "Jason A . Donenfeld" <Jason@zx2c4.com>,
 	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
-	Drew Jones <drjones@redhat.com>, Andrea Bolognani <abologna@redhat.com>
+	Drew Jones <drjones@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>, Andrea Bolognani <abologna@redhat.com>,
+	Shannon Zhao <zhaoshenglong@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: inkhtrz4y3L0
+X-TUID: nKTKtrhrpolN
 
-On 12/12/17 06:53, Shannon Zhao wrote:
-> 
-> 
-> On 2017/12/8 23:02, Peter Maydell wrote:
->> Add the second UART to the ACPI tables.
->>
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->> ---
->> Pure guesswork, as I don't have a UEFI setup to hand and
->> am not familiar with ACPI table formats either...
->> ---
->>  hw/arm/virt-acpi-build.c | 5 +++++
->>  1 file changed, 5 insertions(+)
->>
->> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->> index 3d78ff6..a38287b 100644
->> --- a/hw/arm/virt-acpi-build.c
->> +++ b/hw/arm/virt-acpi-build.c
->> @@ -689,6 +689,7 @@ static void build_fadt(GArray *table_data, BIOSLinker *linker,
->>  static void
->>  build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>  {
->> +    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
->>      Aml *scope, *dsdt;
->>      const MemMapEntry *memmap = vms->memmap;
->>      const int *irqmap = vms->irqmap;
->> @@ -706,6 +707,10 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>      acpi_dsdt_add_cpus(scope, vms->smp_cpus);
->>      acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
->>                         (irqmap[VIRT_UART] + ARM_SPI_BASE));
->> +    if (!vmc->no_second_uart) {
->> +        acpi_dsdt_add_uart(scope, &memmap[VIRT_UART_2],
->> +                           (irqmap[VIRT_UART_2] + ARM_SPI_BASE));
->> +    }
->>      acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
->>      acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
->>      acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
->>
-> Reviewed-by: Shannon Zhao <zhaoshenglong@huawei.com>
-> 
+On 12 December 2017 at 11:06, Laszlo Ersek <lersek@redhat.com> wrote:
+> BTW, has anyone tested this with the ArmVirtQemu firmware? As far as I
+> can see from the firmware code, the firmware will use the PL011 whose
+> description comes first in the DTB (and ignore the other PL011), in an
+> fdt_next_node() traversal. Is that OK for the intended use case?
+> (Perhaps I should have asked this under the second patch, which updates
+> the DTB generator.)
 
-(Responding here so I don't have to manually update Shannon's email
-address while replying to patch 3/3 directly.)
+I haven't tested, since I don't have a working setup for that to hand.
+(Do you have instructions somewhere for getting it working?)
 
-acpi_dsdt_add_uart() does:
+The behaviour we would want would be for the firmware to keep using
+the PL011 at 0x09000000. (In an ideal world the firmware would
+prefer the UART marked in the 'stdout-path' in the DTB /chosen node,
+as the kernel does, I guess.)
 
-    Aml *dev = aml_device("COM0");
-    aml_append(dev, aml_name_decl("_HID", aml_string("ARMH0011")));
-    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
-
-The device name should be unique. Plus, within the same _HID, the _UID
-should be unique as well. I suggest adding another unsigned parameter to
-acpi_dsdt_add_uart(), and hooking it into COMx and _UID.
-
-
-BTW, has anyone tested this with the ArmVirtQemu firmware? As far as I
-can see from the firmware code, the firmware will use the PL011 whose
-description comes first in the DTB (and ignore the other PL011), in an
-fdt_next_node() traversal. Is that OK for the intended use case?
-(Perhaps I should have asked this under the second patch, which updates
-the DTB generator.)
-
-Thanks,
-Laszlo
+thanks
+-- PMM

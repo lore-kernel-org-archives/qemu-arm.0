@@ -1,120 +1,136 @@
-Received: by 10.223.159.74 with SMTP id f10csp3447401wrg;
-        Mon, 11 Dec 2017 22:08:51 -0800 (PST)
-X-Google-Smtp-Source: ACJfBot+iXI/VvkJXvoTadIX8eK2L1bc4FhjtTGXpaNPaVfMw1GuW9MCVvYLo7ieQCc7VgS9MnyP
-X-Received: by 10.13.220.198 with SMTP id f189mr2152721ywe.9.1513058931033;
-        Mon, 11 Dec 2017 22:08:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1513058931; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp3659484wrg;
+        Tue, 12 Dec 2017 02:47:25 -0800 (PST)
+X-Google-Smtp-Source: ACJfBovgdFfLElTgS5t9/4dodned97tFE7Jkr3+fibJvthccIxmYXKnpmwSXrO/NneIRY7HthrZj
+X-Received: by 10.129.65.81 with SMTP id f17mr2417205ywk.373.1513075645453;
+        Tue, 12 Dec 2017 02:47:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513075645; cv=none;
         d=google.com; s=arc-20160816;
-        b=pAYpVC0gBgQTixim2R33HXwIql5Vw2xgwyHX4wXYirKvSXTXc5nK7rC8q6+ZToXJqk
-         2aFfP0albeSztk9t2Kq/U0diTQidpHQ8Xh0wmQXCkHCbLbkIQQsRlUt/VqVo7NGcz+/1
-         0E8CfkVDFQUrZDMTM5cxPIqOcJkHL92pkT1TJOrk7or9xv9nE1M6fd8awClN6r7Zoss7
-         W8P++21Nk72PCtyMdGwAUNuvcnaT53BZWGqBhdzrSUmG82QBnb2U1JMXn8amQ/AayV+6
-         HOCI01MEo/dnXYZY2qqTEzgREpqIkmeeMyJW5VA0ULubIp1b8DvxFL1ib2vwJY8kNaGF
-         XAoQ==
+        b=Wkm8O8igj2ecv/zJJnKAETpNMMgj4k/2OqEa6nPis/KiM+5wEKwXAmf4PsO77U/uC8
+         xObC7Q7Qf8lKg+E+0IPPp346tXawY/lQ0kaHHMGpoy9k0MSGGxyQVVQq0QwKMRCShN/J
+         967nitTt1QOENKMcljctJNty7WvOlz1WAfU/ZlT9CiJsxrG2L0Ac+74ODwYLNusz5gE6
+         w3gCw0mg3vXXyAFuwBWogLhiNnwGbnwaGbE2EV2L2FqxkUwFsa2dbUcoRFkXpjU8HIQS
+         O6hjHBjXLSil4AJdQRg1Nq3OCVSYhnWQdH6rZRzQ05uM2NYaavhwTVZvhE9aF17SicJk
+         4Tyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:message-id
-         :date:to:from:arc-authentication-results;
-        bh=ZwKXRT8jHGl+jyfbKKFwsgUgFha3Tz8Xzdxpa5Hj6s0=;
-        b=Q0z5h+JWHe4xZwUCKGjayqFk0Adn6TNoOlu2uka3J2SkZG/ueeOgVZemAEIgWA5L1B
-         JoforR189kQkthuDEQR4oXn1I/WO4lBcx0W0ePqXCMleg6oFlI6CZeXCghUWjXuuvtbv
-         XCi3UqmrbleZ4glILGbLMHFh0S/8Dt2A86kH8hKH9yiDrAS+n6H3nuye0prXNxL0/Px+
-         75/xXVgve1d2o3pd0300v0fLfk+99dZpJgJcRsxbQcafrF4KmiePMpLKPtyguhAPyBki
-         TRnF9/PY7aSAEOefc0blru6xmsKooh5JaUMTv4s63FKrzdO6EnqIwavKSrOj79+sWW/A
-         tweg==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=ofsTu2uemCs9p7MQW6FBqKqYNkjWeFQYONMTQPvY+wo=;
+        b=HaltrER/Ilfqb5OmdN1XdbauxGoYR8MYQ/sjIb888/2ldlDvGV5mTUt9JsK8+COBT+
+         s0jTy2kiT6rMpEhDLvwjZesnLd2gXQe1X5yQ86LtN19qPT2anbLwH1BdWYl/yaw4oyeX
+         k2rY8KT7bD2JiuML7PSNvDK7QY2E7f9uf9X1S31dycuPytNy/MGhqScGbgUsJqjjfK11
+         pWiWwRNlkybNL/ApcEsmc8Ue/OiW8xe988b3FPeF+eCRPDehUB1h0v9hTm+EpSrpQRD+
+         IlPHuyA2tNSLtZPk21NuTpbMbM1LXgyoHWxf6AL9CB0H/XrBaiTPzKIJMDBbTdRHnLP3
+         nbwg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=j51iu6s0;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a65si3374406ywg.634.2017.12.11.22.08.50
+        by mx.google.com with ESMTPS id r1si3246283ybb.523.2017.12.12.02.47.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 11 Dec 2017 22:08:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 12 Dec 2017 02:47:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:56852 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=j51iu6s0;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57588 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eOdkI-0006O9-Fo
-	for alex.bennee@linaro.org; Tue, 12 Dec 2017 01:08:50 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56117)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eOi5s-0005bU-U0
+	for alex.bennee@linaro.org; Tue, 12 Dec 2017 05:47:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60548)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1eOdk9-0006Nz-Bb
-	for qemu-arm@nongnu.org; Tue, 12 Dec 2017 01:08:42 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1eOi4N-0004vx-RM
+	for qemu-devel@nongnu.org; Tue, 12 Dec 2017 05:45:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1eOdk5-0004ou-CH
-	for qemu-arm@nongnu.org; Tue, 12 Dec 2017 01:08:41 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2843)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1eOdk5-0004nm-1C; Tue, 12 Dec 2017 01:08:37 -0500
-Received: from 172.30.72.59 (EHLO DGGEMS414-HUB.china.huawei.com)
-	([172.30.72.59])
-	by dggrg04-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
-	with ESMTP id DLY63434; Tue, 12 Dec 2017 14:08:30 +0800 (CST)
-Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
-	DGGEMS414-HUB.china.huawei.com (10.3.19.214) with Microsoft SMTP Server
-	id 14.3.361.1; Tue, 12 Dec 2017 14:08:19 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-To: <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>
-Date: Tue, 12 Dec 2017 14:07:25 +0800
-Message-ID: <1513058845-9768-1-git-send-email-zhaoshenglong@huawei.com>
-X-Mailer: git-send-email 1.9.0.msysgit.0
+	(envelope-from <peter.maydell@linaro.org>) id 1eOi4K-0008V2-5c
+	for qemu-devel@nongnu.org; Tue, 12 Dec 2017 05:45:51 -0500
+Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:44484)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1eOi4K-0008UZ-0F
+	for qemu-devel@nongnu.org; Tue, 12 Dec 2017 05:45:48 -0500
+Received: by mail-ot0-x244.google.com with SMTP id d27so17392316ote.11
+	for <qemu-devel@nongnu.org>; Tue, 12 Dec 2017 02:45:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=ofsTu2uemCs9p7MQW6FBqKqYNkjWeFQYONMTQPvY+wo=;
+	b=j51iu6s0f+vaWqiNPAvEi0y4lX8oXdIJJh89zjXs28lApjEkE8DW79um+mkfuAtyYg
+	Cmg6BHEawwDZuJeXLHXyMGnnN9C+1bQ+dhkYSZN0Rxp1lUuNnaT02eo+QrQVp4eDW8iL
+	AXVn6M9LW0K5JhtGUN3werNMdBMYidbmHt+fY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=ofsTu2uemCs9p7MQW6FBqKqYNkjWeFQYONMTQPvY+wo=;
+	b=obZ2iobIpuwhv0rw0routFUUYMFw8/lqvUi0LtKCWbkQjXsTl5A1tERV4QMXFZNnRE
+	D/5MKiz77yHjf5vUAbEmn/mrdPiO4ixPbxqzFqOG+IvUraoUTUuqaOs0eDT1E0dQG4gH
+	5CQgYyX3J7MJvfvGzuMleKjZrOCbaE38ZqL84ye470UUAKq6K1IfM89Z5tsoOtvSiZJs
+	i1ID5kKSelCYAIFXoTSLA0G3707Vnc7gybGO/syFZ46/Qk9NnC7Tr3Sm0IvnqKRthepl
+	kxFk7m0URdSWgjV/ctUrwPJvySJVZjuG6tMPhlvJkIMB5TSQrJUTV5KyWSBvf1hMjdXZ
+	vuaQ==
+X-Gm-Message-State: AKGB3mKlINQwAHVOgBMog6iUF3awyTSJCPvOhJabxHI3MaNFaWsddCX0
+	k0HtBOdWZl8ELti9B4bv56gpd0JCkppXszqEexKo0w==
+X-Received: by 10.157.90.6 with SMTP id v6mr2830193oth.54.1513075547338; Tue,
+	12 Dec 2017 02:45:47 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020201.5A2F7260.0035, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2014-11-16 11:51:01, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 9f9b3fafae10b3a21ffdcc10cc7adf2f
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-	[fuzzy]
-X-Received-From: 45.249.212.190
-Subject: [Qemu-arm] [PATCH] MAINTAINERS: replace the unavailable email
- address
-X-BeenThere: qemu-arm@nongnu.org
+Received: by 10.157.63.74 with HTTP; Tue, 12 Dec 2017 02:45:26 -0800 (PST)
+In-Reply-To: <5A2F6F44.8050602@huawei.com>
+References: <1512745328-5109-1-git-send-email-peter.maydell@linaro.org>
+	<1512745328-5109-3-git-send-email-peter.maydell@linaro.org>
+	<5A2F6F44.8050602@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 12 Dec 2017 10:45:26 +0000
+Message-ID: <CAFEAcA926yVWg6n+QE0mydU5v1DLBwtkfEM+Hs28H9bMVcgyMA@mail.gmail.com>
+To: Shannon Zhao <zhaoshenglong@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::244
+Subject: Re: [Qemu-devel] [PATCH 2/3] hw/arm/virt: Add another UART to the
+ virt board
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 47DnqJgz1l5K
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: "Jason A . Donenfeld" <Jason@zx2c4.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Shannon Zhao <shannon.zhao@linaro.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rayhOWRBVgtB
 
-From: Zhaoshenglong <zhaoshenglong@huawei.com>
+On 12 December 2017 at 05:55, Shannon Zhao <zhaoshenglong@huawei.com> wrote:
+> On 2017/12/8 23:02, Peter Maydell wrote:
+>> Currently we only provide one non-secure UART on the virt
+>> board. This is OK for most purposes, but there are some
+>> use cases where having a second UART would be useful (like
+>> bare-metal testing where you don't really want to have to
+>> probe and set up a PCI device just to have a second comms
+>> channel).
 
-Since I'm not working as an assignee in Linaro, replace the Linaro email
-address with my personal one.
+> I'm wondering if it need to provide a machine option for user to choose
+> whether adding the second uart or not.
 
-Signed-off-by: Zhaoshenglong <zhaoshenglong@huawei.com>
----
- MAINTAINERS | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+It seems harmless enough to me to provide it always.
+It doesn't increase the attack surface for security
+vulnerabilities because it's the same device as the
+first UART the guest already has access to.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 0255113..45e2e20 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -543,7 +543,7 @@ F: include/hw/*/xlnx*.h
- 
- ARM ACPI Subsystem
- M: Shannon Zhao <zhaoshenglong@huawei.com>
--M: Shannon Zhao <shannon.zhao@linaro.org>
-+M: Shannon Zhao <shannon.zhaosl@gmail.com>
- L: qemu-arm@nongnu.org
- S: Maintained
- F: hw/arm/virt-acpi-build.c
--- 
-2.0.4
+Do you have a scenario in mind where it would be bad
+to provide the second uart?
 
-
+thanks
+-- PMM

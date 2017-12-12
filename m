@@ -1,100 +1,100 @@
-Received: by 10.223.159.74 with SMTP id f10csp4029139wrg;
-        Tue, 12 Dec 2017 08:38:39 -0800 (PST)
-X-Google-Smtp-Source: ACJfBotqyYyhu4YqFR26cnNjIrCbUOcWjxwXxAi1eMrPteR6Tm/iqy7TVI4qhsBxPoCTbwZo7dvf
-X-Received: by 10.129.87.210 with SMTP id l201mr3353916ywb.2.1513096719543;
-        Tue, 12 Dec 2017 08:38:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1513096719; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp4075709wrg;
+        Tue, 12 Dec 2017 09:22:47 -0800 (PST)
+X-Google-Smtp-Source: ACJfBot1tdUwt8bA1rfmcfbK2g0i6jEgZe4p6K6YW/Qkv7Z8bq7u1AOh8j+qnhLJYNoDRGNYZxeU
+X-Received: by 10.129.81.147 with SMTP id f141mr3462911ywb.194.1513099367472;
+        Tue, 12 Dec 2017 09:22:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513099367; cv=none;
         d=google.com; s=arc-20160816;
-        b=Vn4H6ib/2AjyiZwxzBTTN98sIePiJlNZCNkxlS0kOGtRMuWfjIPzmJAvAc3ec4dkG+
-         NDxa0CHUP7o7n1Oqa9MuR9FtuYHxdJ05389k4DHwpQUvEymhjrwKSgzUGr4Dr3QIrDhQ
-         K6ZQFkkUF+zEWajjWxo3oKHFC6lO+C6IoKPpfL7OUx1xpMCTaKHYjD6jWZedu6ocFekJ
-         Lj+W1TyLYcFvG1tq8s79sIpY0QI1Ekv+1zSBvexK8T6N86oQpGfUv1jPeFDGNmxmv3Si
-         9c3PKXt7JMQ9HJWnrZGqCE0PwNu3y6RoF4ZEnZvBQdI+T788vlalVV3z58oHyal2tnj+
-         AZOg==
+        b=cE2Y1mGH8r9pFXum0TglWPolJo5kUydTJNmrZCetx+nFkqA5AN9rp3UaAGL4Ulsdiq
+         ijr09bSq118qHM9AH0S7bJUSgbV6MABR5YDzWiH4gm7y/wmGgraBavA/FfpEwIFCCKf+
+         oA4NH55CuAx1KnICOFHw05mm+IWHYwMStp+fCuQTxlh7txuXa/7uxho4gN+YRXpTkpc6
+         PrRsWjRAHZufP9cm+buyGSRr6mWNXHzdF6CpCyU7ElkE65xAOiK0Nx23AJVPgtDcIzo2
+         w17bJvmqh9fKWJ82hAnctopGzjgGQlOdMwYn8DuhRgVyG2aeltB6HDrRioGptEOAA/Y/
+         MDeg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
-         :arc-authentication-results;
-        bh=jIaUTarTx6ZPSfL1qIg3oqh4F45G5VksZJkMhEwtVPQ=;
-        b=U4tYHWFihbiMHb5vM+kOlxKzZqqYOHqAYl6otf16zq8ozWHOe4AQPm+bO64MpLP5T0
-         JS+0d0iwBG+xrLrybqggHBf1hKfgcuPB1OkkuZI2j2XIEnckR9wCZmt6zZ27Z1P5AK4r
-         2JbN8soJgi1Y5J7J9cQslcwSKIR9wawQPtUJLupJrzBoaTC93axksgj1vR0sl2GUMXWC
-         Zv+ge1FghnXuKhFC+odkgjwj1kA11E7k9Zvvh34qbdAz7/yj/k6xcR7dRVEejTOWof+M
-         3rZOVrJDSbqFQSueAU/3jFSjzFJa3HsPYPaIne9fLgnHezyruOoXssorbYjM+OZyNn8P
-         sZRg==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=/XRrAmAt87ZG3QpNK2cUtroZY5BatJCFfXajhPAtN8o=;
+        b=PQ1N0MruqWQ5smHdEiQO6Mr2OeyEn84um/Ry0/36cTNS79oEu2LYw/xCY6gFkr4ttz
+         CXpHYsUu3sxQoRkpusNpS+Dpr/5nQ3tQoo4RSBsA+N3maTFakoC0nrKxCNDtxwxsHPmE
+         C+TE14fP7+hVSOiwNc9JuIbG6WZYhi55UJoG6cC/kQnDKGEqSe94OXMqXkXWYJ7KPcJ1
+         wnc9j9+SW9XYxcYyEE2EREjN54/pTO/nVfa5vPzUYY3B4Nx+dH0cH2GtMEV7AnFcWGG4
+         rMN2KNLLCQ13qynEUUilZkZlOQqh4v7JUdWLKNBvOdahFgAWzGbR6QYRUoeRSKNXnJ3U
+         G8lg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=EKeL7d2l;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x7si3539520ywe.550.2017.12.12.08.38.39
+        by mx.google.com with ESMTPS id v137si3444897ywg.348.2017.12.12.09.22.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 12 Dec 2017 08:38:39 -0800 (PST)
+        Tue, 12 Dec 2017 09:22:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=EKeL7d2l;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59323 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59665 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eOnZm-0004xV-Vz
-	for alex.bennee@linaro.org; Tue, 12 Dec 2017 11:38:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38114)
+	id 1eOoGU-0008DT-TL
+	for alex.bennee@linaro.org; Tue, 12 Dec 2017 12:22:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52952)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1eOnZb-0004vB-7R
-	for qemu-arm@nongnu.org; Tue, 12 Dec 2017 11:38:28 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1eOoGH-0008CD-If
+	for qemu-arm@nongnu.org; Tue, 12 Dec 2017 12:22:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1eOnZY-00018O-0Z
-	for qemu-arm@nongnu.org; Tue, 12 Dec 2017 11:38:27 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:59636)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lersek@redhat.com>)
-	id 1eOnZX-00017w-Mv; Tue, 12 Dec 2017 11:38:23 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C9B0C7EA84;
-	Tue, 12 Dec 2017 16:38:22 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-120-105.rdu2.redhat.com
-	[10.10.120.105])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 8A9706266F;
-	Tue, 12 Dec 2017 16:38:20 +0000 (UTC)
-To: Andrew Jones <drjones@redhat.com>,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>
-References: <09e7b89f-27f2-1787-b371-7b0c0eff78b8@redhat.com>
-	<CAFEAcA-357eVt3s_7ULWxssQttvAV0DkUv_tGkyk8umVgfH1QA@mail.gmail.com>
-	<d776710c-2255-947b-22c6-336e9491bb81@redhat.com>
-	<CAKv+Gu9e6qwJ4=t=UHHGsVs1XM26agh17Mgy0ckAvUsy+2xi2A@mail.gmail.com>
-	<CAFEAcA9JzK8sNF5TmENfXZ-NBJwfp03b2La4YQ=N2i1ZCzrNBw@mail.gmail.com>
-	<CAKv+Gu_mzynBKSBSdtUhKRgNd3KmuJTwiNZpmvPCfkRDo_QCgA@mail.gmail.com>
-	<CAFEAcA9HAcZTi6bT-FbsG9LtqO=4s7rpcz0niZbimG834t4uHA@mail.gmail.com>
-	<CAKv+Gu8gZ-Y4-zV2GRgbXPcignAg3vi8__XaFXqAhYOZOL7GcQ@mail.gmail.com>
-	<CAFEAcA8OY3PFk_bermKxQBuF_th7SudHgaRk8wf76EAGYnoCGw@mail.gmail.com>
-	<CAKv+Gu_939a=cui76H5FqCZwbWqDUYhegNe18T+tBpq7CW+TrA@mail.gmail.com>
-	<20171212145138.dqw6op2orgynlykk@kamzik.brq.redhat.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <a4410334-b9c9-3158-7b01-f1ba2db6d7f5@redhat.com>
-Date: Tue, 12 Dec 2017 17:38:19 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.0
+	(envelope-from <peter.maydell@linaro.org>) id 1eOoGG-0002Wi-HS
+	for qemu-arm@nongnu.org; Tue, 12 Dec 2017 12:22:33 -0500
+Received: from mail-ot0-x233.google.com ([2607:f8b0:4003:c0f::233]:35775)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1eOoGG-0002WH-Bq
+	for qemu-arm@nongnu.org; Tue, 12 Dec 2017 12:22:32 -0500
+Received: by mail-ot0-x233.google.com with SMTP id q3so18437758oth.2
+	for <qemu-arm@nongnu.org>; Tue, 12 Dec 2017 09:22:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=/XRrAmAt87ZG3QpNK2cUtroZY5BatJCFfXajhPAtN8o=;
+	b=EKeL7d2lbZvUyxRzKOoz8w1EeQaTEc2y0IZgQGRRwEB8LMTCySQ3kuc5oTMlppPU/D
+	tRfX/e9PscH4pZ58VGCLONslHUxY2XIZNFXFdXguly5DVOF+oAUzyh78e6OamkUwdzqC
+	3XDrsk7WZzYaRqtpTxPFUOcSXAbsZ+VKV/QQ0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=/XRrAmAt87ZG3QpNK2cUtroZY5BatJCFfXajhPAtN8o=;
+	b=nLmB3W3057bZ9ADl/Ni/7mL63QRqlMwa6jp/b2w45FN6HL9KxreWDZj6P27e6iWNvc
+	+cmUlsYhayCQdWiWzCCf0CL7fVm1Jr9CmQ2tFQbH/rGD1u4WLRV+CkWwW13gMee3FnnN
+	UfUO5yrBYsDM+TOkrCMkfXJCvFvsj1c87xqYTH48+kQ922e66CfT0Ytz6L5GweGbQfd6
+	091W2ZRjhgqwIF21Afer615CeqqY0psg6qiuOXMnvzp8LAb702vLaNV1cvVM5Pj7TbW7
+	MRrmlSPrBUfy4qD51Pp0K0nHo+igcS8r+DVXb/hUGpy2+Lm304EMBHXWN2A6V/6zUT4y
+	vigA==
+X-Gm-Message-State: AKGB3mIwqu26ro9+E6SQWOl4aChIBMBAyle/5vO3DgjdnTPp7srxkXsJ
+	7VdYiIphRd1sWP8Jrd8A+LVxC4ntcI5EObT0mDaEKw==
+X-Received: by 10.157.13.168 with SMTP id 37mr4185251ots.197.1513099351497;
+	Tue, 12 Dec 2017 09:22:31 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20171212145138.dqw6op2orgynlykk@kamzik.brq.redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Tue, 12 Dec 2017 16:38:22 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 3/3] hw/arm/virt-acpi-build: Add
- second UART to ACPI tables
+Received: by 10.157.63.74 with HTTP; Tue, 12 Dec 2017 09:22:11 -0800 (PST)
+In-Reply-To: <b8fdafd1-d8d8-056f-681e-d5469dc79edd@amsat.org>
+References: <1512154296-5652-1-git-send-email-peter.maydell@linaro.org>
+	<1512154296-5652-3-git-send-email-peter.maydell@linaro.org>
+	<b8fdafd1-d8d8-056f-681e-d5469dc79edd@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 12 Dec 2017 17:22:11 +0000
+Message-ID: <CAFEAcA-ON_8zKaMeUMf84gtFTYeCMFQzJahnA=kXXTkh-yHEmg@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::233
+Subject: Re: [Qemu-arm] [PATCH 2/2] nvic: Make systick banked
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,150 +106,68 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Jason A . Donenfeld" <Jason@zx2c4.com>,
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>,
-	Andrea Bolognani <abologna@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Shannon Zhao <zhaoshenglong@huawei.com>
+	"patches@linaro.org" <patches@linaro.org>,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NmiEvuTHwakD
+X-TUID: BmEHW16Lfdpi
 
-On 12/12/17 15:51, Andrew Jones wrote:
-> On Tue, Dec 12, 2017 at 02:31:05PM +0000, Ard Biesheuvel wrote:
->> On 12 December 2017 at 14:17, Peter Maydell
->> <peter.maydell@linaro.org> wrote:
->>> On 12 December 2017 at 14:16, Ard Biesheuvel
->>> <ard.biesheuvel@linaro.org> wrote:
->>>> On 12 December 2017 at 14:13, Peter Maydell
->>>> <peter.maydell@linaro.org> wrote:
->>>>> On 12 December 2017 at 14:12, Ard Biesheuvel
->>>>> <ard.biesheuvel@linaro.org> wrote:
->>>>>> On 12 December 2017 at 14:10, Peter Maydell
->>>>>> <peter.maydell@linaro.org> wrote:
->>>>>>> That doesn't actually usefully separate debug output from the
->>>>>>> console, though, because stdout-path is also going to point
->>>>>>> to the UART with the lowest physical address...
->>>>>>>
->>>>>>
->>>>>> By default, yes, just like is currently the case. But I would
->>>>>> assume this new serial port could be appointed 'console' and put
->>>>>> into stdout-path by QEMU, based on the command line options?
->>>>>
->>>>> We don't have any command line options for doing that, and I'm
->>>>> generally reluctant to introduce new command line UI, especially
->>>>> new command line UI that's specific to Arm and not also needed
->>>>> for x86.
->>>>>
->>>>
->>>> If stdout-path is always going to point to pl011@0x9000000, why
->>>> would we need to parse it?
->>>
->>> If you had always parsed stdout-path, we wouldn't need to worry
->>> about the order in which the UART nodes appear in the dtb...
->>>
->>
->> That's a fair point. But it still does not justify introducing added
->> complexity in the firmware, if the conclusion is always going to be
->> that the console will be on pl011@9000000.
->>
->> To Drew's point re DEBUG builds, I don't think we should generally
->> enable DEBUG and send the output to nowhereland if the user does not
->> wire it up. That's a MMIO trap and two world switches for each
->> character written, if I am not mistaken, and the DEBUG builds are
->> very noisy.
->
-> 100% agree, which is why I said "If a user wires up a second UART...",
-> but I guess my "Not wiring it up would lose the messages..." sentence
-> was ambiguous. I didn't mean they'd output to no where, I meant those
-> messages wouldn't be output. I.e. some sort of debug_printf() function
-> would be written that only actually does a write when there's a debug
-> UART on the other end to write to.
+On 5 December 2017 at 04:13, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
+wrote:
+> Anyway:
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-Right; this can be implemented based on the DTB. Please see below.
+Thanks; I will squash this diff in when I apply to target-arm.next:
 
+--- a/hw/intc/armv7m_nvic.c
++++ b/hw/intc/armv7m_nvic.c
+@@ -2068,9 +2068,14 @@ static void armv7m_nvic_realize(DeviceState
+*dev, Error **errp)
+         return;
+     }
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->systick[M_REG_NS]), 0,
+-                       qdev_get_gpio_in_named(dev, "systick-trigger", 0));
++                       qdev_get_gpio_in_named(dev, "systick-trigger",
++                                              M_REG_NS));
 
-> I just commented on patch 2/3 of this series asking if we shouldn't
-> just not allocate the second UART's MMIO region and IRQ, when the user
-> doesn't provide a '-serial' option for it. If we didn't, then AAVMF
-> would just not output debug messages when only one UART (the console)
-> is found in the DT.
+     if (arm_feature(&s->cpu->env, ARM_FEATURE_M_SECURITY)) {
+-        object_initialize(&s->systick[M_REG_S], sizeof(s->systick[M_REG_NS=
+]),
++        /* We couldn't init the secure systick device in instance_init
++         * as we didn't know then if the CPU had the security extensions;
++         * so we have to do it here.
++         */
++        object_initialize(&s->systick[M_REG_S], sizeof(s->systick[M_REG_S]=
+),
+                           TYPE_SYSTICK);
+         qdev_set_parent_bus(DEVICE(&s->systick[M_REG_S]),
+sysbus_get_default());
+@@ -2082,7 +2087,8 @@ static void armv7m_nvic_realize(DeviceState
+*dev, Error **errp)
+             return;
+         }
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->systick[M_REG_S]), 0,
+-                           qdev_get_gpio_in_named(dev, "systick-trigger", =
+1));
++                           qdev_get_gpio_in_named(dev, "systick-trigger",
++                                                  M_REG_S));
+     }
 
-This is what we ultimately want down-stream, yes; but up-stream, it
-would be an incompatible change -- DEBUG builds used with one UART only
-would suddenly not produce debug messages.
+     /* The NVIC and System Control Space (SCS) starts at 0xe000e000
+@@ -2161,7 +2167,8 @@ static void armv7m_nvic_instance_init(Object *obj)
+
+     sysbus_init_irq(sbd, &nvic->excpout);
+     qdev_init_gpio_out_named(dev, &nvic->sysresetreq, "SYSRESETREQ", 1);
+-    qdev_init_gpio_in_named(dev, nvic_systick_trigger, "systick-trigger", =
+2);
++    qdev_init_gpio_in_named(dev, nvic_systick_trigger, "systick-trigger",
++                            M_REG_NUM_BANKS);
+ }
+
+ static void armv7m_nvic_class_init(ObjectClass *klass, void *data)
 
 
-I don't think I can continue discussing this without going into
-ArmVirtQemu specifics. We have the following layers of drivers and
-library classes / instances (more abstract higher up on the diagram).
-
-The top left node stands for debug messages written by any modules, and
-the top right node stands for the abstraction (EFI_SERIAL_IO_PROTOCOL)
-through which interactive console / terminal IO occurs ultimately (it
-requires a few more layers on top but those don't matter for now).
-
-
-[any driver that writes debug messages]    SerialDxe
-  |  |                                     (DXE driver that produces
-  |  |                                     EFI_SERIAL_IO_PROTOCOL;
-  |  DebugLib:BaseDebugLibNull  +-----+----uses DebugLib for one
-  |  (used for RELEASE builds; /     /     ASSERT_EFI_ERROR();
-  |  DEBUG messages are dropped     /      uses SerialPortLib for
-  |  indiscriminately)             /       producing
-  |                               /        EFI_SERIAL_IO_PROTOCOL)
-  |                              /           |
-  DebugLib:BaseDebugLibSerialPort            |
-  (for DEBUG / NOOPT builds;                 |
-  debug messages are written to              |
-  the serial port)                           |
-    |  |                                     |
-    |  |                                     |
-    |  SerialPortLib: FdtPL011SerialPortLib  |
-    |  (used by DXE and later modules, the UART
-    |  base need not be parsed repeatedly from the
-    |  DTB)                                       \
-    |                                              \
-    |                                               \
-    SerialPortLib: EarlyFdtPL011SerialPortLib        \
-    (used for early (pre-DXE) modules; the   \        +
-    DTB is parsed on every serial port        \       |
-    action for the UART base address)          \      |
-                                                \     |
-                                                 \    |
-                                                  PL011UartLib
-                                                  (actual hw access)
-
-This is super messy, because in a DEBUG build, debug messages (such as
-an assertion failure report) in SerialDxe itself would have to be logged
-to "one" serial port, but the exact same driver should use the "other"
-serial port for implementing EFI_SERIAL_IO_PROTOCOL. Currently both
-"paths" go through FdtPL011SerialPortLib, which -- i.e., the
-SerialPortLib *class* itself -- cannot handle more than one serial port
-(in the same UEFI executable).
-
-So, for upstream,
-
-(1) we need two new DebugLib instances (pre-DXE, and DXE-or-later), for
-    the ArmVirtQemu platform, such that they use PL011UartLib directly,
-    without going through the SerialPortLib class.
-
-    These DebugLib instances will have to parse the DTB for the UART
-    base address (on all calls, or initially). If there is only one
-    UART, use that, otherwise, use the one that is found second in the
-    DTB.
-
-(2) In RELEASE builds, BaseDebugLibNull should remain OK (DEBUG messages
-    are dropped statically).
-
-(3) The current SerialPortLib instances need not be changed; they can
-    continue using the first UART found in the DTB.
-
-
-For downstream, the DebugLib instances from (1) can be customized so
-that debug messages are dropped if only one UART is found in the DTB.
-(I.e., never write a DEBUG message unless you can write it separate from
-whatever port is used by FdtPL011SerialPortLib.)
-
-Thanks,
-Laszlo
+thanks
+-- PMM

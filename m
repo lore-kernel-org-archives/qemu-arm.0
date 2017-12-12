@@ -1,88 +1,86 @@
-Received: by 10.223.159.74 with SMTP id f10csp3931161wrg;
-        Tue, 12 Dec 2017 07:09:37 -0800 (PST)
-X-Google-Smtp-Source: ACJfBouwYA07x/56++eua/rk+1GuGuXZIgd7DPkvA+gMkXJ4nFrXZJ5ASsuW77nAg3cSfj46fE//
-X-Received: by 10.13.221.133 with SMTP id g127mr2956514ywe.125.1513091377518;
-        Tue, 12 Dec 2017 07:09:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1513091377; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp3940068wrg;
+        Tue, 12 Dec 2017 07:17:11 -0800 (PST)
+X-Google-Smtp-Source: ACJfBosL7LwwvQpf5zd2OtcQVA7aXA1mzchBsrmjDrufZbeZeEtKQSXufgWxJiZ0njb4JYZXnz5S
+X-Received: by 10.37.201.193 with SMTP id z184mr3063148ybf.110.1513091830993;
+        Tue, 12 Dec 2017 07:17:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513091830; cv=none;
         d=google.com; s=arc-20160816;
-        b=mMGGYZ8FoQWS0BcckVuoUhWTItj+kJsLaDkiTlA2DqtADFGUnirOeIkE9jm4T77YdU
-         O/LklkNcthDdVDBv4gegfn9WTLWBPhfbpHFzM/TBz5uvQCrFg+L6XzbBtCgC2nG2IiuP
-         8uv9bZZqbqqP9w5+/1Nnf5IbmJBfB7dMtsoyOUmp/ndJSxu7nkGumo1MH+1TyXJeNeVF
-         xcjw+d4PJXTpfHnCl2vjs7KnYm/+GDzZo8AL8pKbQxBiSCpnUVUooYZ22wr83Uk0+0UH
-         vg0W2rdpcw6tY3sRMeaQ2ZymxC0yTPgJmLTCw5pD7HK5UWhR1HqSbRizuCsvGi9HieJ0
-         tLkA==
+        b=wTGVfy2UfzgwBxIqYA61BPqZRi1ylh4q1icqodWqhNNgH2e03QEoaJyN5r5Ze+EfK8
+         +UCe0G8SUjwJ+WhywL0nTLzuJ2ID+V0P/wAzP5+q9gO92SbBXH/eB5Og9YWuOqvXrmFS
+         xcMyJjjkP9QClO1VPmdmQRPqCa67+JlIwrM4/QM9CyREDvBWGafMfWR74hFkUthR+YsK
+         SES/qeE8SJkHackG39pmsDCaiCHyHpH1LYgrHV/2BtIbe9VRCYssEzxRCIX4OfwtP0Bi
+         PTfdvXV9gOwqvREtnWLMeBc/PDTcmCBbDJ1YCTG0Bv6sRJN7rf8O4NjKRagreClo67Bm
+         iDwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date
          :arc-authentication-results;
-        bh=2K4dq+1it3Bv9Wyei3KeEZMFo+yz9Y/HMcZTFxrvB9E=;
-        b=dBMO+U3tykmlR+ZgsZytXCtT9qh1ZhxsMAt/83a9bpy7DwUnWQZZcVgWrkf9/AeWWG
-         /P/RnxGPqDHMDGfigLGSlj2t+EfcVJ++UoPIOZ4wCTjriGaTWZ94ZY9KYvNw9dzEvzYb
-         4bYltVdeAureCdrsEY5nwaCFjmwVacN6h+Mu5QlwcuwOsdP8VXTn+2F5Z45P5npGC6QT
-         vWaztVrlJ/Zvfh17vCf1/zC1H+cbbMDXcROHYlbidmUmbzTOtrWKj7gD0eRB1qiuwi3W
-         +GIRkirS9ivTIM+5B2MXqzTyzVkRsFXNC+xV5tgHDMzYwx/MFZMW/hoTWBC5SPj6dYC9
-         uGAg==
+        bh=gxGmC4GpEK2JzK2g4EghWjHd0xeRmBR+vkv2bX0AycM=;
+        b=iyqjlNM/fV3wejOwyMbEgamv9EpVBqhFx1ffO5IcJI9snai7OJMpc8zCEPchw3dl6B
+         s6CHDGNzw/MOXbvQxUwGPq0MKW192JVlakec+f3gyOFrutMhwQIrtSmEcMyFIKX+lRpV
+         BHGKmnz91G/8i1AYL0LJ18gHnesRgF0TJ//B3QwnwP9xAH9MzF3Xr+CawsPFxxZNyBqS
+         hAqsRkaAAGmRsiVfGbKMvQHxIEIuXVtAB4Ogq4AhslWDsJCjuKKR9hQaXmObfJotJpQA
+         Ym+OxIU9JtMS/7DTVO3gnkQMWMnn/+a8+GzjunM+K1VEN2cG8mIQPdoLvzUY+3TmLiyD
+         VCUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m66si3381867ywb.608.2017.12.12.07.09.37
+        by mx.google.com with ESMTPS id i190si1863373ybg.103.2017.12.12.07.17.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 12 Dec 2017 07:09:37 -0800 (PST)
+        Tue, 12 Dec 2017 07:17:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58874 helo=lists.gnu.org)
+Received: from localhost ([::1]:58927 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eOmBd-00081z-0S
-	for alex.bennee@linaro.org; Tue, 12 Dec 2017 10:09:37 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58351)
+	id 1eOmIw-0006F9-Bm
+	for alex.bennee@linaro.org; Tue, 12 Dec 2017 10:17:10 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34954)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1eOmBR-00080t-0P
-	for qemu-arm@nongnu.org; Tue, 12 Dec 2017 10:09:26 -0500
+	(envelope-from <drjones@redhat.com>) id 1eOmIk-0006Dt-RS
+	for qemu-arm@nongnu.org; Tue, 12 Dec 2017 10:17:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1eOmBO-0004yz-Fq
-	for qemu-arm@nongnu.org; Tue, 12 Dec 2017 10:09:25 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:45034)
+	(envelope-from <drjones@redhat.com>) id 1eOmIe-0001oh-Kp
+	for qemu-arm@nongnu.org; Tue, 12 Dec 2017 10:16:58 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:50792)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1eOmBO-0004yL-6e; Tue, 12 Dec 2017 10:09:22 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
+	id 1eOmIe-0001ns-BY; Tue, 12 Dec 2017 10:16:52 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4261EC070E31;
-	Tue, 12 Dec 2017 15:09:20 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 8B236C060215;
+	Tue, 12 Dec 2017 15:16:51 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id D6B676266F;
-	Tue, 12 Dec 2017 15:09:14 +0000 (UTC)
-Date: Tue, 12 Dec 2017 16:09:12 +0100
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 63A91614E0;
+	Tue, 12 Dec 2017 15:16:50 +0000 (UTC)
+Date: Tue, 12 Dec 2017 16:16:47 +0100
 From: Andrew Jones <drjones@redhat.com>
-To: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <20171212150912.b5oc4dz5hxcex22q@kamzik.brq.redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20171212151647.k4alvf7xbdky2whk@kamzik.brq.redhat.com>
 References: <1512745328-5109-1-git-send-email-peter.maydell@linaro.org>
-	<1512745328-5109-4-git-send-email-peter.maydell@linaro.org>
-	<5A2F6ED9.5030605@huawei.com>
-	<ac182406-8011-9f19-38e7-37328434095b@redhat.com>
+	<1512745328-5109-3-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ac182406-8011-9f19-38e7-37328434095b@redhat.com>
+In-Reply-To: <1512745328-5109-3-git-send-email-peter.maydell@linaro.org>
 User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Tue, 12 Dec 2017 15:09:20 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.32]);
+	Tue, 12 Dec 2017 15:16:51 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 3/3] hw/arm/virt-acpi-build: Add
- second UART to ACPI tables
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 2/3] hw/arm/virt: Add another
+ UART to the virt board
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -94,77 +92,125 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Jason A . Donenfeld" <Jason@zx2c4.com>,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
-	qemu-devel@nongnu.org, Andrea Bolognani <abologna@redhat.com>,
-	qemu-arm@nongnu.org, Shannon Zhao <zhaoshenglong@huawei.com>
+Cc: "Jason A . Donenfeld" <Jason@zx2c4.com>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org, Shannon Zhao <shannon.zhao@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zDkWX6PqoqvM
+X-TUID: LWVvKxeD/LKa
 
-On Tue, Dec 12, 2017 at 12:06:39PM +0100, Laszlo Ersek wrote:
-> On 12/12/17 06:53, Shannon Zhao wrote:
-> > 
-> > 
-> > On 2017/12/8 23:02, Peter Maydell wrote:
-> >> Add the second UART to the ACPI tables.
-> >>
-> >> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> >> ---
-> >> Pure guesswork, as I don't have a UEFI setup to hand and
-> >> am not familiar with ACPI table formats either...
-> >> ---
-> >>  hw/arm/virt-acpi-build.c | 5 +++++
-> >>  1 file changed, 5 insertions(+)
-> >>
-> >> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> >> index 3d78ff6..a38287b 100644
-> >> --- a/hw/arm/virt-acpi-build.c
-> >> +++ b/hw/arm/virt-acpi-build.c
-> >> @@ -689,6 +689,7 @@ static void build_fadt(GArray *table_data, BIOSLinker *linker,
-> >>  static void
-> >>  build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-> >>  {
-> >> +    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-> >>      Aml *scope, *dsdt;
-> >>      const MemMapEntry *memmap = vms->memmap;
-> >>      const int *irqmap = vms->irqmap;
-> >> @@ -706,6 +707,10 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-> >>      acpi_dsdt_add_cpus(scope, vms->smp_cpus);
-> >>      acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
-> >>                         (irqmap[VIRT_UART] + ARM_SPI_BASE));
-> >> +    if (!vmc->no_second_uart) {
-> >> +        acpi_dsdt_add_uart(scope, &memmap[VIRT_UART_2],
-> >> +                           (irqmap[VIRT_UART_2] + ARM_SPI_BASE));
-> >> +    }
-> >>      acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
-> >>      acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
-> >>      acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
-> >>
-> > Reviewed-by: Shannon Zhao <zhaoshenglong@huawei.com>
-> > 
+On Fri, Dec 08, 2017 at 03:02:07PM +0000, Peter Maydell wrote:
+> Currently we only provide one non-secure UART on the virt
+> board. This is OK for most purposes, but there are some
+> use cases where having a second UART would be useful (like
+> bare-metal testing where you don't really want to have to
+> probe and set up a PCI device just to have a second comms
+> channel).
 > 
-> (Responding here so I don't have to manually update Shannon's email
-> address while replying to patch 3/3 directly.)
+> Add a second NS UART to the virt board. This will be the
+> second serial device if 'secure=no' (the default), and the
+> third serial device if 'secure=yes'.
 > 
-> acpi_dsdt_add_uart() does:
-> 
->     Aml *dev = aml_device("COM0");
->     aml_append(dev, aml_name_decl("_HID", aml_string("ARMH0011")));
->     aml_append(dev, aml_name_decl("_UID", aml_int(0)));
-> 
-> The device name should be unique. Plus, within the same _HID, the _UID
-> should be unique as well. I suggest adding another unsigned parameter to
-> acpi_dsdt_add_uart(), and hooking it into COMx and _UID.
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  include/hw/arm/virt.h |  2 ++
+>  hw/arm/virt.c         | 19 ++++++++++++++++---
+>  2 files changed, 18 insertions(+), 3 deletions(-)
 
-Yes, I agree with Laszlo here (and confirmed with Igor). Also, if memory
-serves me, the _ADR part of acpi_dsdt_add_uart() is only there to deal
-with early Linux ACPI support not finding the console UART correctly.
-I believe it does now, meaning the _ADR could even be removed for COM0,
-and we certainly don't want it for COM1 because it's point is to find
-COM0, so the new unsigned parameter should also be used as condition for
-it. A later patch could remove it altogether.
 
-Thanks,
-drew
+Reviewed-by: Andrew Jones <drjones@redhat.com>
+
+> 
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index 33b0ff3..685009a 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -72,6 +72,7 @@ enum {
+>      VIRT_GPIO,
+>      VIRT_SECURE_UART,
+>      VIRT_SECURE_MEM,
+> +    VIRT_UART_2,
+>  };
+>  
+>  typedef struct MemMapEntry {
+> @@ -85,6 +86,7 @@ typedef struct {
+>      bool no_its;
+>      bool no_pmu;
+>      bool claim_edge_triggered_timers;
+> +    bool no_second_uart;
+>  } VirtMachineClass;
+>  
+>  typedef struct {
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 543f9bd..e234f55 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -139,6 +139,7 @@ static const MemMapEntry a15memmap[] = {
+>      [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
+>      [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
+>      [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
+> +    [VIRT_UART_2] =             { 0x09050000, 0x00001000 },
+>      [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
+>      /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
+>      [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
+> @@ -157,6 +158,7 @@ static const int a15irqmap[] = {
+>      [VIRT_PCIE] = 3, /* ... to 6 */
+>      [VIRT_GPIO] = 7,
+>      [VIRT_SECURE_UART] = 8,
+> +    [VIRT_UART_2] = 9,
+>      [VIRT_MMIO] = 16, /* ...to 16 + NUM_VIRTIO_TRANSPORTS - 1 */
+>      [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
+>      [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
+> @@ -676,7 +678,7 @@ static void create_uart(const VirtMachineState *vms, qemu_irq *pic, int uart,
+>  
+>      if (uart == VIRT_UART) {
+>          qemu_fdt_setprop_string(vms->fdt, "/chosen", "stdout-path", nodename);
+> -    } else {
+> +    } else if (uart == VIRT_SECURE_UART) {
+>          /* Mark as not usable by the normal world */
+>          qemu_fdt_setprop_string(vms->fdt, nodename, "status", "disabled");
+>          qemu_fdt_setprop_string(vms->fdt, nodename, "secure-status", "okay");
+> @@ -1260,6 +1262,7 @@ static void machvirt_init(MachineState *machine)
+>      int n, virt_max_cpus;
+>      MemoryRegion *ram = g_new(MemoryRegion, 1);
+>      bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
+> +    int uart_count = 0;
+>  
+>      /* We can probe only here because during property set
+>       * KVM is not available yet
+> @@ -1419,11 +1422,16 @@ static void machvirt_init(MachineState *machine)
+>  
+>      fdt_add_pmu_nodes(vms);
+>  
+> -    create_uart(vms, pic, VIRT_UART, sysmem, serial_hds[0]);
+> +    create_uart(vms, pic, VIRT_UART, sysmem, serial_hds[uart_count++]);
+>  
+>      if (vms->secure) {
+>          create_secure_ram(vms, secure_sysmem);
+> -        create_uart(vms, pic, VIRT_SECURE_UART, secure_sysmem, serial_hds[1]);
+> +        create_uart(vms, pic, VIRT_SECURE_UART, secure_sysmem,
+> +                    serial_hds[uart_count++]);
+> +    }
+> +
+> +    if (!vmc->no_second_uart) {
+> +        create_uart(vms, pic, VIRT_UART_2, sysmem, serial_hds[uart_count++]);
+>      }
+>  
+>      create_rtc(vms, pic);
+> @@ -1693,8 +1701,13 @@ static void virt_2_11_instance_init(Object *obj)
+>  
+>  static void virt_machine_2_11_options(MachineClass *mc)
+>  {
+> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
+> +
+>      virt_machine_2_12_options(mc);
+>      SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_11);
+> +
+> +    /* The second NS UART was added in 2.12 */
+> +    vmc->no_second_uart = true;
+>  }
+>  DEFINE_VIRT_MACHINE(2, 11)
+>  
+> -- 
+> 2.7.4
+> 
+> 

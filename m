@@ -1,209 +1,255 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp4082031wrt;
-        Mon, 1 Oct 2018 10:15:57 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV62JcfhH85uT3N9Sa8YXkwYQNvHTMLpphqm7qCKmGQU+ebGy/28CdawIAAM5iq9/XLM1ixQ8
-X-Received: by 2002:ac8:6917:: with SMTP id e23-v6mr4792165qtr.104.1538414157023;
-        Mon, 01 Oct 2018 10:15:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538414157; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp4029139wrg;
+        Tue, 12 Dec 2017 08:38:39 -0800 (PST)
+X-Google-Smtp-Source: ACJfBotqyYyhu4YqFR26cnNjIrCbUOcWjxwXxAi1eMrPteR6Tm/iqy7TVI4qhsBxPoCTbwZo7dvf
+X-Received: by 10.129.87.210 with SMTP id l201mr3353916ywb.2.1513096719543;
+        Tue, 12 Dec 2017 08:38:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513096719; cv=none;
         d=google.com; s=arc-20160816;
-        b=JkG3+6JXgXVD6l3NT2INrIRADgRT9Q+rXZn1x9kcQnV+lqb1fAoPg++Y5xtf3bssGr
-         tfGeG8XLzIOglCJkeZ0Tn3UVxnFXy6H3RlI8TfXi3YGggZXfJ/cLJzs2e+x+N3xodNLq
-         xPf2jydOb7UVh30wbIZisD5mWLwahl2Gm3BJEu3eLzU/VSKD47L0otoBL4LQrfaAKO1B
-         WDHNo8rKtWMO4rik0sc3vnQ02A8ePnRo5p4MqudCXfnAkY94dpN22yy2RpPetA9RMdQd
-         mCooy4BgXBBoguVW6Z6m+ek79MKJ6iR97ZRAMl7GZV/UjxCovWL2hYT84qC4BqQ7tVjW
-         5Xcg==
+        b=Vn4H6ib/2AjyiZwxzBTTN98sIePiJlNZCNkxlS0kOGtRMuWfjIPzmJAvAc3ec4dkG+
+         NDxa0CHUP7o7n1Oqa9MuR9FtuYHxdJ05389k4DHwpQUvEymhjrwKSgzUGr4Dr3QIrDhQ
+         K6ZQFkkUF+zEWajjWxo3oKHFC6lO+C6IoKPpfL7OUx1xpMCTaKHYjD6jWZedu6ocFekJ
+         Lj+W1TyLYcFvG1tq8s79sIpY0QI1Ekv+1zSBvexK8T6N86oQpGfUv1jPeFDGNmxmv3Si
+         9c3PKXt7JMQ9HJWnrZGqCE0PwNu3y6RoF4ZEnZvBQdI+T788vlalVV3z58oHyal2tnj+
+         AZOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=C2hFx90k5Do/Xn2bcNC3HLNx/JLh/10avUd4HOTZpc0=;
-        b=aGphd+yNwYc9AfV291Vj2DWZhvzU2irwrPtr60NeR/AxK0Ghy9xATVkBDvFRUtu0Cg
-         Nciv1TaWEWdIuiOjWf/Ii89phFdw8SMHnRFRXwPe/WB3wM/NwAE0L3B630QDzHF6X45Z
-         6iaFgm0QlxLsNNZK5IaapPaOj5pnrm/8RW9MHsjB+YBr0Xf3RmgVIhy0kp8VYbC1SahD
-         W7r9ThPcSiReWRUrVOdHFu95AAv0hDSsAxIGY8R347VkdARV3lnuxCt7owZt4K5K/mzX
-         I6ma2hVgOaHJt2XoFboSPi87T5IUw8gqwL6STOnMDlD3/zN5ac1gEvwDCkxzo8sPQ4ZW
-         /fVg==
+         :user-agent:date:message-id:from:references:to
+         :arc-authentication-results;
+        bh=jIaUTarTx6ZPSfL1qIg3oqh4F45G5VksZJkMhEwtVPQ=;
+        b=U4tYHWFihbiMHb5vM+kOlxKzZqqYOHqAYl6otf16zq8ozWHOe4AQPm+bO64MpLP5T0
+         JS+0d0iwBG+xrLrybqggHBf1hKfgcuPB1OkkuZI2j2XIEnckR9wCZmt6zZ27Z1P5AK4r
+         2JbN8soJgi1Y5J7J9cQslcwSKIR9wawQPtUJLupJrzBoaTC93axksgj1vR0sl2GUMXWC
+         Zv+ge1FghnXuKhFC+odkgjwj1kA11E7k9Zvvh34qbdAz7/yj/k6xcR7dRVEejTOWof+M
+         3rZOVrJDSbqFQSueAU/3jFSjzFJa3HsPYPaIne9fLgnHezyruOoXssorbYjM+OZyNn8P
+         sZRg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o128-v6si10115649qkc.166.2018.10.01.10.15.56
+        by mx.google.com with ESMTPS id x7si3539520ywe.550.2017.12.12.08.38.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 01 Oct 2018 10:15:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 12 Dec 2017 08:38:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39754 helo=lists.gnu.org)
+Received: from localhost ([::1]:59323 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g71nY-0000JZ-Dr
-	for alex.bennee@linaro.org; Mon, 01 Oct 2018 13:15:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56256)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eOnZm-0004xV-Vz
+	for alex.bennee@linaro.org; Tue, 12 Dec 2017 11:38:39 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38114)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1g71nG-0000JI-6G
-	for qemu-devel@nongnu.org; Mon, 01 Oct 2018 13:15:39 -0400
+	(envelope-from <lersek@redhat.com>) id 1eOnZb-0004vB-7R
+	for qemu-arm@nongnu.org; Tue, 12 Dec 2017 11:38:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1g71nB-0003qC-Vz
-	for qemu-devel@nongnu.org; Mon, 01 Oct 2018 13:15:37 -0400
-Received: from mail-wm1-f65.google.com ([209.85.128.65]:36690)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1g71nB-0003pk-OG
-	for qemu-devel@nongnu.org; Mon, 01 Oct 2018 13:15:33 -0400
-Received: by mail-wm1-f65.google.com with SMTP id n23-v6so9549251wmc.1
-	for <qemu-devel@nongnu.org>; Mon, 01 Oct 2018 10:15:33 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=C2hFx90k5Do/Xn2bcNC3HLNx/JLh/10avUd4HOTZpc0=;
-	b=HxWsYxkf6Ox5zRTpnk2wlsjcvY2LAEPWnyisIhjHF5Sy8Y0cmH/iRWzEz3e2+Q7gVZ
-	PkWnUNOFGHhUYchwVXtAMHpo2rcKUtOc5dQamQx+kytvJBk6GAj9SB5iuJ8iQ9iy7rvj
-	PUpnQp5QbBYMRsvqFhmaS7WmmS/z/cPR7UMyhK9VGmouFqsoqjeM8aBP1T+hh46u3UDQ
-	beihfZsma9DuKomVvV7z25re4cRZsu4x14gVK1TJRceGGsAHE5q+n3jpqF2xS0O1xwM7
-	wXHXRwfQyn0DbLaRunu0BAZ05c4U56KhN0DqF1eh2P9qMwRqcmETBQ+hNuewJhTtfpQz
-	nbOg==
-X-Gm-Message-State: ABuFfoiZe8adPEunP8xJuUB+u3RES+oJOYyiINJmhKpridujNkupAZ/O
-	UiJDlQ4X9RIzP3R+1g6JR3xx5A==
-X-Received: by 2002:a1c:f4e:: with SMTP id 75-v6mr9376746wmp.79.1538414132596; 
-	Mon, 01 Oct 2018 10:15:32 -0700 (PDT)
-Received: from [192.168.2.71] ([80.31.72.241])
-	by smtp.gmail.com with ESMTPSA id
-	u5-v6sm2480266wru.16.2018.10.01.10.15.31
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 01 Oct 2018 10:15:31 -0700 (PDT)
-To: Luc Michel <luc.michel@greensocs.com>, qemu-devel@nongnu.org
-References: <20181001115704.701-1-luc.michel@greensocs.com>
-	<20181001115704.701-7-luc.michel@greensocs.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <300b2d3b-c1b4-7612-7336-0b50494d5315@redhat.com>
-Date: Mon, 1 Oct 2018 19:15:30 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.0
+	(envelope-from <lersek@redhat.com>) id 1eOnZY-00018O-0Z
+	for qemu-arm@nongnu.org; Tue, 12 Dec 2017 11:38:27 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:59636)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <lersek@redhat.com>)
+	id 1eOnZX-00017w-Mv; Tue, 12 Dec 2017 11:38:23 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id C9B0C7EA84;
+	Tue, 12 Dec 2017 16:38:22 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-120-105.rdu2.redhat.com
+	[10.10.120.105])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8A9706266F;
+	Tue, 12 Dec 2017 16:38:20 +0000 (UTC)
+To: Andrew Jones <drjones@redhat.com>,
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>
+References: <09e7b89f-27f2-1787-b371-7b0c0eff78b8@redhat.com>
+	<CAFEAcA-357eVt3s_7ULWxssQttvAV0DkUv_tGkyk8umVgfH1QA@mail.gmail.com>
+	<d776710c-2255-947b-22c6-336e9491bb81@redhat.com>
+	<CAKv+Gu9e6qwJ4=t=UHHGsVs1XM26agh17Mgy0ckAvUsy+2xi2A@mail.gmail.com>
+	<CAFEAcA9JzK8sNF5TmENfXZ-NBJwfp03b2La4YQ=N2i1ZCzrNBw@mail.gmail.com>
+	<CAKv+Gu_mzynBKSBSdtUhKRgNd3KmuJTwiNZpmvPCfkRDo_QCgA@mail.gmail.com>
+	<CAFEAcA9HAcZTi6bT-FbsG9LtqO=4s7rpcz0niZbimG834t4uHA@mail.gmail.com>
+	<CAKv+Gu8gZ-Y4-zV2GRgbXPcignAg3vi8__XaFXqAhYOZOL7GcQ@mail.gmail.com>
+	<CAFEAcA8OY3PFk_bermKxQBuF_th7SudHgaRk8wf76EAGYnoCGw@mail.gmail.com>
+	<CAKv+Gu_939a=cui76H5FqCZwbWqDUYhegNe18T+tBpq7CW+TrA@mail.gmail.com>
+	<20171212145138.dqw6op2orgynlykk@kamzik.brq.redhat.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <a4410334-b9c9-3158-7b01-f1ba2db6d7f5@redhat.com>
+Date: Tue, 12 Dec 2017 17:38:19 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.0
 MIME-Version: 1.0
-In-Reply-To: <20181001115704.701-7-luc.michel@greensocs.com>
+In-Reply-To: <20171212145138.dqw6op2orgynlykk@kamzik.brq.redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Tue, 12 Dec 2017 16:38:22 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.128.65
-Subject: Re: [Qemu-devel] [PATCH v2 06/15] gdbstub: add multiprocess support
- to (f|s)ThreadInfo and ThreadExtraInfo
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 3/3] hw/arm/virt-acpi-build: Add
+ second UART to ACPI tables
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, alistair@alistair23.me,
-	mark.burton@greensocs.com,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	saipava@xilinx.com, edgari@xilinx.com, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PjnOLygtuhKi
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"Jason A . Donenfeld" <Jason@zx2c4.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Andrea Bolognani <abologna@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Shannon Zhao <zhaoshenglong@huawei.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: NmiEvuTHwakD
+
+On 12/12/17 15:51, Andrew Jones wrote:
+> On Tue, Dec 12, 2017 at 02:31:05PM +0000, Ard Biesheuvel wrote:
+>> On 12 December 2017 at 14:17, Peter Maydell
+>> <peter.maydell@linaro.org> wrote:
+>>> On 12 December 2017 at 14:16, Ard Biesheuvel
+>>> <ard.biesheuvel@linaro.org> wrote:
+>>>> On 12 December 2017 at 14:13, Peter Maydell
+>>>> <peter.maydell@linaro.org> wrote:
+>>>>> On 12 December 2017 at 14:12, Ard Biesheuvel
+>>>>> <ard.biesheuvel@linaro.org> wrote:
+>>>>>> On 12 December 2017 at 14:10, Peter Maydell
+>>>>>> <peter.maydell@linaro.org> wrote:
+>>>>>>> That doesn't actually usefully separate debug output from the
+>>>>>>> console, though, because stdout-path is also going to point
+>>>>>>> to the UART with the lowest physical address...
+>>>>>>>
+>>>>>>
+>>>>>> By default, yes, just like is currently the case. But I would
+>>>>>> assume this new serial port could be appointed 'console' and put
+>>>>>> into stdout-path by QEMU, based on the command line options?
+>>>>>
+>>>>> We don't have any command line options for doing that, and I'm
+>>>>> generally reluctant to introduce new command line UI, especially
+>>>>> new command line UI that's specific to Arm and not also needed
+>>>>> for x86.
+>>>>>
+>>>>
+>>>> If stdout-path is always going to point to pl011@0x9000000, why
+>>>> would we need to parse it?
+>>>
+>>> If you had always parsed stdout-path, we wouldn't need to worry
+>>> about the order in which the UART nodes appear in the dtb...
+>>>
+>>
+>> That's a fair point. But it still does not justify introducing added
+>> complexity in the firmware, if the conclusion is always going to be
+>> that the console will be on pl011@9000000.
+>>
+>> To Drew's point re DEBUG builds, I don't think we should generally
+>> enable DEBUG and send the output to nowhereland if the user does not
+>> wire it up. That's a MMIO trap and two world switches for each
+>> character written, if I am not mistaken, and the DEBUG builds are
+>> very noisy.
+>
+> 100% agree, which is why I said "If a user wires up a second UART...",
+> but I guess my "Not wiring it up would lose the messages..." sentence
+> was ambiguous. I didn't mean they'd output to no where, I meant those
+> messages wouldn't be output. I.e. some sort of debug_printf() function
+> would be written that only actually does a write when there's a debug
+> UART on the other end to write to.
+
+Right; this can be implemented based on the DTB. Please see below.
 
 
+> I just commented on patch 2/3 of this series asking if we shouldn't
+> just not allocate the second UART's MMIO region and IRQ, when the user
+> doesn't provide a '-serial' option for it. If we didn't, then AAVMF
+> would just not output debug messages when only one UART (the console)
+> is found in the DT.
 
-On 01/10/2018 13:56, Luc Michel wrote:
-> Change the thread info related packets handling to support multiprocess
-> extension.
-> 
-> Add the CPUs class name in the extra info to help differentiate
-> them in multiprocess mode.
-> 
-> Signed-off-by: Luc Michel <luc.michel@greensocs.com>
-> ---
->  gdbstub.c | 32 ++++++++++++++++++++++----------
->  1 file changed, 22 insertions(+), 10 deletions(-)
-> 
-> diff --git a/gdbstub.c b/gdbstub.c
-> index 3242f0d261..63d7913269 100644
-> --- a/gdbstub.c
-> +++ b/gdbstub.c
-> @@ -1248,11 +1248,10 @@ out:
->  static int gdb_handle_packet(GDBState *s, const char *line_buf)
->  {
->      CPUState *cpu;
->      CPUClass *cc;
->      const char *p;
-> -    uint32_t thread;
->      uint32_t pid, tid;
->      int ch, reg_size, type, res;
->      uint8_t mem_buf[MAX_PACKET_LENGTH];
->      char buf[sizeof(mem_buf) + 1 /* trailing NUL */];
->      char thread_id[16];
-> @@ -1540,30 +1539,43 @@ static int gdb_handle_packet(GDBState *s, const char *line_buf)
->              snprintf(buf, sizeof(buf), "QC%s",
->                       gdb_fmt_thread_id(s, cpu, thread_id, sizeof(thread_id)));
->              put_packet(s, buf);
->              break;
->          } else if (strcmp(p,"fThreadInfo") == 0) {
-> -            s->query_cpu = first_cpu;
-> +            s->query_cpu = gdb_first_cpu(s);
->              goto report_cpuinfo;
->          } else if (strcmp(p,"sThreadInfo") == 0) {
->          report_cpuinfo:
->              if (s->query_cpu) {
-> -                snprintf(buf, sizeof(buf), "m%x", cpu_gdb_index(s->query_cpu));
-> +                snprintf(buf, sizeof(buf), "m%s",
-> +                         gdb_fmt_thread_id(s, s->query_cpu,
-> +                                       thread_id, sizeof(thread_id)));
->                  put_packet(s, buf);
-> -                s->query_cpu = CPU_NEXT(s->query_cpu);
-> +                s->query_cpu = gdb_next_cpu(s, s->query_cpu);
->              } else
->                  put_packet(s, "l");
->              break;
->          } else if (strncmp(p,"ThreadExtraInfo,", 16) == 0) {
-> -            thread = strtoull(p+16, (char **)&p, 16);
-> -            cpu = find_cpu(thread);
-> +            read_thread_id(p + 16, &p, &pid, &tid);
+This is what we ultimately want down-stream, yes; but up-stream, it
+would be an incompatible change -- DEBUG builds used with one UART only
+would suddenly not produce debug messages.
 
-Check similar to patch #3:
 
-        if (read_thread_id(p, &p, &pid, &tid) == GDB_READ_THREAD_ERR) {
-            put_packet(s, "E22");
-            break;
-        }
+I don't think I can continue discussing this without going into
+ArmVirtQemu specifics. We have the following layers of drivers and
+library classes / instances (more abstract higher up on the diagram).
 
-With equivalent change:
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+The top left node stands for debug messages written by any modules, and
+the top right node stands for the abstraction (EFI_SERIAL_IO_PROTOCOL)
+through which interactive console / terminal IO occurs ultimately (it
+requires a few more layers on top but those don't matter for now).
 
-> +            cpu = gdb_get_cpu(s, pid, tid);
->              if (cpu != NULL) {
->                  cpu_synchronize_state(cpu);
-> -                /* memtohex() doubles the required space */
-> -                len = snprintf((char *)mem_buf, sizeof(buf) / 2,
-> -                               "CPU#%d [%s]", cpu->cpu_index,
-> -                               cpu->halted ? "halted " : "running");
-> +
-> +                if (s->multiprocess && (s->process_num > 1)) {
-> +                    /* Print the CPU model in multiprocess mode */
-> +                    ObjectClass *oc = object_get_class(OBJECT(cpu));
-> +                    const char *cpu_model = object_class_get_name(oc);
-> +                    len = snprintf((char *)mem_buf, sizeof(buf) / 2,
-> +                                   "CPU#%d %s [%s]", cpu->cpu_index,
-> +                                   cpu_model,
-> +                                   cpu->halted ? "halted " : "running");
-> +                } else {
-> +                    /* memtohex() doubles the required space */
-> +                    len = snprintf((char *)mem_buf, sizeof(buf) / 2,
-> +                                   "CPU#%d [%s]", cpu->cpu_index,
-> +                                   cpu->halted ? "halted " : "running");
-> +                }
->                  trace_gdbstub_op_extra_info((char *)mem_buf);
->                  memtohex(buf, mem_buf, len);
->                  put_packet(s, buf);
->              }
->              break;
-> 
+
+[any driver that writes debug messages]    SerialDxe
+  |  |                                     (DXE driver that produces
+  |  |                                     EFI_SERIAL_IO_PROTOCOL;
+  |  DebugLib:BaseDebugLibNull  +-----+----uses DebugLib for one
+  |  (used for RELEASE builds; /     /     ASSERT_EFI_ERROR();
+  |  DEBUG messages are dropped     /      uses SerialPortLib for
+  |  indiscriminately)             /       producing
+  |                               /        EFI_SERIAL_IO_PROTOCOL)
+  |                              /           |
+  DebugLib:BaseDebugLibSerialPort            |
+  (for DEBUG / NOOPT builds;                 |
+  debug messages are written to              |
+  the serial port)                           |
+    |  |                                     |
+    |  |                                     |
+    |  SerialPortLib: FdtPL011SerialPortLib  |
+    |  (used by DXE and later modules, the UART
+    |  base need not be parsed repeatedly from the
+    |  DTB)                                       \
+    |                                              \
+    |                                               \
+    SerialPortLib: EarlyFdtPL011SerialPortLib        \
+    (used for early (pre-DXE) modules; the   \        +
+    DTB is parsed on every serial port        \       |
+    action for the UART base address)          \      |
+                                                \     |
+                                                 \    |
+                                                  PL011UartLib
+                                                  (actual hw access)
+
+This is super messy, because in a DEBUG build, debug messages (such as
+an assertion failure report) in SerialDxe itself would have to be logged
+to "one" serial port, but the exact same driver should use the "other"
+serial port for implementing EFI_SERIAL_IO_PROTOCOL. Currently both
+"paths" go through FdtPL011SerialPortLib, which -- i.e., the
+SerialPortLib *class* itself -- cannot handle more than one serial port
+(in the same UEFI executable).
+
+So, for upstream,
+
+(1) we need two new DebugLib instances (pre-DXE, and DXE-or-later), for
+    the ArmVirtQemu platform, such that they use PL011UartLib directly,
+    without going through the SerialPortLib class.
+
+    These DebugLib instances will have to parse the DTB for the UART
+    base address (on all calls, or initially). If there is only one
+    UART, use that, otherwise, use the one that is found second in the
+    DTB.
+
+(2) In RELEASE builds, BaseDebugLibNull should remain OK (DEBUG messages
+    are dropped statically).
+
+(3) The current SerialPortLib instances need not be changed; they can
+    continue using the first UART found in the DTB.
+
+
+For downstream, the DebugLib instances from (1) can be customized so
+that debug messages are dropped if only one UART is found in the DTB.
+(I.e., never write a DEBUG message unless you can write it separate from
+whatever port is used by FdtPL011SerialPortLib.)
+
+Thanks,
+Laszlo

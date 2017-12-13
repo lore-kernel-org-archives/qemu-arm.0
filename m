@@ -1,72 +1,72 @@
-Received: by 10.223.159.74 with SMTP id f10csp5305263wrg;
-        Wed, 13 Dec 2017 08:52:42 -0800 (PST)
-X-Google-Smtp-Source: ACJfBosC4c2pI2MPHuD079KS3NB2VmdlxbuV81cta0vgG65lmW08pzEEUAUe27McbbT5kPQH/z7m
-X-Received: by 10.37.192.65 with SMTP id c62mr2381892ybf.75.1513183962562;
-        Wed, 13 Dec 2017 08:52:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1513183962; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp5305400wrg;
+        Wed, 13 Dec 2017 08:52:53 -0800 (PST)
+X-Google-Smtp-Source: ACJfBovGVBgTZ2GgjNlH7XNg+GlYCWFIXezuVdCYthg5LbODgy6k3v0hmtTOIZZtxQCIsKAFA88V
+X-Received: by 10.129.131.197 with SMTP id t188mr2185887ywf.24.1513183973398;
+        Wed, 13 Dec 2017 08:52:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513183973; cv=none;
         d=google.com; s=arc-20160816;
-        b=krJ+3b+vmv9oryZUZzm3sq1kFNtRJhAP/XGZBtvmk3FR3oZxgtb5c1LAELDTDmVUN+
-         CMS8puEvg0lHOlOLVH7cWSxRWgw8gQnmUT4Yhp/pgwm/9bW6ub/txeMC9fYF7M8yxGPV
-         NjgvOzZWZ53yRN5ZKx6yiP3xQtgdRaug1s2IxQQfNmrtVoD66AhVXsnU94ej5bihhPbp
-         b+xO+ryvWhObXAVbGdXjmP9HTmdEdbVRalpXRq+cxTYj4S4i8MCBpxKaJ9yNNoCXoedf
-         qEs5WEPAm+ZwQf9U4l5TaVkMTbV595MKRpVMOXM3f3h5ZMfWFXNW1mpFGFst3CEofyoG
-         +qNA==
+        b=ZScf7yHhiPZdIo7pv6SqrJOcGj0LfTwRo4RR7U8IHHaX9x0fv5U5LnqhZIQbedCXTt
+         Nr8zP6i/pUMLULWOr3F3hIZvOA2vhUpErEanNThJuUjOH9zWiPvmpy/0OR0mmJVn3LeL
+         dZxdQ/P3bpBWrnn+nOYWSf2+mEoj2fez/8CZm7CaoDpVX7T7UUYsiWVMbBlAaAximS+e
+         MBJpYFqLjEw81THdb6czaeiiMfqy/8s9mIu6pVgl4PRJFJUSatSWyOXz4lHklwQ8Prwb
+         fSac+Z/7wEiqdl9fhErkiCepOPlllc/Nx7RZZtya+TUASTNNALyy1GIvMvP/v6huh54f
+         foIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=gUU4tqNCfsNprvJRsRytJfnLhN2Y+PYyU4SMpLbCNEU=;
-        b=twP0PJJ6I4l9rmkjiXnrDTKO4Et9gqJKTIZyZXozVTvk2TmUABVnlRXkjJl5R6QV5I
-         U2dVSLSprLwTBGvgd/0F1+TH15aXwIORcK9AISiSF8bIbOPyFsl23+Z2D+W5Rgoyjv9O
-         KUCCoIt99XwP3iVGHom/f24ym9VWGozMr0jnK8cKH+DJZYN13WXBSXJR7AeDlGvY8a+O
-         4opBVxKWixMoKXC/LZVn4kNZ7GpTGsbuas6rETDrqb7GPnP9B+p7Ya2FxUxqxHv/gc8W
-         XMFQNJ168/XypTDY+NgpY/m7S1wS8CIJjgfU76aHXPIQbvIB1BdbljuFes7wvOxN6VN4
-         TzbQ==
+        bh=u38s6KJ1/xZSIqRdoq9FFsnR/cXGlKL7BFSl8xycdlQ=;
+        b=JzKngBoNMC9m4YNutcyy59Ao8na7+McfLUkPlQWAQvNKv7dyEscMYaeM69OZnmgfBo
+         Jqh8mi9GavhU4aj9Xvtg5I099ZD31jMoHSbB51mcOM3ldt/SHjOTr4juDnlQI8xo3hCS
+         rASZo9gnTSRnhAxX+UmfYqns6RHrR4+/PWTHzu9Ruzh3KMW6Q/zW2fCwo+6sP39osfG7
+         tj15jJ1TeLaYkfwxAn4x7VEDixm+zkUy18AmfrsteLKizm2SK1Mzim6qry+Tn/xhvMt9
+         z2HwXLRITvnkZfmC/stkbgS2RyQSLh4IjU04nT2r6aiasNm26LhYDhRyO2eGR2Njby5/
+         FvNw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x83si406670ywb.345.2017.12.13.08.52.42
+        by mx.google.com with ESMTPS id q136si436704ybq.589.2017.12.13.08.52.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 13 Dec 2017 08:52:42 -0800 (PST)
+        Wed, 13 Dec 2017 08:52:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36308 helo=lists.gnu.org)
+Received: from localhost ([::1]:36313 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ePAGw-0002N7-1j
-	for alex.bennee@linaro.org; Wed, 13 Dec 2017 11:52:42 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59372)
+	id 1ePAH6-0002Y9-RK
+	for alex.bennee@linaro.org; Wed, 13 Dec 2017 11:52:52 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59393)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1ePAGh-0002KY-7w
-	for qemu-arm@nongnu.org; Wed, 13 Dec 2017 11:52:28 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1ePAGi-0002Kl-E1
+	for qemu-arm@nongnu.org; Wed, 13 Dec 2017 11:52:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1ePAGg-0004I1-Cu
-	for qemu-arm@nongnu.org; Wed, 13 Dec 2017 11:52:27 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1ePAGh-0004JY-Cb
+	for qemu-arm@nongnu.org; Wed, 13 Dec 2017 11:52:28 -0500
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:39072)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1ePAGg-0004Ee-66; Wed, 13 Dec 2017 11:52:26 -0500
+	id 1ePAGh-0004Ee-4b; Wed, 13 Dec 2017 11:52:27 -0500
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1ePAGe-0007Oi-Ec; Wed, 13 Dec 2017 16:52:24 +0000
+	id 1ePAGd-0007OQ-Ga; Wed, 13 Dec 2017 16:52:23 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Wed, 13 Dec 2017 16:52:21 +0000
-Message-Id: <1513183941-24300-3-git-send-email-peter.maydell@linaro.org>
+Date: Wed, 13 Dec 2017 16:52:20 +0000
+Message-Id: <1513183941-24300-2-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1513183941-24300-1-git-send-email-peter.maydell@linaro.org>
 References: <1513183941-24300-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 2/2] hw/intc/arm_gic: reserved register addresses
- are RAZ/WI
+Subject: [Qemu-arm] [PATCH 1/2] hw/intc/arm_gicv3: Make reserved register
+ addresses RAZ/WI
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,41 +82,113 @@ Cc: Ard Biesheuvel <ard.biesheuvel@linaro.org>,
 	Laszlo Ersek <lersek@redhat.com>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iwWmFF/RWuJ5
+X-TUID: rZe7/r5Rf5Mx
 
-The GICv2 specification says that reserved register addresses
-must RAZ/WI; now that we implement external abort handling
-for Arm CPUs this means we must return MEMTX_OK rather than
-MEMTX_ERROR, to avoid generating a spurious guest data abort.
+The GICv3 specification says that reserved register addresses
+should RAZ/WI. This means we need to return MEMTX_OK, not MEMTX_ERROR,
+because now that we support generating external aborts the
+latter will cause an abort on new board models.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gic.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ hw/intc/arm_gicv3_dist.c       | 13 +++++++++++++
+ hw/intc/arm_gicv3_its_common.c |  8 +++-----
+ hw/intc/arm_gicv3_redist.c     | 13 +++++++++++++
+ 3 files changed, 29 insertions(+), 5 deletions(-)
 
-diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-index 5a0e2a3..d701e49 100644
---- a/hw/intc/arm_gic.c
-+++ b/hw/intc/arm_gic.c
-@@ -1261,7 +1261,8 @@ static MemTxResult gic_cpu_read(GICState *s, int cpu, int offset,
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "gic_cpu_read: Bad offset %x\n", (int)offset);
--        return MEMTX_ERROR;
+diff --git a/hw/intc/arm_gicv3_dist.c b/hw/intc/arm_gicv3_dist.c
+index 3ea3dd0..93fe936 100644
+--- a/hw/intc/arm_gicv3_dist.c
++++ b/hw/intc/arm_gicv3_dist.c
+@@ -817,6 +817,13 @@ MemTxResult gicv3_dist_read(void *opaque, hwaddr offset, uint64_t *data,
+                       "%s: invalid guest read at offset " TARGET_FMT_plx
+                       "size %u\n", __func__, offset, size);
+         trace_gicv3_dist_badread(offset, size, attrs.secure);
++        /* The spec requires that reserved registers are RAZ/WI;
++         * so use MEMTX_ERROR returns from leaf functions as a way to
++         * trigger the guest-error logging but don't return it to
++         * the caller, or we'll cause a spurious guest data abort.
++         */
++        r = MEMTX_OK;
 +        *data = 0;
-+        break;
+     } else {
+         trace_gicv3_dist_read(offset, *data, size, attrs.secure);
      }
-     return MEMTX_OK;
+@@ -852,6 +859,12 @@ MemTxResult gicv3_dist_write(void *opaque, hwaddr offset, uint64_t data,
+                       "%s: invalid guest write at offset " TARGET_FMT_plx
+                       "size %u\n", __func__, offset, size);
+         trace_gicv3_dist_badwrite(offset, data, size, attrs.secure);
++        /* The spec requires that reserved registers are RAZ/WI;
++         * so use MEMTX_ERROR returns from leaf functions as a way to
++         * trigger the guest-error logging but don't return it to
++         * the caller, or we'll cause a spurious guest data abort.
++         */
++        r = MEMTX_OK;
+     } else {
+         trace_gicv3_dist_write(offset, data, size, attrs.secure);
+     }
+diff --git a/hw/intc/arm_gicv3_its_common.c b/hw/intc/arm_gicv3_its_common.c
+index 2bd2f0f..284c0a7 100644
+--- a/hw/intc/arm_gicv3_its_common.c
++++ b/hw/intc/arm_gicv3_its_common.c
+@@ -67,7 +67,8 @@ static MemTxResult gicv3_its_trans_read(void *opaque, hwaddr offset,
+                                         MemTxAttrs attrs)
+ {
+     qemu_log_mask(LOG_GUEST_ERROR, "ITS read at offset 0x%"PRIx64"\n", offset);
+-    return MEMTX_ERROR;
++    *data = 0;
++    return MEMTX_OK;
  }
-@@ -1329,7 +1330,7 @@ static MemTxResult gic_cpu_write(GICState *s, int cpu, int offset,
-     default:
+ 
+ static MemTxResult gicv3_its_trans_write(void *opaque, hwaddr offset,
+@@ -82,15 +83,12 @@ static MemTxResult gicv3_its_trans_write(void *opaque, hwaddr offset,
+         if (ret <= 0) {
+             qemu_log_mask(LOG_GUEST_ERROR,
+                           "ITS: Error sending MSI: %s\n", strerror(-ret));
+-            return MEMTX_DECODE_ERROR;
+         }
+-
+-        return MEMTX_OK;
+     } else {
          qemu_log_mask(LOG_GUEST_ERROR,
-                       "gic_cpu_write: Bad offset %x\n", (int)offset);
--        return MEMTX_ERROR;
-+        return MEMTX_OK;
+                       "ITS write at bad offset 0x%"PRIx64"\n", offset);
+-        return MEMTX_DECODE_ERROR;
      }
-     gic_update(s);
-     return MEMTX_OK;
++    return MEMTX_OK;
+ }
+ 
+ static const MemoryRegionOps gicv3_its_trans_ops = {
+diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
+index 77e5cfa..8a8684d 100644
+--- a/hw/intc/arm_gicv3_redist.c
++++ b/hw/intc/arm_gicv3_redist.c
+@@ -455,6 +455,13 @@ MemTxResult gicv3_redist_read(void *opaque, hwaddr offset, uint64_t *data,
+                       "size %u\n", __func__, offset, size);
+         trace_gicv3_redist_badread(gicv3_redist_affid(cs), offset,
+                                    size, attrs.secure);
++        /* The spec requires that reserved registers are RAZ/WI;
++         * so use MEMTX_ERROR returns from leaf functions as a way to
++         * trigger the guest-error logging but don't return it to
++         * the caller, or we'll cause a spurious guest data abort.
++         */
++        r = MEMTX_OK;
++        *data = 0;
+     } else {
+         trace_gicv3_redist_read(gicv3_redist_affid(cs), offset, *data,
+                                 size, attrs.secure);
+@@ -505,6 +512,12 @@ MemTxResult gicv3_redist_write(void *opaque, hwaddr offset, uint64_t data,
+                       "size %u\n", __func__, offset, size);
+         trace_gicv3_redist_badwrite(gicv3_redist_affid(cs), offset, data,
+                                     size, attrs.secure);
++        /* The spec requires that reserved registers are RAZ/WI;
++         * so use MEMTX_ERROR returns from leaf functions as a way to
++         * trigger the guest-error logging but don't return it to
++         * the caller, or we'll cause a spurious guest data abort.
++         */
++        r = MEMTX_OK;
+     } else {
+         trace_gicv3_redist_write(gicv3_redist_affid(cs), offset, data,
+                                  size, attrs.secure);
 -- 
 2.7.4
 

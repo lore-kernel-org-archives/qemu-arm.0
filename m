@@ -1,80 +1,107 @@
-Received: by 10.223.159.82 with SMTP id f18csp3359061wrg;
-        Sat, 25 Nov 2017 07:16:45 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMZXuk6KR7+2LjeNtDiq56O9EgOVS4Z80KdZiBnnZdmUojVVb1lIJE4dtn5wL+2bK7n8SHUf
-X-Received: by 10.13.241.5 with SMTP id a5mr20269287ywf.427.1511623005827;
-        Sat, 25 Nov 2017 07:16:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1511623005; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp5660610wrg;
+        Wed, 13 Dec 2017 15:21:11 -0800 (PST)
+X-Google-Smtp-Source: ACJfBovCKmGZzsyTGAHU0NcQo9EXuJ8e+YnR8weicr3c0qC1D7sWtbYCQ10esq2yrcJsEY06Dz/K
+X-Received: by 10.37.128.204 with SMTP id c12mr1966513ybm.426.1513207271620;
+        Wed, 13 Dec 2017 15:21:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513207271; cv=none;
         d=google.com; s=arc-20160816;
-        b=u05mGF7lJnDPEBrvrz7sLNFXsW7xdBfu/wnIRZRmIYeie0NW+L/Klw03ImzCIZO6K3
-         k0LTex/qaMU92/3G+msEBOxxeE1nDjzwNvCYhzCjOFfHQ3gF1mhk0dPB+bUVpOr+By9R
-         UT6VUAhlj1SbxBLi4osxbefv1pkSwZ0fjM8+m4D+U2jwETeoiqTgN1MZvzEfpzXvXqd1
-         A/6s6/Zz75VfzkTLgisPdjDAyKO6ef/MkMjF1o/8CjLIwFzEIlrro4sD1OdkYU85bdgb
-         JC3ZKpqjIPWTYXFyzYPYk9aG/KvRRmN+r0cSI5+r16fZlmepGq686iMvW59cKelVllo3
-         grIw==
+        b=txzP1V4+Q98kO7cZ6x/kBjxMeVkCBsTCUa5x2V3HE2EpqgUK5/BN2HN+GS9LpGCp9i
+         tZEUTkznvG31VCU13bq0cYX07ZRvUVGfwZgO9dWFQINb/dm3FEJSKM+Ty4V4W5+nhjew
+         olqlxO5bB2WqYRf/3THJ3ao11T97VvXaOgCi9EIJ+BqhtvFUCjVNnYFmQwztlg6s/aux
+         5vOnHnqsN06FkT6tTpjwdI8ic7PaiBCcFefyF5pzYQFFusePhnWPsD3jR+Tu51hAQ1Io
+         MTe0fDGgald3swTwOImgCIF+QzfvpBRI3L1+oPpMBeNZKANScVeTGhkc2Nx+7OPloKdG
+         1BsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=WKi2/1p993c5FbD0ykGNmqhqEm+jjHeNSEXQWvvAIeo=;
-        b=fYod+6nNtZMCNcu+tIaosBIIusXhEzteiaJP+Libd4F/Jy8PhyO+58gJuO09VOiBpT
-         b/nQSKl6WlCZAmnNMwYOPTox8UXWwigUDfO8mrm3rrU8ynSiRUDgAUi2noHeBLLqknB/
-         keyvOAFB0qt/4BQax5YQj7AGzJ8gphY8DAJ7KMXfRnqGyD4wn1KcQcykHq/+7M+who2n
-         q8DVoVx6I/AZKNMwumYjvjZQElGqO6FDNxvpD60X4xEaM39xokvrnwudFZSERhYBUvjL
-         Wfl0uUVKNh1wjogaKJ3V0ycwd93IdafSY/HGV7qIhWfSYMCOBTf5KllSfw3ft0SMRGav
-         qRxg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=7YOzH7Voi5jLw3zCe3RMnWtS11E21hWLonnJtPtcVhM=;
+        b=spKdjxADBvbUIwmBagNU1GTV9OA5cP+bmtH/k3x67obNeVypsKHSrVQCm2Aj2NFWfJ
+         4ueJt1qMCADUJURFNCI6R31RX2lWlpth6rE735HGcPpr65q1yMT3KbdQ0lR3Tyc1wPAU
+         lDVvZKpwTyNcxdVSna/sTf5xUHUzXC2G8JxZFEXNazqSBGRKCANwxxMo/Wt4W6vcpvtU
+         +MeNLaXnPLSQjJW+Gx6k/KRblryZi2QKNeuFq8UBKYxsK4pkUyXxJZKEbEqht7MxXTUJ
+         VeUSRSV7YFD8Ik/hL1rsXcqKU5WnfCLny+cXyalEkmPZ6bxK76rwg4/kLI4dh2uWT04Q
+         z5Tg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MTy1NQzU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m195si5143024ybf.602.2017.11.25.07.16.45
+        by mx.google.com with ESMTPS id r14si222689ybb.637.2017.12.13.15.21.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 25 Nov 2017 07:16:45 -0800 (PST)
+        Wed, 13 Dec 2017 15:21:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53447 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MTy1NQzU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:38215 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eIcCD-0005OA-4p
-	for alex.bennee@linaro.org; Sat, 25 Nov 2017 10:16:45 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47650)
+	id 1ePGKt-0004di-1L
+	for alex.bennee@linaro.org; Wed, 13 Dec 2017 18:21:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59783)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1eIcBt-0005Nh-Ib
-	for qemu-arm@nongnu.org; Sat, 25 Nov 2017 10:16:28 -0500
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1ePGKg-0004cM-LJ
+	for qemu-arm@nongnu.org; Wed, 13 Dec 2017 18:21:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1eIcBr-00054m-TT
-	for qemu-arm@nongnu.org; Sat, 25 Nov 2017 10:16:25 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:38052)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1eIcBr-00054c-Kk; Sat, 25 Nov 2017 10:16:23 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 48B1F37E72;
-	Sat, 25 Nov 2017 15:16:22 +0000 (UTC)
-Received: from localhost (ovpn-116-25.gru2.redhat.com [10.97.116.25])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id ABFC75D9CB;
-	Sat, 25 Nov 2017 15:16:18 +0000 (UTC)
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Sat, 25 Nov 2017 13:16:05 -0200
-Message-Id: <20171125151610.20547-2-ehabkost@redhat.com>
-In-Reply-To: <20171125151610.20547-1-ehabkost@redhat.com>
-References: <20171125151610.20547-1-ehabkost@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Sat, 25 Nov 2017 15:16:22 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v2 1/6] machine: Replace has_dynamic_sysbus with
- list of allowed devices
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1ePGKf-0006Af-9C
+	for qemu-arm@nongnu.org; Wed, 13 Dec 2017 18:20:58 -0500
+Received: from mail-qt0-x229.google.com ([2607:f8b0:400d:c0d::229]:32847)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1ePGKX-00061h-4C; Wed, 13 Dec 2017 18:20:49 -0500
+Received: by mail-qt0-x229.google.com with SMTP id e2so5916333qti.0;
+	Wed, 13 Dec 2017 15:20:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=7YOzH7Voi5jLw3zCe3RMnWtS11E21hWLonnJtPtcVhM=;
+	b=MTy1NQzUKB9sRf/FsJatkqfT8P6yEyYhet0G8sIiV6DvlyYSWQAneRzDC2PwKU9tgb
+	4/jNex0X36U+BlzTqPl0Z3KbsL3HuEffDENsgyA0CiDLKgkjqUziTpM0z0791L4XjLM6
+	TBd7wD1h8sQeCN6zVxp13bKx0J9IQhTTMC/1PkPF5DZ9Gau+9EZ61Z1CJpD8K0+J+qOd
+	7hoRGaQjlDkfeEzUyQzBNEa7tZxyxn3Kpv9JTH+SnX3l+uLTdOJVhDNNfr+sJED+ZRiL
+	AKyPF9rc/usp/CTjtDwWlxg0HzVChLzlzT5u/JBKL6oXDMqiTU94jsqblNBkUWACB2Rz
+	hD8A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=7YOzH7Voi5jLw3zCe3RMnWtS11E21hWLonnJtPtcVhM=;
+	b=Pc7TkBRzB+frGqNR17P1O+N+uXywktuyr9dzqeddHgRtB8f7HN32Wn6PHIA9LmKlwN
+	11luk1IjajFXxwm+tB55nRkIEZa9CudofWpPD7O2AxwJr7R39tGrkKTiCAk6kFS684iW
+	ixEV8vurfahX/r+bgsUBkGTT6165mU4C9aOFCjAlMqdzCS0HoJRyz3E8JRJJyx1ZW/cC
+	sgQ44vrH91XJ4m1PmaQR8iYubLeuAGieT+uX5p7RHsXy10e7OWd1WNBi+d/WSaRmtF4S
+	FmYC91Ls73C5hGS4jZnf0HvS7MQCvciR/VFDDhDUKi2o7d2C/klBD1yQSJIwaGl3WYpm
+	ITTA==
+X-Gm-Message-State: AKGB3mKp6d/XDuFXk4n9r0dVbcyB4VOLNNXD2R9fxHQC1N4DigOUg7s3
+	X808wtGJ703pSSXzxza3qLk=
+X-Received: by 10.200.22.91 with SMTP id x27mr13384998qtk.226.1513207248519;
+	Wed, 13 Dec 2017 15:20:48 -0800 (PST)
+Received: from x1.local ([181.91.222.165])
+	by smtp.gmail.com with ESMTPSA id l1sm1666918qkk.74.2017.12.13.15.20.30
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 13 Dec 2017 15:20:47 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Alistair Francis <alistair.francis@xilinx.com>,
+	"Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	Prasad J Pandit <pjp@fedoraproject.org>,
+	Clement Deschamps <clement.deschamps@antfield.fr>
+Date: Wed, 13 Dec 2017 20:19:59 -0300
+Message-Id: <20171213232025.24503-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.15.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::229
+Subject: [Qemu-arm] [PATCH 00/26] SDCard housekeeping
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,230 +113,145 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: jgross@suse.com, Peter Maydell <peter.maydell@linaro.org>,
-	Thomas Huth <thuth@redhat.com>, sstabellini@kernel.org,
-	"Michael S. Tsirkin" <mst@redhat.com>, Alexander Graf <agraf@suse.de>,
-	Anthony Perard <anthony.perard@citrix.com>, qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org, Marcel Apfelbaum <marcel@redhat.com>,
-	xen-devel@lists.xenproject.org, Laszlo Ersek <lersek@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>
+Cc: Thomas Huth <thuth@redhat.com>, "Daniel P . Berrange" <berrange@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org,
+	Sai Pavan Boddu <saipava@xilinx.com>, qemu-arm@nongnu.org,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Fam Zheng <famz@redhat.com>, Isaac Lozano <109lozanoi@gmail.com>,
+	Andrzej Zaborowski <balrogg@gmail.com>,
+	Michael Roth <mdroth@linux.vnet.ibm.com>,
+	Andrey Yurovsky <yurovsky@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OtwxbVc1nFN9
+X-TUID: SWV4PQEDN3cg
 
-The existing has_dynamic_sysbus flag makes the machine accept
-every user-creatable sysbus device type on the command-line.
-Replace it with a list of allowed device types, so machines can
-easily accept some sysbus devices while rejecting others.
+Now that we have a way to write qtest in Python, lets start with a simple test
+to perform basic card identification, covering many functions of the sd/sd.c
+file.
 
-To keep exactly the same behavior as before, the existing
-has_dynamic_sysbus=true assignments are replaced with a
-TYPE_SYS_BUS_DEVICE entry on the allowed list.  Other patches
-will replace the TYPE_SYS_BUS_DEVICE entries with more specific
-lists of devices.
+[patch 1]
+When a device is not MMIO-connected but rather plugged into a Bus, it is easier
+to write tests using QMP.
+So we add a 'sdbus-command' entry to directly operate on a SD Bus.
+(Note this method should also work with all other QBus).
 
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: Marcel Apfelbaum <marcel@redhat.com>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Alexander Graf <agraf@suse.de>
-Cc: David Gibson <david@gibson.dropbear.id.au>
-Cc: Stefano Stabellini <sstabellini@kernel.org>
-Cc: Anthony Perard <anthony.perard@citrix.com>
-Cc: qemu-arm@nongnu.org
-Cc: qemu-ppc@nongnu.org
-Cc: xen-devel@lists.xenproject.org
-Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
----
-Changes v1 -> v2:
-* Replace "dynamic sysbus whitelist" with "allowed sysbus devices"
-* Simply add TYPE_SYS_BUS_DEVICE to the list on existing
-  has_dynamic_sysbus=true machines, and make machine-types more
-  strict in separate patches
----
- include/hw/boards.h  |  5 ++++-
- hw/arm/virt.c        |  3 ++-
- hw/core/machine.c    | 43 +++++++++++++++++++++++++++++--------------
- hw/i386/pc_q35.c     |  3 ++-
- hw/ppc/e500plat.c    |  4 +++-
- hw/ppc/spapr.c       |  3 ++-
- hw/xen/xen_backend.c |  7 ++++++-
- 7 files changed, 48 insertions(+), 20 deletions(-)
+[patch 2]
+We write a simple pyqtest, which
+  - resolve the SDBus QOM path in the test setup()
+  - verify default values for SD Spec v2.
 
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index 156b16f7a6..041bc08971 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -76,6 +76,9 @@ void machine_set_cpu_numa_node(MachineState *machine,
-                                const CpuInstanceProperties *props,
-                                Error **errp);
- 
-+void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const char *type);
-+
-+
- /**
-  * CPUArchId:
-  * @arch_id - architecture-dependent CPU ID of present or possible CPU
-@@ -179,7 +182,6 @@ struct MachineClass {
-         no_floppy:1,
-         no_cdrom:1,
-         no_sdcard:1,
--        has_dynamic_sysbus:1,
-         pci_allow_0_address:1,
-         legacy_fw_cfg_order:1;
-     int is_default;
-@@ -197,6 +199,7 @@ struct MachineClass {
-     bool ignore_memory_transaction_failures;
-     int numa_mem_align_shift;
-     const char **valid_cpu_types;
-+    strList *allowed_dynamic_sysbus_devices;
-     bool auto_enable_numa_with_memhp;
-     void (*numa_auto_assign_ram)(MachineClass *mc, NodeInfo *nodes,
-                                  int nb_nodes, ram_addr_t size);
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 9e18b410d7..fa6dc15fcd 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1591,7 +1591,8 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-      * configuration of the particular instance.
-      */
-     mc->max_cpus = 255;
--    mc->has_dynamic_sysbus = true;
-+    /*TODO: allow only sysbus devices that really work with this machine */
-+    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_SYS_BUS_DEVICE);
-     mc->block_default_type = IF_VIRTIO;
-     mc->no_cdrom = 1;
-     mc->pci_allow_0_address = true;
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 36c2fb069c..ab2ec292f3 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -335,29 +335,44 @@ static bool machine_get_enforce_config_section(Object *obj, Error **errp)
-     return ms->enforce_config_section;
- }
- 
--static void error_on_sysbus_device(SysBusDevice *sbdev, void *opaque)
-+void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const char *type)
- {
--    error_report("Option '-device %s' cannot be handled by this machine",
--                 object_class_get_name(object_get_class(OBJECT(sbdev))));
--    exit(1);
-+    strList *item = g_new0(strList, 1);
-+
-+    item->value = g_strdup(type);
-+    item->next = mc->allowed_dynamic_sysbus_devices;
-+    mc->allowed_dynamic_sysbus_devices = item;
- }
- 
--static void machine_init_notify(Notifier *notifier, void *data)
-+static void validate_sysbus_device(SysBusDevice *sbdev, void *opaque)
- {
--    Object *machine = qdev_get_machine();
--    ObjectClass *oc = object_get_class(machine);
--    MachineClass *mc = MACHINE_CLASS(oc);
-+    MachineState *machine = opaque;
-+    MachineClass *mc = MACHINE_GET_CLASS(machine);
-+    bool allowed = false;
-+    strList *wl;
- 
--    if (mc->has_dynamic_sysbus) {
--        /* Our machine can handle dynamic sysbus devices, we're all good */
--        return;
-+    for (wl = mc->allowed_dynamic_sysbus_devices;
-+         !allowed && wl;
-+         wl = wl->next) {
-+        allowed |= !!object_dynamic_cast(OBJECT(sbdev), wl->value);
-     }
- 
-+    if (!allowed) {
-+        error_report("Option '-device %s' cannot be handled by this machine",
-+                     object_class_get_name(object_get_class(OBJECT(sbdev))));
-+        exit(1);
-+    }
-+}
-+
-+static void machine_init_notify(Notifier *notifier, void *data)
-+{
-+    MachineState *machine = MACHINE(qdev_get_machine());
-+
-     /*
--     * Loop through all dynamically created devices and check whether there
--     * are sysbus devices among them. If there are, error out.
-+     * Loop through all dynamically created sysbus devices and check if they are
-+     * all allowed.  If a device is not allowed, error out.
-      */
--    foreach_dynamic_sysbus_device(error_on_sysbus_device, NULL);
-+    foreach_dynamic_sysbus_device(validate_sysbus_device, machine);
- }
- 
- HotpluggableCPUList *machine_query_hotpluggable_cpus(MachineState *machine)
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index d6060043ac..d0b0e5b422 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -299,7 +299,8 @@ static void pc_q35_machine_options(MachineClass *m)
-     m->default_machine_opts = "firmware=bios-256k.bin";
-     m->default_display = "std";
-     m->no_floppy = 1;
--    m->has_dynamic_sysbus = true;
-+    /*TODO: allow only sysbus devices that really work with this machine */
-+    machine_class_allow_dynamic_sysbus_dev(m, TYPE_SYS_BUS_DEVICE);
-     m->max_cpus = 288;
- }
- 
-diff --git a/hw/ppc/e500plat.c b/hw/ppc/e500plat.c
-index e59e80fb9e..438118c29b 100644
---- a/hw/ppc/e500plat.c
-+++ b/hw/ppc/e500plat.c
-@@ -15,6 +15,7 @@
- #include "hw/boards.h"
- #include "sysemu/device_tree.h"
- #include "sysemu/kvm.h"
-+#include "hw/sysbus.h"
- #include "hw/pci/pci.h"
- #include "hw/ppc/openpic.h"
- #include "kvm_ppc.h"
-@@ -63,7 +64,8 @@ static void e500plat_machine_init(MachineClass *mc)
-     mc->desc = "generic paravirt e500 platform";
-     mc->init = e500plat_init;
-     mc->max_cpus = 32;
--    mc->has_dynamic_sysbus = true;
-+    /*TODO: allow only sysbus devices that really work with this machine */
-+    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_SYS_BUS_DEVICE);
-     mc->default_cpu_type = POWERPC_CPU_TYPE_NAME("e500v2_v30");
- }
- 
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index d682f013d4..82040cc5d1 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -3603,7 +3603,8 @@ static void spapr_machine_class_init(ObjectClass *oc, void *data)
-     mc->default_boot_order = "";
-     mc->default_ram_size = 512 * M_BYTE;
-     mc->kvm_type = spapr_kvm_type;
--    mc->has_dynamic_sysbus = true;
-+    /*TODO: allow only sysbus devices that really work with this machine */
-+    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_SYS_BUS_DEVICE);
-     mc->pci_allow_0_address = true;
-     mc->get_hotplug_handler = spapr_get_hotplug_handler;
-     hc->pre_plug = spapr_machine_device_pre_plug;
-diff --git a/hw/xen/xen_backend.c b/hw/xen/xen_backend.c
-index 0f849a26d2..82380ea9ee 100644
---- a/hw/xen/xen_backend.c
-+++ b/hw/xen/xen_backend.c
-@@ -564,7 +564,12 @@ static void xen_set_dynamic_sysbus(void)
-     ObjectClass *oc = object_get_class(machine);
-     MachineClass *mc = MACHINE_CLASS(oc);
- 
--    mc->has_dynamic_sysbus = true;
-+    /*
-+     * Emulate old mc->has_dynamic_sysbus=true assignment
-+     *
-+     *TODO: add only Xen devices to the list
-+     */
-+    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_SYS_BUS_DEVICE);
- }
- 
- int xen_be_register(const char *type, struct XenDevOps *ops)
+Since have a test, lets run after each patch, so we are sure we don't break things.
+
+[patch 4-14,20-23]
+Add a bunch of trace events
+[patch 3,11,15-18]
+Aesthetic changes mostly
+[other patches]
+Trivial changes
+
+Once this series applied, booting some Linux on a vexpress-a9 with few
+sd*command traces enabled result in this outputs (which result useful to
+understand/fix the different SD implementations):
+
+48.687227:sdcard_normal_command         IO_RW_DIRECT/ CMD52 arg 0x00000c00 (state idle)
+48.687233:sdcard_command_response (no response) (state idle)
+48.689237:sdcard_normal_command         IO_RW_DIRECT/ CMD52 arg 0x80000c08 (state idle)
+48.689244:sdcard_command_response (no response) (state idle)
+48.690877:sdcard_normal_command        GO_IDLE_STATE/ CMD00 arg 0x00000000 (state idle)
+48.690890:sdcard_command_response (no response) (state idle)
+48.723486:sdcard_normal_command         SEND_IF_COND/ CMD08 arg 0x000001aa (state idle)
+48.723507:sdcard_command_response 00 00 01 aa  (state idle)
+48.723886:sdcard_normal_command      IO_SEND_OP_COND/ CMD05 arg 0x00000000 (state idle)
+48.723892:sdcard_command_response (no response) (state idle)
+48.724019:sdcard_normal_command      IO_SEND_OP_COND/ CMD05 arg 0x00000000 (state idle)
+48.724023:sdcard_command_response (no response) (state idle)
+48.724110:sdcard_normal_command      IO_SEND_OP_COND/ CMD05 arg 0x00000000 (state idle)
+48.724115:sdcard_command_response (no response) (state idle)
+48.724178:sdcard_normal_command      IO_SEND_OP_COND/ CMD05 arg 0x00000000 (state idle)
+48.724181:sdcard_command_response (no response) (state idle)
+48.724999:sdcard_command_response 00 40 01 20  (state idle)
+48.725214:sdcard_app_command         SD_SEND_OP_COND/ACMD41 arg 0x00000000 (state idle)
+48.725225:sdcard_command_response 40 ff ff 00  (state idle)
+48.727113:sdcard_normal_command        GO_IDLE_STATE/ CMD00 arg 0x00000000 (state idle)
+48.727125:sdcard_command_response (no response) (state idle)
+48.729206:sdcard_normal_command         SEND_IF_COND/ CMD08 arg 0x000001aa (state idle)
+48.729213:sdcard_command_response 00 00 01 aa  (state idle)
+48.729339:sdcard_command_response 00 00 01 20  (state idle)
+48.729412:sdcard_app_command         SD_SEND_OP_COND/ACMD41 arg 0x40300000 (state idle)
+48.729419:sdcard_command_response c0 ff ff 00  (state ready)
+48.729786:sdcard_normal_command         ALL_SEND_CID/ CMD02 arg 0x00000000 (state ready)
+48.729797:sdcard_command_response aa 58 59 51 45 4d 55 21 01 de ad be ef 00 62 19  (state identification)
+48.730825:sdcard_normal_command   SEND_RELATIVE_ADDR/ CMD03 arg 0x00000000 (state identification)
+48.730835:sdcard_command_response 45 67 05 00  (state standby)
+48.731221:sdcard_normal_command             SEND_CSD/ CMD09 arg 0x45670000 (state standby)
+48.731228:sdcard_command_response 40 0e 00 32 5b 59 00 00 0d 47 7f 80 0a 40 00 00  (state standby)
+48.732012:sdcard_normal_command SELECT/DESELECT_CARD/ CMD07 arg 0x45670000 (state standby)
+48.732021:sdcard_command_response 00 00 07 00  (state transfer)
+48.732419:sdcard_command_response 00 00 09 20  (state transfer)
+48.764983:sdcard_app_command                SEND_SCR/ACMD51 arg 0x00000000 (state transfer)
+48.765000:sdcard_command_response 00 00 09 20  (state sendingdata)
+48.766951:sdcard_command_response 00 00 09 20  (state transfer)
+48.767159:sdcard_app_command               SD_STATUS/ACMD13 arg 0x00000000 (state transfer)
+48.767168:sdcard_command_response 00 00 09 20  (state sendingdata)
+48.966731:sdcard_normal_command  READ_MULTIPLE_BLOCK/ CMD18 arg 0x00000000 (state transfer)
+48.966763:sdcard_command_response 00 00 09 00  (state sendingdata)
+48.974869:sdcard_normal_command    STOP_TRANSMISSION/ CMD12 arg 0x00000000 (state sendingdata)
+48.974877:sdcard_command_response 00 00 0b 00  (state transfer)
+50.044308:sdcard_normal_command          SEND_STATUS/ CMD13 arg 0x45670000 (state transfer)
+50.044330:sdcard_command_response 00 00 09 00  (state transfer)
+[...]
+
+Regards,
+
+Phil.
+
+Based-on: 20171213213557.26561-7-f4bug@amsat.org
+          (QTests: use Python to run complex tests)
+
+Philippe Mathieu-Daudé (26):
+  sdbus: add a QMP command to access a SDBus
+  sdcard: add Python qtests
+  sdcard: use ldst API
+  sdcard: replace fprintf() -> qemu_log_mask()
+  sdcard: rename sd_set_mode() -> sd_update_mode()
+  sdcard: add sd_set_mode()
+  sdcard: add sdcard_set_mode() trace event
+  sdcard: add sd_set_state()
+  sdcard: add a sdcard_set_state() trace event
+  sdcard: use more detailled state/mode trace events
+  sdcard: use warn_report() instead of fprintf()
+  sdcard: replace DPRINTF() by trace events
+  sdcard: add more trace events
+  sdcard: use qemu_hexbuf_strdup() to trace command response
+  sdcard: use PW_LEN define instead of '16' magic
+  sdcard: let cmd_valid_while_locked() returns a bool
+  sdcard: rename sd_set_REG() functions called by sd_reset() as sd_reset_REG()
+  sdcard: move Memory Card registers together
+  sdcard: add DSR register
+  sdcard: add/use SD_CMD_MAX to check valid SD commands
+  sdcard: add sd_cmd_abbreviation() to resolve the SD command id
+  sdcard: reduce sd_cmd traces
+  sdcard: add ACMD trace events
+  sdcard: use a 16-bit type for the 16-bit RCA register
+  sdcard: add/use a SDCardCommandClass enum instead of magic numbers
+  sdcard: add/use a ccc_spi enum for the commands supported in SPI mode
+
+ qapi-schema.json       |  41 ++++
+ hw/sd/core.c           |  43 ++++
+ hw/sd/sd.c             | 519 +++++++++++++++++++++++++++++++------------------
+ stubs/qmp_sdbus.c      |  11 ++
+ hw/sd/trace-events     |  17 ++
+ stubs/Makefile.objs    |   1 +
+ tests/Makefile.include |   2 +
+ tests/sdcard_tests.py  | 172 ++++++++++++++++
+ 8 files changed, 617 insertions(+), 189 deletions(-)
+ create mode 100644 stubs/qmp_sdbus.c
+ create mode 100755 tests/sdcard_tests.py
+
 -- 
-2.13.6
+2.15.1
 

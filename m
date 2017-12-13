@@ -1,103 +1,70 @@
-Received: by 10.223.159.74 with SMTP id f10csp5302210wrg;
-        Wed, 13 Dec 2017 08:49:26 -0800 (PST)
-X-Google-Smtp-Source: ACJfBovvWkGU98aWg0kqLMKomffLmsit1lbKJkMUDTDidE+xbxHWaaU7xFt+ClhLDsNZAOq7p5/q
-X-Received: by 10.37.170.199 with SMTP id t65mr1447012ybi.398.1513183766208;
-        Wed, 13 Dec 2017 08:49:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1513183766; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp5305145wrg;
+        Wed, 13 Dec 2017 08:52:36 -0800 (PST)
+X-Google-Smtp-Source: ACJfBovfpkznjpA/lP1abot9tx6WLamvbZ76Sard53djToar2Bm/im1F63cJyVUDLP4VFfdB3Rh3
+X-Received: by 10.129.56.137 with SMTP id f131mr2216765ywa.139.1513183956536;
+        Wed, 13 Dec 2017 08:52:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513183956; cv=none;
         d=google.com; s=arc-20160816;
-        b=pTCHtri6voiTgb+vFtC3qgvq9RJkyjutSQ+BatapP2XV7PwxLyQgQp5+TjYdAmyHKa
-         JOmSBasqrRrfE/d6ZAGNM2Q1Kw39K8B4Od9qUBD6RNjVJ7GjVfxyf0/935djD98pUF1z
-         58t0ZJkB4Ff7LnKKeLlWqPpFgB77J5RABHzYxoewYCHcTDwVqw6nOwDT+uByqQXbZZXo
-         yU2MdsvM7gEPRHMu3FBdPbBDp6UlmdU4nZFeKijxYY3edt+7Ac+wCdvcLUpRWCg7A/5N
-         Q/9f+ngOWS/yjQCznx76os5FB2I3eHBOreW7DY2PdUfVSFfZZs4ajU7WZ+zRLCE+19sO
-         MLhg==
+        b=vB+jg21KVyaxJkXRD0vpVWNDw7HASccq6ltnnJ5VPg4JcZ6E5lZgTqBfyitRmGmTGP
+         TZx/TwkW/Vt2/0Rtr4zDqxlCRrFJhj8mXHyWqr/eLwZLbOwFmc3uABbZ6DrjSh9nhAnc
+         3ZYURgiAoagtmk/VQ2mcM7OZEax2wRySdwFW1A3HpBteJb1UlXueRZ0+sOxToG1SfvD+
+         /AwkkrSF+qOOEsyV1e/8sVS5L7FugLt/7J+TlbgXzRNXvUjFjfXELmhKTGG2xf7g34cx
+         CKiA2BcjuUVTYajomK51d6VGHvSVNcjtBs9uOZR/J6VbhH8XQNWIMgRmWnv1HAkgXdsC
+         2BcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
          :arc-authentication-results;
-        bh=712MzYsrUran6KM8cPQTvxmlnaIdvSGkp7XpolJyF+k=;
-        b=dJ+P465ePkJBMQvb2wxvgHUvkGZRxqZlXiLlFKOIZGF960yDKbdemnkiBZmLZkE9hx
-         mcnQFfbFU4U5/LPlao9yfUpIuERe2IykyJmKhJ3b5tR+s5yEW9RKb7rUlQFFo3qNzLYU
-         41LUfIVH88c/c1bsu40YrQEK2gfxZYRLilLySA2ZL+DSxYnjP5UNb6CjRWD9vUFSpbYA
-         p6wiRaJvhq++Raj3vcV1ib16DlwxasdOwuwq1frCnoAQedx+TzjmSLP1qu7F43iRraPY
-         lZwKsXSydR7MaJtINRxufeurNRXsAqXnqPEyJ74S8RoPJHZs2IpKgRWbCQqhgFuz+gZP
-         QShg==
+        bh=atr9yCp/Md5RszuVdOdNq/gI9r5SqrZ3jgZqOg15ioc=;
+        b=tAamkzs0uMdoqVLlFSDEZuktjjIGcX6HrC3yKEozQYx8nYY2u44AmVOTo6gFu3AXv8
+         oxmAO37HvsZZrazEMierADe+yq6M6YBGDx+tnZsqCimlrg+s8j4Dwu1QXm2pM0LrHIfp
+         XxRlV3G3U9AMLnoVG0a0NIiwH0tAE0wnIX5uYAc76s6qwiLc4i+qWrd/JFeMAAyDH3il
+         mN+D9UycAgZApVKKG5QoW5h5bKv+/qk6YbYNM3gkunFbn5MDVX5cCiUTPnwrkazKReBh
+         u1gCkvb+c3+n9gwHU1YrUtzAO2vfb7YKAabXSEY0IsOG7u6N6RZrU6oRA9IYSDB7IwXv
+         FbAA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=W9IGNCiE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q186si413460ywh.391.2017.12.13.08.49.26
+        by mx.google.com with ESMTPS id p3si407257ybk.772.2017.12.13.08.52.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 13 Dec 2017 08:49:26 -0800 (PST)
+        Wed, 13 Dec 2017 08:52:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=W9IGNCiE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36284 helo=lists.gnu.org)
+Received: from localhost ([::1]:36307 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ePADl-0006yJ-MT
-	for alex.bennee@linaro.org; Wed, 13 Dec 2017 11:49:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58574)
+	id 1ePAGp-0002Km-VM
+	for alex.bennee@linaro.org; Wed, 13 Dec 2017 11:52:36 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59360)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ePADB-0006Ri-V0
-	for qemu-arm@nongnu.org; Wed, 13 Dec 2017 11:48:50 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1ePAGg-0002Ir-57
+	for qemu-arm@nongnu.org; Wed, 13 Dec 2017 11:52:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ePADB-0001Sp-Al
-	for qemu-arm@nongnu.org; Wed, 13 Dec 2017 11:48:49 -0500
-Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:39736)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1ePADB-0001SV-5T
-	for qemu-arm@nongnu.org; Wed, 13 Dec 2017 11:48:49 -0500
-Received: by mail-oi0-x243.google.com with SMTP id r63so1973890oia.6
-	for <qemu-arm@nongnu.org>; Wed, 13 Dec 2017 08:48:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=712MzYsrUran6KM8cPQTvxmlnaIdvSGkp7XpolJyF+k=;
-	b=W9IGNCiEmukl1e18MZzt6GqqD8B6XVvTb2mMoKYs5xy+sGxf++YAOhtksU8h06ePno
-	Wr2LZw20J6hGE3L0VJ8CxKicFGBeUskzEnq/o4ozOrK0pQj97GMX266tX3KRvJNgbMU8
-	TMXjFaqKdguL1pOpUtDhkPEFejtUFU/ZJDyw4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=712MzYsrUran6KM8cPQTvxmlnaIdvSGkp7XpolJyF+k=;
-	b=as6kME4pO/+0ZrhAqJxvRsRGLG8td4rYHYG/MtICqZQAFwF5WvWKCMLx2xroW4yQ//
-	g+rULAcS/ZP5adOs3TLSzjNulD9cefHHEWWd3+bogk+voH1jd2Tl6VkULTU71ow8p4jR
-	vnHDe+E1gXjwkRcoNQTNFkQNSKaN7KoVxCcPoc9FZuUCeYhEgb6cjzX6W7bU4EtShJxG
-	rhr7qDUh0tlEpimj4QjznrzAyTVGQ+A27JDm3g3F3Jhhmkk0URX4yHM8RvC+0/KL+PGw
-	Cfs6+HOr8lxeOFDD+4SNO0Hynh15X83OBW3NI5cZss9Eod3j7HOOhkf4kPGe7bCoYpt/
-	pq3w==
-X-Gm-Message-State: AKGB3mLA76HNe6rbaGOFHxsGqY6YBFIvntZ27uOAoo42FpNC4MX9U1UH
-	JJ9fpaamt1UVPG0i/vuQ/WMkooGUNePUG/6cAwviDA==
-X-Received: by 10.202.216.137 with SMTP id p131mr401150oig.256.1513183728450; 
-	Wed, 13 Dec 2017 08:48:48 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.157.63.74 with HTTP; Wed, 13 Dec 2017 08:48:27 -0800 (PST)
-In-Reply-To: <CAKv+Gu-uPf9QLobM1Vqdek_rSPfZcAXV24Ybg83hZvHbH5LqHw@mail.gmail.com>
-References: <1512745328-5109-1-git-send-email-peter.maydell@linaro.org>
-	<1512745328-5109-4-git-send-email-peter.maydell@linaro.org>
-	<5A2F6ED9.5030605@huawei.com>
-	<ac182406-8011-9f19-38e7-37328434095b@redhat.com>
-	<CAFEAcA8ySsNx-rz__Nfbmd+QM3nKbgRXJtwSYjhRRvqbokt+uQ@mail.gmail.com>
-	<0355e1ee-2f48-81ce-55e6-bed7bdeac771@redhat.com>
-	<CAKv+Gu-uPf9QLobM1Vqdek_rSPfZcAXV24Ybg83hZvHbH5LqHw@mail.gmail.com>
+	(envelope-from <pm215@archaic.org.uk>) id 1ePAGf-0004Gn-FN
+	for qemu-arm@nongnu.org; Wed, 13 Dec 2017 11:52:26 -0500
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:39072)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1ePAGf-0004Ee-8h; Wed, 13 Dec 2017 11:52:25 -0500
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1ePAGc-0007OC-Qj; Wed, 13 Dec 2017 16:52:22 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 13 Dec 2017 16:48:27 +0000
-Message-ID: <CAFEAcA-P-bmHORpS15nowroWkM0yXgvdP2dmb5sp7RBaT4m_Aw@mail.gmail.com>
-To: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Wed, 13 Dec 2017 16:52:19 +0000
+Message-Id: <1513183941-24300-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::243
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 3/3] hw/arm/virt-acpi-build: Add
- second UART to ACPI tables
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH 0/2] GICv2 & GICv3: RAZ/WI reserved addresses
+ rather than aborting
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -109,22 +76,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Drew Jones <drjones@redhat.com>, "Jason A . Donenfeld" <Jason@zx2c4.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Andrea Bolognani <abologna@redhat.com>,
-	Shannon Zhao <zhaoshenglong@huawei.com>, Laszlo Ersek <lersek@redhat.com>
+Cc: Ard Biesheuvel <ard.biesheuvel@linaro.org>,
+	Laszlo Ersek <lersek@redhat.com>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /NrFmNUT6g4p
+X-TUID: YzgLLofQnFup
 
-On 13 December 2017 at 16:46, Ard Biesheuvel <ard.biesheuvel@linaro.org> wrote:
-> The kernel uses the contents of the SPCR table or /chosen/stdout-path
-> as the console unless overridden on the kernel command line. This is
-> independent of enumeration order.
+The GICv2 and GICv3 specifications say that reserved register
+addresses should RAZ/WI.  This means we need to return MEMTX_OK, not
+MEMTX_ERROR, because now that we support generating external aborts
+the latter will cause an abort on new board models.
 
-True, but we don't want to assign ttyAMA0 and ttyAMA1 to the
-UARTs arbitrarily -- ttyAMA0 must continue to be the one
-at address 0x09000000, or we break commandlines.
+In particular, at least some versions of UEFI try to
+access a reserved address in the GICv3 redistributor
+(at SGI_base + 0x184) and fail to boot on the virt board
+without this.
 
 thanks
 -- PMM
+
+Peter Maydell (2):
+  hw/intc/arm_gicv3: Make reserved register addresses RAZ/WI
+  hw/intc/arm_gic: reserved register addresses are RAZ/WI
+
+ hw/intc/arm_gic.c              |  5 +++--
+ hw/intc/arm_gicv3_dist.c       | 13 +++++++++++++
+ hw/intc/arm_gicv3_its_common.c |  8 +++-----
+ hw/intc/arm_gicv3_redist.c     | 13 +++++++++++++
+ 4 files changed, 32 insertions(+), 7 deletions(-)
+
+-- 
+2.7.4
+

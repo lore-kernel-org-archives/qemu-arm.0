@@ -1,1300 +1,407 @@
-Received: by 10.223.188.70 with SMTP id a6csp1266603wrh;
-        Fri, 25 Aug 2017 12:39:55 -0700 (PDT)
-X-Received: by 10.200.15.45 with SMTP id e42mr16331249qtk.145.1503689994972;
-        Fri, 25 Aug 2017 12:39:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1503689994; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp4613582wrg;
+        Tue, 12 Dec 2017 20:00:29 -0800 (PST)
+X-Google-Smtp-Source: ACJfBosG+G45vpbJr9phiNDtIOb/CdEO7ogt3VZ9ZOO54K0Mheh4cjcDLv5Pjbw2cPWso0T7Bkkz
+X-Received: by 10.159.195.12 with SMTP id bd12mr4614330plb.14.1513137629110;
+        Tue, 12 Dec 2017 20:00:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513137629; cv=none;
         d=google.com; s=arc-20160816;
-        b=A/PJl8lqtTE1yEqQlramcl9fBUlXAcu/FxihWwpqN8zvNJBdocrDH1NKitiBHmdpYJ
-         dVcXu7ItnvHWCesA/lGsl92lx4aT4bQ/vp3eJuL0Dt7EQkJ8uoOswZBTWOiVAR3ulWjv
-         tNxc1sSPhLkWySP0F6SyQoBDJ/WqdX02Ub1ko70KHetSnWf38YPrT0hsK1XomBr2I+aX
-         stTKkCv1GvidBf/xXjVgVd/uBADevvgfj7Ir/g5PiIEvb6XGCWKSkYTAoqyxyNcN8xI/
-         82b15LYicqXlOHoVqQ0uZ1VvRKanRS9e5YnPY607/uu+xwSSplPaeluDcgCgWXc5U2x+
-         X0ug==
+        b=of2rsLIbgnbRyAbyFaFnkCj2qqLxCfeloXNcS/HPHMYbmWMoBk0+VbvqH1YD1psUYq
+         /ra3BR3d/NSJdmH+y3SG7rteNMsMzmINvgPRGzuHkLJ0kZwMd3O7pNgdvgO48LJf8BWo
+         DfEulCBbRFPkW1r1qQiaAuUMPx4za0v5caGCD0NMbwcnbBsvsoo0kEM1eMZ5bXjc7oL2
+         Vmoc5fCPiCjNHtDwIR2+Y5lrRIxNU9xUXVBTuEViXvpDbzRJvYDIZ8tnkVZhZ0bVzX0/
+         7S4uKOhdg9il3L1ZdG4+sDfYDJNvFbYBw21+bH3RJEowOYgKzQjei7RKxEgEVHtVFA7Q
+         X+Rw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dmarc-filter:arc-authentication-results;
-        bh=oUp1bXHZnojsEu+cA29enk6TT6lJ7LK54MqJ7i6r7lc=;
-        b=Y7kkp+nqrqv4TFDGlGOSiECiZO+htgUNKY+K2abRMSVsOLFDEM1SCbfbVRG04yjXCT
-         UtTpEdJ4jdCnLNw1FaaP3PiwrI9m9JuKHgH1fZHcbZ2XuKKmiLqR92dHq8nWgHR9oe+7
-         fByIn2Dwy1uWI65yN/oF4lRYhsd0CxClKAXj94FyRIu206bw0OWqG3q8RYph89hd0q1/
-         aR4oi6GYn0Sz5a8FJjUdkUYKHtFlvN+T4fQAKWzPfrs6KJbphmVH8sdbkYnYadGOWWWy
-         sCd3d9TvjmUIISx2/HCwuVLIRBNwRj7J+zyi1dvT9rEBiUrUrXdJ5zqjJxEwkH7MDg1L
-         7WtQ==
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject:arc-authentication-results;
+        bh=dq5lNjhf1O5hknniGKb8ykjboiQSC01gRkxusYWFNJk=;
+        b=a/2EEk4NmDpWrqCUbRMkfPTOtKjqykmnt8a1phepJoVMoDK4S4ItEHhlbQkSo5wKoL
+         XMwaz3Jv5svF9V5oWmlyQ/z6WD7OIZ6w8arWxwUNq52XryKbExC7yEfWkFnJaRt8X7Sy
+         J+3XkR1imRkz9DWU7cxQSCee6BTTLYuIPD2D2TjBsZltCiekxE3qMJ+P3GNcW6/vyyI9
+         OEAZNgruVOj5K3ZxM5j04ipTEYz3X3LDdBakzJPLSPQKPBySvMCmqeTHjP0Avz4FU5bf
+         UiJqgaqXv40lUPANNvc9lTaMXQdapeew/wsUDZpDx2k3mk8lKABWauhiAWUi8+2aonCe
+         /Fiw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y2si6805212qtk.69.2017.08.25.12.39.54
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 25 Aug 2017 12:39:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id p1si561129pga.40.2017.12.12.20.00.28;
+        Tue, 12 Dec 2017 20:00:29 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54788 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dlKSO-0000mZ-9y
-	for alex.bennee@linaro.org; Fri, 25 Aug 2017 15:39:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34983)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1dlKSH-0000ge-BL
-	for qemu-arm@nongnu.org; Fri, 25 Aug 2017 15:39:49 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1dlKSD-0001Rn-FB
-	for qemu-arm@nongnu.org; Fri, 25 Aug 2017 15:39:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53718)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1dlKSC-0001Rb-UM; Fri, 25 Aug 2017 15:39:41 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9742E404333;
-	Fri, 25 Aug 2017 19:39:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 9742E404333
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=ehabkost@redhat.com
-Received: from localhost (ovpn-116-18.gru2.redhat.com [10.97.116.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 481576E513;
-	Fri, 25 Aug 2017 19:39:24 +0000 (UTC)
-Date: Fri, 25 Aug 2017 16:39:22 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: qemu-devel@nongnu.org
-Message-ID: <20170825193922.GN27715@localhost.localdomain>
-References: <20170823221445.15243-1-ehabkost@redhat.com>
-	<20170823221445.15243-5-ehabkost@redhat.com>
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1751799AbdLMEA1 (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 5 others); Tue, 12 Dec 2017 23:00:27 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:11976 "EHLO
+        szxga05-in.huawei.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1750749AbdLMEAZ (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 12 Dec 2017 23:00:25 -0500
+Received: from 172.30.72.60 (EHLO DGGEMS407-HUB.china.huawei.com) ([172.30.72.60])
+        by dggrg05-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
+        with ESMTP id DMC45407;
+        Wed, 13 Dec 2017 11:59:56 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by DGGEMS407-HUB.china.huawei.com
+ (10.3.19.207) with Microsoft SMTP Server id 14.3.361.1; Wed, 13 Dec 2017
+ 11:59:45 +0800
+Subject: Re: [PATCH v13 00/12] Add ARMv8 RAS virtualization support in QEMU
+To:     Igor Mammedov <imammedo@redhat.com>
+CC:     <mst@redhat.com>,
+        "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+        <zhaoshenglong@huawei.com>, James Morse <james.morse@arm.com>,
+        <lersek@redhat.com>, Marc Zyngier <marc.zyngier@arm.com>,
+        <christoffer.dall@linaro.org>, <rth@twiddle.net>,
+        <ehabkost@redhat.com>, <qemu-devel@nongnu.org>,
+        <qemu-arm@nongnu.org>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+        <pbonzini@redhat.com>, Linuxarm <linuxarm@huawei.com>,
+        <xuwei5@hisilicon.com>
+References: <1511807966-23936-1-git-send-email-gengdongjiu@huawei.com>
+ <470c9df5-f2e8-974b-b37f-eff84a6f3d71@huawei.com>
+ <18906953-f464-d9f4-23b4-fd7118d45e2f@huawei.com>
+ <20171211143220.7a359462@redhat.com>
+From:   gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <e36ec13c-e597-caae-4ae8-81b320e8f461@huawei.com>
+Date:   Wed, 13 Dec 2017 11:59:44 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20170823221445.15243-5-ehabkost@redhat.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.8.0 (2017-02-23)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Fri, 25 Aug 2017 19:39:40 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 4/5] pci: Add
- INTERFACE_LEGACY_PCI_DEVICE to legacy PCI devices
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Gerd Hoffmann <kraxel@redhat.com>, Jiri Slaby <jslaby@suse.cz>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Alberto Garcia <berto@igalia.com>, qemu-block@nongnu.org,
-	Alexander Graf <agraf@suse.de>,
-	=?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
-	Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
-	Richard Henderson <rth@twiddle.net>,
-	Artyom Tarasenko <atar4qemu@gmail.com>, Jiri Pirko <jiri@resnulli.us>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Marcel Apfelbaum <marcel@redhat.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm@nongnu.org, Hannes Reinecke <hare@suse.de>,
-	Laine Stump <laine@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
-	Yongbok Kim <yongbok.kim@imgtec.com>, John Snow <jsnow@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>, qemu-ppc@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JgeSIAaVH6Rx
+In-Reply-To: <20171211143220.7a359462@redhat.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.142.68.147]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+        refid=str=0001.0A090204.5A30A5BF.002E,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0,
+        ip=0.0.0.0,
+        so=2014-11-16 11:51:01,
+        dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 15d575126a6e5164e425d5dcc6ad0057
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 4WURhMxoRWs8
 
-CCing maintainers of affected devices (sorry for not CCing you
-before).
+Hi Peter,
 
-On Wed, Aug 23, 2017 at 07:14:44PM -0300, Eduardo Habkost wrote:
-> Add INTERFACE_LEGACY_PCI_DEVICE to all direct subtypes of
-> TYPE_PCI_DEVICE, except:
+On 2017/12/11 21:32, Igor Mammedov wrote:
+> On Mon, 11 Dec 2017 19:31:14 +0800
+> gengdongjiu <gengdongjiu@huawei.com> wrote:
 > 
-> 1) The ones that already have INTERFACE_PCIE_DEVICE set:
-> 
-> * base-xhci
-> * e1000e
-> * nvme
-> * pvscsi
-> * vfio-pci
-> * virtio-pci
-> * vmxnet3
-> 
-> 2) base-pci-bridge
-> 
-> Not all PCI bridges are legacy PCI devices, so
-> INTERFACE_LEGACY_PCI_DEVICE is added only to the subtypes that
-> are actually legacy PCI devices:
-> 
-> * dec-21154-p2p-bridge
-> * i82801b11-bridge
-> * pbm-bridge
-> * pci-bridge
-> 
-> The direct subtypes of base-pci-bridge not touched by this patch
-> are:
-> 
-> * xilinx-pcie-root: Already marked as PCIe-only device.
-> * pcie-port: all non-abstract subtypes of pcie-port are already
->   marked as PCIe-only devices.
-> 
-> 3) megasas-base
-> 
-> Not all megasas devices are legacy PCI devices, so the interface
-> names are added to the subclasses registered by
-> megasas_register_types(), according to information in the
-> megasas_devices[] array.
-> 
-> "megasas-gen2" already implements INTERFACE_PCIE_DEVICE, so add
-> INTERFACE_LEGACY_PCI_DEVICE only to "megasas".
-> 
-> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
-> ---
->  hw/acpi/piix4.c                     |  1 +
->  hw/audio/ac97.c                     |  4 ++++
->  hw/audio/es1370.c                   |  4 ++++
->  hw/audio/intel-hda.c                |  4 ++++
->  hw/char/serial-pci.c                | 12 ++++++++++++
->  hw/display/cirrus_vga.c             |  4 ++++
->  hw/display/qxl.c                    |  4 ++++
->  hw/display/sm501.c                  |  4 ++++
->  hw/display/vga-pci.c                |  4 ++++
->  hw/display/vmware_vga.c             |  4 ++++
->  hw/i2c/smbus_ich9.c                 |  4 ++++
->  hw/i386/amd_iommu.c                 |  4 ++++
->  hw/i386/kvm/pci-assign.c            |  4 ++++
->  hw/i386/pc_piix.c                   |  4 ++++
->  hw/i386/xen/xen_platform.c          |  4 ++++
->  hw/i386/xen/xen_pvdevice.c          |  4 ++++
->  hw/ide/ich.c                        |  4 ++++
->  hw/ide/pci.c                        |  4 ++++
->  hw/ipack/tpci200.c                  |  4 ++++
->  hw/isa/i82378.c                     |  4 ++++
->  hw/isa/lpc_ich9.c                   |  1 +
->  hw/isa/piix4.c                      |  4 ++++
->  hw/isa/vt82c686.c                   | 16 ++++++++++++++++
->  hw/mips/gt64xxx_pci.c               |  4 ++++
->  hw/misc/edu.c                       |  5 +++++
->  hw/misc/ivshmem.c                   |  4 ++++
->  hw/misc/macio/macio.c               |  4 ++++
->  hw/misc/pci-testdev.c               |  4 ++++
->  hw/net/e1000.c                      |  4 ++++
->  hw/net/eepro100.c                   |  4 ++++
->  hw/net/ne2000.c                     |  4 ++++
->  hw/net/pcnet-pci.c                  |  4 ++++
->  hw/net/rocker/rocker.c              |  4 ++++
->  hw/net/rtl8139.c                    |  4 ++++
->  hw/pci-bridge/dec.c                 |  8 ++++++++
->  hw/pci-bridge/i82801b11.c           |  4 ++++
->  hw/pci-bridge/pci_bridge_dev.c      |  1 +
->  hw/pci-bridge/pci_expander_bridge.c |  8 ++++++++
->  hw/pci-host/apb.c                   |  8 ++++++++
->  hw/pci-host/bonito.c                |  4 ++++
->  hw/pci-host/gpex.c                  |  4 ++++
->  hw/pci-host/grackle.c               |  4 ++++
->  hw/pci-host/piix.c                  |  8 ++++++++
->  hw/pci-host/ppce500.c               |  4 ++++
->  hw/pci-host/prep.c                  |  4 ++++
->  hw/pci-host/q35.c                   |  4 ++++
->  hw/pci-host/uninorth.c              | 16 ++++++++++++++++
->  hw/pci-host/versatile.c             |  4 ++++
->  hw/ppc/ppc4xx_pci.c                 |  4 ++++
->  hw/scsi/esp-pci.c                   |  4 ++++
->  hw/scsi/lsi53c895a.c                |  4 ++++
->  hw/scsi/megasas.c                   |  4 ++++
->  hw/scsi/mptsas.c                    |  4 ++++
->  hw/sd/sdhci.c                       |  4 ++++
->  hw/sh4/sh_pci.c                     |  4 ++++
->  hw/sparc64/sun4u.c                  |  4 ++++
->  hw/usb/hcd-ehci-pci.c               |  4 ++++
->  hw/usb/hcd-ohci.c                   |  4 ++++
->  hw/usb/hcd-uhci.c                   |  4 ++++
->  hw/vfio/pci-quirks.c                |  4 ++++
->  hw/watchdog/wdt_i6300esb.c          |  4 ++++
->  hw/xen/xen_pt.c                     |  4 ++++
->  62 files changed, 288 insertions(+)
-> 
-> diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
-> index f276967..defe98a 100644
-> --- a/hw/acpi/piix4.c
-> +++ b/hw/acpi/piix4.c
-> @@ -723,6 +723,7 @@ static const TypeInfo piix4_pm_info = {
->      .interfaces = (InterfaceInfo[]) {
->          { TYPE_HOTPLUG_HANDLER },
->          { TYPE_ACPI_DEVICE_IF },
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
->          { }
->      }
->  };
-> diff --git a/hw/audio/ac97.c b/hw/audio/ac97.c
-> index 959c786..6027e15 100644
-> --- a/hw/audio/ac97.c
-> +++ b/hw/audio/ac97.c
-> @@ -1431,6 +1431,10 @@ static const TypeInfo ac97_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof (AC97LinkState),
->      .class_init    = ac97_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void ac97_register_types (void)
-> diff --git a/hw/audio/es1370.c b/hw/audio/es1370.c
-> index dd7c23d..ed14ec3 100644
-> --- a/hw/audio/es1370.c
-> +++ b/hw/audio/es1370.c
-> @@ -1082,6 +1082,10 @@ static const TypeInfo es1370_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof (ES1370State),
->      .class_init    = es1370_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void es1370_register_types (void)
-> diff --git a/hw/audio/intel-hda.c b/hw/audio/intel-hda.c
-> index 06acc98..e2b9bf5 100644
-> --- a/hw/audio/intel-hda.c
-> +++ b/hw/audio/intel-hda.c
-> @@ -1299,6 +1299,10 @@ static const TypeInfo intel_hda_info = {
->      .instance_size = sizeof(IntelHDAState),
->      .class_init    = intel_hda_class_init,
->      .abstract      = true,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static const TypeInfo intel_hda_info_ich6 = {
-> diff --git a/hw/char/serial-pci.c b/hw/char/serial-pci.c
-> index 303104d..c2dbcc0 100644
-> --- a/hw/char/serial-pci.c
-> +++ b/hw/char/serial-pci.c
-> @@ -250,6 +250,10 @@ static const TypeInfo serial_pci_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PCISerialState),
->      .class_init    = serial_pci_class_initfn,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static const TypeInfo multi_2x_serial_pci_info = {
-> @@ -257,6 +261,10 @@ static const TypeInfo multi_2x_serial_pci_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PCIMultiSerialState),
->      .class_init    = multi_2x_serial_pci_class_initfn,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static const TypeInfo multi_4x_serial_pci_info = {
-> @@ -264,6 +272,10 @@ static const TypeInfo multi_4x_serial_pci_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PCIMultiSerialState),
->      .class_init    = multi_4x_serial_pci_class_initfn,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void serial_pci_register_types(void)
-> diff --git a/hw/display/cirrus_vga.c b/hw/display/cirrus_vga.c
-> index afc290a..9a39fa0 100644
-> --- a/hw/display/cirrus_vga.c
-> +++ b/hw/display/cirrus_vga.c
-> @@ -3162,6 +3162,10 @@ static const TypeInfo cirrus_vga_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PCICirrusVGAState),
->      .class_init    = cirrus_vga_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void cirrus_vga_register_types(void)
-> diff --git a/hw/display/qxl.c b/hw/display/qxl.c
-> index ae3677f..1a010e8 100644
-> --- a/hw/display/qxl.c
-> +++ b/hw/display/qxl.c
-> @@ -2430,6 +2430,10 @@ static const TypeInfo qxl_pci_type_info = {
->      .instance_size = sizeof(PCIQXLDevice),
->      .abstract = true,
->      .class_init = qxl_pci_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void qxl_primary_class_init(ObjectClass *klass, void *data)
-> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-> index 9aa515b..7538f0c 100644
-> --- a/hw/display/sm501.c
-> +++ b/hw/display/sm501.c
-> @@ -1843,6 +1843,10 @@ static const TypeInfo sm501_pci_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(SM501PCIState),
->      .class_init    = sm501_pci_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void sm501_register_types(void)
-> diff --git a/hw/display/vga-pci.c b/hw/display/vga-pci.c
-> index ac9a764..72477e4 100644
-> --- a/hw/display/vga-pci.c
-> +++ b/hw/display/vga-pci.c
-> @@ -338,6 +338,10 @@ static const TypeInfo vga_pci_type_info = {
->      .instance_size = sizeof(PCIVGAState),
->      .abstract = true,
->      .class_init = vga_pci_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void vga_class_init(ObjectClass *klass, void *data)
-> diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
-> index 4a64b41..9c2aa2d 100644
-> --- a/hw/display/vmware_vga.c
-> +++ b/hw/display/vmware_vga.c
-> @@ -1350,6 +1350,10 @@ static const TypeInfo vmsvga_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(struct pci_vmsvga_state_s),
->      .class_init    = vmsvga_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void vmsvga_register_types(void)
-> diff --git a/hw/i2c/smbus_ich9.c b/hw/i2c/smbus_ich9.c
-> index ea51e09..83b0512 100644
-> --- a/hw/i2c/smbus_ich9.c
-> +++ b/hw/i2c/smbus_ich9.c
-> @@ -119,6 +119,10 @@ static const TypeInfo ich9_smb_info = {
->      .parent = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(ICH9SMBState),
->      .class_init = ich9_smb_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void ich9_smb_register(void)
-> diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
-> index 334938a..471c7a9 100644
-> --- a/hw/i386/amd_iommu.c
-> +++ b/hw/i386/amd_iommu.c
-> @@ -1227,6 +1227,10 @@ static const TypeInfo amdviPCI = {
->      .name = "AMDVI-PCI",
->      .parent = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(AMDVIPCIState),
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void amdvi_iommu_memory_region_class_init(ObjectClass *klass, void *data)
-> diff --git a/hw/i386/kvm/pci-assign.c b/hw/i386/kvm/pci-assign.c
-> index 33e20cb..57800d3 100644
-> --- a/hw/i386/kvm/pci-assign.c
-> +++ b/hw/i386/kvm/pci-assign.c
-> @@ -1864,6 +1864,10 @@ static const TypeInfo assign_info = {
->      .instance_size      = sizeof(AssignedDevice),
->      .class_init         = assign_class_init,
->      .instance_init      = assigned_dev_instance_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void assign_register_types(void)
-> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-> index 46dfd2c..eafc207 100644
-> --- a/hw/i386/pc_piix.c
-> +++ b/hw/i386/pc_piix.c
-> @@ -1049,6 +1049,10 @@ static TypeInfo isa_bridge_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PCIDevice),
->      .class_init = isa_bridge_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void pt_graphics_register_types(void)
-> diff --git a/hw/i386/xen/xen_platform.c b/hw/i386/xen/xen_platform.c
-> index 9ba7474..2113bd0 100644
-> --- a/hw/i386/xen/xen_platform.c
-> +++ b/hw/i386/xen/xen_platform.c
-> @@ -517,6 +517,10 @@ static const TypeInfo xen_platform_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PCIXenPlatformState),
->      .class_init    = xen_platform_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void xen_platform_register_types(void)
-> diff --git a/hw/i386/xen/xen_pvdevice.c b/hw/i386/xen/xen_pvdevice.c
-> index c093b34..e2ae81b 100644
-> --- a/hw/i386/xen/xen_pvdevice.c
-> +++ b/hw/i386/xen/xen_pvdevice.c
-> @@ -127,6 +127,10 @@ static const TypeInfo xen_pv_type_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(XenPVDevice),
->      .class_init    = xen_pv_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void xen_pv_register_types(void)
-> diff --git a/hw/ide/ich.c b/hw/ide/ich.c
-> index 9472a60..0c60aa3 100644
-> --- a/hw/ide/ich.c
-> +++ b/hw/ide/ich.c
-> @@ -184,6 +184,10 @@ static const TypeInfo ich_ahci_info = {
->      .instance_size = sizeof(AHCIPCIState),
->      .instance_init = pci_ich9_ahci_init,
->      .class_init    = ich_ahci_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void ich_ahci_register_types(void)
-> diff --git a/hw/ide/pci.c b/hw/ide/pci.c
-> index 3cfb510..f437298 100644
-> --- a/hw/ide/pci.c
-> +++ b/hw/ide/pci.c
-> @@ -458,6 +458,10 @@ static const TypeInfo pci_ide_type_info = {
->      .parent = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PCIIDEState),
->      .abstract = true,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void pci_ide_register_types(void)
-> diff --git a/hw/ipack/tpci200.c b/hw/ipack/tpci200.c
-> index 4dfa6b3..e380378 100644
-> --- a/hw/ipack/tpci200.c
-> +++ b/hw/ipack/tpci200.c
-> @@ -646,6 +646,10 @@ static const TypeInfo tpci200_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(TPCI200State),
->      .class_init    = tpci200_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void tpci200_register_types(void)
-> diff --git a/hw/isa/i82378.c b/hw/isa/i82378.c
-> index 4d29a99..13702b8 100644
-> --- a/hw/isa/i82378.c
-> +++ b/hw/isa/i82378.c
-> @@ -138,6 +138,10 @@ static const TypeInfo i82378_type_info = {
->      .instance_size = sizeof(I82378State),
->      .instance_init = i82378_init,
->      .class_init = i82378_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void i82378_register_types(void)
-> diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
-> index ac8416d..dcde152 100644
-> --- a/hw/isa/lpc_ich9.c
-> +++ b/hw/isa/lpc_ich9.c
-> @@ -823,6 +823,7 @@ static const TypeInfo ich9_lpc_info = {
->      .interfaces = (InterfaceInfo[]) {
->          { TYPE_HOTPLUG_HANDLER },
->          { TYPE_ACPI_DEVICE_IF },
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
->          { }
->      }
->  };
-> diff --git a/hw/isa/piix4.c b/hw/isa/piix4.c
-> index f811eba..515e55d 100644
-> --- a/hw/isa/piix4.c
-> +++ b/hw/isa/piix4.c
-> @@ -132,6 +132,10 @@ static const TypeInfo piix4_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PIIX4State),
->      .class_init    = piix4_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void piix4_register_types(void)
-> diff --git a/hw/isa/vt82c686.c b/hw/isa/vt82c686.c
-> index 50dc83d..319dc7f 100644
-> --- a/hw/isa/vt82c686.c
-> +++ b/hw/isa/vt82c686.c
-> @@ -301,6 +301,10 @@ static const TypeInfo via_ac97_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(VT686AC97State),
->      .class_init    = via_ac97_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void vt82c686b_mc97_realize(PCIDevice *dev, Error **errp)
-> @@ -341,6 +345,10 @@ static const TypeInfo via_mc97_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(VT686MC97State),
->      .class_init    = via_mc97_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  /* vt82c686 pm init */
-> @@ -419,6 +427,10 @@ static const TypeInfo via_pm_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(VT686PMState),
->      .class_init    = via_pm_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static const VMStateDescription vmstate_via = {
-> @@ -502,6 +514,10 @@ static const TypeInfo via_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(VT82C686BState),
->      .class_init    = via_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void vt82c686b_register_types(void)
-> diff --git a/hw/mips/gt64xxx_pci.c b/hw/mips/gt64xxx_pci.c
-> index e8b2eef..96d8cd0 100644
-> --- a/hw/mips/gt64xxx_pci.c
-> +++ b/hw/mips/gt64xxx_pci.c
-> @@ -1232,6 +1232,10 @@ static const TypeInfo gt64120_pci_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PCIDevice),
->      .class_init    = gt64120_pci_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void gt64120_class_init(ObjectClass *klass, void *data)
-> diff --git a/hw/misc/edu.c b/hw/misc/edu.c
-> index 01acacf..64b12b3 100644
-> --- a/hw/misc/edu.c
-> +++ b/hw/misc/edu.c
-> @@ -408,12 +408,17 @@ static void edu_class_init(ObjectClass *class, void *data)
->  
->  static void pci_edu_register_types(void)
->  {
-> +    static InterfaceInfo interfaces[] = {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    };
->      static const TypeInfo edu_info = {
->          .name          = "edu",
->          .parent        = TYPE_PCI_DEVICE,
->          .instance_size = sizeof(EduState),
->          .instance_init = edu_instance_init,
->          .class_init    = edu_class_init,
-> +        .interfaces = interfaces,
->      };
->  
->      type_register_static(&edu_info);
-> diff --git a/hw/misc/ivshmem.c b/hw/misc/ivshmem.c
-> index 47a015f..da63c90 100644
-> --- a/hw/misc/ivshmem.c
-> +++ b/hw/misc/ivshmem.c
-> @@ -1010,6 +1010,10 @@ static const TypeInfo ivshmem_common_info = {
->      .instance_size = sizeof(IVShmemState),
->      .abstract      = true,
->      .class_init    = ivshmem_common_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static const VMStateDescription ivshmem_plain_vmsd = {
-> diff --git a/hw/misc/macio/macio.c b/hw/misc/macio/macio.c
-> index 5d57f45..fa163e3 100644
-> --- a/hw/misc/macio/macio.c
-> +++ b/hw/misc/macio/macio.c
-> @@ -415,6 +415,10 @@ static const TypeInfo macio_type_info = {
->      .instance_init = macio_instance_init,
->      .abstract      = true,
->      .class_init    = macio_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void macio_register_types(void)
-> diff --git a/hw/misc/pci-testdev.c b/hw/misc/pci-testdev.c
-> index 7d59902..992157f 100644
-> --- a/hw/misc/pci-testdev.c
-> +++ b/hw/misc/pci-testdev.c
-> @@ -326,6 +326,10 @@ static const TypeInfo pci_testdev_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PCITestDevState),
->      .class_init    = pci_testdev_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void pci_testdev_register_types(void)
-> diff --git a/hw/net/e1000.c b/hw/net/e1000.c
-> index f2e5072..51ab83d 100644
-> --- a/hw/net/e1000.c
-> +++ b/hw/net/e1000.c
-> @@ -1685,6 +1685,10 @@ static const TypeInfo e1000_base_info = {
->      .instance_init = e1000_instance_init,
->      .class_size    = sizeof(E1000BaseClass),
->      .abstract      = true,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static const E1000Info e1000_devices[] = {
-> diff --git a/hw/net/eepro100.c b/hw/net/eepro100.c
-> index 5a4774a..8f5c567 100644
-> --- a/hw/net/eepro100.c
-> +++ b/hw/net/eepro100.c
-> @@ -2117,6 +2117,10 @@ static void eepro100_register_types(void)
->          type_info.class_init = eepro100_class_init;
->          type_info.instance_size = sizeof(EEPRO100State);
->          type_info.instance_init = eepro100_instance_init;
-> +        type_info.interfaces = (InterfaceInfo[]) {
-> +            { INTERFACE_LEGACY_PCI_DEVICE },
-> +            { },
-> +        };
->  
->          type_register(&type_info);
->      }
-> diff --git a/hw/net/ne2000.c b/hw/net/ne2000.c
-> index 798d681..fce3420 100644
-> --- a/hw/net/ne2000.c
-> +++ b/hw/net/ne2000.c
-> @@ -786,6 +786,10 @@ static const TypeInfo ne2000_info = {
->      .instance_size = sizeof(PCINE2000State),
->      .class_init    = ne2000_class_init,
->      .instance_init = ne2000_instance_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void ne2000_register_types(void)
-> diff --git a/hw/net/pcnet-pci.c b/hw/net/pcnet-pci.c
-> index 0acf8a4..cbe6e99 100644
-> --- a/hw/net/pcnet-pci.c
-> +++ b/hw/net/pcnet-pci.c
-> @@ -365,6 +365,10 @@ static const TypeInfo pcnet_info = {
->      .instance_size = sizeof(PCIPCNetState),
->      .class_init    = pcnet_class_init,
->      .instance_init = pcnet_instance_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void pci_pcnet_register_types(void)
-> diff --git a/hw/net/rocker/rocker.c b/hw/net/rocker/rocker.c
-> index 4f0f6d7..2eb53ad 100644
-> --- a/hw/net/rocker/rocker.c
-> +++ b/hw/net/rocker/rocker.c
-> @@ -1573,6 +1573,10 @@ static const TypeInfo rocker_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(Rocker),
->      .class_init    = rocker_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void rocker_register_types(void)
-> diff --git a/hw/net/rtl8139.c b/hw/net/rtl8139.c
-> index 671c7e4..3371318 100644
-> --- a/hw/net/rtl8139.c
-> +++ b/hw/net/rtl8139.c
-> @@ -3489,6 +3489,10 @@ static const TypeInfo rtl8139_info = {
->      .instance_size = sizeof(RTL8139State),
->      .class_init    = rtl8139_class_init,
->      .instance_init = rtl8139_instance_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void rtl8139_register_types(void)
-> diff --git a/hw/pci-bridge/dec.c b/hw/pci-bridge/dec.c
-> index eb275e1..77a07d0 100644
-> --- a/hw/pci-bridge/dec.c
-> +++ b/hw/pci-bridge/dec.c
-> @@ -79,6 +79,10 @@ static const TypeInfo dec_21154_pci_bridge_info = {
->      .parent        = TYPE_PCI_BRIDGE,
->      .instance_size = sizeof(PCIBridge),
->      .class_init    = dec_21154_pci_bridge_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  PCIBus *pci_dec_21154_init(PCIBus *parent_bus, int devfn)
-> @@ -138,6 +142,10 @@ static const TypeInfo dec_21154_pci_host_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PCIDevice),
->      .class_init    = dec_21154_pci_host_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void pci_dec_21154_device_class_init(ObjectClass *klass, void *data)
-> diff --git a/hw/pci-bridge/i82801b11.c b/hw/pci-bridge/i82801b11.c
-> index 2c1b747..baac63b 100644
-> --- a/hw/pci-bridge/i82801b11.c
-> +++ b/hw/pci-bridge/i82801b11.c
-> @@ -106,6 +106,10 @@ static const TypeInfo i82801b11_bridge_info = {
->      .parent        = TYPE_PCI_BRIDGE,
->      .instance_size = sizeof(I82801b11Bridge),
->      .class_init    = i82801b11_bridge_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void d2pbr_register(void)
-> diff --git a/hw/pci-bridge/pci_bridge_dev.c b/hw/pci-bridge/pci_bridge_dev.c
-> index 4373f1d..d83824b 100644
-> --- a/hw/pci-bridge/pci_bridge_dev.c
-> +++ b/hw/pci-bridge/pci_bridge_dev.c
-> @@ -238,6 +238,7 @@ static const TypeInfo pci_bridge_dev_info = {
->      .instance_finalize = pci_bridge_dev_instance_finalize,
->      .interfaces = (InterfaceInfo[]) {
->          { TYPE_HOTPLUG_HANDLER },
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
->          { }
->      }
->  };
-> diff --git a/hw/pci-bridge/pci_expander_bridge.c b/hw/pci-bridge/pci_expander_bridge.c
-> index ff59abf..cc9ec88 100644
-> --- a/hw/pci-bridge/pci_expander_bridge.c
-> +++ b/hw/pci-bridge/pci_expander_bridge.c
-> @@ -316,6 +316,10 @@ static const TypeInfo pxb_dev_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PXBDev),
->      .class_init    = pxb_dev_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void pxb_pcie_dev_realize(PCIDevice *dev, Error **errp)
-> @@ -350,6 +354,10 @@ static const TypeInfo pxb_pcie_dev_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PXBDev),
->      .class_init    = pxb_pcie_dev_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void pxb_register_types(void)
-> diff --git a/hw/pci-host/apb.c b/hw/pci-host/apb.c
-> index 96e5d0b..c2c8c6d 100644
-> --- a/hw/pci-host/apb.c
-> +++ b/hw/pci-host/apb.c
-> @@ -817,6 +817,10 @@ static const TypeInfo pbm_pci_host_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PCIDevice),
->      .class_init    = pbm_pci_host_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void pbm_host_class_init(ObjectClass *klass, void *data)
-> @@ -857,6 +861,10 @@ static const TypeInfo pbm_pci_bridge_info = {
->      .name          = "pbm-bridge",
->      .parent        = TYPE_PCI_BRIDGE,
->      .class_init    = pbm_pci_bridge_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void pbm_iommu_memory_region_class_init(ObjectClass *klass, void *data)
-> diff --git a/hw/pci-host/bonito.c b/hw/pci-host/bonito.c
-> index 89133a9..f037378 100644
-> --- a/hw/pci-host/bonito.c
-> +++ b/hw/pci-host/bonito.c
-> @@ -833,6 +833,10 @@ static const TypeInfo bonito_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PCIBonitoState),
->      .class_init    = bonito_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void bonito_pcihost_class_init(ObjectClass *klass, void *data)
-> diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
-> index 83084b9..c348e84 100644
-> --- a/hw/pci-host/gpex.c
-> +++ b/hw/pci-host/gpex.c
-> @@ -144,6 +144,10 @@ static const TypeInfo gpex_root_info = {
->      .parent = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(GPEXRootState),
->      .class_init = gpex_root_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void gpex_register(void)
-> diff --git a/hw/pci-host/grackle.c b/hw/pci-host/grackle.c
-> index 2e281f6..01d3edc 100644
-> --- a/hw/pci-host/grackle.c
-> +++ b/hw/pci-host/grackle.c
-> @@ -142,6 +142,10 @@ static const TypeInfo grackle_pci_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PCIDevice),
->      .class_init = grackle_pci_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void pci_grackle_class_init(ObjectClass *klass, void *data)
-> diff --git a/hw/pci-host/piix.c b/hw/pci-host/piix.c
-> index 072a04e..d35520e 100644
-> --- a/hw/pci-host/piix.c
-> +++ b/hw/pci-host/piix.c
-> @@ -694,6 +694,10 @@ static const TypeInfo piix3_pci_type_info = {
->      .instance_size = sizeof(PIIX3State),
->      .abstract = true,
->      .class_init = pci_piix3_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void piix3_class_init(ObjectClass *klass, void *data)
-> @@ -748,6 +752,10 @@ static const TypeInfo i440fx_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PCII440FXState),
->      .class_init    = i440fx_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  /* IGD Passthrough Host Bridge. */
-> diff --git a/hw/pci-host/ppce500.c b/hw/pci-host/ppce500.c
-> index becc0ee..6dd66c4 100644
-> --- a/hw/pci-host/ppce500.c
-> +++ b/hw/pci-host/ppce500.c
-> @@ -516,6 +516,10 @@ static const TypeInfo e500_host_bridge_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PPCE500PCIBridgeState),
->      .class_init    = e500_host_bridge_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static Property pcihost_properties[] = {
-> diff --git a/hw/pci-host/prep.c b/hw/pci-host/prep.c
-> index 8b293ba..bb19b6d 100644
-> --- a/hw/pci-host/prep.c
-> +++ b/hw/pci-host/prep.c
-> @@ -372,6 +372,10 @@ static const TypeInfo raven_info = {
->      .parent = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(RavenPCIState),
->      .class_init = raven_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static Property raven_pcihost_properties[] = {
-> diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
-> index 0e472f2..a6f93f1 100644
-> --- a/hw/pci-host/q35.c
-> +++ b/hw/pci-host/q35.c
-> @@ -591,6 +591,10 @@ static const TypeInfo mch_info = {
->      .parent = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(MCHPCIState),
->      .class_init = mch_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void q35_register(void)
-> diff --git a/hw/pci-host/uninorth.c b/hw/pci-host/uninorth.c
-> index 6cf5e59..3b40a9a 100644
-> --- a/hw/pci-host/uninorth.c
-> +++ b/hw/pci-host/uninorth.c
-> @@ -374,6 +374,10 @@ static const TypeInfo unin_main_pci_host_info = {
->      .parent = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PCIDevice),
->      .class_init = unin_main_pci_host_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void u3_agp_pci_host_class_init(ObjectClass *klass, void *data)
-> @@ -398,6 +402,10 @@ static const TypeInfo u3_agp_pci_host_info = {
->      .parent = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PCIDevice),
->      .class_init = u3_agp_pci_host_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void unin_agp_pci_host_class_init(ObjectClass *klass, void *data)
-> @@ -422,6 +430,10 @@ static const TypeInfo unin_agp_pci_host_info = {
->      .parent = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PCIDevice),
->      .class_init = unin_agp_pci_host_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void unin_internal_pci_host_class_init(ObjectClass *klass, void *data)
-> @@ -446,6 +458,10 @@ static const TypeInfo unin_internal_pci_host_info = {
->      .parent = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PCIDevice),
->      .class_init = unin_internal_pci_host_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void pci_unin_main_class_init(ObjectClass *klass, void *data)
-> diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
-> index aa1fdf7..e1ba6f4 100644
-> --- a/hw/pci-host/versatile.c
-> +++ b/hw/pci-host/versatile.c
-> @@ -487,6 +487,10 @@ static const TypeInfo versatile_pci_host_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PCIDevice),
->      .class_init    = versatile_pci_host_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static Property pci_vpb_properties[] = {
-> diff --git a/hw/ppc/ppc4xx_pci.c b/hw/ppc/ppc4xx_pci.c
-> index 6953f8b..92027c3 100644
-> --- a/hw/ppc/ppc4xx_pci.c
-> +++ b/hw/ppc/ppc4xx_pci.c
-> @@ -359,6 +359,10 @@ static const TypeInfo ppc4xx_host_bridge_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PCIDevice),
->      .class_init    = ppc4xx_host_bridge_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void ppc4xx_pcihost_class_init(ObjectClass *klass, void *data)
-> diff --git a/hw/scsi/esp-pci.c b/hw/scsi/esp-pci.c
-> index e295d88..2f0c659 100644
-> --- a/hw/scsi/esp-pci.c
-> +++ b/hw/scsi/esp-pci.c
-> @@ -398,6 +398,10 @@ static const TypeInfo esp_pci_info = {
->      .parent = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PCIESPState),
->      .class_init = esp_pci_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  typedef struct {
-> diff --git a/hw/scsi/lsi53c895a.c b/hw/scsi/lsi53c895a.c
-> index 3e56ab2..788bfc3 100644
-> --- a/hw/scsi/lsi53c895a.c
-> +++ b/hw/scsi/lsi53c895a.c
-> @@ -2244,6 +2244,10 @@ static const TypeInfo lsi_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(LSIState),
->      .class_init    = lsi_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void lsi53c810_class_init(ObjectClass *klass, void *data)
-> diff --git a/hw/scsi/megasas.c b/hw/scsi/megasas.c
-> index 3641c30..cf69b56 100644
-> --- a/hw/scsi/megasas.c
-> +++ b/hw/scsi/megasas.c
-> @@ -2468,6 +2468,10 @@ static struct MegasasInfo megasas_devices[] = {
->          .is_express = false,
->          .vmsd = &vmstate_megasas_gen1,
->          .props = megasas_properties_gen1,
-> +        .interfaces = (InterfaceInfo[]) {
-> +            { INTERFACE_LEGACY_PCI_DEVICE },
-> +            { },
-> +        },
->      },{
->          .name = TYPE_MEGASAS_GEN2,
->          .desc = "LSI MegaRAID SAS 2108",
-> diff --git a/hw/scsi/mptsas.c b/hw/scsi/mptsas.c
-> index 765ab53..6ff773e 100644
-> --- a/hw/scsi/mptsas.c
-> +++ b/hw/scsi/mptsas.c
-> @@ -1441,6 +1441,10 @@ static const TypeInfo mptsas_info = {
->      .parent = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(MPTSASState),
->      .class_init = mptsas1068_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void mptsas_register_types(void)
-> diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-> index 6d6a791..f6b18d6 100644
-> --- a/hw/sd/sdhci.c
-> +++ b/hw/sd/sdhci.c
-> @@ -1315,6 +1315,10 @@ static const TypeInfo sdhci_pci_info = {
->      .parent = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(SDHCIState),
->      .class_init = sdhci_pci_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static Property sdhci_sysbus_properties[] = {
-> diff --git a/hw/sh4/sh_pci.c b/hw/sh4/sh_pci.c
-> index 38395c0..6cec225 100644
-> --- a/hw/sh4/sh_pci.c
-> +++ b/hw/sh4/sh_pci.c
-> @@ -179,6 +179,10 @@ static const TypeInfo sh_pci_host_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PCIDevice),
->      .class_init    = sh_pci_host_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void sh_pci_device_class_init(ObjectClass *klass, void *data)
-> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
-> index bbdb40c..b2b3bab 100644
-> --- a/hw/sparc64/sun4u.c
-> +++ b/hw/sparc64/sun4u.c
-> @@ -277,6 +277,10 @@ static const TypeInfo ebus_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(EbusState),
->      .class_init    = ebus_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  #define TYPE_OPENPROM "openprom"
-> diff --git a/hw/usb/hcd-ehci-pci.c b/hw/usb/hcd-ehci-pci.c
-> index 6dedcb8..464178d 100644
-> --- a/hw/usb/hcd-ehci-pci.c
-> +++ b/hw/usb/hcd-ehci-pci.c
-> @@ -170,6 +170,10 @@ static const TypeInfo ehci_pci_type_info = {
->      .instance_finalize = usb_ehci_pci_finalize,
->      .abstract = true,
->      .class_init = ehci_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void ehci_data_class_init(ObjectClass *klass, void *data)
-> diff --git a/hw/usb/hcd-ohci.c b/hw/usb/hcd-ohci.c
-> index 267982e..8b5e579 100644
-> --- a/hw/usb/hcd-ohci.c
-> +++ b/hw/usb/hcd-ohci.c
-> @@ -2139,6 +2139,10 @@ static const TypeInfo ohci_pci_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(OHCIPCIState),
->      .class_init    = ohci_pci_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static Property ohci_sysbus_properties[] = {
-> diff --git a/hw/usb/hcd-uhci.c b/hw/usb/hcd-uhci.c
-> index e3562a4..8842ea6 100644
-> --- a/hw/usb/hcd-uhci.c
-> +++ b/hw/usb/hcd-uhci.c
-> @@ -1323,6 +1323,10 @@ static const TypeInfo uhci_pci_type_info = {
->      .class_size    = sizeof(UHCIPCIDeviceClass),
->      .abstract = true,
->      .class_init = uhci_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void uhci_data_class_init(ObjectClass *klass, void *data)
-> diff --git a/hw/vfio/pci-quirks.c b/hw/vfio/pci-quirks.c
-> index 349085e..83a820a 100644
-> --- a/hw/vfio/pci-quirks.c
-> +++ b/hw/vfio/pci-quirks.c
-> @@ -1197,6 +1197,10 @@ static TypeInfo vfio_pci_igd_lpc_bridge_info = {
->      .name = "vfio-pci-igd-lpc-bridge",
->      .parent = TYPE_PCI_DEVICE,
->      .class_init = vfio_pci_igd_lpc_bridge_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void vfio_pci_igd_register_types(void)
-> diff --git a/hw/watchdog/wdt_i6300esb.c b/hw/watchdog/wdt_i6300esb.c
-> index 49b3cd1..f8b7e0c 100644
-> --- a/hw/watchdog/wdt_i6300esb.c
-> +++ b/hw/watchdog/wdt_i6300esb.c
-> @@ -463,6 +463,10 @@ static const TypeInfo i6300esb_info = {
->      .parent        = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(I6300State),
->      .class_init    = i6300esb_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void i6300esb_register_types(void)
-> diff --git a/hw/xen/xen_pt.c b/hw/xen/xen_pt.c
-> index 375efa6..66664fc 100644
-> --- a/hw/xen/xen_pt.c
-> +++ b/hw/xen/xen_pt.c
-> @@ -964,6 +964,10 @@ static const TypeInfo xen_pci_passthrough_info = {
->      .instance_size = sizeof(XenPCIPassthroughState),
->      .instance_finalize = xen_pci_passthrough_finalize,
->      .class_init = xen_pci_passthrough_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { INTERFACE_LEGACY_PCI_DEVICE },
-> +        { },
-> +    },
->  };
->  
->  static void xen_pci_passthrough_register_types(void)
-> -- 
-> 2.9.4
-> 
-> 
+>> Hi maintainer,
+>>
+>>   This patch set seems pending about one month, could you help review for them?  Thanks.
+> I'm going to look at ACPI side of it this week.
 
--- 
-Eduardo
+Hi Peter/shannon,
+   Igor will review the ACPI part code,
+   could you review below five patches? which does not depend on OS kernel patch and have received the agreement with others about the solution.
+   Thanks very much.
+
+[v13,08/12] target-arm: kvm64: inject synchronous External Abort
+[v13,09/12] Move related hwpoison page function to accel/kvm/ folder
+[v13,10/12] ARM: ACPI: Add _E04 for hardware error device
+[v13,11/12] hw/arm/virt: Add RAS platform version for migration
+[v13,12/12] target-arm: kvm64: handle SIGBUS signal from kernel or KVM
+
+> 
+> 
+>> In this series, except the three patches in [1] are dependent on KVM implementation. Other patches does not depend on KVM/host,
+>> because KVM/host has already supported them,  According to James Morse <james.morse@arm.com>'s agreement, when Qemu receives SIGBUS with MCE_MCEERR_AR, Qemu record
+>> the CPER and inject a Synchronous-External-Abort; when Qemu receives SIGBUS with MCE_MCEERR_AO, Qemu record CPER and inject a GPIO IRQ. In my
+>> current patch set, I already do that.
+>>
+>> I plan to move the three patches in [1] out of this patch set, because it was a separate case, the three patches are used to set guest SError ESR,
+>> which depend on KVM "return a Error" to Qemu, James has some concern about "KVM return error", so I plan to remove them from this patch set so that it does not block the whole patches review.
+>> Thanks!
+>>
+>> [1]:
+>> [v13,05/12] linux-headers: sync against Linux v4.14-rc8
+>> [v13,06/12] target-arm: kvm64: detect whether can set vsesr_el2
+>> [v13,07/12] target-arm: handle SError interrupt exception from the guest OS
+>>
+>>
+>> On 2017/11/28 2:39, Dongjiu Geng wrote:
+>>> From: gengdongjiu <gengdongjiu@huawei.com>
+>>>
+>>> In the ARMv8 platform, the CPU error type are synchronous external
+>>> abort(SEA) and SError Interrupt (SEI). If guest happen exception,
+>>> sometimes  guest itself do the recovery is better, because host
+>>> does not know guest's detailed info. For example, if a guest
+>>> user-space application happen exception, guest can kill this
+>>> application, but host can not do that.
+>>>
+>>> For the ARMv8 SEA/SEI, KVM or host kernel will deliver SIGBUS or
+>>> use other interface to notify user space. After user space gets
+>>> the notification, it will record the CPER to guest GHES buffer
+>>> for guest and inject a exception or IRQ to KVM.
+>>>
+>>> In the current implement, if the SIGBUS is BUS_MCEERR_AR, we will
+>>> treat it as synchronous exception, and use ARMv8 SEA notification type
+>>> to notify guest after recording CPER for guest; If the SIGBUS is
+>>> BUS_MCEERR_AO, we will treat it as asynchronous exception, and use
+>>> GPIO-Signal to notify guest after recording CPER for guest.
+>>>
+>>> If KVM wants userspace to do the recovery for the SError, it will return a error
+>>> status to Qemu. Then Qemu will specify the guest ESR value and inject a virtual
+>>> SError.
+>>>
+>>> This series patches have three parts:
+>>> 1. Generate APEI/GHES table and record CPER for guest in runtime.
+>>> 2. Handle the SIGBUS signal, record the CPER and fill into guest memory,
+>>>    then according to SIGBUS type(BUS_MCEERR_AR or BUS_MCEERR_AO), using
+>>>    different ACPI notification type to notify guest.
+>>> 3. Specify guest SError ESR value and inject a virtual SError
+>>>
+>>> Whole solution was suggested by James(james.morse@arm.com); inject RAS SEA abort and specify guest ESR
+>>> in user space are suggested by Marc(marc.zyngier@arm.com), APEI part solution is suggested by
+>>> Laszlo(lersek@redhat.com). Shown some discussion in [1].
+>>>
+>>>
+>>> This series patches have already tested on ARM64 platform with RAS feature enabled:
+>>> Show the APEI part verification result in [2]
+>>> Show the BUS_MCEERR_AR and BUS_MCEERR_AO SIGBUS handling verification result in [3]
+>>> Show Qemu set guest ESR and inject virtual SError verification result in [4]
+>>>
+>>> ---
+>>> Change since v12:
+>>> 1. Address Paolo's comments to move HWPoisonPage definition to accel/kvm/kvm-all.c
+>>> 2. Only call kvm_cpu_synchronize_state() when get the BUS_MCEERR_AR signal
+>>> 3. Only add and enable GPIO-Signal and ARMv8 SEA two hardware error sources
+>>> 4. Address Michael's comments to not sync SPDX from Linux kernel header file
+>>>
+>>> Change since v11:
+>>> Address James's comments(james.morse@arm.com)
+>>> 1. Check whether KVM has the capability to to set ESR instead of detecting host CPU RAS capability
+>>> 2. For SIGBUS_MCEERR_AR SIGBUS, use Synchronous-External-Abort(SEA) notification type
+>>>    for SIGBUS_MCEERR_AO SIGBUS, use GPIO-Signal notification
+>>>
+>>>
+>>> Address Shannon's comments(for ACPI part):
+>>> 1. Unify hest_ghes.c and hest_ghes.h license declaration
+>>> 2. Remove unnecessary including "qmp-commands.h" in hest_ghes.c
+>>> 3. Unconditionally add guest APEI table based on James's comments(james.morse@arm.com)
+>>> 4. Add a option to virt machine for migration compatibility. On new virt machine it's on
+>>>    by default while off for old ones, we enabled it since 2.10
+>>> 5. Refer to the ACPI spec version which introduces Hardware Error Notification first time
+>>> 6. Add ACPI_HEST_NOTIFY_RESERVED notification type
+>>>
+>>> Address Igor's comments(for ACPI part):
+>>> 1. Add doc patch first which will describe how it's supposed to work between QEMU/firmware/guest
+>>>    OS with expected flows.
+>>> 2. Move APEI diagrams into doc/spec patch
+>>> 3. Remove redundant g_malloc in ghes_record_cper()
+>>> 4. Use build_append_int_noprefix() API to compose whole error status block and whole APEI table,
+>>>    and try to get rid of most structures in patch 1, as they will be left unused after that
+>>> 5. Reuse something like https://github.com/imammedo/qemu/commit/3d2fd6d13a3ea298d2ee814835495ce6241d085c
+>>>    to build GAS
+>>> 6. Remove much offsetof() in the function
+>>> 7. Build independent tables first and only then build dependent tables passing to it pointers
+>>>    to previously build table if necessary.
+>>> 8. Redefine macro GHES_ACPI_HEST_NOTIFY_RESERVED to ACPI_HEST_ERROR_SOURCE_COUNT to avoid confusion
+>>>
+>>>
+>>> Address Peter Maydell's comments
+>>> 1. linux-headers is done as a patch of their own created using scripts/update-linux-headers.sh run against a
+>>>    mainline kernel tree
+>>> 2. Tested whether this patchset builds OK on aarch32
+>>> 3. Abstract Hwpoison page adding code  out properly into a cpu-independent source file from target/i386/kvm.c,
+>>>    such as kvm-all.c
+>>> 4. Add doc-comment formatted documentation comment for new globally-visible function prototype in a header
+>>>
+>>> ---
+>>> [1]:
+>>> https://lkml.org/lkml/2017/2/27/246
+>>> https://patchwork.kernel.org/patch/9633105/
+>>> https://patchwork.kernel.org/patch/9925227/
+>>>
+>>> [2]:
+>>> Note: the UEFI(QEMU_EFI.fd) is needed if guest want to use ACPI table.
+>>>
+>>> After guest boot up, dump the APEI table, then can see the initialized table
+>>> (1) # iasl -p ./HEST -d /sys/firmware/acpi/tables/HEST
+>>> (2) # cat HEST.dsl
+>>>     /*
+>>>      * Intel ACPI Component Architecture
+>>>      * AML/ASL+ Disassembler version 20170728 (64-bit version)
+>>>      * Copyright (c) 2000 - 2017 Intel Corporation
+>>>      *
+>>>      * Disassembly of /sys/firmware/acpi/tables/HEST, Mon Sep  5 07:59:17 2016
+>>>      *
+>>>      * ACPI Data Table [HEST]
+>>>      *
+>>>      * Format: [HexOffset DecimalOffset ByteLength]  FieldName : FieldValue
+>>>      */
+>>>
+>>>     ..................................................................................
+>>>     [308h 0776   2]                Subtable Type : 000A [Generic Hardware Error Source V2]
+>>>     [30Ah 0778   2]                    Source Id : 0008
+>>>     [30Ch 0780   2]            Related Source Id : FFFF
+>>>     [30Eh 0782   1]                     Reserved : 00
+>>>     [30Fh 0783   1]                      Enabled : 01
+>>>     [310h 0784   4]       Records To Preallocate : 00000001
+>>>     [314h 0788   4]      Max Sections Per Record : 00000001
+>>>     [318h 0792   4]          Max Raw Data Length : 00001000
+>>>
+>>>     [31Ch 0796  12]         Error Status Address : [Generic Address Structure]
+>>>     [31Ch 0796   1]                     Space ID : 00 [SystemMemory]
+>>>     [31Dh 0797   1]                    Bit Width : 40
+>>>     [31Eh 0798   1]                   Bit Offset : 00
+>>>     [31Fh 0799   1]         Encoded Access Width : 04 [QWord Access:64]
+>>>     [320h 0800   8]                      Address : 00000000785D0040
+>>>
+>>>     [328h 0808  28]                       Notify : [Hardware Error Notification Structure]
+>>>     [328h 0808   1]                  Notify Type : 08 [SEA]
+>>>     [329h 0809   1]                Notify Length : 1C
+>>>     [32Ah 0810   2]   Configuration Write Enable : 0000
+>>>     [32Ch 0812   4]                 PollInterval : 00000000
+>>>     [330h 0816   4]                       Vector : 00000000
+>>>     [334h 0820   4]      Polling Threshold Value : 00000000
+>>>     [338h 0824   4]     Polling Threshold Window : 00000000
+>>>     [33Ch 0828   4]        Error Threshold Value : 00000000
+>>>     [340h 0832   4]       Error Threshold Window : 00000000
+>>>
+>>>     [344h 0836   4]    Error Status Block Length : 00001000
+>>>     [348h 0840  12]            Read Ack Register : [Generic Address Structure]
+>>>     [348h 0840   1]                     Space ID : 00 [SystemMemory]
+>>>     [349h 0841   1]                    Bit Width : 40
+>>>     [34Ah 0842   1]                   Bit Offset : 00
+>>>     [34Bh 0843   1]         Encoded Access Width : 04 [QWord Access:64]
+>>>     [34Ch 0844   8]                      Address : 00000000785D0098
+>>>
+>>>     [354h 0852   8]            Read Ack Preserve : 00000000FFFFFFFE
+>>>     [35Ch 0860   8]               Read Ack Write : 0000000000000001
+>>>
+>>>     .....................................................................................
+>>>
+>>> (3) After a synchronous external abort(SEA) happen, Qemu receive a SIGBUS and
+>>>     filled the CPER into guest GHES memory.  For example, according to above table,
+>>>     the address that contains the physical address of a block of memory that holds
+>>>     the error status data for this abort is 0x00000000785D0040
+>>> (4) the address for SEA notification error source is 0x785d80b0
+>>>     (qemu) xp /1 0x00000000785D0040
+>>>     00000000785d0040: 0x785d80b0
+>>>
+>>> (5) check the content of generic error status block and generic error data entry
+>>>     (qemu) xp /100x 0x785d80b0
+>>>     00000000785d80b0: 0x00000001 0x00000000 0x00000000 0x00000098
+>>>     00000000785d80c0: 0x00000000 0xa5bc1114 0x4ede6f64 0x833e63b8
+>>>     00000000785d80d0: 0xb1837ced 0x00000000 0x00000300 0x00000050
+>>>     00000000785d80e0: 0x00000000 0x00000000 0x00000000 0x00000000
+>>>     00000000785d80f0: 0x00000000 0x00000000 0x00000000 0x00000000
+>>>     00000000785d8100: 0x00000000 0x00000000 0x00000000 0x00004002
+>>> (6) check the OSPM's ACK value(for example SEA)
+>>>     /* Before OSPM acknowledges the error, check the ACK value */
+>>>     (qemu) xp /1 0x00000000785D0098
+>>>     00000000785d00f0: 0x00000000
+>>>
+>>>     /* After OSPM acknowledges the error, check the ACK value, it change to 1 from 0 */
+>>>     (qemu) xp /1 0x00000000785D0098
+>>>     00000000785d00f0: 0x00000001
+>>>
+>>> [2] host memory error hander deliver "BUS_MCEERR_AO" to Qemu, Qemu record the
+>>>     guest CPER and notify guest by IRQ, then guest do the recovery.
+>>>
+>>> [ 4895.040340] {2}[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 7
+>>> [ 4895.367779] {2}[Hardware Error]: event severity: recoverable
+>>> [ 4896.536868] {2}[Hardware Error]:  Error 0, type: recoverable
+>>> [ 4896.753032] {2}[Hardware Error]:   section_type: memory error
+>>> [ 4896.969088] {2}[Hardware Error]:   physical_address: 0x0000000040a08000
+>>> [ 4897.211532] {2}[Hardware Error]:   error_type: 3, multi-bit ECC
+>>> [ 4900.666650] Memory failure: 0x40600: already hardware poisoned
+>>> [ 4902.744432] Memory failure: 0x40a08: Killing mca-recover:42 due to hardware memory corruption
+>>> [ 4903.448544] Memory failure: 0x40a08: recovery action for dirty LRU page: RecoVered
+>>>
+>>> [3] KVM deliver "BUS_MCEERR_AR" to Qemu, Qemu record the guest CPER and inject
+>>>     synchronous external abort to notify guest, then guest do the recovery.
+>>>
+>>> [ 1552.516170] Synchronous External Abort: synchronous external abort (0x92000410) at 0x000000003751c6b4
+>>> [ 1553.074073] {1}[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 8
+>>> [ 1553.081654] {1}[Hardware Error]: event severity: recoverable
+>>> [ 1554.034191] {1}[Hardware Error]:  Error 0, type: recoverable
+>>> [ 1554.037934] {1}[Hardware Error]:   section_type: memory error
+>>> [ 1554.513261] {1}[Hardware Error]:   physical_address: 0x0000000040fa6000
+>>> [ 1554.513944] {1}[Hardware Error]:   error_type: 3, multi-bit ECC
+>>> [ 1555.041451] Memory failure: 0x40fa6: Killing mca-recover:1296 due to hardware memory corruption
+>>> [ 1555.373116] Memory failure: 0x40fa6: recovery action for dirty LRU page: Recovered
+>>>
+>>> [4] Qemu set guest ESR and inject virtual SError test result:
+>>>
+>>> KVM return Error status to Qemu, Qemu set the guest ESR and inject virtual SError.
+>>> As shown below, the ESR value 0xbe000c11 is set by Qemu
+>>>
+>>> Bad mode in Error handler detected, code 0xbe000c11 -- SError
+>>> CPU: 0 PID: 539 Comm: devmem Tainted: G      D         4.1.0+ #20
+>>> Hardware name: linux,dummy-virt (DT)
+>>> task: ffffffc019aad600 ti: ffffffc008134000 task.ti: ffffffc008134000
+>>> PC is at 0x405cc0
+>>> LR is at 0x40ce80
+>>> pc : [<0000000000405cc0>] lr : [<000000000040ce80>] pstate: 60000000
+>>> sp : ffffffc008137ff0
+>>> x29: 0000007fd9e80790 x28: 0000000000000000
+>>> x27: 00000000000000ad x26: 000000000049c000
+>>> x25: 000000000048904b x24: 000000000049c000
+>>> x23: 0000000040600000 x22: 0000007fd9e808d0
+>>> x21: 0000000000000002 x20: 0000000000000000
+>>> x19: 0000000000000020 x18: 0000000000000000
+>>> x17: 0000000000405cc0 x16: 000000000049c698
+>>> x15: 0000000000005798 x14: 0000007f93875f1c
+>>> x13: 0000007f93a8ccb0 x12: 0000000000000137
+>>> x11: 0000000000000000 x10: 0000000000000000
+>>> x9 : 0000000000000000 x8 : 00000000000000de
+>>> x7 : 0000000000000000 x6 : 0000000000002000
+>>> x5 : 0000000040600000 x4 : 0000000000000003
+>>> x3 : 0000000000000001 x2 : 00000000000f123b
+>>> x1 : 0000000000000008 x0 : 000000000047a048
+>>>
+>>>
+>>> Dongjiu Geng (12):
+>>>   ACPI: add related GHES structures and macros definition
+>>>   ACPI: Add APEI GHES table generation and CPER record support
+>>>   docs: APEI GHES generation description
+>>>   ACPI: enable APEI GHES in the configure file and build it
+>>>   linux-headers: sync against Linux v4.14-rc8
+>>>   target-arm: kvm64: detect whether can set vsesr_el2
+>>>   target-arm: handle SError interrupt exception from the guest OS
+>>>   target-arm: kvm64: inject synchronous External Abort
+>>>   Move related hwpoison page function to accel/kvm/ folder
+>>>   ARM: ACPI: Add _E04 for hardware error device
+>>>   hw/arm/virt: Add RAS platform version for migration
+>>>   target-arm: kvm64: handle SIGBUS signal from kernel or KVM
+>>>
+>>>  accel/kvm/kvm-all.c             |  34 ++++
+>>>  default-configs/arm-softmmu.mak |   1 +
+>>>  docs/specs/acpi_hest_ghes.txt   |  96 +++++++++++
+>>>  hw/acpi/Makefile.objs           |   1 +
+>>>  hw/acpi/aml-build.c             |   2 +
+>>>  hw/acpi/hest_ghes.c             | 358 ++++++++++++++++++++++++++++++++++++++++
+>>>  hw/arm/virt-acpi-build.c        |  43 ++++-
+>>>  hw/arm/virt.c                   |  22 +++
+>>>  include/exec/ram_addr.h         |   5 +
+>>>  include/hw/acpi/acpi-defs.h     |  49 ++++++
+>>>  include/hw/acpi/aml-build.h     |   1 +
+>>>  include/hw/acpi/hest_ghes.h     |  83 ++++++++++
+>>>  include/hw/arm/virt.h           |   1 +
+>>>  include/sysemu/kvm.h            |   2 +-
+>>>  include/sysemu/sysemu.h         |   3 +
+>>>  linux-headers/linux/kvm.h       |   3 +
+>>>  target/arm/internals.h          |   4 +
+>>>  target/arm/kvm.c                |   5 +
+>>>  target/arm/kvm32.c              |   6 +
+>>>  target/arm/kvm64.c              | 138 ++++++++++++++++
+>>>  target/arm/kvm_arm.h            |   8 +
+>>>  target/i386/kvm.c               |  33 ----
+>>>  vl.c                            |  12 ++
+>>>  23 files changed, 875 insertions(+), 35 deletions(-)
+>>>  create mode 100644 docs/specs/acpi_hest_ghes.txt
+>>>  create mode 100644 hw/acpi/hest_ghes.c
+>>>  create mode 100644 include/hw/acpi/hest_ghes.h
+>>>  
+>>
+>>
+> 
+> 
+> .
+> 

@@ -1,72 +1,97 @@
-Received: by 10.223.159.74 with SMTP id f10csp5305400wrg;
-        Wed, 13 Dec 2017 08:52:53 -0800 (PST)
-X-Google-Smtp-Source: ACJfBovGVBgTZ2GgjNlH7XNg+GlYCWFIXezuVdCYthg5LbODgy6k3v0hmtTOIZZtxQCIsKAFA88V
-X-Received: by 10.129.131.197 with SMTP id t188mr2185887ywf.24.1513183973398;
-        Wed, 13 Dec 2017 08:52:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1513183973; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp5307103wrg;
+        Wed, 13 Dec 2017 08:54:46 -0800 (PST)
+X-Google-Smtp-Source: ACJfBotNJrWYO5ZmzlUrdN5FODybYDVxtlPv/shaoscAU49Z+DNKVd8cbzRkKyW+4YHJkr1i7Q4t
+X-Received: by 10.129.158.71 with SMTP id v68mr2282177ywg.201.1513184086017;
+        Wed, 13 Dec 2017 08:54:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513184086; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZScf7yHhiPZdIo7pv6SqrJOcGj0LfTwRo4RR7U8IHHaX9x0fv5U5LnqhZIQbedCXTt
-         Nr8zP6i/pUMLULWOr3F3hIZvOA2vhUpErEanNThJuUjOH9zWiPvmpy/0OR0mmJVn3LeL
-         dZxdQ/P3bpBWrnn+nOYWSf2+mEoj2fez/8CZm7CaoDpVX7T7UUYsiWVMbBlAaAximS+e
-         MBJpYFqLjEw81THdb6czaeiiMfqy/8s9mIu6pVgl4PRJFJUSatSWyOXz4lHklwQ8Prwb
-         fSac+Z/7wEiqdl9fhErkiCepOPlllc/Nx7RZZtya+TUASTNNALyy1GIvMvP/v6huh54f
-         foIQ==
+        b=bsOmjPzK2Ulaj1gC61QIOAXkCZbOzZr+u61+kvBywjlC249dZ6l5WWJQdHMDiCIJUg
+         RvLUuVO34eqGBZ1To+LADgoUCRiHyNrdiP8R2iwDUwtRmAJeV9VFp/KEyFUY2urkejoD
+         wBjm+xsx2EjbKaMfqnNrepFRe6DCa3pAGJWejJEod4LnhFAm1rd14Q5mSkqVTdKDSuaH
+         EdG8J12d/rlyT0tIK4/PhMySKqzvLPrASAR1+kNlnzQxzEp103BaIZPmCUH3Bs4VxydB
+         GAZx+mbh+sfBWzq0O105uHFP5ThzQYydG6c9B2Aj2z7HG80nj9uQ91u8D4ZXFXYWypY2
+         AOoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=u38s6KJ1/xZSIqRdoq9FFsnR/cXGlKL7BFSl8xycdlQ=;
-        b=JzKngBoNMC9m4YNutcyy59Ao8na7+McfLUkPlQWAQvNKv7dyEscMYaeM69OZnmgfBo
-         Jqh8mi9GavhU4aj9Xvtg5I099ZD31jMoHSbB51mcOM3ldt/SHjOTr4juDnlQI8xo3hCS
-         rASZo9gnTSRnhAxX+UmfYqns6RHrR4+/PWTHzu9Ruzh3KMW6Q/zW2fCwo+6sP39osfG7
-         tj15jJ1TeLaYkfwxAn4x7VEDixm+zkUy18AmfrsteLKizm2SK1Mzim6qry+Tn/xhvMt9
-         z2HwXLRITvnkZfmC/stkbgS2RyQSLh4IjU04nT2r6aiasNm26LhYDhRyO2eGR2Njby5/
-         FvNw==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=caMuRKencdSv4IcBbI1VEwnHWB3HD8PCMNlNHJ3CnJg=;
+        b=d6TjTGeyDRVL7HM+FOIOQP4VbbEVYxuNysyUMslLQGyS9RJm6kfWRiBlxtRP3GPz0P
+         k3alBysoVqj43MwWGpV50PPSaMcTpS4p9AVbApxg1WaF1TRgcsBZzjudV89R6Ox/4+dx
+         tvYZtRsJs6UxxRVoxW9tSNpqXvXXBLfAOBZDtpXKCR2E39PB47ziGYeS2AZdNiFPsFYP
+         JX3UVuoyqimPehojOKO4qkIjC2c4y8a1tLYuj91o9mY5HVzEOApSWNyJehsNl8t/q80r
+         gEt7vpkHU37vnWVI8q7HX1tFscTNpl5vZsh/VWIH23trupsWAzzB/FlZZifv5mFZofdq
+         bTgQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Sk5IGt2+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q136si436704ybq.589.2017.12.13.08.52.53
+Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
+        by mx.google.com with ESMTPS id e19si406100ywe.353.2017.12.13.08.54.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 13 Dec 2017 08:52:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 13 Dec 2017 08:54:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Sk5IGt2+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36313 helo=lists.gnu.org)
+Received: from localhost ([::1]:36323 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ePAH6-0002Y9-RK
-	for alex.bennee@linaro.org; Wed, 13 Dec 2017 11:52:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59393)
+	id 1ePAIv-00041U-Bx
+	for alex.bennee@linaro.org; Wed, 13 Dec 2017 11:54:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59990)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1ePAGi-0002Kl-E1
-	for qemu-arm@nongnu.org; Wed, 13 Dec 2017 11:52:29 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1ePAIh-0003yb-5c
+	for qemu-arm@nongnu.org; Wed, 13 Dec 2017 11:54:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1ePAGh-0004JY-Cb
-	for qemu-arm@nongnu.org; Wed, 13 Dec 2017 11:52:28 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:39072)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1ePAGh-0004Ee-4b; Wed, 13 Dec 2017 11:52:27 -0500
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1ePAGd-0007OQ-Ga; Wed, 13 Dec 2017 16:52:23 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Wed, 13 Dec 2017 16:52:20 +0000
-Message-Id: <1513183941-24300-2-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
+	(envelope-from <peter.maydell@linaro.org>) id 1ePAIg-0005dW-Da
+	for qemu-arm@nongnu.org; Wed, 13 Dec 2017 11:54:31 -0500
+Received: from mail-ot0-x22f.google.com ([2607:f8b0:4003:c0f::22f]:34913)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1ePAIg-0005d3-93
+	for qemu-arm@nongnu.org; Wed, 13 Dec 2017 11:54:30 -0500
+Received: by mail-ot0-x22f.google.com with SMTP id q3so2518862oth.2
+	for <qemu-arm@nongnu.org>; Wed, 13 Dec 2017 08:54:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=caMuRKencdSv4IcBbI1VEwnHWB3HD8PCMNlNHJ3CnJg=;
+	b=Sk5IGt2+EdbPolbHTgwCEPBVgOmS2PYMtVCP9gT4MckzZdFcdgAmmXK/MNPj2+OoUO
+	qiX3j5Hkh5SRxvUMIZlbG3HDzl7HyoKDRiUwVmCrsZ+pfSZvvhnVtgNOF2TuYmcZ4MzG
+	iiNOoimiGcyOaM4kF1psXIQGbejxqO+hJQeMU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=caMuRKencdSv4IcBbI1VEwnHWB3HD8PCMNlNHJ3CnJg=;
+	b=A8qVKnib62WR3yLN/QoYNtYBLbq22v6E3/WPxNAEMV58J+VAIV1CO6bDWTo0jHk36M
+	sMODjem6LtfZ7eaZcJtiMlsY0w7hWXKhpOaWzXJhsAwBFyDbsADnZuT5WFbXcuN7L08P
+	h/RxmC0VZhObtDWW7jdJxgBzX9y+/xJrilw81O5eUDScU8DVDm4Y1ZYkjD41B+yhp6GY
+	cmRifGLk4UDDqYY51JCp4AYNexn+w7hiAK9DJsOwUzCNFmYLC2N+ZsNveewRp/Qhe0NR
+	jak8nsiuEK/kjo2OGHIl2sUBC+40rUuvPDe9QYB4CPdYtko2mc6T06kwJheO2nbO688+
+	0vDw==
+X-Gm-Message-State: AKGB3mI5CGaa8JdCIOp7K3USlGf5qHa9uXmbKDJR33WfkZZg5VnbcpP1
+	i06EW1NeaUlsDLzC20ZS4rFPnIr7FgOVf53hDgNXYP0p
+X-Received: by 10.157.13.168 with SMTP id 37mr2591610ots.197.1513184069448;
+	Wed, 13 Dec 2017 08:54:29 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.157.63.74 with HTTP; Wed, 13 Dec 2017 08:54:08 -0800 (PST)
 In-Reply-To: <1513183941-24300-1-git-send-email-peter.maydell@linaro.org>
 References: <1513183941-24300-1-git-send-email-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 13 Dec 2017 16:54:08 +0000
+Message-ID: <CAFEAcA8HswEKDPpj=cM711rNU2zwPuDXW7886=Oa2HBDmZxdCg@mail.gmail.com>
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 1/2] hw/intc/arm_gicv3: Make reserved register
- addresses RAZ/WI
+X-Received-From: 2607:f8b0:4003:c0f::22f
+Subject: Re: [Qemu-arm] [PATCH 0/2] GICv2 & GICv3: RAZ/WI reserved addresses
+ rather than aborting
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,117 +103,34 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Ard Biesheuvel <ard.biesheuvel@linaro.org>,
-	Laszlo Ersek <lersek@redhat.com>, patches@linaro.org
+Cc: "patches@linaro.org" <patches@linaro.org>, Laszlo Ersek <lersek@redhat.com>,
+	qemu-stable <qemu-stable@nongnu.org>,
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rZe7/r5Rf5Mx
+X-TUID: 690MZ1CPzt0Y
 
-The GICv3 specification says that reserved register addresses
-should RAZ/WI. This means we need to return MEMTX_OK, not MEMTX_ERROR,
-because now that we support generating external aborts the
-latter will cause an abort on new board models.
+On 13 December 2017 at 16:52, Peter Maydell <peter.maydell@linaro.org> wrote:
+> The GICv2 and GICv3 specifications say that reserved register
+> addresses should RAZ/WI.  This means we need to return MEMTX_OK, not
+> MEMTX_ERROR, because now that we support generating external aborts
+> the latter will cause an abort on new board models.
+>
+> In particular, at least some versions of UEFI try to
+> access a reserved address in the GICv3 redistributor
+> (at SGI_base + 0x184) and fail to boot on the virt board
+> without this.
+>
+> thanks
+> -- PMM
+>
+> Peter Maydell (2):
+>   hw/intc/arm_gicv3: Make reserved register addresses RAZ/WI
+>   hw/intc/arm_gic: reserved register addresses are RAZ/WI
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/intc/arm_gicv3_dist.c       | 13 +++++++++++++
- hw/intc/arm_gicv3_its_common.c |  8 +++-----
- hw/intc/arm_gicv3_redist.c     | 13 +++++++++++++
- 3 files changed, 29 insertions(+), 5 deletions(-)
+Oops, forgot the cc-stable tags:
 
-diff --git a/hw/intc/arm_gicv3_dist.c b/hw/intc/arm_gicv3_dist.c
-index 3ea3dd0..93fe936 100644
---- a/hw/intc/arm_gicv3_dist.c
-+++ b/hw/intc/arm_gicv3_dist.c
-@@ -817,6 +817,13 @@ MemTxResult gicv3_dist_read(void *opaque, hwaddr offset, uint64_t *data,
-                       "%s: invalid guest read at offset " TARGET_FMT_plx
-                       "size %u\n", __func__, offset, size);
-         trace_gicv3_dist_badread(offset, size, attrs.secure);
-+        /* The spec requires that reserved registers are RAZ/WI;
-+         * so use MEMTX_ERROR returns from leaf functions as a way to
-+         * trigger the guest-error logging but don't return it to
-+         * the caller, or we'll cause a spurious guest data abort.
-+         */
-+        r = MEMTX_OK;
-+        *data = 0;
-     } else {
-         trace_gicv3_dist_read(offset, *data, size, attrs.secure);
-     }
-@@ -852,6 +859,12 @@ MemTxResult gicv3_dist_write(void *opaque, hwaddr offset, uint64_t data,
-                       "%s: invalid guest write at offset " TARGET_FMT_plx
-                       "size %u\n", __func__, offset, size);
-         trace_gicv3_dist_badwrite(offset, data, size, attrs.secure);
-+        /* The spec requires that reserved registers are RAZ/WI;
-+         * so use MEMTX_ERROR returns from leaf functions as a way to
-+         * trigger the guest-error logging but don't return it to
-+         * the caller, or we'll cause a spurious guest data abort.
-+         */
-+        r = MEMTX_OK;
-     } else {
-         trace_gicv3_dist_write(offset, data, size, attrs.secure);
-     }
-diff --git a/hw/intc/arm_gicv3_its_common.c b/hw/intc/arm_gicv3_its_common.c
-index 2bd2f0f..284c0a7 100644
---- a/hw/intc/arm_gicv3_its_common.c
-+++ b/hw/intc/arm_gicv3_its_common.c
-@@ -67,7 +67,8 @@ static MemTxResult gicv3_its_trans_read(void *opaque, hwaddr offset,
-                                         MemTxAttrs attrs)
- {
-     qemu_log_mask(LOG_GUEST_ERROR, "ITS read at offset 0x%"PRIx64"\n", offset);
--    return MEMTX_ERROR;
-+    *data = 0;
-+    return MEMTX_OK;
- }
- 
- static MemTxResult gicv3_its_trans_write(void *opaque, hwaddr offset,
-@@ -82,15 +83,12 @@ static MemTxResult gicv3_its_trans_write(void *opaque, hwaddr offset,
-         if (ret <= 0) {
-             qemu_log_mask(LOG_GUEST_ERROR,
-                           "ITS: Error sending MSI: %s\n", strerror(-ret));
--            return MEMTX_DECODE_ERROR;
-         }
--
--        return MEMTX_OK;
-     } else {
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "ITS write at bad offset 0x%"PRIx64"\n", offset);
--        return MEMTX_DECODE_ERROR;
-     }
-+    return MEMTX_OK;
- }
- 
- static const MemoryRegionOps gicv3_its_trans_ops = {
-diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
-index 77e5cfa..8a8684d 100644
---- a/hw/intc/arm_gicv3_redist.c
-+++ b/hw/intc/arm_gicv3_redist.c
-@@ -455,6 +455,13 @@ MemTxResult gicv3_redist_read(void *opaque, hwaddr offset, uint64_t *data,
-                       "size %u\n", __func__, offset, size);
-         trace_gicv3_redist_badread(gicv3_redist_affid(cs), offset,
-                                    size, attrs.secure);
-+        /* The spec requires that reserved registers are RAZ/WI;
-+         * so use MEMTX_ERROR returns from leaf functions as a way to
-+         * trigger the guest-error logging but don't return it to
-+         * the caller, or we'll cause a spurious guest data abort.
-+         */
-+        r = MEMTX_OK;
-+        *data = 0;
-     } else {
-         trace_gicv3_redist_read(gicv3_redist_affid(cs), offset, *data,
-                                 size, attrs.secure);
-@@ -505,6 +512,12 @@ MemTxResult gicv3_redist_write(void *opaque, hwaddr offset, uint64_t data,
-                       "size %u\n", __func__, offset, size);
-         trace_gicv3_redist_badwrite(gicv3_redist_affid(cs), offset, data,
-                                     size, attrs.secure);
-+        /* The spec requires that reserved registers are RAZ/WI;
-+         * so use MEMTX_ERROR returns from leaf functions as a way to
-+         * trigger the guest-error logging but don't return it to
-+         * the caller, or we'll cause a spurious guest data abort.
-+         */
-+        r = MEMTX_OK;
-     } else {
-         trace_gicv3_redist_write(gicv3_redist_affid(cs), offset, data,
-                                  size, attrs.secure);
--- 
-2.7.4
+Cc: qemu-stable@nongnu.org
 
+thanks
+-- PMM

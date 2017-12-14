@@ -1,95 +1,95 @@
-Received: by 10.223.159.74 with SMTP id f10csp6412065wrg;
-        Thu, 14 Dec 2017 06:59:24 -0800 (PST)
-X-Google-Smtp-Source: ACJfBovIcyc6xL8soImuzH74N5K8Qf4yXv001Gy0to4i5qIHsO6V+ejn9gb008gvcHVOpfpYPQu+
-X-Received: by 10.13.239.69 with SMTP id y66mr4542509ywe.106.1513263564532;
-        Thu, 14 Dec 2017 06:59:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1513263564; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp6412272wrg;
+        Thu, 14 Dec 2017 06:59:36 -0800 (PST)
+X-Google-Smtp-Source: ACJfBoviEtTKIpVbl7jOjuJGQmoZnf0tcnNFcm3kB3heMb0pIM7D6y93cNt5m/tnEoVVIrxz5a1S
+X-Received: by 10.37.124.71 with SMTP id x68mr4623440ybc.278.1513263576749;
+        Thu, 14 Dec 2017 06:59:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513263576; cv=none;
         d=google.com; s=arc-20160816;
-        b=H2oI8dIslXFkSGXwBKLgJQBvB918cEG/Mv7c8Yoh9GwwPduG7l05aXepBtY8HzTAla
-         iXU3gnjHXOQ5tGqmeHPMz4WeqtF2a995Y6ZAvjFPUYRDlli6dmeyFtN4q3fFQYi+pUYr
-         B21dT7FY9AECTUsukj1oVvzo3fMvh9Nu4aelWpBkx/rqU9utCkifP+WFyAHw1dWXXuOk
-         LcIFo28YIurbxySFA3GkqNjHugjvgbECNcCaVs0sIqqb1MR4rWilpRU3OzASFVw19vBs
-         EzAMd4DDvDzqJ8Ab0yhL0WuO+8+zM0lYlLbg0WaoNIDsPqmZTdFxCGMpxLQBwi87aslL
-         lsOQ==
+        b=IDRju4r6MaKBcsEaZ8IB+30tVnzrEidIbx8CWKCQFEnlZSbz31PRSCy7ghyp/z/8j/
+         ccmUdzLNUETJc07yJ8yHcHslYZHQv3uCrur69Q5TXQRvqIFOA37g9qM93aHZBaoUkaHl
+         q7YoCLlRYEJPlkvDKHuwoI/m1Bxuv9S2muIkTV3eb7tUxOESz2SqLckowpVLCdArdaTb
+         pzj7wbtlDBOPbinmKUrlxqlHNL66Y3dUq64pZ9nMlXpjkDpwg3Wfz45Wb+t1LrggRX6G
+         FKdZ6rwvrdZsXK94BBhbixhtMbncuEe8qHAG8UN4Pe9klznysr35f7Hx8bjbQ+dZg8E2
+         bWyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=LhiP3hpi/ZVNEVgWfo4oqYY/H6ld3r0Ks8yRmNB8xhA=;
-        b=ePboaeZgfRPqxMKCeZPB/TfZuMI9MyGQL3b1W2rXgmPWYa3OhftVXjWS+j2lxBBJdW
-         Gppmz9vSuFvkP9+vf9aXm/lKAKxHicn3HWzMlE9OGdagj+Ip9qup/t+7IM9ljMo20O3g
-         EzY/WkLVgF6eL9rA9d7mEzkYKDcxwTQBsLrGglgcIZMZ+b21fjIFM6u4R+++OfK2bfg7
-         83U46JWcwElebhf9QC0eiFUnt+sOfJ22+89cfdkz/OeUHa5tPF5YqgI3HzWhDKm0WiOI
-         3wgQo3UDDUMFf0tW6a3qMwMK57VqKqoh3P80BXqbRlCHywo01SVV2JeuhsiJ/hFOG9Ca
-         pUpg==
+        bh=Uh6BWoCeucm/RqhnrLog4O3BSbZ2UG1LTw2gH+giLCc=;
+        b=xjDwUkLTWSlWNctbtWCUfQtrzoDkLUy3PPu9/Quu/SJVMmnLB7fSbvChYLNgmOU+Th
+         Xip1+OYJEsjuoqRUMtA+yaHnGMimJ2CuTn1IIb4CboZlwOD8X6m67EqhLi5OFVVHXJlF
+         y8trE67ACsy+Ai/wjy9agizpuvtoSEvLbxZZeXrrNwRVkVWFeH9wC18F6EcoB32FxPmk
+         Ah27s52TFyxN2OvlYBUsZe7cXHagphzjAi/J/wRsYhAPdLq4uTWirhiF/j+wRzFdo12N
+         ykw+VWnkFS9iAKoQUVE6/vfjk0S7Y8aHxno3mEfHj27pYPz1OP55HHbeVJjWVuwNdbGV
+         H1pg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=X/lE9ic/;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ay2Pn57E;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w189si816776ywc.145.2017.12.14.06.59.24
+        by mx.google.com with ESMTPS id n186si876910ybc.513.2017.12.14.06.59.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Dec 2017 06:59:24 -0800 (PST)
+        Thu, 14 Dec 2017 06:59:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=X/lE9ic/;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ay2Pn57E;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:41398 helo=lists.gnu.org)
+Received: from localhost ([::1]:41401 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ePUyp-0006Hu-U6
-	for alex.bennee@linaro.org; Thu, 14 Dec 2017 09:59:23 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55236)
+	id 1ePUz2-0006Tf-5Y
+	for alex.bennee@linaro.org; Thu, 14 Dec 2017 09:59:36 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55269)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1ePUtB-0001Uo-GX
+	(envelope-from <andrew.smirnov@gmail.com>) id 1ePUtC-0001WQ-Tz
 	for qemu-arm@nongnu.org; Thu, 14 Dec 2017 09:53:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1ePUt9-0000Vp-K0
-	for qemu-arm@nongnu.org; Thu, 14 Dec 2017 09:53:33 -0500
-Received: from mail-pf0-x243.google.com ([2607:f8b0:400e:c00::243]:33515)
+	(envelope-from <andrew.smirnov@gmail.com>) id 1ePUtC-0000bL-86
+	for qemu-arm@nongnu.org; Thu, 14 Dec 2017 09:53:35 -0500
+Received: from mail-pg0-x241.google.com ([2607:f8b0:400e:c05::241]:46611)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
-	id 1ePUt9-0000Uq-CQ; Thu, 14 Dec 2017 09:53:31 -0500
-Received: by mail-pf0-x243.google.com with SMTP id y89so3780034pfk.0;
-	Thu, 14 Dec 2017 06:53:31 -0800 (PST)
+	id 1ePUtC-0000ZR-2p; Thu, 14 Dec 2017 09:53:34 -0500
+Received: by mail-pg0-x241.google.com with SMTP id b11so3542124pgu.13;
+	Thu, 14 Dec 2017 06:53:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=LhiP3hpi/ZVNEVgWfo4oqYY/H6ld3r0Ks8yRmNB8xhA=;
-	b=X/lE9ic/35L6Y+j4MdrLas5mlnDyAEUbcMKX5xUN9GzCRCYs9Z2DvEVunjtxbp1ClP
-	ErOmKkform+pa2hI3/dgpaccCgjLEES/k1arusWBKZsW4OpxjgqgawsAqQqDFEuNw8PM
-	0Uy+3MWXEIYzGWdakPPljCUJwkv2a+n5N/HbwbNLRDMuCwx9mnpxTxsk7hItz3HBHDhp
-	8UMuUIX575Ak1gntKYFdOQ2EMsemRCiVgD4EJx5LQTwd4s1I58LQTmwwNZGo9uy5+ySc
-	MyuljBAHZIUFjXKoCmrCSVYPMMSXc1bgZgWW6gKmpeH/ZFBtizh5C0pgptMsgiiBffL0
-	leBQ==
+	bh=Uh6BWoCeucm/RqhnrLog4O3BSbZ2UG1LTw2gH+giLCc=;
+	b=ay2Pn57Eiw9kHFqVexz+X5sWaVnwyeLokNSB41N9L6QwwSM8WjVm9E4fNQcU+4Jfw2
+	B3ORfVO2jM+kOXuGJVA7Gbieyo+NqfQcf/pend8qSu71hNQD5UxkppEwh05+TQBefHiQ
+	j8jBg/Y9cJt5hbx+xtFDFZLlW+XPKqnrZwzXrHQ6HTWDtzpeRbNg7MLiSc/rcUUNMi2s
+	86Zd1jG/Ax3QBQb4TEHMISS9Xr/vbri49edlMo5sLbGT4fHFMKPPfk2t28oHI8kYfnB8
+	DKOzbusjDyrcaOGzDIwlNSyrjF6BaBpTxHbMnuehL59Knt4vyOZsSBKpgb4lXpRW4MjF
+	W+zA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:mime-version:content-transfer-encoding;
-	bh=LhiP3hpi/ZVNEVgWfo4oqYY/H6ld3r0Ks8yRmNB8xhA=;
-	b=LRwPrxCiv/sLN9kbMDkTSO5zSHYLzPX6IeNzTZNWj57czJGtKXe8Fp3oiBVg325J16
-	HTIUtwD8vdFiKyn/um6b8zeV1RcrKHeAdz9qyfHDS7M3rKTgR6fxHQce4Lsdf/7LowR4
-	RL0Pmiu5oVt2HzpO2iaFRL/yk1a6kLIO/CP61xWqg5F1PjRTTSb5S2AufzBd5YS1XdRT
-	ehujkWt/n76s1jE0bpU+ppYbnCNPdoCAb6GiAWadbkhwvlBL/dERCpxgqc6g7/sExQZ2
-	J4NDZvo4GhsksDCZYD6aYeTRIY2Z+diN90Sct+XN+Mruyd2HuVRt1d1EQ5hONJzi574M
-	Bxzw==
-X-Gm-Message-State: AKGB3mIBzSCG+mSMniv7dS9b1Z1VbXgiyM9s2SB0TBBKbHvkTgOFjj4g
-	lN7irsawUkz3QRnIcV1kgKihUmWm
-X-Received: by 10.101.64.205 with SMTP id u13mr8772519pgp.44.1513263210074;
-	Thu, 14 Dec 2017 06:53:30 -0800 (PST)
+	bh=Uh6BWoCeucm/RqhnrLog4O3BSbZ2UG1LTw2gH+giLCc=;
+	b=RgV6pRCR5HRxhMDHkWn19uY0jMEyegP0uBfkCyGeVoWojObkCxgPaNQaf40UQPnTDP
+	3NF3K8GFGxgbkL1dI/uS3GftxSmdWbIofC+LbyWpDjOvPQ2ljIxtCerpfrpgrlCYjlJ+
+	1vwO8GobSaL47Q5kf0BlVQzkfQR6rd+YbQByplHsAf75X7KOpe8zxjPaLGpZzWM2/CK6
+	faxUOhWEENNxeTAA6YEg0F47kxmOQm61UzbZfLI9G/uRjcFNAAm244DOlqYnQsuhDyMK
+	DJkRGmvtybrwAbcVvuwvTnVYTZRyxJKsytsGUIEbD/wnrYlPJMBVsw9YC70UzLBBSwR2
+	tVLg==
+X-Gm-Message-State: AKGB3mIlBwU0GpSmckWx8OUrkKpjTHr0A2Bi30oDV5FL6UptoWUFHFnq
+	1+RciO9OlkBNcns1CDuH3jy7MUPf
+X-Received: by 10.99.45.4 with SMTP id t4mr8823377pgt.254.1513263212787;
+	Thu, 14 Dec 2017 06:53:32 -0800 (PST)
 Received: from squirtle.lan (c-24-22-235-96.hsd1.wa.comcast.net.
 	[24.22.235.96])
-	by smtp.gmail.com with ESMTPSA id e7sm8757439pfj.44.2017.12.14.06.53.28
+	by smtp.gmail.com with ESMTPSA id e7sm8757439pfj.44.2017.12.14.06.53.31
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Thu, 14 Dec 2017 06:53:29 -0800 (PST)
+	Thu, 14 Dec 2017 06:53:32 -0800 (PST)
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 To: qemu-arm@nongnu.org
-Date: Thu, 14 Dec 2017 06:52:48 -0800
-Message-Id: <20171214145255.31545-9-andrew.smirnov@gmail.com>
+Date: Thu, 14 Dec 2017 06:52:50 -0800
+Message-Id: <20171214145255.31545-11-andrew.smirnov@gmail.com>
 X-Mailer: git-send-email 2.14.3
 In-Reply-To: <20171214145255.31545-1-andrew.smirnov@gmail.com>
 References: <20171214145255.31545-1-andrew.smirnov@gmail.com>
@@ -98,9 +98,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c00::243
-Subject: [Qemu-arm] [PATCH v2 08/15] imx_fec: Add support for multiple Tx
- DMA rings
+X-Received-From: 2607:f8b0:400e:c05::241
+Subject: [Qemu-arm] [PATCH v2 10/15] imx_fec: Fix a typo in
+ imx_enet_receive()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -119,10 +119,7 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org, yurovsky@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PSVzVEubrjTN
-
-More recent version of the IP block support more than one Tx DMA ring,
-so add the code implementing that feature.
+X-TUID: ky7nezh9TtiL
 
 Cc: Peter Maydell <peter.maydell@linaro.org>
 Cc: Jason Wang <jasowang@redhat.com>
@@ -133,322 +130,22 @@ Cc: yurovsky@gmail.com
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- hw/net/imx_fec.c         | 133 ++++++++++++++++++++++++++++++++++++++++-------
- include/hw/net/imx_fec.h |  18 ++++++-
- 2 files changed, 130 insertions(+), 21 deletions(-)
+ hw/net/imx_fec.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
-index 825c879a28..77d27f763e 100644
+index 6cb9e2e20e..c1cf7f9c58 100644
 --- a/hw/net/imx_fec.c
 +++ b/hw/net/imx_fec.c
-@@ -196,6 +196,31 @@ static const char *imx_eth_reg_name(IMXFECState *s, uint32_t index)
-     }
- }
- 
-+/*
-+ * Versions of this device with more than one TX descriptor save the
-+ * 2nd and 3rd descriptors in a subsection, to maintain migration
-+ * compatibility with previous versions of the device that only
-+ * supported a single descriptor.
-+ */
-+static bool imx_eth_is_multi_tx_ring(void *opaque)
-+{
-+    IMXFECState *s = IMX_FEC(opaque);
-+
-+    return s->tx_ring_num > 1;
-+}
-+
-+static const VMStateDescription vmstate_imx_eth_txdescs = {
-+    .name = "imx.fec/txdescs",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .needed = imx_eth_is_multi_tx_ring,
-+    .fields = (VMStateField[]) {
-+         VMSTATE_UINT32(tx_descriptor[1], IMXFECState),
-+         VMSTATE_UINT32(tx_descriptor[2], IMXFECState),
-+         VMSTATE_END_OF_LIST()
-+    }
-+};
-+
- static const VMStateDescription vmstate_imx_eth = {
-     .name = TYPE_IMX_FEC,
-     .version_id = 2,
-@@ -203,15 +228,18 @@ static const VMStateDescription vmstate_imx_eth = {
-     .fields = (VMStateField[]) {
-         VMSTATE_UINT32_ARRAY(regs, IMXFECState, ENET_MAX),
-         VMSTATE_UINT32(rx_descriptor, IMXFECState),
--        VMSTATE_UINT32(tx_descriptor, IMXFECState),
--
-+        VMSTATE_UINT32(tx_descriptor[0], IMXFECState),
-         VMSTATE_UINT32(phy_status, IMXFECState),
-         VMSTATE_UINT32(phy_control, IMXFECState),
-         VMSTATE_UINT32(phy_advertise, IMXFECState),
-         VMSTATE_UINT32(phy_int, IMXFECState),
-         VMSTATE_UINT32(phy_int_mask, IMXFECState),
-         VMSTATE_END_OF_LIST()
--    }
-+    },
-+    .subsections = (const VMStateDescription * []) {
-+        &vmstate_imx_eth_txdescs,
-+        NULL
-+    },
- };
- 
- #define PHY_INT_ENERGYON            (1 << 7)
-@@ -406,7 +434,7 @@ static void imx_fec_do_tx(IMXFECState *s)
- {
-     int frame_size = 0, descnt = 0;
-     uint8_t *ptr = s->frame;
--    uint32_t addr = s->tx_descriptor;
-+    uint32_t addr = s->tx_descriptor[0];
- 
-     while (descnt++ < IMX_MAX_DESC) {
-         IMXFECBufDesc bd;
-@@ -447,16 +475,47 @@ static void imx_fec_do_tx(IMXFECState *s)
-         }
+@@ -1150,7 +1150,7 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
+         size += 2;
      }
  
--    s->tx_descriptor = addr;
-+    s->tx_descriptor[0] = addr;
- 
-     imx_eth_update(s);
- }
- 
--static void imx_enet_do_tx(IMXFECState *s)
-+static void imx_enet_do_tx(IMXFECState *s, uint32_t index)
- {
-     int frame_size = 0, descnt = 0;
-+
-     uint8_t *ptr = s->frame;
--    uint32_t addr = s->tx_descriptor;
-+    uint32_t addr, int_txb, int_txf, tdsr;
-+    size_t ring;
-+
-+    switch (index) {
-+    case ENET_TDAR:
-+        ring    = 0;
-+        int_txb = ENET_INT_TXB;
-+        int_txf = ENET_INT_TXF;
-+        tdsr    = ENET_TDSR;
-+        break;
-+    case ENET_TDAR1:
-+        ring    = 1;
-+        int_txb = ENET_INT_TXB1;
-+        int_txf = ENET_INT_TXF1;
-+        tdsr    = ENET_TDSR1;
-+        break;
-+    case ENET_TDAR2:
-+        ring    = 2;
-+        int_txb = ENET_INT_TXB2;
-+        int_txf = ENET_INT_TXF2;
-+        tdsr    = ENET_TDSR2;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: bogus value for index %x\n",
-+                      __func__, index);
-+        abort();
-+        break;
-+    }
-+
-+    addr = s->tx_descriptor[ring];
- 
-     while (descnt++ < IMX_MAX_DESC) {
-         IMXENETBufDesc bd;
-@@ -502,32 +561,32 @@ static void imx_enet_do_tx(IMXFECState *s)
- 
-             frame_size = 0;
-             if (bd.option & ENET_BD_TX_INT) {
--                s->regs[ENET_EIR] |= ENET_INT_TXF;
-+                s->regs[ENET_EIR] |= int_txf;
-             }
-         }
-         if (bd.option & ENET_BD_TX_INT) {
--            s->regs[ENET_EIR] |= ENET_INT_TXB;
-+            s->regs[ENET_EIR] |= int_txb;
-         }
-         bd.flags &= ~ENET_BD_R;
-         /* Write back the modified descriptor.  */
-         imx_enet_write_bd(&bd, addr);
-         /* Advance to the next descriptor.  */
-         if ((bd.flags & ENET_BD_W) != 0) {
--            addr = s->regs[ENET_TDSR];
-+            addr = s->regs[tdsr];
-         } else {
-             addr += sizeof(bd);
-         }
-     }
- 
--    s->tx_descriptor = addr;
-+    s->tx_descriptor[ring] = addr;
- 
-     imx_eth_update(s);
- }
- 
--static void imx_eth_do_tx(IMXFECState *s)
-+static void imx_eth_do_tx(IMXFECState *s, uint32_t index)
- {
-     if (!s->is_fec && (s->regs[ENET_ECR] & ENET_ECR_EN1588)) {
--        imx_enet_do_tx(s);
-+        imx_enet_do_tx(s, index);
-     } else {
-         imx_fec_do_tx(s);
-     }
-@@ -585,7 +644,7 @@ static void imx_eth_reset(DeviceState *d)
-     }
- 
-     s->rx_descriptor = 0;
--    s->tx_descriptor = 0;
-+    memset(s->tx_descriptor, 0, sizeof(s->tx_descriptor));
- 
-     /* We also reset the PHY */
-     phy_reset(s);
-@@ -791,6 +850,7 @@ static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
-                            unsigned size)
- {
-     IMXFECState *s = IMX_FEC(opaque);
-+    const bool single_tx_ring = !imx_eth_is_multi_tx_ring(s);
-     uint32_t index = offset >> 2;
- 
-     FEC_PRINTF("reg[%s] <= 0x%" PRIx32 "\n", imx_eth_reg_name(s, index),
-@@ -813,10 +873,18 @@ static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
-             s->regs[index] = 0;
-         }
-         break;
--    case ENET_TDAR:
-+    case ENET_TDAR1:    /* FALLTHROUGH */
-+    case ENET_TDAR2:    /* FALLTHROUGH */
-+        if (unlikely(single_tx_ring)) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "[%s]%s: trying to access TDAR2 or TDAR1\n",
-+                          TYPE_IMX_FEC, __func__);
-+            return;
-+        }
-+    case ENET_TDAR:     /* FALLTHROUGH */
-         if (s->regs[ENET_ECR] & ENET_ECR_ETHEREN) {
-             s->regs[index] = ENET_TDAR_TDAR;
--            imx_eth_do_tx(s);
-+            imx_eth_do_tx(s, index);
-         }
-         s->regs[index] = 0;
-         break;
-@@ -828,8 +896,12 @@ static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
-         if ((s->regs[index] & ENET_ECR_ETHEREN) == 0) {
-             s->regs[ENET_RDAR] = 0;
-             s->rx_descriptor = s->regs[ENET_RDSR];
--            s->regs[ENET_TDAR] = 0;
--            s->tx_descriptor = s->regs[ENET_TDSR];
-+            s->regs[ENET_TDAR]  = 0;
-+            s->regs[ENET_TDAR1] = 0;
-+            s->regs[ENET_TDAR2] = 0;
-+            s->tx_descriptor[0] = s->regs[ENET_TDSR];
-+            s->tx_descriptor[1] = s->regs[ENET_TDSR1];
-+            s->tx_descriptor[2] = s->regs[ENET_TDSR2];
-         }
-         break;
-     case ENET_MMFR:
-@@ -907,7 +979,29 @@ static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
-         } else {
-             s->regs[index] = value & ~7;
-         }
--        s->tx_descriptor = s->regs[index];
-+        s->tx_descriptor[0] = s->regs[index];
-+        break;
-+    case ENET_TDSR1:
-+        if (unlikely(single_tx_ring)) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "[%s]%s: trying to access TDSR1\n",
-+                          TYPE_IMX_FEC, __func__);
-+            return;
-+        }
-+
-+        s->regs[index] = value & ~7;
-+        s->tx_descriptor[1] = s->regs[index];
-+        break;
-+    case ENET_TDSR2:
-+        if (unlikely(single_tx_ring)) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "[%s]%s: trying to access TDSR2\n",
-+                          TYPE_IMX_FEC, __func__);
-+            return;
-+        }
-+
-+        s->regs[index] = value & ~7;
-+        s->tx_descriptor[2] = s->regs[index];
-         break;
-     case ENET_MRBR:
-         s->regs[index] = value & 0x00003ff0;
-@@ -1203,6 +1297,7 @@ static void imx_eth_realize(DeviceState *dev, Error **errp)
- 
- static Property imx_eth_properties[] = {
-     DEFINE_NIC_PROPERTIES(IMXFECState, conf),
-+    DEFINE_PROP_UINT32("tx-ring-num", IMXFECState, tx_ring_num, 1),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
-diff --git a/include/hw/net/imx_fec.h b/include/hw/net/imx_fec.h
-index af0840a0fa..91ef8f89a6 100644
---- a/include/hw/net/imx_fec.h
-+++ b/include/hw/net/imx_fec.h
-@@ -52,6 +52,8 @@
- #define ENET_TFWR              81
- #define ENET_FRBR              83
- #define ENET_FRSR              84
-+#define ENET_TDSR1             89
-+#define ENET_TDSR2             92
- #define ENET_RDSR              96
- #define ENET_TDSR              97
- #define ENET_MRBR              98
-@@ -66,6 +68,8 @@
- #define ENET_FTRL              108
- #define ENET_TACC              112
- #define ENET_RACC              113
-+#define ENET_TDAR1             121
-+#define ENET_TDAR2             123
- #define ENET_MIIGSK_CFGR       192
- #define ENET_MIIGSK_ENR        194
- #define ENET_ATCR              256
-@@ -105,13 +109,18 @@
- #define ENET_INT_WAKEUP        (1 << 17)
- #define ENET_INT_TS_AVAIL      (1 << 16)
- #define ENET_INT_TS_TIMER      (1 << 15)
-+#define ENET_INT_TXF2          (1 <<  7)
-+#define ENET_INT_TXB2          (1 <<  6)
-+#define ENET_INT_TXF1          (1 <<  3)
-+#define ENET_INT_TXB1          (1 <<  2)
- 
- #define ENET_INT_MAC           (ENET_INT_HB | ENET_INT_BABR | ENET_INT_BABT | \
-                                 ENET_INT_GRA | ENET_INT_TXF | ENET_INT_TXB | \
-                                 ENET_INT_RXF | ENET_INT_RXB | ENET_INT_MII | \
-                                 ENET_INT_EBERR | ENET_INT_LC | ENET_INT_RL | \
-                                 ENET_INT_UN | ENET_INT_PLR | ENET_INT_WAKEUP | \
--                                ENET_INT_TS_AVAIL)
-+                                ENET_INT_TS_AVAIL | ENET_INT_TXF1 | \
-+                                ENET_INT_TXB1 | ENET_INT_TXF2 | ENET_INT_TXB2)
- 
- /* RDAR */
- #define ENET_RDAR_RDAR         (1 << 24)
-@@ -234,6 +243,9 @@ typedef struct {
- 
- #define ENET_BD_BDU            (1 << 31)
- 
-+#define ENET_TX_RING_NUM       3
-+
-+
- typedef struct IMXFECState {
-     /*< private >*/
-     SysBusDevice parent_obj;
-@@ -246,7 +258,9 @@ typedef struct IMXFECState {
- 
-     uint32_t regs[ENET_MAX];
-     uint32_t rx_descriptor;
--    uint32_t tx_descriptor;
-+
-+    uint32_t tx_descriptor[ENET_TX_RING_NUM];
-+    uint32_t tx_ring_num;
- 
-     uint32_t phy_status;
-     uint32_t phy_control;
+-    /* Huge frames are truncted.  */
++    /* Huge frames are truncated. */
+     if (size > s->regs[ENET_FTRL]) {
+         size = s->regs[ENET_FTRL];
+         flags |= ENET_BD_TR | ENET_BD_LG;
 -- 
 2.14.3
 

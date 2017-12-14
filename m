@@ -1,124 +1,126 @@
-Received: by 10.25.159.19 with SMTP id i19csp503304lfe;
-        Fri, 15 Jan 2016 06:37:28 -0800 (PST)
-X-Received: by 10.55.204.216 with SMTP id n85mr13759744qkl.36.1452868648783;
-        Fri, 15 Jan 2016 06:37:28 -0800 (PST)
+Received: by 10.223.159.74 with SMTP id f10csp6073990wrg;
+        Thu, 14 Dec 2017 01:03:40 -0800 (PST)
+X-Google-Smtp-Source: ACJfBou9MOngECDAefamKNemu2gkiqu2iqIROk/9k4anWULcxYZCtcGawrJVpXg/DArbiCjFufzo
+X-Received: by 10.13.243.195 with SMTP id c186mr3608010ywf.170.1513242220056;
+        Thu, 14 Dec 2017 01:03:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513242220; cv=none;
+        d=google.com; s=arc-20160816;
+        b=x+dAVclSCo6WUUcOe9tS5AhzuxI+D7bmTb+Aeeb3dob9rOb/yWOhEyWs9NIL3yk0mR
+         2DHe9vZQhZIDWjm1oQi74tmeORnJNrCPSz/NG8lVJXgNlvrQEDgFXpwumVrJG/UN09Vh
+         TyCsuxmrfPx/uhx/N8HibiBMQlbJei6bE7FLJJZo7vvPcNKdcoaciDU4DNORnhxXNJX3
+         piJ3Qe+nifOhE1w3YQrxtmoQy9Stm8RRfZqizBw+4lWEyJ5qNqEAPsyMZOiNmeoyRzDA
+         X72gRHwycKA22LlV5ikGbttLMk8xG+DC6GUxRs5i5YNTPCScjcKLGP3iRmGBBGEbrmnu
+         MX8g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
+         :arc-authentication-results;
+        bh=zQPiJAgB+Lgt4kpzhrVYPjV9KFfcGAj1dwDUVk2idD0=;
+        b=eW8No4J7rOXmtZfAoOYoYotjj222T2XmGibY9/k20UQaVZgfY4ic18wbs4UMxXGpfO
+         ZykDQ34IpYluWLudVtgDFelrGlpZkF0OC31vy+pszKyKGevE/9rfaLe/0l9pOskYOnY0
+         ZVRYJwjHZE+Khs/+gOIc9ePPqoEPKx8DRQXTr2uwMh74qkJgorVZ06M2mIu6+HAgq9t/
+         ezOsuvGwn8mwN1F8H2F1ycxFj9NwalxW9lIYlXGhThCJdw2mMijhrfWwM3fRIBmJukIx
+         KC1++18M8cXxoEmRBzj4Itlk715GgvctoVL3+YM+JcZm7yG1HCVxC/v1mflWSY4uYsF9
+         LSIA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v10si13586674qge.63.2016.01.15.06.37.28
+        by mx.google.com with ESMTPS id c188si725629ybb.610.2017.12.14.01.03.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 15 Jan 2016 06:37:28 -0800 (PST)
+        Thu, 14 Dec 2017 01:03:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:47227 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39727 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aK5VI-0002M7-6t
-	for alex.bennee@linaro.org; Fri, 15 Jan 2016 09:37:28 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35782)
+	id 1ePPQZ-0003iA-GM
+	for alex.bennee@linaro.org; Thu, 14 Dec 2017 04:03:39 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40347)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shannon.zhao@linaro.org>) id 1aK5VG-0002Jd-4J
-	for qemu-arm@nongnu.org; Fri, 15 Jan 2016 09:37:26 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1ePPQP-0003fS-JF
+	for qemu-arm@nongnu.org; Thu, 14 Dec 2017 04:03:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shannon.zhao@linaro.org>) id 1aK5VC-0004GQ-Nv
-	for qemu-arm@nongnu.org; Fri, 15 Jan 2016 09:37:26 -0500
-Received: from mail-pf0-x22e.google.com ([2607:f8b0:400e:c00::22e]:33254)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shannon.zhao@linaro.org>) id 1aK5VC-0004Fv-GQ
-	for qemu-arm@nongnu.org; Fri, 15 Jan 2016 09:37:22 -0500
-Received: by mail-pf0-x22e.google.com with SMTP id e65so118926356pfe.0
-	for <qemu-arm@nongnu.org>; Fri, 15 Jan 2016 06:37:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=1j7AeftnJtbvwJuWL6rhVtyZpOO07yiJdJhCavlZTJQ=;
-	b=hV1/b49UUBR8z2rC3KiMvBFbJBx8GcFXNkaTIVDgTaGqjnyknW/zLi8ZvaQQFKAWcO
-	oZN54t/VRZoNOCjd3k8N8iYrU454OTaAS67WLkhmREOVvsoAuDd87krwYLJUHTvtXDZh
-	0IY5FTNOPiQhXpA148xeYoxaxbhUAHKZFc/fc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:message-id:date:from:user-agent:mime-version:to
-	:cc:subject:references:in-reply-to:content-type
-	:content-transfer-encoding;
-	bh=1j7AeftnJtbvwJuWL6rhVtyZpOO07yiJdJhCavlZTJQ=;
-	b=C72bXgmsTtaEq+F4HsnrkNefrDkml6gR4/I8HEzVHvSK7aS7+RWvfLBsfbBjgjI7+u
-	+i47Alo0D3eCtAvjoO64urXsZM/UriDyajD+LEAattM46T9h3GQErv4QwnsQFrwdAG6p
-	+HsArbestYNf2URnYKOAAvuLuekfQwO4YJlfcSso0YZt8bBhE1otG+7NxK2xvT/xoqhO
-	QrM/2I+Gel2BcqzmK9x5CfnRkhTV4npU1vFwpfp54E71+XwVH5CaC/D0iREeMBxai2y/
-	fxmbmbSMjj5WqomTKm0PBfH9oYD7E5w189WmS+8fA2gZP5HI77y7p2taQVyLz+ENtqpc
-	nlwA==
-X-Gm-Message-State: ALoCoQlhGBuK2fLcVzKIyQE6E5plbcHm3+uXp7LNrcN8r30nB0v0l4VhRfmMr7SEd4kPyIaNI6GKJj7B6pk4WN7Xumaf4kDwkw==
-X-Received: by 10.98.42.135 with SMTP id q129mr15324254pfq.13.1452868641809;
-	Fri, 15 Jan 2016 06:37:21 -0800 (PST)
-Received: from [10.13.145.18] ([167.160.116.205])
-	by smtp.googlemail.com with ESMTPSA id
-	cl3sm16106744pad.11.2016.01.15.06.37.15
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 15 Jan 2016 06:37:20 -0800 (PST)
-Message-ID: <56990425.3020004@linaro.org>
-Date: Fri, 15 Jan 2016 22:37:25 +0800
-From: Shannon Zhao <shannon.zhao@linaro.org>
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.7.0
+	(envelope-from <pbonzini@redhat.com>) id 1ePPQK-0000w2-JT
+	for qemu-arm@nongnu.org; Thu, 14 Dec 2017 04:03:29 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:55794)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
+	id 1ePPQK-0000sw-Da; Thu, 14 Dec 2017 04:03:24 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id B47F04900E;
+	Thu, 14 Dec 2017 09:03:21 +0000 (UTC)
+Received: from [10.36.116.220] (ovpn-116-220.ams2.redhat.com [10.36.116.220])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 2F6815EE15;
+	Thu, 14 Dec 2017 09:03:19 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>
+References: <1501867249-1924-1-git-send-email-peter.maydell@linaro.org>
+	<1501867249-1924-4-git-send-email-peter.maydell@linaro.org>
+	<CAFEAcA-mOzfHhGt0jXtTVMe4_GGp6bg_SK1R4JBbQxpw2+gokg@mail.gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <96e94933-7381-7448-5d3b-ae8ad14d2097@redhat.com>
+Date: Thu, 14 Dec 2017 10:03:18 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.0
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>, Laszlo Ersek <lersek@redhat.com>
-References: <1452696857-4091-1-git-send-email-shannon.zhao@linaro.org>
-	<20160113161641.GC10709@hawk.localdomain>
-	<56967AA4.40300@redhat.com>
-	<CAFEAcA_f=j0KupJG6z1E+O7oqbhgKbSCdUob9GOdsEQRCBuz_w@mail.gmail.com>
-In-Reply-To: <CAFEAcA_f=j0KupJG6z1E+O7oqbhgKbSCdUob9GOdsEQRCBuz_w@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <CAFEAcA-mOzfHhGt0jXtTVMe4_GGp6bg_SK1R4JBbQxpw2+gokg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Thu, 14 Dec 2017 09:03:21 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c00::22e
-Cc: Andrew Jones <drjones@redhat.com>,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
-	"edk2-devel@lists.01.org" <edk2-devel@ml01.01.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Shannon Zhao <zhaoshenglong@huawei.com>
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2] ARM: Virt: Don't generate
- RTC ACPI device when using UEFI
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH 3/8] cputlb: Support generating CPU
+ exceptions on memory transaction failures
 X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.14
+X-Mailman-Version: 2.1.21
 Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
 List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "patches@linaro.org" <patches@linaro.org>,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: yBqhnNeHSpSz
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0ynKb3omYKnr
 
+On 13/12/2017 17:39, Peter Maydell wrote:
+> I was looking at a bug that involved stepping through this function,
+> and it turns out that the value in the variable "physaddr" here is
+> not in fact the physical address of the access. It's just the offset
+> into the memory region.
+> 
+> This doesn't matter for Arm or Alpha, which don't actually need the
+> physaddr for reporting the exceptions, and those are the only
+> current implementations of the transaction_failed hook.
+> But we should fix this so it doesn't bite us when we do eventually
+> have a cpu that needs the physaddr...
+> 
+> If we have a CPUIOTLBEntry how do we get back to the physaddr for it?
 
+iotlb_to_region only gets the MemoryRegion from the MemoryRegionSection,
+but you could actually make it return the whole MRS.  Then you can sum
+the MRS's offset_with_address_space.
 
-On 2016/1/15 22:34, Peter Maydell wrote:
-> On 13 January 2016 at 16:26, Laszlo Ersek<lersek@redhat.com>  wrote:
->> >On 01/13/16 17:16, Andrew Jones wrote:
->>> >>On Wed, Jan 13, 2016 at 10:54:17PM +0800, Shannon Zhao wrote:
->>>> >>>When booting the VM with UEFI, UEFI takes ownership of the RTC hardware.
->>>> >>>While UEFI can use libfdt to disable the RTC device node in the DTB that
->>>> >>>it passes to the OS, it cannot modify AML. Therefore, we won't generate
->>>> >>>the RTC ACPI device at all when using UEFI.
->>> >>
->>> >>I think a condensed comment similar to this commit message would be nice
->>> >>in build_dsdt, or somewhere. We have a policy for mach-virt of generating
->>> >>ACPI for everything we generate DT. It'd be good if we documented all the
->>> >>divergences in order to avoid confusion. [...]
->> >
->> >Good idea!
-> I'm happy with the code in this patch, so you can add my
-> Reviewed-by: Peter Maydell<peter.maydell@linaro.org>
->
-Sorry, missed this. I've sent the v3.
+Thanks,
 
-> Shannon, I'm assuming you're planning a v3 with the comment that
-> Andrew and Laszlo suggest.
-
--- 
-Shannon
+Paolo

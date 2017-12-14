@@ -1,112 +1,105 @@
-Received: by 10.223.159.74 with SMTP id f10csp6386069wrg;
-        Thu, 14 Dec 2017 06:33:40 -0800 (PST)
-X-Google-Smtp-Source: ACJfBotNonO26GcujOLdjkFrWRUjsTnRJS5i5i/L8aqjeqHuQXc4BSATP6vYiYsmkURe9ynRj6JM
-X-Received: by 10.37.121.2 with SMTP id u2mr601335ybc.353.1513262019980;
-        Thu, 14 Dec 2017 06:33:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1513262019; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp6406586wrg;
+        Thu, 14 Dec 2017 06:53:43 -0800 (PST)
+X-Google-Smtp-Source: ACJfBotjJgPjlZnY5cExh/831u09EteInGDLlGk63ppXMTx5a/d693oJjlyRWWW5lihHE7sKwPr3
+X-Received: by 10.13.250.5 with SMTP id k5mr4329280ywf.122.1513263222959;
+        Thu, 14 Dec 2017 06:53:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513263222; cv=none;
         d=google.com; s=arc-20160816;
-        b=TLroTBy2zVIw/pVFKDXfWMGxPajjoJUFN/sBdIPKo98Gnchpf/a3UKwnsqxI8ENEy5
-         6PYUOXbR4aJlt+WjE/Lo73LJBAUts64auurmuaZl/IJZhGeR1mMnIsfaxsiptiadL8uM
-         CDP8lMI5aeWTPFTcrKuKXmJlP1MwnNK2dgnX6dptoRuH7EE1G7KW/qgtF6URtO+/PeOv
-         dvbLmSTjOyO3anS4RyaJrXaBnCpNE3o4XTaWCDHelpbhrYNvw6hlGv721IvRzUVFg2OB
-         wAKttMI3elBFkrjWuVdbhyn7ttPK+3feiCDzm0/jAcxzqqP5ZFXCpcLz9aytDK6UPqaT
-         fLUA==
+        b=fhZ5b09kjEr22/ENnHOlm3ihBLgqac7DjZJY+nODq4GyB8ILTM9X3P3PvruCyvQi19
+         yAq3aE+uTXEuSMH9N7nAiw362Eo84jtO1HRhBj8KijW3J6FD/8IApk9/Mcp9LFvzBFok
+         KfoXEZX1QnXQXe7CFhCMmwnLwVwL+3ns6bXrFbf3vS5dxYOrMXSDyWPwwHsKC04xQHB0
+         VMO64D919L/WJYd23clM9XKwfc+6TSRx1Fmxq+7xgaeGD65F0kjp4jZv577ZlRTa1dqR
+         tCQJXV01YflWqiRAnpuUOy9I9oMNqaPmtbiAtBeAOU0c7Ub99EEVhqW1k+nT//rAzdQS
+         j5pQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :mime-version:user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=DgzK34gWZzy0DBbadCTkANiiQg3zLZ0vcxmQHXcN8XE=;
-        b=jHei15SAwGTfgfA2hszfWxlg/IWmmwV1BEsdFaQ/RObTy3XROCn70hSzGzub3wC/9/
-         fdX+Hi19Z9CY5u6txl1500dl9wFkBBpbIOPNN1X2zOddrItFIvDE/NRGMujlkygmBGxP
-         0i5s4U4X+LKMaykctgYziw5chgdMYJOOYSpBAqA0hNSQp/KOzchAqM5nY6x9FWJusFpV
-         glMpE4RJVVde7rBPHLxZzz4vTG7Ayw+k8tPSLkHgmFSo+2baYJ3n4ohv4+JHdY3AR9yh
-         UYiIbPXU4vPw1ME4YLCHtpOZDewlWfPT1tVxW/2DBBBthBaZtMbAeKPNUH4Isqw7rkMT
-         svog==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=Xduqlof8RSbyi8r9qMPGqSAd4q4+/VM3I7uumoz45oU=;
+        b=fIS6ZbuamWg66QylBWaEO/pPW4CkfYD57wtjc1yPHCexINqVd/rA/D/6mU4tUCc34S
+         YSXs67ZSMAI4/Y1VXjlcyj7fGZjedH0ejlxgI4HEa0kNWxqR5zW654wlkHOIZ1ySZuxb
+         HKKZSewOoEsQ+QMSGiI2RrEL3O6ilAeNDkQFQ3JT9jAFt1CBzheQtWtW7YiJQOy1N/MI
+         GwPxsMEseZQ58i0tFtNGKRm5pQz7N5frmZJPoER00HVYJ6ilaWreN3mansrgZ50j8RAW
+         uUyWU2fmdFod8rXaSermI5TlNy65dXqVhWcIctagIF2IazIS3NsxkcxZIQMW0niGfRW4
+         yW1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=urv5g4sL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UCe1UDEy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o9si838860ywd.709.2017.12.14.06.33.39
+        by mx.google.com with ESMTPS id d6si870439ybi.127.2017.12.14.06.53.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Dec 2017 06:33:39 -0800 (PST)
+        Thu, 14 Dec 2017 06:53:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=urv5g4sL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41265 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UCe1UDEy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:41358 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ePUZv-0001N8-CD
-	for alex.bennee@linaro.org; Thu, 14 Dec 2017 09:33:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43083)
+	id 1ePUtK-0001Mj-8t
+	for alex.bennee@linaro.org; Thu, 14 Dec 2017 09:53:42 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55028)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePUZc-0001HK-R2
-	for qemu-arm@nongnu.org; Thu, 14 Dec 2017 09:33:26 -0500
+	(envelope-from <andrew.smirnov@gmail.com>) id 1ePUt1-0001LF-Sp
+	for qemu-arm@nongnu.org; Thu, 14 Dec 2017 09:53:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePUZX-000555-0L
-	for qemu-arm@nongnu.org; Thu, 14 Dec 2017 09:33:20 -0500
-Received: from mail-qk0-x230.google.com ([2607:f8b0:400d:c09::230]:35021)
+	(envelope-from <andrew.smirnov@gmail.com>) id 1ePUsz-0000CK-1b
+	for qemu-arm@nongnu.org; Thu, 14 Dec 2017 09:53:23 -0500
+Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:44890)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePUZW-00054M-P3; Thu, 14 Dec 2017 09:33:14 -0500
-Received: by mail-qk0-x230.google.com with SMTP id c13so6435366qke.2;
-	Thu, 14 Dec 2017 06:33:14 -0800 (PST)
+	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
+	id 1ePUsy-0000BH-Rh; Thu, 14 Dec 2017 09:53:20 -0500
+Received: by mail-pf0-x241.google.com with SMTP id m26so3756437pfj.11;
+	Thu, 14 Dec 2017 06:53:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to;
-	bh=DgzK34gWZzy0DBbadCTkANiiQg3zLZ0vcxmQHXcN8XE=;
-	b=urv5g4sLvYlzu/9y8XZbs9ePcL2W/o/ABM6q9kXh3OjkqQmp5UrBSjrjq3luWLvjFp
-	cVRuJHV2s3P+V+tHdpafUi6EDf1PJMKJy4Rrf8etzj4hehQnailYY0gW++RtzPQFZHzN
-	VryLO2jM8mfK+lwzHPpT516BpJRM4KW9xJ7izQ5sd3WlVML1dh64dohr+12eOvUezxt5
-	PlfsAjLNKh5D0Iw1Cw1yyXKUvuFcwT4xdOgCxFxMqGHxf4aOKwjPGzEB8ERpU2BZOpAe
-	DgNOoRAyvjOV+0AHNex/GBjitk7wncFnu8DintTQwPf4yCV8loASAU1Rng33A9BoCDci
-	Jeuw==
+	h=from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=Xduqlof8RSbyi8r9qMPGqSAd4q4+/VM3I7uumoz45oU=;
+	b=UCe1UDEyPqtI/IZSx+6+TiQ/bQSyBl1RPWoqc6FMVxODvqMSt3anSTehzAafvgijD+
+	xgavBfC9moNsAAT52nelutBe6Hxc3eT4Yqv3WgXxNoYeloI1RWfqHkRLmVsFflqoQxnZ
+	rwg2AdtqWXKOYZ0DduMk0rA/ZlcBFrx4GgKfEuvh/Ko0L7r32v1J+v34t60caBwqLou8
+	ZkxthYQamG/raTAxTBHdY2YeabTjBKSo2e5r2e1zqTR+tnq381LFTO6zQk9wf/P2t7Ky
+	buw4hcX0Mi11NfznEDwViRFu7W97Dx0J0KIesJm1VZn9QUEH3kvd3psN8W/fSJyEcu2t
+	6FIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to;
-	bh=DgzK34gWZzy0DBbadCTkANiiQg3zLZ0vcxmQHXcN8XE=;
-	b=CCpVKKJ+zFFG7OPLj0+eqc4PRRXW5tqoCwvR6E/Uaw2Cqdvh9/2NPDcr/v6NcOx7FN
-	QSu4iHZjN5CL6PF7kUSFWUkgP7fqAHNVWDq2yqIEWF10RfsQ0W30UQHcI6Yclx73B4F5
-	ntjul8t7Y+fCcNSXy8oB0m7B9aCZ7DQGyk0a4UUql4yDcwY4ejuA1hjZZsSEzmHjkn57
-	4HMKGCjasdTZLzO/m8GdurWRNrpoOAiAh1BvuhHWnhUJs1OWc+KkPtZ+4xfPuWBb+mgM
-	Ewu5A3WuO++tCnsggEYgjM5ekzJQsOPl67YZ6XxcMdUa0Z4M0+GgHAeQMYJ6ECL/WSUp
-	u5Tg==
-X-Gm-Message-State: AKGB3mJNDr94um725ihoVDX3y3/PUAkD5jvOVSrAZn2AhZJOeC1p/iaV
-	93lN3ev+FnZIxhXbLXPhksBt0zzxcI4=
-X-Received: by 10.55.157.66 with SMTP id g63mr15771261qke.59.1513261993956;
-	Thu, 14 Dec 2017 06:33:13 -0800 (PST)
-Received: from [192.168.1.11] ([181.91.222.165])
-	by smtp.gmail.com with ESMTPSA id
-	t12sm2711386qkl.41.2017.12.14.06.33.07
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 14 Dec 2017 06:33:13 -0800 (PST)
-To: Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini
-	<pbonzini@redhat.com>, Andrey Smirnov <andrew.smirnov@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-References: <20171213213557.26561-1-f4bug@amsat.org>
-	<20171214093907.GA14433@stefanha-x1.localdomain>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <7bc179c8-5699-98b0-8a5b-b4d8e6843b25@amsat.org>
-Date: Thu, 14 Dec 2017 11:33:03 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.0
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references:mime-version:content-transfer-encoding;
+	bh=Xduqlof8RSbyi8r9qMPGqSAd4q4+/VM3I7uumoz45oU=;
+	b=CJPClYmS0xhYcgGq4lS2mK7HVybmqej3wxspm7wGRRimOqYrFu2OS3jJBaC3wEMDSM
+	wXvDlHCqmjvwNqy3Z4IOZreDNqD6Ykh7iUingG7RIy/5JjuQEuA9b+rX0wBrq+Y4zuIQ
+	X54KOxkVEvaS7gVHiPjMIy/yThLzeILdJaQeSSdVXw8sm0jaGEKJtwZdB9kur4xZr0HH
+	QkH/I2rorWJNKKnkexx3EmXBhuqW9LWywMSw2l4WB0Yzm74GNPh46TDAZOg7Yp4AuuUy
+	xbD/85q3cPrC0UjfSIhCqZDHAO0kwuGrW3cYwSyxjeBxmEUk5+aJdXSWcgIFq2kJY4w3
+	naCQ==
+X-Gm-Message-State: AKGB3mKR+bI7LzVy18zB71aBLwPAT0Uh58QIwsolGFmy7Jz3lnvqSKU3
+	7KMSoJJTHaIwbq/jf2cNfKI8ExOQ
+X-Received: by 10.99.7.8 with SMTP id 8mr8889808pgh.264.1513263199284;
+	Thu, 14 Dec 2017 06:53:19 -0800 (PST)
+Received: from squirtle.lan (c-24-22-235-96.hsd1.wa.comcast.net.
+	[24.22.235.96])
+	by smtp.gmail.com with ESMTPSA id e7sm8757439pfj.44.2017.12.14.06.53.18
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Thu, 14 Dec 2017 06:53:18 -0800 (PST)
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+To: qemu-arm@nongnu.org
+Date: Thu, 14 Dec 2017 06:52:41 -0800
+Message-Id: <20171214145255.31545-2-andrew.smirnov@gmail.com>
+X-Mailer: git-send-email 2.14.3
+In-Reply-To: <20171214145255.31545-1-andrew.smirnov@gmail.com>
+References: <20171214145255.31545-1-andrew.smirnov@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20171214093907.GA14433@stefanha-x1.localdomain>
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature";
-	boundary="BsSxMXTeUgfa6EfP64fxc4AwwE5nuswTI"
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::230
-Subject: Re: [Qemu-arm] [PATCH 0/6] QTests: use Python to run complex tests
+X-Received-From: 2607:f8b0:400e:c00::241
+Subject: [Qemu-arm] [PATCH v2 01/15] imx_fec: Do not link to netdev
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -118,135 +111,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-	Kevin Wolf <kwolf@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	"Daniel P . Berrange" <berrange@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-block@nongnu.org,
-	Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org,
-	Max Reitz <mreitz@redhat.com>,
-	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
-	qemu-arm@nongnu.org, Cleber Rosa <crosa@redhat.com>,
-	=?UTF-8?B?THVrw6HFoSBEb2t0b3I=?= <ldoktor@redhat.com>,
-	Fam Zheng <famz@redhat.com>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	John Snow <jsnow@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>,
+	Jason Wang <jasowang@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, yurovsky@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EPlkE+QxBIp3
+X-TUID: HN+aOE8ca3E8
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---BsSxMXTeUgfa6EfP64fxc4AwwE5nuswTI
-Content-Type: multipart/mixed; boundary="H2KGnfjfKk6ouNPDBtcpVV6xguCTEjWGI";
- protected-headers="v1"
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-To: Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini
- <pbonzini@redhat.com>, Andrey Smirnov <andrew.smirnov@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: Alistair Francis <alistair.francis@xilinx.com>,
- "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
- Cleber Rosa <crosa@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Max Reitz <mreitz@redhat.com>, John Snow <jsnow@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, =?UTF-8?B?THVrw6HFoSBEb2t0b3I=?=
- <ldoktor@redhat.com>, "Daniel P . Berrange" <berrange@redhat.com>,
- Eric Blake <eblake@redhat.com>, Fam Zheng <famz@redhat.com>,
- Thomas Huth <thuth@redhat.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-devel@nongnu.org, qemu-block@nongnu.org, qemu-arm@nongnu.org
-Message-ID: <7bc179c8-5699-98b0-8a5b-b4d8e6843b25@amsat.org>
-Subject: Re: [PATCH 0/6] QTests: use Python to run complex tests
-References: <20171213213557.26561-1-f4bug@amsat.org>
- <20171214093907.GA14433@stefanha-x1.localdomain>
-In-Reply-To: <20171214093907.GA14433@stefanha-x1.localdomain>
+Binding to a particular netdev doesn't seem to belong to this layer
+and should probably be done as a part of board or SoC specific code.
 
---H2KGnfjfKk6ouNPDBtcpVV6xguCTEjWGI
-Content-Type: text/plain; charset=windows-1252
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+Convert all of the users of this IP block to use
+qdev_set_nic_properties() instead.
 
-Hi Stefan,
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Jason Wang <jasowang@redhat.com>
+Cc: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Cc: yurovsky@gmail.com
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
+---
+ hw/arm/fsl-imx6.c | 1 +
+ hw/net/imx_fec.c  | 2 --
+ 2 files changed, 1 insertion(+), 2 deletions(-)
 
-On 12/14/2017 06:39 AM, Stefan Hajnoczi wrote:
-[...]
-> Device qtests are better done in C than Python.  Python is not good at
-> binary I/O and porting this to Python 3 will be extra work later (Pytho=
-n
-> 2 is set for End-of-Life in 2020, see https://pythonclock.org/).
->=20
-> More importantly, we already have libqos in C with a guest memory
-> allocator, PCI, and virtio support.  Fragmenting the small amount effor=
-t
-> that goes into device testing will delay libqos reaching critical mass.=
+diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
+index 26fd214004..2ed7146c52 100644
+--- a/hw/arm/fsl-imx6.c
++++ b/hw/arm/fsl-imx6.c
+@@ -385,6 +385,7 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+                                             spi_table[i].irq));
+     }
+ 
++    qdev_set_nic_properties(DEVICE(&s->eth), &nd_table[0]);
+     object_property_set_bool(OBJECT(&s->eth), true, "realized", &err);
+     if (err) {
+         error_propagate(errp, err);
+diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+index 90e6ee35ba..88b4b049d7 100644
+--- a/hw/net/imx_fec.c
++++ b/hw/net/imx_fec.c
+@@ -1171,8 +1171,6 @@ static void imx_eth_realize(DeviceState *dev, Error **errp)
+ 
+     qemu_macaddr_default_if_unset(&s->conf.macaddr);
+ 
+-    s->conf.peers.ncs[0] = nd_table[0].netdev;
+-
+     s->nic = qemu_new_nic(&imx_eth_net_info, &s->conf,
+                           object_get_typename(OBJECT(dev)),
+                           DEVICE(dev)->id, s);
+-- 
+2.14.3
 
-> Critical mass is where libqos provides all the infrastructure you need
-> to set up a device and focus on your actual test instead of machine,
-> bus, or device initialization.  Starting a Python device testing effort=
-
-> will just lead to duplication and 2 underdeveloped device testing
-> frameworks.
->=20
-> Is there a specific reason why adding SD Card support to libqos is not
-> possible in C?
-
-Short (joking) answer: Would you write tests/qemu-iotests/041 in C? ;)
-
-Now thinking about the specific reasons...
-
-What I intend to do is add qtests for the SDHCI implementation.
-There are different revisions of the standard specs.
-
-Currently QEMU implements a mixed subset of v1.10 and v2.00, while the
-real SDHCI hardware implemented is v2.00 or v3.01. I also saw 2 series
-adding SDHCI devices supporting the v4.00 (not yet in /master).
-
-With the current codebase we can plug SDSC/SDHC cards (up to 32 GB) but
-we can not plug a SDXC card, so:
-- plugging a 64GB card into the ZynqMP machine fails,
-- plugging a 64GB card into the SABRE Lite machine fails,
-- booting a Win10 guest on a exFAT formatted SD card also fails.
-
-A later test create different cards with [2GB, 16GB, 64GB] and test if
-the SDHCI correctly access them.
-Machines using the Exynos4210 SoC which only support the v2.00 spec are
-expected to fail with 64GB SDXC cards.
-
-The Zynq machine has 2 SD buses, another later test unplug/replug the
-same card between the buses. This test is expected to be useful to test
-the custom SDHOST controller from the BCM2835 SoC (Raspi2 machine).
-
-It is surely possible to write all those tests in C, but it resulted way
-faster to me to write them in Python...
-
-I could think of a bunch of I2C tests too, more generally I found using
-Python for bus backend testing is much easier, as with the Block backends=
-=2E
-
-Regards,
-
-Phil.
-
-
---H2KGnfjfKk6ouNPDBtcpVV6xguCTEjWGI--
-
---BsSxMXTeUgfa6EfP64fxc4AwwE5nuswTI
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCgAdFiEE+qvnXhKRciHc/Wuy4+MsLN6twN4FAloyi58ACgkQ4+MsLN6t
-wN6Hqw/8CSQ38r/TmjVE3yt0mq8F3LPJ3QWKRZS1GgxXx0+dE/KgzGgRtsOuY8Ww
-YguOLpmrh0j25f/wUyGbgTVArjYeGU09B8GuOFDmJ88cCoyUbClSVZZSyaBxLzc/
-cfN+U9/oLW/SzVKxBxNv9AQlPccm+LaWbkKrHszlo+6gWVPyZZOCchAT7I1tT0C/
-sVC5CwNAAwQ75Ji7bfdQeV16PV+9MAR6H0hLP8fImBO9qV5yrZcsMCL/q4Yll4TW
-5tjjnFsXRrUrSCkJQbcTFUCpdnL+TrJGK4bep7Y7bPnEBTUNFEJ4d/Asi+q0PVsw
-dT1z/npC5qoxlZfyA+wefCtu+apbRCn7olMVj6LNSIsDLueSADvBDn6Ztqxn0re+
-+sEYxnDmFrNMqA6Cd2FSs8BDQP7lA205KC/odUWZvajeUWwBGO3dSmPKyL0IpIdM
-QhWUV5dQ5va+FazHquLvBsVBrGSNoZR6G90LqoOxuJAAp0yfct06fFbVDz6HlHAU
-tErJDAuQ19q7DNU7EJwxign1uBfXJCmCQqR0Xi5Eyq1qZOmUYn0akOevl0I3JY/I
-Xj+lstQutPeVK6hFbqkYFYOTwMSUQlaXsEjzFNfVYA881a9jJDX4XYGe9JN3vj0s
-9QsmfrknZDvXttEcZHlDPy0reMb/q2V6KZ6hzBWkYjFice4iBqE=
-=/fH0
------END PGP SIGNATURE-----
-
---BsSxMXTeUgfa6EfP64fxc4AwwE5nuswTI--

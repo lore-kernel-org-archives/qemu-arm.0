@@ -1,92 +1,98 @@
-Received: by 10.28.4.212 with SMTP id 203csp16152wme;
-        Fri, 13 Apr 2018 11:00:53 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx49FNWRzV49DdmS0UniSEEVfKiQZMB7q5LoHU5lHFNVui1fM7QygzOG3xLzwLHyp+oVHGCXq
-X-Received: by 10.129.24.214 with SMTP id 205mr5475642ywy.31.1523642453511;
-        Fri, 13 Apr 2018 11:00:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523642453; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp6281434wrg;
+        Thu, 14 Dec 2017 04:59:45 -0800 (PST)
+X-Google-Smtp-Source: ACJfBovMF65FxalgYp20oGWqSW6BrSF6KkDmfrohubL934aeSMyhcpPWwWq2erOLbUfg412dKPmX
+X-Received: by 10.37.78.130 with SMTP id c124mr4128028ybb.383.1513256385658;
+        Thu, 14 Dec 2017 04:59:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513256385; cv=none;
         d=google.com; s=arc-20160816;
-        b=jRRHLh1Qu5n+wQjy9THMmEMGnN7+//zEuHknYhDK47u+NtnzazhVBfoA+ij5tliatT
-         TjeAJtP+KukSZSVhQiF8HmAiK+ps4OdwBGeY1XDxVOFZGW1qn6Toc5AFS5VozfudbmTv
-         2441bLbl3hrRGyCt8iAns/QPINdUd1QobwaYS0x3coXV3smxUFy+xn03l+DMpqn3FG2a
-         FTiJdURidqxLVvJWaBLSiX+Nwdu5ixdvxAdNSafW4hrhCNLdZEA1O3oBq/3JlgOdvGG3
-         C5ZlnTQYljKUx91QwjteYeBiHlVrztg9bxNMBR6jN+T/kJYiwulkM3vwc6/pAkNpDP0h
-         wMdw==
+        b=FEn1mPlBfjQKZWvvgF/OSSUFdcBxmgUIFFhnd3N6SClrSH+CNeaQQpOAncaqEpuE8q
+         W+sicMmLgDnhC5KpYcoOAzIoVOwk1XFY3mBltL8Oc8AFTMJxsMImufCbauFljQiCVkHb
+         MiCXn/OR/nWugggpnERtDlbe1eAhPOTzwOx4n4ryHomVmhbEeANDrHR7oUWCl6YZaM1F
+         pXxS46tqGq2wogzKdZeRZqt6GSoM0ew/VyMmZKMosmyuwqa/lTDSFH1J9YMMGYEFS2pk
+         UBxkN44jv3kBa3JoFhk5ntXoBq5i5B3xLbUI7NNUgf54SIDaMYx5+iQTUCPUIinuauMF
+         ZMEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:arc-authentication-results;
-        bh=rfm2PDg4RtGWpVfqaBChIGpM5dFuLL5Ya6BGuB14bRQ=;
-        b=T4rX3nyLLvpTmtQH8BeDLN6LwHzBL0vlhl3/O4nrAiqE4K7Yv/Yq/KuPHZ7iVf17vo
-         hqsBVSfPUaRIpFYwZwxtE36HmRBglbtbryY8/zjdZq+EYOVze65XZ1XufIRqY2u54Lld
-         FNMeFO03y+Vj+H1EUHER3zdETh9qiKhzrjUZMml2G4+JjUxTB3wmNHQ93qJ7JmgxdDhH
-         UDapqZ94zyzPQv+PmVJIesjTqGNTzAdkGwe91rJVVgGZd2OC5MVIEwSLCWGAU1a3YgpS
-         Ew7Irnzyf/fSQPntV4AvCjL8W/loqjTI85vfMzc6qKSqBE/RtS93xW053jMWbrfJY3p1
-         PWRA==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=KtAFaFeLSzn6o2z3nKP1MN5QGCyqrPGpUP9e5owjqd8=;
+        b=YZPH7FFgDP0qOFHWsesusyILEEVSWGeyeEAT7ddY+wjlqVTq+LQwd3EzBYLUtP3I7L
+         58/8U7Hosrf1DSWGymLtgCj41iEUhDtVEPEB24xv2LgKmHwAaJoX9KB0PbZ0yvZ9Jjrb
+         uSg3KK7mR/RLV3E1/mXJHUmH37OGlLufVdkc8VPj/AWqAtoSFP5X7qPqf1N6TieMGm+g
+         K7a1+0ih6a9mGC6yDKZwAfdqTVzSI+XOgR1Gpnit3vzfdjdmqpSok0nzIVrr5hr/1t2c
+         pnx9PX1UdJFAOKYZEtvbyLwNoTH2UrSMcd4YFaW99UfHxzeO1FxPcwgXukExJxe0KvL7
+         /l1A==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Prsl+g8S;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u18si4343846qkk.188.2018.04.13.11.00.53
+        by mx.google.com with ESMTPS id v123si803495ybe.829.2017.12.14.04.59.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 13 Apr 2018 11:00:53 -0700 (PDT)
+        Thu, 14 Dec 2017 04:59:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Prsl+g8S;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42700 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:40571 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f730H-0007PA-1o
-	for alex.bennee@linaro.org; Fri, 13 Apr 2018 14:00:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37230)
+	id 1ePT73-0000Ce-46
+	for alex.bennee@linaro.org; Thu, 14 Dec 2017 07:59:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42952)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1f7305-0007Mb-Ht
-	for qemu-arm@nongnu.org; Fri, 13 Apr 2018 14:00:43 -0400
+	(envelope-from <ard.biesheuvel@linaro.org>) id 1ePT6q-0000C3-El
+	for qemu-arm@nongnu.org; Thu, 14 Dec 2017 07:59:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1f7301-00077h-JS
-	for qemu-arm@nongnu.org; Fri, 13 Apr 2018 14:00:41 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:42250 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1f7301-00076y-Dl; Fri, 13 Apr 2018 14:00:37 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2662B818AAF8;
-	Fri, 13 Apr 2018 18:00:26 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-192.ams2.redhat.com
-	[10.36.116.192])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id CA67610F1BF0;
-	Fri, 13 Apr 2018 18:00:19 +0000 (UTC)
-To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
-References: <1523551221-11612-1-git-send-email-imammedo@redhat.com>
-	<1523551221-11612-3-git-send-email-imammedo@redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <b80208b4-ff33-3862-3d52-97b56aa5c788@redhat.com>
-Date: Fri, 13 Apr 2018 20:00:18 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	(envelope-from <ard.biesheuvel@linaro.org>) id 1ePT6p-00018c-Jg
+	for qemu-arm@nongnu.org; Thu, 14 Dec 2017 07:59:32 -0500
+Received: from mail-it0-x22c.google.com ([2607:f8b0:4001:c0b::22c]:41962)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <ard.biesheuvel@linaro.org>)
+	id 1ePT6p-00017j-Dy
+	for qemu-arm@nongnu.org; Thu, 14 Dec 2017 07:59:31 -0500
+Received: by mail-it0-x22c.google.com with SMTP id x28so11251580ita.0
+	for <qemu-arm@nongnu.org>; Thu, 14 Dec 2017 04:59:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=KtAFaFeLSzn6o2z3nKP1MN5QGCyqrPGpUP9e5owjqd8=;
+	b=Prsl+g8SGWCLJajnMLYwiNKN5CuSqZq5Cl/etthBH0GHhJg8Krk9ZR5Qo02HYmmzOW
+	EsN7VZGDO7bdcnbLLY0sPSdl/oh3dRkiUNjRoLHCza5sPI/zTcXMyKx96fL5SMfmZKVd
+	RSkwp4JfDP3bMOukMbk4Nwe7N9SslhcT5YaIg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=KtAFaFeLSzn6o2z3nKP1MN5QGCyqrPGpUP9e5owjqd8=;
+	b=Anz0xcdJ5iIN+OOWI1WMRIP9xxQLQDGaXSrXjMi7vJjZcW3oyf0DTLdgqUe3go3J/q
+	91uBhE+4IDTqnEeos0yZrX43NWvwFeOWSUcXxj0QgyoptUV5ied/e6r/t6i+f1aGhm3b
+	+dxyCbf0qeHxFA2+xhz4XFpK/VODzafBZ1adb6Bhjbz7O8bRlo3Vqa1oWE5ixx8XHHiF
+	egWncHPT+rZQ+wtuzub9neUwewLSlirsa42zla2+XjOkwCX0yuN9q7H6KtxodYyIYYIj
+	QyGkhXTwf+GZweYENVfyofoRuTDXylk7W7o3MWOwjol3MG67DTgYW2u4/xqB6z8z6HVO
+	9kqg==
+X-Gm-Message-State: AKGB3mKRDPluIMfEmPAW0p5BfQ5PmK3AEx0lWljmqIhERM0h9A8bg7jv
+	nmrgCmEHxvoAuHw7jKYTGw2ZlqNtorvbvciOrjnRlQ==
+X-Received: by 10.36.78.212 with SMTP id r203mr3229232ita.58.1513256370607;
+	Thu, 14 Dec 2017 04:59:30 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <1523551221-11612-3-git-send-email-imammedo@redhat.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Fri, 13 Apr 2018 18:00:26 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Fri, 13 Apr 2018 18:00:26 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [PATCH for-2.13 2/4] platform-bus-device: use device
- plug callback instead of machine_done notifier
+Received: by 10.107.52.2 with HTTP; Thu, 14 Dec 2017 04:59:30 -0800 (PST)
+In-Reply-To: <CAFEAcA8HswEKDPpj=cM711rNU2zwPuDXW7886=Oa2HBDmZxdCg@mail.gmail.com>
+References: <1513183941-24300-1-git-send-email-peter.maydell@linaro.org>
+	<CAFEAcA8HswEKDPpj=cM711rNU2zwPuDXW7886=Oa2HBDmZxdCg@mail.gmail.com>
+From: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Date: Thu, 14 Dec 2017 13:59:30 +0100
+Message-ID: <CAKv+Gu970cDwifDV1kz=kBWTWzxJyuT+QUAVNkFawun5psgYVg@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4001:c0b::22c
+Subject: Re: [Qemu-arm] [PATCH 0/2] GICv2 & GICv3: RAZ/WI reserved addresses
+ rather than aborting
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,422 +104,28 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	agraf@suse.de, david@gibson.dropbear.id.au
+Cc: qemu-stable <qemu-stable@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Laszlo Ersek <lersek@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	"patches@linaro.org" <patches@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CHD3fFwWRFbK
+X-TUID: mg0ORRMv+jIU
 
-Hi Igor,
+On 13 December 2017 at 16:54, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 13 December 2017 at 16:52, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> The GICv2 and GICv3 specifications say that reserved register
+>> addresses should RAZ/WI.  This means we need to return MEMTX_OK, not
+>> MEMTX_ERROR, because now that we support generating external aborts
+>> the latter will cause an abort on new board models.
+>>
+>> In particular, at least some versions of UEFI try to
+>> access a reserved address in the GICv3 redistributor
+>> (at SGI_base + 0x184) and fail to boot on the virt board
+>> without this.
+>>
 
-On 12/04/18 18:40, Igor Mammedov wrote:
-> platform-bus were using machine_done notifier to get and map
-> (assign irq/mmio resources) dynamically added sysbus devices
-> after all '-device' options had been processed.
-> That however creates non obvious dependencies on ordering of
-> machine_done notifiers and requires carefull line juggling
-> to keep it working. For example see comment above
-> create_platform_bus() and 'straitforward' arm_load_kernel()
-> had to converted to machine_done notifier and that lead to
-> yet another machine_done notifier to keep it working
-> arm_register_platform_bus_fdt_creator().
-> 
-> Instead of hiding resource assignment in platform-bus-device
-> to magically initialize sysbus devices, use device plug
-> callback and assign resources explicitly at board level
-> at the moment each -device option is being processed.
-> 
-> That adds a bunch of machine declaration boiler plate to
-> e500plat board, similar to ARM/x86 but gets rid of hidden
-> machine_done notifier and would allow to remove the dependent
-> notifiers in ARM code simplifying it and making code flow
-> easier to follow.
-> 
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> ---
-> CC: agraf@suse.de
-> CC: david@gibson.dropbear.id.au
-> CC: qemu-ppc@nongnu.org
-> ---
->  hw/ppc/e500.h             |  3 +++
->  include/hw/arm/virt.h     |  3 +++
->  include/hw/platform-bus.h |  4 ++--
->  hw/arm/sysbus-fdt.c       |  3 ---
->  hw/arm/virt.c             | 36 ++++++++++++++++++++++++++++
->  hw/core/platform-bus.c    | 29 ++++-------------------
->  hw/ppc/e500.c             | 37 +++++++++++++++++------------
->  hw/ppc/e500plat.c         | 60 +++++++++++++++++++++++++++++++++++++++++++++--
->  8 files changed, 129 insertions(+), 46 deletions(-)
-> 
-> diff --git a/hw/ppc/e500.h b/hw/ppc/e500.h
-> index 70ba1d8..d0f8ddd 100644
-> --- a/hw/ppc/e500.h
-> +++ b/hw/ppc/e500.h
-> @@ -2,6 +2,7 @@
->  #define PPCE500_H
->  
->  #include "hw/boards.h"
-> +#include "hw/sysbus.h"
->  
->  typedef struct PPCE500Params {
->      int pci_first_slot;
-> @@ -26,6 +27,8 @@ typedef struct PPCE500Params {
->  
->  void ppce500_init(MachineState *machine, PPCE500Params *params);
->  
-> +void ppce500_plug_dynamic_sysbus_device(SysBusDevice *sbdev);
-> +
->  hwaddr booke206_page_size_to_tlb(uint64_t size);
->  
->  #endif
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index ba0c1a4..5535760 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -86,11 +86,14 @@ typedef struct {
->      bool no_pmu;
->      bool claim_edge_triggered_timers;
->      bool smbios_old_sys_ver;
-> +    HotplugHandler *(*get_hotplug_handler)(MachineState *machine,
-> +                                           DeviceState *dev);
->  } VirtMachineClass;
->  
->  typedef struct {
->      MachineState parent;
->      Notifier machine_done;
-> +    DeviceState *platform_bus_dev;
->      FWCfgState *fw_cfg;
->      bool secure;
->      bool highmem;
-> diff --git a/include/hw/platform-bus.h b/include/hw/platform-bus.h
-> index a00775c..19e20c5 100644
-> --- a/include/hw/platform-bus.h
-> +++ b/include/hw/platform-bus.h
-> @@ -37,8 +37,6 @@ typedef struct PlatformBusDevice PlatformBusDevice;
->  struct PlatformBusDevice {
->      /*< private >*/
->      SysBusDevice parent_obj;
-> -    Notifier notifier;
-> -    bool done_gathering;
->  
->      /*< public >*/
->      uint32_t mmio_size;
-> @@ -54,4 +52,6 @@ int platform_bus_get_irqn(PlatformBusDevice *platform_bus, SysBusDevice *sbdev,
->  hwaddr platform_bus_get_mmio_addr(PlatformBusDevice *pbus, SysBusDevice *sbdev,
->                                    int n);
->  
-> +void platform_bus_link_device(PlatformBusDevice *pbus, SysBusDevice *sbdev);
-> +
->  #endif /* HW_PLATFORM_BUS_H */
-> diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
-> index d68e3dc..80ff70e 100644
-> --- a/hw/arm/sysbus-fdt.c
-> +++ b/hw/arm/sysbus-fdt.c
-> @@ -506,9 +506,6 @@ static void add_all_platform_bus_fdt_nodes(ARMPlatformBusFDTParams *fdt_params)
->      dev = qdev_find_recursive(sysbus_get_default(), TYPE_PLATFORM_BUS_DEVICE);
->      pbus = PLATFORM_BUS_DEVICE(dev);
->  
-> -    /* We can only create dt nodes for dynamic devices when they're ready */
-> -    assert(pbus->done_gathering);
-> -
->      PlatformBusFDTData data = {
->          .fdt = fdt,
->          .irq_start = irq_start,
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 94dcb12..2e10d8b 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1087,6 +1087,7 @@ static void create_platform_bus(VirtMachineState *vms, qemu_irq *pic)
->      qdev_prop_set_uint32(dev, "mmio_size",
->          platform_bus_params.platform_bus_size);
->      qdev_init_nofail(dev);
-> +    vms->platform_bus_dev = dev;
->      s = SYS_BUS_DEVICE(dev);
->  
->      for (i = 0; i < platform_bus_params.platform_bus_num_irqs; i++) {
-> @@ -1536,9 +1537,37 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
->      return ms->possible_cpus;
->  }
->  
-> +static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
-> +                                        DeviceState *dev, Error **errp)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-> +
-> +    if (object_dynamic_cast(OBJECT(dev), TYPE_SYS_BUS_DEVICE)) {
-> +        if (vms->platform_bus_dev) {
-do we need this check? Isn't this function supposed to be called only
-after the machine creation, time at which the platform_bus_dev is created.
-> +            platform_bus_link_device(PLATFORM_BUS_DEVICE(vms->platform_bus_dev),
-> +                                     SYS_BUS_DEVICE(dev));
-> +        }
-> +    }
-> +}
-> +
-> +static HotplugHandler *virt_machine_get_hotpug_handler(MachineState *machine,
-> +                                                       DeviceState *dev)
-> +{
-> +    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(machine);
-> +
-> +    if (object_dynamic_cast(OBJECT(dev), TYPE_SYS_BUS_DEVICE)) {
-> +        return HOTPLUG_HANDLER(machine);
-> +    }
-> +
-> +    return vmc->get_hotplug_handler ?
-> +        vmc->get_hotplug_handler(machine, dev) : NULL;
-> +}
-> +
->  static void virt_machine_class_init(ObjectClass *oc, void *data)
->  {
->      MachineClass *mc = MACHINE_CLASS(oc);
-> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(oc);
-> +    HotplugHandlerClass *hc = HOTPLUG_HANDLER_CLASS(oc);
->  
->      mc->init = machvirt_init;
->      /* Start max_cpus at the maximum QEMU supports. We'll further restrict
-> @@ -1557,6 +1586,9 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
->      mc->cpu_index_to_instance_props = virt_cpu_index_to_props;
->      mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a15");
->      mc->get_default_cpu_node_id = virt_get_default_cpu_node_id;
-> +    vmc->get_hotplug_handler = mc->get_hotplug_handler;
-> +    mc->get_hotplug_handler = virt_machine_get_hotpug_handler;
-> +    hc->plug = virt_machine_device_plug_cb;
->  }
->  
->  static const TypeInfo virt_machine_info = {
-> @@ -1566,6 +1598,10 @@ static const TypeInfo virt_machine_info = {
->      .instance_size = sizeof(VirtMachineState),
->      .class_size    = sizeof(VirtMachineClass),
->      .class_init    = virt_machine_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +         { TYPE_HOTPLUG_HANDLER },
-> +         { }
-> +    },
->  };
->  
->  static void machvirt_machine_init(void)
-> diff --git a/hw/core/platform-bus.c b/hw/core/platform-bus.c
-> index 33d32fb..807cb5c 100644
-> --- a/hw/core/platform-bus.c
-> +++ b/hw/core/platform-bus.c
-> @@ -103,7 +103,6 @@ static void plaform_bus_refresh_irqs(PlatformBusDevice *pbus)
->  {
->      bitmap_zero(pbus->used_irqs, pbus->num_irqs);
->      foreach_dynamic_sysbus_device(platform_bus_count_irqs, pbus);
-> -    pbus->done_gathering = true;
->  }
->  
->  static void platform_bus_map_irq(PlatformBusDevice *pbus, SysBusDevice *sbdev,
-> @@ -163,12 +162,11 @@ static void platform_bus_map_mmio(PlatformBusDevice *pbus, SysBusDevice *sbdev,
->  }
->  
->  /*
-> - * For each sysbus device, look for unassigned IRQ lines as well as
-> - * unassociated MMIO regions. Connect them to the platform bus if available.
-> + * Look for unassigned IRQ lines as well as unassociated MMIO regions.
-> + * Connect them to the platform bus if available.
->   */
-> -static void link_sysbus_device(SysBusDevice *sbdev, void *opaque)
-> +void platform_bus_link_device(PlatformBusDevice *pbus, SysBusDevice *sbdev)
->  {
-> -    PlatformBusDevice *pbus = opaque;
->      int i;
->  
->      for (i = 0; sysbus_has_irq(sbdev, i); i++) {
-> @@ -180,19 +178,6 @@ static void link_sysbus_device(SysBusDevice *sbdev, void *opaque)
->      }
->  }
->  
-> -static void platform_bus_init_notify(Notifier *notifier, void *data)
-> -{
-> -    PlatformBusDevice *pb = container_of(notifier, PlatformBusDevice, notifier);
-> -
-> -    /*
-> -     * Generate a bitmap of used IRQ lines, as the user might have specified
-> -     * them on the command line.
-> -     */
-> -    plaform_bus_refresh_irqs(pb);
-I have a doubt about this being moved at realize time and above comment.
-Seems to say the userspace can define the gsi on the command line. I am
-not used to this property, tried sysbus-irq[n] but the property does not
-seem to be recognized.
-> -
-> -    foreach_dynamic_sysbus_device(link_sysbus_device, pb);
-> -}
-> -
->  static void platform_bus_realize(DeviceState *dev, Error **errp)
->  {
->      PlatformBusDevice *pbus;
-> @@ -211,12 +196,8 @@ static void platform_bus_realize(DeviceState *dev, Error **errp)
->          sysbus_init_irq(d, &pbus->irqs[i]);
->      }
->  
-> -    /*
-> -     * Register notifier that allows us to gather dangling devices once the
-> -     * machine is completely assembled
-> -     */
-> -    pbus->notifier.notify = platform_bus_init_notify;
-> -    qemu_add_machine_init_done_notifier(&pbus->notifier);
-> +    /* some devices might be initialized before so update used IRQs map */
-> +    plaform_bus_refresh_irqs(pbus);
->  }
->  
->  static Property platform_bus_properties[] = {
-> diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
-> index 9a85a41..e2829db 100644
-> --- a/hw/ppc/e500.c
-> +++ b/hw/ppc/e500.c
-> @@ -64,6 +64,8 @@
->  #define MPC8XXX_GPIO_OFFSET        0x000FF000ULL
->  #define MPC8XXX_GPIO_IRQ           47
->  
-> +static SysBusDevice *pbus_dev;
-> +
->  struct boot_info
->  {
->      uint32_t dt_base;
-> @@ -248,23 +250,28 @@ static void platform_bus_create_devtree(PPCE500Params *params, void *fdt,
->      dev = qdev_find_recursive(sysbus_get_default(), TYPE_PLATFORM_BUS_DEVICE);
->      pbus = PLATFORM_BUS_DEVICE(dev);
->  
-> -    /* We can only create dt nodes for dynamic devices when they're ready */
-> -    if (pbus->done_gathering) {
-> -        PlatformDevtreeData data = {
-> -            .fdt = fdt,
-> -            .mpic = mpic,
-> -            .irq_start = irq_start,
-> -            .node = node,
-> -            .pbus = pbus,
-> -        };
-> +    /* Create dt nodes for dynamic devices */
-> +    PlatformDevtreeData data = {
-> +        .fdt = fdt,
-> +        .mpic = mpic,
-> +        .irq_start = irq_start,
-> +        .node = node,
-> +        .pbus = pbus,
-> +    };
->  
-> -        /* Loop through all dynamic sysbus devices and create nodes for them */
-> -        foreach_dynamic_sysbus_device(sysbus_device_create_devtree, &data);
-> -    }
-> +    /* Loop through all dynamic sysbus devices and create nodes for them */
-> +    foreach_dynamic_sysbus_device(sysbus_device_create_devtree, &data);
->  
->      g_free(node);
->  }
->  
-> +void ppce500_plug_dynamic_sysbus_device(SysBusDevice *sbdev)
-> +{
-> +    if (pbus_dev) {
-> +        platform_bus_link_device(PLATFORM_BUS_DEVICE(pbus_dev), sbdev);
-> +    }
-> +}
-> +
->  static int ppce500_load_device_tree(MachineState *machine,
->                                      PPCE500Params *params,
->                                      hwaddr addr,
-> @@ -945,16 +952,16 @@ void ppce500_init(MachineState *machine, PPCE500Params *params)
->          qdev_prop_set_uint32(dev, "num_irqs", params->platform_bus_num_irqs);
->          qdev_prop_set_uint32(dev, "mmio_size", params->platform_bus_size);
->          qdev_init_nofail(dev);
-> -        s = SYS_BUS_DEVICE(dev);
-> +        pbus_dev = SYS_BUS_DEVICE(dev);
->  
->          for (i = 0; i < params->platform_bus_num_irqs; i++) {
->              int irqn = params->platform_bus_first_irq + i;
-> -            sysbus_connect_irq(s, i, qdev_get_gpio_in(mpicdev, irqn));
-> +            sysbus_connect_irq(pbus_dev, i, qdev_get_gpio_in(mpicdev, irqn));
->          }
->  
->          memory_region_add_subregion(address_space_mem,
->                                      params->platform_bus_base,
-> -                                    sysbus_mmio_get_region(s, 0));
-> +                                    sysbus_mmio_get_region(pbus_dev, 0));
->      }
->  
->      /*
-> diff --git a/hw/ppc/e500plat.c b/hw/ppc/e500plat.c
-> index 81d03e1..2f014cc 100644
-> --- a/hw/ppc/e500plat.c
-> +++ b/hw/ppc/e500plat.c
-> @@ -60,8 +60,49 @@ static void e500plat_init(MachineState *machine)
->      ppce500_init(machine, &params);
->  }
->  
-> -static void e500plat_machine_init(MachineClass *mc)
-> +typedef struct {
-> +    MachineClass parent;
-> +    HotplugHandler *(*get_hotplug_handler)(MachineState *machine,
-> +                                           DeviceState *dev);
-> +} E500PlatMachineClass;
-> +
-> +#define TYPE_E500PLAT_MACHINE  MACHINE_TYPE_NAME("ppce500")
-> +#define E500PLAT_MACHINE_GET_CLASS(obj) \
-> +    OBJECT_GET_CLASS(E500PlatMachineClass, obj, TYPE_E500PLAT_MACHINE)
-> +#define E500PLAT_MACHINE_CLASS(klass) \
-> +    OBJECT_CLASS_CHECK(E500PlatMachineClass, klass, TYPE_E500PLAT_MACHINE)
-> +
-> +static void e500plat_machine_device_plug_cb(HotplugHandler *hotplug_dev,
-> +                                            DeviceState *dev, Error **errp)
->  {
-> +    if (object_dynamic_cast(OBJECT(dev), TYPE_SYS_BUS_DEVICE)) {
-> +        ppce500_plug_dynamic_sysbus_device(SYS_BUS_DEVICE(dev));
-> +    }
-> +}
-> +
-> +static
-> +HotplugHandler *e500plat_machine_get_hotpug_handler(MachineState *machine,
-> +                                                    DeviceState *dev)
-> +{
-> +    E500PlatMachineClass *emc = E500PLAT_MACHINE_GET_CLASS(machine);
-> +    if (object_dynamic_cast(OBJECT(dev), TYPE_SYS_BUS_DEVICE)) {
-> +        return HOTPLUG_HANDLER(machine);
-> +    }
-> +
-> +    return emc->get_hotplug_handler ?
-> +        emc->get_hotplug_handler(machine, dev) : NULL;
-> +}
-> +
-> +static void e500plat_machine_class_init(ObjectClass *oc, void *data)
-> +{
-> +    E500PlatMachineClass *emc = E500PLAT_MACHINE_CLASS(oc);
-> +    HotplugHandlerClass *hc = HOTPLUG_HANDLER_CLASS(oc);
-> +    MachineClass *mc = MACHINE_CLASS(oc);
-> +
-> +    emc->get_hotplug_handler = mc->get_hotplug_handler;
-> +    mc->get_hotplug_handler = e500plat_machine_get_hotpug_handler;
-> +    hc->plug = e500plat_machine_device_plug_cb;
-> +
->      mc->desc = "generic paravirt e500 platform";
->      mc->init = e500plat_init;
->      mc->max_cpus = 32;
-> @@ -69,4 +110,19 @@ static void e500plat_machine_init(MachineClass *mc)
->      mc->default_cpu_type = POWERPC_CPU_TYPE_NAME("e500v2_v30");
->  }
->  
-> -DEFINE_MACHINE("ppce500", e500plat_machine_init)
-> +static const TypeInfo e500plat_info = {
-> +    .name          = TYPE_E500PLAT_MACHINE,
-> +    .parent        = TYPE_MACHINE,
-> +    .class_size    = sizeof(E500PlatMachineClass),
-> +    .class_init    = e500plat_machine_class_init,
-> +    .interfaces    = (InterfaceInfo[]) {
-> +         { TYPE_HOTPLUG_HANDLER },
-> +         { }
-> +    }
-> +};
-> +
-> +static void e500plat_register_types(void)
-> +{
-> +    type_register_static(&e500plat_info);
-> +}
-> +type_init(e500plat_register_types)
+Could this commit
 
-Otherwise I gave a try on Seattle with the Calxeda xgmac vfio-device and
-I do not observe any regression with my sample command line.
+https://github.com/tianocore/edk2/commit/28f8d28faabf50a82ef8d137308592c64ea9e2b6
 
-Thanks
-
-Eric
-> 
+have anything to do with that?

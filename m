@@ -1,103 +1,103 @@
-Received: by 10.223.159.74 with SMTP id f10csp6659141wrg;
-        Thu, 14 Dec 2017 10:47:11 -0800 (PST)
-X-Google-Smtp-Source: ACJfBouUdEEh83bRmCH2Bub2u0g9cI3uuerg04FUGy2dPZKdPgIaJD5uE/s+8mcfheeN1gfHmE+T
-X-Received: by 10.37.161.9 with SMTP id z9mr3125458ybh.258.1513277231128;
-        Thu, 14 Dec 2017 10:47:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1513277231; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp6706224wrg;
+        Thu, 14 Dec 2017 11:34:32 -0800 (PST)
+X-Google-Smtp-Source: ACJfBouNQs8oKOiEGaisfJ5oipQ7p4N/sOCFPoD4AGKIMQD4gadsqWEDmhUAR0RVZD4NidV5DF2s
+X-Received: by 10.37.43.10 with SMTP id r10mr5161034ybr.74.1513280072608;
+        Thu, 14 Dec 2017 11:34:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513280072; cv=none;
         d=google.com; s=arc-20160816;
-        b=ohWncaqdcJ/5hsJgSa3BQOg8NapbeUzVYb4bCXqvQwRVoksUHLrC6ve8gqbNadQeHJ
-         R6fVp08zEslnuIblw/l4gD5LXln6Ci24xQtKOc+/TAxYpBNStkEz3kPPPPCb0//3Qzca
-         VX3XuEw/7JwIXjjSBoLvUdg/NE/VrVOo4EfQmhLX9O+I0dymOZvWuvGm4GHWwxzBMz2W
-         bVCuuzfOqYCdNXHnA1uh77SKaB+m8I2J6OLy8YPznonQ/5tCrc1RB/XJ2Gydz0m6gvlf
-         FQl1PaksEbZ/7AHV0K8LkXePktvL/SSWJFZm6nnRrgoEh3yTaYl8TY9vMokCCQI96f9V
-         PG6w==
+        b=MlYq1ab99S3KS6OSzPHR4r9/ZVf8pOlX6JS/7KLoFKOkoouUNqsnBSIE/4koWulhu8
+         QnqIZWCc9WEo6YBnbCn5a4RODrohRxJMvTAc3MfX6yUj0/FvfcL7X6gDHQroI+gCAhsz
+         sYMRsiHQAU3JHvKHTSs05klCWRRVMeuMt8ud/lIF6O7MFY2lcfj/x0AiiN0iXx6QnT+9
+         5MEMAEEKLLlaqWeWGuJ4ZDWIWIYRQT6QFYRSt6iNJ97w6ANvs/UXlr2VPOj4x9rbXiza
+         6ZcY/lFaRD4Rts8xM/sAPpZNb/g107gtg2PGPbzTm2MS+v/jewONN2o7F7OWemT3KMZi
+         hu1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=5nTheaYzC+dBCu+FVU1SqmQ+TWI6y/ikV5LELkLfEf0=;
-        b=Nb+biFFLQdxWMXzeUgiKR3gUNKLh+qcZcRIum8t1eQLxwEXaAUQSYdwOKo8yp7mo6N
-         edX+WvQNBULZ45IY2r8vVd550W0AAO6itE7cxZAlYrG5nnGqEU6ldNEidNKTeQ7hGC81
-         LW9JC2c0IGyizytMo9zfHmhZZdnJ62aNBnHQ7kNqsmKoOnEmWaLqARe8F+1SBmeMYyoa
-         S/wrp3FYC3KBMjiGc/0RdmyJqEU7YTvzNvKPUo03fH1Ah6jAHm8Wo4/N0M/VUxN/1+4z
-         sba/QOMjRakGEyDHMT7mZGh3n1bhZ3BnNwT0iEAoKDdx8DlTz0CiL0qFaQs2cVEJtw05
-         ZIGQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=LZm7VvRnoVX35uUkeqHoVova5Q/Vwj0t61ewOmTfKHw=;
+        b=0Fsmma5nciC2hH+Pu8geDX1SunO7ji1Ok4a9+wucARO/Hzfvr87MWVx4TxD2yj1N2b
+         Y57klfL+AuGBapJhMCo/E4wDQpZ9pAuN9SWJB/krdO/ma7kLDQJx7njVrLWXaK6rKEjM
+         zDuBN+ir+xMI+JLOdh5ftEG56m5SVlNtu+r1R4wVZPX6S/B11botgmFoi5CUZzJotsAp
+         7z892AtqlR1T6XZnDFPVeKLOqJo+Vasjm0TAPnYGPg3cIK0FI1MjoppublYUybBrvjJu
+         BxRgN2xSBGI3faUCkqnNx20WD0rTYZcCoORousUXI3Oq6IKrx6NwuZrESe9zVU9NZFDA
+         0tSA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aR/PbzWP;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=F8JIglu+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l75si935450ywe.370.2017.12.14.10.47.10
+        by mx.google.com with ESMTPS id e185si938182ybe.737.2017.12.14.11.34.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Dec 2017 10:47:11 -0800 (PST)
+        Thu, 14 Dec 2017 11:34:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aR/PbzWP;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=F8JIglu+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:42703 helo=lists.gnu.org)
+Received: from localhost ([::1]:42802 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ePYXG-0005bE-J2
-	for alex.bennee@linaro.org; Thu, 14 Dec 2017 13:47:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57648)
+	id 1ePZH6-00053X-1s
+	for alex.bennee@linaro.org; Thu, 14 Dec 2017 14:34:32 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55743)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePYWz-0005ZA-8d
-	for qemu-arm@nongnu.org; Thu, 14 Dec 2017 13:46:54 -0500
+	(envelope-from <alistair23@gmail.com>) id 1ePZGv-00051e-RQ
+	for qemu-arm@nongnu.org; Thu, 14 Dec 2017 14:34:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePYWy-0002M3-9k
-	for qemu-arm@nongnu.org; Thu, 14 Dec 2017 13:46:53 -0500
-Received: from mail-it0-x234.google.com ([2607:f8b0:4001:c0b::234]:40673)
+	(envelope-from <alistair23@gmail.com>) id 1ePZGv-0005Gd-0T
+	for qemu-arm@nongnu.org; Thu, 14 Dec 2017 14:34:21 -0500
+Received: from mail-wm0-x231.google.com ([2a00:1450:400c:c09::231]:37832)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePYWt-0002FS-H1; Thu, 14 Dec 2017 13:46:47 -0500
-Received: by mail-it0-x234.google.com with SMTP id f190so13341354ita.5;
-	Thu, 14 Dec 2017 10:46:47 -0800 (PST)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1ePZGs-0005E0-Nq; Thu, 14 Dec 2017 14:34:18 -0500
+Received: by mail-wm0-x231.google.com with SMTP id f140so13516807wmd.2;
+	Thu, 14 Dec 2017 11:34:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc;
-	bh=5nTheaYzC+dBCu+FVU1SqmQ+TWI6y/ikV5LELkLfEf0=;
-	b=aR/PbzWPhLzb2ttOztm61NTVXsjNPNTnJLfsuI4JGbazOfI+w/iG2uUjL8DnTL2/Zp
-	glPCVRORq5hB6z1mOapZgbdenCyu47swWMZv4GFhFc/BK/MzlCWr5gLVIwSECSu83iok
-	//d9zx6nL8cp2ezkbebxzeoxNIy+2pNiXgzNAQxOIu4f3x3lPZ8GHSDbbY4yXKpmO5ca
-	h2NfK+ZCpOtvtb5T9545LJMh/C/dPcr1v2Mw3OfPkBW1iWJzos/ELqBgG346IAEfs5Y/
-	ff9mVMeQb749GWazwQlnl7ok0yg82CSgSs620MTGOwAEvH9yfr26YbzOm14L5DQABPCA
-	mgMQ==
+	:subject:to:cc:content-transfer-encoding;
+	bh=LZm7VvRnoVX35uUkeqHoVova5Q/Vwj0t61ewOmTfKHw=;
+	b=F8JIglu+LEZumW+V7dv5TBsNBALoPyO10coLKaztcNu5ZZ5TrdmHuRcXvcPcHurT/D
+	vlOywwFmLRqITFeHFe9YQhW9CkHMGk6BErLcG2n+Pq4ueD4LpyBKFWh/WoCIQedfS+hB
+	K9fzOBfNTyO5YzHS98fAftiCER/slUIBqt8STXRIk6eG1PY5twKjBR76ZKmHGjh/t9dt
+	I6XAHff0HW0wQzVXXLuj9DG9OO/gH5AXm1IcEGLDMRj4NZY8s89o3Xf95jlvwdSH45hG
+	dINBFuLD4yi1ytALl7jdDSKFP/nV8bB2XMZ/nh4p/dZjyiMR3OZTv9xd/5COh27W6GBz
+	mpFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc;
-	bh=5nTheaYzC+dBCu+FVU1SqmQ+TWI6y/ikV5LELkLfEf0=;
-	b=UWwhq5wV5nLMZoZvNlA7/Uc5NJs9QyjuFmiHsWYV6CYTnGQMceKUdFwrHqOYq7Vlm7
-	ssLPwm8JT2j/7NaA/AlBXhEwYXeyhw5/e7I7RxIgShP6HyIq5gKmraojVtWGz4On+8aR
-	IiuKygqt33W30xty5CPE64Xdzmx47pfD0fdEzhKEiyolANFI6MwqpvqSRDtHRDVW17J4
-	Ej5v3XyNVXrkTrNiE9WA1+JReS1NEYZsvoJ6N8bzFzu6irc6xB6axWR2s1KG4cxbSPE+
-	Ed/T8sLn8GUGVAc8S30e7BxH7OCAQ8tTsf9pcNFmo4AxA9lb8OT7/X0TF60zAlFtk8E0
-	8yuA==
-X-Gm-Message-State: AKGB3mJ44UvAeRq/6A1ZYUre4+ORb0wGy4SzBvEuKils3+CraU6kzprT
-	hckNYtx9z9MdaQlFKCO8sO+A4pTeFCHR//4SMto=
-X-Received: by 10.107.89.10 with SMTP id n10mr3869386iob.224.1513277206708;
-	Thu, 14 Dec 2017 10:46:46 -0800 (PST)
+	:date:message-id:subject:to:cc:content-transfer-encoding;
+	bh=LZm7VvRnoVX35uUkeqHoVova5Q/Vwj0t61ewOmTfKHw=;
+	b=ezLXh9AITpti018yYLva4jGZIgPFfHm7HBpM9K7N6X7GFzgNuaDzuISTcuESuyeXCF
+	TwbHJwWoWd42YNa28/T51Xb3uwtxMWHvkJshSi7XpNYQ3G88+7URKz+SnxWQkmO96aYW
+	4Hy4Wm6kI+DEUgUMHuIjtWdEWgElrao3n6JND/NUYpmV/Nu4PkJiAeWGX6C0HU+0GQNu
+	q2RTA+n1AUUV1eN3YVMpo+zpEIFFM3GlXY7KYOV/N133Vvw8kQ/PurlDSFL+rFHra+GN
+	SB4wEjG+PfmbyZO9ZVGU9eRU8jaXNC7JJxDWM8zsSHeqge9kiUOMzsosEo3t2r0XmdP8
+	Fe3w==
+X-Gm-Message-State: AKGB3mKLoOZ/gy9OzE9JWkHUV7wWC1nHcKIFpvs6Gg3GKz/h8qkMTseT
+	HT0Jn6TdyGoAOJ1lZHjVJg6MGSEtyv295HCvwVw=
+X-Received: by 10.28.136.66 with SMTP id k63mr3337487wmd.50.1513280057714;
+	Thu, 14 Dec 2017 11:34:17 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.2.183.19 with HTTP; Thu, 14 Dec 2017 10:46:46 -0800 (PST)
-In-Reply-To: <20171214171810.GA18098@stefanha-x1.localdomain>
-References: <20171213213557.26561-1-f4bug@amsat.org>
-	<20171214093907.GA14433@stefanha-x1.localdomain>
-	<7bc179c8-5699-98b0-8a5b-b4d8e6843b25@amsat.org>
-	<20171214171810.GA18098@stefanha-x1.localdomain>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Thu, 14 Dec 2017 15:46:46 -0300
-X-Google-Sender-Auth: ntJ1ib7QoM1DnUzt3nXSiGMnUyw
-Message-ID: <CAAdtpL7_tHk3GUep8r-cFc6fVS8Pj42DYbZQuY_CkKGoiU6V4Q@mail.gmail.com>
-To: Stefan Hajnoczi <stefanha@redhat.com>
+Received: by 10.28.164.69 with HTTP; Thu, 14 Dec 2017 11:33:47 -0800 (PST)
+In-Reply-To: <CAAdtpL4gPTyMo-a0sNDN0F71wBca3gTfU0NBOr7ZHkmWDXwJow@mail.gmail.com>
+References: <20171213195852.30439-1-f4bug@amsat.org>
+	<20171213195852.30439-2-f4bug@amsat.org>
+	<CAKmqyKNSGCndaHmpGPOYGX7jrVbse-ahT=dEdY9XQVm43=AYZg@mail.gmail.com>
+	<CAAdtpL4gPTyMo-a0sNDN0F71wBca3gTfU0NBOr7ZHkmWDXwJow@mail.gmail.com>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Thu, 14 Dec 2017 11:33:47 -0800
+X-Google-Sender-Auth: 4nk_1-N2JTeAYL6UG6zaVX7Z7xk
+Message-ID: <CAKmqyKPPC4Q1+ccPKw0fYxpXTrT+ui5DE-bVxiRanRhLpYof9A@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4001:c0b::234
-Subject: Re: [Qemu-arm] [PATCH 0/6] QTests: use Python to run complex tests
+X-Received-From: 2a00:1450:400c:c09::231
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 01/14] sd: split "sd-internal.h"
+ of "hw/sd/sd.h"
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -110,53 +110,48 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-	Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	"Daniel P . Berrange" <berrange@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	"open list:Block layer core" <qemu-block@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Prasad J Pandit <pjp@fedoraproject.org>,
 	Andrey Smirnov <andrew.smirnov@gmail.com>,
-	Eric Blake <eblake@redhat.com>, Fam Zheng <famz@redhat.com>,
 	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
 	Alistair Francis <alistair.francis@xilinx.com>,
-	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Kevin Wolf <kwolf@redhat.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	=?UTF-8?B?THVrw6HFoSBEb2t0b3I=?= <ldoktor@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Max Reitz <mreitz@redhat.com>, John Snow <jsnow@redhat.com>
+	Sai Pavan Boddu <saipava@xilinx.com>,
+	Michael Walle <michael@walle.cc>, qemu-arm <qemu-arm@nongnu.org>,
+	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+	Andrey Yurovsky <yurovsky@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2g+JMmT6nKQn
+X-TUID: aG0lDtpxAbXm
 
->> > Is there a specific reason why adding SD Card support to libqos is not
->> > possible in C?
+On Thu, Dec 14, 2017 at 9:59 AM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+rg> wrote:
+> On Thu, Dec 14, 2017 at 2:50 PM, Alistair Francis
+> <alistair.francis@xilinx.com> wrote:
+>> On Wed, Dec 13, 2017 at 11:58 AM, Philippe Mathieu-Daud=C3=A9
+>> <f4bug@amsat.org> wrote:
+>>> Now only SD 'producers' are able to use the "sd-internal.h" API,
+>>> while SD 'consumers' are restricted to the "hw/sd/sd.h" 'public' API.
+>>>
+>>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 >>
->> Short (joking) answer: Would you write tests/qemu-iotests/041 in C? ;)
+>> I don't see what this gets us. Why bother moving this code into an
+>> internal header?
 >
-> 041 is not a device-level test.  It doesn't poke device registers, it's
-> a functional test.  In my email I said I support using Python for those
-> types of tests.
+> This helped me to sort out the QOM design, however it is indeed not neces=
+sary.
+
+If it makes development easier that is a good reason. I just don't see
+in this series how it helps.
+
 >
->> Now thinking about the specific reasons...
->>
->> What I intend to do is add qtests for the SDHCI implementation.
->> There are different revisions of the standard specs.
+> I later use the registerfields API to add a bunch of other registers
+> and bitfields, so I prefer to still move the register #defines in
+> another internal header, else this API header get pretty unreadable.
+
+Ah, that makes some more sense.
+
+Alistair
+
+> I'll respin this series without this split.
 >
-> It would be great to have SDHCI support in libqos.  PCI and virtio are
-> covered today and support for more busses will help reach that critical
-> mass where tests can be written for most QEMU device models without
-> first writing a new device driver framework.
->
-> Please post your SDHCI test code, so we can discuss the details and
-> consider whether it's more like 041 or more like tests/ide-test.c.
-
-The SDHCI test is like ide-test, poking register.
-
-Being not a 'generic' series but only SDHCI I didn't Cc'd you,
-you can find the test here:
-
-http://lists.nongnu.org/archive/html/qemu-devel/2017-12/msg02391.html
-
-and the SDCard python test here (you got this one):
-
-http://lists.nongnu.org/archive/html/qemu-devel/2017-12/msg02350.html

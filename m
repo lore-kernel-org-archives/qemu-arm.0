@@ -1,146 +1,160 @@
-Received: by 10.223.159.74 with SMTP id f10csp2839276wrg;
-        Fri, 22 Dec 2017 15:54:43 -0800 (PST)
-X-Google-Smtp-Source: ACJfBotsyl6xaHdFQif4CNRTfuHYs/jQOROFLc91xSTjxiPtEiQMUK62CG9aM0K6KYy9pGvu3ygA
-X-Received: by 10.129.169.6 with SMTP id g6mr11008519ywh.258.1513986883136;
-        Fri, 22 Dec 2017 15:54:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1513986883; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp6487980wrg;
+        Thu, 14 Dec 2017 08:05:49 -0800 (PST)
+X-Google-Smtp-Source: ACJfBov/cTgOJYNOVD/QRXS7P3iQJ7JTf3+YA2MUS85HDzR1iqK9aC2bh67CL8y/UAdgjrhVLcDq
+X-Received: by 10.37.181.146 with SMTP id q18mr4682591ybj.328.1513267549788;
+        Thu, 14 Dec 2017 08:05:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513267549; cv=none;
         d=google.com; s=arc-20160816;
-        b=kZKzKrOWQJagdL39ANpv79LXe99E5EU6p1X1Co0WPnAASH43Qz4EnP9qkfsiw1CKdV
-         OPD15QpFd4f+RXkKAgcT5zAaENtM8+GobE5OYqM9xoRkjlKwQngXza88/+SS5HoLEJmV
-         UkdS97bCHqd/e3NTtXhhdDBVoy3WiVyMZODlABTJWny38x2Ph2lVFm3hk4lB8MBXrgGK
-         g6WQFMPoboUNtl2mFF25yWaPjLrhogftf8OyhwDq1Y3bAfrr0p/Q5bmEhE3esiXx7K1E
-         ptMU2FXroX2JOlFtCAqgRP3iz9KRwLZ2Qg42n4J1UdTmsFj9boKQOzXvLCEE5OGHZzsm
-         Ea1A==
+        b=zcXaZMFNipQF0Zfk9BTAx4aDcrgLJ+qEBzKDbQ40JsumoIXHKXeuy+hRPjfkKa+cdA
+         JlcBl32qGg7EJOYtgiMor+QWj6uIYBTq2EF1vkwNt1RXJiYwoqb0WeqZ99XBk4kQE+Fd
+         g9Rlliu2+7aQsZBfwORelJ6cte8SrEzxCZkBbL4HQF2etiEbxG6gWRRNyA6APBFr440o
+         wu0BvbORYRxS9H69YT+xyCLy76NCQyI0qig6DaiNFYyM+6QVuF3EeJe7c5VMNE3+kYcB
+         08+AYiKa6qQ4dhJ6i8lfDSDqV1VpU3/nt5iqaQrtGRDUZiFr/OZQeigw66YbulU9uA5L
+         TyJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :arc-authentication-results;
-        bh=sJghIjmKA97tkF1Zqd33abV4TdDffhO6C/UdUZelRHI=;
-        b=WvEJ9Hb0naLgD3v40+7HG5PClsmzcz4I6D3+bPxbLZQ3/IjuWu5ShHafIpdJSD0KVT
-         omDaKiSm9vd37NNaUHzdj3kxw8g/jlmutOUSD8lxFQ9b3stf3Va3CRFj474BcGSOkinY
-         oA/FpJ2+44Xl+BS/19pCKX/AvHYA9dFD5ZW8EOG8CbfpInvaUawo0x3f054K3Ba/YZZh
-         rruuSwdqcRARBC0gL/izfF6ncmpQXAPtwYJ+rkie1NiV6dDNRSBYwvUEIF+M2fBHp2Wx
-         j4Gnzi6MDByZSfA1tb0Ks5J3oY2TTdaQ8e0p4W3cG0feAGABdvlRf4k5Blktyjk5O9sP
-         pBAw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=DfyGgKtgwNentbx0fpLoy2wQ1rXcoexXGA0vb3dvK9Y=;
+        b=k9mQTvfxd+PEjovZl/38v9ZoAaUWcs9/Ck3GGiGd9q8Ie7jlpBFm0naFlbdi8VwZfK
+         uwN+8jjyOr39JGtEtLRlcyvhUlNPLLVWWOs85YJdSrFl34ucP21ACFQ0be+1ITPQEP0l
+         AUTU0CDLKyZoVhxfFePziXhUv+7unTHY2GxbsdId10Kd6DejQS/eEZS4t3Z2LMqeDh5b
+         YOr6E8PSy03WTay8hVei6DD3fIlbZs7kawmIiDj6cAPR7t0iwx1wLV1/KgwyxTkhbm3F
+         XNVELXzXmYkaZhAB3qStNQ61y3cacpIXy1oNiYJzg+STBBfr+Ky1z8mNf7WN3ocJNhvM
+         JEUA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=V0jQ13qm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a7si4408483ywm.523.2017.12.22.15.54.42
+        by mx.google.com with ESMTPS id c198si848134ywc.174.2017.12.14.08.05.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Dec 2017 15:54:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 14 Dec 2017 08:05:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:39486 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=V0jQ13qm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:41741 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eSX9G-00065x-Lb
-	for alex.bennee@linaro.org; Fri, 22 Dec 2017 18:54:42 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54332)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ePW17-0005SW-7w
+	for alex.bennee@linaro.org; Thu, 14 Dec 2017 11:05:49 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44501)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <michael@dinsnail.net>) id 1eSX8G-0005jT-64
-	for qemu-devel@nongnu.org; Fri, 22 Dec 2017 18:53:41 -0500
+	(envelope-from <andrew.smirnov@gmail.com>) id 1ePW0k-0005OQ-0E
+	for qemu-arm@nongnu.org; Thu, 14 Dec 2017 11:05:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <michael@dinsnail.net>) id 1eSX8D-0003vG-3s
-	for qemu-devel@nongnu.org; Fri, 22 Dec 2017 18:53:40 -0500
-Received: from heinz.dinsnail.net
-	([2a01:238:43b4:3200:9392:5dcc:2f0e:a960]:55414)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <michael@dinsnail.net>)
-	id 1eSX8C-0003sJ-T3; Fri, 22 Dec 2017 18:53:37 -0500
-Received: from localhost (p5DD4E4D5.dip0.t-ipconnect.de [93.212.228.213])
-	by heinz.dinsnail.net (8.14.9/8.14.9) with ESMTP id vBMNqv5n000616
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Sat, 23 Dec 2017 00:52:58 +0100
-From: Michael Weiser <michael.weiser@gmx.de>
-To: qemu-arm@nongnu.org
-Date: Fri, 22 Dec 2017 20:23:00 +0100
-Message-Id: <20171222192300.46997-1-michael.weiser@gmx.de>
-X-Mailer: git-send-email 2.14.3 (Apple Git-98)
-X-dinsnail-net-MailScanner-Information: Please contact the ISP for more
-	information
-X-dinsnail-net-MailScanner-ID: vBMNqv5n000616
-X-dinsnail-net-MailScanner: Found to be clean
-X-dinsnail-net-MailScanner-SpamScore: ssss
-X-dinsnail-net-MailScanner-From: michael@dinsnail.net
+	(envelope-from <andrew.smirnov@gmail.com>) id 1ePW0d-0007by-U1
+	for qemu-arm@nongnu.org; Thu, 14 Dec 2017 11:05:25 -0500
+Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:39412)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
+	id 1ePW0d-0007bU-QF; Thu, 14 Dec 2017 11:05:19 -0500
+Received: by mail-qt0-x241.google.com with SMTP id k19so8527700qtj.6;
+	Thu, 14 Dec 2017 08:05:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=DfyGgKtgwNentbx0fpLoy2wQ1rXcoexXGA0vb3dvK9Y=;
+	b=V0jQ13qmrfboMGr31nTLbBThkcLeiOQ148ytQ4OeYfQY9/4Jcuazat6+K6+c6gAgdk
+	ZRRVe/gR3tqA9fg4lRESvL73UNoFvxPiVjABlxqB4lWQLkDdF+XxCYDLhQBU/nwZE+E4
+	yz0XAbeUWTL0KT6xOvRh3E5YA0AfxfxyARHu/vX3O+zLoKlLH1JPG7hf66L6gzkptVx7
+	6YeP2zlX/ZmIrSJ0a+dcGj5I+H911hvmA1pE6jAFOwD6vQsssQTxn9MREC+Dkc8jkST2
+	tzA+aWPp455P9K8n7JgJM6/vI2JlfFKkvnVLJmY3a0Je38zEHeuotWmfuUUJbIZ2k+gv
+	t54g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=DfyGgKtgwNentbx0fpLoy2wQ1rXcoexXGA0vb3dvK9Y=;
+	b=fiE5dxGR9ecELIpur2RDMTqdJi/rrLLuh9qw3OtgBmiglyoYJ661DQD74NfB24kMLH
+	NQLYGANMSr8gnayrUiwqaVrr7s+vU2GnndvkHROqOB6pGepw6CRE+5DjztheOfWsgyEI
+	fMoRWO8/uu2Q3VZpPfosXqAzuMFt7WOAJaWm1/lm56U0psIAO5vO/RMwUn3PHLRiYOZJ
+	bkpNhFTW4SUGhdO111fRugFK3dhaG27PJ4u4EJuNVs58bpUg4rrFr+ch9kR9dtdn06Rf
+	SGaaY0Cw9DCo/rEy6TNb859Gq+O2FoFWDH4eTn059pm/z8RwH+cllWD4W0QNF5NhuHbR
+	SYow==
+X-Gm-Message-State: AKGB3mLAqc9Zwhv+23HHDuyZ5Iq96wqraUjZqtPdctSGY8HJThTXJMpP
+	HXYWLxreTXmGWlrZU1eUDkP6oYw3ccP5vlkSzuc7OgLm
+X-Received: by 10.200.54.176 with SMTP id a45mr16206221qtc.176.1513267519074; 
+	Thu, 14 Dec 2017 08:05:19 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.140.40.243 with HTTP; Thu, 14 Dec 2017 08:05:18 -0800 (PST)
+In-Reply-To: <d56f5ba0-29d9-d5b4-7137-28e312e15a02@amsat.org>
+References: <20171211213007.7353-1-andrew.smirnov@gmail.com>
+	<20171211213007.7353-13-andrew.smirnov@gmail.com>
+	<CAFEAcA_6R61208pZ5rchSG0Oy4c_2eSGD+dO-LQs3Dncjnpf-Q@mail.gmail.com>
+	<CAHQ1cqHhN=hLun2mzqvg0N3NkxEbPpBU1iEf5-mAdnHqEs3KYg@mail.gmail.com>
+	<d56f5ba0-29d9-d5b4-7137-28e312e15a02@amsat.org>
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+Date: Thu, 14 Dec 2017 08:05:18 -0800
+Message-ID: <CAHQ1cqEA1_OP4+Y4Y1B25UsmWU9EoR6uFvJTKmAj494q7HskoQ@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a01:238:43b4:3200:9392:5dcc:2f0e:a960
-Subject: [Qemu-devel] [RFC PATCH] target/arm: Fix stlxp for aarch64_be
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400d:c0d::241
+Subject: Re: [Qemu-arm] [PATCH 12/13] sdhci: Add i.MX specific subtype of
+ SDHCI
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Michael Weiser <michael.weiser@gmx.de>, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3dpDYofNwTWm
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Andrey Yurovsky <yurovsky@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6NkfchpXA7xg
 
-In big-endian mode, stlxp would not only store the individual doublewords
-big-endian but also swap them in memory. This does not correspond to how ldxp
-behaves nor how native code expects the result of stlxp to be stored in memory.
+On Thu, Dec 14, 2017 at 7:32 AM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+rg> wrote:
+> Hi Andrey,
+>
+> On 12/14/2017 11:03 AM, Andrey Smirnov wrote:
+>> On Tue, Dec 12, 2017 at 9:52 AM, Peter Maydell <peter.maydell@linaro.org=
+> wrote:
+>>> On 11 December 2017 at 21:30, Andrey Smirnov <andrew.smirnov@gmail.com>=
+ wrote:
+> [...]
+>>>> +    case ESDHC_DLL_CTRL:
+>>>> +    case ESDHC_TUNE_CTRL_STATUS:
+>>>> +    case 0x6c:
+>>>
+>>> Isn't there a name we can give 0x6c ?
+>>>
+>>
+>> Unfortunately, not that I know of. It's a mystery register not listed
+>> in RM and the only place I can found it being mentioned is in Linux
+>> driver as a part of errata ESDHC_FLAG_ERR004536 fix, where it is used
+>> nameless as well.
+>
+> This sets the SD CLK/RCLK frequency (10-bit) for the 104MB/sec bus speed
+> (UHS-I mode).
+>
+> The "Sampling Clock Tuning Procedure" figure in the Spec v3 is helpful.
+>
 
-Also, when comparing if the values in memory still match what was previously
-loaded by ldxp, stlxp would also swap the values loaded from memory, making the
-comparison against the previously loaded value fail always.
+I am a bit hesitant to agree that this is indeed the case. ERR004536
+errata's title is "uSDHC: ADMA Length Mismatch Error may occur for
+longer read latencies" and recommented workaround is "Use SDMA (or
+ADMA1) in case the AHB latency is larger than the =E2=80=9Cminimal time for
+one block=E2=80=9D. On top of that corresponding code in Linux
+(https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/dr=
+ivers/mmc/host/sdhci-esdhc-imx.c?h=3Dv4.15-rc3#n1061)
+doesn't seem to use it as a 10-bit frequency field, treating it more
+like a single-bit flag.
 
-With this change an aarch64_be Linux 4.14.4 kernel succeeds to boots up in
-system emulation mode.
-
-This change makes paired_cmpxchg64 helpers differ only in endianness handling.
-It might be possible to fold them into a single routine using variables and
-function pointers or get rid of them completely in favour of tcg_gen_-routines.
-Both is currently beyond my skill level, though.
-
-Signed-off-by: Michael Weiser <michael.weiser@gmx.de>
----
- target/arm/helper-a64.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
-
-diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-index b84ebcae6e..bab6446588 100644
---- a/target/arm/helper-a64.c
-+++ b/target/arm/helper-a64.c
-@@ -532,8 +532,8 @@ static uint64_t do_paired_cmpxchg64_be(CPUARMState *env, uint64_t addr,
- 
-         success = int128_eq(oldv, cmpv);
-         if (success) {
--            stq_be_p(haddr + 0, int128_gethi(newv));
--            stq_be_p(haddr + 1, int128_getlo(newv));
-+            stq_be_p(haddr + 0, int128_getlo(newv));
-+            stq_be_p(haddr + 1, int128_gethi(newv));
-         }
-         helper_retaddr = 0;
- #else
-@@ -541,14 +541,14 @@ static uint64_t do_paired_cmpxchg64_be(CPUARMState *env, uint64_t addr,
-         TCGMemOpIdx oi0 = make_memop_idx(MO_BEQ | MO_ALIGN_16, mem_idx);
-         TCGMemOpIdx oi1 = make_memop_idx(MO_BEQ, mem_idx);
- 
--        o1 = helper_be_ldq_mmu(env, addr + 0, oi0, ra);
--        o0 = helper_be_ldq_mmu(env, addr + 8, oi1, ra);
-+        o0 = helper_be_ldq_mmu(env, addr + 0, oi0, ra);
-+        o1 = helper_be_ldq_mmu(env, addr + 8, oi1, ra);
-         oldv = int128_make128(o0, o1);
- 
-         success = int128_eq(oldv, cmpv);
-         if (success) {
--            helper_be_stq_mmu(env, addr + 0, int128_gethi(newv), oi1, ra);
--            helper_be_stq_mmu(env, addr + 8, int128_getlo(newv), oi1, ra);
-+            helper_be_stq_mmu(env, addr + 0, int128_getlo(newv), oi1, ra);
-+            helper_be_stq_mmu(env, addr + 8, int128_gethi(newv), oi1, ra);
-         }
- #endif
-     }
--- 
-2.15.1
-
+Thanks,
+Andrey Smirnov

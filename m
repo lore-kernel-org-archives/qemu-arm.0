@@ -1,111 +1,105 @@
-Received: by 10.223.159.74 with SMTP id f10csp7101799wrg;
-        Thu, 14 Dec 2017 19:32:41 -0800 (PST)
-X-Google-Smtp-Source: ACJfBosV8PROr0FLv/tqV7QbN7XH43TL8N9EeFa3EB785/u1G7XZ4DRePcr3AXyM9UsKdsPqm1MI
-X-Received: by 10.37.185.144 with SMTP id r16mr5805594ybg.510.1513308760931;
-        Thu, 14 Dec 2017 19:32:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1513308760; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp7111886wrg;
+        Thu, 14 Dec 2017 19:46:56 -0800 (PST)
+X-Google-Smtp-Source: ACJfBovH5PxX/OWxUMKTpHT8z8HFYa1MgjNfRJRvTDPQVKjm5OKJomOjrSbQMY9/PAnB3B9mjoQD
+X-Received: by 10.37.162.144 with SMTP id c16mr6054126ybi.291.1513309616719;
+        Thu, 14 Dec 2017 19:46:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513309616; cv=none;
         d=google.com; s=arc-20160816;
-        b=kneXT63Z+XAXs0y3HkLVJLGLzGMqUD44DsCdf88M6q5v3pTg2YaMbsrImuROEkaI2z
-         JitaJuP2VuvvDQ19p5MfUKnDhXsSH660j1MrqAKk+LYK6LuqNByNPD7sDqbTwaRO1Bqs
-         11bO1kYuD1JFXVK+IZ0WHqA5jj4Lz41K21M4Xj+C+0euuLHTti6VdlmYBK7s2NU/qbyc
-         3Qjexy5pOEjl/SOR73Lm+PFYzzxKcSZuIgfDfa1+ln1btseKHGsvA7PjiqsXnQ6Kb4du
-         BryCf3KG14mNsPqSI4T/I8wpOTeCVtQmOjnincfXxzdEEmWpw5a6BuA1tPgPoRXvtFZZ
-         AQIg==
+        b=xI4wBb5rKIY4uYXoAQ7BHVFwbsT0q+JYwVpMyPJ/z3V2urChaj8sQoHhbi7zlsqGX1
+         XUtR9op8TE+q92EklBLjEmu8/Vz9PaMfiwla95h1CX1Gfqv0ID+2Ll+Zishnu5aeSnrR
+         JfatLUcUenFrlorSDW6GbRnWbaI2g/J9xagw9kY9HipbG7DP6H4NuiaphVsiRQzafxVW
+         rHv0OwuK4mVH9i1KuBoougD0Pcs/Ct7ThBRyT+CQZnV2l9kgrojPUlj2qrEO3AvnBSPD
+         qXp9YSNPA34LWATdUV5Xxzj+BrMsyulGCdDTOgT2E1YvD8VESYXcvqkOnzzgE7RfgtVf
+         Zp2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=jiYjx6K4VMABkekyhu1PE1MLXOLVrqG7LnZPoDc4ZcE=;
-        b=SNHP/AnAVwtsxZKSUkMmragzUTm3QmFHI68YQE9l/nuy57mhOfkLGiQ+65Dw2IGF+0
-         1tLtUrMztVob/CfccQkdeOWZMAgAdjzXR1TaqL50bLAbuW/tP45rI2fA5kKv29PDLEYd
-         sAalLdJegEUMLfjo2ecQ++Qu8MRF383Qkjdct2WB4oyK8NAWrY6W1ZcFEWvu8RAsfmyp
-         ZoDa6V0Dty6wqmNHJgFhKMWgF3dTfgFU/4yDrU1L4+nF6kpQhEXCGvI/z16OPBr7s71o
-         z26NzoTqEWwdjQDEfV7OD2tywfkrsZ48DkRFU8XRaA0SVgYieMwwJBdKuwQNcrbG0hZO
-         aFng==
+        bh=XyvpKAuJAffaHA+YlRgb2lXH6lVmwX6zm97HvkhxYy4=;
+        b=qruqjJQ5cIiRvHwcTyROYaSM9k+8FNyBXNFomJppYyfK8EMX0tAbmRjtQ8Pq4jhopO
+         BfyKL15CVJlF3Mj2J2rWU/PAwkh663+F698U5umW0pQQ0yOLSE1rxrZ1S1oaJs7zGqiH
+         eUpsU/DPzOX/JPILYG3jZhr9qnFbRMV/npRPjxnTPigVFKyyLoqjj2Es8mxbhvjj2fQg
+         ZdQMeSOf0HVbuvr7ZHsuHWpHVaAsN9wGk8BfkppR5/3DGfqaK3CavIqSXl+il7zXlVB6
+         NI0veKqmgmqVq0jTQgfKRNboQHdP07rdxbD/exDHlnkfuMZXXNT/afJ4eg4S495ld8TB
+         FQmw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XeQZyc/H;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nhodMBun;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n74si1089701ywd.456.2017.12.14.19.32.40
+        by mx.google.com with ESMTPS id p64si1087699ybp.23.2017.12.14.19.46.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Dec 2017 19:32:40 -0800 (PST)
+        Thu, 14 Dec 2017 19:46:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XeQZyc/H;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nhodMBun;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:44057 helo=lists.gnu.org)
+Received: from localhost ([::1]:44167 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ePgjo-0002k9-Bi
-	for alex.bennee@linaro.org; Thu, 14 Dec 2017 22:32:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54886)
+	id 1ePgxc-0007fQ-36
+	for alex.bennee@linaro.org; Thu, 14 Dec 2017 22:46:56 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34031)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePgWF-0007fC-OL
-	for qemu-devel@nongnu.org; Thu, 14 Dec 2017 22:18:40 -0500
+	id 1ePgiS-00026d-UP
+	for qemu-devel@nongnu.org; Thu, 14 Dec 2017 22:31:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePgWE-0002hC-U7
-	for qemu-devel@nongnu.org; Thu, 14 Dec 2017 22:18:39 -0500
-Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:35946)
+	id 1ePgiR-0004M5-DX
+	for qemu-devel@nongnu.org; Thu, 14 Dec 2017 22:31:16 -0500
+Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:44103)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePgWE-0002gd-PY; Thu, 14 Dec 2017 22:18:38 -0500
-Received: by mail-qt0-x244.google.com with SMTP id a16so10594826qtj.3;
-	Thu, 14 Dec 2017 19:18:38 -0800 (PST)
+	id 1ePgiR-0004LO-8x; Thu, 14 Dec 2017 22:31:15 -0500
+Received: by mail-qk0-x243.google.com with SMTP id h19so8870765qkj.11;
+	Thu, 14 Dec 2017 19:31:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=jiYjx6K4VMABkekyhu1PE1MLXOLVrqG7LnZPoDc4ZcE=;
-	b=XeQZyc/HhhDOs5wDhlm3+lWBGkbmX1bIp8Uwm9E7uXsRF4EBUN7of/O3CVb9jRxhye
-	QFuSd18rB4NW47xzoFFMzL9tSfyhpTcZ+FdZ/HuJFuptXJGyr5PNbtu4cWWZ0Q3WvbHz
-	seGBzxo/jZqDxdLI/+I0MSq5QWpf5z2jlQMx5SJBYfNEWaQo0DbdjQNw8mBV8XDwVSV/
-	nTSoW9DjdRZTH6Eu/FGMssKCd7zJZylJiJv5SdR6AT0gEfqMhtZCVjYNxxxdXpPAGicd
-	GSMvnGTsMH4xfdXncRfHysdK2FXp5NvMK+EmxN5NU8Pxx78u16q3LxCxs+bp9KIBy16C
-	2Y4w==
+	bh=XyvpKAuJAffaHA+YlRgb2lXH6lVmwX6zm97HvkhxYy4=;
+	b=nhodMBunoJhrrPkO0VQ81frk4E7dPyXIqh75IdL2jFQozErGV+qjCqURoQXcMc/Hci
+	hhh2VDWY9ejON05xctGNKAN0ycwJodmGCZhfhoykazPyEfHBMdtjoghHmUdliTg0ns1z
+	PMzsBnP0gefltpKdfi70MxfmnMwSyKSzht7Zy1wWIJY2Q8I9OGTutFPVo3D2GAUpST4Z
+	P9BiOnD4VDs82c7cb1li7BAp/GLgDYiNJiW+uKZ41vq6uss4MzWI4LlAMjZTgvdGghW4
+	VqmWPQFImjeC5DfT0bsy4+R8ch5bfi+jfKYvxeUll9daHlUdocdrcROMG1B0/vsA07g4
+	kIzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=jiYjx6K4VMABkekyhu1PE1MLXOLVrqG7LnZPoDc4ZcE=;
-	b=m4xTD190vVYBmJW9hOXacb4afCXvhM74Y+y9JdolSq4EB5CAyKZFgyLIVjnYwYzApA
-	TjfSGh6c4d2BJWtlX0lxjMUzzoiE5K6E/pa1PqTgIJAXECES5mIbmmMYSxn3Px1XPJ97
-	xtFoOUfMpplpuvUsJaSqdHeA5rtnhN2Tj4JS1pNyJ+9oh466FnRmpHgFMzg3tIkz7Ms6
-	8jWwSAiHwwpFVmjwVlkOw30ltaQXLhnUsJqwaWZEOF0eELL5YQA52bJ/+/f5o+7p7Ch4
-	o89SkuK/y0ySYS5iV6QVRoBzOcw4vPC+sLOml5YQLK1T+RXOGifnHu/oUpe0O6jvrMv8
-	BOeA==
-X-Gm-Message-State: AKGB3mKzik0k0RBIMT8ubEAvuHBvC0Fwe9AEVBJc98NwAxqwz8iO09P5
-	RgbtqaUxmtE+ROQf1hgxy34=
-X-Received: by 10.200.51.46 with SMTP id t43mr20378699qta.75.1513307918311;
-	Thu, 14 Dec 2017 19:18:38 -0800 (PST)
+	bh=XyvpKAuJAffaHA+YlRgb2lXH6lVmwX6zm97HvkhxYy4=;
+	b=QDDDI6k2VRMROqkrSXmxbq2Eta9fHOezKwOE06hlUGGLn0Bemc2RE/aOT1IiGAmy9D
+	sAHj1H6m4SmvsJUSjKOnz6O6NRxmOPiTK3a6j99rK0DoIG7tUWYli+zClERf0S+FjUKF
+	bbnIE9jHMUYFw5ulaqDeFflOD3vzu/Nnx9GKYD6Tf9UIoAnNTfq8fWcjLG/cOen7JYKA
+	5Kg8wcfWguM5rL27H+uTyISkWJuXTsKhzvIHmmJmnxy8I029deh6VG0tkcl8AQkgNi8Z
+	PX6yMvTfcwlRXrj2JWuw/LxH5dsBDHq0SZAyxt5YyNLD/90b1q01/bxGHdma0Lk70AGH
+	O65w==
+X-Gm-Message-State: AKGB3mJm4IMKcKH2NMevaLwUTq2z4BjwZbs4FAnPVb6JnMDRyyP+I5EJ
+	a9XC1Jwyu96aNzvqLqdDoBw=
+X-Received: by 10.55.23.24 with SMTP id i24mr19531878qkh.181.1513308674692;
+	Thu, 14 Dec 2017 19:31:14 -0800 (PST)
 Received: from x1.local ([181.91.222.165]) by smtp.gmail.com with ESMTPSA id
-	l125sm3484740qkc.3.2017.12.14.19.18.33
+	q24sm3794605qkq.63.2017.12.14.19.31.08
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 14 Dec 2017 19:18:37 -0800 (PST)
+	Thu, 14 Dec 2017 19:31:14 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Alistair Francis <alistair.francis@xilinx.com>,
-	"Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-	Peter Maydell <peter.maydell@linaro.org>, Michael Walle <michael@walle.cc>,
-	Andrzej Zaborowski <balrogg@gmail.com>,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>,
-	Andrey Smirnov <andrew.smirnov@gmail.com>,
-	Andrey Yurovsky <yurovsky@gmail.com>
-Date: Fri, 15 Dec 2017 00:15:44 -0300
-Message-Id: <20171215031547.31006-18-f4bug@amsat.org>
+To: "Michael S. Tsirkin" <mst@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Date: Fri, 15 Dec 2017 00:29:45 -0300
+Message-Id: <20171215033015.738-14-f4bug@amsat.org>
 X-Mailer: git-send-email 2.15.1
-In-Reply-To: <20171215031547.31006-1-f4bug@amsat.org>
-References: <20171215031547.31006-1-f4bug@amsat.org>
+In-Reply-To: <20171215033015.738-1-f4bug@amsat.org>
+References: <20171215033015.738-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::244
-Subject: [Qemu-devel] [PATCH v2 17/20] sdhci: add check_capab_readonly()
- qtest
+X-Received-From: 2607:f8b0:400d:c09::243
+Subject: [Qemu-devel] [PATCH v4 13/43] misc: remove duplicated includes
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -117,82 +111,176 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Prasad J Pandit <pjp@fedoraproject.org>,
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	qemu-trivial@nongnu.org, Alexander Graf <agraf@suse.de>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Marcel Apfelbaum <marcel@redhat.com>,
+	"open list:X86" <xen-devel@lists.xenproject.org>,
+	Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	"open list:S390 Virtio-ccw" <qemu-s390x@nongnu.org>,
+	"open list:PXA2XX" <qemu-arm@nongnu.org>,
+	Stafford Horne <shorne@gmail.com>, Richard Henderson <rth@twiddle.net>,
 	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Cornelia Huck <cohuck@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, Sai Pavan Boddu <saipava@xilinx.com>,
-	qemu-arm@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>
+	Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hanulVQgl3gz
+X-TUID: v8b8mHWLF3Nu
+
+exec: housekeeping (funny since 02d0e095031)
+
+applied using ./scripts/clean-includes
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Acked-by: Cornelia Huck <cohuck@redhat.com>
+Reviewed-by: Anthony PERARD <anthony.perard@citrix.com>
 ---
- tests/sdhci-test.c | 30 ++++++++++++++++++++++++++++++
- 1 file changed, 30 insertions(+)
+ accel/tcg/translate-all.c          | 1 -
+ exec.c                             | 3 ---
+ hw/arm/spitz.c                     | 1 -
+ hw/char/xen_console.c              | 1 -
+ hw/core/machine.c                  | 1 -
+ hw/s390x/css.c                     | 1 -
+ target/openrisc/exception_helper.c | 1 -
+ tests/vhost-user-test.c            | 1 -
+ util/qemu-sockets.c                | 1 -
+ vl.c                               | 1 -
+ 10 files changed, 12 deletions(-)
 
-diff --git a/tests/sdhci-test.c b/tests/sdhci-test.c
-index 4ebe1e349b..01373a69df 100644
---- a/tests/sdhci-test.c
-+++ b/tests/sdhci-test.c
-@@ -9,6 +9,7 @@
+diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
+index e7f0329a52..22682d3cf1 100644
+--- a/accel/tcg/translate-all.c
++++ b/accel/tcg/translate-all.c
+@@ -31,7 +31,6 @@
+ #include "tcg.h"
+ #if defined(CONFIG_USER_ONLY)
+ #include "qemu.h"
+-#include "exec/exec-all.h"
+ #if defined(__FreeBSD__) || defined(__FreeBSD_kernel__)
+ #include <sys/param.h>
+ #if __FreeBSD_version >= 700104
+diff --git a/exec.c b/exec.c
+index 03238a3449..3e7c57e914 100644
+--- a/exec.c
++++ b/exec.c
+@@ -18,8 +18,6 @@
+  */
  #include "qemu/osdep.h"
- #include "libqtest.h"
+ #include "qapi/error.h"
+-#ifndef _WIN32
+-#endif
  
-+#define SDHC_CAPAB                      0x40
- #define SDHC_HCVER                      0xFE
+ #include "qemu/cutils.h"
+ #include "cpu.h"
+@@ -51,7 +49,6 @@
+ #include "trace-root.h"
  
- static const struct sdhci_t {
-@@ -36,6 +37,20 @@ static uint32_t sdhci_readl(uintptr_t base, uint32_t reg_addr)
-     return qtest_readl(qtest, base + reg_addr);
- }
+ #ifdef CONFIG_FALLOCATE_PUNCH_HOLE
+-#include <fcntl.h>
+ #include <linux/falloc.h>
+ #endif
  
-+static uint64_t sdhci_readq(uintptr_t base, uint32_t reg_addr)
-+{
-+    QTestState *qtest = global_qtest;
-+
-+    return qtest_readq(qtest, base + reg_addr);
-+}
-+
-+static void sdhci_writeq(uintptr_t base, uint32_t reg_addr, uint64_t value)
-+{
-+    QTestState *qtest = global_qtest;
-+
-+    qtest_writeq(qtest, base + reg_addr, value);
-+}
-+
- static void check_specs_version(uintptr_t addr, uint8_t version)
- {
-     uint32_t v;
-@@ -46,6 +61,20 @@ static void check_specs_version(uintptr_t addr, uint8_t version)
-     g_assert_cmpuint(v, ==, version);
- }
+diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
+index feccdb00d3..ac1e15cbbc 100644
+--- a/hw/arm/spitz.c
++++ b/hw/arm/spitz.c
+@@ -29,7 +29,6 @@
+ #include "sysemu/block-backend.h"
+ #include "hw/sysbus.h"
+ #include "exec/address-spaces.h"
+-#include "sysemu/sysemu.h"
+ #include "cpu.h"
  
-+static void check_capab_readonly(uintptr_t addr)
-+{
-+    const uint64_t vrand = 0x123456789abcdef;
-+    uint64_t capab0, capab1;
-+
-+    capab0 = sdhci_readq(addr, SDHC_CAPAB);
-+    g_assert_cmpuint(capab0, !=, vrand);
-+
-+    sdhci_writeq(addr, SDHC_CAPAB, vrand);
-+    capab1 = sdhci_readq(addr, SDHC_CAPAB);
-+    g_assert_cmpuint(capab1, !=, vrand);
-+    g_assert_cmpuint(capab1, ==, capab0);
-+}
-+
- static void test_machine(const void *data)
- {
-     const struct sdhci_t *test = data;
-@@ -53,6 +82,7 @@ static void test_machine(const void *data)
-     global_qtest = qtest_startf("-machine %s -d unimp", test->machine);
+ #undef REG_FMT
+diff --git a/hw/char/xen_console.c b/hw/char/xen_console.c
+index 3643dfe067..5e68326c19 100644
+--- a/hw/char/xen_console.c
++++ b/hw/char/xen_console.c
+@@ -27,7 +27,6 @@
+ #include "hw/hw.h"
+ #include "chardev/char-fe.h"
+ #include "hw/xen/xen_backend.h"
+-#include "qapi/error.h"
  
-     check_specs_version(test->sdhci.addr, test->sdhci.version);
-+    check_capab_readonly(test->sdhci.addr);
+ #include <xen/io/console.h>
  
-     qtest_quit(global_qtest);
- }
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 36c2fb069c..c857f3f934 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -20,7 +20,6 @@
+ #include "sysemu/numa.h"
+ #include "qemu/error-report.h"
+ #include "qemu/cutils.h"
+-#include "sysemu/numa.h"
+ #include "sysemu/qtest.h"
+ 
+ static char *machine_get_accel(Object *obj, Error **errp)
+diff --git a/hw/s390x/css.c b/hw/s390x/css.c
+index f6b5c807cd..e3918db741 100644
+--- a/hw/s390x/css.c
++++ b/hw/s390x/css.c
+@@ -13,7 +13,6 @@
+ #include "qapi/error.h"
+ #include "qapi/visitor.h"
+ #include "hw/qdev.h"
+-#include "qemu/error-report.h"
+ #include "qemu/bitops.h"
+ #include "qemu/error-report.h"
+ #include "exec/address-spaces.h"
+diff --git a/target/openrisc/exception_helper.c b/target/openrisc/exception_helper.c
+index a8a5f69b05..6073a5b21c 100644
+--- a/target/openrisc/exception_helper.c
++++ b/target/openrisc/exception_helper.c
+@@ -21,7 +21,6 @@
+ #include "cpu.h"
+ #include "exec/exec-all.h"
+ #include "exec/helper-proto.h"
+-#include "exec/exec-all.h"
+ #include "exception.h"
+ 
+ void HELPER(exception)(CPUOpenRISCState *env, uint32_t excp)
+diff --git a/tests/vhost-user-test.c b/tests/vhost-user-test.c
+index 4b98018478..e2c89ed376 100644
+--- a/tests/vhost-user-test.c
++++ b/tests/vhost-user-test.c
+@@ -21,7 +21,6 @@
+ #include "libqos/libqos.h"
+ #include "libqos/pci-pc.h"
+ #include "libqos/virtio-pci.h"
+-#include "qapi/error.h"
+ 
+ #include "libqos/malloc-pc.h"
+ #include "hw/virtio/virtio-net.h"
+diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
+index a1cf47e625..af4f01211a 100644
+--- a/util/qemu-sockets.c
++++ b/util/qemu-sockets.c
+@@ -26,7 +26,6 @@
+ #include "qapi/error.h"
+ #include "qemu/sockets.h"
+ #include "qemu/main-loop.h"
+-#include "qapi/clone-visitor.h"
+ #include "qapi/qobject-input-visitor.h"
+ #include "qapi/qobject-output-visitor.h"
+ #include "qapi-visit.h"
+diff --git a/vl.c b/vl.c
+index fc8bd9372f..c1ba52306a 100644
+--- a/vl.c
++++ b/vl.c
+@@ -95,7 +95,6 @@ int main(int argc, char **argv)
+ #include "sysemu/kvm.h"
+ #include "sysemu/hax.h"
+ #include "qapi/qobject-input-visitor.h"
+-#include "qapi/qobject-input-visitor.h"
+ #include "qapi-visit.h"
+ #include "qapi/qmp/qjson.h"
+ #include "qemu/option.h"
 -- 
 2.15.1
 

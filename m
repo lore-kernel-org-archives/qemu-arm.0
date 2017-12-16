@@ -1,116 +1,99 @@
-Received: by 10.223.159.74 with SMTP id f10csp845743wrg;
-        Fri, 15 Dec 2017 12:16:17 -0800 (PST)
-X-Google-Smtp-Source: ACJfBovwk63s+0C0tr2VRdZOttYlxx6sujcBInQhz9gshxsa58kzZn4Oy0nJun5E40o4Fztu24rI
-X-Received: by 10.129.75.5 with SMTP id y5mr7939042ywa.265.1513368977320;
-        Fri, 15 Dec 2017 12:16:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1513368977; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp150543wrg;
+        Fri, 15 Dec 2017 16:14:30 -0800 (PST)
+X-Google-Smtp-Source: ACJfBouwIiatPBAJtKpUYc+jSdWjLYpxNb8WZkHNvoZUXzozPo4douMTC3/J6gl09BMhiAwrkqWG
+X-Received: by 10.37.160.200 with SMTP id i8mr8304615ybm.118.1513383270773;
+        Fri, 15 Dec 2017 16:14:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513383270; cv=none;
         d=google.com; s=arc-20160816;
-        b=FkutoSaNfiaElJ+COHL1yCO/3XNtC5WsIWI6LNbRISyXKosN4kJefmNN6QYj7ryw1n
-         N/rEGGRCYdk8jbTcpuFoEJcrsMjwnUNve8s+2xcswYwDmv4wM8wFvWhRhLYTGAf3i9ZJ
-         32yZKwgMrPoCe74glZDPBvjS5Lxd3GacJTCAnr+nDiBkk/xEwtf/TV9PmnRIP80U27xX
-         1IXNjUM5avIcS/k+pJg2kz2nOBfXAija4QWG6z1aqt7rHzSHS2qV1kxuEdA30tS2QmXR
-         +bxJH8HP0cGbyuQ1fCBq6mCSCDGa7J4A0QAwCE+ISMFDkvg/Nq38K1uCyBQ7KXp+eWK3
-         RITw==
+        b=U6QV4VnaBr/UgQzO4tCIUyKeHx0ibRheo6yDMn5qaICEbSlKS0OZp0+klMBjuBKmws
+         HU+f2PkI9BOvdRn2/yqvEc393bFxJ98jiGNqG/WwCVhhldAvGhK8Vaw3tyJh9fddh1xo
+         5z6kn+L5WRhF7RTrr4+dsUSl98pV27jXyPWRpmz9VR9r3GirQKjhFn9P7BUyvlKz/jF3
+         BS3w7EbyGVVlQsq/XV1KYHTxA9hI8a0zEiq58+goZAO25KuCrjUU1Y0Ws+DcA2pqP5sb
+         nwxJwHfPzkE1759tTiP2fJKn7yCLWII2AI1JxUCqqzmZE77X0zmkrLwIqjy1oZpeZFIV
+         xv1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=Ltdww/+gp0r4ptS4MdWoz+W0vlrHuph9L8o9xxhmLro=;
-        b=qR7dz/F4jBVXFIAwWl/w/LvlDjrL5JChxebOrhKHGsAseisqwzdMRii5ASrQc+KOgF
-         x4d6TrWt0/2zHZMYndUPOq1ONk6k5hKVEf+36mJrA13xwjjgh7mSnObAbGgpoqpHBjyb
-         zLL1r3TVigi/DN6UlbLL8hXiWjNbiWRB+L6KvV8pLAbVi7bpRQMIfGqjUi1hJGCHL/bL
-         Yn2NEv+vE9Fc1PUlj/+r+V+GdElPzoZO8Y18D/cGplYwNYznLuLCCc519/azk5xd3hP7
-         hxjrxyWQGClvhEoQsI82EoVKlSJ+KNfa8EHOhvySOLn0sFFJ/s6JFFOfxSoAeSi046kc
-         mx7g==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=S/7HwejleEQJm0hyEDi92gBafhGIqmEZUISPIlZ218o=;
+        b=QJEkXiIHE4Y+F+6kEXkxwNxcAz3LFQHNfHgegY1iDE934CHu7lU/UmItKGO1rchQF+
+         DYDew+pQb/2s88V+Tbh6LTNkecLSBO4UT6Fp4/k+bjaSR8y32ppLJsYfmToMFSdo5VXj
+         cOE5eVc9X6adNSsQRgqSPJhHynYg4xpizdksczf3KJznlph+1q4gKWjHg3fzt2LZ+1/n
+         weJvuyw5/2ERjW7c6+WCjOkwLWN28Lbg/yXs9c2RjhOOfAX4Zitb1Qul2OvwArUINCvU
+         RU71tZoG4m3+vgsDZ1eSWjK6qkPwbwOjYBtKEtIC6479FmyI7bCgv1gUpirbd4u+ygKU
+         9Wfw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BEFPQQ2q;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mx+FxJck;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s141si1526774ybc.33.2017.12.15.12.16.17
+        by mx.google.com with ESMTPS id l14si1438031ywi.554.2017.12.15.16.14.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 15 Dec 2017 12:16:17 -0800 (PST)
+        Fri, 15 Dec 2017 16:14:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BEFPQQ2q;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mx+FxJck;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:48386 helo=lists.gnu.org)
+Received: from localhost ([::1]:48874 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ePwP2-0007HB-Np
-	for alex.bennee@linaro.org; Fri, 15 Dec 2017 15:16:16 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42047)
+	id 1eQ07a-0004JK-6V
+	for alex.bennee@linaro.org; Fri, 15 Dec 2017 19:14:30 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37125)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePwOs-0007FS-DA
-	for qemu-arm@nongnu.org; Fri, 15 Dec 2017 15:16:08 -0500
+	(envelope-from <alistair23@gmail.com>) id 1eQ07P-0004HP-Gv
+	for qemu-arm@nongnu.org; Fri, 15 Dec 2017 19:14:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePwOq-0002MW-Ez
-	for qemu-arm@nongnu.org; Fri, 15 Dec 2017 15:16:06 -0500
-Received: from mail-qk0-x232.google.com ([2607:f8b0:400d:c09::232]:43386)
+	(envelope-from <alistair23@gmail.com>) id 1eQ07O-0003SG-2I
+	for qemu-arm@nongnu.org; Fri, 15 Dec 2017 19:14:19 -0500
+Received: from mail-wr0-x243.google.com ([2a00:1450:400c:c0c::243]:40377)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePwOj-0002FT-M9; Fri, 15 Dec 2017 15:15:57 -0500
-Received: by mail-qk0-x232.google.com with SMTP id j207so11819533qke.10;
-	Fri, 15 Dec 2017 12:15:57 -0800 (PST)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1eQ07K-0003KF-Hh; Fri, 15 Dec 2017 19:14:14 -0500
+Received: by mail-wr0-x243.google.com with SMTP id q9so9412006wre.7;
+	Fri, 15 Dec 2017 16:14:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=Ltdww/+gp0r4ptS4MdWoz+W0vlrHuph9L8o9xxhmLro=;
-	b=BEFPQQ2qFnCDfkR+LMrep73W2IJ4EKUpclIPcqcSjz8DNMHXJxenSVcWapsIsPbjjk
-	IWQQUPoWHlFZwZve+RRgTsJjX9SLoGOryJU42YT/cUoG+ZS3v05+n/75bq4TLMMrPFEt
-	W1tubafOb3g7lOp5ylZnIAUDU0lIrfuXYOaVchs/t9DP6lg2hOi5t+MoCDY4LlayvrDk
-	leo57ZmjRnC+Qyq0jOR5812HPv6YybNrOskhatw945EOTPbSL8kZaNKWySQ96uPQ5GDG
-	sqCMh1jxgOOr0mYmyAvsSaaGHunbyLkLO0gBQYQacoFMEkY10zgwJG8uie5/hG/xA+dC
-	NRng==
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc:content-transfer-encoding;
+	bh=S/7HwejleEQJm0hyEDi92gBafhGIqmEZUISPIlZ218o=;
+	b=mx+FxJckkpMXB2Zn5OP9MwDF9XlPBi2QlwUDlU1xpLMdjsEhhCu28XMFcYOu2uNZke
+	/rw72RW2LYMfj2M45PRAPWvJq0dIw45zg3STzRfpZ50ima8jLSEhDZSz3eUOzEq2WGiG
+	LvrEhLdNAlbjWoCoNoM8N3iuEQCpUz4xhFrx02ZRV/FWbTAM0TnuBoxnsnrrqKLvhN79
+	UDsWB9ZDw2i+5Exszx5QDgrZiKydbUYfya3EdDh8ZFCzlUq8VcHoJiEtyCYDLuTO8pnI
+	jGqDZdPnKOexulxcerrONc6HnuN4GNLtGJxqpqjcL7eUHbKtq92eKNHjCGWpUM/zpDBb
+	dCxA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=Ltdww/+gp0r4ptS4MdWoz+W0vlrHuph9L8o9xxhmLro=;
-	b=JEt6dJgvjCdj7LYFE0Ow97Bb9+A64Ptw7P7J4DowbxhNtZs44kQLt2FxVPC1YolF48
-	PJfHsYwisEoa1z2ubSTB7bNJ7ZCAmvL5eMOAlSljN+XhJObyF6JwQnWPB9+URvSWRs/f
-	YrdKRuY9u6X344d1zFnYa5qkksJG/wzJBw2Fpd2sUli4CikI/MVaYzFS6myFcqcsXJGJ
-	/arrwWjQ2IT97lFtgt5gDBpxNEiH4t8AECJ/wYbF4gbJlEc1vZlHz0monCRCYBu5jo11
-	GTs6jRM6apTBgZFwZQxyl/hdWK64eL8H1ds7Kgha7BOxzw8TJ28VD1lsERbUWqkQHoYP
-	QTEw==
-X-Gm-Message-State: AKGB3mLIsDb+EeT/p2wzy6l8lzaft6pJ/Yfqb7hsQfNZ+U8J9xdO0MeP
-	wF1iausgWWTkB4Q0mVRHkHc=
-X-Received: by 10.55.198.80 with SMTP id b77mr22140581qkj.138.1513368957027;
-	Fri, 15 Dec 2017 12:15:57 -0800 (PST)
-Received: from [192.168.1.11] ([138.117.48.211])
-	by smtp.gmail.com with ESMTPSA id
-	w39sm4739542qtw.90.2017.12.15.12.15.54
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 15 Dec 2017 12:15:56 -0800 (PST)
-To: Andrey Smirnov <andrew.smirnov@gmail.com>
-References: <20171214145255.31545-1-andrew.smirnov@gmail.com>
-	<20171214145255.31545-13-andrew.smirnov@gmail.com>
-	<c0810d46-60df-2239-fab6-6c1c11f1c274@amsat.org>
-	<CAHQ1cqFAzRSXGsLJOiqiyBHDAwNBuLkFNLocydWii7QEdkdP7Q@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <a9f41d6e-3334-9a41-5aca-1254efd67219@amsat.org>
-Date: Fri, 15 Dec 2017 17:15:53 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.0
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc:content-transfer-encoding;
+	bh=S/7HwejleEQJm0hyEDi92gBafhGIqmEZUISPIlZ218o=;
+	b=oA7rcCtC0StVx9UoionO/pCbD1XkSxI13j8YEGk6MXFe3QS+T1S89VbjcrstzvOy4h
+	bO4KYwoF2H21J+zBkX/EB2GDNGvaShwAqwmQ8MoMVKu8t60/8OSsFEZpvqebcZAOCWkX
+	CApA4AILFipI0hbNmYGk703xO8J7QiQacnbOiHkjIw7+22F9zCTGEh3SQYtIGO8N0YWc
+	ygeILHZyESXBWeH152w9uk0ojXwXgPOQhrLdJDT+/XFivVw50Rks3Ur0qwXMSTGyCwUG
+	rZnjv0QnCw08A80va+9PGBUg9bsKX45+Ovgb3oWg6Qxrb8Id90s6JezpI8NOHAk2NDcS
+	0rgg==
+X-Gm-Message-State: AKGB3mLlIT1UQZj6lTXQ2xlIGRh45DNg58jJiVoYaWeBe6qN9559upNB
+	x9WxhAuqpUY8R1fwPLJKrqzkUuMT9Ye072VQQZM=
+X-Received: by 10.223.163.133 with SMTP id l5mr11711361wrb.83.1513383253384;
+	Fri, 15 Dec 2017 16:14:13 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <CAHQ1cqFAzRSXGsLJOiqiyBHDAwNBuLkFNLocydWii7QEdkdP7Q@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Received: by 10.28.164.69 with HTTP; Fri, 15 Dec 2017 16:13:42 -0800 (PST)
+In-Reply-To: <20171213232025.24503-1-f4bug@amsat.org>
+References: <20171213232025.24503-1-f4bug@amsat.org>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Fri, 15 Dec 2017 16:13:42 -0800
+X-Google-Sender-Auth: rEq7HgyyinT5Wl73sqUllHQYBMI
+Message-ID: <CAKmqyKNR4ECfJL7ymgyBdVSJKPcxFVJ2=svAE0aUQCW5=qHvSg@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::232
-Subject: Re: [Qemu-arm] [PATCH v2 12/15] sdhci: Add i.MX specific subtype of
- SDHCI
+X-Received-From: 2a00:1450:400c:c0c::243
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 00/26] SDCard housekeeping
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -122,401 +105,187 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
-	"open list:ARM" <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Andrey Yurovsky <yurovsky@gmail.com>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+	Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Fam Zheng <famz@redhat.com>, Prasad J Pandit <pjp@fedoraproject.org>,
+	Isaac Lozano <109lozanoi@gmail.com>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	Sai Pavan Boddu <saipava@xilinx.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Clement Deschamps <clement.deschamps@antfield.fr>,
+	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Andrey Yurovsky <yurovsky@gmail.com>,
+	Michael Roth <mdroth@linux.vnet.ibm.com>,
+	Eduardo Habkost <ehabkost@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QOAx8jrukTzt
+X-TUID: SANhqv5FJ/LK
 
-Hi Andrey,
+On Wed, Dec 13, 2017 at 3:19 PM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+rg> wrote:
+> Now that we have a way to write qtest in Python, lets start with a simple=
+ test
+> to perform basic card identification, covering many functions of the sd/s=
+d.c
+> file.
+>
+> [patch 1]
+> When a device is not MMIO-connected but rather plugged into a Bus, it is =
+easier
+> to write tests using QMP.
+> So we add a 'sdbus-command' entry to directly operate on a SD Bus.
+> (Note this method should also work with all other QBus).
+>
+> [patch 2]
+> We write a simple pyqtest, which
+>   - resolve the SDBus QOM path in the test setup()
+>   - verify default values for SD Spec v2.
+>
+> Since have a test, lets run after each patch, so we are sure we don't bre=
+ak things.
+>
+> [patch 4-14,20-23]
+> Add a bunch of trace events
+> [patch 3,11,15-18]
+> Aesthetic changes mostly
+> [other patches]
+> Trivial changes
+>
+> Once this series applied, booting some Linux on a vexpress-a9 with few
+> sd*command traces enabled result in this outputs (which result useful to
+> understand/fix the different SD implementations):
+>
+> 48.687227:sdcard_normal_command         IO_RW_DIRECT/ CMD52 arg 0x00000c0=
+0 (state idle)
+> 48.687233:sdcard_command_response (no response) (state idle)
+> 48.689237:sdcard_normal_command         IO_RW_DIRECT/ CMD52 arg 0x80000c0=
+8 (state idle)
+> 48.689244:sdcard_command_response (no response) (state idle)
+> 48.690877:sdcard_normal_command        GO_IDLE_STATE/ CMD00 arg 0x0000000=
+0 (state idle)
+> 48.690890:sdcard_command_response (no response) (state idle)
+> 48.723486:sdcard_normal_command         SEND_IF_COND/ CMD08 arg 0x000001a=
+a (state idle)
+> 48.723507:sdcard_command_response 00 00 01 aa  (state idle)
+> 48.723886:sdcard_normal_command      IO_SEND_OP_COND/ CMD05 arg 0x0000000=
+0 (state idle)
+> 48.723892:sdcard_command_response (no response) (state idle)
+> 48.724019:sdcard_normal_command      IO_SEND_OP_COND/ CMD05 arg 0x0000000=
+0 (state idle)
+> 48.724023:sdcard_command_response (no response) (state idle)
+> 48.724110:sdcard_normal_command      IO_SEND_OP_COND/ CMD05 arg 0x0000000=
+0 (state idle)
+> 48.724115:sdcard_command_response (no response) (state idle)
+> 48.724178:sdcard_normal_command      IO_SEND_OP_COND/ CMD05 arg 0x0000000=
+0 (state idle)
+> 48.724181:sdcard_command_response (no response) (state idle)
+> 48.724999:sdcard_command_response 00 40 01 20  (state idle)
+> 48.725214:sdcard_app_command         SD_SEND_OP_COND/ACMD41 arg 0x0000000=
+0 (state idle)
+> 48.725225:sdcard_command_response 40 ff ff 00  (state idle)
+> 48.727113:sdcard_normal_command        GO_IDLE_STATE/ CMD00 arg 0x0000000=
+0 (state idle)
+> 48.727125:sdcard_command_response (no response) (state idle)
+> 48.729206:sdcard_normal_command         SEND_IF_COND/ CMD08 arg 0x000001a=
+a (state idle)
+> 48.729213:sdcard_command_response 00 00 01 aa  (state idle)
+> 48.729339:sdcard_command_response 00 00 01 20  (state idle)
+> 48.729412:sdcard_app_command         SD_SEND_OP_COND/ACMD41 arg 0x4030000=
+0 (state idle)
+> 48.729419:sdcard_command_response c0 ff ff 00  (state ready)
+> 48.729786:sdcard_normal_command         ALL_SEND_CID/ CMD02 arg 0x0000000=
+0 (state ready)
+> 48.729797:sdcard_command_response aa 58 59 51 45 4d 55 21 01 de ad be ef =
+00 62 19  (state identification)
+> 48.730825:sdcard_normal_command   SEND_RELATIVE_ADDR/ CMD03 arg 0x0000000=
+0 (state identification)
+> 48.730835:sdcard_command_response 45 67 05 00  (state standby)
+> 48.731221:sdcard_normal_command             SEND_CSD/ CMD09 arg 0x4567000=
+0 (state standby)
+> 48.731228:sdcard_command_response 40 0e 00 32 5b 59 00 00 0d 47 7f 80 0a =
+40 00 00  (state standby)
+> 48.732012:sdcard_normal_command SELECT/DESELECT_CARD/ CMD07 arg 0x4567000=
+0 (state standby)
+> 48.732021:sdcard_command_response 00 00 07 00  (state transfer)
+> 48.732419:sdcard_command_response 00 00 09 20  (state transfer)
+> 48.764983:sdcard_app_command                SEND_SCR/ACMD51 arg 0x0000000=
+0 (state transfer)
+> 48.765000:sdcard_command_response 00 00 09 20  (state sendingdata)
+> 48.766951:sdcard_command_response 00 00 09 20  (state transfer)
+> 48.767159:sdcard_app_command               SD_STATUS/ACMD13 arg 0x0000000=
+0 (state transfer)
+> 48.767168:sdcard_command_response 00 00 09 20  (state sendingdata)
+> 48.966731:sdcard_normal_command  READ_MULTIPLE_BLOCK/ CMD18 arg 0x0000000=
+0 (state transfer)
+> 48.966763:sdcard_command_response 00 00 09 00  (state sendingdata)
+> 48.974869:sdcard_normal_command    STOP_TRANSMISSION/ CMD12 arg 0x0000000=
+0 (state sendingdata)
+> 48.974877:sdcard_command_response 00 00 0b 00  (state transfer)
+> 50.044308:sdcard_normal_command          SEND_STATUS/ CMD13 arg 0x4567000=
+0 (state transfer)
+> 50.044330:sdcard_command_response 00 00 09 00  (state transfer)
+> [...]
+>
+> Regards,
+>
+> Phil.
+>
+> Based-on: 20171213213557.26561-7-f4bug@amsat.org
+>           (QTests: use Python to run complex tests)
 
->> I rather disagree with this patch, however I applied it on top of my
->> current tree and plan to refactor it. But if it is applied before, I can
->> survive :) Not a strong NACK.
->>
-> 
-> Umm, Philippe, I didn't really ask you to refactor my code and I'd
-> really appreciate if you'd engage into a proper review process with me
-> on this patch, instead of just telling me "I don't like the code, but,
-> worry not, I'll bulldoze it away later anyway".
+As this series can't be merged until the Python for Qtest series is
+merged I'm not going to go over this now. Let's wait and see how that
+discussion goes first.
 
-Hey I'm sorry I didn't meant to be rude... reading my comment back I
-don't find it offensive, so we might have english-proxy misunderstanding.
+Alistair
 
-I posted a few series doing quite a lot of modifications in the SDHCI
-code, and instead of having a race "the first merged, the second has
-figure out himself" I offered to rework this patch on top of my series
-and send it to you so you can test it.
-
-I don't plan to 'bulldoze' it, there is no sens because I don't have all
-your setups to test it, I just suggested to 'refactor' it to avoid merge
-conflicts and head-aches.
-
-By "But if it is applied before, I can survive" I meant:
-"if it is applied before [my series get merged], I can survive [to adapt
-my series to fix the resulting merge conflicts]"
-
->> On 12/14/2017 11:52 AM, Andrey Smirnov wrote:
->>> IP block found on several generations of i.MX family does not use
->>> vanilla SDHCI implementation and it comes with a number of quirks.
->>>
->>> Introduce i.MX SDHCI subtype of SDHCI block to add code necessary to
->>> support unmodified Linux guest driver.
->>>
->>> Cc: Peter Maydell <peter.maydell@linaro.org>
->>> Cc: Jason Wang <jasowang@redhat.com>
->>> Cc: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>> Cc: qemu-devel@nongnu.org
->>> Cc: qemu-arm@nongnu.org
->>> Cc: yurovsky@gmail.com
->>> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
->>> Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
->>> ---
->>>  hw/sd/sdhci-internal.h |  19 +++++
->>>  hw/sd/sdhci.c          | 228 ++++++++++++++++++++++++++++++++++++++++++++++++-
->>>  include/hw/sd/sdhci.h  |  14 +++
->>>  3 files changed, 259 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/hw/sd/sdhci-internal.h b/hw/sd/sdhci-internal.h
->>> index 161177cf39..b86ac0791b 100644
->>> --- a/hw/sd/sdhci-internal.h
->>> +++ b/hw/sd/sdhci-internal.h
->>> @@ -85,12 +85,18 @@
->>>
->>>  /* R/W Host control Register 0x0 */
->>>  #define SDHC_HOSTCTL                   0x28
->>> +#define SDHC_CTRL_LED                  0x01
->>>  #define SDHC_CTRL_DMA_CHECK_MASK       0x18
->>>  #define SDHC_CTRL_SDMA                 0x00
->>>  #define SDHC_CTRL_ADMA1_32             0x08
->>>  #define SDHC_CTRL_ADMA2_32             0x10
->>>  #define SDHC_CTRL_ADMA2_64             0x18
->>>  #define SDHC_DMA_TYPE(x)               ((x) & SDHC_CTRL_DMA_CHECK_MASK)
->>> +#define SDHC_CTRL_4BITBUS              0x02
->>> +#define SDHC_CTRL_8BITBUS              0x20
->>> +#define SDHC_CTRL_CDTEST_INS           0x40
->>> +#define SDHC_CTRL_CDTEST_EN            0x80
->>> +
->>>
->>>  /* R/W Power Control Register 0x0 */
->>>  #define SDHC_PWRCON                    0x29
->>> @@ -229,4 +235,17 @@ enum {
->>>
->>>  extern const VMStateDescription sdhci_vmstate;
->>>
->>> +
->>> +#define ESDHC_MIX_CTRL                  0x48
->>> +#define ESDHC_VENDOR_SPEC               0xc0
->>> +#define ESDHC_DLL_CTRL                  0x60
->>> +
->>> +#define ESDHC_TUNING_CTRL               0xcc
->>> +#define ESDHC_TUNE_CTRL_STATUS          0x68
->>> +#define ESDHC_WTMK_LVL                  0x44
->>> +
->>> +#define ESDHC_CTRL_4BITBUS              (0x1 << 1)
->>> +#define ESDHC_CTRL_8BITBUS              (0x2 << 1)
->>> +
->>> +
->>>  #endif
->>> diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
->>> index 6d6a791ee9..758af067f9 100644
->>> --- a/hw/sd/sdhci.c
->>> +++ b/hw/sd/sdhci.c
->>> @@ -265,7 +265,8 @@ static void sdhci_send_command(SDHCIState *s)
->>>              }
->>>          }
->>>
->>> -        if ((s->norintstsen & SDHC_NISEN_TRSCMP) &&
->>> +        if (!(s->quirks & SDHCI_QUIRK_NO_BUSY_IRQ) &&
->>> +            (s->norintstsen & SDHC_NISEN_TRSCMP) &&
->>>              (s->cmdreg & SDHC_CMD_RESPONSE) == SDHC_CMD_RSP_WITH_BUSY) {
->>>              s->norintsts |= SDHC_NIS_TRSCMP;
->>>          }
->>> @@ -1191,6 +1192,8 @@ static void sdhci_initfn(SDHCIState *s)
->>>
->>>      s->insert_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, sdhci_raise_insertion_irq, s);
->>>      s->transfer_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, sdhci_data_transfer, s);
->>> +
->>> +    s->io_ops = &sdhci_mmio_ops;
->>>  }
->>>
->>>  static void sdhci_uninitfn(SDHCIState *s)
->>> @@ -1347,7 +1350,7 @@ static void sdhci_sysbus_realize(DeviceState *dev, Error ** errp)
->>>      s->buf_maxsz = sdhci_get_fifolen(s);
->>>      s->fifo_buffer = g_malloc0(s->buf_maxsz);
->>>      sysbus_init_irq(sbd, &s->irq);
->>> -    memory_region_init_io(&s->iomem, OBJECT(s), &sdhci_mmio_ops, s, "sdhci",
->>> +    memory_region_init_io(&s->iomem, OBJECT(s), s->io_ops, s, "sdhci",
->>>              SDHC_REGISTERS_MAP_SIZE);
->>>      sysbus_init_mmio(sbd, &s->iomem);
->>>  }
->>> @@ -1386,11 +1389,232 @@ static const TypeInfo sdhci_bus_info = {
->>>      .class_init = sdhci_bus_class_init,
->>>  };
->>>
->>> +static uint64_t usdhc_read(void *opaque, hwaddr offset, unsigned size)
->>> +{
->>> +    SDHCIState *s = SYSBUS_SDHCI(opaque);
->>> +    uint32_t ret;
->>> +    uint16_t hostctl;
->>> +
->>> +    switch (offset) {
->>> +    default:
->>> +        return sdhci_read(opaque, offset, size);
->>> +
->>> +    case SDHC_HOSTCTL:
->>> +        /*
->>> +         * For a detailed explanation on the following bit
->>> +         * manipulation code see comments in a similar part of
->>> +         * usdhc_write()
->>> +         */
->>> +        hostctl = SDHC_DMA_TYPE(s->hostctl) << (8 - 3);
->>> +
->>> +        if (s->hostctl & SDHC_CTRL_8BITBUS) {
->>> +            hostctl |= ESDHC_CTRL_8BITBUS;
->>> +        }
->>> +
->>> +        if (s->hostctl & SDHC_CTRL_4BITBUS) {
->>> +            hostctl |= ESDHC_CTRL_4BITBUS;
->>> +        }
->>> +
->>> +        ret  = hostctl;
->>> +        ret |= (uint32_t)s->blkgap << 16;
->>> +        ret |= (uint32_t)s->wakcon << 24;
->>> +
->>> +        break;
->>> +
->>> +    case ESDHC_DLL_CTRL:
->>> +    case ESDHC_TUNE_CTRL_STATUS:
->>> +    case 0x6c:
->>> +    case ESDHC_TUNING_CTRL:
->>> +    case ESDHC_VENDOR_SPEC:
->>> +    case ESDHC_MIX_CTRL:
->>> +    case ESDHC_WTMK_LVL:
->>> +        ret = 0;
->>> +        break;
->>> +    }
->>> +
->>> +    return ret;
->>> +}
->>> +
->>> +static void
->>> +usdhc_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
->>> +{
->>> +    SDHCIState *s = SYSBUS_SDHCI(opaque);
->>> +    uint8_t hostctl;
->>> +    uint32_t value = (uint32_t)val;
->>> +
->>> +    switch (offset) {
->>> +    case ESDHC_DLL_CTRL:
->>> +    case ESDHC_TUNE_CTRL_STATUS:
->>> +    case 0x6c:
->>> +    case ESDHC_TUNING_CTRL:
->>> +    case ESDHC_WTMK_LVL:
->>> +    case ESDHC_VENDOR_SPEC:
->>> +        break;
->>> +
->>> +    case SDHC_HOSTCTL:
->>> +        /*
->>> +         * Here's What ESDHCI has at offset 0x28 (SDHC_HOSTCTL)
->>> +         *
->>> +         *       7         6     5      4      3      2        1      0
->>> +         * |-----------+--------+--------+-----------+----------+---------|
->>> +         * | Card      | Card   | Endian | DATA3     | Data     | Led     |
->>> +         * | Detect    | Detect | Mode   | as Card   | Transfer | Control |
->>> +         * | Signal    | Test   |        | Detection | Width    |         |
->>> +         * | Selection | Level  |        | Pin       |          |         |
->>> +         * |-----------+--------+--------+-----------+----------+---------|
->>> +         *
->>> +         * and 0x29
->>> +         *
->>> +         *  15      10 9    8
->>> +         * |----------+------|
->>> +         * | Reserved | DMA  |
->>> +         * |          | Sel. |
->>> +         * |          |      |
->>> +         * |----------+------|
->>> +         *
->>> +         * and here's what SDCHI spec expects those offsets to be:
->>> +         *
->>> +         * 0x28 (Host Control Register)
->>> +         *
->>> +         *     7        6         5       4  3      2         1        0
->>> +         * |--------+--------+----------+------+--------+----------+---------|
->>> +         * | Card   | Card   | Extended | DMA  | High   | Data     | LED     |
->>> +         * | Detect | Detect | Data     | Sel. | Speed  | Transfer | Control |
->>> +         * | Signal | Test   | Transfer |      | Enable | Width    |         |
->>> +         * | Sel.   | Level  | Width    |      |        |          |         |
->>> +         * |--------+--------+----------+------+--------+----------+---------|
->>> +         *
->>> +         * and 0x29 (Power Control Register)
->>> +         *
->>> +         * |----------------------------------|
->>> +         * | Power Control Register           |
->>> +         * |                                  |
->>> +         * | Description omitted,             |
->>> +         * | since it has no analog in ESDHCI |
->>> +         * |                                  |
->>> +         * |----------------------------------|
->>> +         *
->>> +         * Since offsets 0x2A and 0x2B should be compatible between
->>> +         * both IP specs we only need to reconcile least 16-bit of the
->>> +         * word we've been given.
->>> +         */
->>> +
->>> +        /*
->>> +         * First, save bits 7 6 and 0 since they are identical
->>> +         */
->>> +        hostctl = value & (SDHC_CTRL_LED |
->>> +                           SDHC_CTRL_CDTEST_INS |
->>> +                           SDHC_CTRL_CDTEST_EN);
->>> +        /*
->>> +         * Second, split "Data Transfer Width" from bits 2 and 1 in to
->>> +         * bits 5 and 1
->>> +         */
->>> +        if (value & ESDHC_CTRL_8BITBUS) {
->>> +            hostctl |= SDHC_CTRL_8BITBUS;
->>> +        }
->>> +
->>> +        if (value & ESDHC_CTRL_4BITBUS) {
->>> +            hostctl |= ESDHC_CTRL_4BITBUS;
->>> +        }
->>> +
->>> +        /*
->>> +         * Third, move DMA select from bits 9 and 8 to bits 4 and 3
->>> +         */
->>> +        hostctl |= SDHC_DMA_TYPE(value >> (8 - 3));
->>> +
->>> +        /*
->>> +         * Now place the corrected value into low 16-bit of the value
->>> +         * we are going to give standard SDHCI write function
->>> +         *
->>> +         * NOTE: This transformation should be the inverse of what can
->>> +         * be found in drivers/mmc/host/sdhci-esdhc-imx.c in Linux
->>> +         * kernel
->>> +         */
->>> +        value &= ~UINT16_MAX;
->>> +        value |= hostctl;
->>> +        value |= (uint16_t)s->pwrcon << 8;
->>> +
->>> +        sdhci_write(opaque, offset, value, size);
->>> +        break;
->>> +
->>> +    case ESDHC_MIX_CTRL:
->>> +        /*
->>> +         * So, when SD/MMC stack in Linux tries to write to "Transfer
->>> +         * Mode Register", ESDHC i.MX quirk code will translate it
->>> +         * into a write to ESDHC_MIX_CTRL, so we do the opposite in
->>> +         * order to get where we started
->>> +         *
->>> +         * Note that Auto CMD23 Enable bit is located in a wrong place
->>> +         * on i.MX, but since it is not used by QEMU we do not care.
->>> +         *
->>> +         * We don't want to call sdhci_write(.., SDHC_TRNMOD, ...)
->>> +         * here becuase it will result in a call to
->>> +         * sdhci_send_command(s) which we don't want.
->>> +         *
->>> +         */
->>> +        s->trnmod = value & UINT16_MAX;
->>> +        break;
->>> +    case SDHC_TRNMOD:
->>> +        /*
->>> +         * Similar to above, but this time a write to "Command
->>> +         * Register" will be translated into a 4-byte write to
->>> +         * "Transfer Mode register" where lower 16-bit of value would
->>> +         * be set to zero. So what we do is fill those bits with
->>> +         * cached value from s->trnmod and let the SDHCI
->>> +         * infrastructure handle the rest
->>> +         */
->>> +        sdhci_write(opaque, offset, val | s->trnmod, size);
->>> +        break;
->>> +    case SDHC_BLKSIZE:
->>> +        /*
->>> +         * ESDHCI does not implement "Host SDMA Buffer Boundary", and
->>> +         * Linux driver will try to zero this field out which will
->>> +         * break the rest of SDHCI emulation.
->>> +         *
->>> +         * Linux defaults to maximum possible setting (512K boundary)
->>> +         * and it seems to be the only option that i.MX IP implements,
->>> +         * so we artificially set it to that value.
->>> +         */
->>> +        val |= 0x7 << 12;
->>> +        /* FALLTHROUGH */
->>> +    default:
->>> +        sdhci_write(opaque, offset, val, size);
->>> +        break;
->>> +    }
->>> +}
->>> +
->>> +
->>> +static const MemoryRegionOps usdhc_mmio_ops = {
->>> +    .read = usdhc_read,
->>> +    .write = usdhc_write,
->>> +    .valid = {
->>> +        .min_access_size = 1,
->>> +        .max_access_size = 4,
->>> +        .unaligned = false
->>> +    },
->>> +    .endianness = DEVICE_LITTLE_ENDIAN,
->>> +};
->>
->> I think the usdhc_mmio_ops can be avoided.
->>
-> 
-> OK, care to actually elaborate on this?
-
-We can avoid to keep it in this Arasan SDHCI IP file, see below.
-
->>> +
->>> +static void imx_usdhc_init(Object *obj)
->>> +{
->>> +    SDHCIState *s = SYSBUS_SDHCI(obj);
->>> +
->>> +    s->io_ops = &usdhc_mmio_ops;
->>> +    s->quirks = SDHCI_QUIRK_NO_BUSY_IRQ;
->>> +}
->>> +
->>> +static const TypeInfo imx_usdhc_info = {
->>> +    .name = TYPE_IMX_USDHC,
->>> +    .parent = TYPE_SYSBUS_SDHCI,
->>> +    .instance_init = imx_usdhc_init,
->>> +};
->>
->> there is no need to add yet another device. You can achieve the same
->> using a property bit (like the "pending-insert-quirk" one).
->>
->> I think the correct way is to add a DEFINE_PROP_BIT64("quirks*").
->>
-> 
-> And how's that better? Now, every i.MX user instead of instantiating a
-> uSDCH IP block, which matches what i.MX RM say, would have to instead
-> create SDHCI (confusing) as well as to set an quirk, which means they
-> have to know what SDHCI_QUIRK_NO_BUSY_IRQ means. What's the point of
-> spilling those internal implementation guts all of the place just to
-> avoid re-defining "yet another device"?
-
-I see your point, you are correct, this is easier to model it this way.
-I was more thinking move the uSDCH core in his own file (i.e.
-imx_usdch.c), and keep this file with the Arasan IP implementation only.
-
-So the imx_usdch.c only contains the specific USDHC registers/defines
-and the TYPE_IMX_USDHC device would keep the SDHCI link hidden from the
-user.
-Using other words, the IMX_USDHC device would 'contains' a SDHCI block
-instanciated with the SDHCI_QUIRK_NO_BUSY_IRQ property bit set.
-
-
-Again, I appreciate the quality of the patches you send, and did not
-intend to annoy you this way. I'll try to make some efforts to improve
-my english communication. Please accept my apology.
-
-Regards,
-
-Phil.
-
-> 
-> Thanks,
-> Andrey Smirnov
-> 
+>
+> Philippe Mathieu-Daud=C3=A9 (26):
+>   sdbus: add a QMP command to access a SDBus
+>   sdcard: add Python qtests
+>   sdcard: use ldst API
+>   sdcard: replace fprintf() -> qemu_log_mask()
+>   sdcard: rename sd_set_mode() -> sd_update_mode()
+>   sdcard: add sd_set_mode()
+>   sdcard: add sdcard_set_mode() trace event
+>   sdcard: add sd_set_state()
+>   sdcard: add a sdcard_set_state() trace event
+>   sdcard: use more detailled state/mode trace events
+>   sdcard: use warn_report() instead of fprintf()
+>   sdcard: replace DPRINTF() by trace events
+>   sdcard: add more trace events
+>   sdcard: use qemu_hexbuf_strdup() to trace command response
+>   sdcard: use PW_LEN define instead of '16' magic
+>   sdcard: let cmd_valid_while_locked() returns a bool
+>   sdcard: rename sd_set_REG() functions called by sd_reset() as sd_reset_=
+REG()
+>   sdcard: move Memory Card registers together
+>   sdcard: add DSR register
+>   sdcard: add/use SD_CMD_MAX to check valid SD commands
+>   sdcard: add sd_cmd_abbreviation() to resolve the SD command id
+>   sdcard: reduce sd_cmd traces
+>   sdcard: add ACMD trace events
+>   sdcard: use a 16-bit type for the 16-bit RCA register
+>   sdcard: add/use a SDCardCommandClass enum instead of magic numbers
+>   sdcard: add/use a ccc_spi enum for the commands supported in SPI mode
+>
+>  qapi-schema.json       |  41 ++++
+>  hw/sd/core.c           |  43 ++++
+>  hw/sd/sd.c             | 519 +++++++++++++++++++++++++++++++------------=
+------
+>  stubs/qmp_sdbus.c      |  11 ++
+>  hw/sd/trace-events     |  17 ++
+>  stubs/Makefile.objs    |   1 +
+>  tests/Makefile.include |   2 +
+>  tests/sdcard_tests.py  | 172 ++++++++++++++++
+>  8 files changed, 617 insertions(+), 189 deletions(-)
+>  create mode 100644 stubs/qmp_sdbus.c
+>  create mode 100755 tests/sdcard_tests.py
+>
+> --
+> 2.15.1
+>
+>

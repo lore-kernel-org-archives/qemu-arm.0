@@ -1,79 +1,105 @@
-Received: by 10.223.134.117 with SMTP id 50csp3069236wrw;
-        Tue, 26 Dec 2017 03:56:26 -0800 (PST)
-X-Google-Smtp-Source: ACJfBovmdSFrfD2USu804W3bUk/q/69nEdcRPuvYe+ArpW/zZQAeTuAijGNK947ibjZc34MCg+wK
-X-Received: by 10.129.165.88 with SMTP id c85mr16779611ywh.171.1514289386823;
-        Tue, 26 Dec 2017 03:56:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1514289386; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp1137584wrg;
+        Sat, 16 Dec 2017 16:21:31 -0800 (PST)
+X-Google-Smtp-Source: ACJfBosW/KvB2cKcS8dsmMt+Xctsdsz5bDFKUqhuq4LqBd2M5WSyLRTbrfUok2ufP8RjVYrD3825
+X-Received: by 10.37.75.194 with SMTP id y185mr11032469yba.211.1513470091543;
+        Sat, 16 Dec 2017 16:21:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513470091; cv=none;
         d=google.com; s=arc-20160816;
-        b=r+6YurvLNOwpTbG/lcZkocEEAcXpVVbAtGzANWXyoUtISA9JrsRT0VwHcH8lZk6up8
-         G85afmM1QgicT38IAnU0CGCfvXKrAUw3tnM63Hvhw18dGZabHtag7CB8U6wzr/2fsaVX
-         G7m/DSgOZOuAy3BvGSDeZO/xnDg+q7PyVnm7tcMgWDQUZgztRqtNkoJLmzAICyPyQo2f
-         3XnL52vJVwyRAdcOZ0ZFCultoNqqpyQ5ShskQEynGfU0squ+05L7BMO9pjS2niC/9j2P
-         AE+Jx/+xTVa6aMGSOwl5FMQuq9zTXTGdqflnxkBsdE5P6u2hw/aArrOaQcYzhGkCVISu
-         05lw==
+        b=qQSJaJa5Hf+GIBHDFVsdVEp5rwOOwa4HMEmvsHMWmOGI6VDs142sq1XsnLqEx2AFOr
+         SR263RZat7pIqUo6xWbewLYZ06l+oLHCj1ca45xzgV/nsKXvFiOPmgmzqk8rhMEqsLCt
+         l6IFjpwe01yD3/8Y4k3ngJgz+tdMuAUzMhEHmhfMAexSq+uhY36PehGkASbtYhlGXvTm
+         DgCYhe0lBYQasrxafmXiElN4SVRFkzJw9JCSanAxeJiHAPfGlhSNmqSi6IXlIf6g6CpY
+         GILvNfpWv35doSWIj1iH624MC+yrhh4A0U1yRCSOegs7SA1hyQqvMLaOtRseqOGuTIwO
+         INkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:references:to:mime-version
-         :user-agent:from:date:message-id:arc-authentication-results;
-        bh=BzgQ6lZEmg+UQ01xZrc9sg53sq114636xv2DXBAqnPk=;
-        b=XjhUpDtAOb07vnnSnQQ+sXS5eA/MUc/TMR1/plb9llF1NMmOrqbF+VGL7tbhDy1AX0
-         r1FIPXE9bbhFzpsQM5PAdasakrDgSIDHRFVgw4jGn6ovRfcdUOIoxkzAKAf+EysiLJLF
-         fd7zviMCWC+cBhNvIaStGyVeVh4Q+He73efn7ZhQjN3t6MdeVepj1at1FEGh94LRf2mR
-         IRzjO5r9OVgfJAWoOu0cmAm5F5LLuFutJ/Thj8RBXGvt9GBPXvF7d/KvZUdcdyOfNbrb
-         WbuatgnGmFa8sSfa83sTTG7N7NxO3WPS9a5aWMZ1yqQVEM6mrZq7HiwbXjEKf/Fm9as0
-         AoGw==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=aD+QT8YiO+9NnVsd5eWMkucWyWcil//sm2oNO9g4F68=;
+        b=JIxU1U6qUuLA7RElm9HNhMvq0veKns7vFd1HrbBMMiMUg0h5W8JxoFNYnjUPaRHj8W
+         NHFF/qiE1lwLf0HE9JK7IGNjqF9NjIRNWw+/PaB3ILsUerLdt63P3sKuvYnuU1gNLCTP
+         mW7pwbVi6HwKQaAbmXvOsI3xeOQLifvEJDF4dCIeKR10f5W3fL9aKJDcQhuAbdFPq63V
+         UIcBlRzpKYJr851aZ3UBdgxydw6OJuKVxhzuMd+ZjmFUTi5JwjCaJ+tOflm+a1J0dp7W
+         gxI3i0DB65UU/r259s3h223y69BY6bBslxiN/vRyCbRJQVcU/EopDpAYp7mETW8ekeip
+         kSlA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CgrgZ53M;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l199si5509728ywc.195.2017.12.26.03.56.26
+        by mx.google.com with ESMTPS id f207si1884803ywb.656.2017.12.16.16.21.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 26 Dec 2017 03:56:26 -0800 (PST)
+        Sat, 16 Dec 2017 16:21:31 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37934 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CgrgZ53M;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:52607 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eTnqM-0008RL-Be
-	for alex.bennee@linaro.org; Tue, 26 Dec 2017 06:56:26 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48175)
+	id 1eQMhu-0002SY-U0
+	for alex.bennee@linaro.org; Sat, 16 Dec 2017 19:21:30 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51004)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1eTnqG-0008RC-4P
-	for qemu-arm@nongnu.org; Tue, 26 Dec 2017 06:56:21 -0500
+	(envelope-from <andrew.smirnov@gmail.com>) id 1eQMhk-0002SD-50
+	for qemu-arm@nongnu.org; Sat, 16 Dec 2017 19:21:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1eTnqC-00037j-7K
-	for qemu-arm@nongnu.org; Tue, 26 Dec 2017 06:56:20 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2057 helo=huawei.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <zhaoshenglong@huawei.com>)
-	id 1eTnqB-00034p-Qy; Tue, 26 Dec 2017 06:56:16 -0500
-Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.59])
-	by Forcepoint Email with ESMTP id 0B1E7A14B4D4E;
-	Tue, 26 Dec 2017 19:55:57 +0800 (CST)
-Received: from [127.0.0.1] (10.177.16.142) by DGGEMS408-HUB.china.huawei.com
-	(10.3.19.208) with Microsoft SMTP Server id 14.3.361.1; Tue, 26 Dec 2017
-	19:55:50 +0800
-Message-ID: <5A423867.203@huawei.com>
-Date: Tue, 26 Dec 2017 19:54:15 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+	(envelope-from <andrew.smirnov@gmail.com>) id 1eQMhi-0000ho-4r
+	for qemu-arm@nongnu.org; Sat, 16 Dec 2017 19:21:20 -0500
+Received: from mail-qt0-x22b.google.com ([2607:f8b0:400d:c0d::22b]:38965)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
+	id 1eQMhh-0000hZ-U3; Sat, 16 Dec 2017 19:21:18 -0500
+Received: by mail-qt0-x22b.google.com with SMTP id k19so16278647qtj.6;
+	Sat, 16 Dec 2017 16:21:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=aD+QT8YiO+9NnVsd5eWMkucWyWcil//sm2oNO9g4F68=;
+	b=CgrgZ53MLQcFFCKYClLq/s0lf1upK9y5iwnxitI1zD5KheIPd/Qe+5ts8wf1CZDq2t
+	4bl8MVtZVSviMa53Tw7t2Nw7CfxTzBUxrkMMX8eVCHOgC+JU29hS0l6NlUqaL0xtuDjy
+	nNgflW8/G2UKM4fFHCCEK0FlYpubZAmvYhW7zTeIAPEj4+OONtZSlzza7ri9SCInuRR6
+	shyTkRxFOt+bBVkGEXl3PBvLR1HjSR2DUht5LmaGokxGw+FddOJJEI+vtl03mKWELL7W
+	ohgJGeuotXZ15imtyvax/IpYzRZ6s64wPzAvP6/tsWiy3YmyRkxWQ6clsWyBgS3QH6M+
+	vzQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=aD+QT8YiO+9NnVsd5eWMkucWyWcil//sm2oNO9g4F68=;
+	b=VVnOPab8ew6Oz5CVN5eem2iLoAhK25XFH0MuARuwQMUyAxsdRyMagEcrmRWHlJecMz
+	t+E5LP60Z5BiKC/9tcTdT9gKdFD1bCLtV5vFGUGqp+DeTzL8HesBx6jFoOZq4vglHdEz
+	qqsmTCRe8P+q3SS2R8J6qIGkoqqGry3jZWAEdGllzZg0356/A9u9tpDuV5kMoL+Zzeg5
+	TH3vn9UoXQInwa+tSqM5TvupgQTM1E0iveAloFYeDC+Eppc4uLPt56vaIPhCLwG7hDvJ
+	QrI84vGBh8Cj/jB5NcM2xmwtQuuvTxTTiSotuZAcwuqqtFtftatU3+ZbL7VqBMeBMhHN
+	oXLg==
+X-Gm-Message-State: AKGB3mLPDN/xLoPkIfcSl5gjLFdz46erMdOhqG4EvRzRqep5YbNQFoeQ
+	p2wI7M4E+4Gl7Uav9SS/PPAg/A/NIM6oO/fcssw=
+X-Received: by 10.200.20.152 with SMTP id l24mr29108435qtj.31.1513470076897;
+	Sat, 16 Dec 2017 16:21:16 -0800 (PST)
 MIME-Version: 1.0
-To: Andrew Jones <drjones@redhat.com>
-References: <1513925567-5184-1-git-send-email-zhaoshenglong@huawei.com>
-	<20171226114828.lz3s5qztk6rcm2vi@hawk.localdomain>
-In-Reply-To: <20171226114828.lz3s5qztk6rcm2vi@hawk.localdomain>
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 45.249.212.191
-Subject: Re: [Qemu-arm] [PATCH] Virt: ACPI: fix qemu assert due to
- re-assigned table data address
+Received: by 10.140.40.243 with HTTP; Sat, 16 Dec 2017 16:21:16 -0800 (PST)
+In-Reply-To: <a9f41d6e-3334-9a41-5aca-1254efd67219@amsat.org>
+References: <20171214145255.31545-1-andrew.smirnov@gmail.com>
+	<20171214145255.31545-13-andrew.smirnov@gmail.com>
+	<c0810d46-60df-2239-fab6-6c1c11f1c274@amsat.org>
+	<CAHQ1cqFAzRSXGsLJOiqiyBHDAwNBuLkFNLocydWii7QEdkdP7Q@mail.gmail.com>
+	<a9f41d6e-3334-9a41-5aca-1254efd67219@amsat.org>
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+Date: Sat, 16 Dec 2017 16:21:16 -0800
+Message-ID: <CAHQ1cqGqb7JJsakVtn9DR9szmdfXROqhYxH=_VrUegOKnnX1tQ@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::22b
+Subject: Re: [Qemu-arm] [PATCH v2 12/15] sdhci: Add i.MX specific subtype of
+ SDHCI
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -85,129 +111,455 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, lersek@redhat.com,
-	qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+	"open list:ARM" <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Andrey Yurovsky <yurovsky@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NlZUOMPcHrkH
+X-TUID: W0dkofsflxku
+
+On Fri, Dec 15, 2017 at 12:15 PM, Philippe Mathieu-Daud=C3=A9
+<f4bug@amsat.org> wrote:
+> Hi Andrey,
+>
+>>> I rather disagree with this patch, however I applied it on top of my
+>>> current tree and plan to refactor it. But if it is applied before, I ca=
+n
+>>> survive :) Not a strong NACK.
+>>>
+>>
+>> Umm, Philippe, I didn't really ask you to refactor my code and I'd
+>> really appreciate if you'd engage into a proper review process with me
+>> on this patch, instead of just telling me "I don't like the code, but,
+>> worry not, I'll bulldoze it away later anyway".
+>
+> Hey I'm sorry I didn't meant to be rude... reading my comment back I
+> don't find it offensive, so we might have english-proxy misunderstanding.
+>
+> I posted a few series doing quite a lot of modifications in the SDHCI
+> code, and instead of having a race "the first merged, the second has
+> figure out himself" I offered to rework this patch on top of my series
+> and send it to you so you can test it.
+>
+> I don't plan to 'bulldoze' it, there is no sens because I don't have all
+> your setups to test it, I just suggested to 'refactor' it to avoid merge
+> conflicts and head-aches.
+>
+> By "But if it is applied before, I can survive" I meant:
+> "if it is applied before [my series get merged], I can survive [to adapt
+> my series to fix the resulting merge conflicts]"
+>
+
+OK, gotcha. I think it would be the easiest for both of us to let your
+work get merged first, since you patch is extensive and would warrant
+me re-testing i.MX stuff anyway.
+So how about this: I'll pull i.MX uSDHC patch back into original i.MX7
+submission and by the time it is ready to be merged in, your code will
+hopefully be in the master already, sounds good?
+
+Meanwhile, do you have public git URL for your changes that I can use
+to re-base on top of?
 
 
+>>> On 12/14/2017 11:52 AM, Andrey Smirnov wrote:
+>>>> IP block found on several generations of i.MX family does not use
+>>>> vanilla SDHCI implementation and it comes with a number of quirks.
+>>>>
+>>>> Introduce i.MX SDHCI subtype of SDHCI block to add code necessary to
+>>>> support unmodified Linux guest driver.
+>>>>
+>>>> Cc: Peter Maydell <peter.maydell@linaro.org>
+>>>> Cc: Jason Wang <jasowang@redhat.com>
+>>>> Cc: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>>>> Cc: qemu-devel@nongnu.org
+>>>> Cc: qemu-arm@nongnu.org
+>>>> Cc: yurovsky@gmail.com
+>>>> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>>>> Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
+>>>> ---
+>>>>  hw/sd/sdhci-internal.h |  19 +++++
+>>>>  hw/sd/sdhci.c          | 228 ++++++++++++++++++++++++++++++++++++++++=
+++++++++-
+>>>>  include/hw/sd/sdhci.h  |  14 +++
+>>>>  3 files changed, 259 insertions(+), 2 deletions(-)
+>>>>
+>>>> diff --git a/hw/sd/sdhci-internal.h b/hw/sd/sdhci-internal.h
+>>>> index 161177cf39..b86ac0791b 100644
+>>>> --- a/hw/sd/sdhci-internal.h
+>>>> +++ b/hw/sd/sdhci-internal.h
+>>>> @@ -85,12 +85,18 @@
+>>>>
+>>>>  /* R/W Host control Register 0x0 */
+>>>>  #define SDHC_HOSTCTL                   0x28
+>>>> +#define SDHC_CTRL_LED                  0x01
+>>>>  #define SDHC_CTRL_DMA_CHECK_MASK       0x18
+>>>>  #define SDHC_CTRL_SDMA                 0x00
+>>>>  #define SDHC_CTRL_ADMA1_32             0x08
+>>>>  #define SDHC_CTRL_ADMA2_32             0x10
+>>>>  #define SDHC_CTRL_ADMA2_64             0x18
+>>>>  #define SDHC_DMA_TYPE(x)               ((x) & SDHC_CTRL_DMA_CHECK_MAS=
+K)
+>>>> +#define SDHC_CTRL_4BITBUS              0x02
+>>>> +#define SDHC_CTRL_8BITBUS              0x20
+>>>> +#define SDHC_CTRL_CDTEST_INS           0x40
+>>>> +#define SDHC_CTRL_CDTEST_EN            0x80
+>>>> +
+>>>>
+>>>>  /* R/W Power Control Register 0x0 */
+>>>>  #define SDHC_PWRCON                    0x29
+>>>> @@ -229,4 +235,17 @@ enum {
+>>>>
+>>>>  extern const VMStateDescription sdhci_vmstate;
+>>>>
+>>>> +
+>>>> +#define ESDHC_MIX_CTRL                  0x48
+>>>> +#define ESDHC_VENDOR_SPEC               0xc0
+>>>> +#define ESDHC_DLL_CTRL                  0x60
+>>>> +
+>>>> +#define ESDHC_TUNING_CTRL               0xcc
+>>>> +#define ESDHC_TUNE_CTRL_STATUS          0x68
+>>>> +#define ESDHC_WTMK_LVL                  0x44
+>>>> +
+>>>> +#define ESDHC_CTRL_4BITBUS              (0x1 << 1)
+>>>> +#define ESDHC_CTRL_8BITBUS              (0x2 << 1)
+>>>> +
+>>>> +
+>>>>  #endif
+>>>> diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+>>>> index 6d6a791ee9..758af067f9 100644
+>>>> --- a/hw/sd/sdhci.c
+>>>> +++ b/hw/sd/sdhci.c
+>>>> @@ -265,7 +265,8 @@ static void sdhci_send_command(SDHCIState *s)
+>>>>              }
+>>>>          }
+>>>>
+>>>> -        if ((s->norintstsen & SDHC_NISEN_TRSCMP) &&
+>>>> +        if (!(s->quirks & SDHCI_QUIRK_NO_BUSY_IRQ) &&
+>>>> +            (s->norintstsen & SDHC_NISEN_TRSCMP) &&
+>>>>              (s->cmdreg & SDHC_CMD_RESPONSE) =3D=3D SDHC_CMD_RSP_WITH_=
+BUSY) {
+>>>>              s->norintsts |=3D SDHC_NIS_TRSCMP;
+>>>>          }
+>>>> @@ -1191,6 +1192,8 @@ static void sdhci_initfn(SDHCIState *s)
+>>>>
+>>>>      s->insert_timer =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, sdhci_raise_=
+insertion_irq, s);
+>>>>      s->transfer_timer =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, sdhci_data=
+_transfer, s);
+>>>> +
+>>>> +    s->io_ops =3D &sdhci_mmio_ops;
+>>>>  }
+>>>>
+>>>>  static void sdhci_uninitfn(SDHCIState *s)
+>>>> @@ -1347,7 +1350,7 @@ static void sdhci_sysbus_realize(DeviceState *de=
+v, Error ** errp)
+>>>>      s->buf_maxsz =3D sdhci_get_fifolen(s);
+>>>>      s->fifo_buffer =3D g_malloc0(s->buf_maxsz);
+>>>>      sysbus_init_irq(sbd, &s->irq);
+>>>> -    memory_region_init_io(&s->iomem, OBJECT(s), &sdhci_mmio_ops, s, "=
+sdhci",
+>>>> +    memory_region_init_io(&s->iomem, OBJECT(s), s->io_ops, s, "sdhci"=
+,
+>>>>              SDHC_REGISTERS_MAP_SIZE);
+>>>>      sysbus_init_mmio(sbd, &s->iomem);
+>>>>  }
+>>>> @@ -1386,11 +1389,232 @@ static const TypeInfo sdhci_bus_info =3D {
+>>>>      .class_init =3D sdhci_bus_class_init,
+>>>>  };
+>>>>
+>>>> +static uint64_t usdhc_read(void *opaque, hwaddr offset, unsigned size=
+)
+>>>> +{
+>>>> +    SDHCIState *s =3D SYSBUS_SDHCI(opaque);
+>>>> +    uint32_t ret;
+>>>> +    uint16_t hostctl;
+>>>> +
+>>>> +    switch (offset) {
+>>>> +    default:
+>>>> +        return sdhci_read(opaque, offset, size);
+>>>> +
+>>>> +    case SDHC_HOSTCTL:
+>>>> +        /*
+>>>> +         * For a detailed explanation on the following bit
+>>>> +         * manipulation code see comments in a similar part of
+>>>> +         * usdhc_write()
+>>>> +         */
+>>>> +        hostctl =3D SDHC_DMA_TYPE(s->hostctl) << (8 - 3);
+>>>> +
+>>>> +        if (s->hostctl & SDHC_CTRL_8BITBUS) {
+>>>> +            hostctl |=3D ESDHC_CTRL_8BITBUS;
+>>>> +        }
+>>>> +
+>>>> +        if (s->hostctl & SDHC_CTRL_4BITBUS) {
+>>>> +            hostctl |=3D ESDHC_CTRL_4BITBUS;
+>>>> +        }
+>>>> +
+>>>> +        ret  =3D hostctl;
+>>>> +        ret |=3D (uint32_t)s->blkgap << 16;
+>>>> +        ret |=3D (uint32_t)s->wakcon << 24;
+>>>> +
+>>>> +        break;
+>>>> +
+>>>> +    case ESDHC_DLL_CTRL:
+>>>> +    case ESDHC_TUNE_CTRL_STATUS:
+>>>> +    case 0x6c:
+>>>> +    case ESDHC_TUNING_CTRL:
+>>>> +    case ESDHC_VENDOR_SPEC:
+>>>> +    case ESDHC_MIX_CTRL:
+>>>> +    case ESDHC_WTMK_LVL:
+>>>> +        ret =3D 0;
+>>>> +        break;
+>>>> +    }
+>>>> +
+>>>> +    return ret;
+>>>> +}
+>>>> +
+>>>> +static void
+>>>> +usdhc_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
+>>>> +{
+>>>> +    SDHCIState *s =3D SYSBUS_SDHCI(opaque);
+>>>> +    uint8_t hostctl;
+>>>> +    uint32_t value =3D (uint32_t)val;
+>>>> +
+>>>> +    switch (offset) {
+>>>> +    case ESDHC_DLL_CTRL:
+>>>> +    case ESDHC_TUNE_CTRL_STATUS:
+>>>> +    case 0x6c:
+>>>> +    case ESDHC_TUNING_CTRL:
+>>>> +    case ESDHC_WTMK_LVL:
+>>>> +    case ESDHC_VENDOR_SPEC:
+>>>> +        break;
+>>>> +
+>>>> +    case SDHC_HOSTCTL:
+>>>> +        /*
+>>>> +         * Here's What ESDHCI has at offset 0x28 (SDHC_HOSTCTL)
+>>>> +         *
+>>>> +         *       7         6     5      4      3      2        1     =
+ 0
+>>>> +         * |-----------+--------+--------+-----------+----------+----=
+-----|
+>>>> +         * | Card      | Card   | Endian | DATA3     | Data     | Led=
+     |
+>>>> +         * | Detect    | Detect | Mode   | as Card   | Transfer | Con=
+trol |
+>>>> +         * | Signal    | Test   |        | Detection | Width    |    =
+     |
+>>>> +         * | Selection | Level  |        | Pin       |          |    =
+     |
+>>>> +         * |-----------+--------+--------+-----------+----------+----=
+-----|
+>>>> +         *
+>>>> +         * and 0x29
+>>>> +         *
+>>>> +         *  15      10 9    8
+>>>> +         * |----------+------|
+>>>> +         * | Reserved | DMA  |
+>>>> +         * |          | Sel. |
+>>>> +         * |          |      |
+>>>> +         * |----------+------|
+>>>> +         *
+>>>> +         * and here's what SDCHI spec expects those offsets to be:
+>>>> +         *
+>>>> +         * 0x28 (Host Control Register)
+>>>> +         *
+>>>> +         *     7        6         5       4  3      2         1      =
+  0
+>>>> +         * |--------+--------+----------+------+--------+----------+-=
+--------|
+>>>> +         * | Card   | Card   | Extended | DMA  | High   | Data     | =
+LED     |
+>>>> +         * | Detect | Detect | Data     | Sel. | Speed  | Transfer | =
+Control |
+>>>> +         * | Signal | Test   | Transfer |      | Enable | Width    | =
+        |
+>>>> +         * | Sel.   | Level  | Width    |      |        |          | =
+        |
+>>>> +         * |--------+--------+----------+------+--------+----------+-=
+--------|
+>>>> +         *
+>>>> +         * and 0x29 (Power Control Register)
+>>>> +         *
+>>>> +         * |----------------------------------|
+>>>> +         * | Power Control Register           |
+>>>> +         * |                                  |
+>>>> +         * | Description omitted,             |
+>>>> +         * | since it has no analog in ESDHCI |
+>>>> +         * |                                  |
+>>>> +         * |----------------------------------|
+>>>> +         *
+>>>> +         * Since offsets 0x2A and 0x2B should be compatible between
+>>>> +         * both IP specs we only need to reconcile least 16-bit of th=
+e
+>>>> +         * word we've been given.
+>>>> +         */
+>>>> +
+>>>> +        /*
+>>>> +         * First, save bits 7 6 and 0 since they are identical
+>>>> +         */
+>>>> +        hostctl =3D value & (SDHC_CTRL_LED |
+>>>> +                           SDHC_CTRL_CDTEST_INS |
+>>>> +                           SDHC_CTRL_CDTEST_EN);
+>>>> +        /*
+>>>> +         * Second, split "Data Transfer Width" from bits 2 and 1 in t=
+o
+>>>> +         * bits 5 and 1
+>>>> +         */
+>>>> +        if (value & ESDHC_CTRL_8BITBUS) {
+>>>> +            hostctl |=3D SDHC_CTRL_8BITBUS;
+>>>> +        }
+>>>> +
+>>>> +        if (value & ESDHC_CTRL_4BITBUS) {
+>>>> +            hostctl |=3D ESDHC_CTRL_4BITBUS;
+>>>> +        }
+>>>> +
+>>>> +        /*
+>>>> +         * Third, move DMA select from bits 9 and 8 to bits 4 and 3
+>>>> +         */
+>>>> +        hostctl |=3D SDHC_DMA_TYPE(value >> (8 - 3));
+>>>> +
+>>>> +        /*
+>>>> +         * Now place the corrected value into low 16-bit of the value
+>>>> +         * we are going to give standard SDHCI write function
+>>>> +         *
+>>>> +         * NOTE: This transformation should be the inverse of what ca=
+n
+>>>> +         * be found in drivers/mmc/host/sdhci-esdhc-imx.c in Linux
+>>>> +         * kernel
+>>>> +         */
+>>>> +        value &=3D ~UINT16_MAX;
+>>>> +        value |=3D hostctl;
+>>>> +        value |=3D (uint16_t)s->pwrcon << 8;
+>>>> +
+>>>> +        sdhci_write(opaque, offset, value, size);
+>>>> +        break;
+>>>> +
+>>>> +    case ESDHC_MIX_CTRL:
+>>>> +        /*
+>>>> +         * So, when SD/MMC stack in Linux tries to write to "Transfer
+>>>> +         * Mode Register", ESDHC i.MX quirk code will translate it
+>>>> +         * into a write to ESDHC_MIX_CTRL, so we do the opposite in
+>>>> +         * order to get where we started
+>>>> +         *
+>>>> +         * Note that Auto CMD23 Enable bit is located in a wrong plac=
+e
+>>>> +         * on i.MX, but since it is not used by QEMU we do not care.
+>>>> +         *
+>>>> +         * We don't want to call sdhci_write(.., SDHC_TRNMOD, ...)
+>>>> +         * here becuase it will result in a call to
+>>>> +         * sdhci_send_command(s) which we don't want.
+>>>> +         *
+>>>> +         */
+>>>> +        s->trnmod =3D value & UINT16_MAX;
+>>>> +        break;
+>>>> +    case SDHC_TRNMOD:
+>>>> +        /*
+>>>> +         * Similar to above, but this time a write to "Command
+>>>> +         * Register" will be translated into a 4-byte write to
+>>>> +         * "Transfer Mode register" where lower 16-bit of value would
+>>>> +         * be set to zero. So what we do is fill those bits with
+>>>> +         * cached value from s->trnmod and let the SDHCI
+>>>> +         * infrastructure handle the rest
+>>>> +         */
+>>>> +        sdhci_write(opaque, offset, val | s->trnmod, size);
+>>>> +        break;
+>>>> +    case SDHC_BLKSIZE:
+>>>> +        /*
+>>>> +         * ESDHCI does not implement "Host SDMA Buffer Boundary", and
+>>>> +         * Linux driver will try to zero this field out which will
+>>>> +         * break the rest of SDHCI emulation.
+>>>> +         *
+>>>> +         * Linux defaults to maximum possible setting (512K boundary)
+>>>> +         * and it seems to be the only option that i.MX IP implements=
+,
+>>>> +         * so we artificially set it to that value.
+>>>> +         */
+>>>> +        val |=3D 0x7 << 12;
+>>>> +        /* FALLTHROUGH */
+>>>> +    default:
+>>>> +        sdhci_write(opaque, offset, val, size);
+>>>> +        break;
+>>>> +    }
+>>>> +}
+>>>> +
+>>>> +
+>>>> +static const MemoryRegionOps usdhc_mmio_ops =3D {
+>>>> +    .read =3D usdhc_read,
+>>>> +    .write =3D usdhc_write,
+>>>> +    .valid =3D {
+>>>> +        .min_access_size =3D 1,
+>>>> +        .max_access_size =3D 4,
+>>>> +        .unaligned =3D false
+>>>> +    },
+>>>> +    .endianness =3D DEVICE_LITTLE_ENDIAN,
+>>>> +};
+>>>
+>>> I think the usdhc_mmio_ops can be avoided.
+>>>
+>>
+>> OK, care to actually elaborate on this?
+>
+> We can avoid to keep it in this Arasan SDHCI IP file, see below.
+>
+>>>> +
+>>>> +static void imx_usdhc_init(Object *obj)
+>>>> +{
+>>>> +    SDHCIState *s =3D SYSBUS_SDHCI(obj);
+>>>> +
+>>>> +    s->io_ops =3D &usdhc_mmio_ops;
+>>>> +    s->quirks =3D SDHCI_QUIRK_NO_BUSY_IRQ;
+>>>> +}
+>>>> +
+>>>> +static const TypeInfo imx_usdhc_info =3D {
+>>>> +    .name =3D TYPE_IMX_USDHC,
+>>>> +    .parent =3D TYPE_SYSBUS_SDHCI,
+>>>> +    .instance_init =3D imx_usdhc_init,
+>>>> +};
+>>>
+>>> there is no need to add yet another device. You can achieve the same
+>>> using a property bit (like the "pending-insert-quirk" one).
+>>>
+>>> I think the correct way is to add a DEFINE_PROP_BIT64("quirks*").
+>>>
+>>
+>> And how's that better? Now, every i.MX user instead of instantiating a
+>> uSDCH IP block, which matches what i.MX RM say, would have to instead
+>> create SDHCI (confusing) as well as to set an quirk, which means they
+>> have to know what SDHCI_QUIRK_NO_BUSY_IRQ means. What's the point of
+>> spilling those internal implementation guts all of the place just to
+>> avoid re-defining "yet another device"?
+>
+> I see your point, you are correct, this is easier to model it this way.
+> I was more thinking move the uSDCH core in his own file (i.e.
+> imx_usdch.c), and keep this file with the Arasan IP implementation only.
+>
+> So the imx_usdch.c only contains the specific USDHC registers/defines
+> and the TYPE_IMX_USDHC device would keep the SDHCI link hidden from the
+> user.
+> Using other words, the IMX_USDHC device would 'contains' a SDHCI block
+> instanciated with the SDHCI_QUIRK_NO_BUSY_IRQ property bit set.
+>
 
-On 2017/12/26 19:48, Andrew Jones wrote:
-> On Fri, Dec 22, 2017 at 02:52:47PM +0800, Shannon Zhao wrote:
->> acpi_data_push uses g_array_set_size to resize the memory size. If there is no
->> enough contiguous memory, the address will be changed. If we use the old value,
->> it will assert.
->> qemu-kvm: hw/acpi/bios-linker-loader.c:214: bios_linker_loader_add_checksum:
->> Assertion `start_offset < file->blob->len' failed.`
->>
->> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
->> ---
->>  hw/arm/virt-acpi-build.c | 18 +++++++++++-------
->>  1 file changed, 11 insertions(+), 7 deletions(-)
->>
->> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->> index 3d78ff6..5901142 100644
->> --- a/hw/arm/virt-acpi-build.c
->> +++ b/hw/arm/virt-acpi-build.c
->> @@ -453,6 +453,7 @@ build_spcr(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>      AcpiSerialPortConsoleRedirection *spcr;
->>      const MemMapEntry *uart_memmap = &vms->memmap[VIRT_UART];
->>      int irq = vms->irqmap[VIRT_UART] + ARM_SPI_BASE;
->> +    int spcr_start = table_data->len;
->>  
->>      spcr = acpi_data_push(table_data, sizeof(*spcr));
->>  
->> @@ -476,8 +477,8 @@ build_spcr(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>      spcr->pci_device_id = 0xffff;  /* PCI Device ID: not a PCI device */
->>      spcr->pci_vendor_id = 0xffff;  /* PCI Vendor ID: not a PCI device */
->>  
->> -    build_header(linker, table_data, (void *)spcr, "SPCR", sizeof(*spcr), 2,
->> -                 NULL, NULL);
->> +    build_header(linker, table_data, (void *)(table_data->data + spcr_start),
->> +                 "SPCR", table_data->len - spcr_start, 2, NULL, NULL);
->>  }
-> 
-> We don't need to change build_spcr(), as acpi_data_push() is only called
-> once, so spcr == new table_data->data + old table_data->len and new
-> table_data->len - spcr == sizeof(*spcr) (the size used in the only
-> acpi_data_push() call)
-> 
->>  
->>  static void
->> @@ -512,8 +513,8 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>          mem_base += numa_info[i].node_mem;
->>      }
->>  
->> -    build_header(linker, table_data, (void *)srat, "SRAT",
->> -                 table_data->len - srat_start, 3, NULL, NULL);
->> +    build_header(linker, table_data, (void *)(table_data->data + srat_start),
->> +                 "SRAT", table_data->len - srat_start, 3, NULL, NULL);
-> 
-> Yes, we need this fix, as there are many acpi_data_push() calls in this
-> function. I guess this was the table that triggered the assert.
-> 
->>  }
->>  
->>  static void
->> @@ -522,6 +523,7 @@ build_mcfg(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>      AcpiTableMcfg *mcfg;
->>      const MemMapEntry *memmap = vms->memmap;
->>      int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
->> +    int mcfg_start = table_data->len;
->>  
->>      mcfg = acpi_data_push(table_data, len);
->>      mcfg->allocation[0].address = cpu_to_le64(memmap[VIRT_PCIE_ECAM].base);
->> @@ -532,7 +534,8 @@ build_mcfg(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>      mcfg->allocation[0].end_bus_number = (memmap[VIRT_PCIE_ECAM].size
->>                                            / PCIE_MMCFG_SIZE_MIN) - 1;
->>  
->> -    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
->> +    build_header(linker, table_data, (void *)(table_data->data + mcfg_start),
->> +                 "MCFG", len, 1, NULL, NULL);
->>  }
-> 
-> No need to change this one.
-> 
->>  
->>  /* GTDT */
->> @@ -651,6 +654,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>  static void build_fadt(GArray *table_data, BIOSLinker *linker,
->>                         VirtMachineState *vms, unsigned dsdt_tbl_offset)
->>  {
->> +    int fadt_start = table_data->len;
->>      AcpiFadtDescriptorRev5_1 *fadt = acpi_data_push(table_data, sizeof(*fadt));
->>      unsigned xdsdt_entry_offset = (char *)&fadt->x_dsdt - table_data->data;
->>      uint16_t bootflags;
->> @@ -681,8 +685,8 @@ static void build_fadt(GArray *table_data, BIOSLinker *linker,
->>          ACPI_BUILD_TABLE_FILE, xdsdt_entry_offset, sizeof(fadt->x_dsdt),
->>          ACPI_BUILD_TABLE_FILE, dsdt_tbl_offset);
->>  
->> -    build_header(linker, table_data,
->> -                 (void *)fadt, "FACP", sizeof(*fadt), 5, NULL, NULL);
->> +    build_header(linker, table_data, (void *)(table_data->data + fadt_start),
->> +                 "FACP", table_data->len - fadt_start, 5, NULL, NULL);
->>  }
-> 
-> No need to change this one either.
-> 
->>  
->>  /* DSDT */
->> -- 
->> 2.0.4
->>
->>
-> 
-> Please respin only changing the one that needs the fix.
-> 
-Hi Andrew,
+First, question is due to my ignorance, what's "Arasan"/"Arasan IP"
+you keep referring to? I am not familiar with this term and can't seem
+to find any references to it latest QEMU master.
 
-Thanks for your comments. What you said is right that only the
-build_srat needs to be fixed but I thought we need to unify the style
-and avoid new issues if add some acpi_data_push in other functions in
-the future.
+Second, I'd love to move i.MX code into a separate file, but I wasn't
+able to because a number of uSDHC registers are shadowing similar
+registers in SDHCI, so I needed to "intercept" those writes first,
+readjust the data to be laid out properly, and then pass it on to the
+original SDCHI implementation. I couldn't figure out a way how to do
+that better than just calling sdhc_write()/sdhc_read() directly, do
+you have better ideas/suggestions?
+
+>
+> Again, I appreciate the quality of the patches you send, and did not
+> intend to annoy you this way. I'll try to make some efforts to improve
+> my english communication. Please accept my apology.
+>
+
+No worries. It was a simple misunderstanding. Let's get back to
+talking about code :-)
 
 Thanks,
--- 
-Shannon
-
+Andrey Smirnov

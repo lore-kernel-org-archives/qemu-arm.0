@@ -1,99 +1,99 @@
-Received: by 10.223.159.74 with SMTP id f10csp2994473wrg;
-        Mon, 18 Dec 2017 10:47:58 -0800 (PST)
-X-Google-Smtp-Source: ACJfBos2z68i8yetYOC+gGukH4eHQUBVoeyZwXPfCwd2N8dKwtrJclrM/pnW3v933AvPNN7eHhlJ
-X-Received: by 10.37.177.39 with SMTP id g39mr597108ybj.415.1513622878497;
-        Mon, 18 Dec 2017 10:47:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1513622878; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp2997859wrg;
+        Mon, 18 Dec 2017 10:51:48 -0800 (PST)
+X-Google-Smtp-Source: ACJfBovHIn9usTXaq+cTxJ8BZsKkzCFrAFFI+rnXS/uXqqkIy8LkgLlw/1kP/JmwBUBvAG/QpcLY
+X-Received: by 10.37.172.76 with SMTP id r12mr644722ybd.282.1513623108333;
+        Mon, 18 Dec 2017 10:51:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513623108; cv=none;
         d=google.com; s=arc-20160816;
-        b=cNWHEUgyBgWN8mV0CrXEUsz9blAZFND5yvK24JC3+Dy0IP3mH84uHwdGa4drZBpc7e
-         SV+vVQ73/ovd61cw2nJ3k9z7SVyn5faR6mOQGOqanmmlH3tXDKVWI6eybQcNhaJHqNiA
-         RGCP+FyeZw5dsgHahPYCLLYfDp6MifqgyC4hztE5o2mHwtm1YRqvl7UARKJbdMkOzDnD
-         hIe6ffUalqvRUCl8zqhoE2otJ/82SMCoa9G0NXITwYddAFVuK1c3ly1FVXqOkjqOdU6y
-         jYUO5sD9JvIPgi+tq4e1CPiJIgNlMWj8J3eDyW2Mu150gUxstcD7O6bgCR7qh8Czakex
-         ezkQ==
+        b=V2GA+LiHW9QR6r+5Iux7k4BSQnZGu/PTQWC2rYmHDx/WQfKpEcNi2h6eUzdjUvw7KA
+         psodpY8K8SNY/vzDa2G+TfH1rsPvOEsLcVy86b4Jb7My774SzKW1hDHTVT5YAPLOSX3i
+         gzkTFrMU5heu84H7WPd063V2T9VDPPq/fANqtbSr2fh/UGrbAwrP2A6VJVW86XNJN1iA
+         0rVuBevr+Ly+DplGZAdjUem26HJr3/U45+ZSItOrs01EQewfKuh4MtG+JVlhdSd1M/l9
+         TTlx5lNdUI51/CRH3bRYqq+ylSUEHIRoFZBZmtMjLCUHAgn5IJAbttd1Z5A1YxZk+ARh
+         Gevg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=B9w/xv6dl+dsoGKHoDlcAQW8Ls7nRo+YPhDgGizIB2U=;
-        b=LKzAsnnkBuDo9tnd4Gfpc2hJn/xn8kiEtQ3IWFYKLpx0qaHbEkdY372SFZo3ldRyNL
-         U04uYvcH2ZlghTWKw7XH81vNnF7MbbubvD4gSaPCritOV9GpKuR6CwJ62uzVF5BZNoie
-         q74W1IyWOYAwRTX46ZR08h6VvpVj6wXOcrHhQealpzou8FcWuxDHoM6WuXbJZMvmfrSO
-         VdLa23hIkp0N55ZdHba9deMv+1qak9X0m//Lk4zYQbwMSC8n9w7X2X4S0aGRWU4zw8u9
-         n1b+vuheGcXB3Cb1k3M9x4qCEzZlLsO+CZnuPYvRqJerCBp0qH9pOk7hFf8hAsuYPuBA
-         Jh8g==
+        bh=ZcsLWJR9s9Z/s+Guhqhn6UX16Gk3jGYweos2BoYqHw0=;
+        b=1GgeaIvdozPUJEFLvJg357WDFLU3oPM54Qd+0Web9E5rYzMdE3oT2c8EcJwggIF/hG
+         plG7+It6uepWUhVkq74Egz5sPTB6Zttk4Ir07xh078IaQtkQmwuSxZjnP6CfoUwp7jsB
+         ujp1wtf+vsFsHJVewtHpMpGSQRN80COI9kzuG9DkF3/2RGPmKD1APNgJ3zqLWUbh1wWt
+         oYVfnBPFfMjT+zHcTFSJQ9+VjQ7pei2zISaZ4VYJSOMiUBcu0gkxolGsjNyxbxZ67t/B
+         cgedEfdJkLzxEpvam2I4VMXAtNzr+omS/IcB9l2//Jgsdn6IGRFIec6g6gqwVl6EuSZw
+         MJtw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=AS/hvW+w;
+       dkim=fail header.i=@linaro.org header.s=google header.b=BVnIZh9u;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q1si2528643ywj.56.2017.12.18.10.47.58
+        by mx.google.com with ESMTPS id f5si2589253ywi.149.2017.12.18.10.51.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 18 Dec 2017 10:47:58 -0800 (PST)
+        Mon, 18 Dec 2017 10:51:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=AS/hvW+w;
+       dkim=fail header.i=@linaro.org header.s=google header.b=BVnIZh9u;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53107 helo=lists.gnu.org)
+Received: from localhost ([::1]:53735 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eR0SD-0005BN-Ra
-	for alex.bennee@linaro.org; Mon, 18 Dec 2017 13:47:57 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55687)
+	id 1eR0Vv-0001IA-Of
+	for alex.bennee@linaro.org; Mon, 18 Dec 2017 13:51:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56127)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1eQzUS-0008CD-0u
-	for qemu-arm@nongnu.org; Mon, 18 Dec 2017 12:46:14 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1eQzUm-00004r-MP
+	for qemu-arm@nongnu.org; Mon, 18 Dec 2017 12:46:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1eQzUQ-000201-6K
-	for qemu-arm@nongnu.org; Mon, 18 Dec 2017 12:46:12 -0500
-Received: from mail-pl0-x244.google.com ([2607:f8b0:400e:c01::244]:36559)
+	(envelope-from <richard.henderson@linaro.org>) id 1eQzUl-0002P1-Br
+	for qemu-arm@nongnu.org; Mon, 18 Dec 2017 12:46:32 -0500
+Received: from mail-pg0-x241.google.com ([2607:f8b0:400e:c05::241]:35198)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1eQzUP-0001xx-TQ
-	for qemu-arm@nongnu.org; Mon, 18 Dec 2017 12:46:10 -0500
-Received: by mail-pl0-x244.google.com with SMTP id b12so5234071plm.3
-	for <qemu-arm@nongnu.org>; Mon, 18 Dec 2017 09:46:09 -0800 (PST)
+	id 1eQzUl-0002Nm-4B
+	for qemu-arm@nongnu.org; Mon, 18 Dec 2017 12:46:31 -0500
+Received: by mail-pg0-x241.google.com with SMTP id q20so9444822pgv.2
+	for <qemu-arm@nongnu.org>; Mon, 18 Dec 2017 09:46:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=B9w/xv6dl+dsoGKHoDlcAQW8Ls7nRo+YPhDgGizIB2U=;
-	b=AS/hvW+wQGZ7T1x5egFaHVGg31uyBicf4pApqN41rVHsepYAfXnh4nYbtxHMODa7gA
-	TN8XUu8Yptuc57Gk6tQmdzTMuy3AZkUqU1ZgYMvuqQqBvxJb8G7UGKDICOZHW2v1U6nr
-	SO71ddve34BnGkyZr+NcsApHfN5ZpZZM+TZ+Y=
+	bh=ZcsLWJR9s9Z/s+Guhqhn6UX16Gk3jGYweos2BoYqHw0=;
+	b=BVnIZh9uEK9fHJyR8NJySHlHo4MFGfJlzf7nR+Y78ASS9/Z5WbQOzuR8vL/7fTxs8I
+	QfT1pgkaIqWeZOkl5AMjq87p8tDHlOLk7qSIZqYfHJsi31J09OeV8cBEBEEc4VKT10kV
+	A5EureNlLIhYJMhQrOer0urk3q8yXu0DPVa6w=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=B9w/xv6dl+dsoGKHoDlcAQW8Ls7nRo+YPhDgGizIB2U=;
-	b=U3Nzr339g3gAnlzdk0r6YdRmOpiPVIeH7f31q3DUy1l+V+uAXRITrsFNPH+zuHwNOw
-	IgQA2q13JpRIOL5TnQjpOZyelTHC5hpppfNBrzMWVhgMfb9xKrqA86haAj1h+kTi1efg
-	LomxpeRKrOtl0iT2MCcxlJ5gDGXYubhiZMsN22PelovcWGx/wrTTUYhrnuwEY8/GDwVi
-	BzMYkOihC2s3ZI+znqkbqjyvwQQyuNPzaNqGxoM4o7laNWJB64rjaAkO/OBWEjysj8Sw
-	Yd3aol4fSaIhfh58CEdgek0/KmD9vFNvCVlNo/+vD2+XoFDx+HxYyQeI4tDPY49WtuHR
-	O3ig==
-X-Gm-Message-State: AKGB3mKtbWL33iCCbkYmnVnpXTo1SaByHl/L89V+T8NcEF8VXLEP2rXj
-	22QCEVUvF6gla1z+doj5mgnYKg==
-X-Received: by 10.84.209.136 with SMTP id y8mr442838plh.439.1513619168832;
-	Mon, 18 Dec 2017 09:46:08 -0800 (PST)
+	bh=ZcsLWJR9s9Z/s+Guhqhn6UX16Gk3jGYweos2BoYqHw0=;
+	b=kFwfupkEqlADmGNvuQiaeOpV/HBy+H9F1LRMqnQbw0TsHZL4Sue8sS5EhTqqFi21FJ
+	PUM7ybI45GVKojyMZWRbUl7I2DwGPXx84ya+h0+5CICTO2mXhVFrXu1qfVswFznBZuk9
+	r1r7ozBa0SFoTD1jPc3+QZLMRXtldhXPcpH2a+EY5eeQ3HlYDwEvUjaRn1ISZPaXsO/J
+	Q5KqQkQUA3VF5xiC0ANS2IHO0YwwFcssuWhBxVAENVQERRUNv5VDMNSnF4o3qwmxwITe
+	vZAsmZB2dyQTQkT4zg82WwBmseXv/412s2anJe33cIAdlmWssTEnu2rrRPlOEzuOt6ww
+	fGSA==
+X-Gm-Message-State: AKGB3mJe+XGKTFiI712Q3+XvSnfccto9T9sZoVHi5W+YA3Vylt0trXBy
+	vpskNAJj4LTFXpoIdmZWUfD1NA==
+X-Received: by 10.98.51.6 with SMTP id z6mr502052pfz.34.1513619190092;
+	Mon, 18 Dec 2017 09:46:30 -0800 (PST)
 Received: from cloudburst.twiddle.net (174-21-7-63.tukw.qwest.net.
 	[174.21.7.63]) by smtp.gmail.com with ESMTPSA id
-	t84sm26209657pfe.160.2017.12.18.09.46.07
+	t84sm26209657pfe.160.2017.12.18.09.46.28
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 18 Dec 2017 09:46:07 -0800 (PST)
+	Mon, 18 Dec 2017 09:46:29 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Mon, 18 Dec 2017 09:45:38 -0800
-Message-Id: <20171218174552.18871-10-richard.henderson@linaro.org>
+Date: Mon, 18 Dec 2017 09:45:52 -0800
+Message-Id: <20171218174552.18871-24-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.14.3
 In-Reply-To: <20171218174552.18871-1-richard.henderson@linaro.org>
 References: <20171218174552.18871-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c01::244
-Subject: [Qemu-arm] [PATCH 09/23] target/arm: Handle SVE registers when
- using clear_vec_high
+X-Received-From: 2607:f8b0:400e:c05::241
+Subject: [Qemu-arm] [PATCH 23/23] target/arm: Implement SVE Element Count
+ Group, register destinations
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,451 +108,185 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0313bBHaHh4J
-
-When storing to an AdvSIMD FP register, all of the high
-bits of the SVE register are zeroed.  Therefore, call it
-more often with is_q as a parameter.
+X-TUID: 3P3vh/JzizZI
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate-a64.c | 157 +++++++++++++++------------------------------
- 1 file changed, 51 insertions(+), 106 deletions(-)
+ target/arm/translate-sve.c | 103 +++++++++++++++++++++++++++++++++++++++++++++
+ target/arm/sve.def         |  18 ++++++++
+ 2 files changed, 121 insertions(+)
 
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index b951045820..9e15a4b1ae 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -533,17 +533,19 @@ static TCGv_i32 read_fp_sreg(DisasContext *s, int reg)
-     return v;
+diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+index a6c31e0e9c..91eb4e797a 100644
+--- a/target/arm/translate-sve.c
++++ b/target/arm/translate-sve.c
+@@ -61,6 +61,11 @@ static int tszimm_shl(int x)
+     return x - tszimm_esz(x);
  }
  
--/* Clear the bits above an 64-bit vector.
-+/* Clear the bits above an N-bit vector, for N = (is_q ? 128 : 64).
-  * If SVE is not enabled, then there are only 128 bits in the vector.
-  */
--static void clear_vec_high(DisasContext *s, int rd)
-+static void clear_vec_high(DisasContext *s, bool is_q, int rd)
- {
-     unsigned ofs = fp_reg_offset(s, rd, MO_64);
-     unsigned vsz = vec_full_reg_size(s);
--    TCGv_i64 tcg_zero = tcg_const_i64(0);
- 
--    tcg_gen_st_i64(tcg_zero, cpu_env, ofs + 8);
--    tcg_temp_free_i64(tcg_zero);
-+    if (is_q) {
-+        TCGv_i64 tcg_zero = tcg_const_i64(0);
-+        tcg_gen_st_i64(tcg_zero, cpu_env, ofs + 8);
-+        tcg_temp_free_i64(tcg_zero);
-+    }
-     if (vsz > 16) {
-         tcg_gen_gvec_dup8i(ofs + 16, vsz - 16, vsz - 16, 0);
-     }
-@@ -554,7 +556,7 @@ void write_fp_dreg(DisasContext *s, int reg, TCGv_i64 v)
-     unsigned ofs = fp_reg_offset(s, reg, MO_64);
- 
-     tcg_gen_st_i64(v, cpu_env, ofs);
--    clear_vec_high(s, reg);
-+    clear_vec_high(s, false, reg);
- }
- 
- static void write_fp_sreg(DisasContext *s, int reg, TCGv_i32 v)
-@@ -915,6 +917,8 @@ static void do_fp_ld(DisasContext *s, int destidx, TCGv_i64 tcg_addr, int size)
- 
-     tcg_temp_free_i64(tmplo);
-     tcg_temp_free_i64(tmphi);
++static inline int plus1(int x)
++{
++    return x + 1;
++}
 +
-+    clear_vec_high(s, true, destidx);
- }
- 
  /*
-@@ -2670,12 +2674,13 @@ static void disas_ldst_multiple_struct(DisasContext *s, uint32_t insn)
-                     /* For non-quad operations, setting a slice of the low
-                      * 64 bits of the register clears the high 64 bits (in
-                      * the ARM ARM pseudocode this is implicit in the fact
--                     * that 'rval' is a 64 bit wide variable). We optimize
--                     * by noticing that we only need to do this the first
--                     * time we touch a register.
-+                     * that 'rval' is a 64 bit wide variable).
-+                     * For quad operations, we might still need to zero the
-+                     * high bits of SVE.  We optimize by noticing that we only
-+                     * need to do this the first time we touch a register.
-                      */
--                    if (!is_q && e == 0 && (r == 0 || xs == selem - 1)) {
--                        clear_vec_high(s, tt);
-+                    if (e == 0 && (r == 0 || xs == selem - 1)) {
-+                        clear_vec_high(s, is_q, tt);
-                     }
-                 }
-                 tcg_gen_addi_i64(tcg_addr, tcg_addr, ebytes);
-@@ -2818,10 +2823,9 @@ static void disas_ldst_single_struct(DisasContext *s, uint32_t insn)
-             write_vec_element(s, tcg_tmp, rt, 0, MO_64);
-             if (is_q) {
-                 write_vec_element(s, tcg_tmp, rt, 1, MO_64);
--            } else {
--                clear_vec_high(s, rt);
-             }
-             tcg_temp_free_i64(tcg_tmp);
-+            clear_vec_high(s, is_q, rt);
-         } else {
-             /* Load/store one element per register */
-             if (is_load) {
-@@ -6659,7 +6663,6 @@ static void handle_vec_simd_sqshrn(DisasContext *s, bool is_scalar, bool is_q,
+  * Include the generated decoder.
+  */
+@@ -815,6 +820,104 @@ static unsigned decode_pred_count(unsigned fullsz, int pattern, int esz)
      }
+ }
  
-     if (!is_q) {
--        clear_vec_high(s, rd);
-         write_vec_element(s, tcg_final, rd, 0, MO_64);
-     } else {
-         write_vec_element(s, tcg_final, rd, 1, MO_64);
-@@ -6672,7 +6675,8 @@ static void handle_vec_simd_sqshrn(DisasContext *s, bool is_scalar, bool is_q,
-     tcg_temp_free_i64(tcg_rd);
-     tcg_temp_free_i32(tcg_rd_narrowed);
-     tcg_temp_free_i64(tcg_final);
--    return;
++void trans_CNT_r(DisasContext *s, arg_CNT_r *a, uint32_t insn)
++{
++    unsigned fullsz = vec_full_reg_size(s);
++    unsigned numelem = decode_pred_count(fullsz, a->pat, a->esz);
 +
-+    clear_vec_high(s, is_q, rd);
- }
- 
- /* SQSHLU, UQSHL, SQSHL: saturating left shifts */
-@@ -6736,10 +6740,7 @@ static void handle_simd_qshl(DisasContext *s, bool scalar, bool is_q,
-             tcg_temp_free_i64(tcg_op);
-         }
-         tcg_temp_free_i64(tcg_shift);
--
--        if (!is_q) {
--            clear_vec_high(s, rd);
--        }
-+        clear_vec_high(s, is_q, rd);
-     } else {
-         TCGv_i32 tcg_shift = tcg_const_i32(shift);
-         static NeonGenTwoOpEnvFn * const fns[2][2][3] = {
-@@ -6788,8 +6789,8 @@ static void handle_simd_qshl(DisasContext *s, bool scalar, bool is_q,
-         }
-         tcg_temp_free_i32(tcg_shift);
- 
--        if (!is_q && !scalar) {
--            clear_vec_high(s, rd);
-+        if (!scalar) {
-+            clear_vec_high(s, is_q, rd);
-         }
-     }
- }
-@@ -6831,10 +6832,8 @@ static void handle_simd_intfp_conv(DisasContext *s, int rd, int rn,
-                 write_vec_element(s, tcg_double, rd, pass, MO_64);
-             }
-         }
--
-         tcg_temp_free_i64(tcg_int64);
-         tcg_temp_free_i64(tcg_double);
--
-     } else {
-         TCGv_i32 tcg_int32 = tcg_temp_new_i32();
-         TCGv_i32 tcg_float = tcg_temp_new_i32();
-@@ -6887,20 +6886,17 @@ static void handle_simd_intfp_conv(DisasContext *s, int rd, int rn,
-                 write_vec_element_i32(s, tcg_float, rd, pass, size);
-             }
-         }
--
-         tcg_temp_free_i32(tcg_int32);
-         tcg_temp_free_i32(tcg_float);
--
--        if ((size == MO_32 && elements == 2) ||
--            (size == MO_16 && elements == 4)) {
--            clear_vec_high(s, rd);
--        }
-     }
- 
-     tcg_temp_free_ptr(tcg_fpst);
-     if (fracbits || size == MO_64) {
-         tcg_temp_free_i32(tcg_shift);
-     }
-+    if (elements > 1) {
-+        clear_vec_high(s, (elements << size) > 8, rd);
++    tcg_gen_movi_i64(cpu_reg(s, a->rd), numelem * a->imm);
++}
++
++void trans_INC_DEC_r(DisasContext *s, arg_incdec_cnt *a, uint32_t insn)
++{
++    unsigned fullsz = vec_full_reg_size(s);
++    unsigned numelem = decode_pred_count(fullsz, a->pat, a->esz);
++    int inc = numelem * a->imm * (a->d ? -1 : 1);
++    TCGv_i64 reg = cpu_reg(s, a->rd);
++
++    tcg_gen_addi_i64(reg, reg, inc);
++}
++
++void trans_sat_INC_DEC_r_32(DisasContext *s, arg_incdec_cnt *a, uint32_t insn)
++{
++    unsigned fullsz = vec_full_reg_size(s);
++    unsigned numelem = decode_pred_count(fullsz, a->pat, a->esz);
++    int inc = numelem * a->imm * (a->d ? -1 : 1);
++    int64_t ibound;
++    TCGv_i64 reg = cpu_reg(s, a->rd);
++    TCGv_i64 bound;
++    TCGCond cond;
++
++    /* Use normal 64-bit arithmetic to detect 32-bit overflow.  */
++    if (a->u) {
++        tcg_gen_ext32u_i64(reg, reg);
++    } else {
++        tcg_gen_ext32s_i64(reg, reg);
 +    }
- }
- 
- /* UCVTF/SCVTF - Integer to FP conversion */
-@@ -6988,9 +6984,7 @@ static void handle_simd_shift_fpint_conv(DisasContext *s, bool is_scalar,
-             write_vec_element(s, tcg_op, rd, pass, MO_64);
-             tcg_temp_free_i64(tcg_op);
-         }
--        if (!is_q) {
--            clear_vec_high(s, rd);
--        }
-+        clear_vec_high(s, is_q, rd);
-     } else {
-         int maxpass = is_scalar ? 1 : is_q ? 4 : 2;
-         for (pass = 0; pass < maxpass; pass++) {
-@@ -7009,8 +7003,8 @@ static void handle_simd_shift_fpint_conv(DisasContext *s, bool is_scalar,
-             }
-             tcg_temp_free_i32(tcg_op);
-         }
--        if (!is_q && !is_scalar) {
--            clear_vec_high(s, rd);
-+        if (!is_scalar) {
-+            clear_vec_high(s, is_q, rd);
-         }
-     }
- 
-@@ -7491,13 +7485,9 @@ static void handle_3same_float(DisasContext *s, int size, int elements,
-             tcg_temp_free_i32(tcg_op2);
-         }
-     }
--
-     tcg_temp_free_ptr(fpst);
- 
--    if ((elements << size) < 4) {
--        /* scalar, or non-quad vector op */
--        clear_vec_high(s, rd);
--    }
-+    clear_vec_high(s, elements * (size ? 8 : 4) > 8, rd);
- }
- 
- /* AdvSIMD scalar three same
-@@ -8005,13 +7995,10 @@ static void handle_2misc_fcmp_zero(DisasContext *s, int opcode,
-             }
-             write_vec_element(s, tcg_res, rd, pass, MO_64);
-         }
--        if (is_scalar) {
--            clear_vec_high(s, rd);
--        }
--
-         tcg_temp_free_i64(tcg_res);
-         tcg_temp_free_i64(tcg_zero);
-         tcg_temp_free_i64(tcg_op);
-+        clear_vec_high(s, !is_scalar, rd);
-     } else {
-         TCGv_i32 tcg_op = tcg_temp_new_i32();
-         TCGv_i32 tcg_zero = tcg_const_i32(0);
-@@ -8063,8 +8050,8 @@ static void handle_2misc_fcmp_zero(DisasContext *s, int opcode,
-         tcg_temp_free_i32(tcg_res);
-         tcg_temp_free_i32(tcg_zero);
-         tcg_temp_free_i32(tcg_op);
--        if (!is_q && !is_scalar) {
--            clear_vec_high(s, rd);
-+        if (!is_scalar) {
-+            clear_vec_high(s, is_q, rd);
-         }
-     }
- 
-@@ -8100,12 +8087,9 @@ static void handle_2misc_reciprocal(DisasContext *s, int opcode,
-             }
-             write_vec_element(s, tcg_res, rd, pass, MO_64);
-         }
--        if (is_scalar) {
--            clear_vec_high(s, rd);
--        }
--
-         tcg_temp_free_i64(tcg_res);
-         tcg_temp_free_i64(tcg_op);
-+        clear_vec_high(s, !is_scalar, rd);
-     } else {
-         TCGv_i32 tcg_op = tcg_temp_new_i32();
-         TCGv_i32 tcg_res = tcg_temp_new_i32();
-@@ -8145,8 +8129,8 @@ static void handle_2misc_reciprocal(DisasContext *s, int opcode,
-         }
-         tcg_temp_free_i32(tcg_res);
-         tcg_temp_free_i32(tcg_op);
--        if (!is_q && !is_scalar) {
--            clear_vec_high(s, rd);
-+        if (!is_scalar) {
-+            clear_vec_high(s, is_q, rd);
-         }
-     }
-     tcg_temp_free_ptr(fpst);
-@@ -8259,9 +8243,7 @@ static void handle_2misc_narrow(DisasContext *s, bool scalar,
-         write_vec_element_i32(s, tcg_res[pass], rd, destelt + pass, MO_32);
-         tcg_temp_free_i32(tcg_res[pass]);
-     }
--    if (!is_q) {
--        clear_vec_high(s, rd);
--    }
-+    clear_vec_high(s, is_q, rd);
- }
- 
- /* Remaining saturating accumulating ops */
-@@ -8286,12 +8268,9 @@ static void handle_2misc_satacc(DisasContext *s, bool is_scalar, bool is_u,
-             }
-             write_vec_element(s, tcg_rd, rd, pass, MO_64);
-         }
--        if (is_scalar) {
--            clear_vec_high(s, rd);
--        }
--
-         tcg_temp_free_i64(tcg_rd);
-         tcg_temp_free_i64(tcg_rn);
-+        clear_vec_high(s, !is_scalar, rd);
-     } else {
-         TCGv_i32 tcg_rn = tcg_temp_new_i32();
-         TCGv_i32 tcg_rd = tcg_temp_new_i32();
-@@ -8349,13 +8328,9 @@ static void handle_2misc_satacc(DisasContext *s, bool is_scalar, bool is_u,
-             }
-             write_vec_element_i32(s, tcg_rd, rd, pass, MO_32);
-         }
--
--        if (!is_q) {
--            clear_vec_high(s, rd);
--        }
--
-         tcg_temp_free_i32(tcg_rd);
-         tcg_temp_free_i32(tcg_rn);
-+        clear_vec_high(s, is_q, rd);
-     }
- }
- 
-@@ -8855,9 +8830,7 @@ static void handle_vec_simd_shri(DisasContext *s, bool is_q, bool is_u,
-     tcg_temp_free_i64(tcg_round);
- 
-  done:
--    if (!is_q) {
--        clear_vec_high(s, rd);
--    }
-+    clear_vec_high(s, is_q, rd);
- }
- 
- static void gen_shl8_ins_i64(TCGv_i64 d, TCGv_i64 a, unsigned shift)
-@@ -9045,19 +9018,18 @@ static void handle_vec_simd_shrn(DisasContext *s, bool is_q,
-     }
- 
-     if (!is_q) {
--        clear_vec_high(s, rd);
-         write_vec_element(s, tcg_final, rd, 0, MO_64);
-     } else {
-         write_vec_element(s, tcg_final, rd, 1, MO_64);
-     }
--
-     if (round) {
-         tcg_temp_free_i64(tcg_round);
-     }
-     tcg_temp_free_i64(tcg_rn);
-     tcg_temp_free_i64(tcg_rd);
-     tcg_temp_free_i64(tcg_final);
--    return;
++    tcg_gen_addi_i64(reg, reg, inc);
++    if (a->d) {
++        if (a->u) {
++            ibound = 0;
++            cond = TCG_COND_LTU;
++        } else {
++            ibound = INT32_MIN;
++            cond = TCG_COND_LT;
++        }
++    } else {
++        if (a->u) {
++            ibound = UINT32_MAX;
++            cond = TCG_COND_GTU;
++        } else {
++            ibound = INT32_MAX;
++            cond = TCG_COND_GT;
++        }
++    }
++    bound = tcg_const_i64(ibound);
++    tcg_gen_movcond_i64(cond, reg, reg, bound, bound, reg);
++    tcg_temp_free_i64(bound);
++}
 +
-+    clear_vec_high(s, is_q, rd);
- }
++void trans_sat_INC_DEC_r_64(DisasContext *s, arg_incdec_cnt *a, uint32_t insn)
++{
++    unsigned fullsz = vec_full_reg_size(s);
++    unsigned numelem = decode_pred_count(fullsz, a->pat, a->esz);
++    int inc = numelem * a->imm * (a->d ? -1 : 1);
++    TCGv_i64 reg = cpu_reg(s, a->rd);
++    TCGv_i64 t0 = tcg_temp_new_i64();
++    TCGv_i64 t1 = tcg_temp_new_i64();
++    TCGv_i64 zero;
++
++    if (a->u) {
++        tcg_gen_addi_i64(t0, reg, inc);
++
++        /* Bound the result.  */
++        if (a->d) {
++            tcg_gen_movi_i64(t1, 0);
++            tcg_gen_movcond_i64(TCG_COND_LTU, reg, t0, reg, t0, t1);
++        } else {
++            tcg_gen_movi_i64(t1, -1);
++            tcg_gen_movcond_i64(TCG_COND_LTU, reg, reg, t0, t0, t1);
++        }
++    } else {
++        /* Detect signed overflow for addition.  */
++        tcg_gen_xori_i64(t0, reg, inc);
++        tcg_gen_addi_i64(reg, reg, inc);
++        tcg_gen_xori_i64(t0, reg, inc);
++        tcg_gen_andc_i64(t0, t1, t0);
++
++        /* Because we know the increment, we know which way it overflowed.  */
++        tcg_gen_movi_i64(t1, a->d ? INT64_MIN : INT64_MAX);
++
++        /* Bound the result.  */
++        zero = tcg_const_i64(0);
++        tcg_gen_movcond_i64(TCG_COND_LT, reg, t0, zero, t1, reg);
++
++        tcg_temp_free_i64(zero);
++    }
++    tcg_temp_free_i64(t0);
++    tcg_temp_free_i64(t1);
++}
++
+ /* For PTRUE, PTRUES, PFALSE, SETFFR.  */
+ void trans_pred_set(DisasContext *s, arg_pred_set *a, uint32_t insn)
+ {
+diff --git a/target/arm/sve.def b/target/arm/sve.def
+index df2730eb73..da533ba666 100644
+--- a/target/arm/sve.def
++++ b/target/arm/sve.def
+@@ -24,6 +24,7 @@
  
+ %imm9_16_10		16:s6 10:3
+ %imm6_22_5		22:1 5:5
++%imm4_16_p1             16:4 !function=plus1
  
-@@ -9451,9 +9423,7 @@ static void handle_3rd_narrowing(DisasContext *s, int is_q, int is_u, int size,
-         write_vec_element_i32(s, tcg_res[pass], rd, pass + part, MO_32);
-         tcg_temp_free_i32(tcg_res[pass]);
-     }
--    if (!is_q) {
--        clear_vec_high(s, rd);
--    }
-+    clear_vec_high(s, is_q, rd);
- }
+ # A combination of tsz:imm3 -- extract esize.
+ %tszimm_esz		22:2 5:5 !function=tszimm_esz
+@@ -56,6 +57,7 @@
+ &rprrr_esz		rd pg rn rm ra esz
+ &rpri_esz		rd pg rn imm esz
+ &pred_set		rd pat esz i s
++&incdec_cnt		rd pat esz imm d u
  
- static void handle_pmull_64(DisasContext *s, int is_q, int rd, int rn, int rm)
-@@ -9877,9 +9847,7 @@ static void handle_simd_3same_pair(DisasContext *s, int is_q, int u, int opcode,
-             write_vec_element_i32(s, tcg_res[pass], rd, pass, MO_32);
-             tcg_temp_free_i32(tcg_res[pass]);
-         }
--        if (!is_q) {
--            clear_vec_high(s, rd);
--        }
-+        clear_vec_high(s, is_q, rd);
-     }
+ ###########################################################################
+ # Named instruction formats.  These are generally used to
+@@ -101,6 +103,10 @@
+ @pd_rn_i9		........ ........ ...... rn:5 . rd:4		&rri imm=%imm9_16_10
+ @rd_rn_i9		........ ........ ...... rn:5 rd:5		&rri imm=%imm9_16_10
  
-     if (fpst) {
-@@ -10372,10 +10340,7 @@ static void disas_simd_3same_int(DisasContext *s, uint32_t insn)
-             tcg_temp_free_i32(tcg_op2);
-         }
-     }
--
--    if (!is_q) {
--        clear_vec_high(s, rd);
--    }
-+    clear_vec_high(s, is_q, rd);
- }
++# One register, pattern, and uint4+1.
++# User must fill in U and D.
++@incdec_cnt		........ esz:2 .. .... ...... pat:5 rd:5	&incdec_cnt imm=%imm4_16_p1
++
+ ###########################################################################
+ # Instruction patterns.  Grouped according to the SVE encodingindex.xhtml.
  
- /* AdvSIMD three same
-@@ -10611,10 +10576,7 @@ static void disas_simd_three_reg_same_fp16(DisasContext *s, uint32_t insn)
+@@ -275,6 +281,18 @@ FEXPA			00000100 .. 1 00000 101110 ..... .....		@rd_rn_esz # Note size != 0
+ # SVE floating-point trig select coefficient
+ FTSSEL			00000100 .. 1 ..... 101100 ..... .....		@rd_rn_rm_esz # Note size != 0
  
-     tcg_temp_free_ptr(fpst);
++### SVE Element Count Group
++
++# SVE element count
++CNT_r			00000100 .. 10 .... 1110 0   0   ..... .....	@incdec_cnt d=0 u=1
++
++# SVE inc/dec register by element count
++INC_DEC_r		00000100 .. 11 .... 1110 0   d:1 ..... .....	@incdec_cnt u=1
++
++# SVE saturating inc/dec register by element count
++sat_INC_DEC_r_32	00000100 .. 10 .... 1111 d:1 u:1 ..... .....	@incdec_cnt
++sat_INC_DEC_r_64	00000100 .. 11 .... 1111 d:1 u:1 ..... .....	@incdec_cnt
++
+ ### SVE Predicate Generation Group
  
--    if (!is_q) {
--        /* non-quad vector op */
--        clear_vec_high(s, rd);
--    }
-+    clear_vec_high(s, is_q, rd);
- }
- 
- /* AdvSIMD three same extra
-@@ -10846,9 +10808,7 @@ static void handle_rev(DisasContext *s, int opcode, bool u,
-             write_vec_element(s, tcg_tmp, rd, i, grp_size);
-             tcg_temp_free_i64(tcg_tmp);
-         }
--        if (!is_q) {
--            clear_vec_high(s, rd);
--        }
-+        clear_vec_high(s, is_q, rd);
-     } else {
-         int revmask = (1 << grp_size) - 1;
-         int esize = 8 << size;
-@@ -11499,9 +11459,7 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
-             tcg_temp_free_i32(tcg_op);
-         }
-     }
--    if (!is_q) {
--        clear_vec_high(s, rd);
--    }
-+    clear_vec_high(s, is_q, rd);
- 
-     if (need_rmode) {
-         gen_helper_set_rmode(tcg_rmode, tcg_rmode, cpu_env);
-@@ -11778,9 +11736,7 @@ static void disas_simd_two_reg_misc_fp16(DisasContext *s, uint32_t insn)
-             tcg_temp_free_i32(tcg_op);
-         }
- 
--        if (!is_q) {
--            clear_vec_high(s, rd);
--        }
-+        clear_vec_high(s, is_q, rd);
-     }
- 
-     if (need_rmode) {
-@@ -12029,12 +11985,8 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
-             tcg_temp_free_i64(tcg_op);
-             tcg_temp_free_i64(tcg_res);
-         }
--
--        if (is_scalar) {
--            clear_vec_high(s, rd);
--        }
--
-         tcg_temp_free_i64(tcg_idx);
-+        clear_vec_high(s, !is_scalar, rd);
-     } else if (!is_long) {
-         /* 32 bit floating point, or 16 or 32 bit integer.
-          * For the 16 bit scalar case we use the usual Neon helpers and
-@@ -12198,12 +12150,8 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
-             tcg_temp_free_i32(tcg_op);
-             tcg_temp_free_i32(tcg_res);
-         }
--
-         tcg_temp_free_i32(tcg_idx);
--
--        if (!is_q) {
--            clear_vec_high(s, rd);
--        }
-+        clear_vec_high(s, is_q, rd);
-     } else {
-         /* long ops: 16x16->32 or 32x32->64 */
-         TCGv_i64 tcg_res[2];
-@@ -12279,10 +12227,7 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
-                 tcg_temp_free_i64(tcg_passres);
-             }
-             tcg_temp_free_i64(tcg_idx);
--
--            if (is_scalar) {
--                clear_vec_high(s, rd);
--            }
-+            clear_vec_high(s, !is_scalar, rd);
-         } else {
-             TCGv_i32 tcg_idx = tcg_temp_new_i32();
- 
+ # SVE initialize predicate (PTRUE, PTRUES)
 -- 
 2.14.3
 

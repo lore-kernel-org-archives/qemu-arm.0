@@ -1,296 +1,637 @@
-Received: by 10.223.159.74 with SMTP id f10csp2961780wrg;
-        Mon, 18 Dec 2017 10:12:14 -0800 (PST)
-X-Google-Smtp-Source: ACJfBos1I89C4BWA9nSSitDJYzcfYbi14DmN7FokkMeXE2s7NuIlnW/mlOsoy1iWbqA/EE2Y4igE
-X-Received: by 10.129.116.213 with SMTP id p204mr529604ywc.134.1513620734105;
-        Mon, 18 Dec 2017 10:12:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1513620734; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp2962034wrg;
+        Mon, 18 Dec 2017 10:12:29 -0800 (PST)
+X-Google-Smtp-Source: ACJfBov9IQMDOOhnrx7QvjNObREyvHlZ1B+rGugFZub/jEmkIRe2vRiNTtQm0Fv/jk5bd7YKLrDO
+X-Received: by 10.37.175.212 with SMTP id d20mr510208ybj.347.1513620749295;
+        Mon, 18 Dec 2017 10:12:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513620749; cv=none;
         d=google.com; s=arc-20160816;
-        b=j1BUjvs2+sf28qQcWoURBIvXatrTnh27hh+VnGsaiRxO/gUdArmt1E/FTVu5qg/7HC
-         JUGR4vKTD0HzP3ColPbVGuDxmpC5WriE7GBc6+3vuULQueMNAiEgWNdVEUY5Y+UuaEzC
-         8qqxutdkfC7AzKxavL/6RyPno10+b5nyLUqIVSu9AzXvxHII8vDkz+HBmdvBijZI8QPI
-         ckvDXawlbaHyKS8a/hqztvt4DyQJG884D0/sBfAWOEmjBrv2OOAU7KflhfQ+enx35Hp6
-         ZcWjQf8B5tyg+LkOXMgml+MGe/O/TEcYbE2OtAYbrz50IgkvvDYLU1l0LUHM40vlqLme
-         uw5A==
+        b=KuxDld1e3PYkZlxmwFvhL8lu64iG04diQus+9hRnFnAevbCQgpdQs47cIi0Af4VX3u
+         FLWQ7hNO/6BCD6hTuqRB9rsPIvz4xQ5206t4v5ZOkRZIGFdfE0JiD5AmW3lRuvCHEenG
+         MLmPaAZNCbkq+tAc6V8hK4Ds19SQ8fIB2Ib5kvTA23p3Acbvx8dlYKgObPV4DRReY1W4
+         8kY1GmY0B3xwtxbhAD1PuCkoVKc7aJ6Il1RZMBW0/ZVpiVvguoPl1VdZ27uEROsuVNQx
+         sxqmhA/GXTO3mytpzdMwIbjrxo8FcF0vcjUbOWVF3V4PHi+57hHaaxJEqgAETQeWfXPb
+         ALXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=uZn8DyBSzzAyRqStKhwVrbUlyvDwb/10aZ4fIRI9/8o=;
-        b=yheHoL0K96JHWTN7ICmKg6htzVLestFItk/07wE4Z52emINouKKRzCD+tAxGOzo4kr
-         wHnAyVi7UDXDheqK5ntTYLOQ4Q+NGwSSfPmi4+cgS0RGw76FGgD8pB+hRUsXdgi0Ts7U
-         pYTaczAbgA8VvxTtPK0cMsvoqDetrRvQZZfzgaYTq/8uqY/B2wJTdIJYk5FBHkJnyvRH
-         sYm59jg7sasEUxSb/QBlDTBj305lDpFx9a30fMpgaPHmCW5DPGnACHTosiR/puOyeM9/
-         nlJu0bxU/WtOT/M7y0yVJ6eT3iez2xB2Rk6zHmfxDXX+haui6h9zkGdyNZgTPtSpf5Ns
-         Rywg==
+        bh=C+rsjKOajr3qlz7m+SpnMY8r8lTEeVW31kxAfY1GHdI=;
+        b=syN6nmBpqKah6waDw+l3FpdiztJxkkHW9wvYGU3ZXXfrAQ//ha/OBRV25TBUqYW4dY
+         FJ5Fg+SRUgSiwzONwYqUdtLbjRgN208qiqDWOp0I3uY8tHSPghWmPidx4JRH9Fzuzd+X
+         248c/y17/AvQZCdwqHmmlaldUltC78F93Gy7FuDmxtVopTyhg7zHoqXIOs9XtpcFdqtn
+         ZVbPd2vwllB1bKc6xMjdEss74lOQ3K8iIzY+gqAY3h10rq3phFdj/KfAmunTlZ7UrYK1
+         TFD5aFsnObWfQk6Vko633EXEKDMwznPD7Y261tSN8wqJl8lmU3uQIpTXcUZk7447l0Dl
+         pGJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZvX+jBJA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=K2sFfXs+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r1si2529718ybk.766.2017.12.18.10.12.13
+        by mx.google.com with ESMTPS id x10si2499669ybk.378.2017.12.18.10.12.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 18 Dec 2017 10:12:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 18 Dec 2017 10:12:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZvX+jBJA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=K2sFfXs+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60224 helo=lists.gnu.org)
+Received: from localhost ([::1]:60234 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eQztd-00077s-BW
-	for alex.bennee@linaro.org; Mon, 18 Dec 2017 13:12:13 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44458)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eQzts-0007tC-KK
+	for alex.bennee@linaro.org; Mon, 18 Dec 2017 13:12:28 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55760)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1eQzFQ-0002hk-Ho
-	for qemu-devel@nongnu.org; Mon, 18 Dec 2017 12:30:42 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1eQzUV-0008GU-VG
+	for qemu-arm@nongnu.org; Mon, 18 Dec 2017 12:46:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1eQzFO-0004lR-HM
-	for qemu-devel@nongnu.org; Mon, 18 Dec 2017 12:30:40 -0500
-Received: from mail-pl0-x243.google.com ([2607:f8b0:400e:c01::243]:40289)
+	(envelope-from <richard.henderson@linaro.org>) id 1eQzUT-00025B-CE
+	for qemu-arm@nongnu.org; Mon, 18 Dec 2017 12:46:16 -0500
+Received: from mail-pl0-x243.google.com ([2607:f8b0:400e:c01::243]:33723)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1eQzFO-0004l6-8e
-	for qemu-devel@nongnu.org; Mon, 18 Dec 2017 12:30:38 -0500
-Received: by mail-pl0-x243.google.com with SMTP id 62so3775023pld.7
-	for <qemu-devel@nongnu.org>; Mon, 18 Dec 2017 09:30:38 -0800 (PST)
+	id 1eQzUT-00024J-17
+	for qemu-arm@nongnu.org; Mon, 18 Dec 2017 12:46:13 -0500
+Received: by mail-pl0-x243.google.com with SMTP id 1so3790291plv.0
+	for <qemu-arm@nongnu.org>; Mon, 18 Dec 2017 09:46:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=uZn8DyBSzzAyRqStKhwVrbUlyvDwb/10aZ4fIRI9/8o=;
-	b=ZvX+jBJAekmsbFR0JUqf561EvUbUs5IzqsJ2WSO0WYrXndql9hHgFPoNirRrgaSYWu
-	gPXH21RaxvhPfgIR5fMVjJXlgIbsO3tBd6oJa2f6SvFXrHFhD7uuQvbT74ocs4HEwJjd
-	713W7pVOZlczRVQo9O2N3/3T4PWOmwtwwQeSM=
+	bh=C+rsjKOajr3qlz7m+SpnMY8r8lTEeVW31kxAfY1GHdI=;
+	b=K2sFfXs+VTxQW/FBGsV0PPv9uQB7ZjqBZBgUs6HeHhWfrXqVoszoCMQG3e78Fj5gRm
+	aKRqXEqbYiGPAw8T7TtXtFb+FARQ0hRmpBL6V7IGdR/u5cBHnMiIgaAUtQFqRWGGsSJh
+	FOMOGnALEkNue0uYYRwHG2Sld+BHWq38gZMrs=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=uZn8DyBSzzAyRqStKhwVrbUlyvDwb/10aZ4fIRI9/8o=;
-	b=doqKi+2hBluhI0oqlMTuKimnhMu4NhzvKLATHgPWXDs8AHNnyAP+xdT27UrnMcIYyv
-	ttq4284OcIa7i+bu+g0A4f40N3Uhl30QVBxXclahNlgLqq3PsSG/HZmv77qbTnd8y/mX
-	3GqNeZJ4RXYCGfo2tnh0QhqB0AMEJjbhSfMM9AsTdlKB8NiefKuGW1F+Tgph5Ck9EXJN
-	u0wPnUTUGZ6sF1dm7qO9c6aTTKMbQ4Zq1ghHzTqkHDPJ1Ln2Qnrok4Xgh6pCvKcUzFFX
-	y4NsHdexpiCeLjiTg89yaSCXBeGRUqIhbzboD12QGj8ccnDXuc9+dhaWHRab4+fVInH5
-	LosA==
-X-Gm-Message-State: AKGB3mK6EjUo4fuhpV+uQ7eyqEek7E7sbx3/2nxYttdbBnF2F1392H60
-	ssDW5678Mah9xkchls6ANGKGEsimybQ=
-X-Received: by 10.84.168.101 with SMTP id e92mr456140plb.34.1513618236944;
-	Mon, 18 Dec 2017 09:30:36 -0800 (PST)
+	bh=C+rsjKOajr3qlz7m+SpnMY8r8lTEeVW31kxAfY1GHdI=;
+	b=oEUyrlI7/OCNtBzwLshyRrAVB5gUY2oOKOQNivXCJcSGdoP5ayjRoc75HYVNH/9Sep
+	eeJKz3ySp62ZXttCkc4I5EaKBAdax5QVUFHjxIsmfTG9YvdmFVZSFsd8nD64mjuN5z/Y
+	wrHu2R6q/jYglQT4ohEHs6N+Kl0fz92nQvGUzrmz9YNN+TKMnaKOzBP0I7sehGYohCKI
+	tK9B7Qxz94HYzKC6rviazOd8RAAOHxMLQxVFqIfdKuKOik7+0wUYMKUnHnQjDoixiYnr
+	aFADHylrmwYewnOV12cSoeelsOl+VbwWpFdc5IxqPu1niEKZTAP3SIDGX8A9D2xSKgdD
+	1XWg==
+X-Gm-Message-State: AKGB3mIURvzt8NMPZ215/jiE7QFpfqJyc8XalketU2VRPfKLrxnOqA9V
+	jtQcU8PlNITreVGt79+ECwf+hg==
+X-Received: by 10.159.244.12 with SMTP id x12mr491707plr.312.1513619171839;
+	Mon, 18 Dec 2017 09:46:11 -0800 (PST)
 Received: from cloudburst.twiddle.net (174-21-7-63.tukw.qwest.net.
 	[174.21.7.63]) by smtp.gmail.com with ESMTPSA id
-	h69sm26553411pfe.107.2017.12.18.09.30.35
+	t84sm26209657pfe.160.2017.12.18.09.46.10
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 18 Dec 2017 09:30:35 -0800 (PST)
+	Mon, 18 Dec 2017 09:46:10 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Mon, 18 Dec 2017 09:30:21 -0800
-Message-Id: <20171218173022.18418-9-richard.henderson@linaro.org>
+Date: Mon, 18 Dec 2017 09:45:40 -0800
+Message-Id: <20171218174552.18871-12-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.14.3
-In-Reply-To: <20171218173022.18418-1-richard.henderson@linaro.org>
-References: <20171218173022.18418-1-richard.henderson@linaro.org>
+In-Reply-To: <20171218174552.18871-1-richard.henderson@linaro.org>
+References: <20171218174552.18871-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2607:f8b0:400e:c01::243
-Subject: [Qemu-devel] [PATCH 8/9] target/arm: Add ZCR.LEN to tb->flags
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PATCH 11/23] target/arm: Implement SVE bitwise shift by
+ immediate (predicated)
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ALJgmzcTyHq+
-
-This has a stub(-ish) implementation of ZCR, in that it does not
-implement _EL[123], or wire up the system register properly.
-However, it is enough for CONFIG_USER_ONLY.
-
-We will need VQ in tb->flags in order to pass the true vector
-size to the generic vector expanders.
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: RoZ7F/xAb00n
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h           | 48 ++++++++++++++++++++++++++++++----------------
- target/arm/translate.h     |  1 +
- target/arm/cpu.c           |  2 ++
- target/arm/translate-a64.c |  5 ++---
- 4 files changed, 37 insertions(+), 19 deletions(-)
+ target/arm/helper-sve.h    |  25 +++++
+ target/arm/sve_helper.c    | 265 +++++++++++++++++++++++++++++++++++++++++++++
+ target/arm/translate-sve.c | 124 +++++++++++++++++++++
+ target/arm/sve.def         |  21 ++++
+ 4 files changed, 435 insertions(+)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 150b0d9d84..37b8cef2e2 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -553,6 +553,12 @@ typedef struct CPUARMState {
-         float_status fp_status;
-         float_status fp_status_f16;
-         float_status standard_fp_status;
+diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
+index 937598d6f8..2b265e9892 100644
+--- a/target/arm/helper-sve.h
++++ b/target/arm/helper-sve.h
+@@ -206,6 +206,31 @@ DEF_HELPER_FLAGS_3(sve_uminv_h, TCG_CALL_NO_RWG, i64, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_3(sve_uminv_s, TCG_CALL_NO_RWG, i64, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_3(sve_uminv_d, TCG_CALL_NO_RWG, i64, ptr, ptr, i32)
+ 
++DEF_HELPER_FLAGS_3(sve_clr_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(sve_clr_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(sve_clr_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(sve_clr_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
 +
-+        /* TODO: For system mode, represent all of zcr_el{1,2,3}.
-+         * In the meantime, the composite value exposed to el0.
-+         * Only the low 4 bits are defined, and set via syscall.
-+         */
-+        uint32_t zcr_el;
-     } vfp;
-     uint64_t exclusive_addr;
-     uint64_t exclusive_val;
-@@ -2649,6 +2655,8 @@ static inline bool arm_cpu_data_is_big_endian(CPUARMState *env)
- #define ARM_TBFLAG_TBI0_MASK (0x1ull << ARM_TBFLAG_TBI0_SHIFT)
- #define ARM_TBFLAG_TBI1_SHIFT 1        /* TBI1 for EL0/1  */
- #define ARM_TBFLAG_TBI1_MASK (0x1ull << ARM_TBFLAG_TBI1_SHIFT)
-+#define ARM_TBFLAG_ZCR_LEN_SHIFT 2     /* Composite ZCR_EL1/2/3.LEN */
-+#define ARM_TBFLAG_ZCR_LEN_MASK  (0xfull << ARM_TBFLAG_ZCR_LEN_SHIFT)
- 
- /* some convenience accessor macros */
- #define ARM_TBFLAG_AARCH64_STATE(F) \
-@@ -2685,6 +2693,8 @@ static inline bool arm_cpu_data_is_big_endian(CPUARMState *env)
-     (((F) & ARM_TBFLAG_TBI0_MASK) >> ARM_TBFLAG_TBI0_SHIFT)
- #define ARM_TBFLAG_TBI1(F) \
-     (((F) & ARM_TBFLAG_TBI1_MASK) >> ARM_TBFLAG_TBI1_SHIFT)
-+#define ARM_TBFLAG_ZCR_LEN(F) \
-+    (((F) & ARM_TBFLAG_ZCR_LEN_MASK) >> ARM_TBFLAG_ZCR_LEN_SHIFT)
- 
- static inline bool bswap_code(bool sctlr_b)
- {
-@@ -2818,34 +2828,39 @@ static inline uint32_t arm_regime_tbi1(CPUARMState *env, ARMMMUIdx mmu_idx)
++DEF_HELPER_FLAGS_4(sve_asr_zpzi_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve_asr_zpzi_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve_asr_zpzi_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve_asr_zpzi_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(sve_lsr_zpzi_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve_lsr_zpzi_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve_lsr_zpzi_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve_lsr_zpzi_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(sve_lsl_zpzi_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve_lsl_zpzi_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve_lsl_zpzi_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve_lsl_zpzi_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(sve_asrd_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve_asrd_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve_asrd_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve_asrd_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
+ DEF_HELPER_FLAGS_5(sve_and_pred, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_5(sve_bic_pred, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_5(sve_eor_pred, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+index fca17440e7..9146e35e5b 100644
+--- a/target/arm/sve_helper.c
++++ b/target/arm/sve_helper.c
+@@ -42,6 +42,201 @@
  #endif
  
- static inline void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
--                                        target_ulong *cs_base, uint32_t *flags)
-+                                        target_ulong *cs_base, uint32_t *pflags)
- {
-     ARMMMUIdx mmu_idx = core_to_arm_mmu_idx(env, cpu_mmu_index(env, false));
-+    uint32_t flags;
+ 
++/* Expand active predicate bits to bytes, for byte elements.
++ *  for (i = 0; i < 256; ++i) {
++ *      unsigned long m = 0;
++ *      for (j = 0; j < 8; j++) {
++ *          if ((i >> j) & 1) {
++ *              m |= 0xfful << (j << 3);
++ *          }
++ *      }
++ *      printf("0x%016lx,\n", m);
++ *  }
++ */
++static inline uint64_t expand_pred_b(uint8_t byte)
++{
++    static const uint64_t word[256] = {
++        0x0000000000000000, 0x00000000000000ff, 0x000000000000ff00,
++        0x000000000000ffff, 0x0000000000ff0000, 0x0000000000ff00ff,
++        0x0000000000ffff00, 0x0000000000ffffff, 0x00000000ff000000,
++        0x00000000ff0000ff, 0x00000000ff00ff00, 0x00000000ff00ffff,
++        0x00000000ffff0000, 0x00000000ffff00ff, 0x00000000ffffff00,
++        0x00000000ffffffff, 0x000000ff00000000, 0x000000ff000000ff,
++        0x000000ff0000ff00, 0x000000ff0000ffff, 0x000000ff00ff0000,
++        0x000000ff00ff00ff, 0x000000ff00ffff00, 0x000000ff00ffffff,
++        0x000000ffff000000, 0x000000ffff0000ff, 0x000000ffff00ff00,
++        0x000000ffff00ffff, 0x000000ffffff0000, 0x000000ffffff00ff,
++        0x000000ffffffff00, 0x000000ffffffffff, 0x0000ff0000000000,
++        0x0000ff00000000ff, 0x0000ff000000ff00, 0x0000ff000000ffff,
++        0x0000ff0000ff0000, 0x0000ff0000ff00ff, 0x0000ff0000ffff00,
++        0x0000ff0000ffffff, 0x0000ff00ff000000, 0x0000ff00ff0000ff,
++        0x0000ff00ff00ff00, 0x0000ff00ff00ffff, 0x0000ff00ffff0000,
++        0x0000ff00ffff00ff, 0x0000ff00ffffff00, 0x0000ff00ffffffff,
++        0x0000ffff00000000, 0x0000ffff000000ff, 0x0000ffff0000ff00,
++        0x0000ffff0000ffff, 0x0000ffff00ff0000, 0x0000ffff00ff00ff,
++        0x0000ffff00ffff00, 0x0000ffff00ffffff, 0x0000ffffff000000,
++        0x0000ffffff0000ff, 0x0000ffffff00ff00, 0x0000ffffff00ffff,
++        0x0000ffffffff0000, 0x0000ffffffff00ff, 0x0000ffffffffff00,
++        0x0000ffffffffffff, 0x00ff000000000000, 0x00ff0000000000ff,
++        0x00ff00000000ff00, 0x00ff00000000ffff, 0x00ff000000ff0000,
++        0x00ff000000ff00ff, 0x00ff000000ffff00, 0x00ff000000ffffff,
++        0x00ff0000ff000000, 0x00ff0000ff0000ff, 0x00ff0000ff00ff00,
++        0x00ff0000ff00ffff, 0x00ff0000ffff0000, 0x00ff0000ffff00ff,
++        0x00ff0000ffffff00, 0x00ff0000ffffffff, 0x00ff00ff00000000,
++        0x00ff00ff000000ff, 0x00ff00ff0000ff00, 0x00ff00ff0000ffff,
++        0x00ff00ff00ff0000, 0x00ff00ff00ff00ff, 0x00ff00ff00ffff00,
++        0x00ff00ff00ffffff, 0x00ff00ffff000000, 0x00ff00ffff0000ff,
++        0x00ff00ffff00ff00, 0x00ff00ffff00ffff, 0x00ff00ffffff0000,
++        0x00ff00ffffff00ff, 0x00ff00ffffffff00, 0x00ff00ffffffffff,
++        0x00ffff0000000000, 0x00ffff00000000ff, 0x00ffff000000ff00,
++        0x00ffff000000ffff, 0x00ffff0000ff0000, 0x00ffff0000ff00ff,
++        0x00ffff0000ffff00, 0x00ffff0000ffffff, 0x00ffff00ff000000,
++        0x00ffff00ff0000ff, 0x00ffff00ff00ff00, 0x00ffff00ff00ffff,
++        0x00ffff00ffff0000, 0x00ffff00ffff00ff, 0x00ffff00ffffff00,
++        0x00ffff00ffffffff, 0x00ffffff00000000, 0x00ffffff000000ff,
++        0x00ffffff0000ff00, 0x00ffffff0000ffff, 0x00ffffff00ff0000,
++        0x00ffffff00ff00ff, 0x00ffffff00ffff00, 0x00ffffff00ffffff,
++        0x00ffffffff000000, 0x00ffffffff0000ff, 0x00ffffffff00ff00,
++        0x00ffffffff00ffff, 0x00ffffffffff0000, 0x00ffffffffff00ff,
++        0x00ffffffffffff00, 0x00ffffffffffffff, 0xff00000000000000,
++        0xff000000000000ff, 0xff0000000000ff00, 0xff0000000000ffff,
++        0xff00000000ff0000, 0xff00000000ff00ff, 0xff00000000ffff00,
++        0xff00000000ffffff, 0xff000000ff000000, 0xff000000ff0000ff,
++        0xff000000ff00ff00, 0xff000000ff00ffff, 0xff000000ffff0000,
++        0xff000000ffff00ff, 0xff000000ffffff00, 0xff000000ffffffff,
++        0xff0000ff00000000, 0xff0000ff000000ff, 0xff0000ff0000ff00,
++        0xff0000ff0000ffff, 0xff0000ff00ff0000, 0xff0000ff00ff00ff,
++        0xff0000ff00ffff00, 0xff0000ff00ffffff, 0xff0000ffff000000,
++        0xff0000ffff0000ff, 0xff0000ffff00ff00, 0xff0000ffff00ffff,
++        0xff0000ffffff0000, 0xff0000ffffff00ff, 0xff0000ffffffff00,
++        0xff0000ffffffffff, 0xff00ff0000000000, 0xff00ff00000000ff,
++        0xff00ff000000ff00, 0xff00ff000000ffff, 0xff00ff0000ff0000,
++        0xff00ff0000ff00ff, 0xff00ff0000ffff00, 0xff00ff0000ffffff,
++        0xff00ff00ff000000, 0xff00ff00ff0000ff, 0xff00ff00ff00ff00,
++        0xff00ff00ff00ffff, 0xff00ff00ffff0000, 0xff00ff00ffff00ff,
++        0xff00ff00ffffff00, 0xff00ff00ffffffff, 0xff00ffff00000000,
++        0xff00ffff000000ff, 0xff00ffff0000ff00, 0xff00ffff0000ffff,
++        0xff00ffff00ff0000, 0xff00ffff00ff00ff, 0xff00ffff00ffff00,
++        0xff00ffff00ffffff, 0xff00ffffff000000, 0xff00ffffff0000ff,
++        0xff00ffffff00ff00, 0xff00ffffff00ffff, 0xff00ffffffff0000,
++        0xff00ffffffff00ff, 0xff00ffffffffff00, 0xff00ffffffffffff,
++        0xffff000000000000, 0xffff0000000000ff, 0xffff00000000ff00,
++        0xffff00000000ffff, 0xffff000000ff0000, 0xffff000000ff00ff,
++        0xffff000000ffff00, 0xffff000000ffffff, 0xffff0000ff000000,
++        0xffff0000ff0000ff, 0xffff0000ff00ff00, 0xffff0000ff00ffff,
++        0xffff0000ffff0000, 0xffff0000ffff00ff, 0xffff0000ffffff00,
++        0xffff0000ffffffff, 0xffff00ff00000000, 0xffff00ff000000ff,
++        0xffff00ff0000ff00, 0xffff00ff0000ffff, 0xffff00ff00ff0000,
++        0xffff00ff00ff00ff, 0xffff00ff00ffff00, 0xffff00ff00ffffff,
++        0xffff00ffff000000, 0xffff00ffff0000ff, 0xffff00ffff00ff00,
++        0xffff00ffff00ffff, 0xffff00ffffff0000, 0xffff00ffffff00ff,
++        0xffff00ffffffff00, 0xffff00ffffffffff, 0xffffff0000000000,
++        0xffffff00000000ff, 0xffffff000000ff00, 0xffffff000000ffff,
++        0xffffff0000ff0000, 0xffffff0000ff00ff, 0xffffff0000ffff00,
++        0xffffff0000ffffff, 0xffffff00ff000000, 0xffffff00ff0000ff,
++        0xffffff00ff00ff00, 0xffffff00ff00ffff, 0xffffff00ffff0000,
++        0xffffff00ffff00ff, 0xffffff00ffffff00, 0xffffff00ffffffff,
++        0xffffffff00000000, 0xffffffff000000ff, 0xffffffff0000ff00,
++        0xffffffff0000ffff, 0xffffffff00ff0000, 0xffffffff00ff00ff,
++        0xffffffff00ffff00, 0xffffffff00ffffff, 0xffffffffff000000,
++        0xffffffffff0000ff, 0xffffffffff00ff00, 0xffffffffff00ffff,
++        0xffffffffffff0000, 0xffffffffffff00ff, 0xffffffffffffff00,
++        0xffffffffffffffff,
++    };
++    return word[byte];
++}
 +
-     if (is_a64(env)) {
-         *pc = env->pc;
--        *flags = ARM_TBFLAG_AARCH64_STATE_MASK;
-+        flags = ARM_TBFLAG_AARCH64_STATE_MASK;
-         /* Get control bits for tagged addresses */
--        *flags |= (arm_regime_tbi0(env, mmu_idx) << ARM_TBFLAG_TBI0_SHIFT);
--        *flags |= (arm_regime_tbi1(env, mmu_idx) << ARM_TBFLAG_TBI1_SHIFT);
-+        flags |= (arm_regime_tbi0(env, mmu_idx) << ARM_TBFLAG_TBI0_SHIFT);
-+        flags |= (arm_regime_tbi1(env, mmu_idx) << ARM_TBFLAG_TBI1_SHIFT);
-+        /* Get SVE vector length */
-+        flags |= ((env->vfp.zcr_el << ARM_TBFLAG_ZCR_LEN_SHIFT)
-+                  & ARM_TBFLAG_ZCR_LEN_MASK);
-     } else {
-         *pc = env->regs[15];
--        *flags = (env->thumb << ARM_TBFLAG_THUMB_SHIFT)
-+        flags = (env->thumb << ARM_TBFLAG_THUMB_SHIFT)
-             | (env->vfp.vec_len << ARM_TBFLAG_VECLEN_SHIFT)
-             | (env->vfp.vec_stride << ARM_TBFLAG_VECSTRIDE_SHIFT)
-             | (env->condexec_bits << ARM_TBFLAG_CONDEXEC_SHIFT)
-             | (arm_sctlr_b(env) << ARM_TBFLAG_SCTLR_B_SHIFT);
-         if (!(access_secure_reg(env))) {
--            *flags |= ARM_TBFLAG_NS_MASK;
-+            flags |= ARM_TBFLAG_NS_MASK;
-         }
-         if (env->vfp.xregs[ARM_VFP_FPEXC] & (1 << 30)
-             || arm_el_is_aa64(env, 1)) {
--            *flags |= ARM_TBFLAG_VFPEN_MASK;
-+            flags |= ARM_TBFLAG_VFPEN_MASK;
-         }
--        *flags |= (extract32(env->cp15.c15_cpar, 0, 2)
--                   << ARM_TBFLAG_XSCALE_CPAR_SHIFT);
-+        flags |= (extract32(env->cp15.c15_cpar, 0, 2)
-+                  << ARM_TBFLAG_XSCALE_CPAR_SHIFT);
-     }
++/* Similarly for half-word elements.
++ *  for (i = 0; i < 256; ++i) {
++ *      unsigned long m = 0;
++ *      if (i & 0xaa) {
++ *          continue;
++ *      }
++ *      for (j = 0; j < 8; j += 2) {
++ *          if ((i >> j) & 1) {
++ *              m |= 0xfffful << (j << 3);
++ *          }
++ *      }
++ *      printf("[0x%x] = 0x%016lx,\n", i, m);
++ *  }
++ */
++static inline uint64_t expand_pred_h(uint8_t byte)
++{
++    static const uint64_t word[] = {
++        [0x01] = 0x000000000000ffff, [0x04] = 0x00000000ffff0000,
++        [0x05] = 0x00000000ffffffff, [0x10] = 0x0000ffff00000000,
++        [0x11] = 0x0000ffff0000ffff, [0x14] = 0x0000ffffffff0000,
++        [0x15] = 0x0000ffffffffffff, [0x40] = 0xffff000000000000,
++        [0x41] = 0xffff00000000ffff, [0x44] = 0xffff0000ffff0000,
++        [0x45] = 0xffff0000ffffffff, [0x50] = 0xffffffff00000000,
++        [0x51] = 0xffffffff0000ffff, [0x54] = 0xffffffffffff0000,
++        [0x55] = 0xffffffffffffffff,
++    };
++    return word[byte & 0x55];
++}
++
++/* Similarly for single word elements.  */
++static inline uint64_t expand_pred_s(uint8_t byte)
++{
++    static const uint64_t word[] = {
++        [0x01] = 0x00000000ffffffffull,
++        [0x10] = 0xffffffff00000000ull,
++        [0x11] = 0xffffffffffffffffull,
++    };
++    return word[byte & 0x11];
++}
++
++/* Store zero into every active element of Zd.  We will use this for two
++ * and three-operand predicated instructions for which logic dictates a
++ * zero result.  In particular, logical shift by element size, which is
++ * otherwise undefined on the host.
++ *
++ * For element sizes smaller than uint64_t, we use tables to expand
++ * the N bits of the controlling predicate to a byte mask, and clear
++ * those bytes.
++ */
++void HELPER(sve_clr_b)(void *vd, void *vg, uint32_t desc)
++{
++    intptr_t i, opr_sz = simd_oprsz(desc) / 8;
++    uint64_t *d = vd;
++    uint8_t *pg = vg;
++    for (i = 0; i < opr_sz; i += 1) {
++        d[i] &= ~expand_pred_b(pg[H1(i)]);
++    }
++}
++
++void HELPER(sve_clr_h)(void *vd, void *vg, uint32_t desc)
++{
++    intptr_t i, opr_sz = simd_oprsz(desc) / 8;
++    uint64_t *d = vd;
++    uint8_t *pg = vg;
++    for (i = 0; i < opr_sz; i += 1) {
++        d[i] &= ~expand_pred_h(pg[H1(i)]);
++    }
++}
++
++void HELPER(sve_clr_s)(void *vd, void *vg, uint32_t desc)
++{
++    intptr_t i, opr_sz = simd_oprsz(desc) / 8;
++    uint64_t *d = vd;
++    uint8_t *pg = vg;
++    for (i = 0; i < opr_sz; i += 1) {
++        d[i] &= ~expand_pred_s(pg[H1(i)]);
++    }
++}
++
++void HELPER(sve_clr_d)(void *vd, void *vg, uint32_t desc)
++{
++    intptr_t i, opr_sz = simd_oprsz(desc) / 8;
++    uint64_t *d = vd;
++    uint8_t *pg = vg;
++    for (i = 0; i < opr_sz; i += 1) {
++        if (pg[H1(i)] & 1) {
++            d[i] = 0;
++        }
++    }
++}
++
+ /* Given the first and last word of the result, the first and last word
+    of the governing mask, and the sum of the result, return a mask that
+    can be used to quickly set NZCV.  */
+@@ -401,6 +596,76 @@ DO_VPZ_D(sve_uminv_d, uint64_t, uint64_t, -1, DO_MIN)
+ #undef DO_MUL
+ #undef DO_DIV
  
--    *flags |= (arm_to_core_mmu_idx(mmu_idx) << ARM_TBFLAG_MMUIDX_SHIFT);
-+    flags |= (arm_to_core_mmu_idx(mmu_idx) << ARM_TBFLAG_MMUIDX_SHIFT);
- 
-     /* The SS_ACTIVE and PSTATE_SS bits correspond to the state machine
-      * states defined in the ARM ARM for software singlestep:
-@@ -2855,26 +2870,27 @@ static inline void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
-      *     1            1       Active-not-pending
-      */
-     if (arm_singlestep_active(env)) {
--        *flags |= ARM_TBFLAG_SS_ACTIVE_MASK;
-+        flags |= ARM_TBFLAG_SS_ACTIVE_MASK;
-         if (is_a64(env)) {
-             if (env->pstate & PSTATE_SS) {
--                *flags |= ARM_TBFLAG_PSTATE_SS_MASK;
-+                flags |= ARM_TBFLAG_PSTATE_SS_MASK;
-             }
-         } else {
-             if (env->uncached_cpsr & PSTATE_SS) {
--                *flags |= ARM_TBFLAG_PSTATE_SS_MASK;
-+                flags |= ARM_TBFLAG_PSTATE_SS_MASK;
-             }
-         }
-     }
-     if (arm_cpu_data_is_big_endian(env)) {
--        *flags |= ARM_TBFLAG_BE_DATA_MASK;
-+        flags |= ARM_TBFLAG_BE_DATA_MASK;
-     }
--    *flags |= fp_exception_el(env) << ARM_TBFLAG_FPEXC_EL_SHIFT;
-+    flags |= fp_exception_el(env) << ARM_TBFLAG_FPEXC_EL_SHIFT;
- 
-     if (arm_v7m_is_handler_mode(env)) {
--        *flags |= ARM_TBFLAG_HANDLER_MASK;
-+        flags |= ARM_TBFLAG_HANDLER_MASK;
-     }
- 
-+    *pflags = flags;
-     *cs_base = 0;
- }
- 
-diff --git a/target/arm/translate.h b/target/arm/translate.h
-index 3f4df91e5e..2b0a2d7aa6 100644
---- a/target/arm/translate.h
-+++ b/target/arm/translate.h
-@@ -34,6 +34,7 @@ typedef struct DisasContext {
-     bool vfp_enabled; /* FP enabled via FPSCR.EN */
-     int vec_len;
-     int vec_stride;
-+    int sve_len;      /* SVE vector length in bytes */
-     bool v7m_handler_mode;
-     bool v8m_secure; /* true if v8M and we're in Secure mode */
-     /* Immediate value in AArch32 SVC insn; must be set if is_jmp == DISAS_SWI
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 6cd8ae1459..10b68ea16f 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -149,6 +149,8 @@ static void arm_cpu_reset(CPUState *s)
-         env->cp15.sctlr_el[1] |= SCTLR_UCT | SCTLR_UCI | SCTLR_DZE;
-         /* and to the FP/Neon instructions */
-         env->cp15.cpacr_el1 = deposit64(env->cp15.cpacr_el1, 20, 2, 3);
-+        /* Set the SVE vector length to maximum.  */
-+        env->vfp.zcr_el = ARM_MAX_VQ - 1;
- #else
-         /* Reset into the highest available EL */
-         if (arm_feature(env, ARM_FEATURE_EL3)) {
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 487408a7a7..ecb72e4d9c 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -549,9 +549,7 @@ static inline int vec_full_reg_offset(DisasContext *s, int regno)
- /* Return the byte size of the "whole" vector register, VL / 8.  */
- static inline int vec_full_reg_size(DisasContext *s)
++/* Three-operand expander, immediate operand, controlled by a predicate.
++ */
++#define DO_ZPZI(NAME, TYPE, H, OP)                                      \
++void HELPER(NAME)(void *vd, void *vn, void *vg, uint32_t desc)          \
++{                                                                       \
++    intptr_t iv = 0, ib = 0, opr_sz = simd_oprsz(desc);                 \
++    TYPE imm = simd_data(desc);                                         \
++    for (iv = ib = 0; iv < opr_sz; iv += 16, ib += 2) {                 \
++        uint16_t pg = *(uint16_t *)(vg + H2(ib));                       \
++        intptr_t i = 0;                                                 \
++        do {                                                            \
++            if (pg & 1) {                                               \
++                TYPE nn = *(TYPE *)(vn + iv + H(i));                    \
++                *(TYPE *)(vd + iv + H(i)) = OP(nn, imm);                \
++            }                                                           \
++            i += sizeof(TYPE), pg >>= sizeof(TYPE);                     \
++        } while (pg);                                                   \
++    }                                                                   \
++}
++
++/* Similarly, specialized for 64-bit operands.  */
++#define DO_ZPZI_D(NAME, TYPE, OP)                               \
++void HELPER(NAME)(void *vd, void *vn, void *vg, uint32_t desc)  \
++{                                                               \
++    intptr_t i, opr_sz = simd_oprsz(desc) / 8;                  \
++    TYPE *d = vd, *n = vn;                                      \
++    TYPE imm = simd_data(desc);                                 \
++    uint8_t *pg = vg;                                           \
++    for (i = 0; i < opr_sz; i += 1) {                           \
++        if (pg[H1(i)] & 1) {                                    \
++            TYPE nn = n[i];                                     \
++            d[i] = OP(nn, imm);                                 \
++        }                                                       \
++    }                                                           \
++}
++
++#define DO_SHR(N, M)  (N >> M)
++#define DO_SHL(N, M)  (N << M)
++
++/* Arithmetic shift right for division.  This rounds negative numbers
++   toward zero as per signed division.  Therefore before shifting,
++   when N is negative, add 2**M-1.  */
++#define DO_ASRD(N, M) ((N + (N < 0 ? ((__typeof(N))1 << M) - 1 : 0)) >> M)
++
++DO_ZPZI(sve_asr_zpzi_b, int8_t, H1, DO_SHR)
++DO_ZPZI(sve_asr_zpzi_h, int16_t, H1_2, DO_SHR)
++DO_ZPZI(sve_asr_zpzi_s, int32_t, H1_4, DO_SHR)
++DO_ZPZI_D(sve_asr_zpzi_d, int64_t, DO_SHR)
++
++DO_ZPZI(sve_lsr_zpzi_b, uint8_t, H1, DO_SHR)
++DO_ZPZI(sve_lsr_zpzi_h, uint16_t, H1_2, DO_SHR)
++DO_ZPZI(sve_lsr_zpzi_s, uint32_t, H1_4, DO_SHR)
++DO_ZPZI_D(sve_lsr_zpzi_d, uint64_t, DO_SHR)
++
++DO_ZPZI(sve_lsl_zpzi_b, uint8_t, H1, DO_SHL)
++DO_ZPZI(sve_lsl_zpzi_h, uint16_t, H1_2, DO_SHL)
++DO_ZPZI(sve_lsl_zpzi_s, uint32_t, H1_4, DO_SHL)
++DO_ZPZI_D(sve_lsl_zpzi_d, uint64_t, DO_SHL)
++
++DO_ZPZI(sve_asrd_b, int8_t, H1, DO_ASRD)
++DO_ZPZI(sve_asrd_h, int16_t, H1_2, DO_ASRD)
++DO_ZPZI(sve_asrd_s, int32_t, H1_4, DO_ASRD)
++DO_ZPZI_D(sve_asrd_d, int64_t, DO_ASRD)
++
++#undef DO_ZPZI
++#undef DO_ZPZI_D
++#undef DO_SHR
++#undef DO_SHL
++#undef DO_ASRD
++
+ void HELPER(sve_ldr)(CPUARMState *env, void *d, target_ulong addr, uint32_t len)
  {
--    /* FIXME SVE: We should put the composite ZCR_EL* value into tb->flags.
--       In the meantime this is just the AdvSIMD length of 128.  */
--    return 128 / 8;
-+    return s->sve_len;
- }
+     intptr_t i, len_align = QEMU_ALIGN_DOWN(len, 8);
+diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+index 4abc66ba5f..08388c0a07 100644
+--- a/target/arm/translate-sve.c
++++ b/target/arm/translate-sve.c
+@@ -37,6 +37,30 @@ typedef void GVecGen2Fn(unsigned, uint32_t, uint32_t, uint32_t, uint32_t);
+ typedef void GVecGen3Fn(unsigned, uint32_t, uint32_t,
+                         uint32_t, uint32_t, uint32_t);
  
- /* Return a newly allocated pointer to the vector register.  */
-@@ -12771,6 +12769,7 @@ static int aarch64_tr_init_disas_context(DisasContextBase *dcbase,
-     dc->fp_excp_el = ARM_TBFLAG_FPEXC_EL(dc->base.tb->flags);
-     dc->vec_len = 0;
-     dc->vec_stride = 0;
-+    dc->sve_len = (ARM_TBFLAG_ZCR_LEN(dc->base.tb->flags) + 1) * 16;
-     dc->cp_regs = arm_cpu->cp_regs;
-     dc->features = env->features;
++/*
++ * Helpers for extracting complex instruction fields.
++ */
++
++/* See e.g. ASL (immediate, predicated).
++ * Returns -1 for unallocated encoding; diagnose later.
++ */
++static int tszimm_esz(int x)
++{
++    x >>= 3;  /* discard imm3 */
++    return 31 - clz32(x);
++}
++
++static int tszimm_shr(int x)
++{
++    return (2 * tszimm_esz(x)) - x;
++}
++
++/* See e.g. LSL (immediate, predicated).  */
++static int tszimm_shl(int x)
++{
++    return x - tszimm_esz(x);
++}
++
+ /*
+  * Include the generated decoder.
+  */
+@@ -265,6 +289,106 @@ void trans_SADDV(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
  
+ #undef DO_VPZ
+ 
++/* Store zero into every active element of Zd.  We will use this for two
++ * and three-operand predicated instructions for which logic dictates a
++ * zero result.
++ */
++static void do_zp_clr(DisasContext *s, int rd, int pg, int esz)
++{
++    static gen_helper_gvec_2 * const fns[4] = {
++        gen_helper_sve_clr_b, gen_helper_sve_clr_h,
++        gen_helper_sve_clr_s, gen_helper_sve_clr_d,
++    };
++    unsigned vsz = size_for_gvec(vec_full_reg_size(s));
++    tcg_gen_gvec_2_ool(vec_full_reg_offset(s, rd),
++                       pred_full_reg_offset(s, pg),
++                       vsz, vsz, 0, fns[esz]);
++}
++
++static void do_zpzi_ool(DisasContext *s, arg_rpri_esz *a,
++                        gen_helper_gvec_3 *fn)
++{
++    unsigned vsz = size_for_gvec(vec_full_reg_size(s));
++    tcg_gen_gvec_3_ool(vec_full_reg_offset(s, a->rd),
++                       vec_full_reg_offset(s, a->rn),
++                       pred_full_reg_offset(s, a->pg),
++                       vsz, vsz, a->imm, fn);
++}
++
++void trans_ASR_zpzi(DisasContext *s, arg_rpri_esz *a, uint32_t insn)
++{
++    static gen_helper_gvec_3 * const fns[4] = {
++        gen_helper_sve_asr_zpzi_b, gen_helper_sve_asr_zpzi_h,
++        gen_helper_sve_asr_zpzi_s, gen_helper_sve_asr_zpzi_d,
++    };
++    if (a->esz < 0) {
++        /* Invalid tsz encoding -- see tszimm_esz. */
++        unallocated_encoding(s);
++        return;
++    }
++    /* Shift by element size is architecturally valid.  For
++       arithmetic right-shift, it's the same as by one less. */
++    a->imm = MIN(a->imm, (8 << a->esz) - 1);
++    do_zpzi_ool(s, a, fns[a->esz]);
++}
++
++void trans_LSR_zpzi(DisasContext *s, arg_rpri_esz *a, uint32_t insn)
++{
++    static gen_helper_gvec_3 * const fns[4] = {
++        gen_helper_sve_lsr_zpzi_b, gen_helper_sve_lsr_zpzi_h,
++        gen_helper_sve_lsr_zpzi_s, gen_helper_sve_lsr_zpzi_d,
++    };
++    if (a->esz < 0) {
++        unallocated_encoding(s);
++        return;
++    }
++    /* Shift by element size is architecturally valid.
++       For logical shifts, it is a zeroing operation.  */
++    if (a->imm >= (8 << a->esz)) {
++        do_zp_clr(s, a->rd, a->pg, a->esz);
++    } else {
++        do_zpzi_ool(s, a, fns[a->esz]);
++    }
++}
++
++void trans_LSL_zpzi(DisasContext *s, arg_rpri_esz *a, uint32_t insn)
++{
++    static gen_helper_gvec_3 * const fns[4] = {
++        gen_helper_sve_lsl_zpzi_b, gen_helper_sve_lsl_zpzi_h,
++        gen_helper_sve_lsl_zpzi_s, gen_helper_sve_lsl_zpzi_d,
++    };
++    if (a->esz < 0) {
++        unallocated_encoding(s);
++        return;
++    }
++    /* Shift by element size is architecturally valid.
++       For logical shifts, it is a zeroing operation.  */
++    if (a->imm >= (8 << a->esz)) {
++        do_zp_clr(s, a->rd, a->pg, a->esz);
++    } else {
++        do_zpzi_ool(s, a, fns[a->esz]);
++    }
++}
++
++void trans_ASRD(DisasContext *s, arg_rpri_esz *a, uint32_t insn)
++{
++    static gen_helper_gvec_3 * const fns[4] = {
++        gen_helper_sve_asrd_b, gen_helper_sve_asrd_h,
++        gen_helper_sve_asrd_s, gen_helper_sve_asrd_d,
++    };
++    if (a->esz < 0) {
++        unallocated_encoding(s);
++        return;
++    }
++    /* Shift by element size is architecturally valid.  For arithmetic
++       right shift for division, it is a zeroing operation.  */
++    if (a->imm >= (8 << a->esz)) {
++        do_zp_clr(s, a->rd, a->pg, a->esz);
++    } else {
++        do_zpzi_ool(s, a, fns[a->esz]);
++    }
++}
++
+ static uint64_t pred_esz_mask[4] = {
+     0xffffffffffffffffull, 0x5555555555555555ull,
+     0x1111111111111111ull, 0x0101010101010101ull
+diff --git a/target/arm/sve.def b/target/arm/sve.def
+index c26b1377e8..f1d2801b94 100644
+--- a/target/arm/sve.def
++++ b/target/arm/sve.def
+@@ -23,6 +23,14 @@
+ # Named fields.  These are primarily for disjoint fields.
+ 
+ %imm9_16_10		16:s6 10:3
++%imm6_22_5		22:1 5:5
++
++# A combination of tsz:imm3 -- extract esize.
++%tszimm_esz		22:2 5:5 !function=tszimm_esz
++# A combination of tsz:imm3 -- extract (2 * esize) - (tsz:imm3)
++%tszimm_shr		22:2 5:5 !function=tszimm_shr
++# A combination of tsz:imm3 -- extract (tsz:imm3) - esize
++%tszimm_shl		22:2 5:5 !function=tszimm_shl
+ 
+ # Either a copy of rd (at bit 0), or a different source
+ # as propagated via the MOVPRFX instruction.
+@@ -37,6 +45,7 @@
+ &rrr_esz		rd rn rm esz
+ &rpr_esz		rd pg rn esz
+ &rprr_esz		rd pg rn rm esz
++&rpri_esz		rd pg rn imm esz
+ &pred_set		rd pat esz i s
+ 
+ ###########################################################################
+@@ -56,6 +65,10 @@
+ # One register operand, with governing predicate, vector element size
+ @rd_pg_rn_esz		........ esz:2 ... ... ... pg:3 rn:5 rd:5	&rpr_esz
+ 
++# Two register operand, one immediate operand, with predicate, element size encoded as TSZHL.
++# User must fill in imm.
++@rdn_pg_tszimm		........ .. ... ... ... pg:3 ..... rd:5		&rpri_esz rn=%reg_movprfx esz=%tszimm_esz
++
+ # Basic Load/Store with 9-bit immediate offset
+ @pd_rn_i9		........ ........ ...... rn:5 . rd:4		&rri imm=%imm9_16_10
+ @rd_rn_i9		........ ........ ...... rn:5 rd:5		&rri imm=%imm9_16_10
+@@ -112,6 +125,14 @@ UMAXV			00000100 .. 001 001 001 ... ..... .....		@rd_pg_rn_esz
+ SMINV			00000100 .. 001 010 001 ... ..... .....		@rd_pg_rn_esz
+ UMINV			00000100 .. 001 011 001 ... ..... .....		@rd_pg_rn_esz
+ 
++### SVE Shift by Immediate - Predicated Group
++
++# SVE bitwise shift by immediate (predicated)
++ASR_zpzi		00000100 .. 000 000 100 ... .. ... .....	@rdn_pg_tszimm imm=%tszimm_shr
++LSR_zpzi		00000100 .. 000 001 100 ... .. ... .....	@rdn_pg_tszimm imm=%tszimm_shl
++LSL_zpzi		00000100 .. 000 011 100 ... .. ... .....	@rdn_pg_tszimm imm=%tszimm_shr
++ASRD			00000100 .. 000 100 100 ... .. ... .....	@rdn_pg_tszimm imm=%tszimm_shr
++
+ ### SVE Logical - Unpredicated Group
+ 
+ # SVE bitwise logical operations (unpredicated)
 -- 
 2.14.3
 

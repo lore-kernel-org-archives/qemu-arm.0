@@ -1,272 +1,193 @@
-Received: by 10.28.91.67 with SMTP id p64csp2174962wmb;
-        Sun, 4 Mar 2018 21:17:12 -0800 (PST)
-X-Google-Smtp-Source: AG47ELvAnifmkHHdqilI5GOsY8L6FTpGqfASrlgYCAoM2Y+moVlC+ErlDTsBFd/aCJt2qJpzz58E
-X-Received: by 10.13.224.6 with SMTP id j6mr8609566ywe.484.1520227032171;
-        Sun, 04 Mar 2018 21:17:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520227032; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp2926492wrg;
+        Mon, 18 Dec 2017 09:41:40 -0800 (PST)
+X-Google-Smtp-Source: ACJfBovgK3DIG5MRyKmbk6YaD70zEacKGop+/0UAAA7ccrIPZBT62w2osrKqzGauAFRONf7ThYb+
+X-Received: by 10.129.90.135 with SMTP id o129mr458276ywb.28.1513618900356;
+        Mon, 18 Dec 2017 09:41:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513618900; cv=none;
         d=google.com; s=arc-20160816;
-        b=lBQ03dlb0GhIlk9jMMkksWxqSoxHX4IGfEUNYz5Qgihe8iQNT/zbINBSl8BFq5gcXm
-         fd2RYutmwyDQ8BOiBNfK5OYw/jVkBx6GifbVs+Yendgd/F+cVyNRkBfIhriJjFhI9Gwe
-         SWl6Hf4B/KcEYgyf0k6cu839U2YRjwMDsJYW+ivz6NCUGPL+QMpwoxGid6hMJ9yFvcd1
-         qF79YgrqqhMgTMaVowRA9R0SnTUJdN8g7hQxRt1uyCKam6hr4RMe5ONzAlsUhH5pBFSW
-         DXsxh4wK4SFoLE/Lzx8ieZ/Z6WTY2FZr95w3v84Rs5Tvn4LUosE136RuK4bK34R6jdUd
-         rWtA==
+        b=vsUvL4waauYCRDIc+ZjHw+nNJPZbbJG1IpNmKGqZVnST/7NCzdDHVOIMgisGRNaTtl
+         hzf3I87xyU8FWICzBs4Tueh1UfmeSAe40N7ougimj8OC9eGgEL5EXd4ciHpLXwAK2Dae
+         vkDSFhBHQotDJIPTXeePHFoVtmWRWwd0D5z50fuQl/jewFKkLZ7SMNS5uqqQgTSGpwIj
+         gCgJJCp5d6eXmTK1zs7QZGG7U2+YemGYGqXkzdhAPBNX/nToTMsbBIL3DPPbI9bLUhYd
+         ptofDNE5AbiHtUmEP9uA5fJQ08oo4u2bhgpnaH2JfdEoy3tjMxP+8ehVoUaoa/d4+GH3
+         9Qwg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=AnvZEEpWSQZSvb8tMpvXZDabKKpBtOo1n+r4ql937q4=;
-        b=OW1CVET/wzPoxRQWHXJnMYRcVZQHuk1RKXMa5pAY416X3cyKRua52yezvDCXmJwLJt
-         Jcra9pifeDewMkobMmo5nvWBlk0pDShI+LFQejaP5fo5OXTAjggBrI3xxnBl5BEtd+Sz
-         R9LNsT5We9q2WoyCtdlvuXEN4ctLj5x0dP9cr5mCJF2+D9PPRwWHPYKg1cHjmpFfvPB7
-         6MatlqLqLWXYlsIan5cZK59O367rf1bXBwzmDAGW73Y+XO5OEYd6r9/COR6PwWxCzwyX
-         Wm2kByDZ8r6SjuUwhYmPLMKzc/a3faJ0muLmWNAkEqwuW0o8fxoHImUheTXfsVDKTTKh
-         eK7A==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=hQz2mr3ZIxdEcu/gt27H94bv5BFl3Ifu10zuNk+r8Z0=;
+        b=H84IgP8syHEtnPbNIQmCidSOz6W6ZhzI37LmtAV/bOG5ibsF0jZlaENkYdW61nwFW2
+         Yi3Wpaoh9Ofd5r5CD/YRzit68+1A3x4j/I99eASL6mD0AoeXDTmGRJw7vw6QaG9p7mDO
+         d4t4z61eH5Oln7Tly+NzqIZkSk5G60OvoV3ubEjnjp5PP9NhBfwRVuQ+X1tnyxwnYe6U
+         RMUqzo4tlbJs6+VAEUGPM9NFTkHDJu83G0oOW1KuJD+5CItGhwhXA8yjx94B9IfraGTj
+         KYCf5YUV9hxTyq32iMnHrXA2Yh3k0IGf8R+lSnXQzM10EEUafp776vOyA3KN4gxtRYWT
+         BgEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BA9g+yDz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=LvfLkzDa;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h130si2037375ywh.404.2018.03.04.21.17.11
+        by mx.google.com with ESMTPS id e75si1087113ybb.331.2017.12.18.09.41.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 04 Mar 2018 21:17:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 18 Dec 2017 09:41:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BA9g+yDz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:47165 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=LvfLkzDa;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58930 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1esiUp-00041N-J3
-	for alex.bennee@linaro.org; Mon, 05 Mar 2018 00:17:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33799)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eQzQ3-0003I8-MI
+	for alex.bennee@linaro.org; Mon, 18 Dec 2017 12:41:39 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40908)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1esiUi-000413-Pu
-	for qemu-arm@nongnu.org; Mon, 05 Mar 2018 00:17:06 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1eQz9V-0005r2-98
+	for qemu-devel@nongnu.org; Mon, 18 Dec 2017 12:24:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1esiUf-0006k0-KO
-	for qemu-arm@nongnu.org; Mon, 05 Mar 2018 00:17:04 -0500
-Received: from mail-pl0-x242.google.com ([2607:f8b0:400e:c01::242]:46037)
+	(envelope-from <richard.henderson@linaro.org>) id 1eQz9R-00081J-WA
+	for qemu-devel@nongnu.org; Mon, 18 Dec 2017 12:24:33 -0500
+Received: from mail-pf0-x243.google.com ([2607:f8b0:400e:c00::243]:45343)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
-	id 1esiUf-0006hh-CI; Mon, 05 Mar 2018 00:17:01 -0500
-Received: by mail-pl0-x242.google.com with SMTP id v9-v6so9052515plp.12;
-	Sun, 04 Mar 2018 21:17:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=AnvZEEpWSQZSvb8tMpvXZDabKKpBtOo1n+r4ql937q4=;
-	b=BA9g+yDz6/LYNjdt3pqgdjaFK4AlgjUWHwTVgM9JmWtYhTRjfssQZyvqh50hl1tY4d
-	TFwDFthfN1mKwDmsr1yZytsJMmYIPzfSmIufBlB25tr1apBX5GEc86gQcSsEj9SNOe7z
-	rXVmTTSIbutncntdRs/DZ/auuL7RyqYCircECDm5XDcZOkgXobJQEb3gzlMp6BjIchXp
-	+dzr09p6+jEaQ1C/VTvtJ/VqLwArXmcqjKH+9wCNAtFK1yXxSRUAZp+nctyxvHnes+XE
-	BW0O2Dp39YJbW+Y0mO/f6pv3uENGZEELaU3yJJMMbNp8u8i6DpxD1bFg7gk7P9UZjrVw
-	QyjA==
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1eQz9R-000805-Qu
+	for qemu-devel@nongnu.org; Mon, 18 Dec 2017 12:24:29 -0500
+Received: by mail-pf0-x243.google.com with SMTP id u19so9926586pfa.12
+	for <qemu-devel@nongnu.org>; Mon, 18 Dec 2017 09:24:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=hQz2mr3ZIxdEcu/gt27H94bv5BFl3Ifu10zuNk+r8Z0=;
+	b=LvfLkzDaW61FQZ2MRqAWnj6bawkTM4xyf1pHRclH3oFl0hOrnKLT74bTaroEzBakSW
+	5kNpalLoffuYoPReLD4Lcl4yaoQZvejnFIwLJ/A4SLdkuG+YgaYmi1tCw8ALGC73WQai
+	2Wv3UUl87VHFdXr1BWkBfjutXBl0HN1Pvq36c=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=AnvZEEpWSQZSvb8tMpvXZDabKKpBtOo1n+r4ql937q4=;
-	b=P7YpHLuRbumwDbSkN3D+q9Tb7D8g92hznhcFI7OX5Bb1a8gzcsL+UTuzUbgIpkReZl
-	w20dnI01o8TRk1oENC+CB7OUgNm1nuBsh/FKa8L4on6jpOYDBp/OqfYA/Bwl9dEBnWrn
-	xJj02B+KF2CUho5AEs9dr2u7N+ZsBUtVAIR/H6vIHA6V2y3R0abbRuUzj4F6aviX7j+V
-	NVAWFPZgrVXcv+gsZyBCnYlROaioP3mSARkzGq5xjHJCs60CG/bTzTZJS8NSF0WShQCN
-	qoyBFyn8lmPABcDXnE398tcQDUGR80SXSb6a47nkK1upjK27n5k4kR/XE/PswXqQLDoh
-	gP3A==
-X-Gm-Message-State: APf1xPCNfacIsRswI5eJxf46n5WK7tTTAiuUe3F+gNmPUWXnFavhU4lo
-	To6XE8qLRw+kh8R04zkZWO2bRUqw
-X-Received: by 2002:a17:902:858c:: with SMTP id
-	e12-v6mr12073675plo.39.1520227019627; 
-	Sun, 04 Mar 2018 21:16:59 -0800 (PST)
-Received: from squirtle.lan (c-24-22-235-96.hsd1.wa.comcast.net.
-	[24.22.235.96]) by smtp.gmail.com with ESMTPSA id
-	c11sm30108147pfe.109.2018.03.04.21.16.58
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references:mime-version:content-transfer-encoding;
+	bh=hQz2mr3ZIxdEcu/gt27H94bv5BFl3Ifu10zuNk+r8Z0=;
+	b=nv3HYYTpn2gCOD8gt4uq6HidPDzfVov/V7oqKBOhlwKBl3CqezDfRQFjiNWqiB44HL
+	Q9beRWeBEMuYAtjQnDic93xCLTGJ63SFo0vIqT74XO+B3r01vm0uemVsJpbOXCMH/mG4
+	NiZJLi+GJJvPbR9k11vf8yO58cNF2JoJMZtyjBzvG17tk9KPWxGfgUXvnGFm+Wl4nhQ0
+	1+DULCrPyw4C5UZB+ToSQS57MgAnOWHnNZWN1f1oy3/RZcWHRUXMzsFrJkYKxQs6Piml
+	kTIfMT+4kXhqN4tucR1C5ofNAJDRF3UsDK8bUz24NdhY7+3LH1vblsNGOTH7iiDW2SXI
+	nZzw==
+X-Gm-Message-State: AKGB3mKkh3Zd99pBjMAozyt8+yFW63QOb+u/sbTtGJXOs12tjzp9hR+z
+	sxineLS//U395JIgf/YFY4mOWASIfZo=
+X-Received: by 10.98.134.65 with SMTP id x62mr413468pfd.81.1513617868578;
+	Mon, 18 Dec 2017 09:24:28 -0800 (PST)
+Received: from cloudburst.twiddle.net (174-21-7-63.tukw.qwest.net.
+	[174.21.7.63])
+	by smtp.gmail.com with ESMTPSA id m10sm9260469pgs.4.2017.12.18.09.24.27
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Sun, 04 Mar 2018 21:16:59 -0800 (PST)
-From: Andrey Smirnov <andrew.smirnov@gmail.com>
-To: qemu-arm@nongnu.org
-Date: Sun,  4 Mar 2018 21:16:52 -0800
-Message-Id: <20180305051655.5944-1-andrew.smirnov@gmail.com>
+	Mon, 18 Dec 2017 09:24:27 -0800 (PST)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Mon, 18 Dec 2017 09:24:15 -0800
+Message-Id: <20171218172425.18200-2-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.14.3
+In-Reply-To: <20171218172425.18200-1-richard.henderson@linaro.org>
+References: <20171218172425.18200-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c01::242
-Subject: [Qemu-arm] [PATCH v7 0/3] Initial i.MX7 support
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400e:c00::243
+Subject: [Qemu-devel] [PATCH v2 01/11] target/arm: Add ARM_FEATURE_V8_1_SIMD
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S . Tsirkin" <mst@redhat.com>,
-	Andrey Smirnov <andrew.smirnov@gmail.com>,
-	Jason Wang <jasowang@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@zoho.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, yurovsky@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BBpXj6PJNs1y
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qU+UVUyN9Pgw
 
-Hi everyone,
+Enable it for the "any" CPU used by *-linux-user.
 
-This v7 of the patch series containing the work that I've done in
-order to enable support for i.MX7 emulation in QEMU.
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/cpu.h     | 1 +
+ linux-user/elfload.c | 9 +++++++++
+ target/arm/cpu.c     | 1 +
+ target/arm/cpu64.c   | 1 +
+ 4 files changed, 12 insertions(+)
 
-As the one before last commit in the series states the supported i.MX7
-features are:
-
-    * up to 2 Cortex A9 cores (SMP works with PSCI)
-    * A7 MPCORE (identical to A15 MPCORE)
-    * 4 GPTs modules
-    * 7 GPIO controllers
-    * 2 IOMUXC controllers
-    * 1 CCM module
-    * 1 SVNS module
-    * 1 SRC module
-    * 1 GPCv2 controller
-    * 4 eCSPI controllers
-    * 4 I2C controllers
-    * 7 i.MX UART controllers
-    * 2 FlexCAN controllers
-    * 2 Ethernet controllers (FEC)
-    * 3 SD controllers (USDHC)
-    * 4 WDT modules
-    * 1 SDMA module
-    * 1 GPR module
-    * 2 USBMISC modules
-    * 2 ADC modules
-    * 1 PCIe controller
-    * 3 USB controllers
-    * 1 LCD controller
-    * 1 ARMv7 DAP IP block
-
-Feedback is welcome!
-
-Changes since [v6]:
-
-    - All endiannes in Designware PCI implementation is now specified
-      as little-endian
-
-Changes since [v5]:
-
-    - Rebase patchest on top of latest QEMU master, so now the
-      patchset is down to three patches
-
-    - Reverted the change to use pci_data_* functions becuase the
-      patch supporting this change was causing trouble
-
-    - Fixed endiannes of MSI and configuration space accessors to be
-      LITTLE_ENDIAN
-
-Changes since [v4]:
-
-    - Rebase patchest on top of latest QEMU master
-
-    - Reworked PCIE emulation code to create MemoryRegions
-      only once
-
-    - Fixed incorrect usages of PCI instead of PCIE
-
-    - Fixed device class reported by PCIE bridge
-
-    - Added patch to make pci_data_read() and pci_data_write() usable
-      for PCIE devices as well
-
-    - Converted PCIE code to use pci_data_read() and pci_data_write()
-
-    - Added VMStateDescription code for PCIE
-
-    - Collected Reviewed-by tag from Philippe
-
-Changes since [v3]:
-
-    - Changes to FEC were split into a separate set and merged to master
-
-    - Patchest is rebased on latest master
-
-    - Converted to use PSCI DT fixup code that is shared with virt
-      platform (now relocated to live in arm/boot.c)
-
-    - Large number of dummy block were converted to use
-      create_unimplemented_device() as opposed to its own dedicated
-      type
-
-    - Incorporated varios small feedback items
-
-    - Collected Reviewed-by tags from Peter
-
-Changes since [v2]:
-
-    - Added stubs for more blocks that were causing memory
-      transactions when booting Linux guest as were revealed by
-      additional testing of the patchest
-
-    - Added proper USB emulation code, so now it should be possible to
-      emulated guest's USB bus
-
-Changes since [v1]:
-
-    - Patchset no longer relies on "ignore_memory_transaction_failures = false"
-      for its functionality
-
-    - As a consequnce of implementing the above a number of patches
-      implementing dummy IP block emulation as well as PCIe emulation
-      patches that I alluded to in [v1] are now included in this patch
-      series
-
-    - "has_el3" property is no longer being set to "false" as a part
-      of intialization of A7 CPU. I couldn't reproduce the issues that
-      I thought I was having, so I just dropped that code.
-
-    - A number of smaller feedback items from Peter and other has been
-      incorporated into the patches.
-
-
-Thanks,
-Andrey Smirnov
-
-[v6] https://lists.gnu.org/archive/html/qemu-devel/2018-02/msg03587.html
-[v5] https://lists.gnu.org/archive/html/qemu-devel/2018-02/msg01558.html
-[v4] https://lists.gnu.org/archive/html/qemu-devel/2018-01/msg03264.html
-[v3] https://lists.gnu.org/archive/html/qemu-devel/2017-11/msg04236.html
-[v2] https://lists.gnu.org/archive/html/qemu-devel/2017-10/msg05516.html
-[v1] https://lists.gnu.org/archive/html/qemu-devel/2017-09/msg04770.html
-
-Andrey Smirnov (3):
-  pci: Add support for Designware IP block
-  i.MX: Add i.MX7 SOC implementation.
-  Implement support for i.MX7 Sabre board
-
- default-configs/arm-softmmu.mak  |   3 +
- include/hw/arm/fsl-imx7.h        | 222 ++++++++++++
- include/hw/pci-host/designware.h | 102 ++++++
- include/hw/pci/pci_ids.h         |   2 +
- hw/arm/fsl-imx7.c                | 580 ++++++++++++++++++++++++++++++
- hw/arm/mcimx7d-sabre.c           |  90 +++++
- hw/pci-host/designware.c         | 755 +++++++++++++++++++++++++++++++++++++++
- hw/arm/Makefile.objs             |   3 +
- hw/pci-host/Makefile.objs        |   2 +
- 9 files changed, 1759 insertions(+)
- create mode 100644 include/hw/arm/fsl-imx7.h
- create mode 100644 include/hw/pci-host/designware.h
- create mode 100644 hw/arm/fsl-imx7.c
- create mode 100644 hw/arm/mcimx7d-sabre.c
- create mode 100644 hw/pci-host/designware.c
-
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 715ec6a476..e047756b80 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1351,6 +1351,7 @@ enum arm_features {
+     ARM_FEATURE_VBAR, /* has cp15 VBAR */
+     ARM_FEATURE_M_SECURITY, /* M profile Security Extension */
+     ARM_FEATURE_JAZELLE, /* has (trivial) Jazelle implementation */
++    ARM_FEATURE_V8_1_SIMD, /* has ARMv8.1-SIMD */
+     ARM_FEATURE_V8_FP16, /* implements v8.2 half-precision float */
+ };
+ 
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index 20f3d8c2c3..95f550518e 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -512,6 +512,14 @@ enum {
+     ARM_HWCAP_A64_SHA1          = 1 << 5,
+     ARM_HWCAP_A64_SHA2          = 1 << 6,
+     ARM_HWCAP_A64_CRC32         = 1 << 7,
++    ARM_HWCAP_A64_ATOMICS       = 1 << 8,
++    ARM_HWCAP_A64_FPHP          = 1 << 9,
++    ARM_HWCAP_A64_ASIMDHP       = 1 << 10,
++    ARM_HWCAP_A64_CPUID         = 1 << 11,
++    ARM_HWCAP_A64_ASIMDRDM      = 1 << 12,
++    ARM_HWCAP_A64_JSCVT         = 1 << 13,
++    ARM_HWCAP_A64_FCMA          = 1 << 14,
++    ARM_HWCAP_A64_LRCPC         = 1 << 15,
+ };
+ 
+ #define ELF_HWCAP get_elf_hwcap()
+@@ -532,6 +540,7 @@ static uint32_t get_elf_hwcap(void)
+     GET_FEATURE(ARM_FEATURE_V8_SHA1, ARM_HWCAP_A64_SHA1);
+     GET_FEATURE(ARM_FEATURE_V8_SHA256, ARM_HWCAP_A64_SHA2);
+     GET_FEATURE(ARM_FEATURE_CRC, ARM_HWCAP_A64_CRC32);
++    GET_FEATURE(ARM_FEATURE_V8_1_SIMD, ARM_HWCAP_A64_ASIMDRDM);
+ #undef GET_FEATURE
+ 
+     return hwcaps;
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 7f7a3d1e32..afe84645af 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1628,6 +1628,7 @@ static void arm_any_initfn(Object *obj)
+     set_feature(&cpu->env, ARM_FEATURE_V8_SHA256);
+     set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
+     set_feature(&cpu->env, ARM_FEATURE_CRC);
++    set_feature(&cpu->env, ARM_FEATURE_V8_1_SIMD);
+     cpu->midr = 0xffffffff;
+ }
+ #endif
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 0dc4debd9c..67a01bf7ce 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -226,6 +226,7 @@ static void aarch64_any_initfn(Object *obj)
+     set_feature(&cpu->env, ARM_FEATURE_V8_SHA256);
+     set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
+     set_feature(&cpu->env, ARM_FEATURE_CRC);
++    set_feature(&cpu->env, ARM_FEATURE_V8_1_SIMD);
+     set_feature(&cpu->env, ARM_FEATURE_V8_FP16);
+     cpu->ctr = 0x80038003; /* 32 byte I and D cacheline size, VIPT icache */
+     cpu->dcz_blocksize = 7; /*  512 bytes */
 -- 
 2.14.3
 

@@ -1,99 +1,98 @@
-Received: by 10.223.159.74 with SMTP id f10csp2984062wrg;
-        Mon, 18 Dec 2017 10:36:05 -0800 (PST)
-X-Google-Smtp-Source: ACJfBovqad9Gpw4DCx/r7L67oqqkZBFoXnOpnKWWWYIZbLWL0XLevbZBlqwEynDkusUA+ITyRAbU
-X-Received: by 10.37.79.215 with SMTP id d206mr600276ybb.150.1513622165729;
-        Mon, 18 Dec 2017 10:36:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1513622165; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp2987979wrg;
+        Mon, 18 Dec 2017 10:40:21 -0800 (PST)
+X-Google-Smtp-Source: ACJfBosawx8kEuAUM/297/3JECud5NCknb56UcA5jvGjAbfe65ftxqdNnOdGpUPlbhwdSfuhVU22
+X-Received: by 10.129.52.132 with SMTP id b126mr527534ywa.477.1513622421701;
+        Mon, 18 Dec 2017 10:40:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513622421; cv=none;
         d=google.com; s=arc-20160816;
-        b=LMY/AJPMTENcKPqzK6hrapt2dA97JLx68GFhqq5EQ0W37GrUWDh2RNP1DLZ8BvwPtg
-         J8Sa2A+0Kvvp4iVRSgg8Xd5zD8rG32xeM/XRyQhJZtuuO80l7A2FyeMn/UnOmufzLoXp
-         2XERC6/FC+wTXxTSdEw4e77DQyaccV0/eUjH1sWkN6dKKzfrl/ZVw66UuhhJAbJpoOPg
-         JE1tG9TyDr5my4nNcGL66CmSCThABE9Zdfzt3eI1w/owPIYI8H+g3nkbmG6dDrjS42R0
-         h8hLAv2Gw2nc7pxrDgDIHaynxl05/VG0Dbo3Al4rMsUlWaRrXFTk6l4Wob7Jt6vnAZ12
-         KBFg==
+        b=QzNdhGruPfhANRTfSkznplYV3eVkoy5xvvsPYSWB+lzXBcQW6O9VpRpbIETF56siT9
+         unrX+U/9gt46ZoFo+nGz5xDxj2Dv7rKedQHg0zvVP6zEhJH1MotIacncabsxOCLLWInO
+         LpVfDnc2+pd6KbX0wwogyacAGHotv7NVbV6PECiXkF6FFlx/sYbAmVNIbGDfP477qEQ7
+         vkT230DupfxUAbOCKHjz0YTqyTIPoVnsjgK9BzxkgWyrJkrKiKhzuMK14vJoI1zpFTQl
+         xc1YQnFcJkG9zDFUb9pB6UhIaksZf8WS8Cvc9ol+guMi5vDOGhdKHSZSWC7igH1L6xoS
+         NcDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=qmnu1cV1FQddZr64hDlrwGSfeH9uIDzZPj4kfJrRg2E=;
-        b=jvztEjXKzayb2j8hweXaSdLz2KkH5iFTLIVv1pTsN5zh+gscZZ4F28Y937vDswcXCL
-         b5B9fH9/0PDl8F3ZBS4BWWh4oB8usmWX7dXZUnPqiwCKQT6gLefQrmwo1x7xkLEVGU/j
-         TASVc8IMPbHDPJ/frcsMiducK0gH3gXkOASultkaOsl3lSBuebxoNc9YtfyxQHwEOrBn
-         rpZRrDS38jFIMsRkr0dVHYYV65IFH+j0ItioEa2TzOvgV3JJoLPB9EyaMgHV/7yAIsNW
-         yyVGd6t6jEI30lrXVwBkl4RJETmIN1Na117/T/YgG7U8+IqAh/MU2n5qD9PX9bATT/cQ
-         PBEw==
+        bh=6OVJSkDEUfO1JD1m5iY8ONKJJ9CnoTqMjmeLxQj1JBk=;
+        b=a4oiedOqUKbQCi8Gvgwr/b8RtcNoz81orbf8WhZAqASsYHd1zDjJA3a5LOHEbIdvVS
+         Uf7OzCD0sZN1IIxEGnbaKEphA2sDg4Yf6Pt46VflLlyb6poQJuqshilFofWaI7pCneDr
+         5HKeVAawUrBSFrG8Y7e1AQtI5vhXDzsaLpgRMg2Puh42cnyLeA0b2hdvV4mzysu6K9iE
+         xjshvCHg//KoY4aysdOUDjELHscKAvzvWrsAOv/7skM5rSrI+k/awkTwNKivrkfZDjNt
+         edHnO9V2Oji/MECuOHPXnUT3WgZnb2GHdyvFTBYQuDCtAPX0s2O3GAYwIYeS+i8mcj51
+         c/sw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=IonaUb2M;
+       dkim=fail header.i=@linaro.org header.s=google header.b=fyFTazMk;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l185si2471218ywf.750.2017.12.18.10.36.05
+        by mx.google.com with ESMTPS id j9si2041014ywi.439.2017.12.18.10.40.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 18 Dec 2017 10:36:05 -0800 (PST)
+        Mon, 18 Dec 2017 10:40:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=IonaUb2M;
+       dkim=fail header.i=@linaro.org header.s=google header.b=fyFTazMk;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51803 helo=lists.gnu.org)
+Received: from localhost ([::1]:52024 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eR0Gj-0001Ez-4b
-	for alex.bennee@linaro.org; Mon, 18 Dec 2017 13:36:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55849)
+	id 1eR0Kq-0004oV-Vk
+	for alex.bennee@linaro.org; Mon, 18 Dec 2017 13:40:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55469)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1eQzUZ-0008Jj-ND
-	for qemu-devel@nongnu.org; Mon, 18 Dec 2017 12:46:21 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1eQzUH-00081C-Qd
+	for qemu-devel@nongnu.org; Mon, 18 Dec 2017 12:46:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1eQzUX-00029I-UD
-	for qemu-devel@nongnu.org; Mon, 18 Dec 2017 12:46:19 -0500
-Received: from mail-pl0-x241.google.com ([2607:f8b0:400e:c01::241]:34548)
+	(envelope-from <richard.henderson@linaro.org>) id 1eQzUE-0001lp-GO
+	for qemu-devel@nongnu.org; Mon, 18 Dec 2017 12:46:01 -0500
+Received: from mail-pl0-x232.google.com ([2607:f8b0:400e:c01::232]:47092)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1eQzUX-00028b-M9
-	for qemu-devel@nongnu.org; Mon, 18 Dec 2017 12:46:17 -0500
-Received: by mail-pl0-x241.google.com with SMTP id d21so5238067pll.1
-	for <qemu-devel@nongnu.org>; Mon, 18 Dec 2017 09:46:17 -0800 (PST)
+	id 1eQzUE-0001l2-4B
+	for qemu-devel@nongnu.org; Mon, 18 Dec 2017 12:45:58 -0500
+Received: by mail-pl0-x232.google.com with SMTP id i6so5248671plt.13
+	for <qemu-devel@nongnu.org>; Mon, 18 Dec 2017 09:45:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=qmnu1cV1FQddZr64hDlrwGSfeH9uIDzZPj4kfJrRg2E=;
-	b=IonaUb2MvDcwPDi9j0VLhRg9fPrj5auu0LL9zOf+k5Jpol+1uv6mvO0C0i2YdRCet9
-	X1/kN2AkhjCDNqVva6OSA9HnWiDDaRcWWgRRAWCXFaO14AimvHu8pDAZO9g2Aq/LZ9bk
-	RpVIcYKp6sKu2cA+kSN0fOdabKSW97OHYoMvQ=
+	bh=6OVJSkDEUfO1JD1m5iY8ONKJJ9CnoTqMjmeLxQj1JBk=;
+	b=fyFTazMk8McPfD2TsZQKYtmYpSJjYJB1O67RTPY46E6lLpooLcWgsiY+2HgB9n2LEW
+	Wx4QRXMqwLbfRA50llFaOR76wW/JX1qmdp3Nrm+jQem9F+7WGNQIvtQ+ouo7QNGiWn21
+	OKXh2/6TKkyJG74lkGdi+UDBgQWgBd4ovS/Xk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=qmnu1cV1FQddZr64hDlrwGSfeH9uIDzZPj4kfJrRg2E=;
-	b=OAtBy3l4ijl1n0WJcV+z5b1xalNhrJE+RUkvefJoSsDWbI3+6WvqzANL1eEzuzNYzl
-	cDO53bqGsP7YEGt/O8V4sSggTO2RTi2gcxN3xzG7gVCYAyUYK0/wb+quzhbYO1d17ZZY
-	wHLkbR/T7gWfLlcDDFD/KMmyrU4J3Dm79xyGdfOLNYWJ1xs6AqW3Y6huUvgi1spuwinf
-	kGGzYxpzQ+zhbBwqhESrAUau5UPY2FaQMv4ghspuWG+WX3Ctza1idFVfeTTn+HSziiND
-	4QQY8YHdL2q0peBqvFKzUmEx++t2YNwZpwD2/Xsn+cMjfEAADwg+ctou3OyOxMJ4WapV
-	jARQ==
-X-Gm-Message-State: AKGB3mLsvyP0CoZuYbhogK2Hhv01rE2PnvMqluvfsYqAOfgAFIKc1Swn
-	88tz0I+YOYuoUOPl+v/UtnVpPT0HsjI=
-X-Received: by 10.159.203.137 with SMTP id ay9mr484745plb.380.1513619176266;
-	Mon, 18 Dec 2017 09:46:16 -0800 (PST)
+	bh=6OVJSkDEUfO1JD1m5iY8ONKJJ9CnoTqMjmeLxQj1JBk=;
+	b=maJKvG7o58i+2d397T6k9kqYSvEJ0mjMh791qu0KGtOaU4qWwUpOq/jzhP0CO/18xm
+	jiuK5YQbRsIBgI+J6QTRyJ+GbM7QMw0ur3DDrw7woHNpF0c+eRz8KvP0M//VkiV3w3Ow
+	FWCzG4+5oSF/3onfM2/4q0GUEHi0OdU1pSAdRTOPjKzkj79VoSM5Bd46jqDgBR+S7btI
+	vaDagYZR3oGIW40gJ5OFn5ynadyd0n3D8WlCHyikoIEqKXB+kbwYGfaa7iqblr92puYK
+	79k3XWp++2iECP+kBCA/uhpjBHvWABT2DihN34wbhwdov+Na+6sIstzlMBt6yh1QjnCC
+	Vcug==
+X-Gm-Message-State: AKGB3mIyNykVuVqI4dbVIz60tQM5OckHnxhhEF2m6RluvUY4Nax7IQ66
+	QiGno6e2cEOTR5psZqmGCTbzmFXCTMc=
+X-Received: by 10.159.208.9 with SMTP id a9mr490289plp.66.1513619156314;
+	Mon, 18 Dec 2017 09:45:56 -0800 (PST)
 Received: from cloudburst.twiddle.net (174-21-7-63.tukw.qwest.net.
 	[174.21.7.63]) by smtp.gmail.com with ESMTPSA id
-	t84sm26209657pfe.160.2017.12.18.09.46.15
+	t84sm26209657pfe.160.2017.12.18.09.45.54
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 18 Dec 2017 09:46:15 -0800 (PST)
+	Mon, 18 Dec 2017 09:45:55 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Mon, 18 Dec 2017 09:45:43 -0800
-Message-Id: <20171218174552.18871-15-richard.henderson@linaro.org>
+Date: Mon, 18 Dec 2017 09:45:30 -0800
+Message-Id: <20171218174552.18871-2-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.14.3
 In-Reply-To: <20171218174552.18871-1-richard.henderson@linaro.org>
 References: <20171218174552.18871-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c01::241
-Subject: [Qemu-devel] [PATCH 14/23] target/arm: Implement SVE Integer
- Arithmetic - Unary Predicated Group
+X-Received-From: 2607:f8b0:400e:c01::232
+Subject: [Qemu-devel] [PATCH 01/23] scripts: Add decodetree.py
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,376 +107,1007 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4ighPb7gecZC
+X-TUID: kP1xTUa0htVb
+
+To be used to decode ARM SVE, but could be used for any 32-bit RISC.
+It would need additional work to extend to insn sizes other than 32-bit.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper-sve.h    |  60 +++++++++++++++++++++
- target/arm/sve_helper.c    | 128 +++++++++++++++++++++++++++++++++++++++++++++
- target/arm/translate-sve.c | 107 +++++++++++++++++++++++++++++++++++++
- target/arm/sve.def         |  21 ++++++++
- 4 files changed, 316 insertions(+)
+ scripts/decodetree.py | 984 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 984 insertions(+)
+ create mode 100755 scripts/decodetree.py
 
-diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-index a2db3e2fd9..e9382de300 100644
---- a/target/arm/helper-sve.h
-+++ b/target/arm/helper-sve.h
-@@ -279,6 +279,66 @@ DEF_HELPER_FLAGS_4(sve_asrd_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(sve_asrd_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(sve_asrd_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- 
-+DEF_HELPER_FLAGS_4(sve_cls_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_cls_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_cls_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_cls_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+diff --git a/scripts/decodetree.py b/scripts/decodetree.py
+new file mode 100755
+index 0000000000..acb0243915
+--- /dev/null
++++ b/scripts/decodetree.py
+@@ -0,0 +1,984 @@
++#!/usr/bin/env python
++#
++# Generate a decoding tree from a specification file.
++#
++# The tree is built from instruction "patterns".  A pattern may represent
++# a single architectural instruction or a group of same, depending on what
++# is convenient for further processing.
++#
++# Each pattern has "fixedbits" & "fixedmask", the combination of which
++# describes the condition under which the pattern is matched:
++#
++#   (insn & fixedmask) == fixedbits
++#
++# Each pattern may have "fields", which are extracted from the insn and
++# passed along to the translator.  Examples of such are registers,
++# immediates, and sub-opcodes.
++#
++# In support of patterns, one may declare fields, argument sets, and
++# formats, each of which may be re-used to simplify further definitions.
++#
++## Field syntax:
++#
++# field_def	:= '%' identifier ( unnamed_field )+ ( !function=identifier )?
++# unnamed_field := number ':' ( 's' ) number
++#
++# For unnamed_field, the first number is the least-significant bit position of
++# the field and the second number is the length of the field.  If the 's' is
++# present, the field is considered signed.  If multiple unnamed_fields are
++# present, they are concatenated.  In this way one can define disjoint fields.
++#
++# If !function is specified, the concatenated result is passed through the
++# named function, taking and returning an integral value.
++#
++# FIXME: the fields of the structure into which this result will be stored
++# is restricted to "int".  Which means that we cannot expand 64-bit items.
++#
++# Field examples:
++#
++#   %disp   0:s16          -- sextract(i, 0, 16)
++#   %imm9   16:6 10:3      -- extract(i, 16, 6) << 3 | extract(i, 10, 3)
++#   %disp12 0:s1 1:1 2:10  -- sextract(i, 0, 1) << 11
++#                             | extract(i, 1, 1) << 10
++#                             | extract(i, 2, 10)
++#   %shimm8 5:s8 13:1 !function=expand_shimm8
++#                          -- expand_shimm8(sextract(i, 5, 8) << 1
++#                                           | extract(i, 13, 1))
++#
++## Argument set syntax:
++#
++# args_def    := '&' identifier ( args_elt )+
++# args_elt    := identifier
++#
++# Each args_elt defines an argument within the argument set.
++# Each argument set will be rendered as a C structure "arg_$name"
++# with each of the fields being one of the member arguments.
++#
++# Argument set examples:
++#
++#   &reg3       ra rb rc
++#   &loadstore  reg base offset
++#
++## Format syntax:
++#
++# fmt_def      := '@' identifier ( fmt_elt )+
++# fmt_elt      := fixedbit_elt | field_elt | field_ref | args_ref
++# fixedbit_elt := [01.]+
++# field_elt    := identifier ':' 's'? number
++# field_ref    := '%' identifier | identifier '=' '%' identifier
++# args_ref     := '&' identifier
++#
++# Defining a format is a handy way to avoid replicating groups of fields
++# across many instruction patterns.
++#
++# A fixedbit_elt describes a contiguous sequence of bits that must
++# be 1, 0, or "." for don't care.
++#
++# A field_elt describes a simple field only given a width; the position of
++# the field is implied by its position with respect to other fixedbit_elt
++# and field_elt.
++#
++# If any fixedbit_elt or field_elt appear then all 32 bits must be defined.
++# Padding with a fixedbit_elt of all '.' is an easy way to accomplish that.
++#
++# A field_ref incorporates a field by reference.  This is the only way to
++# add a complex field to a format.  A field may be renamed in the process
++# via assignment to another identifier.  This is intended to allow the
++# same argument set be used with disjoint named fields.
++#
++# A single args_ref may specify an argument set to use for the format.
++# The set of fields in the format must be a subset of the arguments in
++# the argument set.  If an argument set is not specified, one will be
++# inferred from the set of fields.
++#
++# It is recommended, but not required, that all field_ref and args_ref
++# appear at the end of the line, not interleaving with fixedbit_elf or
++# field_elt.
++#
++# Format examples:
++#
++#   @opr    ...... ra:5 rb:5 ... 0 ....... rc:5
++#   @opi    ...... ra:5 lit:8    1 ....... rc:5
++#
++## Pattern syntax:
++#
++# pat_def      := identifier ( pat_elt )+
++# pat_elt      := fixedbit_elt | field_elt | field_ref
++#               | args_ref | fmt_ref | const_elt
++# fmt_ref      := '@' identifier
++# const_elt    := identifier '=' number
++#
++# The fixedbit_elt and field_elt specifiers are unchanged from formats.
++# A pattern that does not specify a named format will have one inferred
++# from a referenced argument set (if present) and the set of fields.
++#
++# A const_elt allows a argument to be set to a constant value.  This may
++# come in handy when fields overlap between patterns and one has to
++# include the values in the fixedbit_elt instead.
++#
++# The decoder will call a translator function for each pattern matched.
++#
++# Pattern examples:
++#
++#   addl_r   010000 ..... ..... .... 0000000 ..... @opr
++#   addl_i   010000 ..... ..... .... 0000000 ..... @opi
++#
++# which will, in part, invoke
++#
++#   trans_addl_r(ctx, &arg_opr, insn)
++# and
++#   trans_addl_i(ctx, &arg_opi, insn)
++#
 +
-+DEF_HELPER_FLAGS_4(sve_clz_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_clz_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_clz_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_clz_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++import io
++import re
++import sys
++import getopt
++import pdb
 +
-+DEF_HELPER_FLAGS_4(sve_cnt_zpz_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_cnt_zpz_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_cnt_zpz_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_cnt_zpz_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++# ??? Parameterize insn_width from 32.
++fields = {}
++arguments = {}
++formats = {}
++patterns = []
 +
-+DEF_HELPER_FLAGS_4(sve_cnot_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_cnot_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_cnot_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_cnot_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++translate_prefix = 'trans'
++output_file = sys.stdout
 +
-+DEF_HELPER_FLAGS_4(sve_fabs_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_fabs_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_fabs_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++re_ident = '[a-zA-Z][a-zA-Z0-9_]*'
 +
-+DEF_HELPER_FLAGS_4(sve_fneg_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_fneg_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_fneg_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++def error(lineno, *args):
++    if lineno:
++        r = 'error:{0}:'.format(lineno)
++    else:
++        r = 'error:'
++    for a in args:
++        r += ' ' + str(a)
++    r += '\n'
++    sys.stderr.write(r)
++    exit(1)
 +
-+DEF_HELPER_FLAGS_4(sve_not_zpz_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_not_zpz_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_not_zpz_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_not_zpz_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++def output(*args):
++    global output_file
++    for a in args:
++        output_file.write(a)
 +
-+DEF_HELPER_FLAGS_4(sve_sxtb_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_sxtb_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_sxtb_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++if sys.version_info >= (3, 0):
++    re_fullmatch = re.fullmatch
++else:
++    def re_fullmatch(pat, str):
++        return re.match('^' + pat + '$', str)
 +
-+DEF_HELPER_FLAGS_4(sve_uxtb_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_uxtb_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_uxtb_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++def output_autogen():
++    output('/* This file is autogenerated.  */\n\n')
 +
-+DEF_HELPER_FLAGS_4(sve_sxth_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_sxth_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++def str_indent(c):
++    """Return a string with C spaces"""
++    r = ''
++    for i in range(0, c):
++        r += ' '
++    return r
 +
-+DEF_HELPER_FLAGS_4(sve_uxth_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_uxth_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++def str_fields(fields):
++    """Return a string uniquely identifing FIELDS"""
 +
-+DEF_HELPER_FLAGS_4(sve_sxtw_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_uxtw_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++    r = ''
++    for n in sorted(fields.keys()):
++        r += '_' + n;
++    return r[1:]
 +
-+DEF_HELPER_FLAGS_4(sve_abs_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_abs_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_abs_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_abs_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++def str_match_bits(bits, mask):
++    """Return a string pretty-printing BITS/MASK"""
++    i = 0x80000000
++    space = 0x01010100
++    r = ''
++    while i != 0:
++        if i & mask:
++            if i & bits:
++                r += '1'
++            else:
++                r += '0'
++        else:
++            r += '.'
++        if i & space:
++            r += ' '
++        i >>= 1
++    return r
 +
-+DEF_HELPER_FLAGS_4(sve_neg_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_neg_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_neg_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve_neg_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++def is_pow2(bits):
++    return (bits & (bits - 1)) == 0
 +
- DEF_HELPER_FLAGS_5(sve_and_pred, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_5(sve_bic_pred, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_5(sve_eor_pred, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
-diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index 3be6d1ae05..481b3bdefe 100644
---- a/target/arm/sve_helper.c
-+++ b/target/arm/sve_helper.c
-@@ -553,6 +553,134 @@ DO_ZPZW(sve_lsl_zpzw_s, uint32_t, uint64_t, H1_4, DO_LSL)
- 
- #undef DO_ZPZW
- 
-+/* Fully general two-operand expander, controlled by a predicate.
-+ */
-+#define DO_ZPZ(NAME, TYPE, H, OP)                               \
-+void HELPER(NAME)(void *vd, void *vn, void *vg, uint32_t desc)  \
-+{                                                               \
-+    intptr_t iv = 0, ib = 0, opr_sz = simd_oprsz(desc);         \
-+    for (iv = ib = 0; iv < opr_sz; iv += 16, ib += 2) {         \
-+        uint16_t pg = *(uint16_t *)(vg + H2(ib));               \
-+        intptr_t i = 0;                                         \
-+        do {                                                    \
-+            if (pg & 1) {                                       \
-+                TYPE nn = *(TYPE *)(vn + iv + H(i));            \
-+                *(TYPE *)(vd + iv + H(i)) = OP(nn);             \
-+            }                                                   \
-+            i += sizeof(TYPE), pg >>= sizeof(TYPE);             \
-+        } while (pg);                                           \
-+    }                                                           \
-+}
++def popcount(b):
++    b = (b & 0x55555555) + ((b >> 1) & 0x55555555)
++    b = (b & 0x33333333) + ((b >> 2) & 0x33333333)
++    b = (b & 0x0f0f0f0f) + ((b >> 4) & 0x0f0f0f0f)
++    b = (b + (b >> 8)) & 0x00ff00ff
++    b = (b + (b >> 16)) & 0xffff
++    return b
 +
-+/* Similarly, specialized for 64-bit operands.  */
-+#define DO_ZPZ_D(NAME, TYPE, OP)                                \
-+void HELPER(NAME)(void *vd, void *vn, void *vg, uint32_t desc)  \
-+{                                                               \
-+    intptr_t i, opr_sz = simd_oprsz(desc) / 8;                  \
-+    TYPE *d = vd, *n = vn;                                      \
-+    uint8_t *pg = vg;                                           \
-+    for (i = 0; i < opr_sz; i += 1) {                           \
-+        if (pg[H1(i)] & 1) {                                    \
-+            TYPE nn = n[i];                                     \
-+            d[i] = OP(nn);                                      \
-+        }                                                       \
-+    }                                                           \
-+}
++def ctz(b):
++    r = 0
++    while ((b >> r) & 1) == 0:
++        r += 1
++    return r
 +
-+#define DO_CLS_B(N)   (clrsb32(N) - 24)
-+#define DO_CLS_H(N)   (clrsb32(N) - 16)
++def is_contiguous(bits):
++    shift = ctz(bits)
++    if is_pow2((bits >> shift) + 1):
++        return shift
++    else:
++        return -1
 +
-+DO_ZPZ(sve_cls_b, int8_t, H1, DO_CLS_B)
-+DO_ZPZ(sve_cls_h, int16_t, H1_2, DO_CLS_H)
-+DO_ZPZ(sve_cls_s, int32_t, H1_4, clrsb32)
-+DO_ZPZ_D(sve_cls_d, int64_t, clrsb64)
++def bit_iterate(bits):
++    iter = 0
++    yield iter
++    if bits == 0:
++        return
++    while True:
++        this = bits
++        while True:
++            lsb = this & -this
++            if iter & lsb:
++                iter ^= lsb
++                this ^= lsb
++            else:
++                iter ^= lsb
++                break
++            if this == 0:
++                return
++        yield iter
 +
-+#define DO_CLZ_B(N)   (clz32(N) - 24)
-+#define DO_CLZ_H(N)   (clz32(N) - 16)
++def eq_fields_for_args(flds_a, flds_b):
++    if len(flds_a) != len(flds_b):
++        return False
++    for k, a in flds_a.items():
++        if k not in flds_b:
++            return False
++    return True
 +
-+DO_ZPZ(sve_clz_b, uint8_t, H1, DO_CLZ_B)
-+DO_ZPZ(sve_clz_h, uint16_t, H1_2, DO_CLZ_H)
-+DO_ZPZ(sve_clz_s, uint32_t, H1_4, clz32)
-+DO_ZPZ_D(sve_clz_d, uint64_t, clz64)
++def eq_fields_for_fmts(flds_a, flds_b):
++    if len(flds_a) != len(flds_b):
++        return False
++    for k, a in flds_a.items():
++        if k not in flds_b:
++            return False
++        b = flds_b[k]
++        if a.__class__ != b.__class__ or a != b:
++            return False
++    return True
 +
-+DO_ZPZ(sve_cnt_zpz_b, uint8_t, H1, ctpop8)
-+DO_ZPZ(sve_cnt_zpz_h, uint16_t, H1_2, ctpop16)
-+DO_ZPZ(sve_cnt_zpz_s, uint32_t, H1_4, ctpop32)
-+DO_ZPZ_D(sve_cnt_zpz_d, uint64_t, ctpop64)
++class Field:
++    """Class representing a simple instruction field"""
++    def __init__(self, sign, pos, len):
++        self.sign = sign
++        self.pos = pos
++        self.len = len
++        self.mask = ((1 << len) - 1) << pos
 +
-+#define DO_CNOT(N)    (N == 0)
++    def __str__(self):
++        if self.sign:
++            s = 's'
++        else:
++            s = ''
++        return str(pos) + ':' + s + str(len)
 +
-+DO_ZPZ(sve_cnot_b, uint8_t, H1, DO_CNOT)
-+DO_ZPZ(sve_cnot_h, uint16_t, H1_2, DO_CNOT)
-+DO_ZPZ(sve_cnot_s, uint32_t, H1_4, DO_CNOT)
-+DO_ZPZ_D(sve_cnot_d, uint64_t, DO_CNOT)
++    def str_extract(self):
++        if self.sign:
++            extr = 'sextract32'
++        else:
++            extr = 'extract32'
++        return '{0}(insn, {1}, {2})'.format(extr, self.pos, self.len)
 +
-+#define DO_FABS(N)    (N & ((__typeof(N))-1 >> 1))
++    def __eq__(self, other):
++        return self.sign == other.sign and self.sign == other.sign
 +
-+DO_ZPZ(sve_fabs_h, uint16_t, H1_2, DO_FABS)
-+DO_ZPZ(sve_fabs_s, uint32_t, H1_4, DO_FABS)
-+DO_ZPZ_D(sve_fabs_d, uint64_t, DO_FABS)
++    def __ne__(self, other):
++        return not self.__eq__(other)
++# end Field
 +
-+#define DO_FNEG(N)    (N ^ ~((__typeof(N))-1 >> 1))
++class MultiField:
++    """Class representing a compound instruction field"""
++    def __init__(self, subs):
++        self.subs = subs
++        self.sign = subs[0].sign
++        mask = 0
++        for s in subs:
++            mask |= s.mask
++        self.mask = mask
 +
-+DO_ZPZ(sve_fneg_h, uint16_t, H1_2, DO_FNEG)
-+DO_ZPZ(sve_fneg_s, uint32_t, H1_4, DO_FNEG)
-+DO_ZPZ_D(sve_fneg_d, uint64_t, DO_FNEG)
++    def __str__(self):
++        return str(self.subs)
 +
-+#define DO_NOT(N)    (~N)
++    def str_extract(self):
++        ret = '0'
++        pos = 0
++        for f in reversed(self.subs):
++            if pos == 0:
++                ret = f.str_extract()
++            else:
++                ret = 'deposit32({0}, {1}, {2}, {3})'.format(ret, pos, 32 - pos, f.str_extract())
++            pos += f.len
++        return ret
 +
-+DO_ZPZ(sve_not_zpz_b, uint8_t, H1, DO_NOT)
-+DO_ZPZ(sve_not_zpz_h, uint16_t, H1_2, DO_NOT)
-+DO_ZPZ(sve_not_zpz_s, uint32_t, H1_4, DO_NOT)
-+DO_ZPZ_D(sve_not_zpz_d, uint64_t, DO_NOT)
++    def __ne__(self, other):
++        if len(self.subs) != len(other.subs):
++            return True
++        for a, b in zip(self.subs, other.subs):
++            if a.__class__ != b.__class__ or a != b:
++                return True
++        return False;
 +
-+#define DO_SXTB(N)    ((int8_t)N)
-+#define DO_SXTH(N)    ((int16_t)N)
-+#define DO_SXTS(N)    ((int32_t)N)
-+#define DO_UXTB(N)    ((uint8_t)N)
-+#define DO_UXTH(N)    ((uint16_t)N)
-+#define DO_UXTS(N)    ((uint32_t)N)
++    def __eq__(self, other):
++        return not self.__ne__(other)
++# end MultiField
 +
-+DO_ZPZ(sve_sxtb_h, uint16_t, H1_2, DO_SXTB)
-+DO_ZPZ(sve_sxtb_s, uint32_t, H1_4, DO_SXTB)
-+DO_ZPZ(sve_sxth_s, uint32_t, H1_4, DO_SXTH)
-+DO_ZPZ_D(sve_sxtb_d, uint64_t, DO_SXTB)
-+DO_ZPZ_D(sve_sxth_d, uint64_t, DO_SXTH)
-+DO_ZPZ_D(sve_sxtw_d, uint64_t, DO_SXTS)
++class ConstField:
++    """Class representing an argument field with constant value"""
++    def __init__(self, value):
++        self.value = value
++        self.mask = 0
++        self.sign = value < 0
 +
-+DO_ZPZ(sve_uxtb_h, uint16_t, H1_2, DO_UXTB)
-+DO_ZPZ(sve_uxtb_s, uint32_t, H1_4, DO_UXTB)
-+DO_ZPZ(sve_uxth_s, uint32_t, H1_4, DO_UXTH)
-+DO_ZPZ_D(sve_uxtb_d, uint64_t, DO_UXTB)
-+DO_ZPZ_D(sve_uxth_d, uint64_t, DO_UXTH)
-+DO_ZPZ_D(sve_uxtw_d, uint64_t, DO_UXTS)
++    def __str__(self):
++        return str(self.value)
 +
-+#define DO_ABS(N)    (N < 0 ? -N : N)
++    def str_extract(self):
++        return str(self.value)
 +
-+DO_ZPZ(sve_abs_b, int8_t, H1, DO_ABS)
-+DO_ZPZ(sve_abs_h, int16_t, H1_2, DO_ABS)
-+DO_ZPZ(sve_abs_s, int32_t, H1_4, DO_ABS)
-+DO_ZPZ_D(sve_abs_d, int64_t, DO_ABS)
++    def __cmp__(self, other):
++        return self.value - other.value
++# end ConstField
 +
-+#define DO_NEG(N)    (-N)
++class FunctionField:
++    """Class representing a field passed through an expander"""
++    def __init__(self, func, base):
++        self.mask = base.mask
++        self.sign = base.sign
++        self.base = base
++        self.func = func
 +
-+DO_ZPZ(sve_neg_b, uint8_t, H1, DO_NEG)
-+DO_ZPZ(sve_neg_h, uint16_t, H1_2, DO_NEG)
-+DO_ZPZ(sve_neg_s, uint32_t, H1_4, DO_NEG)
-+DO_ZPZ_D(sve_neg_d, uint64_t, DO_NEG)
++    def __str__(self):
++        return self.func + '(' + str(self.base) + ')'
 +
-+#undef DO_CLS_B
-+#undef DO_CLS_H
-+#undef DO_CLZ_B
-+#undef DO_CLZ_H
-+#undef DO_CNOT
-+#undef DO_FABS
-+#undef DO_FNEG
-+#undef DO_ABS
-+#undef DO_NEG
-+#undef DO_ZPZ
-+#undef DO_ZPZ_D
++    def str_extract(self):
++        return self.func + '(' + self.base.str_extract() + ')'
 +
- /* Two-operand reduction expander, controlled by a predicate.
-  * The difference between TYPERED and TYPERET has to do with
-  * sign-extension.  E.g. for SMAX, TYPERED must be signed,
-diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 91f07d57e3..7dbc43fb6e 100644
---- a/target/arm/translate-sve.c
-+++ b/target/arm/translate-sve.c
-@@ -250,6 +250,113 @@ DO_ZPZW(LSL, lsl)
- 
- #undef DO_ZPZW
- 
-+static void do_zpz_ool(DisasContext *s, arg_rpr_esz *a, gen_helper_gvec_3 *fn)
-+{
-+    unsigned vsz = size_for_gvec(vec_full_reg_size(s));
-+    if (fn == NULL) {
-+        unallocated_encoding(s);
-+        return;
-+    }
-+    tcg_gen_gvec_3_ool(vec_full_reg_offset(s, a->rd),
-+                       vec_full_reg_offset(s, a->rn),
-+                       pred_full_reg_offset(s, a->pg),
-+                       vsz, vsz, 0, fn);
-+}
++    def __eq__(self, other):
++        return self.func == other.func and self.base == other.base
++    def __ne__(self, other):
++        return not self.__eq__(other)
++# end FunctionField
 +
-+#define DO_ZPZ(NAME, name) \
-+void trans_##NAME(DisasContext *s, arg_rpr_esz *a, uint32_t insn)   \
-+{                                                                   \
-+    static gen_helper_gvec_3 * const fns[4] = {                     \
-+        gen_helper_sve_##name##_b, gen_helper_sve_##name##_h,       \
-+        gen_helper_sve_##name##_s, gen_helper_sve_##name##_d,       \
-+    };                                                              \
-+    do_zpz_ool(s, a, fns[a->esz]);                                  \
-+}
++class Arguments:
++    """Class representing the extracted fields of a format"""
++    def __init__(self, nm, flds):
++        self.name = nm
++        self.fields = sorted(flds)
 +
-+DO_ZPZ(CLS, cls)
-+DO_ZPZ(CLZ, clz)
-+DO_ZPZ(CNT_zpz, cnt_zpz)
-+DO_ZPZ(CNOT, cnot)
-+DO_ZPZ(NOT_zpz, not_zpz)
-+DO_ZPZ(ABS, abs)
-+DO_ZPZ(NEG, neg)
++    def __str__(self):
++        return self.name + ' ' + str(self.fields)
 +
-+void trans_FABS(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
-+{
-+    static gen_helper_gvec_3 * const fns[4] = {
-+        NULL,
-+        gen_helper_sve_fabs_h,
-+        gen_helper_sve_fabs_s,
-+        gen_helper_sve_fabs_d
-+    };
-+    do_zpz_ool(s, a, fns[a->esz]);
-+}
++    def struct_name(self):
++        return 'arg_' + self.name
 +
-+void trans_FNEG(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
-+{
-+    static gen_helper_gvec_3 * const fns[4] = {
-+        NULL,
-+        gen_helper_sve_fneg_h,
-+        gen_helper_sve_fneg_s,
-+        gen_helper_sve_fneg_d
-+    };
-+    do_zpz_ool(s, a, fns[a->esz]);
-+}
++    def output_def(self):
++        output('typedef struct {\n')
++        for n in self.fields:
++            output('    int ', n, ';\n')
++        output('} ', self.struct_name(), ';\n\n')
++# end Arguments
 +
-+void trans_SXTB(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
-+{
-+    static gen_helper_gvec_3 * const fns[4] = {
-+        NULL,
-+        gen_helper_sve_sxtb_h,
-+        gen_helper_sve_sxtb_s,
-+        gen_helper_sve_sxtb_d
-+    };
-+    do_zpz_ool(s, a, fns[a->esz]);
-+}
++class General:
++    """Common code between instruction formats and instruction patterns"""
++    def __init__(self, name, base, fixb, fixm, fldm, flds):
++        self.name = name
++        self.base = base
++        self.fixedbits = fixb
++        self.fixedmask = fixm
++        self.fieldmask = fldm
++        self.fields = flds
 +
-+void trans_UXTB(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
-+{
-+    static gen_helper_gvec_3 * const fns[4] = {
-+        NULL,
-+        gen_helper_sve_uxtb_h,
-+        gen_helper_sve_uxtb_s,
-+        gen_helper_sve_uxtb_d
-+    };
-+    do_zpz_ool(s, a, fns[a->esz]);
-+}
++    def __str__(self):
++        r = self.name
++        if self.base:
++            r = r + ' ' + self.base.name
++        else:
++            r = r + ' ' + str(self.fields)
++        r = r + ' ' + str_match_bits(self.fixedbits, self.fixedmask)
++        return r
 +
-+void trans_SXTH(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
-+{
-+    static gen_helper_gvec_3 * const fns[4] = {
-+        NULL, NULL,
-+        gen_helper_sve_sxth_s,
-+        gen_helper_sve_sxth_d
-+    };
-+    do_zpz_ool(s, a, fns[a->esz]);
-+}
++    def str1(self, i):
++        return str_indent(i) + self.__str__()
++# end General
 +
-+void trans_UXTH(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
-+{
-+    static gen_helper_gvec_3 * const fns[4] = {
-+        NULL, NULL,
-+        gen_helper_sve_uxth_s,
-+        gen_helper_sve_uxth_d
-+    };
-+    do_zpz_ool(s, a, fns[a->esz]);
-+}
++class Format(General):
++    """Class representing an instruction format"""
 +
-+void trans_SXTW(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
-+{
-+    do_zpz_ool(s, a, a->esz == 3 ? gen_helper_sve_sxtw_d : NULL);
-+}
++    def extract_name(self):
++        return 'extract_' + self.name
 +
-+void trans_UXTW(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
-+{
-+    do_zpz_ool(s, a, a->esz == 3 ? gen_helper_sve_uxtw_d : NULL);
-+}
++    def output_extract(self):
++        output('static void ', self.extract_name(), '(',
++               self.base.struct_name(), ' *a, uint32_t insn)\n{\n')
++        for n, f in self.fields.items():
++            output('    a->', n, ' = ', f.str_extract(), ';\n')
++        output('}\n\n')
++# end Format
 +
-+#undef DO_ZPZ
++class Pattern(General):
++    """Class representing an instruction pattern"""
 +
- typedef void gen_helper_gvec_reduc(TCGv_i64, TCGv_ptr, TCGv_ptr, TCGv_i32);
- static void do_vpz_ool(DisasContext *s, arg_rpr_esz *a,
-                        gen_helper_gvec_reduc *fn)
-diff --git a/target/arm/sve.def b/target/arm/sve.def
-index 66be950ca5..955a0275a1 100644
---- a/target/arm/sve.def
-+++ b/target/arm/sve.def
-@@ -147,6 +147,27 @@ ASR_zpzw		00000100 .. 011 000 100 ... ..... .....		@rdn_pg_rm_esz
- LSR_zpzw		00000100 .. 011 001 100 ... ..... .....		@rdn_pg_rm_esz
- LSL_zpzw		00000100 .. 011 011 100 ... ..... .....		@rdn_pg_rm_esz
- 
-+### SVE Integer Arithmetic - Unary Predicated Group
++    def output_decl(self):
++        global translate_prefix
++        output('typedef ', self.base.base.struct_name(),
++               ' arg_', self.name, ';\n')
++        output('void ', translate_prefix, '_', self.name,
++               '(DisasContext *ctx, arg_', self.name,
++               ' *a, uint32_t insn);\n')
 +
-+# SVE unary bit operations (predicated)
-+CLS			00000100 .. 011 000 101 ... ..... .....		@rd_pg_rn_esz
-+CLZ			00000100 .. 011 001 101 ... ..... .....		@rd_pg_rn_esz
-+CNT_zpz			00000100 .. 011 010 101 ... ..... .....		@rd_pg_rn_esz
-+CNOT			00000100 .. 011 011 101 ... ..... .....		@rd_pg_rn_esz
-+NOT_zpz			00000100 .. 011 110 101 ... ..... .....		@rd_pg_rn_esz
-+FABS			00000100 .. 011 100 101 ... ..... .....		@rd_pg_rn_esz # Note size != 0
-+FNEG			00000100 .. 011 101 101 ... ..... .....		@rd_pg_rn_esz # Note size != 0
++    def output_code(self, i, extracted, outerbits, outermask):
++        global translate_prefix
++        ind = str_indent(i)
++        arg = self.base.base.name
++        if not extracted:
++            output(ind, self.base.extract_name(), '(&u.f_', arg, ', insn);\n')
++        for n, f in self.fields.items():
++            output(ind, 'u.f_', arg, '.', n, ' = ', f.str_extract(), ';\n')
++        output(ind, translate_prefix, '_', self.name,
++               '(ctx, &u.f_', arg, ', insn);\n')
++        output(ind, 'return true;\n')
++# end Pattern
 +
-+# SVE integer unary operations (predicated)
-+ABS			00000100 .. 010 110 101 ... ..... .....		@rd_pg_rn_esz
-+NEG			00000100 .. 010 111 101 ... ..... .....		@rd_pg_rn_esz
-+SXTB			00000100 .. 010 000 101 ... ..... .....		@rd_pg_rn_esz # Note size != 0
-+UXTB			00000100 .. 010 001 101 ... ..... .....		@rd_pg_rn_esz # Note size != 0
-+SXTH			00000100 .. 010 010 101 ... ..... .....		@rd_pg_rn_esz # Note size > 1
-+UXTH			00000100 .. 010 011 101 ... ..... .....		@rd_pg_rn_esz # Note size > 1
-+SXTW			00000100 .. 010 100 101 ... ..... .....		@rd_pg_rn_esz # Note size == 3
-+UXTW			00000100 .. 010 101 101 ... ..... .....		@rd_pg_rn_esz # Note size == 3
++def parse_field(lineno, name, toks):
++    """Parse one instruction field from TOKS at LINENO"""
++    global fields
++    global re_ident
 +
- ### SVE Logical - Unpredicated Group
- 
- # SVE bitwise logical operations (unpredicated)
++    # A "simple" field will have only one entry; a "multifield" will have several.
++    subs = []
++    width = 0
++    func = None
++    for t in toks:
++        if re_fullmatch('!function=' + re_ident, t):
++            if func:
++                error(lineno, 'duplicate function')
++            func = t.split('=')
++            func = func[1]
++            continue
++
++        if re_fullmatch('[0-9]+:s[0-9]+', t):
++            # Signed field extract
++            subtoks = t.split(':s')
++            sign = True
++        elif re_fullmatch('[0-9]+:[0-9]+', t):
++            # Unsigned field extract
++            subtoks = t.split(':')
++            sign = False
++        else:
++            error(lineno, 'invalid field token "{0}"'.format(t))
++        p = int(subtoks[0])
++        l = int(subtoks[1])
++        if p + l > 32:
++            error(lineno, 'field {0} too large'.format(t))
++        f = Field(sign, p, l)
++        subs.append(f)
++        width += l
++
++    if width > 32:
++        error(lineno, 'field too large')
++    if len(subs) == 1:
++        f = subs[0]
++    else:
++        f = MultiField(subs)
++    if func:
++        f = FunctionField(func, f)
++
++    if name in fields:
++        error(lineno, 'duplicate field', name)
++    fields[name] = f
++# end parse_field
++
++def parse_arguments(lineno, name, toks):
++    """Parse one argument set from TOKS at LINENO"""
++    global arguments
++    global re_ident
++
++    flds = []
++    for t in toks:
++        if not re_fullmatch(re_ident, t):
++            error(lineno, 'invalid argument set token "{0}"'.format(t))
++        flds.append(t)
++
++    if name in arguments:
++        error(lineno, 'duplicate argument set', name)
++    arguments[name] = Arguments(name, flds)
++# end parse_arguments
++
++def lookup_field(lineno, name):
++    global fields
++    if name in fields:
++        return fields[name]
++    error(lineno, 'undefined field', name)
++
++def add_field(lineno, flds, new_name, f):
++    if new_name in flds:
++        error(lineno, 'duplicate field', new_name)
++    flds[new_name] = f
++    return flds
++
++def add_field_byname(lineno, flds, new_name, old_name):
++    return add_field(lineno, flds, new_name, lookup_field(lineno, old_name))
++
++def infer_argument_set(flds):
++    global arguments
++
++    for arg in arguments.values():
++        if eq_fields_for_args(flds, arg.fields):
++            return arg
++
++    name = str(len(arguments))
++    arg = Arguments(name, flds.keys())
++    arguments[name] = arg
++    return arg
++
++def infer_format(arg, fieldmask, flds):
++    global arguments
++    global formats
++
++    const_flds = {}
++    var_flds = {}
++    for n, c in flds.items():
++        if c is ConstField:
++            const_flds[n] = c
++        else:
++            var_flds[n] = c
++
++    # Look for an existing format with the same argument set and fields
++    for fmt in formats.values():
++        if arg and fmt.base != arg:
++            continue
++        if fieldmask != fmt.fieldmask:
++            continue
++        if not eq_fields_for_fmts(flds, fmt.fields):
++            continue
++        return (fmt, const_flds)
++
++    name = 'Fmt_' + str(len(formats))
++    if not arg:
++        arg = infer_argument_set(flds)
++
++    fmt = Format(name, arg, 0, 0, fieldmask, var_flds)
++    formats[name] = fmt
++
++    return (fmt, const_flds)
++# end infer_format
++
++def parse_generic(lineno, is_format, name, toks):
++    """Parse one instruction format from TOKS at LINENO"""
++    global fields
++    global arguments
++    global formats
++    global patterns
++    global re_ident
++
++    fixedmask = 0
++    fixedbits = 0
++    width = 0
++    flds = {}
++    arg = None
++    fmt = None
++    for t in toks:
++        # '&Foo' gives a format an explcit argument set.
++        if t[0] == '&':
++            tt = t[1:]
++            if arg:
++                error(lineno, 'multiple argument sets')
++            if tt in arguments:
++                arg = arguments[tt]
++            else:
++                error(lineno, 'undefined argument set', t)
++            continue
++
++        # '@Foo' gives a pattern an explicit format.
++        if t[0] == '@':
++            tt = t[1:]
++            if fmt:
++                error(lineno, 'multiple formats')
++            if tt in formats:
++                fmt = formats[tt]
++            else:
++                error(lineno, 'undefined format', t)
++            continue
++
++        # '%Foo' imports a field.
++        if t[0] == '%':
++            tt = t[1:]
++            flds = add_field_byname(lineno, flds, tt, tt)
++            continue
++
++        # 'Foo=%Bar' imports a field with a different name.
++        if re_fullmatch(re_ident + '=%' + re_ident, t):
++            (fname, iname) = t.split('=%')
++            flds = add_field_byname(lineno, flds, fname, iname)
++            continue
++
++        # 'Foo=number' sets an argument field to a constant value
++        if re_fullmatch(re_ident + '=[0-9]+', t):
++            (fname, value) = t.split('=')
++            value = int(value)
++            flds = add_field(lineno, flds, fname, ConstField(value))
++            continue
++
++        # Pattern of 0s, 1s and dots indicate required zeros,
++        # required ones, or dont-cares.
++        if re_fullmatch('[01.]+', t):
++            shift = len(t)
++            fms = t.replace('0','1')
++            fms = fms.replace('.','0')
++            fbs = t.replace('.','0')
++            fms = int(fms, 2)
++            fbs = int(fbs, 2)
++            fixedbits = (fixedbits << shift) | fbs
++            fixedmask = (fixedmask << shift) | fms
++        # Otherwise, fieldname:fieldwidth
++        elif re_fullmatch(re_ident + ':s?[0-9]+', t):
++            (fname, flen) = t.split(':')
++            sign = False;
++            if flen[0] == 's':
++                sign = True
++                flen = flen[1:]
++            shift = int(flen, 10)
++            f = Field(sign, 32 - width - shift, shift)
++            flds = add_field(lineno, flds, fname, f)
++            fixedbits <<= shift
++            fixedmask <<= shift
++        else:
++            error(lineno, 'invalid token "{0}"'.format(t))
++        width += shift
++
++    # We should have filled in all of the bits of the instruction.
++    if width != 32:
++        error(lineno, 'definition has {0} bits'.format(width))
++
++    # The fields that we add, or import, cannot overlap bits that we specify
++    fieldmask = 0
++    for f in flds.values():
++        fieldmask |= f.mask
++
++    # Fix up what we've parsed to match either a format or a pattern.
++    if is_format:
++        # Formats cannot reference formats.
++        if fmt:
++            error(lineno, 'format referencing format')
++        # If an argument set is given, then there should be no fields
++        # without a place to store it.
++        if arg:
++            for f in flds.keys():
++                if f not in arg.fields:
++                    error(lineno, 'field {0} not in argument set {1}'.format(f, arg.name))
++        else:
++            arg = infer_argument_set(flds)
++        if name in formats:
++            error(lineno, 'duplicate format name', name)
++        fmt = Format(name, arg, fixedbits, fixedmask, fieldmask, flds)
++        formats[name] = fmt
++    else:
++        # Patterns can reference a format ...
++        if fmt:
++            # ... but not an argument simultaneously
++            if arg:
++                error(lineno, 'pattern specifies both format and argument set')
++            fieldmask |= fmt.fieldmask
++            fixedbits |= fmt.fixedbits
++            fixedmask |= fmt.fixedmask
++        else:
++            (fmt, flds) = infer_format(arg, fieldmask, flds)
++        arg = fmt.base
++        for f in flds.keys():
++            if f not in arg.fields:
++                error(lineno, 'field {0} not in argument set {1}'.format(f, arg.name))
++        pat = Pattern(name, fmt, fixedbits, fixedmask, fieldmask, flds)
++        patterns.append(pat)
++
++    if fieldmask & fixedmask:
++        error(lineno, 'fieldmask overlaps fixedmask (0x{0:08x} & 0x{1:08x})'.format(fieldmask, fixedmask))
++# end parse_general
++
++def parse_file(f):
++    """Parse all of the patterns within a file"""
++
++    # Read all of the lines of the file.  Concatenate lines
++    # ending in backslash; discard empty lines and comments.
++    toks = []
++    lineno = 0
++    for line in f:
++        lineno += 1
++
++	# Discard comments
++        end = line.find('#')
++        if end >= 0:
++            line = line[:end]
++
++        t = line.split()
++        if len(toks) != 0:
++            # Next line after continuation
++            toks.extend(t)
++        elif len(t) == 0:
++            # Empty line
++            continue
++        else:
++            toks = t
++
++        # Continuation?
++        if toks[-1] == '\\':
++            toks.pop()
++            continue
++
++        if len(toks) < 2:
++            error(lineno, 'short line')
++
++        name = toks[0]
++        del toks[0]
++
++        # Determine the type of object needing to be parsed.
++        if name[0] == '%':
++            parse_field(lineno, name[1:], toks)
++        elif name[0] == '&':
++            parse_arguments(lineno, name[1:], toks)
++        elif name[0] == '@':
++            parse_generic(lineno, True, name[1:], toks)
++        else:
++            parse_generic(lineno, False, name, toks)
++        toks = []
++# end parse_file
++
++class Tree:
++    """Class representing a node in a decode tree"""
++
++    def __init__(self, fm, tm):
++        self.fixedmask = fm
++        self.thismask = tm
++        self.subs = []
++        self.base = None
++
++    def str1(self, i):
++        ind = str_indent(i)
++        r = '{0}{1:08x}'.format(ind, self.fixedmask)
++        if self.format:
++            r += ' ' + self.format.name
++        r += ' [\n'
++        for (b, s) in self.subs:
++            r += '{0}  {1:08x}:\n'.format(ind, b)
++            r += s.str1(i + 4) + '\n'
++        r += ind + ']'
++        return r
++
++    def __str__(self):
++        return self.str1(0)
++
++    def output_code(self, i, extracted, outerbits, outermask):
++        ind = str_indent(i)
++
++        # If we identified all nodes below have the same format,
++        # extract the fields now.
++        if not extracted and self.base:
++            output(ind, self.base.extract_name(),
++                   '(&u.f_', self.base.base.name, ', insn);\n')
++            extracted = True
++
++        # Attempt to aid the compiler in producing compact switch statements.
++        # If the bits in the mask are contiguous, extract them.
++        sh = is_contiguous(self.thismask)
++        if sh > 0:
++            str_switch = lambda b: \
++                '(insn >> {0}) & 0x{1:x}'.format(sh, b >> sh)
++            str_case = lambda b: '0x{0:x}'.format(b >> sh)
++        else:
++            str_switch = lambda b: 'insn & 0x{0:08x}'.format(b)
++            str_case = lambda b: '0x{0:08x}'.format(b)
++
++        output(ind, 'switch (', str_switch(self.thismask), ') {\n')
++        for b, s in sorted(self.subs):
++            rept = self.thismask & ~s.fixedmask
++            innermask = outermask | (self.thismask & ~rept)
++            innerbits = outerbits | b
++            for bb in bit_iterate(rept):
++                output(ind, 'case ', str_case(b | bb), ':\n')
++            output(ind, '    /* ',
++                   str_match_bits(innerbits, innermask), ' */\n')
++            s.output_code(i + 4, extracted, innerbits, innermask)
++        output(ind, '}\n')
++        output(ind, 'return false;\n')
++# end Tree
++
++def build_tree(pats, outerbits, outermask):
++    # Find the intersection of all remaining fixedmask.
++    innermask = ~outermask
++    for i in pats:
++        innermask &= i.fixedmask
++
++    if innermask == 0:
++        pnames = []
++        for p in pats:
++            pnames.append(p.name)
++        #pdb.set_trace()
++        error(0, 'overlapping patterns:', pnames)
++
++    fullmask = outermask | innermask
++    extramask = 0
++
++    # If there are few enough items, see how many undecoded bits remain.
++    # Otherwise, attempt to avoid a subsequent Tree level testing one bit.
++    if len(pats) < 8:
++        for i in pats:
++            extramask |= i.fixedmask & ~fullmask
++    else:
++        for i in pats:
++            e = i.fixedmask & ~fullmask
++            if e != 0 and popcount(e) <= 2:
++                extramask |= e
++
++    if popcount(extramask) < 4:
++        innermask |= extramask
++        fullmask |= extramask
++
++    # Sort each element of pats into the bin selected by the mask.
++    bins = {}
++    for i in pats:
++        fb = i.fixedbits & innermask
++        if fb in bins:
++            bins[fb].append(i)
++        else:
++            bins[fb] = [i]
++
++    # We must recurse if any bin has more than one element or if
++    # the single element in the bin has not been fully matched.
++    t = Tree(fullmask, innermask)
++
++    for b, l in bins.items():
++        s = l[0]
++        if len(l) > 1 or s.fixedmask & ~fullmask != 0:
++            s = build_tree(l, b | outerbits, fullmask)
++        t.subs.append((b, s))
++
++    return t
++# end build_tree
++
++def prop_format(tree):
++    """Propagate Format objects into the decode tree"""
++
++    # Depth first search.
++    for (b, s) in tree.subs:
++        if isinstance(s, Tree):
++            prop_format(s)
++
++    # If all entries in SUBS have the same format, then
++    # propagate that into the tree.
++    f = None
++    for (b, s) in tree.subs:
++        if f is None:
++            f = s.base
++            if f is None:
++                return
++        if f is not s.base:
++            return
++    tree.base = f
++# end prop_format
++
++
++def main():
++    global arguments
++    global formats
++    global patterns
++    global translate_prefix
++    global output_file
++
++    h_file = None
++    c_file = None
++    decode_function = 'decode'
++
++    long_opts = [ 'decode=', 'translate=', 'header=', 'output=' ]
++    try:
++        (opts, args) = getopt.getopt(sys.argv[1:], 'h:o:', long_opts)
++    except getopt.GetoptError as err:
++        error(0, err)
++    for o, a in opts:
++        if o in ('-h', '--header'):
++            h_file = a
++        elif o in ('-o', '--output'):
++            c_file = a
++        elif o == '--decode':
++            decode_function = a
++        elif o == '--translate':
++            translate_prefix = a
++        else:
++            assert False, 'unhandled option'
++
++    if len(args) < 1:
++        error(0, 'missing input file')
++    f = open(args[0], 'r')
++    parse_file(f)
++    f.close()
++
++    t = build_tree(patterns, 0, 0)
++    prop_format(t)
++
++    if h_file:
++        output_file = open(h_file, 'w')
++    elif c_file:
++        output_file = open(c_file, 'w')
++    else:
++        output_file = sys.stdout
++
++    output_autogen()
++    for n in sorted(arguments.keys()):
++        f = arguments[n]
++        f.output_def()
++
++    if h_file:
++        output('bool ', decode_function,
++               '(DisasContext *ctx, uint32_t insn);\n\n')
++
++    # A single translate function can be invoked for different patterns.
++    # Make sure that the argument sets are the same, and declare the
++    # function only once.
++    out_pats = {}
++    for i in patterns:
++        if i.name in out_pats:
++            p = out_pats[i.name]
++            if i.base.base != p.base.base:
++                error(0, i.name, ' has conflicting argument sets')
++        else:
++            i.output_decl()
++            out_pats[i.name] = i
++
++    if h_file:
++        output_file.close()
++        if c_file:
++            output_file = open(c_file, 'w')
++            output_autogen()
++
++    for n in sorted(formats.keys()):
++        f = formats[n]
++        f.output_extract()
++
++    output('bool ', decode_function,
++           '(DisasContext *ctx, uint32_t insn)\n{\n')
++
++    i4 = str_indent(4)
++    output(i4, 'union {\n')
++    for n in sorted(arguments.keys()):
++        f = arguments[n]
++        output(i4, i4, f.struct_name(), ' f_', f.name, ';\n')
++    output(i4, '} u;\n\n')
++
++    t.output_code(4, False, 0, 0)
++
++    output('}\n')
++
++    if c_file:
++        output_file.close()
++#end main
++
++if __name__ == '__main__':
++    main()
 -- 
 2.14.3
 

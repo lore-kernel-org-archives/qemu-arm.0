@@ -1,555 +1,539 @@
-Received: by 10.223.159.74 with SMTP id f10csp2953900wrg;
-        Mon, 18 Dec 2017 10:05:02 -0800 (PST)
-X-Google-Smtp-Source: ACJfBoutV2bUtkXhjbkWdnCueSmSex0b1E7xbYIcrY8w+mf1IRS4qhA3J4UL+4pPfGwJxfGfP2xD
-X-Received: by 10.129.40.67 with SMTP id o64mr494785ywo.376.1513620302357;
-        Mon, 18 Dec 2017 10:05:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1513620302; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp2956837wrg;
+        Mon, 18 Dec 2017 10:07:36 -0800 (PST)
+X-Google-Smtp-Source: ACJfBounyHmIr8zSQYLkOMOnyDogRlTd9nyxnPtZlnr/TckshU9wLhPr4xz0zVVEdLW2uF7aIwwL
+X-Received: by 10.37.56.84 with SMTP id f81mr522897yba.33.1513620456622;
+        Mon, 18 Dec 2017 10:07:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513620456; cv=none;
         d=google.com; s=arc-20160816;
-        b=b6t+dELuggUug+NLdHkKYYElt0tL6BS1W0gga8uxhuO/gJz0zQLdjbLmKJWfuX1thT
-         jPbffYhmYDHuU/41bDRcmFTgf1MUZNY+yYg4Xn71K/VxW47oRCqxq6x4xI3KFKnxjGUw
-         OA67CJnn/392a8G3gw+QEYWWdashOCbD/mrgIh1jcfBzSgwT3OBNjG33aB91mqH/1bKY
-         XdXs6NXdMrf4lhF3HVv8HwAvaIEX5tX2ABB9/SWYUMQiL7te4z5Cfu7JuZYvjZGpL1xB
-         PEt+3uqw0g+iqRDWhL08vB32ci3bmGKDHOh3oVUiX3aebg7+btvWi2sLgwjVUHK3tUf6
-         URFw==
+        b=Fn4iPLX+bdz1sckD/+n5RY/1PQBC/DhUwp66JNArHcqy5/gDhDm763gJE2HW9yNOp7
+         h61Gb5UV3zBwAyHNLDDZFGBqWEfxrFDz+jDDmtLelnJxD+xqW1ipYxOavESeYCeYwYRc
+         CKAYx4joFQqkOOWJ1axMu4cjo794hShy0Q+awG22U9R3TnrMMoGaj1lv9Gyz3xRoUHp8
+         0RD5z949Nt3RhjMJM88iKg+hdyYhWEBf3N3BZ2pdPaYx87SVEm2kVfRCWXoGLTSaC3IM
+         o1mpUKPoIOS7ohhoXopmwbaor5TY1p72i+PHFtdd4dKygdnxwr2lozxFVwDMTpVO6PKT
+         uT0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=9fIXycO5JhyGlVjDiOz3Yvt7hKNnwnfO1CFiMTmV1po=;
-        b=n2iWGALRcJhMl9SilEvcW+0dYOBUeRVk2SMVgToaupdW2PX8He24JTeU/ytTIp7nor
-         pIEezxOQI8F8pTjaAS5ynVY94BE857twZPl8QNAD2EmGRPxWfXt0GQCgOBVZI+ceHQ20
-         EAqzpoAs8sUcbDAFHfm3/wUfyQZ8tbyP2aKW0L7rCw9MIltAvDTzq4P1FHYTBoCu95xI
-         gOydDnQnMTrZ+wb8Mpi/v9LIu2crR7qmWoXNT6ayatto0E62GPx+f5oTJ7tNLWVQLQEW
-         R60xkYCTDbK4WiP5MycQAhgjCzC4cJuMHU6tng51ShJA07VDINyjJDUS/qaxQqHuORzj
-         vqRw==
+        bh=FQf6glxcaldRv3XVm7caVixckARRsaMc5X+WPvrI+1Q=;
+        b=vkKIK4j/Xw0Db8EKfiXwfzCBQD83//ncV/YVN+GDBvOBk5ozZt1NE5fTQGpgY7x2N/
+         rzFJuAoeJJ8vtBFDsNoie/TBCfXALOQLafU9Nb/DYsZrZ5eqP2bAGjTG2w/OlyUUdhWv
+         HGZEvtz44ybgnxCsO1ZMXi2kwPHB0nqii4TcTc9VkejyPk6AeFv+hHlniJRsZGc24ENT
+         xMe/DnoQhAuOnOubrlE9fF2AqOBC5YGyXcYRD9JsMmXx3uuRWvDUEXwzA3mq0DKWZVs9
+         qBZRP86XmHriwmYfKrYlhbCjoRDVuzXW0QYsbp4EUuz+LwLu2JHhiXN80tYRYlWy0ouJ
+         XBNg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=acqyNPY4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Gjd2EjxW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q3si2569971ywi.776.2017.12.18.10.05.02
+        by mx.google.com with ESMTPS id n11si2554527ywh.116.2017.12.18.10.07.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 18 Dec 2017 10:05:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 18 Dec 2017 10:07:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=acqyNPY4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Gjd2EjxW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60154 helo=lists.gnu.org)
+Received: from localhost ([::1]:60176 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eQzmf-0000Hi-OK
-	for alex.bennee@linaro.org; Mon, 18 Dec 2017 13:05:01 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55468)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eQzpA-0002W9-0a
+	for alex.bennee@linaro.org; Mon, 18 Dec 2017 13:07:36 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44410)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1eQzUH-00081B-QZ
-	for qemu-arm@nongnu.org; Mon, 18 Dec 2017 12:46:04 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1eQzFO-0002gV-W7
+	for qemu-devel@nongnu.org; Mon, 18 Dec 2017 12:30:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1eQzUF-0001mb-BG
-	for qemu-arm@nongnu.org; Mon, 18 Dec 2017 12:46:01 -0500
-Received: from mail-pf0-x236.google.com ([2607:f8b0:400e:c00::236]:36509)
+	(envelope-from <richard.henderson@linaro.org>) id 1eQzFK-0004iI-Fq
+	for qemu-devel@nongnu.org; Mon, 18 Dec 2017 12:30:38 -0500
+Received: from mail-pl0-x241.google.com ([2607:f8b0:400e:c01::241]:33657)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1eQzUF-0001lx-21
-	for qemu-arm@nongnu.org; Mon, 18 Dec 2017 12:45:59 -0500
-Received: by mail-pf0-x236.google.com with SMTP id p84so9976271pfd.3
-	for <qemu-arm@nongnu.org>; Mon, 18 Dec 2017 09:45:58 -0800 (PST)
+	id 1eQzFK-0004hU-68
+	for qemu-devel@nongnu.org; Mon, 18 Dec 2017 12:30:34 -0500
+Received: by mail-pl0-x241.google.com with SMTP id 1so3764049plv.0
+	for <qemu-devel@nongnu.org>; Mon, 18 Dec 2017 09:30:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=9fIXycO5JhyGlVjDiOz3Yvt7hKNnwnfO1CFiMTmV1po=;
-	b=acqyNPY4G7eAfKMwlbP+cu1vaSeSA1bABeN3LaxyB/8q/tY1GDdumJtlDoKz7/Lsm3
-	NF/GRKm01g1LlK7dE/8Fzc6rjm5TtZITQfls3WzrtJcRefnjyZV57qzbGX4iuGG48wOL
-	f5dTtdEWGcRIUD3Fuc8C8Z4SuvFMcRw3B+ulE=
+	bh=FQf6glxcaldRv3XVm7caVixckARRsaMc5X+WPvrI+1Q=;
+	b=Gjd2EjxW4VUsIGGnletlH6KD5vulAJhZ+eHORSEu5usSL7bipoTSvZsbC3uOxtq+H1
+	sE3MIJl/gx9isPpHjZrC2ID9f31uaWZeki55IMhOK+1N981v3Hrn2WCjp3Oer9AB4Qvr
+	0mNbzL/QzSI1QvZQGGuQxp/+jkRg5KJn4ahmw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=9fIXycO5JhyGlVjDiOz3Yvt7hKNnwnfO1CFiMTmV1po=;
-	b=bpkGZC2gO5Dic4h0UMdR2INVAfCvv0ho+agBp2csnzVhQ/CH3PvAQuJk0uUBanzkZC
-	fjf69n7OZP2zBNHNnCW2ZCu7LnD1u1ZPGkPSCyx0yD1jLj+reOB8CiiNQK3057OVYeqk
-	E7GRX+nITj1zC8sZr8Z9YLUuyhJpAP5xgqp/k2usNbw/Goplmit/pHtizmII42lOV54Q
-	/ihICFC/9Np4V7Pb7pl4wsMd86uZL1QxJz4Xh3XOI8TGtbWc+IjuaZySTyn5XvFKaKZz
-	KDZ60fdBcrRuShhlcING1xsFCt50J1EhcxMykERz9cdN7Ww+ECp76ik00L+BeK74wzmX
-	3SEw==
-X-Gm-Message-State: AKGB3mJPu9NGt5J7zKu88GC0aQZpOfufXlZ5YeEETK7PSgCBO7DRLeyv
-	1s61K2LfIpqeOCRv+sih1uoEdux1PmA=
-X-Received: by 10.98.133.65 with SMTP id u62mr490539pfd.22.1513619157633;
-	Mon, 18 Dec 2017 09:45:57 -0800 (PST)
+	bh=FQf6glxcaldRv3XVm7caVixckARRsaMc5X+WPvrI+1Q=;
+	b=Yofix0W/SAK6qVQHAvqI5p6KURoH6WNo2RpdBtSGYDrOEPC5W4XYbjZbJmoiDO/8nj
+	LY5dpU6RLtn1F4fc2Ehz7kyT+dvoaMQxo2GQxfugku/WYyjEFjxNFCPfbVxqPE09ODW3
+	FuT388X84/1Laty7IP8FXj2J05RhrMJXDYBoe09Wshi3JQr188ZyIpypldtbTEbn4gAg
+	+zbbldr5tAXz5jJRWqpxvZhF20KZsLnflvfEStrZ7EsHkP93jJe9PFZ4bXecG5cLEO+/
+	k3TBkBHNrHjFelKiNRHLQi7+vUm/R+0OgL53KNCsn55gHDwKV2Ti55ymAg1DK4h54PaE
+	JMjA==
+X-Gm-Message-State: AKGB3mLzIJXIY51vRTEOzVA9VxZQtLzP5gCYZXklzPmGA39abHx4ZF/7
+	DEf+HXjbNTMyrMp49hohs/s/HEK7SKU=
+X-Received: by 10.159.255.71 with SMTP id u7mr451945pls.376.1513618232606;
+	Mon, 18 Dec 2017 09:30:32 -0800 (PST)
 Received: from cloudburst.twiddle.net (174-21-7-63.tukw.qwest.net.
 	[174.21.7.63]) by smtp.gmail.com with ESMTPSA id
-	t84sm26209657pfe.160.2017.12.18.09.45.56
+	h69sm26553411pfe.107.2017.12.18.09.30.31
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 18 Dec 2017 09:45:56 -0800 (PST)
+	Mon, 18 Dec 2017 09:30:31 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Mon, 18 Dec 2017 09:45:31 -0800
-Message-Id: <20171218174552.18871-3-richard.henderson@linaro.org>
+Date: Mon, 18 Dec 2017 09:30:18 -0800
+Message-Id: <20171218173022.18418-6-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.14.3
-In-Reply-To: <20171218174552.18871-1-richard.henderson@linaro.org>
-References: <20171218174552.18871-1-richard.henderson@linaro.org>
+In-Reply-To: <20171218173022.18418-1-richard.henderson@linaro.org>
+References: <20171218173022.18418-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c00::236
-Subject: [Qemu-arm] [PATCH 02/23] target/arm: Add SVE decode skeleton
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400e:c01::241
+Subject: [Qemu-devel] [PATCH 5/9] target/arm: Add
+ aa32_vfp_dreg/aa64_vfp_qreg helpers
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vHOfOR00Hawp
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XL+EhmAvWTry
 
-Including only 4, as-yet unimplemented, instruction patterns
-so that the whole thing compiles.
+Helpers that return a pointer into env->vfp.regs so that we isolate
+the logic of how to index the regs array for different cpu modes.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate-a64.h | 111 +++++++++++++++++++++++++++++++++++++++++++++
- target/arm/translate-a64.c |  91 +++++++------------------------------
- target/arm/translate-sve.c |  48 ++++++++++++++++++++
- .gitignore                 |   1 +
- target/arm/Makefile.objs   |  11 +++++
- target/arm/sve.def         |  45 ++++++++++++++++++
- 6 files changed, 233 insertions(+), 74 deletions(-)
- create mode 100644 target/arm/translate-a64.h
- create mode 100644 target/arm/translate-sve.c
- create mode 100644 target/arm/sve.def
+ target/arm/cpu.h           | 20 +++++++++++++++++++-
+ linux-user/signal.c        | 22 ++++++++++++----------
+ target/arm/arch_dump.c     |  8 +++++---
+ target/arm/helper-a64.c    | 13 +++++++------
+ target/arm/helper.c        | 32 ++++++++++++++++++++------------
+ target/arm/kvm32.c         |  4 ++--
+ target/arm/kvm64.c         | 31 ++++++++++---------------------
+ target/arm/machine.c       |  2 +-
+ target/arm/translate-a64.c | 25 ++++++++-----------------
+ target/arm/translate.c     | 16 +++++++++-------
+ 10 files changed, 93 insertions(+), 80 deletions(-)
 
-diff --git a/target/arm/translate-a64.h b/target/arm/translate-a64.h
-new file mode 100644
-index 0000000000..9014b5bf8b
---- /dev/null
-+++ b/target/arm/translate-a64.h
-@@ -0,0 +1,111 @@
-+/*
-+ *  AArch64 translation, common definitions.
-+ *
-+ * This library is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU Lesser General Public
-+ * License as published by the Free Software Foundation; either
-+ * version 2 of the License, or (at your option) any later version.
-+ *
-+ * This library is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * Lesser General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU Lesser General Public
-+ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 7a705a09a1..e1a8e2880d 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -493,7 +493,7 @@ typedef struct CPUARMState {
+          * the two execution states, and means we do not need to explicitly
+          * map these registers when changing states.
+          */
+-        float64 regs[64] QEMU_ALIGNED(16);
++        uint64_t regs[64] QEMU_ALIGNED(16);
+ 
+         uint32_t xregs[16];
+         /* We store these fpcsr fields separately for convenience.  */
+@@ -2899,4 +2899,22 @@ static inline void *arm_get_el_change_hook_opaque(ARMCPU *cpu)
+     return cpu->el_change_hook_opaque;
+ }
+ 
++/**
++ * aa32_vfp_dreg:
++ * Return a pointer to the Dn register within env in 32-bit mode.
 + */
++static inline uint64_t *aa32_vfp_dreg(CPUARMState *env, unsigned regno)
++{
++    return &env->vfp.regs[regno];
++}
 +
-+#ifndef TARGET_ARM_TRANSLATE_A64_H
-+#define TARGET_ARM_TRANSLATE_A64_H
-+
-+void unallocated_encoding(DisasContext *s);
-+
-+#define unsupported_encoding(s, insn)                                    \
-+    do {                                                                 \
-+        qemu_log_mask(LOG_UNIMP,                                         \
-+                      "%s:%d: unsupported instruction encoding 0x%08x "  \
-+                      "at pc=%016" PRIx64 "\n",                          \
-+                      __FILE__, __LINE__, insn, s->pc - 4);              \
-+        unallocated_encoding(s);                                         \
-+    } while (0);
-+
-+TCGv_i64 new_tmp_a64(DisasContext *s);
-+TCGv_i64 new_tmp_a64_zero(DisasContext *s);
-+TCGv_i64 cpu_reg(DisasContext *s, int reg);
-+TCGv_i64 cpu_reg_sp(DisasContext *s, int reg);
-+TCGv_i64 read_cpu_reg(DisasContext *s, int reg, int sf);
-+TCGv_i64 read_cpu_reg_sp(DisasContext *s, int reg, int sf);
-+
-+/* We should have at some point before trying to access an FP register
-+ * done the necessary access check, so assert that
-+ * (a) we did the check and
-+ * (b) we didn't then just plough ahead anyway if it failed.
-+ * Print the instruction pattern in the abort message so we can figure
-+ * out what we need to fix if a user encounters this problem in the wild.
++/**
++ * aa64_vfp_dreg:
++ * Return a pointer to the Qn register within env in 64-bit mode.
 + */
-+static inline void assert_fp_access_checked(DisasContext *s)
++static inline uint64_t *aa64_vfp_qreg(CPUARMState *env, unsigned regno)
 +{
-+#ifdef CONFIG_DEBUG_TCG
-+    if (unlikely(!s->fp_access_checked || s->fp_excp_el)) {
-+        fprintf(stderr, "target-arm: FP access check missing for "
-+                "instruction 0x%08x\n", s->insn);
-+        abort();
-+    }
-+#endif
++    return &env->vfp.regs[2 * regno];
 +}
 +
-+/* Return the offset into CPUARMState of an element of specified
-+ * size, 'element' places in from the least significant end of
-+ * the FP/vector register Qn.
-+ */
-+static inline int vec_reg_offset(DisasContext *s, int regno,
-+                                 int element, TCGMemOp size)
-+{
-+    int offs = 0;
-+#ifdef HOST_WORDS_BIGENDIAN
-+    /* This is complicated slightly because vfp.zregs[n].d[0] is
-+     * still the low half and vfp.zregs[n].d[1] the high half
-+     * of the 128 bit vector, even on big endian systems.
-+     * Calculate the offset assuming a fully bigendian 128 bits,
-+     * then XOR to account for the order of the two 64 bit halves.
-+     */
-+    offs += (16 - ((element + 1) * (1 << size)));
-+    offs ^= 8;
-+#else
-+    offs += element * (1 << size);
-+#endif
-+    offs += offsetof(CPUARMState, vfp.zregs[regno]);
-+    assert_fp_access_checked(s);
-+    return offs;
-+}
-+
-+/* Return the offset info CPUARMState of the "whole" vector register Qn.  */
-+static inline int vec_full_reg_offset(DisasContext *s, int regno)
-+{
-+    assert_fp_access_checked(s);
-+    return offsetof(CPUARMState, vfp.zregs[regno]);
-+}
-+
-+/* Return the offset info CPUARMState of the predicate vector register Pn.
-+ * Note for this purpose, FFR is P16.  */
-+static inline int pred_full_reg_offset(DisasContext *s, int regno)
-+{
-+    assert_fp_access_checked(s);
-+    return offsetof(CPUARMState, vfp.pregs[regno]);
-+}
-+
-+/* Return the byte size of the "whole" vector register, VL / 8.  */
-+static inline int vec_full_reg_size(DisasContext *s)
-+{
-+    return s->sve_len;
-+}
-+
-+/* Return the byte size of the whole predicate register, VL / 64.  */
-+static inline int pred_full_reg_size(DisasContext *s)
-+{
-+    return s->sve_len >> 3;
-+}
-+
-+bool disas_sve(DisasContext *, uint32_t);
-+
-+#endif /* TARGET_ARM_TRANSLATE_A64_H */
+ #endif
+diff --git a/linux-user/signal.c b/linux-user/signal.c
+index cf35473671..a9a3f41721 100644
+--- a/linux-user/signal.c
++++ b/linux-user/signal.c
+@@ -1487,12 +1487,13 @@ static int target_setup_sigframe(struct target_rt_sigframe *sf,
+     }
+ 
+     for (i = 0; i < 32; i++) {
++        uint64_t *q = aa64_vfp_qreg(env, i);
+ #ifdef TARGET_WORDS_BIGENDIAN
+-        __put_user(env->vfp.regs[i * 2], &aux->fpsimd.vregs[i * 2 + 1]);
+-        __put_user(env->vfp.regs[i * 2 + 1], &aux->fpsimd.vregs[i * 2]);
++        __put_user(q[0], &aux->fpsimd.vregs[i * 2 + 1]);
++        __put_user(q[1], &aux->fpsimd.vregs[i * 2]);
+ #else
+-        __put_user(env->vfp.regs[i * 2], &aux->fpsimd.vregs[i * 2]);
+-        __put_user(env->vfp.regs[i * 2 + 1], &aux->fpsimd.vregs[i * 2 + 1]);
++        __put_user(q[0], &aux->fpsimd.vregs[i * 2]);
++        __put_user(q[1], &aux->fpsimd.vregs[i * 2 + 1]);
+ #endif
+     }
+     __put_user(vfp_get_fpsr(env), &aux->fpsimd.fpsr);
+@@ -1539,12 +1540,13 @@ static int target_restore_sigframe(CPUARMState *env,
+     }
+ 
+     for (i = 0; i < 32; i++) {
++        uint64_t *q = aa64_vfp_qreg(env, i);
+ #ifdef TARGET_WORDS_BIGENDIAN
+-        __get_user(env->vfp.regs[i * 2], &aux->fpsimd.vregs[i * 2 + 1]);
+-        __get_user(env->vfp.regs[i * 2 + 1], &aux->fpsimd.vregs[i * 2]);
++        __get_user(q[0], &aux->fpsimd.vregs[i * 2 + 1]);
++        __get_user(q[1], &aux->fpsimd.vregs[i * 2]);
+ #else
+-        __get_user(env->vfp.regs[i * 2], &aux->fpsimd.vregs[i * 2]);
+-        __get_user(env->vfp.regs[i * 2 + 1], &aux->fpsimd.vregs[i * 2 + 1]);
++        __get_user(q[0], &aux->fpsimd.vregs[i * 2]);
++        __get_user(q[1], &aux->fpsimd.vregs[i * 2 + 1]);
+ #endif
+     }
+     __get_user(fpsr, &aux->fpsimd.fpsr);
+@@ -1899,7 +1901,7 @@ static abi_ulong *setup_sigframe_v2_vfp(abi_ulong *regspace, CPUARMState *env)
+     __put_user(TARGET_VFP_MAGIC, &vfpframe->magic);
+     __put_user(sizeof(*vfpframe), &vfpframe->size);
+     for (i = 0; i < 32; i++) {
+-        __put_user(float64_val(env->vfp.regs[i]), &vfpframe->ufp.fpregs[i]);
++        __put_user(*aa32_vfp_dreg(env, i), &vfpframe->ufp.fpregs[i]);
+     }
+     __put_user(vfp_get_fpscr(env), &vfpframe->ufp.fpscr);
+     __put_user(env->vfp.xregs[ARM_VFP_FPEXC], &vfpframe->ufp_exc.fpexc);
+@@ -2206,7 +2208,7 @@ static abi_ulong *restore_sigframe_v2_vfp(CPUARMState *env, abi_ulong *regspace)
+         return 0;
+     }
+     for (i = 0; i < 32; i++) {
+-        __get_user(float64_val(env->vfp.regs[i]), &vfpframe->ufp.fpregs[i]);
++        __get_user(*aa32_vfp_dreg(env, i), &vfpframe->ufp.fpregs[i]);
+     }
+     __get_user(fpscr, &vfpframe->ufp.fpscr);
+     vfp_set_fpscr(env, fpscr);
+diff --git a/target/arm/arch_dump.c b/target/arm/arch_dump.c
+index 9e5b2fb31c..26a2c09868 100644
+--- a/target/arm/arch_dump.c
++++ b/target/arm/arch_dump.c
+@@ -99,8 +99,10 @@ static int aarch64_write_elf64_prfpreg(WriteCoreDumpFunction f,
+ 
+     aarch64_note_init(&note, s, "CORE", 5, NT_PRFPREG, sizeof(note.vfp));
+ 
+-    for (i = 0; i < 64; ++i) {
+-        note.vfp.vregs[i] = cpu_to_dump64(s, float64_val(env->vfp.regs[i]));
++    for (i = 0; i < 32; ++i) {
++        uint64_t *q = aa64_vfp_qreg(env, i);
++        note.vfp.vregs[2*i + 0] = cpu_to_dump64(s, q[0]);
++        note.vfp.vregs[2*i + 1] = cpu_to_dump64(s, q[1]);
+     }
+ 
+     if (s->dump_info.d_endian == ELFDATA2MSB) {
+@@ -229,7 +231,7 @@ static int arm_write_elf32_vfp(WriteCoreDumpFunction f, CPUARMState *env,
+     arm_note_init(&note, s, "LINUX", 6, NT_ARM_VFP, sizeof(note.vfp));
+ 
+     for (i = 0; i < 32; ++i) {
+-        note.vfp.vregs[i] = cpu_to_dump64(s, float64_val(env->vfp.regs[i]));
++        note.vfp.vregs[i] = cpu_to_dump64(s, *aa32_vfp_dreg(env, i));
+     }
+ 
+     note.vfp.fpscr = cpu_to_dump32(s, vfp_get_fpscr(env));
+diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
+index 0bcf02eeb5..750a088803 100644
+--- a/target/arm/helper-a64.c
++++ b/target/arm/helper-a64.c
+@@ -146,20 +146,21 @@ uint64_t HELPER(simd_tbl)(CPUARMState *env, uint64_t result, uint64_t indices,
+      * the table starts, and numregs the number of registers in the table.
+      * We return the results of the lookups.
+      */
+-    int shift;
++    unsigned shift;
+ 
+     for (shift = 0; shift < 64; shift += 8) {
+-        int index = extract64(indices, shift, 8);
++        unsigned index = extract64(indices, shift, 8);
+         if (index < 16 * numregs) {
+             /* Convert index (a byte offset into the virtual table
+              * which is a series of 128-bit vectors concatenated)
+-             * into the correct vfp.regs[] element plus a bit offset
++             * into the correct register element plus a bit offset
+              * into that element, bearing in mind that the table
+              * can wrap around from V31 to V0.
+              */
+-            int elt = (rn * 2 + (index >> 3)) % 64;
+-            int bitidx = (index & 7) * 8;
+-            uint64_t val = extract64(env->vfp.regs[elt], bitidx, 8);
++            unsigned elt = (rn * 2 + (index >> 3)) % 64;
++            unsigned bitidx = (index & 7) * 8;
++            uint64_t *q = aa64_vfp_qreg(env, elt >> 1);
++            uint64_t val = extract64(q[elt & 1], bitidx, 8);
+ 
+             result = deposit64(result, shift, 8, val);
+         }
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 02d1b57501..7f304111f0 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -64,15 +64,16 @@ static int vfp_gdb_get_reg(CPUARMState *env, uint8_t *buf, int reg)
+     /* VFP data registers are always little-endian.  */
+     nregs = arm_feature(env, ARM_FEATURE_VFP3) ? 32 : 16;
+     if (reg < nregs) {
+-        stfq_le_p(buf, env->vfp.regs[reg]);
++        stfq_le_p(buf, *aa32_vfp_dreg(env, reg));
+         return 8;
+     }
+     if (arm_feature(env, ARM_FEATURE_NEON)) {
+         /* Aliases for Q regs.  */
+         nregs += 16;
+         if (reg < nregs) {
+-            stfq_le_p(buf, env->vfp.regs[(reg - 32) * 2]);
+-            stfq_le_p(buf + 8, env->vfp.regs[(reg - 32) * 2 + 1]);
++            uint64_t *q = aa32_vfp_dreg(env, (reg - 32) * 2);
++            stfq_le_p(buf, q[0]);
++            stfq_le_p(buf + 8, q[1]);
+             return 16;
+         }
+     }
+@@ -90,14 +91,15 @@ static int vfp_gdb_set_reg(CPUARMState *env, uint8_t *buf, int reg)
+ 
+     nregs = arm_feature(env, ARM_FEATURE_VFP3) ? 32 : 16;
+     if (reg < nregs) {
+-        env->vfp.regs[reg] = ldfq_le_p(buf);
++        *aa32_vfp_dreg(env, reg) = ldfq_le_p(buf);
+         return 8;
+     }
+     if (arm_feature(env, ARM_FEATURE_NEON)) {
+         nregs += 16;
+         if (reg < nregs) {
+-            env->vfp.regs[(reg - 32) * 2] = ldfq_le_p(buf);
+-            env->vfp.regs[(reg - 32) * 2 + 1] = ldfq_le_p(buf + 8);
++            uint64_t *q = aa32_vfp_dreg(env, (reg - 32) * 2);
++            q[0] = ldfq_le_p(buf);
++            q[1] = ldfq_le_p(buf + 8);
+             return 16;
+         }
+     }
+@@ -114,9 +116,12 @@ static int aarch64_fpu_gdb_get_reg(CPUARMState *env, uint8_t *buf, int reg)
+     switch (reg) {
+     case 0 ... 31:
+         /* 128 bit FP register */
+-        stfq_le_p(buf, env->vfp.regs[reg * 2]);
+-        stfq_le_p(buf + 8, env->vfp.regs[reg * 2 + 1]);
+-        return 16;
++        {
++            uint64_t *q = aa64_vfp_qreg(env, reg);
++            stfq_le_p(buf, q[0]);
++            stfq_le_p(buf + 8, q[1]);
++            return 16;
++        }
+     case 32:
+         /* FPSR */
+         stl_p(buf, vfp_get_fpsr(env));
+@@ -135,9 +140,12 @@ static int aarch64_fpu_gdb_set_reg(CPUARMState *env, uint8_t *buf, int reg)
+     switch (reg) {
+     case 0 ... 31:
+         /* 128 bit FP register */
+-        env->vfp.regs[reg * 2] = ldfq_le_p(buf);
+-        env->vfp.regs[reg * 2 + 1] = ldfq_le_p(buf + 8);
+-        return 16;
++        {
++            uint64_t *q = aa64_vfp_qreg(env, reg);
++            q[0] = ldfq_le_p(buf);
++            q[1] = ldfq_le_p(buf + 8);
++            return 16;
++        }
+     case 32:
+         /* FPSR */
+         vfp_set_fpsr(env, ldl_p(buf));
+diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
+index f925a21481..f77c9c494b 100644
+--- a/target/arm/kvm32.c
++++ b/target/arm/kvm32.c
+@@ -358,7 +358,7 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+     /* VFP registers */
+     r.id = KVM_REG_ARM | KVM_REG_SIZE_U64 | KVM_REG_ARM_VFP;
+     for (i = 0; i < 32; i++) {
+-        r.addr = (uintptr_t)(&env->vfp.regs[i]);
++        r.addr = (uintptr_t)aa32_vfp_dreg(env, i);
+         ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &r);
+         if (ret) {
+             return ret;
+@@ -445,7 +445,7 @@ int kvm_arch_get_registers(CPUState *cs)
+     /* VFP registers */
+     r.id = KVM_REG_ARM | KVM_REG_SIZE_U64 | KVM_REG_ARM_VFP;
+     for (i = 0; i < 32; i++) {
+-        r.addr = (uintptr_t)(&env->vfp.regs[i]);
++        r.addr = (uintptr_t)aa32_vfp_dreg(env, i);
+         ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &r);
+         if (ret) {
+             return ret;
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 6554c30007..ac728494a4 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -696,21 +696,16 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+         }
+     }
+ 
+-    /* Advanced SIMD and FP registers
+-     * We map Qn = regs[2n+1]:regs[2n]
+-     */
++    /* Advanced SIMD and FP registers. */
+     for (i = 0; i < 32; i++) {
+-        int rd = i << 1;
+-        uint64_t fp_val[2];
++        uint64_t *q = aa64_vfp_qreg(env, i);
+ #ifdef HOST_WORDS_BIGENDIAN
+-        fp_val[0] = env->vfp.regs[rd + 1];
+-        fp_val[1] = env->vfp.regs[rd];
++        uint64_t fp_val[2] = { q[1], q[0] };
++        reg.addr = (uintptr_t)fp_val;
+ #else
+-        fp_val[1] = env->vfp.regs[rd + 1];
+-        fp_val[0] = env->vfp.regs[rd];
++        reg.addr = (uintptr_t)q;
+ #endif
+         reg.id = AARCH64_SIMD_CORE_REG(fp_regs.vregs[i]);
+-        reg.addr = (uintptr_t)(&fp_val);
+         ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+         if (ret) {
+             return ret;
+@@ -837,24 +832,18 @@ int kvm_arch_get_registers(CPUState *cs)
+         env->spsr = env->banked_spsr[i];
+     }
+ 
+-    /* Advanced SIMD and FP registers
+-     * We map Qn = regs[2n+1]:regs[2n]
+-     */
++    /* Advanced SIMD and FP registers */
+     for (i = 0; i < 32; i++) {
+-        uint64_t fp_val[2];
++        uint64_t *q = aa64_vfp_qreg(env, i);
+         reg.id = AARCH64_SIMD_CORE_REG(fp_regs.vregs[i]);
+-        reg.addr = (uintptr_t)(&fp_val);
++        reg.addr = (uintptr_t)q;
+         ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
+         if (ret) {
+             return ret;
+         } else {
+-            int rd = i << 1;
+ #ifdef HOST_WORDS_BIGENDIAN
+-            env->vfp.regs[rd + 1] = fp_val[0];
+-            env->vfp.regs[rd] = fp_val[1];
+-#else
+-            env->vfp.regs[rd + 1] = fp_val[1];
+-            env->vfp.regs[rd] = fp_val[0];
++            uint64_t t;
++            t = q[0], q[0] = q[1], q[1] = t;
+ #endif
+         }
+     }
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index 176274629c..a85c2430d3 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -50,7 +50,7 @@ static const VMStateDescription vmstate_vfp = {
+     .minimum_version_id = 3,
+     .needed = vfp_needed,
+     .fields = (VMStateField[]) {
+-        VMSTATE_FLOAT64_ARRAY(env.vfp.regs, ARMCPU, 64),
++        VMSTATE_UINT64_ARRAY(env.vfp.regs, ARMCPU, 64),
+         /* The xregs array is a little awkward because element 1 (FPSCR)
+          * requires a specific accessor, so we have to split it up in
+          * the vmstate:
 diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index ecb72e4d9c..8be1660661 100644
+index d246e8f6b5..e17c7269d4 100644
 --- a/target/arm/translate-a64.c
 +++ b/target/arm/translate-a64.c
-@@ -36,13 +36,13 @@
- #include "exec/log.h"
+@@ -170,15 +170,12 @@ void aarch64_cpu_dump_state(CPUState *cs, FILE *f,
  
- #include "trace-tcg.h"
-+#include "translate-a64.h"
+     if (flags & CPU_DUMP_FPU) {
+         int numvfpregs = 32;
+-        for (i = 0; i < numvfpregs; i += 2) {
+-            uint64_t vlo = float64_val(env->vfp.regs[i * 2]);
+-            uint64_t vhi = float64_val(env->vfp.regs[(i * 2) + 1]);
+-            cpu_fprintf(f, "q%02d=%016" PRIx64 ":%016" PRIx64 " ",
+-                        i, vhi, vlo);
+-            vlo = float64_val(env->vfp.regs[(i + 1) * 2]);
+-            vhi = float64_val(env->vfp.regs[((i + 1) * 2) + 1]);
+-            cpu_fprintf(f, "q%02d=%016" PRIx64 ":%016" PRIx64 "\n",
+-                        i + 1, vhi, vlo);
++        for (i = 0; i < numvfpregs; i++) {
++            uint64_t *q = aa64_vfp_qreg(env, i);
++            uint64_t vlo = q[0];
++            uint64_t vhi = q[1];
++            cpu_fprintf(f, "q%02d=%016" PRIx64 ":%016" PRIx64 "%c",
++                        i, vhi, vlo, (i & 1 ? '\n' : ' '));
+         }
+         cpu_fprintf(f, "FPCR: %08x  FPSR: %08x\n",
+                     vfp_get_fpcr(env), vfp_get_fpsr(env));
+@@ -572,19 +569,13 @@ static TCGv_ptr vec_full_reg_ptr(DisasContext *s, int regno)
+  */
+ static inline int fp_reg_offset(DisasContext *s, int regno, TCGMemOp size)
+ {
+-    int offs = offsetof(CPUARMState, vfp.regs[regno * 2]);
+-#ifdef HOST_WORDS_BIGENDIAN
+-    offs += (8 - (1 << size));
+-#endif
+-    assert_fp_access_checked(s);
+-    return offs;
++    return vec_reg_offset(s, regno, 0, size);
+ }
  
- static TCGv_i64 cpu_X[32];
- static TCGv_i64 cpu_pc;
+ /* Offset of the high half of the 128 bit vector Qn */
+ static inline int fp_reg_hi_offset(DisasContext *s, int regno)
+ {
+-    assert_fp_access_checked(s);
+-    return offsetof(CPUARMState, vfp.regs[regno * 2 + 1]);
++    return vec_reg_offset(s, regno, 1, MO_64);
+ }
  
- /* Load/store exclusive handling */
- static TCGv_i64 cpu_exclusive_high;
--static TCGv_i64 cpu_reg(DisasContext *s, int reg);
- 
- static const char *regnames[] = {
-     "x0", "x1", "x2", "x3", "x4", "x5", "x6", "x7",
-@@ -390,22 +390,13 @@ static inline void gen_goto_tb(DisasContext *s, int n, uint64_t dest)
+ /* Convenience accessors for reading and writing single and double
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 55afd29b21..a93e26498e 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -1516,14 +1516,16 @@ static inline void gen_vfp_st(DisasContext *s, int dp, TCGv_i32 addr)
+ static inline long
+ vfp_reg_offset (int dp, int reg)
+ {
+-    if (dp)
++    if (dp) {
+         return offsetof(CPUARMState, vfp.regs[reg]);
+-    else if (reg & 1) {
+-        return offsetof(CPUARMState, vfp.regs[reg >> 1])
+-          + offsetof(CPU_DoubleU, l.upper);
+     } else {
+-        return offsetof(CPUARMState, vfp.regs[reg >> 1])
+-          + offsetof(CPU_DoubleU, l.lower);
++        long ofs = offsetof(CPUARMState, vfp.regs[reg >> 1]);
++        if (reg & 1) {
++            ofs += offsetof(CPU_DoubleU, l.upper);
++        } else {
++            ofs += offsetof(CPU_DoubleU, l.lower);
++        }
++        return ofs;
      }
  }
  
--static void unallocated_encoding(DisasContext *s)
-+void unallocated_encoding(DisasContext *s)
- {
-     /* Unallocated and reserved encodings are uncategorized */
-     gen_exception_insn(s, 4, EXCP_UDEF, syn_uncategorized(),
-                        default_exception_el(s));
- }
- 
--#define unsupported_encoding(s, insn)                                    \
--    do {                                                                 \
--        qemu_log_mask(LOG_UNIMP,                                         \
--                      "%s:%d: unsupported instruction encoding 0x%08x "  \
--                      "at pc=%016" PRIx64 "\n",                          \
--                      __FILE__, __LINE__, insn, s->pc - 4);              \
--        unallocated_encoding(s);                                         \
--    } while (0);
--
- static void init_tmp_a64_array(DisasContext *s)
- {
- #ifdef CONFIG_DEBUG_TCG
-@@ -423,13 +414,13 @@ static void free_tmp_a64(DisasContext *s)
-     init_tmp_a64_array(s);
- }
- 
--static TCGv_i64 new_tmp_a64(DisasContext *s)
-+TCGv_i64 new_tmp_a64(DisasContext *s)
- {
-     assert(s->tmp_a64_count < TMP_A64_MAX);
-     return s->tmp_a64[s->tmp_a64_count++] = tcg_temp_new_i64();
- }
- 
--static TCGv_i64 new_tmp_a64_zero(DisasContext *s)
-+TCGv_i64 new_tmp_a64_zero(DisasContext *s)
- {
-     TCGv_i64 t = new_tmp_a64(s);
-     tcg_gen_movi_i64(t, 0);
-@@ -451,7 +442,7 @@ static TCGv_i64 new_tmp_a64_zero(DisasContext *s)
-  * to cpu_X[31] and ZR accesses to a temporary which can be discarded.
-  * This is the point of the _sp forms.
-  */
--static TCGv_i64 cpu_reg(DisasContext *s, int reg)
-+TCGv_i64 cpu_reg(DisasContext *s, int reg)
- {
-     if (reg == 31) {
-         return new_tmp_a64_zero(s);
-@@ -461,7 +452,7 @@ static TCGv_i64 cpu_reg(DisasContext *s, int reg)
- }
- 
- /* register access for when 31 == SP */
--static TCGv_i64 cpu_reg_sp(DisasContext *s, int reg)
-+TCGv_i64 cpu_reg_sp(DisasContext *s, int reg)
- {
-     return cpu_X[reg];
- }
-@@ -470,7 +461,7 @@ static TCGv_i64 cpu_reg_sp(DisasContext *s, int reg)
-  * representing the register contents. This TCGv is an auto-freed
-  * temporary so it need not be explicitly freed, and may be modified.
-  */
--static TCGv_i64 read_cpu_reg(DisasContext *s, int reg, int sf)
-+TCGv_i64 read_cpu_reg(DisasContext *s, int reg, int sf)
- {
-     TCGv_i64 v = new_tmp_a64(s);
-     if (reg != 31) {
-@@ -485,7 +476,7 @@ static TCGv_i64 read_cpu_reg(DisasContext *s, int reg, int sf)
-     return v;
- }
- 
--static TCGv_i64 read_cpu_reg_sp(DisasContext *s, int reg, int sf)
-+TCGv_i64 read_cpu_reg_sp(DisasContext *s, int reg, int sf)
- {
-     TCGv_i64 v = new_tmp_a64(s);
-     if (sf) {
-@@ -496,62 +487,6 @@ static TCGv_i64 read_cpu_reg_sp(DisasContext *s, int reg, int sf)
-     return v;
- }
- 
--/* We should have at some point before trying to access an FP register
-- * done the necessary access check, so assert that
-- * (a) we did the check and
-- * (b) we didn't then just plough ahead anyway if it failed.
-- * Print the instruction pattern in the abort message so we can figure
-- * out what we need to fix if a user encounters this problem in the wild.
-- */
--static inline void assert_fp_access_checked(DisasContext *s)
--{
--#ifdef CONFIG_DEBUG_TCG
--    if (unlikely(!s->fp_access_checked || s->fp_excp_el)) {
--        fprintf(stderr, "target-arm: FP access check missing for "
--                "instruction 0x%08x\n", s->insn);
--        abort();
--    }
--#endif
--}
--
--/* Return the offset into CPUARMState of an element of specified
-- * size, 'element' places in from the least significant end of
-- * the FP/vector register Qn.
-- */
--static inline int vec_reg_offset(DisasContext *s, int regno,
--                                 int element, TCGMemOp size)
--{
--    int offs = 0;
--#ifdef HOST_WORDS_BIGENDIAN
--    /* This is complicated slightly because vfp.zregs[n].d[0] is
--     * still the low half and vfp.zregs[n].d[1] the high half
--     * of the 128 bit vector, even on big endian systems.
--     * Calculate the offset assuming a fully bigendian 128 bits,
--     * then XOR to account for the order of the two 64 bit halves.
--     */
--    offs += (16 - ((element + 1) * (1 << size)));
--    offs ^= 8;
--#else
--    offs += element * (1 << size);
--#endif
--    offs += offsetof(CPUARMState, vfp.zregs[regno]);
--    assert_fp_access_checked(s);
--    return offs;
--}
--
--/* Return the offset info CPUARMState of the "whole" vector register Qn.  */
--static inline int vec_full_reg_offset(DisasContext *s, int regno)
--{
--    assert_fp_access_checked(s);
--    return offsetof(CPUARMState, vfp.zregs[regno]);
--}
--
--/* Return the byte size of the "whole" vector register, VL / 8.  */
--static inline int vec_full_reg_size(DisasContext *s)
--{
--    return s->sve_len;
--}
--
- /* Return a newly allocated pointer to the vector register.  */
- static TCGv_ptr vec_full_reg_ptr(DisasContext *s, int regno)
- {
-@@ -12705,7 +12640,15 @@ static void disas_a64_insn(CPUARMState *env, DisasContext *s)
-     s->fp_access_checked = false;
- 
-     switch (extract32(insn, 25, 4)) {
--    case 0x0: case 0x1: case 0x2: case 0x3: /* UNALLOCATED */
-+    case 0x0: case 0x1: case 0x3: /* UNALLOCATED */
-+        unallocated_encoding(s);
-+        break;
-+    case 0x2:
-+        if (arm_dc_feature(s, ARM_FEATURE_SVE)) {
-+            if (!fp_access_check(s) || disas_sve(s, insn)) {
-+                break;
-+            }
-+        }
-         unallocated_encoding(s);
-         break;
-     case 0x8: case 0x9: /* Data processing - immediate */
-diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-new file mode 100644
-index 0000000000..67ad94e310
---- /dev/null
-+++ b/target/arm/translate-sve.c
-@@ -0,0 +1,48 @@
-+/*
-+ *  AArch64 SVE translation
-+ *
-+ *  Copyright (c) 2017 Linaro, Ltd
-+ *
-+ * This library is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU Lesser General Public
-+ * License as published by the Free Software Foundation; either
-+ * version 2 of the License, or (at your option) any later version.
-+ *
-+ * This library is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * Lesser General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU Lesser General Public
-+ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "cpu.h"
-+#include "exec/exec-all.h"
-+#include "tcg-op.h"
-+#include "tcg-op-gvec.h"
-+#include "qemu/log.h"
-+#include "arm_ldst.h"
-+#include "translate.h"
-+#include "internals.h"
-+#include "exec/helper-proto.h"
-+#include "exec/helper-gen.h"
-+#include "exec/log.h"
-+#include "trace-tcg.h"
-+#include "translate-a64.h"
-+
-+/*
-+ * Include the generated decoder.
-+ */
-+
-+#include "decode-sve.inc.c"
-+
-+/*
-+ * Implement all of the translator functions referenced by the decoder.
-+ */
-+
-+void trans_AND_zzz(DisasContext *s, arg_AND_zzz *a, uint32_t insn) { unsupported_encoding(s, insn); }
-+void trans_ORR_zzz(DisasContext *s, arg_ORR_zzz *a, uint32_t insn) { unsupported_encoding(s, insn); }
-+void trans_EOR_zzz(DisasContext *s, arg_EOR_zzz *a, uint32_t insn) { unsupported_encoding(s, insn); }
-+void trans_BIC_zzz(DisasContext *s, arg_BIC_zzz *a, uint32_t insn) { unsupported_encoding(s, insn); }
-diff --git a/.gitignore b/.gitignore
-index 588769b250..e5fc04de07 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -140,3 +140,4 @@ trace-dtrace-root.h
- trace-dtrace-root.dtrace
- trace-ust-all.h
- trace-ust-all.c
-+/target/arm/decode-sve.inc.c
-diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
-index c2d32988f9..d1ca1f799b 100644
---- a/target/arm/Makefile.objs
-+++ b/target/arm/Makefile.objs
-@@ -10,3 +10,14 @@ obj-y += gdbstub.o
- obj-$(TARGET_AARCH64) += cpu64.o translate-a64.o helper-a64.o gdbstub64.o
- obj-y += crypto_helper.o
- obj-$(CONFIG_SOFTMMU) += arm-powerctl.o
-+
-+DECODETREE = $(SRC_PATH)/scripts/decodetree.py
-+
-+target/arm/decode-sve.inc.c: $(SRC_PATH)/target/arm/sve.def $(DECODETREE)
-+	$(call quiet-command,\
-+	  $(PYTHON) $(DECODETREE) -o $@ --decode disas_sve \
-+		$(SRC_PATH)/target/arm/sve.def || rm -f $@, \
-+		"GEN", $@)
-+
-+target/arm/translate-sve.o: target/arm/decode-sve.inc.c
-+obj-$(TARGET_AARCH64) += translate-sve.o
-diff --git a/target/arm/sve.def b/target/arm/sve.def
-new file mode 100644
-index 0000000000..0f47a21ef0
---- /dev/null
-+++ b/target/arm/sve.def
-@@ -0,0 +1,45 @@
-+# AArch64 SVE instruction descriptions
-+#
-+#  Copyright (c) 2017 Linaro, Ltd
-+#
-+# This library is free software; you can redistribute it and/or
-+# modify it under the terms of the GNU Lesser General Public
-+# License as published by the Free Software Foundation; either
-+# version 2 of the License, or (at your option) any later version.
-+#
-+# This library is distributed in the hope that it will be useful,
-+# but WITHOUT ANY WARRANTY; without even the implied warranty of
-+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+# Lesser General Public License for more details.
-+#
-+# You should have received a copy of the GNU Lesser General Public
-+# License along with this library; if not, see <http://www.gnu.org/licenses/>.
-+
-+#
-+# This file is processed by scripts/decodetree.py
-+#
-+
-+###########################################################################
-+# Named attribute sets.  These are used to make nice(er) names
-+# when creating helpers common to those for the individual
-+# instruction patterns.
-+
-+&rrr_esz		rd rn rm esz
-+
-+###########################################################################
-+# Named instruction formats.  These are generally used to
-+# reduce the amount of duplication between instruction patterns.
-+
-+# Three operand with unused vector element size
-+@rd_rn_rm		........ ... rm:5  ... ...  rn:5 rd:5		&rrr_esz esz=0
-+
-+###########################################################################
-+# Instruction patterns.  Grouped according to the SVE encodingindex.xhtml.
-+
-+### SVE Logical - Unpredicated Group
-+
-+# SVE bitwise logical operations (unpredicated)
-+AND_zzz			00000100 00 1 ..... 001 100 ..... .....		@rd_rn_rm
-+ORR_zzz			00000100 01 1 ..... 001 100 ..... .....		@rd_rn_rm
-+EOR_zzz			00000100 10 1 ..... 001 100 ..... .....		@rd_rn_rm
-+BIC_zzz			00000100 11 1 ..... 001 100 ..... .....		@rd_rn_rm
+@@ -12770,7 +12772,7 @@ void arm_cpu_dump_state(CPUState *cs, FILE *f, fprintf_function cpu_fprintf,
+             numvfpregs += 16;
+         }
+         for (i = 0; i < numvfpregs; i++) {
+-            uint64_t v = float64_val(env->vfp.regs[i]);
++            uint64_t v = *aa32_vfp_dreg(env, i);
+             cpu_fprintf(f, "s%02d=%08x s%02d=%08x d%02d=%016" PRIx64 "\n",
+                         i * 2, (uint32_t)v,
+                         i * 2 + 1, (uint32_t)(v >> 32),
 -- 
 2.14.3
 

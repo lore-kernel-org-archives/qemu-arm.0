@@ -1,121 +1,149 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp3005404wru;
-        Fri, 10 Aug 2018 05:21:35 -0700 (PDT)
-X-Google-Smtp-Source: AA+uWPy+UddPSStZEuKo6ikOakFBNfiEwNEC94qT/4IgnEyulg5Wo9UjwxzuX33i/5fQ1eGlYRmM
-X-Received: by 2002:a37:9185:: with SMTP id t127-v6mr5611573qkd.182.1533903695596;
-        Fri, 10 Aug 2018 05:21:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1533903695; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp2924140wrg;
+        Mon, 18 Dec 2017 09:39:55 -0800 (PST)
+X-Google-Smtp-Source: ACJfBotF7UpfI997TIbKE3i6knhUbLYrJ8z99fW1nVpS8c+ZCV2FFyYfMiIptobE+7wT0e2R4t66
+X-Received: by 10.37.125.135 with SMTP id y129mr454469ybc.256.1513618795531;
+        Mon, 18 Dec 2017 09:39:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513618795; cv=none;
         d=google.com; s=arc-20160816;
-        b=SquwyjT3ngOXAiqeD/1MKN/31R4dhPWVHIHCujXSj8q73lBgNhpB2ymOgsIVkKpIZ4
-         X3cg7e0NNSSfeOlX2Vo8T/4qfEMkKljA1RtPhZh5xe7X561Vb+6cUmzlBWuMVrorTSmL
-         vQqRW4wBwK4XknwC/sNhVNw10D1jDdFcUwEUhoc8036Yj0i14z2mq9HbqByvKHAes4Bm
-         8X9iiZBlArIA8+MXyC+fuFZewuofopgMZdyRE9tH+Ov7Ow8saLUnIydwaZNE2WNNOjC/
-         5Hz49RCbH2HXxsgtoYl3Do/rPkaKyMwcJ7sjFbJFVquuIKg4VjqTNPYByUOZoORpgGCX
-         cg6g==
+        b=0O7sgKidhOp1DumnEIzgRZ+mYoWomdR5/pZG4c+g5q2RlTzGRfsGUcbg1SLahEQ2Qr
+         /w/G6t2Kcp6yq43zn9l9aI0ZPYHr8mb/Ev6VMtLAhFWVUKAjb19OK55BIsoBdm8TDQZy
+         Zfkr6jPiU7obFLhaGMSh5166WfYpCVu7hvlbPd4IyFd95pA+Nv7RVovARmpEdf95XqYe
+         5Md6hUxL+x12fILU3CzIKy0YN4jttSfeYvFdEqYad4LEWrH47WHSGQ7iWw3T4xI+A1uV
+         MFYnasKguQrYAZuxX0VcskDcEO+C7b5cUANL4CRH162kXGRYF3ukplU+PpzSyYooExyP
+         vhxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:arc-authentication-results;
-        bh=JJB89ZnMmLOpI+c/Maj/qhITmXnBFgOUKABGfJ34UPM=;
-        b=SomVgj3snGE/AtZHMLiaOTjFoGE/nvDsXWMYnSjaq79fLmzCS1sjikpvnlAoT/m/Ke
-         IapKNBImq4butp7K4kWKvUlgmvmgDvOTUSuydW3vVmL0CtFBMtSC0CUSM93UZtWIf1pI
-         ALFOwooWsHVQ1sKIFcbTHshCLzp4pSPwey/BGSxlP/GpRTgsBw7dVM55jHQ63h7ccBy1
-         w6HslaLpoWwOPlsYlM5UmPAdqlQoolfIQA0y5KYQi3PGTu8L9GP9U/sMpKsUmreIs7OP
-         s0elNHUkXicd2NnuZuIOVWYcr58mvhT8SVjZWcTls5yTCD7uE4YpXEMlDv5GMtTt90r5
-         uipw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=Wft3Rhn6e8gEnRrhkRoDem+GiKJKRuyOOHVSH/yZqg8=;
+        b=RTP9h4mmLu63QVTowQRafBNWhPkUIURGtkUQlLlCM4ryNUnpghtNhdC9oLkBRXFRXK
+         o97RPxlXX0pDdG1LOocdlFUQf647pBU6jpKq/PxIarBR7ViAwesP7f1UtPPc8UcUbdk9
+         DnG+wf9rE3T87dsLY96NqHQ8qo8xavAYk/oXE3QgI0Fvb+ZIGcfy1QC9nOCEHQOM6Ilu
+         B4EQ7sdIidtKD85iE3c55rBc9VhYyTlOjs1NWmQvBN5CNx2npbcK10whYEPt1DTINr+t
+         uD2QvGIelAu9tc5ku8szJSMsy8o1iUNz1lAEnwayTUWNeN0pJizEKghEqyppCgm62erm
+         at1g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of ehabkost@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=ehabkost@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <ehabkost@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id o127-v6si4853410qkf.68.2018.08.10.05.21.35
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 10 Aug 2018 05:21:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ehabkost@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       dkim=fail header.i=@linaro.org header.s=google header.b=fvSNBQCS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id z12si2537298ybj.57.2017.12.18.09.39.55
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 18 Dec 2017 09:39:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of ehabkost@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=ehabkost@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id AA80A30820C0;
-	Fri, 10 Aug 2018 12:21:34 +0000 (UTC)
-Received: from localhost (ovpn-116-45.gru2.redhat.com [10.97.116.45])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 296F9756BB;
-	Fri, 10 Aug 2018 12:21:33 +0000 (UTC)
-Date: Fri, 10 Aug 2018 09:21:32 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-	richard.henderson@linaro.org, Cleber Rosa <crosa@redhat.com>
-Subject: Re: [Qemu-devel] [RFC PATCH 1/4] scripts/decodetree.py: add a
- disassembly generator (HACK!)
-Message-ID: <20180810122132.GN15372@localhost.localdomain>
-References: <20180808123934.17450-1-alex.bennee@linaro.org>
- <20180808123934.17450-2-alex.bennee@linaro.org>
- <20180810033200.GA8773@localhost.localdomain>
- <878t5eppm1.fsf@linaro.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=fvSNBQCS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58918 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eQzON-0001tP-1D
+	for alex.bennee@linaro.org; Mon, 18 Dec 2017 12:39:55 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40848)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <richard.henderson@linaro.org>) id 1eQz9R-0005nE-Gy
+	for qemu-arm@nongnu.org; Mon, 18 Dec 2017 12:24:30 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <richard.henderson@linaro.org>) id 1eQz9Q-0007z3-IK
+	for qemu-arm@nongnu.org; Mon, 18 Dec 2017 12:24:29 -0500
+Received: from mail-pf0-x233.google.com ([2607:f8b0:400e:c00::233]:45598)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1eQz9Q-0007y6-Be
+	for qemu-arm@nongnu.org; Mon, 18 Dec 2017 12:24:28 -0500
+Received: by mail-pf0-x233.google.com with SMTP id u19so9926568pfa.12
+	for <qemu-arm@nongnu.org>; Mon, 18 Dec 2017 09:24:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=Wft3Rhn6e8gEnRrhkRoDem+GiKJKRuyOOHVSH/yZqg8=;
+	b=fvSNBQCSSzrmbBmiMIo50DChgqKHyq800OsSAQD0bxYE/en6qs1Xq0qVPicQc58Pwu
+	esW2NvZ1GbqXEPbFezfJIWlKsdjw+QgfLw1OYCr6NMkW+N1Wf7GGzLO+VKtirBlFD7o+
+	/xlkeciL7+1ID1nBjcA3eS6pdw6aOU+g84XRo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=Wft3Rhn6e8gEnRrhkRoDem+GiKJKRuyOOHVSH/yZqg8=;
+	b=CgKMAKCoBIb13nCctyT5Of2vQBYFOpbWTrcx13gsoYZvCngKNkxQiGgxvMI4M1+Cse
+	O0B6L6wtaUi49ae8tf5btk9Kyo2nO8xqAzOUfBfB/f7mWAbjFsx0jmthph8ajci5JbH6
+	UgWyGqxRXAHC2YWUyMlYDQTlW1vFjvcuxhK5n5Og/zY/y7feJAYubb/y3FGp8NyfTc70
+	p8V9SZMnX5lYnSRUlZi9qNtEPHl3O8BxyN7bV22ciois0KI6qZR0c6I2xqerEJyfbApN
+	yk2/jzM95wq7+sFM2E+81sMOJ+71X5YIruIGx4ih+W9b+lxQtI1Y/g9Mh+5/p3sh7/Ev
+	EwcQ==
+X-Gm-Message-State: AKGB3mL5OGjG7Z1E0s8+Ih8O5L6Oq8yQgON6bqcpHlG9UiFjqRDrLGOr
+	Zy9zdajd08OkJJEOTw3i0HvQpw==
+X-Received: by 10.98.138.17 with SMTP id y17mr433655pfd.122.1513617867251;
+	Mon, 18 Dec 2017 09:24:27 -0800 (PST)
+Received: from cloudburst.twiddle.net (174-21-7-63.tukw.qwest.net.
+	[174.21.7.63])
+	by smtp.gmail.com with ESMTPSA id m10sm9260469pgs.4.2017.12.18.09.24.25
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Mon, 18 Dec 2017 09:24:26 -0800 (PST)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Mon, 18 Dec 2017 09:24:14 -0800
+Message-Id: <20171218172425.18200-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.14.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <878t5eppm1.fsf@linaro.org>
-User-Agent: Mutt/1.9.2 (2017-12-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.47]); Fri, 10 Aug 2018 12:21:34 +0000 (UTC)
-X-TUID: dD72DgcSETV3
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c00::233
+Subject: [Qemu-arm] [PATCH v2 00/11] ARM v8.1 simd + v8.3 complex insns
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mRIh88cJHiLL
 
-On Fri, Aug 10, 2018 at 09:55:50AM +0100, Alex Bennée wrote:
-> 
-> Eduardo Habkost <ehabkost@redhat.com> writes:
-> 
-> > On Wed, Aug 08, 2018 at 01:39:31PM +0100, Alex Bennée wrote:
-> >> Given our issues with failing disassembly we could try and re-use the
-> >> decode tree data to output what instruction is being decoded. This
-> >> will be used if registered as a fall-back for when the "proper"
-> >> disassembler fails to decode an instruction.
-> >>
-> >> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> >
-> > I don't have an opinion on the approach you are taking, but the
-> > Python code you are adding is consistent with the existing style
-> > of the script.
-> >
-> > That said, I find the existing code full of output() calls very
-> > hard to read.  If anybody wants to volunteer to improve the
-> > readability of the output generation, it would be welcome.
-> 
-> If we expect to have the script output a number of different forms I
-> guess re-factoring it with some sort of template based approach would be
-> worthwhile. I wonder if there are other examples in the code base? We
-> wouldn't want to have multiple template types.
-
-QAPI scripts also generates C code, and I find them more
-readable[1].
-
-I think a true template language would be even better than QAPI's
-approach, but I don't see an obvious candidate that would be
-worth adding another build dependency to QEMU.
+I've incorporated Alex's feedback from v1, and have now rebased
+upon Alex's work so that the complex insns now support fp16.
 
 
-[1] Compare:
+r~
 
-def output_decl(self):
-    global translate_scope
-    global translate_prefix
-    output('typedef ', self.base.base.struct_name(),
-           ' arg_', self.name, ';\n')
-    output(translate_scope, 'bool ', translate_prefix, '_', self.name,
-           '(DisasContext *ctx, arg_', self.name,
-           ' *a, ', insntype, ' insn);\n')
 
-And:
+Richard Henderson (11):
+  target/arm: Add ARM_FEATURE_V8_1_SIMD
+  target/arm: Decode aa64 armv8.1 scalar three same extra
+  target/arm: Decode aa64 armv8.1 three same extra
+  target/arm: Decode aa64 armv8.1 scalar/vector x indexed element
+  target/arm: Decode aa32 armv8.1 three same
+  target/arm: Decode aa32 armv8.1 two reg and a scalar
+  target/arm: Add ARM_FEATURE_V8_FCMA
+  target/arm: Decode aa64 armv8.3 fcadd
+  target/arm: Decode aa64 armv8.3 fcmla
+  target/arm: Decode aa32 armv8.3 3-same
+  target/arm: Decode aa32 armv8.3 2-reg-index
 
-def gen_visit_members_decl(name):
-    return mcgen('''
-
-void visit_type_%(c_name)s_members(Visitor *v, %(c_name)s *obj, Error **errp);
-''',
-                 c_name=c_name(name))
+ target/arm/cpu.h            |   2 +
+ target/arm/helper.h         |  31 ++++
+ linux-user/elfload.c        |  10 ++
+ target/arm/advsimd_helper.c | 420 ++++++++++++++++++++++++++++++++++++++++++++
+ target/arm/cpu.c            |   2 +
+ target/arm/cpu64.c          |   2 +
+ target/arm/translate-a64.c  | 382 ++++++++++++++++++++++++++++++++++++----
+ target/arm/translate.c      | 239 ++++++++++++++++++++++---
+ target/arm/Makefile.objs    |   2 +-
+ 9 files changed, 1032 insertions(+), 58 deletions(-)
+ create mode 100644 target/arm/advsimd_helper.c
 
 -- 
-Eduardo
+2.14.3
+

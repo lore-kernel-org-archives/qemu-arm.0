@@ -1,116 +1,156 @@
-Received: by 10.223.197.9 with SMTP id q9csp4132905wrf;
-        Mon, 16 Oct 2017 19:34:48 -0700 (PDT)
-X-Received: by 10.159.253.65 with SMTP id b1mr10638435plx.330.1508207688761;
-        Mon, 16 Oct 2017 19:34:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508207688; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp2940593wrg;
+        Mon, 18 Dec 2017 09:53:17 -0800 (PST)
+X-Google-Smtp-Source: ACJfBosL0++bjXQO90T+1rs+zZ2Rpxte4LUIFVmFPrZEvcqSoDvAqdp0+ythNXEaLgL5m9ynxE+2
+X-Received: by 10.37.189.7 with SMTP id f7mr490842ybk.193.1513619597768;
+        Mon, 18 Dec 2017 09:53:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513619597; cv=none;
         d=google.com; s=arc-20160816;
-        b=DKaQ8jGphNdlQFUKoSghIc04OrMpQKN2oCu8GZhxQD3dYlHcG86gwyeN414oojoZR1
-         IaCpOczGBf+DDN6zo2d7IA7XrtKwqiCFImITmhE5JK76pYXtGR1FSM8tsCjfdGwZ5peJ
-         q0XvjY9Lx6/1qORBBDdtpZlW4lzHRzQERp7Aswt8Olttb+MrUaujoGtehzjS1UFmfCmO
-         MtPh2sMu9+wjbcf+HWUeRO8/NBvvNfEAFhRzlRRWYBqh3R9hQiVuvZw/YCl4MmX45JcF
-         AkGCkyE5D5PFQ5NNaqkexlQzNgZafWf4a2V5R2JHKH37Nwseza0CQPml8tLeJxE3GWZz
-         Iqpg==
+        b=qGAjHeQZGL/fUOFBAwYh2PByVR5uPem7CyyLlRWhgWn71d3eY/9GA2AWh4AuB/skFp
+         BpSpzYvXxmcEaeeWJHBYuFS1cN0JOMQsjpNInd/o81nlmfnucWJQjvK74DdCe7DwA/+v
+         vEgaQCgr38lXVR7Um3PLQ8coK7luIZLpxqCAu2qC1mk2S4B/uByUxS4AUhsbD6Cr5VPe
+         ygniLf9H+zJcePC0qcKpvrFikO6j7GFETUbeD3NvlMCdYXq8PEQxJSoyRDCIKcp56VrS
+         jXcSUrEDFMJQc1jK3UUbrHemPl5DuHktOv2pkYCOrqHRRef3LD97L5S11DOI4GOXFXRT
+         XGfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature:arc-authentication-results;
-        bh=oixr6cHnh/lzPFILFn5eoakbkxRNbteiCy8MXkiJ43I=;
-        b=IUFbc2wG6c7o72I7v8p0urTGNZ49sws27ZhAeP1bMg15ZSSusdJs9HaN7wvmcxxKkL
-         ENT5FRrm8gRa64cm1oqDFxnnVNkt4ttLxHlF7u7WNg8wL4cQp/DPzBX4kJN1OXTYfJPM
-         Gp9DyJFC7I7go6SHiaGswY2xBDmCoCRlwAlDidxyZ2c/RAkkbodmN8YNf0WIErFbchaf
-         wXSAtGQ+oMbih9lOaQPEg0KEnk7CY523HrZCnUInvUvyw4u313Wi78nq+R0pEMmjlJZ6
-         1nzzHAyvPrGIt3Po5TyXhkX1YO9ox1/9GwZtGoGX08iVJ9QpQfwoQjkN/PpW5uk4fGwb
-         FWJA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=ENRXS9h8V/c69uI8RDsb604KEPZbwbCQK6rOp4tGF+0=;
+        b=Keh1YKrJDyUVhg3pZYqfceb4E3H6HEPrDx8L7v/QERPcg7d5JYUUiql78n+hmGQ505
+         MBRm3YsewucFaQy7TyFpy7sdfWD1Wssdqa2tr1fqm3gPwWflABlXIk/llVOAzdSt9BRk
+         f0vX19Yw+Dza+lvEv+rsxGcrFiN8E+RXrlDuVGIQSc+NO179ysxwmiTCMDKhYYQW4C27
+         r+lia9IhzGKsMVCX+MVjSEKSiQAZnXhT6dH09YlmQThDH3JdhxnFMhPi/Y0gQlTXHJuL
+         BBjsqlMIe5w061fz7jBMExg2awM6s5WRLMD/Qazs9JApvyYrz6SkbsK4P8iZPwWGO5W2
+         /emg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PmtCxKu/;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id w66sor2207861pfj.100.2017.10.16.19.34.48
+       dkim=fail header.i=@linaro.org header.s=google header.b=GAI0lLCO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id i197si2519918ywe.763.2017.12.18.09.53.17
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 16 Oct 2017 19:34:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 18 Dec 2017 09:53:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PmtCxKu/;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=oixr6cHnh/lzPFILFn5eoakbkxRNbteiCy8MXkiJ43I=;
-        b=PmtCxKu/AvaoFllsV9X68PpM+Jpd0LMEobXxJC92mNdmcFDJlgWey8ZsNgaMgph1J3
-         49wBoklZabyOqo8Ms+9BOD6JL6Pf1RKThJeuqtiOSb9f1fyMGG4pNy2xF4tF2VSydqnq
-         G4nn2mwdacU4Yl/fVwobn2npg1ZtRddYzWVYM=
+       dkim=fail header.i=@linaro.org header.s=google header.b=GAI0lLCO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59399 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eQzbJ-0006Ih-63
+	for alex.bennee@linaro.org; Mon, 18 Dec 2017 12:53:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44397)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <richard.henderson@linaro.org>) id 1eQzFO-0002gS-Ga
+	for qemu-arm@nongnu.org; Mon, 18 Dec 2017 12:30:39 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <richard.henderson@linaro.org>) id 1eQzFL-0004jR-8O
+	for qemu-arm@nongnu.org; Mon, 18 Dec 2017 12:30:38 -0500
+Received: from mail-pl0-x242.google.com ([2607:f8b0:400e:c01::242]:46597)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1eQzFK-0004iF-V6
+	for qemu-arm@nongnu.org; Mon, 18 Dec 2017 12:30:35 -0500
+Received: by mail-pl0-x242.google.com with SMTP id i6so5222700plt.13
+	for <qemu-arm@nongnu.org>; Mon, 18 Dec 2017 09:30:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=ENRXS9h8V/c69uI8RDsb604KEPZbwbCQK6rOp4tGF+0=;
+	b=GAI0lLCOJPGQ20OkTy+kPEmjC6D0i+/r+6wETWvkL4Tnb47Mwr7tDySVTpoj9/bosB
+	8Ep2inBB7qL9Xl2GrR8sNyQwGnXEQ1p/8V7cfzJnCyLcJv6pX1kMKAUnzcoalvzERjhh
+	iPMruL9kjq+zWEO4HsJ4yVhW2I3iAItHULw5s=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=oixr6cHnh/lzPFILFn5eoakbkxRNbteiCy8MXkiJ43I=;
-        b=rpB8KiH2p8RcJ+gT3AWEq0AB1gzrWj1uLHGTHs7x8F6cqo/Pa0wjf+80w0JSBQO1Cs
-         sftAHVk7AWaBzHXu0aXZmVq4L61+fFDtjw0Rac4L7rtD7vrDZJKh6cp+Yh0l9bPs5ia8
-         A595Lu9Bl1Ywrk1dQiDzLu7UB2nddRZtZP3eMLi2YpeY+JIGrXv9qWIvT56bCW+hhPwj
-         8p36gVK+GaPpWlll7Xqc6E3e/N/gb2yRKC/176XOCJdLRTNR39Z89Au64nsUqic8z6W/
-         Fij7ras52NYTVwf9Cse0hE9ucS+kzNSAXc9LeR6AGrfN/+B0C9L4X3eKIgLjBQINaCws
-         PHOA==
-X-Gm-Message-State: AMCzsaUl+9aqIRXgAKixaRxNBl3vG9/PRPlxJwjkDSljAywOl6CmvvaS
-	nkbCXHE641dnv94iSAs2PB4GHHYdTtX1ZA==
-X-Google-Smtp-Source: AOwi7QCpEENY+mFo/SWQ/L+Ru2QVYFPe+lI1dqoBWmEUWYCCDZWuJM/1th1cg1wtZVhu8uFDSwW1Xw==
-X-Received: by 10.98.7.85 with SMTP id b82mr10478083pfd.262.1508207688300;
-        Mon, 16 Oct 2017 19:34:48 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from cloudburst.twiddle.net (97-126-104-76.tukw.qwest.net. [97.126.104.76])
-        by smtp.gmail.com with ESMTPSA id 68sm17637076pfx.105.2017.10.16.19.34.46
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Oct 2017 19:34:47 -0700 (PDT)
-Subject: Re: [RFC PATCH 00/30] v8.2 half-precision support (work-in-progress)
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20171013162438.32458-1-alex.bennee@linaro.org>
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references;
+	bh=ENRXS9h8V/c69uI8RDsb604KEPZbwbCQK6rOp4tGF+0=;
+	b=WlxLHdfThzDwnJEyd2sxXFiYqc66OE17nx0CUb3pdKKv03TRtjPxKrYDjHERE3gAg3
+	Dl1kkF3EoslTkhnBaUSpvzghI16MBzSPwyxolT26uvbY2pgyPdxjFSb0smszqHyYk4mL
+	U6lqewTHwjkf9nY90duSLD8LQGNtDvZimGkX+6yCcZnHwSqQcJAeMpjLgJ22P8M77LRg
+	lvbRHMVbs8tFKYq12Oi1IxYOvGep4GLYvFiMzc6qNd8ELtkwUBKoclkZtCF8tWqlbWpK
+	rYLbrBbX4T97gwyPjSqRuwgQuyttns2G1qlBpE64ECsFOQiI3YJUt1qHeG0DQ2hsteXl
+	PyAg==
+X-Gm-Message-State: AKGB3mLl9Y3N5vhbiGWvLZKVaYTWj0OUcdnHrku8KGUJ/uRO6OWCAqJU
+	0ffhyoLRYJaPYQ4fwE2nJsa0JiUlUdI=
+X-Received: by 10.159.196.130 with SMTP id c2mr434568plo.123.1513618234037;
+	Mon, 18 Dec 2017 09:30:34 -0800 (PST)
+Received: from cloudburst.twiddle.net (174-21-7-63.tukw.qwest.net.
+	[174.21.7.63]) by smtp.gmail.com with ESMTPSA id
+	h69sm26553411pfe.107.2017.12.18.09.30.32
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Mon, 18 Dec 2017 09:30:33 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <f1b0c3ad-e3db-8d76-7706-0df497e13072@linaro.org>
-Date: Mon, 16 Oct 2017 19:34:45 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
-MIME-Version: 1.0
-In-Reply-To: <20171013162438.32458-1-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: /p18IWBF392x
+To: qemu-devel@nongnu.org
+Date: Mon, 18 Dec 2017 09:30:19 -0800
+Message-Id: <20171218173022.18418-7-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.14.3
+In-Reply-To: <20171218173022.18418-1-richard.henderson@linaro.org>
+References: <20171218173022.18418-1-richard.henderson@linaro.org>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c01::242
+Subject: [Qemu-arm] [PATCH 6/9] vmstate: Add VMSTATE_UINT64_SUB_ARRAY
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +BT6trZtGrB2
 
-On 10/13/2017 09:24 AM, Alex Bennée wrote:
-> SoftFloat
-> =========
-> 
-> Previously I had pondered if switching to the newer SoftFloat3 would
-> be a worthwhile. While the upstream project is certainly open to
-> accepting patches it would be a slow process given the changes we've
-> made over the years. As a result I've decided to stick with expanding
-> our current code.
-> 
-> Most of the helpers have been done fairly mechanically by copying the
-> float32 equivalent, filing off the 32's, replacing with 16's and
-> adjusting the constants appropriately (min/max exp, NaNs etc). I've
-> done this in conjunction with reading the SoftFloat3 code as a sanity
-> check although in places the design is a little different.
+At the same time, move VMSTATE_UINT32_SUB_ARRAY
+beside the other UINT32 definitions.
 
-I think we need a re-think of the approach here.
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ include/migration/vmstate.h | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
-For the most part, the code would be sharable *if* our internal representation
-between float32 and float16 were identical.  So that all that's different are
-unpacking and repacking routines at the beginning and end.
+diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
+index 88b55df5ae..8c3889433c 100644
+--- a/include/migration/vmstate.h
++++ b/include/migration/vmstate.h
+@@ -905,6 +905,9 @@ extern const VMStateInfo vmstate_info_qtailq;
+ #define VMSTATE_UINT32_ARRAY(_f, _s, _n)                              \
+     VMSTATE_UINT32_ARRAY_V(_f, _s, _n, 0)
+ 
++#define VMSTATE_UINT32_SUB_ARRAY(_f, _s, _start, _num)                \
++    VMSTATE_SUB_ARRAY(_f, _s, _start, _num, 0, vmstate_info_uint32, uint32_t)
++
+ #define VMSTATE_UINT32_2DARRAY(_f, _s, _n1, _n2)                      \
+     VMSTATE_UINT32_2DARRAY_V(_f, _s, _n1, _n2, 0)
+ 
+@@ -914,6 +917,9 @@ extern const VMStateInfo vmstate_info_qtailq;
+ #define VMSTATE_UINT64_ARRAY(_f, _s, _n)                              \
+     VMSTATE_UINT64_ARRAY_V(_f, _s, _n, 0)
+ 
++#define VMSTATE_UINT64_SUB_ARRAY(_f, _s, _start, _num)                \
++    VMSTATE_SUB_ARRAY(_f, _s, _start, _num, 0, vmstate_info_uint64, uint64_t)
++
+ #define VMSTATE_UINT64_2DARRAY(_f, _s, _n1, _n2)                      \
+     VMSTATE_UINT64_2DARRAY_V(_f, _s, _n1, _n2, 0)
+ 
+@@ -932,9 +938,6 @@ extern const VMStateInfo vmstate_info_qtailq;
+ #define VMSTATE_INT32_ARRAY(_f, _s, _n)                               \
+     VMSTATE_INT32_ARRAY_V(_f, _s, _n, 0)
+ 
+-#define VMSTATE_UINT32_SUB_ARRAY(_f, _s, _start, _num)                \
+-    VMSTATE_SUB_ARRAY(_f, _s, _start, _num, 0, vmstate_info_uint32, uint32_t)
+-
+ #define VMSTATE_INT64_ARRAY_V(_f, _s, _n, _v)                         \
+     VMSTATE_ARRAY(_f, _s, _n, _v, vmstate_info_int64, int64_t)
+ 
+-- 
+2.14.3
 
-Unfortunately, the existing float32 code does lots of random unpacking in the
-middle of other classification.  Fixing that would be a prerequisite.  Is it
-worth upending our code base to make this happen?
-
-Failing that, we need to stop using magic numbers, since so many of them were
-wrong.  We need names for these.  We can start with float16 and then later
-backport those numbers into larger formats.
-
-
-r~

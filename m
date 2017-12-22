@@ -1,124 +1,154 @@
-Received: by 10.182.158.201 with SMTP id ww9csp856912obb;
-        Thu, 26 Nov 2015 12:49:32 -0800 (PST)
-X-Received: by 10.55.217.147 with SMTP id q19mr50074599qkl.109.1448570972670;
-        Thu, 26 Nov 2015 12:49:32 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.223.159.74 with SMTP id f10csp2687517wrg;
+        Fri, 22 Dec 2017 12:30:55 -0800 (PST)
+X-Google-Smtp-Source: ACJfBosL4cInbbKdyC6LiY7RxzXl8PhVuuUAt8SmpBnjQWy2Ap3XP3mGD0GVVBWRpu5cZrG98PHw
+X-Received: by 10.37.54.22 with SMTP id d22mr12689970yba.443.1513974655174;
+        Fri, 22 Dec 2017 12:30:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513974655; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ONKV4vBg3eS9KcZrHVkeITGqWVNuAwf15sWM4A9oExW5keF5jsKXL8VpvBlp/mNYV8
+         g0kKh+/KwtvmGUARvqNPCogLgB2b+7KLEECVR6agAqjtlvFgfhzdvubabCxUSIrl1r2i
+         yQAUtPE2FuANjvwAEVvr3FiMpBH6zgX3aVdb0fViuQvyLa6+eK2XDrYtLkAuFJNRTKNZ
+         aXJo7zFxsljz8m09nYbiyD+CS0qt2iAS33SQ933z4z/t4lD6uMPEkUKKp9op0YHEGBio
+         QJqH9g1lZaMHPGsaBjNtnPq7yI+pqgGTk5bXZHl1hsKcc1XA/Sh5KAcJNHi4ubPQbIjO
+         8MQQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
+         :message-id:in-reply-to:date:references:to:from
+         :arc-authentication-results;
+        bh=EuWbI5gurFGhdf0Vr9nyuKJn1GqA7rsqkh3Nt0kCtZY=;
+        b=UBeOVvouhMEJeEekvQdAXqnDhdgwmAVoy1oyIT+UP1OdApkkVVAadCPuDWH7n7t2kP
+         PkqaKOWDm8RHY9PQWXFdBaQTo1P7qVY422RC3HkT5RRuttN8cP+sWkqTvoXpLMVDs8oV
+         gfmuhYXKhGwI8fP9jdLcUcivAbgdMRZD3NoHE9ETZAJYbc1AeEAccGDNsfNsdmAWno/j
+         kRVK7acZzf82rcuCOAWbAvwalWBAcFj6ay76kq2aM4NfuhEumjhFS8BIiDuLlnhawDot
+         uczVXLTbyzfA6V2+RcpaZdFxpbkTew1YXYgelPvQAZSQIqUJoeTwIqMZB+vj+Mv5Te0H
+         fg1Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c137si27960558qhc.4.2015.11.26.12.49.32
+        by mx.google.com with ESMTPS id i5si4312483ywe.572.2017.12.22.12.30.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 26 Nov 2015 12:49:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 22 Dec 2017 12:30:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@microsoft.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
-Received: from localhost ([::1]:53118 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37534 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a23Tw-0006LJ-Dd
-	for alex.bennee@linaro.org; Thu, 26 Nov 2015 15:49:32 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42372)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eSTy2-000256-GZ
+	for alex.bennee@linaro.org; Fri, 22 Dec 2017 15:30:54 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52320)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1a23Tb-00062s-33
-	for qemu-devel@nongnu.org; Thu, 26 Nov 2015 15:49:11 -0500
+	(envelope-from <armbru@redhat.com>) id 1eSTxt-00024V-1S
+	for qemu-arm@nongnu.org; Fri, 22 Dec 2017 15:30:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1a23TX-00067s-2u
-	for qemu-devel@nongnu.org; Thu, 26 Nov 2015 15:49:11 -0500
-Received: from mail-bl2on0106.outbound.protection.outlook.com
-	([65.55.169.106]:51520
-	helo=na01-bl2-obe.outbound.protection.outlook.com)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>)
-	id 1a23TW-00067o-Sg; Thu, 26 Nov 2015 15:49:07 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
-	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=RSCSN6Lev7MA2xvA27hDc1XVKYohG1FVmaT+UvzicAM=;
-	b=hv9UGoKsqS5vMjQkQnbVYNa5uaNvE2JTTd9Rc2YJPsayHT2HsnX7dvmyb2/IeFRXeSXlN5rylZbmcLa12Msdop5fvBFUKPrtDMy2llZmnuA4pT+Qh8JZxUcq8VyP3vJ1XycCwKHt0BM2hWoJYwUzGdb9tt4fKNBqg/vRbuR+GEs=
-Received: from BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) by
-	BLUPR0301MB2033.namprd03.prod.outlook.com (10.164.22.23) with Microsoft
-	SMTP Server (TLS) id 15.1.331.20; Thu, 26 Nov 2015 20:49:04 +0000
-Received: from BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) by
-	BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) with mapi id
-	15.01.0331.023; Thu, 26 Nov 2015 20:49:04 +0000
-From: Andrew Baumann <Andrew.Baumann@microsoft.com>
-To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-Thread-Topic: [Qemu-devel] RFC: raspberry pi / pi2 / Windows-on-ARM support
-Thread-Index: AdEem9sZHjs9/bX/Q4+JMP7QmdOAYQDOg3SAABS0aqABllVcgAACX9EQ
-Date: Thu, 26 Nov 2015 20:49:04 +0000
-Message-ID: <BLUPR0301MB2034ED0BA94F53043E553E729E040@BLUPR0301MB2034.namprd03.prod.outlook.com>
-References: <BLUPR0301MB20343673123489A408C987859E1E0@BLUPR0301MB2034.namprd03.prod.outlook.com>
-	<CAPokK=q3RDOU8-QhYz9xEHEyqb4-Bxu+Xvp0hDxmgUa-AgQb6g@mail.gmail.com>
-	<BLUPR0301MB20346C0A5ADAA0A130BECB989E1C0@BLUPR0301MB2034.namprd03.prod.outlook.com>
-	<CAPokK=p61hGYhB0rMxsuJdfbhB1bgciC-w0Fg=m4Bwa-J2Am9Q@mail.gmail.com>
-In-Reply-To: <CAPokK=p61hGYhB0rMxsuJdfbhB1bgciC-w0Fg=m4Bwa-J2Am9Q@mail.gmail.com>
-Accept-Language: en-AU, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
-	smtp.mailfrom=Andrew.Baumann@microsoft.com; 
-x-originating-ip: [50.46.154.109]
-x-microsoft-exchange-diagnostics: 1; BLUPR0301MB2033;
-	5:8COWlISvMzjP3YdxAuqGrwyI9T4ub3ItRfJg2dLunBrmEGzAz1i9MXK5k+X/Ettq5YXMiI/8MXoNGmV2MJeoy11lnvTfVwA2veQtn03Catmbr5S85WJPtRmxK7HfOV5xY69MMkiw36L1Kjz6TZgCpA==;
-	24:paxoVXHwfADS/qPqCkj3bDumFZ5qH+E2bAzbDI10VZvb/tx0RkSziVg6RRqo/r4IbS5M5ZLbzyz4UGoU3pH2fCyY9S1OGhgSKgEgHGgemcE=
-x-microsoft-antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BLUPR0301MB2033;
-x-microsoft-antispam-prvs: <BLUPR0301MB203372251D565519C9830D399E040@BLUPR0301MB2033.namprd03.prod.outlook.com>
-x-exchange-antispam-report-test: UriScan:;
-x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
-	RULEID:(61425024)(601004)(2401047)(5005006)(8121501046)(520078)(3002001)(10201501046)(61426024)(61427024);
-	SRVR:BLUPR0301MB2033; BCL:0; PCL:0; RULEID:;
-	SRVR:BLUPR0301MB2033; 
-x-forefront-prvs: 0772E5DAD5
-x-forefront-antispam-report: SFV:NSPM;
-	SFS:(10019020)(6009001)(189002)(199003)(40100003)(87936001)(54356999)(122556002)(5002640100001)(76176999)(101416001)(86362001)(33656002)(3846002)(586003)(1096002)(50986999)(74316001)(19580395003)(92566002)(6116002)(102836003)(1411001)(5004730100002)(19580405001)(11100500001)(5005710100001)(10290500002)(2900100001)(5003600100002)(10090500001)(2950100001)(66066001)(77096005)(10400500002)(86612001)(8990500004)(105586002)(93886004)(230783001)(99286002)(189998001)(106356001)(5001960100002)(110136002)(1220700001)(5008740100001)(76576001)(81156007)(97736004);
-	DIR:OUT; SFP:1102; SCL:1; SRVR:BLUPR0301MB2033;
-	H:BLUPR0301MB2034.namprd03.prod.outlook.com; FPR:; SPF:None;
-	PTR:InfoNoRecords; MX:1; A:1; LANG:en; 
-received-spf: None (protection.outlook.com: microsoft.com does not designate
-	permitted sender hosts)
-spamdiagnosticoutput: 1:23
-spamdiagnosticmetadata: NSPM
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+	(envelope-from <armbru@redhat.com>) id 1eSTxp-00065G-3l
+	for qemu-arm@nongnu.org; Fri, 22 Dec 2017 15:30:45 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:56094)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1eSTxo-00064N-Sl; Fri, 22 Dec 2017 15:30:41 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id C6CAF1555A;
+	Fri, 22 Dec 2017 20:30:39 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-74.ams2.redhat.com
+	[10.36.116.74])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4DF047C83C;
+	Fri, 22 Dec 2017 20:30:39 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id C9BD61138645; Fri, 22 Dec 2017 21:30:37 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Alistair Francis <alistair.francis@xilinx.com>
+References: <cover.1513790494.git.alistair.francis@xilinx.com>
+	<6bad4084f4cbc290e2e9f1a72fcfcda7223383ec.1513790495.git.alistair.francis@xilinx.com>
+	<87lghulqno.fsf@dusky.pond.sub.org>
+	<1cfb1217-e32d-8e91-da46-07f1c72be77f@redhat.com>
+	<CAKmqyKPyL8B5ZjEUePkqVbzP8kVmM48vWML41PRXVVO7LVmMpg@mail.gmail.com>
+Date: Fri, 22 Dec 2017 21:30:37 +0100
+In-Reply-To: <CAKmqyKPyL8B5ZjEUePkqVbzP8kVmM48vWML41PRXVVO7LVmMpg@mail.gmail.com>
+	(Alistair Francis's message of "Fri, 22 Dec 2017 11:57:20 -0800")
+Message-ID: <87a7yah5ea.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.3 (gnu/linux)
 MIME-Version: 1.0
-X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Nov 2015 20:49:04.3911 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLUPR0301MB2033
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
-X-Received-From: 65.55.169.106
-Cc: =?utf-8?B?R3LDqWdvcnkgRVNUUkFERQ==?= <gregory.estrade@gmail.com>,
-	Stefan Weil <sw@weilnetz.de>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	=?utf-8?B?SmFuIFBldHJvdcWh?= <jan.petrous@tieto.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [Qemu-devel] RFC: raspberry pi / pi2 / Windows-on-ARM support
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.14
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Fri, 22 Dec 2017 20:30:39 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v6 04/29] hw/arm: Replace
+ fprintf(stderr, "*\n" with error_report()
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Vrn836LrG7qN
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Thomas Huth <thuth@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: TEX/1vChJ73e
 
-PiBGcm9tOiBQZXRlciBDcm9zdGh3YWl0ZSBbbWFpbHRvOmNyb3N0aHdhaXRlcGV0ZXJAZ21haWwu
-Y29tXQ0KPiBTZW50OiBUaHVyc2RheSwgMjYgTm92ZW1iZXIgMjAxNSAxMTozOQ0KPiBTbyBJIGFt
-IGxvb2tpbmcgYXQgc29tZSByZWNlbnQgbmV3cywgYW5kIHRoZXJlIGlzIHRoZSBSUGkgWmVybyB3
-aGljaCByZXVzZXMNCj4gdGhlIGJjbTI4MzUgYXMgYSBkaWZmZXJlbnQgYm9hcmQuIENhbid0IGZp
-bmQgdGhlIHNjaGVtYXRpYyB5ZXQsIGJ1dCBmcm9tDQo+IHdoYXQgSSBjYW4gc2VlLCB0aGlzIGlz
-IGEgcmF3IFNvQyAobm8gVVNCIGV0aGVybmV0KS4gV2l0aCB5b3VyIFNvQy9ib2FyZCBzcGxpdA0K
-PiB3ZSBzaG91bGQgYmUgYWJsZSBwaWNrdXAgdGhlIFplcm8gYm9hcmQgcXVpdGUgY2hlYXBseSBh
-cyBmb2xsb3cgdXAgd29yay4NCg0KWWVzLCBpbiBmYWN0IGZyb20gd2hhdCBJJ3ZlIHNlZW4gdGhl
-IFBpIHplcm8gaXMgZnVuY3Rpb25hbGx5IGVxdWl2YWxlbnQgdG8gb3VyIGN1cnJlbnQgZW11bGF0
-aW9uIG9mIHRoZSBQaTEgLS0gd2UgZG9uJ3QgZW11bGF0ZSB0aGUgUGkncyBVU0ItRXRoZXJuZXQg
-YWRhcHRlciBlaXRoZXIuDQoNCkFuZHJldw0K
+Alistair Francis <alistair.francis@xilinx.com> writes:
+
+> On Fri, Dec 22, 2017 at 9:17 AM, Thomas Huth <thuth@redhat.com> wrote:
+>> On 22.12.2017 16:37, Markus Armbruster wrote:
+>>> Second thoughts...
+>>>
+>>> Alistair Francis <alistair.francis@xilinx.com> writes:
+>> [...]
+>>>>  #include "qemu/osdep.h"
+>>>> +#include "qemu/error-report.h"
+>>>>  #include "qapi/error.h"
+>>>>  #include "qemu-common.h"
+>>>>  #include "cpu.h"
+>>>> @@ -1311,8 +1312,8 @@ static void omap_prcm_apll_update(struct omap_prcm_s *s)
+>>>>      /* TODO: update clocks */
+>>>>
+>>>>      if (mode[0] == 1 || mode[0] == 2 || mode[1] == 1 || mode[1] == 2)
+>>>> -        fprintf(stderr, "%s: bad EN_54M_PLL or bad EN_96M_PLL\n",
+>>>> -                        __func__);
+>>>> +        error_report("%s: bad EN_54M_PLL or bad EN_96M_PLL",
+>>>> +                     __func__);
+>>>>  }
+>>>
+>>> This one's different: we neither exit() nor return a "failed" status to
+>>> the caller.
+>>>
+>>> We get here when the guest writes something funny to a certain
+>>> memory-mapped I/O register.  In other words, it's guest misbehavior, not
+>>> a user error.  I doubt it should be reported with error_report().
+>>> Peter, do we have a canonical way to report or log  guest misbehavior?
+>>
+>> qemu_log_mask(LOG_GUEST_ERROR, ...) ?
+>
+> That seems like the best option to me.
+
+Suggest:
+
+1. Keep converting fatal errors (the ones that exit())
+
+2. Keep converting recoverable errors (the ones that return failure)
+
+3. You can leave the prints that are neither alone.  You can also
+   convert to logging or tracing, as appropriate, but that requires
+   understanding the code.
+
+Makes sense?

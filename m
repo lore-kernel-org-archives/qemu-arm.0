@@ -1,173 +1,158 @@
-Received: by 10.25.159.19 with SMTP id i19csp3377596lfe;
-        Wed, 20 Jan 2016 14:24:25 -0800 (PST)
-X-Received: by 10.140.104.100 with SMTP id z91mr14832658qge.26.1453328665722;
-        Wed, 20 Jan 2016 14:24:25 -0800 (PST)
+Received: by 10.223.159.74 with SMTP id f10csp2657449wrg;
+        Fri, 22 Dec 2017 11:58:07 -0800 (PST)
+X-Google-Smtp-Source: ACJfBosyQKOmYjSfWPPQbC/bPQ+Wvj5hP7W/xAtzfNGLnG+29VcI/F/A0bD9L7lqydSrrSj7ci08
+X-Received: by 10.37.139.144 with SMTP id j16mr11050935ybl.525.1513972687313;
+        Fri, 22 Dec 2017 11:58:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513972687; cv=none;
+        d=google.com; s=arc-20160816;
+        b=bbYqvOLXD892jhRvU017N2eXODwN84rOagegzF25G74yjH6s5oHSepEJpgvYJylz2c
+         9iHMyz+0MVDrvak9zqHutX66fV5TyU3KwwS9jGyYg5MyiJ2tIf+rL0Jhv2omWlU7WvXG
+         ZYE9qotidTgAvoUObOP93JDCjaMXfXknHx9olTVVAiXrsDOQEA2gtEZkwM8o0Kv0N7um
+         jjx0ShY7KbxFjAg++T9Mv5dPo/mhuXJ1fMkxPaaQqnRzRP34O/twRuW+pN07rx6iSrSb
+         Epa/Ss2MTPMUT978C+AK3G6C2YR2YLUUBUr38yCmQ3C9WEq5rdno4dNvVLfrIFMBFjEp
+         34Sw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=d2CnRm+mcTo7YAxTriRpmpOxjBitfxPWPM3aPJKVUrQ=;
+        b=N0El+MdAZzrAMEEh9CTvPW67gMIpogyEIucZhfDTWXkHeIKtcTB63e/YLe1v0D25ol
+         Gh/fL65bIFRG9tDpy++lK53EU6rgAkZW7Yol8caeT9QTnP0i0kCx9v+FlTV2N+IW+JRn
+         R8oftKtbQYWEsjp0s3i2VvustSI0NRjOBBj38px/mN4nPVZKOqccW8c46lmuLHGjb92l
+         74nWxu8H2yYQSSmyWDYIrIXG9qshbD/sN6KZfdnTAhFw5XW59sUGIpo7Pn/BGvPZA1AM
+         Ef3AZsskNJStfwHmHCLfmT4wrgCFTCX9+zIWt68VVY4kAEL3iCe0RrT22pcrvpbSUrzh
+         SzzA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=biqBAF7Y;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f22si46032052qkf.115.2016.01.20.14.24.25
+        by mx.google.com with ESMTPS id o140si4220345ywo.545.2017.12.22.11.58.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 20 Jan 2016 14:24:25 -0800 (PST)
+        Fri, 22 Dec 2017 11:58:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com
-Received: from localhost ([::1]:45284 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=biqBAF7Y;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:36344 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aM1Av-00052g-5M
-	for alex.bennee@linaro.org; Wed, 20 Jan 2016 17:24:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37004)
+	id 1eSTSI-0002p4-Om
+	for alex.bennee@linaro.org; Fri, 22 Dec 2017 14:58:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56898)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1aM1As-0004za-P7
-	for qemu-arm@nongnu.org; Wed, 20 Jan 2016 17:24:23 -0500
+	(envelope-from <alistair23@gmail.com>) id 1eSTS6-0002nX-CA
+	for qemu-arm@nongnu.org; Fri, 22 Dec 2017 14:57:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1aM1Ar-0003gX-Lg
-	for qemu-arm@nongnu.org; Wed, 20 Jan 2016 17:24:22 -0500
-Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:35306)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>)
-	id 1aM1Ap-0003g5-LT; Wed, 20 Jan 2016 17:24:19 -0500
-Received: by mail-oi0-x242.google.com with SMTP id e195so1173136oig.2;
-	Wed, 20 Jan 2016 14:24:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	(envelope-from <alistair23@gmail.com>) id 1eSTS5-0001TI-OU
+	for qemu-arm@nongnu.org; Fri, 22 Dec 2017 14:57:54 -0500
+Received: from mail-wr0-x242.google.com ([2a00:1450:400c:c0c::242]:35080)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1eSTS3-0001QR-QO; Fri, 22 Dec 2017 14:57:51 -0500
+Received: by mail-wr0-x242.google.com with SMTP id l19so16416113wrc.2;
+	Fri, 22 Dec 2017 11:57:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-type:content-transfer-encoding;
-	bh=SPRDCFSPSH8xm6Lt/vIOTdgCuQI/803O1WVqYhQnlFM=;
-	b=ygDAnxhEum7qmTcqdMN4PacvejAdv0lhmObdhjYlRnXXgvGeCFtwjTTT+zAJrgYrUd
-	RvQRBxSWFwbVzXs7JwuLByF9rTdiS41u2mbTmOmIMDlYld9vykGf3mhE4UUP11X70h4v
-	gGts9O2TkmE+ZwN+LnNaelUpW6Q5c9sJMJD+YQ+I+odzVnXYnAQap++2QeZdjHGYUOL0
-	m9vxxA0uZIBZ7TqQIsMeANQqShj/95fbrBQ5nHEpztt7/F1PBjzeiUNTjpDIvh4inUSr
-	6A3rkRZcSn1BXvM/jURt06so+6/VW+i7eiWvK1JKWxo0VSAtEEqDOC9FOdYx7A8tn6dV
-	wjiA==
+	:subject:to:cc;
+	bh=d2CnRm+mcTo7YAxTriRpmpOxjBitfxPWPM3aPJKVUrQ=;
+	b=biqBAF7Y3cbon6ARv3vz1XWPlcc1lF0AHwB6URMwyROe/aAMC35N3Ek9YiDPH+6WcW
+	STKwupIXJ9H0Dqy7yetdxtO3lPs3+xsl7JNRRGtAmAOBFtb+59YN7Vp6ijd/BXrStIjI
+	8ralGMXz+Mr9l7ufHpR1/lzR2AOYOvNyjzTt4luLhkXR7dCl1MI76BCO58cFRU/DNrMW
+	ZsZ0scSa9Ysq084mUfwZHej/rq8DJCwxHNlZAzJJkgkxPW7kDwnQVevz6Kvh+nDJvwyX
+	OhRy8BGMHkn4o6IVsoqtple6hWM/ULOHGIw03TraGapdMTKusQizdPEpLPgQKaAKffaU
+	5HAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
+	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc:content-type
-	:content-transfer-encoding;
-	bh=SPRDCFSPSH8xm6Lt/vIOTdgCuQI/803O1WVqYhQnlFM=;
-	b=UQkrZQ+DThLFR3yC/L5NzSltm/rWpG5a/tvLuowoamEnyLcX1X5vWdw+RkCwKgpGjj
-	WXAfvOKIR8NST1pGB93XVTywWPIBSkzX/OeVuuCCnFHY9wIlENiNjykAR8fwsh5RZ950
-	avbzeBksmad1toDnrqJYXsNzWv7bcu0u9P9NeostnDH3t3T+UjwaUqs3Dv6ZX9e620k/
-	7nFRqQlyR2oTTFg4Y3tNbDwUchyQ0hQNovsuohQN07sSl07MAY5A+l9UFiq2lSE5vjGC
-	2eJLnhEEOGWTugGt34X3nNT+8UWwgg4zhRVTIQz1/DZW1TwIxEvZXSpYPP4aoTqtB9pN
-	6hbg==
-X-Gm-Message-State: ALoCoQldBsyTuP0Wr67oy7z2kq5TA5uI5oHhdiaK+cpTWlWxhQP+Hb/sQHVfuBh9gqUrSdbtrH0ZoXXl/0DdUx9nOCnnvA64EQ==
-X-Received: by 10.202.75.15 with SMTP id y15mr26303446oia.16.1453328659001;
-	Wed, 20 Jan 2016 14:24:19 -0800 (PST)
+	:date:message-id:subject:to:cc;
+	bh=d2CnRm+mcTo7YAxTriRpmpOxjBitfxPWPM3aPJKVUrQ=;
+	b=AE6z1vtcC5uzocRX4JW6DWHUX5sp43IZm75h3vMo8qNTqzOtB6EG3/L/A6NhFRfd+W
+	P8ZDapW6XWexMJHiO5qHVhPzTPTDS7ir9aNd/LHg35wywqcjd+kKVeW8E9abuVxd7rww
+	OlRgLERLXQpBvj8xO9jgRuHEncc+fcrwQo9yFAJY6QjqUs6cNg1EC5tlklWZ9VptDx0V
+	c3Shpk3rXSj0lDwyGkAszwgzdqO5aILKhxdx2YQ0POQID5ILdlj/Q/iP/c0it7ekx6D5
+	4Vnx18yFpG3JBmtM2ksoI+lundzbWl8jaQkO5gl9ivVCkAuLerflVV5dMNM6GLz8ia4p
+	1BDA==
+X-Gm-Message-State: AKGB3mJnqfXMtrW5VZtIJU1L2LCu4h8YHtr+A9keO6Tkv5WnIaHpy15P
+	YwZYI44NysLA8FQteB2LNnku+MF7UG4gmYIa5WA=
+X-Received: by 10.223.190.12 with SMTP id n12mr8062363wrh.34.1513972670649;
+	Fri, 22 Dec 2017 11:57:50 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.182.49.199 with HTTP; Wed, 20 Jan 2016 14:23:49 -0800 (PST)
-In-Reply-To: <CAFEAcA9QvgNUTvAjBZAu5apxj25RwV7bRFs0g0eUWVfDD1DrtA@mail.gmail.com>
-References: <e83ff2fc1c0fcdc6c435e53b1f83f1049b2a87a3.1453166915.git.alistair.francis@xilinx.com>
-	<CAFEAcA9QvgNUTvAjBZAu5apxj25RwV7bRFs0g0eUWVfDD1DrtA@mail.gmail.com>
+Received: by 10.28.164.69 with HTTP; Fri, 22 Dec 2017 11:57:20 -0800 (PST)
+In-Reply-To: <1cfb1217-e32d-8e91-da46-07f1c72be77f@redhat.com>
+References: <cover.1513790494.git.alistair.francis@xilinx.com>
+	<6bad4084f4cbc290e2e9f1a72fcfcda7223383ec.1513790495.git.alistair.francis@xilinx.com>
+	<87lghulqno.fsf@dusky.pond.sub.org>
+	<1cfb1217-e32d-8e91-da46-07f1c72be77f@redhat.com>
 From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Wed, 20 Jan 2016 14:23:49 -0800
-X-Google-Sender-Auth: NQAxI9tzuEd_vZOVBbwc3lRp9hg
-Message-ID: <CAKmqyKPXwwJjqFxK1fHLxP4Z3e5re1j7RGGZjSbR5vS+WdD8EA@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4003:c06::242
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	Soren Brinkmann <soren.brinkmann@xilinx.com>,
-	Alistair Francis <alistair.francis@xilinx.com>
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v1 1/1] arm_gic: Update ID
-	registers based on revision
+Date: Fri, 22 Dec 2017 11:57:20 -0800
+X-Google-Sender-Auth: OPophdmIQmdkYxSRGV6PTz0Twic
+Message-ID: <CAKmqyKPyL8B5ZjEUePkqVbzP8kVmM48vWML41PRXVVO7LVmMpg@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::242
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v6 04/29] hw/arm: Replace
+ fprintf(stderr, "*\n" with error_report()
 X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.14
+X-Mailman-Version: 2.1.21
 Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
 List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Markus Armbruster <armbru@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: C+XxsNlROQNe
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: sdTmrbc7CAPx
 
-On Tue, Jan 19, 2016 at 12:48 AM, Peter Maydell
-<peter.maydell@linaro.org> wrote:
-> On 19 January 2016 at 01:33, Alistair Francis
-> <alistair.francis@xilinx.com> wrote:
->> Update the GIC ID registers (registers above 0xfe0) based on the GIC
->> revision instead of using the sames values for all GIC implementations.
+On Fri, Dec 22, 2017 at 9:17 AM, Thomas Huth <thuth@redhat.com> wrote:
+> On 22.12.2017 16:37, Markus Armbruster wrote:
+>> Second thoughts...
 >>
->> Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
->> Tested-by: S=C3=B6ren Brinkmann <soren.brinkmann@xilinx.com>
->> ---
+>> Alistair Francis <alistair.francis@xilinx.com> writes:
+> [...]
+>>>  #include "qemu/osdep.h"
+>>> +#include "qemu/error-report.h"
+>>>  #include "qapi/error.h"
+>>>  #include "qemu-common.h"
+>>>  #include "cpu.h"
+>>> @@ -1311,8 +1312,8 @@ static void omap_prcm_apll_update(struct omap_prcm_s *s)
+>>>      /* TODO: update clocks */
+>>>
+>>>      if (mode[0] == 1 || mode[0] == 2 || mode[1] == 1 || mode[1] == 2)
+>>> -        fprintf(stderr, "%s: bad EN_54M_PLL or bad EN_96M_PLL\n",
+>>> -                        __func__);
+>>> +        error_report("%s: bad EN_54M_PLL or bad EN_96M_PLL",
+>>> +                     __func__);
+>>>  }
 >>
->>  hw/intc/arm_gic.c | 29 ++++++++++++++++++++++++++---
->>  1 file changed, 26 insertions(+), 3 deletions(-)
+>> This one's different: we neither exit() nor return a "failed" status to
+>> the caller.
 >>
->> diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
->> index 13e297d..f6bfa53 100644
->> --- a/hw/intc/arm_gic.c
->> +++ b/hw/intc/arm_gic.c
->> @@ -31,8 +31,16 @@ do { fprintf(stderr, "arm_gic: " fmt , ## __VA_ARGS__=
-); } while (0)
->>  #define DPRINTF(fmt, ...) do {} while(0)
->>  #endif
->>
->> -static const uint8_t gic_id[] =3D {
->> -    0x90, 0x13, 0x04, 0x00, 0x0d, 0xf0, 0x05, 0xb1
->> +static const uint8_t gic_id_11mpcore[] =3D {
->> +    0x00, 0x00, 0x00, 0x00, 0x90, 0x13, 0x04, 0x00, 0x0d, 0xf0, 0x05, 0=
-xb1
->> +};
->> +
->> +static const uint8_t gic_id_gicv1[] =3D {
->> +    0x04, 0x00, 0x00, 0x00, 0x90, 0xb3, 0x1b, 0x00, 0x0d, 0xf0, 0x05, 0=
-xb1
->> +};
->> +
->> +static const uint8_t gic_id_gicv2[] =3D {
->> +    0x04, 0x00, 0x00, 0x00, 0x90, 0xb4, 0x2b, 0x00, 0x0d, 0xf0, 0x05, 0=
-xb1
->>  };
->>
->>  static inline int gic_get_current_cpu(GICState *s)
->> @@ -689,7 +697,22 @@ static uint32_t gic_dist_readb(void *opaque, hwaddr=
- offset, MemTxAttrs attrs)
->>          if (offset & 3) {
->>              res =3D 0;
->>          } else {
->> -            res =3D gic_id[(offset - 0xfe0) >> 2];
->> +            switch (s->revision) {
->> +            case REV_11MPCORE:
->> +                res =3D gic_id_11mpcore[(offset - 0xfe0) >> 2];
->> +                break;
->> +            case 1:
->> +                res =3D gic_id_gicv1[(offset - 0xfe0) >> 2];
->> +                break;
->> +            case 2:
->> +                res =3D gic_id_gicv2[(offset - 0xfe0) >> 2];
->> +                break;
->> +            case REV_NVIC:
->> +                /* Shouldn't be able to get here */
->> +                abort();
->> +            default:
->> +                res =3D 0;
->> +            }
->>          }
->>      }
->>      return res;
+>> We get here when the guest writes something funny to a certain
+>> memory-mapped I/O register.  In other words, it's guest misbehavior, not
+>> a user error.  I doubt it should be reported with error_report().
+>> Peter, do we have a canonical way to report or log  guest misbehavior?
 >
-> You've expanded the arrays to include the fd0...fdc values
-> (which is right) but the logic also needs to change to
-> make offset =3D=3D 0xfd0..0xfdf go through this code path and
-> also to use the new indexing into the array.
+> qemu_log_mask(LOG_GUEST_ERROR, ...) ?
 
-I see what you mean, fixing it now.
-
-Thanks,
+That seems like the best option to me.
 
 Alistair
 
 >
-> thanks
-> -- PMM
+>  Thomas
+>
 >

@@ -1,85 +1,104 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp4036548wru;
-        Tue, 7 Aug 2018 03:31:09 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpfajdIJQFjfbsYDtYvv5soHtp/6lge+XOf1Hd/wfmM9pPk8GPxhiDH7h9LN5ht3XD+NTd+Z
-X-Received: by 2002:ac8:2969:: with SMTP id z38-v6mr17475769qtz.386.1533637869910;
-        Tue, 07 Aug 2018 03:31:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1533637869; cv=none;
+Received: by 10.223.159.74 with SMTP id f10csp2709277wrg;
+        Fri, 22 Dec 2017 12:59:54 -0800 (PST)
+X-Google-Smtp-Source: ACJfBovqevKd4sTfc3atQD/bHFFQHLxAS2LbHgm8+47nDdrNtG3mr9mI6w+x4ucDPsKPQmO3KbZ3
+X-Received: by 10.37.78.67 with SMTP id c64mr11486661ybb.289.1513976394529;
+        Fri, 22 Dec 2017 12:59:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513976394; cv=none;
         d=google.com; s=arc-20160816;
-        b=sBGiJ4Y8AYAidtdSlwmWHQnAKUZs+OAMQJ65sihYDFzV1UKf9TplyT/+F0D6Ucp9Ht
-         ZUSdexamOqhG2xTfFIwKPiCwR19weOr/3f0iQMzcaPj05lEe0eut2WKWi2DU0xZRgce8
-         aQDPqnxjF98HVTh69beV7Hcnx2P1rO9Js/QNp1on6lpWLGqApybKL6+/YW0biTZ1qAsD
-         oLQOM8u3BIq4JQK2VINB+1xPFDJYRvB8wzYwcCmoCfJ8ioran1/1G8WBNce17LHd6Tjy
-         kILjWdbyD1l2lian+1TGdztJlFn50b4yWWoYFjOSmOyWBsHoB5z3Tkvjg8RodnFZBZGw
-         3fXA==
+        b=KtM3EpIaKkXXqvD030qxc23hEz4IvidXHEG/P5nZak59QeaIc6akxgJcD8uVvkyXIg
+         wleNFPf0XQQjfDJfbPHar/MO+/gxgX1VaIOgiEshQ1e487k0t41tdCbYRUksMnaxT3q6
+         XPy4LT34wekwAK5QTuzzyXxJ/gxCPITsQH6o0Xdws76Mb6bkc7Wy38x76/dd2BGthJb0
+         dJ6dHr4rh88fwGvnxd6//ZV4TEmGU2C7zlw7q8MMWPQHOvX5Oc0pyY9/3pGcYk6MYe51
+         bK/7JVAvLq2aRGOTJWvHX4gXc/HLzu7XzXSMWuwv3IcDGqA0SoPZ6BzTK2O3e8HVPrF7
+         1kxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=5mUCGa71KNO1m1uow3PtEmY+dfk7HdOAxzXYrqLS+D8=;
-        b=tDAPb+Ci/Ld3AkBjIp92ukpcvlbYRdmsKuccm2dMagRLGePvT6VeLzn6xn6UKiXe31
-         9AP9W0CmXJWr3/yi9aHn83BDDI9+RJH23XGKgTmWORkiNh5X3ezRwaVUyC4UM55oaNV4
-         h2V/Bo/6f0qcx5bXccAH48FDzbkwE6tfWCfZsHnwkndiN7aMOB65pyjfZcz+et6MOXcg
-         xChZWC17a4ROPR+/qw1RaOj0PBt5Vw2JdAhF+i/MT8f7r21rAVhdOHAkRZdxoedW39Ve
-         224mPHL5EfDuW3K/UUAS+V3txU4tMqDXBmcLfgHroLz4kk7k1l55Nn61pZrHH2ZbY5Aw
-         z5gw==
+        bh=zJUcQGs+ruiMXsOhPkuDcKbnvEKK5r82yTZYIHGE1Yw=;
+        b=TjXseimr1Rd2JJ51GXLG1NKB5Gtaow4tudWJ4fKox/243HCGoivixIqIuKP/Z7VT91
+         /BoN4K/DsVDb3lX/mW/+eNKXa/TuEMxeFfZsxEhGWWvfU14FI9NmSLodjp+Teoh1bJxL
+         pRaFnHP1waxpJ1/mWN/+reb/xcW4HVVIqZSYNGY9LLk60kug2PR2UhPan69VJ31pHxUs
+         GefEXcAayDwLQ6hZMLnyKvNejXnVxpmUEGwXCmAZP6K0GckdcgXb7lGBqshDdhKxb5Hf
+         kr6IFyKwab9G08r+y6Esx7TA1MjWphO9W6QHVr1Ns/O+Jt8eeFS32S7fc5t3hmrtxi/N
+         yypA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VpMilG7C;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v71-v6si917554qka.94.2018.08.07.03.31.09
+        by mx.google.com with ESMTPS id g20si21367ybe.528.2017.12.22.12.59.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 07 Aug 2018 03:31:09 -0700 (PDT)
+        Fri, 22 Dec 2017 12:59:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38263 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VpMilG7C;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:38545 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fmzGf-0002H5-Ai
-	for alex.bennee@linaro.org; Tue, 07 Aug 2018 06:31:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35261)
+	id 1eSUQ6-0001qq-2E
+	for alex.bennee@linaro.org; Fri, 22 Dec 2017 15:59:54 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44003)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fmzFj-0001eQ-Af
-	for qemu-arm@nongnu.org; Tue, 07 Aug 2018 06:30:12 -0400
+	(envelope-from <alistair23@gmail.com>) id 1eSUPg-0001hV-IK
+	for qemu-arm@nongnu.org; Fri, 22 Dec 2017 15:59:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fmzFd-0005RF-AQ
-	for qemu-arm@nongnu.org; Tue, 07 Aug 2018 06:30:11 -0400
-Received: from 4.mo4.mail-out.ovh.net ([178.32.98.131]:43346)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fmzFd-0005QN-0v
-	for qemu-arm@nongnu.org; Tue, 07 Aug 2018 06:30:05 -0400
-Received: from player776.ha.ovh.net (unknown [10.109.159.123])
-	by mo4.mail-out.ovh.net (Postfix) with ESMTP id 52D30193587
-	for <qemu-arm@nongnu.org>; Tue,  7 Aug 2018 12:30:03 +0200 (CEST)
-Received: from zorba.kaod.org (ARennes-657-1-237-83.w2-11.abo.wanadoo.fr
-	[2.11.96.83]) (Authenticated sender: postmaster@kaod.org)
-	by player776.ha.ovh.net (Postfix) with ESMTPSA id E243B40008F;
-	Tue,  7 Aug 2018 12:29:56 +0200 (CEST)
-To: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>
-References: <20180807075757.7242-1-joel@jms.id.au>
-	<20180807075757.7242-7-joel@jms.id.au>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <e8ca4c53-a0d0-65bb-69f2-05a5201e4bf6@kaod.org>
-Date: Tue, 7 Aug 2018 12:29:56 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
+	(envelope-from <alistair23@gmail.com>) id 1eSUPf-0004kp-PX
+	for qemu-arm@nongnu.org; Fri, 22 Dec 2017 15:59:28 -0500
+Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:40280)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1eSUPd-0004in-Ci; Fri, 22 Dec 2017 15:59:25 -0500
+Received: by mail-wm0-x243.google.com with SMTP id f206so23673560wmf.5;
+	Fri, 22 Dec 2017 12:59:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc;
+	bh=zJUcQGs+ruiMXsOhPkuDcKbnvEKK5r82yTZYIHGE1Yw=;
+	b=VpMilG7CLsRsZglWV3FEgNaBjEz+eq7uEQoNT2muK/tsOVbQiwGHVtOx31yC/NHhxI
+	h+mA882LtgUvMExSK0Ac8CgK4YUYokyoW4gXVOAGWWdbmYzeC9Y7A9Ttf6/rpbL1EP78
+	68DuI0Rpn5MgN7BGgOohppFr8/XYn9/XDj3uIBZwxztCP23crUaTdd3mZUBuuKtjRara
+	Xews0TqxTPBozsv6uwKE+9cYt+lGqUVDTESQpOGP0bf7gLSmy9mG387TGVyL4GkbICPJ
+	eCfdsL2OZdamYDEmwqXwe4KXJj4nuz2MYqxcqvX6n1TtOQaWavIwPJg66BRdY6A9Wzq5
+	Ih+Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc;
+	bh=zJUcQGs+ruiMXsOhPkuDcKbnvEKK5r82yTZYIHGE1Yw=;
+	b=thNx4DtX+I4kF1fYF+S1UQqPGrqefFgvEKOCkcUFBlTGTjZdJIl/UtrOMB8NMcLFn4
+	ZdU2CYlMaKacFeDTbhNo4bInfsUSRMKBSZqmZQ0CzSctv5qkGpPuv8DDyqowqTDdnWkn
+	BUHpV+uIO8mh/pkJHAXEXJsyAIknfv6SW6EXOZQErYX64e/JcakLw5zEtnx8v70Pcxpw
+	X1BPqMDLPU/O3agznMewl9vfMUY6F4E4C4MSpPbEd8yaJ1s0RiJEcA8KKZbxHa3CZb/p
+	V5nIm8kDBRQst9bSfgdhz0AFF/pZpyrwYmjUbCQSZsmVx6GwS8z8lU+h6unYAx+DBIMT
+	Hsjg==
+X-Gm-Message-State: AKGB3mLXbqIHh90sAA4cE8YTRqJmUpyMrubBlEPW1m7LIRlGWX/WD+dw
+	DA6KA7qEHBwR77hlidugt38zuui7WB85XMGSI8w=
+X-Received: by 10.28.152.85 with SMTP id a82mr5288253wme.16.1513976364077;
+	Fri, 22 Dec 2017 12:59:24 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20180807075757.7242-7-joel@jms.id.au>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Ovh-Tracer-Id: 8406531658048965440
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedtjedrtddtgddtjecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 178.32.98.131
-Subject: Re: [Qemu-arm] [PATCH 6/7] aspeed: add a max_ram_size property to
- the memory controller
+Received: by 10.28.164.69 with HTTP; Fri, 22 Dec 2017 12:58:53 -0800 (PST)
+In-Reply-To: <87a7yah5ea.fsf@dusky.pond.sub.org>
+References: <cover.1513790494.git.alistair.francis@xilinx.com>
+	<6bad4084f4cbc290e2e9f1a72fcfcda7223383ec.1513790495.git.alistair.francis@xilinx.com>
+	<87lghulqno.fsf@dusky.pond.sub.org>
+	<1cfb1217-e32d-8e91-da46-07f1c72be77f@redhat.com>
+	<CAKmqyKPyL8B5ZjEUePkqVbzP8kVmM48vWML41PRXVVO7LVmMpg@mail.gmail.com>
+	<87a7yah5ea.fsf@dusky.pond.sub.org>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Fri, 22 Dec 2017 12:58:53 -0800
+X-Google-Sender-Auth: Ynerlr-hRCktSNHZPb-Z-vF_tPc
+Message-ID: <CAKmqyKO5sKdiZJ65teDxa16PCE71WCLay7cOAQJQdyS-EVNOJg@mail.gmail.com>
+To: Markus Armbruster <armbru@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::243
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v6 04/29] hw/arm: Replace
+ fprintf(stderr, "*\n" with error_report()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,163 +110,68 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LoKGS57S2CDo
+X-TUID: IAOwAfUFAJzZ
 
-On 08/07/2018 09:57 AM, Joel Stanley wrote:
-> From: C=C3=A9dric Le Goater <clg@kaod.org>
->=20
-> This will be used to construct a memory region beyond the RAM region
-> to let firmwares scan the address space with load/store to guess how
-> much RAM the SoC has.
+On Fri, Dec 22, 2017 at 12:30 PM, Markus Armbruster <armbru@redhat.com> wrote:
+> Alistair Francis <alistair.francis@xilinx.com> writes:
+>
+>> On Fri, Dec 22, 2017 at 9:17 AM, Thomas Huth <thuth@redhat.com> wrote:
+>>> On 22.12.2017 16:37, Markus Armbruster wrote:
+>>>> Second thoughts...
+>>>>
+>>>> Alistair Francis <alistair.francis@xilinx.com> writes:
+>>> [...]
+>>>>>  #include "qemu/osdep.h"
+>>>>> +#include "qemu/error-report.h"
+>>>>>  #include "qapi/error.h"
+>>>>>  #include "qemu-common.h"
+>>>>>  #include "cpu.h"
+>>>>> @@ -1311,8 +1312,8 @@ static void omap_prcm_apll_update(struct omap_prcm_s *s)
+>>>>>      /* TODO: update clocks */
+>>>>>
+>>>>>      if (mode[0] == 1 || mode[0] == 2 || mode[1] == 1 || mode[1] == 2)
+>>>>> -        fprintf(stderr, "%s: bad EN_54M_PLL or bad EN_96M_PLL\n",
+>>>>> -                        __func__);
+>>>>> +        error_report("%s: bad EN_54M_PLL or bad EN_96M_PLL",
+>>>>> +                     __func__);
+>>>>>  }
+>>>>
+>>>> This one's different: we neither exit() nor return a "failed" status to
+>>>> the caller.
+>>>>
+>>>> We get here when the guest writes something funny to a certain
+>>>> memory-mapped I/O register.  In other words, it's guest misbehavior, not
+>>>> a user error.  I doubt it should be reported with error_report().
+>>>> Peter, do we have a canonical way to report or log  guest misbehavior?
+>>>
+>>> qemu_log_mask(LOG_GUEST_ERROR, ...) ?
+>>
+>> That seems like the best option to me.
+>
+> Suggest:
+>
+> 1. Keep converting fatal errors (the ones that exit())
+>
+> 2. Keep converting recoverable errors (the ones that return failure)
+>
+> 3. You can leave the prints that are neither alone.  You can also
+>    convert to logging or tracing, as appropriate, but that requires
+>    understanding the code.
+>
+> Makes sense?
 
-This is in another patch I can send later on.
+Does this apply to new patches after this series or to this series as
+well? The series is mostly just mechanical find/replace. I really
+don't want to have to dig through every patch to figure out what to
+change/not change.
 
-Thanks,
+Alistair
 
-C.=20
-
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> Signed-off-by: Joel Stanley <joel@jms.id.au>
-> ---
->  hw/arm/aspeed.c               | 31 +++++++++++++++++++++++++++++++
->  hw/arm/aspeed_soc.c           |  2 ++
->  hw/misc/aspeed_sdmc.c         |  3 +++
->  include/hw/misc/aspeed_sdmc.h |  1 +
->  4 files changed, 37 insertions(+)
->=20
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index bb9d33848d3f..e078269266bc 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -31,6 +31,7 @@ static struct arm_boot_info aspeed_board_binfo =3D {
->  typedef struct AspeedBoardState {
->      AspeedSoCState soc;
->      MemoryRegion ram;
-> +    MemoryRegion max_ram;
->  } AspeedBoardState;
-> =20
->  typedef struct AspeedBoardConfig {
-> @@ -127,6 +128,27 @@ static const AspeedBoardConfig aspeed_boards[] =3D=
- {
->      },
->  };
-> =20
-> +/*
-> + * The max ram region is for firmwares that scan the address space
-> + * with load/store to guess how much RAM the SoC has.
-> + */
-> +static uint64_t max_ram_read(void *opaque, hwaddr offset, unsigned siz=
-e)
-> +{
-> +    return 0;
-> +}
-> +
-> +static void max_ram_write(void *opaque, hwaddr offset, uint64_t value,
-> +                           unsigned size)
-> +{
-> +    /* Disacard writes */
-> +}
-> +
-> +static const MemoryRegionOps max_ram_ops =3D {
-> +    .read =3D max_ram_read,
-> +    .write =3D max_ram_write,
-> +    .endianness =3D DEVICE_NATIVE_ENDIAN,
-> +};
-> +
->  #define FIRMWARE_ADDR 0x0
-> =20
->  static void write_boot_rom(DriveInfo *dinfo, hwaddr addr, size_t rom_s=
-ize,
-> @@ -187,6 +209,7 @@ static void aspeed_board_init(MachineState *machine=
-,
->      AspeedBoardState *bmc;
->      AspeedSoCClass *sc;
->      DriveInfo *drive0 =3D drive_get(IF_MTD, 0, 0);
-> +    ram_addr_t max_ram_size;
-> =20
->      bmc =3D g_new0(AspeedBoardState, 1);
->      object_initialize(&bmc->soc, (sizeof(bmc->soc)), cfg->soc_name);
-> @@ -226,6 +249,14 @@ static void aspeed_board_init(MachineState *machin=
-e,
->      object_property_add_const_link(OBJECT(&bmc->soc), "ram", OBJECT(&b=
-mc->ram),
->                                     &error_abort);
-> =20
-> +    max_ram_size =3D object_property_get_uint(OBJECT(&bmc->soc), "max-=
-ram-size",
-> +                                            &error_abort);
-> +    memory_region_init_io(&bmc->max_ram, NULL, &max_ram_ops, NULL,
-> +                          "max_ram", max_ram_size  - ram_size);
-> +    memory_region_add_subregion(get_system_memory(),
-> +                                sc->info->sdram_base + ram_size,
-> +                                &bmc->max_ram);
-> +
->      aspeed_board_init_flashes(&bmc->soc.fmc, cfg->fmc_model, &error_ab=
-ort);
->      aspeed_board_init_flashes(&bmc->soc.spi[0], cfg->spi_model, &error=
-_abort);
-> =20
-> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-> index e68911af0f90..a27233d4876b 100644
-> --- a/hw/arm/aspeed_soc.c
-> +++ b/hw/arm/aspeed_soc.c
-> @@ -155,6 +155,8 @@ static void aspeed_soc_init(Object *obj)
->                           sc->info->silicon_rev);
->      object_property_add_alias(obj, "ram-size", OBJECT(&s->sdmc),
->                                "ram-size", &error_abort);
-> +    object_property_add_alias(obj, "max-ram-size", OBJECT(&s->sdmc),
-> +                              "max-ram-size", &error_abort);
-> =20
->      for (i =3D 0; i < sc->info->wdts_num; i++) {
->          object_initialize(&s->wdt[i], sizeof(s->wdt[i]), TYPE_ASPEED_W=
-DT);
-> diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
-> index 89de3138aff0..eec77f243508 100644
-> --- a/hw/misc/aspeed_sdmc.c
-> +++ b/hw/misc/aspeed_sdmc.c
-> @@ -242,12 +242,14 @@ static void aspeed_sdmc_realize(DeviceState *dev,=
- Error **errp)
->      case AST2400_A0_SILICON_REV:
->      case AST2400_A1_SILICON_REV:
->          s->ram_bits =3D ast2400_rambits(s);
-> +        s->max_ram_size =3D 512 << 20;
->          s->fixed_conf =3D ASPEED_SDMC_VGA_COMPAT |
->              ASPEED_SDMC_DRAM_SIZE(s->ram_bits);
->          break;
->      case AST2500_A0_SILICON_REV:
->      case AST2500_A1_SILICON_REV:
->          s->ram_bits =3D ast2500_rambits(s);
-> +        s->max_ram_size =3D 1024 << 20;
->          s->fixed_conf =3D ASPEED_SDMC_HW_VERSION(1) |
->              ASPEED_SDMC_VGA_APERTURE(ASPEED_SDMC_VGA_64MB) |
->              ASPEED_SDMC_CACHE_INITIAL_DONE |
-> @@ -275,6 +277,7 @@ static const VMStateDescription vmstate_aspeed_sdmc=
- =3D {
->  static Property aspeed_sdmc_properties[] =3D {
->      DEFINE_PROP_UINT32("silicon-rev", AspeedSDMCState, silicon_rev, 0)=
-,
->      DEFINE_PROP_UINT64("ram-size", AspeedSDMCState, ram_size, 0),
-> +    DEFINE_PROP_UINT64("max-ram-size", AspeedSDMCState, max_ram_size, =
-0),
->      DEFINE_PROP_END_OF_LIST(),
->  };
-> =20
-> diff --git a/include/hw/misc/aspeed_sdmc.h b/include/hw/misc/aspeed_sdm=
-c.h
-> index e079c66a7d73..b3c926acae90 100644
-> --- a/include/hw/misc/aspeed_sdmc.h
-> +++ b/include/hw/misc/aspeed_sdmc.h
-> @@ -27,6 +27,7 @@ typedef struct AspeedSDMCState {
->      uint32_t silicon_rev;
->      uint32_t ram_bits;
->      uint64_t ram_size;
-> +    uint64_t max_ram_size;
->      uint32_t fixed_conf;
-> =20
->  } AspeedSDMCState;
->=20
-
+>

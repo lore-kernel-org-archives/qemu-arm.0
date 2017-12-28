@@ -1,157 +1,180 @@
-Received: by 10.223.159.74 with SMTP id f10csp3223283wrg;
-        Mon, 18 Dec 2017 15:11:46 -0800 (PST)
-X-Google-Smtp-Source: ACJfBovmPCyrWAYt/r6jPkFmRyU5W2orfNiykyLTIE+kpTYy+5MdLrvDZOVaNXxn2hnaGNYQxD5D
-X-Received: by 10.13.192.2 with SMTP id b2mr994811ywd.463.1513638706160;
-        Mon, 18 Dec 2017 15:11:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1513638706; cv=none;
+Received: by 10.223.134.117 with SMTP id 50csp4974083wrw;
+        Wed, 27 Dec 2017 17:15:30 -0800 (PST)
+X-Google-Smtp-Source: ACJfBouX43I9bswI3ROYvpls8iltJVlPRI1AGaCU/oE6KWMiW0uM6oAI01DDY/hlJfpsyqugyTpU
+X-Received: by 10.37.234.18 with SMTP id p18mr1476791ybd.273.1514423730199;
+        Wed, 27 Dec 2017 17:15:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1514423730; cv=none;
         d=google.com; s=arc-20160816;
-        b=ti9Uq+baRJf8G++u7TmOjaYxeS/nab5yQdT5oOLJa2jUeAAa5e1PC1+eUnINDKujkC
-         P/hg8uJRXRzI+0yWIiBqFIff8TP0vOBnmefRWLiHGCApRVR4GE3ACeKUk9+z22g7igZL
-         9OiHNrvUg3xVBoTKi8gyl9l6kJZnwpSIpiTcVfLU1g2XR7qVtyOc7Y2448LkVy7ilyM2
-         +MT1LGZj0SNcKOhyb9kO89UZ2ua65tr6W6gqXkmzlOCzvZEpHwIY9e91BDtgIPzFZYcD
-         DDhWMGnLSCErYQQOF8TfqGl/upLmV20tIGvTJpBbCWcLRb32J0H1sYH1vaySy7GdFhht
-         As0w==
+        b=UkfjuAeCHeVw6ASooyjg085+vivUNxPSb8uu8I315s97GR/aR9i2zdY4+vrYE/pm2s
+         OjK1uWb2JHgO2XFwNjAA4y/xO2P+ObzNSbWSAhO+ISz8OabHvmpL5dusRKv9F0YFx3Gc
+         szTkVhWlwOYqYwsd8DXcwhPqVHfjyrZAk/99sxE5HFXX9kZOO3F5l4rx1Smgj/AooOPG
+         6PBdW/Sf5XxNPgWJBEoXkc09qbvpU+QVdE7qwsqakrYmPx/COlh6/8XPsltUnZCsevNp
+         gEhGBm3/qwIEMY8WleOuQSAn0RWNpug0F+1jmt1IxxI+2qgmmsq72y1fMrQa1vVffSfo
+         Sk+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=heM8GgLvBsvCQ63hUEA98zAPDDnotI2AK1m/zQl1vOc=;
-        b=Uwe3hLa5gtSkHg6bwFIoLKLizafDTwMz55kIQLbVcwEjqYKREipwifm9Xo6YCFW/iQ
-         N0qbM6B2wBQFVGzoHmZCiHjI745TDsXb/faJJGXrGRE66RtU0gNWYaUOC5gRVvvghJmG
-         z3HpdbioIxdpZ7rUB2Ni+kOGhgekZMaocBZK+8M3WX/hqzbjXKf1+s/4jFDss7rtuVkQ
-         mBCmXS6RmOnmrVwpM58UFrE0aQgpcBmx11Cdbgh9IGKnCAvtzNT5XXl7U27VJMr9IzsW
-         b4gAEzb1+C24Qm22sgME3PseI0+kceJqKGz7kCf0dab2gyqIG2d3u+fRVrHcEVyvB0j8
-         QgOw==
+         :list-unsubscribe:list-id:precedence:subject:mime-version:message-id
+         :date:to:from:arc-authentication-results;
+        bh=CEFGzUTBXKg3/aiD/uOrtU6JqpkePvh/rnRVQmZHXSg=;
+        b=pnwqjm/QYjqXyOJRx5fL62c0vTbBBv01pzwhVedJqtDQN9wQAXf70ZmkjcG793eyF4
+         XmZVMW5Wl0uM0rw8ZEkh80U4otrjTMnx4/NNDgSbi7oaV6/NwFQeAHQvBLIT8yLq/TIk
+         vbOM4pK2oZmjYyOwsIaGXrnwqmxsfJatcLAZuN11lhjdinYFlExDhko+2H44qhVk8r9C
+         x1pH0u0/AakWeHzrI5GbUOyoj2sPW6znqw/RwvdM8eK8a0+O+azDUZrbJ/YJKTCts7aU
+         jVKwgDB/q2omxCDxjJfLVhRtxZ+nYX2r4GEsg/fJn5B2FvQDjXbY2FAzweEFsWuTCdBg
+         tLOw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pVWG6qNW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e10si507448ybb.538.2017.12.18.15.11.46
+        by mx.google.com with ESMTPS id 186si1713534ybz.151.2017.12.27.17.15.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 18 Dec 2017 15:11:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 27 Dec 2017 17:15:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pVWG6qNW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:52237 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:56031 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eR4ZV-0001Pv-LB
-	for alex.bennee@linaro.org; Mon, 18 Dec 2017 18:11:45 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58586)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eUMnB-0000or-NJ
+	for alex.bennee@linaro.org; Wed, 27 Dec 2017 20:15:29 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42219)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eR4YD-0000me-R3
-	for qemu-devel@nongnu.org; Mon, 18 Dec 2017 18:10:26 -0500
+	(envelope-from <zhaoshenglong@huawei.com>) id 1eUMn4-0000oM-4u
+	for qemu-arm@nongnu.org; Wed, 27 Dec 2017 20:15:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eR4YD-0001Vn-10
-	for qemu-devel@nongnu.org; Mon, 18 Dec 2017 18:10:25 -0500
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:33299)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eR4Y8-0001Kw-AA; Mon, 18 Dec 2017 18:10:20 -0500
-Received: by mail-qt0-x241.google.com with SMTP id e2so22158108qti.0;
-	Mon, 18 Dec 2017 15:10:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=heM8GgLvBsvCQ63hUEA98zAPDDnotI2AK1m/zQl1vOc=;
-	b=pVWG6qNWFXSHXuR5yGrKE5k82Ss1t9Z0jksLa462Ajs9ZipTIpGgz1ZExHy7Z2uz8W
-	CNiX6YgozmPqQjSRGPDmOPCy6EpM2pbMlJ0GtdjfHb024GfZhwsruBbDyelLqNgd3MSO
-	vy00eIBY7ALQNNEK/vBanGBpfMb72gZQ+Rxq6OEJ2GHTmr+T4NqbNJcq5Avgw2WmGPU6
-	Gdv1RIbcu3BoXHP5gBQJZ/Tl6uy2wdANM+uJhx8ViinGFaN+4+MmZpeBFKA0k/QYgn9Q
-	tJXyNaDCwJnMz+dwbvENN+0TnuohL6/Eqs4ne+KMTU1xJdDtl4cojowGro3yFCUTd/WN
-	BAbg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=heM8GgLvBsvCQ63hUEA98zAPDDnotI2AK1m/zQl1vOc=;
-	b=Av+saRi9pqTpnQgoN0XK+MmoNxn2XL+gNEKBGWYDiF3sCn4W3ENb7Q1062kzpIJGT5
-	jG+f5nOtFghYlTz6O1gBoHAsc11CScN7qc7aCbyB33wd5uKHtJY/dJTpOvpZFGxhoUV2
-	s/dhH2xAH8+g1mcoFwbYUKL6C//lZuEDjHSleowCeIAQVTiiPPk17LHDAfzqihtHxPzx
-	ZZvoz5n6NrqA04KREO9ShZSjZh8EwNqDzDxvlqR1xYaK758fkI7F/OJiz45PJaZGJz8B
-	1ooLGOrDsooji5nmpXUxE2M3t9g0IaQufWL9e/tUY5GRwPoby6kOl9LzADZFc1GylrkY
-	LymQ==
-X-Gm-Message-State: AKGB3mI8AYe3HPOAy1Nh/2fehHzP5661XSWY3znRSsIpawj6ELAAAxfC
-	/h1UOPq5M3RI/UATZXa8vCc=
-X-Received: by 10.237.63.184 with SMTP id s53mr2222566qth.89.1513638619836;
-	Mon, 18 Dec 2017 15:10:19 -0800 (PST)
-Received: from [192.168.1.11] ([138.117.48.211])
-	by smtp.gmail.com with ESMTPSA id
-	v81sm8490692qkb.73.2017.12.18.15.10.14
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 18 Dec 2017 15:10:19 -0800 (PST)
-To: Alistair Francis <alistair.francis@xilinx.com>,
-	"Edgar E . Iglesias" <edgar.iglesias@xilinx.com>
-References: <20171215031547.31006-1-f4bug@amsat.org>
-	<20171215031547.31006-17-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <ee9ec12e-b559-a059-e0ab-3db30be4b1c6@amsat.org>
-Date: Mon, 18 Dec 2017 20:10:13 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.0
+	(envelope-from <zhaoshenglong@huawei.com>) id 1eUMn0-00021V-HT
+	for qemu-arm@nongnu.org; Wed, 27 Dec 2017 20:15:21 -0500
+Received: from [45.249.212.32] (port=56244 helo=huawei.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <zhaoshenglong@huawei.com>)
+	id 1eUMmz-0001tJ-Rt; Wed, 27 Dec 2017 20:15:18 -0500
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.60])
+	by Forcepoint Email with ESMTP id 8DBFD4C052C77;
+	Thu, 28 Dec 2017 09:14:58 +0800 (CST)
+Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
+	DGGEMS405-HUB.china.huawei.com (10.3.19.205) with Microsoft SMTP Server
+	id 14.3.361.1; Thu, 28 Dec 2017 09:14:50 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+To: <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>, <lersek@redhat.com>
+Date: Thu, 28 Dec 2017 09:14:40 +0800
+Message-ID: <1514423680-11132-1-git-send-email-zhaoshenglong@huawei.com>
+X-Mailer: git-send-email 1.9.0.msysgit.0
 MIME-Version: 1.0
-In-Reply-To: <20171215031547.31006-17-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: Re: [Qemu-devel] [PATCH v2 16/20] sdhci: add qtest to check the SD
- Spec version
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 45.249.212.32
+Subject: [Qemu-arm] [PATCH v3] Virt: ACPI: fix qemu assert due to
+ re-assigned table data address
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Prasad J Pandit <pjp@fedoraproject.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-devel@nongnu.org,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>,
-	Sai Pavan Boddu <saipava@xilinx.com>,
-	Michael Walle <michael@walle.cc>, qemu-arm@nongnu.org,
-	Stefan Hajnoczi <stefanha@redhat.com>, Andrey Yurovsky <yurovsky@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rOlqzXMUvpm1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: drjones@redhat.com, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: uOPmv5QEiiaz
 
-On 12/15/2017 12:15 AM, Philippe Mathieu-Daudé wrote:
-> +static const struct sdhci_t {
-> +    const char *arch;
-> +    const char *machine;
-> +    struct {
-> +        uintptr_t addr;
-> +        uint8_t version;
-> +    } sdhci;
-> +} models[] = {
-> +    { "arm",    "smdkc210",
-> +        {0x12510000, 2} },
-> +    { "arm",    "sabrelite",
-> +        {0x02190000, 3} },
-> +    { "arm",    "raspi2",           /* bcm2835 */
-> +        {0x3f300000, 3} },
-> +    { "arm",    "xilinx-zynq-a9",   /* exynos4210 */
+From: Zhaoshenglong <zhaoshenglong@huawei.com>
 
-Just noticed this comment is for the smdkc210 above,
-I'll fix in respin.
+acpi_data_push uses g_array_set_size to resize the memory size. If there
+is no enough contiguous memory, the address will be changed. If we use
+the old value, it will assert.
+qemu-kvm: hw/acpi/bios-linker-loader.c:214: bios_linker_loader_add_checksum:
+Assertion `start_offset < file->blob->len' failed.`
 
-> +        {0xe0100000, 3} },
-> +};
+This issue only happens in building SRAT table now but here we unify the
+pattern for other tables as well to avoid possible issues in the future.
+
+Signed-off-by: Zhaoshenglong <zhaoshenglong@huawei.com>
+---
+v3: unify the pattern for MCFG
+v2: update the commit message according to Andrew's comments
+---
+ hw/arm/virt-acpi-build.c | 18 +++++++++++-------
+ 1 file changed, 11 insertions(+), 7 deletions(-)
+
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 3d78ff6..f7fa795 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -453,6 +453,7 @@ build_spcr(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     AcpiSerialPortConsoleRedirection *spcr;
+     const MemMapEntry *uart_memmap = &vms->memmap[VIRT_UART];
+     int irq = vms->irqmap[VIRT_UART] + ARM_SPI_BASE;
++    int spcr_start = table_data->len;
+ 
+     spcr = acpi_data_push(table_data, sizeof(*spcr));
+ 
+@@ -476,8 +477,8 @@ build_spcr(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     spcr->pci_device_id = 0xffff;  /* PCI Device ID: not a PCI device */
+     spcr->pci_vendor_id = 0xffff;  /* PCI Vendor ID: not a PCI device */
+ 
+-    build_header(linker, table_data, (void *)spcr, "SPCR", sizeof(*spcr), 2,
+-                 NULL, NULL);
++    build_header(linker, table_data, (void *)(table_data->data + spcr_start),
++                 "SPCR", table_data->len - spcr_start, 2, NULL, NULL);
+ }
+ 
+ static void
+@@ -512,8 +513,8 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         mem_base += numa_info[i].node_mem;
+     }
+ 
+-    build_header(linker, table_data, (void *)srat, "SRAT",
+-                 table_data->len - srat_start, 3, NULL, NULL);
++    build_header(linker, table_data, (void *)(table_data->data + srat_start),
++                 "SRAT", table_data->len - srat_start, 3, NULL, NULL);
+ }
+ 
+ static void
+@@ -522,6 +523,7 @@ build_mcfg(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     AcpiTableMcfg *mcfg;
+     const MemMapEntry *memmap = vms->memmap;
+     int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
++    int mcfg_start = table_data->len;
+ 
+     mcfg = acpi_data_push(table_data, len);
+     mcfg->allocation[0].address = cpu_to_le64(memmap[VIRT_PCIE_ECAM].base);
+@@ -532,7 +534,8 @@ build_mcfg(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     mcfg->allocation[0].end_bus_number = (memmap[VIRT_PCIE_ECAM].size
+                                           / PCIE_MMCFG_SIZE_MIN) - 1;
+ 
+-    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
++    build_header(linker, table_data, (void *)(table_data->data + mcfg_start),
++                 "MCFG", table_data->len - mcfg_start, 1, NULL, NULL);
+ }
+ 
+ /* GTDT */
+@@ -651,6 +654,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+ static void build_fadt(GArray *table_data, BIOSLinker *linker,
+                        VirtMachineState *vms, unsigned dsdt_tbl_offset)
+ {
++    int fadt_start = table_data->len;
+     AcpiFadtDescriptorRev5_1 *fadt = acpi_data_push(table_data, sizeof(*fadt));
+     unsigned xdsdt_entry_offset = (char *)&fadt->x_dsdt - table_data->data;
+     uint16_t bootflags;
+@@ -681,8 +685,8 @@ static void build_fadt(GArray *table_data, BIOSLinker *linker,
+         ACPI_BUILD_TABLE_FILE, xdsdt_entry_offset, sizeof(fadt->x_dsdt),
+         ACPI_BUILD_TABLE_FILE, dsdt_tbl_offset);
+ 
+-    build_header(linker, table_data,
+-                 (void *)fadt, "FACP", sizeof(*fadt), 5, NULL, NULL);
++    build_header(linker, table_data, (void *)(table_data->data + fadt_start),
++                 "FACP", table_data->len - fadt_start, 5, NULL, NULL);
+ }
+ 
+ /* DSDT */
+-- 
+2.0.4
+
+

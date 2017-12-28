@@ -1,54 +1,54 @@
-Received: by 10.223.134.117 with SMTP id 50csp5620770wrw;
-        Thu, 28 Dec 2017 06:58:49 -0800 (PST)
-X-Google-Smtp-Source: ACJfBousjizjwYw5T/lONjuwlIXP2EHm9efsfLiJGJzB5zGJkjmo6+6ny3rt1mwbxcBlWFB/SbgS
-X-Received: by 10.159.231.24 with SMTP id w24mr31186292plq.272.1514473129113;
-        Thu, 28 Dec 2017 06:58:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1514473129; cv=none;
+Received: by 10.223.134.117 with SMTP id 50csp5632930wrw;
+        Thu, 28 Dec 2017 07:07:46 -0800 (PST)
+X-Google-Smtp-Source: ACJfBotZfXejypa7Q7Z9rhKLBW3HOCP20X+7/AmacG6KHMDigmxKKzcs9MC9SCtROeq8KrwGhq3m
+X-Received: by 10.99.106.132 with SMTP id f126mr22497546pgc.167.1514473666375;
+        Thu, 28 Dec 2017 07:07:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1514473666; cv=none;
         d=google.com; s=arc-20160816;
-        b=Smi+5JeHtOanaFPSw2WRcF52VvLwgz5TzVwcIrF9iFUGM6e7ktTFLU4Xllaa4sB4Zo
-         PP+viIhlOVSkapvYZie1d+Q4dcYceRI3uCCAnb+1akDg8D4W/2jNaq1l8/koKdmYhZAu
-         cvj6tZVZ/dnE2JiGbY4E7rNZyDygaiArjEpzLuuoyxkpjn7naX6VOZKEdl17gmU6hgdA
-         +EG4XhH+gEF5Ny7nNueAYkKDCj6PauuLfct2KHBcWdIl4j1bwoTxBYEGOUMXXRd/zgyU
-         WeNOVFC5ItgBCxNkc9K98reopEi3LhLnhm8mWdis39Ux/iNOjGGZkiUsAV6EaAfXY0Q3
-         h7Mw==
+        b=nK++8cwoD2659fZXyQDid0LdGdtHSfki+PRuRJkmKGVom0vhzppXuL3LpqGtoOPbvg
+         z1Vuj85UUg+NpC0KCWb3UBR1ZIdtw8OLMcY9R9rI8ZuYIpqiEKrEtjJXpR9a903+xhyQ
+         fHQlopvVgjkfJzGySFF+Ej1xR1IjWscAVhMhtimhRtZqIp5QDk1X0zUncVIZ0f7CIBom
+         l2H4E124nSDmy25lr/uOtQX+OctvjjkJfZDYAf17vtNx37Hyfqk2P4Q6JgdYtWWqEXul
+         VobFhaHbP68qAi47umHZvCGYEBOASuP/JlrIQIhZKeGxT7uYencdLwzLeMCuy11DPqc3
+         5Vfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:subject:cc:to:from:date
          :arc-authentication-results;
-        bh=r7NUP2Dt5837FrNpQVH+zAuRru9f6WrPoRKo35YYH90=;
-        b=gLxAWMXyO/nSYaFeLZvOAtPCi5Di7whYj/335wpnz4lhvcicJ0xQdKz/+JAUwgRBDr
-         L4OidPUqtcnBWm/Hp2nNaRC9gzzRH5d+gz6sPupbRRdc7CKCH+E6CByNQA54PfykINZX
-         Z4fAI6POTJy9pfWCbG8MCJv4lBDwN9hmqA0idbRjeFTmcRNpWKQehQq0Jai3HbSST3li
-         58akr8m9gJ6SEQ8rQXsF3iNtTfw5s3ZLicc2HBbJYhi75lSVZoIJJscxQ8omM4OX//1U
-         PMjChdgOXJ3XUlnz/CmOvTRg4WETz92iJ7x/NKN4T0tL3mgfhkp06u0umRT/DixMiZq2
-         Bl9g==
+        bh=IOqzCZfZC/39PKOU31haEzdB0ek2/rvrS4R+1Xd3Upw=;
+        b=C2BUAflIClgTae35iUGOIdRJ45ApZSEDwB+aPTHz5f9/93j/lVFYrn5cIYhgQ3HAqn
+         YCt+23HJ/RIIV6CMuYzleL/M4zDvj/nCSucko9RKcgrjMV17cdK+6e0Q6otK6OwVlSnL
+         E917vZdAClf53k+VkzY1feNQLXoS2RzgbkgrWIZvKs3x+9PyLbXMKh5gvKMJYzRnlmAA
+         e5asDjs/XE2HYN1s3K11+N5JemCYUIKMV9tPPhDEOjnIBy/EMbzO32v/ZG9KijZJAhHE
+         6+Kqv4JnxIQY/gK2YVD6V2BG4oBPdRGAddt9gbIjcWzBj/nqWWpoQ4bwOcHcCjURDqWk
+         rNLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id b22si12979325pgn.458.2017.12.28.06.58.48;
-        Thu, 28 Dec 2017 06:58:49 -0800 (PST)
+        by mx.google.com with ESMTP id e7si24126278pgt.15.2017.12.28.07.07.46;
+        Thu, 28 Dec 2017 07:07:46 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1753354AbdL1O6p (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 5 others); Thu, 28 Dec 2017 09:58:45 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:46796 "EHLO mx1.redhat.com"
+        id S1753426AbdL1PHo (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 5 others); Thu, 28 Dec 2017 10:07:44 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:59980 "EHLO mx1.redhat.com"
         rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S1753131AbdL1O6p (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 28 Dec 2017 09:58:45 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+        id S1753293AbdL1PHn (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 28 Dec 2017 10:07:43 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
         (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
         (No client certificate requested)
-        by mx1.redhat.com (Postfix) with ESMTPS id AE69DC047B65;
-        Thu, 28 Dec 2017 14:58:44 +0000 (UTC)
+        by mx1.redhat.com (Postfix) with ESMTPS id 15EA65D687;
+        Thu, 28 Dec 2017 15:07:43 +0000 (UTC)
 Received: from igors-macbook-pro.local (ovpn-112-23.ams2.redhat.com [10.36.112.23])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 50F2460BE0;
-        Thu, 28 Dec 2017 14:58:36 +0000 (UTC)
-Date:   Thu, 28 Dec 2017 15:58:32 +0100
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 7BE685D6A5;
+        Thu, 28 Dec 2017 15:07:33 +0000 (UTC)
+Date:   Thu, 28 Dec 2017 16:07:27 +0100
 From:   Igor Mammedov <imammedo@redhat.com>
 To:     Dongjiu Geng <gengdongjiu@huawei.com>
 Cc:     <pbonzini@redhat.com>, <mst@redhat.com>,
@@ -59,117 +59,150 @@ Cc:     <pbonzini@redhat.com>, <mst@redhat.com>,
         <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
         <huangshaoyu@huawei.com>, <zhengqiang10@huawei.com>,
         <xuwei5@hisilicon.com>
-Subject: Re: [PATCH v14 8/9] hw/arm/virt: Add RAS platform version for
- migration
-Message-ID: <20171228155832.05a9966b@igors-macbook-pro.local>
-In-Reply-To: <1514440458-10515-9-git-send-email-gengdongjiu@huawei.com>
+Subject: Re: [PATCH v14 9/9] target-arm: kvm64: handle SIGBUS signal from
+ kernel or KVM
+Message-ID: <20171228160727.62d0857d@igors-macbook-pro.local>
+In-Reply-To: <1514440458-10515-10-git-send-email-gengdongjiu@huawei.com>
 References: <1514440458-10515-1-git-send-email-gengdongjiu@huawei.com>
-        <1514440458-10515-9-git-send-email-gengdongjiu@huawei.com>
+        <1514440458-10515-10-git-send-email-gengdongjiu@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.31]); Thu, 28 Dec 2017 14:58:45 +0000 (UTC)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.39]); Thu, 28 Dec 2017 15:07:43 +0000 (UTC)
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: aHJEESuDR6d6
+X-TUID: 12IGQvpmIXaS
 
-On Thu, 28 Dec 2017 13:54:17 +0800
+On Thu, 28 Dec 2017 13:54:18 +0800
 Dongjiu Geng <gengdongjiu@huawei.com> wrote:
 
-> Support this feature since version 2.10, disable it by
-> default in the old version.
-patch should go before acpi tables are actually added,
-otherwise it might break bisectability.
+> Add SIGBUS signal handler. In this handler, it checks the SIGBUS type,
+> translates the host VA which is delivered by host to guest PA, then fill
+> this PA to CPER and fill the CPER to guest APEI GHES memory, finally
+> notify guest according to the SIGBUS type. There are two kinds of SIGBUS
+> that QEMU needs to handle, which are BUS_MCEERR_AO and BUS_MCEERR_AR.
+> 
+> If guest accesses the poisoned memory, it generates Synchronous External
+> Abort(SEA). Then host kernel gets an APEI notification and call memory_failure()
+> to unmapped the affected page from the guest's stage2, and SIGBUS_MCEERR_AO
+s/unmapped/unmap/
+
+> is delivered to Qemu's main thread. If Qemu receives this SIGBUS, it will
+> create a new CPER and add it to guest APEI GHES memory, then notify the
+> guest with a GPIO-Signal notification.
+too long sentence, it's hard get what goes on here, pls split it in simple
+sentences/rephrase so it would be easy to understand behavior.
 
 > 
+> When guest hits a PG_hwpoison page, it will trap to KVM as stage2 fault, then a
+> SIGBUS_MCEERR_AR synchronous signal is delivered to Qemu, Qemu record this error
+> into guest APEI GHES memory and notify guest using Synchronous-External-Abort(SEA).
+> 
+> Suggested-by: James Morse <james.morse@arm.com>
 > Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 > ---
-> Address Shannon's comments to add platform version in [1].
+> Address James's comments to record CPER and notify guest for SIGBUS signal handling.
+> Shown some discussion in [1].
 > 
-> [1]: https://lkml.org/lkml/2017/8/25/821
-> 
-> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+> [1]:
+> https://lkml.org/lkml/2017/2/27/246
+> https://lkml.org/lkml/2017/9/14/241
+> https://lkml.org/lkml/2017/9/22/499
 > ---
->  hw/arm/virt-acpi-build.c | 14 +++++++++-----
->  hw/arm/virt.c            |  4 ++++
->  include/hw/arm/virt.h    |  1 +
->  3 files changed, 14 insertions(+), 5 deletions(-)
+>  include/sysemu/kvm.h |  2 +-
+>  target/arm/kvm.c     |  2 ++
+>  target/arm/kvm64.c   | 34 ++++++++++++++++++++++++++++++++++
+>  3 files changed, 37 insertions(+), 1 deletion(-)
 > 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 06c14b3..b6974ef 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -801,10 +801,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->      acpi_add_table(table_offsets, tables_blob);
->      build_spcr(tables_blob, tables->linker, vms);
+> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+> index 3a458f5..90c1605 100644
+> --- a/include/sysemu/kvm.h
+> +++ b/include/sysemu/kvm.h
+> @@ -361,7 +361,7 @@ bool kvm_vcpu_id_is_valid(int vcpu_id);
+>  /* Returns VCPU ID to be used on KVM_CREATE_VCPU ioctl() */
+>  unsigned long kvm_arch_vcpu_id(CPUState *cpu);
 >  
-> -    acpi_add_table(table_offsets, tables_blob);
-> -    build_hardware_error_table(tables->hardware_errors, tables->linker);
-> -    build_apei_ghes(tables_blob, tables->hardware_errors, tables->linker);
-> -
-> +    if (!vmc->no_ras) {
-
-it's better to avoid no_foo, use something like
-
-vmc->has_ras
-
-instead
-
-> +        acpi_add_table(table_offsets, tables_blob);
-> +        build_hardware_error_table(tables->hardware_errors, tables->linker);
-> +        build_apei_ghes(tables_blob, tables->hardware_errors, tables->linker);
-> +    }
+> -#ifdef TARGET_I386
+> +#if defined(TARGET_I386) || defined(TARGET_AARCH64)
+>  #define KVM_HAVE_MCE_INJECTION 1
+>  void kvm_arch_on_sigbus_vcpu(CPUState *cpu, int code, void *addr);
+>  #endif
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index 7c17f0d..9d25f51 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -26,6 +26,7 @@
+>  #include "exec/address-spaces.h"
+>  #include "hw/boards.h"
+>  #include "qemu/log.h"
+> +#include "exec/ram_addr.h"
 >  
->      if (nb_numa_nodes > 0) {
->          acpi_add_table(table_offsets, tables_blob);
-> @@ -891,6 +892,7 @@ static const VMStateDescription vmstate_virt_acpi_build = {
+>  const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
+>      KVM_CAP_LAST_INFO
+> @@ -182,6 +183,7 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
 >  
->  void virt_acpi_setup(VirtMachineState *vms)
->  {
-> +    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
->      AcpiBuildTables tables;
->      AcpiBuildState *build_state;
+>      cap_has_mp_state = kvm_check_extension(s, KVM_CAP_MP_STATE);
 >  
-> @@ -922,7 +924,9 @@ void virt_acpi_setup(VirtMachineState *vms)
->      fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog->data,
->                      acpi_data_len(tables.tcpalog));
+> +    qemu_register_reset(kvm_unpoison_all, NULL);
+>      type_register_static(&host_arm_cpu_type_info);
 >  
-> -    ghes_add_fw_cfg(vms->fw_cfg, tables.hardware_errors);
-> +    if (!vmc->no_ras) {
-> +        ghes_add_fw_cfg(vms->fw_cfg, tables.hardware_errors);
-> +    }
+>      return 0;
+> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> index c00450d..6955d85 100644
+> --- a/target/arm/kvm64.c
+> +++ b/target/arm/kvm64.c
+> @@ -27,6 +27,9 @@
+>  #include "kvm_arm.h"
+>  #include "internals.h"
+>  #include "hw/arm/arm.h"
+> +#include "exec/ram_addr.h"
+> +#include "hw/acpi/acpi-defs.h"
+> +#include "hw/acpi/hest_ghes.h"
 >  
->      build_state->rsdp_mr = acpi_add_rom_blob(build_state, tables.rsdp,
->                                                ACPI_BUILD_RSDP_FILE, 0);
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 68495c2..ab79988 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1732,8 +1732,12 @@ static void virt_2_9_instance_init(Object *obj)
+>  static bool have_guest_debug;
 >  
->  static void virt_machine_2_9_options(MachineClass *mc)
->  {
-> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-> +
->      virt_machine_2_10_options(mc);
->      SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_9);
-> +    /* memory recovery feature was introduced with 2.10 */
-> +    vmc->no_ras = true;
+> @@ -944,6 +947,37 @@ int kvm_arch_get_registers(CPUState *cs)
+>      return ret;
 >  }
->  DEFINE_VIRT_MACHINE(2, 9)
 >  
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 33b0ff3..8fbd664 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -84,6 +84,7 @@ typedef struct {
->      bool disallow_affinity_adjustment;
->      bool no_its;
->      bool no_pmu;
-> +    bool no_ras;
->      bool claim_edge_triggered_timers;
->  } VirtMachineClass;
+> +void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+> +{
+> +    ram_addr_t ram_addr;
+> +    hwaddr paddr;
+> +
+> +    assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
+> +    if (addr) {
+> +        ram_addr = qemu_ram_addr_from_host(addr);
+> +        if (ram_addr != RAM_ADDR_INVALID &&
+> +            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
+> +            kvm_hwpoison_page_add(ram_addr);
+> +            if (code == BUS_MCEERR_AR) {
+> +                kvm_cpu_synchronize_state(c);
+> +                ghes_record_errors(ACPI_HEST_NOTIFY_SEA, paddr);
+> +                kvm_inject_arm_sea(c);
+> +            } else if (code == BUS_MCEERR_AO) {
+> +                ghes_record_errors(ACPI_HEST_NOTIFY_GPIO, paddr);
+> +                qemu_hardware_error_notify();
+> +            }
+> +            return;
+> +        }
+> +        fprintf(stderr, "Hardware memory error for memory used by "
+> +                "QEMU itself instead of guest system!\n");
+not quite sure what above message means,
+
+also fprintf() probably shouldn't be used by new code.
+
+> +    }
+> +
+> +    if (code == BUS_MCEERR_AR) {
+> +        fprintf(stderr, "Hardware memory error!\n");
+> +        exit(1);
+> +    }
+> +}
+> +
+>  /* C6.6.29 BRK instruction */
+>  static const uint32_t brk_insn = 0xd4200000;
 >  

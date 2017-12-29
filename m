@@ -1,97 +1,99 @@
-Received: by 10.223.134.117 with SMTP id 50csp7013243wrw;
-        Fri, 29 Dec 2017 10:08:56 -0800 (PST)
-X-Google-Smtp-Source: ACJfBovpXNEShyxqpBMA1hp+/ztLVZ8jZUpPMmx3/ctN5lIuLUjT84t66XzzLF5Q9ugsE27orjPS
-X-Received: by 10.129.124.135 with SMTP id x129mr24895796ywc.509.1514570936652;
-        Fri, 29 Dec 2017 10:08:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1514570936; cv=none;
+Received: by 10.223.134.117 with SMTP id 50csp7024343wrw;
+        Fri, 29 Dec 2017 10:21:37 -0800 (PST)
+X-Google-Smtp-Source: ACJfBosjwpdYZEwPwMcqJ6vP9mxTiu4fZPfXGS2AQl8v0bew+J9qWYv365lKyZIN0Ugf/Z5fdOrw
+X-Received: by 10.37.4.147 with SMTP id 141mr27289020ybe.445.1514571697019;
+        Fri, 29 Dec 2017 10:21:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1514571697; cv=none;
         d=google.com; s=arc-20160816;
-        b=boIixfOncW7RadyMzRuGDsqmA8zEvpbb4UvazKBKErDnDNTAgvwYzDu7vdv5Q1TYup
-         NIDATlv/U4aLVNLvyZwpaDW9ap7XQxBmZkfG5XJYgX469Nm/CHUH0IPD8Bl+McPXhGxN
-         mFIq4N4bZq7pgUKq11fF2Xx07/y4dQlic/pgVSQf2UFlcbGE4zFTooj0Ib92MWBxptkL
-         JJfVPaNYqc6gQsEAUkzfNjdjOemWYBIBgqNaF/2YuUjTFTbdt2IJWVo9XC93xNBqVaKd
-         PFOIgouZ4TLpKpAT6/biauqWRXPBHYDFGO++KlaOhwR6rPGeX3HMJbFtcU1ZoAaGAhce
-         13oA==
+        b=rKPqj9dS3yCfJm2dYAMfuqj5eXjGoYA/3qQaH7qndGmJp9vdfPXTL2mB1j6so8E4oR
+         28ZLttzQ0jdxxfM5bfZoDXj+TfpHK5Y/j1jxdLjoYMALQXg5s9PQF0cYbyU6sQ6lb7Et
+         lq3cY3CCLK4tfjkaCttgI326nCLlhLbcWl59h6EWBLVzrbZIQzwZLyA950XLHTUFJSQJ
+         YDBeDND7+glbyEIKyg3N/rE7mTngRvLV3jGERBP90j5/RwrAzMMZYs97jEIcgADayEn/
+         JppJjHoxbsaf7RDMk+YBpnARpEc/NMg4M60UtxQ7E/ggI3xXViZQISR4EzRGCJLcYNmn
+         CYCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=mjN0Xl0EufeX2HUblzQO67mWn+xDOBIs3L51QY0wUGY=;
-        b=xa/bz5psRwR/ATaedDFI/XHXuxeuGGuXB3yNvo6NRMNewJBFixCE2251Ba0nI4tG4R
-         8Dj2qZfNmsStXmKl9BniQWsofNzW9pP5bDTSWtjLQNOV8iBadkVXxBzmlJLgGha+0Bij
-         tVD7ErX+spLR4LGENGF8oxDQz/dPjteUfJ08McFqEshOjRfjL9N8WnFD4XtcGKO0WRYl
-         Yy4ACyjzp00j74FBbkgxbGQKFFMThtvE5u5A7sytjyuwpk6EV9Hk9N9S5LO+X+UQOM21
-         sYsnc8zSQiYXrcEjM/v59211t60xCxdfS8Du/kG6soMT8t4fENi4XMI8lQvhB9+cSgWR
-         QgsA==
+        bh=KLSH73+PhrTDeU5qHRVEPzwUQ7axdsLgk+Caal09PE0=;
+        b=f02bZDws3ivWL2GlMxfzY28LAM2nInreXzuRPUwMuNek7Y/FUASARqgUrcGpV1OLm1
+         5s09ChYkZ0mh5SPcllRX8P8J1iOKkhVPSPBABR70XJOaH30kotSU3fncWsPPWosX5B+X
+         hi9zXLYxkmE991jCWzw5w6KsYPp6g6MGyerijh2r0qycsjr6s7BGtp6WXX8NnIy5xI+c
+         T4QT48J6tLEGXrqp+hLm0NN8hef4Rta77zwhZ4QSsb7gVGdVoegi4rNIrNGO0Xyvbnlx
+         hmX/zpYL8D34E9vTDZP/sJYaWZv0zbZCxLclj3XMd2j327wbfvnFyoCKdcxCzg6GduJt
+         fKdQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Xa05MEsL;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=G+ts4i4Q;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 204si4135192ybw.352.2017.12.29.10.08.56
+        by mx.google.com with ESMTPS id v69si2677554ybg.74.2017.12.29.10.21.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 29 Dec 2017 10:08:56 -0800 (PST)
+        Fri, 29 Dec 2017 10:21:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Xa05MEsL;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=G+ts4i4Q;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:48948 helo=lists.gnu.org)
+Received: from localhost ([::1]:49656 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eUz5T-0000q5-VU
-	for alex.bennee@linaro.org; Fri, 29 Dec 2017 13:08:56 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57591)
+	id 1eUzHk-0003Bc-Gb
+	for alex.bennee@linaro.org; Fri, 29 Dec 2017 13:21:36 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57573)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eUyoJ-0003si-C5
-	for qemu-devel@nongnu.org; Fri, 29 Dec 2017 12:51:12 -0500
+	id 1eUyoI-0003rr-Eg
+	for qemu-devel@nongnu.org; Fri, 29 Dec 2017 12:51:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eUyoI-0007UF-8X
-	for qemu-devel@nongnu.org; Fri, 29 Dec 2017 12:51:11 -0500
-Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:38447)
+	id 1eUyoF-0007QI-DF
+	for qemu-devel@nongnu.org; Fri, 29 Dec 2017 12:51:10 -0500
+Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:40253)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eUyoI-0007Ts-3K; Fri, 29 Dec 2017 12:51:10 -0500
-Received: by mail-qk0-x244.google.com with SMTP id l19so19374453qke.5;
-	Fri, 29 Dec 2017 09:51:09 -0800 (PST)
+	id 1eUyoF-0007P1-9R; Fri, 29 Dec 2017 12:51:07 -0500
+Received: by mail-qt0-x244.google.com with SMTP id u42so54932822qte.7;
+	Fri, 29 Dec 2017 09:51:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=mjN0Xl0EufeX2HUblzQO67mWn+xDOBIs3L51QY0wUGY=;
-	b=Xa05MEsLwIB1ud2EkO9CujvXBHOURSQTLFB5TANpE8fzO5Gu9IPOFmUlW8LKZXpoyn
-	fxJVND5bdRP2XST7aR1XFe6M++5u4vQC7DP7EsMh8Qh2i5DUmPwKsUM+/NfzhkMCerZ4
-	qOKKq3HZt0aIBbF+py0JZjnl/yrgjewFcGIbGqXmP5C6pShdC3AforspPvVMHWyw1tlK
-	+UUhfBb+zfN20ZUPTUfmR1917dbwZEWv5q+Sz+PlWY4ZBEC3XRoivVJkrtr7AnGAksok
-	F3LNl/D2QlmZeopoCgDr3GsS2vKhuN8sABYvmTJuGV1OE/FP1z6h9aVSopfZdi2RcIxn
-	WX6g==
+	bh=KLSH73+PhrTDeU5qHRVEPzwUQ7axdsLgk+Caal09PE0=;
+	b=G+ts4i4Q7ngbB1wXEia42iJL0vHTWW6qpk9L+9sD7/Ziu1MQNNF8esnLFZz7WmVc8D
+	3871KNjGux/4kAMmuR0wuLK8Wa7JD6WlvIgGXs2WlloM/ZKWacMLbzbS7+fEAzat/PE7
+	gu8pVIBYBfPO//OM2mblfJjoDZjS+HsBD40xn7iQ1/Mc4rKr6U4qolsgJh6zMWihKOvP
+	7GEPWtHeOTNVTSt36LR2CVSyKNi0WQfrTFpaI8C9VbKO7w047gc9ipalQeZztiMEk+rT
+	paViR+4N5/5oMppWEfIoXlDeL1TyCyK476fW3FKojHIH2RxEfRTmyZnIIpr/z3/oZQYT
+	W2jA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=mjN0Xl0EufeX2HUblzQO67mWn+xDOBIs3L51QY0wUGY=;
-	b=IokVP2/IU4Crxt9EoOV7lMWhRfyXOQSVX8NBgo3UEbLf/Fs/9e2wpWurdxavEvHgLF
-	LHZPrzwOiDelCM46aj7q/glx/JGKWfC7Aep38DJRCmoeASOyjPpSezNHhK5aVRkYydOZ
-	gHk5EdOsfhiTnyCD2ETnZEJBHNlo5dwoGe+Wl0YbRGKPfQ9RR4Aa6M4sSJY8JtdxZ6bi
-	tDZXa5g05U73UTjjTncR3tQCCdKJXwe4a/L4cCePhsBYWkogP8/vP7Z11nXj3tGWwVnd
-	WyEMxmH9kGzO3sKqI7cB4rFc0d5zlBAhSn4YMFfBYHwOnYd6JtalG3w046wvLONaSUex
-	jfew==
-X-Gm-Message-State: AKGB3mJjUR4sw1zVjt82d6CWSGAOl1JY20zDjgu5+AjEl+paEdPU89fy
-	63tnkvjXfL3CRq2AHYZZLh0=
-X-Received: by 10.55.93.195 with SMTP id r186mr44634356qkb.77.1514569869479;
-	Fri, 29 Dec 2017 09:51:09 -0800 (PST)
+	bh=KLSH73+PhrTDeU5qHRVEPzwUQ7axdsLgk+Caal09PE0=;
+	b=OeTebbAy9MmzK00d+qxjS0j2DZ3Klg9PGEIfVONrD5Q00qUfbiqewhhZAMSnE5Bj/z
+	qEpbC4G/JvaEn1IwnYk3Q594CW9+dYYDE1l00b3OJJmNb9gMMcrbTiXRbs5F8ONFWIrI
+	kxnG8lksnkurdZ5dwgXkgvMsaVSZkMGlTTq7Cm2sRKv8PWx6PCXslo93zKQ1M/I43nhq
+	mPgPJy+5OIT0jTr32Y2lTII6H7UuPIYChYVWCQSkLVEB7kS5EwUHI+HzkXOoqerdNR1H
+	IzwhfHa/+90JE6MWISek6IgfLeaUDfR9c3nef6CmZ7EGcN7CFraKWoj5o99K6kj/u3CW
+	kamw==
+X-Gm-Message-State: AKGB3mJdLJJbyPJhqzX+OWehRpm5v98xEWa776mvRzcma2HnV+7FAPsV
+	FCxQc2Yb/L7UVTTx8X45gUU=
+X-Received: by 10.200.27.172 with SMTP id z41mr46770986qtj.104.1514569866735; 
+	Fri, 29 Dec 2017 09:51:06 -0800 (PST)
 Received: from x1.local ([138.117.48.219]) by smtp.gmail.com with ESMTPSA id
-	t41sm24223893qtt.84.2017.12.29.09.51.06
+	t41sm24223893qtt.84.2017.12.29.09.51.03
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 29 Dec 2017 09:51:09 -0800 (PST)
+	Fri, 29 Dec 2017 09:51:06 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Alistair Francis <alistair.francis@xilinx.com>,
 	"Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
 	Andrey Smirnov <andrew.smirnov@gmail.com>
-Date: Fri, 29 Dec 2017 14:49:19 -0300
-Message-Id: <20171229174933.1781-29-f4bug@amsat.org>
+Date: Fri, 29 Dec 2017 14:49:18 -0300
+Message-Id: <20171229174933.1781-28-f4bug@amsat.org>
 X-Mailer: git-send-email 2.15.1
 In-Reply-To: <20171229174933.1781-1-f4bug@amsat.org>
 References: <20171229174933.1781-1-f4bug@amsat.org>
@@ -100,8 +102,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::244
-Subject: [Qemu-devel] [PATCH v3 28/42] hw/arm/xilinx_zynq: implement SDHCI
+X-Received-From: 2607:f8b0:400d:c0d::244
+Subject: [Qemu-devel] [PATCH v3 27/42] hw/arm/exynos4210: implement SDHCI
  Spec v2
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -114,102 +116,50 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+Cc: Peter Crosthwaite <crosthwaite.peter@gmail.com>, qemu-arm@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	"open list:Xilinx Zynq" <qemu-arm@nongnu.org>, qemu-devel@nongnu.org
+	qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZoRkwgypJCLt
+X-TUID: 8P2plbcoom6Q
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/xilinx_zynq.c | 64 ++++++++++++++++++++++++++++++++--------------------
- 1 file changed, 40 insertions(+), 24 deletions(-)
+ hw/arm/exynos4210.c | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-index 1836a4ed45..9a106db7b7 100644
---- a/hw/arm/xilinx_zynq.c
-+++ b/hw/arm/xilinx_zynq.c
-@@ -165,10 +165,8 @@ static void zynq_init(MachineState *machine)
-     MemoryRegion *address_space_mem = get_system_memory();
-     MemoryRegion *ext_ram = g_new(MemoryRegion, 1);
-     MemoryRegion *ocm_ram = g_new(MemoryRegion, 1);
--    DeviceState *dev, *carddev;
-+    DeviceState *dev;
-     SysBusDevice *busdev;
--    DriveInfo *di;
--    BlockBackend *blk;
-     qemu_irq pic[64];
-     int n;
+diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
+index e8e1d81e62..0e6acac784 100644
+--- a/hw/arm/exynos4210.c
++++ b/hw/arm/exynos4210.c
+@@ -75,7 +75,6 @@
+ #define EXYNOS4210_INT_COMBINER_BASE_ADDR   0x10448000
  
-@@ -247,27 +245,45 @@ static void zynq_init(MachineState *machine)
-     gem_init(&nd_table[0], 0xE000B000, pic[54-IRQ_OFFSET]);
-     gem_init(&nd_table[1], 0xE000C000, pic[77-IRQ_OFFSET]);
+ /* SD/MMC host controllers */
+-#define EXYNOS4210_SDHCI_CAPABILITIES       0x05E80080
+ #define EXYNOS4210_SDHCI_BASE_ADDR          0x12510000
+ #define EXYNOS4210_SDHCI_ADDR(n)            (EXYNOS4210_SDHCI_BASE_ADDR + \
+                                                 0x00010000 * (n))
+@@ -377,8 +376,18 @@ Exynos4210State *exynos4210_init(MemoryRegion *system_mem)
+         BlockBackend *blk;
+         DriveInfo *di;
  
--    dev = qdev_create(NULL, TYPE_SYSBUS_SDHCI);
--    qdev_init_nofail(dev);
--    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0xE0100000);
--    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[56-IRQ_OFFSET]);
--
--    di = drive_get_next(IF_SD);
--    blk = di ? blk_by_legacy_dinfo(di) : NULL;
--    carddev = qdev_create(qdev_get_child_bus(dev, "sd-bus"), TYPE_SD_CARD);
--    qdev_prop_set_drive(carddev, "drive", blk, &error_fatal);
--    object_property_set_bool(OBJECT(carddev), true, "realized", &error_fatal);
--
--    dev = qdev_create(NULL, TYPE_SYSBUS_SDHCI);
--    qdev_init_nofail(dev);
--    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0xE0101000);
--    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[79-IRQ_OFFSET]);
--
--    di = drive_get_next(IF_SD);
--    blk = di ? blk_by_legacy_dinfo(di) : NULL;
--    carddev = qdev_create(qdev_get_child_bus(dev, "sd-bus"), TYPE_SD_CARD);
--    qdev_prop_set_drive(carddev, "drive", blk, &error_fatal);
--    object_property_set_bool(OBJECT(carddev), true, "realized", &error_fatal);
-+    for (n = 0; n < 2; n++) {
-+        int hci_irq = n ? 79 : 56;
-+        hwaddr hci_addr = n ? 0xE0101000 : 0xE0100000;
-+        DriveInfo *di;
-+        BlockBackend *blk;
-+        DeviceState *carddev;
-+
 +        /* Compatible with:
-+         * - SD Host Controller Specification Version 2.0 Part A2
++         * - SD Host Controller Specification Version 2.0
 +         * - SDIO Specification Version 2.0
-+         * - MMC Specification Version 3.31
++         * - MMC Specification Version 4.3
 +         *
-+         * - SDMA (single operation DMA)
-+         * - ADMA1 (4 KB boundary limited DMA)
-+         * - ADMA2
-+         *
-+         * - up to seven functions in SD1, SD4, but does not support SPI mode
-+         * - SD high-speed (SDHS) card
-+         * - SD High Capacity (SDHC) card
-+         *
-+         * - Low-speed, 1 KHz to 400 KHz
-+         * - Full-speed, 1 MHz to 50 MHz (25 MB/sec)
++         * - SDMA
++         * - ADMA
 +         */
-+        dev = qdev_create(NULL, TYPE_SYSBUS_SDHCI);
+         dev = qdev_create(NULL, TYPE_SYSBUS_SDHCI);
+-        qdev_prop_set_uint32(dev, "capareg", EXYNOS4210_SDHCI_CAPABILITIES);
 +        qdev_prop_set_uint8(dev, "sd-spec-version", 2);
-+        qdev_prop_set_bit(dev, "adma1", true);
-+        qdev_prop_set_bit(dev, "high-speed", true);
-+        qdev_prop_set_uint16(dev, "max-block-length", 1024);
-+        qdev_init_nofail(dev);
-+        sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, hci_addr);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[hci_irq - IRQ_OFFSET]);
-+
-+        di = drive_get_next(IF_SD);
-+        blk = di ? blk_by_legacy_dinfo(di) : NULL;
-+        carddev = qdev_create(qdev_get_child_bus(dev, "sd-bus"), TYPE_SD_CARD);
-+        qdev_prop_set_drive(carddev, "drive", blk, &error_fatal);
-+        object_property_set_bool(OBJECT(carddev), true, "realized",
-+                                 &error_fatal);
-+    }
++        qdev_prop_set_bit(dev, "suspend", true);
++        qdev_prop_set_bit(dev, "1v8", true);
+         qdev_init_nofail(dev);
  
-     dev = qdev_create(NULL, TYPE_ZYNQ_XADC);
-     qdev_init_nofail(dev);
+         busdev = SYS_BUS_DEVICE(dev);
 -- 
 2.15.1
 

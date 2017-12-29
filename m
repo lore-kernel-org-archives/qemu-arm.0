@@ -1,142 +1,355 @@
-Received: by 10.28.71.27 with SMTP id u27csp2112909wma;
-        Sat, 17 Feb 2018 11:25:36 -0800 (PST)
-X-Google-Smtp-Source: AH8x225NGqjt5Q87OeiZFcWQ0Uc8nPsTJhrvcYqNpWCI/OQsLlq55H7NBcY49eEaBwc5XT/CKHLa
-X-Received: by 10.129.38.214 with SMTP id m205mr7511696ywm.436.1518895536039;
-        Sat, 17 Feb 2018 11:25:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518895536; cv=none;
+Received: by 10.223.134.117 with SMTP id 50csp6381776wrw;
+        Thu, 28 Dec 2017 22:33:51 -0800 (PST)
+X-Google-Smtp-Source: ACJfBos/7R6+LDVCneshXsLLliG6Byym1ahMbKooh8mOxBSmtGnSS0nGZw6IsoNAhywTZuHsIKxj
+X-Received: by 10.101.81.135 with SMTP id h7mr19529619pgq.422.1514529231364;
+        Thu, 28 Dec 2017 22:33:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1514529231; cv=none;
         d=google.com; s=arc-20160816;
-        b=l04MMPTsoVgPQyl7bl/vgqwWrfDVTMyrrOufAK6ejPaxeOY2HA7rX1G38eWDB2i9gt
-         alE6zlcv3/2oKskHj96zHu57ibItm3UE/6FEdxQjRSqmi2qZ5J0MRTa7tJGJb+nWnWTE
-         kZt1sue3o8jSr1spy5fpLgVqZjN3O9DIEPjINYci8K45F/K85UU4FC+lm06ICqBbMb2h
-         8OarezTWl7fDxrHY4nYXMBjb4dA/+K8sxF5G08dZWKxu3FMKh+i3wOO2y5z6pHON4QuG
-         Rf/WHoOJ79XDNgMcUa4qxR5m7kb61DIdPFnFue0DL2yOEcj44XmHjjxUI1PSHgrpOldl
-         DlZA==
+        b=M3lO222JsV+sgErdv6QYfbd6yeXNRRY1lCJkLjOG6t+nzUNqlFRDfQ2cjM/eo+LbYh
+         ZhZvlKjZ+aEypfTylEitrskC7sLBeh7ON6O2Bj/xq5AyTPnflH8Kut+IgEv+/peXaqs+
+         iHLE/ekvri6PV34GOP+7IvkXyMkANF9lWgv4wnqbIJafY9GPLqkGAigpxnS4o5yAc5vr
+         y0kWUHDLcorm3jHzRl1U0ydWZPO180n/mqxAEemBCKFDX+Rr4/A1DI3A6gNKexxPNA77
+         jgRAfGA6lAqH+PJYfiDSLsvXt/7MU5lagyAtkONsDouJzrNQO20Xy+4mVPhNDePJInMg
+         NYhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=MZMW18/mnlwksMUZ3mIGPAg6UK47iRoIU3NT/Um5Pt8=;
-        b=FqcEuXVuAI8F/gxBwOQP456cDbOL6VhTEn2pLa9dkbzpXzsav49ApHAFXb1gz58Qo5
-         Sda9xo94ox0NLfzeJMOdOfHZ7eRdhNFQEV+18872n7yD9OC8VuQZ67wTIL6ntnBuAWQE
-         NlSSVSy2Aabb1OycWdD9Mcx7BzXd2lk9pYUC6gZfkCONL6jWSn69VeVPKlJ8JEmr7F1O
-         Sjv2dFCcfUv/njybEn9MRZWJ/Eod2Iv8cY6GGwowWCMuxtcXp7S4r2wtkDI0zm11Ghl7
-         5GD++qVA2VV7LP+gIWxSMrTtCj2Qtu8OXqyYM40uFf0Mjs2+CF74EB6EvauQjIrOIEHJ
-         CyOA==
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject:arc-authentication-results;
+        bh=/ZeLi+NXZ0ZLZ7j4bWRMtMDOPWaKpX4rSGHJF36WLOU=;
+        b=vx3ZvUjs1VpUYX+3xIuDq1PQ7lzELDKAZFlTHV/UBnglyyGzS/GU+L6pc0CH59Jn9q
+         SEEDwoDMGJQZSvNtNP+WwgPuuYYugF8lfDMQ+FOqkgsW6FehRJGL/i0AYyyKARDbzLGU
+         ogPOAjKrDRIz87GyHnuKUi/6Hn4nFccY2kI78UxGIWU63lldJADsvJxodYWogGgPrMN1
+         lezyDVdFeW0c5cYHa4zOWWdLGfi3tajok3zDVV4ZYlVIEvWHN2fboVmFNbwHLHXpNctF
+         j7RKZE5xW1ffmZK7lAuXS7d1aIGjmsS+rQ3mUbffV3QYjE8xlvX0NN7256lGSqnoATnA
+         QETw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c205si362149yba.694.2018.02.17.11.25.35
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 17 Feb 2018 11:25:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id 92si27605985pli.605.2017.12.28.22.33.51;
+        Thu, 28 Dec 2017 22:33:51 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49905 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1en875-0003eg-Cn
-	for alex.bennee@linaro.org; Sat, 17 Feb 2018 14:25:35 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45140)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1en7WO-0003dJ-PT
-	for qemu-devel@nongnu.org; Sat, 17 Feb 2018 13:47:41 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1en7WN-0002X1-Ct
-	for qemu-devel@nongnu.org; Sat, 17 Feb 2018 13:47:40 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:56746 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1en7WJ-00029t-IB; Sat, 17 Feb 2018 13:47:35 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0E5D98185322;
-	Sat, 17 Feb 2018 18:47:35 +0000 (UTC)
-Received: from localhost.localdomain.com (ovpn-116-21.ams2.redhat.com
-	[10.36.116.21])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 70DEC2024CA2;
-	Sat, 17 Feb 2018 18:47:32 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
-	qemu-arm@nongnu.org, qemu-devel@nongnu.org, prem.mallappa@gmail.com,
-	alex.williamson@redhat.com
-Date: Sat, 17 Feb 2018 19:46:52 +0100
-Message-Id: <1518893216-9983-11-git-send-email-eric.auger@redhat.com>
-In-Reply-To: <1518893216-9983-1-git-send-email-eric.auger@redhat.com>
-References: <1518893216-9983-1-git-send-email-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Sat, 17 Feb 2018 18:47:35 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Sat, 17 Feb 2018 18:47:35 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-devel] [PATCH v9 10/14] hw/arm/smmuv3: Abort on vfio or vhost
- case
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: mst@redhat.com, jean-philippe.brucker@arm.com, tn@semihalf.com,
-	peterx@redhat.com, edgar.iglesias@gmail.com,
-	linuc.decode@gmail.com, bharat.bhushan@nxp.com, christoffer.dall@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2d4baLTsxUhM
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1751066AbdL2Gdt (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 5 others); Fri, 29 Dec 2017 01:33:49 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:40394 "EHLO huawei.com"
+        rhost-flags-OK-FAIL-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1750836AbdL2Gds (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 29 Dec 2017 01:33:48 -0500
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.60])
+        by Forcepoint Email with ESMTP id 3CC13C827D3DF;
+        Fri, 29 Dec 2017 14:33:35 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by DGGEMS402-HUB.china.huawei.com
+ (10.3.19.202) with Microsoft SMTP Server id 14.3.361.1; Fri, 29 Dec 2017
+ 14:33:27 +0800
+Subject: Re: [PATCH v14 2/9] ACPI: Add APEI GHES table generation and CPER
+ record support
+To:     Igor Mammedov <imammedo@redhat.com>
+CC:     <pbonzini@redhat.com>, <mst@redhat.com>,
+        <zhaoshenglong@huawei.com>, <peter.maydell@linaro.org>,
+        <mtosatti@redhat.com>, <rth@twiddle.net>, <ehabkost@redhat.com>,
+        <james.morse@arm.com>, <christoffer.dall@linaro.org>,
+        <marc.zyngier@arm.com>, <kvm@vger.kernel.org>,
+        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
+        <huangshaoyu@huawei.com>, <zhengqiang10@huawei.com>,
+        <xuwei5@hisilicon.com>
+References: <1514440458-10515-1-git-send-email-gengdongjiu@huawei.com>
+ <1514440458-10515-3-git-send-email-gengdongjiu@huawei.com>
+ <20171228151809.10495a90@igors-macbook-pro.local>
+From:   gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <9fc51acc-5728-9571-54fe-5bd9ac2adb39@huawei.com>
+Date:   Fri, 29 Dec 2017 14:33:24 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
+MIME-Version: 1.0
+In-Reply-To: <20171228151809.10495a90@igors-macbook-pro.local>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.142.68.147]
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 5EMFVygq5Bjw
 
-At the moment, the SMMUv3 does not support notification on
-TLB invalidation. So let's abort as soon as such notifier gets
-enabled.
+Igor,
+  Thank you very much for your review and your time. I will check your comments in detail later.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- hw/arm/smmuv3.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
-
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 384393f..5efe933 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -1074,12 +1074,23 @@ static void smmuv3_class_init(ObjectClass *klass, void *data)
-     dc->realize = smmu_realize;
- }
- 
-+static void smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
-+                                       IOMMUNotifierFlag old,
-+                                       IOMMUNotifierFlag new)
-+{
-+    if (old == IOMMU_NOTIFIER_NONE) {
-+        error_setg(&error_fatal,
-+                   "SMMUV3: vhost and vfio notifiers not yet supported");
-+    }
-+}
-+
- static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
-                                                   void *data)
- {
-     IOMMUMemoryRegionClass *imrc = IOMMU_MEMORY_REGION_CLASS(klass);
- 
-     imrc->translate = smmuv3_translate;
-+    imrc->notify_flag_changed = smmuv3_notify_flag_changed;
- }
- 
- static const TypeInfo smmuv3_type_info = {
--- 
-2.5.5
-
+On 2017/12/28 22:18, Igor Mammedov wrote:
+> On Thu, 28 Dec 2017 13:54:11 +0800
+> Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+> 
+>> This implements APEI GHES Table generation and record CPER in
+>> runtime via fw_cfg blobs.Now we only support two types of GHESv2,
+>> which are GPIO-Signal and ARMv8 SEA. Afterwards, we can extend the
+>> supported type if needed. For the CPER section type, currently it
+> s/type/types/
+> 
+>> is memory section because kernel manly wants userspace to handle
+> s/manly/mainly/
+> 
+>> the memory errors. 
+> 
+>> In order to simulation, we hard code the error
+>> type to Multi-bit ECC.
+> Not sure what this is about, care to elaborate?
+> 
+> 
+>> For GHESv2 error source, the OSPM must acknowledges the error via
+>> Read ACK register. So user space must check the ACK value before
+>> recording a new CPER to avoid read-write race condition.
+>>
+>> Suggested-by: Laszlo Ersek <lersek@redhat.com>
+>> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+>> ---
+>> The basic solution is suggested by Laszlo in [1]
+>> [1]: https://lkml.org/lkml/2017/3/29/342
+> 
+> 
+> patch is too big, it would be better if it were split in several parts.
+> 
+>> ---
+>>  hw/acpi/aml-build.c         |   2 +
+>>  hw/acpi/hest_ghes.c         | 390 ++++++++++++++++++++++++++++++++++++++++++++
+>>  hw/arm/virt-acpi-build.c    |   8 +
+>>  include/hw/acpi/aml-build.h |   1 +
+>>  include/hw/acpi/hest_ghes.h |  82 ++++++++++
+>>  5 files changed, 483 insertions(+)
+>>  create mode 100644 hw/acpi/hest_ghes.c
+>>  create mode 100644 include/hw/acpi/hest_ghes.h
+>>
+>> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+>> index 36a6cc4..6849e5f 100644
+>> --- a/hw/acpi/aml-build.c
+>> +++ b/hw/acpi/aml-build.c
+>> @@ -1561,6 +1561,7 @@ void acpi_build_tables_init(AcpiBuildTables *tables)
+>>      tables->table_data = g_array_new(false, true /* clear */, 1);
+>>      tables->tcpalog = g_array_new(false, true /* clear */, 1);
+>>      tables->vmgenid = g_array_new(false, true /* clear */, 1);
+>> +    tables->hardware_errors = g_array_new(false, true /* clear */, 1);
+>>      tables->linker = bios_linker_loader_init();
+>>  }
+>>  
+>> @@ -1571,6 +1572,7 @@ void acpi_build_tables_cleanup(AcpiBuildTables *tables, bool mfre)
+>>      g_array_free(tables->table_data, true);
+>>      g_array_free(tables->tcpalog, mfre);
+>>      g_array_free(tables->vmgenid, mfre);
+>> +    g_array_free(tables->hardware_errors, mfre);
+>>  }
+>>  
+>>  /* Build rsdt table */
+>> diff --git a/hw/acpi/hest_ghes.c b/hw/acpi/hest_ghes.c
+>> new file mode 100644
+>> index 0000000..86ec99e
+>> --- /dev/null
+>> +++ b/hw/acpi/hest_ghes.c
+>> @@ -0,0 +1,390 @@
+>> +/* Support for generating APEI tables and record CPER for Guests
+>> + *
+>> + * Copyright (C) 2017 HuaWei Corporation.
+>> + *
+>> + * Author: Dongjiu Geng <gengdongjiu@huawei.com>
+>> + *
+>> + * This program is free software; you can redistribute it and/or modify
+>> + * it under the terms of the GNU General Public License as published by
+>> + * the Free Software Foundation; either version 2 of the License, or
+>> + * (at your option) any later version.
+>> +
+>> + * This program is distributed in the hope that it will be useful,
+>> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+>> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>> + * GNU General Public License for more details.
+>> +
+>> + * You should have received a copy of the GNU General Public License along
+>> + * with this program; if not, see <http://www.gnu.org/licenses/>.
+>> + */
+>> +
+>> +#include "qemu/osdep.h"
+>> +#include "hw/acpi/acpi.h"
+>> +#include "hw/acpi/aml-build.h"
+>> +#include "hw/acpi/hest_ghes.h"
+>> +#include "hw/nvram/fw_cfg.h"
+>> +#include "sysemu/sysemu.h"
+>> +#include "qemu/error-report.h"
+>> +
+>> +/* Generic Address Structure (GAS)
+>> + * ACPI 2.0/3.0: 5.2.3.1 Generic Address Structure
+>> + * 2.0 compat note:
+>> + *    @access_width must be 0, see ACPI 2.0:Table 5-1
+>> + */
+>> +static void build_append_gas(GArray *table, AmlRegionSpace as,
+>> +                      uint8_t bit_width, uint8_t bit_offset,
+>> +                      uint8_t access_width, uint64_t address)
+>> +{
+>> +    build_append_int_noprefix(table, as, 1);
+>> +    build_append_int_noprefix(table, bit_width, 1);
+>> +    build_append_int_noprefix(table, bit_offset, 1);
+>> +    build_append_int_noprefix(table, access_width, 1);
+>> +    build_append_int_noprefix(table, address, 8);
+>> +}
+> all build_append_foo() primitives should go into aml-build.c
+> you can reuse take following patches for build_append_gas() from my github repo
+> https://github.com/imammedo/qemu/commit/ff35b4ae1ec286f5f11830d504467f5ad243995b
+> https://github.com/imammedo/qemu/commit/3d2fd6d13a3ea298d2ee814835495ce6241d085c
+> 
+> 
+>> +/* Hardware Error Notification
+>> + * ACPI 4.0: 17.3.2.7 Hardware Error Notification
+>> + */
+>> +static void build_append_notify(GArray *table, const uint8_t type,
+>> +                                uint8_t length)
+>> +{
+>> +        build_append_int_noprefix(table, type, 1); /* type */
+>> +        build_append_int_noprefix(table, length, 1);
+>> +        build_append_int_noprefix(table, 0, 26);
+>> +}
+> split all build_append_foo() into separate patches /a patch per function/,
+> 
+> probably for GHES related primitives it would be better use 'ghes'
+> domain prefix in function names, like
+> 
+>   s/build_append_notify/build_append_ghes_notify/
+> 
+> the same applies to other build_append_foo() below
+> 
+> 
+>> +/* Generic Error Status Block
+>> + * ACPI 4.0: 17.3.2.6.1 Generic Error Data
+>> + */
+>> +static void build_append_gesb_header(GArray *table, uint32_t block_status,
+>> +                      uint32_t raw_data_offset, uint32_t raw_data_length,
+>> +                      uint32_t data_length, uint32_t error_severity)
+>> +{
+>> +    build_append_int_noprefix(table, block_status, 4);
+>> +    build_append_int_noprefix(table, raw_data_offset, 4);
+>> +    build_append_int_noprefix(table, raw_data_length, 4);
+>> +    build_append_int_noprefix(table, data_length, 4);
+>> +    build_append_int_noprefix(table, error_severity, 4);
+>> +}
+>> +
+>> +/* Generic Error Data Entry
+>> + * ACPI 4.0: 17.3.2.6.1 Generic Error Data
+>> + */
+>> +static void build_append_gede_header(GArray *table, const char *section_type,
+>> +                      const uint32_t error_severity, const uint16_t revision,
+>> +                      const uint32_t error_data_length)
+>> +{
+>> +    int i;
+>> +
+>> +    for (i = 0; i < 16; i++) {
+>> +        build_append_int_noprefix(table, section_type[i], 1);
+>> +    }
+>> +
+>> +    build_append_int_noprefix(table, error_severity, 4);
+>> +    build_append_int_noprefix(table, revision, 2);
+>> +    build_append_int_noprefix(table, 0, 2);
+>> +    build_append_int_noprefix(table, error_data_length, 4);
+>> +    build_append_int_noprefix(table, 0, 44);
+>> +}
+>> +
+>> +/* Memory section CPER record */
+> comment missing reference to related spec item
+> 
+>> +static void build_append_mem_cper(GArray *table, uint64_t error_physical_addr)
+>> +{
+>> +    /*
+>> +     * Memory Error Record
+>> +     */
+>> +    build_append_int_noprefix(table,
+>> +                 (1UL << 14) | /* Type Valid */
+>> +                 (1UL << 1) /* Physical Address Valid */,
+>> +                 8);
+>> +    /* Memory error status information */
+>> +    build_append_int_noprefix(table, 0, 8);
+>> +    /* The physical address at which the memory error occurred */
+>> +    build_append_int_noprefix(table, error_physical_addr, 8);
+>> +    build_append_int_noprefix(table, 0, 48);
+>> +    /* Hard code to Multi-bit ECC error */
+>> +    build_append_int_noprefix(table, 3 /* Multi-bit ECC */, 1);
+>> +    build_append_int_noprefix(table, 0, 7);
+>> +}
+>> +
+>> +static int ghes_record_mem_error(uint64_t error_block_address,
+>> +                                    uint64_t error_physical_addr)
+> probably function should be part of 9/9 patch, as the others that's called
+> only from ghes_record_errors().
+> 
+> i.e. split this patch into acpi tables generation and actual error generation patches.
+> 
+>> +{
+>> +    GArray *block;
+>> +    uint64_t current_block_length;
+>> +    uint32_t data_length;
+>> +    /* Memory section */
+>> +    char mem_section_id_le[] = {0x14, 0x11, 0xBC, 0xA5, 0x64, 0x6F, 0xDE,
+>> +                                0x4E, 0xB8, 0x63, 0x3E, 0x83, 0xED, 0x7C,
+>> +                                0x83, 0xB1};
+>> +
+>> +    block = g_array_new(false, true /* clear */, 1);
+>> +
+>> +    /* Read the current length in bytes of the generic error data */
+>> +    cpu_physical_memory_read(error_block_address +
+>> +        offsetof(AcpiGenericErrorStatus, data_length), &data_length, 4);
+>> +
+>> +    /* The current whole length in bytes of the generic error status block */
+>> +    current_block_length = sizeof(AcpiGenericErrorStatus) + data_length;
+> missing le32_to_cpu() here
+> 
+> also check other sites where you call cpu_physical_memory_foo()
+> 
+> it would be good to have a 'make check' test case included in this series,
+> then when you can spot these errors during test on BE host, before posting patches.
+> 
+>> +
+>> +    /* Add a new generic error data entry*/
+>> +    data_length += GHES_DATA_LENGTH;
+>> +    data_length += GHES_CPER_LENGTH;
+>> +
+>> +    /* Check whether it will run out of the preallocated memory if adding a new
+>> +     * generic error data entry
+>> +     */
+>> +    if ((data_length + sizeof(AcpiGenericErrorStatus)) > GHES_MAX_RAW_DATA_LENGTH) {
+>> +        error_report("Record CPER out of boundary!!!");
+>> +        return GHES_CPER_FAIL;
+> you return values here and from ghes_record_errors() but not actually
+> handle them, so it's rather pointless thing to do,
+> more over it's called on nofail path so one should either abort on error o ignore it
+> 
+>> +    }
+>> +    /* Build the new generic error status block header */
+>> +    build_append_gesb_header(block, cpu_to_le32(ACPI_GEBS_UNCORRECTABLE), 0, 0,
+>> +        cpu_to_le32(data_length), cpu_to_le32(ACPI_CPER_SEV_RECOVERABLE));
+>> +
+>> +    /* Write back above generic error status block header to guest memory */
+>> +    cpu_physical_memory_write(error_block_address, block->data,
+>> +                              block->len);
+>> +
+>> +    /* Build the generic error data entries */
+>> +
+>> +    data_length = block->len;
+>> +    /* Build the new generic error data entry header */
+>> +    build_append_gede_header(block, mem_section_id_le,
+>> +                    cpu_to_le32(ACPI_CPER_SEV_RECOVERABLE), cpu_to_le32(0x300),
+>> +                    cpu_to_le32(80)/* the total size of Memory Error Record */);
+>> +
+>> +    /* Build the memory section CPER */
+>> +    build_append_mem_cper(block, error_physical_addr);
+>> +
+>> +    /* Write back above whole new generic error data entry to guest memory */
+>> +    cpu_physical_memory_write(error_block_address + current_block_length,
+>> +                    block->data + data_length, block->len - data_length);
+>> +
+>> +    g_array_free(block, true);
+>> +
+>> +    return GHES_CPER_OK;
+>> +}
+> [...]
+> 
+> I'll try to make another round of review on this once patch is split
+> 
+> .
+> 

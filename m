@@ -1,167 +1,285 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp3880609wrq;
-        Tue, 10 Jul 2018 11:34:30 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpcFOZ2Lpz9Qm9F9RT1Y3gHePYm9pdMCUrt9ylSM9hE+li6Os+nrTvKl19LQFYrIozxH8ONF
-X-Received: by 2002:ac8:3864:: with SMTP id r33-v6mr23529230qtb.24.1531247670818;
-        Tue, 10 Jul 2018 11:34:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531247670; cv=none;
+Received: by 10.223.134.117 with SMTP id 50csp6995807wrw;
+        Fri, 29 Dec 2017 09:50:30 -0800 (PST)
+X-Google-Smtp-Source: ACJfBotaHUgUJgb5NL3LU6Ak5+B1yGxFNOIM8WH7Ks869fFSVB0H3hLWw7xSWdks2DbhcRc4nsLu
+X-Received: by 10.37.37.12 with SMTP id l12mr14607065ybl.283.1514569830307;
+        Fri, 29 Dec 2017 09:50:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1514569830; cv=none;
         d=google.com; s=arc-20160816;
-        b=LlHrWPYu9pEnW9btzQR0FmIuiAUKLMmxG8oQNYXfYGZNRY7UFmvqovVXIsHsANKeV9
-         UFu2lWTVFW4MW4rvG9feV7L/+8gtWiUTEz8XAbpRnFeGVTNWIodgvGso52hm4pY9wnU+
-         x+/f+87QD0tyc8Pp0k+z/gkBNCQ1Mny6WUl1yyaN9HR6Sqkbbps+6eEgElhhltypCy6U
-         RmSATaCpbE6Sf48RtEMPf3U5UEXBK4IanukxaA8821OhT1D8sygboam31Cob2qFQC65x
-         rZ7X3ZSqR5j0MRaoMsUSz0+zgZiV4q3qYyVq0rY6IIGCcMBKA+IvID6JoAOfWwZwOitR
-         NabQ==
+        b=zJkuUB49fH8SMSI0ZMKJDu1V03rg3ZSqRQLHTDyL8aSfM0c/rRHY4vGM8Ji4J3VWjO
+         lam3YZNAKRQ32QepJBr1nfW4IdmZLURbjZaX2dlSeJPjL7P1sFtWb7+7MSy/Bx/EvgYA
+         m0vrqDolMdtRlZNMWphcPTA1VeKFs3HEMtrTlC2LPs/HfQO0ZJIa0Zig7y4Lu7FsxTP7
+         OhaBRioubJRdK7fSdXLPhCKtfYB8ax9IyBgB/4Tg3LQBzcKYcQOHwNxq+lVxqLpuylyR
+         XssDnX4kXkhcHRfUKS5/iMqDQdVpLvHjojfwIm5hYFJSOk1RPIft9WK3LtuzwYI27zmU
+         XHcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
+         :content-transfer-encoding:mime-version:message-id:date:to:from
          :dkim-signature:arc-authentication-results;
-        bh=wnJUZfGm6JuVwaVsg81AZBB+VnmroXReiG6jsjVs+WI=;
-        b=QJzyVKkw5zPjyFMbHv8kCpgacLpcMobtq1ltRoi0WEhJtzBRyd1QPiHPIbVt4VUfBn
-         CZ71Yfi5upE3Mwv6EITU5Fo6Xk6sP4v4Grjp061LfGt88mLkQSlX3AgSh7KK3pqaRun6
-         4G0TvLFD2ePt0vHMiTrl/P7x4ydCMChP2HXX64u8g0jxrKhvo5bWXwaRvCgyF7oHXC7R
-         igekriKe9WizLFL1RuvypP8L9bjv7hr+pmDiLnsfdkjIiJm5A9DVKEeax2x3B0FL0XWL
-         ZwSxlbgw4hxncdx0BTji20yL54p7CxWpN1YKBV14wCjebx3Lee2hnxW+1PczVWmd9zU5
-         PVTw==
+        bh=2x8pd2gIcBY81vc0q/y/rTQLoztgYMSkplzmMhBE0Xc=;
+        b=rtnPIyfPMoLTjkZqvQ1X3E7r5PS4cOqdgA0y38BYAdwDP8tK5K9akaLHMvo9Cuy2PD
+         bRd/V2FhfGo9x6c7wiNDspphQbNl1L2ybp0DSmsyzxvlHZF6TqrTfU4zyDMwVh33wE+c
+         /PQ5b9zRIUQlFTCYtqDvN8Awk3IjttdiENXlmgAPG9qkEEn4/oOvxsHTg4rHffxVtdig
+         D0BPtofqy7eiATvlQpqHkfQ5liRnjVpmUxG0VSjWDoIuVTCe2ruXnxvaQPT2ujC1XbCm
+         UYoZz7g4QCY6IZLOtg4dgCOIEITQM5xMMiq/94EAtcQdYyFq1CY9Vhtva1dlvcJDq66c
+         QcVw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OPJnsKwe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fm1ex4BB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b184-v6si5315207qkd.69.2018.07.10.11.34.30
+        by mx.google.com with ESMTPS id f64si1610512ybb.771.2017.12.29.09.50.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 10 Jul 2018 11:34:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 29 Dec 2017 09:50:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OPJnsKwe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49321 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fm1ex4BB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:48808 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fcxT4-0006oR-5v
-	for alex.bennee@linaro.org; Tue, 10 Jul 2018 14:34:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60043)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eUynd-0002lE-Mu
+	for alex.bennee@linaro.org; Fri, 29 Dec 2017 12:50:29 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56667)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1fcxSo-0006lJ-Qu
-	for qemu-arm@nongnu.org; Tue, 10 Jul 2018 14:34:15 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eUyn3-0002iH-45
+	for qemu-devel@nongnu.org; Fri, 29 Dec 2017 12:49:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1fcxSo-0006tK-3w
-	for qemu-arm@nongnu.org; Tue, 10 Jul 2018 14:34:14 -0400
-Received: from mail-pf0-x243.google.com ([2607:f8b0:400e:c00::243]:39402)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eUyn0-00057S-1K
+	for qemu-devel@nongnu.org; Fri, 29 Dec 2017 12:49:53 -0500
+Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:39566)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
-	id 1fcxSf-0006of-NU; Tue, 10 Jul 2018 14:34:05 -0400
-Received: by mail-pf0-x243.google.com with SMTP id s21-v6so16682102pfm.6;
-	Tue, 10 Jul 2018 11:34:05 -0700 (PDT)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eUymz-00056g-Qo; Fri, 29 Dec 2017 12:49:49 -0500
+Received: by mail-qk0-x244.google.com with SMTP id u184so53569362qkd.6;
+	Fri, 29 Dec 2017 09:49:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
+	h=sender:from:to:cc:subject:date:message-id:mime-version
 	:content-transfer-encoding;
-	bh=wnJUZfGm6JuVwaVsg81AZBB+VnmroXReiG6jsjVs+WI=;
-	b=OPJnsKweKnwWI8j/BFbTyr18ixdGvLJTNMP4DcIDBNXPi5fMbXMz0K9GltV0PBYZQX
-	tEy9tILdXNGm+SxAkVLQFsJHL/EK6kstByjsM+wu0UHHROH6G2bhvRg1UTWzvDBY4CnF
-	0x5OlNuTNrClUoSM6LYl3nrRnU15aeHz/jXoz+PaFfbGouhSswM4u32onKvPVOph+asb
-	hHFm4XYI+UYIV4LIj6puQzapFh0mzujnIYH1m5A8ENy1LN3HwRYkjNKc7l4Oef/5VdH3
-	OUdxEZgHZqFq8W2bJiNFRy6/C/6z8HOyJ17G2uPEKY/XYxPDVySVLNnZ6UreS8bLwQRv
-	vq9Q==
+	bh=2x8pd2gIcBY81vc0q/y/rTQLoztgYMSkplzmMhBE0Xc=;
+	b=fm1ex4BBOw5I0ppcbf7QbL0SRvpcRDUpNjbcKBHw9MZgTHJZOu0KAWtPlWnUCxgAxI
+	gp6PLPbbHWLjdmnDL7eXLYOtNAp66cKdTNZi0+8KqNDrU1AEpo5rdRB7CLjmQdMXz/eQ
+	M/BK5K+8ILGqewPiyxhwi9PXhYZ7Ueb76tMU4slHrcq5FkI2QIvlDrrEYvdcihLjQjSZ
+	mr/qm8sBzRzPtKZao3AQykPvxDJPHTT9j97CJhATpA4p/6xo18anALo0HpUMjQGa5i9j
+	gDwrscYeBcEhoWbqqun5MRT83p5tYJThL7K20Q2PMXC84HkRS2ADfiiMk9ifxJ5CtGAI
+	IioA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=wnJUZfGm6JuVwaVsg81AZBB+VnmroXReiG6jsjVs+WI=;
-	b=bOpGuVjO5c7owCkSynHmvbMyc2dmE5mGPsPjbefIFQr6NZsAJuqmyNFEfjMXh+pEmz
-	zERJ+HBltznJJQdQccrnQR7gNxR7erozRl7OU1x4JvuCozzRP6ukXPJ0rq8f2bLaeoPv
-	F1xZqaveD2+lNoILEFcILFa7s4Ar0qnKTonwIJZhF14AKc4PJX8SUd8E/lIhIY1JTndM
-	5guK9jiUNpZH541jMiJ7gG8LKEKJUaJNdd84ta4cehUIFvgfT3Qwss2/3tMkFSMPM4gr
-	3PFh5cRr1lmQsHN8yrLgUdRxvPoGUGfdlJ87LNLRirToA1+2YkO95uxnzEMlzzzBWf33
-	ISZQ==
-X-Gm-Message-State: APt69E2z2+bUOjdIHQ6TQ3RickjRxT5jvD+GWPjCjFl4t5Rbk7S3U2F8
-	R27y8BrzDS6nHnrm7nVdDGI=
-X-Received: by 2002:aa7:8307:: with SMTP id
-	t7-v6mr26876758pfm.81.1531247644669; 
-	Tue, 10 Jul 2018 11:34:04 -0700 (PDT)
-Received: from cloudburst.twiddle.net (97-126-112-211.tukw.qwest.net.
-	[97.126.112.211]) by smtp.googlemail.com with ESMTPSA id
-	l28-v6sm36902206pfi.4.2018.07.10.11.34.03
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=2x8pd2gIcBY81vc0q/y/rTQLoztgYMSkplzmMhBE0Xc=;
+	b=BaDip0DG/fyLDT5flcHq28HeGit4uEZq/XV3B5f3mSz895zjd8lA98McLv6t7Kdgj8
+	bOaSRZdLfGPv9mc/eIKh2w4ug/QXb3zNchUiaPgzLehjUtudx1q+/xtzUz7KzNVa6Ctu
+	hvXS5kXb5q6+qdSu9kpZMxaSsMsrhKC2Y+9JyIJe3Nl085HOWPL/Q2/u+HZKKTSZGUgw
+	eF/yrV5tkMtlDaZY/HrxmKY42qp9pkK5Vts0k03p9P8twp2ZEwY/zaHnOyCjngfa0COv
+	Pf7oSvqMIVBqQt2xM6sfZ8V2Q7PAsA+0UfodOAf9iBolzNnCqmZ/ceQvxKQwtQYnzAIG
+	CGJQ==
+X-Gm-Message-State: AKGB3mIpBlAby5vFjQXX/pFA7Ddl5vipghRsA2YNxZNpl9me+a9sfQpy
+	cxve3W3c8Pbs+aKirxdEo5w=
+X-Received: by 10.55.212.204 with SMTP id s73mr37091145qks.142.1514569788965; 
+	Fri, 29 Dec 2017 09:49:48 -0800 (PST)
+Received: from x1.local ([138.117.48.219]) by smtp.gmail.com with ESMTPSA id
+	t41sm24223893qtt.84.2017.12.29.09.49.44
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 10 Jul 2018 11:34:04 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-References: <20180710160013.26559-1-peter.maydell@linaro.org>
-	<20180710160013.26559-7-peter.maydell@linaro.org>
-From: Richard Henderson <rth@twiddle.net>
-Openpgp: preference=signencrypt
-Autocrypt: addr=rth@twiddle.net; prefer-encrypt=mutual; keydata=
-	xsBNBFGuLC8BCADcAoWcnW9lTsDMzbO3MBU+KbiGaj5JPatEUscRDkQYM2fyNjJp2tIWDK5a
-	n4yngeXB3eX61WbYR3QraRK8mlYLGxyAdHMEQfPipbqf3TmN043fssT2bc82ApJcs1zvLYgI
-	rhMht7Dck7A0wNC1jo+ZjVVFig5gDTN7gOzaAdBtV8tVNUddwkLzzaGpfihhSD6U46NdqKOG
-	Wlnn6TrkMy0QGdQ5NaXHkRlUjnnUTSW/nKfoxD+EI+A9V4sYOd8mc/TL4aJh/i/AiU57eLbo
-	n17uQI6/VTWDUWl8USiz4x9c8vmqlywLx00tAFxxoRWqk4KVJlj+Sh0up/D/sJ+vPpgBABEB
-	AAHNI1JpY2hhcmQgSGVuZGVyc29uIDxydGhAdHdpZGRsZS5uZXQ+wsCBBBMBAgArAhsDBgsJ
-	CAcDAgYVCAIJCgsEFgIDAQIeAQIXgAUJC7UHogUCWaDNVgIZAQAKCRCtEnDMTdAnm9N5CADO
-	cB8F/SudJ72IupxQf40hbJdBK176+gb3sHMsixyLtrU59lee+lIM1OZmlNjsnCYmiSnbA5ks
-	Q7p0HfO7DgdmfLzcK6xsHZukqSZy5LByw348Y913ZyjOrJZFdPP7kDg1MnqRqH4+3ZdzxV4y
-	eYBWFU9GYMIF06JbUubossOOO4ArNVZbnIPu8Vn2tDZVVqsCBqkoCSBMj519xrvyOu5z4mHS
-	LkCglXmVDOXMbqLuNAC3rfNXSnyM4hYkLUyfALJlAAy1Ro+jUqYhu7XUFV/MiwRuFMh5GbtY
-	Urkx7tqsWQXLT3GeDk/LqvpWJQwk4cHHckYjRih+70CHIenm81PVzsBNBFGuLC8BCACyEx3x
-	94HIkTX0CHu2sA0w75+h9wuoA8ggJ7+S4ri0y2YsijWad5TTt6z6MMiqxk9kSA5bppaj4HXh
-	86hBF/dWCtMpNr3Rb8FNOKyeA/qkYHVD6HiAiw9c6D8Dr9hWmOk3/HSmGrNURxeUFOckDXsv
-	I+yGGKBNshj59j7QZr7ZiuIi2rWlBL8dFN/OWa/o3x7HKsE4k6K8ngwvCKP/QbDLwLLBOWH+
-	VEUtpyeyxTr3OJ47ECTxdYvXoAV2iJaKr+6doVQiiR5eVFiMYrUPUECJeolOCwqc/JlWE18L
-	+PCAFaW1H+/mpPVfSpN4wnkJ5cQiQVB41IaCM4p20iRzx7ZJABEBAAHCwGUEGAECAA8CGwwF
-	AlmgzYEFCQu1CEoACgkQrRJwzE3QJ5s7rggAwABzDAGrZ6uWsMxg5PeiiAYPy6LBnCBJSpB5
-	Tfy5jH8QTmLfXW+u4Ib4sWXG7PYNR7sIrtqUHjRqXLVXrSnBX9ASGcYw/Xil45khW6LsRpO1
-	prHv9gkwQfa6fTiWXVfSfm2Nant6u02q+MaYtQpCVTiz/9ki4FfftUwUHFLU0MhIQogjd11y
-	/E08RJsqBwaHQdt14PwU1HphDOzSkhOXRXQLSd3ysyeGUXvL+gqQoXl5XYdvk8IId4PoJRo4
-	jcyJ4VbnldvXh5gdGhFA/f9JgkLk9tPW+C3wNtNWyRUq8azR9hF2fg2HJUf4IXQlIu8OOgh1
-	VcROBqvtH3ecaIL9iw==
-Message-ID: <c502f24b-84fa-ecd7-e88a-a15e8d587796@twiddle.net>
-Date: Tue, 10 Jul 2018 11:34:02 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	Fri, 29 Dec 2017 09:49:48 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Alistair Francis <alistair.francis@xilinx.com>,
+	"Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>,
+	Sai Pavan Boddu <saipava@xilinx.com>,
+	Clement Deschamps <clement.deschamps@antfield.fr>,
+	Jean-Christophe Dubois <jcd@tribudubois.net>,
+	=?UTF-8?q?Gr=C3=A9gory=20Estrade?= <gregory.estrade@gmail.com>,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	Prasad J Pandit <pjp@fedoraproject.org>
+Date: Fri, 29 Dec 2017 14:48:51 -0300
+Message-Id: <20171229174933.1781-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.15.1
 MIME-Version: 1.0
-In-Reply-To: <20180710160013.26559-7-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c00::243
-Subject: Re: [Qemu-arm] [PATCH 6/6] target/arm: Allow execution from small
- regions
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400d:c09::244
+Subject: [Qemu-devel] [PATCH v3 00/42] SDHCI: housekeeping,
+ add a qtest and fix few issues
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org, KONRAD Frederic <frederic.konrad@adacore.com>,
-	"Emilio G . Cota" <cota@braap.org>,
-	=?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oo0/PBi+S8G7
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+	Stefan Hajnoczi <stefanha@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qs2tYNxyJzAx
 
-On 07/10/2018 09:00 AM, Peter Maydell wrote:
-> Now that we have full support for small regions, including execution,
-> we can remove the workarounds where we marked all small regions as
-> non-executable for the M-profile MPU and SAU.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  target/arm/helper.c | 23 -----------------------
->  1 file changed, 23 deletions(-)
+Since v2:
+- more detailed 'capabilities', all boards converted to use these properties
+- since all qtests pass, removed the previous 'capareg' property
+- added Stefan/Alistair R-b
+- corrected 'access' LED behavior (Alistair's review)
+- more uses of the registerfields API
+- remove some dead code
+- cosmetix:
+  - added more comments
+  - renamed a pair of registers
+  - reordered few struct members
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Note, the bcm2835 seems to have 1KB minimum blocksize, however the current
+model is implemented with 512B. I didn't change the current value.
 
-r~
+Since v1:
+- addressed Alistair Francis review comments, added some R-b
+- only move register defines to "sd-internal.h"
+- fixed deposit64() arguments
+- dropped unuseful s->fifo_buffer = NULL
+- use a qemu_irq for the LED, restrict the logging to ON/OFF
+- fixed a trace format string error
+- included Andrey Smirnov ACMD12ERRSTS write patch
+- dropped few unuseful patches, and separate the Python polemical ones for later
+
+From the "SDHCI housekeeping" series:
+- 1: we restrict part of "sd/sd.h" into local "sd-internal.h",
+- 2,3: we somehow beautiful the code, no logical changes,
+- 4-7: we refactor the common sysbus/pci qdev code,
+- 8-10: we add plenty of trace events which will result useful later,
+- 11: we finally expose a "dma-memory" property.
+From the "SDHCI: add a qtest and fix few issues" series:
+- 12,13: fix registers
+- 14,15: boards can specify which SDHCI Spec to use (v2 and v3 so far)
+- 15-20: HCI qtest
+
+Regards,
+
+Phil.
+
+$ git backport-diff
+[----] : patches are identical
+[####] : number of functional differences between upstream/downstream patch
+[down] : patch is downstream-only
+The flags [FC] indicate (F)unctional and (C)ontextual differences, respectively
+
+001/42:[0003] [FC] 'sdhci: clean up includes'
+002/42:[down] 'sdhci: sort registers comments'
+003/42:[down] 'sdhci: remove dead code'
+004/42:[----] [--] 'sdhci: refactor same sysbus/pci properties'
+005/42:[----] [--] 'sdhci: refactor common sysbus/pci class_init()'
+006/42:[----] [--] 'sdhci: refactor common sysbus/pci realize()'
+007/42:[0001] [FC] 'sdhci: refactor common sysbus/pci unrealize()'
+008/42:[----] [--] 'sdhci: use qemu_log_mask(UNIMP) instead of fprintf()'
+009/42:[----] [--] 'sdhci: convert the DPRINT() calls into trace events'
+010/42:[down] 'sdhci: add a GPIO for the 'access control' LED'
+011/42:[----] [--] 'sdhci: move MASK_TRNMOD with other SDHC_TRN* defines'
+012/42:[down] 'sdhci: use FIELD_DP32() macro for the WRITE_PROTECT flag'
+013/42:[down] 'sdhci: rename the SDHC_CAPAB register'
+014/42:[0008] [FC] 'sdhci: fix CAPAB/MAXCURR registers, 64bit and read-only'
+015/42:[----] [-C] 'sdhci: Implement write method of ACMD12ERRSTS register'
+016/42:[down] 'sdhci: use deposit64() on admasysaddr'
+017/42:[----] [-C] 'sdhci: add a "dma-memory" property'
+018/42:[down] 'sdhci: add a spec_version property'
+019/42:[down] 'sdhci: add basic Spec v1 capabilities'
+020/42:[down] 'sdhci: add max-block-length capability (Spec v1)'
+021/42:[down] 'sdhci: add clock capabilities (Spec v1)'
+022/42:[down] 'sdhci: add DMA and 64-bit capabilities (Spec v2)'
+023/42:[down] 'sdhci: default to Spec v2'
+024/42:[down] 'sdhci: add a 'dma' shortcut property'
+025/42:[down] 'sdhci: add BLOCK_SIZE_MASK for DMA'
+026/42:[down] 'sdhci: Fix 64-bit ADMA2'
+027/42:[down] 'hw/arm/exynos4210: implement SDHCI Spec v2'
+028/42:[down] 'hw/arm/xilinx_zynq: implement SDHCI Spec v2'
+029/42:[0022] [FC] 'sdhci: add qtest to check the SD Spec version'
+030/42:[down] 'sdhci: check Spec v2 capabilities qtest'
+031/42:[down] 'sdhci: add v3 capabilities'
+032/42:[down] 'sdhci: rename the hostctl1 register'
+033/42:[down] 'hw/arm/bcm2835_peripherals: implement SDHCI Spec v3'
+034/42:[down] 'hw/arm/fsl-imx6: implement SDHCI Spec v3'
+035/42:[down] 'hw/arm/xilinx_zynqmp: implement SDHCI Spec v3'
+036/42:[down] 'sdhci: check Spec v3 capabilities qtest'
+037/42:[down] 'sdhci: remove the deprecated 'capareg' property'
+038/42:[0008] [FC] 'sdhci: add check_capab_readonly() qtest'
+039/42:[0009] [FC] 'sdhci: add a check_capab_baseclock() qtest'
+040/42:[0011] [FC] 'sdhci: add a check_capab_sdma() qtest'
+041/42:[----] [-C] 'sdhci: add a check_capab_v3() qtest'
+042/42:[down] 'sdhci: add Spec v4.2 register definitions'
+
+Andrey Smirnov (1):
+  sdhci: Implement write method of ACMD12ERRSTS register
+
+Philippe Mathieu-Daudé (40):
+  sdhci: clean up includes
+  sdhci: sort registers comments
+  sdhci: remove dead code
+  sdhci: refactor same sysbus/pci properties into a common one
+  sdhci: refactor common sysbus/pci class_init() into sdhci_class_init()
+  sdhci: refactor common sysbus/pci realize() into sdhci_realizefn()
+  sdhci: refactor common sysbus/pci unrealize() into sdhci_unrealizefn()
+  sdhci: use qemu_log_mask(UNIMP) instead of fprintf()
+  sdhci: convert the DPRINT() calls into trace events
+  sdhci: add a GPIO for the 'access control' LED
+  sdhci: move MASK_TRNMOD with other SDHC_TRN* defines in "sd-internal.h"
+  sdhci: use FIELD_DP32() macro for the WRITE_PROTECT flag
+  sdhci: rename the SDHC_CAPAB register
+  sdhci: fix CAPAB/MAXCURR registers, both are 64bit and read-only
+  sdhci: use deposit64() on admasysaddr
+  sdhci: add a "dma-memory" property
+  sdhci: add a spec_version property
+  sdhci: add basic Spec v1 capabilities
+  sdhci: add max-block-length capability (Spec v1)
+  sdhci: add clock capabilities (Spec v1)
+  sdhci: add DMA and 64-bit capabilities (Spec v2)
+  sdhci: default to Spec v2
+  sdhci: add a 'dma' shortcut property
+  sdhci: add BLOCK_SIZE_MASK for DMA
+  hw/arm/exynos4210: implement SDHCI Spec v2
+  hw/arm/xilinx_zynq: implement SDHCI Spec v2
+  sdhci: add qtest to check the SD Spec version
+  sdhci: check Spec v2 capabilities qtest
+  sdhci: add v3 capabilities
+  sdhci: rename the hostctl1 register
+  hw/arm/bcm2835_peripherals: implement SDHCI Spec v3
+  hw/arm/fsl-imx6: implement SDHCI Spec v3
+  hw/arm/xilinx_zynqmp: implement SDHCI Spec v3
+  sdhci: check Spec v3 capabilities qtest
+  sdhci: remove the deprecated 'capareg' property
+  sdhci: add check_capab_readonly() qtest
+  sdhci: add a check_capab_baseclock() qtest
+  sdhci: add a check_capab_sdma() qtest
+  sdhci: add a check_capab_v3() qtest
+  sdhci: add Spec v4.2 register definitions
+
+Sai Pavan Boddu (1):
+  sdhci: Fix 64-bit ADMA2
+
+ include/hw/sd/sdhci.h        |  59 ++++-
+ hw/sd/sdhci-internal.h       |  81 +++++--
+ hw/arm/bcm2835_peripherals.c |  35 ++-
+ hw/arm/exynos4210.c          |  13 +-
+ hw/arm/fsl-imx6.c            |  12 +
+ hw/arm/xilinx_zynq.c         |  64 ++++--
+ hw/arm/xlnx-zynqmp.c         |  38 +++-
+ hw/sd/sdhci.c                | 513 +++++++++++++++++++++++++------------------
+ tests/sdhci-test.c           | 177 +++++++++++++++
+ hw/sd/trace-events           |  15 ++
+ tests/Makefile.include       |   3 +
+ 11 files changed, 718 insertions(+), 292 deletions(-)
+ create mode 100644 tests/sdhci-test.c
+
+-- 
+2.15.1
 

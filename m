@@ -1,355 +1,198 @@
-Received: by 10.223.134.117 with SMTP id 50csp6381776wrw;
-        Thu, 28 Dec 2017 22:33:51 -0800 (PST)
-X-Google-Smtp-Source: ACJfBos/7R6+LDVCneshXsLLliG6Byym1ahMbKooh8mOxBSmtGnSS0nGZw6IsoNAhywTZuHsIKxj
-X-Received: by 10.101.81.135 with SMTP id h7mr19529619pgq.422.1514529231364;
-        Thu, 28 Dec 2017 22:33:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1514529231; cv=none;
+Received: by 10.223.134.117 with SMTP id 50csp10778630wrw;
+        Tue, 2 Jan 2018 04:59:48 -0800 (PST)
+X-Google-Smtp-Source: ACJfBosCJ+GZ9ZUnsEhwqLTzpCFZen7jFf9ocDdxkckaKbjUIU1skJ+VS8Kd0RpTZDiNrBiCEnnm
+X-Received: by 10.129.168.136 with SMTP id f130mr31598633ywh.457.1514897988175;
+        Tue, 02 Jan 2018 04:59:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1514897988; cv=none;
         d=google.com; s=arc-20160816;
-        b=M3lO222JsV+sgErdv6QYfbd6yeXNRRY1lCJkLjOG6t+nzUNqlFRDfQ2cjM/eo+LbYh
-         ZhZvlKjZ+aEypfTylEitrskC7sLBeh7ON6O2Bj/xq5AyTPnflH8Kut+IgEv+/peXaqs+
-         iHLE/ekvri6PV34GOP+7IvkXyMkANF9lWgv4wnqbIJafY9GPLqkGAigpxnS4o5yAc5vr
-         y0kWUHDLcorm3jHzRl1U0ydWZPO180n/mqxAEemBCKFDX+Rr4/A1DI3A6gNKexxPNA77
-         jgRAfGA6lAqH+PJYfiDSLsvXt/7MU5lagyAtkONsDouJzrNQO20Xy+4mVPhNDePJInMg
-         NYhg==
+        b=xLsMhdSR4zFaUBclySemglrXXcfjB7HlkMxBZciR/H72gCwYSMTkYg89PF1vgTsEnI
+         7324fNeWN/9SKFELo2S/KztW8aUfJCIokXYzdFEtbhoFGhvZ8OUdLqQPR4VK/Y/LXXRB
+         QsAK3JMIOx1T02tFu061vrLs2t5CH4GtvqF5MTDSfr8AWnEv8QfazrBFKMVkX+dBYKNA
+         oTcqvk5RZyOvKQtFM/Xxzn93A+GKfV0v/8an7HwUQb2+sUGE3fpcYZHw9owjuvgzZ8IF
+         U4eXUFShyYpkq6Sakfl4VSEwzLpwguoYxU+ZnrxUKcCw9HuH33d+GSeM7N2Bu/dAaTQo
+         F4oA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject:arc-authentication-results;
-        bh=/ZeLi+NXZ0ZLZ7j4bWRMtMDOPWaKpX4rSGHJF36WLOU=;
-        b=vx3ZvUjs1VpUYX+3xIuDq1PQ7lzELDKAZFlTHV/UBnglyyGzS/GU+L6pc0CH59Jn9q
-         SEEDwoDMGJQZSvNtNP+WwgPuuYYugF8lfDMQ+FOqkgsW6FehRJGL/i0AYyyKARDbzLGU
-         ogPOAjKrDRIz87GyHnuKUi/6Hn4nFccY2kI78UxGIWU63lldJADsvJxodYWogGgPrMN1
-         lezyDVdFeW0c5cYHa4zOWWdLGfi3tajok3zDVV4ZYlVIEvWHN2fboVmFNbwHLHXpNctF
-         j7RKZE5xW1ffmZK7lAuXS7d1aIGjmsS+rQ3mUbffV3QYjE8xlvX0NN7256lGSqnoATnA
-         QETw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
+         :message-id:in-reply-to:date:references:to:from
+         :arc-authentication-results;
+        bh=hrJRK102saKYDnEJB3YZSr3dqG3idpQpuCZuQydXl8k=;
+        b=FgxNrnchwmS25z8HulafuPCaO5fIhMKwDudvndHyIgETKLhvA6LeFhoDPf21a+W4/D
+         FFKbQs/u8p66S/gQquA4purS3xotc3r9mQUsUTL4hpjnzdAg9xt5ipmUr7cSQlGN/QDt
+         i72UurNwOpjuYuWKJyxWGrZt1aTS9e5J5Ezu3andiCLrtvqaUZkxvLB8qQOMNkcub1vf
+         FY4AOrrCyJLedCsUyDYh8ssguc2RQ1JavHvaRBulCLfOi6vGLUZrpNUXaOQ6EADoYu6G
+         uSe6A3sLEvzBaHveFj96+gXXY7NqMZbtrS0Ig8BQFlqzd/MilwA7rcjQDZy6v4q0V8wM
+         XuWw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id 92si27605985pli.605.2017.12.28.22.33.51;
-        Thu, 28 Dec 2017 22:33:51 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id r138si8382020ywe.73.2018.01.02.04.59.48
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 02 Jan 2018 04:59:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1751066AbdL2Gdt (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 5 others); Fri, 29 Dec 2017 01:33:49 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:40394 "EHLO huawei.com"
-        rhost-flags-OK-FAIL-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1750836AbdL2Gds (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 29 Dec 2017 01:33:48 -0500
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.60])
-        by Forcepoint Email with ESMTP id 3CC13C827D3DF;
-        Fri, 29 Dec 2017 14:33:35 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS402-HUB.china.huawei.com
- (10.3.19.202) with Microsoft SMTP Server id 14.3.361.1; Fri, 29 Dec 2017
- 14:33:27 +0800
-Subject: Re: [PATCH v14 2/9] ACPI: Add APEI GHES table generation and CPER
- record support
-To:     Igor Mammedov <imammedo@redhat.com>
-CC:     <pbonzini@redhat.com>, <mst@redhat.com>,
-        <zhaoshenglong@huawei.com>, <peter.maydell@linaro.org>,
-        <mtosatti@redhat.com>, <rth@twiddle.net>, <ehabkost@redhat.com>,
-        <james.morse@arm.com>, <christoffer.dall@linaro.org>,
-        <marc.zyngier@arm.com>, <kvm@vger.kernel.org>,
-        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
-        <huangshaoyu@huawei.com>, <zhengqiang10@huawei.com>,
-        <xuwei5@hisilicon.com>
-References: <1514440458-10515-1-git-send-email-gengdongjiu@huawei.com>
- <1514440458-10515-3-git-send-email-gengdongjiu@huawei.com>
- <20171228151809.10495a90@igors-macbook-pro.local>
-From:   gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <9fc51acc-5728-9571-54fe-5bd9ac2adb39@huawei.com>
-Date:   Fri, 29 Dec 2017 14:33:24 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41788 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eWMAV-00028o-KV
+	for alex.bennee@linaro.org; Tue, 02 Jan 2018 07:59:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47166)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <armbru@redhat.com>) id 1eWMAH-00027k-Nw
+	for qemu-arm@nongnu.org; Tue, 02 Jan 2018 07:59:34 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <armbru@redhat.com>) id 1eWMAE-0003RV-NZ
+	for qemu-arm@nongnu.org; Tue, 02 Jan 2018 07:59:33 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:52124)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1eWMAE-0003RG-EU; Tue, 02 Jan 2018 07:59:30 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id CD0819D1F8;
+	Tue,  2 Jan 2018 12:59:28 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-115.ams2.redhat.com
+	[10.36.116.115])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 338865D965;
+	Tue,  2 Jan 2018 12:59:28 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id A7687113864C; Tue,  2 Jan 2018 13:59:26 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Alistair Francis <alistair.francis@xilinx.com>
+References: <cover.1513790494.git.alistair.francis@xilinx.com>
+	<6bad4084f4cbc290e2e9f1a72fcfcda7223383ec.1513790495.git.alistair.francis@xilinx.com>
+	<87lghulqno.fsf@dusky.pond.sub.org>
+	<1cfb1217-e32d-8e91-da46-07f1c72be77f@redhat.com>
+	<CAKmqyKPyL8B5ZjEUePkqVbzP8kVmM48vWML41PRXVVO7LVmMpg@mail.gmail.com>
+	<87a7yah5ea.fsf@dusky.pond.sub.org>
+	<CAKmqyKO5sKdiZJ65teDxa16PCE71WCLay7cOAQJQdyS-EVNOJg@mail.gmail.com>
+Date: Tue, 02 Jan 2018 13:59:26 +0100
+In-Reply-To: <CAKmqyKO5sKdiZJ65teDxa16PCE71WCLay7cOAQJQdyS-EVNOJg@mail.gmail.com>
+	(Alistair Francis's message of "Fri, 22 Dec 2017 12:58:53 -0800")
+Message-ID: <87608k4dsh.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.3 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20171228151809.10495a90@igors-macbook-pro.local>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.142.68.147]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 5EMFVygq5Bjw
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Tue, 02 Jan 2018 12:59:28 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v6 04/29] hw/arm: Replace
+ fprintf(stderr, "*\n" with error_report()
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Thomas Huth <thuth@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9ZJBx2LMyHnt
 
-Igor,
-  Thank you very much for your review and your time. I will check your comments in detail later.
+Alistair Francis <alistair.francis@xilinx.com> writes:
 
-On 2017/12/28 22:18, Igor Mammedov wrote:
-> On Thu, 28 Dec 2017 13:54:11 +0800
-> Dongjiu Geng <gengdongjiu@huawei.com> wrote:
-> 
->> This implements APEI GHES Table generation and record CPER in
->> runtime via fw_cfg blobs.Now we only support two types of GHESv2,
->> which are GPIO-Signal and ARMv8 SEA. Afterwards, we can extend the
->> supported type if needed. For the CPER section type, currently it
-> s/type/types/
-> 
->> is memory section because kernel manly wants userspace to handle
-> s/manly/mainly/
-> 
->> the memory errors. 
-> 
->> In order to simulation, we hard code the error
->> type to Multi-bit ECC.
-> Not sure what this is about, care to elaborate?
-> 
-> 
->> For GHESv2 error source, the OSPM must acknowledges the error via
->> Read ACK register. So user space must check the ACK value before
->> recording a new CPER to avoid read-write race condition.
+> On Fri, Dec 22, 2017 at 12:30 PM, Markus Armbruster <armbru@redhat.com> wrote:
+>> Alistair Francis <alistair.francis@xilinx.com> writes:
 >>
->> Suggested-by: Laszlo Ersek <lersek@redhat.com>
->> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
->> ---
->> The basic solution is suggested by Laszlo in [1]
->> [1]: https://lkml.org/lkml/2017/3/29/342
-> 
-> 
-> patch is too big, it would be better if it were split in several parts.
-> 
->> ---
->>  hw/acpi/aml-build.c         |   2 +
->>  hw/acpi/hest_ghes.c         | 390 ++++++++++++++++++++++++++++++++++++++++++++
->>  hw/arm/virt-acpi-build.c    |   8 +
->>  include/hw/acpi/aml-build.h |   1 +
->>  include/hw/acpi/hest_ghes.h |  82 ++++++++++
->>  5 files changed, 483 insertions(+)
->>  create mode 100644 hw/acpi/hest_ghes.c
->>  create mode 100644 include/hw/acpi/hest_ghes.h
+>>> On Fri, Dec 22, 2017 at 9:17 AM, Thomas Huth <thuth@redhat.com> wrote:
+>>>> On 22.12.2017 16:37, Markus Armbruster wrote:
+>>>>> Second thoughts...
+>>>>>
+>>>>> Alistair Francis <alistair.francis@xilinx.com> writes:
+>>>> [...]
+>>>>>>  #include "qemu/osdep.h"
+>>>>>> +#include "qemu/error-report.h"
+>>>>>>  #include "qapi/error.h"
+>>>>>>  #include "qemu-common.h"
+>>>>>>  #include "cpu.h"
+>>>>>> @@ -1311,8 +1312,8 @@ static void omap_prcm_apll_update(struct omap_prcm_s *s)
+>>>>>>      /* TODO: update clocks */
+>>>>>>
+>>>>>>      if (mode[0] == 1 || mode[0] == 2 || mode[1] == 1 || mode[1] == 2)
+>>>>>> -        fprintf(stderr, "%s: bad EN_54M_PLL or bad EN_96M_PLL\n",
+>>>>>> -                        __func__);
+>>>>>> +        error_report("%s: bad EN_54M_PLL or bad EN_96M_PLL",
+>>>>>> +                     __func__);
+>>>>>>  }
+>>>>>
+>>>>> This one's different: we neither exit() nor return a "failed" status to
+>>>>> the caller.
+>>>>>
+>>>>> We get here when the guest writes something funny to a certain
+>>>>> memory-mapped I/O register.  In other words, it's guest misbehavior, not
+>>>>> a user error.  I doubt it should be reported with error_report().
+>>>>> Peter, do we have a canonical way to report or log  guest misbehavior?
+>>>>
+>>>> qemu_log_mask(LOG_GUEST_ERROR, ...) ?
+>>>
+>>> That seems like the best option to me.
 >>
->> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
->> index 36a6cc4..6849e5f 100644
->> --- a/hw/acpi/aml-build.c
->> +++ b/hw/acpi/aml-build.c
->> @@ -1561,6 +1561,7 @@ void acpi_build_tables_init(AcpiBuildTables *tables)
->>      tables->table_data = g_array_new(false, true /* clear */, 1);
->>      tables->tcpalog = g_array_new(false, true /* clear */, 1);
->>      tables->vmgenid = g_array_new(false, true /* clear */, 1);
->> +    tables->hardware_errors = g_array_new(false, true /* clear */, 1);
->>      tables->linker = bios_linker_loader_init();
->>  }
->>  
->> @@ -1571,6 +1572,7 @@ void acpi_build_tables_cleanup(AcpiBuildTables *tables, bool mfre)
->>      g_array_free(tables->table_data, true);
->>      g_array_free(tables->tcpalog, mfre);
->>      g_array_free(tables->vmgenid, mfre);
->> +    g_array_free(tables->hardware_errors, mfre);
->>  }
->>  
->>  /* Build rsdt table */
->> diff --git a/hw/acpi/hest_ghes.c b/hw/acpi/hest_ghes.c
->> new file mode 100644
->> index 0000000..86ec99e
->> --- /dev/null
->> +++ b/hw/acpi/hest_ghes.c
->> @@ -0,0 +1,390 @@
->> +/* Support for generating APEI tables and record CPER for Guests
->> + *
->> + * Copyright (C) 2017 HuaWei Corporation.
->> + *
->> + * Author: Dongjiu Geng <gengdongjiu@huawei.com>
->> + *
->> + * This program is free software; you can redistribute it and/or modify
->> + * it under the terms of the GNU General Public License as published by
->> + * the Free Software Foundation; either version 2 of the License, or
->> + * (at your option) any later version.
->> +
->> + * This program is distributed in the hope that it will be useful,
->> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
->> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
->> + * GNU General Public License for more details.
->> +
->> + * You should have received a copy of the GNU General Public License along
->> + * with this program; if not, see <http://www.gnu.org/licenses/>.
->> + */
->> +
->> +#include "qemu/osdep.h"
->> +#include "hw/acpi/acpi.h"
->> +#include "hw/acpi/aml-build.h"
->> +#include "hw/acpi/hest_ghes.h"
->> +#include "hw/nvram/fw_cfg.h"
->> +#include "sysemu/sysemu.h"
->> +#include "qemu/error-report.h"
->> +
->> +/* Generic Address Structure (GAS)
->> + * ACPI 2.0/3.0: 5.2.3.1 Generic Address Structure
->> + * 2.0 compat note:
->> + *    @access_width must be 0, see ACPI 2.0:Table 5-1
->> + */
->> +static void build_append_gas(GArray *table, AmlRegionSpace as,
->> +                      uint8_t bit_width, uint8_t bit_offset,
->> +                      uint8_t access_width, uint64_t address)
->> +{
->> +    build_append_int_noprefix(table, as, 1);
->> +    build_append_int_noprefix(table, bit_width, 1);
->> +    build_append_int_noprefix(table, bit_offset, 1);
->> +    build_append_int_noprefix(table, access_width, 1);
->> +    build_append_int_noprefix(table, address, 8);
->> +}
-> all build_append_foo() primitives should go into aml-build.c
-> you can reuse take following patches for build_append_gas() from my github repo
-> https://github.com/imammedo/qemu/commit/ff35b4ae1ec286f5f11830d504467f5ad243995b
-> https://github.com/imammedo/qemu/commit/3d2fd6d13a3ea298d2ee814835495ce6241d085c
-> 
-> 
->> +/* Hardware Error Notification
->> + * ACPI 4.0: 17.3.2.7 Hardware Error Notification
->> + */
->> +static void build_append_notify(GArray *table, const uint8_t type,
->> +                                uint8_t length)
->> +{
->> +        build_append_int_noprefix(table, type, 1); /* type */
->> +        build_append_int_noprefix(table, length, 1);
->> +        build_append_int_noprefix(table, 0, 26);
->> +}
-> split all build_append_foo() into separate patches /a patch per function/,
-> 
-> probably for GHES related primitives it would be better use 'ghes'
-> domain prefix in function names, like
-> 
->   s/build_append_notify/build_append_ghes_notify/
-> 
-> the same applies to other build_append_foo() below
-> 
-> 
->> +/* Generic Error Status Block
->> + * ACPI 4.0: 17.3.2.6.1 Generic Error Data
->> + */
->> +static void build_append_gesb_header(GArray *table, uint32_t block_status,
->> +                      uint32_t raw_data_offset, uint32_t raw_data_length,
->> +                      uint32_t data_length, uint32_t error_severity)
->> +{
->> +    build_append_int_noprefix(table, block_status, 4);
->> +    build_append_int_noprefix(table, raw_data_offset, 4);
->> +    build_append_int_noprefix(table, raw_data_length, 4);
->> +    build_append_int_noprefix(table, data_length, 4);
->> +    build_append_int_noprefix(table, error_severity, 4);
->> +}
->> +
->> +/* Generic Error Data Entry
->> + * ACPI 4.0: 17.3.2.6.1 Generic Error Data
->> + */
->> +static void build_append_gede_header(GArray *table, const char *section_type,
->> +                      const uint32_t error_severity, const uint16_t revision,
->> +                      const uint32_t error_data_length)
->> +{
->> +    int i;
->> +
->> +    for (i = 0; i < 16; i++) {
->> +        build_append_int_noprefix(table, section_type[i], 1);
->> +    }
->> +
->> +    build_append_int_noprefix(table, error_severity, 4);
->> +    build_append_int_noprefix(table, revision, 2);
->> +    build_append_int_noprefix(table, 0, 2);
->> +    build_append_int_noprefix(table, error_data_length, 4);
->> +    build_append_int_noprefix(table, 0, 44);
->> +}
->> +
->> +/* Memory section CPER record */
-> comment missing reference to related spec item
-> 
->> +static void build_append_mem_cper(GArray *table, uint64_t error_physical_addr)
->> +{
->> +    /*
->> +     * Memory Error Record
->> +     */
->> +    build_append_int_noprefix(table,
->> +                 (1UL << 14) | /* Type Valid */
->> +                 (1UL << 1) /* Physical Address Valid */,
->> +                 8);
->> +    /* Memory error status information */
->> +    build_append_int_noprefix(table, 0, 8);
->> +    /* The physical address at which the memory error occurred */
->> +    build_append_int_noprefix(table, error_physical_addr, 8);
->> +    build_append_int_noprefix(table, 0, 48);
->> +    /* Hard code to Multi-bit ECC error */
->> +    build_append_int_noprefix(table, 3 /* Multi-bit ECC */, 1);
->> +    build_append_int_noprefix(table, 0, 7);
->> +}
->> +
->> +static int ghes_record_mem_error(uint64_t error_block_address,
->> +                                    uint64_t error_physical_addr)
-> probably function should be part of 9/9 patch, as the others that's called
-> only from ghes_record_errors().
-> 
-> i.e. split this patch into acpi tables generation and actual error generation patches.
-> 
->> +{
->> +    GArray *block;
->> +    uint64_t current_block_length;
->> +    uint32_t data_length;
->> +    /* Memory section */
->> +    char mem_section_id_le[] = {0x14, 0x11, 0xBC, 0xA5, 0x64, 0x6F, 0xDE,
->> +                                0x4E, 0xB8, 0x63, 0x3E, 0x83, 0xED, 0x7C,
->> +                                0x83, 0xB1};
->> +
->> +    block = g_array_new(false, true /* clear */, 1);
->> +
->> +    /* Read the current length in bytes of the generic error data */
->> +    cpu_physical_memory_read(error_block_address +
->> +        offsetof(AcpiGenericErrorStatus, data_length), &data_length, 4);
->> +
->> +    /* The current whole length in bytes of the generic error status block */
->> +    current_block_length = sizeof(AcpiGenericErrorStatus) + data_length;
-> missing le32_to_cpu() here
-> 
-> also check other sites where you call cpu_physical_memory_foo()
-> 
-> it would be good to have a 'make check' test case included in this series,
-> then when you can spot these errors during test on BE host, before posting patches.
-> 
->> +
->> +    /* Add a new generic error data entry*/
->> +    data_length += GHES_DATA_LENGTH;
->> +    data_length += GHES_CPER_LENGTH;
->> +
->> +    /* Check whether it will run out of the preallocated memory if adding a new
->> +     * generic error data entry
->> +     */
->> +    if ((data_length + sizeof(AcpiGenericErrorStatus)) > GHES_MAX_RAW_DATA_LENGTH) {
->> +        error_report("Record CPER out of boundary!!!");
->> +        return GHES_CPER_FAIL;
-> you return values here and from ghes_record_errors() but not actually
-> handle them, so it's rather pointless thing to do,
-> more over it's called on nofail path so one should either abort on error o ignore it
-> 
->> +    }
->> +    /* Build the new generic error status block header */
->> +    build_append_gesb_header(block, cpu_to_le32(ACPI_GEBS_UNCORRECTABLE), 0, 0,
->> +        cpu_to_le32(data_length), cpu_to_le32(ACPI_CPER_SEV_RECOVERABLE));
->> +
->> +    /* Write back above generic error status block header to guest memory */
->> +    cpu_physical_memory_write(error_block_address, block->data,
->> +                              block->len);
->> +
->> +    /* Build the generic error data entries */
->> +
->> +    data_length = block->len;
->> +    /* Build the new generic error data entry header */
->> +    build_append_gede_header(block, mem_section_id_le,
->> +                    cpu_to_le32(ACPI_CPER_SEV_RECOVERABLE), cpu_to_le32(0x300),
->> +                    cpu_to_le32(80)/* the total size of Memory Error Record */);
->> +
->> +    /* Build the memory section CPER */
->> +    build_append_mem_cper(block, error_physical_addr);
->> +
->> +    /* Write back above whole new generic error data entry to guest memory */
->> +    cpu_physical_memory_write(error_block_address + current_block_length,
->> +                    block->data + data_length, block->len - data_length);
->> +
->> +    g_array_free(block, true);
->> +
->> +    return GHES_CPER_OK;
->> +}
-> [...]
-> 
-> I'll try to make another round of review on this once patch is split
-> 
-> .
-> 
+>> Suggest:
+>>
+>> 1. Keep converting fatal errors (the ones that exit())
+>>
+>> 2. Keep converting recoverable errors (the ones that return failure)
+>>
+>> 3. You can leave the prints that are neither alone.  You can also
+>>    convert to logging or tracing, as appropriate, but that requires
+>>    understanding the code.
+>>
+>> Makes sense?
+>
+> Does this apply to new patches after this series or to this series as
+> well? The series is mostly just mechanical find/replace. I really
+> don't want to have to dig through every patch to figure out what to
+> change/not change.
+
+I understand your reluctance to sort patch hunks into buckets 1., 2. and
+3. manually: there's an awful lot of hunks to sort.
+
+We know we have many fprintf() that should be error_report(),
+error_setg(), logging or tracing.
+
+We know we have error_report() that should be error_setg().
+
+Converting fprintf() to error_report() where we should really use
+something else makes the situation worse, I'm afraid.
+
+Since we need to sort, and sorting manually isn't practical, we need to
+automate.
+
+The patterns to recognize are 1. fprintf() followed by exit() and
+2. fprintf() followed by return failure.
+
+Recognizing the patterns when there's stuff between fprintf() and exit()
+/ return may exceed sed's power.  Feels like a Coccinelle job to me.
+Let's focus on the common case where exit() / return follows fprintf()
+immediately.
+
+Let's start with the easiest case: exit().  I figure that's still in
+reach of your find + sed tooling.
+
+Recognizing "return failure" is slightly harder, because error values
+aren't always obvious.  Common ones are return NULL, return -1, return
+-EFOO.
+
+I hope that peeling off truly simple cases like this will reduce the
+remaining hunks sufficiently to permit manual review.  If it doesn't, we
+should still get a major part of your work without making the situation
+worse.

@@ -1,95 +1,95 @@
-Received: by 10.223.134.117 with SMTP id 50csp11156375wrw;
-        Tue, 2 Jan 2018 11:36:59 -0800 (PST)
-X-Google-Smtp-Source: ACJfBotu/skLNopjDsiz++LcEbl8Q6A5iNhTp5ofQ70M+T4D5OP+fVA1S9yYyx5vhGYsZ+Iy3Jkb
-X-Received: by 10.129.44.69 with SMTP id s66mr34491033yws.227.1514921819183;
-        Tue, 02 Jan 2018 11:36:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1514921819; cv=none;
+Received: by 10.223.134.117 with SMTP id 50csp11156579wrw;
+        Tue, 2 Jan 2018 11:37:12 -0800 (PST)
+X-Google-Smtp-Source: ACJfBosMDDHChw4h5+9QgTt4DwCaWTmWd62L/bo+ZUsET1HuO1WjyrHe3RMwxWoaKy355raiSdwh
+X-Received: by 10.129.75.8 with SMTP id y8mr30916783ywa.100.1514921832395;
+        Tue, 02 Jan 2018 11:37:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1514921832; cv=none;
         d=google.com; s=arc-20160816;
-        b=ngngogKtDbhLVjn5SRgdmmHPiL4OCu1xwLhNZYP8GeDRmS3n2Bzg7odZRgXZ1vnDyH
-         gAFHD9NmhMTq0pFHrKzkGd+22ep6JM7ZXGBlBWqMQ8wUPcz8uYtdKnEiZdPBpFv5t7/n
-         GMM1WhcMacdh3Vc+MM7GtvjQ4oo5RjVbtupsGyobRmcQP14oMdc+UctGu3XLp4AkVApo
-         pDQNtN0YRnjsTwZnj1ly/ju6I8T+IFwrEPEb2qdKuvR4cwOD1hLaQIaHK0hnzDV9i2iD
-         l8lkk2KvFPd5eiGgcS4mOMX+S/ELXWJjPO9AUW7mV+xcGthUxIX10T7KFe/XLuQCrWB2
-         BNDg==
+        b=wO/VqgavbPbfdndqnkC2dXVTE7MJR7fG3+HvfNz5pR1ERAv+SyrY4aEYVgVexpByb8
+         EpS14D4A/oLUj/BKXJB6/V5ioL4tH7O3v5NgQ7N6UJzAh7EPXWJKB2Xp0AbI2sMEd9Ja
+         tXYRYGM3r5Ihmz9hkp1t7WhEoMYxe9UfgOc0Z9elpV1ktlEGGOgOEyqy9tqxkrt3qpIX
+         xDlxXz9n7WEiy2jn4iMvVUBEB63MmrOKbsI1kHgp6Xr9UP8okQGhnRz49OCAnOsASWOy
+         in6OxCM88tRhpaXcNCYZM7HYP/bbo5NOYs8RR3DhQluNTR7JseomAgF43iTiWs2EBlQn
+         eiNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=3U1En5R2uXgrFUkLERe0C7CX7L6LBbdyf7stsxqaX3M=;
-        b=GoAbBL5+r/dnO7mXlGgJJAjPZJl7+GChzHrK/bJKVmFf3JlVXHbUUsdQgM2xps8J9u
-         MrFzi0mhOTo3sunKn9h45W6vSmbY+7ST4j1O/7Ed0i0ffB72QFpTrlrxcaqe7UnTVUWD
-         apwPps7J5BUr40O5khiARv1hq071zX74yViO4Daw6BV5Q4gm9mA4kcuT8gjXSPkD9ji3
-         8QA9V3N3C19Ti5pGEngrTWilD1f9hyjR8/Ib3z3dAP57T2gJpw/6fzdssg7WmKv3iWiY
-         vy+R82PIPiqmz9pcSlyKPn4M7yj0W4vQypq75LZ5b4VBblYd8L0wkF+3APZcyngIdX3L
-         SNBw==
+        bh=okFMpTBn3CPHVnnf0sYzsV4tcjnm7uVfAD8Wu4GZgfo=;
+        b=cSUqBGIfHJB6kQxmTfv8dREOuceuHVjrLSaejVrG8IUGNgjuXgYHhSJDb2MSa+Asre
+         VHGPyP71FyurggdekF7HBz7NJm0zRLzcdt9HqCM7SADxefPmjY/PrZe3Xz6/7f7mVe/H
+         SZuqhOqhg2yHTrP0Cx7dnMx3wIuFobDwZvJm5IEUVDHRcj38hdqM48C+F6SRZqorJcFV
+         wuH6NI3O8XyDw1WqhEuKPD0piNuPmLfyYkkm5qZz5172LcNw4S36C5nZTG7wyffWMtRD
+         BysLn6QO8xX/5VthKPSakCkzJDUZtaSSiF8doyNxcr4evbcGjVXaZRCRY/HDV9FeAMzJ
+         QGTA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Fo4Q2k/w;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DZtBnlOV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b67si8135476ywe.362.2018.01.02.11.36.59
+        by mx.google.com with ESMTPS id t10si8564636ywl.225.2018.01.02.11.37.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 02 Jan 2018 11:36:59 -0800 (PST)
+        Tue, 02 Jan 2018 11:37:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Fo4Q2k/w;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DZtBnlOV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:52900 helo=lists.gnu.org)
+Received: from localhost ([::1]:52903 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eWSMs-0003Ez-HY
-	for alex.bennee@linaro.org; Tue, 02 Jan 2018 14:36:58 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58480)
+	id 1eWSN5-0003WB-ME
+	for alex.bennee@linaro.org; Tue, 02 Jan 2018 14:37:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58495)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1eWSMZ-0003E0-Cg
+	(envelope-from <andrew.smirnov@gmail.com>) id 1eWSMa-0003E2-49
 	for qemu-arm@nongnu.org; Tue, 02 Jan 2018 14:36:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1eWSMW-0000GK-CI
-	for qemu-arm@nongnu.org; Tue, 02 Jan 2018 14:36:39 -0500
-Received: from mail-pl0-x243.google.com ([2607:f8b0:400e:c01::243]:33284)
+	(envelope-from <andrew.smirnov@gmail.com>) id 1eWSMY-0000HV-IN
+	for qemu-arm@nongnu.org; Tue, 02 Jan 2018 14:36:40 -0500
+Received: from mail-pf0-x242.google.com ([2607:f8b0:400e:c00::242]:37097)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
-	id 1eWSMW-0000Fb-74; Tue, 02 Jan 2018 14:36:36 -0500
-Received: by mail-pl0-x243.google.com with SMTP id 1so27784182plv.0;
-	Tue, 02 Jan 2018 11:36:36 -0800 (PST)
+	id 1eWSMY-0000HK-Cb; Tue, 02 Jan 2018 14:36:38 -0500
+Received: by mail-pf0-x242.google.com with SMTP id n6so26026553pfa.4;
+	Tue, 02 Jan 2018 11:36:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=3U1En5R2uXgrFUkLERe0C7CX7L6LBbdyf7stsxqaX3M=;
-	b=Fo4Q2k/wqzV8jpyWZ6eA4UfCvHyDLwGjKxh7p7kTRrWe9QiEv4tvimCAhos3wbPryC
-	7Pondb01d7XTPEsVUhDV2BBYz1yT4kGLMtj3KD3Xl2a7W48df2ga4lenwUZ6NaazGnxE
-	x4nASCniWkw6T/slUcitHLIA4yahNtca1riqVRviydPSYz+VX72CBLXHsRThSlmZv9kq
-	IMySBcWieYXZ16gIpBqts67aUtbIyomOG0kqHeY3DM0UBUklYrn+DCPuqrz7hZe7jhdk
-	UWbF5gE6+9aYzVfDPcYiQlAWqguqZYw6uuoBfjsNMnK/LbZe6iw9oFQuKFrhCUHDWZ5f
-	9ZqA==
+	bh=okFMpTBn3CPHVnnf0sYzsV4tcjnm7uVfAD8Wu4GZgfo=;
+	b=DZtBnlOVE1MirJhuhKbwAUZfDM5a0maU+97ALdGvCqIBe7wIroM5+mwgxTandjYuax
+	pEYWeEEo0M5hWpRpAWWLrFXisS3m7SkcwGcO361WlzYaNDi1nY4Qfp9ArYhjv3aR186R
+	GfS27Ywf3x8jNq0RB7N4n0uULJbvjCLa5ZgC8qsW/emYcU4KdAJ7QdTRo30XfRBTRW2v
+	ubXfA4sGVwAHsnqrw16wa3ybd/4TKLMmOqrYmQYVrhEXkbXDXAUgeS94gcoRb/2bhu4U
+	wJEr14cp791qSKXHQkyaaes4AZ5KCH+ScJ7qZgEpZgyQc3DDqQynWVY8i4yzb/CojweW
+	WN5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:mime-version:content-transfer-encoding;
-	bh=3U1En5R2uXgrFUkLERe0C7CX7L6LBbdyf7stsxqaX3M=;
-	b=hvKIRCP99/H2EXLeAYQpv2gz9/qqFa+6wXjwZca12xkJfBScNLgkVGes2pqQDVZMRN
-	6fRLDdY6MK6FyA91I30XaWKGApGXOmzLlzsYbRmNrrKUqSdw0NcGTmxO5P/TjUTxdFu0
-	lkqU1D+U5r6clkDWv2I9Dhz+/oYrp7J+sUyP/Dsu+d/tVmEAz0RlWp+5Op5+jSnmmJHn
-	WflH/sE/dczMT/BmOxRJfLBrjHLVjfAmJYs78PR1Scrgeoe+NP5a07gffgm0nQ8UXQwi
-	3KhIjJ/4RebLJs2XbS1on96z7SSfkcSJz7p8l0W1FoGnyVTZIn45IqaeWLv4xiWXEy8W
-	NZuQ==
-X-Gm-Message-State: AKGB3mLA65S+kweQ4DMMHx/zElbRsYAtgR6yrp1spjXAUl4uFVtBf51l
-	VDwKHpIKKkb5eoH+cPAw0axtpaKAVMk=
-X-Received: by 10.84.129.9 with SMTP id 9mr47224975plb.138.1514921794989;
-	Tue, 02 Jan 2018 11:36:34 -0800 (PST)
+	bh=okFMpTBn3CPHVnnf0sYzsV4tcjnm7uVfAD8Wu4GZgfo=;
+	b=UdL/S/AIHcu0ePVsE9lPNXf5ou7BubWCY2nRqTI+vqIzaiEcazAx+CWz1vpmsuj823
+	m4sDzFPP8uDGEyaApnvbIiJ+DbIvB/RyYHZyt+ch6C/K2OvNxl0RPdSpGMnBB+1+Qk10
+	gHJd0HpTwn2cypd6hU91ykbC2CG92EhvN9vib934o2IpZ01cEFFJjqhhs5EnX6Ij4Prd
+	HzB1H7i0bTsh07qMW4rWLvAo4G7ObwqOwduxzdv+lA9t7ApWsEEbkClRZiDTgYmLLz+Y
+	uVikVJYkCI54CT2HsiCk7iue/kVEgx4N3QY1ZvLyuyHq8PYVktHbU2TVDLq0FYCNSiN3
+	XBsw==
+X-Gm-Message-State: AKGB3mIem3h8nlkzzB9pKlY4oSZd1mGZwuHOgzMJvOjXWbtDkz3sL+3C
+	s23i8utFtwfCtJWaYKK6pPwQJyxpQCE=
+X-Received: by 10.98.102.219 with SMTP id s88mr46704688pfj.191.1514921796960; 
+	Tue, 02 Jan 2018 11:36:36 -0800 (PST)
 Received: from squirtle.westlake.spaceflightindustries.com ([173.226.206.194])
 	by smtp.gmail.com with ESMTPSA id
-	g9sm97905951pfk.0.2018.01.02.11.36.34
+	g9sm97905951pfk.0.2018.01.02.11.36.36
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 02 Jan 2018 11:36:34 -0800 (PST)
+	Tue, 02 Jan 2018 11:36:36 -0800 (PST)
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 To: qemu-arm@nongnu.org
-Date: Tue,  2 Jan 2018 11:36:12 -0800
-Message-Id: <20180102193622.27215-2-andrew.smirnov@gmail.com>
+Date: Tue,  2 Jan 2018 11:36:14 -0800
+Message-Id: <20180102193622.27215-4-andrew.smirnov@gmail.com>
 X-Mailer: git-send-email 2.14.3
 In-Reply-To: <20180102193622.27215-1-andrew.smirnov@gmail.com>
 References: <20180102193622.27215-1-andrew.smirnov@gmail.com>
@@ -98,8 +98,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c01::243
-Subject: [Qemu-arm] [PATCH v3 01/11] imx_fec: Do not link to netdev
+X-Received-From: 2607:f8b0:400e:c00::242
+Subject: [Qemu-arm] [PATCH v3 03/11] imx_fec: Change queue flushing
+ heuristics
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -118,13 +119,52 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org, yurovsky@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uy/P3neZclW5
+X-TUID: HQQftC3BtUW6
 
-Binding to a particular netdev doesn't seem to belong to this layer
-and should probably be done as a part of board or SoC specific code.
+In current implementation, packet queue flushing logic seem to suffer
+from a deadlock like scenario if a packet is received by the interface
+before before Rx ring is initialized by Guest's driver. Consider the
+following sequence of events:
 
-Convert all of the users of this IP block to use
-qdev_set_nic_properties() instead.
+	1. A QEMU instance is started against a TAP device on Linux
+	   host, running Linux guest, e. g., something to the effect
+	   of:
+
+	   qemu-system-arm \
+	      -net nic,model=imx.fec,netdev=lan0 \
+	      netdev tap,id=lan0,ifname=tap0,script=no,downscript=no \
+	      ... rest of the arguments ...
+
+	2. Once QEMU starts, but before guest reaches the point where
+	   FEC deriver is done initializing the HW, Guest, via TAP
+	   interface, receives a number of multicast MDNS packets from
+	   Host (not necessarily true for every OS, but it happens at
+	   least on Fedora 25)
+
+	3. Recieving a packet in such a state results in
+	   imx_eth_can_receive() returning '0', which in turn causes
+	   tap_send() to disable corresponding event (tap.c:203)
+
+	4. Once Guest's driver reaches the point where it is ready to
+	   recieve packets it prepares Rx ring descriptors and writes
+	   ENET_RDAR_RDAR to ENET_RDAR register to indicate to HW that
+	   more descriptors are ready. And at this points emulation
+	   layer does this:
+
+	   	 s->regs[index] = ENET_RDAR_RDAR;
+                 imx_eth_enable_rx(s);
+
+	   which, combined with:
+
+	   	  if (!s->regs[ENET_RDAR]) {
+		     qemu_flush_queued_packets(qemu_get_queue(s->nic));
+		  }
+
+	   results in Rx queue never being flushed and corresponding
+	   I/O event beign disabled.
+
+To prevent the problem, change the code to always flush packet queue
+when ENET_RDAR transitions 0 -> ENET_RDAR_RDAR.
 
 Cc: Peter Maydell <peter.maydell@linaro.org>
 Cc: Jason Wang <jasowang@redhat.com>
@@ -135,35 +175,67 @@ Cc: yurovsky@gmail.com
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- hw/arm/fsl-imx6.c | 1 +
- hw/net/imx_fec.c  | 2 --
- 2 files changed, 1 insertion(+), 2 deletions(-)
+ hw/net/imx_fec.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
-index 59ef33efa9..b0d4088290 100644
---- a/hw/arm/fsl-imx6.c
-+++ b/hw/arm/fsl-imx6.c
-@@ -385,6 +385,7 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
-                                             spi_table[i].irq));
-     }
- 
-+    qdev_set_nic_properties(DEVICE(&s->eth), &nd_table[0]);
-     object_property_set_bool(OBJECT(&s->eth), true, "realized", &err);
-     if (err) {
-         error_propagate(errp, err);
 diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
-index 90e6ee35ba..88b4b049d7 100644
+index 8b2e4b8ffe..eb034ffd0c 100644
 --- a/hw/net/imx_fec.c
 +++ b/hw/net/imx_fec.c
-@@ -1171,8 +1171,6 @@ static void imx_eth_realize(DeviceState *dev, Error **errp)
+@@ -533,7 +533,7 @@ static void imx_eth_do_tx(IMXFECState *s)
+     }
+ }
  
-     qemu_macaddr_default_if_unset(&s->conf.macaddr);
+-static void imx_eth_enable_rx(IMXFECState *s)
++static void imx_eth_enable_rx(IMXFECState *s, bool flush)
+ {
+     IMXFECBufDesc bd;
+     bool rx_ring_full;
+@@ -544,7 +544,7 @@ static void imx_eth_enable_rx(IMXFECState *s)
  
--    s->conf.peers.ncs[0] = nd_table[0].netdev;
--
-     s->nic = qemu_new_nic(&imx_eth_net_info, &s->conf,
-                           object_get_typename(OBJECT(dev)),
-                           DEVICE(dev)->id, s);
+     if (rx_ring_full) {
+         FEC_PRINTF("RX buffer full\n");
+-    } else if (!s->regs[ENET_RDAR]) {
++    } else if (flush) {
+         qemu_flush_queued_packets(qemu_get_queue(s->nic));
+     }
+ 
+@@ -807,7 +807,7 @@ static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
+         if (s->regs[ENET_ECR] & ENET_ECR_ETHEREN) {
+             if (!s->regs[index]) {
+                 s->regs[index] = ENET_RDAR_RDAR;
+-                imx_eth_enable_rx(s);
++                imx_eth_enable_rx(s, true);
+             }
+         } else {
+             s->regs[index] = 0;
+@@ -930,7 +930,7 @@ static int imx_eth_can_receive(NetClientState *nc)
+ 
+     FEC_PRINTF("\n");
+ 
+-    return s->regs[ENET_RDAR] ? 1 : 0;
++    return !!s->regs[ENET_RDAR];
+ }
+ 
+ static ssize_t imx_fec_receive(NetClientState *nc, const uint8_t *buf,
+@@ -1020,7 +1020,7 @@ static ssize_t imx_fec_receive(NetClientState *nc, const uint8_t *buf,
+         }
+     }
+     s->rx_descriptor = addr;
+-    imx_eth_enable_rx(s);
++    imx_eth_enable_rx(s, false);
+     imx_eth_update(s);
+     return len;
+ }
+@@ -1116,7 +1116,7 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
+         }
+     }
+     s->rx_descriptor = addr;
+-    imx_eth_enable_rx(s);
++    imx_eth_enable_rx(s, false);
+     imx_eth_update(s);
+     return len;
+ }
 -- 
 2.14.3
 

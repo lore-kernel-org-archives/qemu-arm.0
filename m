@@ -1,51 +1,51 @@
-Received: by 10.223.134.117 with SMTP id 50csp11447871wrw;
-        Tue, 2 Jan 2018 18:21:35 -0800 (PST)
-X-Google-Smtp-Source: ACJfBouzGitCDC9HZHDhC9aSU2h0ZFYLTmmm2v/87iLW3BXtlc/fvbvKiao0GO6W7mTNtzIDzzr1
-X-Received: by 10.98.5.196 with SMTP id 187mr34008pff.66.1514946095618;
-        Tue, 02 Jan 2018 18:21:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1514946095; cv=none;
+Received: by 10.223.134.117 with SMTP id 50csp11501652wrw;
+        Tue, 2 Jan 2018 19:48:47 -0800 (PST)
+X-Google-Smtp-Source: ACJfBose5uv/ZpvAuDAz8PJ+krug9BGIMKJETmPYglQbibNMwez+a37Jft26w9WCCe0ZN1DJFQR1
+X-Received: by 10.84.136.131 with SMTP id 3mr196989pll.430.1514951326976;
+        Tue, 02 Jan 2018 19:48:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1514951326; cv=none;
         d=google.com; s=arc-20160816;
-        b=TODsiIccP0lBt6mUfhd3+RrUyPh/rdcKXXsUmQcJXvF7MkIV2ihBr51fhZ3DAwfjjF
-         tq8jwiWgn0yBjEAU95L6g24VDacCqt7wdnNpFPE7ThT9N+yMfkeEHcCYRyq2AoJSKaRw
-         dG9mYpJUS7rtvjso5g1xBy7sS+nFeZ/1s04X/Dha+glrY/OtGOaO8pGgbbcFsaPZWA1i
-         1lRUY3ICr8me6nENxDXbVgZRarKOtnNPIfjO8mC+CdV3kECNdKhA5VrGPOEqVyp9cjIv
-         xDH3ah/GKwrsQbh1FYXH/QDseHbC0L38xEfPjfyeo6gIrinHSoC6IMzjHcOKrhisGMWu
-         aYnw==
+        b=k/pKo/hOsP3UxvbpW6dwZfy5s/OawxuEWHTqH2oMZw+WZ/RBsLvKSRB3jN3EazzN2D
+         7CqFgPB/0kL2o8cJEdPlyjkZl7Hu3+bYkO4jXxIoPhQbjy+VTTaJDW6NZRwa3CDuSL8U
+         6+zt3PQiwAV3FOsV/09NaG8W47cthYDv7UTchOL49NKs2edP8eULAnVJw1gNIk15uGWp
+         OIq9lP7uTH9sfhaucNbf7z+TuxGN/gzd93wNxY8fXasarwVFSV9lFP47gMmspl/t3rZh
+         s0EgUx/CMNYliZPpxoVlgG24UjX2h0265nNhemb9H+T16zgbi5yJhcPShMKMnRE/v8cQ
+         kCOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:cc:to:subject:arc-authentication-results;
-        bh=2Jgw0JG9sz2Lp4R4PlrUWi5mptkseFXs/xQXuKc6WQ4=;
-        b=hU95UBUzk9M7IbHYiGfOqKdPycNAv4ujesvyhWJhKQLXIDfFh50OEb/ZClkSjDuFvj
-         7MsNUHQDUnps6sQ5P38lWkuY4X1tCOYh7xl+VJ6LiD1XMD3DvkVf+uua975lZApJ01FF
-         WeLSAbQ+7s7TggAkAePArir9Cqp1S9+GRv2FTgSYGIYhT9SP+XTaXIYnoKPklnd1iifA
-         RfXX/QXaFPcaA8m9m6PpH7Z/pEdR/MCV9UQAWAhRoCDJypm8FlhPnvxmtu6g2y0c1XaJ
-         Hk+v4wn5uN1c5ol6eE+cOvCvMlw0dFGZ0MBWUPzFzlQBTBAl2H7jMZw4Zqx6HZvnzw0F
-         36sQ==
+        bh=Ps25XDS+DzejWnoEnx+9RmcO0c2Totf8lYBI+lNOZew=;
+        b=KzqCa1y9LEkUflw1P0Xdmuyaa7L/1azIcOIAInwGlV+p+p99MNFF3e5+SavW0dQhJ+
+         ljEn2ZrOsLtKruSQUbxDqXSn552naMFhDLrN/Fow1UGZWa8JWn87xt5iach5vxPw4seP
+         JuLX9IHOx7LDhApdC2lR1nGGHZ4U2wJJj17GUqgRyzwZOG1JFx5ofkGaoxKPMG3K+kO/
+         O/fcsmaF9pmP1NETVtFioNn8Xm/SU2ro2YnHP+ILAKltXCP3VcAJRacMJeTBJdIXDlb/
+         NWp0xCusvTZe3NCfW8wW3Zyn038ytzT+n+WiJAguxlyR3zK9TMZXOlWLhbVjVEIyQ6OZ
+         cg/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id u12si7268pgq.520.2018.01.02.18.21.35;
-        Tue, 02 Jan 2018 18:21:35 -0800 (PST)
+        by mx.google.com with ESMTP id u5si102034pgp.237.2018.01.02.19.48.46;
+        Tue, 02 Jan 2018 19:48:46 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1751211AbeACCVc (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 5 others); Tue, 2 Jan 2018 21:21:32 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:3662 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1751158AbeACCVa (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 2 Jan 2018 21:21:30 -0500
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.59])
-        by Forcepoint Email with ESMTP id 99E305DB98B14;
-        Wed,  3 Jan 2018 10:21:17 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS409-HUB.china.huawei.com
- (10.3.19.209) with Microsoft SMTP Server id 14.3.361.1; Wed, 3 Jan 2018
- 10:21:10 +0800
-Subject: Re: [PATCH v14 2/9] ACPI: Add APEI GHES table generation and CPER
- record support
+        id S1751403AbeACDso (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 5 others); Tue, 2 Jan 2018 22:48:44 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:34881 "EHLO huawei.com"
+        rhost-flags-OK-FAIL-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1751001AbeACDsn (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 2 Jan 2018 22:48:43 -0500
+Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.59])
+        by Forcepoint Email with ESMTP id 2700852FFE873;
+        Wed,  3 Jan 2018 11:48:39 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by DGGEMS413-HUB.china.huawei.com
+ (10.3.19.213) with Microsoft SMTP Server id 14.3.361.1; Wed, 3 Jan 2018
+ 11:48:33 +0800
+Subject: Re: [PATCH v14 7/9] ARM: ACPI: Add GPIO notification type for
+ hardware RAS error
 To:     Igor Mammedov <imammedo@redhat.com>
 CC:     <pbonzini@redhat.com>, <mst@redhat.com>,
         <zhaoshenglong@huawei.com>, <peter.maydell@linaro.org>,
@@ -56,358 +56,314 @@ CC:     <pbonzini@redhat.com>, <mst@redhat.com>,
         <huangshaoyu@huawei.com>, <zhengqiang10@huawei.com>,
         <xuwei5@hisilicon.com>
 References: <1514440458-10515-1-git-send-email-gengdongjiu@huawei.com>
- <1514440458-10515-3-git-send-email-gengdongjiu@huawei.com>
- <20171228151809.10495a90@igors-macbook-pro.local>
+ <1514440458-10515-8-git-send-email-gengdongjiu@huawei.com>
+ <20171228155310.312e95bb@igors-macbook-pro.local>
 From:   gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <10087bbd-28b0-b5ad-101a-e6d5ac648548@huawei.com>
-Date:   Wed, 3 Jan 2018 10:21:06 +0800
+Message-ID: <fc9e6c01-3334-f79c-5416-499177234044@huawei.com>
+Date:   Wed, 3 Jan 2018 11:48:30 +0800
 User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
  Thunderbird/52.3.0
 MIME-Version: 1.0
-In-Reply-To: <20171228151809.10495a90@igors-macbook-pro.local>
+In-Reply-To: <20171228155310.312e95bb@igors-macbook-pro.local>
 Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.142.68.147]
 X-CFilter-Loop: Reflected
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: Owrfu439ewcy
+X-TUID: uhtvZ6CKie2q
 
-Hi Igor,
-   sorry for my late response due to new year holiday.
-
-On 2017/12/28 22:18, Igor Mammedov wrote:
-> On Thu, 28 Dec 2017 13:54:11 +0800
+On 2017/12/28 22:53, Igor Mammedov wrote:
+> On Thu, 28 Dec 2017 13:54:16 +0800
 > Dongjiu Geng <gengdongjiu@huawei.com> wrote:
 > 
->> This implements APEI GHES Table generation and record CPER in
->> runtime via fw_cfg blobs.Now we only support two types of GHESv2,
->> which are GPIO-Signal and ARMv8 SEA. Afterwards, we can extend the
->> supported type if needed. For the CPER section type, currently it
-> s/type/types/
-Ok
-
-> 
->> is memory section because kernel manly wants userspace to handle
-> s/manly/mainly/
-Ok
-
-> 
->> the memory errors. 
-> 
->> In order to simulation, we hard code the error
->> type to Multi-bit ECC.
-> Not sure what this is about, care to elaborate?
-
-please see Memory Error Record in [1], in which the "Memory Error Type" field is used to describe the
-error type, such as  Multi-bit ECC or Parity Error etc. Because KVM or host does not pass the memory
-error type to Qemu, so Qemu does not know what is the error type for the memory section. Hence we let QEMU simulate
-the error type to Multi-bit ECC.
-
-[1]:
-UEFI Spec 2.6 Errata A:
-
-"N.2.5 Memory Error Section"
------------------+---------------+--------------+-------------------------------------------+
-        Mnemonic |   Byte Offset |  Byte Length |        Description                        |
------------------+---------------+--------------+-------------------------------------------+
-        ........ |  ............ |  .........   |        ...........                        |
------------------+---------------+--------------+-------------------------------------------+
-Memory Error Type|     72        |       1      |Identifies the type of error that occurred:|
-		 |		 |		| 0 – Unknown                              |
-		 |		 |		| 1 – No error                             |
-		 |		 |		| 2 – Single-bit ECC                       |
-		 |		 |		| 3 – Multi-bit ECC                        |
-		 |		 |		| 4 – Single-symbol ChipKill ECC           |
-		 |		 |		| 5 – Multi-symbol ChipKill ECC            |
-		 |		 |		| 6 – Master abort			    |
-		 |		 |		| 7 – Target abort			    |
-		 |		 |		| 8 – Parity Error			    |
-		 |		 |		| 9 – Watchdog timeout			    |
-		 |		 |		| 10 – Invalid address			    |
-		 |		 |		| 11 – Mirror Broken			    |
-		 |		 |		| 12 – Memory Sparing			    |
-		 |		 |		| 13 - Scrub corrected error		    |
-		 |		 |		| 14 - Scrub uncorrected error		    |
-		 |		 |		| 15 - Physical Memory Map-out event	    |
-		 |		 |		| All other values reserved.		    |
------------------+---------------+--------------+-------------------------------------------+
-        ........ |  ............ |  .........   |        ...........                        |
------------------+---------------+--------------+-------------------------------------------+
-> 
-> 
->> For GHESv2 error source, the OSPM must acknowledges the error via
->> Read ACK register. So user space must check the ACK value before
->> recording a new CPER to avoid read-write race condition.
+>> In ARM platform we implements a notification of error events
+>> via a GPIO pin. For this GPIO-signaled events, we choose GPIO
+>> pin 4 for hardware error device (PNP0C33), So _E04 should be
+>> added to ACPI DSDT table. When GPIO-pin 4 signaled a events,
+>> the guest ACPI driver will receive this notification and
+>> handing the error.
 >>
->> Suggested-by: Laszlo Ersek <lersek@redhat.com>
+>> In order to better trigger the GPIO IRQ, we defined a notifier
+>> hardware_error_notifiers. If Qemu wants to deliver a GPIO-Signal
+>> notification, will call it.
+>>
 >> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 >> ---
->> The basic solution is suggested by Laszlo in [1]
->> [1]: https://lkml.org/lkml/2017/3/29/342
-> 
-> 
-> patch is too big, it would be better if it were split in several parts.
-Ok, I will split it.
-
-> 
->> ---
->>  hw/acpi/aml-build.c         |   2 +
->>  hw/acpi/hest_ghes.c         | 390 ++++++++++++++++++++++++++++++++++++++++++++
->>  hw/arm/virt-acpi-build.c    |   8 +
->>  include/hw/acpi/aml-build.h |   1 +
->>  include/hw/acpi/hest_ghes.h |  82 ++++++++++
->>  5 files changed, 483 insertions(+)
->>  create mode 100644 hw/acpi/hest_ghes.c
->>  create mode 100644 include/hw/acpi/hest_ghes.h
+>> 1. Address discussion result about guest APEI notification type for SIGBUS_MCEERR_AO SIGBUS in [1],
+>>    the discussion conclusion is using GPIO-Signal
 >>
->> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
->> index 36a6cc4..6849e5f 100644
->> --- a/hw/acpi/aml-build.c
->> +++ b/hw/acpi/aml-build.c
->> @@ -1561,6 +1561,7 @@ void acpi_build_tables_init(AcpiBuildTables *tables)
->>      tables->table_data = g_array_new(false, true /* clear */, 1);
->>      tables->tcpalog = g_array_new(false, true /* clear */, 1);
->>      tables->vmgenid = g_array_new(false, true /* clear */, 1);
->> +    tables->hardware_errors = g_array_new(false, true /* clear */, 1);
->>      tables->linker = bios_linker_loader_init();
+>> [1]:
+>> https://lists.gnu.org/archive/html/qemu-devel/2017-10/msg03397.html
+>> https://lists.gnu.org/archive/html/qemu-devel/2017-10/msg03467.html
+>> https://lists.gnu.org/archive/html/qemu-devel/2017-10/msg03601.html
+>> https://lists.gnu.org/archive/html/qemu-devel/2017-10/msg03775.html
+>>
+>> 2. The ASL dump for the GPIO and hardware error device
+>>
+>> ................
+>> Device (GPO0)
+>> {
+>>     Name (_AEI, ResourceTemplate ()  // _AEI: ACPI Event Interrupts
+>>     {
+>>         .............
+>>         GpioInt (Edge, ActiveHigh, Exclusive, PullUp, 0x0000,
+>>             "GPO0", 0x00, ResourceConsumer, ,
+>>             )
+>>             {   // Pin list
+>>                 0x0004
+>>             }
+>>     })
+>>     Method (_E04, 0, NotSerialized)  // _Exx: Edge-Triggered GPE
+>>     {
+>>         Notify (ERRD, 0x80) // Status Change
+>>     }
+>> }
+>> Device (ERRD)
+>> {
+>>     Name (_HID, EisaId ("PNP0C33") /* Error Device */)  // _HID: Hardware ID
+>>     Name (_UID, Zero)  // _UID: Unique ID
+>>     Method (_STA, 0, NotSerialized)  // _STA: Status
+>>     {
+>>         Return (0x0F)
+>>     }
+>> }
+>>
+>> 3. Below is the guest log when Qemu notifies guest using GPIO-signal after record a CPER
+>> [  504.164899] {1}[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 7
+>> [  504.166970] {1}[Hardware Error]: event severity: recoverable
+>> [  504.251650] {1}[Hardware Error]:  Error 0, type: recoverable
+>> [  504.252974] {1}[Hardware Error]:   section_type: memory error
+>> [  504.254380] {1}[Hardware Error]:   physical_address: 0x00000000000003ec
+>> [  504.255879] {1}[Hardware Error]:   error_type: 3, multi-bit ECC
+>> ---
+>>  hw/arm/virt-acpi-build.c | 31 ++++++++++++++++++++++++++++++-
+>>  hw/arm/virt.c            | 18 ++++++++++++++++++
+>>  include/sysemu/sysemu.h  |  3 +++
+>>  vl.c                     | 12 ++++++++++++
+>>  4 files changed, 63 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+>> index b7d45cd..06c14b3 100644
+>> --- a/hw/arm/virt-acpi-build.c
+>> +++ b/hw/arm/virt-acpi-build.c
+>> @@ -49,6 +49,7 @@
+>>  
+>>  #define ARM_SPI_BASE 32
+>>  #define ACPI_POWER_BUTTON_DEVICE "PWRB"
+>> +#define ACPI_HARDWARE_ERROR_DEVICE "ERRD"
+>>  
+>>  static void acpi_dsdt_add_cpus(Aml *scope, int smp_cpus)
+>>  {
+>> @@ -340,7 +341,13 @@ static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
+>>  
+>>      Aml *aei = aml_resource_template();
+>>      /* Pin 3 for power button */
+>> -    const uint32_t pin_list[1] = {3};
+>> +    uint32_t pin_list[1] = {3};
+>> +    aml_append(aei, aml_gpio_int(AML_CONSUMER, AML_EDGE, AML_ACTIVE_HIGH,
+>> +                                 AML_EXCLUSIVE, AML_PULL_UP, 0, pin_list, 1,
+>> +                                 "GPO0", NULL, 0));
+>> +
+>> +    /* Pin 4 for hardware error device */
+>> +    pin_list[0] = 4;
+>>      aml_append(aei, aml_gpio_int(AML_CONSUMER, AML_EDGE, AML_ACTIVE_HIGH,
+>>                                   AML_EXCLUSIVE, AML_PULL_UP, 0, pin_list, 1,
+>>                                   "GPO0", NULL, 0));
+>> @@ -351,6 +358,13 @@ static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
+>>      aml_append(method, aml_notify(aml_name(ACPI_POWER_BUTTON_DEVICE),
+>>                                    aml_int(0x80)));
+>>      aml_append(dev, method);
+>> +
+>> +    /* _E04 is handle for hardware error */
+>> +    method = aml_method("_E04", 0, AML_NOTSERIALIZED);
+>> +    aml_append(method, aml_notify(aml_name(ACPI_HARDWARE_ERROR_DEVICE),
+>> +                                  aml_int(0x80)));
+> aml_int(0x80) /* ACPI ... : Notification For Generic Error Sources */
+sure. thanks
+
+> 
+>> +    aml_append(dev, method);
+>> +
+>>      aml_append(scope, dev);
 >>  }
 >>  
->> @@ -1571,6 +1572,7 @@ void acpi_build_tables_cleanup(AcpiBuildTables *tables, bool mfre)
->>      g_array_free(tables->table_data, true);
->>      g_array_free(tables->tcpalog, mfre);
->>      g_array_free(tables->vmgenid, mfre);
->> +    g_array_free(tables->hardware_errors, mfre);
+>> @@ -363,6 +377,20 @@ static void acpi_dsdt_add_power_button(Aml *scope)
+>>      aml_append(scope, dev);
 >>  }
 >>  
->>  /* Build rsdt table */
->> diff --git a/hw/acpi/hest_ghes.c b/hw/acpi/hest_ghes.c
->> new file mode 100644
->> index 0000000..86ec99e
->> --- /dev/null
->> +++ b/hw/acpi/hest_ghes.c
->> @@ -0,0 +1,390 @@
->> +/* Support for generating APEI tables and record CPER for Guests
->> + *
->> + * Copyright (C) 2017 HuaWei Corporation.
->> + *
->> + * Author: Dongjiu Geng <gengdongjiu@huawei.com>
->> + *
->> + * This program is free software; you can redistribute it and/or modify
->> + * it under the terms of the GNU General Public License as published by
->> + * the Free Software Foundation; either version 2 of the License, or
->> + * (at your option) any later version.
->> +
->> + * This program is distributed in the hope that it will be useful,
->> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
->> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
->> + * GNU General Public License for more details.
->> +
->> + * You should have received a copy of the GNU General Public License along
->> + * with this program; if not, see <http://www.gnu.org/licenses/>.
->> + */
->> +
->> +#include "qemu/osdep.h"
->> +#include "hw/acpi/acpi.h"
->> +#include "hw/acpi/aml-build.h"
->> +#include "hw/acpi/hest_ghes.h"
->> +#include "hw/nvram/fw_cfg.h"
->> +#include "sysemu/sysemu.h"
->> +#include "qemu/error-report.h"
->> +
->> +/* Generic Address Structure (GAS)
->> + * ACPI 2.0/3.0: 5.2.3.1 Generic Address Structure
->> + * 2.0 compat note:
->> + *    @access_width must be 0, see ACPI 2.0:Table 5-1
->> + */
->> +static void build_append_gas(GArray *table, AmlRegionSpace as,
->> +                      uint8_t bit_width, uint8_t bit_offset,
->> +                      uint8_t access_width, uint64_t address)
+>> +static void acpi_dsdt_add_error_device(Aml *scope)
 >> +{
->> +    build_append_int_noprefix(table, as, 1);
->> +    build_append_int_noprefix(table, bit_width, 1);
->> +    build_append_int_noprefix(table, bit_offset, 1);
->> +    build_append_int_noprefix(table, access_width, 1);
->> +    build_append_int_noprefix(table, address, 8);
->> +}
-> all build_append_foo() primitives should go into aml-build.c
-> you can reuse take following patches for build_append_gas() from my github repo
-> https://github.com/imammedo/qemu/commit/ff35b4ae1ec286f5f11830d504467f5ad243995b
-> https://github.com/imammedo/qemu/commit/3d2fd6d13a3ea298d2ee814835495ce6241d085c
+>> +    Aml *dev = aml_device(ACPI_HARDWARE_ERROR_DEVICE);
+>> +    Aml *method;
+>> +
+>> +    aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0C33")));
+>> +    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+>> +
+>> +    method = aml_method("_STA", 0, AML_NOTSERIALIZED);
+>> +    aml_append(method, aml_return(aml_int(0x0f)));
+> no need for dummy _STA method, device is assumed to be present if there is no _STA 
+Igor,
+  do you mean remove above two line code as shown in [1]?
+I dump the DSDT table in my host Ubuntu PC for the error device (PNP0C33), it has the _STA, as shown in [2].
+do we not want to add the _STA for guest?
 
-Ok, got it, thanks Igor's comments.
+[1]
++    method = aml_method("_STA", 0, AML_NOTSERIALIZED);
++    aml_append(method, aml_return(aml_int(0x0f)));
 
+[2]:
+        Device (WERR)
+        {
+            Name (_HID, EisaId ("PNP0C33"))  // _HID: Hardware ID
+            Method (_STA, 0, NotSerialized)  // _STA: Status
+            {
+                If (LGreaterEqual (OSYS, 0x07D9))
+                {
+                    Return (0x0F)
+                }
+                Else
+                {
+                    Return (Zero)
+                }
+            }
+        }
 > 
-> 
->> +/* Hardware Error Notification
->> + * ACPI 4.0: 17.3.2.7 Hardware Error Notification
->> + */
->> +static void build_append_notify(GArray *table, const uint8_t type,
->> +                                uint8_t length)
->> +{
->> +        build_append_int_noprefix(table, type, 1); /* type */
->> +        build_append_int_noprefix(table, length, 1);
->> +        build_append_int_noprefix(table, 0, 26);
->> +}
-> split all build_append_foo() into separate patches /a patch per function/,
-> 
-> probably for GHES related primitives it would be better use 'ghes'
-> domain prefix in function names, like
-> 
->   s/build_append_notify/build_append_ghes_notify/
-> 
-> the same applies to other build_append_foo() below
-sure, thanks Igor's good suggestion.
-
-> 
-> 
->> +/* Generic Error Status Block
->> + * ACPI 4.0: 17.3.2.6.1 Generic Error Data
->> + */
->> +static void build_append_gesb_header(GArray *table, uint32_t block_status,
->> +                      uint32_t raw_data_offset, uint32_t raw_data_length,
->> +                      uint32_t data_length, uint32_t error_severity)
->> +{
->> +    build_append_int_noprefix(table, block_status, 4);
->> +    build_append_int_noprefix(table, raw_data_offset, 4);
->> +    build_append_int_noprefix(table, raw_data_length, 4);
->> +    build_append_int_noprefix(table, data_length, 4);
->> +    build_append_int_noprefix(table, error_severity, 4);
+>> +    aml_append(dev, method);
+>> +    aml_append(scope, dev);
 >> +}
 >> +
->> +/* Generic Error Data Entry
->> + * ACPI 4.0: 17.3.2.6.1 Generic Error Data
->> + */
->> +static void build_append_gede_header(GArray *table, const char *section_type,
->> +                      const uint32_t error_severity, const uint16_t revision,
->> +                      const uint32_t error_data_length)
+>>  /* RSDP */
+>>  static GArray *
+>>  build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned xsdt_tbl_offset)
+>> @@ -716,6 +744,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>>      acpi_dsdt_add_gpio(scope, &memmap[VIRT_GPIO],
+>>                         (irqmap[VIRT_GPIO] + ARM_SPI_BASE));
+>>      acpi_dsdt_add_power_button(scope);
+>> +    acpi_dsdt_add_error_device(scope);
+>>  
+>>      aml_append(dsdt, scope);
+>>  
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index 6b7a0fe..68495c2 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -701,16 +701,27 @@ static void create_rtc(const VirtMachineState *vms, qemu_irq *pic)
+>>  }
+>>  
+>>  static DeviceState *gpio_key_dev;
+>> +static DeviceState *gpio_err_dev;
+>>  static void virt_powerdown_req(Notifier *n, void *opaque)
+>>  {
+>>      /* use gpio Pin 3 for power button event */
+>>      qemu_set_irq(qdev_get_gpio_in(gpio_key_dev, 0), 1);
+>>  }
+>>  
+>> +static void virt_error_notify_req(Notifier *n, void *opaque)
 >> +{
->> +    int i;
->> +
->> +    for (i = 0; i < 16; i++) {
->> +        build_append_int_noprefix(table, section_type[i], 1);
->> +    }
->> +
->> +    build_append_int_noprefix(table, error_severity, 4);
->> +    build_append_int_noprefix(table, revision, 2);
->> +    build_append_int_noprefix(table, 0, 2);
->> +    build_append_int_noprefix(table, error_data_length, 4);
->> +    build_append_int_noprefix(table, 0, 44);
+>> +    /* use gpio Pin 4 for hardware error event */
+>> +    qemu_set_irq(qdev_get_gpio_in(gpio_err_dev, 0), 1);
 >> +}
 >> +
->> +/* Memory section CPER record */
-> comment missing reference to related spec item
-Ok, thanks for the reminder.
-
-> 
->> +static void build_append_mem_cper(GArray *table, uint64_t error_physical_addr)
+>>  static Notifier virt_system_powerdown_notifier = {
+>>      .notify = virt_powerdown_req
+>>  };
+>>  
+>> +static Notifier virt_hardware_error_notifier = {
+>> +    .notify = virt_error_notify_req
+>> +};
+>> +
+>>  static void create_gpio(const VirtMachineState *vms, qemu_irq *pic)
+>>  {
+>>      char *nodename;
+>> @@ -739,6 +750,10 @@ static void create_gpio(const VirtMachineState *vms, qemu_irq *pic)
+>>  
+>>      gpio_key_dev = sysbus_create_simple("gpio-key", -1,
+>>                                          qdev_get_gpio_in(pl061_dev, 3));
+>> +
+>> +    gpio_err_dev = sysbus_create_simple("gpio-key", -1,
+>> +                                        qdev_get_gpio_in(pl061_dev, 4));
+>> +
+>>      qemu_fdt_add_subnode(vms->fdt, "/gpio-keys");
+>>      qemu_fdt_setprop_string(vms->fdt, "/gpio-keys", "compatible", "gpio-keys");
+>>      qemu_fdt_setprop_cell(vms->fdt, "/gpio-keys", "#size-cells", 0);
+>> @@ -755,6 +770,9 @@ static void create_gpio(const VirtMachineState *vms, qemu_irq *pic)
+>>      /* connect powerdown request */
+>>      qemu_register_powerdown_notifier(&virt_system_powerdown_notifier);
+>>  
+>> +    /* connect hardware error notify request */
+>> +    qemu_register_hardware_error_notifier(&virt_hardware_error_notifier);
+>> +
+>>      g_free(nodename);
+>>  }
+>>  
+>> diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
+>> index b213696..86931cf 100644
+>> --- a/include/sysemu/sysemu.h
+>> +++ b/include/sysemu/sysemu.h
+>> @@ -75,6 +75,7 @@ void qemu_register_wakeup_notifier(Notifier *notifier);
+>>  void qemu_system_shutdown_request(ShutdownCause reason);
+>>  void qemu_system_powerdown_request(void);
+>>  void qemu_register_powerdown_notifier(Notifier *notifier);
+>> +void qemu_register_hardware_error_notifier(Notifier *notifier);
+>>  void qemu_system_debug_request(void);
+>>  void qemu_system_vmstop_request(RunState reason);
+>>  void qemu_system_vmstop_request_prepare(void);
+>> @@ -93,6 +94,8 @@ void qemu_remove_machine_init_done_notifier(Notifier *notify);
+>>  
+>>  void qemu_announce_self(void);
+>>  
+>> +void qemu_hardware_error_notify(void);
+>> +
+>>  extern int autostart;
+>>  
+>>  typedef enum {
+>> diff --git a/vl.c b/vl.c
+>> index d632693..3552f7d 100644
+>> --- a/vl.c
+>> +++ b/vl.c
+>> @@ -1614,6 +1614,8 @@ static int suspend_requested;
+>>  static WakeupReason wakeup_reason;
+>>  static NotifierList powerdown_notifiers =
+>>      NOTIFIER_LIST_INITIALIZER(powerdown_notifiers);
+>> +static NotifierList hardware_error_notifiers =
+>> +    NOTIFIER_LIST_INITIALIZER(hardware_error_notifiers);
+>>  static NotifierList suspend_notifiers =
+>>      NOTIFIER_LIST_INITIALIZER(suspend_notifiers);
+>>  static NotifierList wakeup_notifiers =
+>> @@ -1850,12 +1852,22 @@ void qemu_register_powerdown_notifier(Notifier *notifier)
+>>      notifier_list_add(&powerdown_notifiers, notifier);
+>>  }
+>>  
+>> +void qemu_register_hardware_error_notifier(Notifier *notifier)
 >> +{
->> +    /*
->> +     * Memory Error Record
->> +     */
->> +    build_append_int_noprefix(table,
->> +                 (1UL << 14) | /* Type Valid */
->> +                 (1UL << 1) /* Physical Address Valid */,
->> +                 8);
->> +    /* Memory error status information */
->> +    build_append_int_noprefix(table, 0, 8);
->> +    /* The physical address at which the memory error occurred */
->> +    build_append_int_noprefix(table, error_physical_addr, 8);
->> +    build_append_int_noprefix(table, 0, 48);
->> +    /* Hard code to Multi-bit ECC error */
->> +    build_append_int_noprefix(table, 3 /* Multi-bit ECC */, 1);
->> +    build_append_int_noprefix(table, 0, 7);
+>> +    notifier_list_add(&hardware_error_notifiers, notifier);
 >> +}
 >> +
->> +static int ghes_record_mem_error(uint64_t error_block_address,
->> +                                    uint64_t error_physical_addr)
-> probably function should be part of 9/9 patch, as the others that's called
-> only from ghes_record_errors().
-> 
-> i.e. split this patch into acpi tables generation and actual error generation patches.
-Ok, thanks Igor's good suggestion and review comments.
-
-> 
+>>  void qemu_system_debug_request(void)
+>>  {
+>>      debug_requested = 1;
+>>      qemu_notify_event();
+>>  }
+>>  
+>> +void qemu_hardware_error_notify(void)
 >> +{
->> +    GArray *block;
->> +    uint64_t current_block_length;
->> +    uint32_t data_length;
->> +    /* Memory section */
->> +    char mem_section_id_le[] = {0x14, 0x11, 0xBC, 0xA5, 0x64, 0x6F, 0xDE,
->> +                                0x4E, 0xB8, 0x63, 0x3E, 0x83, 0xED, 0x7C,
->> +                                0x83, 0xB1};
->> +
->> +    block = g_array_new(false, true /* clear */, 1);
->> +
->> +    /* Read the current length in bytes of the generic error data */
->> +    cpu_physical_memory_read(error_block_address +
->> +        offsetof(AcpiGenericErrorStatus, data_length), &data_length, 4);
->> +
->> +    /* The current whole length in bytes of the generic error status block */
->> +    current_block_length = sizeof(AcpiGenericErrorStatus) + data_length;
-> missing le32_to_cpu() here
-> 
-> also check other sites where you call cpu_physical_memory_foo()
-> 
-> it would be good to have a 'make check' test case included in this series,
-> then when you can spot these errors during test on BE host, before posting patches.
-Ok, sure, thanks.
-
-
-> 
->> +
->> +    /* Add a new generic error data entry*/
->> +    data_length += GHES_DATA_LENGTH;
->> +    data_length += GHES_CPER_LENGTH;
->> +
->> +    /* Check whether it will run out of the preallocated memory if adding a new
->> +     * generic error data entry
->> +     */
->> +    if ((data_length + sizeof(AcpiGenericErrorStatus)) > GHES_MAX_RAW_DATA_LENGTH) {
->> +        error_report("Record CPER out of boundary!!!");
->> +        return GHES_CPER_FAIL;
-> you return values here and from ghes_record_errors() but not actually
-> handle them, so it's rather pointless thing to do,
-> more over it's called on nofail path so one should either abort on error o ignore it
-yes, it should, thanks for the point out. I will make it abort if it is failed.
-
-> 
->> +    }
->> +    /* Build the new generic error status block header */
->> +    build_append_gesb_header(block, cpu_to_le32(ACPI_GEBS_UNCORRECTABLE), 0, 0,
->> +        cpu_to_le32(data_length), cpu_to_le32(ACPI_CPER_SEV_RECOVERABLE));
->> +
->> +    /* Write back above generic error status block header to guest memory */
->> +    cpu_physical_memory_write(error_block_address, block->data,
->> +                              block->len);
->> +
->> +    /* Build the generic error data entries */
->> +
->> +    data_length = block->len;
->> +    /* Build the new generic error data entry header */
->> +    build_append_gede_header(block, mem_section_id_le,
->> +                    cpu_to_le32(ACPI_CPER_SEV_RECOVERABLE), cpu_to_le32(0x300),
->> +                    cpu_to_le32(80)/* the total size of Memory Error Record */);
->> +
->> +    /* Build the memory section CPER */
->> +    build_append_mem_cper(block, error_physical_addr);
->> +
->> +    /* Write back above whole new generic error data entry to guest memory */
->> +    cpu_physical_memory_write(error_block_address + current_block_length,
->> +                    block->data + data_length, block->len - data_length);
->> +
->> +    g_array_free(block, true);
->> +
->> +    return GHES_CPER_OK;
+>> +    notifier_list_notify(&hardware_error_notifiers, NULL);
 >> +}
-> [...]
 > 
-> I'll try to make another round of review on this once patch is split
-Ok, thanks in advance.
+> I'd prefer if you'd replace all this Notifier code with a machine callback
+> and call it when needed.
+Ok, thanks for this suggestion. I will check the code and see how to add a machine callback.
 
+
+> 
+>>  static bool main_loop_should_exit(void)
+>>  {
+>>      RunState r;
+> 
 > 
 > .
 > 

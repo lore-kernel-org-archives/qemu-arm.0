@@ -1,183 +1,291 @@
-Received: by 10.223.134.117 with SMTP id 50csp12416625wrw;
-        Wed, 3 Jan 2018 13:58:52 -0800 (PST)
-X-Google-Smtp-Source: ACJfBou8RR+iWtX5Yj/tDe9BCqIx7nlrGFMajdR+NZ/EP+gkSVL7QlKo9v5hDA1QyY5WMDngfgDY
-X-Received: by 10.37.45.3 with SMTP id t3mr2605495ybt.143.1515016732860;
-        Wed, 03 Jan 2018 13:58:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515016732; cv=none;
+Received: by 10.223.134.117 with SMTP id 50csp12447223wrw;
+        Wed, 3 Jan 2018 14:34:53 -0800 (PST)
+X-Google-Smtp-Source: ACJfBoueL+/OToDGdu4zosEKIWhcGX/JGUUu5F6xrVUtklA+XXbnbbEv26/6LZGNojhxXZivdaAG
+X-Received: by 10.129.28.206 with SMTP id c197mr2624839ywc.328.1515018893876;
+        Wed, 03 Jan 2018 14:34:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515018893; cv=none;
         d=google.com; s=arc-20160816;
-        b=XUcCm9h6KkdTnUKvNYZZuFmKkVRiIBXHRbenZnhLP8wViL8UbgDGYGigMcxpmBrqrw
-         FQB5xfs+fh2sfcAI6cukjqKmcCnqAlFTCVPnNpz9G9SWeRgaiBFUKn+FJ5R+VPe9gJcS
-         BALYDRTaFwwnWUV/2rl/KeKKG/RMzFuYSpK1B7t0Rk30ajMHrIz3sedDr21mqWRHDAFt
-         Bt3flNo0Wzi3czAlCiJC8kRIjZJug4cHqNtGdu4I2cJL0xybFUEYUXt/66vObn5CCWsO
-         amEF39qrAulvoHOCuX8xYjp/BIqHfUVYPQYMUz3LQ6izZLc5RMsvBM2IVfwe0kaqnhTb
-         d91w==
+        b=pthzhTNvuAjlGvSoOP3gv7e70qX4N6d25o4f5bFH6yoov8rWRDD8xB8IGKaGRW3KMf
+         7FjWHV7qhZ4LwsVCgwBCiOJGXLWuY7aPmf5+szFXenDXzp1TG8GFenrVOB/k6s+dBcFa
+         R62NOdb1Cz19MmRKCT69PS+jL1etbhiy3nvrjlnM/+OnSA6nDRdD1c6ERapc35wPy9xM
+         YjftHwCDBESLRX5sYtso/kMXtOvl+GLK/YX1N/aEtzBgLYmbtm0BPf6p6vFZUWSC0ffy
+         xZuSCCCJXQnH1fgxGjMJiLtT1tf6/22JbTzhvos6bW9oDRuX2dOVOrB0kDgofMNllrO4
+         VybA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=J2b2nxzTQhP2Ub3gtzZWBx7+jJgeCvJ/v2Nl82EaG7U=;
-        b=B9XE4Lsmj5RQv+oFqQ8Lpp3eMUuY5Itvql4yWZGjdJxNm9ZWFk50gvF2hULXw+oojv
-         4P1BC3gn2GjdAulv2JkdYxVHHvXlvmhYxG0HGvICzqIJ3MnnHCvKnysaLYxat9Skv+9/
-         c4Sh6eCn6cLOQi3cbEyrCZc1h2r+EmdlKDRmyREozk2MofhWXSQuW9L/IHVGdY84Mbap
-         lKrhxhs2QJGyinZRMT1Pzs+OWqonl3GHnBDbaGbcraMmvh7fG56KeERAOX1DPArurXF7
-         ZadnRLFLnzzZlgdTEWNvmZZJqAGUAS3Xj6S6F3NLjnxKA+AbHFB5Z7vofREmWuaQZo6C
-         AczA==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=4QeULk3WHuFfpk7U7ORV+8wVdRbo5xK8eM5nTmM834s=;
+        b=VJ3+kSvXw9t5mwNvMZfL7C9CyTQDEduxRJuzDN5k5fUKD2rZO4gND5flR2CtYVJ1GW
+         3xTsPqbpH3BwzgwJg8ugAHqg2SPxmSPFvd4WEsLvyKhmEfBxeq0aEkV3AtgHMTb+31fd
+         cpw1AFRZi+GvcTcQ3lXwyCZu4TN53QyCTRy9Pj2x9JRC7H2fLs3iROA7jCNYdmZDodd5
+         donwpop11+L2jjLdrBais8y7qWB2Pidc6Zo3YsRuK4iFeNwaYfZ48YPADW48SNcz0nuE
+         kdFN6wZDuma2AwVdSau0TxPMqjjNoNpcyfKiLj8CKBrmOqBstApLEWgiRTwpUj/klfHK
+         EENw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LNC2cyLK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sztBwi2H;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f11si386844ywf.365.2018.01.03.13.58.52
+        by mx.google.com with ESMTPS id n190si404315ywe.652.2018.01.03.14.34.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 03 Jan 2018 13:58:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 03 Jan 2018 14:34:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LNC2cyLK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:38647 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sztBwi2H;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:39693 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eWr3k-0000xW-Bs
-	for alex.bennee@linaro.org; Wed, 03 Jan 2018 16:58:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47347)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eWrcb-0001Uw-BZ
+	for alex.bennee@linaro.org; Wed, 03 Jan 2018 17:34:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51613)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1eWqyc-00042e-5w
-	for qemu-arm@nongnu.org; Wed, 03 Jan 2018 16:53:35 -0500
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eWrcA-0001Sq-0k
+	for qemu-devel@nongnu.org; Wed, 03 Jan 2018 17:34:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1eWqyb-00072Y-8C
-	for qemu-arm@nongnu.org; Wed, 03 Jan 2018 16:53:34 -0500
-Received: from mail-wr0-x243.google.com ([2a00:1450:400c:c0c::243]:37191)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eWrc7-0008Kp-Bs
+	for qemu-devel@nongnu.org; Wed, 03 Jan 2018 17:34:26 -0500
+Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:46981)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1eWqyb-00071l-2b; Wed, 03 Jan 2018 16:53:33 -0500
-Received: by mail-wr0-x243.google.com with SMTP id f8so3224653wre.4;
-	Wed, 03 Jan 2018 13:53:32 -0800 (PST)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eWrc7-0008KL-7S; Wed, 03 Jan 2018 17:34:23 -0500
+Received: by mail-qk0-x244.google.com with SMTP id b132so3447587qkc.13;
+	Wed, 03 Jan 2018 14:34:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-transfer-encoding;
-	bh=J2b2nxzTQhP2Ub3gtzZWBx7+jJgeCvJ/v2Nl82EaG7U=;
-	b=LNC2cyLKeWo+tMn/2RDq2MiSFAdZf5ZZOu8FsYVXncrkY1t2UOyH1pD/YXHrsRau0z
-	VCL0/n1bPDvU9QXWejgjztrRiObqGEs5wIHjMqIps7N2wL9q+b6LIG92HLNEvjHyXelm
-	2wKDkTMrsuKMq0TpPSvxbSUOZXP/k3Qv8Ihu9PvGfPTpYWnS3FoyB/HO8dbKIc1Lkf6h
-	cOZPI4/U7KM8cqo80jZ/YhHhe9gPjUJnrHnj+Op7FGWbh/MjI+0YHF90btq/dXgLnaSf
-	wsmD1tKU/ySWN7QSZuK30ZnDvPjrmfdp3/wqDHmPEe4d+61uAfudl+7QezX9D1HdBXdu
-	Zfmg==
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=4QeULk3WHuFfpk7U7ORV+8wVdRbo5xK8eM5nTmM834s=;
+	b=sztBwi2HKvdKzzPt1NgUJsIR5ZMUUip4kv8jIo3eLIAsAGMU0Tsspa2Vodj39BojUD
+	NoL5iMC9xSVZLsSa8gqsaUYA8HxxNFDJqbkrb4rESV39f8n2m6aZnRoVaOWJ+aO3oUGb
+	eyuM6ksoRU0+oB0cKwjhoMYILj9pO/TJn+WzAQn2viD1686L+JK785xyTdziojcvcGoJ
+	RLu4E0kGuZgt6Dq52drErn4S0G9lU7j1ayA9xieceYjfmBni56V+PbC1cER5FqD7CMxa
+	lw89Ij/8A1Hek62Q3kDrW1HUqvzB7iRHIJqcljHoLQMBXqXCyk4luOYBacuHm3o517w/
+	yt/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc:content-transfer-encoding;
-	bh=J2b2nxzTQhP2Ub3gtzZWBx7+jJgeCvJ/v2Nl82EaG7U=;
-	b=OznCZFkTv2Nf9eQprf8fVah8IlIyw6EvifQeiiTBMqmM04vjzpX3QVS/5WdAwjSwn6
-	Q5uVC/bRQue+RperFMjG1NeUD1WInxzvKbaZuIYquIkek+Y7oEWJ6PyV6Os9CIOvojr7
-	tY6xGtkTsOUeNIQRE3rvlt562VjwmUfDk162DsbulLfn8tmHzHkMrVUXupRduDyLJKz+
-	1PbUXApxrwVxLIm9Nrf8hKoU1yvIS4KK65FT2TXwFoETn9Wq54kAEOEhOK37WbLuEtd2
-	rHnV6f16BBHvIk8h8e1bIqO5s2Emaa8l4lyFFT0prBvvBk040TcanHkJZZjOa7fHzanD
-	GkIg==
-X-Gm-Message-State: AKGB3mKlsZOLaAE1kQmNK7c7A8EEgZ+tZekCk9MO01xGh5QzxDiCyY3+
-	ifQz8Y1ZdqcH8lC/JpBGxBxc2LEObOLddGtaDb8=
-X-Received: by 10.223.160.77 with SMTP id l13mr2793740wrl.56.1515016412022;
-	Wed, 03 Jan 2018 13:53:32 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.28.164.69 with HTTP; Wed, 3 Jan 2018 13:53:01 -0800 (PST)
-In-Reply-To: <20180103164117.11850-2-f4bug@amsat.org>
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=4QeULk3WHuFfpk7U7ORV+8wVdRbo5xK8eM5nTmM834s=;
+	b=jpgXgSi4Vn5eU1lfjMjU/Q4+v+VDehIVl2I3HHhVXTRMfcwCeewM7asEa2cBP/c4It
+	OcaIfcp5F8UWa3YE4xw8Wqhh6a7rb+oPw9n6dum0LDTWCx6B8cFTXHhd99Mmyow9ysrg
+	cKbJUDokxAXjzFzkJOJQR9gPMn1ABbzqNmhqt2zoHBBK64aMaC2Y+U7qRB5oaQVr6CKR
+	j7U+O970ZHXOKl1PAJAgaX8msB3YlJ2A1DNwdxhDrpqqaim/1WcAYFXDnq0+wLJMIX8b
+	cJ3NNigjyz9s3qLhddYxJx6KXVBSIUqKPRaP5QtNC3Ey/EPmSJyh++3Y+uZ1lbA3o/1x
+	ezLA==
+X-Gm-Message-State: AKGB3mLP0Yk+YGdMZg4m4Cnzo8MrglGSqwXAheBXE5nA9krL5NaF6pC4
+	Qi6/cqsbAQGkJyoHVYv5F2DqqCpE
+X-Received: by 10.55.100.201 with SMTP id y192mr3426324qkb.265.1515018862414; 
+	Wed, 03 Jan 2018 14:34:22 -0800 (PST)
+Received: from [192.168.1.11] ([138.117.48.219])
+	by smtp.gmail.com with ESMTPSA id
+	s18sm1249649qtc.25.2018.01.03.14.34.20
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 03 Jan 2018 14:34:21 -0800 (PST)
+To: Alistair Francis <alistair.francis@xilinx.com>
 References: <20180103164117.11850-1-f4bug@amsat.org>
-	<20180103164117.11850-2-f4bug@amsat.org>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Wed, 3 Jan 2018 13:53:01 -0800
-X-Google-Sender-Auth: RVrFu2yfVOeekrDLVmddUEG-Btg
-Message-ID: <CAKmqyKM8mmx3g+6Qonr8NQTBi=YLk7KoGyAvzO_46j5VkZEBVA@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+	<20180103164117.11850-3-f4bug@amsat.org>
+	<CAKmqyKOFBVv0n-+-3RgZ7_-Ve8GWoxE7H60gPGqdXwY+Wu2zog@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <bb769df0-e20d-bdc2-a11f-b5ffd94d5685@amsat.org>
+Date: Wed, 3 Jan 2018 19:34:18 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.2
+MIME-Version: 1.0
+In-Reply-To: <CAKmqyKOFBVv0n-+-3RgZ7_-Ve8GWoxE7H60gPGqdXwY+Wu2zog@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::243
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/2] hw/timer/pxa2xx_timer:
- replace hw_error() -> qemu_log_mask()
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400d:c09::244
+Subject: Re: [Qemu-devel] [PATCH 2/2] hw/sd/pxa2xx_mmci: add read/write()
+ trace events
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Andrzej Zaborowski <balrogg@gmail.com>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NQlGKJv5m3lv
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zsFZHIEzgA0M
 
-On Wed, Jan 3, 2018 at 8:41 AM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g> wrote:
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/timer/pxa2xx_timer.c | 13 +++++++++++--
->  1 file changed, 11 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/timer/pxa2xx_timer.c b/hw/timer/pxa2xx_timer.c
-> index 68ba5a70b3..cfea0a5e22 100644
-> --- a/hw/timer/pxa2xx_timer.c
-> +++ b/hw/timer/pxa2xx_timer.c
-> @@ -13,6 +13,7 @@
->  #include "sysemu/sysemu.h"
->  #include "hw/arm/pxa.h"
->  #include "hw/sysbus.h"
-> +#include "qemu/log.h"
->
->  #define OSMR0  0x00
->  #define OSMR1  0x04
-> @@ -252,8 +253,12 @@ static uint64_t pxa2xx_timer_read(void *opaque, hwad=
-dr offset,
->      case OSNR:
->          return s->snapshot;
->      default:
-> +        qemu_log_mask(LOG_UNIMP, "%s: unknown reg 0x%02" HWADDR_PRIx
-> +                      "\n", __func__, offset);
-> +        break;
->      badreg:
-> -        hw_error("pxa2xx_timer_read: Bad offset " REG_FMT "\n", offset);
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: incorrect reg 0x%02" HWADDR_=
-PRIx
-> +                      "\n", __func__, offset);
+On 01/03/2018 06:54 PM, Alistair Francis wrote:
+> On Wed, Jan 3, 2018 at 8:41 AM, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>  hw/sd/pxa2xx_mmci.c | 63 ++++++++++++++++++++++++++++++++++-------------------
+>>  hw/sd/trace-events  |  4 ++++
+>>  2 files changed, 44 insertions(+), 23 deletions(-)
+>>
+>> diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
+>> index 3deccf02c9..0759a0d2eb 100644
+>> --- a/hw/sd/pxa2xx_mmci.c
+>> +++ b/hw/sd/pxa2xx_mmci.c
+>> @@ -19,6 +19,7 @@
+>>  #include "hw/qdev.h"
+>>  #include "hw/qdev-properties.h"
+>>  #include "qemu/error-report.h"
+>> +#include "trace.h"
+>>
+>>  #define TYPE_PXA2XX_MMCI "pxa2xx-mmci"
+>>  #define PXA2XX_MMCI(obj) OBJECT_CHECK(PXA2xxMMCIState, (obj), TYPE_PXA2XX_MMCI)
+>> @@ -278,43 +279,55 @@ static void pxa2xx_mmci_wakequeues(PXA2xxMMCIState *s)
+>>  static uint64_t pxa2xx_mmci_read(void *opaque, hwaddr offset, unsigned size)
+>>  {
+>>      PXA2xxMMCIState *s = (PXA2xxMMCIState *) opaque;
+>> -    uint32_t ret;
+>> +    uint32_t ret = 0;
+>>
+>>      switch (offset) {
+>>      case MMC_STRPCL:
+>> -        return 0;
+>> +        break;
+>>      case MMC_STAT:
+>> -        return s->status;
+>> +        ret = s->status;
+>> +        break;
+>>      case MMC_CLKRT:
+>> -        return s->clkrt;
+>> +        ret = s->clkrt;
+>> +        break;
+>>      case MMC_SPI:
+>> -        return s->spi;
+>> +        ret = s->spi;
+>> +        break;
+>>      case MMC_CMDAT:
+>> -        return s->cmdat;
+>> +        ret = s->cmdat;
+>> +        break;
+>>      case MMC_RESTO:
+>> -        return s->resp_tout;
+>> +        ret = s->resp_tout;
+>> +        break;
+>>      case MMC_RDTO:
+>> -        return s->read_tout;
+>> +        ret = s->read_tout;
+>> +        break;
+>>      case MMC_BLKLEN:
+>> -        return s->blklen;
+>> +        ret = s->blklen;
+>> +        break;
+>>      case MMC_NUMBLK:
+>> -        return s->numblk;
+>> +        ret = s->numblk;
+>> +        break;
+>>      case MMC_PRTBUF:
+>> -        return 0;
+>> +        break;
+>>      case MMC_I_MASK:
+>> -        return s->intmask;
+>> +        ret = s->intmask;
+>> +        break;
+>>      case MMC_I_REG:
+>> -        return s->intreq;
+>> +        ret = s->intreq;
+>> +        break;
+>>      case MMC_CMD:
+>> -        return s->cmd | 0x40;
+>> +        ret = s->cmd | 0x40;
+>> +        break;
+>>      case MMC_ARGH:
+>> -        return s->arg >> 16;
+>> +        ret = s->arg >> 16;
+>> +        break;
+>>      case MMC_ARGL:
+>> -        return s->arg & 0xffff;
+>> +        ret = s->arg & 0xffff;
+>> +        break;
+>>      case MMC_RES:
+>> -        if (s->resp_len < 9)
+>> -            return s->resp_fifo[s->resp_len ++];
+>> -        return 0;
+>> +        ret = (s->resp_len < 9) ? s->resp_fifo[s->resp_len++] : 0;
+>> +        break;
+>>      case MMC_RXFIFO:
+>>          ret = 0;
+>>          while (size-- && s->rx_len) {
+>> @@ -324,16 +337,19 @@ static uint64_t pxa2xx_mmci_read(void *opaque, hwaddr offset, unsigned size)
+>>          }
+>>          s->intreq &= ~INT_RXFIFO_REQ;
+>>          pxa2xx_mmci_fifo_update(s);
+>> -        return ret;
+>> +        break;
+>> +        ret = ret;
 
-It might just be my email display, but if these lines don't line up
-can you fix them?
+Oops...
 
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+>>      case MMC_RDWAIT:
+>> -        return 0;
+>> +        break;
+>>      case MMC_BLKS_REM:
+>> -        return s->numblk;
+>> +        ret = s->numblk;
+>> +        break;
+>>      default:
+>>          hw_error("%s: Bad offset " REG_FMT "\n", __FUNCTION__, offset);
+> 
+> Maybe worth removing this as well?
 
-Alistair
+Indeed!
 
->      }
->
->      return 0;
-> @@ -377,8 +382,12 @@ static void pxa2xx_timer_write(void *opaque, hwaddr =
-offset,
->          }
->          break;
->      default:
-> +        qemu_log_mask(LOG_UNIMP, "%s: unknown reg 0x%02" HWADDR_PRIx " "
-> +                      "(value 0x%08" PRIx64 ")\n", __func__, offset, val=
-ue);
-> +        break;
->      badreg:
-> -        hw_error("pxa2xx_timer_write: Bad offset " REG_FMT "\n", offset)=
-;
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: incorrect reg 0x%02" HWADDR_=
-PRIx " "
-> +                      "(value 0x%08" PRIx64 ")\n", __func__, offset, val=
-ue);
->      }
->  }
->
-> --
-> 2.15.1
->
->
+> 
+> Either way:
+> 
+> Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+
+Thanks :)
+
+> 
+> Alistair
+> 
+>>      }
+>> +    trace_pxa2xx_mmci_read(size, offset, ret);
+>>
+>> -    return 0;
+>> +    return ret;
+>>  }
+>>
+>>  static void pxa2xx_mmci_write(void *opaque,
+>> @@ -341,6 +357,7 @@ static void pxa2xx_mmci_write(void *opaque,
+>>  {
+>>      PXA2xxMMCIState *s = (PXA2xxMMCIState *) opaque;
+>>
+>> +    trace_pxa2xx_mmci_write(size, offset, value);
+>>      switch (offset) {
+>>      case MMC_STRPCL:
+>>          if (value & STRPCL_STRT_CLK) {
+>> diff --git a/hw/sd/trace-events b/hw/sd/trace-events
+>> index 1fc0bcf44b..6eca3470e2 100644
+>> --- a/hw/sd/trace-events
+>> +++ b/hw/sd/trace-events
+>> @@ -3,3 +3,7 @@
+>>  # hw/sd/milkymist-memcard.c
+>>  milkymist_memcard_memory_read(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
+>>  milkymist_memcard_memory_write(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
+>> +
+>> +# hw/sd/pxa2xx_mmci.c
+>> +pxa2xx_mmci_read(uint8_t size, uint32_t addr, uint32_t value) "size %d addr 0x%02x value 0x%08x"
+>> +pxa2xx_mmci_write(uint8_t size, uint32_t addr, uint32_t value) "size %d addr 0x%02x value 0x%08x"
+>> --
+>> 2.15.1
+>>
+>>

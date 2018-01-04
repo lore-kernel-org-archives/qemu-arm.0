@@ -1,203 +1,260 @@
-Received: by 10.223.134.117 with SMTP id 50csp12692112wrw;
-        Wed, 3 Jan 2018 20:22:38 -0800 (PST)
-X-Google-Smtp-Source: ACJfBotWii1Dfc+QwW7oaPaNVfAX9/o0vvkDc51uM/Kjum8OhSbSLsz5DmTJbMed/v1zQ5pa9jmm
-X-Received: by 10.37.172.71 with SMTP id r7mr3367162ybd.157.1515039758148;
-        Wed, 03 Jan 2018 20:22:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515039758; cv=none;
+Received: by 10.223.134.117 with SMTP id 50csp12758491wrw;
+        Wed, 3 Jan 2018 22:32:33 -0800 (PST)
+X-Google-Smtp-Source: ACJfBoti4FHTWtZI2g2cQAU983OhX5zwsSU7ajTgSSfntzVeOBGIomaAQK1gLZHb3sgtlLOGntVU
+X-Received: by 10.84.238.9 with SMTP id u9mr3648216plk.147.1515047552946;
+        Wed, 03 Jan 2018 22:32:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515047552; cv=none;
         d=google.com; s=arc-20160816;
-        b=PTuIxT8kkONRgCV/HgYXRbVBaGARjo2BKP95/esQuSnllnagr9y9uCKLR3Ke8xxT8p
-         EIgs5HojwA3O/0nsgl3EoReTYd4L1a2TE4aISgdmPzWor9qwMvBUNgoaaXAsKgPpNISx
-         S+hx2yi9RvZBTlqo/ps0Mzylwwxz5csl3EQW/GdFjAQ236KvHA7pUrd5dcWp8tTuTOiq
-         c8EhkVeMPhhHN8czLHjLX8VhqWeRjMp0cgNBYDSR4r33RMN742zoYWKKzWpkV8w/PJxp
-         CWUZN3/apcTIzeN9UqZ+2Cpho6p9PsZIcLeE9I7uXzEt0Lo2GwNlIi2jzCVtL++2uvuX
-         Qvew==
+        b=cmPeDWTXK0oOLhOaL0IuAXZwwKJuHioXcyD9njIWsD7GcPKvXj+Lt/ZPr8a87unGus
+         iy4i+2dPcrWYstsClE1qsx6y1bKtwlmxgKaKp5i/vrRtQAVKS1MbTkvsR+4h2gZ55rBM
+         vwyeAjOxknFkRlOJ8OeE88ONsHSnNJOo79BYfsq2VNNu1B0wRx8mJ4qid3kankZDuKJM
+         XRnvuC+u2P84O0++xCNzM2kZeAI2hRvYgJk9BMtMhyEjESNWqzCSUz+mBCdGPZSos8Lv
+         zoJ6OnNLuvbYqLZbR9RNZ6UHMd8nPuF6oCeWK9yuUEzkRaOrkkhOxQxT6TJH+d7TLN0A
+         J3Ew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
-         :arc-authentication-results;
-        bh=eijjj3HIrvOq+bBPsW3+71bB5ZNCjtqdmMUUgmP3m70=;
-        b=tkV4brwayfD7rR9XbLPxQqcOuxmaUV36gV+mcH7vQqE63UJ5Ycfub+6I6iP03ZA0Ns
-         e2HjLlnW+JA/KfeoA4LwlXcNSZOJFEkvqMZluYF/SvhsZRb/wWZeBedjMHK4mQzlv1nr
-         8Tc7nyjmZWoWYtNat1phVBXJcbNu6dghI8ZAryW5mFqrApVW9NOGO7F9QCkZrq/8OQh3
-         HE7sn7rzF+CPonliB3l2s49hg/MNwt0D6nGAYN3NYiSRxE9QalWXItIVd26iNEAU45Bf
-         1OBrIhck4bS1hV/sDiFrqrey6bpetRN+tiVklgbBf/mUU45rK2tpJsmbmpNgIbJbBeRM
-         Otxw==
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject:arc-authentication-results;
+        bh=eSpGR6lgo7I0ecAajMMW/R3nLFU8QX5Wq++5/uTNgyk=;
+        b=jEjrfZ1/nO84x28+oKGMl6eTJIoHLHmI71aRpQvoKRNAp3tZUC2DBtRMsDcZBZYaHp
+         jJsX2AisKztp/Z1fEu9IUa3hWQAPRV9Z+uurzxNWUJ9HOSDPdJOLX0K/AvyBhZS1ytA9
+         tF66Z0kSXOvMkaFP27IUw5BSFo8P1WqDEtVWvUZWQWuDsnSHE5GdOByVvnrHhTO7o1gS
+         1n2S4R43J1Sz2mAj1y4+SqZLxpc+hBroigq7YOOJNGEx/k3emzHdTb9y7HRXen2s1VCr
+         QL2ROidXGU+3YKenkopAiAUgYTm4P5ggEnH7WQAEIb0PbrEYh5ighEovgX3xtuvyScmX
+         cYfA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i17si534716ybk.330.2018.01.03.20.22.37
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 03 Jan 2018 20:22:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id w11si1886049pfa.211.2018.01.03.22.32.32;
+        Wed, 03 Jan 2018 22:32:32 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:47226 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eWx37-0002jF-Iy
-	for alex.bennee@linaro.org; Wed, 03 Jan 2018 23:22:37 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60200)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1eWx2z-0002ii-QU
-	for qemu-arm@nongnu.org; Wed, 03 Jan 2018 23:22:30 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1eWx2v-0004M5-87
-	for qemu-arm@nongnu.org; Wed, 03 Jan 2018 23:22:29 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2140 helo=huawei.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <gengdongjiu@huawei.com>)
-	id 1eWx2u-0004Ed-QV; Wed, 03 Jan 2018 23:22:25 -0500
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
-	by Forcepoint Email with ESMTP id 5E532964B59FD;
-	Thu,  4 Jan 2018 12:22:05 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS411-HUB.china.huawei.com
-	(10.3.19.211) with Microsoft SMTP Server id 14.3.361.1; Thu, 4 Jan 2018
-	12:22:00 +0800
-To: Igor Mammedov <imammedo@redhat.com>, James Morse <james.morse@arm.com>
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1752356AbeADGca (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 5 others); Thu, 4 Jan 2018 01:32:30 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:53412 "EHLO huawei.com"
+        rhost-flags-OK-FAIL-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1752336AbeADGc3 (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 4 Jan 2018 01:32:29 -0500
+Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.58])
+        by Forcepoint Email with ESMTP id D7AA5941C0C8B;
+        Thu,  4 Jan 2018 14:32:10 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by DGGEMS407-HUB.china.huawei.com
+ (10.3.19.207) with Microsoft SMTP Server id 14.3.361.1; Thu, 4 Jan 2018
+ 14:32:05 +0800
+Subject: Re: [PATCH v14 9/9] target-arm: kvm64: handle SIGBUS signal from
+ kernel or KVM
+To:     Igor Mammedov <imammedo@redhat.com>
+CC:     <pbonzini@redhat.com>, <mst@redhat.com>,
+        <zhaoshenglong@huawei.com>, <peter.maydell@linaro.org>,
+        <mtosatti@redhat.com>, <rth@twiddle.net>, <ehabkost@redhat.com>,
+        <james.morse@arm.com>, <christoffer.dall@linaro.org>,
+        <marc.zyngier@arm.com>, <kvm@vger.kernel.org>,
+        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
+        <huangshaoyu@huawei.com>, <zhengqiang10@huawei.com>,
+        <xuwei5@hisilicon.com>
 References: <1514440458-10515-1-git-send-email-gengdongjiu@huawei.com>
-	<1514440458-10515-3-git-send-email-gengdongjiu@huawei.com>
-	<20171228151809.10495a90@igors-macbook-pro.local>
-	<10087bbd-28b0-b5ad-101a-e6d5ac648548@huawei.com>
-	<20180103143104.2b814aa0@redhat.com>
-From: gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <ceefdb58-f41c-5a4b-08c4-27f24efb121e@huawei.com>
-Date: Thu, 4 Jan 2018 12:21:55 +0800
+ <1514440458-10515-10-git-send-email-gengdongjiu@huawei.com>
+ <20171228160727.62d0857d@igors-macbook-pro.local>
+ <fed83a29-d96f-e696-8b94-dc2d1e81ee21@huawei.com>
+ <20180103144442.21efd2c7@redhat.com>
+From:   gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <62b802f3-25b3-ba4b-211d-efc33ac9bf63@huawei.com>
+Date:   Thu, 4 Jan 2018 14:31:58 +0800
 User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-In-Reply-To: <20180103143104.2b814aa0@redhat.com>
+In-Reply-To: <20180103144442.21efd2c7@redhat.com>
 Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.142.68.147]
 X-CFilter-Loop: Reflected
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 45.249.212.190
-Subject: Re: [Qemu-arm] [PATCH v14 2/9] ACPI: Add APEI GHES table generation
- and CPER record support
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, kvm@vger.kernel.org,
-	mst@redhat.com, marc.zyngier@arm.com, mtosatti@redhat.com,
-	qemu-devel@nongnu.org, xuwei5@hisilicon.com, qemu-arm@nongnu.org,
-	huangshaoyu@huawei.com, zhaoshenglong@huawei.com,
-	pbonzini@redhat.com, zhengqiang10@huawei.com,
-	christoffer.dall@linaro.org, rth@twiddle.net
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MjjThOaAh39w
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: W90ySiqHyrFU
 
-On 2018/1/3 21:31, Igor Mammedov wrote:
-> On Wed, 3 Jan 2018 10:21:06 +0800
+On 2018/1/3 21:44, Igor Mammedov wrote:
+> On Wed, 3 Jan 2018 17:13:45 +0800
 > gengdongjiu <gengdongjiu@huawei.com> wrote:
->=20
-> [...]  =20
->>>  =20
->>>> In order to simulation, we hard code the error
->>>> type to Multi-bit ECC. =20
->>> Not sure what this is about, care to elaborate? =20
+> 
+>> On 2017/12/28 23:07, Igor Mammedov wrote:
+>>> On Thu, 28 Dec 2017 13:54:18 +0800
+>>> Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+>>>   
+>>>> Add SIGBUS signal handler. In this handler, it checks the SIGBUS type,
+>>>> translates the host VA which is delivered by host to guest PA, then fill
+>>>> this PA to CPER and fill the CPER to guest APEI GHES memory, finally
+>>>> notify guest according to the SIGBUS type. There are two kinds of SIGBUS
+>>>> that QEMU needs to handle, which are BUS_MCEERR_AO and BUS_MCEERR_AR.
+>>>>
+>>>> If guest accesses the poisoned memory, it generates Synchronous External
+>>>> Abort(SEA). Then host kernel gets an APEI notification and call memory_failure()
+>>>> to unmapped the affected page from the guest's stage2, and SIGBUS_MCEERR_AO  
+>>> s/unmapped/unmap/  
+>> Thanks.
 >>
->> please see Memory Error Record in [1], in which the "Memory Error Type=
-" field is used to describe the
->> error type, such as  Multi-bit ECC or Parity Error etc. Because KVM or=
- host does not pass the memory
->> error type to Qemu, so Qemu does not know what is the error type for t=
-he memory section. Hence we let QEMU simulate
->> the error type to Multi-bit ECC.
-> Agreed that in case of TCG qemu won't likely have any way to get hw err=
-or from kernel
-> so it could be useful only for testing purposes (i.e. 'make check' and/=
-or testing
-> how guest OS handles errors)
->=20
-> But with KVM in kernel it should be possible to fish error out from hos=
-t kernel
-> and forward it to guest. If this are intended for handling HW errors,
-> I'm not sure that 'Multi-bit ECC' could replace all real errors reporte=
-d by host
-> firmware.
-Thanks for the mail.
-I understand your meaning, I explain it more.
+>>>   
+>>>> is delivered to Qemu's main thread. If Qemu receives this SIGBUS, it will
+>>>> create a new CPER and add it to guest APEI GHES memory, then notify the
+>>>> guest with a GPIO-Signal notification.  
+>>> too long sentence, it's hard get what goes on here, pls split it in simple
+>>> sentences/rephrase so it would be easy to understand behavior.  
+>> I will split it in simple sentences/rephrase.
+>> Thanks for your detailed review.
+>>
+>>>   
+>>>>
+>>>> When guest hits a PG_hwpoison page, it will trap to KVM as stage2 fault, then a
+>>>> SIGBUS_MCEERR_AR synchronous signal is delivered to Qemu, Qemu record this error
+>>>> into guest APEI GHES memory and notify guest using Synchronous-External-Abort(SEA).
+>>>>
+>>>> Suggested-by: James Morse <james.morse@arm.com>
+>>>> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+>>>> ---
+>>>> Address James's comments to record CPER and notify guest for SIGBUS signal handling.
+>>>> Shown some discussion in [1].
+>>>>
+>>>> [1]:
+>>>> https://lkml.org/lkml/2017/2/27/246
+>>>> https://lkml.org/lkml/2017/9/14/241
+>>>> https://lkml.org/lkml/2017/9/22/499
+>>>> ---
+>>>>  include/sysemu/kvm.h |  2 +-
+>>>>  target/arm/kvm.c     |  2 ++
+>>>>  target/arm/kvm64.c   | 34 ++++++++++++++++++++++++++++++++++
+>>>>  3 files changed, 37 insertions(+), 1 deletion(-)
+>>>>
+>>>> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+>>>> index 3a458f5..90c1605 100644
+>>>> --- a/include/sysemu/kvm.h
+>>>> +++ b/include/sysemu/kvm.h
+>>>> @@ -361,7 +361,7 @@ bool kvm_vcpu_id_is_valid(int vcpu_id);
+>>>>  /* Returns VCPU ID to be used on KVM_CREATE_VCPU ioctl() */
+>>>>  unsigned long kvm_arch_vcpu_id(CPUState *cpu);
+>>>>  
+>>>> -#ifdef TARGET_I386
+>>>> +#if defined(TARGET_I386) || defined(TARGET_AARCH64)
+>>>>  #define KVM_HAVE_MCE_INJECTION 1
+>>>>  void kvm_arch_on_sigbus_vcpu(CPUState *cpu, int code, void *addr);
+>>>>  #endif
+>>>> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+>>>> index 7c17f0d..9d25f51 100644
+>>>> --- a/target/arm/kvm.c
+>>>> +++ b/target/arm/kvm.c
+>>>> @@ -26,6 +26,7 @@
+>>>>  #include "exec/address-spaces.h"
+>>>>  #include "hw/boards.h"
+>>>>  #include "qemu/log.h"
+>>>> +#include "exec/ram_addr.h"
+>>>>  
+>>>>  const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
+>>>>      KVM_CAP_LAST_INFO
+>>>> @@ -182,6 +183,7 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+>>>>  
+>>>>      cap_has_mp_state = kvm_check_extension(s, KVM_CAP_MP_STATE);
+>>>>  
+>>>> +    qemu_register_reset(kvm_unpoison_all, NULL);
+>>>>      type_register_static(&host_arm_cpu_type_info);
+>>>>  
+>>>>      return 0;
+>>>> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+>>>> index c00450d..6955d85 100644
+>>>> --- a/target/arm/kvm64.c
+>>>> +++ b/target/arm/kvm64.c
+>>>> @@ -27,6 +27,9 @@
+>>>>  #include "kvm_arm.h"
+>>>>  #include "internals.h"
+>>>>  #include "hw/arm/arm.h"
+>>>> +#include "exec/ram_addr.h"
+>>>> +#include "hw/acpi/acpi-defs.h"
+>>>> +#include "hw/acpi/hest_ghes.h"
+>>>>  
+>>>>  static bool have_guest_debug;
+>>>>  
+>>>> @@ -944,6 +947,37 @@ int kvm_arch_get_registers(CPUState *cs)
+>>>>      return ret;
+>>>>  }
+>>>>  
+>>>> +void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+>>>> +{
+>>>> +    ram_addr_t ram_addr;
+>>>> +    hwaddr paddr;
+>>>> +
+>>>> +    assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
+>>>> +    if (addr) {
+>>>> +        ram_addr = qemu_ram_addr_from_host(addr);
+>>>> +        if (ram_addr != RAM_ADDR_INVALID &&
+>>>> +            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
+>>>> +            kvm_hwpoison_page_add(ram_addr);
+>>>> +            if (code == BUS_MCEERR_AR) {
+>>>> +                kvm_cpu_synchronize_state(c);
+>>>> +                ghes_record_errors(ACPI_HEST_NOTIFY_SEA, paddr);
+>>>> +                kvm_inject_arm_sea(c);
+>>>> +            } else if (code == BUS_MCEERR_AO) {
+>>>> +                ghes_record_errors(ACPI_HEST_NOTIFY_GPIO, paddr);
+>>>> +                qemu_hardware_error_notify();
+>>>> +            }
+>>>> +            return;
+>>>> +        }
+>>>> +        fprintf(stderr, "Hardware memory error for memory used by "
+>>>> +                "QEMU itself instead of guest system!\n");  
+>>> not quite sure what above message means,  
+>> When the memory error address belong to QEMU itself, not belong to guest OS.
+>> it will print above message.
+>>
+>> Above message means this memory error happens in QEMU application instead of guest OS.
+> I'm not really understand what's going here and how it could happen,
 
-(1). In fact the Memory Error type is not important to guest OS, when the=
- OS(such as guest OS) do memory recovery,
-it does not uses the memory error type, OS(such as guest OS) mainly uses =
-the memory_failure() function[1] to do recovery ,
-In this function, it does not care what is the memory error type, It even=
- does not know what is the memory error type.
-(2). If KVM forward the error type to guest, it needs more efforts, may b=
-e not worth to do. The real memory error type exists in host
-APEI table, only host APEI driver can get it, KVM can not directly get it=
-. If forward it to guest, KVM needs to firstly get the error
-type from APEI driver and forward it to guest, which may be opposed by Ja=
-mes(james.morse@arm.com), I ever export more error information
-to guest, but James does not agree that. In the ARM64 platform, we do not=
- have implementation to get the error information from the
-APEI driver to KVM or to other kernel modules.
+Thanks, sorry for your confusion. I make a example:
 
+As a general application, when QEMU does not run guest, if Qemu's thread touch a poison user space
+memory, it will trap to host kernel, host kernel will call memory error handler(memory_failure())
+to handle this error access, kernel memory error handler will deliver SIGBUS to QEMU, in this
+process, KVM and guest are not involved. Because this address is not belong to guest(not match 'if'
+condition in[1]), so it go to here and print above message.
 
 [1]:
-int memory_failure(unsigned long pfn, int trapno, int flags)
-{
-  ......
- }
+        if (ram_addr != RAM_ADDR_INVALID &&
+             kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
+	          .......
+	     return;
+         }
+         fprintf(stderr, "Hardware memory error for memory used by "
+                 "QEMU itself instead of guest system!\n");
 
->=20
->=20
->> [1]:
->> UEFI Spec 2.6 Errata A:
+> so I can't suggest something. Perhaps someone else could comment on it.
+>  
+>>> also fprintf() probably shouldn't be used by new code.  
+>> how about we use error_report()? thanks
+> I'm not sure what current trend is, but I'd use error_report() vs fprintf()
+> 
+> Also series could benefit from trace-points (I haven't noticed any).
+I will add some trace-points, thanks.
+
+> 
+>>>   
+>>>> +    }
+>>>> +
+>>>> +    if (code == BUS_MCEERR_AR) {
+>>>> +        fprintf(stderr, "Hardware memory error!\n");
+>>>> +        exit(1);
+>>>> +    }
+>>>> +}
+>>>> +
+>>>>  /* C6.6.29 BRK instruction */
+>>>>  static const uint32_t brk_insn = 0xd4200000;
+>>>>    
+>>>
+>>>
+>>> .
+>>>   
 >>
->> "N.2.5 Memory Error Section"
->> -----------------+---------------+--------------+---------------------=
-----------------------+
->>         Mnemonic |   Byte Offset |  Byte Length |        Description  =
-                      |
->> -----------------+---------------+--------------+---------------------=
-----------------------+
->>         ........ |  ............ |  .........   |        ...........  =
-                      |
->> -----------------+---------------+--------------+---------------------=
-----------------------+
->> Memory Error Type|     72        |       1      |Identifies the type o=
-f error that occurred:|
->> 		 |		 |		| 0 =E2=80=93 Unknown                              |
->> 		 |		 |		| 1 =E2=80=93 No error                             |
->> 		 |		 |		| 2 =E2=80=93 Single-bit ECC                       |
->> 		 |		 |		| 3 =E2=80=93 Multi-bit ECC                        |
->> 		 |		 |		| 4 =E2=80=93 Single-symbol ChipKill ECC           |
->> 		 |		 |		| 5 =E2=80=93 Multi-symbol ChipKill ECC            |
->> 		 |		 |		| 6 =E2=80=93 Master abort			    |
->> 		 |		 |		| 7 =E2=80=93 Target abort			    |
->> 		 |		 |		| 8 =E2=80=93 Parity Error			    |
->> 		 |		 |		| 9 =E2=80=93 Watchdog timeout			    |
->> 		 |		 |		| 10 =E2=80=93 Invalid address			    |
->> 		 |		 |		| 11 =E2=80=93 Mirror Broken			    |
->> 		 |		 |		| 12 =E2=80=93 Memory Sparing			    |
->> 		 |		 |		| 13 - Scrub corrected error		    |
->> 		 |		 |		| 14 - Scrub uncorrected error		    |
->> 		 |		 |		| 15 - Physical Memory Map-out event	    |
->> 		 |		 |		| All other values reserved.		    |
->> -----------------+---------------+--------------+---------------------=
-----------------------+
->>         ........ |  ............ |  .........   |        ...........  =
-                      |
->> -----------------+---------------+--------------+---------------------=
-----------------------+
-> [...]
->=20
+> 
+> 
 > .
->=20
-
+> 

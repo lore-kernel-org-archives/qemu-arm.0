@@ -1,260 +1,202 @@
-Received: by 10.223.134.117 with SMTP id 50csp12758491wrw;
-        Wed, 3 Jan 2018 22:32:33 -0800 (PST)
-X-Google-Smtp-Source: ACJfBoti4FHTWtZI2g2cQAU983OhX5zwsSU7ajTgSSfntzVeOBGIomaAQK1gLZHb3sgtlLOGntVU
-X-Received: by 10.84.238.9 with SMTP id u9mr3648216plk.147.1515047552946;
-        Wed, 03 Jan 2018 22:32:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515047552; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp657434wme;
+        Fri, 5 Jan 2018 04:34:57 -0800 (PST)
+X-Google-Smtp-Source: ACJfBouHUdpKnQpdrdyFGNVhxRAq6tN4chlE1aGPq+SLNPv0u6DUugY0L46ZChm3r05qDAznMYai
+X-Received: by 10.37.212.208 with SMTP id m199mr2662854ybf.7.1515155697731;
+        Fri, 05 Jan 2018 04:34:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515155697; cv=none;
         d=google.com; s=arc-20160816;
-        b=cmPeDWTXK0oOLhOaL0IuAXZwwKJuHioXcyD9njIWsD7GcPKvXj+Lt/ZPr8a87unGus
-         iy4i+2dPcrWYstsClE1qsx6y1bKtwlmxgKaKp5i/vrRtQAVKS1MbTkvsR+4h2gZ55rBM
-         vwyeAjOxknFkRlOJ8OeE88ONsHSnNJOo79BYfsq2VNNu1B0wRx8mJ4qid3kankZDuKJM
-         XRnvuC+u2P84O0++xCNzM2kZeAI2hRvYgJk9BMtMhyEjESNWqzCSUz+mBCdGPZSos8Lv
-         zoJ6OnNLuvbYqLZbR9RNZ6UHMd8nPuF6oCeWK9yuUEzkRaOrkkhOxQxT6TJH+d7TLN0A
-         J3Ew==
+        b=z8a1VmXOZae6dY7YYeN3KOcLCzVn3uuj5Vhf3lBsaJAqRn4y/uDgsoYUEyJX13Ahwu
+         3pp0Fewt2KW5W5XZn/wBn6kP6Ne24oZAceNjH5NjGIagYpdoAiPTs3M4TxoVUXbHvPVH
+         tCbhjBmIsdja/DR/vZ0oDovpI6EauNtlSEVI6OY+jc7bFiMCQIYi0AZUMo+q8uGCTFEe
+         bocJNXCVbmTzp1SMCuB7462vjbkr9vg7TwHkdsVq4H3e4osEUAM0y7Ignj+38wwJ6FrV
+         Sjz5S7ObNm1FjTVIHIV6QQ0uEwdZFA/Y+vBqIrYXSVtavrsVDC118kUPNJxlAnZTT9Uz
+         pSXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject:arc-authentication-results;
-        bh=eSpGR6lgo7I0ecAajMMW/R3nLFU8QX5Wq++5/uTNgyk=;
-        b=jEjrfZ1/nO84x28+oKGMl6eTJIoHLHmI71aRpQvoKRNAp3tZUC2DBtRMsDcZBZYaHp
-         jJsX2AisKztp/Z1fEu9IUa3hWQAPRV9Z+uurzxNWUJ9HOSDPdJOLX0K/AvyBhZS1ytA9
-         tF66Z0kSXOvMkaFP27IUw5BSFo8P1WqDEtVWvUZWQWuDsnSHE5GdOByVvnrHhTO7o1gS
-         1n2S4R43J1Sz2mAj1y4+SqZLxpc+hBroigq7YOOJNGEx/k3emzHdTb9y7HRXen2s1VCr
-         QL2ROidXGU+3YKenkopAiAUgYTm4P5ggEnH7WQAEIb0PbrEYh5ighEovgX3xtuvyScmX
-         cYfA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=Dsh8X+LHraTl8XKUu+HDCYmtOl70jXbVmzFDu5Bl/G0=;
+        b=fTLiczxJX+1U20sATUG3rCNq9VqHeq+W1CeZHrvCZLqztnm188uGLawWtzBHENK2LL
+         2lXoE8iixLiQ1DyXjl1TS/j2PREuudaHjA/DT2GhtcvVGTq+n6+osdP+tjwE8Zl5hr7/
+         AfeW5cc6CA+VhCdWbqlwx8s9kFwuNYszCK/l7sYXxkQy3ASkNccSacrWvf2iXIMqORkO
+         bmgMCAXnkiTMMT1JUw2nRWThbjOtxAWY7U2y/8oVLmxdErMShM8KDhXCQ4NwigFAeYvu
+         /bvUShp5/fANlbUjUhLQd1GxByWeYGsz941v6rAn0YqnfvvUHf7BFxkQB8Ad6HbXY+K2
+         aQOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id w11si1886049pfa.211.2018.01.03.22.32.32;
-        Wed, 03 Jan 2018 22:32:32 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=E1KePu8i;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id k3si1189054ywf.102.2018.01.05.04.34.57
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 05 Jan 2018 04:34:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1752356AbeADGca (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 5 others); Thu, 4 Jan 2018 01:32:30 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:53412 "EHLO huawei.com"
-        rhost-flags-OK-FAIL-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1752336AbeADGc3 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 4 Jan 2018 01:32:29 -0500
-Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.58])
-        by Forcepoint Email with ESMTP id D7AA5941C0C8B;
-        Thu,  4 Jan 2018 14:32:10 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS407-HUB.china.huawei.com
- (10.3.19.207) with Microsoft SMTP Server id 14.3.361.1; Thu, 4 Jan 2018
- 14:32:05 +0800
-Subject: Re: [PATCH v14 9/9] target-arm: kvm64: handle SIGBUS signal from
- kernel or KVM
-To:     Igor Mammedov <imammedo@redhat.com>
-CC:     <pbonzini@redhat.com>, <mst@redhat.com>,
-        <zhaoshenglong@huawei.com>, <peter.maydell@linaro.org>,
-        <mtosatti@redhat.com>, <rth@twiddle.net>, <ehabkost@redhat.com>,
-        <james.morse@arm.com>, <christoffer.dall@linaro.org>,
-        <marc.zyngier@arm.com>, <kvm@vger.kernel.org>,
-        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
-        <huangshaoyu@huawei.com>, <zhengqiang10@huawei.com>,
-        <xuwei5@hisilicon.com>
-References: <1514440458-10515-1-git-send-email-gengdongjiu@huawei.com>
- <1514440458-10515-10-git-send-email-gengdongjiu@huawei.com>
- <20171228160727.62d0857d@igors-macbook-pro.local>
- <fed83a29-d96f-e696-8b94-dc2d1e81ee21@huawei.com>
- <20180103144442.21efd2c7@redhat.com>
-From:   gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <62b802f3-25b3-ba4b-211d-efc33ac9bf63@huawei.com>
-Date:   Thu, 4 Jan 2018 14:31:58 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=E1KePu8i;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:37356 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eXRD7-0007Yy-7O
+	for alex.bennee@linaro.org; Fri, 05 Jan 2018 07:34:57 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44011)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eXRCu-0007Yo-Ej
+	for qemu-arm@nongnu.org; Fri, 05 Jan 2018 07:34:45 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eXRCr-0007Ci-B8
+	for qemu-arm@nongnu.org; Fri, 05 Jan 2018 07:34:44 -0500
+Received: from mail-qt0-x22a.google.com ([2607:f8b0:400d:c0d::22a]:44572)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eXRCr-0007Bw-6L; Fri, 05 Jan 2018 07:34:41 -0500
+Received: by mail-qt0-x22a.google.com with SMTP id m59so5503056qte.11;
+	Fri, 05 Jan 2018 04:34:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=Dsh8X+LHraTl8XKUu+HDCYmtOl70jXbVmzFDu5Bl/G0=;
+	b=E1KePu8ine7fqKJwn1Zietxh97UWLpHuWy/t3VpYg8q0oV6taLEr1JhDAOb6gqqKux
+	RUddhOeopxNrUaAN4VLUNHNMcIp6W+44S9HyoDH0r7qSjDTPDySfACsulS5WPLNgKfsP
+	ejr32DCqiKlpleHTa7fmpdFZ1gzaPWXFiGqvOPVoOjpTsG0W72knO/gAY18jy15QIX56
+	WaAp7ca8eIhlocgcVNvutJ70BGO+Vp9rNgo/8TTzWiZbdH8pB/ZF26Iw5OFAnLBdf2P7
+	UFabEXPGog9666fH6zqgdRUp4nCS1sc6fjAj+U2m/1C4lryh5j7UzosxR1fVhoSDtbic
+	bOoQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=Dsh8X+LHraTl8XKUu+HDCYmtOl70jXbVmzFDu5Bl/G0=;
+	b=fd1LbQ67Z07X1+T8pTIGjq6HjuaDZPR4YMTQYo2Nq5faUpbTW10gRa0SpvHDqMrfzo
+	+JqgyI0NuB/cCHGORP48vsy299AVfFXUsqaTqjAAGMXdEI4ROjVPn0h4/KAyoH2ljskv
+	JM3wpgeGRhnt+yYXI0VUwzcMZZN7N6RohUu/Lawl6RMv7mooZpDc+mqYvV5cjLWxVXHg
+	8by4Uwpk9fzeuzotQCNylVL7jXbHTTOQNmQcpqxyMrzyIpk0KampiT0/A1GrOE9pqDAs
+	tEZi/FQvlgx2NB7v3wDjG1jHlvxRwjA3jEu3g4O6zxQoS/qMyL/RpbFXNd/K0x7C+jVV
+	Tvig==
+X-Gm-Message-State: AKwxytfvGrg5Nq1Oc+7a1MOuix8YlxroG74RzlaKz9ssb4bY8FAnedfx
+	/k37sBJjp+AxGWHmvE8TF6npPQRf
+X-Received: by 10.237.42.66 with SMTP id k2mr4048317qtf.283.1515155680283;
+	Fri, 05 Jan 2018 04:34:40 -0800 (PST)
+Received: from [192.168.1.11] ([138.117.48.219])
+	by smtp.gmail.com with ESMTPSA id
+	d123sm3616712qkf.67.2018.01.05.04.34.37
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 05 Jan 2018 04:34:39 -0800 (PST)
+To: Alistair Francis <alistair.francis@xilinx.com>,
+	Michael Walle <michael@walle.cc>, Laurent Vivier <laurent@vivier.eu>
+References: <20180103162400.10396-1-f4bug@amsat.org>
+	<20180103162400.10396-2-f4bug@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <5ffb2419-86a9-6954-0e35-31da0cc97d61@amsat.org>
+Date: Fri, 5 Jan 2018 09:34:35 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.2
 MIME-Version: 1.0
-In-Reply-To: <20180103144442.21efd2c7@redhat.com>
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20180103162400.10396-2-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.142.68.147]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: W90ySiqHyrFU
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::22a
+Subject: Re: [Qemu-arm] [PATCH 1/6] hw/sd/milkymist-memcard: use
+ qemu_log_mask()
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: JN7dXcyYKG8e
 
-On 2018/1/3 21:44, Igor Mammedov wrote:
-> On Wed, 3 Jan 2018 17:13:45 +0800
-> gengdongjiu <gengdongjiu@huawei.com> wrote:
+I'm too comfortable with the 'log' trace backend and again forgot to add
+the "qemu/log.h" dependency ...
+
+/home/travis/build/philmd/qemu/hw/sd/milkymist-memcard.c:141:17: error:
+implicit declaration of function ‘qemu_log_mask’
+[-Werror=implicit-function-declaration]
+                 qemu_log_mask(LOG_GUEST_ERROR, "milkymist_memcard: "
+                 ^
+hw/sd/milkymist-memcard.c:141:31: error: ‘LOG_GUEST_ERROR’ undeclared
+(first use in this function)
+                 qemu_log_mask(LOG_GUEST_ERROR, "milkymist_memcard: "
+                               ^
+hw/sd/milkymist-memcard.c:166:23: error: ‘LOG_UNIMP’ undeclared (first
+use in this function)
+         qemu_log_mask(LOG_UNIMP, "milkymist_memcard: "
+                       ^
+
+On 01/03/2018 01:23 PM, Philippe Mathieu-Daudé wrote:
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  hw/sd/milkymist-memcard.c | 16 +++++++++-------
+>  1 file changed, 9 insertions(+), 7 deletions(-)
 > 
->> On 2017/12/28 23:07, Igor Mammedov wrote:
->>> On Thu, 28 Dec 2017 13:54:18 +0800
->>> Dongjiu Geng <gengdongjiu@huawei.com> wrote:
->>>   
->>>> Add SIGBUS signal handler. In this handler, it checks the SIGBUS type,
->>>> translates the host VA which is delivered by host to guest PA, then fill
->>>> this PA to CPER and fill the CPER to guest APEI GHES memory, finally
->>>> notify guest according to the SIGBUS type. There are two kinds of SIGBUS
->>>> that QEMU needs to handle, which are BUS_MCEERR_AO and BUS_MCEERR_AR.
->>>>
->>>> If guest accesses the poisoned memory, it generates Synchronous External
->>>> Abort(SEA). Then host kernel gets an APEI notification and call memory_failure()
->>>> to unmapped the affected page from the guest's stage2, and SIGBUS_MCEERR_AO  
->>> s/unmapped/unmap/  
->> Thanks.
->>
->>>   
->>>> is delivered to Qemu's main thread. If Qemu receives this SIGBUS, it will
->>>> create a new CPER and add it to guest APEI GHES memory, then notify the
->>>> guest with a GPIO-Signal notification.  
->>> too long sentence, it's hard get what goes on here, pls split it in simple
->>> sentences/rephrase so it would be easy to understand behavior.  
->> I will split it in simple sentences/rephrase.
->> Thanks for your detailed review.
->>
->>>   
->>>>
->>>> When guest hits a PG_hwpoison page, it will trap to KVM as stage2 fault, then a
->>>> SIGBUS_MCEERR_AR synchronous signal is delivered to Qemu, Qemu record this error
->>>> into guest APEI GHES memory and notify guest using Synchronous-External-Abort(SEA).
->>>>
->>>> Suggested-by: James Morse <james.morse@arm.com>
->>>> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
->>>> ---
->>>> Address James's comments to record CPER and notify guest for SIGBUS signal handling.
->>>> Shown some discussion in [1].
->>>>
->>>> [1]:
->>>> https://lkml.org/lkml/2017/2/27/246
->>>> https://lkml.org/lkml/2017/9/14/241
->>>> https://lkml.org/lkml/2017/9/22/499
->>>> ---
->>>>  include/sysemu/kvm.h |  2 +-
->>>>  target/arm/kvm.c     |  2 ++
->>>>  target/arm/kvm64.c   | 34 ++++++++++++++++++++++++++++++++++
->>>>  3 files changed, 37 insertions(+), 1 deletion(-)
->>>>
->>>> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
->>>> index 3a458f5..90c1605 100644
->>>> --- a/include/sysemu/kvm.h
->>>> +++ b/include/sysemu/kvm.h
->>>> @@ -361,7 +361,7 @@ bool kvm_vcpu_id_is_valid(int vcpu_id);
->>>>  /* Returns VCPU ID to be used on KVM_CREATE_VCPU ioctl() */
->>>>  unsigned long kvm_arch_vcpu_id(CPUState *cpu);
->>>>  
->>>> -#ifdef TARGET_I386
->>>> +#if defined(TARGET_I386) || defined(TARGET_AARCH64)
->>>>  #define KVM_HAVE_MCE_INJECTION 1
->>>>  void kvm_arch_on_sigbus_vcpu(CPUState *cpu, int code, void *addr);
->>>>  #endif
->>>> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
->>>> index 7c17f0d..9d25f51 100644
->>>> --- a/target/arm/kvm.c
->>>> +++ b/target/arm/kvm.c
->>>> @@ -26,6 +26,7 @@
->>>>  #include "exec/address-spaces.h"
->>>>  #include "hw/boards.h"
->>>>  #include "qemu/log.h"
->>>> +#include "exec/ram_addr.h"
->>>>  
->>>>  const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
->>>>      KVM_CAP_LAST_INFO
->>>> @@ -182,6 +183,7 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
->>>>  
->>>>      cap_has_mp_state = kvm_check_extension(s, KVM_CAP_MP_STATE);
->>>>  
->>>> +    qemu_register_reset(kvm_unpoison_all, NULL);
->>>>      type_register_static(&host_arm_cpu_type_info);
->>>>  
->>>>      return 0;
->>>> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
->>>> index c00450d..6955d85 100644
->>>> --- a/target/arm/kvm64.c
->>>> +++ b/target/arm/kvm64.c
->>>> @@ -27,6 +27,9 @@
->>>>  #include "kvm_arm.h"
->>>>  #include "internals.h"
->>>>  #include "hw/arm/arm.h"
->>>> +#include "exec/ram_addr.h"
->>>> +#include "hw/acpi/acpi-defs.h"
->>>> +#include "hw/acpi/hest_ghes.h"
->>>>  
->>>>  static bool have_guest_debug;
->>>>  
->>>> @@ -944,6 +947,37 @@ int kvm_arch_get_registers(CPUState *cs)
->>>>      return ret;
->>>>  }
->>>>  
->>>> +void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
->>>> +{
->>>> +    ram_addr_t ram_addr;
->>>> +    hwaddr paddr;
->>>> +
->>>> +    assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
->>>> +    if (addr) {
->>>> +        ram_addr = qemu_ram_addr_from_host(addr);
->>>> +        if (ram_addr != RAM_ADDR_INVALID &&
->>>> +            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
->>>> +            kvm_hwpoison_page_add(ram_addr);
->>>> +            if (code == BUS_MCEERR_AR) {
->>>> +                kvm_cpu_synchronize_state(c);
->>>> +                ghes_record_errors(ACPI_HEST_NOTIFY_SEA, paddr);
->>>> +                kvm_inject_arm_sea(c);
->>>> +            } else if (code == BUS_MCEERR_AO) {
->>>> +                ghes_record_errors(ACPI_HEST_NOTIFY_GPIO, paddr);
->>>> +                qemu_hardware_error_notify();
->>>> +            }
->>>> +            return;
->>>> +        }
->>>> +        fprintf(stderr, "Hardware memory error for memory used by "
->>>> +                "QEMU itself instead of guest system!\n");  
->>> not quite sure what above message means,  
->> When the memory error address belong to QEMU itself, not belong to guest OS.
->> it will print above message.
->>
->> Above message means this memory error happens in QEMU application instead of guest OS.
-> I'm not really understand what's going here and how it could happen,
-
-Thanks, sorry for your confusion. I make a example:
-
-As a general application, when QEMU does not run guest, if Qemu's thread touch a poison user space
-memory, it will trap to host kernel, host kernel will call memory error handler(memory_failure())
-to handle this error access, kernel memory error handler will deliver SIGBUS to QEMU, in this
-process, KVM and guest are not involved. Because this address is not belong to guest(not match 'if'
-condition in[1]), so it go to here and print above message.
-
-[1]:
-        if (ram_addr != RAM_ADDR_INVALID &&
-             kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
-	          .......
-	     return;
-         }
-         fprintf(stderr, "Hardware memory error for memory used by "
-                 "QEMU itself instead of guest system!\n");
-
-> so I can't suggest something. Perhaps someone else could comment on it.
+> diff --git a/hw/sd/milkymist-memcard.c b/hw/sd/milkymist-memcard.c
+> index 4008c81002..5de3e00e2f 100644
+> --- a/hw/sd/milkymist-memcard.c
+> +++ b/hw/sd/milkymist-memcard.c
+> @@ -26,7 +26,7 @@
+>  #include "hw/sysbus.h"
+>  #include "sysemu/sysemu.h"
+>  #include "trace.h"
+> -#include "qemu/error-report.h"
+> +#include "include/qapi/error.h"
+>  #include "sysemu/block-backend.h"
+>  #include "sysemu/blockdev.h"
+>  #include "hw/sd/sd.h"
+> @@ -138,8 +138,8 @@ static uint64_t memcard_read(void *opaque, hwaddr addr,
+>          } else {
+>              r = s->response[s->response_read_ptr++];
+>              if (s->response_read_ptr > s->response_len) {
+> -                error_report("milkymist_memcard: "
+> -                        "read more cmd bytes than available. Clipping.");
+> +                qemu_log_mask(LOG_GUEST_ERROR, "milkymist_memcard: "
+> +                              "read more cmd bytes than available. Clipping.");
+>                  s->response_read_ptr = 0;
+>              }
+>          }
+> @@ -163,8 +163,9 @@ static uint64_t memcard_read(void *opaque, hwaddr addr,
+>          break;
 >  
->>> also fprintf() probably shouldn't be used by new code.  
->> how about we use error_report()? thanks
-> I'm not sure what current trend is, but I'd use error_report() vs fprintf()
-> 
-> Also series could benefit from trace-points (I haven't noticed any).
-I will add some trace-points, thanks.
-
-> 
->>>   
->>>> +    }
->>>> +
->>>> +    if (code == BUS_MCEERR_AR) {
->>>> +        fprintf(stderr, "Hardware memory error!\n");
->>>> +        exit(1);
->>>> +    }
->>>> +}
->>>> +
->>>>  /* C6.6.29 BRK instruction */
->>>>  static const uint32_t brk_insn = 0xd4200000;
->>>>    
->>>
->>>
->>> .
->>>   
->>
-> 
-> 
-> .
+>      default:
+> -        error_report("milkymist_memcard: read access to unknown register 0x"
+> -                TARGET_FMT_plx, addr << 2);
+> +        qemu_log_mask(LOG_UNIMP, "milkymist_memcard: "
+> +                      "read access to unknown register 0x%" HWADDR_PRIx "\n",
+> +                      addr << 2);
+>          break;
+>      }
+>  
+> @@ -220,8 +221,9 @@ static void memcard_write(void *opaque, hwaddr addr, uint64_t value,
+>          break;
+>  
+>      default:
+> -        error_report("milkymist_memcard: write access to unknown register 0x"
+> -                TARGET_FMT_plx, addr << 2);
+> +        qemu_log_mask(LOG_UNIMP, "milkymist_memcard: "
+> +                      "write access to unknown register 0x%" HWADDR_PRIx " "
+> +                      "(value 0x%" PRIx64 ")\n", addr << 2, value);
+>          break;
+>      }
+>  }
 > 

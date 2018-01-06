@@ -1,539 +1,158 @@
-Received: by 10.223.159.74 with SMTP id f10csp2956837wrg;
-        Mon, 18 Dec 2017 10:07:36 -0800 (PST)
-X-Google-Smtp-Source: ACJfBounyHmIr8zSQYLkOMOnyDogRlTd9nyxnPtZlnr/TckshU9wLhPr4xz0zVVEdLW2uF7aIwwL
-X-Received: by 10.37.56.84 with SMTP id f81mr522897yba.33.1513620456622;
-        Mon, 18 Dec 2017 10:07:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1513620456; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp917wme;
+        Fri, 5 Jan 2018 18:20:22 -0800 (PST)
+X-Google-Smtp-Source: ACJfBosFlSZj/uam0fxxNwaLX+BwSRqXkLpZ5mrBUSpRCrWsdHEUk4sVsMCFTQ0X6wcTQHB875Oy
+X-Received: by 10.37.104.138 with SMTP id d132mr4639037ybc.380.1515205222621;
+        Fri, 05 Jan 2018 18:20:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515205222; cv=none;
         d=google.com; s=arc-20160816;
-        b=Fn4iPLX+bdz1sckD/+n5RY/1PQBC/DhUwp66JNArHcqy5/gDhDm763gJE2HW9yNOp7
-         h61Gb5UV3zBwAyHNLDDZFGBqWEfxrFDz+jDDmtLelnJxD+xqW1ipYxOavESeYCeYwYRc
-         CKAYx4joFQqkOOWJ1axMu4cjo794hShy0Q+awG22U9R3TnrMMoGaj1lv9Gyz3xRoUHp8
-         0RD5z949Nt3RhjMJM88iKg+hdyYhWEBf3N3BZ2pdPaYx87SVEm2kVfRCWXoGLTSaC3IM
-         o1mpUKPoIOS7ohhoXopmwbaor5TY1p72i+PHFtdd4dKygdnxwr2lozxFVwDMTpVO6PKT
-         uT0Q==
+        b=mu5knrf8Ddefu7f/2FTSA60Gjyf9yJOCv9lLst3cdLwiFiD3mdY0mv8sbPPekCH8mK
+         xgL/WUdOJkuDsY328L4NDLgEsTUMHR7giPPwRSg2uEwdcWrE0JsD03F9fPgyFN/neywE
+         cLfNRF29+wC1x8gAg5R9CYNJMO9qbxnX4x+XkppTinhZWJagGLza7gdJg+rH14w7BT+9
+         9hIPyVRiXfL+NIIEb6gUXK8igClC6fm2fjE2eY5CJr7qPYyeIiF9YSiMjyk3rZxXHw8n
+         5zoY2obkY2fBLne8dQ2q7O1nwA7Odnan4sSB6JkWg2r5zHuT04LWMP1r6SoaAsqVafzv
+         AFMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=FQf6glxcaldRv3XVm7caVixckARRsaMc5X+WPvrI+1Q=;
-        b=vkKIK4j/Xw0Db8EKfiXwfzCBQD83//ncV/YVN+GDBvOBk5ozZt1NE5fTQGpgY7x2N/
-         rzFJuAoeJJ8vtBFDsNoie/TBCfXALOQLafU9Nb/DYsZrZ5eqP2bAGjTG2w/OlyUUdhWv
-         HGZEvtz44ybgnxCsO1ZMXi2kwPHB0nqii4TcTc9VkejyPk6AeFv+hHlniJRsZGc24ENT
-         xMe/DnoQhAuOnOubrlE9fF2AqOBC5YGyXcYRD9JsMmXx3uuRWvDUEXwzA3mq0DKWZVs9
-         qBZRP86XmHriwmYfKrYlhbCjoRDVuzXW0QYsbp4EUuz+LwLu2JHhiXN80tYRYlWy0ouJ
-         XBNg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=UbIP9ZjWoFQzPxmJ1+T9AYZmjXirqxCXi5HmO7HByn8=;
+        b=Md0idUsfU/wyDLqxka6UZiusQChMIn9fapWETzKPdVSG2GZYF1tW1cdUPQjrRzNkAN
+         1pPsn7PjGbY1H4JkVqU2xQd7ilAK6hUsoPpaZJNQ/ocWhd150av+434bmiRuloXuGvv7
+         5GP0BqJm0Nj3Nc1e1M+IwSbeY1T6aOh17UhSQLecMB2I+WHYwnCjShqhCsWP6yJD3dSR
+         909JOJHaZc4qctG6Q3q/5j12vTpe4ID8O//aZ4a3faduSeSXE1ePoAmQoCdRM9QypEOP
+         F4pJrexKUBa3Wo3JY1Io9MrSJL7Cgsv71J2jXfBjBQp5rXvNNy1oe+4H4qVIOlRDjGwh
+         ZxZg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Gjd2EjxW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EpCQ3E90;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n11si2554527ywh.116.2017.12.18.10.07.36
+        by mx.google.com with ESMTPS id c12si1470154ybl.204.2018.01.05.18.20.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 18 Dec 2017 10:07:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 05 Jan 2018 18:20:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Gjd2EjxW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60176 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EpCQ3E90;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:42111 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eQzpA-0002W9-0a
-	for alex.bennee@linaro.org; Mon, 18 Dec 2017 13:07:36 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44410)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eXe5t-0006aM-QH
+	for alex.bennee@linaro.org; Fri, 05 Jan 2018 21:20:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46422)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1eQzFO-0002gV-W7
-	for qemu-devel@nongnu.org; Mon, 18 Dec 2017 12:30:42 -0500
+	(envelope-from <alistair23@gmail.com>) id 1eXe5i-0006Wa-SL
+	for qemu-arm@nongnu.org; Fri, 05 Jan 2018 21:20:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1eQzFK-0004iI-Fq
-	for qemu-devel@nongnu.org; Mon, 18 Dec 2017 12:30:38 -0500
-Received: from mail-pl0-x241.google.com ([2607:f8b0:400e:c01::241]:33657)
+	(envelope-from <alistair23@gmail.com>) id 1eXe5h-0004oz-Uq
+	for qemu-arm@nongnu.org; Fri, 05 Jan 2018 21:20:10 -0500
+Received: from mail-wr0-x242.google.com ([2a00:1450:400c:c0c::242]:39589)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1eQzFK-0004hU-68
-	for qemu-devel@nongnu.org; Mon, 18 Dec 2017 12:30:34 -0500
-Received: by mail-pl0-x241.google.com with SMTP id 1so3764049plv.0
-	for <qemu-devel@nongnu.org>; Mon, 18 Dec 2017 09:30:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=FQf6glxcaldRv3XVm7caVixckARRsaMc5X+WPvrI+1Q=;
-	b=Gjd2EjxW4VUsIGGnletlH6KD5vulAJhZ+eHORSEu5usSL7bipoTSvZsbC3uOxtq+H1
-	sE3MIJl/gx9isPpHjZrC2ID9f31uaWZeki55IMhOK+1N981v3Hrn2WCjp3Oer9AB4Qvr
-	0mNbzL/QzSI1QvZQGGuQxp/+jkRg5KJn4ahmw=
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1eXe5f-0004mt-Q0; Fri, 05 Jan 2018 21:20:07 -0500
+Received: by mail-wr0-x242.google.com with SMTP id z48so46940wrz.6;
+	Fri, 05 Jan 2018 18:20:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc:content-transfer-encoding;
+	bh=UbIP9ZjWoFQzPxmJ1+T9AYZmjXirqxCXi5HmO7HByn8=;
+	b=EpCQ3E90M/zdE7oCMBR9ZONgZPqWv6hKWleaovmiM4q2Y8G0lG4VHVvcLqQRlGHp5S
+	OozDEif/beJ4RNaiYMT6OMkXIr+oaLl7J7tuziu0SuhlScRsBLrJ0S6Oj0TDlJOEglAD
+	ei2N1Z5ZcxKyCYlvWnlqdNpTvOU9tKn5+D+UJhWmq2j27YKnhMHubBkp3veknNcsrWqV
+	zM4ovx4INrw0ft7z+om6DpQgvBpjZrBVSPbBoHuY8B2o8ufYGsKbV9U9DBa0WYR21VlR
+	zj790rA+3Ic0chfpum13mOuB6KrXoM3MYwnz5fFz2/lZ/nab+CFG3gNzGzHPc7RlLFuE
+	E8yg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=FQf6glxcaldRv3XVm7caVixckARRsaMc5X+WPvrI+1Q=;
-	b=Yofix0W/SAK6qVQHAvqI5p6KURoH6WNo2RpdBtSGYDrOEPC5W4XYbjZbJmoiDO/8nj
-	LY5dpU6RLtn1F4fc2Ehz7kyT+dvoaMQxo2GQxfugku/WYyjEFjxNFCPfbVxqPE09ODW3
-	FuT388X84/1Laty7IP8FXj2J05RhrMJXDYBoe09Wshi3JQr188ZyIpypldtbTEbn4gAg
-	+zbbldr5tAXz5jJRWqpxvZhF20KZsLnflvfEStrZ7EsHkP93jJe9PFZ4bXecG5cLEO+/
-	k3TBkBHNrHjFelKiNRHLQi7+vUm/R+0OgL53KNCsn55gHDwKV2Ti55ymAg1DK4h54PaE
-	JMjA==
-X-Gm-Message-State: AKGB3mLzIJXIY51vRTEOzVA9VxZQtLzP5gCYZXklzPmGA39abHx4ZF/7
-	DEf+HXjbNTMyrMp49hohs/s/HEK7SKU=
-X-Received: by 10.159.255.71 with SMTP id u7mr451945pls.376.1513618232606;
-	Mon, 18 Dec 2017 09:30:32 -0800 (PST)
-Received: from cloudburst.twiddle.net (174-21-7-63.tukw.qwest.net.
-	[174.21.7.63]) by smtp.gmail.com with ESMTPSA id
-	h69sm26553411pfe.107.2017.12.18.09.30.31
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 18 Dec 2017 09:30:31 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Mon, 18 Dec 2017 09:30:18 -0800
-Message-Id: <20171218173022.18418-6-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.14.3
-In-Reply-To: <20171218173022.18418-1-richard.henderson@linaro.org>
-References: <20171218173022.18418-1-richard.henderson@linaro.org>
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc:content-transfer-encoding;
+	bh=UbIP9ZjWoFQzPxmJ1+T9AYZmjXirqxCXi5HmO7HByn8=;
+	b=PV2TOoUTzTg8PRzj/2HXfcYrZkwyKQ12Bz2vS6Q/P65PWRzKq3F7wLVtIwli6e0JT1
+	C27HDaaxbDLOjMkHgMOsTDyomT8o/tYiYTmFCEx0zWFzvBTXGp1o1pspO8hdzwne1MCP
+	cRXdluIC3KWXoCWL5JEpRv5jH3F6WKoEQDYlYTcxNVvoUBX/nNc4p+0eUPPcKgFBLggc
+	mwQSL3PwlD4m5fekaeoiuIyZiJQzmT3kjjVzdBxV9zujy6YvFM72S1jAjPsEGHbEldZp
+	3/7zpUWQDL55DDT9Mb+Lx4hSJpH0hpdGzMD7gQ4g5E31zAbcqOOTuvGKCd41kQ8WfvuU
+	3FkQ==
+X-Gm-Message-State: AKGB3mLC7Ph8dJ6zFd3LjSpTZCHQvO1r6R36Q6vgTf8LCPh6RXpcJ9r7
+	I6gqDxgcPZX4nN6fo+WCgQlCRIqhXUoU6jXhtxk=
+X-Received: by 10.223.158.144 with SMTP id a16mr4644227wrf.83.1515205206424;
+	Fri, 05 Jan 2018 18:20:06 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.28.164.69 with HTTP; Fri, 5 Jan 2018 18:19:35 -0800 (PST)
+In-Reply-To: <20180104144046.30793-4-f4bug@amsat.org>
+References: <20180104144046.30793-1-f4bug@amsat.org>
+	<20180104144046.30793-4-f4bug@amsat.org>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Fri, 5 Jan 2018 18:19:35 -0800
+X-Google-Sender-Auth: d3g72i3al8jdIWkAf45psLJ_GGs
+Message-ID: <CAKmqyKOfGcNAGVvdmEohB79_w8a=Hr2xsuXT=56Q_d+EeijRAg@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c01::241
-Subject: [Qemu-devel] [PATCH 5/9] target/arm: Add
- aa32_vfp_dreg/aa64_vfp_qreg helpers
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:400c:c0c::242
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH 3/6] hw/char/cadence_uart:
+ add FDT aliases
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XL+EhmAvWTry
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+	Alexander Graf <agraf@suse.de>, Fam Zheng <famz@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Markus Armbruster <armbru@redhat.com>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Stefan Hajnoczi <stefanha@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: IMHTzRFO7Qg5
 
-Helpers that return a pointer into env->vfp.regs so that we isolate
-the logic of how to index the regs array for different cpu modes.
+On Thu, Jan 4, 2018 at 6:40 AM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/cpu.h           | 20 +++++++++++++++++++-
- linux-user/signal.c        | 22 ++++++++++++----------
- target/arm/arch_dump.c     |  8 +++++---
- target/arm/helper-a64.c    | 13 +++++++------
- target/arm/helper.c        | 32 ++++++++++++++++++++------------
- target/arm/kvm32.c         |  4 ++--
- target/arm/kvm64.c         | 31 ++++++++++---------------------
- target/arm/machine.c       |  2 +-
- target/arm/translate-a64.c | 25 ++++++++-----------------
- target/arm/translate.c     | 16 +++++++++-------
- 10 files changed, 93 insertions(+), 80 deletions(-)
+Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 7a705a09a1..e1a8e2880d 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -493,7 +493,7 @@ typedef struct CPUARMState {
-          * the two execution states, and means we do not need to explicitly
-          * map these registers when changing states.
-          */
--        float64 regs[64] QEMU_ALIGNED(16);
-+        uint64_t regs[64] QEMU_ALIGNED(16);
- 
-         uint32_t xregs[16];
-         /* We store these fpcsr fields separately for convenience.  */
-@@ -2899,4 +2899,22 @@ static inline void *arm_get_el_change_hook_opaque(ARMCPU *cpu)
-     return cpu->el_change_hook_opaque;
- }
- 
-+/**
-+ * aa32_vfp_dreg:
-+ * Return a pointer to the Dn register within env in 32-bit mode.
-+ */
-+static inline uint64_t *aa32_vfp_dreg(CPUARMState *env, unsigned regno)
-+{
-+    return &env->vfp.regs[regno];
-+}
-+
-+/**
-+ * aa64_vfp_dreg:
-+ * Return a pointer to the Qn register within env in 64-bit mode.
-+ */
-+static inline uint64_t *aa64_vfp_qreg(CPUARMState *env, unsigned regno)
-+{
-+    return &env->vfp.regs[2 * regno];
-+}
-+
- #endif
-diff --git a/linux-user/signal.c b/linux-user/signal.c
-index cf35473671..a9a3f41721 100644
---- a/linux-user/signal.c
-+++ b/linux-user/signal.c
-@@ -1487,12 +1487,13 @@ static int target_setup_sigframe(struct target_rt_sigframe *sf,
-     }
- 
-     for (i = 0; i < 32; i++) {
-+        uint64_t *q = aa64_vfp_qreg(env, i);
- #ifdef TARGET_WORDS_BIGENDIAN
--        __put_user(env->vfp.regs[i * 2], &aux->fpsimd.vregs[i * 2 + 1]);
--        __put_user(env->vfp.regs[i * 2 + 1], &aux->fpsimd.vregs[i * 2]);
-+        __put_user(q[0], &aux->fpsimd.vregs[i * 2 + 1]);
-+        __put_user(q[1], &aux->fpsimd.vregs[i * 2]);
- #else
--        __put_user(env->vfp.regs[i * 2], &aux->fpsimd.vregs[i * 2]);
--        __put_user(env->vfp.regs[i * 2 + 1], &aux->fpsimd.vregs[i * 2 + 1]);
-+        __put_user(q[0], &aux->fpsimd.vregs[i * 2]);
-+        __put_user(q[1], &aux->fpsimd.vregs[i * 2 + 1]);
- #endif
-     }
-     __put_user(vfp_get_fpsr(env), &aux->fpsimd.fpsr);
-@@ -1539,12 +1540,13 @@ static int target_restore_sigframe(CPUARMState *env,
-     }
- 
-     for (i = 0; i < 32; i++) {
-+        uint64_t *q = aa64_vfp_qreg(env, i);
- #ifdef TARGET_WORDS_BIGENDIAN
--        __get_user(env->vfp.regs[i * 2], &aux->fpsimd.vregs[i * 2 + 1]);
--        __get_user(env->vfp.regs[i * 2 + 1], &aux->fpsimd.vregs[i * 2]);
-+        __get_user(q[0], &aux->fpsimd.vregs[i * 2 + 1]);
-+        __get_user(q[1], &aux->fpsimd.vregs[i * 2]);
- #else
--        __get_user(env->vfp.regs[i * 2], &aux->fpsimd.vregs[i * 2]);
--        __get_user(env->vfp.regs[i * 2 + 1], &aux->fpsimd.vregs[i * 2 + 1]);
-+        __get_user(q[0], &aux->fpsimd.vregs[i * 2]);
-+        __get_user(q[1], &aux->fpsimd.vregs[i * 2 + 1]);
- #endif
-     }
-     __get_user(fpsr, &aux->fpsimd.fpsr);
-@@ -1899,7 +1901,7 @@ static abi_ulong *setup_sigframe_v2_vfp(abi_ulong *regspace, CPUARMState *env)
-     __put_user(TARGET_VFP_MAGIC, &vfpframe->magic);
-     __put_user(sizeof(*vfpframe), &vfpframe->size);
-     for (i = 0; i < 32; i++) {
--        __put_user(float64_val(env->vfp.regs[i]), &vfpframe->ufp.fpregs[i]);
-+        __put_user(*aa32_vfp_dreg(env, i), &vfpframe->ufp.fpregs[i]);
-     }
-     __put_user(vfp_get_fpscr(env), &vfpframe->ufp.fpscr);
-     __put_user(env->vfp.xregs[ARM_VFP_FPEXC], &vfpframe->ufp_exc.fpexc);
-@@ -2206,7 +2208,7 @@ static abi_ulong *restore_sigframe_v2_vfp(CPUARMState *env, abi_ulong *regspace)
-         return 0;
-     }
-     for (i = 0; i < 32; i++) {
--        __get_user(float64_val(env->vfp.regs[i]), &vfpframe->ufp.fpregs[i]);
-+        __get_user(*aa32_vfp_dreg(env, i), &vfpframe->ufp.fpregs[i]);
-     }
-     __get_user(fpscr, &vfpframe->ufp.fpscr);
-     vfp_set_fpscr(env, fpscr);
-diff --git a/target/arm/arch_dump.c b/target/arm/arch_dump.c
-index 9e5b2fb31c..26a2c09868 100644
---- a/target/arm/arch_dump.c
-+++ b/target/arm/arch_dump.c
-@@ -99,8 +99,10 @@ static int aarch64_write_elf64_prfpreg(WriteCoreDumpFunction f,
- 
-     aarch64_note_init(&note, s, "CORE", 5, NT_PRFPREG, sizeof(note.vfp));
- 
--    for (i = 0; i < 64; ++i) {
--        note.vfp.vregs[i] = cpu_to_dump64(s, float64_val(env->vfp.regs[i]));
-+    for (i = 0; i < 32; ++i) {
-+        uint64_t *q = aa64_vfp_qreg(env, i);
-+        note.vfp.vregs[2*i + 0] = cpu_to_dump64(s, q[0]);
-+        note.vfp.vregs[2*i + 1] = cpu_to_dump64(s, q[1]);
-     }
- 
-     if (s->dump_info.d_endian == ELFDATA2MSB) {
-@@ -229,7 +231,7 @@ static int arm_write_elf32_vfp(WriteCoreDumpFunction f, CPUARMState *env,
-     arm_note_init(&note, s, "LINUX", 6, NT_ARM_VFP, sizeof(note.vfp));
- 
-     for (i = 0; i < 32; ++i) {
--        note.vfp.vregs[i] = cpu_to_dump64(s, float64_val(env->vfp.regs[i]));
-+        note.vfp.vregs[i] = cpu_to_dump64(s, *aa32_vfp_dreg(env, i));
-     }
- 
-     note.vfp.fpscr = cpu_to_dump32(s, vfp_get_fpscr(env));
-diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-index 0bcf02eeb5..750a088803 100644
---- a/target/arm/helper-a64.c
-+++ b/target/arm/helper-a64.c
-@@ -146,20 +146,21 @@ uint64_t HELPER(simd_tbl)(CPUARMState *env, uint64_t result, uint64_t indices,
-      * the table starts, and numregs the number of registers in the table.
-      * We return the results of the lookups.
-      */
--    int shift;
-+    unsigned shift;
- 
-     for (shift = 0; shift < 64; shift += 8) {
--        int index = extract64(indices, shift, 8);
-+        unsigned index = extract64(indices, shift, 8);
-         if (index < 16 * numregs) {
-             /* Convert index (a byte offset into the virtual table
-              * which is a series of 128-bit vectors concatenated)
--             * into the correct vfp.regs[] element plus a bit offset
-+             * into the correct register element plus a bit offset
-              * into that element, bearing in mind that the table
-              * can wrap around from V31 to V0.
-              */
--            int elt = (rn * 2 + (index >> 3)) % 64;
--            int bitidx = (index & 7) * 8;
--            uint64_t val = extract64(env->vfp.regs[elt], bitidx, 8);
-+            unsigned elt = (rn * 2 + (index >> 3)) % 64;
-+            unsigned bitidx = (index & 7) * 8;
-+            uint64_t *q = aa64_vfp_qreg(env, elt >> 1);
-+            uint64_t val = extract64(q[elt & 1], bitidx, 8);
- 
-             result = deposit64(result, shift, 8, val);
-         }
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 02d1b57501..7f304111f0 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -64,15 +64,16 @@ static int vfp_gdb_get_reg(CPUARMState *env, uint8_t *buf, int reg)
-     /* VFP data registers are always little-endian.  */
-     nregs = arm_feature(env, ARM_FEATURE_VFP3) ? 32 : 16;
-     if (reg < nregs) {
--        stfq_le_p(buf, env->vfp.regs[reg]);
-+        stfq_le_p(buf, *aa32_vfp_dreg(env, reg));
-         return 8;
-     }
-     if (arm_feature(env, ARM_FEATURE_NEON)) {
-         /* Aliases for Q regs.  */
-         nregs += 16;
-         if (reg < nregs) {
--            stfq_le_p(buf, env->vfp.regs[(reg - 32) * 2]);
--            stfq_le_p(buf + 8, env->vfp.regs[(reg - 32) * 2 + 1]);
-+            uint64_t *q = aa32_vfp_dreg(env, (reg - 32) * 2);
-+            stfq_le_p(buf, q[0]);
-+            stfq_le_p(buf + 8, q[1]);
-             return 16;
-         }
-     }
-@@ -90,14 +91,15 @@ static int vfp_gdb_set_reg(CPUARMState *env, uint8_t *buf, int reg)
- 
-     nregs = arm_feature(env, ARM_FEATURE_VFP3) ? 32 : 16;
-     if (reg < nregs) {
--        env->vfp.regs[reg] = ldfq_le_p(buf);
-+        *aa32_vfp_dreg(env, reg) = ldfq_le_p(buf);
-         return 8;
-     }
-     if (arm_feature(env, ARM_FEATURE_NEON)) {
-         nregs += 16;
-         if (reg < nregs) {
--            env->vfp.regs[(reg - 32) * 2] = ldfq_le_p(buf);
--            env->vfp.regs[(reg - 32) * 2 + 1] = ldfq_le_p(buf + 8);
-+            uint64_t *q = aa32_vfp_dreg(env, (reg - 32) * 2);
-+            q[0] = ldfq_le_p(buf);
-+            q[1] = ldfq_le_p(buf + 8);
-             return 16;
-         }
-     }
-@@ -114,9 +116,12 @@ static int aarch64_fpu_gdb_get_reg(CPUARMState *env, uint8_t *buf, int reg)
-     switch (reg) {
-     case 0 ... 31:
-         /* 128 bit FP register */
--        stfq_le_p(buf, env->vfp.regs[reg * 2]);
--        stfq_le_p(buf + 8, env->vfp.regs[reg * 2 + 1]);
--        return 16;
-+        {
-+            uint64_t *q = aa64_vfp_qreg(env, reg);
-+            stfq_le_p(buf, q[0]);
-+            stfq_le_p(buf + 8, q[1]);
-+            return 16;
-+        }
-     case 32:
-         /* FPSR */
-         stl_p(buf, vfp_get_fpsr(env));
-@@ -135,9 +140,12 @@ static int aarch64_fpu_gdb_set_reg(CPUARMState *env, uint8_t *buf, int reg)
-     switch (reg) {
-     case 0 ... 31:
-         /* 128 bit FP register */
--        env->vfp.regs[reg * 2] = ldfq_le_p(buf);
--        env->vfp.regs[reg * 2 + 1] = ldfq_le_p(buf + 8);
--        return 16;
-+        {
-+            uint64_t *q = aa64_vfp_qreg(env, reg);
-+            q[0] = ldfq_le_p(buf);
-+            q[1] = ldfq_le_p(buf + 8);
-+            return 16;
-+        }
-     case 32:
-         /* FPSR */
-         vfp_set_fpsr(env, ldl_p(buf));
-diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
-index f925a21481..f77c9c494b 100644
---- a/target/arm/kvm32.c
-+++ b/target/arm/kvm32.c
-@@ -358,7 +358,7 @@ int kvm_arch_put_registers(CPUState *cs, int level)
-     /* VFP registers */
-     r.id = KVM_REG_ARM | KVM_REG_SIZE_U64 | KVM_REG_ARM_VFP;
-     for (i = 0; i < 32; i++) {
--        r.addr = (uintptr_t)(&env->vfp.regs[i]);
-+        r.addr = (uintptr_t)aa32_vfp_dreg(env, i);
-         ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &r);
-         if (ret) {
-             return ret;
-@@ -445,7 +445,7 @@ int kvm_arch_get_registers(CPUState *cs)
-     /* VFP registers */
-     r.id = KVM_REG_ARM | KVM_REG_SIZE_U64 | KVM_REG_ARM_VFP;
-     for (i = 0; i < 32; i++) {
--        r.addr = (uintptr_t)(&env->vfp.regs[i]);
-+        r.addr = (uintptr_t)aa32_vfp_dreg(env, i);
-         ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &r);
-         if (ret) {
-             return ret;
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index 6554c30007..ac728494a4 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -696,21 +696,16 @@ int kvm_arch_put_registers(CPUState *cs, int level)
-         }
-     }
- 
--    /* Advanced SIMD and FP registers
--     * We map Qn = regs[2n+1]:regs[2n]
--     */
-+    /* Advanced SIMD and FP registers. */
-     for (i = 0; i < 32; i++) {
--        int rd = i << 1;
--        uint64_t fp_val[2];
-+        uint64_t *q = aa64_vfp_qreg(env, i);
- #ifdef HOST_WORDS_BIGENDIAN
--        fp_val[0] = env->vfp.regs[rd + 1];
--        fp_val[1] = env->vfp.regs[rd];
-+        uint64_t fp_val[2] = { q[1], q[0] };
-+        reg.addr = (uintptr_t)fp_val;
- #else
--        fp_val[1] = env->vfp.regs[rd + 1];
--        fp_val[0] = env->vfp.regs[rd];
-+        reg.addr = (uintptr_t)q;
- #endif
-         reg.id = AARCH64_SIMD_CORE_REG(fp_regs.vregs[i]);
--        reg.addr = (uintptr_t)(&fp_val);
-         ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-         if (ret) {
-             return ret;
-@@ -837,24 +832,18 @@ int kvm_arch_get_registers(CPUState *cs)
-         env->spsr = env->banked_spsr[i];
-     }
- 
--    /* Advanced SIMD and FP registers
--     * We map Qn = regs[2n+1]:regs[2n]
--     */
-+    /* Advanced SIMD and FP registers */
-     for (i = 0; i < 32; i++) {
--        uint64_t fp_val[2];
-+        uint64_t *q = aa64_vfp_qreg(env, i);
-         reg.id = AARCH64_SIMD_CORE_REG(fp_regs.vregs[i]);
--        reg.addr = (uintptr_t)(&fp_val);
-+        reg.addr = (uintptr_t)q;
-         ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-         if (ret) {
-             return ret;
-         } else {
--            int rd = i << 1;
- #ifdef HOST_WORDS_BIGENDIAN
--            env->vfp.regs[rd + 1] = fp_val[0];
--            env->vfp.regs[rd] = fp_val[1];
--#else
--            env->vfp.regs[rd + 1] = fp_val[1];
--            env->vfp.regs[rd] = fp_val[0];
-+            uint64_t t;
-+            t = q[0], q[0] = q[1], q[1] = t;
- #endif
-         }
-     }
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index 176274629c..a85c2430d3 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -50,7 +50,7 @@ static const VMStateDescription vmstate_vfp = {
-     .minimum_version_id = 3,
-     .needed = vfp_needed,
-     .fields = (VMStateField[]) {
--        VMSTATE_FLOAT64_ARRAY(env.vfp.regs, ARMCPU, 64),
-+        VMSTATE_UINT64_ARRAY(env.vfp.regs, ARMCPU, 64),
-         /* The xregs array is a little awkward because element 1 (FPSCR)
-          * requires a specific accessor, so we have to split it up in
-          * the vmstate:
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index d246e8f6b5..e17c7269d4 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -170,15 +170,12 @@ void aarch64_cpu_dump_state(CPUState *cs, FILE *f,
- 
-     if (flags & CPU_DUMP_FPU) {
-         int numvfpregs = 32;
--        for (i = 0; i < numvfpregs; i += 2) {
--            uint64_t vlo = float64_val(env->vfp.regs[i * 2]);
--            uint64_t vhi = float64_val(env->vfp.regs[(i * 2) + 1]);
--            cpu_fprintf(f, "q%02d=%016" PRIx64 ":%016" PRIx64 " ",
--                        i, vhi, vlo);
--            vlo = float64_val(env->vfp.regs[(i + 1) * 2]);
--            vhi = float64_val(env->vfp.regs[((i + 1) * 2) + 1]);
--            cpu_fprintf(f, "q%02d=%016" PRIx64 ":%016" PRIx64 "\n",
--                        i + 1, vhi, vlo);
-+        for (i = 0; i < numvfpregs; i++) {
-+            uint64_t *q = aa64_vfp_qreg(env, i);
-+            uint64_t vlo = q[0];
-+            uint64_t vhi = q[1];
-+            cpu_fprintf(f, "q%02d=%016" PRIx64 ":%016" PRIx64 "%c",
-+                        i, vhi, vlo, (i & 1 ? '\n' : ' '));
-         }
-         cpu_fprintf(f, "FPCR: %08x  FPSR: %08x\n",
-                     vfp_get_fpcr(env), vfp_get_fpsr(env));
-@@ -572,19 +569,13 @@ static TCGv_ptr vec_full_reg_ptr(DisasContext *s, int regno)
-  */
- static inline int fp_reg_offset(DisasContext *s, int regno, TCGMemOp size)
- {
--    int offs = offsetof(CPUARMState, vfp.regs[regno * 2]);
--#ifdef HOST_WORDS_BIGENDIAN
--    offs += (8 - (1 << size));
--#endif
--    assert_fp_access_checked(s);
--    return offs;
-+    return vec_reg_offset(s, regno, 0, size);
- }
- 
- /* Offset of the high half of the 128 bit vector Qn */
- static inline int fp_reg_hi_offset(DisasContext *s, int regno)
- {
--    assert_fp_access_checked(s);
--    return offsetof(CPUARMState, vfp.regs[regno * 2 + 1]);
-+    return vec_reg_offset(s, regno, 1, MO_64);
- }
- 
- /* Convenience accessors for reading and writing single and double
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 55afd29b21..a93e26498e 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -1516,14 +1516,16 @@ static inline void gen_vfp_st(DisasContext *s, int dp, TCGv_i32 addr)
- static inline long
- vfp_reg_offset (int dp, int reg)
- {
--    if (dp)
-+    if (dp) {
-         return offsetof(CPUARMState, vfp.regs[reg]);
--    else if (reg & 1) {
--        return offsetof(CPUARMState, vfp.regs[reg >> 1])
--          + offsetof(CPU_DoubleU, l.upper);
-     } else {
--        return offsetof(CPUARMState, vfp.regs[reg >> 1])
--          + offsetof(CPU_DoubleU, l.lower);
-+        long ofs = offsetof(CPUARMState, vfp.regs[reg >> 1]);
-+        if (reg & 1) {
-+            ofs += offsetof(CPU_DoubleU, l.upper);
-+        } else {
-+            ofs += offsetof(CPU_DoubleU, l.lower);
-+        }
-+        return ofs;
-     }
- }
- 
-@@ -12770,7 +12772,7 @@ void arm_cpu_dump_state(CPUState *cs, FILE *f, fprintf_function cpu_fprintf,
-             numvfpregs += 16;
-         }
-         for (i = 0; i < numvfpregs; i++) {
--            uint64_t v = float64_val(env->vfp.regs[i]);
-+            uint64_t v = *aa32_vfp_dreg(env, i);
-             cpu_fprintf(f, "s%02d=%08x s%02d=%08x d%02d=%016" PRIx64 "\n",
-                         i * 2, (uint32_t)v,
-                         i * 2 + 1, (uint32_t)(v >> 32),
--- 
-2.14.3
+Alistair
 
+> ---
+>  hw/char/cadence_uart.c | 7 +++++++
+>  1 file changed, 7 insertions(+)
+>
+> diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
+> index 6143494060..6880827947 100644
+> --- a/hw/char/cadence_uart.c
+> +++ b/hw/char/cadence_uart.c
+> @@ -552,6 +552,13 @@ static void cadence_uart_class_init(ObjectClass *kla=
+ss, void *data)
+>
+>  static const TypeInfo cadence_uart_info =3D {
+>      .name          =3D TYPE_CADENCE_UART,
+> +    .aliases       =3D (const char * []) {
+> +                        "cdns,uart-r1p8",
+> +                        "xlnx,xuartps",     /* Zynq-7xxx SoC */
+> +                        "cdns,uart-r1p12",
+> +                        "xlnx,zynqmp-uart", /* Zynq Ultrascale+ MPSoC */
+> +                        NULL
+> +                     },
+>      .parent        =3D TYPE_SYS_BUS_DEVICE,
+>      .instance_size =3D sizeof(CadenceUARTState),
+>      .instance_init =3D cadence_uart_init,
+> --
+> 2.15.1
+>
+>

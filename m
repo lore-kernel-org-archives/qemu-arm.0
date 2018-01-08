@@ -1,100 +1,88 @@
-Received: by 10.28.173.206 with SMTP id w197csp2502350wme;
-        Mon, 8 Jan 2018 06:01:02 -0800 (PST)
-X-Google-Smtp-Source: ACJfBos1YBx/HHy9xJ1sQmLVYjJBdAv+CVNueSXKpZ8+Rd1WTs9TIzHQKM/NSFzW8MiD0qooPukn
-X-Received: by 10.13.231.1 with SMTP id q1mr10622075ywe.451.1515420062403;
-        Mon, 08 Jan 2018 06:01:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515420062; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp2504019wme;
+        Mon, 8 Jan 2018 06:02:16 -0800 (PST)
+X-Google-Smtp-Source: ACJfBouuR3eFTFHINR3wZcbZuVZ3NxzY7iY3/qY7BuFzKoHmFn0xmiDx/CUtqFZxbVGngqZnV0E7
+X-Received: by 10.37.85.133 with SMTP id j127mr10712251ybb.373.1515420136279;
+        Mon, 08 Jan 2018 06:02:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515420136; cv=none;
         d=google.com; s=arc-20160816;
-        b=nkLDBcWVxbnaIna1CMIpkPE7dR3bgJvyvH9jFEdekf6HNmU77oOkkLXGgScNBHs7Qn
-         tv2VHQJYxr41LJCqvHH2M/KJ0/kI1cxKZgIf6V9bFBRJlPQk/aZG1u73atLK4PqHAqiW
-         xTMzpj97AktRyYdOXmnSYQq52nmpWYgXjoqCs6SCmdMdHfIdRoEuWb7Jkr3amsdwOqus
-         53UWDbp3z1rC9IqqGpVA4YeLMAiNXjbfGCrOfbAOuKOL6nqnsulMVtMKQlBjR+UC3E2f
-         JI/vLi8lBIPtbtL1k6ftL6sIiLLi4/gFREapf+q1yTvwOinA30nUl/4nhv9N19hRaUes
-         xeIQ==
+        b=NAUbbMCbqGUJjyi5Q3/7f9+DeIeY/W8bdixnyeYituPTKVW7vM+QIi9cf1RR6HrFnn
+         SlP+jikbFEz1u+Pry8CIUyosXM2RPOkuzSNef0G+Sfjf+cXIN6VUwHKEKaXTQOTMvpq1
+         D+Y6QJYtss4PkZjfbK5CApnzDvi1KgxmPifJ1q8sza2EQDmTs/R3AxyYRYpSgPUVw1d6
+         JKw8KQ/GjWZRMdXHA/xKNkIPardBUIMX7ZCzhILl3IgQvLveKT/cbMXuwM+e15RnsvB+
+         tZDVqP3I4YyqLHqdNK1vUa1obrmvtMq7cw89GoQFMr9cGGQrMcCLnl/+NY4jy7STRzji
+         fjDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=vv8R7uZ2Z4EF1LNOXqzvGX1RCN0zY7VzSaOdo54c0K8=;
-        b=eVR0uEwyrLs3ONd+IYTfbPO5F1g0Z7fuYwZwDwKwXAjacDqUaTUrw8sukgMjKEHJeU
-         Ui+a/K7WmlkX01XpFBwbeiTzNOlXf+G6U3Ab1pSLgQSZhIB5sgrlUkKwbJRwPVMOaSRk
-         Xt6XEgFgASBNAcfdj5Iu3jcKM2qckl8XGsBAXMPvejPKO9KH/gifvaZexsFYuATQuopd
-         yaT8PmDJ7UjcIwQ/iDqHyyj4FX6pai3Eo+G+m1e5jz/DHcaZdvbw9/plvZXMH55FAXRM
-         I7wLRNlBTo7o34emEwDs37FwdtlMGrXcMb6PqIHK7gYkR2CeVI4PTmk1UK2kFvVhFlNW
-         PamQ==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date:arc-authentication-results;
+        bh=BC1lXR9My0kEeMf1Pli8nDN5rs3QFTrtRYa4RSg1+nI=;
+        b=EJ8F1FH7TZj4qCWoaIiN8+++j6u0EiJn+BC4QWA5bZJbaSn3QdqlO5qzJKNBiH8vmS
+         ZFzdMZ6u6BQRCnQVTfsL+lrpvDDMO5kE2M1uhbMXp3bH5gYzC8IDnJA+HLNR/B/ArNIo
+         2Xiz9NsVu+HDOW3tZo8p0Gl4y2rCfsBt2OJZlaIMZbXkwKI86rwqLANdMnYsrj5BLxsc
+         fvzKcKfngwICwfmUyEBeoAFlkeWRC40NjLF2JuIT2+gQxLMtCnZp6yTdhfGUfzHcZDcw
+         r1MPriwWEQ3RLpcLxGza9rg4J1hB7R767rjzFcf7/yxDrnQ5aE35BcDWWkFAp3nQW5LS
+         LdOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=AizmxaAV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h31si1492971ybi.282.2018.01.08.06.01.02
+        by mx.google.com with ESMTPS id u39si2465672ybd.449.2018.01.08.06.02.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 08 Jan 2018 06:01:02 -0800 (PST)
+        Mon, 08 Jan 2018 06:02:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=AizmxaAV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36204 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36246 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eYXz3-0006Lp-Sg
-	for alex.bennee@linaro.org; Mon, 08 Jan 2018 09:01:01 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50578)
+	id 1eYY0F-00079Z-Mu
+	for alex.bennee@linaro.org; Mon, 08 Jan 2018 09:02:15 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51096)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eYXyp-0006Ih-IR
-	for qemu-arm@nongnu.org; Mon, 08 Jan 2018 09:00:53 -0500
+	(envelope-from <imammedo@redhat.com>) id 1eYY02-00076N-04
+	for qemu-arm@nongnu.org; Mon, 08 Jan 2018 09:02:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eYXyl-000490-21
-	for qemu-arm@nongnu.org; Mon, 08 Jan 2018 09:00:47 -0500
-Received: from mail-oi0-x22e.google.com ([2607:f8b0:4003:c06::22e]:43059)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eYXyk-00048g-TU
-	for qemu-arm@nongnu.org; Mon, 08 Jan 2018 09:00:42 -0500
-Received: by mail-oi0-x22e.google.com with SMTP id t16so2149513oif.10
-	for <qemu-arm@nongnu.org>; Mon, 08 Jan 2018 06:00:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=vv8R7uZ2Z4EF1LNOXqzvGX1RCN0zY7VzSaOdo54c0K8=;
-	b=AizmxaAV0E+u4C8NYZFYUrO/aduDbGRzrsjP8jAHuwcZBvEIMrPAk6ylZDYBIuCEDj
-	55wcXQuJ/3zqJdMQwRh76Mv9N2Esz1MoX5ykqcrGtUHdfvjaluLC5LcPX+Nzy5r33yxK
-	wDtMqGxW4+R8JVLH+pxUhZgNccRI0RcPnaLwk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=vv8R7uZ2Z4EF1LNOXqzvGX1RCN0zY7VzSaOdo54c0K8=;
-	b=Rjq/PCjPBqvlezLjH5/sXlhYtKbvZJfhw3rcQFG4rJzpj0mC8b5EdotqGQ8sfc2xR4
-	kzWZaEauVICiIGSEF7yYxwKAsZRrOAm0r33ayIqIuHkbt6jZjNHjS/WrylbMW6ApD4Jd
-	v9WDEjGyWut4PzYNU038MkJ9RcTq79bwyeSloCV2Vvsx9QDIQuW+tfGPMd6pJTSZXM37
-	0a3/JqJWjKsRe2uM/jnkrWdztVF/4bhteMkT1eroA1QexI/RkHRepq+lUFKIzv6krtrX
-	oIkP3ldd54fjJ5+z45Ta4fgZWd10g1AjOxm55SYT2E4ITbOYk/pFLjncREiXyJy4cvwM
-	B0dw==
-X-Gm-Message-State: AKGB3mJFzogepd2SsdqWmY3TmRSqDgX8Egx4MY/NTDuqnSkr3pCxHaMt
-	gN1wQGRwmzJ/aguAeahjgkVlC1sMbHHYai191xKspA==
-X-Received: by 10.202.237.198 with SMTP id l189mr5690467oih.8.1515420042084;
-	Mon, 08 Jan 2018 06:00:42 -0800 (PST)
+	(envelope-from <imammedo@redhat.com>) id 1eYXzw-0005PR-1n
+	for qemu-arm@nongnu.org; Mon, 08 Jan 2018 09:02:02 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:25070)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1eYXzv-0005OW-Pj; Mon, 08 Jan 2018 09:01:55 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id B72CEC0587D2;
+	Mon,  8 Jan 2018 14:01:54 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.134])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 9D4086090A;
+	Mon,  8 Jan 2018 14:01:44 +0000 (UTC)
+Date: Mon, 8 Jan 2018 15:01:43 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
+Message-ID: <20180108150143.30b5e38b@redhat.com>
+In-Reply-To: <aaab7bfd-d3ed-aa50-f09e-89d6ccf556ff@amsat.org>
+References: <20180104144046.30793-1-f4bug@amsat.org>
+	<20180104144046.30793-5-f4bug@amsat.org>
+	<20180108135437.4ab656fb@redhat.com>
+	<cf14bfc3-3256-575a-fb4b-69f63d5bdb3b@redhat.com>
+	<aaab7bfd-d3ed-aa50-f09e-89d6ccf556ff@amsat.org>
 MIME-Version: 1.0
-Received: by 10.157.15.71 with HTTP; Mon, 8 Jan 2018 06:00:21 -0800 (PST)
-In-Reply-To: <20180102193622.27215-6-andrew.smirnov@gmail.com>
-References: <20180102193622.27215-1-andrew.smirnov@gmail.com>
-	<20180102193622.27215-6-andrew.smirnov@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 8 Jan 2018 14:00:21 +0000
-Message-ID: <CAFEAcA-4=wy==HyXxivLQJE1rRsZxOW0=r7p3raTKfJEtsVPBA@mail.gmail.com>
-To: Andrey Smirnov <andrew.smirnov@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::22e
-Subject: Re: [Qemu-arm] [PATCH v3 05/11] imx_fec: Use ENET_FTRL to determine
- truncation length
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Mon, 08 Jan 2018 14:01:54 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH 4/6] arm/xlnx-zynq: use FDT
+ names for the Cadence UART
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,32 +94,98 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Jason Wang <jasowang@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	Andrey Yurovsky <yurovsky@gmail.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Thomas Huth <thuth@redhat.com>, Fam Zheng <famz@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
+	=?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau <marcandre.lureau@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	Andreas =?UTF-8?B?RsOkcmJlcg==?= <afaerber@suse.de>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 95nmEIxuzCB1
+X-TUID: u5bL9dwtsqjK
 
-On 2 January 2018 at 19:36, Andrey Smirnov <andrew.smirnov@gmail.com> wrote=
-:
-> Frame truncation length, TRUNC_FL, is determined by the contents of
-> ENET_FTRL register, so convert the code to use it instead of a
-> hardcoded constant.
->
-> To avoid the case where TRUNC_FL is greater that ENET_MAX_FRAME_SIZE,
-> increase the value of the latter to its theoretical maximum of 16K.
->
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: Jason Wang <jasowang@redhat.com>
-> Cc: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> Cc: qemu-devel@nongnu.org
-> Cc: qemu-arm@nongnu.org
-> Cc: yurovsky@gmail.com
-> Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
+On Mon, 8 Jan 2018 10:51:38 -0300
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> On 01/08/2018 10:17 AM, Thomas Huth wrote:
+> > On 08.01.2018 13:54, Igor Mammedov wrote: =20
+> >> On Thu,  4 Jan 2018 11:40:44 -0300
+> >> Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+> >> =20
+> >>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> >>> ---
+> >>>  hw/arm/xilinx_zynq.c | 1 +
+> >>>  hw/arm/xlnx-zynqmp.c | 2 +-
+> >>>  2 files changed, 2 insertions(+), 1 deletion(-)
+> >>>
+> >>> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+> >>> index 1836a4ed45..c45c364583 100644
+> >>> --- a/hw/arm/xilinx_zynq.c
+> >>> +++ b/hw/arm/xilinx_zynq.c
+> >>> @@ -236,6 +236,7 @@ static void zynq_init(MachineState *machine)
+> >>>      sysbus_create_simple("xlnx,ps7-usb", 0xE0002000, pic[53-IRQ_OFFS=
+ET]);
+> >>>      sysbus_create_simple("xlnx,ps7-usb", 0xE0003000, pic[76-IRQ_OFFS=
+ET]);
+> >>> =20
+> >>> +    /* "xlnx,xuartps" */
+> >>>      cadence_uart_create(0xE0000000, pic[59 - IRQ_OFFSET], serial_hds=
+[0]);
+> >>>      cadence_uart_create(0xE0001000, pic[82 - IRQ_OFFSET], serial_hds=
+[1]);
+> >>> =20
+> >>> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+> >>> index 325642058b..38f038786c 100644
+> >>> --- a/hw/arm/xlnx-zynqmp.c
+> >>> +++ b/hw/arm/xlnx-zynqmp.c
+> >>> @@ -155,7 +155,7 @@ static void xlnx_zynqmp_init(Object *obj)
+> >>>      }
+> >>> =20
+> >>>      for (i =3D 0; i < XLNX_ZYNQMP_NUM_UARTS; i++) {
+> >>> -        object_initialize(&s->uart[i], sizeof(s->uart[i]), TYPE_CADE=
+NCE_UART);
+> >>> +        object_initialize(&s->uart[i], sizeof(s->uart[i]), "xlnx,zyn=
+qmp-uart"); =20
+> >>
+> >> I don't think that commas are valid symbol in type names
+> >> (if I recall correctly it should be letters, numbers and '-') =20
+> >=20
+> > At least commas are a real PITA when you try to use such devices with
+> > the "-device" CLI parameter. We should try to avoid this if possible, I
+> > think. =20
+>=20
+> Ok, good to know.
+>=20
+> I was following Linux Device Tree names [1] to avoid handling some
+> fdt_qemu_to_linux[] & fdt_linux_to_qemu conversion arrays.
+>=20
+> What about keeping using the QEMU default name for -device CLI param and
+> allow aliases for FDT parsing?
+> With this series the cadence_uart_info is now:
+>=20
+> static const TypeInfo cadence_uart_info =3D {
+>     .name          =3D TYPE_CADENCE_UART,
+>     .aliases       =3D (const char * []) {
+>                         "cdns,uart-r1p8",
+>                         "xlnx,xuartps",
+>                         "cdns,uart-r1p12",
+>                         "xlnx,zynqmp-uart",
+>                         NULL
+>                      },
+No need to pollute Object for this,
+It might be better if you make it interface and type will implement it.
+But honestly putting desired name in place at the place FDT binding is crea=
+ted
+is much simpler and one can adapt it to a specific board as needed.
 
-thanks
--- PMM
+
+>=20
+> [1]:
+> https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bi=
+ndings/serial/cdns,uart.txt
+>=20
+

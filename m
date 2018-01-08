@@ -1,97 +1,97 @@
-Received: by 10.28.173.206 with SMTP id w197csp2617742wme;
-        Mon, 8 Jan 2018 07:50:52 -0800 (PST)
-X-Google-Smtp-Source: ACJfBoui1B6EfcLWXkfpfrVD6G0SKMMOIwSepnZM76N07hBasMyolumOonZJ1zhWP9n4o7jlMrck
-X-Received: by 10.37.198.205 with SMTP id k196mr11378712ybf.257.1515426652674;
-        Mon, 08 Jan 2018 07:50:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515426652; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp2620071wme;
+        Mon, 8 Jan 2018 07:53:14 -0800 (PST)
+X-Google-Smtp-Source: ACJfBotNNc8NJBTVK1lJSBgOorPKQzoAKFWUuYhGc7XqcBDS8rAir25d89269ZeGRwHk8zfrLbsN
+X-Received: by 10.37.172.210 with SMTP id x18mr11777531ybd.297.1515426794193;
+        Mon, 08 Jan 2018 07:53:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515426794; cv=none;
         d=google.com; s=arc-20160816;
-        b=svUe0ANiWtjPcQOlxu7np4y9h30JyIR8P0shD53p0QfbeWLhioXJYKM2O/GHyQnyCS
-         ekpbx7HHI4GxwRMqEF6X1LqL+gEGP4+XlkpaM6UnYmAYhXyZYnLfG4UPQpHyAjM2qeiQ
-         PzWrjv3olKYCGCL+xmuWQ5L5/pnMh3CrOZMJxXzte/Rrwg5/UI1hrPEBje+gdOMDoRxn
-         RXGwGu8u1FmnBzgLZPndtQTTRMuaFQrGubMR0ojsLiQuv5fm/Ge2fZBBqMdYL10FkCFn
-         MMtUOCOtAbD3CKo5A14YgpjQ2d2XmMSy8NTM/C17uCVdXtjA/pTlAMXgzs9fud5/x1mv
-         vXeQ==
+        b=Dm1hOzuSq81TusQPcnY+1DYq9s6FqNzswX5NdNM4znVJU96ewgSI4UMTxv1Zueimdy
+         dm4C+XWKvKYV5YYFqGzl4pASelp7G5Xb3HHIuG8Zi0sAwVo5Q6FlNHK7iN4ReNKyPqmv
+         IcxDrJs7sEBLXcj0BXXAAiLNS8oNiJjk+kZHfPHrJNhJtwSHh9YIRKiVx8arOGUfa0QZ
+         dxasdX0bjlyRneQyLwGmWwDp2Bo9gvechP2F2kc7PvQ9Cu9z8MtWw9ovj9aXReFfZS5x
+         0qBbHEMvOC0g5Qkebb4VJkd9P/dtl/1cm+COeCCayjne6B23JfnkIVZL83BpR/xmifuL
+         E5jQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=8HpQu2bWF8IQpWCPLuKLgYH+jB8N2ED1FIN0AVDOkMc=;
-        b=OHekUM8WDt+ezzYQPkLuN3iK9JHqeTN9zKGoKs5g3N0TIHMoULEpEVP4BmdEKlx8G/
-         dwEVk/wNZUw2wrmBArCtDUgd4WOTW6Hi81KxLuZ0fqK7+zeVXbCOXliTNTj2f356Ukt/
-         F+QvypqTzoz2Kqvf953UZG8DQokNhfhl+yrSMCWl+uNWuADjUtBN9zyFJHJI3YtHBc/U
-         PvFY/ZcCzrIid1xoyzKQ7bXJ1oMZq2es4Y6myILTdG7cn6KL7I3McR6cs2vE/KoHFvhR
-         q6Bl2yvYlXTd3g1HDZXdtALo/JMNBdBv/ZDO1EjiXwzH5IdKgCpNXqXfGvlHEP+VmAQw
-         hp9w==
+        bh=Lh7AjuqAV7rVDlwHYf3MCmQ/+c0qD/eTYi1lc8ZliHM=;
+        b=KzOUMlaxaXEiTLFJumCvHgTVFNAbkNsPB8j7eVUzIEHAurkdJZaZgn/NgHxLhWLtzM
+         m6pSltcxd81b9HzlzofWlIemRyAuG/fWV6M2zMPgn7MUTt16sGp80qZsfyfj0dKS9r2u
+         HlMA75YKtiEyLa1LrX0sCWIp0O5R32AgexFQpL9Fmm5rqvvBJ/Z8o0nREFUIOu6NpTLX
+         7cIREEX8ZxZZ5bdAdFfcX3LdsLzpmIwu31ugGklCkDYLSxNCg+Jug10mmlI6kXuWIAm1
+         O3q7uJ1fLiJY9k7XBdVk1MArB7c9diWMQj33RIfM0fYGHzHlzy6jTJ+/4yEsPG0QqhZV
+         r+tQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Oef6H/zE;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oezXG1RK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o17si2524625ywd.411.2018.01.08.07.50.52
+        by mx.google.com with ESMTPS id d63si2573574ybi.596.2018.01.08.07.53.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 08 Jan 2018 07:50:52 -0800 (PST)
+        Mon, 08 Jan 2018 07:53:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Oef6H/zE;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oezXG1RK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41297 helo=lists.gnu.org)
+Received: from localhost ([::1]:41313 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eYZhM-00076e-2t
-	for alex.bennee@linaro.org; Mon, 08 Jan 2018 10:50:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42016)
+	id 1eYZjd-0000WC-K7
+	for alex.bennee@linaro.org; Mon, 08 Jan 2018 10:53:13 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42132)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eYZb2-0001rM-ME
-	for qemu-devel@nongnu.org; Mon, 08 Jan 2018 10:44:21 -0500
+	id 1eYZb8-0001wR-9I
+	for qemu-devel@nongnu.org; Mon, 08 Jan 2018 10:44:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eYZb1-0007X3-W5
-	for qemu-devel@nongnu.org; Mon, 08 Jan 2018 10:44:20 -0500
-Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:46512)
+	id 1eYZb7-0007b8-4S
+	for qemu-devel@nongnu.org; Mon, 08 Jan 2018 10:44:26 -0500
+Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:37218)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eYZb1-0007Wp-RP; Mon, 08 Jan 2018 10:44:19 -0500
-Received: by mail-qt0-x242.google.com with SMTP id r39so14069237qtr.13;
-	Mon, 08 Jan 2018 07:44:19 -0800 (PST)
+	id 1eYZb7-0007ai-12; Mon, 08 Jan 2018 10:44:25 -0500
+Received: by mail-qk0-x242.google.com with SMTP id p13so14634612qke.4;
+	Mon, 08 Jan 2018 07:44:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=8HpQu2bWF8IQpWCPLuKLgYH+jB8N2ED1FIN0AVDOkMc=;
-	b=Oef6H/zEBxzpZpZIn7KQhChBXIrNPo9R6ZeWzGgehMiOIFWyI/rsGk+3hb1SY7loCf
-	x6NTF8VeLQbkiK33uEfgIZ+dv8vwNJRsTQnjQZyBzhDrlFiR21T5LcR2/OJvLdsSWXBt
-	3f1bSbmnExkSBcjQo+JsOUbgx8iQ/K80yjfdej36JX6x5nVtmtHay/Tf38Oe4/e8o92A
-	fMz7ck52yoC3rgbcKixd599OEJPFRHXN/fvXBdKego01fs2Rdsf/u3jK8qcwVO3oPKLk
-	eUIXNGsiyB9GXx7d0ESWFHgh807Fs3fZdz74bhwzW0BtPcpYpSbFOYpTKI5wJfTSWVEf
-	Egdg==
+	bh=Lh7AjuqAV7rVDlwHYf3MCmQ/+c0qD/eTYi1lc8ZliHM=;
+	b=oezXG1RKL7LQNgpN+eeFRV1hSRly/W2OUzyQw1cUqPdpSK2mLIYfyKvGNVoQ0iULVR
+	6qWkluEutT3vMcQ8pTUnKygi+ibyciD7KGltKI0rrD4AaoIXZ7QdYXZz/rOmgWiy+rbx
+	3XqNNBI+9Y2PLHnjg3NWdA+R1oyGv/wqOpL+ORFnHfCKwh6zLjQfy/ctDA0mHkpSdZpt
+	XtUrByx0WLhtHqBprWB2caLwejtfkqEjMCDgSNwQJKRe5NVbc8Gy6qnV33jdxRDvqwJg
+	m5w47G42UIWNNhu/Yxlf8agcRdqETEBrAYtUu4Wck2KThXbUUcyKURIOeS4ZDF4qgsXw
+	THkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=8HpQu2bWF8IQpWCPLuKLgYH+jB8N2ED1FIN0AVDOkMc=;
-	b=rciJO/BiS/qOQ1lBBmHMDxWp0zEtuoNABQMVAFcFFdw9vRFQ5oi1yTX5+TbpjsXhZG
-	0ljeNfHfMBMC+mRGvO/jjAeAFW3/NHowCsiPtmfnd+0oLPyL6S1MRgE6JsH8tqEWI17+
-	FRea4cQjE5rtyL+1bjZImN+A2h4VPnuQaCKNqHvXBgnfC9v4ErzQqQxeqzLkLdSyAWeh
-	tsrSB7fMnCmFRl23apG2hJ2cWSEm/A2GqBpYbJtpvI1K8W7CdQFHP85x41aYaKjhEHkM
-	LIEGW4RWGzfIwHwxrgTVRIxVMsJX17VIoEqyBGuAjAE7ms6Tumc5TvbWCv88vVJNJInl
-	wK4A==
-X-Gm-Message-State: AKwxytfuAiKfZscRfrIMTrkHVHO1x72+Ba31a8e6s8I+847enkjxF+I4
-	VA+3EoZFDB+UvbrhyXdwt/Y=
-X-Received: by 10.200.55.227 with SMTP id e32mr15466893qtc.227.1515426259302; 
-	Mon, 08 Jan 2018 07:44:19 -0800 (PST)
+	bh=Lh7AjuqAV7rVDlwHYf3MCmQ/+c0qD/eTYi1lc8ZliHM=;
+	b=FOfbFRFNTKmz5+C5ANr/+ZqVAdyyS7LBSiaKsnnaIfMbpTV1qolcqCvW7PqciJJcDH
+	nF+vrRue6DWvbHPX+I2/uMuBaZnlQYEPEzhvL7KRPDjWO+U2mJDCS5svAMvnVbdpXH9X
+	qXR5kEV7k8sEdXQVJou1pcSXY3GFnOLCcNwOU08p01kxCw6LPi7VqR12RJYaETmox42A
+	zdPKl7HyU+tFF+NtkwAUQkGT3D4sZE+yDW/BZzIxHaj5FdBA4acxdQYaUEfOPWGbezdx
+	GZHVzlXTQ949xFBmn0SgGcSSnnwm+stwAutgeKraF03seuZBaB5GZ15DVnlz1oEvQr+g
+	5RKg==
+X-Gm-Message-State: AKwxytcOAm8raRPU4rDaQzInUcs00UWFAsc7zDVMsFxNWjuaE1jJnzvn
+	1SUhcYKIR1ZMlV2pWaT7xXnjuFdqAas=
+X-Received: by 10.55.214.150 with SMTP id p22mr13928814qkl.134.1515426264390; 
+	Mon, 08 Jan 2018 07:44:24 -0800 (PST)
 Received: from x1.local ([138.117.48.219]) by smtp.gmail.com with ESMTPSA id
-	u36sm7832382qtc.58.2018.01.08.07.44.13
+	u36sm7832382qtc.58.2018.01.08.07.44.19
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 08 Jan 2018 07:44:17 -0800 (PST)
+	Mon, 08 Jan 2018 07:44:23 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Alistair Francis <alistair.francis@xilinx.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Andrey Smirnov <andrew.smirnov@gmail.com>,
 	Igor Mitsyanko <i.mitsyanko@gmail.com>
-Date: Mon,  8 Jan 2018 12:42:43 -0300
-Message-Id: <20180108154303.6522-12-f4bug@amsat.org>
+Date: Mon,  8 Jan 2018 12:42:44 -0300
+Message-Id: <20180108154303.6522-13-f4bug@amsat.org>
 X-Mailer: git-send-email 2.15.1
 In-Reply-To: <20180108154303.6522-1-f4bug@amsat.org>
 References: <20180108154303.6522-1-f4bug@amsat.org>
@@ -100,9 +100,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::242
-Subject: [Qemu-devel] [PATCH v5 11/31] hw/arm/exynos4210: use the "samsung,
- exynos4210-dw-mshc" device
+X-Received-From: 2607:f8b0:400d:c09::242
+Subject: [Qemu-devel] [PATCH v5 12/31] sdhci: add the generic Arasan SDHCI
+ 4.9a PHY controller
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -127,43 +127,105 @@ Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
 	Eduardo Habkost <ehabkost@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rPNOwYs+Ox3/
+X-TUID: tFu9RyNHmeX/
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/exynos4210.c | 12 ++++--------
- 1 file changed, 4 insertions(+), 8 deletions(-)
+ hw/sd/arasan_sdhci.c | 72 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ hw/sd/Makefile.objs  |  1 +
+ 2 files changed, 73 insertions(+)
+ create mode 100644 hw/sd/arasan_sdhci.c
 
-diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-index e8e1d81e62..eb95131221 100644
---- a/hw/arm/exynos4210.c
-+++ b/hw/arm/exynos4210.c
-@@ -75,7 +75,6 @@
- #define EXYNOS4210_INT_COMBINER_BASE_ADDR   0x10448000
+diff --git a/hw/sd/arasan_sdhci.c b/hw/sd/arasan_sdhci.c
+new file mode 100644
+index 0000000000..c6d96b2583
+--- /dev/null
++++ b/hw/sd/arasan_sdhci.c
+@@ -0,0 +1,72 @@
++/*
++ * Arasan SDHCI Controller emulation
++ *
++ * Copyright (C) 2018 Philippe Mathieu-Daudé <f4bug@amsat.org>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or
++ * (at your option) any later version.  See the COPYING file in the
++ * top-level directory.
++ */
++#include "qemu/osdep.h"
++#include "hw/sd/sdhci.h"
++#include "qapi/error.h"
++
++/* Compatible with:
++ * - SD Host Controller Specification Version 2.0 Part A2
++ * - SDIO Specification Version 2.0
++ * - MMC Specification Version 3.31
++ *
++ * - SDMA (single operation DMA)
++ * - ADMA1 (4 KB boundary limited DMA)
++ * - ADMA2
++ *
++ * - up to seven functions in SD1, SD4, but does not support SPI mode
++ * - SD high-speed (SDHS) card
++ * - SD High Capacity (SDHC) card
++ *
++ * - Low-speed, 1 KHz to 400 KHz
++ * - Full-speed, 1 MHz to 50 MHz (25 MB/sec)
++ */
++static void arasan4_9a_sdhci_realize(DeviceState *dev, Error **errp)
++{
++    SDHCICommonClass *cc = SYSBUS_SDHCI_COMMON_GET_CLASS(dev);
++    Object *obj = OBJECT(dev);
++    Error *local_err = NULL;
++
++    object_property_set_uint(obj, 2, "sd-spec-version", &local_err);
++    object_property_set_bool(obj, true, "adma1", &local_err);
++    object_property_set_bool(obj, true, "high-speed", &local_err);
++    object_property_set_uint(obj, 1024, "max-block-length", &local_err);
++    if (local_err) {
++        error_propagate(errp, local_err);
++        return;
++    }
++
++    cc->parent_realize(dev, &local_err);
++    if (local_err) {
++        error_propagate(errp, local_err);
++        return;
++    }
++}
++
++static void arasan4_9a_sdhci_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    SDHCICommonClass *cc = SYSBUS_SDHCI_COMMON_CLASS(klass);
++
++    cc->parent_realize = dc->realize;
++    dc->realize = arasan4_9a_sdhci_realize;
++}
++
++static const TypeInfo arasan4_9a_sdhci_info = {
++    .name = "arasan,sdhci-4.9a",
++    .parent = TYPE_SYSBUS_SDHCI,
++    .class_init = arasan4_9a_sdhci_class_init,
++};
++
++static void arasan_sdhci_register_types(void)
++{
++    type_register_static(&arasan4_9a_sdhci_info);
++}
++
++type_init(arasan_sdhci_register_types)
+diff --git a/hw/sd/Makefile.objs b/hw/sd/Makefile.objs
+index fd866d7f94..ef0fc3d3f7 100644
+--- a/hw/sd/Makefile.objs
++++ b/hw/sd/Makefile.objs
+@@ -3,6 +3,7 @@ common-obj-$(CONFIG_SD) += core.o
  
- /* SD/MMC host controllers */
--#define EXYNOS4210_SDHCI_CAPABILITIES       0x05E80080
- #define EXYNOS4210_SDHCI_BASE_ADDR          0x12510000
- #define EXYNOS4210_SDHCI_ADDR(n)            (EXYNOS4210_SDHCI_BASE_ADDR + \
-                                                 0x00010000 * (n))
-@@ -377,13 +376,10 @@ Exynos4210State *exynos4210_init(MemoryRegion *system_mem)
-         BlockBackend *blk;
-         DriveInfo *di;
- 
--        dev = qdev_create(NULL, TYPE_SYSBUS_SDHCI);
--        qdev_prop_set_uint32(dev, "capareg", EXYNOS4210_SDHCI_CAPABILITIES);
--        qdev_init_nofail(dev);
--
--        busdev = SYS_BUS_DEVICE(dev);
--        sysbus_mmio_map(busdev, 0, EXYNOS4210_SDHCI_ADDR(n));
--        sysbus_connect_irq(busdev, 0, s->irq_table[exynos4210_get_irq(29, n)]);
-+        dev = sysbus_create_varargs("samsung,exynos4210-dw-mshc",
-+                                    EXYNOS4210_SDHCI_ADDR(n),
-+                                    s->irq_table[exynos4210_get_irq(29, n)],
-+                                    NULL);
- 
-         di = drive_get(IF_SD, 0, n);
-         blk = di ? blk_by_legacy_dinfo(di) : NULL;
+ # SD/MMC host adapters
+ common-obj-$(CONFIG_PL181) += pl181.o
++common-obj-$(CONFIG_ZYNQ) += arasan_sdhci.o
+ common-obj-$(CONFIG_EXYNOS4) += dw-mshc.o
+ common-obj-$(CONFIG_SSI_SD) += ssi-sd.o
+ common-obj-$(CONFIG_SDHCI) += sdhci.o
 -- 
 2.15.1
 

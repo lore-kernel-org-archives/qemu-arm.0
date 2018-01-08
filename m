@@ -1,97 +1,97 @@
-Received: by 10.28.173.206 with SMTP id w197csp2638660wme;
-        Mon, 8 Jan 2018 08:09:41 -0800 (PST)
-X-Google-Smtp-Source: ACJfBosUGihV2AXbs5PyIxvTN8SDRHfI2gnULr8OQ5ibheiBVqfIj6kBznKyLetaTYk6ybl+wJZB
-X-Received: by 10.37.186.71 with SMTP id z7mr11649751ybj.438.1515427781135;
-        Mon, 08 Jan 2018 08:09:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515427781; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp2640612wme;
+        Mon, 8 Jan 2018 08:11:18 -0800 (PST)
+X-Google-Smtp-Source: ACJfBotUbPLEsEdw3TX0+iEfYKjyUSCsmxZ/FZIaEV4jR7fTkQmekJGapJVVfA0BZamO7qLoLKIO
+X-Received: by 10.37.183.132 with SMTP id n4mr12021372ybh.220.1515427878820;
+        Mon, 08 Jan 2018 08:11:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515427878; cv=none;
         d=google.com; s=arc-20160816;
-        b=RZWE6k5sPWg4UW9UM3zJ6mi9baY5ObsML5k6dpMg17K/tUwLYKCT6MhufqasfO50Ho
-         qNa7QvT7QKQVB42zVFDoeRZg5XmikvXhprOeliaOxunyDIAePUEip4FX0reCZeS+YV79
-         ulXVqcfZuS4hwnhxVV7mSgy2sQbn2o3ebcsALs/SOMTg1ldbyOgJHYy4EiWs4udAhF1a
-         +jErSOGgtFfPt/YaBSvRJW3HqK3QdW2BffwouQB6vk0NcVwCPyVQZMuECYHE0PTOY+2p
-         +rbfrYm2mrw6RmK5S+8bMgc8NKKB2QDtaTG7MPpMsq7CqAsyYZLvUPeYQgStrztX+2iW
-         j0kA==
+        b=krnS5TwUr6/4rlXnVpxSbehQpmuf90rNM4rqchm4CrumFEFw5uun5houE+//1ybRJI
+         bDnIidASV3Joj0O7QAgt6dXvLuDrMrpcAFXOjhqvnoKVjju3JnGJGHZI+EWIcAHz+iwu
+         vFqJ53i2o8mLLXXnX4E1WAPMWEhKba3wom0MlnYlaXN8h2nMdJtYioZPSJmql4AG+krs
+         +ympRC7mpJ4/rMm6IDYg0jiMfTyoMLLR+1YXB5ZnxTXHepSDNmlL6bo02lxeOReXu7PN
+         0eKsDCFlNoLvveSUoPvnGpMrw0mqwLCQF66fKH4n8nTwSAj4+y02Ig+fTSiKSZH8knkC
+         kUUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=qs+EJ2CmI/mNE1M/GPWrrMlCCZshfb9QWG1+yPga2fA=;
-        b=k5MREwg+k+rZd3AcMv/CIsQdkLU8esFI+eVRnCwxVsR66EZdbHSfteHDwsBlQAKvGo
-         phaKwpxVN1JFxkBqJxtld9IWej/IfQizMK83w8fXGlbnhx+D6s4fgMtMKn5aAkyqdPc0
-         Dmx9xcPcSWuh77QKhVKLxdMwZAhVr8eqZ2KRiNmzB03nkgcwvs2jPlZHllhlb+CD1eTx
-         3jTTqbu1S7BKRZoXzjBHgcEA4RkJ8KyUBR2QK47qC+3BC7sJcyN6elApSX/eA/VBFU4Y
-         P1s/12SbN2C10TgenTeHwyeKhyrYsQhGgnhoxK6CwT7JBtaGMJVMttt0o6V8Xw6IaWiW
-         K5Dg==
+        bh=H82LAP42JoubDjEfVrLf8lWGvDT3hODw0HitNmp3Wog=;
+        b=NuTg97G+d+wNAAQy1wuyI+BWRFcS6A3NU81fZ6P3/Y0XeEFE5iaphWVKdLJ80gnKYW
+         TmD9eEAbPfwGFkKnaQ2PTcOPkWkNM9ouWJ4bYiSXW1JfzNgVFg9BFq2PgsE0aH2tcj8L
+         1KMxZv2J2yg0Vzc5zK77w/LBbI3Txd/hYHjyb/6Oj4hk2qC7t3MiLf7T5k5I6CEQEYvi
+         EL68G2tIu1/bRMUXfVrhM2RlDPvo85JQ1ZsVtRlNITChyhR+lUucQD7kPgIWkL4MF/kG
+         UiX8w5DF7LlzsetLixD8jnQRC09cn6YTEFDM7ZOvnE+vkceWXx6H3U3jI5wx8QE564YW
+         ZGhQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=i2SJTb8y;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nkBkk9d/;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 189si2507558ywc.70.2018.01.08.08.09.40
+        by mx.google.com with ESMTPS id h62si2512492ywb.790.2018.01.08.08.11.18
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 08 Jan 2018 08:09:41 -0800 (PST)
+        Mon, 08 Jan 2018 08:11:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=i2SJTb8y;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nkBkk9d/;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41743 helo=lists.gnu.org)
+Received: from localhost ([::1]:41816 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eYZzY-00078i-Dn
-	for alex.bennee@linaro.org; Mon, 08 Jan 2018 11:09:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43043)
+	id 1eYa18-00006E-46
+	for alex.bennee@linaro.org; Mon, 08 Jan 2018 11:11:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42499)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eYZcg-0003Tv-Sa
-	for qemu-devel@nongnu.org; Mon, 08 Jan 2018 10:46:06 -0500
+	id 1eYZbl-0002ZU-UW
+	for qemu-devel@nongnu.org; Mon, 08 Jan 2018 10:45:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eYZcg-0000eG-3M
-	for qemu-devel@nongnu.org; Mon, 08 Jan 2018 10:46:02 -0500
-Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:33795)
+	id 1eYZbk-00086B-Ti
+	for qemu-devel@nongnu.org; Mon, 08 Jan 2018 10:45:05 -0500
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:43544)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eYZcf-0000dq-VJ; Mon, 08 Jan 2018 10:46:02 -0500
-Received: by mail-qk0-x243.google.com with SMTP id b76so1780442qkc.1;
-	Mon, 08 Jan 2018 07:46:01 -0800 (PST)
+	id 1eYZbk-00085e-P5; Mon, 08 Jan 2018 10:45:04 -0500
+Received: by mail-qt0-x243.google.com with SMTP id w10so14073896qtb.10;
+	Mon, 08 Jan 2018 07:45:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=qs+EJ2CmI/mNE1M/GPWrrMlCCZshfb9QWG1+yPga2fA=;
-	b=i2SJTb8yGE2rjp1B0j2QAwFeoMYsuHTsbGKbvUix5ubGFQ6U0voeqIclyz/Wi7+DlH
-	tHIgfKXweWiII7OBWmqlkEgV/09ieVE6FiRPsTX+EYnl4FVq9iZUZQ82GeDm5sveJdKF
-	nmfL0moOMcxeJM2k4PIh/XbjibzBmm3zUD+WR6l1/IqSl+0ekNM2ASLuWooehJBsqs1K
-	l/sdR1uOU5RTnqfXeh+hHDiTm6Vj9kU8xAxJXkBCBGYf1TOgfk/uQPlOvVAkwHe1hqVU
-	qUSHxeRdb0WWpyEe7p1as18Z2tKxIq4NoVpsRLKtx9lpb9m5pZDQJSVjVKs2qqowYpWA
-	ul3w==
+	bh=H82LAP42JoubDjEfVrLf8lWGvDT3hODw0HitNmp3Wog=;
+	b=nkBkk9d/3bl0gafRrCax27WpVHSH/GDNCBGe9g2dmKmqfOkoo+dmBweln+5Yvs84bT
+	itnfGQl0zg8+WsVcaVP/A7C+p64EYcJyNto1j2xYUiESN658G8yYVgg6vXFrVgXYP37C
+	MVN7yXqMSsdnypRPP72MCwMbkOHhu5EbaGJTuq664qiMCg7wTH6GXbpVbVQeEjGp7HhC
+	zOa8/AQNFA9/JkWDnlnNLNhNzEBr5beqoeKevV/45FsSfNWVXiIRSgI66NMciUx00hp3
+	ikaQZMxY6JxKxtttfdaBBJMAkjBtWLrYF19wkmlQrsVO7ufQ86M/vgg7yt/RCmV0sOJ4
+	OcEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=qs+EJ2CmI/mNE1M/GPWrrMlCCZshfb9QWG1+yPga2fA=;
-	b=ISqAtmVbKIJEJV5WlhZyyVt6Spmb66yLKfWupjNa4KjXHjgh2miGx5WYbeLVJN5ghy
-	hQzqSun37i1uiJbEI61EjvZkcI4HEj9X3K57QVMsJDRhXghHU10e6B9+w4YZ4Vil63f8
-	5FJl9ffA0DYUBVcBxQnpAFybQfVST3CoKXD+TTUVtJpgrQretF4ai1CKklP0aPwTCDbi
-	U5IX8hnyvqQ/C0V9OgL/sChJZYh6FdK9VlcTMpNMFUw02+zb1QxoAqCZFvaWybYXdL1i
-	eOrUC4Cub0hlVHnBJoN5J+eCGo27IfsGkiChJd5WM9R8qTzaN0+WGj7JnV82ZrNmhVM5
-	S+yw==
-X-Gm-Message-State: AKwxytdNxLxFyjaPpiQjrZXzcC6Ppebu/82RCN2n9EDlcaXyGcy5OSZp
-	1XTsYX7X4+ODj5dBQrFGiKM=
-X-Received: by 10.55.25.146 with SMTP id 18mr15893335qkz.214.1515426361441;
-	Mon, 08 Jan 2018 07:46:01 -0800 (PST)
+	bh=H82LAP42JoubDjEfVrLf8lWGvDT3hODw0HitNmp3Wog=;
+	b=hF04oyoxvvN9zzMLomrerGIx9Cutn0JaqEjBpO92KD3ibo9uNs/geiZA26tygJzcUc
+	FkmEITr82Ag4bg5KqN0XA/l01ixqnl3YXruDjctaLKazi+/Iutfe5WqrEFN/+jUxfWo8
+	sFNdGTB/rTuWV8E17GIYIml5lSsn3dUwon+FG4OGj0SgQlSbRuEKdiCpPDiDtL20sX1F
+	TdVoqT21Z7OoiHEyAELEp8IX3e+/X0XyefyfGimrZNfrt5vvxfHQ26KtyH6gatQpM2IC
+	lH/28ghe6PNCTyORJQSIv7QpdIwu/40B0No839oYCqUyirfFwejS5wHiAn+6O3EAuQOK
+	0fxg==
+X-Gm-Message-State: AKwxyte+LBRBrqsm5jF8s99pOLDg7DCBYUCol5ezOkOBazLP2iDPyhoM
+	M7ooD5lh5q1RboYHx1MY/k4=
+X-Received: by 10.237.63.184 with SMTP id s53mr16317861qth.217.1515426304207; 
+	Mon, 08 Jan 2018 07:45:04 -0800 (PST)
 Received: from x1.local ([138.117.48.219]) by smtp.gmail.com with ESMTPSA id
-	u36sm7832382qtc.58.2018.01.08.07.45.56
+	u36sm7832382qtc.58.2018.01.08.07.44.59
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 08 Jan 2018 07:46:00 -0800 (PST)
+	Mon, 08 Jan 2018 07:45:03 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Alistair Francis <alistair.francis@xilinx.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Andrey Smirnov <andrew.smirnov@gmail.com>,
 	Igor Mitsyanko <i.mitsyanko@gmail.com>
-Date: Mon,  8 Jan 2018 12:43:03 -0300
-Message-Id: <20180108154303.6522-32-f4bug@amsat.org>
+Date: Mon,  8 Jan 2018 12:42:52 -0300
+Message-Id: <20180108154303.6522-21-f4bug@amsat.org>
 X-Mailer: git-send-email 2.15.1
 In-Reply-To: <20180108154303.6522-1-f4bug@amsat.org>
 References: <20180108154303.6522-1-f4bug@amsat.org>
@@ -100,9 +100,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::243
-Subject: [Qemu-devel] [PATCH v5 31/31] sdhci: add Spec v4.2 register
- definitions
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: [Qemu-devel] [PATCH v5 20/31] sdhci: add the Freescale controller
+ for i.MX
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -127,45 +127,91 @@ Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
 	Eduardo Habkost <ehabkost@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BCecreynaJ6p
+X-TUID: p0T8YCss6VUc
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/sd/sdhci-internal.h | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ hw/sd/fsl-sdhc.c    | 58 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+ hw/sd/Makefile.objs |  1 +
+ 2 files changed, 59 insertions(+)
+ create mode 100644 hw/sd/fsl-sdhc.c
 
-diff --git a/hw/sd/sdhci-internal.h b/hw/sd/sdhci-internal.h
-index 1da91a27b4..8193aa1821 100644
---- a/hw/sd/sdhci-internal.h
-+++ b/hw/sd/sdhci-internal.h
-@@ -191,6 +191,10 @@ FIELD(SDHC_HOSTCTL2, V18_ENA,          3, 1); /* UHS-I only */
- FIELD(SDHC_HOSTCTL2, DRIVER_STRENGTH,  4, 2); /* UHS-I only */
- FIELD(SDHC_HOSTCTL2, EXECUTE_TUNING,   6, 1); /* UHS-I only */
- FIELD(SDHC_HOSTCTL2, SAMPLING_CLKSEL,  7, 1); /* UHS-I only */
-+FIELD(SDHC_HOSTCTL2, UHS_II_ENA,       8, 1); /* since v4 */
-+FIELD(SDHC_HOSTCTL2, ADMA2_LENGTH,    10, 1); /* since v4 */
-+FIELD(SDHC_HOSTCTL2, CMD23_ENA,       11, 1); /* since v4 */
-+FIELD(SDHC_HOSTCTL2, VERSION4,        12, 1); /* since v4 */
- FIELD(SDHC_HOSTCTL2, ASYNC_INT,       14, 1);
- FIELD(SDHC_HOSTCTL2, PRESET_ENA,      15, 1);
- 
-@@ -219,12 +223,16 @@ FIELD(SDHC_CAPAB, DRIVER_TYPE_C,      37, 1); /* since v3 */
- FIELD(SDHC_CAPAB, DRIVER_TYPE_D,      38, 1); /* since v3 */
- FIELD(SDHC_CAPAB, TIMER_RETUNNING,    40, 4); /* since v3 */
- FIELD(SDHC_CAPAB, SDR50_TUNNING,      45, 1); /* since v3 */
-+FIELD(SDHC_CAPAB, CLK_MUL,            48, 8); /* since v4.20 */
-+FIELD(SDHC_CAPAB, ADMA3,              59, 1); /* since v4.20 */
-+FIELD(SDHC_CAPAB, V18_VDD2,           60, 1); /* since v4.20 */
- 
- /* HWInit Maximum Current Capabilities Register 0x0 */
- #define SDHC_MAXCURR                   0x48
- FIELD(SDHC_MAXCURR, V33_VDD1,          0, 8);
- FIELD(SDHC_MAXCURR, V30_VDD1,          8, 8);
- FIELD(SDHC_MAXCURR, V18_VDD1,         16, 8);
-+FIELD(SDHC_MAXCURR, V18_VDD2,         32, 8); /* since v4.20 */
- 
- /* W Force Event Auto CMD12 Error Interrupt Register 0x0000 */
- #define SDHC_FEAER                     0x50
+diff --git a/hw/sd/fsl-sdhc.c b/hw/sd/fsl-sdhc.c
+new file mode 100644
+index 0000000000..aa8075a9e5
+--- /dev/null
++++ b/hw/sd/fsl-sdhc.c
+@@ -0,0 +1,58 @@
++/*
++ * Freescale SD Host Controller for i.MX emulation
++ *
++ * Copyright (C) 2018 Philippe Mathieu-Daudé <f4bug@amsat.org>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or
++ * (at your option) any later version.  See the COPYING file in the
++ * top-level directory.
++ */
++#include "qemu/osdep.h"
++#include "hw/sd/sdhci.h"
++#include "qapi/error.h"
++
++/* UHS-I SDIO3.0 SDR104 1.8V ADMA */
++static void fsl_imx6q_usdhc_realize(DeviceState *dev, Error **errp)
++{
++    SDHCICommonClass *cc = SYSBUS_SDHCI_COMMON_GET_CLASS(dev);
++    Object *obj = OBJECT(dev);
++    Error *local_err = NULL;
++
++    object_property_set_uint(obj, 3, "sd-spec-version", &local_err);
++    object_property_set_uint(obj, 52, "timeout-freq", &local_err);
++    object_property_set_uint(obj, 52, "max-frequency", &local_err);
++    object_property_set_bool(obj, true, "adma1", &local_err);
++    object_property_set_bool(obj, true, "1v8", &local_err);
++    if (local_err) {
++        error_propagate(errp, local_err);
++        return;
++    }
++
++    cc->parent_realize(dev, &local_err);
++    if (local_err) {
++        error_propagate(errp, local_err);
++        return;
++    }
++}
++
++static void fsl_imx6q_usdhc_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    SDHCICommonClass *cc = SYSBUS_SDHCI_COMMON_CLASS(klass);
++
++    cc->parent_realize = dc->realize;
++    dc->realize = fsl_imx6q_usdhc_realize;
++}
++
++static const TypeInfo fsl_imx6q_usdhc_info = {
++    .name = "fsl,imx6q-usdhc",
++    .parent = TYPE_SYSBUS_SDHCI,
++    .class_init = fsl_imx6q_usdhc_class_init,
++};
++
++static void fsl_imx_sdhc_register_types(void)
++{
++    type_register_static(&fsl_imx6q_usdhc_info);
++}
++
++type_init(fsl_imx_sdhc_register_types)
+diff --git a/hw/sd/Makefile.objs b/hw/sd/Makefile.objs
+index b3e69c3018..b058a9328e 100644
+--- a/hw/sd/Makefile.objs
++++ b/hw/sd/Makefile.objs
+@@ -4,6 +4,7 @@ common-obj-$(CONFIG_SD) += core.o
+ # SD/MMC host adapters
+ common-obj-$(CONFIG_PL181) += pl181.o
+ common-obj-$(CONFIG_ZYNQ) += arasan_sdhci.o
++common-obj-$(CONFIG_IMX) += fsl-sdhc.o
+ common-obj-$(CONFIG_EXYNOS4) += dw-mshc.o
+ common-obj-$(CONFIG_SSI_SD) += ssi-sd.o
+ common-obj-$(CONFIG_SDHCI) += sdhci.o
 -- 
 2.15.1
 

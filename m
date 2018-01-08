@@ -1,97 +1,97 @@
-Received: by 10.28.173.206 with SMTP id w197csp2610635wme;
-        Mon, 8 Jan 2018 07:43:46 -0800 (PST)
-X-Google-Smtp-Source: ACJfBouae7ASoWUNtFdI7OEWK139ETmIbVcpCZaCPkmEQ2opTn2FwJXqIOExnL7qy2OoNEfbaF9D
-X-Received: by 10.129.96.215 with SMTP id u206mr10960101ywb.478.1515426226533;
-        Mon, 08 Jan 2018 07:43:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515426226; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp2610880wme;
+        Mon, 8 Jan 2018 07:44:00 -0800 (PST)
+X-Google-Smtp-Source: ACJfBouIcBxHDNM698GUQNJw3fF0ZAvJnwZtvmEhhorHd7zejllv8so/P7BIoDFJ4bZXrAAnylXM
+X-Received: by 10.37.179.23 with SMTP id l23mr11154938ybj.255.1515426240563;
+        Mon, 08 Jan 2018 07:44:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515426240; cv=none;
         d=google.com; s=arc-20160816;
-        b=E25BlC0vyIfn8/41CYhqZS+ar0UxAjf5ZgcEmwdM/ERLANT6UKEytEy85YrrVdvlZX
-         LJuu1P4Q4X92jecAiCr4W/l5k9YOA1RpC95G1Okz18PIVVd/unkjg9ys3xeFgAFBI12B
-         4YZPhWTzvsWlcH2NRgHq1VKBCO6Gc/lh2/UN9QazMHW0mQl/HhqwTHBYtF3Rk+W11L5v
-         bIWvBFxD/6yd+hqYmhBcDPfX3XhuZvKJM15wSI8E+KhyfWGmnOxC6WiqhI3XDjKGidtt
-         ZjJs/jJGuu0qppMMu67g6VtsqUUdw2R7UbDNC9be1GZCIXFcAEj52yZtU1Bk+hQ3JlNI
-         lOdA==
+        b=skXedNbR+EThvUyM0PKL/SUNdh9gQdbjUm3BCAyh/r+SMGEoUbugfnCKZYIAaQJhyK
+         3UXIJHi55w+2KBDuiLV9hxQMBLBy7r1W48iv8YAOjw2YKpkL4w9PSGHzqyKD/l3PQ2cN
+         lRzasqV+wZXyCazY3gkLGjofYQZqNztDPTRaWPrxv8FH0Qk8AFvyy4gLU/41XR3JO/X3
+         3wUcczAtlzI8/i1x4S3Xqw++PNVmhjGvr7NqVR/XouMXlovuVklvm0PZkzHgNyuNpnZr
+         KY/gaE1tYgqo/H/fgIHx4xZjnT53aO8goP75WgGC5FEUd6ePyJIcnaja0ObcUdfbKrJT
+         FO9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=MdVBqsl3IJRQFM11VnTEGb3gyIxLYjLO7UeKKsLPpE0=;
-        b=apyQ/T8pxDb0g8hoWUAQYiT0MAmLCb10HsYxohY+RGA9Z61r8OSxgsnPLzFcpbV4A4
-         fb4HVV8wwgAmykvDRLQPkoip7MUd1XE4MJzmqURuC+dxkrUkJCZM0Yqyy4Hpo449bETQ
-         d02cpgKth1BMRgz9ScAvDaqHDD3vyMVgxHLHJe21A7iufzPEAAMTjbYdLExy1nFUdJSQ
-         OIsT0TCjSeqGEPT68BJB5YKAqoJof7XB3Xt6jzr5VC9Iq54DN4VODggE/Iki3GGJ1brW
-         mWlx7Zy0jhnT9JUjSeLKRlqdmES5MYwygceI5i/JzAjZGvXZaZVbhniJt7jlIA6nT06A
-         khsg==
+        bh=A3tFw7iQcd2iAvav3zBQa7pgS4zm53KKebvudYiTcW8=;
+        b=BYLGjaddTH8HwK62oOFDk7AqpY79Jh6Ps/k7bH/AQCIRoBQ4kgWqksMDMjyE2SHSdu
+         oKwKSzO+o/pw76gQCXsEnAUCcygxRxM0+WadrrtgiRlLNzQPRGpTRjRL/zpKj2688TKG
+         CvYkg9WmkZs/hWJN3L3crH4yJzgGMMuPghKp3E2mimIOTvXo2OWUG5jJgO+CgyrcJhUn
+         ml0bgZlMhe8NyCXNQTjosM5ayPP1Kzyf9l2ChzGWaAlWmHEFrgjlLSEYVL6UCNuIfEJa
+         cciL5k9zDkI8OI3vewKn06wHXFQ5w52SvTe8ganGizRPAPd2teO+uCq9gKltAi4LaDOl
+         9JTQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Q1J/79kK;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rpBrH46V;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b67si1616181ybc.215.2018.01.08.07.43.46
+        by mx.google.com with ESMTPS id r4si2556491ybk.558.2018.01.08.07.44.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 08 Jan 2018 07:43:46 -0800 (PST)
+        Mon, 08 Jan 2018 07:44:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Q1J/79kK;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rpBrH46V;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41212 helo=lists.gnu.org)
+Received: from localhost ([::1]:41217 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eYZaT-00017p-Rg
-	for alex.bennee@linaro.org; Mon, 08 Jan 2018 10:43:45 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41562)
+	id 1eYZai-0001LA-07
+	for alex.bennee@linaro.org; Mon, 08 Jan 2018 10:44:00 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41644)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eYZaE-00015R-BU
-	for qemu-arm@nongnu.org; Mon, 08 Jan 2018 10:43:31 -0500
+	id 1eYZaM-0001Dg-Rm
+	for qemu-arm@nongnu.org; Mon, 08 Jan 2018 10:43:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eYZaD-0006xR-E8
-	for qemu-arm@nongnu.org; Mon, 08 Jan 2018 10:43:30 -0500
-Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:37082)
+	id 1eYZaL-00074Z-G6
+	for qemu-arm@nongnu.org; Mon, 08 Jan 2018 10:43:38 -0500
+Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:43784)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eYZaB-0006rv-31; Mon, 08 Jan 2018 10:43:27 -0500
-Received: by mail-qt0-x243.google.com with SMTP id f2so14075056qtj.4;
-	Mon, 08 Jan 2018 07:43:26 -0800 (PST)
+	id 1eYZaG-00070B-1t; Mon, 08 Jan 2018 10:43:32 -0500
+Received: by mail-qk0-x241.google.com with SMTP id j137so14639847qke.10;
+	Mon, 08 Jan 2018 07:43:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=MdVBqsl3IJRQFM11VnTEGb3gyIxLYjLO7UeKKsLPpE0=;
-	b=Q1J/79kKMsqtsNWI+9b9NUB61DbjRCcFYcV4QtHhaLXACK3UiQFQpWnV0reVCwkR8r
-	VhSK576JumPFsO1C53ks+v8Q9sxkLhP216iTSdlDbqCAPp9lF7wygYaUTVkV0n6eELJk
-	lCfZA48rzrsnbOAG25LBWzImsTPu4mk7QO5IyBSbdorZCF3mdBxQvF1iAHsgYMI/Ji8H
-	sXjY645VcgoYBX9Y+X1ao/sGFoFP/zSBeF4t50wDNeIS+dzexJq9VUbHF/4R0cRdIctV
-	VVNqaO12Bh77H1H83gvHhkA7+NVWZrKjmhOcfOaHrBPcFUZAPHAJxO49K8aWGb8nTA8S
-	ajsw==
+	bh=A3tFw7iQcd2iAvav3zBQa7pgS4zm53KKebvudYiTcW8=;
+	b=rpBrH46VhszNra2dyLD2CQe608W3NR1/3YlPTOsAskmvMyN21KH71W9gHAscm3cyAX
+	elkNiOEV2Whdfk5bcdsprK6DHKZkThKDlyahy0xu8r27NvAnXF5k51FaolNI7Gvt/DQM
+	YU8hozDglsd+tZCdxRFg5bd94sOP5kIT3qO98jJFpufdiADM6PFnuTcsXBTNDBlmM+Dp
+	Zk3M8QrsSDttwKnnM3hIoVvGFJl3AX062l8kgM8BMiUi+Z2MZ5oe8k6X/GQsGJsZrB9x
+	UwfWe3udXdPGbDq3aaQZCR38fvhVwlO/Zh20Dw1ohFRaBs3x3ju0/c/jleQj9lskBHRo
+	dYWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=MdVBqsl3IJRQFM11VnTEGb3gyIxLYjLO7UeKKsLPpE0=;
-	b=O4Ja2M5ey/ULBuo56FVPEw6JO55tN2IqHasWxRUfnwEQtF0u5Rm/vMJg4xjLHx5R+R
-	PicCvnDQftLuwmNCjfglsxgsDt5TfkX9xwsH1bExovZHMiohIUdHF5UYsgO9K914VHCB
-	Kg+Gv3jcTjHJtluBMUfDWacN4FD3x/wT9n8S/xRLBYJfjWGT1+INEiXSW86t5y2AE0vc
-	bC+fkdeYWyYh088gGmJI5vkIf/EoGrKZtQcKfmOz/u6Gy7gf9iQdZit5LFD4hxMuYi4R
-	p//ygfrhklUVrBr30n5SmXlrX4VJLYigAJpnKdzjyQkLrSl102p9GrNND8YYjdWiACjO
-	5ldw==
-X-Gm-Message-State: AKwxytc/Tp5kPIbKSHRTsT+gNDV+gQHCnX9ce/C1BsFAdiUgaMyz+k29
-	8FrLx0DK10PNgo6Bo/dRkaE=
-X-Received: by 10.237.51.162 with SMTP id v31mr15699163qtd.116.1515426206473; 
-	Mon, 08 Jan 2018 07:43:26 -0800 (PST)
+	bh=A3tFw7iQcd2iAvav3zBQa7pgS4zm53KKebvudYiTcW8=;
+	b=o789K91K6yoL9FPtwPIQtfLlIJm7u+j3pOOdcgye/Vb+0nrgyV7t1VuPE7/ySldREq
+	Vfscf5Fc8D+ypJzeZWyrb44WGOE7jX5Lfl2qqtbDY93B57C7ziZn0erYIgtJKtFBFHd/
+	p3JQYhDnySekmOsBN28igoX23Bf0bUM1Hb4PFjiCPuphJ/DyF7HSxyBtwVcfLjXCSjbN
+	1YtjZCO1XioSZxdIqUiMRevgRxHyirUVK478T4eof3osaxc6719v8jE8tPRGwlTmOQOn
+	48aHlV0KNtqGao7gd9pShTyels3gucYb3TKVV6KMP0RZAFaetDaAyv3T2tRU+fJdEyEj
+	UAoQ==
+X-Gm-Message-State: AKGB3mICFCgJaNvEz2F4kkusqukBkhONWfBaonulXXLVG9YN09c+Kmwn
+	oINfQHoXzn4lQsbnJdfA4N8=
+X-Received: by 10.55.121.196 with SMTP id u187mr17321514qkc.215.1515426211387; 
+	Mon, 08 Jan 2018 07:43:31 -0800 (PST)
 Received: from x1.local ([138.117.48.219]) by smtp.gmail.com with ESMTPSA id
-	u36sm7832382qtc.58.2018.01.08.07.43.21
+	u36sm7832382qtc.58.2018.01.08.07.43.26
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 08 Jan 2018 07:43:25 -0800 (PST)
+	Mon, 08 Jan 2018 07:43:30 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Alistair Francis <alistair.francis@xilinx.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Andrey Smirnov <andrew.smirnov@gmail.com>,
 	Igor Mitsyanko <i.mitsyanko@gmail.com>
-Date: Mon,  8 Jan 2018 12:42:33 -0300
-Message-Id: <20180108154303.6522-2-f4bug@amsat.org>
+Date: Mon,  8 Jan 2018 12:42:34 -0300
+Message-Id: <20180108154303.6522-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.15.1
 In-Reply-To: <20180108154303.6522-1-f4bug@amsat.org>
 References: <20180108154303.6522-1-f4bug@amsat.org>
@@ -100,8 +100,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::243
-Subject: [Qemu-arm] [PATCH v5 01/31] sdhci: add a spec_version property
+X-Received-From: 2607:f8b0:400d:c09::241
+Subject: [Qemu-arm] [PATCH v5 02/31] sdhci: add basic Spec v1 capabilities
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -126,112 +126,206 @@ Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
 	Eduardo Habkost <ehabkost@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9heCeuXkrHsc
-
-default to Spec v2.00
+X-TUID: kOT1F9RflupH
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/sd/sdhci-internal.h |  4 ++--
- include/hw/sd/sdhci.h  |  3 +++
- hw/sd/sdhci.c          | 19 +++++++++++++++++--
- 3 files changed, 22 insertions(+), 4 deletions(-)
+ hw/sd/sdhci-internal.h | 22 ++++++++++++++++++-
+ include/hw/sd/sdhci.h  |  6 ++++++
+ hw/sd/sdhci.c          | 58 ++++++++++++++++++++++++++++++++++++--------------
+ 3 files changed, 69 insertions(+), 17 deletions(-)
 
 diff --git a/hw/sd/sdhci-internal.h b/hw/sd/sdhci-internal.h
-index b7475a1b7b..cf4a055159 100644
+index cf4a055159..6944fcaf00 100644
 --- a/hw/sd/sdhci-internal.h
 +++ b/hw/sd/sdhci-internal.h
-@@ -212,9 +212,9 @@ FIELD(SDHC_PRNSTS, WRITE_PROTECT,      19, 1);
- /* Slot interrupt status */
- #define SDHC_SLOT_INT_STATUS            0xFC
+@@ -86,6 +86,9 @@ FIELD(SDHC_PRNSTS, WRITE_PROTECT,      19, 1);
  
--/* HWInit Host Controller Version Register 0x0401 */
-+/* HWInit Host Controller Version Register */
- #define SDHC_HCVER                      0xFE
--#define SD_HOST_SPECv2_VERS             0x2401
-+#define SDHC_HCVER_VENDOR               0x24
+ /* R/W Host control Register 0x0 */
+ #define SDHC_HOSTCTL                   0x28
++FIELD(SDHC_HOSTCTL, LED_CTRL,          0, 1);
++FIELD(SDHC_HOSTCTL, DATATRANSFERWIDTH, 1, 1); /* SD mode only */
++FIELD(SDHC_HOSTCTL, HIGH_SPEED,        2, 1);
+ #define SDHC_CTRL_DMA_CHECK_MASK       0x18
+ #define SDHC_CTRL_SDMA                 0x00
+ #define SDHC_CTRL_ADMA1_32             0x08
+@@ -96,6 +99,7 @@ FIELD(SDHC_PRNSTS, WRITE_PROTECT,      19, 1);
+ /* R/W Power Control Register 0x0 */
+ #define SDHC_PWRCON                    0x29
+ #define SDHC_POWER_ON                  (1 << 0)
++FIELD(SDHC_PWRCON, BUS_VOLTAGE,        1, 3);
  
- #define SDHC_REGISTERS_MAP_SIZE         0x100
- #define SDHC_INSERTION_DELAY            (NANOSECONDS_PER_SECOND)
+ /* R/W Block Gap Control Register 0x0 */
+ #define SDHC_BLKGAP                    0x2A
+@@ -118,6 +122,7 @@ FIELD(SDHC_PRNSTS, WRITE_PROTECT,      19, 1);
+ 
+ /* R/W Timeout Control Register 0x0 */
+ #define SDHC_TIMEOUTCON                0x2E
++FIELD(SDHC_TIMEOUTCON, COUNTER,        0, 4);
+ 
+ /* R/W Software Reset Register 0x0 */
+ #define SDHC_SWRST                     0x2F
+@@ -174,17 +179,32 @@ FIELD(SDHC_PRNSTS, WRITE_PROTECT,      19, 1);
+ 
+ /* ROC Auto CMD12 error status register 0x0 */
+ #define SDHC_ACMD12ERRSTS              0x3C
++FIELD(SDHC_ACMD12ERRSTS, TIMEOUT_ERR,  1, 1);
++FIELD(SDHC_ACMD12ERRSTS, CRC_ERR,      2, 1);
++FIELD(SDHC_ACMD12ERRSTS, INDEX_ERR,    4, 1);
+ 
+ /* HWInit Capabilities Register 0x05E80080 */
+ #define SDHC_CAPAB                     0x40
+-#define SDHC_CAN_DO_DMA                0x00400000
+ #define SDHC_CAN_DO_ADMA2              0x00080000
+ #define SDHC_CAN_DO_ADMA1              0x00100000
+ #define SDHC_64_BIT_BUS_SUPPORT        (1 << 28)
+ #define SDHC_CAPAB_BLOCKSIZE(x)        (((x) >> 16) & 0x3)
++FIELD(SDHC_CAPAB, TOCLKFREQ,           0, 6);
++FIELD(SDHC_CAPAB, TOUNIT,              7, 1);
++FIELD(SDHC_CAPAB, BASECLKFREQ,         8, 8);
++FIELD(SDHC_CAPAB, MAXBLOCKLENGTH,     16, 2);
++FIELD(SDHC_CAPAB, HIGHSPEED,          21, 1);
++FIELD(SDHC_CAPAB, SDMA,               22, 1);
++FIELD(SDHC_CAPAB, SUSPRESUME,         23, 1);
++FIELD(SDHC_CAPAB, V33,                24, 1);
++FIELD(SDHC_CAPAB, V30,                25, 1);
++FIELD(SDHC_CAPAB, V18,                26, 1);
+ 
+ /* HWInit Maximum Current Capabilities Register 0x0 */
+ #define SDHC_MAXCURR                   0x48
++FIELD(SDHC_MAXCURR, V33_VDD1,          0, 8);
++FIELD(SDHC_MAXCURR, V30_VDD1,          8, 8);
++FIELD(SDHC_MAXCURR, V18_VDD1,         16, 8);
+ 
+ /* W Force Event Auto CMD12 Error Interrupt Register 0x0000 */
+ #define SDHC_FEAER                     0x50
 diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
-index 2aea20f1d8..ddd5040410 100644
+index ddd5040410..266030dc8d 100644
 --- a/include/hw/sd/sdhci.h
 +++ b/include/hw/sd/sdhci.h
-@@ -91,6 +91,8 @@ typedef struct SDHCIState {
-     uint64_t capareg;      /* Capabilities Register */
-     /* 0x48 */
-     uint64_t maxcurr;      /* Maximum Current Capabilities Register */
-+    /* 0xfe */
-+    uint16_t version;      /* Host Controller Version Register */
- 
-     uint8_t  *fifo_buffer; /* SD host i/o FIFO buffer */
-     uint32_t buf_maxsz;
-@@ -99,6 +101,7 @@ typedef struct SDHCIState {
-     bool     pending_insert_state;
+@@ -102,6 +102,12 @@ typedef struct SDHCIState {
      /* Configurable properties */
      bool pending_insert_quirk; /* Quirk for Raspberry Pi card insert int */
-+    uint8_t spec_version;
+     uint8_t spec_version;
++    struct {
++        bool suspend;
++        bool high_speed;
++        bool sdma;
++        bool v33, v30, v18;
++    } cap;
  } SDHCIState;
  
  #define TYPE_PCI_SDHCI "sdhci-pci"
 diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-index b080950f80..cd4a8efdd7 100644
+index cd4a8efdd7..e7dbab2fdc 100644
 --- a/hw/sd/sdhci.c
 +++ b/hw/sd/sdhci.c
-@@ -169,7 +169,8 @@ static void sdhci_reset(SDHCIState *s)
+@@ -44,12 +44,6 @@
+  * 0 - not supported, 1 - supported, other - prohibited.
+  */
+ #define SDHC_CAPAB_64BITBUS       0ul        /* 64-bit System Bus Support */
+-#define SDHC_CAPAB_18V            1ul        /* Voltage support 1.8v */
+-#define SDHC_CAPAB_30V            0ul        /* Voltage support 3.0v */
+-#define SDHC_CAPAB_33V            1ul        /* Voltage support 3.3v */
+-#define SDHC_CAPAB_SUSPRESUME     0ul        /* Suspend/resume support */
+-#define SDHC_CAPAB_SDMA           1ul        /* SDMA support */
+-#define SDHC_CAPAB_HIGHSPEED      1ul        /* High speed support */
+ #define SDHC_CAPAB_ADMA1          1ul        /* ADMA1 support */
+ #define SDHC_CAPAB_ADMA2          1ul        /* ADMA2 support */
+ /* Maximum host controller R/W buffers size
+@@ -63,9 +57,7 @@
+ #define SDHC_CAPAB_TOCLKFREQ      52ul
  
-     timer_del(s->insert_timer);
-     timer_del(s->transfer_timer);
--    /* Set all registers to 0. Capabilities registers are not cleared
-+
-+    /* Set all registers to 0. Capabilities/Version registers are not cleared
-      * and assumed to always preserve their value, given to them during
-      * initialization */
-     memset(&s->sdmasysad, 0, (uintptr_t)&s->capareg - (uintptr_t)&s->sdmasysad);
-@@ -923,7 +924,7 @@ static uint64_t sdhci_read(void *opaque, hwaddr offset, unsigned size)
-         ret = (uint32_t)(s->admasysaddr >> 32);
-         break;
-     case SDHC_SLOT_INT_STATUS:
--        ret = (SD_HOST_SPECv2_VERS << 16) | sdhci_slotint(s);
-+        ret = (s->version << 16) | sdhci_slotint(s);
-         break;
-     default:
-         qemu_log_mask(LOG_UNIMP, "SDHC rd_%ub @0x%02" HWADDR_PRIx " "
-@@ -1178,6 +1179,15 @@ static inline unsigned int sdhci_get_fifolen(SDHCIState *s)
-     }
- }
+ /* Now check all parameters and calculate CAPABILITIES REGISTER value */
+-#if SDHC_CAPAB_64BITBUS > 1 || SDHC_CAPAB_18V > 1 || SDHC_CAPAB_30V > 1 ||     \
+-    SDHC_CAPAB_33V > 1 || SDHC_CAPAB_SUSPRESUME > 1 || SDHC_CAPAB_SDMA > 1 ||  \
+-    SDHC_CAPAB_HIGHSPEED > 1 || SDHC_CAPAB_ADMA2 > 1 || SDHC_CAPAB_ADMA1 > 1 ||\
++#if SDHC_CAPAB_64BITBUS > 1 || SDHC_CAPAB_ADMA2 > 1 || SDHC_CAPAB_ADMA1 > 1 || \
+     SDHC_CAPAB_TOUNIT > 1
+ #error Capabilities features can have value 0 or 1 only!
+ #endif
+@@ -90,16 +82,33 @@
+ #endif
  
-+static void sdhci_init_readonly_registers(SDHCIState *s, Error **errp)
+ #define SDHC_CAPAB_REG_DEFAULT                                 \
+-   ((SDHC_CAPAB_64BITBUS << 28) | (SDHC_CAPAB_18V << 26) |     \
+-    (SDHC_CAPAB_30V << 25) | (SDHC_CAPAB_33V << 24) |          \
+-    (SDHC_CAPAB_SUSPRESUME << 23) | (SDHC_CAPAB_SDMA << 22) |  \
+-    (SDHC_CAPAB_HIGHSPEED << 21) | (SDHC_CAPAB_ADMA1 << 20) |  \
++   ((SDHC_CAPAB_64BITBUS << 28) | (SDHC_CAPAB_ADMA1 << 20) |   \
+     (SDHC_CAPAB_ADMA2 << 19) | (MAX_BLOCK_LENGTH << 16) |      \
+     (SDHC_CAPAB_BASECLKFREQ << 8) | (SDHC_CAPAB_TOUNIT << 7) | \
+     (SDHC_CAPAB_TOCLKFREQ))
+ 
+ #define MASKED_WRITE(reg, mask, val)  (reg = (reg & (mask)) | (val))
+ 
++static void sdhci_init_capareg(SDHCIState *s, Error **errp)
 +{
-+    if (s->spec_version != 2) {
-+        error_setg(errp, "Only Spec v2 is supported");
-+        return;
++    uint64_t capareg = 0;
++
++    switch (s->spec_version) {
++    case 1:
++        capareg = FIELD_DP64(capareg, SDHC_CAPAB, HIGHSPEED, s->cap.high_speed);
++        capareg = FIELD_DP64(capareg, SDHC_CAPAB, SDMA, s->cap.sdma);
++        capareg = FIELD_DP64(capareg, SDHC_CAPAB, SUSPRESUME, s->cap.suspend);
++        capareg = FIELD_DP64(capareg, SDHC_CAPAB, V33, s->cap.v33);
++        capareg = FIELD_DP64(capareg, SDHC_CAPAB, V30, s->cap.v30);
++        capareg = FIELD_DP64(capareg, SDHC_CAPAB, V18, s->cap.v18);
++        break;
++
++    default:
++        error_setg(errp, "Unsupported spec version: %u", s->spec_version);
 +    }
-+    s->version = (SDHC_HCVER_VENDOR << 8) | (s->spec_version - 1);
++    s->capareg = capareg;
 +}
 +
- static void sdhci_initfn(SDHCIState *s)
+ static uint8_t sdhci_slotint(SDHCIState *s)
  {
-     qbus_create_inplace(&s->sdbus, sizeof(s->sdbus),
-@@ -1190,6 +1200,10 @@ static void sdhci_initfn(SDHCIState *s)
- 
- static void sdhci_common_realize(SDHCIState *s, Error **errp)
- {
-+    sdhci_init_readonly_registers(s, errp);
-+    if (errp && *errp) {
-+        return;
+     return (s->norintsts & s->norintsigen) || (s->errintsts & s->errintsigen) ||
+@@ -1032,7 +1041,7 @@ sdhci_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
+     case SDHC_TRNMOD:
+         /* DMA can be enabled only if it is supported as indicated by
+          * capabilities register */
+-        if (!(s->capareg & SDHC_CAN_DO_DMA)) {
++        if (!(s->capareg & R_SDHC_CAPAB_SDMA_MASK)) {
+             value &= ~SDHC_TRNS_DMA;
+         }
+         MASKED_WRITE(s->trnmod, mask, value & SDHC_TRNMOD_MASK);
+@@ -1186,6 +1195,10 @@ static void sdhci_init_readonly_registers(SDHCIState *s, Error **errp)
+         return;
+     }
+     s->version = (SDHC_HCVER_VENDOR << 8) | (s->spec_version - 1);
++
++    if (s->capareg == UINT64_MAX) {
++        sdhci_init_capareg(s, errp);
 +    }
-     s->buf_maxsz = sdhci_get_fifolen(s);
-     s->fifo_buffer = g_malloc0(s->buf_maxsz);
+ }
  
-@@ -1290,6 +1304,7 @@ const VMStateDescription sdhci_vmstate = {
- /* Capabilities registers provide information on supported features of this
+ static void sdhci_initfn(SDHCIState *s)
+@@ -1305,8 +1318,21 @@ const VMStateDescription sdhci_vmstate = {
   * specific host controller implementation */
  static Property sdhci_properties[] = {
-+    DEFINE_PROP_UINT8("sd-spec-version", SDHCIState, spec_version, 2),
-     DEFINE_PROP_UINT64("capareg", SDHCIState, capareg,
-             SDHC_CAPAB_REG_DEFAULT),
+     DEFINE_PROP_UINT8("sd-spec-version", SDHCIState, spec_version, 2),
+-    DEFINE_PROP_UINT64("capareg", SDHCIState, capareg,
+-            SDHC_CAPAB_REG_DEFAULT),
++
++    /* DMA */
++    DEFINE_PROP_BOOL("sdma", SDHCIState, cap.sdma, true),
++    /* Suspend/resume support */
++    DEFINE_PROP_BOOL("suspend", SDHCIState, cap.suspend, false),
++    /* High speed support */
++    DEFINE_PROP_BOOL("high-speed", SDHCIState, cap.high_speed, true),
++    /* Voltage support 3.3/3.0/1.8V */
++    DEFINE_PROP_BOOL("3v3", SDHCIState, cap.v33, true),
++    DEFINE_PROP_BOOL("3v0", SDHCIState, cap.v30, false),
++    DEFINE_PROP_BOOL("1v8", SDHCIState, cap.v18, false),
++
++    /* capareg: deprecated */
++    DEFINE_PROP_UINT64("capareg", SDHCIState, capareg, UINT64_MAX),
++
      DEFINE_PROP_UINT64("maxcurr", SDHCIState, maxcurr, 0),
+     DEFINE_PROP_BOOL("pending-insert-quirk", SDHCIState, pending_insert_quirk,
+                      false),
 -- 
 2.15.1
 

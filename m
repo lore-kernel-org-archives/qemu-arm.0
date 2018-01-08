@@ -1,97 +1,97 @@
-Received: by 10.28.173.206 with SMTP id w197csp2630533wme;
-        Mon, 8 Jan 2018 08:03:06 -0800 (PST)
-X-Google-Smtp-Source: ACJfBou9PrAvxMjHlbBxoirVE8MrETOo9jG91gF4sXf6zPKyTBOGXvw+lyPuxCKV4edQV84EEKWq
-X-Received: by 10.129.73.86 with SMTP id w83mr7095701ywa.391.1515427386418;
-        Mon, 08 Jan 2018 08:03:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515427386; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp2632392wme;
+        Mon, 8 Jan 2018 08:04:30 -0800 (PST)
+X-Google-Smtp-Source: ACJfBosZZ+6ucn1Z7O/KRTCWA9FM2DPVNhmrRT+rUwYwqScSj7vLXqqAfajz+L1nYZX0qC268QWG
+X-Received: by 10.37.190.145 with SMTP id i17mr11489961ybk.78.1515427470169;
+        Mon, 08 Jan 2018 08:04:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515427470; cv=none;
         d=google.com; s=arc-20160816;
-        b=T1pj4U9KM5JxErcrNNmSs1C7GkI3F7wCAYnlkd4RS6gnquV3K6RNAFJGOt0Jp8A9oh
-         ETscXtJ+RjBdeUFH1AwxQV5dqErIHX0P93wvjvTWWPGq8/9sEzittloL7bmOha+EBiOu
-         HOo+ooF/rmgCvjY0C26cayzQsa4f690moJWHngEwtQggfzqEGCnyk6wq8tMvvDnTyXl2
-         YH+g4q1P2h9Nz3EWTJKfDrSuao6ksgGdUAlwZjB+Ha94YaMEOxpakJR6rRJNYoHoUD9z
-         rUvh++yafaY0DbO91FzpQb9VMANXtY9OQM5KLL0ijvVJWmFX3O53YloU6RAhwLTYEhti
-         moNA==
+        b=bpKDlCQD/76O7PAVg6z/iPQW3AN0YyATbERsst2WJK9E+VwWV6XoGTDeD8EfUPm6FQ
+         rSYAww4HrSWFgBMxRR5rflbL92HkY/6zTacrgMjwI4qczz7+IHy+UMfYq7R2w4xEOJGl
+         Td0NBmEfML1rMQC0ebXA6RsN9seIYhdcH0A5Vf1bw5SSQpMS7xPDjOebNdArgb/HmfMd
+         7xzjz0i9gbNzE9VHX8WIs0MXUYOvjhwvle0OVbkzPdtGYB68PGGXsFkuw/KwZr0QC9Yw
+         KYip4RrZpkcCFWuUvYwTBsfL0vQ9JAGrSiDm9ry6uEKc82+ZgyY6JCRR1psckFP9mCYW
+         cVdA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=k6sbl/indurMO60PqiU27VM0Ou/IYENUxu4LHz1GzBM=;
-        b=0fm8JRzkayIKqTKeJOm+kkGu6/pesPtH52eNJXB1hMGR9bRlCTvW8CPMG8t4G7GYgO
-         HLdm1ddzmRvE4cH6rvJr/b5UCuIyXALE0tisAOaivBrd7h+V3tyKe6j/U9qs68vXQFVd
-         z1VrRGwuRDnsqeCj8kLWY/K3Pjr5POiVEpRR3QZD23IknmUgQqVfMzL7q3oTKZQVEwVn
-         vfhlOcgy651hgtuR/KYKo4XnoaZeflCL+M5qlvx5XOCf5EDuyItyvzv0uTpMFmiA9Ion
-         8KHtz/WGIJlb1AvrvKyLfoNIAcxiuhIANT1uR8Sf1owCIApd7UrU+0NYpjqS4Af9uG31
-         sN6g==
+        bh=LB2vR+xX5B7po0OaUd258WDwiRr1Lql0ZJ7HTew9kDU=;
+        b=ZkJp8r2tVMQwy0+UgquyltW/khoQlkHwyetgu5eqdA4My1uSqpDywQ+5xAnGsdcbvV
+         AQivPorN1FRLxBqwVfg6QBnKlXceA+T9qGyGo3Or8Z+7YDs1r9njkq0C9BZ4h6VUZW9W
+         mc8QDnl6LrLgwLiOlK5iySxHTTx1olqrULfAjPXyil7vpYrqblCJoMpuZJpFgrprBAN5
+         tDfngXAhiu2fmcMFtIpOxqXss997fl3BMsLtZZsIJVQseBgkM3CL8/v2gogIq2FlDB8O
+         +uWV/KgPJFErtvS51cXtbGqvDEbxgP6vYfval1cxkoxCQE7JUxpBTGDU6//tJW/gfHix
+         CudQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ErSlRbJO;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fbtanog/;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v130si2498288ywa.182.2018.01.08.08.03.06
+        by mx.google.com with ESMTPS id a20si2564426ybj.340.2018.01.08.08.04.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 08 Jan 2018 08:03:06 -0800 (PST)
+        Mon, 08 Jan 2018 08:04:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ErSlRbJO;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fbtanog/;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41428 helo=lists.gnu.org)
+Received: from localhost ([::1]:41438 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eYZtB-0001Eh-P2
-	for alex.bennee@linaro.org; Mon, 08 Jan 2018 11:03:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42822)
+	id 1eYZuX-0002TL-IO
+	for alex.bennee@linaro.org; Mon, 08 Jan 2018 11:04:29 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42880)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eYZcM-0003AW-6z
-	for qemu-devel@nongnu.org; Mon, 08 Jan 2018 10:45:43 -0500
+	id 1eYZcQ-0003Ef-VE
+	for qemu-devel@nongnu.org; Mon, 08 Jan 2018 10:45:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eYZcL-0000IN-4X
-	for qemu-devel@nongnu.org; Mon, 08 Jan 2018 10:45:42 -0500
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:35055)
+	id 1eYZcQ-0000Os-4P
+	for qemu-devel@nongnu.org; Mon, 08 Jan 2018 10:45:47 -0500
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:43548)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eYZcK-0000I0-Vu; Mon, 08 Jan 2018 10:45:41 -0500
-Received: by mail-qk0-x241.google.com with SMTP id w184so6458037qka.2;
-	Mon, 08 Jan 2018 07:45:40 -0800 (PST)
+	id 1eYZcQ-0000OO-0M; Mon, 08 Jan 2018 10:45:46 -0500
+Received: by mail-qt0-x243.google.com with SMTP id w10so14076779qtb.10;
+	Mon, 08 Jan 2018 07:45:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=k6sbl/indurMO60PqiU27VM0Ou/IYENUxu4LHz1GzBM=;
-	b=ErSlRbJO0keNNhng1WnsLIWv22K7iKDzFa23V5kwjCi0bmcO/fdZq14FdcQ8CqLYbp
-	hBAZ14QH1Gmaxuw2NH/pfuk2GGO4aGzkrLqt2vY/8011CujZKKLhvuqvAdsBbkagaNB1
-	jhS5YH3F40SN/TJA1+BYrEddvQ+YKGmwOP3YXibIZSuOLRtc2A8IzgT6wXkK5eVdSCFu
-	P0AIJCIHgYOchO3dwrLd/1wKKfp8DAKzA7b6aUuKBzvH+lKrJl1X2fzsZwnm2WdQbGtW
-	F1kJ2K7yZhuddQVMfm+3U7Du2PFUqdbp7ok2qikujGeBF6U9T2HcDGYbWzzlbJOccc0J
-	c1GA==
+	bh=LB2vR+xX5B7po0OaUd258WDwiRr1Lql0ZJ7HTew9kDU=;
+	b=fbtanog/HFIiOleYf2efbN0DYKXVhO39loMNgvOD17b+scNKBySiaw1xmb3hy45JxX
+	s7Z3lo/1bmIQB6GObctIWTJIinoAurLuE0SRm5sdtFVwAJAzNqCL+XExgniIUeEhx8Qu
+	YBQIdQsIWxSs8gyC7A7MErIlpgI8J/sSgg44VSWHeWjrrnm4X9rH2HtweczjDI2/zLGd
+	qTuli1umYR5AIb6SL53iQAE7/OBbFexWK1TrJqqnEZ4E02Xs8KNsH6czknXe/1SS+1YH
+	AOHl+tH8HSHC/fvEFYlNTTHpDcVz55JEyvSVxfbRtrqw1OeTLic2A0sFrtWQtl8jKyhB
+	UY1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=k6sbl/indurMO60PqiU27VM0Ou/IYENUxu4LHz1GzBM=;
-	b=Hj13CjYnr598zuN/3CFgO80BBRfuYjBxakcufi/DLc38IkwFofkTA7wgltIsad5H07
-	fgsLXuUly5KKm/OakLFszvdAnDvrQYTrUMNL9v76O+cQCwnHi/ET5dZxSijo9CnqPOKB
-	6x829mx9Ca9gaT2zjRrxgsx0Lu4CzXuk+iNdiFKB7Sl2ePQ1hq7bPM80sptUP/NMbgEN
-	LjFx9qE0gdOQ5AE9vG3j5ySqrGeXC2aUUloO8YJU3q01qnd2GQVT9thOHuGn+67RIJ4w
-	vPqNprd6J0Iik5g7eX2ycqjxYcKBSMNgYr5KUuUIjgf9B9fBCiIzdIabQW1jzmsfVB3B
-	zKCw==
-X-Gm-Message-State: AKGB3mJBxUSF8MrMQt/y+dmKvHPn9jUFle51CO6gNWpYlnGcXkFdljSv
-	iX9K4J/LGeafT69YHCvLAhE=
-X-Received: by 10.55.106.195 with SMTP id f186mr15587965qkc.53.1515426340460; 
-	Mon, 08 Jan 2018 07:45:40 -0800 (PST)
+	bh=LB2vR+xX5B7po0OaUd258WDwiRr1Lql0ZJ7HTew9kDU=;
+	b=YdgSFmFPCs58e8WF5mLFRNQNMS4Cn+BfP5eUtL0cbLK4tdCrkrLWZerKx+DjH61rep
+	b336yiU6MCzPjG25cvveIUY99piQHoXaP7ea7t0qJc0ITQcBqYq0S5xLO4qwOV+idvLV
+	z6YsEV9wXRUvLv5G3Xv8MAolGohkkNGAYZxsap8Zka1ddHUFDGj2IgcK9Zu/H5yp3w1V
+	2v+9JshvLiO0BZ9kfrKqPk9EF+Q22Oj3L7wp8p83M1THkfA+Z/NyEnLpAkT7bD0PjnGA
+	FxGxEqofDGf6poCw7gs8RnM6JczvvqonVFMhB1V0rEVql6qhdPbDaeJtqeCTNXr1A/TL
+	/ceg==
+X-Gm-Message-State: AKwxytf0M7XBLKfPG6fOmqxbw4bQqJ9TaoM5UTDuf7FogY0QLMkFFJ8l
+	ULqVyCvUW2SR4moJZ2E+izU=
+X-Received: by 10.200.45.148 with SMTP id p20mr16634813qta.249.1515426345501; 
+	Mon, 08 Jan 2018 07:45:45 -0800 (PST)
 Received: from x1.local ([138.117.48.219]) by smtp.gmail.com with ESMTPSA id
-	u36sm7832382qtc.58.2018.01.08.07.45.35
+	u36sm7832382qtc.58.2018.01.08.07.45.40
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 08 Jan 2018 07:45:39 -0800 (PST)
+	Mon, 08 Jan 2018 07:45:44 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Alistair Francis <alistair.francis@xilinx.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Andrey Smirnov <andrew.smirnov@gmail.com>,
 	Igor Mitsyanko <i.mitsyanko@gmail.com>
-Date: Mon,  8 Jan 2018 12:42:59 -0300
-Message-Id: <20180108154303.6522-28-f4bug@amsat.org>
+Date: Mon,  8 Jan 2018 12:43:00 -0300
+Message-Id: <20180108154303.6522-29-f4bug@amsat.org>
 X-Mailer: git-send-email 2.15.1
 In-Reply-To: <20180108154303.6522-1-f4bug@amsat.org>
 References: <20180108154303.6522-1-f4bug@amsat.org>
@@ -100,8 +100,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
-Subject: [Qemu-devel] [PATCH v5 27/31] sdhci: add check_capab_readonly()
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: [Qemu-devel] [PATCH v5 28/31] sdhci: add a check_capab_baseclock()
  qtest
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -127,58 +127,54 @@ Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
 	Eduardo Habkost <ehabkost@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2wvmGyG6kcb7
+X-TUID: 5lOXwNUJwLfi
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- tests/sdhci-test.c | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
+ tests/sdhci-test.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
 diff --git a/tests/sdhci-test.c b/tests/sdhci-test.c
-index f7487808af..0443a23e45 100644
+index 0443a23e45..2aa3fa0d3b 100644
 --- a/tests/sdhci-test.c
 +++ b/tests/sdhci-test.c
-@@ -60,6 +60,13 @@ static uint64_t sdhci_readq(uintptr_t base, uint32_t reg_addr)
-     return qtest_readq(qtest, base + reg_addr);
+@@ -7,9 +7,11 @@
+  * See the COPYING file in the top-level directory.
+  */
+ #include "qemu/osdep.h"
++#include "hw/registerfields.h"
+ #include "libqtest.h"
+ 
+ #define SDHC_CAPAB                      0x40
++FIELD(SDHC_CAPAB, BASECLKFREQ,               8, 8); /* since v2 */
+ #define SDHC_HCVER                      0xFE
+ 
+ static const struct sdhci_t {
+@@ -99,6 +101,18 @@ static void check_capab_readonly(uintptr_t addr)
+     g_assert_cmpuint(capab1, ==, capab0);
  }
  
-+static void sdhci_writeq(uintptr_t base, uint32_t reg_addr, uint64_t value)
++static void check_capab_baseclock(uintptr_t addr, uint8_t expected_freq)
 +{
-+    QTestState *qtest = global_qtest;
++    uint64_t capab, capab_freq;
 +
-+    qtest_writeq(qtest, base + reg_addr, value);
-+}
-+
- static void check_specs_version(uintptr_t addr, uint8_t version)
- {
-     uint32_t v;
-@@ -78,6 +85,20 @@ static void check_capab_capareg(uintptr_t addr, uint64_t expected_capab)
-     g_assert_cmphex(capab, ==, expected_capab);
- }
- 
-+static void check_capab_readonly(uintptr_t addr)
-+{
-+    const uint64_t vrand = 0x123456789abcdef;
-+    uint64_t capab0, capab1;
-+
-+    capab0 = sdhci_readq(addr, SDHC_CAPAB);
-+    g_assert_cmpuint(capab0, !=, vrand);
-+
-+    sdhci_writeq(addr, SDHC_CAPAB, vrand);
-+    capab1 = sdhci_readq(addr, SDHC_CAPAB);
-+    g_assert_cmpuint(capab1, !=, vrand);
-+    g_assert_cmpuint(capab1, ==, capab0);
++    if (!expected_freq) {
++        return;
++    }
++    capab = sdhci_readq(addr, SDHC_CAPAB);
++    capab_freq = FIELD_EX64(capab, SDHC_CAPAB, BASECLKFREQ);
++    g_assert_cmpuint(capab_freq, ==, expected_freq);
 +}
 +
  static void test_machine(const void *data)
  {
      const struct sdhci_t *test = data;
-@@ -86,6 +107,7 @@ static void test_machine(const void *data)
- 
+@@ -108,6 +122,7 @@ static void test_machine(const void *data)
      check_capab_capareg(test->sdhci.addr, test->sdhci.capab.reg);
      check_specs_version(test->sdhci.addr, test->sdhci.version);
-+    check_capab_readonly(test->sdhci.addr);
+     check_capab_readonly(test->sdhci.addr);
++    check_capab_baseclock(test->sdhci.addr, test->sdhci.baseclock);
  
      qtest_quit(global_qtest);
  }

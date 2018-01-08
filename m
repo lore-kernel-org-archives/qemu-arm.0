@@ -1,97 +1,97 @@
-Received: by 10.28.173.206 with SMTP id w197csp2623090wme;
-        Mon, 8 Jan 2018 07:56:26 -0800 (PST)
-X-Google-Smtp-Source: ACJfBoui6WBd8moVNk29h59YObCYGYrTurce5dXrhC8z0NVnR8GJ5AGJXyOddmu/aBgg3Fu+WVuS
-X-Received: by 10.37.104.141 with SMTP id d135mr11433274ybc.248.1515426986828;
-        Mon, 08 Jan 2018 07:56:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515426986; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp2624302wme;
+        Mon, 8 Jan 2018 07:57:48 -0800 (PST)
+X-Google-Smtp-Source: ACJfBouTzsEgYic6REub07vVSMn4ty4B5zwUXnFDN4rbuBUZmMpnQYgjxlzBhpeYGakBruo30Ger
+X-Received: by 10.37.95.6 with SMTP id t6mr11520806ybb.521.1515427068150;
+        Mon, 08 Jan 2018 07:57:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515427068; cv=none;
         d=google.com; s=arc-20160816;
-        b=063OV0ILSuw5tblKuKg2wUZYlEd2ZCgqc0xs/Gh/G9n0Znb3+K6tTEM4E4DRs4EKhc
-         hdPi4WOv3j+RdZJo6pVLoAepg79R3MGLbTDDR7Li29Nu1TYkBB6EntKDEeS7q85BOHGD
-         JB1Hq1X5xp4ccfu9XnKUlJ7J5ExJ+AGA20j0U5Jy14u1srr7lpqP+KfDSd+mKQpol35v
-         ZBPa/8oe6ZKuVaDvF2gQY45zbqTq++B6In9VgJTogDCItxVjoONQV3CEx2IMKF4me5MQ
-         N1bjxf6GjmujFwZypY/kZqnDTubQ9OrmclyJXWGMNtmVJYXancE/+Ik9yNDxc0ej8AAd
-         p6RQ==
+        b=NKQKSHTvsuGxva/66hq0f4z6A8X2W8HmNrveM5dfCzVbzktm2usp0m5qqtNX0atWcm
+         HoBkA/bIg6ATlKxctCSBfiK22rglGxz8OzK/2P3mv8zb4RKRTcEcpyLg0nlH0e4LnieI
+         epfk7BPU/vnjLy4a95zZAthImagg0DhO01KYuTfB6mMbqTon5RVuZh5ULm673SCRx3eV
+         0yPX30nge+aJJGlb/QOKNGbz+NYX26ytOGmCrqFvKfTd09jTJBq7uLYdExw4V+wcRMei
+         ddSxaMz8iPKfAzt4HQWtbuIBADUxdXs5+zmA5zOqPqoVV4/inf0xbKnXPwYUSkZbJd8u
+         Fzfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=vmz558vZLThbBBsMoSp5uuDRv6mHMSWsey97AcQ4xAI=;
-        b=efp2UuKih3uMJr42+zQZ9s91/ViHpHK+fX/rMtbmy9Rd0ITdhDkRYAUwb3BxTIMTNV
-         keS827xkotW204O15HUw7XqLoo6bR9Emng0jc2m+DruXcSxrZ1X1KIkbNjBM1uE2+2oe
-         ohCJrNYRXZ+J7Js1j2sFV1QwJ0e8QnSkj2lRMGLPk9cs332ERNTy8D7xM4KWFdMuqdnG
-         0NCtE43y+FYolB8x1OC/UAN3YzXYXOIWmUGDMG94GjoQJEvBJDSEDRaqKji2KfQ4KWSR
-         4X1gztQ6Roc8X7SVr19IgIOv/bA+qL4q+8k41trhLqIQUiwFxf0ACtt2ZSNwFjaGejs/
-         wBTA==
+        bh=I+F/KFrcm7DFc44TC5l7H+i1YZb2YZswEM0L+8xZOF4=;
+        b=kx+y8W7GAqWn+nRJ0cJgqR/5K+tJ6fZKIBKRwpu9NY0pfDUesTUoawxX8q5dX8P0RL
+         Ns4w0BQv6KZRmRM60/sw3/YfACk1gVkaraPc0IYfmERJmAEb9oGFceS/t4X1LFMQCVpu
+         2xbgDoPWkWh0x9yRidqHUnWK3yz6pwZ7WBZWCGl36Z1Ei5jE5Xt6h7C3DVvFhbSf80u6
+         MBtWfmjIKDmHd/dnHqrsUqCU8bIodbAZUYXY6yXv4/t3W7FeaeSk+vHjkuQHeBs8DbKX
+         69mMbCF/g6DSDlhRO2WKAkgP8K+u+CE8vzbyLR0k3VwbRRom8/C0zUI/uqmHT9/HYAc4
+         v9GQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UIKHpHk5;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Fo/OTFLu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s8si2534838ybj.448.2018.01.08.07.56.26
+        by mx.google.com with ESMTPS id a37si2587229ybi.132.2018.01.08.07.57.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 08 Jan 2018 07:56:26 -0800 (PST)
+        Mon, 08 Jan 2018 07:57:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UIKHpHk5;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Fo/OTFLu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41360 helo=lists.gnu.org)
+Received: from localhost ([::1]:41379 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eYZmk-00048Z-7Z
-	for alex.bennee@linaro.org; Mon, 08 Jan 2018 10:56:26 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42390)
+	id 1eYZo3-0005LA-GV
+	for alex.bennee@linaro.org; Mon, 08 Jan 2018 10:57:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42430)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eYZbZ-0002MQ-El
-	for qemu-arm@nongnu.org; Mon, 08 Jan 2018 10:44:56 -0500
+	id 1eYZbf-0002RF-1p
+	for qemu-arm@nongnu.org; Mon, 08 Jan 2018 10:45:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eYZbY-0007wC-Ew
-	for qemu-arm@nongnu.org; Mon, 08 Jan 2018 10:44:53 -0500
-Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:38579)
+	id 1eYZbe-00080b-2M
+	for qemu-arm@nongnu.org; Mon, 08 Jan 2018 10:44:59 -0500
+Received: from mail-qt0-x230.google.com ([2607:f8b0:400d:c0d::230]:33569)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eYZbV-0007u8-RW; Mon, 08 Jan 2018 10:44:49 -0500
-Received: by mail-qt0-x244.google.com with SMTP id d4so14073573qtj.5;
-	Mon, 08 Jan 2018 07:44:49 -0800 (PST)
+	id 1eYZbb-0007y5-77; Mon, 08 Jan 2018 10:44:55 -0500
+Received: by mail-qt0-x230.google.com with SMTP id e2so14092595qti.0;
+	Mon, 08 Jan 2018 07:44:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=vmz558vZLThbBBsMoSp5uuDRv6mHMSWsey97AcQ4xAI=;
-	b=UIKHpHk5dYwKF+NuABBPeb8oOZ/jbkp8jMN9OuWfFEs4wp+54amo1JoUQP8nCWIDAV
-	2TYLdAAorKrXZViopppg4fanmMQXUaFgJg1wNsWLUFJakzfJ1cv/rrvJkwbQ/Qvu1DD6
-	aDcc2gt/maP+HXlIfASctC3jgYov+pfxX8ZN59u1kEbAfH2HGOIxulfMyAYI8lI6OGtO
-	n2BCo95s0sNrOD4wB3d9NT6W3PD6zXgGKGkjqu6dvYIQ+xNRiFcFfEicJNrU3h4ClbGL
-	RCVKJjQqSoCW/eIQQ7srWaEklfFo9d8x7aq0udHCGVsGGTDz3tmO96WOAtVlQvCIG859
-	kFaQ==
+	bh=I+F/KFrcm7DFc44TC5l7H+i1YZb2YZswEM0L+8xZOF4=;
+	b=Fo/OTFLuNRldO0M/4djBXDGxQLWiggamfuzl5jJW9NGVNlpv2lGIg0Vw4TDm/pyjLZ
+	pbsZUAy/59m1g1Qy8Z0PK+chbI9C3UeOIYiQPJwSQj9UkZwjilw7Z2wVfBopNKbTAOmK
+	Jrxp6ZpTpv88+/mPh+nD5F+LiaaHSgdXFek5YGsnEFgGmQFd/+jn88ZhjwBMVg2GEl6e
+	cjC1PbQmZPGMN0VvIxjrTiXEs0qucurzQ9XnQs+B6lMDLNROwEBXdKMjdZTHys543LXh
+	1es75/DgW4QwIaw2ymaEQI2S/bgw/Npj/PNlTxjouql3tgYZw7TFOovNswS5YgCyuvE1
+	a5Vg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=vmz558vZLThbBBsMoSp5uuDRv6mHMSWsey97AcQ4xAI=;
-	b=N4iV3+yby3CHyvux8Ai8dYoT+uV0aXzALJuoJGqx6ll8F1yuYhCBSPjnrQPWktQ3CC
-	sJO7Pq+OKJnKnVOw1zBzhYE1DTYiVlDksHcQ5y6tFGVMCOrGtr1gfyJxaN/6G8E+dKL2
-	PWQwaxlA0SNwYnOaaZyj8+lVbdobWDlSc3SjTWplI5/bQDKZMVeMWZii5AViaomGsGWq
-	75qmlKv5l7gz/7zoPf17yHEGIvGdzqGdtiTXuiz7C55/aXdPwIDvULQ5CX2hzE4lsYqK
-	zZBeeTT8eHFFvKxIXBGILc0LsrjknPcMN8OtINDSbZXYhnNriaBUVt/+Eas3jkqSWlzs
-	qRAg==
-X-Gm-Message-State: AKwxytebCmYOOPqpNCvbu2YKbP2OiB4X4GEjVaTQ59JOr6iJGc0mJGIi
-	9rEPp+IsTZOPCmsYoWXcjp8=
-X-Received: by 10.200.55.227 with SMTP id e32mr15468972qtc.227.1515426289298; 
-	Mon, 08 Jan 2018 07:44:49 -0800 (PST)
+	bh=I+F/KFrcm7DFc44TC5l7H+i1YZb2YZswEM0L+8xZOF4=;
+	b=mFJOu45Va60WvCou9ze9YMvdp9vYljUdhfamPcfadMKHhVQKsadLVBTe6RERgDuxAE
+	7NF7t9W5XMygO4WtLW2n86jjDGgpLHq4KnkF5QHLf7P/HnlTHiQnucNpLlj893TOkOcZ
+	udTLoaKUWcWSyUDqKI1utQYdb4ZxnWN2xPawuWhXnNSKXriRRdoYM8BquJbeIFLgBQ9i
+	9D8z2HOMocLDxJRCx+Qm0mv/awFX6vOdfgPTK9Z13AmB+FgmOQuqopCywiKzsdXvpMl9
+	0sLKWCqrr+A3h/zs7ftg+b7ZKcA6A0GeiwLbSeZV+P8XQ3lY3iHQy3RCLcCHHIGjNNUd
+	haOg==
+X-Gm-Message-State: AKwxytd6Wv/ocz3vPAnOfmirUjHFxkSWEj5KNAXNgJTcZ2VKAgdVgIyj
+	gquRbYDjsc+tIOIYWLpVR+A=
+X-Received: by 10.200.26.219 with SMTP id h27mr12038167qtk.77.1515426294625;
+	Mon, 08 Jan 2018 07:44:54 -0800 (PST)
 Received: from x1.local ([138.117.48.219]) by smtp.gmail.com with ESMTPSA id
-	u36sm7832382qtc.58.2018.01.08.07.44.44
+	u36sm7832382qtc.58.2018.01.08.07.44.49
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 08 Jan 2018 07:44:48 -0800 (PST)
+	Mon, 08 Jan 2018 07:44:54 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Alistair Francis <alistair.francis@xilinx.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Andrey Smirnov <andrew.smirnov@gmail.com>,
 	Igor Mitsyanko <i.mitsyanko@gmail.com>
-Date: Mon,  8 Jan 2018 12:42:49 -0300
-Message-Id: <20180108154303.6522-18-f4bug@amsat.org>
+Date: Mon,  8 Jan 2018 12:42:50 -0300
+Message-Id: <20180108154303.6522-19-f4bug@amsat.org>
 X-Mailer: git-send-email 2.15.1
 In-Reply-To: <20180108154303.6522-1-f4bug@amsat.org>
 References: <20180108154303.6522-1-f4bug@amsat.org>
@@ -100,8 +100,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::244
-Subject: [Qemu-arm] [PATCH v5 17/31] sdhci: rename the hostctl1 register
+X-Received-From: 2607:f8b0:400d:c0d::230
+Subject: [Qemu-arm] [PATCH v5 18/31] sdhci: add the Broadcom BCM2835 SDHCI
+ controller
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -126,95 +127,113 @@ Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
 	Eduardo Habkost <ehabkost@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3h6IG6pfLEkv
+X-TUID: WX+8KIGjk09M
 
-As per the Spec v3.00
+based on Arasan SD 3.0, eMMC 4.4
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/sd/sdhci.h |  2 +-
- hw/sd/sdhci.c         | 14 +++++++-------
- 2 files changed, 8 insertions(+), 8 deletions(-)
+ hw/sd/bcm2835_sdhci.c | 77 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ hw/sd/Makefile.objs   |  2 +-
+ 2 files changed, 78 insertions(+), 1 deletion(-)
+ create mode 100644 hw/sd/bcm2835_sdhci.c
 
-diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
-index c0098fc920..ecd192ee47 100644
---- a/include/hw/sd/sdhci.h
-+++ b/include/hw/sd/sdhci.h
-@@ -65,7 +65,7 @@ typedef struct SDHCIState {
-     /* Buffer Data Port Register - virtual access point to R and W buffers */
-     uint32_t prnsts;       /* Present State Register */
-     /* 0x28 */
--    uint8_t  hostctl;      /* Host Control Register */
-+    uint8_t  hostctl1;     /* Host Control Register */
-     uint8_t  pwrcon;       /* Power control Register */
-     uint8_t  blkgap;       /* Block Gap Control Register */
-     uint8_t  wakcon;       /* WakeUp Control Register */
-diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-index 3f5e0760f6..d7e247cb48 100644
---- a/hw/sd/sdhci.c
-+++ b/hw/sd/sdhci.c
-@@ -600,7 +600,7 @@ static void get_adma_description(SDHCIState *s, ADMADescr *dscr)
-     uint32_t adma1 = 0;
-     uint64_t adma2 = 0;
-     hwaddr entry_addr = (hwaddr)s->admasysaddr;
--    switch (SDHC_DMA_TYPE(s->hostctl)) {
-+    switch (SDHC_DMA_TYPE(s->hostctl1)) {
-     case SDHC_CTRL_ADMA2_32:
-         dma_memory_read(&s->dma_as, entry_addr, (uint8_t *)&adma2,
-                         sizeof(adma2));
-@@ -789,7 +789,7 @@ static void sdhci_data_transfer(void *opaque)
-     SDHCIState *s = (SDHCIState *)opaque;
+diff --git a/hw/sd/bcm2835_sdhci.c b/hw/sd/bcm2835_sdhci.c
+new file mode 100644
+index 0000000000..3baf0887d8
+--- /dev/null
++++ b/hw/sd/bcm2835_sdhci.c
+@@ -0,0 +1,77 @@
++/*
++ * Broadcom BCM2835 SDHCI controller emulation
++ *
++ * Copyright (C) 2018 Philippe Mathieu-Daudé <f4bug@amsat.org>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or
++ * (at your option) any later version.  See the COPYING file in the
++ * top-level directory.
++ */
++#include "qemu/osdep.h"
++#include "hw/sd/sdhci.h"
++#include "qapi/error.h"
++
++/* Compatible with:
++ * - SD Host Controller Specification Version 3.0 Draft 1.0
++ * - SDIO Specification Version 3.0
++ * - MMC Specification Version 4.4
++ *
++ * - 32-bit access only
++ * - default clocks
++ * - no DMA
++ * - SD high-speed (SDHS) card
++ * - maximum block size: 1kB
++ *
++ * For the exact details please refer to the Arasan documentation:
++ *   SD3.0_Host_AHB_eMMC4.4_Usersguide_ver5.9_jan11_10.pdf   ¯\_(ツ)_/¯
++ */
++static void bcm2835_sdhci_realize(DeviceState *dev, Error **errp)
++{
++    SDHCICommonClass *cc = SYSBUS_SDHCI_COMMON_GET_CLASS(dev);
++    Object *obj = OBJECT(dev);
++    Error *local_err = NULL;
++
++    object_property_set_uint(obj, 3, "sd-spec-version", &local_err);
++    object_property_set_uint(obj, 52, "timeout-freq", &local_err);
++    object_property_set_uint(obj, 52, "max-frequency", &local_err);
++    object_property_set_bool(obj, false, "sdma", &local_err);
++    object_property_set_bool(obj, false, "adma1", &local_err);
++    object_property_set_bool(obj, false, "adma2", &local_err);
++    object_property_set_bool(obj, true, "1v8", &local_err);
++    /* FIXME verify/validate with someone from Broadcom?
++    object_property_set_uint(obj, 1024, "max-block-length", &local_err);
++    */
++    object_property_set_bool(obj, true, "pending-insert-quirk",  &local_err);
++    if (local_err) {
++        error_propagate(errp, local_err);
++        return;
++    }
++
++    cc->parent_realize(dev, &local_err);
++    if (local_err) {
++        error_propagate(errp, local_err);
++        return;
++    }
++}
++
++static void bcm2835_sdhci_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    SDHCICommonClass *cc = SYSBUS_SDHCI_COMMON_CLASS(klass);
++
++    cc->parent_realize = dc->realize;
++    dc->realize = bcm2835_sdhci_realize;
++}
++
++static const TypeInfo bcm2835_sdhci_info = {
++    .name = "brcm,bcm2835-sdhci",
++    .parent = TYPE_SYSBUS_SDHCI,
++    .class_init = bcm2835_sdhci_class_init,
++};
++
++static void brcm_sdhci_register_types(void)
++{
++    type_register_static(&bcm2835_sdhci_info);
++}
++
++type_init(brcm_sdhci_register_types)
+diff --git a/hw/sd/Makefile.objs b/hw/sd/Makefile.objs
+index ef0fc3d3f7..b3e69c3018 100644
+--- a/hw/sd/Makefile.objs
++++ b/hw/sd/Makefile.objs
+@@ -10,7 +10,7 @@ common-obj-$(CONFIG_SDHCI) += sdhci.o
+ obj-$(CONFIG_MILKYMIST) += milkymist-memcard.o
+ obj-$(CONFIG_OMAP) += omap_mmc.o
+ obj-$(CONFIG_PXA2XX) += pxa2xx_mmci.o
+-obj-$(CONFIG_RASPI) += bcm2835_sdhost.o
++obj-$(CONFIG_RASPI) += bcm2835_sdhost.o bcm2835_sdhci.o
  
-     if (s->trnmod & SDHC_TRNS_DMA) {
--        switch (SDHC_DMA_TYPE(s->hostctl)) {
-+        switch (SDHC_DMA_TYPE(s->hostctl1)) {
-         case SDHC_CTRL_SDMA:
-             if ((s->blkcnt == 1) || !(s->trnmod & SDHC_TRNS_MULTI)) {
-                 sdhci_sdma_transfer_single_block(s);
-@@ -898,7 +898,7 @@ static uint64_t sdhci_read(void *opaque, hwaddr offset, unsigned size)
-         ret = s->prnsts;
-         break;
-     case SDHC_HOSTCTL:
--        ret = s->hostctl | (s->pwrcon << 8) | (s->blkgap << 16) |
-+        ret = s->hostctl1 | (s->pwrcon << 8) | (s->blkgap << 16) |
-               (s->wakcon << 24);
-         break;
-     case SDHC_CLKCON:
-@@ -1016,7 +1016,7 @@ sdhci_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
-         MASKED_WRITE(s->sdmasysad, mask, value);
-         /* Writing to last byte of sdmasysad might trigger transfer */
-         if (!(mask & 0xFF000000) && TRANSFERRING_DATA(s->prnsts) && s->blkcnt &&
--                s->blksize && SDHC_DMA_TYPE(s->hostctl) == SDHC_CTRL_SDMA) {
-+                s->blksize && SDHC_DMA_TYPE(s->hostctl1) == SDHC_CTRL_SDMA) {
-             if (s->trnmod & SDHC_TRNS_MULTI) {
-                 sdhci_sdma_transfer_multi_blocks(s);
-             } else {
-@@ -1068,14 +1068,14 @@ sdhci_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
-         if (!(mask & 0xFF0000)) {
-             sdhci_blkgap_write(s, value >> 16);
-         }
--        MASKED_WRITE(s->hostctl, mask, value);
-+        MASKED_WRITE(s->hostctl1, mask, value);
-         MASKED_WRITE(s->pwrcon, mask >> 8, value >> 8);
-         MASKED_WRITE(s->wakcon, mask >> 24, value >> 24);
-         if (!(s->prnsts & SDHC_CARD_PRESENT) || ((s->pwrcon >> 1) & 0x7) < 5 ||
-                 !(s->capareg & (1 << (31 - ((s->pwrcon >> 1) & 0x7))))) {
-             s->pwrcon &= ~SDHC_POWER_ON;
-         }
--        qemu_set_irq(s->access_led, s->hostctl & 1);
-+        qemu_set_irq(s->access_led, s->hostctl1 & 1);
-         break;
-     case SDHC_CLKCON:
-         if (!(mask & 0xFF000000)) {
-@@ -1284,7 +1284,7 @@ const VMStateDescription sdhci_vmstate = {
-         VMSTATE_UINT16(cmdreg, SDHCIState),
-         VMSTATE_UINT32_ARRAY(rspreg, SDHCIState, 4),
-         VMSTATE_UINT32(prnsts, SDHCIState),
--        VMSTATE_UINT8(hostctl, SDHCIState),
-+        VMSTATE_UINT8(hostctl1, SDHCIState),
-         VMSTATE_UINT8(pwrcon, SDHCIState),
-         VMSTATE_UINT8(blkgap, SDHCIState),
-         VMSTATE_UINT8(wakcon, SDHCIState),
+ # emulated SD/MMC devices
+ common-obj-$(CONFIG_SD) += sd.o
 -- 
 2.15.1
 

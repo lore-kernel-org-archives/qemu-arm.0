@@ -1,167 +1,109 @@
-Received: by 10.223.134.117 with SMTP id 50csp12830733wrw;
-        Thu, 4 Jan 2018 08:24:56 -0800 (PST)
-X-Google-Smtp-Source: ACJfBoua2Kdgw+vxbGWX4xBtRU/Ta3J5CzE3ejEBgPe8CM3nEXxPHGRJT8RciWfY3vxLqw9PE0Ad
-X-Received: by 10.37.9.66 with SMTP id u2mr86028ybm.379.1515083096878;
-        Thu, 04 Jan 2018 08:24:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515083096; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp3749695wme;
+        Tue, 9 Jan 2018 06:19:16 -0800 (PST)
+X-Received: by 10.157.12.234 with SMTP id o39mr5360860otd.343.1515507556601;
+        Tue, 09 Jan 2018 06:19:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515507556; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y/Qw34imXwGId2DV1q/ULuViYL9W2sFZCW9F6TfE7uGKjSu1Sfk8iokulZ+Ioj82Wt
-         FPK/X9WGzfN9PhPf4MTiHpx8DtjoO0IwH4U5j8JToH0Yg/aRcFiVrO0MleYZoIkYmiDJ
-         qIT4IVxmGADfZyasgoGtv+Pzc6nj5Q76WHNnBbOCPJ8ygDOIhnej5YDnYjsBTe21GHWS
-         3ZtjVnCuoz1c5m2YimBk5tJpUft1gsVgqt22iU9T7ZmCIXq0kaiylb51vqf6wfJmZ1XG
-         iDsYLigGU2B9o1q4kFtZQALh+SeCIPnP+bjKcGo/XU3LlpcH4ObvA9lbFzwnfCA/ty2I
-         MYNA==
+        b=KJANmulW1v0vv4aM+wAxKxAT7FNI8BMH2kPbHTagZLjF/ORaMb6yGUXskxT7Cm0eRw
+         HyFVNZNpJAZRDKmOzVfvTeYDlVKtGpAFhokv2F54TUrjkbt+Io5MC9QZwAX/JEK/lBqU
+         1SJ98GTMDcRrvZAW8lH7RqZOTTzbS46ZPCePoa0WGJF9kt9s3/YN6Uq2edJkpSb1ANsW
+         N1H0H18XZJ1D/0sgQFWTOU6oPk52Iq49RBLAIpm7ZiB/R9W7WodOTGjwt1UVI2wNspq9
+         Fa9R7Zv7fdTBLCCeawInYBFPKuLl0o/N97emhdoZhNbeGar7rawWLRsZM2uP6rHPwb+G
+         FBHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :arc-authentication-results;
-        bh=rPECjCDn8ANMhZ9DJ5X0xAme7nLXoKvYcSIueIZy3Zo=;
-        b=SLoZVCt0nhof9J59aSQcEzh1Z60ybfovYgsWkWOW8EHECDaV7/78oDut4cVffpmv6X
-         jqcs/lRTfknsjQ+YO0khPZnW7KxdMLEVJRs5mL1souAXvp4ypXTxLt+TeYXs8ko/popJ
-         hoCNXeAGpHsw0kYFwquqvAnRrZni/pWRXj8o9gkpnfADLACrGXrKVRpUzzMGgHLsQ27r
-         JayUpZ2zdvLZKF77g/lU/hUuMKFpzwbhPl/ylNmJ57svKHoGkJ6KoNq9SSLUxWpk/h7a
-         sem2qOQoOQhCw1MzvGkiLnLiyAYHRS8kxqHy3g8bp7cs36x5AqaxqST+NAREf3CyK2Pu
-         knzw==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=rZF/miYvVMP3IcuNGAoysKATYTI9Qzde6Z9wIEM7yec=;
+        b=X3VK/G4/27RxAR79jHi0k4qRQZd/eUBwocxptUjXWIq9EMilBZAnZu0sYggawNtpvG
+         44hL+eHGX+JFvLhWxT/6KCLr+vFD1WNjqcT+RdGklGDWe38LRHuvF9T1c7JDbe0S+lZc
+         sgxyXH3v3MbV9wNSstObiZr72vxmQojRlb3sQe5GzCuJ45iaoLzp9IAk2cJLrt1pdH7S
+         48lv5fN18OGxN2MgzBqVTaUyFIHwA2bFoJEbqDNunqCIzmEYeYyGhNtoTtq74VSiU3QU
+         fw9WXZocnstuOEYVx3v1QtPwmyIg1i40vaT0xFTl1+AWk6gQyld9KeUf/1uASo5zjVyc
+         Lrqw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i12si754511ybl.640.2018.01.04.08.24.56
+       dkim=pass header.i=@linaro.org header.s=google header.b=HzSfcAk+;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id t58sor4844282oti.53.2018.01.09.06.19.16
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 04 Jan 2018 08:24:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (Google Transport Security);
+        Tue, 09 Jan 2018 06:19:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47925 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eX8K8-0007nE-CC
-	for alex.bennee@linaro.org; Thu, 04 Jan 2018 11:24:56 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54295)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1eX8Jk-0007cX-Gl
-	for qemu-arm@nongnu.org; Thu, 04 Jan 2018 11:24:42 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1eX8JT-0006Ac-Gw
-	for qemu-arm@nongnu.org; Thu, 04 Jan 2018 11:24:32 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:52206)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgilbert@redhat.com>)
-	id 1eX8JT-00068u-60; Thu, 04 Jan 2018 11:24:15 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0BA7D8125C;
-	Thu,  4 Jan 2018 16:24:14 +0000 (UTC)
-Received: from work-vm (ovpn-116-225.ams2.redhat.com [10.36.116.225])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id C2FBE60181;
-	Thu,  4 Jan 2018 16:24:03 +0000 (UTC)
-Date: Thu, 4 Jan 2018 16:24:01 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Message-ID: <20180104162400.GB2618@work-vm>
-References: <20180104144046.30793-1-f4bug@amsat.org>
-	<20180104144046.30793-3-f4bug@amsat.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=HzSfcAk+;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=rZF/miYvVMP3IcuNGAoysKATYTI9Qzde6Z9wIEM7yec=;
+        b=HzSfcAk+lx4c7D6gKwtZ19kvm0g0+4JONk6PvM63zNLVQBmP+Ou+WSi8WE8PRRA8iF
+         egjVlca8l4QmsXXVv5PqMMRXCeecxAHUJBCdKETPPduClQN2uEYUgo3tOQ61P2H5C3+n
+         xgartf6d2gx4MY7rQfrKSeOR5W+5sE5vmhNlw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=rZF/miYvVMP3IcuNGAoysKATYTI9Qzde6Z9wIEM7yec=;
+        b=f8qRoBDULmvUq4AiiqFLLCTGtusTS3lgr6lTMks6a6Yrh/RSwY0bf16WAVpB6rs+f/
+         6OMMjC2QosME/CAWPn577I/3wV8h8nIlmvgWkolJukKP2x0fi0iHZeSfwJffdp/e6Zif
+         o75U9wBDu8rKj6xpX4DyC30d9yw9/SgMwnFnJhNg4x9IFG5To/0QlYrvSBOqpYMHQwnN
+         QLASaiCkuqVisQqWIsDe+PeJailv+1dtCPfzoFWgoK/iMA8s78brgAuQfemjvujZGNbL
+         ZtLiKa2sToQGTs2VVHj379nJcyio+0VE2i2yotbaMYh4eJC7YG63V5XaSAu8KKGupERF
+         zqEw==
+X-Gm-Message-State: AKwxytctQ2zfRLjb7LWpDN8XMcON3aUdA+1o0HJtf5fV5v+H5NCYFbE7
+	pGJ/5LEAy45twbvn87ALO0xh4nCxGYLO412WVcu6z+6v
+X-Google-Smtp-Source: ACJfBotYk8wW0WRQcHuSOCeYSRWFHfIVObgWhjRxYEf8hKQsX7DVQ+OIJZPUYarhTF5ayKqXNLebroYTduKdTADcnf0=
+X-Received: by 10.157.29.73 with SMTP id m67mr9041950otm.91.1515507556285;
+ Tue, 09 Jan 2018 06:19:16 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <20180104144046.30793-3-f4bug@amsat.org>
-User-Agent: Mutt/1.9.1 (2017-09-22)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Thu, 04 Jan 2018 16:24:14 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH 2/6] hw/net/e1000: real
- device name is 'e1000-82540em', 'e1000' is an alias
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-	Alexander Graf <agraf@suse.de>, Fam Zheng <famz@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
-	Jason Wang <jasowang@redhat.com>, Markus Armbruster <armbru@redhat.com>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	qemu-arm@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
-	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
-	Sascha Silbe <silbe@linux.vnet.ibm.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lf7Xetm/Jw0O
+Received: by 10.157.15.71 with HTTP; Tue, 9 Jan 2018 06:18:55 -0800 (PST)
+In-Reply-To: <1c99d190-5154-556f-caaf-5abcf4341f96@linaro.org>
+References: <1511890447-13601-1-git-send-email-peter.maydell@linaro.org> <1c99d190-5154-556f-caaf-5abcf4341f96@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 9 Jan 2018 14:18:55 +0000
+Message-ID: <CAFEAcA-UKGsy=xQKyd8kBCUj06sAcPXdy2H2mU-ukzNoh_Tk6g@mail.gmail.com>
+Subject: Re: [PATCH] linux-user/arm/nwfpe: Check coprocessor number for FPA emulation
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	"patches@linaro.org" <patches@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Riku Voipio <riku.voipio@iki.fi>, Laurent Vivier <laurent@vivier.eu>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: z8WWuaP3o3At
 
-* Philippe Mathieu-Daud=E9 (f4bug@amsat.org) wrote:
-> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
-> ---
->  hw/net/e1000.c | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
->=20
-> diff --git a/hw/net/e1000.c b/hw/net/e1000.c
-> index 05a00cba31..2280f7fdf9 100644
-> --- a/hw/net/e1000.c
-> +++ b/hw/net/e1000.c
-> @@ -1648,6 +1648,7 @@ typedef struct E1000Info {
->      uint16_t   device_id;
->      uint8_t    revision;
->      uint16_t   phy_id2;
-> +    const char **aliases;
->  } E1000Info;
-> =20
->  static void e1000_class_init(ObjectClass *klass, void *data)
-> @@ -1695,10 +1696,11 @@ static const TypeInfo e1000_base_info =3D {
-> =20
->  static const E1000Info e1000_devices[] =3D {
->      {
-> -        .name      =3D "e1000",
-> +        .name      =3D "e1000-82540em",
->          .device_id =3D E1000_DEV_ID_82540EM,
->          .revision  =3D 0x03,
->          .phy_id2   =3D E1000_PHY_ID2_8254xx_DEFAULT,
-> +        .aliases   =3D (const char * []) {"e1000", NULL},
->      },
->      {
->          .name      =3D "e1000-82544gc",
-> @@ -1725,6 +1727,7 @@ static void e1000_register_types(void)
-> =20
->          type_info.name =3D info->name;
->          type_info.parent =3D TYPE_E1000_BASE;
-> +        type_info.aliases =3D info->aliases;
->          type_info.class_data =3D (void *)info;
->          type_info.class_init =3D e1000_class_init;
->          type_info.instance_init =3D e1000_instance_init;
+On 29 November 2017 at 09:30, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+> On 11/28/2017 05:34 PM, Peter Maydell wrote:
+>> Our copy of the nwfpe code for emulating of the old FPA11 floating
+>> point unit doesn't check the coprocessor number in the instruction
+>> when it emulates it.  This means that we might treat some
+>> instructions which should really UNDEF as being FPA11 instructions by
+>> accident.
+>>
+>> The kernel's copy of the nwfpe code doesn't make this error; I suspect
+>> the bug was noticed and fixed as part of the process of mainlining
+>> the nwfpe code more than a decade ago.
+>>
+>> Add a check that the coprocessor number (which is always in bits
+>> [11:8] of the instruction) is either 1 or 2, which is where the
+>> FPA11 lives.
+>>
+>> Reported-by: Richard Henderson <richard.henderson@linaro.org>
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> ---
+>> Tested with a chroot of arm debian lenny, which is the last one that
+>> still used the calling convention that mandated use of the old FPA11 FPU
+>> and thus needs nwfpe emulation.
+>> ---
+>>  linux-user/arm/nwfpe/fpa11.c | 9 +++++++++
+>>  1 file changed, 9 insertions(+)
+>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Can you just check that this doesn't break migration compatibility
-either way please;  I think there's some alias code somewhere but I
-can't remember the details.
+Thanks; applied to target-arm.next (since it's as much an arm patch
+as a linux-user one).
 
-One thing I do remember that broke when it previously changed was
-entries in PC_COMPAT_* tables like the one in hw/i386/pc_piix.c's
-PC_COMPAT_1_3 - so check with an 'info qtree' that the property is OK.
-
-Dave
-
-> --=20
-> 2.15.1
->=20
->=20
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+-- PMM

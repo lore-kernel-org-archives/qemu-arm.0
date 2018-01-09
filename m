@@ -1,72 +1,70 @@
-Received: by 10.28.173.206 with SMTP id w197csp3730741wme;
+Received: by 10.28.173.206 with SMTP id w197csp3730736wme;
         Tue, 9 Jan 2018 06:02:17 -0800 (PST)
-X-Google-Smtp-Source: ACJfBoswjn2WalEB4SB4UkkMcOZZlw0vh/Ua3iE3ZF4ffPgcANPVKY7so+7rO99DO3MjtgY9wf7F
-X-Received: by 10.129.141.75 with SMTP id w11mr13814077ywj.330.1515506537481;
+X-Google-Smtp-Source: ACJfBovIz0/M4W16QcFUYr77a9MM51XW1xzGHCfb2nB/HtJEf4kF0NxgR5KHGejxmRaAn/tsKTU/
+X-Received: by 10.37.97.210 with SMTP id v201mr1596032ybb.511.1515506537075;
         Tue, 09 Jan 2018 06:02:17 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1515506537; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ne9myMxqsR1EPfeNSqV+dHWYA3txDLGv+D+HGpHNP43fpUrH51t99bdFiKcoJ46QJk
-         limKQ1LX1oQ8h9lSSzh2NxGhlNFqMjpi1vbgj/MCwTT7c2vW9X6/4Dqxe9zQoWA9mXxD
-         ihWXwYc4pd2ai3XlmCCp2i25E95G0zXwlehedNoyJgagtNCrZic4S+ufPtVFXhxxY/J1
-         BPgb0m94As9kaR+6BUxzBuYYxqjs7+BDP7udeTRjqJk8lSahrlhWXo/O0mzuPsQteh5W
-         g/4B1845yRfSvUU69vSx/m4qw0gESB/Zhfzwe7U51+FpYLgM7RFThSR5RZEHTiQFi2fa
-         5zNA==
+        b=QXoNDDY+pc9aNwxWTaekm3xkHnL8zn+lKqiJaajF2p75qHWBBgGZk4X6w5IU5UBVLL
+         lwQ03Zxernu8YPnLPgG7errH51zhAS9KeGgND9+50ULHdhKo4v6uZtib/TOQobv/i6Sz
+         HPMlBhv2F4DvXWexLs1Z4XhJJMV7zx0OKMijTHX1HIIGyVhPn5g+/+gzDiXc7yEii8Ju
+         Lh3+o88ncs6xPia1tTySuXa+gK2/y+NH94Mso0o7hAfKjkqOptrS2vilo2zecF/PgWBl
+         nDqIEol3h37sjXy6ucuX73QYRaPFtwZhnskuPdgQhUrdu/CqwfjrZ4kFBQOqVyWbXDKZ
+         y6PQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=yzVSrDm5d995q4LMUQVlMIeJos7qXSJWNS9RNe95x94=;
-        b=L1qIIfBOXdY6yRnzX4krnbZXtm9fhYyRV61E2w8tqMeZRcsSzSbCRtD36kqZ6NRt4L
-         rUyRecN8qnrqq0C6cLiicoMnY88mt5gINeKlw/6oNauuIYkbv2FWfu2SSwP60R0Djawx
-         WEpqxd4fDCAGORiw83ZGFrzykavwOF0E+RN/gaJ4z7uBQ6hX2JpcxDHzfeaaHN75BFqq
-         Ak+Wg2KPvLb7fOIlfxy+o3XcdnAN09r5Gti+umgdqdi5TlLrsSjiqba7xsKXiRjPL7WG
-         uiP3W6Zj2OJUyAXfXvZxEEQY6N2vqKJHCqokJYOgvsL5ozuGY5dNF5fWgCMIJc2UPg3o
-         4WVA==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :arc-authentication-results;
+        bh=wDEYJyrKE6FKPOH2pV0uTir07F29CnHuFXfP21KwkFs=;
+        b=SC7uLCgs0iHOfU/N11jKcjvGU347auqHpIs8BQSA2FuGFCLu3pbK6UcO3Nwr5dpWzg
+         SQ0z/+UslqcCxmaAZugQ/ohmDIm21/FfVNrtOxh/2wGucgaxNVU6kgt4yAdwzWxl6Fu4
+         nja7795Gmk3gRkOzbsXGFjcXH1NMsX3oPujXGV9R+Ng5ktp15Hy8ne3Oz6fXqhg1OfEL
+         /Qn3b6iMprE6q4cCeeFZNdsToX0ysKi/4AuATu/YQE1CGV09fYVhsJCXGkHYhU5SvQr6
+         e8vfuPsdUVO0qk/xGmkAiMYslU7rpiRc9UgnSILbG4l8BAmOzP0CxjI2IjeLrM6twX+P
+         e3ww==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n4si3125135ybh.511.2018.01.09.06.02.16
+        by mx.google.com with ESMTPS id h62si2969450ywb.790.2018.01.09.06.02.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 Jan 2018 06:02:16 -0800 (PST)
+        Tue, 09 Jan 2018 06:02:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54357 helo=lists.gnu.org)
+Received: from localhost ([::1]:54359 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eYuTn-00075I-Sn
-	for alex.bennee@linaro.org; Tue, 09 Jan 2018 09:02:15 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34358)
+	id 1eYuTo-00075a-Fx
+	for alex.bennee@linaro.org; Tue, 09 Jan 2018 09:02:16 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34344)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eYuTX-00074i-Dj
-	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 09:02:03 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1eYuTW-00074a-In
+	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 09:02:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eYuTW-00016o-G9
-	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 09:01:59 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1eYuTV-00015x-GH
+	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 09:01:58 -0500
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:45792)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1eYuTW-000159-9R; Tue, 09 Jan 2018 09:01:58 -0500
+	id 1eYuTV-000159-6l; Tue, 09 Jan 2018 09:01:57 -0500
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1eYuTU-0003ek-JW; Tue, 09 Jan 2018 14:01:56 +0000
+	id 1eYuTS-0003dy-E3; Tue, 09 Jan 2018 14:01:54 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue,  9 Jan 2018 14:01:52 +0000
-Message-Id: <1515506513-31961-4-git-send-email-peter.maydell@linaro.org>
+Date: Tue,  9 Jan 2018 14:01:49 +0000
+Message-Id: <1515506513-31961-1-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1515506513-31961-1-git-send-email-peter.maydell@linaro.org>
-References: <1515506513-31961-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 3/4] hw/sd/ssi-sd: Reset SD card on controller
- reset
+Subject: [Qemu-arm] [PATCH 0/4] Reset SD cards attached to legacy-API
+ controllers
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,81 +80,56 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-stable@nongnu.org, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RQc1G6cFNMn5
+X-TUID: TRUxiziO0SPh
 
-Since ssi-sd is still using the legacy SD card API, the SD
-card created by sd_init() is not plugged into any bus. This
-means that the controller has to reset it manually.
+It turns out that we don't reset the SD card model if it's
+attached to a legacy-API controller. For new-style controllers
+where the SD card object is attached to an SD_BUS, the generic
+qbus infrastructure takes care of ensuring that the card's
+DeviceState::reset method gets called. But for the legacy
+API where the card is created by calling sd_init(), the card
+object has no SD_BUS to plug into, and so the reset function
+must be called manually.
 
-Failing to do this mostly didn't affect the guest since the
-guest typically does a programmed SD card reset as part of
-its SD controller driver initialization, but meant that
-migration failed because it's only in sd_reset() that we
-set up the wpgrps_size field.
+This mostly had no ill effects because a guest OS will typically
+perform an SD reset command as part of its device driver init
+sequence. However it does mean that migration won't work, because
+it's in sd_reset() that we set up the wpgrps_size field, and
+without that the migration struct on reload won't match.
 
-In the case of sd-ssi, we have to implement an entire
-reset function since there wasn't one previously, and
-that requires a QOM cast macro that got omitted when this
-device was QOMified.
+This patchset fixes up the four legacy controllers to call
+reset on the SD card device in their controller reset functions.
+The first 3 are cc:stable as migration bugfixes.
 
-Cc: qemu-stable@nongnu.org
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/sd/ssi-sd.c | 24 +++++++++++++++++++++++-
- 1 file changed, 23 insertions(+), 1 deletion(-)
+This fixes https://bugs.launchpad.net/qemu/+bug/1739378
 
-diff --git a/hw/sd/ssi-sd.c b/hw/sd/ssi-sd.c
-index 24001dc..30d2a87 100644
---- a/hw/sd/ssi-sd.c
-+++ b/hw/sd/ssi-sd.c
-@@ -50,6 +50,9 @@ typedef struct {
-     SDState *sd;
- } ssi_sd_state;
- 
-+#define TYPE_SSI_SD "ssi-sd"
-+#define SSI_SD(obj) OBJECT_CHECK(ssi_sd_state, (obj), TYPE_SSI_SD)
-+
- /* State word bits.  */
- #define SSI_SDR_LOCKED          0x0001
- #define SSI_SDR_WP_ERASE        0x0002
-@@ -251,6 +254,24 @@ static void ssi_sd_realize(SSISlave *d, Error **errp)
-     }
- }
- 
-+static void ssi_sd_reset(DeviceState *dev)
-+{
-+    ssi_sd_state *s = SSI_SD(dev);
-+
-+    s->mode = SSI_SD_CMD;
-+    s->cmd = 0;
-+    memset(s->cmdarg, 0, sizeof(s->cmdarg));
-+    memset(s->response, 0, sizeof(s->response));
-+    s->arglen = 0;
-+    s->response_pos = 0;
-+    s->stopping = 0;
-+
-+    /* Since we're still using the legacy SD API the card is not plugged
-+     * into any bus, and we must reset it manually.
-+     */
-+    device_reset(DEVICE(s->sd));
-+}
-+
- static void ssi_sd_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -260,10 +281,11 @@ static void ssi_sd_class_init(ObjectClass *klass, void *data)
-     k->transfer = ssi_sd_transfer;
-     k->cs_polarity = SSI_CS_LOW;
-     dc->vmsd = &vmstate_ssi_sd;
-+    dc->reset = ssi_sd_reset;
- }
- 
- static const TypeInfo ssi_sd_info = {
--    .name          = "ssi-sd",
-+    .name          = TYPE_SSI_SD,
-     .parent        = TYPE_SSI_SLAVE,
-     .instance_size = sizeof(ssi_sd_state),
-     .class_init    = ssi_sd_class_init,
+Philippe: this probably clashes slightly with your sdcard
+patchsets (and where you've updated devices to the new APIs
+it becomes irrelevant), but I think we should apply these
+first so we can have a simple patch to backport to the stable
+tree.
+
+Notes:
+ * OMAP doesn't migrate anyway, so isn't cc:stable
+ * for vexpress-a15, you also need "-machine secure=off":
+   a config with trustzone emulation enabled doesn't
+   successfully migrate (haven't yet debugged why)
+
+thanks
+-- PMM
+
+Peter Maydell (4):
+  hw/sd/pl181: Reset SD card on controller reset
+  hw/sd/milkymist-memcard: Reset SD card on controller reset
+  hw/sd/ssi-sd: Reset SD card on controller reset
+  hw/sd/omap_mmc: Reset SD card on controller reset
+
+ hw/sd/milkymist-memcard.c |  4 ++++
+ hw/sd/omap_mmc.c          | 14 ++++++++++----
+ hw/sd/pl181.c             |  4 ++++
+ hw/sd/ssi-sd.c            | 24 +++++++++++++++++++++++-
+ 4 files changed, 41 insertions(+), 5 deletions(-)
+
 -- 
 2.7.4
 

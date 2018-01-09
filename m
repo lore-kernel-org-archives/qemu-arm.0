@@ -1,101 +1,144 @@
-Received: by 10.28.173.206 with SMTP id w197csp4243932wme;
-        Tue, 9 Jan 2018 15:15:36 -0800 (PST)
-X-Google-Smtp-Source: ACJfBouWyODR/7Jj/lphtX9+xsW2YgYrjXgHhz4qGdtQP4Fink++W79ZdXFZm8jZL2uzBnnGDc7J
-X-Received: by 10.37.175.7 with SMTP id a7mr15857221ybh.95.1515539736093;
-        Tue, 09 Jan 2018 15:15:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515539736; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp3086129wme;
+        Mon, 8 Jan 2018 16:24:46 -0800 (PST)
+X-Google-Smtp-Source: ACJfBoufVxwjb2YtwNb7tJgO/omoAdYz/4L50MDSiTjdFgCrfthoaTGQUTSgs9RyZrfpp6wwmjtt
+X-Received: by 10.37.45.28 with SMTP id t28mr12856849ybt.200.1515457486611;
+        Mon, 08 Jan 2018 16:24:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515457486; cv=none;
         d=google.com; s=arc-20160816;
-        b=kcNuCGan0+9gplMRWjpI1/EwNX69pPt9XiTZ57E06PMj/xnI812krPNbpLRhKToSOq
-         pcmp+xNjIwt8E070LeRPqufuIaF4qxn5iAxr0ZpmFijpaoBgnuacBOlkVcIqeud9lPDL
-         XuLp/4ewAM0mbtaUD558VJyKs5CHSnDngbhu9WNBViUTiee8biKTOnFQPLV0/vWFRjVe
-         v9/OG/xAz5Wp3u1/6BMZcGmqwycGvM6cY0gs5xyxcsbiNlTZb23kvtP7UYTEF4SUuzvV
-         KEJ8k3b+lMNJgmeZRhRYMtuEVv38K0Lh0HRbv2b8adJvC9jgkWlX714lnwB4Tzun3ZyP
-         p2Cw==
+        b=KKVVgZuh9mTacTNMNVVvuW/LevZfy0kd0Y2fDsKo7XQipgjlQNmKOMigHXpFKRoZ4q
+         Ec2kOUXh/emWjWZLPMicoGtAGuY5+ALIeKQBY5DL4fVrqLkExLpMs90BYWUoAMi5Y6cO
+         Ayfu1fV3khm7RTMBx3vOeItSyX45DmWvJT65VGJiT9VXZkf5pH3vqbhzsbabTnUiKCND
+         xf068MYbv6DMtHhPVnVRJsVukgOa6yCBXFn9wQFs0mokuMQew//OvYHnPmyGoAt+sjGr
+         CzH+QDFYtVN9TRrRLbZmL/pEJoBEcfD8Un3gAX2waGMhMgy4XesseWmjvypEYSLTU2rC
+         HDcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=cQFK9Yi3hLDi6mQqNcRLztYQaXqjvvMgE8hKDFWLnvc=;
-        b=DuLkFONT6Ilx2syDQyFMssr/NO6yZVyccPTtj//uFCDbA4B6f01q5+aq7+bV1TxC+6
-         E1YkoolAine5Fyj6dYKlQB6p5iG+0D6jc0eh+3ou9b5tJdOAIvfq5TmDGeJPMMPqNrzS
-         UH2dk5xzaSbNw06QJf3ZA6gMr54EDTzGqSrdsz8wyYdeZJ5KO8NC/XDqlvRrw/Y4EvoJ
-         1LgfeW+CIfmYdPv/rsVLW8ZEwallhZsxx/9morZfTBlLgGREw1GioUV6wDJKKujTqNZu
-         ZoNtyTubwFs27g2WHve5f+XXJ79QHtZpB6U9FDRiim7iOx4FQ97YXyU6fm3/PUrORVd1
-         ifmw==
+        h=sender:errors-to:cc:reply-to:from:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:subject
+         :mime-version:content-transfer-encoding:spamdiagnosticmetadata
+         :spamdiagnosticoutput:msip_labels:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
+         :dkim-signature:arc-authentication-results;
+        bh=IARoz3TL8qFWHVjbZqWgAKmgEriSwY2x6nRF9vapMbQ=;
+        b=HBOvaCl9CfVN6crCeVkH/pzyizku2lo/RkUNt9z/TerLe3gVZ2vP00qn+CmUrAiJR+
+         rN/zFDEdzEihCW4Sb6uuQv0+lzg6/OxLkRXo3ITYv6zExjI2EgAY6Al7N+SlDvTKET4O
+         OEGBHu7KK2iq3/8/4sx9I5iSUQp0UqJZsteP++0KzUtXXH+7frE6UDWXZpb+n6wSHG9e
+         a2/losBVVxv5o+MfuRmkFbUVIv+NCn2Fim3RlwUVnOjCt+jgnfF8qxZyMRVlxTf5dbLV
+         nZW4b4Cx4mAE2HzF37ynHWWvJFVbAdwZMbKtO6juChGqcUPVzsCETHAS2iOxoaYQl2An
+         C6ZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=d+xKZ8w2;
+       dkim=fail header.i=@microsoft.com header.s=selector1 header.b=UNvaWZUk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 141si1193063ybe.589.2018.01.09.15.15.35
+        by mx.google.com with ESMTPS id d11si2683367ywh.235.2018.01.08.16.24.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 Jan 2018 15:15:36 -0800 (PST)
+        Mon, 08 Jan 2018 16:24:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=d+xKZ8w2;
+       dkim=fail header.i=@microsoft.com header.s=selector1 header.b=UNvaWZUk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54995 helo=lists.gnu.org)
+Received: from localhost ([::1]:41099 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eZ37H-0007D0-Fr
-	for alex.bennee@linaro.org; Tue, 09 Jan 2018 18:15:35 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39969)
+	id 1eYhig-00086w-1Z
+	for alex.bennee@linaro.org; Mon, 08 Jan 2018 19:24:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32857)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1eZ373-0007Bq-Ua
-	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 18:15:23 -0500
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1eYhiV-00085H-A3
+	for qemu-arm@nongnu.org; Mon, 08 Jan 2018 19:24:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1eZ372-0007UZ-Lw
-	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 18:15:21 -0500
-Received: from mail-wm0-x234.google.com ([2a00:1450:400c:c09::234]:44636)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1eZ36s-0007Lk-EN; Tue, 09 Jan 2018 18:15:10 -0500
-Received: by mail-wm0-x234.google.com with SMTP id t8so23336913wmc.3;
-	Tue, 09 Jan 2018 15:15:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-transfer-encoding;
-	bh=cQFK9Yi3hLDi6mQqNcRLztYQaXqjvvMgE8hKDFWLnvc=;
-	b=d+xKZ8w2RtwwUJeE946PVL93KmTf3FDrz4bfGeR5JMj9xTq4Pvf35tjGNpGnYYHkXZ
-	tKwctNjo8fW3loMA2mwCkXnqDsTtXxRD0HKcmmARgzOy3hshdUQlVBnCnZd2crtfJhNj
-	CHk2PymjS5nblEcNSqVdFAjstOvTmR+CxHO1cGcRnKETcpT4bdKro4LW54XSUQi1NO8i
-	/ozZDHkQ3XZDhUlSDOom6PRmMWidHXsV6Tn/Z5depxq6LHem7VEcEdcjwXVuOklItybB
-	YZtsiiOQzP5UMSNanKbCbLaL4feIw0r2Y9nA8I1cDIq8Df8fvKLmfJd9tTds89jpzMGy
-	CmTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc:content-transfer-encoding;
-	bh=cQFK9Yi3hLDi6mQqNcRLztYQaXqjvvMgE8hKDFWLnvc=;
-	b=o5Ddir8NzsUebgxTjdYR4UiRzCJBplapFojKTTofM0mMcNDlX+g8OxWsS7cIOphjbc
-	HenW0aPWrMoDTiH33FH/JKihe7mq3pl+/aEbZcfAGGViE76L1Vg2EFskqKvCq1dFayT4
-	UTir4/5ToGdcVzQgpYiCNAvMBvsGs1//2Miwojn6BMBtfVbOegEmhrEzweb1/wmcQ7Ve
-	f6Y76XFm8gJ0YZMt7HAaXP95LU9CGeoZqBWV0tZx/yXm4A5DWulSik+6+CL8WpuurIfd
-	dVyDbk6oxmIEfcdNz2xTV46H3bEe8Eks8vfEUrtP3UbvZM0fYYit6h5as6+VQ6s2h6B0
-	XUZg==
-X-Gm-Message-State: AKGB3mLc+XVjmU+XyTTmq6WDCgZv6gMAoNG3gCJ28rLOt6oyLtn6eQ3x
-	PnOZktHBOrKM0m2/kNXVPP2vXKQr1R+KJJgtJT0=
-X-Received: by 10.28.55.74 with SMTP id e71mr14012115wma.50.1515539709312;
-	Tue, 09 Jan 2018 15:15:09 -0800 (PST)
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1eYhiU-0002wn-G1
+	for qemu-arm@nongnu.org; Mon, 08 Jan 2018 19:24:35 -0500
+Received: from mail-by2nam01on0112.outbound.protection.outlook.com
+	([104.47.34.112]:2512
+	helo=NAM01-BY2-obe.outbound.protection.outlook.com)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <Andrew.Baumann@microsoft.com>)
+	id 1eYhiO-0002tF-D7; Mon, 08 Jan 2018 19:24:28 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+	s=selector1; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
+	bh=IARoz3TL8qFWHVjbZqWgAKmgEriSwY2x6nRF9vapMbQ=;
+	b=UNvaWZUkRH0MtNgp/PBmiJQ/NZDM5gFqGDtkNJo9c8lNZbcnYmY+EwAyTiNv/wgiO5MHlJZpITRIPW+2J2eCqoe3jVz2jwOXkRHZXZ8SigFBiryo+uQX18Sj9AbwIUBx4VbYM+WEbrEP2RUmCv4y3Qc8MwlNnKZXVuZOftM4yxg=
+Received: from CY4PR21MB0469.namprd21.prod.outlook.com (10.172.121.147) by
+	CY4PR21MB0822.namprd21.prod.outlook.com (10.173.192.8) with Microsoft
+	SMTP
+	Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+	15.20.407.2; Tue, 9 Jan 2018 00:24:24 +0000
+Received: from CY4PR21MB0469.namprd21.prod.outlook.com ([10.172.121.147]) by
+	CY4PR21MB0469.namprd21.prod.outlook.com ([10.172.121.147]) with mapi id
+	15.20.0428.002; Tue, 9 Jan 2018 00:24:24 +0000
+To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>, "Alistair
+	Francis" <alistair.francis@xilinx.com>, "Edgar E . Iglesias"
+	<edgar.iglesias@xilinx.com>, Peter Maydell <peter.maydell@linaro.org>, 
+	"Andrey Smirnov" <andrew.smirnov@gmail.com>,
+	=?utf-8?B?R3LDqWdvcnkgRXN0cmFkZSBncmVnb3J5IC4gZXN0cmFkZSBAIGdtYWlsIC4g?=
+	=?utf-8?Q?com_Clement_Deschamps?= <clement.deschamps@antfield.fr>, "Ashok
+	kumar" <ashoks@broadcom.com>
+Thread-Topic: [PATCH v3 33/42] hw/arm/bcm2835_peripherals: implement SDHCI
+	Spec v3
+Thread-Index: AQHTgM2lWbyQR8bQFEiAg/fy4R9lF6NqvjPQ
+Date: Tue, 9 Jan 2018 00:24:24 +0000
+Message-ID: <CY4PR21MB04692645342E2571EF5FA87F9E100@CY4PR21MB0469.namprd21.prod.outlook.com>
+References: <20171229174933.1781-1-f4bug@amsat.org>
+	<20171229174933.1781-34-f4bug@amsat.org>
+In-Reply-To: <20171229174933.1781-34-f4bug@amsat.org>
+Accept-Language: en-AU, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Enabled=True;
+	MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SiteId=72f988bf-86f1-41af-91ab-2d7cd011db47;
+	MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Owner=baumann@microsoft.com;
+	MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SetDate=2018-01-09T00:24:20.8951435Z;
+	MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Name=General;
+	MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Application=Microsoft
+	Azure Information Protection;
+	MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Extended_MSFT_Method=Automatic;
+	Sensitivity=General
+x-originating-ip: [2001:4898:80e8:5::690]
+x-ms-publictraffictype: Email
+x-microsoft-exchange-diagnostics: 1; CY4PR21MB0822;
+	7:iQ6KLkr/4CjefgV+21QZpQwn/PAnWMjCDAy67TO5TQUxQOW15/wcDp/tQGrZUwbdGZxacRTOULe5LWGeM/mjMQHP/SIGxtqZRjDava2J+fSOsfvNWo5k1NPwHzRWl6lofidSVy1ixODiUY7oWAOGXwftRZ4p6rMNZ9KSPk/IEieoZbU+qU/s70yMJm6PApHPesXlc3f3O/BOr8IoqsgGhsWo/rVIz/CKCyFfEvOAngMZMJGNjintT2OI2JxB+D3g
+x-ms-exchange-antispam-srfa-diagnostics: SSOS;
+x-ms-office365-filtering-correlation-id: e1be1176-95cd-417b-28e1-08d556f75650
+x-ms-office365-filtering-ht: Tenant
+x-microsoft-antispam: UriScan:; BCL:0; PCL:0;
+	RULEID:(7020040)(4652020)(4534070)(4602075)(4627166)(201703031133081)(201702281549075)(5600026)(4604075)(3008032)(48565401081)(2017052603307)(7193020);
+	SRVR:CY4PR21MB0822; 
+x-ms-traffictypediagnostic: CY4PR21MB0822:
+x-microsoft-antispam-prvs: <CY4PR21MB08227BC0A2DDDE8F694158EA9E100@CY4PR21MB0822.namprd21.prod.outlook.com>
+x-exchange-antispam-report-test: UriScan:(85827821059158);
+x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
+	RULEID:(61425038)(6040470)(2401047)(5005006)(8121501046)(3002001)(3231023)(944501104)(10201501046)(93006095)(93001095)(6055026)(61426038)(61427038)(6041268)(20161123558120)(20161123564045)(20161123562045)(20161123560045)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(6072148)(201708071742011);
+	SRVR:CY4PR21MB0822; BCL:0; PCL:0;
+	RULEID:(100000803101)(100110400095); SRVR:CY4PR21MB0822; 
+x-forefront-prvs: 0547116B72
+x-forefront-antispam-report: SFV:NSPM;
+	SFS:(10019020)(366004)(376002)(39860400002)(346002)(396003)(39380400002)(199004)(189003)(229853002)(106356001)(2906002)(5660300001)(2950100002)(6116002)(102836004)(72206003)(22452003)(14454004)(6246003)(110136005)(54906003)(4326008)(7696005)(59450400001)(99286004)(2900100001)(6436002)(478600001)(15760500003)(76176011)(81166006)(6506007)(25786009)(86612001)(8656006)(105586002)(10290500003)(9686003)(316002)(86362001)(8666007)(77096006)(53936002)(39060400002)(7416002)(305945005)(7736002)(10090500001)(3280700002)(97736004)(8990500004)(8936002)(68736007)(3660700001)(8676002)(33656002)(55016002)(74316002)(81156014)(6346003);
+	DIR:OUT; SFP:1102; SCL:1; SRVR:CY4PR21MB0822;
+	H:CY4PR21MB0469.namprd21.prod.outlook.com; FPR:; SPF:None;
+	PTR:InfoNoRecords; A:1; MX:1; LANG:en; 
+received-spf: None (protection.outlook.com: microsoft.com does not designate
+	permitted sender hosts)
+authentication-results: spf=none (sender IP is )
+	smtp.mailfrom=Andrew.Baumann@microsoft.com; 
+x-microsoft-antispam-message-info: sx9EyFZxAC2DIICyKTLHigyf4U/39ynlX6rCKLsa8Q0Hm+kM98uII7cqAZPLZxAJ4G/ifc6gk3ZXSfPPHINtkA==
+spamdiagnosticoutput: 1:99
+spamdiagnosticmetadata: NSPM
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Received: by 10.28.164.69 with HTTP; Tue, 9 Jan 2018 15:14:38 -0800 (PST)
-In-Reply-To: <20180108154303.6522-11-f4bug@amsat.org>
-References: <20180108154303.6522-1-f4bug@amsat.org>
-	<20180108154303.6522-11-f4bug@amsat.org>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Tue, 9 Jan 2018 15:14:38 -0800
-X-Google-Sender-Auth: HHTJzbaoh54GHFc0BGjTGo1g3bQ
-Message-ID: <CAKmqyKOb7S1ff9uwQ8eYHxgvZRYMPCNr3wbgy-m5FZumHj3cSw@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::234
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 10/31] sdhci: add a
- Designware/Samsung host controller
+X-OriginatorOrg: microsoft.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e1be1176-95cd-417b-28e1-08d556f75650
+X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Jan 2018 00:24:24.6867 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR21MB0822
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 104.47.34.112
+Subject: Re: [Qemu-arm] [PATCH v3 33/42] hw/arm/bcm2835_peripherals:
+ implement SDHCI Spec v3
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,123 +150,22 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Prasad J Pandit <pjp@fedoraproject.org>,
-	=?UTF-8?Q?Gr=C3=A9gory_Estrade?= <gregory.estrade@gmail.com>,
-	Andrey Smirnov <andrew.smirnov@gmail.com>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	Sai Pavan Boddu <saipava@xilinx.com>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Clement Deschamps <clement.deschamps@antfield.fr>,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>,
-	Jean-Christophe Dubois <jcd@tribudubois.net>,
-	Eduardo Habkost <ehabkost@redhat.com>
+From: Andrew Baumann via Qemu-arm <qemu-arm@nongnu.org>
+Reply-To: Andrew Baumann <Andrew.Baumann@microsoft.com>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: T+rpHlIrAHNc
+X-TUID: mmBNY1YFMrR2
 
-On Mon, Jan 8, 2018 at 7:42 AM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g> wrote:
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/sd/dw-mshc.c     | 64 +++++++++++++++++++++++++++++++++++++++++++++++=
-++++++
->  hw/sd/Makefile.objs |  1 +
->  2 files changed, 65 insertions(+)
->  create mode 100644 hw/sd/dw-mshc.c
->
-> diff --git a/hw/sd/dw-mshc.c b/hw/sd/dw-mshc.c
-> new file mode 100644
-> index 0000000000..c2869cd569
-> --- /dev/null
-> +++ b/hw/sd/dw-mshc.c
-> @@ -0,0 +1,64 @@
-> +/*
-> + * Synopsys Designware Mobile Storage Host Controller emulation
-> + * (and Samsung Exynos specific extensions)
-> + *
-> + * Copyright (C) 2018 Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or
-> + * (at your option) any later version.  See the COPYING file in the
-> + * top-level directory.
-> + */
-> +#include "qemu/osdep.h"
-> +#include "hw/sd/sdhci.h"
-> +#include "qapi/error.h"
-> +
-> +/* Compatible with:
-> + * - SD Host Controller Specification Version 2.0
-> + * - SDIO Specification Version 2.0
-> + * - MMC Specification Version 4.3
-> + *
-> + * - SDMA
-> + * - ADMA
-> + */
-> +static void exynos4210_dw_mshc_realize(DeviceState *dev, Error **errp)
-> +{
-> +    SDHCICommonClass *cc =3D SYSBUS_SDHCI_COMMON_GET_CLASS(dev);
-> +    Object *obj =3D OBJECT(dev);
-> +    Error *local_err =3D NULL;
-> +
-> +    object_property_set_uint(obj, 2, "sd-spec-version", &local_err);
-> +    object_property_set_bool(obj, true, "suspend", &local_err);
-> +    object_property_set_bool(obj, true, "1v8", &local_err);
-> +    if (local_err) {
-> +        error_propagate(errp, local_err);
-> +        return;
-> +    }
-> +
-> +    cc->parent_realize(dev, &local_err);
-> +    if (local_err) {
-> +        error_propagate(errp, local_err);
-> +        return;
-> +    }
-> +}
-> +
-> +static void exynos4210_dw_mshc_class_init(ObjectClass *klass, void *data=
-)
-> +{
-> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> +    SDHCICommonClass *cc =3D SYSBUS_SDHCI_COMMON_CLASS(klass);
-> +
-> +    cc->parent_realize =3D dc->realize;
-
-This need an explanation, why are we doing this weird realise logic?
-
-Alistair
-
-> +    dc->realize =3D exynos4210_dw_mshc_realize;
-> +}
-> +
-> +static const TypeInfo exynos4210_dw_mshc_info =3D {
-> +    .name =3D "samsung,exynos4210-dw-mshc",
-> +    .parent =3D TYPE_SYSBUS_SDHCI,
-> +    .class_init =3D exynos4210_dw_mshc_class_init,
-> +};
-> +
-> +static void dw_mshc_sdhc_register_types(void)
-> +{
-> +    type_register_static(&exynos4210_dw_mshc_info);
-> +}
-> +
-> +type_init(dw_mshc_sdhc_register_types)
-> diff --git a/hw/sd/Makefile.objs b/hw/sd/Makefile.objs
-> index 0fe2501017..fd866d7f94 100644
-> --- a/hw/sd/Makefile.objs
-> +++ b/hw/sd/Makefile.objs
-> @@ -3,6 +3,7 @@ common-obj-$(CONFIG_SD) +=3D core.o
->
->  # SD/MMC host adapters
->  common-obj-$(CONFIG_PL181) +=3D pl181.o
-> +common-obj-$(CONFIG_EXYNOS4) +=3D dw-mshc.o
->  common-obj-$(CONFIG_SSI_SD) +=3D ssi-sd.o
->  common-obj-$(CONFIG_SDHCI) +=3D sdhci.o
->  obj-$(CONFIG_MILKYMIST) +=3D milkymist-memcard.o
-> --
-> 2.15.1
->
->
+PiBGcm9tOiBQaGlsaXBwZSBNYXRoaWV1LURhdWTDqSBbbWFpbHRvOnBoaWxpcHBlLm1hdGhpZXUu
+ZGF1ZGVAZ21haWwuY29tXQ0KPiBTZW50OiBGcmlkYXksIDI5IERlY2VtYmVyIDIwMTcgMDk6NDkN
+Cj4gDQo+IFNpZ25lZC1vZmYtYnk6IFBoaWxpcHBlIE1hdGhpZXUtRGF1ZMOpIDxmNGJ1Z0BhbXNh
+dC5vcmc+DQo+IC0tLQ0KPiANCj4gTm90ZSwgdGhlIGJjbTI4MzUgc2VlbXMgdG8gaGF2ZSAxS0Ig
+bWluaW11bSBibG9ja3NpemUsIGhvd2V2ZXIgdGhlDQo+IGN1cnJlbnQNCj4gbW9kZWwgaXMgaW1w
+bGVtZW50ZWQgd2l0aCA1MTJCLg0KPiANCj4gQ2FuIHNvbWVvbmUgd2l0aCBhY2Nlc3MgdG8gdGhl
+IGRhdGFzaGVldHMgdmVyaWZ5Pw0KDQpUaGUgcHVibGljIEJDTTI4MzUgcGVyaXBoZXJhbHMgZGF0
+YXNoZWV0IHNheXM6DQogICJUaGUgRU1NQyBtb2R1bGUgcmVzdHJpY3RzIHRoZSBtYXhpbXVtIGJs
+b2NrIHNpemUgdG8gdGhlIHNpemUgb2YgdGhlIGludGVybmFsIGRhdGEgRklGTw0KICB3aGljaCBp
+cyAxayBieXRlcy4iDQouLi4gc28gSSB0aGluayB5b3VyIHBhdGNoIGlzIGNvcnJlY3QuDQoNCkFu
+ZHJldw0K

@@ -1,72 +1,97 @@
-Received: by 10.28.173.206 with SMTP id w197csp3733693wme;
-        Tue, 9 Jan 2018 06:04:37 -0800 (PST)
-X-Google-Smtp-Source: ACJfBosqdeWnM9XQzBkD4FSiDJgrinIZFn11jD4783QPLi+bonLiJb7UkbrM3JXiAbJLpMXVsB2i
-X-Received: by 10.129.119.131 with SMTP id s125mr9280550ywc.166.1515506677549;
-        Tue, 09 Jan 2018 06:04:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515506677; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp3751474wme;
+        Tue, 9 Jan 2018 06:21:02 -0800 (PST)
+X-Google-Smtp-Source: ACJfBotlfYgAzS71ecy0uxhr7NAHxgVRdQ1reeXD5TGUZ127+w0xQlo32Yz2aL95bHdA+nc+e8oF
+X-Received: by 10.13.206.4 with SMTP id q4mr13736931ywd.305.1515507662061;
+        Tue, 09 Jan 2018 06:21:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515507662; cv=none;
         d=google.com; s=arc-20160816;
-        b=IPabb408N6FBK/es2Q0gpKmw8CYZsXNMv9025YwlVKyyx20rWvkBzn5ucTcXZtEAQa
-         O0DWYycgehxclVzVFyrh0BKj5rvsiXls25KTgc2UImfzJu6GpsYxBUJxGRcb+WOvnY6S
-         WFknUYaSydZhBHO0TPFgf5j4SgitQXzzrvsgeM5N5jbk/CUPZ7n3GzvQofGuqfI+e1o4
-         iXDbTf1mdGWpiQNmt8tE8zGz6qK6tDZBuqprjY/FxMNk6zQ3pxg2yiDT2uQ2tVE693nP
-         eEINJ38AHRW14JajMct17YeAcPzU+o8CHfm0xOte82izPWNreBJTJ0/6ZaJIQ8sEdbbM
-         BnYg==
+        b=GkxXWEiYYTS8ZoPT2yTNE6dIWO0gcWO5/UNjGBDiTWEfBXndAAMq3oGjIId+vUYWUe
+         7YiQRq1r//gYH3tY9OeBn8uE3anTKP4pJU4RkrHV1sLmk3/JttKX7B6bw7GZKMOQ9Dwx
+         0rlX0rRACd+2Jgfhmm+W1Yx2rc/3czbwva0Cu9hRbughLBactO1LvcU7IVsAa48iEN0X
+         p7KQksRzQLWv1iCbUDMiznRzgqwTiXs1bqwCC61c8guUl1x+U8+hpyBTWbtN7KCcNE0n
+         fqThQxmxrXWYEzpr1uqkxV1rW95+OOkg7ASkazcelswYk1zCuq9vrcYJ7hL6oxR6yNgX
+         zuUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=J1ldDW2V7oPKtznNt7RCOwJyIeTQj2tkcROExEUA6RE=;
-        b=aMS3cVsM4mOJyhosm/P10ZvH89WsFFVR5dm01foNhwh8qJjZ9blj6DXL+ndo1vBsyx
-         STG3XXBVxdLDETr9jnHKTQUWvad7JgicAlLtu1qtbM7Y5D+56MBD2ifG2Z3Y5vGHDCWR
-         GCqosIq4RCauA9whYJ5ZK3ZjboPgrhyH/yOMQIGmPyj+2ec6O2gat402HstWchbKOs3r
-         NLwuRX0YR8Zsw/gasusyAW0BiMaR8M+1AOunmzLReu5kceiIr+a072rl9yJA7jKanhyU
-         ILZs2tO2UKslkQtUkL1gICMKJf78dc2WYX/6elAuRBfB2pzTgESYe24CMXzTKXZ9Ziwv
-         8MvA==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=F9+8obof16kE0BbunblconFVZc1q92UvAJMFNMIKhlY=;
+        b=pOJyjEa0G5y50c9xvZfdOsmFbp2pOcHbWnjA0y5mrXvwRuQa/XhR0JYEhOvr8nWKoS
+         ajD7z1BI0pttjX+TQxYbOe123nutYy0IFGNNl1FYZUsbrNpI36G+Hq/svOFM+mAr0y/z
+         frjNOQek73+e2rXcF/aY8aQB390eccIQhQjFmEtobznD0zB0jffE1vdDbB8UQzedMNuD
+         XD5xmiK3WOImavhEGuYAsa2y/uc6WiETpVxq9soJ08apZlF3TPVCZFII/A1asIxtVzUi
+         x4K3oeESzGyEq9JPkObtMWFMp4Avrkae+GyziaD3+33A4ZbWp0BjNDaSGpLxDxWMykQ0
+         HQMA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=N1ubDMQe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k14si3063450ybf.745.2018.01.09.06.04.37
+        by mx.google.com with ESMTPS id z14si2987866ybm.825.2018.01.09.06.21.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 Jan 2018 06:04:37 -0800 (PST)
+        Tue, 09 Jan 2018 06:21:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=N1ubDMQe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54432 helo=lists.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55173 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eYuW5-0000Xu-0R
-	for alex.bennee@linaro.org; Tue, 09 Jan 2018 09:04:37 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34395)
+	id 1eYulx-0007MM-H2
+	for alex.bennee@linaro.org; Tue, 09 Jan 2018 09:21:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40964)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eYuTc-00075H-C4
-	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 09:02:10 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1eYuln-0007Jw-8Q
+	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 09:20:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eYuTW-000176-Oa
-	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 09:02:04 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:45806)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1eYuTW-00016a-HT; Tue, 09 Jan 2018 09:01:58 -0500
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1eYuTV-0003f0-C0; Tue, 09 Jan 2018 14:01:57 +0000
+	(envelope-from <peter.maydell@linaro.org>) id 1eYulm-00060U-67
+	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 09:20:51 -0500
+Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:47065)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1eYulm-00060A-1q
+	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 09:20:50 -0500
+Received: by mail-oi0-x243.google.com with SMTP id d124so6464746oib.13
+	for <qemu-arm@nongnu.org>; Tue, 09 Jan 2018 06:20:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=F9+8obof16kE0BbunblconFVZc1q92UvAJMFNMIKhlY=;
+	b=N1ubDMQep2UkI6Vjs+fh1bVuwQrs4dXWnwfsCQEUAEXLIHJB0KIJgfalu6cAoIVr76
+	7A8WSFNFfZRx8VzVCKcQPZJLHHj2MOuhfey4BYKPmQkgu6c/zOb9jcBN0iRZ2vksvMUj
+	c/vXdlTKiKw583Gyw89rdlg1JicKEbtWR2zLk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=F9+8obof16kE0BbunblconFVZc1q92UvAJMFNMIKhlY=;
+	b=j3ozUnTgyd2jQn0zzqPxH62uwWUX61F1lMtYCUdarOtOV8aIjafkSWl6YKykqH/Csn
+	6IPS8/ypdWVluPpR+YEZ+a81uKdlWsAas+tn2uvVQT8DMkM/l2y9xCAkGfXX7iaLt8WI
+	jLKWChfqsb7ArJBDm32ZxrBx1S2V8Sn6MQC3Erzw+lIyrkKsl7rE03KlBkZQmEbbbu8N
+	ocA6ifuX8x6M12d5v61uGaRgRTCmvE6lXTJPffz+pCP38M/SHRl0WaGb3AZr62b1sFAK
+	AcOJkBM6/p8UeiFSJvM9LiwiwC5IkO8XKFG7FnJ8bWW58UxC4V7GFD8Qzxg9K2KluR2H
+	nefw==
+X-Gm-Message-State: AKwxyteWaha92ZGdtHBcpllVioO/V++TnP60Xh3sDA7f5f2B7Rzej9kp
+	xlDPfvT0PqvSQARYmn0ULLiXGZDRFNWHjVvZbEVUHA/T
+X-Received: by 10.202.173.84 with SMTP id w81mr908198oie.299.1515507648912;
+	Tue, 09 Jan 2018 06:20:48 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.157.15.71 with HTTP; Tue, 9 Jan 2018 06:20:28 -0800 (PST)
+In-Reply-To: <1512742372-31517-1-git-send-email-peter.maydell@linaro.org>
+References: <1512742372-31517-1-git-send-email-peter.maydell@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Tue,  9 Jan 2018 14:01:53 +0000
-Message-Id: <1515506513-31961-5-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1515506513-31961-1-git-send-email-peter.maydell@linaro.org>
-References: <1515506513-31961-1-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 9 Jan 2018 14:20:28 +0000
+Message-ID: <CAFEAcA9WWy06hAu6_SCQR5M3GJ-H5zBjgPBiposFeonCp6Ei0g@mail.gmail.com>
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 4/4] hw/sd/omap_mmc: Reset SD card on controller
- reset
+X-Received-From: 2607:f8b0:4003:c06::243
+Subject: Re: [Qemu-arm] [PATCH] hw/intc/armv7m: Support byte and halfword
+ accesses to CFSR
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,83 +103,98 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-stable@nongnu.org, patches@linaro.org
+Cc: Andy Gross <andy.gross@linaro.org>,
+	"patches@linaro.org" <patches@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: B18iXRGrYqVc
+X-TUID: JWL9ie+vfHVQ
 
-Since omap_mmc is still using the legacy SD card API, the SD
-card created by sd_init() is not plugged into any bus. This
-means that the controller has to reset it manually.
+Ping for code review?
 
-Failing to do this mostly didn't affect the guest since the
-guest typically does a programmed SD card reset as part of
-its SD controller driver initialization, but would mean that
-migration fails because it's only in sd_reset() that we
-set up the wpgrps_size field.
+thanks
+-- PMM
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-This one isn't cc-stable because the OMAP boards don't
-support migration at all anyway, being un-QOMified.
----
- hw/sd/omap_mmc.c | 14 ++++++++++----
- 1 file changed, 10 insertions(+), 4 deletions(-)
-
-diff --git a/hw/sd/omap_mmc.c b/hw/sd/omap_mmc.c
-index e934cd3..5b47cad 100644
---- a/hw/sd/omap_mmc.c
-+++ b/hw/sd/omap_mmc.c
-@@ -305,6 +305,12 @@ void omap_mmc_reset(struct omap_mmc_s *host)
-     host->cdet_enable = 0;
-     qemu_set_irq(host->coverswitch, host->cdet_state);
-     host->clkdiv = 0;
-+
-+    /* Since we're still using the legacy SD API the card is not plugged
-+     * into any bus, and we must reset it manually. When omap_mmc is
-+     * QOMified this must move into the QOM reset function.
-+     */
-+    device_reset(DEVICE(host->card));
- }
- 
- static uint64_t omap_mmc_read(void *opaque, hwaddr offset,
-@@ -587,8 +593,6 @@ struct omap_mmc_s *omap_mmc_init(hwaddr base,
-     s->lines = 1;	/* TODO: needs to be settable per-board */
-     s->rev = 1;
- 
--    omap_mmc_reset(s);
--
-     memory_region_init_io(&s->iomem, NULL, &omap_mmc_ops, s, "omap.mmc", 0x800);
-     memory_region_add_subregion(sysmem, base, &s->iomem);
- 
-@@ -598,6 +602,8 @@ struct omap_mmc_s *omap_mmc_init(hwaddr base,
-         exit(1);
-     }
- 
-+    omap_mmc_reset(s);
-+
-     return s;
- }
- 
-@@ -613,8 +619,6 @@ struct omap_mmc_s *omap2_mmc_init(struct omap_target_agent_s *ta,
-     s->lines = 4;
-     s->rev = 2;
- 
--    omap_mmc_reset(s);
--
-     memory_region_init_io(&s->iomem, NULL, &omap_mmc_ops, s, "omap.mmc",
-                           omap_l4_region_size(ta, 0));
-     omap_l4_attach(ta, 0, &s->iomem);
-@@ -628,6 +632,8 @@ struct omap_mmc_s *omap2_mmc_init(struct omap_target_agent_s *ta,
-     s->cdet = qemu_allocate_irq(omap_mmc_cover_cb, s, 0);
-     sd_set_cb(s->card, NULL, s->cdet);
- 
-+    omap_mmc_reset(s);
-+
-     return s;
- }
- 
--- 
-2.7.4
-
+On 8 December 2017 at 14:12, Peter Maydell <peter.maydell@linaro.org> wrote:
+> The Configurable Fault Status Register for ARMv7M and v8M is
+> supposed to be byte and halfword accessible, but we were only
+> implementing word accesses. Add support for the other access
+> sizes, which are used by the Zephyr RTOS.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Reported-by: Andy Gross <andy.gross@linaro.org>
+> ---
+>  hw/intc/armv7m_nvic.c | 38 ++++++++++++++++++++++----------------
+>  1 file changed, 22 insertions(+), 16 deletions(-)
+>
+> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+> index 5d9c883..dc8e2f1 100644
+> --- a/hw/intc/armv7m_nvic.c
+> +++ b/hw/intc/armv7m_nvic.c
+> @@ -896,13 +896,6 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
+>              val |= (1 << 8);
+>          }
+>          return val;
+> -    case 0xd28: /* Configurable Fault Status.  */
+> -        /* The BFSR bits [15:8] are shared between security states
+> -         * and we store them in the NS copy
+> -         */
+> -        val = cpu->env.v7m.cfsr[attrs.secure];
+> -        val |= cpu->env.v7m.cfsr[M_REG_NS] & R_V7M_CFSR_BFSR_MASK;
+> -        return val;
+>      case 0xd2c: /* Hard Fault Status.  */
+>          return cpu->env.v7m.hfsr;
+>      case 0xd30: /* Debug Fault Status.  */
+> @@ -1280,15 +1273,6 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
+>          s->vectors[ARMV7M_EXCP_DEBUG].active = (value & (1 << 8)) != 0;
+>          nvic_irq_update(s);
+>          break;
+> -    case 0xd28: /* Configurable Fault Status.  */
+> -        cpu->env.v7m.cfsr[attrs.secure] &= ~value; /* W1C */
+> -        if (attrs.secure) {
+> -            /* The BFSR bits [15:8] are shared between security states
+> -             * and we store them in the NS copy.
+> -             */
+> -            cpu->env.v7m.cfsr[M_REG_NS] &= ~(value & R_V7M_CFSR_BFSR_MASK);
+> -        }
+> -        break;
+>      case 0xd2c: /* Hard Fault Status.  */
+>          cpu->env.v7m.hfsr &= ~value; /* W1C */
+>          break;
+> @@ -1667,6 +1651,14 @@ static MemTxResult nvic_sysreg_read(void *opaque, hwaddr addr,
+>              val = deposit32(val, i * 8, 8, get_prio(s, hdlidx, sbank));
+>          }
+>          break;
+> +    case 0xd28 ... 0xd2b: /* Configurable Fault Status (CFSR) */
+> +        /* The BFSR bits [15:8] are shared between security states
+> +         * and we store them in the NS copy
+> +         */
+> +        val = s->cpu->env.v7m.cfsr[attrs.secure];
+> +        val |= s->cpu->env.v7m.cfsr[M_REG_NS] & R_V7M_CFSR_BFSR_MASK;
+> +        val = extract32(val, (offset - 0xd28) * 8, size * 8);
+> +        break;
+>      case 0xfe0 ... 0xfff: /* ID.  */
+>          if (offset & 3) {
+>              val = 0;
+> @@ -1765,6 +1757,20 @@ static MemTxResult nvic_sysreg_write(void *opaque, hwaddr addr,
+>          }
+>          nvic_irq_update(s);
+>          return MEMTX_OK;
+> +    case 0xd28 ... 0xd2b: /* Configurable Fault Status (CFSR) */
+> +        /* All bits are W1C, so construct 32 bit value with 0s in
+> +         * the parts not written by the access size
+> +         */
+> +        value <<= ((offset - 0xd28) * 8);
+> +
+> +        s->cpu->env.v7m.cfsr[attrs.secure] &= ~value;
+> +        if (attrs.secure) {
+> +            /* The BFSR bits [15:8] are shared between security states
+> +             * and we store them in the NS copy.
+> +             */
+> +            s->cpu->env.v7m.cfsr[M_REG_NS] &= ~(value & R_V7M_CFSR_BFSR_MASK);
+> +        }
+> +        return MEMTX_OK;
+>      }
+>      if (size == 4) {
+>          nvic_writel(s, offset, value, attrs);
+> --
+> 2.7.4

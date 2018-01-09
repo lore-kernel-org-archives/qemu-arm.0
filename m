@@ -1,238 +1,155 @@
-Received: by 10.28.173.206 with SMTP id w197csp3823808wme;
-        Tue, 9 Jan 2018 07:31:47 -0800 (PST)
-X-Google-Smtp-Source: ACJfBovBVLf0XAxTQ9549qbi+tSKBy2weSU5neHxu2Z7St7BbQLY+H8FC21xiKuYaya1q6v//sdv
-X-Received: by 10.13.252.65 with SMTP id m62mr13722696ywf.283.1515511907803;
-        Tue, 09 Jan 2018 07:31:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515511907; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp3834210wme;
+        Tue, 9 Jan 2018 07:42:26 -0800 (PST)
+X-Google-Smtp-Source: ACJfBotpL+MPHRPM8c1a2MOhwhAJzCDjGoAkrTILSMISvpXezTBgnQ26ofbA9vT8z0R614ERq4We
+X-Received: by 10.98.153.210 with SMTP id t79mr13988228pfk.43.1515512546545;
+        Tue, 09 Jan 2018 07:42:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515512546; cv=none;
         d=google.com; s=arc-20160816;
-        b=QL+nwxxcvTr+5JEG+6dRlEekMjrbMY2u+BmxgcaT2zbisQOKPPkQxgsCTsr8JCgOVY
-         70lM3tvcRvmBB3WCbUa1oiFBe5lR1wVLr2Zp4s2SEKLG+GbG3rszyhu500JtJVO5mOhu
-         4zppGAd1yf64/zK+tQT97l4zGW7em5BouZc1Cvsz9tCy9CUnxrQkL1Mep0CPJ8qZR4VO
-         q4uzPAtnUxoPWQwdL+5uGtnM3JWD2EjdTdvp5hMJKumdOuddUkH5VhMK51J+4q1ih4Vp
-         23uf3qwzPGL2kiHnKiFi4toes/NpYAV8BnCLL76KdKYDFJW2zlibtd4uvDXeeVJE3/Mh
-         ShmQ==
+        b=i2R85ZRRxr5QMFTbU8vw/s8yiPnYqYdZGJDogXLSTzYd0Hhh154LUKZWyS0WR9F6wR
+         95Kq+lpVAiWmJlqmswOSX9XbwrXuqLR7UVgGu7wVJvp9BXmV4jyMxpSs+MSSFygwGX7E
+         gVIqvP4v4svBsqh58VcjhTdBmDfFxsaExKWGpeEgDLIosYz0gGjjuQGv5TiuopxdgxWW
+         NJmHhDGt8fpg5++izDnJlxg21qm75FIjzIJUxvNtHMV/hYVSMTMnvYWonrCc53w8nWvh
+         p06MiEsumKT7ou77+IhenPua7gHTj+yI3njGg9GjW+sOm8jxqv5N5elIjU28E247ZO+M
+         9zhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
+        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=0rg3cFk3guU234rewURkWU/sa4kdjT5G9oy5Ib8VyHQ=;
-        b=R421TXsBTTjd2DqB5xbTZKXoAhoXHUkj4VvsQhdoso1h/ebp/PyNvTFNePgBKWJ7c0
-         rh7tgNvpQtAW6na+GkWF05WKHoM5yLhBRk7MmFPZfYSQhaMFI5KAHFczAJ+wq80oVH8I
-         BRv/zc2U8PHYGrtCEyNtKcQUW2IrcIHjusWTEF+Uzd2hrZVv+dY8t23l75BA4cAwlc3q
-         01bkFUIvEkvg23LT6beIOXyqGVRi923h/WffhGJybPpxCy+ATvZPvl1D9dqlAVhx60lq
-         k8LBRxcqP8UnK/QfcRLeBcPVVhGFwRdMTiUDh3WP7aZ0X+mq5acizzc4Cnv+F9lu9/pU
-         87xQ==
+        bh=375qLqCI5/fiE7VjE505TBS4GNeAwGZ68RWCnqin5ak=;
+        b=eDqkGz5fBs8/4sluHUoBWTxQJ3gfWi44Cst8sNCpd++mrxKkGHFQCcMRRuc3YogmPC
+         EEcnGJm8YQsBDXEdYgCQ3Mr1wI1AduBBa8bGsUx8wfycKtDlkPPOmnut9pIwL7YeGGUd
+         5ZPEnrRDfWG+8ZEnbE+lBz8C/iPVg4uyDRmR8y/6wm6vJHpZlW4tYrasOuJGGKDFH7Qf
+         /Rct/nxfFGdA9Z1lWIGqwBDL9ffgNSJAeE441Ni+QYiEDxXO0JUKdV843Cyob+c8oE28
+         sQ21rWBchshI+crdEs7AAr09XZaMMoUcQmra3Sb2XPqGmUXgsw9DTiErAyGu4CZbkchf
+         iZzg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k30si411675ywh.539.2018.01.09.07.31.47
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 Jan 2018 07:31:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jSGaXHAl;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id p3si10199477pfg.369.2018.01.09.07.42.26;
+        Tue, 09 Jan 2018 07:42:26 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58325 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eYvsR-0005eQ-9a
-	for alex.bennee@linaro.org; Tue, 09 Jan 2018 10:31:47 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38091)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1eYvsG-0005da-MH
-	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 10:31:39 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1eYvsD-0007oF-IP
-	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 10:31:36 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:46690)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1eYvsD-0007nR-92; Tue, 09 Jan 2018 10:31:33 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 29F64C047B98;
-	Tue,  9 Jan 2018 15:31:32 +0000 (UTC)
-Received: from [10.36.116.118] (ovpn-116-118.ams2.redhat.com [10.36.116.118])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 59D957FB7C;
-	Tue,  9 Jan 2018 15:31:30 +0000 (UTC)
-To: Alistair Francis <alistair.francis@xilinx.com>,
-	Markus Armbruster <armbru@redhat.com>
-References: <cover.1513790494.git.alistair.francis@xilinx.com>
-	<6bad4084f4cbc290e2e9f1a72fcfcda7223383ec.1513790495.git.alistair.francis@xilinx.com>
-	<87lghulqno.fsf@dusky.pond.sub.org>
-	<1cfb1217-e32d-8e91-da46-07f1c72be77f@redhat.com>
-	<CAKmqyKPyL8B5ZjEUePkqVbzP8kVmM48vWML41PRXVVO7LVmMpg@mail.gmail.com>
-	<87a7yah5ea.fsf@dusky.pond.sub.org>
-	<CAKmqyKO5sKdiZJ65teDxa16PCE71WCLay7cOAQJQdyS-EVNOJg@mail.gmail.com>
-	<87608k4dsh.fsf@dusky.pond.sub.org>
-	<CAKmqyKMz2tfJwu0Q5joHm99QLbJ-psU=sSgDQtLuFKjyKRmO-A@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <5b3489d6-de5e-27ff-8981-a3dc50794696@redhat.com>
-Date: Tue, 9 Jan 2018 16:31:28 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.2
+       dkim=pass header.i=@linaro.org header.s=google header.b=jSGaXHAl;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S933227AbeAIPmY (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 5 others); Tue, 9 Jan 2018 10:42:24 -0500
+Received: from mail-oi0-f66.google.com ([209.85.218.66]:39684 "EHLO
+        mail-oi0-f66.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S933114AbeAIPmW (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 9 Jan 2018 10:42:22 -0500
+Received: by mail-oi0-f66.google.com with SMTP id r63so10787144oia.6
+        for <kvm@vger.kernel.org>; Tue, 09 Jan 2018 07:42:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=375qLqCI5/fiE7VjE505TBS4GNeAwGZ68RWCnqin5ak=;
+        b=jSGaXHAlLV+ppkZAaKyYEbpQdzbmj1YXaXj+Hp1k+qlYe7d+2IKiHQCPRgXqmKWeaH
+         D8pyKk1d60At6KAppBfejgN8M3SKNX/wzKiRHHheuAjdRSi2M+MWkIsg6tEQg7piX2RQ
+         fWPxvPyh0jEmlcFE2VTlH4HpH2A5URvd3E+HU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=375qLqCI5/fiE7VjE505TBS4GNeAwGZ68RWCnqin5ak=;
+        b=fo2eYXL+0OpYjiBp4GAvnE7hcmlppLvs9fSOLRozUjhuIrTJEjWXqZz/ZDd7/gIpW9
+         f3A8De3nNFGWfkrsBddEi9qBis4tsqVLUaMMm5+fGdnEYMFMlwLTHCF5d2lhenyQMonC
+         oWQh6JYFVQwIjqw1YqQHHPtbmEiIon6/V3YenXtmyO8S7hsntTN3/ouIksEKasE0eJmI
+         z4dkKoy0m3x4pRX/Gxkj9lc7v4+q6cL+x3WVryqQ5wPJLDPErAiTCcKdl9y5hBjc59Hn
+         C2hwN1ALSSo+K2MdbRphB0T0BaxY/4TIQEbDkJzwP1ygCY1MayFD8aX9wVKUmMYVvDMg
+         bbCA==
+X-Gm-Message-State: AKwxytdUQpAKRYQyOVEPgqIHBosmVEdSUlKlHL49Q9in8Oh5qLXFoA/5
+        0vVFvBEXnkHSl8cSNqemGgh8gG4L/0h9ajB7qZju1A==
+X-Received: by 10.202.173.84 with SMTP id w81mr1033274oie.299.1515512541497;
+ Tue, 09 Jan 2018 07:42:21 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <CAKmqyKMz2tfJwu0Q5joHm99QLbJ-psU=sSgDQtLuFKjyKRmO-A@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Tue, 09 Jan 2018 15:31:32 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v6 04/29] hw/arm: Replace
- fprintf(stderr, "*\n" with error_report()
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OdALdB04xDZr
+Received: by 10.157.15.71 with HTTP; Tue, 9 Jan 2018 07:42:00 -0800 (PST)
+In-Reply-To: <20171228155832.05a9966b@igors-macbook-pro.local>
+References: <1514440458-10515-1-git-send-email-gengdongjiu@huawei.com>
+ <1514440458-10515-9-git-send-email-gengdongjiu@huawei.com> <20171228155832.05a9966b@igors-macbook-pro.local>
+From:   Peter Maydell <peter.maydell@linaro.org>
+Date:   Tue, 9 Jan 2018 15:42:00 +0000
+Message-ID: <CAFEAcA8Zg6wikw+td9vkGG7S4YGJMr-2O7rkCx3Wp0RrSn2PdA@mail.gmail.com>
+Subject: Re: [PATCH v14 8/9] hw/arm/virt: Add RAS platform version for migration
+To:     Igor Mammedov <imammedo@redhat.com>
+Cc:     Dongjiu Geng <gengdongjiu@huawei.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Shannon Zhao <zhaoshenglong@huawei.com>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Richard Henderson <rth@twiddle.net>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        James Morse <james.morse@arm.com>,
+        Christoffer Dall <christoffer.dall@linaro.org>,
+        Marc Zyngier <marc.zyngier@arm.com>,
+        kvm-devel <kvm@vger.kernel.org>,
+        QEMU Developers <qemu-devel@nongnu.org>,
+        qemu-arm <qemu-arm@nongnu.org>,
+        Huangshaoyu <huangshaoyu@huawei.com>,
+        "Zhengqiang (turing)" <zhengqiang10@huawei.com>,
+        Xu Wei <xuwei5@hisilicon.com>
+Content-Type: text/plain; charset="UTF-8"
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: YZGvJhaFZuxX
 
-On 09.01.2018 01:32, Alistair Francis wrote:
-> On Tue, Jan 2, 2018 at 4:59 AM, Markus Armbruster <armbru@redhat.com> w=
-rote:
->> Alistair Francis <alistair.francis@xilinx.com> writes:
+On 28 December 2017 at 14:58, Igor Mammedov <imammedo@redhat.com> wrote:
+> On Thu, 28 Dec 2017 13:54:17 +0800
+> Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+>
+>> Support this feature since version 2.10, disable it by
+>> default in the old version.
+> patch should go before acpi tables are actually added,
+> otherwise it might break bisectability.
+>
 >>
->>> On Fri, Dec 22, 2017 at 12:30 PM, Markus Armbruster <armbru@redhat.co=
-m> wrote:
->>>> Alistair Francis <alistair.francis@xilinx.com> writes:
->>>>
->>>>> On Fri, Dec 22, 2017 at 9:17 AM, Thomas Huth <thuth@redhat.com> wro=
-te:
->>>>>> On 22.12.2017 16:37, Markus Armbruster wrote:
->>>>>>> Second thoughts...
->>>>>>>
->>>>>>> Alistair Francis <alistair.francis@xilinx.com> writes:
->>>>>> [...]
->>>>>>>>  #include "qemu/osdep.h"
->>>>>>>> +#include "qemu/error-report.h"
->>>>>>>>  #include "qapi/error.h"
->>>>>>>>  #include "qemu-common.h"
->>>>>>>>  #include "cpu.h"
->>>>>>>> @@ -1311,8 +1312,8 @@ static void omap_prcm_apll_update(struct o=
-map_prcm_s *s)
->>>>>>>>      /* TODO: update clocks */
->>>>>>>>
->>>>>>>>      if (mode[0] =3D=3D 1 || mode[0] =3D=3D 2 || mode[1] =3D=3D =
-1 || mode[1] =3D=3D 2)
->>>>>>>> -        fprintf(stderr, "%s: bad EN_54M_PLL or bad EN_96M_PLL\n=
-",
->>>>>>>> -                        __func__);
->>>>>>>> +        error_report("%s: bad EN_54M_PLL or bad EN_96M_PLL",
->>>>>>>> +                     __func__);
->>>>>>>>  }
->>>>>>>
->>>>>>> This one's different: we neither exit() nor return a "failed" sta=
-tus to
->>>>>>> the caller.
->>>>>>>
->>>>>>> We get here when the guest writes something funny to a certain
->>>>>>> memory-mapped I/O register.  In other words, it's guest misbehavi=
-or, not
->>>>>>> a user error.  I doubt it should be reported with error_report().
->>>>>>> Peter, do we have a canonical way to report or log  guest misbeha=
-vior?
->>>>>>
->>>>>> qemu_log_mask(LOG_GUEST_ERROR, ...) ?
->>>>>
->>>>> That seems like the best option to me.
->>>>
->>>> Suggest:
->>>>
->>>> 1. Keep converting fatal errors (the ones that exit())
->>>>
->>>> 2. Keep converting recoverable errors (the ones that return failure)
->>>>
->>>> 3. You can leave the prints that are neither alone.  You can also
->>>>    convert to logging or tracing, as appropriate, but that requires
->>>>    understanding the code.
->>>>
->>>> Makes sense?
->>>
->>> Does this apply to new patches after this series or to this series as
->>> well? The series is mostly just mechanical find/replace. I really
->>> don't want to have to dig through every patch to figure out what to
->>> change/not change.
+>> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+>> ---
+>> Address Shannon's comments to add platform version in [1].
 >>
->> I understand your reluctance to sort patch hunks into buckets 1., 2. a=
-nd
->> 3. manually: there's an awful lot of hunks to sort.
+>> [1]: https://lkml.org/lkml/2017/8/25/821
 >>
->> We know we have many fprintf() that should be error_report(),
->> error_setg(), logging or tracing.
+>> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+>> ---
+>>  hw/arm/virt-acpi-build.c | 14 +++++++++-----
+>>  hw/arm/virt.c            |  4 ++++
+>>  include/hw/arm/virt.h    |  1 +
+>>  3 files changed, 14 insertions(+), 5 deletions(-)
 >>
->> We know we have error_report() that should be error_setg().
+>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+>> index 06c14b3..b6974ef 100644
+>> --- a/hw/arm/virt-acpi-build.c
+>> +++ b/hw/arm/virt-acpi-build.c
+>> @@ -801,10 +801,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>>      acpi_add_table(table_offsets, tables_blob);
+>>      build_spcr(tables_blob, tables->linker, vms);
 >>
->> Converting fprintf() to error_report() where we should really use
->> something else makes the situation worse, I'm afraid.
->>
->> Since we need to sort, and sorting manually isn't practical, we need t=
-o
->> automate.
->>
->> The patterns to recognize are 1. fprintf() followed by exit() and
->> 2. fprintf() followed by return failure.
->>
->> Recognizing the patterns when there's stuff between fprintf() and exit=
-()
->> / return may exceed sed's power.  Feels like a Coccinelle job to me.
->> Let's focus on the common case where exit() / return follows fprintf()
->> immediately.
->>
->> Let's start with the easiest case: exit().  I figure that's still in
->> reach of your find + sed tooling.
->>
->> Recognizing "return failure" is slightly harder, because error values
->> aren't always obvious.  Common ones are return NULL, return -1, return
->> -EFOO.
->>
->> I hope that peeling off truly simple cases like this will reduce the
->> remaining hunks sufficiently to permit manual review.  If it doesn't, =
-we
->> should still get a major part of your work without making the situatio=
-n
->> worse.
->=20
-> Ok. So it is becoming apparent that this series is not going to be
-> accepted. I might just drop it and try and re-group with Coccinelle at
-> some point in the future.
->=20
-> If there is a subset of this series that is fine to go in I'm happy to
-> rebase and keep going, but at the moment it looks like starting again
-> is gong to be the least painful effort.
+>> -    acpi_add_table(table_offsets, tables_blob);
+>> -    build_hardware_error_table(tables->hardware_errors, tables->linker);
+>> -    build_apei_ghes(tables_blob, tables->hardware_errors, tables->linker);
+>> -
+>> +    if (!vmc->no_ras) {
+>
+> it's better to avoid no_foo, use something like
+>
+> vmc->has_ras
 
-Sorry to hear that. But I somewhat agree with Markus - lots of the
-patches were not trivial and need close review to see whether the
-fprintf should be replaced with error_report, warn_report, qemu_log_mask
-or a tracepoint, so primary blindly converting everything to
-error_report is really just the wrong way.
+Fields in VirtMachineClass for this kind of thing tend to
+end up having to be no_foo, because the default (false) must
+be the setting for the most up to date version of the
+virt board, because of the way the virt_machine_X_XX_options()
+functions chain together. So no_ras matches the sense used
+for all the existing bools in VirtMachineClass.
 
-If I may suggest something: Don't send the patches as a huge series, but
-send single patches (that you've reviewed on your own first), with the
-individual subsystem maintainers in CC. That should help to get better
-review, and the single patches then have a higher chance to get picked
-up through the maintainers' trees.
+(In contrast, bools in the VirtMachineState struct are the
+conventional sense, so there we have highmem/its/virt/etc.)
 
- Thomas
+thanks
+-- PMM

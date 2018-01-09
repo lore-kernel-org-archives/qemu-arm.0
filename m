@@ -1,155 +1,158 @@
-Received: by 10.28.173.206 with SMTP id w197csp3834210wme;
-        Tue, 9 Jan 2018 07:42:26 -0800 (PST)
-X-Google-Smtp-Source: ACJfBotpL+MPHRPM8c1a2MOhwhAJzCDjGoAkrTILSMISvpXezTBgnQ26ofbA9vT8z0R614ERq4We
-X-Received: by 10.98.153.210 with SMTP id t79mr13988228pfk.43.1515512546545;
-        Tue, 09 Jan 2018 07:42:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515512546; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp3849852wme;
+        Tue, 9 Jan 2018 07:59:29 -0800 (PST)
+X-Google-Smtp-Source: ACJfBovxKc8p9XiLyjcwgTBmL84kT02K2YP73gSPd/mJqa7kPuFQaZsWKMr4z/GUr+7N2Gpme005
+X-Received: by 10.129.199.68 with SMTP id i4mr14134226ywl.102.1515513569260;
+        Tue, 09 Jan 2018 07:59:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515513569; cv=none;
         d=google.com; s=arc-20160816;
-        b=i2R85ZRRxr5QMFTbU8vw/s8yiPnYqYdZGJDogXLSTzYd0Hhh154LUKZWyS0WR9F6wR
-         95Kq+lpVAiWmJlqmswOSX9XbwrXuqLR7UVgGu7wVJvp9BXmV4jyMxpSs+MSSFygwGX7E
-         gVIqvP4v4svBsqh58VcjhTdBmDfFxsaExKWGpeEgDLIosYz0gGjjuQGv5TiuopxdgxWW
-         NJmHhDGt8fpg5++izDnJlxg21qm75FIjzIJUxvNtHMV/hYVSMTMnvYWonrCc53w8nWvh
-         p06MiEsumKT7ou77+IhenPua7gHTj+yI3njGg9GjW+sOm8jxqv5N5elIjU28E247ZO+M
-         9zhQ==
+        b=MCDAPdUs2vKD25ACPEd1gDNpJIiCBG+PlRe2U8TqWEBeRpYfEfcmCc1DP+pYH31p7G
+         QqjW4k0Jw5HBUUjpEZLk1qcLV8kbPgaeAMbld1NG1k35D88KZFyJ6A0evk5e2of1r+ds
+         /pLMumBzEDceavovWsnkm48KYbd3YI21rD7XEO6wmaf+ZBqwusWMOO5+sw25rrNuSLLb
+         uzeSMtN8eq7UoKBQmlS8Y1aPTz0jGHGvzosLrOwIIUr+KL+Tns+6gIhJIaAmpSoHOyzr
+         RLdHLjKkCJNrRb//gbTJLrrqFxiXtv+uvrFqYbvc2lj4Y09CZIxU061ieEqOU+KN5TKP
+         swvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
          :arc-authentication-results;
-        bh=375qLqCI5/fiE7VjE505TBS4GNeAwGZ68RWCnqin5ak=;
-        b=eDqkGz5fBs8/4sluHUoBWTxQJ3gfWi44Cst8sNCpd++mrxKkGHFQCcMRRuc3YogmPC
-         EEcnGJm8YQsBDXEdYgCQ3Mr1wI1AduBBa8bGsUx8wfycKtDlkPPOmnut9pIwL7YeGGUd
-         5ZPEnrRDfWG+8ZEnbE+lBz8C/iPVg4uyDRmR8y/6wm6vJHpZlW4tYrasOuJGGKDFH7Qf
-         /Rct/nxfFGdA9Z1lWIGqwBDL9ffgNSJAeE441Ni+QYiEDxXO0JUKdV843Cyob+c8oE28
-         sQ21rWBchshI+crdEs7AAr09XZaMMoUcQmra3Sb2XPqGmUXgsw9DTiErAyGu4CZbkchf
-         iZzg==
+        bh=JjBg9EMHJsCYsdRucLdKH2nNP4KLDOlf1QO91oCRzYo=;
+        b=x2ZoW3dpIedcghf0scdzclt5kIPZqdzVQ8aIuNGlHr/frZY5MNpGQUxvMM2Sg0eVIH
+         jmrblC/lPauuxrIh/zg1lze6qN1ErSKy84B7+q1aemCZfcaQmKcI1o6X05FWV5DLDQud
+         MN+WKC2k48uUyGz10kVAnrbBRUiAvv5RavfMRTx7TFWqBpumMESvmtTGuXbcX6aYSrQv
+         bmdDuTioD6ea4qPj0xtTHkBCfIu2p3Ys6z0FHY6ElSNLCbGUVqX9UFJH7PpXj4nzP97u
+         Hck2mJjesXtojY5CziRxgc86yqBbw460gQE+WQ5IVd8GMi8miP3uyBSyDP3DHhaWb7Ee
+         B9Vw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jSGaXHAl;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id p3si10199477pfg.369.2018.01.09.07.42.26;
-        Tue, 09 Jan 2018 07:42:26 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id t71si3023912ywg.773.2018.01.09.07.59.29
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 09 Jan 2018 07:59:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jSGaXHAl;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S933227AbeAIPmY (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 5 others); Tue, 9 Jan 2018 10:42:24 -0500
-Received: from mail-oi0-f66.google.com ([209.85.218.66]:39684 "EHLO
-        mail-oi0-f66.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S933114AbeAIPmW (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 9 Jan 2018 10:42:22 -0500
-Received: by mail-oi0-f66.google.com with SMTP id r63so10787144oia.6
-        for <kvm@vger.kernel.org>; Tue, 09 Jan 2018 07:42:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=375qLqCI5/fiE7VjE505TBS4GNeAwGZ68RWCnqin5ak=;
-        b=jSGaXHAlLV+ppkZAaKyYEbpQdzbmj1YXaXj+Hp1k+qlYe7d+2IKiHQCPRgXqmKWeaH
-         D8pyKk1d60At6KAppBfejgN8M3SKNX/wzKiRHHheuAjdRSi2M+MWkIsg6tEQg7piX2RQ
-         fWPxvPyh0jEmlcFE2VTlH4HpH2A5URvd3E+HU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=375qLqCI5/fiE7VjE505TBS4GNeAwGZ68RWCnqin5ak=;
-        b=fo2eYXL+0OpYjiBp4GAvnE7hcmlppLvs9fSOLRozUjhuIrTJEjWXqZz/ZDd7/gIpW9
-         f3A8De3nNFGWfkrsBddEi9qBis4tsqVLUaMMm5+fGdnEYMFMlwLTHCF5d2lhenyQMonC
-         oWQh6JYFVQwIjqw1YqQHHPtbmEiIon6/V3YenXtmyO8S7hsntTN3/ouIksEKasE0eJmI
-         z4dkKoy0m3x4pRX/Gxkj9lc7v4+q6cL+x3WVryqQ5wPJLDPErAiTCcKdl9y5hBjc59Hn
-         C2hwN1ALSSo+K2MdbRphB0T0BaxY/4TIQEbDkJzwP1ygCY1MayFD8aX9wVKUmMYVvDMg
-         bbCA==
-X-Gm-Message-State: AKwxytdUQpAKRYQyOVEPgqIHBosmVEdSUlKlHL49Q9in8Oh5qLXFoA/5
-        0vVFvBEXnkHSl8cSNqemGgh8gG4L/0h9ajB7qZju1A==
-X-Received: by 10.202.173.84 with SMTP id w81mr1033274oie.299.1515512541497;
- Tue, 09 Jan 2018 07:42:21 -0800 (PST)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59589 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eYwJE-00021N-Lh
+	for alex.bennee@linaro.org; Tue, 09 Jan 2018 10:59:28 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47950)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <lersek@redhat.com>) id 1eYwIx-0001ws-B7
+	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 10:59:15 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <lersek@redhat.com>) id 1eYwIt-000445-7B
+	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 10:59:11 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:14386)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <lersek@redhat.com>)
+	id 1eYwIt-00043m-0a; Tue, 09 Jan 2018 10:59:07 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id BEBF1C262B;
+	Tue,  9 Jan 2018 15:59:05 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-120-223.rdu2.redhat.com
+	[10.10.120.223])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8F99280608;
+	Tue,  9 Jan 2018 15:58:57 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1513183941-24300-1-git-send-email-peter.maydell@linaro.org>
+	<CAFEAcA8NbL7ROZs99hWhpAF2Rdi2qEiWLNo3hr_9W7gmgXyw4A@mail.gmail.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <6d20557d-5722-706f-ca4f-489ab85358c0@redhat.com>
+Date: Tue, 9 Jan 2018 16:58:56 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.2
 MIME-Version: 1.0
-Received: by 10.157.15.71 with HTTP; Tue, 9 Jan 2018 07:42:00 -0800 (PST)
-In-Reply-To: <20171228155832.05a9966b@igors-macbook-pro.local>
-References: <1514440458-10515-1-git-send-email-gengdongjiu@huawei.com>
- <1514440458-10515-9-git-send-email-gengdongjiu@huawei.com> <20171228155832.05a9966b@igors-macbook-pro.local>
-From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Tue, 9 Jan 2018 15:42:00 +0000
-Message-ID: <CAFEAcA8Zg6wikw+td9vkGG7S4YGJMr-2O7rkCx3Wp0RrSn2PdA@mail.gmail.com>
-Subject: Re: [PATCH v14 8/9] hw/arm/virt: Add RAS platform version for migration
-To:     Igor Mammedov <imammedo@redhat.com>
-Cc:     Dongjiu Geng <gengdongjiu@huawei.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Shannon Zhao <zhaoshenglong@huawei.com>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        Richard Henderson <rth@twiddle.net>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        James Morse <james.morse@arm.com>,
-        Christoffer Dall <christoffer.dall@linaro.org>,
-        Marc Zyngier <marc.zyngier@arm.com>,
-        kvm-devel <kvm@vger.kernel.org>,
-        QEMU Developers <qemu-devel@nongnu.org>,
-        qemu-arm <qemu-arm@nongnu.org>,
-        Huangshaoyu <huangshaoyu@huawei.com>,
-        "Zhengqiang (turing)" <zhengqiang10@huawei.com>,
-        Xu Wei <xuwei5@hisilicon.com>
-Content-Type: text/plain; charset="UTF-8"
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: YZGvJhaFZuxX
+In-Reply-To: <CAFEAcA8NbL7ROZs99hWhpAF2Rdi2qEiWLNo3hr_9W7gmgXyw4A@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Tue, 09 Jan 2018 15:59:05 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH 0/2] GICv2 & GICv3: RAZ/WI reserved addresses
+ rather than aborting
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Drew Jones <drjones@redhat.com>, "patches@linaro.org" <patches@linaro.org>,
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Auger Eric <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7bdBbEntQ4b/
 
-On 28 December 2017 at 14:58, Igor Mammedov <imammedo@redhat.com> wrote:
-> On Thu, 28 Dec 2017 13:54:17 +0800
-> Dongjiu Geng <gengdongjiu@huawei.com> wrote:
->
->> Support this feature since version 2.10, disable it by
->> default in the old version.
-> patch should go before acpi tables are actually added,
-> otherwise it might break bisectability.
->
->>
->> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
->> ---
->> Address Shannon's comments to add platform version in [1].
->>
->> [1]: https://lkml.org/lkml/2017/8/25/821
->>
->> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
->> ---
->>  hw/arm/virt-acpi-build.c | 14 +++++++++-----
->>  hw/arm/virt.c            |  4 ++++
->>  include/hw/arm/virt.h    |  1 +
->>  3 files changed, 14 insertions(+), 5 deletions(-)
->>
->> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->> index 06c14b3..b6974ef 100644
->> --- a/hw/arm/virt-acpi-build.c
->> +++ b/hw/arm/virt-acpi-build.c
->> @@ -801,10 +801,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->>      acpi_add_table(table_offsets, tables_blob);
->>      build_spcr(tables_blob, tables->linker, vms);
->>
->> -    acpi_add_table(table_offsets, tables_blob);
->> -    build_hardware_error_table(tables->hardware_errors, tables->linker);
->> -    build_apei_ghes(tables_blob, tables->hardware_errors, tables->linker);
->> -
->> +    if (!vmc->no_ras) {
->
-> it's better to avoid no_foo, use something like
->
-> vmc->has_ras
+On 01/09/18 15:24, Peter Maydell wrote:
+> Ping for code review?
+> 
+> thanks
+> -- PMM
+> 
+> On 13 December 2017 at 16:52, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> The GICv2 and GICv3 specifications
 
-Fields in VirtMachineClass for this kind of thing tend to
-end up having to be no_foo, because the default (false) must
-be the setting for the most up to date version of the
-virt board, because of the way the virt_machine_X_XX_options()
-functions chain together. So no_ras matches the sense used
-for all the existing bools in VirtMachineClass.
+here's where I had started running from your patch...
 
-(In contrast, bools in the VirtMachineState struct are the
-conventional sense, so there we have highmem/its/virt/etc.)
+>> say that reserved register
+>> addresses should RAZ/WI.
 
-thanks
--- PMM
+...and I remarked only looking over my shoulder that "RAZ/WI" is not a
+verb :)
+
+Sorry, no clue about any of this -- where should I read up?	
+
+Ard did ask a question though:
+
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg500055.html
+
+CC'ing Drew, Eric and Wei. In particular (IIUC) Eric has been looking
+into a weird "why do we have so many (and so slow) aborts with GICv4
+emulation" issue, at launching UEFI.
+
+Thanks
+Laszlo
+
+>> This means we need to return MEMTX_OK, not
+>> MEMTX_ERROR, because now that we support generating external aborts
+>> the latter will cause an abort on new board models.
+>>
+>> In particular, at least some versions of UEFI try to
+>> access a reserved address in the GICv3 redistributor
+>> (at SGI_base + 0x184) and fail to boot on the virt board
+>> without this.
+>>
+>> thanks
+>> -- PMM
+>>
+>> Peter Maydell (2):
+>>   hw/intc/arm_gicv3: Make reserved register addresses RAZ/WI
+>>   hw/intc/arm_gic: reserved register addresses are RAZ/WI
+>>
+>>  hw/intc/arm_gic.c              |  5 +++--
+>>  hw/intc/arm_gicv3_dist.c       | 13 +++++++++++++
+>>  hw/intc/arm_gicv3_its_common.c |  8 +++-----
+>>  hw/intc/arm_gicv3_redist.c     | 13 +++++++++++++
+>>  4 files changed, 32 insertions(+), 7 deletions(-)
+

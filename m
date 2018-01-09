@@ -1,101 +1,116 @@
-Received: by 10.28.173.206 with SMTP id w197csp3889567wme;
-        Tue, 9 Jan 2018 08:36:30 -0800 (PST)
-X-Google-Smtp-Source: ACJfBotCndejrwXEWIARQAxnapTb+BS5NCdhyy4qHo/5xJmU7/OO7MUAXhpwql5KJKG9mLNCGsrb
-X-Received: by 10.129.55.209 with SMTP id e200mr9580985ywa.306.1515515790768;
-        Tue, 09 Jan 2018 08:36:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515515790; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp3892357wme;
+        Tue, 9 Jan 2018 08:39:30 -0800 (PST)
+X-Google-Smtp-Source: ACJfBouhvnavxIvqqgAFgMVsqgojX8oYFdBsuzZL+85G6XxL/2uaiblQltCkv6zAGxaU7a+EXGkj
+X-Received: by 10.37.248.29 with SMTP id u29mr7010730ybd.341.1515515970473;
+        Tue, 09 Jan 2018 08:39:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515515970; cv=none;
         d=google.com; s=arc-20160816;
-        b=jx5/lF/FleeFyvXzrOAgCqnpzQ6UreLl8WK9BhT6xIs7K1pSmxnS0o7vEw+P7hiUHq
-         zK2/rxbxJvJ3Y2WbA2Ihi1qZgjoFtRtHTSjN+qO+LbQUBy7PkhKEaN+2OSasEcZcZ9mX
-         PAI7sRSvOtJseEZ9h1EpfT+/XkREk+7lk2RWLkJIAW5+CAP/aLjU1fmc7wgC4lb7HuPF
-         UYghlTDWPCR/Ci4WhUgWzkhXUsiv8OqVBmR1Ga9yfPYc3aNh2/pyVdn5H+rV3dpMaL75
-         2ERoh1MFRQd/j2Y7zd9qS2sbHu63VgQwG4nn2GNWSiHIBdCi1VKBsKRCODYIIhqpzZbD
-         B4Uw==
+        b=lXdgn1jrw9CtsH5XIS0zWbevZ8UgypbHoqSO5TF+xmi2XRVGaFqyCsaermnEQCly3n
+         NAqcJa+cpD6W3d7MyXb68iMKBQOK9pDPF8Hr0Tax6810lUwfP1lkk07IFbg/MYaLOjpo
+         9gSH7BVB/nMgRwwHLJgmwGIU9Y1ihCWQr2k3cJtvijXt9POiNy4p+QjVA2fWzyV68fC4
+         8h+16UaUO5SfVvVJ6ClRMOvUKSX4vVzxURb0botddO7t16zi7uZOGjngk/2g5nUiHKWW
+         iYlQBsaqLlhY+HtVDE9vMXk6KQvidCQctiD6BaEXcOyqbBY2ij7rVqjnMjL728TO70k2
+         BoCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=G59QPO1vwym5sxr7DXp3txM6Bf8D+cMqoTxCkHGrbOQ=;
-        b=D0KnsPq3RncE2Qhbyq1LTGY3cv85lwZZUkceqqWxuu5gpZ5LPSVeJwpBgcK9BHFb5T
-         Z3YGx1ur5YIBLrjkiPoVCeoDcIJGh2FQTfaassLROdZsrFVrwxBHhysrS7oDTYe6pevf
-         cuphmXP14C3xn6STqSn9cGFsn1FF7kIxmu1js9FxJ+wAnzH6oOHeARK5VSox+bxYfe68
-         X6xkJUq3cKKUY+M5JUnOcDjhXPwwPxGGcvX7Ez1wB3D5kdX5uXwU4oNwVwqSOTIVi+P+
-         F1fTnoUqd2X+uT+kHAi+DCK0fLh091K6RQu+IXNRnnp8Ijef0dnLpTFZnYDeydyYJclw
-         77BQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=DuzHeOu8iGD6YjvMvAwO72i1MQJfX1ahjcXPBaJn5os=;
+        b=T+gTVHlkl8ZggPOsDU/oYIsUPLORbD+ssHdhfbqekR8KQxUKpE0LbQPRZ6mS0BDZVs
+         AeRDm0sf5OerSvQssZ0s+uo+WGo3JDEebROpY9d0M0QWbolZkqftNK/fOzINoEZEQ8XO
+         XrFACwL7T9q/usE7q8jGLcF68/ji4BYcMKE/cmT5kQJ0nEA25f5axxkdQucDhaTigwuy
+         f0f+f3/yXbep+IcID5SVX3+SMS+Ncgrau9tuptG8Nfv+V5UwE3k5iYUpgSwEIB3uMoMw
+         5+PgU2v7S2Egz1IDOryQSxxYc5wmsRpVdPztNI7aqWBk4YipB2NF9u0nsqF3Rv3Gmh+9
+         wfNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=W7LCdaok;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iBO+vkJ3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id w3si3107146ybw.75.2018.01.09.08.36.30
+        by mx.google.com with ESMTPS id k3si253129ybb.292.2018.01.09.08.39.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 Jan 2018 08:36:30 -0800 (PST)
+        Tue, 09 Jan 2018 08:39:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=W7LCdaok;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33041 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iBO+vkJ3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:33189 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eYwt4-00054Y-5z
-	for alex.bennee@linaro.org; Tue, 09 Jan 2018 11:36:30 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35571)
+	id 1eYwvx-0007kH-U5
+	for alex.bennee@linaro.org; Tue, 09 Jan 2018 11:39:29 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37014)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eYwsS-00051u-Ft
-	for qemu-devel@nongnu.org; Tue, 09 Jan 2018 11:35:53 -0500
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eYwvS-0007hi-B8
+	for qemu-devel@nongnu.org; Tue, 09 Jan 2018 11:38:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eYwsR-0008Km-LJ
-	for qemu-devel@nongnu.org; Tue, 09 Jan 2018 11:35:52 -0500
-Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:43951)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eYwvR-0003cF-8m
+	for qemu-devel@nongnu.org; Tue, 09 Jan 2018 11:38:58 -0500
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:40966)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eYwsR-0008KE-G4
-	for qemu-devel@nongnu.org; Tue, 09 Jan 2018 11:35:51 -0500
-Received: by mail-oi0-x241.google.com with SMTP id t16so5660391oif.10
-	for <qemu-devel@nongnu.org>; Tue, 09 Jan 2018 08:35:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=G59QPO1vwym5sxr7DXp3txM6Bf8D+cMqoTxCkHGrbOQ=;
-	b=W7LCdaokdVP440+4KE+GOwscCWWOYxrza3W94Kaq5ZOkN8Cnc8kcRpxdinmizHzq6v
-	SbhFBB3QB/4xlF4Vsam8o9wvLSkVKQtzWYsTBCD39qUgZXc8g6H6UQP6v3Nqgz0MT6Vt
-	Lu2YCnBufL+/5H1QwSLDrNt1HEeVwtnbrRUfI=
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eYwvL-0003XH-Jd; Tue, 09 Jan 2018 11:38:51 -0500
+Received: by mail-qt0-x243.google.com with SMTP id i40so18527405qti.8;
+	Tue, 09 Jan 2018 08:38:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=DuzHeOu8iGD6YjvMvAwO72i1MQJfX1ahjcXPBaJn5os=;
+	b=iBO+vkJ3WAhwGgWBoaOoHXdHL5s/KRYx9r1IWeHl5Ii/pmitD/jMH4CpchnPZCYr/5
+	1jbDcwwXB+nrhXexVdpV4ULTs1V9OqE/TJDSy9G1zWFWCLFHSH68drkVBTDRriesqIWA
+	QYnvlYmB1MF8xEdnYEbhALYxVnlWmxWYtc9PK8IRp8ZLP+pfCT6pjV7erzoTWg+EKqa5
+	XI9TBu/uPXH6739tmvtzT1JiSAEpxbGYiAeHvnajdd7+mzsy4IdPD4sAfKt877cmlSp5
+	E9O6agGFeD4O9H+d+UocRjn0MNCqvhcGacHSnZ6Nz28KjPhkjCLT/B3AiYWCFVjOrNB4
+	+qDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=G59QPO1vwym5sxr7DXp3txM6Bf8D+cMqoTxCkHGrbOQ=;
-	b=CcHVnR3jesCdkPXnwfPQ571a2RiPkr8qGhSLHTPaLkVnWTDI0SeO0V/NSPKUBUjkbh
-	YRa7s6zGgyVw5f41TfYPxT+lwZnvy3ihMkJVPavBklNpUPBhp+NaoTrm09wX/f3zXHZQ
-	N44j30iYKsztac6Ojjt+olySiKQb06HL99UbZtiveDVjJt3ePuRPE9b5ef43X/XQocwN
-	yDu5t1B87NEbBTwQeKEIxemAI2RI4uciQtluoFR7677YCBbXwZXb5aL5hAjr2S89IOUi
-	2qnF1wfUpZ6SYCHIp0JPdXSEIap7x8d2e7MQCROm8xsm2LKKVKAV7ZXWCecil+6I4dxt
-	4eFA==
-X-Gm-Message-State: AKGB3mKoC2j4fpV5V7yuFtqgay+AVwA1t41UZ3irAYXeHLW3B2A4YIsU
-	Qt18E57WmnsWN9A92iNBOh/ijmoEaPY/dBs74BtCyw==
-X-Received: by 10.202.75.80 with SMTP id y77mr8458167oia.328.1515515750750;
-	Tue, 09 Jan 2018 08:35:50 -0800 (PST)
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=DuzHeOu8iGD6YjvMvAwO72i1MQJfX1ahjcXPBaJn5os=;
+	b=az3vttcPr+xPIMW9CIIKRbjWz49F3hk8ZHz0EnGfx2lmSUeD/BZGzV+ftZH+lWFYWL
+	hE7zq9zNOREkPN2S8q0Am6bIv/mhqH/a33Yc/6y+3loEq8+WpTxmSWkKWmU9AgnZr5YD
+	97roxpTvxl2+QkDpV17CeoqwO2bGYgyTO/IsosJ0CHDk5wZbFDTaTi3o5lxTETPYoJGJ
+	Cg18Tl28YpJ09pQS2y/WekA4MhlNwrXgKffjVpYSgx7sVZtaLkXDXLotR8PGb68QpMzT
+	B1nn/q35u2ImLQF+Hpy1Bk8btu2rfPfxyNasHxGf6tNMtdw0p8e9AxiReNBnjtqEyBHF
+	+RwA==
+X-Gm-Message-State: AKwxytftRSx3HUo6t5JQZ45EN2+IB81mcQ4sQ4ED+FSGsFaGpFUarKyr
+	DgPyxc8cRzG7oOzYNTE5d/xNHW5eYng=
+X-Received: by 10.200.35.78 with SMTP id b14mr23261394qtb.260.1515515930772;
+	Tue, 09 Jan 2018 08:38:50 -0800 (PST)
+Received: from [192.168.1.11] ([138.117.48.219])
+	by smtp.gmail.com with ESMTPSA id
+	e63sm9521366qkb.46.2018.01.09.08.38.48
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 09 Jan 2018 08:38:50 -0800 (PST)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1515506513-31961-1-git-send-email-peter.maydell@linaro.org>
+	<1515506513-31961-4-git-send-email-peter.maydell@linaro.org>
+	<12647bf7-eb9f-889a-76e0-32fb1f799160@amsat.org>
+	<CAFEAcA9Gd6qLqFfrmzj4w69=SozWyP8D5mbGSaGEvw0BhwnyjA@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <bd8da759-6e40-7fbe-3c1e-a400d9e84d5c@amsat.org>
+Date: Tue, 9 Jan 2018 13:38:47 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.2
 MIME-Version: 1.0
-Received: by 10.157.15.71 with HTTP; Tue, 9 Jan 2018 08:35:30 -0800 (PST)
-In-Reply-To: <e40cc107-2fe9-d8a5-b4fd-385c0d22c564@redhat.com>
-References: <1513183941-24300-1-git-send-email-peter.maydell@linaro.org>
-	<CAFEAcA8NbL7ROZs99hWhpAF2Rdi2qEiWLNo3hr_9W7gmgXyw4A@mail.gmail.com>
-	<6d20557d-5722-706f-ca4f-489ab85358c0@redhat.com>
-	<CAFEAcA-Nn4VmSnxT7Of8Nh+p5QgF9cMzkqZ-VBCC=2zRgk-Xdw@mail.gmail.com>
-	<e40cc107-2fe9-d8a5-b4fd-385c0d22c564@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 9 Jan 2018 16:35:30 +0000
-Message-ID: <CAFEAcA8QqEna4u92bk88++Y1JrpCJD=KDpSfbJ8DhfSiTRm+=w@mail.gmail.com>
-To: Laszlo Ersek <lersek@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <CAFEAcA9Gd6qLqFfrmzj4w69=SozWyP8D5mbGSaGEvw0BhwnyjA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::241
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH 0/2] GICv2 & GICv3: RAZ/WI
- reserved addresses rather than aborting
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH 3/4] hw/sd/ssi-sd: Reset SD card
+ on controller reset
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,42 +122,91 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Wei Huang <wei@redhat.com>, Drew Jones <drjones@redhat.com>,
-	"patches@linaro.org" <patches@linaro.org>,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
+Cc: qemu-stable <qemu-stable@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>,
-	Auger Eric <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>
+	"patches@linaro.org" <patches@linaro.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: joey+9TnkEGN
+X-TUID: 2f76mrPb8e6M
 
-On 9 January 2018 at 16:29, Laszlo Ersek <lersek@redhat.com> wrote:
-> On 01/09/18 17:12, Peter Maydell wrote:
->> On 9 January 2018 at 15:58, Laszlo Ersek <lersek@redhat.com> wrote:
->>> Sorry, no clue about any of this -- where should I read up?
+
+On 01/09/2018 01:28 PM, Peter Maydell wrote:
+> On 9 January 2018 at 16:25, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>> Hi Peter,
 >>
->> I cc'd you mostly as a heads-up since the QEMU bug is UEFI affecting,
->> not because I wanted to make you read the GIC specs :-)
->
-> Thanks (and, thanks :) ) -- from patch #2, looks like GICv2 is affected
-> too, and the patch seems to be fixing commit a9d853533cc1
-> ("hw/intc/arm_gic: Switch to read/write callbacks with tx attributes",
-> 2015-05-12).
->
-> Is that right? That commit was released with v2.4.0. Should I have
-> experienced the error? Is it KVM / hardware specific? What are the symptoms?
+>> On 01/09/2018 11:01 AM, Peter Maydell wrote:
+>>> Since ssi-sd is still using the legacy SD card API, the SD
+>>> card created by sd_init() is not plugged into any bus. This
+>>> means that the controller has to reset it manually.
+>>>
+>>> Failing to do this mostly didn't affect the guest since the
+>>> guest typically does a programmed SD card reset as part of
+>>> its SD controller driver initialization, but meant that
+>>> migration failed because it's only in sd_reset() that we
+>>> set up the wpgrps_size field.
+>>>
+>>> In the case of sd-ssi, we have to implement an entire
+>>> reset function since there wasn't one previously, and
+>>> that requires a QOM cast macro that got omitted when this
+>>> device was QOMified.
+>>>
+>>> Cc: qemu-stable@nongnu.org
+>>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>>> ---
+>>>  hw/sd/ssi-sd.c | 24 +++++++++++++++++++++++-
+>>>  1 file changed, 23 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/hw/sd/ssi-sd.c b/hw/sd/ssi-sd.c
+>>> index 24001dc..30d2a87 100644
+>>> --- a/hw/sd/ssi-sd.c
+>>> +++ b/hw/sd/ssi-sd.c
+>>> @@ -50,6 +50,9 @@ typedef struct {
+>>>      SDState *sd;
+>>>  } ssi_sd_state;
+>>>
+>>> +#define TYPE_SSI_SD "ssi-sd"
+>>> +#define SSI_SD(obj) OBJECT_CHECK(ssi_sd_state, (obj), TYPE_SSI_SD)
+>>> +
+>>>  /* State word bits.  */
+>>>  #define SSI_SDR_LOCKED          0x0001
+>>>  #define SSI_SDR_WP_ERASE        0x0002
+>>> @@ -251,6 +254,24 @@ static void ssi_sd_realize(SSISlave *d, Error **errp)
+>>>      }
+>>>  }
+>>>
+>>> +static void ssi_sd_reset(DeviceState *dev)
+>>> +{
+>>> +    ssi_sd_state *s = SSI_SD(dev);
+>>> +
+>>> +    s->mode = SSI_SD_CMD;
 
-Happens under TCG emulation only. The bug got introduced with
-commit c79c0a314c43b78f6, which changed the effect of a device
-returning MEMTX_ERROR/MEMTX_DECODE_ERROR from "RAZ/WI" to
-"guest data abort". That's in general the right thing to do,
-but in the case of these device models we were returning those
-values for cases which aren't supposed to provoke aborts.
+And we can now drop the assignation in realize()
 
-The symptom is that if your guest code is poorly behaved and
-tries to read or write offsets that don't correspond to documented
-GIC registers, it will take an abort that it didn't before.
-Linux is fine; this UEFI image I have lying around stopped working.
+>>> +    s->cmd = 0;
+>>
+>> Not necessary/useful since s->mode = SSI_SD_CMD.
+>>
+>>> +    memset(s->cmdarg, 0, sizeof(s->cmdarg));
+>>> +    memset(s->response, 0, sizeof(s->response));
+>>
+>> This might be cleaner to move it in ssi_sd_transfer() case SSI_SD_CMD.
+>>
+>>> +    s->arglen = 0;
+>>
+>> Not necessary/useful since s->mode = SSI_SD_CMD.
+>>
+>>> +    s->response_pos = 0;
+>>
+>> This might be safer to move this in ssi_sd_transfer() case SSI_SD_CMD.
+>>
+>>> +    s->stopping = 0;
+>>
+>> This might be cleaner to move it in ssi_sd_transfer() entry "Special
+>> case else s->stopping = 0;"
+> 
+> I felt it was easier to reason about both (a) whether the reset
+> function was correct and (b) what the state of the device might
+> be at any point if the reset function just cleared everything
+> back to the state it's in when the device is freshly created.
 
-thanks
--- PMM
+Got it!

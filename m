@@ -1,268 +1,412 @@
-Received: by 10.28.173.206 with SMTP id w197csp3927828wme;
-        Tue, 9 Jan 2018 09:14:37 -0800 (PST)
-X-Google-Smtp-Source: ACJfBou58PbGyk2TeeyQPspFRVVcJgt54X1eYLdvWmtDfMBmgZbRYPW30ft/AQo1qbxcNM+bGJNX
-X-Received: by 10.98.144.199 with SMTP id q68mr14113239pfk.156.1515518077400;
-        Tue, 09 Jan 2018 09:14:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515518077; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp3955698wme;
+        Tue, 9 Jan 2018 09:43:22 -0800 (PST)
+X-Google-Smtp-Source: ACJfBotdG0WTc6c7r+VCE5SKBXV4dKLVaNwHIUf8Nujng421ZPAofq6yxdwTNDgugbRhprKVYhhz
+X-Received: by 10.37.244.84 with SMTP id p20mr13699425ybe.52.1515519801940;
+        Tue, 09 Jan 2018 09:43:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515519801; cv=none;
         d=google.com; s=arc-20160816;
-        b=iL+6wdNr57vGEZqeSnFaqCuEV81/ar5TBg85aTxBepn9EoJ+Bp9JPV/bODm0gTeyDJ
-         5vlW9qCgTo7HBkyzI/cuN4adMTjV6BXrGyWahOaQ1xgB3YdbjIhYu8A2Q8dgH71POc4M
-         js8+i71R9FWVkqIigGnf8VM5AzjMUrUlkFfgPIfGxNw2yYRLB7oLy/LKbdSe0m7U388f
-         gcVP0u7JzZh3wtJTtnOQdusleONk27m+1lv7tNjgf+LiqjZj4wUjv3wmC8VQShZpb12U
-         BKVnD6e43TYVMp+NxrH1Iic4S2ZtRrP+J3hd87W30YaqoZmBDR9AWQdS2SbjJxPykZtq
-         QPmg==
+        b=kCJ5+eY6fVz47UHD9d6EmvAL1PJkjQEPBPeyp7KJEwIONtxU9hs74F+UDn3fpj50YM
+         kbRbM1VIh442NMkbP7pOCiEuRCpoTVo6IpCDAQ1ecr1UyMNJccbKKERyzJFYkYhRbuPw
+         t7wg7mTNee/wHKRof6nxboEgJOEKNuKjrwN3gslqqJOzp11c2ZYcuRvs/TzExasyi2Xr
+         ZKWtJP0tf87gbCybNNVTfkyraEd1rFiKRRCzig3f6FqJpGoMZ8H9FiXVsc78APU9bke4
+         CgJATJlnM8qDzsE+rZP6lkf1aMWdZjHFRHLkIJqTSnSxNcEEKs0/PUpk4IE+HqpVebO/
+         0pRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=8gVKvr9yNWxA404feZUsUd5LWsXtq1jzCzroCg9EHIQ=;
-        b=FJzKytofWSE3g5L42mFSeb8sfBzMjmlckn5gnlPWQ8E3iLdLPrs66dWTkBJhpfqpPg
-         /re1I628hWXJ9CkWITpVKva9+TK7pN9s3WxDsc2U/XUl+MARFIF+APXBxk3ly9pMZmOu
-         xguC0EygA8W+Pq+mqVOH8qDryZ9FiKD40CXinlE2QGd5z20sy5wJPeZLEruyCyju1ymQ
-         XpxW5W22axe1ACUDwt3l+SdjruXoyOtgqribmdaBQ4nBYKlCSAedoKceZD5ADPFRNtBy
-         BE/mqUYtOCwg91iTaECvlhlwGk8QATM9wK1NdU/tgMkqJMWI1kgLk4VGiHS3KvF6eyp9
-         EV3A==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=FrhbNW/NaP4pbA/GCmWLvksLiJfziIEeRDAl6iEY3sM=;
+        b=rNhNnsqDwSfBJOsLWidMD0KPx5Fe07xtOZzcLx+6LlgVvlRDQhbOymcPfqLXTT/zbU
+         a3Goc7XndJE7Mxj/D2PEjRx5uf2H46cZiMBzFPFC8VB4NQ6mCJwRe1s7pGFGydh85Ey8
+         kZDhbKWpnNMbDGe3M/lec7grlJgNdJPkHAupjUWjHDegWe+4S6gqaok1UMiZuF1FL74J
+         W1yDtdMKrouua3I9hWmY2187oCYtPGd22+vOVpO5ZtQm6pd1qg14igrjIUFWvc5ZRWEs
+         aebigs3lSneheOT8HpTLzcUpwByZVN489oiXi+2v2SSGXjvkO52DjGuUOhn5O6cEjzi1
+         Cc9w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=faDK76uY;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id 68si769360pfe.113.2018.01.09.09.14.37;
-        Tue, 09 Jan 2018 09:14:37 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@linaro.org header.s=google header.b=LG9pMJvS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id b3si3004453ywb.764.2018.01.09.09.43.21
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 09 Jan 2018 09:43:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=faDK76uY;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1752117AbeAIROf (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 5 others); Tue, 9 Jan 2018 12:14:35 -0500
-Received: from mail-ot0-f196.google.com ([74.125.82.196]:39955 "EHLO
-        mail-ot0-f196.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1751008AbeAIROe (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 9 Jan 2018 12:14:34 -0500
-Received: by mail-ot0-f196.google.com with SMTP id d10so11919725oti.7
-        for <kvm@vger.kernel.org>; Tue, 09 Jan 2018 09:14:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=8gVKvr9yNWxA404feZUsUd5LWsXtq1jzCzroCg9EHIQ=;
-        b=faDK76uY8vGN0+orvb3MlpUBcc9qmRWJeaVUPTyADvR1j/6H3Ug1xr9nyT5FGrbSyi
-         LVdIbs5yxxQQ6D2MXQWh41bqY73FSW1tSectW7dEhGwPxfugJR6k3IS90P3CpkZQ/wA9
-         mGmbm0VGL5isG3B53+QswOOEnOuHkkKrsArPQ=
+       dkim=fail header.i=@linaro.org header.s=google header.b=LG9pMJvS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:36801 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eYxvl-0005XL-Cx
+	for alex.bennee@linaro.org; Tue, 09 Jan 2018 12:43:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39527)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <ard.biesheuvel@linaro.org>) id 1eYxu7-0004Qa-9N
+	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 12:41:41 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <ard.biesheuvel@linaro.org>) id 1eYxu4-0003yT-3z
+	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 12:41:39 -0500
+Received: from mail-wr0-x242.google.com ([2a00:1450:400c:c0c::242]:36810)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <ard.biesheuvel@linaro.org>)
+	id 1eYxu3-0003xa-Px
+	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 12:41:36 -0500
+Received: by mail-wr0-x242.google.com with SMTP id b76so14947573wrd.3
+	for <qemu-arm@nongnu.org>; Tue, 09 Jan 2018 09:41:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id;
+	bh=FrhbNW/NaP4pbA/GCmWLvksLiJfziIEeRDAl6iEY3sM=;
+	b=LG9pMJvSP8ZEJh/Y5n/BKmLkWUnBV1nXR9cxikr6DaXzXwSLheNWJ9WCkTPGrwxaF2
+	RcIdrN/7VYh51LsGX1+Oa2D9opY1oNRwTsc1bpuXDM1OCj1wL6Bh122Zmu94j/BMEcnj
+	68UdxZPALutXvEbf1n4dLejfKgTpU7Uo3jxI0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=8gVKvr9yNWxA404feZUsUd5LWsXtq1jzCzroCg9EHIQ=;
-        b=krXVWbOEzbH/GV40sNNGM+7Nu7b9OJN6K3bmebv/baxvIrIuHS0nmBiE0ULYbu8r9e
-         xs/tvaS+2UG2FusBCFlWKe9yCJGaWDR4cN8lERd4Y2S36DLbFZQ9N6DUhI56SedGQi9x
-         RiR83GlKNQPfwycvLeYILhJR14ZuYO1/hMGOUiyhYKS8RZBOJ4GDOTZgYFTUbkoJyHyl
-         Jmy9p8YUUV84lW9iSUPFxKDl77p2JCNHXBCD8XkI2IGUBnuE/KJqrXB6YoFiZNw7e2iD
-         Lso/qIm17zSbvCmodudkOQa7YXeawIx0Ii3uK3odAQrE6Nq0De7TSF+YHeA47allffrN
-         rcxw==
-X-Gm-Message-State: AKwxytfeOnUOAx+sa+6D/ueeWlMFU+aVu30uwF1Q8P7ZGLvwdhd9pcLM
-        jJn7J6uw52l2tut6Dnv4HHazoGqDiFe9SYHokqhW9w==
-X-Received: by 10.157.5.196 with SMTP id 62mr8927637otd.110.1515518073370;
- Tue, 09 Jan 2018 09:14:33 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.157.15.71 with HTTP; Tue, 9 Jan 2018 09:14:12 -0800 (PST)
-In-Reply-To: <1514440458-10515-10-git-send-email-gengdongjiu@huawei.com>
-References: <1514440458-10515-1-git-send-email-gengdongjiu@huawei.com> <1514440458-10515-10-git-send-email-gengdongjiu@huawei.com>
-From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Tue, 9 Jan 2018 17:14:12 +0000
-Message-ID: <CAFEAcA84tR_9e24DqvR9vsNvFBbK86fUTBnQdBjWKDGj4wkTGg@mail.gmail.com>
-Subject: Re: [PATCH v14 9/9] target-arm: kvm64: handle SIGBUS signal from
- kernel or KVM
-To:     Dongjiu Geng <gengdongjiu@huawei.com>
-Cc:     Paolo Bonzini <pbonzini@redhat.com>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Igor Mammedov <imammedo@redhat.com>,
-        Shannon Zhao <zhaoshenglong@huawei.com>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        Richard Henderson <rth@twiddle.net>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        James Morse <james.morse@arm.com>,
-        Christoffer Dall <christoffer.dall@linaro.org>,
-        Marc Zyngier <marc.zyngier@arm.com>,
-        kvm-devel <kvm@vger.kernel.org>,
-        QEMU Developers <qemu-devel@nongnu.org>,
-        qemu-arm <qemu-arm@nongnu.org>,
-        Huangshaoyu <huangshaoyu@huawei.com>,
-        "Zhengqiang (turing)" <zhengqiang10@huawei.com>,
-        Xu Wei <xuwei5@hisilicon.com>
-Content-Type: text/plain; charset="UTF-8"
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: ON7oLWh/mz3a
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=FrhbNW/NaP4pbA/GCmWLvksLiJfziIEeRDAl6iEY3sM=;
+	b=NSipO0DDVTJN5GwOlbAkgmdSKD1vBtoFlzZXFmXmC6MAnpt9P5kz76X6Bbd8GiWAGL
+	Y5hXoIrRrq5sSpnr7DBW0uBrzztZs8g5h0NnJdiYbyAVMYJ5p8HmU7hwC/LI8mevVxft
+	TeX1CrwPmnimkfrbet8OLlUxrAxUmF4pDaqKV/WXoS71WrrX91S1a16vG6dU0wy97U3u
+	QOC15CCABr8KrVaQ6HzDeksw1vkVFkUT7iprZdyFUMQi04IPRAz4WEuZHhYl1QwE33zQ
+	qdtnWZ6jTWISFamdZ30hHSJ7b3JK8tYTrNagap0qlYtrYctKGpBy98duNvImE993f6+V
+	YTtQ==
+X-Gm-Message-State: AKGB3mJj0lIAD07jEg5T135PMyJhNA5l3qMD9Dg6VydwNCtBMXrYm2vB
+	3VkP853E1HG4mALTZ/uL8HFPXdbPnGU=
+X-Received: by 10.223.128.34 with SMTP id 31mr15483326wrk.248.1515519694098;
+	Tue, 09 Jan 2018 09:41:34 -0800 (PST)
+Received: from localhost.localdomain ([154.144.231.40])
+	by smtp.gmail.com with ESMTPSA id
+	u79sm15717415wma.26.2018.01.09.09.41.32
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 09 Jan 2018 09:41:32 -0800 (PST)
+From: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+To: qemu-arm@nongnu.org
+Date: Tue,  9 Jan 2018 17:41:26 +0000
+Message-Id: <20180109174126.28305-1-ard.biesheuvel@linaro.org>
+X-Mailer: git-send-email 2.11.0
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::242
+Subject: [Qemu-arm] [PATCH] target/arm: implement SHA-512 instructions
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yjh2NI2iVJSQ
 
-On 28 December 2017 at 05:54, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
-> Add SIGBUS signal handler. In this handler, it checks the SIGBUS type,
-> translates the host VA which is delivered by host to guest PA, then fill
-> this PA to CPER and fill the CPER to guest APEI GHES memory, finally
-> notify guest according to the SIGBUS type. There are two kinds of SIGBUS
-> that QEMU needs to handle, which are BUS_MCEERR_AO and BUS_MCEERR_AR.
->
-> If guest accesses the poisoned memory, it generates Synchronous External
-> Abort(SEA). Then host kernel gets an APEI notification and call memory_failure()
-> to unmapped the affected page from the guest's stage2, and SIGBUS_MCEERR_AO
-> is delivered to Qemu's main thread. If Qemu receives this SIGBUS, it will
-> create a new CPER and add it to guest APEI GHES memory, then notify the
-> guest with a GPIO-Signal notification.
->
-> When guest hits a PG_hwpoison page, it will trap to KVM as stage2 fault, then a
-> SIGBUS_MCEERR_AR synchronous signal is delivered to Qemu, Qemu record this error
-> into guest APEI GHES memory and notify guest using Synchronous-External-Abort(SEA).
->
-> Suggested-by: James Morse <james.morse@arm.com>
-> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-> ---
-> Address James's comments to record CPER and notify guest for SIGBUS signal handling.
-> Shown some discussion in [1].
->
-> [1]:
-> https://lkml.org/lkml/2017/2/27/246
-> https://lkml.org/lkml/2017/9/14/241
-> https://lkml.org/lkml/2017/9/22/499
-> ---
->  include/sysemu/kvm.h |  2 +-
->  target/arm/kvm.c     |  2 ++
->  target/arm/kvm64.c   | 34 ++++++++++++++++++++++++++++++++++
->  3 files changed, 37 insertions(+), 1 deletion(-)
->
-> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-> index 3a458f5..90c1605 100644
-> --- a/include/sysemu/kvm.h
-> +++ b/include/sysemu/kvm.h
-> @@ -361,7 +361,7 @@ bool kvm_vcpu_id_is_valid(int vcpu_id);
->  /* Returns VCPU ID to be used on KVM_CREATE_VCPU ioctl() */
->  unsigned long kvm_arch_vcpu_id(CPUState *cpu);
->
-> -#ifdef TARGET_I386
-> +#if defined(TARGET_I386) || defined(TARGET_AARCH64)
+This implements emulation of the new SHA-512 instructions that have
+been added as an optional extensions to the ARMv8 Crypto Extensions
+in ARM v8.2.
 
-As a general rule we should not introduce new ifdefs with
-lists of architectures in them. Instead the targets which support
-something should define something suitable in a per-target
-header file.
+Signed-off-by: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+---
+ target/arm/cpu.h           |   1 +
+ target/arm/crypto_helper.c | 136 ++++++++++++++++++++++++++++++++++++++++++++-
+ target/arm/helper.h        |   5 ++
+ target/arm/translate-a64.c |  82 +++++++++++++++++++++++++++
+ 4 files changed, 223 insertions(+), 1 deletion(-)
 
-In this case I think you should:
- * move the define KVM_HAVE_MCE_INJECTION to target/i386/cpu.h,
-   and have this ifdef be #ifdef KVM_HAVE_MCE_INJECTION
-   (that should be in a different patch)
- * have the target-arm patch then just define KVM_HAVE_MCE_INJECTION
-   in target/arm/cpu.h (if TARGET_AARCH64) and provide
-   kvm_arch_on_sigbus_vcpu()
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 96316700dd6f..295529366c0a 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1340,6 +1340,7 @@ enum arm_features {
+     ARM_FEATURE_VBAR, /* has cp15 VBAR */
+     ARM_FEATURE_M_SECURITY, /* M profile Security Extension */
+     ARM_FEATURE_JAZELLE, /* has (trivial) Jazelle implementation */
++    ARM_FEATURE_V8_SHA512, /* implements SHA512 part of v8 Crypto Extensions */
+ };
+ 
+ static inline int arm_feature(CPUARMState *env, int feature)
+diff --git a/target/arm/crypto_helper.c b/target/arm/crypto_helper.c
+index 3b6df3f41a42..a89464f5acdc 100644
+--- a/target/arm/crypto_helper.c
++++ b/target/arm/crypto_helper.c
+@@ -1,7 +1,7 @@
+ /*
+  * crypto_helper.c - emulate v8 Crypto Extensions instructions
+  *
+- * Copyright (C) 2013 - 2014 Linaro Ltd <ard.biesheuvel@linaro.org>
++ * Copyright (C) 2013 - 2018 Linaro Ltd <ard.biesheuvel@linaro.org>
+  *
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+@@ -25,9 +25,11 @@ union CRYPTO_STATE {
+ #ifdef HOST_WORDS_BIGENDIAN
+ #define CR_ST_BYTE(state, i)   (state.bytes[(15 - (i)) ^ 8])
+ #define CR_ST_WORD(state, i)   (state.words[(3 - (i)) ^ 2])
++#define CR_ST_QUAD(state, i)   (state.l[(i) ^ 1])
+ #else
+ #define CR_ST_BYTE(state, i)   (state.bytes[i])
+ #define CR_ST_WORD(state, i)   (state.words[i])
++#define CR_ST_QUAD(state, i)   (state.l[i])
+ #endif
+ 
+ void HELPER(crypto_aese)(CPUARMState *env, uint32_t rd, uint32_t rm,
+@@ -463,3 +465,135 @@ void HELPER(crypto_sha256su1)(CPUARMState *env, uint32_t rd, uint32_t rn,
+     env->vfp.regs[rd] = make_float64(d.l[0]);
+     env->vfp.regs[rd + 1] = make_float64(d.l[1]);
+ }
++
++/*
++ * The SHA-512 logical functions (same as above but using 64-bit operands)
++ */
++
++static uint64_t cho512(uint64_t x, uint64_t y, uint64_t z)
++{
++    return (x & (y ^ z)) ^ z;
++}
++
++static uint64_t maj512(uint64_t x, uint64_t y, uint64_t z)
++{
++    return (x & y) | ((x | y) & z);
++}
++
++static uint64_t S0_512(uint64_t x)
++{
++    return ror64(x, 28) ^ ror64(x, 34) ^ ror64(x, 39);
++}
++
++static uint64_t S1_512(uint64_t x)
++{
++    return ror64(x, 14) ^ ror64(x, 18) ^ ror64(x, 41);
++}
++
++static uint64_t s0_512(uint64_t x)
++{
++    return ror64(x, 1) ^ ror64(x, 8) ^ (x >> 7);
++}
++
++static uint64_t s1_512(uint64_t x)
++{
++    return ror64(x, 19) ^ ror64(x, 61) ^ (x >> 6);
++}
++
++void HELPER(crypto_sha512h)(CPUARMState *env, uint32_t rd, uint32_t rn,
++                            uint32_t rm)
++{
++    union CRYPTO_STATE d = { .l = {
++        float64_val(env->vfp.regs[rd]),
++        float64_val(env->vfp.regs[rd + 1])
++    } };
++    union CRYPTO_STATE n = { .l = {
++        float64_val(env->vfp.regs[rn]),
++        float64_val(env->vfp.regs[rn + 1])
++    } };
++    union CRYPTO_STATE m = { .l = {
++        float64_val(env->vfp.regs[rm]),
++        float64_val(env->vfp.regs[rm + 1])
++    } };
++    uint64_t t;
++
++    t = CR_ST_QUAD(m, 1);
++    CR_ST_QUAD(d, 1) += S1_512(t) + cho512(t, CR_ST_QUAD(n, 0),
++                                           CR_ST_QUAD(n, 1));
++
++    t = CR_ST_QUAD(d, 1) + CR_ST_QUAD(m, 0);
++    CR_ST_QUAD(d, 0) += S1_512(t) + cho512(t, CR_ST_QUAD(m, 1),
++                                           CR_ST_QUAD(n, 0));
++
++    env->vfp.regs[rd] = make_float64(d.l[0]);
++    env->vfp.regs[rd + 1] = make_float64(d.l[1]);
++}
++
++void HELPER(crypto_sha512h2)(CPUARMState *env, uint32_t rd, uint32_t rn,
++                             uint32_t rm)
++{
++    union CRYPTO_STATE d = { .l = {
++        float64_val(env->vfp.regs[rd]),
++        float64_val(env->vfp.regs[rd + 1])
++    } };
++    union CRYPTO_STATE n = { .l = {
++        float64_val(env->vfp.regs[rn]),
++        float64_val(env->vfp.regs[rn + 1])
++    } };
++    union CRYPTO_STATE m = { .l = {
++        float64_val(env->vfp.regs[rm]),
++        float64_val(env->vfp.regs[rm + 1])
++    } };
++
++    CR_ST_QUAD(d, 1) += S0_512(CR_ST_QUAD(m, 0)) + maj512(CR_ST_QUAD(n, 0),
++                                                          CR_ST_QUAD(m, 1),
++                                                          CR_ST_QUAD(m, 0));
++
++    CR_ST_QUAD(d, 0) += S0_512(CR_ST_QUAD(d, 1)) + maj512(CR_ST_QUAD(d, 1),
++                                                          CR_ST_QUAD(m, 0),
++                                                          CR_ST_QUAD(m, 1));
++
++    env->vfp.regs[rd] = make_float64(d.l[0]);
++    env->vfp.regs[rd + 1] = make_float64(d.l[1]);
++}
++
++void HELPER(crypto_sha512su0)(CPUARMState *env, uint32_t rd, uint32_t rn)
++{
++    union CRYPTO_STATE d = { .l = {
++        float64_val(env->vfp.regs[rd]),
++        float64_val(env->vfp.regs[rd + 1])
++    } };
++    union CRYPTO_STATE n = { .l = {
++        float64_val(env->vfp.regs[rn]),
++        float64_val(env->vfp.regs[rn + 1])
++    } };
++
++    CR_ST_QUAD(d, 0) += s0_512(CR_ST_QUAD(d, 1));
++    CR_ST_QUAD(d, 1) += s0_512(CR_ST_QUAD(n, 0));
++
++    env->vfp.regs[rd] = make_float64(d.l[0]);
++    env->vfp.regs[rd + 1] = make_float64(d.l[1]);
++}
++
++void HELPER(crypto_sha512su1)(CPUARMState *env, uint32_t rd, uint32_t rn,
++                              uint32_t rm)
++{
++    uint64_t d[2] = {
++        float64_val(env->vfp.regs[rd]),
++        float64_val(env->vfp.regs[rd + 1])
++    };
++    uint64_t n[2] = {
++        float64_val(env->vfp.regs[rn]),
++        float64_val(env->vfp.regs[rn + 1])
++    };
++    uint64_t m[2] = {
++        float64_val(env->vfp.regs[rm]),
++        float64_val(env->vfp.regs[rm + 1])
++    };
++
++    d[0] += s1_512(n[0]) + m[0];
++    d[1] += s1_512(n[1]) + m[1];
++
++    env->vfp.regs[rd] = make_float64(d[0]);
++    env->vfp.regs[rd + 1] = make_float64(d[1]);
++}
+diff --git a/target/arm/helper.h b/target/arm/helper.h
+index 066729e8ad8e..efa75440ce81 100644
+--- a/target/arm/helper.h
++++ b/target/arm/helper.h
+@@ -534,6 +534,11 @@ DEF_HELPER_4(crypto_sha256h2, void, env, i32, i32, i32)
+ DEF_HELPER_3(crypto_sha256su0, void, env, i32, i32)
+ DEF_HELPER_4(crypto_sha256su1, void, env, i32, i32, i32)
+ 
++DEF_HELPER_4(crypto_sha512h, void, env, i32, i32, i32)
++DEF_HELPER_4(crypto_sha512h2, void, env, i32, i32, i32)
++DEF_HELPER_3(crypto_sha512su0, void, env, i32, i32)
++DEF_HELPER_4(crypto_sha512su1, void, env, i32, i32, i32)
++
+ DEF_HELPER_FLAGS_3(crc32, TCG_CALL_NO_RWG_SE, i32, i32, i32, i32)
+ DEF_HELPER_FLAGS_3(crc32c, TCG_CALL_NO_RWG_SE, i32, i32, i32, i32)
+ DEF_HELPER_2(dc_zva, void, env, i64)
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index ba94f7d0456a..543c41d1fa45 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -11111,6 +11111,86 @@ static void disas_crypto_two_reg_sha(DisasContext *s, uint32_t insn)
+     tcg_temp_free_i32(tcg_rn_regno);
+ }
+ 
++/* Crypto three-reg SHA512
++ *  31                   21 20  16 15     12  11  10  9    5 4    0
++ * +-----------------------+------+---------+--------+------+------+
++ * | 1 1 0 0 1 1 1 0 0 1 1 |  Rm  | 1 0 0 0 | opcode |  Rn  |  Rd  |
++ * +-----------------------+------+---------+--------+------+------+
++ */
++static void disas_crypto_three_reg_sha512(DisasContext *s, uint32_t insn)
++{
++    int opcode = extract32(insn, 10, 2);
++    int rm = extract32(insn, 16, 5);
++    int rn = extract32(insn, 5, 5);
++    int rd = extract32(insn, 0, 5);
++    TCGv_i32 tcg_rd_regno, tcg_rn_regno, tcg_rm_regno;
++    CryptoThreeOpEnvFn *genfn;
++
++    switch (opcode) {
++    case 0: /* SHA512H */
++        genfn = gen_helper_crypto_sha512h;
++        break;
++    case 1: /* SHA512H2 */
++        genfn = gen_helper_crypto_sha512h2;
++        break;
++    case 2: /* SHA512SU1 */
++        genfn = gen_helper_crypto_sha512su1;
++        break;
++    default:
++        unallocated_encoding(s);
++        return;
++    }
++
++    if (!arm_dc_feature(s, ARM_FEATURE_V8_SHA512)) {
++        unallocated_encoding(s);
++        return;
++    }
++
++    if (!fp_access_check(s)) {
++        return;
++    }
++
++    tcg_rd_regno = tcg_const_i32(rd << 1);
++    tcg_rn_regno = tcg_const_i32(rn << 1);
++    tcg_rm_regno = tcg_const_i32(rm << 1);
++
++    genfn(cpu_env, tcg_rd_regno, tcg_rn_regno, tcg_rm_regno);
++
++    tcg_temp_free_i32(tcg_rd_regno);
++    tcg_temp_free_i32(tcg_rn_regno);
++    tcg_temp_free_i32(tcg_rm_regno);
++}
++
++/* Crypto two-reg SHA512
++ *  31                                     10 9    5 4    0
++ * +-----------------------------------------+------+------+
++ * | 1 1 0 0 1 1 1 0 1 1 0 0 0 0 0 0 1 0 0 0 |  Rn  |  Rd  |
++ * +-----------------------------------------+------+------+
++ */
++static void disas_crypto_two_reg_sha512(DisasContext *s, uint32_t insn)
++{
++    int rn = extract32(insn, 5, 5);
++    int rd = extract32(insn, 0, 5);
++    TCGv_i32 tcg_rd_regno, tcg_rn_regno;
++
++    if (!arm_dc_feature(s, ARM_FEATURE_V8_SHA512)) {
++        unallocated_encoding(s);
++        return;
++    }
++
++    if (!fp_access_check(s)) {
++        return;
++    }
++
++    tcg_rd_regno = tcg_const_i32(rd << 1);
++    tcg_rn_regno = tcg_const_i32(rn << 1);
++
++    gen_helper_crypto_sha512su0(cpu_env, tcg_rd_regno, tcg_rn_regno);
++
++    tcg_temp_free_i32(tcg_rd_regno);
++    tcg_temp_free_i32(tcg_rn_regno);
++}
++
+ /* C3.6 Data processing - SIMD, inc Crypto
+  *
+  * As the decode gets a little complex we are using a table based
+@@ -11140,6 +11220,8 @@ static const AArch64DecodeTable data_proc_simd[] = {
+     { 0x4e280800, 0xff3e0c00, disas_crypto_aes },
+     { 0x5e000000, 0xff208c00, disas_crypto_three_reg_sha },
+     { 0x5e280800, 0xff3e0c00, disas_crypto_two_reg_sha },
++    { 0xce608000, 0xffe0f000, disas_crypto_three_reg_sha512 },
++    { 0xcec08000, 0xfffffc00, disas_crypto_two_reg_sha512 },
+     { 0x00000000, 0x00000000, NULL }
+ };
+ 
+-- 
+2.11.0
 
->  #define KVM_HAVE_MCE_INJECTION 1
->  void kvm_arch_on_sigbus_vcpu(CPUState *cpu, int code, void *addr);
->  #endif
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 7c17f0d..9d25f51 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -26,6 +26,7 @@
->  #include "exec/address-spaces.h"
->  #include "hw/boards.h"
->  #include "qemu/log.h"
-> +#include "exec/ram_addr.h"
-
-Why this #include ?
-
->  const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
->      KVM_CAP_LAST_INFO
-> @@ -182,6 +183,7 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
->
->      cap_has_mp_state = kvm_check_extension(s, KVM_CAP_MP_STATE);
->
-> +    qemu_register_reset(kvm_unpoison_all, NULL);
-
-Looking at this, I realised that we can do this generically in
-kvm_init_vcpu() in kvm-all.c (guarded by #ifdef KVM_HAVE_MCE_INJECTION).
-You can move the qemu_register_reset() call from target/i386 into
-that common code in the patch where you move the unpoison functions.
-Then you can make kvm_unpoison_all be static rather than global.
-
->      type_register_static(&host_arm_cpu_type_info);
->
->      return 0;
-> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> index c00450d..6955d85 100644
-> --- a/target/arm/kvm64.c
-> +++ b/target/arm/kvm64.c
-> @@ -27,6 +27,9 @@
->  #include "kvm_arm.h"
->  #include "internals.h"
->  #include "hw/arm/arm.h"
-> +#include "exec/ram_addr.h"
-> +#include "hw/acpi/acpi-defs.h"
-> +#include "hw/acpi/hest_ghes.h"
->
->  static bool have_guest_debug;
->
-> @@ -944,6 +947,37 @@ int kvm_arch_get_registers(CPUState *cs)
->      return ret;
->  }
->
-> +void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
-> +{
-> +    ram_addr_t ram_addr;
-> +    hwaddr paddr;
-> +
-> +    assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
-> +    if (addr) {
-
-The x86 equivalent of this code has a check that amounts to
-"is the guest CPU actually able to accept MCE notifications?".
-It looks wrong that we don't have one here.
-
-It's also suspicious that our "send an MCE notification" is
-ACPI specific, when not all our aarch64 boards have ACPI,
-and even on virt it's optional.
-
-> +        ram_addr = qemu_ram_addr_from_host(addr);
-> +        if (ram_addr != RAM_ADDR_INVALID &&
-> +            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
-> +            kvm_hwpoison_page_add(ram_addr);
-> +            if (code == BUS_MCEERR_AR) {
-> +                kvm_cpu_synchronize_state(c);
-
-This is missing a comment that explains why it's necessary.
-
-> +                ghes_record_errors(ACPI_HEST_NOTIFY_SEA, paddr);
-> +                kvm_inject_arm_sea(c);
-> +            } else if (code == BUS_MCEERR_AO) {
-> +                ghes_record_errors(ACPI_HEST_NOTIFY_GPIO, paddr);
-> +                qemu_hardware_error_notify();
-> +            }
-> +            return;
-> +        }
-> +        fprintf(stderr, "Hardware memory error for memory used by "
-> +                "QEMU itself instead of guest system!\n");
-> +    }
-> +
-> +    if (code == BUS_MCEERR_AR) {
-> +        fprintf(stderr, "Hardware memory error!\n");
-> +        exit(1);
-> +    }
-> +}
-
-I rather suspect we could have this function common, with
-the per-architecture interface being "does this guest CPU support
-reporting MCEs to it" and "report an MCE to the guest CPU". But
-it's not that much code, so I can live with it not being shared for
-now.
-
-> +
->  /* C6.6.29 BRK instruction */
->  static const uint32_t brk_insn = 0xd4200000;
->
-> --
-> 1.8.3.1
-
-thanks
--- PMM

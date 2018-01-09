@@ -1,231 +1,268 @@
-Received: by 10.28.173.206 with SMTP id w197csp3906906wme;
-        Tue, 9 Jan 2018 08:54:46 -0800 (PST)
-X-Google-Smtp-Source: ACJfBovFzCkIbEwtMwz0qgyeF7Kndvrl8zPmBrTUOhgh8F583H42fDlKMfugOggWlORrNHmS+H8D
-X-Received: by 10.129.41.79 with SMTP id p76mr1856683ywp.181.1515516886385;
-        Tue, 09 Jan 2018 08:54:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515516886; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp3927828wme;
+        Tue, 9 Jan 2018 09:14:37 -0800 (PST)
+X-Google-Smtp-Source: ACJfBou58PbGyk2TeeyQPspFRVVcJgt54X1eYLdvWmtDfMBmgZbRYPW30ft/AQo1qbxcNM+bGJNX
+X-Received: by 10.98.144.199 with SMTP id q68mr14113239pfk.156.1515518077400;
+        Tue, 09 Jan 2018 09:14:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515518077; cv=none;
         d=google.com; s=arc-20160816;
-        b=W3+9UmBjrumfhqHydatxOeu8GbWrkP7//32pwSaRNhwIjYNNfW3oUb34x74sfwQCPw
-         0xLK2R/yVUHNUYtUn3Cl4z5pkXzWUBLV/Q1clHCKBw7iixPR2XhrTZ1XLFmj0Pa9XcTK
-         YiiKwPNmW6uHJJOGl5UH+kLGN1dWNShF39w7sU2eDGlFpJ5joEDbWdP1T31zAQPWtm39
-         GqD14v4OsPDVKjUW67DlUjX01IlPUEzhxQsZuhER4Cy9eWzBfkyODwfLPFgL55+xzXxV
-         2akkIk/uit7Y28SqVsSiJuPJvl7W+N2t1f8h+d98gpOZjYnuv6/gTJOxywQ2orZmkU9p
-         S6tA==
+        b=iL+6wdNr57vGEZqeSnFaqCuEV81/ar5TBg85aTxBepn9EoJ+Bp9JPV/bODm0gTeyDJ
+         5vlW9qCgTo7HBkyzI/cuN4adMTjV6BXrGyWahOaQ1xgB3YdbjIhYu8A2Q8dgH71POc4M
+         js8+i71R9FWVkqIigGnf8VM5AzjMUrUlkFfgPIfGxNw2yYRLB7oLy/LKbdSe0m7U388f
+         gcVP0u7JzZh3wtJTtnOQdusleONk27m+1lv7tNjgf+LiqjZj4wUjv3wmC8VQShZpb12U
+         BKVnD6e43TYVMp+NxrH1Iic4S2ZtRrP+J3hd87W30YaqoZmBDR9AWQdS2SbjJxPykZtq
+         QPmg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:user-agent:message-id:references
-         :in-reply-to:to:from:date:mime-version:dkim-signature
+        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=8TL813pm4l4IpjcTMctZnt8zOfrzTCwb6wILeB3SHfA=;
-        b=prf9YJHtItVK+055NgJNXtt8Kv0ppznO0T429geujttlXlvzNXvVeDQElCWXfyCNoU
-         v/TJbQ0Fm4xKQpdDNYY9mXtPkNyo2M595NgetlSmPHt3JJy0LA0QGOADHUa6QXNCEDXZ
-         T/4E3QSxnSr4Rn1xvlXAQ6XqMDmhnu6I6DTFiaGVxym6aIXQuW7x+w5By/jDhpnw6asZ
-         OowrH7XaycQ9RgZDZKntY8c33u1aNhxbZASwyMnSphGgDNZLVqXZ6mcxlSD8w4OpocbA
-         lThFwa+PYR/nP8Kgdp1iA5Q2FUIBwI53kLJjDi0pL09TYNQpNTittjZDJHc8u0aUZ8Ls
-         ZRGg==
+        bh=8gVKvr9yNWxA404feZUsUd5LWsXtq1jzCzroCg9EHIQ=;
+        b=FJzKytofWSE3g5L42mFSeb8sfBzMjmlckn5gnlPWQ8E3iLdLPrs66dWTkBJhpfqpPg
+         /re1I628hWXJ9CkWITpVKva9+TK7pN9s3WxDsc2U/XUl+MARFIF+APXBxk3ly9pMZmOu
+         xguC0EygA8W+Pq+mqVOH8qDryZ9FiKD40CXinlE2QGd5z20sy5wJPeZLEruyCyju1ymQ
+         XpxW5W22axe1ACUDwt3l+SdjruXoyOtgqribmdaBQ4nBYKlCSAedoKceZD5ADPFRNtBy
+         BE/mqUYtOCwg91iTaECvlhlwGk8QATM9wK1NdU/tgMkqJMWI1kgLk4VGiHS3KvF6eyp9
+         EV3A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@walle.cc header.s=mail2016061301 header.b=QGFufOhr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q19si3030071ywg.506.2018.01.09.08.54.46
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 Jan 2018 08:54:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       dkim=pass header.i=@linaro.org header.s=google header.b=faDK76uY;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id 68si769360pfe.113.2018.01.09.09.14.37;
+        Tue, 09 Jan 2018 09:14:37 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@walle.cc header.s=mail2016061301 header.b=QGFufOhr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:34210 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eYxAj-0002mv-TG
-	for alex.bennee@linaro.org; Tue, 09 Jan 2018 11:54:45 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45441)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <michael@walle.cc>) id 1eYxAa-0002m9-D0
-	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 11:54:37 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <michael@walle.cc>) id 1eYxAZ-0000Kl-Az
-	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 11:54:36 -0500
-Received: from ssl.serverraum.org ([2a01:4f8:222:d45::1:2]:52859)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <michael@walle.cc>)
-	id 1eYxAY-0000IA-Tl; Tue, 09 Jan 2018 11:54:35 -0500
-Received: from ssl.serverraum.org (web.serverraum.org [172.16.0.2])
-	(using TLSv1.2 with cipher DHE-RSA-CAMELLIA256-SHA256 (256/256 bits))
-	(No client certificate requested)
-	by ssl.serverraum.org (Postfix) with ESMTPSA id C14F922234;
-	Tue,  9 Jan 2018 17:54:30 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc;
-	s=mail2016061301; t=1515516870;
-	bh=ga/Rg7IMsdxfMhlPNvKR13sc3kROjThbc/aDcvmYU2U=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=QGFufOhrZUzBxWvQZ4AT2RddrbmBM+s++a0twt+rGLTtO0DHguXpP386C5SRJhv+8
-	ouO6EpJe3cji/v8xxuZCJLyEPQCAoyacyHmRmBD3FzLxB62CajHI5xaQx3Vjo5anCu
-	hqw3QopeXV4dPiz4OBldmH13GQm6+GhO7dgtGBG8=
+       dkim=pass header.i=@linaro.org header.s=google header.b=faDK76uY;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1752117AbeAIROf (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 5 others); Tue, 9 Jan 2018 12:14:35 -0500
+Received: from mail-ot0-f196.google.com ([74.125.82.196]:39955 "EHLO
+        mail-ot0-f196.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1751008AbeAIROe (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 9 Jan 2018 12:14:34 -0500
+Received: by mail-ot0-f196.google.com with SMTP id d10so11919725oti.7
+        for <kvm@vger.kernel.org>; Tue, 09 Jan 2018 09:14:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=8gVKvr9yNWxA404feZUsUd5LWsXtq1jzCzroCg9EHIQ=;
+        b=faDK76uY8vGN0+orvb3MlpUBcc9qmRWJeaVUPTyADvR1j/6H3Ug1xr9nyT5FGrbSyi
+         LVdIbs5yxxQQ6D2MXQWh41bqY73FSW1tSectW7dEhGwPxfugJR6k3IS90P3CpkZQ/wA9
+         mGmbm0VGL5isG3B53+QswOOEnOuHkkKrsArPQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=8gVKvr9yNWxA404feZUsUd5LWsXtq1jzCzroCg9EHIQ=;
+        b=krXVWbOEzbH/GV40sNNGM+7Nu7b9OJN6K3bmebv/baxvIrIuHS0nmBiE0ULYbu8r9e
+         xs/tvaS+2UG2FusBCFlWKe9yCJGaWDR4cN8lERd4Y2S36DLbFZQ9N6DUhI56SedGQi9x
+         RiR83GlKNQPfwycvLeYILhJR14ZuYO1/hMGOUiyhYKS8RZBOJ4GDOTZgYFTUbkoJyHyl
+         Jmy9p8YUUV84lW9iSUPFxKDl77p2JCNHXBCD8XkI2IGUBnuE/KJqrXB6YoFiZNw7e2iD
+         Lso/qIm17zSbvCmodudkOQa7YXeawIx0Ii3uK3odAQrE6Nq0De7TSF+YHeA47allffrN
+         rcxw==
+X-Gm-Message-State: AKwxytfeOnUOAx+sa+6D/ueeWlMFU+aVu30uwF1Q8P7ZGLvwdhd9pcLM
+        jJn7J6uw52l2tut6Dnv4HHazoGqDiFe9SYHokqhW9w==
+X-Received: by 10.157.5.196 with SMTP id 62mr8927637otd.110.1515518073370;
+ Tue, 09 Jan 2018 09:14:33 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
- format=flowed
-Date: Tue, 09 Jan 2018 17:54:30 +0100
-From: Michael Walle <michael@walle.cc>
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-In-Reply-To: <20180103162400.10396-3-f4bug@amsat.org>
-References: <20180103162400.10396-1-f4bug@amsat.org>
-	<20180103162400.10396-3-f4bug@amsat.org>
-Message-ID: <60c89dbec86c14e2f0883d121872d0f6@walle.cc>
-X-Sender: michael@walle.cc
-User-Agent: Roundcube Webmail/1.2.3
-X-Virus-Scanned: clamav-milter 0.99.2 at web
-X-Virus-Status: Clean
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a01:4f8:222:d45::1:2
-Subject: Re: [Qemu-arm] [PATCH 2/6] hw/sd/milkymist-memcard: split realize()
- out of SysBusDevice init()
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Xiaoqiang Zhao <zxq_yx_007@163.com>, qemu-devel@nongnu.org,
-	Alistair Francis <alistair.francis@xilinx.com>, qemu-arm@nongnu.org,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jXJJ/A88vIbE
+Received: by 10.157.15.71 with HTTP; Tue, 9 Jan 2018 09:14:12 -0800 (PST)
+In-Reply-To: <1514440458-10515-10-git-send-email-gengdongjiu@huawei.com>
+References: <1514440458-10515-1-git-send-email-gengdongjiu@huawei.com> <1514440458-10515-10-git-send-email-gengdongjiu@huawei.com>
+From:   Peter Maydell <peter.maydell@linaro.org>
+Date:   Tue, 9 Jan 2018 17:14:12 +0000
+Message-ID: <CAFEAcA84tR_9e24DqvR9vsNvFBbK86fUTBnQdBjWKDGj4wkTGg@mail.gmail.com>
+Subject: Re: [PATCH v14 9/9] target-arm: kvm64: handle SIGBUS signal from
+ kernel or KVM
+To:     Dongjiu Geng <gengdongjiu@huawei.com>
+Cc:     Paolo Bonzini <pbonzini@redhat.com>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Igor Mammedov <imammedo@redhat.com>,
+        Shannon Zhao <zhaoshenglong@huawei.com>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Richard Henderson <rth@twiddle.net>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        James Morse <james.morse@arm.com>,
+        Christoffer Dall <christoffer.dall@linaro.org>,
+        Marc Zyngier <marc.zyngier@arm.com>,
+        kvm-devel <kvm@vger.kernel.org>,
+        QEMU Developers <qemu-devel@nongnu.org>,
+        qemu-arm <qemu-arm@nongnu.org>,
+        Huangshaoyu <huangshaoyu@huawei.com>,
+        "Zhengqiang (turing)" <zhengqiang10@huawei.com>,
+        Xu Wei <xuwei5@hisilicon.com>
+Content-Type: text/plain; charset="UTF-8"
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: ON7oLWh/mz3a
 
-Hey Philippe,
-
-Am 2018-01-03 17:23, schrieb Philippe Mathieu-Daud=C3=A9:
-> Create the SDCard in the realize() function.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+On 28 December 2017 at 05:54, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+> Add SIGBUS signal handler. In this handler, it checks the SIGBUS type,
+> translates the host VA which is delivered by host to guest PA, then fill
+> this PA to CPER and fill the CPER to guest APEI GHES memory, finally
+> notify guest according to the SIGBUS type. There are two kinds of SIGBUS
+> that QEMU needs to handle, which are BUS_MCEERR_AO and BUS_MCEERR_AR.
+>
+> If guest accesses the poisoned memory, it generates Synchronous External
+> Abort(SEA). Then host kernel gets an APEI notification and call memory_failure()
+> to unmapped the affected page from the guest's stage2, and SIGBUS_MCEERR_AO
+> is delivered to Qemu's main thread. If Qemu receives this SIGBUS, it will
+> create a new CPER and add it to guest APEI GHES memory, then notify the
+> guest with a GPIO-Signal notification.
+>
+> When guest hits a PG_hwpoison page, it will trap to KVM as stage2 fault, then a
+> SIGBUS_MCEERR_AR synchronous signal is delivered to Qemu, Qemu record this error
+> into guest APEI GHES memory and notify guest using Synchronous-External-Abort(SEA).
+>
+> Suggested-by: James Morse <james.morse@arm.com>
+> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 > ---
->  hw/sd/milkymist-memcard.c | 24 +++++++++++++++---------
->  1 file changed, 15 insertions(+), 9 deletions(-)
->=20
-> diff --git a/hw/sd/milkymist-memcard.c b/hw/sd/milkymist-memcard.c
-> index 5de3e00e2f..5df3a0f815 100644
-> --- a/hw/sd/milkymist-memcard.c
-> +++ b/hw/sd/milkymist-memcard.c
-> @@ -255,24 +255,29 @@ static void milkymist_memcard_reset(DeviceState=20
-> *d)
->  static int milkymist_memcard_init(SysBusDevice *dev)
->  {
->      MilkymistMemcardState *s =3D MILKYMIST_MEMCARD(dev);
-> -    DriveInfo *dinfo;
+> Address James's comments to record CPER and notify guest for SIGBUS signal handling.
+> Shown some discussion in [1].
+>
+> [1]:
+> https://lkml.org/lkml/2017/2/27/246
+> https://lkml.org/lkml/2017/9/14/241
+> https://lkml.org/lkml/2017/9/22/499
+> ---
+>  include/sysemu/kvm.h |  2 +-
+>  target/arm/kvm.c     |  2 ++
+>  target/arm/kvm64.c   | 34 ++++++++++++++++++++++++++++++++++
+>  3 files changed, 37 insertions(+), 1 deletion(-)
+>
+> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+> index 3a458f5..90c1605 100644
+> --- a/include/sysemu/kvm.h
+> +++ b/include/sysemu/kvm.h
+> @@ -361,7 +361,7 @@ bool kvm_vcpu_id_is_valid(int vcpu_id);
+>  /* Returns VCPU ID to be used on KVM_CREATE_VCPU ioctl() */
+>  unsigned long kvm_arch_vcpu_id(CPUState *cpu);
+>
+> -#ifdef TARGET_I386
+> +#if defined(TARGET_I386) || defined(TARGET_AARCH64)
+
+As a general rule we should not introduce new ifdefs with
+lists of architectures in them. Instead the targets which support
+something should define something suitable in a per-target
+header file.
+
+In this case I think you should:
+ * move the define KVM_HAVE_MCE_INJECTION to target/i386/cpu.h,
+   and have this ifdef be #ifdef KVM_HAVE_MCE_INJECTION
+   (that should be in a different patch)
+ * have the target-arm patch then just define KVM_HAVE_MCE_INJECTION
+   in target/arm/cpu.h (if TARGET_AARCH64) and provide
+   kvm_arch_on_sigbus_vcpu()
+
+>  #define KVM_HAVE_MCE_INJECTION 1
+>  void kvm_arch_on_sigbus_vcpu(CPUState *cpu, int code, void *addr);
+>  #endif
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index 7c17f0d..9d25f51 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -26,6 +26,7 @@
+>  #include "exec/address-spaces.h"
+>  #include "hw/boards.h"
+>  #include "qemu/log.h"
+> +#include "exec/ram_addr.h"
+
+Why this #include ?
+
+>  const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
+>      KVM_CAP_LAST_INFO
+> @@ -182,6 +183,7 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+>
+>      cap_has_mp_state = kvm_check_extension(s, KVM_CAP_MP_STATE);
+>
+> +    qemu_register_reset(kvm_unpoison_all, NULL);
+
+Looking at this, I realised that we can do this generically in
+kvm_init_vcpu() in kvm-all.c (guarded by #ifdef KVM_HAVE_MCE_INJECTION).
+You can move the qemu_register_reset() call from target/i386 into
+that common code in the patch where you move the unpoison functions.
+Then you can make kvm_unpoison_all be static rather than global.
+
+>      type_register_static(&host_arm_cpu_type_info);
+>
+>      return 0;
+> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> index c00450d..6955d85 100644
+> --- a/target/arm/kvm64.c
+> +++ b/target/arm/kvm64.c
+> @@ -27,6 +27,9 @@
+>  #include "kvm_arm.h"
+>  #include "internals.h"
+>  #include "hw/arm/arm.h"
+> +#include "exec/ram_addr.h"
+> +#include "hw/acpi/acpi-defs.h"
+> +#include "hw/acpi/hest_ghes.h"
+>
+>  static bool have_guest_debug;
+>
+> @@ -944,6 +947,37 @@ int kvm_arch_get_registers(CPUState *cs)
+>      return ret;
+>  }
+>
+> +void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+> +{
+> +    ram_addr_t ram_addr;
+> +    hwaddr paddr;
 > +
-> +    memory_region_init_io(&s->regs_region, OBJECT(s),=20
-> &memcard_mmio_ops, s,
-> +            "milkymist-memcard", R_MAX * 4);
-> +    sysbus_init_mmio(dev, &s->regs_region);
+> +    assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
+> +    if (addr) {
+
+The x86 equivalent of this code has a check that amounts to
+"is the guest CPU actually able to accept MCE notifications?".
+It looks wrong that we don't have one here.
+
+It's also suspicious that our "send an MCE notification" is
+ACPI specific, when not all our aarch64 boards have ACPI,
+and even on virt it's optional.
+
+> +        ram_addr = qemu_ram_addr_from_host(addr);
+> +        if (ram_addr != RAM_ADDR_INVALID &&
+> +            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
+> +            kvm_hwpoison_page_add(ram_addr);
+> +            if (code == BUS_MCEERR_AR) {
+> +                kvm_cpu_synchronize_state(c);
+
+This is missing a comment that explains why it's necessary.
+
+> +                ghes_record_errors(ACPI_HEST_NOTIFY_SEA, paddr);
+> +                kvm_inject_arm_sea(c);
+> +            } else if (code == BUS_MCEERR_AO) {
+> +                ghes_record_errors(ACPI_HEST_NOTIFY_GPIO, paddr);
+> +                qemu_hardware_error_notify();
+> +            }
+> +            return;
+> +        }
+> +        fprintf(stderr, "Hardware memory error for memory used by "
+> +                "QEMU itself instead of guest system!\n");
+> +    }
 > +
-> +    return 0;
+> +    if (code == BUS_MCEERR_AR) {
+> +        fprintf(stderr, "Hardware memory error!\n");
+> +        exit(1);
+> +    }
 > +}
 
-Creating the device (milkymist_memcard_create()) fails with an=20
-assertion:
-   sysbus_mmio_map_common: Assertion `n >=3D 0 && n < dev->num_mmio'=20
-failed.
-
-because dev->num_mmio is still 0. Seems that sysbus_init_mmio() hasn't=20
-been called yet. Do we have to move the milkymist_memcard_init() to=20
-.instance_init?
-
-Eg.
-
-diff --git a/hw/sd/milkymist-memcard.c b/hw/sd/milkymist-memcard.c
-index 5df3a0f815..21c0e91926 100644
---- a/hw/sd/milkymist-memcard.c
-+++ b/hw/sd/milkymist-memcard.c
-@@ -252,15 +252,14 @@ static void milkymist_memcard_reset(DeviceState=20
-*d)
-      }
-  }
-
--static int milkymist_memcard_init(SysBusDevice *dev)
-+static void milkymist_memcard_init(Object *obj)
-  {
--    MilkymistMemcardState *s =3D MILKYMIST_MEMCARD(dev);
-+    MilkymistMemcardState *s =3D MILKYMIST_MEMCARD(obj);
-+    SysBusDevice *dev =3D SYS_BUS_DEVICE(obj);
-
-      memory_region_init_io(&s->regs_region, OBJECT(s),=20
-&memcard_mmio_ops, s,
-              "milkymist-memcard", R_MAX * 4);
-      sysbus_init_mmio(dev, &s->regs_region);
--
--    return 0;
-  }
-
-  static void milkymist_memcard_realize(DeviceState *dev, Error **errp)
-@@ -300,9 +299,7 @@ static const VMStateDescription=20
-vmstate_milkymist_memcard =3D {
-  static void milkymist_memcard_class_init(ObjectClass *klass, void=20
-*data)
-  {
-      DeviceClass *dc =3D DEVICE_CLASS(klass);
--    SysBusDeviceClass *k =3D SYS_BUS_DEVICE_CLASS(klass);
-
--    k->init =3D milkymist_memcard_init;
-      dc->realize =3D milkymist_memcard_realize;
-      dc->reset =3D milkymist_memcard_reset;
-      dc->vmsd =3D &vmstate_milkymist_memcard;
-@@ -314,6 +311,7 @@ static const TypeInfo milkymist_memcard_info =3D {
-      .name          =3D TYPE_MILKYMIST_MEMCARD,
-      .parent        =3D TYPE_SYS_BUS_DEVICE,
-      .instance_size =3D sizeof(MilkymistMemcardState),
-+    .instance_init =3D milkymist_memcard_init,
-      .class_init    =3D milkymist_memcard_class_init,
-  };
-
--michael
+I rather suspect we could have this function common, with
+the per-architecture interface being "does this guest CPU support
+reporting MCEs to it" and "report an MCE to the guest CPU". But
+it's not that much code, so I can live with it not being shared for
+now.
 
 > +
-> +static void milkymist_memcard_realize(DeviceState *dev, Error **errp)
-> +{
-> +    MilkymistMemcardState *s =3D MILKYMIST_MEMCARD(dev);
->      BlockBackend *blk;
-> +    DriveInfo *dinfo;
->=20
->      /* FIXME use a qdev drive property instead of drive_get_next() */
->      dinfo =3D drive_get_next(IF_SD);
->      blk =3D dinfo ? blk_by_legacy_dinfo(dinfo) : NULL;
->      s->card =3D sd_init(blk, false);
->      if (s->card =3D=3D NULL) {
-> -        return -1;
-> +        error_setg(errp, "failed to init SD card");
-> +        return;
->      }
-> -
->      s->enabled =3D blk && blk_is_inserted(blk);
-> -
-> -    memory_region_init_io(&s->regs_region, OBJECT(s),=20
-> &memcard_mmio_ops, s,
-> -            "milkymist-memcard", R_MAX * 4);
-> -    sysbus_init_mmio(dev, &s->regs_region);
-> -
-> -    return 0;
->  }
->=20
->  static const VMStateDescription vmstate_milkymist_memcard =3D {
-> @@ -298,6 +303,7 @@ static void
-> milkymist_memcard_class_init(ObjectClass *klass, void *data)
->      SysBusDeviceClass *k =3D SYS_BUS_DEVICE_CLASS(klass);
->=20
->      k->init =3D milkymist_memcard_init;
-> +    dc->realize =3D milkymist_memcard_realize;
->      dc->reset =3D milkymist_memcard_reset;
->      dc->vmsd =3D &vmstate_milkymist_memcard;
->      /* Reason: init() method uses drive_get_next() */
+>  /* C6.6.29 BRK instruction */
+>  static const uint32_t brk_insn = 0xd4200000;
+>
+> --
+> 1.8.3.1
+
+thanks
+-- PMM

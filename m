@@ -1,108 +1,98 @@
-Received: by 10.28.173.206 with SMTP id w197csp3866410wme;
-        Tue, 9 Jan 2018 08:13:41 -0800 (PST)
-X-Google-Smtp-Source: ACJfBot6VhE7gzI4iWtFUzN5M7mnejmZTI86TzE2LzpCFSuXvFl47dOHP3NujZq7E72JNKw6+QxA
-X-Received: by 10.13.250.134 with SMTP id k128mr14719615ywf.3.1515514420907;
-        Tue, 09 Jan 2018 08:13:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515514420; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp3870097wme;
+        Tue, 9 Jan 2018 08:17:09 -0800 (PST)
+X-Google-Smtp-Source: ACJfBotqmvAaBuvdi9TkDQWeRZaEai0T27+cXjuvgEVY159Yp9jF2mME6KbMRkVG741YmeSP0NDu
+X-Received: by 10.37.216.144 with SMTP id p138mr14364596ybg.61.1515514629271;
+        Tue, 09 Jan 2018 08:17:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515514629; cv=none;
         d=google.com; s=arc-20160816;
-        b=z4KrXjS7iKjjDI1vcN3EktJp8b5dZ2CW4v2KBPR2VyenbLeAlj4OAg1pZjp+ccIMSk
-         KFCN0kMBVylAcWYr8pz3DY42HuNWmYtm9r+0lkcudBYTL5loNihySoLtahy+cj0JNhpk
-         d2kcUlxhiu2cUBBQI/kkv20foy17sow1yH2RG5GQmmzVbQzEYZasfUyBFAQ0lhXi0DiH
-         0rc5o5jx5jE586kHv44te7IVsM9O1Z8GbN7fHSxiPt0HEZXrxzXXrFY+MLQS1xVYNYWi
-         fuJWXGLssDFlCgiugkEFwHuBo4aeuVuDUD5XZNUHzHnlCfieJRWmkseFN0ZcLdZBJT9C
-         kGyw==
+        b=IWKNzz1cV+B2nr+oAQ9Aq80hLvp5XWzobPh+uN87mItyDikUGbnbN04ExRrxGqPhxP
+         HEuMxF8b9aXXQO18u+Gj20lVpbqajwhj5zq9KofYCHpXzw9oy9sJe3Vu1NS/vIPawefk
+         d5R8xBkiEAAJEWQeeibTrzxFXqob5UD5pNqaPIUF5yteXXanjZa5N2kDwV9tNJ04yozT
+         FvcG7JNDy0A4Y4jLx4ChRIC9Krs6n2IOKp37AnTDDYdvEVHw+u/HQm7p9timu0yEBhVZ
+         YGaq3rTH3AJiV2s9BDY6hMbUWP2T+f7nihGSKf+vohZy2ZPIWZ9fj41D1qMZniha9ZwE
+         mPpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :mime-version:user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=kaRYkf0vUwXgHDYMPh2KIV599eLsKD/G4f4mC8jtOmI=;
-        b=P88C5qyHw0lP+BCiQUkHdj5L0D2tP6DaDZU194jOfJt6VGG8PCmSu8OEnW4DXL2IZg
-         ojEJGrif7jTQWRkEERXsnRCZfNqcqCf0KUkIvrpyZdyxl64/HQFwWYBOnPG3QjJLzr/Z
-         4I3iQf6JT+vn5D2iyxliFEYFiKgPVxBnQjztb1oJbaTd9GG5snxFYfSavCMCrMJIr4zy
-         WiFX1b941csHw7mcXLKw/PO/8dhhwV3XHjI98ohlgk1SuVSv8PQEaED287J6X50LXP+D
-         wHfBzQ7luqfWj525aRoiP3mCBDa0NilYoIHhQyXvMJqNP7P/gyjr+0QzmBWf7aT3kWNw
-         /mcA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=riONP+hYfj+bRcH7uf4jEu/rlB6vRsEP4Emo8kPNtgk=;
+        b=SG9Nz5JWR7MIAVkY005UZvTr6zvfWE/s/PWZg/AOutio1RtcjnOqbA4Bd0rMGWWD6/
+         +56X8HHPspTqxKiE2c7U1n5YO3J3b53NYLv+HHogH/E9t6AhU1cQBYcrl5d7v6tFu/Fo
+         fDY9cRawdxTVlLAOgjj8Vxg0LeXjxg8uKN+51yciWBtML0XbGgQU7pDG7w5AdPUMoQa8
+         Pr1qKUPXVYwUXW3wcK70yM1kgCgZ2H1cZW5HuP7IOd2SmMG24IrLyuMXOT7m0tqQLx9W
+         FJmpPuugIIjCAzKWj4tauAKF5CiATJeplHg/DL1cUxFdTSSExeBJyKzFsQSZ8/i1IeoN
+         48HA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Q0B0PP7Q;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@linaro.org header.s=google header.b=FE+qZ48x;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 9si1584867ywa.626.2018.01.09.08.13.40
+        by mx.google.com with ESMTPS id y197si1243841ywd.601.2018.01.09.08.17.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 Jan 2018 08:13:40 -0800 (PST)
+        Tue, 09 Jan 2018 08:17:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Q0B0PP7Q;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60327 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=FE+qZ48x;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60499 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eYwWy-0000KK-87
-	for alex.bennee@linaro.org; Tue, 09 Jan 2018 11:13:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54587)
+	id 1eYwaK-000246-Mm
+	for alex.bennee@linaro.org; Tue, 09 Jan 2018 11:17:08 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56270)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eYwWn-0000Ih-Fr
-	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 11:13:30 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1eYwa8-00023k-Dw
+	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 11:17:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eYwWm-0005fk-Aa
-	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 11:13:29 -0500
-Received: from mail-qk0-x229.google.com ([2607:f8b0:400d:c09::229]:32836)
+	(envelope-from <peter.maydell@linaro.org>) id 1eYwa7-0000Tk-OB
+	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 11:16:56 -0500
+Received: from mail-oi0-x231.google.com ([2607:f8b0:4003:c06::231]:32809)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eYwWd-0005YM-IV; Tue, 09 Jan 2018 11:13:19 -0500
-Received: by mail-qk0-x229.google.com with SMTP id i17so14778598qke.0;
-	Tue, 09 Jan 2018 08:13:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to;
-	bh=kaRYkf0vUwXgHDYMPh2KIV599eLsKD/G4f4mC8jtOmI=;
-	b=Q0B0PP7Q3L/8UmBasoZkG7uj+UVBPj4xylMDXkJCNYNT/bb2hb0bGceGJUWLtL+xp2
-	Nej3PaLMbHCK1eVdZNSfjt5eGMuKWhpSBfmyXyWEAfVDsXlCcleEAfz2vPfDqI2uGtjO
-	cHaBq4AFGxfSjEmSo9HYM+pEb0/Uf/WXi2GQsgjEmX9wxJ7XnUn+sy0DIuq/FZOwXFqK
-	epS/ZlGjPpzQWVyMMWBdaKsGku6pR31PZQfsOa6ldcMMgaLF/90C4uy32TW0QBZSLK9R
-	VtVpCgrfsi5hEUBz3uEwgRb5Rb5EUp2Kf5qx8uLi9XFsCKWm1zc2sOzvwnXIbOOOU18G
-	YbRA==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1eYwa7-0000TA-Jl
+	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 11:16:55 -0500
+Received: by mail-oi0-x231.google.com with SMTP id y141so4474725oia.0
+	for <qemu-arm@nongnu.org>; Tue, 09 Jan 2018 08:16:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=riONP+hYfj+bRcH7uf4jEu/rlB6vRsEP4Emo8kPNtgk=;
+	b=FE+qZ48xpWbC8Vt31Wq4dUCO0nrJS5S80GkvvZVwCJeWdVy3PFJBSz1W/SdGTROnu1
+	IVy79ZjjPrhoFxyVBVDUvojyzCGClwxVDrAJiDiMk5ELhvEG2n30Rex5FxU4EfbryNaZ
+	tSzlCj5qDTb+OFey/3eUdvtg9Zjh7ukNLS4Z0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to;
-	bh=kaRYkf0vUwXgHDYMPh2KIV599eLsKD/G4f4mC8jtOmI=;
-	b=iwDxIfsQ4Vvq+WPM568SWTwkMM+6bMgn482BST/wVqhH3AGHdMGGHzgiE8szX3tq/J
-	XUDn3yLXUxygX6Wdw20ALJv11P/lOOhz2Ad/9UInQ9vuod10f1LdTRiRWtOvErEPq6vR
-	O+1sQR0UYO02gjMBvX/hkwnuTz3h+fDbIit9Y/22ony7aC9XuHaedYhCaAjKXPBWeOTB
-	Bkn5mfbeKBteUpGUBOrNXTSS37flrz8vDmzOQ7T7TNYmJBbHYqLKk4zHkmRpsyM1GIET
-	KtdBJU+dwNfPNefu8Lgj67wjfbxjuZ+GNsURl88BkYOaWdwQ8mEV1llRnLYMsfQYhApw
-	hdgA==
-X-Gm-Message-State: AKwxytfJHBzDtK5Bg18CIHZdML+QIZ/xa093i7E0spvpnN1/XwaNGKwo
-	29+jtzd51EROZXsSfIEx72w=
-X-Received: by 10.55.204.18 with SMTP id r18mr21542323qki.212.1515514398866;
-	Tue, 09 Jan 2018 08:13:18 -0800 (PST)
-Received: from [192.168.1.11] ([138.117.48.219])
-	by smtp.gmail.com with ESMTPSA id g5sm9648324qkf.91.2018.01.09.08.13.16
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 09 Jan 2018 08:13:18 -0800 (PST)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-References: <1515506513-31961-1-git-send-email-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <d7f23db3-6669-76fe-661e-a5b506cfbeaf@amsat.org>
-Date: Tue, 9 Jan 2018 13:13:15 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.2
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=riONP+hYfj+bRcH7uf4jEu/rlB6vRsEP4Emo8kPNtgk=;
+	b=M2pK5be5A6KsnwWJ3jxfVHgNRn9cYRmX0gCe0T3pzPVOiluqePxxYqO/MMzUn1oOv+
+	tEQCPXcqxpAJUmSFaR/JZoMZvUutSyzPNCk4fW4NJzVvxj/XCCprB4kw3D5l1iKmpbt2
+	YMXLicY9Ntp27sFtKNYpwU8v125Z07vgZJNZedpZiiDiKuJtuzKA7MA6Iv9wVKOV7mSe
+	sh+oF8l4OHLrwwyIze0actBJIpiAq9UNch2sUWUNToSCvowZFxzvXYjSJ5oI9TOD/MRZ
+	peKvSDrYSrwLX61ZOa+JSJxsluan5b59T97CHPmv/p3tYwmX94C9nNppQw3U5NVxqmqU
+	orNA==
+X-Gm-Message-State: AKwxytePY//0IRciPzgift/0FNTjDQbZ7Wlu/JYgBWrisYMrFDsFBtu3
+	IpYpJxOyuiTqMvnzmMwqjHKf8Wyg5FW2v8MaKXOlBA==
+X-Received: by 10.202.173.84 with SMTP id w81mr1090691oie.299.1515514614943;
+	Tue, 09 Jan 2018 08:16:54 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <1515506513-31961-1-git-send-email-peter.maydell@linaro.org>
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature";
-	boundary="kwNFjJuA79QvxwnyXiYVvuS3HyHpn6nB1"
+Received: by 10.157.15.71 with HTTP; Tue, 9 Jan 2018 08:16:34 -0800 (PST)
+In-Reply-To: <d7f23db3-6669-76fe-661e-a5b506cfbeaf@amsat.org>
+References: <1515506513-31961-1-git-send-email-peter.maydell@linaro.org>
+	<d7f23db3-6669-76fe-661e-a5b506cfbeaf@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 9 Jan 2018 16:16:34 +0000
+Message-ID: <CAFEAcA9ME7MpBySJ1XFZ+fSb9JrT1mKL9Ns3uVviuOpbteHA6g@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::229
+X-Received-From: 2607:f8b0:4003:c06::231
 Subject: Re: [Qemu-arm] [PATCH 0/4] Reset SD cards attached to legacy-API
  controllers
 X-BeenThere: qemu-arm@nongnu.org
@@ -116,115 +106,21 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-stable@nongnu.org, patches@linaro.org
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	"patches@linaro.org" <patches@linaro.org>,
+	qemu-stable <qemu-stable@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: So98Sy/UuXx7
+X-TUID: T23nLwuYdwsu
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---kwNFjJuA79QvxwnyXiYVvuS3HyHpn6nB1
-Content-Type: multipart/mixed; boundary="edaU93EfZWhWVPaObQYGlZWSP0P7ICn1h";
- protected-headers="v1"
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org, patches@linaro.org
-Message-ID: <d7f23db3-6669-76fe-661e-a5b506cfbeaf@amsat.org>
-Subject: Re: [Qemu-arm] [PATCH 0/4] Reset SD cards attached to legacy-API
- controllers
-References: <1515506513-31961-1-git-send-email-peter.maydell@linaro.org>
-In-Reply-To: <1515506513-31961-1-git-send-email-peter.maydell@linaro.org>
+On 9 January 2018 at 16:13, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> w=
+rote:
+> I didn't test migrating a card (but have a "sdcard migration qtest"
+> entry in my TODO).
 
---edaU93EfZWhWVPaObQYGlZWSP0P7ICn1h
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+I usually test not by actually migrating but using 'savevm foo' in
+the monitor to save a snapshot and then -loadvm foo on the command
+line to resume it.
 
-Hi Peter,
-
-On 01/09/2018 11:01 AM, Peter Maydell wrote:
-> It turns out that we don't reset the SD card model if it's
-> attached to a legacy-API controller. For new-style controllers
-> where the SD card object is attached to an SD_BUS, the generic
-> qbus infrastructure takes care of ensuring that the card's
-> DeviceState::reset method gets called. But for the legacy
-> API where the card is created by calling sd_init(), the card
-> object has no SD_BUS to plug into, and so the reset function
-> must be called manually.
->=20
-> This mostly had no ill effects because a guest OS will typically
-> perform an SD reset command as part of its device driver init
-> sequence. However it does mean that migration won't work, because
-> it's in sd_reset() that we set up the wpgrps_size field, and
-> without that the migration struct on reload won't match.
->=20
-> This patchset fixes up the four legacy controllers to call
-> reset on the SD card device in their controller reset functions.
-> The first 3 are cc:stable as migration bugfixes.
->=20
-> This fixes https://bugs.launchpad.net/qemu/+bug/1739378
->=20
-> Philippe: this probably clashes slightly with your sdcard
-> patchsets (and where you've updated devices to the new APIs
-> it becomes irrelevant), but I think we should apply these
-> first so we can have a simple patch to backport to the stable
-> tree.
-
-Sure, it makes sens.
-
-I didn't test migrating a card (but have a "sdcard migration qtest"
-entry in my TODO).
-
-this series:
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Tested-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-
->=20
-> Notes:
->  * OMAP doesn't migrate anyway, so isn't cc:stable
->  * for vexpress-a15, you also need "-machine secure=3Doff":
->    a config with trustzone emulation enabled doesn't
->    successfully migrate (haven't yet debugged why)
->=20
-> thanks
-> -- PMM
->=20
-> Peter Maydell (4):
->   hw/sd/pl181: Reset SD card on controller reset
->   hw/sd/milkymist-memcard: Reset SD card on controller reset
->   hw/sd/ssi-sd: Reset SD card on controller reset
->   hw/sd/omap_mmc: Reset SD card on controller reset
->=20
->  hw/sd/milkymist-memcard.c |  4 ++++
->  hw/sd/omap_mmc.c          | 14 ++++++++++----
->  hw/sd/pl181.c             |  4 ++++
->  hw/sd/ssi-sd.c            | 24 +++++++++++++++++++++++-
->  4 files changed, 41 insertions(+), 5 deletions(-)
->=20
-
-
---edaU93EfZWhWVPaObQYGlZWSP0P7ICn1h--
-
---kwNFjJuA79QvxwnyXiYVvuS3HyHpn6nB1
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCgAdFiEE+qvnXhKRciHc/Wuy4+MsLN6twN4FAlpU6hsACgkQ4+MsLN6t
-wN7p0RAAkY/dGWPp9YaVY9VDI33T4TBJDGuPL77XWjt3+CuceNrim8ecP7FqrRir
-voknNtES38Zw2jTGVZtEqfRp+x3tus0ZvU+PJ/GT9XMf0qkFrasEJ0bAuj3C6qL1
-Uc6g7QYwQvwHcdZxEY1tiNGcRJ6IU1cIQSYf32RJQ0sPhWyZn2xilqLYy4H6xmGF
-PDU0OvEkel7Iq2Qk1cj8+4MtjGqy5pcqkalUto64izi2t74kDhrTfWjvBbTjT6Jv
-GhVgdBmM4VyJMZP2F+E6FGxcicGAISW5gnL+/urBX/Gj/kiJfhNY+u18fYYzEUsW
-mnuwmIVoo3IAtQp41rrtyvjbCq5rNoM9ApsfrkuX2Gn8Wxe4YGUcjaEQUyErzRP3
-ymqINaP2gXcxFYmSOKzx7vBzThuYiQ0SR88uR0n+XdWLTjEtvh/efY40ZYbqi9U4
-5TaXUSHcyaMX62iwgU3Y7MdyIrmGM7/TDzcK4Fg+UHPJVOryZSxog16tO/LjPKD9
-VoYXEXd32XxOz/M/EyRRrbUnAWnalyb8QPF0KQvdnNeg/g0c1EvXdQuENMFwgi9j
-8E5O0KpgeMxfJqBZeusbDOaSFj2yzdizDTx2Dx5b/dXs+Dzj7i79lCiv5XGR0wKo
-DoH29u+iqN0IUqOn0vxiMp+dfODY4hqe0IssMOPoF8Bv14rmvgA=
-=cNBO
------END PGP SIGNATURE-----
-
---kwNFjJuA79QvxwnyXiYVvuS3HyHpn6nB1--
+thanks
+-- PMM

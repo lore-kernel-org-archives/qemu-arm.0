@@ -1,90 +1,100 @@
-Received: by 10.28.173.206 with SMTP id w197csp4018783wme;
-        Tue, 9 Jan 2018 10:50:33 -0800 (PST)
-X-Google-Smtp-Source: ACJfBoumSIMmNgdsiboQgZVBJ7kX/tf4zq44Eoox2zNg8U30VsIuovty9ZWefCaLdaCD6u+nUEFQ
-X-Received: by 10.129.201.70 with SMTP id c6mr14846806ywl.512.1515523833587;
-        Tue, 09 Jan 2018 10:50:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515523833; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp4169162wme;
+        Tue, 9 Jan 2018 13:41:57 -0800 (PST)
+X-Google-Smtp-Source: ACJfBovBCiknDC8IzU8EIPE9ttBaXSyBs0z5LfW9MFAXOvIo1w2QP1hxxoGqnPvwZ9rMYcLeMoen
+X-Received: by 10.37.248.29 with SMTP id u29mr7721715ybd.341.1515534117844;
+        Tue, 09 Jan 2018 13:41:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515534117; cv=none;
         d=google.com; s=arc-20160816;
-        b=miJ3lW92oVLyuASFGwMv8KJyN+spzTQpfnUWKww2bvK7EC7yQqQD+yeWy9Yzf7jk0s
-         k+zuzatejUjZ8Wl0m+5+xXliovQFjtNFlBoXs8Tf6HuTvbaBXdJvlGtt5ObTd022e3Ht
-         TQcd5Y3KVc6cQtaIwDwUYQvzCTSHY+QSxRVrImsubXl1PsFTN2XzM/1fo+1fQS/X4WY6
-         CoSp5ANXfSpS2hzUXDuS8mHjuF3KwyuOYIoJG025XkAb1+5qYobyYitcx+9MicX5uN8p
-         J9kV7vmwdvB0P19hvYrIGyzS9qXexUhZPx2mlcP/cFcWf9Ebrd8QuZJFvu3SFQwL7wQY
-         QBoA==
+        b=iOgfYD4VRZF6gDbDg2VZvRrEz8Ir2eY0w6rCcFzMn34ayEf+LSrQEt4SxjkfzzMJr9
+         NQo9iLfNLukEtmSuXUXLKvbq32zG+UqWm+AXJalvV6LSGZaft9bjifMahQ4O8cgNuO3Y
+         uEuOG40QuwVBpJU6/4nR4J317m+C04YdfP+4G0KjqyEgVgDTPiJuQnS0lRe8dTykibcU
+         BCSwbSRqOGJSXqjYDw0HCx2g5lG4VHau33jz643q+RTDdnA3dHAszpKkstblqOVE5bGQ
+         0wrcwwP56G3N1tSxgBvPl6rxu2z57K/tj/yjlyaKw8jshgZ22bUX+K+Pe/WPjIq2xihu
+         ACCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=EtYuql9p43rB8+w8j/gYnBD1WckVdJcYPL2qtU5lujw=;
-        b=Yh5hH2yVGPWQ+nGCEb9Q3I0rTNM26UJSpkwGJCLZfvQIDSPpGm9/C1oP4k9lN9rsFh
-         Ym5fLJYDrHW3km9xtIdZ3flV5RDvcjONRDq1fcB+bCp7IeN80+DB9RrfQTwIB1Y7cbLk
-         DfPJtPUM/Tcm+kRhYhFHj+jYzTYzhi+PsPtrMbSy8UJzYWMzbcdcUwtptKShJxft9mOz
-         QT8dTJ5mMKftA2aqCegq3PwXyf5W6TjVG4yaGZvve/rE5lZ4bGnnWe+8XjAMg7RrYhaZ
-         XjrYAb+qlvLeqve9cMjlT4Rn9tU/y6XYtZXEXszD5+k/i3L8d6pbwcV5HuRJ7IUkaSNZ
-         bhSg==
+        bh=ydGgcauDL/dus8rRyJ33yAKBTIjyszTPbkqZoX4z030=;
+        b=nNk34aIRfhTaMFvfwJ/vi+119hhPkSvrg4R/ykZH+9HF/lk6MyKXuGmiPZBZNMw3jm
+         P5cTFFTEX0kHYZYzNA5TbX+pCbB6cqi2IiV8fEOxlpVZH1E6xyOryJNXFhk2woEoSIFm
+         yLasoyIJdP/epxopy/i38hZwC4fYtiyjjJTsYVXy846GcbuAJDx9XOrEGZ1WLoMt0VeW
+         Zd6a/rneY1EUtrFKO5BYA1058o9oo6iirDUIWwCvt8jcLPxb+G+9KJoraqP5/6ixP+12
+         4sR3kda01R9K4jh3WL5B1Kbqv6wQqgAVEskpO0pW1NTpjKNIXmeSH1mmSewmmbW6tJyW
+         l4Lw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AkQ91VR4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o206si680064ywo.358.2018.01.09.10.50.33
+        by mx.google.com with ESMTPS id y199si1402441ywy.464.2018.01.09.13.41.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 Jan 2018 10:50:33 -0800 (PST)
+        Tue, 09 Jan 2018 13:41:57 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AkQ91VR4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40511 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:49874 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eYyyn-0003ES-4l
-	for alex.bennee@linaro.org; Tue, 09 Jan 2018 13:50:33 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43484)
+	id 1eZ1ef-0006BD-BA
+	for alex.bennee@linaro.org; Tue, 09 Jan 2018 16:41:57 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49215)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1eYyy3-0002vh-3Z
-	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 13:50:18 -0500
+	(envelope-from <alistair23@gmail.com>) id 1eZ1eX-0006AB-6w
+	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 16:41:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1eYyxE-00042b-Je
-	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 13:49:47 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:45124)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1eYyxE-000412-A0; Tue, 09 Jan 2018 13:48:56 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9D322C04AC41;
-	Tue,  9 Jan 2018 18:48:54 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id DF1316090B;
-	Tue,  9 Jan 2018 18:48:47 +0000 (UTC)
-Date: Tue, 9 Jan 2018 19:48:45 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20180109184845.e2ma4po2sibogkua@kamzik.brq.redhat.com>
-References: <1513183941-24300-1-git-send-email-peter.maydell@linaro.org>
-	<CAFEAcA8NbL7ROZs99hWhpAF2Rdi2qEiWLNo3hr_9W7gmgXyw4A@mail.gmail.com>
-	<6d20557d-5722-706f-ca4f-489ab85358c0@redhat.com>
-	<CAFEAcA-Nn4VmSnxT7Of8Nh+p5QgF9cMzkqZ-VBCC=2zRgk-Xdw@mail.gmail.com>
-	<e40cc107-2fe9-d8a5-b4fd-385c0d22c564@redhat.com>
-	<CAFEAcA8QqEna4u92bk88++Y1JrpCJD=KDpSfbJ8DhfSiTRm+=w@mail.gmail.com>
+	(envelope-from <alistair23@gmail.com>) id 1eZ1eW-0008Bg-H6
+	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 16:41:49 -0500
+Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:43888)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1eZ1eW-0008AB-A5; Tue, 09 Jan 2018 16:41:48 -0500
+Received: by mail-wm0-x241.google.com with SMTP id g1so5250827wmg.2;
+	Tue, 09 Jan 2018 13:41:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=ydGgcauDL/dus8rRyJ33yAKBTIjyszTPbkqZoX4z030=;
+	b=AkQ91VR4/988kjZYd1tMkyIdL2j03yzq2YR5dWWQUIJ/wqUYRjU+fqoZbBeRuU+UIC
+	VXJPiSyA9L2sX3nrKIvc/KzeHY9pW3PO1AN/nPNJ23Z5JlMplBja9uPyZOXvvSBHc4E5
+	XiFU8tolW1Rvajnx925IsoBac3/lKjjV9Rhyi8nDYPZ1PPXDP6XyomxTav3YMChTXY1j
+	f3jfkfcj99OC9cMOtq7MsZT0iXSNq3wq8Ou7ws5Iw/mYL1yDURsIbChL6CzXKrDfMk6V
+	XKMsrpxQsWlxXq6ug9ruCLxZl77amq6zkR/T7MAL0crcjSGaDwgeRyPf2vISIeUkYdsb
+	dv5g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=ydGgcauDL/dus8rRyJ33yAKBTIjyszTPbkqZoX4z030=;
+	b=FVGlcLDyHjG1kN1QoHdpk9b8al0cvP0WbnFlV61imWIeX6GQ9bTnG+fIdVTh5Y/60W
+	daLvvWrw4cLOxFhsVaLUId4l9RlTH4ionaGFY0ijMi6uI8JvycZkuHETKrvTehRMwWqY
+	kLJALEeC7AW6xXZkVgCsriLd2iee8C+joFJu/aKricRoMH53kHFB01FA55+2hg2oP2un
+	bLelHRH/YhBwkGUfmQHhhOCvJgBDPWZjdcRMmaRa4l/nLdoiqzcWoXfJI77cb7aDFt2L
+	Pjs0Qk83pbncqBRb1sQOXMAGvGkyh2OCvxn3+VzYWNe0LdWcXXQh31G9BmwZKgDwqjyq
+	OazQ==
+X-Gm-Message-State: AKGB3mJv+0iL9a5UAGzRgkR/K0cc8D4Tn3/70F3SfLz2ydMMPIo8almH
+	omKGYP67ugo07d4m6T1jB6fEFFFvOgSuRnRCmdM=
+X-Received: by 10.28.55.74 with SMTP id e71mr13858260wma.50.1515534106974;
+	Tue, 09 Jan 2018 13:41:46 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA8QqEna4u92bk88++Y1JrpCJD=KDpSfbJ8DhfSiTRm+=w@mail.gmail.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Tue, 09 Jan 2018 18:48:54 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 0/2] GICv2 & GICv3: RAZ/WI
- reserved addresses rather than aborting
+Received: by 10.28.164.69 with HTTP; Tue, 9 Jan 2018 13:41:16 -0800 (PST)
+In-Reply-To: <1513183941-24300-3-git-send-email-peter.maydell@linaro.org>
+References: <1513183941-24300-1-git-send-email-peter.maydell@linaro.org>
+	<1513183941-24300-3-git-send-email-peter.maydell@linaro.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Tue, 9 Jan 2018 13:41:16 -0800
+Message-ID: <CAKmqyKNjCtKYOP5cnOE5ZiZ_d6_Gg7Vb9ey7=OE-icgK-FdJ=g@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::241
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 2/2] hw/intc/arm_gic: reserved
+ register addresses are RAZ/WI
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,49 +106,57 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: cdall@linaro.org, Ard Biesheuvel <ard.biesheuvel@linaro.org>,
-	"patches@linaro.org" <patches@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Auger Eric <eric.auger@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Laszlo Ersek <lersek@redhat.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, Laszlo Ersek <lersek@redhat.com>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Patch Tracking <patches@linaro.org>,
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aC+/ZwWTuV2+
+X-TUID: EdN3wmPR6XLa
 
-On Tue, Jan 09, 2018 at 04:35:30PM +0000, Peter Maydell wrote:
-> On 9 January 2018 at 16:29, Laszlo Ersek <lersek@redhat.com> wrote:
-> > On 01/09/18 17:12, Peter Maydell wrote:
-> >> On 9 January 2018 at 15:58, Laszlo Ersek <lersek@redhat.com> wrote:
-> >>> Sorry, no clue about any of this -- where should I read up?
-> >>
-> >> I cc'd you mostly as a heads-up since the QEMU bug is UEFI affecting,
-> >> not because I wanted to make you read the GIC specs :-)
-> >
-> > Thanks (and, thanks :) ) -- from patch #2, looks like GICv2 is affected
-> > too, and the patch seems to be fixing commit a9d853533cc1
-> > ("hw/intc/arm_gic: Switch to read/write callbacks with tx attributes",
-> > 2015-05-12).
-> >
-> > Is that right? That commit was released with v2.4.0. Should I have
-> > experienced the error? Is it KVM / hardware specific? What are the symptoms?
-> 
-> Happens under TCG emulation only. The bug got introduced with
-> commit c79c0a314c43b78f6, which changed the effect of a device
-> returning MEMTX_ERROR/MEMTX_DECODE_ERROR from "RAZ/WI" to
-> "guest data abort". That's in general the right thing to do,
-> but in the case of these device models we were returning those
-> values for cases which aren't supposed to provoke aborts.
-> 
-> The symptom is that if your guest code is poorly behaved and
-> tries to read or write offsets that don't correspond to documented
-> GIC registers, it will take an abort that it didn't before.
-> Linux is fine; this UEFI image I have lying around stopped working.
+On Wed, Dec 13, 2017 at 8:52 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> The GICv2 specification says that reserved register addresses
+> must RAZ/WI; now that we implement external abort handling
+> for Arm CPUs this means we must return MEMTX_OK rather than
+> MEMTX_ERROR, to avoid generating a spurious guest data abort.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Thanks for pointing this out. I had just recently noticed that the
-'gicv3-active' kvm-unit-tests test had stopped passing on TCG, getting
-DABTs when attempting to write GICD_ICACTIVER. I was just about to
-complain in this thread that that register is indeed documented, but
-now I see the implementation of the test was always wrong. It was using
-the wrong register base, RD vs. SGI...
+Looks good to me.
 
-drew
+Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+
+Alistair
+
+
+> ---
+>  hw/intc/arm_gic.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+> index 5a0e2a3..d701e49 100644
+> --- a/hw/intc/arm_gic.c
+> +++ b/hw/intc/arm_gic.c
+> @@ -1261,7 +1261,8 @@ static MemTxResult gic_cpu_read(GICState *s, int cpu, int offset,
+>      default:
+>          qemu_log_mask(LOG_GUEST_ERROR,
+>                        "gic_cpu_read: Bad offset %x\n", (int)offset);
+> -        return MEMTX_ERROR;
+> +        *data = 0;
+> +        break;
+>      }
+>      return MEMTX_OK;
+>  }
+> @@ -1329,7 +1330,7 @@ static MemTxResult gic_cpu_write(GICState *s, int cpu, int offset,
+>      default:
+>          qemu_log_mask(LOG_GUEST_ERROR,
+>                        "gic_cpu_write: Bad offset %x\n", (int)offset);
+> -        return MEMTX_ERROR;
+> +        return MEMTX_OK;
+>      }
+>      gic_update(s);
+>      return MEMTX_OK;
+> --
+> 2.7.4
+>
+>

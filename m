@@ -1,97 +1,97 @@
-Received: by 10.28.173.206 with SMTP id w197csp3751474wme;
-        Tue, 9 Jan 2018 06:21:02 -0800 (PST)
-X-Google-Smtp-Source: ACJfBotlfYgAzS71ecy0uxhr7NAHxgVRdQ1reeXD5TGUZ127+w0xQlo32Yz2aL95bHdA+nc+e8oF
-X-Received: by 10.13.206.4 with SMTP id q4mr13736931ywd.305.1515507662061;
-        Tue, 09 Jan 2018 06:21:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515507662; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp3752325wme;
+        Tue, 9 Jan 2018 06:21:50 -0800 (PST)
+X-Google-Smtp-Source: ACJfBouUYF7+U0difh5zpza2oBbd+EK4EvEExwdPel3A5O8E8kO/gWg0nV29ToN9TmSSHh07wEcJ
+X-Received: by 10.129.159.132 with SMTP id w126mr1547974ywg.87.1515507710122;
+        Tue, 09 Jan 2018 06:21:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515507710; cv=none;
         d=google.com; s=arc-20160816;
-        b=GkxXWEiYYTS8ZoPT2yTNE6dIWO0gcWO5/UNjGBDiTWEfBXndAAMq3oGjIId+vUYWUe
-         7YiQRq1r//gYH3tY9OeBn8uE3anTKP4pJU4RkrHV1sLmk3/JttKX7B6bw7GZKMOQ9Dwx
-         0rlX0rRACd+2Jgfhmm+W1Yx2rc/3czbwva0Cu9hRbughLBactO1LvcU7IVsAa48iEN0X
-         p7KQksRzQLWv1iCbUDMiznRzgqwTiXs1bqwCC61c8guUl1x+U8+hpyBTWbtN7KCcNE0n
-         fqThQxmxrXWYEzpr1uqkxV1rW95+OOkg7ASkazcelswYk1zCuq9vrcYJ7hL6oxR6yNgX
-         zuUA==
+        b=kO9i0rYO98ubg4JJ+Vs4m4SBfigDyrsqowrZ9k3Cm9wWaGUG7cPx9RHHag2HFH4l/P
+         58f9sgTcQBOxTZb37n0Wc3Wl/LyeVeWkhZGlXf1GY+QYDtYxY2JyevBQbB3SLNeysB5B
+         PlJ82XI/0cLMD4oxExOzwWr0twMuZr0NJsOTAuctYV+dVWSaSRGEKlTnAhR5X7ZnBBSP
+         NMFVP6LXecdSK9D3Z3KUb//dwycQtPtYVeo50KJCpW+Hukje7lBd1qqFonwnbj8QdA2B
+         zjEU/cd7gxaN61a8hbi92u00WHRpDL+akt9xacDWtdWgBc4dlPfCj2CpBkYj0/DXcOD2
+         jRXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=F9+8obof16kE0BbunblconFVZc1q92UvAJMFNMIKhlY=;
-        b=pOJyjEa0G5y50c9xvZfdOsmFbp2pOcHbWnjA0y5mrXvwRuQa/XhR0JYEhOvr8nWKoS
-         ajD7z1BI0pttjX+TQxYbOe123nutYy0IFGNNl1FYZUsbrNpI36G+Hq/svOFM+mAr0y/z
-         frjNOQek73+e2rXcF/aY8aQB390eccIQhQjFmEtobznD0zB0jffE1vdDbB8UQzedMNuD
-         XD5xmiK3WOImavhEGuYAsa2y/uc6WiETpVxq9soJ08apZlF3TPVCZFII/A1asIxtVzUi
-         x4K3oeESzGyEq9JPkObtMWFMp4Avrkae+GyziaD3+33A4ZbWp0BjNDaSGpLxDxWMykQ0
-         HQMA==
+        bh=rT+i1VnZBjjFK3GDb5G5e9fswExN/DyPdYfHYfUQXIU=;
+        b=Zo9axOOZ5YAQdQgcgKAFy26aO56WqM/1KdMAZGeJ3G98f0wSXJL2hKg/4t5kh8YHgo
+         AvAeCf9r83LzlSGlzNmgkJWS+PkC4M+cX6lrZ6qG92bfcYqtJYyopcSR6LnRz/4rEZ3U
+         9tPP2PSKqg6QD2etHjJYK9WOry5TQXGauYtxb6DIxkPYGNaySGNqf1kVCjr/jK1pYagb
+         FKnEj4zJogiLnEB71xq0qZ34RRjqAwBST1T5HrdOW1IFBIlWJHBB8W3+xsJQTVRECfY1
+         21wdHyjBb1hlvRQHC3vzr9gt0n8I3IaV3yISGpb0+amPYniYo58O1uzXXxes+m2Zr4LZ
+         XpaQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=N1ubDMQe;
+       dkim=fail header.i=@linaro.org header.s=google header.b=UUTz/xZn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z14si2987866ybm.825.2018.01.09.06.21.01
+        by mx.google.com with ESMTPS id n2si3063238ybn.509.2018.01.09.06.21.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 Jan 2018 06:21:02 -0800 (PST)
+        Tue, 09 Jan 2018 06:21:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=N1ubDMQe;
+       dkim=fail header.i=@linaro.org header.s=google header.b=UUTz/xZn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55173 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55198 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eYulx-0007MM-H2
-	for alex.bennee@linaro.org; Tue, 09 Jan 2018 09:21:01 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40964)
+	id 1eYumj-0007qY-IY
+	for alex.bennee@linaro.org; Tue, 09 Jan 2018 09:21:49 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41387)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eYuln-0007Jw-8Q
-	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 09:20:52 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1eYumX-0007pC-AK
+	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 09:21:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eYulm-00060U-67
-	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 09:20:51 -0500
-Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:47065)
+	(envelope-from <peter.maydell@linaro.org>) id 1eYumW-0006Tn-70
+	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 09:21:37 -0500
+Received: from mail-oi0-x229.google.com ([2607:f8b0:4003:c06::229]:46056)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eYulm-00060A-1q
-	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 09:20:50 -0500
-Received: by mail-oi0-x243.google.com with SMTP id d124so6464746oib.13
-	for <qemu-arm@nongnu.org>; Tue, 09 Jan 2018 06:20:49 -0800 (PST)
+	id 1eYumW-0006SY-38
+	for qemu-arm@nongnu.org; Tue, 09 Jan 2018 09:21:36 -0500
+Received: by mail-oi0-x229.google.com with SMTP id j129so1302163oib.12
+	for <qemu-arm@nongnu.org>; Tue, 09 Jan 2018 06:21:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=F9+8obof16kE0BbunblconFVZc1q92UvAJMFNMIKhlY=;
-	b=N1ubDMQep2UkI6Vjs+fh1bVuwQrs4dXWnwfsCQEUAEXLIHJB0KIJgfalu6cAoIVr76
-	7A8WSFNFfZRx8VzVCKcQPZJLHHj2MOuhfey4BYKPmQkgu6c/zOb9jcBN0iRZ2vksvMUj
-	c/vXdlTKiKw583Gyw89rdlg1JicKEbtWR2zLk=
+	:cc; bh=rT+i1VnZBjjFK3GDb5G5e9fswExN/DyPdYfHYfUQXIU=;
+	b=UUTz/xZnDPkSepsHbsQSdKxar0BD7jmwFISEI2Xn+lZnMKPO3Kr85wN8VfCK5zxFZ5
+	SIkt1kmFLfcdCQKhMay455K0y5IRKJ2rjNI7wvZuVBl2q/TCDXt814JcZNS6qBAi7JHd
+	oXhoJDGVS9dKJuOuExf4C2IRHPaH55n+TtNXc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=F9+8obof16kE0BbunblconFVZc1q92UvAJMFNMIKhlY=;
-	b=j3ozUnTgyd2jQn0zzqPxH62uwWUX61F1lMtYCUdarOtOV8aIjafkSWl6YKykqH/Csn
-	6IPS8/ypdWVluPpR+YEZ+a81uKdlWsAas+tn2uvVQT8DMkM/l2y9xCAkGfXX7iaLt8WI
-	jLKWChfqsb7ArJBDm32ZxrBx1S2V8Sn6MQC3Erzw+lIyrkKsl7rE03KlBkZQmEbbbu8N
-	ocA6ifuX8x6M12d5v61uGaRgRTCmvE6lXTJPffz+pCP38M/SHRl0WaGb3AZr62b1sFAK
-	AcOJkBM6/p8UeiFSJvM9LiwiwC5IkO8XKFG7FnJ8bWW58UxC4V7GFD8Qzxg9K2KluR2H
-	nefw==
-X-Gm-Message-State: AKwxyteWaha92ZGdtHBcpllVioO/V++TnP60Xh3sDA7f5f2B7Rzej9kp
-	xlDPfvT0PqvSQARYmn0ULLiXGZDRFNWHjVvZbEVUHA/T
-X-Received: by 10.202.173.84 with SMTP id w81mr908198oie.299.1515507648912;
-	Tue, 09 Jan 2018 06:20:48 -0800 (PST)
+	bh=rT+i1VnZBjjFK3GDb5G5e9fswExN/DyPdYfHYfUQXIU=;
+	b=mTK/CDRaKp6hBon8E2dPNU66EJeC7cIMhcRoQnAt2RUZdMsgiMJzKXT96TtbL8rcfc
+	Ot1rkFw5tnEn8T8LTggKa6GNxrVIRhzf05HheNdZbO/cEzTK37WBQypXOj5CPiV6Na3K
+	mLhQb0q3usXI1lj/5MAgMbJ57qa/viyNhybaHL4u/yjXWVjSbQcBPBXYfnv3dUKFcKqx
+	blJQ3MAar5wGa1zJ2Ye4er3y2tWsMppRaRB4X9LDFhJ0p9+7TwQ6MORlp4jdgCsaHqR8
+	fYgW2MaVCGBYlyFnVoE07P7DZ8/JzmTra3KPiGaDozKUwDWbxOPD68u2fPJTPvPF3sFn
+	UDuw==
+X-Gm-Message-State: AKGB3mLWhRqgQ4xxnOXL4TD6k0SXJ31N4a+mQ+xAtp2B9HsgiRldh3wY
+	bmBsrWVb01ffiBbqiHmE5o7ETD+NPmenj00ZB3cx6HWK
+X-Received: by 10.202.75.80 with SMTP id y77mr8244236oia.328.1515507695308;
+	Tue, 09 Jan 2018 06:21:35 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.157.15.71 with HTTP; Tue, 9 Jan 2018 06:20:28 -0800 (PST)
-In-Reply-To: <1512742372-31517-1-git-send-email-peter.maydell@linaro.org>
-References: <1512742372-31517-1-git-send-email-peter.maydell@linaro.org>
+Received: by 10.157.15.71 with HTTP; Tue, 9 Jan 2018 06:21:14 -0800 (PST)
+In-Reply-To: <1512742402-31669-1-git-send-email-peter.maydell@linaro.org>
+References: <1512742402-31669-1-git-send-email-peter.maydell@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 9 Jan 2018 14:20:28 +0000
-Message-ID: <CAFEAcA9WWy06hAu6_SCQR5M3GJ-H5zBjgPBiposFeonCp6Ei0g@mail.gmail.com>
+Date: Tue, 9 Jan 2018 14:21:14 +0000
+Message-ID: <CAFEAcA8-5Rgt82tfDFkh3niUYsvSUKmHeTsk7e+Mzq3HJMBbpA@mail.gmail.com>
 To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::243
-Subject: Re: [Qemu-arm] [PATCH] hw/intc/armv7m: Support byte and halfword
- accesses to CFSR
+X-Received-From: 2607:f8b0:4003:c06::229
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] get_phys_addr_pmsav7: Support
+ AP=0b111 for v7M
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,94 +107,58 @@ Cc: Andy Gross <andy.gross@linaro.org>,
 	"patches@linaro.org" <patches@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JWL9ie+vfHVQ
+X-TUID: zd3xudSyKwU6
 
 Ping for code review?
 
 thanks
 -- PMM
 
-On 8 December 2017 at 14:12, Peter Maydell <peter.maydell@linaro.org> wrote:
-> The Configurable Fault Status Register for ARMv7M and v8M is
-> supposed to be byte and halfword accessible, but we were only
-> implementing word accesses. Add support for the other access
-> sizes, which are used by the Zephyr RTOS.
+On 8 December 2017 at 14:13, Peter Maydell <peter.maydell@linaro.org> wrote:
+> For PMSAv7, the v7A/R Arm ARM defines that setting AP to 0b111
+> is an UNPREDICTABLE reserved combination. However, for v7M
+> this value is documented as having the same behaviour as 0b110:
+> read-only for both privileged and unprivileged. Accept this
+> value on an M profile core rather than treating it as a guest
+> error and a no-access page.
 >
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > Reported-by: Andy Gross <andy.gross@linaro.org>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/intc/armv7m_nvic.c | 38 ++++++++++++++++++++++----------------
->  1 file changed, 22 insertions(+), 16 deletions(-)
+>  target/arm/helper.c | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
 >
-> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-> index 5d9c883..dc8e2f1 100644
-> --- a/hw/intc/armv7m_nvic.c
-> +++ b/hw/intc/armv7m_nvic.c
-> @@ -896,13 +896,6 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
->              val |= (1 << 8);
->          }
->          return val;
-> -    case 0xd28: /* Configurable Fault Status.  */
-> -        /* The BFSR bits [15:8] are shared between security states
-> -         * and we store them in the NS copy
-> -         */
-> -        val = cpu->env.v7m.cfsr[attrs.secure];
-> -        val |= cpu->env.v7m.cfsr[M_REG_NS] & R_V7M_CFSR_BFSR_MASK;
-> -        return val;
->      case 0xd2c: /* Hard Fault Status.  */
->          return cpu->env.v7m.hfsr;
->      case 0xd30: /* Debug Fault Status.  */
-> @@ -1280,15 +1273,6 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
->          s->vectors[ARMV7M_EXCP_DEBUG].active = (value & (1 << 8)) != 0;
->          nvic_irq_update(s);
->          break;
-> -    case 0xd28: /* Configurable Fault Status.  */
-> -        cpu->env.v7m.cfsr[attrs.secure] &= ~value; /* W1C */
-> -        if (attrs.secure) {
-> -            /* The BFSR bits [15:8] are shared between security states
-> -             * and we store them in the NS copy.
-> -             */
-> -            cpu->env.v7m.cfsr[M_REG_NS] &= ~(value & R_V7M_CFSR_BFSR_MASK);
-> -        }
-> -        break;
->      case 0xd2c: /* Hard Fault Status.  */
->          cpu->env.v7m.hfsr &= ~value; /* W1C */
->          break;
-> @@ -1667,6 +1651,14 @@ static MemTxResult nvic_sysreg_read(void *opaque, hwaddr addr,
->              val = deposit32(val, i * 8, 8, get_prio(s, hdlidx, sbank));
->          }
->          break;
-> +    case 0xd28 ... 0xd2b: /* Configurable Fault Status (CFSR) */
-> +        /* The BFSR bits [15:8] are shared between security states
-> +         * and we store them in the NS copy
-> +         */
-> +        val = s->cpu->env.v7m.cfsr[attrs.secure];
-> +        val |= s->cpu->env.v7m.cfsr[M_REG_NS] & R_V7M_CFSR_BFSR_MASK;
-> +        val = extract32(val, (offset - 0xd28) * 8, size * 8);
-> +        break;
->      case 0xfe0 ... 0xfff: /* ID.  */
->          if (offset & 3) {
->              val = 0;
-> @@ -1765,6 +1757,20 @@ static MemTxResult nvic_sysreg_write(void *opaque, hwaddr addr,
->          }
->          nvic_irq_update(s);
->          return MEMTX_OK;
-> +    case 0xd28 ... 0xd2b: /* Configurable Fault Status (CFSR) */
-> +        /* All bits are W1C, so construct 32 bit value with 0s in
-> +         * the parts not written by the access size
-> +         */
-> +        value <<= ((offset - 0xd28) * 8);
-> +
-> +        s->cpu->env.v7m.cfsr[attrs.secure] &= ~value;
-> +        if (attrs.secure) {
-> +            /* The BFSR bits [15:8] are shared between security states
-> +             * and we store them in the NS copy.
-> +             */
-> +            s->cpu->env.v7m.cfsr[M_REG_NS] &= ~(value & R_V7M_CFSR_BFSR_MASK);
-> +        }
-> +        return MEMTX_OK;
->      }
->      if (size == 4) {
->          nvic_writel(s, offset, value, attrs);
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 91a9300..2f53dd8 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -9229,6 +9229,13 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
+>                  case 6:
+>                      *prot |= PAGE_READ | PAGE_EXEC;
+>                      break;
+> +                case 7:
+> +                    /* for v7M, same as 6; for R profile a reserved value */
+> +                    if (arm_feature(env, ARM_FEATURE_M)) {
+> +                        *prot |= PAGE_READ | PAGE_EXEC;
+> +                        break;
+> +                    }
+> +                    /* fall through */
+>                  default:
+>                      qemu_log_mask(LOG_GUEST_ERROR,
+>                                    "DRACR[%d]: Bad value for AP bits: 0x%"
+> @@ -9247,6 +9254,13 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
+>                  case 6:
+>                      *prot |= PAGE_READ | PAGE_EXEC;
+>                      break;
+> +                case 7:
+> +                    /* for v7M, same as 6; for R profile a reserved value */
+> +                    if (arm_feature(env, ARM_FEATURE_M)) {
+> +                        *prot |= PAGE_READ | PAGE_EXEC;
+> +                        break;
+> +                    }
+> +                    /* fall through */
+>                  default:
+>                      qemu_log_mask(LOG_GUEST_ERROR,
+>                                    "DRACR[%d]: Bad value for AP bits: 0x%"
 > --
 > 2.7.4

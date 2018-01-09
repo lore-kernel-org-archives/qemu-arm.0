@@ -1,224 +1,207 @@
-Received: by 10.28.173.206 with SMTP id w197csp3093786wme;
-        Mon, 8 Jan 2018 16:35:18 -0800 (PST)
-X-Google-Smtp-Source: ACJfBosXHxAlOBhXkivlggE+XmKhCfcDnDYEhuRbtnAJbX5/Pi1ChNPt4oFsZ/Km6Flmf5AasBvh
-X-Received: by 10.13.214.84 with SMTP id y81mr7590003ywd.499.1515458118541;
-        Mon, 08 Jan 2018 16:35:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515458118; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp3158476wme;
+        Mon, 8 Jan 2018 18:01:40 -0800 (PST)
+X-Google-Smtp-Source: ACJfBovUwmB48X9ift4Fw3o89BfqZhHIojLVN6LAgCVD3sl2jvg0+0DkX5Z6il6uNwiRJEP4yJKW
+X-Received: by 10.129.118.82 with SMTP id j18mr12432475ywk.420.1515463300797;
+        Mon, 08 Jan 2018 18:01:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515463300; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZtCvZ6bOk3CkNdqMh9p6gfoPtD4T8v98ahVH0/JUgENfz6fLcVRKAAl7t4TajjE3Bs
-         tHF0XP1NGC81PgrzaPjCQUpB1RIpSitrbdJ669f+ze6uakGXg6ETYUW+B3hBIAMmyqqo
-         +Mee1AX7ggNeNOcnT/wq3BJS4zoozuHFZHTmf3oEP2A4jMIfmT+dtmtXGbIqbml7zBcx
-         JCHxl54rXAX+1LgNp2oqnrdfR57+TsonUhv2IbfLEMp+xeA5SMU35binuNLkNmcZiomp
-         pOazYxEb3eafVnBvqxtVSQd1TA+xoxJeemqtnni0wZigYGwAIfM9Xddm4UK77KjjYRkn
-         YPmg==
+        b=RYbjHghJMJ2oeNPKKpeWySpP1M6uX1Q3er6zmCRMM/SRI+w0wrzB1OXLXkTaL0HYtu
+         fYyh8FUJuNK1f+pO0gFpywxwq96VKbcU/CSurMgBpqPcWPSAefwet9dj0nqC2f6dZvYN
+         CfZSzIMIiuoqJvbIPm59H7wwfEGc1281Ryd9dA+VGlApjesZB87CeX7PCKiqvz7QgmXn
+         RFHOA/gKkca3xyBYlt9CwvmN7qLCC87x/MGNqAC0h/WhheOr4QsppImphKBXzchFxvZD
+         PywRhpmNQPGgvFCHfGPUgcpHh/M8JYJmAeupnep1SzvX8x1Rir2vRlYZPI4RfzTGXWU/
+         +s6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=KlmCdve/cVN0vZ3zxijjiV174ba7i7AY1fgWMYvI2aM=;
-        b=X0bWO9a3sxJlpYOVnf2ej3R1ZjDOpRpzKTGC/7F06STjcc/LH0tIyeLl8NxAnaAISx
-         ks4XwGhz4rT4mIVBp48G7tNdKJCRBimVnOVNgORRvk0936QWA4xi45Cnpt25vdnJd9/X
-         jD9/9KXXlgZPHDDVM2YHBC7+9+kX87jWlDjavgRY/ONaAkpXWeHdJ/DrKUAqcgkE/Elb
-         lpCMwlu6v5PaVYepmbfj2HRkuhMDfkwCiz/PNrc230gwtDveeQm/VCbS0EUtfeDlRTrU
-         ZZDwabNP3wPg2Wut+09jOMstQJoLtPQnGElliGMqPEQz8BUxn7Yt1dQv9oWju5uHTbGS
-         UftA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=R4pEobxl0D6UTaKktHeyRPrZFv/lWkXEYDX+mhCbmCo=;
+        b=Cq8VzxMZFjMcIwd7S/LOGN2+0HTtN7L27s1qZFZeWIkqcmGlFh6zyvkT8mC61+3dDf
+         jSkB5Cf8rLRxktmQxYkmA2eGmRvbL6p9oomHJqOGa77EFf5ArLolbQ2lMhYalcYcLEbL
+         gmseLp+Wnsz6sc1v1mDcJPRxWhCaqbXWm7muOEvJ3o6sob2K70Uy3fwtLFuzf+byuEzU
+         DQwqUZORGKHrVdWMw2nApGxnMDdvZUd+miiL8ZVxk749GYjwlLt2Dp7qSdzcCPFL6iuU
+         REGCMZ6mDGtZlsKq/vngVCiSxgvbBTMarDkzgzP1s2b9QVUQcDkMQcGuqvARhvjRLJVn
+         heiw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ejuEAGdA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Xse4pz4E;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 203si665637ybo.352.2018.01.08.16.35.18
+        by mx.google.com with ESMTPS id p1si2764110ywl.380.2018.01.08.18.01.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 08 Jan 2018 16:35:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 08 Jan 2018 18:01:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ejuEAGdA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41531 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Xse4pz4E;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:45757 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eYhss-00035j-0Q
-	for alex.bennee@linaro.org; Mon, 08 Jan 2018 19:35:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35803)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eYjES-0001qN-5y
+	for alex.bennee@linaro.org; Mon, 08 Jan 2018 21:01:40 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36781)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1eYhr8-0002NC-Fl
-	for qemu-devel@nongnu.org; Mon, 08 Jan 2018 19:33:32 -0500
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eYjEC-0001oA-Bz
+	for qemu-arm@nongnu.org; Mon, 08 Jan 2018 21:01:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1eYhr7-0000Q0-EB
-	for qemu-devel@nongnu.org; Mon, 08 Jan 2018 19:33:30 -0500
-Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:36810)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eYjEB-00025V-GI
+	for qemu-arm@nongnu.org; Mon, 08 Jan 2018 21:01:24 -0500
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:33800)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1eYhr0-0000NW-Qi; Mon, 08 Jan 2018 19:33:23 -0500
-Received: by mail-wm0-x244.google.com with SMTP id b76so17542207wmg.1;
-	Mon, 08 Jan 2018 16:33:22 -0800 (PST)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eYjE8-00022S-L9; Mon, 08 Jan 2018 21:01:20 -0500
+Received: by mail-qt0-x242.google.com with SMTP id 33so16097153qtv.1;
+	Mon, 08 Jan 2018 18:01:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc;
-	bh=KlmCdve/cVN0vZ3zxijjiV174ba7i7AY1fgWMYvI2aM=;
-	b=ejuEAGdAwdoTeT47L5R5QAdSEECom1C31DtKdfaWs5ZtsDULsE5rrgfXEpNqcY4m7u
-	FITjf0xHBw+LKh3DsPd/mYrsV9c7vaS1cb312Aw0DtVVnl28rPO1Dl/rMN0dQ/Ay+yur
-	Wq3S0mu/XOkR2NQMSY+wEp7aw7O6KhjqAiE/tboGXU5jKoEYVbRBsV+K3cgQTMbMeKcg
-	sy7Cim1qlrh0zmlgKkhpmTKSRcppn8lYpbbsu0JxvFvg1EeCSbgalXi5ipN7LucOaU5a
-	kmFrIaNaLDr6siakBlCBewgkzdyM5gG+weAukSTPqZ7ncmmvivN+yI4npyX/M34GIVAu
-	TAOQ==
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=R4pEobxl0D6UTaKktHeyRPrZFv/lWkXEYDX+mhCbmCo=;
+	b=Xse4pz4E+ZkC9bR3l1JbKsBQ8yQLxG1WEEbkyilc9QYIvsoCxeABOlhfZuuCjaXzW1
+	91bVEdCKeMW2BiXV3undneo0+vCcuZPuyoQ8t+S+OHBsMHKnOx4URflWjvbIocOQEUre
+	+HAZSmP/ULim+pm45cvrwrENd/3ptGqCXo6i3h5D4/krpTYwlTB/xncQvnbsKjiFl9nj
+	3stxZJpLQkg19A9l0Tr1eS7uNR22+H3Bj7Fzb3f1HBuQE6q3c4kUjoAs34xcMnR9yE6r
+	wwjpjYP8GEXdee7+/QvSVV4IrjKjNkL7Gqn004PW8U7xwROdLupfBWtisd5m71gyf/MO
+	h6zA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc;
-	bh=KlmCdve/cVN0vZ3zxijjiV174ba7i7AY1fgWMYvI2aM=;
-	b=pxJXyPzVJPh26N9kJs+5wesm+NoW+67cVgrFfwnCik2iaBf/infSlmR82a6G4XoH5c
-	f194GRSS3rX90cPNSdUO0C1qwJyF/YsYtlMldG++GjwXdlexP7kehjdBG6O5eRDw9aLs
-	E6FGd+WHOgoxRcT7RoouuIke2ff/C9hahqtON7fE8+UagAW9/LagansQEjfF8uoYL71m
-	PEsrWO6CU2oc+gD0mrAx5pvUrtDH6RWM8Hu0HfywqIiUebxsDwHf/ADAS3l3FP8dVvGO
-	bmIgZFUogvJOId1p+MhWum2mDb8UJU4MDNboDCXf4O9YK0MPOIkRZbLXhJl1tDWFTxO4
-	oDsg==
-X-Gm-Message-State: AKGB3mKPR7srUSJ0aLijSEaXlaKazoEuCGcwIzepIUi9JyrmpX75XDAb
-	DdoBFgMHIHodGnxYbDyUwErtDNJaiw5kSqN+Np1PLfJDUas=
-X-Received: by 10.28.208.79 with SMTP id h76mr9523465wmg.77.1515458001597;
-	Mon, 08 Jan 2018 16:33:21 -0800 (PST)
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=R4pEobxl0D6UTaKktHeyRPrZFv/lWkXEYDX+mhCbmCo=;
+	b=j9dI0tf4OuVOH5Cql4goak+01luygIFvmExeveBZCr1JL+VYN6kpgkQPQ72oN5NLhw
+	I6mAG3kEImC6aeOvj9xrSUHk+xlg+jITT+x0sNRQGCGtuXLMkidzwNg4lFJtzU4LykhE
+	h9uaxSi3H3kY3I4Mzfbd2N2/+LQMxdOc/39frivPQoA6LYr1QH06GUrMbHLhofm86OTy
+	T8dZLph1KVyG3MIlWotlp6WX78TSs6RM2BwbwbVvKefc5cwna0iP4X7P0LUtqRxLQgoJ
+	HwMKWTIC2ulgk7FkyJK/RHJUxCFo2yPHUel6D4HfGZu001b7ENCYlTxoNfpVky4NdYvM
+	iNhg==
+X-Gm-Message-State: AKwxytfbDYxuRRmV306HOBgpO/UxIryoISc1ezg7SROKMWmdJfIyKFxs
+	/c2iLspCwnftccdn4+zlZnI=
+X-Received: by 10.200.44.35 with SMTP id d32mr17933061qta.14.1515463280027;
+	Mon, 08 Jan 2018 18:01:20 -0800 (PST)
+Received: from x1.local ([138.117.48.219]) by smtp.gmail.com with ESMTPSA id
+	r22sm8605027qtc.71.2018.01.08.18.01.17
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 08 Jan 2018 18:01:19 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Alistair Francis <alistair.francis@xilinx.com>,
+	"Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
+	Igor Mammedov <imammedo@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
+Date: Mon,  8 Jan 2018 23:00:46 -0300
+Message-Id: <20180109020054.32553-2-f4bug@amsat.org>
+X-Mailer: git-send-email 2.15.1
+In-Reply-To: <20180109020054.32553-1-f4bug@amsat.org>
+References: <20180109020054.32553-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Received: by 10.28.164.69 with HTTP; Mon, 8 Jan 2018 16:32:51 -0800 (PST)
-In-Reply-To: <87608k4dsh.fsf@dusky.pond.sub.org>
-References: <cover.1513790494.git.alistair.francis@xilinx.com>
-	<6bad4084f4cbc290e2e9f1a72fcfcda7223383ec.1513790495.git.alistair.francis@xilinx.com>
-	<87lghulqno.fsf@dusky.pond.sub.org>
-	<1cfb1217-e32d-8e91-da46-07f1c72be77f@redhat.com>
-	<CAKmqyKPyL8B5ZjEUePkqVbzP8kVmM48vWML41PRXVVO7LVmMpg@mail.gmail.com>
-	<87a7yah5ea.fsf@dusky.pond.sub.org>
-	<CAKmqyKO5sKdiZJ65teDxa16PCE71WCLay7cOAQJQdyS-EVNOJg@mail.gmail.com>
-	<87608k4dsh.fsf@dusky.pond.sub.org>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Mon, 8 Jan 2018 16:32:51 -0800
-X-Google-Sender-Auth: DDtYIhOfMHXLX15Au4LaJKcU1_0
-Message-ID: <CAKmqyKMz2tfJwu0Q5joHm99QLbJ-psU=sSgDQtLuFKjyKRmO-A@mail.gmail.com>
-To: Markus Armbruster <armbru@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::244
-Subject: Re: [Qemu-devel] [PATCH v6 04/29] hw/arm: Replace fprintf(stderr,
- "*\n" with error_report()
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: [Qemu-arm] [RFC PATCH v2 1/9] hw/sysbus: add helpers to register
+ FDT aliases
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 07bhja1eAkTE
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: KFKRc8iZXvac
 
-On Tue, Jan 2, 2018 at 4:59 AM, Markus Armbruster <armbru@redhat.com> wrote:
-> Alistair Francis <alistair.francis@xilinx.com> writes:
->
->> On Fri, Dec 22, 2017 at 12:30 PM, Markus Armbruster <armbru@redhat.com> wrote:
->>> Alistair Francis <alistair.francis@xilinx.com> writes:
->>>
->>>> On Fri, Dec 22, 2017 at 9:17 AM, Thomas Huth <thuth@redhat.com> wrote:
->>>>> On 22.12.2017 16:37, Markus Armbruster wrote:
->>>>>> Second thoughts...
->>>>>>
->>>>>> Alistair Francis <alistair.francis@xilinx.com> writes:
->>>>> [...]
->>>>>>>  #include "qemu/osdep.h"
->>>>>>> +#include "qemu/error-report.h"
->>>>>>>  #include "qapi/error.h"
->>>>>>>  #include "qemu-common.h"
->>>>>>>  #include "cpu.h"
->>>>>>> @@ -1311,8 +1312,8 @@ static void omap_prcm_apll_update(struct omap_prcm_s *s)
->>>>>>>      /* TODO: update clocks */
->>>>>>>
->>>>>>>      if (mode[0] == 1 || mode[0] == 2 || mode[1] == 1 || mode[1] == 2)
->>>>>>> -        fprintf(stderr, "%s: bad EN_54M_PLL or bad EN_96M_PLL\n",
->>>>>>> -                        __func__);
->>>>>>> +        error_report("%s: bad EN_54M_PLL or bad EN_96M_PLL",
->>>>>>> +                     __func__);
->>>>>>>  }
->>>>>>
->>>>>> This one's different: we neither exit() nor return a "failed" status to
->>>>>> the caller.
->>>>>>
->>>>>> We get here when the guest writes something funny to a certain
->>>>>> memory-mapped I/O register.  In other words, it's guest misbehavior, not
->>>>>> a user error.  I doubt it should be reported with error_report().
->>>>>> Peter, do we have a canonical way to report or log  guest misbehavior?
->>>>>
->>>>> qemu_log_mask(LOG_GUEST_ERROR, ...) ?
->>>>
->>>> That seems like the best option to me.
->>>
->>> Suggest:
->>>
->>> 1. Keep converting fatal errors (the ones that exit())
->>>
->>> 2. Keep converting recoverable errors (the ones that return failure)
->>>
->>> 3. You can leave the prints that are neither alone.  You can also
->>>    convert to logging or tracing, as appropriate, but that requires
->>>    understanding the code.
->>>
->>> Makes sense?
->>
->> Does this apply to new patches after this series or to this series as
->> well? The series is mostly just mechanical find/replace. I really
->> don't want to have to dig through every patch to figure out what to
->> change/not change.
->
-> I understand your reluctance to sort patch hunks into buckets 1., 2. and
-> 3. manually: there's an awful lot of hunks to sort.
->
-> We know we have many fprintf() that should be error_report(),
-> error_setg(), logging or tracing.
->
-> We know we have error_report() that should be error_setg().
->
-> Converting fprintf() to error_report() where we should really use
-> something else makes the situation worse, I'm afraid.
->
-> Since we need to sort, and sorting manually isn't practical, we need to
-> automate.
->
-> The patterns to recognize are 1. fprintf() followed by exit() and
-> 2. fprintf() followed by return failure.
->
-> Recognizing the patterns when there's stuff between fprintf() and exit()
-> / return may exceed sed's power.  Feels like a Coccinelle job to me.
-> Let's focus on the common case where exit() / return follows fprintf()
-> immediately.
->
-> Let's start with the easiest case: exit().  I figure that's still in
-> reach of your find + sed tooling.
->
-> Recognizing "return failure" is slightly harder, because error values
-> aren't always obvious.  Common ones are return NULL, return -1, return
-> -EFOO.
->
-> I hope that peeling off truly simple cases like this will reduce the
-> remaining hunks sufficiently to permit manual review.  If it doesn't, we
-> should still get a major part of your work without making the situation
-> worse.
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ include/hw/sysbus-fdt.h | 18 ++++++++++++++++++
+ hw/core/sysbus-fdt.c    | 30 ++++++++++++++++++++++++++++++
+ hw/core/Makefile.objs   |  1 +
+ 3 files changed, 49 insertions(+)
+ create mode 100644 include/hw/sysbus-fdt.h
+ create mode 100644 hw/core/sysbus-fdt.c
 
-Ok. So it is becoming apparent that this series is not going to be
-accepted. I might just drop it and try and re-group with Coccinelle at
-some point in the future.
+diff --git a/include/hw/sysbus-fdt.h b/include/hw/sysbus-fdt.h
+new file mode 100644
+index 0000000000..21f42dbbad
+--- /dev/null
++++ b/include/hw/sysbus-fdt.h
+@@ -0,0 +1,18 @@
++/*
++ * Flattened Device Tree alias helpers
++ *
++ * Copyright (C) 2018 Philippe Mathieu-Daudé <f4bug@amsat.org>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or
++ * (at your option) any later version.  See the COPYING file in the
++ * top-level directory.
++ */
++#ifndef HW_SYSBUS_FDT_H
++#define HW_SYSBUS_FDT_H
++
++void type_register_fdt_alias(const char *name, const char *alias);
++void type_register_fdt_aliases(const char *name, const char **aliases);
++
++const char *type_resolve_fdt_alias(const char *alias);
++
++#endif /* HW_SYSBUS_FDT_H */
+diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
+new file mode 100644
+index 0000000000..0d817ba230
+--- /dev/null
++++ b/hw/core/sysbus-fdt.c
+@@ -0,0 +1,30 @@
++#include "qemu/osdep.h"
++#include "hw/sysbus-fdt.h"
++
++static GHashTable *fdt_aliases(void)
++{
++    static GHashTable *fdt_aliases_singleton;
++
++    if (!fdt_aliases_singleton) {
++        fdt_aliases_singleton = g_hash_table_new(g_str_hash, g_str_equal);
++    }
++    return fdt_aliases_singleton;
++}
++
++void type_register_fdt_alias(const char *name, const char *alias)
++{
++    g_hash_table_insert(fdt_aliases(), (gpointer)name, (gpointer)name);
++    g_hash_table_insert(fdt_aliases(), (gpointer)alias, (gpointer)name);
++}
++
++void type_register_fdt_aliases(const char *name, const char **aliases)
++{
++    for (; *aliases; aliases++) {
++        type_register_fdt_alias(name, *aliases);
++    }
++}
++
++const char *type_resolve_fdt_alias(const char *alias)
++{
++    return g_hash_table_lookup(fdt_aliases(), alias);
++}
+diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
+index f8d7a4aaed..f56f0755a5 100644
+--- a/hw/core/Makefile.objs
++++ b/hw/core/Makefile.objs
+@@ -11,6 +11,7 @@ common-obj-$(CONFIG_EMPTY_SLOT) += empty_slot.o
+ common-obj-$(CONFIG_XILINX_AXI) += stream.o
+ common-obj-$(CONFIG_PTIMER) += ptimer.o
+ common-obj-$(CONFIG_SOFTMMU) += sysbus.o
++common-obj-$(CONFIG_SOFTMMU) += sysbus-fdt.o
+ common-obj-$(CONFIG_SOFTMMU) += machine.o
+ common-obj-$(CONFIG_SOFTMMU) += loader.o
+ common-obj-$(CONFIG_FITLOADER) += loader-fit.o
+-- 
+2.15.1
 
-If there is a subset of this series that is fine to go in I'm happy to
-rebase and keep going, but at the moment it looks like starting again
-is gong to be the least painful effort.
-
-Alistair
-
->

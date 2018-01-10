@@ -1,112 +1,67 @@
-Received: by 10.28.173.206 with SMTP id w197csp5239340wme;
-        Wed, 10 Jan 2018 10:48:05 -0800 (PST)
-X-Google-Smtp-Source: ACJfBotGdhF2JAlZQB9CSxBhxNMYwET4QrNyvSDMC0SadDdQeFnWyZwVAqZqViAMUrO1rD7BEdN0
-X-Received: by 10.37.199.11 with SMTP id w11mr11881948ybe.285.1515610085605;
-        Wed, 10 Jan 2018 10:48:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515610085; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp5340455wme;
+        Wed, 10 Jan 2018 12:38:58 -0800 (PST)
+X-Google-Smtp-Source: ACJfBovsNhUoB9KR2gYsO/czIZjj7p9tBLJPWQHChUofoNbJQSsujpkJnslerdPozszF3D2op3oM
+X-Received: by 10.37.5.150 with SMTP id 144mr13897856ybf.318.1515616737977;
+        Wed, 10 Jan 2018 12:38:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515616737; cv=none;
         d=google.com; s=arc-20160816;
-        b=jWM01EQfFTJvKU9JyslQ85391DtIDPzniW+uM3uS8ahdLYqVmmeTKPtz5R99muM90j
-         6dM0mtCpiKt2p1wWqbZ6R34pD+FGpqTJzkmJ2dGsLSw6ZVr9nsKDCIm8cY+BSDgSEzMS
-         SUO6AfeZ2SwfhJJTghfFk91E8BHofMXQ8iMve+i7Rb4lioUjO32b8Rktdl2L2vJu/8+Z
-         HjzxyX9D2Ezckzjmqdb3bx3zKeIi1z7DGWuV14DRd6Xzmtf58ZM9XB+Oqtw8/ytmO/1z
-         w+M2LlSDnGrc0YkBLFv2WS9UL9QBVGB1DsC8DvDGq8C2GAGv5sdcQ9kFiHHMt+C3ud7P
-         1R3w==
+        b=vnxu9SoI9+i8PzfT5MAva2/M+MvKtgWujjOPBQrCv2XdvXxdbRbHsfi82Qwq8Pdoli
+         b3eK1LmKHCDayTfDP2+6UBGHgmU/hpO1gK3FLzWwUydM9a6VmwZzFPVFkmnz3gyrbOA1
+         jz16TrR3mKZcw6F6PyQgGE+U0eBfZvn8SMrnT85tqngAYFaxIsrak7FEhaDnb3LDcRQa
+         LasaEkby13wa/qrGas3uSm9U86jCzYnlywOcF7hPNU3XouopdFDAvrBfxyZ5DAZ8/5v1
+         hiMqlgjo1KF8/KagL64RDR8MS5Bqz8iUtEx2BFwnPAwo4Qs4vUAjv8gxADJKrc9P518M
+         ptgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
          :arc-authentication-results;
-        bh=yBTWZUcJ1GjJOZES43meFH92gwC95U0m9Q7wM4OUG6c=;
-        b=fYMyg3Skn/wxfKLdQDfoFd6kdTpcESkMAexWVCgTBZy7Hfy+z4U2kjYSABPwv/uwLs
-         osPWOKCUS1eN7ErwhXcp5UV8zxrmBn5xRG1WUB81Mk8JP4/+ZqYJx24vhpTaeGHPuqIp
-         ZVunPxlbB95kYjhbDhHseTJ6gUP4cee1QN6KpC5HT0xPbMtZBrp5cIKvBAK83pTpST6B
-         EXJXY2UfAzQ5q06KN1gc+L9uO2KCcYLUymPMU1rSC/zVviov6azO8sMqIA/kVp1WDmNg
-         BUeO/JMnw3RO85MqYK3yZtk2wbgNro1rMjRtJjuY7oXa4g2uufsq05au8DebRVHNYZVw
-         N3Bg==
+        bh=4/Ug5qEpN3oQ4dsd5sHJL74hzxF9TxtTpH2QpC/2cfk=;
+        b=CcxJHvWJjqsj/CBoycgbGc0O/pwya90GtLFvdSPSgiUfu1jq99YXEuq+N3qA7or/Ba
+         Ahwny/S9j0jCynnCtKvRkny93gsE3wKC6/mirtzHv1HOs634Q15pVC8IZZilB7wgfKF3
+         t4VQocwQlpxu7yGNYQdwAPQeMu8OaiCeC2YOtWOa2UYX2m85rWLcyTuXFljT8QUC4z4b
+         j8o5m7p+Reqo+YwXtpwQWWldOUwsFlUNGPeP3f9vjnpO3iElTY1lw6u2tj1GQh8mFAP9
+         deWUMYdixD0bh+5Amsfgi6nn764t27nAR4gJ3ExdcgOvxuXoBPwOmr0a0C3OsFsOaEya
+         vnCQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OlnqBRhm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l17si3698036ywk.157.2018.01.10.10.48.05
+        by mx.google.com with ESMTPS id 75si2101105ywe.335.2018.01.10.12.38.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 10 Jan 2018 10:48:05 -0800 (PST)
+        Wed, 10 Jan 2018 12:38:57 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OlnqBRhm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59971 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:38440 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eZLPx-00033s-1R
-	for alex.bennee@linaro.org; Wed, 10 Jan 2018 13:48:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48577)
+	id 1eZN9F-00082l-DZ
+	for alex.bennee@linaro.org; Wed, 10 Jan 2018 15:38:57 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38620)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1eZLPa-0002v9-P7
-	for qemu-arm@nongnu.org; Wed, 10 Jan 2018 13:47:48 -0500
+	(envelope-from <jcd@tribudubois.net>) id 1eZN93-00082b-3S
+	for qemu-arm@nongnu.org; Wed, 10 Jan 2018 15:38:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1eZLPV-0000p8-Bx
-	for qemu-arm@nongnu.org; Wed, 10 Jan 2018 13:47:40 -0500
-Received: from mail-it0-x242.google.com ([2607:f8b0:4001:c0b::242]:37825)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1eZLPU-0000oJ-VQ
-	for qemu-arm@nongnu.org; Wed, 10 Jan 2018 13:47:37 -0500
-Received: by mail-it0-x242.google.com with SMTP id d137so585305itc.2
-	for <qemu-arm@nongnu.org>; Wed, 10 Jan 2018 10:47:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=yBTWZUcJ1GjJOZES43meFH92gwC95U0m9Q7wM4OUG6c=;
-	b=OlnqBRhmAYIyoE52mU3TjHy5LhXxs4fm1Vz3J2d85Mc2c4fMS7dRvYyb9bKVrMxz1l
-	OL7sP+O0JpkAY45vArXXhrQ4Jz5G9Vmnh1UsCF/asVcdpFUBlxOuThUEs2SADzw/eSXC
-	6aosT2dPijQLNSY+R70y0r0n/5PndDaTEdg3c=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=yBTWZUcJ1GjJOZES43meFH92gwC95U0m9Q7wM4OUG6c=;
-	b=rTupRHac1uZlUY4xI1EHV7BzIg7Rc7dpEzbZqYy998b7Sjz+yQyVQSX3L3RHzDJh/L
-	B1l4U8eVv2WngKu4mZO8GeEOUsk2mQIbLTp6FHuEiZdj3XMjrQx3DbM96OUWxowc5tYQ
-	YTFu52ILJt+6jjjxkwAxGIDJ+jsY+Wz+9z01oi7aFh/AYOB2u7mPvwc8n6NsYevL+QKx
-	W4NcFgfrIrAXdXX4STp5MWTFHODrtll47atTuqdMqV8IDLBV7YWeVV1Wu6LuEDbOVuz7
-	GZpiKqhn2Z8B5yWpq5jxtzv9GXFXuV61QhHEZzUOubMWSf/JU+oDZU7PHUjdOiT9H8cA
-	QskA==
-X-Gm-Message-State: AKGB3mKYdMG1jUa/0St+8UoWnCDdkO8JRjRMS7OTwQV8b1ksuOvsxhwq
-	q0mEQbaUTBU5cwvrXZ2o+T8g6w==
-X-Received: by 10.36.54.139 with SMTP id l133mr19873559itl.0.1515610056069;
-	Wed, 10 Jan 2018 10:47:36 -0800 (PST)
-Received: from cloudburst.twiddle.net (184-217-167-164.pools.spcsdns.net.
-	[184.217.167.164])
-	by smtp.gmail.com with ESMTPSA id p3sm9961700itc.39.2018.01.10.10.47.31
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 10 Jan 2018 10:47:35 -0800 (PST)
-To: Laurent Vivier <laurent@vivier.eu>, David Hildenbrand <david@redhat.com>, 
-	qemu-devel@nongnu.org
-References: <20180108231048.23966-1-laurent@vivier.eu>
-	<20180108231048.23966-2-laurent@vivier.eu>
-	<66de9088-f8ed-2be4-c71a-5d149c63587b@redhat.com>
-	<525f7d10-54c5-eca9-0b45-62771afe9c59@vivier.eu>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <82d8d79b-d0c3-6d13-9717-7dd6c0b63691@linaro.org>
-Date: Wed, 10 Jan 2018 10:47:28 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.0
-MIME-Version: 1.0
-In-Reply-To: <525f7d10-54c5-eca9-0b45-62771afe9c59@vivier.eu>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4001:c0b::242
-Subject: Re: [Qemu-arm] [qemu-s390x] [PATCH 1/6] accel/tcg: add size
- paremeter in tlb_fill()
+	(envelope-from <jcd@tribudubois.net>) id 1eZN92-00052J-4U
+	for qemu-arm@nongnu.org; Wed, 10 Jan 2018 15:38:45 -0500
+Received: from relay4-d.mail.gandi.net ([2001:4b98:c:538::196]:53789)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <jcd@tribudubois.net>)
+	id 1eZN91-0004yM-Mo; Wed, 10 Jan 2018 15:38:43 -0500
+Received: from localhost.localdomain (unknown
+	[IPv6:2a01:e34:eebf:9c0:418e:be1e:e2ef:ab3])
+	(Authenticated sender: jcd@tribudubois.net)
+	by relay4-d.mail.gandi.net (Postfix) with ESMTPSA id 6BE3317209B;
+	Wed, 10 Jan 2018 21:38:38 +0100 (CET)
+From: Jean-Christophe Dubois <jcd@tribudubois.net>
+To: peter.maydell@linaro.org
+Date: Wed, 10 Jan 2018 21:38:23 +0100
+Message-Id: <20180110203823.22292-1-jcd@tribudubois.net>
+X-Mailer: git-send-email 2.14.1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2001:4b98:c:538::196
+Subject: [Qemu-arm] [PATCH] i.MX: Fix FEC/ENET receive funtions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -118,75 +73,70 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Anthony Green <green@moxielogic.com>,
-	Chris Wulff <crwulff@gmail.com>, Alexander Graf <agraf@suse.de>,
-	Max Filippov <jcmvbkbc@gmail.com>, qemu-s390x@nongnu.org,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Michael Walle <michael@walle.cc>,
-	Paolo Bonzini <pbonzini@redhat.com>, Stafford Horne <shorne@gmail.com>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>, Artyom Tarasenko <atar4qemu@gmail.com>
+Cc: fyleo45@gmail.com, Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org,
+	Jean-Christophe Dubois <jcd@tribudubois.net>,
+	qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rBxFoRV8c5aV
+X-TUID: 9GVIV1HSXwuh
 
-On 01/10/2018 05:42 AM, Laurent Vivier wrote:
-> Le 10/01/2018 à 09:43, David Hildenbrand a écrit :
->> On 09.01.2018 00:10, Laurent Vivier wrote:
->>> The MC68040 MMU provides the size of the access that
->>> triggers the page fault.
->>>
->>> This size is set in the Special Status Word which
->>> is written in the stack frame of the access fault
->>> exception.
->>>
->>> So we need the size in m68k_cpu_unassigned_access() and
->>> m68k_cpu_handle_mmu_fault().
->>>
->>> To be able to do that, this patch modifies the prototype of
->>> handle_mmu_fault handler, tlb_fill() and probe_write().
->>> do_unassigned_access() already includes a size parameter.
->>>
->>> This patch also updates handle_mmu_fault handlers and
->>> tlb_fill() of all targets (only parameter, no code change).
->>>
->>
->> There are a couple of places where you use "1" (when no other size is
->> available). e.g. in get_page_addr_code().
->>
->> Wonder if that's the right thing to do - are there any architectures
->> that e.g. always fetch at least 2 bytes in these conditions?
->>
-> 
-> It's a good question.
-> 
-> "1" is passed to probe_write() and tlb_fill() and handle_mmu_fault().
-> probe_write() calls tlb_fill(), and tlb_fill() calls machine
-> handle_mmu_fault handler.
-> 
-> As no existing handle_mmu_fault takes care of the access size, I think
-> passing 1 and ignoring it doesn't change the existing behavior.
-> 
-> probe_write() is used to check if a page is writable, and none of the
-> callers is guessing the write can cross a page boundary, so 1 is the
-> good value in this case.
-> 
-> get_page_addr_code() is the only user of tlb_fill() with 1. and callers
-> of get_page_addr_code() never guess the code address can run across a
-> page boundary. Some of them calls get_page_addr_code() a second time to
-> check this case. So I think using 1 is good solution, but perhaps the
-> code could be improved by adding the size parameter to get_page_addr_code().
-> 
-> My purpose was not to change the functions behavior, only to add the new
-> parameter. So using "1" when the size is not obvious is a good solution
-> to me.
+The actual imx_eth_enable_rx() function is buggy.
 
-I guess I don't really have a problem with "1".
+It updates s->regs[ENET_RDAR] after calling qemu_flush_queued_packets().
 
-I do wonder if "0" might be a better value for "I don't know", because it is
-not mistakable with a real access of 1 byte.
+qemu_flush_queued_packets() is going to call imx_XXX_receive() which itself
+is going to call imx_eth_enable_rx().
 
+By updating s->regs[ENET_RDAR] after calling qemu_flush_queued_packets()
+we end up updating the register with an outdated value which might
+lead to disabling the receive function in the i.MX FEC/ENET device.
 
-r~
+This patch change the place where the register update is done so that the
+register value stays up to date and the receive function can keep
+running.
+
+Reported-by: Fyleo <fyleo45@gmail.com>
+Tested-by: Fyleo <fyleo45@gmail.com>
+Signed-off-by: Jean-Christophe Dubois <jcd@tribudubois.net>
+---
+ hw/net/imx_fec.c | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+index 90e6ee35ba..04a5cf12f1 100644
+--- a/hw/net/imx_fec.c
++++ b/hw/net/imx_fec.c
+@@ -536,19 +536,16 @@ static void imx_eth_do_tx(IMXFECState *s)
+ static void imx_eth_enable_rx(IMXFECState *s)
+ {
+     IMXFECBufDesc bd;
+-    bool tmp;
+ 
+     imx_fec_read_bd(&bd, s->rx_descriptor);
+ 
+-    tmp = ((bd.flags & ENET_BD_E) != 0);
++    s->regs[ENET_RDAR] = (bd.flags & ENET_BD_E) ? ENET_RDAR_RDAR : 0;
+ 
+-    if (!tmp) {
++    if (!s->regs[ENET_RDAR]) {
+         FEC_PRINTF("RX buffer full\n");
+-    } else if (!s->regs[ENET_RDAR]) {
++    } else {
+         qemu_flush_queued_packets(qemu_get_queue(s->nic));
+     }
+-
+-    s->regs[ENET_RDAR] = tmp ? ENET_RDAR_RDAR : 0;
+ }
+ 
+ static void imx_eth_reset(DeviceState *d)
+@@ -806,7 +803,6 @@ static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
+     case ENET_RDAR:
+         if (s->regs[ENET_ECR] & ENET_ECR_ETHEREN) {
+             if (!s->regs[index]) {
+-                s->regs[index] = ENET_RDAR_RDAR;
+                 imx_eth_enable_rx(s);
+             }
+         } else {
+-- 
+2.14.1
+

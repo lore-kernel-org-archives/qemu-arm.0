@@ -1,146 +1,171 @@
-Received: by 10.28.173.206 with SMTP id w197csp4652506wme;
-        Wed, 10 Jan 2018 00:45:02 -0800 (PST)
-X-Google-Smtp-Source: ACJfBos/y7BFgv7yd5ZbueGcdRbjVPiDUWGwCrxZR1huYyQCM+dk+6lsTsXZ7bOlFH6QhaZwh3Mj
-X-Received: by 10.37.58.3 with SMTP id h3mr16416526yba.118.1515573902134;
-        Wed, 10 Jan 2018 00:45:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515573902; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp4697695wme;
+        Wed, 10 Jan 2018 01:41:39 -0800 (PST)
+X-Google-Smtp-Source: ACJfBouMvuc1vz0ff6Yn7YH6DKdS4M9LQ7X0wzUakNsAr5RLzJ7J7KEg9DbAidUL+M++5wP5looO
+X-Received: by 10.37.244.14 with SMTP id q14mr16245932ybd.264.1515577298982;
+        Wed, 10 Jan 2018 01:41:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515577298; cv=none;
         d=google.com; s=arc-20160816;
-        b=nJvWNIQE85CdwRm3xmP2k2RMjmPk6mxppqIpZSr0qlJWBY1fAapj2R1inFIl8d3ZB2
-         EJzThtFTPh2v6d4GvqcqTbDT8RZ3kZcj6n/bCezgnIX+M8aH5DrV9UTRJ03fy68HayiI
-         w/dv0mQ0GNzEnYNaX1PhUqTxFUdhCAFpASbr+37v2IRm1SrORB1mMU9GI49IJ3Ud3IMV
-         cpmGMZzMPen/zpRyVuiQRLcBUUO6C6mrUX6ir+A1EExz/4lV2CXRVnVCPlE/a1BJFosP
-         B6vMtQYY1FOESLak4DyTADMg9QiveKGjN8wJe+/7nJObHufZGoseSgO4yKZw6pb9OP7D
-         b7aw==
+        b=LxN+ggQtaAGvnl9CuZdMdFKTN17P8QBwLYZLaBiTNw7FEHvnjGMtviIyLTUk0mDSFi
+         Vr/8c0r45M9xqNWY4+dYnU95ECVfmqr8TVlxjWbnFEk3EbuHT7wVa6HrZsGrNe8Gll2R
+         tSaBVvwzxS6HQfub566U3GT2IWKIjLmT2hAm7ehVWuwahJAq3ud6stWgeKOZsoRVb/JJ
+         3QpulA3kxfxInM2zUpm2rVYXmfJaHFQ+4Mnd6n3Q//1oo4TjszKdvVA/v/2DGZMt7tbF
+         VteJQysfaDaq8DTxEMDP2t+VKonrXMeNOExib/eaHkEuWsFNHoVbKK/5wuBSw7zb2cgZ
+         NDwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:from:references:to
+         :content-transfer-encoding:user-agent:message-id:references
+         :in-reply-to:to:from:date:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=ogBRbyUBBVsUVX6T5k+5Ds8u2Rj56dtGgU2o2MKlhBE=;
-        b=q8mOYuEHy11Oo+feOUWo29XCi5lzmT/9zSUBjh+GWlwlsyMW+uLVrHYSyDW8AggxKc
-         TcTmlWlGru95Ie8qXdrP2KF0+xH+MI8kR+FtZ2gj6GCdQp8/W4c2y95SGeMXu7IqOAec
-         epKhZONb7uX8xh305iDNry0Q9c4z7C4KAJLgo7iUqxKgv9+UPu1SNc0OrdDUe0eD3ILQ
-         MRipWjNsO8x0LxGnuWBKcC1PSnvoXWt+ruQKhNC1LCnfPQW8UrMV+sSyKW3BWxwzerrX
-         1T4+M9uHSs5YaLOTBjMB0Cv979Ht7s90NmSejLtfc5vsEkE6bZ2rNAC3vrZ4UqLJjUmd
-         NVRg==
+        bh=1muS9Onwc6dDmrEIYmLjP73SoxfBqhFRvo2GaJhSEp0=;
+        b=VBTWON9XeNKnK4pDfKiMHHOssa1XGtU4Mf6Y3FmUuWH7ZW/jqutRfyUKCxsoLaNw1o
+         CBqewnog7o1ORKb35apUBgre7/RDFMDTekNdXnW/uHamGJK2WmDhhHPgENLGfA0jNkId
+         cLAIglHVMM2EBkpq2ir3y2y0VIvACERiGpS8I+7dTeqnS5M7nitdnLt1kgj8G/cMd3Dy
+         nOqDmbvKej9yewa2yW/DLO2Z7PKPtpyGmC+NzBnmpYExRT8q0pWvy4D/L/jPm+jKrF80
+         Oj43WhOfZTt5rjUuVsXEnGeo4Q0Un/faecbTeck4v+JfZfTlXgfI58j8MTUS4SpfyyTV
+         3yMg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=neutral (body hash did not verify) header.i=@walle.cc header.s=mail2016061301 header.b=mGA4oS7+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h6si3362308ywe.294.2018.01.10.00.45.01
+        by mx.google.com with ESMTPS id b1si521735ybk.556.2018.01.10.01.41.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 10 Jan 2018 00:45:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 10 Jan 2018 01:41:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54309 helo=lists.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@walle.cc header.s=mail2016061301 header.b=mGA4oS7+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:57058 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eZC0L-0006YP-Jh
-	for alex.bennee@linaro.org; Wed, 10 Jan 2018 03:45:01 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36162)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eZCt8-0001fV-GB
+	for alex.bennee@linaro.org; Wed, 10 Jan 2018 04:41:38 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56618)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <david@redhat.com>) id 1eZBz0-0005on-KZ
-	for qemu-devel@nongnu.org; Wed, 10 Jan 2018 03:43:39 -0500
+	(envelope-from <michael@walle.cc>) id 1eZCt1-0001f4-77
+	for qemu-arm@nongnu.org; Wed, 10 Jan 2018 04:41:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <david@redhat.com>) id 1eZByz-0006h1-Pr
-	for qemu-devel@nongnu.org; Wed, 10 Jan 2018 03:43:38 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:50690)
+	(envelope-from <michael@walle.cc>) id 1eZCsw-0007XQ-T5
+	for qemu-arm@nongnu.org; Wed, 10 Jan 2018 04:41:31 -0500
+Received: from ssl.serverraum.org ([213.133.101.245]:47793)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <david@redhat.com>)
-	id 1eZByu-0006aX-GK; Wed, 10 Jan 2018 03:43:32 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(Exim 4.71) (envelope-from <michael@walle.cc>)
+	id 1eZCsw-0007WE-If; Wed, 10 Jan 2018 04:41:26 -0500
+Received: from ssl.serverraum.org (web.serverraum.org [172.16.0.2])
+	(using TLSv1.2 with cipher DHE-RSA-CAMELLIA256-SHA256 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0E4B67CB89;
-	Wed, 10 Jan 2018 08:43:30 +0000 (UTC)
-Received: from [10.36.117.128] (ovpn-117-128.ams2.redhat.com [10.36.117.128])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 44CC87B8CF;
-	Wed, 10 Jan 2018 08:43:23 +0000 (UTC)
-To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
-References: <20180108231048.23966-1-laurent@vivier.eu>
-	<20180108231048.23966-2-laurent@vivier.eu>
-From: David Hildenbrand <david@redhat.com>
-Organization: Red Hat GmbH
-Message-ID: <66de9088-f8ed-2be4-c71a-5d149c63587b@redhat.com>
-Date: Wed, 10 Jan 2018 09:43:23 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.0
+	by ssl.serverraum.org (Postfix) with ESMTPSA id 9627622238;
+	Wed, 10 Jan 2018 10:41:24 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc;
+	s=mail2016061301; t=1515577284;
+	bh=hIEF34T/ONPDi88ZDffNLbGF5pp7Uw421OQGlaZ257A=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=mGA4oS7+9T6tBoQGomScBgDy/Fc7tG+WHxhUZuCQd09jkdm8m3gywFhOyNqmlDw6f
+	JWMb2gQ8eNyIA9ebE+0rwZIonKYiizKlNWy0da5cEmw5zqeKBp0FOyCbDT2cL/Iz1r
+	GpmpYReWrL1IdcD/vcmkNFdlShdiEXfiSKm17Fmw=
 MIME-Version: 1.0
-In-Reply-To: <20180108231048.23966-2-laurent@vivier.eu>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Wed, 10 Jan 2018 08:43:30 +0000 (UTC)
+Content-Type: text/plain; charset=UTF-8;
+ format=flowed
+Date: Wed, 10 Jan 2018 10:41:24 +0100
+From: Michael Walle <michael@walle.cc>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+In-Reply-To: <CAAdtpL7bno=1yrRYK6zt4pgDsa8N-8d291pzX0rhNBVqgkKi4g@mail.gmail.com>
+References: <20180103162400.10396-1-f4bug@amsat.org>
+	<20180103162400.10396-3-f4bug@amsat.org>
+	<60c89dbec86c14e2f0883d121872d0f6@walle.cc>
+	<CAAdtpL7bno=1yrRYK6zt4pgDsa8N-8d291pzX0rhNBVqgkKi4g@mail.gmail.com>
+Message-ID: <a06fcf38a03e63ffda2baa50f01e0769@walle.cc>
+X-Sender: michael@walle.cc
+User-Agent: Roundcube Webmail/1.2.3
+X-Virus-Scanned: clamav-milter 0.99.2 at web
+X-Virus-Status: Clean
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [qemu-s390x] [PATCH 1/6] accel/tcg: add size
- paremeter in tlb_fill()
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 213.133.101.245
+Subject: Re: [Qemu-arm] [PATCH 2/6] hw/sd/milkymist-memcard: split realize()
+ out of SysBusDevice init()
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Anthony Green <green@moxielogic.com>, Chris Wulff <crwulff@gmail.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Alexander Graf <agraf@suse.de>,
-	Max Filippov <jcmvbkbc@gmail.com>, qemu-s390x@nongnu.org,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Michael Walle <michael@walle.cc>,
-	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Stafford Horne <shorne@gmail.com>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>, Artyom Tarasenko <atar4qemu@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jkk/ghaXlG5d
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Xiaoqiang Zhao <zxq_yx_007@163.com>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	qemu-arm <qemu-arm@nongnu.org>, philippe.mathieu.daude@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: RzHhgJ36lUrc
 
-On 09.01.2018 00:10, Laurent Vivier wrote:
-> The MC68040 MMU provides the size of the access that
-> triggers the page fault.
-> 
-> This size is set in the Special Status Word which
-> is written in the stack frame of the access fault
-> exception.
-> 
-> So we need the size in m68k_cpu_unassigned_access() and
-> m68k_cpu_handle_mmu_fault().
-> 
-> To be able to do that, this patch modifies the prototype of
-> handle_mmu_fault handler, tlb_fill() and probe_write().
-> do_unassigned_access() already includes a size parameter.
-> 
-> This patch also updates handle_mmu_fault handlers and
-> tlb_fill() of all targets (only parameter, no code change).
-> 
+Hi Philippe,
 
-There are a couple of places where you use "1" (when no other size is
-available). e.g. in get_page_addr_code().
+Am 2018-01-09 19:16, schrieb Philippe Mathieu-Daud=C3=A9:
+> Hi Michael,
+>=20
+>> Am 2018-01-03 17:23, schrieb Philippe Mathieu-Daud=C3=A9:
+>>>=20
+>>> Create the SDCard in the realize() function.
+>>>=20
+>>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>>> ---
+>>>  hw/sd/milkymist-memcard.c | 24 +++++++++++++++---------
+>>>  1 file changed, 15 insertions(+), 9 deletions(-)
+>>>=20
+>>> diff --git a/hw/sd/milkymist-memcard.c b/hw/sd/milkymist-memcard.c
+>>> index 5de3e00e2f..5df3a0f815 100644
+>>> --- a/hw/sd/milkymist-memcard.c
+>>> +++ b/hw/sd/milkymist-memcard.c
+>>> @@ -255,24 +255,29 @@ static void milkymist_memcard_reset(DeviceState=
+=20
+>>> *d)
+>>>  static int milkymist_memcard_init(SysBusDevice *dev)
+>>>  {
+>>>      MilkymistMemcardState *s =3D MILKYMIST_MEMCARD(dev);
+>>> -    DriveInfo *dinfo;
+>>> +
+>>> +    memory_region_init_io(&s->regs_region, OBJECT(s),=20
+>>> &memcard_mmio_ops,
+>>> s,
+>>> +            "milkymist-memcard", R_MAX * 4);
+>>> +    sysbus_init_mmio(dev, &s->regs_region);
+>>> +
+>>> +    return 0;
+>>> +}
+>>=20
+>>=20
+>> Creating the device (milkymist_memcard_create()) fails with an=20
+>> assertion:
+>>   sysbus_mmio_map_common: Assertion `n >=3D 0 && n < dev->num_mmio'=20
+>> failed.
+>=20
+> Thanks for trying this.
+>=20
+> Odd 'make check-qtest-lm32' didn't catch this...
+>=20
+>> because dev->num_mmio is still 0. Seems that sysbus_init_mmio() hasn't=
+=20
+>> been
+>> called yet. Do we have to move the milkymist_memcard_init() to
+>> .instance_init?
+>=20
+> Your patch seems correct :)
+>=20
+> Do you have some milky one prebuilt image that I can use for testing?
 
-Wonder if that's the right thing to do - are there any architectures
-that e.g. always fetch at least 2 bytes in these conditions?
+You can use this one:
+   http://milkymist.walle.cc/updates/2012-03-01/flickernoise
 
-Apart from that, looks sane to me (for other architectures :) )
+http://milkymist.walle.cc/README.qemu
 
--- 
-
-Thanks,
-
-David / dhildenb
+-michael

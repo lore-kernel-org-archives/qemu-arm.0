@@ -1,108 +1,102 @@
-Received: by 10.28.173.206 with SMTP id w197csp1014666wme;
-        Thu, 11 Jan 2018 13:05:08 -0800 (PST)
-X-Google-Smtp-Source: ACJfBot3kkt27KJiVqGLoQeIz3wqSvKChjdu7prsT+oMqDfnaAK2ndhbTscGWctwiOAA5DbR91XI
-X-Received: by 10.37.139.11 with SMTP id i11mr21232692ybl.510.1515704708508;
-        Thu, 11 Jan 2018 13:05:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515704708; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp1015034wme;
+        Thu, 11 Jan 2018 13:05:28 -0800 (PST)
+X-Google-Smtp-Source: ACJfBov/pJutAsTzgzJrJs6F42M9ovcgRK8I9ySmU81gF8RC+2i9aHVNaVCUZl9VgbX2icWJy5eo
+X-Received: by 10.37.190.198 with SMTP id k6mr21768931ybm.355.1515704728780;
+        Thu, 11 Jan 2018 13:05:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515704728; cv=none;
         d=google.com; s=arc-20160816;
-        b=f4YC/snT9zctFElHK/kcWJo3wInx/DOalitM47ArF4/VGigGDQZD88J/SyJYqwJ3A1
-         NH+p8NzoqOamWlK6ndpWpPyhpceedX2x6NaNbIfihjQ6+LeZplEPJA+Sn56PfT/fbN4f
-         ImF2m5Ur1hEPFWjy5HaOdNYtDbT+KbYrBj01pCjWtBxHe4bPuQxViyAhf54o4rJ6QNBX
-         8lvjmtD2wV67QVB3FZz1LPpfKXlUMBIakujLrzjAwD0uItqScZneCwQD/Mwa5rGTYNNK
-         4kJWQjt1BzHsX/m7SmbLswzV/eDue9ncPDOd8joQthk010JXokkOsJDEXD4k3KKiouo4
-         Vg9Q==
+        b=J4mtsJ8umU3ML9HXmqSVxLH2+cWFmygeYNhItdsbHABSL/3jAunf93f5L6+D8J8twx
+         REC5l3QwdFOQFl9dp4HbD21USvN0XrWK1zFrHXzKv1zmbMgVfPsu2eD9HdfFpw052d1R
+         277pGSfUeA92Jh68WUAEp6vv0JolAQagCq9l4ReZo5v5gQ6lJOy5OApFKtDy4IbrsGWw
+         qL4jXib+Aj+8aL+vy5my/HWwW7C3OL8alX8Zne06cggp4xJ5q7e+PmtycNe7Z9YPT4mj
+         jA8x7ITn34U7q+YWLhOfEdaCppGTEsU+pdUfgqYumJIUKAqB2ZpelfQDvrlFeijzMvFA
+         GLcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=Di4FFkogtDaOD6jrT5Ce9vduls4j3Ej06Oqgjo8glt0=;
-        b=IUFXgpkFxNyARWXb5b4B71X+XZM4W6VD6zJX/qbx4JIrHB9phIEmwfNXwXvA4JUZIY
-         eiR81n5qdVtqI6Ynvkx5YWkPZjDiGxo2Fy04uuhuokUOLCDszBv5YhmAzxWAI34vNbV2
-         EE+nCKOHTSlF4y3ZWB72Cm2uHVY73oyYOsE6DHdjz8kP1nmSvJt3xNC/xlMiZkcNv0qj
-         hRMB9EDZFvU5l034S9d3F2zeuy/F5svxyIneBJE+9d+ek56qEceSeGxlvYSpHfLJxSOY
-         nMo5j3mtrqlYXCpVGpNHHmPgUbi0+nUO+Rs1Q6YvQYF/FVmBSxcNsfntOpGfu6n9daWa
-         byRQ==
+        bh=SGgR0OS2pomJ9n9vlY76/WnE2bPd81xUYrJALDxrk1g=;
+        b=TUv9UuXRsBKOcIH8sIX1s0E4uflfTLSdCK0yxbUIrioZ9B2EwlLB85jr4vsIZ4Hn+J
+         Kt6bWaDD4ur0lmd+BVh5Ah/umvNd9pOvAA+x2wzLV47i696GVuuD6l7xNipbTb4B3wL0
+         nvly3Kg5Y/ox+Bm6/8Z3DoMP9z9FvMxcluoLCdYc+Zo3qXThaAXg8Yu2tGrNBOb8Ax0f
+         6A41KNrGWIwDn7yjOAv1GzWosa/8SkVAAMoDbQfbbV4kjGsJkCdSqBecJoX+IPGNl1Ob
+         +EPRMEOZ7Njv24Mpx8kO4qLhHop49+33MiBHUmIC417HUxhEd+K3Th80EfBdFwFBLqzT
+         EkBw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fQqK7qBs;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Ti4sF8Nq;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h8si70115ybi.39.2018.01.11.13.05.08
+        by mx.google.com with ESMTPS id e140si4138040ybh.807.2018.01.11.13.05.28
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 11 Jan 2018 13:05:08 -0800 (PST)
+        Thu, 11 Jan 2018 13:05:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fQqK7qBs;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Ti4sF8Nq;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:42375 helo=lists.gnu.org)
+Received: from localhost ([::1]:42376 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eZk27-0003e0-T3
-	for alex.bennee@linaro.org; Thu, 11 Jan 2018 16:05:07 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59707)
+	id 1eZk2S-0003wl-5Z
+	for alex.bennee@linaro.org; Thu, 11 Jan 2018 16:05:28 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59133)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eZjvV-0006w6-Jn
-	for qemu-devel@nongnu.org; Thu, 11 Jan 2018 15:58:18 -0500
+	id 1eZjud-0005hR-4V
+	for qemu-devel@nongnu.org; Thu, 11 Jan 2018 15:57:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eZjvU-0003Hq-Jk
-	for qemu-devel@nongnu.org; Thu, 11 Jan 2018 15:58:17 -0500
-Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:34643)
+	id 1eZjuc-0002WN-Eo
+	for qemu-devel@nongnu.org; Thu, 11 Jan 2018 15:57:23 -0500
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:45391)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eZjvU-0003H6-Eo; Thu, 11 Jan 2018 15:58:16 -0500
-Received: by mail-qk0-x244.google.com with SMTP id b76so6134857qkc.1;
-	Thu, 11 Jan 2018 12:58:16 -0800 (PST)
+	id 1eZjuc-0002Vx-AL; Thu, 11 Jan 2018 15:57:22 -0500
+Received: by mail-qt0-x242.google.com with SMTP id g10so3543809qtj.12;
+	Thu, 11 Jan 2018 12:57:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=Di4FFkogtDaOD6jrT5Ce9vduls4j3Ej06Oqgjo8glt0=;
-	b=fQqK7qBsEWM3BoUCyiVXUwGjzWkRNJskCuwtRE1Ybe9bgwoiooqjSRVzh3lXCxugp0
-	Xrz3/cauOa/9PQ/+NHVmv8YEkDTueDazDd6R9gxQB9iZeSAxhNCSnoesfIaw61wZTbGt
-	2M07RtHA+jz88ygoeINsUgUwdfyh+Ck9rqkmuZLfvUx+jwc6dTaP2djlpDF7Ja6KpEDe
-	sbLOgR1nJ20eJdnC7PvpeeB6ePXbXOAfBU9F+RBQG0rYwCBEBs5cPmrv81FyAGuJjsAA
-	aS9uTAwYmy0rLMt3BKvHNuF7YTtC/kSKxCrpja1kB2QMZsWZLhYL5+AyBj1M70+0LWWs
-	wh7Q==
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=SGgR0OS2pomJ9n9vlY76/WnE2bPd81xUYrJALDxrk1g=;
+	b=Ti4sF8NqP5hjl2lCpPEAQNEioeNZVr4evnQjns27eXlEAr0K0cIDys/sX34ZvvQWfq
+	BaoVMwBblhHFwebO4M79OQa8eyluit5PYZA7QrT0g5n4iNWKlH/L16UPGASbOrZSZd9/
+	8YH+UubIPAA7JqisIiTw2l/Zuiqe83fDFRsNDZTG+rl1oyzUZhxXMsBNKROHcBPAzf2M
+	jCc4GeWtaxZV9jzJQ6LtGTleyUpMbpqyOZdweIdmrja9M+6lGLpbI0OJaKCeIupy+Uwb
+	Ey89S5JqK5vQC5cqvcrlMPwPzNUFqfGVe+Rk7+3gUVjGfc3+iCcXKJsn2sTw/8iDK1ZG
+	WOWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=Di4FFkogtDaOD6jrT5Ce9vduls4j3Ej06Oqgjo8glt0=;
-	b=bqb+fgTZS7M9f0Y7IAhrRcTU91IZs8sOvZdfXZcst4VpVi469yTvm4FxDu4IULhitB
-	7OF5N7zBaqK7NjVFQnmIKxXycbxdFHIDvqygqiZ67Q2UG+/H3sfoN3zl746ikzGVWTf7
-	eq3vBY/pNovaAFHUvyXu2CVtnUpP3qpZNP35vSo1Xg00xCTVxa5z2LXlcOqONkFkOVdI
-	EuCeUn9hCL4zfg7ogvKC2+wpplDssLnj3XmChLFXDDxi63omU45SGlMDLFX43rNFXLal
-	mTIu+6AFNiMy9rkgArpowI3lsZXIwn5kMOk2rm90x+5vjwkrRf80u6VGvdyFQ2M5xL+e
-	H3pQ==
-X-Gm-Message-State: AKwxytc+4/rGvS+R06klCWGWMxtBnd+Ga9qPBc7iaGc5nLay9q/q/hu2
-	vVlGIrujwWVWwCrnh1ZwEoo=
-X-Received: by 10.55.53.205 with SMTP id c196mr22137165qka.311.1515704295857; 
-	Thu, 11 Jan 2018 12:58:15 -0800 (PST)
+	:in-reply-to:references;
+	bh=SGgR0OS2pomJ9n9vlY76/WnE2bPd81xUYrJALDxrk1g=;
+	b=VLdAMS2pXyGJK/4DQpKy78PrZfFW2AbPKOnXCt5kNafqGZikZ38zj0LIg0rRXOhUYB
+	BDs7p++SndyEaNRJTODHCtxdPhnb32Ak3b9lARgrYpnoMuxD+78YwGVwGVoTKQqGyZrH
+	8xY/hoJ4XlEN3k4h0y1Pm92P2XhDZW7MTGOxeVlsAjOACv7D/8GCl8HlpukxU7O1awwI
+	G/IyQgxAYCAKMEtIiKV658hi15qBucPPNIvgkNDuQat8Dkx1BMiR/XldSqOE8kkzZSrY
+	6J1UHL5kjQxEj00aMazczQgsQo78RbIJG+hWRh3/GXt53KBhvH+mZz0P6Q/KwpDtD2C/
+	3mqw==
+X-Gm-Message-State: AKwxyteUzUPV15g+ZZTK6qRjb/eL4NCZRF4Qn0npIg1NGSTp4Os2uI/r
+	fJof3gPwhpMJweRLf212yE0=
+X-Received: by 10.237.50.5 with SMTP id y5mr34984784qtd.7.1515704241697;
+	Thu, 11 Jan 2018 12:57:21 -0800 (PST)
 Received: from x1.local ([138.117.48.219]) by smtp.gmail.com with ESMTPSA id
-	c1sm12818399qta.52.2018.01.11.12.58.11
+	c1sm12818399qta.52.2018.01.11.12.57.15
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 11 Jan 2018 12:58:15 -0800 (PST)
+	Thu, 11 Jan 2018 12:57:21 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Alistair Francis <alistair.francis@xilinx.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Andrey Smirnov <andrew.smirnov@gmail.com>,
 	Igor Mitsyanko <i.mitsyanko@gmail.com>
-Date: Thu, 11 Jan 2018 17:56:23 -0300
-Message-Id: <20180111205626.23291-19-f4bug@amsat.org>
+Date: Thu, 11 Jan 2018 17:56:12 -0300
+Message-Id: <20180111205626.23291-8-f4bug@amsat.org>
 X-Mailer: git-send-email 2.15.1
 In-Reply-To: <20180111205626.23291-1-f4bug@amsat.org>
 References: <20180111205626.23291-1-f4bug@amsat.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::244
-Subject: [Qemu-devel] [PATCH v6 18/21] sdhci: implement the Host Control 2
- register for the tunning sequence
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: [Qemu-devel] [PATCH v6 07/21] sdhci: Fix 64-bit ADMA2
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -117,90 +111,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
 	Prasad J Pandit <pjp@fedoraproject.org>,
 	=?UTF-8?q?Gr=C3=A9gory=20Estrade?= <gregory.estrade@gmail.com>,
-	qemu-devel@nongnu.org, Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	qemu-devel@nongnu.org, Krzysztof Kozlowski <krzk@kernel.org>,
 	Jean-Christophe Dubois <jcd@tribudubois.net>,
 	Sai Pavan Boddu <saipava@xilinx.com>, qemu-arm@nongnu.org,
 	Clement Deschamps <clement.deschamps@antfield.fr>,
 	Andrew Baumann <Andrew.Baumann@microsoft.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vsb0zcuEQAE6
+X-TUID: KXPVk1eqt37U
 
-[based on a patch from Alistair Francis <alistair.francis@xilinx.com>
- from qemu/xilinx tag xilinx-v2015.2]
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+From: Sai Pavan Boddu <saipava@xilinx.com>
+
+The 64-bit ADMA address is not converted to the cpu endianes correctly.
+This patch fixes the issue and uses a valid mask for the attribute data.
+
+Signed-off-by: Sai Pavan Boddu <saipava@xilinx.com>
+[AF: Re-write commit message]
+Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
 ---
- include/hw/sd/sdhci.h |  1 +
- hw/sd/sdhci.c         | 22 +++++++++++++++++++---
- 2 files changed, 20 insertions(+), 3 deletions(-)
+ hw/sd/sdhci.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
-index 890dd1bbac..e66d6d6abd 100644
---- a/include/hw/sd/sdhci.h
-+++ b/include/hw/sd/sdhci.h
-@@ -71,6 +71,7 @@ typedef struct SDHCIState {
-     uint16_t norintsigen;  /* Normal Interrupt Signal Enable Register */
-     uint16_t errintsigen;  /* Error Interrupt Signal Enable Register */
-     uint16_t acmd12errsts; /* Auto CMD12 error status register */
-+    uint16_t hostctl2;     /* Host Control 2 */
-     uint64_t admasysaddr;  /* ADMA System Address Register */
- 
-     /* Read-only registers */
 diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-index 8e4805c84e..834b835f3e 100644
+index f0a29711f7..ab4ffeca1d 100644
 --- a/hw/sd/sdhci.c
 +++ b/hw/sd/sdhci.c
-@@ -312,14 +312,29 @@ static void sdhci_end_transfer(SDHCIState *s)
- static void sdhci_read_block_from_card(SDHCIState *s)
- {
-     int index = 0;
-+    uint8_t data;
-+    const uint16_t blk_size = s->blksize & BLOCK_SIZE_MASK;
- 
-     if ((s->trnmod & SDHC_TRNS_MULTI) &&
-             (s->trnmod & SDHC_TRNS_BLK_CNT_EN) && (s->blkcnt == 0)) {
-         return;
-     }
- 
--    for (index = 0; index < (s->blksize & BLOCK_SIZE_MASK); index++) {
--        s->fifo_buffer[index] = sdbus_read_data(&s->sdbus);
-+    for (index = 0; index < blk_size; index++) {
-+        data = sdbus_read_data(&s->sdbus);
-+        if (!FIELD_EX32(s->hostctl2, SDHC_HOSTCTL2, EXECUTE_TUNING)) {
-+            /* Device is not in tunning */
-+            s->fifo_buffer[index] = data;
-+        }
-+    }
-+
-+    if (FIELD_EX32(s->hostctl2, SDHC_HOSTCTL2, EXECUTE_TUNING)) {
-+        /* Device is in tunning */
-+        s->hostctl2 &= ~R_SDHC_HOSTCTL2_EXECUTE_TUNING_MASK;
-+        s->hostctl2 |= R_SDHC_HOSTCTL2_SAMPLING_CLKSEL_MASK;
-+        s->prnsts &= ~(SDHC_DAT_LINE_ACTIVE | SDHC_DOING_READ |
-+                       SDHC_DATA_INHIBIT);
-+        goto read_done;
-     }
- 
-     /* New data now available for READ through Buffer Port Register */
-@@ -344,6 +359,7 @@ static void sdhci_read_block_from_card(SDHCIState *s)
-         }
-     }
- 
-+read_done:
-     sdhci_update_irq(s);
- }
- 
-@@ -909,7 +925,7 @@ static uint64_t sdhci_read(void *opaque, hwaddr offset, unsigned size)
-         ret = s->norintsigen | (s->errintsigen << 16);
+@@ -617,8 +617,8 @@ static void get_adma_description(SDHCIState *s, ADMADescr *dscr)
+         dscr->length = le16_to_cpu(dscr->length);
+         dma_memory_read(&s->dma_as, entry_addr + 4,
+                         (uint8_t *)(&dscr->addr), 8);
+-        dscr->attr = le64_to_cpu(dscr->attr);
+-        dscr->attr &= 0xfffffff8;
++        dscr->addr = le64_to_cpu(dscr->addr);
++        dscr->attr &= (uint8_t) ~0xC0;
+         dscr->incr = 12;
          break;
-     case SDHC_ACMD12ERRSTS:
--        ret = s->acmd12errsts;
-+        ret = s->acmd12errsts | (s->hostctl2 << 16);
-         break;
-     case SDHC_CAPAB:
-         ret = (uint32_t)s->capareg;
+     }
 -- 
 2.15.1
 

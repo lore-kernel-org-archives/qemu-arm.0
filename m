@@ -1,68 +1,98 @@
-Received: by 10.28.173.206 with SMTP id w197csp515397wme;
-        Sat, 13 Jan 2018 03:35:26 -0800 (PST)
-X-Google-Smtp-Source: ACJfBouGsUxf65e6NzwydEe8lsvJSED3oiGJKfyTHvXfTh4cbZStqEYUaa/r+ajTWXt6AcMgHASG
-X-Received: by 10.37.131.130 with SMTP id t2mr7889244ybk.170.1515843326402;
-        Sat, 13 Jan 2018 03:35:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515843326; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp25082wme;
+        Wed, 10 Jan 2018 19:43:00 -0800 (PST)
+X-Google-Smtp-Source: ACJfBovR6vnygP2sXYh/de+lAZPyO+j9c1Prq8Q2krQYNQgnbYK+5ttUIY/1tyYLtMksiuzcKHEu
+X-Received: by 10.129.238.17 with SMTP id l17mr18727302ywm.398.1515642179961;
+        Wed, 10 Jan 2018 19:42:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515642179; cv=none;
         d=google.com; s=arc-20160816;
-        b=QPcASy7mhjLw0xCyUG7VtUjmV9UiBhldsgCPUdpydQOfTf4VZF8CV4NV/iOugLHtp4
-         wjgXUHg8hS8n6vyKq2pCCiIjRTtF1v5uHVT8Hb9jGhRJLb3PInxtrTAwUPQaPz4Be1yb
-         yutja8QN57k/B4OoVYY9Pe06ias0nsWLNXuZFZcplz8P892kN/F1ykevM1mDqd8mQ+0r
-         I1+yEybhqX6qzDbXcOfiJjDOgJciEm6Q5tg7UZqI5mS0hH05CIRJIFC7UZCbqm/mZj+V
-         SRnBHXx99a7PAaS3Gx0CFL/mnIpBPjWNFBWZk53ERllXfeOUwoBF3er2yqbieP4B2X+0
-         3FFQ==
+        b=mI9PmPJ12IKZ8XE9OQbJ/NfWdB5RTAukSnkIfzD2Hq5/08qA46pu9AVbmohQBMjGO5
+         /XZaGydXlbugWx6ohaEyMDRJurKMLI5p+SWbfQTHjV4F1mm8iXszG1lfNLEnvZW/030R
+         W9w6OwmzSaB8aCMORflQsZ66PmDt1lOKRofyWG8P5uqcoMdtKhTOm4OrRYH0CZIpX8rV
+         hpC1YHCa1VVVRC0Thu6pOXLbfU1jDBriGgGuUpPtyp8Cy16S+KzUJsYyWa9MQPhbsKaD
+         e6SSHuxGUH5MzhsrtveNd29tHg2hgWipTPROQLA+BgI5K/4XKhgimjGjadI5FJchQn8P
+         L/JQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:subject:to
+         :message-id:date:from:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=2SoB1vTii0oFAELrDiFHKFneIvohm0row2+bDcIJ+J8=;
-        b=Du7MtPvmSJeV9RA2+dHmuTBQ3zl9CbSOvmKJPjm9h9VCqrb70nLQEqtnPycV/0/IZv
-         RwE3LnL0to1aB4oOFWOAf77PgLJtSgJUQpWAdra+CoF+rMFN4zinLKMhzJE0GiRhsR4P
-         bRrX5nqsQe3tTquIzp48cbhQFza5Rzt5SClw33+CrnhURix8hDERX3ve79bqUlZKX7CH
-         qaHHdS5a3e2bEFH0Bwf0td8XHZ1190ileqlXZd5SYOLHq2wSUEy+ULtaYmhdXxB6sKwW
-         NBA4wMTcv/tlOYF1pIWKwvD+j9zY38xrBa5IVpJpjUn8fi30AbAUeuyx5cNJ9LR+CpPU
-         7BzA==
+        bh=twS8Xuor6MncPdL+WjcObVgm9AO82gQ3FiX30DIXhOc=;
+        b=pTvqBUKQKmVQ4kJEu0QPX0ffPLA8cXKZX4XiECnSCNX6XZMd3JubgxA3waB77fuDMR
+         FdXhppfG8rax3tDEpVu4PhribnDEZo7Hi8sxzmkQ6ttcN8yJ5USHgksJYoPPBxmQs3t1
+         Arm70MfCScsdg9dtL8eeHahvlpWBO6Xemds8BPjH0Pt6iQ75iFIhkjqjsaIMRYectOde
+         JDLkLj6NaLFfSrpDcOJv2F/FS1IK2JgJzy4dPVBBvLwcQ+S3tS11tVYpvw7zdMvURZ4H
+         wJM5lLPCwoPWPgL40Cv94Vp42yLT+61zZAvLp8ZhUwVx4juYWca53cA1W9K8F7LxLgXB
+         68zg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ta1YsZn9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p10si4877102ywb.463.2018.01.13.03.35.26
+        by mx.google.com with ESMTPS id u127si3768469ywa.509.2018.01.10.19.42.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 13 Jan 2018 03:35:26 -0800 (PST)
+        Wed, 10 Jan 2018 19:42:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:59530 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ta1YsZn9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:36357 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eaK5t-0001uf-Rn
-	for alex.bennee@linaro.org; Sat, 13 Jan 2018 06:35:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37441)
+	id 1eZTlb-0005gL-Fh
+	for alex.bennee@linaro.org; Wed, 10 Jan 2018 22:42:59 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57877)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcd@tribudubois.net>) id 1eaK5m-0001uU-T3
-	for qemu-arm@nongnu.org; Sat, 13 Jan 2018 06:35:19 -0500
+	(envelope-from <patrickelectric@gmail.com>) id 1eZQQ9-0006St-W9
+	for qemu-arm@nongnu.org; Wed, 10 Jan 2018 19:08:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jcd@tribudubois.net>) id 1eaK5j-0006uU-PB
-	for qemu-arm@nongnu.org; Sat, 13 Jan 2018 06:35:18 -0500
-Received: from relay2-d.mail.gandi.net ([217.70.183.194]:43713)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <jcd@tribudubois.net>)
-	id 1eaK5j-0006th-Ii; Sat, 13 Jan 2018 06:35:15 -0500
-Received: from localhost.localdomain (unknown
-	[IPv6:2a01:e34:eebf:9c0:418e:be1e:e2ef:ab3])
-	(Authenticated sender: jcd@tribudubois.net)
-	by relay2-d.mail.gandi.net (Postfix) with ESMTPSA id D8F29C5A5D;
-	Sat, 13 Jan 2018 12:35:09 +0100 (CET)
-From: Jean-Christophe Dubois <jcd@tribudubois.net>
-To: jasowang@redhat.com
-Date: Sat, 13 Jan 2018 12:34:45 +0100
-Message-Id: <20180113113445.2705-1-jcd@tribudubois.net>
-X-Mailer: git-send-email 2.14.1
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 217.70.183.194
-Subject: [Qemu-arm] [PATCH v2] i.MX: Fix FEC/ENET receive funtions
+	(envelope-from <patrickelectric@gmail.com>) id 1eZQQ7-0003F8-IH
+	for qemu-arm@nongnu.org; Wed, 10 Jan 2018 19:08:36 -0500
+Received: from mail-wm0-x234.google.com ([2a00:1450:400c:c09::234]:38803)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <patrickelectric@gmail.com>)
+	id 1eZQQ7-0003DL-Ap
+	for qemu-arm@nongnu.org; Wed, 10 Jan 2018 19:08:35 -0500
+Received: by mail-wm0-x234.google.com with SMTP id 141so2146331wme.3
+	for <qemu-arm@nongnu.org>; Wed, 10 Jan 2018 16:08:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:reply-to:from:date:message-id:subject:to;
+	bh=twS8Xuor6MncPdL+WjcObVgm9AO82gQ3FiX30DIXhOc=;
+	b=ta1YsZn98W/sPqF/0wVaC45EbpwhEgjsSOpFxjbBH+XGF1JGX+xgvZ7m3fbkLW32eZ
+	cRcpOKt+paH/+1Y8rz/sd9Bl4pHvYlHhcQBFb1HhI3lXJtFYWJEXl6MEcr+zkU/NvrEe
+	NUjZqh5WCcTXZNl9bxf4j8Jd74lUvYDS5h44bwt7FoHzq5WPIlFQQ2Tkx44IMmGvcIjU
+	m8wUy8/XiUOhZE6sJA/LfqPjEMVJa4l2xBYLCoKPphpTwv1XvdyoNjOF37g2b2wFI/7y
+	acWc2PmN89j5p0IKT1KAHEk9oqvy7GzZ5iBsG7gLipadQi6kGt+KoPo2yqSOle1uWQVv
+	SSQw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+	:subject:to;
+	bh=twS8Xuor6MncPdL+WjcObVgm9AO82gQ3FiX30DIXhOc=;
+	b=P0Imds3uBYPsoaaerlIJmsAPlhcB4kqFGNejG+wZaP/s1Wv5NUz2tQjOaESwdj/7za
+	kAGme2BX+SFlnFu5EE+jPQ7aEH8icFziHzDnDoCkGWRjShJP+u9OVV5IFEcvu2NqnqDY
+	hTPXg+qt1Qs+hIRnVnb1L4+7NASAUAJmZc9x92S5kvAZxUXhAG3cQ0GlzDM1FfyGQYIL
+	eSoTlwW1V0lOhzSwfYghgf25sc2B1n/GCSYIBbK1b7k2eTX1UlFAB31UryIUFbnPV1ID
+	jAK9zX/0wkULINKJ8jijQJ3hHTOeNBqiCS8IlyS/E5bNj8a24MbPu0ocd7LzbcdGkS0p
+	ODsA==
+X-Gm-Message-State: AKGB3mImmGNCHC7qRvuv46dVgWMERLevrMs7UC6VgkXZ8NX4DOzvjp/m
+	vMZIV4s2sKcnyKSathA28Wzu0DrlxWJU2q7Z2fKkow==
+X-Received: by 10.80.208.201 with SMTP id g9mr27937618edf.216.1515629313434;
+	Wed, 10 Jan 2018 16:08:33 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.80.140.193 with HTTP; Wed, 10 Jan 2018 16:07:52 -0800 (PST)
+From: patrick JP <patrickelectric@gmail.com>
+Date: Wed, 10 Jan 2018 22:07:52 -0200
+Message-ID: <CANN23NnJWS-dT8yDZnZW_wf-L88rMU7n5fzfsgEE3b61Zoa-Rg@mail.gmail.com>
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="94eb2c1cd468d6aa5c056274f272"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::234
+X-Mailman-Approved-At: Wed, 10 Jan 2018 22:42:53 -0500
+Subject: [Qemu-arm] Running qemu-system-arm with stm32f303
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,72 +104,60 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, fyleo45@gmail.com, qemu-devel@nongnu.org,
-	Jean-Christophe Dubois <jcd@tribudubois.net>,
-	qemu-arm@nongnu.org, peter.chubb@nicta.com.au
+Reply-To: patrickelectric@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3t/0t/POt1ac
+X-TUID: lVXDZ2b1fHGO
 
-The actual imx_eth_enable_rx() function is buggy.
+--94eb2c1cd468d6aa5c056274f272
+Content-Type: text/plain; charset="UTF-8"
 
-It updates s->regs[ENET_RDAR] after calling qemu_flush_queued_packets().
+Hello,
 
-qemu_flush_queued_packets() is going to call imx_XXX_receive() which itself
-is going to call imx_eth_enable_rx().
+I am running QEMU v2.11.0 to run my .elf, a bare metal code.
+The .elf runs in my stm32f303 board, flashed via stm32flash.
+My objective is to run the .elf in my machine to do testes over the serial
+communication, running socat PTY,link to create a bridge between
+/dev/deviceIn and /dev/deviceOut, where /dev/deviceIn would be qemu -serial
+argument and /dev/deviceOut the path for my python script.
 
-By updating s->regs[ENET_RDAR] after calling qemu_flush_queued_packets()
-we end up updating the register with an outdated value which might
-lead to disabling the receive function in the i.MX FEC/ENET device.
+Right now, I am running:
 
-This patch change the place where the register update is done so that the
-register value stays up to date and the receive function can keep
-running.
+qemu-system-arm -machine versatilepb -cpu cortex-m3 -nographic -monitor
+null -serial null -semihosting -device loader,file=file.elf
+output: segmentation fault (core dumped)  qemu-system-arm -d cpu,in_asm
+-machine versatilepb -cpu cortex-m3 -nographi
 
-Reported-by: Fyleo <fyleo45@gmail.com>
-Tested-by: Fyleo  <fyleo45@gmail.com>
-Signed-off-by: Jean-Christophe Dubois <jcd@tribudubois.net>
----
-Change since v1:
-1. Rebase the patch on the updated master branch
+qemu-arm -d cpu,in_asm -cpu cortex-m3 -B 0x08000000 file.elf
+log: https://pastebin.com/FyA1pc8m
 
- hw/net/imx_fec.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+qemu-system-arm with .elf return the same error with .elf.
+qemu-arm with .elf return Error while loading file.hex: Permission denied.
 
-diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
-index 4fb48f62ba..9506f9b69f 100644
---- a/hw/net/imx_fec.c
-+++ b/hw/net/imx_fec.c
-@@ -595,19 +595,16 @@ static void imx_eth_do_tx(IMXFECState *s, uint32_t index)
- static void imx_eth_enable_rx(IMXFECState *s, bool flush)
- {
-     IMXFECBufDesc bd;
--    bool rx_ring_full;
- 
-     imx_fec_read_bd(&bd, s->rx_descriptor);
- 
--    rx_ring_full = !(bd.flags & ENET_BD_E);
-+    s->regs[ENET_RDAR] = (bd.flags & ENET_BD_E) ? ENET_RDAR_RDAR : 0;
- 
--    if (rx_ring_full) {
-+    if (!s->regs[ENET_RDAR]) {
-         FEC_PRINTF("RX buffer full\n");
-     } else if (flush) {
-         qemu_flush_queued_packets(qemu_get_queue(s->nic));
-     }
--
--    s->regs[ENET_RDAR] = rx_ring_full ? 0 : ENET_RDAR_RDAR;
- }
- 
- static void imx_eth_reset(DeviceState *d)
-@@ -866,7 +863,6 @@ static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
-     case ENET_RDAR:
-         if (s->regs[ENET_ECR] & ENET_ECR_ETHEREN) {
-             if (!s->regs[index]) {
--                s->regs[index] = ENET_RDAR_RDAR;
-                 imx_eth_enable_rx(s, true);
-             }
-         } else {
--- 
-2.14.1
+Someone know how can I solve or debug problem ?
 
+My best regards.
+
+--94eb2c1cd468d6aa5c056274f272
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hello,<br><br>I am running QEMU v2.11.0 to run my .elf, a =
+bare metal code.<div>The .elf runs in my stm32f303 board, flashed via stm32=
+flash.</div><div>My objective is to run the .elf in my machine to do testes=
+ over the serial communication, running=C2=A0socat PTY,link to create a bri=
+dge between /dev/deviceIn and /dev/deviceOut, where /dev/deviceIn would be =
+qemu -serial argument and /dev/deviceOut the path for my python script.</di=
+v><div><br></div><div>Right now, I am running:</div><div><br></div>qemu-sys=
+tem-arm -machine versatilepb -cpu cortex-m3 -nographic -monitor null -seria=
+l null -semihosting -device loader,file=3Dfile.elf<div>output: segmentation=
+ fault (core dumped) =C2=A0qemu-system-arm -d cpu,in_asm -machine versatile=
+pb -cpu cortex-m3 -nographi<br><br><div><div>qemu-arm -d cpu,in_asm -cpu co=
+rtex-m3 -B 0x08000000 file.elf</div></div><div>log: <a href=3D"https://past=
+ebin.com/FyA1pc8m">https://pastebin.com/FyA1pc8m</a></div><div><br></div><d=
+iv>qemu-system-arm with .elf return the same error with .elf.<br></div><div=
+>qemu-arm with .elf return=C2=A0Error while loading file.hex: Permission de=
+nied.<br><br>Someone know how can I solve or debug problem ?<br><br>My best=
+ regards.</div><div><br></div></div></div>
+
+--94eb2c1cd468d6aa5c056274f272--

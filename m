@@ -1,85 +1,53 @@
-Received: by 10.28.173.206 with SMTP id w197csp311896wme;
-        Thu, 11 Jan 2018 01:53:25 -0800 (PST)
-X-Google-Smtp-Source: ACJfBosSXRHfSWK7LbkSQx4nwOxHzU72wGPJy7t2WZxIJTTRcngk29zsWPfz8DNxnKsR6MKAYKK/
-X-Received: by 10.98.20.20 with SMTP id 20mr6555059pfu.152.1515664405362;
-        Thu, 11 Jan 2018 01:53:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515664405; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp347792wme;
+        Thu, 11 Jan 2018 02:33:56 -0800 (PST)
+X-Google-Smtp-Source: ACJfBos2jno5GiIbJGkTkvlMyRmlSKf3aaem0+kjaA5a9cr3xT+oQoUGcl4KSAJmJTNqqzePrpmw
+X-Received: by 10.99.128.66 with SMTP id j63mr7449581pgd.254.1515666836342;
+        Thu, 11 Jan 2018 02:33:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515666836; cv=none;
         d=google.com; s=arc-20160816;
-        b=anHeIdMln+1U9g/8uf2GS2osQVIYAP9RhQbZ8YenQ7+yb949PWJEib2SVAkxjxU6LA
-         XRsWJujAwf9hd+d3KL9vZFPZO9qpZtyXFVTpM7qeIJvpJfg8CqTHmKusOL7FXXUCMNP6
-         YTYu0l9/JtDNIPa4fsSnWp5vvXoOJY56XEabkgw7D93Vp9YVUjvYG66+z40Jy71cMmcc
-         /hK9Ve3uDqC9YU/AyPDzNn489P8XWFGsdJd8EHAUv4zJxEW7t3+MvumU6yvLPhUnPoBD
-         4oVXOSQ4by6uE07TVbkHrpTibfBPuvzcNH/VZTUdquKXijY6b1YKtayMbSLbuKizxsK8
-         rokg==
+        b=NUJvCn5tfYuXStGovx4iqlSy81Y3fMRltOwvTkFERB/ROkCrLpyd/dZJJuUM0yFnvy
+         8kvLycE+KTg2XyfSpdDt8LzGgJUvOZPtzYv0NU7QNfN1LGoCaJ5SrjzdWqHIjEhvm5wo
+         UE5cOzXyPwfdchNhYIvNMZdRLU7OzX1K0dSMeXhX4jnUpTGNUHhnn2gE7iBX5OsQY5Re
+         GJ0Ri2fRNlr2joE+0p1gjy1I3yFtnwftNCWU1H1SKM7gk9azMdEOaPswS4CmHdKW6CUn
+         vtEszqEantciOVYh2tFYFkoAcE4wZ0BmH4fhhtSH0Ru4VkSH7KUkIAcTkc7PxrpNnY4y
+         chZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=Dfmj6r7YXJJVLwrplKWOMVMwQYZf7PSdUQiBBnuM4Zs=;
-        b=mkB8DDtCdubFdXBRa7jHMX+NWRxjVL0fmueuHC4zGsvLRSigAQ179RS3qjNMLQi3jK
-         5acX8K97psFNdYAd4aYf+BwGA+K5Yd4nwHseSpCuRe4fYjunYPE9W3jZUKnhvHqpk/lG
-         HBMzaSvu5XMaF8/4BbeNY67jaMJmu8dc8m/96Z+5rXo++WgFpMSvQei1GhT0SM20r+su
-         YHdI7jXty7qx/HY9BiqLJz+q0xA+IuUNKcZno1UUca4JeiWZinMYVkPMN7JRcudRdqld
-         yFFj7rlAZWL76IsBy9WBtwEAVLEeUpuMhVEphDhWGnlSSS/OeqxDmnpSuNiDRiREZaGW
-         aqIQ==
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject:arc-authentication-results;
+        bh=vjX9LzUfdlF4V3RzpUaSunI2cTgD7FDghC2W9loxWZ0=;
+        b=uY8/wbXI1sJ4g3x86PcbV+Rt69nISU00YYzTj2mRRLtIG/0oTpCHXy5uXA91SNBH/S
+         pFJKQv5YJYdNnEhJQmzBtE38RSOe9mTl+W1W6Pn/Pta1FE44F7UlKmduU9eWxupmCTFI
+         D91sJMNoPDC2ffMeqGdu0jh+rQyL84j9W7kapH5x5Ymhst0H3X8fdT8wZLiArJ7xIbc7
+         Lowvi+G2C70GZLj++IIpiDGu5FggM3rnwc3WZtDMIQK43wEtk64MkSzHVTp0NpTrdXPS
+         jgLWWDb6X0ZW+j08tNmuoF0pLveC9ZAG3qU0BBhm2oshiXOr04f2uAFwMKSCzL+hFFLf
+         9XVg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SuYim2d5;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id g7si13657939plt.672.2018.01.11.01.53.25;
-        Thu, 11 Jan 2018 01:53:25 -0800 (PST)
+        by mx.google.com with ESMTP id m66si13284473pfj.294.2018.01.11.02.33.56;
+        Thu, 11 Jan 2018 02:33:56 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SuYim2d5;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1754857AbeAKJxX (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 5 others); Thu, 11 Jan 2018 04:53:23 -0500
-Received: from mail-oi0-f49.google.com ([209.85.218.49]:37639 "EHLO
-        mail-oi0-f49.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1754687AbeAKJxV (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 11 Jan 2018 04:53:21 -0500
-Received: by mail-oi0-f49.google.com with SMTP id e144so1260088oib.4
-        for <kvm@vger.kernel.org>; Thu, 11 Jan 2018 01:53:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=Dfmj6r7YXJJVLwrplKWOMVMwQYZf7PSdUQiBBnuM4Zs=;
-        b=SuYim2d5SBhgE74vRdbwsD8qS7++FhkD9D5N+qTjJzgjVboMdowXAuSy0UrI2HBmqk
-         wW7Ftl2yVMEAy3YKmd4xp90xAikbOqytsyUZt/v68Hl9LEP2Frqiy5N2EHEISWF50lWK
-         h6U0103Z9kk+iEjkQDgvUFiH/EEfdMZd5e5XI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=Dfmj6r7YXJJVLwrplKWOMVMwQYZf7PSdUQiBBnuM4Zs=;
-        b=P4HzckhJ0qxIPNcC25MZmuTE56HKymVisEc4ECW/ShjxK+HNcJTriMRw9OqBZibVdT
-         JEX1+px1CoT2Ct6crOE65Ri7217dxXxhGdIzC8yCGkJFLhlf3oSQTyt+Ojbmh0LDXNME
-         jFoDCR6h0Cg7og0DGH30p8R3eSLKt5Xruk7lqKJlX1aH5BAYsp/6fspBuGu5xdETW2gK
-         EA44Y3oWsRf+CUDx79NOdtYK9hlAjrGGNnqv/HuCTaKc3ztd8WU1OSEUtC6w7xU9iim3
-         TClZtjy2D0LtzxEKFrbGDNZ1J3nUWYUIdv89/rCgXfTgq9wFjZWFCb1mrNU94t8rnfX3
-         QB+g==
-X-Gm-Message-State: AKwxytcXtmhSGH4t9lqah0m75L9RtxQ96Us8/onTkcaxrdYHY81ugciG
-        wVeCAUE8wau+DPyAdIOuQsGtUzrj54uzWkEKbPMpLg==
-X-Received: by 10.202.180.133 with SMTP id d127mr378355oif.328.1515664401204;
- Thu, 11 Jan 2018 01:53:21 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.157.15.71 with HTTP; Thu, 11 Jan 2018 01:53:00 -0800 (PST)
-In-Reply-To: <558dc576-6d05-50d4-9f7c-73738e28ad26@huawei.com>
-References: <1514440458-10515-1-git-send-email-gengdongjiu@huawei.com>
- <1514440458-10515-6-git-send-email-gengdongjiu@huawei.com>
- <CAFEAcA-RC6hUMR5jPrgOB7nkWjXaPxo6dYEXO=kgC=59k7EVrw@mail.gmail.com> <558dc576-6d05-50d4-9f7c-73738e28ad26@huawei.com>
-From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Thu, 11 Jan 2018 09:53:00 +0000
-Message-ID: <CAFEAcA-cAgB5TigMWUsnF74YrzWGToDht61HhOnGrSD1QBDNhg@mail.gmail.com>
+        id S933386AbeAKKdy (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 5 others); Thu, 11 Jan 2018 05:33:54 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3773 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S933058AbeAKKdx (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 11 Jan 2018 05:33:53 -0500
+Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.58])
+        by Forcepoint Email with ESMTP id 6FDCDFD98888E;
+        Thu, 11 Jan 2018 18:33:39 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by DGGEMS413-HUB.china.huawei.com
+ (10.3.19.213) with Microsoft SMTP Server id 14.3.361.1; Thu, 11 Jan 2018
+ 18:33:30 +0800
 Subject: Re: [Qemu-arm] [PATCH v14 5/9] target-arm: kvm64: inject synchronous
  External Abort
-To:     gengdongjiu <gengdongjiu@huawei.com>
-Cc:     Eduardo Habkost <ehabkost@redhat.com>,
+To:     Peter Maydell <peter.maydell@linaro.org>
+CC:     Eduardo Habkost <ehabkost@redhat.com>,
         kvm-devel <kvm@vger.kernel.org>,
         "Michael S. Tsirkin" <mst@redhat.com>,
         Marc Zyngier <marc.zyngier@arm.com>,
@@ -94,36 +62,35 @@ Cc:     Eduardo Habkost <ehabkost@redhat.com>,
         Shannon Zhao <zhaoshenglong@huawei.com>,
         Christoffer Dall <christoffer.dall@linaro.org>,
         Richard Henderson <rth@twiddle.net>
-Content-Type: text/plain; charset="UTF-8"
+References: <1514440458-10515-1-git-send-email-gengdongjiu@huawei.com>
+ <1514440458-10515-6-git-send-email-gengdongjiu@huawei.com>
+ <CAFEAcA-RC6hUMR5jPrgOB7nkWjXaPxo6dYEXO=kgC=59k7EVrw@mail.gmail.com>
+ <558dc576-6d05-50d4-9f7c-73738e28ad26@huawei.com>
+ <CAFEAcA-cAgB5TigMWUsnF74YrzWGToDht61HhOnGrSD1QBDNhg@mail.gmail.com>
+From:   gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <b44234f4-c63b-21bd-0584-bf7f134a2317@huawei.com>
+Date:   Thu, 11 Jan 2018 18:33:11 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA-cAgB5TigMWUsnF74YrzWGToDht61HhOnGrSD1QBDNhg@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.142.68.147]
+X-CFilter-Loop: Reflected
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: h2F7+f20q8Of
+X-TUID: FyFSN9VJXWzl
 
-On 11 January 2018 at 05:59, gengdongjiu <gengdongjiu@huawei.com> wrote:
-> Hi Peter.
->
-> On 2018/1/10 1:30, Peter Maydell wrote:
->> On 28 December 2017 at 05:54, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
-
->>> +
->>> +    /* This exception comes from lower or current exception level. */
->>> +    if ((cpsr & 0xf) == PSTATE_MODE_EL0t) {
->>
->> This looks like it'll be wrong for AArch32 guests (which you can
->> still have with KVM with a 64-bit host), and even for AArch32
->> userspace in a 64-bit guest. The correct way to find out what the
->> current EL is is to use arm_current_el().
-
->  sorry, in the OS(include guest OS), for software error recovery,
-> we only support AArch64 kernel, not support AArch32
->  kernel or AArch32 user space.
-
-Nope, you must handle AArch32 EL1 correctly in some way, even if that
-is only "this guest CPU doesn't support RAS notification and we
-will not notify it". And you must absolutely support AArch32 EL0,
-that's a requirement for getting this merged. It's not difficult.
-
-thanks
--- PMM
+On 2018/1/11 17:53, Peter Maydell wrote:
+>> we only support AArch64 kernel, not support AArch32
+>>  kernel or AArch32 user space.
+> Nope, you must handle AArch32 EL1 correctly in some way, even if that
+> is only "this guest CPU doesn't support RAS notification and we
+> will not notify it". And you must absolutely support AArch32 EL0,
+> that's a requirement for getting this merged. It's not difficult.
+sure, it needed. I absolutely follow your suggestion and handle AArch32
+EL1 correctly in some way. it is not difficult.

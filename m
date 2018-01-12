@@ -1,110 +1,96 @@
-Received: by 10.28.173.206 with SMTP id w197csp1940080wme;
-        Fri, 12 Jan 2018 06:54:58 -0800 (PST)
-X-Google-Smtp-Source: ACJfBotpBpWj1thuevZVWK5pXhnCAazm7GO4tjk8sc6+y5iWoTPvrVgk+ZatRvCn9WH2sdEIwbUx
-X-Received: by 10.129.27.12 with SMTP id b12mr13514936ywb.489.1515768898573;
-        Fri, 12 Jan 2018 06:54:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515768898; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp2087345wme;
+        Fri, 12 Jan 2018 09:09:50 -0800 (PST)
+X-Google-Smtp-Source: ACJfBovsap+a74YrfwCRyzK91nIFHdBJy2Hx3GNPx5KmLehV4+xTeQRtRefsXR4mmtfQlY8qa2dE
+X-Received: by 10.37.64.6 with SMTP id n6mr20658195yba.415.1515776990547;
+        Fri, 12 Jan 2018 09:09:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515776990; cv=none;
         d=google.com; s=arc-20160816;
-        b=szp9WMIx7OpnpP9ve04bp7QPgpIDELSXdgWcqs/UtCBvIBSfnBY1G9G+iO8Xz8uY1b
-         JqoKDmdl6WBUYLDQeNkWt3xjoJdwPu5neUbvhiEFyVq7rTjeBrtunOqg7TPbcxsGtlST
-         FcC6IG9h/nk82sfu0P6WC6xWJq4lMaWoXvsyV/Dl3kizCrHABPEYhdUEf+xIKjbQY3gP
-         stNZXnS55jD1Lam6Nrc5Oc9Um6x+VmVNaQxumB25jTGkzU2E13QPxYe78rvssODvX1WR
-         q2soEgDXOBwHdDguQDXk4RwIJjx7aNhcB15SKsvJkPUUhxIkSy+eRQEnMAMHBScKqUeS
-         rUYA==
+        b=LEyR36DxxJS9rKMAttUSiFPTeG4bHk06CyQA4MpwxFtUyhNLILcnwZtdGllSEe+zgp
+         Fd1MH+ymAqjmt3+C0hTi98jSPUgVqRFXrhyMBfhYge5r4Twv/5Hu0KaxMABJzmV0wjvv
+         cJ8HDHvqSMHG+P7WajQDmkgwon1g905J/P+achoznMYJNc+LCyq5UDMcm01lzsOj+anh
+         QBKcl5ZdFt/9zfNOhXF/cFMJYfAQPPQz49oCyTVlPnoPLuFy9OWGPzGoB/Pruqz3e+pl
+         h9Dp99MzTZCdnNAfkbV3gqu+UNVpUnnsuYqu1GqBq5qIKkZAYYs4/+BYejR2gRAKq26C
+         8ULw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=EJGUtQpEdIWh7cLPa0mVsxjueECSF7j3pnxTOZffnoU=;
-        b=X6uNF5iANPIQy/vdH7k/4UU8A6EnDT2qulBYTO6hl5vNkloTsLFa999B7hDtoFdwfX
-         P6Y34RlQh6ljL9LRE6FWu9n0BbZT6YLKLxclcEvsu7zeU/j7AT/ctn3JRMULrQFtOC7r
-         yr8Aeem9V7cyI5x4FTfoVcJz7FA2bsPWklp4eLkmZzXghcz0VRnrJdMKDyzc8SZtZW/i
-         MXmIKY4dP3DxQfSEGSVMKIOk+cG0YWcHC/iDJIisUBINhqdEeSq28wZWGxfW/p4Mq5o2
-         oBVDFv7gg5jE3RRqS4TZlrWLTX5Hf61cEsqySIBv6uIlOhrzo/dmk5tfHX51DFqRMRIr
-         WMpg==
+        bh=4wMwFWLU18GJDQIe3YQYZ+7JtU2di6IOq+LKueF9YKc=;
+        b=gNihbWUjUxzRt0UoslWCa6eHGX8rsu7Ch1BZD2bY/ir3UIeYg6ZdOPgYkxsDIEkY6i
+         DdgzTfKhliyQVFrDSgcwBwTmXHK2kaF4x9C5njANyZAoDCAvv4XRwuZhXTkPTVg/Y09E
+         /E6iSnwY9CUfg/VpT2Jg8dSq0SOQNMF1SLnW+BewiBXL9aLbIO1hG+gazM4X9kG3SqMA
+         exmQG3zrxUURhBWxwPeP0FTEcG7PS4B4PjxnkSJGfJzPBesCd6CG2GMPm/eWsGU0OsR3
+         JKNd9TtBv/cUR2qCSBQpzkhreo100LAq+2GC9t8yaYC0FtJPVdemwWaDBmGtyL2vIXJD
+         W7Nw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=gNcSVFjW;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Wvye1F2R;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y6si1628972ybh.463.2018.01.12.06.54.58
+        by mx.google.com with ESMTPS id e64si4677080ybc.591.2018.01.12.09.09.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Jan 2018 06:54:58 -0800 (PST)
+        Fri, 12 Jan 2018 09:09:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=gNcSVFjW;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Wvye1F2R;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46111 helo=lists.gnu.org)
+Received: from localhost ([::1]:53381 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ea0jS-00058E-1g
-	for alex.bennee@linaro.org; Fri, 12 Jan 2018 09:54:58 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41717)
+	id 1ea2px-0004Q0-RP
+	for alex.bennee@linaro.org; Fri, 12 Jan 2018 12:09:49 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34138)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1ea0jD-00055u-Vr
-	for qemu-arm@nongnu.org; Fri, 12 Jan 2018 09:54:44 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1ea2pH-00040D-IR
+	for qemu-arm@nongnu.org; Fri, 12 Jan 2018 12:09:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1ea0jA-0006aM-AT
-	for qemu-arm@nongnu.org; Fri, 12 Jan 2018 09:54:44 -0500
-Received: from mail-pf0-x231.google.com ([2607:f8b0:400e:c00::231]:36676)
+	(envelope-from <peter.maydell@linaro.org>) id 1ea2pG-0002a0-E9
+	for qemu-arm@nongnu.org; Fri, 12 Jan 2018 12:09:07 -0500
+Received: from mail-ot0-x22c.google.com ([2607:f8b0:4003:c0f::22c]:37307)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1ea0jA-0006ZT-4n
-	for qemu-arm@nongnu.org; Fri, 12 Jan 2018 09:54:40 -0500
-Received: by mail-pf0-x231.google.com with SMTP id 23so4550069pfp.3
-	for <qemu-arm@nongnu.org>; Fri, 12 Jan 2018 06:54:39 -0800 (PST)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1ea2pG-0002ZB-9c
+	for qemu-arm@nongnu.org; Fri, 12 Jan 2018 12:09:06 -0500
+Received: by mail-ot0-x22c.google.com with SMTP id a24so5598050otd.4
+	for <qemu-arm@nongnu.org>; Fri, 12 Jan 2018 09:09:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=EJGUtQpEdIWh7cLPa0mVsxjueECSF7j3pnxTOZffnoU=;
-	b=gNcSVFjWg7M4asxpHalp3VutZ9NNggwDgCD5kyaJs1mifcoyiOracdEdsfqI5ucsp9
-	rpAQtAEOo0LEIb9RCrEQXlLkSJ01GXwpXY7WGBVwHyj/2lre5BBl+OADtzqrtShkfQLG
-	1fe2sVlIOP4TAQsZbvZ57vXZvkIvYsYED5SvA=
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=4wMwFWLU18GJDQIe3YQYZ+7JtU2di6IOq+LKueF9YKc=;
+	b=Wvye1F2RvzM4e9xJ4Q9vjnJVgpWBaMr2nv02u39l60cFHrmS4Qve+kNsXftZCJNpXb
+	+Xrgmv47jJJYdt+89c1EmCz/lsoVmhZadFhFxBicmIatX9qkQ2sxrA30LGdS9A4YlsmO
+	ejv4MwS8Im1ROm7PEDlUO5mWk5AynVWZkUT50=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=EJGUtQpEdIWh7cLPa0mVsxjueECSF7j3pnxTOZffnoU=;
-	b=bbOVc+/exTy8iR0kXLz9nmxNzmWpr90jE3ee8ljLDt62Cxgf8qrVmtNMi+J1GUdbaH
-	kH4DGgqX6d7No7KbMvye1VJvi3aqhxMDIWBDOI3UID/GyII2Q5kVqKgrf+45QOalI9jo
-	dNeqBycQ2GbzZIVfZtLymDllPFoulF4vHuK0VoM4WFaX+B10fQdcEqhJmn2Cd87ijbgR
-	pEqH3Xlj7LkosK8zHKMouEw9SJjCJpWGrauOEdM/JWa8vKqoPq9RBo252RLo7CZA6ukm
-	mBYkh5PmafnduoyjRDX/7NzhcLLsqyJ5zs4zZjjyN+ydYKxPoDNbBLFhBbcqMve8m99H
-	H2Dg==
-X-Gm-Message-State: AKGB3mJb9rWRWRMZfrfla6SJrlqc4WWG72UqyLMSUFaoCBw1MPjIZvKd
-	dmL9B2QjpH+AY0inxEASgP2WJzTqttc=
-X-Received: by 10.84.130.66 with SMTP id 60mr22206143plc.376.1515768878346;
-	Fri, 12 Jan 2018 06:54:38 -0800 (PST)
-Received: from cloudburst.twiddle.net
-	(50-78-183-178-static.hfc.comcastbusiness.net. [50.78.183.178])
-	by smtp.gmail.com with ESMTPSA id
-	z19sm43122702pfh.39.2018.01.12.06.54.37
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 12 Jan 2018 06:54:37 -0800 (PST)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20171218174552.18871-1-richard.henderson@linaro.org>
-	<20171218174552.18871-2-richard.henderson@linaro.org>
-	<CAFEAcA9A85CnzizK8rYNZCDgmszG5NL3=1QOetTcOS3gijzCAA@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <fad4dbc5-251d-48af-d092-a10b1d945caf@linaro.org>
-Date: Fri, 12 Jan 2018 06:54:35 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.2
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=4wMwFWLU18GJDQIe3YQYZ+7JtU2di6IOq+LKueF9YKc=;
+	b=jdW4VjPu2+SO2+QU7kJKXyyIgqWQYA0QEzbp+BxAUJtKqRYgiyND56Kw+/ze64fXR0
+	vvz2Aun9RB70CQkhgJ13LrtplgtPyTMYfmIkq0E7EBEQI3d0M5pVGGCttAgd5OIcYaqP
+	xK5vE3iimXzERYuBspcy/eRlf/Y39oTtqGQ3K+6ubcvvyuhQorOq/57WoIbayTDx6gUa
+	lrDf0J79ihi429ob3IygBpPm5viKm9UjSQXu2c3Pfpd1FV7Hiu8PBw+GftezSrIyQw/0
+	kwiqzVMvNrlzg/Aegnf1FK9/RBBUmt2aZD1j2MgzWdzHk+t2DJrgE1JZ6WiSGEX2aKXb
+	Onyw==
+X-Gm-Message-State: AKwxytcZy0AsvBjevfeJ+ZuN56Gp9zl90XS9v+uvtZjOspKheNf+rUSm
+	CifGqMjauWa6Ly161aQvONSsslNYkQ0lfX+NvDok8g==
+X-Received: by 10.157.29.233 with SMTP id w38mr14042115otw.24.1515776945549;
+	Fri, 12 Jan 2018 09:09:05 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9A85CnzizK8rYNZCDgmszG5NL3=1QOetTcOS3gijzCAA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Received: by 10.157.15.71 with HTTP; Fri, 12 Jan 2018 09:08:45 -0800 (PST)
+In-Reply-To: <20180110203823.22292-1-jcd@tribudubois.net>
+References: <20180110203823.22292-1-jcd@tribudubois.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 12 Jan 2018 17:08:45 +0000
+Message-ID: <CAFEAcA9q9tKedxXxMDS3e2jWA8geL2q2pe=Oo3-E8RQ=cD7LFg@mail.gmail.com>
+To: Jean-Christophe Dubois <jcd@tribudubois.net>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c00::231
-Subject: Re: [Qemu-arm] [PATCH 01/23] scripts: Add decodetree.py
+X-Received-From: 2607:f8b0:4003:c0f::22c
+Subject: Re: [Qemu-arm] [PATCH] i.MX: Fix FEC/ENET receive funtions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -116,80 +102,36 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Jason Wang <jasowang@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Peter Chubb <peter.chubb@nicta.com.au>,
+	QEMU Developers <qemu-devel@nongnu.org>, fyleo45@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: N2PWKcKcsJQl
+X-TUID: IPKwzNK7tN/Z
 
-On 01/12/2018 03:57 AM, Peter Maydell wrote:
-> I asked on #qemu-devel for some review from people who are more
-> familiar with Python than I am. One of the suggestions (from
-> Marc-André Lureau) was to run pycodestyle on this and fix the
-> (mostly coding style nits) reported by it. (pycodestyle may
-> be called 'pep8' on older distros.)
+On 10 January 2018 at 20:38, Jean-Christophe Dubois <jcd@tribudubois.net> wrote:
+> The actual imx_eth_enable_rx() function is buggy.
+>
+> It updates s->regs[ENET_RDAR] after calling qemu_flush_queued_packets().
+>
+> qemu_flush_queued_packets() is going to call imx_XXX_receive() which itself
+> is going to call imx_eth_enable_rx().
+>
+> By updating s->regs[ENET_RDAR] after calling qemu_flush_queued_packets()
+> we end up updating the register with an outdated value which might
+> lead to disabling the receive function in the i.MX FEC/ENET device.
+>
+> This patch change the place where the register update is done so that the
+> register value stays up to date and the receive function can keep
+> running.
+>
+> Reported-by: Fyleo <fyleo45@gmail.com>
+> Tested-by: Fyleo <fyleo45@gmail.com>
+> Signed-off-by: Jean-Christophe Dubois <jcd@tribudubois.net>
 
-Thanks, I'll have a look.
+Could you have a look at current QEMU master, please? I think that
+commit b2b012afdd9c has probably fixed this bug. (At any rate it
+has changed that code so that your patch won't apply.)
 
->> +# For unnamed_field, the first number is the least-significant bit position of
->> +# the field and the second number is the length of the field.  If the 's' is
->> +# present, the field is considered signed.  If multiple unnamed_fields are
->> +# present, they are concatenated.  In this way one can define disjoint fields.
-> 
-> This syntax lets you specify that fields other than the first one in
-> a concatenated set are signed, like
->     10:5 | 3:s5
-> That doesn't seem to me like it's meaningful. Shouldn't the signedness
-> or otherwise be a property of the whole extracted field, rather than
-> an individual component of it? (In practice creating a signed combined
-> value is implemented by doing the most-significant component as sextract,
-> obviously.)
-
-You're right that it's not especially meaningful.  But since I use deposit to
-compose the pieces, any extraneous sign on a less significant component gets
-smooshed.  So nothing bad happens in the end.  Which is why I decided not to check.
-
-> Do we syntax-check for accidentally specifying a field-def whose
-> components overlap (eg "3:5 0:5")? I think we should, but I didn't
-> see a check in a quick scan through the parsing code.
-
-Probably not...  something else for unit testing.
-
->> +# If any fixedbit_elt or field_elt appear then all 32 bits must be defined.
->> +# Padding with a fixedbit_elt of all '.' is an easy way to accomplish that.
-> 
-> What is a format that doesn't specify the full 32 bits useful for?
-> Do you have an example of one?
-
-No.  I'm not sure what I was thinking of there.  I'm pretty sure the code
-doesn't allow that.
-
-> I notice in the generated code that all the trans_FOO functions
-> are global, not file-local. That seems like it's going to lead
-> to name clashes down the line, especially if/when we ever get
-> to supporting multiple different target architectures in a single
-> QEMU binary.
-
-I was initially thinking that I'd have the translator functions in a different
-file, and because of that they would of course have to be global.  I had
-thought far enough ahead to add command-line options to change the names and
-prefixes.
-
-But as it has turned out, putting the translator functions into the same file
-has worked out well.  I should probably rearrange this.
-
-> Also from the generated code, "arg_incdec2_pred" &c don't follow
-> our coding style preference for CamelCase for typedef names. On
-> the other hand it's not immediately obvious how best to pick
-> a camelcase approach for them...
-
-Yeah, auto-generating names in different ways is tricky.
-
-> A --help would be helpful (as would documenting the command
-> line syntax in the comment at the top of the file).
-
-Sure.
-
-Thanks!
-
-
-r~
+thanks
+-- PMM

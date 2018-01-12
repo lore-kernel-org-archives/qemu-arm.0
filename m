@@ -1,98 +1,111 @@
-Received: by 10.28.173.206 with SMTP id w197csp2178023wme;
-        Fri, 12 Jan 2018 10:38:56 -0800 (PST)
-X-Google-Smtp-Source: ACJfBotg94yQalueum1/XiKS31WwqM12GoRS3xQSIqI3b/lMdcTh4O0apIGnXT038cyRgGWGFQk1
-X-Received: by 10.13.206.4 with SMTP id q4mr23946181ywd.305.1515782336006;
-        Fri, 12 Jan 2018 10:38:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515782336; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp2182934wme;
+        Fri, 12 Jan 2018 10:44:36 -0800 (PST)
+X-Google-Smtp-Source: ACJfBovUwuZHL4YzM99AN8psYSYN0jiwCnXV1xUe5r7XflmTeTdccQcdXU01jYlGeAiLv6ubhMsH
+X-Received: by 10.37.203.15 with SMTP id b15mr24937161ybg.386.1515782675965;
+        Fri, 12 Jan 2018 10:44:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515782675; cv=none;
         d=google.com; s=arc-20160816;
-        b=1AbqstON7x9oNJ2tKeRF2gmCdDPbrV+Hy5SGwmSzC3cUL8UBij7Yj4kr9g6ZDk092m
-         kWUc3/6K0UyaHT40p5epVGYXjUL4OQn+NfxaqB3jCoqe55JvlF8rvmheuVqC3tVaSlr4
-         sByHjp7OBWoq2NVhUXzOH27dCZ7Sd+9maFEDE5QID58p20xC5W0g/ztKEtgKlwTifbd/
-         X+J0DqvyF1dcijfjDZ2ELqnPnKmtGfLjLw6NRVqVtLNRsqqpU3qaCdPepGHDFXg1yAPS
-         bxVoqs+EBjLOxxqqZY1rVFWu545ZUz63OrF0A51tD4FbuTwFq4BD61Loqz7sbYbKCN81
-         v1tA==
+        b=C4o+o4t7aaRnCVHQxf+vPjKjX68WBtMzhs+h44mtsuymKJDyRJNcwtuOjUC/0Ascy3
+         EreehYz3ybq6YRiQQ21g6l2ahP5NcJ9McWy0fWub1pCy88MPZZ5vaM9JVyX7pj73gZWz
+         UXXOvj9zwlR3u1mYweR2ry5wvEdXuCGHgpLPnRF7b2zFwVk5FwrSItLLXLYCPwfyB4qa
+         1pkXhZ7AJ1ZiNt+uzRrHr0a7X7wL73GkkPBf3kE6X8C1xDofw6LFmWbGK2GszqDUK0wQ
+         t8Le+t84ph08sDuFeumqdsVX5TKUeX1DknzBy/A0LjGw1Bi2z4mbWxiktCeMKpSG0jrl
+         Eo4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature
          :arc-authentication-results;
-        bh=T95+IoUtyydlH4UOUDxB1BcPWC89x0jqAezDjJWrItU=;
-        b=F5PiYcHW9kr2XmKqcPuLK7TAuqeldbPt0GvkzAj7jmPhP3Epcp93blVNaYLaDEY+JM
-         5jdGMlt5uRdCnIxKgTdQVjjm0CuNB1VwBMKr2W2X3XwkrYacPL8IgaAZNNx8gl/Vcvhy
-         f9j+Pm9OJ+yd2vMuaJnNJNKSQkQSAXMVrjIfrv+SkeqDXmQ/t+Wl7TsHH1tCtOAFeuqa
-         aOGgW8Yh+QghJWQ1umGVd3JamPzmevmS5Armt/gatfZtpmSVUttiytJlf4Nazrw6mvrC
-         E+bvijiflt9Z7mky4O2WiyCwzYsnzfKi8hbA8zQ/tIZrqQBwqiVwSODChp6Cv13J0g9g
-         D/ig==
+        bh=uaZg5u4O01ZWai1ooNt7eA3vqDFDNvMRaGC1N6aefeo=;
+        b=YH1XD4pPdxv1xpYLdx3S3O5wKkO94E4T7Z0YbS9jaH5k7utp4ywDTwedgTzkPCo98e
+         aZ7xR1ROnKMI0xEg2/Ww3WsJ0W2eb4i3ys21oPvV8gYpKx0GCTOmaEPosq4dbU8uoqGJ
+         TWSGbv7dfSzZs6+GfX/+f+Vgsc9ejTQywcQEDj46wddzskgv68oUoY+xQwijFQgJMPvN
+         ynmM0XC/EtEbWzHBlgL7Qm5/TCU5j8Fwz2mQlIZXfcrBYactJ8ogHsma9KjDwn2xzLJI
+         1KWQbjlPGQE6Z3O+cccd3PZF1EMbJVXPls3PoMPmegnW86J8HLMODqbaWUJrIhsnkgKG
+         oNFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NmtYF8Dt;
+       dkim=fail header.i=@linaro.org header.s=google header.b=M3c0jolS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o66si2311832ywb.552.2018.01.12.10.38.55
+        by mx.google.com with ESMTPS id h20si1386278ywc.474.2018.01.12.10.44.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Jan 2018 10:38:55 -0800 (PST)
+        Fri, 12 Jan 2018 10:44:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NmtYF8Dt;
+       dkim=fail header.i=@linaro.org header.s=google header.b=M3c0jolS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58606 helo=lists.gnu.org)
+Received: from localhost ([::1]:58928 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ea4EB-0002it-F6
-	for alex.bennee@linaro.org; Fri, 12 Jan 2018 13:38:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43308)
+	id 1ea4Jf-0005Ne-BD
+	for alex.bennee@linaro.org; Fri, 12 Jan 2018 13:44:35 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44915)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ea4E1-0002hF-Bf
-	for qemu-arm@nongnu.org; Fri, 12 Jan 2018 13:38:46 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1ea4JS-0005MD-0E
+	for qemu-arm@nongnu.org; Fri, 12 Jan 2018 13:44:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ea4E0-0000u1-DB
-	for qemu-arm@nongnu.org; Fri, 12 Jan 2018 13:38:45 -0500
-Received: from mail-ot0-x242.google.com ([2607:f8b0:4003:c0f::242]:44703)
+	(envelope-from <richard.henderson@linaro.org>) id 1ea4JN-0005n0-91
+	for qemu-arm@nongnu.org; Fri, 12 Jan 2018 13:44:22 -0500
+Received: from mail-pg0-x22a.google.com ([2607:f8b0:400e:c05::22a]:39351)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1ea4E0-0000tV-9F
-	for qemu-arm@nongnu.org; Fri, 12 Jan 2018 13:38:44 -0500
-Received: by mail-ot0-x242.google.com with SMTP id g59so5807414otg.11
-	for <qemu-arm@nongnu.org>; Fri, 12 Jan 2018 10:38:44 -0800 (PST)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1ea4JN-0005mD-3P
+	for qemu-arm@nongnu.org; Fri, 12 Jan 2018 13:44:17 -0500
+Received: by mail-pg0-x22a.google.com with SMTP id z20so5096510pgv.6
+	for <qemu-arm@nongnu.org>; Fri, 12 Jan 2018 10:44:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=T95+IoUtyydlH4UOUDxB1BcPWC89x0jqAezDjJWrItU=;
-	b=NmtYF8DtfHX2EbEIXJv8KyjmD+pygIoFbykM++w/Wjga9+LKr3B+6iQetVMSP9CALO
-	CTVMMo/0uGTqCVmpEaHM3Csk8RM0Ir9LCILYXNTqqJNemXOkywhFrDSJG3xV6fOWtZ27
-	VaUEIpl8O1IxFZ8vweIsGdW/YH7hPnRGLqKUg=
+	h=subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=uaZg5u4O01ZWai1ooNt7eA3vqDFDNvMRaGC1N6aefeo=;
+	b=M3c0jolSGKzMOmlu2T93mDg1d2cQR/K5F5Wa4AP46fKEX3HEtl2jJx+yCscHJfd2b7
+	ATQMk93tSlTIYFf7mSjHjgOH/chvJd0TP7cylfv6pxTDOjMjIy5UJAhyltVH0utYtH9i
+	KaWHnP0/oTprE4PM2pujjahy0iXtIstocJ6LY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=T95+IoUtyydlH4UOUDxB1BcPWC89x0jqAezDjJWrItU=;
-	b=aTIDLz4M/yJWkxw2IPOuN+s+WAVGg9JV9ztDWrWRuxcHIGydRS7/L2cryV8utxZnkA
-	ZE5T34GxetNVRE15GUyvYvgFCFlfelNS8/193wnar7wkwAC8SOFSVj97VwEtO5qafyRi
-	FzNLW2YGjzFtAUiFUUvJaHSgLBOMSrThTmSXmr1/vdFxdQYIDD76xdBkZAz2IavP3kHp
-	USafFonEU0t8pKYiy14Qai8mlw1bytJrXl8zDDGmPje2PGvFGMb8yMgvOXAGycb49WLT
-	XvvjobCnU/6cJu2quw0nWnARg+me0WFvbdWhhAWh2QS9Kn4/sdFYEJfikpP6NFj6IiAU
-	W4PA==
-X-Gm-Message-State: AKwxyteCt951wXSo1zerNrjtMOizUi3V6A8j4CklAYNxwKY1YE6ZwpZn
-	KmlQ+UFnzAocRSdasOQTRql6Mg/ZlmbH3linNIfZPg==
-X-Received: by 10.157.52.215 with SMTP id t23mr7486326otd.54.1515782323504;
-	Fri, 12 Jan 2018 10:38:43 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.157.15.71 with HTTP; Fri, 12 Jan 2018 10:38:23 -0800 (PST)
-In-Reply-To: <20171218173022.18418-8-richard.henderson@linaro.org>
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=uaZg5u4O01ZWai1ooNt7eA3vqDFDNvMRaGC1N6aefeo=;
+	b=E2WOBEQpvcA1hteq+cHLrYiksLo+CGKPLYgYIz/QAT4O/y/Vcr6gfts1sbScy4T6TX
+	3lDaDFesJPmGji0+9F4K4n+Oh1ofXFuHN2DmCM7KnnXB0qO6mSCbhSE8mkqQl6AO9FIa
+	EgwDrTa129D+O6XXBzVfHaAFLERsp4arWCo9r+JqW/jtJrzqv4m0TYXkbLjn8iE0EVvH
+	kofxoDACfHYYu3Y4wTitVuF1Aeol5dQxI0r9TTgO+Oc8HzbHHEYDqiCY1UcdQ5SBYTM6
+	nScD7/RM5TTFEvBS1x0OLWpyPuW69OBAN+76xjcQrFVmCBCPJlA1h5ZKnivXJlaftGrU
+	kV8g==
+X-Gm-Message-State: AKwxyteRbxnZhPeHOChnLw5vs6EOc3D6H2JH8j1g3wf47L0mqc7I+zlb
+	LxrIXeFORKnoPeOf1Un5Z+408Wngxy4=
+X-Received: by 10.99.176.69 with SMTP id z5mr7538296pgo.373.1515782655613;
+	Fri, 12 Jan 2018 10:44:15 -0800 (PST)
+Received: from cloudburst.twiddle.net
+	(50-78-183-178-static.hfc.comcastbusiness.net. [50.78.183.178])
+	by smtp.gmail.com with ESMTPSA id
+	z63sm50635097pfd.71.2018.01.12.10.44.14
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 12 Jan 2018 10:44:14 -0800 (PST)
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <20171218173022.18418-1-richard.henderson@linaro.org>
-	<20171218173022.18418-8-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 12 Jan 2018 18:38:23 +0000
-Message-ID: <CAFEAcA-kbZRaGoERUG7iZGsO3hswC=ityDWf4n2fwXsSwO7jCw@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+	<20171218173022.18418-6-richard.henderson@linaro.org>
+	<CAFEAcA_NXsPZYJHhYZShroXFUS_5SwpJCi8ehBL+o4OxpNqYmA@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <436817d9-3377-3828-b513-42934cbaa949@linaro.org>
+Date: Fri, 12 Jan 2018 10:44:12 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.2
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA_NXsPZYJHhYZShroXFUS_5SwpJCi8ehBL+o4OxpNqYmA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::242
-Subject: Re: [Qemu-arm] [PATCH 7/9] target/arm: Expand vector registers for
- SVE
+X-Received-From: 2607:f8b0:400e:c05::22a
+Subject: Re: [Qemu-arm] [PATCH 5/9] target/arm: Add
+ aa32_vfp_dreg/aa64_vfp_qreg helpers
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,113 +120,85 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kO/A1mef4rfC
+X-TUID: XjFoeW19Un4V
 
-On 18 December 2017 at 17:30, Richard Henderson
-<richard.henderson@linaro.org> wrote:
-> Change vfp.regs as a uint64_t to vfp.zregs as an ARMVectorReg.
-> The previous patches have made the change in representation
-> relatively painless.
->
-> Add vfp.pregs as an ARMPredicateReg.  Let FFR be P16 to make
-> it easier to treat it as for any other predicate.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/cpu.h           | 64 ++++++++++++++++++++++++++++++++--------------
->  target/arm/machine.c       | 37 ++++++++++++++++++++++++++-
->  target/arm/translate-a64.c |  8 +++---
->  target/arm/translate.c     | 12 ++++-----
->  4 files changed, 90 insertions(+), 31 deletions(-)
->
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index e1a8e2880d..150b0d9d84 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -153,6 +153,47 @@ typedef struct {
->      uint32_t base_mask;
->  } TCR;
->
-> +/* Define a maximum sized vector register.
-> + * For 32-bit, this is a 128-bit NEON/AdvSIMD register.
-> + * For 64-bit, this is a 2048-bit SVE register.
-> + *
-> + * Note that the mapping between S, D, and Q views of the register bank
-> + * differs between AArch64 and AArch32.
-> + * In AArch32:
-> + *  Qn = regs[n].d[1]:regs[n].d[0]
-> + *  Dn = regs[n / 2].d[n & 1]
-> + *  Sn = regs[n / 4].d[n % 4 / 2],
-> + *       bits 31..0 for even n, and bits 63..32 for odd n
-> + *       (and regs[16] to regs[31] are inaccessible)
-> + * In AArch64:
-> + *  Zn = regs[n].d[*]
-> + *  Qn = regs[n].d[1]:regs[n].d[0]
-> + *  Dn = regs[n].d[0]
-> + *  Sn = regs[n].d[0] bits 31..0
-> + *
-> + * This corresponds to the architecturally defined mapping between
-> + * the two execution states, and means we do not need to explicitly
-> + * map these registers when changing states.
-> + */
+On 01/12/2018 10:24 AM, Peter Maydell wrote:
+>> +/**
+>> + * aa32_vfp_dreg:
+>> + * Return a pointer to the Dn register within env in 32-bit mode.
+>> + */
+>> +static inline uint64_t *aa32_vfp_dreg(CPUARMState *env, unsigned regno)
+>> +{
+>> +    return &env->vfp.regs[regno];
+>> +}
+>> +
+>> +/**
+>> + * aa64_vfp_dreg:
+>> + * Return a pointer to the Qn register within env in 64-bit mode.
+>> + */
+>> +static inline uint64_t *aa64_vfp_qreg(CPUARMState *env, unsigned regno)
+> 
+> Comment and code disagree about the name of the function...
 
-The transformations on the data structures (ie the meat of this patch
-looks good).
+Oops.
 
-> +
-> +#ifdef TARGET_AARCH64
-> +# define ARM_MAX_VQ    16
-> +#else
-> +# define ARM_MAX_VQ    1
-> +#endif
-> +
-> +typedef struct ARMVectorReg {
-> +    uint64_t d[2 * ARM_MAX_VQ] QEMU_ALIGNED(16);
-> +} ARMVectorReg;
-> +
-> +typedef struct ARMPredicateReg {
-> +#ifdef TARGET_AARCH64
-> +    uint64_t p[2 * ARM_MAX_VQ / 8] QEMU_ALIGNED(16);
-> +#else
-> +    uint64_t p[0];
-> +#endif
-> +} ARMPredicateReg;
+>> @@ -99,8 +99,10 @@ static int aarch64_write_elf64_prfpreg(WriteCoreDumpFunction f,
+>>
+>>      aarch64_note_init(&note, s, "CORE", 5, NT_PRFPREG, sizeof(note.vfp));
+>>
+>> -    for (i = 0; i < 64; ++i) {
+>> -        note.vfp.vregs[i] = cpu_to_dump64(s, float64_val(env->vfp.regs[i]));
+>> +    for (i = 0; i < 32; ++i) {
+>> +        uint64_t *q = aa64_vfp_qreg(env, i);
+>> +        note.vfp.vregs[2*i + 0] = cpu_to_dump64(s, q[0]);
+>> +        note.vfp.vregs[2*i + 1] = cpu_to_dump64(s, q[1]);
+> 
+> This doesn't change the behaviour but I suspect it's wrong for big-endian...
 
-I think introducing the predicate registers should go in a separate
-patch.
+Perhaps.  Since this doesn't change behaviour I'll leave this patch as-is.
+That said, how does one go about testing aarch64-big-endian?  I don't think
+I've seen a distro for that...
 
-> --- a/target/arm/translate.c
-> +++ b/target/arm/translate.c
-> @@ -1513,19 +1513,17 @@ static inline void gen_vfp_st(DisasContext *s, int dp, TCGv_i32 addr)
->      }
->  }
->
-> -static inline long
-> -vfp_reg_offset (int dp, int reg)
-> +static inline long vfp_reg_offset(bool dp, unsigned reg)
->  {
->      if (dp) {
-> -        return offsetof(CPUARMState, vfp.regs[reg]);
-> +        return offsetof(CPUARMState, vfp.zregs[reg >> 1].d[reg & 1]);
->      } else {
-> -        long ofs = offsetof(CPUARMState, vfp.regs[reg >> 1]);
-> +        long r = offsetof(CPUARMState, vfp.zregs[reg >> 2].d[(reg >> 1) & 1]);
->          if (reg & 1) {
-> -            ofs += offsetof(CPU_DoubleU, l.upper);
-> +            return r + offsetof(CPU_DoubleU, l.upper);
->          } else {
-> -            ofs += offsetof(CPU_DoubleU, l.lower);
-> +            return r + offsetof(CPU_DoubleU, l.lower);
->          }
-> -        return ofs;
+>> -            int elt = (rn * 2 + (index >> 3)) % 64;
+>> -            int bitidx = (index & 7) * 8;
+>> -            uint64_t val = extract64(env->vfp.regs[elt], bitidx, 8);
+>> +            unsigned elt = (rn * 2 + (index >> 3)) % 64;
+>> +            unsigned bitidx = (index & 7) * 8;
+>> +            uint64_t *q = aa64_vfp_qreg(env, elt >> 1);
+>> +            uint64_t val = extract64(q[elt & 1], bitidx, 8);
+> 
+> 
+> Any particular reason for changing all these ints to unsigned ?
 
-...I see we're tweaking the logic on this code again. I was
-expecting that the changes in the previous patch would have turned
-out to be in support of just having to do a one-line change in this
-one, but apparently not ?
+*shrug* unsigned division by power-of-two is simpler than signed.  And of
+course we know these values must be positive.  I can drop that change if you want.
 
->      }
->  }
+>>  vfp_reg_offset (int dp, int reg)
+>>  {
+>> -    if (dp)
+>> +    if (dp) {
+>>          return offsetof(CPUARMState, vfp.regs[reg]);
+>> -    else if (reg & 1) {
+>> -        return offsetof(CPUARMState, vfp.regs[reg >> 1])
+>> -          + offsetof(CPU_DoubleU, l.upper);
+>>      } else {
+>> -        return offsetof(CPUARMState, vfp.regs[reg >> 1])
+>> -          + offsetof(CPU_DoubleU, l.lower);
+>> +        long ofs = offsetof(CPUARMState, vfp.regs[reg >> 1]);
+>> +        if (reg & 1) {
+>> +            ofs += offsetof(CPU_DoubleU, l.upper);
+>> +        } else {
+>> +            ofs += offsetof(CPU_DoubleU, l.lower);
+>> +        }
+>> +        return ofs;
+>>      }
+> 
+> This hunk seems to just be rearranging the if-logic without
+> doing anything else, right?
 
-thanks
--- PMM
+There is a name change in there.  But otherwise it's a re-factor to avoid
+over-long lines and reduce duplication.
+
+
+r~
+

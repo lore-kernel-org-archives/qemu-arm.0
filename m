@@ -1,137 +1,170 @@
-Received: by 10.28.173.206 with SMTP id w197csp1798350wme;
-        Fri, 12 Jan 2018 04:43:17 -0800 (PST)
-X-Google-Smtp-Source: ACJfBosy7t4v+IcsGPP63uCH0JpRb5DnDdLmPQetcZoyThOa/GA221l5XEKzpZCDRca8OG1T1HXj
-X-Received: by 10.129.85.79 with SMTP id j76mr1537245ywb.189.1515760997226;
-        Fri, 12 Jan 2018 04:43:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515760997; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp1894380wme;
+        Fri, 12 Jan 2018 06:12:37 -0800 (PST)
+X-Google-Smtp-Source: ACJfBouQAnXva1PadayZXTyUOPAW1EuxoZ1GVGRNnc49K9vR/hiRgaVhdXpptKbwP5aYRwrJL01o
+X-Received: by 10.129.28.207 with SMTP id c198mr3584930ywc.426.1515766357284;
+        Fri, 12 Jan 2018 06:12:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515766357; cv=none;
         d=google.com; s=arc-20160816;
-        b=RzyIZtuYvcOBMVSxZ+zRVH1J06BNscflfeSftOG/Q3w3oPnd5lGnH3bhLUy/E8PFop
-         +DL6DpUIYwWUz3n7VEAuV/24xQpuaIpC2TWRIR8lPFNwcr7mw0rJmM3S7mUJTwqVHP2r
-         GFWjJFQikhsAMIRKQCJjLf8VCRoYkAEdcwptaWVPba+Zu9zhUWVnPZVK5CUq726mLX5+
-         NdIGoP/ooG3HrgJd1CGQdQFSDZSuecQaJBvzudbM30ZQJoG9VE278Cv0btNP3lR6keC5
-         anxsNPCSWbVN23zLtadefbEuHZxnagPkQJEU9VpL1sbPe37/lLzV5DHOa/IWUDdyYRhi
-         gDmw==
+        b=1CgJ6oly/s0DnReY+rRNtDMEpBZz3QafMm/5UujCsgX+3PtQfhZXCjpZyXatd2qDMO
+         Y6KsNhgGlWBmRLTtKQqh0/MfbpwD5ceIeZJDgAzW10osYEMS3ULOv29NZ/ZCHJWwQ1qT
+         xHc67n2YjpDqmOL8oxgoFtigGgY1SGsCb0vMmZuUhYvj/Z9b1NvP1Zz2bnxLxbvwnMvg
+         sTiJWcrf3Kw+XUxHrc2qJfBMtH1eCrAezGos3AehLPKn707GYCodf7wym9vmtgoOQNzD
+         yNI8CtgJ7/w2gSHUKTOlaCDvzMaiAZmCiyosw94iyIknR5YZJrz0xYCkfeAuHKzq8Kc+
+         +pzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
          :arc-authentication-results;
-        bh=hcTjcB39FFhrP98nVGCx12uol9xUtmMHUY+dbxgnKMY=;
-        b=d2SIYbBe6kMAHTzj6NdX9aTJYNG5fgdIEr5pE1oBkB376/Ku3C2zBUXlsPjZ9tAyR+
-         lnLnm3OC35VGQ8HLt1QBQJrdcWz6CUInz7XjhoKzErtcrLSKNjHiQJh/tPpIFXS3PP/C
-         /4xzDOelZ54KsAXp9TFcMbjVst+jrYbqB6IktVlM4sYcw5zlB80OmOmc7Q2haf0EP/Qb
-         KteEHlHnTTyc1N3aoURcqIQVemO9J8i4x70RuxZgTKoZOysTpVc5fPrNG1v1ahM/W0QO
-         imwGcyv9pmsqJciGONelGu7+Cc2MxiZPm/mfF0+I/1PSv6bVLiHmB9/oKlMQPuBmq/2Y
-         TSQw==
+        bh=RjTWamaPClNBs2DuhzCfoJBYBIFy819MBghiu4dCUKw=;
+        b=s9wkvOfnIV3H2pkOGVZKhKharHPzBCXhvcoYClb3WTSr6dQ+SLmiULB7M1T/hxjGkP
+         gDoWpcpzLrPBOE2v8/aVbTMtS9N636Tzk8X7lzcfvF7mNM08mpYdRu2IXY6n/H4rT6jD
+         /E1ivggkEvLT/Lnuq0qsP+goQY5Hc8CPUxUgVrQeHQ+/8XVjtKVfu/yeRZ/OYZKahl7O
+         /NVwqd9PXuD2j8WYxvdbKljVv+UPZC4LWfpgFM0UToiQDXqqvv9QKa9ZLLAb7Dqe/nPP
+         8TSxFyn20k2uglDNuqEltLvsNdR7KVix6ogNtHmzatsrEdYt0F5KRBQ9U4zZW+Dscst6
+         Iurw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=E1QMkSFX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 193si4516815ybm.573.2018.01.12.04.43.17
+        by mx.google.com with ESMTPS id z188si1203382ybz.736.2018.01.12.06.12.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Jan 2018 04:43:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 12 Jan 2018 06:12:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=E1QMkSFX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39087 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:44044 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eZyg0-0001vv-NC
-	for alex.bennee@linaro.org; Fri, 12 Jan 2018 07:43:16 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41652)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ea04S-0002Sh-If
+	for alex.bennee@linaro.org; Fri, 12 Jan 2018 09:12:36 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55451)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eZyfc-0001uJ-BY
-	for qemu-devel@nongnu.org; Fri, 12 Jan 2018 07:42:53 -0500
+	(envelope-from <ehabkost@redhat.com>) id 1ea03e-0001vp-T3
+	for qemu-arm@nongnu.org; Fri, 12 Jan 2018 09:11:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eZyfb-00008p-Fw
-	for qemu-devel@nongnu.org; Fri, 12 Jan 2018 07:42:52 -0500
-Received: from mail-ot0-x230.google.com ([2607:f8b0:4003:c0f::230]:44162)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eZyfb-00007Q-A3
-	for qemu-devel@nongnu.org; Fri, 12 Jan 2018 07:42:51 -0500
-Received: by mail-ot0-x230.google.com with SMTP id g59so4914441otg.11
-	for <qemu-devel@nongnu.org>; Fri, 12 Jan 2018 04:42:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=hcTjcB39FFhrP98nVGCx12uol9xUtmMHUY+dbxgnKMY=;
-	b=E1QMkSFXfMWnwRQmDW6arVgHWK4K6phpH2WG0SzLn2I11UJ4WJVyshazsIaBmCJDNI
-	AM+DSjv8mFxVnnbCOp1v4hnHVZmJ3XdJGklhVgPAsAdrltGv4aTqT9uOmCaIHvlUiAqm
-	qOmJRisM952M9+WBGmQXCrsGRnf9NYM+oAjT8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=hcTjcB39FFhrP98nVGCx12uol9xUtmMHUY+dbxgnKMY=;
-	b=EDjTc7aoFuRE3RixKgfuBTPbNFdNqL2g27vJ2MCldq5c6kFbmLJQzXDDwZsVNVFCz1
-	FETcWqH03qyKpItC+2GY3KmUSEFL/WRScAUG+llpJof13lqIGyWwR09zyvmqCtrnnEtO
-	Wv1vPcUO8pu8YwvbZfQD+VUTCFemkvcRC29Qgmd22++ogIzx+xzBuMY8x9Zwsx3FNvjj
-	NhwWuiWFyg7ih6auBivxHFNJuhOuqZbUO6+RqngKI83ey//m6hHSjfvfliDXnL2/blek
-	n3ngRH01FWKcd6r07+CkQSLhgfZrOj9Q4TeQDUrg9V/0kvI1ZPzu3s+VXhAF8jMs52/c
-	s7BA==
-X-Gm-Message-State: AKwxyteYOC3nyjgdP0rDLIxmvx9ap0euuxIxdPf4tzKH0b5S//8EIixa
-	Jggk/m2gWvSXRV1wDWwrKH8vyEgVYKHpAduz0cMOMA==
-X-Received: by 10.157.8.172 with SMTP id 41mr14069749otf.116.1515760970568;
-	Fri, 12 Jan 2018 04:42:50 -0800 (PST)
+	(envelope-from <ehabkost@redhat.com>) id 1ea03c-0007jg-8D
+	for qemu-arm@nongnu.org; Fri, 12 Jan 2018 09:11:46 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:32916)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1ea03c-0007fj-00; Fri, 12 Jan 2018 09:11:44 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id F08E3356D3;
+	Fri, 12 Jan 2018 14:11:41 +0000 (UTC)
+Received: from localhost (ovpn-116-6.gru2.redhat.com [10.97.116.6])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D18BD179E9;
+	Fri, 12 Jan 2018 14:11:25 +0000 (UTC)
+Date: Fri, 12 Jan 2018 12:11:19 -0200
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Message-ID: <20180112141119.GF6646@localhost.localdomain>
+References: <20180104144046.30793-1-f4bug@amsat.org>
+	<20180104192203.GD3407@localhost.localdomain>
+	<20180108135122.637e478a@redhat.com>
+	<395b6cff-e4be-1aa9-48f6-82cdbd9633b9@amsat.org>
 MIME-Version: 1.0
-Received: by 10.157.15.71 with HTTP; Fri, 12 Jan 2018 04:42:30 -0800 (PST)
-In-Reply-To: <833c4229-7a78-849f-c17a-bfbef4506458@linaro.org>
-References: <20171218174552.18871-1-richard.henderson@linaro.org>
-	<CAFEAcA9Qnj0G03x72BFLAYmodeBMDB=t3pz4JxUj0HvrbhkuGA@mail.gmail.com>
-	<f82e02e3-40dd-8e74-6fe5-3205cdd42758@linaro.org>
-	<CAFEAcA9eNzA9Yar4SC5UKWzMij0ypyXKATRqU1pVx8UTf33u7Q@mail.gmail.com>
-	<833c4229-7a78-849f-c17a-bfbef4506458@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 12 Jan 2018 12:42:30 +0000
-Message-ID: <CAFEAcA-Hr0DAJi7rggmRudDc0L+g35MZ_1doOjSJe4TiThb23A@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::230
-Subject: Re: [Qemu-devel] [RFC 00/23] target/arm: decode generator and
- initial sve patches
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <395b6cff-e4be-1aa9-48f6-82cdbd9633b9@amsat.org>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.9.1 (2017-09-22)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Fri, 12 Jan 2018 14:11:42 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [RFC PATCH 0/6] qom: introduce TypeInfo name aliases
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZR0Jy/wZuCKU
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+	Alexander Graf <agraf@suse.de>, Fam Zheng <famz@redhat.com>,
+	qemu-devel@nongnu.org, Juan Quintela <quintela@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+	qemu-arm@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	Sascha Silbe <silbe@linux.vnet.ibm.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: AE7vwM41Z150
 
-On 11 January 2018 at 19:34, Richard Henderson
-<richard.henderson@linaro.org> wrote:
-> On 01/11/2018 11:27 AM, Peter Maydell wrote:
->> tgt-arm-cplx ? I had a look at that but it seemed to be a different
->> set of patches to this lot.
->
-> No, tgt-arm-sve-{1,2,3}.  All of them should build.
+On Mon, Jan 08, 2018 at 11:10:37AM -0300, Philippe Mathieu-Daud=E9 wrote:
+> Hi Igor,
+>=20
+> On 01/08/2018 09:51 AM, Igor Mammedov wrote:
+> [...]
+> > Though it seems easy and trivial, I'm a bit concerned about using
+> > QOM types for the task though.
+> > Also see commit 6acbe4c6f which labels aliases as a bad idea
+> > and says that they are there only for compatibility and shouldn't
+> > be used.
+> > So far I agree with that statement, because it introduces
+> > ambiguity in code used internally and more worrying is that
+> > this ambiguity will increase user visible ABI (think of '-device_add =
+FOO_ALIAS')
+> > that we would need to maintain afterwards.
+> > It would be nice to have unified alias API, but I think it should
+> > be separate one and limited to the same scope (i.e. compat stuff),
+> > and even that won't be easy as different alias impl. we have now
+> > have a different needs.
+> >=20
+> > wrt this series targeted usage, I'd prefer that object_new/initialize
+> > would use real type names when creating devices as it does currently
+> >=20
+> > FDT linux guest specific names wouldn't seep into device model
+> > itself. Firmware (FDT or ACPI) should be separate from device
+> > implementation.
+>=20
+> Good point.
+>=20
+> > If really there is need to dynamically scan present devices
+> > and build FDT from result, then probably we should introduce
+> > interface that devices could implement if necessary.
+> > (I was thinking about such possibility for ACPI). But so far
+> > it looked to me as too much overhead for what we do now.
+>=20
+> I see, I thought about something similar but TypeInfo.aliases was way
+> too simple to not try this series first.
+>=20
+> What about adding a INTERFACE_FDT_DEVICE type (InterfaceInfo) and let
+> the FDT devices implement something such:
+>=20
+> typedef struct {
+>     /*< private >*/
+>     InterfaceClass parent_class;
+>     DeviceClass parent_class;
+>     /*< public >*/
+>     bool (*is_alias)(FDTDeviceIf *dev, const char *name);
+>     bool (*set_prop...)(FDTDeviceIf *dev, const char *property, ...);
+>     const void *(*get_prop)(FDTDeviceIf *dev, const char *property);
 
-Thank you. I've now had a look at the generated code and
-reviewed patch 1. I had a quick look through some of the
-later patches, mostly to check how the use of the script
-looks, but I don't intend to review them properly at this
-point (unless you think I should).
+An interface common to FDT devices probably make sense, but I
+don't know if the one you suggest above makes sense or not (a
+description of each method would be useful to understand what
+exactly they would do).
 
-PS: a quote which kept coming to mind while I was reading
-this patchset:
-
-  'Er, what does the Z mean?' said Zaphod.
-  'Which one?'
-  'Any one.'
-
-thanks
--- PMM
+--=20
+Eduardo

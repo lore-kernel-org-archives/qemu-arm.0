@@ -1,274 +1,164 @@
-Received: by 10.28.173.206 with SMTP id w197csp5881wme;
-        Fri, 5 Jan 2018 18:28:40 -0800 (PST)
-X-Google-Smtp-Source: ACJfBosRgYVrLC2+ijO/raxtOU09H7ZSD9tQQ4RB+j12dliDxzX/VOblFnicRHoVmRPNurAXRMjh
-X-Received: by 10.13.204.77 with SMTP id o74mr4552670ywd.311.1515205720791;
-        Fri, 05 Jan 2018 18:28:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515205720; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp259883wme;
+        Fri, 12 Jan 2018 21:26:11 -0800 (PST)
+X-Google-Smtp-Source: ACJfBot27KsUMQkn1vXeRdUx1z1De1qGxz93VaGnVyB7md4h3TdJWw7VkkS5RYqyHY0GlvEdLnSo
+X-Received: by 10.98.24.22 with SMTP id 22mr15774696pfy.65.1515821171562;
+        Fri, 12 Jan 2018 21:26:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1515821171; cv=none;
         d=google.com; s=arc-20160816;
-        b=c8FhPyhN/xahxhgt4qTsDXL4l/bUG4djYexGNVl44zKQwjdZg9U6vQPVaY5AK0P2cJ
-         y6khy///AYXf7YZaXEVOYSNkMK7vyr6SMTfWaH0a9/KrIdWX1e33RPip1LAT8qJv4TmZ
-         Xkgum/oLtMKmi9NgTnQI3kc05pJdb5ZoxsQco5NaBnposTgbtqIsF7YJgZzzzjHJ6v4P
-         URDVth0j+jXinpBQNn/jIbo30gWy1hl+aE9O57PCgbmC9bRsil2K1BA0o/AfFrddTL2s
-         XrIXYGWLFD21xf9q5kew1uvolawDjt8Wi0F24xzTrErh3x0y9eeSPkrjlZRXqQ2OWbxj
-         /Qsg==
+        b=iHh8CydE8Lv/IYsyclJNIaWUkAOlotEghRyB2gz9sBqOgJWI12TjOsLjgHuI0YeNb7
+         m5yW6eDmI4GtlBxYEBkrVl2M1H5JAxbSzCz0II6wt+r4U3bXzeQHJ01F1TzWbXUE74sw
+         ThxvSes1NWUhAEG0Q7dQSXO5NfENMmnuIbSZZgcIfenUPHNnGiVcKRj6DOliRh0iB2eK
+         ljb6ksdn+fbqS5xasp1QeTrag8GW0sc4cyUXZTDmHjsVzia5j9DP3318ualtAQad/j2i
+         UyDeoj0KZfxchdDwi9qSAb/ALki4sOlnhqIf+wwSQ5QOcln+MDV8AfaJ6fx5iQoc/V6Q
+         4KuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=zQeHxUBdNgT3JjJjKZ9QVkEhh+zGDem/jIUKRI5fcJQ=;
-        b=Pv2KwvtEcI/VVZhQL26Ze+B4KjubIDrueCF7NVlY/14PCJQnpXe4ARoOzjIafVHbif
-         Z8GENqvlP0iN6A3GZd+D1bLjjZfYhc+Lp5JjooB3NHX4gmpAxPYeuYLPDEwErJ+hgyQQ
-         vVYhLS+wjGKPKm84kpGaUpL+LssKaFTyW+j5JNEQOaM2SpCTjqQqJI6gFwRhMrzhEYIi
-         V6BAvrK50vRZr64/56PYiwIh9h/GMgAh/vLTPxcGFvDwqt8bvQ6V2J8F1vyXhbZ07Cm1
-         N9cFXFMUqHaLVT/B5RwkI9+Y5a9OT6zUTdSTitH+QF/7ZbOHKrsmfftx6W02yUV8BVcw
-         rmRg==
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject:arc-authentication-results;
+        bh=azL609AeOPr+d2OOhbTaSqJm4y3iIXRWM7TKnu9rd7c=;
+        b=fdoSyG+JD6pzBrbQMYw7YW55xiPaG5rSn9N8xJ0rUd4nD9zxhqc7uBM83GLnTRCtom
+         XS9fbHq6wUbOX7FoOgB9kQNcfBHk6JTxWJjZvt1NvclpTNISIb2jAQnOPABkAZWmWjf/
+         fP/SmMZQwKINgw8j0QVA2VdCJvxiksBExQSPto6DAwh0SYSlYSa30cCL09JPKPO2UIFk
+         i54xTA3+1MhPiKwT3ZKeHW0pPcZbO4S+IJoXi6u4XCeZHQZY4EnPzEsnJJiKDK5k5XXo
+         Jel8NUrcptnbkhTv/9jVBEja3gR9Aa6cGmECETCKUjOqQpk2r7h4OgcyFfFhkJUmyxiL
+         PZuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cpA3Mpgp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w189si1438004ywc.145.2018.01.05.18.28.40
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 05 Jan 2018 18:28:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id v186si9093635pfb.284.2018.01.12.21.26.10;
+        Fri, 12 Jan 2018 21:26:11 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cpA3Mpgp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:42385 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eXeDw-0004N1-8I
-	for alex.bennee@linaro.org; Fri, 05 Jan 2018 21:28:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49984)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1eXeCf-0003VY-IV
-	for qemu-devel@nongnu.org; Fri, 05 Jan 2018 21:27:22 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1eXeCe-0001yX-AJ
-	for qemu-devel@nongnu.org; Fri, 05 Jan 2018 21:27:21 -0500
-Received: from mail-wr0-x243.google.com ([2a00:1450:400c:c0c::243]:37912)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1eXeCa-0001sM-Hv; Fri, 05 Jan 2018 21:27:16 -0500
-Received: by mail-wr0-x243.google.com with SMTP id o24so364563wra.5;
-	Fri, 05 Jan 2018 18:27:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-transfer-encoding;
-	bh=zQeHxUBdNgT3JjJjKZ9QVkEhh+zGDem/jIUKRI5fcJQ=;
-	b=cpA3Mpgp7Hv0sJsQM7Ne4ATSPhN9u+YIkbtumteGRHYI0fEYUFFT8bfl3hWhNPxHUS
-	UGb1iUT6yyOBnGQ4vPFpet38Plqh0/q92f/jKvRzXvNEH3I+Hyj046+tPt82BSyNRaSK
-	QOdAnvGtEyOn5/IRCEi+/cUvcYBQu0li6AkqO8Wud1wuHKdtbLT5Ud3/iiwMRpvfO9FX
-	nlmUQT/b47JLMBFW1IH/MiV0Pb4qc0aroWfB4ozAsEBfhiCNu5MZTzFw0L/qXElIbAS2
-	ahRBbMKPeQPnf0nJJsHa0FOc4YoWVEsMV9BH+d+M6TCy/riO/HBRgTrLHtffTvGD/S9M
-	T1HA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc:content-transfer-encoding;
-	bh=zQeHxUBdNgT3JjJjKZ9QVkEhh+zGDem/jIUKRI5fcJQ=;
-	b=uDUFV5uFzweMJoCdZjk//5wA1qeUFZt4yIMAnPOwsyMZd8SB9B2NYr8Du3b0qXQVBM
-	7ZwYVlZccyYNW8Lmscnie+/r/wQ+R6NBokP/E4foR2A1EQqEfkSOi/SMNYYhtOKICNV5
-	2u3Dkn6rwNt6OhHLw+3xIQXJZZlk4bt+2DuisS+FeNmXrIQE9Is1rWNDgiQoC+lQHge8
-	cWiLq03rVLpOb72lujLbq6xcfXVYOEdKSXbABEo2f/qFdAIZtoM4wm6Ut6C24SDK4YP3
-	isHZKZtYy/Zzz6m9oDcfbJSTX7TN7VCVaMTl41OACayNh1ctjLFvb/nvAyviLB/5Oa3E
-	UMgA==
-X-Gm-Message-State: AKGB3mLo6aS71gnrrdFac+6C8aZZFLvji7vBxR1Zm1HRckmd+sEF28Yc
-	olqIN/D6Sga74VZmugHcfcX/ob7BqxgplG6qaIc=
-X-Received: by 10.223.151.15 with SMTP id r15mr3929370wrb.219.1515205635334;
-	Fri, 05 Jan 2018 18:27:15 -0800 (PST)
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1750764AbeAMF0I (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 5 others); Sat, 13 Jan 2018 00:26:08 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:4218 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1750705AbeAMF0H (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Sat, 13 Jan 2018 00:26:07 -0500
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.59])
+        by Forcepoint Email with ESMTP id 3F846B6AF7EBA;
+        Sat, 13 Jan 2018 13:25:52 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by DGGEMS405-HUB.china.huawei.com
+ (10.3.19.205) with Microsoft SMTP Server id 14.3.361.1; Sat, 13 Jan 2018
+ 13:25:47 +0800
+Subject: Re: [PATCH v14 5/9] target-arm: kvm64: inject synchronous External
+ Abort
+To:     Peter Maydell <peter.maydell@linaro.org>
+CC:     Paolo Bonzini <pbonzini@redhat.com>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Igor Mammedov <imammedo@redhat.com>,
+        Shannon Zhao <zhaoshenglong@huawei.com>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        "Richard Henderson" <rth@twiddle.net>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        "James Morse" <james.morse@arm.com>,
+        Christoffer Dall <christoffer.dall@linaro.org>,
+        Marc Zyngier <marc.zyngier@arm.com>,
+        kvm-devel <kvm@vger.kernel.org>,
+        "QEMU Developers" <qemu-devel@nongnu.org>,
+        qemu-arm <qemu-arm@nongnu.org>,
+        Huangshaoyu <huangshaoyu@huawei.com>,
+        "Zhengqiang (turing)" <zhengqiang10@huawei.com>,
+        Xu Wei <xuwei5@hisilicon.com>
+References: <1514440458-10515-1-git-send-email-gengdongjiu@huawei.com>
+ <1514440458-10515-6-git-send-email-gengdongjiu@huawei.com>
+ <CAFEAcA-RC6hUMR5jPrgOB7nkWjXaPxo6dYEXO=kgC=59k7EVrw@mail.gmail.com>
+From:   gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <f6853acc-ca07-9627-32e6-91240c6669b7@huawei.com>
+Date:   Sat, 13 Jan 2018 13:24:16 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-Received: by 10.28.164.69 with HTTP; Fri, 5 Jan 2018 18:26:44 -0800 (PST)
-In-Reply-To: <20180103162400.10396-7-f4bug@amsat.org>
-References: <20180103162400.10396-1-f4bug@amsat.org>
-	<20180103162400.10396-7-f4bug@amsat.org>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Fri, 5 Jan 2018 18:26:44 -0800
-X-Google-Sender-Auth: tknOlZSG2C21774LK1S-HhQtQ5A
-Message-ID: <CAKmqyKPkSe-F_Q0hC_L7LWgu9qmEFj+t8Pwix1+bSCRcLv-BPA@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::243
-Subject: Re: [Qemu-devel] [PATCH 6/6] hw/sd: move sdcard legacy API to
- "hw/sd/sdcard_legacy.h"
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-	Peter Maydell <peter.maydell@linaro.org>, Stefan Weil <sw@weilnetz.de>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sNOXtPjb03SA
+In-Reply-To: <CAFEAcA-RC6hUMR5jPrgOB7nkWjXaPxo6dYEXO=kgC=59k7EVrw@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.142.68.147]
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: TD1vg3+lt0TJ
 
-On Wed, Jan 3, 2018 at 8:24 AM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g> wrote:
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
-> roughly 2 users left.
+Hi Peter,
 
-Exciting!
+>> +static int kvm_arm_cpreg_value(ARMCPU *cpu, ptrdiff_t fieldoffset)
+>> +{
+>> +    int i;
+>> +
+>> +    for (i = 0; i < cpu->cpreg_array_len; i++) {
+> 
+> This is still absolutely the wrong thing to do. Nothing should
+> need to scan this array like this.
 
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+For the KVM mode, I use this function to set the ESR_ELx's value. If not set it using this way, do you have better method? Thanks!
+From my test, if kvm_inject_arm_sea() does not call this function kvm_arm_cpreg_value() to set the ESR_ELx's register, the guest
+will have wrong ESR value. As shown the log in [1], QEMU sets the ESR to  0x96000414, but the guest's ESR value is 0x56000000 instead of 0x96000414.
 
-Alistair
+[1]:
+Taking exception 4 [Data Abort]
+...from EL1 to EL1
+...with ESR 0x25/0x96000414
+...with FAR 0x0
+...with ELR 0xffffff8008081a80
+...to EL1 PC 0xffffff8008081a00 PSTATE 0x3c5
+
+[   16.974756] Bad mode in Synchronous Abort handler detected on CPU0, code 0x56000000 -- SVC (AArch64)
+[   16.989504] Internal error: Oops - bad mode: 0 [#1] SMP
+[   16.990753] Modules linked in:
+[   16.991462] CPU: 0 PID: 204 Comm: sh Tainted: G        W       4.13.0-rc4ajb-00005-g1353b1e-dirty #40
+[   16.993533] Hardware name: QEMU KVM Virtual Machine, BIOS 0.0.0 02/06/2015
+[   16.995083] task: ffffffc03d3c2b00 task.stack: ffffffc03d2b0000
+[   16.996448] PC is at vectors+0x280/0x784
+[   16.997340] LR is at pl011_tx_empty+0x18/0x40
 
 
->
->  include/hw/sd/sd.h            | 17 ---------------
->  include/hw/sd/sdcard_legacy.h | 51 +++++++++++++++++++++++++++++++++++++=
-++++++
->  hw/sd/omap_mmc.c              |  2 +-
->  hw/sd/pl181.c                 |  1 +
->  hw/sd/sd.c                    |  1 +
->  5 files changed, 54 insertions(+), 18 deletions(-)
->  create mode 100644 include/hw/sd/sdcard_legacy.h
->
-> diff --git a/include/hw/sd/sd.h b/include/hw/sd/sd.h
-> index 96caefe373..a342e7bc3e 100644
-> --- a/include/hw/sd/sd.h
-> +++ b/include/hw/sd/sd.h
-> @@ -114,23 +114,6 @@ typedef struct {
->      void (*set_readonly)(DeviceState *dev, bool readonly);
->  } SDBusClass;
->
-> -/* Legacy functions to be used only by non-qdevified callers */
-> -SDState *sd_init(BlockBackend *bs, bool is_spi);
-> -int sd_do_command(SDState *sd, SDRequest *req,
-> -                  uint8_t *response);
-> -void sd_write_data(SDState *sd, uint8_t value);
-> -uint8_t sd_read_data(SDState *sd);
-> -void sd_set_cb(SDState *sd, qemu_irq readonly, qemu_irq insert);
-> -bool sd_data_ready(SDState *sd);
-> -/* sd_enable should not be used -- it is only used on the nseries boards=
-,
-> - * where it is part of a broken implementation of the MMC card slot swit=
-ch
-> - * (there should be two card slots which are multiplexed to a single MMC
-> - * controller, but instead we model it with one card and controller and
-> - * disable the card when the second slot is selected, so it looks like t=
-he
-> - * second slot is always empty).
-> - */
-> -void sd_enable(SDState *sd, bool enable);
-> -
->  /* Functions to be used by qdevified callers (working via
->   * an SDBus rather than directly with SDState)
->   */
-> diff --git a/include/hw/sd/sdcard_legacy.h b/include/hw/sd/sdcard_legacy.=
-h
-> new file mode 100644
-> index 0000000000..882e13a8f1
-> --- /dev/null
-> +++ b/include/hw/sd/sdcard_legacy.h
-> @@ -0,0 +1,51 @@
-> +/*
-> + * SD Memory Card emulation (deprecated legacy API)
-> + *
-> + * Copyright (c) 2006 Andrzej Zaborowski  <balrog@zabor.org>
-> + *
-> + * Redistribution and use in source and binary forms, with or without
-> + * modification, are permitted provided that the following conditions
-> + * are met:
-> + *
-> + * 1. Redistributions of source code must retain the above copyright
-> + *    notice, this list of conditions and the following disclaimer.
-> + * 2. Redistributions in binary form must reproduce the above copyright
-> + *    notice, this list of conditions and the following disclaimer in
-> + *    the documentation and/or other materials provided with the
-> + *    distribution.
-> + *
-> + * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS''
-> + * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
-> + * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
-> + * PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR
-> + * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-> + * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-> + * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-> + * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
-> + * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-> + * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-> + * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-> + */
-> +#ifndef HW_SDCARD_LEGACY_H
-> +#define HW_SDCARD_LEGACY_H
-> +
-> +#include "hw/sd/sd.h"
-> +
-> +/* Legacy functions to be used only by non-qdevified callers */
-> +SDState *sd_init(BlockBackend *blk, bool is_spi);
-> +int sd_do_command(SDState *card, SDRequest *request, uint8_t *response);
-> +void sd_write_data(SDState *card, uint8_t value);
-> +uint8_t sd_read_data(SDState *card);
-> +void sd_set_cb(SDState *card, qemu_irq readonly, qemu_irq insert);
-> +bool sd_data_ready(SDState *card);
-> +
-> +/* sd_enable should not be used -- it is only used on the nseries boards=
-,
-> + * where it is part of a broken implementation of the MMC card slot swit=
-ch
-> + * (there should be two card slots which are multiplexed to a single MMC
-> + * controller, but instead we model it with one card and controller and
-> + * disable the card when the second slot is selected, so it looks like t=
-he
-> + * second slot is always empty).
-> + */
-> +void sd_enable(SDState *card, bool enable);
-> +
-> +#endif /* HW_SDCARD_LEGACY_H */
-> diff --git a/hw/sd/omap_mmc.c b/hw/sd/omap_mmc.c
-> index e934cd3656..9cfdc7a6ad 100644
-> --- a/hw/sd/omap_mmc.c
-> +++ b/hw/sd/omap_mmc.c
-> @@ -19,7 +19,7 @@
->  #include "qemu/osdep.h"
->  #include "hw/hw.h"
->  #include "hw/arm/omap.h"
-> -#include "hw/sd/sd.h"
-> +#include "hw/sd/sdcard_legacy.h"
->
->  struct omap_mmc_s {
->      qemu_irq irq;
-> diff --git a/hw/sd/pl181.c b/hw/sd/pl181.c
-> index ce696c5d7d..7591d016cd 100644
-> --- a/hw/sd/pl181.c
-> +++ b/hw/sd/pl181.c
-> @@ -12,6 +12,7 @@
->  #include "sysemu/blockdev.h"
->  #include "hw/sysbus.h"
->  #include "hw/sd/sd.h"
-> +#include "hw/sd/sdcard_legacy.h"
->  #include "qemu/log.h"
->  #include "qapi/error.h"
->
-> diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-> index 35347a5bbc..7755bedfa0 100644
-> --- a/hw/sd/sd.c
-> +++ b/hw/sd/sd.c
-> @@ -34,6 +34,7 @@
->  #include "hw/hw.h"
->  #include "sysemu/block-backend.h"
->  #include "hw/sd/sd.h"
-> +#include "hw/sd/sdcard_legacy.h"
->  #include "qapi/error.h"
->  #include "qemu/bitmap.h"
->  #include "hw/qdev-properties.h"
-> --
-> 2.15.1
->
->
+> 
+>> +        uint32_t regidx = kvm_to_cpreg_id(cpu->cpreg_indexes[i]);
+>> +        const ARMCPRegInfo *ri;
+>> +        ri = get_arm_cp_reginfo(cpu->cp_regs, regidx);
+>> +        if (!ri) {
+>> +            continue;
+>> +        }
+
+[...]
+
+> 
+>> +
+>> +    /* For the AArch64, instruction length is 32-bit */
+>> +    esr |= ARM_EL_IL;
+>> +    env->exception.syndrome = esr;
+>> +
+>> +    cc->do_interrupt(c);
+>> +
+>> +    /* set ESR_EL1 */
+>> +    ret = kvm_arm_cpreg_value(cpu, offsetof(CPUARMState, cp15.esr_el[1]));
+> 
+> Breakpoint injection doesn't need to do this. Neither should this code.
+As my above explanation, in the KVM mode, it needs to set the ESR_ELx in extra method.
+the cc->do_interrupt(c) does not set ESR_ELx. so I use kvm_arm_cpreg_value()
+to set it. whether you have better method to set the ESR_Elx except for my method?  Thanks.
+
+
+> 
+>> +    if (ret) {
+>> +        fprintf(stderr, "<%s> failed to set esr_el1\n", __func__);
+>> +        abort();
+>> +    }
+>> +}
+>> +
+>>  #define AARCH64_CORE_REG(x)   (KVM_REG_ARM64 | KVM_REG_SIZE_U64 | \
+>>                   KVM_REG_ARM_CORE | KVM_REG_ARM_CORE_REG(x))
+>>
+>> --
+>> 1.8.3.1
+> 
+> thanks
+> -- PMM
+> 
+> .
+> 

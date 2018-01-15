@@ -1,96 +1,96 @@
-Received: by 10.28.173.206 with SMTP id w197csp3048693wme;
-        Mon, 15 Jan 2018 10:47:13 -0800 (PST)
-X-Google-Smtp-Source: ACJfBosqb0WORdVZD7EItS9wmmUowoT+nr9Q4/EObKAqJA71LmZ52r6dOGLRAuX63/9UpytkGAMs
-X-Received: by 10.37.189.79 with SMTP id p15mr17874433ybm.513.1516042033077;
-        Mon, 15 Jan 2018 10:47:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516042033; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp3051460wme;
+        Mon, 15 Jan 2018 10:50:35 -0800 (PST)
+X-Google-Smtp-Source: ACJfBotb+F6+w3iwGjqJIgMHtgS345Ouvl3q+5Qpg9dSC8BNwC4c+bxC0+SPGGn3SnJF/iqV0tzY
+X-Received: by 10.37.5.150 with SMTP id 144mr28634658ybf.318.1516042235318;
+        Mon, 15 Jan 2018 10:50:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516042235; cv=none;
         d=google.com; s=arc-20160816;
-        b=snnU1DK9+9UQWx1SunwdBOSZDs/kAog7S0LRfhlgDD/+eJssUOgpB2Q8gdluc0S3iY
-         pRiXjb42W5NjJwEynRulyaGNps3dzH+ydRo8ZpFgfAWbm1v1SrC7LqSF9XsAMi6jPwMC
-         N3w4aSahtw6vLO9pITwaaaOmCd/f/fXbcABt2r3yZwI4NojIFOsYKNZWKBTh2rKZ3++b
-         1EiVrXusEhG+TOGr45NPmGjoVu53+ro9UDn/kZ1AA4B5QTdsgvOVnqSuFXC2XGlNyDvr
-         NfImyAKUwCiuRtyMfEXfwwQpkpnIi//TCnJrs+8O0nD6Vp3UYWJmFm2cO5DgT17v4i8v
-         Wo+Q==
+        b=MFjrGI5Bw25T4noXbye24NemD1D2xKRPg96z0eda7nVp47cGMnb3Azi26z3hLBhsA8
+         pry+9O8o2wf1DNyyABggB0npiJ1HFCWZchZRIOloxLKAjheUEMLwlczLfUlRPXRGXHAK
+         TWAx6N8+xsGx3D8eveMAmOpQeFh5EuHgvk/9SPCQHTK+J+dylJ5nB3YYYszzF7BigkZA
+         zFgWm6msVqK4045+0rAgs4hD06CHFXRBoSquOvHCPpehmjXQ1D48ZRq31JiuyWgH9p79
+         PVru5UEvVS7Bjpx65h6rM2Niza5Dq5PT0q2KEWJlCsRKKyTGjmqtvd4SMrs3xxElUaGT
+         u7BA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=nx6zEUKVo6NvHIyfsvrUdiFsxhJh2SBX8L+kBS8cIv4=;
-        b=Gp9uxF37agnHzl/IXYzSzsXprIHYhd7G+MUnH2BLTe6j9U6ohyPw3qjquEY8GaF5YC
-         G9rE8GjeA1LdD2Fcrgjp0Ok+x1MzyvVCF3DxALBHtHFZtNhhV4EdI4elvigZ0NkLBPm4
-         K1O7uhj/mMpsVT6elI7aoSuIgG+6NVEvzAUWjMbIvw/7XntPBaekKBX+nKqJ7aDZUl94
-         65mNQo/fK4l0F1y4flbCAvgDn1hlNj+J687seEs1E4P7hwauu0FyA/07xiUedlrHv4G5
-         rEDZDxHLJpsX7zsXJVMVt3N5KSrnk54VzJERcAJIHHCZ1P5tyLF66BkqucLb5NkuGPX1
-         Nghw==
+        bh=Mo/2JoNF3mqxe4XoiviHDRNEkOKX8E3ti7vpdu4fztQ=;
+        b=GC6GpEEyCJOupUiLFF/QtPOX4kLfAARLJs+AWBh0kiP7b9j/SGOGF4ErXetHcxi894
+         fo/DFP/VfPGZT0GZDpod/RVbYYF2m0z9Sl2VxugxWm29OVogT4M4HIDTm0kfafIR4B4a
+         y0aMlezcpDD/LunANN16qpFNI4Gjq6E7mO8wnwJ3l1EzbXko/sEQVCKxTB+m45N02K5f
+         qkvSFEfDMvo66TACMuOhyLOtDtV2OGnod3yXCY4iD6Y7Ruol4MV0nGuk2h1Up1oDayOp
+         S3IkYeiRsGKlJcgoCumOxAJlKv2zNnt96nsLyt4/3jpepp182txdJHVjNDF1e4EWeWhn
+         sAEQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OZT92z5t;
+       dkim=fail header.i=@linaro.org header.s=google header.b=BKv/eJSF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b7si59640ywc.103.2018.01.15.10.47.12
+        by mx.google.com with ESMTPS id p8si61520yba.504.2018.01.15.10.50.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 15 Jan 2018 10:47:13 -0800 (PST)
+        Mon, 15 Jan 2018 10:50:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OZT92z5t;
+       dkim=fail header.i=@linaro.org header.s=google header.b=BKv/eJSF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54578 helo=lists.gnu.org)
+Received: from localhost ([::1]:54774 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eb9mq-0001oJ-HS
-	for alex.bennee@linaro.org; Mon, 15 Jan 2018 13:47:12 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37923)
+	id 1eb9q6-0003gD-Po
+	for alex.bennee@linaro.org; Mon, 15 Jan 2018 13:50:34 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38813)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eb9mg-0001o5-94
-	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 13:47:03 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1eb9pW-0003Im-JI
+	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 13:49:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eb9mf-0006kY-8L
-	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 13:47:02 -0500
-Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:32862)
+	(envelope-from <peter.maydell@linaro.org>) id 1eb9pV-0007sQ-JK
+	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 13:49:58 -0500
+Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:44684)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eb9mf-0006k3-4L
-	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 13:47:01 -0500
-Received: by mail-oi0-x244.google.com with SMTP id y141so8946079oia.0
-	for <qemu-arm@nongnu.org>; Mon, 15 Jan 2018 10:47:00 -0800 (PST)
+	id 1eb9pV-0007s8-D5
+	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 13:49:57 -0500
+Received: by mail-ot0-x244.google.com with SMTP id t20so2133834ote.11
+	for <qemu-arm@nongnu.org>; Mon, 15 Jan 2018 10:49:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=nx6zEUKVo6NvHIyfsvrUdiFsxhJh2SBX8L+kBS8cIv4=;
-	b=OZT92z5tfsiDGnYi165oStUcvCzBSkEYMxiy/a+RdnjndYeZY4e1vk7qX9GsHp5FJF
-	W7t8Z1CeK7om3i1z2ZcaI8XkgSPPJZH+QyqfsDUrHOxMycyzcHjnSwDzvVnpIz52DUQR
-	Ouwyr9WaZ08k/x9T0bChiwfqGJHzVSubzXW4I=
+	:cc; bh=Mo/2JoNF3mqxe4XoiviHDRNEkOKX8E3ti7vpdu4fztQ=;
+	b=BKv/eJSFEZy6c4FnKHl8uuAfImsakrMOGVmQ5Qa63TtYZcVcHbV8NFAM9BMUyV3dUV
+	KIq4+m5zRq0eGDuoPWHynAaRcCLejG3RqhqTpiW9wtgeesq1j2/6Qpyabw06hBIyN2KU
+	cTLKUdkkI3KrnUliwHZvUgH3yPGUAP03c0jP4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=nx6zEUKVo6NvHIyfsvrUdiFsxhJh2SBX8L+kBS8cIv4=;
-	b=Ne9dWf4nl/Ou4SJt6b4EHx7oD1kQhBTOu6jPnKk17MEJz/zMhW7OVnWipmXoQ23opo
-	zMTBTzhsKRkgb8sHemyudWkqxbEoJyxzMX4G4TfUayTOCNmwn5t7iXrGmX+nir0A1hKr
-	Q5zpH5n19fNzJ8Vl79peolBgWVndENCvlAhmoAOOdEv2WtLsO4EXtJUcxkbtavW1tu8q
-	sRfuETkbGNmU0dfztRvV+/ySRxPwbwDM4OBseOwDmQse6GxKeuzocSmWZ/Pfk8NJN2cH
-	kSZVHTN7lqvIx1+J6/K97MJH/+YPylxIYLG79mDtG33BkaglRCwa2F+osd3EDTbnoQIZ
-	KcFw==
-X-Gm-Message-State: AKwxytfiJ4VxSqPsxHmwRLGXahwmS0EWs/FyJgJu0RxfEvqtHvfbn9VH
-	XWq5sx1azaPn0BQE/399N0vD8fEOyCPofDFZu9ksjw==
-X-Received: by 10.202.244.131 with SMTP id s125mr12128035oih.327.1516042019897;
-	Mon, 15 Jan 2018 10:46:59 -0800 (PST)
+	bh=Mo/2JoNF3mqxe4XoiviHDRNEkOKX8E3ti7vpdu4fztQ=;
+	b=oEekIwLvYqKAAz2em29qpHhmQoaJxT2UXX8o+QxQyYIn0SCEI76/NodFrZDpm3CAEA
+	9jss75WmrvLE7Lhi1fNX5CsYC1hBqcNmc78GbDi5ngxh2Y7XO6vojkiDc8ThT57ICUXK
+	i/iepPPIgAi7vLJoTmMuW+W0gjS9sIeHRgh4YhTcSaMsvXyKnSxAv2mNFMoEXjHeDUCF
+	vAZdZjBQ0bdSY5M5FA8b+UH7mmH9N8xFPtWggKOeAbiw2bnJFWHEKMR253y4OtUf1Lah
+	lsbmB52o7JpqfrrPfHJQcbTx+Xhm/XVslL7ksi+9YEf4QmrSJsQsZY5G790v+jCv2AR6
+	DcpA==
+X-Gm-Message-State: AKwxytctNtuDE0aSyAiCe8mqF5hKwWsrCPa+Qgx4mgrEqoVXtOnjrAxR
+	0tiFIsFmMvGehASeILpsC1dkM4KV2f5QGu2Rltb3Hw==
+X-Received: by 10.157.29.73 with SMTP id m67mr21653096otm.91.1516042196471;
+	Mon, 15 Jan 2018 10:49:56 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.157.15.71 with HTTP; Mon, 15 Jan 2018 10:46:39 -0800 (PST)
+Received: by 10.157.15.71 with HTTP; Mon, 15 Jan 2018 10:49:36 -0800 (PST)
 In-Reply-To: <20171218172425.18200-11-richard.henderson@linaro.org>
 References: <20171218172425.18200-1-richard.henderson@linaro.org>
 	<20171218172425.18200-11-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 15 Jan 2018 18:46:39 +0000
-Message-ID: <CAFEAcA_bU-LWqtXL=2y_ztF4fCmr6WY0ruxFucXvUruQdKKtyA@mail.gmail.com>
+Date: Mon, 15 Jan 2018 18:49:36 +0000
+Message-ID: <CAFEAcA9TEUfY3oDzWxouG5J5AKBWPoHwfcY+yuO0K+X_K_u7wQ@mail.gmail.com>
 To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::244
+X-Received-From: 2607:f8b0:4003:c0f::244
 Subject: Re: [Qemu-arm] [PATCH v2 10/11] target/arm: Decode aa32 armv8.3
  3-same
 X-BeenThere: qemu-arm@nongnu.org
@@ -107,7 +107,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wcJlhad6gb8N
+X-TUID: lsqrwZPtjfTP
 
 On 18 December 2017 at 17:24, Richard Henderson
 <richard.henderson@linaro.org> wrote:
@@ -137,6 +137,13 @@ On 18 December 2017 at 17:24, Richard Henderson
 > +     * for invalid encodings; we will generate incorrect syndrome information
 > +     * for attempts to execute invalid vfp/neon encodings with FP disabled.
 > +     */
+
+(Forgot this bit before hitting send on the other email...)
+
+Unlike the sprawling disas_vfp_insn(), we're in a position to get the
+order of checks right here. Just move it and the vfp_enabled test a
+bit further down...
+
 > +    if (s->fp_excp_el) {
 > +        gen_exception_insn(s, 4, EXCP_UDEF,
 > +                           syn_fp_access_trap(1, 0xe, false), s->fp_excp_el);
@@ -172,6 +179,9 @@ On 18 December 2017 at 17:24, Richard Henderson
 > +         */
 > +        return 1;
 > +    }
+
+...to here.
+
 > +
 > +    opr_sz = (1 + q) * 8;
 > +    fpst = get_fpstatus_ptr(1);
@@ -183,44 +193,6 @@ On 18 December 2017 at 17:24, Richard Henderson
 > +    return 0;
 > +}
 > +
->  static int disas_coproc_insn(DisasContext *s, uint32_t insn)
->  {
->      int cpnum, is64, crn, crm, opc1, opc2, isread, rt, rt2;
-> @@ -8406,6 +8465,12 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
->                      }
->                  }
->              }
-> +        } else if ((insn & 0x0e000f10) == 0x0c000800) {
-
-I think we should guard this with an ARM_FEATURE_V8 check, so
-that for pre-v8 CPUs we fall back to the usual "treat it as a
-coprocessor" codepath. (In theory it should work out the same
-either way, but specifically limiting this to v8 makes it easier
-to be sure that it's not changing the behaviour where it shouldn't.)
-
-> +            /* ARMv8.3 neon ldc2/stc2 coprocessor 8 extension.  */
-> +            if (disas_neon_insn_cp8_3same(s, insn)) {
-> +                goto illegal_op;
-> +            }
-
-This doesn't seem to line up with the Arm ARM decode. Your
-pattern and mask give
-  op0 = 0x, op1 = 100, op2 = 0 and also bit 8 = 0.
-The ARM has 3reg-same decoded with
-  op0 = 0x, op1 = 1x0, op2 = x
-
-(and some insns in the 3reg-same group have bit 8 == 1, like
-VSDOT and VUDOT.)
-
-> +            return;
->          } else if ((insn & 0x0fe00000) == 0x0c400000) {
->              /* Coprocessor double register transfer.  */
->              ARCH(5TE);
-
-How are you proposing to do the Thumb decoding? Try to share
-some of the 3same-vs-2reg+scalar decode part, or just have
-them both do a similar kind of decode and call the
-disas_neon_insn_cp8_3same/cp8_index functions?
 
 thanks
 -- PMM

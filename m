@@ -1,100 +1,109 @@
-Received: by 10.28.173.206 with SMTP id w197csp3017356wme;
-        Mon, 15 Jan 2018 10:12:24 -0800 (PST)
-X-Google-Smtp-Source: ACJfBouJo7/N4Yx19aWYkabCKP3PkeS+51iYf6/CVP+H1cSjWiesw0JRnutr6VJfJZXhqekdfRCr
-X-Received: by 10.129.82.195 with SMTP id g186mr4982465ywb.29.1516039944504;
-        Mon, 15 Jan 2018 10:12:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516039944; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp3019102wme;
+        Mon, 15 Jan 2018 10:14:17 -0800 (PST)
+X-Google-Smtp-Source: ACJfBovFee4+iPDiOu1UNCtHeI55U/z5l4Gehs7rOpNds/xSrilE1IU66kposz9CXEgW5qmQkXfo
+X-Received: by 10.37.134.208 with SMTP id y16mr14570549ybm.150.1516040057646;
+        Mon, 15 Jan 2018 10:14:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516040057; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y1SDhehPcNVLhtNZ/Cc8PSoVWGBOIjB1X6Ge6EAsDLm1XYta4dNn9ZkVCkOYCpNkhs
-         1xyp2ZiH9GkS/PEHiyH6tdUmi5HcrLigjjnmCpLROuV29MjJjep6G7y1MshwR3Q3hB7o
-         4YL1aMkZ8zuU1dcigsevVkucJj577NK+qMNocG/JSGgrgiD0ur1B7l8lC1wqIwOxzM4K
-         UBM3MYEOlBwIkV9+5lq+M03Ocf6QTzFh2b5FcFBfi4vFu2sdrBVivyRWGkM12OXGxsjz
-         14441Z8qpsgmRvy/l7fDYJ3c8ziS+2lMdad4DUoDNKR6/v3+n9KLwddLJqk2iWvVMm6P
-         2o8w==
+        b=H21PvNKgr2Dt48OIhoWNXCYzQY95aAf2ipZ9BA5kvZfNlLYSMElx1TuN6cxFAolJqV
+         OAK/JDFZoyfOq0XcZVVj0VJv+RCRVQD865/8M6zdB52T8OQpCk3pG2CJYVJFBR0nZ1EX
+         2gas+nMYtnBKavvGnCmwMK6tM6VtFyBMfwAskHZJ4dWfOfNtbcaQoJ85B8c+3TR16kRN
+         VW6Aasxj0qik+oSvJCsTYAxEwboPPpZFopZFCwRSCruWOdmbke6VdWlNycxHxNt7V0gN
+         OyNiqs9yrLgoGACukBMjl5l0tpRrh5G0vmG6SE3NTKM5UB4ZTY1MspMX1XvCX6JbrDYN
+         pUwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=TqtyXjHx8CSTse+l0N5KUQEgmWDDoMk3BIH5HuC7x4E=;
-        b=s0cplsHWlKvGL+w5Z4FKUt19K6EKLLJA/p2YJm3UzEt/QhUNHcJHmA0L1ui6eRS1Tp
-         zbtiAaMpQFcZ3qK2DJoUJgHhOC3PCcI0DfdEO+Fe7n2qx2u/dRCqrhXUThNA/IeV8qql
-         2ZU1tPIryVjWllsvfk2vAUF32ddoXOaradffFqVMSH6IaZys0Xe0yERqdKntmu9edVyv
-         23icWaqM2LAHmFkYtYZbAbFfyZBdR+ECpSPBnP3oYxgivLCtNg0VrAc1bOMce1sTkwRT
-         icH+3l43HQUFoY+zJRU0mRz7ixh3MB0++8aYA1aGhe7FKsJGczXujWuC2SXEzDIf9JbL
-         Gl5w==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature
+         :arc-authentication-results;
+        bh=z3GbYywN15vl5Gk3w6MMw8MrsOEhnuZiDq53j6N3/68=;
+        b=oVbc6LhV0CEL6JEFcgHuoXC+7jxqY/QYb8vyJsgmm5sjCCMUxrnRENUWHxAdLIyL8Q
+         TFuiDaMg0aw9hLlpXevdPZRp1Xga6B0zj9ZTxtybwnf++h9cXctNjW0XDOOgE6xBPhzp
+         VE+Db1g5rOVv/t6Soz5ycgM8vqrKV3JLk2WJuE14w6aUqndj62/T3Zp6XIGpgvIjYq2Y
+         Zk595+ZESCGqducb1whqZJ8n3UItdnGYoa58Qulp59+5I91T8AF4qMRC0ZQ3syu0qLlS
+         X8d+X3Knelz4+TGHSWP/dWzKNjlQ4+CnnbHOAYwbZJkaSbMsLSFXXrkRTlHMjsWRQ3Ls
+         YEng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Nzf/rq79;
+       dkim=fail header.i=@linaro.org header.s=google header.b=TNmIzwBj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f184si45933ybg.402.2018.01.15.10.12.24
+        by mx.google.com with ESMTPS id k123si48029yba.187.2018.01.15.10.14.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 15 Jan 2018 10:12:24 -0800 (PST)
+        Mon, 15 Jan 2018 10:14:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Nzf/rq79;
+       dkim=fail header.i=@linaro.org header.s=google header.b=TNmIzwBj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52241 helo=lists.gnu.org)
+Received: from localhost ([::1]:52380 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eb9F9-0000Sm-Sv
-	for alex.bennee@linaro.org; Mon, 15 Jan 2018 13:12:23 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56046)
+	id 1eb9Gz-0001sN-3q
+	for alex.bennee@linaro.org; Mon, 15 Jan 2018 13:14:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54225)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eb9EU-0008Tj-V4
-	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 13:11:44 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1eb9AH-0004hj-Oj
+	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 13:07:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eb9ET-0003QX-JR
-	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 13:11:42 -0500
-Received: from mail-ot0-x22a.google.com ([2607:f8b0:4003:c0f::22a]:41980)
+	(envelope-from <richard.henderson@linaro.org>) id 1eb9AE-00014z-KE
+	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 13:07:21 -0500
+Received: from mail-pl0-x241.google.com ([2607:f8b0:400e:c01::241]:35685)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eb9ET-0003QE-D1
-	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 13:11:41 -0500
-Received: by mail-ot0-x22a.google.com with SMTP id 44so10485347otk.8
-	for <qemu-arm@nongnu.org>; Mon, 15 Jan 2018 10:11:41 -0800 (PST)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1eb9AE-000143-Ed
+	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 13:07:18 -0500
+Received: by mail-pl0-x241.google.com with SMTP id b96so4237493pli.2
+	for <qemu-arm@nongnu.org>; Mon, 15 Jan 2018 10:07:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=TqtyXjHx8CSTse+l0N5KUQEgmWDDoMk3BIH5HuC7x4E=;
-	b=Nzf/rq79S83yQiTURj3EkGHKe1nc3LsxqD7Eb30TE8c6bVGqTE9Y6xFmSOjTKYz89Y
-	BmKD8bErxHbuzySP+pwsdICneop540ZRaAlHj43G+X9kvCl+aPrfS+bEQinicYO8LQbB
-	clVlvO7+MVWC+DUy4D3CVIquDIFlp5luVzz2Q=
+	h=subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=z3GbYywN15vl5Gk3w6MMw8MrsOEhnuZiDq53j6N3/68=;
+	b=TNmIzwBj/mRN4VgDR9qtozoJLCwbyFCtRrdP7E3Q6o+owO7NGOrFsOdGmckOqsyr76
+	8y3vQ3lk7M9h0aOm0nD658Fk0oCckZpSzv0907aQA0QJYL+1HxAFpZTs3GT6UlDFyAWk
+	3DooD4JHu5iaSWcpTP4/eWeVFRwAbFqIS0lRs=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=TqtyXjHx8CSTse+l0N5KUQEgmWDDoMk3BIH5HuC7x4E=;
-	b=O6OLpq4MMlIv3vyXeaV86VeI8sQRWtYtcrFbjF3cPywVRXMPBdEX1SeRGIt9VJxawn
-	K+WEtmXfT1TbcI7nTXDEIye++wTpL3SUgaQAZAbBsyZfXQZFh2x20tKZsvUzOwQ7qaYD
-	ITHA/ZnCc1+IbjWTeHPKJDxm4TtA5X9sg8hjh5eziqPBzUda3D3pjoQDuCZEhjcs4V/Z
-	Km0D9EdM80deCh6hM8Xp0SeOEGRczGbKZNlAEVVZeFkJRJPKQMz+H7msL8vgIjIGLMdE
-	pYyRL6oGw7f1X6Zd6/5CnJQYl4EnAgk4cw1MCs75IfN6ClSr11GnHzNZbneM2JW5bI8q
-	WgZQ==
-X-Gm-Message-State: AKwxytfg+8zbe5EnqFmejXntaWehVHy3ZZJ2UwH0fxIYfYZoRCvnlLHP
-	b6wLQE7/JOD3W7NNVQu23LbY3tcPK1PzlF0RoBgjgQ==
-X-Received: by 10.157.51.76 with SMTP id u12mr11537969otd.197.1516039900601;
-	Mon, 15 Jan 2018 10:11:40 -0800 (PST)
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=z3GbYywN15vl5Gk3w6MMw8MrsOEhnuZiDq53j6N3/68=;
+	b=P21oErlhjCRkXXgK5xkes2ZeUuF2iMxaFTIifrr1xyV0dBlzz20ktxLjcjn0WjZmQ5
+	OaaKDEyzmzeVlqlEkvgVE7wr8jQuW4GNI31BQMGRIawjhjdIJU3RBo86lNIFtcelujx2
+	SDAfEweiwmHbh3NnP2yB6shbP5ptD/NcYYN/ap71pr415ZXN40TilXyVAMU0Cs2gZAc+
+	eG8ueTtrP+Jt4swlR4QCTKRX/c+tl1hcAdPd8wLXSJoNW7tpxZnR+RX6Ilk60O5So2Cv
+	HMTEF1h0/AxBiTSvSXz/ReQzmVlSHI3V623lv0UUCQB6QD52+2Uz9SubbCfTQMQA3cZb
+	MFBg==
+X-Gm-Message-State: AKGB3mL2HNEsIihgmIU8xo4XF4tLjBXirkNYqwGOYqEdZayZehgZPHLd
+	vgAY8eLJdoFfYB2fRL7Ko0pz+Q==
+X-Received: by 10.84.217.14 with SMTP id o14mr24246231pli.78.1516039637594;
+	Mon, 15 Jan 2018 10:07:17 -0800 (PST)
+Received: from cloudburst.twiddle.net (24-181-135-57.dhcp.knwc.wa.charter.com.
+	[24.181.135.57])
+	by smtp.gmail.com with ESMTPSA id b81sm303557pfm.25.2018.01.15.10.07.15
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 15 Jan 2018 10:07:16 -0800 (PST)
+To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
+References: <20180113004338.16867-1-laurent@vivier.eu>
+	<20180113004338.16867-2-laurent@vivier.eu>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <9a3f4e0b-dd3c-272a-b836-8f25647ceda5@linaro.org>
+Date: Mon, 15 Jan 2018 10:07:12 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.2
 MIME-Version: 1.0
-Received: by 10.157.15.71 with HTTP; Mon, 15 Jan 2018 10:11:19 -0800 (PST)
-In-Reply-To: <20171218172425.18200-9-richard.henderson@linaro.org>
-References: <20171218172425.18200-1-richard.henderson@linaro.org>
-	<20171218172425.18200-9-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 15 Jan 2018 18:11:19 +0000
-Message-ID: <CAFEAcA_WuV7dJxZ7PB0Lazq4vzAUfRJqX7KVFDJBRF76VnkzXg@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20180113004338.16867-2-laurent@vivier.eu>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::22a
-Subject: Re: [Qemu-arm] [PATCH v2 08/11] target/arm: Decode aa64 armv8.3
- fcadd
+X-Received-From: 2607:f8b0:400e:c01::241
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 1/7] accel/tcg: add size
+ paremeter in tlb_fill()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,232 +115,45 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Eduardo Habkost <ehabkost@redhat.com>, Thomas Huth <huth@tuxfamily.org>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Anthony Green <green@moxielogic.com>,
+	Chris Wulff <crwulff@gmail.com>, Alexander Graf <agraf@suse.de>,
+	Max Filippov <jcmvbkbc@gmail.com>, qemu-s390x@nongnu.org,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Michael Walle <michael@walle.cc>,
+	Paolo Bonzini <pbonzini@redhat.com>, Stafford Horne <shorne@gmail.com>,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>, Artyom Tarasenko <atar4qemu@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: G3d93xSM1gpT
+X-TUID: OATPryYZLzIE
 
-On 18 December 2017 at 17:24, Richard Henderson
-<richard.henderson@linaro.org> wrote:
-> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+On 01/12/2018 04:43 PM, Laurent Vivier wrote:
+> The MC68040 MMU provides the size of the access that
+> triggers the page fault.
+> 
+> This size is set in the Special Status Word which
+> is written in the stack frame of the access fault
+> exception.
+> 
+> So we need the size in m68k_cpu_unassigned_access() and
+> m68k_cpu_handle_mmu_fault().
+> 
+> To be able to do that, this patch modifies the prototype of
+> handle_mmu_fault handler, tlb_fill() and probe_write().
+> do_unassigned_access() already includes a size parameter.
+> 
+> This patch also updates handle_mmu_fault handlers and
+> tlb_fill() of all targets (only parameter, no code change).
+> 
+> Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 > ---
->  target/arm/helper.h         |  7 ++++
->  target/arm/advsimd_helper.c | 93 +++++++++++++++++++++++++++++++++++++++=
-++++++
->  target/arm/translate-a64.c  | 36 +++++++++++++++++-
->  3 files changed, 135 insertions(+), 1 deletion(-)
->
-> diff --git a/target/arm/helper.h b/target/arm/helper.h
-> index 06ca458614..0f0fc942b0 100644
-> --- a/target/arm/helper.h
-> +++ b/target/arm/helper.h
-> @@ -567,6 +567,13 @@ DEF_HELPER_FLAGS_5(gvec_qrdmlah_s32, TCG_CALL_NO_RWG=
-,
->  DEF_HELPER_FLAGS_5(gvec_qrdmlsh_s32, TCG_CALL_NO_RWG,
->                     void, ptr, ptr, ptr, ptr, i32)
->
-> +DEF_HELPER_FLAGS_5(gvec_fcaddh, TCG_CALL_NO_RWG,
-> +                   void, ptr, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_5(gvec_fcadds, TCG_CALL_NO_RWG,
-> +                   void, ptr, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_5(gvec_fcaddd, TCG_CALL_NO_RWG,
-> +                   void, ptr, ptr, ptr, ptr, i32)
-> +
->  #ifdef TARGET_AARCH64
->  #include "helper-a64.h"
->  #endif
-> diff --git a/target/arm/advsimd_helper.c b/target/arm/advsimd_helper.c
-> index d5185165a5..afc2bb1142 100644
-> --- a/target/arm/advsimd_helper.c
-> +++ b/target/arm/advsimd_helper.c
-> @@ -24,6 +24,18 @@
->  #include "tcg/tcg-gvec-desc.h"
->
->
-> +/* Note that vector data is stored in host-endian 64-bit chunks,
-> +   so addressing units smaller than that needs a host-endian fixup.  */
-> +#ifdef HOST_WORDS_BIGENDIAN
-> +#define H1(x)  ((x) ^ 7)
-> +#define H2(x)  ((x) ^ 3)
-> +#define H4(x)  ((x) ^ 1)
-> +#else
-> +#define H1(x)  (x)
-> +#define H2(x)  (x)
-> +#define H4(x)  (x)
-> +#endif
-> +
->  #define SET_QC() env->vfp.xregs[ARM_VFP_FPSCR] |=3D CPSR_Q
->
->  static void clear_tail(void *vd, uintptr_t opr_sz, uintptr_t max_sz)
-> @@ -181,3 +193,84 @@ void HELPER(gvec_qrdmlsh_s32)(void *vd, void *vn, vo=
-id *vm,
->      }
->      clear_tail(d, opr_sz, simd_maxsz(desc));
->  }
-> +
-> +void HELPER(gvec_fcaddh)(void *vd, void *vn, void *vm,
-> +                         void *vfpst, uint32_t desc)
-> +{
-> +    uintptr_t opr_sz =3D simd_oprsz(desc);
-> +    float16 *d =3D vd;
-> +    float16 *n =3D vn;
-> +    float16 *m =3D vm;
-> +    float_status *fpst =3D vfpst;
-> +    uint32_t neg_real =3D extract32(desc, SIMD_DATA_SHIFT, 1);
-> +    uint32_t neg_imag =3D neg_real ^ 1;
-> +    uintptr_t i;
-> +
-> +    neg_real <<=3D 15;
-> +    neg_imag <<=3D 15;
+> v2: use "0" for the access size when we don't know
+>     the size of the access
+>     
 
-This took me a little while to figure out, given that it's
-somewhat different from the pseudocode. (I think I was also
-thrown by the <<=3D 15 being done on its own line rather than
-in the assignment.) A comment might help?
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-> +
-> +    for (i =3D 0; i < opr_sz / 2; i +=3D 2) {
-> +        float16 e0 =3D n[H2(i)];
-> +        float16 e1 =3D m[H2(i + 1)] ^ neg_imag;
-> +        float16 e2 =3D n[H2(i + 1)];
-> +        float16 e3 =3D m[H2(i)] ^ neg_real;
-> +
-> +        d[H2(i)] =3D float16_add(e0, e1, fpst);
-> +        d[H2(i + 1)] =3D float16_add(e2, e3, fpst);
-> +    }
-> +    clear_tail(d, opr_sz, simd_maxsz(desc));
-> +}
-> +
-> +void HELPER(gvec_fcadds)(void *vd, void *vn, void *vm,
-> +                         void *vfpst, uint32_t desc)
-> +{
-> +    uintptr_t opr_sz =3D simd_oprsz(desc);
-> +    float32 *d =3D vd;
-> +    float32 *n =3D vn;
-> +    float32 *m =3D vm;
-> +    float_status *fpst =3D vfpst;
-> +    uint32_t neg_real =3D extract32(desc, SIMD_DATA_SHIFT, 1);
-> +    uint32_t neg_imag =3D neg_real ^ 1;
-> +    uintptr_t i;
-> +
-> +    neg_real <<=3D 31;
-> +    neg_imag <<=3D 31;
-> +
-> +    for (i =3D 0; i < opr_sz / 4; i +=3D 2) {
-> +        float32 e0 =3D n[H4(i)];
-> +        float32 e1 =3D m[H4(i + 1)] ^ neg_imag;
-> +        float32 e2 =3D n[H4(i + 1)];
-> +        float32 e3 =3D m[H4(i)] ^ neg_real;
-> +
-> +        d[H4(i)] =3D float32_add(e0, e1, fpst);
-> +        d[H4(i + 1)] =3D float32_add(e2, e3, fpst);
-> +    }
-> +    clear_tail(d, opr_sz, simd_maxsz(desc));
-> +}
-> +
-> +void HELPER(gvec_fcaddd)(void *vd, void *vn, void *vm,
-> +                         void *vfpst, uint32_t desc)
-> +{
-> +    uintptr_t opr_sz =3D simd_oprsz(desc);
-> +    float64 *d =3D vd;
-> +    float64 *n =3D vn;
-> +    float64 *m =3D vm;
-> +    float_status *fpst =3D vfpst;
-> +    uint64_t neg_real =3D extract64(desc, SIMD_DATA_SHIFT, 1);
-> +    uint64_t neg_imag =3D neg_real ^ 1;
-> +    uintptr_t i;
-> +
-> +    neg_real <<=3D 63;
-> +    neg_imag <<=3D 63;
-> +
-> +    for (i =3D 0; i < opr_sz / 8; i +=3D 2) {
-> +        float64 e0 =3D n[i];
-> +        float64 e1 =3D m[i + 1] ^ neg_imag;
-> +        float64 e2 =3D n[i + 1];
-> +        float64 e3 =3D m[i] ^ neg_real;
-> +
-> +        d[i] =3D float64_add(e0, e1, fpst);
-> +        d[i + 1] =3D float64_add(e2, e3, fpst);
-> +    }
-> +    clear_tail(d, opr_sz, simd_maxsz(desc));
-> +}
-> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-> index 85fc7af491..89a0616894 100644
-> --- a/target/arm/translate-a64.c
-> +++ b/target/arm/translate-a64.c
-> @@ -10696,7 +10696,8 @@ static void disas_simd_three_reg_same_extra(Disas=
-Context *s, uint32_t insn)
->      int size =3D extract32(insn, 22, 2);
->      bool u =3D extract32(insn, 29, 1);
->      bool is_q =3D extract32(insn, 30, 1);
-> -    int feature;
-> +    int feature, data;
-> +    TCGv_ptr fpst;
->
->      if (!u) {
->          unallocated_encoding(s);
-> @@ -10712,6 +10713,14 @@ static void disas_simd_three_reg_same_extra(Disa=
-sContext *s, uint32_t insn)
->          }
->          feature =3D ARM_FEATURE_V8_1_SIMD;
->          break;
-> +    case 0xc: /* FCADD, #90 */
-> +    case 0xe: /* FCADD, #270 */
-> +        if (size =3D=3D 0 || (size =3D=3D 3 && !is_q)) {
-> +            unallocated_encoding(s);
-> +            return;
-> +        }
 
-The pseudocode says you need to also check whether the
-FP16 extension is supported, or else UNDEF on size =3D=3D 1.
-
-> +        feature =3D ARM_FEATURE_V8_FCMA;
-> +        break;
->      default:
->          unallocated_encoding(s);
->          return;
-> @@ -10758,6 +10767,31 @@ static void disas_simd_three_reg_same_extra(Disa=
-sContext *s, uint32_t insn)
->                             0, fn_gvec_ptr);
->          break;
->
-> +    case 0xc: /* FCADD, #90 */
-> +    case 0xe: /* FCADD, #270 */
-> +        switch (size) {
-> +        case 1:
-> +            fn_gvec_ptr =3D gen_helper_gvec_fcaddh;
-> +            break;
-> +        case 2:
-> +            fn_gvec_ptr =3D gen_helper_gvec_fcadds;
-> +            break;
-> +        case 3:
-> +            fn_gvec_ptr =3D gen_helper_gvec_fcaddd;
-> +            break;
-> +        default:
-> +            g_assert_not_reached();
-> +        }
-> +        data =3D extract32(opcode, 1, 1);
-
-The pseudocode calls this field "rot", which is a bit more
-descriptive than "data".
-
-> +        fpst =3D get_fpstatus_ptr(size =3D=3D 1);
-> +        tcg_gen_gvec_3_ptr(vec_full_reg_offset(s, rd),
-> +                           vec_full_reg_offset(s, rn),
-> +                           vec_full_reg_offset(s, rm), fpst,
-> +                           is_q ? 16 : 8, vec_full_reg_size(s),
-> +                           data, fn_gvec_ptr);
-> +        tcg_temp_free_ptr(fpst);
-> +        break;
-> +
->      default:
->          g_assert_not_reached();
->      }
-> --
-> 2.14.3
-
-Otherwise I think this looks OK.
-
-thanks
--- PMM
+r~

@@ -1,140 +1,134 @@
-Received: by 10.28.173.206 with SMTP id w197csp3504465wme;
-        Mon, 15 Jan 2018 20:33:06 -0800 (PST)
-X-Google-Smtp-Source: ACJfBotIIstXrHOAAu2VlWZ/dfd6fmx5K9Um5Smz5teg7nbGMDWzVHsTMjeAeAbqmApgYHwIweow
-X-Received: by 10.37.39.71 with SMTP id n68mr35558114ybn.128.1516077186036;
-        Mon, 15 Jan 2018 20:33:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516077186; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp3513915wme;
+        Mon, 15 Jan 2018 20:45:53 -0800 (PST)
+X-Google-Smtp-Source: ACJfBoslDy15K6T6uUQUr/KlbO8jUj3n0j1Dk3b2ken8Nz4F/fjYwPrchnzwXCw/ZVhrYBzB64Uc
+X-Received: by 10.13.230.3 with SMTP id p3mr24642495ywe.137.1516077953814;
+        Mon, 15 Jan 2018 20:45:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516077953; cv=none;
         d=google.com; s=arc-20160816;
-        b=LMYUFD/1999SRvuOjoKKm56R5jmPE9ARaRT/PoLbi5LofckarpzYKOcZTQuoRVtaHt
-         Q7ZT+P3X7uMTnRF66CoFslkFk8eEff87PT1UnI3nlSqgGpze382C/ebVZRU7HhkcSUi9
-         7DHN2J+cHEJeo+pOr872XNLcjWEGeLVOHs7MJaWU+MHI/vOuiYN35ZMV6WLIk0NFRcgc
-         fIKa4tfFfpWaZ9PIOuI7985FQY4PTjvSb0DuWlZcRgD0znO2m7LQyOavO0pFl0n7kuyK
-         hQq0SZ4aZ5vo8DmAUIrFGOLKRhki4p3VSi0v1IJRziOQkmskm1wDQB5/Ca7gmShQgV07
-         lJsw==
+        b=TdzoyF1ntWjohuKjms2G8kQ+LkyONRaw3ilQahr3ltjY/Oo/BfxuahIgRt2qMZcI9M
+         4lk/EJnDlWObic2QyWf5cYM1/AF+kekv+4aKWKfS8SlIn3tXxRibzwR7I3UnWULLWzEu
+         oaAPiWbexf2ii2rjv9sqAjSzrFh6QfBq/hP+nZxgyufB4/aweADs9tH/DDpIyCTQs7In
+         3zEAh3A3hgjicAA9APCfkNQ3MPNBIMZLGMR5qZOkWdho/zokpdUlMSLyj1zd9e6kpdrP
+         KhHMAVtx4QZ6b1rkJjVTM8w+xyUrbBOIiTLYwszzGzmyA9hSerOdvyEsi79Yjq/ji12l
+         2acA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:to
          :dkim-signature:arc-authentication-results;
-        bh=BuJi7O0GngkjBFv+VUdzJ2LHYm8qVyWdkhLmGqLjkn0=;
-        b=j5afF2gmjY7b4yV+RQCggI/K/nxqLdA1EBnz3W99jq3ZecXHSD5V4gI7uF5VWFW+44
-         AIh5juRlAW5GdhLcHqiwmOujIgk6AXNF4LwO6uEsbRGChtNAOmGq9MTUuwboyhWCAK1K
-         3oK/oBQFs89osu+L1GjPxSidYWl9e4Ye+X2Ndl7J1acbMdu6I5rC0XYSOAkVi3njfyXn
-         Zj4UKqMAwjR61wRVDaygq1CoK1b4nDIIakskiYXeZw+2vlzu8vPVlwAgVlpssLLtpakY
-         n3oMNtz3Qin0E3NevWVvPIzhe9uRdEpGt2tyEBE1oGSe3CWKP4ZOTrVmrSqvFXhyuZKQ
-         EqyA==
+        bh=RFE/NRiCZAsh/U13Ra0Xc2MRIY50IP4rS7KUaeVrR+M=;
+        b=ZXSZsCA8L2/659wM3iiYUTwiuZd9cmpo/d6PkvPOjJ6uhaRC1F5YjFlYTFFkmJDKj6
+         RcRDAJekO1E57A5fwW5nHCD+z5JyiPTtKQe2t9NNS+M/RKs1lhsErN8gpVzHmmLOuRUn
+         z07s41ph7m2B61V0K/8cp4uDwnQW8EXEKNbDtzvNDoUic2EwDuLzOnuXzQShS+XTSJvm
+         Zu11Mi3LwSyh8ANkmw/DQV+dJrLMF5SXmiA8ceCjxi/aNTDgg/THHlAOQ/zeiO7BN89t
+         0AH/cFHvGdexVkkWyFUbRpeNwM3u40nCDx3gY3OZai40b6xKe1jiWJsNozgeOvi8uApL
+         +WCQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tVH7aoD4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IyzpSsBo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v130si306708yba.602.2018.01.15.20.33.05
+        by mx.google.com with ESMTPS id u82si294208ywa.639.2018.01.15.20.45.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 15 Jan 2018 20:33:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 15 Jan 2018 20:45:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tVH7aoD4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:34342 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IyzpSsBo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:35098 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ebIvp-000245-H7
-	for alex.bennee@linaro.org; Mon, 15 Jan 2018 23:33:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44500)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ebJ8D-0006nz-95
+	for alex.bennee@linaro.org; Mon, 15 Jan 2018 23:45:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47358)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ebIvY-00023h-9T
-	for qemu-devel@nongnu.org; Mon, 15 Jan 2018 23:32:49 -0500
+	id 1ebJ82-0006lr-4L
+	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 23:45:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ebIvV-00075a-46
-	for qemu-devel@nongnu.org; Mon, 15 Jan 2018 23:32:48 -0500
-Received: from mail-qt0-x234.google.com ([2607:f8b0:400d:c0d::234]:42246)
+	id 1ebJ80-0003sT-S9
+	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 23:45:42 -0500
+Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:37223)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ebIvU-00075J-Uj; Mon, 15 Jan 2018 23:32:45 -0500
-Received: by mail-qt0-x234.google.com with SMTP id c2so16765511qtn.9;
-	Mon, 15 Jan 2018 20:32:44 -0800 (PST)
+	id 1ebJ7w-0003rA-4R; Mon, 15 Jan 2018 23:45:36 -0500
+Received: by mail-qk0-x243.google.com with SMTP id y80so12863151qkb.4;
+	Mon, 15 Jan 2018 20:45:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=BuJi7O0GngkjBFv+VUdzJ2LHYm8qVyWdkhLmGqLjkn0=;
-	b=tVH7aoD4CksMkIqRr4cv29xl0VGwrRjFI4fo6/Pl3DOJVMmDntpF41TwF32m2pZlC8
-	KyoeBKNtFPHX/oV8fQllkdDAoSd71XKY9CIbqQOALndoW+3pMiOAFcRY6tpmo2RRl0lb
-	jerxjiFbGF3p8d7l6rlq9hP4+K9GFsjVelrEEZE/o/pIBCbdrdoUGuSq+UIsWJSHZDn1
-	77UM2NduajuNQu2naNpAl+y7QAqFNfrIHvDpwV+99VoVC79WnTtT35s6wAlGVloPkLqe
-	s/AfEHEuo2m6Vavqh4r9QkMu4z1JXFM3NjYrLLpp/g7udwkLU8sYUQ9C4ItK1iok6Ycp
-	CV8Q==
+	bh=RFE/NRiCZAsh/U13Ra0Xc2MRIY50IP4rS7KUaeVrR+M=;
+	b=IyzpSsBohpfq5735PjCf8pwi4Pz3cv0gd54HcecdWN240pcHle0ymgxbYGfE53MRim
+	VsebOFwxoRX7mGu+gnJSD3uzCsacIMEjn3LdEPMwKrpaUDXUgvaSJ1U34qyvK/Gpsnwk
+	2dX7WQlq8EVlIZPe9nQD9Wh6gyqgmuiD5JKbSR0ZZd6wf/hHsWr9CEuMvrNGAC8pK6w0
+	YZB7YrWZThXyATRhU+mOxWsyo5EUjYZGXR11lXiBL/O4egXrJPOkaHYIGv5kZFa5cgrL
+	o/M7Mrp6yucZkhzz1PwCSlVIYZorqz6UX97V3Oq8ftj/foyaSW/J2adfht/TlE+Pgk+3
+	YTcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=BuJi7O0GngkjBFv+VUdzJ2LHYm8qVyWdkhLmGqLjkn0=;
-	b=mftA0pLI9uuIXnlfGxA8qcRDMdclKvkJ2XrdpN98ONBThEjOtmVTdOODwlaKYkEzGz
-	A5vgBnkyGE0rWw7fzGFuo9w/tCaOz3yHJ+x6rQcg3ruO5v3zzG5/KSvlkc3/ZTv8fGDE
-	jltleSk9cEy1lpRlzcV2xrolzr/h7oZyBrDDBmk3rDXxtV8CZ+2bLonJbFXpCbxNYQ8Y
-	kpzUWqmn40BJWIHHtd5k9Dnf1tecEWlW4OrFvBdTxfKCBA3hfAe0znw0vvNskZPaP+hi
-	yvqf+q3Qrkd1WC4jtLiv/lSUqMuQkuBzzE/MAslfJsPdG01iBwyu+1qL4k+aBrIDW4X2
-	JPkA==
-X-Gm-Message-State: AKwxyteWSMIFBRDRLP3L8qRdPDbUXNY2L5yczLR3vS3vTQ+ErIWSH1jy
-	xhS+AK/vqjwPyN7RAbVI+Ho=
-X-Received: by 10.200.81.154 with SMTP id c26mr25064956qtn.129.1516077164126; 
-	Mon, 15 Jan 2018 20:32:44 -0800 (PST)
+	bh=RFE/NRiCZAsh/U13Ra0Xc2MRIY50IP4rS7KUaeVrR+M=;
+	b=HHDqLXJwelNUGamzB0ot1go4zb7J3oNNeV0n0oHt2mGGBniTltqYHbLEQ4XLPkFltW
+	coNJJF9r27X9cGlIgUt6WRtVgGp12F/7fQjNtsB+Jy2ikL4sL3Bmzfi1exKXP3TWRql5
+	lIwnegVIZqo7ZtsuTSyskb0nCYUdi16SQLxMGasA3HH9JlMwVz6tjUDRa8788rUabjPR
+	Y2FQ830FG9ienwu9meKtJ2hiNBHA7VNrpAhQqUpCvcbfzgzAykwZndLbb42WYz0nkDd6
+	S+Wj0AnxP4GmpX5ECwfLK1UegcX+RTEarPzricSgRgeG5YEK9hsCezNeIzdrZeeF4RpX
+	4b/A==
+X-Gm-Message-State: AKwxytc71OKDM//mXs+YesMv5pJKMYss9ENini9kSU3PvFuGkp4bikxt
+	Yl2OEGhThCp++19a2bJ4JmQ=
+X-Received: by 10.55.108.71 with SMTP id h68mr17410085qkc.28.1516077935517;
+	Mon, 15 Jan 2018 20:45:35 -0800 (PST)
 Received: from [192.168.1.11] ([138.117.48.219])
-	by smtp.gmail.com with ESMTPSA id k2sm780487qkf.35.2018.01.15.20.32.41
+	by smtp.gmail.com with ESMTPSA id
+	y140sm817606qkb.37.2018.01.15.20.45.33
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 15 Jan 2018 20:32:43 -0800 (PST)
+	Mon, 15 Jan 2018 20:45:34 -0800 (PST)
 To: Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm@nongnu.org
 References: <20180116013709.13830-1-andrew.smirnov@gmail.com>
-	<20180116013709.13830-12-andrew.smirnov@gmail.com>
+	<20180116013709.13830-9-andrew.smirnov@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <b085a18b-84f4-6695-f664-c146ece47eee@amsat.org>
-Date: Tue, 16 Jan 2018 01:32:40 -0300
+Message-ID: <ebab631b-7d14-dd9a-8e81-e76830bfda02@amsat.org>
+Date: Tue, 16 Jan 2018 01:45:32 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.5.2
 MIME-Version: 1.0
-In-Reply-To: <20180116013709.13830-12-andrew.smirnov@gmail.com>
+In-Reply-To: <20180116013709.13830-9-andrew.smirnov@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::234
-Subject: Re: [Qemu-devel] [PATCH v4 11/14] ARM: Add basic code to emulate
- A7MPCore DAP block
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400d:c09::243
+Subject: Re: [Qemu-arm] [PATCH v4 08/14] i.MX: Add implementation of i.MX7
+ GPR IP block
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
 	qemu-devel@nongnu.org, yurovsky@gmail.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PetGwophuiih
-
-Hi Andrey,
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: el0IZ0brw9kp
 
 On 01/15/2018 10:37 PM, Andrey Smirnov wrote:
-> Add minimal code to emulate A7MPCore DAP block needed to boot Linux
-> guest.
-
-I was not aware the DAP is accessed by upstream Linux...
-
-You sure this isn't rather part of some bootloader built-in self-test?
-
+> Add minimal code needed to allow upstream Linux guest to boot.
+> 
 > Cc: Peter Maydell <peter.maydell@linaro.org>
 > Cc: Jason Wang <jasowang@redhat.com>
 > Cc: Philippe Mathieu-Daudé <f4bug@amsat.org>
@@ -143,69 +137,125 @@ You sure this isn't rather part of some bootloader built-in self-test?
 > Cc: yurovsky@gmail.com
 > Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 > ---
->  hw/arm/Makefile.objs       |   2 +-
->  hw/arm/coresight.c         | 120 +++++++++++++++++++++++++++++++++++++++++++++
->  include/hw/arm/coresight.h |  24 +++++++++
->  3 files changed, 145 insertions(+), 1 deletion(-)
->  create mode 100644 hw/arm/coresight.c
->  create mode 100644 include/hw/arm/coresight.h
+>  hw/misc/Makefile.objs      |   1 +
+>  hw/misc/imx7_gpr.c         | 119 +++++++++++++++++++++++++++++++++++++++++++++
+>  include/hw/misc/imx7_gpr.h |  28 +++++++++++
+>  3 files changed, 148 insertions(+)
+>  create mode 100644 hw/misc/imx7_gpr.c
+>  create mode 100644 include/hw/misc/imx7_gpr.h
 > 
-> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-> index 2794e086d6..692216e0cf 100644
-> --- a/hw/arm/Makefile.objs
-> +++ b/hw/arm/Makefile.objs
-> @@ -1,4 +1,4 @@
-> -obj-y += boot.o collie.o exynos4_boards.o gumstix.o highbank.o
-> +obj-y += boot.o collie.o exynos4_boards.o gumstix.o highbank.o coresight.o
->  obj-$(CONFIG_DIGIC) += digic_boards.o
->  obj-y += integratorcp.o mainstone.o musicpal.o nseries.o
->  obj-y += omap_sx1.o palm.o realview.o spitz.o stellaris.o
-> diff --git a/hw/arm/coresight.c b/hw/arm/coresight.c
+> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+> index 019886912c..fce426eb75 100644
+> --- a/hw/misc/Makefile.objs
+> +++ b/hw/misc/Makefile.objs
+> @@ -36,6 +36,7 @@ obj-$(CONFIG_IMX) += imx6_src.o
+>  obj-$(CONFIG_IMX) += imx7_ccm.o
+>  obj-$(CONFIG_IMX) += imx2_wdt.o
+>  obj-$(CONFIG_IMX) += imx7_snvs.o
+> +obj-$(CONFIG_IMX) += imx7_gpr.o
+>  obj-$(CONFIG_MILKYMIST) += milkymist-hpdmc.o
+>  obj-$(CONFIG_MILKYMIST) += milkymist-pfpu.o
+>  obj-$(CONFIG_MAINSTONE) += mst_fpga.o
+> diff --git a/hw/misc/imx7_gpr.c b/hw/misc/imx7_gpr.c
 > new file mode 100644
-> index 0000000000..d0a8c1b005
+> index 0000000000..9e8ccea9e8
 > --- /dev/null
-> +++ b/hw/arm/coresight.c
-> @@ -0,0 +1,120 @@
+> +++ b/hw/misc/imx7_gpr.c
+> @@ -0,0 +1,119 @@
 > +/*
 > + * Copyright (c) 2017, Impinj, Inc.
 > + *
-> + * CoreSight block emulation code
+> + * i.MX7 GPR IP block emulation code
 > + *
 > + * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
 > + *
 > + * This work is licensed under the terms of the GNU GPL, version 2 or later.
 > + * See the COPYING file in the top-level directory.
+> + *
+> + * Bare minimum emulation code needed to support being able to shut
+> + * down linux guest gracefully.
 > + */
 > +
 > +#include "qemu/osdep.h"
-> +#include "hw/arm/coresight.h"
+> +#include "hw/misc/imx7_gpr.h"
 > +#include "qemu/log.h"
+> +#include "sysemu/sysemu.h"
 > +
-> +static uint64_t coresight_read(void *opaque, hwaddr offset,
-> +                               unsigned size)
+> +enum IMX7GPRRegisters {
+> +    IOMUXC_GPR0  = 0x00,
+> +    IOMUXC_GPR1  = 0x04,
+> +    IOMUXC_GPR2  = 0x08,
+> +    IOMUXC_GPR3  = 0x0c,
+> +    IOMUXC_GPR4  = 0x10,
+> +    IOMUXC_GPR5  = 0x14,
+> +    IOMUXC_GPR6  = 0x18,
+> +    IOMUXC_GPR7  = 0x1c,
+> +    IOMUXC_GPR8  = 0x20,
+> +    IOMUXC_GPR9  = 0x24,
+> +    IOMUXC_GPR10 = 0x28,
+> +    IOMUXC_GPR11 = 0x2c,
+> +    IOMUXC_GPR12 = 0x30,
+> +    IOMUXC_GPR13 = 0x34,
+> +    IOMUXC_GPR14 = 0x38,
+> +    IOMUXC_GPR15 = 0x3c,
+> +    IOMUXC_GPR16 = 0x40,
+> +    IOMUXC_GPR17 = 0x44,
+> +    IOMUXC_GPR18 = 0x48,
+> +    IOMUXC_GPR19 = 0x4c,
+> +    IOMUXC_GPR20 = 0x50,
+> +    IOMUXC_GPR21 = 0x54,
+> +    IOMUXC_GPR22 = 0x58,
+> +};
+> +
+> +#define IMX7D_GPR1_IRQ_MASK                 BIT(12)
+> +#define IMX7D_GPR1_ENET1_TX_CLK_SEL_MASK    BIT(13)
+> +#define IMX7D_GPR1_ENET2_TX_CLK_SEL_MASK    BIT(14)
+> +#define IMX7D_GPR1_ENET_TX_CLK_SEL_MASK     (0x3 << 13)
+> +#define IMX7D_GPR1_ENET1_CLK_DIR_MASK       BIT(17)
+> +#define IMX7D_GPR1_ENET2_CLK_DIR_MASK       BIT(18)
+> +#define IMX7D_GPR1_ENET_CLK_DIR_MASK        (0x3 << 17)
+> +
+> +#define IMX7D_GPR5_CSI_MUX_CONTROL_MIPI     BIT(4)
+> +#define IMX7D_GPR12_PCIE_PHY_REFCLK_SEL     BIT(5)
+> +#define IMX7D_GPR22_PCIE_PHY_PLL_LOCKED     BIT(31)
+> +
+> +
+> +static uint64_t imx7_gpr_read(void *opaque, hwaddr offset, unsigned size)
 > +{
+> +    if (offset == IOMUXC_GPR22) {
+> +        return IMX7D_GPR22_PCIE_PHY_PLL_LOCKED;
+> +    }
+> +
 > +    return 0;
 > +}
 > +
-> +static void coresight_write(void *opaque, hwaddr offset,
-> +                            uint64_t value, unsigned size)
+> +static void imx7_gpr_write(void *opaque, hwaddr offset,
+> +                           uint64_t v, unsigned size)
 > +{
+
+If you ever respin, please add a trace point here (just copy/paste from
+another file from the same directory), and in the read() function.
+
+Linux will evolve and use more registers from this device (and the other
+devices you are modelling), and a Linux driver busy loop is likely to
+hang QEMU. A trace event will ease your board next user soon :)
+
+That said,
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
 > +}
-
-I assume you had to add this to bypass the memory_transaction_failures
-check.
-
 > +
-> +static const struct MemoryRegionOps coresight_ops = {
-> +    .read = coresight_read,
-> +    .write = coresight_write,
+> +static const struct MemoryRegionOps imx7_gpr_ops = {
+> +    .read = imx7_gpr_read,
+> +    .write = imx7_gpr_write,
 > +    .endianness = DEVICE_NATIVE_ENDIAN,
 > +    .impl = {
 > +        /*
 > +         * Our device would not work correctly if the guest was doing
-> +         * unaligned access. This might not be a limitation on the real
-> +         * device but in practice there is no reason for a guest to access
-> +         * this device unaligned.
+> +         * unaligned access. This might not be a limitation on the
+> +         * real device but in practice there is no reason for a guest
+> +         * to access this device unaligned.
 > +         */
 > +        .min_access_size = 4,
 > +        .max_access_size = 4,
@@ -213,124 +263,68 @@ check.
 > +    },
 > +};
 > +
-> +static void a7mpcore_dap_init(Object *obj)
+> +static void imx7_gpr_init(Object *obj)
 > +{
 > +    SysBusDevice *sd = SYS_BUS_DEVICE(obj);
-> +    A7MPCoreDAPState *s = A7MPCORE_DAP(obj);
+> +    IMX7GPRState *s = IMX7_GPR(obj);
 > +
-> +    memory_region_init(&s->container, obj, "a7mpcore-dap-container", 0x100000);
-
-You can just use add this in fsl_imx7_realize():
-
-  create_unimplemented_device("a7mpcore-dap-container",
-                              FSL_IMX7_A7MPCORE_DAP_ADDR,
-                              0x100000);
-
-to register a background region for the DAP (see "hw/misc/unimp.h")
-
-as a bonus, running with "-d unimp" you can trace the DAP access.
-
-So this model and those files are not necessary.
-
-> +    sysbus_init_mmio(sd, &s->container);
-> +
-> +    memory_region_init_io(&s->ca7_atb_funnel,
-> +                          obj,
-> +                          &coresight_ops,
-> +                          s,
-> +                          TYPE_A7MPCORE_DAP ".ca7-atb-funnel",
-> +                          0x1000);
-> +    memory_region_add_subregion(&s->container, 0x41000, &s->ca7_atb_funnel);
-> +
-> +    memory_region_init_io(&s->cpu0_etm,
-> +                          obj,
-> +                          &coresight_ops,
-> +                          s,
-> +                          TYPE_A7MPCORE_DAP ".cpu0-etm",
-> +                          0x1000);
-> +    memory_region_add_subregion(&s->container, 0x7C000, &s->cpu0_etm);
-> +
-> +    memory_region_init_io(&s->atb_funnel,
-> +                          obj,
-> +                          &coresight_ops,
-> +                          s,
-> +                          TYPE_A7MPCORE_DAP ".atb-funnel",
-> +                          0x1000);
-> +    memory_region_add_subregion(&s->container, 0x83000, &s->atb_funnel);
-> +
-> +    memory_region_init_io(&s->tmc_etb,
-> +                          obj,
-> +                          &coresight_ops,
-> +                          s,
-> +                          TYPE_A7MPCORE_DAP ".tmc-etb",
-> +                          0x1000);
-> +    memory_region_add_subregion(&s->container, 0x84000, &s->tmc_etb);
-> +
-> +    memory_region_init_io(&s->tmc_etr,
-> +                          obj,
-> +                          &coresight_ops,
-> +                          s,
-> +                          TYPE_A7MPCORE_DAP ".tmc-etr",
-> +                          0x1000);
-> +    memory_region_add_subregion(&s->container, 0x86000, &s->tmc_etr);
-> +
-> +    memory_region_init_io(&s->tpiu,
-> +                          obj,
-> +                          &coresight_ops,
-> +                          s,
-> +                          TYPE_A7MPCORE_DAP ".tpiu",
-> +                          0x1000);
-> +    memory_region_add_subregion(&s->container, 0x87000, &s->tpiu);
+> +    memory_region_init_io(&s->mmio, obj, &imx7_gpr_ops, s,
+> +                          TYPE_IMX7_GPR, 64 * 1024);
+> +    sysbus_init_mmio(sd, &s->mmio);
 > +}
 > +
-> +static void a7mpcore_dap_class_init(ObjectClass *klass, void *data)
+> +static void imx7_gpr_class_init(ObjectClass *klass, void *data)
 > +{
 > +    DeviceClass *dc = DEVICE_CLASS(klass);
 > +
-> +    dc->desc = "A7MPCore DAP Module";
+> +    dc->desc  = "i.MX7 General Purpose Registers Module";
 > +}
 > +
-> +static const TypeInfo a7mpcore_dap_info = {
-> +    .name          = TYPE_A7MPCORE_DAP,
+> +static const TypeInfo imx7_gpr_info = {
+> +    .name          = TYPE_IMX7_GPR,
 > +    .parent        = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size = sizeof(A7MPCoreDAPState),
-> +    .instance_init = a7mpcore_dap_init,
-> +    .class_init    = a7mpcore_dap_class_init,
+> +    .instance_size = sizeof(IMX7GPRState),
+> +    .instance_init = imx7_gpr_init,
+> +    .class_init    = imx7_gpr_class_init,
 > +};
 > +
-> +static void coresight_register_type(void)
+> +static void imx7_gpr_register_type(void)
 > +{
-> +    type_register_static(&a7mpcore_dap_info);
+> +    type_register_static(&imx7_gpr_info);
 > +}
-> +type_init(coresight_register_type)
-> diff --git a/include/hw/arm/coresight.h b/include/hw/arm/coresight.h
+> +type_init(imx7_gpr_register_type)
+> diff --git a/include/hw/misc/imx7_gpr.h b/include/hw/misc/imx7_gpr.h
 > new file mode 100644
-> index 0000000000..d1480e825b
+> index 0000000000..e19373d274
 > --- /dev/null
-> +++ b/include/hw/arm/coresight.h
-> @@ -0,0 +1,24 @@
-> +#ifndef CORESIGHT_H
-> +#define CORESIGHT_H
+> +++ b/include/hw/misc/imx7_gpr.h
+> @@ -0,0 +1,28 @@
+> +/*
+> + * Copyright (c) 2017, Impinj, Inc.
+> + *
+> + * i.MX7 GPR IP block emulation code
+> + *
+> + * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> + * See the COPYING file in the top-level directory.
+> + */
 > +
+> +#ifndef IMX7_GPR_H
+> +#define IMX7_GPR_H
+> +
+> +#include "qemu/bitops.h"
 > +#include "hw/sysbus.h"
 > +
-> +typedef struct A7MPCoreDAPState {
-> +    /*< private >*/
+> +#define TYPE_IMX7_GPR "imx7.gpr"
+> +#define IMX7_GPR(obj) OBJECT_CHECK(IMX7GPRState, (obj), TYPE_IMX7_GPR)
+> +
+> +typedef struct IMX7GPRState {
+> +    /* <private> */
 > +    SysBusDevice parent_obj;
 > +
-> +    MemoryRegion container;
+> +    MemoryRegion mmio;
+> +} IMX7GPRState;
 > +
-> +    MemoryRegion ca7_atb_funnel;
-> +    MemoryRegion cpu0_etm;
-> +    MemoryRegion atb_funnel;
-> +    MemoryRegion tmc_etb;
-> +    MemoryRegion tmc_etr;
-> +    MemoryRegion tpiu;
-> +
-> +} A7MPCoreDAPState;
-> +
-> +#define TYPE_A7MPCORE_DAP "a7mpcore-dap"
-> +#define A7MPCORE_DAP(obj) OBJECT_CHECK(A7MPCoreDAPState, (obj), TYPE_A7MPCORE_DAP)
-> +
-> +#endif /* CORESIGHT_H */
+> +#endif /* IMX7_GPR_H */
 > 

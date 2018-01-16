@@ -1,330 +1,383 @@
-Received: by 10.28.173.206 with SMTP id w197csp3513915wme;
-        Mon, 15 Jan 2018 20:45:53 -0800 (PST)
-X-Google-Smtp-Source: ACJfBoslDy15K6T6uUQUr/KlbO8jUj3n0j1Dk3b2ken8Nz4F/fjYwPrchnzwXCw/ZVhrYBzB64Uc
-X-Received: by 10.13.230.3 with SMTP id p3mr24642495ywe.137.1516077953814;
-        Mon, 15 Jan 2018 20:45:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516077953; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp3544859wme;
+        Mon, 15 Jan 2018 21:27:33 -0800 (PST)
+X-Google-Smtp-Source: ACJfBospyGZIb04N+J9cJ1nifcEA8xNNyfSw8fK6u+WEzz05WbImwcdPTmvUmdVAPOgdT8Aa2uoA
+X-Received: by 10.129.98.197 with SMTP id w188mr23452456ywb.74.1516080453093;
+        Mon, 15 Jan 2018 21:27:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516080453; cv=none;
         d=google.com; s=arc-20160816;
-        b=TdzoyF1ntWjohuKjms2G8kQ+LkyONRaw3ilQahr3ltjY/Oo/BfxuahIgRt2qMZcI9M
-         4lk/EJnDlWObic2QyWf5cYM1/AF+kekv+4aKWKfS8SlIn3tXxRibzwR7I3UnWULLWzEu
-         oaAPiWbexf2ii2rjv9sqAjSzrFh6QfBq/hP+nZxgyufB4/aweADs9tH/DDpIyCTQs7In
-         3zEAh3A3hgjicAA9APCfkNQ3MPNBIMZLGMR5qZOkWdho/zokpdUlMSLyj1zd9e6kpdrP
-         KhHMAVtx4QZ6b1rkJjVTM8w+xyUrbBOIiTLYwszzGzmyA9hSerOdvyEsi79Yjq/ji12l
-         2acA==
+        b=CXLFp+me36fCKlKL/HHNQS8FO/LkfY6xM/kRwtbWLfjl88PMKywmhdjJRWpXxcu4Iu
+         KzAwJsQ9PKJVCzuFec6Za1oKBbtWZzBJrKkDHYJnQzIxMB4fvH3MLHkROf3Hlne0txOm
+         clBJrsUb4BzTcFaUds7kUKLQnHfqwfiabs3+EY4rKoS6klpdSLpsU5rFiwOfThQglUyk
+         hcGamHt+EEodp2bvEABasNVRNYwvIi925lUiIKSKnhXUW5a5Bniyy8vD+rOk7W4o2V1m
+         jrq4G3e/rbHsclDaw8fF6MeRNfYpcUF3TluJ/jol85lvmlO5ybanbUDlA6kVW7oZWpZy
+         gvKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:to
          :dkim-signature:arc-authentication-results;
-        bh=RFE/NRiCZAsh/U13Ra0Xc2MRIY50IP4rS7KUaeVrR+M=;
-        b=ZXSZsCA8L2/659wM3iiYUTwiuZd9cmpo/d6PkvPOjJ6uhaRC1F5YjFlYTFFkmJDKj6
-         RcRDAJekO1E57A5fwW5nHCD+z5JyiPTtKQe2t9NNS+M/RKs1lhsErN8gpVzHmmLOuRUn
-         z07s41ph7m2B61V0K/8cp4uDwnQW8EXEKNbDtzvNDoUic2EwDuLzOnuXzQShS+XTSJvm
-         Zu11Mi3LwSyh8ANkmw/DQV+dJrLMF5SXmiA8ceCjxi/aNTDgg/THHlAOQ/zeiO7BN89t
-         0AH/cFHvGdexVkkWyFUbRpeNwM3u40nCDx3gY3OZai40b6xKe1jiWJsNozgeOvi8uApL
-         +WCQ==
+        bh=9PioSfHGzqMwvCo3i/rETyKoJTOaehGoq+MwHPxUPbo=;
+        b=xvJ2iiPPJR51XXmYnc56K+rfaEfSf0ESvHpvfPyXbGCA8sl0UHGkVTGSUrL2KzRMXY
+         di42jrnVtv5OoQBpiopETHovBO1DQCsUeGeBgzPBZER+Ykl+ZfDhZ+AxqFUgqBmehU37
+         atEA2Se9tRDR1wbzHzPJlomk+mXk7sFWE+XvP94ufdH5TbixVh4WPnNB59ATy/eh8PA6
+         E2sgfYRtzD5Ak0/bUnQt1+XexJX1kQaq0qibRgXgNnchkZJ5+5Ya7jItQOcnVF/Vy5QT
+         n9gBf59Q4+FcD/KaVGJrtMzNgFbGlkCmCnd4fKUC3relVElaXF0xYgezUQ52hTzCvYkK
+         zh4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IyzpSsBo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Dlo9/OYK;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u82si294208ywa.639.2018.01.15.20.45.53
+        by mx.google.com with ESMTPS id o12si322075ywm.655.2018.01.15.21.27.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 15 Jan 2018 20:45:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 15 Jan 2018 21:27:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IyzpSsBo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:35098 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Dlo9/OYK;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:37355 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ebJ8D-0006nz-95
-	for alex.bennee@linaro.org; Mon, 15 Jan 2018 23:45:53 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47358)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ebJmW-0000Fu-JP
+	for alex.bennee@linaro.org; Tue, 16 Jan 2018 00:27:32 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53103)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ebJ82-0006lr-4L
-	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 23:45:43 -0500
+	id 1ebJQR-0006Bw-Mn
+	for qemu-devel@nongnu.org; Tue, 16 Jan 2018 00:04:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ebJ80-0003sT-S9
-	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 23:45:42 -0500
-Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:37223)
+	id 1ebJQO-00038J-Fk
+	for qemu-devel@nongnu.org; Tue, 16 Jan 2018 00:04:43 -0500
+Received: from mail-qk0-x22d.google.com ([2607:f8b0:400d:c09::22d]:36876)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ebJ7w-0003rA-4R; Mon, 15 Jan 2018 23:45:36 -0500
-Received: by mail-qk0-x243.google.com with SMTP id y80so12863151qkb.4;
-	Mon, 15 Jan 2018 20:45:36 -0800 (PST)
+	id 1ebJQO-00037R-AE; Tue, 16 Jan 2018 00:04:40 -0500
+Received: by mail-qk0-x22d.google.com with SMTP id y80so12898387qkb.4;
+	Mon, 15 Jan 2018 21:04:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=RFE/NRiCZAsh/U13Ra0Xc2MRIY50IP4rS7KUaeVrR+M=;
-	b=IyzpSsBohpfq5735PjCf8pwi4Pz3cv0gd54HcecdWN240pcHle0ymgxbYGfE53MRim
-	VsebOFwxoRX7mGu+gnJSD3uzCsacIMEjn3LdEPMwKrpaUDXUgvaSJ1U34qyvK/Gpsnwk
-	2dX7WQlq8EVlIZPe9nQD9Wh6gyqgmuiD5JKbSR0ZZd6wf/hHsWr9CEuMvrNGAC8pK6w0
-	YZB7YrWZThXyATRhU+mOxWsyo5EUjYZGXR11lXiBL/O4egXrJPOkaHYIGv5kZFa5cgrL
-	o/M7Mrp6yucZkhzz1PwCSlVIYZorqz6UX97V3Oq8ftj/foyaSW/J2adfht/TlE+Pgk+3
-	YTcw==
+	bh=9PioSfHGzqMwvCo3i/rETyKoJTOaehGoq+MwHPxUPbo=;
+	b=Dlo9/OYKntFEKVpCLtjkLats2w3AzhCLDlSYl9c0/9cJQBKVD+wczuAjznc8QQd1bd
+	VCxB0T5+nBGyEJlAHvbzibIfkkogrSlosIW5Oxbo/6J/A3gmjikrhl4GNq5mFcCSdElS
+	Q4aPIrQV1hx9MapH6F1hY/a7CuLkKlbH6N8iiCb2zFlueSsMT16vz+pc8jJXF4cMGPSq
+	mgR7rYla22uKbpNT1WgkLUg7+Zz6kJ4gRVd9C9BdhQ8BABT+ELad5MfUjqIy4yzQO3Rl
+	Pbu55pLbCskB/hu35qyywxmwxHmnVpdiH5gS24BncQ3qoxkNNqN7NjtQ6SYhaNbLqlzb
+	M+wQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=RFE/NRiCZAsh/U13Ra0Xc2MRIY50IP4rS7KUaeVrR+M=;
-	b=HHDqLXJwelNUGamzB0ot1go4zb7J3oNNeV0n0oHt2mGGBniTltqYHbLEQ4XLPkFltW
-	coNJJF9r27X9cGlIgUt6WRtVgGp12F/7fQjNtsB+Jy2ikL4sL3Bmzfi1exKXP3TWRql5
-	lIwnegVIZqo7ZtsuTSyskb0nCYUdi16SQLxMGasA3HH9JlMwVz6tjUDRa8788rUabjPR
-	Y2FQ830FG9ienwu9meKtJ2hiNBHA7VNrpAhQqUpCvcbfzgzAykwZndLbb42WYz0nkDd6
-	S+Wj0AnxP4GmpX5ECwfLK1UegcX+RTEarPzricSgRgeG5YEK9hsCezNeIzdrZeeF4RpX
-	4b/A==
-X-Gm-Message-State: AKwxytc71OKDM//mXs+YesMv5pJKMYss9ENini9kSU3PvFuGkp4bikxt
-	Yl2OEGhThCp++19a2bJ4JmQ=
-X-Received: by 10.55.108.71 with SMTP id h68mr17410085qkc.28.1516077935517;
-	Mon, 15 Jan 2018 20:45:35 -0800 (PST)
+	bh=9PioSfHGzqMwvCo3i/rETyKoJTOaehGoq+MwHPxUPbo=;
+	b=nHBsyL6MY81ylNal1DteTTZVoYypWGsiBuN42b+GuF3i/QdHtatEfNDbN3UmY9+Ofj
+	4nTD9jkiPNyRMcHGB85pxb7arBL09RTnrZwE94fXVHZECimSdpd/Iz/3UPvnkGYpdFlK
+	eao49g6rjS+kjeB1w59sUFyit7M6fNTg/L9mqa0ultAnDNmKeIxm1ZTJ6gOwk37sHtGR
+	38QCKT11odBBsDz88ZzzwQA65z+X1o4zpN9PdhoQ/d/crLuajpaaCbyFRq3X/xOH6vZO
+	a80x6WkwlqtVcGatZP29CZM6O4Nu4lXn7XGOJxPG8n8Y77BF24ntFZPSK/5DivmDfmZ9
+	3itg==
+X-Gm-Message-State: AKwxytfzIzSHCKKLkNdw7sTUfzyfboqCUwpK88Z64N8Miikq30iHyy0k
+	9gYRS5bWTHqUpUbYjG6PBGY=
+X-Received: by 10.55.26.67 with SMTP id a64mr51440441qka.198.1516079079698;
+	Mon, 15 Jan 2018 21:04:39 -0800 (PST)
 Received: from [192.168.1.11] ([138.117.48.219])
-	by smtp.gmail.com with ESMTPSA id
-	y140sm817606qkb.37.2018.01.15.20.45.33
+	by smtp.gmail.com with ESMTPSA id r9sm827238qtf.82.2018.01.15.21.04.36
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 15 Jan 2018 20:45:34 -0800 (PST)
-To: Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm@nongnu.org
-References: <20180116013709.13830-1-andrew.smirnov@gmail.com>
-	<20180116013709.13830-9-andrew.smirnov@gmail.com>
+	Mon, 15 Jan 2018 21:04:39 -0800 (PST)
+To: Andrey Smirnov <andrew.smirnov@gmail.com>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>
+References: <20171214151934.3647-1-andrew.smirnov@gmail.com>
+	<CAKmqyKOV7kYBTDmjLaFTtKAF7KyZQ56F2LiwE5D+Hzzh9nvmxA@mail.gmail.com>
+	<CAHQ1cqFhHRVNOT4Fo+AbF9CXYn77Npy2g6hzWJ+Lh90aRxT=0A@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <ebab631b-7d14-dd9a-8e81-e76830bfda02@amsat.org>
-Date: Tue, 16 Jan 2018 01:45:32 -0300
+Message-ID: <8bc803bf-c062-6ee0-d7c2-74262ffe12dc@amsat.org>
+Date: Tue, 16 Jan 2018 02:04:35 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.5.2
 MIME-Version: 1.0
-In-Reply-To: <20180116013709.13830-9-andrew.smirnov@gmail.com>
+In-Reply-To: <CAHQ1cqFhHRVNOT4Fo+AbF9CXYn77Npy2g6hzWJ+Lh90aRxT=0A@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::243
-Subject: Re: [Qemu-arm] [PATCH v4 08/14] i.MX: Add implementation of i.MX7
- GPR IP block
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400d:c09::22d
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH] hw/misc: Add code to emulate
+ Xilinx Slave Serial port
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
-	qemu-devel@nongnu.org, yurovsky@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: el0IZ0brw9kp
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Andrey Yurovsky <yurovsky@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: UmFN1f3+g2yi
 
-On 01/15/2018 10:37 PM, Andrey Smirnov wrote:
-> Add minimal code needed to allow upstream Linux guest to boot.
+On 01/15/2018 10:51 PM, Andrey Smirnov wrote:
+> On Tue, Dec 19, 2017 at 4:48 PM, Alistair Francis
+> <alistair.francis@xilinx.com> wrote:
+>> On Thu, Dec 14, 2017 at 7:19 AM, Andrey Smirnov
+>> <andrew.smirnov@gmail.com> wrote:
+>>> Add code to emulate Xilinx Slave Serial FPGA configuration port.
+>>>
+>>> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+>>> Cc: Alistair Francis <alistair.francis@xilinx.com>
+>>> Cc: qemu-devel@nongnu.org
+>>> Cc: qemu-arm@nongnu.org
+>>> Cc: yurovsky@gmail.com
+>>> Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
+>>
+>> Hey,
+>>
+>> Thanks for the patch!
+>>
+>> I have some comments inline, if anything is unclear just email me back
+>> and I can provide more information or help.
+>>
+>>> ---
+>>>
+>>> Integrating this into a build system via "obj-y" might not be the best
+>>> way. Does this code need a dedicated CONFIG_ symbol?
+>>
+>> You probably don't need a specific one, there are already some Xilinx
+>> ones in there you can use.
+>>
+>> Maybe CONFIG_XILINX or CONFIG_XILINX_AXI
+>>
 > 
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: Jason Wang <jasowang@redhat.com>
-> Cc: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> Cc: qemu-devel@nongnu.org
-> Cc: qemu-arm@nongnu.org
-> Cc: yurovsky@gmail.com
-> Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
-> ---
->  hw/misc/Makefile.objs      |   1 +
->  hw/misc/imx7_gpr.c         | 119 +++++++++++++++++++++++++++++++++++++++++++++
->  include/hw/misc/imx7_gpr.h |  28 +++++++++++
->  3 files changed, 148 insertions(+)
->  create mode 100644 hw/misc/imx7_gpr.c
->  create mode 100644 include/hw/misc/imx7_gpr.h
+> OK, will do if I ever re-spin this patch
 > 
-> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-> index 019886912c..fce426eb75 100644
-> --- a/hw/misc/Makefile.objs
-> +++ b/hw/misc/Makefile.objs
-> @@ -36,6 +36,7 @@ obj-$(CONFIG_IMX) += imx6_src.o
->  obj-$(CONFIG_IMX) += imx7_ccm.o
->  obj-$(CONFIG_IMX) += imx2_wdt.o
->  obj-$(CONFIG_IMX) += imx7_snvs.o
-> +obj-$(CONFIG_IMX) += imx7_gpr.o
->  obj-$(CONFIG_MILKYMIST) += milkymist-hpdmc.o
->  obj-$(CONFIG_MILKYMIST) += milkymist-pfpu.o
->  obj-$(CONFIG_MAINSTONE) += mst_fpga.o
-> diff --git a/hw/misc/imx7_gpr.c b/hw/misc/imx7_gpr.c
-> new file mode 100644
-> index 0000000000..9e8ccea9e8
-> --- /dev/null
-> +++ b/hw/misc/imx7_gpr.c
-> @@ -0,0 +1,119 @@
-> +/*
-> + * Copyright (c) 2017, Impinj, Inc.
-> + *
-> + * i.MX7 GPR IP block emulation code
-> + *
-> + * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
-> + * See the COPYING file in the top-level directory.
-> + *
-> + * Bare minimum emulation code needed to support being able to shut
-> + * down linux guest gracefully.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "hw/misc/imx7_gpr.h"
-> +#include "qemu/log.h"
-> +#include "sysemu/sysemu.h"
-> +
-> +enum IMX7GPRRegisters {
-> +    IOMUXC_GPR0  = 0x00,
-> +    IOMUXC_GPR1  = 0x04,
-> +    IOMUXC_GPR2  = 0x08,
-> +    IOMUXC_GPR3  = 0x0c,
-> +    IOMUXC_GPR4  = 0x10,
-> +    IOMUXC_GPR5  = 0x14,
-> +    IOMUXC_GPR6  = 0x18,
-> +    IOMUXC_GPR7  = 0x1c,
-> +    IOMUXC_GPR8  = 0x20,
-> +    IOMUXC_GPR9  = 0x24,
-> +    IOMUXC_GPR10 = 0x28,
-> +    IOMUXC_GPR11 = 0x2c,
-> +    IOMUXC_GPR12 = 0x30,
-> +    IOMUXC_GPR13 = 0x34,
-> +    IOMUXC_GPR14 = 0x38,
-> +    IOMUXC_GPR15 = 0x3c,
-> +    IOMUXC_GPR16 = 0x40,
-> +    IOMUXC_GPR17 = 0x44,
-> +    IOMUXC_GPR18 = 0x48,
-> +    IOMUXC_GPR19 = 0x4c,
-> +    IOMUXC_GPR20 = 0x50,
-> +    IOMUXC_GPR21 = 0x54,
-> +    IOMUXC_GPR22 = 0x58,
-> +};
-> +
-> +#define IMX7D_GPR1_IRQ_MASK                 BIT(12)
-> +#define IMX7D_GPR1_ENET1_TX_CLK_SEL_MASK    BIT(13)
-> +#define IMX7D_GPR1_ENET2_TX_CLK_SEL_MASK    BIT(14)
-> +#define IMX7D_GPR1_ENET_TX_CLK_SEL_MASK     (0x3 << 13)
-> +#define IMX7D_GPR1_ENET1_CLK_DIR_MASK       BIT(17)
-> +#define IMX7D_GPR1_ENET2_CLK_DIR_MASK       BIT(18)
-> +#define IMX7D_GPR1_ENET_CLK_DIR_MASK        (0x3 << 17)
-> +
-> +#define IMX7D_GPR5_CSI_MUX_CONTROL_MIPI     BIT(4)
-> +#define IMX7D_GPR12_PCIE_PHY_REFCLK_SEL     BIT(5)
-> +#define IMX7D_GPR22_PCIE_PHY_PLL_LOCKED     BIT(31)
-> +
-> +
-> +static uint64_t imx7_gpr_read(void *opaque, hwaddr offset, unsigned size)
-> +{
-> +    if (offset == IOMUXC_GPR22) {
-> +        return IMX7D_GPR22_PCIE_PHY_PLL_LOCKED;
-> +    }
-> +
-> +    return 0;
-> +}
-> +
-> +static void imx7_gpr_write(void *opaque, hwaddr offset,
-> +                           uint64_t v, unsigned size)
-> +{
+>>>
+>>> Thanks,
+>>> Andrey Smirnov
+>>>
+>>>
+>>>  hw/misc/Makefile.objs                 |   1 +
+>>>  hw/misc/xilinx_slave_serial.c         | 105 ++++++++++++++++++++++++++++++++++
+>>>  include/hw/misc/xilinx_slave_serial.h |  21 +++++++
+>>>  3 files changed, 127 insertions(+)
+>>>  create mode 100644 hw/misc/xilinx_slave_serial.c
+>>>  create mode 100644 include/hw/misc/xilinx_slave_serial.h
+>>
+>> You will need to connect this to a machine as well.
+>>
+>>>
+>>> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+>>> index a68a201083..4599288e55 100644
+>>> --- a/hw/misc/Makefile.objs
+>>> +++ b/hw/misc/Makefile.objs
+>>> @@ -38,6 +38,7 @@ obj-$(CONFIG_IMX) += imx7_ccm.o
+>>>  obj-$(CONFIG_IMX) += imx2_wdt.o
+>>>  obj-$(CONFIG_IMX) += imx7_snvs.o
+>>>  obj-$(CONFIG_IMX) += imx7_gpr.o
+>>> +obj-y += xilinx_slave_serial.o
+>>>  obj-$(CONFIG_MILKYMIST) += milkymist-hpdmc.o
+>>>  obj-$(CONFIG_MILKYMIST) += milkymist-pfpu.o
+>>>  obj-$(CONFIG_MAINSTONE) += mst_fpga.o
+>>> diff --git a/hw/misc/xilinx_slave_serial.c b/hw/misc/xilinx_slave_serial.c
+>>> new file mode 100644
+>>> index 0000000000..607674fb60
+>>> --- /dev/null
+>>> +++ b/hw/misc/xilinx_slave_serial.c
+>>> @@ -0,0 +1,105 @@
+>>> +/*
+>>> + * Copyright (c) 2017, Impinj, Inc.
+>>> + *
+>>> + * Code to emulate programming "port" of Xilinx FPGA in Slave Serial
+>>> + * configuration connected via SPI, for more deatils see (p. 27):
+>>> + *
+>>> + * See https://www.xilinx.com/support/documentation/user_guides/ug380.pdf
+>>
+>> Ah, so this is for a Spartan-6 device. We don't have any QEMU support
+>> for Spartan-6. What are you trying to use this for?
 
-If you ever respin, please add a trace point here (just copy/paste from
-another file from the same directory), and in the read() function.
+Well, this question is valid for all the ARM FDT devices...
 
-Linux will evolve and use more registers from this device (and the other
-devices you are modelling), and a Linux driver busy loop is likely to
-hang QEMU. A trace event will ease your board next user soon :)
+Alistair: GSoC idea: have a easier way to integrate FDT devices into
+QEMU and automagically qtest them.
 
-That said,
+If devices have qtests for code coverage, I think we should accept them
+upstream, even if they are not yet plugged into a board.
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+The other way, there are motivated contributors who start sending
+patches but then never finish due to changes in life and reduced spare
+time, or lack of motivation due to the high quality asked by some
+maintainer or daily paid reviewers, which is a shame IMHO.
 
-> +}
-> +
-> +static const struct MemoryRegionOps imx7_gpr_ops = {
-> +    .read = imx7_gpr_read,
-> +    .write = imx7_gpr_write,
-> +    .endianness = DEVICE_NATIVE_ENDIAN,
-> +    .impl = {
-> +        /*
-> +         * Our device would not work correctly if the guest was doing
-> +         * unaligned access. This might not be a limitation on the
-> +         * real device but in practice there is no reason for a guest
-> +         * to access this device unaligned.
-> +         */
-> +        .min_access_size = 4,
-> +        .max_access_size = 4,
-> +        .unaligned = false,
-> +    },
-> +};
-> +
-> +static void imx7_gpr_init(Object *obj)
-> +{
-> +    SysBusDevice *sd = SYS_BUS_DEVICE(obj);
-> +    IMX7GPRState *s = IMX7_GPR(obj);
-> +
-> +    memory_region_init_io(&s->mmio, obj, &imx7_gpr_ops, s,
-> +                          TYPE_IMX7_GPR, 64 * 1024);
-> +    sysbus_init_mmio(sd, &s->mmio);
-> +}
-> +
-> +static void imx7_gpr_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +
-> +    dc->desc  = "i.MX7 General Purpose Registers Module";
-> +}
-> +
-> +static const TypeInfo imx7_gpr_info = {
-> +    .name          = TYPE_IMX7_GPR,
-> +    .parent        = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size = sizeof(IMX7GPRState),
-> +    .instance_init = imx7_gpr_init,
-> +    .class_init    = imx7_gpr_class_init,
-> +};
-> +
-> +static void imx7_gpr_register_type(void)
-> +{
-> +    type_register_static(&imx7_gpr_info);
-> +}
-> +type_init(imx7_gpr_register_type)
-> diff --git a/include/hw/misc/imx7_gpr.h b/include/hw/misc/imx7_gpr.h
-> new file mode 100644
-> index 0000000000..e19373d274
-> --- /dev/null
-> +++ b/include/hw/misc/imx7_gpr.h
-> @@ -0,0 +1,28 @@
-> +/*
-> + * Copyright (c) 2017, Impinj, Inc.
-> + *
-> + * i.MX7 GPR IP block emulation code
-> + *
-> + * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
-> + * See the COPYING file in the top-level directory.
-> + */
-> +
-> +#ifndef IMX7_GPR_H
-> +#define IMX7_GPR_H
-> +
-> +#include "qemu/bitops.h"
-> +#include "hw/sysbus.h"
-> +
-> +#define TYPE_IMX7_GPR "imx7.gpr"
-> +#define IMX7_GPR(obj) OBJECT_CHECK(IMX7GPRState, (obj), TYPE_IMX7_GPR)
-> +
-> +typedef struct IMX7GPRState {
-> +    /* <private> */
-> +    SysBusDevice parent_obj;
-> +
-> +    MemoryRegion mmio;
-> +} IMX7GPRState;
-> +
-> +#endif /* IMX7_GPR_H */
+Speaking from experience I already found in the ML archives some pieces
+of unfinished code of devices I am thinking about implement, and few of
+them pretty finished, but never merged. The contributors comments are
+"Hey, I wrote this device and it works for me" garage-sale attitude "if
+you find something useful, take it, else let it in the trash".
+
+> The use-case for this patch is to fool FPGA configuration tools
+> running on the guest into beliving that they successfully configure
+> Spartan-6 device. I tested this code against
+> "drivers/fpga/xilinx-spi.c" from Linux kernel.
+> 
+>>> + *
+>>> + * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
+>>> + *
+>>> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+>>> + * See the COPYING file in the top-level directory.
+>>> + */
+>>> +
+>>> +#include "qemu/osdep.h"
+>>> +#include "hw/misc/xilinx_slave_serial.h"
+>>> +#include "qemu/log.h"
+>>> +
+>>> +enum {
+>>> +    XILINX_SLAVE_SERIAL_STATE_RESET,
+>>> +    XILINX_SLAVE_SERIAL_STATE_RECONFIGURATION,
+>>> +    XILINX_SLAVE_SERIAL_STATE_DONE,
+>>> +};
+>>> +
+>>> +static void xilinx_slave_serial_update_outputs(XilinxSlaveSerialState *xlnxss)
+>>
+>> For function names try to use xlnx instead of xilinx, it just saves line length.
+> 
+> Will fix if I re-spin this patch.
+> 
+>>
+>>> +{
+>>> +    qemu_set_irq(xlnxss->done,
+>>> +                 xlnxss->state == XILINX_SLAVE_SERIAL_STATE_DONE);
+>>> +}
+>>> +
+>>> +static void xilinx_slave_serial_reset(DeviceState *dev)
+>>> +{
+>>> +    XilinxSlaveSerialState *xlnxss = XILINX_SLAVE_SERIAL(dev);
+>>
+>> This is generally just called 's'.
+> 
+> OK, will fix if I re-spin this patch
+> 
+>>
+>>> +
+>>> +    xlnxss->state = XILINX_SLAVE_SERIAL_STATE_RESET;
+>>> +
+>>> +    xilinx_slave_serial_update_outputs(xlnxss);
+>>> +}
+>>> +
+>>> +static void xilinx_slave_serial_prog_b(void *opaque, int n, int level)
+>>> +{
+>>> +    XilinxSlaveSerialState *xlnxss = XILINX_SLAVE_SERIAL(opaque);
+>>> +    assert(n == 0);
+>>> +
+>>> +    if (level) {
+>>> +        xlnxss->state = XILINX_SLAVE_SERIAL_STATE_RECONFIGURATION;
+>>> +    }
+>>> +
+>>> +    xilinx_slave_serial_update_outputs(xlnxss);
+>>> +}
+>>> +
+>>> +static void xilinx_slave_serial_realize(SSISlave *ss, Error **errp)
+>>> +{
+>>> +    DeviceState *dev = DEVICE(ss);
+>>> +    XilinxSlaveSerialState *xlnxss = XILINX_SLAVE_SERIAL(ss);
+>>> +
+>>> +    qdev_init_gpio_in_named(dev,
+>>> +                            xilinx_slave_serial_prog_b,
+>>> +                            XILINX_SLAVE_SERIAL_GPIO_PROG_B,
+>>> +                            1);
+>>> +    qdev_init_gpio_out_named(dev, &xlnxss->done,
+>>> +                             XILINX_SLAVE_SERIAL_GPIO_DONE, 1);
+>>> +}
+>>> +
+>>> +static uint32_t xilinx_slave_serial_transfer(SSISlave *ss, uint32_t tx)
+>>> +{
+>>> +    XilinxSlaveSerialState *xlnxss = XILINX_SLAVE_SERIAL(ss);
+>>> +
+>>> +    if (xlnxss->state == XILINX_SLAVE_SERIAL_STATE_RECONFIGURATION) {
+>>> +        xlnxss->state = XILINX_SLAVE_SERIAL_STATE_DONE;
+>>> +    }
+>>> +
+>>> +    xilinx_slave_serial_update_outputs(xlnxss);
+>>> +    return 0;
+>>> +}
+>>> +
+>>> +static void xilinx_slave_serial_class_init(ObjectClass *klass, void *data)
+>>> +{
+>>> +    DeviceClass   *dc = DEVICE_CLASS(klass);
+>>> +    SSISlaveClass *k  = SSI_SLAVE_CLASS(klass);
+>>> +
+>>> +    dc->reset      = xilinx_slave_serial_reset;
+>>> +    dc->desc       = "Xilinx Slave Serial";
+>>> +    k->realize     = xilinx_slave_serial_realize;
+>>> +    k->transfer    = xilinx_slave_serial_transfer;
+>>> +    /*
+>>> +     * Slave Serial configuration is not technically SPI and there's
+>>> +     * no CS signal
+>>> +     */
+>>> +    k->set_cs      = NULL;
+>>> +    k->cs_polarity = SSI_CS_NONE;
+>>> +}
+>>> +
+>>> +static const TypeInfo xilinx_slave_serial_info = {
+>>> +    .name          = TYPE_XILINX_SLAVE_SERIAL,
+>>> +    .parent        = TYPE_SSI_SLAVE,
+>>> +    .instance_size = sizeof(XilinxSlaveSerialState),
+>>> +    .class_init    = xilinx_slave_serial_class_init,
+>>> +};
+>>> +
+>>> +static void xilinx_slave_serial_register_type(void)
+>>> +{
+>>> +    type_register_static(&xilinx_slave_serial_info);
+>>> +}
+>>> +type_init(xilinx_slave_serial_register_type)
+>>> diff --git a/include/hw/misc/xilinx_slave_serial.h b/include/hw/misc/xilinx_slave_serial.h
+>>> new file mode 100644
+>>> index 0000000000..f7b2e22be3
+>>> --- /dev/null
+>>> +++ b/include/hw/misc/xilinx_slave_serial.h
+>>> @@ -0,0 +1,21 @@
+>>> +#ifndef XILINX_SLAVE_SERIAL_H
+>>> +#define XILINX_SLAVE_SERIAL_H
+>>> +
+>>> +#include "hw/ssi/ssi.h"
+>>> +
+>>> +typedef struct XilinxSlaveSerialState {
+>>> +    /*< private >*/
+>>> +    SSISlave parent_obj;
+>>> +
+>>> +    qemu_irq done;
+>>> +    int state;
+>>> +} XilinxSlaveSerialState;
+>>> +
+>>> +#define TYPE_XILINX_SLAVE_SERIAL "xilinx:slave-serial"
+>>
+>> Full stop instead of colon.
+> 
+> Good to know, will fix if I re-spin this patch
+> 
+>>
+>> Overall the model looks fine, I'm just not sure what you are using it
+>> for as it isn't connected to anything.
+> 
+> I think this patch is similar to another one I submitted
+> https://lists.gnu.org/archive/html/qemu-devel/2017-12/msg02513.html in
+> a sense that there's no board in upstream codebase that needs this
+> feature and I am not yet upstreaming the code for the board that I use
+> it for. Given the situation, I think I'll put this patch on hold until
+> I have some other code to justify its inclusion.
+> 
+> Thanks,
+> Andrey Smrinov
 > 

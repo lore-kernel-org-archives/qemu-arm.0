@@ -1,89 +1,101 @@
-Received: by 10.28.173.206 with SMTP id w197csp2656183wme;
-        Mon, 8 Jan 2018 08:25:26 -0800 (PST)
-X-Google-Smtp-Source: ACJfBovBJ/goZXzSieO31Ervx+nq3bc4x9UvcbLJ6t/U8fUTwq6h9G2Mkva3nfLf9E2rjfGJ5Xqj
-X-Received: by 10.37.175.79 with SMTP id c15mr11811099ybj.271.1515428726229;
-        Mon, 08 Jan 2018 08:25:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515428726; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp4559704wme;
+        Tue, 16 Jan 2018 15:12:10 -0800 (PST)
+X-Google-Smtp-Source: ACJfBouk7WcGr+M1AQjVB3k5oq7kNxq8WzQwnqIIp3pT35IFfZY1g3e0hbVQK7ly8LImWL2inJA6
+X-Received: by 10.37.130.133 with SMTP id r5mr10117775ybk.316.1516144330628;
+        Tue, 16 Jan 2018 15:12:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516144330; cv=none;
         d=google.com; s=arc-20160816;
-        b=t50JEZhTWi+nb47XaYTvFf2PXC/t5AqFFrL34Il/faa9ZmQPWodUwq7AGh2Qvlelpv
-         pxXU6jnO7YCfwO5I+Tvqy6VFQTbEhjOnfNKrNJG66yhl3hu8ib08XkX7Ex55093eZ7a5
-         097uSeD+pGGV0Pp4nezIhJ97CKPLDUsmF3/MwgoB3fxViU20P1FTtBkSBoyduWaYS8G8
-         uhUiOXzV+WtKjFXqdrxe5XNykBAvKS3em7Btus1/0oIjff0f3QjOzSt/mzipRZ3X05Vm
-         tuBv6IzsnjXyV3A+9IQ13SmZ96KaTvCNwAOa76a/QJdTL0uR4vP3751/AKz/bDBx3n+l
-         X78A==
+        b=M3Qglfz+7nfTaLJQcVaOPZhK/ULfTJOvAq4P0GsI+yF6GkS8ZFDMK0LaPcxSOspZ7s
+         5MQWkVjhq62dwtZ/B2lKF5UQTxaGcHTNfFQOkl/zEhh86jYV3L2RGBQZweddzkAca/oq
+         vI24EFwV/J2xIe4GVe31SF9ngY8J6mMoxUCAJRNNJ4TXfoo5Vam6TSvsSSEPqADCUTCg
+         IWzprTQyvodh1lhQKLoYUlVopC88ANgOomu52rhGxl/cJMZi3J3v/LAzQEQAv79uyuNU
+         AEM5wBioj6zf5IXy+Z9Urd3mUMnZ9IocH7jAdKm+eOJV0pZn/gHegxj9LPtCejN7pp59
+         ubUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :arc-authentication-results;
-        bh=LGUYwxubm868CPFY6ddqNvZxWu0o1HnJVVZncBqQ9rM=;
-        b=P4r8wwiF0kGHge778kiXp/+v+8RquLs0AeFnHQM0BOLAXh0vWZ1EFG8+s7YDZFxylU
-         kAE1xS83tp4u0xpiso4YBZhzcB0G4Fr9i/JuoYS5HUA0LgTeDYL4twYfwFOyaoMUyuQe
-         pOZ5qgJYjnosMAyYIJwOtW1f+YU+655Cu5GZPFcSWlvi5DhzPieglVa6ZyRPrDu2vbCv
-         suDFueYJBoFJUhDAGLZ7BzkgW850FNBdXQcbHtNnKmd15g0XQ5EmVhZz4WxT6fi7nWN3
-         ZaspyAljSudu8b3+sO+tbTqBdJahOafPtzcqiOh1r211GLJ6FJ+ENwezQMl4huhIhkXF
-         L/iA==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=3TL0q1ySV4kyA7fyniyKtb2EcP+dgOyJXh3ZJqAimYs=;
+        b=ZdB7CPdjQuvbnfg+n8dvIptER0nsbA5HnmDg/LRMNNh4RPZgmAaGIazqs1u+B51m/r
+         dmuMdf+Uqub9odQ/rQ2KUe2ma5pN6hcJk20FQznFTmszrdkB1USMcJXoi3LCYDvvfSX8
+         K/tLfqtQIIbw7Ammywh8tr1Yqgc3qbRA//Z4j0875UDq9ilbf97usAA9PTvuKFgH6e8R
+         UMg3U7+WA13nbE1IAWRuOpPGtV8jwFqo9J4y0KpxLN01FK/sb3tz6JlGj34pBPFoBuJJ
+         Le/tMJJy/fcE7b6QA2WjZeT2GzRY5/XB8UBVbLq789xMQUsWV8brRLEXaJAlVrdZElnN
+         lAFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JVHCKEQY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q5si69874ybd.679.2018.01.08.08.25.26
+        by mx.google.com with ESMTPS id i8si796622ywl.50.2018.01.16.15.12.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 08 Jan 2018 08:25:26 -0800 (PST)
+        Tue, 16 Jan 2018 15:12:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42952 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JVHCKEQY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:44559 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eYaEn-0005ix-HD
-	for alex.bennee@linaro.org; Mon, 08 Jan 2018 11:25:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54356)
+	id 1ebaOo-00052i-1K
+	for alex.bennee@linaro.org; Tue, 16 Jan 2018 18:12:10 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55677)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1eYa2e-00032d-IQ
-	for qemu-arm@nongnu.org; Mon, 08 Jan 2018 11:12:53 -0500
+	(envelope-from <alistair23@gmail.com>) id 1ebaOa-00051A-Qf
+	for qemu-arm@nongnu.org; Tue, 16 Jan 2018 18:11:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1eYa2a-0003bh-F1
-	for qemu-arm@nongnu.org; Mon, 08 Jan 2018 11:12:52 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:57412)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1eYa2a-0003Zw-6D; Mon, 08 Jan 2018 11:12:48 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3E4B3DF03;
-	Mon,  8 Jan 2018 16:12:46 +0000 (UTC)
-Received: from localhost (ovpn-116-66.gru2.redhat.com [10.97.116.66])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 86B8360C80;
-	Mon,  8 Jan 2018 16:12:32 +0000 (UTC)
-Date: Mon, 8 Jan 2018 14:12:31 -0200
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20180108161231.GF6646@localhost.localdomain>
-References: <20180104144046.30793-1-f4bug@amsat.org>
-	<20180104192203.GD3407@localhost.localdomain>
-	<20180108135122.637e478a@redhat.com>
+	(envelope-from <alistair23@gmail.com>) id 1ebaOZ-0001LE-IJ
+	for qemu-arm@nongnu.org; Tue, 16 Jan 2018 18:11:56 -0500
+Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:44419)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1ebaOW-0001Ik-IB; Tue, 16 Jan 2018 18:11:52 -0500
+Received: by mail-lf0-x241.google.com with SMTP id w23so19478227lfd.11;
+	Tue, 16 Jan 2018 15:11:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc:content-transfer-encoding;
+	bh=3TL0q1ySV4kyA7fyniyKtb2EcP+dgOyJXh3ZJqAimYs=;
+	b=JVHCKEQYP1qRuliRBv+VycMOfmFYIrSrLOMWpeFYV8XJcGgPi82G1may93tpSfpdZG
+	wD9yFrdK6Bj7NeUH94ooDYvuff3/O8y1edMOCQp80irzT07jgdRTCQ6E3wTQZUqD65R9
+	yFPaUlfR1oayRQSyTK48TWyaUaGFq0EoifhLLvGNokin5ueKjLQsix8feJk2bdRMgYtZ
+	Yn8+EOQvamOnVUcbT3K3o5pxTWc4Q37/xSJPMbZPz1XeQL5iNo2gxKsrsjR3gCy3Ejl7
+	YKlDZcTUq30RG6RW2OPV/MF5rEN4XjGIdsEvPZToSOFJvNtlo+V5pJ0AQoij3roWU4y0
+	pJog==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc:content-transfer-encoding;
+	bh=3TL0q1ySV4kyA7fyniyKtb2EcP+dgOyJXh3ZJqAimYs=;
+	b=lHjyd0FcX9mn6CxRHjcNLXmpb3K8mqPW4cl8xUyTx2LSH5SQgvYAmR+aUP9vouXCyd
+	jkl+KkHn+Y3n3W+/Cb9WGPBp1tFeciRQV1g3JE1ehAF3cQkUKtGWXLqoTGRn6IVd4Vtz
+	OA7O+PPQptWRlDSMDoz7l+Fejw3aLZHAknD2od49JlObHeBYQ9qq1bKzAZofDgAhB+TW
+	j19GcSv5C114pVuuo58nbmi/YVotb2jPUmVqLaVAXYYwe/en3lRmEqAEr0c5nIGUmtzQ
+	0DhPPu4rDQznunUWeurD6dAPQpYlmwsIhcRSKPe5WxOjOlCbS5okeih+k3GlYLgc0D6j
+	71Ag==
+X-Gm-Message-State: AKwxytciKcWjcHiBRuBrOKS7oWVh9z9bN++yLFnYHAjVPo8WUjBk9kT5
+	8DcMclUrteBfKJE05958VbHvMWD4pbRejJ0Evo0=
+X-Received: by 10.46.77.193 with SMTP id c62mr11412150ljd.148.1516144311110;
+	Tue, 16 Jan 2018 15:11:51 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <20180108135122.637e478a@redhat.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.9.1 (2017-09-22)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Mon, 08 Jan 2018 16:12:46 +0000 (UTC)
+Received: by 10.46.64.196 with HTTP; Tue, 16 Jan 2018 15:11:20 -0800 (PST)
+In-Reply-To: <20180111205626.23291-12-f4bug@amsat.org>
+References: <20180111205626.23291-1-f4bug@amsat.org>
+	<20180111205626.23291-12-f4bug@amsat.org>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Tue, 16 Jan 2018 15:11:20 -0800
+X-Google-Sender-Auth: 1YjY6Q19Of-c5uMKk2zbZMjuYv4
+Message-ID: <CAKmqyKO83wzFUZdHSPf4bjwtERaOPhPkm8K75z8V3qjjeNKm5A@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [RFC PATCH 0/6] qom: introduce TypeInfo name aliases
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4010:c07::241
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v6 11/21] hw/arm/xilinx_zynq:
+ implement SDHCI Spec v2
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,149 +108,126 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-	Alexander Graf <agraf@suse.de>, Fam Zheng <famz@redhat.com>,
-	qemu-devel@nongnu.org, Juan Quintela <quintela@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
-	qemu-arm@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
-	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Prasad J Pandit <pjp@fedoraproject.org>,
+	=?UTF-8?Q?Gr=C3=A9gory_Estrade?= <gregory.estrade@gmail.com>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
 	Alistair Francis <alistair.francis@xilinx.com>,
-	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Sascha Silbe <silbe@linux.vnet.ibm.com>
+	Sai Pavan Boddu <saipava@xilinx.com>,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Clement Deschamps <clement.deschamps@antfield.fr>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	Jean-Christophe Dubois <jcd@tribudubois.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MvYLKr9oJ052
+X-TUID: Re1lhfP1dSI/
 
-On Mon, Jan 08, 2018 at 01:51:22PM +0100, Igor Mammedov wrote:
-> On Thu, 4 Jan 2018 17:22:03 -0200
-> Eduardo Habkost <ehabkost@redhat.com> wrote:
->=20
-> > On Thu, Jan 04, 2018 at 11:40:40AM -0300, Philippe Mathieu-Daud=E9 wr=
-ote:
-> > > Hi,
-> > >=20
-> > > This RFC series is intended to simplify Flattened Device Tree suppo=
-rt,
-> > > in particular the 'compatible' FDT entry, when Linux names mismatch=
-es
-> > > QEMU ones, but this is the same device modelled.
-> > >=20
-> > > Eventually this might help to remove the QDevAlias qdev_alias_table=
-[]
-> > > in qdev-monitor.c.
-> > >  =20
-> >=20
-> > Didn't look closely at the patches yet, but this sounds like a
-> > nice generic way to replace other alias systems.  We have at
-> > least:
-> Though it seems easy and trivial, I'm a bit concerned about using
-> QOM types for the task though.
-> Also see commit 6acbe4c6f which labels aliases as a bad idea
-> and says that they are there only for compatibility and shouldn't
-> be used.
+On Thu, Jan 11, 2018 at 12:56 PM, Philippe Mathieu-Daud=C3=A9
+<f4bug@amsat.org> wrote:
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-It's true that they are there only for compatibility.  But I
-don't think commit 6acbe4c6f label aliases in general as a bad
-idea.  It just removes a very limited mechanism and make it
-specific to the only place where it was needed.  Now we have at
-least 5 different places where we do the same thing, so now it
-might be worth it.
+Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
 
-But:
+Alistair
 
-> So far I agree with that statement, because it introduces
-> ambiguity in code used internally and more worrying is that
-> this ambiguity will increase user visible ABI (think of '-device_add FO=
-O_ALIAS')
-> that we would need to maintain afterwards.
-
-This is a reasonable worry.  If aliases exist only for
-compatibility, they should be restricted to the places where
-compatibility is really needed.
-
-For example: aliases that affect -cpu shouldn't necessarily
-affect -device.
-
-
-> It would be nice to have unified alias API, but I think it should
-> be separate one and limited to the same scope (i.e. compat stuff),
-> and even that won't be easy as different alias impl. we have now
-> have a different needs.
-
-Starting with a separate API would be a good way to understand
-what are our real needs, before deciding if we really want
-aliases that affect all object_new() calls.
-
->=20
-> wrt this series targeted usage, I'd prefer that object_new/initialize
-> would use real type names when creating devices as it does currently
->=20
-> FDT linux guest specific names wouldn't seep into device model
-> itself. Firmware (FDT or ACPI) should be separate from device
-> implementation.
-
-I agree.  The QOM names and FDT names have different expectations
-and assumptions (the commas added to some type names in this
-series are one example).  Having the QOM type and FDT name match
-on most cases is nice, but this shouldn't be a requirement.
-
-I don't think we should rename user-visible QOM types and change
-the command-line interface (and require additional compatibility
-cruft) just to make it more convenient for internal FDT code.
-
-
->=20
-> If really there is need to dynamically scan present devices
-> and build FDT from result, then probably we should introduce
-> interface that devices could implement if necessary.
-> (I was thinking about such possibility for ACPI). But so far
-> it looked to me as too much overhead for what we do now.
->=20
->=20
-> > * qdev-monitor.c: qdev_alias_table[] (as mentioned above)
-> > * chardev/char.c: chardev_alias_table[]
-> > * target/alpha/cpu.c: alpha_cpu_aliases[]
-> > * target/ppc/cpu-models.c: ppc_cpu_aliases[]
-> > * include/hw/boards.h: MachineClass::alias
-> >=20
-> > Probably there are others I couldn't find.
-> >=20
-> >=20
-> > > So far this is only a 'proof of concept'.
-> > > To see how the qtests perform, I only modified 3 devices, 2 used by=
- the
-> > > Xilinx Zynq machines (Cadence), and the e1000 (used by the PXE test=
-).
-> > >=20
-> > > Regards,
-> > >=20
-> > > Phil.
-> > >=20
-> > > Philippe Mathieu-Daud=E9 (6):
-> > >   qom: introduce TypeInfo name aliases
-> > >   hw/net/e1000: real device name is 'e1000-82540em', 'e1000' is an =
-alias
-> > >   hw/char/cadence_uart: add FDT aliases
-> > >   arm/xlnx-zynq: use FDT names for the Cadence UART
-> > >   hw/net/cadence_gem: add FDT names as alias
-> > >   hw/arm/xlnx-zynq: use FDT names for the Cadence GEM
-> > >=20
-> > >  include/qom/object.h   |  3 +++
-> > >  hw/arm/xilinx_zynq.c   |  2 ++
-> > >  hw/arm/xlnx-zynqmp.c   |  4 ++--
-> > >  hw/char/cadence_uart.c |  7 +++++++
-> > >  hw/net/cadence_gem.c   |  6 ++++++
-> > >  hw/net/e1000.c         |  5 ++++-
-> > >  qom/object.c           | 18 ++++++++++++++++--
-> > >  7 files changed, 40 insertions(+), 5 deletions(-)
-> > >=20
-> > > --=20
-> > > 2.15.1
-> > >  =20
-> >=20
->=20
-
---=20
-Eduardo
+> ---
+>  hw/arm/xilinx_zynq.c | 64 ++++++++++++++++++++++++++++++++--------------=
+------
+>  1 file changed, 40 insertions(+), 24 deletions(-)
+>
+> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+> index 1836a4ed45..9a106db7b7 100644
+> --- a/hw/arm/xilinx_zynq.c
+> +++ b/hw/arm/xilinx_zynq.c
+> @@ -165,10 +165,8 @@ static void zynq_init(MachineState *machine)
+>      MemoryRegion *address_space_mem =3D get_system_memory();
+>      MemoryRegion *ext_ram =3D g_new(MemoryRegion, 1);
+>      MemoryRegion *ocm_ram =3D g_new(MemoryRegion, 1);
+> -    DeviceState *dev, *carddev;
+> +    DeviceState *dev;
+>      SysBusDevice *busdev;
+> -    DriveInfo *di;
+> -    BlockBackend *blk;
+>      qemu_irq pic[64];
+>      int n;
+>
+> @@ -247,27 +245,45 @@ static void zynq_init(MachineState *machine)
+>      gem_init(&nd_table[0], 0xE000B000, pic[54-IRQ_OFFSET]);
+>      gem_init(&nd_table[1], 0xE000C000, pic[77-IRQ_OFFSET]);
+>
+> -    dev =3D qdev_create(NULL, TYPE_SYSBUS_SDHCI);
+> -    qdev_init_nofail(dev);
+> -    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0xE0100000);
+> -    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[56-IRQ_OFFSET]);
+> -
+> -    di =3D drive_get_next(IF_SD);
+> -    blk =3D di ? blk_by_legacy_dinfo(di) : NULL;
+> -    carddev =3D qdev_create(qdev_get_child_bus(dev, "sd-bus"), TYPE_SD_C=
+ARD);
+> -    qdev_prop_set_drive(carddev, "drive", blk, &error_fatal);
+> -    object_property_set_bool(OBJECT(carddev), true, "realized", &error_f=
+atal);
+> -
+> -    dev =3D qdev_create(NULL, TYPE_SYSBUS_SDHCI);
+> -    qdev_init_nofail(dev);
+> -    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0xE0101000);
+> -    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[79-IRQ_OFFSET]);
+> -
+> -    di =3D drive_get_next(IF_SD);
+> -    blk =3D di ? blk_by_legacy_dinfo(di) : NULL;
+> -    carddev =3D qdev_create(qdev_get_child_bus(dev, "sd-bus"), TYPE_SD_C=
+ARD);
+> -    qdev_prop_set_drive(carddev, "drive", blk, &error_fatal);
+> -    object_property_set_bool(OBJECT(carddev), true, "realized", &error_f=
+atal);
+> +    for (n =3D 0; n < 2; n++) {
+> +        int hci_irq =3D n ? 79 : 56;
+> +        hwaddr hci_addr =3D n ? 0xE0101000 : 0xE0100000;
+> +        DriveInfo *di;
+> +        BlockBackend *blk;
+> +        DeviceState *carddev;
+> +
+> +        /* Compatible with:
+> +         * - SD Host Controller Specification Version 2.0 Part A2
+> +         * - SDIO Specification Version 2.0
+> +         * - MMC Specification Version 3.31
+> +         *
+> +         * - SDMA (single operation DMA)
+> +         * - ADMA1 (4 KB boundary limited DMA)
+> +         * - ADMA2
+> +         *
+> +         * - up to seven functions in SD1, SD4, but does not support SPI=
+ mode
+> +         * - SD high-speed (SDHS) card
+> +         * - SD High Capacity (SDHC) card
+> +         *
+> +         * - Low-speed, 1 KHz to 400 KHz
+> +         * - Full-speed, 1 MHz to 50 MHz (25 MB/sec)
+> +         */
+> +        dev =3D qdev_create(NULL, TYPE_SYSBUS_SDHCI);
+> +        qdev_prop_set_uint8(dev, "sd-spec-version", 2);
+> +        qdev_prop_set_bit(dev, "adma1", true);
+> +        qdev_prop_set_bit(dev, "high-speed", true);
+> +        qdev_prop_set_uint16(dev, "max-block-length", 1024);
+> +        qdev_init_nofail(dev);
+> +        sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, hci_addr);
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[hci_irq - IRQ_OFF=
+SET]);
+> +
+> +        di =3D drive_get_next(IF_SD);
+> +        blk =3D di ? blk_by_legacy_dinfo(di) : NULL;
+> +        carddev =3D qdev_create(qdev_get_child_bus(dev, "sd-bus"), TYPE_=
+SD_CARD);
+> +        qdev_prop_set_drive(carddev, "drive", blk, &error_fatal);
+> +        object_property_set_bool(OBJECT(carddev), true, "realized",
+> +                                 &error_fatal);
+> +    }
+>
+>      dev =3D qdev_create(NULL, TYPE_ZYNQ_XADC);
+>      qdev_init_nofail(dev);
+> --
+> 2.15.1
+>
+>

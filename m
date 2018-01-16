@@ -1,83 +1,99 @@
-Received: by 10.28.173.206 with SMTP id w197csp4105406wme;
-        Tue, 16 Jan 2018 07:52:32 -0800 (PST)
-X-Google-Smtp-Source: ACJfBouduFVru72WBKrlItLO2HOPWtFIiYnABZGYnw8+hVDtnmp1h3AwkbEQCvZbYrqwKNSWObN8
-X-Received: by 10.37.189.204 with SMTP id g12mr15164002ybk.430.1516117952614;
-        Tue, 16 Jan 2018 07:52:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516117952; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp4097402wme;
+        Tue, 16 Jan 2018 07:44:58 -0800 (PST)
+X-Google-Smtp-Source: ACJfBouL5zjHv8coW8BJ+2KSPQOxUi6nnbBinKaaiyhLfct/uV9cvPAOqKzHGizdovNMC/diVf0A
+X-Received: by 10.129.85.83 with SMTP id j80mr26366553ywb.479.1516117498469;
+        Tue, 16 Jan 2018 07:44:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516117498; cv=none;
         d=google.com; s=arc-20160816;
-        b=U+ZYDc09zzNjIh5X4w5PhF6ghNHTo7pK1pU8vPAj0HnOod+1RSa83UyqCsjMhPCoLo
-         /Py3BbvtbCNdB7W9AdZxiMioO+u3Y4FM5/YF6BzsaSQioZGL9YZdAqMeiwR0KRmRD2Jz
-         JcC+DrQquf1hIlvNCWM7sPswYmJxDULbMMUVWflDD3QnSgZpNhyV7MDPk2v3noClpmH/
-         acBK6QkOABZw3l0XLWpsgWg8UjuxdPe2JS80uJfxzHqMINUbgMPl4dZUxP3if2zc1xkw
-         Qtg0DwEm6fk3UO70jdNcvNReJ0XJBlrumEuD+rEe8+j5Pfws+2n8ZMWpfaF+SSCEZdlH
-         /VVg==
+        b=0UuODfe0T13mJlquSNS4j8fPvHycKwDn6a8jW/VwZArRbG4ZgpqmNQRcc5Uc6G7tXE
+         W2v8lUPq4H2z3D+tIQ5zX0mL2w4zTOiv4S7VqXyoYo81Ca9mQOaRgEcWHqIE7WWXGkUf
+         2qWenThs/Zz+jHDRrVmzvYPF99xegySivPctA0w3QbgvaOYxtOMU1g2PhL8+JJ2NeFJH
+         cupQeZ2Bb8jU0MP03nTbQvixiAFYr9u0ipzgOiwucV4dnalCZFqnShk6CQLKqxZm0Gsp
+         Ws1AwEVO5nsBDFUFnAC1H7l/IluPh4odZRzAM20MgYqETdZBvsj+bTamI4lJzQxtqVVK
+         r5oQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=KAV+U60h+Hp6Gx8tYOWdcvJzTLdIp76Lb25Rh2o0qEk=;
-        b=xyaIC8uFe41B//i2UXj0fDGhRETxswLdEnPowjomHB3/0v/kSldoaerY3id9xJSIoe
-         Ix5KMv1Pk3fiW5GTdc1AU4BjfqPSuWHs0Gr6Ip/2tQyiyLyI/g5zQygi8P5x48knHVKa
-         QvgV7QlXb506zNAISCDNqbfzvQ+SXLhE4NEC3OIyYVnnW5WAuXlsAIZNPEsP3c0N00YL
-         AN5cayA8f8TK9GzE2HYgqoRdeIPr/lcfE8RKWSDyb1nIMdggMaZ3bbKKRN5T6Y1LJWQY
-         rNDVJRt1xb7V61YIvyJ04FjEaPsClnafblfOwhii0Jq09PqhTLpB+76i98efI+JfwuK1
-         Pyew==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=veoCAWnMg/ulBpf5BkmcRv10dAGKU8uONAMWYh1Lhso=;
+        b=vB4oCTqZlgUQTnHat7Yru7tc9rTLErDHUCJ6i+xkuOAqaIEy6rl/G2xLhW9VVKxrOK
+         6kBfPvxdS5Ycj6y6e0L/MxAR5K8bmP2PdbU6lbvB49XBuCmelv/VicfDti+tRvrbFvaA
+         7yePRa0L1qHYrSrJo7qI80BymkUuItsqN0rB+rCpVbfsjW3yCPnVjpOwx1ipSpkBkrn8
+         HUub/ItnYnzXikRm64zccylzR9hn5kedsrs4C0VP+jJl4NLbUrDry4LRM/KUeM45UXGJ
+         60lzwlNZToEa4gzyeA6Cbwfrn50ZfvEQAyEMtqbmfpsXcw3c5gAMiEX6cQlHNd/eM1Nr
+         +XcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=UNleGg0M;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z14si563777ybg.260.2018.01.16.07.52.32
+        by mx.google.com with ESMTPS id s13si560711ybm.704.2018.01.16.07.44.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Jan 2018 07:52:32 -0800 (PST)
+        Tue, 16 Jan 2018 07:44:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=UNleGg0M;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43221 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42651 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ebTXL-00032P-VT
-	for alex.bennee@linaro.org; Tue, 16 Jan 2018 10:52:32 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40832)
+	id 1ebTQ1-00057c-Qm
+	for alex.bennee@linaro.org; Tue, 16 Jan 2018 10:44:57 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50915)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1ebSw5-0008PA-3Y
-	for qemu-arm@nongnu.org; Tue, 16 Jan 2018 10:14:06 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1ebTPj-00051R-NA
+	for qemu-arm@nongnu.org; Tue, 16 Jan 2018 10:44:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1ebSvz-0003Xy-I8
-	for qemu-arm@nongnu.org; Tue, 16 Jan 2018 10:14:01 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:29717)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
-	id 1ebSvz-0003XA-C0; Tue, 16 Jan 2018 10:13:55 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 76B71F0CEE;
-	Tue, 16 Jan 2018 15:13:54 +0000 (UTC)
-Received: from localhost (ovpn-112-58.ams2.redhat.com [10.36.112.58])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 821745D70C;
-	Tue, 16 Jan 2018 15:13:20 +0000 (UTC)
-From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Tue, 16 Jan 2018 16:11:50 +0100
-Message-Id: <20180116151152.4040-2-marcandre.lureau@redhat.com>
-In-Reply-To: <20180116151152.4040-1-marcandre.lureau@redhat.com>
-References: <20180116151152.4040-1-marcandre.lureau@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1ebTPi-00077a-Sp
+	for qemu-arm@nongnu.org; Tue, 16 Jan 2018 10:44:39 -0500
+Received: from mail-ot0-x242.google.com ([2607:f8b0:4003:c0f::242]:46299)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1ebTPi-000776-Og
+	for qemu-arm@nongnu.org; Tue, 16 Jan 2018 10:44:38 -0500
+Received: by mail-ot0-x242.google.com with SMTP id t35so7314852otd.13
+	for <qemu-arm@nongnu.org>; Tue, 16 Jan 2018 07:44:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=veoCAWnMg/ulBpf5BkmcRv10dAGKU8uONAMWYh1Lhso=;
+	b=UNleGg0MnMEU7Ne3zmHWGt7P24HcPX+/jO6vMS2KIyWC739K5zSXb28Ta2pDsjRhp4
+	byf6SZ0ciN4ao7xunkoOg+xUwYRZNbm++O71n6i2YWDpiUVnpTR34CFxCR8JAW+yBAtj
+	mcu8G7IfIea7qmu2kEeIFa8q3m73Es8/MN+os=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=veoCAWnMg/ulBpf5BkmcRv10dAGKU8uONAMWYh1Lhso=;
+	b=onlQbDOhM44Fm2Qm2bG1KLnYYa+DPp8T4OnBfrPZYul7QUmjQfA1UG5eH96YOxvBP8
+	DcagXDbOWS1BRAju9c1p4OD6uM9zPK95zhVUwn9/T4onSDI2fKBE7Be7QyXaIjNOhRqC
+	Uc8Ru3YvYd3npnNhMuEbSCM8ptCPzXXr6quBTo09b6kRqYKDziyyNf4zwoRi5CijG4kv
+	6nYrSmjl+fjntkganB+d3ILkhxycamKA10PDb2oscg6Nk/FKOtcj7V9i5sIp188Xqp2v
+	6eYHa1MCKL/nQIY1C37p54W3OffB0KFwd9VzgG9IPmMDqHnrM0e7n4ILcmv1hNQm8YFB
+	MDHw==
+X-Gm-Message-State: AKwxytdoPoyuYjFG3nKPapX6ot9sdw3aapc0muh2tvE5kBFV/a6oV2rX
+	D+tav6R4hMZu/v3ULgY2tuTM7TLpjqX1ozzn8ef9pg==
+X-Received: by 10.157.29.229 with SMTP id w34mr1131498otw.24.1516117477969;
+	Tue, 16 Jan 2018 07:44:37 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Tue, 16 Jan 2018 15:13:54 +0000 (UTC)
+Received: by 10.157.15.71 with HTTP; Tue, 16 Jan 2018 07:44:17 -0800 (PST)
+In-Reply-To: <20180116151152.4040-2-marcandre.lureau@redhat.com>
+References: <20180116151152.4040-1-marcandre.lureau@redhat.com>
+	<20180116151152.4040-2-marcandre.lureau@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 16 Jan 2018 15:44:17 +0000
+Message-ID: <CAFEAcA-3xF6z-D7XrKzAhNA_p0Y0U-UuDL7R1dK9+HaF4DPH1Q@mail.gmail.com>
+To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH 1/3] exynos4210: workaround UBSAN compilation
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::242
+Subject: Re: [Qemu-arm] [PATCH 1/3] exynos4210: workaround UBSAN compilation
  error
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -90,45 +106,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	"open list:Exynos" <qemu-arm@nongnu.org>, stefanha@redhat.com,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	pbonzini@redhat.com
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	"open list:Exynos" <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Stefan Hajnoczi <stefanha@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3YiRbW2I+6IC
+X-TUID: X9LjmqBgSqoo
 
-gcc 5.4.0-6ubuntu1~16.04.5 build with UBSAN enabled error:
-
-  CC      hw/display/exynos4210_fimd.o
-/home/petmay01/linaro/qemu-for-merges/hw/display/exynos4210_fimd.c: In
-function =E2=80=98fimd_get_buffer_id=E2=80=99:
-/home/petmay01/linaro/qemu-for-merges/hw/display/exynos4210_fimd.c:1105:5=
+On 16 January 2018 at 15:11, Marc-Andr=C3=A9 Lureau
+<marcandre.lureau@redhat.com> wrote:
+> gcc 5.4.0-6ubuntu1~16.04.5 build with UBSAN enabled error:
+>
+>   CC      hw/display/exynos4210_fimd.o
+> /home/petmay01/linaro/qemu-for-merges/hw/display/exynos4210_fimd.c: In
+> function =E2=80=98fimd_get_buffer_id=E2=80=99:
+> /home/petmay01/linaro/qemu-for-merges/hw/display/exynos4210_fimd.c:1105:5=
 :
-error: case label does not reduce to an integer constant
-     case FIMD_WINCON_BUF2_STAT:
+> error: case label does not reduce to an integer constant
+>      case FIMD_WINCON_BUF2_STAT:
+>
+> Because FIMD_WINCON_BUF2_STAT case contains an integer
+> overflow, use U suffix to get the unsigned type.
 
-Because FIMD_WINCON_BUF2_STAT case contains an integer
-overflow, use U suffix to get the unsigned type.
+We should note that this is a gcc bug here (we compile with
+-fwrapv so integer overflows like this are well-defined)
+which we are working around.
 
-Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
----
- hw/display/exynos4210_fimd.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> ---
+>  hw/display/exynos4210_fimd.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
+> index fd0b2bec65..86e37e93e9 100644
+> --- a/hw/display/exynos4210_fimd.c
+> +++ b/hw/display/exynos4210_fimd.c
+> @@ -98,7 +98,7 @@
+>  #define FIMD_WINCON_BUFSTATUS       ((1 << 21) | (1 << 31))
+>  #define FIMD_WINCON_BUF0_STAT       ((0 << 21) | (0 << 31))
+>  #define FIMD_WINCON_BUF1_STAT       ((1 << 21) | (0 << 31))
+> -#define FIMD_WINCON_BUF2_STAT       ((0 << 21) | (1 << 31))
+> +#define FIMD_WINCON_BUF2_STAT       ((0 << 21) | (1U << 31))
+>  #define FIMD_WINCON_BUFSELECT       ((1 << 20) | (1 << 30))
+>  #define FIMD_WINCON_BUF0_SEL        ((0 << 20) | (0 << 30))
+>  #define FIMD_WINCON_BUF1_SEL        ((1 << 20) | (0 << 30))
+> --
+> 2.16.0.rc1.1.gef27df75a1
+>
 
-diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
-index fd0b2bec65..86e37e93e9 100644
---- a/hw/display/exynos4210_fimd.c
-+++ b/hw/display/exynos4210_fimd.c
-@@ -98,7 +98,7 @@
- #define FIMD_WINCON_BUFSTATUS       ((1 << 21) | (1 << 31))
- #define FIMD_WINCON_BUF0_STAT       ((0 << 21) | (0 << 31))
- #define FIMD_WINCON_BUF1_STAT       ((1 << 21) | (0 << 31))
--#define FIMD_WINCON_BUF2_STAT       ((0 << 21) | (1 << 31))
-+#define FIMD_WINCON_BUF2_STAT       ((0 << 21) | (1U << 31))
- #define FIMD_WINCON_BUFSELECT       ((1 << 20) | (1 << 30))
- #define FIMD_WINCON_BUF0_SEL        ((0 << 20) | (0 << 30))
- #define FIMD_WINCON_BUF1_SEL        ((1 << 20) | (0 << 30))
---=20
-2.16.0.rc1.1.gef27df75a1
-
+thanks
+-- PMM

@@ -1,132 +1,140 @@
-Received: by 10.28.173.206 with SMTP id w197csp3509406wme;
-        Mon, 15 Jan 2018 20:39:40 -0800 (PST)
-X-Google-Smtp-Source: ACJfBospLLxAMLhWDP4igiSZwigd1kgqaDEtfjjRX1C0Dge1gHV49OFbpU622jIsV2TcKZbFU/Xj
-X-Received: by 10.129.43.86 with SMTP id r83mr8415213ywr.309.1516077580793;
-        Mon, 15 Jan 2018 20:39:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516077580; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp3504465wme;
+        Mon, 15 Jan 2018 20:33:06 -0800 (PST)
+X-Google-Smtp-Source: ACJfBotIIstXrHOAAu2VlWZ/dfd6fmx5K9Um5Smz5teg7nbGMDWzVHsTMjeAeAbqmApgYHwIweow
+X-Received: by 10.37.39.71 with SMTP id n68mr35558114ybn.128.1516077186036;
+        Mon, 15 Jan 2018 20:33:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516077186; cv=none;
         d=google.com; s=arc-20160816;
-        b=tBEMAnSiZWCg9wRjNjLzJFgL0a+TeevKLqD66tagrO2oCkmyZ1BNlMX6swFIqz+i6k
-         McBAUtUK4aaCnZjdQtsQ1Yvn6Dd0i1T6hw+G0gzOPV3YKS+hAIqPMZHh7mGT5Cz8tA+9
-         vRO3JQBHnSCLXh1F7BAQ+o0JtzWgz01KlDwu7RC2weltp+VWVl2TZpj+IuRzlFCqFRAk
-         tTSdI1hGynVQ+P6Rkl7jWkswCI5WxF1u20vG3fMxVwww8pZAvD7Iph16AZFJYkEMJbQb
-         4bWWlnOkvPbmFcPkQkYB2/RZUA5K4vghTB1mFqOR64hlPr7J83y8nyJ8qPNdF6GHOFv1
-         oEhg==
+        b=LMYUFD/1999SRvuOjoKKm56R5jmPE9ARaRT/PoLbi5LofckarpzYKOcZTQuoRVtaHt
+         Q7ZT+P3X7uMTnRF66CoFslkFk8eEff87PT1UnI3nlSqgGpze382C/ebVZRU7HhkcSUi9
+         7DHN2J+cHEJeo+pOr872XNLcjWEGeLVOHs7MJaWU+MHI/vOuiYN35ZMV6WLIk0NFRcgc
+         fIKa4tfFfpWaZ9PIOuI7985FQY4PTjvSb0DuWlZcRgD0znO2m7LQyOavO0pFl0n7kuyK
+         hQq0SZ4aZ5vo8DmAUIrFGOLKRhki4p3VSi0v1IJRziOQkmskm1wDQB5/Ca7gmShQgV07
+         lJsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:to
          :dkim-signature:arc-authentication-results;
-        bh=OBn2WbkZ/4y0yhWCpUheBDVmKMb6K6e2Da3uFk9y0Q8=;
-        b=IR3n9D6u4BTUutAo9/MrQ6NeybgLwjVUyJ41OztOZm213ZK0YlPFOwqzAkHIB9pB2W
-         mZBqaJwk1DkXtRzKQIxjcF7xwEK7stL3ZNgkkOI3Km85C9loNC7jf3d5cxaU8UZmxKn1
-         By3koafgl0cItueSeZf3If06nLeWhizsx0QCojb5JoecWWuG2dinyGcQIC5gLLgSmkrb
-         zNjszLy8b0jzlDHKZ5l46BJE+pF9snBZukIFDtmlRFm2aFU/iIZoNOIq77MFeTGrdVqC
-         fcX1QeI98UK7FbgcOadX/kpXUvgNZFEHvCjasbzucGO767Cl74dDyddhUdRvxxeoXCo8
-         BdmQ==
+        bh=BuJi7O0GngkjBFv+VUdzJ2LHYm8qVyWdkhLmGqLjkn0=;
+        b=j5afF2gmjY7b4yV+RQCggI/K/nxqLdA1EBnz3W99jq3ZecXHSD5V4gI7uF5VWFW+44
+         AIh5juRlAW5GdhLcHqiwmOujIgk6AXNF4LwO6uEsbRGChtNAOmGq9MTUuwboyhWCAK1K
+         3oK/oBQFs89osu+L1GjPxSidYWl9e4Ye+X2Ndl7J1acbMdu6I5rC0XYSOAkVi3njfyXn
+         Zj4UKqMAwjR61wRVDaygq1CoK1b4nDIIakskiYXeZw+2vlzu8vPVlwAgVlpssLLtpakY
+         n3oMNtz3Qin0E3NevWVvPIzhe9uRdEpGt2tyEBE1oGSe3CWKP4ZOTrVmrSqvFXhyuZKQ
+         EqyA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SSaFJjep;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tVH7aoD4;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e11si305746ybk.263.2018.01.15.20.39.40
+        by mx.google.com with ESMTPS id v130si306708yba.602.2018.01.15.20.33.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 15 Jan 2018 20:39:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 15 Jan 2018 20:33:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SSaFJjep;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:34745 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tVH7aoD4;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:34342 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ebJ2C-0003sN-73
-	for alex.bennee@linaro.org; Mon, 15 Jan 2018 23:39:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45829)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ebIvp-000245-H7
+	for alex.bennee@linaro.org; Mon, 15 Jan 2018 23:33:05 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44500)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ebJ22-0003qD-Qr
-	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 23:39:31 -0500
+	id 1ebIvY-00023h-9T
+	for qemu-devel@nongnu.org; Mon, 15 Jan 2018 23:32:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ebJ21-0001OR-PK
-	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 23:39:30 -0500
-Received: from mail-qt0-x22c.google.com ([2607:f8b0:400d:c0d::22c]:43698)
+	id 1ebIvV-00075a-46
+	for qemu-devel@nongnu.org; Mon, 15 Jan 2018 23:32:48 -0500
+Received: from mail-qt0-x234.google.com ([2607:f8b0:400d:c0d::234]:42246)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ebJ1x-0001Mq-8W; Mon, 15 Jan 2018 23:39:25 -0500
-Received: by mail-qt0-x22c.google.com with SMTP id s3so16781436qtb.10;
-	Mon, 15 Jan 2018 20:39:25 -0800 (PST)
+	id 1ebIvU-00075J-Uj; Mon, 15 Jan 2018 23:32:45 -0500
+Received: by mail-qt0-x234.google.com with SMTP id c2so16765511qtn.9;
+	Mon, 15 Jan 2018 20:32:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=OBn2WbkZ/4y0yhWCpUheBDVmKMb6K6e2Da3uFk9y0Q8=;
-	b=SSaFJjepksDt/7rvkrvgT9F1Il6eTWkZO6BGyQT2tyBZM++pQbTiZBH7Uy/8TGWW9F
-	Zpaa/xoDkiwCSf98s0pu+yE1R4uXvvb8D3elElKTjt28ixNmvieC2b03i8BOtJ5JMaQm
-	JVXzKcoe5i9WSHaLuCBvxMFNVmsszSceaZjLQHP0mHnjS7Yk82njKC9EJIIPcANrt5Nj
-	zgwbNk6GpVJn5UxAoy9h2spdhgNUoJD6q0Zz0qGONc78C17oi7vNAECLDS2uVdnNeGiz
-	ITwDgU5O08IkgnBy8UyIgUteZDRwLzL5h0wmeT1qLmZe3IstA69Doayb9aYzVubauuvU
-	WwNg==
+	bh=BuJi7O0GngkjBFv+VUdzJ2LHYm8qVyWdkhLmGqLjkn0=;
+	b=tVH7aoD4CksMkIqRr4cv29xl0VGwrRjFI4fo6/Pl3DOJVMmDntpF41TwF32m2pZlC8
+	KyoeBKNtFPHX/oV8fQllkdDAoSd71XKY9CIbqQOALndoW+3pMiOAFcRY6tpmo2RRl0lb
+	jerxjiFbGF3p8d7l6rlq9hP4+K9GFsjVelrEEZE/o/pIBCbdrdoUGuSq+UIsWJSHZDn1
+	77UM2NduajuNQu2naNpAl+y7QAqFNfrIHvDpwV+99VoVC79WnTtT35s6wAlGVloPkLqe
+	s/AfEHEuo2m6Vavqh4r9QkMu4z1JXFM3NjYrLLpp/g7udwkLU8sYUQ9C4ItK1iok6Ycp
+	CV8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=OBn2WbkZ/4y0yhWCpUheBDVmKMb6K6e2Da3uFk9y0Q8=;
-	b=SfwdgPnGwdDQEAyub1nrkONJEkchATiY65DCjJ85zNduf6lbCd9j/3SzcmurWyug/V
-	mq/vPjvZB4xzIpbqRZiR0XDQoU74jN5W/RFeoqxZkw+osgZsIKHWWM/T69g42PbjV9Mk
-	vo5PnKZmQqhFf++93scBuT2eGvjoLfeAzBkHYW7DMg2hQqj8Xn1s2ta6ngiWEB9fWjlu
-	Mk5TCIVOz1ClZyzuXgEQhE+p3z53ccrnv6wkPkIasiPNAc/j9CeoDixstEqZi/AmUpOh
-	6tGNqR6T137DktZOjsPkCmI12WIKqqn2ey1p0N38ZN/w774eIR5EhzWQj5qbUi3YRY5E
-	4ODA==
-X-Gm-Message-State: AKwxytdSfa3EYhY3wGPe2ossant92vBUZIj3KC9aNW1AgKSUpupmZkAY
-	meVnY3TLE6hKKBCBjtzNQzk=
-X-Received: by 10.200.6.200 with SMTP id j8mr21074216qth.137.1516077564645;
-	Mon, 15 Jan 2018 20:39:24 -0800 (PST)
+	bh=BuJi7O0GngkjBFv+VUdzJ2LHYm8qVyWdkhLmGqLjkn0=;
+	b=mftA0pLI9uuIXnlfGxA8qcRDMdclKvkJ2XrdpN98ONBThEjOtmVTdOODwlaKYkEzGz
+	A5vgBnkyGE0rWw7fzGFuo9w/tCaOz3yHJ+x6rQcg3ruO5v3zzG5/KSvlkc3/ZTv8fGDE
+	jltleSk9cEy1lpRlzcV2xrolzr/h7oZyBrDDBmk3rDXxtV8CZ+2bLonJbFXpCbxNYQ8Y
+	kpzUWqmn40BJWIHHtd5k9Dnf1tecEWlW4OrFvBdTxfKCBA3hfAe0znw0vvNskZPaP+hi
+	yvqf+q3Qrkd1WC4jtLiv/lSUqMuQkuBzzE/MAslfJsPdG01iBwyu+1qL4k+aBrIDW4X2
+	JPkA==
+X-Gm-Message-State: AKwxyteWSMIFBRDRLP3L8qRdPDbUXNY2L5yczLR3vS3vTQ+ErIWSH1jy
+	xhS+AK/vqjwPyN7RAbVI+Ho=
+X-Received: by 10.200.81.154 with SMTP id c26mr25064956qtn.129.1516077164126; 
+	Mon, 15 Jan 2018 20:32:44 -0800 (PST)
 Received: from [192.168.1.11] ([138.117.48.219])
-	by smtp.gmail.com with ESMTPSA id x7sm905721qtx.51.2018.01.15.20.39.22
+	by smtp.gmail.com with ESMTPSA id k2sm780487qkf.35.2018.01.15.20.32.41
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 15 Jan 2018 20:39:24 -0800 (PST)
+	Mon, 15 Jan 2018 20:32:43 -0800 (PST)
 To: Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm@nongnu.org
 References: <20180116013709.13830-1-andrew.smirnov@gmail.com>
-	<20180116013709.13830-8-andrew.smirnov@gmail.com>
+	<20180116013709.13830-12-andrew.smirnov@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <188bcda9-1a5c-e837-f80b-1d484d42e195@amsat.org>
-Date: Tue, 16 Jan 2018 01:39:21 -0300
+Message-ID: <b085a18b-84f4-6695-f664-c146ece47eee@amsat.org>
+Date: Tue, 16 Jan 2018 01:32:40 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.5.2
 MIME-Version: 1.0
-In-Reply-To: <20180116013709.13830-8-andrew.smirnov@gmail.com>
+In-Reply-To: <20180116013709.13830-12-andrew.smirnov@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::22c
-Subject: Re: [Qemu-arm] [PATCH v4 07/14] i.MX: Add i.MX7 GPT variant
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400d:c0d::234
+Subject: Re: [Qemu-devel] [PATCH v4 11/14] ARM: Add basic code to emulate
+ A7MPCore DAP block
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
 	qemu-devel@nongnu.org, yurovsky@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oUlTCqdFBqO1
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PetGwophuiih
+
+Hi Andrey,
 
 On 01/15/2018 10:37 PM, Andrey Smirnov wrote:
-> Add minimal code needed to allow upstream Linux guest to boot.
-> 
+> Add minimal code to emulate A7MPCore DAP block needed to boot Linux
+> guest.
+
+I was not aware the DAP is accessed by upstream Linux...
+
+You sure this isn't rather part of some bootloader built-in self-test?
+
 > Cc: Peter Maydell <peter.maydell@linaro.org>
 > Cc: Jason Wang <jasowang@redhat.com>
 > Cc: Philippe Mathieu-Daudé <f4bug@amsat.org>
@@ -135,81 +143,194 @@ On 01/15/2018 10:37 PM, Andrey Smirnov wrote:
 > Cc: yurovsky@gmail.com
 > Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 > ---
->  hw/timer/imx_gpt.c         | 25 +++++++++++++++++++++++++
->  include/hw/timer/imx_gpt.h |  1 +
->  2 files changed, 26 insertions(+)
+>  hw/arm/Makefile.objs       |   2 +-
+>  hw/arm/coresight.c         | 120 +++++++++++++++++++++++++++++++++++++++++++++
+>  include/hw/arm/coresight.h |  24 +++++++++
+>  3 files changed, 145 insertions(+), 1 deletion(-)
+>  create mode 100644 hw/arm/coresight.c
+>  create mode 100644 include/hw/arm/coresight.h
 > 
-> diff --git a/hw/timer/imx_gpt.c b/hw/timer/imx_gpt.c
-> index 4b9b54bf2e..65e4ee6bcf 100644
-> --- a/hw/timer/imx_gpt.c
-> +++ b/hw/timer/imx_gpt.c
-> @@ -113,6 +113,17 @@ static const IMXClk imx6_gpt_clocks[] = {
->      CLK_HIGH,      /* 111 reference clock */
->  };
->  
-> +static const IMXClk imx7_gpt_clocks[] = {
-> +    CLK_NONE,      /* 000 No clock source */
-> +    CLK_IPG,       /* 001 ipg_clk, 532MHz*/
-> +    CLK_IPG_HIGH,  /* 010 ipg_clk_highfreq */
-> +    CLK_EXT,       /* 011 External clock */
-> +    CLK_32k,       /* 100 ipg_clk_32k */
-> +    CLK_HIGH,      /* 101 reference clock */
-> +    CLK_NONE,      /* 110 not defined */
-> +    CLK_NONE,      /* 111 not defined */
-> +};
+> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+> index 2794e086d6..692216e0cf 100644
+> --- a/hw/arm/Makefile.objs
+> +++ b/hw/arm/Makefile.objs
+> @@ -1,4 +1,4 @@
+> -obj-y += boot.o collie.o exynos4_boards.o gumstix.o highbank.o
+> +obj-y += boot.o collie.o exynos4_boards.o gumstix.o highbank.o coresight.o
+>  obj-$(CONFIG_DIGIC) += digic_boards.o
+>  obj-y += integratorcp.o mainstone.o musicpal.o nseries.o
+>  obj-y += omap_sx1.o palm.o realview.o spitz.o stellaris.o
+> diff --git a/hw/arm/coresight.c b/hw/arm/coresight.c
+> new file mode 100644
+> index 0000000000..d0a8c1b005
+> --- /dev/null
+> +++ b/hw/arm/coresight.c
+> @@ -0,0 +1,120 @@
+> +/*
+> + * Copyright (c) 2017, Impinj, Inc.
+> + *
+> + * CoreSight block emulation code
+> + *
+> + * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> + * See the COPYING file in the top-level directory.
+> + */
 > +
->  static void imx_gpt_set_freq(IMXGPTState *s)
->  {
->      uint32_t clksrc = extract32(s->cr, GPT_CR_CLKSRC_SHIFT, 3);
-> @@ -512,6 +523,13 @@ static void imx6_gpt_init(Object *obj)
->      s->clocks = imx6_gpt_clocks;
->  }
->  
-> +static void imx7_gpt_init(Object *obj)
+> +#include "qemu/osdep.h"
+> +#include "hw/arm/coresight.h"
+> +#include "qemu/log.h"
+> +
+> +static uint64_t coresight_read(void *opaque, hwaddr offset,
+> +                               unsigned size)
 > +{
-> +    IMXGPTState *s = IMX_GPT(obj);
-> +
-> +    s->clocks = imx7_gpt_clocks;
+> +    return 0;
 > +}
 > +
->  static const TypeInfo imx25_gpt_info = {
->      .name = TYPE_IMX25_GPT,
->      .parent = TYPE_SYS_BUS_DEVICE,
-> @@ -532,11 +550,18 @@ static const TypeInfo imx6_gpt_info = {
->      .instance_init = imx6_gpt_init,
->  };
->  
-> +static const TypeInfo imx7_gpt_info = {
-> +    .name = TYPE_IMX7_GPT,
-> +    .parent = TYPE_IMX25_GPT,
+> +static void coresight_write(void *opaque, hwaddr offset,
+> +                            uint64_t value, unsigned size)
+> +{
+> +}
 
-ideally there should be an abstract TYPE_IMX_GPT you'd use as parent
-rather than the TYPE_IMX25_GPT, anyway out of the scope of this series.
+I assume you had to add this to bypass the memory_transaction_failures
+check.
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
-> +    .instance_init = imx7_gpt_init,
+> +
+> +static const struct MemoryRegionOps coresight_ops = {
+> +    .read = coresight_read,
+> +    .write = coresight_write,
+> +    .endianness = DEVICE_NATIVE_ENDIAN,
+> +    .impl = {
+> +        /*
+> +         * Our device would not work correctly if the guest was doing
+> +         * unaligned access. This might not be a limitation on the real
+> +         * device but in practice there is no reason for a guest to access
+> +         * this device unaligned.
+> +         */
+> +        .min_access_size = 4,
+> +        .max_access_size = 4,
+> +        .unaligned = false,
+> +    },
 > +};
 > +
->  static void imx_gpt_register_types(void)
->  {
->      type_register_static(&imx25_gpt_info);
->      type_register_static(&imx31_gpt_info);
->      type_register_static(&imx6_gpt_info);
-> +    type_register_static(&imx7_gpt_info);
->  }
->  
->  type_init(imx_gpt_register_types)
-> diff --git a/include/hw/timer/imx_gpt.h b/include/hw/timer/imx_gpt.h
-> index eac59b2a70..20ccb327c4 100644
-> --- a/include/hw/timer/imx_gpt.h
-> +++ b/include/hw/timer/imx_gpt.h
-> @@ -77,6 +77,7 @@
->  #define TYPE_IMX25_GPT "imx25.gpt"
->  #define TYPE_IMX31_GPT "imx31.gpt"
->  #define TYPE_IMX6_GPT "imx6.gpt"
-> +#define TYPE_IMX7_GPT "imx7.gpt"
->  
->  #define TYPE_IMX_GPT TYPE_IMX25_GPT
->  
+> +static void a7mpcore_dap_init(Object *obj)
+> +{
+> +    SysBusDevice *sd = SYS_BUS_DEVICE(obj);
+> +    A7MPCoreDAPState *s = A7MPCORE_DAP(obj);
+> +
+> +    memory_region_init(&s->container, obj, "a7mpcore-dap-container", 0x100000);
+
+You can just use add this in fsl_imx7_realize():
+
+  create_unimplemented_device("a7mpcore-dap-container",
+                              FSL_IMX7_A7MPCORE_DAP_ADDR,
+                              0x100000);
+
+to register a background region for the DAP (see "hw/misc/unimp.h")
+
+as a bonus, running with "-d unimp" you can trace the DAP access.
+
+So this model and those files are not necessary.
+
+> +    sysbus_init_mmio(sd, &s->container);
+> +
+> +    memory_region_init_io(&s->ca7_atb_funnel,
+> +                          obj,
+> +                          &coresight_ops,
+> +                          s,
+> +                          TYPE_A7MPCORE_DAP ".ca7-atb-funnel",
+> +                          0x1000);
+> +    memory_region_add_subregion(&s->container, 0x41000, &s->ca7_atb_funnel);
+> +
+> +    memory_region_init_io(&s->cpu0_etm,
+> +                          obj,
+> +                          &coresight_ops,
+> +                          s,
+> +                          TYPE_A7MPCORE_DAP ".cpu0-etm",
+> +                          0x1000);
+> +    memory_region_add_subregion(&s->container, 0x7C000, &s->cpu0_etm);
+> +
+> +    memory_region_init_io(&s->atb_funnel,
+> +                          obj,
+> +                          &coresight_ops,
+> +                          s,
+> +                          TYPE_A7MPCORE_DAP ".atb-funnel",
+> +                          0x1000);
+> +    memory_region_add_subregion(&s->container, 0x83000, &s->atb_funnel);
+> +
+> +    memory_region_init_io(&s->tmc_etb,
+> +                          obj,
+> +                          &coresight_ops,
+> +                          s,
+> +                          TYPE_A7MPCORE_DAP ".tmc-etb",
+> +                          0x1000);
+> +    memory_region_add_subregion(&s->container, 0x84000, &s->tmc_etb);
+> +
+> +    memory_region_init_io(&s->tmc_etr,
+> +                          obj,
+> +                          &coresight_ops,
+> +                          s,
+> +                          TYPE_A7MPCORE_DAP ".tmc-etr",
+> +                          0x1000);
+> +    memory_region_add_subregion(&s->container, 0x86000, &s->tmc_etr);
+> +
+> +    memory_region_init_io(&s->tpiu,
+> +                          obj,
+> +                          &coresight_ops,
+> +                          s,
+> +                          TYPE_A7MPCORE_DAP ".tpiu",
+> +                          0x1000);
+> +    memory_region_add_subregion(&s->container, 0x87000, &s->tpiu);
+> +}
+> +
+> +static void a7mpcore_dap_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->desc = "A7MPCore DAP Module";
+> +}
+> +
+> +static const TypeInfo a7mpcore_dap_info = {
+> +    .name          = TYPE_A7MPCORE_DAP,
+> +    .parent        = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(A7MPCoreDAPState),
+> +    .instance_init = a7mpcore_dap_init,
+> +    .class_init    = a7mpcore_dap_class_init,
+> +};
+> +
+> +static void coresight_register_type(void)
+> +{
+> +    type_register_static(&a7mpcore_dap_info);
+> +}
+> +type_init(coresight_register_type)
+> diff --git a/include/hw/arm/coresight.h b/include/hw/arm/coresight.h
+> new file mode 100644
+> index 0000000000..d1480e825b
+> --- /dev/null
+> +++ b/include/hw/arm/coresight.h
+> @@ -0,0 +1,24 @@
+> +#ifndef CORESIGHT_H
+> +#define CORESIGHT_H
+> +
+> +#include "hw/sysbus.h"
+> +
+> +typedef struct A7MPCoreDAPState {
+> +    /*< private >*/
+> +    SysBusDevice parent_obj;
+> +
+> +    MemoryRegion container;
+> +
+> +    MemoryRegion ca7_atb_funnel;
+> +    MemoryRegion cpu0_etm;
+> +    MemoryRegion atb_funnel;
+> +    MemoryRegion tmc_etb;
+> +    MemoryRegion tmc_etr;
+> +    MemoryRegion tpiu;
+> +
+> +} A7MPCoreDAPState;
+> +
+> +#define TYPE_A7MPCORE_DAP "a7mpcore-dap"
+> +#define A7MPCORE_DAP(obj) OBJECT_CHECK(A7MPCoreDAPState, (obj), TYPE_A7MPCORE_DAP)
+> +
+> +#endif /* CORESIGHT_H */
 > 

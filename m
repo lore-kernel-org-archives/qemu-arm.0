@@ -1,267 +1,285 @@
-Received: by 10.28.173.206 with SMTP id w197csp4571688wme;
-        Tue, 16 Jan 2018 15:27:29 -0800 (PST)
-X-Google-Smtp-Source: ACJfBovs8Y3RXiscgCeV7d2FlKwR8xQGiadJqZ4390c+UWlJRbz41IzT5fQUvL24ciGkmSwdn6e8
-X-Received: by 10.129.111.139 with SMTP id k133mr776066ywc.419.1516145249460;
-        Tue, 16 Jan 2018 15:27:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516145249; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp3376647wme;
+        Mon, 15 Jan 2018 17:37:45 -0800 (PST)
+X-Google-Smtp-Source: ACJfBouCjFZBG9ltYqkJD4Fd9TgWmq++KeacqKF3cBq8cFEzSJuitKjhuv7uZAcnSsQC4N/g4DLh
+X-Received: by 10.37.19.69 with SMTP id 66mr17316952ybt.292.1516066665293;
+        Mon, 15 Jan 2018 17:37:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516066665; cv=none;
         d=google.com; s=arc-20160816;
-        b=vI5yUQM33WZBfjz0qEdlYQi5Fi2vf+U5lJUnWoSRH+i+uUnxpRV89IJlhlDZxt6Ne0
-         OAjsXdx9ZNYVf0jq6PAi18ukdpT5ZF/BtZnxJDfoW9nvzDnvKSM+JRczhXPYUtnEvLMd
-         t1b+ILP5/LWo2nDpe4WibYjRXtGDBLS+PwWowO/cgXg3oLVOPunA0yWkHtTaEq4wtu0X
-         whB8N5DqIMHf1l3LB4y3N4gaDK4aAlqbLrc+tKQl2AWK2TWf8wdyt3LaTJIeG2ZCMBfT
-         O1mYuOTEKJphKfeJ2EQ+GIh6W8Xe0ICTNw89CPTqnNIQ5xW6Yp6impNLJhKs1w5o+A8O
-         u+Zg==
+        b=K3wk/c112azdsA1d59/US8wtoThfym3Kt0ZNSRijVoO8YHAfumfLK7FmiJJxegny74
+         3e45Qqxf1tcSO+xViCVoYVa8BG6GZB1HO+BW46hl9hoOYl1/vAv2+4XaBnqJGzsHhaXV
+         2K/HDKukLgylrh/3yGBwhHkzS3jpg2tUU3b6AeyD0PXmFJSdFD6zD2ewZjEEkGjwCHNi
+         xeIAtIpNIpGLSMlypg+Ei32Zhm0QlnWl+lx62nGbHC13EV/9HL2iz94lDeBmNQLYw7lO
+         vnBWodQ1IAbwE/XduIJwsHFh23DcKlm2zD+dxvaKFCddu3d7t7sUbyNX6+EoqCxbeMPa
+         ujkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:spamdiagnosticmetadata
-         :spamdiagnosticoutput:content-transfer-encoding:mime-version
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=dKqpjIfXwR77cXocdbcs1k8rRLN3mKC/pSSFulfPEUE=;
-        b=04Qz4/wmqaUFmn1Vn0iK7QHdveKaFHcGA99/FOQdFi1GneM0AkdVzccHe1GGQlz/Sd
-         UHvMrd4W/ehpj/j8TLLyuGuWYQt9nQUyYXhsF4rkBGMrvgunztcnoYVEOo3fPQGAI/nv
-         kZu/Ac5t8Jlu6nuTjjjNlFdW4jsR3KsgUWM9mje1DMUqNKza7hFhSxeife+PQMno1bsZ
-         tQGAEwEOMqfs8Ij5QkscT0y3q0jMrIWT38SiXhrrcUhgV4zyiSEVPxZZ1NlfP129Ex2s
-         YFfopUsNqBRSxDZDF0EX/bL7QQ+B6gYKp2sXh8iBCURp7SjaC9upF4wpMfY2lJDm4v08
-         SEfg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=BqteKKVPLpffPDA0tBMXigNOzZ7a6Sr77+gevbdm0mc=;
+        b=vBgcn9ZA7S4Hz0JVC+kqqjp4qZEVeXS61sdL8HAqdlk5bsQTtPTkWTdSh8IyOT4DnO
+         RSqm1YyQckZZh0jynClxMLwuXYEe7q6ZBjjjt0Z5eDQpGcuMTTWxxkO2zl+h980or6xz
+         aLPaJTcf2hJ8dZdWvvSv8PHow+bOWA7LqyqSZ3KNlDvA+FLyzfEdX2OsChfKIlROj6rO
+         myan0+wEbzi/536pcgwEDeY5MRJJEWOh1GP6kppH9KMfVLUx/PIdoFDZjMdnb8G2Q0rp
+         PCBgkO5vm1QVRz+SitDG2yH+KCCEkwEHJrPzIvA/qzGpzjrUHj3SA+M9aGdOERhI4hn0
+         M/wQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=zJJtJ39A;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZZl1UoK+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 129si729035ywk.351.2018.01.16.15.27.29
+        by mx.google.com with ESMTPS id y12si232954ybh.155.2018.01.15.17.37.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Jan 2018 15:27:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 15 Jan 2018 17:37:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=zJJtJ39A;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45515 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZZl1UoK+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:51987 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ebadc-0004DQ-Pl
-	for alex.bennee@linaro.org; Tue, 16 Jan 2018 18:27:28 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60740)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ebGC8-0005x6-Jl
+	for alex.bennee@linaro.org; Mon, 15 Jan 2018 20:37:44 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38580)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistai@xilinx.com>) id 1ebad3-00049V-2v
-	for qemu-devel@nongnu.org; Tue, 16 Jan 2018 18:26:54 -0500
+	(envelope-from <andrew.smirnov@gmail.com>) id 1ebGBx-0005wQ-Iy
+	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 20:37:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistai@xilinx.com>) id 1ebad2-0001yB-57
-	for qemu-devel@nongnu.org; Tue, 16 Jan 2018 18:26:53 -0500
-Received: from mail-dm3nam03on0042.outbound.protection.outlook.com
-	([104.47.41.42]:16197
-	helo=NAM03-DM3-obe.outbound.protection.outlook.com)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <alistai@xilinx.com>)
-	id 1ebacx-0001rj-6e; Tue, 16 Jan 2018 18:26:47 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=xilinx.onmicrosoft.com; s=selector1-xilinx-com;
-	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=dKqpjIfXwR77cXocdbcs1k8rRLN3mKC/pSSFulfPEUE=;
-	b=zJJtJ39A3kXyYJ/gHknC6awj0thddw/H9lQIIEk5F7Xnv6l7/OsAydFtQ7+C+AG1SezC8Q6LNkWMaiR/oJgnX3J4ogqJhVeAGP2RMrsOmIlTm+9Dj22JJq8tt03xxObYmPNC9PGCkIIszv3lVGtKrZBPlGzQRgkVe9ToWQHC8aQ=
-Received: from SN4PR0201CA0069.namprd02.prod.outlook.com
-	(2603:10b6:803:20::31) by DM2PR02MB1338.namprd02.prod.outlook.com
-	(2a01:111:e400:50c8::25) with Microsoft SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.20.407.7;
-	Tue, 16 Jan 2018 23:26:43 +0000
-Received: from BL2NAM02FT039.eop-nam02.prod.protection.outlook.com
-	(2a01:111:f400:7e46::203) by SN4PR0201CA0069.outlook.office365.com
-	(2603:10b6:803:20::31) with Microsoft SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.407.7 via
-	Frontend Transport; Tue, 16 Jan 2018 23:26:43 +0000
-Authentication-Results: spf=pass (sender IP is 149.199.60.83)
-	smtp.mailfrom=xilinx.com; nongnu.org; dkim=none (message not signed)
-	header.d=none;nongnu.org; dmarc=bestguesspass action=none
-	header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
-	149.199.60.83 as permitted sender) receiver=protection.outlook.com;
-	client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
-Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
-	BL2NAM02FT039.mail.protection.outlook.com (10.152.77.152) with
-	Microsoft SMTP Server (version=TLS1_0,
-	cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.345.12
-	via Frontend Transport; Tue, 16 Jan 2018 23:26:42 +0000
-Received: from unknown-38-66.xilinx.com ([149.199.38.66] helo=xsj-pvapsmtp01)
-	by xsj-pvapsmtpgw01 with esmtp (Exim 4.63)
-	(envelope-from <alistair.francis@xilinx.com>)
-	id 1ebacr-0000Md-KP; Tue, 16 Jan 2018 15:26:41 -0800
-Received: from [127.0.0.1] (helo=localhost)
-	by xsj-pvapsmtp01 with smtp (Exim 4.63)
-	(envelope-from <alistair.francis@xilinx.com>)
-	id 1ebacr-0003K9-JM; Tue, 16 Jan 2018 15:26:41 -0800
-Received: from xsj-pvapsmtp01 (xsj-smtp1.xilinx.com [149.199.38.66])
-	by xsj-smtp-dlp1.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id
-	w0GNQcLU030907; Tue, 16 Jan 2018 15:26:38 -0800
-Received: from [172.19.2.220] (helo=xsjalistai50.xilinx.com)
-	by xsj-pvapsmtp01 with esmtp (Exim 4.63)
-	(envelope-from <alistair.francis@xilinx.com>)
-	id 1ebaco-0003Jt-Li; Tue, 16 Jan 2018 15:26:38 -0800
-From: Alistair Francis <alistair.francis@xilinx.com>
-To: <qemu-devel@nongnu.org>, <edgar.iglesias@xilinx.com>,
-	<edgar.iglesias@gmail.com>
-Date: Tue, 16 Jan 2018 15:22:18 -0800
-Message-ID: <cover.1516144891.git.alistair.francis@xilinx.com>
-X-Mailer: git-send-email 2.14.1
-X-RCIS-Action: ALLOW
-X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23598.006
-X-TM-AS-User-Approved-Sender: Yes;Yes
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:149.199.60.83; IPV:NLI; CTRY:US; EFV:NLI;
-	SFV:NSPM;
-	SFS:(10009020)(346002)(396003)(39860400002)(376002)(39380400002)(2980300002)(438002)(199004)(189003)(8746002)(59450400001)(478600001)(39060400002)(50226002)(77096006)(5660300001)(8676002)(36756003)(6666003)(81156014)(26005)(4326008)(8936002)(81166006)(2906002)(7696005)(36386004)(106466001)(50466002)(106002)(2201001)(5890100001)(63266004)(47776003)(356003)(110136005)(305945005)(48376002)(316002)(9786002)(51416003)(54906003)(107986001)(2101003);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:DM2PR02MB1338; H:xsj-pvapsmtpgw01;
-	FPR:; SPF:Pass; PTR:unknown-60-83.xilinx.com; A:1; MX:1; LANG:en;
-X-Microsoft-Exchange-Diagnostics: 1; BL2NAM02FT039;
-	1:Q6cbLfUxu5lTBPm5uYdbZ3gbDhJY8AH8hYZewf9N/rqWvgQ8EUZT9/ACjk6Z9pvxWEtedC94o9p+dbkHs9IcgdsO23DSXdsebH9pBGa8IYIgRaHjLc3ox/5F32+6b8ka
+	(envelope-from <andrew.smirnov@gmail.com>) id 1ebGBu-0005AY-FJ
+	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 20:37:33 -0500
+Received: from mail-pl0-x243.google.com ([2607:f8b0:400e:c01::243]:40375)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
+	id 1ebGBu-00059x-71; Mon, 15 Jan 2018 20:37:30 -0500
+Received: by mail-pl0-x243.google.com with SMTP id 62so4935854pld.7;
+	Mon, 15 Jan 2018 17:37:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=BqteKKVPLpffPDA0tBMXigNOzZ7a6Sr77+gevbdm0mc=;
+	b=ZZl1UoK+fnxYua+ZEWpeTufQ66+UmET+RtLXFNN4ipRm1KS4xv12C/+dpdx4W5ZUmb
+	y6kRqJ88nP72Ixe4oBGfsR8UCsYm4vCTmCoruFLj1l8bvwj7iC1b54QK1NnAey/1Qh0o
+	bYQYEVpSoxROQvUiDmuaXSFyaJK/hy9x8KYRvuy4+x2RGJuQoiM904zhy/b3HsFIvHOV
+	NpmIJ9ftw3s4xQ3ZKD3tx3fY0T03qfnhNCEfpaufT5EznTDw//wMeQ+7iH98dO/Shm/6
+	/rOoRJOG7IkY/oMm+y2tGRtQdB2v/qtcjAQBWPW8hQPBzBEUn+DqYc4rr247VDhkuu0R
+	zpHA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=BqteKKVPLpffPDA0tBMXigNOzZ7a6Sr77+gevbdm0mc=;
+	b=IHf3ZWWULbdTMudnOgnTdjMlzuwryWCGit3w2EHAQe3+FOhnlcqi0gmwrd7BXYDYXn
+	a4BsDx2p5y8KjSgQhnaNrEA+cAIcL6fg2ZNn1zRVh2sM6saC6QSgUiFNfwsdULDFusDj
+	0NS7oSarYP62z2ZiLp9odBbFSJ+hj0+UkFv7aCV7/Zy9xJvm5p2wEJxkeOPd0bX/U4ZN
+	iZAkgG7QkUSmz/e7LXUEvK3VqYHsOA/wAmNgk03IxOOnhPn5EbgqTizsu/2NDnA6hP7o
+	wlTe911tGjrNEzWeCKwyJ+IdE0dy6U/h7bnzZ7+nhC1hPscwxxBRRDXIiYgOd3DyQStk
+	Ae2Q==
+X-Gm-Message-State: AKGB3mLVpEMzeuaS6DSvW9RbwI4B5tLf3IK1O3WLr3c0fPV3UyR0tpff
+	UjVfKqw6oIhPh8JdmyxWF59kLeXf
+X-Received: by 10.84.240.9 with SMTP id y9mr29678012plk.332.1516066648372;
+	Mon, 15 Jan 2018 17:37:28 -0800 (PST)
+Received: from squirtle.lan (c-24-22-235-96.hsd1.wa.comcast.net.
+	[24.22.235.96])
+	by smtp.gmail.com with ESMTPSA id s65sm1023795pfk.7.2018.01.15.17.37.27
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Mon, 15 Jan 2018 17:37:27 -0800 (PST)
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+To: qemu-arm@nongnu.org
+Date: Mon, 15 Jan 2018 17:36:55 -0800
+Message-Id: <20180116013709.13830-1-andrew.smirnov@gmail.com>
+X-Mailer: git-send-email 2.14.3
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 0f0ebd80-4f85-4e34-6e87-08d55d389a4e
-X-Microsoft-Antispam: UriScan:; BCL:0; PCL:0;
-	RULEID:(7020095)(4652020)(5600026)(4604075)(4608076)(2017052603307)(7153060);
-	SRVR:DM2PR02MB1338; 
-X-Microsoft-Exchange-Diagnostics: 1; DM2PR02MB1338;
-	3:c/I3HO3A64Ii+BGRq33mg2TOdeq9/tMBjFygvhD6aD91XS83r9BnRshi0+AHF7Tgbjyo45i9fddKq3MD/94BuCX1bpJNIbwcpi0UUV47MgOA23aWEnZCR/EZF6hUsjSOwju12Hvq5ceqw5nrQkyeo586i9nqvOZXCgMhAMKqAWkQnNn9lEJVXcc/awPAGZZSp5F714stzNaibE5PyTAh6MCCoB4usWCrWAe06o7UIsb06KbKA/xC63FHAVqZg3ppnMMks+1KsURpa+jXiG7BdAwWLJh+QHkwRAdt0bWsTdCWosEJFgbbI6ZbJOw1H6Ww50Zsfk5dS2jG+H3Q72R2sx8fdhje8O965O0tlYlSDGc=;
-	25:gY4XRym6JYXWBgDJJLaUPin2cR40e+e3opZrkPpa/OEcN5yjLJFHw3H4XyMtTuHpHbv/bSX7UFyCYn71RN6E0wAExfsAc0lVWSQY67NYnCR9m4xszFQYeeiWAbz4Cm/ZIqYEUzhEumOYuevL4d5/cLW8xVgRpXLdaKuNhtyxjH/0fzL/7UZX/2Q6HaGekhNiUPmT2VOdd8eVh5yTdbnj81rCGTPZetwBap8XbPhqoOjs3hi3WF6XSF5C6GTgzp4rL3ax6tfsUuPWlWUEdNK9mQqo8/DB2HoMZdx6rsy6P/K4Ts9/aemnOW02KbCZPjLO6kvGAxtKll0a27CbLUggiPemVwX/X9lbu8j4GuBinME=
-X-MS-TrafficTypeDiagnostic: DM2PR02MB1338:
-X-Microsoft-Exchange-Diagnostics: 1; DM2PR02MB1338;
-	31:UG5hbPrfDXWkizT+81+XkIbO/6chyp4z/cviumTQR3LmOx0W3TxTo9vM3Vy1iLvMduErA5YHR9tcr9wAwVmEllEoH1dXthAZj9t9s3QP95G/2Yg7LLfwWbM2e5GlXkHwsa+48DcqOKmcdg8+PEEfYkh0shRh8JmZ9wldH3lRgEDZjjpZTrk9KiLgIkFJulyM3vG5RAu7+aHHoJfmy/YZefjeluJTBQiB8v9wtH3+69Y=;
-	20:vXIRSknPOebICILWm+PuWNrKq2sbRe6rSH7e4syC82TP0jRKyRBSsWd/rOthJIHlsdoJMfFSYxuQ+IPweicivlp1yP7hdQnuuQG9sXK0BA9jE1/0x/AWxUFCglbjBGXNr49tfxrt3uI30EOjl9/KUNuxuPiTH1jorc05v0OZT6evZI8pnEZV5VJTyiwx4cAt7wvHbh5f0RcsFJ9W4i+tOyULqD6WwMqRDrd8qgC6OprT/ioRkM3ZSxXoej5j+marEytJwKK+n63DWQA3j86A97PR30BI7dv9M4Us9gNVRX9wE+pv85yCGk5WYbpfFt2T6CfukyxnLgXUN7sMtkOo5Y98mYH0u4EKiNauC07/KaSEap3jEhxZ3hFlnxFfEmqPC+miU8/2f3qlxQoEr4GvjTiqn5PPe4Puo1HccB0K334V2ACya23WPe1pVKpxBQzzQJSorQRaAO4QFH2O1vEdgBJ4qlM/Qcbl7tPvktFMddSetvQGteA1ve0QHWJsz2au
-Content-Transfer-Encoding: quoted-printable
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-Microsoft-Antispam-PRVS: <DM2PR02MB1338A4EA136AD9A394AFA67CDCEA0@DM2PR02MB1338.namprd02.prod.outlook.com>
-X-Exchange-Antispam-Report-Test: UriScan:(788757137089)(21532816269658);
-X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
-	RULEID:(6040470)(2401047)(5005006)(8121501046)(3231023)(944501161)(93006095)(93004095)(3002001)(10201501046)(6055026)(6041268)(20161123564045)(20161123558120)(20161123562045)(20161123560045)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(6072148)(201708071742011);
-	SRVR:DM2PR02MB1338; BCL:0; PCL:0;
-	RULEID:(100000803101)(100110400095); SRVR:DM2PR02MB1338; 
-X-Microsoft-Exchange-Diagnostics: 1; DM2PR02MB1338;
-	4:EAWf32yghGgieR6SBA1WdkYkvuLaiLTzcdhaALavAIbiqto8rIZPEpBWsVn4H384pNqQ8i8TQh3y2mmVnUF/hUQrDQhgaSPCZduiqwuqTKAwfWMtGcri5d9a68v2kvkUp/xZIB1MnLDvtRhXqPvKUJEgYjf3RUbrUopmsS4FNcwsLYcoL1/P1+Di8vt8Gf3XVyUArSexKwiXku3poBEQ4xZmIyhN5PPAeavr/WzImrcQFGW0OkP1GOVtm16du0A9jNfN3CCFI/cph9bVEoPaWgI69gklfxzSfTx2uG3n9PJDvmS2smsEIcrj3vV/SzKxOJSCtFKaMJhR2bI0tHq2Aw==
-X-Forefront-PRVS: 0554B1F54F
-X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; DM2PR02MB1338;
-	23:YVlE0bM7YyggWe3TVY8qwTVynt1B8ZowqmK31+aX+?=
-	=?us-ascii?Q?IM4WdSXT2YW3JVFMBGMdCSW1vC3/KxWJw++Bs9qs0PJNKpYqvBVowBebjVcf?=
-	=?us-ascii?Q?AfuDHTwrIcIB7pUbV7ZlUeQpwIDRpZEi+yj+aQAPR0ds3jT3TAIAvOTdZeEV?=
-	=?us-ascii?Q?dE49d4SL6Tz2yuhtCmFVCyUnj767JZwNNuwHz2MYwdDQ5uIkVdd3JvT9UAcf?=
-	=?us-ascii?Q?CkAwfIYW4QiwufwpcyG8/zJ1hlBcbi4ahQR1J1A7tE93uapSHoQTWr2P6QvJ?=
-	=?us-ascii?Q?C1p8W3E//BYkGEcUVsZ03pgkAz78ryEtmBEQXF28mJWvjBj2tqJ6Dd4GbCpd?=
-	=?us-ascii?Q?kDszUNbyZ0wfLavdp6kH2VRSG/YSPALNF6WMBcFg2DfbVT85/BOA0OQYIjmf?=
-	=?us-ascii?Q?menjWl6TFrdymY1A8FXw+JNlpSWBZ9inygMZe7ra9ygnYRvETszJHcGgM3fH?=
-	=?us-ascii?Q?lUWfPVRchWaGXWQXgPwokSQLIE6OsTNVrpHb3SzmuDL3mcdvk5bFeIxyVoLj?=
-	=?us-ascii?Q?+M8f68sd3r5IhYjWWwKTqpjr3XztqQs7mbXkqlw3ra+ZIfxCphli80zF9N/u?=
-	=?us-ascii?Q?SM83X+P1dZV0VeNg5BBCig3LF+LbWBY2Bfg1aQxrEgQA+iKOgC2B1SO7w+pB?=
-	=?us-ascii?Q?RCt3TMcIzPwAt1eV7ktZdP5DZMfB/CcReMvppc9nsOpdgJ9u0qncrhoNCuk2?=
-	=?us-ascii?Q?f88bfCtHAGUDePfUdI+LEN8Lo/9FvmcdC1L8H8Cpnw3Yrkzj55t1C6v01UHN?=
-	=?us-ascii?Q?YqU4iaeQvlKRHxneXh2F98M45v0WBGWfY+ppx1+lUy3TkY+59SeYwj05foWj?=
-	=?us-ascii?Q?Rs9NwlNOSamRvyeUXd7TUG1+XRKI/snDYu8apqEWo/Ps70ReMEpnYeu0XXPL?=
-	=?us-ascii?Q?ay0lSniLckvLRImiAmsKd+4xhad0VvMDDolOoXJEzb3T6K8qLkuAdlqK7ISK?=
-	=?us-ascii?Q?fMVHSWF/vjaFBrDULiwKV5ZZ1xs0CoMUqwNHvOXKBaVitZo2N/ugjsSMEWTH?=
-	=?us-ascii?Q?mFFrk7LhSYqxtvbWgyu5+Cvpc4GykuAzG8bt7vSRegvEA=3D=3D?=
-X-Microsoft-Exchange-Diagnostics: 1; DM2PR02MB1338;
-	6:LBCWLzWYSu9iMIy+HF1bVhMQMLhIjOj0PPaHe98XyzRphqpWmg1OZyPyc7gU/3iPzx0pfaJPL252sn5/352DUEsORfz3biXLSr0Oaq2KlkSvxsg0S2VtqwG8mEmZ9NJenJk1DXlcbAKoJ4uGqVhTAVTZGx4z8qcNLFEg53zYQbGfuiPNwEgyQRiyMkPv27uBZavJZqgRkgUcd/mVbUuUDnYam7B0bzIOkh+1JG7GOfDwrsiDVX/fu/MTekMUwldpO5BHAWeJUjbzvrU0yqrQO61jSGtJ9VkGK9Jm6gVRPz4J8iyQaljTXKzlJoTspTkdY5/A/5Lp/b4P6WGWjbLq2iJaUqD9AxYLLUi9GDeZGpw=;
-	5:WQAwt3pY9qZwP9Ty9Pw989VE2Ya84XOTkaAmW3nL29qNxtMWZayNmmRVosHeDd1Iqqq2rDCZYTeQtdbUSIwY1+M3LZnh7AXjlpTTmAVn+AzGcxuhw5ItR0bepJtBXZ8yn3WBV54UzdBLFuBtuuIQUwE5dBmVmvXb4KsB++IjOqg=;
-	24:wULp6MQeSI+Ek7/dsTUuJO+wJrLlQ5dnZqALg7806RoXpeoCjdZAcCk2/jn5UBlRMZw3cJP7nBh1KILNvzwsUwKJRWznPn/9pov7jVaQnzc=;
-	7:7ARHMm1bYAQ3OxDdjImHuM/xTbjHADAdRXH4TUo7cDQQOAMlRuViFByx4U7gqdQAVuRMb4BFhWgQ8JFXyCbmYso/iwkVna8qSHSO+Gc3Q251gjAHpVjlgauQBYY0pqxHC0Oe7BCJfV44xotwymBf/GNzF9cNBkGssQeiG2YL6lOTEIE1uSze2cL5w71eALn5FMVXNmGI0EGpSR8aNRBaHUaBJqwWs3+GJHfXqXcNhIdwEjI570MTV+F5K9O0GrEV
-SpamDiagnosticOutput: 1:99
-SpamDiagnosticMetadata: NSPM
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Jan 2018 23:26:42.9301 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0f0ebd80-4f85-4e34-6e87-08d55d389a4e
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c;
-	Ip=[149.199.60.83]; Helo=[xsj-pvapsmtpgw01]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM2PR02MB1338
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 104.47.41.42
-Subject: [Qemu-devel] [PATCH v5 0/9]  Add the ZynqMP PMU and IPI
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c01::243
+Subject: [Qemu-arm] [PATCH v4 00/14] Initial i.MX7 support
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: alistair23@gmail.com, qemu-arm@nongnu.org, alistair.francis@xilinx.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: e1QoNUWLgccs
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>,
+	Jason Wang <jasowang@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, yurovsky@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6ho3AOwm9cGq
+
+Hi everyone,
+
+This v4 of the patch series containing the work that I've done in
+order to enable support for i.MX7 emulation in QEMU.
+
+*NOTE*: Patches 1 and 2 are provided for the sake of completness and
+	are going to have to be adapted once Philippe's SD changes
+	land in master. As such, they are NOT ready to be
+	accepted/merged.
+
+As the one before last commit in the series states the supported i.MX7
+features are:
+
+    * up to 2 Cortex A9 cores (SMP works with PSCI)
+    * A7 MPCORE (identical to A15 MPCORE)
+    * 4 GPTs modules
+    * 7 GPIO controllers
+    * 2 IOMUXC controllers
+    * 1 CCM module
+    * 1 SVNS module
+    * 1 SRC module
+    * 1 GPCv2 controller
+    * 4 eCSPI controllers
+    * 4 I2C controllers
+    * 7 i.MX UART controllers
+    * 2 FlexCAN controllers
+    * 2 Ethernet controllers (FEC)
+    * 3 SD controllers (USDHC)
+    * 4 WDT modules
+    * 1 SDMA module
+    * 1 GPR module
+    * 2 USBMISC modules
+    * 2 ADC modules
+    * 1 PCIe controller
+    * 3 USB controllers
+    * 1 LCD controller
+    * 1 ARMv7 DAP IP block
+
+Feedback is welcome!
+
+Changes since [v3]:
+
+    - Changes to FEC were split into a separate set and merged to master
+
+    - Patchest is rebased on latest master
+
+    - Converted to use PSCI DT fixup code that is shared with virt
+      platform (now relocated to live in arm/boot.c)
+
+    - Large number of dummy block were converted to use
+      create_unimplemented_device() as opposed to its own dedicated
+      type
+
+    - Incorporated varios small feedback items
+
+    - Collected Reviewed-by tags from Peter
+
+Changes since [v2]:
+
+    - Added stubs for more blocks that were causing memory
+      transactions when booting Linux guest as were revealed by
+      additional testing of the patchest
+
+    - Added proper USB emulation code, so now it should be possible to
+      emulated guest's USB bus
+
+Changes since [v1]:
+
+    - Patchset no longer relies on "ignore_memory_transaction_failures = false"
+      for its functionality
+
+    - As a consequnce of implementing the above a number of patches
+      implementing dummy IP block emulation as well as PCIe emulation
+      patches that I alluded to in [v1] are now included in this patch
+      series
+
+    - "has_el3" property is no longer being set to "false" as a part
+      of intialization of A7 CPU. I couldn't reproduce the issues that
+      I thought I was having, so I just dropped that code.
+
+    - A number of smaller feedback items from Peter and other has been
+      incorporated into the patches.
 
 
-This series adds the ZynqMP Power Management Unit (PMU) machine with basic
-functionality.
+Thanks,
+Andrey Smirnov
 
-The machine only has the
- - CPU
- - Memory
- - Interrupt controller
- - IPI device
+[v3] https://lists.gnu.org/archive/html/qemu-devel/2017-11/msg04236.html
+[v2] https://lists.gnu.org/archive/html/qemu-devel/2017-10/msg05516.html
+[v1] https://lists.gnu.org/archive/html/qemu-devel/2017-09/msg04770.html
 
-connected, but that is enough to run some of the ROM and firmware
-code on the machine
+Andrey Smirnov (14):
+  sdhci: Add i.MX specific subtype of SDHCI
+  hw: i.MX: Convert i.MX6 to use TYPE_IMX_USDHC
+  i.MX: Add code to emulate i.MX7 CCM, PMU and ANALOG IP blocks
+  i.MX: Add code to emulate i.MX2 watchdog IP block
+  i.MX: Add code to emulate i.MX7 SNVS IP-block
+  i.MX: Add code to emulate GPCv2 IP block
+  i.MX: Add i.MX7 GPT variant
+  i.MX: Add implementation of i.MX7 GPR IP block
+  pci: Add support for Designware IP block
+  usb: Add basic code to emulate Chipidea USB IP
+  ARM: Add basic code to emulate A7MPCore DAP block
+  i.MX: Add i.MX7 SOC implementation.
+  hw/arm: Move virt's PSCI DT fixup code to arm/boot.c
+  Implement support for i.MX7 Sabre board
 
-The series also adds the IPI device and connects it to the ZynqMP ARM
-side and the ZynqMP PMU. These IPI devices don't connect between the ARM
-and MicroBlaze instances though.
+ default-configs/arm-softmmu.mak  |   3 +
+ hw/arm/Makefile.objs             |   5 +-
+ hw/arm/boot.c                    |  65 ++++
+ hw/arm/coresight.c               | 120 ++++++++
+ hw/arm/fsl-imx6.c                |   2 +-
+ hw/arm/fsl-imx7.c                | 583 ++++++++++++++++++++++++++++++++++++
+ hw/arm/mcimx7d-sabre.c           |  90 ++++++
+ hw/arm/virt.c                    |  61 ----
+ hw/intc/Makefile.objs            |   2 +-
+ hw/intc/imx_gpcv2.c              | 125 ++++++++
+ hw/misc/Makefile.objs            |   4 +
+ hw/misc/imx2_wdt.c               |  89 ++++++
+ hw/misc/imx7_ccm.c               | 277 ++++++++++++++++++
+ hw/misc/imx7_gpr.c               | 119 ++++++++
+ hw/misc/imx7_snvs.c              |  83 ++++++
+ hw/pci-host/Makefile.objs        |   2 +
+ hw/pci-host/designware.c         | 618 +++++++++++++++++++++++++++++++++++++++
+ hw/sd/sdhci-internal.h           |  19 ++
+ hw/sd/sdhci.c                    | 228 ++++++++++++++-
+ hw/timer/imx_gpt.c               |  25 ++
+ hw/usb/Makefile.objs             |   1 +
+ hw/usb/chipidea.c                | 176 +++++++++++
+ include/hw/arm/coresight.h       |  24 ++
+ include/hw/arm/fsl-imx7.h        | 223 ++++++++++++++
+ include/hw/intc/imx_gpcv2.h      |  22 ++
+ include/hw/misc/imx2_wdt.h       |  33 +++
+ include/hw/misc/imx7_ccm.h       | 139 +++++++++
+ include/hw/misc/imx7_gpr.h       |  28 ++
+ include/hw/misc/imx7_snvs.h      |  35 +++
+ include/hw/pci-host/designware.h |  93 ++++++
+ include/hw/pci/pci_ids.h         |   2 +
+ include/hw/sd/sdhci.h            |  14 +
+ include/hw/timer/imx_gpt.h       |   1 +
+ include/hw/usb/chipidea.h        |  16 +
+ 34 files changed, 3261 insertions(+), 66 deletions(-)
+ create mode 100644 hw/arm/coresight.c
+ create mode 100644 hw/arm/fsl-imx7.c
+ create mode 100644 hw/arm/mcimx7d-sabre.c
+ create mode 100644 hw/intc/imx_gpcv2.c
+ create mode 100644 hw/misc/imx2_wdt.c
+ create mode 100644 hw/misc/imx7_ccm.c
+ create mode 100644 hw/misc/imx7_gpr.c
+ create mode 100644 hw/misc/imx7_snvs.c
+ create mode 100644 hw/pci-host/designware.c
+ create mode 100644 hw/usb/chipidea.c
+ create mode 100644 include/hw/arm/coresight.h
+ create mode 100644 include/hw/arm/fsl-imx7.h
+ create mode 100644 include/hw/intc/imx_gpcv2.h
+ create mode 100644 include/hw/misc/imx2_wdt.h
+ create mode 100644 include/hw/misc/imx7_ccm.h
+ create mode 100644 include/hw/misc/imx7_gpr.h
+ create mode 100644 include/hw/misc/imx7_snvs.h
+ create mode 100644 include/hw/pci-host/designware.h
+ create mode 100644 include/hw/usb/chipidea.h
 
-V5:
- - Fix clang makecheck error
- - Rebase on master
-V4:
- - Rename the ZCU102 machine to just ZynqMP
- - Rename the PMC SoC to "xlnx,zynqmp-pmu-soc"
- - Move the IPI device to the machine instead of the SoC
-V3:
- - Add the interrupt controller
- - Replace some of the error_fatals with errp
- - Fix the PMU CPU name
+-- 
+2.14.3
 
-
-
-Alistair Francis (9):
-  microblaze: boot.c: Don't try to find NULL pointer
-  xlnx-zynqmp-pmu: Initial commit of the ZynqMP PMU
-  xlnx-zynqmp-pmu: Add the CPU and memory
-  aarch64-softmmu.mak: Use an ARM specific config
-  xlnx-pmu-iomod-intc: Add the PMU Interrupt controller
-  xlnx-zynqmp-pmu: Connect the PMU interrupt controller
-  xlnx-zynqmp-ipi: Initial version of the Xilinx IPI device
-  xlnx-zynqmp-pmu: Connect the IPI device to the PMU
-  xlnx-zynqmp: Connect the IPI device to the ZynqMP SoC
-
- default-configs/aarch64-softmmu.mak    |   1 +
- default-configs/microblaze-softmmu.mak |   1 +
- hw/arm/Makefile.objs                   |   2 +-
- hw/arm/xlnx-zynqmp.c                   |  14 +
- hw/display/Makefile.objs               |   2 +-
- hw/dma/Makefile.objs                   |   1 +
- hw/intc/Makefile.objs                  |   2 +
- hw/intc/xlnx-pmu-iomod-intc.c          | 554 +++++++++++++++++++++++++++++=
-++++
- hw/intc/xlnx-zynqmp-ipi.c              | 377 ++++++++++++++++++++++
- hw/microblaze/Makefile.objs            |   1 +
- hw/microblaze/boot.c                   |   2 +-
- hw/microblaze/xlnx-zynqmp-pmu.c        | 204 ++++++++++++
- include/hw/arm/xlnx-zynqmp.h           |   2 +
- include/hw/intc/xlnx-pmu-iomod-intc.h  |  58 ++++
- include/hw/intc/xlnx-zynqmp-ipi.h      |  57 ++++
- 15 files changed, 1275 insertions(+), 3 deletions(-)
- create mode 100644 hw/intc/xlnx-pmu-iomod-intc.c
- create mode 100644 hw/intc/xlnx-zynqmp-ipi.c
- create mode 100644 hw/microblaze/xlnx-zynqmp-pmu.c
- create mode 100644 include/hw/intc/xlnx-pmu-iomod-intc.h
- create mode 100644 include/hw/intc/xlnx-zynqmp-ipi.h
-
---
-2.14.1
-
-This email and any attachments are intended for the sole use of the named r=
-ecipient(s) and contain(s) confidential information that may be proprietary=
-, privileged or copyrighted under applicable law. If you are not the intend=
-ed recipient, do not read, copy, or forward this email message or any attac=
-hments. Delete this email message and any attachments immediately.

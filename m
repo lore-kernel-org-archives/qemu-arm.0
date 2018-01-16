@@ -1,342 +1,413 @@
-Received: by 10.28.173.206 with SMTP id w197csp4571912wme;
-        Tue, 16 Jan 2018 15:27:48 -0800 (PST)
-X-Google-Smtp-Source: ACJfBosBPXlKXACo/u+mGNSU0/D1Hhhaot8V0qH8jFgyIfln/MA6jtut6Ed29L7JhKO45YoHfoII
-X-Received: by 10.129.122.10 with SMTP id v10mr855407ywc.318.1516145268327;
-        Tue, 16 Jan 2018 15:27:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516145268; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp3738304wme;
+        Tue, 16 Jan 2018 01:40:56 -0800 (PST)
+X-Google-Smtp-Source: ACJfBovLKkbjpf9gMtDMMDMB8gPySKem6uvUxaAltHDEwN+rgY4wDLGYS5CVB78K31D/MPAxvO7Q
+X-Received: by 10.37.186.141 with SMTP id s13mr34653686ybg.432.1516095656089;
+        Tue, 16 Jan 2018 01:40:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516095656; cv=none;
         d=google.com; s=arc-20160816;
-        b=sU/J/8h5FpXN/fvuWQYmK+QN2A2ElhdHvht2dFGYW7h7726UjfAD5DlDM34vwOX7FN
-         tMSJiUCZzLQ43zdDNMMAhIk7nQcUNzlFHUMBnFsQ9LeXiAqmXYIimtD8iAZFCtKMjvCB
-         Dhvc1SuAHdbVsGg+gn4vOXxSODJaVahPLA4V94zoNz9a3h6ncshEiQDds1+i1pnR/s0g
-         iqKrt0gNYzFhuC4MILKx2O0pZ3hdsNjY3reQjVOvyhiYE6Np+YcN9pP0ZlYNxqAHZ8JH
-         iSHEXCP9AUf0SN/DYZDvibfezoiXnXFz+AOo3VtgldDk9JCSZAEigShoVqJLw6NlO9Z1
-         dbww==
+        b=SBXZKEVmVX764ZZl7xtG1XozrUKoyRyNyNvpYX0buQ07yK8U2rH3Wbz/Q0d7HfWb+0
+         OoU5tSdJbeUktuzbOpoDapwwyMog9IY9c0Q9aAbRON14B+kdYgkuKAtiUlzZmx7gCBER
+         rKZjp/9wEBVCLBzKniZuFrWuQRgGSq6cNvSoedCkLUtAXe4SwRDKEMtwmNR+Rhdmxiya
+         sDy8vvm17E+6a4qFhb6xHTI5nTK1zVnPBgjxnmHSgbxiBnKN/hF+sb0ZVjol4hEG0cpr
+         lq7u/CI121/GDF+sjc18n2ejV3C97Fl9noKMNixOHaL//3b5K+PH5tEefuuOcLEQiXwk
+         /ifw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:spamdiagnosticmetadata
-         :spamdiagnosticoutput:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:date:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=DFLERS8qygjQ39/GrQ7OycQfe4LsWetSMgLos3LKq4w=;
-        b=I6ht2HsT+KhkEEGkPJ+RQADyEyeEXlfTEXMNCB+MIWeIOBaEfesThyQLXpsTQ/n0kj
-         k/QSKA0dY/CdI78g9hFdlkwo+mwF5zGDRIEAukPBVXKLvPR/XcB+8bO46zlg5Mqd8oKN
-         B7CTYddWt5t3eXSszKeAvJ4osZQxT/V4hjGvyhNJ2EOtVVsdjQaMNeFKnm5UnoTUp388
-         V9O/TRUcClx+XIo08XGePq3/KQ2SIogrfJTCC/mKAijNSBDsLoF4nQO4sBTBnBkZdRL8
-         njlYysl91Lu6NGjtKdCfOxmttW66AijwS4ezFWqCJAgHafo3ptdrP68hYr1S6n4e9u3g
-         +6CA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:mime-version:user-agent
+         :date:message-id:to:from:arc-authentication-results;
+        bh=IypPNV4QZISO3AWzWhClgHw74L/PDpjWLlSiGOppbfw=;
+        b=nH9BapmRDV69gZOaV59jlYFNS6QLvB1KNTszuKpCtGL0+mvQusJxVkLB0zrHKnaOGY
+         JkkSPiDcdg/08OXR5y8A13BQ1g2RDyg7DCqyAAYkkFLSqS/ZVxi3cKpT3t8U1yMqBbDB
+         ajz/qf2GbsMyN/91HD0ArAR7HqRaV+bHmK4YhMlbHquZkwsJpSKiT+0YxnuUYRyPCihi
+         mSEpruqtvESVwN/ixHuviLxhEtc08/dAL3cjF/xCBubDjCEMeInSt0I2K7wZv0oqqYVE
+         AShx3cG/+45ETogE+ZcC5q9jIJYlfj//9OxkWqarv9faM+F/IpiDTTiOYBP9CldyEi7x
+         Xf1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=DS2pC9IM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n2si813034ybk.219.2018.01.16.15.27.48
+        by mx.google.com with ESMTPS id u9si429495ybj.445.2018.01.16.01.40.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Jan 2018 15:27:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 16 Jan 2018 01:40:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=DS2pC9IM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45523 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:51761 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ebadv-0004jV-Lx
-	for alex.bennee@linaro.org; Tue, 16 Jan 2018 18:27:47 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60790)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ebNjj-00035G-Ig
+	for alex.bennee@linaro.org; Tue, 16 Jan 2018 04:40:55 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58792)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistai@xilinx.com>) id 1ebadB-0004FX-3V
-	for qemu-arm@nongnu.org; Tue, 16 Jan 2018 18:27:02 -0500
+	(envelope-from <abdallah.bouassida@lauterbach.com>)
+	id 1ebNjP-00034U-27
+	for qemu-devel@nongnu.org; Tue, 16 Jan 2018 04:40:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistai@xilinx.com>) id 1ebad7-000233-Re
-	for qemu-arm@nongnu.org; Tue, 16 Jan 2018 18:27:01 -0500
-Received: from mail-dm3nam03on0070.outbound.protection.outlook.com
-	([104.47.41.70]:55712
-	helo=NAM03-DM3-obe.outbound.protection.outlook.com)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <alistai@xilinx.com>)
-	id 1ebad7-00022d-GL; Tue, 16 Jan 2018 18:26:57 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=xilinx.onmicrosoft.com; s=selector1-xilinx-com;
-	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=DFLERS8qygjQ39/GrQ7OycQfe4LsWetSMgLos3LKq4w=;
-	b=DS2pC9IMSaWIeE1eEvMrWZxrejB8jyKBOZh1/3nJMBaeWKA2kJuPq3SLeeCID13vAvdjxfysqiOx4LDyi1ni+voEUBDaD7EbSaFMuIntKMytW3T5Yt/T7yz5R+To461+3XsDBMz2wuqrjOfEVhb4dAmQF1Lzr4YZCAL2pi0j9Ok=
-Received: from MWHPR02CA0001.namprd02.prod.outlook.com (10.168.209.139) by
-	BY2PR02MB1332.namprd02.prod.outlook.com (10.162.79.27) with Microsoft
-	SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id
-	15.20.407.7; Tue, 16 Jan 2018 23:26:54 +0000
-Received: from BL2NAM02FT042.eop-nam02.prod.protection.outlook.com
-	(2a01:111:f400:7e46::204) by MWHPR02CA0001.outlook.office365.com
-	(2603:10b6:300:4b::11) with Microsoft SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.407.7 via
-	Frontend Transport; Tue, 16 Jan 2018 23:26:53 +0000
-Authentication-Results: spf=pass (sender IP is 149.199.60.83)
-	smtp.mailfrom=xilinx.com; nongnu.org; dkim=none (message not signed)
-	header.d=none;nongnu.org; dmarc=bestguesspass action=none
-	header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
-	149.199.60.83 as permitted sender) receiver=protection.outlook.com;
-	client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
-Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
-	BL2NAM02FT042.mail.protection.outlook.com (10.152.76.193) with
-	Microsoft SMTP Server (version=TLS1_0,
-	cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.345.12
-	via Frontend Transport; Tue, 16 Jan 2018 23:26:52 +0000
-Received: from unknown-38-66.xilinx.com ([149.199.38.66] helo=xsj-pvapsmtp01)
-	by xsj-pvapsmtpgw01 with esmtp (Exim 4.63)
-	(envelope-from <alistair.francis@xilinx.com>)
-	id 1ebad2-0000Mp-3H; Tue, 16 Jan 2018 15:26:52 -0800
-Received: from [127.0.0.1] (helo=localhost)
-	by xsj-pvapsmtp01 with smtp (Exim 4.63)
-	(envelope-from <alistair.francis@xilinx.com>)
-	id 1ebad2-0003Kp-1A; Tue, 16 Jan 2018 15:26:52 -0800
-Received: from xsj-pvapsmtp01 (mailman.xilinx.com [149.199.38.66])
-	by xsj-smtp-dlp1.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id
-	w0GNQlWv031031; Tue, 16 Jan 2018 15:26:47 -0800
-Received: from [172.19.2.220] (helo=xsjalistai50.xilinx.com)
-	by xsj-pvapsmtp01 with esmtp (Exim 4.63)
-	(envelope-from <alistair.francis@xilinx.com>)
-	id 1ebacx-0003KY-1g; Tue, 16 Jan 2018 15:26:47 -0800
-From: Alistair Francis <alistair.francis@xilinx.com>
-To: <qemu-devel@nongnu.org>, <edgar.iglesias@xilinx.com>,
-	<edgar.iglesias@gmail.com>
-Date: Tue, 16 Jan 2018 15:22:26 -0800
-Message-ID: <63f5e8b2687502e1d6c53e190869e88d134f5f14.1516144891.git.alistair.francis@xilinx.com>
-X-Mailer: git-send-email 2.14.1
-In-Reply-To: <cover.1516144891.git.alistair.francis@xilinx.com>
-References: <cover.1516144891.git.alistair.francis@xilinx.com>
-X-RCIS-Action: ALLOW
-X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23598.006
-X-TM-AS-User-Approved-Sender: Yes;Yes
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:149.199.60.83; IPV:NLI; CTRY:US; EFV:NLI;
-	SFV:NSPM;
-	SFS:(10009020)(39860400002)(39380400002)(376002)(346002)(396003)(2980300002)(438002)(189003)(199004)(2201001)(50226002)(305945005)(63266004)(5660300001)(8676002)(81166006)(6666003)(36386004)(575784001)(2950100002)(316002)(36756003)(8936002)(8746002)(2906002)(9786002)(81156014)(48376002)(110136005)(77096006)(59450400001)(4326008)(47776003)(478600001)(106466001)(106002)(50466002)(7696005)(54906003)(356003)(5890100001)(76176011)(118296001)(39060400002)(51416003)(26005)(230783001)(107986001)(2101003);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:BY2PR02MB1332; H:xsj-pvapsmtpgw01;
-	FPR:; SPF:Pass; PTR:unknown-60-83.xilinx.com; MX:1; A:1; LANG:en;
-X-Microsoft-Exchange-Diagnostics: 1; BL2NAM02FT042;
-	1:DaPZI1Qqf5IzUe6trFzy9lBimAOFqjb3gsGqwoHmrg/OKUolRHhaq3wZCCIuVoPZE8C+S1MAmv0zhnu9J6oSb/BHlmz5eze3aRCh1/nn+eh0rTh6ye4cVnBI8Dii2MAp
+	(envelope-from <abdallah.bouassida@lauterbach.com>)
+	id 1ebNjK-0007Qy-3H
+	for qemu-devel@nongnu.org; Tue, 16 Jan 2018 04:40:35 -0500
+Received: from smtp1.lauterbach.com ([62.154.241.196]:39021)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <abdallah.bouassida@lauterbach.com>)
+	id 1ebNjJ-0007EI-JU
+	for qemu-devel@nongnu.org; Tue, 16 Jan 2018 04:40:30 -0500
+Received: (qmail 30050 invoked by uid 484); 16 Jan 2018 09:40:11 -0000
+X-Qmail-Scanner-Diagnostics: from 41.224.44.126 by smtp1.lauterbach.com
+	(envelope-from <abdallah.bouassida@lauterbach.com>,
+	uid 484) with qmail-scanner-2.11 
+	(mhr: 1.0. clamdscan: 0.99/21437. spamassassin: 3.4.0.  
+	Clear:RC:1(41.224.44.126):. 
+	Processed in 0.311926 secs); 16 Jan 2018 09:40:11 -0000
+Received: from unknown (HELO [192.168.187.23])
+	(Authenticated_SSL:abouassida@[41.224.44.126])
+	(envelope-sender <abdallah.bouassida@lauterbach.com>)
+	by smtp1.lauterbach.com (qmail-ldap-1.03) with
+	ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
+	for <peter.maydell@linaro.org>; 16 Jan 2018 09:40:10 -0000
+From: Abdallah Bouassida <abdallah.bouassida@lauterbach.com>
+To: qemu-arm@nongnu.org
+Message-ID: <c2d2d787-8e45-f26a-54cf-9670a27dc836@lauterbach.com>
+Date: Tue, 16 Jan 2018 10:40:10 +0100
+User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.2
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 1a9e13a1-d28e-4909-4159-08d55d38a055
-X-Microsoft-Antispam: UriScan:; BCL:0; PCL:0;
-	RULEID:(7020095)(4652020)(5600026)(4604075)(4608076)(2017052603307)(7153060);
-	SRVR:BY2PR02MB1332; 
-X-Microsoft-Exchange-Diagnostics: 1; BY2PR02MB1332;
-	3:RoWYmzgu4qdONExPhKACrsA8+CyHsPmDbKDfYGj3z9vRFrOeoClk2U0W1OXy1FXKImB/gxW2FLfNUa4ZtZfMVhhb9CInRenhpGupTzffMOpKNvayeIpzA4JmM9onZKpfFeZCzkwZTjoGSy8ZrjR8uYaWnxYtaD9gOBDSo2mXMhV/dMFIJfPjZ/9r2qrx1zOIQLZuUQmmmjs7rCSDTYeA1hcu9KR73vW1Ya2BqSGhDhW0fKMdag31q0yJOh0m2fsybbHW6qjbqgl3KLotelhHBIU2OkHCkfdh4FNI5aCaasK9tsvprGTG+iHE2R3wmpud8ATsfUlEa5hiHmSHqALo5/S1p9ghQ4mTmTBW9HHjBvA=;
-	25:5zy6vEPFlBXphxrcxyRvGKUk1vrdHfHtKqzmKOM8nMVltC0h7eRb9uJpjjylGEA3FPYif8AeK+0ZvQU+OaFk5qIpB2mIHN9nwVJA7I3s0cGlAdxHa4RVefb6FMJlMNm1OJTPaB4QkfIZmB0RFKUJ0wgH0vquhp2iyhV7WzBMCwyiR5s9iYRVSVFcc7/D5fdCaSG5qXJxntHw3co4wrNSE/vZonULLQXO96grlFbI68w45SWW7MtW7VpE9S4lfKMuTVGPzStUvQwi13Bnum5+wYvJC4h1NPqWUfjMgkgaOuEa3WshVmdbMlzAc0ok+vPhcwAqfir2qJN9FO801z0OI0PP4HlEH9/XF2XZI/G+9uM=
-X-MS-TrafficTypeDiagnostic: BY2PR02MB1332:
-X-Microsoft-Exchange-Diagnostics: 1; BY2PR02MB1332;
-	31:vWu3RnKkLRJ8bodUUw7Uqv4nQM/JqYqunpN9TKjyacrb/Dwx0FFMHh+2IU/ikwojw2vGD59Igvs3ZsJcLlVQ1XRauSCfwILQsHPm0kx8CAmaTVfTYY89Fyea7noFFIA2s4p6dxh9Y7tYytHXdK3YKqIRcHHkn54B2mJiB1/t3ZvvZXBazdbgGnPBp/x2QsvwVTB+FmrC9dVxJRSJkQWte0f8sbfDVZ6BcOMXjGuUgn4=;
-	20:H2KQzZy6UzuppG1UJ3DqqbAa54jRHbyB4WTwUxNGlqrBYI0sKHKRrusRW0SxhjomXxuPoMMxvpcK6Xj8lGC4qJgEJEeimMnukwC1arPH8QQM8v6DEOYwA8FBKhbYDFHxDyCSNUkGTgfyJNKGsmmdcGfV5vC1kFayJ+SvMJrBcF54FYnqpbxZ4t93NrKzJifELOdzaV2yPPmuW6BQ80h5DiNVVnc9IthlLsxs4qFbGRKvuRE76wu7vGYAlaXfgYQordRZGKhWyrHfvoCIhiqocRr9rr5IbMzZ7rZ0UBJcZMYpo4rZquryuc6iUpvPtswbUtAoxZLq5MRdRAMWNy/WQEtDkP5blkJ1R5881rkVgX6/ZpoznHa0MlD1pzII0v73AR0gMPxIBzxtPPS2X+z97XP2yX2fFvspYh3ctEe9MDorcCqXRzwotG5u9J5Ly2JITjUHmVVY7r1bI+luAKpUjP+IIqjkvUf9pfR+VGfOWxPlyMrIh19L50EFjfyOJ7c6
-Content-Transfer-Encoding: quoted-printable
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-Microsoft-Antispam-PRVS: <BY2PR02MB133277F36D041A1292CDC912DCEA0@BY2PR02MB1332.namprd02.prod.outlook.com>
-X-Exchange-Antispam-Report-Test: UriScan:(192813158149592)(21532816269658);
-X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
-	RULEID:(6040470)(2401047)(8121501046)(5005006)(3002001)(93006095)(93004095)(10201501046)(3231023)(2400039)(944501161)(6055026)(6041268)(20161123564045)(20161123560045)(20161123558120)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(20161123562045)(6072148)(201708071742011);
-	SRVR:BY2PR02MB1332; BCL:0; PCL:0;
-	RULEID:(100000803101)(100110400095); SRVR:BY2PR02MB1332; 
-X-Microsoft-Exchange-Diagnostics: 1; BY2PR02MB1332;
-	4:G8W1+w+tLO1RqYIeqUUtEuo25u+togbRkYyAyHmDZxj3Cg8K64Wa3VyMPHa9ROca3/PN+/o53bb+4Hos8rCErjqHOa6B075RFJP43679WY9eqaCGOrwjprFeFxD6g9FmXsgxL6oeoebJpCyZ4x9yu3+mbjeQN9Blivm0HRDsCVn2Sn+X8IYEy8FH9tr1dDYV9pPF/61s/WVEGl/7SJzl0lQ9/d0a0iFTtntwL2DlnWhENZFyHud7qeJiK1Pbw2I95Xu6rt1iOMcAF+fmMmqQe68OidiTqGs49ZZER6tV5pP602Ydw39PHSadv+RXpTHzQyXvocIQmICGD71KslqvZE3mpMj8Qkm2o6cD76Rqmeo=
-X-Forefront-PRVS: 0554B1F54F
-X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; BY2PR02MB1332;
-	23:pAw0viyaw2mye2d8U11UxjacmVN0ztuf4UqpJdLE3?=
-	=?us-ascii?Q?KBUrt2mze0ysNfE9f/cqliW01KRCMIuddeRcF6WJsyPZQY8xWf6L+ED8GU/I?=
-	=?us-ascii?Q?aMuy7NE5umYoJ/qNeptkes6IoesRTUnkLozBMLrZtCBF/HOBWemOedI62TLk?=
-	=?us-ascii?Q?yQLHvv2hG7pIkHELm335LiJSnWbKcBouD0lwN2rOS/V2MZq/b2xaQQKGjoDD?=
-	=?us-ascii?Q?C9F6YenLPDfh7asstMDTc39mZpS3+V7wt2iOltiV8TlOy2fFEEOLkjL+WSCm?=
-	=?us-ascii?Q?y36egXXkUFwWiQlBf8hElJ5RmorDAmGQoEte8p7NPC7Yui3GDVSot2VoptSJ?=
-	=?us-ascii?Q?EobRvJzRfEyqX5vmLtoweWYCH94sx/BHMCbz3ZzJbj+0xvQe9X2vh+3slmk7?=
-	=?us-ascii?Q?XVtzc9BqlT9xx1DXiHw/fchnra4AWje+LihHcOgagQHSX+lfJr/9T1SqSn/U?=
-	=?us-ascii?Q?zCT4C5TGdG6PdW8M0RUZDy0ADlyvSKEKJhMRXygb3xzPIWag/N+VCfN5cvIL?=
-	=?us-ascii?Q?SJhrcG0r8qiK/KcVg7rv4sYKT6guHgwBGd5Objpg8l6bMzespkxaXoPOvKva?=
-	=?us-ascii?Q?UoNzufC7PZqyhzGTcWfQFSx714B50hhUHYos3Ci/TkNak/ILu0N5gVyIOJWU?=
-	=?us-ascii?Q?kAWllA9MoBh6kvjI68QU5LHK6BtlZV+DnLuVPkJTamL0QUV5YJsPrZBOwwdK?=
-	=?us-ascii?Q?nFcvWiXGoBj8VSyKcgHFM8uVSzLjlUwwoHx7pEukdknV4UCMS+OtVci+e9iZ?=
-	=?us-ascii?Q?iPsEbR+cGzZ5CbC/IJc+i6Xr4c7w7ojHdlQy7B2L4FavWSQUD4lhHuIsFUHC?=
-	=?us-ascii?Q?sdVVqPLZI1DsPzHg+OdsN8KBKBeFub8drARBvKWnJjOmiAi3pIZC5gpZcVWU?=
-	=?us-ascii?Q?zlklU1S6kyKEdxnwDJPTbdZEb5QjR2Cr4vx69x7zOeTkB7oEbR6uDK6hhByf?=
-	=?us-ascii?Q?zCu/5broKGoJF+jTf+fki8tc8wUBAY9OYalTIrQ+g2BTu6D5MiG/2L3LARMK?=
-	=?us-ascii?Q?DYl0fiLoykhCW7WHW2BhTgNkdkA4XqcLnAGs4I75ZkgYLpZfOSPyMp7QRZep?=
-	=?us-ascii?Q?OMvWdVP61DKK9GWefG7XcFowfViH2Z9UQb5mL2bKMvl9qDIMPWW5LiDrt0N6?=
-	=?us-ascii?Q?ufyZDtus+bwjNaB9YUieFDJB7wSw3eYKXCFQT3Yoxvb3cHbJ4fycQ=3D=3D?=
-X-Microsoft-Exchange-Diagnostics: 1; BY2PR02MB1332;
-	6:xbB6ytXTrZbPeSUlrj8hjvddn/7RSWeZtEG5QJm8riop3u8zsTScnosh8Sysz8eStNS9vk9RIsdXtgeSY7e090Nw8wM0PwQBQ6olNtEiLwRDoGPg4FPGaE1C5Imii+L0J4xekPrOoEJYGgKpkdI7t4W321qjbifwfv3Xa/ZPCK3ZdmTlqa9ELH4tFYz+67Tkcbt+VcLjkZ5TLtPqfbTkuNXOzfH98MA2/jMsPToSOvoGUJDDHrgMnOYMMaxC4AMXdaPgCil0VpO2snbzv2V/U66RYd4b292av40KyggQ58CXfjzPwcswUiEsjEOhg4xhS3HNHu2TMIot4lYWu+NHbCatjDEhJZLfaCoXgqHzvPo=;
-	5:FUCRomASKBDr/RpOs0aJecgnDCt3UwJWIwperS1VnCV1kVsV7dj1nOhmG5zk0w+YIy1aCJNpbMFuGb7+9NgBm8QtTlpKJcqUols6UunT/mYqDBCAFkfHioHTcSri4mrFym+R0EBtaLQJUYv4GOcuBox6nCsn+fyS0522MR6LWQs=;
-	24:SPLma2eGdKjv6DPfu3wixBMV1eqv/gYWWXqv/jaUIJ4AocgWuDI7CPAOLHxmfWQyKx1htjh7aCytwui7Tm5y1k9jG81oqXJb8EAFYNc0gm0=;
-	7:pUdLAdnEBnKpJkKjwr7+e2YyRL47txv5ore2cM8o9V/OAU8gXAemDeXA0DlLyi1eH1wDyR56tYDCnxQP6JPLLvQLrWAynxTQOoCYaUf8mZQSpOF3YvLe9CeN2ewXrY7dkfTwOj5+1m5PDvW0zWrWxisNmOKLsYp2XwGRwGWB41gNsICp9r7j5azQHtVwaxwo7FPBrs8aocxkBUB3jNoxKw3xSo3k7bhkewC5E4qEmEX9OCVX1/DqY8mNPN3DJ7b4
-SpamDiagnosticOutput: 1:99
-SpamDiagnosticMetadata: NSPM
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Jan 2018 23:26:52.9630 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1a9e13a1-d28e-4909-4159-08d55d38a055
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c;
-	Ip=[149.199.60.83]; Helo=[xsj-pvapsmtpgw01]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY2PR02MB1332
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 104.47.41.70
-Subject: [Qemu-arm] [PATCH v5 3/9] xlnx-zynqmp-pmu: Add the CPU and memory
-X-BeenThere: qemu-arm@nongnu.org
+Content-Language: en-US
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 62.154.241.196
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Content-Filtered-By: Mailman/MimeDel 2.1.21
+Subject: [Qemu-devel] [PATCH RFC] target-arm:Add a dynamic XML-description
+ of the cp-registers to GDB
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: alistair23@gmail.com, qemu-arm@nongnu.org, alistair.francis@xilinx.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: A0I4K/o8pbWK
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Khaled Jmal <khaled.jmal@lauterbach.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zvODjmeAfh5q
 
-Connect the MicroBlaze CPU and the ROM and RAM memory regions.
+[PATCH RFC] target-arm:Add a dynamic XML-description of the cp-registers 
+to GDB
 
-Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+This patch offers to GDB the ability to read/write all the coprocessor
+registers for ARM and ARM64 by generating dynamically an XML-description for
+these registers.
+
+- gdbstub.c :
+         *Extend the get_feature_xml() to handle the dynamic XML 
+generation for
+            architectures that support this 
+(gdb_coprocessor_dynnamic_xml == true)
+         *Extend the gdb_write_register() and gdb_read_register() to 
+handle the
+           write and the read of these registers.
+- include/qom/cpu.h:
+         *Add a new structure "XMLDynamicDescription".
+         *Declare the new variables and function pointers.
+- target/arm/cpu.c:
+         *Initialize the new variables and function pointers for ARM.
+- target/arm/cpu.h:
+         *Declare the new read, write and XML dynamic generation functions.
+         *Declare the write_raw_cp_reg() as I have changed it to non static.
+- target/arm/gdbstub.c:
+         *Define the new functions for ARM:
+             arm_generate_xml(): is called for each register of the 
+hashtable cp_regs
+                          to generate the right XML "<reg />" line for it.
+             arm_get_feature_xml_dynamically(): generate the XML 
+dynamically.
+             arm_cpu_gdb_read_cpregister(): To read the coprocessor 
+registers.
+             arm_cpu_gdb_write_cpregister(): To write the coprocessor 
+registers.
+
+This patch is tagged as [RFC] because I need help to review the 
+following points:
+*I only take the registers that (!(ri->type & (ARM_CP_NO_RAW|ARM_CP_ALIAS)))
+So, am I covering all the Coprocessor registers with that?
+*For the ARM64, should I differentiate the registers that have two views 
+(32 and 64)
+Maybe by adding in the XML description a "32" tag for the registers name 
+for the
+32bit view and a "64" for the 64bit view.
+*How to properly handle the secure and the non secure views?
+
+Signed-off-by: Abdallah Bouassida <abdallah.bouassida@lauterbach.com>
 ---
+  gdbstub.c            | 18 +++++++++++
+  include/qom/cpu.h    | 19 +++++++++++
+  target/arm/cpu.c     |  5 +++
+  target/arm/cpu.h     |  6 +++-
+  target/arm/gdbstub.c | 90 
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+  target/arm/helper.c  |  3 +-
+  6 files changed, 138 insertions(+), 3 deletions(-)
 
-V4:
- - Remove the ZCU102 name
-V2:
- - Fix the pmu-cpu name
- - Use err and errp for CPU realise instead of error_fatal
-
- hw/microblaze/xlnx-zynqmp-pmu.c | 70 +++++++++++++++++++++++++++++++++++++=
-++--
- 1 file changed, 68 insertions(+), 2 deletions(-)
-
-diff --git a/hw/microblaze/xlnx-zynqmp-pmu.c b/hw/microblaze/xlnx-zynqmp-pm=
-u.c
-index ac0f78928a..c6a0b3b8a1 100644
---- a/hw/microblaze/xlnx-zynqmp-pmu.c
-+++ b/hw/microblaze/xlnx-zynqmp-pmu.c
-@@ -18,8 +18,11 @@
- #include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "qemu-common.h"
-+#include "exec/address-spaces.h"
- #include "hw/boards.h"
-+#include "hw/qdev-properties.h"
- #include "cpu.h"
-+#include "boot.h"
-
- /* Define the PMU device */
-
-@@ -27,21 +30,56 @@
- #define XLNX_ZYNQMP_PMU_SOC(obj) OBJECT_CHECK(XlnxZynqMPPMUSoCState, (obj)=
-, \
-                                               TYPE_XLNX_ZYNQMP_PMU_SOC)
-
-+#define XLNX_ZYNQMP_PMU_ROM_SIZE    0x8000
-+#define XLNX_ZYNQMP_PMU_ROM_ADDR    0xFFD00000
-+#define XLNX_ZYNQMP_PMU_RAM_ADDR    0xFFDC0000
+diff --git a/gdbstub.c b/gdbstub.c
+index f1d5148..b0124c8 100644
+--- a/gdbstub.c
++++ b/gdbstub.c
+@@ -670,10 +670,20 @@ static const char *get_feature_xml(const char *p, 
+const char **newp,
+                  pstrcat(target_xml, sizeof(target_xml), r->xml);
+                  pstrcat(target_xml, sizeof(target_xml), "\"/>");
+              }
++            if (cc->gdb_coprocessor_dynamic_xml) {
++                pstrcat(target_xml, sizeof(target_xml), "<xi:include 
+href=\"");
++                pstrcat(target_xml, sizeof(target_xml), \
++                        "coprocessor_dynamic.xml");
++                pstrcat(target_xml, sizeof(target_xml), "\"/>");
++            }
+              pstrcat(target_xml, sizeof(target_xml), "</target>");
+          }
+          return target_xml;
+      }
++    if (strncmp(p, "coprocessor_dynamic.xml", len) == 0) {
++        CPUState *cpu = first_cpu;
++        return cc->get_feature_xml_dynamically(cpu);
++    }
+      for (i = 0; ; i++) {
+          name = xml_builtin[i][0];
+          if (!name || (strncmp(name, p, len) == 0 && strlen(name) == len))
+@@ -697,6 +707,10 @@ static int gdb_read_register(CPUState *cpu, uint8_t 
+*mem_buf, int reg)
+              return r->get_reg(env, mem_buf, reg - r->base_reg);
+          }
+      }
 +
- typedef struct XlnxZynqMPPMUSoCState {
-     /*< private >*/
-     DeviceState parent_obj;
++    if (reg < cpu->gdb_num_regs + cc->gdb_num_cpregs) {
++        return cc->gdb_read_cpregister(cpu, mem_buf, reg - 
+cpu->gdb_num_regs);
++    }
+      return 0;
+  }
 
-     /*< public >*/
-+    MicroBlazeCPU cpu;
- }  XlnxZynqMPPMUSoCState;
+@@ -715,6 +729,10 @@ static int gdb_write_register(CPUState *cpu, 
+uint8_t *mem_buf, int reg)
+              return r->set_reg(env, mem_buf, reg - r->base_reg);
+          }
+      }
++
++    if (reg < cpu->gdb_num_regs + cc->gdb_num_cpregs) {
++        return cc->gdb_write_cpregister(cpu, mem_buf, reg - 
+cpu->gdb_num_regs);
++    }
+      return 0;
+  }
 
- static void xlnx_zynqmp_pmu_soc_init(Object *obj)
- {
-+    XlnxZynqMPPMUSoCState *s =3D XLNX_ZYNQMP_PMU_SOC(obj);
+diff --git a/include/qom/cpu.h b/include/qom/cpu.h
+index 93bd546..f40ee59 100644
+--- a/include/qom/cpu.h
++++ b/include/qom/cpu.h
+@@ -76,6 +76,19 @@ typedef void (*CPUUnassignedAccess)(CPUState *cpu, 
+hwaddr addr,
+  struct TranslationBlock;
 
-+    object_initialize(&s->cpu, sizeof(s->cpu),
-+                      TYPE_MICROBLAZE_CPU);
-+    object_property_add_child(obj, "pmu-cpu", OBJECT(&s->cpu),
-+                              &error_abort);
- }
+  /**
++ * XMLDynamicDescription:
++ * @desc: Contains the XML descriptions.
++ * @num_cpregs: Number of the Coprocessor registers seen by GDB.
++ * @xml_cpregs_ordred_keys: Array that contains the corresponding Key of
++ * a given cpreg with the same order of the cpreg in the XML description.
++ */
++typedef struct XMLDynamicDescription {
++    char * desc;
++    int num_cpregs;
++    uint32_t *xml_cpregs_ordred_keys;
++} XMLDynamicDescription;
++
++/**
+   * CPUClass:
+   * @class_by_name: Callback to map -cpu command line model name to an
+   * instantiatable CPU type.
+@@ -196,6 +209,12 @@ typedef struct CPUClass {
 
- static void xlnx_zynqmp_pmu_soc_realize(DeviceState *dev, Error **errp)
- {
+      const struct VMStateDescription *vmsd;
+      const char *gdb_core_xml_file;
++    bool gdb_coprocessor_dynamic_xml;
++    XMLDynamicDescription dyn_xml;
++    int gdb_num_cpregs;
++    char * (*get_feature_xml_dynamically)(CPUState *cpu);
++    int (*gdb_read_cpregister)(CPUState *cpu, uint8_t *buf, int reg);
++    int (*gdb_write_cpregister)(CPUState *cpu, uint8_t *buf, int reg);
+      gchar * (*gdb_arch_name)(CPUState *cpu);
+
+      void (*cpu_exec_enter)(CPUState *cpu);
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index cc1856c..00efae4 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1751,6 +1751,11 @@ static void arm_cpu_class_init(ObjectClass *oc, 
+void *data)
+  #endif
+      cc->gdb_num_core_regs = 26;
+      cc->gdb_core_xml_file = "arm-core.xml";
++    cc->gdb_coprocessor_dynamic_xml=true;
++    cc->gdb_num_cpregs = 0;
++    cc->get_feature_xml_dynamically = arm_get_feature_xml_dynamically;
++    cc->gdb_read_cpregister = arm_cpu_gdb_read_cpregister;
++    cc->gdb_write_cpregister = arm_cpu_gdb_write_cpregister;
+      cc->gdb_arch_name = arm_gdb_arch_name;
+      cc->gdb_stop_before_watchpoint = true;
+      cc->debug_excp_handler = arm_debug_excp_handler;
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 9631670..16f84e3 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -797,6 +797,9 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState 
+*cpu, vaddr addr,
+
+  int arm_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int reg);
+  int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
++char *arm_get_feature_xml_dynamically(CPUState *cpu);
++int arm_cpu_gdb_read_cpregister(CPUState *cpu, uint8_t *buf, int reg);
++int arm_cpu_gdb_write_cpregister(CPUState *cpu, uint8_t *buf, int reg);
+
+  int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
+                               int cpuid, void *opaque);
+@@ -2005,7 +2008,8 @@ static inline bool cp_access_ok(int current_el,
+
+  /* Raw read of a coprocessor register (as needed for migration, etc) */
+  uint64_t read_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri);
 -
-+    XlnxZynqMPPMUSoCState *s =3D XLNX_ZYNQMP_PMU_SOC(dev);
-+    Error *err =3D NULL;
++void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri,
++                             uint64_t v);
+  /**
+   * write_list_to_cpustate
+   * @cpu: ARMCPU
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index 04c1208..123da12 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -101,3 +101,93 @@ int arm_cpu_gdb_write_register(CPUState *cs, 
+uint8_t *mem_buf, int n)
+      /* Unknown register.  */
+      return 0;
+  }
 +
-+    object_property_set_uint(OBJECT(&s->cpu), XLNX_ZYNQMP_PMU_ROM_ADDR,
-+                             "base-vectors", &error_abort);
-+    object_property_set_bool(OBJECT(&s->cpu), true, "use-stack-protection"=
-,
-+                             &error_abort);
-+    object_property_set_uint(OBJECT(&s->cpu), 0, "use-fpu", &error_abort);
-+    object_property_set_uint(OBJECT(&s->cpu), 0, "use-hw-mul", &error_abor=
-t);
-+    object_property_set_bool(OBJECT(&s->cpu), true, "use-barrel",
-+                             &error_abort);
-+    object_property_set_bool(OBJECT(&s->cpu), true, "use-msr-instr",
-+                             &error_abort);
-+    object_property_set_bool(OBJECT(&s->cpu), true, "use-pcmp-instr",
-+                             &error_abort);
-+    object_property_set_bool(OBJECT(&s->cpu), false, "use-mmu", &error_abo=
-rt);
-+    object_property_set_bool(OBJECT(&s->cpu), true, "endianness",
-+                             &error_abort);
-+    object_property_set_str(OBJECT(&s->cpu), "8.40.b", "version",
-+                            &error_abort);
-+    object_property_set_uint(OBJECT(&s->cpu), 0, "pvr", &error_abort);
-+    object_property_set_bool(OBJECT(&s->cpu), true, "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
- }
++static void arm_generate_xml(gpointer key, gpointer value, gpointer cs)
++{
++    ARMCPU *cpu = ARM_CPU(cs);
++    CPUClass *cc = CPU_GET_CLASS(cpu);
++    XMLDynamicDescription *dyn_xml = &cc->dyn_xml;
++    ARMCPRegInfo *ri = value;
++    uint32_t ri_key= *(uint32_t *)key;
++    CPUARMState *env = &cpu->env;
++    char **target_xml=(char **)&(dyn_xml->desc);
++    char *tmp_xml=*target_xml;
++
++    if (!(ri->type & (ARM_CP_NO_RAW|ARM_CP_ALIAS))) {
++        if (cpreg_field_is_64bit(ri)){
++            if (arm_feature(env, ARM_FEATURE_AARCH64)) {
++                *target_xml=g_strconcat(*target_xml, "<reg name=\"", \
++                        ri->name, "\" bitsize=\"64\"/>", NULL);
++            } else {
++                return;
++            }
++        } else {
++            *target_xml=g_strconcat(*target_xml, "<reg name=\"", \
++                    ri->name, "\" bitsize=\"32\"/>", NULL);
++        }
++        g_free(tmp_xml);
++        dyn_xml->num_cpregs++;
++        dyn_xml->xml_cpregs_ordred_keys=g_renew(uint32_t, \
++                dyn_xml->xml_cpregs_ordred_keys, dyn_xml->num_cpregs);
++        dyn_xml->xml_cpregs_ordred_keys[dyn_xml->num_cpregs - 1] = ri_key;
++    }
++}
++
++char *arm_get_feature_xml_dynamically(CPUState *cs)
++{
++    ARMCPU *cpu = ARM_CPU(cs);
++    CPUClass *cc = CPU_GET_CLASS(cpu);
++
++    cc->dyn_xml.num_cpregs=0;
++    cc->dyn_xml.desc=g_strconcat("<?xml version=\"1.0\"?>", \
++                       "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">", \
++                       "<feature name=\"org.gnu.gdb.dynamic.cp\">", NULL);
++    g_hash_table_foreach(cpu->cp_regs, arm_generate_xml, cs);
++    cc->dyn_xml.desc=g_strconcat( cc->dyn_xml.desc, "</feature>", NULL);
++    cc->gdb_num_cpregs=cc->dyn_xml.num_cpregs;
++    return  cc->dyn_xml.desc;
++}
++
++int arm_cpu_gdb_read_cpregister(CPUState *cs, uint8_t *mem_buf, int n)
++{
++    ARMCPU *cpu = ARM_CPU(cs);
++    CPUClass *cc = CPU_GET_CLASS(cpu);
++    ARMCPRegInfo *ri;
++    CPUARMState *env = &cpu->env;
++    uint32_t key;
++
++    key = cc->dyn_xml.xml_cpregs_ordred_keys[n];
++    ri=(ARMCPRegInfo 
+*)get_arm_cp_reginfo(arm_env_get_cpu(env)->cp_regs, key);
++       if (ri) {
++           if(cpreg_field_is_64bit(ri)){
++               return gdb_get_reg64(mem_buf, 
+(uint64_t)read_raw_cp_reg(env,ri));
++           } else {
++               return gdb_get_reg32(mem_buf, 
+(uint32_t)read_raw_cp_reg(env,ri));
++           }
++       }
++       return 0;
++}
++
++int arm_cpu_gdb_write_cpregister(CPUState *cs, uint8_t *mem_buf, int n)
++{
++    ARMCPU *cpu = ARM_CPU(cs);
++    CPUClass *cc = CPU_GET_CLASS(cpu);
++    ARMCPRegInfo *ri;
++    CPUARMState *env = &cpu->env;
++    uint32_t tmp_buf,key;
++
++    tmp_buf = ldl_p(mem_buf);
++    key = cc->dyn_xml.xml_cpregs_ordred_keys[n];
++       ri=(ARMCPRegInfo 
+*)get_arm_cp_reginfo(arm_env_get_cpu(env)->cp_regs, key);
++       if (ri) {
++        if (!(ri->type & ARM_CP_CONST)) {
++            write_raw_cp_reg(env, ri, tmp_buf);
++            if (cpreg_field_is_64bit(ri)) {
++                return 8;
++            } else {
++                return 4;
++            }
++        }
++    }
++    return 0;
++}
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index d1395f9..fedc6bc 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -191,8 +191,7 @@ uint64_t read_raw_cp_reg(CPUARMState *env, const 
+ARMCPRegInfo *ri)
+      }
+  }
 
- static void xlnx_zynqmp_pmu_soc_class_init(ObjectClass *oc, void *data)
-@@ -70,7 +108,35 @@ type_init(xlnx_zynqmp_pmu_soc_register_types)
+-static void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri,
+-                             uint64_t v)
++void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t v)
+  {
+      /* Raw write of a coprocessor register (as needed for migration, etc).
+       * Note that constant registers are treated as write-ignored; the
+-- 
+1.9.1
 
- static void xlnx_zynqmp_pmu_init(MachineState *machine)
- {
--
-+    XlnxZynqMPPMUSoCState *pmu =3D g_new0(XlnxZynqMPPMUSoCState, 1);
-+    MemoryRegion *address_space_mem =3D get_system_memory();
-+    MemoryRegion *pmu_rom =3D g_new(MemoryRegion, 1);
-+    MemoryRegion *pmu_ram =3D g_new(MemoryRegion, 1);
-+
-+    /* Create the ROM */
-+    memory_region_init_rom(pmu_rom, NULL, "xlnx-zynqmp-pmu.rom",
-+                           XLNX_ZYNQMP_PMU_ROM_SIZE, &error_fatal);
-+    memory_region_add_subregion(address_space_mem, XLNX_ZYNQMP_PMU_ROM_ADD=
-R,
-+                                pmu_rom);
-+
-+    /* Create the RAM */
-+    memory_region_init_ram(pmu_ram, NULL, "xlnx-zynqmp-pmu.ram",
-+                           machine->ram_size, &error_fatal);
-+    memory_region_add_subregion(address_space_mem, XLNX_ZYNQMP_PMU_RAM_ADD=
-R,
-+                                pmu_ram);
-+
-+    /* Create the PMU device */
-+    object_initialize(pmu, sizeof(XlnxZynqMPPMUSoCState), TYPE_XLNX_ZYNQMP=
-_PMU_SOC);
-+    object_property_add_child(OBJECT(machine), "pmu", OBJECT(pmu),
-+                              &error_abort);
-+    object_property_set_bool(OBJECT(pmu), true, "realized", &error_fatal);
-+
-+    /* Load the kernel */
-+    microblaze_load_kernel(&pmu->cpu, XLNX_ZYNQMP_PMU_RAM_ADDR,
-+                           machine->ram_size,
-+                           machine->kernel_filename,
-+                           machine->dtb,
-+                           NULL);
- }
-
- static void xlnx_zynqmp_pmu_machine_init(MachineClass *mc)
---
-2.14.1
-
-This email and any attachments are intended for the sole use of the named r=
-ecipient(s) and contain(s) confidential information that may be proprietary=
-, privileged or copyrighted under applicable law. If you are not the intend=
-ed recipient, do not read, copy, or forward this email message or any attac=
-hments. Delete this email message and any attachments immediately.

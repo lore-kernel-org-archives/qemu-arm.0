@@ -1,107 +1,107 @@
-Received: by 10.28.173.206 with SMTP id w197csp4574433wme;
-        Tue, 16 Jan 2018 15:31:00 -0800 (PST)
-X-Google-Smtp-Source: ACJfBovl7mRfDVaQZWkInh4liERgg3Qk8aGx80oarvNATl+zkaT+aFRgS5UXwFONlKbL6PchcM9T
-X-Received: by 10.13.214.84 with SMTP id y81mr792603ywd.499.1516145460692;
-        Tue, 16 Jan 2018 15:31:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516145460; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp4576493wme;
+        Tue, 16 Jan 2018 15:33:28 -0800 (PST)
+X-Google-Smtp-Source: ACJfBosh5MkqMlCvbsVvl+HJ0eyuXw0gRTys59ca+n2lm6+Dy5PNOjBypkva+HdRsqMlKlbU2wUK
+X-Received: by 10.37.66.79 with SMTP id p76mr28000971yba.26.1516145608025;
+        Tue, 16 Jan 2018 15:33:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516145608; cv=none;
         d=google.com; s=arc-20160816;
-        b=NBQv+x8ZA/1bL0Gl6fCUs/7nq7eEmSmNCBat9aS89fByVd77xQRMgSvDZ9LyehbAND
-         7XwlmquMunhiObAMLx6D/1w0BcXZOzfQ2nCOSsiJGhtyQQ51MfK6bSdW+CxkIZokkyJx
-         SjoCJSjm0qzOgJBGhrZHnl6iteIqhvWtMKd2nR5XmoOLeMGLNbw079uX4CJht+iEESbr
-         6aSzcuHJq9NNsnYNzMKH3SUUCHvT5TiDW/aXtsGUWuH1fc7aY3Z4v4dVFbrf4nujBqLr
-         KU+b62UIJhDqTcxwj3hjG17ID6DZoSTMFpYLMAmsRJhRww+ZTEyXJdfcfxMDOAyOfMTm
-         Jb0A==
+        b=FeGFQhBKIxfY01XQS5WNlP/a85DfG16ynaV22C2/oznHaNN21FyBrTx+LD6m2MAUfN
+         YBEoiUdflzPmtGowYdkc1VlLgteaxeXXVKAKpaO7qRih9Idak8aB2TfYjIR2SeZbjZVq
+         Bg4Kbe5NCcc5uX2LI+J6C0z38U4595S9wMpy4ZHbXZFuIrFez9vdpqEY7iXsxfrgHQ8K
+         /LqL3j4dhIjrLSIjJfy0T//WjP7+2WYKR9XunCd1WFTIGGBdetFygCby1tpfMUwtB3+V
+         9e5OSSJx7Cg8BNuBSIV2KhfgTbEKFhf1qF9Nwor0QvYq9EsFsnu6syKxu9MAwMl9wHKY
+         HBFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:spamdiagnosticmetadata
          :spamdiagnosticoutput:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:to:from:dkim-signature
          :arc-authentication-results;
-        bh=QZoWndFWeGN1rUg99N43hPHqmAyyZLXrsqQgLjTfbl0=;
-        b=o993J21HFsGmP+BmWDdWttzmeXxIwL0P08+KZeGvMq07dgA5vYaVUHX/kQyhIGnZrd
-         X08LllJa2zWXMjaYXENTut6qilFGIFosd9cBFYyRnYLGjaETSMdgHYDyVhd6hKXCqVms
-         J9McheiybxPKjxMhVYPxVOj4oHNqcQBrnOOiot/6/r06iNqCH3KkY4CJi426b7GjLtn3
-         fXjnC2GfHZ/qrsCOhvUOY5zUlidXpqWYxGOu09YumywhfyumtHbDL5JfWkwranKr9gTz
-         v4+sjPzQ3xlzzqTAVdbXBvwRRXocruTJUGI6ZlmSQxfv0hXPQUPkU+uxgO8+oude0Qpi
-         akfA==
+        bh=kli1XjtiQ69hxp6JXdCpoU+XtCYTevumEyxDmH/zc8g=;
+        b=z8R9Ergcbuh48iHRPvpK3bdSKcIwMB2nS+cP53/VvTd24/JsEhJ9D8eZaPqmx/CXjA
+         Ebe0y7BBcatZD6MkTo6xFF18jgZrydqcsfNIyVfZh0Zuq30ze5nmQgIp8lrGP+aQ0LnD
+         fhkIGGhFMBrju8kO4jVPZYj7ywQX70Xaievr7GRuW7y2NHAPQ0yesLNjTmlpEys3sYwO
+         ynujvShlsLtuKreoemRwjgqVaNPM9pjzC1FqcMOdOqB/QtmpThEazaOMm97a4FfX5uwE
+         vXsPVZIA45W+7Akue/r+B+d7fkf/cQCw2K8mJfH6b038tOYGt8Ap+nt5pv8yG16cUE2d
+         WAsg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=G2SYo6mX;
+       dkim=fail header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=AdIn2QTX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s15si871814ybc.24.2018.01.16.15.31.00
+        by mx.google.com with ESMTPS id z3si795809ywi.574.2018.01.16.15.33.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Jan 2018 15:31:00 -0800 (PST)
+        Tue, 16 Jan 2018 15:33:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=G2SYo6mX;
+       dkim=fail header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=AdIn2QTX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45631 helo=lists.gnu.org)
+Received: from localhost ([::1]:45641 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ebah2-0007Zv-4i
-	for alex.bennee@linaro.org; Tue, 16 Jan 2018 18:31:00 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60883)
+	id 1ebajP-0000rG-9d
+	for alex.bennee@linaro.org; Tue, 16 Jan 2018 18:33:27 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60923)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistai@xilinx.com>) id 1ebadJ-0004NH-5h
-	for qemu-arm@nongnu.org; Tue, 16 Jan 2018 18:27:10 -0500
+	(envelope-from <alistai@xilinx.com>) id 1ebadL-0004PF-1D
+	for qemu-arm@nongnu.org; Tue, 16 Jan 2018 18:27:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistai@xilinx.com>) id 1ebadG-00027h-VV
-	for qemu-arm@nongnu.org; Tue, 16 Jan 2018 18:27:09 -0500
-Received: from mail-dm3nam03on0604.outbound.protection.outlook.com
-	([2a01:111:f400:fe49::604]:25696
+	(envelope-from <alistai@xilinx.com>) id 1ebadH-000288-Ni
+	for qemu-arm@nongnu.org; Tue, 16 Jan 2018 18:27:11 -0500
+Received: from mail-dm3nam03on0050.outbound.protection.outlook.com
+	([104.47.41.50]:60704
 	helo=NAM03-DM3-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <alistai@xilinx.com>)
-	id 1ebadG-00027U-No; Tue, 16 Jan 2018 18:27:06 -0500
+	id 1ebadH-00027c-Cu; Tue, 16 Jan 2018 18:27:07 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=xilinx.onmicrosoft.com; s=selector1-xilinx-com;
 	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=QZoWndFWeGN1rUg99N43hPHqmAyyZLXrsqQgLjTfbl0=;
-	b=G2SYo6mX/VTz4eF3K/X3YvFmUHCH0ykRDQciZ3rb1dQji4S9vWDKgDJn9uuXBMJ4XpBkb9iIkI2Nj8s041VaiMa16+8UnwKNpwEZvr+438FYFNKXlebYCHLQYLSTICxiG2458633hDH6QZV0+nGgXzdvdLfmnFkI7NhlfFT2dDk=
-Received: from SN4PR0201CA0028.namprd02.prod.outlook.com (10.162.76.14) by
-	BY2PR02MB1329.namprd02.prod.outlook.com (10.162.79.24) with Microsoft
+	bh=kli1XjtiQ69hxp6JXdCpoU+XtCYTevumEyxDmH/zc8g=;
+	b=AdIn2QTXPEyQVXoFZERdQavMPzjma6me7CKSftqB31UBriIXcG7FcTJCepq2kOm3lqtSE6zmtBFhfZhUIug3AcowDKcwIoikf9XU8JHnmQOUgL40ipbPUXPshb49AwShej9USul3i8cofLasqNXbptSsKiatupjHg54XdHdwTRc=
+Received: from MWHPR02CA0043.namprd02.prod.outlook.com (10.164.133.32) by
+	SN1PR02MB1342.namprd02.prod.outlook.com (10.162.0.148) with Microsoft
 	SMTP Server (version=TLS1_2,
 	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id
 	15.20.407.7; Tue, 16 Jan 2018 23:27:04 +0000
-Received: from BL2NAM02FT047.eop-nam02.prod.protection.outlook.com
-	(2a01:111:f400:7e46::204) by SN4PR0201CA0028.outlook.office365.com
-	(2603:10b6:803:2e::14) with Microsoft SMTP Server (version=TLS1_2,
+Received: from SN1NAM02FT008.eop-nam02.prod.protection.outlook.com
+	(2a01:111:f400:7e44::203) by MWHPR02CA0043.outlook.office365.com
+	(2603:10b6:301:60::32) with Microsoft SMTP Server (version=TLS1_2,
 	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.407.7 via
 	Frontend Transport; Tue, 16 Jan 2018 23:27:03 +0000
-Authentication-Results: spf=pass (sender IP is 149.199.60.100)
+Authentication-Results: spf=pass (sender IP is 149.199.60.83)
 	smtp.mailfrom=xilinx.com; nongnu.org; dkim=none (message not signed)
 	header.d=none;nongnu.org; dmarc=bestguesspass action=none
 	header.from=xilinx.com;
 Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
-	149.199.60.100 as permitted sender) receiver=protection.outlook.com;
-	client-ip=149.199.60.100; helo=xsj-pvapsmtpgw02;
-Received: from xsj-pvapsmtpgw02 (149.199.60.100) by
-	BL2NAM02FT047.mail.protection.outlook.com (10.152.77.9) with Microsoft
-	SMTP Server (version=TLS1_0,
+	149.199.60.83 as permitted sender) receiver=protection.outlook.com;
+	client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
+Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
+	SN1NAM02FT008.mail.protection.outlook.com (10.152.72.119) with
+	Microsoft SMTP Server (version=TLS1_0,
 	cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.345.12
 	via Frontend Transport; Tue, 16 Jan 2018 23:27:02 +0000
-Received: from unknown-38-66.xilinx.com ([149.199.38.66]:55995
-	helo=xsj-pvapsmtp01) by xsj-pvapsmtpgw02 with esmtp (Exim 4.63)
+Received: from unknown-38-66.xilinx.com ([149.199.38.66] helo=xsj-pvapsmtp01)
+	by xsj-pvapsmtpgw01 with esmtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1ebadC-0004Nt-80; Tue, 16 Jan 2018 15:27:02 -0800
+	id 1ebadC-0000Mv-Au; Tue, 16 Jan 2018 15:27:02 -0800
 Received: from [127.0.0.1] (helo=localhost)
 	by xsj-pvapsmtp01 with smtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1ebadC-0003M3-6N; Tue, 16 Jan 2018 15:27:02 -0800
-Received: from xsj-pvapsmtp01 (mailhost.xilinx.com [149.199.38.66])
+	id 1ebadC-0003M3-9Y; Tue, 16 Jan 2018 15:27:02 -0800
+Received: from xsj-pvapsmtp01 (smtp2.xilinx.com [149.199.38.66])
 	by xsj-smtp-dlp1.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id
-	w0GNQtUc031055; Tue, 16 Jan 2018 15:26:55 -0800
+	w0GNQqGT031049; Tue, 16 Jan 2018 15:26:53 -0800
 Received: from [172.19.2.220] (helo=xsjalistai50.xilinx.com)
 	by xsj-pvapsmtp01 with esmtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1ebad5-0003LP-AN; Tue, 16 Jan 2018 15:26:55 -0800
+	id 1ebad2-0003LH-SJ; Tue, 16 Jan 2018 15:26:52 -0800
 From: Alistair Francis <alistair.francis@xilinx.com>
 To: <qemu-devel@nongnu.org>, <edgar.iglesias@xilinx.com>,
 	<edgar.iglesias@gmail.com>
-Date: Tue, 16 Jan 2018 15:22:34 -0800
-Message-ID: <bf2241c222a9441e466d5460f81d49ff1e0bba07.1516144891.git.alistair.francis@xilinx.com>
+Date: Tue, 16 Jan 2018 15:22:32 -0800
+Message-ID: <0e03927fb6c990f877cf847434b0ed230a52ea2a.1516144891.git.alistair.francis@xilinx.com>
 X-Mailer: git-send-email 2.14.1
 In-Reply-To: <cover.1516144891.git.alistair.francis@xilinx.com>
 References: <cover.1516144891.git.alistair.francis@xilinx.com>
@@ -110,80 +110,79 @@ X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23598.006
 X-TM-AS-User-Approved-Sender: Yes;Yes
 X-EOPAttributedMessage: 0
 X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:149.199.60.100; IPV:NLI; CTRY:US; EFV:NLI;
+X-Forefront-Antispam-Report: CIP:149.199.60.83; IPV:NLI; CTRY:US; EFV:NLI;
 	SFV:NSPM;
-	SFS:(10009020)(396003)(376002)(346002)(39860400002)(39380400002)(2980300002)(438002)(199004)(189003)(356003)(5890100001)(36756003)(59450400001)(36386004)(478600001)(110136005)(230783001)(575784001)(77096006)(8936002)(118296001)(81166006)(51416003)(8746002)(2950100002)(76176011)(2201001)(26005)(54906003)(2906002)(50226002)(81156014)(7696005)(63266004)(47776003)(316002)(106002)(5660300001)(9786002)(39060400002)(305945005)(8676002)(4326008)(50466002)(6666003)(106466001)(48376002)(107986001)(5001870100001)(2101003);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:BY2PR02MB1329; H:xsj-pvapsmtpgw02;
-	FPR:; SPF:Pass; PTR:xapps1.xilinx.com,unknown-60-100.xilinx.com;
-	A:1; MX:1; LANG:en; 
-X-Microsoft-Exchange-Diagnostics: 1; BL2NAM02FT047;
-	1:56Z+4M99D1wjhaEyc9x03zwrkwKOadELCMQUSkoJ4l1zf4MCA2Mgn1p9yUwH3jlk1KLds9xJ2iCxW/Ys6XqRCq+zb8Qi76/6xGRbHZevJRzJMkEjnXvZZm5EaEiEuSqZ
+	SFS:(10009020)(396003)(346002)(39860400002)(376002)(39380400002)(2980300002)(438002)(199004)(189003)(5660300001)(47776003)(81166006)(478600001)(5890100001)(8936002)(50226002)(9786002)(81156014)(63266004)(26005)(118296001)(8746002)(8676002)(106466001)(305945005)(4326008)(356003)(36386004)(230783001)(39060400002)(6666003)(77096006)(51416003)(7696005)(54906003)(48376002)(110136005)(76176011)(575784001)(2906002)(106002)(2950100002)(316002)(50466002)(2201001)(36756003)(59450400001)(107986001)(2101003)(309714004);
+	DIR:OUT; SFP:1101; SCL:1; SRVR:SN1PR02MB1342; H:xsj-pvapsmtpgw01;
+	FPR:; SPF:Pass; PTR:unknown-60-83.xilinx.com; A:1; MX:1; LANG:en;
+X-Microsoft-Exchange-Diagnostics: 1; SN1NAM02FT008;
+	1:QrdoIBZ+2xfy+9eyYrQDoTBcDF9xc4TIRvxRZ3EwCzmGyXfovV5QgjE5XUx2TOWy278WCAH9MPjT0gbMI2mbQDPONm2N355Xv2aSrqSj91KP59beo3ge/s+2aLsau3qf
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 3adcb2f2-e9b7-4123-71ed-08d55d38a623
+X-MS-Office365-Filtering-Correlation-Id: 0bcf2826-b700-4aa0-eccf-08d55d38a639
 X-Microsoft-Antispam: UriScan:; BCL:0; PCL:0;
 	RULEID:(7020095)(4652020)(5600026)(4604075)(4608076)(2017052603307)(7153060);
-	SRVR:BY2PR02MB1329; 
-X-Microsoft-Exchange-Diagnostics: 1; BY2PR02MB1329;
-	3:wRgonysnMYUyBDAn4ve0y4LNlgBsv30C8Lv7O+l2BXEA9E+Fe2egcVXfDmmZveTOQoSRjPcX9vIb9JPLhHNc3l8rq9YF1IFIX9yNwZh5ghxv7FQ2fJZO/j+JyisFHHsEexAepgRE3L9TtPmsL6JReh1fZqANxGLNukmb2+UAHpu2bfW91cDjq9MSyW3LUwI7hXmni4LXmTyS1Icgq1nqCHfLbJv3VqsqjOvBd8eJLBD7SKnTVAmku4xZHA7BHCcyxSWPmGiTME6ByXUo0VIy/LnrM2f6as0cKluxwaiEwnjT8VZDF0ri04I5G1ejpqR/Zg3kp/9BJaCMtyNZ2Ua2gtLX+OpgAvkAaFEDoETTyD0=;
-	25:tDCSM6mm59AklybUqHUx6bJLPfsj3eUevijVX7XUUpyhERS53teUbg+tFQHjFLUn8dA0zE5c8dC6XX9Kg1BvvjaNNlE5XNgym3ZZs+ylNsuR+r1fO+GA5Llak/KuQss5bwPGZMToYSxWv99GNN1BE+JVRrm82wx+LCPaM+46G5cfhiU/MiCIjN0Q0IG0GzZDp3qdixOXZS/GyADCvvo+AtembRRawByXcRSbRf/GqbBwI6x/zO6JI9PGtScrEqj/ggyJjf7oAKFa0ecBrLLDHibcZ5vyj2CX7+HZe+cEGGQ9nlSy2FYuFaQpvtrfBO8fIEteNIpx//3czLiIpe4fZLIlRlyW2Z2+w4t9ZYuCQ3k=
-X-MS-TrafficTypeDiagnostic: BY2PR02MB1329:
-X-Microsoft-Exchange-Diagnostics: 1; BY2PR02MB1329;
-	31:M3ckgSUpF0Ki/gjirAOXN5GDcIQi/0hoFvfrdfg+Ib2aVHwThTsdaEUgSMC/XVEXaWP5lnufYgMEHtXIyAxIFNyfPdJqBFVf2j9Bp2KWkGx9xZULB8S5LAXPFyAPujuiOvWtMVOiRu6qlX2njIoHIADgXsRbBaOI2czV3Voudp+WtnxQHmSFA7rU9KM4ufoGp/nbBDfsVggNv357G2XmSUpCt7B0YaIl9dl8+FauL00=;
-	20:BnhcTQBjiWqz05EaOo1q9oRT5IOzUWYokB2/jXtQYs8MKKIfiK+TkPNdlehPZ9sWq5RKj2ka/zrUPucOF+OtaSb6g/FoLTQHL+OTZmw4BBk5m87xaRpl/HsRWSq8mv7G9QQkufuCuDVVknVitioySe7OpzanB6/gggzjeGNG2a/7118VFPUiZ/vrw37euuyzwRqxLgLdnLvKG3Bm8nI8ah3ZaDHrZU6C+4LOU4cdr0TzH7flVODBBjcc+0j3aDRIl9EEmFsjY/Yj9qJsqVt1jtTFfffk+tUlv/8oce0hzvAOLSoT9v3C8gkMQzOFOuGWpLrKXtvfK/WnYvtClnVK1V+TYhz+DjWnB+UB71gUlHtTAFx7K09D63LUhAyyHdZ0OmdoM4ikLWhv+uUkC/CcqUtZfgsQksS6RnzJq9p1ikMGnea1Hss+zVhSMaTHgyuv4/jLf/8XMDW9DZfG4KNjVL/+piDI9Uou9GxWoEygyvbPQu70x/ocVdrG/FRJboob
+	SRVR:SN1PR02MB1342; 
+X-Microsoft-Exchange-Diagnostics: 1; SN1PR02MB1342;
+	3:A52GCtIV2P3fO8wMejbl+y8wyYLk5e12iozJlXmGLQGAwi53NyWY0GY/pTgERHuLx8EBZdUyb3sFfnScpEwERZFeVTMXA0XevQBjXtpu2106QzaCKJ6j1oYHLkjvRVj4g3j9WKpz+hgcdXIFDWn66Z82GuektVzpvY6vjZHkYw0u7JqO2HCsLb7uw/zE7nW6sogBdiI8wMCK3iqDJ0YIjCJgAddV+6Pz55JHUteQu92LYpki5/FCMSnxWzoInKdfL6ujCjwk/GaSjd/nAyP29ALHLYQXt5OAJ7LjwVW9C/MEIiCQEsh8sMTWXYXsHiUurzbIyCxwYD5khot0uVx6i/Mr8YGKZhttQmYL2LfPBcc=;
+	25:P4WU0xSfaOATpkkcLf2rgMN+x7y0Gdz0q8I0v21aKFr+HvoVzny2sQJ7mKP1W8lOYmGZA7HM4J3qx9tys59jSS+0ABjURkjiTVKrMy7dFT0sfWYu25OUpokPnI3fUm66u1Y8aU53zqvIWdTc8dbf5UJl5L6hszGCmWKp2E01HdcFe4oTcaEtc7UyYiapnlkQ52M1iv9WIEHJOBonUmErQGqEPpeN+pd95Zglkex/xq17PpUlvfGv9h0KaXMqXtopxiEoGK08vx+bdq3KSfjoZ/rQjYaQZv3+O58LLV8WTrrnCvtTOARJm6LKSAJrntqqnLEiJo1L10+lQcgp8kukPpCmiu6OlKmAXw+DSLHkFzM=
+X-MS-TrafficTypeDiagnostic: SN1PR02MB1342:
+X-Microsoft-Exchange-Diagnostics: 1; SN1PR02MB1342;
+	31:/Kf681WWmtaBRyf6uZ0afhIjqVwgWsvnUJeK+j9mUNEBpR+1ZV2OSuJNDvf/Hhjmhcdgj7scMJOBRo3LB5gn1MO3mOzknLZN9CdpZQFcJAfzWJD7IOeCc0tkXoNAx4gMjdEb6WHKysYXrUP3k6UHKqGjKtsYE+zoKY+Y5MzYkOTtcenb0Fc4IkxqiQ/B010AECsubDgXdz4FlBNmZdthQ/MIIQCKXx6iRx7sErUWpaM=;
+	20:Jc4TsbZdRUbkhzrygnDHVlQzgzl6bORqhEnQMqEHST+L6iJIfGNLvFJr4p0iUzifv+1gZQKRACQd5B1kaOUXJaTVWpdUWolFNdiRAClW5Lvnm+s1gSTvsJhqCg6I9AuPmjsgVgxhEkoKgoqEVsm2/4C0+QV4ZVE16zNKPDLvqxRwbOJmTCH5kDBl6tLgH9Gqfqf/SNiFNfhjOQhd8pmb3oPaYbsL6/RgLxVDbF6DZN2J3yawKWrx8vL9kF/n+z3A7hsXwlQsn9yVewB3UqL4t7jW02GFEMHMcy1kZOlHjRwrWXm1rvT14uNMmGGRvHPwwiB3fdoGkluctxE77qHLwTu8u3yYuIP6g6vugnF+2vY4Kcu8yui6eAiT8cSRYBa5Z3Rwa+g4jb69zlHfEZSVr32xR1ivWfEYj+k/ZlNGDw+Fsv0bNfrTfMLHujj+ht+KEHT6fU0Y7idpKLgwL7KP6PCXph/97lgzKpdPooo0jBfzPJEP0H8iwUFAtPuuNNnl
 Content-Transfer-Encoding: quoted-printable
 X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-Microsoft-Antispam-PRVS: <BY2PR02MB13294E38FE66C3AC824BCA1ADCEA0@BY2PR02MB1329.namprd02.prod.outlook.com>
-X-Exchange-Antispam-Report-Test: UriScan:(192813158149592)(21532816269658);
+X-Microsoft-Antispam-PRVS: <SN1PR02MB13421529C82F6D8CE212ABF7DCEA0@SN1PR02MB1342.namprd02.prod.outlook.com>
+X-Exchange-Antispam-Report-Test: UriScan:(192813158149592);
 X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
-	RULEID:(6040470)(2401047)(5005006)(8121501046)(93006095)(93004095)(3002001)(3231023)(2400039)(944501161)(10201501046)(6055026)(6041268)(20161123560045)(20161123564045)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(20161123562045)(20161123558120)(6072148)(201708071742011);
-	SRVR:BY2PR02MB1329; BCL:0; PCL:0;
-	RULEID:(100000803101)(100110400095); SRVR:BY2PR02MB1329; 
-X-Microsoft-Exchange-Diagnostics: 1; BY2PR02MB1329;
-	4:P8gGgBrJkNg0Ooza2lIVL1ftudUrGJlamD/i1fhs1dQjC2OW6WbUWYD95reqzOtfiRHDNjyqWkw9JB0ztmRVbDXITIzBrR8vuNC//x7LmUT6eSU9B4w9efc/BXCJY74g2GPXhAfPfBYU/peEzBAEKQCcFYQzXLzfy4UVWq8siunRhyVZOuBYvzzzYjgfipvpa09HX7gR75/Uv2owLt2u/COFgamnQboWK1Gl9Pzdlj1nVFpIerQkEq6CXi4TyBF977pzhTg+p0yZr/9OgOO3ZzIU4rBaoRnpCaycFNY9z+8nb5Vm7iBRtJ9kVY+gRz5jvwJtEB8QbNcES4uonSs2DHms2L56Pnew8XSTLUiJdk8=
+	RULEID:(6040470)(2401047)(5005006)(8121501046)(93006095)(93004095)(10201501046)(3231023)(944501161)(3002001)(6055026)(6041268)(20161123562045)(20161123560045)(20161123564045)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(20161123558120)(6072148)(201708071742011);
+	SRVR:SN1PR02MB1342; BCL:0; PCL:0;
+	RULEID:(100000803101)(100110400095); SRVR:SN1PR02MB1342; 
+X-Microsoft-Exchange-Diagnostics: 1; SN1PR02MB1342;
+	4:U15N9qeo08xi76xDS8LdbsETZJ7Hq4QIAzJJcWV8u2hXnD2Oen7ntc+IfWEOh1n/KQK49a0Y1AwMY+Q6abW+k5oQDUQ7kKR52Q2exvGS/aUYcvGdgqySwpt1TXzycVdN7Fqe6P/vwjdoA/oHy/0O1wyC6zmBLGpuXkWPAR/NoGlhcDtzv8dtRCbgGXAhyUR6lm6lAwUUuUhwgvPm2cz4Mmivr4QIhNU7i/Zpdc0dmEfdksoJxU28JuOok9R3qoqfdnZeqnzpUcLnT+0hagTt0rmFqL/C58CDV0QNRc/ZA7m7NqC3BEbDGUDIRtSv26Kh
 X-Forefront-PRVS: 0554B1F54F
-X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; BY2PR02MB1329;
-	23:cwC5JKHkWtrei/NmgjPTz5DKClRLCWyI9JZwmyzlP?=
-	=?us-ascii?Q?LhktGp2YUCeERc2/dPBt79LaEFYuEUFnOOaP56Pmsl1fCbmFJl8rrjMlFy61?=
-	=?us-ascii?Q?sd0h662sAPVJ3YCRrAWsHlaBWYcXM45UIvseJBmlGAQBpVT1UtnXDG1PkY5v?=
-	=?us-ascii?Q?thdqkAfQ7s5S5a8fVkRg7++3lSEVbgWypCR5OTaq96pxZJ02WhxCk5xA8bPz?=
-	=?us-ascii?Q?fLkfk+jyJqPwWNxQouIKjcl+87xlBmPwB3K+4tXozTJoeop80DpdzkBDqUIU?=
-	=?us-ascii?Q?NimoVje7rppputN1v10mfRtYt4424GrPJ+1BOD6OdEqRjw9cfA5+Olg40y//?=
-	=?us-ascii?Q?02UUN0DIsfzlOYVM5i1V5GQ4ystK5P/40hIZlAots7ep/Emm+aUDCxdSMZnF?=
-	=?us-ascii?Q?FJH1f7qieG4dkGf+q+1gsScqRSc0gkVnA3CGS6bDJghu7QnQlUB8kufu0Evv?=
-	=?us-ascii?Q?TFT/NgZv1ZA9rYVguGluHt6FrfcKxXiJX18v9MEDJsDBWYn/tmygtYG5bOBE?=
-	=?us-ascii?Q?0tryS11xRlSCtZkw6ndi4g31AX3y/U6i9hp07Ahs0+TXYiABY9feWt0v8zq/?=
-	=?us-ascii?Q?1KJu/Af4E5ybA4a8rvfZ9XDvdtcV3KwlSlVRDGMTWqCPShMgQGSO0nBLPOEE?=
-	=?us-ascii?Q?xi/CnYgL2S/4G00TOEoA6yi9OPC7UoUpjapDTdfLdlnQaBUzxo+KqDl2e+EW?=
-	=?us-ascii?Q?EMWSsmn/82tGf51QKwJ9/zOb/FS6urKAortzHPmR1g+8JZN12t8SLwnGdwLv?=
-	=?us-ascii?Q?7kaqNVG+k8CVTMLkeQzWDPPzQX+G+WmtFC51/rBfG1GbGBVYP0O8lhcCv8Lq?=
-	=?us-ascii?Q?k/Hj2CnfBY2KYXs3GeG5+Ht0MiwMUQnEWzOYQM0n0saYMn9/QpOwQFdlLgZu?=
-	=?us-ascii?Q?kvvTJJZRdVVLP7dnL1ok0VtgBcOej/bJVX8HZNj3kPjyA2Nde6VF7M1SU2rN?=
-	=?us-ascii?Q?buG2g0lbYmToaGu0COPiYdlwbw5hO/6bET0dY8tGuh7phA0otCxRvdK/ePFU?=
-	=?us-ascii?Q?oeG/YWVY4qLEIJ55jBwqqhyKUDspdrlWtScPkMw7IC7+mfBC/hbOMvE3uyh4?=
-	=?us-ascii?Q?VIf4ls8TERYs6qd2jtSqU2bYoRtrwH/opHifNPlLwf2RNovU9ndY/5TiQmIK?=
-	=?us-ascii?Q?WLpu3ufGmUPAajlXyEDpm6u9irP6JUa0ApKjbccOMU6+UweWmHqAVw/uJeFy?=
-	=?us-ascii?Q?V93Thds41doQ8c=3D?=
-X-Microsoft-Exchange-Diagnostics: 1; BY2PR02MB1329;
-	6:LRqBzyi5w4tqK3V7KNWrZTDhPV2ZrSxMBdMRx7a1QODL894ioWaUdAPFqtPfeuA2JCnm7Qu8ePYRRfUC2shttSPNZItR2R0IWg5rHJBixRTbV864dhYyiPfivOO7e/W49xf+h/Ch355RsL4Aj5HH33Y5RRFJ+zzPtp3X6mBOKxnCdZu6dMhyHjNjMWpclhYrYK0e5qxCZlyGQxVhS4C70o29zX3m1eILryPn63/8HXboXjL6eJCQ7JM7A/ujKOVxA3uzXGe4w5W8oo4yY1fxsn4Ne+sr42m68ugsR0b56JYEMBFIlOrINpyg6VEQqyC5FL5VgtTa/4JYAnYX/6TY75xcnvuzly7fpkOGAzrD1OY=;
-	5:Ge225HvYo+NvIxL4uXPHoeED0oZh2Zt6im33p3GCZ97MDyYJFvUQyxL+vwm9VHME70CDOzet5zJ/9xjOKAn1BbYUzcXU8bfBqiUg3PXuhigH/9wvDDaiDROik20F6MMYyXGthZwn6hCt553CCx9K+990apZdxm9thjrUu9ZDFNc=;
-	24:rPux+lFYtT0Yqv4lE7sOLfwVRawqaf87fcM0oAzkFrPBBqrDSWAohvJWvw3T4GKonwettKDSk5pmcL4KHqcLkUMqN3Baqvq0GtS/nc1e8s0=;
-	7:bJmDmw8w05PNR5/anRuNnK3ed/3hcUWAkji4Ezamrlx5AP+WFKqu0nuCIiKzm1iDeq4Un8F1SNLYjhQhZVVTSGAK0oG3Cll1T+Epgho/dAkF+N7gq1E0zqyOh/gvWbS/9ZA/N0Mesip2A5MPF/ge0tK59AZeqpen+ZqmPI3vnSbggJNW0m+C+zCQoyWWE0NK8i20zBybTbpYdIl/nacF3CiOCBD6HJ51k+FYPSIgwoc1wOs+bcg4GeinD61RZF5V
+X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; SN1PR02MB1342;
+	23:kbBxuYLOjThiW0pTrZWG55Y/ZJM6h3wABXlbqaB6M?=
+	=?us-ascii?Q?t6hatRTu9Bz5xgL+z1ihFWsUCCXH4s5ms/aUzuA6aQdxT9eEVDM6+bH/6PIR?=
+	=?us-ascii?Q?hPV6faKwA/ssX5LBCr2bMqcxzG5Uv/N8GQzMcq7trHXYGpgPpG+8mhY8MYoK?=
+	=?us-ascii?Q?/7tuI6+vNyVJKBhbnbpegNTK5pa6Kv1fnEa/9hspLZ7vwK4XR+Van4ye+uwO?=
+	=?us-ascii?Q?Qmb5K2jNZJtI9e2Vud3Nx2HyCLbN5ryBgBcDFkVOFoWCoMhFyG8t/zNu73fA?=
+	=?us-ascii?Q?0iGO+9BhHycCenNAmzMzpLVXDO0AAGcw+1V98fpDrTnRIKTRS8kDaJjz5JRq?=
+	=?us-ascii?Q?ovsl/SfZEMlhTD0KQK5BOlhRZtH+zurR8Agl/K7k1gsbbhBfRaEuNhthzuGF?=
+	=?us-ascii?Q?3bq+nQpgTYqsdhvQ1nA58xdjpjlYViIUIHMUJPgljk0G8R1jAZdV++DicwOp?=
+	=?us-ascii?Q?AzQrF06Cej+y6fnm8RuporCJXqcOON7KxGNA+EpVdoExtGLs4AxVcnxC2iUr?=
+	=?us-ascii?Q?Wp0cXjDzKp9QZCzjz55V/XMrpCrabrX4DQv8SF6uWtp/jsnRdsnKYci+k2Gg?=
+	=?us-ascii?Q?Kffa99+3O//vpelD0oLAs4V98SsbOu6GAJpQfivtAwazGSwYL8O15IS3Vk1k?=
+	=?us-ascii?Q?AS9fXyAVm9T1YkGeuvyXv4qpWsEMRSjoGpdUL42PkD+cjFQnTQEWwcudhf6g?=
+	=?us-ascii?Q?qml0EiH8nQr/LOpsf98QRqXHFr6rZ3AYQTZ2NPFYSHgFtWv2ouKXCfQ9Epeo?=
+	=?us-ascii?Q?l5D4ifxV4pYgLgfsONVHLq4rBpSqqTkRwN6D7FaDSx8bOToMQ1AGMzTEdYby?=
+	=?us-ascii?Q?adtjSzZn9b9RuyaYX2BhRySDBaRkMhkzTNKm9c0SUh9aHIwiRghn7H4/mvp2?=
+	=?us-ascii?Q?BX1VySLFoyirdliCiAe3XgzM72KeY4Rj0I1Ii5j56HU5ip/dCzvDd1YE2gV9?=
+	=?us-ascii?Q?kI3PoJjI6tng33qXnagXfPiiYOOTLrObJN08ImAw8K3u8DESSE6KChJIdfx0?=
+	=?us-ascii?Q?2kVoFgDAqo9MIykIoje05mCPbDStfrVY/FPFiS8Po4PPFJe+9SKTeonES7Yn?=
+	=?us-ascii?Q?ZlFqCOmxhYxVrOskcr8dL94vbIBIezRg4feKnfecmWmC0vRUQ0+iitictgCf?=
+	=?us-ascii?Q?Qn7XP5TQJOAzOpcNAxzcuLKI46/DufSKa3JaS2yYZXPv0rtZ+DUUQKcoFzZB?=
+	=?us-ascii?Q?W9vyi1YP/7+rI8=3D?=
+X-Microsoft-Exchange-Diagnostics: 1; SN1PR02MB1342;
+	6:3kNL+WJRah3wtwTLZ97s8AWF/KLQzGcIgR0Vkdtbil7JKp5iZ/ar5LO2NMvdDMOOF3w+CZGANdggFINF9RDUuOKGRgaahfQw0vRj4bBfK259j8ZERc3EQLWGMuKrpIuleX6nDMBpQR5hSTts45az/YTpHrJoKztxEr9OmJij+1CJgW+LsoLKnzWgK0iZfdeCr6csvFaQCRK1dJOSEEs049dqCLZZtdQjnaZaykTXCn8/wpUXOLWxEuVrIuCMEPv39kNCj8tqbVOlv6+UAnZfCJXhbdo4zXrSMWoi78+HZJ2QIlZde05vM41Mm2KjAfDw3suV1bjmQc0sovpm1s2EjOHl0h04RjApl+5eXmaUk5s=;
+	5:AfjmYRdEdR5dwTuu9Hy8AlKlfbSFcnfbuaBRnEurjYeNiUDKezDwIT7MZRfTlLxj76ZCx+gNfsP48czEs9+XhXoqlG/YDFeUKNWhbv6cG9IglA4RJ0YBEFQtSRQqFTyL0AHDBeWj7gmPCBi/D9S9ESTA6LmJd+DG4688FCyM+CU=;
+	24:wFaAlXoBT+Ku0T9rsjG+t/rLyf2AlVPzLbMTnzyOiENEC7l3Losw0mVK/d/NakrPbs2P7Wn+GlS1aHiFwoNRoJp1DgO1+vLTEVK+F/kFRTk=;
+	7:p90T+smb1PmNACoaKy/kHkC2YmTCqK/gZG3IknbFOSvCln/CVSdbhBJAaZ9dYtGYNKc8t41XmCerD3Y37BrB7baq9P6AoPSd/pkt5wCIbHeyPJ/kccDfYMExlQsvhpc8uT8Xrcgh3Fpb0O0oLt0OLiNBYf2v6PweZE0+TjYB4QTYmoGAK2erAj/ybXE5qek1je1oiq2jTu1A1f/eSJgaOoC6nIIrvxnQc+a7MuWcKIJEO2da0vUTHN9N6tu1z3Ga
 SpamDiagnosticOutput: 1:99
 SpamDiagnosticMetadata: NSPM
 X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Jan 2018 23:27:02.7810 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3adcb2f2-e9b7-4123-71ed-08d55d38a623
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Jan 2018 23:27:02.7877 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0bcf2826-b700-4aa0-eccf-08d55d38a639
 X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c;
-	Ip=[149.199.60.100]; Helo=[xsj-pvapsmtpgw02]
+	Ip=[149.199.60.83]; Helo=[xsj-pvapsmtpgw01]
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY2PR02MB1329
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN1PR02MB1342
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 2a01:111:f400:fe49::604
-Subject: [Qemu-arm] [PATCH v5 6/9] xlnx-zynqmp-pmu: Connect the PMU
- interrupt controller
+X-Received-From: 104.47.41.50
+Subject: [Qemu-arm] [PATCH v5 5/9] xlnx-pmu-iomod-intc: Add the PMU
+ Interrupt controller
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -198,82 +197,693 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: alistair23@gmail.com, qemu-arm@nongnu.org, alistair.francis@xilinx.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: d6OM2uo6TBti
+X-TUID: ULwlLi9DDNdA
+
+Add the PMU IO Module Interrupt controller device.
 
 Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
 Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 ---
 
- hw/microblaze/xlnx-zynqmp-pmu.c | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
+ default-configs/microblaze-softmmu.mak |   1 +
+ hw/intc/Makefile.objs                  |   1 +
+ hw/intc/xlnx-pmu-iomod-intc.c          | 554 +++++++++++++++++++++++++++++=
+++++
+ include/hw/intc/xlnx-pmu-iomod-intc.h  |  58 ++++
+ 4 files changed, 614 insertions(+)
+ create mode 100644 hw/intc/xlnx-pmu-iomod-intc.c
+ create mode 100644 include/hw/intc/xlnx-pmu-iomod-intc.h
 
-diff --git a/hw/microblaze/xlnx-zynqmp-pmu.c b/hw/microblaze/xlnx-zynqmp-pm=
-u.c
-index c6a0b3b8a1..828eeedc9f 100644
---- a/hw/microblaze/xlnx-zynqmp-pmu.c
-+++ b/hw/microblaze/xlnx-zynqmp-pmu.c
-@@ -24,6 +24,8 @@
- #include "cpu.h"
- #include "boot.h"
-
+diff --git a/default-configs/microblaze-softmmu.mak b/default-configs/micro=
+blaze-softmmu.mak
+index ce2630818a..7fca8e4c99 100644
+--- a/default-configs/microblaze-softmmu.mak
++++ b/default-configs/microblaze-softmmu.mak
+@@ -9,3 +9,4 @@ CONFIG_XILINX_SPI=3Dy
+ CONFIG_XILINX_ETHLITE=3Dy
+ CONFIG_SSI=3Dy
+ CONFIG_SSI_M25P80=3Dy
++CONFIG_XLNX_ZYNQMP=3Dy
+diff --git a/hw/intc/Makefile.objs b/hw/intc/Makefile.objs
+index ae358569a1..211655023e 100644
+--- a/hw/intc/Makefile.objs
++++ b/hw/intc/Makefile.objs
+@@ -3,6 +3,7 @@ common-obj-$(CONFIG_I8259) +=3D i8259_common.o i8259.o
+ common-obj-$(CONFIG_PL190) +=3D pl190.o
+ common-obj-$(CONFIG_PUV3) +=3D puv3_intc.o
+ common-obj-$(CONFIG_XILINX) +=3D xilinx_intc.o
++common-obj-$(CONFIG_XLNX_ZYNQMP) +=3D xlnx-pmu-iomod-intc.o
+ common-obj-$(CONFIG_ETRAXFS) +=3D etraxfs_pic.o
+ common-obj-$(CONFIG_IMX) +=3D imx_avic.o
+ common-obj-$(CONFIG_LM32) +=3D lm32_pic.o
+diff --git a/hw/intc/xlnx-pmu-iomod-intc.c b/hw/intc/xlnx-pmu-iomod-intc.c
+new file mode 100644
+index 0000000000..1ce2f4fa6b
+--- /dev/null
++++ b/hw/intc/xlnx-pmu-iomod-intc.c
+@@ -0,0 +1,554 @@
++/*
++ * QEMU model of Xilinx I/O Module Interrupt Controller
++ *
++ * Copyright (c) 2013 Xilinx Inc
++ * Written by Edgar E. Iglesias <edgar.iglesias@xilinx.com>
++ * Written by Alistair Francis <alistair.francis@xilinx.com>
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a=
+ copy
++ * of this software and associated documentation files (the "Software"), t=
+o deal
++ * in the Software without restriction, including without limitation the r=
+ights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or se=
+ll
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included=
+ in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS=
+ OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY=
+,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OT=
+HER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING=
+ FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS =
+IN
++ * THE SOFTWARE.
++ */
++
++#include "qemu/osdep.h"
++#include "hw/sysbus.h"
++#include "hw/register.h"
++#include "qemu/bitops.h"
++#include "qemu/log.h"
 +#include "hw/intc/xlnx-pmu-iomod-intc.h"
 +
- /* Define the PMU device */
-
- #define TYPE_XLNX_ZYNQMP_PMU_SOC "xlnx,zynqmp-pmu-soc"
-@@ -34,14 +36,18 @@
- #define XLNX_ZYNQMP_PMU_ROM_ADDR    0xFFD00000
- #define XLNX_ZYNQMP_PMU_RAM_ADDR    0xFFDC0000
-
-+#define XLNX_ZYNQMP_PMU_INTC_ADDR   0xFFD40000
++#ifndef XLNX_PMU_IO_INTC_ERR_DEBUG
++#define XLNX_PMU_IO_INTC_ERR_DEBUG 0
++#endif
 +
- typedef struct XlnxZynqMPPMUSoCState {
-     /*< private >*/
-     DeviceState parent_obj;
-
-     /*< public >*/
-     MicroBlazeCPU cpu;
-+    XlnxPMUIOIntc intc;
- }  XlnxZynqMPPMUSoCState;
-
++#define DB_PRINT_L(lvl, fmt, args...) do {\
++    if (XLNX_PMU_IO_INTC_ERR_DEBUG >=3D lvl) {\
++        qemu_log(TYPE_XLNX_PMU_IO_INTC ": %s:" fmt, __func__, ## args);\
++    } \
++} while (0)
 +
- static void xlnx_zynqmp_pmu_soc_init(Object *obj)
- {
-     XlnxZynqMPPMUSoCState *s =3D XLNX_ZYNQMP_PMU_SOC(obj);
-@@ -50,6 +56,9 @@ static void xlnx_zynqmp_pmu_soc_init(Object *obj)
-                       TYPE_MICROBLAZE_CPU);
-     object_property_add_child(obj, "pmu-cpu", OBJECT(&s->cpu),
-                               &error_abort);
++#define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)
 +
-+    object_initialize(&s->intc, sizeof(s->intc), TYPE_XLNX_PMU_IO_INTC);
-+    qdev_set_parent_bus(DEVICE(&s->intc), sysbus_get_default());
- }
-
- static void xlnx_zynqmp_pmu_soc_realize(DeviceState *dev, Error **errp)
-@@ -80,6 +89,21 @@ static void xlnx_zynqmp_pmu_soc_realize(DeviceState *dev=
-, Error **errp)
-         error_propagate(errp, err);
-         return;
-     }
++REG32(IRQ_MODE, 0xc)
++REG32(GPO0, 0x10)
++    FIELD(GPO0, MAGIC_WORD_1, 24, 8)
++    FIELD(GPO0, MAGIC_WORD_2, 16, 8)
++    FIELD(GPO0, FT_INJECT_FAILURE, 13, 3)
++    FIELD(GPO0, DISABLE_RST_FTSM, 12, 1)
++    FIELD(GPO0, RST_FTSM, 11, 1)
++    FIELD(GPO0, CLR_FTSTS, 10, 1)
++    FIELD(GPO0, RST_ON_SLEEP, 9, 1)
++    FIELD(GPO0, DISABLE_TRACE_COMP, 8, 1)
++    FIELD(GPO0, PIT3_PRESCALE, 7, 1)
++    FIELD(GPO0, PIT2_PRESCALE, 5, 2)
++    FIELD(GPO0, PIT1_PRESCALE, 3, 2)
++    FIELD(GPO0, PIT0_PRESCALE, 1, 2)
++    FIELD(GPO0, DEBUG_REMAP, 0, 1)
++REG32(GPO1, 0x14)
++    FIELD(GPO1, MIO_5, 5, 1)
++    FIELD(GPO1, MIO_4, 4, 1)
++    FIELD(GPO1, MIO_3, 3, 1)
++    FIELD(GPO1, MIO_2, 2, 1)
++    FIELD(GPO1, MIO_1, 1, 1)
++    FIELD(GPO1, MIO_0, 0, 1)
++REG32(GPO2, 0x18)
++    FIELD(GPO2, DAP_RPU_WAKE_ACK, 9, 1)
++    FIELD(GPO2, DAP_FP_WAKE_ACK, 8, 1)
++    FIELD(GPO2, PS_STATUS, 7, 1)
++    FIELD(GPO2, PCAP_EN, 6, 1)
++REG32(GPO3, 0x1c)
++    FIELD(GPO3, PL_GPO_31, 31, 1)
++    FIELD(GPO3, PL_GPO_30, 30, 1)
++    FIELD(GPO3, PL_GPO_29, 29, 1)
++    FIELD(GPO3, PL_GPO_28, 28, 1)
++    FIELD(GPO3, PL_GPO_27, 27, 1)
++    FIELD(GPO3, PL_GPO_26, 26, 1)
++    FIELD(GPO3, PL_GPO_25, 25, 1)
++    FIELD(GPO3, PL_GPO_24, 24, 1)
++    FIELD(GPO3, PL_GPO_23, 23, 1)
++    FIELD(GPO3, PL_GPO_22, 22, 1)
++    FIELD(GPO3, PL_GPO_21, 21, 1)
++    FIELD(GPO3, PL_GPO_20, 20, 1)
++    FIELD(GPO3, PL_GPO_19, 19, 1)
++    FIELD(GPO3, PL_GPO_18, 18, 1)
++    FIELD(GPO3, PL_GPO_17, 17, 1)
++    FIELD(GPO3, PL_GPO_16, 16, 1)
++    FIELD(GPO3, PL_GPO_15, 15, 1)
++    FIELD(GPO3, PL_GPO_14, 14, 1)
++    FIELD(GPO3, PL_GPO_13, 13, 1)
++    FIELD(GPO3, PL_GPO_12, 12, 1)
++    FIELD(GPO3, PL_GPO_11, 11, 1)
++    FIELD(GPO3, PL_GPO_10, 10, 1)
++    FIELD(GPO3, PL_GPO_9, 9, 1)
++    FIELD(GPO3, PL_GPO_8, 8, 1)
++    FIELD(GPO3, PL_GPO_7, 7, 1)
++    FIELD(GPO3, PL_GPO_6, 6, 1)
++    FIELD(GPO3, PL_GPO_5, 5, 1)
++    FIELD(GPO3, PL_GPO_4, 4, 1)
++    FIELD(GPO3, PL_GPO_3, 3, 1)
++    FIELD(GPO3, PL_GPO_2, 2, 1)
++    FIELD(GPO3, PL_GPO_1, 1, 1)
++    FIELD(GPO3, PL_GPO_0, 0, 1)
++REG32(GPI0, 0x20)
++    FIELD(GPI0, RFT_ECC_FATAL_ERR, 31, 1)
++    FIELD(GPI0, RFT_VOTER_ERR, 30, 1)
++    FIELD(GPI0, RFT_COMPARE_ERR_23, 29, 1)
++    FIELD(GPI0, RFT_COMPARE_ERR_13, 28, 1)
++    FIELD(GPI0, RFT_COMPARE_ERR_12, 27, 1)
++    FIELD(GPI0, RFT_LS_MISMATCH_23_B, 26, 1)
++    FIELD(GPI0, RFT_LS_MISMATCH_13_B, 25, 1)
++    FIELD(GPI0, RFT_LS_MISMATCH_12_B, 24, 1)
++    FIELD(GPI0, RFT_MISMATCH_STATE, 23, 1)
++    FIELD(GPI0, RFT_MISMATCH_CPU, 22, 1)
++    FIELD(GPI0, RFT_SLEEP_RESET, 19, 1)
++    FIELD(GPI0, RFT_LS_MISMATCH_23_A, 18, 1)
++    FIELD(GPI0, RFT_LS_MISMATCH_13_A, 17, 1)
++    FIELD(GPI0, RFT_LS_MISMATCH_12_A, 16, 1)
++    FIELD(GPI0, NFT_ECC_FATAL_ERR, 15, 1)
++    FIELD(GPI0, NFT_VOTER_ERR, 14, 1)
++    FIELD(GPI0, NFT_COMPARE_ERR_23, 13, 1)
++    FIELD(GPI0, NFT_COMPARE_ERR_13, 12, 1)
++    FIELD(GPI0, NFT_COMPARE_ERR_12, 11, 1)
++    FIELD(GPI0, NFT_LS_MISMATCH_23_B, 10, 1)
++    FIELD(GPI0, NFT_LS_MISMATCH_13_B, 9, 1)
++    FIELD(GPI0, NFT_LS_MISMATCH_12_B, 8, 1)
++    FIELD(GPI0, NFT_MISMATCH_STATE, 7, 1)
++    FIELD(GPI0, NFT_MISMATCH_CPU, 6, 1)
++    FIELD(GPI0, NFT_SLEEP_RESET, 3, 1)
++    FIELD(GPI0, NFT_LS_MISMATCH_23_A, 2, 1)
++    FIELD(GPI0, NFT_LS_MISMATCH_13_A, 1, 1)
++    FIELD(GPI0, NFT_LS_MISMATCH_12_A, 0, 1)
++REG32(GPI1, 0x24)
++    FIELD(GPI1, APB_AIB_ERROR, 31, 1)
++    FIELD(GPI1, AXI_AIB_ERROR, 30, 1)
++    FIELD(GPI1, ERROR_2, 29, 1)
++    FIELD(GPI1, ERROR_1, 28, 1)
++    FIELD(GPI1, ACPU_3_DBG_PWRUP, 23, 1)
++    FIELD(GPI1, ACPU_2_DBG_PWRUP, 22, 1)
++    FIELD(GPI1, ACPU_1_DBG_PWRUP, 21, 1)
++    FIELD(GPI1, ACPU_0_DBG_PWRUP, 20, 1)
++    FIELD(GPI1, FPD_WAKE_GIC_PROXY, 16, 1)
++    FIELD(GPI1, MIO_WAKE_5, 15, 1)
++    FIELD(GPI1, MIO_WAKE_4, 14, 1)
++    FIELD(GPI1, MIO_WAKE_3, 13, 1)
++    FIELD(GPI1, MIO_WAKE_2, 12, 1)
++    FIELD(GPI1, MIO_WAKE_1, 11, 1)
++    FIELD(GPI1, MIO_WAKE_0, 10, 1)
++    FIELD(GPI1, DAP_RPU_WAKE, 9, 1)
++    FIELD(GPI1, DAP_FPD_WAKE, 8, 1)
++    FIELD(GPI1, USB_1_WAKE, 7, 1)
++    FIELD(GPI1, USB_0_WAKE, 6, 1)
++    FIELD(GPI1, R5_1_WAKE, 5, 1)
++    FIELD(GPI1, R5_0_WAKE, 4, 1)
++    FIELD(GPI1, ACPU_3_WAKE, 3, 1)
++    FIELD(GPI1, ACPU_2_WAKE, 2, 1)
++    FIELD(GPI1, ACPU_1_WAKE, 1, 1)
++    FIELD(GPI1, ACPU_0_WAKE, 0, 1)
++REG32(GPI2, 0x28)
++    FIELD(GPI2, VCC_INT_FP_DISCONNECT, 31, 1)
++    FIELD(GPI2, VCC_INT_DISCONNECT, 30, 1)
++    FIELD(GPI2, VCC_AUX_DISCONNECT, 29, 1)
++    FIELD(GPI2, DBG_ACPU3_RST_REQ, 23, 1)
++    FIELD(GPI2, DBG_ACPU2_RST_REQ, 22, 1)
++    FIELD(GPI2, DBG_ACPU1_RST_REQ, 21, 1)
++    FIELD(GPI2, DBG_ACPU0_RST_REQ, 20, 1)
++    FIELD(GPI2, CP_ACPU3_RST_REQ, 19, 1)
++    FIELD(GPI2, CP_ACPU2_RST_REQ, 18, 1)
++    FIELD(GPI2, CP_ACPU1_RST_REQ, 17, 1)
++    FIELD(GPI2, CP_ACPU0_RST_REQ, 16, 1)
++    FIELD(GPI2, DBG_RCPU1_RST_REQ, 9, 1)
++    FIELD(GPI2, DBG_RCPU0_RST_REQ, 8, 1)
++    FIELD(GPI2, R5_1_SLEEP, 5, 1)
++    FIELD(GPI2, R5_0_SLEEP, 4, 1)
++    FIELD(GPI2, ACPU_3_SLEEP, 3, 1)
++    FIELD(GPI2, ACPU_2_SLEEP, 2, 1)
++    FIELD(GPI2, ACPU_1_SLEEP, 1, 1)
++    FIELD(GPI2, ACPU_0_SLEEP, 0, 1)
++REG32(GPI3, 0x2c)
++    FIELD(GPI3, PL_GPI_31, 31, 1)
++    FIELD(GPI3, PL_GPI_30, 30, 1)
++    FIELD(GPI3, PL_GPI_29, 29, 1)
++    FIELD(GPI3, PL_GPI_28, 28, 1)
++    FIELD(GPI3, PL_GPI_27, 27, 1)
++    FIELD(GPI3, PL_GPI_26, 26, 1)
++    FIELD(GPI3, PL_GPI_25, 25, 1)
++    FIELD(GPI3, PL_GPI_24, 24, 1)
++    FIELD(GPI3, PL_GPI_23, 23, 1)
++    FIELD(GPI3, PL_GPI_22, 22, 1)
++    FIELD(GPI3, PL_GPI_21, 21, 1)
++    FIELD(GPI3, PL_GPI_20, 20, 1)
++    FIELD(GPI3, PL_GPI_19, 19, 1)
++    FIELD(GPI3, PL_GPI_18, 18, 1)
++    FIELD(GPI3, PL_GPI_17, 17, 1)
++    FIELD(GPI3, PL_GPI_16, 16, 1)
++    FIELD(GPI3, PL_GPI_15, 15, 1)
++    FIELD(GPI3, PL_GPI_14, 14, 1)
++    FIELD(GPI3, PL_GPI_13, 13, 1)
++    FIELD(GPI3, PL_GPI_12, 12, 1)
++    FIELD(GPI3, PL_GPI_11, 11, 1)
++    FIELD(GPI3, PL_GPI_10, 10, 1)
++    FIELD(GPI3, PL_GPI_9, 9, 1)
++    FIELD(GPI3, PL_GPI_8, 8, 1)
++    FIELD(GPI3, PL_GPI_7, 7, 1)
++    FIELD(GPI3, PL_GPI_6, 6, 1)
++    FIELD(GPI3, PL_GPI_5, 5, 1)
++    FIELD(GPI3, PL_GPI_4, 4, 1)
++    FIELD(GPI3, PL_GPI_3, 3, 1)
++    FIELD(GPI3, PL_GPI_2, 2, 1)
++    FIELD(GPI3, PL_GPI_1, 1, 1)
++    FIELD(GPI3, PL_GPI_0, 0, 1)
++REG32(IRQ_STATUS, 0x30)
++    FIELD(IRQ_STATUS, CSU_PMU_SEC_LOCK, 31, 1)
++    FIELD(IRQ_STATUS, INV_ADDR, 29, 1)
++    FIELD(IRQ_STATUS, PWR_DN_REQ, 28, 1)
++    FIELD(IRQ_STATUS, PWR_UP_REQ, 27, 1)
++    FIELD(IRQ_STATUS, SW_RST_REQ, 26, 1)
++    FIELD(IRQ_STATUS, HW_RST_REQ, 25, 1)
++    FIELD(IRQ_STATUS, ISO_REQ, 24, 1)
++    FIELD(IRQ_STATUS, FW_REQ, 23, 1)
++    FIELD(IRQ_STATUS, IPI3, 22, 1)
++    FIELD(IRQ_STATUS, IPI2, 21, 1)
++    FIELD(IRQ_STATUS, IPI1, 20, 1)
++    FIELD(IRQ_STATUS, IPI0, 19, 1)
++    FIELD(IRQ_STATUS, RTC_ALARM, 18, 1)
++    FIELD(IRQ_STATUS, RTC_EVERY_SECOND, 17, 1)
++    FIELD(IRQ_STATUS, CORRECTABLE_ECC, 16, 1)
++    FIELD(IRQ_STATUS, GPI3, 14, 1)
++    FIELD(IRQ_STATUS, GPI2, 13, 1)
++    FIELD(IRQ_STATUS, GPI1, 12, 1)
++    FIELD(IRQ_STATUS, GPI0, 11, 1)
++    FIELD(IRQ_STATUS, PIT3, 6, 1)
++    FIELD(IRQ_STATUS, PIT2, 5, 1)
++    FIELD(IRQ_STATUS, PIT1, 4, 1)
++    FIELD(IRQ_STATUS, PIT0, 3, 1)
++REG32(IRQ_PENDING, 0x34)
++    FIELD(IRQ_PENDING, CSU_PMU_SEC_LOCK, 31, 1)
++    FIELD(IRQ_PENDING, INV_ADDR, 29, 1)
++    FIELD(IRQ_PENDING, PWR_DN_REQ, 28, 1)
++    FIELD(IRQ_PENDING, PWR_UP_REQ, 27, 1)
++    FIELD(IRQ_PENDING, SW_RST_REQ, 26, 1)
++    FIELD(IRQ_PENDING, HW_RST_REQ, 25, 1)
++    FIELD(IRQ_PENDING, ISO_REQ, 24, 1)
++    FIELD(IRQ_PENDING, FW_REQ, 23, 1)
++    FIELD(IRQ_PENDING, IPI3, 22, 1)
++    FIELD(IRQ_PENDING, IPI2, 21, 1)
++    FIELD(IRQ_PENDING, IPI1, 20, 1)
++    FIELD(IRQ_PENDING, IPI0, 19, 1)
++    FIELD(IRQ_PENDING, RTC_ALARM, 18, 1)
++    FIELD(IRQ_PENDING, RTC_EVERY_SECOND, 17, 1)
++    FIELD(IRQ_PENDING, CORRECTABLE_ECC, 16, 1)
++    FIELD(IRQ_PENDING, GPI3, 14, 1)
++    FIELD(IRQ_PENDING, GPI2, 13, 1)
++    FIELD(IRQ_PENDING, GPI1, 12, 1)
++    FIELD(IRQ_PENDING, GPI0, 11, 1)
++    FIELD(IRQ_PENDING, PIT3, 6, 1)
++    FIELD(IRQ_PENDING, PIT2, 5, 1)
++    FIELD(IRQ_PENDING, PIT1, 4, 1)
++    FIELD(IRQ_PENDING, PIT0, 3, 1)
++REG32(IRQ_ENABLE, 0x38)
++    FIELD(IRQ_ENABLE, CSU_PMU_SEC_LOCK, 31, 1)
++    FIELD(IRQ_ENABLE, INV_ADDR, 29, 1)
++    FIELD(IRQ_ENABLE, PWR_DN_REQ, 28, 1)
++    FIELD(IRQ_ENABLE, PWR_UP_REQ, 27, 1)
++    FIELD(IRQ_ENABLE, SW_RST_REQ, 26, 1)
++    FIELD(IRQ_ENABLE, HW_RST_REQ, 25, 1)
++    FIELD(IRQ_ENABLE, ISO_REQ, 24, 1)
++    FIELD(IRQ_ENABLE, FW_REQ, 23, 1)
++    FIELD(IRQ_ENABLE, IPI3, 22, 1)
++    FIELD(IRQ_ENABLE, IPI2, 21, 1)
++    FIELD(IRQ_ENABLE, IPI1, 20, 1)
++    FIELD(IRQ_ENABLE, IPI0, 19, 1)
++    FIELD(IRQ_ENABLE, RTC_ALARM, 18, 1)
++    FIELD(IRQ_ENABLE, RTC_EVERY_SECOND, 17, 1)
++    FIELD(IRQ_ENABLE, CORRECTABLE_ECC, 16, 1)
++    FIELD(IRQ_ENABLE, GPI3, 14, 1)
++    FIELD(IRQ_ENABLE, GPI2, 13, 1)
++    FIELD(IRQ_ENABLE, GPI1, 12, 1)
++    FIELD(IRQ_ENABLE, GPI0, 11, 1)
++    FIELD(IRQ_ENABLE, PIT3, 6, 1)
++    FIELD(IRQ_ENABLE, PIT2, 5, 1)
++    FIELD(IRQ_ENABLE, PIT1, 4, 1)
++    FIELD(IRQ_ENABLE, PIT0, 3, 1)
++REG32(IRQ_ACK, 0x3c)
++    FIELD(IRQ_ACK, CSU_PMU_SEC_LOCK, 31, 1)
++    FIELD(IRQ_ACK, INV_ADDR, 29, 1)
++    FIELD(IRQ_ACK, PWR_DN_REQ, 28, 1)
++    FIELD(IRQ_ACK, PWR_UP_REQ, 27, 1)
++    FIELD(IRQ_ACK, SW_RST_REQ, 26, 1)
++    FIELD(IRQ_ACK, HW_RST_REQ, 25, 1)
++    FIELD(IRQ_ACK, ISO_REQ, 24, 1)
++    FIELD(IRQ_ACK, FW_REQ, 23, 1)
++    FIELD(IRQ_ACK, IPI3, 22, 1)
++    FIELD(IRQ_ACK, IPI2, 21, 1)
++    FIELD(IRQ_ACK, IPI1, 20, 1)
++    FIELD(IRQ_ACK, IPI0, 19, 1)
++    FIELD(IRQ_ACK, RTC_ALARM, 18, 1)
++    FIELD(IRQ_ACK, RTC_EVERY_SECOND, 17, 1)
++    FIELD(IRQ_ACK, CORRECTABLE_ECC, 16, 1)
++    FIELD(IRQ_ACK, GPI3, 14, 1)
++    FIELD(IRQ_ACK, GPI2, 13, 1)
++    FIELD(IRQ_ACK, GPI1, 12, 1)
++    FIELD(IRQ_ACK, GPI0, 11, 1)
++    FIELD(IRQ_ACK, PIT3, 6, 1)
++    FIELD(IRQ_ACK, PIT2, 5, 1)
++    FIELD(IRQ_ACK, PIT1, 4, 1)
++    FIELD(IRQ_ACK, PIT0, 3, 1)
++REG32(PIT0_PRELOAD, 0x40)
++REG32(PIT0_COUNTER, 0x44)
++REG32(PIT0_CONTROL, 0x48)
++    FIELD(PIT0_CONTROL, PRELOAD, 1, 1)
++    FIELD(PIT0_CONTROL, EN, 0, 1)
++REG32(PIT1_PRELOAD, 0x50)
++REG32(PIT1_COUNTER, 0x54)
++REG32(PIT1_CONTROL, 0x58)
++    FIELD(PIT1_CONTROL, PRELOAD, 1, 1)
++    FIELD(PIT1_CONTROL, EN, 0, 1)
++REG32(PIT2_PRELOAD, 0x60)
++REG32(PIT2_COUNTER, 0x64)
++REG32(PIT2_CONTROL, 0x68)
++    FIELD(PIT2_CONTROL, PRELOAD, 1, 1)
++    FIELD(PIT2_CONTROL, EN, 0, 1)
++REG32(PIT3_PRELOAD, 0x70)
++REG32(PIT3_COUNTER, 0x74)
++REG32(PIT3_CONTROL, 0x78)
++    FIELD(PIT3_CONTROL, PRELOAD, 1, 1)
++    FIELD(PIT3_CONTROL, EN, 0, 1)
 +
-+    object_property_set_uint(OBJECT(&s->intc), 0x10, "intc-intr-size",
-+                             &error_abort);
-+    object_property_set_uint(OBJECT(&s->intc), 0x0, "intc-level-edge",
-+                             &error_abort);
-+    object_property_set_uint(OBJECT(&s->intc), 0xffff, "intc-positive",
-+                             &error_abort);
-+    object_property_set_bool(OBJECT(&s->intc), true, "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
++static void xlnx_pmu_io_irq_update(XlnxPMUIOIntc *s)
++{
++    bool irq_out;
++
++    s->regs[R_IRQ_PENDING] =3D s->regs[R_IRQ_STATUS] & s->regs[R_IRQ_ENABL=
+E];
++    irq_out =3D !!s->regs[R_IRQ_PENDING];
++
++    DB_PRINT("Setting IRQ output =3D %d\n", irq_out);
++
++    qemu_set_irq(s->parent_irq, irq_out);
++}
++
++static void xlnx_pmu_io_irq_enable_postw(RegisterInfo *reg, uint64_t val64=
+)
++{
++    XlnxPMUIOIntc *s =3D XLNX_PMU_IO_INTC(reg->opaque);
++
++    xlnx_pmu_io_irq_update(s);
++}
++
++static void xlnx_pmu_io_irq_ack_postw(RegisterInfo *reg, uint64_t val64)
++{
++    XlnxPMUIOIntc *s =3D XLNX_PMU_IO_INTC(reg->opaque);
++    uint32_t val =3D val64;
++
++    /* Only clear */
++    val &=3D s->regs[R_IRQ_STATUS];
++    s->regs[R_IRQ_STATUS] ^=3D val;
++
++    /* Active level triggered interrupts stay high.  */
++    s->regs[R_IRQ_STATUS] |=3D s->irq_raw & ~s->cfg.level_edge;
++
++    xlnx_pmu_io_irq_update(s);
++}
++
++static const RegisterAccessInfo xlnx_pmu_io_intc_regs_info[] =3D {
++    {   .name =3D "IRQ_MODE",  .addr =3D A_IRQ_MODE,
++        .rsvd =3D 0xffffffff,
++    },{ .name =3D "GPO0",  .addr =3D A_GPO0,
++    },{ .name =3D "GPO1",  .addr =3D A_GPO1,
++        .rsvd =3D 0xffffffc0,
++    },{ .name =3D "GPO2",  .addr =3D A_GPO2,
++        .rsvd =3D 0xfffffc3f,
++    },{ .name =3D "GPO3",  .addr =3D A_GPO3,
++    },{ .name =3D "GPI0",  .addr =3D A_GPI0,
++        .rsvd =3D 0x300030,
++        .ro =3D 0xffcfffcf,
++    },{ .name =3D "GPI1",  .addr =3D A_GPI1,
++        .rsvd =3D 0xf0e0000,
++        .ro =3D 0xf0f1ffff,
++    },{ .name =3D "GPI2",  .addr =3D A_GPI2,
++        .rsvd =3D 0x1f00fcc0,
++        .ro =3D 0xe0ff033f,
++    },{ .name =3D "GPI3",  .addr =3D A_GPI3,
++        .ro =3D 0xffffffff,
++    },{ .name =3D "IRQ_STATUS",  .addr =3D A_IRQ_STATUS,
++        .rsvd =3D 0x40008787,
++        .ro =3D 0xbfff7878,
++    },{ .name =3D "IRQ_PENDING",  .addr =3D A_IRQ_PENDING,
++        .rsvd =3D 0x40008787,
++        .ro =3D 0xdfff7ff8,
++    },{ .name =3D "IRQ_ENABLE",  .addr =3D A_IRQ_ENABLE,
++        .rsvd =3D 0x40008787,
++        .ro =3D 0x7800,
++        .post_write =3D xlnx_pmu_io_irq_enable_postw,
++    },{ .name =3D "IRQ_ACK",  .addr =3D A_IRQ_ACK,
++        .rsvd =3D 0x40008787,
++        .post_write =3D xlnx_pmu_io_irq_ack_postw,
++    },{ .name =3D "PIT0_PRELOAD",  .addr =3D A_PIT0_PRELOAD,
++        .ro =3D 0xffffffff,
++    },{ .name =3D "PIT0_COUNTER",  .addr =3D A_PIT0_COUNTER,
++        .ro =3D 0xffffffff,
++    },{ .name =3D "PIT0_CONTROL",  .addr =3D A_PIT0_CONTROL,
++        .rsvd =3D 0xfffffffc,
++    },{ .name =3D "PIT1_PRELOAD",  .addr =3D A_PIT1_PRELOAD,
++        .ro =3D 0xffffffff,
++    },{ .name =3D "PIT1_COUNTER",  .addr =3D A_PIT1_COUNTER,
++        .ro =3D 0xffffffff,
++    },{ .name =3D "PIT1_CONTROL",  .addr =3D A_PIT1_CONTROL,
++        .rsvd =3D 0xfffffffc,
++    },{ .name =3D "PIT2_PRELOAD",  .addr =3D A_PIT2_PRELOAD,
++        .ro =3D 0xffffffff,
++    },{ .name =3D "PIT2_COUNTER",  .addr =3D A_PIT2_COUNTER,
++        .ro =3D 0xffffffff,
++    },{ .name =3D "PIT2_CONTROL",  .addr =3D A_PIT2_CONTROL,
++        .rsvd =3D 0xfffffffc,
++    },{ .name =3D "PIT3_PRELOAD",  .addr =3D A_PIT3_PRELOAD,
++        .ro =3D 0xffffffff,
++    },{ .name =3D "PIT3_COUNTER",  .addr =3D A_PIT3_COUNTER,
++        .ro =3D 0xffffffff,
++    },{ .name =3D "PIT3_CONTROL",  .addr =3D A_PIT3_CONTROL,
++        .rsvd =3D 0xfffffffc,
 +    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->intc), 0, XLNX_ZYNQMP_PMU_INTC_ADDR=
-);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->intc), 0,
-+                       qdev_get_gpio_in(DEVICE(&s->cpu), MB_CPU_IRQ));
- }
-
- static void xlnx_zynqmp_pmu_soc_class_init(ObjectClass *oc, void *data)
++};
++
++static void irq_handler(void *opaque, int irq, int level)
++{
++    XlnxPMUIOIntc *s =3D XLNX_PMU_IO_INTC(opaque);
++    uint32_t mask =3D 1 << irq;
++    uint32_t prev =3D s->irq_raw;
++    uint32_t temp;
++
++    s->irq_raw &=3D ~mask;
++    s->irq_raw |=3D (!!level) << irq;
++
++    /* Turn active-low into active-high.  */
++    s->irq_raw ^=3D (~s->cfg.positive);
++    s->irq_raw &=3D mask;
++
++    if (s->cfg.level_edge & mask) {
++        /* Edge triggered.  */
++        temp =3D (prev ^ s->irq_raw) & s->irq_raw;
++    } else {
++        /* Level triggered.  */
++        temp =3D s->irq_raw;
++    }
++    s->regs[R_IRQ_STATUS] |=3D temp;
++
++    xlnx_pmu_io_irq_update(s);
++}
++
++static void xlnx_pmu_io_intc_reset(DeviceState *dev)
++{
++    XlnxPMUIOIntc *s =3D XLNX_PMU_IO_INTC(dev);
++    unsigned int i;
++
++    for (i =3D 0; i < ARRAY_SIZE(s->regs_info); ++i) {
++        register_reset(&s->regs_info[i]);
++    }
++
++    xlnx_pmu_io_irq_update(s);
++}
++
++static const MemoryRegionOps xlnx_pmu_io_intc_ops =3D {
++    .read =3D register_read_memory,
++    .write =3D register_write_memory,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
++    .valid =3D {
++        .min_access_size =3D 4,
++        .max_access_size =3D 4,
++    },
++};
++
++static Property xlnx_pmu_io_intc_properties[] =3D {
++    DEFINE_PROP_UINT32("intc-intr-size", XlnxPMUIOIntc, cfg.intr_size, 0),
++    DEFINE_PROP_UINT32("intc-level-edge", XlnxPMUIOIntc, cfg.level_edge, 0=
+),
++    DEFINE_PROP_UINT32("intc-positive", XlnxPMUIOIntc, cfg.positive, 0),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void xlnx_pmu_io_intc_realize(DeviceState *dev, Error **errp)
++{
++    XlnxPMUIOIntc *s =3D XLNX_PMU_IO_INTC(dev);
++
++    /* Internal interrupts are edge triggered?  */
++    s->cfg.level_edge <<=3D 16;
++    s->cfg.level_edge |=3D 0xffff;
++
++    /* Internal interrupts are postitive.  */
++    s->cfg.positive <<=3D 16;
++    s->cfg.positive |=3D 0xffff;
++
++    /* Max 16 external interrupts.  */
++    assert(s->cfg.intr_size <=3D 16);
++
++    qdev_init_gpio_in(dev, irq_handler, 16 + s->cfg.intr_size);
++}
++
++static void xlnx_pmu_io_intc_init(Object *obj)
++{
++    XlnxPMUIOIntc *s =3D XLNX_PMU_IO_INTC(obj);
++    SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
++    RegisterInfoArray *reg_array;
++
++    memory_region_init(&s->iomem, obj, TYPE_XLNX_PMU_IO_INTC,
++                       XlnxPMUIOIntc_R_MAX * 4);
++    reg_array =3D
++        register_init_block32(DEVICE(obj), xlnx_pmu_io_intc_regs_info,
++                              ARRAY_SIZE(xlnx_pmu_io_intc_regs_info),
++                              s->regs_info, s->regs,
++                              &xlnx_pmu_io_intc_ops,
++                              XLNX_PMU_IO_INTC_ERR_DEBUG,
++                              XlnxPMUIOIntc_R_MAX * 4);
++    memory_region_add_subregion(&s->iomem,
++                                0x0,
++                                &reg_array->mem);
++    sysbus_init_mmio(sbd, &s->iomem);
++
++    sysbus_init_irq(sbd, &s->parent_irq);
++}
++
++static const VMStateDescription vmstate_xlnx_pmu_io_intc =3D {
++    .name =3D TYPE_XLNX_PMU_IO_INTC,
++    .version_id =3D 1,
++    .minimum_version_id =3D 1,
++    .fields =3D (VMStateField[]) {
++        VMSTATE_UINT32_ARRAY(regs, XlnxPMUIOIntc, XlnxPMUIOIntc_R_MAX),
++        VMSTATE_END_OF_LIST(),
++    }
++};
++
++static void xlnx_pmu_io_intc_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++
++    dc->reset =3D xlnx_pmu_io_intc_reset;
++    dc->realize =3D xlnx_pmu_io_intc_realize;
++    dc->vmsd =3D &vmstate_xlnx_pmu_io_intc;
++    dc->props =3D xlnx_pmu_io_intc_properties;
++}
++
++static const TypeInfo xlnx_pmu_io_intc_info =3D {
++    .name          =3D TYPE_XLNX_PMU_IO_INTC,
++    .parent        =3D TYPE_SYS_BUS_DEVICE,
++    .instance_size =3D sizeof(XlnxPMUIOIntc),
++    .class_init    =3D xlnx_pmu_io_intc_class_init,
++    .instance_init =3D xlnx_pmu_io_intc_init,
++};
++
++static void xlnx_pmu_io_intc_register_types(void)
++{
++    type_register_static(&xlnx_pmu_io_intc_info);
++}
++
++type_init(xlnx_pmu_io_intc_register_types)
+diff --git a/include/hw/intc/xlnx-pmu-iomod-intc.h b/include/hw/intc/xlnx-p=
+mu-iomod-intc.h
+new file mode 100644
+index 0000000000..3478d8cf6c
+--- /dev/null
++++ b/include/hw/intc/xlnx-pmu-iomod-intc.h
+@@ -0,0 +1,58 @@
++/*
++ * QEMU model of Xilinx I/O Module Interrupt Controller
++ *
++ * Copyright (c) 2014 Xilinx Inc.
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a=
+ copy
++ * of this software and associated documentation files (the "Software"), t=
+o deal
++ * in the Software without restriction, including without limitation the r=
+ights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or se=
+ll
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included=
+ in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS=
+ OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY=
+,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OT=
+HER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING=
+ FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS =
+IN
++ * THE SOFTWARE.
++ */
++
++#ifndef XLNX_PMU_IO_INTC_H
++#define XLNX_PMU_IO_INTC_H
++
++#include "qemu/osdep.h"
++#include "hw/sysbus.h"
++#include "hw/register.h"
++
++#define TYPE_XLNX_PMU_IO_INTC "xlnx.pmu_io_intc"
++
++#define XLNX_PMU_IO_INTC(obj) \
++     OBJECT_CHECK(XlnxPMUIOIntc, (obj), TYPE_XLNX_PMU_IO_INTC)
++
++/* This is R_PIT3_CONTROL + 1 */
++#define XlnxPMUIOIntc_R_MAX (0x78 + 1)
++
++typedef struct XlnxPMUIOIntc {
++    SysBusDevice parent_obj;
++    MemoryRegion iomem;
++
++    qemu_irq parent_irq;
++
++    struct {
++        uint32_t intr_size;
++        uint32_t level_edge;
++        uint32_t positive;
++    } cfg;
++
++    uint32_t irq_raw;
++
++    uint32_t regs[XlnxPMUIOIntc_R_MAX];
++    RegisterInfo regs_info[XlnxPMUIOIntc_R_MAX];
++} XlnxPMUIOIntc;
++
++#endif /* XLNX_PMU_IO_INTC_H */
 --
 2.14.1
 

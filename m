@@ -1,95 +1,95 @@
-Received: by 10.28.173.206 with SMTP id w197csp3376803wme;
-        Mon, 15 Jan 2018 17:38:00 -0800 (PST)
-X-Google-Smtp-Source: ACJfBotUh5y+xd+r2UEQwcQ5BcUpoN1EWITumAMR269xCaYQSsurylnH+40YTL5OATSGUcF6NSwv
-X-Received: by 10.37.36.4 with SMTP id k4mr33502400ybk.311.1516066680561;
-        Mon, 15 Jan 2018 17:38:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516066680; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp3376816wme;
+        Mon, 15 Jan 2018 17:38:01 -0800 (PST)
+X-Google-Smtp-Source: ACJfBotvzfAgz5yOsoTlKqCwfTrAqHqWLA04mroVzUlBMbpd0xAIO/XOAwVE6FGQr9kuWkxywv3x
+X-Received: by 10.129.133.198 with SMTP id v189mr24265275ywf.130.1516066681663;
+        Mon, 15 Jan 2018 17:38:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516066681; cv=none;
         d=google.com; s=arc-20160816;
-        b=JnNxPR1z5CYfEzZaEWhKEEy7BTdLi/rBD5emyTAUs6H4SQFuh6TVAwTC1ZT2tECcTb
-         rCasxJ+/kNaFN3uysVGTbnbsNMQqywKaSGGOHUYnU3WZigW+WSINRg8WA1gQB2rWP3zI
-         B0eMYYFBmLQml+Z+xBLKJZla5uyjmy6W0pDRtsbh7+R1qx8IThN6/RBE8ucsj3FaQZjG
-         CcuG4XshgSHpNqU8Keg1vZSPjW7Vji4fzmp6lS7oo1JRBCvx1pmQfPHp8EilqSiDPEdL
-         s1Qu4PApg1cBv/jXyR9i2M4KrpjMAXOa7+HAQTQQ9A5p+ITNQZY6JU0iO8ldQCK2Xven
-         hR7Q==
+        b=jHWl0qjtqpMG65awUU+X4GqQO6xykJCVfHfMcg3ALNqOkKp5ON1Mv9Pbqtb658FKRI
+         aGLGMntffTv9lQnu0xhrq6JeDUvSveHYCUj5iARQYP8+LVqYB6KauWlL5mzRdIxQqV86
+         uIvDdqAUzOPOjyScQhPuq50myHNa3vPOQZziLQio8Q0VGNQzrc4bsTlOcrX0vgDXejgp
+         sJm59vnDrjgP2HpkWsPgMhWI7ASLYUS15r+npSY4SfEGkH7MuI5TIPZ5jmggaZJMapVO
+         5gpbdfJi8bhfEoU0jL+sMkvD062PER7OU0T8pTAeSEc7Xb25q9G7GxTA9AD4PjwBqKA4
+         YLRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=GfpjiwYve0+eA8Vi68DD/zLMe0628N08dTKTMLPq/70=;
-        b=QK+4FNrJVzEX7pq8OIHS2Fa/qmd83cen1OHIn5jg+DEfVbOTVn5egf1L2JumlEwApt
-         HuGBUsICVgCryFf9Xu0yP+NdKca268QbhabEAiSTXvpZ/BNQcroQNvT3mv+70MxMJbw2
-         ut0igHpKIJhJHGUudNcrePJRbQWDMRVQi9kI/oqL/WAxWvyrqhJb6qnww4TAzb03JfCz
-         oOWhHy6VYBSQtI29p1nnvpzoglNUpY5jatd0HWZ2zK6vqwSJRXxZzPmxrFeJpg2AlHba
-         cMWXQWwkiYwHZ0/OCOohzQeB62N67bZJw0kbip/VCxh6E8F8lFw4wbl4DtiIoR0cIU/4
-         MB0g==
+        bh=P0JYT3RWrVbaRh8Csb7FnBSfzzAKpFeEANlIc7iDDbs=;
+        b=qD2v0nDt28MFmov5v+ANHZXiU+3vItlTeu7KBtsK8f5oR2zUhuvtjQndIatpDCLjCw
+         54qAICcMM4UkyTdC1kRPxzoE1DGxcjQaZWR3TPAqWgNPx3PcYjeY7xn78TNni9v6uute
+         Yv28gDAHoTY1EfFEsUh8gbigsNWVv6QfdEd7DVY97FgnprEDG6VaUjp0PBv4KIeiz5uM
+         x9Nb2gL3Exer2GrTRS8XOEbyGCEgnvIwuguv0jlKz8awxxxlq0g0ZBeAHeG6gs4NenkY
+         TstEws+/RAzYWVv/6ChztDRczcKC1RncnQD42AIGWZBpSBmeh5FvAn9dk3Q/Z+GT4Vca
+         ApEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BXq33byG;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FO2r1/W1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g84si219526ybg.102.2018.01.15.17.38.00
+        by mx.google.com with ESMTPS id w126si219020ywg.410.2018.01.15.17.38.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 15 Jan 2018 17:38:00 -0800 (PST)
+        Mon, 15 Jan 2018 17:38:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BXq33byG;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FO2r1/W1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:51995 helo=lists.gnu.org)
+Received: from localhost ([::1]:51997 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ebGCN-0006Ad-VR
-	for alex.bennee@linaro.org; Mon, 15 Jan 2018 20:38:00 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38596)
+	id 1ebGCP-0006CS-1u
+	for alex.bennee@linaro.org; Mon, 15 Jan 2018 20:38:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38651)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1ebGBy-0005wb-VA
-	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 20:37:35 -0500
+	(envelope-from <andrew.smirnov@gmail.com>) id 1ebGC2-000607-KR
+	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 20:37:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1ebGBy-0005Ci-67
-	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 20:37:34 -0500
-Received: from mail-pl0-x241.google.com ([2607:f8b0:400e:c01::241]:43241)
+	(envelope-from <andrew.smirnov@gmail.com>) id 1ebGC1-0005F8-Em
+	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 20:37:38 -0500
+Received: from mail-pg0-x22d.google.com ([2607:f8b0:400e:c05::22d]:43218)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
-	id 1ebGBx-0005C4-VF; Mon, 15 Jan 2018 20:37:34 -0500
-Received: by mail-pl0-x241.google.com with SMTP id f4so3543583plr.10;
-	Mon, 15 Jan 2018 17:37:33 -0800 (PST)
+	id 1ebGC1-0005EY-6l; Mon, 15 Jan 2018 20:37:37 -0500
+Received: by mail-pg0-x22d.google.com with SMTP id n17so1151076pgf.10;
+	Mon, 15 Jan 2018 17:37:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=GfpjiwYve0+eA8Vi68DD/zLMe0628N08dTKTMLPq/70=;
-	b=BXq33byGSpWIpiub7bCFFyslKJFs/7FK0kqpITQH6V+QaHzb1Qz9mgbdxsgGkGxQcn
-	ChQ5kiu5ek1WMyG/SuzuZpv8PvVpseA/yPisZpFbz79wH6KcB/5M7E2euQ+UrpbzQr0Z
-	01Jm8HnP4jK8L5UZd1R9bekAmBTYAMWjPBirPl54znkIgBv+y0ruXHbrOlY3YKoEvGRQ
-	hmqAll8yLCKrNDL6QserkQ9OR66io3fq4/qwTXnRS2Quz7pLRLSPE54FO2Zw/enKm5Cv
-	GXYG7X395IV0QRP/GzVHhiovSZ2L06VwtrlkcMbQhTdbgRMp3l0/dqhV3F1ZaJ44qvrO
-	DR2A==
+	bh=P0JYT3RWrVbaRh8Csb7FnBSfzzAKpFeEANlIc7iDDbs=;
+	b=FO2r1/W104rUeiSlGyF/6Avr6jcXz6A4IjCwC1/TJKXdFZKVajwuplyAvD95RmEAve
+	yyDuMZOCc+jdiSruAQExTTN3EdfiR+FjK/xLJIA16CCQZqAg+nwMdzraDhWIZ/xXaEVB
+	Te8mEwD5Loy5DBKQI0+FCAeV1hKVHa3qDvaYv04gQbmR5wN9zOd3Ax0yB7oEj2BQTaZ3
+	hDLl/bc2WA71FUBfcYcShQw3zx0crnCP8ikNyf8Hfo9ztsDCfMSgZugPLz/ahCTIZtyw
+	uSfyXEIXM/ZSfMM4GKFYLdO59QVvjbkYtBBLWB9PF6hgrU1JGc9eauqr//fVtb9Iq6i7
+	nC5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:mime-version:content-transfer-encoding;
-	bh=GfpjiwYve0+eA8Vi68DD/zLMe0628N08dTKTMLPq/70=;
-	b=npt8Uy7XNK6WmijABq/9VKktO61Pr01wzaxhcWtRFZZ1NGQLGq7uSIwZ6gZ5vePuk4
-	GV822Yk33NmtAOZt5Pczgu/51PsimSAxVes7MPZLFD/kfc2+nGlXH7XLY09ctBu1NqnK
-	EhPMG6wLSogOPlsCBBozwfZW5MKbHDPMh1CzXDs9Kd7xCYnMTmSjdwbSnckLrELC242W
-	3a8pG18VaPWe3lKP6PbsGlP2I57boTT3UKY4ras9QJ6kKIRP8Ebhg1nRcG6Fm4vtYxR9
-	v9HAsuT65cC1gPUFl8WTu+NaKICcTkDg5HSbzsGcbZQQ/gRA+NmxP6r1n2+hDF+Rw/oS
-	abOg==
-X-Gm-Message-State: AKwxytdXAqnpvzim0KhfCpbsYIfsNjmBJfOlx3+CYHtq7MRF0iQnf9ps
-	f3AaaT3iKQCV5nbWozOkN4aYo1In
-X-Received: by 10.84.235.131 with SMTP id p3mr12829589plk.18.1516066652710;
-	Mon, 15 Jan 2018 17:37:32 -0800 (PST)
+	bh=P0JYT3RWrVbaRh8Csb7FnBSfzzAKpFeEANlIc7iDDbs=;
+	b=WLWHmWeoQ//icV5EWUnKkztPHJRFfadGnx9fBZuH41G4PuT5PSyBeUuRSVm8TWIFJN
+	7NRQHdOxtAA69utmYHHBNapT2e6iiYI5cP4q85xEaTVXwXy00fv4+AfnZ7rTUn7mFnQU
+	PPGojr0ZBiUPtiO0Fu9F3DFRVwutD0asahG5/NiSbHenRFu4on/NxeZvWtOCWj5vrvIt
+	nZeZpgnZdq2tz4cZM2DE6bqaRC9ZXtZCrmfsEu6UafvKP5dUuHIa6NRit26bwqr7bE/f
+	KgH4shK7j+J5oKDQop2DsRbunvXprVDQaLs3gcAAaKiCXIs037OOZKT6NJnlfLDDSd4+
+	hbqg==
+X-Gm-Message-State: AKGB3mLVeH2XttDZJxesxY/Oghu6Xtz7QLgLfP//hN8G0bfPuQY9Dtmv
+	TDvor4y97JgQYLCiGtiwmkf+jg61
+X-Received: by 10.98.153.210 with SMTP id t79mr32774932pfk.43.1516066655940;
+	Mon, 15 Jan 2018 17:37:35 -0800 (PST)
 Received: from squirtle.lan (c-24-22-235-96.hsd1.wa.comcast.net.
 	[24.22.235.96])
-	by smtp.gmail.com with ESMTPSA id s65sm1023795pfk.7.2018.01.15.17.37.30
+	by smtp.gmail.com with ESMTPSA id s65sm1023795pfk.7.2018.01.15.17.37.34
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 15 Jan 2018 17:37:32 -0800 (PST)
+	Mon, 15 Jan 2018 17:37:35 -0800 (PST)
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 To: qemu-arm@nongnu.org
-Date: Mon, 15 Jan 2018 17:36:57 -0800
-Message-Id: <20180116013709.13830-3-andrew.smirnov@gmail.com>
+Date: Mon, 15 Jan 2018 17:36:59 -0800
+Message-Id: <20180116013709.13830-5-andrew.smirnov@gmail.com>
 X-Mailer: git-send-email 2.14.3
 In-Reply-To: <20180116013709.13830-1-andrew.smirnov@gmail.com>
 References: <20180116013709.13830-1-andrew.smirnov@gmail.com>
@@ -98,9 +98,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c01::241
-Subject: [Qemu-arm] [PATCH v4 02/14] hw: i.MX: Convert i.MX6 to use
- TYPE_IMX_USDHC
+X-Received-From: 2607:f8b0:400e:c05::22d
+Subject: [Qemu-arm] [PATCH v4 04/14] i.MX: Add code to emulate i.MX2
+ watchdog IP block
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -119,10 +119,10 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org, yurovsky@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: i+xt8WevJnNJ
+X-TUID: gzFYWYP2CZ+O
 
-Convert i.MX6 to use TYPE_IMX_USDHC since that's what real HW comes
-with.
+Add enough code to emulate i.MX2 watchdog IP block so it would be
+possible to reboot the machine running Linux Guest.
 
 Cc: Peter Maydell <peter.maydell@linaro.org>
 Cc: Jason Wang <jasowang@redhat.com>
@@ -130,24 +130,162 @@ Cc: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Cc: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
 Cc: yurovsky@gmail.com
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- hw/arm/fsl-imx6.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/misc/Makefile.objs      |  1 +
+ hw/misc/imx2_wdt.c         | 89 ++++++++++++++++++++++++++++++++++++++++++++++
+ include/hw/misc/imx2_wdt.h | 33 +++++++++++++++++
+ 3 files changed, 123 insertions(+)
+ create mode 100644 hw/misc/imx2_wdt.c
+ create mode 100644 include/hw/misc/imx2_wdt.h
 
-diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
-index b0d4088290..e6559a8b12 100644
---- a/hw/arm/fsl-imx6.c
-+++ b/hw/arm/fsl-imx6.c
-@@ -93,7 +93,7 @@ static void fsl_imx6_init(Object *obj)
-     }
- 
-     for (i = 0; i < FSL_IMX6_NUM_ESDHCS; i++) {
--        object_initialize(&s->esdhc[i], sizeof(s->esdhc[i]), TYPE_SYSBUS_SDHCI);
-+        object_initialize(&s->esdhc[i], sizeof(s->esdhc[i]), TYPE_IMX_USDHC);
-         qdev_set_parent_bus(DEVICE(&s->esdhc[i]), sysbus_get_default());
-         snprintf(name, NAME_SIZE, "sdhc%d", i + 1);
-         object_property_add_child(obj, name, OBJECT(&s->esdhc[i]), NULL);
+diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+index a28e5e49b0..4b2b705a6c 100644
+--- a/hw/misc/Makefile.objs
++++ b/hw/misc/Makefile.objs
+@@ -34,6 +34,7 @@ obj-$(CONFIG_IMX) += imx25_ccm.o
+ obj-$(CONFIG_IMX) += imx6_ccm.o
+ obj-$(CONFIG_IMX) += imx6_src.o
+ obj-$(CONFIG_IMX) += imx7_ccm.o
++obj-$(CONFIG_IMX) += imx2_wdt.o
+ obj-$(CONFIG_MILKYMIST) += milkymist-hpdmc.o
+ obj-$(CONFIG_MILKYMIST) += milkymist-pfpu.o
+ obj-$(CONFIG_MAINSTONE) += mst_fpga.o
+diff --git a/hw/misc/imx2_wdt.c b/hw/misc/imx2_wdt.c
+new file mode 100644
+index 0000000000..76bb98a525
+--- /dev/null
++++ b/hw/misc/imx2_wdt.c
+@@ -0,0 +1,89 @@
++/*
++ * Copyright (c) 2017, Impinj, Inc.
++ *
++ * i.MX2 Watchdog IP block
++ *
++ * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#include "qemu/bitops.h"
++#include "qemu/osdep.h"
++#include "sysemu/watchdog.h"
++
++#include "hw/misc/imx2_wdt.h"
++
++#define IMX2_WDT_WCR_WDA    BIT(5)      /* -> External Reset WDOG_B */
++#define IMX2_WDT_WCR_SRS    BIT(4)      /* -> Software Reset Signal */
++
++static uint64_t imx2_wdt_read(void *opaque, hwaddr addr,
++                              unsigned int size)
++{
++    return 0;
++}
++
++static void imx2_wdt_write(void *opaque, hwaddr addr,
++                           uint64_t value, unsigned int size)
++{
++    if (addr == IMX2_WDT_WCR &&
++        (value & (IMX2_WDT_WCR_WDA | IMX2_WDT_WCR_SRS))) {
++        watchdog_perform_action();
++    }
++}
++
++static const MemoryRegionOps imx2_wdt_ops = {
++    .read  = imx2_wdt_read,
++    .write = imx2_wdt_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .impl = {
++        /*
++         * Our device would not work correctly if the guest was doing
++         * unaligned access. This might not be a limitation on the
++         * real device but in practice there is no reason for a guest
++         * to access this device unaligned.
++         */
++        .min_access_size = 4,
++        .max_access_size = 4,
++        .unaligned = false,
++    },
++};
++
++static void imx2_wdt_realize(DeviceState *dev, Error **errp)
++{
++    IMX2WdtState *s = IMX2_WDT(dev);
++
++    memory_region_init_io(&s->mmio, OBJECT(dev),
++                          &imx2_wdt_ops, s,
++                          TYPE_IMX2_WDT".mmio",
++                          IMX2_WDT_REG_NUM * sizeof(uint16_t));
++    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mmio);
++}
++
++static void imx2_wdt_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = imx2_wdt_realize;
++    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
++}
++
++static const TypeInfo imx2_wdt_info = {
++    .name          = TYPE_IMX2_WDT,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(IMX2WdtState),
++    .class_init    = imx2_wdt_class_init,
++};
++
++static WatchdogTimerModel model = {
++    .wdt_name = "imx2-watchdog",
++    .wdt_description = "i.MX2 Watchdog",
++};
++
++static void imx2_wdt_register_type(void)
++{
++    watchdog_add_model(&model);
++    type_register_static(&imx2_wdt_info);
++}
++type_init(imx2_wdt_register_type)
+diff --git a/include/hw/misc/imx2_wdt.h b/include/hw/misc/imx2_wdt.h
+new file mode 100644
+index 0000000000..8afc99a10e
+--- /dev/null
++++ b/include/hw/misc/imx2_wdt.h
+@@ -0,0 +1,33 @@
++/*
++ * Copyright (c) 2017, Impinj, Inc.
++ *
++ * i.MX2 Watchdog IP block
++ *
++ * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#ifndef IMX2_WDT_H
++#define IMX2_WDT_H
++
++#include "hw/sysbus.h"
++
++#define TYPE_IMX2_WDT "imx2.wdt"
++#define IMX2_WDT(obj) OBJECT_CHECK(IMX2WdtState, (obj), TYPE_IMX2_WDT)
++
++enum IMX2WdtRegisters {
++    IMX2_WDT_WCR     = 0x0000,
++    IMX2_WDT_REG_NUM = 0x0008 / sizeof(uint16_t) + 1,
++};
++
++
++typedef struct IMX2WdtState {
++    /* <private> */
++    SysBusDevice parent_obj;
++
++    MemoryRegion mmio;
++} IMX2WdtState;
++
++#endif /* IMX7_SNVS_H */
 -- 
 2.14.3
 

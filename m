@@ -1,97 +1,189 @@
-Received: by 10.28.173.206 with SMTP id w197csp3097022wme;
-        Mon, 15 Jan 2018 11:44:32 -0800 (PST)
-X-Google-Smtp-Source: ACJfBotHYcqIm5hmjJKmv001r+pTphbF9wztNOml7rW9L9AgYpXOEW8ZFVyrjfXnPBmh2GxRd6Z3
-X-Received: by 10.129.236.6 with SMTP id j6mr27530979ywm.160.1516045472338;
-        Mon, 15 Jan 2018 11:44:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516045472; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp4571527wme;
+        Tue, 16 Jan 2018 15:27:17 -0800 (PST)
+X-Google-Smtp-Source: ACJfBotRQDdDmZ5E3204TK6tzS4AF4WeTf9bDTh9TeP1XG2vOGDCawcL7zGJPQltb5Y2qh12iIIr
+X-Received: by 10.129.174.94 with SMTP id g30mr773728ywk.85.1516145237417;
+        Tue, 16 Jan 2018 15:27:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516145237; cv=none;
         d=google.com; s=arc-20160816;
-        b=BpcyqLPiDSXvQCAfLrm8TQHGnoepwr526XxJm2lCxPW8iZr30rRZkouA48dvTfoC9D
-         g1M2ikJo0TFr7bpQoyxn3gJcKS69nXWT991Q6Yz7kTCPM13VXYb8mk8TtKx/Q39kPdt4
-         H4vA+qDS3ruNlWRwJ07TTWZv2RvbgGeIRpZvVLSqWbx0j9BvjlWZZs3GxMWWZNjGQrhA
-         JbjIjLuuaTxMtO40qukqHr3smj1suvahm7iBFBw3vwWZnbcAAivRlbPQ9kqNaP1fWyOf
-         VQ20+ObvvSvJro1K0n1v9LtZmZw1cpWKsaigHB234xh9aDRSJHOB5iNsnv7vTqwFGBLI
-         6ZFw==
+        b=gKDbqw2N3xG5VrS2HO5x99N/HMhbvwXs1Njj7QV2wBm8N2BDwX4dl/X34X3FPOz9a8
+         vJ8sK5Nm38Q8rI3FXyyuc0UlfAPOcEZ/whkWpPbem63aFqp1J5cNYm+6BLCxwA+ea2gE
+         nstE2BEZ+T/gEgzuIxS9bIOZLXdfvtISxgoIbmPMLg5+SMfXjxpILxYHx2LkBaHIqwVO
+         XKM5K3RaZm2MT114DPb66UveUdGAQlK8Ubm4jriZQUn6wo0/tKHDltmLApGANUY99czB
+         SYnokGIGZrAyQu6xZSZAJ0ZoYOnhEVwaM+87IVJoe8jeTPPtkBaQQq8h3FSs9QLnmaNR
+         vCnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=BNIuaMMFznbmeDwNBH6iGCtDWDMhIgdXjWrBCP6AjHo=;
-        b=u76/uSMoCsnL4yPR1RcdSQmpmry8ZRnh91YX1wuze3qHRXNDZAgCfePCErNohl5RuI
-         rM2qX+AQNNzshgZBeqhevI8/qko6Z32BvXPf9kJkdTHEDsfs8JAtcW2jGXAklwLYtBeA
-         8AulEJsUcCetpsWdQSnZI5niG/0NjhypjxkI5BulA1LXuMXljtRxnkmwMwTDAmJRuh+U
-         25HHKBLjSHUXceI2/1Et/tzZTg6ii93IsqCeBlQiJAmuLVMJi8Os/DL9cg55XmC0b7yU
-         HOKBuqX6cmfyud6Cn7lpMPkVxs9pDlK4KYKnlLuIxtSKVNfRcLojjeTiV7xEZRKkHjZ7
-         5CeQ==
+         :list-unsubscribe:list-id:precedence:subject:spamdiagnosticmetadata
+         :spamdiagnosticoutput:content-transfer-encoding:mime-version
+         :references:in-reply-to:message-id:date:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=38oCpqmuL4PFVkb9D4N0cQToIZriMVomWUm436memO4=;
+        b=XZQJd6Bcf+C6pvif9OYgQtFrpgeXGu/5cOb+dN0Up+BAlIkx5lMi7OpieBZOoYS0A0
+         WFX44Xq/QTFonaR/YsgVQypBe7Uc2G4FqCtZNrJ+eOm41AFdc4OC4Fe69nVLg1Y+cZET
+         5W8gbPoTOkGygRj0/qy58RSHazhsrzIAN7kub8IsRboxM5aqSxeUXge7oZhaUk3vazvc
+         jvfmdEq3o/FozRcHyMWF45/mNc7cl+CdGAK/tZDFojp4A41YhsebCpDrpZudcKPOXZvK
+         Hl//89gHylLkGHjxenIZcT2lkjG9C5St37N0lGS9u0kQ8tAZ8o2ttDloHu4naDrR51aA
+         Kh0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=QBAwT796;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=fq+gInUR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z8si76297ywd.757.2018.01.15.11.44.32
+        by mx.google.com with ESMTPS id r13si747410ybm.177.2018.01.16.15.27.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 15 Jan 2018 11:44:32 -0800 (PST)
+        Tue, 16 Jan 2018 15:27:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=QBAwT796;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58033 helo=lists.gnu.org)
+       dkim=fail header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=fq+gInUR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:45520 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ebAgJ-0002la-R9
-	for alex.bennee@linaro.org; Mon, 15 Jan 2018 14:44:31 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53334)
+	id 1ebadQ-0004Hc-Nr
+	for alex.bennee@linaro.org; Tue, 16 Jan 2018 18:27:16 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60785)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ard.biesheuvel@linaro.org>) id 1ebAfS-00029P-3X
-	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 14:43:39 -0500
+	(envelope-from <alistai@xilinx.com>) id 1ebadA-0004En-6u
+	for qemu-arm@nongnu.org; Tue, 16 Jan 2018 18:27:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ard.biesheuvel@linaro.org>) id 1ebAfQ-0007MX-A4
-	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 14:43:38 -0500
-Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:37738)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <ard.biesheuvel@linaro.org>)
-	id 1ebAfP-0007MH-Th
-	for qemu-arm@nongnu.org; Mon, 15 Jan 2018 14:43:36 -0500
-Received: by mail-wm0-x241.google.com with SMTP id v71so4161649wmv.2
-	for <qemu-arm@nongnu.org>; Mon, 15 Jan 2018 11:43:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=BNIuaMMFznbmeDwNBH6iGCtDWDMhIgdXjWrBCP6AjHo=;
-	b=QBAwT796GIb+ueKJQ47q/MzSyxgnOtTRTYJ3T/haKp3Pwh4E3QzcNxvcPsTVbw8BiV
-	D1Kh9IgCtiJzE3Jyhj7Rp/5V2Hh7CljWLQbp/NmpSnq34KpcTk8RZZHC9H12lVD4PGvi
-	2+suCNrF8lrM5VjXXkuL9ASGIWt+4HuC7F6uc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=BNIuaMMFznbmeDwNBH6iGCtDWDMhIgdXjWrBCP6AjHo=;
-	b=EQ1VzUBeHlK2QmXenlA23YgpsXQmBKa+b3/e3DfqwwR81uWxFBZ79ykrIuARcPiWq+
-	nChJqdDa4BzSEkkVknrJAUyCnA8NsLccL+YDLTx3wswMlazkKxf2GHFn/fzKY2tisY7i
-	QSGMzdUEPDJDDtClbcKxa+wg3ax5VBGZKZP29W3p1APBaOCHJ0W1Tup/ajFC52MzxdfQ
-	KU/tfeVYhCHMokfFJ7XWdnVZajd1bycSV9YOehIFDOLNanfah0ndr3pGi9wcS/S9Ca+S
-	QTtLxOnxTpgUQH8ZcnvvV/+RC0UA27Q9s73lYsAy7EJrawP8oE8Mv0e99B51sd9XmeyC
-	z8IA==
-X-Gm-Message-State: AKwxytc+eNRmNe0Tnui5zzkv5mqZKa2MQXdhF3/4GUt6mq40tS43/8Ew
-	zYm5fIwq2QeOGa+24OgHfPfw72TEsCk=
-X-Received: by 10.28.231.8 with SMTP id e8mr8105081wmh.148.1516045414483;
-	Mon, 15 Jan 2018 11:43:34 -0800 (PST)
-Received: from localhost.localdomain ([160.90.52.105])
-	by smtp.gmail.com with ESMTPSA id 34sm435051wro.7.2018.01.15.11.43.32
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 15 Jan 2018 11:43:33 -0800 (PST)
-From: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-To: qemu-arm@nongnu.org
-Date: Mon, 15 Jan 2018 19:43:20 +0000
-Message-Id: <20180115194321.15411-4-ard.biesheuvel@linaro.org>
-X-Mailer: git-send-email 2.11.0
-In-Reply-To: <20180115194321.15411-1-ard.biesheuvel@linaro.org>
-References: <20180115194321.15411-1-ard.biesheuvel@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::241
-Subject: [Qemu-arm] [PATCH v3 3/4] target/arm: implement SM3 instructions
+	(envelope-from <alistai@xilinx.com>) id 1ebad7-00022i-03
+	for qemu-arm@nongnu.org; Tue, 16 Jan 2018 18:27:00 -0500
+Received: from mail-dm3nam03on0624.outbound.protection.outlook.com
+	([2a01:111:f400:fe49::624]:52064
+	helo=NAM03-DM3-obe.outbound.protection.outlook.com)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <alistai@xilinx.com>)
+	id 1ebad6-00022P-PR; Tue, 16 Jan 2018 18:26:56 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=xilinx.onmicrosoft.com; s=selector1-xilinx-com;
+	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
+	bh=38oCpqmuL4PFVkb9D4N0cQToIZriMVomWUm436memO4=;
+	b=fq+gInURg6I8bAf9cEhvn7FR5qAOlB/Ns8D5oCCU4MFW2xh1z2HrDMLRUD9fuSBCu2luzBh9GNPdh/lYixqSjn48V4/tAMtE8f4RFmTQLlfmhiigSlq8qUD0yvguCuCSQVZdwMl3vi0Cn+TCTLzqmEEvB0QUKs0XAElFEhH89O8=
+Received: from MWHPR02CA0047.namprd02.prod.outlook.com (2603:10b6:301:60::36)
+	by DM2PR02MB1338.namprd02.prod.outlook.com (2a01:111:e400:50c8::25)
+	with Microsoft SMTP Server (version=TLS1_2,
+	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.20.407.7;
+	Tue, 16 Jan 2018 23:26:54 +0000
+Received: from SN1NAM02FT063.eop-nam02.prod.protection.outlook.com
+	(2a01:111:f400:7e44::203) by MWHPR02CA0047.outlook.office365.com
+	(2603:10b6:301:60::36) with Microsoft SMTP Server (version=TLS1_2,
+	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.407.7 via
+	Frontend Transport; Tue, 16 Jan 2018 23:26:53 +0000
+Authentication-Results: spf=pass (sender IP is 149.199.60.100)
+	smtp.mailfrom=xilinx.com; nongnu.org; dkim=none (message not signed)
+	header.d=none;nongnu.org; dmarc=bestguesspass action=none
+	header.from=xilinx.com;
+Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
+	149.199.60.100 as permitted sender) receiver=protection.outlook.com;
+	client-ip=149.199.60.100; helo=xsj-pvapsmtpgw02;
+Received: from xsj-pvapsmtpgw02 (149.199.60.100) by
+	SN1NAM02FT063.mail.protection.outlook.com (10.152.72.213) with
+	Microsoft SMTP Server (version=TLS1_0,
+	cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.345.12
+	via Frontend Transport; Tue, 16 Jan 2018 23:26:52 +0000
+Received: from unknown-38-66.xilinx.com ([149.199.38.66]:55906
+	helo=xsj-pvapsmtp01) by xsj-pvapsmtpgw02 with esmtp (Exim 4.63)
+	(envelope-from <alistair.francis@xilinx.com>)
+	id 1ebad1-0004Nn-VA; Tue, 16 Jan 2018 15:26:51 -0800
+Received: from [127.0.0.1] (helo=localhost)
+	by xsj-pvapsmtp01 with smtp (Exim 4.63)
+	(envelope-from <alistair.francis@xilinx.com>)
+	id 1ebad1-0003Kp-UF; Tue, 16 Jan 2018 15:26:51 -0800
+Received: from xsj-pvapsmtp01 (mailman.xilinx.com [149.199.38.66])
+	by xsj-smtp-dlp1.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id
+	w0GNQh4h031019; Tue, 16 Jan 2018 15:26:43 -0800
+Received: from [172.19.2.220] (helo=xsjalistai50.xilinx.com)
+	by xsj-pvapsmtp01 with esmtp (Exim 4.63)
+	(envelope-from <alistair.francis@xilinx.com>)
+	id 1ebact-0003KI-II; Tue, 16 Jan 2018 15:26:43 -0800
+From: Alistair Francis <alistair.francis@xilinx.com>
+To: <qemu-devel@nongnu.org>, <edgar.iglesias@xilinx.com>,
+	<edgar.iglesias@gmail.com>
+Date: Tue, 16 Jan 2018 15:22:22 -0800
+Message-ID: <3ce133738e77a4d370e117467754369c738a926d.1516144891.git.alistair.francis@xilinx.com>
+X-Mailer: git-send-email 2.14.1
+In-Reply-To: <cover.1516144891.git.alistair.francis@xilinx.com>
+References: <cover.1516144891.git.alistair.francis@xilinx.com>
+X-RCIS-Action: ALLOW
+X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23598.006
+X-TM-AS-User-Approved-Sender: Yes;Yes
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-HT: Tenant
+X-Forefront-Antispam-Report: CIP:149.199.60.100; IPV:NLI; CTRY:US; EFV:NLI;
+	SFV:NSPM;
+	SFS:(10009020)(346002)(396003)(39860400002)(376002)(39380400002)(2980300002)(438002)(199004)(189003)(8746002)(59450400001)(478600001)(39060400002)(50226002)(77096006)(5660300001)(8676002)(36756003)(6666003)(81156014)(2950100002)(26005)(4326008)(8936002)(118296001)(230783001)(81166006)(2906002)(7696005)(76176011)(36386004)(106466001)(575784001)(50466002)(106002)(2201001)(5890100001)(63266004)(47776003)(356003)(110136005)(305945005)(48376002)(316002)(9786002)(51416003)(54906003)(2004002)(107986001)(2101003)(5001870100001);
+	DIR:OUT; SFP:1101; SCL:1; SRVR:DM2PR02MB1338; H:xsj-pvapsmtpgw02;
+	FPR:; SPF:Pass; PTR:unknown-60-100.xilinx.com,xapps1.xilinx.com;
+	A:1; MX:1; LANG:en; 
+X-Microsoft-Exchange-Diagnostics: 1; SN1NAM02FT063;
+	1:FTFzscuEs+iOvz12fyqCEBjMSBUL++MB9WNx8520Vs+XyZCFFraxVroHhyGENRALKcdKVrNBUru6VJuFOOpu6gm6R0Pd62SKg7ehux1qPmLnNSzHkzASEPSZ+SF2xEEs
+MIME-Version: 1.0
+Content-Type: text/plain
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: b41fad16-9fe2-452d-2a5d-08d55d38a045
+X-Microsoft-Antispam: UriScan:; BCL:0; PCL:0;
+	RULEID:(7020095)(4652020)(5600026)(4604075)(4608076)(2017052603307)(7153060);
+	SRVR:DM2PR02MB1338; 
+X-Microsoft-Exchange-Diagnostics: 1; DM2PR02MB1338;
+	3:B8WsAeQ5uAcXE1xCwWaS/CJ04nxOqJKAPBul9jUtT+N+idrPfBCQHWS1XE0bS8QNjH8iSJ8OTpPNqAKF4SQlEwAerg7gB+04Okp5cXQJrTEDWbhkCZ5AIFj3J+azJ+6KHjXBbjyyj5BLVGHBf32aWL9JVpjXsk9zb1KjMNmzQMqPAfiHJQouuxPLMnZKTGqJwKs/v8JRirZSSy4gSTBk2h0xRJxdsbDqRzGBmScCMr5Uy1uOBLX+/n7EI3ZlNap9Mw9v4wlpNUc6LKv4cQmOKG7U+/MEB4rr788kR86xGw5+xnGX/jNNQLLRsYhRJqiKtrGrTBenl5LUD0hp+hC7+JIwXYWYKfGSsmMJ5vElxYY=;
+	25:KhNGQxPepfA6rHI84D32Lu0ebs97jG01ZIh1WlEYMtKZOIdLZRZ1AhBiTJsYhw6A1KOLW7boDAWWIwnVZe9ewqFwmgNWdMQcPqKy8oc8oMGH/2dJnlKd/HUEfCNRpnNt7cWNdNR/vbUCULFS0nBEYdk1ZR0Bkac3e+WjdHmz9j+/20chcK5hL/sdOiU2wFepxyoQ+4bvrrjvqf8KiSE2OXYArIU6VZw3SQzvOhvw88I/7RSfRJeuH0bNoCiby7y0bN5ltk0pvHciLgIuBcC3aE1g8xtxstfkmLHVR12fy3i6R7Pup/q4/akCSvqi5SEQS0rZdtGOUN6Uv7lZPpCbDqwlsyHOTMQsVe2X1jhp3mo=
+X-MS-TrafficTypeDiagnostic: DM2PR02MB1338:
+X-Microsoft-Exchange-Diagnostics: 1; DM2PR02MB1338;
+	31:adxlP3slmVkkRE4uLoQFb2j0KWWkoWOfYpgj43KeOx2b/4GDa1uAZlIyjyjo2jKh011A5SLMEqGMZmpbxKOrmITrGuxXjz9ZqRl78Ecsu7vL/JBU03Uvt/z5p3xhILzHoObn5LehAlV5r4IGlwQlPeGpFbqT32tvTjFNwnznemWsb+QdOiJkpZOAAAwMVmH96oNTwCevvCXRlnXeEeIL24ktg+pvD2qsgpJA3OYwuW8=;
+	20:nhZZUu7Qwvy00b0nMM99GU17opS04UtmU/Xb/v/BOLfZJCZc4nImlEDTGtYA4oYOpcQ8Bt32uEOmXohqxO76JNg7seQZhoa7z9CJ9EsQMmJjL+cBs9P5VeK9Yu8kdi2g4c/SiMBmX0isqzUU8VOYEMY7InBaCf+Oblyx7SAeN6wks/xAv8jalV+ryLHHJe/XvWK1QuAm0OGK0q3Y2fFmVqcYUB9gaTmSptnRGj2Fat+rPZdCdXEi7ZJ2BGgN4NE3kXHnlEie5eUnTUKHE5Dw+IVNhgmL8faN5zJ8M66UCWWrU5hinEyB/GCZAk23YcF4AXdrH7waT/E1t6QVniyVan94xypMY56XegyPTdildL0jweTk78gm6BbGx1WYefn2eC8CII6j5suDgdA1sq2/dgtvrhRPzS7MAQpSmKBPNw7UMcOJ3lnL6PiAFWVXyzrjnQAua1lIUCQcWPt/cijxcyCLtfA09Vj4Va3O6Ny4564YAQ/upycoWDljggZPZXV3
+Content-Transfer-Encoding: quoted-printable
+X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
+X-Microsoft-Antispam-PRVS: <DM2PR02MB1338D1453FBDEC71ABE5904BDCEA0@DM2PR02MB1338.namprd02.prod.outlook.com>
+X-Exchange-Antispam-Report-Test: UriScan:(192813158149592)(21532816269658);
+X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
+	RULEID:(6040470)(2401047)(5005006)(8121501046)(3231023)(944501161)(93006095)(93004095)(3002001)(10201501046)(6055026)(6041268)(20161123564045)(20161123558120)(20161123562045)(20161123560045)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(6072148)(201708071742011);
+	SRVR:DM2PR02MB1338; BCL:0; PCL:0;
+	RULEID:(100000803101)(100110400095); SRVR:DM2PR02MB1338; 
+X-Microsoft-Exchange-Diagnostics: 1; DM2PR02MB1338;
+	4:AdpStYHZM5pR5CTpk3XW+6riPsnIFFD9fi5z1Ra8szNZM8Zk8/UJTilj121olZ9z561VHPOOgnry6ZC98yWKkuAOS2IXMAqcjx2tEmGFuN4zKGClir7VgxNHBKpV1dqdSDP0z1fGBrX1wtAJx0lL/5lQKvixzIT+/QRvvhzfTMS5MiVX7nHVRKqnx7A3lrQ4wOtNiSO1DhIvxyHjbHwC7AF+321qBqEWkI35oz3k8vRzlHoVMkoSfN8+TipQrhjxIkWVjW6lYWzD5xCFvwxleHDq9RHlj0Eb+6b1ktSvCog/PD/cIVhGmSGrNs0aLDg4nCk97BdDvOZdNdKB4WJRq01YHJbzSbsEa5SwZFSZbTs=
+X-Forefront-PRVS: 0554B1F54F
+X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; DM2PR02MB1338;
+	23:e9yxULq4gaYvxzO9YUYdVUcp0lILx9mFRDezUUYK9?=
+	=?us-ascii?Q?O4YTuoefc0jWGPDexA/Csf11de1HTONmqpmf3EcPazkRUG37EIo0sXhAtw82?=
+	=?us-ascii?Q?VD2HYRw3ySrmwX7jFQBJ+dpJfvSNzGdMJumN3NbBqRbydgVF4Z86+kJiyaI3?=
+	=?us-ascii?Q?f2Awl3lkOd8QdYXOMd7gmeMQFVtjGX/YQmJjBQvk3icngmQ/djEpO7HljgJ6?=
+	=?us-ascii?Q?0plbWnZZiMNRP3AwsLdV1EM9Lp11xbdlWgQxNsCDwyEGzQqSSdSEKRMiwqp5?=
+	=?us-ascii?Q?kYY9Lck9Vllg3m531nq+R5ssiJsOqcHzQ4BbSWytSNNWtDnBzNMYc9guPgJC?=
+	=?us-ascii?Q?mN41lFdbSrqdG/Te6cTCbSzKed0ju1p8vSwkNmRl2sqKd1Zq1zymrY7q5pcJ?=
+	=?us-ascii?Q?h7XAZr3fIsN6c08hOAUqBfy7Oo0pnYH/luTSC17UWTeE8XZ+FbStFjkGzRuM?=
+	=?us-ascii?Q?HRJELY/GKEWHNkiW4lknuuqhLCfOahASxYwghP75LWan7XXNqXX6GXJxXXq0?=
+	=?us-ascii?Q?EkAWrAwUq9QtCh1pZZAepiXVL2095d1ugZMvKbb6lREVYoLrda3OHXtmNKEH?=
+	=?us-ascii?Q?MAhkZUdtXn+H5NeaolnyJW/CnwjGLZT5iN5cg7ni92bq0y9sGwcLIY1szc+y?=
+	=?us-ascii?Q?KUexMX0BMf75DkZMyWr7t+0d+fpKhrUOzPa0NJ1/0upb5FriiXFZbWgAK7E+?=
+	=?us-ascii?Q?S+4Ovr1vvwH3aJuMfzqb/QaTIVqXK7tF2wbtXS1Ykc027vEfri+zWkh+ylwM?=
+	=?us-ascii?Q?cTfyPYZ3MwDPXfV+THLC0OJs5KAyalSEKAa45yrY3vCekIEhQP36BnWFvajP?=
+	=?us-ascii?Q?RnXitmje4Fb+VO+4hDThU4Kcr0KOWajK74Jnha7kJDSf1K34umwoRgwTxMOT?=
+	=?us-ascii?Q?P9Ob4WO0axlpJO7MwSyxwaXnI2Ym2hgkmAdhVtgn5qxWi4kEIF4WLm7Y5mNS?=
+	=?us-ascii?Q?nzNL8b3x1K8PTLI7MeoU62OX1NpoxiL2FU1uPdaTz8HTc+h6+oLZku/yP1JY?=
+	=?us-ascii?Q?kxxd0iLQq11IS07ylzD8aRvwEJzeBf3Wr/jihMHBj23AcV4ibQJXzYmokFVJ?=
+	=?us-ascii?Q?flN0HBiLIX3q6REHEEccAkoZ8lo+WAHOjoty6+Hw275cx/vrMTHd6NZDCYKM?=
+	=?us-ascii?Q?603Vu5m/fB6RFB+OYelqQtH7Nfn4Fc6OLXWW2Yw5/ZdxitwbOsFyEAXkrA5M?=
+	=?us-ascii?Q?IAUEZ9wRrLghMM2m/maagtunPyBAOhjBgc4?=
+X-Microsoft-Exchange-Diagnostics: 1; DM2PR02MB1338;
+	6:Dd1EvtnQsTpga7bQQzV4muW7ARbxTIWmpVEJf/6ltMz27XqkkhL37nQgw7KeQ38TCBJJ5t6UjimekNkOSuCCgsK84dUSXUuFswTn/hP61dk/XXkDY+elkdXZg4EzNRDB1wqi/ZvtfdOM8G/ol7B02K7vxpNXP0ONmHnydOgxx4knbhcmPniB9cEjctwKGz0Oz10O3mwDaBEpCH+zcdZOjx9yOlZ95BdKrB4Lpvkbb2kqNOyQJXnetp7PTeOoHy/chuZfqUjuLx9XJiPLJjDf9+81JIfQWD/76vKF+khqK8p7n9Be1Go3CEtlQU7+n53kTWci+J8XL2RSXC4owwT4TA0vtGeTri71V6TWCP+36Kk=;
+	5:k7gEWzbKx+h5371yE+97vB5wTfV6GG+pCmS9GK81sdRXNlZVJ4315Jl86Ld8zwiIVur2aDnvXsoLS45DU4DbRpbMwxQ54fv1ZhLmnqkUuxikVQWNvjcBVuK7JJKZvAN4c/NBiJRbEqdrukuLJ6TtmfasR+5ozjLao2bQ2CvNR6E=;
+	24:sFsxyNjWA4XOEnFWCUP1jOje7ANPLLaBW28XqOK7RAbd6t7zmUUVO9D/a8k3TQUejVPR40+eRyYF/MuzssnG4EUI6e1N+MtZ91I+2ilcIsU=;
+	7:GLF/elasQ8xN7F6dUexhKnZJKT82quEQ0keAU8OJjYxvOIpA3asgDGbUSh2i4EYnhDAaPg2OTfrFUR9bQqiJwvdSmDSBQyKBZmHM3q3yoh9//R5EAAljfj+EMLnBixUrRm3qAvdHBCUd9byogdEbn3CI/FTYYK8quv1JMgXt6jlGDifQIqJYho1+PyEVqG6zfmKfQSIaKCzy751S5rXAyFVgTaTHS/urkAyiUKEJKljWxlP0vYCqPJa6KQp4pNDA
+SpamDiagnosticOutput: 1:99
+SpamDiagnosticMetadata: NSPM
+X-OriginatorOrg: xilinx.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Jan 2018 23:26:52.8576 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: b41fad16-9fe2-452d-2a5d-08d55d38a045
+X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c;
+	Ip=[149.199.60.100]; Helo=[xsj-pvapsmtpgw02]
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM2PR02MB1338
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 2a01:111:f400:fe49::624
+Subject: [Qemu-arm] [PATCH v5 2/9] xlnx-zynqmp-pmu: Initial commit of the
+ ZynqMP PMU
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,334 +195,145 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Cc: alistair23@gmail.com, qemu-arm@nongnu.org, alistair.francis@xilinx.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: C25IDrYHHMyN
+X-TUID: NabckiT/P01+
 
-This implements emulation of the new SM3 instructions that have
-been added as an optional extension to the ARMv8 Crypto Extensions
-in ARM v8.2.
+The Xilinx ZynqMP SoC has two main processing systems in it. The ARM
+processing system (which is already modeled in QEMU) and the MicroBlaze
+Power Management Unit (PMU). This is the inital work for adding support
+for the PMU.
 
-Signed-off-by: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+The PMU susbsystem runs along side the ARM system on hardware, but due
+to architecture limitations in QEMU the two instances are seperate for
+the time being.
+
+Let's follow the same setup we do with the ARM system, where there is an
+SoC device and a ZCU102 board. Although the PMU is less board specific
+we are still going to follow the same split as maybe in future we can
+connect the PMU device to the ARM ZCU102 board. As the machine will be
+fairly small let's keep them both together in one file.
+
+Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 ---
- target/arm/cpu.h           |   1 +
- target/arm/crypto_helper.c | 143 ++++++++++++++++++++
- target/arm/helper.h        |   5 +
- target/arm/translate-a64.c | 100 +++++++++++---
- 4 files changed, 227 insertions(+), 22 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 8e355398e3e0..917d15fa346c 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1342,6 +1342,7 @@ enum arm_features {
-     ARM_FEATURE_JAZELLE, /* has (trivial) Jazelle implementation */
-     ARM_FEATURE_V8_SHA512, /* implements SHA512 part of v8 Crypto Extensions */
-     ARM_FEATURE_V8_SHA3, /* implements SHA3 part of v8 Crypto Extensions */
-+    ARM_FEATURE_V8_SM3, /* implements SM3 part of v8 Crypto Extensions */
- };
- 
- static inline int arm_feature(CPUARMState *env, int feature)
-diff --git a/target/arm/crypto_helper.c b/target/arm/crypto_helper.c
-index b51fb0bd2897..6c601351b177 100644
---- a/target/arm/crypto_helper.c
-+++ b/target/arm/crypto_helper.c
-@@ -629,3 +629,146 @@ void HELPER(crypto_xar)(CPUARMState *env, uint32_t rd, uint32_t rn,
-     env->vfp.regs[rd] = make_float64(d0);
-     env->vfp.regs[rd + 1] = make_float64(d1);
- }
-+
-+void HELPER(crypto_sm3partw1)(CPUARMState *env, uint32_t rd, uint32_t rn,
-+                              uint32_t rm)
-+{
-+    union CRYPTO_STATE d = { .l = {
-+        float64_val(env->vfp.regs[rd]),
-+        float64_val(env->vfp.regs[rd + 1])
-+    } };
-+    union CRYPTO_STATE n = { .l = {
-+        float64_val(env->vfp.regs[rn]),
-+        float64_val(env->vfp.regs[rn + 1])
-+    } };
-+    union CRYPTO_STATE m = { .l = {
-+        float64_val(env->vfp.regs[rm]),
-+        float64_val(env->vfp.regs[rm + 1])
-+    } };
-+    uint32_t t;
-+
-+    t = CR_ST_WORD(d, 0) ^ CR_ST_WORD(n, 0) ^ ror32(CR_ST_WORD(m, 1), 17);
-+    CR_ST_WORD(d, 0) = t ^ ror32(t, 17) ^ ror32(t, 9);
-+
-+    t = CR_ST_WORD(d, 1) ^ CR_ST_WORD(n, 1) ^ ror32(CR_ST_WORD(m, 2), 17);
-+    CR_ST_WORD(d, 1) = t ^ ror32(t, 17) ^ ror32(t, 9);
-+
-+    t = CR_ST_WORD(d, 2) ^ CR_ST_WORD(n, 2) ^ ror32(CR_ST_WORD(m, 3), 17);
-+    CR_ST_WORD(d, 2) = t ^ ror32(t, 17) ^ ror32(t, 9);
-+
-+    t = CR_ST_WORD(d, 3) ^ CR_ST_WORD(n, 3) ^ ror32(CR_ST_WORD(d, 0), 17);
-+    CR_ST_WORD(d, 3) = t ^ ror32(t, 17) ^ ror32(t, 9);
-+
-+    env->vfp.regs[rd] = make_float64(d.l[0]);
-+    env->vfp.regs[rd + 1] = make_float64(d.l[1]);
-+}
-+
-+void HELPER(crypto_sm3partw2)(CPUARMState *env, uint32_t rd, uint32_t rn,
-+                              uint32_t rm)
-+{
-+    union CRYPTO_STATE d = { .l = {
-+        float64_val(env->vfp.regs[rd]),
-+        float64_val(env->vfp.regs[rd + 1])
-+    } };
-+    union CRYPTO_STATE n = { .l = {
-+        float64_val(env->vfp.regs[rn]),
-+        float64_val(env->vfp.regs[rn + 1])
-+    } };
-+    union CRYPTO_STATE m = { .l = {
-+        float64_val(env->vfp.regs[rm]),
-+        float64_val(env->vfp.regs[rm + 1])
-+    } };
-+    uint32_t t = CR_ST_WORD(n, 0) ^ ror32(CR_ST_WORD(m, 0), 25);
-+
-+    CR_ST_WORD(d, 0) ^= t;
-+    CR_ST_WORD(d, 1) ^= CR_ST_WORD(n, 1) ^ ror32(CR_ST_WORD(m, 1), 25);
-+    CR_ST_WORD(d, 2) ^= CR_ST_WORD(n, 2) ^ ror32(CR_ST_WORD(m, 2), 25);
-+    CR_ST_WORD(d, 3) ^= CR_ST_WORD(n, 3) ^ ror32(CR_ST_WORD(m, 3), 25) ^
-+                        ror32(t, 17) ^ ror32(t, 2) ^ ror32(t, 26);
-+
-+    env->vfp.regs[rd] = make_float64(d.l[0]);
-+    env->vfp.regs[rd + 1] = make_float64(d.l[1]);
-+}
-+
-+void HELPER(crypto_sm3ss1)(CPUARMState *env, uint32_t rd, uint32_t rn,
-+                           uint32_t ra, uint32_t rm)
-+{
-+    union CRYPTO_STATE d;
-+    union CRYPTO_STATE a = { .l = {
-+        float64_val(env->vfp.regs[ra]),
-+        float64_val(env->vfp.regs[ra + 1])
-+    } };
-+    union CRYPTO_STATE n = { .l = {
-+        float64_val(env->vfp.regs[rn]),
-+        float64_val(env->vfp.regs[rn + 1])
-+    } };
-+    union CRYPTO_STATE m = { .l = {
-+        float64_val(env->vfp.regs[rm]),
-+        float64_val(env->vfp.regs[rm + 1])
-+    } };
-+
-+    CR_ST_WORD(d, 0) = 0;
-+    CR_ST_WORD(d, 1) = 0;
-+    CR_ST_WORD(d, 2) = 0;
-+    CR_ST_WORD(d, 3) = ror32(ror32(CR_ST_WORD(n, 3), 20) + CR_ST_WORD(m, 3) +
-+                             CR_ST_WORD(a, 3), 25);
-+
-+    env->vfp.regs[rd] = make_float64(d.l[0]);
-+    env->vfp.regs[rd + 1] = make_float64(d.l[1]);
-+}
-+
-+void HELPER(crypto_sm3tt)(CPUARMState *env, uint32_t rd, uint32_t rn,
-+                          uint32_t rm, uint32_t imm2, uint32_t opcode)
-+{
-+    union CRYPTO_STATE d = { .l = {
-+        float64_val(env->vfp.regs[rd]),
-+        float64_val(env->vfp.regs[rd + 1])
-+    } };
-+    union CRYPTO_STATE n = { .l = {
-+        float64_val(env->vfp.regs[rn]),
-+        float64_val(env->vfp.regs[rn + 1])
-+    } };
-+    union CRYPTO_STATE m = { .l = {
-+        float64_val(env->vfp.regs[rm]),
-+        float64_val(env->vfp.regs[rm + 1])
-+    } };
-+    uint32_t t;
-+
-+    assert(imm2 < 4);
-+
-+    if (opcode == 0 || opcode == 2) {
-+        /* SM3TT1A, SM3TT2A */
-+        t = par(CR_ST_WORD(d, 3), CR_ST_WORD(d, 2), CR_ST_WORD(d, 1));
-+    } else if (opcode == 1) {
-+        /* SM3TT1B */
-+        t = maj(CR_ST_WORD(d, 3), CR_ST_WORD(d, 2), CR_ST_WORD(d, 1));
-+    } else if (opcode == 3) {
-+        /* SM3TT2B */
-+        t = cho(CR_ST_WORD(d, 3), CR_ST_WORD(d, 2), CR_ST_WORD(d, 1));
-+    } else {
-+        g_assert_not_reached();
-+    }
-+
-+    t += CR_ST_WORD(d, 0) + CR_ST_WORD(m, imm2);
-+
-+    CR_ST_WORD(d, 0) = CR_ST_WORD(d, 1);
-+
-+    if (opcode < 2) {
-+        /* SM3TT1A, SM3TT1B */
-+        t += CR_ST_WORD(n, 3) ^ ror32(CR_ST_WORD(d, 3), 20);
-+
-+        CR_ST_WORD(d, 1) = ror32(CR_ST_WORD(d, 2), 23);
-+    } else {
-+        /* SM3TT2A, SM3TT2B */
-+        t += CR_ST_WORD(n, 3);
-+        t ^= rol32(t, 9) ^ rol32(t, 17);
-+
-+        CR_ST_WORD(d, 1) = ror32(CR_ST_WORD(d, 2), 13);
-+    }
-+
-+    CR_ST_WORD(d, 2) = CR_ST_WORD(d, 3);
-+    CR_ST_WORD(d, 3) = t;
-+
-+    env->vfp.regs[rd] = make_float64(d.l[0]);
-+    env->vfp.regs[rd + 1] = make_float64(d.l[1]);
-+}
-diff --git a/target/arm/helper.h b/target/arm/helper.h
-index 2053ea10b2a5..913c551bf14b 100644
---- a/target/arm/helper.h
-+++ b/target/arm/helper.h
-@@ -544,6 +544,11 @@ DEF_HELPER_5(crypto_eor3, void, env, i32, i32, i32, i32)
- DEF_HELPER_5(crypto_bcax, void, env, i32, i32, i32, i32)
- DEF_HELPER_5(crypto_xar, void, env, i32, i32, i32, i32)
- 
-+DEF_HELPER_5(crypto_sm3ss1, void, env, i32, i32, i32, i32)
-+DEF_HELPER_6(crypto_sm3tt, void, env, i32, i32, i32, i32, i32)
-+DEF_HELPER_4(crypto_sm3partw1, void, env, i32, i32, i32)
-+DEF_HELPER_4(crypto_sm3partw2, void, env, i32, i32, i32)
-+
- DEF_HELPER_FLAGS_3(crc32, TCG_CALL_NO_RWG_SE, i32, i32, i32, i32)
- DEF_HELPER_FLAGS_3(crc32c, TCG_CALL_NO_RWG_SE, i32, i32, i32, i32)
- DEF_HELPER_2(dc_zva, void, env, i64)
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index c632f584aad6..9d805d4a7d26 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -11130,28 +11130,39 @@ static void disas_crypto_three_reg_sha512(DisasContext *s, uint32_t insn)
-     int feature;
-     CryptoThreeOpEnvFn *genfn;
- 
--    if (o != 0) {
--        unallocated_encoding(s);
--        return;
--    }
--
--    switch (opcode) {
--    case 0: /* SHA512H */
--        feature = ARM_FEATURE_V8_SHA512;
--        genfn = gen_helper_crypto_sha512h;
--        break;
--    case 1: /* SHA512H2 */
--        feature = ARM_FEATURE_V8_SHA512;
--        genfn = gen_helper_crypto_sha512h2;
--        break;
--    case 2: /* SHA512SU1 */
--        feature = ARM_FEATURE_V8_SHA512;
--        genfn = gen_helper_crypto_sha512su1;
--        break;
--    case 3: /* RAX1 */
--        feature = ARM_FEATURE_V8_SHA3;
--        genfn = gen_helper_crypto_rax1;
--        break;
-+    if (o == 0) {
-+        switch (opcode) {
-+        case 0: /* SHA512H */
-+            feature = ARM_FEATURE_V8_SHA512;
-+            genfn = gen_helper_crypto_sha512h;
-+            break;
-+        case 1: /* SHA512H2 */
-+            feature = ARM_FEATURE_V8_SHA512;
-+            genfn = gen_helper_crypto_sha512h2;
-+            break;
-+        case 2: /* SHA512SU1 */
-+            feature = ARM_FEATURE_V8_SHA512;
-+            genfn = gen_helper_crypto_sha512su1;
-+            break;
-+        case 3: /* RAX1 */
-+            feature = ARM_FEATURE_V8_SHA3;
-+            genfn = gen_helper_crypto_rax1;
-+            break;
-+        }
-+    } else {
-+        switch (opcode) {
-+        case 0: /* SM3PARTW1 */
-+            feature = ARM_FEATURE_V8_SM3;
-+            genfn = gen_helper_crypto_sm3partw1;
-+            break;
-+        case 1: /* SM3PARTW2 */
-+            feature = ARM_FEATURE_V8_SM3;
-+            genfn = gen_helper_crypto_sm3partw2;
-+            break;
-+        default:
-+            unallocated_encoding(s);
-+            return;
-+        }
-     }
- 
-     if (!arm_dc_feature(s, feature)) {
-@@ -11241,6 +11252,10 @@ static void disas_crypto_four_reg(DisasContext *s, uint32_t insn)
-         feature = ARM_FEATURE_V8_SHA3;
-         genfn = gen_helper_crypto_bcax;
-         break;
-+    case 2: /* SM3SS1 */
-+        feature = ARM_FEATURE_V8_SM3;
-+        genfn = gen_helper_crypto_sm3ss1;
-+        break;
-     default:
-         unallocated_encoding(s);
-         return;
-@@ -11306,6 +11321,46 @@ static void disas_crypto_xar(DisasContext *s, uint32_t insn)
- 
- }
- 
-+/* Crypto three-reg imm2
-+ *  31                   21 20  16 15  14 13 12  11  10  9    5 4    0
-+ * +-----------------------+------+-----+------+--------+------+------+
-+ * | 1 1 0 0 1 1 1 0 0 1 0 |  Rm  | 1 0 | imm2 | opcode |  Rn  |  Rd  |
-+ * +-----------------------+------+-----+------+--------+------+------+
+V4:
+ - Rename to remove ZCU102 name
+
+ hw/microblaze/Makefile.objs     |  1 +
+ hw/microblaze/xlnx-zynqmp-pmu.c | 83 +++++++++++++++++++++++++++++++++++++=
+++++
+ 2 files changed, 84 insertions(+)
+ create mode 100644 hw/microblaze/xlnx-zynqmp-pmu.c
+
+diff --git a/hw/microblaze/Makefile.objs b/hw/microblaze/Makefile.objs
+index b2517d87fe..ae9fd40de7 100644
+--- a/hw/microblaze/Makefile.objs
++++ b/hw/microblaze/Makefile.objs
+@@ -1,3 +1,4 @@
+ obj-y +=3D petalogix_s3adsp1800_mmu.o
+ obj-y +=3D petalogix_ml605_mmu.o
++obj-y +=3D xlnx-zynqmp-pmu.o
+ obj-y +=3D boot.o
+diff --git a/hw/microblaze/xlnx-zynqmp-pmu.c b/hw/microblaze/xlnx-zynqmp-pm=
+u.c
+new file mode 100644
+index 0000000000..ac0f78928a
+--- /dev/null
++++ b/hw/microblaze/xlnx-zynqmp-pmu.c
+@@ -0,0 +1,83 @@
++/*
++ * Xilinx Zynq MPSoC PMU (Power Management Unit) emulation
++ *
++ * Copyright (C) 2017 Xilinx Inc
++ * Written by Alistair Francis <alistair.francis@xilinx.com>
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by the
++ * Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WIT=
+HOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
++ * for more details.
 + */
-+static void disas_crypto_three_reg_imm2(DisasContext *s, uint32_t insn)
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "qemu-common.h"
++#include "hw/boards.h"
++#include "cpu.h"
++
++/* Define the PMU device */
++
++#define TYPE_XLNX_ZYNQMP_PMU_SOC "xlnx,zynqmp-pmu-soc"
++#define XLNX_ZYNQMP_PMU_SOC(obj) OBJECT_CHECK(XlnxZynqMPPMUSoCState, (obj)=
+, \
++                                              TYPE_XLNX_ZYNQMP_PMU_SOC)
++
++typedef struct XlnxZynqMPPMUSoCState {
++    /*< private >*/
++    DeviceState parent_obj;
++
++    /*< public >*/
++}  XlnxZynqMPPMUSoCState;
++
++static void xlnx_zynqmp_pmu_soc_init(Object *obj)
 +{
-+    int opcode = extract32(insn, 10, 2);
-+    int imm2 = extract32(insn, 12, 2);
-+    int rm = extract32(insn, 16, 5);
-+    int rn = extract32(insn, 5, 5);
-+    int rd = extract32(insn, 0, 5);
-+    TCGv_i32 tcg_rd_regno, tcg_rn_regno, tcg_rm_regno, tcg_imm2, tcg_opcode;
 +
-+    if (!arm_dc_feature(s, ARM_FEATURE_V8_SM3)) {
-+        unallocated_encoding(s);
-+        return;
-+    }
-+
-+    if (!fp_access_check(s)) {
-+        return;
-+    }
-+
-+    tcg_rd_regno = tcg_const_i32(rd << 1);
-+    tcg_rn_regno = tcg_const_i32(rn << 1);
-+    tcg_rm_regno = tcg_const_i32(rm << 1);
-+    tcg_imm2 = tcg_const_i32(imm2);
-+    tcg_opcode = tcg_const_i32(opcode);
-+
-+    gen_helper_crypto_sm3tt(cpu_env, tcg_rd_regno, tcg_rn_regno, tcg_rm_regno,
-+                            tcg_imm2, tcg_opcode);
-+
-+    tcg_temp_free_i32(tcg_rd_regno);
-+    tcg_temp_free_i32(tcg_rn_regno);
-+    tcg_temp_free_i32(tcg_rm_regno);
-+    tcg_temp_free_i32(tcg_imm2);
-+    tcg_temp_free_i32(tcg_opcode);
 +}
 +
- /* C3.6 Data processing - SIMD, inc Crypto
-  *
-  * As the decode gets a little complex we are using a table based
-@@ -11339,6 +11394,7 @@ static const AArch64DecodeTable data_proc_simd[] = {
-     { 0xcec08000, 0xfffff000, disas_crypto_two_reg_sha512 },
-     { 0xce000000, 0xff808000, disas_crypto_four_reg },
-     { 0xce800000, 0xffe00000, disas_crypto_xar },
-+    { 0xce408000, 0xffe0c000, disas_crypto_three_reg_imm2 },
-     { 0x00000000, 0x00000000, NULL }
- };
- 
--- 
-2.11.0
++static void xlnx_zynqmp_pmu_soc_realize(DeviceState *dev, Error **errp)
++{
++
++}
++
++static void xlnx_zynqmp_pmu_soc_class_init(ObjectClass *oc, void *data)
++{
++    DeviceClass *dc =3D DEVICE_CLASS(oc);
++
++    dc->realize =3D xlnx_zynqmp_pmu_soc_realize;
++}
++
++static const TypeInfo xlnx_zynqmp_pmu_soc_type_info =3D {
++    .name =3D TYPE_XLNX_ZYNQMP_PMU_SOC,
++    .parent =3D TYPE_DEVICE,
++    .instance_size =3D sizeof(XlnxZynqMPPMUSoCState),
++    .instance_init =3D xlnx_zynqmp_pmu_soc_init,
++    .class_init =3D xlnx_zynqmp_pmu_soc_class_init,
++};
++
++static void xlnx_zynqmp_pmu_soc_register_types(void)
++{
++    type_register_static(&xlnx_zynqmp_pmu_soc_type_info);
++}
++
++type_init(xlnx_zynqmp_pmu_soc_register_types)
++
++/* Define the PMU Machine */
++
++static void xlnx_zynqmp_pmu_init(MachineState *machine)
++{
++
++}
++
++static void xlnx_zynqmp_pmu_machine_init(MachineClass *mc)
++{
++    mc->desc =3D "Xilinx ZynqMP PMU machine";
++    mc->init =3D xlnx_zynqmp_pmu_init;
++}
++
++DEFINE_MACHINE("xlnx-zynqmp-pmu", xlnx_zynqmp_pmu_machine_init)
++
+--
+2.14.1
 
+This email and any attachments are intended for the sole use of the named r=
+ecipient(s) and contain(s) confidential information that may be proprietary=
+, privileged or copyrighted under applicable law. If you are not the intend=
+ed recipient, do not read, copy, or forward this email message or any attac=
+hments. Delete this email message and any attachments immediately.

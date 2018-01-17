@@ -1,90 +1,103 @@
-Received: by 10.28.173.206 with SMTP id w197csp5482333wme;
-        Wed, 17 Jan 2018 08:45:38 -0800 (PST)
-X-Google-Smtp-Source: ACJfBov35XgJVg4vg6zkvy1FpUp+SnoPLcWdTt5fN7/fRoh9Ts2rW3xSPaWHej1LTRzObNMmRhSb
-X-Received: by 10.129.91.196 with SMTP id p187mr3115936ywb.347.1516207538477;
-        Wed, 17 Jan 2018 08:45:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516207538; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp5527872wme;
+        Wed, 17 Jan 2018 09:25:04 -0800 (PST)
+X-Google-Smtp-Source: ACJfBouxiAVXsHWoTS2jWl/fY5UEwNS8EKWXUUnQstJe+DJJ36cMWvpOPQgw5lmt66NTZmp8xT/g
+X-Received: by 10.129.46.3 with SMTP id u3mr3299604ywu.481.1516209904474;
+        Wed, 17 Jan 2018 09:25:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516209904; cv=none;
         d=google.com; s=arc-20160816;
-        b=R3xxpsVJYLgTZGuNgsUFx2GII/anOySTvp5lXeQnqNm78CfbOuhENVrbmZw+bn2oY+
-         Lj8SkXwAdKzRNcAoS3JvH0L9sdGqkBGxRufC/dH3VQyKoFMDK1ZsrTRHM1xpYmryWn4l
-         wcLAYhe9a4+rTSYphLopOjB0U8/pJUw8/rlhUM2PM9qBbONThynNf+W14J8KBe1z3aKI
-         MR1uqkOAgLei/YLa23R9KzKojB7hJrAzOEMh2gDtoe8tKm/CvKeL4GwOA6tzmCBPr2oW
-         IUDefXGpLzxhkNGpJp4n1US1sKpU7TXdfQGX81IklC8NlraHi4OQb0/JY43n1B2LdvQU
-         Z3iQ==
+        b=CbCPirccYTV9o61K7cT7HIeqsOz7ygzbpwXr7Jm+YPzKtVHxcI6VQ/rUMg7x84SfWf
+         /OtHu7wxJ6QxH1yRfn3AgION9AivMqmJ6VxVPgc03dh8qwEUT5wmB8BmCxSyTopdoywP
+         PtuvNZT0FrpaAijS60KXtTniEaqwXAXPXKZwZVh5NG/w9XwaKZnFVO/qcTUSxbyHdwJt
+         nOY3JsL9jT0L/gL+I9n2w5BohrU4ZNrJ2q6Zx+rwFsHXkykxX04p/9UXlbMIwgG5oFKc
+         PhtUuLsRAvPBYkBBBdiyUGjlVP755AW4FTPMzITkQnbyRPBRRpoWBhYv66xL1rbHDjWI
+         UyEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=1Mo0ignJgVKiW99tdElHw0eeREP1VEPmfZxYuhODugU=;
-        b=x0mq1Ft1RNDpyvyk+HUmPliv1QNWSFcGHn34efsiv4kbhFPMHdYyrWjj1BryIsuxmS
-         4zdSN39MwZcomvzZa1VdvWsL83kLac5VJJsoEjgotKCSTlj7n/5fopgtP/ihSJDrmmxb
-         QDzMjO0byapvPqf72mR7zo/IVcqYWYxR4Q9wnSsJeauGB4TBDuFIi4QidrMGX/hAiHsc
-         Ew1OO4ZJ4GfVZ19n8L9IReHIMxsTN2xUIeuR8JU7nsF48J1V/1xpUxOistT5SXmGtnM6
-         cNSLD/UtUJF4yKidUl7DSKUiklKn0A9zK7pNvnwpRnv1rfo9UVDXgqjm/z0Izju38flT
-         fxVg==
+        bh=KNXIMpR6p+LNs288hYOpC0l+pbQVKv542p45mMUZ0JI=;
+        b=igQFTVP+6uSp3aNnq7/vGSkpc1Mnu7+EKiND3XGlknXpnTW00+MNymepTMRmWUdV2A
+         1WOcX/+L5gzcMhpUgBB2hOZOitL4OcfzgJnGgdT6bGa2wOdA2D+1cnIGzVPQduyNmkXT
+         bF5W2mLPGVFUyxuI9ov2knrvZGzTk1I7L2T5wTScqZAxOpjqYooYE0mtFULUgSjn4cT4
+         07Q3miXUrQ7CqrETeQ+vedaxr4BUUAZoynMDz9zxJ+3XirARwO813az7zdYTy8g+kCd/
+         HudrRdTWVOYJwnglbB73pUp29uxzmP+IAhN7R+nM1+2O/9KTqHO8zvA5k0iNHP2pj6du
+         zh3g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VGaU4W0B;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p75si1272454ywp.76.2018.01.17.08.45.38
+        by mx.google.com with ESMTPS id g26si719545ybe.660.2018.01.17.09.25.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 17 Jan 2018 08:45:38 -0800 (PST)
+        Wed, 17 Jan 2018 09:25:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46393 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VGaU4W0B;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:49150 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ebqqH-0000FO-QU
-	for alex.bennee@linaro.org; Wed, 17 Jan 2018 11:45:37 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40479)
+	id 1ebrSR-00021f-Us
+	for alex.bennee@linaro.org; Wed, 17 Jan 2018 12:25:04 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50938)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcel@redhat.com>) id 1ebqPs-00011I-69
-	for qemu-devel@nongnu.org; Wed, 17 Jan 2018 11:18:23 -0500
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1ebqpz-0000tD-Tp
+	for qemu-devel@nongnu.org; Wed, 17 Jan 2018 11:45:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcel@redhat.com>) id 1ebqPo-000587-0o
-	for qemu-devel@nongnu.org; Wed, 17 Jan 2018 11:18:20 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:36524)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <marcel@redhat.com>)
-	id 1ebqPj-00055j-31; Wed, 17 Jan 2018 11:18:11 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3FB074D2D1;
-	Wed, 17 Jan 2018 16:18:00 +0000 (UTC)
-Received: from mapfelba-osx.local (unknown [10.35.206.31])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id D3D3917C5C;
-	Wed, 17 Jan 2018 16:17:40 +0000 (UTC)
-To: Andrey Smirnov <andrew.smirnov@gmail.com>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1ebqpv-0000Pt-SG
+	for qemu-devel@nongnu.org; Wed, 17 Jan 2018 11:45:19 -0500
+Received: from mail-io0-x242.google.com ([2607:f8b0:4001:c06::242]:41833)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1ebqpv-0000PD-JZ; Wed, 17 Jan 2018 11:45:15 -0500
+Received: by mail-io0-x242.google.com with SMTP id f6so21544280ioh.8;
+	Wed, 17 Jan 2018 08:45:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc;
+	bh=KNXIMpR6p+LNs288hYOpC0l+pbQVKv542p45mMUZ0JI=;
+	b=VGaU4W0BGVEMGaVhxtPY0qKKyx02jO9laYyS/xKr9jCCiE6TWTqaT9/uJrdz/tD3mR
+	WWFWGXcneWbcuLlGFj1WapmTq+SWI3igc9BeKK12LYGaGrLpGOCSVso2qjFc1tG0QxVv
+	GnSyIXHtfwI3vEvWPoYT8yqOKmTq27RAAcEhvjtm+OjgfRBl30Rt3u5Urb2A2Jgu5kkI
+	Cm7fytjQ6fMeH4W8UFQweyrslqsjrWnrXrk4rdwGNFKeqgu4gkXu/KJNLxS9D+rVzngl
+	3qYyH+i0zxrXPHXqTczPoWL13ozha22XIoBSeUOGaL8tQdXKUthqzVakI0GlsHZzN4Ol
+	ajpw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc;
+	bh=KNXIMpR6p+LNs288hYOpC0l+pbQVKv542p45mMUZ0JI=;
+	b=WRaJeEfpd1IPsGFweyvhUILSlcWd3sYFiDqNAoKuB99spR+LCot3nHXDijc1diAdRx
+	eFiNP/XqcKyGB8ZzOD6ZDzaBoAkI0p7EkqEoycV6CeinFLiBx6f/oHcWXPtUWdTZe3dI
+	j6jQ82FNnqABJPduijbF7cu6WFB73VejfEDJLY/EtdVGX2rYOqfXOHVVp38CODuC+NXr
+	VwLel/kXwRgIC6urVOJ8iojhiujo1x3u7oQsNSvHu8C8yMIWKt37xdPQgpLwUzoiuy4/
+	ZQCSLnA9/w5KKpSuYVUDUriDxY6icPjNJWRF7ZR+IEEyPpkebRK06G7n0IgrQZFMqEM/
+	rBWw==
+X-Gm-Message-State: AKwxyteVOhSEXNj78JdGHXI+ElAlOTdrtF2i0UKRNUHH24hgJ1WyMxLY
+	Q5ETX9H3Ocsh9ToGGB1p/Kw3hxkdKm6FL4PiJPY=
+X-Received: by 10.107.53.221 with SMTP id k90mr22737778ioo.6.1516207514643;
+	Wed, 17 Jan 2018 08:45:14 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.2.165.135 with HTTP; Wed, 17 Jan 2018 08:45:13 -0800 (PST)
+In-Reply-To: <CAHQ1cqFknfW0NmiD-3GFJRedgVE-9bacKhm-pYx0ycviRsmucQ@mail.gmail.com>
 References: <20180116013709.13830-1-andrew.smirnov@gmail.com>
 	<20180116013709.13830-10-andrew.smirnov@gmail.com>
 	<CAFEAcA-hEgWp58nte89Vs6nZnp4wA6_f8-Vaovm2hiJe9SWwHQ@mail.gmail.com>
 	<b9661e65-5fb2-46b5-b082-6e768afff7bc@zoho.com>
 	<CAHQ1cqFknfW0NmiD-3GFJRedgVE-9bacKhm-pYx0ycviRsmucQ@mail.gmail.com>
-From: Marcel Apfelbaum <marcel@redhat.com>
-Message-ID: <d060a7d9-b87e-df81-d601-f4cd538a0a88@redhat.com>
-Date: Wed, 17 Jan 2018 18:17:27 +0200
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:52.0)
-	Gecko/20100101 Thunderbird/52.4.0
-MIME-Version: 1.0
-In-Reply-To: <CAHQ1cqFknfW0NmiD-3GFJRedgVE-9bacKhm-pYx0ycviRsmucQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Wed, 17 Jan 2018 16:18:10 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
+From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Date: Wed, 17 Jan 2018 13:45:13 -0300
+X-Google-Sender-Auth: G8nA_4AGRqU-oyu021WN_iMJTOc
+Message-ID: <CAAdtpL65QPW9uW8ppnz1Lz0aaCtHokJqpdHXe48G-chz-T167A@mail.gmail.com>
+To: Andrey Smirnov <andrew.smirnov@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4001:c06::242
 Subject: Re: [Qemu-devel] [PATCH v4 09/14] pci: Add support for Designware
  IP block
 X-BeenThere: qemu-devel@nongnu.org
@@ -100,93 +113,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	"Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	qemu-arm <qemu-arm@nongnu.org>, Andrey Yurovsky <yurovsky@gmail.com>
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Marcel Apfelbaum <marcel@redhat.com>, Andrey Yurovsky <yurovsky@gmail.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wh1YXqi2ATtE
+X-TUID: Xq7NFy1NMHnY
 
-On 17/01/2018 18:12, Andrey Smirnov wrote:
+Hi Andrey,
+
+On Wed, Jan 17, 2018 at 1:12 PM, Andrey Smirnov
+<andrew.smirnov@gmail.com> wrote:
 > On Wed, Jan 17, 2018 at 7:23 AM, Marcel Apfelbaum
 > <marcel.apfelbaum@zoho.com> wrote:
->>
->> Hi Peter,
->>
->>
->> On 16/01/2018 16:34, Peter Maydell wrote:
->>>
->>> On 16 January 2018 at 01:37, Andrey Smirnov <andrew.smirnov@gmail.com=
->
->>> wrote:
->>>>
->>>> Add code needed to get a functional PCI subsytem when using in
->>>> conjunction with upstream Linux guest (4.13+). Tested to work agains=
-t
->>>> "e1000e" (network adapter, using MSI interrupts) as well as
->>>> "usb-ehci" (USB controller, using legacy PCI interrupts).
->>>>
->>>> Cc: Peter Maydell <peter.maydell@linaro.org>
->>>> Cc: Jason Wang <jasowang@redhat.com>
->>>> Cc: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->>>> Cc: qemu-devel@nongnu.org
->>>> Cc: qemu-arm@nongnu.org
->>>> Cc: yurovsky@gmail.com
->>>> Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
->>>> ---
->>>>    default-configs/arm-softmmu.mak  |   2 +
->>>>    hw/pci-host/Makefile.objs        |   2 +
->>>>    hw/pci-host/designware.c         | 618
->>>> +++++++++++++++++++++++++++++++++++++++
->>>>    include/hw/pci-host/designware.h |  93 ++++++
->>>>    include/hw/pci/pci_ids.h         |   2 +
->>>>    5 files changed, 717 insertions(+)
->>>>    create mode 100644 hw/pci-host/designware.c
->>>>    create mode 100644 include/hw/pci-host/designware.h
->>>
->>> I'm not familiar enough with our PCI code to be able to review
->>> this, I'm afraid. MST and Marcel are our PCI subsystem maintainers --
->>> could one of you have a look at whether this seems to be a correct
->>> implementation of a pcie host controller ?
->>
->>
->> Sadly PCI Host bridges do not have a standard, each HW vendor
->> can do pretty much what they want.
->>
->> That being said, if Andrey can point me to the PCI spec for the Design=
-ware
->> PCI host bridge and what parts they implemented for it I can have a lo=
-ok,
+>> That being said, if Andrey can point me to the PCI spec for the Designware
+>> PCI host bridge and what parts they implemented for it I can have a look,
 >> sure.
 >> (I will not be available for a week or so, but right after)
 >>
->=20
+>
 > Just in case you still want this:
->=20
+>
 > To the best of my knowledge, Synposys does not provide specification
 > for their PCIe IP to general public and I am in no way affiliated with
 > them, so I don't have any backchannels to get it any other way.
->=20
+>
 > The next best thing to an actual spec, that I found to be pretty
 > useful, is PCIe chapter of i.MX6Q Reference Manual
 > (https://www.nxp.com/docs/en/reference-manual/IMX6DQRM.pdf   page
 > 4049), which is what I used to implement the code in question.
->=20
 
-Appreciated.
+Please add a comment about it in your respin, such:
+
+Based on "i.MX6 Applications Processor Reference Manual" (Document
+Number: IMX6DQRM Rev. 4)
 
 > Last, and probably the most important, "source of truth" was actual
 > Linux PCIe driver for i.MX/Designware which I used as a sort of
 > inverse reference implementation.
->=20
 
-We did the same for our PVRDMA device implementation :)
+Same here:
 
-
-Thanks,
-Marcel
-
-> Thanks,
-> Andrey Smirnov
->=20
-
+Reversed from Linux v4.9 drivers/pci/host/pcie-designware.c

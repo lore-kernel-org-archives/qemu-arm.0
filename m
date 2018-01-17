@@ -1,114 +1,89 @@
-Received: by 10.28.173.206 with SMTP id w197csp5257811wme;
-        Wed, 17 Jan 2018 05:21:19 -0800 (PST)
-X-Google-Smtp-Source: ACJfBouwwNn3IpsGO9gUTs8nzAWGidzjXC8pc2P782dHW655povpq2+yBrt9kEcZDy0x8Klfy4rL
-X-Received: by 10.129.4.80 with SMTP id 77mr652651ywe.74.1516195279525;
-        Wed, 17 Jan 2018 05:21:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516195279; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp5395766wme;
+        Wed, 17 Jan 2018 07:26:59 -0800 (PST)
+X-Google-Smtp-Source: ACJfBos27HMlDfynTwLDitXUM4WIntTYzJSKM8PiXzP1bKNedCHWMp7jsBrSfjTKTVwQg4AiyN7e
+X-Received: by 10.37.134.136 with SMTP id z8mr5776465ybk.158.1516202819333;
+        Wed, 17 Jan 2018 07:26:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516202819; cv=none;
         d=google.com; s=arc-20160816;
-        b=fPYKcmVxLuShhObyHIaMBjko5fce9QvU/F6xt5vZhgT31IBJ9P9U9nNc0HgB44Cu/l
-         GIUOHVI/aUpVzmMHz3nw+o5SUzYRW60DV6QYiQEUik8iIaZ5eLWKwPQtcjrz8PkiH5v+
-         +8Orsw9wXRuUdY+85RTqhB81nU1RGzkuvmyjfcHk6+h2JBLT3Lb+sEfH2WOalaivrpp4
-         adDjW2VsSwloD0JoZHFHQ5LFNrgDN9fJrBJRUOVQmpHzOq83PE6ERtOeNevWjdljrtsm
-         MCq+K2yZ/djVzqKBPGKJQ72KltNVzelOFz/CZ0kdNuDEZYCmPRs/T6rFNj+1Vv5qYWLC
-         ZyGw==
+        b=C4dDIAVRKlpB2KwiBUv2/DFoTqlBEunbgcLd4jDRqPh/yD5ICZnMPFgMfqQq1u21T+
+         +wo65nQ4h7Nbu7BhUgASJ3rf2ch59gQ8pGr7UrHN7xcLIG+tMceF/LRyvbBRNugdrswB
+         3N3KC7V/NnQ4/U+AIjccGkJvwPy0QV/9Z31isnTEEbz/9cCm5xkjzvMu2Dr8kiFxJEY8
+         9Qwqm59d4h8d3jFhPi7bhhFfTzCJu1U6NqTvB/GoWutEGdwp8o9pVRlF6fGciveMJI5t
+         5WJfl5elqdKqcys0o0DpqMIkVTuJivHXRAjGnZR/BJ4fWNHuaxwQJJRGEuEKInSiEl/K
+         FUuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=jMTNfTWvksaaKjgjneKUcT22/ysgBnfq3TpCbM9M53k=;
-        b=MVt387LdWJahz5eFt9cUZGJIVereO8sUADLfiNgR3XjtZTL72EpBjREX0hQVBi7szi
-         QrhMOuBddugNJs27sQeHSC21a5BUacbwCDUyvcR0VmvWYJ2MhFD8t0Tcb9RpXImn9BHY
-         gIEdUGVOV+NmzVIG6Bc3O8nIbfhx8c/RS1buoIJhSmAVNAzOCn8JNX3Eoze/zEAZiq82
-         krJhA21+qd6kGYdBPs+8osjrdChYK1zW8fnA52GbFdOIpI82Z1e8qFnHHI2K7aGwWpVf
-         tZG7npTeD/li3kcsV0AaF7VBlG55iMULRQD8MuVFX3+s1JYGaXIEUNtkl6neEfSgoiuj
-         mnuA==
+         :user-agent:date:message-id:from:references:to
+         :arc-authentication-results;
+        bh=OM5yOudjzL9OMTpJl4ODXsu68T7TGxvzX1cMYrDVM8w=;
+        b=wvF16hDhrEdja+RukHrz/TqyHhxNtFBsHC/2BiLhM3Cq2TbXRNHzyObbK39hQQCV6i
+         gMydkFQ7RSK7TcLiaqKXuWkaJKHmJVjeYHkMMlAllxTiQZyoPSbn/m7p4pMwqFRwscoE
+         P1He7Lf4b37H7fSGIyo2oA3NW8qqt8DDFOQtmVCRdnahmVnXxapjkPQ3gB2OVw0aVw1J
+         pKr5rnChQ60ruqOAN2OGgPCPnFR5B7I7jsTQtrWKzyj+toLnQzxHYlDOm+lSu0fPc5g1
+         pEKGqpPkXWA+vrcMvlK5otCDHQOeIlMQ8frRK8bAE1K8+85r8VOpniIs4eUFgiu4bykx
+         lHHA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JYHhbQpa;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h10si1219672ywk.695.2018.01.17.05.21.19
+        by mx.google.com with ESMTPS id g21si1211366ywk.688.2018.01.17.07.26.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 17 Jan 2018 05:21:19 -0800 (PST)
+        Wed, 17 Jan 2018 07:26:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JYHhbQpa;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:35461 helo=lists.gnu.org)
+Received: from localhost ([::1]:43075 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ebneY-00060A-W9
-	for alex.bennee@linaro.org; Wed, 17 Jan 2018 08:21:19 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42518)
+	id 1ebpcA-0003fO-O9
+	for alex.bennee@linaro.org; Wed, 17 Jan 2018 10:26:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44082)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ebne3-0005yS-LQ
-	for qemu-devel@nongnu.org; Wed, 17 Jan 2018 08:20:48 -0500
+	(envelope-from <marcel.apfelbaum@zoho.com>) id 1ebpZe-00023d-0B
+	for qemu-devel@nongnu.org; Wed, 17 Jan 2018 10:24:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ebne2-0001zH-PU
-	for qemu-devel@nongnu.org; Wed, 17 Jan 2018 08:20:47 -0500
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:35899)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ebndx-0001nR-39; Wed, 17 Jan 2018 08:20:41 -0500
-Received: by mail-qk0-x241.google.com with SMTP id d21so25168764qkj.3;
-	Wed, 17 Jan 2018 05:20:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=jMTNfTWvksaaKjgjneKUcT22/ysgBnfq3TpCbM9M53k=;
-	b=JYHhbQpaXwXQOo2/0P9aZBoImEqiWbqav5407wSUA3MBlc0HDEkVMtlu4l3lkAJWnX
-	SI4Q7pfDqfLax2kbXXD9D6v4h1mG7NKdvacEw09eX0fspEJ4MxhS4FtPaZchcqStpCSF
-	n7hhy2qIs1dyEK2I1eK21XcfutrvEACDpHhe2g5etjfA34XNWaCmKl3SGPtQdB8aPli1
-	jNY5P1Nbg6xdaQaFq+0aTzU+P1vg3k+fQ5v7ahEDWGD5SGc9mceOlQnX7a6MbHj31W8/
-	Bi3Cm8BkrMc6KnI8/lDs/ylPWky14cMPJwirgOlZQiH9aQQWGHx9cjB65Vhf2v3+Xdad
-	/r/g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=jMTNfTWvksaaKjgjneKUcT22/ysgBnfq3TpCbM9M53k=;
-	b=VIXu4UA1dVukYVa4wxP+bTMCMcUOcYggb70+RpBT6+SGPuRzJ9T4xJrfM5cDgcSZIJ
-	QMjtmTn6pWuwmLy9cMWfD6m/MrN2TjX2Q+Xl9rzehwHWBVXCk6e2xuA8MOAB34nYVuy/
-	dLw34TwlPG0dzUTjtA6QAlaQcDWHvOThb4PKg4MLnLmnDU32etopbOvMnoKbo2uOJFxz
-	hvbNlfnpMUcmYUEd37Cj9VPEKjcZ0firT5gtjDa16wRvOWGKcKBQJX0o+rYhEjkWqqzY
-	9/ei5vgoflRnG4qWKfrWLbKiteBMrhR5TlkNy8VG8TWaWQgkFjv4z0XUNLfnG/EO8ofx
-	qI3A==
-X-Gm-Message-State: AKwxytf8G4KHUAodMPQeBYKAjnlE+jfzS4+OvcSHWNMpN2BXoSfzKk2W
-	tfLp1Tu1mO5NP2gmNJeHauWtNli6
-X-Received: by 10.55.71.149 with SMTP id u143mr30750432qka.240.1516195240328; 
-	Wed, 17 Jan 2018 05:20:40 -0800 (PST)
-Received: from [192.168.1.11] ([138.117.48.219])
-	by smtp.gmail.com with ESMTPSA id q2sm2957808qki.26.2018.01.17.05.20.37
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 17 Jan 2018 05:20:39 -0800 (PST)
-To: Alistair Francis <alistair.francis@xilinx.com>, qemu-devel@nongnu.org,
-	edgar.iglesias@xilinx.com, edgar.iglesias@gmail.com
-References: <cover.1516144891.git.alistair.francis@xilinx.com>
-	<d1049a00a3c00d8310584f7732492a2064a982ae.1516144891.git.alistair.francis@xilinx.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <b366c117-c4be-50bc-0c34-3e61c6bebb72@amsat.org>
-Date: Wed, 17 Jan 2018 10:20:36 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.2
+	(envelope-from <marcel.apfelbaum@zoho.com>) id 1ebpZY-0006Rm-2d
+	for qemu-devel@nongnu.org; Wed, 17 Jan 2018 10:24:22 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:37206)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <marcel.apfelbaum@zoho.com>)
+	id 1ebpZO-0006G9-Fn; Wed, 17 Jan 2018 10:24:06 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9131355860;
+	Wed, 17 Jan 2018 15:23:49 +0000 (UTC)
+Received: from mapfelba-osx.local (unknown [10.35.206.63])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0A4D1189A5;
+	Wed, 17 Jan 2018 15:23:06 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>
+References: <20180116013709.13830-1-andrew.smirnov@gmail.com>
+	<20180116013709.13830-10-andrew.smirnov@gmail.com>
+	<CAFEAcA-hEgWp58nte89Vs6nZnp4wA6_f8-Vaovm2hiJe9SWwHQ@mail.gmail.com>
+From: Marcel Apfelbaum <marcel.apfelbaum@zoho.com>
+Message-ID: <b9661e65-5fb2-46b5-b082-6e768afff7bc@zoho.com>
+Date: Wed, 17 Jan 2018 17:23:04 +0200
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:52.0)
+	Gecko/20100101 Thunderbird/52.4.0
 MIME-Version: 1.0
-In-Reply-To: <d1049a00a3c00d8310584f7732492a2064a982ae.1516144891.git.alistair.francis@xilinx.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <CAFEAcA-hEgWp58nte89Vs6nZnp4wA6_f8-Vaovm2hiJe9SWwHQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH v5 1/9] microblaze: boot.c:
- Don't try to find NULL pointer
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Wed, 17 Jan 2018 15:23:59 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-devel] [PATCH v4 09/14] pci: Add support for Designware
+ IP block
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -120,42 +95,63 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: alistair23@gmail.com, qemu-arm@nongnu.org
+Reply-To: marcel@redhat.com
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	qemu-arm <qemu-arm@nongnu.org>, Marcel Apfelbaum <marcel@redhat.com>,
+	Andrey Yurovsky <yurovsky@gmail.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: R4f/zULGc3h+
+X-TUID: kU8ba4Q/+SDa
 
-Hi Alistair,
 
-Maybe reworded "Don't try to find NULL file"
+Hi Peter,
 
-On 01/16/2018 08:22 PM, Alistair Francis wrote:
-> Previously if no device tree was passed to microblaze_load_kernel() then
-> qemu_find_file() would try to find a NULL pointer. To avoid this put a
-> check around qemu_find_file().
-> 
-> Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
-> Reported-by: Peter Maydell <peter.maydell@linaro.org>
+On 16/01/2018 16:34, Peter Maydell wrote:
+> On 16 January 2018 at 01:37, Andrey Smirnov <andrew.smirnov@gmail.com> =
+wrote:
+>> Add code needed to get a functional PCI subsytem when using in
+>> conjunction with upstream Linux guest (4.13+). Tested to work against
+>> "e1000e" (network adapter, using MSI interrupts) as well as
+>> "usb-ehci" (USB controller, using legacy PCI interrupts).
+>>
+>> Cc: Peter Maydell <peter.maydell@linaro.org>
+>> Cc: Jason Wang <jasowang@redhat.com>
+>> Cc: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>> Cc: qemu-devel@nongnu.org
+>> Cc: qemu-arm@nongnu.org
+>> Cc: yurovsky@gmail.com
+>> Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
+>> ---
+>>   default-configs/arm-softmmu.mak  |   2 +
+>>   hw/pci-host/Makefile.objs        |   2 +
+>>   hw/pci-host/designware.c         | 618 +++++++++++++++++++++++++++++=
+++++++++++
+>>   include/hw/pci-host/designware.h |  93 ++++++
+>>   include/hw/pci/pci_ids.h         |   2 +
+>>   5 files changed, 717 insertions(+)
+>>   create mode 100644 hw/pci-host/designware.c
+>>   create mode 100644 include/hw/pci-host/designware.h
+> I'm not familiar enough with our PCI code to be able to review
+> this, I'm afraid. MST and Marcel are our PCI subsystem maintainers --
+> could one of you have a look at whether this seems to be a correct
+> implementation of a pcie host controller ?
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Sadly PCI Host bridges do not have a standard, each HW vendor
+can do pretty much what they want.
 
-> ---
-> 
->  hw/microblaze/boot.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/microblaze/boot.c b/hw/microblaze/boot.c
-> index 457a08a2fe..35bfeda7aa 100644
-> --- a/hw/microblaze/boot.c
-> +++ b/hw/microblaze/boot.c
-> @@ -124,7 +124,7 @@ void microblaze_load_kernel(MicroBlazeCPU *cpu, hwaddr ddr_base,
->      kernel_cmdline = qemu_opt_get(machine_opts, "append");
->      dtb_arg = qemu_opt_get(machine_opts, "dtb");
->      /* default to pcbios dtb as passed by machine_init */
-> -    if (!dtb_arg) {
-> +    if (!dtb_arg && dtb_filename) {
->          filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, dtb_filename);
->      }
-> 
-> --
-> 2.14.1
+That being said, if Andrey can point me to the PCI spec for the Designwar=
+e
+PCI host bridge and what parts they implemented for it I can have a look,=
+ sure.
+(I will not be available for a week or so, but right after)
+
+Thanks,
+Marcel
+> I did notice it seems to be missing device state save/load support.
+>
+> thanks
+> -- PMM
+>
+

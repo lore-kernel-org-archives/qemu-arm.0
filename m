@@ -1,98 +1,99 @@
-Received: by 10.28.173.206 with SMTP id w197csp6869798wme;
-        Thu, 18 Jan 2018 10:43:26 -0800 (PST)
-X-Google-Smtp-Source: ACJfBovYUBpFdacrAs5XMcD/aJsQVA9PLnTKWYl6aa5CNM5kfxTmmwnd9EAwGbTWuR9xelJebk5y
-X-Received: by 10.37.185.79 with SMTP id s15mr10852051ybm.348.1516301005992;
-        Thu, 18 Jan 2018 10:43:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516301005; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp6869928wme;
+        Thu, 18 Jan 2018 10:43:34 -0800 (PST)
+X-Google-Smtp-Source: ACJfBospfSDVVYc3oTg0Q6pWkId0ec9l8rERqGJTJ/fXGr1jcXZ0Zw5uDVkpsn0h/TF+IZjTiBVJ
+X-Received: by 10.37.219.83 with SMTP id g80mr21781394ybf.201.1516301013966;
+        Thu, 18 Jan 2018 10:43:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516301013; cv=none;
         d=google.com; s=arc-20160816;
-        b=sjAt+7zdGb3Oj8Qd3OlKrWyzpXkSFSVfDRlwQqHWQAyR5CYzfxlK9AHDkDvMjgs16+
-         EBhvKJU3gHo5JzrvUHKBnQOLwTrucgBgiJt1ZF1Sv6/g5xNYGolWBOFRZmJfW3gfLWpN
-         6xAOWJdt98yAJ0jNyYXq5ZjdAMkiiV7D6KDcTRrs618wjypcDYla+M1/8URou0tohnJu
-         BJpqbqqSfqh6R6dpfBc6j4o9fHV0sdaS9ishvf5bJlKena26cRRf6bAWNVDuUCu/jTQb
-         jy16uwVQbVYrcAskAcYXTElA8A1bYDB7qkkfF0vuXCX1fP1uNr+uMtHCfHQKi4MeM55y
-         qLjA==
+        b=bzyFeNjQHqOTc9QWsoyfQISCtc5vfjSrS6LFtinJQ2SZPNm/igiwOfExvvZ7IdlMn6
+         biLaW/S0IjdLHIs1YTQhlMiokKZSRyxFO1nlGYPNE1IWInzLX/JLFpeNXOWEM9AlXaHj
+         OvSBO4vCgD5bn4+FQmpmAiyrWmf1qat/BhbDN0B6DDH/sI3ThjZIw74mExmZXWy0GYVN
+         xxO/EjtOax0QeR5NNdutmaNFBq842koLkfBpBNfv6Cbtq9zRdWRYOOv3dSEsnDfjqZXb
+         uLRzs/rjqEFfAJ5Ffm1f/cz0KQOsLJLZXMAnCYT+axO4veW3zzExzL+eSolFCmHUgAk3
+         5SJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=LZExAnHuD9UO91hl3+GRfjj4KVoiJmGUzRQw18SqirQ=;
-        b=FED3h5emWiwOu78oSCKAlk/HAmGdNExWUyQWjbYMl84+zqLcFC6tpYKYyfN9d3QA8S
-         /Ut51qj/NHBCFlABrpFRV8vDNmreO4jAxDjQTOxS2apBv9v0wSrxj9U7oapYpO6c2lZP
-         8PRU2snKt+c60Y+5OOTnPiA58MF79UCxr9F+31nkmSRkp6Sy/59j+ZRx3YRSHdZ/+njk
-         rAQJmcgwLACUWQpZfc30zwscGFmrpxq85S5zvH2l3Fnx4P8nZY9w03mNqLOEkyxceGeN
-         JpHfbbRnEyg7A8nifSrDa3gWf/ZKi4tKZutM7yltmj7djhDUpmVE8xOMgjrwtn/e5LGN
-         kCtw==
+        bh=jnjZxUo6DdDuRrFsJf0BnqEIpqJuKubvBWE4IGEwKHg=;
+        b=npKO8pxxbnFboGmJCy72HgIfnzuBg5WT1zRNNRQfubMGaAUhIjwxOQw2pggtPkjoik
+         YBAIgy1YjnX/nS02vbbLchF7iIJItVyNDkqkpaE/Nciysm0jvi+OxV9U6BHm7iYYFmo4
+         fye6zGUVpk63JuGjC1pvVE4S36hjKIQ0VjP89KDXfj6puM+q5UYsTYuqszNomxsPxaVd
+         ASbuYHqRzjbs3/3CPYL+aT321p7W72Y62kWvuZvNhCcNe5fq31EKjlprEgj7R5j7nW4c
+         BmCIbbXRcWuTajlWyF7m8oKeO/3ftc0k1UzWzEXC0GvFf4ctwW1uXmZtoHGdoPP0WLao
+         m51Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=J+PoeE5V;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gfmiMoiS;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y4si249848ybi.79.2018.01.18.10.43.25
+        by mx.google.com with ESMTPS id x133si1850291ywc.605.2018.01.18.10.43.33
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 18 Jan 2018 10:43:25 -0800 (PST)
+        Thu, 18 Jan 2018 10:43:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=J+PoeE5V;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gfmiMoiS;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:47165 helo=lists.gnu.org)
+Received: from localhost ([::1]:47219 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ecF9p-000808-A6
-	for alex.bennee@linaro.org; Thu, 18 Jan 2018 13:43:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41903)
+	id 1ecF9x-0008CU-Au
+	for alex.bennee@linaro.org; Thu, 18 Jan 2018 13:43:33 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41484)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1ecF99-0007sN-SL
-	for qemu-devel@nongnu.org; Thu, 18 Jan 2018 13:42:49 -0500
+	(envelope-from <alistair23@gmail.com>) id 1ecF8j-0007TT-F0
+	for qemu-devel@nongnu.org; Thu, 18 Jan 2018 13:42:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1ecF97-0003E7-Nq
-	for qemu-devel@nongnu.org; Thu, 18 Jan 2018 13:42:43 -0500
-Received: from mail-pf0-x243.google.com ([2607:f8b0:400e:c00::243]:45152)
+	(envelope-from <alistair23@gmail.com>) id 1ecF8i-0002qj-Hv
+	for qemu-devel@nongnu.org; Thu, 18 Jan 2018 13:42:17 -0500
+Received: from mail-pg0-x243.google.com ([2607:f8b0:400e:c05::243]:43203)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1ecF97-0003Da-FB; Thu, 18 Jan 2018 13:42:41 -0500
-Received: by mail-pf0-x243.google.com with SMTP id a88so13814233pfe.12;
-	Thu, 18 Jan 2018 10:42:41 -0800 (PST)
+	id 1ecF8i-0002pf-CP; Thu, 18 Jan 2018 13:42:16 -0500
+Received: by mail-pg0-x243.google.com with SMTP id n17so7420221pgf.10;
+	Thu, 18 Jan 2018 10:42:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=LZExAnHuD9UO91hl3+GRfjj4KVoiJmGUzRQw18SqirQ=;
-	b=J+PoeE5VDJ05f/umalt4BXFJigUzIk9AXQmmZCAOrr+i2n2RTSh9ZyMJOrEa6r43QJ
-	Bc+GWWW1C/s3a8PrC2dTVGn1upUZT7L/Q9aEIR+tkf95LMYQ0Rw9TUPiUnYXDjb4wq0n
-	cSExViSNtAp3dh+Qq+13UOH4CBMYtf4CJRByD6FU99oMHycNWhS7iwpJyHobEcBIxN/G
-	vxar+EGBwB3jUDI+hXMy834PgdGUJhCstWN7y3CwyWBZF/A+VFQzoOpk79o/SSp20RmO
-	36/w/ShDFuDY1mN5pP9fCVroiPpCgvf6u5VlxWDBr6m6/FDxhNu6Y93iGD+cmcZzrF+H
-	Yhsw==
+	bh=jnjZxUo6DdDuRrFsJf0BnqEIpqJuKubvBWE4IGEwKHg=;
+	b=gfmiMoiS8eBbJEVTQFXDPAmulJ28CX313BFYhVnVRD/YVMplCB8j990j4IIO1BsT2+
+	/z9vfeMT3nWzPCooXhAG3NHDV4qZ55avt4KuZGpfQ1cDiz+6oUKl+SFpU6aJgDL/uxPe
+	lWSVNEAs1ymtunWICPvSVrxhUDJtEuMXDoa51istEsgArOceP3nkru0XpNC+GH33GMkn
+	+14j3R7agFnsJj2PBdvDvl9SDXPMOFYGdM8+tvWacZ5aUQtx/3PteQjDvUy0ti7bFETV
+	t+lZ3U+3yFU3GWCmzNpYZeRrwANj8ryj0/6Rh9saLGJjMYy1w70quA4g9COd/gNAyFTl
+	10fQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references;
-	bh=LZExAnHuD9UO91hl3+GRfjj4KVoiJmGUzRQw18SqirQ=;
-	b=qHBDJen6YCCik5UYsm9mezNinRsd2kdZdtia5dYIuoPpCHiGPPU2iPfPT2mUsF628t
-	u9brPBtTWdfd83w7a5YPKa0DqWkWw55Nfh72fHIo/DAW9214oTLEilaAktlR0CMLndmV
-	j++F0wXtQ1UqP9dL9xGu/ID38bPA3wbgnCsBjW/RoTONxX3WevxhWzNP5W0k8wauYpo+
-	UxLZ21YuXg2WjlkjJdb0jlupoTh/Bq4LA+OLL8YRwNPsT2zDkPd0OV9Hwcq+MniwkY9a
-	s5tOgXCSTq5MVSq+LtfmjPuIR+17LzAlRKIUBjcHPHSLzenuQCywr+ZKMnxERB8bT1/+
-	a4Yg==
-X-Gm-Message-State: AKGB3mIi6gs9CFHJoXnRug06EootG3eZLNzTCu9AZAiDnQAGAEeUxysb
-	lVB24rvbO/KfKgvDkk2YYDD1glLzZA4=
-X-Received: by 10.99.53.14 with SMTP id c14mr38003788pga.321.1516300960045;
-	Thu, 18 Jan 2018 10:42:40 -0800 (PST)
+	bh=jnjZxUo6DdDuRrFsJf0BnqEIpqJuKubvBWE4IGEwKHg=;
+	b=LGk8NzTRmwJ3rUWYUCwDc2eXHjWPYQdjUUVPj43bK/AC8wH2KroNapavIAQYVURqUB
+	rxwvoBUmM+3OLEVSH6LQKW72ob+fg9cyOIb9W55jkHQi2Vr6n7H5iaMzXNmT2wjWPHYG
+	ji5m+8y1H6k+1OixZZYwnKP/TTAE9YqI7OMcdFb322NmfcnYu4uejNpDuELmKxnmE5te
+	9ZhcHwnhQ/rP1Pg6fTx9U5J5o+O2cBsOg7DEnIpVf9NCNabr/582aUAb6/NaUp/B4QBe
+	HbfYcwwSFCKYPJcYyMxhsX3LjysNOM1SJU/wgwaWoHIMcde7amqdpRW28gML506s6NnN
+	s8Aw==
+X-Gm-Message-State: AKwxyterlPHVCULphDoLWtRYhmxTBDyzsgwnKeOyrTcy1YkrG31a/Ydp
+	DxbXKCxsylg0SeJX738OJqZqnuFExaA=
+X-Received: by 2002:a17:902:59ce:: with SMTP id
+	d14-v6mr234424plj.36.1516300935060; 
+	Thu, 18 Jan 2018 10:42:15 -0800 (PST)
 Received: from localhost ([149.199.62.254]) by smtp.gmail.com with ESMTPSA id
-	x8sm2594256pfk.123.2018.01.18.10.42.38
+	u71sm9896785pfd.37.2018.01.18.10.42.13
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Thu, 18 Jan 2018 10:42:39 -0800 (PST)
+	Thu, 18 Jan 2018 10:42:14 -0800 (PST)
 From: Alistair Francis <alistair.francis@xilinx.com>
 To: qemu-devel@nongnu.org, edgar.iglesias@xilinx.com, edgar.iglesias@gmail.com
-Date: Thu, 18 Jan 2018 10:38:14 -0800
-Message-Id: <cb02d9784d9809b6eb26e41b1cb0de0fd28c74f1.1516300623.git.alistair.francis@xilinx.com>
+Date: Thu, 18 Jan 2018 10:37:49 -0800
+Message-Id: <3ddf66fa53e18ba941908bdba5e056e67ccf854b.1516300623.git.alistair.francis@xilinx.com>
 X-Mailer: git-send-email 2.14.1
 In-Reply-To: <cover.1516300623.git.alistair.francis@xilinx.com>
 References: <cover.1516300623.git.alistair.francis@xilinx.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c00::243
-Subject: [Qemu-devel] [PATCH v6 7/9] xlnx-zynqmp-ipi: Initial version of the
- Xilinx IPI device
+X-Received-From: 2607:f8b0:400e:c05::243
+Subject: [Qemu-devel] [PATCH v6 1/9] microblaze: boot.c: Don't try to find
+ NULL pointer
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,479 +108,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: alistair23@gmail.com, qemu-arm@nongnu.org, alistair.francis@xilinx.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /DVtcjDXGe4j
+X-TUID: NARAfcmqW3pU
 
-This is the initial version of the Inter Processor Interrupt device.
+Previously if no device tree was passed to microblaze_load_kernel() then
+qemu_find_file() would try to find a NULL pointer. To avoid this put a
+check around qemu_find_file().
 
 Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+Reported-by: Peter Maydell <peter.maydell@linaro.org>
 ---
 
- include/hw/intc/xlnx-zynqmp-ipi.h |  57 ++++++
- hw/intc/xlnx-zynqmp-ipi.c         | 377 ++++++++++++++++++++++++++++++++++++++
- hw/intc/Makefile.objs             |   1 +
- 3 files changed, 435 insertions(+)
- create mode 100644 include/hw/intc/xlnx-zynqmp-ipi.h
- create mode 100644 hw/intc/xlnx-zynqmp-ipi.c
+ hw/microblaze/boot.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/hw/intc/xlnx-zynqmp-ipi.h b/include/hw/intc/xlnx-zynqmp-ipi.h
-new file mode 100644
-index 0000000000..4afa4ff313
---- /dev/null
-+++ b/include/hw/intc/xlnx-zynqmp-ipi.h
-@@ -0,0 +1,57 @@
-+/*
-+ * QEMU model of the IPI Inter Processor Interrupt block
-+ *
-+ * Copyright (c) 2014 Xilinx Inc.
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a copy
-+ * of this software and associated documentation files (the "Software"), to deal
-+ * in the Software without restriction, including without limitation the rights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-+ * THE SOFTWARE.
-+ */
-+
-+#ifndef XLNX_ZYNQMP_IPI_H
-+#define XLNX_ZYNQMP_IPI_H
-+
-+#include "qemu/osdep.h"
-+#include "hw/sysbus.h"
-+#include "hw/register.h"
-+
-+#define TYPE_XLNX_ZYNQMP_IPI "xlnx.zynqmp_ipi"
-+
-+#define XLNX_ZYNQMP_IPI(obj) \
-+     OBJECT_CHECK(XlnxZynqMPIPI, (obj), TYPE_XLNX_ZYNQMP_IPI)
-+
-+/* This is R_IPI_IDR + 1 */
-+#define R_XLNX_ZYNQMP_IPI_MAX ((0x1c / 4) + 1)
-+
-+#define NUM_IPIS 11
-+
-+typedef struct XlnxZynqMPIPI {
-+    /* Private */
-+    SysBusDevice parent_obj;
-+
-+    /* Public */
-+    MemoryRegion iomem;
-+    qemu_irq irq;
-+
-+    qemu_irq irq_trig_out[NUM_IPIS];
-+    qemu_irq irq_obs_out[NUM_IPIS];
-+
-+    uint32_t regs[R_XLNX_ZYNQMP_IPI_MAX];
-+    RegisterInfo regs_info[R_XLNX_ZYNQMP_IPI_MAX];
-+} XlnxZynqMPIPI;
-+
-+#endif /* XLNX_ZYNQMP_IPI_H */
-diff --git a/hw/intc/xlnx-zynqmp-ipi.c b/hw/intc/xlnx-zynqmp-ipi.c
-new file mode 100644
-index 0000000000..aa50a8ac08
---- /dev/null
-+++ b/hw/intc/xlnx-zynqmp-ipi.c
-@@ -0,0 +1,377 @@
-+/*
-+ * QEMU model of the IPI Inter Processor Interrupt block
-+ *
-+ * Copyright (c) 2014 Xilinx Inc.
-+ *
-+ * Written by Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-+ * Written by Alistair Francis <alistair.francis@xilinx.com>
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a copy
-+ * of this software and associated documentation files (the "Software"), to deal
-+ * in the Software without restriction, including without limitation the rights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-+ * THE SOFTWARE.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/sysbus.h"
-+#include "hw/register.h"
-+#include "qemu/bitops.h"
-+#include "qemu/log.h"
-+#include "hw/intc/xlnx-zynqmp-ipi.h"
-+
-+#ifndef XLNX_ZYNQMP_IPI_ERR_DEBUG
-+#define XLNX_ZYNQMP_IPI_ERR_DEBUG 0
-+#endif
-+
-+#define DB_PRINT_L(lvl, fmt, args...) do {\
-+    if (XLNX_ZYNQMP_IPI_ERR_DEBUG >= lvl) {\
-+        qemu_log(TYPE_XLNX_ZYNQMP_IPI ": %s:" fmt, __func__, ## args);\
-+    } \
-+} while (0)
-+
-+#define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)
-+
-+REG32(IPI_TRIG, 0x0)
-+    FIELD(IPI_TRIG, PL_3, 27, 1)
-+    FIELD(IPI_TRIG, PL_2, 26, 1)
-+    FIELD(IPI_TRIG, PL_1, 25, 1)
-+    FIELD(IPI_TRIG, PL_0, 24, 1)
-+    FIELD(IPI_TRIG, PMU_3, 19, 1)
-+    FIELD(IPI_TRIG, PMU_2, 18, 1)
-+    FIELD(IPI_TRIG, PMU_1, 17, 1)
-+    FIELD(IPI_TRIG, PMU_0, 16, 1)
-+    FIELD(IPI_TRIG, RPU_1, 9, 1)
-+    FIELD(IPI_TRIG, RPU_0, 8, 1)
-+    FIELD(IPI_TRIG, APU, 0, 1)
-+REG32(IPI_OBS, 0x4)
-+    FIELD(IPI_OBS, PL_3, 27, 1)
-+    FIELD(IPI_OBS, PL_2, 26, 1)
-+    FIELD(IPI_OBS, PL_1, 25, 1)
-+    FIELD(IPI_OBS, PL_0, 24, 1)
-+    FIELD(IPI_OBS, PMU_3, 19, 1)
-+    FIELD(IPI_OBS, PMU_2, 18, 1)
-+    FIELD(IPI_OBS, PMU_1, 17, 1)
-+    FIELD(IPI_OBS, PMU_0, 16, 1)
-+    FIELD(IPI_OBS, RPU_1, 9, 1)
-+    FIELD(IPI_OBS, RPU_0, 8, 1)
-+    FIELD(IPI_OBS, APU, 0, 1)
-+REG32(IPI_ISR, 0x10)
-+    FIELD(IPI_ISR, PL_3, 27, 1)
-+    FIELD(IPI_ISR, PL_2, 26, 1)
-+    FIELD(IPI_ISR, PL_1, 25, 1)
-+    FIELD(IPI_ISR, PL_0, 24, 1)
-+    FIELD(IPI_ISR, PMU_3, 19, 1)
-+    FIELD(IPI_ISR, PMU_2, 18, 1)
-+    FIELD(IPI_ISR, PMU_1, 17, 1)
-+    FIELD(IPI_ISR, PMU_0, 16, 1)
-+    FIELD(IPI_ISR, RPU_1, 9, 1)
-+    FIELD(IPI_ISR, RPU_0, 8, 1)
-+    FIELD(IPI_ISR, APU, 0, 1)
-+REG32(IPI_IMR, 0x14)
-+    FIELD(IPI_IMR, PL_3, 27, 1)
-+    FIELD(IPI_IMR, PL_2, 26, 1)
-+    FIELD(IPI_IMR, PL_1, 25, 1)
-+    FIELD(IPI_IMR, PL_0, 24, 1)
-+    FIELD(IPI_IMR, PMU_3, 19, 1)
-+    FIELD(IPI_IMR, PMU_2, 18, 1)
-+    FIELD(IPI_IMR, PMU_1, 17, 1)
-+    FIELD(IPI_IMR, PMU_0, 16, 1)
-+    FIELD(IPI_IMR, RPU_1, 9, 1)
-+    FIELD(IPI_IMR, RPU_0, 8, 1)
-+    FIELD(IPI_IMR, APU, 0, 1)
-+REG32(IPI_IER, 0x18)
-+    FIELD(IPI_IER, PL_3, 27, 1)
-+    FIELD(IPI_IER, PL_2, 26, 1)
-+    FIELD(IPI_IER, PL_1, 25, 1)
-+    FIELD(IPI_IER, PL_0, 24, 1)
-+    FIELD(IPI_IER, PMU_3, 19, 1)
-+    FIELD(IPI_IER, PMU_2, 18, 1)
-+    FIELD(IPI_IER, PMU_1, 17, 1)
-+    FIELD(IPI_IER, PMU_0, 16, 1)
-+    FIELD(IPI_IER, RPU_1, 9, 1)
-+    FIELD(IPI_IER, RPU_0, 8, 1)
-+    FIELD(IPI_IER, APU, 0, 1)
-+REG32(IPI_IDR, 0x1c)
-+    FIELD(IPI_IDR, PL_3, 27, 1)
-+    FIELD(IPI_IDR, PL_2, 26, 1)
-+    FIELD(IPI_IDR, PL_1, 25, 1)
-+    FIELD(IPI_IDR, PL_0, 24, 1)
-+    FIELD(IPI_IDR, PMU_3, 19, 1)
-+    FIELD(IPI_IDR, PMU_2, 18, 1)
-+    FIELD(IPI_IDR, PMU_1, 17, 1)
-+    FIELD(IPI_IDR, PMU_0, 16, 1)
-+    FIELD(IPI_IDR, RPU_1, 9, 1)
-+    FIELD(IPI_IDR, RPU_0, 8, 1)
-+    FIELD(IPI_IDR, APU, 0, 1)
-+
-+/* APU
-+ * RPU_0
-+ * RPU_1
-+ * PMU_0
-+ * PMU_1
-+ * PMU_2
-+ * PMU_3
-+ * PL_0
-+ * PL_1
-+ * PL_2
-+ * PL_3
-+ */
-+int index_array[NUM_IPIS] = {0, 8, 9, 16, 17, 18, 19, 24, 25, 26, 27};
-+static const char *index_array_names[NUM_IPIS] = {"APU", "RPU_0", "RPU_1",
-+                                                  "PMU_0", "PMU_1", "PMU_2",
-+                                                  "PMU_3", "PL_0", "PL_1",
-+                                                  "PL_2", "PL_3"};
-+
-+static void xlnx_zynqmp_ipi_set_trig(XlnxZynqMPIPI *s, uint32_t val)
-+{
-+    int i, ipi_index, ipi_mask;
-+
-+    for (i = 0; i < NUM_IPIS; i++) {
-+        ipi_index = index_array[i];
-+        ipi_mask = (1 << ipi_index);
-+        DB_PRINT("Setting %s=%d\n", index_array_names[i],
-+                 !!(val & ipi_mask));
-+        qemu_set_irq(s->irq_trig_out[i], !!(val & ipi_mask));
-+    }
-+}
-+
-+static void xlnx_zynqmp_ipi_set_obs(XlnxZynqMPIPI *s, uint32_t val)
-+{
-+    int i, ipi_index, ipi_mask;
-+
-+    for (i = 0; i < NUM_IPIS; i++) {
-+        ipi_index = index_array[i];
-+        ipi_mask = (1 << ipi_index);
-+        DB_PRINT("Setting %s=%d\n", index_array_names[i],
-+                 !!(val & ipi_mask));
-+        qemu_set_irq(s->irq_obs_out[i], !!(val & ipi_mask));
-+    }
-+}
-+
-+static void xlnx_zynqmp_ipi_update_irq(XlnxZynqMPIPI *s)
-+{
-+    bool pending = s->regs[R_IPI_ISR] & ~s->regs[R_IPI_IMR];
-+
-+    DB_PRINT("irq=%d isr=%x mask=%x\n",
-+             pending, s->regs[R_IPI_ISR], s->regs[R_IPI_IMR]);
-+    qemu_set_irq(s->irq, pending);
-+}
-+
-+static uint64_t xlnx_zynqmp_ipi_trig_prew(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxZynqMPIPI *s = XLNX_ZYNQMP_IPI(reg->opaque);
-+
-+    xlnx_zynqmp_ipi_set_trig(s, val64);
-+
-+    return val64;
-+}
-+
-+static void xlnx_zynqmp_ipi_trig_postw(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxZynqMPIPI *s = XLNX_ZYNQMP_IPI(reg->opaque);
-+
-+    /* TRIG generates a pulse on the outbound signals. We use the
-+     * post-write callback to bring the signal back-down.
-+     */
-+    s->regs[R_IPI_TRIG] = 0;
-+
-+    xlnx_zynqmp_ipi_set_trig(s, 0);
-+}
-+
-+static uint64_t xlnx_zynqmp_ipi_isr_prew(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxZynqMPIPI *s = XLNX_ZYNQMP_IPI(reg->opaque);
-+
-+    xlnx_zynqmp_ipi_set_obs(s, val64);
-+
-+    return val64;
-+}
-+
-+static void xlnx_zynqmp_ipi_isr_postw(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxZynqMPIPI *s = XLNX_ZYNQMP_IPI(reg->opaque);
-+
-+    xlnx_zynqmp_ipi_update_irq(s);
-+}
-+
-+static uint64_t xlnx_zynqmp_ipi_ier_prew(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxZynqMPIPI *s = XLNX_ZYNQMP_IPI(reg->opaque);
-+    uint32_t val = val64;
-+
-+    s->regs[R_IPI_IMR] &= ~val;
-+    xlnx_zynqmp_ipi_update_irq(s);
-+    return 0;
-+}
-+
-+static uint64_t xlnx_zynqmp_ipi_idr_prew(RegisterInfo *reg, uint64_t val64)
-+{
-+    XlnxZynqMPIPI *s = XLNX_ZYNQMP_IPI(reg->opaque);
-+    uint32_t val = val64;
-+
-+    s->regs[R_IPI_IMR] |= val;
-+    xlnx_zynqmp_ipi_update_irq(s);
-+    return 0;
-+}
-+
-+static const RegisterAccessInfo xlnx_zynqmp_ipi_regs_info[] = {
-+    {   .name = "IPI_TRIG",  .addr = A_IPI_TRIG,
-+        .rsvd = 0xf0f0fcfe,
-+        .ro = 0xf0f0fcfe,
-+        .pre_write = xlnx_zynqmp_ipi_trig_prew,
-+        .post_write = xlnx_zynqmp_ipi_trig_postw,
-+    },{ .name = "IPI_OBS",  .addr = A_IPI_OBS,
-+        .rsvd = 0xf0f0fcfe,
-+        .ro = 0xffffffff,
-+    },{ .name = "IPI_ISR",  .addr = A_IPI_ISR,
-+        .rsvd = 0xf0f0fcfe,
-+        .ro = 0xf0f0fcfe,
-+        .w1c = 0xf0f0301,
-+        .pre_write = xlnx_zynqmp_ipi_isr_prew,
-+        .post_write = xlnx_zynqmp_ipi_isr_postw,
-+    },{ .name = "IPI_IMR",  .addr = A_IPI_IMR,
-+        .reset = 0xf0f0301,
-+        .rsvd = 0xf0f0fcfe,
-+        .ro = 0xffffffff,
-+    },{ .name = "IPI_IER",  .addr = A_IPI_IER,
-+        .rsvd = 0xf0f0fcfe,
-+        .ro = 0xf0f0fcfe,
-+        .pre_write = xlnx_zynqmp_ipi_ier_prew,
-+    },{ .name = "IPI_IDR",  .addr = A_IPI_IDR,
-+        .rsvd = 0xf0f0fcfe,
-+        .ro = 0xf0f0fcfe,
-+        .pre_write = xlnx_zynqmp_ipi_idr_prew,
-+    }
-+};
-+
-+static void xlnx_zynqmp_ipi_reset(DeviceState *dev)
-+{
-+    XlnxZynqMPIPI *s = XLNX_ZYNQMP_IPI(dev);
-+    int i;
-+
-+    for (i = 0; i < ARRAY_SIZE(s->regs_info); ++i) {
-+        register_reset(&s->regs_info[i]);
-+    }
-+
-+    xlnx_zynqmp_ipi_update_irq(s);
-+}
-+
-+static void xlnx_zynqmp_ipi_handler(void *opaque, int n, int level)
-+{
-+    XlnxZynqMPIPI *s = XLNX_ZYNQMP_IPI(opaque);
-+    uint32_t val = (!!level) << n;
-+
-+    DB_PRINT("IPI input irq[%d]=%d\n", n, level);
-+
-+    s->regs[R_IPI_ISR] |= val;
-+    xlnx_zynqmp_ipi_set_obs(s, s->regs[R_IPI_ISR]);
-+    xlnx_zynqmp_ipi_update_irq(s);
-+}
-+
-+static void xlnx_zynqmp_obs_handler(void *opaque, int n, int level)
-+{
-+    XlnxZynqMPIPI *s = XLNX_ZYNQMP_IPI(opaque);
-+
-+    DB_PRINT("OBS input irq[%d]=%d\n", n, level);
-+
-+    s->regs[R_IPI_OBS] &= ~(1ULL << n);
-+    s->regs[R_IPI_OBS] |= (level << n);
-+}
-+
-+static const MemoryRegionOps xlnx_zynqmp_ipi_ops = {
-+    .read = register_read_memory,
-+    .write = register_write_memory,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static void xlnx_zynqmp_ipi_realize(DeviceState *dev, Error **errp)
-+{
-+    qdev_init_gpio_in_named(dev, xlnx_zynqmp_ipi_handler, "IPI_INPUTS", 32);
-+    qdev_init_gpio_in_named(dev, xlnx_zynqmp_obs_handler, "OBS_INPUTS", 32);
-+}
-+
-+static void xlnx_zynqmp_ipi_init(Object *obj)
-+{
-+    XlnxZynqMPIPI *s = XLNX_ZYNQMP_IPI(obj);
-+    DeviceState *dev = DEVICE(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    RegisterInfoArray *reg_array;
-+    char *irq_name;
-+    int i;
-+
-+    memory_region_init(&s->iomem, obj, TYPE_XLNX_ZYNQMP_IPI,
-+                       R_XLNX_ZYNQMP_IPI_MAX * 4);
-+    reg_array =
-+        register_init_block32(DEVICE(obj), xlnx_zynqmp_ipi_regs_info,
-+                              ARRAY_SIZE(xlnx_zynqmp_ipi_regs_info),
-+                              s->regs_info, s->regs,
-+                              &xlnx_zynqmp_ipi_ops,
-+                              XLNX_ZYNQMP_IPI_ERR_DEBUG,
-+                              R_XLNX_ZYNQMP_IPI_MAX * 4);
-+    memory_region_add_subregion(&s->iomem,
-+                                0x0,
-+                                &reg_array->mem);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+    sysbus_init_irq(sbd, &s->irq);
-+
-+    for (i = 0; i < NUM_IPIS; i++) {
-+        qdev_init_gpio_out_named(dev, &s->irq_trig_out[i],
-+                                 index_array_names[i], 1);
-+
-+        irq_name = g_strdup_printf("OBS_%s", index_array_names[i]);
-+        qdev_init_gpio_out_named(dev, &s->irq_obs_out[i],
-+                                 irq_name, 1);
-+        g_free(irq_name);
-+    }
-+}
-+
-+static const VMStateDescription vmstate_zynqmp_pmu_ipi = {
-+    .name = TYPE_XLNX_ZYNQMP_IPI,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, XlnxZynqMPIPI, R_XLNX_ZYNQMP_IPI_MAX),
-+        VMSTATE_END_OF_LIST(),
-+    }
-+};
-+
-+static void xlnx_zynqmp_ipi_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->reset = xlnx_zynqmp_ipi_reset;
-+    dc->realize = xlnx_zynqmp_ipi_realize;
-+    dc->vmsd = &vmstate_zynqmp_pmu_ipi;
-+}
-+
-+static const TypeInfo xlnx_zynqmp_ipi_info = {
-+    .name          = TYPE_XLNX_ZYNQMP_IPI,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(XlnxZynqMPIPI),
-+    .class_init    = xlnx_zynqmp_ipi_class_init,
-+    .instance_init = xlnx_zynqmp_ipi_init,
-+};
-+
-+static void xlnx_zynqmp_ipi_register_types(void)
-+{
-+    type_register_static(&xlnx_zynqmp_ipi_info);
-+}
-+
-+type_init(xlnx_zynqmp_ipi_register_types)
-diff --git a/hw/intc/Makefile.objs b/hw/intc/Makefile.objs
-index 211655023e..571e094a14 100644
---- a/hw/intc/Makefile.objs
-+++ b/hw/intc/Makefile.objs
-@@ -4,6 +4,7 @@ common-obj-$(CONFIG_PL190) += pl190.o
- common-obj-$(CONFIG_PUV3) += puv3_intc.o
- common-obj-$(CONFIG_XILINX) += xilinx_intc.o
- common-obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-pmu-iomod-intc.o
-+common-obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp-ipi.o
- common-obj-$(CONFIG_ETRAXFS) += etraxfs_pic.o
- common-obj-$(CONFIG_IMX) += imx_avic.o
- common-obj-$(CONFIG_LM32) += lm32_pic.o
+diff --git a/hw/microblaze/boot.c b/hw/microblaze/boot.c
+index 457a08a2fe..35bfeda7aa 100644
+--- a/hw/microblaze/boot.c
++++ b/hw/microblaze/boot.c
+@@ -124,7 +124,7 @@ void microblaze_load_kernel(MicroBlazeCPU *cpu, hwaddr ddr_base,
+     kernel_cmdline = qemu_opt_get(machine_opts, "append");
+     dtb_arg = qemu_opt_get(machine_opts, "dtb");
+     /* default to pcbios dtb as passed by machine_init */
+-    if (!dtb_arg) {
++    if (!dtb_arg && dtb_filename) {
+         filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, dtb_filename);
+     }
+ 
 -- 
 2.14.1
 

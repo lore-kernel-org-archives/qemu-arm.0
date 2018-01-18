@@ -1,87 +1,88 @@
-Received: by 10.28.173.206 with SMTP id w197csp6978091wme;
-        Thu, 18 Jan 2018 12:33:51 -0800 (PST)
-X-Google-Smtp-Source: ACJfBouhjQPxQfWifASsdarjbADoN3Uf0bamRcuOvSU5g9XrwjBk2RYOspAr9iAZCh8eNyMwT3jX
-X-Received: by 10.129.153.147 with SMTP id q141mr6436093ywg.107.1516307631837;
-        Thu, 18 Jan 2018 12:33:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516307631; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp6980336wme;
+        Thu, 18 Jan 2018 12:36:06 -0800 (PST)
+X-Google-Smtp-Source: ACJfBovD8c+2IHlUtCRQ54wprVFDZlFbR2uzkqz+MzLk1CBKJ3mZTmZHXgAJm/J0MyMTZob995Xa
+X-Received: by 10.37.142.11 with SMTP id p11mr16846272ybl.246.1516307765949;
+        Thu, 18 Jan 2018 12:36:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516307765; cv=none;
         d=google.com; s=arc-20160816;
-        b=R4yyX0i9aOR2uDLMJWrbXRY5wajgEUc+rFl3KKz9cx5n8m9kboQI3ibr1QR2sjEUs4
-         Ic7EmfFkLeE9OS72loTIuFMkUzf5/bpoVtzESA057H3gdslybwEUcC0L9ctUnYrNFZKu
-         4AtIz/AQryz2+oYVYqtlJr0UHyEefIpX7nNDpwkiHY/mseJLipIIBauH5724NatRAHwS
-         iwvckZgmTWHtucj7uQcZSsiUaDnqVfrs35wCRk1FmWiVf2dz403VWOqR4D8S6P2UaLqT
-         Pd9ppMW1N9fUWkcxflKS/UiOew9/aNnKWrAoV1CTiSeXT+xLlxHO0GLAeUG1uWUsnh7z
-         poDA==
+        b=S+RO2S24KKrGD231dmnfB+Y7Ww/4u7uW7oOF1YgPPVrKN9n3CwkgN7JRcDPUOIwZKj
+         g7KyWwV6lfxhnUN2Mk+HqWuLftFDuvd2pbsQZUFsxjbMH+Iwc/KoMme5NAtE6cXut6uu
+         guWWjJEuMiwDrUYj3A9pgBpt8WvWl5u2QXG/wXEv/HoWK17A6oox7JZ3MqI8dHnIp6OM
+         1NfjgBZEff7EYtgNZOWM1b7f0cSUWsceEmrdP+dNU4vG58AAcuHsKWCAuW4pSE0xrmv3
+         bP2lrsu6lnnSlsnlsTc4WNGDhkre+IY1U9mG+egCu2d2IrDSgdKhr7s3CbNabDt3Plpq
+         Nt8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date
          :arc-authentication-results;
-        bh=B6uNErhgw9OqcPYSL5jTwhnwc05m57mBmFa8CPZH8CE=;
-        b=kYdLTazCS0o8AiSKXAAUtvmk5W9Hs3O2uFhlC3y377K2BngT9CT4pulT3gJSNLTDuo
-         D8P1psfrkNd+4n+OMYv9Do/oiRMusFEcMnonw5jKPSzDUrTZa3RshMFqnmJ/DOv73m0/
-         +ojtiPubBm/P+R5VpMnvXb7l2qvFL4ZI1i80Z2IwxF2mkN+QnfqA2HKEdraRMTehkOl0
-         58CfqqcA+k0ah/c4pGH+RBttYHtJrh8upQKkO9f3rC/1FyLOFSZyGnrOSMHNL1qGQsCT
-         GqT6h0k1zs9kSUdmfHDXTQHMop31kZWaclVxtm7i29iHxOw3fCe1OTWY8FprUnrrVdbd
-         BF4Q==
+        bh=VfcLtPNID8EynzilO6MUKBva2B6eisqrGH7hKWCMPmE=;
+        b=KRSNrOXjVUhUCQ2wvfd6H0xo4CxESaTRDYlfYVt7OG7dbu/F6G4/TwJOEWsTKW4tom
+         5bw/KGYmHiJCOICDxM9Y0+pOS1iu00OTLwOTzziF9Wy1SsnROefhkI+p5renDWO8wl/m
+         1qb+ZXF7bs9aMP+ibGVXBuyby1novavCl/xLa3nDCAnn2GNzo+893jE5Dt1gPzw+MH6L
+         txhiHXUS2YbMrSWJSrtlITmTSZQeEW73c/WG7ESganG+Bk7QQZzY0tDBMjyrVZ1mdbjk
+         9uNn/kFl7YuX6mawFNA0RB6BaMocQWHnl6eAAx7qCTch8UyV5DxXjg7gJ4Zw+HF3zYuB
+         +SHQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v134si1888294ywa.442.2018.01.18.12.33.51
+        by mx.google.com with ESMTPS id a80si1898300ywe.604.2018.01.18.12.36.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 18 Jan 2018 12:33:51 -0800 (PST)
+        Thu, 18 Jan 2018 12:36:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53355 helo=lists.gnu.org)
+Received: from localhost ([::1]:53485 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ecGsh-0005h3-9N
-	for alex.bennee@linaro.org; Thu, 18 Jan 2018 15:33:51 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42651)
+	id 1ecGur-00073u-CO
+	for alex.bennee@linaro.org; Thu, 18 Jan 2018 15:36:05 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43575)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1ecGsZ-0005g0-7S
-	for qemu-arm@nongnu.org; Thu, 18 Jan 2018 15:33:44 -0500
+	(envelope-from <ehabkost@redhat.com>) id 1ecGuh-00072z-8O
+	for qemu-arm@nongnu.org; Thu, 18 Jan 2018 15:35:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1ecGsW-0002Z4-4x
-	for qemu-arm@nongnu.org; Thu, 18 Jan 2018 15:33:43 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:50190)
+	(envelope-from <ehabkost@redhat.com>) id 1ecGue-0004UG-5F
+	for qemu-arm@nongnu.org; Thu, 18 Jan 2018 15:35:55 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:49824)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1ecGsV-0002Yk-VK; Thu, 18 Jan 2018 15:33:40 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
+	id 1ecGud-0004TE-S9; Thu, 18 Jan 2018 15:35:52 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id EA91C62E8D;
-	Thu, 18 Jan 2018 20:33:38 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id E0B2FCD264;
+	Thu, 18 Jan 2018 20:35:50 +0000 (UTC)
 Received: from localhost (ovpn-116-6.gru2.redhat.com [10.97.116.6])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 6422460BE2;
-	Thu, 18 Jan 2018 20:33:38 +0000 (UTC)
-Date: Thu, 18 Jan 2018 18:33:37 -0200
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 74BA85DD6C;
+	Thu, 18 Jan 2018 20:35:48 +0000 (UTC)
+Date: Thu, 18 Jan 2018 18:35:47 -0200
 From: Eduardo Habkost <ehabkost@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20180118203337.GE5292@localhost.localdomain>
+To: Thomas Huth <thuth@redhat.com>
+Message-ID: <20180118203546.GF5292@localhost.localdomain>
 References: <1516296842-136976-1-git-send-email-imammedo@redhat.com>
-	<1516296842-136976-4-git-send-email-imammedo@redhat.com>
+	<1516296842-136976-3-git-send-email-imammedo@redhat.com>
+	<33aa0c19-59ec-7063-f638-884fe2249aee@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1516296842-136976-4-git-send-email-imammedo@redhat.com>
+In-Reply-To: <33aa0c19-59ec-7063-f638-884fe2249aee@redhat.com>
 X-Fnord: you can see the fnord
 User-Agent: Mutt/1.9.1 (2017-09-22)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Thu, 18 Jan 2018 20:33:39 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Thu, 18 Jan 2018 20:35:50 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [RFC v2 3/5] linux-user: prepare for switching to
- cpu_create() API
+Subject: Re: [Qemu-arm] [Qemu-ppc] [RFC v2 2/5] machine: prepare machine
+ 'none' to gradually switch to cpu_create() API
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -94,75 +95,105 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	Laurent Vivier <laurent@vivier.eu>, qemu-s390x@nongnu.org,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org
+	qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Igor Mammedov <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jlgT3++8jJHt
+X-TUID: /crB/rhB4X8z
 
-On Thu, Jan 18, 2018 at 06:34:00PM +0100, Igor Mammedov wrote:
-> temporarily add #ifdef CPU_RESOLVING_TYPE in linux-user/main.c
-> so that  each target could gradually switch to cpu_create() and
-> not converted yet could continue to use cpu_init().
+On Thu, Jan 18, 2018 at 08:06:03PM +0100, Thomas Huth wrote:
+> On 18.01.2018 18:33, Igor Mammedov wrote:
+> > temporarily add #ifdef CPU_RESOLVING_TYPE in null-machine.c,
+> > so that each target could gradually switch to cpu_create() and
+> > not converted yet could continue to use cpu_init().
+> > 
+> > Once all targets are converted
+> >    temporary ifdefs, MachineState::cpu_model and cpu_init() API
+> > will be removed
+> > 
+> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > ---
+> >  hw/core/null-machine.c | 13 ++++++++++++-
+> >  vl.c                   |  8 +++++++-
+> >  2 files changed, 19 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/hw/core/null-machine.c b/hw/core/null-machine.c
+> > index 864832d..3cc6a49 100644
+> > --- a/hw/core/null-machine.c
+> > +++ b/hw/core/null-machine.c
+> > @@ -23,10 +23,18 @@
+> >  static void machine_none_init(MachineState *mch)
+> >  {
+> >      CPUState *cpu = NULL;
+> > +#ifdef CPU_RESOLVING_TYPE
+> > +    MachineClass *mc = MACHINE_GET_CLASS(mch);
+> >  
+> > -    /* Initialize CPU (if a model has been specified) */
+> > +    /* Initialize CPU if cpu_type pointer is user provided
+> > +     * (i.e. != to pointer tot static default cpu type string)
 > 
-> Once all targets are converted
->     temporary ifdefs and cpu_init() API
-> will be removed
+> s/tot/to/ ?
 > 
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> ---
->  linux-user/main.c | 13 ++++++++++++-
->  1 file changed, 12 insertions(+), 1 deletion(-)
+> > +     */
+> > +    if (mch->cpu_type != mc->default_cpu_type) {
+> > +        cpu = cpu_create(mch->cpu_type);
+> > +#else
+> >      if (mch->cpu_model) {
+> >          cpu = cpu_init(mch->cpu_model);
+> > +#endif
+> >          if (!cpu) {
+> >              error_report("Unable to initialize CPU");
+> >              exit(1);
+> > @@ -54,6 +62,9 @@ static void machine_none_machine_init(MachineClass *mc)
+> >      mc->init = machine_none_init;
+> >      mc->max_cpus = 1;
+> >      mc->default_ram_size = 0;
+> > +#ifdef CPU_RESOLVING_TYPE
+> > +    mc->default_cpu_type = CPU_RESOLVING_TYPE;
+> > +#endif
+
+As mentioned in a reply to a previous series, this is making
+mc->default_cpu_type lie about the default CPU type.  If vl.c is
+relying on default_cpu_type to parse the CPU data, I'd like to
+fix vl.c first instead of adding this hack.
+
+> >  }
+> >  
+> >  DEFINE_MACHINE("none", machine_none_machine_init)
+> > diff --git a/vl.c b/vl.c
+> > index 2586f25..8aa0131 100644
+> > --- a/vl.c
+> > +++ b/vl.c
+> > @@ -4609,7 +4609,6 @@ int main(int argc, char **argv, char **envp)
+> >      current_machine->maxram_size = maxram_size;
+> >      current_machine->ram_slots = ram_slots;
+> >      current_machine->boot_order = boot_order;
+> > -    current_machine->cpu_model = cpu_model;
+> >  
+> >      parse_numa_opts(current_machine);
+> >  
+> > @@ -4619,6 +4618,13 @@ int main(int argc, char **argv, char **envp)
+> >          if (cpu_model) {
+> >              current_machine->cpu_type =
+> >                  cpu_parse_cpu_model(machine_class->default_cpu_type, cpu_model);
+> > +
+> > +            /* machine 'none' depends on default cpu type pointer not being
+> > +             * equal to resolved type name pointer to fugure out if type was
 > 
-> diff --git a/linux-user/main.c b/linux-user/main.c
-> index 450eb3c..d481e8c 100644
-> --- a/linux-user/main.c
-> +++ b/linux-user/main.c
-> @@ -44,6 +44,7 @@ static const char *argv0;
->  static int gdbstub_port;
->  static envlist_t *envlist;
->  static const char *cpu_model;
-> +static const char *cpu_type;
->  unsigned long mmap_min_addr;
->  unsigned long guest_base;
->  int have_guest_base;
-> @@ -3847,7 +3848,7 @@ void init_task_state(TaskState *ts)
->  CPUArchState *cpu_copy(CPUArchState *env)
->  {
->      CPUState *cpu = ENV_GET_CPU(env);
-> -    CPUState *new_cpu = cpu_init(cpu_model);
-> +    CPUState *new_cpu = cpu_create(cpu_type);
->      CPUArchState *new_env = new_cpu->env_ptr;
->      CPUBreakpoint *bp;
->      CPUWatchpoint *wp;
-> @@ -4362,7 +4363,17 @@ int main(int argc, char **argv, char **envp)
->      tcg_exec_init(0);
->      /* NOTE: we need to init the CPU at this stage to get
->         qemu_host_page_size */
-> +
-> +#ifdef CPU_RESOLVING_TYPE
-> +    cpu_type = cpu_parse_cpu_model(CPU_RESOLVING_TYPE, cpu_model);
-> +    if (!cpu_type) {
-> +        exit(1);
-> +    }
-> +    cpu_create(cpu_type);
-> +#else
->      cpu = cpu_init(cpu_model);
-> +    cpu_type = object_class_get_name(object_get_class(OBJECT(cpu)));
-
-Will the final version of this series require the temporary
-#ifdefs?
-
-I'd prefer to first apply patches adding the CPU_RESOLVING_TYPE
-defines and then patches adding the code without any #ifdef at
-all.
-
-> +#endif
->      env = cpu->env_ptr;
->      cpu_reset(cpu);
->  
-> -- 
-> 2.7.4
+> s/fugure/figure/
+> 
+> > +             * user provided, make sure that if it becomes not true in future
+> > +             * it won't beark silently */
+> 
+> s/beark/break/
+> 
+> > +            g_assert(
+> > +                current_machine->cpu_type != machine_class->default_cpu_type);
+> >          }
+> >      }
+> 
+>  Thomas
+> 
 > 
 
 -- 

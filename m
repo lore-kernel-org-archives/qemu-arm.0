@@ -1,245 +1,242 @@
-Received: by 10.28.173.206 with SMTP id w197csp6867233wme;
-        Thu, 18 Jan 2018 10:40:40 -0800 (PST)
-X-Google-Smtp-Source: ACJfBos4CAsO6WVWuiNFtOFXvgJDybEkrgIm46HqXRhOXssVZ4gHZVeevsXxlMTF599m3rohOyQA
-X-Received: by 10.37.186.202 with SMTP id a10mr3914822ybk.514.1516300839874;
-        Thu, 18 Jan 2018 10:40:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516300839; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp6869177wme;
+        Thu, 18 Jan 2018 10:42:46 -0800 (PST)
+X-Google-Smtp-Source: ACJfBovc0O3F4VeJuSLzla96tYtNRclWkiNCOuiXWXZzGGA2/qpI8dlk08OtT2IvqB/RfouMuNMA
+X-Received: by 10.129.106.213 with SMTP id f204mr7204533ywc.198.1516300966799;
+        Thu, 18 Jan 2018 10:42:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516300966; cv=none;
         d=google.com; s=arc-20160816;
-        b=V5T9Uf0JPIEcKnbBmcetAGAqv4eS37w5cqDzkkV/chTtZYA9JvTSVpNjbaXVshpJum
-         dGVrmAvRzRSse7okUtVjUq6wOwhF743OJmOQYxCcCfVmanhnYqQc+R9V/O6NUS8L2nbp
-         bfCpWgC2hjjxo0RKPYfSBymuCbEXgpW+HNTSiMsqzwFrOdBqoFbjph074HVjEQuLi7XY
-         cfDUqcchUSgcSOGXv/tzRkC7vVsAVLqShWE+40k+G1+6NnrxpViK0ieQ6LuM1PNSqeUw
-         qm86haSCSay1tQkW4rMcX1IDjNRtpdMECaXGLeoa6a0Bmvp/BBk4cd+N33na7K6G1Kai
-         tY3Q==
+        b=YjIjRUrUpxtsMbFJnudO5vHy1TyjYNhBHYNunLGWzGpmcmHhJUT63XUlZbj4TnHSzw
+         +xfHihGq2gbLGGZ+ejUBEWVJ0Oh1Z4tw5Fjs0pjIMeFqmJPyypNJJ2uyPfGEfHyMK4aq
+         rz7O7a6flf3FQyrtWeFCbm2eDqDNVA2UOGlz0AeJC0Aea2XkUUyUekutU4JlH1Tv+e/q
+         v6loFNMj6xMB29KN3gQNI+Q0/F4C1WI1WO64+cmM8toQfGgNlxNmbCmJpQabiFkH4zMf
+         52M+XCDuaryIdCp4c/8GfSoa5sOc1XcEydrVZWSKTHQmvqI3n1VT72m46nzqLLX4W3fl
+         BN6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :references:in-reply-to:message-id:date:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=WUfH1YmX6JIuBwbJQZOyUACk1UascwrFRi8uZ/I6JZI=;
-        b=mPAqsQzN++kZ8etT0C3ZI4nlqBqOKw0ssoXZrZYSwkJEeXkOnaXV2IzqolpWUb1GdA
-         a64IUsbgliuKfNSKUi5sM6aasiJC/5eR+cAgbq0UvnvlwNbb35IGpr6VPzg9ukxzcLHk
-         pGQP4gsuUwdiqiDE7YbSqbdG1xo/P2oztsOtTTpEIf8eiutruBed+po2QlCBBv639pQh
-         UxtnE/vFHquKt4/V2CaQuDPCbyc+Neya4Frvj04MeXCizBj7870HvsL/BAV1k+JzQ7Z+
-         hCdbGLv2CaO5H15P+3rpz5tbv/vQ1CBrRCW7O7BegD7WajZDmTSSHwUA3WPfTE1Jk7q9
-         U7jA==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=DVWFHJPUwgQ+3kgB3q991tAQNhIal3fXQX2kPrJ22SU=;
+        b=HPBYaNgrgG7KubwfJfpLX/zcwJ8cJegaYB2qN07tvMzIATYas9HBhGdoiqw5qeIZZR
+         CnHbCLWK5WlbtTp5TBPmFMcyCwnXEJC7po9oGfGdzmnCOfrDqfq3XdvhY7/ovquGWTRJ
+         R+vvAcD0tw8VVzSYqno26I+3GShepxYZGirXF+76PXCbwbL0pI816qE26G71IDvBCxyU
+         VRcx3btU4eiklXHUVfeiJFxxHUhDf8lJIZ+Sce9yAFIwwxZh+NNfMpzfj1JFrhql+t3S
+         BaZ4nZvkTGEWsjEfKdJsvX+iWnFJyRmO12tFjQj0AjoLGY/BX63SZg1B8OViKtcU242h
+         73Eg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EzuZrNp2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hKnLOdLG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g37si235132ybi.791.2018.01.18.10.40.39
+        by mx.google.com with ESMTPS id b128si248632ybc.540.2018.01.18.10.42.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 18 Jan 2018 10:40:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 18 Jan 2018 10:42:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EzuZrNp2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46843 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hKnLOdLG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:47086 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ecF77-0005ZU-4x
-	for alex.bennee@linaro.org; Thu, 18 Jan 2018 13:40:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38242)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ecF9C-0007hm-3b
+	for alex.bennee@linaro.org; Thu, 18 Jan 2018 13:42:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41757)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ecEzQ-0007U5-62
-	for qemu-devel@nongnu.org; Thu, 18 Jan 2018 13:32:43 -0500
+	(envelope-from <alistair23@gmail.com>) id 1ecF8y-0007el-Ke
+	for qemu-arm@nongnu.org; Thu, 18 Jan 2018 13:42:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ecEzP-0003bQ-1z
-	for qemu-devel@nongnu.org; Thu, 18 Jan 2018 13:32:40 -0500
-Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:32995)
+	(envelope-from <alistair23@gmail.com>) id 1ecF8x-00035b-Hd
+	for qemu-arm@nongnu.org; Thu, 18 Jan 2018 13:42:32 -0500
+Received: from mail-pg0-x243.google.com ([2607:f8b0:400e:c05::243]:38468)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ecEzO-0003bI-TB; Thu, 18 Jan 2018 13:32:38 -0500
-Received: by mail-qt0-x242.google.com with SMTP id e2so32642541qti.0;
-	Thu, 18 Jan 2018 10:32:38 -0800 (PST)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1ecF8q-0002zH-GZ; Thu, 18 Jan 2018 13:42:24 -0500
+Received: by mail-pg0-x243.google.com with SMTP id y27so8993037pgc.5;
+	Thu, 18 Jan 2018 10:42:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=WUfH1YmX6JIuBwbJQZOyUACk1UascwrFRi8uZ/I6JZI=;
-	b=EzuZrNp2DU1/xwSxe07KWZjBHuJVb9zLjxBhLKINqb9TFK0z1jTete32ZenqVOQ0hQ
-	qWqashFT9XBem0K54RYhR4rjriOPgmrMhimJIAkDepeMDPWbBX5+lovjbyYeqlzVqfnh
-	9Pt3DyXqTebYzzDAVYyg2BD95BSzNgwKO0Kf0dwDQ4ClJ5Cldq11RdN6L5PoLXUG5cIL
-	jhyU4djoTEHHmS5uJdNAHXmCEtp0i711H/JdWjy7rKaiFS39mJPTz4IArSoE0S5OAK0A
-	8QFDn8t13Xei5s4UwbVT0ZPOM5gYZDMU5aDSqKglPBJ8cWaL+aBLo/+lviOe/oKLB9mc
-	XVtw==
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=DVWFHJPUwgQ+3kgB3q991tAQNhIal3fXQX2kPrJ22SU=;
+	b=hKnLOdLGFI8QNAzSrABbBnyL3Pd25RkEBqqBZixFy3vSpdtPG+QC6nztHACykOfhr/
+	0v6uCq7LEaUF+FA6YemlsjwojGfr/RwCtcopfNFk02V4bOD1cEjpNMC6rZEjjpJI2CHO
+	xoPFvKsmKMNm0/sYOwS7xwg3nsGk2LMsfp+ntmwAENk6yGdgLKfN74AwwZE8AeBwhSG/
+	k2L/sQx/4JaxPS1MUaxYbadlLg/O55tL2nBOiIZsIQrg1PUkMeknDzdZPuKA30o7NDlT
+	x057Ynj5ZVsvaE0Vr9W0yMtV6kT3/OUieFLUcvwLWH0CA4G3HUEnx0YBBq/OdiPAhK1b
+	mWgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:in-reply-to:references:mime-version
-	:content-transfer-encoding;
-	bh=WUfH1YmX6JIuBwbJQZOyUACk1UascwrFRi8uZ/I6JZI=;
-	b=hShj/8LZJp1fI6vreAbtrvhgFn8ThIKSSmPhCHfsu52nZiJMrMop3VIwPX2MBhalC0
-	wKCUKu/f6wmrgS+oZaMvxy2+2sptPVDDnqQSaPuTUmBORtQ2ns0pcntMo4lz0wJ91CJW
-	9/TTq3SZoT0tSp2sRKUWtF2vp8oGt+WL2WFQ3c7iJ3wU3Qp1MUv+LqAC6oGTc6rvCflf
-	NXPys0Ika6rH9dLF3tZdSfd4KiC3naQ5lP2WZlp/O4McNVbufVvv+oD0LLtOEB3hjAa5
-	bXdtcyn3m0c6qRtvNbG8qC0OcPvyfHEQZScGV/uBQht36skAHWhJuRpI+fxo3uF6bYAA
-	3GrA==
-X-Gm-Message-State: AKwxytepnWor+KXrxBacCjNi7xeroKZ1vfRhgkDGAGUUq1AlgfsjF5Wx
-	DKImdzIM4lhuEAyaen4/yHs=
-X-Received: by 10.55.161.21 with SMTP id k21mr31976550qke.260.1516300358402;
-	Thu, 18 Jan 2018 10:32:38 -0800 (PST)
-Received: from x1.local ([138.117.48.219])
-	by smtp.gmail.com with ESMTPSA id g9sm446661qtg.90.2018.01.18.10.32.34
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 18 Jan 2018 10:32:37 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Paolo Bonzini <pbonzini@redhat.com>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>
-Date: Thu, 18 Jan 2018 15:31:06 -0300
-Message-Id: <20180118183108.16009-15-f4bug@amsat.org>
-X-Mailer: git-send-email 2.15.1
-In-Reply-To: <20180118183108.16009-1-f4bug@amsat.org>
-References: <20180118183108.16009-1-f4bug@amsat.org>
-In-Reply-To: <20180118182510.15630-1-f4bug@amsat.org>
-References: <20180118182510.15630-1-f4bug@amsat.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+	:in-reply-to:references;
+	bh=DVWFHJPUwgQ+3kgB3q991tAQNhIal3fXQX2kPrJ22SU=;
+	b=E3r7GK4We4mVCYvZ76NMu84G/jsRqHXvEdARZuxqFvX+LdvxV1C0f3Gu66Ug8F1Jip
+	7gpVT9M+8ocihwho02IQAMIv1ViBaR0Apb3FzXHpw53HitBoVCSJSMMdb8+Qs+CYW8L6
+	R5n73uhJrDryhXQ/Jij3ib5U9+3k/5EWyU5BceMlulKZuRqSol9UIjFrfnxMGQUPx/pJ
+	eU1y4VcKI6ZbHJ+AvLmcWpk1j6NnTUKvFNMqAB13zGvRoDis6DSk7yUAMOG/1KEvlfYA
+	OB7eB1WF3uhDlb8n7d4CKWi9fxvgyg2Mu7Dakfu5LLwGCV/JGDHh9eVcxDLfbaIDx3rC
+	GnNA==
+X-Gm-Message-State: AKwxytenM1Mu/SLO4Eo9+oS4hY2UmFSPpNRVKYtgFkUZM5UnQOqSjL8n
+	xPYuOTOMCsA64AbEoDhoIi2OAsHeYCk=
+X-Received: by 2002:a17:902:8607:: with SMTP id
+	f7-v6mr239458plo.273.1516300943251; 
+	Thu, 18 Jan 2018 10:42:23 -0800 (PST)
+Received: from localhost ([149.199.62.254]) by smtp.gmail.com with ESMTPSA id
+	n128sm13178495pga.57.2018.01.18.10.42.21
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Thu, 18 Jan 2018 10:42:22 -0800 (PST)
+From: Alistair Francis <alistair.francis@xilinx.com>
+To: qemu-devel@nongnu.org, edgar.iglesias@xilinx.com, edgar.iglesias@gmail.com
+Date: Thu, 18 Jan 2018 10:37:57 -0800
+Message-Id: <0a8d39fc3fd536d9470ba74ecfb1ad0b05171ae4.1516300623.git.alistair.francis@xilinx.com>
+X-Mailer: git-send-email 2.14.1
+In-Reply-To: <cover.1516300623.git.alistair.francis@xilinx.com>
+References: <cover.1516300623.git.alistair.francis@xilinx.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::242
-Subject: [Qemu-devel] [PATCH v8 15/17] hw/arm/xilinx_zynq: implement SDHCI
- Spec v2
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400e:c05::243
+Subject: [Qemu-arm] [PATCH v6 3/9] xlnx-zynqmp-pmu: Add the CPU and memory
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-	Andrey Smirnov <andrew.smirnov@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, Kevin O'Connor <kevin@koconnor.net>,
-	"open list:Xilinx Zynq" <qemu-arm@nongnu.org>,
-	Marcel Apfelbaum <marcel@redhat.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: F3CDT+ENcGtF
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: alistair23@gmail.com, qemu-arm@nongnu.org, alistair.francis@xilinx.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: EYjodj7TNJH6
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+Connect the MicroBlaze CPU and the ROM and RAM memory regions.
+
+Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 ---
- hw/arm/xilinx_zynq.c | 70 ++++++++++++++++++++++++++++++++++------------------
- tests/sdhci-test.c   |  4 +++
- 2 files changed, 50 insertions(+), 24 deletions(-)
 
-diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-index 1836a4ed45..349787aacd 100644
---- a/hw/arm/xilinx_zynq.c
-+++ b/hw/arm/xilinx_zynq.c
-@@ -165,10 +165,8 @@ static void zynq_init(MachineState *machine)
-     MemoryRegion *address_space_mem = get_system_memory();
-     MemoryRegion *ext_ram = g_new(MemoryRegion, 1);
-     MemoryRegion *ocm_ram = g_new(MemoryRegion, 1);
--    DeviceState *dev, *carddev;
-+    DeviceState *dev;
-     SysBusDevice *busdev;
--    DriveInfo *di;
--    BlockBackend *blk;
-     qemu_irq pic[64];
-     int n;
+V6:
+ - Pass initrd instead of kernel to microblaze_load_kernel()
+V4:
+ - Remove the ZCU102 name
+V2:
+ - Fix the pmu-cpu name
+ - Use err and errp for CPU realise instead of error_fatal
+
+ hw/microblaze/xlnx-zynqmp-pmu.c | 70 +++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 68 insertions(+), 2 deletions(-)
+
+diff --git a/hw/microblaze/xlnx-zynqmp-pmu.c b/hw/microblaze/xlnx-zynqmp-pmu.c
+index ac0f78928a..145837b372 100644
+--- a/hw/microblaze/xlnx-zynqmp-pmu.c
++++ b/hw/microblaze/xlnx-zynqmp-pmu.c
+@@ -18,8 +18,11 @@
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "qemu-common.h"
++#include "exec/address-spaces.h"
+ #include "hw/boards.h"
++#include "hw/qdev-properties.h"
+ #include "cpu.h"
++#include "boot.h"
  
-@@ -247,27 +245,51 @@ static void zynq_init(MachineState *machine)
-     gem_init(&nd_table[0], 0xE000B000, pic[54-IRQ_OFFSET]);
-     gem_init(&nd_table[1], 0xE000C000, pic[77-IRQ_OFFSET]);
+ /* Define the PMU device */
  
--    dev = qdev_create(NULL, TYPE_SYSBUS_SDHCI);
--    qdev_init_nofail(dev);
--    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0xE0100000);
--    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[56-IRQ_OFFSET]);
--
--    di = drive_get_next(IF_SD);
--    blk = di ? blk_by_legacy_dinfo(di) : NULL;
--    carddev = qdev_create(qdev_get_child_bus(dev, "sd-bus"), TYPE_SD_CARD);
--    qdev_prop_set_drive(carddev, "drive", blk, &error_fatal);
--    object_property_set_bool(OBJECT(carddev), true, "realized", &error_fatal);
--
--    dev = qdev_create(NULL, TYPE_SYSBUS_SDHCI);
--    qdev_init_nofail(dev);
--    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0xE0101000);
--    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[79-IRQ_OFFSET]);
--
--    di = drive_get_next(IF_SD);
--    blk = di ? blk_by_legacy_dinfo(di) : NULL;
--    carddev = qdev_create(qdev_get_child_bus(dev, "sd-bus"), TYPE_SD_CARD);
--    qdev_prop_set_drive(carddev, "drive", blk, &error_fatal);
--    object_property_set_bool(OBJECT(carddev), true, "realized", &error_fatal);
-+    for (n = 0; n < 2; n++) {
-+        int hci_irq = n ? 79 : 56;
-+        hwaddr hci_addr = n ? 0xE0101000 : 0xE0100000;
-+        DriveInfo *di;
-+        BlockBackend *blk;
-+        DeviceState *carddev;
+@@ -27,21 +30,56 @@
+ #define XLNX_ZYNQMP_PMU_SOC(obj) OBJECT_CHECK(XlnxZynqMPPMUSoCState, (obj), \
+                                               TYPE_XLNX_ZYNQMP_PMU_SOC)
+ 
++#define XLNX_ZYNQMP_PMU_ROM_SIZE    0x8000
++#define XLNX_ZYNQMP_PMU_ROM_ADDR    0xFFD00000
++#define XLNX_ZYNQMP_PMU_RAM_ADDR    0xFFDC0000
 +
-+        /* Compatible with:
-+         * - SD Host Controller Specification Version 2.0 Part A2
-+         * - SDIO Specification Version 2.0
-+         * - MMC Specification Version 3.31
-+         *
-+         * - SDMA (single operation DMA)
-+         * - ADMA1 (4 KB boundary limited DMA)
-+         * - ADMA2
-+         *
-+         * - up to seven functions in SD1, SD4, but does not support SPI mode
-+         * - SD high-speed (SDHS) card
-+         * - SD High Capacity (SDHC) card
-+         *
-+         * - Low-speed, 1 KHz to 400 KHz
-+         * - Full-speed, 1 MHz to 50 MHz (25 MB/sec)
-+         */
-+        dev = qdev_create(NULL, TYPE_SYSBUS_SDHCI);
-+        qdev_prop_set_uint8(dev, "sd-spec-version", 2);
-+        qdev_prop_set_uint8(dev, "timeout-freq", 0);
-+        qdev_prop_set_uint8(dev, "max-frequency", 0);
-+        qdev_prop_set_bit(dev, "suspend", false);
-+        qdev_prop_set_bit(dev, "sdma", true);
-+        qdev_prop_set_bit(dev, "adma1", true);
-+        qdev_prop_set_bit(dev, "adma2", true);
-+        qdev_prop_set_bit(dev, "1v8", false);
-+        qdev_prop_set_bit(dev, "high-speed", true);
-+        qdev_prop_set_uint16(dev, "max-block-length", 1024);
-+        qdev_init_nofail(dev);
-+        sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, hci_addr);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[hci_irq - IRQ_OFFSET]);
+ typedef struct XlnxZynqMPPMUSoCState {
+     /*< private >*/
+     DeviceState parent_obj;
+ 
+     /*< public >*/
++    MicroBlazeCPU cpu;
+ }  XlnxZynqMPPMUSoCState;
+ 
+ static void xlnx_zynqmp_pmu_soc_init(Object *obj)
+ {
++    XlnxZynqMPPMUSoCState *s = XLNX_ZYNQMP_PMU_SOC(obj);
+ 
++    object_initialize(&s->cpu, sizeof(s->cpu),
++                      TYPE_MICROBLAZE_CPU);
++    object_property_add_child(obj, "pmu-cpu", OBJECT(&s->cpu),
++                              &error_abort);
+ }
+ 
+ static void xlnx_zynqmp_pmu_soc_realize(DeviceState *dev, Error **errp)
+ {
+-
++    XlnxZynqMPPMUSoCState *s = XLNX_ZYNQMP_PMU_SOC(dev);
++    Error *err = NULL;
 +
-+        di = drive_get_next(IF_SD);
-+        blk = di ? blk_by_legacy_dinfo(di) : NULL;
-+        carddev = qdev_create(qdev_get_child_bus(dev, "sd-bus"), TYPE_SD_CARD);
-+        qdev_prop_set_drive(carddev, "drive", blk, &error_fatal);
-+        object_property_set_bool(OBJECT(carddev), true, "realized",
-+                                 &error_fatal);
++    object_property_set_uint(OBJECT(&s->cpu), XLNX_ZYNQMP_PMU_ROM_ADDR,
++                             "base-vectors", &error_abort);
++    object_property_set_bool(OBJECT(&s->cpu), true, "use-stack-protection",
++                             &error_abort);
++    object_property_set_uint(OBJECT(&s->cpu), 0, "use-fpu", &error_abort);
++    object_property_set_uint(OBJECT(&s->cpu), 0, "use-hw-mul", &error_abort);
++    object_property_set_bool(OBJECT(&s->cpu), true, "use-barrel",
++                             &error_abort);
++    object_property_set_bool(OBJECT(&s->cpu), true, "use-msr-instr",
++                             &error_abort);
++    object_property_set_bool(OBJECT(&s->cpu), true, "use-pcmp-instr",
++                             &error_abort);
++    object_property_set_bool(OBJECT(&s->cpu), false, "use-mmu", &error_abort);
++    object_property_set_bool(OBJECT(&s->cpu), true, "endianness",
++                             &error_abort);
++    object_property_set_str(OBJECT(&s->cpu), "8.40.b", "version",
++                            &error_abort);
++    object_property_set_uint(OBJECT(&s->cpu), 0, "pvr", &error_abort);
++    object_property_set_bool(OBJECT(&s->cpu), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
 +    }
+ }
  
-     dev = qdev_create(NULL, TYPE_ZYNQ_XADC);
-     qdev_init_nofail(dev);
-diff --git a/tests/sdhci-test.c b/tests/sdhci-test.c
-index 37ada0e1c5..44ee5651c4 100644
---- a/tests/sdhci-test.c
-+++ b/tests/sdhci-test.c
-@@ -41,6 +41,10 @@ static const struct sdhci_t {
-     /* Exynos4210 */
-     { "arm",    "smdkc210",
-         {0x12510000, 2, 0, {1, 0x5e80080} } },
+ static void xlnx_zynqmp_pmu_soc_class_init(ObjectClass *oc, void *data)
+@@ -70,7 +108,35 @@ type_init(xlnx_zynqmp_pmu_soc_register_types)
+ 
+ static void xlnx_zynqmp_pmu_init(MachineState *machine)
+ {
+-
++    XlnxZynqMPPMUSoCState *pmu = g_new0(XlnxZynqMPPMUSoCState, 1);
++    MemoryRegion *address_space_mem = get_system_memory();
++    MemoryRegion *pmu_rom = g_new(MemoryRegion, 1);
++    MemoryRegion *pmu_ram = g_new(MemoryRegion, 1);
 +
-+    /* Zynq-7000 */
-+    { "arm",    "xilinx-zynq-a9",
-+        {0xe0100000, 2, 0, {1, 0x01790080} } },
- };
++    /* Create the ROM */
++    memory_region_init_rom(pmu_rom, NULL, "xlnx-zynqmp-pmu.rom",
++                           XLNX_ZYNQMP_PMU_ROM_SIZE, &error_fatal);
++    memory_region_add_subregion(address_space_mem, XLNX_ZYNQMP_PMU_ROM_ADDR,
++                                pmu_rom);
++
++    /* Create the RAM */
++    memory_region_init_ram(pmu_ram, NULL, "xlnx-zynqmp-pmu.ram",
++                           machine->ram_size, &error_fatal);
++    memory_region_add_subregion(address_space_mem, XLNX_ZYNQMP_PMU_RAM_ADDR,
++                                pmu_ram);
++
++    /* Create the PMU device */
++    object_initialize(pmu, sizeof(XlnxZynqMPPMUSoCState), TYPE_XLNX_ZYNQMP_PMU_SOC);
++    object_property_add_child(OBJECT(machine), "pmu", OBJECT(pmu),
++                              &error_abort);
++    object_property_set_bool(OBJECT(pmu), true, "realized", &error_fatal);
++
++    /* Load the kernel */
++    microblaze_load_kernel(&pmu->cpu, XLNX_ZYNQMP_PMU_RAM_ADDR,
++                           machine->ram_size,
++                           machine->initrd_filename,
++                           machine->dtb,
++                           NULL);
+ }
  
- static struct {
+ static void xlnx_zynqmp_pmu_machine_init(MachineClass *mc)
 -- 
-2.15.1
+2.14.1
 

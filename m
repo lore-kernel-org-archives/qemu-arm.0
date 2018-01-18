@@ -1,157 +1,157 @@
-Received: by 10.28.153.193 with SMTP id b184csp2093wme;
-        Thu, 18 Jan 2018 12:50:54 -0800 (PST)
-X-Google-Smtp-Source: ACJfBouNLmM5OPbUqSXTzOPwrxhXezRUBMgSUIKJ21tBKfJ8PWw2AF9j9WN0j41+cX0z9rDqTx7e
-X-Received: by 10.37.133.134 with SMTP id x6mr17136332ybk.283.1516308654296;
-        Thu, 18 Jan 2018 12:50:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516308654; cv=none;
+Received: by 10.28.153.193 with SMTP id b184csp24869wme;
+        Thu, 18 Jan 2018 13:14:43 -0800 (PST)
+X-Google-Smtp-Source: ACJfBosB5dVBxJw3wFbT6NzG3afFoxenPZbPkNQJDWlTcLU+cOIJCAOWb5Rb+dc0Z/nCvNGbTTkC
+X-Received: by 10.129.69.24 with SMTP id s24mr6575965ywa.367.1516310083267;
+        Thu, 18 Jan 2018 13:14:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516310083; cv=none;
         d=google.com; s=arc-20160816;
-        b=P8UrzE1pyYH3l3rrUwSFOp9x+PK2cGCnu8L7EMLFPY+J53oAboGMyDF/d2lBW1u5yG
-         qdoWPYNAT2mvXqCQjCNthWzUvGzPAywl07GJSVFF+6SZnxqHgH0he4zruY+Empm58P1p
-         oJA7Jedfm/XMtdNf4cozbglpEogjGNh1aca4Hi1++kbXMLzLIe3/Ei7zfaAkOXfjC985
-         jZukiEZJgwnpR4XTAmiRVjLd5VvCbOaFz1f2bp05SCa7ugD23TVJaC3JMJw9LjrQpOvO
-         nTCgIYTRmDr13b0R8cziZTbo85hT1K7MnY2ypYSENzbE513q/Bz7tmKNVwKYUIWD2JnP
-         rOPg==
+        b=rkkq7B7CeDGtawtchG1eWWjhVSCAW9Yl20HIsog0JbGtTDREK6C2nOtVXV3IUb8y0G
+         pAooTx/k+rR290Dy6zkqERm8oqPjNHAY1bz4hmZRFG2rQZ7tGjSbRrAuprxJjjWIVDaa
+         DdfyIGPRZecC0kAvIkj6rfSxBKvasdkMtMlrftXmag/Ry4kFxb3WzcU9+D6VtIOGZyBl
+         i35QgLFNwod3jE7yYzwiCDlG4HjL5A6AhHpEMAWW2a7IEDvghjSp5WvT8g1KQdy0n4Mm
+         FHwkBhQY1tESRJ8EQbU6LUYHe1b054y+l4Y46dHj39wb31QNuC+JHeuaIzbuutQ+S8yZ
+         n1Hw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=vSz663hxt9kCgV2WJCKUifLEv6n3AWYNiInFUzwPrDE=;
-        b=czNfoKKPYwESd8DsLKi5OapGnDN+Ow+a4AeqxlsLpS+/ruFzu9ykOhkfP8Ysu7NSl8
-         5790YUyX6YiBwiibnOn9XC4EYHVIpRF5lNLwB2Qk/glYefee36YM1/Lz4Dc3J+y/LZm0
-         AijwDmhwi4Ho/mZ8rlam4Fuie4NSWMAfbIAdW3xsmVafSZEuNjkIe/PDv5nmn3El5nR1
-         gdvUk1SxhyVzJ8HT5In4bhwySicgVdjSUxUU3qT+lzuzMWyTSihZXP7L26fY73g+87WM
-         iEU6knw1AaEoq2AwETExc3hnwKL2LKUBP6BH134E212XpWCMRyhb/rrPHMQiszNKi4Hm
-         VDrw==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=/vm2L5C4outE+fKHHmB99G95oy4JFLXHD2Iz3D0Nmjw=;
+        b=k3vsbIYCpCexbhOSPTJULeP+oi4jTjWwphmujtTY4JFwRRa6lnK4vUpD3nEr+2G3Eh
+         nyeBJk9AqjgZd2luTlR0mz6mG1h/q5pCkVrHXEXQ+O1TUJvWllXaBHmOTQJ3ANulVoKq
+         n+GJ1DMmfpxHHzhHXgtA6AErwbBGtyTzK4kA5Qnp81bKSswqIzQPjB+uqNFe9bdGDcwg
+         zJd7naAy4IXIKJedAa7EBalOOS4l6HkJ+WLiKVYB+ytrAIfoyOTvKNE9nPSjLVfXZZ4g
+         HhrN789m9qkmoVWcHFybAUfal5pTbmOO1MC9SmD19Ok6PWny/IQHTWHentfKw8eHN5oi
+         +ACA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PUOqfWVU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fiF0GGIG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t13si270355ybl.631.2018.01.18.12.50.54
+        by mx.google.com with ESMTPS id s189si1940227ywc.720.2018.01.18.13.14.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 18 Jan 2018 12:50:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 18 Jan 2018 13:14:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PUOqfWVU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:53910 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fiF0GGIG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:54840 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ecH9B-0008AE-KB
-	for alex.bennee@linaro.org; Thu, 18 Jan 2018 15:50:53 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44976)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ecHWE-0005aB-K3
+	for alex.bennee@linaro.org; Thu, 18 Jan 2018 16:14:42 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54468)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ecH04-0000XJ-30
-	for qemu-devel@nongnu.org; Thu, 18 Jan 2018 15:41:29 -0500
+	id 1ecHT3-0002UG-QE
+	for qemu-arm@nongnu.org; Thu, 18 Jan 2018 16:11:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ecH03-0007VK-BW
-	for qemu-devel@nongnu.org; Thu, 18 Jan 2018 15:41:28 -0500
-Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:39369)
+	id 1ecHSz-0005SO-Pn
+	for qemu-arm@nongnu.org; Thu, 18 Jan 2018 16:11:25 -0500
+Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:42737)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ecH03-0007V9-6O; Thu, 18 Jan 2018 15:41:27 -0500
-Received: by mail-qt0-x243.google.com with SMTP id f4so12714267qtj.6;
-	Thu, 18 Jan 2018 12:41:27 -0800 (PST)
+	id 1ecHSz-0005Ry-LI; Thu, 18 Jan 2018 16:11:21 -0500
+Received: by mail-qt0-x241.google.com with SMTP id c2so33819647qtn.9;
+	Thu, 18 Jan 2018 13:11:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=vSz663hxt9kCgV2WJCKUifLEv6n3AWYNiInFUzwPrDE=;
-	b=PUOqfWVU5sTxwLcbF0Zq9oVJzZQ48fbSJZR3n9u92RfUASwtM4uETT5ZGL9cwlNpfg
-	ROveU3vjhQQ/+riLEKicY5mmoK6VM1IfWqyEcnIiqtNAXg1CNmwdf7iDnV8ipt0TFtvC
-	m7Ohv88OImDdVsklpAZ1/y4E/5jmAUOR6ak9DsrNzRg1A0HPnWGM/ZeCiOqpVWuW5D4u
-	vqC7WFKDxxCqJzXo8kpf2awQcoedHh/j7PYxzKfCJT3Wo6g+s5rsgppxRxjiUjtH03WN
-	6KIiR3OiAflI8LlYJD/VHbzs305n4S0dUgWNe9DR5q2FKlj3H9FqnWVd9rgO7aq+V9W6
-	F95w==
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=/vm2L5C4outE+fKHHmB99G95oy4JFLXHD2Iz3D0Nmjw=;
+	b=fiF0GGIGb30iMupStaKrUCQbf63JlFDgBQjQ+tG7IaLKZ+VD6w9paEZk8z6WB+XTkw
+	phdV1eyJ25ttrLcP0Stp2MK3xpnD5xJBJ4hqPSR1Zw8fG3FWEqpeDMwKeE1VA7beR7lJ
+	UG8CBpH8pFIugmOES9lTCWQYdJzhdpT+w108IgM3iZJ7OpspxRKmBDy+WA6wB9meOV8W
+	MvkM8Q3ELP6/Y0FmQoj9ZsOlkMVOLLLJlpx+ZdUTlgz7AeUBqUv3ecBAs54BXrWwpPGC
+	xnXjlAHD2qXr/lHR0PXXfxQatWuNqhzdtByINFeN6eKjTBRRuU9RcwWGycCVavRExvm+
+	Nk5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=vSz663hxt9kCgV2WJCKUifLEv6n3AWYNiInFUzwPrDE=;
-	b=e42Gse3aNYo88s/q+aXEfy12JOMDFTO7F0DqIL4jLjXPL8MTk7RLTLyakPe6D7pSKg
-	dgRN4/HnGnIc7jCYD/PwyzSAfQPecIjUknN93CzYrx/So9Tn1rX1fUoRvOGRfspi2/J5
-	VUa9nNp446B31qpVowfbgBKBxxvgvITD2DDKbjfXaZeIOlr7nDS42MGPANEc3gf2E/bO
-	QJsU49I+GQmqAiJ7xsgbhyQotRPCj94hb0DnAU0AAPkLIOIcN318UDbt1627iYXrM+o5
-	jAT2PVgxI7ktCIP2z4tqgGtmxWqjMq+kmwJ4Bb/pl8b+D2JY+NpB3QxcxRHydOqWGM5m
-	B7vg==
-X-Gm-Message-State: AKwxytfvVL1nkgXw5YDTdC7PWUGUSe0Wvu2XqIrbLkBKbd6VBdE5QFeL
-	ebmE3l0vUXLj9WU26k8ze8c=
-X-Received: by 10.237.40.97 with SMTP id r88mr26108637qtd.233.1516308086696;
-	Thu, 18 Jan 2018 12:41:26 -0800 (PST)
-Received: from x1.local ([138.117.48.219])
-	by smtp.gmail.com with ESMTPSA id 24sm5484621qkv.64.2018.01.18.12.41.23
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=/vm2L5C4outE+fKHHmB99G95oy4JFLXHD2Iz3D0Nmjw=;
+	b=r2QL6892Ijzj34upBOhUdJPCVqe/yrC+BvN8xpzMFs5yAngnloZddq+z2bMYTf+y0z
+	R2Hn4JKyNsefFfzHyUIufZgRu5pdx/f0x7s+UZ9igHocGNXqsJZ5S1AAvgcoP7De++or
+	tVeeXXTFnc1Jz+a7hj/aI2/GkMt/R8oVDzTUacz/0sTAfjx5NnNAnedFkKmKSgH/lUpC
+	/8MN2sevG1XmaDffTejeeOxvcpM0V81kWdac8snJjurpBKBiu/j7ZZMiZtj/SSs7f723
+	6he/VDuevUAQv8KyInbo1alTxRUX5NejVRQ+2ZeXflquqVRurPd97K+NAgAz24IGwP3G
+	MHxA==
+X-Gm-Message-State: AKwxytfDRKzfxp7ZKeEtkc1d5XCeeen8z4sw9Av8DdhwxdaW9FuQjbA0
+	tx6N1Ef/7N9TPfS+/bK95NKGyMdg
+X-Received: by 10.55.136.129 with SMTP id k123mr46172325qkd.196.1516309881014; 
+	Thu, 18 Jan 2018 13:11:21 -0800 (PST)
+Received: from [192.168.1.11] ([138.117.48.219])
+	by smtp.gmail.com with ESMTPSA id
+	g64sm4010784qtd.17.2018.01.18.13.11.18
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 18 Jan 2018 12:41:26 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Alistair Francis <alistair.francis@xilinx.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 18 Jan 2018 17:40:49 -0300
-Message-Id: <20180118204058.5768-6-f4bug@amsat.org>
-X-Mailer: git-send-email 2.15.1
-In-Reply-To: <20180118204058.5768-1-f4bug@amsat.org>
-References: <20180118204058.5768-1-f4bug@amsat.org>
+	Thu, 18 Jan 2018 13:11:20 -0800 (PST)
+To: Alistair Francis <alistair.francis@xilinx.com>, qemu-devel@nongnu.org,
+	edgar.iglesias@xilinx.com, edgar.iglesias@gmail.com
+References: <cover.1516300623.git.alistair.francis@xilinx.com>
+	<3ddf66fa53e18ba941908bdba5e056e67ccf854b.1516300623.git.alistair.francis@xilinx.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <77046075-c43f-17b7-40cb-6ecc28d0b9c3@amsat.org>
+Date: Thu, 18 Jan 2018 18:11:17 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <3ddf66fa53e18ba941908bdba5e056e67ccf854b.1516300623.git.alistair.francis@xilinx.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::243
-Subject: [Qemu-devel] [PATCH v7 05/14] hw/arm/fsl-imx6: implement SDHCI Spec
- v3
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400d:c0d::241
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v6 1/9] microblaze: boot.c:
+ Don't try to find NULL pointer
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-	Prasad J Pandit <pjp@fedoraproject.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Andrey Smirnov <andrew.smirnov@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, Sai Pavan Boddu <saipava@xilinx.com>,
-	"open list:ARM" <qemu-arm@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PzL/jenUDjeU
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: alistair23@gmail.com, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: EBYoBGKC7N/t
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/arm/fsl-imx6.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+On 01/18/2018 03:37 PM, Alistair Francis wrote:
+> Previously if no device tree was passed to microblaze_load_kernel() then
+> qemu_find_file() would try to find a NULL pointer. To avoid this put a
+> check around qemu_find_file().
+> 
+> Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
+> Reported-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
-index b0d4088290..e7d13d54e6 100644
---- a/hw/arm/fsl-imx6.c
-+++ b/hw/arm/fsl-imx6.c
-@@ -348,6 +348,19 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
-             { FSL_IMX6_uSDHC4_ADDR, FSL_IMX6_uSDHC4_IRQ },
-         };
- 
-+        /* UHS-I SDIO3.0 SDR104 1.8V ADMA */
-+        object_property_set_uint(OBJECT(&s->esdhc[i]), 3, "sd-spec-version",
-+                                 &err);
-+        object_property_set_uint(OBJECT(&s->esdhc[i]), 52, "timeout-freq",
-+                                 &err);
-+        object_property_set_uint(OBJECT(&s->esdhc[i]), 52, "max-frequency",
-+                                 &err);
-+        object_property_set_bool(OBJECT(&s->esdhc[i]), true, "adma1", &err);
-+        object_property_set_bool(OBJECT(&s->esdhc[i]), true, "1v8", &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-         object_property_set_bool(OBJECT(&s->esdhc[i]), true, "realized", &err);
-         if (err) {
-             error_propagate(errp, err);
--- 
-2.15.1
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
+> ---
+> 
+>  hw/microblaze/boot.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/microblaze/boot.c b/hw/microblaze/boot.c
+> index 457a08a2fe..35bfeda7aa 100644
+> --- a/hw/microblaze/boot.c
+> +++ b/hw/microblaze/boot.c
+> @@ -124,7 +124,7 @@ void microblaze_load_kernel(MicroBlazeCPU *cpu, hwaddr ddr_base,
+>      kernel_cmdline = qemu_opt_get(machine_opts, "append");
+>      dtb_arg = qemu_opt_get(machine_opts, "dtb");
+>      /* default to pcbios dtb as passed by machine_init */
+> -    if (!dtb_arg) {
+> +    if (!dtb_arg && dtb_filename) {
+>          filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, dtb_filename);
+>      }
+>  
+> 

@@ -1,81 +1,101 @@
-Received: by 10.28.173.206 with SMTP id w197csp6803707wme;
-        Thu, 18 Jan 2018 09:38:14 -0800 (PST)
-X-Google-Smtp-Source: ACJfBovUkbXxlqKQOrjvwG3o85ICOFaykKiCwibMrsVVOJ5I+TQU1oTSDE7I3rURcyLTgGlxDyEV
-X-Received: by 10.37.192.194 with SMTP id c185mr17470179ybf.133.1516297094495;
-        Thu, 18 Jan 2018 09:38:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516297094; cv=none;
+Received: by 10.28.173.206 with SMTP id w197csp6849799wme;
+        Thu, 18 Jan 2018 10:22:43 -0800 (PST)
+X-Google-Smtp-Source: ACJfBotn7hPCK0hbNMiHt5+/KtwhRv780eLoxa/CX+mb3n0ElvTeNY6xedv6zLCIGe2HgMRvbB4x
+X-Received: by 10.13.224.65 with SMTP id j62mr6521087ywe.185.1516299763123;
+        Thu, 18 Jan 2018 10:22:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516299763; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dy6+qS+xfuGRELHIRvZCzAygZnf1wSzQL8Xd3+IqGX4PX6/PIOsrC4VSU5izazqHZa
-         BcWk425aRXi6X7J2vOH7D1bdw8P5txFsu7xwEJklnA/YM3IYYI4QdV9kfw3Otsp9zmR0
-         FKi2fTavxFmi+gCzojJ2hAZ2zVRIyHzU74U8v8Crn6DP3dJ48dTdx+nUfs1718ugwm83
-         xckIrjJOuSjimlSQ57ytscN5oVZlD7LTdbeZvFJBIIr59dqifu/uAGjmKPwPXV8ZwEU1
-         NioN0PF/X0AAcRnEbFJLZHT0yXO+sNTtIdXeUMvC5wYjsEdOdRjsQXuQNr8/ohsR15os
-         /OZw==
+        b=jyVN67q6/EjBEXZs9PJObpqRqwl2NVXIYqnWvJay3UDmmCgT50brNxLtBYJFkw4WfT
+         xX0G1s76dAfdGSWqkBsYYtYqyqJzo+cjz4aiiDOG9UbNqXWvyNDnECHmJ9BHl7GXEL/u
+         PTsnOsZaH4nqIAZQIwoaIkB7XSMl91KJ1xUMlMemxoAy7Zaj6Siv/+HfWiW6w7NB0Z8z
+         OBB+S/qRVVIo89CkjikH9UTlJHo0luyLRYTQFD28U9syJPhufjvX9uT10i0XHqKYbL7u
+         sDzDEj8r8R/+utzLxU1ZfGBLftqUnLZW5z8WgSPMPD3tm92rHZQNIG0qQGks++1xZC68
+         IIEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=xNJLKfiQ+zyzDMxSHrk/BUEZXZ+SH5L83RZuWjHde5g=;
-        b=L+ePVwxUgpnzwZ/eNXbpoBkRiKNwMHIw2MUYRZ/sm4TFSAOE8E4nwmS0kQccrB0GfH
-         CYiZ6kFtuBWKraT9KfdcuOPD58dPdDoIgI/ZXOXSuv1lTkdu6d3wPDPAYSUd0kQTzz/5
-         xcBnUrtslQKp22ljjKAmewGxvwFhkdLlxcV826OJsJapCa65dH8KSCdpy5rq7nD10l+G
-         pGU1Nchms4FPCRKONZDwekQrqAoJCEluvG3RHSRVd7MTNei5ngDtVQGURgorlwnJeFZQ
-         zUtgc3J0lCE/VrBJoajL+tYgWsbRlZUPrsOpsglicCbtI1slZ5UPPOwVATpTn1rSAYI0
-         a8dg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=EXu/9tEJu/De1gzTHi/UfnihXeddWAKEZgcrXucSPjs=;
+        b=lORkuUDBPgCqJcly02vWKQlOCXQDXypnSdWHs27RMYhNLjSBF4vhQPIZUJImgz4cT6
+         cedj9DTxPJszdbKtXRckS2T6XimJPFyS5J8btMQ7JXYv/6gnYuhP70q5ait0bY4at/L+
+         omqPJl/nOgf/9of87ZMD4o2VGoXmhu/rhP+cfcJae2aWIHqShKRkjJaQvr+wQ3csmgZ7
+         qudwl77p3hVczzcdGMF0IRJbDVWbshaklMv7hC28HsP4XYf2CxM/IFWzc8DrrZTNz+V0
+         FsMiaE/2E8MBCS192/bje9/tmN2X+aeSu14Ciz/inMVLKVCDYDQuvK5oD6piHLwN9Qto
+         jkvA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lU99gEvX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v3si203058ybl.189.2018.01.18.09.38.14
+        by mx.google.com with ESMTPS id v71si243334ybi.150.2018.01.18.10.22.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 18 Jan 2018 09:38:14 -0800 (PST)
+        Thu, 18 Jan 2018 10:22:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43776 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lU99gEvX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:46245 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ecE8j-0005lP-UN
-	for alex.bennee@linaro.org; Thu, 18 Jan 2018 12:38:13 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46957)
+	id 1ecEpm-0001tt-G2
+	for alex.bennee@linaro.org; Thu, 18 Jan 2018 13:22:42 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35042)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1ecE6Z-0004SN-Ce
-	for qemu-devel@nongnu.org; Thu, 18 Jan 2018 12:36:00 -0500
+	(envelope-from <alistair23@gmail.com>) id 1ecEpJ-0001rW-7V
+	for qemu-devel@nongnu.org; Thu, 18 Jan 2018 13:22:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1ecE6W-0007y7-53
-	for qemu-devel@nongnu.org; Thu, 18 Jan 2018 12:35:59 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:36932)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1ecE6T-0007v7-R6; Thu, 18 Jan 2018 12:35:53 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E37BAC04B320;
-	Thu, 18 Jan 2018 17:35:52 +0000 (UTC)
-Received: from dell-r430-03.lab.eng.brq.redhat.com
-	(dell-r430-03.lab.eng.brq.redhat.com [10.37.153.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D9C8E78E7D;
-	Thu, 18 Jan 2018 17:35:50 +0000 (UTC)
-From: Igor Mammedov <imammedo@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Thu, 18 Jan 2018 18:34:00 +0100
-Message-Id: <1516296842-136976-4-git-send-email-imammedo@redhat.com>
-In-Reply-To: <1516296842-136976-1-git-send-email-imammedo@redhat.com>
-References: <1516296842-136976-1-git-send-email-imammedo@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Thu, 18 Jan 2018 17:35:52 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [RFC v2 3/5] linux-user: prepare for switching to
- cpu_create() API
+	(envelope-from <alistair23@gmail.com>) id 1ecEpI-0003zO-Ab
+	for qemu-devel@nongnu.org; Thu, 18 Jan 2018 13:22:13 -0500
+Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:42505)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1ecEpI-0003yT-2V; Thu, 18 Jan 2018 13:22:12 -0500
+Received: by mail-lf0-x241.google.com with SMTP id q17so17653920lfa.9;
+	Thu, 18 Jan 2018 10:22:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc:content-transfer-encoding;
+	bh=EXu/9tEJu/De1gzTHi/UfnihXeddWAKEZgcrXucSPjs=;
+	b=lU99gEvXiMHfvya6tHU3FoX9sZoDOclQX/uk5Ei/UgrX3XN75Waz9XaXnH7rDWLvC+
+	9KRsMsav2qfGKY+9YX9a/hBUvihY9EmYhpewos4/mbFJePfM8lQztGjtFA4rvJS7wcEq
+	Xf/8rsfDrsti/HbV7QfOJSVTP2ukG37rWeLldwL7CRhIcG3EixxeEtqpuo3B8fgpslZU
+	B50mZUeYqzc5QtOEO66qD+eAmxfcJNs8tBMfBh0RCb9aQjjzviXRVwHBn/+EuuwwYyhj
+	5+eQ6pxLHH+TTle84eRvwUtS8cbwArnWr2tXK0vzUY2GL06AsZqVsUAhmC9IR+iDOuDG
+	DI0A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc:content-transfer-encoding;
+	bh=EXu/9tEJu/De1gzTHi/UfnihXeddWAKEZgcrXucSPjs=;
+	b=cRyyT5jylGyFmxZRTQuej9NQL8Dh+MGC6QtT7Sg0x1YQWzVXVepmiKR6hNDhUfGCPX
+	AoWngZrkmW8mSRQ/LBHZPBFwM4URL0CPdecgZDjCflJQzCWkK0AIVdyOdhzI0vNJDZ0Y
+	F5pqzLDNb9z2Guz6gNF3pxBB//LS25G0oBq/yjaKDFRVZLpsoDzVWaOhfA/w45SZK7qs
+	SLolNbfpwfmNtFqUerZpXbJHPmd65hPQYB7YPPrKVJJqiLBMzXGl8Vyw5wGUTVYxdZHg
+	lTLXU6PyVzdCEkfyoBCvV822KPU7uOzOTlUhdjEz/mA3B4jb4DvOZJRLR6+jbUfQVFy1
+	4RZA==
+X-Gm-Message-State: AKwxytfpuNtzhVIIQwrkJKmVV/MEwErrZdtbzpGCXywH3o0HjWDOC9V9
+	gXjiWGT5NApSF+DNMqZgsQmeO8XTveo2jkZrTYk=
+X-Received: by 10.25.209.139 with SMTP id i133mr14531281lfg.137.1516299730818; 
+	Thu, 18 Jan 2018 10:22:10 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.46.0.86 with HTTP; Thu, 18 Jan 2018 10:21:40 -0800 (PST)
+In-Reply-To: <20180108154303.6522-32-f4bug@amsat.org>
+References: <20180108154303.6522-1-f4bug@amsat.org>
+	<20180108154303.6522-32-f4bug@amsat.org>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Thu, 18 Jan 2018 10:21:40 -0800
+X-Google-Sender-Auth: TnSOhsYRt2s6YvXNzCAF8qDzD9E
+Message-ID: <CAKmqyKMMN2ted8N4a6a8cM9Z4t0fQ--_nNCqjEZTR4Ck-3z=5A@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4010:c07::241
+Subject: Re: [Qemu-devel] [PATCH v5 31/31] sdhci: add Spec v4.2 register
+ definitions
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,66 +107,72 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Laurent Vivier <laurent@vivier.eu>, qemu-s390x@nongnu.org,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Prasad J Pandit <pjp@fedoraproject.org>,
+	=?UTF-8?Q?Gr=C3=A9gory_Estrade?= <gregory.estrade@gmail.com>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	Sai Pavan Boddu <saipava@xilinx.com>,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Clement Deschamps <clement.deschamps@antfield.fr>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	Jean-Christophe Dubois <jcd@tribudubois.net>,
+	Eduardo Habkost <ehabkost@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AGow6oWldcAf
+X-TUID: Vmixp5JS7eKp
 
-temporarily add #ifdef CPU_RESOLVING_TYPE in linux-user/main.c
-so that  each target could gradually switch to cpu_create() and
-not converted yet could continue to use cpu_init().
+On Mon, Jan 8, 2018 at 7:43 AM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-Once all targets are converted
-    temporary ifdefs and cpu_init() API
-will be removed
+Acked-by: Alistair Francis <alistair.francis@xilinx.com>
 
-Signed-off-by: Igor Mammedov <imammedo@redhat.com>
----
- linux-user/main.c | 13 ++++++++++++-
- 1 file changed, 12 insertions(+), 1 deletion(-)
+Alistair
 
-diff --git a/linux-user/main.c b/linux-user/main.c
-index 450eb3c..d481e8c 100644
---- a/linux-user/main.c
-+++ b/linux-user/main.c
-@@ -44,6 +44,7 @@ static const char *argv0;
- static int gdbstub_port;
- static envlist_t *envlist;
- static const char *cpu_model;
-+static const char *cpu_type;
- unsigned long mmap_min_addr;
- unsigned long guest_base;
- int have_guest_base;
-@@ -3847,7 +3848,7 @@ void init_task_state(TaskState *ts)
- CPUArchState *cpu_copy(CPUArchState *env)
- {
-     CPUState *cpu = ENV_GET_CPU(env);
--    CPUState *new_cpu = cpu_init(cpu_model);
-+    CPUState *new_cpu = cpu_create(cpu_type);
-     CPUArchState *new_env = new_cpu->env_ptr;
-     CPUBreakpoint *bp;
-     CPUWatchpoint *wp;
-@@ -4362,7 +4363,17 @@ int main(int argc, char **argv, char **envp)
-     tcg_exec_init(0);
-     /* NOTE: we need to init the CPU at this stage to get
-        qemu_host_page_size */
-+
-+#ifdef CPU_RESOLVING_TYPE
-+    cpu_type = cpu_parse_cpu_model(CPU_RESOLVING_TYPE, cpu_model);
-+    if (!cpu_type) {
-+        exit(1);
-+    }
-+    cpu_create(cpu_type);
-+#else
-     cpu = cpu_init(cpu_model);
-+    cpu_type = object_class_get_name(object_get_class(OBJECT(cpu)));
-+#endif
-     env = cpu->env_ptr;
-     cpu_reset(cpu);
- 
--- 
-2.7.4
-
+> ---
+>  hw/sd/sdhci-internal.h | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+>
+> diff --git a/hw/sd/sdhci-internal.h b/hw/sd/sdhci-internal.h
+> index 1da91a27b4..8193aa1821 100644
+> --- a/hw/sd/sdhci-internal.h
+> +++ b/hw/sd/sdhci-internal.h
+> @@ -191,6 +191,10 @@ FIELD(SDHC_HOSTCTL2, V18_ENA,          3, 1); /* UHS=
+-I only */
+>  FIELD(SDHC_HOSTCTL2, DRIVER_STRENGTH,  4, 2); /* UHS-I only */
+>  FIELD(SDHC_HOSTCTL2, EXECUTE_TUNING,   6, 1); /* UHS-I only */
+>  FIELD(SDHC_HOSTCTL2, SAMPLING_CLKSEL,  7, 1); /* UHS-I only */
+> +FIELD(SDHC_HOSTCTL2, UHS_II_ENA,       8, 1); /* since v4 */
+> +FIELD(SDHC_HOSTCTL2, ADMA2_LENGTH,    10, 1); /* since v4 */
+> +FIELD(SDHC_HOSTCTL2, CMD23_ENA,       11, 1); /* since v4 */
+> +FIELD(SDHC_HOSTCTL2, VERSION4,        12, 1); /* since v4 */
+>  FIELD(SDHC_HOSTCTL2, ASYNC_INT,       14, 1);
+>  FIELD(SDHC_HOSTCTL2, PRESET_ENA,      15, 1);
+>
+> @@ -219,12 +223,16 @@ FIELD(SDHC_CAPAB, DRIVER_TYPE_C,      37, 1); /* si=
+nce v3 */
+>  FIELD(SDHC_CAPAB, DRIVER_TYPE_D,      38, 1); /* since v3 */
+>  FIELD(SDHC_CAPAB, TIMER_RETUNNING,    40, 4); /* since v3 */
+>  FIELD(SDHC_CAPAB, SDR50_TUNNING,      45, 1); /* since v3 */
+> +FIELD(SDHC_CAPAB, CLK_MUL,            48, 8); /* since v4.20 */
+> +FIELD(SDHC_CAPAB, ADMA3,              59, 1); /* since v4.20 */
+> +FIELD(SDHC_CAPAB, V18_VDD2,           60, 1); /* since v4.20 */
+>
+>  /* HWInit Maximum Current Capabilities Register 0x0 */
+>  #define SDHC_MAXCURR                   0x48
+>  FIELD(SDHC_MAXCURR, V33_VDD1,          0, 8);
+>  FIELD(SDHC_MAXCURR, V30_VDD1,          8, 8);
+>  FIELD(SDHC_MAXCURR, V18_VDD1,         16, 8);
+> +FIELD(SDHC_MAXCURR, V18_VDD2,         32, 8); /* since v4.20 */
+>
+>  /* W Force Event Auto CMD12 Error Interrupt Register 0x0000 */
+>  #define SDHC_FEAER                     0x50
+> --
+> 2.15.1
+>
+>

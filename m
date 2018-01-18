@@ -1,115 +1,115 @@
-Received: by 10.28.153.193 with SMTP id b184csp37677wme;
-        Thu, 18 Jan 2018 13:29:51 -0800 (PST)
-X-Google-Smtp-Source: ACJfBou3bxeffRrajQFYb1GDxyOYvLUc1Vbqal2Dp8wTdAxWyhHCWraWCIkqNJUmQY6+yW4nBBtv
-X-Received: by 10.129.240.7 with SMTP id p7mr7547038ywm.308.1516310991859;
-        Thu, 18 Jan 2018 13:29:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516310991; cv=none;
+Received: by 10.28.153.193 with SMTP id b184csp39817wme;
+        Thu, 18 Jan 2018 13:32:00 -0800 (PST)
+X-Google-Smtp-Source: ACJfBos6GcMS4jpXCvxE1wnK3BfaQ4AX3NspalD83k1BO77XqkJsOtcrX1CgsDlEuDOcxGoi/ub4
+X-Received: by 10.37.162.136 with SMTP id c8mr26309139ybi.213.1516311120819;
+        Thu, 18 Jan 2018 13:32:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516311120; cv=none;
         d=google.com; s=arc-20160816;
-        b=qP0HP/zP9CQcfbdu6Lzdjr8xcSSozeqsy+JN+xxO+5LwMXkU6H4poBW2z3kYQrhtoQ
-         WoBIs85zw5kIRo3IbUD558f3K7IIwGZA7P/elGGDwyLio0IrkuvFjgdcZwx1O+wqAmKE
-         ZSrqnqrsA5DI9PRP5BbWv/TsA5nbEutjDEPpIc74xrum9F1OV/vv3okWxSNGNcYWhjIq
-         hGXY545q5qPXBcTCQ3Y+PV8JeQUvMp4/uja+snggkOtXm/e2AAX2Pr3QLaqh45grGhqO
-         xzzKcD852O83ZmB+v0AnBqJ4SSt09jftcmdLuqJ/ACISsQPbIFq+ru1WZSh/lMMQbYOn
-         mSdA==
+        b=GwADJJe2yEuvPdflOAgR/Y/DIRBFIxJ/mRuuvlR508NKIavuaaZlc3SVBhPcdq62pE
+         D08LBeqiu/VtqiOkDt/dKxavOiVMBgUJiMwzNPgP8kW3iDXskeDIBaGu0LG0ybPXQsNW
+         fldHmUfIOYfM4ic0nsAZo320DY3P/J9HZ/9XC14q5qijJ5hovSg+v38D7cqbriwAI8OC
+         b+2Phwrg922dJ7E7IxlYYgUpIt32hUJekT6z/5z8+QC5lsQ9sEqaI30j3bFMLsS4WHnI
+         DgXExFGOw5ctCFReSvpDM4c8y+M7+GM9GxZRctlkO/0BFoguVqQTljHfYFTlVuWLpeiZ
+         x9/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:to
          :dkim-signature:arc-authentication-results;
-        bh=n6fMzRx70O0+p9RhU9bBLE5rh9bR39i8yn7STN8Keq0=;
-        b=qfbOx9qPsb5G71UhqBRrHg4MQCpz7BTpoymIW9km0StAfrOgG00saeOsKBK+0OsaC/
-         ZEtkBI3XSO++HUGqWBb82c3mLKtBy7t+aR8uhKDLKhP/+rSE9H7/DswAC+Nn1PEMhiJV
-         87qgF1gZe7/j56BB7TESFjYZEntYjR1O5eCE5m7/cWQ2fFwxSuhVtPFWlnWKENmRJzvy
-         kE2aqVX99SE7dhQqcGMwItrq1+WX2xqtOBaCRD9tbIIFJadTOk1z+GtGtoxWsU+dY4cM
-         nja2pfExcO2uE/Y0Q+FznIeiGokRsDs0cRcG5NxuKhZ0Frz6d832rPyb5MdjO+dtmL94
-         D7Ww==
+        bh=TtKsb0sAHjh9aaXV77Csw6gwCZqZ7UnzEEW2Q+8P1hU=;
+        b=hLZX8RCu34eK3A9k0SuoCOjaI20IUWGgq1qqUp/HIvFkq0EZ5jFViOn/LKB4fS9Kj4
+         37sFshIgkcG0ss/xs6YKdEnpK5t/t5W1wOhOoqn3ixH54bxPAiLY9iDjDnkAsdStdgur
+         21r7qZseIhDII1YaGjOSWu6LTl8jj3Bkq2LNHFZRpj7t8NLPW8boc55irW0+0PMQKJ82
+         kum+g55pQ8PHHCfPWwxgleBefaUomJUT4aqg7dHXlKAxwweJO7auBg8BbOVe/JL1bIRz
+         ZcFVln2SZWebrDEmXhQh4HsikzxmGSMJN5YNQFrRbwX3B4OOoFzqnNBkKRbErY3MopWX
+         lrgw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=paZ33iNE;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bCY+Q9IX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e73si305345ybf.732.2018.01.18.13.29.51
+        by mx.google.com with ESMTPS id b67si1899460ywh.533.2018.01.18.13.32.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 18 Jan 2018 13:29:51 -0800 (PST)
+        Thu, 18 Jan 2018 13:32:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=paZ33iNE;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bCY+Q9IX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:56635 helo=lists.gnu.org)
+Received: from localhost ([::1]:56748 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ecHkt-00007x-9t
-	for alex.bennee@linaro.org; Thu, 18 Jan 2018 16:29:51 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60819)
+	id 1ecHmy-00016u-Az
+	for alex.bennee@linaro.org; Thu, 18 Jan 2018 16:32:00 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33049)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ecHki-00007E-Qw
-	for qemu-arm@nongnu.org; Thu, 18 Jan 2018 16:29:43 -0500
+	id 1ecHmr-00016f-0z
+	for qemu-arm@nongnu.org; Thu, 18 Jan 2018 16:31:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ecHkf-00015I-IR
-	for qemu-arm@nongnu.org; Thu, 18 Jan 2018 16:29:40 -0500
-Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:41389)
+	id 1ecHmn-0001z3-SC
+	for qemu-arm@nongnu.org; Thu, 18 Jan 2018 16:31:53 -0500
+Received: from mail-qt0-x234.google.com ([2607:f8b0:400d:c0d::234]:46427)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ecHkf-000150-CE; Thu, 18 Jan 2018 16:29:37 -0500
-Received: by mail-qt0-x243.google.com with SMTP id i1so17096776qtj.8;
-	Thu, 18 Jan 2018 13:29:37 -0800 (PST)
+	id 1ecHmn-0001yv-OW; Thu, 18 Jan 2018 16:31:49 -0500
+Received: by mail-qt0-x234.google.com with SMTP id o35so23831042qtj.13;
+	Thu, 18 Jan 2018 13:31:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=n6fMzRx70O0+p9RhU9bBLE5rh9bR39i8yn7STN8Keq0=;
-	b=paZ33iNE8RofjVjXdxxuxzPKSQQYELFKICP04+gzcn4E/Q3QKsQkyTb3Dfnfz4psj+
-	Fn4wrJpehqymHTiaE/l5h1AbAgfWZuZTorygUFG9OLFS0LBct9Tm2YhUNAHAoHsKkmoW
-	3TZehxMcaTxy4ApozEFFSRarg4C9dP3QhKxUHNipGeqemeQ0VNLjJgbxOqN5RW1vaYmw
-	rQLpJWrNVcTaBAEfFpyfG2ygsQhx/ziBYVZG3eLm+KOrO/IuZXOoJn6FkL78BIJS4hZB
-	vz+YCNIGCbAA09obeuO4wJwsF7rBZonbMyUOeL3kHF1ULa3brd2AL+We5/CLHK/lJlfe
-	8HVg==
+	bh=TtKsb0sAHjh9aaXV77Csw6gwCZqZ7UnzEEW2Q+8P1hU=;
+	b=bCY+Q9IXuuzkTGxP8Q8LLQC3Fxln5RisdCjJNxTIUMbfin/Dx0IsDwPuozz23w8BAz
+	7zpyhZbKsFhTqo7pgu6kDFs53hiWKEHZZxOvpLkQ1qsHwT/8KfJ4bNq+KOJzk5WvQ6MK
+	T6jnXseCiyPrw69+/6KQg9HWI3v/Ax9FkjrDcuirZQP6N5QDjLHaNqi7QKxJr3J7fTYL
+	VlYVlk0gqfy842op8Jv4A4RG+tX36HEUpNdStbTWVObhRnTB9n36Xo8HolJ4CBB9+Mn+
+	Q/FGb3rR6rzKJqIhdoTHQ4BPPp/YDM9sI+IWk+gyLXYPJL4j3r0pUhbVGYlC5sZ5YDxo
+	9XZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=n6fMzRx70O0+p9RhU9bBLE5rh9bR39i8yn7STN8Keq0=;
-	b=dSMVOgdQfHHkKosEBuE5+XTJxA5UkOEbYuWGG7z2sb2+MZZROyMjo1xXr/D/Q4vYwU
-	Hs4NrmUOGvB0nTq35Oh2GVaZl+9Hs5lK/icaegTKcKPgDt+eRywUovNyXbK9WllwovHm
-	IAUsgL01/QMweuuZCi9vhXhCqXvI326fnBszxf648t2JlAIvu2fqR8eFdEfNNBHuFHeg
-	ho6bzE/jkRhVIPdGj0hPt3qyMyZmnlj45l/O+krUoK1skY7dT4D4opXgaP6T2+SLSyPS
-	69XVpOQ+XVC4tSaMFYPC/o4ijBny2Cn8J12z8azUldYp+0cpfDWL/vLfb6bZ+kVzlLju
-	Q6eg==
-X-Gm-Message-State: AKwxytemLcYlwMBCoomHdHwDGq0vSl+MLtJFUAl6ra2Z0eYNLpfzomsg
-	RLylGZ9EkfS7yzo0s6YXetLks8YK
-X-Received: by 10.237.41.39 with SMTP id s36mr26521950qtd.2.1516310976366;
-	Thu, 18 Jan 2018 13:29:36 -0800 (PST)
+	bh=TtKsb0sAHjh9aaXV77Csw6gwCZqZ7UnzEEW2Q+8P1hU=;
+	b=dIMIFpcPHZTTtkOSpgt81UZnBGNtIVExTzfZ9JoPh2051CatCvpPnY+QZpcqar0FxF
+	YBERxF3hpqMzDKxB3C7kVn6rQSsFpZHZ0DiqChoz4hyTCPwVMTKBSCk5Sp9RWd62R3t5
+	cuh/maOSFNXTrdSbKYoORNkVsnhbN/KRS3Mh2cZW1EgL1mq2E1KaIpjAykRghMLDc6lK
+	JayHYwisID4nrLKJzIo7dWgAkkVjelYNVbOj9mTINO0oGWK6bJsZ4mXChVLwrYOqO5Jc
+	jDjzecDA0xHMG4wsz6nYuJ2EnmReUJxFpWhNtq1kyEj/Gej4Yp6qjmX7R5mKR767kiDc
+	JjZg==
+X-Gm-Message-State: AKwxytcZHpiDl1MZVcz33yqLsx0rM3bdmLlbjzAgvs+U5T5GaTjKEtA3
+	6FJDI54+se8D4ajUBiPEND1EuXRb
+X-Received: by 10.55.24.96 with SMTP id j93mr37207439qkh.113.1516311108994;
+	Thu, 18 Jan 2018 13:31:48 -0800 (PST)
 Received: from [192.168.1.11] ([138.117.48.219])
 	by smtp.gmail.com with ESMTPSA id
-	w138sm5272769qkb.28.2018.01.18.13.29.33
+	m123sm1249742qkd.55.2018.01.18.13.31.46
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 18 Jan 2018 13:29:35 -0800 (PST)
+	Thu, 18 Jan 2018 13:31:48 -0800 (PST)
 To: Alistair Francis <alistair.francis@xilinx.com>, qemu-devel@nongnu.org,
 	edgar.iglesias@xilinx.com, edgar.iglesias@gmail.com
 References: <cover.1516300623.git.alistair.francis@xilinx.com>
-	<406cec176afe5821bece00c94f1030948373d5c1.1516300623.git.alistair.francis@xilinx.com>
+	<01de185b273b999f1a4df07cb0e4b2e8216689f0.1516300623.git.alistair.francis@xilinx.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <b3c2a434-754a-7285-f79b-1d22e0dd3b0a@amsat.org>
-Date: Thu, 18 Jan 2018 18:29:32 -0300
+Message-ID: <9c36cbf6-3bbb-02ed-af88-ce1e8faaa491@amsat.org>
+Date: Thu, 18 Jan 2018 18:31:45 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.5.2
 MIME-Version: 1.0
-In-Reply-To: <406cec176afe5821bece00c94f1030948373d5c1.1516300623.git.alistair.francis@xilinx.com>
+In-Reply-To: <01de185b273b999f1a4df07cb0e4b2e8216689f0.1516300623.git.alistair.francis@xilinx.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::243
-Subject: Re: [Qemu-arm] [PATCH v6 5/9] xlnx-pmu-iomod-intc: Add the PMU
- Interrupt controller
+X-Received-From: 2607:f8b0:400d:c0d::234
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v6 6/9] xlnx-zynqmp-pmu: Connect
+ the PMU interrupt controller
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -124,684 +124,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: alistair23@gmail.com, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mI6L2R3kKwkI
+X-TUID: 2TVB6f49f4EH
 
 On 01/18/2018 03:38 PM, Alistair Francis wrote:
-> Add the PMU IO Module Interrupt controller device.
-> 
 > Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
 > Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
 > ---
 > 
->  default-configs/microblaze-softmmu.mak |   1 +
->  include/hw/intc/xlnx-pmu-iomod-intc.h  |  58 ++++
->  hw/intc/xlnx-pmu-iomod-intc.c          | 554 +++++++++++++++++++++++++++++++++
-
-Thanks for installing the git.orderfile :)
-
->  hw/intc/Makefile.objs                  |   1 +
->  4 files changed, 614 insertions(+)
->  create mode 100644 include/hw/intc/xlnx-pmu-iomod-intc.h
->  create mode 100644 hw/intc/xlnx-pmu-iomod-intc.c
+>  hw/microblaze/xlnx-zynqmp-pmu.c | 24 ++++++++++++++++++++++++
+>  1 file changed, 24 insertions(+)
 > 
-> diff --git a/default-configs/microblaze-softmmu.mak b/default-configs/microblaze-softmmu.mak
-> index ce2630818a..7fca8e4c99 100644
-> --- a/default-configs/microblaze-softmmu.mak
-> +++ b/default-configs/microblaze-softmmu.mak
-> @@ -9,3 +9,4 @@ CONFIG_XILINX_SPI=y
->  CONFIG_XILINX_ETHLITE=y
->  CONFIG_SSI=y
->  CONFIG_SSI_M25P80=y
-> +CONFIG_XLNX_ZYNQMP=y
-> diff --git a/include/hw/intc/xlnx-pmu-iomod-intc.h b/include/hw/intc/xlnx-pmu-iomod-intc.h
-> new file mode 100644
-> index 0000000000..3478d8cf6c
-> --- /dev/null
-> +++ b/include/hw/intc/xlnx-pmu-iomod-intc.h
-> @@ -0,0 +1,58 @@
-> +/*
-> + * QEMU model of Xilinx I/O Module Interrupt Controller
-> + *
-> + * Copyright (c) 2014 Xilinx Inc.
-> + *
-> + * Permission is hereby granted, free of charge, to any person obtaining a copy
-> + * of this software and associated documentation files (the "Software"), to deal
-> + * in the Software without restriction, including without limitation the rights
-> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> + * copies of the Software, and to permit persons to whom the Software is
-> + * furnished to do so, subject to the following conditions:
-> + *
-> + * The above copyright notice and this permission notice shall be included in
-> + * all copies or substantial portions of the Software.
-> + *
-> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> + * THE SOFTWARE.
-> + */
-> +
-> +#ifndef XLNX_PMU_IO_INTC_H
-> +#define XLNX_PMU_IO_INTC_H
-> +
-> +#include "qemu/osdep.h"
-> +#include "hw/sysbus.h"
-> +#include "hw/register.h"
-> +
-> +#define TYPE_XLNX_PMU_IO_INTC "xlnx.pmu_io_intc"
-> +
-> +#define XLNX_PMU_IO_INTC(obj) \
-> +     OBJECT_CHECK(XlnxPMUIOIntc, (obj), TYPE_XLNX_PMU_IO_INTC)
-> +
-> +/* This is R_PIT3_CONTROL + 1 */
-> +#define XlnxPMUIOIntc_R_MAX (0x78 + 1)
-
-Good, I prefer this way, rather than having all the registers exposed in
-the header.
-Can you rename this with CAPS to stay consistent with the CODING_STYLE?
-
-> +
-> +typedef struct XlnxPMUIOIntc {
-> +    SysBusDevice parent_obj;
-> +    MemoryRegion iomem;
-> +
-> +    qemu_irq parent_irq;
-> +
-> +    struct {
-> +        uint32_t intr_size;
-> +        uint32_t level_edge;
-> +        uint32_t positive;
-> +    } cfg;
-> +
-> +    uint32_t irq_raw;
-> +
-> +    uint32_t regs[XlnxPMUIOIntc_R_MAX];
-> +    RegisterInfo regs_info[XlnxPMUIOIntc_R_MAX];
-> +} XlnxPMUIOIntc;
-> +
-> +#endif /* XLNX_PMU_IO_INTC_H */
-> diff --git a/hw/intc/xlnx-pmu-iomod-intc.c b/hw/intc/xlnx-pmu-iomod-intc.c
-> new file mode 100644
-> index 0000000000..1ce2f4fa6b
-> --- /dev/null
-> +++ b/hw/intc/xlnx-pmu-iomod-intc.c
-> @@ -0,0 +1,554 @@
-> +/*
-> + * QEMU model of Xilinx I/O Module Interrupt Controller
-> + *
-> + * Copyright (c) 2013 Xilinx Inc
-> + * Written by Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-> + * Written by Alistair Francis <alistair.francis@xilinx.com>
-> + *
-> + * Permission is hereby granted, free of charge, to any person obtaining a copy
-> + * of this software and associated documentation files (the "Software"), to deal
-> + * in the Software without restriction, including without limitation the rights
-> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> + * copies of the Software, and to permit persons to whom the Software is
-> + * furnished to do so, subject to the following conditions:
-> + *
-> + * The above copyright notice and this permission notice shall be included in
-> + * all copies or substantial portions of the Software.
-> + *
-> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> + * THE SOFTWARE.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "hw/sysbus.h"
-> +#include "hw/register.h"
-> +#include "qemu/bitops.h"
-> +#include "qemu/log.h"
+> diff --git a/hw/microblaze/xlnx-zynqmp-pmu.c b/hw/microblaze/xlnx-zynqmp-pmu.c
+> index 145837b372..7312bfe23e 100644
+> --- a/hw/microblaze/xlnx-zynqmp-pmu.c
+> +++ b/hw/microblaze/xlnx-zynqmp-pmu.c
+> @@ -24,6 +24,8 @@
+>  #include "cpu.h"
+>  #include "boot.h"
+>  
 > +#include "hw/intc/xlnx-pmu-iomod-intc.h"
 > +
-> +#ifndef XLNX_PMU_IO_INTC_ERR_DEBUG
-> +#define XLNX_PMU_IO_INTC_ERR_DEBUG 0
-> +#endif
+>  /* Define the PMU device */
+>  
+>  #define TYPE_XLNX_ZYNQMP_PMU_SOC "xlnx,zynqmp-pmu-soc"
+> @@ -34,14 +36,18 @@
+>  #define XLNX_ZYNQMP_PMU_ROM_ADDR    0xFFD00000
+>  #define XLNX_ZYNQMP_PMU_RAM_ADDR    0xFFDC0000
+>  
+> +#define XLNX_ZYNQMP_PMU_INTC_ADDR   0xFFD40000
 > +
-> +#define DB_PRINT_L(lvl, fmt, args...) do {\
-> +    if (XLNX_PMU_IO_INTC_ERR_DEBUG >= lvl) {\
-> +        qemu_log(TYPE_XLNX_PMU_IO_INTC ": %s:" fmt, __func__, ## args);\
-> +    } \
-> +} while (0)
+>  typedef struct XlnxZynqMPPMUSoCState {
+>      /*< private >*/
+>      DeviceState parent_obj;
+>  
+>      /*< public >*/
+>      MicroBlazeCPU cpu;
+> +    XlnxPMUIOIntc intc;
+>  }  XlnxZynqMPPMUSoCState;
+>  
 > +
-> +#define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)
+>  static void xlnx_zynqmp_pmu_soc_init(Object *obj)
+>  {
+>      XlnxZynqMPPMUSoCState *s = XLNX_ZYNQMP_PMU_SOC(obj);
+> @@ -50,6 +56,9 @@ static void xlnx_zynqmp_pmu_soc_init(Object *obj)
+>                        TYPE_MICROBLAZE_CPU);
+>      object_property_add_child(obj, "pmu-cpu", OBJECT(&s->cpu),
+>                                &error_abort);
 > +
-> +REG32(IRQ_MODE, 0xc)
-> +REG32(GPO0, 0x10)
-> +    FIELD(GPO0, MAGIC_WORD_1, 24, 8)
-> +    FIELD(GPO0, MAGIC_WORD_2, 16, 8)
-> +    FIELD(GPO0, FT_INJECT_FAILURE, 13, 3)
-> +    FIELD(GPO0, DISABLE_RST_FTSM, 12, 1)
-> +    FIELD(GPO0, RST_FTSM, 11, 1)
-> +    FIELD(GPO0, CLR_FTSTS, 10, 1)
-> +    FIELD(GPO0, RST_ON_SLEEP, 9, 1)
-> +    FIELD(GPO0, DISABLE_TRACE_COMP, 8, 1)
-> +    FIELD(GPO0, PIT3_PRESCALE, 7, 1)
-> +    FIELD(GPO0, PIT2_PRESCALE, 5, 2)
-> +    FIELD(GPO0, PIT1_PRESCALE, 3, 2)
-> +    FIELD(GPO0, PIT0_PRESCALE, 1, 2)
-> +    FIELD(GPO0, DEBUG_REMAP, 0, 1)
-> +REG32(GPO1, 0x14)
-> +    FIELD(GPO1, MIO_5, 5, 1)
-> +    FIELD(GPO1, MIO_4, 4, 1)
-> +    FIELD(GPO1, MIO_3, 3, 1)
-> +    FIELD(GPO1, MIO_2, 2, 1)
-> +    FIELD(GPO1, MIO_1, 1, 1)
-> +    FIELD(GPO1, MIO_0, 0, 1)
-> +REG32(GPO2, 0x18)
-> +    FIELD(GPO2, DAP_RPU_WAKE_ACK, 9, 1)
-> +    FIELD(GPO2, DAP_FP_WAKE_ACK, 8, 1)
-> +    FIELD(GPO2, PS_STATUS, 7, 1)
-> +    FIELD(GPO2, PCAP_EN, 6, 1)
-> +REG32(GPO3, 0x1c)
-> +    FIELD(GPO3, PL_GPO_31, 31, 1)
-> +    FIELD(GPO3, PL_GPO_30, 30, 1)
-> +    FIELD(GPO3, PL_GPO_29, 29, 1)
-> +    FIELD(GPO3, PL_GPO_28, 28, 1)
-> +    FIELD(GPO3, PL_GPO_27, 27, 1)
-> +    FIELD(GPO3, PL_GPO_26, 26, 1)
-> +    FIELD(GPO3, PL_GPO_25, 25, 1)
-> +    FIELD(GPO3, PL_GPO_24, 24, 1)
-> +    FIELD(GPO3, PL_GPO_23, 23, 1)
-> +    FIELD(GPO3, PL_GPO_22, 22, 1)
-> +    FIELD(GPO3, PL_GPO_21, 21, 1)
-> +    FIELD(GPO3, PL_GPO_20, 20, 1)
-> +    FIELD(GPO3, PL_GPO_19, 19, 1)
-> +    FIELD(GPO3, PL_GPO_18, 18, 1)
-> +    FIELD(GPO3, PL_GPO_17, 17, 1)
-> +    FIELD(GPO3, PL_GPO_16, 16, 1)
-> +    FIELD(GPO3, PL_GPO_15, 15, 1)
-> +    FIELD(GPO3, PL_GPO_14, 14, 1)
-> +    FIELD(GPO3, PL_GPO_13, 13, 1)
-> +    FIELD(GPO3, PL_GPO_12, 12, 1)
-> +    FIELD(GPO3, PL_GPO_11, 11, 1)
-> +    FIELD(GPO3, PL_GPO_10, 10, 1)
-> +    FIELD(GPO3, PL_GPO_9, 9, 1)
-> +    FIELD(GPO3, PL_GPO_8, 8, 1)
-> +    FIELD(GPO3, PL_GPO_7, 7, 1)
-> +    FIELD(GPO3, PL_GPO_6, 6, 1)
-> +    FIELD(GPO3, PL_GPO_5, 5, 1)
-> +    FIELD(GPO3, PL_GPO_4, 4, 1)
-> +    FIELD(GPO3, PL_GPO_3, 3, 1)
-> +    FIELD(GPO3, PL_GPO_2, 2, 1)
-> +    FIELD(GPO3, PL_GPO_1, 1, 1)
-> +    FIELD(GPO3, PL_GPO_0, 0, 1)
-> +REG32(GPI0, 0x20)
-> +    FIELD(GPI0, RFT_ECC_FATAL_ERR, 31, 1)
-> +    FIELD(GPI0, RFT_VOTER_ERR, 30, 1)
-> +    FIELD(GPI0, RFT_COMPARE_ERR_23, 29, 1)
-> +    FIELD(GPI0, RFT_COMPARE_ERR_13, 28, 1)
-> +    FIELD(GPI0, RFT_COMPARE_ERR_12, 27, 1)
-> +    FIELD(GPI0, RFT_LS_MISMATCH_23_B, 26, 1)
-> +    FIELD(GPI0, RFT_LS_MISMATCH_13_B, 25, 1)
-> +    FIELD(GPI0, RFT_LS_MISMATCH_12_B, 24, 1)
-> +    FIELD(GPI0, RFT_MISMATCH_STATE, 23, 1)
-> +    FIELD(GPI0, RFT_MISMATCH_CPU, 22, 1)
-> +    FIELD(GPI0, RFT_SLEEP_RESET, 19, 1)
-> +    FIELD(GPI0, RFT_LS_MISMATCH_23_A, 18, 1)
-> +    FIELD(GPI0, RFT_LS_MISMATCH_13_A, 17, 1)
-> +    FIELD(GPI0, RFT_LS_MISMATCH_12_A, 16, 1)
-> +    FIELD(GPI0, NFT_ECC_FATAL_ERR, 15, 1)
-> +    FIELD(GPI0, NFT_VOTER_ERR, 14, 1)
-> +    FIELD(GPI0, NFT_COMPARE_ERR_23, 13, 1)
-> +    FIELD(GPI0, NFT_COMPARE_ERR_13, 12, 1)
-> +    FIELD(GPI0, NFT_COMPARE_ERR_12, 11, 1)
-> +    FIELD(GPI0, NFT_LS_MISMATCH_23_B, 10, 1)
-> +    FIELD(GPI0, NFT_LS_MISMATCH_13_B, 9, 1)
-> +    FIELD(GPI0, NFT_LS_MISMATCH_12_B, 8, 1)
-> +    FIELD(GPI0, NFT_MISMATCH_STATE, 7, 1)
-> +    FIELD(GPI0, NFT_MISMATCH_CPU, 6, 1)
-> +    FIELD(GPI0, NFT_SLEEP_RESET, 3, 1)
-> +    FIELD(GPI0, NFT_LS_MISMATCH_23_A, 2, 1)
-> +    FIELD(GPI0, NFT_LS_MISMATCH_13_A, 1, 1)
-> +    FIELD(GPI0, NFT_LS_MISMATCH_12_A, 0, 1)
-> +REG32(GPI1, 0x24)
-> +    FIELD(GPI1, APB_AIB_ERROR, 31, 1)
-> +    FIELD(GPI1, AXI_AIB_ERROR, 30, 1)
-> +    FIELD(GPI1, ERROR_2, 29, 1)
-> +    FIELD(GPI1, ERROR_1, 28, 1)
-> +    FIELD(GPI1, ACPU_3_DBG_PWRUP, 23, 1)
-> +    FIELD(GPI1, ACPU_2_DBG_PWRUP, 22, 1)
-> +    FIELD(GPI1, ACPU_1_DBG_PWRUP, 21, 1)
-> +    FIELD(GPI1, ACPU_0_DBG_PWRUP, 20, 1)
-> +    FIELD(GPI1, FPD_WAKE_GIC_PROXY, 16, 1)
-> +    FIELD(GPI1, MIO_WAKE_5, 15, 1)
-> +    FIELD(GPI1, MIO_WAKE_4, 14, 1)
-> +    FIELD(GPI1, MIO_WAKE_3, 13, 1)
-> +    FIELD(GPI1, MIO_WAKE_2, 12, 1)
-> +    FIELD(GPI1, MIO_WAKE_1, 11, 1)
-> +    FIELD(GPI1, MIO_WAKE_0, 10, 1)
-> +    FIELD(GPI1, DAP_RPU_WAKE, 9, 1)
-> +    FIELD(GPI1, DAP_FPD_WAKE, 8, 1)
-> +    FIELD(GPI1, USB_1_WAKE, 7, 1)
-> +    FIELD(GPI1, USB_0_WAKE, 6, 1)
-> +    FIELD(GPI1, R5_1_WAKE, 5, 1)
-> +    FIELD(GPI1, R5_0_WAKE, 4, 1)
-> +    FIELD(GPI1, ACPU_3_WAKE, 3, 1)
-> +    FIELD(GPI1, ACPU_2_WAKE, 2, 1)
-> +    FIELD(GPI1, ACPU_1_WAKE, 1, 1)
-> +    FIELD(GPI1, ACPU_0_WAKE, 0, 1)
-> +REG32(GPI2, 0x28)
-> +    FIELD(GPI2, VCC_INT_FP_DISCONNECT, 31, 1)
-> +    FIELD(GPI2, VCC_INT_DISCONNECT, 30, 1)
-> +    FIELD(GPI2, VCC_AUX_DISCONNECT, 29, 1)
-> +    FIELD(GPI2, DBG_ACPU3_RST_REQ, 23, 1)
-> +    FIELD(GPI2, DBG_ACPU2_RST_REQ, 22, 1)
-> +    FIELD(GPI2, DBG_ACPU1_RST_REQ, 21, 1)
-> +    FIELD(GPI2, DBG_ACPU0_RST_REQ, 20, 1)
-> +    FIELD(GPI2, CP_ACPU3_RST_REQ, 19, 1)
-> +    FIELD(GPI2, CP_ACPU2_RST_REQ, 18, 1)
-> +    FIELD(GPI2, CP_ACPU1_RST_REQ, 17, 1)
-> +    FIELD(GPI2, CP_ACPU0_RST_REQ, 16, 1)
-> +    FIELD(GPI2, DBG_RCPU1_RST_REQ, 9, 1)
-> +    FIELD(GPI2, DBG_RCPU0_RST_REQ, 8, 1)
-> +    FIELD(GPI2, R5_1_SLEEP, 5, 1)
-> +    FIELD(GPI2, R5_0_SLEEP, 4, 1)
-> +    FIELD(GPI2, ACPU_3_SLEEP, 3, 1)
-> +    FIELD(GPI2, ACPU_2_SLEEP, 2, 1)
-> +    FIELD(GPI2, ACPU_1_SLEEP, 1, 1)
-> +    FIELD(GPI2, ACPU_0_SLEEP, 0, 1)
-> +REG32(GPI3, 0x2c)
-> +    FIELD(GPI3, PL_GPI_31, 31, 1)
-> +    FIELD(GPI3, PL_GPI_30, 30, 1)
-> +    FIELD(GPI3, PL_GPI_29, 29, 1)
-> +    FIELD(GPI3, PL_GPI_28, 28, 1)
-> +    FIELD(GPI3, PL_GPI_27, 27, 1)
-> +    FIELD(GPI3, PL_GPI_26, 26, 1)
-> +    FIELD(GPI3, PL_GPI_25, 25, 1)
-> +    FIELD(GPI3, PL_GPI_24, 24, 1)
-> +    FIELD(GPI3, PL_GPI_23, 23, 1)
-> +    FIELD(GPI3, PL_GPI_22, 22, 1)
-> +    FIELD(GPI3, PL_GPI_21, 21, 1)
-> +    FIELD(GPI3, PL_GPI_20, 20, 1)
-> +    FIELD(GPI3, PL_GPI_19, 19, 1)
-> +    FIELD(GPI3, PL_GPI_18, 18, 1)
-> +    FIELD(GPI3, PL_GPI_17, 17, 1)
-> +    FIELD(GPI3, PL_GPI_16, 16, 1)
-> +    FIELD(GPI3, PL_GPI_15, 15, 1)
-> +    FIELD(GPI3, PL_GPI_14, 14, 1)
-> +    FIELD(GPI3, PL_GPI_13, 13, 1)
-> +    FIELD(GPI3, PL_GPI_12, 12, 1)
-> +    FIELD(GPI3, PL_GPI_11, 11, 1)
-> +    FIELD(GPI3, PL_GPI_10, 10, 1)
-> +    FIELD(GPI3, PL_GPI_9, 9, 1)
-> +    FIELD(GPI3, PL_GPI_8, 8, 1)
-> +    FIELD(GPI3, PL_GPI_7, 7, 1)
-> +    FIELD(GPI3, PL_GPI_6, 6, 1)
-> +    FIELD(GPI3, PL_GPI_5, 5, 1)
-> +    FIELD(GPI3, PL_GPI_4, 4, 1)
-> +    FIELD(GPI3, PL_GPI_3, 3, 1)
-> +    FIELD(GPI3, PL_GPI_2, 2, 1)
-> +    FIELD(GPI3, PL_GPI_1, 1, 1)
-> +    FIELD(GPI3, PL_GPI_0, 0, 1)
-> +REG32(IRQ_STATUS, 0x30)
-> +    FIELD(IRQ_STATUS, CSU_PMU_SEC_LOCK, 31, 1)
-> +    FIELD(IRQ_STATUS, INV_ADDR, 29, 1)
-> +    FIELD(IRQ_STATUS, PWR_DN_REQ, 28, 1)
-> +    FIELD(IRQ_STATUS, PWR_UP_REQ, 27, 1)
-> +    FIELD(IRQ_STATUS, SW_RST_REQ, 26, 1)
-> +    FIELD(IRQ_STATUS, HW_RST_REQ, 25, 1)
-> +    FIELD(IRQ_STATUS, ISO_REQ, 24, 1)
-> +    FIELD(IRQ_STATUS, FW_REQ, 23, 1)
-> +    FIELD(IRQ_STATUS, IPI3, 22, 1)
-> +    FIELD(IRQ_STATUS, IPI2, 21, 1)
-> +    FIELD(IRQ_STATUS, IPI1, 20, 1)
-> +    FIELD(IRQ_STATUS, IPI0, 19, 1)
-> +    FIELD(IRQ_STATUS, RTC_ALARM, 18, 1)
-> +    FIELD(IRQ_STATUS, RTC_EVERY_SECOND, 17, 1)
-> +    FIELD(IRQ_STATUS, CORRECTABLE_ECC, 16, 1)
-> +    FIELD(IRQ_STATUS, GPI3, 14, 1)
-> +    FIELD(IRQ_STATUS, GPI2, 13, 1)
-> +    FIELD(IRQ_STATUS, GPI1, 12, 1)
-> +    FIELD(IRQ_STATUS, GPI0, 11, 1)
-> +    FIELD(IRQ_STATUS, PIT3, 6, 1)
-> +    FIELD(IRQ_STATUS, PIT2, 5, 1)
-> +    FIELD(IRQ_STATUS, PIT1, 4, 1)
-> +    FIELD(IRQ_STATUS, PIT0, 3, 1)
-> +REG32(IRQ_PENDING, 0x34)
-> +    FIELD(IRQ_PENDING, CSU_PMU_SEC_LOCK, 31, 1)
-> +    FIELD(IRQ_PENDING, INV_ADDR, 29, 1)
-> +    FIELD(IRQ_PENDING, PWR_DN_REQ, 28, 1)
-> +    FIELD(IRQ_PENDING, PWR_UP_REQ, 27, 1)
-> +    FIELD(IRQ_PENDING, SW_RST_REQ, 26, 1)
-> +    FIELD(IRQ_PENDING, HW_RST_REQ, 25, 1)
-> +    FIELD(IRQ_PENDING, ISO_REQ, 24, 1)
-> +    FIELD(IRQ_PENDING, FW_REQ, 23, 1)
-> +    FIELD(IRQ_PENDING, IPI3, 22, 1)
-> +    FIELD(IRQ_PENDING, IPI2, 21, 1)
-> +    FIELD(IRQ_PENDING, IPI1, 20, 1)
-> +    FIELD(IRQ_PENDING, IPI0, 19, 1)
-> +    FIELD(IRQ_PENDING, RTC_ALARM, 18, 1)
-> +    FIELD(IRQ_PENDING, RTC_EVERY_SECOND, 17, 1)
-> +    FIELD(IRQ_PENDING, CORRECTABLE_ECC, 16, 1)
-> +    FIELD(IRQ_PENDING, GPI3, 14, 1)
-> +    FIELD(IRQ_PENDING, GPI2, 13, 1)
-> +    FIELD(IRQ_PENDING, GPI1, 12, 1)
-> +    FIELD(IRQ_PENDING, GPI0, 11, 1)
-> +    FIELD(IRQ_PENDING, PIT3, 6, 1)
-> +    FIELD(IRQ_PENDING, PIT2, 5, 1)
-> +    FIELD(IRQ_PENDING, PIT1, 4, 1)
-> +    FIELD(IRQ_PENDING, PIT0, 3, 1)
-> +REG32(IRQ_ENABLE, 0x38)
-> +    FIELD(IRQ_ENABLE, CSU_PMU_SEC_LOCK, 31, 1)
-> +    FIELD(IRQ_ENABLE, INV_ADDR, 29, 1)
-> +    FIELD(IRQ_ENABLE, PWR_DN_REQ, 28, 1)
-> +    FIELD(IRQ_ENABLE, PWR_UP_REQ, 27, 1)
-> +    FIELD(IRQ_ENABLE, SW_RST_REQ, 26, 1)
-> +    FIELD(IRQ_ENABLE, HW_RST_REQ, 25, 1)
-> +    FIELD(IRQ_ENABLE, ISO_REQ, 24, 1)
-> +    FIELD(IRQ_ENABLE, FW_REQ, 23, 1)
-> +    FIELD(IRQ_ENABLE, IPI3, 22, 1)
-> +    FIELD(IRQ_ENABLE, IPI2, 21, 1)
-> +    FIELD(IRQ_ENABLE, IPI1, 20, 1)
-> +    FIELD(IRQ_ENABLE, IPI0, 19, 1)
-> +    FIELD(IRQ_ENABLE, RTC_ALARM, 18, 1)
-> +    FIELD(IRQ_ENABLE, RTC_EVERY_SECOND, 17, 1)
-> +    FIELD(IRQ_ENABLE, CORRECTABLE_ECC, 16, 1)
-> +    FIELD(IRQ_ENABLE, GPI3, 14, 1)
-> +    FIELD(IRQ_ENABLE, GPI2, 13, 1)
-> +    FIELD(IRQ_ENABLE, GPI1, 12, 1)
-> +    FIELD(IRQ_ENABLE, GPI0, 11, 1)
-> +    FIELD(IRQ_ENABLE, PIT3, 6, 1)
-> +    FIELD(IRQ_ENABLE, PIT2, 5, 1)
-> +    FIELD(IRQ_ENABLE, PIT1, 4, 1)
-> +    FIELD(IRQ_ENABLE, PIT0, 3, 1)
-> +REG32(IRQ_ACK, 0x3c)
-> +    FIELD(IRQ_ACK, CSU_PMU_SEC_LOCK, 31, 1)
-> +    FIELD(IRQ_ACK, INV_ADDR, 29, 1)
-> +    FIELD(IRQ_ACK, PWR_DN_REQ, 28, 1)
-> +    FIELD(IRQ_ACK, PWR_UP_REQ, 27, 1)
-> +    FIELD(IRQ_ACK, SW_RST_REQ, 26, 1)
-> +    FIELD(IRQ_ACK, HW_RST_REQ, 25, 1)
-> +    FIELD(IRQ_ACK, ISO_REQ, 24, 1)
-> +    FIELD(IRQ_ACK, FW_REQ, 23, 1)
-> +    FIELD(IRQ_ACK, IPI3, 22, 1)
-> +    FIELD(IRQ_ACK, IPI2, 21, 1)
-> +    FIELD(IRQ_ACK, IPI1, 20, 1)
-> +    FIELD(IRQ_ACK, IPI0, 19, 1)
-> +    FIELD(IRQ_ACK, RTC_ALARM, 18, 1)
-> +    FIELD(IRQ_ACK, RTC_EVERY_SECOND, 17, 1)
-> +    FIELD(IRQ_ACK, CORRECTABLE_ECC, 16, 1)
-> +    FIELD(IRQ_ACK, GPI3, 14, 1)
-> +    FIELD(IRQ_ACK, GPI2, 13, 1)
-> +    FIELD(IRQ_ACK, GPI1, 12, 1)
-> +    FIELD(IRQ_ACK, GPI0, 11, 1)
-> +    FIELD(IRQ_ACK, PIT3, 6, 1)
-> +    FIELD(IRQ_ACK, PIT2, 5, 1)
-> +    FIELD(IRQ_ACK, PIT1, 4, 1)
-> +    FIELD(IRQ_ACK, PIT0, 3, 1)
-> +REG32(PIT0_PRELOAD, 0x40)
-> +REG32(PIT0_COUNTER, 0x44)
-> +REG32(PIT0_CONTROL, 0x48)
-> +    FIELD(PIT0_CONTROL, PRELOAD, 1, 1)
-> +    FIELD(PIT0_CONTROL, EN, 0, 1)
-> +REG32(PIT1_PRELOAD, 0x50)
-> +REG32(PIT1_COUNTER, 0x54)
-> +REG32(PIT1_CONTROL, 0x58)
-> +    FIELD(PIT1_CONTROL, PRELOAD, 1, 1)
-> +    FIELD(PIT1_CONTROL, EN, 0, 1)
-> +REG32(PIT2_PRELOAD, 0x60)
-> +REG32(PIT2_COUNTER, 0x64)
-> +REG32(PIT2_CONTROL, 0x68)
-> +    FIELD(PIT2_CONTROL, PRELOAD, 1, 1)
-> +    FIELD(PIT2_CONTROL, EN, 0, 1)
-> +REG32(PIT3_PRELOAD, 0x70)
-> +REG32(PIT3_COUNTER, 0x74)
-> +REG32(PIT3_CONTROL, 0x78)
-> +    FIELD(PIT3_CONTROL, PRELOAD, 1, 1)
-> +    FIELD(PIT3_CONTROL, EN, 0, 1)
+> +    object_initialize(&s->intc, sizeof(s->intc), TYPE_XLNX_PMU_IO_INTC);
+> +    qdev_set_parent_bus(DEVICE(&s->intc), sysbus_get_default());
+>  }
+>  
+>  static void xlnx_zynqmp_pmu_soc_realize(DeviceState *dev, Error **errp)
+> @@ -80,6 +89,21 @@ static void xlnx_zynqmp_pmu_soc_realize(DeviceState *dev, Error **errp)
+>          error_propagate(errp, err);
+>          return;
+>      }
 > +
-> +static void xlnx_pmu_io_irq_update(XlnxPMUIOIntc *s)
-> +{
-> +    bool irq_out;
-> +
-> +    s->regs[R_IRQ_PENDING] = s->regs[R_IRQ_STATUS] & s->regs[R_IRQ_ENABLE];
-> +    irq_out = !!s->regs[R_IRQ_PENDING];
-> +
-> +    DB_PRINT("Setting IRQ output = %d\n", irq_out);
-> +
-> +    qemu_set_irq(s->parent_irq, irq_out);
-> +}
-> +
-> +static void xlnx_pmu_io_irq_enable_postw(RegisterInfo *reg, uint64_t val64)
-> +{
-> +    XlnxPMUIOIntc *s = XLNX_PMU_IO_INTC(reg->opaque);
-> +
-> +    xlnx_pmu_io_irq_update(s);
-> +}
-> +
-> +static void xlnx_pmu_io_irq_ack_postw(RegisterInfo *reg, uint64_t val64)
-> +{
-> +    XlnxPMUIOIntc *s = XLNX_PMU_IO_INTC(reg->opaque);
-> +    uint32_t val = val64;
-> +
-> +    /* Only clear */
-> +    val &= s->regs[R_IRQ_STATUS];
-> +    s->regs[R_IRQ_STATUS] ^= val;
-> +
-> +    /* Active level triggered interrupts stay high.  */
-> +    s->regs[R_IRQ_STATUS] |= s->irq_raw & ~s->cfg.level_edge;
-> +
-> +    xlnx_pmu_io_irq_update(s);
-> +}
-> +
-> +static const RegisterAccessInfo xlnx_pmu_io_intc_regs_info[] = {
-> +    {   .name = "IRQ_MODE",  .addr = A_IRQ_MODE,
-> +        .rsvd = 0xffffffff,
-> +    },{ .name = "GPO0",  .addr = A_GPO0,
-> +    },{ .name = "GPO1",  .addr = A_GPO1,
-> +        .rsvd = 0xffffffc0,
-> +    },{ .name = "GPO2",  .addr = A_GPO2,
-> +        .rsvd = 0xfffffc3f,
-> +    },{ .name = "GPO3",  .addr = A_GPO3,
-> +    },{ .name = "GPI0",  .addr = A_GPI0,
-> +        .rsvd = 0x300030,
-> +        .ro = 0xffcfffcf,
-> +    },{ .name = "GPI1",  .addr = A_GPI1,
-> +        .rsvd = 0xf0e0000,
-> +        .ro = 0xf0f1ffff,
-> +    },{ .name = "GPI2",  .addr = A_GPI2,
-> +        .rsvd = 0x1f00fcc0,
-> +        .ro = 0xe0ff033f,
-> +    },{ .name = "GPI3",  .addr = A_GPI3,
-> +        .ro = 0xffffffff,
-> +    },{ .name = "IRQ_STATUS",  .addr = A_IRQ_STATUS,
-> +        .rsvd = 0x40008787,
-> +        .ro = 0xbfff7878,
-> +    },{ .name = "IRQ_PENDING",  .addr = A_IRQ_PENDING,
-> +        .rsvd = 0x40008787,
-> +        .ro = 0xdfff7ff8,
-> +    },{ .name = "IRQ_ENABLE",  .addr = A_IRQ_ENABLE,
-> +        .rsvd = 0x40008787,
-> +        .ro = 0x7800,
-> +        .post_write = xlnx_pmu_io_irq_enable_postw,
-> +    },{ .name = "IRQ_ACK",  .addr = A_IRQ_ACK,
-> +        .rsvd = 0x40008787,
-> +        .post_write = xlnx_pmu_io_irq_ack_postw,
-> +    },{ .name = "PIT0_PRELOAD",  .addr = A_PIT0_PRELOAD,
-> +        .ro = 0xffffffff,
-> +    },{ .name = "PIT0_COUNTER",  .addr = A_PIT0_COUNTER,
-> +        .ro = 0xffffffff,
-> +    },{ .name = "PIT0_CONTROL",  .addr = A_PIT0_CONTROL,
-> +        .rsvd = 0xfffffffc,
-> +    },{ .name = "PIT1_PRELOAD",  .addr = A_PIT1_PRELOAD,
-> +        .ro = 0xffffffff,
-> +    },{ .name = "PIT1_COUNTER",  .addr = A_PIT1_COUNTER,
-> +        .ro = 0xffffffff,
-> +    },{ .name = "PIT1_CONTROL",  .addr = A_PIT1_CONTROL,
-> +        .rsvd = 0xfffffffc,
-> +    },{ .name = "PIT2_PRELOAD",  .addr = A_PIT2_PRELOAD,
-> +        .ro = 0xffffffff,
-> +    },{ .name = "PIT2_COUNTER",  .addr = A_PIT2_COUNTER,
-> +        .ro = 0xffffffff,
-> +    },{ .name = "PIT2_CONTROL",  .addr = A_PIT2_CONTROL,
-> +        .rsvd = 0xfffffffc,
-> +    },{ .name = "PIT3_PRELOAD",  .addr = A_PIT3_PRELOAD,
-> +        .ro = 0xffffffff,
-> +    },{ .name = "PIT3_COUNTER",  .addr = A_PIT3_COUNTER,
-> +        .ro = 0xffffffff,
-> +    },{ .name = "PIT3_CONTROL",  .addr = A_PIT3_CONTROL,
-> +        .rsvd = 0xfffffffc,
+> +    object_property_set_uint(OBJECT(&s->intc), 0x10, "intc-intr-size",
+> +                             &error_abort);
+> +    object_property_set_uint(OBJECT(&s->intc), 0x0, "intc-level-edge",
+> +                             &error_abort);
+> +    object_property_set_uint(OBJECT(&s->intc), 0xffff, "intc-positive",
+> +                             &error_abort);
+> +    object_property_set_bool(OBJECT(&s->intc), true, "realized", &err);
+> +    if (err) {
+> +        error_propagate(errp, err);
+> +        return;
 > +    }
-> +};
-> +
-> +static void irq_handler(void *opaque, int irq, int level)
-> +{
-> +    XlnxPMUIOIntc *s = XLNX_PMU_IO_INTC(opaque);
-> +    uint32_t mask = 1 << irq;
-> +    uint32_t prev = s->irq_raw;
-> +    uint32_t temp;
-> +
-> +    s->irq_raw &= ~mask;
-> +    s->irq_raw |= (!!level) << irq;
-> +
-> +    /* Turn active-low into active-high.  */
-> +    s->irq_raw ^= (~s->cfg.positive);
-> +    s->irq_raw &= mask;
-> +
-> +    if (s->cfg.level_edge & mask) {
-> +        /* Edge triggered.  */
-> +        temp = (prev ^ s->irq_raw) & s->irq_raw;
-> +    } else {
-> +        /* Level triggered.  */
-> +        temp = s->irq_raw;
-> +    }
-> +    s->regs[R_IRQ_STATUS] |= temp;
-> +
-> +    xlnx_pmu_io_irq_update(s);
-> +}
-> +
-> +static void xlnx_pmu_io_intc_reset(DeviceState *dev)
-> +{
-> +    XlnxPMUIOIntc *s = XLNX_PMU_IO_INTC(dev);
-> +    unsigned int i;
-> +
-> +    for (i = 0; i < ARRAY_SIZE(s->regs_info); ++i) {
-> +        register_reset(&s->regs_info[i]);
-> +    }
-> +
-> +    xlnx_pmu_io_irq_update(s);
-> +}
-> +
-> +static const MemoryRegionOps xlnx_pmu_io_intc_ops = {
-> +    .read = register_read_memory,
-> +    .write = register_write_memory,
-> +    .endianness = DEVICE_LITTLE_ENDIAN,
-> +    .valid = {
-> +        .min_access_size = 4,
-> +        .max_access_size = 4,
-> +    },
-> +};
-> +
-> +static Property xlnx_pmu_io_intc_properties[] = {
-> +    DEFINE_PROP_UINT32("intc-intr-size", XlnxPMUIOIntc, cfg.intr_size, 0),
-> +    DEFINE_PROP_UINT32("intc-level-edge", XlnxPMUIOIntc, cfg.level_edge, 0),
-> +    DEFINE_PROP_UINT32("intc-positive", XlnxPMUIOIntc, cfg.positive, 0),
-> +    DEFINE_PROP_END_OF_LIST(),
-> +};
-> +
-> +static void xlnx_pmu_io_intc_realize(DeviceState *dev, Error **errp)
-> +{
-> +    XlnxPMUIOIntc *s = XLNX_PMU_IO_INTC(dev);
-> +
-> +    /* Internal interrupts are edge triggered?  */
-
-Is this an unresolved question?
-
-> +    s->cfg.level_edge <<= 16;
-> +    s->cfg.level_edge |= 0xffff;
-> +
-> +    /* Internal interrupts are postitive.  */
-
-positive
-
-> +    s->cfg.positive <<= 16;
-> +    s->cfg.positive |= 0xffff;
-> +
-> +    /* Max 16 external interrupts.  */
-> +    assert(s->cfg.intr_size <= 16);
-> +
-> +    qdev_init_gpio_in(dev, irq_handler, 16 + s->cfg.intr_size);
-> +}
-> +
-> +static void xlnx_pmu_io_intc_init(Object *obj)
-> +{
-> +    XlnxPMUIOIntc *s = XLNX_PMU_IO_INTC(obj);
-> +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-> +    RegisterInfoArray *reg_array;
-> +
-> +    memory_region_init(&s->iomem, obj, TYPE_XLNX_PMU_IO_INTC,
-> +                       XlnxPMUIOIntc_R_MAX * 4);
-> +    reg_array =
-> +        register_init_block32(DEVICE(obj), xlnx_pmu_io_intc_regs_info,
-> +                              ARRAY_SIZE(xlnx_pmu_io_intc_regs_info),
-> +                              s->regs_info, s->regs,
-> +                              &xlnx_pmu_io_intc_ops,
-> +                              XLNX_PMU_IO_INTC_ERR_DEBUG,
-> +                              XlnxPMUIOIntc_R_MAX * 4);
-> +    memory_region_add_subregion(&s->iomem,
-> +                                0x0,
-> +                                &reg_array->mem);
-> +    sysbus_init_mmio(sbd, &s->iomem);
-> +
-> +    sysbus_init_irq(sbd, &s->parent_irq);
-> +}
-> +
-> +static const VMStateDescription vmstate_xlnx_pmu_io_intc = {
-> +    .name = TYPE_XLNX_PMU_IO_INTC,
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .fields = (VMStateField[]) {
-> +        VMSTATE_UINT32_ARRAY(regs, XlnxPMUIOIntc, XlnxPMUIOIntc_R_MAX),
-> +        VMSTATE_END_OF_LIST(),
-> +    }
-> +};
-> +
-> +static void xlnx_pmu_io_intc_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +
-> +    dc->reset = xlnx_pmu_io_intc_reset;
-> +    dc->realize = xlnx_pmu_io_intc_realize;
-> +    dc->vmsd = &vmstate_xlnx_pmu_io_intc;
-> +    dc->props = xlnx_pmu_io_intc_properties;
-> +}
-> +
-> +static const TypeInfo xlnx_pmu_io_intc_info = {
-> +    .name          = TYPE_XLNX_PMU_IO_INTC,
-> +    .parent        = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size = sizeof(XlnxPMUIOIntc),
-> +    .class_init    = xlnx_pmu_io_intc_class_init,
-> +    .instance_init = xlnx_pmu_io_intc_init,
-> +};
-> +
-> +static void xlnx_pmu_io_intc_register_types(void)
-> +{
-> +    type_register_static(&xlnx_pmu_io_intc_info);
-> +}
-> +
-> +type_init(xlnx_pmu_io_intc_register_types)
-> diff --git a/hw/intc/Makefile.objs b/hw/intc/Makefile.objs
-> index ae358569a1..211655023e 100644
-> --- a/hw/intc/Makefile.objs
-> +++ b/hw/intc/Makefile.objs
-> @@ -3,6 +3,7 @@ common-obj-$(CONFIG_I8259) += i8259_common.o i8259.o
->  common-obj-$(CONFIG_PL190) += pl190.o
->  common-obj-$(CONFIG_PUV3) += puv3_intc.o
->  common-obj-$(CONFIG_XILINX) += xilinx_intc.o
-> +common-obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-pmu-iomod-intc.o
-
-If you prefer to use CONFIG_XLNX_ZYNQMP_ARM for ARM, why not using
-CONFIG_XLNX_ZYNQMP_MB (or similar) here?
-
->  common-obj-$(CONFIG_ETRAXFS) += etraxfs_pic.o
->  common-obj-$(CONFIG_IMX) += imx_avic.o
->  common-obj-$(CONFIG_LM32) += lm32_pic.o
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->intc), 0, XLNX_ZYNQMP_PMU_INTC_ADDR);
+> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->intc), 0,
+> +                       qdev_get_gpio_in(DEVICE(&s->cpu), MB_CPU_IRQ));
+>  }
+>  
+>  static void xlnx_zynqmp_pmu_soc_class_init(ObjectClass *oc, void *data)
 > 

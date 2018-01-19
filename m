@@ -1,81 +1,82 @@
-Received: by 10.28.71.27 with SMTP id u27csp845458wma;
-        Fri, 19 Jan 2018 07:05:38 -0800 (PST)
-X-Google-Smtp-Source: ACJfBouFLHGBIChfWbsoj3srlepfvrA6lJqMl46qXGwHllz66E2u8kFPkw8i1P01RASKIsPdU1Jh
-X-Received: by 10.13.237.69 with SMTP id w66mr9985743ywe.313.1516374338476;
-        Fri, 19 Jan 2018 07:05:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516374338; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp846875wma;
+        Fri, 19 Jan 2018 07:06:47 -0800 (PST)
+X-Google-Smtp-Source: ACJfBouCW8L1slLO2BHFkMAdtZX9Vr0vRa1u/hjnEfGmNAzD0ggJaaHwVTz/rtaoWtcvz7g+/oVq
+X-Received: by 10.37.217.144 with SMTP id q138mr42688857ybg.519.1516374407169;
+        Fri, 19 Jan 2018 07:06:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516374407; cv=none;
         d=google.com; s=arc-20160816;
-        b=PDuYQd7yfY0h/Tdk9wAa+Jx3jLhqiSWz1JtVFAdjXoNMOoTzG3rBXdiS7qp9jBf5+D
-         e0F5zNcwOvHvW6SF5xgvthwDGit6k74waxZ9noboawQWpE4h8K3d6It86AWwHqd/sR5m
-         SUPxsQAsxMKJPvp7EmnSgQEEb8pgibrTnVJyfLvCXll4Y5fuUC22AwTvxlIADBL6t/hm
-         s7y32EWmPP1YEA3wq+lQV+fzLJWdqWsVkjRzpb3vb3o/IonHK6t8Rwm8xkkEyrcx3Pmr
-         uUeBMFMzRXZy6ATKCSeMCdvuqhr/A8/g+W/AdShDLVoaV9MA+cDtslLAETaETNCgk02j
-         9HmQ==
+        b=OSxodHFENXhA0GIK7pEAfDt9kGGyyWqw7z1W7fd57ccOYD1tzo6D/1m2mid3frm48K
+         YHv/brAgf+/hnLseQh7c7qTF+Mn9xfJp24iNtdm6/drsr01kB+VVoisEmd5W0J1OMw/V
+         Hz6aXSRsEQ+oWTGQZVv93252gPxVPee9UNFsZtZFlmLCjIxgwztqno2zqz3OSx45KPIS
+         EYYjLZtBh/jNOxv1Tc2956QG/a6fn2mDlEMdsa6s1gbPhtwNt244tAfttjd/PBvGLejN
+         PLYYRgo8v7H6ky21CkI9Xwt2S6g8rbvobqhu0Bp2i8fFpxshiOiyuCLoUe4hpSF0L3o0
+         OL9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=PpSAJN/ZCJtWbeBvWnCQZRuIgWmBHZix92YWN5nXIsw=;
-        b=QxNIKs3Nw4nY71u17TDl71i6pfrkxfiDHSDRP4hISyyW58HqEB9vUmDnJMbfeVymWt
-         cdSMZaYlrSqdjdQ9AyhKlUX+86gY1rAeTHwqnZxTqgW2zFTaOVS1dvGl1djNM4n7dG5I
-         0E1Vwzp2M9xVHXGgSragDD+gP6WtuZvctNDl1s4KGDst8IHgj7dvXFQ+2pT1Gz/x8oWf
-         cxkxoV+wwdMehL8HjIMCIo61SCjWrjilSKU9ClXw0hrApE61miYW7kqnu70+ok0sDRid
-         z7FmND5DlTM+f9iNw5CFvsxrbfafetz/t81ylkeZJkifj+k+yo7xlQJZ3RD2/xkGKqq/
-         58dw==
+        bh=HGbO2QFoXOeZtTcLdOsxf9eidR3zm/sgpmtMxEJmFE0=;
+        b=YcMIC2oMNgb4ghICYLu4udLJZrOvllK1+r+DGsLzDYpiOkVJl20JVm5s8OtvaQY+Og
+         HnzgaxRGwYip5ObyUC8KUWVCW2kMqGT97M9IJ/5ks38pclZFzD8dlTcF9v4WtgNUks2Q
+         POrY2MXpJI7kcl1mNRzuREfietsUC4ItlQLZP1Jge1zRLh87pK6H5yT8Bmvi3I3p8up5
+         Q7At03YbTwi74SxmfLpCEUOPUmt62eNQ05NjG/TBvMG21hzgUNxrkN+iSt3WGOUJQyxL
+         mVb0FTRKooVAXv1Ff21yLNkWdUMQdq6uQDmyAbciFQkag9Z0zUJMiaaZ3QaIb5GnWRFA
+         lj9A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u85si2314554ywg.146.2018.01.19.07.05.38
+        by mx.google.com with ESMTPS id h2si767315ywa.668.2018.01.19.07.06.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 19 Jan 2018 07:05:38 -0800 (PST)
+        Fri, 19 Jan 2018 07:06:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54205 helo=lists.gnu.org)
+Received: from localhost ([::1]:54231 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ecYEc-0000RB-0P
-	for alex.bennee@linaro.org; Fri, 19 Jan 2018 10:05:38 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48969)
+	id 1ecYFi-0001Rc-I7
+	for alex.bennee@linaro.org; Fri, 19 Jan 2018 10:06:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49764)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1ecYDB-0007hU-V4
-	for qemu-arm@nongnu.org; Fri, 19 Jan 2018 10:04:11 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1ecYFQ-0001Oa-Rr
+	for qemu-arm@nongnu.org; Fri, 19 Jan 2018 10:06:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1ecYDA-0008S7-Tg
-	for qemu-arm@nongnu.org; Fri, 19 Jan 2018 10:04:09 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:53184)
+	(envelope-from <eric.auger@redhat.com>) id 1ecYFO-0002lC-MM
+	for qemu-arm@nongnu.org; Fri, 19 Jan 2018 10:06:28 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:49580)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1ecYDA-0008Re-LC; Fri, 19 Jan 2018 10:04:08 -0500
+	id 1ecYFO-0002iC-DG; Fri, 19 Jan 2018 10:06:26 -0500
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
 	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id AC4F44B60;
-	Fri, 19 Jan 2018 15:04:07 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7C93E80478;
+	Fri, 19 Jan 2018 15:06:25 +0000 (UTC)
 Received: from AMD.redhat.com (ovpn-116-129.ams2.redhat.com [10.36.116.129])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B8A3D5C1B7;
-	Fri, 19 Jan 2018 15:03:42 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id F27635C1B7;
+	Fri, 19 Jan 2018 15:06:00 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
 	alex.williamson@redhat.com, mst@redhat.com, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org, jean-philippe.brucker@arm.com
-Date: Fri, 19 Jan 2018 14:49:07 +0000
-Message-Id: <1516373355-305-15-git-send-email-eric.auger@redhat.com>
+Date: Fri, 19 Jan 2018 14:49:11 +0000
+Message-Id: <1516373355-305-19-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1516373355-305-1-git-send-email-eric.auger@redhat.com>
 References: <1516373355-305-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Fri, 19 Jan 2018 15:04:07 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.28]);
+	Fri, 19 Jan 2018 15:06:25 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v5 14/22] virtio-iommu: Add an msi_bypass property
+Subject: [Qemu-arm] [RFC v5 18/22] hw/arm/virt-acpi-build: Add virtio-iommu
+ node in IORT table
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,118 +93,215 @@ Cc: kevin.tian@intel.com, marc.zyngier@arm.com, tn@semihalf.com,
 	linuc.decode@gmail.com, bharat.bhushan@nxp.com, christoffer.dall@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8C4idn45dDls
+X-TUID: EwF9nBkkoeB8
 
-In case the msi_bypass property is set, it means we need
-to register the IOAPIC MSI window as a reserved region:
-0xFEE00000 - 0xFEEFFFFF.
+This patch builds the virtio-iommu node in the ACPI IORT table.
+The dt node creation function fills the information used by
+the IORT table generation function (base address, base irq,
+type of the smmu).
+
+The RID space of the root complex, which spans 0x0-0x10000
+maps to streamid space 0x0-0x10000 in smmuv3, which in turn
+maps to deviceid space 0x0-0x10000 in the ITS group.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
 ---
----
- hw/virtio/virtio-iommu.c         | 52 ++++++++++++++++++++++++++++++++++++++++
- include/hw/virtio/virtio-iommu.h |  1 +
- 2 files changed, 53 insertions(+)
+ hw/arm/virt-acpi-build.c    | 55 +++++++++++++++++++++++++++++++++++++++------
+ hw/arm/virt.c               |  5 +++++
+ include/hw/acpi/acpi-defs.h | 21 ++++++++++++++++-
+ include/hw/arm/virt.h       | 13 +++++++++++
+ 4 files changed, 86 insertions(+), 8 deletions(-)
 
-diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
-index 0e712b3..306a633 100644
---- a/hw/virtio/virtio-iommu.c
-+++ b/hw/virtio/virtio-iommu.c
-@@ -41,6 +41,9 @@
- #define VIOMMU_DEFAULT_QUEUE_SIZE 256
- #define VIOMMU_PROBE_SIZE 512
- 
-+#define IOAPIC_RANGE_START      (0xfee00000)
-+#define IOAPIC_RANGE_SIZE       (0x100000)
-+
- #define SUPPORTED_PROBE_PROPERTIES (\
-     VIRTIO_IOMMU_PROBE_T_NONE | \
-     VIRTIO_IOMMU_PROBE_T_RESV_MEM)
-@@ -103,6 +106,25 @@ static void virtio_iommu_detach_endpoint_from_domain(viommu_endpoint *ep)
-     ep->domain = NULL;
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index f7fa795..371edde 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -42,6 +42,7 @@
+ #include "hw/acpi/aml-build.h"
+ #include "hw/pci/pcie_host.h"
+ #include "hw/pci/pci.h"
++#include "hw/virtio/virtio-iommu.h"
+ #include "hw/arm/virt.h"
+ #include "sysemu/numa.h"
+ #include "kvm_arm.h"
+@@ -393,18 +394,26 @@ build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned xsdt_tbl_offset)
  }
  
-+static void virtio_iommu_register_resv_region(viommu_endpoint *ep,
-+                                              uint8_t subtype,
-+                                              uint64_t addr, uint64_t size)
-+{
-+    viommu_interval *interval;
-+    struct virtio_iommu_probe_resv_mem *reg;
-+
-+    interval = g_malloc0(sizeof(*interval));
-+    interval->low = addr;
-+    interval->high = addr + size - 1;
-+
-+    reg = g_malloc0(sizeof(*reg));
-+    reg->subtype = subtype;
-+    reg->addr = cpu_to_le64(addr);
-+    reg->size = cpu_to_le64(size);
-+
-+    g_tree_insert(ep->reserved_regions, interval, reg);
-+}
-+
- static viommu_endpoint *virtio_iommu_get_endpoint(VirtIOIOMMU *s,
-                                                   uint32_t ep_id)
+ static void
+-build_iort(GArray *table_data, BIOSLinker *linker)
++build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
  {
-@@ -120,6 +142,12 @@ static viommu_endpoint *virtio_iommu_get_endpoint(VirtIOIOMMU *s,
-     ep->reserved_regions = g_tree_new_full((GCompareDataFunc)interval_cmp,
-                                             NULL, (GDestroyNotify)g_free,
-                                             (GDestroyNotify)g_free);
-+    if (s->msi_bypass) {
-+        virtio_iommu_register_resv_region(ep, VIRTIO_IOMMU_RESV_MEM_T_MSI,
-+                                          IOAPIC_RANGE_START,
-+                                          IOAPIC_RANGE_SIZE);
+-    int iort_start = table_data->len;
++    int nb_nodes, iort_start = table_data->len;
+     AcpiIortIdMapping *idmap;
+     AcpiIortItsGroup *its;
+     AcpiIortTable *iort;
+-    size_t node_size, iort_length;
++    AcpiIortPVIommu *iommu;
++    size_t node_size, iort_length, iommu_offset = 0;
+     AcpiIortRC *rc;
+ 
+     iort = acpi_data_push(table_data, sizeof(*iort));
+ 
++    if (vms->iommu_info.type) {
++        nb_nodes = 3; /* RC, ITS, IOMMU */
++    } else {
++        nb_nodes = 2; /* RC, ITS */
 +    }
 +
-     return ep;
+     iort_length = sizeof(*iort);
++    iort->node_count = cpu_to_le32(nb_nodes);
+     iort->node_count = cpu_to_le32(2); /* RC and ITS nodes */
+     iort->node_offset = cpu_to_le32(sizeof(*iort));
+ 
+@@ -418,6 +427,32 @@ build_iort(GArray *table_data, BIOSLinker *linker)
+     its->its_count = cpu_to_le32(1);
+     its->identifiers[0] = 0; /* MADT translation_id */
+ 
++    if (vms->iommu_info.type == VIRT_IOMMU_VIRTIO) {
++
++        /* Para-virtualized IOMMU node */
++        iommu_offset = cpu_to_le32(iort->node_offset + node_size);
++        node_size = sizeof(*iommu) + sizeof(*idmap);
++        iort_length += node_size;
++        iommu = acpi_data_push(table_data, node_size);
++
++        iommu->type = ACPI_IORT_NODE_PARAVIRT;
++        iommu->length = cpu_to_le16(node_size);
++        iommu->base_address = cpu_to_le64(vms->iommu_info.reg.base);
++        iommu->span = cpu_to_le64(vms->iommu_info.reg.size);
++        iommu->model = ACPI_IORT_NODE_PV_VIRTIO_IOMMU;
++        iommu->flags = ACPI_IORT_NODE_PV_CACHE_COHERENT;
++        iommu->interrupt_count = 1;
++        iommu->interrupts[0] = cpu_to_le64(vms->iommu_info.irq_base);
++
++        /* Identity RID mapping covering the whole input RID range */
++        idmap = &iommu->id_mapping_array[0];
++        idmap->input_base = 0;
++        idmap->id_count = cpu_to_le32(0xFFFF);
++        idmap->output_base = 0;
++        /* output IORT node is the ITS group node (the first node) */
++        idmap->output_reference = cpu_to_le32(iort->node_offset);
++    }
++
+     /* Root Complex Node */
+     node_size = sizeof(*rc) + sizeof(*idmap);
+     iort_length += node_size;
+@@ -438,10 +473,16 @@ build_iort(GArray *table_data, BIOSLinker *linker)
+     idmap->input_base = 0;
+     idmap->id_count = cpu_to_le32(0xFFFF);
+     idmap->output_base = 0;
+-    /* output IORT node is the ITS group node (the first node) */
+-    idmap->output_reference = cpu_to_le32(iort->node_offset);
+ 
+-    iort->length = cpu_to_le32(iort_length);
++    if (vms->iommu_info.type) {
++        /* output IORT node is the smmuv3 node */
++        idmap->output_reference = cpu_to_le32(iommu_offset);
++    } else {
++        /* output IORT node is the ITS group node (the first node) */
++        idmap->output_reference = cpu_to_le32(iort->node_offset);
++    }
++
++   iort->length = cpu_to_le32(iort_length);
+ 
+     build_header(linker, table_data, (void *)(table_data->data + iort_start),
+                  "IORT", table_data->len - iort_start, 0, NULL, NULL);
+@@ -786,7 +827,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+ 
+     if (its_class_name() && !vmc->no_its) {
+         acpi_add_table(table_offsets, tables_blob);
+-        build_iort(tables_blob, tables->linker);
++        build_iort(tables_blob, tables->linker, vms);
+     }
+ 
+     /* XSDT is pointed to by RSDP */
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 5584109..ad5d7ea 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1027,6 +1027,11 @@ static void virtio_iommu_notifier(Notifier *notifier, void *data)
+ 
+     object_property_set_bool(obj, false, "msi_bypass", &error_fatal);
+ 
++    vms->iommu_info.type = VIRT_IOMMU_VIRTIO;
++    vms->iommu_info.reg.base = vms->memmap[VIRT_IOMMU].base;
++    vms->iommu_info.reg.size = vms->memmap[VIRT_IOMMU].size;
++    vms->iommu_info.irq_base = vms->irqmap[VIRT_IOMMU];
++
+     qemu_fdt_setprop_cells(fdt, vms->pcie_host_nodename, "iommu-map",
+                            0x0, vms->iommu_phandle, 0x0, 0x10000);
  }
+diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+index 80c8099..dd8f806 100644
+--- a/include/hw/acpi/acpi-defs.h
++++ b/include/hw/acpi/acpi-defs.h
+@@ -673,7 +673,8 @@ enum {
+         ACPI_IORT_NODE_NAMED_COMPONENT = 0x01,
+         ACPI_IORT_NODE_PCI_ROOT_COMPLEX = 0x02,
+         ACPI_IORT_NODE_SMMU = 0x03,
+-        ACPI_IORT_NODE_SMMU_V3 = 0x04
++        ACPI_IORT_NODE_SMMU_V3 = 0x04,
++        ACPI_IORT_NODE_PARAVIRT = 0x05
+ };
  
-@@ -847,8 +875,32 @@ static void virtio_iommu_set_status(VirtIODevice *vdev, uint8_t status)
-     trace_virtio_iommu_device_status(status);
- }
+ struct AcpiIortIdMapping {
+@@ -700,6 +701,24 @@ struct AcpiIortItsGroup {
+ } QEMU_PACKED;
+ typedef struct AcpiIortItsGroup AcpiIortItsGroup;
  
-+static bool virtio_iommu_get_msi_bypass(Object *obj, Error **errp)
-+{
-+    VirtIOIOMMU *s = VIRTIO_IOMMU(obj);
++struct AcpiIortPVIommu {
++    ACPI_IORT_NODE_HEADER_DEF
++    uint64_t base_address;
++    uint64_t span;
++    uint32_t model;
++    uint32_t flags;
++    uint32_t interrupt_count;
++    uint64_t interrupts[1];
++    AcpiIortIdMapping id_mapping_array[0];
++} QEMU_PACKED;
++typedef struct AcpiIortPVIommu AcpiIortPVIommu;
 +
-+    return s->msi_bypass;
-+}
++enum {
++    ACPI_IORT_NODE_PV_VIRTIO_IOMMU = 0x00,
++};
 +
-+static void virtio_iommu_set_msi_bypass(Object *obj, bool value, Error **errp)
-+{
-+    VirtIOIOMMU *s = VIRTIO_IOMMU(obj);
++#define ACPI_IORT_NODE_PV_CACHE_COHERENT    (1 << 0)
 +
-+    s->msi_bypass = value;
-+}
-+
- static void virtio_iommu_instance_init(Object *obj)
- {
-+    VirtIOIOMMU *s = VIRTIO_IOMMU(obj);
-+
-+    object_property_add_bool(obj, "msi_bypass", virtio_iommu_get_msi_bypass,
-+                             virtio_iommu_set_msi_bypass, NULL);
-+    object_property_set_description(obj, "msi_bypass",
-+                                    "Indicates whether msis are bypassed by "
-+                                    "the IOMMU. Default is YES",
-+                                    NULL);
-+
-+    s->msi_bypass = true;
- }
+ struct AcpiIortRC {
+     ACPI_IORT_NODE_HEADER_DEF
+     AcpiIortMemoryAccess memory_properties;
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index a13b895..2e1e907 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -89,6 +89,18 @@ typedef struct {
+     bool claim_edge_triggered_timers;
+ } VirtMachineClass;
  
- static const VMStateDescription vmstate_virtio_iommu = {
-diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/virtio-iommu.h
-index 0b6b3f2..458b2a0 100644
---- a/include/hw/virtio/virtio-iommu.h
-+++ b/include/hw/virtio/virtio-iommu.h
-@@ -57,6 +57,7 @@ typedef struct VirtIOIOMMU {
-     GTree *domains;
-     QemuMutex mutex;
-     GTree *endpoints;
-+    bool msi_bypass;
- } VirtIOIOMMU;
- 
- #endif
++typedef enum VirtIOMMUType {
++    VIRT_IOMMU_NONE,
++    VIRT_IOMMU_SMMUV3,
++    VIRT_IOMMU_VIRTIO,
++} VirtIOMMUType;
++
++typedef struct VirtIOMMUInfo {
++    VirtIOMMUType type;
++    MemMapEntry reg;
++    int irq_base;
++} VirtIOMMUInfo;
++
+ typedef struct {
+     MachineState parent;
+     Notifier machine_done;
+@@ -98,6 +110,7 @@ typedef struct {
+     bool highmem;
+     bool its;
+     bool virt;
++    VirtIOMMUInfo iommu_info;
+     int32_t gic_version;
+     struct arm_boot_info bootinfo;
+     const MemMapEntry *memmap;
 -- 
 1.9.1
 

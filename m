@@ -1,82 +1,81 @@
-Received: by 10.28.71.27 with SMTP id u27csp831223wma;
-        Fri, 19 Jan 2018 06:53:50 -0800 (PST)
-X-Google-Smtp-Source: ACJfBotXpZ+Ohw8QiifAzxfQYt1mY0IMhcvzDwShMCubduGzqZeZfZYnUtvdzRj3i3a4HNbkLY/7
-X-Received: by 10.37.221.195 with SMTP id u186mr2300612ybg.154.1516373630539;
-        Fri, 19 Jan 2018 06:53:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516373630; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp832103wma;
+        Fri, 19 Jan 2018 06:54:38 -0800 (PST)
+X-Google-Smtp-Source: ACJfBov5lQumGdj/KmGxfwPwQhS1bchYL4Ce0wrNbRLTsTwpZD12Ci+xRmpkH79JbEsKpSFY6NVQ
+X-Received: by 10.37.189.1 with SMTP id f1mr28977159ybk.228.1516373678822;
+        Fri, 19 Jan 2018 06:54:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516373678; cv=none;
         d=google.com; s=arc-20160816;
-        b=RnNLEwWB8HP6I3A9hsK5BHDuuFc3LUtrHXQlDkK00mp8pgBRnrbfctH+QQ2kObHhgq
-         chlKch/RCE0+ki/cIVfoejP+9d0cup+o/jg4pEYv7R4RuQnaUaS5GMKm50Ax4HxD2ndk
-         BCWCwBIB7yBhea0E2nTo8ohZVp6NZ018UOmlnChV2Enxk0umhaqTA1DybQkpM7iL5ZBR
-         +eI56scBCQEF+OpZ7nRu/JFlNYeOGW3LpkHqlqnukZ9Qp+x4fkuKloHNQHxsQSIhEAw5
-         3OCcM8gOwf/MYhYsICGcsSZIOHlJSsD3ORpq3Uj8XtHD96rPnQVbAi+dA4mF0wEg8HU6
-         OMIQ==
+        b=SpvTjx/QlSsrk2TDYRsH+XZAt19pJuO8vhfUwRGKj73SP25nGQR7eBjRp43dLmVSPG
+         QNKhRt7NyiWl49Fky8KU6e6bQ+f+H9tjfXbPxLp/MdpQOMYX4khBkhQGYM3ARMVr1gek
+         PDzq0v51WDygxqci877XSVFFSO3gZuMS0/oQ2J32c2N8jyckif+HmmSZUGBE++mqLUrT
+         bRYTcImq8G0MzZQu/njad3nEfNrUQLjecZXtZ3hZrk8MdwK7AvTkJ/1xAc8bojSs9TRi
+         xFIJ2kygwdH22sRxHGqcW3eAEtj6ghiXVszQa9MAZG8AEK26vfLdY08p6Wtpt7+GQh16
+         d5Gg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=IJBJdWCeUCVcQFjWthMmEkoEuX3TezKyJFMoI1gnAz8=;
-        b=RAk79o1hQ4raz8re6e9DiV6XR1rwKnuqt3sXIa/iz7QoJVm92dEjb/czoJyhpMXwoI
-         1WglTi6D59H9PKpx/0KQVHRqECQW/eDJDhy++58cYa45KxvCAS+bxaw6oGb3jSI8Jvxp
-         U/eLLfNoFwjBBtazTQaRJVUWL4zos4288lufl3Fv3Faj+/3MeJ0q8dJOXcYuef8dKOes
-         nKbH/X0CQihGHhnmnK63iYQCw5UWfyTYkuz2NCE+E781lJBpsipWvX1I1g3Cp118A7E3
-         W3nUP550v/+1wGdfXQI9CVKQO08OS802t6Kwzdh3mRIlOYQTW2h6V/LuGIe+COEuAnzG
-         FD7w==
+        bh=o+FLbUYSzpRLFklvFEM4l+CfnkZeG91J+u+QFxVuRic=;
+        b=TdicuIkxJoYuyohDtaWoBEV0iOTRgt5JakSm2LGvW0yLHRTpGssJB2CLshU/TPk8Y7
+         ZcqPGIWhuNUa7tt2lDOj4+JIgmiohKHYo92X0eimGzsoo59ETchSc3b1kO7pm0JuERc7
+         mm2Ikz81A8Z89emJlIhrUBDw74flrCyNd+g9iLPKanlv1GMktiPC5sf9BN/b/bRkhzme
+         RARC13SC2U7bxeVf2kFL+N3/kEdhBlQnUqxVV0fdMNhQuTRiEdQ6b0Uy4r/j9MIyjGhr
+         X5HIBGbYFncxCNrHTfUK+p5VYxbieqLJdZ5AOl3w6tjRpmZlsFJ9c2wiEJQr7rkptmgL
+         d0RQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z124si2239644ywe.319.2018.01.19.06.53.50
+        by mx.google.com with ESMTPS id n76si629634ybg.583.2018.01.19.06.54.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 19 Jan 2018 06:53:50 -0800 (PST)
+        Fri, 19 Jan 2018 06:54:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53684 helo=lists.gnu.org)
+Received: from localhost ([::1]:53739 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ecY3B-0007JP-Vd
-	for alex.bennee@linaro.org; Fri, 19 Jan 2018 09:53:50 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45201)
+	id 1ecY3y-0007xu-8i
+	for alex.bennee@linaro.org; Fri, 19 Jan 2018 09:54:38 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45337)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1ecY26-0006Rj-87
-	for qemu-arm@nongnu.org; Fri, 19 Jan 2018 09:52:46 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1ecY2Z-0006s2-GB
+	for qemu-arm@nongnu.org; Fri, 19 Jan 2018 09:53:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1ecY25-0008VN-08
-	for qemu-arm@nongnu.org; Fri, 19 Jan 2018 09:52:42 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:33392)
+	(envelope-from <eric.auger@redhat.com>) id 1ecY2X-0000dm-Mm
+	for qemu-arm@nongnu.org; Fri, 19 Jan 2018 09:53:11 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:49682)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1ecY24-0008Ub-NT; Fri, 19 Jan 2018 09:52:40 -0500
+	id 1ecY2X-0000bo-DT; Fri, 19 Jan 2018 09:53:09 -0500
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
 	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A68438B113;
-	Fri, 19 Jan 2018 14:52:39 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5DB7AA3437;
+	Fri, 19 Jan 2018 14:53:08 +0000 (UTC)
 Received: from AMD.redhat.com (ovpn-116-129.ams2.redhat.com [10.36.116.129])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 760615C1B7;
-	Fri, 19 Jan 2018 14:51:35 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 01D305C1B7;
+	Fri, 19 Jan 2018 14:52:39 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
 	alex.williamson@redhat.com, mst@redhat.com, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org, jean-philippe.brucker@arm.com
-Date: Fri, 19 Jan 2018 14:48:58 +0000
-Message-Id: <1516373355-305-6-git-send-email-eric.auger@redhat.com>
+Date: Fri, 19 Jan 2018 14:48:59 +0000
+Message-Id: <1516373355-305-7-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1516373355-305-1-git-send-email-eric.auger@redhat.com>
 References: <1516373355-305-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Fri, 19 Jan 2018 14:52:39 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.39]);
+	Fri, 19 Jan 2018 14:53:08 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v5 05/22] linux-headers: Partial update for
- virtio-iommu
+Subject: [Qemu-arm] [RFC v5 06/22] virtio-iommu: Add skeleton
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,239 +92,394 @@ Cc: kevin.tian@intel.com, marc.zyngier@arm.com, tn@semihalf.com,
 	linuc.decode@gmail.com, bharat.bhushan@nxp.com, christoffer.dall@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AsucAc+oi3TE
+X-TUID: aSWIaapekayz
 
-Partial sync against Jean-Philippe's branch:
-git://linux-arm.org/linux-jpb.git virtio-iommu/v0.5-dev
+This patchs adds the skeleton for the virtio-iommu device.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- include/standard-headers/linux/virtio_ids.h   |   1 +
- include/standard-headers/linux/virtio_iommu.h | 195 ++++++++++++++++++++++++++
- linux-headers/linux/virtio_iommu.h            |   1 +
- 3 files changed, 197 insertions(+)
- create mode 100644 include/standard-headers/linux/virtio_iommu.h
- create mode 100644 linux-headers/linux/virtio_iommu.h
 
-diff --git a/include/standard-headers/linux/virtio_ids.h b/include/standard-headers/linux/virtio_ids.h
-index 6d5c3b2..934ed3d 100644
---- a/include/standard-headers/linux/virtio_ids.h
-+++ b/include/standard-headers/linux/virtio_ids.h
-@@ -43,5 +43,6 @@
- #define VIRTIO_ID_INPUT        18 /* virtio input */
- #define VIRTIO_ID_VSOCK        19 /* virtio vsock transport */
- #define VIRTIO_ID_CRYPTO       20 /* virtio crypto */
-+#define VIRTIO_ID_IOMMU	    61216 /* virtio IOMMU (temporary) */
+---
+v4 -> v5:
+- use the new v0.5 terminology (domain, endpoint)
+- add the event virtqueue
+
+v3 -> v4:
+- use page_size_mask instead of page_sizes
+- added set_features()
+- added some traces (reset, set_status, set_features)
+- empty virtio_iommu_set_config() as the driver MUST NOT
+  write to device configuration fields
+- add get_config trace
+
+v2 -> v3:
+- rebase on 2.10-rc0, ie. use IOMMUMemoryRegion and remove
+  iommu_ops.
+- advertise VIRTIO_IOMMU_F_MAP_UNMAP feature
+- page_sizes set to TARGET_PAGE_SIZE
+---
+ hw/virtio/Makefile.objs          |   1 +
+ hw/virtio/trace-events           |   7 ++
+ hw/virtio/virtio-iommu.c         | 256 +++++++++++++++++++++++++++++++++++++++
+ include/hw/virtio/virtio-iommu.h |  60 +++++++++
+ 4 files changed, 324 insertions(+)
+ create mode 100644 hw/virtio/virtio-iommu.c
+ create mode 100644 include/hw/virtio/virtio-iommu.h
+
+diff --git a/hw/virtio/Makefile.objs b/hw/virtio/Makefile.objs
+index 765d363..8967a4a 100644
+--- a/hw/virtio/Makefile.objs
++++ b/hw/virtio/Makefile.objs
+@@ -6,6 +6,7 @@ common-obj-y += virtio-mmio.o
  
- #endif /* _LINUX_VIRTIO_IDS_H */
-diff --git a/include/standard-headers/linux/virtio_iommu.h b/include/standard-headers/linux/virtio_iommu.h
+ obj-y += virtio.o virtio-balloon.o 
+ obj-$(CONFIG_LINUX) += vhost.o vhost-backend.o vhost-user.o
++obj-$(CONFIG_LINUX) += virtio-iommu.o
+ obj-$(CONFIG_VHOST_VSOCK) += vhost-vsock.o
+ obj-y += virtio-crypto.o
+ obj-$(CONFIG_VIRTIO_PCI) += virtio-crypto-pci.o
+diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
+index 775461a..98cf9a1 100644
+--- a/hw/virtio/trace-events
++++ b/hw/virtio/trace-events
+@@ -25,3 +25,10 @@ virtio_balloon_handle_output(const char *name, uint64_t gpa) "section name: %s g
+ virtio_balloon_get_config(uint32_t num_pages, uint32_t actual) "num_pages: %d actual: %d"
+ virtio_balloon_set_config(uint32_t actual, uint32_t oldactual) "actual: %d oldactual: %d"
+ virtio_balloon_to_target(uint64_t target, uint32_t num_pages) "balloon target: 0x%"PRIx64" num_pages: %d"
++
++# hw/virtio/virtio-iommu.c
++#
++virtio_iommu_set_features(uint64_t features) "features accepted by the driver =0x%"PRIx64
++virtio_iommu_device_reset(void) "reset!"
++virtio_iommu_device_status(uint8_t status) "driver status = %d"
++virtio_iommu_get_config(uint64_t page_size_mask, uint64_t start, uint64_t end, uint8_t ioasid_bits, uint32_t probe_size) "page_size_mask=0x%"PRIx64" start=0x%"PRIx64" end=0x%"PRIx64" ioasid_bits=%d probe_size=0x%x"
+diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
 new file mode 100644
-index 0000000..62944ed
+index 0000000..52430dc
 --- /dev/null
-+++ b/include/standard-headers/linux/virtio_iommu.h
-@@ -0,0 +1,195 @@
++++ b/hw/virtio/virtio-iommu.c
+@@ -0,0 +1,256 @@
 +/*
-+ * Virtio-iommu definition v0.5
++ * virtio-iommu device
 + *
-+ * Copyright (C) 2017 ARM Ltd.
++ * Copyright (c) 2017 Red Hat, Inc.
 + *
-+ * This header is BSD licensed so anyone can use the definitions
-+ * to implement compatible drivers/servers:
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms and conditions of the GNU General Public License,
++ * version 2 or later, as published by the Free Software Foundation.
 + *
-+ * Redistribution and use in source and binary forms, with or without
-+ * modification, are permitted provided that the following conditions
-+ * are met:
-+ * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer.
-+ * 2. Redistributions in binary form must reproduce the above copyright
-+ *    notice, this list of conditions and the following disclaimer in the
-+ *    documentation and/or other materials provided with the distribution.
-+ * 3. Neither the name of ARM Ltd. nor the names of its contributors
-+ *    may be used to endorse or promote products derived from this software
-+ *    without specific prior written permission.
-+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-+ * ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-+ * FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL IBM OR
-+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
-+ * USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-+ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
-+ * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
-+ * SUCH DAMAGE.
++ * This program is distributed in the hope it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ *
++ * You should have received a copy of the GNU General Public License along with
++ * this program.  If not, see <http://www.gnu.org/licenses/>.
++ *
 + */
-+#ifndef _LINUX_VIRTIO_IOMMU_H
-+#define _LINUX_VIRTIO_IOMMU_H
 +
-+/* Feature bits */
-+#define VIRTIO_IOMMU_F_INPUT_RANGE		0
-+#define VIRTIO_IOMMU_F_DOMAIN_BITS		1
-+#define VIRTIO_IOMMU_F_MAP_UNMAP		2
-+#define VIRTIO_IOMMU_F_BYPASS			3
-+#define VIRTIO_IOMMU_F_PROBE			4
++#include "qemu/osdep.h"
++#include "qemu/iov.h"
++#include "qemu-common.h"
++#include "hw/virtio/virtio.h"
++#include "sysemu/kvm.h"
++#include "qapi-event.h"
++#include "trace.h"
 +
-+struct virtio_iommu_config {
-+	/* Supported page sizes */
-+	uint64_t					page_size_mask;
-+	/* Supported IOVA range */
-+	struct virtio_iommu_range {
-+		uint64_t				start;
-+		uint64_t				end;
-+	} input_range;
-+	/* Max domain ID size */
-+	uint8_t 					domain_bits;
-+	uint8_t					padding[3];
-+	/* Probe buffer size */
-+	uint32_t					probe_size;
-+} QEMU_PACKED;
++#include "standard-headers/linux/virtio_ids.h"
++#include <linux/virtio_iommu.h>
 +
-+/* Request types */
-+#define VIRTIO_IOMMU_T_ATTACH			0x01
-+#define VIRTIO_IOMMU_T_DETACH			0x02
-+#define VIRTIO_IOMMU_T_MAP			0x03
-+#define VIRTIO_IOMMU_T_UNMAP			0x04
-+#define VIRTIO_IOMMU_T_PROBE			0x05
++#include "hw/virtio/virtio-bus.h"
++#include "hw/virtio/virtio-access.h"
++#include "hw/virtio/virtio-iommu.h"
 +
-+/* Status types */
-+#define VIRTIO_IOMMU_S_OK			0x00
-+#define VIRTIO_IOMMU_S_IOERR			0x01
-+#define VIRTIO_IOMMU_S_UNSUPP			0x02
-+#define VIRTIO_IOMMU_S_DEVERR			0x03
-+#define VIRTIO_IOMMU_S_INVAL			0x04
-+#define VIRTIO_IOMMU_S_RANGE			0x05
-+#define VIRTIO_IOMMU_S_NOENT			0x06
-+#define VIRTIO_IOMMU_S_FAULT			0x07
++/* Max size */
++#define VIOMMU_DEFAULT_QUEUE_SIZE 256
 +
-+struct virtio_iommu_req_head {
-+	uint8_t					type;
-+	uint8_t					reserved[3];
-+} QEMU_PACKED;
++static int virtio_iommu_handle_attach(VirtIOIOMMU *s,
++                                      struct iovec *iov,
++                                      unsigned int iov_cnt)
++{
++    return -ENOENT;
++}
++static int virtio_iommu_handle_detach(VirtIOIOMMU *s,
++                                      struct iovec *iov,
++                                      unsigned int iov_cnt)
++{
++    return -ENOENT;
++}
++static int virtio_iommu_handle_map(VirtIOIOMMU *s,
++                                   struct iovec *iov,
++                                   unsigned int iov_cnt)
++{
++    return -ENOENT;
++}
++static int virtio_iommu_handle_unmap(VirtIOIOMMU *s,
++                                     struct iovec *iov,
++                                     unsigned int iov_cnt)
++{
++    return -ENOENT;
++}
 +
-+struct virtio_iommu_req_tail {
-+	uint8_t					status;
-+	uint8_t					reserved[3];
-+} QEMU_PACKED;
++static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *vq)
++{
++    VirtIOIOMMU *s = VIRTIO_IOMMU(vdev);
++    VirtQueueElement *elem;
++    struct virtio_iommu_req_head head;
++    struct virtio_iommu_req_tail tail;
++    unsigned int iov_cnt;
++    struct iovec *iov;
++    size_t sz;
 +
-+struct virtio_iommu_req_attach {
-+	struct virtio_iommu_req_head		head;
++    for (;;) {
++        elem = virtqueue_pop(vq, sizeof(VirtQueueElement));
++        if (!elem) {
++            return;
++        }
 +
-+	uint32_t					domain;
-+	uint32_t					endpoint;
-+	uint32_t					reserved;
++        if (iov_size(elem->in_sg, elem->in_num) < sizeof(tail) ||
++            iov_size(elem->out_sg, elem->out_num) < sizeof(head)) {
++            virtio_error(vdev, "virtio-iommu erroneous head or tail");
++            virtqueue_detach_element(vq, elem, 0);
++            g_free(elem);
++            break;
++        }
 +
-+	struct virtio_iommu_req_tail		tail;
-+} QEMU_PACKED;
++        iov_cnt = elem->out_num;
++        iov = g_memdup(elem->out_sg, sizeof(struct iovec) * elem->out_num);
++        sz = iov_to_buf(iov, iov_cnt, 0, &head, sizeof(head));
++        if (sz != sizeof(head)) {
++            tail.status = VIRTIO_IOMMU_S_UNSUPP;
++        }
++        qemu_mutex_lock(&s->mutex);
++        switch (head.type) {
++        case VIRTIO_IOMMU_T_ATTACH:
++            tail.status = virtio_iommu_handle_attach(s, iov, iov_cnt);
++            break;
++        case VIRTIO_IOMMU_T_DETACH:
++            tail.status = virtio_iommu_handle_detach(s, iov, iov_cnt);
++            break;
++        case VIRTIO_IOMMU_T_MAP:
++            tail.status = virtio_iommu_handle_map(s, iov, iov_cnt);
++            break;
++        case VIRTIO_IOMMU_T_UNMAP:
++            tail.status = virtio_iommu_handle_unmap(s, iov, iov_cnt);
++            break;
++        default:
++            tail.status = VIRTIO_IOMMU_S_UNSUPP;
++        }
++        qemu_mutex_unlock(&s->mutex);
 +
-+struct virtio_iommu_req_detach {
-+	struct virtio_iommu_req_head		head;
++        sz = iov_from_buf(elem->in_sg, elem->in_num, 0,
++                          &tail, sizeof(tail));
++        assert(sz == sizeof(tail));
 +
-+	uint32_t					endpoint;
-+	uint32_t					reserved;
++        virtqueue_push(vq, elem, sizeof(tail));
++        virtio_notify(vdev, vq);
++        g_free(elem);
++    }
++}
 +
-+	struct virtio_iommu_req_tail		tail;
-+} QEMU_PACKED;
++static void virtio_iommu_get_config(VirtIODevice *vdev, uint8_t *config_data)
++{
++    VirtIOIOMMU *dev = VIRTIO_IOMMU(vdev);
++    struct virtio_iommu_config *config = &dev->config;
 +
-+#define VIRTIO_IOMMU_MAP_F_READ			(1 << 0)
-+#define VIRTIO_IOMMU_MAP_F_WRITE		(1 << 1)
-+#define VIRTIO_IOMMU_MAP_F_EXEC			(1 << 2)
++    trace_virtio_iommu_get_config(config->page_size_mask,
++                                  config->input_range.start,
++                                  config->input_range.end,
++                                  config->domain_bits,
++                                  config->probe_size);
++    memcpy(config_data, &dev->config, sizeof(struct virtio_iommu_config));
++}
 +
-+#define VIRTIO_IOMMU_MAP_F_MASK			(VIRTIO_IOMMU_MAP_F_READ |	\
-+						 VIRTIO_IOMMU_MAP_F_WRITE |	\
-+						 VIRTIO_IOMMU_MAP_F_EXEC)
++static void virtio_iommu_set_config(VirtIODevice *vdev,
++                                      const uint8_t *config_data)
++{
++}
 +
-+struct virtio_iommu_req_map {
-+	struct virtio_iommu_req_head		head;
++static uint64_t virtio_iommu_get_features(VirtIODevice *vdev, uint64_t f,
++                                            Error **errp)
++{
++    VirtIOIOMMU *dev = VIRTIO_IOMMU(vdev);
++    f |= dev->host_features;
++    virtio_add_feature(&f, VIRTIO_RING_F_EVENT_IDX);
++    virtio_add_feature(&f, VIRTIO_RING_F_INDIRECT_DESC);
++    virtio_add_feature(&f, VIRTIO_IOMMU_F_INPUT_RANGE);
++    virtio_add_feature(&f, VIRTIO_IOMMU_F_MAP_UNMAP);
++    return f;
++}
 +
-+	uint32_t					domain;
-+	uint64_t					virt_addr;
-+	uint64_t					phys_addr;
-+	uint64_t					size;
-+	uint32_t					flags;
++static void virtio_iommu_set_features(VirtIODevice *vdev, uint64_t val)
++{
++    trace_virtio_iommu_set_features(val);
++}
 +
-+	struct virtio_iommu_req_tail		tail;
-+} QEMU_PACKED;
++static int virtio_iommu_post_load_device(void *opaque, int version_id)
++{
++    return 0;
++}
 +
-+QEMU_PACKED
-+struct virtio_iommu_req_unmap {
-+	struct virtio_iommu_req_head		head;
-+
-+	uint32_t					domain;
-+	uint64_t					virt_addr;
-+	uint64_t					size;
-+	uint32_t					reserved;
-+
-+	struct virtio_iommu_req_tail		tail;
-+} QEMU_PACKED;
-+
-+#define VIRTIO_IOMMU_RESV_MEM_T_RESERVED	0
-+#define VIRTIO_IOMMU_RESV_MEM_T_MSI		1
-+
-+struct virtio_iommu_probe_resv_mem {
-+	uint8_t					subtype;
-+	uint8_t					reserved[3];
-+	uint64_t					addr;
-+	uint64_t					size;
-+} QEMU_PACKED;
-+
-+#define VIRTIO_IOMMU_PROBE_T_NONE		0
-+#define VIRTIO_IOMMU_PROBE_T_RESV_MEM		1
-+
-+#define VIRTIO_IOMMU_PROBE_T_MASK		0xfff
-+
-+struct virtio_iommu_probe_property {
-+	uint16_t					type;
-+	uint16_t					length;
-+	uint8_t					value[];
-+} QEMU_PACKED;
-+
-+struct virtio_iommu_req_probe {
-+	struct virtio_iommu_req_head		head;
-+	uint32_t					endpoint;
-+	uint8_t					reserved[64];
-+
-+	uint8_t					properties[];
-+
-+	/* Tail follows the variable-length properties array (no padding) */
-+} QEMU_PACKED;
-+
-+union virtio_iommu_req {
-+	struct virtio_iommu_req_head		head;
-+
-+	struct virtio_iommu_req_attach		attach;
-+	struct virtio_iommu_req_detach		detach;
-+	struct virtio_iommu_req_map		map;
-+	struct virtio_iommu_req_unmap		unmap;
-+	struct virtio_iommu_req_probe		probe;
++static const VMStateDescription vmstate_virtio_iommu_device = {
++    .name = "virtio-iommu-device",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .post_load = virtio_iommu_post_load_device,
++    .fields = (VMStateField[]) {
++        VMSTATE_END_OF_LIST()
++    },
 +};
 +
-+/* Fault types */
-+#define VIRTIO_IOMMU_FAULT_R_UNKNOWN		0
-+#define VIRTIO_IOMMU_FAULT_R_DOMAIN		1
-+#define VIRTIO_IOMMU_FAULT_R_MAPPING		2
++static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
++{
++    VirtIODevice *vdev = VIRTIO_DEVICE(dev);
++    VirtIOIOMMU *s = VIRTIO_IOMMU(dev);
 +
-+#define VIRTIO_IOMMU_FAULT_F_READ		(1 << 0)
-+#define VIRTIO_IOMMU_FAULT_F_WRITE		(1 << 1)
-+#define VIRTIO_IOMMU_FAULT_F_EXEC		(1 << 2)
-+#define VIRTIO_IOMMU_FAULT_F_ADDRESS		(1 << 8)
++    virtio_init(vdev, "virtio-iommu", VIRTIO_ID_IOMMU,
++                sizeof(struct virtio_iommu_config));
 +
-+struct virtio_iommu_fault {
-+	uint8_t					reason;
-+	uint8_t					padding[3];
-+	uint32_t					flags;
-+	uint32_t					endpoint;
-+	uint64_t					address;
-+} QEMU_PACKED;
++    s->req_vq = virtio_add_queue(vdev, VIOMMU_DEFAULT_QUEUE_SIZE,
++                             virtio_iommu_handle_command);
++    s->event_vq = virtio_add_queue(vdev, VIOMMU_DEFAULT_QUEUE_SIZE, NULL);
++
++    s->config.page_size_mask = TARGET_PAGE_MASK;
++    s->config.input_range.end = -1UL;
++}
++
++static void virtio_iommu_device_unrealize(DeviceState *dev, Error **errp)
++{
++    VirtIODevice *vdev = VIRTIO_DEVICE(dev);
++
++    virtio_cleanup(vdev);
++}
++
++static void virtio_iommu_device_reset(VirtIODevice *vdev)
++{
++    trace_virtio_iommu_device_reset();
++}
++
++static void virtio_iommu_set_status(VirtIODevice *vdev, uint8_t status)
++{
++    trace_virtio_iommu_device_status(status);
++}
++
++static void virtio_iommu_instance_init(Object *obj)
++{
++}
++
++static const VMStateDescription vmstate_virtio_iommu = {
++    .name = "virtio-iommu",
++    .minimum_version_id = 1,
++    .version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_VIRTIO_DEVICE,
++        VMSTATE_END_OF_LIST()
++    },
++};
++
++static Property virtio_iommu_properties[] = {
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void virtio_iommu_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    VirtioDeviceClass *vdc = VIRTIO_DEVICE_CLASS(klass);
++
++    dc->props = virtio_iommu_properties;
++    dc->vmsd = &vmstate_virtio_iommu;
++
++    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
++    vdc->realize = virtio_iommu_device_realize;
++    vdc->unrealize = virtio_iommu_device_unrealize;
++    vdc->reset = virtio_iommu_device_reset;
++    vdc->get_config = virtio_iommu_get_config;
++    vdc->set_config = virtio_iommu_set_config;
++    vdc->get_features = virtio_iommu_get_features;
++    vdc->set_features = virtio_iommu_set_features;
++    vdc->set_status = virtio_iommu_set_status;
++    vdc->vmsd = &vmstate_virtio_iommu_device;
++}
++
++static const TypeInfo virtio_iommu_info = {
++    .name = TYPE_VIRTIO_IOMMU,
++    .parent = TYPE_VIRTIO_DEVICE,
++    .instance_size = sizeof(VirtIOIOMMU),
++    .instance_init = virtio_iommu_instance_init,
++    .class_init = virtio_iommu_class_init,
++};
++
++static void virtio_register_types(void)
++{
++    type_register_static(&virtio_iommu_info);
++}
++
++type_init(virtio_register_types)
+diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/virtio-iommu.h
+new file mode 100644
+index 0000000..d7cf73b
+--- /dev/null
++++ b/include/hw/virtio/virtio-iommu.h
+@@ -0,0 +1,60 @@
++/*
++ * virtio-iommu device
++ *
++ * Copyright (c) 2017 Red Hat, Inc.
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms and conditions of the GNU General Public License,
++ * version 2 or later, as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ *
++ * You should have received a copy of the GNU General Public License along with
++ * this program.  If not, see <http://www.gnu.org/licenses/>.
++ *
++ */
++
++#ifndef QEMU_VIRTIO_IOMMU_H
++#define QEMU_VIRTIO_IOMMU_H
++
++#include "standard-headers/linux/virtio_iommu.h"
++#include "hw/virtio/virtio.h"
++#include "hw/pci/pci.h"
++
++#define TYPE_VIRTIO_IOMMU "virtio-iommu-device"
++#define VIRTIO_IOMMU(obj) \
++        OBJECT_CHECK(VirtIOIOMMU, (obj), TYPE_VIRTIO_IOMMU)
++
++#define IOMMU_PCI_BUS_MAX      256
++#define IOMMU_PCI_DEVFN_MAX    256
++
++typedef struct IOMMUDevice {
++    void         *viommu;
++    PCIBus       *bus;
++    int           devfn;
++    IOMMUMemoryRegion  iommu_mr;
++    AddressSpace  as;
++} IOMMUDevice;
++
++typedef struct IOMMUPciBus {
++    PCIBus       *bus;
++    IOMMUDevice  *pbdev[0]; /* Parent array is sparse, so dynamically alloc */
++} IOMMUPciBus;
++
++typedef struct VirtIOIOMMU {
++    VirtIODevice parent_obj;
++    VirtQueue *req_vq;
++    VirtQueue *event_vq;
++    struct virtio_iommu_config config;
++    uint32_t host_features;
++    GHashTable *as_by_busptr;
++    IOMMUPciBus *as_by_bus_num[IOMMU_PCI_BUS_MAX];
++    GTree *domains;
++    QemuMutex mutex;
++    GTree *endpoints;
++} VirtIOIOMMU;
 +
 +#endif
-diff --git a/linux-headers/linux/virtio_iommu.h b/linux-headers/linux/virtio_iommu.h
-new file mode 100644
-index 0000000..2dc4609
---- /dev/null
-+++ b/linux-headers/linux/virtio_iommu.h
-@@ -0,0 +1 @@
-+#include "standard-headers/linux/virtio_iommu.h"
 -- 
 1.9.1
 

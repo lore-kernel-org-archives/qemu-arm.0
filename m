@@ -1,82 +1,82 @@
-Received: by 10.28.71.27 with SMTP id u27csp830921wma;
-        Fri, 19 Jan 2018 06:53:35 -0800 (PST)
-X-Google-Smtp-Source: ACJfBouJXZambT4grGBYL13lB4Fkt+45oWF9sXwwEvMb89mnSMwCzY2s9XHlVUS2uTdeFFlBdcLX
-X-Received: by 10.13.193.133 with SMTP id c127mr9518999ywd.170.1516373615239;
-        Fri, 19 Jan 2018 06:53:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516373615; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp831223wma;
+        Fri, 19 Jan 2018 06:53:50 -0800 (PST)
+X-Google-Smtp-Source: ACJfBotXpZ+Ohw8QiifAzxfQYt1mY0IMhcvzDwShMCubduGzqZeZfZYnUtvdzRj3i3a4HNbkLY/7
+X-Received: by 10.37.221.195 with SMTP id u186mr2300612ybg.154.1516373630539;
+        Fri, 19 Jan 2018 06:53:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516373630; cv=none;
         d=google.com; s=arc-20160816;
-        b=hVBUDU/OYRv5VdJCRiRlcNUSIOX9E5Vq3xATyQrUSymziljHBcMqm3tIgLY3i/c7pD
-         fA6GJ0NXJp8bb6Sz2Zwh37zBrB1a4Or96H57h+2mNIPM9/rwfcXjZ1WHfm+s3fTb5Emr
-         RFtv3kcWl2oAL9VLamXtyKINqhrI14j6BMNJrU6cBcvu4Q7ZGBII74fTxxoU1Riw/TXE
-         Nqs4qPSe1QBwgyGAlbOrVL5aXYig9iYkS40uA5VF0I0NHTaMlZ3SJQvYCQ5wNHb7Pxsb
-         vBltPU9E4FD4qZBZ72MsZH69VYUlyTm1zBGSW77WR2ryfkjcCBuCG7SDnAD68COF2vnd
-         GJDA==
+        b=RnNLEwWB8HP6I3A9hsK5BHDuuFc3LUtrHXQlDkK00mp8pgBRnrbfctH+QQ2kObHhgq
+         chlKch/RCE0+ki/cIVfoejP+9d0cup+o/jg4pEYv7R4RuQnaUaS5GMKm50Ax4HxD2ndk
+         BCWCwBIB7yBhea0E2nTo8ohZVp6NZ018UOmlnChV2Enxk0umhaqTA1DybQkpM7iL5ZBR
+         +eI56scBCQEF+OpZ7nRu/JFlNYeOGW3LpkHqlqnukZ9Qp+x4fkuKloHNQHxsQSIhEAw5
+         3OCcM8gOwf/MYhYsICGcsSZIOHlJSsD3ORpq3Uj8XtHD96rPnQVbAi+dA4mF0wEg8HU6
+         OMIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=8fQMAfM9NGco9iwLVVEehMuySv5YMECq7KRYyNayZ3U=;
-        b=Z+GbvTPZsGmCcH5XJaBNLY21pbIw7ZuZOSqmF3wNC2BHK5bhk7q6CNFVxkHwKOKx7K
-         N4FH2kVydwC3/U4xGKwwd2o0eWRZ1mGaToVlNfz8a18TSHEVO5b6HRdGM3+Ic3SF30xi
-         tRPM14fKHLjbTyzkmF7p0XtCVJyGpOnJJeoltbQ1ZBNijZGhLY8M/vZQRKGpsiWMJ/ut
-         ZbSbKhP8SEtG5m/9v7IAo2/fd/nzegf7OnQ2fHbXaDVziYsR+MeF3bUAeqfaN4sK+aOe
-         tmgssX7tJWztPmlFUr7NsQNDipWWU92p3qvJQxN00ytLDPkyJ9KSQxRRPqduwS9Xo5Mw
-         K+eQ==
+        bh=IJBJdWCeUCVcQFjWthMmEkoEuX3TezKyJFMoI1gnAz8=;
+        b=RAk79o1hQ4raz8re6e9DiV6XR1rwKnuqt3sXIa/iz7QoJVm92dEjb/czoJyhpMXwoI
+         1WglTi6D59H9PKpx/0KQVHRqECQW/eDJDhy++58cYa45KxvCAS+bxaw6oGb3jSI8Jvxp
+         U/eLLfNoFwjBBtazTQaRJVUWL4zos4288lufl3Fv3Faj+/3MeJ0q8dJOXcYuef8dKOes
+         nKbH/X0CQihGHhnmnK63iYQCw5UWfyTYkuz2NCE+E781lJBpsipWvX1I1g3Cp118A7E3
+         W3nUP550v/+1wGdfXQI9CVKQO08OS802t6Kwzdh3mRIlOYQTW2h6V/LuGIe+COEuAnzG
+         FD7w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h9si617003ybh.134.2018.01.19.06.53.35
+        by mx.google.com with ESMTPS id z124si2239644ywe.319.2018.01.19.06.53.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 19 Jan 2018 06:53:35 -0800 (PST)
+        Fri, 19 Jan 2018 06:53:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53669 helo=lists.gnu.org)
+Received: from localhost ([::1]:53684 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ecY2w-00075w-MY
-	for alex.bennee@linaro.org; Fri, 19 Jan 2018 09:53:34 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44893)
+	id 1ecY3B-0007JP-Vd
+	for alex.bennee@linaro.org; Fri, 19 Jan 2018 09:53:50 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45201)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1ecY14-0005aE-EO
-	for qemu-arm@nongnu.org; Fri, 19 Jan 2018 09:51:39 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1ecY26-0006Rj-87
+	for qemu-arm@nongnu.org; Fri, 19 Jan 2018 09:52:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1ecY12-0007bA-Ab
-	for qemu-arm@nongnu.org; Fri, 19 Jan 2018 09:51:38 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:29549)
+	(envelope-from <eric.auger@redhat.com>) id 1ecY25-0008VN-08
+	for qemu-arm@nongnu.org; Fri, 19 Jan 2018 09:52:42 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:33392)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1ecY12-0007Zr-4j; Fri, 19 Jan 2018 09:51:36 -0500
+	id 1ecY24-0008Ub-NT; Fri, 19 Jan 2018 09:52:40 -0500
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
 	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2372ACDB;
-	Fri, 19 Jan 2018 14:51:35 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id A68438B113;
+	Fri, 19 Jan 2018 14:52:39 +0000 (UTC)
 Received: from AMD.redhat.com (ovpn-116-129.ams2.redhat.com [10.36.116.129])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 3505B5C881;
-	Fri, 19 Jan 2018 14:51:16 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 760615C1B7;
+	Fri, 19 Jan 2018 14:51:35 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
 	alex.williamson@redhat.com, mst@redhat.com, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org, jean-philippe.brucker@arm.com
-Date: Fri, 19 Jan 2018 14:48:57 +0000
-Message-Id: <1516373355-305-5-git-send-email-eric.auger@redhat.com>
+Date: Fri, 19 Jan 2018 14:48:58 +0000
+Message-Id: <1516373355-305-6-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1516373355-305-1-git-send-email-eric.auger@redhat.com>
 References: <1516373355-305-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Fri, 19 Jan 2018 14:51:35 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.28]);
+	Fri, 19 Jan 2018 14:52:39 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v5 04/22] update-linux-headers: Import
- virtio_iommu.h
+Subject: [Qemu-arm] [RFC v5 05/22] linux-headers: Partial update for
+ virtio-iommu
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,29 +93,239 @@ Cc: kevin.tian@intel.com, marc.zyngier@arm.com, tn@semihalf.com,
 	linuc.decode@gmail.com, bharat.bhushan@nxp.com, christoffer.dall@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: o8Ff7daou7N0
+X-TUID: AsucAc+oi3TE
 
-Update the script to update the virtio_iommu.h header.
+Partial sync against Jean-Philippe's branch:
+git://linux-arm.org/linux-jpb.git virtio-iommu/v0.5-dev
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- scripts/update-linux-headers.sh | 3 +++
- 1 file changed, 3 insertions(+)
+ include/standard-headers/linux/virtio_ids.h   |   1 +
+ include/standard-headers/linux/virtio_iommu.h | 195 ++++++++++++++++++++++++++
+ linux-headers/linux/virtio_iommu.h            |   1 +
+ 3 files changed, 197 insertions(+)
+ create mode 100644 include/standard-headers/linux/virtio_iommu.h
+ create mode 100644 linux-headers/linux/virtio_iommu.h
 
-diff --git a/scripts/update-linux-headers.sh b/scripts/update-linux-headers.sh
-index 135a10d..e5af161 100755
---- a/scripts/update-linux-headers.sh
-+++ b/scripts/update-linux-headers.sh
-@@ -135,6 +135,9 @@ EOF
- cat <<EOF >$output/linux-headers/linux/virtio_config.h
- #include "standard-headers/linux/virtio_config.h"
- EOF
-+cat <<EOF >$output/linux-headers/linux/virtio_iommu.h
+diff --git a/include/standard-headers/linux/virtio_ids.h b/include/standard-headers/linux/virtio_ids.h
+index 6d5c3b2..934ed3d 100644
+--- a/include/standard-headers/linux/virtio_ids.h
++++ b/include/standard-headers/linux/virtio_ids.h
+@@ -43,5 +43,6 @@
+ #define VIRTIO_ID_INPUT        18 /* virtio input */
+ #define VIRTIO_ID_VSOCK        19 /* virtio vsock transport */
+ #define VIRTIO_ID_CRYPTO       20 /* virtio crypto */
++#define VIRTIO_ID_IOMMU	    61216 /* virtio IOMMU (temporary) */
+ 
+ #endif /* _LINUX_VIRTIO_IDS_H */
+diff --git a/include/standard-headers/linux/virtio_iommu.h b/include/standard-headers/linux/virtio_iommu.h
+new file mode 100644
+index 0000000..62944ed
+--- /dev/null
++++ b/include/standard-headers/linux/virtio_iommu.h
+@@ -0,0 +1,195 @@
++/*
++ * Virtio-iommu definition v0.5
++ *
++ * Copyright (C) 2017 ARM Ltd.
++ *
++ * This header is BSD licensed so anyone can use the definitions
++ * to implement compatible drivers/servers:
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, this list of conditions and the following disclaimer.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ * 3. Neither the name of ARM Ltd. nor the names of its contributors
++ *    may be used to endorse or promote products derived from this software
++ *    without specific prior written permission.
++ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++ * ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
++ * FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL IBM OR
++ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
++ * USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
++ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
++ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
++ * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
++ * SUCH DAMAGE.
++ */
++#ifndef _LINUX_VIRTIO_IOMMU_H
++#define _LINUX_VIRTIO_IOMMU_H
++
++/* Feature bits */
++#define VIRTIO_IOMMU_F_INPUT_RANGE		0
++#define VIRTIO_IOMMU_F_DOMAIN_BITS		1
++#define VIRTIO_IOMMU_F_MAP_UNMAP		2
++#define VIRTIO_IOMMU_F_BYPASS			3
++#define VIRTIO_IOMMU_F_PROBE			4
++
++struct virtio_iommu_config {
++	/* Supported page sizes */
++	uint64_t					page_size_mask;
++	/* Supported IOVA range */
++	struct virtio_iommu_range {
++		uint64_t				start;
++		uint64_t				end;
++	} input_range;
++	/* Max domain ID size */
++	uint8_t 					domain_bits;
++	uint8_t					padding[3];
++	/* Probe buffer size */
++	uint32_t					probe_size;
++} QEMU_PACKED;
++
++/* Request types */
++#define VIRTIO_IOMMU_T_ATTACH			0x01
++#define VIRTIO_IOMMU_T_DETACH			0x02
++#define VIRTIO_IOMMU_T_MAP			0x03
++#define VIRTIO_IOMMU_T_UNMAP			0x04
++#define VIRTIO_IOMMU_T_PROBE			0x05
++
++/* Status types */
++#define VIRTIO_IOMMU_S_OK			0x00
++#define VIRTIO_IOMMU_S_IOERR			0x01
++#define VIRTIO_IOMMU_S_UNSUPP			0x02
++#define VIRTIO_IOMMU_S_DEVERR			0x03
++#define VIRTIO_IOMMU_S_INVAL			0x04
++#define VIRTIO_IOMMU_S_RANGE			0x05
++#define VIRTIO_IOMMU_S_NOENT			0x06
++#define VIRTIO_IOMMU_S_FAULT			0x07
++
++struct virtio_iommu_req_head {
++	uint8_t					type;
++	uint8_t					reserved[3];
++} QEMU_PACKED;
++
++struct virtio_iommu_req_tail {
++	uint8_t					status;
++	uint8_t					reserved[3];
++} QEMU_PACKED;
++
++struct virtio_iommu_req_attach {
++	struct virtio_iommu_req_head		head;
++
++	uint32_t					domain;
++	uint32_t					endpoint;
++	uint32_t					reserved;
++
++	struct virtio_iommu_req_tail		tail;
++} QEMU_PACKED;
++
++struct virtio_iommu_req_detach {
++	struct virtio_iommu_req_head		head;
++
++	uint32_t					endpoint;
++	uint32_t					reserved;
++
++	struct virtio_iommu_req_tail		tail;
++} QEMU_PACKED;
++
++#define VIRTIO_IOMMU_MAP_F_READ			(1 << 0)
++#define VIRTIO_IOMMU_MAP_F_WRITE		(1 << 1)
++#define VIRTIO_IOMMU_MAP_F_EXEC			(1 << 2)
++
++#define VIRTIO_IOMMU_MAP_F_MASK			(VIRTIO_IOMMU_MAP_F_READ |	\
++						 VIRTIO_IOMMU_MAP_F_WRITE |	\
++						 VIRTIO_IOMMU_MAP_F_EXEC)
++
++struct virtio_iommu_req_map {
++	struct virtio_iommu_req_head		head;
++
++	uint32_t					domain;
++	uint64_t					virt_addr;
++	uint64_t					phys_addr;
++	uint64_t					size;
++	uint32_t					flags;
++
++	struct virtio_iommu_req_tail		tail;
++} QEMU_PACKED;
++
++QEMU_PACKED
++struct virtio_iommu_req_unmap {
++	struct virtio_iommu_req_head		head;
++
++	uint32_t					domain;
++	uint64_t					virt_addr;
++	uint64_t					size;
++	uint32_t					reserved;
++
++	struct virtio_iommu_req_tail		tail;
++} QEMU_PACKED;
++
++#define VIRTIO_IOMMU_RESV_MEM_T_RESERVED	0
++#define VIRTIO_IOMMU_RESV_MEM_T_MSI		1
++
++struct virtio_iommu_probe_resv_mem {
++	uint8_t					subtype;
++	uint8_t					reserved[3];
++	uint64_t					addr;
++	uint64_t					size;
++} QEMU_PACKED;
++
++#define VIRTIO_IOMMU_PROBE_T_NONE		0
++#define VIRTIO_IOMMU_PROBE_T_RESV_MEM		1
++
++#define VIRTIO_IOMMU_PROBE_T_MASK		0xfff
++
++struct virtio_iommu_probe_property {
++	uint16_t					type;
++	uint16_t					length;
++	uint8_t					value[];
++} QEMU_PACKED;
++
++struct virtio_iommu_req_probe {
++	struct virtio_iommu_req_head		head;
++	uint32_t					endpoint;
++	uint8_t					reserved[64];
++
++	uint8_t					properties[];
++
++	/* Tail follows the variable-length properties array (no padding) */
++} QEMU_PACKED;
++
++union virtio_iommu_req {
++	struct virtio_iommu_req_head		head;
++
++	struct virtio_iommu_req_attach		attach;
++	struct virtio_iommu_req_detach		detach;
++	struct virtio_iommu_req_map		map;
++	struct virtio_iommu_req_unmap		unmap;
++	struct virtio_iommu_req_probe		probe;
++};
++
++/* Fault types */
++#define VIRTIO_IOMMU_FAULT_R_UNKNOWN		0
++#define VIRTIO_IOMMU_FAULT_R_DOMAIN		1
++#define VIRTIO_IOMMU_FAULT_R_MAPPING		2
++
++#define VIRTIO_IOMMU_FAULT_F_READ		(1 << 0)
++#define VIRTIO_IOMMU_FAULT_F_WRITE		(1 << 1)
++#define VIRTIO_IOMMU_FAULT_F_EXEC		(1 << 2)
++#define VIRTIO_IOMMU_FAULT_F_ADDRESS		(1 << 8)
++
++struct virtio_iommu_fault {
++	uint8_t					reason;
++	uint8_t					padding[3];
++	uint32_t					flags;
++	uint32_t					endpoint;
++	uint64_t					address;
++} QEMU_PACKED;
++
++#endif
+diff --git a/linux-headers/linux/virtio_iommu.h b/linux-headers/linux/virtio_iommu.h
+new file mode 100644
+index 0000000..2dc4609
+--- /dev/null
++++ b/linux-headers/linux/virtio_iommu.h
+@@ -0,0 +1 @@
 +#include "standard-headers/linux/virtio_iommu.h"
-+EOF
- cat <<EOF >$output/linux-headers/linux/virtio_ring.h
- #include "standard-headers/linux/virtio_ring.h"
- EOF
 -- 
 1.9.1
 

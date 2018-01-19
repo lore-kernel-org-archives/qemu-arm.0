@@ -1,397 +1,245 @@
-Received: by 10.28.71.27 with SMTP id u27csp848331wma;
-        Fri, 19 Jan 2018 07:07:56 -0800 (PST)
-X-Google-Smtp-Source: ACJfBosnBTzVLg89plKfGiQcdERxEtjGa9PJTh0IebN/RrFaYckmV2+tAGWw4NcrPnYn/BxQgrel
-X-Received: by 10.37.215.148 with SMTP id o142mr16977676ybg.314.1516374438137;
-        Fri, 19 Jan 2018 07:07:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516374438; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp849340wma;
+        Fri, 19 Jan 2018 07:08:45 -0800 (PST)
+X-Google-Smtp-Source: ACJfBosAxbiEjNYbUjzzTVPJosbWuvpyoUfdVxUOuHG39Siu2UL6jmGpxLyUgHB4h6hagK4ZOh2+
+X-Received: by 10.13.223.6 with SMTP id i6mr9686575ywe.503.1516374525264;
+        Fri, 19 Jan 2018 07:08:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516374525; cv=none;
         d=google.com; s=arc-20160816;
-        b=J0pbJvyRJcLE3uDSH5O3xOIQD1Kd3stTCcu8CRzEqtt/alFSkobWfgLnoJDKZAFYnx
-         RWJfUo/38UwHgvQ6MfNdqJZObVSHw9lgvk+LC7d4TOvh+7Th6bxAniMIp3EZNSma0lEJ
-         xSc0IHupqfalzQVhOSCMhDL1OgmYQIPnrccdobHcdxfyNjayvnK0QaOoB4m0fj1vg1X7
-         V7uDMmxBO+oysT6cNVz17qaVvcx45h96YvUy2FdX08P1cMjKZEXFz0Gl3vVJMYI5NDKp
-         6RadCDh4ak9z/FeOnHivphhrufm8ohcTgI1KIO5C+Sq15+nrD4p/WzoR3DK7xYJMWQzS
-         FZdw==
+        b=C+pfTLXafc1nMK3ShZTofJiuh51qmwRbbCzHcZ6N7YqrdJ2UFHJ1/w/iT6sSJCROfx
+         pytaY479U5q1Zi35Q8Ir5FMpAskCCjXbt7JtuDjH0kxMVB21Ta3ZptYeHzul0ejbriim
+         3oi5Npz2JHxaC8pv+ZvnchxMf0tQ31bacOlRnKfUZOnhhoqdjLDbrfbTwwd8Pvvl1jhq
+         Rs212G/AWT9EKzuoRpMx1ewm3YZ3ldTgYo3xZ9pqYv01DD5mW1leJqw05IflHp4QjpXl
+         km8bb2/k/naH6APawxjgCyFfPWc2+5kSdoj9g+cfLGdhffKxavLQQJekkOelWEraa8xQ
+         pTuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=n+c8F8i9qmBCsHMbrOnFDNmv0IyQfsGyxoAKif07GoI=;
-        b=PqqDdmH+JMlsAVbN721VqJft2nmHjBCGHd6h8DhyJSIjDwc69KZmsCU5qQm2CGAz/x
-         WLkCpwuN0T/erCZboWZ2SWWJHMay0Ku6L5EAUl6WqVgTaCPVIinG7fhy69dud8chqFFK
-         5zbDe80akkZqwaSqQznMduH9hiCBIi13RYE6q9RjD0xt9XDzUf4TH17eAzo8rdwySx0V
-         t0mR6x8I3JqLcAubvaD8V8zn7IhVrEoZDrH6xLf1L8R6OIofLcpUz8sY5sX2H6QL3sdH
-         hMR8WfLN/zD/4B6U67Of0PRyVv0sOdyjXtTlIyv/NsXwl7akgcTYpfRUuUk1Petb7xE4
-         zPlw==
+        bh=GAek3KRuD+4zc+ZzCKG8eKz9agpDeYst4Jf0mDu3ivY=;
+        b=RXQryOF+Qt7RPGLl71vN4puQUioFcpC5DHr6aFwBtkoRjNPo4iwdAg2AE6Y1CPocBT
+         Vurqx+rD0b4bXSNJHCJldkeIiqHnBV9GwtOFisohK9NB6dZBZPV3eBh2j/V4Xm7F3U1v
+         rnaeLZzqI4Ghibf8SzppwsumV4GLvXuaxz+1Gjm3pCyxkOdiEXjGy5Wgrk11k/XqfgAj
+         RVafc3Sn7CSI8KsfDK0MlT+9KuQuFmrA0a8xEL7nl7753rTYoymnNQaWA16m4g/z9k2V
+         kn8zZqimO5Gul8xaKrADGF42B1Lpjnn3Q5DFHuCJFU64NLk86JnoWb4NgOGxAc1vvS6a
+         4F0w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j12si1410117ywi.37.2018.01.19.07.07.17
+        by mx.google.com with ESMTPS id k3si9328ybj.748.2018.01.19.07.08.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 19 Jan 2018 07:07:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 19 Jan 2018 07:08:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54238 helo=lists.gnu.org)
+Received: from localhost ([::1]:54336 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ecYGD-0001Zu-DB
-	for alex.bennee@linaro.org; Fri, 19 Jan 2018 10:07:17 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48905)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ecYHc-0003Ki-I5
+	for alex.bennee@linaro.org; Fri, 19 Jan 2018 10:08:44 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48521)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1ecYCs-0007Ne-3W
-	for qemu-devel@nongnu.org; Fri, 19 Jan 2018 10:03:56 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1ecYBp-0006Ss-0d
+	for qemu-arm@nongnu.org; Fri, 19 Jan 2018 10:02:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1ecYCq-0008AH-Jf
-	for qemu-devel@nongnu.org; Fri, 19 Jan 2018 10:03:50 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:46630)
+	(envelope-from <eric.auger@redhat.com>) id 1ecYBl-00073f-QF
+	for qemu-arm@nongnu.org; Fri, 19 Jan 2018 10:02:45 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:55928)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1ecYCl-00084T-BH; Fri, 19 Jan 2018 10:03:43 -0500
+	id 1ecYBl-00073F-IM; Fri, 19 Jan 2018 10:02:41 -0500
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
 	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 66E8AC08EC24;
-	Fri, 19 Jan 2018 15:03:42 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 91705C05678E;
+	Fri, 19 Jan 2018 15:02:40 +0000 (UTC)
 Received: from AMD.redhat.com (ovpn-116-129.ams2.redhat.com [10.36.116.129])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A56A45C1B7;
-	Fri, 19 Jan 2018 15:03:12 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 252455C1B7;
+	Fri, 19 Jan 2018 15:02:08 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
 	alex.williamson@redhat.com, mst@redhat.com, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org, jean-philippe.brucker@arm.com
-Date: Fri, 19 Jan 2018 14:49:06 +0000
-Message-Id: <1516373355-305-14-git-send-email-eric.auger@redhat.com>
+Date: Fri, 19 Jan 2018 14:49:04 +0000
+Message-Id: <1516373355-305-12-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1516373355-305-1-git-send-email-eric.auger@redhat.com>
 References: <1516373355-305-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Fri, 19 Jan 2018 15:03:42 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.32]);
+	Fri, 19 Jan 2018 15:02:40 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [RFC v5 13/22] virtio-iommu: Implement probe request
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [RFC v5 11/22] virtio-iommu: Implement map/unmap
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: wei@redhat.com, kevin.tian@intel.com, marc.zyngier@arm.com, tn@semihalf.com,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: kevin.tian@intel.com, marc.zyngier@arm.com, tn@semihalf.com,
 	will.deacon@arm.com, drjones@redhat.com, peterx@redhat.com,
 	linuc.decode@gmail.com, bharat.bhushan@nxp.com, christoffer.dall@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hLxADittxbGf
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: VtnEd0OoNw4x
 
-This patch implements the PROBE request. At the moment,
-no reserved regions are returned as none are registered
-per device. Only a NONE property is returned.
+This patch implements virtio_iommu_map/unmap.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
 ---
 
-v4 -> v5:
-- initialize bufstate.error to false
-- add cpu_to_le64(size)
+v3 -> v4:
+- implement unmap semantics as specified in v0.4
 ---
- hw/virtio/trace-events   |   2 +
- hw/virtio/virtio-iommu.c | 190 ++++++++++++++++++++++++++++++++++++++++++++++-
- 2 files changed, 190 insertions(+), 2 deletions(-)
+ hw/virtio/trace-events   |  3 ++
+ hw/virtio/virtio-iommu.c | 91 ++++++++++++++++++++++++++++++++++++++++++++++--
+ 2 files changed, 92 insertions(+), 2 deletions(-)
 
 diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
-index 873e4fc..6a502cc 100644
+index 59c75da..3ce9b82 100644
 --- a/hw/virtio/trace-events
 +++ b/hw/virtio/trace-events
-@@ -46,3 +46,5 @@ virtio_iommu_unmap_left_interval(uint64_t low, uint64_t high, uint64_t next_low,
- virtio_iommu_unmap_right_interval(uint64_t low, uint64_t high, uint64_t next_low, uint64_t next_high) "Unmap right [0x%"PRIx64",0x%"PRIx64"], new interval=[0x%"PRIx64",0x%"PRIx64"]"
- virtio_iommu_unmap_inc_interval(uint64_t low, uint64_t high) "Unmap inc [0x%"PRIx64",0x%"PRIx64"]"
- virtio_iommu_translate_out(uint64_t virt_addr, uint64_t phys_addr, uint32_t sid) "0x%"PRIx64" -> 0x%"PRIx64 " for sid=%d"
-+virtio_iommu_fill_resv_property(uint32_t devid, uint8_t subtype, uint64_t addr, uint64_t size, uint32_t flags, size_t filled) "dev= %d, subtype=%d addr=0x%"PRIx64" size=0x%"PRIx64" flags=%d filled=0x%lx"
-+virtio_iommu_fill_none_property(uint32_t devid) "devid=%d"
+@@ -42,3 +42,6 @@ virtio_iommu_get_endpoint(uint32_t ep_id) "Alloc endpoint=%d"
+ virtio_iommu_put_endpoint(uint32_t ep_id) "Free endpoint=%d"
+ virtio_iommu_get_domain(uint32_t domain_id) "Alloc domain=%d"
+ virtio_iommu_put_domain(uint32_t domain_id) "Free domain=%d"
++virtio_iommu_unmap_left_interval(uint64_t low, uint64_t high, uint64_t next_low, uint64_t next_high) "Unmap left [0x%"PRIx64",0x%"PRIx64"], new interval=[0x%"PRIx64",0x%"PRIx64"]"
++virtio_iommu_unmap_right_interval(uint64_t low, uint64_t high, uint64_t next_low, uint64_t next_high) "Unmap right [0x%"PRIx64",0x%"PRIx64"], new interval=[0x%"PRIx64",0x%"PRIx64"]"
++virtio_iommu_unmap_inc_interval(uint64_t low, uint64_t high) "Unmap inc [0x%"PRIx64",0x%"PRIx64"]"
 diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
-index c96aacc..0e712b3 100644
+index b30d761..f530eca 100644
 --- a/hw/virtio/virtio-iommu.c
 +++ b/hw/virtio/virtio-iommu.c
-@@ -39,6 +39,11 @@
+@@ -58,6 +58,13 @@ typedef struct viommu_interval {
+     uint64_t high;
+ } viommu_interval;
  
- /* Max size */
- #define VIOMMU_DEFAULT_QUEUE_SIZE 256
-+#define VIOMMU_PROBE_SIZE 512
-+
-+#define SUPPORTED_PROBE_PROPERTIES (\
-+    VIRTIO_IOMMU_PROBE_T_NONE | \
-+    VIRTIO_IOMMU_PROBE_T_RESV_MEM)
- 
- typedef struct viommu_domain {
-     uint32_t id;
-@@ -51,6 +56,7 @@ typedef struct viommu_endpoint {
-     viommu_domain *domain;
-     QLIST_ENTRY(viommu_endpoint) next;
-     VirtIOIOMMU *viommu;
-+    GTree *reserved_regions;
- } viommu_endpoint;
- 
- typedef struct viommu_interval {
-@@ -65,6 +71,13 @@ typedef struct viommu_mapping {
-     uint32_t flags;
- } viommu_mapping;
- 
-+typedef struct viommu_property_buffer {
-+    viommu_endpoint *endpoint;
-+    size_t filled;
-+    uint8_t *start;
-+    bool error;
-+} viommu_property_buffer;
++typedef struct viommu_mapping {
++    uint64_t virt_addr;
++    uint64_t phys_addr;
++    uint64_t size;
++    uint32_t flags;
++} viommu_mapping;
 +
  static inline uint16_t virtio_iommu_get_sid(IOMMUDevice *dev)
  {
      return PCI_BUILD_BDF(pci_bus_num(dev->bus), dev->devfn);
-@@ -104,6 +117,9 @@ static viommu_endpoint *virtio_iommu_get_endpoint(VirtIOIOMMU *s,
-     ep->viommu = s;
-     trace_virtio_iommu_get_endpoint(ep_id);
-     g_tree_insert(s->endpoints, GUINT_TO_POINTER(ep_id), ep);
-+    ep->reserved_regions = g_tree_new_full((GCompareDataFunc)interval_cmp,
-+                                            NULL, (GDestroyNotify)g_free,
-+                                            (GDestroyNotify)g_free);
-     return ep;
- }
- 
-@@ -117,6 +133,7 @@ static void virtio_iommu_put_endpoint(gpointer data)
-     }
- 
-     trace_virtio_iommu_put_endpoint(ep->id);
-+    g_tree_destroy(ep->reserved_regions);
-     g_free(ep);
- }
- 
-@@ -358,6 +375,139 @@ static int virtio_iommu_unmap(VirtIOIOMMU *s,
-     return VIRTIO_IOMMU_S_INVAL;
- }
- 
-+/**
-+ * virtio_iommu_fill_resv_mem_prop - Add a RESV_MEM probe
-+ * property into the probe request buffer
-+ *
-+ * @key: interval handle
-+ * @value: handle to the reserved memory region
-+ * @data: handle to the probe request buffer state
-+ */
-+static gboolean virtio_iommu_fill_resv_mem_prop(gpointer key,
-+                                                gpointer value,
-+                                                gpointer data)
-+{
-+    struct virtio_iommu_probe_resv_mem *resv =
-+        (struct virtio_iommu_probe_resv_mem *)value;
-+    struct virtio_iommu_probe_property *prop;
-+    struct virtio_iommu_probe_resv_mem *current;
-+    viommu_property_buffer *bufstate = (viommu_property_buffer *)data;
-+    size_t size = sizeof(*resv), total_size;
+@@ -253,10 +260,37 @@ static int virtio_iommu_map(VirtIOIOMMU *s,
+     uint64_t virt_addr = le64_to_cpu(req->virt_addr);
+     uint64_t size = le64_to_cpu(req->size);
+     uint32_t flags = le32_to_cpu(req->flags);
++    viommu_domain *domain;
++    viommu_interval *interval;
++    viommu_mapping *mapping;
 +
-+    total_size = size + sizeof(*prop);
++    interval = g_malloc0(sizeof(*interval));
 +
-+    if (bufstate->filled + total_size >= VIOMMU_PROBE_SIZE) {
-+        bufstate->error = true;
-+        /* get the traversal stopped by returning true */
-+        return true;
-+    }
-+    prop = (struct virtio_iommu_probe_property *)
-+                (bufstate->start + bufstate->filled);
-+    prop->type = cpu_to_le16(VIRTIO_IOMMU_PROBE_T_RESV_MEM) &
-+                    VIRTIO_IOMMU_PROBE_T_MASK;
-+    prop->length = cpu_to_le16(size);
++    interval->low = virt_addr;
++    interval->high = virt_addr + size - 1;
 +
-+    current = (struct virtio_iommu_probe_resv_mem *)prop->value;
-+    *current = *resv;
-+    bufstate->filled += total_size;
-+    trace_virtio_iommu_fill_resv_property(bufstate->endpoint->id,
-+                                          resv->subtype, resv->addr,
-+                                          resv->size, resv->subtype,
-+                                          bufstate->filled);
-+    return false;
-+}
-+
-+static int virtio_iommu_fill_none_prop(viommu_property_buffer *bufstate)
-+{
-+    struct virtio_iommu_probe_property *prop;
-+
-+    prop = (struct virtio_iommu_probe_property *)
-+                (bufstate->start + bufstate->filled);
-+    prop->type = cpu_to_le16(VIRTIO_IOMMU_PROBE_T_NONE)
-+                    & VIRTIO_IOMMU_PROBE_T_MASK;
-+    prop->length = 0;
-+    bufstate->filled += sizeof(*prop);
-+    trace_virtio_iommu_fill_none_property(bufstate->endpoint->id);
-+    return 0;
-+}
-+
-+static int virtio_iommu_fill_property(int type,
-+                                      viommu_property_buffer *bufstate)
-+{
-+    int ret = -ENOSPC;
-+
-+    if (bufstate->filled + 4 >= VIOMMU_PROBE_SIZE) {
-+        /* Even the property header cannot be filled */
-+        bufstate->error = true;
-+        goto out;
++    domain = g_tree_lookup(s->domains, GUINT_TO_POINTER(domain_id));
++    if (!domain) {
++        return VIRTIO_IOMMU_S_NOENT;
 +    }
 +
-+    switch (type) {
-+    case VIRTIO_IOMMU_PROBE_T_NONE:
-+        ret = virtio_iommu_fill_none_prop(bufstate);
-+        break;
-+    case VIRTIO_IOMMU_PROBE_T_RESV_MEM:
-+    {
-+        viommu_endpoint *ep = bufstate->endpoint;
-+
-+        g_tree_foreach(ep->reserved_regions,
-+                       virtio_iommu_fill_resv_mem_prop,
-+                       bufstate);
-+        if (!bufstate->error) {
-+            ret = 0;
-+        }
-+        break;
-+    }
-+    default:
-+        ret = -ENOENT;
-+        break;
-+    }
-+out:
-+    if (ret) {
-+        error_report("%s property of type=%d could not be filled (%d),"
-+                     " remaining size = 0x%lx",
-+                     __func__, type, ret, bufstate->filled);
-+    }
-+    return ret;
-+}
-+
-+/**
-+ * virtio_iommu_probe - Fill the probe request buffer with all
-+ * the properties the device is able to return and add a NONE
-+ * property at the end.
-+ */
-+static int virtio_iommu_probe(VirtIOIOMMU *s,
-+                              struct virtio_iommu_req_probe *req,
-+                              uint8_t *buf)
-+{
-+    uint32_t ep_id = le32_to_cpu(req->endpoint);
-+    int16_t prop_types = SUPPORTED_PROBE_PROPERTIES, type;
-+    viommu_property_buffer bufstate;
-+    viommu_endpoint *ep;
-+    int ret;
-+
-+    ep = g_tree_lookup(s->endpoints, GUINT_TO_POINTER(ep_id));
-+    if (!ep) {
-+        return -EINVAL;
-+    }
-+
-+    bufstate.start = buf;
-+    bufstate.filled = 0;
-+    bufstate.error = false;
-+    bufstate.endpoint = ep;
-+
-+    while ((type = ctz32(prop_types)) != 32) {
-+        ret = virtio_iommu_fill_property(1 << type, &bufstate);
-+        if (ret) {
-+            break;
-+        }
-+        prop_types &= ~(1 << type);
-+    }
-+    virtio_iommu_fill_property(VIRTIO_IOMMU_PROBE_T_NONE, &bufstate);
-+
-+    return VIRTIO_IOMMU_S_OK;
-+}
-+
- #define get_payload_size(req) (\
- sizeof((req)) - sizeof(struct virtio_iommu_req_tail))
- 
-@@ -422,6 +572,24 @@ static int virtio_iommu_handle_unmap(VirtIOIOMMU *s,
-     return virtio_iommu_unmap(s, &req);
- }
- 
-+static int virtio_iommu_handle_probe(VirtIOIOMMU *s,
-+                                     struct iovec *iov,
-+                                     unsigned int iov_cnt,
-+                                     uint8_t *buf)
-+{
-+    struct virtio_iommu_req_probe req;
-+    size_t sz, payload_sz;
-+
-+    payload_sz = sizeof(req);
-+
-+    sz = iov_to_buf(iov, iov_cnt, 0, &req, payload_sz);
-+    if (sz != payload_sz) {
++    mapping = g_tree_lookup(domain->mappings, (gpointer)interval);
++    if (mapping) {
++        g_free(interval);
 +        return VIRTIO_IOMMU_S_INVAL;
 +    }
-+
-+    return virtio_iommu_probe(s, &req, buf);
-+}
-+
- static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *vq)
- {
-     VirtIOIOMMU *s = VIRTIO_IOMMU(vdev);
-@@ -466,16 +634,32 @@ static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *vq)
-         case VIRTIO_IOMMU_T_UNMAP:
-             tail.status = virtio_iommu_handle_unmap(s, iov, iov_cnt);
-             break;
-+        case VIRTIO_IOMMU_T_PROBE:
-+        {
-+            struct virtio_iommu_req_tail *ptail;
-+            uint8_t *buf = g_malloc0(s->config.probe_size + sizeof(tail));
-+
-+            ptail = (struct virtio_iommu_req_tail *)
-+                        (buf + s->config.probe_size);
-+            ptail->status = virtio_iommu_handle_probe(s, iov, iov_cnt, buf);
-+
-+            sz = iov_from_buf(elem->in_sg, elem->in_num, 0,
-+                              buf, s->config.probe_size + sizeof(tail));
-+            g_free(buf);
-+            assert(sz == s->config.probe_size + sizeof(tail));
-+            goto push;
-+        }
-         default:
-             tail.status = VIRTIO_IOMMU_S_UNSUPP;
-         }
--        qemu_mutex_unlock(&s->mutex);
  
-         sz = iov_from_buf(elem->in_sg, elem->in_num, 0,
-                           &tail, sizeof(tail));
-         assert(sz == sizeof(tail));
+     trace_virtio_iommu_map(domain_id, phys_addr, virt_addr, size, flags);
  
--        virtqueue_push(vq, elem, sizeof(tail));
-+push:
-+        qemu_mutex_unlock(&s->mutex);
-+        virtqueue_push(vq, elem, sz);
-         virtio_notify(vdev, vq);
-         g_free(elem);
-     }
-@@ -568,6 +752,7 @@ static uint64_t virtio_iommu_get_features(VirtIODevice *vdev, uint64_t f,
-     virtio_add_feature(&f, VIRTIO_RING_F_INDIRECT_DESC);
-     virtio_add_feature(&f, VIRTIO_IOMMU_F_INPUT_RANGE);
-     virtio_add_feature(&f, VIRTIO_IOMMU_F_MAP_UNMAP);
-+    virtio_add_feature(&f, VIRTIO_IOMMU_F_PROBE);
-     return f;
+-    return VIRTIO_IOMMU_S_UNSUPP;
++    mapping = g_malloc0(sizeof(*mapping));
++    mapping->virt_addr = virt_addr;
++    mapping->phys_addr = phys_addr;
++    mapping->size = size;
++    mapping->flags = flags;
++
++    g_tree_insert(domain->mappings, interval, mapping);
++
++    return VIRTIO_IOMMU_S_OK;
  }
  
-@@ -623,6 +808,7 @@ static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
+ static int virtio_iommu_unmap(VirtIOIOMMU *s,
+@@ -265,10 +299,63 @@ static int virtio_iommu_unmap(VirtIOIOMMU *s,
+     uint32_t domain_id = le32_to_cpu(req->domain);
+     uint64_t virt_addr = le64_to_cpu(req->virt_addr);
+     uint64_t size = le64_to_cpu(req->size);
++    viommu_mapping *mapping;
++    viommu_interval interval;
++    viommu_domain *domain;
  
-     s->config.page_size_mask = TARGET_PAGE_MASK;
-     s->config.input_range.end = -1UL;
-+    s->config.probe_size = VIOMMU_PROBE_SIZE;
+     trace_virtio_iommu_unmap(domain_id, virt_addr, size);
  
-     qemu_mutex_init(&s->mutex);
+-    return VIRTIO_IOMMU_S_UNSUPP;
++    domain = g_tree_lookup(s->domains, GUINT_TO_POINTER(domain_id));
++    if (!domain) {
++        error_report("%s: no domain", __func__);
++        return VIRTIO_IOMMU_S_NOENT;
++    }
++    interval.low = virt_addr;
++    interval.high = virt_addr + size - 1;
++
++    mapping = g_tree_lookup(domain->mappings, (gpointer)(&interval));
++
++    while (mapping) {
++        viommu_interval current;
++        uint64_t low  = mapping->virt_addr;
++        uint64_t high = mapping->virt_addr + mapping->size - 1;
++
++        current.low = low;
++        current.high = high;
++
++        if (low == interval.low && size >= mapping->size) {
++            g_tree_remove(domain->mappings, (gpointer)(&current));
++            interval.low = high + 1;
++            trace_virtio_iommu_unmap_left_interval(current.low, current.high,
++                interval.low, interval.high);
++        } else if (high == interval.high && size >= mapping->size) {
++            trace_virtio_iommu_unmap_right_interval(current.low, current.high,
++                interval.low, interval.high);
++            g_tree_remove(domain->mappings, (gpointer)(&current));
++            interval.high = low - 1;
++        } else if (low > interval.low && high < interval.high) {
++            trace_virtio_iommu_unmap_inc_interval(current.low, current.high);
++            g_tree_remove(domain->mappings, (gpointer)(&current));
++        } else {
++            break;
++        }
++        if (interval.low >= interval.high) {
++            return VIRTIO_IOMMU_S_OK;
++        } else {
++            mapping = g_tree_lookup(domain->mappings, (gpointer)(&interval));
++        }
++    }
++
++    if (mapping) {
++        error_report("****** %s: Unmap 0x%"PRIx64" size=0x%"PRIx64
++                     " from 0x%"PRIx64" size=0x%"PRIx64" is not supported",
++                     __func__, interval.low, size,
++                     mapping->virt_addr, mapping->size);
++    } else {
++        return VIRTIO_IOMMU_S_OK;
++    }
++
++    return VIRTIO_IOMMU_S_INVAL;
+ }
  
+ #define get_payload_size(req) (\
 -- 
 1.9.1
 

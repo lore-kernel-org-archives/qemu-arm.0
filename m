@@ -1,82 +1,115 @@
-Received: by 10.28.71.27 with SMTP id u27csp861693wma;
-        Fri, 19 Jan 2018 07:19:22 -0800 (PST)
-X-Google-Smtp-Source: ACJfBotTqbokDxEkYbo9VO2pkc9IiGq//WMnB+uquB4MiIi8oYmpT4ipLX0IWOF2wXEeG6Xhs0IM
-X-Received: by 10.13.199.65 with SMTP id j62mr2106865ywd.370.1516375162686;
-        Fri, 19 Jan 2018 07:19:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516375162; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp866403wma;
+        Fri, 19 Jan 2018 07:23:30 -0800 (PST)
+X-Google-Smtp-Source: ACJfBouvexOcZF31AWkBfIQk3FKcnqcKyRzdMJbFj9OI/W7HXZkYujFxazaVMH7ndrqO+LlF4qv5
+X-Received: by 10.37.233.7 with SMTP id n7mr26992685ybd.522.1516375410808;
+        Fri, 19 Jan 2018 07:23:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516375410; cv=none;
         d=google.com; s=arc-20160816;
-        b=EDjg7E/jc6N2GJCqFhDqJ7Zc9b2PFHaJQaUFeSWnk8FRV79mOcQNEGKWpJ+iYGrFxo
-         d1aWD5+u4P6vQT+BLtTuZdSrLUBl0ZkdLiPo1A2mj1yjrjia9zgfAPNkbO8iLVKy7rX1
-         4POk7L3i8r2w4yF4JCv8lDlgYsCgI7dwfnP6iXBVcGwuB9R2gG/Vj/5RwWYKZ3oB+qs9
-         zWEVCe0ndQ1qs4LYc1ehGvZdL7V1vtuYyGc9KqvV3xysUN8eaopPpVsdP/wRgBWqdBz5
-         Kz9Mr5QL3RqzctJLHaslKYqIMK6sKVSz0ESypZwxz+2JsJ/2Fh7YRw9oNblQZKLyFys7
-         JnFw==
+        b=HMLZriV9/2v5XTyvMOE83XkKeueW8JucuO3TqIjwJUR0RFvCo2H9Jx/jeuoZvXJgth
+         NgXeZDfX8h1uOxm8eKq73tcVO15qEkvj8g6V2hvjK7Jaba0yW9SR7hS0jBnNBk7q9dOw
+         M3di06viRG13MMgP/6BFDKy1Ak7NNngBzLLssV/tsmh8rqNiP5DlqKHsESf0lp4GjwOS
+         mruhAOt0qdJ1kvdsPcyoeAzNjGOPMcMJqAgYZBzbS1DN0BEKYUDv/4WRxPNSgniIoVIp
+         vmI0ZJqzD2xxgMmP+b5MoLesMbGIhC5Egxk2PAUY0UBuHon2i6KuD1+qg5VRfYPLETz7
+         UPaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=4+oWtO3SMx0nTnxi5Kp3hmaFI5B9a9mipDYwWyQLU6M=;
-        b=d6hKwjPtHskmoPx7CkQ1kB0DhaP2EpB9pRNAwHyYX1gMDKxItK492C5CZRYwyTqO4z
-         cGFMOUEMuNcbtFNlhexfXt3bXoA4u69PLtK2/DnDeHqCJc8TLl8+VTNYq0mWZsWw1iBY
-         gFhHag44xSfbvpm1CwYyKu7tOxFFuvAl1DqKSk1uFZ2ms+kvKsK5FlBe/tZ2m1dSVTxe
-         RD0uWFO1q424Au28R40vnfyhGuy5SnYoS4jNdyFGUbD+ghgTWdeICjOxTtIGcD15FfIz
-         YM+fPlbSEiiRQt6L5lEoMC/C+R0D9hLyKY0Lu5VDGsd1tyIxFG0iR1JmKuuhcsZQyjsG
-         fOiQ==
+         :message-id:date:to:from:dkim-signature:dkim-signature
+         :dkim-signature:arc-authentication-results;
+        bh=2vNzCkhLRZ4mEKClldlJa1YkZDzTbJBjlByRDjgtmoE=;
+        b=OjiAzX6akoi3kHfUcZo6HdjEyGzo8OJnAm/VW7im2ZCjqrjMLX76QDpB4D9yEXzSdU
+         9GDtANV19jl4IPlbIwrnf+Eaye0sIX3qdRao63rx8l31Pjm9ASc/3ffp62R5XajdHhHX
+         uMtOPDbEOz1bILGHIv9nP32Antz0kIwfjPpe0OO6gGBiesSgMFbdugZOMokS1gQprqHq
+         jdYpvuYmbmg1czB2Ju5p6KsXymYRdo4Rt+CeCGnPZDZDzGvSu4+9hDWjhTij+u3zPke1
+         1d3YFbJ6xevT4vGbhB7MYS68qAB1+5i2Whm6Rve8WGiPdrep11WD/cp+AiFH7uVzva3t
+         aETw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=pQSyzoOe;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=pOv5g5cu;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=pOv5g5cu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=greensocs.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p185si2272731ywf.257.2018.01.19.07.19.22
+        by mx.google.com with ESMTPS id v67si2201224ywc.471.2018.01.19.07.23.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 19 Jan 2018 07:19:22 -0800 (PST)
+        Fri, 19 Jan 2018 07:23:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=pQSyzoOe;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=pOv5g5cu;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=pOv5g5cu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54961 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=greensocs.com
+Received: from localhost ([::1]:55303 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ecYRu-0004XU-63
-	for alex.bennee@linaro.org; Fri, 19 Jan 2018 10:19:22 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49997)
+	id 1ecYVu-0007Vs-90
+	for alex.bennee@linaro.org; Fri, 19 Jan 2018 10:23:30 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47028)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1ecYFw-0001tx-Qk
-	for qemu-arm@nongnu.org; Fri, 19 Jan 2018 10:07:01 -0500
+	(envelope-from <luc.michel@greensocs.com>) id 1ecY7U-0002my-78
+	for qemu-arm@nongnu.org; Fri, 19 Jan 2018 09:58:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1ecYFv-0004iy-V7
-	for qemu-arm@nongnu.org; Fri, 19 Jan 2018 10:07:00 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:56542)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1ecYFv-0004gY-QL; Fri, 19 Jan 2018 10:06:59 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(envelope-from <luc.michel@greensocs.com>) id 1ecY7Q-0003jS-9E
+	for qemu-arm@nongnu.org; Fri, 19 Jan 2018 09:58:16 -0500
+Received: from greensocs.com ([193.104.36.180]:39272)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <luc.michel@greensocs.com>)
+	id 1ecY7P-0003iK-W6; Fri, 19 Jan 2018 09:58:12 -0500
+Received: from localhost (localhost [127.0.0.1])
+	by greensocs.com (Postfix) with ESMTP id A23FE5E2F8;
+	Fri, 19 Jan 2018 15:58:03 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1516373883;
+	bh=FlcRuHgM7HCaRegPGAVU37r0+yEoKHRp0N1iIQwTaDw=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=pQSyzoOe8YEX3VzsCnuqBiU0qYrk40pUDsWguGegoVpIR/k7ISPSm8kpbGNWzSd+C
+	rAVeP/0BgzXW0R3YkSfex9vlHAQXx4iLA2OeUlnY+EHnoPgzvgUl7xpvtjDWXlFNqW
+	ydHM0wLmEPmwVIy0igClzSSWJsl07AYsMN1S+aro=
+X-Virus-Scanned: amavisd-new at greensocs.com
+Authentication-Results: gs-01.greensocs.com (amavisd-new);
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=pOv5g5cu;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=pOv5g5cu
+Received: from greensocs.com ([127.0.0.1])
+	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id O-rtn_aslmTM; Fri, 19 Jan 2018 15:58:02 +0100 (CET)
+Received: by greensocs.com (Postfix, from userid 998)
+	id C3E0965A17; Fri, 19 Jan 2018 15:58:00 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1516373880;
+	bh=FlcRuHgM7HCaRegPGAVU37r0+yEoKHRp0N1iIQwTaDw=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=pOv5g5cuZZ7Zj7Pm5RiUa7aUMzq0foA9mpsEnqQkKfkM+duwlYilfj9oW1hUQOk6T
+	boLvYnedTZ+cIRgBp4I5b7XQlICVLd3LPsSmW7ProsgIu9P35UGVmVAa1l+YPcV/Z/
+	tLKbzu0l72EBfvJR9yowiSUcTAo4Fb8kjPbEaUzY=
+Received: from michell-laptop.hive.antfield.fr (tima-dhcp-h14.imag.fr
+	[147.171.132.20])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E698DFD06;
-	Fri, 19 Jan 2018 15:06:58 +0000 (UTC)
-Received: from AMD.redhat.com (ovpn-116-129.ams2.redhat.com [10.36.116.129])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D06A45C1B7;
-	Fri, 19 Jan 2018 15:06:25 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
-	alex.williamson@redhat.com, mst@redhat.com, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, jean-philippe.brucker@arm.com
-Date: Fri, 19 Jan 2018 14:49:12 +0000
-Message-Id: <1516373355-305-20-git-send-email-eric.auger@redhat.com>
-In-Reply-To: <1516373355-305-1-git-send-email-eric.auger@redhat.com>
-References: <1516373355-305-1-git-send-email-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Fri, 19 Jan 2018 15:06:59 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v5 19/22] memory.h: Add set_page_size_mask
- IOMMUMemoryRegion callback
+	(Authenticated sender: luc.michel@greensocs.com)
+	by greensocs.com (Postfix) with ESMTPSA id 5AED2319FD0;
+	Fri, 19 Jan 2018 15:58:00 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1516373880;
+	bh=FlcRuHgM7HCaRegPGAVU37r0+yEoKHRp0N1iIQwTaDw=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=pOv5g5cuZZ7Zj7Pm5RiUa7aUMzq0foA9mpsEnqQkKfkM+duwlYilfj9oW1hUQOk6T
+	boLvYnedTZ+cIRgBp4I5b7XQlICVLd3LPsSmW7ProsgIu9P35UGVmVAa1l+YPcV/Z/
+	tLKbzu0l72EBfvJR9yowiSUcTAo4Fb8kjPbEaUzY=
+From: luc.michel@greensocs.com
+To: qemu-devel@nongnu.org
+Date: Fri, 19 Jan 2018 15:57:55 +0100
+Message-Id: <20180119145756.7629-5-luc.michel@greensocs.com>
+X-Mailer: git-send-email 2.16.0
+In-Reply-To: <20180119145756.7629-1-luc.michel@greensocs.com>
+References: <20180119145756.7629-1-luc.michel@greensocs.com>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 193.104.36.180
+X-Mailman-Approved-At: Fri, 19 Jan 2018 10:23:16 -0500
+Subject: [Qemu-arm] [PATCH 3/4] hw/intc/arm_gic: Fix group priority
+ computation for group 1 IRQs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -88,36 +121,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: kevin.tian@intel.com, marc.zyngier@arm.com, tn@semihalf.com,
-	will.deacon@arm.com, drjones@redhat.com, peterx@redhat.com,
-	linuc.decode@gmail.com, bharat.bhushan@nxp.com, christoffer.dall@linaro.org
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	qemu-arm@nongnu.org, Luc MICHEL <luc.michel@git.antfield.fr>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7l0e/XPkurGL
+X-TUID: Wh/AvEidpLMM
 
-This callback allows to inform the IOMMU memory region about
-restrictions on the supported page sizes.
+From: Luc MICHEL <luc.michel@git.antfield.fr>
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+When determining the group priority of a group 1 IRQ, if C_CTRL.CBPR is
+0, the non-secure BPR value is used. However, this value must be
+incremented by one so that it matches the secure world number of
+implemented priority bits (NS world has one less priority bit compared
+to the Secure world).
+
+Signed-off-by: Luc MICHEL <luc.michel@git.antfield.fr>
 ---
- include/exec/memory.h | 4 ++++
- 1 file changed, 4 insertions(+)
+ hw/intc/arm_gic.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index a4cabdf..c0916d7 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -204,6 +204,10 @@ typedef struct IOMMUMemoryRegionClass {
-                                IOMMUAccessFlags flag);
-     /* Returns minimum supported page size */
-     uint64_t (*get_min_page_size)(IOMMUMemoryRegion *iommu);
-+
-+    /* Limits the supported page sizes to @pgsizes */
-+    void (*set_page_size_mask)(IOMMUMemoryRegion *iommu, uint64_t pgsizes);
-+
-     /* Called when IOMMU Notifier flag changed */
-     void (*notify_flag_changed)(IOMMUMemoryRegion *iommu,
-                                 IOMMUNotifierFlag old_flags,
+diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+index 713de3084f..d0a41a89ae 100644
+--- a/hw/intc/arm_gic.c
++++ b/hw/intc/arm_gic.c
+@@ -256,7 +256,7 @@ static int gic_get_group_priority(GICState *s, int cpu, int irq)
+     if (gic_has_groups(s) &&
+         !(s->cpu_ctlr[cpu] & GICC_CTLR_CBPR) &&
+         GIC_TEST_GROUP(irq, (1 << cpu))) {
+-        bpr = s->abpr[cpu];
++        bpr = s->abpr[cpu] - 1;
+     } else {
+         bpr = s->bpr[cpu];
+     }
 -- 
-1.9.1
+2.16.0
 

@@ -1,393 +1,151 @@
-Received: by 10.28.71.27 with SMTP id u27csp3082022wma;
-        Mon, 22 Jan 2018 09:49:17 -0800 (PST)
-X-Google-Smtp-Source: AH8x224yiM91/GWGbIhDwXKuqkKL6G9U5KH7RQPNiT8OJIv+vYOSByZ7IzpTXJuvht56Qqq/7hMM
-X-Received: by 10.129.53.194 with SMTP id c185mr8237221ywa.78.1516643357417;
-        Mon, 22 Jan 2018 09:49:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516643357; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp3101228wma;
+        Mon, 22 Jan 2018 10:06:56 -0800 (PST)
+X-Google-Smtp-Source: AH8x2279txI4anj5Ch3y7uTkyXtnqfLhk5SDPwYw9nkT5JG7HJtwkhugm3KrKJSTnGEK0oO3Zhvo
+X-Received: by 10.37.214.76 with SMTP id n73mr8235540ybg.319.1516644416510;
+        Mon, 22 Jan 2018 10:06:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516644416; cv=none;
         d=google.com; s=arc-20160816;
-        b=HsVvcDIT0VAnikGeT/7vdxmG1IVxMNmKp5N94r8o7ZcQkfsmSrM6aUGGuEN8dF7Yod
-         vH6eekCvmGree0XMUCOMXHvcrOPZhucM7ewNNkYu6FAe/lOdn1qsvzqA5W/c169tqZ0L
-         +tTDE9bZknkzLajN/BewJY8DshQMBZjx9ZSd4ftECYFunb+6WMgxGSAzS/66nssJjvek
-         Yb27+7jFcE59qyMnl3bW+GmySyuDPaWDzxF95Y+UMTRfmnSkiVF+E+leo0D/jxSGn4Ba
-         inY0uLBDTcJUCU9/1W04/tbdz3f7NeQl3MLIc4r6LirSXTxMfQryZySK/OueDGqOvTBk
-         o8SA==
+        b=HUGCZzhFj90m5plPLIQYJZ8l9IHHIQRYxt5lcoZ46zmVKBLMs6Umx30DP6IU5Zrg6/
+         0wtfCQaeHyu48Yex4LKdGmtCI1iro8AFkh0B8f/3oxTF3GbnePL8c7nh3ucNCJ9GoIoH
+         0cM8cB4HGup6EEL+GW2BnY3OKzcwCJZpjvB5yoRMVAP4h6WmJff2XBbML5bMbchOBGTE
+         ss8eAq9QqKPY1svISDmJE5hYjA1X9zNu7YPzch/DOTLRd+atLVfTSN0DqvWLBhCmVO/p
+         mjrkYEz7xrrqo13bOkfHMeEHvtb9knuIYGCiaZpvWkVp0kPQ6DeSqQuy3BwpzDfjlIKm
+         oGVw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=VNxOD5wDAkwh32dYkZWHYctAfRlvIbRdZgKrsEqcVVs=;
-        b=iJSiGOpe47y3jjvkZJDqutxfeaOFA2G2OF5+Ek5jifFFik/HmwD3sXMc/TaDndrFEa
-         lz17RPIAbGx0BbFc9vJgNSNwSuGiUNbfoQ8Z4KVGOftYGeoc2RU3riYgRlLCjtaPhkbk
-         XjyZrAcEhvUf2CmaVneniCvp+hVieazJnbqLsHFapovMFhZ9yxTF69zYuiRcCXBNPk3W
-         QEE6w8KlIXZG7VmApZcMgizMTtmLmsTIJLL3SWK7AAO6fV1SHAbQuUh3MYsxNkdtTGQI
-         TIu3X7MaQTw7K4E42R0bPVy16+FNJWyKklvHyi8Cjw0eqplgPNI3TN8qaloIStmzd4Md
-         VZ8A==
+        bh=e84aNtN79RqnmNv3o6tzs7E1cCJea35j+J2949EV7os=;
+        b=pz3SjBgOkEXCfgzvpmLhE5kWtJGunVORVT1/JRPvCHqHK6UIRG56vNGsWF28/sJUCs
+         pFDmmveoaeUBk+1BmE5H1L/v0nlUYF9V6KAGcERuEfteQG/W8UX/xUdyzTvR7pGDikQu
+         tsfe5YGf2Eq9JZFWzWcduq/Y04hqLfLvWK5AugZ4KVTLFxSqfYYg/kXS+oKjZkOTo/bL
+         z/P4YkuU/8HNSkJt00KnXC+nqGIUPgZcdSDilQB6sjbz95HRvH4AufGK8GRO9cqucC2a
+         huWtvNRqcPWsZDXDjKuJKrKE+FwnHOAnlQe+gAlKx2p1j2tBK6uQ59ukaH53k32D1QFF
+         o80A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=QWcNo2Sx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=GEkVmrxh;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 67si2066289ybh.375.2018.01.22.09.49.17
+        by mx.google.com with ESMTPS id y6si3734361ywi.218.2018.01.22.10.06.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 22 Jan 2018 09:49:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 22 Jan 2018 10:06:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=QWcNo2Sx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=GEkVmrxh;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55787 helo=lists.gnu.org)
+Received: from localhost ([::1]:56691 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1edgDb-0001RA-Uq
-	for alex.bennee@linaro.org; Mon, 22 Jan 2018 12:49:15 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55502)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1edgUh-00005H-UF
+	for alex.bennee@linaro.org; Mon, 22 Jan 2018 13:06:55 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36287)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1edgD4-0001OK-Ji
-	for qemu-devel@nongnu.org; Mon, 22 Jan 2018 12:48:45 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1edgUa-0008WT-9M
+	for qemu-arm@nongnu.org; Mon, 22 Jan 2018 13:06:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1edgD2-0004Il-0p
-	for qemu-devel@nongnu.org; Mon, 22 Jan 2018 12:48:42 -0500
-Received: from mail-ot0-x236.google.com ([2607:f8b0:4003:c0f::236]:41202)
+	(envelope-from <peter.maydell@linaro.org>) id 1edgUZ-0001Ha-BH
+	for qemu-arm@nongnu.org; Mon, 22 Jan 2018 13:06:48 -0500
+Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:32995)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1edgD1-0004Hk-Pl
-	for qemu-devel@nongnu.org; Mon, 22 Jan 2018 12:48:39 -0500
-Received: by mail-ot0-x236.google.com with SMTP id 44so8212010otk.8
-	for <qemu-devel@nongnu.org>; Mon, 22 Jan 2018 09:48:39 -0800 (PST)
+	id 1edgUZ-0001GQ-4h
+	for qemu-arm@nongnu.org; Mon, 22 Jan 2018 13:06:47 -0500
+Received: by mail-oi0-x244.google.com with SMTP id y141so6578453oia.0
+	for <qemu-arm@nongnu.org>; Mon, 22 Jan 2018 10:06:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=VNxOD5wDAkwh32dYkZWHYctAfRlvIbRdZgKrsEqcVVs=;
-	b=QWcNo2SxCjbbECKSqErxhsoJzGgJ8i0asQTnUUmchoN0jKQpHNAioPyPGKWL6fOwFl
-	CKGliLMNB3nG0SaNAlHOLUaigrq5w7j6lPTXj9qaV6c4y76rt6BL6Fyw5ANfnb5dOCFu
-	5zW82o5gWUNqCJamq2lQ+a3Sqx0UP+OeTVC1A=
+	:cc; bh=e84aNtN79RqnmNv3o6tzs7E1cCJea35j+J2949EV7os=;
+	b=GEkVmrxhbuu1+/PtjkvlPwpSzjljK5hyuKn/lMJvRc9cHzceScvLNQxB5EM1LkPbkD
+	ZXw75Gk+7ZkmdHGDD/ZC5fiaxccU5stzwIhKthHNZaElplV3B98/FGqa56dg2ZkDrh1j
+	v9o88TSiTfBnO/w7U9Nb2ua7WouqGqfYGP+ZA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=VNxOD5wDAkwh32dYkZWHYctAfRlvIbRdZgKrsEqcVVs=;
-	b=jHEsmVS++wux9DxXtLj7Qjwi4vhsgCyU0pMHNjYMZdubV54TDOghY7czUYGFXAmhvu
-	AdcWb4lCriuWwR4pL2gzEiuNqZvt80ypW7YZZTzbpqb909Erj/XgU67xEyzRVS2cyOaC
-	lapT2UwtLNuJgHnzT5igV12014tO5olVuK+pY5CBTjHNaWahT6B5PIvH6xbdiW5Ax9JW
-	+7RcEru4a7Ijci+ZX5uQfCIGHsQLbRsykyLDRT6kTCZCo6DYKqHH2gB7j3mVD1FqfnYe
-	CgtmuSyF0SSDtimT6X4WWxvYqmtvTr9tfSzVM0t44xUrbmQ+K27H2JM2BxUg5clY+RUU
-	7sqA==
-X-Gm-Message-State: AKwxyteOo1Qhgx980JiZjN/sg5V7L1f2A0ylD1gIY9+U0Tg17uIkeqzX
-	/2jQ7xJAaPXrxoUrsFO07fDuwkpqA/1B8edeML4cfw==
-X-Received: by 10.157.52.215 with SMTP id t23mr4893372otd.54.1516643318428;
-	Mon, 22 Jan 2018 09:48:38 -0800 (PST)
+	bh=e84aNtN79RqnmNv3o6tzs7E1cCJea35j+J2949EV7os=;
+	b=p+TdeGZH71GkvTc3SeNJwomNu6WTxlGwEjP8DcqI+VczdwNL7OkFo4TnXNBxl6ybNU
+	MtkIX5mrzVgsNO/dKnZHPWmOwVmRbbpOBEAp4X/z58dGzzbwZld7Wp/d2yDwys9CQKZR
+	5uSA9EpidPxXW9fcjX7eH4F1eRFL/+xlZNaHgSe4sC5ZqAhTrWeuOURRS5YHgx2BsGqR
+	2dh89jWWIqQKSSYwFXs1rH2D3RJtgvcXisWRsfoedWg589KnN7KoL2OsthxpN7KPs0FV
+	o6lA2Tu15O2yxsag3Ygo4CpVmepLHsJP4M5veyyDRG5WwwzXV1jpp016lLaKOMrThrIU
+	DXzg==
+X-Gm-Message-State: AKwxytdwrS/kNjAp5bvZqtBvvz/3jNG/hpYQjKSk2G2gP5wx2/2taM97
+	id5JvsbEaDM+uvCWESbVahBHhA9gr+x9psZ1kTA2Cw==
+X-Received: by 10.202.180.133 with SMTP id d127mr4669951oif.328.1516644406475; 
+	Mon, 22 Jan 2018 10:06:46 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.157.61.133 with HTTP; Mon, 22 Jan 2018 09:48:17 -0800 (PST)
-In-Reply-To: <c2d2d787-8e45-f26a-54cf-9670a27dc836@lauterbach.com>
-References: <c2d2d787-8e45-f26a-54cf-9670a27dc836@lauterbach.com>
+Received: by 10.157.61.133 with HTTP; Mon, 22 Jan 2018 10:06:26 -0800 (PST)
+In-Reply-To: <20171209010811.GJ3037@localhost.localdomain>
+References: <1512670493-18114-1-git-send-email-peter.maydell@linaro.org>
+	<CAFEAcA-UO5Y_ACSZ2EEQEzgy30wdfEm3u8wUrBrXWaQaE_v+Kw@mail.gmail.com>
+	<20171209010811.GJ3037@localhost.localdomain>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 22 Jan 2018 17:48:17 +0000
-Message-ID: <CAFEAcA_LZYfsOKuq9e-uCQPRBsi5XGNyCWw4E_YhyebNJeyRLQ@mail.gmail.com>
-To: Abdallah Bouassida <abdallah.bouassida@lauterbach.com>
+Date: Mon, 22 Jan 2018 18:06:26 +0000
+Message-ID: <CAFEAcA9oG=+mJ+jSGTM_z54S09gjHoFowDkOvofdkhJd+g3=Cw@mail.gmail.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::236
-Subject: Re: [Qemu-devel] [PATCH RFC] target-arm:Add a dynamic
- XML-description of the cp-registers to GDB
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4003:c06::244
+Subject: Re: [Qemu-arm] [PATCH 0/6] arm: support -cpu max (and
+ gic-version=max)
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Khaled Jmal <khaled.jmal@lauterbach.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NfvyVNTf4zDw
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	"patches@linaro.org" <patches@linaro.org>,
+	"Richard W . M . Jones" <rjones@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: oMRGly3c837o
 
-On 16 January 2018 at 09:40, Abdallah Bouassida
-<abdallah.bouassida@lauterbach.com> wrote:
-> [PATCH RFC] target-arm:Add a dynamic XML-description of the cp-registers to
-> GDB
+On 9 December 2017 at 01:08, Eduardo Habkost <ehabkost@redhat.com> wrote:
+> On Thu, Dec 07, 2017 at 07:37:31PM +0000, Peter Maydell wrote:
+>> On 7 December 2017 at 18:14, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> > This patchset adds support for '-cpu max' to Arm, along the lines
+>> > of the existing support we have for x86 targets:
+>> >
+>> >  * under KVM, -cpu max is the same as -cpu host
+>> >  * under TCG, -cpu max means "emulate with as many features as
+>> >    possible"
+>>
+>> Forgot to mention: -cpu max for qemu-system-aarch64 will
+>> be a 64-bit cpu, and for qemu-system-arm it will be a 32-bit
+>> cpu. (This differs from all the other TCG CPU types, which
+>> behave the same for the 32-bit and 64-bit binaries. I think
+>> it is the same way that x86 -cpu max works, though.)
 >
-> This patch offers to GDB the ability to read/write all the coprocessor
-> registers for ARM and ARM64 by generating dynamically an XML-description for
-> these registers.
-
-Thanks for this patch. This is definitely a feature we've been asked
-for in the past (eg https://bugs.launchpad.net/qemu/+bug/741115).
-
-> - gdbstub.c :
->         *Extend the get_feature_xml() to handle the dynamic XML generation
-> for
->            architectures that support this (gdb_coprocessor_dynnamic_xml ==
-> true)
->         *Extend the gdb_write_register() and gdb_read_register() to handle
-> the
->           write and the read of these registers.
-> - include/qom/cpu.h:
->         *Add a new structure "XMLDynamicDescription".
->         *Declare the new variables and function pointers.
-> - target/arm/cpu.c:
->         *Initialize the new variables and function pointers for ARM.
-> - target/arm/cpu.h:
->         *Declare the new read, write and XML dynamic generation functions.
->         *Declare the write_raw_cp_reg() as I have changed it to non static.
-> - target/arm/gdbstub.c:
->         *Define the new functions for ARM:
->             arm_generate_xml(): is called for each register of the hashtable
-> cp_regs
->                          to generate the right XML "<reg />" line for it.
->             arm_get_feature_xml_dynamically(): generate the XML dynamically.
->             arm_cpu_gdb_read_cpregister(): To read the coprocessor
-> registers.
->             arm_cpu_gdb_write_cpregister(): To write the coprocessor
-> registers.
-
-You don't need to put this kind of gcc-style "what got changed at a very
-fine level of detail" into the commit message -- people can look at the patch or
-the diffstat for that. The commit message is for overview of what is being
-changed and why.
-
-> This patch is tagged as [RFC] because I need help to review the following
-> points:
-> *I only take the registers that (!(ri->type & (ARM_CP_NO_RAW|ARM_CP_ALIAS)))
-> So, am I covering all the Coprocessor registers with that?
-
-More the other way around -- you may be including some things you
-should not...
-
-> *For the ARM64, should I differentiate the registers that have two views (32
-> and 64)
-> Maybe by adding in the XML description a "32" tag for the registers name for
-> the
-> 32bit view and a "64" for the 64bit view.
-> *How to properly handle the secure and the non secure views?
-
-I think it might be useful to approach it from the other end -- what
-are we trying to achieve?
-
-For 32 vs 64 bit, it depends on what interface we're showing to the
-debugger. If we're saying "this is a 64 bit CPU" then we should just
-present the 64-bit sysregs, in the same way we only present the 64-bit
-GPRs. If a 32-bit CPU, present the coprocessor regs only. (It's not
-currently possible to have gdb switch between 32 and 64 bit views
-as a 64-bit CPU changes from aarch32 to aarch64, though upstream gdb
-are working on it.)
-
-For secure vs non-secure, follow how the architecture does it:
- * for a 64-bit CPU, there are no banked sysregs like this, so you
-   just expose 1 register
- * for a 32-bit CPU, maybe banked registers should be exposed as 2 registers
-
-...but this depends on what you're trying to do, and whether there's
-existing practice in for instance how JTAG debugging presents these
-sysregs to gdb.
-
-I'm pretty hesitant about allowing the user to modify system registers
-in the debugger, that is unlikely to work in quite a lot of cases.
-I'd rather we just made these registers all readonly.
-
-What does the UI in gdb look like? What gdb commands display
-the list of and values of system registers now? (Are there any
-commands that used to be useful and are now swamped by lists of
-hundreds of system registers?)
-
-I've made some more comments on the code below.
-
-> Signed-off-by: Abdallah Bouassida <abdallah.bouassida@lauterbach.com>
-> ---
->  gdbstub.c            | 18 +++++++++++
->  include/qom/cpu.h    | 19 +++++++++++
->  target/arm/cpu.c     |  5 +++
->  target/arm/cpu.h     |  6 +++-
->  target/arm/gdbstub.c | 90
-> ++++++++++++++++++++++++++++++++++++++++++++++++++++
->  target/arm/helper.c  |  3 +-
->  6 files changed, 138 insertions(+), 3 deletions(-)
+> Are they going to be represented by two different QOM type names?
 >
-> diff --git a/gdbstub.c b/gdbstub.c
-> index f1d5148..b0124c8 100644
-> --- a/gdbstub.c
-> +++ b/gdbstub.c
-> @@ -670,10 +670,20 @@ static const char *get_feature_xml(const char *p,
-> const char **newp,
->                  pstrcat(target_xml, sizeof(target_xml), r->xml);
->                  pstrcat(target_xml, sizeof(target_xml), "\"/>");
->              }
-> +            if (cc->gdb_coprocessor_dynamic_xml) {
-> +                pstrcat(target_xml, sizeof(target_xml), "<xi:include
-> href=\"");
-> +                pstrcat(target_xml, sizeof(target_xml), \
-> +                        "coprocessor_dynamic.xml");
-> +                pstrcat(target_xml, sizeof(target_xml), "\"/>");
-> +            }
->              pstrcat(target_xml, sizeof(target_xml), "</target>");
->          }
->          return target_xml;
->      }
-> +    if (strncmp(p, "coprocessor_dynamic.xml", len) == 0) {
-> +        CPUState *cpu = first_cpu;
-> +        return cc->get_feature_xml_dynamically(cpu);
-> +    }
+> (In the case of x86, all the CPU classes have different names on
+> qemu-system-x86_64 and qemu-system-i386).
 
-Don't we run into problems where this XML exceeds our gdbstub
-MAX_PACKET_LENGTH (which is only 4K) ?
+(Just pulling this thread up from before Christmas...)
 
-This is a pre-existing bug (https://bugs.launchpad.net/qemu/+bug/1703147)
-but I would expect that if we start autogenerating xml for all the
-coprocessor registers we're going to hit the packet limit pretty
-quickly.
+I guess a better way to approach this would be to ask: how is
+x86 implementing -cpu max, ie what is the required view of things
+that I need to provide for target/arm in order to have QEMU
+behave the same way x86 does? Did we write any user-facing
+documentation for this feature?
 
->      for (i = 0; ; i++) {
->          name = xml_builtin[i][0];
->          if (!name || (strncmp(name, p, len) == 0 && strlen(name) == len))
-> @@ -697,6 +707,10 @@ static int gdb_read_register(CPUState *cpu, uint8_t
-> *mem_buf, int reg)
->              return r->get_reg(env, mem_buf, reg - r->base_reg);
->          }
->      }
-> +
-> +    if (reg < cpu->gdb_num_regs + cc->gdb_num_cpregs) {
-> +        return cc->gdb_read_cpregister(cpu, mem_buf, reg -
-> cpu->gdb_num_regs);
-> +    }
->      return 0;
->  }
->
-> @@ -715,6 +729,10 @@ static int gdb_write_register(CPUState *cpu, uint8_t
-> *mem_buf, int reg)
->              return r->set_reg(env, mem_buf, reg - r->base_reg);
->          }
->      }
-> +
-> +    if (reg < cpu->gdb_num_regs + cc->gdb_num_cpregs) {
-> +        return cc->gdb_write_cpregister(cpu, mem_buf, reg -
-> cpu->gdb_num_regs);
-> +    }
->      return 0;
->  }
->
-> diff --git a/include/qom/cpu.h b/include/qom/cpu.h
-> index 93bd546..f40ee59 100644
-> --- a/include/qom/cpu.h
-> +++ b/include/qom/cpu.h
-> @@ -76,6 +76,19 @@ typedef void (*CPUUnassignedAccess)(CPUState *cpu, hwaddr
-> addr,
->  struct TranslationBlock;
->
->  /**
-> + * XMLDynamicDescription:
-> + * @desc: Contains the XML descriptions.
-> + * @num_cpregs: Number of the Coprocessor registers seen by GDB.
-> + * @xml_cpregs_ordred_keys: Array that contains the corresponding Key of
-> + * a given cpreg with the same order of the cpreg in the XML description.
-> + */
-> +typedef struct XMLDynamicDescription {
-> +    char * desc;
-> +    int num_cpregs;
-> +    uint32_t *xml_cpregs_ordred_keys;
-> +} XMLDynamicDescription;
-
-cpregs are an arm-specific concept so this data structure doesn't
-belong in the for-all-cpus header.
-
-> +
-> +/**
->   * CPUClass:
->   * @class_by_name: Callback to map -cpu command line model name to an
->   * instantiatable CPU type.
-> @@ -196,6 +209,12 @@ typedef struct CPUClass {
->
->      const struct VMStateDescription *vmsd;
->      const char *gdb_core_xml_file;
-> +    bool gdb_coprocessor_dynamic_xml;
-> +    XMLDynamicDescription dyn_xml;
-> +    int gdb_num_cpregs;
-> +    char * (*get_feature_xml_dynamically)(CPUState *cpu);
-> +    int (*gdb_read_cpregister)(CPUState *cpu, uint8_t *buf, int reg);
-> +    int (*gdb_write_cpregister)(CPUState *cpu, uint8_t *buf, int reg);
-
-Do we really need a new set of functions rather than just being
-able to use the existing gdb_read_register/gdb_write_register ?
-The API seems to be the same, so I was expecting to just have
-the same functions be called, with the register number distinguishing
-the existing regs from the new coprocessor ones.
-
->      gchar * (*gdb_arch_name)(CPUState *cpu);
->
->      void (*cpu_exec_enter)(CPUState *cpu);
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index cc1856c..00efae4 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -1751,6 +1751,11 @@ static void arm_cpu_class_init(ObjectClass *oc, void
-> *data)
->  #endif
->      cc->gdb_num_core_regs = 26;
->      cc->gdb_core_xml_file = "arm-core.xml";
-> +    cc->gdb_coprocessor_dynamic_xml=true;
-> +    cc->gdb_num_cpregs = 0;
-> +    cc->get_feature_xml_dynamically = arm_get_feature_xml_dynamically;
-> +    cc->gdb_read_cpregister = arm_cpu_gdb_read_cpregister;
-> +    cc->gdb_write_cpregister = arm_cpu_gdb_write_cpregister;
->      cc->gdb_arch_name = arm_gdb_arch_name;
->      cc->gdb_stop_before_watchpoint = true;
->      cc->debug_excp_handler = arm_debug_excp_handler;
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 9631670..16f84e3 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -797,6 +797,9 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cpu,
-> vaddr addr,
->
->  int arm_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int reg);
->  int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
-> +char *arm_get_feature_xml_dynamically(CPUState *cpu);
-> +int arm_cpu_gdb_read_cpregister(CPUState *cpu, uint8_t *buf, int reg);
-> +int arm_cpu_gdb_write_cpregister(CPUState *cpu, uint8_t *buf, int reg);
->
->  int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
->                               int cpuid, void *opaque);
-> @@ -2005,7 +2008,8 @@ static inline bool cp_access_ok(int current_el,
->
->  /* Raw read of a coprocessor register (as needed for migration, etc) */
->  uint64_t read_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri);
-> -
-> +void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri,
-> +                             uint64_t v);
->  /**
->   * write_list_to_cpustate
->   * @cpu: ARMCPU
-> diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-> index 04c1208..123da12 100644
-> --- a/target/arm/gdbstub.c
-> +++ b/target/arm/gdbstub.c
-> @@ -101,3 +101,93 @@ int arm_cpu_gdb_write_register(CPUState *cs, uint8_t
-> *mem_buf, int n)
->      /* Unknown register.  */
->      return 0;
->  }
-> +
-> +static void arm_generate_xml(gpointer key, gpointer value, gpointer cs)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(cs);
-> +    CPUClass *cc = CPU_GET_CLASS(cpu);
-> +    XMLDynamicDescription *dyn_xml = &cc->dyn_xml;
-> +    ARMCPRegInfo *ri = value;
-> +    uint32_t ri_key= *(uint32_t *)key;
-> +    CPUARMState *env = &cpu->env;
-> +    char **target_xml=(char **)&(dyn_xml->desc);
-> +    char *tmp_xml=*target_xml;
-
-If you run your patch through scripts/checkpatch.pl it will
-hopefully point out the places where your code doesn't match our
-coding style (whitespace, etc).
-
+(The code in this patchset makes '-cpu max' give the same
+QOM type name for both qemu-system-arm and qemu-system-aarch64,
+with different behaviour depending on the binary. If that means
+we don't provide the same behaviour as x86 then I can change that,
+but I'm not sure where the difference is exposed to the user?)
 
 thanks
 -- PMM

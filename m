@@ -1,100 +1,98 @@
-Received: by 10.28.71.27 with SMTP id u27csp3197754wma;
-        Mon, 22 Jan 2018 11:49:15 -0800 (PST)
-X-Google-Smtp-Source: AH8x224BMpUDq2ooSEezPizmT53644obDrEy+//cIHjurh7RDP/OxDALQx9pytwKYon9hLk4/XCB
-X-Received: by 10.37.79.130 with SMTP id d124mr13673ybb.150.1516650555143;
-        Mon, 22 Jan 2018 11:49:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516650555; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp3199434wma;
+        Mon, 22 Jan 2018 11:51:14 -0800 (PST)
+X-Google-Smtp-Source: AH8x227br6Q7OeD00GrhKOXHLxbbJGzbG2bW8N4k5U7JFsRe7wyhRPyWR3GnITnWUFK179bjoH8L
+X-Received: by 10.37.66.83 with SMTP id p80mr24261yba.28.1516650674127;
+        Mon, 22 Jan 2018 11:51:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516650674; cv=none;
         d=google.com; s=arc-20160816;
-        b=zHgfN2rqmRM8KQn4KzBkhh4C4caGf/zNjTXT4xcWORwivigkE1VwbfWmR+W/hH0ZSJ
-         e2qdccAPYkz+StfTZwm57apnT1TAQIhQBNfWvkhl9KOKUdtb0Gd7tNmWKlGbgKw7+LpH
-         FE3KxcQ/FFP/ME4xOqILZr0xc0C7QDrDHI2fARuzwnDilL7o33YGtgBeAIFKzmbh7G0i
-         JyuSqWZEBWy2Ht95rzqWUDw+hwEJIs9UboHsnAu4NGMJSRa+5RFA4bmdx+oWuo1uwYdn
-         QqGU+VNFJsYG2box4FNHzh2HQ4NrI353uaX9seTC/F/V7pV9jNsNfjsaIlfKO3YqUpF4
-         VYbw==
+        b=kxSL1nTS7HwifH9NdU+TLfoyvroMUyam56EPiSKnInS2xLAoaaN2hHvLMJB1/X92mk
+         6C7Ycbbiq/w7MMs5uMC9bTHi+WMiP5GoJMQx3F4S8Nb5AoxOuce3z7exVtSJeFoD9j+5
+         niUgIpozXk4l+lEp9bsUOSC9tjKq+kfs2B8kgoNV0gWzfj530NL4t9gNXUxfNNdf8n5s
+         Th2HyeTPv3AgPDoFkbM9ofiYPKalKEbbyc8hEIh9nJg80vhlivxkFJIxrAgv7kcnBMMc
+         n9zM4qOFQcsRHrciT3VVLKGpkuSaiOZlhuD4kWLo/E/ncu1184faD8t7MTm647VpxIgk
+         w3eg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=SBOROAj8Z7DxT/TEh/cSKb3L28WULAI/Hd5V41wgQi0=;
-        b=VDkzQZFdk8tlHj1cAnYcnmBBAee367zjUEQPvF3VuyjmSBhcIXlDlDJndE4teEVvaN
-         pcmYj8Ps9GSuKsB8V/6cZq7vD+o/1wHYZRV1pirZsoptPwUvNeyEJIWKqHmWdYdDpwGq
-         s6FZsGyafzCfQaxQ28azjuB2T0WnVlRhMmGTvnkUggEHa3HRXypLpxVR/VEvN232m8iT
-         R7WvhgMWJviR2um8JVrS0lBA/+wuhwpBcCD9MXZY/6/uOxWmelv+iqofzJPeS0qTwuES
-         YcVSLrAhg/03VOAYJ8zEqtg3u6ThcJ4Du09b+Ob3xd1K2mrEPMqSCZVF/FA/O+wWrpo1
-         /NVg==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=4PD0rX+ehRqeGVEgZCEmzpG5PrlM5EKNAZ23K4vpNvQ=;
+        b=gbSBrO+0YmZnH8QkrwPcshRBT3mIn/33dZrmNzxTXkmE5rvviUYyWOKict4BiW/Szd
+         xGcVT9M0sULX/243AzC71eYmR658rfroVk8/RHGyxStK2LTGtniGc5B35RM7Fg+jGtO5
+         DMANxs0Q+8gH3oqHJaTj6yPz5uop4jO0ajJHtdj07tszOFo7J2rArfGePertVblCsYNR
+         Y0HW9wrDrNd66LbSjx8qahUexFIAQ146UBwuSqYo7gCFPPIvNq7wgPqpPX5p0omq0gTf
+         hlpcV6qE5hYb9t6yZt3C88MyfgxoXdt+q88A3VWUlM7GM+qCc6ztjwLGpCaV5isu/a2Z
+         ZQbw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nxzDO8iq;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=R5XaInUI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i18si2081308ybk.279.2018.01.22.11.49.14
+        by mx.google.com with ESMTPS id p1si2131285ybj.10.2018.01.22.11.51.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 22 Jan 2018 11:49:15 -0800 (PST)
+        Mon, 22 Jan 2018 11:51:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nxzDO8iq;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=R5XaInUI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:33695 helo=lists.gnu.org)
+Received: from localhost ([::1]:33723 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1edi5i-0007o2-EQ
-	for alex.bennee@linaro.org; Mon, 22 Jan 2018 14:49:14 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47826)
+	id 1edi7d-00010q-Fn
+	for alex.bennee@linaro.org; Mon, 22 Jan 2018 14:51:13 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47873)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1edi4G-0006m1-AU
-	for qemu-arm@nongnu.org; Mon, 22 Jan 2018 14:47:45 -0500
+	(envelope-from <alistair23@gmail.com>) id 1edi4Q-0006rx-9h
+	for qemu-arm@nongnu.org; Mon, 22 Jan 2018 14:47:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1edi4F-0005mB-E3
-	for qemu-arm@nongnu.org; Mon, 22 Jan 2018 14:47:44 -0500
-Received: from mail-pf0-x244.google.com ([2607:f8b0:400e:c00::244]:34616)
+	(envelope-from <alistair23@gmail.com>) id 1edi4O-0005wa-5p
+	for qemu-arm@nongnu.org; Mon, 22 Jan 2018 14:47:53 -0500
+Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:38105)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1edi4A-0005h4-3A; Mon, 22 Jan 2018 14:47:38 -0500
-Received: by mail-pf0-x244.google.com with SMTP id e76so7897270pfk.1;
-	Mon, 22 Jan 2018 11:47:37 -0800 (PST)
+	id 1edi4I-0005rd-Nj; Mon, 22 Jan 2018 14:47:46 -0500
+Received: by mail-pf0-x241.google.com with SMTP id k19so7886042pfj.5;
+	Mon, 22 Jan 2018 11:47:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=SBOROAj8Z7DxT/TEh/cSKb3L28WULAI/Hd5V41wgQi0=;
-	b=nxzDO8iq6EC0F78DZhjk/23GU7CmZII5LE75NIo0CGE5BGO/GopEzdk7clIA0mhIZy
-	YJgt67IgpE6bY3W3OFaKPEvQ+jj4HCLlXz/dCQK6a2iN21kTkhNKQK2GZI1W1YHo1i9N
-	7cv6AabRLArs6YOHAEYV/tVhxuYIayEi9Z+XUN6U9St5U0bul79LMDRUn80d2AWnMMrI
-	O7vtQzKdES6aT2Q8h0T8dPTVkuaT7TttMjy/A7oBkwYUbG2KOUuIin8bDPxWwhF3J/zg
-	6EnKUGJ0C6pmaIJgscumfcDYsl+IEdJQgp3FFExkTydjy4fufHJJufaCzp7qk6KxpbRC
-	lQaQ==
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=4PD0rX+ehRqeGVEgZCEmzpG5PrlM5EKNAZ23K4vpNvQ=;
+	b=R5XaInUI5AqeShPSD+oXkhR3AdEKoclaQQf2rJ0ZwLZvS3EO7DWe423VkNC7sFIpQd
+	VTg8h6lLCu5YlS5X0THYkT5vbJWFfb/SeSDcRbZmA522T6LxV1uLO1Qku/PP1099DraN
+	xgpd4iGscnR0IPYK3zNRsMeRZ6wk+l4cCGpY7k73ouyCd2HPLZW83ZITP+4uFIIRLS1i
+	HfCisjudDPlXKPD/+GRUkpKyCQe/kEeFjYOqh7WeCipnoim7XTH6aRK6LJsLRm9+9Hw3
+	HQo79MzzOx9CI2J7WO+pzMtiQrBPCoaD4wDVW0Qj3eU0txVgOkxPUyKohBJ/0EaFPFxY
+	jAZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:mime-version:content-transfer-encoding;
-	bh=SBOROAj8Z7DxT/TEh/cSKb3L28WULAI/Hd5V41wgQi0=;
-	b=YlAcbh3YLo/igjXvyJrEDp9pIozbvXTKXZVOpwoEMOmEa1zU8I7W7PFUeUI8qqHi/P
-	vtW2IdZ83b0Jw3mQKnpuQv3tvPnAPkoo5qnypz1VkrULSsmWi44pjD6Ym6T4VCAtL55G
-	4cSFq/kD/OMfpPpxvW9nyuzq7AyvHQLKEMbYJYMNCc104It6oLmPtaG46x4qoVpyzTth
-	bkrLMD+sjCzTp+nDWp8SeaRwcqdjgXqTCLkZZp7A5yIK0d6YT1dqhIigzs0cvx7Sy54e
-	36phi1ji29ZvqU0Uvfq4/Zutn2InbB9JGv/DQQw2M2ALd0v6F7G3qHBJnrFATW/l5iZ7
-	Y29g==
-X-Gm-Message-State: AKwxytdkIvKV8cP5XYTrbifN2LkWmyKwL/h+3adN3FC+9+TkxwlwB+it
-	dZ/BhxrfXoAuVy2Ywg5/0RLwJIND
-X-Received: by 10.101.80.204 with SMTP id s12mr7728044pgp.185.1516650456196;
-	Mon, 22 Jan 2018 11:47:36 -0800 (PST)
+	:in-reply-to:references;
+	bh=4PD0rX+ehRqeGVEgZCEmzpG5PrlM5EKNAZ23K4vpNvQ=;
+	b=ActeiUBqdgjYMSnktVlBefUdq3GK51sVruCQvOfa5RgvOSXaKeJOt2jXAHTXHx1KUH
+	NpDn9WWb+4x35gqxyIzwrbXgOvwY1BlFfbtymuG/LBRTqNznHKjK0L9jbTptRAwnB3K0
+	QxdiKcVTqicLdRy/TVc+qHc5DdA9zH6jyziRcvDZkAkd2bl4FBRMuX7XTa+O5o5ro+xV
+	EjaoENh5MGBPVdSGqRcU+DiDhGxFqJ5qFfn4RGpDZck2xaKqcIbZ6wuiJ4PTPeo5EfrB
+	2K/OECi3F1SG8I12wZJQzoUjlaJ6ZXyyn5m2EhdRlpcM9lCNmeMEKYcBtxSJk/5PgPpL
+	/dcg==
+X-Gm-Message-State: AKwxytfvd4ltlENNG2yj3w8LEM1pw0ANk9s8m4cUUy8u9obmI5GQH/Cf
+	GnyrYQr8AoeXtg3jjXAYznSN9cVx
+X-Received: by 10.99.107.129 with SMTP id g123mr7466528pgc.356.1516650465243; 
+	Mon, 22 Jan 2018 11:47:45 -0800 (PST)
 Received: from localhost ([149.199.62.254]) by smtp.gmail.com with ESMTPSA id
-	b69sm2802004pfk.128.2018.01.22.11.47.34
+	o25sm32163866pgc.75.2018.01.22.11.47.43
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 22 Jan 2018 11:47:34 -0800 (PST)
+	Mon, 22 Jan 2018 11:47:43 -0800 (PST)
 From: Alistair Francis <alistair.francis@xilinx.com>
 To: qemu-devel@nongnu.org, edgar.iglesias@xilinx.com, edgar.iglesias@gmail.com
-Date: Mon, 22 Jan 2018 11:43:11 -0800
-Message-Id: <cover.1516650109.git.alistair.francis@xilinx.com>
+Date: Mon, 22 Jan 2018 11:43:20 -0800
+Message-Id: <b992d4940c36e139e09aafa06996aa3875457a6e.1516650109.git.alistair.francis@xilinx.com>
 X-Mailer: git-send-email 2.14.1
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <cover.1516650109.git.alistair.francis@xilinx.com>
+References: <cover.1516650109.git.alistair.francis@xilinx.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c00::244
-Subject: [Qemu-arm] [PATCH v7 0/9]  Add the ZynqMP PMU and IPI
+X-Received-From: 2607:f8b0:400e:c00::241
+Subject: [Qemu-arm] [PATCH v7 2/9] xlnx-zynqmp-pmu: Initial commit of the
+ ZynqMP PMU
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -109,76 +107,133 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: alistair23@gmail.com, qemu-arm@nongnu.org, alistair.francis@xilinx.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7soqih9/KSOl
+X-TUID: mVD/JIgsFVfH
 
+The Xilinx ZynqMP SoC has two main processing systems in it. The ARM
+processing system (which is already modeled in QEMU) and the MicroBlaze
+Power Management Unit (PMU). This is the inital work for adding support
+for the PMU.
 
-This series adds the ZynqMP Power Management Unit (PMU) machine with basic
-functionality.
+The PMU susbsystem runs along side the ARM system on hardware, but due
+to architecture limitations in QEMU the two instances are seperate for
+the time being.
 
-The machine only has the
- - CPU
- - Memory
- - Interrupt controller
- - IPI device
+Let's follow the same setup we do with the ARM system, where there is an
+SoC device and a ZCU102 board. Although the PMU is less board specific
+we are still going to follow the same split as maybe in future we can
+connect the PMU device to the ARM ZCU102 board. As the machine will be
+fairly small let's keep them both together in one file.
 
-connected, but that is enough to run some of the ROM and firmware
-code on the machine
+Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+---
 
-The series also adds the IPI device and connects it to the ZynqMP ARM
-side and the ZynqMP PMU. These IPI devices don't connect between the ARM
-and MicroBlaze instances though.
-
-V7:
- - Fix Phipippe's comments
-V6:
- - Pass initrd instead of kernel to microblaze_load_kernel()
-V5:
- - Fix clang makecheck error
- - Rebase on master
 V4:
- - Rename the ZCU102 machine to just ZynqMP
- - Rename the PMC SoC to "xlnx,zynqmp-pmu-soc"
- - Move the IPI device to the machine instead of the SoC
-V3:
- - Add the interrupt controller
- - Replace some of the error_fatals with errp
- - Fix the PMU CPU name
+ - Rename to remove ZCU102 name
 
-
-
-Alistair Francis (9):
-  microblaze: boot.c: Don't try to find NULL file
-  xlnx-zynqmp-pmu: Initial commit of the ZynqMP PMU
-  xlnx-zynqmp-pmu: Add the CPU and memory
-  aarch64-softmmu.mak: Use an ARM specific config
-  xlnx-pmu-iomod-intc: Add the PMU Interrupt controller
-  xlnx-zynqmp-pmu: Connect the PMU interrupt controller
-  xlnx-zynqmp-ipi: Initial version of the Xilinx IPI device
-  xlnx-zynqmp-pmu: Connect the IPI device to the PMU
-  xlnx-zynqmp: Connect the IPI device to the ZynqMP SoC
-
- default-configs/aarch64-softmmu.mak    |   1 +
- default-configs/microblaze-softmmu.mak |   1 +
- include/hw/arm/xlnx-zynqmp.h           |   2 +
- include/hw/intc/xlnx-pmu-iomod-intc.h  |  58 ++++
- include/hw/intc/xlnx-zynqmp-ipi.h      |  57 ++++
- hw/arm/xlnx-zynqmp.c                   |  14 +
- hw/intc/xlnx-pmu-iomod-intc.c          | 554 +++++++++++++++++++++++++++++++++
- hw/intc/xlnx-zynqmp-ipi.c              | 377 ++++++++++++++++++++++
- hw/microblaze/boot.c                   |   2 +-
- hw/microblaze/xlnx-zynqmp-pmu.c        | 204 ++++++++++++
- hw/arm/Makefile.objs                   |   2 +-
- hw/display/Makefile.objs               |   2 +-
- hw/dma/Makefile.objs                   |   1 +
- hw/intc/Makefile.objs                  |   2 +
- hw/microblaze/Makefile.objs            |   1 +
- 15 files changed, 1275 insertions(+), 3 deletions(-)
- create mode 100644 include/hw/intc/xlnx-pmu-iomod-intc.h
- create mode 100644 include/hw/intc/xlnx-zynqmp-ipi.h
- create mode 100644 hw/intc/xlnx-pmu-iomod-intc.c
- create mode 100644 hw/intc/xlnx-zynqmp-ipi.c
+ hw/microblaze/xlnx-zynqmp-pmu.c | 83 +++++++++++++++++++++++++++++++++++++++++
+ hw/microblaze/Makefile.objs     |  1 +
+ 2 files changed, 84 insertions(+)
  create mode 100644 hw/microblaze/xlnx-zynqmp-pmu.c
 
+diff --git a/hw/microblaze/xlnx-zynqmp-pmu.c b/hw/microblaze/xlnx-zynqmp-pmu.c
+new file mode 100644
+index 0000000000..ac0f78928a
+--- /dev/null
++++ b/hw/microblaze/xlnx-zynqmp-pmu.c
+@@ -0,0 +1,83 @@
++/*
++ * Xilinx Zynq MPSoC PMU (Power Management Unit) emulation
++ *
++ * Copyright (C) 2017 Xilinx Inc
++ * Written by Alistair Francis <alistair.francis@xilinx.com>
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by the
++ * Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
++ * for more details.
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "qemu-common.h"
++#include "hw/boards.h"
++#include "cpu.h"
++
++/* Define the PMU device */
++
++#define TYPE_XLNX_ZYNQMP_PMU_SOC "xlnx,zynqmp-pmu-soc"
++#define XLNX_ZYNQMP_PMU_SOC(obj) OBJECT_CHECK(XlnxZynqMPPMUSoCState, (obj), \
++                                              TYPE_XLNX_ZYNQMP_PMU_SOC)
++
++typedef struct XlnxZynqMPPMUSoCState {
++    /*< private >*/
++    DeviceState parent_obj;
++
++    /*< public >*/
++}  XlnxZynqMPPMUSoCState;
++
++static void xlnx_zynqmp_pmu_soc_init(Object *obj)
++{
++
++}
++
++static void xlnx_zynqmp_pmu_soc_realize(DeviceState *dev, Error **errp)
++{
++
++}
++
++static void xlnx_zynqmp_pmu_soc_class_init(ObjectClass *oc, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(oc);
++
++    dc->realize = xlnx_zynqmp_pmu_soc_realize;
++}
++
++static const TypeInfo xlnx_zynqmp_pmu_soc_type_info = {
++    .name = TYPE_XLNX_ZYNQMP_PMU_SOC,
++    .parent = TYPE_DEVICE,
++    .instance_size = sizeof(XlnxZynqMPPMUSoCState),
++    .instance_init = xlnx_zynqmp_pmu_soc_init,
++    .class_init = xlnx_zynqmp_pmu_soc_class_init,
++};
++
++static void xlnx_zynqmp_pmu_soc_register_types(void)
++{
++    type_register_static(&xlnx_zynqmp_pmu_soc_type_info);
++}
++
++type_init(xlnx_zynqmp_pmu_soc_register_types)
++
++/* Define the PMU Machine */
++
++static void xlnx_zynqmp_pmu_init(MachineState *machine)
++{
++
++}
++
++static void xlnx_zynqmp_pmu_machine_init(MachineClass *mc)
++{
++    mc->desc = "Xilinx ZynqMP PMU machine";
++    mc->init = xlnx_zynqmp_pmu_init;
++}
++
++DEFINE_MACHINE("xlnx-zynqmp-pmu", xlnx_zynqmp_pmu_machine_init)
++
+diff --git a/hw/microblaze/Makefile.objs b/hw/microblaze/Makefile.objs
+index b2517d87fe..ae9fd40de7 100644
+--- a/hw/microblaze/Makefile.objs
++++ b/hw/microblaze/Makefile.objs
+@@ -1,3 +1,4 @@
+ obj-y += petalogix_s3adsp1800_mmu.o
+ obj-y += petalogix_ml605_mmu.o
++obj-y += xlnx-zynqmp-pmu.o
+ obj-y += boot.o
 -- 
 2.14.1
 

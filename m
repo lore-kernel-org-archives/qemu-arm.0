@@ -1,111 +1,78 @@
-Received: by 10.28.71.27 with SMTP id u27csp913115wma;
-        Sat, 3 Feb 2018 13:39:55 -0800 (PST)
-X-Google-Smtp-Source: AH8x224QWNKSVqoMa+h2GbFwmHKO/AiGIIyH8iEGw043/f3emURTcKWhmnt6eaHBt7v061c/YblJ
-X-Received: by 10.37.99.198 with SMTP id x189mr28344073ybb.232.1517693995740;
-        Sat, 03 Feb 2018 13:39:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1517693995; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp4060326wma;
+        Tue, 23 Jan 2018 05:40:29 -0800 (PST)
+X-Google-Smtp-Source: AH8x2262clIY2xNmIDqspzWii94iSrL5/U3I0xUi+2z6uTj7o35qadHoUYT+nDjfqVoZ+5boBSrR
+X-Received: by 10.37.204.6 with SMTP id l6mr2392446ybf.490.1516714829581;
+        Tue, 23 Jan 2018 05:40:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516714829; cv=none;
         d=google.com; s=arc-20160816;
-        b=hFQ2MwUQaKrEEZdNf9E1zGd/wwAaSuxTtU2ZPY08FGeAOwnEH4lDziQTBPv32+vKkq
-         oaR2nnvuFyzR8xoHn9539448nFPTf7tv7PWzF+6s0d21HC1woqjhqxQPOiEGM913YWUP
-         TdCzDzQWnIX5biSt68GcJpWVUEVoRQ0stPcSaaoFXs6hdUdP4ND3Vu4fxjA+rNtsaGAg
-         72sGcmpdA6dQXibTYQeWodrAyZk09W7wp+XjJpYLPkoHl7Arhgb8f1fCRzNVJfTe4+3k
-         AlMKZKfAY0deDRpdSXENOW8NPYoOcoZBd8OlGIMgcwrGI/wWOqKbpgVdv6ypGRiFtjJc
-         6kcw==
+        b=qUsuKMtfTde9LukEdS2jrNbYICNeKx3pm2yaZ9gM+KLQVv2SMv+FXRr4gdZnoTnqq1
+         MKs46KfFYzqqxahsruaqvS0UkoCWRuXuhwXPPNCElRteUUqsVmInMyTL78HRUqf1XETH
+         Id7Lb6Bq0FA94X8n7KUnEn7G2rGtAsVvhKe/hakDBqjN+Jp/7t64rHDxXopEQNjQJlP5
+         ihQtusF5EmmCGEgTNeplu+6izf5ObeRoGwPCHpV1rXfcB3BWyfhBLWpOfvhnMQmSzA/I
+         u7nUtGoG41yndyqLYbZ4ccTSZqjxNLuGIcuBc8alb/WY5fNI3e2pDi3EGDLAPiPv7opa
+         dppQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature
-         :arc-authentication-results;
-        bh=tS5dJKQdO6TPOMpS6Wut3Gl8NYVdlKPcFT0LfIECLdU=;
-        b=fD87eRTsflXVdueHCM0uchXycKVTMEnfNju4wf6hT0e9eVb3QN5lxQB6hTdBxlqhd5
-         KV6wXdv8oOoMzcgcbKqZBXvMYVdYf7z6PW/oZxfIv3GTa2e2jpayU0VWZFKPgfMoFem+
-         AN580f9bduW9MOy5ZNor0b3Z+xBqh/HY+l7r5UIPVuohXPhVXVFvWGmq79Jjl95IFeMc
-         gu52rUnZCaKXBv/2S7zLs73GzDSTa57bdrXjAEwN3VLdE0ZNJr4Z+JQumyel8drYKQv3
-         yuMuoNFqSU5f2mOgzSZ3EyvQZRkxvEQC9hQ6BQ/kO0/KnBUxLjLOYoA7K738Ojy0aNe4
-         V2Rw==
+         :content-transfer-encoding:user-agent:content-disposition
+         :mime-version:message-id:to:from:date:arc-authentication-results;
+        bh=RGh9kkjBG/CHVgUiEi9j0Fu1Y1UybeFTXHTDfeiqxt4=;
+        b=xHO9hBLiJ6KorTNvaXdwvRlzu2vet8jyvB+mThQJUhHq35LnXs/+eV1+yo9MWossG7
+         16W/aXfbZ3taLQj9oyMx6vYS5bzO8fZgi0R+mYUTT06Uq5BqjUQah/tpehXxA0LqTj8m
+         qiuuFd+Ga1XyBAuJIoBFUQkiVpvUVk4If4T1r+HnkGLRZH2ToJrDXK0bQMNZoCz5e6ls
+         BCcnAUkTpAPXCP1a284d0atO0wVugeOeUClHuTd4Kb0T62Ap1QauQj/y80EGPCES28nl
+         94MEVa+SvPD/DrZ5gBG7S489X+hVrfwjhOMHELUUKDG9hKBEnQJnqsCuaUxicIAiAfoc
+         NjjQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=T2sPx2QT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i8si960513ywl.346.2018.02.03.13.39.55
+        by mx.google.com with ESMTPS id d66si4037384ywc.60.2018.01.23.05.40.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 03 Feb 2018 13:39:55 -0800 (PST)
+        Tue, 23 Jan 2018 05:40:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=T2sPx2QT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50563 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:58733 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ei5XP-0005en-6O
-	for alex.bennee@linaro.org; Sat, 03 Feb 2018 16:39:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57386)
+	id 1edyoP-0007Qw-1R
+	for alex.bennee@linaro.org; Tue, 23 Jan 2018 08:40:29 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45531)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1ei5XF-0005e9-Hi
-	for qemu-arm@nongnu.org; Sat, 03 Feb 2018 16:39:46 -0500
+	(envelope-from <agx@sigxcpu.org>) id 1edwQJ-0001b0-Vk
+	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 06:07:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1ei5XC-0004je-Cy
-	for qemu-arm@nongnu.org; Sat, 03 Feb 2018 16:39:45 -0500
-Received: from mail-pf0-x22d.google.com ([2607:f8b0:400e:c00::22d]:47051)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1ei5XC-0004jM-67
-	for qemu-arm@nongnu.org; Sat, 03 Feb 2018 16:39:42 -0500
-Received: by mail-pf0-x22d.google.com with SMTP id z79so973897pff.13
-	for <qemu-arm@nongnu.org>; Sat, 03 Feb 2018 13:39:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=tS5dJKQdO6TPOMpS6Wut3Gl8NYVdlKPcFT0LfIECLdU=;
-	b=T2sPx2QTWSSunx+Wrg7X/L6F9t60gwXagaWE4rnNtSMu7eXTQMkT/btTHjUqPnksyV
-	uQ9BHApJvd8rFdMlpJNKmZifgjhtNopqJXvjs74gJA80xP9cx0RCFNStnUCF4/JLdyPu
-	ZdUc6e2ByXmZZzK0gpDHKODAV+oSFpYLsn5EU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=tS5dJKQdO6TPOMpS6Wut3Gl8NYVdlKPcFT0LfIECLdU=;
-	b=FyyNAfb9Lc45tzjvLUGDo+1XrfTzxzLo0lUDB2irx9lzqApqQJsLYfCAs/PUgqAedN
-	eas4BhPaIIjqMf4MMDBCKrdOhExeuEI8ZDDycQccRH0ntHDYFuDmNLDAMW/RKrPIi2kw
-	OTdStyrClcv4raV+zo85KuvSgxfOTsHw/Em1nzlSfFDN72pFe5cg6+JQRYN2Ji5rTSQQ
-	8KMvN7TGvE5GNKPWbGYL18ybUYvFhB0YhYYShIZRcAc02oH2XxCxLP7jY99L+6b8A3WS
-	TfbgqCIaR9uTWpcVqvtNOTTNZ2j+6vzyhjt2dg6Jc1dzSozHAuMWChLb4NL4fy+QsY28
-	hCpA==
-X-Gm-Message-State: AKwxytdIg8WV5TbAIjeKugoW/g9oJD2UqPcD5vzeFLFlfe+DsvSNtdZa
-	6opGfNmzVK4oNI3cPf1E0czCDg==
-X-Received: by 10.99.67.66 with SMTP id q63mr4933006pga.175.1517693981024;
-	Sat, 03 Feb 2018 13:39:41 -0800 (PST)
-Received: from cloudburst.twiddle.net (174-21-6-47.tukw.qwest.net.
-	[174.21.6.47]) by smtp.gmail.com with ESMTPSA id
-	o9sm10135654pfk.80.2018.02.03.13.39.39
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sat, 03 Feb 2018 13:39:40 -0800 (PST)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1517324542-6607-1-git-send-email-peter.maydell@linaro.org>
-	<1517324542-6607-5-git-send-email-peter.maydell@linaro.org>
-	<675ab9e3-80ec-97fc-5c01-ce28b2d2d4d1@linaro.org>
-	<CAFEAcA9xBQO-o8wV0bR1qK1PG23xbAAWtd-JdXqS0ao9N+f3mw@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <1f56786e-e492-b260-344c-7050d6b4c07f@linaro.org>
-Date: Sat, 3 Feb 2018 13:39:37 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.2
+	(envelope-from <agx@sigxcpu.org>) id 1edwQF-0000wh-2D
+	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 06:07:27 -0500
+Received: from honk.sigxcpu.org ([24.134.29.49]:37100)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <agx@sigxcpu.org>) id 1edwQE-0000r8-R1
+	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 06:07:22 -0500
+Received: from localhost (localhost [127.0.0.1])
+	by honk.sigxcpu.org (Postfix) with ESMTP id 23B44FB03
+	for <qemu-arm@nongnu.org>; Tue, 23 Jan 2018 12:07:20 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at honk.sigxcpu.org
+Received: from honk.sigxcpu.org ([127.0.0.1])
+	by localhost (honk.sigxcpu.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id UAVfiOvSHhmH for <qemu-arm@nongnu.org>;
+	Tue, 23 Jan 2018 12:07:19 +0100 (CET)
+Received: by bogon.sigxcpu.org (Postfix, from userid 1000)
+	id 8EEF742242; Tue, 23 Jan 2018 12:07:18 +0100 (CET)
+Date: Tue, 23 Jan 2018 12:07:18 +0100
+From: Guido =?iso-8859-1?Q?G=FCnther?= <agx@sigxcpu.org>
+To: qemu-arm@nongnu.org
+Message-ID: <20180123110718.GA10406@bogon.m.sigxcpu.org>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9xBQO-o8wV0bR1qK1PG23xbAAWtd-JdXqS0ao9N+f3mw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: multipart/mixed; boundary="U+BazGySraz5kW0T"
+Content-Disposition: inline
+User-Agent: Mutt/1.9.2 (2017-12-15)
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c00::22d
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 4/7] target/arm: Make v7M
- exception entry stack push check MPU
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 24.134.29.49
+X-Mailman-Approved-At: Tue, 23 Jan 2018 08:40:16 -0500
+Subject: [Qemu-arm] recvfrom error with linux-user emulating armhf on aarch64
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -117,42 +84,99 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	"patches@linaro.org" <patches@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FesQw0u3IRK1
-
-On 02/03/2018 01:30 PM, Peter Maydell wrote:
-> On 3 February 2018 at 21:21, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->> On 01/30/2018 07:02 AM, Peter Maydell wrote:
->>> +    if (get_phys_addr(env, addr, MMU_DATA_STORE, mmu_idx, &physaddr,
->>> +                      &attrs, &prot, &page_size, &fi, NULL)) {
->>
->> Given that you know you're going to call this at least 8 times in a row,
->> probably with all operations on the same page, it is worth querying the qemu
->> tlb first, and when that fails but the lookup succeeds, installing the result
->> into the tlb?
-> 
-> get_phys_addr and address_space_stl_le don't touch the TLB though?
-
-No, get_phys_addr is the primitive that tlb_fill uses.
-
-> We could in theory do a get_phys_addr() once per-page rather than
-> doing it all 8 times though, yes.
-
-After I sent that first message I thought perhaps interacting with the proper
-TLB is too/overly complicated.  We'd get nearly the same results just having a
-local 1-entry cache.  Something like
-
-    pagecache = -1;
-    stacked_ok =
-        v7m_stack_write(cpu, frameptr, env->regs[0],
-                        &pagecache, mmu_idx, false) &&
-        v7m_stack_write(cpu, frameptr + 4, env->regs[1],
-                        &pagecache, mmu_idx, false) &&
-        ...
+X-TUID: DCRY1rCGtZl3
 
 
-r~
+--U+BazGySraz5kW0T
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+Running the attached program=E2=81=B0 in a armhf chroot on a arm64 host=C2=
+=B9 like:
+
+    chroot . /usr/bin/qemu-arm-static tmp/nl-bad-addr
+
+fails with "Bad address" when invoking audit_log_acct_message. strace loo=
+ks like:
+
+  [..snip..]
+  31572 socket(AF_NETLINK, SOCK_RAW, NETLINK_AUDIT) =3D 3
+  ...
+  31572 sendto(3, {{len=3D124, type=3D0x454 /* NLMSG_??? */, flags=3DNLM_=
+F_REQUEST|NLM_F_ACK, seq=3D1, pid=3D0}, "op=3Dtest:message acct=3D\"?\" e=
+xe=3D\"/tmp/nl-bad-addr\" hostname=3Dlocalhost addr=3D? terminal=3D/dev/p=
+ts/2 res=3Dsuccess\0\0\0"}, 124, 0, 0xfffffa3897d0, 0) =3D 124
+  31572 ppoll([{fd=3D3, events=3DPOLLIN}], 1, {tv_sec=3D0, tv_nsec=3D5000=
+00000}, NULL, 0) =3D 1 ([{fd=3D3, revents=3DPOLLIN}], left {tv_sec=3D0, t=
+v_nsec=3D499993180})
+  31572 recvfrom(3, 0x112a50eb4, 8988, MSG_PEEK|MSG_DONTWAIT, 0xfffffa389=
+7e0, 0x42) =3D -1 EFAULT (Bad address)
+  [..snip..]
+
+And it fails in
+
+   ret =3D get_errno(safe_recvfrom(fd, host_msg, len, flags,
+                                      addr, &addrlen));
+
+in linux-user/syscall.c:do_recvfrom but I have no idea yet what causes th=
+is.
+
+However the same works without problems when the host is a x86_64 box.
+Any pointers in debugging this further would be appreciated.
+
+The issue is also present in qemu master. The overall goal is to get
+
+   qemu-debootstrap --arch armhf buster chroot
+
+to succeed on an aarch64 host as it does on x86_64.
+Cheers,
+ -- Guido
+
+P.S.: Please cc: me on replies since I'm currently not subscribed to qemu=
+-arm.
+
+=E2=81=B9: which is a stripped down testcase for /usr/bin/chfn failing
+=C2=B9: the scaleway server this runs on doesn't support armhf.
+
+--U+BazGySraz5kW0T
+Content-Type: text/x-csrc; charset=us-ascii
+Content-Disposition: attachment; filename="audit.c"
+
+// gcc -Wall -O2 audit.c -laudit
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+#include <libaudit.h>
+
+
+void err(const char* str)
+{
+  fprintf(stderr, "%s\n", str);
+  exit(1);
+}
+
+int main()
+{
+  int audit_fd, rc;
+  audit_fd = audit_open();
+
+  if (audit_fd < 0)
+      err("audit_open");
+    
+  rc = audit_log_acct_message (audit_fd, AUDIT_USER_CHAUTHTOK, NULL, "test:message",
+                              "?", -1, "localhost", NULL, "/dev/pts/2", 1);
+  if (rc < 0)
+     err("audit_log_acct_message");
+
+  audit_close(audit_fd);
+  return 0;
+}
+
+
+--U+BazGySraz5kW0T--

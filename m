@@ -1,72 +1,93 @@
-Received: by 10.28.71.27 with SMTP id u27csp2341920wma;
-        Mon, 5 Feb 2018 02:57:59 -0800 (PST)
-X-Google-Smtp-Source: AH8x226jLP4/81xMlJoGfrhF6luCfF5J99lehoN123npihrZRcVSqZ/iguSSD4s2sQt9Ou/uS0ur
-X-Received: by 10.129.99.4 with SMTP id x4mr31078772ywb.493.1517828278984;
-        Mon, 05 Feb 2018 02:57:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1517828278; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp4580932wma;
+        Tue, 23 Jan 2018 14:12:26 -0800 (PST)
+X-Google-Smtp-Source: AH8x224/Mr7NuIKu8qjcWQJYpSkWfVNHQDCMzFnGm/RmSOsTDCS5pTqJgwNC2zM4jLbTTSrLM6ky
+X-Received: by 10.37.189.207 with SMTP id g15mr3896536ybk.509.1516745546394;
+        Tue, 23 Jan 2018 14:12:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516745546; cv=none;
         d=google.com; s=arc-20160816;
-        b=oGTAwoX/FI99j2kZiZsig212v4yQ7cstKx6adNh9mLW+xqrpK8DFTwJjVxCL7OtAJl
-         VITPpO2GoTghE9rmrItEkECdI7v2cN+XpBfSII4DxW44SznX/REw/O50ezq8SR1apdco
-         ISgVdg98XS0ru6rS6WbSgoQP8ESEtvt5dnkWPWF7UiXe+aILkIKk8Usk7TBCqusJf6/+
-         NHkJmI/+O4DeknDe24TTQkvjgUDv0Gu4WPqbILUr6nv5Sq+bFsau4NzER1mxlio2++LE
-         wEqURBTr/hgxPPQS4aaL5MFs3mFQoMMD1y86pRW6CJSMuzVEtihMWRKf1LqOJnOMipXN
-         hPCg==
+        b=vtWP4ZwJ/MRUb4Wo3vQYWmP2fYPkfasBlE7BMN3+q2f3ONG5fnA6UdulEnoZ84JyG5
+         XO/s92LQhed/g8BT+a0dG6hUIcIJImFLQySFtlSxMAJ4EvfH6Vc61OzXx9QrmDuynOBs
+         O1wBf7x2IoBolv03NXrgOZ0TgnVgXOkm2MwTSTEijWoX/ncJhy75P0PfOfQ9Cg87tfjd
+         gPc716pL62MlhGodh6KvOGCteFwcCfG5emyugl64wzBl5y44ZC5bFPVInWx7uDpmcjcb
+         Wy1LIBBkPxU0PD3wYnm/nF7+kWfzkkn1tSjbfhsP0ovb1KfuwQAfu67p/VIwB/TE/LuQ
+         /PmA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=nJX7xxzAAsqCDvuWW36gZwfMrwCmRJAF00tXRJ43hF4=;
-        b=IyV47IofifJynGKRf1E8MvlodC4QHngTG/jf05Ql4qjTMaQ4b9jXB2FbKVvZSHPdqL
-         kR5xARnmB4bBEF3Edutyuf2d0fVM1+4nSs1AH8gvNop4DJyZpyWesmXKCBaTmg/hgyOk
-         a7P9W8N4ZvkUxGWT9oFe9sEl16bCOXTwWrBGG79AYzXnUDZHF3LaKv4Tv5LyXHYxpM8Y
-         5m1jsu34mxQ+dfWbi+0ZIwgu+z7+OVcJpXFJaNf/05UdcPLwC7DCRLmhf5RMIWz3kRIW
-         2AQB3iNTFjtEBIux5QtiM3iaCUb8w+l65qvY8ItFMGAyNjf2koT+UL/nMTtulJSbeDFj
-         /cZQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
+         :arc-authentication-results;
+        bh=Eooq2hn1/f3FijZetfI96nla9vC5f7fLCZRfIZjRsYc=;
+        b=KzVBHgQ3oJe5mxIE4OvTlCNw8NJ4mt+fB0nUDTd+4Vc/vZywEhIkhOfKsHIGvGUEdY
+         yqVAetqObOdcgHgLu+oDFOUCzSaqBLivO177lrVCxIC3soUrAJeuxqqqEJvGI4pHEgWl
+         bYysh/W8TU+V23ZIUvv/c07OeUTHVHSYmVSdSBIULFdLedM2/Y3N+R7Qat6XZPoJIxcJ
+         S2VW4cVQXbetKzCf7Xr5E+RYrhJXe23XFNNV46cq2+67cGvSyZFruexc9fS6oEr2oKGR
+         iWTSs6oH1AfteRBJMs2Dx5iwFW/okJcq2lOj+O0M3wynH4JSyyj6Y2kG/miYrV7hSCXf
+         lfWQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u73si1417857ywu.224.2018.02.05.02.57.58
+        by mx.google.com with ESMTPS id d66si4198675ywc.60.2018.01.23.14.12.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 05 Feb 2018 02:57:58 -0800 (PST)
+        Tue, 23 Jan 2018 14:12:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54876 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:56788 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eieTG-0006DT-DM
-	for alex.bennee@linaro.org; Mon, 05 Feb 2018 05:57:58 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39916)
+	id 1ee6np-0006kh-QU
+	for alex.bennee@linaro.org; Tue, 23 Jan 2018 17:12:25 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35021)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eieSq-00061j-Ny
-	for qemu-arm@nongnu.org; Mon, 05 Feb 2018 05:57:33 -0500
+	(envelope-from <laurent@vivier.eu>) id 1ee6nd-0006iw-0T
+	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 17:12:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eieSp-0007Am-R0
-	for qemu-arm@nongnu.org; Mon, 05 Feb 2018 05:57:32 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:46192)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1eieSp-00076t-KK; Mon, 05 Feb 2018 05:57:31 -0500
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1eieSm-0004G8-4y; Mon, 05 Feb 2018 10:57:28 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Mon,  5 Feb 2018 10:57:20 +0000
-Message-Id: <20180205105720.14620-9-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.16.1
-In-Reply-To: <20180205105720.14620-1-peter.maydell@linaro.org>
-References: <20180205105720.14620-1-peter.maydell@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 8/8] hw/intc/armv7m_nvic: Fix byte-to-interrupt
- number conversions
+	(envelope-from <laurent@vivier.eu>) id 1ee6nc-0003qo-8J
+	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 17:12:12 -0500
+Received: from mout.kundenserver.de ([212.227.17.24]:56746)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1ee6nX-0003ks-PB; Tue, 23 Jan 2018 17:12:08 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue101 [212.227.15.183]) with ESMTPSA (Nemesis) id
+	0M7Knm-1eyNG42K6Y-00x5TQ; Tue, 23 Jan 2018 23:11:34 +0100
+To: qemu-devel@nongnu.org
+References: <20180118193846.24953-1-laurent@vivier.eu>
+	<20180118193846.24953-2-laurent@vivier.eu>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <a6bc9bdb-57cd-4b9d-eb60-0feec05bcbf6@vivier.eu>
+Date: Tue, 23 Jan 2018 23:11:28 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.2
+MIME-Version: 1.0
+In-Reply-To: <20180118193846.24953-2-laurent@vivier.eu>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K0:VURuKj6Mj847YgI5OwCFKWFPTGgdSxdmA93Khji/ljDCgVLx1JB
+	pWF7tdWEddaTTjDxBY6dqIt3DKUnAmy4zahK7ZIp3HpalYd6wqqO2qgxyQVHWM9I/PunGRB
+	Jfz9FNlqQUlK9bpE8loyzmHaD1WC+5mrVSBFS80cmIVPKmokGiafvtU893D2frhER3i8YLp
+	sHaKV/e/ydqWLBcYyHhFw==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:S3wJhnbj/ww=:67sLMkZUN0KUG9GDhSSHgz
+	9dnNzNoy5jPyDCwT1CcRM3bvax+xI9PxWh52tdcoaohGJKVuDjhy9X5QbedVeBbAQWxIbO0md
+	xkHSJ4BqmTshEDOaPpojaZRLPItvRokcg4sdiAzvipOaav2z50io7jr5CkomUfAAe20oDn2q3
+	LS0Bb0Imr5oVkqDvvrfkGFPgLb4IWFICz4GVH7MAYtiGDplyGGpZiCDCMqqdREjhl6z3eM6lN
+	6ghPWQXtSwcwroZ715If/vDzTPfF1XNj1jurz6PuyLCsqJLw313Y9vyFAqgp1Lc4nTZp7JmTU
+	UOEWTE1v9AScNgoDR19NyoBwsGcd/g/3BkDHVLCEvNfwcBZ+fiJ+VlGE0gZwU5BwQqBYwzH/K
+	Ww1OzOjKLvqHgG/T7SuQWSKKAaZ0mRSpndaUrSLNTBJ10dIyCTD842sT+AWOEviBBt5i4bJO5
+	Xzb25756RuWiwM6NOVFrr206Z48+Taf08NSUvbyVJWL/UwbLbz/NlTc8ldE2RYwv/RkvmzS9d
+	Py7YPZoSWiDWY9yJdzwezAnGa188tve8vFVzQg7vRw9AO3Yf5nKkC+xpfHvqssR3VeWNmM6sb
+	JX10V9Gr5T8msWIqoI0dGCZ13E/Lj17ME+/dGuJ4647/6WmBBDgacITN5wCWu4zvpjzi9JKgX
+	JxLWtlUBUkYKbvM8VN2hLK+khTQeD0ZlgZs7ryUJ6vQpNDhdm1LpgQEEq4VkX3EIvSmBacSrp
+	L0Ab63WOtopEmhrfJAXM7AGUwJkdKm+KR6K4OLZ7XFuiF+bcviDgqI11MAc=
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 212.227.17.24
+Subject: Re: [Qemu-arm] [PATCH v4 1/7] accel/tcg: add size paremeter in
+ tlb_fill()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,67 +99,42 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-s390x@nongnu.org,
+	Thomas Huth <huth@tuxfamily.org>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Anthony Green <green@moxielogic.com>, Chris Wulff <crwulff@gmail.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Alexander Graf <agraf@suse.de>, Max Filippov <jcmvbkbc@gmail.com>,
+	Michael Walle <michael@walle.cc>, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, Artyom Tarasenko <atar4qemu@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Stafford Horne <shorne@gmail.com>,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SxCGN6B2D/t2
+X-TUID: LpvaGBRPWM06
 
-In many of the NVIC registers relating to interrupts, we
-have to convert from a byte offset within a register set
-into the number of the first interrupt which is affected.
-We were getting this wrong for:
- * reads of NVIC_ISPR<n>, NVIC_ISER<n>, NVIC_ICPR<n>, NVIC_ICER<n>,
-   NVIC_IABR<n> -- in all these cases we were missing the "* 8"
-   needed to convert from the byte offset to the interrupt number
-   (since all these registers use one bit per interrupt)
- * writes of NVIC_IPR<n> had the opposite problem of a spurious
-   "* 8" (since these registers use one byte per interrupt)
+Le 18/01/2018 à 20:38, Laurent Vivier a écrit :
+> The MC68040 MMU provides the size of the access that
+> triggers the page fault.
+> 
+> This size is set in the Special Status Word which
+> is written in the stack frame of the access fault
+> exception.
+> 
+> So we need the size in m68k_cpu_unassigned_access() and
+> m68k_cpu_handle_mmu_fault().
+> 
+> To be able to do that, this patch modifies the prototype of
+> handle_mmu_fault handler, tlb_fill() and probe_write().
+> do_unassigned_access() already includes a size parameter.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/intc/armv7m_nvic.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+I'd like to send a pull request for m68k MMU series, and 68040 MMU
+relies on this patch.
 
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 8726be796e..9433efd1b8 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -1721,7 +1721,7 @@ static MemTxResult nvic_sysreg_read(void *opaque, hwaddr addr,
-         /* fall through */
-     case 0x180 ... 0x1bf: /* NVIC Clear enable */
-         val = 0;
--        startvec = offset - 0x180 + NVIC_FIRST_IRQ; /* vector # */
-+        startvec = 8 * (offset - 0x180) + NVIC_FIRST_IRQ; /* vector # */
- 
-         for (i = 0, end = size * 8; i < end && startvec + i < s->num_irq; i++) {
-             if (s->vectors[startvec + i].enabled &&
-@@ -1735,7 +1735,7 @@ static MemTxResult nvic_sysreg_read(void *opaque, hwaddr addr,
-         /* fall through */
-     case 0x280 ... 0x2bf: /* NVIC Clear pend */
-         val = 0;
--        startvec = offset - 0x280 + NVIC_FIRST_IRQ; /* vector # */
-+        startvec = 8 * (offset - 0x280) + NVIC_FIRST_IRQ; /* vector # */
-         for (i = 0, end = size * 8; i < end && startvec + i < s->num_irq; i++) {
-             if (s->vectors[startvec + i].pending &&
-                 (attrs.secure || s->itns[startvec + i])) {
-@@ -1745,7 +1745,7 @@ static MemTxResult nvic_sysreg_read(void *opaque, hwaddr addr,
-         break;
-     case 0x300 ... 0x33f: /* NVIC Active */
-         val = 0;
--        startvec = offset - 0x300 + NVIC_FIRST_IRQ; /* vector # */
-+        startvec = 8 * (offset - 0x300) + NVIC_FIRST_IRQ; /* vector # */
- 
-         for (i = 0, end = size * 8; i < end && startvec + i < s->num_irq; i++) {
-             if (s->vectors[startvec + i].active &&
-@@ -1860,7 +1860,7 @@ static MemTxResult nvic_sysreg_write(void *opaque, hwaddr addr,
-     case 0x300 ... 0x33f: /* NVIC Active */
-         return MEMTX_OK; /* R/O */
-     case 0x400 ... 0x5ef: /* NVIC Priority */
--        startvec = 8 * (offset - 0x400) + NVIC_FIRST_IRQ; /* vector # */
-+        startvec = (offset - 0x400) + NVIC_FIRST_IRQ; /* vector # */
- 
-         for (i = 0; i < size && startvec + i < s->num_irq; i++) {
-             if (attrs.secure || s->itns[startvec + i]) {
--- 
-2.16.1
+If someone disagrees with this change, it's time to say it!
+
+Thanks,
+Laurent
 

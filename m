@@ -1,101 +1,97 @@
-Received: by 10.28.71.27 with SMTP id u27csp12667wma;
-        Tue, 23 Jan 2018 14:52:08 -0800 (PST)
-X-Google-Smtp-Source: AH8x224Ku9GlcxUSJH8TYzlXJYzglYrWyz7VStP/o4NsDrlPIwFaxpZTcMv9sd3WDai4GMvhpD6I
-X-Received: by 10.129.169.202 with SMTP id g193mr3958861ywh.500.1516747928650;
-        Tue, 23 Jan 2018 14:52:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516747928; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp20767wma;
+        Tue, 23 Jan 2018 15:02:34 -0800 (PST)
+X-Google-Smtp-Source: AH8x225KXrDrresh53j6yAHzOViU4kiwn2V+B+f8LNZzqhbmTHtOYCnDUUfefqUL72kCLrBtKCQU
+X-Received: by 10.37.104.141 with SMTP id d135mr4003461ybc.380.1516748554814;
+        Tue, 23 Jan 2018 15:02:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516748554; cv=none;
         d=google.com; s=arc-20160816;
-        b=KYT/NIoVbbTR2hMnWYQqWg8P0nYbLZNzfunpYuXCe/PJjrxuNTXVCMsTGRcnKjWTXU
-         gfh37nhzB2ApnDxE2TIwTpmwdIT0uRUinqCnwMvMJBhkzj+mKYi9DT6HJGlfmNhkbRgt
-         rXpC9kFNlNMAgovAEJHbx8VQcQx/e5gyHEv/m3Xd7XIVFjS58AD6WDfuXATlrs/uglqB
-         qoYjqM5a6auDzCAsPgVIwkly4Rk1P2NGkz1DCJKazlgF4l92KgHaK4usxWNdH1NiXPlb
-         cmxIPJMjO1l1FO7HiUWTGYtsTyHNdTG7hFMN8DtLsUmDt1VKPfUaXSbtSo56tBE+i88B
-         m+Sw==
+        b=Mf8us5dfKjod/40tDy1ROM5BGIKdrds7yYr5QhvfbMV1eOMKet2FCrPnu6sIQN0rzc
+         7qXIf0Smn/IBQC/F6XEkmuE9Qls4iQ19c+QNQ/92iRxew6wFIE6JrKqNDBBmr02oanNE
+         0ACFEnz738Dq25OxhQLRpUYBWBSWPw9U6ss7n8WOUYrDoZco/QozXL8ZcbyIkTIREe7m
+         f44JWcQuKLEsUvMHd/aEx9YFunw89eobP1Ou8D85st8iQpz2nhwjEDDe9aBRku3KWqhT
+         Pq0mvowuJnaw7f3xY52VZVNMKiB+MFvQnZSF+47Q1lJhDOn1UvZwNxOKpcc5SySFpYa9
+         pIAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=IWmQjk+S81lwOeS/1ASJ7bzOQPEnSlEtyI+Hxm3sjSg=;
-        b=Nj+Rk2tXu51c8XoT3ek7igUEJWKh0PLlWXCpfPJyRE9XY4ZSvnYHquT1HrCj82fjZ6
-         1p/yTdP4eHpRm8dtEuZ+3/nMFzgkJm9KDN5AG6F5f/QWeIpIJ2xWdoNWcwSsJvSOCnE/
-         o8TIDDPh1PsH0OlL8PoA2JhgnwiIarZwlY4j2MdDHZORp7UIxUX0St8oaIlBCJphMdiM
-         CquX0R5vD3csDAiMGfHiIc4geU5pjrMkaoseUtgwub6OaoVIJTT/Bqei9Yt/S082du7+
-         AQpUZZtJf1eLgFQHIMNN2tw7ACOvmUiSCst8Zpw+bxpoJNxaegftkmq++uNQdDzbB1qQ
-         CX+g==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=/QyF1Vwm+8svLryma+BP+Cu5HUfQ0Y0t6jE8PwDRlv4=;
+        b=K0XYbWOjg8unxj0fR6iqVo58BYlxOiV3qXxUbnBVFEQrFjlDzPi05GmzYw51AQLR81
+         98RVjyL8IfDri3Y71g5gEaBrE96ORYqru+6E/ICEPNviKrHq60dUoBhDNpZ1lUDcySBj
+         wZ6H/slUZQYvg4zLggHUEoHNKpYBz8B5/zc+L/8zqvF4MizEcoxFeg7kau/bbv70HqyA
+         xEsWthMnCK7fRRYvaPfcbw9ayvg4XBToretlVpMV5fEjUJ2ne4X7jh8h0j+gTFq8QEsU
+         SrZ8ZVvZEQ609z5KEp658y0A/xnpaBHBg0VkFPEU66qMjX2Bq1JGerD5uVhOFicUpTT6
+         QJqA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gNwqW7pZ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@linaro.org header.s=google header.b=Zaq8L+l6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i5si2529184yba.59.2018.01.23.14.52.08
+        by mx.google.com with ESMTPS id z2si4321739ywj.33.2018.01.23.15.02.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 23 Jan 2018 14:52:08 -0800 (PST)
+        Tue, 23 Jan 2018 15:02:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gNwqW7pZ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:58969 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=Zaq8L+l6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59592 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ee7QG-0008Qu-48
-	for alex.bennee@linaro.org; Tue, 23 Jan 2018 17:52:08 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45575)
+	id 1ee7aM-0005FP-9y
+	for alex.bennee@linaro.org; Tue, 23 Jan 2018 18:02:34 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38280)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1ee7NC-0006Nl-SY
-	for qemu-devel@nongnu.org; Tue, 23 Jan 2018 17:49:01 -0500
+	(envelope-from <linus.walleij@linaro.org>) id 1ee7X1-0003Ka-Ir
+	for qemu-devel@nongnu.org; Tue, 23 Jan 2018 17:59:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1ee7N9-0006mw-OA
-	for qemu-devel@nongnu.org; Tue, 23 Jan 2018 17:48:58 -0500
-Received: from mail-lf0-x243.google.com ([2a00:1450:4010:c07::243]:37240)
+	(envelope-from <linus.walleij@linaro.org>) id 1ee7Wy-000430-22
+	for qemu-devel@nongnu.org; Tue, 23 Jan 2018 17:59:07 -0500
+Received: from mail-lf0-x243.google.com ([2a00:1450:4010:c07::243]:44382)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1ee7N9-0006kk-BZ; Tue, 23 Jan 2018 17:48:55 -0500
-Received: by mail-lf0-x243.google.com with SMTP id f3so2699972lfe.4;
-	Tue, 23 Jan 2018 14:48:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-transfer-encoding;
-	bh=IWmQjk+S81lwOeS/1ASJ7bzOQPEnSlEtyI+Hxm3sjSg=;
-	b=gNwqW7pZq9xZb+zwIO+LaGKhmYSvFUxf5hstVG5xnGOb7omFDZsyr8biPQGDL8RXuv
-	lGYOHjnN3dTIYZDD095BTjAvBXtZCKSe9CQjrwUVNsEb1WSyJAcyJREymn7Hl5o+JOd+
-	aJJjxuOQK5WXdh206taVC02/FfDh+b49B+Nfli4KtVqRPWRZtNkNGRJ6k+S0wU/V8fFC
-	0yZKssG6PJUYthk4kcXutm6dEVW1MNf+Dhv1Aj0FOxIoYdIqw9adeYhK33Mf0xqcr+4D
-	p7m/PTpjVYfVns6zm0Xi9I/xMEfL5P5M7H/lj+Yrn39DpBex2Tdzz6aWJIhrh8WV58Gw
-	9upQ==
+	(Exim 4.71) (envelope-from <linus.walleij@linaro.org>)
+	id 1ee7Wx-00040q-J4
+	for qemu-devel@nongnu.org; Tue, 23 Jan 2018 17:59:03 -0500
+Received: by mail-lf0-x243.google.com with SMTP id v188so2706573lfa.11
+	for <qemu-devel@nongnu.org>; Tue, 23 Jan 2018 14:59:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id;
+	bh=/QyF1Vwm+8svLryma+BP+Cu5HUfQ0Y0t6jE8PwDRlv4=;
+	b=Zaq8L+l6RUnWShSpYClwuN3mQZKvOAq+jTqI3/ALM1h2CmJig6Mj5G3mYL1pQF7u7c
+	V3FcO4NMcYR+KrKQCttZBobqxphSp3HoPZbHoU7mwNqALeiHpaBXwaXNq0ngJ40oNDry
+	PMR4p09UEkHmufabz1itNIs/oy/MUaHOSA2tk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc:content-transfer-encoding;
-	bh=IWmQjk+S81lwOeS/1ASJ7bzOQPEnSlEtyI+Hxm3sjSg=;
-	b=huTkscfBC+I3seFACuXPKRhGSjlWqj5Kz72RPTvi0kLu/tF3FOVTZoKw6LiM41zmYf
-	E7lLrApdxJZhBhPBzXPkthv+RNDaeDfYo6sWM6yZM4EzS+lGCpPyDWwi+itv6/sIVAAD
-	I5XFVxzNfOYXHejQnFVvBSbzk8WUo1L7C2E3laTTBCxKfiGg+ggETGHn4FbFZKdZTOW0
-	lQ8rXnTp8pD0Fp+56xCwhx4nSchxaMMX7kL/U7Qwq+++obZaQrPOj/148dGIhvY6VH7M
-	pqL6DmrwoJXMOk3Ih/IZJBBhQO46ZhArthqkdeOH2edCSmubTtvmqC+7ChVhgfrOcoSs
-	0E0w==
-X-Gm-Message-State: AKwxytfzYxEKejx9athVscarbLTsGYPVm9NBxQC3RYH33C/S3IdKBN6j
-	aZktlkz2Dl5KyA196rq0DC7v8Jt4d02rQqUnUI4=
-X-Received: by 10.46.2.221 with SMTP id y90mr2120017lje.39.1516747734022; Tue,
-	23 Jan 2018 14:48:54 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.46.45.10 with HTTP; Tue, 23 Jan 2018 14:48:23 -0800 (PST)
-In-Reply-To: <20180123030630.26613-11-f4bug@amsat.org>
-References: <20180123030630.26613-1-f4bug@amsat.org>
-	<20180123030630.26613-11-f4bug@amsat.org>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Tue, 23 Jan 2018 14:48:23 -0800
-X-Google-Sender-Auth: xChdQ-udtLwja-WNRfqDdltKqn8
-Message-ID: <CAKmqyKN-XiVF754_6vOYZqh3pQx9LP+NdV7vdNxKU4V3Y1W1aA@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=/QyF1Vwm+8svLryma+BP+Cu5HUfQ0Y0t6jE8PwDRlv4=;
+	b=gXwqFRZ+md8vas1fyyZTvszTmQD0S4MYuR7Tk9uAfK0jO89LZxnDzdxocF+JCdX78C
+	lx3HU6R4iLK/NnOyBhX2yUXH4A0IXr00fJErOALTACntJED9NwDt4EGo+fim8J3XNYEg
+	MLn/cHSRPAboQ4vLsxKAF6iuXWS5P3U2KmXzMZwgltUMIj9FwfHBSTaZg1HnDaITEAo8
+	rL2oOD0ipgWup9WY8gCsKTaMmStIarSWi0I4TptFZErQDlrUPhGdUpfNrdvMLPb/9WdT
+	OzZyzGn277+cI+XIWLC9v4+8jYUJ13cfjIyKu7CnsAsjJrmt/tybLYns+2QD7U8cyfgy
+	eWuA==
+X-Gm-Message-State: AKwxytc2c9rqPDwdWtLLLmQWuYmNvUzB+ZX5Hvq8zq4yebfKhdLqDjPF
+	lnsfua5Lp1p+b7iegwFAWzHZA2xXWpY=
+X-Received: by 10.25.56.13 with SMTP id f13mr2118489lfa.16.1516748341815;
+	Tue, 23 Jan 2018 14:59:01 -0800 (PST)
+Received: from localhost.localdomain
+	(c-cb7471d5.014-348-6c756e10.cust.bredbandsbolaget.se.
+	[213.113.116.203])
+	by smtp.gmail.com with ESMTPSA id m25sm245424lfc.38.2018.01.23.14.59.00
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Tue, 23 Jan 2018 14:59:01 -0800 (PST)
+From: Linus Walleij <linus.walleij@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Tue, 23 Jan 2018 23:56:54 +0100
+Message-Id: <20180123225654.5764-1-linus.walleij@linaro.org>
+X-Mailer: git-send-email 2.14.3
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2a00:1450:4010:c07::243
-Subject: Re: [Qemu-devel] [PATCH v8 10/14] hw/arm/xilinx_zynqmp: fix the
- capabilities/spec version to match the datasheet
+Subject: [Qemu-devel] [PATCH] pl110: Implement vertical compare/next base
+ interrupts
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,90 +103,108 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Prasad J Pandit <pjp@fedoraproject.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Andrey Smirnov <andrew.smirnov@gmail.com>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	Sai Pavan Boddu <saipava@xilinx.com>,
-	"open list:Xilinx ZynqMP" <qemu-arm@nongnu.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Linus Walleij <linus.walleij@linaro.org>, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: di2691jyOXz1
+X-TUID: PvaAHWTM0Sga
 
-On Mon, Jan 22, 2018 at 7:06 PM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg> wrote:
-> checking Xilinx datasheet "UG1085" (v1.7)
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+This implements rudimentary support for interrupt generation on the
+PL110. I am working on a new DRI/KMS driver for Linux and since that
+uses the blanking interrupt, we need something to fire here. Without
+any interrupt support Linux waits for a while and then gives ugly
+messages about the vblank not working in the console (it does not
+hang perpetually or anything though, DRI is pretty forgiving).
 
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+I solved it for now by setting up a timer to fire at 60Hz and pull
+the interrupts for "vertical compare" and "next memory base"
+at this interval. This works fine and fires roughly the same number
+of IRQs on QEMU as on the hardware and leaves the console clean
+and nice.
 
-Alistair
+People who want to create more accurate emulation can probably work
+on top of this if need be. It is certainly closer to the hardware
+behaviour than what we have today anyway.
 
-> ---
->  hw/arm/xlnx-zynqmp.c | 29 ++++++++++++++++++-----------
->  1 file changed, 18 insertions(+), 11 deletions(-)
->
-> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-> index 325642058b..33d5fe53d8 100644
-> --- a/hw/arm/xlnx-zynqmp.c
-> +++ b/hw/arm/xlnx-zynqmp.c
-> @@ -50,6 +50,8 @@
->  #define DPDMA_ADDR          0xfd4c0000
->  #define DPDMA_IRQ           116
->
-> +#define SDHCI_CAPABILITIES  0x280737ec6481 /* Datasheet: UG1085 (v1.7) *=
-/
-> +
->  static const uint64_t gem_addr[XLNX_ZYNQMP_NUM_GEMS] =3D {
->      0xFF0B0000, 0xFF0C0000, 0xFF0D0000, 0xFF0E0000,
->  };
-> @@ -381,22 +383,27 @@ static void xlnx_zynqmp_realize(DeviceState *dev, E=
-rror **errp)
->      sysbus_connect_irq(SYS_BUS_DEVICE(&s->sata), 0, gic_spi[SATA_INTR]);
->
->      for (i =3D 0; i < XLNX_ZYNQMP_NUM_SDHCI; i++) {
-> -        char *bus_name;
-> -
-> -        object_property_set_bool(OBJECT(&s->sdhci[i]), true,
-> -                                 "realized", &err);
-> +        char *bus_name =3D g_strdup_printf("sd-bus%d", i);
-> +        SysBusDevice *sbd =3D SYS_BUS_DEVICE(&s->sdhci[i]);
-> +        Object *sdhci =3D OBJECT(&s->sdhci[i]);
-> +
-> +        /* Compatible with:
-> +         * - SD Host Controller Specification Version 3.00
-> +         * - SDIO Specification Version 3.0
-> +         * - eMMC Specification Version 4.51
-> +         */
-> +        object_property_set_uint(sdhci, 3, "sd-spec-version", &err);
-> +        object_property_set_uint(sdhci, SDHCI_CAPABILITIES, "capareg", &=
-err);
-> +        object_property_set_bool(sdhci, true, "realized", &err);
->          if (err) {
->              error_propagate(errp, err);
->              return;
->          }
-> -        sysbus_mmio_map(SYS_BUS_DEVICE(&s->sdhci[i]), 0,
-> -                        sdhci_addr[i]);
-> -        sysbus_connect_irq(SYS_BUS_DEVICE(&s->sdhci[i]), 0,
-> -                           gic_spi[sdhci_intr[i]]);
-> +        sysbus_mmio_map(sbd, 0, sdhci_addr[i]);
-> +        sysbus_connect_irq(sbd, 0, gic_spi[sdhci_intr[i]]);
-> +
->          /* Alias controller SD bus to the SoC itself */
-> -        bus_name =3D g_strdup_printf("sd-bus%d", i);
-> -        object_property_add_alias(OBJECT(s), bus_name,
-> -                                  OBJECT(&s->sdhci[i]), "sd-bus",
-> +        object_property_add_alias(OBJECT(s), bus_name, sdhci, "sd-bus",
->                                    &error_abort);
->          g_free(bus_name);
->      }
-> --
-> 2.15.1
->
->
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
+---
+ hw/display/pl110.c | 27 ++++++++++++++++++++++++++-
+ 1 file changed, 26 insertions(+), 1 deletion(-)
+
+diff --git a/hw/display/pl110.c b/hw/display/pl110.c
+index 8c7dcc6f0a69..777bb3f44503 100644
+--- a/hw/display/pl110.c
++++ b/hw/display/pl110.c
+@@ -12,6 +12,7 @@
+ #include "ui/console.h"
+ #include "framebuffer.h"
+ #include "ui/pixel_ops.h"
++#include "qemu/timer.h"
+ #include "qemu/log.h"
+ 
+ #define PL110_CR_EN   0x001
+@@ -19,6 +20,8 @@
+ #define PL110_CR_BEBO 0x200
+ #define PL110_CR_BEPO 0x400
+ #define PL110_CR_PWR  0x800
++#define PL110_IE_NB   0x004
++#define PL110_IE_VC   0x008
+ 
+ enum pl110_bppmode
+ {
+@@ -50,6 +53,7 @@ typedef struct PL110State {
+     MemoryRegion iomem;
+     MemoryRegionSection fbsection;
+     QemuConsole *con;
++    QEMUTimer *vblank_timer;
+ 
+     int version;
+     uint32_t timing[4];
+@@ -320,7 +324,23 @@ static void pl110_resize(PL110State *s, int width, int height)
+ /* Update interrupts.  */
+ static void pl110_update(PL110State *s)
+ {
+-  /* TODO: Implement interrupts.  */
++    /* Raise IRQ if enabled and any status bit is 1 */
++    if (s->int_status & s->int_mask) {
++        qemu_irq_raise(s->irq);
++    } else {
++        qemu_irq_lower(s->irq);
++    }
++}
++
++static void pl110_vblank_interrupt(void *opaque)
++{
++    PL110State *s = opaque;
++
++    /* Fire the vertical compare and next base IRQs and re-arm */
++    s->int_status |= (PL110_IE_NB | PL110_IE_VC);
++    timer_mod(s->vblank_timer,
++              qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + NANOSECONDS_PER_SECOND / 60);
++    pl110_update(s);
+ }
+ 
+ static uint64_t pl110_read(void *opaque, hwaddr offset,
+@@ -429,6 +449,10 @@ static void pl110_write(void *opaque, hwaddr offset,
+         s->bpp = (val >> 1) & 7;
+         if (pl110_enabled(s)) {
+             qemu_console_resize(s->con, s->cols, s->rows);
++            timer_mod(s->vblank_timer,
++                      qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + NANOSECONDS_PER_SECOND / 60);
++        } else {
++            timer_del(s->vblank_timer);
+         }
+         break;
+     case 10: /* LCDICR */
+@@ -474,6 +498,7 @@ static void pl110_realize(DeviceState *dev, Error **errp)
+     memory_region_init_io(&s->iomem, OBJECT(s), &pl110_ops, s, "pl110", 0x1000);
+     sysbus_init_mmio(sbd, &s->iomem);
+     sysbus_init_irq(sbd, &s->irq);
++    s->vblank_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, pl110_vblank_interrupt, s);
+     qdev_init_gpio_in(dev, pl110_mux_ctrl_set, 1);
+     s->con = graphic_console_init(dev, 0, &pl110_gfx_ops, s);
+ }
+-- 
+2.14.3
+

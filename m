@@ -1,93 +1,101 @@
-Received: by 10.28.71.27 with SMTP id u27csp4580932wma;
-        Tue, 23 Jan 2018 14:12:26 -0800 (PST)
-X-Google-Smtp-Source: AH8x224/Mr7NuIKu8qjcWQJYpSkWfVNHQDCMzFnGm/RmSOsTDCS5pTqJgwNC2zM4jLbTTSrLM6ky
-X-Received: by 10.37.189.207 with SMTP id g15mr3896536ybk.509.1516745546394;
-        Tue, 23 Jan 2018 14:12:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516745546; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp8734wma;
+        Tue, 23 Jan 2018 14:46:30 -0800 (PST)
+X-Google-Smtp-Source: AH8x227B1QFLonI6zv2rtq2EjgmBugmCbTFT1A1NWJVOeHCmed0WtzYv/6MLEoCMnPB3oiFNQFtT
+X-Received: by 10.37.246.31 with SMTP id t31mr4169071ybd.330.1516747590443;
+        Tue, 23 Jan 2018 14:46:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516747590; cv=none;
         d=google.com; s=arc-20160816;
-        b=vtWP4ZwJ/MRUb4Wo3vQYWmP2fYPkfasBlE7BMN3+q2f3ONG5fnA6UdulEnoZ84JyG5
-         XO/s92LQhed/g8BT+a0dG6hUIcIJImFLQySFtlSxMAJ4EvfH6Vc61OzXx9QrmDuynOBs
-         O1wBf7x2IoBolv03NXrgOZ0TgnVgXOkm2MwTSTEijWoX/ncJhy75P0PfOfQ9Cg87tfjd
-         gPc716pL62MlhGodh6KvOGCteFwcCfG5emyugl64wzBl5y44ZC5bFPVInWx7uDpmcjcb
-         Wy1LIBBkPxU0PD3wYnm/nF7+kWfzkkn1tSjbfhsP0ovb1KfuwQAfu67p/VIwB/TE/LuQ
-         /PmA==
+        b=nqig894bwEryGt7jsK3gruuzr9al7Gyc4o+9BcrE+y5odgLvF3GBZeeyJMFAbw5Gnw
+         3+iSDmdykrFzT4XrIVSFnwrBrIzRPfvUc37ID+AyWsk4TbwE9Tn1+FA329pLI2cCBccR
+         BMtu5yCc6Rnebp4JIyNWnxTTY6smRS72Lf3bOwrdZlrJpEreyWpsKxNr45gtWVtEGNGS
+         3tV134KGxsmJbzQ2xF1TK1hQoWc0Qna1zEd51jGaLraafBU5D69Kn4ay8FvUsdOc7Wk1
+         yGcne+jiUBOabG0Mzs+aw6nysvMz6d7WFmG0F4fzQGTrfDBnU0IEnBMViG1T0xuImWnl
+         xgdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
-         :arc-authentication-results;
-        bh=Eooq2hn1/f3FijZetfI96nla9vC5f7fLCZRfIZjRsYc=;
-        b=KzVBHgQ3oJe5mxIE4OvTlCNw8NJ4mt+fB0nUDTd+4Vc/vZywEhIkhOfKsHIGvGUEdY
-         yqVAetqObOdcgHgLu+oDFOUCzSaqBLivO177lrVCxIC3soUrAJeuxqqqEJvGI4pHEgWl
-         bYysh/W8TU+V23ZIUvv/c07OeUTHVHSYmVSdSBIULFdLedM2/Y3N+R7Qat6XZPoJIxcJ
-         S2VW4cVQXbetKzCf7Xr5E+RYrhJXe23XFNNV46cq2+67cGvSyZFruexc9fS6oEr2oKGR
-         iWTSs6oH1AfteRBJMs2Dx5iwFW/okJcq2lOj+O0M3wynH4JSyyj6Y2kG/miYrV7hSCXf
-         lfWQ==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=faN5jwnsXu8BmWo8CoREj+DQ5IaNtCXPyWeOZvRXXhw=;
+        b=QFb0lYulqqcabN2uCUzWSWUC3F/O92DksgUWN/yGlyZrUSwEE3CNFw8Vsp6hFfTLWW
+         9vN6t9/Qj/4Er8NUYRBOzE9kp8ytCmJ5BwEisIdsNzRvt7YIhDA84qEfY+7QhkcDZKsP
+         +5D/V6xFPaMxcbe0UztYs4mnu2HOXwC/ZiagGGjDV1gzDdAP4j0mL6bCecxsRWqRyHpu
+         fIavV4L0tjTuBvOGsj4apVHnNe7UqIpFbwEJ/JE9HL9xI6NJOmxnTCig8R0gp1+e7hTL
+         IVOghc3Iotq0Ju6BnVMdjgBETtaQW+/aPSdNMW9KOrqIAALphy2bh83XRjQxx/oy1kGU
+         Xw1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IZtvF58g;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d66si4198675ywc.60.2018.01.23.14.12.26
+        by mx.google.com with ESMTPS id x23si2552244ybi.515.2018.01.23.14.46.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 23 Jan 2018 14:12:26 -0800 (PST)
+        Tue, 23 Jan 2018 14:46:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IZtvF58g;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:56788 helo=lists.gnu.org)
+Received: from localhost ([::1]:58674 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ee6np-0006kh-QU
-	for alex.bennee@linaro.org; Tue, 23 Jan 2018 17:12:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35021)
+	id 1ee7Kn-00049t-Pn
+	for alex.bennee@linaro.org; Tue, 23 Jan 2018 17:46:29 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39752)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1ee6nd-0006iw-0T
-	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 17:12:13 -0500
+	(envelope-from <alistair23@gmail.com>) id 1ee7KU-00047K-SD
+	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 17:46:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1ee6nc-0003qo-8J
-	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 17:12:12 -0500
-Received: from mout.kundenserver.de ([212.227.17.24]:56746)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1ee6nX-0003ks-PB; Tue, 23 Jan 2018 17:12:08 -0500
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue101 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	0M7Knm-1eyNG42K6Y-00x5TQ; Tue, 23 Jan 2018 23:11:34 +0100
-To: qemu-devel@nongnu.org
-References: <20180118193846.24953-1-laurent@vivier.eu>
-	<20180118193846.24953-2-laurent@vivier.eu>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <a6bc9bdb-57cd-4b9d-eb60-0feec05bcbf6@vivier.eu>
-Date: Tue, 23 Jan 2018 23:11:28 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.2
+	(envelope-from <alistair23@gmail.com>) id 1ee7KT-0003ES-Rv
+	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 17:46:10 -0500
+Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:43401)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1ee7KQ-00039a-Cw; Tue, 23 Jan 2018 17:46:06 -0500
+Received: by mail-lf0-x241.google.com with SMTP id o89so2672281lfg.10;
+	Tue, 23 Jan 2018 14:46:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc:content-transfer-encoding;
+	bh=faN5jwnsXu8BmWo8CoREj+DQ5IaNtCXPyWeOZvRXXhw=;
+	b=IZtvF58gDAeavrFu3nN6JnCgV2PlLT5Zh23NnU4Mbdbq3oLemdgGsFDF3VXUQQGkW3
+	0AMxiLCORh8k3mzCkNGlecZEtTuqvKw5qvnHUlWDSLdH6+mmHJcTlwz2y8JkadEtQ+it
+	87D7YV/LtQrtw2URGvBXEC41odlsMz8l9wfFj0BaibJ7KOClkm6tYlU4SvwFG7ny1Cb8
+	YQirSE92+GKFrdWGHkgJFaolCnkq/f83UZ7iJjnD4hAt4Lr2lqVe787wsz2nrYwPjDDa
+	5P4ukruyW1TOwZbK7YeuQOEq/GwIIG08fIp6NXoZBinTblSo61zWT3L7+3XbR2hMJYeE
+	52tg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc:content-transfer-encoding;
+	bh=faN5jwnsXu8BmWo8CoREj+DQ5IaNtCXPyWeOZvRXXhw=;
+	b=JLEmantIlYO0YV+iX7/FruRUH19xiFxciwc+UZpvsAMqvT3LNJvGODNDZQXO4X6Y08
+	NF+NQ4/PLBeFvWFdje2rMJlfZVNsaCVchGRY0eKMW9z4ZE8lpqr/kme89qx5heOASGYV
+	AESc2z18GfYQGN4/9+NUeSiPeb6qSu39NLn0fhGfyjTac76rJQFgzM8+Qd1HDV6pUFSY
+	KRh4FFZp1ZtyFMuq1Q3uEsdWgtcBm24tPTxsxoGLkNMV8cZFT/EjVGtAX/d2V0AMu7En
+	dOovgTxYWM9wd6THfoavdwA9bNiOZagbv55WUZlNhDGWczo/Q5ZqO6INcXTodauY4Q52
+	cj9w==
+X-Gm-Message-State: AKwxyteeH1zAwfX/pLs1UoQ0XD+Mv2UYTBmaPXkPLZ2PUjD49zCgalrD
+	NPYKBAZ7DmFod9TvPM+5yFGsGRDhZYefuzavJIQ=
+X-Received: by 10.46.127.4 with SMTP id a4mr1995519ljd.121.1516747565033; Tue,
+	23 Jan 2018 14:46:05 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20180118193846.24953-2-laurent@vivier.eu>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:VURuKj6Mj847YgI5OwCFKWFPTGgdSxdmA93Khji/ljDCgVLx1JB
-	pWF7tdWEddaTTjDxBY6dqIt3DKUnAmy4zahK7ZIp3HpalYd6wqqO2qgxyQVHWM9I/PunGRB
-	Jfz9FNlqQUlK9bpE8loyzmHaD1WC+5mrVSBFS80cmIVPKmokGiafvtU893D2frhER3i8YLp
-	sHaKV/e/ydqWLBcYyHhFw==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:S3wJhnbj/ww=:67sLMkZUN0KUG9GDhSSHgz
-	9dnNzNoy5jPyDCwT1CcRM3bvax+xI9PxWh52tdcoaohGJKVuDjhy9X5QbedVeBbAQWxIbO0md
-	xkHSJ4BqmTshEDOaPpojaZRLPItvRokcg4sdiAzvipOaav2z50io7jr5CkomUfAAe20oDn2q3
-	LS0Bb0Imr5oVkqDvvrfkGFPgLb4IWFICz4GVH7MAYtiGDplyGGpZiCDCMqqdREjhl6z3eM6lN
-	6ghPWQXtSwcwroZ715If/vDzTPfF1XNj1jurz6PuyLCsqJLw313Y9vyFAqgp1Lc4nTZp7JmTU
-	UOEWTE1v9AScNgoDR19NyoBwsGcd/g/3BkDHVLCEvNfwcBZ+fiJ+VlGE0gZwU5BwQqBYwzH/K
-	Ww1OzOjKLvqHgG/T7SuQWSKKAaZ0mRSpndaUrSLNTBJ10dIyCTD842sT+AWOEviBBt5i4bJO5
-	Xzb25756RuWiwM6NOVFrr206Z48+Taf08NSUvbyVJWL/UwbLbz/NlTc8ldE2RYwv/RkvmzS9d
-	Py7YPZoSWiDWY9yJdzwezAnGa188tve8vFVzQg7vRw9AO3Yf5nKkC+xpfHvqssR3VeWNmM6sb
-	JX10V9Gr5T8msWIqoI0dGCZ13E/Lj17ME+/dGuJ4647/6WmBBDgacITN5wCWu4zvpjzi9JKgX
-	JxLWtlUBUkYKbvM8VN2hLK+khTQeD0ZlgZs7ryUJ6vQpNDhdm1LpgQEEq4VkX3EIvSmBacSrp
-	L0Ab63WOtopEmhrfJAXM7AGUwJkdKm+KR6K4OLZ7XFuiF+bcviDgqI11MAc=
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 212.227.17.24
-Subject: Re: [Qemu-arm] [PATCH v4 1/7] accel/tcg: add size paremeter in
- tlb_fill()
+Received: by 10.46.45.10 with HTTP; Tue, 23 Jan 2018 14:45:34 -0800 (PST)
+In-Reply-To: <20180123030630.26613-8-f4bug@amsat.org>
+References: <20180123030630.26613-1-f4bug@amsat.org>
+	<20180123030630.26613-8-f4bug@amsat.org>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Tue, 23 Jan 2018 14:45:34 -0800
+X-Google-Sender-Auth: wBYUE0dg1CPSsBu6Y8qL7Na1OAk
+Message-ID: <CAKmqyKMv4vhq2RYKX7cNMy4S5PWggZfpcQxUWMPXwF2Lm4+xvw@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4010:c07::241
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v8 07/14]
+ hw/arm/bcm2835_peripherals: implement SDHCI Spec. v3
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,42 +107,73 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-s390x@nongnu.org,
-	Thomas Huth <huth@tuxfamily.org>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Anthony Green <green@moxielogic.com>, Chris Wulff <crwulff@gmail.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Alexander Graf <agraf@suse.de>, Max Filippov <jcmvbkbc@gmail.com>,
-	Michael Walle <michael@walle.cc>, qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org, Artyom Tarasenko <atar4qemu@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Stafford Horne <shorne@gmail.com>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>, Aurelien Jarno <aurelien@aurel32.net>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Prasad J Pandit <pjp@fedoraproject.org>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	Sai Pavan Boddu <saipava@xilinx.com>, "open list:ARM" <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LpvaGBRPWM06
+X-TUID: 1lBbBMwA17vw
 
-Le 18/01/2018 à 20:38, Laurent Vivier a écrit :
-> The MC68040 MMU provides the size of the access that
-> triggers the page fault.
-> 
-> This size is set in the Special Status Word which
-> is written in the stack frame of the access fault
-> exception.
-> 
-> So we need the size in m68k_cpu_unassigned_access() and
-> m68k_cpu_handle_mmu_fault().
-> 
-> To be able to do that, this patch modifies the prototype of
-> handle_mmu_fault handler, tlb_fill() and probe_write().
-> do_unassigned_access() already includes a size parameter.
+On Mon, Jan 22, 2018 at 7:06 PM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+rg> wrote:
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  hw/arm/bcm2835_peripherals.c | 21 +++++++++++++--------
+>  1 file changed, 13 insertions(+), 8 deletions(-)
+>
+> diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+> index 12e0dd11af..0570cc4ad3 100644
+> --- a/hw/arm/bcm2835_peripherals.c
+> +++ b/hw/arm/bcm2835_peripherals.c
+> @@ -254,14 +254,19 @@ static void bcm2835_peripherals_realize(DeviceState=
+ *dev, Error **errp)
+>      memory_region_add_subregion(&s->peri_mr, RNG_OFFSET,
+>                  sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->rng), 0));
+>
+> -    /* Extended Mass Media Controller */
+> -    object_property_set_int(OBJECT(&s->sdhci), BCM2835_SDHC_CAPAREG, "ca=
+pareg",
+> -                            &err);
+> -    if (err) {
+> -        error_propagate(errp, err);
+> -        return;
+> -    }
+> -
+> +    /* Extended Mass Media Controller
+> +     *
+> +     * Compatible with:
+> +     * - SD Host Controller Specification Version 3.0 Draft 1.0
+> +     * - SDIO Specification Version 3.0
+> +     * - MMC Specification Version 4.4
+> +     *
+> +     * For the exact details please refer to the Arasan documentation:
+> +     *   SD3.0_Host_AHB_eMMC4.4_Usersguide_ver5.9_jan11_10.pdf   =C2=AF\=
+_(=E3=83=84)_/=C2=AF
 
-I'd like to send a pull request for m68k MMU series, and 68040 MMU
-relies on this patch.
+I don't think we need the shrugging face in the comments.
 
-If someone disagrees with this change, it's time to say it!
+Otherwise:
 
-Thanks,
-Laurent
+Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
 
+Alistair
+
+
+> +     */
+> +    object_property_set_uint(OBJECT(&s->sdhci), 3, "sd-spec-version", &e=
+rr);
+> +    object_property_set_uint(OBJECT(&s->sdhci), BCM2835_SDHC_CAPAREG, "c=
+apareg",
+> +                             &err);
+>      object_property_set_bool(OBJECT(&s->sdhci), true, "pending-insert-qu=
+irk",
+>                               &err);
+>      if (err) {
+> --
+> 2.15.1
+>
+>

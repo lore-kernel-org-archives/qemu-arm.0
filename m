@@ -1,112 +1,138 @@
-Received: by 10.28.71.27 with SMTP id u27csp3767055wma;
-        Tue, 23 Jan 2018 00:11:00 -0800 (PST)
-X-Google-Smtp-Source: AH8x226tI1RIpIN+n8JZvdzJwpxA8fFyrn5IzlhY/n6aCO4qObr+5SvzGyBORW12SjL5mPq17gJe
-X-Received: by 10.157.52.144 with SMTP id g16mr6863352otc.294.1516695060438;
-        Tue, 23 Jan 2018 00:11:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516695060; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp3767346wma;
+        Tue, 23 Jan 2018 00:11:22 -0800 (PST)
+X-Google-Smtp-Source: AH8x2272bxiDekifonDft+61/1PVWTKH7BqnqxhZQp8ydKopwecx7YS5xVIgqidBCrwizPEmu+Ew
+X-Received: by 10.129.154.146 with SMTP id r140mr1554235ywg.442.1516695082420;
+        Tue, 23 Jan 2018 00:11:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516695082; cv=none;
         d=google.com; s=arc-20160816;
-        b=fYSOroV9VSGq/Y8Y/5sC8e+uZYb9fJaOAz+6WvZODsmaqvjqEUwDcFjJCCtedMX38O
-         +v5rh6wgNvIeT0rkgVpPiB5GS08fZlDXv27P4Rd2O003stwBKBDToH5ZVa7G3NNJ3x91
-         q3nJJFHGkniOWDGwPYr4Q8IwCwVOpODQ0dm75veCWIMjCgYvJLOgSopzhF0xIrTfPry8
-         3Zoz+hJWGoJKUyiz4T2qeXwac0z9mTVDe0cvPrH792rBZPF9K+aS7McmzuHnOh3ix2Tv
-         GBj/FIDGxU/If4W86ODHXuDxSK+Vxm/AqOzp7XjXCfe7mRpRC13uFnleGr7Y9tIt9MJT
-         M0kw==
+        b=EjNC7Rmw42DxQl/RYB0lR1JPgF/X/JLeFyTNHx2IVuohjbwwxGFS9xe7iM/fpOzp/y
+         CAh7Sy2BvOf/GUg+ztMYQdFS0rJBSy6Rn3RXYh3QYb/oquolY7BuaaIIWzFdhiQ+t4ef
+         aBo44IvHGc6z2jSjaGI8p8I6jhP6VBZgf/oz9/1AwRXXsBBRuNJg2laLxqyuDtylz/ak
+         gHHkYR9aphdXvHp0Lz8LHlgs4uJryfpE7VU9NwnCOsAXRj1zktdBBb1fwL0OjuEpw89d
+         gfrr/gwKAEDqlLC13Fdbao/IglYCPYs3pOS6SF+CcYr8pPaJEXJT4WdPAghCOMwhKndT
+         nLGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:arc-authentication-results;
-        bh=uxH0QsR5pjne6nQFSzA0VefTovIDIN9R/5m2eBO/IwI=;
-        b=Bx7JRp3YgJ8gk+Y3AeoeuO8uRiJO27sb1IsMcnJ2WLCrKg7XrZcnUvYL7rlREB4X/w
-         MtMXign2xxdRpdi9ACGaqu8rAth29M9pYFLPCn3x8MMgVZ56Oam+6Qq/8PyNLYjv+XfI
-         d+ztR2Gv5B2dwzbCHwxC9urTuc8X6eTMaZJ9ahimJKHVI+xSWgx8Umsqy9AFphOVKIzZ
-         QmtyV8FPTo04EQb2S2N9ziTwvINvSEx5n4qP8rYQdJEPnhzp8F9XnUX7TJM5r9KssoAn
-         TJIdNhva1Cikt0gkjEyWXGVvaiIqV+4RBCjsFlKgnWLzr5Io7TFc7vco2N9FWe8838QF
-         3Mbw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=Z7goL2WmEJPOzxS4VaobJOQZl3yhEfQyrpVeFRA2XNU=;
+        b=cSC0IOF2b3vDpdvUAcOnJMxry5vD8M6rWJLCfuirFfsaQq7iGzwqC6oye2a8ILPWu6
+         F0EaL6YKIa/symIJ9JmY0jA2l1etBsf3RC1xy9ImE3Qc3nebK30WsvwEOJlAiUSEw2XO
+         WAOOGLe8ZFtbiKilCNmzXThinPboE4m1PzYvEce7JPt9Wxytem2jcZ86xKVOcNaS/TAA
+         jC5RpH4e4jvuogA/kKsSRSUEvTgCWJCKL4VUfqO+ASCFsj2XZ+HwDVAjDKO8L0uvvSAH
+         NOBEMAMPTLEnnG7vGh+oIrB5Ln7uQDC3XdPLi/oWccTaJRmHLntO5o9cxhOIRHsNtkkG
+         oNQw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <imammedo@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id r48si7157412otr.354.2018.01.23.00.10.59
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 23 Jan 2018 00:11:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id v191si4087491ywg.131.2018.01.23.00.11.22
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 23 Jan 2018 00:11:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:43814 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1edtft-0007pz-Op
+	for alex.bennee@linaro.org; Tue, 23 Jan 2018 03:11:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54904)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <imammedo@redhat.com>) id 1edtf0-0007Qc-TL
+	for qemu-devel@nongnu.org; Tue, 23 Jan 2018 03:10:27 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <imammedo@redhat.com>) id 1edtez-0001z6-Nh
+	for qemu-devel@nongnu.org; Tue, 23 Jan 2018 03:10:26 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:35982)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1edtev-0001wU-Oh; Tue, 23 Jan 2018 03:10:21 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5D8FC13AAB;
-	Tue, 23 Jan 2018 08:10:59 +0000 (UTC)
-Received: from dell-r430-03.lab.eng.brq.redhat.com (dell-r430-03.lab.eng.brq.redhat.com [10.37.153.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id E5FD5D1E7;
-	Tue, 23 Jan 2018 08:10:56 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id EE2AD883AE;
+	Tue, 23 Jan 2018 08:10:20 +0000 (UTC)
+Received: from dell-r430-03.lab.eng.brq.redhat.com
+	(dell-r430-03.lab.eng.brq.redhat.com [10.37.153.18])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 60A989CCB;
+	Tue, 23 Jan 2018 08:10:19 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	qemu-s390x@nongnu.org,
-	qemu-ppc@nongnu.org,
-	qemu-arm@nongnu.org,
-	Richard Henderson <richard.henderson@linaro.org>,
-	"Emilio G. Cota" <cota@braap.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v3 25/25] cpu: get rid of cpu_generic_init()
-Date: Tue, 23 Jan 2018 09:08:24 +0100
-Message-Id: <1516694904-64879-26-git-send-email-imammedo@redhat.com>
+Date: Tue, 23 Jan 2018 09:08:06 +0100
+Message-Id: <1516694904-64879-8-git-send-email-imammedo@redhat.com>
 In-Reply-To: <1516694904-64879-1-git-send-email-imammedo@redhat.com>
 References: <1516694904-64879-1-git-send-email-imammedo@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.29]); Tue, 23 Jan 2018 08:10:59 +0000 (UTC)
-X-TUID: NHOs6HBiXzih
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Tue, 23 Jan 2018 08:10:21 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-devel] [PATCH v3 07/25] lm32: cpu: add CPU_RESOLVING_TYPE
+ macro
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Eduardo Habkost <ehabkost@redhat.com>, qemu-s390x@nongnu.org,
+	Laurent Vivier <laurent@vivier.eu>,
+	Michael Walle <michael@walle.cc>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: B/1f1xFDz2J+
 
-There aren't any users of the helper left, remove it.
+it will be used for providing to cpu name resolving class for
+parsing cpu model for system and user emulation code.
+
+Along with change add target to null-machine test, so
+that when switch to CPU_RESOLVING_TYPE happens,
+test would ensure that null-mchine usecase still works.
 
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 ---
-CC: Richard Henderson <richard.henderson@linaro.org>
-CC: "Emilio G. Cota" <cota@braap.org>
-CC: Paolo Bonzini <pbonzini@redhat.com>
-CC: Eduardo Habkost <ehabkost@redhat.com>
-CC: "Alex Bennée" <alex.bennee@linaro.org>
-CC: "Philippe Mathieu-Daudé" <f4bug@amsat.org>
+CC: Michael Walle <michael@walle.cc>
 ---
- qom/cpu.c | 17 ++---------------
- 1 file changed, 2 insertions(+), 15 deletions(-)
+ target/lm32/cpu.h         | 1 +
+ tests/machine-none-test.c | 1 +
+ 2 files changed, 2 insertions(+)
 
-diff --git a/qom/cpu.c b/qom/cpu.c
-index aab8437..cf6880d 100644
---- a/qom/cpu.c
-+++ b/qom/cpu.c
-@@ -304,22 +304,9 @@ static ObjectClass *cpu_common_class_by_name(const char *cpu_model)
- static void cpu_common_parse_features(const char *typename, char *features,
-                                       Error **errp)
- {
--    char *featurestr; /* Single "key=value" string being parsed */
-     char *val;
--    static bool cpu_globals_initialized;
--
--    /* TODO: all callers of ->parse_features() need to be changed to
--     * call it only once, so we can remove this check (or change it
--     * to assert(!cpu_globals_initialized).
--     * Current callers of ->parse_features() are:
--     * - cpu_generic_init()
--     */
--    if (cpu_globals_initialized) {
--        return;
--    }
--    cpu_globals_initialized = true;
--
--    featurestr = features ? strtok(features, ",") : NULL;
-+    /* Single "key=value" string being parsed */
-+    char *featurestr = features ? strtok(features, ",") : NULL;
+diff --git a/target/lm32/cpu.h b/target/lm32/cpu.h
+index 2279594..0656052 100644
+--- a/target/lm32/cpu.h
++++ b/target/lm32/cpu.h
+@@ -259,6 +259,7 @@ bool lm32_cpu_do_semihosting(CPUState *cs);
  
-     while (featurestr) {
-         val = strchr(featurestr, '=');
+ #define LM32_CPU_TYPE_SUFFIX "-" TYPE_LM32_CPU
+ #define LM32_CPU_TYPE_NAME(model) model LM32_CPU_TYPE_SUFFIX
++#define CPU_RESOLVING_TYPE TYPE_LM32_CPU
+ 
+ #define cpu_list lm32_cpu_list
+ #define cpu_signal_handler cpu_lm32_signal_handler
+diff --git a/tests/machine-none-test.c b/tests/machine-none-test.c
+index 68f7a30..1159290 100644
+--- a/tests/machine-none-test.c
++++ b/tests/machine-none-test.c
+@@ -30,6 +30,7 @@ static struct arch2cpu cpus_map[] = {
+     { "i386", "qemu32,apic-id=0" },
+     { "alpha", "ev67" },
+     { "cris", "crisv32" },
++    { "lm32", "lm32-full" },
+ };
+ 
+ static const char *get_cpu_model_by_arch(const char *arch)
 -- 
 2.7.4
+

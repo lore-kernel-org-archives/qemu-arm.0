@@ -1,99 +1,98 @@
-Received: by 10.28.71.27 with SMTP id u27csp3777934wma;
-        Tue, 23 Jan 2018 00:25:17 -0800 (PST)
-X-Google-Smtp-Source: AH8x226e3TL/oPwry4HTtZF8AMONuU3czhzFd2agVxR9ZHlvdamwVJtzwjQna8PNzA6PIuoNvVVm
-X-Received: by 10.129.82.73 with SMTP id g70mr1701200ywb.172.1516695917176;
-        Tue, 23 Jan 2018 00:25:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516695917; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp3778320wma;
+        Tue, 23 Jan 2018 00:25:46 -0800 (PST)
+X-Google-Smtp-Source: AH8x226YT/dKE95abNgBtc/zob4uXUdb5sxeps8jAMXpwUz61tVivKeTtN39QXmSMSd885ZAXIkZ
+X-Received: by 10.129.236.6 with SMTP id j6mr1586797ywm.160.1516695946663;
+        Tue, 23 Jan 2018 00:25:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516695946; cv=none;
         d=google.com; s=arc-20160816;
-        b=Nqm2rM0tR06i9VEYVs9aprnwxGzPuWJMRnh5MMUr69WRo0VwX5S+1wYgWPfsGzKpRl
-         4i/61+yAStODqOXWiCsH3p1XLp3Sk6dO4Bxu/m99ZlICBfBlqec4L2UUio9JTvM1VuMz
-         BS7dzQIWiLi99z1hU7e0DnAXWtax7TM1lnm48luYPIs79DcKYdg7BalhEM1w48o7WYHl
-         41Tp94+xNY92odFKJw5/yL+L0+7//q2V/U64Ug/nl2W+uLiVNF9XoIi7xtpL52/Fo8X+
-         AjquX8/Am9DTrZ30LY738X7wPoJQD/6YuFNar+GUXz06WesTnYZWBSfxGP2GZ44VN4Nz
-         gRfA==
+        b=bZDQYe3tORIw7rTNRZxY4vazOOBkHSLbQbqKdcg7J/F1ARqHJyvm3Vv6t9yID7b5VT
+         qV8+Fe+h/r74gKFGUomSnC/0ZoKHq1NpRejX+6SsKT0PcMrQQ1e8d4Nav+01XQbFeT5I
+         uVIqETuD41aQo7eDQ6StuaE44IiN2Ow9HFDqlO00VeZPX5c4s69uDYAHZ8V5sdKzhYmL
+         D/+vHym7z+ly58OhBdgf5K7oSzpvYTb809oPxCVaqckCcv0iwG81sMfmIz66sQwuMHDy
+         CbC8jeouuZ6l3i6m45VcEq3sC7LG/+mRemi/K3TpF6/5gI0ptAgyCOIjswYj8xTpHqbz
+         WfUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=BuLQc3kFWKBfMwKgjAvl/cTQmgp/heONdBZzArWIwj0=;
-        b=gvxzdrbDeDnyvi7vT5Yl2BOasCJ2fMO7OZo1vQ/ub4lhRuV+mdAwGG4V6FrwMoc8P+
-         PMMgKKeAC5Co1nNRkc7LS2xlZHcEHrdPevskJ4Q/mrK40fBxKiO4IUjfUKGjjvx+z8w3
-         s2efiC/bp3bYULcuKXZkwd1r+tlmjfABlN9EJK4s8ylW55kRHgxkbDoyTcuRlzXFgfgZ
-         S/SzrDqGXtFt2pEIXcr4knlRC7skI6+BHxj4PhFT25UIl2sabRx8PEtJziXgjzdiE8R1
-         WMUzrSuuasoNOR2jxDPmOhmX4+gqTnLbR6bo+uzCvWkxhRNEIHsV16Mw0/Gu3G2/4OcU
-         ZtWQ==
+        bh=2kD2xQxzYUUbuM6hgO65McsTpplB73DxMY5UTA9Tsk4=;
+        b=s0AIeZvIWdh6+ghTeETykm+KQO3yB+NnKb2fISc2KrhU1zTeqJsi2oIXCh3oh6mJHZ
+         Atm+ngLtyqTKepUMnhDnRtJW/A2kYRzuNASjEMTH/D0+in0dMVacivCfOxBV0ocHtJ2P
+         GzvcFVxnRtSVLd9MDIdqzIGoDJIRwS7In92YVaVCh6TAnfNPGy1iNAZM+d/MVqbsjY+7
+         RsGzCU9tFUQGjLowRxAsYUU9xbl/4AJGmyAjDJ8cbmGLrzfoMDLxlIAzWhs02j48zee7
+         gTbYDOGEhuK6z4gfnNnGop3t7NXdWKdUyv4Pj3sXbF1QsZwGDWV+TMsnaXku2VGcOKsz
+         jDPg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d14si2283606ybn.64.2018.01.23.00.25.17
+        by mx.google.com with ESMTPS id i13si2343918ybh.337.2018.01.23.00.25.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 23 Jan 2018 00:25:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 23 Jan 2018 00:25:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43958 helo=lists.gnu.org)
+Received: from localhost ([::1]:43949 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1edttM-0003cN-Hv
-	for alex.bennee@linaro.org; Tue, 23 Jan 2018 03:25:16 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55382)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1edttq-0003RS-0X
+	for alex.bennee@linaro.org; Tue, 23 Jan 2018 03:25:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55667)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1edtfJ-0007qQ-9T
-	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 03:10:46 -0500
+	(envelope-from <imammedo@redhat.com>) id 1edtfT-00086v-WE
+	for qemu-devel@nongnu.org; Tue, 23 Jan 2018 03:10:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1edtfF-0002AV-NE
-	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 03:10:45 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:46854)
+	(envelope-from <imammedo@redhat.com>) id 1edtfP-0002H9-Gb
+	for qemu-devel@nongnu.org; Tue, 23 Jan 2018 03:10:55 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:52524)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1edtfF-0002A1-HD; Tue, 23 Jan 2018 03:10:41 -0500
+	id 1edtfN-0002Ev-Dk; Tue, 23 Jan 2018 03:10:49 -0500
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
 	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id AEAF4C0587C3;
-	Tue, 23 Jan 2018 08:10:40 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 91F743DE3F;
+	Tue, 23 Jan 2018 08:10:48 +0000 (UTC)
 Received: from dell-r430-03.lab.eng.brq.redhat.com
 	(dell-r430-03.lab.eng.brq.redhat.com [10.37.153.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D0890D1F0;
-	Tue, 23 Jan 2018 08:10:38 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 1C8A3D1E7;
+	Tue, 23 Jan 2018 08:10:46 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Tue, 23 Jan 2018 09:08:16 +0100
-Message-Id: <1516694904-64879-18-git-send-email-imammedo@redhat.com>
+Date: Tue, 23 Jan 2018 09:08:20 +0100
+Message-Id: <1516694904-64879-22-git-send-email-imammedo@redhat.com>
 In-Reply-To: <1516694904-64879-1-git-send-email-imammedo@redhat.com>
 References: <1516694904-64879-1-git-send-email-imammedo@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Tue, 23 Jan 2018 08:10:40 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.29]);
+	Tue, 23 Jan 2018 08:10:48 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v3 17/25] sparc: cpu: add CPU_RESOLVING_TYPE macro
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [PATCH v3 21/25] hppa: cpu: add CPU_RESOLVING_TYPE
+ macro
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Laurent Vivier <laurent@vivier.eu>, qemu-s390x@nongnu.org,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Artyom Tarasenko <atar4qemu@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AeXIqwPu8Svp
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Eduardo Habkost <ehabkost@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+	qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ueJJovk586k9
 
 it will be used for providing to cpu name resolving class for
 parsing cpu model for system and user emulation code.
@@ -102,53 +101,25 @@ Along with change add target to null-machine test, so
 that when switch to CPU_RESOLVING_TYPE happens,
 test would ensure that null-mchine usecase still works.
 
-PS:
-sparc cpu model names might have spaces, add quotes around
-cpu model name when creating CLI so QEMU could find cpu.
-
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 ---
-CC: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-CC: Artyom Tarasenko <atar4qemu@gmail.com>
+CC: Richard Henderson <rth@twiddle.net>
 ---
- target/sparc/cpu.h        | 1 +
- tests/machine-none-test.c | 4 +++-
- 2 files changed, 4 insertions(+), 1 deletion(-)
+ target/hppa/cpu.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
-index 9fde547..345b39a 100644
---- a/target/sparc/cpu.h
-+++ b/target/sparc/cpu.h
-@@ -660,6 +660,7 @@ int cpu_sparc_signal_handler(int host_signum, void *pinfo, void *puc);
+diff --git a/target/hppa/cpu.h b/target/hppa/cpu.h
+index 8d14077..b92ae3f 100644
+--- a/target/hppa/cpu.h
++++ b/target/hppa/cpu.h
+@@ -113,6 +113,7 @@ static inline int cpu_mmu_index(CPUHPPAState *env, bool ifetch)
+ void hppa_translate_init(void);
  
- #define SPARC_CPU_TYPE_SUFFIX "-" TYPE_SPARC_CPU
- #define SPARC_CPU_TYPE_NAME(model) model SPARC_CPU_TYPE_SUFFIX
-+#define CPU_RESOLVING_TYPE TYPE_SPARC_CPU
+ #define cpu_init(cpu_model) cpu_generic_init(TYPE_HPPA_CPU, cpu_model)
++#define CPU_RESOLVING_TYPE TYPE_HPPA_CPU
  
- #define cpu_signal_handler cpu_sparc_signal_handler
- #define cpu_list sparc_cpu_list
-diff --git a/tests/machine-none-test.c b/tests/machine-none-test.c
-index 134036a..0f80d7b 100644
---- a/tests/machine-none-test.c
-+++ b/tests/machine-none-test.c
-@@ -47,6 +47,8 @@ static struct arch2cpu cpus_map[] = {
-     { "s390x", "qemu" },
-     { "sh4", "sh7750r" },
-     { "sh4eb", "sh7751r" },
-+    { "sparc", "LEON2" },
-+    { "sparc64", "Fujitsu Sparc64" },
- };
+ void hppa_cpu_list(FILE *f, fprintf_function cpu_fprintf);
  
- static const char *get_cpu_model_by_arch(const char *arch)
-@@ -72,7 +74,7 @@ static void test_machine_cpu_cli(void)
-                 " add it to cpus_map\n", arch);
-         return; /* TODO: die here to force all targets have a test */
-     }
--    global_qtest = qtest_startf("-machine none -cpu %s", cpu_model);
-+    global_qtest = qtest_startf("-machine none -cpu '%s'", cpu_model);
- 
-     response = qmp("{ 'execute': 'quit' }");
-     g_assert(qdict_haskey(response, "return"));
 -- 
 2.7.4
 

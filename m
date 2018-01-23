@@ -1,80 +1,80 @@
-Received: by 10.28.71.27 with SMTP id u27csp3771764wma;
-        Tue, 23 Jan 2018 00:16:53 -0800 (PST)
-X-Google-Smtp-Source: AH8x225tv+SVxJYoacahSwo0iQPJSlnEsvQbhT6bRzUFBLm+U2Sh6uqkf0iIY9ou6pnuMaN9pCd6
-X-Received: by 10.129.183.8 with SMTP id v8mr1628723ywh.68.1516695413228;
-        Tue, 23 Jan 2018 00:16:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516695413; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp3772098wma;
+        Tue, 23 Jan 2018 00:17:17 -0800 (PST)
+X-Google-Smtp-Source: AH8x226VRV2zkYVO/UCBBw29Hg5G83Y7wYXzFULVhIbSwmixr6GKIA0c9t2O5Oren1GfT+w1ls8I
+X-Received: by 10.129.53.19 with SMTP id c19mr1608298ywa.404.1516695437885;
+        Tue, 23 Jan 2018 00:17:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516695437; cv=none;
         d=google.com; s=arc-20160816;
-        b=BDZfH93nNkLQgNY5wD+3DNx+F8zPEaMCUqNAQ9Khl69KcyyDAH2ebC9cu3+k3uKCOZ
-         D2/m7O3umEn+KlVMA7ruemm3vch0Zs04zFthNq6zpV8FyklrQW3272ffAFpAQrv+qTt2
-         ceAoteugCy3yaD4vEqb2ob7Uf/LTBrRGq0eWd35JQgpVr+X5uV3Q5NUgn0dWJ4Skqprn
-         mJyyvKojYA34Qbk0RIZQqjs/NRhvoHFZYjL/t3c11PRgTs1zHvmB/3nj+elcxOICMyj1
-         1iweQKgSlSMH6rs1ft08Plb4gPrMXEd9zFl9GKq+paqRCbDLTWlS9JCU05/fsAYWCEPm
-         z2VQ==
+        b=JYcfGhvw5XvCRz8A3sBCRdAONl1lFEzNJBYS7wJAynjxfwVxQYCqhHA2GhQe0gVY0P
+         kvpqfviNPuuHioHAsGWRNRldbKQ1hLhNtl2JpKSwMqaYWIGUT1i+mk3BywPJ+RGJNRaM
+         qP5x2xjKTkSUp7jQjBkvfoN6trrT+2lQ/tAUFChe6OnlvjtieSiOBNQdLxN8iDRA/QO+
+         vTr3LH4a/ZU1LNUaIdE89V3TXbxUSK1rI7JN5NvC7QVoHT0vqKpBHHg+Zhvgmkmgd1WD
+         JNSJCJkH1UpsLvZ2c/cnPAlYXDUobolX4w3XOs62qFDz+yaq7yG/vfqBtrQ2C1aMw/1P
+         VM8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=omxN/wXbEJrmrS2fXiYEvyidLAvAFf6+hwBF0DriFZA=;
-        b=IvL5Slp6CucUS/J8XLbA5NPkK3EbPBm6r4ndRSFN0ivh6FJoW1Gvt6ZrOuOjEYAhAG
-         7dof/P2ghO27tdiPm5x+4jgMJrebiWPsS6wCvGIz2KQBNz3dlD2nN3lPNzgI92Ra1LWO
-         MO0jvVYrP4qBpDrjAYfpZxa+d9HnFpQLgBqMz18a7ii2KikcsHz3oE1AdxdmaPHBgOvQ
-         EJP0lpAlIUVnYh7xb08z7QkNGz3Hqvt8mzjQdtuAjlgwJ4p070oB2Z4WqB7f6ceVtxyo
-         ZVtLVvkWayFJS3McOkr1u1P9BxlLidDROlG7Dwcczxa6r6Q7j/zhV+YMw+lyvfJRtBKk
-         hBIw==
+        bh=o+pl9a5pKEN3/8hZAAphB+B0AMr6PTrxSJEm5OZd5oc=;
+        b=X87jnIV2hPAGUZqpWX4lSaT+iDjq2Hvu+fN2ML5TGCb0hZWPo/K0AfbTAFhjErSZrV
+         2sd7Hqef2CPqjzYMEtismfQecHfFsvgfEszavY9rR2xTZH8NpRqCYxhZ4AKi3vd3jcHK
+         +9GjI1pgsc7F1A0gAHDzaXSO+Lh4IlQd1LzG9d7TBkvZ9fODpQmjV/iug3gpKMPXreDZ
+         vjs2rbFrqN2FhdNmbgQbc7RxCHd+Wlvr00fisBb3tN27tiJgPQyAJTt210qfUKKtWt7S
+         8MSjZn7Xt4yaR069Q0zO7nrjeJgtcm8qAqdPdlb5n/f6LmxKSkcVBcpKv6wpidBFUqJs
+         NewQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q7si1003121ybm.124.2018.01.23.00.16.53
+        by mx.google.com with ESMTPS id n73si2291915yba.311.2018.01.23.00.17.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 23 Jan 2018 00:16:53 -0800 (PST)
+        Tue, 23 Jan 2018 00:17:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43857 helo=lists.gnu.org)
+Received: from localhost ([::1]:43867 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1edtlE-0004lx-LC
-	for alex.bennee@linaro.org; Tue, 23 Jan 2018 03:16:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54841)
+	id 1edtld-00057L-60
+	for alex.bennee@linaro.org; Tue, 23 Jan 2018 03:17:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55243)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1edtey-0007PQ-VC
-	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 03:10:27 -0500
+	(envelope-from <imammedo@redhat.com>) id 1edtfC-0007gi-MY
+	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 03:10:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1edtex-0001xI-HJ
-	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 03:10:24 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:52176)
+	(envelope-from <imammedo@redhat.com>) id 1edtfB-00027a-St
+	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 03:10:38 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:49578)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1edtex-0001x3-Aq; Tue, 23 Jan 2018 03:10:23 -0500
+	id 1edtfB-00026l-L1; Tue, 23 Jan 2018 03:10:37 -0500
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
 	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9196113A9A;
-	Tue, 23 Jan 2018 08:10:22 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id BE1F24900C;
+	Tue, 23 Jan 2018 08:10:36 +0000 (UTC)
 Received: from dell-r430-03.lab.eng.brq.redhat.com
 	(dell-r430-03.lab.eng.brq.redhat.com [10.37.153.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 42814D1EC;
-	Tue, 23 Jan 2018 08:10:21 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 21CE7D1E8;
+	Tue, 23 Jan 2018 08:10:34 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Tue, 23 Jan 2018 09:08:07 +0100
-Message-Id: <1516694904-64879-9-git-send-email-imammedo@redhat.com>
+Date: Tue, 23 Jan 2018 09:08:14 +0100
+Message-Id: <1516694904-64879-16-git-send-email-imammedo@redhat.com>
 In-Reply-To: <1516694904-64879-1-git-send-email-imammedo@redhat.com>
 References: <1516694904-64879-1-git-send-email-imammedo@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Tue, 23 Jan 2018 08:10:22 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Tue, 23 Jan 2018 08:10:36 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v3 08/25] m68k: cpu: add CPU_RESOLVING_TYPE macro
+Subject: [Qemu-arm] [PATCH v3 15/25] s390x: cpu: add CPU_RESOLVING_TYPE macro
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,11 +86,13 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Laurent Vivier <laurent@vivier.eu>, Eduardo Habkost <ehabkost@redhat.com>
+Cc: Eduardo Habkost <ehabkost@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+	Alexander Graf <agraf@suse.de>, qemu-s390x@nongnu.org,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cSxXoXuIBJab
+X-TUID: 6Fla2aH2la06
 
 it will be used for providing to cpu name resolving class for
 parsing cpu model for system and user emulation code.
@@ -101,33 +103,35 @@ test would ensure that null-mchine usecase still works.
 
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 ---
-CC: Laurent Vivier <laurent@vivier.eu>
+CC: Richard Henderson <rth@twiddle.net>
+CC: Alexander Graf <agraf@suse.de>
+CC: qemu-s390x@nongnu.org
 ---
- target/m68k/cpu.h         | 1 +
+ target/s390x/cpu.h        | 1 +
  tests/machine-none-test.c | 1 +
  2 files changed, 2 insertions(+)
 
-diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
-index 2985b03..8a4299a 100644
---- a/target/m68k/cpu.h
-+++ b/target/m68k/cpu.h
-@@ -405,6 +405,7 @@ void register_m68k_insns (CPUM68KState *env);
+diff --git a/target/s390x/cpu.h b/target/s390x/cpu.h
+index 1a8b6b9..b2121cb 100644
+--- a/target/s390x/cpu.h
++++ b/target/s390x/cpu.h
+@@ -731,6 +731,7 @@ void s390_set_qemu_cpu_model(uint16_t type, uint8_t gen, uint8_t ec_ga,
  
- #define M68K_CPU_TYPE_SUFFIX "-" TYPE_M68K_CPU
- #define M68K_CPU_TYPE_NAME(model) model M68K_CPU_TYPE_SUFFIX
-+#define CPU_RESOLVING_TYPE TYPE_M68K_CPU
+ #define S390_CPU_TYPE_SUFFIX "-" TYPE_S390_CPU
+ #define S390_CPU_TYPE_NAME(name) (name S390_CPU_TYPE_SUFFIX)
++#define CPU_RESOLVING_TYPE TYPE_S390_CPU
  
- #define cpu_signal_handler cpu_m68k_signal_handler
- #define cpu_list m68k_cpu_list
+ /* you can call this signal handler from your SIGBUS and SIGSEGV
+    signal handlers to inform the virtual CPU of exceptions. non zero
 diff --git a/tests/machine-none-test.c b/tests/machine-none-test.c
-index 1159290..c9445b6 100644
+index 052b8c0..b3a346d 100644
 --- a/tests/machine-none-test.c
 +++ b/tests/machine-none-test.c
-@@ -31,6 +31,7 @@ static struct arch2cpu cpus_map[] = {
-     { "alpha", "ev67" },
-     { "cris", "crisv32" },
-     { "lm32", "lm32-full" },
-+    { "m68k", "m5206" },
+@@ -44,6 +44,7 @@ static struct arch2cpu cpus_map[] = {
+     { "ppc", "604" },
+     { "ppc64", "power8e_v2.1" },
+     { "ppcemb", "440epb" },
++    { "s390x", "qemu" },
  };
  
  static const char *get_cpu_model_by_arch(const char *arch)

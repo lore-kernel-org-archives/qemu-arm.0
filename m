@@ -1,97 +1,94 @@
-Received: by 10.28.71.27 with SMTP id u27csp2050976wma;
-        Thu, 8 Feb 2018 05:27:16 -0800 (PST)
-X-Google-Smtp-Source: AH8x227qFhKL7jtVwmpT9Oznphxx+umyITDK1oaYNjSmSiir6KQtC5y2kn2j0gTSzJ9kFW2yTmKX
-X-Received: by 10.37.135.4 with SMTP id a4mr439950ybl.109.1518096436387;
-        Thu, 08 Feb 2018 05:27:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518096436; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp4160644wma;
+        Tue, 23 Jan 2018 07:12:04 -0800 (PST)
+X-Google-Smtp-Source: AH8x226aJde4LWBn0fK5RL98gZTyjvKmruiAbHu7fJjU/YiCt/kYjzwJVp+t7CX+zakkkcBZlECD
+X-Received: by 10.129.145.20 with SMTP id i20mr2678097ywg.258.1516720324057;
+        Tue, 23 Jan 2018 07:12:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516720324; cv=none;
         d=google.com; s=arc-20160816;
-        b=HZqsT2f6IDUFY8q/0OhoUEDuS87x+VWwgVcDvdsp9NoL5/CcyjBT7il701B2qkh1ra
-         LHT6yBKFaT/3X6RNOQpWOgKLiPA9ntJXDArUqNnR6BAPVZ8V9LCckNnlRdqa67mMxEUz
-         YXXwboPi3xJLVylhMd3Fgq++FMedG3Ttcr/UzmvwD81/A1TUBdjXx9esf6PJXG0/v7+k
-         n4PBWjqyN/efQsT98rrOy551gnGnfs1aqQadGrYtGIsEMdZ15NAhNewK6zyCb1hRyijw
-         uHOb52Qj2kEAplzrsa82HCYTDTICo8XZATdv04dAt1yniMNLPedtpcJLGT7tVlv3jXJD
-         XKrg==
+        b=EMjoJNZurbFxLc5qLQDBAWmGHCwVTRvzilFbEwfl2C0Z38kNP71UaiKJX0IXlRnUE5
+         ywdGDOWAzmnqkM0j0fScq6Yawj4acBPxWvdjW4r829y7DrQtwhmwbp02xnqXQvUfP1rq
+         cpaiE1gGIBVZG+ZId2XuLYNwDhhntzfASSot2SGQKUtNsLewbVPFusgbbjL+3vJDYDSk
+         ZJzisc7G6C8OwfZ7F88WT52I5UfumUvnejEAOh4fuKL5GTGL/6FudTuMZZyj79pBQ+pC
+         HG56av3ZwnHk2DTjXUIuEDHlluV3pklvETOs7y295eMmWn0Q71gn+Rf4PGKS2j5dNHFw
+         Lr7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:in-reply-to
+         :mime-version:user-agent:date:message-id:from:references:to
          :arc-authentication-results;
-        bh=KcEkVWAYlUznN2Jj6AckTq1+S+8oDWoXZHQl4AxWtcA=;
-        b=T96vVutluGy8PV0olURkNPh3XtGdfCFnmbgwTOO7iI4d3EodzSG+2KSuQHtdrTKXGR
-         FoAKMH7SumGk2FaCuhq2hRZ8BP/O5a3CfL1Ws1XLBWste8H2e0XEEoW/qsNLSiPiPLfj
-         qtkUFoYR951r5wvptZYkZgYHJhBlfITzulIbiXbzDvej1RKGmn4Cw+qpzZMRhTlYEgY8
-         xfjudoDVUABBvI6CQR1vygIzc1au2yGzNLLa8glK9WX+/dyvhyLswxSLfxqJHDrs5Fyv
-         dTuMVYD6bvh1U7wMyz7v0jVNoVDTo3kbZG94lIbe196dC8MwKssGD9U9RKJGmqe2ExVD
-         RCdQ==
+        bh=QaNLOgxhIDhxfcEswqhrdmR3nRGwaQ4NdiMLCKy0aO0=;
+        b=WGEKDj6wNbOlzj+8X7EByP9sKdXGxsMziHSZFrPxaGlIWIsiEJw9RJsvOVqV63bLvF
+         rF/qjfA+Hou36DEEVZPe8TlRzA/cva/kImVJYHOet9rfjvKhcwR1IbbnFXFFIXfQydAb
+         bLT0wYc3QHP8zI3XV3YTsOQcXna7Rf9Hl7qsXH2ENkH/efP1Bx3iETe20EM/SsfoBIFA
+         ZGhOGYNpNfjiZIh66u054fq03jpFDdOXpoyrMIwuEW5uluWTdg0c8Hc2452PzrnrF2Oa
+         G86XkeA/1+tMcb2CvPqq1MwsHvQcn2aicPPkyHON1FmGRigri5RCD/4HaFlTKanH/hu2
+         YDTQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=VK/3ifZG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id b189si664848ywf.150.2018.02.08.05.27.16
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id d129si2119664ywf.154.2018.01.23.07.12.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 08 Feb 2018 05:27:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Tue, 23 Jan 2018 07:12:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=VK/3ifZG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60124 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:34733 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ejmEN-0004Ul-Pl
-	for alex.bennee@linaro.org; Thu, 08 Feb 2018 08:27:15 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48370)
+	id 1ee0F1-0007yC-HH
+	for alex.bennee@linaro.org; Tue, 23 Jan 2018 10:12:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53831)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ejmDa-0003xv-LD
-	for qemu-arm@nongnu.org; Thu, 08 Feb 2018 08:26:27 -0500
+	(envelope-from <laurent@vivier.eu>) id 1ee0E8-0007a9-B8
+	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 10:11:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ejmDW-0004Mq-OI
-	for qemu-arm@nongnu.org; Thu, 08 Feb 2018 08:26:26 -0500
-Received: from mail-ot0-x22c.google.com ([2607:f8b0:4003:c0f::22c]:35299)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1ejmDW-0004MI-Jt
-	for qemu-arm@nongnu.org; Thu, 08 Feb 2018 08:26:22 -0500
-Received: by mail-ot0-x22c.google.com with SMTP id a2so4307558otf.2
-	for <qemu-arm@nongnu.org>; Thu, 08 Feb 2018 05:26:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=KcEkVWAYlUznN2Jj6AckTq1+S+8oDWoXZHQl4AxWtcA=;
-	b=VK/3ifZG588Y0m5I2qyEr4rSEYOfASIBLccCyhZYcqtWMuv86RxrsBfpUXGMBCgEgZ
-	QjqFxJgDTgBxuDqJ1FJNU5bPqHLmY6n6aKQj8DxhN6Pq/os91XolSOcyCZREKzM0qJyy
-	HP2VIVXgQgLY1HHby3DOSKMaAtbHAOO3Hj1aU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=KcEkVWAYlUznN2Jj6AckTq1+S+8oDWoXZHQl4AxWtcA=;
-	b=JmJ8Hd4XlUIUs9Q+lmVJTt7d54MRxuDtHXMXebcOL41n6qzQN8kd+ywljs5MaGcnRt
-	s0cE5BaHyl2H9C8siYyRU038ujqNl/2mcEQURUAH7K+07bMJc2PkDyxZWdoudtY6ZnVn
-	o/Sl6G289W5qEmXjJ92py25yJFI4rP7UFU+kqzs1GMrq/wpiBGuX3mCC+UgkSCJHgDmO
-	XDD/mjMmioUmXGPztT7H+e49D6XvlP/tNCE1hwlnXi2ykyO7rUPxFTE39Of2g5o62CSF
-	9ZpY435chDsBIhZophNp7rgp3k7jERst/YB7qAom7bVsNEAn5TQsoKcOB3WsO5vJ6n68
-	Zd3w==
-X-Gm-Message-State: APf1xPAjf/bXSmlW6Spswik6FqL8ZWZCr2LhzMD+DyLhxFtA785mmJac
-	Rh0b30YcZ2S6GQ+//X1G4I4vLhxVVazoEXukY5m6NQ==
-X-Received: by 10.157.13.72 with SMTP id 66mr508890oti.116.1518096381839; Thu,
-	08 Feb 2018 05:26:21 -0800 (PST)
+	(envelope-from <laurent@vivier.eu>) id 1ee0E5-0006S5-4f
+	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 10:11:08 -0500
+Received: from mout.kundenserver.de ([217.72.192.75]:60842)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>) id 1ee0E4-0006RQ-Py
+	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 10:11:05 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue103 [212.227.15.183]) with ESMTPSA (Nemesis) id
+	0Lurx3-1emdC00yC9-0102P5; Tue, 23 Jan 2018 16:11:01 +0100
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	=?UTF-8?Q?Guido_G=c3=bcnther?= <agx@sigxcpu.org>, qemu-arm@nongnu.org, 
+	Peter Maydell <peter.maydell@linaro.org>
+References: <20180123120541.GA14216@bogon.m.sigxcpu.org>
+	<2dcba347-3e1c-01bb-32c6-b5b243002c52@amsat.org>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <6df0d07c-55fd-3ed4-cc07-440bde0407fa@vivier.eu>
+Date: Tue, 23 Jan 2018 16:10:59 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.2
 MIME-Version: 1.0
-Received: by 10.157.34.163 with HTTP; Thu, 8 Feb 2018 05:26:01 -0800 (PST)
-In-Reply-To: <20180207042438.15422-13-andrew.smirnov@gmail.com>
-References: <20180207042438.15422-1-andrew.smirnov@gmail.com>
-	<20180207042438.15422-13-andrew.smirnov@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 8 Feb 2018 13:26:01 +0000
-Message-ID: <CAFEAcA8Hjsb+KW4A0ks696+zXOeDErndeQDFvOqshyONpyaSSg@mail.gmail.com>
-To: Andrey Smirnov <andrew.smirnov@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::22c
-Subject: Re: [Qemu-arm] [PATCH v5 12/14] i.MX: Add i.MX7 SOC implementation.
+In-Reply-To: <2dcba347-3e1c-01bb-32c6-b5b243002c52@amsat.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="Wa6FHifxjYuwInoX5YNnYEMyEtWslf1uW"
+X-Provags-ID: V03:K0:Cm1AV7QC7xCrjRVoPtm3LnvGu1zwFJPg3wNWc0KBrwy5CpGpGvR
+	kNZF4C5ZnoQVRJs7B6k496sb6A769Oae4UAGacn9kyTY/KYy9lyeFTYkN8Wpwjwx3BwAxQY
+	INaVAabBENxAcYdyvPAnwr9xRntJemuJPvGjwDWUATl+fjHeUeFaVWXuQDSUk/87tPzF6RL
+	xSH/TAdA6nlEtIwurMgxg==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:Ab2IzKYHI/o=:azRVKx9ShjsQcemwYdBq9p
+	W//nuXQ8ofHoOb56V04V9CnANsutxp75gJGhTwzVUkyea21oPrPgsHDwvrQJ7JracbNsYX3IV
+	gNdYdsYjbNX02C6kT1Ca+xLdXLs1i4643B3Xo3DKZvP7PGCV4bHwm7Qkzy35T2NfXyE4f1K0H
+	2zURd1sWPYCurIXWjNVELG7J/RAXamvyfoUqVlzGYjj/lqE8wlOwQGEQFSvq7g2oBskVjznYs
+	XGXYGp8knb00Gdh0xDCY+KYTTsDN3d/U51DZQ7DQKumbRqEC0X/Iu3xGFqesoG4UszlV+qi7o
+	Uk2F9v4QU2l7OH33kug1Kjno9pRZYuzmo/UFDOR7Fg+Q42MzlKlWE4U4bkaXv2gMPiY16Gvkm
+	qG/vmSA0nZT9+qUjMewK3CRvyyrySfYXecoSMVlhxEWmhTjid+Yu0I6saLvYG2RKkNWoa1IvK
+	RMt0WWEO6PhFYKO1ZGhfAHIz2UKUBoP0OYouTQJ9q89dQUxfSR4xyvU+zH4+Nc9BRR0DAeODE
+	uQQyD3u8+hQ+7P6Hr3QXXCyTzW6tA5hYTRlcgUmWNZi3vkH8oVUXsW53e8o/vmIXxMJEpghRp
+	0/kdh2D4RimDdmpKrsIZTWfevzkTwm59J+oB5WG/ewdC7T12UJmPfpI4umvZ3eVy1yniBE5Tf
+	5iti1vi8QSIRcfIMknMSRgAzYvKid5J3KzaLqGuxNnkyXDhc/eRdZRnPcZxmc5K7t1dPbM4CL
+	NmWgfJnQeniMlqdtgBcHAt07RpDLboL1FNCNKw==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 217.72.192.75
+Subject: Re: [Qemu-arm] recvfrom error with linux-user emulating armhf on
+ aarch64
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,70 +100,71 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S . Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@zoho.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	qemu-arm <qemu-arm@nongnu.org>, Andrey Yurovsky <yurovsky@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: D3wfC2lPvfA7
+X-TUID: y0tJNwJoRvur
 
-On 7 February 2018 at 04:24, Andrey Smirnov <andrew.smirnov@gmail.com> wrote:
-> The following interfaces are partially or fully emulated:
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--Wa6FHifxjYuwInoX5YNnYEMyEtWslf1uW
+Content-Type: multipart/mixed; boundary="OUyAQJH5m6QBpGxJH1TggmIWfvRNqSsot";
+ protected-headers="v1"
+From: Laurent Vivier <laurent@vivier.eu>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ =?UTF-8?Q?Guido_G=c3=bcnther?= <agx@sigxcpu.org>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <6df0d07c-55fd-3ed4-cc07-440bde0407fa@vivier.eu>
+Subject: Re: [Qemu-arm] recvfrom error with linux-user emulating armhf on
+ aarch64
+References: <20180123120541.GA14216@bogon.m.sigxcpu.org>
+ <2dcba347-3e1c-01bb-32c6-b5b243002c52@amsat.org>
+In-Reply-To: <2dcba347-3e1c-01bb-32c6-b5b243002c52@amsat.org>
 
-Hi Andrey. I was just going through this series to apply to
-target-arm.next, and I noticed that fsl-imx7.c is GPL-2-or-later,
-but fsl-imx7.h is GPL-2-only. Is that intentional?
+--OUyAQJH5m6QBpGxJH1TggmIWfvRNqSsot
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-If this is just an accidental error, and you send an email to
-say you meant 2-or-later, then I can fix this in my target-arm
-tree by copying the license paragraphs from fsl-imx7.c to fsl-imx7.h.
+Le 23/01/2018 =C3=A0 15:42, Philippe Mathieu-Daud=C3=A9 a =C3=A9crit=C2=A0=
+:
+=2E..
+> Laurent, in do_syscall() should we swap the pid back?
+>=20
+> @@ -10628,4 +10628,5 @@ abi_long do_syscall(...
+>          target_header->version =3D tswap32(header.version);
+> +        target_header->pid =3D tswap32(header.pid);
+>          unlock_user_struct(target_header, arg1, 1);
+>=20
 
-> --- /dev/null
-> +++ b/hw/arm/fsl-imx7.c
-> @@ -0,0 +1,580 @@
-> +/*
-> + * Copyright (c) 2018, Impinj, Inc.
-> + *
-> + * i.MX7 SoC definitions
-> + *
-> + * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
-> + *
-> + * Based on hw/arm/fsl-imx6.c
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License as published by
-> + * the Free Software Foundation; either version 2 of the License, or
-> + * (at your option) any later version.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-> + * GNU General Public License for more details.
-> + */
-> +
+The kernel doesn't change it, so we don't need to update it.
 
-> --- /dev/null
-> +++ b/include/hw/arm/fsl-imx7.h
-> @@ -0,0 +1,221 @@
-> +/*
-> + * Copyright (c) 2017, Impinj, Inc.
-> + *
-> + * i.MX7 SoC definitions
-> + *
-> + * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License as published by
-> + * the Free Software Foundation; version 2 of the License.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-> + * GNU General Public License for more details.
-> + */
-> +
+(CC: Peter as he wrote the capget/capset code)
 
-thanks
--- PMM
+Thanks,
+Laurent
+
+
+--OUyAQJH5m6QBpGxJH1TggmIWfvRNqSsot--
+
+--Wa6FHifxjYuwInoX5YNnYEMyEtWslf1uW
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEzS913cjjpNwuT1Fz8ww4vT8vvjwFAlpnUIMACgkQ8ww4vT8v
+vjx2rw/7Byi19XoNihtg3tb0nQwc+K1Ufr/5gbL0PPv1sYycrRVq7WZmXmP7O2yE
+EK0/QFPy9d65MvjAgG0uve8VwpT0RH+RFFLHziz8EdBc18uLzLHfVQAZwA27Vvty
+yUqurGZHY0Iaikx5fjk4WPPJM7eVbFXHEJ8K/OZ13pTU5qJLMGKAfr+XPDYkPXBY
+fV4MOt0JE1S9TlJPiwwJskbigu+raSxkFQI4+zTtmbnEb/MzxvGF+j4la9zbXLjL
+nQnaIW6YZmbERlQ6NIeL0M35P5NHq4XMOKVfmU0MhBwP6ZWQRc75PBz5J6bwtWqm
+/y1oK9DEuNSMm7V+QJWqnhO/N+BWhKdrvrczriGyw+WQksgDoDXSOEvgatj6pdNf
+V/U4z8AL4odSHJNV8WRR6q/ffd/jtwG2I3W8FIT1KGwcf43pm35Wg6ShA/ZimW7a
+qI4WQ2mxQWu+st5yK5BQPHAY0WzQbySZzdqIaZwWk3pQ+jvzT5iLNV7ZbaBbgbra
+LHtTrEWDDqjoFZG7No4gMp02UvmQjWc8uL05L0ycm3mjtfHj/y3+Mx2jzN7NlG2o
+tYpg9OKTFtz521jIpILfEKn/Mlplv6Zy3iN869Gzey/V7vQKiI/qIlsNH35hAQmo
+bJAo77MUsXu7sJw7gvSwEFdvfbQCCwvQEUVxYvMBxnbbvo7zsq0=
+=IZqs
+-----END PGP SIGNATURE-----
+
+--Wa6FHifxjYuwInoX5YNnYEMyEtWslf1uW--

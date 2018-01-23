@@ -1,152 +1,122 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1345433wme;
-        Tue, 22 May 2018 04:05:07 -0700 (PDT)
-X-Received: by 2002:a9d:270f:: with SMTP id r15-v6mr16748108ota.46.1526987107612;
-        Tue, 22 May 2018 04:05:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1526987107; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp4158702wma;
+        Tue, 23 Jan 2018 07:10:25 -0800 (PST)
+X-Google-Smtp-Source: AH8x225InTk+F/i0+/wmc3yatf9qtNCWIWKIUwIIu0CSzr3fu/yyDLYE6rxWlhGmRJ/Y3EiT2F1l
+X-Received: by 10.37.171.43 with SMTP id u40mr2778489ybi.393.1516720224954;
+        Tue, 23 Jan 2018 07:10:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516720224; cv=none;
         d=google.com; s=arc-20160816;
-        b=DOZY6ufU9wB2MhtvW8Voa2kNuQ1/3XqOfw4Bvq+4oFAahfG+j+YVeaCvezlf5TGsVk
-         lyVAr2G5EQimPVRx9f33cHM8fzT4Is5jAIPFV81KeNEDtP67ME0DaFKauy2/7GHyHjh2
-         Cb7dYMOqoN0RDjfqUWGz5oAGU2OgElPitczSpZW0Yr8qe8kWGQrISGL2TVrkbCSqF1nu
-         n4og5vyiP+4tMvo+d8NPx6QYsevXA88QnngVaxq3rg3RZmt/n3Yldt2GEEhFml+cogsK
-         D62mGK0IqYosai5xrHmClXYfyETKiPfkNkq2vvCZThLv8kfqF4CmVP+yp3zMkiMAGTTH
-         joTA==
+        b=XOaLufjjnW3dCAvQYTqj2j9GOQZxMvS4q+rpYjnjhh/wTSzbrALbCmM/DUoi15bMrH
+         g3Ep/RlIuBQA/Q7FblE2aWBwPdXBwJTCQJ7ra2GHCD9uBw1ovyB0l25dNIe5o+7OSKIS
+         KnExrbdG96jr9jTPz9mOJrxD3a/gbbIBaHS83FumDwx5gHbfl7VTvsVyfovYcR7x/AxH
+         5Aae803+omQHOMZwMXceAtCagt967yzwDuclR1tgO8wShRSMhU8wAWAHlLgjBa8V4Ikq
+         n/A7toMukgCzgbdkj/pNtZL8Agx7HbR4Q4RBVOQNavTLpA1BR0dF4YV1EAyyEnFQxDBp
+         l5FQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
+         :references:message-id:in-reply-to:to:from:date
          :arc-authentication-results;
-        bh=9/IJnPy+p/P2ddmGdLXlrhmKi8MS0h2vrKVRqK9Vrw8=;
-        b=bUAmnzLVXUoTOcj7fezyIYA4X1IDnzsbCip9EQUakkupOzMTQPlD7ysbiAliOHggQb
-         pzr5Qmdpa6R2JTa01LK68XiZPVBxT3CLcz4g/ITSNi30Sm8JNFHu1ETOG7wswafkWPVE
-         Ex/v6CFlAXBzz26waNG+Te+q84y6xG6uvOLWFltNO6JjFtQfcKsUZfxCjX60fS3uKF2t
-         ORjOQncibnW8Cv7QnGRsnBW6pNV1fZMPXlRyoHidMaIKkmBVwU9kWln5e3firwBQ6qhk
-         oo8k+0Jxo1jVu567XaSXvMVmQq3qMof1eKGTuqCzmocavokaKSv1zmMH2XCtu18Nd5qC
-         FhLQ==
+        bh=2MZlNY6nNpW83Ppvz2fML0I8OHNAnrq81XUBw7MESyg=;
+        b=R54vIZ0zzSmIVZe+K5MkdRUCOO/oiHk/HgNZH+FtCymcnVMT1Qxxwdhi1C+wNKs/Th
+         GabZ9EdvTTGwXpGkxr2dMnJ6F+VKMlp+3pMG6vqsNFWsUAa1fns8l71XuBKMWZl+CwMb
+         Myq74LW/HSF9Mm1MixccBwsQ/uiJZ1UY8QZv0h3caVbXA5gbYRv+8ZNKowR6Y6waYpbi
+         y3yNchPLAM8emKDdEMhQ7tOkH34Z3fpHhhEoaee/POtRGTjkz4AzVsNB8zuPKFTCibtt
+         1my/P84kpn7/sAUUin//+a4mKx+WgFiHeyP+571i6jmgEtpyL33VlslRCKDlgMkXLDLb
+         m/pA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DX0q94yv;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id j72-v6sor7265556oiy.74.2018.05.22.04.05.07
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id i9si2414097ybc.34.2018.01.23.07.10.24
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 22 May 2018 04:05:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 23 Jan 2018 07:10:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DX0q94yv;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=9/IJnPy+p/P2ddmGdLXlrhmKi8MS0h2vrKVRqK9Vrw8=;
-        b=DX0q94yvm1FDl+gxb6tr0c2BYfe8jU0ULSODFB4ZfDqalMoL5mfQenhIFLN4Tu8ghl
-         RTT4JGxY9ARBiNpnXF6v9YJjKVrt4B/ojNiEakSRLT2IUBg/8BkBNrfa/ZL0xqm2lKD0
-         wHJhq5NkLvANBAZxGyEEXs/M2eldoW4kBUGsA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=9/IJnPy+p/P2ddmGdLXlrhmKi8MS0h2vrKVRqK9Vrw8=;
-        b=SpMhXZyE0Xlii8slvdF2u+sa2yXiK3CU+rcXP0DjLfh0gdrL9gtkg/2d9/QNeoEere
-         MfPVGvTcQL6pl/c+0uaS+zpBjDOAtsmHNya2Jj7BIlPrg7BhnA8UaratEy901QBYGUjj
-         Irea8O9TiiJ0X2sF8l62u2rGNac94THasT42vaJXOrbjuEKh9CD5LHAepLdX7cwpitJh
-         8mqDkk/1ooZZ35lI4fxcl3W1XOA8npwqlqQzHhq6EKeX6cVrcBjD+AihToajwxDttDyY
-         IGDqCfdbmvZhJHJD9T/LIGwMS2sb+1pL3zDXIpGkIHnu/762VY+ZWiDzRYXR8PwRFA7C
-         MsyQ==
-X-Gm-Message-State: ALKqPwe3Zqmk/bKZGGJwnJy3NBP6VPyHHlk9KQz628CnWAnhqRYgQm0F
-	Sx5tZyEay+RYm2kK2XhXhXKQYevcKB8+huRAbiZgVZAkG48=
-X-Google-Smtp-Source: AB8JxZotbUKNGBeLg8BiLC0ahhPTHbL75a5QOX/8eT7EqPto8QTSJ1WvAWBfhe+ScwrhB9QEY9opkOwPPrHt/d87dVM=
-X-Received: by 2002:aca:b855:: with SMTP id i82-v6mr13974712oif.12.1526987107098;
- Tue, 22 May 2018 04:05:07 -0700 (PDT)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:34672 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ee0DQ-00073a-EV
+	for alex.bennee@linaro.org; Tue, 23 Jan 2018 10:10:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53402)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <balaton@eik.bme.hu>) id 1ee0DD-0006zz-4o
+	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 10:10:17 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <balaton@eik.bme.hu>) id 1ee0D7-0005cM-H4
+	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 10:10:11 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2]:40540)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
+	id 1ee0D7-0005Qx-6z; Tue, 23 Jan 2018 10:10:05 -0500
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+	by localhost (Postfix) with SMTP id E2F027456AF;
+	Tue, 23 Jan 2018 16:09:55 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+	id C4ED37456A5; Tue, 23 Jan 2018 16:09:55 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+	by zero.eik.bme.hu (Postfix) with ESMTP id C41347456A2;
+	Tue, 23 Jan 2018 16:09:55 +0100 (CET)
+Date: Tue, 23 Jan 2018 16:09:55 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: bzt bzt <bztemail@gmail.com>
+In-Reply-To: <CADYoBw36gPOyiK36WaS0v_2R=iuWYL-sQAtffrZZJU2DpMv5Bw@mail.gmail.com>
+Message-ID: <alpine.BSF.2.21.1801231605460.67737@zero.eik.bme.hu>
+References: <CADYoBw2dogvU6-3vChG4js0BNdyTPG8eDvMSRoU50eTX_9DdEQ@mail.gmail.com>
+	<CADYoBw1ksGDo26-PC4eMnyqxZQoZkXNLDeGoWfcRHs-SfTCJkw@mail.gmail.com>
+	<MWHPR21MB01591543E188B048145985709E470@MWHPR21MB0159.namprd21.prod.outlook.com>
+	<CADYoBw0RjiW2as9jGtPg92E8XK3KR+gM9C5vjC7HHsBauFn4ug@mail.gmail.com>
+	<CADYoBw19GifmUR=Rztkzzc-v3-zWR6frjiNb_wjzsevreAqPDQ@mail.gmail.com>
+	<CAFEAcA9_+wZJa7Ht6EHCCZYm+hrfdbjd9gUmVJPGgZ0yvbZOPA@mail.gmail.com>
+	<MWHPR21MB0480DE1F826056BC8377EE289E250@MWHPR21MB0480.namprd21.prod.outlook.com>
+	<CADYoBw31C0Z2vp0S0ZFBOC6A3146wxtZWvzJabACkGh44ZwC0w@mail.gmail.com>
+	<MWHPR21MB0480A1F01D2CEF51E7CE21B09E3A0@MWHPR21MB0480.namprd21.prod.outlook.com>
+	<CADYoBw1Ro5gxROvhCVXGv0=-Y8zXmGbKR3D6xOqhkb0zp__LkA@mail.gmail.com>
+	<CADYoBw27wU3CsYPeP7ONFWt4aj+6tvzwU5roDSOKz8qq1n8GSg@mail.gmail.com>
+	<CAFEAcA--i8RVKaBw5yXn4xRXBy5S+Yk=WDNKbuqzfDxn6jjtOA@mail.gmail.com>
+	<CADYoBw36gPOyiK36WaS0v_2R=iuWYL-sQAtffrZZJU2DpMv5Bw@mail.gmail.com>
+User-Agent: Alpine 2.21 (BSF 202 2017-01-01)
 MIME-Version: 1.0
-Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Tue, 22 May 2018 04:04:46
- -0700 (PDT)
-In-Reply-To: <20180518114424.18054-2-alex.bennee@linaro.org>
-References: <20180518114424.18054-1-alex.bennee@linaro.org> <20180518114424.18054-2-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 22 May 2018 12:04:46 +0100
-Message-ID: <CAFEAcA9=gD31xOyvEQ-0-3f5p_Z8PQpOySpxB3fzcpWNZyeiiw@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] target/arm: support reading of CNT[VCT|FRQ]_EL0
- from user-space
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: EeJr2ohvAzaq
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
+X-Received-From: 152.66.115.2
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] BCM2837 and machine raspi3
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ChvVoQnAx2CE
 
-On 18 May 2018 at 12:44, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrote:
-> Since kernel commit a86bd139f2 (arm64: arch_timer: Enable CNTVCT_EL0
-> trap..) user-space has been able to read these system registers. As we
-> can't use QEMUTimer's in linux-user mode we just directly call
-> cpu_get_clock().
+On Tue, 23 Jan 2018, bzt bzt wrote:
+> It is not annoying at all, it's simply silly. Are you really thought I
+> would do *your* job?
+> "Only two things are infinite, the universe and the human stupidity, and
+> I'm not sure about the former!". Actually I'm very entertained :-D :-D :-D
 >
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->
-> ---
-> v2
->   - include CNTFRQ_EL0 for PL0_R only
-> ---
->  target/arm/helper.c | 27 ++++++++++++++++++++++++---
->  1 file changed, 24 insertions(+), 3 deletions(-)
->
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index db8bbe52a6..39098a15bf 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -2135,11 +2135,32 @@ static const ARMCPRegInfo generic_timer_cp_reginf=
-o[] =3D {
->  };
->
->  #else
-> -/* In user-mode none of the generic timer registers are accessible,
-> - * and their implementation depends on QEMU_CLOCK_VIRTUAL and qdev gpio =
-outputs,
-> - * so instead just don't register any of them.
-> +
-> +/* In user-mode most of the generic timer registers are inaccessible
-> + * however modern kernels (4.12+) allow access to cntvct_el0
->   */
-> +
-> +static uint64_t gt_virt_cnt_read(CPUARMState *env, const ARMCPRegInfo *r=
-i)
-> +{
-> +    /* Currently we have no support for QEMUTimer in linux-user so we
-> +     * can't call gt_get_countervalue(env), instead we directly
-> +     * call the lower level functions.
-> +     */
-> +    return cpu_get_clock() / GTIMER_SCALE;
-> +}
-> +
->  static const ARMCPRegInfo generic_timer_cp_reginfo[] =3D {
-> +    { .name =3D "CNTFRQ_EL0", .state =3D ARM_CP_STATE_AA64,
-> +      .opc0 =3D 3, .opc1 =3D 3, .crn =3D 14, .crm =3D 0, .opc2 =3D 0,
-> +      .access =3D PL0_R /* no PL1_RW in linux-user */,
-> +      .fieldoffset =3D offsetof(CPUARMState, cp15.c14_cntfrq),
-> +      .resetvalue =3D (1000 * 1000 * 1000) / GTIMER_SCALE,
+> But seriously, I've showed you a way how to add raspi3, the rest is up to
+> you. I won't do anything more about it, I'm not a paid qemu maintainer
+> whatsoever!
+> Again, my patch is working for me, it does not broke any existing raspi2
+> machines, and I'm very happy about using it for more than half a year now!
+> These are the facts, everything else is just talking.
 
-You might as well just make this be .type =3D ARM_CP_CONST,
-since the CPU state field can never change.
+OK, sorry for trying to help. I'm not a paid QEMU developer and don't use 
+ARM emulation so I don't really care about it. Please exclude me from this 
+thread in all furhter correspondence.
 
-Also, perhaps NANOSECONDS_PER_SECOND / GTIMER_SCALE.)
-
-> +    },
-> +    { .name =3D "CNTVCT_EL0", .state =3D ARM_CP_STATE_AA64,
-> +      .opc0 =3D 3, .opc1 =3D 3, .crn =3D 14, .crm =3D 0, .opc2 =3D 2,
-> +      .access =3D PL0_R, .type =3D ARM_CP_NO_RAW | ARM_CP_IO,
-> +      .readfn =3D gt_virt_cnt_read,
-> +    },
->      REGINFO_SENTINEL
->  };
-
-Do we need to make the 32-bit registers accessible to linux-user
-processes too?
-
-(Incidentally, another thing along these lines we should probably
-look at is that I think that newer kernels emulate ID register
-accesses from EL0, so we should do something to make those
-registers work too.)
-
-thanks
--- PMM
+Thank you,
+BALATON Zoltan

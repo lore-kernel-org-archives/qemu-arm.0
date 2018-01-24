@@ -1,89 +1,137 @@
-Received: by 10.28.71.27 with SMTP id u27csp1137308wma;
-        Wed, 24 Jan 2018 14:12:33 -0800 (PST)
-X-Google-Smtp-Source: AH8x2245ndvePg2k/acZf0iuS0KZ3qrMkRqDfNXZRMRbRsf0Pji6Cw7d/0r/orGmVFz9hCc7sren
-X-Received: by 2002:a17:902:b286:: with SMTP id u6-v6mr9241923plr.210.1516831953801;
-        Wed, 24 Jan 2018 14:12:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516831953; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp666452wma;
+        Wed, 24 Jan 2018 06:11:29 -0800 (PST)
+X-Received: by 10.200.52.233 with SMTP id x38mr10127837qtb.267.1516803089193;
+        Wed, 24 Jan 2018 06:11:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516803089; cv=none;
         d=google.com; s=arc-20160816;
-        b=m5HTGYfOn1soTFlldDtm9UtLYwvN98xvefTlSds8VPBub7FBCTgACrvrAuCVd/qtka
-         lCRU8MBwEw0ArhTt+NFgLdlvzRXmR6geLeFMKgBbl5vYo6KNxepX9CQRLO+0RB6y5zXz
-         9AIpxeM8PlYWryhZ78paBCtP+gdkvujPbDZ4geAndKsQI6mMhgVL+rNF3PQC8rigeXXJ
-         ck8zhzMxUzsRhyB98mA1JPfYSSfRIUhjWLpSXSmdj9xpKgkPRfJ2q5zFSMFFFW99S+JR
-         L8vv86KE1wDXs6/NkniXdJKhJpBkbQAEcgPML7hNWEtPAUJ9spUaj5wmFU1LE7T9HA6M
-         5cXw==
+        b=naQUzqATXZ4lC40gKxXdtv9ZWHRw+xHH+XavtGqt3t7JdacEAd06AQrXnMWN4t7cWR
+         AWfA+8YusD68KkvLX/h3Yw7nakNski8dl3T33IqRhjBrsrFEZ3kO/AJ9ykTqqWU29d+O
+         Den0V8to1iz2pUST/ctX4qG9VmgWSoE/I+hxB2uXL3WWlqn50qJp7oQUMVJV5HUTADMg
+         NHunKa4ooi7YFE1haD9X165G1UIoXqeuDn/BXqMnOD3ocNkfqJYAa8a5+Ocnd2cBod1c
+         bKJT58QIS9gUz5BjDlV5Slc9HVUqsJSETw5Oh5Hy8gXEVuFfw8w4nWklrMNL1nOR1wm1
+         mCOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature
+        h=in-reply-to:mime-version:user-agent:date:message-id:openpgp:from
+         :references:cc:to:subject:sender:dkim-signature
          :arc-authentication-results;
-        bh=3mqnucnRODm3hSitVGAyOuzxogIli+C+5PdN2Ms6dBg=;
-        b=zDR8NpnCyUNMVM+mLx3I8HlXxn0DxTx2/c12gRq5SFgz8XhzeaCH9ujsE7QrKrtoLF
-         KJ1fbKjQzJaDMAte55RBGtssBOOMfRM4m4AcZf8TFtI6Ppqxl72EBTxYY8RnSkgT0y9P
-         eCVvB7t+PreFyveuh1rnppUxwkaDlgdU+paDohl0Y1sGfu8Xm1+TU/YR7uyMm3eeXLjq
-         5bhqT4d3Qp1fw6W4rDB4FCyuI/+MlZgJvCRw5RNdCs4EFfgIr2uXjxqGwnWRJ8tL6BaR
-         o1nAafvU4Ik4IAQXzwhusWHvv8QP2kOVuV4/2P9C7veIRNnAKOrkpS3v6AIo+ih1zz3O
-         4hxw==
+        bh=1jXeg6tibz0qq+LtZ7L0T+zY1o79+J5RIan/vB/+03g=;
+        b=fsSXqZH+KvZYcKvCmfLqJLwc24dw05V1HubBTaeJMHMiJkJGosmpyBmatePaQnHnO5
+         RlSJGTLj9egTN/bOGZzO+hhMHeUkXXFsAXiuNmjINBxV8cXurewu268ZticY1P/6MrE+
+         Er0PSGp/yBhTVDsgT7rVNcQpTURl506GiHmCCMksUOgLCqaMB+sTxmHlZVDlzUJB5SoH
+         vOHyJ48unIyabNrvVEv0vB3YR5SXYCoUTWIAGQcvvo9g9QzqJz85aM2LYDriDW1HShYx
+         sgeLoZb8mBRBu0EPoxFDdEwoOCxjJE5ICLHEHRMoJK+sNf8vg2LgX53IkrQTItwNtAR2
+         aeFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=I6zQRhlR;
-       spf=pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) smtp.mailfrom=dgibson@ozlabs.org
-Return-Path: <dgibson@ozlabs.org>
-Received: from ozlabs.org (ozlabs.org. [2401:3900:2:1::2])
-        by mx.google.com with ESMTPS id p65si3531301pfg.280.2018.01.24.14.12.31
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Jan 2018 14:12:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) client-ip=2401:3900:2:1::2;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DqvHiNmA;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id x5sor2136405qta.22.2018.01.24.06.11.28
+        (Google Transport Security);
+        Wed, 24 Jan 2018 06:11:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=I6zQRhlR;
-       spf=pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) smtp.mailfrom=dgibson@ozlabs.org
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3zRfY86BsGz9sR8; Thu, 25 Jan 2018 09:12:28 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1516831948;
-	bh=IrQ1Vx1dDqbSG+n/vfIBKD58XKdsFisstEgKhXgfNKE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=I6zQRhlRu8NIecadXsIH73BCc5UwwWGnmErO+bnd2z/sHL6Rmt8HTf2Vvvgeqtk/S
-	 DcZJXaPzENpeS9YLB3HS8cuebEZqRdp7CFfbQKuYzLYLXp7t2Qiu2qL14eqIXfeSeR
-	 1tuURUDRgI/LJQPbELrCe5b8N7GYTNbQku1WVPzk=
-Date: Thu, 25 Jan 2018 09:12:23 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Cc: richard.henderson@linaro.org, peter.maydell@linaro.org,
-	laurent@vivier.eu, bharata@linux.vnet.ibm.com,
-	andrew@andrewdutcher.com, qemu-devel@nongnu.org,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Richard Henderson <rth@twiddle.net>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Anthony Green <green@moxielogic.com>,
-	Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>,
-	Stafford Horne <shorne@gmail.com>, Alexander Graf <agraf@suse.de>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	"open list:ARM" <qemu-arm@nongnu.org>,
-	"open list:PowerPC" <qemu-ppc@nongnu.org>,
-	"open list:S390" <qemu-s390x@nongnu.org>
-Subject: Re: [PATCH v3 04/22] target/*/cpu.h: remove softfloat.h
-Message-ID: <20180124221223.GC14832@umbus>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DqvHiNmA;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:cc:references:from:openpgp:message-id:date
+         :user-agent:mime-version:in-reply-to;
+        bh=1jXeg6tibz0qq+LtZ7L0T+zY1o79+J5RIan/vB/+03g=;
+        b=DqvHiNmA/vjYuSQaKAQGLh5guoy1ML9xJZpqy31yrWbCN9EIqDAmwwoEZGGXCvLdIq
+         Sys66pzG+JkdriJMFE3jmPZiJ186EAJgzAnWeNK0S1QjqC/+OzQNIezL2YxN4w2OG+4c
+         4FoJKbamsPQZqfdoEiLU9QEv9aiZjLGmIKATH3yF986pfbf8qVLSeToOGHKlSYJuR3wJ
+         adYg34Z+L1yMNZXXYjoQZwhGuzEjUZTqUr/4wx57XHj5pDsGQ+ybVj++twex+2Ir2ITn
+         EakVAAHzCZeS+eytwVsbGLXNlKxMHf3NRf7iBndmR/znWToftBHRonxwhJjtZhVwsxlQ
+         HNag==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+         :message-id:date:user-agent:mime-version:in-reply-to;
+        bh=1jXeg6tibz0qq+LtZ7L0T+zY1o79+J5RIan/vB/+03g=;
+        b=unnefS/CyqxyXYS1lf0fbNtvuufdQnp4yiiSUXpw7+WaaB4/9y6+B84VLr4Hz4aD5z
+         CEQQKssWj82i0Wlq77LmEi+iwmmCMrKQoBnRq/RGEaRShp3p85wYozRJYDesOL5jT8OZ
+         3l9paBIkAchh7kzPuIOqD1Om9rPQjRGTVtUa8AUMhTjcmG67x80XNtZEpksBih2DXaEQ
+         h3dYUHM5iKR9UhMbpAhiYPcA8RgHFnP+VPNndwV7LJEDAQryKxCwyeHcviO6O3UDkF0D
+         hJqvmKAB/Z8FILNuKCNoERvV7DvJtB1cnyPJbAH3dCqmMdHnqGxI34EYSHO3oBsMejls
+         nUnQ==
+X-Gm-Message-State: AKwxyteHXZVW4H93WUW4Mqh6CQPJFEEWXBWWcV3OB0igSrQAqK8Atnf4
+	vHhFLnNHoX6TKSQH0ky5Xgs=
+X-Google-Smtp-Source: AH8x224Kda857uEeOlezZBwwEcZ+9ByE5P3ITsLe5mhhs/p54y/9xDC1Az+0+qUF2HOWVSOuoY0wTw==
+X-Received: by 10.200.34.149 with SMTP id f21mr9876473qta.298.1516803088145;
+        Wed, 24 Jan 2018 06:11:28 -0800 (PST)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from [192.168.1.11] ([138.117.48.219])
+        by smtp.gmail.com with ESMTPSA id m31sm2053498qtd.23.2018.01.24.06.11.21
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 24 Jan 2018 06:11:27 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+Subject: Re: [Qemu-devel] [PATCH v3 04/22] target/*/cpu.h: remove softfloat.h
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ richard.henderson@linaro.org, peter.maydell@linaro.org, laurent@vivier.eu,
+ bharata@linux.vnet.ibm.com, andrew@andrewdutcher.com
+Cc: Marek Vasut <marex@denx.de>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Anthony Green <green@moxielogic.com>, Chris Wulff <crwulff@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Alexander Graf <agraf@suse.de>, Max Filippov <jcmvbkbc@gmail.com>,
+ "open list:S390" <qemu-s390x@nongnu.org>, "open list:ARM"
+ <qemu-arm@nongnu.org>, "open list:PowerPC" <qemu-ppc@nongnu.org>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Stafford Horne <shorne@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
 References: <20180124131315.30567-1-alex.bennee@linaro.org>
  <20180124131315.30567-5-alex.bennee@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <c4655cb5-ab0b-a502-3219-65f1726a7cd5@amsat.org>
+Date: Wed, 24 Jan 2018 11:11:16 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.5.2
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="gr/z0/N6AeWAPJVB"
-Content-Disposition: inline
 In-Reply-To: <20180124131315.30567-5-alex.bennee@linaro.org>
-User-Agent: Mutt/1.9.1 (2017-09-22)
-X-TUID: ME/T3KYoQ1bY
+Content-Type: multipart/signed; micalg=pgp-sha512;
+ protocol="application/pgp-signature";
+ boundary="K3v5rLTTtwFwY5LKJcphaln3hWc6LM0ft"
+X-TUID: PHtALA5BVypK
 
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--K3v5rLTTtwFwY5LKJcphaln3hWc6LM0ft
+Content-Type: multipart/mixed; boundary="o32Jpy60bU1gh6XNG9yRHolgX9mw9QHtj";
+ protected-headers="v1"
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ richard.henderson@linaro.org, peter.maydell@linaro.org, laurent@vivier.eu,
+ bharata@linux.vnet.ibm.com, andrew@andrewdutcher.com
+Cc: Marek Vasut <marex@denx.de>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Anthony Green <green@moxielogic.com>, Chris Wulff <crwulff@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Alexander Graf <agraf@suse.de>, Max Filippov <jcmvbkbc@gmail.com>,
+ "open list:S390" <qemu-s390x@nongnu.org>, "open list:ARM"
+ <qemu-arm@nongnu.org>, "open list:PowerPC" <qemu-ppc@nongnu.org>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Stafford Horne <shorne@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
+Message-ID: <c4655cb5-ab0b-a502-3219-65f1726a7cd5@amsat.org>
+Subject: Re: [Qemu-devel] [PATCH v3 04/22] target/*/cpu.h: remove softfloat.h
+References: <20180124131315.30567-1-alex.bennee@linaro.org>
+ <20180124131315.30567-5-alex.bennee@linaro.org>
+In-Reply-To: <20180124131315.30567-5-alex.bennee@linaro.org>
 
---gr/z0/N6AeWAPJVB
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+--o32Jpy60bU1gh6XNG9yRHolgX9mw9QHtj
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Jan 24, 2018 at 01:12:57PM +0000, Alex Benn=E9e wrote:
+On 01/24/2018 10:12 AM, Alex Benn=C3=A9e wrote:
 > As cpu.h is another typically widely included file which doesn't need
 > full access to the softfloat API we can remove the includes from here
 > as well. Where they do need types it's typically for float_status and
@@ -93,16 +141,15 @@ On Wed, Jan 24, 2018 at 01:12:57PM +0000, Alex Benn=E9e wrote:
 > add it to various helpers that do need the full softfloat.h
 > definitions.
 >=20
-> Signed-off-by: Alex Benn=E9e <alex.bennee@linaro.org>
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-ppc part
-
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
 > ---
->  include/fpu/softfloat-types.h   | 64 +++++++++++++++++++++++++++++++++++=
-++++++
->  include/fpu/softfloat.h         | 53 ----------------------------------
+>  include/fpu/softfloat-types.h   | 64 +++++++++++++++++++++++++++++++++=
+++++++++
+>  include/fpu/softfloat.h         | 53 ---------------------------------=
+-
 >  target/alpha/cpu.h              |  2 --
 >  target/arm/cpu.c                |  1 +
 >  target/arm/cpu.h                |  2 --
@@ -148,7 +195,8 @@ Acked-by: David Gibson <david@gibson.dropbear.id.au>
 >  target/xtensa/op_helper.c       |  1 +
 >  45 files changed, 93 insertions(+), 78 deletions(-)
 >=20
-> diff --git a/include/fpu/softfloat-types.h b/include/fpu/softfloat-types.h
+> diff --git a/include/fpu/softfloat-types.h b/include/fpu/softfloat-type=
+s.h
 > index 8210a94ea1..4e378cb612 100644
 > --- a/include/fpu/softfloat-types.h
 > +++ b/include/fpu/softfloat-types.h
@@ -157,9 +205,10 @@ Acked-by: David Gibson <david@gibson.dropbear.id.au>
 >  #define SOFTFLOAT_TYPES_H
 > =20
 > +/* This 'flag' type must be able to hold at least 0 and 1. It should
-> + * probably be replaced with 'bool' but the uses would need to be audited
-> + * to check that they weren't accidentally relying on it being a larger =
-type.
+> + * probably be replaced with 'bool' but the uses would need to be audi=
+ted
+> + * to check that they weren't accidentally relying on it being a large=
+r type.
 > + */
 > +typedef uint8_t flag;
 > +
@@ -167,13 +216,14 @@ type.
 >   * Software IEC/IEEE floating-point types.
 >   */
 > @@ -112,4 +118,62 @@ typedef struct {
->  #define make_float128(high_, low_) ((float128) { .high =3D high_, .low =
-=3D low_ })
->  #define make_float128_init(high_, low_) { .high =3D high_, .low =3D low_=
- }
+>  #define make_float128(high_, low_) ((float128) { .high =3D high_, .low=
+ =3D low_ })
+>  #define make_float128_init(high_, low_) { .high =3D high_, .low =3D lo=
+w_ }
 > =20
 > +/*
-> + * Software IEC/IEEE floating-point underflow tininess-detection mode.
+> + * Software IEC/IEEE floating-point underflow tininess-detection mode.=
+
 > + */
 > +
 > +enum {
@@ -191,8 +241,8 @@ type.
 > +    float_round_up           =3D 2,
 > +    float_round_to_zero      =3D 3,
 > +    float_round_ties_away    =3D 4,
-> +    /* Not an IEEE rounding mode: round to the closest odd mantissa valu=
-e */
+> +    /* Not an IEEE rounding mode: round to the closest odd mantissa va=
+lue */
 > +    float_round_to_odd       =3D 5,
 > +};
 > +
@@ -223,11 +273,11 @@ e */
 > +    signed char float_rounding_mode;
 > +    uint8_t     float_exception_flags;
 > +    signed char floatx80_rounding_precision;
-> +    /* should denormalised results go to zero and set the inexact flag? =
-*/
+> +    /* should denormalised results go to zero and set the inexact flag=
+? */
 > +    flag flush_to_zero;
-> +    /* should denormalised inputs go to zero and set the input_denormal =
-flag? */
+> +    /* should denormalised inputs go to zero and set the input_denorma=
+l flag? */
 > +    flag flush_inputs_to_zero;
 > +    flag default_nan_mode;
 > +    flag snan_bit_is_one;
@@ -243,51 +293,52 @@ flag? */
 >  #define SOFTFLOAT_H
 > =20
 > -/* This 'flag' type must be able to hold at least 0 and 1. It should
-> - * probably be replaced with 'bool' but the uses would need to be audited
-> - * to check that they weren't accidentally relying on it being a larger =
-type.
+> - * probably be replaced with 'bool' but the uses would need to be audi=
+ted
+> - * to check that they weren't accidentally relying on it being a large=
+r type.
 > - */
 > -typedef uint8_t flag;
 > -
 >  #define LIT64( a ) a##LL
 > =20
->  /*----------------------------------------------------------------------=
-------
+>  /*--------------------------------------------------------------------=
+--------
 > @@ -102,53 +96,6 @@ enum {
 > =20
 >  #include "fpu/softfloat-types.h"
 > =20
-> -/*----------------------------------------------------------------------=
-------
+> -/*--------------------------------------------------------------------=
+--------
 > -| Software IEC/IEEE floating-point underflow tininess-detection mode.
-> -*-----------------------------------------------------------------------=
------*/
+> -*---------------------------------------------------------------------=
+-------*/
 > -enum {
 > -    float_tininess_after_rounding  =3D 0,
 > -    float_tininess_before_rounding =3D 1
 > -};
 > -
-> -/*----------------------------------------------------------------------=
-------
+> -/*--------------------------------------------------------------------=
+--------
 > -| Software IEC/IEEE floating-point rounding mode.
-> -*-----------------------------------------------------------------------=
------*/
+> -*---------------------------------------------------------------------=
+-------*/
 > -enum {
 > -    float_round_nearest_even =3D 0,
 > -    float_round_down         =3D 1,
 > -    float_round_up           =3D 2,
 > -    float_round_to_zero      =3D 3,
 > -    float_round_ties_away    =3D 4,
-> -    /* Not an IEEE rounding mode: round to the closest odd mantissa valu=
-e */
+> -    /* Not an IEEE rounding mode: round to the closest odd mantissa va=
+lue */
 > -    float_round_to_odd       =3D 5,
 > -};
 > -
-> -/*----------------------------------------------------------------------=
-------
+> -/*--------------------------------------------------------------------=
+--------
 > -| Software IEC/IEEE floating-point exception flags.
-> -*-----------------------------------------------------------------------=
------*/
+> -*---------------------------------------------------------------------=
+-------*/
 > -enum {
 > -    float_flag_invalid   =3D  1,
 > -    float_flag_divbyzero =3D  4,
@@ -303,18 +354,18 @@ e */
 > -    signed char float_rounding_mode;
 > -    uint8_t     float_exception_flags;
 > -    signed char floatx80_rounding_precision;
-> -    /* should denormalised results go to zero and set the inexact flag? =
-*/
+> -    /* should denormalised results go to zero and set the inexact flag=
+? */
 > -    flag flush_to_zero;
-> -    /* should denormalised inputs go to zero and set the input_denormal =
-flag? */
+> -    /* should denormalised inputs go to zero and set the input_denorma=
+l flag? */
 > -    flag flush_inputs_to_zero;
 > -    flag default_nan_mode;
 > -    flag snan_bit_is_one;
 > -} float_status;
 > -
->  static inline void set_float_detect_tininess(int val, float_status *stat=
-us)
+>  static inline void set_float_detect_tininess(int val, float_status *st=
+atus)
 >  {
 >      status->float_detect_tininess =3D val;
 > diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
@@ -377,8 +428,8 @@ us)
 >  #include "sysemu/kvm.h"
 > +#include "fpu/softfloat.h"
 > =20
->  #define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurable =
-*/
+>  #define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurabl=
+e */
 > =20
 > diff --git a/target/arm/neon_helper.c b/target/arm/neon_helper.c
 > index ebdf7c9b10..2a4592c041 100644
@@ -542,7 +593,8 @@ us)
 >  struct CPUMBState;
 >  typedef struct CPUMBState CPUMBState;
 >  #if !defined(CONFIG_USER_ONLY)
-> diff --git a/target/microblaze/op_helper.c b/target/microblaze/op_helper.c
+> diff --git a/target/microblaze/op_helper.c b/target/microblaze/op_helpe=
+r.c
 > index 4cf51568df..2567bf4031 100644
 > --- a/target/microblaze/op_helper.c
 > +++ b/target/microblaze/op_helper.c
@@ -590,7 +642,8 @@ us)
 >  #include "qom/cpu.h"
 > =20
 >  #define TYPE_OPENRISC_CPU "or1k-cpu"
-> diff --git a/target/openrisc/fpu_helper.c b/target/openrisc/fpu_helper.c
+> diff --git a/target/openrisc/fpu_helper.c b/target/openrisc/fpu_helper.=
+c
 > index 1375cea948..977a1e8e55 100644
 > --- a/target/openrisc/fpu_helper.c
 > +++ b/target/openrisc/fpu_helper.c
@@ -600,7 +653,8 @@ us)
 >  #include "exception.h"
 > +#include "fpu/softfloat.h"
 > =20
->  static inline uint32_t ieee_ex_to_openrisc(OpenRISCCPU *cpu, int fexcp)
+>  static inline uint32_t ieee_ex_to_openrisc(OpenRISCCPU *cpu, int fexcp=
+)
 >  {
 > diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
 > index 603a38cae8..43fbe7d7cf 100644
@@ -637,8 +691,8 @@ us)
 > +#include "fpu/softfloat.h"
 > =20
 >  #include "helper_regs.h"
->  /***********************************************************************=
-******/
+>  /*********************************************************************=
+********/
 > diff --git a/target/ppc/translate_init.c b/target/ppc/translate_init.c
 > index 55c99c97e3..54ec2e122a 100644
 > --- a/target/ppc/translate_init.c
@@ -810,8 +864,8 @@ us)
 > =20
 >  #define NB_MMU_MODES            2
 > =20
-> diff --git a/target/unicore32/ucf64_helper.c b/target/unicore32/ucf64_hel=
-per.c
+> diff --git a/target/unicore32/ucf64_helper.c b/target/unicore32/ucf64_h=
+elper.c
 > index 6c919010c3..fad3fa6618 100644
 > --- a/target/unicore32/ucf64_helper.c
 > +++ b/target/unicore32/ucf64_helper.c
@@ -847,31 +901,31 @@ per.c
 > =20
 >  void xtensa_cpu_do_unaligned_access(CPUState *cs,
 >          vaddr addr, MMUAccessType access_type,
+>=20
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
 
---gr/z0/N6AeWAPJVB
+--o32Jpy60bU1gh6XNG9yRHolgX9mw9QHtj--
+
+--K3v5rLTTtwFwY5LKJcphaln3hWc6LM0ft
 Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlppBMQACgkQbDjKyiDZ
-s5L3Jg//YVgLl9fC8JG3Y09A+Xsa2jE79ygWnfoCMIJtgp/3o8lpw3KrB/1ORICT
-0dmYc+piMw8H1aSadcTOrxvT9z2PPErlSALWec6d23s3ICFSaSt0l27NNY3gxu/q
-X0ri+FCyJOseQQ5uRa2l1cVSmSoY9Nt3axCHqv0inHo5Oo45TUJGuVl+tWW29OyO
-I3xpqDjw6Zai/4EIffsYniLVJGLAM5hxXzT5H5ErkMCt++0js/tCsFWrmKDCpCnb
-dEEsDA8T5S55MQTAhPtvc0Rm9sKGJ+n5+7DnM9kQk5NH0nCHsbyNRJyE9gKITv49
-8iIuJ/1xynIzCdPA4rtqT7ROFD8ciUaUQcca4WNj9GfBWaYiEsu26J2RNI5SMya7
-rHSd17oJBCVBQmsZu7wlesDGaRXYKGKbCFLrsFxqoPpRM8kfspuemb0mGUS2El2z
-wESnnInBO0C/1cz5xtUPuIO6b7OXE58IqQmGd/n2MUrFtNWgm0wk2TQsCHDabmgP
-tXKsBVAjmVZxcBvslHtMWjTS39kQ/u4l+1Aw6Xm5b31llYzd+gu3ttJ/SzVc4vgn
-42Q8cgREj1EXbAcf26VcOjQ9nSJ8yskNF/pco+3HXgwfb4PojO1DtENxa0HB/vGg
-rP2LMXDpw/AvI3+zUPIOHGfS76/PDYimGcvcoBEUdnKhxTAyMOQ=
-=FaqR
+iQIzBAEBCgAdFiEE+qvnXhKRciHc/Wuy4+MsLN6twN4FAlpolAQACgkQ4+MsLN6t
+wN4WNRAAyYvlNqhp0G6D9LDZ5agUjUgKGwxeE3rQi2qTpWMX0oU+nVHt3BNi4Yds
+T2wYFnd9sjrhjBq+QKxP47OZt5gmrfcYVBkyH7Y0zkVycuanmVUhhYYiCeX284rv
+IKwtLiZZwqpdyVAUbDCgk637nHIOWFFlRuY194Iev9yc9bPi05vgEgyVybe68xLJ
+H1BB39ZvATmWdk551UrM3ZfmJ8gUVcb/j0D3X3/Uec60U2CGvz9wYmvIrNar/wM4
+tXIUAkSKRtd3IJsPs5IzLqfVxFoYtczHQvGm3+YcnUBB/0MeGxBpUqQ/3lJsjHDz
+2OO+qVA043I1EtUYPeLB/Izwv1tytW/MHDSyJQyuv9ze/egUCdUH+N2EujJ/nur4
+Tqn+u66U9g5GjTA8VL3aNboN2NXL2IrDjIpjDP72qwCyNU1l8RPL871efOBfHqKC
+dC36uun1PNbODscJfUxbArm3PdyJVYjRTi7nP96/L5tH1UtxYaJKZIjvrH9ugCJy
+YuAepN8fkuXCZEtWHRI0mTOHJJA54i4FuKPSbHjp6RJKAGP3HyQQigNx9dXDJqsA
+L1INW8N9+LaGWYZkHtT2WSOo/AB8ubbsTRLA/HNNwbsPUJ7STvNQkONTpu2KUx/1
+x8ATSR6osG+mlnZ8f3IpeJYxhe8UuFy9quZuvkqEwjNIodM58M8=
+=J4P4
 -----END PGP SIGNATURE-----
 
---gr/z0/N6AeWAPJVB--
+--K3v5rLTTtwFwY5LKJcphaln3hWc6LM0ft--

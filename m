@@ -1,98 +1,80 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp16337wru;
-        Fri, 10 Aug 2018 08:41:26 -0700 (PDT)
-X-Google-Smtp-Source: AA+uWPw5YpvcosM8VMfCE3l/s6H2h6UwFMiuE2+IlHByYnXBn0buzesBR8smb598N7MdHkzZc/vP
-X-Received: by 2002:a0c:e7ca:: with SMTP id c10-v6mr6257516qvo.48.1533915685926;
-        Fri, 10 Aug 2018 08:41:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1533915685; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp1031642wma;
+        Wed, 24 Jan 2018 12:07:46 -0800 (PST)
+X-Google-Smtp-Source: AH8x227UmD4uTWOlKnBDw9OvKit2o9u6ffCHfGTqI0Pa/kyGIyO4rH2twfgujptlhvzbAwkreDfL
+X-Received: by 10.37.20.6 with SMTP id 6mr6438354ybu.449.1516824466299;
+        Wed, 24 Jan 2018 12:07:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516824466; cv=none;
         d=google.com; s=arc-20160816;
-        b=aRh5Eg71uk7p5thbHVnAT5yqRI4U05IT7aBNU77IaLpbhu4norGJb/BrGQdRCO5AF1
-         8ipw80U8499TNrIhLV98G7uMF3Zka92Lxd6ZN+XR2B7S5K5ecaPXq+gVolM7ccFCuPJu
-         RNpprceJD08BHoHZLSQ8kdyHba+54EldL6MG7DUakyZ9zVyhrM26oJfMiv08sMaFUw1K
-         jdhPCC4Dd/wCy/IP0y2BHMwZso+JMSCmpsUHzKb9CfBacBRajS5kyVRziFct8H79GUL6
-         dAcXtArUrq4S8xM5UJAvG7w/uKAap/PtMMXAbh7HykuakLM4gbCytOJeV4ymVIKN+NfI
-         T1qw==
+        b=wphGKsXsaGOgQp7VVbDsdCtaDl8eTkjf8ez5MoTOnAdcr0K4b4l4s96dml6Ci4N5OH
+         tccbLuADpCPCB9d+MrxLL4e4N+BOphBql845ZQ0+S3ueNQQuCX3+kletkX4M8KmFVSyC
+         vf65t1k3HnAYFw7wCTL7x1+1gk4SRgZNFOqQRSPpZY98AIIpfUVSwsMcwR9aLWs2p62X
+         yNs5G9utsojowuIQxBF3j2ttsNQZcnYdCJRHE/gZA+pdErpxhcc+fMTVD5lPp69xm29b
+         qqlQ8PjPj06Y57cVl/hHTl+GRqiRk0vhYxKht1I0FVS8vlbJYCgfI3HcpBu7xw+pXE9E
+         1+lA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=idsVOvJm8SM6h5gaxJgoMD6XTaS/h0uaHhxC1uI1l6Y=;
-        b=wESZaomR7eTkhVnaHmvvuhT40U01ntP0gyYp9FpD1DVk9Rv8e5F7xrBmcefYjrsWwu
-         fwneg1g4z9I41Ehge3eGbkBnS/GjGgReX2zXIQ0pGD8KfZPEvSss02svjNO/nqDdBe+K
-         8JPsj2TAUAlKg02TOZxCAwUJkBYiBJbhV9AZ2oevep8J+lt+/Soe4uWe1XdfLSCZ114Z
-         kNInmh9M9CHXIraDD8oXENIPGeaRDsRzH2uwnQ+4Luj3FSYWdXjzEae+sZMG++zD7kYh
-         hEiX2kQO/g19PJgVu45adp7buttPThgOT2yaEwnyLUZ9MU4XOUpqzju8czUENfT9DkDw
-         VY1A==
+         :list-unsubscribe:list-id:precedence:subject:content-language
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:arc-authentication-results;
+        bh=LggLNy2onAbzRtQW9LKpu/XLPEgP2JRmWIs5KzsmK8o=;
+        b=U5voqvYl/EvziCYP6UgtesZtf29A0FpvMfYVbJvFhfi1+K0S9l8Orm/2m23+54feh/
+         kz9WveI9Z427OADD1kEdpOFEXzjGrat/sOLcj5kfwgo6DZfTbVtOVzvJAXmtpGIi9iH6
+         RdtDGX2QbuMJ5nQLVKJQP5J/6l4R2ewSbnQzDz1G8WyqlqUGFu51K3mpQU8iZgBCBOjn
+         H9mieCZl8UEjvKxJ2NrPho+eKPC0tedij8YsBTsWoo+EqHHOWOBPWzbCL1ZP/HQsA+M8
+         gT39PCOX9yeL0mlwj5JXrhANthRNvvCFjJB0vkXB+rglpxsRmW/FCQR02Qj5hzORwLKk
+         C86A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JtrRW50C;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j67-v6si8728465qkh.114.2018.08.10.08.41.25
+        by mx.google.com with ESMTPS id s138si1766437ybs.644.2018.01.24.12.07.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 10 Aug 2018 08:41:25 -0700 (PDT)
+        Wed, 24 Jan 2018 12:07:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JtrRW50C;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56805 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:42710 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fo9XZ-0000al-H2
-	for alex.bennee@linaro.org; Fri, 10 Aug 2018 11:41:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33270)
+	id 1eeRKj-0001uc-Jj
+	for alex.bennee@linaro.org; Wed, 24 Jan 2018 15:07:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34416)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fo9XS-0000af-MH
-	for qemu-arm@nongnu.org; Fri, 10 Aug 2018 11:41:19 -0400
+	(envelope-from <jcd@tribudubois.net>) id 1eeRKY-0001s0-Gi
+	for qemu-arm@nongnu.org; Wed, 24 Jan 2018 15:07:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fo9XR-0004yl-UF
-	for qemu-arm@nongnu.org; Fri, 10 Aug 2018 11:41:18 -0400
-Received: from mail-oi0-x230.google.com ([2607:f8b0:4003:c06::230]:43059)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fo9XR-0004y0-FG
-	for qemu-arm@nongnu.org; Fri, 10 Aug 2018 11:41:17 -0400
-Received: by mail-oi0-x230.google.com with SMTP id b15-v6so16461334oib.10
-	for <qemu-arm@nongnu.org>; Fri, 10 Aug 2018 08:41:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=idsVOvJm8SM6h5gaxJgoMD6XTaS/h0uaHhxC1uI1l6Y=;
-	b=JtrRW50CITlLLe4CzCkPvQ99/7ns5/XtFMGIbADvuOJnniwVYQlT/7lKBvyRUVx/pP
-	5XBhmSmjiM5F8+fBiEh/2mZmTQE2IzfmSs+UhPfuVTKYAGm+Yi+UxF7112hJ2q0ZAmBu
-	lARPEklGqHa5L/gbP3c/FYvlO0QgBAAmwLQ1k=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=idsVOvJm8SM6h5gaxJgoMD6XTaS/h0uaHhxC1uI1l6Y=;
-	b=R64xMGO2pBvsCk+7WhiBfeVY6vlAo0LA36mYnWlOdZCCW3dxLkusRlBQjsQ9ltoyRJ
-	NXJyxrHENuWx+wvyn+AtRoGOK6ziGzjVJzdU1CoENT2y2htqB3BOTAlObEZd8IGQIkTX
-	QlBdEmJridr4H3KTca3wtmrgzL7IhcO956OpuQs7p1b2IIyXAa9XkTAOtAErxbkS/pCT
-	7gGRPIaWR07fbcdX6uK7ta+2KCs1nhi6nU2YJITTwbJkQM1QLU91SdK776MS8tT4j2m0
-	SJFB65JnaWwdiI46RLTkYPgZB36pVyynsRPZi0wB90RLzR+ko6ONpUfbGhgKjSuYbXPe
-	KJwQ==
-X-Gm-Message-State: AOUpUlEDly4RHrX1bSmO7WzNUETHCrSjQL8YYMG0eA/9XxRmKZBsJ480
-	xqOgwcSU+Bno7RBhHvhIZc4jgVva0F3+pcpGKmGmzYVgdYorrw==
-X-Received: by 2002:aca:4c14:: with SMTP id
-	z20-v6mr6598970oia.164.1533915676462; 
-	Fri, 10 Aug 2018 08:41:16 -0700 (PDT)
+	(envelope-from <jcd@tribudubois.net>) id 1eeRKX-0008Qs-8j
+	for qemu-arm@nongnu.org; Wed, 24 Jan 2018 15:07:34 -0500
+Received: from relay4-d.mail.gandi.net ([2001:4b98:c:538::196]:37756)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <jcd@tribudubois.net>)
+	id 1eeRKX-0008PK-1R; Wed, 24 Jan 2018 15:07:33 -0500
+Received: from [IPv6:2a01:e34:eebf:9c0:b947:2360:5276:c8f9] (unknown
+	[IPv6:2a01:e34:eebf:9c0:b947:2360:5276:c8f9])
+	(Authenticated sender: jcd@tribudubois.net)
+	by relay4-d.mail.gandi.net (Postfix) with ESMTPSA id DDABC1720B2;
+	Wed, 24 Jan 2018 21:07:27 +0100 (CET)
+To: Peter Maydell <peter.maydell@linaro.org>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>
+References: <20180113113445.2705-1-jcd@tribudubois.net>
+	<CAFEAcA_epX=BOj5sxNVB2z-k3wQ+RRAry=OQi2b=i0d9pJaSeA@mail.gmail.com>
+	<CAHQ1cqHXHxSH4LxSu0Jjug5hy1FhMYF-O2FtYbjpnm68VjTDpA@mail.gmail.com>
+	<CAFEAcA-XKE=KkOdT62i3VdU=pfQZq7D9KRHNQFjn4Ei_EdpPoQ@mail.gmail.com>
+From: Jean-Christophe DUBOIS <jcd@tribudubois.net>
+Message-ID: <31001893-5198-edd5-9184-3cd7bd0d5859@tribudubois.net>
+Date: Wed, 24 Jan 2018 21:07:26 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.0
 MIME-Version: 1.0
-Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Fri, 10 Aug 2018 08:40:55
-	-0700 (PDT)
-In-Reply-To: <CAF++6AMVaAcAtKHN+NpheOuvu4mKaSo7W5yMFHs7_hpALzzcTQ@mail.gmail.com>
-References: <CAF++6AMVaAcAtKHN+NpheOuvu4mKaSo7W5yMFHs7_hpALzzcTQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 10 Aug 2018 16:40:55 +0100
-Message-ID: <CAFEAcA_B+Ydhiep-P2hqRbpx9y+VkSvk0XnTJ0APAmruU4MVCQ@mail.gmail.com>
-To: James Hanley <jhanley@dgtlrift.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::230
-Subject: Re: [Qemu-arm] MPU/MCU vs board setting cpu-type
+In-Reply-To: <CAFEAcA-XKE=KkOdT62i3VdU=pfQZq7D9KRHNQFjn4Ei_EdpPoQ@mail.gmail.com>
+Content-Type: multipart/alternative;
+	boundary="------------330C24D69A5F915F0EB5203F"
+Content-Language: en-US
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2001:4b98:c:538::196
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2] i.MX: Fix FEC/ENET receive
+ funtions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,25 +86,151 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>
+Cc: Jason Wang <jasowang@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Peter Chubb <peter.chubb@nicta.com.au>,
+	QEMU Developers <qemu-devel@nongnu.org>, fyleo45@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wwQ+osawIGl8
+X-TUID: QQeiLpqrLXt7
 
-On 10 August 2018 at 16:29, James Hanley <jhanley@dgtlrift.com> wrote:
-> Would it make more sense that the MPU/MCU implementation (ie
-> stm32f205_soc.c) define the property for the ARM_CPU_TYPE_NAME instead
-> of the support board (ie netduino2.c)?
+This is a multi-part message in MIME format.
+--------------330C24D69A5F915F0EB5203F
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+
+My guess is that with this patch, the "flush" feature that was added by 
+Andrey in "imx_fec: Change queue flushing heuristics" (commit b2b012a) 
+is not really necessary anymore.
+
+But it does not hurt (it might induce a little bit more processing).
+
+JC
+
+Le 22/01/2018 à 15:59, Peter Maydell a écrit :
+> On 22 January 2018 at 14:54, Andrey Smirnov <andrew.smirnov@gmail.com> wrote:
+>> On Mon, Jan 22, 2018 at 3:48 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
+>>> On 13 January 2018 at 11:34, Jean-Christophe Dubois <jcd@tribudubois.net> wrote:
+>>>> The actual imx_eth_enable_rx() function is buggy.
+>>>>
+>>>> It updates s->regs[ENET_RDAR] after calling qemu_flush_queued_packets().
+>>>>
+>>>> qemu_flush_queued_packets() is going to call imx_XXX_receive() which itself
+>>>> is going to call imx_eth_enable_rx().
+>>>>
+>>>> By updating s->regs[ENET_RDAR] after calling qemu_flush_queued_packets()
+>>>> we end up updating the register with an outdated value which might
+>>>> lead to disabling the receive function in the i.MX FEC/ENET device.
+>>>>
+>>>> This patch change the place where the register update is done so that the
+>>>> register value stays up to date and the receive function can keep
+>>>> running.
+>>>>
+>>>> Reported-by: Fyleo <fyleo45@gmail.com>
+>>>> Tested-by: Fyleo  <fyleo45@gmail.com>
+>>>> Signed-off-by: Jean-Christophe Dubois <jcd@tribudubois.net>
+>>>> ---
+>>> Andrey, do you have an opinion on this patch, since you've been
+>>> looking at i.MX code recently?
+>>>
+>> The rationale makes sense to me and patch looks like a good cleanup in
+>> general, so FWIW:
+>>
+>> Reviewed-by: Andrey Smirnov <andrew.smirnov@gmail.com>
+>>
+>> I also gave it a spin against my i.MX7 changes with doing basic things
+>> like ping and scp of 1GB file, so I can give my:
+>>
+>> Tested-by: Andrey Smirnov <andrew.smirnov@gmail.com>
+> Thanks; I've applied the patch to target-arm.next.
 >
-> It seems like a chip die version should have that property inherently
-> set by its init function since it will always be the same core type
-> for that chip die - and for a board, if it includes that chip die in
-> the init, then it will incorporate that core type.
+> -- PMM
+>
+>
 
-Yes, probably -- but we haven't been very consistent in the
-past about how exactly we model SoCs where there are several
-in the same family that are more-or-less-the-same apart from
-the CPU type.
 
-thanks
+--------------330C24D69A5F915F0EB5203F
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  </head>
+  <body text="#000000" bgcolor="#FFFFFF">
+    <div class="moz-cite-prefix">My guess is that with this patch, the
+      "flush" feature that was added by Andrey in "imx_fec: Change queue
+      flushing heuristics" (commit <span class="float-right"><span
+          class="sha-block"><span class="sha user-select-contain">b2b012a)
+          </span></span></span>is not really necessary anymore.<br>
+      <br>
+      But it does not hurt (it might induce a little bit more
+      processing).<br>
+      <br>
+      JC<br>
+      <br>
+      Le 22/01/2018 à 15:59, Peter Maydell a écrit :<br>
+    </div>
+    <blockquote type="cite"
+cite="mid:CAFEAcA-XKE=KkOdT62i3VdU=pfQZq7D9KRHNQFjn4Ei_EdpPoQ@mail.gmail.com">
+      <pre wrap="">On 22 January 2018 at 14:54, Andrey Smirnov <a class="moz-txt-link-rfc2396E" href="mailto:andrew.smirnov@gmail.com">&lt;andrew.smirnov@gmail.com&gt;</a> wrote:
+</pre>
+      <blockquote type="cite">
+        <pre wrap="">On Mon, Jan 22, 2018 at 3:48 AM, Peter Maydell <a class="moz-txt-link-rfc2396E" href="mailto:peter.maydell@linaro.org">&lt;peter.maydell@linaro.org&gt;</a> wrote:
+</pre>
+        <blockquote type="cite">
+          <pre wrap="">On 13 January 2018 at 11:34, Jean-Christophe Dubois <a class="moz-txt-link-rfc2396E" href="mailto:jcd@tribudubois.net">&lt;jcd@tribudubois.net&gt;</a> wrote:
+</pre>
+          <blockquote type="cite">
+            <pre wrap="">The actual imx_eth_enable_rx() function is buggy.
+
+It updates s-&gt;regs[ENET_RDAR] after calling qemu_flush_queued_packets().
+
+qemu_flush_queued_packets() is going to call imx_XXX_receive() which itself
+is going to call imx_eth_enable_rx().
+
+By updating s-&gt;regs[ENET_RDAR] after calling qemu_flush_queued_packets()
+we end up updating the register with an outdated value which might
+lead to disabling the receive function in the i.MX FEC/ENET device.
+
+This patch change the place where the register update is done so that the
+register value stays up to date and the receive function can keep
+running.
+
+Reported-by: Fyleo <a class="moz-txt-link-rfc2396E" href="mailto:fyleo45@gmail.com">&lt;fyleo45@gmail.com&gt;</a>
+Tested-by: Fyleo  <a class="moz-txt-link-rfc2396E" href="mailto:fyleo45@gmail.com">&lt;fyleo45@gmail.com&gt;</a>
+Signed-off-by: Jean-Christophe Dubois <a class="moz-txt-link-rfc2396E" href="mailto:jcd@tribudubois.net">&lt;jcd@tribudubois.net&gt;</a>
+---
+</pre>
+          </blockquote>
+          <pre wrap="">
+Andrey, do you have an opinion on this patch, since you've been
+looking at i.MX code recently?
+
+</pre>
+        </blockquote>
+        <pre wrap="">
+The rationale makes sense to me and patch looks like a good cleanup in
+general, so FWIW:
+
+Reviewed-by: Andrey Smirnov <a class="moz-txt-link-rfc2396E" href="mailto:andrew.smirnov@gmail.com">&lt;andrew.smirnov@gmail.com&gt;</a>
+
+I also gave it a spin against my i.MX7 changes with doing basic things
+like ping and scp of 1GB file, so I can give my:
+
+Tested-by: Andrey Smirnov <a class="moz-txt-link-rfc2396E" href="mailto:andrew.smirnov@gmail.com">&lt;andrew.smirnov@gmail.com&gt;</a>
+</pre>
+      </blockquote>
+      <pre wrap="">
+Thanks; I've applied the patch to target-arm.next.
+
 -- PMM
+
+
+</pre>
+    </blockquote>
+    <p><br>
+    </p>
+  </body>
+</html>
+
+--------------330C24D69A5F915F0EB5203F--

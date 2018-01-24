@@ -1,80 +1,92 @@
-Received: by 10.28.71.27 with SMTP id u27csp3847643wma;
-        Tue, 23 Jan 2018 01:53:18 -0800 (PST)
-X-Google-Smtp-Source: AH8x225IK8uw1quy22Hd0gyUrvgBh/lSzA33eMvTUJXQ8ZvdvciNU1Rv7YPR934427MbpHEMWmyb
-X-Received: by 10.129.235.3 with SMTP id n3mr1844895ywm.118.1516701198343;
-        Tue, 23 Jan 2018 01:53:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516701198; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp406675wma;
+        Wed, 24 Jan 2018 01:37:11 -0800 (PST)
+X-Google-Smtp-Source: AH8x2277Faxmp3Nkq74M71X1i29JN3LHhniOzYKUV9BgRDCJ2IKmunqNBw36X46AHGRNdTTs5J5k
+X-Received: by 10.129.123.133 with SMTP id w127mr4789923ywc.364.1516786631554;
+        Wed, 24 Jan 2018 01:37:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516786631; cv=none;
         d=google.com; s=arc-20160816;
-        b=EN0YaxtYzUBa8Rbw48QRb4VUiUU3S3tazaDP/6m8iyTl7zMhQO8Wrh4twJ/4UXzGVF
-         3cp44sJj8+ffdmuY/F+dbN+XU1r24186Jd0JA7kNmO7HQBBvg2H/kHM6Q9ERI7BukdeW
-         HgqbjmkEermykvLarvl7DCDWqVu1kTI1wCMeyuxdhvQj+UjOVMjYmuBaHP81wJqlr6M3
-         ZC+RO3FlzhuDt+JZloPP8S0GK/tKiLTjAFfFZqlD/aHm2ppgjH9Ayyfsc/vBrmH8BzBp
-         C3fWe4zRoRdIJa7sNMaSFniPCFI7SYCtou1PXUI5j44TIfArF2xiSSH1dmTeoroKcDwD
-         GMPQ==
+        b=iLhvrYulqU63xOydpYa1A2MXbc47W9aZ8KMu+yCHRaGA8zxDq3J56zK4M290b9Gbnh
+         SDOh13jhmcTvmqsjWuZNWWrlEs3HDP72irbAa7VsN0oKB5eM0Bb6LJp1RhI0QQv+92a3
+         m39YhNHHy+wq1VoKAtCANbf96DWcphUtq+jyOJXk93ejSjZ9WgTikNRxbxMA8zzTuGvA
+         xxKM4pQ6rIA8TBTI7LE0AwvorS84H8GTrH5qDDhboFP1FrQB80HoVB32TBEeaJw+DF8S
+         FC1sr3hTVIgxqY3igg8os5QaBMjjV61i7oW7Sm64mZFwPp4gmWZ5+2lt6behn5ve/Mow
+         Zcgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=pkYUWdrUn/o+I2SWQyPQ3uYadqaeqbLl/kAUPTtJtPM=;
-        b=g/xkjNpdeLybYls8imrgavPCfWlrjIgtZMHrvKFFrwV7geW+EDg0ew67b14UqdZ+Z5
-         FpqXjZ2XRuUEwKLiDhwlP8VkvHij2pKb6RnUW2FhMm/T6OwpwsrS6N/xIXFuY/mCZ2c7
-         Gq1W3qhBV2Vf+47fAXwA0bjG9UuTSbCteqKc+55qnPLEkz/o2S4D+fMXwRaGm5eBVmUh
-         vuOmfLfadJ16IafPGi+ygkTPmAcJARB8Dx68yI8LINjPo4dB+Dszgy4gUuMQgRnPSUc1
-         7fKSP0W91RUH+JowVKpQXMMaefqrrVqeKH+5DVPegl9cCoyzT+ew1eGaC/HNqzHAo/5G
-         LJHw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
+         :arc-authentication-results;
+        bh=oS49sC2cs2x5yYm+YNFVGZnQap08s/bm8KD5a10LrDg=;
+        b=h4YX5XRl/qRWjuzMxGqpA5Tj0vwREkEBx7CdE0zyXFoSkvhjKZAUpJ4Hf/yYiEakpR
+         ijlIurYEdq/1fk70oTUOl/+Bcxwbj9ne5iD+K29ec5XqLenaJSoVOxg+M1nr2TWMzNsC
+         BslqMlQQnhEmUsnYlnd1fptEVn49lX6LD6VpvZB1hBi435szZb3rd7QNVnpoVxVFSYVF
+         hH0rJqA9PIyVzWobSaK8lo7XqjNFlZiXSHcLMzHQ2b4X3QWcBwkyZTLZJxbPqxdDk3nD
+         3t7KW+KNaijpkrlxq0MTxF1kHhh4x6urrhi87Hj/Nojl4/TDwTVlsro0uiroL98gnR/0
+         f4XA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u6si1299692ywa.221.2018.01.23.01.53.18
+        by mx.google.com with ESMTPS id g206si4580746ywc.475.2018.01.24.01.37.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 23 Jan 2018 01:53:18 -0800 (PST)
+        Wed, 24 Jan 2018 01:37:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48480 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:37201 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1edvGX-0004o8-R3
-	for alex.bennee@linaro.org; Tue, 23 Jan 2018 04:53:17 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55698)
+	id 1eeHUU-0001Um-Vq
+	for alex.bennee@linaro.org; Wed, 24 Jan 2018 04:37:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40146)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1edvGJ-0004lC-De
-	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 04:53:07 -0500
+	(envelope-from <laurent@vivier.eu>) id 1eeHUC-0001Qc-KW
+	for qemu-arm@nongnu.org; Wed, 24 Jan 2018 04:36:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1edvGF-0000qT-3H
-	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 04:53:03 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:56876)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1edvGE-0000pm-Tf; Tue, 23 Jan 2018 04:52:59 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C95A319F57;
-	Tue, 23 Jan 2018 09:52:57 +0000 (UTC)
-Received: from dell-r430-03.lab.eng.brq.redhat.com
-	(dell-r430-03.lab.eng.brq.redhat.com [10.37.153.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 18847859E5;
-	Tue, 23 Jan 2018 09:52:50 +0000 (UTC)
-From: Igor Mammedov <imammedo@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Tue, 23 Jan 2018 10:51:12 +0100
-Message-Id: <1516701072-81109-1-git-send-email-imammedo@redhat.com>
-In-Reply-To: <1516694904-64879-4-git-send-email-imammedo@redhat.com>
-References: <1516694904-64879-4-git-send-email-imammedo@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Tue, 23 Jan 2018 09:52:57 +0000 (UTC)
+	(envelope-from <laurent@vivier.eu>) id 1eeHUB-00008R-9n
+	for qemu-arm@nongnu.org; Wed, 24 Jan 2018 04:36:52 -0500
+Received: from mout.kundenserver.de ([212.227.126.131]:57473)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1eeHU6-0008IY-HW; Wed, 24 Jan 2018 04:36:46 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue006 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	0LgSLR-1fAbxO1ck1-00nznS; Wed, 24 Jan 2018 10:36:35 +0100
+To: =?UTF-8?Q?Guido_G=c3=bcnther?= <agx@sigxcpu.org>
+References: <39441aea4e2d05cc505ed3a373e81d3869eb994a.1516785202.git.agx@sigxcpu.org>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <88c65afc-cbc5-9091-7c9e-535a242c65ed@vivier.eu>
+Date: Wed, 24 Jan 2018 10:36:33 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.2
+MIME-Version: 1.0
+In-Reply-To: <39441aea4e2d05cc505ed3a373e81d3869eb994a.1516785202.git.agx@sigxcpu.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K0:cnmMY/7ndHr7oP3BUoIbiilEJ9oBd7Qq8gebqCzyDqScH1M/JFM
+	vqEP0cCAOLn8GjYNLFzLMp1LdxSqpYTDJOF6rEt9hS6bBadu62WRI24ENvG+hG/nRe+dSt7
+	HjvDIP6FXoPVexzGWfoo+v0eR13lvUMRJ52nBXY7XRf+d9YG0X0z6T/a1rndB9xVdBmOZb9
+	pCY259kY8cYvj0YEZQ6pQ==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:jSM9ZuUkCD4=:pTO5PGepIP8uVxW5s5UO3t
+	Bmrl3FxYxhGX9B6slhLnpzRAAmSeMxSoukWjLBgQgl4/GbDf3/qEdTuVTiVG60Uom9JVsl22q
+	IMbyEAAC2dAczKZw0I3r3TPdi0F2dUJxIGse9wZMsoixYP4oMyd6d+zRi9kwSuryKS5s3/qzE
+	qIVnehUry5wXxnNctfcsBsHV4QwpNA+Pkcu5uDhKiuGYtjSH+0mdhf47XLN6LZnD8Tea8dxfh
+	pwydBls/Cd7+bxrzCKPdFqeuTARxutw30ufIg3D3TyfiKCn97rHwg1KjCd/sf85ymgkYip7wq
+	a+jz0rzQc6mSsP3AROvMm37ydP/XaBaafYPJqIYNuDFsgPbHo4lF8LazbcRNrQ3rkYy6JgmxY
+	yO5CMtNx2oaoU7946DobZICD/H50m8ilPH7rTOYiDZAE35hnpzM58UkLa0BEUOySS6i6roSYY
+	JP98M8BZsI37G/UO+a3pheUfiTdZsVmn7dlxq7tWeYEj5pBpyqM3jCVYgGkfqXZbwOO9DwI6Q
+	jk7LgqzQLNR9Isfbq65kujLFLF4Zt602wwM8NBEC2ZewzDwG/L0witTVSK5ijUkiRDTBuu80B
+	pNjJAPpQEL1IJiJKeMG/lQ6IqRXo5lGq654OyfKNju5p8FfjSEmp5QdGEkgPSN8HLRe87v5LA
+	dmfyHw0VCOZ00p+SVGF7t9tKH+NVy7QJNvqqGebX/aZv5sEJ0FE+3YTmRyzRPW6Xt1oxWbk2F
+	ZeGRFhg4qCQolb8YwNJIKtOb4AlpyAA27o5GxV1m3Ab2//YfRfWdbF5qgZM=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v4 03/25] arm: cpu: add CPU_RESOLVING_TYPE macro
+X-Received-From: 212.227.126.131
+Subject: Re: [Qemu-arm] [PATCH] linux-user: Fix register used for 6th
+ syscall argument on aarch64
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,71 +98,50 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
-	qemu-arm@nongnu.org
+Cc: Riku Voipio <riku.voipio@iki.fi>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BpFkjSlO+mVp
+X-TUID: aifTHcRCH/95
 
-it will be used for providing to cpu name resolving class for
-parsing cpu model for system and user emulation code.
+CC: Richard has he wrote this code.
 
-Along with change add target to null-machine test, so
-that when switch to CPU_RESOLVING_TYPE happens,
-thest would ensure that null-mchine usecase still works.
+Thanks,
+Laurent
 
-Signed-off-by: Igor Mammedov <imammedo@redhat.com>
----
-v2:
-  - use cortex-a57 for aarch64 test (Andrew Jones <drjones@redhat.com>)
-
-CC: qemu-arm@nongnu.org
-CC: Peter Maydell <peter.maydell@linaro.org>
-CC: Andrew Jones <drjones@redhat.com>
----
- target/arm/cpu.h          | 1 +
- linux-user/main.c         | 2 --
- tests/machine-none-test.c | 2 ++
- 3 files changed, 3 insertions(+), 2 deletions(-)
-
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 9631670..f9fb141 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -2171,6 +2171,7 @@ static inline bool arm_excp_unmasked(CPUState *cs, unsigned int excp_idx,
- 
- #define ARM_CPU_TYPE_SUFFIX "-" TYPE_ARM_CPU
- #define ARM_CPU_TYPE_NAME(name) (name ARM_CPU_TYPE_SUFFIX)
-+#define CPU_RESOLVING_TYPE TYPE_ARM_CPU
- 
- #define cpu_signal_handler cpu_arm_signal_handler
- #define cpu_list arm_cpu_list
-diff --git a/linux-user/main.c b/linux-user/main.c
-index 450eb3c..a35477e 100644
---- a/linux-user/main.c
-+++ b/linux-user/main.c
-@@ -4325,8 +4325,6 @@ int main(int argc, char **argv, char **envp)
- #else
-         cpu_model = "qemu32";
- #endif
--#elif defined(TARGET_ARM)
--        cpu_model = "any";
- #elif defined(TARGET_UNICORE32)
-         cpu_model = "any";
- #elif defined(TARGET_M68K)
-diff --git a/tests/machine-none-test.c b/tests/machine-none-test.c
-index 2eb13e8..06139f5 100644
---- a/tests/machine-none-test.c
-+++ b/tests/machine-none-test.c
-@@ -24,6 +24,8 @@ struct arch2cpu {
- 
- static struct arch2cpu cpus_map[] = {
-     /* tested targets list */
-+    { "arm", "cortex-a15" },
-+    { "aarch64", "cortex-a57" },
- };
- 
- static const char *get_cpu_model_by_arch(const char *arch)
--- 
-2.7.4
+Le 24/01/2018 à 10:14, Guido Günther a écrit :
+> Unbreaks the testcase from
+> 
+>     http://lists.nongnu.org/archive/html/qemu-arm/2018-01/msg00514.html
+> 
+> Signed-off-by: Guido Günther <agx@sigxcpu.org>
+> ---
+>  linux-user/host/aarch64/safe-syscall.inc.S | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/linux-user/host/aarch64/safe-syscall.inc.S b/linux-user/host/aarch64/safe-syscall.inc.S
+> index 58a2329b37..e4fbc31454 100644
+> --- a/linux-user/host/aarch64/safe-syscall.inc.S
+> +++ b/linux-user/host/aarch64/safe-syscall.inc.S
+> @@ -36,7 +36,7 @@ safe_syscall_base:
+>  	 *               and return the result in x0
+>  	 * and the syscall instruction needs
+>  	 *               x8 == syscall number
+> -	 *               x0 ... x7 == syscall arguments
+> +	 *               x0 ... x5 == syscall arguments
+>  	 *               and returns the result in x0
+>  	 * Shuffle everything around appropriately.
+>  	 */
+> @@ -47,7 +47,7 @@ safe_syscall_base:
+>  	mov	x2, x4
+>  	mov	x3, x5
+>  	mov	x4, x6
+> -	mov	x6, x7
+> +	mov	x5, x7
+>  	ldr	x7, [sp]
+>  
+>  	/* This next sequence of code works in conjunction with the
+> 
 

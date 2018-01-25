@@ -1,71 +1,101 @@
-Received: by 10.28.71.27 with SMTP id u27csp2341887wma;
-        Mon, 5 Feb 2018 02:57:55 -0800 (PST)
-X-Google-Smtp-Source: AH8x22568ehc6IOE59mEchFxYpJIVs91zNwC4+3q7fexB88I/OdSBbC5syQ0wAyWqcgKmzu1B0nK
-X-Received: by 10.37.79.130 with SMTP id d124mr10545460ybb.200.1517828275295;
-        Mon, 05 Feb 2018 02:57:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1517828275; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp1938241wma;
+        Thu, 25 Jan 2018 06:42:31 -0800 (PST)
+X-Google-Smtp-Source: AH8x227xBWqVu3N+PZvj3Uop6sSU2QqThNlGvT3FXa5wock0YzopPSUeMjPCFByStn5sosfCLWXY
+X-Received: by 10.129.228.13 with SMTP id r13mr8686126ywl.34.1516891351060;
+        Thu, 25 Jan 2018 06:42:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516891351; cv=none;
         d=google.com; s=arc-20160816;
-        b=p4UVpTlzmMdJp1E+YVbZgg5NkfHwO6ex/ype3c1ieFUczZGEG8wOqzXOcJpoY7FtWu
-         yzW/fVOD1k2+C+wy2kP6AwaOCcXaMwLE5z0Sra6lWYQBKPE/rmBgM7qH/n/fHljVx3Im
-         O0peXfGqhOGILDrIa4yK9lTHTv/ly7B5mhzHuhsP6umY/FJkUiM/xm74/vbPMtpbf7VG
-         U9GQTfgwBoc6eY/bwzdOCxyqDvSkruKbjCnJsjUnkjoQXShZC/qDBYb4CxwVGryhLUKK
-         hFJRblcKovx4FZ1EjqR59QViAsZiNy2dlv1YTdS/ArLOD4atYJXryIuISIiVCriJs13d
-         q3tg==
+        b=0edQeETqakn5W9m50PJbx5MF8GzPrXCCTrrtUTeQ7OcrZzqvuewsFVz8siPzFTEghz
+         LmCIW8amMiIO5VUry8H5RDlfTKHx9Ok4GIt/NtCdBGlYUFAZhf3KQdMOOZLZT6zTFW57
+         MuAcqDCqr5vZPcxuJbOyNC2EsXLZ/tbeQ7y2Vw7aWhCwcyA3nuwbYJv8/zL6aUNivoTa
+         Q20q+RLnfdXy6QYy31Sau560YUM6lcZ+FpDBh5PttSVdSKr7aCA6wQ/JWzYSTREOoPkR
+         ofbXilR0bvTTPO8rDVJtvIVA6cB/Wu6JY/AJ5Qm/+gmRRRFBdczStbb1tXE3gv6vck9P
+         FZog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=w/88HULu3jD9mk+fsAawZ6HrRSOc15zb7A5aUkdsCew=;
-        b=VoZLt5IUBSnuZmhFjmABdjCv9Jg/YqiHFzPSUJ93ELc7qq2MKyKm/Nz0k40UDMP8JK
-         QHNdpsBRqR+uNIgx27U/9ba8su9QqoRsejnLR23IGfVvNBSOEL78z7fKDFz0mdjg7Rld
-         E4pkLo6UhvUT2RkkDVj3ee5QmW/q/fMMdgWy5s0XoMG7Fonkgrq1oDLCh4rp9mKkXN+h
-         uyBhoEwwMeaMyI/sztGWTZimvTk66SbFb6ak9AAXTwON6VaWVqPq/jZ/RBrLvWjIb9Sn
-         ORu/EuNShxrn+cKHD+to3/t4l//v9AFZ7NaxCtj9EoUdyS3N5pgw0Ch34LrzKUHHw9+Y
-         t63w==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=fACIvFHJUsjKrNJakqwzS1JAlvpenWuN1w0eI+oac7Q=;
+        b=eFIbd1bQEwT0NpKvBsw35aqerXKjpPUYXEx0Wg0DJ2gp1IDBoHvlh0n4Wl9NebSfKN
+         SbndLPYLnt0HsZ+yyTRd1CrIGsBo1O4nP/fJdGp1chEmiygcPk2aFc2dPW5vR8VzgB1F
+         uQY5vyRBtQnnLaAvyqzKgVnWnm9zdy7BMHPuybWVmek25m50UeMBoU7HftiVo5BMtYnz
+         p5/btA5/FGkuzKmSBOjCfj5O6JFguM/SZIGTqBH6R9MMP2Bv+2/H4bHN1K35YqIJVkhU
+         5eh0/ZjxaTvduM5RazTTBeli5TDQRjvpff6+LfDaxl/T/2ISafckxvzK58U6/SdT58gM
+         +geQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=KP+MVQ55;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v4si1393873ywf.683.2018.02.05.02.57.55
+        by mx.google.com with ESMTPS id 80si487147ywh.548.2018.01.25.06.42.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 05 Feb 2018 02:57:55 -0800 (PST)
+        Thu, 25 Jan 2018 06:42:31 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=KP+MVQ55;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54869 helo=lists.gnu.org)
+Received: from localhost ([::1]:44309 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eieTC-00065F-Of
-	for alex.bennee@linaro.org; Mon, 05 Feb 2018 05:57:54 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39957)
+	id 1eeijW-0004nm-Eu
+	for alex.bennee@linaro.org; Thu, 25 Jan 2018 09:42:30 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58191)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eieSs-000630-P8
-	for qemu-arm@nongnu.org; Mon, 05 Feb 2018 05:57:35 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1eeijF-0004fW-O6
+	for qemu-arm@nongnu.org; Thu, 25 Jan 2018 09:42:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eieSr-0007C8-Ph
-	for qemu-arm@nongnu.org; Mon, 05 Feb 2018 05:57:34 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:46192)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1eieSr-00076t-IL; Mon, 05 Feb 2018 05:57:33 -0500
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1eieSk-0004Fe-JY; Mon, 05 Feb 2018 10:57:26 +0000
+	(envelope-from <peter.maydell@linaro.org>) id 1eeijD-00007s-JK
+	for qemu-arm@nongnu.org; Thu, 25 Jan 2018 09:42:13 -0500
+Received: from mail-ot0-x22c.google.com ([2607:f8b0:4003:c0f::22c]:36167)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1eeijD-00007S-DK
+	for qemu-arm@nongnu.org; Thu, 25 Jan 2018 09:42:11 -0500
+Received: by mail-ot0-x22c.google.com with SMTP id f100so6875447otf.3
+	for <qemu-arm@nongnu.org>; Thu, 25 Jan 2018 06:42:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=fACIvFHJUsjKrNJakqwzS1JAlvpenWuN1w0eI+oac7Q=;
+	b=KP+MVQ555ePCKoICTdSJltQ70u19P1otTTqBaIrZRABs3w8tmT9hgTBFjsY7Vlwlqy
+	LEtKEgSl+aRzxRy71TyNeSouKJvltHzT0VmR8//MGLMQUL09fsGOAE4PN+1Gntq1o3j/
+	sE33p6KiwRW4+402XhNY549sfkxZ6uvggh/wA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=fACIvFHJUsjKrNJakqwzS1JAlvpenWuN1w0eI+oac7Q=;
+	b=fIwQQjeF7c5yw0b9/SaGyKKwriQeLrl7B7r9oplKyEFc0LdCp7Cub/hwzmQwF6tqQX
+	wV7K0+EA66z4NrkUD1d2ZaXaRZldttg6M4Ggtb4JspfQ7KZSHKIBCccpdHM3KzklktK/
+	0dNt9ZKOTVEbMPNdXzenXEJotgVBgZ5x7GM5LvSlswDrJiWGOxFDgDN+IKRi1bS881Pn
+	HkRMYjs/toMRAcBOT7A2/WM/ito38LhLCEIAf9ktFrHyBAfMEOVvuqQGnFxuuUs9KP1s
+	BtIUhvQ+8s9U9FTHEwt6HVi2qk0i1Atxz+DkT61MSk/dotePXpYxF043zF5t0MepYANp
+	ghDw==
+X-Gm-Message-State: AKwxytctzjNThLIXh+NoZJzVwR9AC9mIwpdThWd6SOglqSL3a4qH9ZFp
+	kUBxpk+Uyqbh+wJ35CYt++cIRstKaLq4DB+7XXc1cQ==
+X-Received: by 10.157.29.247 with SMTP id w52mr12305394otw.91.1516891330673;
+	Thu, 25 Jan 2018 06:42:10 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.157.61.133 with HTTP; Thu, 25 Jan 2018 06:41:50 -0800 (PST)
+In-Reply-To: <20180122183301.GA31237@localhost.localdomain>
+References: <1512670493-18114-1-git-send-email-peter.maydell@linaro.org>
+	<CAFEAcA-UO5Y_ACSZ2EEQEzgy30wdfEm3u8wUrBrXWaQaE_v+Kw@mail.gmail.com>
+	<20171209010811.GJ3037@localhost.localdomain>
+	<CAFEAcA9oG=+mJ+jSGTM_z54S09gjHoFowDkOvofdkhJd+g3=Cw@mail.gmail.com>
+	<20180122183301.GA31237@localhost.localdomain>
 From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Mon,  5 Feb 2018 10:57:18 +0000
-Message-Id: <20180205105720.14620-7-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.16.1
-In-Reply-To: <20180205105720.14620-1-peter.maydell@linaro.org>
-References: <20180205105720.14620-1-peter.maydell@linaro.org>
+Date: Thu, 25 Jan 2018 14:41:50 +0000
+Message-ID: <CAFEAcA8pGXMs3hMxSs-t7qGfeR__H-CQ1roRVe5NFMCP8R2vjw@mail.gmail.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 6/8] hw/intc/armv7m_nvic: Implement SCR
+X-Received-From: 2607:f8b0:4003:c0f::22c
+Subject: Re: [Qemu-arm] [PATCH 0/6] arm: support -cpu max (and
+ gic-version=max)
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,115 +107,77 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	"patches@linaro.org" <patches@linaro.org>,
+	"Richard W . M . Jones" <rjones@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vbYOtypTlfII
+X-TUID: 2R9BeSzi5Ktq
 
-We were previously making the system control register (SCR)
-just RAZ/WI. Although we don't implement the functionality
-this register controls, we should at least provide the state,
-including the banked state for v8M.
+On 22 January 2018 at 18:33, Eduardo Habkost <ehabkost@redhat.com> wrote:
+> About QOM type names:
+>
+> On x86, all CPU models are resolved to "<model>-<suffix>", and
+> i386 and x86_64 have different suffixes.  So the QOM type name is
+> "max-x86_64-cpu" on qemu-system-x86_64, and "max-i386-cpu" on
+> qemu-system-i386.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/cpu.h      |  7 +++++++
- hw/intc/armv7m_nvic.c | 12 ++++++++----
- target/arm/machine.c  | 12 ++++++++++++
- 3 files changed, 27 insertions(+), 4 deletions(-)
+OK. Looking at the target/arm code we do a similar suffix
+trick, but we seem to have cut-n-pasted the handling in
+aarch64_cpu_register(), so it uses the TYPE_ARM_CPU as the
+suffix, rather the TYPE_AARCH64_CPU.
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 99c7cb996f..46dae607e8 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -454,6 +454,7 @@ typedef struct CPUARMState {
-         uint32_t aircr; /* only holds r/w state if security extn implemented */
-         uint32_t secure; /* Is CPU in Secure state? (not guest visible) */
-         uint32_t csselr[M_REG_NUM_BANKS];
-+        uint32_t scr[M_REG_NUM_BANKS];
-     } v7m;
- 
-     /* Information associated with an exception about to be taken:
-@@ -1220,6 +1221,12 @@ FIELD(V7M_CCR, STKALIGN, 9, 1)
- FIELD(V7M_CCR, DC, 16, 1)
- FIELD(V7M_CCR, IC, 17, 1)
- 
-+/* V7M SCR bits */
-+FIELD(V7M_SCR, SLEEPONEXIT, 1, 1)
-+FIELD(V7M_SCR, SLEEPDEEP, 2, 1)
-+FIELD(V7M_SCR, SLEEPDEEPS, 3, 1)
-+FIELD(V7M_SCR, SEVONPEND, 4, 1)
-+
- /* V7M AIRCR bits */
- FIELD(V7M_AIRCR, VECTRESET, 0, 1)
- FIELD(V7M_AIRCR, VECTCLRACTIVE, 1, 1)
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index cc83c9e553..8726be796e 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -863,8 +863,7 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
-         }
-         return val;
-     case 0xd10: /* System Control.  */
--        /* TODO: Implement SLEEPONEXIT.  */
--        return 0;
-+        return cpu->env.v7m.scr[attrs.secure];
-     case 0xd14: /* Configuration Control.  */
-         /* The BFHFNMIGN bit is the only non-banked bit; we
-          * keep it in the non-secure copy of the register.
-@@ -1282,8 +1281,13 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
-         }
-         break;
-     case 0xd10: /* System Control.  */
--        /* TODO: Implement control registers.  */
--        qemu_log_mask(LOG_UNIMP, "NVIC: SCR unimplemented\n");
-+        /* We don't implement deep-sleep so these bits are RAZ/WI.
-+         * The other bits in the register are banked.
-+         * QEMU's implementation ignores SEVONPEND and SLEEPONEXIT, which
-+         * is architecturally permitted.
-+         */
-+        value &= ~(R_V7M_SCR_SLEEPDEEP_MASK | R_V7M_SCR_SLEEPDEEPS_MASK);
-+        cpu->env.v7m.scr[attrs.secure] = value;
-         break;
-     case 0xd14: /* Configuration Control.  */
-         /* Enforce RAZ/WI on reserved and must-RAZ/WI bits */
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index 968ec30b4a..a5feaa9604 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -143,6 +143,16 @@ static const VMStateDescription vmstate_m_csselr = {
-     }
- };
- 
-+static const VMStateDescription vmstate_m_scr = {
-+    .name = "cpu/m/scr",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(env.v7m.scr[M_REG_NS], ARMCPU),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
- static const VMStateDescription vmstate_m = {
-     .name = "cpu/m",
-     .version_id = 4,
-@@ -165,6 +175,7 @@ static const VMStateDescription vmstate_m = {
-     .subsections = (const VMStateDescription*[]) {
-         &vmstate_m_faultmask_primask,
-         &vmstate_m_csselr,
-+        &vmstate_m_scr,
-         NULL
-     }
- };
-@@ -328,6 +339,7 @@ static const VMStateDescription vmstate_m_security = {
-         VMSTATE_UINT32(env.sau.rnr, ARMCPU),
-         VMSTATE_VALIDATE("SAU_RNR is valid", sau_rnr_vmstate_validate),
-         VMSTATE_UINT32(env.sau.ctrl, ARMCPU),
-+        VMSTATE_UINT32(env.v7m.scr[M_REG_S], ARMCPU),
-         VMSTATE_END_OF_LIST()
-     }
- };
--- 
-2.16.1
+Am I right in thinking that we can fix this (changing the
+QOM type names for all the aarch64 CPUs) without breaking
+migration? (I guess I can just test this easily enough.)
 
+If we did that then we'd have, like x86, "max-arm-cpu" in
+the qemu-system-arm binary, and "max-aarch64-cpu" in
+the qemu-system-aarch64 binary.
+
+Does x86 provide a way to say "give me the max-i386-cpu"
+in the qemu-system-x86_64 binary ?
+
+> About how it should behave:
+>
+> An important expectation about "max" is about the
+> query-cpu-model-expansion return value.  Having a property set to
+> true on the return value of "query-cpu-model-expansion model=max"
+> means the corresponding feature is supported on the current host
+> and can be enabled on the command-line.
+
+On Arm when I try to use this I get:
+{ "execute": "query-cpu-model-expansion", "arguments": { "type":
+"static", "model": { "model": { "name": "max" } } } }
+{
+    "error": {
+        "class": "CommandNotFound",
+        "desc": "The command query-cpu-model-expansion has not been found"
+    }
+}
+
+It looks like we only implement this QMP API for x86 and S390
+(via #ifdeffery in monitor.c).
+
+I'm not sure if we actually support command line setting/unsetting
+of features for Arm CPUs -- is there a command line option to
+get QEMU to print the features it thinks can be set this way?
+
+>> (The code in this patchset makes '-cpu max' give the same
+>> QOM type name for both qemu-system-arm and qemu-system-aarch64,
+>> with different behaviour depending on the binary. If that means
+>> we don't provide the same behaviour as x86 then I can change that,
+>> but I'm not sure where the difference is exposed to the user?)
+>
+> This is not how the QOM names work on x86, but I don't think QOM
+> type names choices have important user-visible side-effects
+> today.  Choosing unique QOM type names is more important to make
+> the code future-proof for when we merge QEMU binaries, than to
+> make user-visible behavior consistent.
+
+Good point -- assuming it doesn't break migration I can fix
+the aarch64 types to use the right suffix string and then they'll
+have different QOM type names.
+
+thanks
+-- PMM

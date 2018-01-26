@@ -1,106 +1,88 @@
-Received: by 10.28.91.67 with SMTP id p64csp2436497wmb;
-        Mon, 5 Mar 2018 03:28:11 -0800 (PST)
-X-Google-Smtp-Source: AG47ELsuEjaTGHIHT5MtSrR/UUQ2SB4Z7uHKE+iY5wcRX9z6Xgy5LtulpqTDPXJMI8Zetx2rmYLv
-X-Received: by 2002:a25:df06:: with SMTP id w6-v6mr6749316ybg.57.1520249291680;
-        Mon, 05 Mar 2018 03:28:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520249291; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp497311wma;
+        Fri, 26 Jan 2018 01:42:57 -0800 (PST)
+X-Google-Smtp-Source: AH8x224pwVabgsi2UI5O0kYR6RqdwJxMFgMgOSs0Wjp3uD5+7tegH+h0R9smDes9ITJ8R5UaLRei
+X-Received: by 10.37.132.17 with SMTP id u17mr10961957ybk.273.1516959777274;
+        Fri, 26 Jan 2018 01:42:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516959777; cv=none;
         d=google.com; s=arc-20160816;
-        b=gqmXQCwbfv1O+yGOquzqRygCLCwZNudT4i0YFneZ60ttJkEYYli4gRCTLG/6upWpze
-         DrKvvReqI/xvwSJfNQyxviC8SG6D/42Pv/RPV9i4TILsJdN/wGyzbGpxRkT/BEKR6Nv+
-         g2T3IaWFpjupT/ViqR7x/vuSeS6TWNlakq5V9rsqHj1ya9Xgrf2daemT8VgJNcxo+VeE
-         wOtYURGkeXNR2InQB7or6gg6qv5FrK1pDiLlJVxbwd/310o70G/+AhV7ByPy7JFewU8T
-         L8iZOCSUc4xGlxiMDwHuPH6NTXb75CQcKtSpH0zNxNSRe3zAK8gBFgM+Z8POEhxKeNOp
-         FnJg==
+        b=D1/AfFi++8B7hqzrZUkHbHEfrtq0bY60EW5jzWH3Znya755UZHtRblzin7Y0II1QXI
+         TytLYqsYgIICV10zQSj5SMVT5t1sYsB9eawwDXjTheEPjHeF4bOA9JyPD9fGeI8EZgzL
+         9ynsQ2Yl9SFdesgi/UrLOcVZgmh+JCBgjvA4JCrnA1XDdZvG7meHqMwRCRwy9SkTFkXK
+         bQNpKkUVxLzlOZIMnEQRYqqQH5glP4KwdXwpi44ZHruTkit7vHXtVTsk9q6M/kFvkrem
+         dTSMUYEGBDjf4zKVAbM1mLt9supaGE1gYZA76ASUm3meUeNYjf5yjQqRnUXYKvu8MZYu
+         CbyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=qNjHFmcv9spW4giRIgLW0f9gBykx1don3UhqHQhAlvI=;
-        b=SEweec4JxWhPX48O+LH4cuscZ4Ukwff8uKciXQG3g9UYY/aqllhXo7sGLu590VK+V/
-         LOLhPMIACAyIolnsa2DeBtZZbdH060+/AX39g4xLuqIa+WQAe4y+P6SunRLdreS/FGMi
-         4A+gQ71lD4LdaReoGAQRvZqVlE3Y8tH/++dqszCMlQ9fvsoHxe5CkKpXcAgjmcwy6OuR
-         KR6hpnhBnjBO6sIDosWNjJTlWbLpx7uZNDziJ32HET+6WYD1YaqZnR7PPWQDRBWhUS+9
-         qXExtTazl7lvkzWEBw0izGGSYKI9w/B/z3Jl8KW/idKhR0On7doZy8Z/Zq6Tw6gK+JTB
-         /Weg==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
+         :arc-authentication-results;
+        bh=AAo9CzudMsL21LdMs+x32r8DLn4E8SROvoB2p28gjEs=;
+        b=jVysenIt8ZZJn7krc5Ud4BBtgfuSMVqE85MMlWwNwsu/k/3qdACDEi+dJk0pK3ur+1
+         irK+wA9Hyfu3uLBgl3tYF9c2FRTJRCdRD7Fjxv1bWpEMZH5DZmkjbROKloC2XgFD23gv
+         NQ6PHn7vt28yI+BVpRjmInI9gcHnW+9np8oKQZEJ8WVfBtIXdzr1YWa39/lcHpZhxXtn
+         Kp3GOrbIpaNw1hQcAS3V7dnKTRwOIqOBa8ET6I8CvgiVapZtUL9IHhJdVPpi4NXp5Nah
+         7b8Z4Eosl1D+CU65TMmsQwy1aTIjU89QVYMCJuyVl9CJrqJW8eijGsHGpGFPJoXy5sss
+         1qBw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=o/qGvl+v;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g5si2125158ywg.250.2018.03.05.03.28.11
+        by mx.google.com with ESMTPS id r4si852237ywd.307.2018.01.26.01.42.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 05 Mar 2018 03:28:11 -0800 (PST)
+        Fri, 26 Jan 2018 01:42:57 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=o/qGvl+v;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:48639 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:43984 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1esoHr-0003Pi-0D
-	for alex.bennee@linaro.org; Mon, 05 Mar 2018 06:28:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41240)
+	id 1ef0XA-00083g-LE
+	for alex.bennee@linaro.org; Fri, 26 Jan 2018 04:42:56 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56309)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1esoHa-0003JO-3n
-	for qemu-arm@nongnu.org; Mon, 05 Mar 2018 06:27:55 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1ef0X0-0007z3-9P
+	for qemu-arm@nongnu.org; Fri, 26 Jan 2018 04:42:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1esoHY-0006t5-7r
-	for qemu-arm@nongnu.org; Mon, 05 Mar 2018 06:27:54 -0500
-Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:39623)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1esoHP-0006la-Pu; Mon, 05 Mar 2018 06:27:44 -0500
-Received: by mail-wm0-x243.google.com with SMTP id i3so14699468wmi.4;
-	Mon, 05 Mar 2018 03:27:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=qNjHFmcv9spW4giRIgLW0f9gBykx1don3UhqHQhAlvI=;
-	b=o/qGvl+vBw6mzu85CtbYCmkV+o0gVgFkajzU/LaZbQ5OUvh7UF+Bz5njlDrwwbOuON
-	7Hp5ynJJKiletMdkQfVgDFdWMhx8wnCGv/5fkEfOPylIp7615nbBGI1O9GWAldBN9NYw
-	UU/+Z9RyRDiWL1xlKPT3XGnHUDIiZX5WhKxsEkOQvMHybQ5XZcIA9XU+Pd8vtVB2dh76
-	4NRxV4WY2CpEDO2Nxwrs9sF8p/bHADD1vrNiPsb31OFoNecOPNVcmfDm2zXXZ6fHWgvo
-	HAR/UKh9P1VH3FtBsMW/IRPyk62NiGBaZttwYzZLVGn2qDZGJHS5C92PlOsSPYsSdJrj
-	Eypw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=qNjHFmcv9spW4giRIgLW0f9gBykx1don3UhqHQhAlvI=;
-	b=dYMPVg4yqoLDDHzVT/p353w7mTHgxJ9GS1axT5Zl1eTtYUwXrAfTeAOBkaQ8G8lr/n
-	pteyYA4MRSumssS1pEyrVHEhM9dgG7pMBYnQNVlm2uqWrNLW54DmmYcRFSBe6TvyGnNw
-	9G/zqHJtb7WBolizZC7GshfEZRLEH6Zp/MQ4d7KTQT5JDtaLnS2S2tRjoosXDVRj+I0y
-	3uZtnUVZMRjVTQmssKOoDsslS6nQDjIzGlda7LA8DCD/f+jMfBibOIP9iXE+n1Ikyrs5
-	BQPcjhqih8niJKbWW6im2XGnPOj+C+58hGXOemI0xe8bHdTJdjVluMH90P1uIxhMM5eF
-	/JVw==
-X-Gm-Message-State: AElRT7FkAms3LiC+5BHTcPRsIgsXnVxoSxe/btFo8LMQ165AORVFOHp7
-	yT0wKwKVXUpP+nLoEyebuG6x3rCv
-X-Received: by 10.28.69.93 with SMTP id s90mr7895645wma.29.1520249262217;
-	Mon, 05 Mar 2018 03:27:42 -0800 (PST)
-Received: from x1.local (ABayonne-654-1-79-224.w86-222.abo.wanadoo.fr.
-	[86.222.222.224]) by smtp.gmail.com with ESMTPSA id
-	k45sm11744388wrf.62.2018.03.05.03.27.40
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 05 Mar 2018 03:27:41 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-trivial@nongnu.org
-Date: Mon,  5 Mar 2018 08:27:04 -0300
-Message-Id: <20180305112732.26471-3-f4bug@amsat.org>
-X-Mailer: git-send-email 2.16.2
-In-Reply-To: <20180305112732.26471-1-f4bug@amsat.org>
-References: <20180305112732.26471-1-f4bug@amsat.org>
+	(envelope-from <pbonzini@redhat.com>) id 1ef0Wx-0004i4-6g
+	for qemu-arm@nongnu.org; Fri, 26 Jan 2018 04:42:46 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:50954)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
+	id 1ef0Ww-0004hj-Vx; Fri, 26 Jan 2018 04:42:43 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 1F52626C3F;
+	Fri, 26 Jan 2018 09:36:50 +0000 (UTC)
+Received: from [10.36.117.138] (ovpn-117-138.ams2.redhat.com [10.36.117.138])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5343262672;
+	Fri, 26 Jan 2018 09:36:47 +0000 (UTC)
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+References: <1516634853-15883-1-git-send-email-thuth@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <b75b7114-ed48-e9bb-d767-359c2ae44d53@redhat.com>
+Date: Fri, 26 Jan 2018 10:36:44 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::243
-Subject: [Qemu-arm] [RFC PATCH v2 02/30] hw: include "qemu/cunits.h" and
- clean unused "qemu/cutils.h"
+In-Reply-To: <1516634853-15883-1-git-send-email-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Fri, 26 Jan 2018 09:36:50 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH] i2c: Add a CONFIG_I2C master switch to the
+ configuration files
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,355 +94,112 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Michael Walle <michael@walle.cc>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
-	Yongbok Kim <yongbok.kim@mips.com>, Marek Vasut <marex@denx.de>,
-	Alexander Graf <agraf@suse.de>,
-	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
-	Marcel Apfelbaum <marcel@redhat.com>,
-	Samuel Thibault <samuel.thibault@ens-lyon.org>,
-	Richard Henderson <rth@twiddle.net>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	"open list:ARM" <qemu-arm@nongnu.org>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Chris Wulff <crwulff@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	Paul Burton <paul.burton@mips.com>,
-	"open list:New World" <qemu-ppc@nongnu.org>,
-	Aurelien Jarno <aurelien@aurel32.net>
+Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 26XLfPrRxUtH
+X-TUID: 8CWuNHySZp14
 
-These files were including "qemu/cutils.h" to use the byte-based size
-definitions, now available in "qemu/cunits.h".
+On 22/01/2018 16:27, Thomas Huth wrote:
+> The i2c core and the at24c EEPROM should only be compiled and linked
+> on the machines that support i2c. Otherwise it's quite strange to see
+> the at24c-eeprom to be "available" on qemu-system-s390x for example.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  default-configs/arm-softmmu.mak         | 1 +
+>  default-configs/i386-softmmu.mak        | 1 +
+>  default-configs/mips-softmmu-common.mak | 1 +
+>  default-configs/ppc-softmmu.mak         | 1 +
+>  default-configs/ppcemb-softmmu.mak      | 1 +
+>  default-configs/x86_64-softmmu.mak      | 1 +
+>  hw/i2c/Makefile.objs                    | 2 +-
+>  hw/nvram/Makefile.objs                  | 2 +-
+>  8 files changed, 8 insertions(+), 2 deletions(-)
+> 
+> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+> index b0d6e65..ca34cf4 100644
+> --- a/default-configs/arm-softmmu.mak
+> +++ b/default-configs/arm-softmmu.mak
+> @@ -67,6 +67,7 @@ CONFIG_CADENCE=y
+>  CONFIG_XGMAC=y
+>  CONFIG_EXYNOS4=y
+>  CONFIG_PXA2XX=y
+> +CONFIG_I2C=y
+>  CONFIG_BITBANG_I2C=y
+>  CONFIG_FRAMEBUFFER=y
+>  CONFIG_XILINX_SPIPS=y
+> diff --git a/default-configs/i386-softmmu.mak b/default-configs/i386-softmmu.mak
+> index 95ac4b4..4bc8f25 100644
+> --- a/default-configs/i386-softmmu.mak
+> +++ b/default-configs/i386-softmmu.mak
+> @@ -61,3 +61,4 @@ CONFIG_HYPERV_TESTDEV=$(CONFIG_KVM)
+>  CONFIG_PXB=y
+>  CONFIG_ACPI_VMGENID=y
+>  CONFIG_FW_CFG_DMA=y
+> +CONFIG_I2C=y
+> diff --git a/default-configs/mips-softmmu-common.mak b/default-configs/mips-softmmu-common.mak
+> index 7d8f5db..e31f046 100644
+> --- a/default-configs/mips-softmmu-common.mak
+> +++ b/default-configs/mips-softmmu-common.mak
+> @@ -34,3 +34,4 @@ CONFIG_ISA_TESTDEV=y
+>  CONFIG_EMPTY_SLOT=y
+>  CONFIG_MIPS_CPS=y
+>  CONFIG_MIPS_ITU=y
+> +CONFIG_I2C=y
+> diff --git a/default-configs/ppc-softmmu.mak b/default-configs/ppc-softmmu.mak
+> index 3baed6a..65680d8 100644
+> --- a/default-configs/ppc-softmmu.mak
+> +++ b/default-configs/ppc-softmmu.mak
+> @@ -23,6 +23,7 @@ CONFIG_PLATFORM_BUS=y
+>  CONFIG_ETSEC=y
+>  CONFIG_SM501=y
+>  CONFIG_IDE_SII3112=y
+> +CONFIG_I2C=y
+>  
+>  # For Macs
+>  CONFIG_MAC=y
+> diff --git a/default-configs/ppcemb-softmmu.mak b/default-configs/ppcemb-softmmu.mak
+> index 5db4618..bc5e1b3 100644
+> --- a/default-configs/ppcemb-softmmu.mak
+> +++ b/default-configs/ppcemb-softmmu.mak
+> @@ -17,3 +17,4 @@ CONFIG_XILINX=y
+>  CONFIG_XILINX_ETHLITE=y
+>  CONFIG_SM501=y
+>  CONFIG_IDE_SII3112=y
+> +CONFIG_I2C=y
+> diff --git a/default-configs/x86_64-softmmu.mak b/default-configs/x86_64-softmmu.mak
+> index 0221236..f0b7bcd 100644
+> --- a/default-configs/x86_64-softmmu.mak
+> +++ b/default-configs/x86_64-softmmu.mak
+> @@ -61,3 +61,4 @@ CONFIG_HYPERV_TESTDEV=$(CONFIG_KVM)
+>  CONFIG_PXB=y
+>  CONFIG_ACPI_VMGENID=y
+>  CONFIG_FW_CFG_DMA=y
+> +CONFIG_I2C=y
+> diff --git a/hw/i2c/Makefile.objs b/hw/i2c/Makefile.objs
+> index 0594dea..37cacde 100644
+> --- a/hw/i2c/Makefile.objs
+> +++ b/hw/i2c/Makefile.objs
+> @@ -1,4 +1,4 @@
+> -common-obj-y += core.o smbus.o smbus_eeprom.o
+> +common-obj-$(CONFIG_I2C) += core.o smbus.o smbus_eeprom.o
+>  common-obj-$(CONFIG_DDC) += i2c-ddc.o
+>  common-obj-$(CONFIG_VERSATILE_I2C) += versatile_i2c.o
+>  common-obj-$(CONFIG_ACPI_X86) += smbus_ich9.o
+> diff --git a/hw/nvram/Makefile.objs b/hw/nvram/Makefile.objs
+> index 0f4ee71..a912d25 100644
+> --- a/hw/nvram/Makefile.objs
+> +++ b/hw/nvram/Makefile.objs
+> @@ -1,6 +1,6 @@
+>  common-obj-$(CONFIG_DS1225Y) += ds1225y.o
+>  common-obj-y += eeprom93xx.o
+> -common-obj-y += eeprom_at24c.o
+> +common-obj-$(CONFIG_I2C) += eeprom_at24c.o
+>  common-obj-y += fw_cfg.o
+>  common-obj-y += chrp_nvram.o
+>  common-obj-$(CONFIG_MAC_NVRAM) += mac_nvram.o
+> 
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
+Queued, thanks.
 
-Thomas suggested:
-
-    Instead of adding this to a header and creating yet another possible
-    recompile-the-world dependency this way, wouldn't it be better to
-    include the cunits.h only from the .c files that need the definitions?
-
- include/hw/hw.h       | 1 +
- hw/arm/msf2-soc.c     | 1 -
- hw/arm/msf2-som.c     | 1 -
- hw/core/loader-fit.c  | 1 -
- hw/core/loader.c      | 1 -
- hw/core/machine.c     | 1 -
- hw/cris/boot.c        | 1 -
- hw/display/sm501.c    | 1 -
- hw/hppa/machine.c     | 1 -
- hw/lm32/milkymist.c   | 1 -
- hw/microblaze/boot.c  | 1 -
- hw/mips/boston.c      | 1 -
- hw/misc/mos6522.c     | 1 -
- hw/nios2/boot.c       | 1 -
- hw/ppc/mac_newworld.c | 1 -
- hw/ppc/mac_oldworld.c | 1 -
- hw/ppc/pnv.c          | 1 -
- hw/ppc/prep.c         | 1 -
- hw/ppc/spapr_rtas.c   | 1 -
- hw/sd/sdhci.c         | 1 -
- hw/sparc/sun4m.c      | 1 -
- hw/sparc64/sun4u.c    | 1 -
- hw/usb/dev-serial.c   | 1 -
- hw/usb/dev-storage.c  | 1 -
- 24 files changed, 1 insertion(+), 23 deletions(-)
-
-diff --git a/include/hw/hw.h b/include/hw/hw.h
-index ab4950c312..8249448cac 100644
---- a/include/hw/hw.h
-+++ b/include/hw/hw.h
-@@ -14,6 +14,7 @@
- #include "migration/qemu-file-types.h"
- #include "qemu/module.h"
- #include "sysemu/reset.h"
-+#include "qemu/cunits.h"
- 
- void QEMU_NORETURN hw_error(const char *fmt, ...) GCC_FMT_ATTR(1, 2);
- 
-diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
-index a8ec2cdf36..952cda45ed 100644
---- a/hw/arm/msf2-soc.c
-+++ b/hw/arm/msf2-soc.c
-@@ -30,7 +30,6 @@
- #include "hw/char/serial.h"
- #include "hw/boards.h"
- #include "sysemu/block-backend.h"
--#include "qemu/cutils.h"
- #include "hw/arm/msf2-soc.h"
- #include "hw/misc/unimp.h"
- 
-diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
-index 0795a3a3a1..d3e6ed00fe 100644
---- a/hw/arm/msf2-som.c
-+++ b/hw/arm/msf2-som.c
-@@ -28,7 +28,6 @@
- #include "hw/boards.h"
- #include "hw/arm/arm.h"
- #include "exec/address-spaces.h"
--#include "qemu/cutils.h"
- #include "hw/arm/msf2-soc.h"
- #include "cpu.h"
- 
-diff --git a/hw/core/loader-fit.c b/hw/core/loader-fit.c
-index 0c4a7207f4..0208e5b357 100644
---- a/hw/core/loader-fit.c
-+++ b/hw/core/loader-fit.c
-@@ -22,7 +22,6 @@
- #include "exec/memory.h"
- #include "hw/loader.h"
- #include "hw/loader-fit.h"
--#include "qemu/cutils.h"
- #include "qemu/error-report.h"
- #include "sysemu/device_tree.h"
- #include "sysemu/sysemu.h"
-diff --git a/hw/core/loader.c b/hw/core/loader.c
-index 76b244c508..ce0aefe5c2 100644
---- a/hw/core/loader.c
-+++ b/hw/core/loader.c
-@@ -54,7 +54,6 @@
- #include "exec/memory.h"
- #include "exec/address-spaces.h"
- #include "hw/boards.h"
--#include "qemu/cutils.h"
- 
- #include <zlib.h>
- 
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 5d445839e8..7a7ec0c1e1 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -19,7 +19,6 @@
- #include "sysemu/sysemu.h"
- #include "sysemu/numa.h"
- #include "qemu/error-report.h"
--#include "qemu/cutils.h"
- #include "sysemu/qtest.h"
- 
- static char *machine_get_accel(Object *obj, Error **errp)
-diff --git a/hw/cris/boot.c b/hw/cris/boot.c
-index f896ed7f86..7d423ed92f 100644
---- a/hw/cris/boot.c
-+++ b/hw/cris/boot.c
-@@ -29,7 +29,6 @@
- #include "hw/loader.h"
- #include "elf.h"
- #include "boot.h"
--#include "qemu/cutils.h"
- 
- static void main_cpu_reset(void *opaque)
- {
-diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-index f4bb33c279..00cf8358e2 100644
---- a/hw/display/sm501.c
-+++ b/hw/display/sm501.c
-@@ -24,7 +24,6 @@
-  */
- 
- #include "qemu/osdep.h"
--#include "qemu/cutils.h"
- #include "qapi/error.h"
- #include "qemu-common.h"
- #include "cpu.h"
-diff --git a/hw/hppa/machine.c b/hw/hppa/machine.c
-index 19033e268d..22a15112df 100644
---- a/hw/hppa/machine.c
-+++ b/hw/hppa/machine.c
-@@ -17,7 +17,6 @@
- #include "hw/timer/i8254.h"
- #include "hw/char/serial.h"
- #include "hw/hppa/hppa_sys.h"
--#include "qemu/cutils.h"
- #include "qapi/error.h"
- #include "qemu/log.h"
- 
-diff --git a/hw/lm32/milkymist.c b/hw/lm32/milkymist.c
-index 85d64fe58d..471a74eaa1 100644
---- a/hw/lm32/milkymist.c
-+++ b/hw/lm32/milkymist.c
-@@ -34,7 +34,6 @@
- #include "milkymist-hw.h"
- #include "lm32.h"
- #include "exec/address-spaces.h"
--#include "qemu/cutils.h"
- 
- #define BIOS_FILENAME    "mmone-bios.bin"
- #define BIOS_OFFSET      0x00860000
-diff --git a/hw/microblaze/boot.c b/hw/microblaze/boot.c
-index 35bfeda7aa..5b30d63c17 100644
---- a/hw/microblaze/boot.c
-+++ b/hw/microblaze/boot.c
-@@ -34,7 +34,6 @@
- #include "sysemu/sysemu.h"
- #include "hw/loader.h"
- #include "elf.h"
--#include "qemu/cutils.h"
- 
- #include "boot.h"
- 
-diff --git a/hw/mips/boston.c b/hw/mips/boston.c
-index fb23161b33..e99f3638cf 100644
---- a/hw/mips/boston.c
-+++ b/hw/mips/boston.c
-@@ -32,7 +32,6 @@
- #include "hw/mips/cpudevs.h"
- #include "hw/pci-host/xilinx-pcie.h"
- #include "qapi/error.h"
--#include "qemu/cutils.h"
- #include "qemu/error-report.h"
- #include "qemu/log.h"
- #include "chardev/char.h"
-diff --git a/hw/misc/mos6522.c b/hw/misc/mos6522.c
-index 8ad9fc831e..b55e6acbe2 100644
---- a/hw/misc/mos6522.c
-+++ b/hw/misc/mos6522.c
-@@ -29,7 +29,6 @@
- #include "hw/misc/mos6522.h"
- #include "qemu/timer.h"
- #include "sysemu/sysemu.h"
--#include "qemu/cutils.h"
- #include "qemu/log.h"
- #include "trace.h"
- 
-diff --git a/hw/nios2/boot.c b/hw/nios2/boot.c
-index 94f436e7fb..771e00267b 100644
---- a/hw/nios2/boot.c
-+++ b/hw/nios2/boot.c
-@@ -38,7 +38,6 @@
- #include "sysemu/sysemu.h"
- #include "hw/loader.h"
- #include "elf.h"
--#include "qemu/cutils.h"
- 
- #include "boot.h"
- 
-diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
-index 4e1298ee50..77d4e9b013 100644
---- a/hw/ppc/mac_newworld.c
-+++ b/hw/ppc/mac_newworld.c
-@@ -71,7 +71,6 @@
- #include "sysemu/block-backend.h"
- #include "exec/address-spaces.h"
- #include "hw/sysbus.h"
--#include "qemu/cutils.h"
- #include "trace.h"
- 
- #define MAX_IDE_BUS 2
-diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
-index d0d21d2392..c245251c5c 100644
---- a/hw/ppc/mac_oldworld.c
-+++ b/hw/ppc/mac_oldworld.c
-@@ -45,7 +45,6 @@
- #include "kvm_ppc.h"
- #include "sysemu/block-backend.h"
- #include "exec/address-spaces.h"
--#include "qemu/cutils.h"
- 
- #define MAX_IDE_BUS 2
- #define CFG_ADDR 0xf0000510
-diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
-index 98ee3c607a..3d943dd71b 100644
---- a/hw/ppc/pnv.c
-+++ b/hw/ppc/pnv.c
-@@ -31,7 +31,6 @@
- #include "hw/ppc/pnv_core.h"
- #include "hw/loader.h"
- #include "exec/address-spaces.h"
--#include "qemu/cutils.h"
- #include "qapi/visitor.h"
- #include "monitor/monitor.h"
- #include "hw/intc/intc.h"
-diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-index 096d4d4cfb..f7c0a48558 100644
---- a/hw/ppc/prep.c
-+++ b/hw/ppc/prep.c
-@@ -50,7 +50,6 @@
- #include "exec/address-spaces.h"
- #include "trace.h"
- #include "elf.h"
--#include "qemu/cutils.h"
- #include "kvm_ppc.h"
- 
- /* SMP is not enabled, for now */
-diff --git a/hw/ppc/spapr_rtas.c b/hw/ppc/spapr_rtas.c
-index 4bb939d3d1..7e26a9fb5a 100644
---- a/hw/ppc/spapr_rtas.c
-+++ b/hw/ppc/spapr_rtas.c
-@@ -43,7 +43,6 @@
- 
- #include <libfdt.h>
- #include "hw/ppc/spapr_drc.h"
--#include "qemu/cutils.h"
- #include "trace.h"
- #include "hw/ppc/fdt.h"
- 
-diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-index 97b4a473c8..cf935c2008 100644
---- a/hw/sd/sdhci.c
-+++ b/hw/sd/sdhci.c
-@@ -34,7 +34,6 @@
- #include "hw/sd/sdhci.h"
- #include "sdhci-internal.h"
- #include "qemu/log.h"
--#include "qemu/cutils.h"
- #include "trace.h"
- 
- #define TYPE_SDHCI_BUS "sdhci-bus"
-diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
-index 61eb424bbc..9d82490794 100644
---- a/hw/sparc/sun4m.c
-+++ b/hw/sparc/sun4m.c
-@@ -46,7 +46,6 @@
- #include "elf.h"
- #include "sysemu/block-backend.h"
- #include "trace.h"
--#include "qemu/cutils.h"
- 
- /*
-  * Sun4m architecture was used in the following machines:
-diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
-index da28ab9413..b84589e0b6 100644
---- a/hw/sparc64/sun4u.c
-+++ b/hw/sparc64/sun4u.c
-@@ -50,7 +50,6 @@
- #include "hw/loader.h"
- #include "elf.h"
- #include "trace.h"
--#include "qemu/cutils.h"
- 
- #define KERNEL_LOAD_ADDR     0x00404000
- #define CMDLINE_ADDR         0x003ff000
-diff --git a/hw/usb/dev-serial.c b/hw/usb/dev-serial.c
-index 2829dda391..5e610722ee 100644
---- a/hw/usb/dev-serial.c
-+++ b/hw/usb/dev-serial.c
-@@ -11,7 +11,6 @@
- #include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "qemu-common.h"
--#include "qemu/cutils.h"
- #include "qemu/error-report.h"
- #include "hw/usb.h"
- #include "hw/usb/desc.h"
-diff --git a/hw/usb/dev-storage.c b/hw/usb/dev-storage.c
-index b56c75a73a..d02c5d76c6 100644
---- a/hw/usb/dev-storage.c
-+++ b/hw/usb/dev-storage.c
-@@ -22,7 +22,6 @@
- #include "sysemu/block-backend.h"
- #include "sysemu/blockdev.h"
- #include "qapi/visitor.h"
--#include "qemu/cutils.h"
- 
- //#define DEBUG_MSD
- 
--- 
-2.16.2
-
+Paolo

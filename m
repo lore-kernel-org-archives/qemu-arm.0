@@ -1,88 +1,91 @@
-Received: by 10.28.71.27 with SMTP id u27csp497311wma;
-        Fri, 26 Jan 2018 01:42:57 -0800 (PST)
-X-Google-Smtp-Source: AH8x224pwVabgsi2UI5O0kYR6RqdwJxMFgMgOSs0Wjp3uD5+7tegH+h0R9smDes9ITJ8R5UaLRei
-X-Received: by 10.37.132.17 with SMTP id u17mr10961957ybk.273.1516959777274;
-        Fri, 26 Jan 2018 01:42:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516959777; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp693706wma;
+        Fri, 26 Jan 2018 05:16:19 -0800 (PST)
+X-Google-Smtp-Source: AH8x224RgfAkp3z5ZFBI5bZC3dq/iwSL3GKkxczcUykWkVUtxI6cnc+n1KnC+rUEj3m3EeG4TlA6
+X-Received: by 10.37.219.199 with SMTP id g190mr10491441ybf.373.1516972579519;
+        Fri, 26 Jan 2018 05:16:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516972579; cv=none;
         d=google.com; s=arc-20160816;
-        b=D1/AfFi++8B7hqzrZUkHbHEfrtq0bY60EW5jzWH3Znya755UZHtRblzin7Y0II1QXI
-         TytLYqsYgIICV10zQSj5SMVT5t1sYsB9eawwDXjTheEPjHeF4bOA9JyPD9fGeI8EZgzL
-         9ynsQ2Yl9SFdesgi/UrLOcVZgmh+JCBgjvA4JCrnA1XDdZvG7meHqMwRCRwy9SkTFkXK
-         bQNpKkUVxLzlOZIMnEQRYqqQH5glP4KwdXwpi44ZHruTkit7vHXtVTsk9q6M/kFvkrem
-         dTSMUYEGBDjf4zKVAbM1mLt9supaGE1gYZA76ASUm3meUeNYjf5yjQqRnUXYKvu8MZYu
-         CbyA==
+        b=Ro6OH5r5HCTKmp1ONgFBm2sQVdilcjlDg7FVGczZvwrvO72dmCSYDDPeA0euHmzAzo
+         qB+21NY84GrHHsCtk7KaskKNloX0YCbIewnbGjVCCnL5XL3W2ProaVlXGzZuDT2jTqNP
+         XiBRDzu85iq6XArRvqPuzEXfDQXQF92SOa6SW8YKw+vzREd9HHRGQSZ9zc+03OMC+S7p
+         OOTTnFQfcXc9BvfTPCij67z7vHZgl2VE4oma2i+qCXOg2nfGLz50Lfydjub0QUHY2w2+
+         1hviOwJm/dWt/Gqp1FK/AokPzaBXB4O59gDMizBLYO6CwOIgLJzvKRaNhsfL0fV3qTov
+         lB4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
          :arc-authentication-results;
-        bh=AAo9CzudMsL21LdMs+x32r8DLn4E8SROvoB2p28gjEs=;
-        b=jVysenIt8ZZJn7krc5Ud4BBtgfuSMVqE85MMlWwNwsu/k/3qdACDEi+dJk0pK3ur+1
-         irK+wA9Hyfu3uLBgl3tYF9c2FRTJRCdRD7Fjxv1bWpEMZH5DZmkjbROKloC2XgFD23gv
-         NQ6PHn7vt28yI+BVpRjmInI9gcHnW+9np8oKQZEJ8WVfBtIXdzr1YWa39/lcHpZhxXtn
-         Kp3GOrbIpaNw1hQcAS3V7dnKTRwOIqOBa8ET6I8CvgiVapZtUL9IHhJdVPpi4NXp5Nah
-         7b8Z4Eosl1D+CU65TMmsQwy1aTIjU89QVYMCJuyVl9CJrqJW8eijGsHGpGFPJoXy5sss
-         1qBw==
+        bh=iEKrdIO/uzp0IpafNXpqN/0ykagjytZEpYZyMA7Q9ns=;
+        b=t6Xy8+Blp/NGHTuTpdZC3BLBGZdS4l1zKZy8M1Ef2lQz65VwugjuIe63ltSyD4fWu5
+         pVlOROXviWcABsCWLRq+5KjQLMbRoBpy2kobh5lCovkctB86dfjYvGOgzLH4BswfYZYB
+         mMN3celxbb1XNmqAQiUozS41lqdDvg4RVCtQ5TSHm3I8fm2fRsT+0cslUwA4M4KykTLr
+         SApfwdaKw4sPWwB3e7P0UUFMOd04PQ1maxCjgA7QvM57VOr/fd9hHgicQQ4gsT/mTFXQ
+         OIkbBaQj21lmUtON5NgvQ7kt7R4gr1CkBD3pIZsZ7s3yej3QVyFlTPsSLVFFwdOu2JWH
+         KX4w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r4si852237ywd.307.2018.01.26.01.42.57
+        by mx.google.com with ESMTPS id s186si907401ywd.679.2018.01.26.05.16.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 26 Jan 2018 01:42:57 -0800 (PST)
+        Fri, 26 Jan 2018 05:16:19 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43984 helo=lists.gnu.org)
+Received: from localhost ([::1]:54853 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ef0XA-00083g-LE
-	for alex.bennee@linaro.org; Fri, 26 Jan 2018 04:42:56 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56309)
+	id 1ef3re-0006an-Q3
+	for alex.bennee@linaro.org; Fri, 26 Jan 2018 08:16:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44225)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1ef0X0-0007z3-9P
-	for qemu-arm@nongnu.org; Fri, 26 Jan 2018 04:42:47 -0500
+	(envelope-from <ehabkost@redhat.com>) id 1ef3nk-0002gv-42
+	for qemu-arm@nongnu.org; Fri, 26 Jan 2018 08:12:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1ef0Wx-0004i4-6g
-	for qemu-arm@nongnu.org; Fri, 26 Jan 2018 04:42:46 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:50954)
+	(envelope-from <ehabkost@redhat.com>) id 1ef3nh-0005Hi-V1
+	for qemu-arm@nongnu.org; Fri, 26 Jan 2018 08:12:16 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:50156)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1ef0Ww-0004hj-Vx; Fri, 26 Jan 2018 04:42:43 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1ef3nh-0005Gu-Kf; Fri, 26 Jan 2018 08:12:13 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 1F52626C3F;
-	Fri, 26 Jan 2018 09:36:50 +0000 (UTC)
-Received: from [10.36.117.138] (ovpn-117-138.ams2.redhat.com [10.36.117.138])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5343262672;
-	Fri, 26 Jan 2018 09:36:47 +0000 (UTC)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-References: <1516634853-15883-1-git-send-email-thuth@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <b75b7114-ed48-e9bb-d767-359c2ae44d53@redhat.com>
-Date: Fri, 26 Jan 2018 10:36:44 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.2
+	by mx1.redhat.com (Postfix) with ESMTPS id AF0DDC03E841;
+	Fri, 26 Jan 2018 10:42:49 +0000 (UTC)
+Received: from localhost (ovpn-116-57.gru2.redhat.com [10.97.116.57])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 414E15C269;
+	Fri, 26 Jan 2018 10:42:49 +0000 (UTC)
+Date: Fri, 26 Jan 2018 08:42:47 -0200
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20180126104247.GF25150@localhost.localdomain>
+References: <1512670493-18114-1-git-send-email-peter.maydell@linaro.org>
+	<CAFEAcA-UO5Y_ACSZ2EEQEzgy30wdfEm3u8wUrBrXWaQaE_v+Kw@mail.gmail.com>
+	<20171209010811.GJ3037@localhost.localdomain>
+	<CAFEAcA9oG=+mJ+jSGTM_z54S09gjHoFowDkOvofdkhJd+g3=Cw@mail.gmail.com>
+	<20180122183301.GA31237@localhost.localdomain>
+	<CAFEAcA8pGXMs3hMxSs-t7qGfeR__H-CQ1roRVe5NFMCP8R2vjw@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <1516634853-15883-1-git-send-email-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA8pGXMs3hMxSs-t7qGfeR__H-CQ1roRVe5NFMCP8R2vjw@mail.gmail.com>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.9.1 (2017-09-22)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Fri, 26 Jan 2018 09:36:50 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.31]);
+	Fri, 26 Jan 2018 10:42:49 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH] i2c: Add a CONFIG_I2C master switch to the
- configuration files
+Subject: Re: [Qemu-arm] [PATCH 0/6] arm: support -cpu max (and
+ gic-version=max)
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -94,112 +97,107 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	"patches@linaro.org" <patches@linaro.org>,
+	"Richard W . M . Jones" <rjones@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8CWuNHySZp14
+X-TUID: nvcf24zRBkVx
 
-On 22/01/2018 16:27, Thomas Huth wrote:
-> The i2c core and the at24c EEPROM should only be compiled and linked
-> on the machines that support i2c. Otherwise it's quite strange to see
-> the at24c-eeprom to be "available" on qemu-system-s390x for example.
+On Thu, Jan 25, 2018 at 02:41:50PM +0000, Peter Maydell wrote:
+> On 22 January 2018 at 18:33, Eduardo Habkost <ehabkost@redhat.com> wrote:
+> > About QOM type names:
+> >
+> > On x86, all CPU models are resolved to "<model>-<suffix>", and
+> > i386 and x86_64 have different suffixes.  So the QOM type name is
+> > "max-x86_64-cpu" on qemu-system-x86_64, and "max-i386-cpu" on
+> > qemu-system-i386.
 > 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  default-configs/arm-softmmu.mak         | 1 +
->  default-configs/i386-softmmu.mak        | 1 +
->  default-configs/mips-softmmu-common.mak | 1 +
->  default-configs/ppc-softmmu.mak         | 1 +
->  default-configs/ppcemb-softmmu.mak      | 1 +
->  default-configs/x86_64-softmmu.mak      | 1 +
->  hw/i2c/Makefile.objs                    | 2 +-
->  hw/nvram/Makefile.objs                  | 2 +-
->  8 files changed, 8 insertions(+), 2 deletions(-)
+> OK. Looking at the target/arm code we do a similar suffix
+> trick, but we seem to have cut-n-pasted the handling in
+> aarch64_cpu_register(), so it uses the TYPE_ARM_CPU as the
+> suffix, rather the TYPE_AARCH64_CPU.
 > 
-> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-> index b0d6e65..ca34cf4 100644
-> --- a/default-configs/arm-softmmu.mak
-> +++ b/default-configs/arm-softmmu.mak
-> @@ -67,6 +67,7 @@ CONFIG_CADENCE=y
->  CONFIG_XGMAC=y
->  CONFIG_EXYNOS4=y
->  CONFIG_PXA2XX=y
-> +CONFIG_I2C=y
->  CONFIG_BITBANG_I2C=y
->  CONFIG_FRAMEBUFFER=y
->  CONFIG_XILINX_SPIPS=y
-> diff --git a/default-configs/i386-softmmu.mak b/default-configs/i386-softmmu.mak
-> index 95ac4b4..4bc8f25 100644
-> --- a/default-configs/i386-softmmu.mak
-> +++ b/default-configs/i386-softmmu.mak
-> @@ -61,3 +61,4 @@ CONFIG_HYPERV_TESTDEV=$(CONFIG_KVM)
->  CONFIG_PXB=y
->  CONFIG_ACPI_VMGENID=y
->  CONFIG_FW_CFG_DMA=y
-> +CONFIG_I2C=y
-> diff --git a/default-configs/mips-softmmu-common.mak b/default-configs/mips-softmmu-common.mak
-> index 7d8f5db..e31f046 100644
-> --- a/default-configs/mips-softmmu-common.mak
-> +++ b/default-configs/mips-softmmu-common.mak
-> @@ -34,3 +34,4 @@ CONFIG_ISA_TESTDEV=y
->  CONFIG_EMPTY_SLOT=y
->  CONFIG_MIPS_CPS=y
->  CONFIG_MIPS_ITU=y
-> +CONFIG_I2C=y
-> diff --git a/default-configs/ppc-softmmu.mak b/default-configs/ppc-softmmu.mak
-> index 3baed6a..65680d8 100644
-> --- a/default-configs/ppc-softmmu.mak
-> +++ b/default-configs/ppc-softmmu.mak
-> @@ -23,6 +23,7 @@ CONFIG_PLATFORM_BUS=y
->  CONFIG_ETSEC=y
->  CONFIG_SM501=y
->  CONFIG_IDE_SII3112=y
-> +CONFIG_I2C=y
->  
->  # For Macs
->  CONFIG_MAC=y
-> diff --git a/default-configs/ppcemb-softmmu.mak b/default-configs/ppcemb-softmmu.mak
-> index 5db4618..bc5e1b3 100644
-> --- a/default-configs/ppcemb-softmmu.mak
-> +++ b/default-configs/ppcemb-softmmu.mak
-> @@ -17,3 +17,4 @@ CONFIG_XILINX=y
->  CONFIG_XILINX_ETHLITE=y
->  CONFIG_SM501=y
->  CONFIG_IDE_SII3112=y
-> +CONFIG_I2C=y
-> diff --git a/default-configs/x86_64-softmmu.mak b/default-configs/x86_64-softmmu.mak
-> index 0221236..f0b7bcd 100644
-> --- a/default-configs/x86_64-softmmu.mak
-> +++ b/default-configs/x86_64-softmmu.mak
-> @@ -61,3 +61,4 @@ CONFIG_HYPERV_TESTDEV=$(CONFIG_KVM)
->  CONFIG_PXB=y
->  CONFIG_ACPI_VMGENID=y
->  CONFIG_FW_CFG_DMA=y
-> +CONFIG_I2C=y
-> diff --git a/hw/i2c/Makefile.objs b/hw/i2c/Makefile.objs
-> index 0594dea..37cacde 100644
-> --- a/hw/i2c/Makefile.objs
-> +++ b/hw/i2c/Makefile.objs
-> @@ -1,4 +1,4 @@
-> -common-obj-y += core.o smbus.o smbus_eeprom.o
-> +common-obj-$(CONFIG_I2C) += core.o smbus.o smbus_eeprom.o
->  common-obj-$(CONFIG_DDC) += i2c-ddc.o
->  common-obj-$(CONFIG_VERSATILE_I2C) += versatile_i2c.o
->  common-obj-$(CONFIG_ACPI_X86) += smbus_ich9.o
-> diff --git a/hw/nvram/Makefile.objs b/hw/nvram/Makefile.objs
-> index 0f4ee71..a912d25 100644
-> --- a/hw/nvram/Makefile.objs
-> +++ b/hw/nvram/Makefile.objs
-> @@ -1,6 +1,6 @@
->  common-obj-$(CONFIG_DS1225Y) += ds1225y.o
->  common-obj-y += eeprom93xx.o
-> -common-obj-y += eeprom_at24c.o
-> +common-obj-$(CONFIG_I2C) += eeprom_at24c.o
->  common-obj-y += fw_cfg.o
->  common-obj-y += chrp_nvram.o
->  common-obj-$(CONFIG_MAC_NVRAM) += mac_nvram.o
-> 
+> Am I right in thinking that we can fix this (changing the
+> QOM type names for all the aarch64 CPUs) without breaking
+> migration? (I guess I can just test this easily enough.)
 
-Queued, thanks.
+This is not supposed to affect migration (at least it didn't when
+we introduced per-cpu-model subclasses), but it's a good idea to
+test it anyway.  It might break other code that tries to extract
+info from the class names.
 
-Paolo
+
+> 
+> If we did that then we'd have, like x86, "max-arm-cpu" in
+> the qemu-system-arm binary, and "max-aarch64-cpu" in
+> the qemu-system-aarch64 binary.
+> 
+> Does x86 provide a way to say "give me the max-i386-cpu"
+> in the qemu-system-x86_64 binary ?
+
+No, the *-i386-cpu classes aren't even compiled in on
+qemu-system-x86_64.
+
+> 
+> > About how it should behave:
+> >
+> > An important expectation about "max" is about the
+> > query-cpu-model-expansion return value.  Having a property set to
+> > true on the return value of "query-cpu-model-expansion model=max"
+> > means the corresponding feature is supported on the current host
+> > and can be enabled on the command-line.
+> 
+> On Arm when I try to use this I get:
+> { "execute": "query-cpu-model-expansion", "arguments": { "type":
+> "static", "model": { "model": { "name": "max" } } } }
+> {
+>     "error": {
+>         "class": "CommandNotFound",
+>         "desc": "The command query-cpu-model-expansion has not been found"
+>     }
+> }
+> 
+> It looks like we only implement this QMP API for x86 and S390
+> (via #ifdeffery in monitor.c).
+> 
+> I'm not sure if we actually support command line setting/unsetting
+> of features for Arm CPUs -- is there a command line option to
+> get QEMU to print the features it thinks can be set this way?
+
+Unfortunately -cpu command-line parsing is still a mess (we
+currently have lots of arch-specific parsing hooks).  Once we
+make this uniform across targets, we could make "-cpu ?" print
+all known properties.
+
+But you can look at the list of QOM properties for your CPU
+classes (-cpu options are simply translated to QOM properties).
+e.g.:
+
+  (QEMU) device-list-properties typename=pxa270-a0-arm-cpu
+  {"return": [{"type": "uint32", "name": "midr"}, {"type": "uint64", "name": "mp-affinity"}, {"type": "child<irq>", "name": "unnamed-gpio-in[0]"}, {"type": "uint32", "name": "psci-conduit"}, {"type": "bool", "name": "reset-hivecs"}, {"type": "link<qemu:memory-region>", "name": "memory"}, {"type": "link<irq>", "name": "unnamed-gpio-out[2]"}, {"type": "link<irq>", "name": "unnamed-gpio-out[3]"}, {"type": "int32", "name": "node-id"}, {"type": "bool", "name": "start-powered-off"}, {"type": "link<irq>", "name": "unnamed-gpio-out[1]"}, {"type": "link<irq>", "name": "unnamed-gpio-out[0]"}, {"type": "link<irq>", "name": "gicv3-maintenance-interrupt[0]"}, {"type": "bool", "name": "cfgend"}, {"type": "child<irq>", "name": "unnamed-gpio-in[2]"}, {"type": "child<irq>", "name": "unnamed-gpio-in[3]"}, {"type": "child<irq>", "name": "unnamed-gpio-in[1]"}]}
+
+
+
+> 
+> >> (The code in this patchset makes '-cpu max' give the same
+> >> QOM type name for both qemu-system-arm and qemu-system-aarch64,
+> >> with different behaviour depending on the binary. If that means
+> >> we don't provide the same behaviour as x86 then I can change that,
+> >> but I'm not sure where the difference is exposed to the user?)
+> >
+> > This is not how the QOM names work on x86, but I don't think QOM
+> > type names choices have important user-visible side-effects
+> > today.  Choosing unique QOM type names is more important to make
+> > the code future-proof for when we merge QEMU binaries, than to
+> > make user-visible behavior consistent.
+> 
+> Good point -- assuming it doesn't break migration I can fix
+> the aarch64 types to use the right suffix string and then they'll
+> have different QOM type names.
+> 
+> thanks
+> -- PMM
+
+-- 
+Eduardo

@@ -1,101 +1,113 @@
-Received: by 10.28.71.27 with SMTP id u27csp778687wma;
-        Fri, 26 Jan 2018 06:40:23 -0800 (PST)
-X-Google-Smtp-Source: AH8x224pEGuvVT25OPuyaMQ/umyNMWkKBvS58zFLWrjsEyoXjkv64IFOi3IAyi98nT1+jcWsnTpH
-X-Received: by 10.37.208.213 with SMTP id h204mr10980802ybg.159.1516977623114;
-        Fri, 26 Jan 2018 06:40:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516977623; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp811666wma;
+        Fri, 26 Jan 2018 07:11:39 -0800 (PST)
+X-Google-Smtp-Source: AH8x227UpJV7B5km0wyOe1pRmj5Ilc01rCc8Ql3ZHHA+fHinh+sJbIjo1aNOe2Posw5sQbFPkOER
+X-Received: by 10.37.188.4 with SMTP id i4mr11404780ybh.338.1516979499771;
+        Fri, 26 Jan 2018 07:11:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516979499; cv=none;
         d=google.com; s=arc-20160816;
-        b=s45Sf9qgaCEpYAehr/GN4/MVOCSjjWZq4/kZAUuy75znMAst53fy4s409UQntrDd10
-         iG7x84mywe+26W70vJpM6vkTY5MPtK4pBZgQxDNpTYFIiIkbkZhIn4CZszLwXqgjID0e
-         BeXnBLG6g7qqKaqPITlFwx9i/LgAli3twcmaF6fbn3P0dqR8YB7UCkApDP2d5mid3Kff
-         Rdfw8/4tcedVkZT/e6oTUm/RYI+Vm/mTEvgaKEnXebraCkPLRjVPle+p8luse26Leu6c
-         d0WhvX/r29e31cYgwD4U73Ktkx+6S8skJCaf+Un+bXKS8iVu84TzCi6M2ii6agMXo/ZY
-         AmRg==
+        b=VzirZzj4PUNo8tTkRePWfxamrq2qOAuxTV5funiFbtpdk/KrNxjN8PhMwMFJpYgK+o
+         TL+0YicOOxE8JM2NZVbWMpviemZmz/+PF1GGeQYaqdTcyn2vHfEyclwlC4j12AxE9Qai
+         FbxzIglU9wNnfnPl5KXGjwPj5bKBjgWJjwC0L3Mb+pbo/TeuKvTMBWob9oR+A4KwvaW3
+         i0TYwRTgWhYb5NY1eRpu9/Yj+B70gGo8hqYtUD6YDAWh1wCiRBNBoakpJ1fsENRo5YL4
+         LI4dBoB4dHnRs2g+DAwV3yvXHFPbJaKAHd0VbRGoiIi0g5YUaPr2MtbjHvn2x7ecG13y
+         es1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=DeAz5Uu/pB+vtBNT3+GlYaayC7g09YtzPWI2sM8goYI=;
-        b=UUWC7qiaLXQXdkhWo+hrkker6sYDr80Io4zif3Jpp8HLEBRAAQWu6O+siWbPdxWz1F
-         MQLRjdsaeSbj6RiHrUS2ETJRftLk53XvU6f5fKQGzsfyjKCtHyThwWQpOLnMoqqwkQfk
-         Z5RenkUEaP3SyzbLbq3Jq1zSK8TE3B3iC54B49P4ppOGRRHvmxAvU3iBYAxguKpINYeb
-         Dgja2JdEfzZXMsfJ/FGWpj89Ptqf9AlIG+r181qyWDSbDGR2HXHVMg4bgj9yh+0vC32R
-         b2J7SqJ6+QlLzr9BK6VDtEZMHn2g7boS55Yl9Pzz/WsSXRinaWuJKyon3Bmgd38G3WAM
-         F7aA==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=ebkmWhsWqTA0eQBrs8Fol+yuBpNDFuQnrTdFTEwjVPY=;
+        b=fDOrcPqmVqmuxzcDYE+DwrenIbqWtxW42dpuY77OSI6boK4yTdZRsrdsG/S0iBwRyR
+         yYC0GkHRCkKYmY+p/i64vAn0VfWXJFcU2HOBtzxTV4G8H2CqKCIhkvwqzm9bfK95J4jG
+         ABxcsQkJrlKHjwhpMsC4rmleNEr6qeDB3Y7yI58MhBosGVz7JN/jD7y4zz8kFkC/qKAR
+         0gxS26VGWwgT3TobogXfkfFiB/2i4NC4teeeZybymZ8E9MEpZZWfIRepMcb4Ja0z3fR9
+         onWyUm9Or3rN8dpe5p90jhkeHyeppOQXlvylcnDtkbYDNVxlj7J0HIcpxKaTfkv5HJTI
+         q7ig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=gji3T+4w;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=s8A8wX7q;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c184si3762260yba.483.2018.01.26.06.40.22
+        by mx.google.com with ESMTPS id 202si930402ywb.458.2018.01.26.07.11.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 26 Jan 2018 06:40:23 -0800 (PST)
+        Fri, 26 Jan 2018 07:11:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=gji3T+4w;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59339 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=s8A8wX7q;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:60862 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ef5B0-0005Nw-Kl
-	for alex.bennee@linaro.org; Fri, 26 Jan 2018 09:40:22 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36365)
+	id 1ef5fH-00024J-6T
+	for alex.bennee@linaro.org; Fri, 26 Jan 2018 10:11:39 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42855)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ef5Ab-0005Ad-R8
-	for qemu-arm@nongnu.org; Fri, 26 Jan 2018 09:39:58 -0500
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1ef5f7-00022q-60
+	for qemu-arm@nongnu.org; Fri, 26 Jan 2018 10:11:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ef5Aa-0007ao-Tq
-	for qemu-arm@nongnu.org; Fri, 26 Jan 2018 09:39:57 -0500
-Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:46249)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1ef5f3-0004tu-7P
+	for qemu-arm@nongnu.org; Fri, 26 Jan 2018 10:11:29 -0500
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:42698)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1ef5Aa-0007aa-Nj
-	for qemu-arm@nongnu.org; Fri, 26 Jan 2018 09:39:56 -0500
-Received: by mail-oi0-x244.google.com with SMTP id 8so423425oix.13
-	for <qemu-arm@nongnu.org>; Fri, 26 Jan 2018 06:39:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=DeAz5Uu/pB+vtBNT3+GlYaayC7g09YtzPWI2sM8goYI=;
-	b=gji3T+4winILOI2RphBg/8XAUarUsUHEp37M96UstbVnjZf4CPedPEImLiy8xwEYvR
-	FRFlQwOJmiVbYM3K5yhCiZkwlCfVm+W4rgQQsWf7gWhtVYR0YWwsCYpUm8Ns+WY6VFy5
-	C+zmZKeeDAQcOX/UH9dzhNNC8nSoa3WwQJ8AM=
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1ef5f2-0004so-Ub; Fri, 26 Jan 2018 10:11:25 -0500
+Received: by mail-qt0-x243.google.com with SMTP id c2so1979719qtn.9;
+	Fri, 26 Jan 2018 07:11:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=ebkmWhsWqTA0eQBrs8Fol+yuBpNDFuQnrTdFTEwjVPY=;
+	b=s8A8wX7qUzB/Pz1vCbCKGnJ4mQQ6qZDWksY0qGfJcw9V2Mky+G0RKUiIhWGOOuSpEF
+	YdSUnyr+AtBESZL5oVNpJq9E9yRk6UBNDvBlwRghrDcGCPFvdYZEr4ensWMNcMKtaeTb
+	yOpB1UAxnXhTTCasXa/tqqTXCJh3UIVr+e7C05klNEa/h6oCz+aI2Kbk3lz+1vt8mSni
+	ifAE/MCnsWbPPfka1pK3Gbc6QbzKbIeEM3C+cNlwe+LfUuGEGJwFVGI0ha0VTXw+XtSr
+	vfFavUCofsriHM/brdtvyMaudNXG+mKGdxkbo+rzOuaoCGMhaiUjgp4uDOr94n2nMh0c
+	sRRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=DeAz5Uu/pB+vtBNT3+GlYaayC7g09YtzPWI2sM8goYI=;
-	b=ebiED8gxE/YW+SM187M+Qoe75DdkXnHjiLpnqkLyLvxnfr3g9LilO88b26Ot8SdlEo
-	Dp1a7YmCO9ib7LTDKFlddbML5d3hDamS9iaAWt2tIyLCA755VkomevQ3EhXjjoKZevol
-	qpNg8RJZFGbJ0bzxIfkrmoWLUK3s42l8nvJF5oFc0FcJ2YI3HhoLQGvP5TR/jxwyBN3n
-	nLPHKrPuLeNctJiC9ENpTMl8uu8awNcRzLP2rrIvy2bbulkI78Us/sV/pa4E9hAyPHaT
-	VpRxevmdJ4U+fzghYcCsLSl6NTmx7JV8UcIfP85NWGZddRe+7FgfdoUxxbJBVoHCKDs1
-	jTWw==
-X-Gm-Message-State: AKwxytcgp7pKzMY769iNDuQCvYTWA6hKfcCZViDLnisHhLl3bVFwS7I/
-	fT8vgRhqDlLmUnnliphAaWqa1verdLuCCu4KSUwa6A==
-X-Received: by 10.202.180.133 with SMTP id d127mr13252495oif.328.1516977222341;
-	Fri, 26 Jan 2018 06:33:42 -0800 (PST)
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=ebkmWhsWqTA0eQBrs8Fol+yuBpNDFuQnrTdFTEwjVPY=;
+	b=i3t93Z8BLMPjXdCc6S4MKWvprJ+Qtm7vFhP/VwfEVlRtc4RQFpMtwP14JNKRvmuxwc
+	ayQxuIJNmm7ftsOQPGyq6AlHiWUEWFurj0tgTpN3jYQe1gX3r8Nkum4wPQHCeoGfP6ZN
+	cTI5zcrOYRnMJya/NcPPXoJemm0UjyIhEfGh4yof3vj+brv8Ms+2mVEdME4e8WScc7r8
+	515yf2eMLWZ2DzGSxoiOZyP+em+zM4Q6NzbZ0ZT759vTEsMhL1HmoYW6++ni3v7qVQmh
+	quQ77fTH3W7vcwWQNKT6mewCSVtRbXYoh8BIsk1GY4w2FTifmbgSkL2b4bFTWUJkcIEw
+	4gAQ==
+X-Gm-Message-State: AKwxytfvobwQvzQzLwZm/h9YYln1mYqot13DJlBpJ0hbMppJCWVycGTf
+	r+pO3GoCoggXvGEDxv0k2T64y6on
+X-Received: by 10.200.24.8 with SMTP id q8mr23281385qtj.210.1516974076338;
+	Fri, 26 Jan 2018 05:41:16 -0800 (PST)
+Received: from [192.168.1.11] ([138.117.48.219])
+	by smtp.gmail.com with ESMTPSA id 62sm3496363qkz.89.2018.01.26.05.41.14
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 26 Jan 2018 05:41:15 -0800 (PST)
+To: Richard Henderson <richard.henderson@linaro.org>
+References: <20171218172425.18200-1-richard.henderson@linaro.org>
+	<20171218172425.18200-7-richard.henderson@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <7bdbbbd8-d504-e565-30a0-4ce79c8121ac@amsat.org>
+Date: Fri, 26 Jan 2018 10:41:13 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.2
 MIME-Version: 1.0
-Received: by 10.157.61.133 with HTTP; Fri, 26 Jan 2018 06:33:21 -0800 (PST)
-In-Reply-To: <d8c2c2ca-5046-f19b-9514-d3cbef3b7c3a@amsat.org>
-References: <1512670493-18114-1-git-send-email-peter.maydell@linaro.org>
-	<1512670493-18114-5-git-send-email-peter.maydell@linaro.org>
-	<d8c2c2ca-5046-f19b-9514-d3cbef3b7c3a@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 26 Jan 2018 14:33:21 +0000
-Message-ID: <CAFEAcA9k2KKrXk+2LQd+X7-RFuDQO96bYSo8xi81zfb80+ApFg@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20171218172425.18200-7-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::244
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 4/6] target/arm: Add "-cpu max"
- support
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: Re: [Qemu-arm] [PATCH v2 06/11] target/arm: Decode aa32 armv8.1 two
+ reg and a scalar
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,61 +119,69 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "patches@linaro.org" <patches@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	"Richard W . M . Jones" <rjones@redhat.com>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PJatjOwxIeYQ
+X-TUID: rTFqgI9aaV2O
 
-On 26 January 2018 at 14:29, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
-wrote:
-> Hi Peter,
->
-> On 12/07/2017 03:14 PM, Peter Maydell wrote:
->> Add support for "-cpu max" for ARM guests. This CPU type behaves
->> like "-cpu host" when KVM is enabled, and like a system CPU with
->> the maximum possible feature set otherwise. (Note that this means
->> it won't be migratable across versions, as we will likely add
->> features to it in future.)
->>
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->> ---
+On 12/18/2017 02:24 PM, Richard Henderson wrote:
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 
->> +#ifndef TARGET_AARCH64
->> +/* -cpu max: if KVM is enabled, like -cpu host (best possible with this=
- host);
->> + * otherwise, a CPU with as many features enabled as our emulation supp=
-orts.
->> + * The version of '-cpu max' for qemu-system-aarch64 is defined in cpu6=
-4.c;
->> + * this only needs to handle 32 bits.
->> + */
->> +static void arm_max_initfn(Object *obj)
->> +{
->> +    ARMCPU *cpu =3D ARM_CPU(obj);
->> +
->> +    if (kvm_enabled()) {
->> +        kvm_arm_set_cpu_features_from_host(cpu);
->> +    } else {
->> +        cortex_a15_initfn(obj);> +        /* In future we might add fea=
-ture bits here even if the
->> +         * real-world A15 doesn't implement them.
->> +         */
->
-> Why not use arm_any_initfn() here?
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-That function (and the 'any' cpu) are deliberately only
-included in the linux-user binaries, not the system-emulation binaries.
-(Also arm_any_initfn() only initializes userspace-visible stuff, it
-doesn't provide ID register values etc for kernel-visible things.)
-
-> Actually what seems cleaner is to move "any" features here, and kill the
-> "any" cpu, using "max" for this purpose.
-
-We can't kill 'any', that would break back-compatibility
-of command lines.
-
-thanks
--- PMM
+> ---
+>  target/arm/translate.c | 38 +++++++++++++++++++++++++++++++++++---
+>  1 file changed, 35 insertions(+), 3 deletions(-)
+> 
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index a9587ae242..1a0b0eaced 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -6973,11 +6973,43 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
+>                          }
+>                          neon_store_reg64(cpu_V0, rd + pass);
+>                      }
+> +                    break;
+> +                case 14: /* VQRDMLAH scalar */
+> +                case 15: /* VQRDMLSH scalar */
+> +                    if (!arm_dc_feature(s, ARM_FEATURE_V8_1_SIMD)) {
+> +                        return 1;
+> +                    }
+> +                    if (u && ((rd | rn) & 1)) {
+> +                        return 1;
+> +                    }
+> +                    tmp2 = neon_get_scalar(size, rm);
+> +                    for (pass = 0; pass < (u ? 4 : 2); pass++) {
+> +                        void (*fn)(TCGv_i32, TCGv_env, TCGv_i32,
+> +                                   TCGv_i32, TCGv_i32);
+>  
+> -
+> +                        tmp = neon_load_reg(rn, pass);
+> +                        tmp3 = neon_load_reg(rd, pass);
+> +                        if (op == 14) {
+> +                            if (size == 1) {
+> +                                fn = gen_helper_neon_qrdmlah_s16;
+> +                            } else {
+> +                                fn = gen_helper_neon_qrdmlah_s32;
+> +                            }
+> +                        } else {
+> +                            if (size == 1) {
+> +                                fn = gen_helper_neon_qrdmlsh_s16;
+> +                            } else {
+> +                                fn = gen_helper_neon_qrdmlsh_s32;
+> +                            }
+> +                        }
+> +                        fn(tmp, cpu_env, tmp, tmp2, tmp3);
+> +                        tcg_temp_free_i32(tmp3);
+> +                        neon_store_reg(rd, pass, tmp);
+> +                    }
+> +                    tcg_temp_free_i32(tmp2);
+>                      break;
+> -                default: /* 14 and 15 are RESERVED */
+> -                    return 1;
+> +                default:
+> +                    g_assert_not_reached();
+>                  }
+>              }
+>          } else { /* size == 3 */
+> 

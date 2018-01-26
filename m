@@ -1,121 +1,152 @@
-Received: by 10.223.159.74 with SMTP id f10csp4620494wrg;
-        Tue, 12 Dec 2017 20:09:38 -0800 (PST)
-X-Google-Smtp-Source: ACJfBouzW82sqxjp7vlRZFHiGe8qKm6ma1I//sxV0ra6eyJznjH9vTQwrobL5GdbCWPgjQ0PzNOB
-X-Received: by 10.84.131.227 with SMTP id d90mr4430123pld.117.1513138178743;
-        Tue, 12 Dec 2017 20:09:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1513138178; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp991254wma;
+        Fri, 26 Jan 2018 10:03:33 -0800 (PST)
+X-Google-Smtp-Source: AH8x224Y1qt6hEdephuUDtKO+USbs9PJ+Hj2H6IpXIeh7NXKOWRby8MGi/Ryfc4BWK1APrg9FpnQ
+X-Received: by 10.37.53.213 with SMTP id c204mr11433555yba.70.1516989813593;
+        Fri, 26 Jan 2018 10:03:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516989813; cv=none;
         d=google.com; s=arc-20160816;
-        b=aarFtbsFPxp7X2YHZsXBxm2CDlT1CfatoDkfg2yQQvaK3cS3aCzF4ePm7EYiiyiJnk
-         JpHLQTik7G4KgDQ+st+gORyTCU9fCy7fS3i4zvYGnSDT7/AUlhdL9uTjS/VpHuWDs3/E
-         20ANEFRz1xtLUGWUSmmQYoY9d/KIRtVdBc1Mc8+pAhLTzr4xvpV2zflv/Oa4BwONSMeX
-         rGn0ce8xcV873u5cxvJUPN50vZl+xmKkMMPj+fVoQj3GaJFcIZw5VjlF1b999eDF/utK
-         YH+4i+q9dx+MmbotVXBHMkiw3dXIgre+sbP3oRX+4eg8KAGK3H+PCtGu16dV99NOZmCx
-         VOKA==
+        b=tC+fMD1X4WFjz0R8XfioP/sRur1DAXjOifeEyQUMzQ45s+FAswo0AJHfTP3flDfmZh
+         5JcMEyMmtZ4EWy205ilbIuGeGz9Yz2OYOMBwq0HLEuqn1RJGuArm3kLLw4yza4gj7wcG
+         W3m/9V97tRrOGZG6stk24oaExyFzs0SQsLLfyiuvSbTxenWl15+WXd2891ay+5pTOOjU
+         vRw19wboVKT2WScmlrW2khtUWmLNF0b5BqkzK4z+nrKOTsPEUQA5NrpefYddAuOlJc1s
+         J4fynci4vb4h06g/zqV/+1mursskNoXZGxKJ0xgfdfcahe9oPYCewwORHlncRPDeD9tC
+         4V7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:arc-authentication-results;
-        bh=KUUK2BeL/QRV+2/w1o3FoOshTObRol8aMfKCx6Rc0rk=;
-        b=MIj1zBtVP2TNh6CzFOQA51nKZWLPvoibv5SR/rnxHTi2FF+CH8ws4uAveKrM4pteDY
-         tntM9vsbkmrMuNMA7KQKY5YCZzNGC3hJ3R9yfpMKAP2b1Jw91rJWwALGiR9F75SshnXQ
-         uC15xp3NA05F8oD28ERwPRUbYTQ/UmxYkv8uylotXVU6TCVZ4B/AI+NWAiv0nmgnpXar
-         4pH/opPwNSmdTpCTror0gHI1+2nQ89RtDTcY4l4ZFKivC7hv5QrVu4ARMSc7Ot0PstDg
-         tPRH+VaPRf8SIR03JwwvhkFGHtm9bdk0d3AZS+qPryQ91+ypNJyUhXrHYAEUstPjqfyz
-         Sj6Q==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=j5S6Lep75XLvdgYF97tcp1sQ1ZKqJ2ZtmStXoEiZ9Z4=;
+        b=vtezQQsPrMhbXA8d3t5aHVzue6FfwAKd85f0qQaUbD4jgMpeQp2xeCdLY10V25loG5
+         h2w7crWFjK0lmdccpHX+r74vHwRmsue2GegQWQjFzsZdvA/vhzfUKeXKPAN8dpP2A+aH
+         66bv82M9egpoiF3x3usDs1QbQrHmjSvPNrm7/Ta63hVlonIF7Y4f/ru4wjsHVmBWRaE8
+         n8+QLNSI7p3+nitkqw1UylGwHoKPb639h6dl70bVYp2FtBBKXml+MrqTKk3BIapsjL20
+         Lv3v41SWGzbR+OOnA50Xt9O9uAlHkPkWCttv5tC6YcTmpGjDK+weJlrgIbQx7GbuJlLK
+         04zA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id j3si584831pld.701.2017.12.12.20.09.38;
-        Tue, 12 Dec 2017 20:09:38 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@linaro.org header.s=google header.b=VQcYO5jf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id 80si974230ywh.548.2018.01.26.10.03.33
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 26 Jan 2018 10:03:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1751577AbdLMEJg (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 5 others); Tue, 12 Dec 2017 23:09:36 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:35851 "EHLO huawei.com"
-        rhost-flags-OK-FAIL-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1750749AbdLMEJf (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 12 Dec 2017 23:09:35 -0500
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
-        by Forcepoint Email with ESMTP id 88890A6BC601F;
-        Wed, 13 Dec 2017 12:09:30 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS403-HUB.china.huawei.com
- (10.3.19.203) with Microsoft SMTP Server id 14.3.361.1; Wed, 13 Dec 2017
- 12:09:25 +0800
-Subject: Re: [PATCH v12 09/12] Move related hwpoison page function to
- accel/kvm/ folder
-To:     Paolo Bonzini <pbonzini@redhat.com>, <mst@redhat.com>,
-        <imammedo@redhat.com>, <zhaoshenglong@huawei.com>,
-        <peter.maydell@linaro.org>, <mtosatti@redhat.com>,
-        <james.morse@arm.com>, <lersek@redhat.com>, <marc.zyngier@arm.com>,
-        <christoffer.dall@linaro.org>, <rth@twiddle.net>,
-        <ehabkost@redhat.com>, <kvm@vger.kernel.org>,
-        <guohanjun@huawei.com>, <lijinyue@huawei.com>,
-        <huangshaoyu@huawei.com>, <wuquanming@huawei.com>,
-        <zhengqiang10@huawei.com>, <linuxarm@huawei.com>,
-        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-References: <1510341591-22817-1-git-send-email-gengdongjiu@huawei.com>
- <1510341591-22817-10-git-send-email-gengdongjiu@huawei.com>
- <3017b1b9-24d7-565b-1180-a0eb93c6d57a@redhat.com>
- <572b8361-ee14-35ed-6c85-a5e5d8ae5b1a@huawei.com>
- <b948cb25-dad9-ec7e-8406-b829d21cac26@redhat.com>
-From:   gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <7ae2a8e8-93d4-2fdc-c1e5-74a759444d73@huawei.com>
-Date:   Wed, 13 Dec 2017 12:09:25 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+       dkim=fail header.i=@linaro.org header.s=google header.b=VQcYO5jf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42679 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ef8Ld-0007XK-1i
+	for alex.bennee@linaro.org; Fri, 26 Jan 2018 13:03:33 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43058)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1ef8K3-0006oS-GM
+	for qemu-devel@nongnu.org; Fri, 26 Jan 2018 13:01:56 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1ef8K2-0004W7-Ml
+	for qemu-devel@nongnu.org; Fri, 26 Jan 2018 13:01:55 -0500
+Received: from mail-ot0-x235.google.com ([2607:f8b0:4003:c0f::235]:39234)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1ef8K2-0004Vl-IO
+	for qemu-devel@nongnu.org; Fri, 26 Jan 2018 13:01:54 -0500
+Received: by mail-ot0-x235.google.com with SMTP id d9so1125668oth.6
+	for <qemu-devel@nongnu.org>; Fri, 26 Jan 2018 10:01:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=j5S6Lep75XLvdgYF97tcp1sQ1ZKqJ2ZtmStXoEiZ9Z4=;
+	b=VQcYO5jfou/izY9V48z0++jXySqSIgP5sNoVTxFpQUuxYs/Ye3kZpxm3pl/XhDVNVZ
+	M3p17HoEQMKmtvwf7PipEYksNA7oj4cjoeJzKmy0cTG5YdytMZIn7QDqIbWXo//tbI+0
+	/fqxqCWzHfLZTrXw9hL0B5Cmd0G2/XgFGHfE4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=j5S6Lep75XLvdgYF97tcp1sQ1ZKqJ2ZtmStXoEiZ9Z4=;
+	b=sEyJI4Fic4L/orPf129CSJUrxT1YzTuYVYDJ63GG5nYrJyakMh9ruDGnCY8aP8YA4f
+	sqRI3sH/SdMUbcZ2N3mRSCoe1RsS1mgLxp/gSCNqmTCIMV/LzwsNeNwaeJarlMd/5zFW
+	mtdl6pMSYhlodUU+j965EUX6f/n56SvdLgErUH0IqUGMfa2FTR9jh5HqBIGNqIq8x3iw
+	g9JrqBGuRmceIFhxSmSHFWTJ/wCvECJOrbNAzbOEdJ/BGQ8d0kKecEiO2rbsvvrSnWQG
+	KcqtmZvDhAYNiDeZcCme96pdQZLzUaXAyqcVwu5v2euJB7Vh6Tz652y3h5Pjiv49HqVk
+	JPMA==
+X-Gm-Message-State: AKwxytcJFTCBi7AUDYWt+oj8Tr9Ka3zJKrcvUBzkxUL0grC0w4BmHnRQ
+	iqYWXjKhYhHVxRkA+0jJ7da5vwTEfE6qlGN2S90NLg==
+X-Received: by 10.157.29.229 with SMTP id w34mr13962193otw.24.1516989713566;
+	Fri, 26 Jan 2018 10:01:53 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <b948cb25-dad9-ec7e-8406-b829d21cac26@redhat.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.142.68.147]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: ZN/jLYg2zCit
+Received: by 10.157.61.133 with HTTP; Fri, 26 Jan 2018 10:01:33 -0800 (PST)
+In-Reply-To: <5A6B6671.8070408@hisilicon.com>
+References: <5A6B5091.8030601@hisilicon.com>
+	<CAFEAcA_39SgDKFnkrcVePs89kYUMHvqqAdnkFhrCa=GYTu0Kpw@mail.gmail.com>
+	<5A6B5FCA.2080009@hisilicon.com>
+	<CAFEAcA-N-pjHwqrStf-qK+EOmGYyR-4dfY=sL5kLzeodgYUiRw@mail.gmail.com>
+	<5A6B6671.8070408@hisilicon.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 26 Jan 2018 18:01:33 +0000
+Message-ID: <CAFEAcA-_vYgDYofx61rmCL7sZKOVSBHfw0k3us1=SHzD+TEnGw@mail.gmail.com>
+To: Wei Xu <xuwei5@hisilicon.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::235
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH] pl011: do not put into fifo
+ before enabled the interruption
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Rob Herring <rob.herring@linaro.org>, Marc Zyngier <marc.zyngier@arm.com>,
+	"Chenxin \(Charles\)" <charles.chenxin@huawei.com>,
+	tiantao6@huawei.com, QEMU Developers <qemu-devel@nongnu.org>,
+	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+	Linuxarm <linuxarm@huawei.com>,
+	"Liuxinliang \(Matthew Liu\)" <z.liuxinliang@hisilicon.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Daode Huang <huangdaode@hisilicon.com>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	"Liguozhu \(Kenneth\)" <liguozhu@hisilicon.com>,
+	Zhangyi ac <zhangyi.ac@huawei.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vHVdd9urgXU5
 
-On 2017/11/13 16:27, Paolo Bonzini wrote:
-> On 13/11/2017 02:45, gengdongjiu wrote:
->> On 2017/11/10 19:32, Paolo Bonzini wrote:
->>> On 10/11/2017 20:19, Dongjiu Geng wrote:
->>>> +typedef struct HWPoisonPage {
->>>> +    ram_addr_t ram_addr;
->>>> +    QLIST_ENTRY(HWPoisonPage) list;
->>>> +} HWPoisonPage;
->>>> +
->>>
->>> Is this actually needed outside accel/kvm/kvm-all.c?
->> Paolo,
->>    Thanks for the comments, this structure is added in the accel/kvm/kvm-all.c is also OK.
->> My previous thought is that this is structure definition, so I move it to a header file.
->> If you think this structure should be added in accel/kvm/kvm-all.c, I will move it.
-> 
-> It can be done later; but if you have to send a v13 series, I would be
-> grateful if you included this change as well.
-
-Hi Paolo,
-  I have included this changed in the v13 series, could I can get your "Reviewed-by" after you
-reviewed it. thanks so much.
-
-> 
-> Paolo
-> 
->> thanks!
+On 26 January 2018 at 17:33, Wei Xu <xuwei5@hisilicon.com> wrote:
+> On 2018/1/26 17:15, Peter Maydell wrote:
+>> The pl011 code should call qemu_set_irq(..., 1) when the
+>> guest enables interrupts on the device by writing to the int_enabled
+>> (UARTIMSC) register. That will be a 0-to-1 level change and the KVM
+>> VGIC should report the interrupt to the guest.
 >>
->>>
->>> Thanks,
->>>
->>> Paolo
->>>
->>> .
->>>
->>
-> 
-> 
-> .
-> 
+>
+> Yes.
+> And in the pl011_update, the irq level is set by s->int_level & s->int_enabled.
+> When writing to the int_enabled, not sure why the int_level is set to
+> 0x20(PL011_INT_TX) but int_enabled is 0x50.
+>
+> It still call qemu_set_irq(..., 0).
+>
+> I added "s->int_level |= PL011_INT_RX" before calling pl011_update
+> when writing to the int_enabled and tested it also works.
+
+No, that's not right either. int_level should already have the
+RX bit set, because pl011_put_fifo() sets that bit when it gets a
+character from QEMU and puts it into the FIFO.
+
+Does something else clear the int_level between the character
+going into the FIFO from QEMU and the guest enabling
+interrupts?
+
+thanks
+-- PMM

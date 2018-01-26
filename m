@@ -1,175 +1,156 @@
-Received: by 10.28.71.27 with SMTP id u27csp909714wma;
-        Fri, 26 Jan 2018 08:45:56 -0800 (PST)
-X-Google-Smtp-Source: AH8x225hXFXrTTx464nmMD9Cz9DIG9W3EBc1fllgYqAv2DLYycGUaGMoijEhr0C7iPd08sGHIZWX
-X-Received: by 10.37.183.134 with SMTP id n6mr11833129ybh.216.1516985156446;
-        Fri, 26 Jan 2018 08:45:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516985156; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp1048368wma;
+        Fri, 26 Jan 2018 11:04:00 -0800 (PST)
+X-Google-Smtp-Source: AH8x224aecrv1oJxMxIr/YeqyJXxiq8q+sEfP9qyADJN+LfP+eug6pc06QNWh16s50GEVfZQ74UF
+X-Received: by 10.37.81.200 with SMTP id f191mr11668207ybb.143.1516993440005;
+        Fri, 26 Jan 2018 11:04:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516993440; cv=none;
         d=google.com; s=arc-20160816;
-        b=wQkBwvnrG5OZ86lyihUJtKa1/+jubtCRj/Wg3XqNa/WDt2Su07bMdO5C3AKeXkG+CZ
-         3lC2RNCtP8gsOL/uGAngn4eSsxfXBRRQhsnL6uxObm+PQONDgIxa8+fOEyCO6DVz4vD8
-         hN4jM+Odhb3NT60ZMp24erfFF4jbWXsGUax2GTeqIBbWNpK8waO+K82Z0Rp//GAMhjcS
-         KbiorFAPOaF9uSCBRKtlZOvVwaDE/RlaSIigG2x7YoeS6PY0xUSVuvbZZpW+oTYdfnDo
-         2RJYG0M6tb5rU2hwNImHMDWc7GwpaPk/ED1wiu8veBvqRLKOQfBtEP+Le2wYLDo8PFta
-         lNBw==
+        b=GsVIXfhHxW7cjW1vY668hBylh85J2AksnNJYoIkvbZjP4ZdSHaI+wN0Hmg+AVOlWgj
+         Cuy4X9szTlZRMv0fZRaGu/javPenLBAf/uUBhqbMQkdHNOGnNsxnXbcae1rHKQ+isqPx
+         YX9d9e0SFQitC2EQw6n/osSsg9y+Hv0V9T/VKISUGJa3w7uaDEccy7SH2Nd7nyb7MiAc
+         rg77JYY/ZZgYMkaxqahue6GbzOLU7St4hWFB2FfFyouchb3V5Q9Qj4BgUIjUzAKL2dH5
+         op24IPvbCEI53mzfD6fJFfbx9OiffRH5APcmfxI22QOO9VwQA2ugOj5tJL/GG+nZGfeb
+         KzFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature
          :arc-authentication-results;
-        bh=1Vg2pbggVnGrHJUxajLBbb0a41KlzEFHbzHTwZ4Hbl8=;
-        b=SfbyzvW6G395Z7O4oAk0ERuVJOV6ptCpGBaROGGxvoeG9gbPunXrcPDQuPZf4DW3kg
-         PX33eEkeDeAxhYWdPQ8h85/aotMeDfKixMKHhJ0llPdK3ET/bEQ5pIJS5DCiPGOIKXpG
-         7Ccczu43sjoxUn0aqIYR5wYS8kn3z+QhwjHqV3mYsSkXOqJeaHJBnBUlsXxYoNWp4WlP
-         1QEpso2/mCsX2JNwNtMS9upqQTQrh+M0djsIe9xqueC6p3+g1Sp0lFQITiXPI+zHbrHv
-         OaYgxVwW0Qk6VojeOHOrTvrycRm15kln+RgQS+k4gSvaZLqGFc13DgTrd6q+RhP+JNmu
-         eoZA==
+        bh=8Dz1M2X+no5h5Vzk/k3Zg+o6ODC09UJ4GHbyUKfPDFw=;
+        b=kXuQedgbOUDJ/lGSQvuKT+t0ehdudlGDEPQicAaw+NQa6itM7xm+gPIcGUFqQ4nc2j
+         HySD+T3X719/H5rQoETJfE2/8ORghNH/ObLowfDCsBn/3or1q9o5EtTkfnRQlkZLcaho
+         KOEF0qg6BzlfQGahXx4auEwGH2LTV3gKXq1EXmUb9g6pcBK/OdTWiZCrjGJLNL/tJJpb
+         NCkb0uiByrT0hGwEPKKo/wJ7ZoGxtco9r1VXCB6pz11RhMMge3LimQny7Cz5TIonwxUt
+         SgxpbrDGV6IXps3/geUQ3PqcKIoszB7wG6KBOymo/AoW1qTjSo8+sxz1T6Fz8jFtpy3B
+         mkfg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=iiKHqs7o;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=OFE+6Nyd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z24si27309ybi.606.2018.01.26.08.45.56
+        by mx.google.com with ESMTPS id k143si3794164ybk.435.2018.01.26.11.03.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 26 Jan 2018 08:45:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 26 Jan 2018 11:03:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=iiKHqs7o;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=OFE+6Nyd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37652 helo=lists.gnu.org)
+Received: from localhost ([::1]:46429 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ef78V-00041H-Ud
-	for alex.bennee@linaro.org; Fri, 26 Jan 2018 11:45:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40995)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ef9I7-0001tY-HJ
+	for alex.bennee@linaro.org; Fri, 26 Jan 2018 14:03:59 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34292)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ef6zw-0005xe-6o
-	for qemu-devel@nongnu.org; Fri, 26 Jan 2018 11:37:05 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1ef9Hy-0001su-KO
+	for qemu-arm@nongnu.org; Fri, 26 Jan 2018 14:03:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ef6zv-0001ae-9R
-	for qemu-devel@nongnu.org; Fri, 26 Jan 2018 11:37:04 -0500
-Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:37943)
+	(envelope-from <richard.henderson@linaro.org>) id 1ef9Hv-0002b8-OJ
+	for qemu-arm@nongnu.org; Fri, 26 Jan 2018 14:03:50 -0500
+Received: from mail-pf0-x236.google.com ([2607:f8b0:400e:c00::236]:42300)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1ef6zv-0001Zy-3n
-	for qemu-devel@nongnu.org; Fri, 26 Jan 2018 11:37:03 -0500
-Received: by mail-oi0-x241.google.com with SMTP id 5so682749oip.5
-	for <qemu-devel@nongnu.org>; Fri, 26 Jan 2018 08:37:03 -0800 (PST)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1ef9Hv-0002af-Ho
+	for qemu-arm@nongnu.org; Fri, 26 Jan 2018 14:03:47 -0500
+Received: by mail-pf0-x236.google.com with SMTP id b25so854648pfd.9
+	for <qemu-arm@nongnu.org>; Fri, 26 Jan 2018 11:03:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=1Vg2pbggVnGrHJUxajLBbb0a41KlzEFHbzHTwZ4Hbl8=;
-	b=iiKHqs7osGwfQcmc6+EZxIkihnEGXm6voh2oiP6JMI2XFhUr8k51FMk32YgPSvB7/H
-	o7bIXRtf5wqckN+DVDnxvnrpRw6NFfXDskGoScggqtoJTyM9aXa5cFkGBvMmtj3PKa3R
-	o8OYkjx2UmSE4guj2zheJ8Q6r04n8C0X0oB/o=
+	h=subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=8Dz1M2X+no5h5Vzk/k3Zg+o6ODC09UJ4GHbyUKfPDFw=;
+	b=OFE+6Nydv36UFDxAekOBDyh5JSwxaQyqdEBpods4r9FzGCg/KASMg3mvvNKPO6ul5f
+	FtW25rAyV8Qy5unOhonrcwI6aMog70AJTVhR7zVCa82CB0u29KlpK2a0Oo5PAe9hn8w+
+	TpgVMwjL7E6fxaSB0NpOsy4S2ygLE7tU/73Fo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=1Vg2pbggVnGrHJUxajLBbb0a41KlzEFHbzHTwZ4Hbl8=;
-	b=HGSNUV6rNusat8U/x/P8KYHl3QcjcIuQLbSA95WpghE1AL9lUYvLm+hXXqOj3SVZau
-	fRSF+KBiDCdwLElcy7nrtsbm8KK6WeJDgV2JYcdj8l5rNFxydtbUmUjBR7UwbOIJIaFL
-	PJUvJxluQiMgrOpRGN89Zb0pzXdTGyalBrH7JpPIV1Ggpr+liPwvilJL1vUqRDtu66ot
-	LG+v4958OKj0d+GNCPEIlg/u1+4zJY114JzuyKh39/Gen8gcohsOn2gVzOs94bIyKSAY
-	wX46AUjtvEm2PFKSBi6ATe1Qpgm9pQekQB/GDsfZ6QlQdLoIw1qfX5IGBQ/AqwsfIkOe
-	HQaQ==
-X-Gm-Message-State: AKwxytdtIa9vdnP7MM1X/TuIlEvCooA/NEiERoYnKzNbGUbecC7AzWg+
-	nqnNMsA0hEE2dz8BXY6SHnku7W2P2CDggakOOI3U4Q==
-X-Received: by 10.202.105.84 with SMTP id e81mr4018889oic.305.1516984622222;
-	Fri, 26 Jan 2018 08:37:02 -0800 (PST)
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=8Dz1M2X+no5h5Vzk/k3Zg+o6ODC09UJ4GHbyUKfPDFw=;
+	b=R3UifpzWUbPYFYm293vSq8w5t7QQ77cyu1bB5ua6Nmmp+lMEK31iL1Q93dD51bpFdY
+	jyuB+n8Io/3NFixVOC1wpXE0s6m1NYIZraR5ca8pBDwmZebavr6AzWMgtWuYlU6GbgrK
+	yZ2xpWmM3XVZc1z2jczBCohqYH7M6dASYEY/Ruv8TgiOZWmyGsxiSBqtdMXJBtA93dmJ
+	qSYDMboiAv6U4HlAYNhtHsTHZJKCRcv8k4rrXJKNzGxtNEO6qYYldaq7cp3dzVCnRsc+
+	MHz7vcQmv0sdHMCmZ7FLxFg3Z87N05/ijjV/8IVFEzKE1zj6WRH8Xz3/4tzluiZt9oLE
+	dcSg==
+X-Gm-Message-State: AKwxyteRNKWGRpZwwDctQaAKFq1/mAJoiw6YhlKdxZtJmFJEnIVj4R97
+	IKFl96M3Pu2iLFNw8dwfTT3ZRjxzLN4=
+X-Received: by 10.101.91.140 with SMTP id i12mr15752618pgr.297.1516993426168; 
+	Fri, 26 Jan 2018 11:03:46 -0800 (PST)
+Received: from cloudburst.twiddle.net (174-21-6-47.tukw.qwest.net.
+	[174.21.6.47]) by smtp.gmail.com with ESMTPSA id
+	e185sm21947752pfg.155.2018.01.26.11.03.44
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 26 Jan 2018 11:03:45 -0800 (PST)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20171218172425.18200-1-richard.henderson@linaro.org>
+	<20171218172425.18200-10-richard.henderson@linaro.org>
+	<CAFEAcA9Dmdh+u7AZHhjEkS3zc6i4yf+Eo1-NuksgVdo1cqmKFQ@mail.gmail.com>
+	<707306d7-8ee4-ab6b-2154-290647a72779@linaro.org>
+	<CAFEAcA9PGHMPeATRHESeUEWaU17OpVw99p-+U9KzOPaitSgEGQ@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <161aba52-a937-2481-23a5-0bd2d589e23e@linaro.org>
+Date: Fri, 26 Jan 2018 11:03:43 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.2
 MIME-Version: 1.0
-Received: by 10.157.61.133 with HTTP; Fri, 26 Jan 2018 08:36:41 -0800 (PST)
-In-Reply-To: <5A6B5091.8030601@hisilicon.com>
-References: <5A6B5091.8030601@hisilicon.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 26 Jan 2018 16:36:41 +0000
-Message-ID: <CAFEAcA_39SgDKFnkrcVePs89kYUMHvqqAdnkFhrCa=GYTu0Kpw@mail.gmail.com>
-To: Wei Xu <xuwei5@hisilicon.com>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <CAFEAcA9PGHMPeATRHESeUEWaU17OpVw99p-+U9KzOPaitSgEGQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::241
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH] pl011: do not put into fifo
- before enabled the interruption
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400e:c00::236
+Subject: Re: [Qemu-arm] [PATCH v2 09/11] target/arm: Decode aa64 armv8.3
+ fcmla
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Rob Herring <rob.herring@linaro.org>,
-	"Chenxin \(Charles\)" <charles.chenxin@huawei.com>,
-	tiantao6@huawei.com, QEMU Developers <qemu-devel@nongnu.org>,
-	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
-	Linuxarm <linuxarm@huawei.com>,
-	"Liuxinliang \(Matthew Liu\)" <z.liuxinliang@hisilicon.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Daode Huang <huangdaode@hisilicon.com>,
-	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	"Liguozhu \(Kenneth\)" <liguozhu@hisilicon.com>,
-	Zhangyi ac <zhangyi.ac@huawei.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cHJzZjGbr29N
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wpj/iyQ8ReAJ
 
-On 26 January 2018 at 16:00, Wei Xu <xuwei5@hisilicon.com> wrote:
-> If the user pressed some keys in the console during the guest booting,
-> the console will be hanged after entering the shell.
-> Because in the above case the pl011_can_receive will return 0 that
-> the pl011_receive will not be called. That means no interruption will
-> be injected in to the kernel and the pl011 state could not be driven
-> further.
->
-> This patch fixed that issue by checking the interruption is enabled or
-> not before putting into the fifo.
->
-> Signed-off-by: Wei Xu <xuwei5@hisilicon.com>
-> ---
->  hw/char/pl011.c | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/hw/char/pl011.c b/hw/char/pl011.c
-> index 2aa277fc4f..6296de9527 100644
-> --- a/hw/char/pl011.c
-> +++ b/hw/char/pl011.c
-> @@ -229,6 +229,8 @@ static int pl011_can_receive(void *opaque)
->      PL011State *s = (PL011State *)opaque;
->      int r;
->
-> +    if (!s->int_enabled)
-> +       return 0;
->      if (s->lcr & 0x10) {
->          r = s->read_count < 16;
->      } else {
-> --
+On 01/26/2018 02:07 AM, Peter Maydell wrote:
+>> The SVE pseudocode for the same operation is clearer than that in the main ARM
+>> ARM, and is nearer to what I used:
+>>
+>>   for e = 0 to elements-1
+>>     if ElemP[mask, e, esize] == '1' then
+>>         pair = e - (e MOD 2);  // index of first element in pair
+>>         addend = Elem[result, e, esize];
+>>         if IsEven(e) then  // real part
+>>             // realD = realA [+-] flip ? (imagN * imagM) : (realN * realM)
+>>             element1 = Elem[operand1, pair + flip, esize];
+>>             element2 = Elem[operand2, pair + flip, esize];
+>>             if neg_real then element2 = FPNeg(element2);
+>>         else  // imaginary part
+>>             // imagD = imagA [+-] flip ? (imagN * realM) : (realN * imagM)
+>>             element1 = Elem[operand1, pair + flip, esize];
+>>             element2 = Elem[operand2, pair + (1 - flip), esize];
+>>             if neg_imag then element2 = FPNeg(element2);
+>>         Elem[result, e, esize] = FPMulAdd(addend, element1, element2, FPCR);
+>>
+>> In my version, e0/e1 are element1/element2 (real) and e2/e3 are
+>> element1/element2 (imag).
+> 
+> Thanks. Could we use the same indexing (1/2/3/4) as the final Arm ARM
+> pseudocode?
 
-This doesn't look right. You should be able to use the PL011
-in a strictly polling mode, without ever enabling interrupts.
-Returning false in can_receive if interrupts are disabled
-would break that.
+Done.
 
-If the user presses keys before interrupts are enabled,
-what ought to happen is:
- * we put the key in the FIFO, and update the int_level flags
- * when the FIFO is full, can_receive starts returning 0 and
-   QEMU stops passing us new characters
- * when the guest driver for the pl011 initializes the
-   device and enables interrupts then either:
-    (a) it does something that clears the FIFO, which will
-    mean can_receive starts allowing new chars again, or
-    (b) it leaves the FIFO as it is, and we should thus
-    immediately raise an interrupt for the characters still
-    in the FIFO; when the guest handles this interrupt and
-    gets the characters, can_receive will permit new ones
 
-What is happening in your situation that means this is not
-working as expected ?
+r~
 
-thanks
--- PMM

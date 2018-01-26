@@ -1,170 +1,189 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp3739945wrt;
-        Mon, 1 Oct 2018 05:06:56 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV60ZHhXZElyuhTi8rJzOA4CMru/Y2dnJpqiOjII0OFOMRmvpvQWoESx/L2x1OVDRd8ihBO3I
-X-Received: by 2002:a37:a38b:: with SMTP id m133-v6mr7873962qke.356.1538395615921;
-        Mon, 01 Oct 2018 05:06:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538395615; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp997456wma;
+        Fri, 26 Jan 2018 10:08:58 -0800 (PST)
+X-Google-Smtp-Source: AH8x225wdaa4rHpZRd4jH9N02D8wHdSxNgl35xJhSOHPG/DsgLXDl+nTcxxEiFn7DxBapQYL4hWc
+X-Received: by 10.37.209.206 with SMTP id i197mr11945028ybg.471.1516990138593;
+        Fri, 26 Jan 2018 10:08:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516990138; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ty3ZkqVzcbwHDXV3RDb2hxYcj4e48Pv4OTfgq6Vrkc7wFsMyXcoMO9O7jiN0zZORNf
-         yfodzMyBnYNvIocaWczs6SSoOFupiapndtDwCxdhoBWbiA8WxxlIxv8ftUJrUrxbs5wd
-         AXYjC3aTHRrV2DOEQniD0IzrYQaKQpjz2M0viOoyrz5lvjg9zXy2r+JhASuFy4qtL+/S
-         7w5F8SBQJJmIr82kv6xUxJR7Rq7udm6whfCAXYzZMAbS/87atmGZ/OdTRygDyW9tTZeh
-         gSuBoalAxyEwp7EIa4eibKBBth0ietLZAtsmfUzBqig4p7r7nFDdaVLwcctVwIB9hY5n
-         ozdg==
+        b=r2P/5hu++LjVMIP2ZlCqR+6i1p14b7JB5CV7SGdAnylleSxtNtnKCTYnbm2Gw4wFMB
+         jYdvjRuhhcq+bWoL3mySIcpPnsdc7qIg/L9DeYciYvwNrt8zaI1LlRb5MShhRZVbXerD
+         pjzskgVhuTGiA+wz5bCcdOlI48LRZciA/4WeW/VLmB71zNAI7Lxc3R5YuNbbnIUrnALP
+         rI/T0Ne/DgLIE8xfbXc4PsVrorh5MPy2/iprDrHaXEUsmkOR4TW/LJVUesdlzOC2eiTU
+         UhzA4xEt9hRG8Z3xVjsqQr9UmUHNHZvFRoSV5rOrKO3bbOwPmzxXl7fv1eytvylhaVTD
+         2vmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:dkim-signature
-         :dkim-signature;
-        bh=n/t+w6m9tOeo1o1NbTJTcaajn88wNcliKvXunrXR0MI=;
-        b=Xt28wBYm3X3AE0hjuf8RO+/Y6RKKeCjhGVqV96uTgcBe6Llh6v4Myx7TQ1QG4OrAOb
-         z17mdQHlll31PlH9Yxmvfaf0RTz2K4nCLubp+ANIvSj+1pzRcU+qihN+gXx9nZsorXH1
-         bbFGsOhi9sX5vOnAdOYEHsv2Kzdkqjwiwmx8kmLadvPLBwEN7lrZK/ECHMBM8d884sE/
-         5or03eZYcpkkxvPNGPqG9l5QggEVTO2InYGpX7DY0Pl/LbLD7b0BZz4IFPhk4X96yvXe
-         2qlmwlI5KnbOZ8xeDvT1Na0GxtBygBxGIjo22/gifFDc1L3z7RGc3+O/gJCovCVpEki5
-         W/nw==
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=ZNBUGVoktsr8pOVjIpbaU5FIHaWgaGtY5jv26m0a8FY=;
+        b=viGwcF2enXSKApZb0g/KoGu6+kMpkhVbg6eNKce6rGiMQ8JFTsloFPTQz7GpPpUNge
+         UK/Z5lcjyoZTPsL/gsm1aWKpwK9NClRy9QnfBwPzLoszxos6Ruzl11NpuULY1+zlLIml
+         Xs2dzCzATMfxO2yi1JolLLZ8ywHPlBnAFciEOvBiSelG3RzxXkX6LlR9nPJ9DDz7EGpE
+         3Q1Thz93Pd4srO5VLkkyf+Tiu3KMoBLgIIJwMHVbGOXBxisygV3hAM/hucgYBxkJ8n0+
+         /5rBZ+G7DjRT7r5PTDwz96BtG1Dy59uiFmmOCGVo4BRu3y2ZP+2QfjJOPIXJm/l8eGTC
+         AI0A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=Vpnme4Hc;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=nD+spMeP;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="tuO/KFn9";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n37-v6si2043144qte.352.2018.10.01.05.06.55
+        by mx.google.com with ESMTPS id r9si993501ywl.438.2018.01.26.10.08.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 01 Oct 2018 05:06:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 26 Jan 2018 10:08:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=Vpnme4Hc;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=nD+spMeP;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="tuO/KFn9";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37895 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:43040 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g6wyV-0003S1-DP
-	for alex.bennee@linaro.org; Mon, 01 Oct 2018 08:06:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35201)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ef8Qs-00028c-1s
+	for alex.bennee@linaro.org; Fri, 26 Jan 2018 13:08:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39593)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1g6wpl-0002iF-KY
-	for qemu-arm@nongnu.org; Mon, 01 Oct 2018 07:57:54 -0400
+	(envelope-from <xuwei5@huawei.com>) id 1ef8BD-0002vY-Go
+	for qemu-devel@nongnu.org; Fri, 26 Jan 2018 12:52:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1g6wph-0005z9-N4
-	for qemu-arm@nongnu.org; Mon, 01 Oct 2018 07:57:53 -0400
-Received: from greensocs.com ([193.104.36.180]:40141)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>)
-	id 1g6wph-0005jR-AE; Mon, 01 Oct 2018 07:57:49 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id E72B1511C6F;
-	Mon,  1 Oct 2018 13:57:15 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1538395035;
-	bh=KdNu9QGOUCYSzJWzlap/9zyYoowEZ7QOtkLhorspP1U=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=Vpnme4Hcwp6+JXnt6V/2++4iIw1OlipkiM8ty678X8b9pqUSrQZzzOEc49Q3yuG5/
-	ulzU9dReuMiLhHXwzlDCler0evfQt7W28H5ITaXg9tOe6FBdm8uIoZlwtXaic4Gkap
-	e3PMKEmm6bJKWIob/U0bTXuo86Qqpf6joSFsoFfU=
-X-Virus-Scanned: amavisd-new at greensocs.com
-Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=nD+spMeP;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=tuO/KFn9
-Received: from greensocs.com ([127.0.0.1])
-	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4MNwaX5qi0Fh; Mon,  1 Oct 2018 13:57:15 +0200 (CEST)
-Received: by greensocs.com (Postfix, from userid 998)
-	id 2820D511C51; Mon,  1 Oct 2018 13:57:13 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1538395033;
-	bh=KdNu9QGOUCYSzJWzlap/9zyYoowEZ7QOtkLhorspP1U=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=nD+spMePMBQqIfGHevLYYAXfsZKbFSINbD8Itpu54ZE+kg+ku5zh0fAM9ZLlbfObR
-	I4O55rQQnIUiGxS0Y+DQwKNSpGLpGbHPudZu0gVbv4I/8hyftm1JIHSCie7bl0CVxA
-	6hNoCQd6cj6m8bZFE/ehEjXTGo/oktUe2feH24xg=
-Received: from michell-laptop.home.lmichel.fr
-	(LFbn-1-8165-82.w90-112.abo.wanadoo.fr [90.112.74.82])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	(Authenticated sender: luc.michel@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id 8A7C7511C78;
-	Mon,  1 Oct 2018 13:57:12 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1538395032;
-	bh=KdNu9QGOUCYSzJWzlap/9zyYoowEZ7QOtkLhorspP1U=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=tuO/KFn9GagAZrQ4kFQ/J5vtpcyzaeFJC4HSG4u7qo3UVVQcTlwqgLHCIrvjdwT7u
-	3r5q1kMWf+Emyx4KbhbX23zt5ARSETjpqF66+0XYBt3p6X+eEuXroISod0XKSy5HbF
-	CkX2srPKuzPDEt9EILPRr4OvSuj2k3vigca2lUd0=
-From: Luc Michel <luc.michel@greensocs.com>
-To: qemu-devel@nongnu.org
-Date: Mon,  1 Oct 2018 13:57:03 +0200
-Message-Id: <20181001115704.701-15-luc.michel@greensocs.com>
-X-Mailer: git-send-email 2.19.0
-In-Reply-To: <20181001115704.701-1-luc.michel@greensocs.com>
-References: <20181001115704.701-1-luc.michel@greensocs.com>
+	(envelope-from <xuwei5@huawei.com>) id 1ef8BC-0006mm-HH
+	for qemu-devel@nongnu.org; Fri, 26 Jan 2018 12:52:47 -0500
+Received: from [45.249.212.35] (port=47477 helo=huawei.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <xuwei5@huawei.com>)
+	id 1ef8B6-0006iX-JM; Fri, 26 Jan 2018 12:52:40 -0500
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
+	by Forcepoint Email with ESMTP id 0F276C67ACECF;
+	Sat, 27 Jan 2018 01:05:33 +0800 (CST)
+Received: from [127.0.0.1] (10.202.226.123) by DGGEMS403-HUB.china.huawei.com
+	(10.3.19.203) with Microsoft SMTP Server id 14.3.361.1;
+	Sat, 27 Jan 2018 01:05:23 +0800
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <5A6B5091.8030601@hisilicon.com>
+	<CAFEAcA_39SgDKFnkrcVePs89kYUMHvqqAdnkFhrCa=GYTu0Kpw@mail.gmail.com>
+From: Wei Xu <xuwei5@hisilicon.com>
+Message-ID: <5A6B5FCA.2080009@hisilicon.com>
+Date: Fri, 26 Jan 2018 17:05:14 +0000
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:38.0) Gecko/20100101
+	Thunderbird/38.6.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 193.104.36.180
-Subject: [Qemu-arm] [PATCH v2 14/15] gdbstub: add multiprocess extension
- support
-X-BeenThere: qemu-arm@nongnu.org
+In-Reply-To: <CAFEAcA_39SgDKFnkrcVePs89kYUMHvqqAdnkFhrCa=GYTu0Kpw@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.202.226.123]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 45.249.212.35
+X-Mailman-Approved-At: Fri, 26 Jan 2018 13:07:00 -0500
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH] pl011: do not put into fifo
+ before enabled the interruption
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, alistair@alistair23.me,
-	mark.burton@greensocs.com,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	saipava@xilinx.com, edgari@xilinx.com, qemu-arm@nongnu.org,
-	Luc Michel <luc.michel@greensocs.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2qJEa3SpMlYV
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Rob Herring <rob.herring@linaro.org>, Marc Zyngier <marc.zyngier@arm.com>,
+	"Chenxin \(Charles\)" <charles.chenxin@huawei.com>,
+	tiantao6@huawei.com, QEMU Developers <qemu-devel@nongnu.org>,
+	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+	Linuxarm <linuxarm@huawei.com>,
+	"Liuxinliang \(Matthew Liu\)" <z.liuxinliang@hisilicon.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Daode Huang <huangdaode@hisilicon.com>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	"Liguozhu \(Kenneth\)" <liguozhu@hisilicon.com>,
+	Zhangyi ac <zhangyi.ac@huawei.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: NUUZ2+GM8zVv
 
-Add multiprocess extension support by enabling multiprocess mode when
-the peer requests it, and by replying that we actually support it in the
-qSupported reply packet.
+Hi Peter,
 
-Signed-off-by: Luc Michel <luc.michel@greensocs.com>
----
- gdbstub.c | 4 ++++
- 1 file changed, 4 insertions(+)
+On 2018/1/26 16:36, Peter Maydell wrote:
+> On 26 January 2018 at 16:00, Wei Xu <xuwei5@hisilicon.com> wrote:
+>> If the user pressed some keys in the console during the guest booting,
+>> the console will be hanged after entering the shell.
+>> Because in the above case the pl011_can_receive will return 0 that
+>> the pl011_receive will not be called. That means no interruption will
+>> be injected in to the kernel and the pl011 state could not be driven
+>> further.
+>>
+>> This patch fixed that issue by checking the interruption is enabled or
+>> not before putting into the fifo.
+>>
+>> Signed-off-by: Wei Xu <xuwei5@hisilicon.com>
+>> ---
+>>  hw/char/pl011.c | 2 ++
+>>  1 file changed, 2 insertions(+)
+>>
+>> diff --git a/hw/char/pl011.c b/hw/char/pl011.c
+>> index 2aa277fc4f..6296de9527 100644
+>> --- a/hw/char/pl011.c
+>> +++ b/hw/char/pl011.c
+>> @@ -229,6 +229,8 @@ static int pl011_can_receive(void *opaque)
+>>      PL011State *s = (PL011State *)opaque;
+>>      int r;
+>>
+>> +    if (!s->int_enabled)
+>> +       return 0;
+>>      if (s->lcr & 0x10) {
+>>          r = s->read_count < 16;
+>>      } else {
+>> --
+> 
+> This doesn't look right. You should be able to use the PL011
+> in a strictly polling mode, without ever enabling interrupts.
+> Returning false in can_receive if interrupts are disabled
+> would break that.
+> 
+> If the user presses keys before interrupts are enabled,
+> what ought to happen is:
+>  * we put the key in the FIFO, and update the int_level flags
+>  * when the FIFO is full, can_receive starts returning 0 and
+>    QEMU stops passing us new characters
+>  * when the guest driver for the pl011 initializes the
+>    device and enables interrupts then either:
+>     (a) it does something that clears the FIFO, which will
+>     mean can_receive starts allowing new chars again, or
+>     (b) it leaves the FIFO as it is, and we should thus
+>     immediately raise an interrupt for the characters still
+>     in the FIFO; when the guest handles this interrupt and
+>     gets the characters, can_receive will permit new ones
+>
 
-diff --git a/gdbstub.c b/gdbstub.c
-index 51cc11981e..89f6803533 100644
---- a/gdbstub.c
-+++ b/gdbstub.c
-@@ -1692,15 +1692,19 @@ static int gdb_handle_packet(GDBState *s, const c=
-har *line_buf)
-             put_packet(s, "OK");
-             break;
-         }
- #endif /* !CONFIG_USER_ONLY */
-         if (is_query_packet(p, "Supported", ':')) {
-+            if (strstr(p, "multiprocess+")) {
-+                s->multiprocess =3D true;
-+            }
-             snprintf(buf, sizeof(buf), "PacketSize=3D%x", MAX_PACKET_LEN=
-GTH);
-             cc =3D CPU_GET_CLASS(first_cpu);
-             if (cc->gdb_core_xml_file !=3D NULL) {
-                 pstrcat(buf, sizeof(buf), ";qXfer:features:read+");
-             }
-+            pstrcat(buf, sizeof(buf), ";multiprocess+");
-             put_packet(s, buf);
-             break;
-         }
-         if (strncmp(p, "Xfer:features:read:", 19) =3D=3D 0) {
-             const char *xml;
---=20
-2.19.0
+Yes, now it is handled like b.
+
+> What is happening in your situation that means this is not
+> working as expected ?
+
+But in the kernel side, the pll011 is triggered as a level interruption.
+During the booting, if any key is pressed ,the call stack is as below:
+QEMU side:
+pl011_update
+-->qemu_set_irq(level as 0)
+---->kvm_arm_gic_set_irq
+
+Kernel side:
+kvm_vm_ioctl_irq_line
+-->kvm_vgic_inject_irq
+---->vgic_validate_injection (if level did not change, return)
+---->vgic_queue_irq_unlock
+
+Without above changes, in the vgic_validate_injection, because the
+interruption level is always 0, this irq will not be queued into vgic.
+And the guest will not read the pl011 fifo.
+
+Best Regards,
+Wei
+
+> 
+> thanks
+> -- PMM
+> 
+> .
+> 
 

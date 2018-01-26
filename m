@@ -1,265 +1,168 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp3721228wrq;
-        Mon, 18 Jun 2018 02:59:00 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKDxfHlYaL1n7u8x3rh22hK7pS+rqnou3xpr5znn9/zYWTfrQkDczOfSMhpZxhZ95RStWXN
-X-Received: by 2002:a37:2e46:: with SMTP id u67-v6mr9110484qkh.106.1529315940709;
-        Mon, 18 Jun 2018 02:59:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529315940; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp952612wma;
+        Fri, 26 Jan 2018 09:25:05 -0800 (PST)
+X-Google-Smtp-Source: AH8x226q/OsLZdrWoM4kiNy1ia8MY/sQUhqsMzKF4XIVr+c3W/MANm+BNaDKEmn9t3zDUXpgHNpM
+X-Received: by 10.13.212.67 with SMTP id w64mr11237732ywd.82.1516987505478;
+        Fri, 26 Jan 2018 09:25:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516987505; cv=none;
         d=google.com; s=arc-20160816;
-        b=H1MU1GYT5ALqheJnb1Auo+s/Tz7CvZFtXh7qrGXKV885C31E7MzDoUZ7b99Ibcm1SO
-         UpfsSrn2CAs1O+NPuSSTcamsElzDO+ELkwwBvrzcqpQngm2XTJh99zBIIArxo/KXaCUM
-         LYBQhFoJOx3cdPAXC12Mvxw75DZgDljtKfM+rb8bpr0JGIogGnrpY4WOJ6hq8p04zMvE
-         kXwwwww06hyNOk30MYiInBUMyhIqqSO9cuLoxYHTeCqsUYvKIOGQKAW5fGgOwqkFz2Dx
-         sM5kY2NiDQtcXj9XjjXagbUzwzsVAGNVrtjPNRpU+RZZZzA3BAu1gmvzzBagi6RKZ6Bz
-         daTw==
+        b=AdeV9YgY2sDIDZwhlVq7krTV3/BDFvmnHIf7WVuwPJ712uiwjOuHMsAUCTfMFh5qJZ
+         hqMe+PYGs+XjH4En36c/sASVx45pQdaZLsanV78hmcIzARyLcOo0bEBgdCKBFk17QRTE
+         oG9xa36dqtl9fCW/NHg+tFUP3VG/9P3ZVGfOkakQoGbavEWXeHEDu82keZZ79esxb2XS
+         Gowimt4enPB/EyIMpkdKuTOX10xgJtGCwOVi7/YCc4+6rOAENIGOb7sRqbuqgTa00vrc
+         Ehh97807gTiwJLAm46inZ/3w17X39dOGZ9/iWt3grHQuuc8m5pkkvzrbL4bhbt5T9c2M
+         TrOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=ub0OT4BU1ACcRlvehk3Up8SCJMGVBg16/2VW6IfIExE=;
-        b=KmPE8XqyAscOBA8wFDJbU/+ZlH0CqrWMAGYUSogAfX8zE9nf71p3wy90NCp7H0TfJC
-         JnGJu+zWCp2kHfp6vcwpaxZuT5xkfVqWDipZpW0e94GCvY//czdgYpIpvv3j/9Syfi23
-         R+fH14fUO9mmj7ESxaOIMdmL05y9VJKyiPFIFOWfDn1qoe+EJNbe1fznhYcsQd0EZfFL
-         oZfQfcEex+2tc7j4fmQEHFvYHYlbNGTPygHELUmHURHWWRbt68RAThxJ774LQQShx6ZT
-         p2A6VfZPsfuAZRRRRXQdhfsJs4b0nb1MRgkuU5bPmwOgc9bRjddhflPhTSIP4VPrQf2k
-         yewQ==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=uNifLND6RnDvKnLDQVYIXe/qUh9vNF7mMn4zbI4lNXk=;
+        b=A1fbCKforIDXKl3JgAhD0UV3Lnj3wCI1BmzeChYE7qccLWPO+e477lEr/3KuxA9IJK
+         Z22qi6qSPufiiL6K7SL2UbAmw076gaybkbWtNXtAaaG368uNo1I8KN8ndVs+a9Rky8BR
+         2q0nKbXdVrIBPxRaeeO+TtIW1uzrvqf6i/beSQnkqQmD8yQOJMne/v/AlMdzrNn3V1nc
+         W7fjM1Y6vC14mFbwBqhTa+/BILuSOGNi4rJGzvLuPxJHQOSj+d7gwWu0y1UmmDYkb8Hm
+         wD4Me3BAdvSJlI89aVuJzdzmYUsdVs7ZqrX6aGFyN2i8NI+AMqPR8E2wD9Sk7c40Ja17
+         JPAA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=AL3z7XSu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u188-v6si7212104qkb.204.2018.06.18.02.59.00
+        by mx.google.com with ESMTPS id d4si980118ywa.413.2018.01.26.09.25.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 18 Jun 2018 02:59:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 26 Jan 2018 09:25:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33735 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=AL3z7XSu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:40413 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fUqw8-0001ZW-6p
-	for alex.bennee@linaro.org; Mon, 18 Jun 2018 05:59:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45655)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ef7kO-00038p-SQ
+	for alex.bennee@linaro.org; Fri, 26 Jan 2018 12:25:04 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54094)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fUqvN-0001PT-60
-	for qemu-devel@nongnu.org; Mon, 18 Jun 2018 05:58:14 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1ef7hH-0000bt-KL
+	for qemu-arm@nongnu.org; Fri, 26 Jan 2018 12:21:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fUqvM-0003L1-33
-	for qemu-devel@nongnu.org; Mon, 18 Jun 2018 05:58:13 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:57158 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
-	id 1fUqvE-0003JH-Tl; Mon, 18 Jun 2018 05:58:05 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 62C6A81663C3;
-	Mon, 18 Jun 2018 09:58:04 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-116-109.ams2.redhat.com
-	[10.36.116.109])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 4D29C7C4F;
-	Mon, 18 Jun 2018 09:57:59 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id 7371624EF0F; Mon, 18 Jun 2018 11:57:58 +0200 (CEST)
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Mon, 18 Jun 2018 11:57:56 +0200
-Message-Id: <20180618095758.5006-3-kraxel@redhat.com>
-In-Reply-To: <20180618095758.5006-1-kraxel@redhat.com>
-References: <20180618095758.5006-1-kraxel@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Mon, 18 Jun 2018 09:58:04 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Mon, 18 Jun 2018 09:58:04 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'kraxel@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-devel] [PULL 2/4] hw/display: add ramfb,
- a simple boot framebuffer living in guest ram
-X-BeenThere: qemu-devel@nongnu.org
+	(envelope-from <peter.maydell@linaro.org>) id 1ef7hG-0002Z8-KB
+	for qemu-arm@nongnu.org; Fri, 26 Jan 2018 12:21:51 -0500
+Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:42641)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1ef7hG-0002YM-FA
+	for qemu-arm@nongnu.org; Fri, 26 Jan 2018 12:21:50 -0500
+Received: by mail-oi0-x243.google.com with SMTP id c8so776653oiy.9
+	for <qemu-arm@nongnu.org>; Fri, 26 Jan 2018 09:21:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=uNifLND6RnDvKnLDQVYIXe/qUh9vNF7mMn4zbI4lNXk=;
+	b=AL3z7XSumr9F9P6H1jK2Z2CpNDbim0Taj4NAF8OpFtV/xQLkMC6BmiU6ZXehzRbuX2
+	B3wKROl6yPvJUaD0FWHo4vng3RDK8k5hYwVbHHX6NJs9qEf8YoWQ+NW+YFNLQzP73lnP
+	y4TqPYjYCI/bh2u34il+4xnAcUHdL1MpYTl/Y=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=uNifLND6RnDvKnLDQVYIXe/qUh9vNF7mMn4zbI4lNXk=;
+	b=J4fW8IwOC8IyjxfOr4IitIkTBWjzyBfgSmJhLYy0mgfGfbaGvnbXSNDZ8JhksHieqr
+	C5s+GR7SN7fYQgbexbuSVTwa5+7o4xK3z89/YPedsvNj6h6tEx/+H/bwbelM5W23bZPt
+	fE4rQ1XG92IQoMX/9nkuOrhp9IFemHGYJGz9lYEKqYx4MfPOF2IQSB1CRu9pqT0cKJYD
+	6nFF9TiiAxhpx/cV7oaILmf4dx2YAl6gLV1lsPTtPk0n5FVOa/3LquR6Q0iqc+JcbA3B
+	3S6WesrWMoDcUHF40YSzIpQICQmyJCPrDQiDUj2Ei3Y7H73h4RPmL1JsSHwH+kATtfRC
+	7fcQ==
+X-Gm-Message-State: AKwxytd3/AWP17m24DVELzWJUHsm4eW1k1PXGbkS/LqAqAoYFqcSGDkL
+	daodUEiNY1psDG57G7hr4QnKCM0VOqZAAl6/uQLizQ==
+X-Received: by 10.202.96.212 with SMTP id u203mr4150994oib.63.1516986937262;
+	Fri, 26 Jan 2018 09:15:37 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.157.61.133 with HTTP; Fri, 26 Jan 2018 09:15:16 -0800 (PST)
+In-Reply-To: <5A6B5FCA.2080009@hisilicon.com>
+References: <5A6B5091.8030601@hisilicon.com>
+	<CAFEAcA_39SgDKFnkrcVePs89kYUMHvqqAdnkFhrCa=GYTu0Kpw@mail.gmail.com>
+	<5A6B5FCA.2080009@hisilicon.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 26 Jan 2018 17:15:16 +0000
+Message-ID: <CAFEAcA-N-pjHwqrStf-qK+EOmGYyR-4dfY=sL5kLzeodgYUiRw@mail.gmail.com>
+To: Wei Xu <xuwei5@hisilicon.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::243
+Subject: Re: [Qemu-arm] [PATCH] pl011: do not put into fifo before enabled
+ the interruption
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, qemu-arm@nongnu.org,
-	Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ipbnh6sx30vk
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Rob Herring <rob.herring@linaro.org>, Marc Zyngier <marc.zyngier@arm.com>,
+	"Chenxin \(Charles\)" <charles.chenxin@huawei.com>,
+	tiantao6@huawei.com, QEMU Developers <qemu-devel@nongnu.org>,
+	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+	Linuxarm <linuxarm@huawei.com>,
+	"Liuxinliang \(Matthew Liu\)" <z.liuxinliang@hisilicon.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Daode Huang <huangdaode@hisilicon.com>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	"Liguozhu \(Kenneth\)" <liguozhu@hisilicon.com>,
+	Zhangyi ac <zhangyi.ac@huawei.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: WzL9vRTqzu3T
 
-The boot framebuffer is expected to be configured by the firmware, so it
-uses fw_cfg as interface.  Initialization goes as follows:
+On 26 January 2018 at 17:05, Wei Xu <xuwei5@hisilicon.com> wrote:
+> On 2018/1/26 16:36, Peter Maydell wrote:
+>> If the user presses keys before interrupts are enabled,
+>> what ought to happen is:
+>>  * we put the key in the FIFO, and update the int_level flags
+>>  * when the FIFO is full, can_receive starts returning 0 and
+>>    QEMU stops passing us new characters
+>>  * when the guest driver for the pl011 initializes the
+>>    device and enables interrupts then either:
+>>     (a) it does something that clears the FIFO, which will
+>>     mean can_receive starts allowing new chars again, or
+>>     (b) it leaves the FIFO as it is, and we should thus
+>>     immediately raise an interrupt for the characters still
+>>     in the FIFO; when the guest handles this interrupt and
+>>     gets the characters, can_receive will permit new ones
+>>
+>
+> Yes, now it is handled like b.
+>
+>> What is happening in your situation that means this is not
+>> working as expected ?
+>
+> But in the kernel side, the pll011 is triggered as a level interruption.
+> During the booting, if any key is pressed ,the call stack is as below:
+> QEMU side:
+> pl011_update
+> -->qemu_set_irq(level as 0)
+> ---->kvm_arm_gic_set_irq
+>
+> Kernel side:
+> kvm_vm_ioctl_irq_line
+> -->kvm_vgic_inject_irq
+> ---->vgic_validate_injection (if level did not change, return)
+> ---->vgic_queue_irq_unlock
+>
+> Without above changes, in the vgic_validate_injection, because the
+> interruption level is always 0, this irq will not be queued into vgic.
+> And the guest will not read the pl011 fifo.
 
-  (1) Check whenever etc/ramfb is present.
-  (2) Allocate framebuffer from RAM.
-  (3) Fill struct RAMFBCfg, write it to etc/ramfb.
+The pl011 code should call qemu_set_irq(..., 1) when the
+guest enables interrupts on the device by writing to the int_enabled
+(UARTIMSC) register. That will be a 0-to-1 level change and the KVM
+VGIC should report the interrupt to the guest.
 
-Done.  You can write stuff to the framebuffer now, and it should appear
-automagically on the screen.
-
-Note that this isn't very efficient because it does a full display
-update on each refresh.  No dirty tracking.  Dirty tracking would have
-to be active for the whole ram slot, so that wouldn't be very efficient
-either.  For a boot display which is active for a short time only this
-isn't a big deal.  As permanent guest display something better should be
-used (if possible).
-
-This is the ramfb core code.  Some windup is needed for display devices
-which want have a ramfb boot display.
-
-Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-Tested-by: Laszlo Ersek <lersek@redhat.com>
-Message-id: 20180613122948.18149-2-kraxel@redhat.com
-Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
----
- include/hw/display/ramfb.h |  9 +++++
- hw/display/ramfb.c         | 95 ++++++++++++++++++++++++++++++++++++++++++++++
- hw/display/Makefile.objs   |  2 +
- 3 files changed, 106 insertions(+)
- create mode 100644 include/hw/display/ramfb.h
- create mode 100644 hw/display/ramfb.c
-
-diff --git a/include/hw/display/ramfb.h b/include/hw/display/ramfb.h
-new file mode 100644
-index 0000000000..a3d4c79942
---- /dev/null
-+++ b/include/hw/display/ramfb.h
-@@ -0,0 +1,9 @@
-+#ifndef RAMFB_H
-+#define RAMFB_H
-+
-+/* ramfb.c */
-+typedef struct RAMFBState RAMFBState;
-+void ramfb_display_update(QemuConsole *con, RAMFBState *s);
-+RAMFBState *ramfb_setup(Error **errp);
-+
-+#endif /* RAMFB_H */
-diff --git a/hw/display/ramfb.c b/hw/display/ramfb.c
-new file mode 100644
-index 0000000000..6867bce8ae
---- /dev/null
-+++ b/hw/display/ramfb.c
-@@ -0,0 +1,95 @@
-+/*
-+ * early boot framebuffer in guest ram
-+ * configured using fw_cfg
-+ *
-+ * Copyright Red Hat, Inc. 2017
-+ *
-+ * Author:
-+ *     Gerd Hoffmann <kraxel@redhat.com>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/loader.h"
-+#include "hw/display/ramfb.h"
-+#include "ui/console.h"
-+#include "sysemu/sysemu.h"
-+
-+struct QEMU_PACKED RAMFBCfg {
-+    uint64_t addr;
-+    uint32_t fourcc;
-+    uint32_t flags;
-+    uint32_t width;
-+    uint32_t height;
-+    uint32_t stride;
-+};
-+
-+struct RAMFBState {
-+    DisplaySurface *ds;
-+    uint32_t width, height;
-+    struct RAMFBCfg cfg;
-+};
-+
-+static void ramfb_fw_cfg_write(void *dev, off_t offset, size_t len)
-+{
-+    RAMFBState *s = dev;
-+    void *framebuffer;
-+    uint32_t stride, fourcc, format;
-+    hwaddr addr, length;
-+
-+    s->width  = be32_to_cpu(s->cfg.width);
-+    s->height = be32_to_cpu(s->cfg.height);
-+    stride    = be32_to_cpu(s->cfg.stride);
-+    fourcc    = be32_to_cpu(s->cfg.fourcc);
-+    addr      = be64_to_cpu(s->cfg.addr);
-+    length    = stride * s->height;
-+    format    = qemu_drm_format_to_pixman(fourcc);
-+
-+    fprintf(stderr, "%s: %dx%d @ 0x%" PRIx64 "\n", __func__,
-+            s->width, s->height, addr);
-+    framebuffer = address_space_map(&address_space_memory,
-+                                    addr, &length, false,
-+                                    MEMTXATTRS_UNSPECIFIED);
-+    if (!framebuffer || length < stride * s->height) {
-+        s->width = 0;
-+        s->height = 0;
-+        return;
-+    }
-+    s->ds = qemu_create_displaysurface_from(s->width, s->height,
-+                                            format, stride, framebuffer);
-+}
-+
-+void ramfb_display_update(QemuConsole *con, RAMFBState *s)
-+{
-+    if (!s->width || !s->height) {
-+        return;
-+    }
-+
-+    if (s->ds) {
-+        dpy_gfx_replace_surface(con, s->ds);
-+        s->ds = NULL;
-+    }
-+
-+    /* simple full screen update */
-+    dpy_gfx_update_full(con);
-+}
-+
-+RAMFBState *ramfb_setup(Error **errp)
-+{
-+    FWCfgState *fw_cfg = fw_cfg_find();
-+    RAMFBState *s;
-+
-+    if (!fw_cfg || !fw_cfg->dma_enabled) {
-+        error_setg(errp, "ramfb device requires fw_cfg with DMA");
-+        return NULL;
-+    }
-+
-+    s = g_new0(RAMFBState, 1);
-+
-+    fw_cfg_add_file_callback(fw_cfg, "etc/ramfb",
-+                             NULL, ramfb_fw_cfg_write, s,
-+                             &s->cfg, sizeof(s->cfg), false);
-+    return s;
-+}
-diff --git a/hw/display/Makefile.objs b/hw/display/Makefile.objs
-index b5d97ab26d..0af04985d2 100644
---- a/hw/display/Makefile.objs
-+++ b/hw/display/Makefile.objs
-@@ -1,3 +1,5 @@
-+common-obj-y += ramfb.o
-+
- common-obj-$(CONFIG_ADS7846) += ads7846.o
- common-obj-$(CONFIG_VGA_CIRRUS) += cirrus_vga.o
- common-obj-$(CONFIG_G364FB) += g364fb.o
--- 
-2.9.3
-
+thanks
+-- PMM

@@ -1,87 +1,83 @@
-Received: by 10.28.71.27 with SMTP id u27csp2120264wma;
-        Sat, 17 Feb 2018 11:36:33 -0800 (PST)
-X-Google-Smtp-Source: AH8x227DQL1Dfy1gZHUJXiIHwGyDucKYZ0qMYF8ph+vcan8jtH193FMku+2VCF3CZ2NtRAU1Urls
-X-Received: by 10.37.192.18 with SMTP id c18mr1438709ybf.133.1518896193665;
-        Sat, 17 Feb 2018 11:36:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518896193; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp54028wma;
+        Mon, 29 Jan 2018 04:26:13 -0800 (PST)
+X-Google-Smtp-Source: AH8x2272hSj81FkG48SMRbb3AzXFdz0iqaYdSGF1RCiquIM6e+CZtjbqU++6wNmJkPdOXbZwHSeS
+X-Received: by 10.129.76.22 with SMTP id z22mr16829645ywa.32.1517228773819;
+        Mon, 29 Jan 2018 04:26:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1517228773; cv=none;
         d=google.com; s=arc-20160816;
-        b=uQnRbtjb9c3OIxLsbPZtA4mqIMStfih3GYFFH3qbrTZNGJfgf7/6oAzFjG1IiBps+E
-         /Vgwi5PjWqaezU+9VM6CcRNnPAsxQBdkhPk+6CuBRRfBbRPivNz3diwRs/Vz65RfuCsa
-         +jrIOaCU6kYAeqE8HCFfxrhGI+sbLTUBHsMvliS+JuOBPZHs10cUhA3f4CAcw0U+qNyP
-         rQsO5ruR603a7zdl3DC9nOperdDLxXz2aKhc2ydIe4hGhZF+J9X6Zy9dt3eo65mcc09Q
-         y+1UL6O4Yp+nZT766Y49gL/CoGp/plly86hDGop+j+JjhyjfvKDb/DCU/6/ZNHJdmRwp
-         UWTQ==
+        b=K/2xM9lR7gcC7OR/GcZQJUzdkdaa6UgySKoygGVbZa6MGjIbYBBYPy2BGCENOe/9ly
+         Gp6uDOjmlGxTn+9ly2pCJj8W9tZAZTDpvNMGz+3bk5rWAOufL4xLcPVH5TYlMWSWRDeB
+         b+Yw4FJQgfRNeBdxJ6XM85XG6ghWlAUEA9L5EzlsqHGcffxOP+VBqMGhc95ox88iS0n9
+         Zdv47XOeYOY2a69QfIHyzw29mN8KpIeZatD8OBmBdq0l+XSzE3jxVw+hF7Em4e8TxD8s
+         NGN1em4WSRE7wCo5kRhLWSd6dXUAeBYfsMFTMSoptbRMDzkLat1Ed1twvwxyw6vD/8CM
+         P50w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=R/OXIWYwp4mPHRzDh77sDEUo8nOveYaSZ8Nyzc1bdAg=;
-        b=crYylzKMZXmi15oOK0vc2o+jl45oR7f5DFnxgsQHyJJ07ZFj1flHzgaNzVADNFEBkh
-         EdHY93PGk+q3s75X7PVS+pDhLNO/W9+mE5alyyJ9Pr01Guo0vJlyJ7lWSr2/gq/7/t/g
-         zwlWCxoYRx9rMpm7b7iAod/fJJvmiejIEikbDFn5cmnW1zrKLDxcjH+wiHDviC9/CnE2
-         q/W1jxHG9sXLgx2AxnXbYXrDAXDNaNpVDcmI0VF2mrO9qwq3s9mVqFhHb6+CcM2hEZ39
-         f3CqymonlgJr8n+AI7eBQFk6vNeFScZQgwVOH9eFAUUobg2q6UvdCJrggQa00YyTohYE
-         c9GQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=+wmAxaxIpftKWv9TpQPdxVuOiDsCwvluQTffcea864Q=;
+        b=KHdgROY4WQUlzV2z3uiaoD+f+WVLlV51rhnpqggSzEczvAyc+6BIWqpfpemGhPr8Ia
+         KT1v4QhT4Sl7Yrmy/4RKpjPVoD2Q8zyQUxWs66T2KvZkJUXwI2LNopaRbtIA01Lds6Hx
+         gcsVc39dbzhw9FndzbvySWkRVCveLTupszp48b6WTMLclW/GaYmPiwoGxrkLPqIEPhlZ
+         f+qRpVeriwuYZ20a7E5V0btH/rxvjW8eD1DpaZBUbLVysXgyhaB2nSvrsCnoj4HGxNJ4
+         SIezi0lr1XiFV2KU1RG+vveyF6HH+uNZtLAyJaoLdKUZ/JZ0AvQPbtMvL1I9ueQxJVMV
+         BN2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e12si257334ywl.475.2018.02.17.11.36.33
+        by mx.google.com with ESMTPS id j14si2085275ywg.196.2018.01.29.04.26.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 17 Feb 2018 11:36:33 -0800 (PST)
+        Mon, 29 Jan 2018 04:26:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51954 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:33910 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1en8Hh-0006MT-27
-	for alex.bennee@linaro.org; Sat, 17 Feb 2018 14:36:33 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44959)
+	id 1eg8Vp-0002gs-7X
+	for alex.bennee@linaro.org; Mon, 29 Jan 2018 07:26:13 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43848)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1en7WE-0003Rw-3g
-	for qemu-devel@nongnu.org; Sat, 17 Feb 2018 13:47:31 -0500
+	(envelope-from <xuwei5@huawei.com>) id 1eg8Oc-00051N-Kz
+	for qemu-devel@nongnu.org; Mon, 29 Jan 2018 07:18:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1en7WC-0001dj-5n
-	for qemu-devel@nongnu.org; Sat, 17 Feb 2018 13:47:30 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:43728 helo=mx1.redhat.com)
+	(envelope-from <xuwei5@huawei.com>) id 1eg8OY-0001Sn-8t
+	for qemu-devel@nongnu.org; Mon, 29 Jan 2018 07:18:46 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2083 helo=huawei.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1en7W5-00016Z-6H; Sat, 17 Feb 2018 13:47:21 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9A4168424C;
-	Sat, 17 Feb 2018 18:47:20 +0000 (UTC)
-Received: from localhost.localdomain.com (ovpn-116-21.ams2.redhat.com
-	[10.36.116.21])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 095322024CA2;
-	Sat, 17 Feb 2018 18:47:17 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
-	qemu-arm@nongnu.org, qemu-devel@nongnu.org, prem.mallappa@gmail.com,
-	alex.williamson@redhat.com
-Date: Sat, 17 Feb 2018 19:46:47 +0100
-Message-Id: <1518893216-9983-6-git-send-email-eric.auger@redhat.com>
-In-Reply-To: <1518893216-9983-1-git-send-email-eric.auger@redhat.com>
-References: <1518893216-9983-1-git-send-email-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Sat, 17 Feb 2018 18:47:20 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Sat, 17 Feb 2018 18:47:20 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-devel] [PATCH v9 05/14] hw/arm/smmuv3: Wired IRQ and GERROR
- helpers
+	(Exim 4.71) (envelope-from <xuwei5@huawei.com>)
+	id 1eg8ON-0001Jo-9N; Mon, 29 Jan 2018 07:18:31 -0500
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
+	by Forcepoint Email with ESMTP id E2F62CF98C5A2;
+	Mon, 29 Jan 2018 20:18:15 +0800 (CST)
+Received: from [127.0.0.1] (10.202.226.123) by DGGEMS403-HUB.china.huawei.com
+	(10.3.19.203) with Microsoft SMTP Server id 14.3.361.1;
+	Mon, 29 Jan 2018 20:18:09 +0800
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <5A6B5091.8030601@hisilicon.com>
+	<CAFEAcA_39SgDKFnkrcVePs89kYUMHvqqAdnkFhrCa=GYTu0Kpw@mail.gmail.com>
+	<5A6B5FCA.2080009@hisilicon.com>
+	<CAFEAcA-N-pjHwqrStf-qK+EOmGYyR-4dfY=sL5kLzeodgYUiRw@mail.gmail.com>
+	<5A6B6671.8070408@hisilicon.com>
+	<CAFEAcA-_vYgDYofx61rmCL7sZKOVSBHfw0k3us1=SHzD+TEnGw@mail.gmail.com>
+From: Wei Xu <xuwei5@hisilicon.com>
+Message-ID: <5A6F10F8.7000904@hisilicon.com>
+Date: Mon, 29 Jan 2018 12:18:00 +0000
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:38.0) Gecko/20100101
+	Thunderbird/38.6.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA-_vYgDYofx61rmCL7sZKOVSBHfw0k3us1=SHzD+TEnGw@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.202.226.123]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 45.249.212.191
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH] pl011: do not put into fifo
+ before enabled the interruption
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,138 +89,79 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: mst@redhat.com, jean-philippe.brucker@arm.com, tn@semihalf.com,
-	peterx@redhat.com, edgar.iglesias@gmail.com,
-	linuc.decode@gmail.com, bharat.bhushan@nxp.com, christoffer.dall@linaro.org
+Cc: Rob Herring <rob.herring@linaro.org>, Marc Zyngier <marc.zyngier@arm.com>,
+	"Chenxin \(Charles\)" <charles.chenxin@huawei.com>,
+	tiantao6@huawei.com, QEMU Developers <qemu-devel@nongnu.org>,
+	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+	Linuxarm <linuxarm@huawei.com>,
+	"Liuxinliang \(Matthew Liu\)" <z.liuxinliang@hisilicon.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Daode Huang <huangdaode@hisilicon.com>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	"Liguozhu \(Kenneth\)" <liguozhu@hisilicon.com>,
+	Zhangyi ac <zhangyi.ac@huawei.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eoIDkx+aP8ur
+X-TUID: 7oe6zFltymMV
 
-We introduce some helpers to handle wired IRQs and especially
-GERROR interrupt. SMMU writes GERROR register on GERROR event
-and SW acks GERROR interrupts by setting GERRORn.
+Hi Peter,
 
-The Wired interrupts are edge sensitive hence the pulse usage.
+On 2018/1/26 18:01, Peter Maydell wrote:
+> On 26 January 2018 at 17:33, Wei Xu <xuwei5@hisilicon.com> wrote:
+>> On 2018/1/26 17:15, Peter Maydell wrote:
+>>> The pl011 code should call qemu_set_irq(..., 1) when the
+>>> guest enables interrupts on the device by writing to the int_enabled
+>>> (UARTIMSC) register. That will be a 0-to-1 level change and the KVM
+>>> VGIC should report the interrupt to the guest.
+>>>
+>>
+>> Yes.
+>> And in the pl011_update, the irq level is set by s->int_level & s->int_enabled.
+>> When writing to the int_enabled, not sure why the int_level is set to
+>> 0x20(PL011_INT_TX) but int_enabled is 0x50.
+>>
+>> It still call qemu_set_irq(..., 0).
+>>
+>> I added "s->int_level |= PL011_INT_RX" before calling pl011_update
+>> when writing to the int_enabled and tested it also works.
+> 
+> No, that's not right either. int_level should already have the
+> RX bit set, because pl011_put_fifo() sets that bit when it gets a
+> character from QEMU and puts it into the FIFO.
+> 
+> Does something else clear the int_level between the character
+> going into the FIFO from QEMU and the guest enabling
+> interrupts?
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Yes. When the guest enabling the interrupts, the pl011 driver in
+the kernel will clear the RX interrupts[1].
+And pasted the code below to make it easy to read.
 
----
+	static void pl011_enable_interrupts(struct uart_amba_port *uap)
+	{
+		spin_lock_irq(&uap->port.lock);
 
-v7 -> v8:
-- remove SMMU_PENDING_GERRORS macro
-- properly toggle gerror
-- properly sanitize gerrorn write
----
- hw/arm/smmuv3-internal.h | 10 ++++++++
- hw/arm/smmuv3.c          | 64 ++++++++++++++++++++++++++++++++++++++++++++++++
- hw/arm/trace-events      |  3 +++
- 3 files changed, 77 insertions(+)
+		/* Clear out any spuriously appearing RX interrupts */
+		pl011_write(UART011_RTIS | UART011_RXIS, uap, REG_ICR);
+		uap->im = UART011_RTIM;
+		if (!pl011_dma_rx_running(uap))
+		uap->im |= UART011_RXIM;
+		pl011_write(uap->im, uap, REG_IMSC);
+		spin_unlock_irq(&uap->port.lock);
+	}
 
-diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-index 5be8303..40b39a1 100644
---- a/hw/arm/smmuv3-internal.h
-+++ b/hw/arm/smmuv3-internal.h
-@@ -152,4 +152,14 @@ static inline uint64_t smmu_read64(uint64_t r, unsigned offset,
-     return extract64(r, offset << 3, 32);
- }
- 
-+/* Interrupts */
-+
-+#define smmuv3_eventq_irq_enabled(s)                   \
-+    (FIELD_EX32(s->irq_ctrl, IRQ_CTRL, EVENTQ_IRQEN))
-+#define smmuv3_gerror_irq_enabled(s)                  \
-+    (FIELD_EX32(s->irq_ctrl, IRQ_CTRL, GERROR_IRQEN))
-+
-+void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq, uint32_t gerror_mask);
-+void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t gerrorn);
-+
- #endif
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index dc03c9e..8779d3f 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -30,6 +30,70 @@
- #include "hw/arm/smmuv3.h"
- #include "smmuv3-internal.h"
- 
-+/**
-+ * smmuv3_trigger_irq - pulse @irq if enabled and update
-+ * GERROR register in case of GERROR interrupt
-+ *
-+ * @irq: irq type
-+ * @gerror_mask: mask of gerrors to toggle (relevant if @irq is GERROR)
-+ */
-+void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq, uint32_t gerror_mask)
-+{
-+
-+    bool pulse = false;
-+
-+    switch (irq) {
-+    case SMMU_IRQ_EVTQ:
-+        pulse = smmuv3_eventq_irq_enabled(s);
-+        break;
-+    case SMMU_IRQ_PRIQ:
-+        error_setg(&error_fatal, "PRI not supported");
-+        break;
-+    case SMMU_IRQ_CMD_SYNC:
-+        pulse = true;
-+        break;
-+    case SMMU_IRQ_GERROR:
-+    {
-+        uint32_t pending = s->gerror ^ s->gerrorn;
-+        uint32_t new_gerrors = ~pending & gerror_mask;
-+
-+        if (!new_gerrors) {
-+            /* only toggle non pending errors */
-+            return;
-+        }
-+        s->gerror ^= new_gerrors;
-+        trace_smmuv3_write_gerror(new_gerrors, s->gerror);
-+
-+        /* pulse the GERROR irq only if all previous gerrors were acked */
-+        pulse = smmuv3_gerror_irq_enabled(s) && !pending;
-+        break;
-+    }
-+    }
-+    if (pulse) {
-+            trace_smmuv3_trigger_irq(irq);
-+            qemu_irq_pulse(s->irq[irq]);
-+    }
-+}
-+
-+void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t new_gerrorn)
-+{
-+    uint32_t pending = s->gerror ^ s->gerrorn;
-+    uint32_t toggled = s->gerrorn ^ new_gerrorn;
-+    uint32_t acked;
-+
-+    if (toggled & ~pending) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "guest toggles non pending errors = 0x%x\n",
-+                      toggled & ~pending);
-+    }
-+
-+    /* Make sure SW does not toggle irqs that are not active */
-+    acked = toggled & pending;
-+    s->gerrorn ^= acked;
-+
-+    trace_smmuv3_write_gerrorn(acked, s->gerrorn);
-+}
-+
- static void smmuv3_init_regs(SMMUv3State *s)
- {
-     /**
-diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index 64d2b9b..2ddae40 100644
---- a/hw/arm/trace-events
-+++ b/hw/arm/trace-events
-@@ -15,3 +15,6 @@ smmu_get_pte(uint64_t baseaddr, int index, uint64_t pteaddr, uint64_t pte) "base
- 
- #hw/arm/smmuv3.c
- smmuv3_read_mmio(hwaddr addr, uint64_t val, unsigned size) "addr: 0x%"PRIx64" val:0x%"PRIx64" size: 0x%x"
-+smmuv3_trigger_irq(int irq) "irq=%d"
-+smmuv3_write_gerror(uint32_t toggled, uint32_t gerror) "toggled=0x%x, new gerror=0x%x"
-+smmuv3_write_gerrorn(uint32_t acked, uint32_t gerrorn) "acked=0x%x, new gerrorn=0x%x"
--- 
-2.5.5
+I tried kept the RXIS in the kernel side to test and found the issue is still there.
+A little confused now :(
+
+[1]: https://elixir.free-electrons.com/linux/latest/source/drivers/tty/serial/amba-pl011.c#L1732
+
+Best Regards,
+Wei
+
+> 
+> thanks
+> -- PMM
+> 
+> .
+> 
 

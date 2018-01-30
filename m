@@ -1,93 +1,86 @@
-Received: by 10.223.188.70 with SMTP id a6csp1889181wrh;
-        Wed, 30 Aug 2017 22:07:55 -0700 (PDT)
-X-Received: by 10.80.182.157 with SMTP id d29mr501558ede.287.1504156075701;
-        Wed, 30 Aug 2017 22:07:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504156075; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp1239692wma;
+        Tue, 30 Jan 2018 03:17:11 -0800 (PST)
+X-Google-Smtp-Source: AH8x2267Y8fltOSJubnTZ2GxYOmFILgeYX0Sp07ps9SCVJLbhSKEIEI2VlzZ0yxDuD6vYnHDrtks
+X-Received: by 10.37.99.198 with SMTP id x189mr18556225ybb.232.1517311031637;
+        Tue, 30 Jan 2018 03:17:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1517311031; cv=none;
         d=google.com; s=arc-20160816;
-        b=1AR/9H6Gv2BTTQKQBbzfOwcdJGTZ5YYFDhLyklEsFyiZEGOoqwtVP+x8Ji8xxtyXRo
-         8ONpsEeX9qBg3//avV+cgRPhtdJzG3wWNsQ9B4yN0vSLZu3D8aKgWXUaRfL1oYPxRucV
-         QtaEVKUQPpe4VIhOvQWD6WgTdXU0ru1vRoKyB/SXMJ1vlh9+GDsqZtc3IkEFb8EWndd3
-         ewp1klytzvo4ytyKYX2V/CJnq4kyjbrnZpTkAp6L6sVm+vsEk3kEEDgNJqPZbOwumLxK
-         cj34BPVD8A8lMkx4xeuecb7PKYapPu3EOuLSfz5JCEvxF6LoAX6EH7Aq9a0BemwFzg/A
-         rJbQ==
+        b=0amHnt+ztyQjTGFnTCY4dO7on5dwv8ZHEKjB0HzQhAfy89SYJnxRQnAy+pdJ2Uh46Y
+         96WyNABSLGd3GqFbPjfx1zV+xNdvln6ja3FZl2QpCZSkj4r7OegJHjBTJ5KshqwqB97M
+         E1QEs9jSxkAW+QGctf0O8XycY3u5vqM3wdrWsnnbKXV3z6LGr4qrczLJuHSRbdlHpkTM
+         oLGqZdWAOnPaVkaPjdMB8VNpzT+oY2eN4pW0OLp/Vy6rjlSwZcKIxlXGQNVWduMl/bu+
+         g4ZqYUoFICk4d9lF+mW0cRI+IZC6vgQhWIUY77qI0504OdX1Y0p1pl+wtDVOgXyFiLEY
+         bpsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dmarc-filter
+         :list-unsubscribe:list-id:precedence:subject:content-language
+         :mime-version:user-agent:date:message-id:to:from
          :arc-authentication-results;
-        bh=AKo8pe6ay5mOcU+GqS4OaPNxJOFkMIrKhZIsV7gkb6s=;
-        b=tts2Q5sCizXI7d9N++cyvc5WlBTILB8OxJyGyIvjanJ8xTA9mqegY3HQT0ETZdgikS
-         4T8Y7J2dm3xgGSOCIyhpWmH61UGyo56oBh/yPwxOFHSNRWmTHPCj+GdrALfwboLRodNL
-         L0kA9gt3BqXzs5ToSnagudKBWnLCLpDZv7asOkykU+zActLXPocnANYwYbUQC/q+cBWd
-         Tydm8BFAeHSJAekWZ7fwOF38SYPruyOrtZTlr9j6D8GJwAZPCtU8b+TC50/8wT34WH68
-         JM5v/87kQ2ATIHH366MDCT0WAcQGAjX7hecHceP33y73TWs4A4BJM3It2Ria4sLHEHUc
-         tYtw==
+        bh=lDq6J5Y3Cwq67QIHZLQADdnUyLHbYKlKhKLFU9gJRro=;
+        b=dtU8OEiynK/J1Ffx4g1udewA/LPBo8OW3vXg+uQ/WKHLLA5kGtJ1CDYgc1e9TJSmEM
+         8KbK8ThcIoPZ4KuqsQdgG6l1HMIETtIYcwGYwuUX7em1xXuDdz1B1HSjgflv6gp1y4J5
+         d6qmrbwgazUeTzSLn/mFwmpPwdKmiTiP/QoOExoUovjNL834V+K35pdWs4BoDIyltGNy
+         Z4BkuOHjvcCkAF13QhDhl0ibRIul3ambv1YL318REOZMmmeUrYRW/cTXUuQSrXTRnDyE
+         dVZ4+Uotj36XqLIxLj2UajMwV8GQTW9uasKxMhLJJD7uxJKwbWdhBhkn+ri8TSCijHkA
+         djww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u35si6505116edc.485.2017.08.30.22.07.55
+        by mx.google.com with ESMTPS id l30si2562321ywk.785.2018.01.30.03.17.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 30 Aug 2017 22:07:55 -0700 (PDT)
+        Tue, 30 Jan 2018 03:17:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53948 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:58303 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dnHhq-0005s7-NB
-	for alex.bennee@linaro.org; Thu, 31 Aug 2017 01:07:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38254)
+	id 1egTuZ-0004ir-0A
+	for alex.bennee@linaro.org; Tue, 30 Jan 2018 06:17:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44352)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dnHhg-0005rm-P6
-	for qemu-arm@nongnu.org; Thu, 31 Aug 2017 01:07:45 -0400
+	(envelope-from <abdallah.bouassida@lauterbach.com>)
+	id 1egTu9-0004Xv-50
+	for qemu-arm@nongnu.org; Tue, 30 Jan 2018 06:16:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dnHhd-0006B0-Ks
-	for qemu-arm@nongnu.org; Thu, 31 Aug 2017 01:07:44 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33272)
+	(envelope-from <abdallah.bouassida@lauterbach.com>)
+	id 1egTu1-0006rM-Ru
+	for qemu-arm@nongnu.org; Tue, 30 Jan 2018 06:16:45 -0500
+Received: from smtp1.lauterbach.com ([62.154.241.196]:57183)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1dnHhd-0006Ap-EK; Thu, 31 Aug 2017 01:07:41 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3B5C080E7A;
-	Thu, 31 Aug 2017 05:07:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 3B5C080E7A
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=thuth@redhat.com
-Received: from [10.36.116.27] (ovpn-116-27.ams2.redhat.com [10.36.116.27])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id B6F9B18B2A;
-	Thu, 31 Aug 2017 05:07:38 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-References: <20170830215523.25278-1-f4bug@amsat.org>
-	<20170830215523.25278-2-f4bug@amsat.org>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <3fae2ca1-90d0-b62a-d932-8c0d2cf2b62c@redhat.com>
-Date: Thu, 31 Aug 2017 07:07:36 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+	(Exim 4.71) (envelope-from <abdallah.bouassida@lauterbach.com>)
+	id 1egTu1-0006Ww-Bp
+	for qemu-arm@nongnu.org; Tue, 30 Jan 2018 06:16:37 -0500
+Received: (qmail 14319 invoked by uid 484); 30 Jan 2018 11:16:19 -0000
+X-Qmail-Scanner-Diagnostics: from 41.224.44.126 by smtp1.lauterbach.com
+	(envelope-from <abdallah.bouassida@lauterbach.com>,
+	uid 484) with qmail-scanner-2.11 
+	(mhr: 1.0. clamdscan: 0.99/21437. spamassassin: 3.4.0.  
+	Clear:RC:1(41.224.44.126):. 
+	Processed in 0.338676 secs); 30 Jan 2018 11:16:19 -0000
+Received: from unknown (HELO [192.168.187.23])
+	(Authenticated_SSL:abouassida@[41.224.44.126])
+	(envelope-sender <abdallah.bouassida@lauterbach.com>)
+	by smtp1.lauterbach.com (qmail-ldap-1.03) with
+	ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
+	for <qemu-devel@nongnu.org>; 30 Jan 2018 11:16:18 -0000
+From: Abdallah Bouassida <abdallah.bouassida@lauterbach.com>
+To: qemu-arm <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <d23a2730-a103-6336-0658-e12fa9b0193f@lauterbach.com>
+Date: Tue, 30 Jan 2018 12:16:16 +0100
+User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.2
 MIME-Version: 1.0
-In-Reply-To: <20170830215523.25278-2-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
+Content-Type: multipart/alternative;
+	boundary="------------461F5E1BCDF203A2A1BB82F0"
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Thu, 31 Aug 2017 05:07:40 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2 01/17] MAINTAINERS: add missing ARM entries
+X-Received-From: 62.154.241.196
+Subject: [Qemu-arm] [PATCH V2] target-arm:Add a dynamic XML-description of
+ the cp-registers to GDB
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,47 +92,1045 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Khaled Jmal <khaled.jmal@lauterbach.com>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3M5v2pVAXWc0
+X-TUID: 9WvjXKQjgR7U
 
-On 30.08.2017 23:55, Philippe Mathieu-Daud=C3=A9 wrote:
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  MAINTAINERS | 7 +++++--
->  1 file changed, 5 insertions(+), 2 deletions(-)
->=20
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index ccee28b12d..b363e1b9c9 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -380,6 +380,7 @@ M: Peter Maydell <peter.maydell@linaro.org>
->  L: qemu-arm@nongnu.org
->  S: Maintained
->  F: hw/char/pl011.c
-> +F: include/hw/char/pl011.h
->  F: hw/display/pl110*
->  F: hw/dma/pl080.c
->  F: hw/dma/pl330.c
-> @@ -403,13 +404,15 @@ F: hw/intc/gic_internal.h
->  F: hw/misc/a9scu.c
->  F: hw/misc/arm11scu.c
->  F: hw/timer/a9gtimer*
-> -F: hw/timer/arm_*
-> -F: include/hw/arm/arm.h
-> +F: hw/timer/arm*
-> +F: include/hw/arm/arm*.h
->  F: include/hw/intc/arm*
->  F: include/hw/misc/a9scu.h
->  F: include/hw/misc/arm11scu.h
->  F: include/hw/timer/a9gtimer.h
->  F: include/hw/timer/arm_mptimer.h
-> +F: include/hw/timer/armv7m_systick.h
-> +F: tests/test-arm-mptimer.c
-> =20
->  Exynos
->  M: Igor Mitsyanko <i.mitsyanko@gmail.com>
+This is a multi-part message in MIME format.
+--------------461F5E1BCDF203A2A1BB82F0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+[PATCH V2] target-arm:Add a dynamic XML-description of the cp-registers 
+to GDB
 
+This patch offers to GDB the ability to read/write all the coprocessor
+registers for ARM and ARM64 by generating dynamically an XML-description for
+these registers.
+
+Signed-off-by: Abdallah Bouassida <abdallah.bouassida@lauterbach.com>
+---
+
+Hello Peter,
+
+Thanks for reviewing the previous version of this patch!
+     http://patchwork.ozlabs.org/patch/861374/
+>> *For the ARM64, should I differentiate the registers that have two views (32
+>> and 64)
+>> Maybe by adding in the XML description a "32" tag for the registers name for
+>> the
+>> 32bit view and a "64" for the 64bit view.
+>> *How to properly handle the secure and the non secure views?
+> I think it might be useful to approach it from the other end -- what
+> are we trying to achieve?
+>
+> For 32 vs 64 bit, it depends on what interface we're showing to the
+> debugger. If we're saying "this is a 64 bit CPU" then we should just
+> present the 64-bit sysregs, in the same way we only present the 64-bit
+> GPRs. If a 32-bit CPU, present the coprocessor regs only. (It's not
+> currently possible to have gdb switch between 32 and 64 bit views
+> as a 64-bit CPU changes from aarch32 to aarch64, though upstream gdb
+> are working on it.)
+>
+> For secure vs non-secure, follow how the architecture does it:
+>   * for a 64-bit CPU, there are no banked sysregs like this, so you
+>     just expose 1 register
+>   * for a 32-bit CPU, maybe banked registers should be exposed as 2 registers
+>
+> ...but this depends on what you're trying to do, and whether there's
+> existing practice in for instance how JTAG debugging presents these
+> sysregs to gdb.
+So, in this new patch I have did the following:
+- If the CPU is on the AARCH64 state (when connecting to GDB stub), I 
+only take the 64bit
+view of cpregs.
+- If we are on the AARCH32, I only take the 32bit view of cpregs and in 
+the XML description
+I add the tag "_S" to the cpreg's name if it is the secure view of that 
+register.
+> I'm pretty hesitant about allowing the user to modify system registers
+> in the debugger, that is unlikely to work in quite a lot of cases.
+> I'd rather we just made these registers all readonly.
+Some of our customers need to connect to Qemu using our tool TRACE32® 
+via GDB,
+and for some use case they need to have write access to some particular 
+cpregs.
+So, it will be nice to have this capability!
+Usually, a user won't modify these registers unless he knows what he is 
+doing!
+
+> What does the UI in gdb look like? What gdb commands display
+> the list of and values of system registers now? (Are there any
+> commands that used to be useful and are now swamped by lists of
+> hundreds of system registers?)
+To read a given register:
+    (gdb)  print/x $<cpreg_name>
+To write on a given register
+    (gdb) set $<cpreg_name>=<value>
+To get the list of all registers:
+    (gdb) info registers all
+     with this command the user get all the registers including the 
+cpregs that has been
+     described dynamically.
+     This command shows the registers page by page (depending on the 
+terminal window size)
+     and the cpregs goes at the end of the list so if user is really 
+interested on these cpregs he
+     should continue to read the register list or he simply type "q" to 
+quit.
+
+In the previous patch, the command "info registers" (without the option 
+"all") was swamped
+by the new big list. So, I fixed that by assigning these registers (in 
+the XML ) to a special
+group (group="cp_regs") and with that the cpregs won't appear with this 
+command.
+
+Otherwise, I don't think that there is another GDB command that could be 
+affected by
+this patch.
+> Don't we run into problems where this XML exceeds our gdbstub
+> MAX_PACKET_LENGTH (which is only 4K) ?
+>
+> This is a pre-existing bug (https://bugs.launchpad.net/qemu/+bug/1703147)
+> but I would expect that if we start autogenerating xml for all the
+> coprocessor registers we're going to hit the packet limit pretty
+> quickly.
+No, indeed I don't think that (https://bugs.launchpad.net/qemu/+bug/1703147)
+is a bug!
+However, when the gdb request to get an XML description, it sends the 
+packet:
+qXfer:features:read:<xml_name>:<offset>,<length>
+for the first packet, the offset=0 and the length in our case is 0xFFB
+(= MAX_PACKET_LENGTH - 5)
+
+When the GDB stub gets this packet, it will send the corresponding XML 
+description and:
+- if the size of the XML is bigger than the length requested by qXfer, 
+GDB stub will
+add 'm' at the beginning of the response to inform GDB  that there is 
+still more data to be sent.
+- else, it will add 'l' which mean there is no more data.
+
+     if (len < total_len - addr) {
+         buf[0] = 'm';
+         len = memtox(buf + 1, xml + addr, len);
+     } else {
+         buf[0] = 'l';
+         len = memtox(buf + 1, xml + addr, total_len - addr);
+     }
+
+When GBD gets an answer with the header "m" it will send another qXfer 
+and this time
+the <offset> will be equal to (old_offset + the size of the data read 
+previously)
+
+With this, the XML description won't be truncated even if it is longer 
+than 2045.
+>>   /**
+>> + * XMLDynamicDescription:
+>> + * @desc: Contains the XML descriptions.
+>> + * @num_cpregs: Number of the Coprocessor registers seen by GDB.
+>> + * @xml_cpregs_ordred_keys: Array that contains the corresponding Key of
+>> + * a given cpreg with the same order of the cpreg in the XML description.
+>> + */
+>> +typedef struct XMLDynamicDescription {
+>> +    char * desc;
+>> +    int num_cpregs;
+>> +    uint32_t *xml_cpregs_ordred_keys;
+>> +} XMLDynamicDescription;
+> cpregs are an arm-specific concept so this data structure doesn't
+> belong in the for-all-cpus header.
+I moved this to /target/arm/cpu.h .
+>> +    char * (*get_feature_xml_dynamically)(CPUState *cpu);
+>> +    int (*gdb_read_cpregister)(CPUState *cpu, uint8_t *buf, int reg);
+>> +    int (*gdb_write_cpregister)(CPUState *cpu, uint8_t *buf, int reg);
+> Do we really need a new set of functions rather than just being
+> able to use the existing gdb_read_register/gdb_write_register ?
+> The API seems to be the same, so I was expecting to just have
+> the same functions be called, with the register number distinguishing
+> the existing regs from the new coprocessor ones.
+I'm using now the gdb_read_register/gdb_write_register instead.
+
+Best regards,
+Abdallah
+
+  gdbstub.c              | 18 +++++++++++
+  include/qom/cpu.h      |  3 ++
+  target/arm/cpu.c       |  3 ++
+  target/arm/cpu.h       | 18 +++++++++++
+  target/arm/gdbstub.c   | 87 
+++++++++++++++++++++++++++++++++++++++++++++++++++
+  target/arm/gdbstub64.c | 25 +++++++++++++++
+  target/arm/helper.c    |  3 +-
+  7 files changed, 155 insertions(+), 2 deletions(-)
+
+diff --git a/gdbstub.c b/gdbstub.c
+index f1d5148..f54053f 100644
+--- a/gdbstub.c
++++ b/gdbstub.c
+@@ -670,10 +670,20 @@ static const char *get_feature_xml(const char *p, 
+const char **newp,
+                  pstrcat(target_xml, sizeof(target_xml), r->xml);
+                  pstrcat(target_xml, sizeof(target_xml), "\"/>");
+              }
++            if (cc->has_dynamic_xml) {
++                cc->gen_dynamic_xml(cpu);
++                pstrcat(target_xml, sizeof(target_xml), "<xi:include 
+href=\"");
++                pstrcat(target_xml, sizeof(target_xml), 
+"dynamic_desc.xml");
++                pstrcat(target_xml, sizeof(target_xml), "\"/>");
++            }
+              pstrcat(target_xml, sizeof(target_xml), "</target>");
+          }
+          return target_xml;
+      }
++    if (strncmp(p, "dynamic_desc.xml", len) == 0) {
++        CPUState *cpu = first_cpu;
++        return cc->get_dynamic_xml(cpu);
++    }
+      for (i = 0; ; i++) {
+          name = xml_builtin[i][0];
+          if (!name || (strncmp(name, p, len) == 0 && strlen(name) == len))
+@@ -697,6 +707,10 @@ static int gdb_read_register(CPUState *cpu, uint8_t 
+*mem_buf, int reg)
+              return r->get_reg(env, mem_buf, reg - r->base_reg);
+          }
+      }
++
++    if (cc->has_dynamic_xml) {
++        return cc->gdb_read_register(cpu, mem_buf, reg);
++    }
+      return 0;
+  }
+
+@@ -715,6 +729,10 @@ static int gdb_write_register(CPUState *cpu, 
+uint8_t *mem_buf, int reg)
+              return r->set_reg(env, mem_buf, reg - r->base_reg);
+          }
+      }
++
++    if (cc->has_dynamic_xml) {
++        return cc->gdb_write_register(cpu, mem_buf, reg);
++    }
+      return 0;
+  }
+
+diff --git a/include/qom/cpu.h b/include/qom/cpu.h
+index 93bd546..a3105c0 100644
+--- a/include/qom/cpu.h
++++ b/include/qom/cpu.h
+@@ -197,6 +197,9 @@ typedef struct CPUClass {
+      const struct VMStateDescription *vmsd;
+      const char *gdb_core_xml_file;
+      gchar * (*gdb_arch_name)(CPUState *cpu);
++    bool has_dynamic_xml;
++    void (*gen_dynamic_xml)(CPUState *cpu);
++    char *(*get_dynamic_xml)(CPUState *cpu);
+
+      void (*cpu_exec_enter)(CPUState *cpu);
+      void (*cpu_exec_exit)(CPUState *cpu);
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index cc1856c..410e250 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1752,6 +1752,9 @@ static void arm_cpu_class_init(ObjectClass *oc, 
+void *data)
+      cc->gdb_num_core_regs = 26;
+      cc->gdb_core_xml_file = "arm-core.xml";
+      cc->gdb_arch_name = arm_gdb_arch_name;
++    cc->has_dynamic_xml = true;
++    cc->gen_dynamic_xml = arm_gen_dynamic_xml;
++    cc->get_dynamic_xml = arm_get_dynamic_xml;
+      cc->gdb_stop_before_watchpoint = true;
+      cc->debug_excp_handler = arm_debug_excp_handler;
+      cc->debug_check_watchpoint = arm_debug_check_watchpoint;
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 9631670..bcb567b 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -135,6 +135,19 @@ enum {
+     s<2n+1> maps to the most significant half of d<n>
+   */
+
++/**
++ * XMLDynamicDescription:
++ * @desc: Contains the XML descriptions.
++ * @num_cpregs: Number of the Coprocessor registers seen by GDB.
++ * @cpregs_keys: Array that contains the corresponding Key of
++ * a given cpreg with the same order of the cpreg in the XML description.
++ */
++typedef struct XMLDynamicDescription {
++    char *desc;
++    int num_cpregs;
++    uint32_t *cpregs_keys;
++} XMLDynamicDescription;
++
+  /* CPU state for each instance of a generic timer (in cp15 c14) */
+  typedef struct ARMGenericTimer {
+      uint64_t cval; /* Timer CompareValue register */
+@@ -633,6 +646,8 @@ struct ARMCPU {
+      uint64_t *cpreg_vmstate_values;
+      int32_t cpreg_vmstate_array_len;
+
++    XMLDynamicDescription dyn_xml;
++
+      /* Timers used by the generic (architected) timer */
+      QEMUTimer *gt_timer[NUM_GTIMERS];
+      /* GPIO outputs for generic timer */
+@@ -797,6 +812,8 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState 
+*cpu, vaddr addr,
+
+  int arm_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int reg);
+  int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
++void arm_gen_dynamic_xml(CPUState *cpu);
++char *arm_get_dynamic_xml(CPUState *cpu);
+
+  int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
+                               int cpuid, void *opaque);
+@@ -2005,6 +2022,7 @@ static inline bool cp_access_ok(int current_el,
+
+  /* Raw read of a coprocessor register (as needed for migration, etc) */
+  uint64_t read_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri);
++void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri, 
+uint64_t v);
+
+  /**
+   * write_list_to_cpustate
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index 04c1208..7cffe87 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -56,6 +56,17 @@ int arm_cpu_gdb_read_register(CPUState *cs, uint8_t 
+*mem_buf, int n)
+          /* CPSR */
+          return gdb_get_reg32(mem_buf, cpsr_read(env));
+      }
++    if (n >= cs->gdb_num_regs &&
++        n < cs->gdb_num_regs + cpu->dyn_xml.num_cpregs) {
++        const ARMCPRegInfo *ri;
++        uint32_t key;
++
++        key = cpu->dyn_xml.cpregs_keys[n - cs->gdb_num_regs];
++        ri = get_arm_cp_reginfo(arm_env_get_cpu(env)->cp_regs, key);
++        if (ri) {
++            return gdb_get_reg32(mem_buf, 
+(uint32_t)read_raw_cp_reg(env, ri));
++        }
++    }
+      /* Unknown register.  */
+      return 0;
+  }
+@@ -98,6 +109,82 @@ int arm_cpu_gdb_write_register(CPUState *cs, uint8_t 
+*mem_buf, int n)
+          cpsr_write(env, tmp, 0xffffffff, CPSRWriteByGDBStub);
+          return 4;
+      }
++    if (n >= cs->gdb_num_regs &&
++        n < cs->gdb_num_regs + cpu->dyn_xml.num_cpregs) {
++        const ARMCPRegInfo *ri;
++        uint32_t key;
++
++        key = cpu->dyn_xml.cpregs_keys[n - cs->gdb_num_regs];
++        ri = get_arm_cp_reginfo(arm_env_get_cpu(env)->cp_regs, key);
++        if (ri) {
++            if (!(ri->type & ARM_CP_CONST)) {
++                write_raw_cp_reg(env, ri, tmp);
++                return 4;
++            }
++        }
++    }
+      /* Unknown register.  */
+      return 0;
+  }
++
++static void arm_gen_xml_reg(gpointer key, gpointer value, gpointer cs)
++{
++    ARMCPU *cpu = ARM_CPU(cs);
++    XMLDynamicDescription *dyn_xml = &cpu->dyn_xml;
++    ARMCPRegInfo *ri = value;
++    uint32_t ri_key = *(uint32_t *)key;
++    CPUARMState *env = &cpu->env;
++    char **target_xml = (char **)&(dyn_xml->desc);
++    char *tmp_xml = *target_xml;
++
++    if (!(ri->type & (ARM_CP_NO_RAW | ARM_CP_ALIAS))) {
++        if (env->aarch64) {
++            if (cpreg_field_is_64bit(ri)) {
++                *target_xml = g_strconcat(*target_xml,
++                                        "<reg name=\"", ri->name, "\" ",
++                                        "bitsize=\"64\" 
+group=\"cp_regs\"/>",
++                                        NULL);
++            } else {
++                return;
++            }
++        } else {
++            if (ri->secure & ARM_CP_SECSTATE_S) {
++                *target_xml = g_strconcat(*target_xml,
++                                          "<reg name=\"", ri->name, 
+"_S\" ",
++                                          "bitsize=\"32\" 
+group=\"cp_regs\"/>",
++                                          NULL);
++            } else {
++                *target_xml = g_strconcat(*target_xml,
++                                          "<reg name=\"", ri->name, "\" ",
++                                          "bitsize=\"32\" 
+group=\"cp_regs\"/>",
++                                          NULL);
++            }
++        }
++        g_free(tmp_xml);
++        dyn_xml->num_cpregs++;
++        dyn_xml->cpregs_keys = g_renew(uint32_t,
++                                       dyn_xml->cpregs_keys,
++                                       dyn_xml->num_cpregs);
++        dyn_xml->cpregs_keys[dyn_xml->num_cpregs - 1] = ri_key;
++    }
++}
++
++void arm_gen_dynamic_xml(CPUState *cs)
++{
++    ARMCPU *cpu = ARM_CPU(cs);
++
++    cpu->dyn_xml.num_cpregs = 0;
++    cpu->dyn_xml.desc = g_strconcat("<?xml version=\"1.0\"?>",
++                                 "<!DOCTYPE target SYSTEM 
+\"gdb-target.dtd\">",
++                                   "<feature 
+name=\"org.gnu.gdb.dynamic.cp\">",
++                                   NULL);
++    g_hash_table_foreach(cpu->cp_regs, arm_gen_xml_reg, cs);
++    cpu->dyn_xml.desc = g_strconcat(cpu->dyn_xml.desc, "</feature>", NULL);
++}
++
++char *arm_get_dynamic_xml(CPUState *cs)
++{
++    ARMCPU *cpu = ARM_CPU(cs);
++
++    return cpu->dyn_xml.desc;
++}
+diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
+index 49bc3fc..6cf302f 100644
+--- a/target/arm/gdbstub64.c
++++ b/target/arm/gdbstub64.c
+@@ -38,6 +38,17 @@ int aarch64_cpu_gdb_read_register(CPUState *cs, 
+uint8_t *mem_buf, int n)
+      case 33:
+          return gdb_get_reg32(mem_buf, pstate_read(env));
+      }
++    if (n >= cs->gdb_num_regs &&
++        n < cs->gdb_num_regs + cpu->dyn_xml.num_cpregs) {
++        const ARMCPRegInfo *ri;
++        uint32_t key;
++
++        key = cpu->dyn_xml.cpregs_keys[n - cs->gdb_num_regs];
++        ri = get_arm_cp_reginfo(arm_env_get_cpu(env)->cp_regs, key);
++        if (ri) {
++            return gdb_get_reg64(mem_buf, 
+(uint64_t)read_raw_cp_reg(env, ri));
++        }
++    }
+      /* Unknown register.  */
+      return 0;
+  }
+@@ -67,6 +78,20 @@ int aarch64_cpu_gdb_write_register(CPUState *cs, 
+uint8_t *mem_buf, int n)
+          pstate_write(env, tmp);
+          return 4;
+      }
++    if (n >= cs->gdb_num_regs &&
++        n < cs->gdb_num_regs + cpu->dyn_xml.num_cpregs) {
++        const ARMCPRegInfo *ri;
++        uint32_t key;
++
++        key = cpu->dyn_xml.cpregs_keys[n - cs->gdb_num_regs];
++        ri = get_arm_cp_reginfo(arm_env_get_cpu(env)->cp_regs, key);
++        if (ri) {
++            if (!(ri->type & ARM_CP_CONST)) {
++                write_raw_cp_reg(env, ri, tmp);
++                return 8;
++            }
++        }
++    }
+      /* Unknown register.  */
+      return 0;
+  }
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index c83c901..223372f 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -191,8 +191,7 @@ uint64_t read_raw_cp_reg(CPUARMState *env, const 
+ARMCPRegInfo *ri)
+      }
+  }
+
+-static void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri,
+-                             uint64_t v)
++void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t v)
+  {
+      /* Raw write of a coprocessor register (as needed for migration, etc).
+       * Note that constant registers are treated as write-ignored; the
+-- 
+1.9.1
+
+--------------461F5E1BCDF203A2A1BB82F0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  </head>
+  <body text="#000000" bgcolor="#FFFFFF">
+    [PATCH V2] target-arm:Add a dynamic XML-description of the
+    cp-registers to GDB<br>
+    <br>
+    This patch offers to GDB the ability to read/write all the
+    coprocessor<br>
+    registers for ARM and ARM64 by generating dynamically an
+    XML-description for<br>
+    these registers.<br>
+    <br>
+    Signed-off-by: Abdallah Bouassida <a class="moz-txt-link-rfc2396E"
+      href="mailto:abdallah.bouassida@lauterbach.com">&lt;abdallah.bouassida@lauterbach.com&gt;</a><br>
+    ---<br>
+    <br>
+    Hello Peter,<br>
+    <br>
+    Thanks for reviewing the previous version of this patch!<br>
+        <a class="moz-txt-link-freetext" href="http://patchwork.ozlabs.org/patch/861374/">http://patchwork.ozlabs.org/patch/861374/</a><br>
+    <blockquote type="cite"
+cite="mid:CAFEAcA_LZYfsOKuq9e-uCQPRBsi5XGNyCWw4E_YhyebNJeyRLQ@mail.gmail.com">
+      <blockquote type="cite">
+        <pre wrap="">*For the ARM64, should I differentiate the registers that have two views (32
+and 64)
+Maybe by adding in the XML description a "32" tag for the registers name for
+the
+32bit view and a "64" for the 64bit view.
+*How to properly handle the secure and the non secure views?
+</pre>
+      </blockquote>
+      <pre wrap="">I think it might be useful to approach it from the other end -- what
+are we trying to achieve?
+
+For 32 vs 64 bit, it depends on what interface we're showing to the
+debugger. If we're saying "this is a 64 bit CPU" then we should just
+present the 64-bit sysregs, in the same way we only present the 64-bit
+GPRs. If a 32-bit CPU, present the coprocessor regs only. (It's not
+currently possible to have gdb switch between 32 and 64 bit views
+as a 64-bit CPU changes from aarch32 to aarch64, though upstream gdb
+are working on it.)
+
+For secure vs non-secure, follow how the architecture does it:
+ * for a 64-bit CPU, there are no banked sysregs like this, so you
+   just expose 1 register
+ * for a 32-bit CPU, maybe banked registers should be exposed as 2 registers
+
+...but this depends on what you're trying to do, and whether there's
+existing practice in for instance how JTAG debugging presents these
+sysregs to gdb.
+</pre>
+    </blockquote>
+    So, in this new patch I have did the following:<br>
+    - If the CPU is on the AARCH64 state (when connecting to GDB stub),
+    I only take the 64bit <br>
+    view of cpregs.<br>
+    - If we are on the AARCH32, I only take the 32bit view of cpregs and
+    in the XML description<br>
+    I add the tag "_S" to the cpreg's name if it is the secure view of
+    that register.<br>
+    <blockquote type="cite"
+cite="mid:CAFEAcA_LZYfsOKuq9e-uCQPRBsi5XGNyCWw4E_YhyebNJeyRLQ@mail.gmail.com">
+      <pre wrap="">I'm pretty hesitant about allowing the user to modify system registers
+in the debugger, that is unlikely to work in quite a lot of cases.
+I'd rather we just made these registers all readonly.</pre>
+    </blockquote>
+    Some of our customers need to connect to Qemu using our tool TRACE32<span
+      style="color: rgb(84, 84, 84); font-family: arial, sans-serif;
+      font-size: small; font-style: normal; font-variant-ligatures:
+      normal; font-variant-caps: normal; font-weight: 400;
+      letter-spacing: normal; orphans: 2; text-align: left; text-indent:
+      0px; text-transform: none; white-space: normal; widows: 2;
+      word-spacing: 0px; -webkit-text-stroke-width: 0px;
+      background-color: rgb(255, 255, 255); text-decoration-style:
+      initial; text-decoration-color: initial; display: inline
+      !important; float: none;"><font color="#000000">® via GDB, </font><br>
+    </span>and for some use case they need to have write access to some
+    particular cpregs.<br>
+    So, it will be nice to have this capability!<br>
+    Usually, a user won't modify these registers unless he knows what he
+    is doing!<br>
+    <br>
+    <blockquote type="cite"
+cite="mid:CAFEAcA_LZYfsOKuq9e-uCQPRBsi5XGNyCWw4E_YhyebNJeyRLQ@mail.gmail.com">
+      <pre wrap="">What does the UI in gdb look like? What gdb commands display
+the list of and values of system registers now? (Are there any
+commands that used to be useful and are now swamped by lists of
+hundreds of system registers?)
+</pre>
+    </blockquote>
+    To read a given register: <br>
+       (gdb)  print/x $&lt;cpreg_name&gt;<br>
+    To write on a given register<br>
+       (gdb) set $&lt;cpreg_name&gt;=&lt;value&gt;<br>
+    To get the list of all registers:<br>
+       (gdb) info registers all<br>
+        with this command the user get all the registers including the
+    cpregs that has been<br>
+        described dynamically.<br>
+        This command shows the registers page by page (depending on the
+    terminal window size)<br>
+        and the cpregs goes at the end of the list so if user is really
+    interested on these cpregs he<br>
+        should continue to read the register list or he simply type "q"
+    to quit.<br>
+    <br>
+    In the previous patch, the command "info registers" (without the
+    option "all") was swamped <br>
+    by the new big list. So, I fixed that by assigning these registers
+    (in the XML ) to a special <br>
+    group (group="cp_regs") and with that the cpregs won't appear with
+    this command.   <br>
+    <br>
+    Otherwise, I don't think that there is another GDB command that
+    could be affected by<br>
+    this patch.<br>
+    <blockquote type="cite"
+cite="mid:CAFEAcA_LZYfsOKuq9e-uCQPRBsi5XGNyCWw4E_YhyebNJeyRLQ@mail.gmail.com">
+      <pre wrap="">Don't we run into problems where this XML exceeds our gdbstub
+MAX_PACKET_LENGTH (which is only 4K) ?
+
+This is a pre-existing bug (<a class="moz-txt-link-freetext" href="https://bugs.launchpad.net/qemu/+bug/1703147">https://bugs.launchpad.net/qemu/+bug/1703147</a>)
+but I would expect that if we start autogenerating xml for all the
+coprocessor registers we're going to hit the packet limit pretty
+quickly.
+</pre>
+    </blockquote>
+    No, indeed I don't think that (<a class="moz-txt-link-freetext"
+      href="https://bugs.launchpad.net/qemu/+bug/1703147">https://bugs.launchpad.net/qemu/+bug/1703147</a>)<br>
+    is a bug!<br>
+    However, when the gdb request to get an XML description, it sends
+    the packet:<br>
+       
+    qXfer:features:read:&lt;xml_name&gt;:&lt;offset&gt;,&lt;length&gt;<br>
+    for the first packet, the offset=0 and the length in our case is
+    0xFFB<br>
+    (= MAX_PACKET_LENGTH - 5)<br>
+    <br>
+    When the GDB stub gets this packet, it will send the corresponding
+    XML description and:<br>
+    - if the size of the XML is bigger than the length requested by
+    qXfer, GDB stub will <br>
+    add 'm' at the beginning of the response to inform GDB  that there
+    is still more data to be sent.<br>
+    - else, it will add 'l' which mean there is no more data.<br>
+    <br>
+        if (len &lt; total_len - addr) {<br>
+            buf[0] = 'm';<br>
+            len = memtox(buf + 1, xml + addr, len);<br>
+        } else {<br>
+            buf[0] = 'l';<br>
+            len = memtox(buf + 1, xml + addr, total_len - addr);<br>
+        }<br>
+    <br>
+    When GBD gets an answer with the header "m" it will send another
+    qXfer and this time<br>
+    the &lt;offset&gt; will be equal to (old_offset + the size of the
+    data read previously) <br>
+    <br>
+    With this, the XML description won't be truncated even if it is
+    longer than 2045.<br>
+    <blockquote type="cite"
+cite="mid:CAFEAcA_LZYfsOKuq9e-uCQPRBsi5XGNyCWw4E_YhyebNJeyRLQ@mail.gmail.com">
+      <blockquote type="cite">
+        <pre wrap=""> /**
++ * XMLDynamicDescription:
++ * @desc: Contains the XML descriptions.
++ * @num_cpregs: Number of the Coprocessor registers seen by GDB.
++ * @xml_cpregs_ordred_keys: Array that contains the corresponding Key of
++ * a given cpreg with the same order of the cpreg in the XML description.
++ */
++typedef struct XMLDynamicDescription {
++    char * desc;
++    int num_cpregs;
++    uint32_t *xml_cpregs_ordred_keys;
++} XMLDynamicDescription;
+</pre>
+      </blockquote>
+      <pre wrap="">cpregs are an arm-specific concept so this data structure doesn't
+belong in the for-all-cpus header.
+</pre>
+    </blockquote>
+    I moved this to /target/arm/cpu.h .<br>
+    <blockquote type="cite"
+cite="mid:CAFEAcA_LZYfsOKuq9e-uCQPRBsi5XGNyCWw4E_YhyebNJeyRLQ@mail.gmail.com">
+      <blockquote type="cite">
+        <pre wrap="">+    char * (*get_feature_xml_dynamically)(CPUState *cpu);
++    int (*gdb_read_cpregister)(CPUState *cpu, uint8_t *buf, int reg);
++    int (*gdb_write_cpregister)(CPUState *cpu, uint8_t *buf, int reg);
+</pre>
+      </blockquote>
+      <pre wrap="">Do we really need a new set of functions rather than just being
+able to use the existing gdb_read_register/gdb_write_register ?
+The API seems to be the same, so I was expecting to just have
+the same functions be called, with the register number distinguishing
+the existing regs from the new coprocessor ones.
+</pre>
+    </blockquote>
+    I'm using now the gdb_read_register/gdb_write_register instead.<br>
+    <br>
+    Best regards,<br>
+    Abdallah<br>
+    <br>
+     gdbstub.c              | 18 +++++++++++<br>
+     include/qom/cpu.h      |  3 ++<br>
+     target/arm/cpu.c       |  3 ++<br>
+     target/arm/cpu.h       | 18 +++++++++++<br>
+     target/arm/gdbstub.c   | 87
+    ++++++++++++++++++++++++++++++++++++++++++++++++++<br>
+     target/arm/gdbstub64.c | 25 +++++++++++++++<br>
+     target/arm/helper.c    |  3 +-<br>
+     7 files changed, 155 insertions(+), 2 deletions(-)<br>
+    <br>
+    diff --git a/gdbstub.c b/gdbstub.c<br>
+    index f1d5148..f54053f 100644<br>
+    --- a/gdbstub.c<br>
+    +++ b/gdbstub.c<br>
+    @@ -670,10 +670,20 @@ static const char *get_feature_xml(const char
+    *p, const char **newp,<br>
+                     pstrcat(target_xml, sizeof(target_xml), r-&gt;xml);<br>
+                     pstrcat(target_xml, sizeof(target_xml), "\"/&gt;");<br>
+                 }<br>
+    +            if (cc-&gt;has_dynamic_xml) {<br>
+    +                cc-&gt;gen_dynamic_xml(cpu);<br>
+    +                pstrcat(target_xml, sizeof(target_xml),
+    "&lt;xi:include href=\"");<br>
+    +                pstrcat(target_xml, sizeof(target_xml),
+    "dynamic_desc.xml");<br>
+    +                pstrcat(target_xml, sizeof(target_xml), "\"/&gt;");<br>
+    +            }<br>
+                 pstrcat(target_xml, sizeof(target_xml),
+    "&lt;/target&gt;");<br>
+             }<br>
+             return target_xml;<br>
+         }<br>
+    +    if (strncmp(p, "dynamic_desc.xml", len) == 0) {<br>
+    +        CPUState *cpu = first_cpu;<br>
+    +        return cc-&gt;get_dynamic_xml(cpu);<br>
+    +    }<br>
+         for (i = 0; ; i++) {<br>
+             name = xml_builtin[i][0];<br>
+             if (!name || (strncmp(name, p, len) == 0 &amp;&amp;
+    strlen(name) == len))<br>
+    @@ -697,6 +707,10 @@ static int gdb_read_register(CPUState *cpu,
+    uint8_t *mem_buf, int reg)<br>
+                 return r-&gt;get_reg(env, mem_buf, reg -
+    r-&gt;base_reg);<br>
+             }<br>
+         }<br>
+    +<br>
+    +    if (cc-&gt;has_dynamic_xml) {<br>
+    +        return cc-&gt;gdb_read_register(cpu, mem_buf, reg);<br>
+    +    }<br>
+         return 0;<br>
+     }<br>
+     <br>
+    @@ -715,6 +729,10 @@ static int gdb_write_register(CPUState *cpu,
+    uint8_t *mem_buf, int reg)<br>
+                 return r-&gt;set_reg(env, mem_buf, reg -
+    r-&gt;base_reg);<br>
+             }<br>
+         }<br>
+    +<br>
+    +    if (cc-&gt;has_dynamic_xml) {<br>
+    +        return cc-&gt;gdb_write_register(cpu, mem_buf, reg);<br>
+    +    }<br>
+         return 0;<br>
+     }<br>
+     <br>
+    diff --git a/include/qom/cpu.h b/include/qom/cpu.h<br>
+    index 93bd546..a3105c0 100644<br>
+    --- a/include/qom/cpu.h<br>
+    +++ b/include/qom/cpu.h<br>
+    @@ -197,6 +197,9 @@ typedef struct CPUClass {<br>
+         const struct VMStateDescription *vmsd;<br>
+         const char *gdb_core_xml_file;<br>
+         gchar * (*gdb_arch_name)(CPUState *cpu);<br>
+    +    bool has_dynamic_xml;<br>
+    +    void (*gen_dynamic_xml)(CPUState *cpu);<br>
+    +    char *(*get_dynamic_xml)(CPUState *cpu);<br>
+     <br>
+         void (*cpu_exec_enter)(CPUState *cpu);<br>
+         void (*cpu_exec_exit)(CPUState *cpu);<br>
+    diff --git a/target/arm/cpu.c b/target/arm/cpu.c<br>
+    index cc1856c..410e250 100644<br>
+    --- a/target/arm/cpu.c<br>
+    +++ b/target/arm/cpu.c<br>
+    @@ -1752,6 +1752,9 @@ static void arm_cpu_class_init(ObjectClass
+    *oc, void *data)<br>
+         cc-&gt;gdb_num_core_regs = 26;<br>
+         cc-&gt;gdb_core_xml_file = "arm-core.xml";<br>
+         cc-&gt;gdb_arch_name = arm_gdb_arch_name;<br>
+    +    cc-&gt;has_dynamic_xml = true;<br>
+    +    cc-&gt;gen_dynamic_xml = arm_gen_dynamic_xml;<br>
+    +    cc-&gt;get_dynamic_xml = arm_get_dynamic_xml;<br>
+         cc-&gt;gdb_stop_before_watchpoint = true;<br>
+         cc-&gt;debug_excp_handler = arm_debug_excp_handler;<br>
+         cc-&gt;debug_check_watchpoint = arm_debug_check_watchpoint;<br>
+    diff --git a/target/arm/cpu.h b/target/arm/cpu.h<br>
+    index 9631670..bcb567b 100644<br>
+    --- a/target/arm/cpu.h<br>
+    +++ b/target/arm/cpu.h<br>
+    @@ -135,6 +135,19 @@ enum {<br>
+        s&lt;2n+1&gt; maps to the most significant half of d&lt;n&gt;<br>
+      */<br>
+     <br>
+    +/**<br>
+    + * XMLDynamicDescription:<br>
+    + * @desc: Contains the XML descriptions.<br>
+    + * @num_cpregs: Number of the Coprocessor registers seen by GDB.<br>
+    + * @cpregs_keys: Array that contains the corresponding Key of<br>
+    + * a given cpreg with the same order of the cpreg in the XML
+    description.<br>
+    + */<br>
+    +typedef struct XMLDynamicDescription {<br>
+    +    char *desc;<br>
+    +    int num_cpregs;<br>
+    +    uint32_t *cpregs_keys;<br>
+    +} XMLDynamicDescription;<br>
+    +<br>
+     /* CPU state for each instance of a generic timer (in cp15 c14) */<br>
+     typedef struct ARMGenericTimer {<br>
+         uint64_t cval; /* Timer CompareValue register */<br>
+    @@ -633,6 +646,8 @@ struct ARMCPU {<br>
+         uint64_t *cpreg_vmstate_values;<br>
+         int32_t cpreg_vmstate_array_len;<br>
+     <br>
+    +    XMLDynamicDescription dyn_xml;<br>
+    +<br>
+         /* Timers used by the generic (architected) timer */<br>
+         QEMUTimer *gt_timer[NUM_GTIMERS];<br>
+         /* GPIO outputs for generic timer */<br>
+    @@ -797,6 +812,8 @@ hwaddr
+    arm_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,<br>
+     <br>
+     int arm_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int
+    reg);<br>
+     int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int
+    reg);<br>
+    +void arm_gen_dynamic_xml(CPUState *cpu);<br>
+    +char *arm_get_dynamic_xml(CPUState *cpu);<br>
+     <br>
+     int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,<br>
+                                  int cpuid, void *opaque);<br>
+    @@ -2005,6 +2022,7 @@ static inline bool cp_access_ok(int
+    current_el,<br>
+     <br>
+     /* Raw read of a coprocessor register (as needed for migration,
+    etc) */<br>
+     uint64_t read_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri);<br>
+    +void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri,
+    uint64_t v);<br>
+     <br>
+     /**<br>
+      * write_list_to_cpustate<br>
+    diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c<br>
+    index 04c1208..7cffe87 100644<br>
+    --- a/target/arm/gdbstub.c<br>
+    +++ b/target/arm/gdbstub.c<br>
+    @@ -56,6 +56,17 @@ int arm_cpu_gdb_read_register(CPUState *cs,
+    uint8_t *mem_buf, int n)<br>
+             /* CPSR */<br>
+             return gdb_get_reg32(mem_buf, cpsr_read(env));<br>
+         }<br>
+    +    if (n &gt;= cs-&gt;gdb_num_regs &amp;&amp;<br>
+    +        n &lt; cs-&gt;gdb_num_regs + cpu-&gt;dyn_xml.num_cpregs) {<br>
+    +        const ARMCPRegInfo *ri;<br>
+    +        uint32_t key;<br>
+    +<br>
+    +        key = cpu-&gt;dyn_xml.cpregs_keys[n - cs-&gt;gdb_num_regs];<br>
+    +        ri = get_arm_cp_reginfo(arm_env_get_cpu(env)-&gt;cp_regs,
+    key);<br>
+    +        if (ri) {<br>
+    +            return gdb_get_reg32(mem_buf,
+    (uint32_t)read_raw_cp_reg(env, ri));<br>
+    +        }<br>
+    +    }<br>
+         /* Unknown register.  */<br>
+         return 0;<br>
+     }<br>
+    @@ -98,6 +109,82 @@ int arm_cpu_gdb_write_register(CPUState *cs,
+    uint8_t *mem_buf, int n)<br>
+             cpsr_write(env, tmp, 0xffffffff, CPSRWriteByGDBStub);<br>
+             return 4;<br>
+         }<br>
+    +    if (n &gt;= cs-&gt;gdb_num_regs &amp;&amp;<br>
+    +        n &lt; cs-&gt;gdb_num_regs + cpu-&gt;dyn_xml.num_cpregs) {<br>
+    +        const ARMCPRegInfo *ri;<br>
+    +        uint32_t key;<br>
+    +<br>
+    +        key = cpu-&gt;dyn_xml.cpregs_keys[n - cs-&gt;gdb_num_regs];<br>
+    +        ri = get_arm_cp_reginfo(arm_env_get_cpu(env)-&gt;cp_regs,
+    key);<br>
+    +        if (ri) {<br>
+    +            if (!(ri-&gt;type &amp; ARM_CP_CONST)) {<br>
+    +                write_raw_cp_reg(env, ri, tmp);<br>
+    +                return 4;<br>
+    +            }<br>
+    +        }<br>
+    +    }<br>
+         /* Unknown register.  */<br>
+         return 0;<br>
+     }<br>
+    +<br>
+    +static void arm_gen_xml_reg(gpointer key, gpointer value, gpointer
+    cs)<br>
+    +{<br>
+    +    ARMCPU *cpu = ARM_CPU(cs);<br>
+    +    XMLDynamicDescription *dyn_xml = &amp;cpu-&gt;dyn_xml;<br>
+    +    ARMCPRegInfo *ri = value;<br>
+    +    uint32_t ri_key = *(uint32_t *)key;<br>
+    +    CPUARMState *env = &amp;cpu-&gt;env;<br>
+    +    char **target_xml = (char **)&amp;(dyn_xml-&gt;desc);<br>
+    +    char *tmp_xml = *target_xml;<br>
+    +<br>
+    +    if (!(ri-&gt;type &amp; (ARM_CP_NO_RAW | ARM_CP_ALIAS))) {<br>
+    +        if (env-&gt;aarch64) {<br>
+    +            if (cpreg_field_is_64bit(ri)) {<br>
+    +                *target_xml = g_strconcat(*target_xml,<br>
+    +                                        "&lt;reg name=\"",
+    ri-&gt;name, "\" ",<br>
+    +                                        "bitsize=\"64\"
+    group=\"cp_regs\"/&gt;",<br>
+    +                                        NULL);<br>
+    +            } else {<br>
+    +                return;<br>
+    +            }<br>
+    +        } else {<br>
+    +            if (ri-&gt;secure &amp; ARM_CP_SECSTATE_S) {<br>
+    +                *target_xml = g_strconcat(*target_xml,<br>
+    +                                          "&lt;reg name=\"",
+    ri-&gt;name, "_S\" ",<br>
+    +                                          "bitsize=\"32\"
+    group=\"cp_regs\"/&gt;",<br>
+    +                                          NULL);<br>
+    +            } else {<br>
+    +                *target_xml = g_strconcat(*target_xml,<br>
+    +                                          "&lt;reg name=\"",
+    ri-&gt;name, "\" ",<br>
+    +                                          "bitsize=\"32\"
+    group=\"cp_regs\"/&gt;",<br>
+    +                                          NULL);<br>
+    +            }<br>
+    +        }<br>
+    +        g_free(tmp_xml);<br>
+    +        dyn_xml-&gt;num_cpregs++;<br>
+    +        dyn_xml-&gt;cpregs_keys = g_renew(uint32_t,<br>
+    +                                       dyn_xml-&gt;cpregs_keys,<br>
+    +                                       dyn_xml-&gt;num_cpregs);<br>
+    +        dyn_xml-&gt;cpregs_keys[dyn_xml-&gt;num_cpregs - 1] =
+    ri_key;<br>
+    +    }<br>
+    +}<br>
+    +<br>
+    +void arm_gen_dynamic_xml(CPUState *cs)<br>
+    +{<br>
+    +    ARMCPU *cpu = ARM_CPU(cs);<br>
+    +<br>
+    +    cpu-&gt;dyn_xml.num_cpregs = 0;<br>
+    +    cpu-&gt;dyn_xml.desc = g_strconcat("&lt;?xml
+    version=\"1.0\"?&gt;",<br>
+    +                                 "&lt;!DOCTYPE target SYSTEM
+    \"gdb-target.dtd\"&gt;",<br>
+    +                                   "&lt;feature
+    name=\"org.gnu.gdb.dynamic.cp\"&gt;",<br>
+    +                                   NULL);<br>
+    +    g_hash_table_foreach(cpu-&gt;cp_regs, arm_gen_xml_reg, cs);<br>
+    +    cpu-&gt;dyn_xml.desc = g_strconcat(cpu-&gt;dyn_xml.desc,
+    "&lt;/feature&gt;", NULL);<br>
+    +}<br>
+    +<br>
+    +char *arm_get_dynamic_xml(CPUState *cs)<br>
+    +{<br>
+    +    ARMCPU *cpu = ARM_CPU(cs);<br>
+    +<br>
+    +    return cpu-&gt;dyn_xml.desc;<br>
+    +}<br>
+    diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c<br>
+    index 49bc3fc..6cf302f 100644<br>
+    --- a/target/arm/gdbstub64.c<br>
+    +++ b/target/arm/gdbstub64.c<br>
+    @@ -38,6 +38,17 @@ int aarch64_cpu_gdb_read_register(CPUState *cs,
+    uint8_t *mem_buf, int n)<br>
+         case 33:<br>
+             return gdb_get_reg32(mem_buf, pstate_read(env));<br>
+         }<br>
+    +    if (n &gt;= cs-&gt;gdb_num_regs &amp;&amp;<br>
+    +        n &lt; cs-&gt;gdb_num_regs + cpu-&gt;dyn_xml.num_cpregs) {<br>
+    +        const ARMCPRegInfo *ri;<br>
+    +        uint32_t key;<br>
+    +<br>
+    +        key = cpu-&gt;dyn_xml.cpregs_keys[n - cs-&gt;gdb_num_regs];<br>
+    +        ri = get_arm_cp_reginfo(arm_env_get_cpu(env)-&gt;cp_regs,
+    key);<br>
+    +        if (ri) {<br>
+    +            return gdb_get_reg64(mem_buf,
+    (uint64_t)read_raw_cp_reg(env, ri));<br>
+    +        }<br>
+    +    }<br>
+         /* Unknown register.  */<br>
+         return 0;<br>
+     }<br>
+    @@ -67,6 +78,20 @@ int aarch64_cpu_gdb_write_register(CPUState *cs,
+    uint8_t *mem_buf, int n)<br>
+             pstate_write(env, tmp);<br>
+             return 4;<br>
+         }<br>
+    +    if (n &gt;= cs-&gt;gdb_num_regs &amp;&amp;<br>
+    +        n &lt; cs-&gt;gdb_num_regs + cpu-&gt;dyn_xml.num_cpregs) {<br>
+    +        const ARMCPRegInfo *ri;<br>
+    +        uint32_t key;<br>
+    +<br>
+    +        key = cpu-&gt;dyn_xml.cpregs_keys[n - cs-&gt;gdb_num_regs];<br>
+    +        ri = get_arm_cp_reginfo(arm_env_get_cpu(env)-&gt;cp_regs,
+    key);<br>
+    +        if (ri) {<br>
+    +            if (!(ri-&gt;type &amp; ARM_CP_CONST)) {<br>
+    +                write_raw_cp_reg(env, ri, tmp);<br>
+    +                return 8;<br>
+    +            }<br>
+    +        }<br>
+    +    }<br>
+         /* Unknown register.  */<br>
+         return 0;<br>
+     }<br>
+    diff --git a/target/arm/helper.c b/target/arm/helper.c<br>
+    index c83c901..223372f 100644<br>
+    --- a/target/arm/helper.c<br>
+    +++ b/target/arm/helper.c<br>
+    @@ -191,8 +191,7 @@ uint64_t read_raw_cp_reg(CPUARMState *env, const
+    ARMCPRegInfo *ri)<br>
+         }<br>
+     }<br>
+     <br>
+    -static void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo
+    *ri,<br>
+    -                             uint64_t v)<br>
+    +void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri,
+    uint64_t v)<br>
+     {<br>
+         /* Raw write of a coprocessor register (as needed for
+    migration, etc).<br>
+          * Note that constant registers are treated as write-ignored;
+    the<br>
+    -- <br>
+    1.9.1<br>
+  </body>
+</html>
+
+--------------461F5E1BCDF203A2A1BB82F0--

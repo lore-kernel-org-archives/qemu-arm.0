@@ -1,72 +1,72 @@
-Received: by 10.28.71.27 with SMTP id u27csp1473941wma;
-        Tue, 30 Jan 2018 07:03:03 -0800 (PST)
-X-Google-Smtp-Source: AH8x227cK1SonMu5lEm1dF62fZtpY8SNfDLlpjT/NnFnGjQirm2FdOjeS23jE/Vp52mgjsDMR+Yk
-X-Received: by 10.129.112.15 with SMTP id l15mr19692579ywc.494.1517324583789;
-        Tue, 30 Jan 2018 07:03:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1517324583; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp1474125wma;
+        Tue, 30 Jan 2018 07:03:12 -0800 (PST)
+X-Google-Smtp-Source: AH8x227Dx0gQTIZFIWLncECAjF9Dq0yk08tb3Rm7DEd3Uf/ccFBGRvSiHmQKbc8M7vYRUWlOGBHc
+X-Received: by 10.37.204.142 with SMTP id l136mr777881ybf.22.1517324592041;
+        Tue, 30 Jan 2018 07:03:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1517324592; cv=none;
         d=google.com; s=arc-20160816;
-        b=HC7d7797E2kTuIIhK4V2W1pGpSM6i0JbiDeOamu7lr/FyQWi6NWzGUHW5rXNhRqV3S
-         aiWYP/Yk/d2gn9JZSgCnwypxSF3Mk1CCATelUwaAYNKBzVXyaOkm1uGeiTh8PYQUmxYh
-         Hsq33eNVjNOemyCDd8iNOkQiegGiaxjLwbu4auyzzFeJJcCKwkPEdu0s3l0NzQTAqcAo
-         8GWPQSuc+zbl3Tp7GnWjBQuqwcr6J7n2pm/zkhXm9j2gPuZqRfvhBkQYJNeaCyRGdt2F
-         RMOlsUWHHyaB1qMrYVYZSZmPLk9oSwG3rKTlo1mFnQJlvyy2g+PxmMsnCsMlvleiEu+L
-         Gg1A==
+        b=C6DNAVBm/uRcT1QepDvRJ1jnk7HrOq68utAdEXHQ4JM77s0dlp5o0tctI9+TwLSfdp
+         mySdRFh1eUdls20t4um8ET+kEQg34rJkO0R+KeB+PzcAbVQNN0lOW2ryi1BI5DLwPHlc
+         3mz0zc4YEw96KZYW9YPX1aNBS77NDv8TCQTAZoTKasLM6giTEmKntNCZjwkIqBOoMZhP
+         sO3Ia+VgU3d4z1Fhm8yug1VLOinuLL8NkOIZqy/lv8nLEx4eCk2YHWk34KZQ5ePBO9Rf
+         XPP8tLw3IWtd3HT/51hz82QFyyhrOpiJBdNWUJmlDbdAwCfDDPCy47YvT1Pxx4RIMqIO
+         Q1WQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=psVjRHoe0C43PjgjG3wNDvUfC3MZX8TMbmJOJRupe0Y=;
-        b=b2XGOVxFBbDiKwrQCsgbWusLC3gYa0rJIV08Fi3cZ1tCLY+eXp1rGZTP4sFUyTQp8e
-         9esX4lVVW32MklPdNbZ8JOTJqcaTamUBEcxiAH0dBF7uK0PlF6wM67Cd0HLaJZzYKw9q
-         On8LIc34M+20Oz9QdNE1X4VBdwYwFD0zC07FmPtezxhKfHXrYhePjDJuKN1MPmOY18xN
-         88nfm1nHFW5RLGiwi1OxpqTTIYfUqRkfGuk9FDRdgx60y3uYBa6UwQ3N9rSFmD6dMmhO
-         C5EXCxjKFddsug/3Ay/oZw1xNkAQpLt/fp+U9JoW2eEGL2I78ZDq2Jc50wR6LdeVS3l5
-         7AvQ==
+        bh=cb1ZKKwXL53sHwl4LVcTdR8KHQXWh8A5m23QJpe5FAI=;
+        b=NmiCjJLPb0ao2nOaO7i5K1s0pK4U6Yzky6Ul/iEZQ+xL4oFrv9s77GlsDcbRxXgMo9
+         zJMg2SpH5xiy0t2AN2K592lOdzydlhQabQJ4MCWqEChrritIpxirFmhXC9dZiH8SAoxg
+         b0voh35g3eRCBVVaJv2PA8tFRJWwNoYACD2KKqssdMVgKDXi5h3oIJgj1NI+Xi6UFTEt
+         rE/HfAgzRT7ZDqzYulX1wZGpyJwoBvokNzIevP36x1smBSFhR3lougP/hi/eSz9kprE8
+         8a24da4mcTNiydsJVsiePLdgm9F4TKIOkM5UuOR1IUSq2cctZmTT1qxWwgBEZucZf1qR
+         cd+A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d17si2104297ybl.291.2018.01.30.07.03.03
+        by mx.google.com with ESMTPS id 202si2653425yws.623.2018.01.30.07.03.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 30 Jan 2018 07:03:03 -0800 (PST)
+        Tue, 30 Jan 2018 07:03:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42062 helo=lists.gnu.org)
+Received: from localhost ([::1]:42066 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1egXR9-0000Q8-58
-	for alex.bennee@linaro.org; Tue, 30 Jan 2018 10:03:03 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49077)
+	id 1egXRH-0000VV-Ec
+	for alex.bennee@linaro.org; Tue, 30 Jan 2018 10:03:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49087)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1egXQi-0000Bb-UV
-	for qemu-arm@nongnu.org; Tue, 30 Jan 2018 10:02:41 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1egXQk-0000Bg-6g
+	for qemu-arm@nongnu.org; Tue, 30 Jan 2018 10:02:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1egXQd-0005Zm-49
-	for qemu-arm@nongnu.org; Tue, 30 Jan 2018 10:02:37 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1egXQc-0005Yb-3z
+	for qemu-arm@nongnu.org; Tue, 30 Jan 2018 10:02:38 -0500
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:46108)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1egXQc-0005Uz-Rr; Tue, 30 Jan 2018 10:02:31 -0500
+	id 1egXQb-0005Uz-Qp; Tue, 30 Jan 2018 10:02:30 -0500
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1egXQa-0005tc-Fs; Tue, 30 Jan 2018 15:02:28 +0000
+	id 1egXQY-0005t7-QJ; Tue, 30 Jan 2018 15:02:26 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 30 Jan 2018 15:02:21 +0000
-Message-Id: <1517324542-6607-7-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 30 Jan 2018 15:02:19 +0000
+Message-Id: <1517324542-6607-5-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1517324542-6607-1-git-send-email-peter.maydell@linaro.org>
 References: <1517324542-6607-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 6/7] target/arm: Make exception vector loads
- honour the SAU
+Subject: [Qemu-arm] [PATCH 4/7] target/arm: Make v7M exception entry stack
+ push check MPU
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,113 +81,152 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rKi9a5/+jYhS
+X-TUID: Sbqu2BqpONGr
 
-Make the load of the exception vector from the vector table honour
-the SAU and any bus error on the load (possibly provoking a derived
-exception), rather than simply aborting if the load fails.
+The memory writes done to push registers on the stack
+on exception entry in M profile CPUs are supposed to
+go via MPU permissions checks, which may cause us to
+take a derived exception instead of the original one of
+the MPU lookup fails. We were implementing these as
+always-succeeds direct writes to physical memory.
+Rewrite v7m_push_stack() to do the necessary checks.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper.c | 71 +++++++++++++++++++++++++++++++++++++++++------------
- 1 file changed, 55 insertions(+), 16 deletions(-)
+ target/arm/helper.c | 103 ++++++++++++++++++++++++++++++++++++++++++++--------
+ 1 file changed, 87 insertions(+), 16 deletions(-)
 
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index de0031b..6931a9d 100644
+index c713eea..007e760 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -6449,28 +6449,63 @@ static uint32_t *get_v7m_sp_ptr(CPUARMState *env, bool secure, bool threadmode,
-     }
+@@ -6161,12 +6161,66 @@ uint32_t arm_phys_excp_target_el(CPUState *cs, uint32_t excp_idx,
+     return target_el;
  }
  
--static uint32_t arm_v7m_load_vector(ARMCPU *cpu, int exc, bool targets_secure)
-+static bool arm_v7m_load_vector(ARMCPU *cpu, int exc, bool targets_secure,
-+                                uint32_t *pvec)
+-static void v7m_push(CPUARMState *env, uint32_t val)
++static bool v7m_stack_write(ARMCPU *cpu, uint32_t addr, uint32_t value,
++                            ARMMMUIdx mmu_idx, bool ignfault)
  {
-     CPUState *cs = CPU(cpu);
-     CPUARMState *env = &cpu->env;
-     MemTxResult result;
--    hwaddr vec = env->v7m.vecbase[targets_secure] + exc * 4;
--    uint32_t addr;
-+    uint32_t addr = env->v7m.vecbase[targets_secure] + exc * 4;
-+    uint32_t vector_entry;
+-    CPUState *cs = CPU(arm_env_get_cpu(env));
++    CPUState *cs = CPU(cpu);
++    CPUARMState *env = &cpu->env;
 +    MemTxAttrs attrs = {};
-+    ARMMMUIdx mmu_idx;
++    MemTxResult txres;
++    target_ulong page_size;
++    hwaddr physaddr;
++    int prot;
++    ARMMMUFaultInfo fi;
++    bool secure = mmu_idx & ARM_MMU_IDX_M_S;
++    int exc;
 +    bool exc_secure;
-+
-+    mmu_idx = arm_v7m_mmu_idx_for_secstate_and_priv(env, targets_secure, true);
  
--    addr = address_space_ldl(cs->as, vec,
--                             MEMTXATTRS_UNSPECIFIED, &result);
-+    /* We don't do a get_phys_addr() here because the rules for vector
-+     * loads are special: they always use the default memory map, and
-+     * the default memory map permits reads from all addresses.
-+     * Since there's no easy way to pass through to pmsav8_mpu_lookup()
-+     * that we want this special case which would always say "yes",
-+     * we just do the SAU lookup here followed by a direct physical load.
-+     */
-+    attrs.secure = targets_secure;
-+    attrs.user = false;
-+
-+    if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
-+        V8M_SAttributes sattrs = {};
-+
-+        v8m_security_lookup(env, addr, MMU_DATA_LOAD, mmu_idx, &sattrs);
-+        if (sattrs.ns) {
-+            attrs.secure = false;
-+        } else if (!targets_secure) {
-+            /* NS access to S memory */
-+            goto load_fail;
+-    env->regs[13] -= 4;
+-    stl_phys(cs->as, env->regs[13], val);
++    if (get_phys_addr(env, addr, MMU_DATA_STORE, mmu_idx, &physaddr,
++                      &attrs, &prot, &page_size, &fi, NULL)) {
++        /* MPU/SAU lookup failed */
++        if (fi.type == ARMFault_QEMU_SFault) {
++            qemu_log_mask(CPU_LOG_INT,
++                          "...SecureFault with SFSR.AUVIOL during stacking\n");
++            env->v7m.sfsr |= R_V7M_SFSR_AUVIOL_MASK | R_V7M_SFSR_SFARVALID_MASK;
++            env->v7m.sfar = addr;
++            exc = ARMV7M_EXCP_SECURE;
++            exc_secure = true;
++        } else {
++            qemu_log_mask(CPU_LOG_INT, "...MemManageFault with CFSR.MSTKERR\n");
++            env->v7m.cfsr[secure] |= R_V7M_CFSR_MSTKERR_MASK;
++            exc = ARMV7M_EXCP_MEM;
++            exc_secure = secure;
 +        }
++        goto pend_fault;
 +    }
-+
-+    vector_entry = address_space_ldl(arm_addressspace(cs, attrs), addr,
-+                                     attrs, &result);
-     if (result != MEMTX_OK) {
--        /* Architecturally this should cause a HardFault setting HSFR.VECTTBL,
--         * which would then be immediately followed by our failing to load
--         * the entry vector for that HardFault, which is a Lockup case.
--         * Since we don't model Lockup, we just report this guest error
--         * via cpu_abort().
--         */
--        cpu_abort(cs, "Failed to read from %s exception vector table "
--                  "entry %08x\n", targets_secure ? "secure" : "nonsecure",
--                  (unsigned)vec);
-+        goto load_fail;
-     }
--    return addr;
-+    *pvec = vector_entry;
++    address_space_stl_le(arm_addressspace(cs, attrs), physaddr, value,
++                         attrs, &txres);
++    if (txres != MEMTX_OK) {
++        /* BusFault trying to write the data */
++        qemu_log_mask(CPU_LOG_INT, "...BusFault with BFSR.STKERR\n");
++        env->v7m.cfsr[M_REG_NS] |= R_V7M_CFSR_STKERR_MASK;
++        exc = ARMV7M_EXCP_BUS;
++        exc_secure = false;
++        goto pend_fault;
++    }
 +    return true;
 +
-+load_fail:
-+    /* All vector table fetch fails are reported as HardFault, with
-+     * HFSR.VECTTBL and .FORCED set. (FORCED is set because
-+     * technically the underlying exception is a MemManage or BusFault
-+     * that is escalated to HardFault.) This is a terminal exception,
-+     * so we will either take the HardFault immediately or else enter
-+     * lockup (the latter case is handled in armv7m_nvic_set_pending_derived()).
++pend_fault:
++    /* By pending the exception at this point we are making
++     * the IMPDEF choice "overridden exceptions pended" (see the
++     * MergeExcInfo() pseudocode). The other choice would be to not
++     * pend them now and then make a choice about which to throw away
++     * later if we have two derived exceptions.
++     * The only case when we must not pend the exception but instead
++     * throw it away is if we are doing the push of the callee registers
++     * and we've already generated a derived exception. Even in this
++     * case we will still update the fault status registers.
 +     */
-+    exc_secure = targets_secure ||
-+        !(cpu->env.v7m.aircr & R_V7M_AIRCR_BFHFNMINS_MASK);
-+    env->v7m.hfsr |= R_V7M_HFSR_VECTTBL_MASK | R_V7M_HFSR_FORCED_MASK;
-+    armv7m_nvic_set_pending_derived(env->nvic, ARMV7M_EXCP_HARD, exc_secure);
++    if (!ignfault) {
++        armv7m_nvic_set_pending_derived(env->nvic, exc, exc_secure);
++    }
 +    return false;
  }
  
- static bool v7m_push_callee_stack(ARMCPU *cpu, uint32_t lr, bool dotailchain,
-@@ -6623,7 +6658,11 @@ static void v7m_exception_taken(ARMCPU *cpu, uint32_t lr, bool dotailchain,
-         return;
+ /* Return true if we're using the process stack pointer (not the MSP) */
+@@ -6562,26 +6616,43 @@ static bool v7m_push_stack(ARMCPU *cpu)
+      * should ignore further stack faults trying to process
+      * that derived exception.)
+      */
++    bool stacked_ok;
+     CPUARMState *env = &cpu->env;
+     uint32_t xpsr = xpsr_read(env);
++    uint32_t frameptr = env->regs[13];
++    ARMMMUIdx mmu_idx = core_to_arm_mmu_idx(env, cpu_mmu_index(env, false));
+ 
+     /* Align stack pointer if the guest wants that */
+-    if ((env->regs[13] & 4) &&
++    if ((frameptr & 4) &&
+         (env->v7m.ccr[env->v7m.secure] & R_V7M_CCR_STKALIGN_MASK)) {
+-        env->regs[13] -= 4;
++        frameptr -= 4;
+         xpsr |= XPSR_SPREALIGN;
      }
+-    /* Switch to the handler mode.  */
+-    v7m_push(env, xpsr);
+-    v7m_push(env, env->regs[15]);
+-    v7m_push(env, env->regs[14]);
+-    v7m_push(env, env->regs[12]);
+-    v7m_push(env, env->regs[3]);
+-    v7m_push(env, env->regs[2]);
+-    v7m_push(env, env->regs[1]);
+-    v7m_push(env, env->regs[0]);
  
--    addr = arm_v7m_load_vector(cpu, exc, targets_secure);
-+    if (!arm_v7m_load_vector(cpu, exc, targets_secure, &addr)) {
-+        /* Vector load failed: derived exception */
-+        v7m_exception_taken(cpu, lr, true, true);
-+        return;
-+    }
+-    return false;
++    frameptr -= 0x20;
++
++    /* Write as much of the stack frame as we can. If we fail a stack
++     * write this will result in a derived exception being pended
++     * (which may be taken in preference to the one we started with
++     * if it has higher priority).
++     */
++    stacked_ok =
++        v7m_stack_write(cpu, frameptr, env->regs[0], mmu_idx, false) &&
++        v7m_stack_write(cpu, frameptr + 4, env->regs[1], mmu_idx, false) &&
++        v7m_stack_write(cpu, frameptr + 8, env->regs[2], mmu_idx, false) &&
++        v7m_stack_write(cpu, frameptr + 12, env->regs[3], mmu_idx, false) &&
++        v7m_stack_write(cpu, frameptr + 16, env->regs[12], mmu_idx, false) &&
++        v7m_stack_write(cpu, frameptr + 20, env->regs[14], mmu_idx, false) &&
++        v7m_stack_write(cpu, frameptr + 24, env->regs[15], mmu_idx, false) &&
++        v7m_stack_write(cpu, frameptr + 28, xpsr, mmu_idx, false);
++
++    /* Update SP regardless of whether any of the stack accesses failed.
++     * When we implement v8M stack limit checking then this attempt to
++     * update SP might also fail and result in a derived exception.
++     */
++    env->regs[13] = frameptr;
++
++    return !stacked_ok;
+ }
  
-     /* Now we've done everything that might cause a derived exception
-      * we can go ahead and activate whichever exception we're going to
+ static void do_v7m_exception_exit(ARMCPU *cpu)
 -- 
 2.7.4
 

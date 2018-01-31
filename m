@@ -1,131 +1,130 @@
-Received: by 10.28.71.27 with SMTP id u27csp8358wma;
-        Wed, 31 Jan 2018 09:08:59 -0800 (PST)
-X-Google-Smtp-Source: AH8x226z9fBTv26nifyhCKAa5U/5zd5VX/PjLWUCae2KYYULYi8hV12HSEthPyklrwEXo0qxFbTg
-X-Received: by 10.129.198.6 with SMTP id l6mr22385181ywi.495.1517418539050;
-        Wed, 31 Jan 2018 09:08:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1517418539; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp11060wma;
+        Wed, 31 Jan 2018 09:11:22 -0800 (PST)
+X-Google-Smtp-Source: AH8x2243uh0hCPPGrrz82LoH4y6U6mnSNi2RD5vW6HwdCCPODMk7tRuAm9Rk8orHRL/xQuw6MyIH
+X-Received: by 10.13.243.198 with SMTP id c189mr23369226ywf.141.1517418681782;
+        Wed, 31 Jan 2018 09:11:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1517418681; cv=none;
         d=google.com; s=arc-20160816;
-        b=HYJkIzrrOVrmKnRMpnDDMiWyPxuY1q7Q/1cNjOsSIWwUGxM+9wM+SRffeSErykI6UI
-         uG0DQSczrpaEaOR3m78hlF5XdiTx0sH7c5xfojQ3yTwq36vINMHqy3b2oD0CXcCO4arX
-         2RydCVcLtIxNIRfONim3EH08xcJu/Aj/4xcBxL2GQcKZ9F+EAqPSjCZ1dHfUxKitxsvg
-         F6lykm3tkVD8uxJYyjkfee5v69WQNBG+J8PP8yEgxcQGnXfOEEqDC0/2kfHhc6XDxEqY
-         jWjjxa9gE7QhkK2H7rcOYNuOygsp5/jmiRaJyXIl/6PDWddD+mjvtv9esnc/DZum8BMX
-         tTlw==
+        b=Blhsr1iTRrBgGwZqR/0GlL0XZwQseQ1wMQtllmpDwV4yPq5OVg8i8PCrf0AthBNmWx
+         a7fFbdiO9PMy+K5vEp68bCoy8X8Wb/uT0FAHQR7bN2XJxvBwdhTXiBYabhaXhH/Dbcvp
+         zHJC8TywXAD6seyL2gA8NFWLbyr9eo0ZZ72BJ3qV3nu/cTaubfWgut6i1r/VCc8GADnz
+         VGNhYJEVyi1Bsve+8OlEshxPqrMXZNXylXW9fGrPLQaXDpcfheQfhzqMUGbSjEQA2Bh2
+         N6Lh6nZr8crYcWXIzigkR+LCA2yK+TI7gWyDUPGpXgTkOcRWMf+Hno68YXIJvOJ8K85g
+         vsDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to:dkim-signature
          :arc-authentication-results;
-        bh=MWQYz1O4jGil23Ix/scILcKH4lLob2LxvQYltfFGdLU=;
-        b=AxaXCJlJiq9+e8axzpkKMbvEpWvpY4gfKNYJEwp6FnAqviHDBkNaw1omS9QB2P2gbE
-         pjOYQ/0p6Nl9l3e3Nto1DVWKsdSs8rBqHNpGCqsZH/XVnsVq+IxEOrZXThHc/zCfGuKp
-         5jydfqrdEaQfnItrJvBoTxCzd93z/sO5FCGQvSOvmMqsmeVheTcra2alnPa6kzDPZsaj
-         rVefJP0GupMDPFEAuS5/+mTESO0TXep8M7BETblX1eEJRxFfhIOWb9/EMUndQFwJQRer
-         7jC/7p9tvlCGolYqf+NhqucsQmsVMpavsSQUeF6MXMCYut/w6buJVGzVX08woAKjOCgm
-         2NTA==
+        bh=RT2inG0qi2/z+AhHekOi72yUVMN77deUNuRr7aHRfJU=;
+        b=NvPl0+/oGUmrtgpcFnsNc528hkTN7b9zwzlb7o1kH2SJtTs44JT6MiMUtzP5b6eJNK
+         6dd5aJqfpmg2zlbQXc8TSI3PqS7hIHef5KYZDJBl9r+OzFHNtdNsv/25Sb7NHknq/8bW
+         tsuSPuaEJdiCW0x+heRsFpA5xGfz/dXduP6sTDH898wJVQmuIvUwPi3XOALRS9xKti2A
+         rw5IxEDgz2/TzcYVJxY2wfxAVR3WH9re5K+tloUX06mVlMsb+Wz+YsAUr8cIsFH3RpRZ
+         O2KyXNsjMML5G5ccsslqPaN/XS9vPN34EfpDFXm0AmQrqlUm7P3JIv9HhEcD2Q9q2AxW
+         QxBQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=d9CvXk5o;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lPuWVVQt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o2si2887200ywo.450.2018.01.31.09.08.58
+        by mx.google.com with ESMTPS id j12si3140306ywb.117.2018.01.31.09.11.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 31 Jan 2018 09:08:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 31 Jan 2018 09:11:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=d9CvXk5o;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45398 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lPuWVVQt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:45615 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1egvsY-0006sf-GN
-	for alex.bennee@linaro.org; Wed, 31 Jan 2018 12:08:58 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60340)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1egvur-00009B-7x
+	for alex.bennee@linaro.org; Wed, 31 Jan 2018 12:11:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33848)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1egvoJ-0003VN-J1
-	for qemu-arm@nongnu.org; Wed, 31 Jan 2018 12:04:36 -0500
+	id 1egvuV-000077-Gu
+	for qemu-devel@nongnu.org; Wed, 31 Jan 2018 12:11:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1egvoG-00059R-SR
-	for qemu-arm@nongnu.org; Wed, 31 Jan 2018 12:04:35 -0500
-Received: from mail-qt0-x229.google.com ([2607:f8b0:400d:c0d::229]:41182)
+	id 1egvuR-000148-44
+	for qemu-devel@nongnu.org; Wed, 31 Jan 2018 12:10:59 -0500
+Received: from mail-qt0-x230.google.com ([2607:f8b0:400d:c0d::230]:40672)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1egvo7-0004zu-Nz; Wed, 31 Jan 2018 12:04:23 -0500
-Received: by mail-qt0-x229.google.com with SMTP id i1so22697729qtj.8;
-	Wed, 31 Jan 2018 09:04:23 -0800 (PST)
+	id 1egvuQ-00013p-UV; Wed, 31 Jan 2018 12:10:55 -0500
+Received: by mail-qt0-x230.google.com with SMTP id s39so22727665qth.7;
+	Wed, 31 Jan 2018 09:10:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=MWQYz1O4jGil23Ix/scILcKH4lLob2LxvQYltfFGdLU=;
-	b=d9CvXk5oYNKFHs+i5CWq0qiAoBjb+YTn744kq/KEQxa1Ra72K6uj0l7zO+XlrNJUPy
-	g8+kobXkU+xMmyoLcMPjocHzGodFrSLo/JQNpIxfwW36GemfECndEOgYoNZ8eHQQ9m/I
-	a4HMDlFxb2aPTY2PkkEXFc+H5Nv3czh2ip6W/K03mjOTbjcxyEzwhfsSEp3Q1aWwFfZt
-	+Osri8ompDiUQUmAWx7eAOweDk9sJTpwX3ZHBXqn83LF96K4z7a1AUK2VfwyqSshRngx
-	sVovcVkBtrKogUiFevr2AbFJPF+WXjKoaXrTALjFrfcrFLW0uosdIPJvLuC0t+24bwob
-	SJOQ==
+	bh=RT2inG0qi2/z+AhHekOi72yUVMN77deUNuRr7aHRfJU=;
+	b=lPuWVVQtkTlI4XC9+TMTzWugwpaDbCjD3fpWz85kNm+5nHeyCZTBXvJxxyb8gINM4t
+	lY0L8E2W1SRHhLBK5kz0ZVswiT/G/ab4FIqoXo2qW+EQPydn7JplY/K0uO2DSb7CIg2B
+	7VfLRxVHF75c1ZUHLdN45kdAQkSaBtZgsaYHLYFVvD6kS5qyhSksPOeN44FOn2Ie92jL
+	RAVcCrWAbvar+d8DDD6ZVC842omt/z54ztMvmBvg9g1Uqjuv0HLnbSgRpj/fdvX7vs6V
+	97caFT2BV2jJsWFfHsZJN8j6/lkjxeQKpF7fb+yj1G5I6fDb6qEUsYOmk3/bDDC3yqmH
+	OTVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=MWQYz1O4jGil23Ix/scILcKH4lLob2LxvQYltfFGdLU=;
-	b=pQBtqOyViDyU3DRtB8wHW7RslpijIQGspE1BQd+yZ9gsBIis96a8Zp+NFacM0x3l/n
-	h2K/n0tyKremtZGkVBV7xMeYztdf1LoJ78mkUAG4aYVWIZQzwxK4SYTTgz8o6HC7JS+4
-	teN33yaFnYvOeSpTcjST2R6b31UccEfOOcgaHUdc141rEJhDzA/StIitUOBajO/phXbj
-	fEdbIcPHBXGSIUohobrMmzqdG4tHTANjzc78GcpNq5Vw55y4ZHbSkCCej+0UqCeQdLCe
-	hWfhUXCAoW1iBjPnWhejBotoF448kBNFQ404Ri3120t+3gpbdEAT64Jhg7M/qHtY0j/m
-	fB6A==
-X-Gm-Message-State: AKwxytddVHJRZ3YhzfMOGCxeVWNag7Mo3RqJptV6e26hDCeUxmLFcU7X
-	Gkjg2LZi6+G1VXZn0V2BqZ4=
-X-Received: by 10.237.35.38 with SMTP id h35mr51617835qtc.300.1517418263209;
-	Wed, 31 Jan 2018 09:04:23 -0800 (PST)
+	bh=RT2inG0qi2/z+AhHekOi72yUVMN77deUNuRr7aHRfJU=;
+	b=Ajod2aI1IKd6n0RGdapeYf4NIlAhptkukxhw3/BY5ALV23NjYnNG0A32wxdL1oYoTa
+	m1Xt1NB4FjXzGunz+COM0RVNRSvk0KGUOGuADQ3JUAVSxONnLu6Hx1rFPp09z73W1Fwl
+	mYrUTVr7IVHts3GZ/t+I/Y6xLJI+OE8vBUo9ohV5fCoOMTIHQlTMBLJYX90X2P5DD2M0
+	yGuD2Rx2eoVqaLMba4/6aq7jHC/cEbG58/1ESfkof/w9xk7XoOv/aORiE0yeDIgxcdOG
+	lIeyrinpxbyWzuNeA5HfhuwdjAkRq650hKsn/WoG7gIHzQI1Fv5IRQLJSlDTLdfYdATC
+	f5VA==
+X-Gm-Message-State: AKwxytcayjxbpw5xjdp+BCI0jFJPddp/8PfYJtp+7O2+qi/jp8DnfuGF
+	LuNqQbQqZeo2aZ5E+a4uNCI=
+X-Received: by 10.237.35.195 with SMTP id k3mr49713350qtc.272.1517418654472;
+	Wed, 31 Jan 2018 09:10:54 -0800 (PST)
 Received: from [10.17.0.157] ([190.210.239.69])
-	by smtp.gmail.com with ESMTPSA id
-	t11sm14165215qta.70.2018.01.31.09.04.21
+	by smtp.gmail.com with ESMTPSA id y9sm12871940qti.7.2018.01.31.09.10.52
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 31 Jan 2018 09:04:22 -0800 (PST)
+	Wed, 31 Jan 2018 09:10:54 -0800 (PST)
 To: Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm@nongnu.org
 References: <20180116013709.13830-1-andrew.smirnov@gmail.com>
-	<20180116013709.13830-3-andrew.smirnov@gmail.com>
+	<20180116013709.13830-6-andrew.smirnov@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <05796947-7765-f662-0827-2ac9d2f018ce@amsat.org>
-Date: Wed, 31 Jan 2018 14:04:20 -0300
+Message-ID: <24dcdefa-51f6-c3c1-61a2-c0f3eff7a800@amsat.org>
+Date: Wed, 31 Jan 2018 14:10:51 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.5.2
 MIME-Version: 1.0
-In-Reply-To: <20180116013709.13830-3-andrew.smirnov@gmail.com>
+In-Reply-To: <20180116013709.13830-6-andrew.smirnov@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::229
-Subject: Re: [Qemu-arm] [PATCH v4 02/14] hw: i.MX: Convert i.MX6 to use
- TYPE_IMX_USDHC
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400d:c0d::230
+Subject: Re: [Qemu-devel] [PATCH v4 05/14] i.MX: Add code to emulate i.MX7
+ SNVS IP-block
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
 	qemu-devel@nongnu.org, yurovsky@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YNez09KPltyu
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mUUTy949JSkq
 
-On 01/15/2018 10:36 PM, Andrey Smirnov wrote:
-> Convert i.MX6 to use TYPE_IMX_USDHC since that's what real HW comes
-> with.
+On 01/15/2018 10:37 PM, Andrey Smirnov wrote:
+> Add code to emulate SNVS IP-block. Currently only the bits needed to
+> be able to emulate machine shutdown are implemented.
 > 
 > Cc: Peter Maydell <peter.maydell@linaro.org>
 > Cc: Jason Wang <jasowang@redhat.com>
@@ -133,25 +132,160 @@ On 01/15/2018 10:36 PM, Andrey Smirnov wrote:
 > Cc: qemu-devel@nongnu.org
 > Cc: qemu-arm@nongnu.org
 > Cc: yurovsky@gmail.com
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 > Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
-
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
 > ---
->  hw/arm/fsl-imx6.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  hw/misc/Makefile.objs       |  1 +
+>  hw/misc/imx7_snvs.c         | 83 +++++++++++++++++++++++++++++++++++++++++++++
+>  include/hw/misc/imx7_snvs.h | 35 +++++++++++++++++++
+>  3 files changed, 119 insertions(+)
+>  create mode 100644 hw/misc/imx7_snvs.c
+>  create mode 100644 include/hw/misc/imx7_snvs.h
 > 
-> diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
-> index b0d4088290..e6559a8b12 100644
-> --- a/hw/arm/fsl-imx6.c
-> +++ b/hw/arm/fsl-imx6.c
-> @@ -93,7 +93,7 @@ static void fsl_imx6_init(Object *obj)
->      }
->  
->      for (i = 0; i < FSL_IMX6_NUM_ESDHCS; i++) {
-> -        object_initialize(&s->esdhc[i], sizeof(s->esdhc[i]), TYPE_SYSBUS_SDHCI);
-> +        object_initialize(&s->esdhc[i], sizeof(s->esdhc[i]), TYPE_IMX_USDHC);
->          qdev_set_parent_bus(DEVICE(&s->esdhc[i]), sysbus_get_default());
->          snprintf(name, NAME_SIZE, "sdhc%d", i + 1);
->          object_property_add_child(obj, name, OBJECT(&s->esdhc[i]), NULL);
+> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+> index 4b2b705a6c..019886912c 100644
+> --- a/hw/misc/Makefile.objs
+> +++ b/hw/misc/Makefile.objs
+> @@ -35,6 +35,7 @@ obj-$(CONFIG_IMX) += imx6_ccm.o
+>  obj-$(CONFIG_IMX) += imx6_src.o
+>  obj-$(CONFIG_IMX) += imx7_ccm.o
+>  obj-$(CONFIG_IMX) += imx2_wdt.o
+> +obj-$(CONFIG_IMX) += imx7_snvs.o
+>  obj-$(CONFIG_MILKYMIST) += milkymist-hpdmc.o
+>  obj-$(CONFIG_MILKYMIST) += milkymist-pfpu.o
+>  obj-$(CONFIG_MAINSTONE) += mst_fpga.o
+> diff --git a/hw/misc/imx7_snvs.c b/hw/misc/imx7_snvs.c
+> new file mode 100644
+> index 0000000000..670b9f4639
+> --- /dev/null
+> +++ b/hw/misc/imx7_snvs.c
+> @@ -0,0 +1,83 @@
+> +/*
+> + * IMX7 Secure Non-Volatile Storage
+> + *
+> + * Copyright (c) 2017, Impinj, Inc.
+> + *
+> + * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> + * See the COPYING file in the top-level directory.
+> + *
+> + * Bare minimum emulation code needed to support being able to shut
+> + * down linux guest gracefully.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/misc/imx7_snvs.h"
+> +#include "qemu/log.h"
+> +#include "sysemu/sysemu.h"
+> +
+> +static uint64_t imx7_snvs_read(void *opaque, hwaddr offset, unsigned size)
+> +{
+> +    return 0;
+> +}
+> +
+> +static void imx7_snvs_write(void *opaque, hwaddr offset,
+> +                            uint64_t v, unsigned size)
+> +{
+> +    const uint32_t value = v;
+> +    const uint32_t mask  = SNVS_LPCR_TOP | SNVS_LPCR_DP_EN;
+> +
+> +    if (offset == SNVS_LPCR && ((value & mask) == mask)) {
+> +        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+> +    }
+> +}
+> +
+> +static const struct MemoryRegionOps imx7_snvs_ops = {
+> +    .read = imx7_snvs_read,
+
+Same here, you can remove the imx7_snvs_read() function since
+memory_region_dispatch_read() takes care of this and return 0.
+
+> +    .write = imx7_snvs_write,
+> +    .endianness = DEVICE_NATIVE_ENDIAN,
+> +    .impl = {
+> +        /*
+> +         * Our device would not work correctly if the guest was doing
+> +         * unaligned access. This might not be a limitation on the real
+> +         * device but in practice there is no reason for a guest to access
+> +         * this device unaligned.
+> +         */
+> +        .min_access_size = 4,
+> +        .max_access_size = 4,
+> +        .unaligned = false,
+> +    },
+> +};
+> +
+> +static void imx7_snvs_init(Object *obj)
+> +{
+> +    SysBusDevice *sd = SYS_BUS_DEVICE(obj);
+> +    IMX7SNVSState *s = IMX7_SNVS(obj);
+> +
+> +    memory_region_init_io(&s->mmio, obj, &imx7_snvs_ops, s,
+> +                          TYPE_IMX7_SNVS, 0x1000);
+> +
+> +    sysbus_init_mmio(sd, &s->mmio);
+> +}
+> +
+> +static void imx7_snvs_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->desc  = "i.MX7 Secure Non-Volatile Storage Module";
+> +}
+> +
+> +static const TypeInfo imx7_snvs_info = {
+> +    .name          = TYPE_IMX7_SNVS,
+> +    .parent        = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(IMX7SNVSState),
+> +    .instance_init = imx7_snvs_init,
+> +    .class_init    = imx7_snvs_class_init,
+> +};
+> +
+> +static void imx7_snvs_register_type(void)
+> +{
+> +    type_register_static(&imx7_snvs_info);
+> +}
+> +type_init(imx7_snvs_register_type)
+> diff --git a/include/hw/misc/imx7_snvs.h b/include/hw/misc/imx7_snvs.h
+> new file mode 100644
+> index 0000000000..255f8f26f9
+> --- /dev/null
+> +++ b/include/hw/misc/imx7_snvs.h
+> @@ -0,0 +1,35 @@
+> +/*
+> + * Copyright (c) 2017, Impinj, Inc.
+> + *
+> + * i.MX7 SNVS block emulation code
+> + *
+> + * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> + * See the COPYING file in the top-level directory.
+> + */
+> +
+> +#ifndef IMX7_SNVS_H
+> +#define IMX7_SNVS_H
+> +
+> +#include "qemu/bitops.h"
+> +#include "hw/sysbus.h"
+> +
+> +
+> +enum IMX7SNVSRegisters {
+> +    SNVS_LPCR = 0x38,
+> +    SNVS_LPCR_TOP   = BIT(6),
+> +    SNVS_LPCR_DP_EN = BIT(5)
+> +};
+> +
+> +#define TYPE_IMX7_SNVS "imx7.snvs"
+> +#define IMX7_SNVS(obj) OBJECT_CHECK(IMX7SNVSState, (obj), TYPE_IMX7_SNVS)
+> +
+> +typedef struct IMX7SNVSState {
+> +    /* <private> */
+> +    SysBusDevice parent_obj;
+> +
+> +    MemoryRegion mmio;
+> +} IMX7SNVSState;
+> +
+> +#endif /* IMX7_SNVS_H */
 > 

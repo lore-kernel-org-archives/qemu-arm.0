@@ -1,483 +1,165 @@
-Received: by 10.28.71.27 with SMTP id u27csp2126166wma;
-        Sat, 17 Feb 2018 11:45:46 -0800 (PST)
-X-Google-Smtp-Source: AH8x224SWuhA+xBVfYp2wP8jxQLcVFvAbpP42ikDG+MXAxQQfF6vmfwjwZ/Wjys3tUYdqIihoOA8
-X-Received: by 10.129.108.135 with SMTP id h129mr512521ywc.197.1518896746353;
-        Sat, 17 Feb 2018 11:45:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518896746; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp2860220wma;
+        Wed, 31 Jan 2018 08:25:28 -0800 (PST)
+X-Google-Smtp-Source: AH8x2263MuuwrlyJQWtjlLEFvAiAl8SW03ivgDG58q8BShzaRHrq2UO47YF8XOO+GT9DI2qewEhY
+X-Received: by 10.37.195.193 with SMTP id t184mr5974882ybf.310.1517415928715;
+        Wed, 31 Jan 2018 08:25:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1517415928; cv=none;
         d=google.com; s=arc-20160816;
-        b=XSbBxct/K4lFykJebYPSRiNbMkfSBoMRmlkCc6bcWbC+i697en5q2K8knFWe3ld//E
-         iMBVlyc35TDLIP6UyKIFjLHo96ZY4FKPAwo2ACtv+DsIRHwFzTQYrtje7TByCWlgBL2r
-         wlJW8Gf4emDCIBULz8bR3qHUEZEq0VdK6xfYAfHw1Af00LqilPN/HJxbTkkg1bNcX852
-         QEXJNsaGGRsVJhv1+dhBKFL+4XyKNp/yy7UuMsfP32rMLXcM9hBQZ1V9ZpEjjOmDq/h5
-         TxiUIFnV+hcRCDznbeHsCS8zMvNccKjBg6cl2XZgLvpRGSJfqtoTAPsLnW1lox7OIpw0
-         df8A==
+        b=d7IDF7NdcfCtOl1aHonMF/dzhzyvWOqoAOJGrlEc5Pxv0lkeKrCoVv9sKWV/y+oZVy
+         sIjTtfIlOS2hUXc+zwzAukohrS55j7fQe/SlIJm/Wa+4WI2kQVPhlYReNEddBlWDnv50
+         7AB5jWIahP6VgDlczHRdJu3yHFkWUnwG9oT8P26+GG1TOWaQa840MX3r5QArQscJ8xFk
+         WwozVcS4SJZ9aBHlOmWbK/3EzzwwzUb5wnKrqfqxkvvILRzxzivJBfqRBCeychYoEswc
+         FgUwqQtlWZhfXvhd/UNVGqSf+cxdvLXhzekjOYtbd9ewQGfqKdt1zZlDBLOWO2F7/laG
+         978A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=8rP774WliJ8M6nVgw2vU6wuAAvPuzNfyxGnacOh+8lY=;
-        b=hPXsX6jB+3DfWwKVwA/PPqTSTDJ4iHZxLCzvqYLw/+bWnq7v3jMgzaWoOlKTyTLvmH
-         Fko2EmE23fK7q3bZai0NAgwUwXgdwc+te9/E1EikhGvC2zN41W9b3dBI5GcQ0c6at53X
-         TJHRS7QEkd0h9Z1PEHxvtcX8IahkqKQD9p0T0g7uSIXOxv+LCoJt72EeQiTeH2Zc7qOz
-         mOApC++A/Ju1W3zHjqEqlgI7qPC/mBbDXzWICXt2V/SJspGisNV8GIRLs7rUbMr1Ly9A
-         yz6+VHbizrUMlf+/O6hCc9eQcfck5rwjiLmFG8wQrwcnaEvNvmdeKVeuOO8Zd9nGaA/w
-         mg8Q==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=Fr6imYoe707CtCMxRQWx5L4F7y/2XloeUQPc3Y+Oo+0=;
+        b=diitds00c0B1up5ZjpUgH6GS/hLDrIKojQFnNmzn8mHohW/O6GhoudbpFrOKZxBZuV
+         E7VALyZVNqY/ei0cE11S3aj/dpPm5S7PdCNMoXmhBigpvSPUUrC6++efWJ69Ze+IDsyl
+         k+v71HrwJH6W4lok7GB1vpvxN+4C2R9Z7PJcfmOzoCBWc8QbI4nfHMjb1LdoCxB4sD5m
+         nWa1LFZ6iR380DfAOnCN6JA+FL+IwcBnPu97G1UdmTnvcShYPldr4+hz85OExxT+q9dx
+         yNCEMFAA0TGuxEVB9sluReudzhKtaR/etwugf9NzcGd9pqOUY6Dv7kKiy3jT4VYGrNic
+         4Apw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Tcgf3P1e;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m204si3589246ywm.646.2018.02.17.11.45.46
+        by mx.google.com with ESMTPS id 18si5880449ybf.404.2018.01.31.08.25.28
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 17 Feb 2018 11:45:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 31 Jan 2018 08:25:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54453 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Tcgf3P1e;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:42488 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1en8Qb-0007do-RZ
-	for alex.bennee@linaro.org; Sat, 17 Feb 2018 14:45:45 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44919)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1egvCS-0004fi-5f
+	for alex.bennee@linaro.org; Wed, 31 Jan 2018 11:25:28 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47741)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1en7WC-0003Pg-04
-	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:47:31 -0500
+	(envelope-from <alistair23@gmail.com>) id 1egvAM-0003NB-Ox
+	for qemu-devel@nongnu.org; Wed, 31 Jan 2018 11:23:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1en7W8-0001Kw-90
-	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:47:27 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:41980 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1en7W8-0001JR-3z; Sat, 17 Feb 2018 13:47:24 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8069C40FB633;
-	Sat, 17 Feb 2018 18:47:23 +0000 (UTC)
-Received: from localhost.localdomain.com (ovpn-116-21.ams2.redhat.com
-	[10.36.116.21])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id DE8942024CA2;
-	Sat, 17 Feb 2018 18:47:20 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
-	qemu-arm@nongnu.org, qemu-devel@nongnu.org, prem.mallappa@gmail.com,
-	alex.williamson@redhat.com
-Date: Sat, 17 Feb 2018 19:46:48 +0100
-Message-Id: <1518893216-9983-7-git-send-email-eric.auger@redhat.com>
-In-Reply-To: <1518893216-9983-1-git-send-email-eric.auger@redhat.com>
-References: <1518893216-9983-1-git-send-email-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Sat, 17 Feb 2018 18:47:23 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Sat, 17 Feb 2018 18:47:23 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH v9 06/14] hw/arm/smmuv3: Queue helpers
-X-BeenThere: qemu-arm@nongnu.org
+	(envelope-from <alistair23@gmail.com>) id 1egvAL-00037B-Q8
+	for qemu-devel@nongnu.org; Wed, 31 Jan 2018 11:23:18 -0500
+Received: from mail-lf0-x243.google.com ([2a00:1450:4010:c07::243]:45182)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1egvAL-00036a-Iq; Wed, 31 Jan 2018 11:23:17 -0500
+Received: by mail-lf0-x243.google.com with SMTP id x196so21581587lfd.12;
+	Wed, 31 Jan 2018 08:23:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc:content-transfer-encoding;
+	bh=Fr6imYoe707CtCMxRQWx5L4F7y/2XloeUQPc3Y+Oo+0=;
+	b=Tcgf3P1e1aer43I7DA/nMxASKsl7KxT13yaska2v8dR1HQ6zy9mVv3S1usGhXM6Cex
+	r473vTcY2Q9WEK28wCg6XUihPq2++SIalppjvQtOUD974Qj4795eYqY92zprDHB0cqwu
+	U78eTHObaH3jRiq6eQeA5aDLCDJQlVeoaJSo38XxeGd3iH1ZzMfzKn8Xx2mNA84ZJ5Sy
+	woKwVtkQy9w1PS+dkvmpd6RQlL1WwWbDal3mdzZBj/qJX1Y+5rHlqXWObBgcAVBGmbvR
+	GQz7/dPNPCOkramMLFReN8gN7m+HmDiH0/yea6E4BZ+PkpBX574L9uyadD+ysPFjVyk3
+	SnvQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc:content-transfer-encoding;
+	bh=Fr6imYoe707CtCMxRQWx5L4F7y/2XloeUQPc3Y+Oo+0=;
+	b=OMwvemjjVedXHdetNCK1BP+Mr7w2bpmWN459osS8NPVesCl21vlgAzusD5D1Q4SmwT
+	RgEtJPu8k69CHP5mKcedwJvASLWZJv1UqnW7fxsT7ptOzePBU4rxnU13g4ejnJWuKf9u
+	jbLh2JwlllH+nRHqSIf8RGoQERMIvACy78oRsyp+V4dGD4N1Iaz7hXLvjwzXhZAFiZOB
+	5YzDbuNPzDYDQJOoMwBB56MNp6aIATI8kjodxhI9WHd0rT86xXzAMsffcaLO9Btne8Pa
+	ajH6uLOxXlUs763OgASAx31Nq33VLuRvzWJLHEN/Y6YH+7PfcHqH5FU3uLA+wf76HaaJ
+	t/Bw==
+X-Gm-Message-State: AKwxytdUSO6E7rMf0iGsoTY1DXvy/2+x7MJT/3+9SRFLFS1nH0xjC9xo
+	2xQdXgnLMSZRXa0DKES9s8muqNztGX6QjVrom0k=
+X-Received: by 10.25.20.31 with SMTP id k31mr19583674lfi.87.1517415796360;
+	Wed, 31 Jan 2018 08:23:16 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.46.45.10 with HTTP; Wed, 31 Jan 2018 08:22:45 -0800 (PST)
+In-Reply-To: <20180123020820.1288-16-f4bug@amsat.org>
+References: <20180123020820.1288-1-f4bug@amsat.org>
+	<20180123020820.1288-16-f4bug@amsat.org>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Wed, 31 Jan 2018 08:22:45 -0800
+X-Google-Sender-Auth: YxBR0W7WY-8ioHk0dO3OuaWx4rE
+Message-ID: <CAKmqyKOanfqL7c1=VNN0LrPaOPDhn++aEif=wo-y_0KFkxW7=Q@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4010:c07::243
+Subject: Re: [Qemu-devel] [PATCH v9 15/16] hw/arm/exynos4210: add a comment
+ about a very similar SDHCI (Spec. v2)
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: mst@redhat.com, jean-philippe.brucker@arm.com, tn@semihalf.com,
-	peterx@redhat.com, linuc.decode@gmail.com,
-	bharat.bhushan@nxp.com, christoffer.dall@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VfNTqQxL6p0d
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	Kevin O'Connor <kevin@koconnor.net>, Stefan Hajnoczi <stefanha@redhat.com>,
+	Marcel Apfelbaum <marcel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	"open list:Exynos" <qemu-arm@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9mYhuSMpEtUH
 
-We introduce helpers to read/write into the command and event
-circular queues.
+On Mon, Jan 22, 2018 at 6:08 PM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+rg> wrote:
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-smmuv3_write_eventq and smmuv3_cmq_consume will become static
-in subsequent patches.
+Acked-by: Alistair Francis <alistair.francis@xilinx.com>
 
-Invalidation commands are not yet dealt with. We do not cache
-data that need to be invalidated. This will change with vhost
-integration.
+Alistair
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
----
-
-v8 -> v9:
-- fix CMD_SSID & CMD_ADDR + some renamings
-- do cons increment after the execution of the command
-- add Q_INCONSISTENT()
-
-v7 -> v8
-- use address_space_rw
-- helpers inspired from spec
----
- hw/arm/smmuv3-internal.h | 150 +++++++++++++++++++++++++++++++++++++++++++
- hw/arm/smmuv3.c          | 162 +++++++++++++++++++++++++++++++++++++++++++++++
- hw/arm/trace-events      |   4 ++
- 3 files changed, 316 insertions(+)
-
-diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-index 40b39a1..c0771ce 100644
---- a/hw/arm/smmuv3-internal.h
-+++ b/hw/arm/smmuv3-internal.h
-@@ -162,4 +162,154 @@ static inline uint64_t smmu_read64(uint64_t r, unsigned offset,
- void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq, uint32_t gerror_mask);
- void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t gerrorn);
- 
-+/* Queue Handling */
-+
-+#define LOG2SIZE(q)        extract64((q)->base, 0, 5)
-+#define BASE(q)            ((q)->base & SMMU_BASE_ADDR_MASK)
-+#define WRAP_MASK(q)       (1 << LOG2SIZE(q))
-+#define INDEX_MASK(q)      ((1 << LOG2SIZE(q)) - 1)
-+#define WRAP_INDEX_MASK(q) ((1 << (LOG2SIZE(q) + 1)) - 1)
-+
-+#define Q_CONS_ENTRY(q)  (BASE(q) + \
-+                          (q)->entry_size * ((q)->cons & INDEX_MASK(q)))
-+#define Q_PROD_ENTRY(q)  (BASE(q) + \
-+                          (q)->entry_size * ((q)->prod & INDEX_MASK(q)))
-+
-+#define Q_CONS(q) ((q)->cons & INDEX_MASK(q))
-+#define Q_PROD(q) ((q)->prod & INDEX_MASK(q))
-+
-+#define Q_CONS_WRAP(q) (((q)->cons & WRAP_MASK(q)) >> LOG2SIZE(q))
-+#define Q_PROD_WRAP(q) (((q)->prod & WRAP_MASK(q)) >> LOG2SIZE(q))
-+
-+#define Q_FULL(q) \
-+    (((((q)->cons) & INDEX_MASK(q)) == \
-+      (((q)->prod) & INDEX_MASK(q))) && \
-+     ((((q)->cons) & WRAP_MASK(q)) != \
-+      (((q)->prod) & WRAP_MASK(q))))
-+
-+#define Q_EMPTY(q) \
-+    (((((q)->cons) & INDEX_MASK(q)) == \
-+      (((q)->prod) & INDEX_MASK(q))) && \
-+     ((((q)->cons) & WRAP_MASK(q)) == \
-+      (((q)->prod) & WRAP_MASK(q))))
-+
-+#define Q_INCONSISTENT(q) \
-+((((((q)->prod) & INDEX_MASK(q)) > (((q)->cons) & INDEX_MASK(q))) && \
-+((((q)->prod) & WRAP_MASK(q)) != (((q)->cons) & WRAP_MASK(q)))) || \
-+(((((q)->prod) & INDEX_MASK(q)) < (((q)->cons) & INDEX_MASK(q))) && \
-+((((q)->prod) & WRAP_MASK(q)) == (((q)->cons) & WRAP_MASK(q))))) \
-+
-+#define SMMUV3_CMDQ_ENABLED(s) \
-+     (FIELD_EX32(s->cr[0], CR0, CMDQEN))
-+
-+#define SMMUV3_EVENTQ_ENABLED(s) \
-+     (FIELD_EX32(s->cr[0], CR0, EVENTQEN))
-+
-+static inline void smmu_write_cmdq_err(SMMUv3State *s, uint32_t err_type)
-+{
-+    s->cmdq.cons = FIELD_DP32(s->cmdq.cons, CMDQ_CONS, ERR, err_type);
-+}
-+
-+void smmuv3_write_eventq(SMMUv3State *s, Evt *evt);
-+
-+/* Commands */
-+
-+enum {
-+    SMMU_CMD_PREFETCH_CONFIG = 0x01,
-+    SMMU_CMD_PREFETCH_ADDR,
-+    SMMU_CMD_CFGI_STE,
-+    SMMU_CMD_CFGI_STE_RANGE,
-+    SMMU_CMD_CFGI_CD,
-+    SMMU_CMD_CFGI_CD_ALL,
-+    SMMU_CMD_CFGI_ALL,
-+    SMMU_CMD_TLBI_NH_ALL     = 0x10,
-+    SMMU_CMD_TLBI_NH_ASID,
-+    SMMU_CMD_TLBI_NH_VA,
-+    SMMU_CMD_TLBI_NH_VAA,
-+    SMMU_CMD_TLBI_EL3_ALL    = 0x18,
-+    SMMU_CMD_TLBI_EL3_VA     = 0x1a,
-+    SMMU_CMD_TLBI_EL2_ALL    = 0x20,
-+    SMMU_CMD_TLBI_EL2_ASID,
-+    SMMU_CMD_TLBI_EL2_VA,
-+    SMMU_CMD_TLBI_EL2_VAA,  /* 0x23 */
-+    SMMU_CMD_TLBI_S12_VMALL  = 0x28,
-+    SMMU_CMD_TLBI_S2_IPA     = 0x2a,
-+    SMMU_CMD_TLBI_NSNH_ALL   = 0x30,
-+    SMMU_CMD_ATC_INV         = 0x40,
-+    SMMU_CMD_PRI_RESP,
-+    SMMU_CMD_RESUME          = 0x44,
-+    SMMU_CMD_STALL_TERM,
-+    SMMU_CMD_SYNC,          /* 0x46 */
-+};
-+
-+static const char *cmd_stringify[] = {
-+    [SMMU_CMD_PREFETCH_CONFIG] = "SMMU_CMD_PREFETCH_CONFIG",
-+    [SMMU_CMD_PREFETCH_ADDR]   = "SMMU_CMD_PREFETCH_ADDR",
-+    [SMMU_CMD_CFGI_STE]        = "SMMU_CMD_CFGI_STE",
-+    [SMMU_CMD_CFGI_STE_RANGE]  = "SMMU_CMD_CFGI_STE_RANGE",
-+    [SMMU_CMD_CFGI_CD]         = "SMMU_CMD_CFGI_CD",
-+    [SMMU_CMD_CFGI_CD_ALL]     = "SMMU_CMD_CFGI_CD_ALL",
-+    [SMMU_CMD_CFGI_ALL]        = "SMMU_CMD_CFGI_ALL",
-+    [SMMU_CMD_TLBI_NH_ALL]     = "SMMU_CMD_TLBI_NH_ALL",
-+    [SMMU_CMD_TLBI_NH_ASID]    = "SMMU_CMD_TLBI_NH_ASID",
-+    [SMMU_CMD_TLBI_NH_VA]      = "SMMU_CMD_TLBI_NH_VA",
-+    [SMMU_CMD_TLBI_NH_VAA]     = "SMMU_CMD_TLBI_NH_VAA",
-+    [SMMU_CMD_TLBI_EL3_ALL]    = "SMMU_CMD_TLBI_EL3_ALL",
-+    [SMMU_CMD_TLBI_EL3_VA]     = "SMMU_CMD_TLBI_EL3_VA",
-+    [SMMU_CMD_TLBI_EL2_ALL]    = "SMMU_CMD_TLBI_EL2_ALL",
-+    [SMMU_CMD_TLBI_EL2_ASID]   = "SMMU_CMD_TLBI_EL2_ASID",
-+    [SMMU_CMD_TLBI_EL2_VA]     = "SMMU_CMD_TLBI_EL2_VA",
-+    [SMMU_CMD_TLBI_EL2_VAA]    = "SMMU_CMD_TLBI_EL2_VAA",
-+    [SMMU_CMD_TLBI_S12_VMALL]  = "SMMU_CMD_TLBI_S12_VMALL",
-+    [SMMU_CMD_TLBI_S2_IPA]     = "SMMU_CMD_TLBI_S2_IPA",
-+    [SMMU_CMD_TLBI_NSNH_ALL]   = "SMMU_CMD_TLBI_NSNH_ALL",
-+    [SMMU_CMD_ATC_INV]         = "SMMU_CMD_ATC_INV",
-+    [SMMU_CMD_PRI_RESP]        = "SMMU_CMD_PRI_RESP",
-+    [SMMU_CMD_RESUME]          = "SMMU_CMD_RESUME",
-+    [SMMU_CMD_STALL_TERM]      = "SMMU_CMD_STALL_TERM",
-+    [SMMU_CMD_SYNC]            = "SMMU_CMD_SYNC",
-+};
-+
-+#define SMMU_CMD_STRING(type) (                                      \
-+(type < ARRAY_SIZE(cmd_stringify)) ? cmd_stringify[type] : "UNKNOWN" \
-+)
-+
-+/* CMDQ fields */
-+
-+typedef enum {
-+    SMMU_CERROR_NONE = 0,
-+    SMMU_CERROR_ILL,
-+    SMMU_CERROR_ABT,
-+    SMMU_CERROR_ATC_INV_SYNC,
-+} SMMUCmdError;
-+
-+enum { /* Command completion notification */
-+    CMD_SYNC_SIG_NONE,
-+    CMD_SYNC_SIG_IRQ,
-+    CMD_SYNC_SIG_SEV,
-+};
-+
-+#define CMD_TYPE(x)         extract32((x)->word[0], 0 , 8)
-+#define CMD_SSEC(x)         extract32((x)->word[0], 10, 1)
-+#define CMD_SSV(x)          extract32((x)->word[0], 11, 1)
-+#define CMD_RESUME_AC(x)    extract32((x)->word[0], 12, 1)
-+#define CMD_RESUME_AB(x)    extract32((x)->word[0], 13, 1)
-+#define CMD_SYNC_CS(x)      extract32((x)->word[0], 12, 2)
-+#define CMD_SSID(x)         extract32((x)->word[0], 12, 20)
-+#define CMD_SID(x)          ((x)->word[1])
-+#define CMD_VMID(x)         extract32((x)->word[1], 0 , 16)
-+#define CMD_ASID(x)         extract32((x)->word[1], 16, 16)
-+#define CMD_RESUME_STAG(x)  extract32((x)->word[2], 0 , 16)
-+#define CMD_RESP(x)         extract32((x)->word[2], 11, 2)
-+#define CMD_LEAF(x)         extract32((x)->word[2], 0 , 1)
-+#define CMD_STE_RANGE(x)    extract32((x)->word[2], 0 , 5)
-+#define CMD_ADDR(x) ({                                        \
-+            uint64_t high = (uint64_t)(x)->word[3];           \
-+            uint64_t low = extract32((x)->word[2], 12, 20);    \
-+            uint64_t addr = high << 32 | (low << 12);         \
-+            addr;                                             \
-+        })
-+
-+int smmuv3_cmdq_consume(SMMUv3State *s);
-+
- #endif
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 8779d3f..0b57215 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -94,6 +94,72 @@ void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t new_gerrorn)
-     trace_smmuv3_write_gerrorn(acked, s->gerrorn);
- }
- 
-+static uint32_t queue_index_inc(uint32_t val,
-+                                uint32_t qidx_mask, uint32_t qwrap_mask)
-+{
-+    uint32_t i = (val + 1) & qidx_mask;
-+
-+    if (i <= (val & qidx_mask)) {
-+        i = ((val & qwrap_mask) ^ qwrap_mask) | i;
-+    } else {
-+        i = (val & qwrap_mask) | i;
-+    }
-+    return i;
-+}
-+
-+static inline void queue_prod_incr(SMMUQueue *q)
-+{
-+    q->prod = queue_index_inc(q->prod, INDEX_MASK(q), WRAP_MASK(q));
-+}
-+
-+static inline void queue_cons_incr(SMMUQueue *q)
-+{
-+    q->cons = queue_index_inc(q->cons, INDEX_MASK(q), WRAP_MASK(q));
-+}
-+
-+static inline MemTxResult queue_read(SMMUQueue *q, void *data)
-+{
-+    dma_addr_t addr = Q_CONS_ENTRY(q);
-+
-+    return dma_memory_read(&address_space_memory, addr,
-+                           (uint8_t *)data, q->entry_size);
-+}
-+
-+static void queue_write(SMMUQueue *q, void *data)
-+{
-+    dma_addr_t addr = Q_PROD_ENTRY(q);
-+    MemTxResult ret;
-+
-+    ret = dma_memory_write(&address_space_memory, addr,
-+                           (uint8_t *)data, q->entry_size);
-+    if (ret != MEMTX_OK) {
-+        return;
-+    }
-+
-+    queue_prod_incr(q);
-+}
-+
-+void smmuv3_write_eventq(SMMUv3State *s, Evt *evt)
-+{
-+    SMMUQueue *q = &s->eventq;
-+    bool q_empty = Q_EMPTY(q);
-+    bool q_full = Q_FULL(q);
-+
-+    if (!SMMUV3_EVENTQ_ENABLED(s)) {
-+        return;
-+    }
-+
-+    if (q_full) {
-+        return;
-+    }
-+
-+    queue_write(q, evt);
-+
-+    if (q_empty) {
-+        smmuv3_trigger_irq(s, SMMU_IRQ_EVTQ, 0);
-+    }
-+}
-+
- static void smmuv3_init_regs(SMMUv3State *s)
- {
-     /**
-@@ -133,6 +199,102 @@ static void smmuv3_init_regs(SMMUv3State *s)
-     s->sid_split = 0;
- }
- 
-+int smmuv3_cmdq_consume(SMMUv3State *s)
-+{
-+    SMMUCmdError cmd_error = SMMU_CERROR_NONE;
-+    SMMUQueue *q = &s->cmdq;
-+    uint32_t type = 0;
-+
-+    if (!SMMUV3_CMDQ_ENABLED(s)) {
-+        return 0;
-+    }
-+    /*
-+     * some commands depend on register values, as above. In case those
-+     * register values change while handling the command, spec says it
-+     * is UNPREDICTABLE whether the command is interpreted under the new
-+     * or old value.
-+     */
-+
-+    while (!Q_EMPTY(q)) {
-+        uint32_t pending = s->gerror ^ s->gerrorn;
-+        Cmd cmd;
-+
-+        trace_smmuv3_cmdq_consume(Q_PROD(q), Q_CONS(q),
-+                                  Q_PROD_WRAP(q), Q_CONS_WRAP(q));
-+
-+        if (FIELD_EX32(pending, GERROR, CMDQ_ERR)) {
-+            break;
-+        }
-+
-+        if (queue_read(q, &cmd) != MEMTX_OK) {
-+            cmd_error = SMMU_CERROR_ABT;
-+            break;
-+        }
-+
-+        type = CMD_TYPE(&cmd);
-+
-+        trace_smmuv3_cmdq_opcode(SMMU_CMD_STRING(type));
-+
-+        switch (type) {
-+        case SMMU_CMD_SYNC:
-+            if (CMD_SYNC_CS(&cmd) & CMD_SYNC_SIG_IRQ) {
-+                smmuv3_trigger_irq(s, SMMU_IRQ_CMD_SYNC, 0);
-+            }
-+            break;
-+        case SMMU_CMD_PREFETCH_CONFIG:
-+        case SMMU_CMD_PREFETCH_ADDR:
-+        case SMMU_CMD_CFGI_STE:
-+        case SMMU_CMD_CFGI_STE_RANGE: /* same as SMMU_CMD_CFGI_ALL */
-+        case SMMU_CMD_CFGI_CD:
-+        case SMMU_CMD_CFGI_CD_ALL:
-+        case SMMU_CMD_TLBI_NH_ALL:
-+        case SMMU_CMD_TLBI_NH_ASID:
-+        case SMMU_CMD_TLBI_NH_VA:
-+        case SMMU_CMD_TLBI_NH_VAA:
-+        case SMMU_CMD_TLBI_EL3_ALL:
-+        case SMMU_CMD_TLBI_EL3_VA:
-+        case SMMU_CMD_TLBI_EL2_ALL:
-+        case SMMU_CMD_TLBI_EL2_ASID:
-+        case SMMU_CMD_TLBI_EL2_VA:
-+        case SMMU_CMD_TLBI_EL2_VAA:
-+        case SMMU_CMD_TLBI_S12_VMALL:
-+        case SMMU_CMD_TLBI_S2_IPA:
-+        case SMMU_CMD_TLBI_NSNH_ALL:
-+        case SMMU_CMD_ATC_INV:
-+        case SMMU_CMD_PRI_RESP:
-+        case SMMU_CMD_RESUME:
-+        case SMMU_CMD_STALL_TERM:
-+            trace_smmuv3_unhandled_cmd(type);
-+            break;
-+        default:
-+            cmd_error = SMMU_CERROR_ILL;
-+            error_report("Illegal command type: %d", CMD_TYPE(&cmd));
-+            break;
-+        }
-+        if (cmd_error) {
-+            break;
-+        }
-+        /*
-+         * We only increment the cons index after the completion of
-+         * the command. We do that because the SYNC returns immediatly
-+         * and do not check the completion of previous commands
-+         */
-+        queue_cons_incr(q);
-+    }
-+
-+    if (cmd_error) {
-+        error_report("Error on %s command execution: %d",
-+                     SMMU_CMD_STRING(type), cmd_error);
-+        smmu_write_cmdq_err(s, cmd_error);
-+        smmuv3_trigger_irq(s, SMMU_IRQ_GERROR, R_GERROR_CMDQ_ERR_MASK);
-+    }
-+
-+    trace_smmuv3_cmdq_consume_out(Q_PROD(q), Q_CONS(q),
-+                                  Q_PROD_WRAP(q), Q_CONS_WRAP(q));
-+
-+    return 0;
-+}
-+
- static void smmu_write_mmio(void *opaque, hwaddr addr,
-                             uint64_t val, unsigned size)
- {
-diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index 2ddae40..1c5105d 100644
---- a/hw/arm/trace-events
-+++ b/hw/arm/trace-events
-@@ -18,3 +18,7 @@ smmuv3_read_mmio(hwaddr addr, uint64_t val, unsigned size) "addr: 0x%"PRIx64" va
- smmuv3_trigger_irq(int irq) "irq=%d"
- smmuv3_write_gerror(uint32_t toggled, uint32_t gerror) "toggled=0x%x, new gerror=0x%x"
- smmuv3_write_gerrorn(uint32_t acked, uint32_t gerrorn) "acked=0x%x, new gerrorn=0x%x"
-+smmuv3_unhandled_cmd(uint32_t type) "Unhandled command type=%d"
-+smmuv3_cmdq_consume(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "prod=%d cons=%d prod.wrap=%d cons.wrap=%d"
-+smmuv3_cmdq_opcode(const char *opcode) "<--- %s"
-+smmuv3_cmdq_consume_out(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "prod:%d, cons:%d, prod_wrap:%d, cons_wrap:%d "
--- 
-2.5.5
-
+> ---
+>  hw/arm/exynos4210.c | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
+>
+> diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
+> index d89322c7ea..06f9d1ffa4 100644
+> --- a/hw/arm/exynos4210.c
+> +++ b/hw/arm/exynos4210.c
+> @@ -377,6 +377,18 @@ Exynos4210State *exynos4210_init(MemoryRegion *syste=
+m_mem)
+>          BlockBackend *blk;
+>          DriveInfo *di;
+>
+> +        /* Compatible with:
+> +         * - SD Host Controller Specification Version 2.0
+> +         * - SDIO Specification Version 2.0
+> +         * - MMC Specification Version 4.3
+> +         * - SDMA
+> +         * - ADMA2
+> +         *
+> +         * As this part of the Exynos4210 is not publically available,
+> +         * we used the "HS-MMC Controller S3C2416X RISC Microprocessor"
+> +         * public datasheet which is very similar (implementing
+> +         * MMC Specification Version 4.0 being the only difference noted=
+)
+> +         */
+>          dev =3D qdev_create(NULL, TYPE_SYSBUS_SDHCI);
+>          qdev_prop_set_uint64(dev, "capareg", EXYNOS4210_SDHCI_CAPABILITI=
+ES);
+>          qdev_init_nofail(dev);
+> --
+> 2.15.1
+>
+>

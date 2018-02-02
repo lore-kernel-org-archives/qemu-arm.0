@@ -1,496 +1,200 @@
-Received: by 10.28.71.27 with SMTP id u27csp1070357wma;
-        Fri, 2 Feb 2018 11:04:10 -0800 (PST)
-X-Google-Smtp-Source: AH8x225BJ7d4PCz3h+3fmkE4bJZV/1SGh5KD9iytNPjAx6ICFJVn2jetzNgTkVXUV4sphoMjCtnb
-X-Received: by 10.13.200.134 with SMTP id k128mr27619835ywd.390.1517598250158;
-        Fri, 02 Feb 2018 11:04:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1517598250; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp1098613wma;
+        Fri, 2 Feb 2018 11:36:26 -0800 (PST)
+X-Google-Smtp-Source: AH8x2272S7rupJCAJtP/2FITRGP/LQ/73cKTdkht+I71SnpsZmsQkDCuxTrwEX6wZintc82TevVW
+X-Received: by 10.129.125.134 with SMTP id y128mr4958399ywc.146.1517600186524;
+        Fri, 02 Feb 2018 11:36:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1517600186; cv=none;
         d=google.com; s=arc-20160816;
-        b=KNn/laL4mKBiBgBKUPS/WZM7+g6LafixX4S4TRJMC91tZMnEqAgfJOI5/O3N5512qr
-         kmskeL+RtGOMC1caLKvSTjOBIwvfb1zPkNzKlmW00rFZh6GK4PebjY7R6mDyjZiVL+YR
-         H0iRt8Z1EnUPLJzTcwUPJn30FynfrmaeXTBlmCp8EqdHy4f15WDzmMx33ILbHZOmv+dm
-         Nr2hkPoDzJu7fTndsdMDqOkg26gyFmf1CG6suv0KlUtQm6Oj7WiumYKPNvz1ueawHUeO
-         pOLVHBnxmZPiApxj/h/nUqKME5keqsbsF72PXDlFY2F3sIDVK5EE1lxX+VCv5uyt+M/T
-         THmQ==
+        b=J9a66wQfBlYPrPf/04U0QUK6dJn9YYhnk13OzWYIl7Hc4O3Ul+h1DGnrLV1l3xc6OQ
+         XtkkgXalZLJWuMDatTo/wOfATmaFeAk+joyz0Dhd3amkDSjXtcfSHF6v6XGQwriXt7QZ
+         u5+MPujVEHyQ5RrLZ+uxOY1sYfEorOx7RgZpxkJWW8zVli2zKKP3hlFFM7z3qdihmtaW
+         noeq70VpDthhjb6seHuSbQgfiupW91zJ2eoSY35K3BQtczMQYPJuR+LwyO2YZPrNpuUz
+         EscGCtg5NLndKmPN+luuRUeBxi76fv53ZvXtXKUOfcxpezOLwEAidPnGrLoYOmJXEUpi
+         0v2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=X1DZELVj/sjVoMUy4h4lAhiJpgXU28ddFMEMPxZJyk0=;
-        b=hmHh5DS2Flt/j/WJkKoYxJW8I6wFRS8+ARBY8M/pH04jWEuNAJ2xCVoVxTdPt8HPwv
-         075gOUXiO6dTSakBeviYi4k6H/JX7zuYlTc2YFobkJTsOdwwqBNxOF0AiNicdmpq1WDl
-         /wFGhOn6O+PzRcDAu9eqGy5JjFIG6Acm93ls6RmXZPf50PaBxkH7tJLYfPkw75E3DmX9
-         UPL4acRsJAuac4yY5l+ODblnyzRDPLrREWs01Nl/RjngJiSK+iEZdRkjua0Qbd/FuOuY
-         hEkpdfOj2dSuQuZ9/hBLzgOba941ocqnLwAlZLy3xShAUYcBFkCreEar552w+ufyUdyd
-         nS0A==
+         :list-unsubscribe:list-id:precedence:subject:in-reply-to
+         :mime-version:user-agent:date:message-id:organization:openpgp:from
+         :references:to:arc-authentication-results;
+        bh=FwfGyHfucW4zLIRgS2E6eDfh5zXUusAxX/bIAbIZ8WU=;
+        b=etJqC4QiBIc1/j47ET+6tpErswS27l4NM5kEi4NxdB24adKoqvGlvTMJqk4nvhk357
+         wKonHNrkLf2KGTat/xoK0Lq48WG4mZVx2RAhlMG/YPLnjw3tAQUAro4GdgikAeLSS1IX
+         uxoBYBEsCSFB6ru/fNYUSab37Qx6wcGxHWIClb7FRSHyTULBS4GmOsI6kDnjro8RV023
+         838UP3ECqOGdtIA8LXTS8aFqc7RLO+2WGbzf7MfYfNVuZaAsDT3wtSaHb/rPT3IUMSxW
+         4cofy4d87GJExCvrI02gTpQC5h6THf0EtmxDMq0CalyB0cvWFY264aTx/HGJp67Eudl9
+         W6QQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z84si529217ywa.283.2018.02.02.11.04.09
+        by mx.google.com with ESMTPS id c63si522530ybh.278.2018.02.02.11.36.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 02 Feb 2018 11:04:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 02 Feb 2018 11:36:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52467 helo=lists.gnu.org)
+Received: from localhost ([::1]:54906 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ehgd7-00057j-Ft
-	for alex.bennee@linaro.org; Fri, 02 Feb 2018 14:04:09 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:42703)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ehh8L-00064z-Ti
+	for alex.bennee@linaro.org; Fri, 02 Feb 2018 14:36:25 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51829)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1ehgES-0007w3-Jt
-	for qemu-arm@nongnu.org; Fri, 02 Feb 2018 13:39:25 -0500
+	(envelope-from <eblake@redhat.com>) id 1ehh7x-00062x-Uh
+	for qemu-devel@nongnu.org; Fri, 02 Feb 2018 14:36:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1ehgDO-0005ZC-Dt
-	for qemu-arm@nongnu.org; Fri, 02 Feb 2018 13:38:40 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:39162)
+	(envelope-from <eblake@redhat.com>) id 1ehh7w-0006TE-RE
+	for qemu-devel@nongnu.org; Fri, 02 Feb 2018 14:36:01 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:56666)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1ehgDN-0005Xj-W4; Fri, 02 Feb 2018 13:37:34 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1ehh7r-00064v-7V; Fri, 02 Feb 2018 14:35:55 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2AFB0C03674E;
-	Fri,  2 Feb 2018 18:37:33 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-148.ams2.redhat.com
-	[10.36.116.148])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9EEFD620D9;
-	Fri,  2 Feb 2018 18:37:32 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 15A631138648; Fri,  2 Feb 2018 19:37:31 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Fri,  2 Feb 2018 19:37:18 +0100
-Message-Id: <20180202183731.29990-3-armbru@redhat.com>
-In-Reply-To: <20180202183731.29990-1-armbru@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 570245D68B;
+	Fri,  2 Feb 2018 19:35:54 +0000 (UTC)
+Received: from [10.10.120.51] (ovpn-120-51.rdu2.redhat.com [10.10.120.51])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8B28F75521;
+	Fri,  2 Feb 2018 19:35:53 +0000 (UTC)
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
 References: <20180202183731.29990-1-armbru@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+	<20180202183731.29990-3-armbru@redhat.com>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <11be568a-8c6d-3d45-8c32-dc41ea70c352@redhat.com>
+Date: Fri, 2 Feb 2018 13:35:52 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.2
+MIME-Version: 1.0
+In-Reply-To: <20180202183731.29990-3-armbru@redhat.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="CGw1kQo0fq6QKF1oZjfwCzJcecJx55nuA"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Fri, 02 Feb 2018 18:37:33 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.39]);
+	Fri, 02 Feb 2018 19:35:54 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v7 02/15] hw/arm: Replace fprintf(stderr,
+X-Content-Filtered-By: Mailman/MimeDel 2.1.21
+Subject: Re: [Qemu-devel] [PATCH v7 02/15] hw/arm: Replace fprintf(stderr,
  "*\n" with error_report()
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm@nongnu.org, alistair.francis@xilinx.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BCvf5u6kR9DD
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: D3QDmVgAGy8F
 
-From: Alistair Francis <alistair.francis@xilinx.com>
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--CGw1kQo0fq6QKF1oZjfwCzJcecJx55nuA
+From: Eric Blake <eblake@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, alistair.francis@xilinx.com
+Message-ID: <11be568a-8c6d-3d45-8c32-dc41ea70c352@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH v7 02/15] hw/arm: Replace fprintf(stderr,
+ "*\n" with error_report()
+References: <20180202183731.29990-1-armbru@redhat.com>
+ <20180202183731.29990-3-armbru@redhat.com>
+In-Reply-To: <20180202183731.29990-3-armbru@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-Replace a large number of the fprintf(stderr, "*\n" calls with
-error_report(). The functions were renamed with these commands and then
-compiler issues where manually fixed.
+On 02/02/2018 12:37 PM, Markus Armbruster wrote:
+> From: Alistair Francis <alistair.francis@xilinx.com>
+>=20
+> Replace a large number of the fprintf(stderr, "*\n" calls with
+> error_report(). The functions were renamed with these commands and then=
 
-find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
-    {} +
-find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
-    {} +
-find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
-    {} +
-find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
-    {} +
-find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
-    {} +
-find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
-    {} +
-find ./* -type f -exec sed -i \
-    'N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
-    {} +
-find ./* -type f -exec sed -i \
-    'N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
-    {} +
-find ./* -type f -exec sed -i \
-    'N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
-    {} +
-find ./* -type f -exec sed -i \
-    'N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
-    {} +
-find ./* -type f -exec sed -i \
-    'N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
-    {} +
+> compiler issues where manually fixed.
+>=20
 
-Some lines where then manually tweaked to pass checkpatch.
+>=20
+> Some lines where then manually tweaked to pass checkpatch.
+>=20
+> The 'qemu: ' prefix was manually removed from the hw/arm/boot.c file.
+>=20
+> Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
+> Cc: qemu-arm@nongnu.org
+>=20
+> Conversions that aren't followed by exit() dropped, because they might
+> be inappropriate.
+>=20
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> ---
 
-The 'qemu: ' prefix was manually removed from the hw/arm/boot.c file.
+> +++ b/hw/arm/gumstix.c
+> @@ -35,6 +35,7 @@
+>   */
+> =20
+>  #include "qemu/osdep.h"
+> +#include "qemu/error-report.h"
+>  #include "hw/hw.h"
+>  #include "hw/arm/pxa.h"
+>  #include "net/net.h"
+> @@ -62,8 +63,8 @@ static void connex_init(MachineState *machine)
+> =20
+>      dinfo =3D drive_get(IF_PFLASH, 0, 0);
+>      if (!dinfo && !qtest_enabled()) {
+> -        fprintf(stderr, "A flash image must be given with the "
+> -                "'pflash' parameter\n");
+> +        error_report("A flash image must be given with the "
+> +                     "'pflash' parameter");
+>          exit(1);
+>      }
+> =20
+> @@ -76,7 +77,7 @@ static void connex_init(MachineState *machine)
+>                                 dinfo ? blk_by_legacy_dinfo(dinfo) : NU=
+LL,
+>                                 sector_len, connex_rom / sector_len,
+>                                 2, 0, 0, 0, 0, be)) {
+> -        fprintf(stderr, "qemu: Error registering flash memory.\n");
+> +        error_report("Error registering flash memory.");
 
-Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
-Cc: qemu-arm@nongnu.org
+Do we care about consistency on trailing dots in these conversions?
 
-Conversions that aren't followed by exit() dropped, because they might
-be inappropriate.
+At any rate, all of these are sane rewrites of existing patterns;
+Reviewed-by: Eric Blake <eblake@redhat.com>
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
----
- hw/arm/armv7m.c    |  2 +-
- hw/arm/boot.c      | 16 ++++++++--------
- hw/arm/gumstix.c   | 13 +++++++------
- hw/arm/mainstone.c |  7 ++++---
- hw/arm/musicpal.c  |  2 +-
- hw/arm/omap1.c     |  5 +++--
- hw/arm/omap2.c     |  3 ++-
- hw/arm/omap_sx1.c  |  2 +-
- hw/arm/pxa2xx.c    |  7 ++++---
- hw/arm/vexpress.c  |  8 ++++----
- hw/arm/z2.c        |  6 +++---
- 11 files changed, 38 insertions(+), 33 deletions(-)
+--=20
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
 
-diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-index bb2dfc942b..56770a7048 100644
---- a/hw/arm/armv7m.c
-+++ b/hw/arm/armv7m.c
-@@ -278,7 +278,7 @@ void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename, int mem_size)
- #endif
- 
-     if (!kernel_filename && !qtest_enabled()) {
--        fprintf(stderr, "Guest image must be specified (using -kernel)\n");
-+        error_report("Guest image must be specified (using -kernel)");
-         exit(1);
-     }
- 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index c2720c8046..bb244ec359 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -8,6 +8,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/error-report.h"
- #include "qapi/error.h"
- #include <libfdt.h>
- #include "hw/hw.h"
-@@ -690,7 +691,7 @@ static void load_image_to_fw_cfg(FWCfgState *fw_cfg, uint16_t size_key,
-         gsize length;
- 
-         if (!g_file_get_contents(image_name, &contents, &length, NULL)) {
--            fprintf(stderr, "failed to load \"%s\"\n", image_name);
-+            error_report("failed to load \"%s\"", image_name);
-             exit(1);
-         }
-         size = length;
-@@ -956,8 +957,7 @@ static void arm_load_kernel_notify(Notifier *notifier, void *data)
-         is_linux = 1;
-     }
-     if (kernel_size < 0) {
--        fprintf(stderr, "qemu: could not load kernel '%s'\n",
--                info->kernel_filename);
-+        error_report("could not load kernel '%s'", info->kernel_filename);
-         exit(1);
-     }
-     info->entry = entry;
-@@ -976,8 +976,8 @@ static void arm_load_kernel_notify(Notifier *notifier, void *data)
-                                                   info->initrd_start);
-             }
-             if (initrd_size < 0) {
--                fprintf(stderr, "qemu: could not load initrd '%s'\n",
--                        info->initrd_filename);
-+                error_report("could not load initrd '%s'",
-+                             info->initrd_filename);
-                 exit(1);
-             }
-         } else {
-@@ -1021,9 +1021,9 @@ static void arm_load_kernel_notify(Notifier *notifier, void *data)
-         } else {
-             fixupcontext[FIXUP_ARGPTR] = info->loader_start + KERNEL_ARGS_ADDR;
-             if (info->ram_size >= (1ULL << 32)) {
--                fprintf(stderr, "qemu: RAM size must be less than 4GB to boot"
--                        " Linux kernel using ATAGS (try passing a device tree"
--                        " using -dtb)\n");
-+                error_report("RAM size must be less than 4GB to boot"
-+                             " Linux kernel using ATAGS (try passing a device tree"
-+                             " using -dtb)");
-                 exit(1);
-             }
-         }
-diff --git a/hw/arm/gumstix.c b/hw/arm/gumstix.c
-index bba9e9f57a..8f11b03066 100644
---- a/hw/arm/gumstix.c
-+++ b/hw/arm/gumstix.c
-@@ -35,6 +35,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/error-report.h"
- #include "hw/hw.h"
- #include "hw/arm/pxa.h"
- #include "net/net.h"
-@@ -62,8 +63,8 @@ static void connex_init(MachineState *machine)
- 
-     dinfo = drive_get(IF_PFLASH, 0, 0);
-     if (!dinfo && !qtest_enabled()) {
--        fprintf(stderr, "A flash image must be given with the "
--                "'pflash' parameter\n");
-+        error_report("A flash image must be given with the "
-+                     "'pflash' parameter");
-         exit(1);
-     }
- 
-@@ -76,7 +77,7 @@ static void connex_init(MachineState *machine)
-                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-                                sector_len, connex_rom / sector_len,
-                                2, 0, 0, 0, 0, be)) {
--        fprintf(stderr, "qemu: Error registering flash memory.\n");
-+        error_report("Error registering flash memory.");
-         exit(1);
-     }
- 
-@@ -99,8 +100,8 @@ static void verdex_init(MachineState *machine)
- 
-     dinfo = drive_get(IF_PFLASH, 0, 0);
-     if (!dinfo && !qtest_enabled()) {
--        fprintf(stderr, "A flash image must be given with the "
--                "'pflash' parameter\n");
-+        error_report("A flash image must be given with the "
-+                     "'pflash' parameter");
-         exit(1);
-     }
- 
-@@ -113,7 +114,7 @@ static void verdex_init(MachineState *machine)
-                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-                                sector_len, verdex_rom / sector_len,
-                                2, 0, 0, 0, 0, be)) {
--        fprintf(stderr, "qemu: Error registering flash memory.\n");
-+        error_report("Error registering flash memory.");
-         exit(1);
-     }
- 
-diff --git a/hw/arm/mainstone.c b/hw/arm/mainstone.c
-index d07972a966..189febf8b7 100644
---- a/hw/arm/mainstone.c
-+++ b/hw/arm/mainstone.c
-@@ -12,6 +12,7 @@
-  * GNU GPL, version 2 or (at your option) any later version.
-  */
- #include "qemu/osdep.h"
-+#include "qemu/error-report.h"
- #include "qapi/error.h"
- #include "hw/hw.h"
- #include "hw/arm/pxa.h"
-@@ -143,8 +144,8 @@ static void mainstone_common_init(MemoryRegion *address_space_mem,
-             if (qtest_enabled()) {
-                 break;
-             }
--            fprintf(stderr, "Two flash images must be given with the "
--                    "'pflash' parameter\n");
-+            error_report("Two flash images must be given with the "
-+                         "'pflash' parameter");
-             exit(1);
-         }
- 
-@@ -154,7 +155,7 @@ static void mainstone_common_init(MemoryRegion *address_space_mem,
-                                    blk_by_legacy_dinfo(dinfo),
-                                    sector_len, MAINSTONE_FLASH / sector_len,
-                                    4, 0, 0, 0, 0, be)) {
--            fprintf(stderr, "qemu: Error registering flash memory.\n");
-+            error_report("Error registering flash memory.");
-             exit(1);
-         }
-     }
-diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-index b648770882..06127a873d 100644
---- a/hw/arm/musicpal.c
-+++ b/hw/arm/musicpal.c
-@@ -1626,7 +1626,7 @@ static void musicpal_init(MachineState *machine)
-         flash_size = blk_getlength(blk);
-         if (flash_size != 8*1024*1024 && flash_size != 16*1024*1024 &&
-             flash_size != 32*1024*1024) {
--            fprintf(stderr, "Invalid flash image size\n");
-+            error_report("Invalid flash image size");
-             exit(1);
-         }
- 
-diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
-index 92e58f09c8..b3a23a83d1 100644
---- a/hw/arm/omap1.c
-+++ b/hw/arm/omap1.c
-@@ -18,6 +18,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/error-report.h"
- #include "qapi/error.h"
- #include "qemu-common.h"
- #include "cpu.h"
-@@ -2313,7 +2314,7 @@ void omap_uwire_attach(struct omap_uwire_s *s,
-                 uWireSlave *slave, int chipselect)
- {
-     if (chipselect < 0 || chipselect > 3) {
--        fprintf(stderr, "%s: Bad chipselect %i\n", __func__, chipselect);
-+        error_report("%s: Bad chipselect %i", __func__, chipselect);
-         exit(-1);
-     }
- 
-@@ -3987,7 +3988,7 @@ struct omap_mpu_state_s *omap310_mpu_init(MemoryRegion *system_memory,
- 
-     dinfo = drive_get(IF_SD, 0, 0);
-     if (!dinfo) {
--        fprintf(stderr, "qemu: missing SecureDigital device\n");
-+        error_report("missing SecureDigital device");
-         exit(1);
-     }
-     s->mmc = omap_mmc_init(0xfffb7800, system_memory,
-diff --git a/hw/arm/omap2.c b/hw/arm/omap2.c
-index b53878b8b9..647b119ba9 100644
---- a/hw/arm/omap2.c
-+++ b/hw/arm/omap2.c
-@@ -19,6 +19,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/error-report.h"
- #include "qapi/error.h"
- #include "qemu-common.h"
- #include "cpu.h"
-@@ -2486,7 +2487,7 @@ struct omap_mpu_state_s *omap2420_mpu_init(MemoryRegion *sysmem,
- 
-     dinfo = drive_get(IF_SD, 0, 0);
-     if (!dinfo) {
--        fprintf(stderr, "qemu: missing SecureDigital device\n");
-+        error_report("missing SecureDigital device");
-         exit(1);
-     }
-     s->mmc = omap2_mmc_init(omap_l4tao(s->l4, 9),
-diff --git a/hw/arm/omap_sx1.c b/hw/arm/omap_sx1.c
-index 9a14270795..eccc19c77b 100644
---- a/hw/arm/omap_sx1.c
-+++ b/hw/arm/omap_sx1.c
-@@ -194,7 +194,7 @@ static void sx1_init(MachineState *machine, const int version)
-     }
- 
-     if (!machine->kernel_filename && !fl_idx && !qtest_enabled()) {
--        fprintf(stderr, "Kernel or Flash image must be specified\n");
-+        error_report("Kernel or Flash image must be specified");
-         exit(1);
-     }
- 
-diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
-index db860c238e..0386a0d8bf 100644
---- a/hw/arm/pxa2xx.c
-+++ b/hw/arm/pxa2xx.c
-@@ -8,6 +8,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/error-report.h"
- #include "qapi/error.h"
- #include "qemu-common.h"
- #include "cpu.h"
-@@ -2062,7 +2063,7 @@ PXA2xxState *pxa270_init(MemoryRegion *address_space,
-     s = g_new0(PXA2xxState, 1);
- 
-     if (strncmp(cpu_type, "pxa27", 5)) {
--        fprintf(stderr, "Machine requires a PXA27x processor.\n");
-+        error_report("Machine requires a PXA27x processor.");
-         exit(1);
-     }
- 
-@@ -2095,7 +2096,7 @@ PXA2xxState *pxa270_init(MemoryRegion *address_space,
- 
-     dinfo = drive_get(IF_SD, 0, 0);
-     if (!dinfo) {
--        fprintf(stderr, "qemu: missing SecureDigital device\n");
-+        error_report("missing SecureDigital device");
-         exit(1);
-     }
-     s->mmc = pxa2xx_mmci_init(address_space, 0x41100000,
-@@ -2220,7 +2221,7 @@ PXA2xxState *pxa255_init(MemoryRegion *address_space, unsigned int sdram_size)
- 
-     dinfo = drive_get(IF_SD, 0, 0);
-     if (!dinfo) {
--        fprintf(stderr, "qemu: missing SecureDigital device\n");
-+        error_report("missing SecureDigital device");
-         exit(1);
-     }
-     s->mmc = pxa2xx_mmci_init(address_space, 0x41100000,
-diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
-index efb5a29475..508629dfe9 100644
---- a/hw/arm/vexpress.c
-+++ b/hw/arm/vexpress.c
-@@ -266,7 +266,7 @@ static void a9_daughterboard_init(const VexpressMachineState *vms,
- 
-     if (ram_size > 0x40000000) {
-         /* 1GB is the maximum the address space permits */
--        fprintf(stderr, "vexpress-a9: cannot model more than 1GB RAM\n");
-+        error_report("vexpress-a9: cannot model more than 1GB RAM");
-         exit(1);
-     }
- 
-@@ -355,7 +355,7 @@ static void a15_daughterboard_init(const VexpressMachineState *vms,
-          */
-         uint64_t rsz = ram_size;
-         if (rsz > (30ULL * 1024 * 1024 * 1024)) {
--            fprintf(stderr, "vexpress-a15: cannot model more than 30GB RAM\n");
-+            error_report("vexpress-a15: cannot model more than 30GB RAM");
-             exit(1);
-         }
-     }
-@@ -640,7 +640,7 @@ static void vexpress_common_init(MachineState *machine)
-     pflash0 = ve_pflash_cfi01_register(map[VE_NORFLASH0], "vexpress.flash0",
-                                        dinfo);
-     if (!pflash0) {
--        fprintf(stderr, "vexpress: error registering flash 0.\n");
-+        error_report("vexpress: error registering flash 0.");
-         exit(1);
-     }
- 
-@@ -655,7 +655,7 @@ static void vexpress_common_init(MachineState *machine)
-     dinfo = drive_get_next(IF_PFLASH);
-     if (!ve_pflash_cfi01_register(map[VE_NORFLASH1], "vexpress.flash1",
-                                   dinfo)) {
--        fprintf(stderr, "vexpress: error registering flash 1.\n");
-+        error_report("vexpress: error registering flash 1.");
-         exit(1);
-     }
- 
-diff --git a/hw/arm/z2.c b/hw/arm/z2.c
-index 60561c7b7c..ee59142667 100644
---- a/hw/arm/z2.c
-+++ b/hw/arm/z2.c
-@@ -319,8 +319,8 @@ static void z2_init(MachineState *machine)
- #endif
-     dinfo = drive_get(IF_PFLASH, 0, 0);
-     if (!dinfo && !qtest_enabled()) {
--        fprintf(stderr, "Flash image must be given with the "
--                "'pflash' parameter\n");
-+        error_report("Flash image must be given with the "
-+                     "'pflash' parameter");
-         exit(1);
-     }
- 
-@@ -329,7 +329,7 @@ static void z2_init(MachineState *machine)
-                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-                                sector_len, Z2_FLASH_SIZE / sector_len,
-                                4, 0, 0, 0, 0, be)) {
--        fprintf(stderr, "qemu: Error registering flash memory.\n");
-+        error_report("Error registering flash memory.");
-         exit(1);
-     }
- 
--- 
-2.13.6
 
+--CGw1kQo0fq6QKF1oZjfwCzJcecJx55nuA
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAlp0vZgACgkQp6FrSiUn
+Q2rpOwf/dUEhAAL1i9cw+bW5Uj6njN4qg9Be9hbNIdmXIV6AQLQI1DKRZrjg9It3
+isRCe4kOmCtUvCRoqiQvjBI/eRJLqoS+5RtPTyumuyVqOdzOfy+m5oO4ewBIOFd/
+3JNT6fvlXj1BE81lfXuBHy57NUi4QFIhKuO/9Gzl6RZ4YHe+GgmMV7cotaaAj3i3
+h9BFsS8Smd0aUBQmworWnmDhFkX73d0AhBkhCJJ6PIr+f+BPLLJ1p/hcXZwmP6o3
+v1uxw7/lnqCzNEyQa7lzoq9YyyKxoplN1tH3ER6YuG7ezhBJz0ZhxhfcPi4yh6Hl
+oiQDgAYeT5naBjD3Nc5UpQzjoooStA==
+=9lWO
+-----END PGP SIGNATURE-----
+
+--CGw1kQo0fq6QKF1oZjfwCzJcecJx55nuA--

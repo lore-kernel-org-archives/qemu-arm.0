@@ -1,111 +1,110 @@
-Received: by 10.28.71.27 with SMTP id u27csp893540wma;
-        Sat, 3 Feb 2018 13:09:12 -0800 (PST)
-X-Google-Smtp-Source: AH8x225Aab4euIkSv9H33F1/JqE5lCu17I+wly2fdqT33gWdXpymJQ6+a6bvvcHv9ldWRHGS2Xfo
-X-Received: by 10.37.206.134 with SMTP id x128mr8325042ybe.83.1517692152445;
-        Sat, 03 Feb 2018 13:09:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1517692152; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp891644wma;
+        Sat, 3 Feb 2018 13:06:26 -0800 (PST)
+X-Google-Smtp-Source: AH8x224PHzrnEL7PSQsELR3kor6fYIcyZoDt2cXf4cuk7ONu3HIrVhXUyHYhETAhDwfx+DiZxmxf
+X-Received: by 10.37.38.1 with SMTP id m1mr28679766ybm.97.1517691986519;
+        Sat, 03 Feb 2018 13:06:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1517691986; cv=none;
         d=google.com; s=arc-20160816;
-        b=CCbkHJRJIBfx+pPClc7MuU9kkl5b7+LNU+sbTBbOJ8jRpD8m/tgaK7QH2N/xgdLTmI
-         lX+yJTs7RbYxWAUVvkkqqC2GdZipFFi+lxDnpLUDV7+qtZ13d/qUnDFegYxsa9iM5R8M
-         TP8do9YzOGrBSnTHs465kIOLd2X10vgM1t7hqXv/uNYVoicitegoZqRaLZhWSOb+m+cZ
-         BedlWUDvevt1PptH2XSkOoRlxuJ+L60re9i9ffvqtkrnzkhgQxSeCwhFxTY0CG3yt0Zl
-         Q6AaNESWUFRQICq87oitX7CqhesUsD6No7ijTrlxMtgXuSW/LOl5UXdNv6cVaY1HiDRE
-         tv7A==
+        b=NBIsTTF1//FQyR9Aqez754H6wHsblPSuv/xstokl7c7v4dpcbrbYGjORYY5BvEs8e7
+         PSUrE8KKtSs/1sZG+UFw2RnT7Z0ndthF9lLzdHsQgD2GN40hO19Tm5ef85wAZrxK+hhM
+         2GI7POikkt4qwOpsbJuHIPxvVWmr+FGXyCyLGHMeGKNmeahYN/x5DgcvYE+/RSlG7zKe
+         WegFPkf2obFH+aRpKLxcCvKDKfAttYkDND2L3unTdYolDCPE2PQiFif27r8AKJUGR2V2
+         3ek4ox9PzwOoSfrsnQoo8W2w7q3PomR/jj000pxNhJsXfXfpMyNzMFTHPZHHmVSC/gAE
+         fKIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to:dkim-signature
          :arc-authentication-results;
-        bh=UQUFAt/++8vQL6oFGpMha7IjgAJHsX6H2bKUeSfXuvo=;
-        b=0J0UuDPNaaggx1pX9mMjEAPIA7w/RiZwts7GpnUPq9YS/C8wacN1u7tRyv//AYJ9/G
-         b3VIaeSx1r2BKWgMVvf33KMzL1Pew19VaCE4n6G6H7D1nSwkdbttY0irbNZIPKY2gpuk
-         smA8BxkesDkivVKoWVr0vxOYFNZO1Wk5ej0hmHkriyFDCiL95dgN+pgEJuU7d2xoPom+
-         l09X5C76odNqvG04i9CMEwvhd/Ug14NohqRkym6bhWy8264StwYcKbLRmZiRXrO8Byom
-         XPJgy3/E/BIbnHWf8Bf9H3IrM35Fz+beUbZrAUkZAQu7H1UBV5bzuwlB7s6J7bLrwZJN
-         Tbbg==
+        bh=DngGeijO+hH2ennFTk1aQ10k4uLhwO8Tbrw3n2u+wws=;
+        b=y9nR5d4+xFLVF/vLOmFcV2Z1q2DOMAWXPWtWOKicY1ZAHPlrI1woDGxxK4WeP4SCE1
+         AugJA5oi1BlRFkgL+n2qdH4ZnXo87/xkftEs037skLg79i9fIYzJGbcDHAckLGAsMnxq
+         liedzF2BFBGziHfh+Zn1l5oNBcFfWnXiFtVk/3hA9m0IL6CqDGVAPfobA8ZOpmbDvDjC
+         3FMYdE626PtWTsXK0TPmjezE0xBt4DTMbp+cHfeyG33BX7uEya2dJfORB9YWzCDsZZk5
+         S9Mg7zA3ATQgURFqLnqk7e09EcfYZCApQ5E2OHIQknkwUYT5NFA/4VENPQDClAqMvErn
+         /92g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Rm3P+PNO;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ShF4cPtz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h63si376887yba.244.2018.02.03.13.09.12
+        by mx.google.com with ESMTPS id s5si929336yws.159.2018.02.03.13.06.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 03 Feb 2018 13:09:12 -0800 (PST)
+        Sat, 03 Feb 2018 13:06:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Rm3P+PNO;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ShF4cPtz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47672 helo=lists.gnu.org)
+Received: from localhost ([::1]:47428 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ei53f-0004va-TH
-	for alex.bennee@linaro.org; Sat, 03 Feb 2018 16:09:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51741)
+	id 1ei50z-0003YL-U9
+	for alex.bennee@linaro.org; Sat, 03 Feb 2018 16:06:25 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51231)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1ei53U-0004us-NW
-	for qemu-arm@nongnu.org; Sat, 03 Feb 2018 16:09:01 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1ei50n-0003X3-NG
+	for qemu-arm@nongnu.org; Sat, 03 Feb 2018 16:06:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1ei53P-0004PU-P1
-	for qemu-arm@nongnu.org; Sat, 03 Feb 2018 16:09:00 -0500
-Received: from mail-pl0-x244.google.com ([2607:f8b0:400e:c01::244]:37730)
+	(envelope-from <richard.henderson@linaro.org>) id 1ei50i-0001yC-Ot
+	for qemu-arm@nongnu.org; Sat, 03 Feb 2018 16:06:13 -0500
+Received: from mail-pg0-x241.google.com ([2607:f8b0:400e:c05::241]:46843)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1ei53P-0004P4-Ht
-	for qemu-arm@nongnu.org; Sat, 03 Feb 2018 16:08:55 -0500
-Received: by mail-pl0-x244.google.com with SMTP id ay8so8960812plb.4
-	for <qemu-arm@nongnu.org>; Sat, 03 Feb 2018 13:08:55 -0800 (PST)
+	id 1ei50i-0001vi-IC
+	for qemu-arm@nongnu.org; Sat, 03 Feb 2018 16:06:08 -0500
+Received: by mail-pg0-x241.google.com with SMTP id s9so15720079pgq.13
+	for <qemu-arm@nongnu.org>; Sat, 03 Feb 2018 13:06:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=subject:to:cc:references:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=UQUFAt/++8vQL6oFGpMha7IjgAJHsX6H2bKUeSfXuvo=;
-	b=Rm3P+PNOMwdY9nYdxF/JYk5Q1jmnBVpb1EvLbWhMhpwQte/5rqj/s+48+sTLE/BOUi
-	ZMm1f40ZppnVwsA0/rkIOSCIJQUK95y4AAeihxKzAD9V0PkZqG3j4eu9Je0kkMR6ceh+
-	Am6/f+0/z69SVtLXRc6dzUxaP5o+IB29e7x0k=
+	bh=DngGeijO+hH2ennFTk1aQ10k4uLhwO8Tbrw3n2u+wws=;
+	b=ShF4cPtzax8t0WsTyQ4Sr8+rZLYQ/I2ATHF71CFgFpDOyXtP+en9qEUEmN1ikzDLaO
+	p0Y+LuQRXmsX/ZIyuAZQCmEDlsghXxRKrgTJQx+cFpHFZkC5A61agJGMu95aLdqS7QnC
+	DegRVKeG6vm1WJFigxLZNAiR6aeE8zRvkDahQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=UQUFAt/++8vQL6oFGpMha7IjgAJHsX6H2bKUeSfXuvo=;
-	b=n0nF3gwhA/0xsP5irn4BEJE4Lg8IE8IdcukllZd8VyDLKIc4GibY1+oHAmJqQk3XJI
-	+mabfyCXRk6y4nK2yfqd2oATEBTy2O9B4GOWmBgOIDvRPa3RGA5BPTLiEpOZSzkqXUo/
-	ps7eN6oIr4wK6Wv/h7XdvvCxhBjJr92s1Tk4QED26KG7dKxN91G/eQzvkjNyqsiv30X6
-	WlxWb6SWBxDu3jiw/dxjCm0YRDpWLi+7al9QarHuqLJkHTtb9/GVd7krimpGOtDu38q9
-	Rm4NMB+2hLxuLmtgbdlc7AHqYmOreVPD2133JmLEAbyx9vRHe8g7MVKob/Fsds/Vu5gj
-	kd4w==
-X-Gm-Message-State: AKwxytcsTZJNIWqVarcy9H329ZSOoJoPRo965TQG9095Wn/sz2V2Tge/
-	nPOEBfjjEZ98X7zbHwwrGoVBBg==
-X-Received: by 2002:a17:902:4a0c:: with SMTP id
-	w12-v6mr30613394pld.17.1517692134586; 
-	Sat, 03 Feb 2018 13:08:54 -0800 (PST)
+	bh=DngGeijO+hH2ennFTk1aQ10k4uLhwO8Tbrw3n2u+wws=;
+	b=S2xx0EtRRo5FHAPxC8jCAAV/oxdIoEVtrv3NfnYu+Wywk4OFYMgtA5nnk6WQV+kj5/
+	HE9Mcm2jEG8PoOh0Yw4gdK+wuhNNJV0NUcD2e0REml+5aTe5Amwo5b3YG5optZgssrW/
+	QmTdxObeUEqERgQlJQtOy+DCeKsr5fdbjceVQwa8k4qtUwd99GX9e2bWrYe6TX8Lcb55
+	nhkMREUqZsaKl23at+u2ja8zXMUVdrF0ah5Nuw7/FQ9m3LB6xaKOLnrguqMKuDYx8A6t
+	Bw6PYEj5KVHgeXf2WiGBri1PGJxGe2Sa07P/aJ/kvJqTlCXqfceMWi/U5ldP+4xJQShE
+	CI+g==
+X-Gm-Message-State: AKwxytck66lutlCi0PRMCUMVvjNe43R/7FTPVY9oesHS3rVxPCKZlKP3
+	KCX9HFkKfvqKV36rD9eQy8wDLw==
+X-Received: by 10.101.93.79 with SMTP id e15mr5029188pgt.129.1517691967599;
+	Sat, 03 Feb 2018 13:06:07 -0800 (PST)
 Received: from cloudburst.twiddle.net (174-21-6-47.tukw.qwest.net.
 	[174.21.6.47]) by smtp.gmail.com with ESMTPSA id
-	y17sm11299669pfk.67.2018.02.03.13.08.53
+	t80sm7364941pgb.88.2018.02.03.13.06.06
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sat, 03 Feb 2018 13:08:53 -0800 (PST)
+	Sat, 03 Feb 2018 13:06:06 -0800 (PST)
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 References: <1517324542-6607-1-git-send-email-peter.maydell@linaro.org>
-	<1517324542-6607-4-git-send-email-peter.maydell@linaro.org>
+	<1517324542-6607-3-git-send-email-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <9825a1c2-6f25-5b4d-c193-bd4f880fb708@linaro.org>
-Date: Sat, 3 Feb 2018 13:08:51 -0800
+Message-ID: <de16ce7c-ae92-e103-aa85-02006937892d@linaro.org>
+Date: Sat, 3 Feb 2018 13:06:04 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.5.2
 MIME-Version: 1.0
-In-Reply-To: <1517324542-6607-4-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1517324542-6607-3-git-send-email-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c01::244
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 3/7] target/arm: Add
- ignore_stackfaults argument to v7m_exception_taken()
+X-Received-From: 2607:f8b0:400e:c05::241
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 2/7] target/arm: Split "get
+ pending exception info" from "acknowledge it"
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -120,37 +119,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LTLo/oolPvYK
+X-TUID: ag51ZUeK2wqW
 
 On 01/30/2018 07:02 AM, Peter Maydell wrote:
-> In the v8M architecture, if the process of taking an exception
-> results in a further exception this is called a derived exception
-> (for example, an MPU exception when writing the exception frame to
-> memory). If the derived exception happens while pushing the initial
-> stack frame, we must ignore any subsequent possible exception
-> pushing the callee-saves registers.
+> Currently armv7m_nvic_acknowledge_irq() does three things:
+>  * make the current highest priority pending interrupt active
+>  * return a bool indicating whether that interrupt is targeting
+>    Secure or NonSecure state
+>  * implicitly tell the caller which is the highest priority
+>    pending interrupt by setting env->v7m.exception
 > 
-> In preparation for making the stack writes check for exceptions,
-> add a return value from v7m_push_stack() and a new parameter to
-> v7m_exception_taken(), so that the former can tell the latter that
-> it needs to ignore failures to write to the stack. We also plumb
-> the argument through to v7m_push_callee_stack(), which is where
-> the code to ignore the failures will be.
+> We need to split these jobs, because v7m_exception_taken()
+> needs to know whether the pending interrupt targets Secure so
+> it can choose to stack callee-saves registers or not, but it
+> must not make the interrupt active until after it has done
+> that stacking, in case the stacking causes a derived exception.
+> Similarly, it needs to know the number of the pending interrupt
+> so it can read the correct vector table entry before the
+> interrupt is made active, because vector table reads might
+> also cause a derived exception.
 > 
-> (Note that the v8M ARM pseudocode structures this slightly differently:
-> derived exceptions cause the attempt to process the original
-> exception to be abandoned; then at the top level it calls
-> DerivedLateArrival to prioritize the derived exception and call
-> TakeException from there. We choose to let the NVIC do the prioritization
-> and continue forward with a call to TakeException which will then
-> take either the original or the derived exception. The effect is
-> the same, but this structure works better for QEMU because we don't
-> have a convenient top level place to do the abandon-and-retry logic.)
+> Create a new armv7m_nvic_get_pending_irq_info() function which simply
+> returns information about the highest priority pending interrupt, and
+> use it to rearrange the v7m_exception_taken() code so we don't
+> acknowledge the exception until we've done all the things which could
+> possibly cause a derived exception.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  target/arm/helper.c | 35 +++++++++++++++++++++++------------
->  1 file changed, 23 insertions(+), 12 deletions(-)
+>  target/arm/cpu.h      | 19 ++++++++++++++++---
+>  hw/intc/armv7m_nvic.c | 30 +++++++++++++++++++++++-------
+>  target/arm/helper.c   | 16 ++++++++++++----
+>  hw/intc/trace-events  |  3 ++-
+>  4 files changed, 53 insertions(+), 15 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

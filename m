@@ -1,789 +1,554 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id d73sm14847749wma.16.2018.02.06.08.48.16
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 06 Feb 2018 08:48:16 -0800 (PST)
-Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 956703E059E;
-	Tue,  6 Feb 2018 16:48:15 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: richard.henderson@linaro.org,
-	peter.maydell@linaro.org,
-	laurent@vivier.eu,
-	bharata@linux.vnet.ibm.com,
-	andrew@andrewdutcher.com
-Cc: qemu-devel@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Richard Henderson <rth@twiddle.net>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Anthony Green <green@moxielogic.com>,
-	Chris Wulff <crwulff@gmail.com>,
-	Marek Vasut <marex@denx.de>,
-	Stafford Horne <shorne@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Alexander Graf <agraf@suse.de>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	qemu-arm@nongnu.org (open list:ARM),
-	qemu-ppc@nongnu.org (open list:PowerPC),
-	qemu-s390x@nongnu.org (open list:S390)
-Subject: [PATCH v4 04/22] target/*/cpu.h: remove softfloat.h
-Date: Tue,  6 Feb 2018 16:47:57 +0000
-Message-Id: <20180206164815.10084-5-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.15.1
-In-Reply-To: <20180206164815.10084-1-alex.bennee@linaro.org>
-References: <20180206164815.10084-1-alex.bennee@linaro.org>
+Received: by 10.28.71.27 with SMTP id u27csp4241191wma;
+        Tue, 6 Feb 2018 12:35:00 -0800 (PST)
+X-Google-Smtp-Source: AH8x224Ke0iylH8hcQMMabE7rD8i3piBONF0+0pk1vUPixMqA/9yzyFESRbM3xPCZOvEg/eDXMdP
+X-Received: by 10.37.202.145 with SMTP id a139mr2372307ybg.19.1517949300563;
+        Tue, 06 Feb 2018 12:35:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1517949300; cv=none;
+        d=google.com; s=arc-20160816;
+        b=xXypwgDLcf9MWKi4CcgpdER4f127oWAFxqgoxItx+RBn+1nU5HI4C44/a1WuxayrHX
+         CXezWeh1FW6iB3vU8WG7lkfCBgwDGpbuxhkI6FXG2INQNuKHiabu0M7aLSJsBd6kxTEQ
+         s6SE9mj8iUnHhwf8tZQMvzyy6oEedYHDOwo3wCpQIJN9iEIsmF+a7/kzOt4QKZGdCSmf
+         wSTpFrLoCwJOsY53FGH5RAdIzjGWk6MwmJDcndElgIXjz24gRmnlZXhnBGhJoZs022/6
+         Rdk1OnDdhh4+uLiMHJEfKx9EgIf5gBgYr2LmS0AzZiw67/WaZHRiZL7QXhbuNv1m/RbD
+         z4gw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=vSezeOqHfRGZW6SMCYSsuMoTYrtlzU8NEtIoHq6kuYY=;
+        b=mdrK3wftRSiYlHpZhfGMaBTsgONULp6Nu2k5LQB3wUKAW/e8IWVneCzicL9x4Ul0Bi
+         l6/9qdC+JvV0x7GXWeu5hH2sRF2fRNVDBxwWLncQ37FvEgvc9cI5A9WFo7iJLY2nJNQO
+         eCu7mq7/DEyFsG+2brzSMjEAXM3KX68bV0IQnmucTZziUJk0Mg/dc6G2nVndCK/3w19I
+         hoY5b6VCkDiSljU0vHyDKJunQsiCmb1oDvFNmPMPdmT3ypG8l5NgieIg0q5SvYDI6KVw
+         hFk1Z3Ah55kMuGfm3M0xjaSFJW/+lGte3UFXSoZKqUuIiIA6Uos+6Cs0PJwj6ix41vnI
+         O6Pg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id y187si1916624ywc.512.2018.02.06.12.35.00
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 06 Feb 2018 12:35:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59034 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ej9xD-0004am-T6
+	for alex.bennee@linaro.org; Tue, 06 Feb 2018 15:34:59 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56582)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <armbru@redhat.com>) id 1ej9Gg-0003DO-OO
+	for qemu-devel@nongnu.org; Tue, 06 Feb 2018 14:51:05 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <armbru@redhat.com>) id 1ej9Ge-00042r-91
+	for qemu-devel@nongnu.org; Tue, 06 Feb 2018 14:51:02 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:35238 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1ej9GW-0003ri-IB; Tue, 06 Feb 2018 14:50:52 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 578358182D04;
+	Tue,  6 Feb 2018 19:50:49 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-148.ams2.redhat.com
+	[10.36.116.148])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id E54522166BB6;
+	Tue,  6 Feb 2018 19:50:45 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id C14AC113864A; Tue,  6 Feb 2018 20:50:44 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue,  6 Feb 2018 20:50:33 +0100
+Message-Id: <20180206195044.8347-4-armbru@redhat.com>
+In-Reply-To: <20180206195044.8347-1-armbru@redhat.com>
+References: <20180206195044.8347-1-armbru@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: YSZ/hdVXIA7I
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.8]);
+	Tue, 06 Feb 2018 19:50:49 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Tue, 06 Feb 2018 19:50:49 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'armbru@redhat.com' RCPT:''
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: [Qemu-devel] [PULL 03/14] hw/arm: Replace fprintf(stderr,
+ "*\n" with error_report()
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, Alistair Francis <alistair.francis@xilinx.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zNpGgjspTdAh
 
-As cpu.h is another typically widely included file which doesn't need
-full access to the softfloat API we can remove the includes from here
-as well. Where they do need types it's typically for float_status and
-the rounding modes so we move that to softfloat-types.h as well.
+From: Alistair Francis <alistair.francis@xilinx.com>
 
-As a result of not having softfloat in every cpu.h call we now need to
-add it to various helpers that do need the full softfloat.h
-definitions.
+Replace a large number of the fprintf(stderr, "*\n" calls with
+error_report(). The functions were renamed with these commands and then
+compiler issues where manually fixed.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-[For PPC parts]
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|erro=
+r_report("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_=
+report("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_repo=
+rt("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report=
+("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("=
+\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1=
+"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\=
+2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2)=
+;|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|=
+Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig=
+}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}'=
+ \
+    {} +
+
+Some lines where then manually tweaked to pass checkpatch.
+
+The 'qemu: ' prefix was manually removed from the hw/arm/boot.c file.
+
+Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
+Cc: qemu-arm@nongnu.org
+
+Conversions that aren't followed by exit() dropped, because they might
+be inappropriate.
+
+Also trim trailing punctuation from error messages.
+
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Message-Id: <20180203084315.20497-3-armbru@redhat.com>
 ---
- include/fpu/softfloat-types.h   | 64 +++++++++++++++++++++++++++++++++++++++++
- include/fpu/softfloat.h         | 53 ----------------------------------
- target/alpha/cpu.h              |  2 --
- target/arm/cpu.c                |  1 +
- target/arm/cpu.h                |  2 --
- target/arm/helper-a64.c         |  1 +
- target/arm/helper.c             |  1 +
- target/arm/neon_helper.c        |  1 +
- target/hppa/cpu.c               |  1 +
- target/hppa/cpu.h               |  1 -
- target/hppa/op_helper.c         |  2 +-
- target/i386/cpu.h               |  4 ---
- target/i386/fpu_helper.c        |  1 +
- target/m68k/cpu.c               |  2 +-
- target/m68k/cpu.h               |  1 -
- target/m68k/fpu_helper.c        |  1 +
- target/m68k/helper.c            |  1 +
- target/m68k/translate.c         |  2 ++
- target/microblaze/cpu.c         |  1 +
- target/microblaze/cpu.h         |  2 +-
- target/microblaze/op_helper.c   |  1 +
- target/moxie/cpu.h              |  1 -
- target/nios2/cpu.h              |  1 -
- target/openrisc/cpu.h           |  1 -
- target/openrisc/fpu_helper.c    |  1 +
- target/ppc/cpu.h                |  1 -
- target/ppc/fpu_helper.c         |  1 +
- target/ppc/int_helper.c         |  1 +
- target/ppc/translate_init.c     |  1 +
- target/s390x/cpu.c              |  1 +
- target/s390x/cpu.h              |  2 --
- target/s390x/fpu_helper.c       |  1 +
- target/sh4/cpu.c                |  1 +
- target/sh4/cpu.h                |  2 --
- target/sh4/op_helper.c          |  1 +
- target/sparc/cpu.h              |  2 --
- target/sparc/fop_helper.c       |  1 +
- target/tricore/cpu.h            |  1 -
- target/tricore/fpu_helper.c     |  1 +
- target/tricore/helper.c         |  1 +
- target/unicore32/cpu.c          |  1 +
- target/unicore32/cpu.h          |  1 -
- target/unicore32/ucf64_helper.c |  1 +
- target/xtensa/cpu.h             |  1 -
- target/xtensa/op_helper.c       |  1 +
- 45 files changed, 93 insertions(+), 79 deletions(-)
+ hw/arm/armv7m.c    |  2 +-
+ hw/arm/boot.c      | 16 ++++++++--------
+ hw/arm/gumstix.c   | 13 +++++++------
+ hw/arm/mainstone.c |  7 ++++---
+ hw/arm/musicpal.c  |  2 +-
+ hw/arm/omap1.c     |  5 +++--
+ hw/arm/omap2.c     |  3 ++-
+ hw/arm/omap_sx1.c  |  2 +-
+ hw/arm/pxa2xx.c    |  7 ++++---
+ hw/arm/vexpress.c  |  8 ++++----
+ hw/arm/z2.c        |  6 +++---
+ 11 files changed, 38 insertions(+), 33 deletions(-)
 
-diff --git a/include/fpu/softfloat-types.h b/include/fpu/softfloat-types.h
-index 8210a94ea1..4e378cb612 100644
---- a/include/fpu/softfloat-types.h
-+++ b/include/fpu/softfloat-types.h
-@@ -80,6 +80,12 @@ this code that are retained.
- #ifndef SOFTFLOAT_TYPES_H
- #define SOFTFLOAT_TYPES_H
- 
-+/* This 'flag' type must be able to hold at least 0 and 1. It should
-+ * probably be replaced with 'bool' but the uses would need to be audited
-+ * to check that they weren't accidentally relying on it being a larger type.
-+ */
-+typedef uint8_t flag;
-+
- /*
-  * Software IEC/IEEE floating-point types.
-  */
-@@ -112,4 +118,62 @@ typedef struct {
- #define make_float128(high_, low_) ((float128) { .high = high_, .low = low_ })
- #define make_float128_init(high_, low_) { .high = high_, .low = low_ }
- 
-+/*
-+ * Software IEC/IEEE floating-point underflow tininess-detection mode.
-+ */
-+
-+enum {
-+    float_tininess_after_rounding  = 0,
-+    float_tininess_before_rounding = 1
-+};
-+
-+/*
-+ *Software IEC/IEEE floating-point rounding mode.
-+ */
-+
-+enum {
-+    float_round_nearest_even = 0,
-+    float_round_down         = 1,
-+    float_round_up           = 2,
-+    float_round_to_zero      = 3,
-+    float_round_ties_away    = 4,
-+    /* Not an IEEE rounding mode: round to the closest odd mantissa value */
-+    float_round_to_odd       = 5,
-+};
-+
-+/*
-+ * Software IEC/IEEE floating-point exception flags.
-+ */
-+
-+enum {
-+    float_flag_invalid   =  1,
-+    float_flag_divbyzero =  4,
-+    float_flag_overflow  =  8,
-+    float_flag_underflow = 16,
-+    float_flag_inexact   = 32,
-+    float_flag_input_denormal = 64,
-+    float_flag_output_denormal = 128
-+};
-+
-+
-+/*
-+ * Floating Point Status. Individual architectures may maintain
-+ * several versions of float_status for different functions. The
-+ * correct status for the operation is then passed by reference to
-+ * most of the softfloat functions.
-+ */
-+
-+typedef struct float_status {
-+    signed char float_detect_tininess;
-+    signed char float_rounding_mode;
-+    uint8_t     float_exception_flags;
-+    signed char floatx80_rounding_precision;
-+    /* should denormalised results go to zero and set the inexact flag? */
-+    flag flush_to_zero;
-+    /* should denormalised inputs go to zero and set the input_denormal flag? */
-+    flag flush_inputs_to_zero;
-+    flag default_nan_mode;
-+    flag snan_bit_is_one;
-+} float_status;
-+
- #endif /* SOFTFLOAT_TYPES_H */
-diff --git a/include/fpu/softfloat.h b/include/fpu/softfloat.h
-index 4e16e22e58..f3b9008f78 100644
---- a/include/fpu/softfloat.h
-+++ b/include/fpu/softfloat.h
-@@ -82,12 +82,6 @@ this code that are retained.
- #ifndef SOFTFLOAT_H
- #define SOFTFLOAT_H
- 
--/* This 'flag' type must be able to hold at least 0 and 1. It should
-- * probably be replaced with 'bool' but the uses would need to be audited
-- * to check that they weren't accidentally relying on it being a larger type.
-- */
--typedef uint8_t flag;
--
- #define LIT64( a ) a##LL
- 
- /*----------------------------------------------------------------------------
-@@ -102,53 +96,6 @@ enum {
- 
- #include "fpu/softfloat-types.h"
- 
--/*----------------------------------------------------------------------------
--| Software IEC/IEEE floating-point underflow tininess-detection mode.
--*----------------------------------------------------------------------------*/
--enum {
--    float_tininess_after_rounding  = 0,
--    float_tininess_before_rounding = 1
--};
--
--/*----------------------------------------------------------------------------
--| Software IEC/IEEE floating-point rounding mode.
--*----------------------------------------------------------------------------*/
--enum {
--    float_round_nearest_even = 0,
--    float_round_down         = 1,
--    float_round_up           = 2,
--    float_round_to_zero      = 3,
--    float_round_ties_away    = 4,
--    /* Not an IEEE rounding mode: round to the closest odd mantissa value */
--    float_round_to_odd       = 5,
--};
--
--/*----------------------------------------------------------------------------
--| Software IEC/IEEE floating-point exception flags.
--*----------------------------------------------------------------------------*/
--enum {
--    float_flag_invalid   =  1,
--    float_flag_divbyzero =  4,
--    float_flag_overflow  =  8,
--    float_flag_underflow = 16,
--    float_flag_inexact   = 32,
--    float_flag_input_denormal = 64,
--    float_flag_output_denormal = 128
--};
--
--typedef struct float_status {
--    signed char float_detect_tininess;
--    signed char float_rounding_mode;
--    uint8_t     float_exception_flags;
--    signed char floatx80_rounding_precision;
--    /* should denormalised results go to zero and set the inexact flag? */
--    flag flush_to_zero;
--    /* should denormalised inputs go to zero and set the input_denormal flag? */
--    flag flush_inputs_to_zero;
--    flag default_nan_mode;
--    flag snan_bit_is_one;
--} float_status;
--
- static inline void set_float_detect_tininess(int val, float_status *status)
- {
-     status->float_detect_tininess = val;
-diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
-index 09720c2f3b..a79fc2e780 100644
---- a/target/alpha/cpu.h
-+++ b/target/alpha/cpu.h
-@@ -33,8 +33,6 @@
- 
- #include "exec/cpu-defs.h"
- 
--#include "fpu/softfloat.h"
--
- #define ICACHE_LINE_SIZE 32
- #define DCACHE_LINE_SIZE 32
- 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 9da6ea505c..2d6ac054bd 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -34,6 +34,7 @@
- #include "sysemu/hw_accel.h"
- #include "kvm_arm.h"
- #include "disas/capstone.h"
-+#include "fpu/softfloat.h"
- 
- static void arm_cpu_set_pc(CPUState *cs, vaddr value)
- {
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index d2bb59eded..c7c922d79b 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -39,8 +39,6 @@
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
- 
--#include "fpu/softfloat.h"
--
- #define EXCP_UDEF            1   /* undefined instruction */
- #define EXCP_SWI             2   /* software interrupt */
- #define EXCP_PREFETCH_ABORT  3
-diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-index 06fd321fae..10e08bdc1f 100644
---- a/target/arm/helper-a64.c
-+++ b/target/arm/helper-a64.c
-@@ -31,6 +31,7 @@
- #include "exec/cpu_ldst.h"
- #include "qemu/int128.h"
- #include "tcg.h"
-+#include "fpu/softfloat.h"
- #include <zlib.h> /* For crc32 */
- 
- /* C2.4.7 Multiply and divide */
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index bfce09643b..4ef99882c4 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -15,6 +15,7 @@
- #include <zlib.h> /* For crc32 */
- #include "exec/semihost.h"
- #include "sysemu/kvm.h"
-+#include "fpu/softfloat.h"
- 
- #define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurable */
- 
-diff --git a/target/arm/neon_helper.c b/target/arm/neon_helper.c
-index 689491cad3..a1ec6537eb 100644
---- a/target/arm/neon_helper.c
-+++ b/target/arm/neon_helper.c
-@@ -11,6 +11,7 @@
- #include "cpu.h"
- #include "exec/exec-all.h"
- #include "exec/helper-proto.h"
-+#include "fpu/softfloat.h"
- 
- #define SIGNBIT (uint32_t)0x80000000
- #define SIGNBIT64 ((uint64_t)1 << 63)
-diff --git a/target/hppa/cpu.c b/target/hppa/cpu.c
-index 5213347720..9224331165 100644
---- a/target/hppa/cpu.c
-+++ b/target/hppa/cpu.c
-@@ -23,6 +23,7 @@
- #include "cpu.h"
- #include "qemu-common.h"
- #include "exec/exec-all.h"
-+#include "fpu/softfloat.h"
- 
- 
- static void hppa_cpu_set_pc(CPUState *cs, vaddr value)
-diff --git a/target/hppa/cpu.h b/target/hppa/cpu.h
-index 7640c81221..c88d844938 100644
---- a/target/hppa/cpu.h
-+++ b/target/hppa/cpu.h
-@@ -51,7 +51,6 @@
- #define CPUArchState struct CPUHPPAState
- 
- #include "exec/cpu-defs.h"
--#include "fpu/softfloat.h"
- 
- #define TARGET_PAGE_BITS 12
- 
-diff --git a/target/hppa/op_helper.c b/target/hppa/op_helper.c
-index 4ee936bf86..a3af62daf7 100644
---- a/target/hppa/op_helper.c
-+++ b/target/hppa/op_helper.c
-@@ -24,7 +24,7 @@
- #include "exec/cpu_ldst.h"
- #include "sysemu/sysemu.h"
- #include "qemu/timer.h"
--
-+#include "fpu/softfloat.h"
- 
- void QEMU_NORETURN HELPER(excp)(CPUHPPAState *env, int excp)
- {
-diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-index f91e37d25d..faf39ec1ce 100644
---- a/target/i386/cpu.h
-+++ b/target/i386/cpu.h
-@@ -52,10 +52,6 @@
- 
- #define CPUArchState struct CPUX86State
- 
--#ifdef CONFIG_TCG
--#include "fpu/softfloat.h"
--#endif
--
- enum {
-     R_EAX = 0,
-     R_ECX = 1,
-diff --git a/target/i386/fpu_helper.c b/target/i386/fpu_helper.c
-index 9014b6f88a..ea5a0c4861 100644
---- a/target/i386/fpu_helper.c
-+++ b/target/i386/fpu_helper.c
-@@ -24,6 +24,7 @@
- #include "qemu/host-utils.h"
- #include "exec/exec-all.h"
- #include "exec/cpu_ldst.h"
-+#include "fpu/softfloat.h"
- 
- #define FPU_RC_MASK         0xc00
- #define FPU_RC_NEAR         0x000
-diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
-index 98919b358b..cbd5f08ce8 100644
---- a/target/m68k/cpu.c
-+++ b/target/m68k/cpu.c
-@@ -24,7 +24,7 @@
- #include "qemu-common.h"
- #include "migration/vmstate.h"
- #include "exec/exec-all.h"
--
-+#include "fpu/softfloat.h"
- 
- static void m68k_cpu_set_pc(CPUState *cs, vaddr value)
- {
-diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
-index 627fb787b6..e250dc5278 100644
---- a/target/m68k/cpu.h
-+++ b/target/m68k/cpu.h
-@@ -28,7 +28,6 @@
- #include "qemu-common.h"
- #include "exec/cpu-defs.h"
- #include "cpu-qom.h"
--#include "fpu/softfloat.h"
- 
- #define OS_BYTE     0
- #define OS_WORD     1
-diff --git a/target/m68k/fpu_helper.c b/target/m68k/fpu_helper.c
-index 665e7609af..3c5a82aaa0 100644
---- a/target/m68k/fpu_helper.c
-+++ b/target/m68k/fpu_helper.c
-@@ -23,6 +23,7 @@
- #include "exec/helper-proto.h"
- #include "exec/exec-all.h"
- #include "exec/cpu_ldst.h"
-+#include "fpu/softfloat.h"
- 
- /* Undefined offsets may be different on various FPU.
-  * On 68040 they return 0.0 (floatx80_zero)
-diff --git a/target/m68k/helper.c b/target/m68k/helper.c
-index 20155c7801..917d46efcc 100644
---- a/target/m68k/helper.c
-+++ b/target/m68k/helper.c
-@@ -24,6 +24,7 @@
- #include "exec/gdbstub.h"
- 
- #include "exec/helper-proto.h"
-+#include "fpu/softfloat.h"
- 
- #define SIGNBIT (1u << 31)
- 
-diff --git a/target/m68k/translate.c b/target/m68k/translate.c
-index 34db97b8a0..bbbc3d8a0e 100644
---- a/target/m68k/translate.c
-+++ b/target/m68k/translate.c
-@@ -32,6 +32,8 @@
- 
- #include "trace-tcg.h"
- #include "exec/log.h"
-+#include "fpu/softfloat.h"
-+
- 
- //#define DEBUG_DISPATCH 1
- 
-diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
-index 5700652e06..393520f3ef 100644
---- a/target/microblaze/cpu.c
-+++ b/target/microblaze/cpu.c
-@@ -28,6 +28,7 @@
- #include "hw/qdev-properties.h"
- #include "migration/vmstate.h"
- #include "exec/exec-all.h"
-+#include "fpu/softfloat.h"
- 
- static const struct {
-     const char *name;
-diff --git a/target/microblaze/cpu.h b/target/microblaze/cpu.h
-index f3e7405a62..1fe21c8539 100644
---- a/target/microblaze/cpu.h
-+++ b/target/microblaze/cpu.h
-@@ -28,7 +28,7 @@
- #define CPUArchState struct CPUMBState
- 
- #include "exec/cpu-defs.h"
--#include "fpu/softfloat.h"
-+#include "fpu/softfloat-types.h"
- struct CPUMBState;
- typedef struct CPUMBState CPUMBState;
- #if !defined(CONFIG_USER_ONLY)
-diff --git a/target/microblaze/op_helper.c b/target/microblaze/op_helper.c
-index 869072a2d1..1b4fe796e7 100644
---- a/target/microblaze/op_helper.c
-+++ b/target/microblaze/op_helper.c
-@@ -24,6 +24,7 @@
- #include "qemu/host-utils.h"
- #include "exec/exec-all.h"
- #include "exec/cpu_ldst.h"
-+#include "fpu/softfloat.h"
- 
- #define D(x)
- 
-diff --git a/target/moxie/cpu.h b/target/moxie/cpu.h
-index a01f480821..d85e1fc061 100644
---- a/target/moxie/cpu.h
-+++ b/target/moxie/cpu.h
-@@ -34,7 +34,6 @@
- #define MOXIE_EX_BREAK      16
- 
- #include "exec/cpu-defs.h"
--#include "fpu/softfloat.h"
- 
- #define TARGET_PAGE_BITS 12     /* 4k */
- 
-diff --git a/target/nios2/cpu.h b/target/nios2/cpu.h
-index 204b39add7..cd4e40d1b4 100644
---- a/target/nios2/cpu.h
-+++ b/target/nios2/cpu.h
-@@ -27,7 +27,6 @@
- #define CPUArchState struct CPUNios2State
- 
- #include "exec/cpu-defs.h"
--#include "fpu/softfloat.h"
- #include "qom/cpu.h"
- struct CPUNios2State;
- typedef struct CPUNios2State CPUNios2State;
-diff --git a/target/openrisc/cpu.h b/target/openrisc/cpu.h
-index fb46cc9986..5050b1135c 100644
---- a/target/openrisc/cpu.h
-+++ b/target/openrisc/cpu.h
-@@ -29,7 +29,6 @@ struct OpenRISCCPU;
- 
- #include "qemu-common.h"
- #include "exec/cpu-defs.h"
--#include "fpu/softfloat.h"
- #include "qom/cpu.h"
- 
- #define TYPE_OPENRISC_CPU "or1k-cpu"
-diff --git a/target/openrisc/fpu_helper.c b/target/openrisc/fpu_helper.c
-index 1375cea948..977a1e8e55 100644
---- a/target/openrisc/fpu_helper.c
-+++ b/target/openrisc/fpu_helper.c
-@@ -22,6 +22,7 @@
- #include "cpu.h"
- #include "exec/helper-proto.h"
- #include "exception.h"
-+#include "fpu/softfloat.h"
- 
- static inline uint32_t ieee_ex_to_openrisc(OpenRISCCPU *cpu, int fexcp)
- {
-diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
-index 9f8cbbe7aa..7bde1884a1 100644
---- a/target/ppc/cpu.h
-+++ b/target/ppc/cpu.h
-@@ -79,7 +79,6 @@
- 
- #include "exec/cpu-defs.h"
- #include "cpu-qom.h"
--#include "fpu/softfloat.h"
- 
- #if defined (TARGET_PPC64)
- #define PPC_ELF_MACHINE     EM_PPC64
-diff --git a/target/ppc/fpu_helper.c b/target/ppc/fpu_helper.c
-index c4dab159e4..9ae418a577 100644
---- a/target/ppc/fpu_helper.c
-+++ b/target/ppc/fpu_helper.c
-@@ -21,6 +21,7 @@
- #include "exec/helper-proto.h"
- #include "exec/exec-all.h"
- #include "internal.h"
-+#include "fpu/softfloat.h"
- 
- static inline float128 float128_snan_to_qnan(float128 x)
- {
-diff --git a/target/ppc/int_helper.c b/target/ppc/int_helper.c
-index 3a50f1e1b7..35bdf09773 100644
---- a/target/ppc/int_helper.c
-+++ b/target/ppc/int_helper.c
-@@ -23,6 +23,7 @@
- #include "qemu/host-utils.h"
- #include "exec/helper-proto.h"
- #include "crypto/aes.h"
-+#include "fpu/softfloat.h"
- 
- #include "helper_regs.h"
- /*****************************************************************************/
-diff --git a/target/ppc/translate_init.c b/target/ppc/translate_init.c
-index 55c99c97e3..54ec2e122a 100644
---- a/target/ppc/translate_init.c
-+++ b/target/ppc/translate_init.c
-@@ -36,6 +36,7 @@
- #include "sysemu/qtest.h"
- #include "qemu/cutils.h"
- #include "disas/capstone.h"
-+#include "fpu/softfloat.h"
- 
- //#define PPC_DUMP_CPU
- //#define PPC_DEBUG_SPR
-diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
-index d2e6b9f5c7..7acb827f1b 100644
---- a/target/s390x/cpu.c
-+++ b/target/s390x/cpu.c
-@@ -42,6 +42,7 @@
- #include "sysemu/arch_init.h"
- #include "sysemu/sysemu.h"
+diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+index bb2dfc942b..56770a7048 100644
+--- a/hw/arm/armv7m.c
++++ b/hw/arm/armv7m.c
+@@ -278,7 +278,7 @@ void armv7m_load_kernel(ARMCPU *cpu, const char *kern=
+el_filename, int mem_size)
  #endif
-+#include "fpu/softfloat.h"
- 
- #define CR0_RESET       0xE0UL
- #define CR14_RESET      0xC2000000UL;
-diff --git a/target/s390x/cpu.h b/target/s390x/cpu.h
-index a1123ad621..96264ad4cb 100644
---- a/target/s390x/cpu.h
-+++ b/target/s390x/cpu.h
-@@ -41,8 +41,6 @@
- 
- #include "exec/cpu-all.h"
- 
--#include "fpu/softfloat.h"
--
- #define NB_MMU_MODES 4
- #define TARGET_INSN_START_EXTRA_WORDS 1
- 
-diff --git a/target/s390x/fpu_helper.c b/target/s390x/fpu_helper.c
-index 334159119f..43f8bf1c94 100644
---- a/target/s390x/fpu_helper.c
-+++ b/target/s390x/fpu_helper.c
-@@ -24,6 +24,7 @@
- #include "exec/exec-all.h"
- #include "exec/cpu_ldst.h"
- #include "exec/helper-proto.h"
-+#include "fpu/softfloat.h"
- 
- /* #define DEBUG_HELPER */
- #ifdef DEBUG_HELPER
-diff --git a/target/sh4/cpu.c b/target/sh4/cpu.c
-index e0b99fbc89..4f8c830fe3 100644
---- a/target/sh4/cpu.c
-+++ b/target/sh4/cpu.c
-@@ -25,6 +25,7 @@
- #include "qemu-common.h"
- #include "migration/vmstate.h"
- #include "exec/exec-all.h"
-+#include "fpu/softfloat.h"
- 
- 
- static void superh_cpu_set_pc(CPUState *cs, vaddr value)
-diff --git a/target/sh4/cpu.h b/target/sh4/cpu.h
-index 52a4568dd5..a649b68d78 100644
---- a/target/sh4/cpu.h
-+++ b/target/sh4/cpu.h
-@@ -40,8 +40,6 @@
- 
- #include "exec/cpu-defs.h"
- 
--#include "fpu/softfloat.h"
--
- #define TARGET_PAGE_BITS 12	/* 4k XXXXX */
- 
- #define TARGET_PHYS_ADDR_SPACE_BITS 32
-diff --git a/target/sh4/op_helper.c b/target/sh4/op_helper.c
-index 4b8bbf63b4..4f825bae5a 100644
---- a/target/sh4/op_helper.c
-+++ b/target/sh4/op_helper.c
-@@ -21,6 +21,7 @@
- #include "exec/helper-proto.h"
- #include "exec/exec-all.h"
- #include "exec/cpu_ldst.h"
-+#include "fpu/softfloat.h"
- 
- #ifndef CONFIG_USER_ONLY
- 
-diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
-index 3eaffb354e..9724134a5b 100644
---- a/target/sparc/cpu.h
-+++ b/target/sparc/cpu.h
-@@ -29,8 +29,6 @@
- 
- #include "exec/cpu-defs.h"
- 
--#include "fpu/softfloat.h"
--
- /*#define EXCP_INTERRUPT 0x100*/
- 
- /* trap definitions */
-diff --git a/target/sparc/fop_helper.c b/target/sparc/fop_helper.c
-index c7fb176e4c..b6642fd1d7 100644
---- a/target/sparc/fop_helper.c
-+++ b/target/sparc/fop_helper.c
-@@ -21,6 +21,7 @@
- #include "cpu.h"
- #include "exec/exec-all.h"
- #include "exec/helper-proto.h"
-+#include "fpu/softfloat.h"
- 
- #define QT0 (env->qt0)
- #define QT1 (env->qt1)
-diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
-index f41d2ceb69..e7dfe4bcc6 100644
---- a/target/tricore/cpu.h
-+++ b/target/tricore/cpu.h
-@@ -24,7 +24,6 @@
- #include "qemu-common.h"
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
--#include "fpu/softfloat.h"
- 
- #define CPUArchState struct CPUTriCoreState
- 
-diff --git a/target/tricore/fpu_helper.c b/target/tricore/fpu_helper.c
-index 7979bb6692..df162902d6 100644
---- a/target/tricore/fpu_helper.c
-+++ b/target/tricore/fpu_helper.c
-@@ -20,6 +20,7 @@
+=20
+     if (!kernel_filename && !qtest_enabled()) {
+-        fprintf(stderr, "Guest image must be specified (using -kernel)\n=
+");
++        error_report("Guest image must be specified (using -kernel)");
+         exit(1);
+     }
+=20
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index c2720c8046..bb244ec359 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -8,6 +8,7 @@
+  */
+=20
  #include "qemu/osdep.h"
- #include "cpu.h"
- #include "exec/helper-proto.h"
-+#include "fpu/softfloat.h"
- 
- #define QUIET_NAN 0x7fc00000
- #define ADD_NAN   0x7fc00001
-diff --git a/target/tricore/helper.c b/target/tricore/helper.c
-index 378c2a4a76..45276d3782 100644
---- a/target/tricore/helper.c
-+++ b/target/tricore/helper.c
-@@ -19,6 +19,7 @@
- 
- #include "cpu.h"
- #include "exec/exec-all.h"
-+#include "fpu/softfloat.h"
- 
- enum {
-     TLBRET_DIRTY = -4,
-diff --git a/target/unicore32/cpu.c b/target/unicore32/cpu.c
-index 17dc1504d7..93cbae39d9 100644
---- a/target/unicore32/cpu.c
-+++ b/target/unicore32/cpu.c
++#include "qemu/error-report.h"
+ #include "qapi/error.h"
+ #include <libfdt.h>
+ #include "hw/hw.h"
+@@ -690,7 +691,7 @@ static void load_image_to_fw_cfg(FWCfgState *fw_cfg, =
+uint16_t size_key,
+         gsize length;
+=20
+         if (!g_file_get_contents(image_name, &contents, &length, NULL)) =
+{
+-            fprintf(stderr, "failed to load \"%s\"\n", image_name);
++            error_report("failed to load \"%s\"", image_name);
+             exit(1);
+         }
+         size =3D length;
+@@ -956,8 +957,7 @@ static void arm_load_kernel_notify(Notifier *notifier=
+, void *data)
+         is_linux =3D 1;
+     }
+     if (kernel_size < 0) {
+-        fprintf(stderr, "qemu: could not load kernel '%s'\n",
+-                info->kernel_filename);
++        error_report("could not load kernel '%s'", info->kernel_filename=
+);
+         exit(1);
+     }
+     info->entry =3D entry;
+@@ -976,8 +976,8 @@ static void arm_load_kernel_notify(Notifier *notifier=
+, void *data)
+                                                   info->initrd_start);
+             }
+             if (initrd_size < 0) {
+-                fprintf(stderr, "qemu: could not load initrd '%s'\n",
+-                        info->initrd_filename);
++                error_report("could not load initrd '%s'",
++                             info->initrd_filename);
+                 exit(1);
+             }
+         } else {
+@@ -1021,9 +1021,9 @@ static void arm_load_kernel_notify(Notifier *notifi=
+er, void *data)
+         } else {
+             fixupcontext[FIXUP_ARGPTR] =3D info->loader_start + KERNEL_A=
+RGS_ADDR;
+             if (info->ram_size >=3D (1ULL << 32)) {
+-                fprintf(stderr, "qemu: RAM size must be less than 4GB to=
+ boot"
+-                        " Linux kernel using ATAGS (try passing a device=
+ tree"
+-                        " using -dtb)\n");
++                error_report("RAM size must be less than 4GB to boot"
++                             " Linux kernel using ATAGS (try passing a d=
+evice tree"
++                             " using -dtb)");
+                 exit(1);
+             }
+         }
+diff --git a/hw/arm/gumstix.c b/hw/arm/gumstix.c
+index bba9e9f57a..ea2a3c532d 100644
+--- a/hw/arm/gumstix.c
++++ b/hw/arm/gumstix.c
+@@ -35,6 +35,7 @@
+  */
+=20
+ #include "qemu/osdep.h"
++#include "qemu/error-report.h"
+ #include "hw/hw.h"
+ #include "hw/arm/pxa.h"
+ #include "net/net.h"
+@@ -62,8 +63,8 @@ static void connex_init(MachineState *machine)
+=20
+     dinfo =3D drive_get(IF_PFLASH, 0, 0);
+     if (!dinfo && !qtest_enabled()) {
+-        fprintf(stderr, "A flash image must be given with the "
+-                "'pflash' parameter\n");
++        error_report("A flash image must be given with the "
++                     "'pflash' parameter");
+         exit(1);
+     }
+=20
+@@ -76,7 +77,7 @@ static void connex_init(MachineState *machine)
+                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL=
+,
+                                sector_len, connex_rom / sector_len,
+                                2, 0, 0, 0, 0, be)) {
+-        fprintf(stderr, "qemu: Error registering flash memory.\n");
++        error_report("Error registering flash memory");
+         exit(1);
+     }
+=20
+@@ -99,8 +100,8 @@ static void verdex_init(MachineState *machine)
+=20
+     dinfo =3D drive_get(IF_PFLASH, 0, 0);
+     if (!dinfo && !qtest_enabled()) {
+-        fprintf(stderr, "A flash image must be given with the "
+-                "'pflash' parameter\n");
++        error_report("A flash image must be given with the "
++                     "'pflash' parameter");
+         exit(1);
+     }
+=20
+@@ -113,7 +114,7 @@ static void verdex_init(MachineState *machine)
+                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL=
+,
+                                sector_len, verdex_rom / sector_len,
+                                2, 0, 0, 0, 0, be)) {
+-        fprintf(stderr, "qemu: Error registering flash memory.\n");
++        error_report("Error registering flash memory");
+         exit(1);
+     }
+=20
+diff --git a/hw/arm/mainstone.c b/hw/arm/mainstone.c
+index d07972a966..4215c025fc 100644
+--- a/hw/arm/mainstone.c
++++ b/hw/arm/mainstone.c
+@@ -12,6 +12,7 @@
+  * GNU GPL, version 2 or (at your option) any later version.
+  */
+ #include "qemu/osdep.h"
++#include "qemu/error-report.h"
+ #include "qapi/error.h"
+ #include "hw/hw.h"
+ #include "hw/arm/pxa.h"
+@@ -143,8 +144,8 @@ static void mainstone_common_init(MemoryRegion *addre=
+ss_space_mem,
+             if (qtest_enabled()) {
+                 break;
+             }
+-            fprintf(stderr, "Two flash images must be given with the "
+-                    "'pflash' parameter\n");
++            error_report("Two flash images must be given with the "
++                         "'pflash' parameter");
+             exit(1);
+         }
+=20
+@@ -154,7 +155,7 @@ static void mainstone_common_init(MemoryRegion *addre=
+ss_space_mem,
+                                    blk_by_legacy_dinfo(dinfo),
+                                    sector_len, MAINSTONE_FLASH / sector_=
+len,
+                                    4, 0, 0, 0, 0, be)) {
+-            fprintf(stderr, "qemu: Error registering flash memory.\n");
++            error_report("Error registering flash memory");
+             exit(1);
+         }
+     }
+diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
+index 4172caf5db..38d7322a19 100644
+--- a/hw/arm/musicpal.c
++++ b/hw/arm/musicpal.c
+@@ -1627,7 +1627,7 @@ static void musicpal_init(MachineState *machine)
+         flash_size =3D blk_getlength(blk);
+         if (flash_size !=3D 8*1024*1024 && flash_size !=3D 16*1024*1024 =
+&&
+             flash_size !=3D 32*1024*1024) {
+-            fprintf(stderr, "Invalid flash image size\n");
++            error_report("Invalid flash image size");
+             exit(1);
+         }
+=20
+diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
+index 92e58f09c8..b3a23a83d1 100644
+--- a/hw/arm/omap1.c
++++ b/hw/arm/omap1.c
 @@ -18,6 +18,7 @@
- #include "qemu-common.h"
- #include "migration/vmstate.h"
- #include "exec/exec-all.h"
-+#include "fpu/softfloat.h"
- 
- static void uc32_cpu_set_pc(CPUState *cs, vaddr value)
- {
-diff --git a/target/unicore32/cpu.h b/target/unicore32/cpu.h
-index a3cc71416d..42e1d52478 100644
---- a/target/unicore32/cpu.h
-+++ b/target/unicore32/cpu.h
-@@ -23,7 +23,6 @@
- #include "qemu-common.h"
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
--#include "fpu/softfloat.h"
- 
- #define NB_MMU_MODES            2
- 
-diff --git a/target/unicore32/ucf64_helper.c b/target/unicore32/ucf64_helper.c
-index 6c919010c3..fad3fa6618 100644
---- a/target/unicore32/ucf64_helper.c
-+++ b/target/unicore32/ucf64_helper.c
-@@ -11,6 +11,7 @@
+  */
+=20
  #include "qemu/osdep.h"
- #include "cpu.h"
- #include "exec/helper-proto.h"
-+#include "fpu/softfloat.h"
- 
- /*
-  * The convention used for UniCore-F64 instructions:
-diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
-index f300c02c07..49c2e3cf9a 100644
---- a/target/xtensa/cpu.h
-+++ b/target/xtensa/cpu.h
-@@ -36,7 +36,6 @@
++#include "qemu/error-report.h"
+ #include "qapi/error.h"
  #include "qemu-common.h"
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
--#include "fpu/softfloat.h"
- #include "xtensa-isa.h"
- 
- #define NB_MMU_MODES 4
-diff --git a/target/xtensa/op_helper.c b/target/xtensa/op_helper.c
-index 43182b113e..7486b99799 100644
---- a/target/xtensa/op_helper.c
-+++ b/target/xtensa/op_helper.c
-@@ -34,6 +34,7 @@
- #include "exec/cpu_ldst.h"
- #include "exec/address-spaces.h"
- #include "qemu/timer.h"
-+#include "fpu/softfloat.h"
- 
- void xtensa_cpu_do_unaligned_access(CPUState *cs,
-         vaddr addr, MMUAccessType access_type,
--- 
-2.15.1
+ #include "cpu.h"
+@@ -2313,7 +2314,7 @@ void omap_uwire_attach(struct omap_uwire_s *s,
+                 uWireSlave *slave, int chipselect)
+ {
+     if (chipselect < 0 || chipselect > 3) {
+-        fprintf(stderr, "%s: Bad chipselect %i\n", __func__, chipselect)=
+;
++        error_report("%s: Bad chipselect %i", __func__, chipselect);
+         exit(-1);
+     }
+=20
+@@ -3987,7 +3988,7 @@ struct omap_mpu_state_s *omap310_mpu_init(MemoryReg=
+ion *system_memory,
+=20
+     dinfo =3D drive_get(IF_SD, 0, 0);
+     if (!dinfo) {
+-        fprintf(stderr, "qemu: missing SecureDigital device\n");
++        error_report("missing SecureDigital device");
+         exit(1);
+     }
+     s->mmc =3D omap_mmc_init(0xfffb7800, system_memory,
+diff --git a/hw/arm/omap2.c b/hw/arm/omap2.c
+index b53878b8b9..647b119ba9 100644
+--- a/hw/arm/omap2.c
++++ b/hw/arm/omap2.c
+@@ -19,6 +19,7 @@
+  */
+=20
+ #include "qemu/osdep.h"
++#include "qemu/error-report.h"
+ #include "qapi/error.h"
+ #include "qemu-common.h"
+ #include "cpu.h"
+@@ -2486,7 +2487,7 @@ struct omap_mpu_state_s *omap2420_mpu_init(MemoryRe=
+gion *sysmem,
+=20
+     dinfo =3D drive_get(IF_SD, 0, 0);
+     if (!dinfo) {
+-        fprintf(stderr, "qemu: missing SecureDigital device\n");
++        error_report("missing SecureDigital device");
+         exit(1);
+     }
+     s->mmc =3D omap2_mmc_init(omap_l4tao(s->l4, 9),
+diff --git a/hw/arm/omap_sx1.c b/hw/arm/omap_sx1.c
+index 9a14270795..eccc19c77b 100644
+--- a/hw/arm/omap_sx1.c
++++ b/hw/arm/omap_sx1.c
+@@ -194,7 +194,7 @@ static void sx1_init(MachineState *machine, const int=
+ version)
+     }
+=20
+     if (!machine->kernel_filename && !fl_idx && !qtest_enabled()) {
+-        fprintf(stderr, "Kernel or Flash image must be specified\n");
++        error_report("Kernel or Flash image must be specified");
+         exit(1);
+     }
+=20
+diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
+index db860c238e..5805a2c858 100644
+--- a/hw/arm/pxa2xx.c
++++ b/hw/arm/pxa2xx.c
+@@ -8,6 +8,7 @@
+  */
+=20
+ #include "qemu/osdep.h"
++#include "qemu/error-report.h"
+ #include "qapi/error.h"
+ #include "qemu-common.h"
+ #include "cpu.h"
+@@ -2062,7 +2063,7 @@ PXA2xxState *pxa270_init(MemoryRegion *address_spac=
+e,
+     s =3D g_new0(PXA2xxState, 1);
+=20
+     if (strncmp(cpu_type, "pxa27", 5)) {
+-        fprintf(stderr, "Machine requires a PXA27x processor.\n");
++        error_report("Machine requires a PXA27x processor");
+         exit(1);
+     }
+=20
+@@ -2095,7 +2096,7 @@ PXA2xxState *pxa270_init(MemoryRegion *address_spac=
+e,
+=20
+     dinfo =3D drive_get(IF_SD, 0, 0);
+     if (!dinfo) {
+-        fprintf(stderr, "qemu: missing SecureDigital device\n");
++        error_report("missing SecureDigital device");
+         exit(1);
+     }
+     s->mmc =3D pxa2xx_mmci_init(address_space, 0x41100000,
+@@ -2220,7 +2221,7 @@ PXA2xxState *pxa255_init(MemoryRegion *address_spac=
+e, unsigned int sdram_size)
+=20
+     dinfo =3D drive_get(IF_SD, 0, 0);
+     if (!dinfo) {
+-        fprintf(stderr, "qemu: missing SecureDigital device\n");
++        error_report("missing SecureDigital device");
+         exit(1);
+     }
+     s->mmc =3D pxa2xx_mmci_init(address_space, 0x41100000,
+diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
+index efb5a29475..dc5928ae1a 100644
+--- a/hw/arm/vexpress.c
++++ b/hw/arm/vexpress.c
+@@ -266,7 +266,7 @@ static void a9_daughterboard_init(const VexpressMachi=
+neState *vms,
+=20
+     if (ram_size > 0x40000000) {
+         /* 1GB is the maximum the address space permits */
+-        fprintf(stderr, "vexpress-a9: cannot model more than 1GB RAM\n")=
+;
++        error_report("vexpress-a9: cannot model more than 1GB RAM");
+         exit(1);
+     }
+=20
+@@ -355,7 +355,7 @@ static void a15_daughterboard_init(const VexpressMach=
+ineState *vms,
+          */
+         uint64_t rsz =3D ram_size;
+         if (rsz > (30ULL * 1024 * 1024 * 1024)) {
+-            fprintf(stderr, "vexpress-a15: cannot model more than 30GB R=
+AM\n");
++            error_report("vexpress-a15: cannot model more than 30GB RAM"=
+);
+             exit(1);
+         }
+     }
+@@ -640,7 +640,7 @@ static void vexpress_common_init(MachineState *machin=
+e)
+     pflash0 =3D ve_pflash_cfi01_register(map[VE_NORFLASH0], "vexpress.fl=
+ash0",
+                                        dinfo);
+     if (!pflash0) {
+-        fprintf(stderr, "vexpress: error registering flash 0.\n");
++        error_report("vexpress: error registering flash 0");
+         exit(1);
+     }
+=20
+@@ -655,7 +655,7 @@ static void vexpress_common_init(MachineState *machin=
+e)
+     dinfo =3D drive_get_next(IF_PFLASH);
+     if (!ve_pflash_cfi01_register(map[VE_NORFLASH1], "vexpress.flash1",
+                                   dinfo)) {
+-        fprintf(stderr, "vexpress: error registering flash 1.\n");
++        error_report("vexpress: error registering flash 1");
+         exit(1);
+     }
+=20
+diff --git a/hw/arm/z2.c b/hw/arm/z2.c
+index 300e933c82..730a5392e9 100644
+--- a/hw/arm/z2.c
++++ b/hw/arm/z2.c
+@@ -320,8 +320,8 @@ static void z2_init(MachineState *machine)
+ #endif
+     dinfo =3D drive_get(IF_PFLASH, 0, 0);
+     if (!dinfo && !qtest_enabled()) {
+-        fprintf(stderr, "Flash image must be given with the "
+-                "'pflash' parameter\n");
++        error_report("Flash image must be given with the "
++                     "'pflash' parameter");
+         exit(1);
+     }
+=20
+@@ -330,7 +330,7 @@ static void z2_init(MachineState *machine)
+                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL=
+,
+                                sector_len, Z2_FLASH_SIZE / sector_len,
+                                4, 0, 0, 0, 0, be)) {
+-        fprintf(stderr, "qemu: Error registering flash memory.\n");
++        error_report("Error registering flash memory");
+         exit(1);
+     }
+=20
+--=20
+2.13.6
+

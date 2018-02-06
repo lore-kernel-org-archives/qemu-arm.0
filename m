@@ -1,216 +1,789 @@
-Received: by 10.28.71.27 with SMTP id u27csp3899181wma;
-        Tue, 6 Feb 2018 07:13:12 -0800 (PST)
-X-Google-Smtp-Source: AH8x226Pl/qSeYJhCIVA6INrCETgsQD/Yi5ATFe+CJBUtQ7AMJq1HWVXHqb+IuVwS9AdA8Liefh3
-X-Received: by 10.37.162.130 with SMTP id c2mr1613322ybi.51.1517929992249;
-        Tue, 06 Feb 2018 07:13:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1517929992; cv=none;
-        d=google.com; s=arc-20160816;
-        b=WGGiGzjgWmf/j9XPfXeakKYLsq5jDujD/sjn2n3rQCfHhCxgvOMrEm5RN9JUG2vHGH
-         e6R4EhBYoc9vP0zQdsx8NzHLJvKxJsMF/wrxPAzRD3FOEnpDLZ4yyZDDmiq7ufG44mM9
-         bd5R3UMfARHgEXZlukC8fF7g6b4cQ1pF8WFBG9Q4YETerdG9mIj9DGhi5SIX7fSIHYlt
-         XG3VjSuHKEJw6mAEg7KL+saP10Amdg/K3HLbAhXh/Ij3SIpoYaGS4oFmgqmW54dTwOQU
-         FhuDI5e2lguQ5v4OIXcF7WDen8qZaTuXd+Hayem3iVcONHJUTihEkk4siYZU8m1XyV0D
-         lWrQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=/akAUOJ7IsGYKGqmsKBMi1jeIaH67UgAngpT+LO0NfE=;
-        b=GWmmt5xvFkh0Zz2ohy+m7R75B05DcCTZyNfaZIShnSP4h46VRCxS+/JriuQUKv9hZP
-         pmNNyRZc19rv/UGkwFZ8xZfOGxXZfIA/OBtkKe6ycd6uqRZ2XxfcHYWrb+T8XbTByi6I
-         kDV8ykqyGEW3lrIdVYq79sQRshSOCfHOxHyvJGaQHxYcfNY4IYU3TLXOpJX9kwbozCho
-         HOz7IIeXVI9OKdemcNmGVsl0lsBS0qofhsFEaLI0e/Fg1zsWve4SlSTn3d6Z6MYBLhHV
-         OBQQtLpCZP+DNoorg7NLO5aEABjJHRTE6aHLDZEGXnnuR9bZGAuw9c2SjpjdPue+5bB9
-         SRtQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OoFdae4L;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z11si1216993ybg.415.2018.02.06.07.13.12
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 06 Feb 2018 07:13:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OoFdae4L;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:55255 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ej4vn-0004Lf-ML
-	for alex.bennee@linaro.org; Tue, 06 Feb 2018 10:13:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33184)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1ej4vV-0004Do-Ih
-	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 10:12:58 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1ej4vS-000316-KM
-	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 10:12:52 -0500
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:38691)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
-	id 1ej4vS-00030X-Ft; Tue, 06 Feb 2018 10:12:50 -0500
-Received: by mail-qt0-x241.google.com with SMTP id z10so2693256qti.5;
-	Tue, 06 Feb 2018 07:12:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=/akAUOJ7IsGYKGqmsKBMi1jeIaH67UgAngpT+LO0NfE=;
-	b=OoFdae4L49lUkbVgpIr8UKrfhiCqG5lbdhDdbFhMZ9WjnSBiNomGxhZqR4cYYT9Ht8
-	8ivhH32A0Q9Xpw/7j5zMuO0My/cuJf9K8sjVdpTmiwUnsCNJqRSsA5RChVFMzYGzBflb
-	STg3UuQHAhEBhECyHEYuVuCh0r3kZhzWFh8UlqCd9qQ8RUp8Yf5/yAbna72qlsFUHT3h
-	MTzpzaaPpf5lk+CEdYnWoXkU37cvMjK45ck9LE/mgA2+ceBFfAjY874sGIGZKGTJdptW
-	SLlRQjaaD3DhZVPEeFThdEHcyf5X5ZkiDETij8Ak7DVYo7scExyUjD8h5iEKodRX0WS7
-	oJHg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=/akAUOJ7IsGYKGqmsKBMi1jeIaH67UgAngpT+LO0NfE=;
-	b=s5XwMaLoGP6C0ybRQkx4TvhnTKNgLqSkZsuszzShI+WIqwnzriIfCnewHToAzTQ80C
-	VKS1DRD4j7SDSvt+BOWYHwOEF9lUOCeP4Id0S3GI4j0t4uzcwV+3mK+2kZalSdka0hXg
-	3qVmntcjXeg/pXrf8v6F0GDHdSipWzvrjvYXv7tkxV61l/L0AVJ6eEZEdm7ljTTVBgts
-	2QqYv+PzryVd7EyWE8+tW10hDb9Ivjuqm1BXHA1XuRgbDRp5pnOCNWxDEmn+nPyk9vyg
-	l43ybnSK19p4wvS6U6CujeEtb9MmyLLIYWaMgLfACNeTMoPc3Cmxi6lvUIZtRdvR0RXf
-	uvQA==
-X-Gm-Message-State: APf1xPAP+pGK2R/SUWZ1XkxYiBSSOh3gJkt9y7j2OUjTUvWkrst7/xYn
-	gpcSDUtclxr/RBM5DE7kwq9D9pos4nZZxW4+cFE=
-X-Received: by 10.200.57.3 with SMTP id s3mr4096843qtb.328.1517929969303; Tue,
-	06 Feb 2018 07:12:49 -0800 (PST)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id d73sm14847749wma.16.2018.02.06.08.48.16
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 06 Feb 2018 08:48:16 -0800 (PST)
+Received: from zen.linaroharston (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTP id 956703E059E;
+	Tue,  6 Feb 2018 16:48:15 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: richard.henderson@linaro.org,
+	peter.maydell@linaro.org,
+	laurent@vivier.eu,
+	bharata@linux.vnet.ibm.com,
+	andrew@andrewdutcher.com
+Cc: qemu-devel@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Richard Henderson <rth@twiddle.net>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Anthony Green <green@moxielogic.com>,
+	Chris Wulff <crwulff@gmail.com>,
+	Marek Vasut <marex@denx.de>,
+	Stafford Horne <shorne@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Alexander Graf <agraf@suse.de>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	qemu-arm@nongnu.org (open list:ARM),
+	qemu-ppc@nongnu.org (open list:PowerPC),
+	qemu-s390x@nongnu.org (open list:S390)
+Subject: [PATCH v4 04/22] target/*/cpu.h: remove softfloat.h
+Date: Tue,  6 Feb 2018 16:47:57 +0000
+Message-Id: <20180206164815.10084-5-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.15.1
+In-Reply-To: <20180206164815.10084-1-alex.bennee@linaro.org>
+References: <20180206164815.10084-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Received: by 10.140.101.113 with HTTP; Tue, 6 Feb 2018 07:12:48 -0800 (PST)
-In-Reply-To: <24dcdefa-51f6-c3c1-61a2-c0f3eff7a800@amsat.org>
-References: <20180116013709.13830-1-andrew.smirnov@gmail.com>
-	<20180116013709.13830-6-andrew.smirnov@gmail.com>
-	<24dcdefa-51f6-c3c1-61a2-c0f3eff7a800@amsat.org>
-From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Date: Tue, 6 Feb 2018 07:12:48 -0800
-Message-ID: <CAHQ1cqG6x8wNm8_B0X_OsE--KPAwPcxbBVc1cJYP9PHHLdZsbg@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: Re: [Qemu-arm] [PATCH v4 05/14] i.MX: Add code to emulate i.MX7
- SNVS IP-block
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
-	"open list:ARM" <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Andrey Yurovsky <yurovsky@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: e1zj7zNB1Ule
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: YSZ/hdVXIA7I
 
-On Wed, Jan 31, 2018 at 9:10 AM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg> wrote:
-> On 01/15/2018 10:37 PM, Andrey Smirnov wrote:
->> Add code to emulate SNVS IP-block. Currently only the bits needed to
->> be able to emulate machine shutdown are implemented.
->>
->> Cc: Peter Maydell <peter.maydell@linaro.org>
->> Cc: Jason Wang <jasowang@redhat.com>
->> Cc: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->> Cc: qemu-devel@nongnu.org
->> Cc: qemu-arm@nongnu.org
->> Cc: yurovsky@gmail.com
->> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
->> Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
->> ---
->>  hw/misc/Makefile.objs       |  1 +
->>  hw/misc/imx7_snvs.c         | 83 ++++++++++++++++++++++++++++++++++++++=
-+++++++
->>  include/hw/misc/imx7_snvs.h | 35 +++++++++++++++++++
->>  3 files changed, 119 insertions(+)
->>  create mode 100644 hw/misc/imx7_snvs.c
->>  create mode 100644 include/hw/misc/imx7_snvs.h
->>
->> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
->> index 4b2b705a6c..019886912c 100644
->> --- a/hw/misc/Makefile.objs
->> +++ b/hw/misc/Makefile.objs
->> @@ -35,6 +35,7 @@ obj-$(CONFIG_IMX) +=3D imx6_ccm.o
->>  obj-$(CONFIG_IMX) +=3D imx6_src.o
->>  obj-$(CONFIG_IMX) +=3D imx7_ccm.o
->>  obj-$(CONFIG_IMX) +=3D imx2_wdt.o
->> +obj-$(CONFIG_IMX) +=3D imx7_snvs.o
->>  obj-$(CONFIG_MILKYMIST) +=3D milkymist-hpdmc.o
->>  obj-$(CONFIG_MILKYMIST) +=3D milkymist-pfpu.o
->>  obj-$(CONFIG_MAINSTONE) +=3D mst_fpga.o
->> diff --git a/hw/misc/imx7_snvs.c b/hw/misc/imx7_snvs.c
->> new file mode 100644
->> index 0000000000..670b9f4639
->> --- /dev/null
->> +++ b/hw/misc/imx7_snvs.c
->> @@ -0,0 +1,83 @@
->> +/*
->> + * IMX7 Secure Non-Volatile Storage
->> + *
->> + * Copyright (c) 2017, Impinj, Inc.
->> + *
->> + * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
->> + *
->> + * This work is licensed under the terms of the GNU GPL, version 2 or l=
-ater.
->> + * See the COPYING file in the top-level directory.
->> + *
->> + * Bare minimum emulation code needed to support being able to shut
->> + * down linux guest gracefully.
->> + */
->> +
->> +#include "qemu/osdep.h"
->> +#include "hw/misc/imx7_snvs.h"
->> +#include "qemu/log.h"
->> +#include "sysemu/sysemu.h"
->> +
->> +static uint64_t imx7_snvs_read(void *opaque, hwaddr offset, unsigned si=
-ze)
->> +{
->> +    return 0;
->> +}
->> +
->> +static void imx7_snvs_write(void *opaque, hwaddr offset,
->> +                            uint64_t v, unsigned size)
->> +{
->> +    const uint32_t value =3D v;
->> +    const uint32_t mask  =3D SNVS_LPCR_TOP | SNVS_LPCR_DP_EN;
->> +
->> +    if (offset =3D=3D SNVS_LPCR && ((value & mask) =3D=3D mask)) {
->> +        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
->> +    }
->> +}
->> +
->> +static const struct MemoryRegionOps imx7_snvs_ops =3D {
->> +    .read =3D imx7_snvs_read,
->
-> Same here, you can remove the imx7_snvs_read() function since
-> memory_region_dispatch_read() takes care of this and return 0.
->
+As cpu.h is another typically widely included file which doesn't need
+full access to the softfloat API we can remove the includes from here
+as well. Where they do need types it's typically for float_status and
+the rounding modes so we move that to softfloat-types.h as well.
 
-Hmm, I don't think I agree both from reading code and trying this out.
-Without .read callback the call chain ends up being the following
-memory_region_dispatch_read() -> memory_region_dispatch_read1() ->
-access_with_adjusted_size(..., memory_region_oldmmio_read_accessor,
-...) -> memory_region_oldmmio_read_accessor() ->
-mr->ops->old_mmio.read[ctz32(size)]() -> SEGFAULT
+As a result of not having softfloat in every cpu.h call we now need to
+add it to various helpers that do need the full softfloat.h
+definitions.
 
-As much as I'd love to get rid of dummy .read callback, I don't see a
-way to do that, unfortunately.
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+[For PPC parts]
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+---
+ include/fpu/softfloat-types.h   | 64 +++++++++++++++++++++++++++++++++++++++++
+ include/fpu/softfloat.h         | 53 ----------------------------------
+ target/alpha/cpu.h              |  2 --
+ target/arm/cpu.c                |  1 +
+ target/arm/cpu.h                |  2 --
+ target/arm/helper-a64.c         |  1 +
+ target/arm/helper.c             |  1 +
+ target/arm/neon_helper.c        |  1 +
+ target/hppa/cpu.c               |  1 +
+ target/hppa/cpu.h               |  1 -
+ target/hppa/op_helper.c         |  2 +-
+ target/i386/cpu.h               |  4 ---
+ target/i386/fpu_helper.c        |  1 +
+ target/m68k/cpu.c               |  2 +-
+ target/m68k/cpu.h               |  1 -
+ target/m68k/fpu_helper.c        |  1 +
+ target/m68k/helper.c            |  1 +
+ target/m68k/translate.c         |  2 ++
+ target/microblaze/cpu.c         |  1 +
+ target/microblaze/cpu.h         |  2 +-
+ target/microblaze/op_helper.c   |  1 +
+ target/moxie/cpu.h              |  1 -
+ target/nios2/cpu.h              |  1 -
+ target/openrisc/cpu.h           |  1 -
+ target/openrisc/fpu_helper.c    |  1 +
+ target/ppc/cpu.h                |  1 -
+ target/ppc/fpu_helper.c         |  1 +
+ target/ppc/int_helper.c         |  1 +
+ target/ppc/translate_init.c     |  1 +
+ target/s390x/cpu.c              |  1 +
+ target/s390x/cpu.h              |  2 --
+ target/s390x/fpu_helper.c       |  1 +
+ target/sh4/cpu.c                |  1 +
+ target/sh4/cpu.h                |  2 --
+ target/sh4/op_helper.c          |  1 +
+ target/sparc/cpu.h              |  2 --
+ target/sparc/fop_helper.c       |  1 +
+ target/tricore/cpu.h            |  1 -
+ target/tricore/fpu_helper.c     |  1 +
+ target/tricore/helper.c         |  1 +
+ target/unicore32/cpu.c          |  1 +
+ target/unicore32/cpu.h          |  1 -
+ target/unicore32/ucf64_helper.c |  1 +
+ target/xtensa/cpu.h             |  1 -
+ target/xtensa/op_helper.c       |  1 +
+ 45 files changed, 93 insertions(+), 79 deletions(-)
 
-Thanks,
-Andrey Smirnov
+diff --git a/include/fpu/softfloat-types.h b/include/fpu/softfloat-types.h
+index 8210a94ea1..4e378cb612 100644
+--- a/include/fpu/softfloat-types.h
++++ b/include/fpu/softfloat-types.h
+@@ -80,6 +80,12 @@ this code that are retained.
+ #ifndef SOFTFLOAT_TYPES_H
+ #define SOFTFLOAT_TYPES_H
+ 
++/* This 'flag' type must be able to hold at least 0 and 1. It should
++ * probably be replaced with 'bool' but the uses would need to be audited
++ * to check that they weren't accidentally relying on it being a larger type.
++ */
++typedef uint8_t flag;
++
+ /*
+  * Software IEC/IEEE floating-point types.
+  */
+@@ -112,4 +118,62 @@ typedef struct {
+ #define make_float128(high_, low_) ((float128) { .high = high_, .low = low_ })
+ #define make_float128_init(high_, low_) { .high = high_, .low = low_ }
+ 
++/*
++ * Software IEC/IEEE floating-point underflow tininess-detection mode.
++ */
++
++enum {
++    float_tininess_after_rounding  = 0,
++    float_tininess_before_rounding = 1
++};
++
++/*
++ *Software IEC/IEEE floating-point rounding mode.
++ */
++
++enum {
++    float_round_nearest_even = 0,
++    float_round_down         = 1,
++    float_round_up           = 2,
++    float_round_to_zero      = 3,
++    float_round_ties_away    = 4,
++    /* Not an IEEE rounding mode: round to the closest odd mantissa value */
++    float_round_to_odd       = 5,
++};
++
++/*
++ * Software IEC/IEEE floating-point exception flags.
++ */
++
++enum {
++    float_flag_invalid   =  1,
++    float_flag_divbyzero =  4,
++    float_flag_overflow  =  8,
++    float_flag_underflow = 16,
++    float_flag_inexact   = 32,
++    float_flag_input_denormal = 64,
++    float_flag_output_denormal = 128
++};
++
++
++/*
++ * Floating Point Status. Individual architectures may maintain
++ * several versions of float_status for different functions. The
++ * correct status for the operation is then passed by reference to
++ * most of the softfloat functions.
++ */
++
++typedef struct float_status {
++    signed char float_detect_tininess;
++    signed char float_rounding_mode;
++    uint8_t     float_exception_flags;
++    signed char floatx80_rounding_precision;
++    /* should denormalised results go to zero and set the inexact flag? */
++    flag flush_to_zero;
++    /* should denormalised inputs go to zero and set the input_denormal flag? */
++    flag flush_inputs_to_zero;
++    flag default_nan_mode;
++    flag snan_bit_is_one;
++} float_status;
++
+ #endif /* SOFTFLOAT_TYPES_H */
+diff --git a/include/fpu/softfloat.h b/include/fpu/softfloat.h
+index 4e16e22e58..f3b9008f78 100644
+--- a/include/fpu/softfloat.h
++++ b/include/fpu/softfloat.h
+@@ -82,12 +82,6 @@ this code that are retained.
+ #ifndef SOFTFLOAT_H
+ #define SOFTFLOAT_H
+ 
+-/* This 'flag' type must be able to hold at least 0 and 1. It should
+- * probably be replaced with 'bool' but the uses would need to be audited
+- * to check that they weren't accidentally relying on it being a larger type.
+- */
+-typedef uint8_t flag;
+-
+ #define LIT64( a ) a##LL
+ 
+ /*----------------------------------------------------------------------------
+@@ -102,53 +96,6 @@ enum {
+ 
+ #include "fpu/softfloat-types.h"
+ 
+-/*----------------------------------------------------------------------------
+-| Software IEC/IEEE floating-point underflow tininess-detection mode.
+-*----------------------------------------------------------------------------*/
+-enum {
+-    float_tininess_after_rounding  = 0,
+-    float_tininess_before_rounding = 1
+-};
+-
+-/*----------------------------------------------------------------------------
+-| Software IEC/IEEE floating-point rounding mode.
+-*----------------------------------------------------------------------------*/
+-enum {
+-    float_round_nearest_even = 0,
+-    float_round_down         = 1,
+-    float_round_up           = 2,
+-    float_round_to_zero      = 3,
+-    float_round_ties_away    = 4,
+-    /* Not an IEEE rounding mode: round to the closest odd mantissa value */
+-    float_round_to_odd       = 5,
+-};
+-
+-/*----------------------------------------------------------------------------
+-| Software IEC/IEEE floating-point exception flags.
+-*----------------------------------------------------------------------------*/
+-enum {
+-    float_flag_invalid   =  1,
+-    float_flag_divbyzero =  4,
+-    float_flag_overflow  =  8,
+-    float_flag_underflow = 16,
+-    float_flag_inexact   = 32,
+-    float_flag_input_denormal = 64,
+-    float_flag_output_denormal = 128
+-};
+-
+-typedef struct float_status {
+-    signed char float_detect_tininess;
+-    signed char float_rounding_mode;
+-    uint8_t     float_exception_flags;
+-    signed char floatx80_rounding_precision;
+-    /* should denormalised results go to zero and set the inexact flag? */
+-    flag flush_to_zero;
+-    /* should denormalised inputs go to zero and set the input_denormal flag? */
+-    flag flush_inputs_to_zero;
+-    flag default_nan_mode;
+-    flag snan_bit_is_one;
+-} float_status;
+-
+ static inline void set_float_detect_tininess(int val, float_status *status)
+ {
+     status->float_detect_tininess = val;
+diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
+index 09720c2f3b..a79fc2e780 100644
+--- a/target/alpha/cpu.h
++++ b/target/alpha/cpu.h
+@@ -33,8 +33,6 @@
+ 
+ #include "exec/cpu-defs.h"
+ 
+-#include "fpu/softfloat.h"
+-
+ #define ICACHE_LINE_SIZE 32
+ #define DCACHE_LINE_SIZE 32
+ 
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 9da6ea505c..2d6ac054bd 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -34,6 +34,7 @@
+ #include "sysemu/hw_accel.h"
+ #include "kvm_arm.h"
+ #include "disas/capstone.h"
++#include "fpu/softfloat.h"
+ 
+ static void arm_cpu_set_pc(CPUState *cs, vaddr value)
+ {
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index d2bb59eded..c7c922d79b 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -39,8 +39,6 @@
+ #include "cpu-qom.h"
+ #include "exec/cpu-defs.h"
+ 
+-#include "fpu/softfloat.h"
+-
+ #define EXCP_UDEF            1   /* undefined instruction */
+ #define EXCP_SWI             2   /* software interrupt */
+ #define EXCP_PREFETCH_ABORT  3
+diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
+index 06fd321fae..10e08bdc1f 100644
+--- a/target/arm/helper-a64.c
++++ b/target/arm/helper-a64.c
+@@ -31,6 +31,7 @@
+ #include "exec/cpu_ldst.h"
+ #include "qemu/int128.h"
+ #include "tcg.h"
++#include "fpu/softfloat.h"
+ #include <zlib.h> /* For crc32 */
+ 
+ /* C2.4.7 Multiply and divide */
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index bfce09643b..4ef99882c4 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -15,6 +15,7 @@
+ #include <zlib.h> /* For crc32 */
+ #include "exec/semihost.h"
+ #include "sysemu/kvm.h"
++#include "fpu/softfloat.h"
+ 
+ #define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurable */
+ 
+diff --git a/target/arm/neon_helper.c b/target/arm/neon_helper.c
+index 689491cad3..a1ec6537eb 100644
+--- a/target/arm/neon_helper.c
++++ b/target/arm/neon_helper.c
+@@ -11,6 +11,7 @@
+ #include "cpu.h"
+ #include "exec/exec-all.h"
+ #include "exec/helper-proto.h"
++#include "fpu/softfloat.h"
+ 
+ #define SIGNBIT (uint32_t)0x80000000
+ #define SIGNBIT64 ((uint64_t)1 << 63)
+diff --git a/target/hppa/cpu.c b/target/hppa/cpu.c
+index 5213347720..9224331165 100644
+--- a/target/hppa/cpu.c
++++ b/target/hppa/cpu.c
+@@ -23,6 +23,7 @@
+ #include "cpu.h"
+ #include "qemu-common.h"
+ #include "exec/exec-all.h"
++#include "fpu/softfloat.h"
+ 
+ 
+ static void hppa_cpu_set_pc(CPUState *cs, vaddr value)
+diff --git a/target/hppa/cpu.h b/target/hppa/cpu.h
+index 7640c81221..c88d844938 100644
+--- a/target/hppa/cpu.h
++++ b/target/hppa/cpu.h
+@@ -51,7 +51,6 @@
+ #define CPUArchState struct CPUHPPAState
+ 
+ #include "exec/cpu-defs.h"
+-#include "fpu/softfloat.h"
+ 
+ #define TARGET_PAGE_BITS 12
+ 
+diff --git a/target/hppa/op_helper.c b/target/hppa/op_helper.c
+index 4ee936bf86..a3af62daf7 100644
+--- a/target/hppa/op_helper.c
++++ b/target/hppa/op_helper.c
+@@ -24,7 +24,7 @@
+ #include "exec/cpu_ldst.h"
+ #include "sysemu/sysemu.h"
+ #include "qemu/timer.h"
+-
++#include "fpu/softfloat.h"
+ 
+ void QEMU_NORETURN HELPER(excp)(CPUHPPAState *env, int excp)
+ {
+diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+index f91e37d25d..faf39ec1ce 100644
+--- a/target/i386/cpu.h
++++ b/target/i386/cpu.h
+@@ -52,10 +52,6 @@
+ 
+ #define CPUArchState struct CPUX86State
+ 
+-#ifdef CONFIG_TCG
+-#include "fpu/softfloat.h"
+-#endif
+-
+ enum {
+     R_EAX = 0,
+     R_ECX = 1,
+diff --git a/target/i386/fpu_helper.c b/target/i386/fpu_helper.c
+index 9014b6f88a..ea5a0c4861 100644
+--- a/target/i386/fpu_helper.c
++++ b/target/i386/fpu_helper.c
+@@ -24,6 +24,7 @@
+ #include "qemu/host-utils.h"
+ #include "exec/exec-all.h"
+ #include "exec/cpu_ldst.h"
++#include "fpu/softfloat.h"
+ 
+ #define FPU_RC_MASK         0xc00
+ #define FPU_RC_NEAR         0x000
+diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
+index 98919b358b..cbd5f08ce8 100644
+--- a/target/m68k/cpu.c
++++ b/target/m68k/cpu.c
+@@ -24,7 +24,7 @@
+ #include "qemu-common.h"
+ #include "migration/vmstate.h"
+ #include "exec/exec-all.h"
+-
++#include "fpu/softfloat.h"
+ 
+ static void m68k_cpu_set_pc(CPUState *cs, vaddr value)
+ {
+diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
+index 627fb787b6..e250dc5278 100644
+--- a/target/m68k/cpu.h
++++ b/target/m68k/cpu.h
+@@ -28,7 +28,6 @@
+ #include "qemu-common.h"
+ #include "exec/cpu-defs.h"
+ #include "cpu-qom.h"
+-#include "fpu/softfloat.h"
+ 
+ #define OS_BYTE     0
+ #define OS_WORD     1
+diff --git a/target/m68k/fpu_helper.c b/target/m68k/fpu_helper.c
+index 665e7609af..3c5a82aaa0 100644
+--- a/target/m68k/fpu_helper.c
++++ b/target/m68k/fpu_helper.c
+@@ -23,6 +23,7 @@
+ #include "exec/helper-proto.h"
+ #include "exec/exec-all.h"
+ #include "exec/cpu_ldst.h"
++#include "fpu/softfloat.h"
+ 
+ /* Undefined offsets may be different on various FPU.
+  * On 68040 they return 0.0 (floatx80_zero)
+diff --git a/target/m68k/helper.c b/target/m68k/helper.c
+index 20155c7801..917d46efcc 100644
+--- a/target/m68k/helper.c
++++ b/target/m68k/helper.c
+@@ -24,6 +24,7 @@
+ #include "exec/gdbstub.h"
+ 
+ #include "exec/helper-proto.h"
++#include "fpu/softfloat.h"
+ 
+ #define SIGNBIT (1u << 31)
+ 
+diff --git a/target/m68k/translate.c b/target/m68k/translate.c
+index 34db97b8a0..bbbc3d8a0e 100644
+--- a/target/m68k/translate.c
++++ b/target/m68k/translate.c
+@@ -32,6 +32,8 @@
+ 
+ #include "trace-tcg.h"
+ #include "exec/log.h"
++#include "fpu/softfloat.h"
++
+ 
+ //#define DEBUG_DISPATCH 1
+ 
+diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
+index 5700652e06..393520f3ef 100644
+--- a/target/microblaze/cpu.c
++++ b/target/microblaze/cpu.c
+@@ -28,6 +28,7 @@
+ #include "hw/qdev-properties.h"
+ #include "migration/vmstate.h"
+ #include "exec/exec-all.h"
++#include "fpu/softfloat.h"
+ 
+ static const struct {
+     const char *name;
+diff --git a/target/microblaze/cpu.h b/target/microblaze/cpu.h
+index f3e7405a62..1fe21c8539 100644
+--- a/target/microblaze/cpu.h
++++ b/target/microblaze/cpu.h
+@@ -28,7 +28,7 @@
+ #define CPUArchState struct CPUMBState
+ 
+ #include "exec/cpu-defs.h"
+-#include "fpu/softfloat.h"
++#include "fpu/softfloat-types.h"
+ struct CPUMBState;
+ typedef struct CPUMBState CPUMBState;
+ #if !defined(CONFIG_USER_ONLY)
+diff --git a/target/microblaze/op_helper.c b/target/microblaze/op_helper.c
+index 869072a2d1..1b4fe796e7 100644
+--- a/target/microblaze/op_helper.c
++++ b/target/microblaze/op_helper.c
+@@ -24,6 +24,7 @@
+ #include "qemu/host-utils.h"
+ #include "exec/exec-all.h"
+ #include "exec/cpu_ldst.h"
++#include "fpu/softfloat.h"
+ 
+ #define D(x)
+ 
+diff --git a/target/moxie/cpu.h b/target/moxie/cpu.h
+index a01f480821..d85e1fc061 100644
+--- a/target/moxie/cpu.h
++++ b/target/moxie/cpu.h
+@@ -34,7 +34,6 @@
+ #define MOXIE_EX_BREAK      16
+ 
+ #include "exec/cpu-defs.h"
+-#include "fpu/softfloat.h"
+ 
+ #define TARGET_PAGE_BITS 12     /* 4k */
+ 
+diff --git a/target/nios2/cpu.h b/target/nios2/cpu.h
+index 204b39add7..cd4e40d1b4 100644
+--- a/target/nios2/cpu.h
++++ b/target/nios2/cpu.h
+@@ -27,7 +27,6 @@
+ #define CPUArchState struct CPUNios2State
+ 
+ #include "exec/cpu-defs.h"
+-#include "fpu/softfloat.h"
+ #include "qom/cpu.h"
+ struct CPUNios2State;
+ typedef struct CPUNios2State CPUNios2State;
+diff --git a/target/openrisc/cpu.h b/target/openrisc/cpu.h
+index fb46cc9986..5050b1135c 100644
+--- a/target/openrisc/cpu.h
++++ b/target/openrisc/cpu.h
+@@ -29,7 +29,6 @@ struct OpenRISCCPU;
+ 
+ #include "qemu-common.h"
+ #include "exec/cpu-defs.h"
+-#include "fpu/softfloat.h"
+ #include "qom/cpu.h"
+ 
+ #define TYPE_OPENRISC_CPU "or1k-cpu"
+diff --git a/target/openrisc/fpu_helper.c b/target/openrisc/fpu_helper.c
+index 1375cea948..977a1e8e55 100644
+--- a/target/openrisc/fpu_helper.c
++++ b/target/openrisc/fpu_helper.c
+@@ -22,6 +22,7 @@
+ #include "cpu.h"
+ #include "exec/helper-proto.h"
+ #include "exception.h"
++#include "fpu/softfloat.h"
+ 
+ static inline uint32_t ieee_ex_to_openrisc(OpenRISCCPU *cpu, int fexcp)
+ {
+diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
+index 9f8cbbe7aa..7bde1884a1 100644
+--- a/target/ppc/cpu.h
++++ b/target/ppc/cpu.h
+@@ -79,7 +79,6 @@
+ 
+ #include "exec/cpu-defs.h"
+ #include "cpu-qom.h"
+-#include "fpu/softfloat.h"
+ 
+ #if defined (TARGET_PPC64)
+ #define PPC_ELF_MACHINE     EM_PPC64
+diff --git a/target/ppc/fpu_helper.c b/target/ppc/fpu_helper.c
+index c4dab159e4..9ae418a577 100644
+--- a/target/ppc/fpu_helper.c
++++ b/target/ppc/fpu_helper.c
+@@ -21,6 +21,7 @@
+ #include "exec/helper-proto.h"
+ #include "exec/exec-all.h"
+ #include "internal.h"
++#include "fpu/softfloat.h"
+ 
+ static inline float128 float128_snan_to_qnan(float128 x)
+ {
+diff --git a/target/ppc/int_helper.c b/target/ppc/int_helper.c
+index 3a50f1e1b7..35bdf09773 100644
+--- a/target/ppc/int_helper.c
++++ b/target/ppc/int_helper.c
+@@ -23,6 +23,7 @@
+ #include "qemu/host-utils.h"
+ #include "exec/helper-proto.h"
+ #include "crypto/aes.h"
++#include "fpu/softfloat.h"
+ 
+ #include "helper_regs.h"
+ /*****************************************************************************/
+diff --git a/target/ppc/translate_init.c b/target/ppc/translate_init.c
+index 55c99c97e3..54ec2e122a 100644
+--- a/target/ppc/translate_init.c
++++ b/target/ppc/translate_init.c
+@@ -36,6 +36,7 @@
+ #include "sysemu/qtest.h"
+ #include "qemu/cutils.h"
+ #include "disas/capstone.h"
++#include "fpu/softfloat.h"
+ 
+ //#define PPC_DUMP_CPU
+ //#define PPC_DEBUG_SPR
+diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
+index d2e6b9f5c7..7acb827f1b 100644
+--- a/target/s390x/cpu.c
++++ b/target/s390x/cpu.c
+@@ -42,6 +42,7 @@
+ #include "sysemu/arch_init.h"
+ #include "sysemu/sysemu.h"
+ #endif
++#include "fpu/softfloat.h"
+ 
+ #define CR0_RESET       0xE0UL
+ #define CR14_RESET      0xC2000000UL;
+diff --git a/target/s390x/cpu.h b/target/s390x/cpu.h
+index a1123ad621..96264ad4cb 100644
+--- a/target/s390x/cpu.h
++++ b/target/s390x/cpu.h
+@@ -41,8 +41,6 @@
+ 
+ #include "exec/cpu-all.h"
+ 
+-#include "fpu/softfloat.h"
+-
+ #define NB_MMU_MODES 4
+ #define TARGET_INSN_START_EXTRA_WORDS 1
+ 
+diff --git a/target/s390x/fpu_helper.c b/target/s390x/fpu_helper.c
+index 334159119f..43f8bf1c94 100644
+--- a/target/s390x/fpu_helper.c
++++ b/target/s390x/fpu_helper.c
+@@ -24,6 +24,7 @@
+ #include "exec/exec-all.h"
+ #include "exec/cpu_ldst.h"
+ #include "exec/helper-proto.h"
++#include "fpu/softfloat.h"
+ 
+ /* #define DEBUG_HELPER */
+ #ifdef DEBUG_HELPER
+diff --git a/target/sh4/cpu.c b/target/sh4/cpu.c
+index e0b99fbc89..4f8c830fe3 100644
+--- a/target/sh4/cpu.c
++++ b/target/sh4/cpu.c
+@@ -25,6 +25,7 @@
+ #include "qemu-common.h"
+ #include "migration/vmstate.h"
+ #include "exec/exec-all.h"
++#include "fpu/softfloat.h"
+ 
+ 
+ static void superh_cpu_set_pc(CPUState *cs, vaddr value)
+diff --git a/target/sh4/cpu.h b/target/sh4/cpu.h
+index 52a4568dd5..a649b68d78 100644
+--- a/target/sh4/cpu.h
++++ b/target/sh4/cpu.h
+@@ -40,8 +40,6 @@
+ 
+ #include "exec/cpu-defs.h"
+ 
+-#include "fpu/softfloat.h"
+-
+ #define TARGET_PAGE_BITS 12	/* 4k XXXXX */
+ 
+ #define TARGET_PHYS_ADDR_SPACE_BITS 32
+diff --git a/target/sh4/op_helper.c b/target/sh4/op_helper.c
+index 4b8bbf63b4..4f825bae5a 100644
+--- a/target/sh4/op_helper.c
++++ b/target/sh4/op_helper.c
+@@ -21,6 +21,7 @@
+ #include "exec/helper-proto.h"
+ #include "exec/exec-all.h"
+ #include "exec/cpu_ldst.h"
++#include "fpu/softfloat.h"
+ 
+ #ifndef CONFIG_USER_ONLY
+ 
+diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
+index 3eaffb354e..9724134a5b 100644
+--- a/target/sparc/cpu.h
++++ b/target/sparc/cpu.h
+@@ -29,8 +29,6 @@
+ 
+ #include "exec/cpu-defs.h"
+ 
+-#include "fpu/softfloat.h"
+-
+ /*#define EXCP_INTERRUPT 0x100*/
+ 
+ /* trap definitions */
+diff --git a/target/sparc/fop_helper.c b/target/sparc/fop_helper.c
+index c7fb176e4c..b6642fd1d7 100644
+--- a/target/sparc/fop_helper.c
++++ b/target/sparc/fop_helper.c
+@@ -21,6 +21,7 @@
+ #include "cpu.h"
+ #include "exec/exec-all.h"
+ #include "exec/helper-proto.h"
++#include "fpu/softfloat.h"
+ 
+ #define QT0 (env->qt0)
+ #define QT1 (env->qt1)
+diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
+index f41d2ceb69..e7dfe4bcc6 100644
+--- a/target/tricore/cpu.h
++++ b/target/tricore/cpu.h
+@@ -24,7 +24,6 @@
+ #include "qemu-common.h"
+ #include "cpu-qom.h"
+ #include "exec/cpu-defs.h"
+-#include "fpu/softfloat.h"
+ 
+ #define CPUArchState struct CPUTriCoreState
+ 
+diff --git a/target/tricore/fpu_helper.c b/target/tricore/fpu_helper.c
+index 7979bb6692..df162902d6 100644
+--- a/target/tricore/fpu_helper.c
++++ b/target/tricore/fpu_helper.c
+@@ -20,6 +20,7 @@
+ #include "qemu/osdep.h"
+ #include "cpu.h"
+ #include "exec/helper-proto.h"
++#include "fpu/softfloat.h"
+ 
+ #define QUIET_NAN 0x7fc00000
+ #define ADD_NAN   0x7fc00001
+diff --git a/target/tricore/helper.c b/target/tricore/helper.c
+index 378c2a4a76..45276d3782 100644
+--- a/target/tricore/helper.c
++++ b/target/tricore/helper.c
+@@ -19,6 +19,7 @@
+ 
+ #include "cpu.h"
+ #include "exec/exec-all.h"
++#include "fpu/softfloat.h"
+ 
+ enum {
+     TLBRET_DIRTY = -4,
+diff --git a/target/unicore32/cpu.c b/target/unicore32/cpu.c
+index 17dc1504d7..93cbae39d9 100644
+--- a/target/unicore32/cpu.c
++++ b/target/unicore32/cpu.c
+@@ -18,6 +18,7 @@
+ #include "qemu-common.h"
+ #include "migration/vmstate.h"
+ #include "exec/exec-all.h"
++#include "fpu/softfloat.h"
+ 
+ static void uc32_cpu_set_pc(CPUState *cs, vaddr value)
+ {
+diff --git a/target/unicore32/cpu.h b/target/unicore32/cpu.h
+index a3cc71416d..42e1d52478 100644
+--- a/target/unicore32/cpu.h
++++ b/target/unicore32/cpu.h
+@@ -23,7 +23,6 @@
+ #include "qemu-common.h"
+ #include "cpu-qom.h"
+ #include "exec/cpu-defs.h"
+-#include "fpu/softfloat.h"
+ 
+ #define NB_MMU_MODES            2
+ 
+diff --git a/target/unicore32/ucf64_helper.c b/target/unicore32/ucf64_helper.c
+index 6c919010c3..fad3fa6618 100644
+--- a/target/unicore32/ucf64_helper.c
++++ b/target/unicore32/ucf64_helper.c
+@@ -11,6 +11,7 @@
+ #include "qemu/osdep.h"
+ #include "cpu.h"
+ #include "exec/helper-proto.h"
++#include "fpu/softfloat.h"
+ 
+ /*
+  * The convention used for UniCore-F64 instructions:
+diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
+index f300c02c07..49c2e3cf9a 100644
+--- a/target/xtensa/cpu.h
++++ b/target/xtensa/cpu.h
+@@ -36,7 +36,6 @@
+ #include "qemu-common.h"
+ #include "cpu-qom.h"
+ #include "exec/cpu-defs.h"
+-#include "fpu/softfloat.h"
+ #include "xtensa-isa.h"
+ 
+ #define NB_MMU_MODES 4
+diff --git a/target/xtensa/op_helper.c b/target/xtensa/op_helper.c
+index 43182b113e..7486b99799 100644
+--- a/target/xtensa/op_helper.c
++++ b/target/xtensa/op_helper.c
+@@ -34,6 +34,7 @@
+ #include "exec/cpu_ldst.h"
+ #include "exec/address-spaces.h"
+ #include "qemu/timer.h"
++#include "fpu/softfloat.h"
+ 
+ void xtensa_cpu_do_unaligned_access(CPUState *cs,
+         vaddr addr, MMUAccessType access_type,
+-- 
+2.15.1

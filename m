@@ -1,249 +1,159 @@
-Received: by 10.28.71.27 with SMTP id u27csp3737917wma;
-        Tue, 6 Feb 2018 04:44:21 -0800 (PST)
-X-Google-Smtp-Source: AH8x225L/gpvp7XT5ff1EHpjaCdHrq9sdCYeMWqwgVKGUPm9vYYltYSkJUKHsFcrWFePAPjpnof9
-X-Received: by 10.37.7.131 with SMTP id 125mr1248245ybh.447.1517921061424;
-        Tue, 06 Feb 2018 04:44:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1517921061; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp3738437wma;
+        Tue, 6 Feb 2018 04:45:00 -0800 (PST)
+X-Google-Smtp-Source: AH8x2275+5+gfgUs/Uu+gQKHa911Sefjbz03U+z+OlylD1wcDqqDmCEk2KDttq9X6bFRVVgUd7qf
+X-Received: by 10.129.159.17 with SMTP id w17mr1303103ywg.23.1517921100309;
+        Tue, 06 Feb 2018 04:45:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1517921100; cv=none;
         d=google.com; s=arc-20160816;
-        b=X8+vyJXtANHmeUAzqjiQLuAJFa/bq9IHKhyQcF+xm7VU1ufOm9eQPfqq+3Xy8eSrGC
-         AeB98vNozZp+iHOPM9mwwR1GkwH0QNfE6WwI7dPu75EyM+KuUMjdWQ+fK6pIoiq+QTXn
-         pl1q93qfUYNCdrg0f+IRYjw7fBHw1X0SApnfvu6pb+enQ0amfyo6WBW9PA/5KmJmiuVv
-         hx9+ZmqPJQtT8JxlTWIhhqXbD4cgKR6HwpOJROppsyVr15EeJjo1uREXiVJgQrTI/4Yz
-         N2B9H/xkz/6bTB9DF6GngEPQLCiQD91Aihei6L6F4XA8Yf39FqJgbLB4e2B7dBa3x+rw
-         ZLpA==
+        b=QK5b00IpQjqMnxE7AcX0T2es2MJQ4fugK4eVCG2reqVvbEAeldhaCx2xPKzJOlDK97
+         /PwmKRO+REnsPzml2eJDFUAnG86f2/ieEDrqtQS2jDD1QUv+pDUd9J/dF9NkjqkjXave
+         bQ2axb5tIDf4WWO4SjAUKJ0rPYMFnfgRgB1lV5jf2GGR3AgY43m/YvDvbWn+Df1wjaRm
+         b72ldu7lHipUPsaK4LcVuIWzg4AiWph9u7NegkxdPMpMfSJoBMVSb3gWrcJNA/mT7YJq
+         gLbNmzPcnonN4Vqrae7XIf17IWQTLCsVqSrZLyBQSa7bXHRzuqK6zeZM65WQlN8FD9J9
+         beEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=gMD8yLdxJTEJrCE4iVgoFdiTl3cq54ZiajP925klI9g=;
-        b=FftoWxGwEm8dslLdmScOo47D14ttbw1jozkTdhnt4uXI4GyIxY12zt4qQzu4fER7ub
-         mOZAxR4eT5aoI+EQHLlYTjNVo87Jxk6+Uv1yp3otM/EEUN48mtmcpxJh7gQ/hMNt+uVh
-         ScDo9WwVNGkBokb+ya9KXyQQOlxDpvgVPA8FbQCc9KATS1/dqY+8dUl6f4+eMdRU1tmR
-         bZs2sP+DWyLtHvSOcuIutvvXa0oCM//c+YSNa+fUCVk0L6h8IQmyGm4jtfA8O98c8gb7
-         pXRTVYZs9z2ffhtXDNDDMd08sQ4kiCKsmIysnEFylXGf+eEizWaYk9Yb3jw26wRfq9wB
-         0UQw==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=XuSBrx7+xwH3s4OU7abBgBKkG6jbdqfyyhHS3CqjYtQ=;
+        b=xlpztMZYn0YuKQZnR0RuRy/W39xPPQMZlV2sb/W82PVsjazHNoK5qNohHesE6O/Bwg
+         rkXkV8DPAjIEk+UnQ1e+QE2EOMfemTkYMW8qfgYvIFNC0l4oskResSDqAM5dU8odCaCy
+         IvwkqD5OFWvVBdPOv67eE4b2ApoRl06zg19oLGDNg0Bez6VGfBsVoqyTpLxYxZ0ZatA0
+         o9e3SaM8R8DXMdaQ6H7fjcaSz82T7a6Mvz1oxCrG5B939QsHY/mRCA9F4a51tWpthSbv
+         q4E4kMwlRUoI5oZ1wX9VzmBEV5t9a3oNpENneJh/t5bAS63HTFpdK2HaAegeCJEFXe4S
+         DzEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eStT0D3u;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=T9WEvpCt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t125si364115ywc.8.2018.02.06.04.44.21
+        by mx.google.com with ESMTPS id l28si1804465ywh.414.2018.02.06.04.45.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 06 Feb 2018 04:44:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 06 Feb 2018 04:45:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eStT0D3u;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:38317 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=T9WEvpCt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:38362 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ej2bk-00043S-Q9
-	for alex.bennee@linaro.org; Tue, 06 Feb 2018 07:44:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52223)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ej2cN-0004rs-Jl
+	for alex.bennee@linaro.org; Tue, 06 Feb 2018 07:44:59 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52108)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ej2bD-000400-Qn
-	for qemu-devel@nongnu.org; Tue, 06 Feb 2018 07:43:49 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1ej2au-0003jw-Q0
+	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 07:43:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ej2bC-0006dK-I9
-	for qemu-devel@nongnu.org; Tue, 06 Feb 2018 07:43:47 -0500
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:46152)
+	(envelope-from <peter.maydell@linaro.org>) id 1ej2at-0006Se-SS
+	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 07:43:28 -0500
+Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:42330)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ej2b7-0006a9-Lb; Tue, 06 Feb 2018 07:43:41 -0500
-Received: by mail-qk0-x242.google.com with SMTP id d125so2029974qkg.13;
-	Tue, 06 Feb 2018 04:43:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=gMD8yLdxJTEJrCE4iVgoFdiTl3cq54ZiajP925klI9g=;
-	b=eStT0D3udvCbD2asKOFTLSRbuA8w/XcWhXphp9OYqyzeWmwBneFIlIQ4OlhbaIG4s4
-	V7Y5h8pOAAttjDPILjTH9nyCeFAtwnOIf9sSQFgLUXvKc5J8iYaVj9iqirjTRyhMn7l/
-	Fzt380NSHVQ9adKqrSFOrL8eE6+9fYOIrNFLyY+dp/REUZepdz7DVM5SB0sAkte1/hRR
-	UaAPkwOdtA6dUHow6KhrriqR6rnRbP8TH0xrg4WavDRugDPpETM/vB2zTO7j6lR22fxH
-	GW7bEHFZOhlHEk9YckLkiKXZQ3fu7RouL0tJmWQkzHeZ+ssG/NCFy2xMi1D8e7TpRqXI
-	9c0A==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1ej2at-0006SG-Nb
+	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 07:43:27 -0500
+Received: by mail-oi0-x241.google.com with SMTP id c8so1210156oiy.9
+	for <qemu-arm@nongnu.org>; Tue, 06 Feb 2018 04:43:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=XuSBrx7+xwH3s4OU7abBgBKkG6jbdqfyyhHS3CqjYtQ=;
+	b=T9WEvpCtInSJ0l5b5rf6HouHnGD3r/fujZtxcxwk7j8HGpYNEYaxnMHaLRL50sFUZ5
+	cwCeZPGMk/FptTXoth6Hy0DcO8+PzQV9bk7pXG/bJBl96AGUoNpWPACae4Vit/UTm448
+	C3srE2s9QaWjUm1Q/9inEFvMW7RakOvJAnxTU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=gMD8yLdxJTEJrCE4iVgoFdiTl3cq54ZiajP925klI9g=;
-	b=SRIIqL+grvVHbHoUAEDyT0n/9otSM7Cfbv6dk4L91Zi+JVH2EYfHDtLk/nkjN2S76k
-	oCvS/4PeEq/D2AlrIhD3h2A+nZjwxZPUMNEj0oNwgImzH6yXHVn7/a5h54p1LjkVneSB
-	TmJaIWz3Z5Sxo60SAHmmbLnWWVDeBPrUF7oHJqpSgHc0Radx8U7gcUpGU048p9cUVKOy
-	vks6cXkoZlvYUWlImTmxKEJ2XywjxsmtNAy0xDEGZnl5z2Uduu6sFFRQIdBKD8BCJtIg
-	xs27vH2GwDSlBuyLip8TyCcCXb0hSQ97Qb/Q6r1Uk2jm0iEsE0CZgllRNZzYOH0auUOd
-	l4Fg==
-X-Gm-Message-State: APf1xPBUOTxhHPCrFThbvLx7nxgGl6urhV/z5q1wfzMg0ygNlSe4Z36v
-	1ckvS5DjLFx8SDNp/Er0LD6aq8T4
-X-Received: by 10.55.101.79 with SMTP id z76mr3267630qkb.46.1517921020706;
-	Tue, 06 Feb 2018 04:43:40 -0800 (PST)
-Received: from [192.168.1.11] ([138.117.48.219])
-	by smtp.gmail.com with ESMTPSA id l6sm4298928qki.17.2018.02.06.04.43.38
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 06 Feb 2018 04:43:40 -0800 (PST)
-To: Alistair Francis <alistair.francis@xilinx.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-References: <20180123035837.16578-1-f4bug@amsat.org>
-	<20180123035837.16578-5-f4bug@amsat.org>
-	<CAKmqyKMoUcPhkr8bM1DU1QeBaRbJ9kAfOp_j-vFxf1y8p=1AbA@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <5a373a1f-6289-a216-cd02-254402069c12@amsat.org>
-Date: Tue, 6 Feb 2018 09:43:36 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.2
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=XuSBrx7+xwH3s4OU7abBgBKkG6jbdqfyyhHS3CqjYtQ=;
+	b=RlYwb+gWG2uM30rsa6CjjIsb3qBaXCZAIZr1yqbdSYJVXzuDuRNPA86BBE666Shxgr
+	WqhJL0fB/spT9jMvtVz/3FMuf2lWP29c9yD5QE9cTX/ccL/D/9JsuKFeF157+Jey6Cz5
+	CK/I1Gw8wT/pyLyvcNlEGhYZkg4iDPwH6zXU4SQDN+KQy27XJ/Up8iUrfm6H1v3Ql4PT
+	puAskwUZIy8taKrSnBrzezpivpmTIf1TUlj7UUBr3/Yn/Sminkz07VZsUdUihrcQfNnC
+	XiSz3gyMUrQUs0WJVCDaaj0xiWm8Vdtn2eAgzKYorovJ/wlAg/CWNHN3bVCCv/np1h92
+	E3oQ==
+X-Gm-Message-State: APf1xPDgbTQJVTlK/TMK+b0LQwlQ+V9JTDGT95z9PBVyZeaejJs9pVEq
+	BrlpZXZbj1U+P0422rO+emEzL1lbGixHwhGEXHydDQ==
+X-Received: by 10.202.105.84 with SMTP id e81mr1229731oic.305.1517921006932;
+	Tue, 06 Feb 2018 04:43:26 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <CAKmqyKMoUcPhkr8bM1DU1QeBaRbJ9kAfOp_j-vFxf1y8p=1AbA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Received: by 10.157.34.163 with HTTP; Tue, 6 Feb 2018 04:43:06 -0800 (PST)
+In-Reply-To: <bdb379f2-5272-dd5c-056d-da487dd21500@redhat.com>
+References: <1504286483-23327-1-git-send-email-eric.auger@redhat.com>
+	<1504286483-23327-11-git-send-email-eric.auger@redhat.com>
+	<CAFEAcA-40ucm8WZOEJC_1r4MdFXEPuX=GM2FC3hKZamLbijM7w@mail.gmail.com>
+	<bdb379f2-5272-dd5c-056d-da487dd21500@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 6 Feb 2018 12:43:06 +0000
+Message-ID: <CAFEAcA8R5zYM5ppcx4wJk4jkMbCekjZVyL+m7R6mekf+nA6O+g@mail.gmail.com>
+To: Auger Eric <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::242
-Subject: Re: [Qemu-devel] [PATCH v2 4/6] hw/sd/pl181: expose a SDBus and
- connect the SDCard to it
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4003:c06::241
+Subject: Re: [Qemu-arm] [PATCH v7 10/20] hw/arm/smmuv3: Implement translate
+ callback
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-	Stefan Weil <sw@weilnetz.de>, Michael Walle <michael@walle.cc>,
-	"open list:ARM PrimeCell and..." <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: h2qgY5o6Sjg3
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Radha Mohan <mohun106@gmail.com>, Andrew Jones <drjones@redhat.com>,
+	Trey Cain <tcain@qti.qualcomm.com>,
+	Radha.Chintakuntla@cavium.com, Sunil.Goutham@cavium.com,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Jean-Philippe Brucker <jean-philippe.brucker@arm.com>,
+	Tomasz Nowicki <tn@semihalf.com>, Will Deacon <will.deacon@arm.com>,
+	QEMU Developers <qemu-devel@nongnu.org>, Peter Xu <peterx@redhat.com>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	Christoffer Dall <christoffer.dall@linaro.org>,
+	robin.murphy@arm.com, wtownsen@redhat.com,
+	Bharat Bhushan <bharat.bhushan@nxp.com>,
+	Prem Mallappa <prem.mallappa@gmail.com>, eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BzODtGaGZweg
 
-Hi Alistair,
+On 6 February 2018 at 12:19, Auger Eric <eric.auger@redhat.com> wrote:
+> On 09/10/17 19:45, Peter Maydell wrote:
+>> Incidentally, the spec requires us to perform memory accesses as
+>> at least 64-bit single-copy atomic (see 3.21.3) -- does this do that?
+>> (This gets important with SMP when the guest on another CPU might
+>> be updating the STE or page table entry at the same time as we're
+>> reading it...)
+>
+> Among all your comments on v7, here is the one I am the least
+> comfortable with. I was not able to figure out whether
+> dma_memory_read(), which I use now for all the descriptor accesses
+> guarantees this 64b single copy atomicity.
 
-On 01/31/2018 01:41 PM, Alistair Francis wrote:
-> On Mon, Jan 22, 2018 at 7:58 PM, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->> using the sdbus_*() API.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>  hw/sd/pl181.c | 31 ++++++++++++++++++++-----------
->>  1 file changed, 20 insertions(+), 11 deletions(-)
->>
->> diff --git a/hw/sd/pl181.c b/hw/sd/pl181.c
->> index 3ba1f7dd23..ce696c5d7d 100644
->> --- a/hw/sd/pl181.c
->> +++ b/hw/sd/pl181.c
->> @@ -33,6 +33,7 @@ typedef struct PL181State {
->>      SysBusDevice parent_obj;
->>
->>      MemoryRegion iomem;
->> +    SDBus sdbus;
->>      SDState *card;
-> 
-> Shouludn't card be removed?
+It doesn't -- it winds up in flatview_read_continue(), which will
+do a memcpy() from guest ram into the buffer, and since it's
+using an arbitrary passed-in length value the chances are high
+it won't end up using an atomic access on the host.
 
-Not yet :( It is still used by sd_set_cb() in pl181_reset().
+This is a nasty issue which we haven't figured out at all yet;
+see also this thread:
+https://lists.gnu.org/archive/html/qemu-devel/2017-12/msg03067.html
 
-In my first approach [1] I added the SDBus SLAVE/MASTER interfaces and
-the cards inserted/readonly signals were only accessible by the bus, not
-the HCI, leaving the SDCard objects only pluggable to SDBus (removing
-the sdbus_reparent_card() need). But since it was out of scope for the
-UHS cards goal, I kept it for later.
+For the moment my suggestion would be that when you need
+to do guest memory accesses that have atomicity requirements you:
+ (a) use an accessor function which specifically loads a
+  quantity of the correct size, rather than one which takes
+  an arbitrary start-and-length
+  (when we add APIs which do have atomicity guarantees they'll
+  be "load 64 bit word" etc, so using our existing APIs of
+  that form should avoid needing to restructure this code later)
+ (b) add a TODO comment noting the required atomicity
 
-[1]
-http://lists.nongnu.org/archive/html/qemu-devel/2017-12/msg02318.html
-
-> 
-> Alistair
-> 
->>      uint32_t clock;
->>      uint32_t power;
->> @@ -179,7 +180,7 @@ static void pl181_send_command(PL181State *s)
->>      request.cmd = s->cmd & PL181_CMD_INDEX;
->>      request.arg = s->cmdarg;
->>      DPRINTF("Command %d %08x\n", request.cmd, request.arg);
->> -    rlen = sd_do_command(s->card, &request, response);
->> +    rlen = sdbus_do_command(&s->sdbus, &request, response);
->>      if (rlen < 0)
->>          goto error;
->>      if (s->cmd & PL181_CMD_RESPONSE) {
->> @@ -223,12 +224,12 @@ static void pl181_fifo_run(PL181State *s)
->>      int is_read;
->>
->>      is_read = (s->datactrl & PL181_DATA_DIRECTION) != 0;
->> -    if (s->datacnt != 0 && (!is_read || sd_data_ready(s->card))
->> +    if (s->datacnt != 0 && (!is_read || sdbus_data_ready(&s->sdbus))
->>              && !s->linux_hack) {
->>          if (is_read) {
->>              n = 0;
->>              while (s->datacnt && s->fifo_len < PL181_FIFO_LEN) {
->> -                value |= (uint32_t)sd_read_data(s->card) << (n * 8);
->> +                value |= (uint32_t)sdbus_read_data(&s->sdbus) << (n * 8);
->>                  s->datacnt--;
->>                  n++;
->>                  if (n == 4) {
->> @@ -249,7 +250,7 @@ static void pl181_fifo_run(PL181State *s)
->>                  }
->>                  n--;
->>                  s->datacnt--;
->> -                sd_write_data(s->card, value & 0xff);
->> +                sdbus_write_data(&s->sdbus, value & 0xff);
->>                  value >>= 8;
->>              }
->>          }
->> @@ -480,10 +481,6 @@ static void pl181_reset(DeviceState *d)
->>
->>      /* We can assume our GPIO outputs have been wired up now */
->>      sd_set_cb(s->card, s->cardstatus[0], s->cardstatus[1]);
->> -    /* Since we're still using the legacy SD API the card is not plugged
->> -     * into any bus, and we must reset it manually.
->> -     */
->> -    device_reset(DEVICE(s->card));
->>  }
->>
->>  static void pl181_init(Object *obj)
->> @@ -502,14 +499,26 @@ static void pl181_init(Object *obj)
->>  static void pl181_realize(DeviceState *dev, Error **errp)
->>  {
->>      PL181State *s = PL181(dev);
->> +    DeviceState *carddev;
->>      DriveInfo *dinfo;
->> +    Error *err = NULL;
->> +
->> +    qbus_create_inplace(&s->sdbus, sizeof(s->sdbus), TYPE_SD_BUS,
->> +                        dev, "sd-bus");
->>
->> +    /* Create and plug in the sd card */
->>      /* FIXME use a qdev drive property instead of drive_get_next() */
->>      dinfo = drive_get_next(IF_SD);
->> -    s->card = sd_init(dinfo ? blk_by_legacy_dinfo(dinfo) : NULL, false);
->> -    if (s->card == NULL) {
->> -        error_setg(errp, "sd_init failed");
->> +    carddev = qdev_create(&s->sdbus.qbus, TYPE_SD_CARD);
->> +    if (dinfo) {
->> +        qdev_prop_set_drive(carddev, "drive", blk_by_legacy_dinfo(dinfo), &err);
->> +    }
->> +    object_property_set_bool(OBJECT(carddev), true, "realized", &err);
->> +    if (err) {
->> +        error_setg(errp, "failed to init SD card: %s", error_get_pretty(err));
->> +        return;
->>      }
->> +    s->card = SD_CARD(carddev);
->>  }
->>
->>  static void pl181_class_init(ObjectClass *klass, void *data)
->> --
->> 2.15.1
->>
->>
+thanks
+-- PMM

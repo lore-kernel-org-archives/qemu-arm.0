@@ -1,100 +1,98 @@
-Received: by 10.28.71.27 with SMTP id u27csp3738437wma;
-        Tue, 6 Feb 2018 04:45:00 -0800 (PST)
-X-Google-Smtp-Source: AH8x2275+5+gfgUs/Uu+gQKHa911Sefjbz03U+z+OlylD1wcDqqDmCEk2KDttq9X6bFRVVgUd7qf
-X-Received: by 10.129.159.17 with SMTP id w17mr1303103ywg.23.1517921100309;
-        Tue, 06 Feb 2018 04:45:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1517921100; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp3740183wma;
+        Tue, 6 Feb 2018 04:47:02 -0800 (PST)
+X-Google-Smtp-Source: AH8x224oonPeu1lzqQSdt1Nw+esvl0692G5iB6/0WUZmjdu/UoLuRuC3cYiqsNak01lFFSBIwjhn
+X-Received: by 10.37.103.65 with SMTP id b62mr1257322ybc.312.1517921222770;
+        Tue, 06 Feb 2018 04:47:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1517921222; cv=none;
         d=google.com; s=arc-20160816;
-        b=QK5b00IpQjqMnxE7AcX0T2es2MJQ4fugK4eVCG2reqVvbEAeldhaCx2xPKzJOlDK97
-         /PwmKRO+REnsPzml2eJDFUAnG86f2/ieEDrqtQS2jDD1QUv+pDUd9J/dF9NkjqkjXave
-         bQ2axb5tIDf4WWO4SjAUKJ0rPYMFnfgRgB1lV5jf2GGR3AgY43m/YvDvbWn+Df1wjaRm
-         b72ldu7lHipUPsaK4LcVuIWzg4AiWph9u7NegkxdPMpMfSJoBMVSb3gWrcJNA/mT7YJq
-         gLbNmzPcnonN4Vqrae7XIf17IWQTLCsVqSrZLyBQSa7bXHRzuqK6zeZM65WQlN8FD9J9
-         beEA==
+        b=bDaBz7xfjZIwJsGYHeN+vI/lB75moBKca5mYwHaH3aBIWw2oUYqZ+aojQjRBAE2UWE
+         H6qIMQcUJyDVss3eh4J0r396G/MEovTBz+s7qjCQ6UOisLyblvxwj8UvIn4cSazulpPC
+         rvchqSKFn2Msv6gwMxQVBJgCtPYL71H1lkQCGzlNmzIKiFPR7FwtI+sFqC4dxKJzkmO/
+         ZTNPzxO11BRhoWEizIyn088I6qYz+TVVVm2yizVn3XFap7DOShr5y+44mHiatalro04H
+         XdD5ONpD9N9w1MSPTSXbfOxeoA4pzO9KrpN3h1JTZ5IAi9r/owDtHqjrrVkdQQAlTt1X
+         0IsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=XuSBrx7+xwH3s4OU7abBgBKkG6jbdqfyyhHS3CqjYtQ=;
-        b=xlpztMZYn0YuKQZnR0RuRy/W39xPPQMZlV2sb/W82PVsjazHNoK5qNohHesE6O/Bwg
-         rkXkV8DPAjIEk+UnQ1e+QE2EOMfemTkYMW8qfgYvIFNC0l4oskResSDqAM5dU8odCaCy
-         IvwkqD5OFWvVBdPOv67eE4b2ApoRl06zg19oLGDNg0Bez6VGfBsVoqyTpLxYxZ0ZatA0
-         o9e3SaM8R8DXMdaQ6H7fjcaSz82T7a6Mvz1oxCrG5B939QsHY/mRCA9F4a51tWpthSbv
-         q4E4kMwlRUoI5oZ1wX9VzmBEV5t9a3oNpENneJh/t5bAS63HTFpdK2HaAegeCJEFXe4S
-         DzEw==
+        bh=tiWTrUnW+5UTgPzKO/pRT/ePikVZ7kjDXrCuWdBGGww=;
+        b=BF+2zU/KzENiqwTmYn+rufI5mWKb/VSXfFUZylOm8B3cnC0eFhYMRQ3I1dEb/VFA0S
+         jAn+gzgehLpcb6f7H7Fg0+DJAW7VzPZrrTWdLKR32Hlz2d6Cv8KJ7n/rqOIipUSe/+KB
+         AtcvMG4231h6/ApSQp5Uc5cIFXf0ocoQmDO4z0rUthUCrEIoo38QvEQWsNhoRPowkyz4
+         cTBMWu0b+wsyFaXyrGFcfFUStyECuhn+KS6NjcipzgzOdRkEGVKC7AKMOUrxb1qywYj5
+         nqd3w7J/hfDMVmNHPKBAcUBotazcpbB6N31s1GY3u6WGq3qe5WGfVWR80VWrjp89c6uz
+         4q9w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=T9WEvpCt;
+       dkim=fail header.i=@linaro.org header.s=google header.b=dM5ngbeU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l28si1804465ywh.414.2018.02.06.04.45.00
+        by mx.google.com with ESMTPS id 85si1415606ybn.26.2018.02.06.04.47.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 06 Feb 2018 04:45:00 -0800 (PST)
+        Tue, 06 Feb 2018 04:47:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=T9WEvpCt;
+       dkim=fail header.i=@linaro.org header.s=google header.b=dM5ngbeU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38362 helo=lists.gnu.org)
+Received: from localhost ([::1]:38517 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ej2cN-0004rs-Jl
-	for alex.bennee@linaro.org; Tue, 06 Feb 2018 07:44:59 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52108)
+	id 1ej2eM-0006um-6n
+	for alex.bennee@linaro.org; Tue, 06 Feb 2018 07:47:02 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52986)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ej2au-0003jw-Q0
-	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 07:43:29 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1ej2dZ-0006OG-7z
+	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 07:46:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ej2at-0006Se-SS
-	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 07:43:28 -0500
-Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:42330)
+	(envelope-from <peter.maydell@linaro.org>) id 1ej2dY-0000JZ-Ds
+	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 07:46:13 -0500
+Received: from mail-ot0-x231.google.com ([2607:f8b0:4003:c0f::231]:39398)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1ej2at-0006SG-Nb
-	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 07:43:27 -0500
-Received: by mail-oi0-x241.google.com with SMTP id c8so1210156oiy.9
-	for <qemu-arm@nongnu.org>; Tue, 06 Feb 2018 04:43:27 -0800 (PST)
+	id 1ej2dY-0000IC-9C
+	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 07:46:12 -0500
+Received: by mail-ot0-x231.google.com with SMTP id f18so1581460otf.6
+	for <qemu-arm@nongnu.org>; Tue, 06 Feb 2018 04:46:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=XuSBrx7+xwH3s4OU7abBgBKkG6jbdqfyyhHS3CqjYtQ=;
-	b=T9WEvpCtInSJ0l5b5rf6HouHnGD3r/fujZtxcxwk7j8HGpYNEYaxnMHaLRL50sFUZ5
-	cwCeZPGMk/FptTXoth6Hy0DcO8+PzQV9bk7pXG/bJBl96AGUoNpWPACae4Vit/UTm448
-	C3srE2s9QaWjUm1Q/9inEFvMW7RakOvJAnxTU=
+	:cc; bh=tiWTrUnW+5UTgPzKO/pRT/ePikVZ7kjDXrCuWdBGGww=;
+	b=dM5ngbeUehhrfnDK8hDl/t0N/tMw/rWmmPlQXiNhlTmI8lLXGrWFUEC7atUgFf0Czq
+	FJfgiU0Y9pEMLEdupPCJqVcbTqBUtf2mLMyK5xkA07X51M/CnvAKSFPPQjoNrtPlUddE
+	I8EwdFz/nCQ9OspRniQqNS8dVuxT4fFvxeNOs=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=XuSBrx7+xwH3s4OU7abBgBKkG6jbdqfyyhHS3CqjYtQ=;
-	b=RlYwb+gWG2uM30rsa6CjjIsb3qBaXCZAIZr1yqbdSYJVXzuDuRNPA86BBE666Shxgr
-	WqhJL0fB/spT9jMvtVz/3FMuf2lWP29c9yD5QE9cTX/ccL/D/9JsuKFeF157+Jey6Cz5
-	CK/I1Gw8wT/pyLyvcNlEGhYZkg4iDPwH6zXU4SQDN+KQy27XJ/Up8iUrfm6H1v3Ql4PT
-	puAskwUZIy8taKrSnBrzezpivpmTIf1TUlj7UUBr3/Yn/Sminkz07VZsUdUihrcQfNnC
-	XiSz3gyMUrQUs0WJVCDaaj0xiWm8Vdtn2eAgzKYorovJ/wlAg/CWNHN3bVCCv/np1h92
-	E3oQ==
-X-Gm-Message-State: APf1xPDgbTQJVTlK/TMK+b0LQwlQ+V9JTDGT95z9PBVyZeaejJs9pVEq
-	BrlpZXZbj1U+P0422rO+emEzL1lbGixHwhGEXHydDQ==
-X-Received: by 10.202.105.84 with SMTP id e81mr1229731oic.305.1517921006932;
-	Tue, 06 Feb 2018 04:43:26 -0800 (PST)
+	bh=tiWTrUnW+5UTgPzKO/pRT/ePikVZ7kjDXrCuWdBGGww=;
+	b=coozyPPNJPOwJ+BqwRq05848O1vTzM+11W0n+YP0hSR8JG1TU7GZ/lf8U9zYbUYepP
+	UY6bHbhFf1Xm3yrtqF/iA1ELy1FmED1TG9qGOYtJWAsT/2ZdrEhCPCMK4+PaVmVWqx12
+	LSh+MZvZZA9xvRzg7NdlkIJ6XM3kheSZjmafoXb8o8k5L5DDUg1Yue+HvE2RAi3i4IT2
+	kDb/GYdNbmtWR+t/ZtU0A4zbbyLDjWe67LYf2HBciRoDeHFPAoIOCFzP0yzu3UZc24FD
+	m3Tyjq7GeZC4PNs5/vdkdFMrWPKukjk0735dk5ZwC7Y9zQv/imdUmcmk7Uv6mwbRhTmz
+	Nysg==
+X-Gm-Message-State: APf1xPCzEZLpkG/3hTR4ezqZAcltZwpFQaAKWS8iNmMJHfCgZcOkV9al
+	rK1ZVmnetAFA7JEGrO47g34d7kWmD33eDhb4WELOAg==
+X-Received: by 10.157.29.211 with SMTP id w19mr1500463otw.24.1517921171592;
+	Tue, 06 Feb 2018 04:46:11 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.157.34.163 with HTTP; Tue, 6 Feb 2018 04:43:06 -0800 (PST)
-In-Reply-To: <bdb379f2-5272-dd5c-056d-da487dd21500@redhat.com>
-References: <1504286483-23327-1-git-send-email-eric.auger@redhat.com>
-	<1504286483-23327-11-git-send-email-eric.auger@redhat.com>
-	<CAFEAcA-40ucm8WZOEJC_1r4MdFXEPuX=GM2FC3hKZamLbijM7w@mail.gmail.com>
-	<bdb379f2-5272-dd5c-056d-da487dd21500@redhat.com>
+Received: by 10.157.34.163 with HTTP; Tue, 6 Feb 2018 04:45:51 -0800 (PST)
+In-Reply-To: <5c98e7b7-ca50-ed3e-6e0c-671cd793b175@redhat.com>
+References: <151784238084.63.357873266609338192@bdbb90650ae5>
+	<5c98e7b7-ca50-ed3e-6e0c-671cd793b175@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 6 Feb 2018 12:43:06 +0000
-Message-ID: <CAFEAcA8R5zYM5ppcx4wJk4jkMbCekjZVyL+m7R6mekf+nA6O+g@mail.gmail.com>
+Date: Tue, 6 Feb 2018 12:45:51 +0000
+Message-ID: <CAFEAcA9m9x0Vz6-A95P7_WUj+oJS=NLQyWFPJubC2ttOJZWhWQ@mail.gmail.com>
 To: Auger Eric <eric.auger@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::241
-Subject: Re: [Qemu-arm] [PATCH v7 10/20] hw/arm/smmuv3: Implement translate
- callback
+X-Received-From: 2607:f8b0:4003:c0f::231
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v8 00/14] ARM SMMUv3 Emulation
+ Support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,54 +104,32 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Radha Mohan <mohun106@gmail.com>, Andrew Jones <drjones@redhat.com>,
-	Trey Cain <tcain@qti.qualcomm.com>,
-	Radha.Chintakuntla@cavium.com, Sunil.Goutham@cavium.com,
-	"Michael S. Tsirkin" <mst@redhat.com>,
+Cc: Fam Zheng <famz@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
 	Jean-Philippe Brucker <jean-philippe.brucker@arm.com>,
-	Tomasz Nowicki <tn@semihalf.com>, Will Deacon <will.deacon@arm.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, Peter Xu <peterx@redhat.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
+	Tomasz Nowicki <tn@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	Peter Xu <peterx@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
 	qemu-arm <qemu-arm@nongnu.org>,
 	Christoffer Dall <christoffer.dall@linaro.org>,
-	robin.murphy@arm.com, wtownsen@redhat.com,
-	Bharat Bhushan <bharat.bhushan@nxp.com>,
+	linuc.decode@gmail.com, Bharat Bhushan <bharat.bhushan@nxp.com>,
 	Prem Mallappa <prem.mallappa@gmail.com>, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BzODtGaGZweg
+X-TUID: anVVPuvs2jJI
 
-On 6 February 2018 at 12:19, Auger Eric <eric.auger@redhat.com> wrote:
-> On 09/10/17 19:45, Peter Maydell wrote:
->> Incidentally, the spec requires us to perform memory accesses as
->> at least 64-bit single-copy atomic (see 3.21.3) -- does this do that?
->> (This gets important with SMP when the guest on another CPU might
->> be updating the STE or page table entry at the same time as we're
->> reading it...)
->
-> Among all your comments on v7, here is the one I am the least
-> comfortable with. I was not able to figure out whether
-> dma_memory_read(), which I use now for all the descriptor accesses
-> guarantees this 64b single copy atomicity.
+On 6 February 2018 at 12:22, Auger Eric <eric.auger@redhat.com> wrote:
+> I will add
+> #include "qemu/log.h" in smmuv3-internal.h in next release, to fix this
+> mingw compilation issue.
 
-It doesn't -- it winds up in flatview_read_continue(), which will
-do a memcpy() from guest ram into the buffer, and since it's
-using an arbitrary passed-in length value the chances are high
-it won't end up using an atomic access on the host.
+It's an issue with configs that don't use the 'log' trace
+backend, rather than mingw specifically. (It just happens
+that patchew's mingw backend is the one that's configured
+with a different trace backend.) The default backend means
+trace.h includes log.h.
 
-This is a nasty issue which we haven't figured out at all yet;
-see also this thread:
-https://lists.gnu.org/archive/html/qemu-devel/2017-12/msg03067.html
-
-For the moment my suggestion would be that when you need
-to do guest memory accesses that have atomicity requirements you:
- (a) use an accessor function which specifically loads a
-  quantity of the correct size, rather than one which takes
-  an arbitrary start-and-length
-  (when we add APIs which do have atomicity guarantees they'll
-  be "load 64 bit word" etc, so using our existing APIs of
-  that form should avoid needing to restructure this code later)
- (b) add a TODO comment noting the required atomicity
+I really ought to write some patches to make this be an
+error always rather than only if you configured a different
+trace backend...
 
 thanks
 -- PMM

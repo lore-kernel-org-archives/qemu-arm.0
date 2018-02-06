@@ -1,91 +1,102 @@
-Received: by 10.28.71.27 with SMTP id u27csp3748142wma;
-        Tue, 6 Feb 2018 04:56:35 -0800 (PST)
-X-Google-Smtp-Source: AH8x2261V4eBHRXydaLiEArLPLYlLnhT5RYsGCbXzxJ/+F6dElLu15CNVP8AhzCU7IZWQWcPzm9R
-X-Received: by 10.37.128.69 with SMTP id a5mr1253887ybn.265.1517921795422;
-        Tue, 06 Feb 2018 04:56:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1517921795; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp3760470wma;
+        Tue, 6 Feb 2018 05:06:56 -0800 (PST)
+X-Google-Smtp-Source: AH8x2279syOTTvLyTLDVmiDcu2RIAn3NPZYOpynTK/nK3x6uH62jd1NT2rTcmK0vG2BCJTtPqKcE
+X-Received: by 10.37.118.205 with SMTP id r196mr1288510ybc.321.1517922416732;
+        Tue, 06 Feb 2018 05:06:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1517922416; cv=none;
         d=google.com; s=arc-20160816;
-        b=yUMqGclQsAn/rajofIKHhDuBZOCW4jhoFRlCyfs1aSYUK+wLQdJdwHOT5qSI+/7WLm
-         kpRCb8po1K8pfY/IB5+IPkbNEKLc1xMin7CrlIqj9XEqtbLms/qMS9QQAMFABYq89fRB
-         jp+cv5CWETA94tP+ECbQhrINH9TDa1TYtUE7pMFleGnpF0vU0nZFQ8Vj/gQQrykd3LiT
-         osBfuXUluuOlQyGZfXSIBj6db7c6cjSr88rpnDz+ngmPFrrWufjiCddPYQxdChGxYrtE
-         AClahqfZ/T3vfPfDGy4Du747uiCG9pVpsbwEM5aQr3L1Q93tXouiCN0tVSKV/QIkj5RT
-         6TGw==
+        b=YFrej5O4KrDV8E3CoGDGfly+8R6PFM/PpcReQ5q7cCGEvEaCL43vN91teoBRyvNyDt
+         jtjdlap5dr+bgltnJDMAZNMn6NG2EMuPuKlGeTplLVwo06wVaCTme77z7Wr2LsgvXBqk
+         88i8MNn2TeXjIB6bJKT6OC5ZBl4ekdDB1E/eUvMi+AxOX0D7GrIhrUFXEjzM9bWKXOTx
+         PpNWgsYhpk+4kCRwBNznp6N1IviPkxk1QvqXdCb6oeWkSdFBNuDgRTKMLjNUa4o5FD9f
+         O3Gq/WuXoCTLZvtnq8gqeYanSMfwRBrX9WB1bKK62/5DcV/Akoe/LTIYmL3Tfpmhuvrn
+         qikQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:arc-authentication-results;
-        bh=NDnqFrRTenjRAIvfyOEwxuI3wFNLFfCeETZ1uqkS4e4=;
-        b=ukDULQzYQ+OnmIqDT1Jib+HtIqAmJah/TxK4RNOCQmyixqvPUfCXrs5zwoEZyLZUag
-         +9p0b/K66RL1zdH9WFntowEG3Eb4BK2g4UjlI+uKeGdV7SSRYAZLsJP0xSbzBCd8iYLz
-         xR2FxsPpMRtgpRBx6s6tnAEzPOwAHLBf/gLiUTgN67IT7XtcYgneZWopEvJoXsPuFuL0
-         U9t7IoEHYTTk3kVYlAbSJvBFuZ51BxdZdAd01p1orWtAuiG1LHe6+dnO392M+hSAj4Gz
-         YmqPj583wTfK1zHAzX4Lr22OroxZHCCM6KnkhsO7jnOyUUdrXEDfd+7tuqbDDbXL3GWg
-         awQQ==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=5JXXPKie4vWj9nGtnZvlPmCCTlWSipzjaX5dhcLVSaY=;
+        b=wZdrwUh0nYZNnvzbdLYV2zWL0tSmf82DgMkGk8uEz79SD5UpsxKe9SOubXXvfmwaMr
+         KadJbyDCU7qhDf1PswCOV+HFD44j3FE4W8/FBegaLcgRx4I6Rm5ACKncG8I6tdZR/+Tv
+         DoXJG/Gk2rbVfCIOsIRX7bQTuJzrYrCHwYvut4nl2PaYurp+9rfYJUIouVKhJs+W7hM2
+         uoYnl/roSwGZMkl73wFcyijx3M9OkUgNlprDKkJbKehRQnO0y8Pl2HXLzXDNFAMwQ4WL
+         o7d3tx7D1/w+WCkax/+PiskKy9JrAaLEr6RknXLM3Gaf/XhSRc4jPvmInJROWvfy8l0Q
+         mWLw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=KTp6TS8a;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f21si188893ybg.760.2018.02.06.04.56.35
+        by mx.google.com with ESMTPS id b5si1274396ywc.365.2018.02.06.05.06.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 06 Feb 2018 04:56:35 -0800 (PST)
+        Tue, 06 Feb 2018 05:06:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=KTp6TS8a;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39791 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:41170 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ej2na-0005To-U3
-	for alex.bennee@linaro.org; Tue, 06 Feb 2018 07:56:34 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55509)
+	id 1ej2xc-0003NX-57
+	for alex.bennee@linaro.org; Tue, 06 Feb 2018 08:06:56 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58641)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1ej2nR-0005SQ-C7
-	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 07:56:26 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1ej2xN-0003Lp-Ad
+	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 08:06:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1ej2nM-0001SI-Hj
-	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 07:56:25 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:54216)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1ej2nM-0001S2-A0; Tue, 06 Feb 2018 07:56:20 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 35825C036740;
-	Tue,  6 Feb 2018 12:56:19 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-112.ams2.redhat.com
-	[10.36.116.112])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 58FF760C1C;
-	Tue,  6 Feb 2018 12:56:06 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1504286483-23327-1-git-send-email-eric.auger@redhat.com>
-	<1504286483-23327-11-git-send-email-eric.auger@redhat.com>
-	<CAFEAcA-40ucm8WZOEJC_1r4MdFXEPuX=GM2FC3hKZamLbijM7w@mail.gmail.com>
-	<bdb379f2-5272-dd5c-056d-da487dd21500@redhat.com>
-	<CAFEAcA8R5zYM5ppcx4wJk4jkMbCekjZVyL+m7R6mekf+nA6O+g@mail.gmail.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <f58908c7-71bd-eecb-2d67-5bfe85d82ffe@redhat.com>
-Date: Tue, 6 Feb 2018 13:56:04 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	(envelope-from <peter.maydell@linaro.org>) id 1ej2xJ-0004rm-D8
+	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 08:06:41 -0500
+Received: from mail-ot0-x242.google.com ([2607:f8b0:4003:c0f::242]:40942)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1ej2xJ-0004qr-7K
+	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 08:06:37 -0500
+Received: by mail-ot0-x242.google.com with SMTP id s4so1630278oth.7
+	for <qemu-arm@nongnu.org>; Tue, 06 Feb 2018 05:06:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=5JXXPKie4vWj9nGtnZvlPmCCTlWSipzjaX5dhcLVSaY=;
+	b=KTp6TS8a/o5mRGvgk4C9cEcNzoKZUEsMzdmu+nS/S9qGf0dlKYY9F3Jk2FeSE4emqF
+	ikqBiEY8AH1QuoJaPimdW8Iobhhc2ZAYQaWwapEkvrjcceC4vl6yJhoZ2/KgklJhZ/06
+	SszPp+h8IN0iIIbOTBXJ8pVFFQfQDGOkxwISA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=5JXXPKie4vWj9nGtnZvlPmCCTlWSipzjaX5dhcLVSaY=;
+	b=OeO1CNykjI8zKFH3kTduEdKjexwm8YW9QZxajJO40P3lbZpqIec7FLuzkRl6jkkOU+
+	KiQDVs/pR9rZVx89Jq9wrHc/w1SIjurZSzrbOxBaOpgD80v7ujCVFA3Tai7EAHlTwiRs
+	XJZG9kpIIj7nqFLlmED6OZiBc60KSn+ijJIfHecLhf2oTMV3DkUMQN3jCmuu08Ona8FG
+	HEa+jkBp3hQg1efsd7KO1g3EualHs/WY7NdX8FRw/LuTCqwD+T0+G7udvk5g3bKqStIG
+	yRPVb6FdZuZibQxYqPltuCJBycqkGyMxDOQPyIKQ558e7SMf2grUNOQ5G9uNYPDDtema
+	dRJQ==
+X-Gm-Message-State: APf1xPAlYimdnR4VKf97sRYALlV5xANMECl6ikjf67y/y/5BqpWEbzmG
+	INUCDy7uLkI1TQSzn0YY0hoWXtrBAleYGcHlb5z6YJ5f
+X-Received: by 10.157.21.26 with SMTP id u26mr1604978otf.110.1517922396483;
+	Tue, 06 Feb 2018 05:06:36 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8R5zYM5ppcx4wJk4jkMbCekjZVyL+m7R6mekf+nA6O+g@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Tue, 06 Feb 2018 12:56:19 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v7 10/20] hw/arm/smmuv3:
- Implement translate callback
+Received: by 10.157.34.163 with HTTP; Tue, 6 Feb 2018 05:06:16 -0800 (PST)
+In-Reply-To: <5a373a1f-6289-a216-cd02-254402069c12@amsat.org>
+References: <20180123035837.16578-1-f4bug@amsat.org>
+	<20180123035837.16578-5-f4bug@amsat.org>
+	<CAKmqyKMoUcPhkr8bM1DU1QeBaRbJ9kAfOp_j-vFxf1y8p=1AbA@mail.gmail.com>
+	<5a373a1f-6289-a216-cd02-254402069c12@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 6 Feb 2018 13:06:16 +0000
+Message-ID: <CAFEAcA8UzFXVyWKHKdOtjtoPjKCJ-dxu_MSZD4_1i3Hoge7eKw@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::242
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 4/6] hw/sd/pl181: expose a
+ SDBus and connect the SDCard to it
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,62 +108,68 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Radha Mohan <mohun106@gmail.com>, Andrew Jones <drjones@redhat.com>,
-	Trey Cain <tcain@qti.qualcomm.com>,
-	Radha.Chintakuntla@cavium.com, Sunil.Goutham@cavium.com,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Jean-Philippe Brucker <jean-philippe.brucker@arm.com>,
-	Tomasz Nowicki <tn@semihalf.com>, Bharat Bhushan <bharat.bhushan@nxp.com>,
-	Will Deacon <will.deacon@arm.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	Peter Xu <peterx@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Prem Mallappa <prem.mallappa@gmail.com>,
-	eric.auger.pro@gmail.com, robin.murphy@arm.com,
-	Christoffer Dall <christoffer.dall@linaro.org>, wtownsen@redhat.com
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+	Stefan Weil <sw@weilnetz.de>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	Michael Walle <michael@walle.cc>,
+	"open list:ARM PrimeCell and..." <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Yr2uxZMRcQ/2
+X-TUID: hh7UiT1R8u+E
 
-Hi Peter,
-On 06/02/18 13:43, Peter Maydell wrote:
-> On 6 February 2018 at 12:19, Auger Eric <eric.auger@redhat.com> wrote:
->> On 09/10/17 19:45, Peter Maydell wrote:
->>> Incidentally, the spec requires us to perform memory accesses as
->>> at least 64-bit single-copy atomic (see 3.21.3) -- does this do that?
->>> (This gets important with SMP when the guest on another CPU might
->>> be updating the STE or page table entry at the same time as we're
->>> reading it...)
+On 6 February 2018 at 12:43, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
+wrote:
+> Hi Alistair,
+>
+> On 01/31/2018 01:41 PM, Alistair Francis wrote:
+>> On Mon, Jan 22, 2018 at 7:58 PM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsa=
+t.org> wrote:
+>>> using the sdbus_*() API.
+>>>
+>>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>>> ---
+>>>  hw/sd/pl181.c | 31 ++++++++++++++++++++-----------
+>>>  1 file changed, 20 insertions(+), 11 deletions(-)
+>>>
+>>> diff --git a/hw/sd/pl181.c b/hw/sd/pl181.c
+>>> index 3ba1f7dd23..ce696c5d7d 100644
+>>> --- a/hw/sd/pl181.c
+>>> +++ b/hw/sd/pl181.c
+>>> @@ -33,6 +33,7 @@ typedef struct PL181State {
+>>>      SysBusDevice parent_obj;
+>>>
+>>>      MemoryRegion iomem;
+>>> +    SDBus sdbus;
+>>>      SDState *card;
 >>
->> Among all your comments on v7, here is the one I am the least
->> comfortable with. I was not able to figure out whether
->> dma_memory_read(), which I use now for all the descriptor accesses
->> guarantees this 64b single copy atomicity.
-> 
-> It doesn't -- it winds up in flatview_read_continue(), which will
-> do a memcpy() from guest ram into the buffer, and since it's
-> using an arbitrary passed-in length value the chances are high
-> it won't end up using an atomic access on the host.
-> 
-> This is a nasty issue which we haven't figured out at all yet;
-> see also this thread:
-> https://lists.gnu.org/archive/html/qemu-devel/2017-12/msg03067.html
-> 
-> For the moment my suggestion would be that when you need
-> to do guest memory accesses that have atomicity requirements you:
->  (a) use an accessor function which specifically loads a
->   quantity of the correct size, rather than one which takes
->   an arbitrary start-and-length
->   (when we add APIs which do have atomicity guarantees they'll
->   be "load 64 bit word" etc, so using our existing APIs of
->   that form should avoid needing to restructure this code later)
->  (b) add a TODO comment noting the required atomicity
+>> Shouludn't card be removed?
+>
+> Not yet :( It is still used by sd_set_cb() in pl181_reset().
 
-OK thank you for the link. To start with, I will add a comment in next
-version then.
+I think you have to change that sd_set_cb() code now.
+If you look at sd_cardchange() it uses "is this SD card
+object on an SDBus" to determine whether to notify the
+controller via the old-API IRQ lines, or using the
+set_inserted() and set_readonly() callbacks on the SDBusClass.
 
-Thanks
+> In my first approach [1] I added the SDBus SLAVE/MASTER interfaces and
+> the cards inserted/readonly signals were only accessible by the bus, not
+> the HCI, leaving the SDCard objects only pluggable to SDBus (removing
+> the sdbus_reparent_card() need). But since it was out of scope for the
+> UHS cards goal, I kept it for later.
 
-Eric
-> 
-> thanks
-> -- PMM
-> 
+How do you manage to get rid of sdbus_reparent_card()? Raspi
+needs it for its weirdo multiplexed SD controller setup, and
+AFAIK we don't have a way to say "this thing is hotpluggable
+but not by the user" yet...
+
+PS: have you checked that these sd card refactorings don't
+accidentally break the monitor "change" and "eject" commands
+operating on SD cards ? (They are a bit weird because they
+affect which backing file is attached to the SD card object,
+rather than actually deleting and recreating the SD card
+object.)
+
+thanks
+-- PMM

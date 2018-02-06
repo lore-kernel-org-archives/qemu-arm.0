@@ -1,196 +1,422 @@
-Received: by 10.28.71.27 with SMTP id u27csp3696469wma;
-        Tue, 6 Feb 2018 04:03:00 -0800 (PST)
-X-Google-Smtp-Source: AH8x227MJuCfrSkBekAYbgEQ6UKfWjvj0zrMmUQiv0ekgAjRBT1UoTczWqvT/ZVVd2cOA6WpwDA+
-X-Received: by 10.37.65.9 with SMTP id o9mr1162822yba.483.1517918579985;
-        Tue, 06 Feb 2018 04:02:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1517918579; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp3715952wma;
+        Tue, 6 Feb 2018 04:20:30 -0800 (PST)
+X-Google-Smtp-Source: AH8x225IX/WXfz23YbYAsEoVulCUsCAtgEaUz0Cl54yG7e3HdqZlttoU8Yy8rhr9xI6ZKgfN+S35
+X-Received: by 10.37.132.207 with SMTP id x15mr1252866ybm.504.1517919630028;
+        Tue, 06 Feb 2018 04:20:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1517919630; cv=none;
         d=google.com; s=arc-20160816;
-        b=0MlCExELRWzW/FR/yIVmIFqJCRnkFwi2jZPyDpU9RGT75IrsDwXx8U6klzSpjd811L
-         L8Vw33K8xkePaxQSNNYOn/GsTsx3yz6Ge+R1E1kZrStKGZWYzr+rY5zqC9MQvLour2U5
-         BR3MllNyFTH1Hfr1mLxr5jrr3CRDHJU8Y8ruvjOcWSm5NfIodDeruMCPxCR6CAaOAJTR
-         C7f1LFR4Ii4zFCE0vFAthBQb3Fc18zAiamReWqch8aqsHMsYeyi0bUV6yrAvjsf6yc8v
-         827hS3cAkgG77z4hrdVHOy9AYHhhmRrVuvfbBpaqrtR1NWgQAT8mB8lmAGTOOJBLy4hj
-         ntDA==
+        b=wEJtyH9ZoMKESnw6hIOhWxjvEV8QPTZ5ZrIbBEp5liNtM0N49UdLWkFPougfjqPcX3
+         gwQ1c7WXblE4fWiK8bkpcon7fHJ9WIJinXYbFGgrvsBj4Ta6abIaA7WLU5C6ccR+efqe
+         /udlSRVgLSjboW3wsTZ7mxJOZMGLdkcHsv6pbETJCelP6iYsrH7P5O7uXVy3ue8ynj94
+         XFDmvKUH/VfUQ+hD6VlxebQVTqRv8L6ObcOoH2VidanwaRHmAusFCIo7hbrn4yw3IAPw
+         FQ+vLkO7c/AgPe+K/3nsBVszgZA48tS2huUTEg1WQPQBMx7XmiU5LQUmI9ba+RK+TuoG
+         2Qiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :mime-version:user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=0I/JOKgFRaP6Cp1V9VrCi9I6qZBEfCpYQfBuyTJKLJE=;
-        b=Bx/vHcWERaB1MYgRfQD//8Abi0W2mdXw2EJeBl7HbKTB4qRxFtRDx/Y9lJ7iFbdXAy
-         lKXj3iJmKl+E2RPSgblbOij/WChHp9taQmQWKmvX28600Wzv00WbqkgLf/K9OabBLpSq
-         Qqae4SkMw9ZK22GhgLw2MjlQNcRZYwXSNd+aQ+xi21gG1cV7sIbzIqwQge7GzBVDt9z1
-         S4u21rIkifjSZNNtfkYaV4Bdrq5V8DUxg0OjR+v3xqg4cg2MXzNYrfoU0YmRJ2dxBtbp
-         55MlGYCzwy/rhh5NvxLegVv6Lf8AR4ZM94rhj27d2DSPwI6OHFhIMSFpso62tJgrtthw
-         809Q==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=fRmBLgNi5Ccbi472EegtZk+9XwrBJDyCragnUvzkgrY=;
+        b=Mq+iw8hkvl9tAWUi7+x1Ia1wAMDV8DR79lRcMvTogveRpHmL2xODYroSj8smTi0cD7
+         jY9TLGwJRpXIgA1NuNfJKMI8RUzDFlIUKWpY33H1sY58BKSmoYo/HbbY54MqHPqeLC2F
+         BvmGirS13/2bo5/ecdB4aW61uZ6ngRI49/h92r5Eioxb/vBpVLn3aVKHersJGC/DJ3kf
+         PT5zJeS6hSSDv5xhn6g4Z6RhYVPk2u1CJ7oqE6bWKoYldDV+V8x7qP5U2HyQu614bH3J
+         y9RBkQpHZ/VnMfnE/96H10RxM1mPiZSh/hJ5/Fh6oR/qRAoXPi5mUHEbkX0Ytn1jaXc0
+         waEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@gmail.com header.s=20161025 header.b=WwvNNhpS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p11si1833971ybe.492.2018.02.06.04.02.59
+        by mx.google.com with ESMTPS id c10si1836912ywl.614.2018.02.06.04.20.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 06 Feb 2018 04:02:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 06 Feb 2018 04:20:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@gmail.com header.s=20161025 header.b=WwvNNhpS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:33860 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:35857 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ej1xj-0006mS-GI
-	for alex.bennee@linaro.org; Tue, 06 Feb 2018 07:02:59 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41755)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ej2Ef-0008SF-Dt
+	for alex.bennee@linaro.org; Tue, 06 Feb 2018 07:20:29 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45858)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ej1wO-00069t-O2
-	for qemu-devel@nongnu.org; Tue, 06 Feb 2018 07:01:41 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1ej2ET-0008Rs-SW
+	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 07:20:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ej1wF-0001mQ-5B
-	for qemu-devel@nongnu.org; Tue, 06 Feb 2018 07:01:36 -0500
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:33777)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ej1wF-0001mD-0W; Tue, 06 Feb 2018 07:01:27 -0500
-Received: by mail-qk0-x241.google.com with SMTP id c82so1916519qka.0;
-	Tue, 06 Feb 2018 04:01:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to;
-	bh=ycY6RLQuhQg8ZZmk8jjvwQKlOFa9WccLXkExcblZeS8=;
-	b=WwvNNhpStVuVAj1CAYcKno/jebT9bYYlGlh5QkAfrrRN5oezMMQFqp3hiKhpud6t+7
-	6JeDxgA0SAjbIGn6+HP68AOwdn47uhXuAeDGCPlEj84zYAyJbFaoIzloYfhFnA502tj8
-	LQh/x7AvVkegN8/vblAgssIxPW7sZtOljJcmtoxi/j1RvXCmBGVyeFChF2hIn5hDEDOn
-	6p125Fc44/NqYf1kTrV8ZWNXKQ7mcBlemLa8BpBwWTqwFS2O94ZPz5VsuQ4pISj5VS2Q
-	riHUhhBFZVUn7cwL7oBTqIThmETnHBvN0wfA3TscXH2YVLEmp0WxpjwLr9r5BAm0MwG3
-	/iNw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to;
-	bh=ycY6RLQuhQg8ZZmk8jjvwQKlOFa9WccLXkExcblZeS8=;
-	b=JRinGD9JAM1su3O16MsQOS8dsNWNVnT05oR4ZaO37/cK6MMowk/PKilCm4aUAc2Ir8
-	m7A+7WvnULC2UaKyXw2sSnv5K3d8AoZgVWg6YpSHKHYrqvVlBKqxS4ayxP5+wLrvZM6U
-	DHzvYbBAasCCzdiUjlrkDCuaTQQSEt1DvL03gSqQsYYay918SJRtXEUaIORid09f7dTs
-	AAVUF/oXMT2XUsx3/lnTdGfwKonTEa8dhPF2xM9jEXaGdePI4xapwjHLyzNLpVryHT1M
-	yPUk90913b4zZ75sDAZgPSrPUTOyaghIWAYb1Wf+4O8t6s6R53dxWFAXVcwqZ6EwnUId
-	rilw==
-X-Gm-Message-State: APf1xPDkMK5eTYV3cG4xLH81oxsYNiqJT2EbMu6s0hSwobEEfEy0fU/B
-	l4jIXql3QJ7czDqDz2eQcdU=
-X-Received: by 10.55.141.198 with SMTP id p189mr2712175qkd.65.1517918486300;
-	Tue, 06 Feb 2018 04:01:26 -0800 (PST)
-Received: from [192.168.1.11] ([138.117.48.219])
-	by smtp.gmail.com with ESMTPSA id
-	n11sm7168261qkn.18.2018.02.06.04.01.23
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 06 Feb 2018 04:01:25 -0800 (PST)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-References: <20180206103941.13985-1-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <f299cc78-6d7c-f66b-6662-e1498559ef21@amsat.org>
-Date: Tue, 6 Feb 2018 09:01:19 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.2
+	(envelope-from <eric.auger@redhat.com>) id 1ej2EO-0005j2-MF
+	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 07:20:17 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:59596)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1ej2EO-0005hv-DP; Tue, 06 Feb 2018 07:20:12 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 29A6078551;
+	Tue,  6 Feb 2018 12:20:11 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-112.ams2.redhat.com
+	[10.36.116.112])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4819760C4A;
+	Tue,  6 Feb 2018 12:19:34 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1504286483-23327-1-git-send-email-eric.auger@redhat.com>
+	<1504286483-23327-11-git-send-email-eric.auger@redhat.com>
+	<CAFEAcA-40ucm8WZOEJC_1r4MdFXEPuX=GM2FC3hKZamLbijM7w@mail.gmail.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <bdb379f2-5272-dd5c-056d-da487dd21500@redhat.com>
+Date: Tue, 6 Feb 2018 13:19:32 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-In-Reply-To: <20180206103941.13985-1-peter.maydell@linaro.org>
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature";
-	boundary="mA3i7GS5yF3BbUkLiRFvAc7CoLhUGrong"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
-X-Content-Filtered-By: Mailman/MimeDel 2.1.21
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH] target/arm/translate.c: Fix
- missing 'break' for TT insns
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <CAFEAcA-40ucm8WZOEJC_1r4MdFXEPuX=GM2FC3hKZamLbijM7w@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Tue, 06 Feb 2018 12:20:11 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v7 10/20] hw/arm/smmuv3: Implement translate
+ callback
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nLqsK2md05+Q
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Radha Mohan <mohun106@gmail.com>, Andrew Jones <drjones@redhat.com>,
+	Trey Cain <tcain@qti.qualcomm.com>,
+	Radha.Chintakuntla@cavium.com, Sunil.Goutham@cavium.com,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	jean-philippe.brucker@arm.com, Tomasz Nowicki <tn@semihalf.com>,
+	Will Deacon <will.deacon@arm.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	Peter Xu <peterx@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	Christoffer Dall <christoffer.dall@linaro.org>,
+	robin.murphy@arm.com, wtownsen@redhat.com,
+	Bharat Bhushan <bharat.bhushan@nxp.com>,
+	Prem Mallappa <prem.mallappa@gmail.com>, eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jNvj4+S0naUF
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---mA3i7GS5yF3BbUkLiRFvAc7CoLhUGrong
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: patches@linaro.org
-Message-ID: <f299cc78-6d7c-f66b-6662-e1498559ef21@amsat.org>
-Subject: Re: [Qemu-arm] [PATCH] target/arm/translate.c: Fix missing 'break'
- for TT insns
-References: <20180206103941.13985-1-peter.maydell@linaro.org>
-In-Reply-To: <20180206103941.13985-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Hi Peter,
+On 09/10/17 19:45, Peter Maydell wrote:
+> On 1 September 2017 at 18:21, Eric Auger <eric.auger@redhat.com> wrote:
+>> This patch implements the IOMMU Memory Region translate()
+>> callback. Most of the code relates to the translation
+>> configuration decoding and check (STE, CD).
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> ---
+>>  hw/arm/smmuv3-internal.h | 182 +++++++++++++++++++++++-
+>>  hw/arm/smmuv3.c          | 351 ++++++++++++++++++++++++++++++++++++++++++++++-
+>>  hw/arm/trace-events      |   9 ++
+>>  3 files changed, 537 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+>> index e3e9828..f9f95ae 100644
+>> --- a/hw/arm/smmuv3-internal.h
+>> +++ b/hw/arm/smmuv3-internal.h
+>> @@ -399,7 +399,185 @@ typedef enum evt_err {
+>>      SMMU_EVT_E_PAGE_REQ     = 0x24,
+>>  } SMMUEvtErr;
+>>
+>> -void smmuv3_record_event(SMMUV3State *s, hwaddr iova,
+>> -                         uint32_t sid, bool is_write, SMMUEvtErr type);
+>> +/*****************************
+>> + * Configuration Data
+>> + *****************************/
+>> +
+>> +typedef struct __smmu_data2  STEDesc; /* STE Level 1 Descriptor */
+>> +typedef struct __smmu_data16 Ste;     /* Stream Table Entry(STE) */
+>> +typedef struct __smmu_data2  CDDesc;  /* CD Level 1 Descriptor */
+>> +typedef struct __smmu_data16 Cd;      /* Context Descriptor(CD) */
+>> +
+>> +/*****************************
+>> + * STE fields
+>> + *****************************/
+>> +
+>> +#define STE_VALID(x)   extract32((x)->word[0], 0, 1) /* 0 */
+>> +#define STE_CONFIG(x)  extract32((x)->word[0], 1, 3)
+>> +enum {
+>> +    STE_CONFIG_NONE      = 0,
+>> +    STE_CONFIG_BYPASS    = 4,       /* S1 Bypass    , S2 Bypass */
+>> +    STE_CONFIG_S1        = 5,       /* S1 Translate , S2 Bypass */
+>> +    STE_CONFIG_S2        = 6,       /* S1 Bypass    , S2 Translate */
+>> +    STE_CONFIG_NESTED    = 7,       /* S1 Translate , S2 Translate */
+>> +};
+>> +#define STE_S1FMT(x)   extract32((x)->word[0], 4, 2)
+>> +#define STE_S1CDMAX(x) extract32((x)->word[1], 27, 5)
+>> +#define STE_EATS(x)    extract32((x)->word[2], 28, 2)
+>> +#define STE_STRW(x)    extract32((x)->word[2], 30, 2)
+>> +#define STE_S2VMID(x)  extract32((x)->word[4], 0, 16)
+>> +#define STE_S2T0SZ(x)  extract32((x)->word[5], 0, 6)
+>> +#define STE_S2SL0(x)   extract32((x)->word[5], 6, 2)
+>> +#define STE_S2TG(x)    extract32((x)->word[5], 14, 2)
+>> +#define STE_S2PS(x)    extract32((x)->word[5], 16, 3)
+>> +#define STE_S2AA64(x)  extract32((x)->word[5], 19, 1)
+>> +#define STE_S2HD(x)    extract32((x)->word[5], 24, 1)
+>> +#define STE_S2HA(x)    extract32((x)->word[5], 25, 1)
+>> +#define STE_S2S(x)     extract32((x)->word[5], 26, 1)
+>> +#define STE_CTXPTR(x)                                           \
+>> +    ({                                                          \
+>> +        unsigned long addr;                                     \
+>> +        addr = (uint64_t)extract32((x)->word[1], 0, 16) << 32;  \
+>> +        addr |= (uint64_t)((x)->word[0] & 0xffffffc0);          \
+>> +        addr;                                                   \
+>> +    })
+>> +
+>> +#define STE_S2TTB(x)                                            \
+>> +    ({                                                          \
+>> +        unsigned long addr;                                     \
+>> +        addr = (uint64_t)extract32((x)->word[7], 0, 16) << 32;  \
+>> +        addr |= (uint64_t)((x)->word[6] & 0xfffffff0);          \
+>> +        addr;                                                   \
+>> +    })
+>> +
+>> +static inline int is_ste_bypass(Ste *ste)
+> 
+> Types which are acronyms are all-caps, so STE, CD.
+> 
+>> +{
+>> +    return STE_CONFIG(ste) == STE_CONFIG_BYPASS;
+>> +}
+>> +
+>> +static inline bool is_ste_stage1(Ste *ste)
+>> +{
+>> +    return STE_CONFIG(ste) == STE_CONFIG_S1;
+>> +}
+>> +
+>> +static inline bool is_ste_stage2(Ste *ste)
+>> +{
+>> +    return STE_CONFIG(ste) == STE_CONFIG_S2;
+>> +}
+>> +
+>> +/**
+>> + * is_s2granule_valid - Check the stage 2 translation granule size
+>> + * advertised in the STE matches any IDR5 supported value
+>> + */
+>> +static inline bool is_s2granule_valid(Ste *ste)
+>> +{
+>> +    int idr5_format = 0;
+>> +
+>> +    switch (STE_S2TG(ste)) {
+>> +    case 0: /* 4kB */
+>> +        idr5_format = 0x1;
+>> +        break;
+>> +    case 1: /* 64 kB */
+>> +        idr5_format = 0x4;
+>> +        break;
+>> +    case 2: /* 16 kB */
+>> +        idr5_format = 0x2;
+>> +        break;
+>> +    case 3: /* reserved */
+>> +        break;
+>> +    }
+>> +    idr5_format &= SMMU_IDR5_GRAN;
+>> +    return idr5_format;
+>> +}
+>> +
+>> +static inline int oas2bits(int oas_field)
+>> +{
+>> +    switch (oas_field) {
+>> +    case 0b011:
+>> +        return 42;
+>> +    case 0b100:
+>> +        return 44;
+>> +    default:
+>> +        return 32 + (1 << oas_field);
+>> +   }
+>> +}
+>> +
+>> +static inline int pa_range(Ste *ste)
+>> +{
+>> +    int oas_field = MIN(STE_S2PS(ste), SMMU_IDR5_OAS);
+>> +
+>> +    if (!STE_S2AA64(ste)) {
+>> +        return 40;
+>> +    }
+>> +
+>> +    return oas2bits(oas_field);
+>> +}
+>> +
+>> +#define MAX_PA(ste) ((1 << pa_range(ste)) - 1)
+>> +
+>> +/*****************************
+>> + * CD fields
+>> + *****************************/
+>> +#define CD_VALID(x)   extract32((x)->word[0], 30, 1)
+>> +#define CD_ASID(x)    extract32((x)->word[1], 16, 16)
+>> +#define CD_TTB(x, sel)                                      \
+>> +    ({                                                      \
+>> +        uint64_t hi, lo;                                    \
+>> +        hi = extract32((x)->word[(sel) * 2 + 3], 0, 16);    \
+>> +        hi <<= 32;                                          \
+>> +        lo = (x)->word[(sel) * 2 + 2] & ~0xf;               \
+>> +        hi | lo;                                            \
+>> +    })
+>> +
+>> +#define CD_TSZ(x, sel)   extract32((x)->word[0], (16 * (sel)) + 0, 6)
+>> +#define CD_TG(x, sel)    extract32((x)->word[0], (16 * (sel)) + 6, 2)
+>> +#define CD_EPD(x, sel)   extract32((x)->word[0], (16 * (sel)) + 14, 1)
+>> +
+>> +#define CD_T0SZ(x)    CD_TSZ((x), 0)
+>> +#define CD_T1SZ(x)    CD_TSZ((x), 1)
+>> +#define CD_TG0(x)     CD_TG((x), 0)
+>> +#define CD_TG1(x)     CD_TG((x), 1)
+>> +#define CD_EPD0(x)    CD_EPD((x), 0)
+>> +#define CD_EPD1(x)    CD_EPD((x), 1)
+>> +#define CD_IPS(x)     extract32((x)->word[1], 0, 3)
+>> +#define CD_AARCH64(x) extract32((x)->word[1], 9, 1)
+>> +#define CD_TTB0(x)    CD_TTB((x), 0)
+>> +#define CD_TTB1(x)    CD_TTB((x), 1)
+>> +
+>> +#define CDM_VALID(x)    ((x)->word[0] & 0x1)
+>> +
+>> +static inline int is_cd_valid(SMMUV3State *s, Ste *ste, Cd *cd)
+>> +{
+>> +    return CD_VALID(cd);
+>> +}
+>> +
+>> +/**
+>> + * tg2granule - Decodes the CD translation granule size field according
+>> + * to the TT in use
+>> + * @bits: TG0/1 fiels
+>> + * @tg1: if set, @bits belong to TG1, otherwise belong to TG0
+>> + */
+>> +static inline int tg2granule(int bits, bool tg1)
+>> +{
+>> +    switch (bits) {
+>> +    case 1:
+>> +        return tg1 ? 14 : 16;
+>> +    case 2:
+>> +        return tg1 ? 12 : 14;
+>> +    case 3:
+>> +        return tg1 ? 16 : 12;
+>> +    default:
+>> +        return 12;
+>> +    }
+>> +}
+>> +
+>> +#define L1STD_L2PTR(stm) ({                                 \
+>> +            uint64_t hi, lo;                            \
+>> +            hi = (stm)->word[1];                        \
+>> +            lo = (stm)->word[0] & ~(uint64_t)0x1f;      \
+>> +            hi << 32 | lo;                              \
+>> +        })
+>> +
+>> +#define L1STD_SPAN(stm) (extract32((stm)->word[0], 0, 4))
+>>
+>>  #endif
+>> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+>> index 7470576..20fbce6 100644
+>> --- a/hw/arm/smmuv3.c
+>> +++ b/hw/arm/smmuv3.c
+>> @@ -160,9 +160,9 @@ static void smmuv3_write_evtq(SMMUV3State *s, Evt *evt)
+>>  /*
+>>   * smmuv3_record_event - Record an event
+>>   */
+>> -void smmuv3_record_event(SMMUV3State *s, hwaddr iova,
+>> -                         uint32_t sid, IOMMUAccessFlags perm,
+>> -                         SMMUEvtErr type)
+>> +static void smmuv3_record_event(SMMUV3State *s, hwaddr iova,
+>> +                                uint32_t sid, IOMMUAccessFlags perm,
+>> +                                SMMUEvtErr type)
+>>  {
+>>      Evt evt;
+>>      bool rnw = perm & IOMMU_RO;
+>> @@ -306,6 +306,348 @@ static inline void smmu_update_base_reg(SMMUV3State *s, uint64_t *base,
+>>      *base = val & ~(SMMU_BASE_RA | 0x3fULL);
+>>  }
+>>
+>> +/*
+>> + * All SMMU data structures are little endian, and are aligned to 8 bytes
+>> + * L1STE/STE/L1CD/CD, Queue entries in CMDQ/EVTQ/PRIQ
+>> + */
+>> +static inline int smmu_get_ste(SMMUV3State *s, hwaddr addr, Ste *buf)
+>> +{
+>> +    trace_smmuv3_get_ste(addr);
+>> +    return dma_memory_read(&address_space_memory, addr, buf, sizeof(*buf));
+> 
+> Why dma_memory_read() here when we were using other memory access
+> functions for things like TLB table walks earlier?
+> 
+> Incidentally, the spec requires us to perform memory accesses as
+> at least 64-bit single-copy atomic (see 3.21.3) -- does this do that?
+> (This gets important with SMP when the guest on another CPU might
+> be updating the STE or page table entry at the same time as we're
+> reading it...)
 
-On 02/06/2018 07:39 AM, Peter Maydell wrote:
-> The code where we added the TT instruction was accidentally
+Among all your comments on v7, here is the one I am the least
+comfortable with. I was not able to figure out whether
+dma_memory_read(), which I use now for all the descriptor accesses
+guarantees this 64b single copy atomicity.
 
-"In 5158de241b0 ..."
+Unrelated, I also did not change command descriptor field decoding (you
+suggested to use registerfields.h). cmd struct is a a structure laid out
+in guest RAM so I was not sure about how to use the register API for
+this decoding.
 
-> missing a 'break', which meant that after generating the code
-> to execute the TT we would fall through to 'goto illegal_op'
-> and generate code to take an UNDEF insn.>
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+With respect to the GPLv2 license issue, at the moment, I have not been
+able to get an ACK from any Broadcom representative for transforming it
+into "v2 or later". I will continue trying getting this approval though.
 
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+The IOMMU is not instantiated anymore using sysbus-fdt. it is
+instantiated according to a machine option, still set to false by
+default, given the performance overhead.
 
-> ---
-> Doh...
->=20
->  target/arm/translate.c | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index 55826b7e5a..572c4d1cb6 100644
-> --- a/target/arm/translate.c
-> +++ b/target/arm/translate.c
-> @@ -9926,6 +9926,7 @@ static void disas_thumb2_insn(DisasContext *s, ui=
-nt32_t insn)
->                          tcg_temp_free_i32(addr);
->                          tcg_temp_free_i32(op);
->                          store_reg(s, rd, ttresp);
-> +                        break;
->                      }
->                      goto illegal_op;
->                  }
->=20
+Otherwise I think I covered all your comments in v8.
 
+As I mentioned in my cover letter I intend to submit separate patches
+later on for
+- vhost integration
+- TLB emulation (as done on intel iommu),
 
---mA3i7GS5yF3BbUkLiRFvAc7CoLhUGrong
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
+as the code base already is huge and I am reluctant to add some other
+features until the basic functionality has not stabilized.
 
------BEGIN PGP SIGNATURE-----
+Thanks
 
-iQIzBAEBCgAdFiEE+qvnXhKRciHc/Wuy4+MsLN6twN4FAlp5mQ8ACgkQ4+MsLN6t
-wN4aiBAAvWauOIxILXDXXVjX7VcRTb4/zxGy0gNbzGKUc1xhollp2g+2P7Jeq0qo
-svpwPajSeeu4Bd98TcC7lFi1GVBe3l0krZTeIFbW58kgi/VahMyBXATAQJwsu9Ac
-96XuMdH8l42XMfQ83KIyGgku+J2lQ270XPTqCRVw49X667kuXIlgolKWauuLJ2cf
-7Aw9/kkZjG5/QHzF2Lst+OzbnLSEd5z1rfKdx6usTTLlHGBSxTCcRXAfbNSrNJ2Y
-XO/AP7PzfhA+Xtl7+JIyNW11yUJwCMcSYbz2qS4X9PfuNE8FPaZnM+chGNoccZFs
-B2Zbg5o3ykq/KTqqdplqM+R9q2AyhTzsU2Xy39QtiDfHopNXI5goE5I4L7rJXPiT
-6gIQXrpZ70csIO9mX4h8y5HM1v/Bq8XO+EDXIkWPgcQvsH74j1FIKs595oyP4b9a
-MC7cSeAuBFzB9OkupmX8zGbEReuIZQwsvrAkXy+8So7aMnXQZKKrMmcAje7VpXbW
-sRiiynPoH44w04tlNtqhCAjKGP/nXaJagTpR7IqnvcRrzsewcWJgZ/MmqopNWrC7
-X5a76Kcq3bLjYD1yD66wXx4J8NOYpnYLyYu9zA7x+ddcHi+akn90ywp6yuzZMnRr
-vpx/voO7pOADgUcNILvRVbybPZeJBR0J6VMkK+MKzfFLBm17eYU=
-=AbIQ
------END PGP SIGNATURE-----
-
---mA3i7GS5yF3BbUkLiRFvAc7CoLhUGrong--
+Eric
+> 
+>> +}
+>> +
+>> +/*
+>> + * For now we only support CD with a single entry, 'ssid' is used to identify
+>> + * otherwise
+>> + */
+>> +static inline int smmu_get_cd(SMMUV3State *s, Ste *ste, uint32_t ssid, Cd *buf)
+>> +{
+>> +    hwaddr addr = STE_CTXPTR(ste);
+>> +
+>> +    if (STE_S1CDMAX(ste) != 0) {
+>> +        error_report("Multilevel Ctx Descriptor not supported yet");
+>> +    }
+>> +
+>> +    trace_smmuv3_get_cd(addr);
+>> +    return dma_memory_read(&address_space_memory, addr, buf, sizeof(*buf));
+>> +}
+>> +
+>> +/**
+>> + * is_ste_consistent - Check validity of STE
+>> + * according to 6.2.1 Validity of STE
+>> + * TODO: check the relevance of each check and compliance
+>> + * with this spec chapter
+> 
+> Good idea :-)
+> 
+> thanks
+> -- PMM
+> 

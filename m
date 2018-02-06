@@ -1,511 +1,131 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2961889wre;
-        Mon, 28 May 2018 16:34:48 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKIm7rKzZAoTARHIRo0bLtoFzBi+StUUzZjjCrJQlbd4zlI/Mm1+I7uhCDtKNRYPK0yR/mZ1
-X-Received: by 2002:ac8:2acc:: with SMTP id c12-v6mr13735002qta.389.1527550487925;
-        Mon, 28 May 2018 16:34:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527550487; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp3560753wma;
+        Tue, 6 Feb 2018 01:42:47 -0800 (PST)
+X-Google-Smtp-Source: AH8x226QM8zshvj0nU/H6zf4ZeS2Oo/fIqQiWpMa2vpmcI4I55NXfVi4fEEqWpv7HaawcTsXUNyl
+X-Received: by 10.13.205.3 with SMTP id p3mr895537ywd.377.1517910167158;
+        Tue, 06 Feb 2018 01:42:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1517910167; cv=none;
         d=google.com; s=arc-20160816;
-        b=rK4gtAQTbJPQSB8Sf4G6/kezo3OhtY3zxLKmjXShq2gfeWhmDFXRuC5Wp2dSgFUMuw
-         CV57bVc5PaICDsskLYmp7hIj/Dg8jtcFK/f3b45Ngzq/T70l4FSMOJ57M5Lpx3DK+cuR
-         wN1/cdtlqU1doVQHshERShr33lfg9mp7z9mEci1jsQv7MTnz3HA1RkQFU8aBzS9/uGyr
-         I8Bl6ZQTk96DXlMK4Q5/MfNCJ69kZLOLGrar+EPSuxTAMKuI2B/iWlhEybztF1S0uhfI
-         iPIMqD03i+oVgmzbWBPvzYA5GaEKoCmK8Z7KOtVfUZhjYkbErHSFVPFsoVrK32Q79nQZ
-         ePFQ==
+        b=PUneMxsR00hDV8RM9L+iGu+I+dczuKA1q/h2MzT61GWqwiReddfG4kDQgp6jP92cUj
+         CwGKqBwAkC9WqAXRVHYhFDnYGTONna4q0WlZml0Nb7kaSAlZIIEN+/UKzQyJK2Tjf0FE
+         Tt75TEmokWrWB+l3+14EGKivZ58wn6qdEicRUlO2hphsIxeGVtKHPe12dv5MsqLWPzMZ
+         Be0fOmvhYC8sQ+zL1ymCzd0h3F7xnIGEgr/FWX86ujlLXKaJfwojCAkx5kra0chBMaC+
+         0ag+WqCkdp0COuGQESW203r5OWzl8m8aY/1QYeKWJu+jnhzJCQgQrNeEM4s/MROFjB40
+         TddA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=Li1wVyuiQXKmAFo26FEcGMtBaKBErHDK52LJ93ejEyE=;
-        b=EY8EZOKULNsvhbKsRUJ2kLk/H5f+7CricJuFG2XsiaDDR2F/V9f2JeBkwrpswjDzIw
-         9CFeOcICM2z5fCjw/cV4Aof3beMEz9En4CyflgozI/dRUGGf925oT8OTRkSAZdRxLK1J
-         y9z6gD4guXJc3Fcx/YhLCNedpAphi4/pVxjHEZRy3QvIWWPC4WMZ5Ouu29AR56/ue6Sv
-         YH4Thm58mDMm6uBifEcxMdP7ZM/ezvMeF+N0s9jXjH9g0y1R8qV5Ak7KrBsF7eHgR/xS
-         hdMPUFHdqCmllVz7trlDZe7QH5lYXIkhVPmRvsoh7bAv5bu62ocellI4wIutZ6UDrF4z
-         7eeg==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=n0BoXywqVHNeFxJWbtU2WlvZhHjmr3S6rQ8zZ/1T0kc=;
+        b=PEc9xFNIdQjw/aqXC1ayl5Wuvz2xZZYtvYb06+tCiVGftqKjv9RIE9jPiz11bZKC7B
+         xN+X19FAgMkJ2SnL9IPYLMzwotzHKLDZTnogpLOQQY9U/7R6ZDeqN3y1GEv3CoyItFtF
+         9gKpzluJewN2p6dZJUR3lOkcIGufvl9PU5znEllo+v2dRllEjlLPsUwDoG/rXLyP22yw
+         x2zao7RVdGp3Ov64NIdS/lBPbUkjbSqE8wLRCYKNmMEtXkgSd57tvC39Uc63l/WEx0UV
+         BIAGgOS3ViIXmlvCHfAcUHTPw88cYGbrEGSJBdTBdtlgh/NGBeoP6t7Haz1NGTR01eQR
+         1jDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Jz04blsz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Vo1nJuuC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n1-v6si2883690qvo.72.2018.05.28.16.34.47
+        by mx.google.com with ESMTPS id z136si1771231ywz.505.2018.02.06.01.42.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 28 May 2018 16:34:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 06 Feb 2018 01:42:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Jz04blsz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:58199 helo=lists.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=Vo1nJuuC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:47094 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNRf5-0002ww-Bz
-	for alex.bennee@linaro.org; Mon, 28 May 2018 19:34:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32915)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eizm2-00061n-MU
+	for alex.bennee@linaro.org; Tue, 06 Feb 2018 04:42:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33922)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNRYr-0007KQ-FX
-	for qemu-devel@nongnu.org; Mon, 28 May 2018 19:28:23 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1eizlv-00060G-Nx
+	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 04:42:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNRYp-0001E9-FW
-	for qemu-devel@nongnu.org; Mon, 28 May 2018 19:28:21 -0400
-Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:35512)
+	(envelope-from <peter.maydell@linaro.org>) id 1eizlu-0005tG-W3
+	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 04:42:39 -0500
+Received: from mail-ot0-x22a.google.com ([2607:f8b0:4003:c0f::22a]:39500)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNRYp-0001Dv-8y; Mon, 28 May 2018 19:28:19 -0400
-Received: by mail-qk0-x244.google.com with SMTP id d130-v6so4782707qkc.2;
-	Mon, 28 May 2018 16:28:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=Li1wVyuiQXKmAFo26FEcGMtBaKBErHDK52LJ93ejEyE=;
-	b=Jz04blsz0nokPxPZZIpXNiodIJ5X3LR1L/ZxtKGkt90YvdR5811omRm9U5RzMVvgV5
-	+V6/R6oWZj27zM2xJkaBhMQ+NBrr50WYY34lG7uKFvYa2rwvxuOppyVRmsIRVOJtLs1v
-	t7QOPkTNVZwipwzzMIuUNLPnUqbvtjVh729Glm422tXjEgJXrwGFZATa+dXEijKNxSdR
-	wzGILbTB7AuLYNmjWnw+KV8tIAhZmF+a5uNtWLIxR4xmmJt6sYXLu0fDcOIG97xfZZcN
-	kSPbeA5hmSoD8RzeGf2lyY615lViL1mQwp8yG5B6UhaXqdMJi55WwrTLOLZHnArthAWp
-	n9YA==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1eizlu-0005sx-QU
+	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 04:42:38 -0500
+Received: by mail-ot0-x22a.google.com with SMTP id f18so1142636otf.6
+	for <qemu-arm@nongnu.org>; Tue, 06 Feb 2018 01:42:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=n0BoXywqVHNeFxJWbtU2WlvZhHjmr3S6rQ8zZ/1T0kc=;
+	b=Vo1nJuuCQ9x+Uujj/dKEd6KwCiM5StW7Imh2e1IQBzXpPTXM6ix9Nu++2Is2O1bG+t
+	UH+hGWfUhHfM8+YI4YC6q69KhaasoIq4050fsiyxWFIw+2pfeX+uHCl9ztFHZQr/U/IC
+	ywapOV8pW6L5Ufmyxapy/NknmgofNxJDchkfA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=Li1wVyuiQXKmAFo26FEcGMtBaKBErHDK52LJ93ejEyE=;
-	b=W/g6Q/URDv3drpABkqGmYGIek1bQFYKxwLT4C0OygPLwCDsO3YSwPvqFCs3eUVWifl
-	WQ7FDxG6y16zJw9RSpp2PcIQQdSSkQqtC3obKpoi2Dd83vTIVLwILlvL14g8u6Q8+8nI
-	bKwRyV8IzDZV2vlGBOAsveCMnCIotRvXc6QxHxgEzfIIGTx2eoMDKgO5kWE2XpiiQver
-	zUwisMqh3PxThhEktOHFPSUF7HZ6OHx75esJwZu1pWT533ID1xb+/Ep3p94gNLwB2PjI
-	RkNez6Ihxp8lnzz7d3gue7SNlGPcP4eiAB9Xjgmtnp0xN5tAjJ7Gg82UfOgTjYFwEOUY
-	uWvw==
-X-Gm-Message-State: ALKqPwcGEcNhGvtiCIK9iTlL9WI4SS39RO/A7Bx1mcHsymVokI78vZEm
-	Y1imoNisZUaqjJB9iSnnKG4=
-X-Received: by 2002:a37:6216:: with SMTP id
-	w22-v6mr13124659qkb.312.1527550098504; 
-	Mon, 28 May 2018 16:28:18 -0700 (PDT)
-Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	s19-v6sm23756182qki.62.2018.05.28.16.28.10
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 28 May 2018 16:28:18 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Thomas Huth <thuth@redhat.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>
-Date: Mon, 28 May 2018 20:27:09 -0300
-Message-Id: <20180528232719.4721-12-f4bug@amsat.org>
-X-Mailer: git-send-email 2.17.0
-In-Reply-To: <20180528232719.4721-1-f4bug@amsat.org>
-References: <20180528232719.4721-1-f4bug@amsat.org>
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=n0BoXywqVHNeFxJWbtU2WlvZhHjmr3S6rQ8zZ/1T0kc=;
+	b=ldMcne8JeFSB3b0GCxcqsoqqi4SxU2OPhad+pMzNFEJa85p54SzbaGUpEB98+xhlPw
+	KnXhSjAOaCPK6Z893dlHQfBZkWFyNVgHogOPjy/I2q4ZDxbWSLdewmZAKgZmEyXfte0C
+	4rWJ70P2LDfnLiJRxKSOfywoKOMeAQNaTLj1sF0O9IlJsWdm1DuPsUgpLp9FTG8wVIuM
+	VDZ2SmNF4o6cnlB7IErMnYLCcOIv43kBZ1fe/Pz8TfyTSzvdtQWfCm/z7a5sbZg1CeGs
+	61mKAGSohVxRQgdZG9v6nSa2CgX0gB97WlQlPuMBqlUgqYdqSkXPS36+SvwOJ5YV0U9+
+	lV+A==
+X-Gm-Message-State: APf1xPAfu4dHYMqkOxck8zY0/TGQEu2nKc6esvgk4z2am/YRUpkPxYaM
+	rlduvU2WNFqlaU28CioGm0ZmT+TIPGgKio++Xc3Vqg==
+X-Received: by 10.157.13.72 with SMTP id 66mr1162315oti.116.1517910157873;
+	Tue, 06 Feb 2018 01:42:37 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Received: by 10.157.34.163 with HTTP; Tue, 6 Feb 2018 01:42:17 -0800 (PST)
+In-Reply-To: <540d164d-23b7-c511-80ee-037cdcb3d86b@amsat.org>
+References: <1517324542-6607-1-git-send-email-peter.maydell@linaro.org>
+	<1517324542-6607-3-git-send-email-peter.maydell@linaro.org>
+	<540d164d-23b7-c511-80ee-037cdcb3d86b@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 6 Feb 2018 09:42:17 +0000
+Message-ID: <CAFEAcA_2qoWcJ9wL+ewXD1Fp6XFYb5EuotcD=_WMxyNf1aTZ+g@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::244
-Subject: [Qemu-devel] [PATCH v4 11/21] hw: Do not include
- "exec/address-spaces.h" if it is not necessary
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4003:c0f::22a
+Subject: Re: [Qemu-arm] [PATCH 2/7] target/arm: Split "get pending exception
+ info" from "acknowledge it"
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
-	Palmer Dabbelt <palmer@sifive.com>,
-	"open list:Block layer core" <qemu-block@nongnu.org>,
-	Sagar Karandikar <sagark@eecs.berkeley.edu>, qemu-trivial@nongnu.org,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Jason Wang <jasowang@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, Beniamino Galvani <b.galvani@gmail.com>,
-	Thomas Huth <huth@tuxfamily.org>, Paul Burton <paul.burton@mips.com>,
-	Michael Clark <mjc@sifive.com>, "open list:ARM" <qemu-arm@nongnu.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Max Reitz <mreitz@redhat.com>,
-	Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 31RMdwHOhaL8
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	"patches@linaro.org" <patches@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: HervjaeTxCSy
 
-Code change produced with:
-    $ git grep '#include "exec/address-spaces.h"' hw include/hw | \
-      cut -d: -f-1 | \
-      xargs egrep -L "(get_system_|address_space_)" | \
-      xargs sed -i.bak '/#include "exec\/address-spaces.h"/d'
+On 5 February 2018 at 23:44, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
+wrote:
+> maybe:
+>
+> assert(ptargets_secure && pirq);
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- include/hw/arm/allwinner-a10.h       | 1 -
- include/hw/arm/bcm2835_peripherals.h | 1 -
- include/hw/display/bcm2835_fb.h      | 1 -
- include/hw/dma/bcm2835_dma.h         | 1 -
- include/hw/misc/bcm2835_mbox.h       | 1 -
- include/hw/misc/bcm2835_property.h   | 1 -
- include/hw/sh4/sh_intc.h             | 1 -
- include/hw/virtio/virtio-access.h    | 1 -
- hw/arm/bcm2836.c                     | 1 -
- hw/arm/xlnx-zcu102.c                 | 1 -
- hw/block/onenand.c                   | 1 -
- hw/block/pflash_cfi01.c              | 1 -
- hw/block/pflash_cfi02.c              | 1 -
- hw/char/mcf_uart.c                   | 1 -
- hw/char/serial.c                     | 1 -
- hw/char/sh_serial.c                  | 1 -
- hw/core/loader-fit.c                 | 1 -
- hw/core/platform-bus.c               | 1 -
- hw/display/sm501.c                   | 1 -
- hw/m68k/mcf5206.c                    | 1 -
- hw/m68k/mcf_intc.c                   | 1 -
- hw/misc/arm_integrator_debug.c       | 1 -
- hw/net/mcf_fec.c                     | 1 -
- hw/net/ne2000-isa.c                  | 1 -
- hw/pci-host/versatile.c              | 1 -
- hw/riscv/riscv_htif.c                | 1 -
- hw/sh4/sh7750.c                      | 1 -
- hw/timer/sh_timer.c                  | 1 -
- 28 files changed, 28 deletions(-)
+This is one of those areas where people have different opinions,
+but personally I think the point of assertions is to turn
+bugs that manifest later and in confusing ways into bugs
+that manifest early and clearly. In this case, if either of
+those pointers is NULL then we'll immediately segfault in
+this function, and the stacktrace will point directly at
+the buggy code, so the assert doesn't gain anything.
 
-diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-a10.h
-index 6b32a99e21..efb8fc8123 100644
---- a/include/hw/arm/allwinner-a10.h
-+++ b/include/hw/arm/allwinner-a10.h
-@@ -11,7 +11,6 @@
- #include "hw/ide/ahci.h"
- 
- #include "sysemu/sysemu.h"
--#include "exec/address-spaces.h"
- 
- 
- #define AW_A10_PIC_REG_BASE     0x01c20400
-diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
-index 122b286de7..f5b193f670 100644
---- a/include/hw/arm/bcm2835_peripherals.h
-+++ b/include/hw/arm/bcm2835_peripherals.h
-@@ -12,7 +12,6 @@
- #define BCM2835_PERIPHERALS_H
- 
- #include "qemu-common.h"
--#include "exec/address-spaces.h"
- #include "hw/sysbus.h"
- #include "hw/char/bcm2835_aux.h"
- #include "hw/display/bcm2835_fb.h"
-diff --git a/include/hw/display/bcm2835_fb.h b/include/hw/display/bcm2835_fb.h
-index 9a12d7afa2..ae0a3807f2 100644
---- a/include/hw/display/bcm2835_fb.h
-+++ b/include/hw/display/bcm2835_fb.h
-@@ -12,7 +12,6 @@
- #define BCM2835_FB_H
- 
- #include "hw/sysbus.h"
--#include "exec/address-spaces.h"
- #include "ui/console.h"
- 
- #define TYPE_BCM2835_FB "bcm2835-fb"
-diff --git a/include/hw/dma/bcm2835_dma.h b/include/hw/dma/bcm2835_dma.h
-index 75312e2e17..60138f4d31 100644
---- a/include/hw/dma/bcm2835_dma.h
-+++ b/include/hw/dma/bcm2835_dma.h
-@@ -7,7 +7,6 @@
- #define BCM2835_DMA_H
- 
- #include "qemu-common.h"
--#include "exec/address-spaces.h"
- #include "hw/sysbus.h"
- 
- typedef struct {
-diff --git a/include/hw/misc/bcm2835_mbox.h b/include/hw/misc/bcm2835_mbox.h
-index f4e9ff9ef6..7e8f3ce86d 100644
---- a/include/hw/misc/bcm2835_mbox.h
-+++ b/include/hw/misc/bcm2835_mbox.h
-@@ -8,7 +8,6 @@
- 
- #include "bcm2835_mbox_defs.h"
- #include "hw/sysbus.h"
--#include "exec/address-spaces.h"
- 
- #define TYPE_BCM2835_MBOX "bcm2835-mbox"
- #define BCM2835_MBOX(obj) \
-diff --git a/include/hw/misc/bcm2835_property.h b/include/hw/misc/bcm2835_property.h
-index edcab603ce..11be0dbeac 100644
---- a/include/hw/misc/bcm2835_property.h
-+++ b/include/hw/misc/bcm2835_property.h
-@@ -7,7 +7,6 @@
- #define BCM2835_PROPERTY_H
- 
- #include "hw/sysbus.h"
--#include "exec/address-spaces.h"
- #include "net/net.h"
- #include "hw/display/bcm2835_fb.h"
- 
-diff --git a/include/hw/sh4/sh_intc.h b/include/hw/sh4/sh_intc.h
-index 7913bc48a2..fbcee94ed7 100644
---- a/include/hw/sh4/sh_intc.h
-+++ b/include/hw/sh4/sh_intc.h
-@@ -3,7 +3,6 @@
- 
- #include "qemu-common.h"
- #include "hw/irq.h"
--#include "exec/address-spaces.h"
- 
- typedef unsigned char intc_enum;
- 
-diff --git a/include/hw/virtio/virtio-access.h b/include/hw/virtio/virtio-access.h
-index 2e92074bd1..bdf58f3119 100644
---- a/include/hw/virtio/virtio-access.h
-+++ b/include/hw/virtio/virtio-access.h
-@@ -18,7 +18,6 @@
- 
- #include "hw/virtio/virtio.h"
- #include "hw/virtio/virtio-bus.h"
--#include "exec/address-spaces.h"
- 
- #if defined(TARGET_PPC64) || defined(TARGET_ARM)
- #define LEGACY_VIRTIO_IS_BIENDIAN 1
-diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
-index 3c4b44a53e..6805a7d7c8 100644
---- a/hw/arm/bcm2836.c
-+++ b/hw/arm/bcm2836.c
-@@ -15,7 +15,6 @@
- #include "hw/arm/bcm2836.h"
- #include "hw/arm/raspi_platform.h"
- #include "hw/sysbus.h"
--#include "exec/address-spaces.h"
- 
- /* Peripheral base address seen by the CPU */
- #define BCM2836_PERI_BASE       0x3F000000
-diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
-index b126cf148b..c70278c8c1 100644
---- a/hw/arm/xlnx-zcu102.c
-+++ b/hw/arm/xlnx-zcu102.c
-@@ -22,7 +22,6 @@
- #include "hw/arm/xlnx-zynqmp.h"
- #include "hw/boards.h"
- #include "qemu/error-report.h"
--#include "exec/address-spaces.h"
- #include "qemu/log.h"
- #include "sysemu/qtest.h"
- 
-diff --git a/hw/block/onenand.c b/hw/block/onenand.c
-index ed77f859e9..ab0c7ea1b3 100644
---- a/hw/block/onenand.c
-+++ b/hw/block/onenand.c
-@@ -27,7 +27,6 @@
- #include "sysemu/block-backend.h"
- #include "sysemu/blockdev.h"
- #include "exec/memory.h"
--#include "exec/address-spaces.h"
- #include "hw/sysbus.h"
- #include "qemu/error-report.h"
- 
-diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
-index 2e8284001d..e4b5b3c273 100644
---- a/hw/block/pflash_cfi01.c
-+++ b/hw/block/pflash_cfi01.c
-@@ -43,7 +43,6 @@
- #include "qapi/error.h"
- #include "qemu/timer.h"
- #include "qemu/bitops.h"
--#include "exec/address-spaces.h"
- #include "qemu/host-utils.h"
- #include "qemu/log.h"
- #include "hw/sysbus.h"
-diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
-index 75d1ae1026..a8b3f7f978 100644
---- a/hw/block/pflash_cfi02.c
-+++ b/hw/block/pflash_cfi02.c
-@@ -41,7 +41,6 @@
- #include "qapi/error.h"
- #include "qemu/timer.h"
- #include "sysemu/block-backend.h"
--#include "exec/address-spaces.h"
- #include "qemu/host-utils.h"
- #include "hw/sysbus.h"
- 
-diff --git a/hw/char/mcf_uart.c b/hw/char/mcf_uart.c
-index faae083e78..787f985db6 100644
---- a/hw/char/mcf_uart.c
-+++ b/hw/char/mcf_uart.c
-@@ -10,7 +10,6 @@
- #include "hw/sysbus.h"
- #include "hw/m68k/mcf.h"
- #include "chardev/char-fe.h"
--#include "exec/address-spaces.h"
- 
- typedef struct {
-     SysBusDevice parent_obj;
-diff --git a/hw/char/serial.c b/hw/char/serial.c
-index 2c080c9862..605b0d02f9 100644
---- a/hw/char/serial.c
-+++ b/hw/char/serial.c
-@@ -28,7 +28,6 @@
- #include "chardev/char-serial.h"
- #include "qapi/error.h"
- #include "qemu/timer.h"
--#include "exec/address-spaces.h"
- #include "qemu/error-report.h"
- 
- //#define DEBUG_SERIAL
-diff --git a/hw/char/sh_serial.c b/hw/char/sh_serial.c
-index 835b5378a0..373a40595f 100644
---- a/hw/char/sh_serial.c
-+++ b/hw/char/sh_serial.c
-@@ -28,7 +28,6 @@
- #include "hw/hw.h"
- #include "hw/sh4/sh.h"
- #include "chardev/char-fe.h"
--#include "exec/address-spaces.h"
- #include "qapi/error.h"
- 
- //#define DEBUG_SERIAL
-diff --git a/hw/core/loader-fit.c b/hw/core/loader-fit.c
-index 0c4a7207f4..6387854b54 100644
---- a/hw/core/loader-fit.c
-+++ b/hw/core/loader-fit.c
-@@ -18,7 +18,6 @@
-  */
- 
- #include "qemu/osdep.h"
--#include "exec/address-spaces.h"
- #include "exec/memory.h"
- #include "hw/loader.h"
- #include "hw/loader-fit.h"
-diff --git a/hw/core/platform-bus.c b/hw/core/platform-bus.c
-index 807cb5ccda..e473a44746 100644
---- a/hw/core/platform-bus.c
-+++ b/hw/core/platform-bus.c
-@@ -21,7 +21,6 @@
- 
- #include "qemu/osdep.h"
- #include "hw/platform-bus.h"
--#include "exec/address-spaces.h"
- #include "qemu/error-report.h"
- #include "sysemu/sysemu.h"
- 
-diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-index f4bb33c279..e47be99451 100644
---- a/hw/display/sm501.c
-+++ b/hw/display/sm501.c
-@@ -36,7 +36,6 @@
- #include "hw/pci/pci.h"
- #include "qemu/range.h"
- #include "ui/pixel_ops.h"
--#include "exec/address-spaces.h"
- 
- /*
-  * Status: 2010/05/07
-diff --git a/hw/m68k/mcf5206.c b/hw/m68k/mcf5206.c
-index 6ad1e4bd2d..7abd84ac47 100644
---- a/hw/m68k/mcf5206.c
-+++ b/hw/m68k/mcf5206.c
-@@ -14,7 +14,6 @@
- #include "qemu/timer.h"
- #include "hw/ptimer.h"
- #include "sysemu/sysemu.h"
--#include "exec/address-spaces.h"
- 
- /* General purpose timer module.  */
- typedef struct {
-diff --git a/hw/m68k/mcf_intc.c b/hw/m68k/mcf_intc.c
-index 8198afac1e..393ce284a2 100644
---- a/hw/m68k/mcf_intc.c
-+++ b/hw/m68k/mcf_intc.c
-@@ -11,7 +11,6 @@
- #include "hw/hw.h"
- #include "hw/sysbus.h"
- #include "hw/m68k/mcf.h"
--#include "exec/address-spaces.h"
- 
- #define TYPE_MCF_INTC "mcf-intc"
- #define MCF_INTC(obj) OBJECT_CHECK(mcf_intc_state, (obj), TYPE_MCF_INTC)
-diff --git a/hw/misc/arm_integrator_debug.c b/hw/misc/arm_integrator_debug.c
-index 8a5f29559d..533e6e3208 100644
---- a/hw/misc/arm_integrator_debug.c
-+++ b/hw/misc/arm_integrator_debug.c
-@@ -17,7 +17,6 @@
- #include "qemu/osdep.h"
- #include "hw/hw.h"
- #include "hw/sysbus.h"
--#include "exec/address-spaces.h"
- #include "hw/misc/arm_integrator_debug.h"
- #include "qemu/log.h"
- 
-diff --git a/hw/net/mcf_fec.c b/hw/net/mcf_fec.c
-index bfa6b4bcce..0091e4ecdd 100644
---- a/hw/net/mcf_fec.c
-+++ b/hw/net/mcf_fec.c
-@@ -14,7 +14,6 @@
- #include "hw/sysbus.h"
- /* For crc32 */
- #include <zlib.h>
--#include "exec/address-spaces.h"
- 
- //#define DEBUG_FEC 1
- 
-diff --git a/hw/net/ne2000-isa.c b/hw/net/ne2000-isa.c
-index 70e5c1d3d4..c7fdeb0f6c 100644
---- a/hw/net/ne2000-isa.c
-+++ b/hw/net/ne2000-isa.c
-@@ -27,7 +27,6 @@
- #include "hw/qdev.h"
- #include "ne2000.h"
- #include "sysemu/sysemu.h"
--#include "exec/address-spaces.h"
- #include "qapi/error.h"
- #include "qapi/visitor.h"
- 
-diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
-index d0b02bdc47..7b19078c80 100644
---- a/hw/pci-host/versatile.c
-+++ b/hw/pci-host/versatile.c
-@@ -12,7 +12,6 @@
- #include "hw/pci/pci.h"
- #include "hw/pci/pci_bus.h"
- #include "hw/pci/pci_host.h"
--#include "exec/address-spaces.h"
- #include "qemu/log.h"
- 
- /* Old and buggy versions of QEMU used the wrong mapping from
-diff --git a/hw/riscv/riscv_htif.c b/hw/riscv/riscv_htif.c
-index f73512941f..4f7b11dc37 100644
---- a/hw/riscv/riscv_htif.c
-+++ b/hw/riscv/riscv_htif.c
-@@ -29,7 +29,6 @@
- #include "chardev/char-fe.h"
- #include "hw/riscv/riscv_htif.h"
- #include "qemu/timer.h"
--#include "exec/address-spaces.h"
- #include "qemu/error-report.h"
- 
- #define RISCV_DEBUG_HTIF 0
-diff --git a/hw/sh4/sh7750.c b/hw/sh4/sh7750.c
-index 5a7d47d31e..2dc07a904b 100644
---- a/hw/sh4/sh7750.c
-+++ b/hw/sh4/sh7750.c
-@@ -31,7 +31,6 @@
- #include "hw/sh4/sh_intc.h"
- #include "cpu.h"
- #include "exec/exec-all.h"
--#include "exec/address-spaces.h"
- 
- #define NB_DEVICES 4
- 
-diff --git a/hw/timer/sh_timer.c b/hw/timer/sh_timer.c
-index 9afb2d048c..5f8736cf10 100644
---- a/hw/timer/sh_timer.c
-+++ b/hw/timer/sh_timer.c
-@@ -13,7 +13,6 @@
- #include "hw/sh4/sh.h"
- #include "qemu/timer.h"
- #include "qemu/main-loop.h"
--#include "exec/address-spaces.h"
- #include "hw/ptimer.h"
- 
- //#define DEBUG_TIMER
--- 
-2.17.0
-
+thanks
+-- PMM

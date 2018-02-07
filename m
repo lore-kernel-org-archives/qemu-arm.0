@@ -1,96 +1,96 @@
-Received: by 10.28.71.27 with SMTP id u27csp238221wma;
-        Tue, 6 Feb 2018 20:25:29 -0800 (PST)
-X-Google-Smtp-Source: AH8x2249Qs6d2bqUQYTmxQrMib71lrbjqFYa2AHlUqE2iIQCThGJRKOYF3WjZPt3TcKhuLgMtUPX
-X-Received: by 10.129.85.79 with SMTP id j76mr2996612ywb.189.1517977529637;
-        Tue, 06 Feb 2018 20:25:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1517977529; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp238319wma;
+        Tue, 6 Feb 2018 20:25:38 -0800 (PST)
+X-Google-Smtp-Source: AH8x225hIHOgdc0X4ve9/pL9k4NE5XUrm0Zo/stTzQa78i+WgPv5bmHnAJ8SnLw77i34z3s6XzQS
+X-Received: by 10.37.135.78 with SMTP id e14mr3182588ybn.38.1517977538417;
+        Tue, 06 Feb 2018 20:25:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1517977538; cv=none;
         d=google.com; s=arc-20160816;
-        b=scmOP8GgVC4XlIlzLEJEb6bztLodwxHstGPKCdNtkYGCIN38M8i7NtmswR1TyO1uBm
-         orAVVNbMLCp7v52o9uCkfJ+X1BnSknrFPgtTOPKe+pI2Z2lq7ofdLdTiR5iHXMx97lxl
-         ipZ4tHYUnFWenFT74AQkwGGytliMl2803AGzp6Yuf4mAgJHmfQgaJh3fh4YL6zaFuhuM
-         YlcwZ5qYYAsqWllwxFJSGILSEob3+MuIgx1Sy31TsvgVssIgNdGxfpm4IKZsacuI+POF
-         uf5B5Qhe4/zwiezhksGZHnq+oAOxEBEYnrk4ex3ExFJ8CNRjpCNdbrGmSgEbwpbKzCWL
-         QDbw==
+        b=wlwcqImI6nQii6aav5xE2IYQ8/i9LSZo//9XCWZ0iz/EfWPdKxd9oDeZ0oK7sUQm7y
+         CC3LDk3i6GLqdMP1mcFBPBz+zeqG8Cqhj2pZkBmM4lf3U5rpFKO3ykPFs/80BoMS9H02
+         iMniZcLpmnibk/bhRSjwN6PID4wY5mtMju167ELdVmlahVAiPS7QrrSg9m62jo212iUq
+         B8iuTYsQ+zgTmpeaAF3t5bp4+dVQY+8Un9XQwRlB3tlW1vwTxZIQbIkSD5yjypPDIj+X
+         /2KN5ak1PD2fsf/g/iFaHbl0UgI5BL7GyPFgR46LrTAqPLCWRN4PMDSpi7Xo2BXJZYd0
+         lgNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=eYo5Syhtrbr+WqDx4beEQ5SVHStFFSkuDfi+LPWskbs=;
-        b=gn7QoVAcomFzj87QNeRPqiZh5SRZ9BNksdQ9Y5XyqVlIsnvn0lGptpuDQnKdAOIqxG
-         R8XrbFj1k5wTkOatMqIrBs4kDZLnfkW2i9oKVbdIEuxlUkk8PO3VOC8hlQOGy5quo6VP
-         65XZ/ietNtC3Vzxt8IKSeAGOQUd+BtSjgahdhyuZokt5YxSH+vnq5eeuHbzgaWtK9uBa
-         Xr75nmctsly25GYp5Y2082umvSah6VzLpKxoHxgHIq+FWLy5rN2sSXv/e/XrqjiaLisr
-         FVh3df5ySTcUGGDGNXaRsBNAlJXjAeNphNu1k34n95T0D6r0krZsbM88EHLP3tIk7wy2
-         X7ow==
+        bh=SMMgHA4bgvKbgRuEX+Zt3WV5iE7JIAfsivE6bGQis84=;
+        b=l7zqs0uTIWonN4QklxJok2KTNFAKaTLegdEXMp/evDPyj5VoLdmh9G+lzMjgU2uhkM
+         iGpt/EzukcMsJE+3NRVHg0rAOg9rsWeTiY2cQAbVtQeVR1wiy7LZZHhqKoFv6LNlAbd6
+         6mdHNFCcv5IIe7Q4LXElEy2xL2GxMIYIoB3LH9tt9Uvq69tKd3bCQiUi73xK2vNBMMvf
+         miJgUqIqxlDOfh0ofpU8s0ZkdBAUtH5uuiUdNkZodcoqi2ZJGGo60WwUpVZ7W7bg0BvB
+         MRng2ZWMLiMlLrzKiM2X2SoVejH3FdBhtTZiinZhuUiBf9NpQd7Lb6WPqIdl4Jtk3KxE
+         +uVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Jf9qV5Sx;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hW1F5zke;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y2si108366ywe.341.2018.02.06.20.25.29
+        by mx.google.com with ESMTPS id c25si117010ybe.156.2018.02.06.20.25.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 06 Feb 2018 20:25:29 -0800 (PST)
+        Tue, 06 Feb 2018 20:25:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Jf9qV5Sx;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hW1F5zke;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:46758 helo=lists.gnu.org)
+Received: from localhost ([::1]:46769 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ejHIW-0000B1-VD
-	for alex.bennee@linaro.org; Tue, 06 Feb 2018 23:25:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43571)
+	id 1ejHIf-0000QC-Ln
+	for alex.bennee@linaro.org; Tue, 06 Feb 2018 23:25:37 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43526)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1ejHIF-00007r-F0
-	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 23:25:13 -0500
+	(envelope-from <andrew.smirnov@gmail.com>) id 1ejHIC-0008WA-8J
+	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 23:25:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1ejHID-00037L-Ho
-	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 23:25:11 -0500
-Received: from mail-pl0-x241.google.com ([2607:f8b0:400e:c01::241]:35732)
+	(envelope-from <andrew.smirnov@gmail.com>) id 1ejHIA-00034I-GU
+	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 23:25:08 -0500
+Received: from mail-pl0-x22b.google.com ([2607:f8b0:400e:c01::22b]:36903)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
-	id 1ejHID-000364-93; Tue, 06 Feb 2018 23:25:09 -0500
-Received: by mail-pl0-x241.google.com with SMTP id j19so2750632pll.2;
-	Tue, 06 Feb 2018 20:25:09 -0800 (PST)
+	id 1ejHIA-000343-6y; Tue, 06 Feb 2018 23:25:06 -0500
+Received: by mail-pl0-x22b.google.com with SMTP id ay8so2731237plb.4;
+	Tue, 06 Feb 2018 20:25:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=eYo5Syhtrbr+WqDx4beEQ5SVHStFFSkuDfi+LPWskbs=;
-	b=Jf9qV5Sxl9gx8l4slqgSfLNXWhYkcGZ+ZT+A4J8rFEgAeuo2yvVzEohmCYSqZsI+Kd
-	oNtsLagPSOJxnBMtzz33EXsvut1iSSfJZizfH82dlhbwfB4U7uoCb5uowWJpgdbShItv
-	zL24ZFzsA4nq7TITRkcD56NJMrjTzo4rBS2InXWWTstVCzxYOEXCoAb4XsKn37/Vs8ds
-	i3URsvuvPUjBU2S7AmgrmTWMGbYa+7mHEQre/hg4rBy3xBqDaRHWIeHt5ccuVqOuRcNk
-	RU/tvBeB0z+/bqpnLQF7slfEpgNHb/kAKFFgX9ZAEEA9JXOADf3N4fuDqzOPy/xbU70D
-	CzlQ==
+	bh=SMMgHA4bgvKbgRuEX+Zt3WV5iE7JIAfsivE6bGQis84=;
+	b=hW1F5zkeX9/SNj06YWnrvQmQ3CEqR+INByFETT/wUn1k2pvb3d0D26BISjIgWRxCxW
+	527mewM3LY1LBhilWGyYG461ijmA5fPFdfF6BlzZrH/k6D7eqgGmIXX1W+G9ka5LbFYs
+	p0jVQEhh+eya7KhGrHM6cJii5Q1VYc1eFDEMhzDjVhcL2XOuFBi2V/ghAyOI8TUsna9A
+	xGp0HHupQrCy303ipgRFfvyRmfrW15QuniV6AEdZG0fV6fWWOmJxhjXrkaSVrRRoVDGX
+	g/qN7oZAffQ4lMmURRbCJDJmj9e2uCJiJMK6sZtofjUDPzdfzD09Ezegg40XeGau0MND
+	7FaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:mime-version:content-transfer-encoding;
-	bh=eYo5Syhtrbr+WqDx4beEQ5SVHStFFSkuDfi+LPWskbs=;
-	b=JyGulUCk1SpjvF1Vcc9VmJRwvWJqTYPqrpon5giS3y0+LOjHT40cMpeGbpooXFNWKq
-	bCOrZ2/JMM2okykALwKZHTiEXh5dcUT3Oo7+R6xWhxRCsAtbcYWQpWWDuAhS+YzQjBIS
-	TLd/At4kFZ9VsTo/vn5EoiLo8ofm/Gt3kUJa6WB/JVtNEYkDmoXTayQJ4tQuRQLLCAMT
-	vHTzwk2DxRTm71S5EK3TCiM44lmDnQEXSAIFfS+uXRNhTCbeXWOSKHcgaUbS6n03e0XT
-	cikbI3NjYqt8YjqnVVnWok0HF++SWDohAzVVjNuXm80KM7ZBUfhX4EfVWx8XpOQmcb22
-	PeLQ==
-X-Gm-Message-State: APf1xPAYzMjynpgwfB3Nw+rRReUQC6VOSmRrbcm3S1d77Bhdww6ffuF4
-	onQCdU4RX7VEVRaOb6LNg2PSQjtZ
-X-Received: by 2002:a17:902:20e8:: with SMTP id
-	v37-v6mr4627793plg.66.1517977508004; 
-	Tue, 06 Feb 2018 20:25:08 -0800 (PST)
+	bh=SMMgHA4bgvKbgRuEX+Zt3WV5iE7JIAfsivE6bGQis84=;
+	b=WZzHvvp3c9yeBwdCZy8y2gjNO5eYvX7X7bBhrhs/3V3RgSRm/o9TS6MEkwR/JH2TFG
+	0SR14rFf5zY9Atwq8SFBUK37Nm3GIoz6jC+nTgQLe9kSAuDSU1/Hkp3xhdx2e7KW7s31
+	g9LuH9l+Sdkq/aghFf/yYrKwiOJOg4zwLorbpl+1VCXpnVGW911swpTNLiv6VyObAZTn
+	SH8DmH5c4QerAmSg4Y+P2BTOxeY5BYtISpQgrY87VtIUUpsXspRsUcMBjOC6y4SbhUq+
+	StYyDUYa/I5yQ1pu8/WJUDotUfqaJp+VzHGdhuv6E/f0xO/PXl0qEK0EdEujWFe6gyKa
+	fXbQ==
+X-Gm-Message-State: APf1xPD+nreWYWbOG3RdidO8/tuH3gvVOKzkXOtvhtJrj4AV2dxluET2
+	iU4ETMclSgwqnFhdvz0Sk3Zr8RrG
+X-Received: by 2002:a17:902:6b49:: with SMTP id
+	g9-v6mr4688708plt.9.1517977504849; 
+	Tue, 06 Feb 2018 20:25:04 -0800 (PST)
 Received: from squirtle.lan (c-24-22-235-96.hsd1.wa.comcast.net.
 	[24.22.235.96]) by smtp.gmail.com with ESMTPSA id
-	x8sm1076095pfk.123.2018.02.06.20.25.06
+	x8sm1076095pfk.123.2018.02.06.20.25.03
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 06 Feb 2018 20:25:07 -0800 (PST)
+	Tue, 06 Feb 2018 20:25:04 -0800 (PST)
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 To: qemu-arm@nongnu.org
-Date: Tue,  6 Feb 2018 20:24:27 -0800
-Message-Id: <20180207042438.15422-4-andrew.smirnov@gmail.com>
+Date: Tue,  6 Feb 2018 20:24:25 -0800
+Message-Id: <20180207042438.15422-2-andrew.smirnov@gmail.com>
 X-Mailer: git-send-email 2.14.3
 In-Reply-To: <20180207042438.15422-1-andrew.smirnov@gmail.com>
 References: <20180207042438.15422-1-andrew.smirnov@gmail.com>
@@ -99,9 +99,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c01::241
-Subject: [Qemu-arm] [PATCH v5 03/14] i.MX: Add code to emulate i.MX7 CCM,
- PMU and ANALOG IP blocks
+X-Received-From: 2607:f8b0:400e:c01::22b
+Subject: [Qemu-arm] [PATCH v5 01/14] sdhci: Add i.MX specific subtype of
+ SDHCI
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -122,9 +122,13 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org, yurovsky@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bQowPPn8yPlo
+X-TUID: i7SMZ3HvC4Jr
 
-Add minimal code needed to allow upstream Linux guest to boot.
+IP block found on several generations of i.MX family does not use
+vanilla SDHCI implementation and it comes with a number of quirks.
+
+Introduce i.MX SDHCI subtype of SDHCI block to add code necessary to
+support unmodified Linux guest driver.
 
 Cc: Peter Maydell <peter.maydell@linaro.org>
 Cc: Jason Wang <jasowang@redhat.com>
@@ -137,453 +141,358 @@ Cc: yurovsky@gmail.com
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- hw/misc/Makefile.objs      |   1 +
- hw/misc/imx7_ccm.c         | 277 +++++++++++++++++++++++++++++++++++++++++++++
- include/hw/misc/imx7_ccm.h | 139 +++++++++++++++++++++++
- 3 files changed, 417 insertions(+)
- create mode 100644 hw/misc/imx7_ccm.c
- create mode 100644 include/hw/misc/imx7_ccm.h
+ hw/sd/sdhci-internal.h |  20 +++++
+ hw/sd/sdhci.c          | 230 ++++++++++++++++++++++++++++++++++++++++++++++++-
+ include/hw/sd/sdhci.h  |  13 +++
+ 3 files changed, 262 insertions(+), 1 deletion(-)
 
-diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-index d517f83e81..a28e5e49b0 100644
---- a/hw/misc/Makefile.objs
-+++ b/hw/misc/Makefile.objs
-@@ -33,6 +33,7 @@ obj-$(CONFIG_IMX) += imx31_ccm.o
- obj-$(CONFIG_IMX) += imx25_ccm.o
- obj-$(CONFIG_IMX) += imx6_ccm.o
- obj-$(CONFIG_IMX) += imx6_src.o
-+obj-$(CONFIG_IMX) += imx7_ccm.o
- obj-$(CONFIG_MILKYMIST) += milkymist-hpdmc.o
- obj-$(CONFIG_MILKYMIST) += milkymist-pfpu.o
- obj-$(CONFIG_MAINSTONE) += mst_fpga.o
-diff --git a/hw/misc/imx7_ccm.c b/hw/misc/imx7_ccm.c
-new file mode 100644
-index 0000000000..d90c48bfec
---- /dev/null
-+++ b/hw/misc/imx7_ccm.c
-@@ -0,0 +1,277 @@
-+/*
-+ * Copyright (c) 2018, Impinj, Inc.
-+ *
-+ * i.MX7 CCM, PMU and ANALOG IP blocks emulation code
-+ *
-+ * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
+diff --git a/hw/sd/sdhci-internal.h b/hw/sd/sdhci-internal.h
+index fc807f08f3..f91b73af59 100644
+--- a/hw/sd/sdhci-internal.h
++++ b/hw/sd/sdhci-internal.h
+@@ -84,12 +84,18 @@
+ 
+ /* R/W Host control Register 0x0 */
+ #define SDHC_HOSTCTL                   0x28
++#define SDHC_CTRL_LED                  0x01
+ #define SDHC_CTRL_DMA_CHECK_MASK       0x18
+ #define SDHC_CTRL_SDMA                 0x00
+ #define SDHC_CTRL_ADMA1_32             0x08
+ #define SDHC_CTRL_ADMA2_32             0x10
+ #define SDHC_CTRL_ADMA2_64             0x18
+ #define SDHC_DMA_TYPE(x)               ((x) & SDHC_CTRL_DMA_CHECK_MASK)
++#define SDHC_CTRL_4BITBUS              0x02
++#define SDHC_CTRL_8BITBUS              0x20
++#define SDHC_CTRL_CDTEST_INS           0x40
++#define SDHC_CTRL_CDTEST_EN            0x80
 +
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
+ 
+ /* R/W Power Control Register 0x0 */
+ #define SDHC_PWRCON                    0x29
+@@ -226,4 +232,18 @@ enum {
+     sdhc_gap_write  = 2   /* SDHC stopped at block gap during write operation */
+ };
+ 
++extern const VMStateDescription sdhci_vmstate;
 +
-+#include "hw/misc/imx7_ccm.h"
 +
-+static void imx7_analog_reset(DeviceState *dev)
++#define ESDHC_MIX_CTRL                  0x48
++#define ESDHC_VENDOR_SPEC               0xc0
++#define ESDHC_DLL_CTRL                  0x60
++
++#define ESDHC_TUNING_CTRL               0xcc
++#define ESDHC_TUNE_CTRL_STATUS          0x68
++#define ESDHC_WTMK_LVL                  0x44
++
++#define ESDHC_CTRL_4BITBUS              (0x1 << 1)
++#define ESDHC_CTRL_8BITBUS              (0x2 << 1)
++
+ #endif
+diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+index fac7fa5c72..7c9683b47d 100644
+--- a/hw/sd/sdhci.c
++++ b/hw/sd/sdhci.c
+@@ -244,7 +244,8 @@ static void sdhci_send_command(SDHCIState *s)
+             }
+         }
+ 
+-        if ((s->norintstsen & SDHC_NISEN_TRSCMP) &&
++        if (!(s->quirks & SDHCI_QUIRK_NO_BUSY_IRQ) &&
++            (s->norintstsen & SDHC_NISEN_TRSCMP) &&
+             (s->cmdreg & SDHC_CMD_RESPONSE) == SDHC_CMD_RSP_WITH_BUSY) {
+             s->norintsts |= SDHC_NIS_TRSCMP;
+         }
+@@ -1189,6 +1190,8 @@ static void sdhci_initfn(SDHCIState *s)
+ 
+     s->insert_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, sdhci_raise_insertion_irq, s);
+     s->transfer_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, sdhci_data_transfer, s);
++
++    s->io_ops = &sdhci_mmio_ops;
+ }
+ 
+ static void sdhci_uninitfn(SDHCIState *s)
+@@ -1396,6 +1399,10 @@ static void sdhci_sysbus_realize(DeviceState *dev, Error ** errp)
+     }
+ 
+     sysbus_init_irq(sbd, &s->irq);
++
++    memory_region_init_io(&s->iomem, OBJECT(s), s->io_ops, s, "sdhci",
++            SDHC_REGISTERS_MAP_SIZE);
++
+     sysbus_init_mmio(sbd, &s->iomem);
+ }
+ 
+@@ -1447,11 +1454,232 @@ static const TypeInfo sdhci_bus_info = {
+     .class_init = sdhci_bus_class_init,
+ };
+ 
++static uint64_t usdhc_read(void *opaque, hwaddr offset, unsigned size)
 +{
-+    IMX7AnalogState *s = IMX7_ANALOG(dev);
++    SDHCIState *s = SYSBUS_SDHCI(opaque);
++    uint32_t ret;
++    uint16_t hostctl;
 +
-+    memset(s->pmu, 0, sizeof(s->pmu));
-+    memset(s->analog, 0, sizeof(s->analog));
++    switch (offset) {
++    default:
++        return sdhci_read(opaque, offset, size);
 +
-+    s->analog[ANALOG_PLL_ARM]         = 0x00002042;
-+    s->analog[ANALOG_PLL_DDR]         = 0x0060302c;
-+    s->analog[ANALOG_PLL_DDR_SS]      = 0x00000000;
-+    s->analog[ANALOG_PLL_DDR_NUM]     = 0x06aaac4d;
-+    s->analog[ANALOG_PLL_DDR_DENOM]   = 0x100003ec;
-+    s->analog[ANALOG_PLL_480]         = 0x00002000;
-+    s->analog[ANALOG_PLL_480A]        = 0x52605a56;
-+    s->analog[ANALOG_PLL_480B]        = 0x52525216;
-+    s->analog[ANALOG_PLL_ENET]        = 0x00001fc0;
-+    s->analog[ANALOG_PLL_AUDIO]       = 0x0001301b;
-+    s->analog[ANALOG_PLL_AUDIO_SS]    = 0x00000000;
-+    s->analog[ANALOG_PLL_AUDIO_NUM]   = 0x05f5e100;
-+    s->analog[ANALOG_PLL_AUDIO_DENOM] = 0x2964619c;
-+    s->analog[ANALOG_PLL_VIDEO]       = 0x0008201b;
-+    s->analog[ANALOG_PLL_VIDEO_SS]    = 0x00000000;
-+    s->analog[ANALOG_PLL_VIDEO_NUM]   = 0x0000f699;
-+    s->analog[ANALOG_PLL_VIDEO_DENOM] = 0x000f4240;
-+    s->analog[ANALOG_PLL_MISC0]       = 0x00000000;
-+
-+    /* all PLLs need to be locked */
-+    s->analog[ANALOG_PLL_ARM]   |= ANALOG_PLL_LOCK;
-+    s->analog[ANALOG_PLL_DDR]   |= ANALOG_PLL_LOCK;
-+    s->analog[ANALOG_PLL_480]   |= ANALOG_PLL_LOCK;
-+    s->analog[ANALOG_PLL_480A]  |= ANALOG_PLL_LOCK;
-+    s->analog[ANALOG_PLL_480B]  |= ANALOG_PLL_LOCK;
-+    s->analog[ANALOG_PLL_ENET]  |= ANALOG_PLL_LOCK;
-+    s->analog[ANALOG_PLL_AUDIO] |= ANALOG_PLL_LOCK;
-+    s->analog[ANALOG_PLL_VIDEO] |= ANALOG_PLL_LOCK;
-+    s->analog[ANALOG_PLL_MISC0] |= ANALOG_PLL_LOCK;
-+
-+    /*
-+     * Since I couldn't find any info about this in the reference
-+     * manual the value of this register is based strictly on matching
-+     * what Linux kernel expects it to be.
-+     */
-+    s->analog[ANALOG_DIGPROG]  = 0x720000;
-+    /*
-+     * Set revision to be 1.0 (Arbitrary choice, no particular
-+     * reason).
-+     */
-+    s->analog[ANALOG_DIGPROG] |= 0x000010;
-+}
-+
-+static void imx7_ccm_reset(DeviceState *dev)
-+{
-+    IMX7CCMState *s = IMX7_CCM(dev);
-+
-+    memset(s->ccm, 0, sizeof(s->ccm));
-+}
-+
-+#define CCM_INDEX(offset)   (((offset) & ~(hwaddr)0xF) / sizeof(uint32_t))
-+#define CCM_BITOP(offset)   ((offset) & (hwaddr)0xF)
-+
-+enum {
-+    CCM_BITOP_NONE = 0x00,
-+    CCM_BITOP_SET  = 0x04,
-+    CCM_BITOP_CLR  = 0x08,
-+    CCM_BITOP_TOG  = 0x0C,
-+};
-+
-+static uint64_t imx7_set_clr_tog_read(void *opaque, hwaddr offset,
-+                                      unsigned size)
-+{
-+    const uint32_t *mmio = opaque;
-+
-+    return mmio[CCM_INDEX(offset)];
-+}
-+
-+static void imx7_set_clr_tog_write(void *opaque, hwaddr offset,
-+                                   uint64_t value, unsigned size)
-+{
-+    const uint8_t  bitop = CCM_BITOP(offset);
-+    const uint32_t index = CCM_INDEX(offset);
-+    uint32_t *mmio = opaque;
-+
-+    switch (bitop) {
-+    case CCM_BITOP_NONE:
-+        mmio[index]  = value;
-+        break;
-+    case CCM_BITOP_SET:
-+        mmio[index] |= value;
-+        break;
-+    case CCM_BITOP_CLR:
-+        mmio[index] &= ~value;
-+        break;
-+    case CCM_BITOP_TOG:
-+        mmio[index] ^= value;
-+        break;
-+    };
-+}
-+
-+static const struct MemoryRegionOps imx7_set_clr_tog_ops = {
-+    .read = imx7_set_clr_tog_read,
-+    .write = imx7_set_clr_tog_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .impl = {
++    case SDHC_HOSTCTL:
 +        /*
-+         * Our device would not work correctly if the guest was doing
-+         * unaligned access. This might not be a limitation on the real
-+         * device but in practice there is no reason for a guest to access
-+         * this device unaligned.
++         * For a detailed explanation on the following bit
++         * manipulation code see comments in a similar part of
++         * usdhc_write()
 +         */
-+        .min_access_size = 4,
++        hostctl = SDHC_DMA_TYPE(s->hostctl) << (8 - 3);
++
++        if (s->hostctl & SDHC_CTRL_8BITBUS) {
++            hostctl |= ESDHC_CTRL_8BITBUS;
++        }
++
++        if (s->hostctl & SDHC_CTRL_4BITBUS) {
++            hostctl |= ESDHC_CTRL_4BITBUS;
++        }
++
++        ret  = hostctl;
++        ret |= (uint32_t)s->blkgap << 16;
++        ret |= (uint32_t)s->wakcon << 24;
++
++        break;
++
++    case ESDHC_DLL_CTRL:
++    case ESDHC_TUNE_CTRL_STATUS:
++    case 0x6c:
++    case ESDHC_TUNING_CTRL:
++    case ESDHC_VENDOR_SPEC:
++    case ESDHC_MIX_CTRL:
++    case ESDHC_WTMK_LVL:
++        ret = 0;
++        break;
++    }
++
++    return ret;
++}
++
++static void
++usdhc_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
++{
++    SDHCIState *s = SYSBUS_SDHCI(opaque);
++    uint8_t hostctl;
++    uint32_t value = (uint32_t)val;
++
++    switch (offset) {
++    case ESDHC_DLL_CTRL:
++    case ESDHC_TUNE_CTRL_STATUS:
++    case 0x6c:
++    case ESDHC_TUNING_CTRL:
++    case ESDHC_WTMK_LVL:
++    case ESDHC_VENDOR_SPEC:
++        break;
++
++    case SDHC_HOSTCTL:
++        /*
++         * Here's What ESDHCI has at offset 0x28 (SDHC_HOSTCTL)
++         *
++         *       7         6     5      4      3      2        1      0
++         * |-----------+--------+--------+-----------+----------+---------|
++         * | Card      | Card   | Endian | DATA3     | Data     | Led     |
++         * | Detect    | Detect | Mode   | as Card   | Transfer | Control |
++         * | Signal    | Test   |        | Detection | Width    |         |
++         * | Selection | Level  |        | Pin       |          |         |
++         * |-----------+--------+--------+-----------+----------+---------|
++         *
++         * and 0x29
++         *
++         *  15      10 9    8
++         * |----------+------|
++         * | Reserved | DMA  |
++         * |          | Sel. |
++         * |          |      |
++         * |----------+------|
++         *
++         * and here's what SDCHI spec expects those offsets to be:
++         *
++         * 0x28 (Host Control Register)
++         *
++         *     7        6         5       4  3      2         1        0
++         * |--------+--------+----------+------+--------+----------+---------|
++         * | Card   | Card   | Extended | DMA  | High   | Data     | LED     |
++         * | Detect | Detect | Data     | Sel. | Speed  | Transfer | Control |
++         * | Signal | Test   | Transfer |      | Enable | Width    |         |
++         * | Sel.   | Level  | Width    |      |        |          |         |
++         * |--------+--------+----------+------+--------+----------+---------|
++         *
++         * and 0x29 (Power Control Register)
++         *
++         * |----------------------------------|
++         * | Power Control Register           |
++         * |                                  |
++         * | Description omitted,             |
++         * | since it has no analog in ESDHCI |
++         * |                                  |
++         * |----------------------------------|
++         *
++         * Since offsets 0x2A and 0x2B should be compatible between
++         * both IP specs we only need to reconcile least 16-bit of the
++         * word we've been given.
++         */
++
++        /*
++         * First, save bits 7 6 and 0 since they are identical
++         */
++        hostctl = value & (SDHC_CTRL_LED |
++                           SDHC_CTRL_CDTEST_INS |
++                           SDHC_CTRL_CDTEST_EN);
++        /*
++         * Second, split "Data Transfer Width" from bits 2 and 1 in to
++         * bits 5 and 1
++         */
++        if (value & ESDHC_CTRL_8BITBUS) {
++            hostctl |= SDHC_CTRL_8BITBUS;
++        }
++
++        if (value & ESDHC_CTRL_4BITBUS) {
++            hostctl |= ESDHC_CTRL_4BITBUS;
++        }
++
++        /*
++         * Third, move DMA select from bits 9 and 8 to bits 4 and 3
++         */
++        hostctl |= SDHC_DMA_TYPE(value >> (8 - 3));
++
++        /*
++         * Now place the corrected value into low 16-bit of the value
++         * we are going to give standard SDHCI write function
++         *
++         * NOTE: This transformation should be the inverse of what can
++         * be found in drivers/mmc/host/sdhci-esdhc-imx.c in Linux
++         * kernel
++         */
++        value &= ~UINT16_MAX;
++        value |= hostctl;
++        value |= (uint16_t)s->pwrcon << 8;
++
++        sdhci_write(opaque, offset, value, size);
++        break;
++
++    case ESDHC_MIX_CTRL:
++        /*
++         * So, when SD/MMC stack in Linux tries to write to "Transfer
++         * Mode Register", ESDHC i.MX quirk code will translate it
++         * into a write to ESDHC_MIX_CTRL, so we do the opposite in
++         * order to get where we started
++         *
++         * Note that Auto CMD23 Enable bit is located in a wrong place
++         * on i.MX, but since it is not used by QEMU we do not care.
++         *
++         * We don't want to call sdhci_write(.., SDHC_TRNMOD, ...)
++         * here becuase it will result in a call to
++         * sdhci_send_command(s) which we don't want.
++         *
++         */
++        s->trnmod = value & UINT16_MAX;
++        break;
++    case SDHC_TRNMOD:
++        /*
++         * Similar to above, but this time a write to "Command
++         * Register" will be translated into a 4-byte write to
++         * "Transfer Mode register" where lower 16-bit of value would
++         * be set to zero. So what we do is fill those bits with
++         * cached value from s->trnmod and let the SDHCI
++         * infrastructure handle the rest
++         */
++        sdhci_write(opaque, offset, val | s->trnmod, size);
++        break;
++    case SDHC_BLKSIZE:
++        /*
++         * ESDHCI does not implement "Host SDMA Buffer Boundary", and
++         * Linux driver will try to zero this field out which will
++         * break the rest of SDHCI emulation.
++         *
++         * Linux defaults to maximum possible setting (512K boundary)
++         * and it seems to be the only option that i.MX IP implements,
++         * so we artificially set it to that value.
++         */
++        val |= 0x7 << 12;
++        /* FALLTHROUGH */
++    default:
++        sdhci_write(opaque, offset, val, size);
++        break;
++    }
++}
++
++
++static const MemoryRegionOps usdhc_mmio_ops = {
++    .read = usdhc_read,
++    .write = usdhc_write,
++    .valid = {
++        .min_access_size = 1,
 +        .max_access_size = 4,
-+        .unaligned = false,
++        .unaligned = false
 +    },
++    .endianness = DEVICE_LITTLE_ENDIAN,
 +};
 +
-+static const struct MemoryRegionOps imx7_digprog_ops = {
-+    .read = imx7_set_clr_tog_read,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .impl = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+        .unaligned = false,
-+    },
++static void imx_usdhc_init(Object *obj)
++{
++    SDHCIState *s = SYSBUS_SDHCI(obj);
++
++    s->io_ops = &usdhc_mmio_ops;
++    s->quirks = SDHCI_QUIRK_NO_BUSY_IRQ;
++}
++
++static const TypeInfo imx_usdhc_info = {
++    .name = TYPE_IMX_USDHC,
++    .parent = TYPE_SYSBUS_SDHCI,
++    .instance_init = imx_usdhc_init,
 +};
 +
-+static void imx7_ccm_init(Object *obj)
-+{
-+    SysBusDevice *sd = SYS_BUS_DEVICE(obj);
-+    IMX7CCMState *s = IMX7_CCM(obj);
-+
-+    memory_region_init_io(&s->iomem,
-+                          obj,
-+                          &imx7_set_clr_tog_ops,
-+                          s->ccm,
-+                          TYPE_IMX7_CCM ".ccm",
-+                          sizeof(s->ccm));
-+
-+    sysbus_init_mmio(sd, &s->iomem);
-+}
-+
-+static void imx7_analog_init(Object *obj)
-+{
-+    SysBusDevice *sd = SYS_BUS_DEVICE(obj);
-+    IMX7AnalogState *s = IMX7_ANALOG(obj);
-+
-+    memory_region_init(&s->mmio.container, obj, TYPE_IMX7_ANALOG,
-+                       0x10000);
-+
-+    memory_region_init_io(&s->mmio.analog,
-+                          obj,
-+                          &imx7_set_clr_tog_ops,
-+                          s->analog,
-+                          TYPE_IMX7_ANALOG,
-+                          sizeof(s->analog));
-+
-+    memory_region_add_subregion(&s->mmio.container,
-+                                0x60, &s->mmio.analog);
-+
-+    memory_region_init_io(&s->mmio.pmu,
-+                          obj,
-+                          &imx7_set_clr_tog_ops,
-+                          s->pmu,
-+                          TYPE_IMX7_ANALOG ".pmu",
-+                          sizeof(s->pmu));
-+
-+    memory_region_add_subregion(&s->mmio.container,
-+                                0x200, &s->mmio.pmu);
-+
-+    memory_region_init_io(&s->mmio.digprog,
-+                          obj,
-+                          &imx7_digprog_ops,
-+                          &s->analog[ANALOG_DIGPROG],
-+                          TYPE_IMX7_ANALOG ".digprog",
-+                          sizeof(uint32_t));
-+
-+    memory_region_add_subregion_overlap(&s->mmio.container,
-+                                        0x800, &s->mmio.digprog, 10);
-+
-+
-+    sysbus_init_mmio(sd, &s->mmio.container);
-+}
-+
-+static const VMStateDescription vmstate_imx7_ccm = {
-+    .name = TYPE_IMX7_CCM,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(ccm, IMX7CCMState, CCM_MAX),
-+        VMSTATE_END_OF_LIST()
-+    },
-+};
-+
-+static uint32_t imx7_ccm_get_clock_frequency(IMXCCMState *dev, IMXClk clock)
-+{
-+    /*
-+     * This function is "consumed" by GPT emulation code, however on
-+     * i.MX7 each GPT block can have their own clock root. This means
-+     * that this functions needs somehow to know requester's identity
-+     * and the way to pass it: be it via additional IMXClk constants
-+     * or by adding another argument to this method needs to be
-+     * figured out
-+     */
-+    qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Not implemented\n",
-+                  TYPE_IMX7_CCM, __func__);
-+    return 0;
-+}
-+
-+static void imx7_ccm_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    IMXCCMClass *ccm = IMX_CCM_CLASS(klass);
-+
-+    dc->reset = imx7_ccm_reset;
-+    dc->vmsd  = &vmstate_imx7_ccm;
-+    dc->desc  = "i.MX7 Clock Control Module";
-+
-+    ccm->get_clock_frequency = imx7_ccm_get_clock_frequency;
-+}
-+
-+static const TypeInfo imx7_ccm_info = {
-+    .name          = TYPE_IMX7_CCM,
-+    .parent        = TYPE_IMX_CCM,
-+    .instance_size = sizeof(IMX7CCMState),
-+    .instance_init = imx7_ccm_init,
-+    .class_init    = imx7_ccm_class_init,
-+};
-+
-+static const VMStateDescription vmstate_imx7_analog = {
-+    .name = TYPE_IMX7_ANALOG,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(analog, IMX7AnalogState, ANALOG_MAX),
-+        VMSTATE_UINT32_ARRAY(pmu,    IMX7AnalogState, PMU_MAX),
-+        VMSTATE_END_OF_LIST()
-+    },
-+};
-+
-+static void imx7_analog_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->reset = imx7_analog_reset;
-+    dc->vmsd  = &vmstate_imx7_analog;
-+    dc->desc  = "i.MX7 Analog Module";
-+}
-+
-+static const TypeInfo imx7_analog_info = {
-+    .name          = TYPE_IMX7_ANALOG,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(IMX7AnalogState),
-+    .instance_init = imx7_analog_init,
-+    .class_init    = imx7_analog_class_init,
-+};
-+
-+static void imx7_ccm_register_type(void)
-+{
-+    type_register_static(&imx7_ccm_info);
-+    type_register_static(&imx7_analog_info);
-+}
-+type_init(imx7_ccm_register_type)
-diff --git a/include/hw/misc/imx7_ccm.h b/include/hw/misc/imx7_ccm.h
-new file mode 100644
-index 0000000000..9538f37d98
---- /dev/null
-+++ b/include/hw/misc/imx7_ccm.h
-@@ -0,0 +1,139 @@
+ static void sdhci_register_types(void)
+ {
+     type_register_static(&sdhci_pci_info);
+     type_register_static(&sdhci_sysbus_info);
+     type_register_static(&sdhci_bus_info);
++    type_register_static(&imx_usdhc_info);
+ }
+ 
+ type_init(sdhci_register_types)
+diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
+index 1cf70f8c23..f8d1ba3538 100644
+--- a/include/hw/sd/sdhci.h
++++ b/include/hw/sd/sdhci.h
+@@ -44,6 +44,7 @@ typedef struct SDHCIState {
+     AddressSpace sysbus_dma_as;
+     AddressSpace *dma_as;
+     MemoryRegion *dma_mr;
++    const MemoryRegionOps *io_ops;
+ 
+     QEMUTimer *insert_timer;       /* timer for 'changing' sd card. */
+     QEMUTimer *transfer_timer;
+@@ -91,8 +92,18 @@ typedef struct SDHCIState {
+ 
+     /* Configurable properties */
+     bool pending_insert_quirk; /* Quirk for Raspberry Pi card insert int */
++    uint32_t quirks;
+ } SDHCIState;
+ 
 +/*
-+ * Copyright (c) 2017, Impinj, Inc.
++ * Controller does not provide transfer-complete interrupt when not
++ * busy.
 + *
-+ * i.MX7 CCM, PMU and ANALOG IP blocks emulation code
-+ *
-+ * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
++ * NOTE: This definition is taken out of Linux kernel and so the
++ * original bit number is preserved
 + */
++#define SDHCI_QUIRK_NO_BUSY_IRQ    BIT(14)
 +
-+#ifndef IMX7_CCM_H
-+#define IMX7_CCM_H
+ #define TYPE_PCI_SDHCI "sdhci-pci"
+ #define PCI_SDHCI(obj) OBJECT_CHECK(SDHCIState, (obj), TYPE_PCI_SDHCI)
+ 
+@@ -100,4 +111,6 @@ typedef struct SDHCIState {
+ #define SYSBUS_SDHCI(obj)                               \
+      OBJECT_CHECK(SDHCIState, (obj), TYPE_SYSBUS_SDHCI)
+ 
++#define TYPE_IMX_USDHC "imx-usdhc"
 +
-+#include "hw/misc/imx_ccm.h"
-+#include "qemu/bitops.h"
-+
-+enum IMX7AnalogRegisters {
-+    ANALOG_PLL_ARM,
-+    ANALOG_PLL_ARM_SET,
-+    ANALOG_PLL_ARM_CLR,
-+    ANALOG_PLL_ARM_TOG,
-+    ANALOG_PLL_DDR,
-+    ANALOG_PLL_DDR_SET,
-+    ANALOG_PLL_DDR_CLR,
-+    ANALOG_PLL_DDR_TOG,
-+    ANALOG_PLL_DDR_SS,
-+    ANALOG_PLL_DDR_SS_SET,
-+    ANALOG_PLL_DDR_SS_CLR,
-+    ANALOG_PLL_DDR_SS_TOG,
-+    ANALOG_PLL_DDR_NUM,
-+    ANALOG_PLL_DDR_NUM_SET,
-+    ANALOG_PLL_DDR_NUM_CLR,
-+    ANALOG_PLL_DDR_NUM_TOG,
-+    ANALOG_PLL_DDR_DENOM,
-+    ANALOG_PLL_DDR_DENOM_SET,
-+    ANALOG_PLL_DDR_DENOM_CLR,
-+    ANALOG_PLL_DDR_DENOM_TOG,
-+    ANALOG_PLL_480,
-+    ANALOG_PLL_480_SET,
-+    ANALOG_PLL_480_CLR,
-+    ANALOG_PLL_480_TOG,
-+    ANALOG_PLL_480A,
-+    ANALOG_PLL_480A_SET,
-+    ANALOG_PLL_480A_CLR,
-+    ANALOG_PLL_480A_TOG,
-+    ANALOG_PLL_480B,
-+    ANALOG_PLL_480B_SET,
-+    ANALOG_PLL_480B_CLR,
-+    ANALOG_PLL_480B_TOG,
-+    ANALOG_PLL_ENET,
-+    ANALOG_PLL_ENET_SET,
-+    ANALOG_PLL_ENET_CLR,
-+    ANALOG_PLL_ENET_TOG,
-+    ANALOG_PLL_AUDIO,
-+    ANALOG_PLL_AUDIO_SET,
-+    ANALOG_PLL_AUDIO_CLR,
-+    ANALOG_PLL_AUDIO_TOG,
-+    ANALOG_PLL_AUDIO_SS,
-+    ANALOG_PLL_AUDIO_SS_SET,
-+    ANALOG_PLL_AUDIO_SS_CLR,
-+    ANALOG_PLL_AUDIO_SS_TOG,
-+    ANALOG_PLL_AUDIO_NUM,
-+    ANALOG_PLL_AUDIO_NUM_SET,
-+    ANALOG_PLL_AUDIO_NUM_CLR,
-+    ANALOG_PLL_AUDIO_NUM_TOG,
-+    ANALOG_PLL_AUDIO_DENOM,
-+    ANALOG_PLL_AUDIO_DENOM_SET,
-+    ANALOG_PLL_AUDIO_DENOM_CLR,
-+    ANALOG_PLL_AUDIO_DENOM_TOG,
-+    ANALOG_PLL_VIDEO,
-+    ANALOG_PLL_VIDEO_SET,
-+    ANALOG_PLL_VIDEO_CLR,
-+    ANALOG_PLL_VIDEO_TOG,
-+    ANALOG_PLL_VIDEO_SS,
-+    ANALOG_PLL_VIDEO_SS_SET,
-+    ANALOG_PLL_VIDEO_SS_CLR,
-+    ANALOG_PLL_VIDEO_SS_TOG,
-+    ANALOG_PLL_VIDEO_NUM,
-+    ANALOG_PLL_VIDEO_NUM_SET,
-+    ANALOG_PLL_VIDEO_NUM_CLR,
-+    ANALOG_PLL_VIDEO_NUM_TOG,
-+    ANALOG_PLL_VIDEO_DENOM,
-+    ANALOG_PLL_VIDEO_DENOM_SET,
-+    ANALOG_PLL_VIDEO_DENOM_CLR,
-+    ANALOG_PLL_VIDEO_DENOM_TOG,
-+    ANALOG_PLL_MISC0,
-+    ANALOG_PLL_MISC0_SET,
-+    ANALOG_PLL_MISC0_CLR,
-+    ANALOG_PLL_MISC0_TOG,
-+
-+    ANALOG_DIGPROG = 0x800 / sizeof(uint32_t),
-+    ANALOG_MAX,
-+
-+    ANALOG_PLL_LOCK = BIT(31)
-+};
-+
-+enum IMX7CCMRegisters {
-+    CCM_MAX = 0xBE00 / sizeof(uint32_t) + 1,
-+};
-+
-+enum IMX7PMURegisters {
-+    PMU_MAX = 0x140 / sizeof(uint32_t),
-+};
-+
-+#define TYPE_IMX7_CCM "imx7.ccm"
-+#define IMX7_CCM(obj) OBJECT_CHECK(IMX7CCMState, (obj), TYPE_IMX7_CCM)
-+
-+typedef struct IMX7CCMState {
-+    /* <private> */
-+    IMXCCMState parent_obj;
-+
-+    /* <public> */
-+    MemoryRegion iomem;
-+
-+    uint32_t ccm[CCM_MAX];
-+} IMX7CCMState;
-+
-+
-+#define TYPE_IMX7_ANALOG "imx7.analog"
-+#define IMX7_ANALOG(obj) OBJECT_CHECK(IMX7AnalogState, (obj), TYPE_IMX7_ANALOG)
-+
-+typedef struct IMX7AnalogState {
-+    /* <private> */
-+    IMXCCMState parent_obj;
-+
-+    /* <public> */
-+    struct {
-+        MemoryRegion container;
-+        MemoryRegion analog;
-+        MemoryRegion digprog;
-+        MemoryRegion pmu;
-+    } mmio;
-+
-+    uint32_t analog[ANALOG_MAX];
-+    uint32_t pmu[PMU_MAX];
-+} IMX7AnalogState;
-+
-+#endif /* IMX7_CCM_H */
+ #endif /* SDHCI_H */
 -- 
 2.14.3
 

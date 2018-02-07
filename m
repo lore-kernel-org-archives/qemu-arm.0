@@ -1,86 +1,101 @@
-Received: by 10.28.71.27 with SMTP id u27csp4338405wma;
-        Tue, 6 Feb 2018 14:34:08 -0800 (PST)
-X-Google-Smtp-Source: AH8x225wk61M5wHq6JNFHiULeCJ146X4c0XgnnJOE6vfewcn9sxRfa0XzDFOM6LZJixhZhIH19ZM
-X-Received: by 10.37.22.195 with SMTP id 186mr2592887ybw.300.1517956448148;
-        Tue, 06 Feb 2018 14:34:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1517956448; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp208866wma;
+        Tue, 6 Feb 2018 19:59:53 -0800 (PST)
+X-Google-Smtp-Source: AH8x225MUEIOAC1NCPReX+ybKQS19Q06na3Mp0ZncC90RFUW9GLezEIqeI6GFC5SvZ+PTSJe6MDj
+X-Received: by 10.37.145.12 with SMTP id v12mr3155627ybl.134.1517975993765;
+        Tue, 06 Feb 2018 19:59:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1517975993; cv=none;
         d=google.com; s=arc-20160816;
-        b=diFb/E4xBCIvfq8HAPGj1WAByjhmpl/K9fJXSKrmihQqSvdwg4n5wSLo7axDD0jJ6V
-         oaFkhsK1ZKG2yFiW9BjMsXw9OF9eHuA5x6+a5UaXXBBy/kc34DEqBmFcOnXgI8fu4wZy
-         7LI1oQPVC6aEeSEtJDW0rlHRQ1I8MOhUhgjKfbxfIqmGk5w44uEZsdJEdGnH+2XSkBiB
-         qg0hqAgw2xlgA7mZAGT97tGXeaYNuEZdyuzcUyYgH7f0LVhoaRekaS8th/91els4LlSv
-         M/kSRFrCqoewu+Qz3KJb1mUiP5ffM6bggfU6WRmZ36UmvU3mXOYnJLc5/D2o1Qz94VXM
-         7RZw==
+        b=knbpIs0m+oVNR2li7u4AzUBQ4Daw1+EFbS9gKba7FX+mMy7sm6dkhoOoP3trRoHHw9
+         cnBkbC46bkCoqTRd+Flo3IFBsqQ3npMUrAPUa+QrSu5hMrTncqXkIruAZtC1JBnFY0S6
+         nHq0W2quK1hPCERTiGSND9Mmd/EYGNTu8mK3h68uG19kKdkLTJoYKAQldKzQ2IlHO4r4
+         fQJj+cz0Yqx+hBrCqMzD87OBlsQbH5Y0f2aunwPw7waYfdsK+wyCPMMGTgMXLb30M+bD
+         3L4UfJVJ3hWLq+mRRS7JNe7vEIW/Yf4590gmezOE7BC1s5h148u2/uvY63JTDaOc3dkX
+         bvSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :arc-authentication-results;
-        bh=5eCcna/4GlYf8nVob0CnP6ESi9bO7Q4AzgFtSyBPi8U=;
-        b=azk5Hbl91V7+qeTMxvsWh7YagP/jxP4/V8ChURA0wc+18VPRbzTJgjShOTU1s3yqU/
-         zSgyUfiVVeSRNe5RGXjp/Sw33KlzGJTzhD2FPieK0XB32W7lTWbIHj8WGKudWvRxB/JU
-         fY+bz4cxYMTvIjCBc84aFoV5oQ92JuZhaHfbmySv1qypTNt9HS42IgFrzy8mXGIvnO9E
-         yRGkU60BQpws3YOf/nDYGU5ABywTg4EdoPRGxPvq5Oy7eK6c9Dm0U170hZIN9IbAGbsZ
-         t5vjtBPGGlRc3jHbSJaYbSIf/Kb/crRx6mspcIS7Qqj76uWAWghJk8hqggfIwFYi3Wzr
-         7JoA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=bWgAIgfG3X61MCxr01v/8ZsMFOLYARvBa0OfaEn8ZA0=;
+        b=mzT8wRyrajWKTv+FbdbtIh/JeUugMgr4LXid6yeJPnD5zQ3J0cJRIu41i5Ci9eTsEn
+         7rjZg//gmH+hIOtH+Di90Nzz+6RvdztAxJs0ttmDPGPZVi5pVL585YQK2XbUJGtoH6MH
+         ik+rck4DLDjplcm6QqOc17R3lNSkRys4Y9ZNr37JQI7lasax81Qd0MOZJEJGPFLXIH8A
+         JIhIIL7K5MRSBNa1gurAJsXTFQo8AU1V078JZ2iW9yQ5igZJ/rP7mw+JLpNUCIrcXz8h
+         U47NYWgRtRJ3/DrpVaOkMlhl6lJFQdXP7KOjZ8fD2zunTnmBCQCITO3pkoGTWJZjjQH2
+         z5Yg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZvxKjroU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d15si8908ywa.249.2018.02.06.14.34.07
+        by mx.google.com with ESMTPS id l3si97690ywf.683.2018.02.06.19.59.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 06 Feb 2018 14:34:08 -0800 (PST)
+        Tue, 06 Feb 2018 19:59:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZvxKjroU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44500 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:44560 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ejBoV-0003pA-KK
-	for alex.bennee@linaro.org; Tue, 06 Feb 2018 17:34:07 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59726)
+	id 1ejGtl-0004N2-83
+	for alex.bennee@linaro.org; Tue, 06 Feb 2018 22:59:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39225)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1ejBmm-0002Ke-Is
-	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 17:32:22 -0500
+	(envelope-from <andrew.smirnov@gmail.com>) id 1ejGtZ-0004Mh-Q2
+	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 22:59:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1ejBmj-0007u8-Dp
-	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 17:32:20 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:46450)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1ejBmj-0007tG-4O; Tue, 06 Feb 2018 17:32:17 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id F0273C036744;
-	Tue,  6 Feb 2018 22:32:15 +0000 (UTC)
-Received: from localhost (ovpn-116-12.gru2.redhat.com [10.97.116.12])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 824FA12A78;
-	Tue,  6 Feb 2018 22:32:15 +0000 (UTC)
-Date: Tue, 6 Feb 2018 20:32:13 -0200
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20180206223213.GG13301@localhost.localdomain>
-References: <1516694904-64879-1-git-send-email-imammedo@redhat.com>
+	(envelope-from <andrew.smirnov@gmail.com>) id 1ejGtY-000582-NQ
+	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 22:59:41 -0500
+Received: from mail-qt0-x22f.google.com ([2607:f8b0:400d:c0d::22f]:38728)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
+	id 1ejGtY-00057y-JK; Tue, 06 Feb 2018 22:59:40 -0500
+Received: by mail-qt0-x22f.google.com with SMTP id z10so5262656qti.5;
+	Tue, 06 Feb 2018 19:59:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=bWgAIgfG3X61MCxr01v/8ZsMFOLYARvBa0OfaEn8ZA0=;
+	b=ZvxKjroUj99KYz3Hl/lElSETvEY8bAXV1+YvYTFN+e+w57MQGqm2rU2oNuFmKE8cHt
+	RTvHi5QfGQtgRhYAJuI26KY8R8inRY1TB4kKjg9y6e5s20bdJMD0kQO7tp1Gevr4lwC/
+	AmajHfb4Fy+hdPtgHCdCqvMJZmiXhhRBg4rWlFCH5hBDGFrGj0ctxXFm9egk3LvLvkls
+	ln45EyoPKJfAnHOltOiBGj2QQSzY3H+aHvoMS37TfWbUj0q5vblYEvBgxybEZU7tUswL
+	80XUhep0KapqOn5KT1tE1ijYmZDZlkkTbxDX9hWHvOk034qm3hgBXuoIhhm3L6QTW2Bw
+	gdQw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=bWgAIgfG3X61MCxr01v/8ZsMFOLYARvBa0OfaEn8ZA0=;
+	b=hc9IbbBbPqORtoZXpInZL/W2bDWmPXYkw18ImnJKVWNnpk5oDZc7ifRyjdOzMQxzJf
+	Vqg7lYvbCf30M2WFmSemU9tSJFOU0H8yySDq/K4/AnMQm5xxTHaZQzYTTjG2qI0OhRzX
+	A5T6mJO74LC3RtOs5hARay51D9cNyIMBVEcScHUCSrY9qdge5kcJMTdFHFZrMvbpa1f4
+	hkfwt2LbaHMA675k1YwdLEXvqh7YayAFB9s21oMKyAUbpX4S++WNSmnpo/phyWR13tI4
+	W1XtNk9cFJMfa18djirqtDj3OUbxD+8mNnjIA8a56/1m5v8280b727FXTCJRhhl3DWBZ
+	7BHQ==
+X-Gm-Message-State: APf1xPCeviTZSrORVFYeDztawKmRTGArBHNmkr7UilYJb+W52oL49uwA
+	sx7duDd5ddcSOw3ij0k/g2b+8DD1KIDMuxrnyTg=
+X-Received: by 10.200.57.3 with SMTP id s3mr7477906qtb.328.1517975979726; Tue,
+	06 Feb 2018 19:59:39 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1516694904-64879-1-git-send-email-imammedo@redhat.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.9.1 (2017-09-22)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Tue, 06 Feb 2018 22:32:16 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 00/25] generalize parsing of
- cpu_model (part 4)
+Received: by 10.140.101.7 with HTTP; Tue, 6 Feb 2018 19:59:39 -0800 (PST)
+In-Reply-To: <11f684c4-9159-0e4e-5990-635194b32d65@amsat.org>
+References: <20180116013709.13830-1-andrew.smirnov@gmail.com>
+	<11f684c4-9159-0e4e-5990-635194b32d65@amsat.org>
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+Date: Tue, 6 Feb 2018 19:59:39 -0800
+Message-ID: <CAHQ1cqG85MfZpSxUMDxrZj9sCmKizghQZmFsotpPgq+ZwWuEag@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::22f
+Subject: Re: [Qemu-arm] [PATCH v4 00/14] Initial i.MX7 support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,136 +107,43 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+	"open list:ARM" <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Andrey Yurovsky <yurovsky@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GKgxqA/euEQ5
+X-TUID: F/JIgR07jrgf
 
-I will try to summarize my comments here:
+On Wed, Jan 31, 2018 at 9:03 AM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+rg> wrote:
+> Hi Peter, Andrey.
+>
+> On 01/15/2018 10:36 PM, Andrey Smirnov wrote:
+>> Hi everyone,
+>>
+>> This v4 of the patch series containing the work that I've done in
+>> order to enable support for i.MX7 emulation in QEMU.
+>>
+>> *NOTE*: Patches 1 and 2 are provided for the sake of completness and
+>>       are going to have to be adapted once Philippe's SD changes
+>>       land in master. As such, they are NOT ready to be
+>>       accepted/merged.
+>
+> Peter:
+> Since my series are taking longer, if this series is ready it is
+> probably easier to apply Andrey series first and I'll adapt my SDHCI
+> series after.
+>
+> Andrey:
+> I only plan to keep the sdhci.c file generic (dealing with quirks) and
+> split out the imx usdhci code, similar to this patch:
+> https://lists.gnu.org/archive/html/qemu-devel/2018-01/msg01265.html
 
-* I suggest squashing patches 2-22 together.  This way we
-  shouldn't have any intermediate commits where "make check"
-  generates warnings, and the series is shorter.
-  * Or, even better: squash the CPU_RESOLVING_TYPE parts of 3-22
-    into one patch, and the tests/machine-none-test.c parts of
-    3-22 into patch 2.
+Yes, I understand that, but I still am not clear how you propose
+dealing with the fact that i.MX specific read/write functions need to
+call similar functions from parent SDHC class. Are you planning on
+adding overridable read()/write() methods to SDHCICommonClass?
 
-* The linux-user/main.c hunk of patch 03/25 looks unnecessary.
-
-* I suggest testing all CPU models in patch 02/25, but this
-  shouldn't block the series.  Can be a follow-up patch.
-
-All the rest looks good to me.
-
-Thanks!
-
-
-On Tue, Jan 23, 2018 at 09:07:59AM +0100, Igor Mammedov wrote:
-> 
-> v3:
->   - use qtest_startf() instead of qtest_start()
->   - rename tests/machine-none.c to tests/machine-none-test.c
->   - introduce first CPU_RESOLVING_TYPE for all targets and
->     only then use it parse_cpu_model() 
->   - stop abusing  mc->default_cpu_type as resolving cpu type,
->     move cpu_parse_cpu_model() in to exec.c and embed in
->     CPU_RESOLVING_TYPE, so that callers won't have to know
->     about unnecessary detail
-> 
-> v2:
->   - implemented new approach only for x86/ARM (will be done for all targets
->     if approach seems acceptable)
->   - add test case for '-M none -cpu FOO' case
->   - redefine TARGET_DEFAULT_CPU_TYPE into CPU_RESOLVING_TYPE
->   - scrape off default cpu_model refactoring, so it would cause
->     less conflicts with Laurent's series where he tries to rework
->     defaults to use ELF hints of executed program
-> 
-> Series is finishing work on generalizing cpu_model parsing
-> and limiting parts that deal with inconsistent cpu_model
-> naming to "-cpu" CLI option in vl.c, bsd|linux-user/main.c
-> CLI and default cpu_model processing and FOO_cpu_class_by_name()
-> callbacks.
-> 
-> It introduces CPU_RESOLVING_TYPE which must be defined
-> by each target and is used by helper parse_cpu_model()
-> (former cpu_parse_cpu_model()) to get access to target
-> specific FOO_cpu_class_by_name() callback.
-> 
-> git tree for testing:
->    https://github.com/imammedo/qemu.git cpu_init_removal_v3
-> 
-> CC: Laurent Vivier <laurent@vivier.eu>
-> CC: Eduardo Habkost <ehabkost@redhat.com>
-> CC: qemu-s390x@nongnu.org
-> CC: qemu-ppc@nongnu.org
-> CC: qemu-arm@nongnu.org
-> 
-> Igor Mammedov (25):
->   nios2: 10m50_devboard: replace cpu_model with cpu_type
->   tests: add machine 'none' with -cpu test
->   arm: cpu: add CPU_RESOLVING_TYPE macro
->   x86: cpu: add CPU_RESOLVING_TYPE macro
->   alpha: cpu: add CPU_RESOLVING_TYPE macro
->   cris: cpu: add CPU_RESOLVING_TYPE macro
->   lm32: cpu: add CPU_RESOLVING_TYPE macro
->   m68k: cpu: add CPU_RESOLVING_TYPE macro
->   microblaze: cpu: add CPU_RESOLVING_TYPE macro
->   mips: cpu: add CPU_RESOLVING_TYPE macro
->   moxie: cpu: add CPU_RESOLVING_TYPE macro
->   nios2: cpu: add CPU_RESOLVING_TYPE macro
->   openrisc: cpu: add CPU_RESOLVING_TYPE macro
->   ppc: cpu: add CPU_RESOLVING_TYPE macro
->   s390x: cpu: add CPU_RESOLVING_TYPE macro
->   sh4: cpu: add CPU_RESOLVING_TYPE macro
->   sparc: cpu: add CPU_RESOLVING_TYPE macro
->   tricore: cpu: add CPU_RESOLVING_TYPE macro
->   unicore32: cpu: add CPU_RESOLVING_TYPE macro
->   xtensa: cpu: add CPU_RESOLVING_TYPE macro
->   hppa: cpu: add CPU_RESOLVING_TYPE macro
->   tilegx: cpu: add CPU_RESOLVING_TYPE macro
->   Use cpu_create(type) instead of cpu_init(cpu_model)
->   cpu: get rid of unused cpu_init() defines
->   cpu: get rid of cpu_generic_init()
-> 
->  include/qom/cpu.h         | 16 +-------
->  target/alpha/cpu.h        |  3 +-
->  target/arm/cpu.h          |  3 +-
->  target/cris/cpu.h         |  3 +-
->  target/hppa/cpu.h         |  2 +-
->  target/i386/cpu.h         |  3 +-
->  target/lm32/cpu.h         |  3 +-
->  target/m68k/cpu.h         |  3 +-
->  target/microblaze/cpu.h   |  2 +-
->  target/mips/cpu.h         |  3 +-
->  target/moxie/cpu.h        |  3 +-
->  target/nios2/cpu.h        |  2 +-
->  target/openrisc/cpu.h     |  3 +-
->  target/ppc/cpu.h          |  3 +-
->  target/s390x/cpu.h        |  3 +-
->  target/sh4/cpu.h          |  3 +-
->  target/sparc/cpu.h        |  5 +--
->  target/tilegx/cpu.h       |  2 +-
->  target/tricore/cpu.h      |  3 +-
->  target/unicore32/cpu.h    |  3 +-
->  target/xtensa/cpu.h       |  3 +-
->  bsd-user/main.c           |  4 +-
->  exec.c                    | 23 +++++++++++
->  hw/core/null-machine.c    |  6 +--
->  hw/nios2/10m50_devboard.c |  2 +-
->  linux-user/main.c         | 10 +++--
->  qom/cpu.c                 | 48 +----------------------
->  tests/Makefile.include    |  2 +
->  tests/machine-none-test.c | 97 +++++++++++++++++++++++++++++++++++++++++++++++
->  vl.c                      | 10 ++---
->  30 files changed, 162 insertions(+), 114 deletions(-)
->  create mode 100644 tests/machine-none-test.c
-> 
-> -- 
-> 2.7.4
-> 
-> 
-
--- 
-Eduardo
+Thanks,
+Andrey Smirnov

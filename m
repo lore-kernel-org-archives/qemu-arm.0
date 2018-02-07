@@ -1,103 +1,107 @@
-Received: by 10.28.71.27 with SMTP id u27csp238192wma;
-        Tue, 6 Feb 2018 20:25:27 -0800 (PST)
-X-Google-Smtp-Source: AH8x227+WVQTi4qQTM6nQXi1yKzvtOWcMB2IM5lWD+uP8Vs6HLbZrr9+aXKrlsAFSoD2B7cOFfeu
-X-Received: by 10.129.82.137 with SMTP id g131mr3026251ywb.145.1517977527017;
-        Tue, 06 Feb 2018 20:25:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1517977527; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp238221wma;
+        Tue, 6 Feb 2018 20:25:29 -0800 (PST)
+X-Google-Smtp-Source: AH8x2249Qs6d2bqUQYTmxQrMib71lrbjqFYa2AHlUqE2iIQCThGJRKOYF3WjZPt3TcKhuLgMtUPX
+X-Received: by 10.129.85.79 with SMTP id j76mr2996612ywb.189.1517977529637;
+        Tue, 06 Feb 2018 20:25:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1517977529; cv=none;
         d=google.com; s=arc-20160816;
-        b=lQctIeoB5zwe7Sztn3XEAeKkcvBmJ/RNGryBZG0NWK6I9DNgELbXxwP70kuA0gjiDX
-         Shsg49pVPYZpthn6MPKpnOpd1GFkLLG+duGfA38RpPAreXlioGUs76G5wXRBR3zITAP2
-         6AMF/mLt4xhjMPyWFmLCKCAU3nvqll+3r4Z+jeTcZMIJBz7qeOrdeXjqhkWDZ4hde5tv
-         KZvv1F/rii9UdTWCEVHTdl71uMNSvFVx2ZNsx9jGZ/JuSf2CEg7ecNgF7/ai9VHh/805
-         CAHrmP9kDOnKQzAykEq0lw/8h/rUMPJqAGGoA38GR2BPzdC3Jw6HqcKqFdj1I/HYF2Kx
-         MpNw==
+        b=scmOP8GgVC4XlIlzLEJEb6bztLodwxHstGPKCdNtkYGCIN38M8i7NtmswR1TyO1uBm
+         orAVVNbMLCp7v52o9uCkfJ+X1BnSknrFPgtTOPKe+pI2Z2lq7ofdLdTiR5iHXMx97lxl
+         ipZ4tHYUnFWenFT74AQkwGGytliMl2803AGzp6Yuf4mAgJHmfQgaJh3fh4YL6zaFuhuM
+         YlcwZ5qYYAsqWllwxFJSGILSEob3+MuIgx1Sy31TsvgVssIgNdGxfpm4IKZsacuI+POF
+         uf5B5Qhe4/zwiezhksGZHnq+oAOxEBEYnrk4ex3ExFJ8CNRjpCNdbrGmSgEbwpbKzCWL
+         QDbw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=z9fU0vY1XzKUaAko8NagCCfY6dOCvR4y7yCHPcbKKx8=;
-        b=fq1pgjzXqNHN7rg1Spgnzjl2JyBekVIBlnhK4go+cDX79gWQgxy+kCAW49LG+Z0XW/
-         4W33crWG7vZFCys/8R8c9O1OAw0JjoRiHD/HT2YgUcy8z6qvfPr+mD3u/hPw7BO8hgvW
-         hJUepvd2bGVmVElbWvBqr20TNdcuuvLyzqvfcb5osiwhSKTlillSH0tZyiitACesugGk
-         lw5f0SYfZDI4gMqXotXi7VBKlsheAp6OLMQDVSwO+MnF+jYuJ2ttzxMiHPxGAET2vmkV
-         N81XyPxtwKawpuzwSbREun3iVNlwcVNlEk68TwZfocslHYqcl4zcVL/RLByPHi9daq8i
-         /eLg==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=eYo5Syhtrbr+WqDx4beEQ5SVHStFFSkuDfi+LPWskbs=;
+        b=gn7QoVAcomFzj87QNeRPqiZh5SRZ9BNksdQ9Y5XyqVlIsnvn0lGptpuDQnKdAOIqxG
+         R8XrbFj1k5wTkOatMqIrBs4kDZLnfkW2i9oKVbdIEuxlUkk8PO3VOC8hlQOGy5quo6VP
+         65XZ/ietNtC3Vzxt8IKSeAGOQUd+BtSjgahdhyuZokt5YxSH+vnq5eeuHbzgaWtK9uBa
+         Xr75nmctsly25GYp5Y2082umvSah6VzLpKxoHxgHIq+FWLy5rN2sSXv/e/XrqjiaLisr
+         FVh3df5ySTcUGGDGNXaRsBNAlJXjAeNphNu1k34n95T0D6r0krZsbM88EHLP3tIk7wy2
+         X7ow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=q0pWBEaK;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Jf9qV5Sx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g131si119252ybf.2.2018.02.06.20.25.26
+        by mx.google.com with ESMTPS id y2si108366ywe.341.2018.02.06.20.25.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 06 Feb 2018 20:25:27 -0800 (PST)
+        Tue, 06 Feb 2018 20:25:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=q0pWBEaK;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Jf9qV5Sx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:46756 helo=lists.gnu.org)
+Received: from localhost ([::1]:46758 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ejHIU-00007w-8p
-	for alex.bennee@linaro.org; Tue, 06 Feb 2018 23:25:26 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43527)
+	id 1ejHIW-0000B1-VD
+	for alex.bennee@linaro.org; Tue, 06 Feb 2018 23:25:29 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43571)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1ejHIC-0008WB-8N
-	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 23:25:09 -0500
+	(envelope-from <andrew.smirnov@gmail.com>) id 1ejHIF-00007r-F0
+	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 23:25:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1ejHI9-00033t-1j
-	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 23:25:08 -0500
-Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:34350)
+	(envelope-from <andrew.smirnov@gmail.com>) id 1ejHID-00037L-Ho
+	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 23:25:11 -0500
+Received: from mail-pl0-x241.google.com ([2607:f8b0:400e:c01::241]:35732)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
-	id 1ejHI8-00033e-Nv; Tue, 06 Feb 2018 23:25:04 -0500
-Received: by mail-pf0-x241.google.com with SMTP id g17so1648600pfh.1;
-	Tue, 06 Feb 2018 20:25:04 -0800 (PST)
+	id 1ejHID-000364-93; Tue, 06 Feb 2018 23:25:09 -0500
+Received: by mail-pl0-x241.google.com with SMTP id j19so2750632pll.2;
+	Tue, 06 Feb 2018 20:25:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=z9fU0vY1XzKUaAko8NagCCfY6dOCvR4y7yCHPcbKKx8=;
-	b=q0pWBEaKowONKNDtwpsFjJRcS02/RSULF3RqCbypQPWHi5Ji99ZYze2UGf2VMbPV/z
-	lYmH4kdOlScUngmnHQMOcJMTNvoM5jBtpvCmdoBo0+LNkfr7NuvgxiU1T7HXwXUigzTH
-	a2WUKoqa68E/cSZj5onQy4jxdKJCjTiSpZc0UZCp+pkwEFTQzq4i3qexoEogLNY7EK3u
-	t/+ZCAXlvi9HgkyhfxOPx1INbJADIrTrQpmMYWqno5MsXNIoYwfGOxTAjekG5F4cZ60H
-	sDU8JZWciyXF8sHhf9F8TxgtV4haEDVT/TSjUIHa0Nt/fKene3MIL9WI/rF0+9WAkPZA
-	7DcQ==
+	h=from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=eYo5Syhtrbr+WqDx4beEQ5SVHStFFSkuDfi+LPWskbs=;
+	b=Jf9qV5Sxl9gx8l4slqgSfLNXWhYkcGZ+ZT+A4J8rFEgAeuo2yvVzEohmCYSqZsI+Kd
+	oNtsLagPSOJxnBMtzz33EXsvut1iSSfJZizfH82dlhbwfB4U7uoCb5uowWJpgdbShItv
+	zL24ZFzsA4nq7TITRkcD56NJMrjTzo4rBS2InXWWTstVCzxYOEXCoAb4XsKn37/Vs8ds
+	i3URsvuvPUjBU2S7AmgrmTWMGbYa+7mHEQre/hg4rBy3xBqDaRHWIeHt5ccuVqOuRcNk
+	RU/tvBeB0z+/bqpnLQF7slfEpgNHb/kAKFFgX9ZAEEA9JXOADf3N4fuDqzOPy/xbU70D
+	CzlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=z9fU0vY1XzKUaAko8NagCCfY6dOCvR4y7yCHPcbKKx8=;
-	b=aiNKAl+LhAXy3yejNWeku4isL3z9uhqYJVIRc12vT7GetVGCv3UpBAmoOUBLN4drxI
-	OAnkcQAQJXFTjlLwgpoliz6YAz+iU2zxxsaAADT6OA2q90BM3kB9aD4J1r79GnLmD8gB
-	lP2hPqatM93u/GawEBBCTtifxek3Gm9kYOqhk4OR4TtjkEJEC0mBPpD8UVJRG90QXxNc
-	hKKu5FTT8+ExsiSgzXkjiH0kX2chwtm6zyVQbZw4kSz5Fl2vCnGTAw/E/kyFgmqR8b3P
-	FuVmsH7B6ncBavZmlp8HH8lkSUzfGjLfYaDFO3mREDWrsQHK+3AB3xiXOZbFihC0x9Dl
-	2C6w==
-X-Gm-Message-State: APf1xPBLW4UfdXKdmNOAoJcGSn5656CXD2Vf5MrZhUm7bYC6H7pnwI4x
-	HeMUn9uXdlAzvUYyx/c5eDN3KTGZ
-X-Received: by 10.99.97.79 with SMTP id v76mr3826152pgb.104.1517977503166;
-	Tue, 06 Feb 2018 20:25:03 -0800 (PST)
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references:mime-version:content-transfer-encoding;
+	bh=eYo5Syhtrbr+WqDx4beEQ5SVHStFFSkuDfi+LPWskbs=;
+	b=JyGulUCk1SpjvF1Vcc9VmJRwvWJqTYPqrpon5giS3y0+LOjHT40cMpeGbpooXFNWKq
+	bCOrZ2/JMM2okykALwKZHTiEXh5dcUT3Oo7+R6xWhxRCsAtbcYWQpWWDuAhS+YzQjBIS
+	TLd/At4kFZ9VsTo/vn5EoiLo8ofm/Gt3kUJa6WB/JVtNEYkDmoXTayQJ4tQuRQLLCAMT
+	vHTzwk2DxRTm71S5EK3TCiM44lmDnQEXSAIFfS+uXRNhTCbeXWOSKHcgaUbS6n03e0XT
+	cikbI3NjYqt8YjqnVVnWok0HF++SWDohAzVVjNuXm80KM7ZBUfhX4EfVWx8XpOQmcb22
+	PeLQ==
+X-Gm-Message-State: APf1xPAYzMjynpgwfB3Nw+rRReUQC6VOSmRrbcm3S1d77Bhdww6ffuF4
+	onQCdU4RX7VEVRaOb6LNg2PSQjtZ
+X-Received: by 2002:a17:902:20e8:: with SMTP id
+	v37-v6mr4627793plg.66.1517977508004; 
+	Tue, 06 Feb 2018 20:25:08 -0800 (PST)
 Received: from squirtle.lan (c-24-22-235-96.hsd1.wa.comcast.net.
 	[24.22.235.96]) by smtp.gmail.com with ESMTPSA id
-	x8sm1076095pfk.123.2018.02.06.20.25.01
+	x8sm1076095pfk.123.2018.02.06.20.25.06
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 06 Feb 2018 20:25:02 -0800 (PST)
+	Tue, 06 Feb 2018 20:25:07 -0800 (PST)
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 To: qemu-arm@nongnu.org
-Date: Tue,  6 Feb 2018 20:24:24 -0800
-Message-Id: <20180207042438.15422-1-andrew.smirnov@gmail.com>
+Date: Tue,  6 Feb 2018 20:24:27 -0800
+Message-Id: <20180207042438.15422-4-andrew.smirnov@gmail.com>
 X-Mailer: git-send-email 2.14.3
+In-Reply-To: <20180207042438.15422-1-andrew.smirnov@gmail.com>
+References: <20180207042438.15422-1-andrew.smirnov@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c00::241
-Subject: [Qemu-arm] [PATCH v5 00/14] Initial i.MX7 support
+X-Received-From: 2607:f8b0:400e:c01::241
+Subject: [Qemu-arm] [PATCH v5 03/14] i.MX: Add code to emulate i.MX7 CCM,
+ PMU and ANALOG IP blocks
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -118,184 +122,468 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org, yurovsky@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ILwsYNx2/Kxg
+X-TUID: bQowPPn8yPlo
 
-Hi everyone,
+Add minimal code needed to allow upstream Linux guest to boot.
 
-This v5 of the patch series containing the work that I've done in
-order to enable support for i.MX7 emulation in QEMU.
-
-As the one before last commit in the series states the supported i.MX7
-features are:
-
-    * up to 2 Cortex A9 cores (SMP works with PSCI)
-    * A7 MPCORE (identical to A15 MPCORE)
-    * 4 GPTs modules
-    * 7 GPIO controllers
-    * 2 IOMUXC controllers
-    * 1 CCM module
-    * 1 SVNS module
-    * 1 SRC module
-    * 1 GPCv2 controller
-    * 4 eCSPI controllers
-    * 4 I2C controllers
-    * 7 i.MX UART controllers
-    * 2 FlexCAN controllers
-    * 2 Ethernet controllers (FEC)
-    * 3 SD controllers (USDHC)
-    * 4 WDT modules
-    * 1 SDMA module
-    * 1 GPR module
-    * 2 USBMISC modules
-    * 2 ADC modules
-    * 1 PCIe controller
-    * 3 USB controllers
-    * 1 LCD controller
-    * 1 ARMv7 DAP IP block
-
-Feedback is welcome!
-
-Changes since [v4]:
-
-    - Rebase patchest on top of latest QEMU master
-
-    - Reworked PCIE emulation code to create MemoryRegions
-      only once
-
-    - Fixed incorrect usages of PCI instead of PCIE
-
-    - Fixed device class reported by PCIE bridge
-
-    - Added patch to make pci_data_read() and pci_data_write() usable
-      for PCIE devices as well
-
-    - Converted PCIE code to use pci_data_read() and pci_data_write()
-
-    - Added VMStateDescription code for PCIE
-
-    - Collected Reviewed-by tag from Philippe
-
-Changes since [v3]:
-
-    - Changes to FEC were split into a separate set and merged to master
-
-    - Patchest is rebased on latest master
-
-    - Converted to use PSCI DT fixup code that is shared with virt
-      platform (now relocated to live in arm/boot.c)
-
-    - Large number of dummy block were converted to use
-      create_unimplemented_device() as opposed to its own dedicated
-      type
-
-    - Incorporated varios small feedback items
-
-    - Collected Reviewed-by tags from Peter
-
-Changes since [v2]:
-
-    - Added stubs for more blocks that were causing memory
-      transactions when booting Linux guest as were revealed by
-      additional testing of the patchest
-
-    - Added proper USB emulation code, so now it should be possible to
-      emulated guest's USB bus
-
-Changes since [v1]:
-
-    - Patchset no longer relies on "ignore_memory_transaction_failures = false"
-      for its functionality
-
-    - As a consequnce of implementing the above a number of patches
-      implementing dummy IP block emulation as well as PCIe emulation
-      patches that I alluded to in [v1] are now included in this patch
-      series
-
-    - "has_el3" property is no longer being set to "false" as a part
-      of intialization of A7 CPU. I couldn't reproduce the issues that
-      I thought I was having, so I just dropped that code.
-
-    - A number of smaller feedback items from Peter and other has been
-      incorporated into the patches.
-
-
-Thanks,
-Andrey Smirnov
-
-[v4] https://lists.gnu.org/archive/html/qemu-devel/2018-01/msg03264.html
-[v3] https://lists.gnu.org/archive/html/qemu-devel/2017-11/msg04236.html
-[v2] https://lists.gnu.org/archive/html/qemu-devel/2017-10/msg05516.html
-[v1] https://lists.gnu.org/archive/html/qemu-devel/2017-09/msg04770.html
-
-Andrey Smirnov (14):
-  sdhci: Add i.MX specific subtype of SDHCI
-  hw: i.MX: Convert i.MX6 to use TYPE_IMX_USDHC
-  i.MX: Add code to emulate i.MX7 CCM, PMU and ANALOG IP blocks
-  i.MX: Add code to emulate i.MX2 watchdog IP block
-  i.MX: Add code to emulate i.MX7 SNVS IP-block
-  i.MX: Add code to emulate GPCv2 IP block
-  i.MX: Add i.MX7 GPT variant
-  i.MX: Add implementation of i.MX7 GPR IP block
-  pci: Use pci_config_size in pci_data_* accessors
-  pci: Add support for Designware IP block
-  usb: Add basic code to emulate Chipidea USB IP
-  i.MX: Add i.MX7 SOC implementation.
-  hw/arm: Move virt's PSCI DT fixup code to arm/boot.c
-  Implement support for i.MX7 Sabre board
-
- default-configs/arm-softmmu.mak  |   3 +
- hw/arm/Makefile.objs             |   3 +
- hw/arm/boot.c                    |  65 ++++
- hw/arm/fsl-imx6.c                |   2 +-
- hw/arm/fsl-imx7.c                | 580 ++++++++++++++++++++++++++++++
- hw/arm/mcimx7d-sabre.c           |  90 +++++
- hw/arm/virt.c                    |  61 ----
- hw/intc/Makefile.objs            |   2 +-
- hw/intc/imx_gpcv2.c              | 125 +++++++
- hw/misc/Makefile.objs            |   4 +
- hw/misc/imx2_wdt.c               |  89 +++++
- hw/misc/imx7_ccm.c               | 277 ++++++++++++++
- hw/misc/imx7_gpr.c               | 124 +++++++
- hw/misc/imx7_snvs.c              |  83 +++++
- hw/misc/trace-events             |   4 +
- hw/pci-host/Makefile.objs        |   2 +
- hw/pci-host/designware.c         | 759 +++++++++++++++++++++++++++++++++++++++
- hw/pci/pci_host.c                |  13 +-
- hw/sd/sdhci-internal.h           |  20 ++
- hw/sd/sdhci.c                    | 230 +++++++++++-
- hw/timer/imx_gpt.c               |  25 ++
- hw/usb/Makefile.objs             |   1 +
- hw/usb/chipidea.c                | 176 +++++++++
- include/hw/arm/fsl-imx7.h        | 221 ++++++++++++
- include/hw/intc/imx_gpcv2.h      |  22 ++
- include/hw/misc/imx2_wdt.h       |  33 ++
- include/hw/misc/imx7_ccm.h       | 139 +++++++
- include/hw/misc/imx7_gpr.h       |  28 ++
- include/hw/misc/imx7_snvs.h      |  35 ++
- include/hw/pci-host/designware.h |  97 +++++
- include/hw/pci/pci_ids.h         |   2 +
- include/hw/sd/sdhci.h            |  13 +
- include/hw/timer/imx_gpt.h       |   1 +
- include/hw/usb/chipidea.h        |  16 +
- 34 files changed, 3277 insertions(+), 68 deletions(-)
- create mode 100644 hw/arm/fsl-imx7.c
- create mode 100644 hw/arm/mcimx7d-sabre.c
- create mode 100644 hw/intc/imx_gpcv2.c
- create mode 100644 hw/misc/imx2_wdt.c
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Jason Wang <jasowang@redhat.com>
+Cc: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Cc: Marcel Apfelbaum <marcel.apfelbaum@zoho.com>
+Cc: Michael S. Tsirkin <mst@redhat.com>
+Cc: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Cc: yurovsky@gmail.com
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
+---
+ hw/misc/Makefile.objs      |   1 +
+ hw/misc/imx7_ccm.c         | 277 +++++++++++++++++++++++++++++++++++++++++++++
+ include/hw/misc/imx7_ccm.h | 139 +++++++++++++++++++++++
+ 3 files changed, 417 insertions(+)
  create mode 100644 hw/misc/imx7_ccm.c
- create mode 100644 hw/misc/imx7_gpr.c
- create mode 100644 hw/misc/imx7_snvs.c
- create mode 100644 hw/pci-host/designware.c
- create mode 100644 hw/usb/chipidea.c
- create mode 100644 include/hw/arm/fsl-imx7.h
- create mode 100644 include/hw/intc/imx_gpcv2.h
- create mode 100644 include/hw/misc/imx2_wdt.h
  create mode 100644 include/hw/misc/imx7_ccm.h
- create mode 100644 include/hw/misc/imx7_gpr.h
- create mode 100644 include/hw/misc/imx7_snvs.h
- create mode 100644 include/hw/pci-host/designware.h
- create mode 100644 include/hw/usb/chipidea.h
 
+diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+index d517f83e81..a28e5e49b0 100644
+--- a/hw/misc/Makefile.objs
++++ b/hw/misc/Makefile.objs
+@@ -33,6 +33,7 @@ obj-$(CONFIG_IMX) += imx31_ccm.o
+ obj-$(CONFIG_IMX) += imx25_ccm.o
+ obj-$(CONFIG_IMX) += imx6_ccm.o
+ obj-$(CONFIG_IMX) += imx6_src.o
++obj-$(CONFIG_IMX) += imx7_ccm.o
+ obj-$(CONFIG_MILKYMIST) += milkymist-hpdmc.o
+ obj-$(CONFIG_MILKYMIST) += milkymist-pfpu.o
+ obj-$(CONFIG_MAINSTONE) += mst_fpga.o
+diff --git a/hw/misc/imx7_ccm.c b/hw/misc/imx7_ccm.c
+new file mode 100644
+index 0000000000..d90c48bfec
+--- /dev/null
++++ b/hw/misc/imx7_ccm.c
+@@ -0,0 +1,277 @@
++/*
++ * Copyright (c) 2018, Impinj, Inc.
++ *
++ * i.MX7 CCM, PMU and ANALOG IP blocks emulation code
++ *
++ * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++
++#include "hw/misc/imx7_ccm.h"
++
++static void imx7_analog_reset(DeviceState *dev)
++{
++    IMX7AnalogState *s = IMX7_ANALOG(dev);
++
++    memset(s->pmu, 0, sizeof(s->pmu));
++    memset(s->analog, 0, sizeof(s->analog));
++
++    s->analog[ANALOG_PLL_ARM]         = 0x00002042;
++    s->analog[ANALOG_PLL_DDR]         = 0x0060302c;
++    s->analog[ANALOG_PLL_DDR_SS]      = 0x00000000;
++    s->analog[ANALOG_PLL_DDR_NUM]     = 0x06aaac4d;
++    s->analog[ANALOG_PLL_DDR_DENOM]   = 0x100003ec;
++    s->analog[ANALOG_PLL_480]         = 0x00002000;
++    s->analog[ANALOG_PLL_480A]        = 0x52605a56;
++    s->analog[ANALOG_PLL_480B]        = 0x52525216;
++    s->analog[ANALOG_PLL_ENET]        = 0x00001fc0;
++    s->analog[ANALOG_PLL_AUDIO]       = 0x0001301b;
++    s->analog[ANALOG_PLL_AUDIO_SS]    = 0x00000000;
++    s->analog[ANALOG_PLL_AUDIO_NUM]   = 0x05f5e100;
++    s->analog[ANALOG_PLL_AUDIO_DENOM] = 0x2964619c;
++    s->analog[ANALOG_PLL_VIDEO]       = 0x0008201b;
++    s->analog[ANALOG_PLL_VIDEO_SS]    = 0x00000000;
++    s->analog[ANALOG_PLL_VIDEO_NUM]   = 0x0000f699;
++    s->analog[ANALOG_PLL_VIDEO_DENOM] = 0x000f4240;
++    s->analog[ANALOG_PLL_MISC0]       = 0x00000000;
++
++    /* all PLLs need to be locked */
++    s->analog[ANALOG_PLL_ARM]   |= ANALOG_PLL_LOCK;
++    s->analog[ANALOG_PLL_DDR]   |= ANALOG_PLL_LOCK;
++    s->analog[ANALOG_PLL_480]   |= ANALOG_PLL_LOCK;
++    s->analog[ANALOG_PLL_480A]  |= ANALOG_PLL_LOCK;
++    s->analog[ANALOG_PLL_480B]  |= ANALOG_PLL_LOCK;
++    s->analog[ANALOG_PLL_ENET]  |= ANALOG_PLL_LOCK;
++    s->analog[ANALOG_PLL_AUDIO] |= ANALOG_PLL_LOCK;
++    s->analog[ANALOG_PLL_VIDEO] |= ANALOG_PLL_LOCK;
++    s->analog[ANALOG_PLL_MISC0] |= ANALOG_PLL_LOCK;
++
++    /*
++     * Since I couldn't find any info about this in the reference
++     * manual the value of this register is based strictly on matching
++     * what Linux kernel expects it to be.
++     */
++    s->analog[ANALOG_DIGPROG]  = 0x720000;
++    /*
++     * Set revision to be 1.0 (Arbitrary choice, no particular
++     * reason).
++     */
++    s->analog[ANALOG_DIGPROG] |= 0x000010;
++}
++
++static void imx7_ccm_reset(DeviceState *dev)
++{
++    IMX7CCMState *s = IMX7_CCM(dev);
++
++    memset(s->ccm, 0, sizeof(s->ccm));
++}
++
++#define CCM_INDEX(offset)   (((offset) & ~(hwaddr)0xF) / sizeof(uint32_t))
++#define CCM_BITOP(offset)   ((offset) & (hwaddr)0xF)
++
++enum {
++    CCM_BITOP_NONE = 0x00,
++    CCM_BITOP_SET  = 0x04,
++    CCM_BITOP_CLR  = 0x08,
++    CCM_BITOP_TOG  = 0x0C,
++};
++
++static uint64_t imx7_set_clr_tog_read(void *opaque, hwaddr offset,
++                                      unsigned size)
++{
++    const uint32_t *mmio = opaque;
++
++    return mmio[CCM_INDEX(offset)];
++}
++
++static void imx7_set_clr_tog_write(void *opaque, hwaddr offset,
++                                   uint64_t value, unsigned size)
++{
++    const uint8_t  bitop = CCM_BITOP(offset);
++    const uint32_t index = CCM_INDEX(offset);
++    uint32_t *mmio = opaque;
++
++    switch (bitop) {
++    case CCM_BITOP_NONE:
++        mmio[index]  = value;
++        break;
++    case CCM_BITOP_SET:
++        mmio[index] |= value;
++        break;
++    case CCM_BITOP_CLR:
++        mmio[index] &= ~value;
++        break;
++    case CCM_BITOP_TOG:
++        mmio[index] ^= value;
++        break;
++    };
++}
++
++static const struct MemoryRegionOps imx7_set_clr_tog_ops = {
++    .read = imx7_set_clr_tog_read,
++    .write = imx7_set_clr_tog_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .impl = {
++        /*
++         * Our device would not work correctly if the guest was doing
++         * unaligned access. This might not be a limitation on the real
++         * device but in practice there is no reason for a guest to access
++         * this device unaligned.
++         */
++        .min_access_size = 4,
++        .max_access_size = 4,
++        .unaligned = false,
++    },
++};
++
++static const struct MemoryRegionOps imx7_digprog_ops = {
++    .read = imx7_set_clr_tog_read,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .impl = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++        .unaligned = false,
++    },
++};
++
++static void imx7_ccm_init(Object *obj)
++{
++    SysBusDevice *sd = SYS_BUS_DEVICE(obj);
++    IMX7CCMState *s = IMX7_CCM(obj);
++
++    memory_region_init_io(&s->iomem,
++                          obj,
++                          &imx7_set_clr_tog_ops,
++                          s->ccm,
++                          TYPE_IMX7_CCM ".ccm",
++                          sizeof(s->ccm));
++
++    sysbus_init_mmio(sd, &s->iomem);
++}
++
++static void imx7_analog_init(Object *obj)
++{
++    SysBusDevice *sd = SYS_BUS_DEVICE(obj);
++    IMX7AnalogState *s = IMX7_ANALOG(obj);
++
++    memory_region_init(&s->mmio.container, obj, TYPE_IMX7_ANALOG,
++                       0x10000);
++
++    memory_region_init_io(&s->mmio.analog,
++                          obj,
++                          &imx7_set_clr_tog_ops,
++                          s->analog,
++                          TYPE_IMX7_ANALOG,
++                          sizeof(s->analog));
++
++    memory_region_add_subregion(&s->mmio.container,
++                                0x60, &s->mmio.analog);
++
++    memory_region_init_io(&s->mmio.pmu,
++                          obj,
++                          &imx7_set_clr_tog_ops,
++                          s->pmu,
++                          TYPE_IMX7_ANALOG ".pmu",
++                          sizeof(s->pmu));
++
++    memory_region_add_subregion(&s->mmio.container,
++                                0x200, &s->mmio.pmu);
++
++    memory_region_init_io(&s->mmio.digprog,
++                          obj,
++                          &imx7_digprog_ops,
++                          &s->analog[ANALOG_DIGPROG],
++                          TYPE_IMX7_ANALOG ".digprog",
++                          sizeof(uint32_t));
++
++    memory_region_add_subregion_overlap(&s->mmio.container,
++                                        0x800, &s->mmio.digprog, 10);
++
++
++    sysbus_init_mmio(sd, &s->mmio.container);
++}
++
++static const VMStateDescription vmstate_imx7_ccm = {
++    .name = TYPE_IMX7_CCM,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32_ARRAY(ccm, IMX7CCMState, CCM_MAX),
++        VMSTATE_END_OF_LIST()
++    },
++};
++
++static uint32_t imx7_ccm_get_clock_frequency(IMXCCMState *dev, IMXClk clock)
++{
++    /*
++     * This function is "consumed" by GPT emulation code, however on
++     * i.MX7 each GPT block can have their own clock root. This means
++     * that this functions needs somehow to know requester's identity
++     * and the way to pass it: be it via additional IMXClk constants
++     * or by adding another argument to this method needs to be
++     * figured out
++     */
++    qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Not implemented\n",
++                  TYPE_IMX7_CCM, __func__);
++    return 0;
++}
++
++static void imx7_ccm_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    IMXCCMClass *ccm = IMX_CCM_CLASS(klass);
++
++    dc->reset = imx7_ccm_reset;
++    dc->vmsd  = &vmstate_imx7_ccm;
++    dc->desc  = "i.MX7 Clock Control Module";
++
++    ccm->get_clock_frequency = imx7_ccm_get_clock_frequency;
++}
++
++static const TypeInfo imx7_ccm_info = {
++    .name          = TYPE_IMX7_CCM,
++    .parent        = TYPE_IMX_CCM,
++    .instance_size = sizeof(IMX7CCMState),
++    .instance_init = imx7_ccm_init,
++    .class_init    = imx7_ccm_class_init,
++};
++
++static const VMStateDescription vmstate_imx7_analog = {
++    .name = TYPE_IMX7_ANALOG,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32_ARRAY(analog, IMX7AnalogState, ANALOG_MAX),
++        VMSTATE_UINT32_ARRAY(pmu,    IMX7AnalogState, PMU_MAX),
++        VMSTATE_END_OF_LIST()
++    },
++};
++
++static void imx7_analog_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->reset = imx7_analog_reset;
++    dc->vmsd  = &vmstate_imx7_analog;
++    dc->desc  = "i.MX7 Analog Module";
++}
++
++static const TypeInfo imx7_analog_info = {
++    .name          = TYPE_IMX7_ANALOG,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(IMX7AnalogState),
++    .instance_init = imx7_analog_init,
++    .class_init    = imx7_analog_class_init,
++};
++
++static void imx7_ccm_register_type(void)
++{
++    type_register_static(&imx7_ccm_info);
++    type_register_static(&imx7_analog_info);
++}
++type_init(imx7_ccm_register_type)
+diff --git a/include/hw/misc/imx7_ccm.h b/include/hw/misc/imx7_ccm.h
+new file mode 100644
+index 0000000000..9538f37d98
+--- /dev/null
++++ b/include/hw/misc/imx7_ccm.h
+@@ -0,0 +1,139 @@
++/*
++ * Copyright (c) 2017, Impinj, Inc.
++ *
++ * i.MX7 CCM, PMU and ANALOG IP blocks emulation code
++ *
++ * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#ifndef IMX7_CCM_H
++#define IMX7_CCM_H
++
++#include "hw/misc/imx_ccm.h"
++#include "qemu/bitops.h"
++
++enum IMX7AnalogRegisters {
++    ANALOG_PLL_ARM,
++    ANALOG_PLL_ARM_SET,
++    ANALOG_PLL_ARM_CLR,
++    ANALOG_PLL_ARM_TOG,
++    ANALOG_PLL_DDR,
++    ANALOG_PLL_DDR_SET,
++    ANALOG_PLL_DDR_CLR,
++    ANALOG_PLL_DDR_TOG,
++    ANALOG_PLL_DDR_SS,
++    ANALOG_PLL_DDR_SS_SET,
++    ANALOG_PLL_DDR_SS_CLR,
++    ANALOG_PLL_DDR_SS_TOG,
++    ANALOG_PLL_DDR_NUM,
++    ANALOG_PLL_DDR_NUM_SET,
++    ANALOG_PLL_DDR_NUM_CLR,
++    ANALOG_PLL_DDR_NUM_TOG,
++    ANALOG_PLL_DDR_DENOM,
++    ANALOG_PLL_DDR_DENOM_SET,
++    ANALOG_PLL_DDR_DENOM_CLR,
++    ANALOG_PLL_DDR_DENOM_TOG,
++    ANALOG_PLL_480,
++    ANALOG_PLL_480_SET,
++    ANALOG_PLL_480_CLR,
++    ANALOG_PLL_480_TOG,
++    ANALOG_PLL_480A,
++    ANALOG_PLL_480A_SET,
++    ANALOG_PLL_480A_CLR,
++    ANALOG_PLL_480A_TOG,
++    ANALOG_PLL_480B,
++    ANALOG_PLL_480B_SET,
++    ANALOG_PLL_480B_CLR,
++    ANALOG_PLL_480B_TOG,
++    ANALOG_PLL_ENET,
++    ANALOG_PLL_ENET_SET,
++    ANALOG_PLL_ENET_CLR,
++    ANALOG_PLL_ENET_TOG,
++    ANALOG_PLL_AUDIO,
++    ANALOG_PLL_AUDIO_SET,
++    ANALOG_PLL_AUDIO_CLR,
++    ANALOG_PLL_AUDIO_TOG,
++    ANALOG_PLL_AUDIO_SS,
++    ANALOG_PLL_AUDIO_SS_SET,
++    ANALOG_PLL_AUDIO_SS_CLR,
++    ANALOG_PLL_AUDIO_SS_TOG,
++    ANALOG_PLL_AUDIO_NUM,
++    ANALOG_PLL_AUDIO_NUM_SET,
++    ANALOG_PLL_AUDIO_NUM_CLR,
++    ANALOG_PLL_AUDIO_NUM_TOG,
++    ANALOG_PLL_AUDIO_DENOM,
++    ANALOG_PLL_AUDIO_DENOM_SET,
++    ANALOG_PLL_AUDIO_DENOM_CLR,
++    ANALOG_PLL_AUDIO_DENOM_TOG,
++    ANALOG_PLL_VIDEO,
++    ANALOG_PLL_VIDEO_SET,
++    ANALOG_PLL_VIDEO_CLR,
++    ANALOG_PLL_VIDEO_TOG,
++    ANALOG_PLL_VIDEO_SS,
++    ANALOG_PLL_VIDEO_SS_SET,
++    ANALOG_PLL_VIDEO_SS_CLR,
++    ANALOG_PLL_VIDEO_SS_TOG,
++    ANALOG_PLL_VIDEO_NUM,
++    ANALOG_PLL_VIDEO_NUM_SET,
++    ANALOG_PLL_VIDEO_NUM_CLR,
++    ANALOG_PLL_VIDEO_NUM_TOG,
++    ANALOG_PLL_VIDEO_DENOM,
++    ANALOG_PLL_VIDEO_DENOM_SET,
++    ANALOG_PLL_VIDEO_DENOM_CLR,
++    ANALOG_PLL_VIDEO_DENOM_TOG,
++    ANALOG_PLL_MISC0,
++    ANALOG_PLL_MISC0_SET,
++    ANALOG_PLL_MISC0_CLR,
++    ANALOG_PLL_MISC0_TOG,
++
++    ANALOG_DIGPROG = 0x800 / sizeof(uint32_t),
++    ANALOG_MAX,
++
++    ANALOG_PLL_LOCK = BIT(31)
++};
++
++enum IMX7CCMRegisters {
++    CCM_MAX = 0xBE00 / sizeof(uint32_t) + 1,
++};
++
++enum IMX7PMURegisters {
++    PMU_MAX = 0x140 / sizeof(uint32_t),
++};
++
++#define TYPE_IMX7_CCM "imx7.ccm"
++#define IMX7_CCM(obj) OBJECT_CHECK(IMX7CCMState, (obj), TYPE_IMX7_CCM)
++
++typedef struct IMX7CCMState {
++    /* <private> */
++    IMXCCMState parent_obj;
++
++    /* <public> */
++    MemoryRegion iomem;
++
++    uint32_t ccm[CCM_MAX];
++} IMX7CCMState;
++
++
++#define TYPE_IMX7_ANALOG "imx7.analog"
++#define IMX7_ANALOG(obj) OBJECT_CHECK(IMX7AnalogState, (obj), TYPE_IMX7_ANALOG)
++
++typedef struct IMX7AnalogState {
++    /* <private> */
++    IMXCCMState parent_obj;
++
++    /* <public> */
++    struct {
++        MemoryRegion container;
++        MemoryRegion analog;
++        MemoryRegion digprog;
++        MemoryRegion pmu;
++    } mmio;
++
++    uint32_t analog[ANALOG_MAX];
++    uint32_t pmu[PMU_MAX];
++} IMX7AnalogState;
++
++#endif /* IMX7_CCM_H */
 -- 
 2.14.3
 

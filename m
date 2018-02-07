@@ -1,96 +1,96 @@
-Received: by 10.28.71.27 with SMTP id u27csp238552wma;
-        Tue, 6 Feb 2018 20:26:01 -0800 (PST)
-X-Google-Smtp-Source: AH8x224SzwI0TV+YfRTHiwZE37d5D9zuzOcGXMTFN5dGEx/xupR235StEqvLpfxPVWLibku/m7Sj
-X-Received: by 10.13.224.65 with SMTP id j62mr2832246ywe.185.1517977561541;
-        Tue, 06 Feb 2018 20:26:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1517977561; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp240191wma;
+        Tue, 6 Feb 2018 20:28:46 -0800 (PST)
+X-Google-Smtp-Source: AH8x224ebIuPSEwlXPmaP2ZhuKhMwbovX5+e2TBEhtbssyKELookggK4eI2NeKlNoXdbRV//wxqy
+X-Received: by 10.129.53.19 with SMTP id c19mr3009513ywa.404.1517977726377;
+        Tue, 06 Feb 2018 20:28:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1517977726; cv=none;
         d=google.com; s=arc-20160816;
-        b=VRlzEtxXmhZ4MMPfTp1IYberdZuJ2WU1KTgaZfqLmHQf6Z1nkkmI6aP2zIaTmgfu3O
-         EjXR4yY4dQcPi6/nZ8qLY9fL/kE8NschdTxp5Wp4I80Cj2HR93ISre2MEd3aY+vBOxFW
-         AsWashwcPAOzoeour29ajbRzuKWREtXGrhaWoIEFOCP2Oa7jfky/7fObcjocKkWzwf/W
-         C6w76oLO2twRwnXsmT17pygMsRJBarTSKZByg3+/Ybj57wNZVfJt5PAIYngOednwV1fk
-         MHcdIld2eNEp65181tKg/k8sl3CpTZPWfEitCx4vrTzFfupEZejzKGl8a3PMZo0RDuF+
-         7lRw==
+        b=RmHzYgh3LBrMIx5NLTVd3VXwmtk596nGhXN04rYPRONHkRLG4KpUGNjiymL9688OTH
+         QpX1lnZNByJ0VLFyOcW2W21Mwf+q4jHGsUjVSSRLKg63AgnIVo7KYrCUyaOR2mXC91i3
+         +/CyLGcuCfBf/Prkig82oOFhyoVJl+DX+9tiOzLXeJqLxsyQxvKNz3Tk+eAFyfbpoLdK
+         kZmr0q1rqpsSRZjR1XhnQVBTlPIutU0qOvY9d+re6b5EbnJfdZZE4Z8k/1XJk7PneX8K
+         FtNNEUZlOwv4KasHJzwB3fXKF6xDH0HukQd/Z8u2KTI8lsStpleiGsavWuBuPanEGw64
+         u89g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=6IIXhLnAJyjkby0Z0zaC8b3krJ0hahWteikavDfNII8=;
-        b=y7+B9bJCSr2CBzqF1x+yBFc++fnQcW6RSklvs1MdKm6p/CW1FQekxtC3N2D2s75RpS
-         We4xx9nKmWuGCJc/M0UIuxWDwrArsB7+zsc8DgoStz01KFR1vgg0a3bV0QobmIloauJv
-         clc/xkzPvfElyFDo/0ZJD3baZjUyltaCKo8nP1O45ERPFlsI3uCt2qfrpSQXw3Qo87GH
-         cQOsvD0fgRkiAcQBDbgQIKJy5Re6hRKDmks8/gpElaPlNE/tsvh7xy3QFMqCRnRIHvhj
-         7qAfDSNqN0bPulcZ7iYOQWykq5yDvm/7R5CvT0Dt23XRyuARCCwj30ijswzfnreEpzK/
-         mfyA==
+        bh=p3DbWtdaJQqRqXFbCkOYIlCvGXGO93IpRVgjd15DVUw=;
+        b=yCmVpRsqI5G61T5QmU5ZBEsMkO1DrQN66HHtKsIxCGLafESV68F7LzhghTY5HcPtLf
+         hVH4Ilyou8iL+OGW43t1cgEtWeF/Q2XXDJ9c04OQ6LUfFj1vLuNutkpHYZtWyGpJrCqt
+         BzHAWhJymy0Gd5gcDwzOD/ldPw1D7o7nttU/yvIZQLMGJrMXlW+l9ZUuK3cl49PIM59J
+         RBwIMWpKzLPSm1BryBM3e5PnDTy+rLGinhc6zhJqbCd/qmiLOdlzKJmBMSO8ByT6F1fs
+         0OW1htvatypYVRpK9Kwf5srK7PWaPB7V/Gd2Nwbqwr52lVYLdipurNGuIeEgOARnJJ1P
+         fDMA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GOZGKFey;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UHv78tTk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u189si105700ywd.753.2018.02.06.20.26.01
+        by mx.google.com with ESMTPS id c127si106743ywh.763.2018.02.06.20.28.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 06 Feb 2018 20:26:01 -0800 (PST)
+        Tue, 06 Feb 2018 20:28:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GOZGKFey;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UHv78tTk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:46780 helo=lists.gnu.org)
+Received: from localhost ([::1]:46791 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ejHJ2-0000qG-UI
-	for alex.bennee@linaro.org; Tue, 06 Feb 2018 23:26:01 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43617)
+	id 1ejHLh-0003Ie-O0
+	for alex.bennee@linaro.org; Tue, 06 Feb 2018 23:28:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43697)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1ejHIH-0000Ao-NT
-	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 23:25:15 -0500
+	(envelope-from <andrew.smirnov@gmail.com>) id 1ejHIM-0000Il-Fz
+	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 23:25:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1ejHIG-00039W-G3
-	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 23:25:13 -0500
-Received: from mail-pl0-x241.google.com ([2607:f8b0:400e:c01::241]:43072)
+	(envelope-from <andrew.smirnov@gmail.com>) id 1ejHIL-0003F8-0g
+	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 23:25:18 -0500
+Received: from mail-pl0-x242.google.com ([2607:f8b0:400e:c01::242]:42091)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
-	id 1ejHIG-00038x-7x; Tue, 06 Feb 2018 23:25:12 -0500
-Received: by mail-pl0-x241.google.com with SMTP id f4so2727326plr.10;
-	Tue, 06 Feb 2018 20:25:12 -0800 (PST)
+	id 1ejHIK-0003Di-Oe; Tue, 06 Feb 2018 23:25:16 -0500
+Received: by mail-pl0-x242.google.com with SMTP id 11so2738967plc.9;
+	Tue, 06 Feb 2018 20:25:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=6IIXhLnAJyjkby0Z0zaC8b3krJ0hahWteikavDfNII8=;
-	b=GOZGKFeyUoEir+tewwwXID0TL4kIiWzV6cn8DOEDjvCCD2fKw9CLdNdzKQAmunqjtS
-	PsjjGKe/yIkRLmRiOG3/sY11ZdIS/Q2J1pCxLcHcv0Qcdaek50jtihxjOtLPKP5bdck/
-	CWKFRWWKmXpssy1dVLVV3eAXcG4Oj+EwVLbHoHB/xzTAJ/Ca824W7UvejYUAQ3RGiFmG
-	Hd5CF7oiuIXU+wu+Nyii4tSrzARJJ0/ygmwx4WCpnhvjHgFycbC5CYSuzgOotViPoM2j
-	j3o1MafEJFiEYWFgRDRlr+rYrGxZ6CYAEdSfjt0SAwTm/Hqh06eP0jMHhYYISjkHyIdB
-	T0fg==
+	bh=p3DbWtdaJQqRqXFbCkOYIlCvGXGO93IpRVgjd15DVUw=;
+	b=UHv78tTkw6W806+fYSk96TCRcGBRIR/A3wtoe2X5ce8RlwmRREWeyJyDBPcnTgCTDD
+	r64AksjOQycMShspE+LBdWbK+n0Lr6MWw14BDuHQz8O++k32w2WVMXqil1HkvLeZ9xKs
+	2eerMaQB6BMCoYOQOpLjacuHwpHrU+yloHLYMMYl/EOf471VMq/UG7DMrzu7+zL+JgAC
+	8eM3v7rqdI3Z9IWprgwBS5OP+uuUS5LNrGEMps76QHV+CfCl8I+MNkgAyHXey/UddqHg
+	TTcs3+FsHAuE8AifHNXXKqnKGz1nW+mzNjcyIIMhx5l7nOwwdAGF14e/4Yf6Crnt18mi
+	Cz8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:mime-version:content-transfer-encoding;
-	bh=6IIXhLnAJyjkby0Z0zaC8b3krJ0hahWteikavDfNII8=;
-	b=maHz07uC3Mw7ukl17JKLSrlg/qRUrsD4H0zD81WUI6KH377Wqb/JQaBxEKB8FuyQhZ
-	MI3JRT1JkhnYaVaf9FqOnxZDM5kjA5uu3ZrRbGRxZgXe0gPDtspDhPcdspTs/+tCPiRB
-	a8VK1R5A7Zq9g3i6SVxbYFI/cJ6eFvzfM06leKCGLqXD1RkIDsyGsKk2gnaPaY5PWQG3
-	uumyzKNF75KXOsbdZTtauG+9twuiP19QQMvTSZ/3gvpiNYs9DFVxn+SLYbMJANtZPjVX
-	kAUa4kkqSrQYQj/jMQ+Yw/LX/LlYXqPJ/tTmQ67lFWWdDpukx/4gaJSEdOqhVpIVzhSl
-	hk9Q==
-X-Gm-Message-State: APf1xPAza/Bxt8E+1BC8M6u7yUFzTjtLZveMMEmtX4khzLH6+262xrRj
-	dhiglIF1IPcp8u/ZBSTiLTGU8KDv
-X-Received: by 2002:a17:902:1665:: with SMTP id
-	g92-v6mr4656757plg.245.1517977511113; 
-	Tue, 06 Feb 2018 20:25:11 -0800 (PST)
+	bh=p3DbWtdaJQqRqXFbCkOYIlCvGXGO93IpRVgjd15DVUw=;
+	b=G2R4Doyi7Qz3VkEiXG+lrUZaKof9YAlgWtTVfKRSHcSeK6YCpbkgrGjgU6lVjWpau1
+	8CDeta9SnydV781x1LSRbt/IRDmqcYkzMpejPRcgnsY8T7KoABPXtmt65AINt5DzXU9I
+	pyuIraLt7AUKfnkStgTN2ArClwTxMFP2HgoW9fKUED91pynHxtLmLGIEL8A45zbPSA/d
+	6z0WQ4cMu4nI1QCoOCHayRdk+2o2LGJfc+edGCCMqcIVGBUN/Tz2b0N8+7+aXRCJHgni
+	YNvvR2s1UfU2emaBcrUWfDFdeXgrb7lY8nwiHldpyLZLmKyhkOoDfQlkx6qv1GZDLqxK
+	BpyA==
+X-Gm-Message-State: APf1xPCTp75YM9tffH3Y4z7Lj5GSo+TnR8IYtb0H8RJ5iac++jvXRfn3
+	KDsWmxLYpGjdShjdDChx7r429w3v
+X-Received: by 2002:a17:902:720b:: with SMTP id
+	ba11-v6mr4605678plb.371.1517977515554; 
+	Tue, 06 Feb 2018 20:25:15 -0800 (PST)
 Received: from squirtle.lan (c-24-22-235-96.hsd1.wa.comcast.net.
 	[24.22.235.96]) by smtp.gmail.com with ESMTPSA id
-	x8sm1076095pfk.123.2018.02.06.20.25.09
+	x8sm1076095pfk.123.2018.02.06.20.25.13
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 06 Feb 2018 20:25:10 -0800 (PST)
+	Tue, 06 Feb 2018 20:25:14 -0800 (PST)
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 To: qemu-arm@nongnu.org
-Date: Tue,  6 Feb 2018 20:24:29 -0800
-Message-Id: <20180207042438.15422-6-andrew.smirnov@gmail.com>
+Date: Tue,  6 Feb 2018 20:24:32 -0800
+Message-Id: <20180207042438.15422-9-andrew.smirnov@gmail.com>
 X-Mailer: git-send-email 2.14.3
 In-Reply-To: <20180207042438.15422-1-andrew.smirnov@gmail.com>
 References: <20180207042438.15422-1-andrew.smirnov@gmail.com>
@@ -99,9 +99,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c01::241
-Subject: [Qemu-arm] [PATCH v5 05/14] i.MX: Add code to emulate i.MX7 SNVS
- IP-block
+X-Received-From: 2607:f8b0:400e:c01::242
+Subject: [Qemu-arm] [PATCH v5 08/14] i.MX: Add implementation of i.MX7 GPR
+ IP block
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -122,10 +122,9 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org, yurovsky@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eEOK84SBUnLs
+X-TUID: SVZrGprK8KUQ
 
-Add code to emulate SNVS IP-block. Currently only the bits needed to
-be able to emulate machine shutdown are implemented.
+Add minimal code needed to allow upstream Linux guest to boot.
 
 Cc: Peter Maydell <peter.maydell@linaro.org>
 Cc: Jason Wang <jasowang@redhat.com>
@@ -135,38 +134,40 @@ Cc: Michael S. Tsirkin <mst@redhat.com>
 Cc: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
 Cc: yurovsky@gmail.com
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- hw/misc/Makefile.objs       |  1 +
- hw/misc/imx7_snvs.c         | 83 +++++++++++++++++++++++++++++++++++++++++++++
- include/hw/misc/imx7_snvs.h | 35 +++++++++++++++++++
- 3 files changed, 119 insertions(+)
- create mode 100644 hw/misc/imx7_snvs.c
- create mode 100644 include/hw/misc/imx7_snvs.h
+ hw/misc/Makefile.objs      |   1 +
+ hw/misc/imx7_gpr.c         | 124 +++++++++++++++++++++++++++++++++++++++++++++
+ hw/misc/trace-events       |   4 ++
+ include/hw/misc/imx7_gpr.h |  28 ++++++++++
+ 4 files changed, 157 insertions(+)
+ create mode 100644 hw/misc/imx7_gpr.c
+ create mode 100644 include/hw/misc/imx7_gpr.h
 
 diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-index 4b2b705a6c..019886912c 100644
+index 019886912c..fce426eb75 100644
 --- a/hw/misc/Makefile.objs
 +++ b/hw/misc/Makefile.objs
-@@ -35,6 +35,7 @@ obj-$(CONFIG_IMX) += imx6_ccm.o
- obj-$(CONFIG_IMX) += imx6_src.o
+@@ -36,6 +36,7 @@ obj-$(CONFIG_IMX) += imx6_src.o
  obj-$(CONFIG_IMX) += imx7_ccm.o
  obj-$(CONFIG_IMX) += imx2_wdt.o
-+obj-$(CONFIG_IMX) += imx7_snvs.o
+ obj-$(CONFIG_IMX) += imx7_snvs.o
++obj-$(CONFIG_IMX) += imx7_gpr.o
  obj-$(CONFIG_MILKYMIST) += milkymist-hpdmc.o
  obj-$(CONFIG_MILKYMIST) += milkymist-pfpu.o
  obj-$(CONFIG_MAINSTONE) += mst_fpga.o
-diff --git a/hw/misc/imx7_snvs.c b/hw/misc/imx7_snvs.c
+diff --git a/hw/misc/imx7_gpr.c b/hw/misc/imx7_gpr.c
 new file mode 100644
-index 0000000000..4df482b282
+index 0000000000..c2a9df29c6
 --- /dev/null
-+++ b/hw/misc/imx7_snvs.c
-@@ -0,0 +1,83 @@
++++ b/hw/misc/imx7_gpr.c
+@@ -0,0 +1,124 @@
 +/*
-+ * IMX7 Secure Non-Volatile Storage
-+ *
 + * Copyright (c) 2018, Impinj, Inc.
++ *
++ * i.MX7 GPR IP block emulation code
 + *
 + * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
 + *
@@ -178,36 +179,78 @@ index 0000000000..4df482b282
 + */
 +
 +#include "qemu/osdep.h"
-+#include "hw/misc/imx7_snvs.h"
++#include "hw/misc/imx7_gpr.h"
 +#include "qemu/log.h"
 +#include "sysemu/sysemu.h"
 +
-+static uint64_t imx7_snvs_read(void *opaque, hwaddr offset, unsigned size)
++#include "trace.h"
++
++enum IMX7GPRRegisters {
++    IOMUXC_GPR0  = 0x00,
++    IOMUXC_GPR1  = 0x04,
++    IOMUXC_GPR2  = 0x08,
++    IOMUXC_GPR3  = 0x0c,
++    IOMUXC_GPR4  = 0x10,
++    IOMUXC_GPR5  = 0x14,
++    IOMUXC_GPR6  = 0x18,
++    IOMUXC_GPR7  = 0x1c,
++    IOMUXC_GPR8  = 0x20,
++    IOMUXC_GPR9  = 0x24,
++    IOMUXC_GPR10 = 0x28,
++    IOMUXC_GPR11 = 0x2c,
++    IOMUXC_GPR12 = 0x30,
++    IOMUXC_GPR13 = 0x34,
++    IOMUXC_GPR14 = 0x38,
++    IOMUXC_GPR15 = 0x3c,
++    IOMUXC_GPR16 = 0x40,
++    IOMUXC_GPR17 = 0x44,
++    IOMUXC_GPR18 = 0x48,
++    IOMUXC_GPR19 = 0x4c,
++    IOMUXC_GPR20 = 0x50,
++    IOMUXC_GPR21 = 0x54,
++    IOMUXC_GPR22 = 0x58,
++};
++
++#define IMX7D_GPR1_IRQ_MASK                 BIT(12)
++#define IMX7D_GPR1_ENET1_TX_CLK_SEL_MASK    BIT(13)
++#define IMX7D_GPR1_ENET2_TX_CLK_SEL_MASK    BIT(14)
++#define IMX7D_GPR1_ENET_TX_CLK_SEL_MASK     (0x3 << 13)
++#define IMX7D_GPR1_ENET1_CLK_DIR_MASK       BIT(17)
++#define IMX7D_GPR1_ENET2_CLK_DIR_MASK       BIT(18)
++#define IMX7D_GPR1_ENET_CLK_DIR_MASK        (0x3 << 17)
++
++#define IMX7D_GPR5_CSI_MUX_CONTROL_MIPI     BIT(4)
++#define IMX7D_GPR12_PCIE_PHY_REFCLK_SEL     BIT(5)
++#define IMX7D_GPR22_PCIE_PHY_PLL_LOCKED     BIT(31)
++
++
++static uint64_t imx7_gpr_read(void *opaque, hwaddr offset, unsigned size)
 +{
++    trace_imx7_gpr_read(offset);
++
++    if (offset == IOMUXC_GPR22) {
++        return IMX7D_GPR22_PCIE_PHY_PLL_LOCKED;
++    }
++
 +    return 0;
 +}
 +
-+static void imx7_snvs_write(void *opaque, hwaddr offset,
-+                            uint64_t v, unsigned size)
++static void imx7_gpr_write(void *opaque, hwaddr offset,
++                           uint64_t v, unsigned size)
 +{
-+    const uint32_t value = v;
-+    const uint32_t mask  = SNVS_LPCR_TOP | SNVS_LPCR_DP_EN;
-+
-+    if (offset == SNVS_LPCR && ((value & mask) == mask)) {
-+        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
-+    }
++    trace_imx7_gpr_write(offset, v);
 +}
 +
-+static const struct MemoryRegionOps imx7_snvs_ops = {
-+    .read = imx7_snvs_read,
-+    .write = imx7_snvs_write,
++static const struct MemoryRegionOps imx7_gpr_ops = {
++    .read = imx7_gpr_read,
++    .write = imx7_gpr_write,
 +    .endianness = DEVICE_NATIVE_ENDIAN,
 +    .impl = {
 +        /*
 +         * Our device would not work correctly if the guest was doing
-+         * unaligned access. This might not be a limitation on the real
-+         * device but in practice there is no reason for a guest to access
-+         * this device unaligned.
++         * unaligned access. This might not be a limitation on the
++         * real device but in practice there is no reason for a guest
++         * to access this device unaligned.
 +         */
 +        .min_access_size = 4,
 +        .max_access_size = 4,
@@ -215,47 +258,58 @@ index 0000000000..4df482b282
 +    },
 +};
 +
-+static void imx7_snvs_init(Object *obj)
++static void imx7_gpr_init(Object *obj)
 +{
 +    SysBusDevice *sd = SYS_BUS_DEVICE(obj);
-+    IMX7SNVSState *s = IMX7_SNVS(obj);
++    IMX7GPRState *s = IMX7_GPR(obj);
 +
-+    memory_region_init_io(&s->mmio, obj, &imx7_snvs_ops, s,
-+                          TYPE_IMX7_SNVS, 0x1000);
-+
++    memory_region_init_io(&s->mmio, obj, &imx7_gpr_ops, s,
++                          TYPE_IMX7_GPR, 64 * 1024);
 +    sysbus_init_mmio(sd, &s->mmio);
 +}
 +
-+static void imx7_snvs_class_init(ObjectClass *klass, void *data)
++static void imx7_gpr_class_init(ObjectClass *klass, void *data)
 +{
 +    DeviceClass *dc = DEVICE_CLASS(klass);
 +
-+    dc->desc  = "i.MX7 Secure Non-Volatile Storage Module";
++    dc->desc  = "i.MX7 General Purpose Registers Module";
 +}
 +
-+static const TypeInfo imx7_snvs_info = {
-+    .name          = TYPE_IMX7_SNVS,
++static const TypeInfo imx7_gpr_info = {
++    .name          = TYPE_IMX7_GPR,
 +    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(IMX7SNVSState),
-+    .instance_init = imx7_snvs_init,
-+    .class_init    = imx7_snvs_class_init,
++    .instance_size = sizeof(IMX7GPRState),
++    .instance_init = imx7_gpr_init,
++    .class_init    = imx7_gpr_class_init,
 +};
 +
-+static void imx7_snvs_register_type(void)
++static void imx7_gpr_register_type(void)
 +{
-+    type_register_static(&imx7_snvs_info);
++    type_register_static(&imx7_gpr_info);
 +}
-+type_init(imx7_snvs_register_type)
-diff --git a/include/hw/misc/imx7_snvs.h b/include/hw/misc/imx7_snvs.h
++type_init(imx7_gpr_register_type)
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index 616579a403..e6070f280d 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -66,3 +66,7 @@ mps2_scc_cfg_read(unsigned function, unsigned device, uint32_t value) "MPS2 SCC
+ msf2_sysreg_write(uint64_t offset, uint32_t val, uint32_t prev) "msf2-sysreg write: addr 0x%08" HWADDR_PRIx " data 0x%" PRIx32 " prev 0x%" PRIx32
+ msf2_sysreg_read(uint64_t offset, uint32_t val) "msf2-sysreg read: addr 0x%08" HWADDR_PRIx " data 0x%08" PRIx32
+ msf2_sysreg_write_pll_status(void) "Invalid write to read only PLL status register"
++
++#hw/misc/imx7_gpr.c
++imx7_gpr_read(uint64_t offset) "addr 0x%08" HWADDR_PRIx
++imx7_gpr_write(uint64_t offset, uint64_t value) "addr 0x%08" HWADDR_PRIx "value 0x%08" HWADDR_PRIx
+diff --git a/include/hw/misc/imx7_gpr.h b/include/hw/misc/imx7_gpr.h
 new file mode 100644
-index 0000000000..255f8f26f9
+index 0000000000..e19373d274
 --- /dev/null
-+++ b/include/hw/misc/imx7_snvs.h
-@@ -0,0 +1,35 @@
++++ b/include/hw/misc/imx7_gpr.h
+@@ -0,0 +1,28 @@
 +/*
 + * Copyright (c) 2017, Impinj, Inc.
 + *
-+ * i.MX7 SNVS block emulation code
++ * i.MX7 GPR IP block emulation code
 + *
 + * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
 + *
@@ -263,30 +317,23 @@ index 0000000000..255f8f26f9
 + * See the COPYING file in the top-level directory.
 + */
 +
-+#ifndef IMX7_SNVS_H
-+#define IMX7_SNVS_H
++#ifndef IMX7_GPR_H
++#define IMX7_GPR_H
 +
 +#include "qemu/bitops.h"
 +#include "hw/sysbus.h"
 +
++#define TYPE_IMX7_GPR "imx7.gpr"
++#define IMX7_GPR(obj) OBJECT_CHECK(IMX7GPRState, (obj), TYPE_IMX7_GPR)
 +
-+enum IMX7SNVSRegisters {
-+    SNVS_LPCR = 0x38,
-+    SNVS_LPCR_TOP   = BIT(6),
-+    SNVS_LPCR_DP_EN = BIT(5)
-+};
-+
-+#define TYPE_IMX7_SNVS "imx7.snvs"
-+#define IMX7_SNVS(obj) OBJECT_CHECK(IMX7SNVSState, (obj), TYPE_IMX7_SNVS)
-+
-+typedef struct IMX7SNVSState {
++typedef struct IMX7GPRState {
 +    /* <private> */
 +    SysBusDevice parent_obj;
 +
 +    MemoryRegion mmio;
-+} IMX7SNVSState;
++} IMX7GPRState;
 +
-+#endif /* IMX7_SNVS_H */
++#endif /* IMX7_GPR_H */
 -- 
 2.14.3
 

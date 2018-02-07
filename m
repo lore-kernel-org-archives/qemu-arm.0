@@ -1,95 +1,95 @@
-Received: by 10.28.71.27 with SMTP id u27csp240582wma;
-        Tue, 6 Feb 2018 20:29:25 -0800 (PST)
-X-Google-Smtp-Source: AH8x227S2soR+FV9Q3GOnJh+yH0oRsgXerxMFvBMkRqR5kgEkgIo5quOSdl+8Gwdy4cUuqem9i9g
-X-Received: by 10.37.188.143 with SMTP id e15mr3047505ybk.361.1517977765400;
-        Tue, 06 Feb 2018 20:29:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1517977765; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp241942wma;
+        Tue, 6 Feb 2018 20:31:09 -0800 (PST)
+X-Google-Smtp-Source: AH8x226JBBP1XL4gGDAqS3Xtuugdh/FPLrNIQSJiozXhVIAmt4+w06HgfqDOCPMG/RcrIYGHKbxb
+X-Received: by 10.129.132.142 with SMTP id u136mr3010367ywf.432.1517977869533;
+        Tue, 06 Feb 2018 20:31:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1517977869; cv=none;
         d=google.com; s=arc-20160816;
-        b=qLbc1F6VzexTuHLmCPj1UF6Bunp87hzSmJjitI/3PJvnHRCdCPeZxYLauAJaA5PEB2
-         392avFX324k8JFeN1TMT/TkKQpFzL0Qh9WuRbbrMT00b04Ps5Bv6sfaJi5ZqfgWPXi4m
-         2Eb/3MgqQ9bI7djCfB+nIqMiQCNtoc23V9hUcCn1Xli5+dFkE8Voeo7E05mf9IvOiZGr
-         JfozB5MegJhGOeUfuscmZp5OFqCg6mf8x3Dz891tDwzhh8lKtvU6H8zeKNtN5u7RMSDD
-         rDMR2Ckjobgxc3xaseEH5kuvHpaBG/ogSS7wVO0uSnkcVv6Kc/WYlRgKrfIVRRISPHL2
-         Cr8A==
+        b=i2UCf1HIUMmXqQ+pYPVtmQyFfqsg3V9f8Db1cmkDlRsCelTav2aIDJIanMsszgM+Xj
+         +M6oh8fBzDkfFiM+mUWiawlBt1q76BdXXDdCdAqR99WwlyWEtz9fsMvMoKq2sGyVOLHV
+         capNa4uNTBgw19mF3CRBljvHxhsNfjeQhRk2GrjBsA++IZVcAf93At3rMWBhw++T87WI
+         E/0YYzNvTjdYVtlEhbwHtpFqlLoRYIGF5y0Bj6PgNktPDR3l4vP/c10k8KBTjXJCAAYu
+         GREupI6swdK8ZFwEFGlW7im8QDEcRnCwGgRubFC0I2aNSEz41zlec5b0FGA3d1EYNKSe
+         JsrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=iUZpCNDLXx8+GKBOi8DGXaWYJ4GhXN5lvzS1uNE4bzs=;
-        b=sB+3tFZqDy7k8gK+h6HgiapXX8fEZbN7Z+F2c+27r4fx7f3m6KyEoUDeBhCz7pDihE
-         b7T1j3CxGR7uH8p9tSKxbvPzF/QXmhmrYuHix82++eI9RSBcPyFCt6EVdzhjTbRsOtbC
-         zMX6XBm0OGYRKZgaVc2aZGA8bpQcAuUzvoVVsSg1ryTRb2OYxZ7EjOV6nhJc1gTvYGli
-         tj8EFlJjGLrAPrbrJQFANvsNdJkeol0A+XDmBXjZhoO7Pfn75v8lrfofC2kiVEo34Big
-         3hEA/GmFbbvmZ0iMowGYRR8kaWtRujB6FHF31rmdSeGiWWjJ7YQM3g/UbcRdKCd+BjIp
-         iQqA==
+        bh=hdzgmCtTlkltj/dbzhmcq9fOR30UBd+OkUQAESIZCR0=;
+        b=ZZAvX9Cu/ZEfEKwBtrziM9D651Y5Eb4my1JvptyqReAALZ2H3PnbqZdmNc+E5dJMJn
+         iEOwTlKX69kT8UDQRgqkjd7i+m5szIm8mJF9wDwATHaiMQQlumamVkGGRKySCNKItXYe
+         bWLczcAnwtJxbQNX/JUie2aSelZyOtQS2aY5ebMgGNLzOu6c6ulIhgOIoUzU4wgGDAOw
+         UarAPJVYX2ubrhIPC3Bmc7bnQqsCyiiXkFLLBAeHu9PjGa5dbhPA36eMBzUXJOgfeylw
+         QpqqX1c4knizgTQ7LCAcAd8Y4jZLejffCFBlZ36VFK7VD45JHKEKjnS6k3mNTwTpMpCb
+         28kQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tWIqf5iw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ccDWIEsQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h10si108968ywk.695.2018.02.06.20.29.25
+        by mx.google.com with ESMTPS id g184si102102ywa.722.2018.02.06.20.31.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 06 Feb 2018 20:29:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 06 Feb 2018 20:31:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tWIqf5iw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ccDWIEsQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:46808 helo=lists.gnu.org)
+Received: from localhost ([::1]:46908 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ejHMK-0003yH-Km
-	for alex.bennee@linaro.org; Tue, 06 Feb 2018 23:29:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43818)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ejHO0-00052W-Q4
+	for alex.bennee@linaro.org; Tue, 06 Feb 2018 23:31:08 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43843)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1ejHIU-0000Vo-Rh
-	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 23:25:29 -0500
+	(envelope-from <andrew.smirnov@gmail.com>) id 1ejHIW-0000ZE-7e
+	for qemu-devel@nongnu.org; Tue, 06 Feb 2018 23:25:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1ejHIS-0003R4-2i
-	for qemu-arm@nongnu.org; Tue, 06 Feb 2018 23:25:26 -0500
-Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:32849)
+	(envelope-from <andrew.smirnov@gmail.com>) id 1ejHIV-0003WP-18
+	for qemu-devel@nongnu.org; Tue, 06 Feb 2018 23:25:28 -0500
+Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:34352)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
-	id 1ejHIR-0003Ot-Mh; Tue, 06 Feb 2018 23:25:23 -0500
-Received: by mail-pf0-x241.google.com with SMTP id u15so1650055pfa.0;
-	Tue, 06 Feb 2018 20:25:23 -0800 (PST)
+	id 1ejHIP-0003KJ-SR; Tue, 06 Feb 2018 23:25:22 -0500
+Received: by mail-pf0-x241.google.com with SMTP id g17so1648902pfh.1;
+	Tue, 06 Feb 2018 20:25:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=iUZpCNDLXx8+GKBOi8DGXaWYJ4GhXN5lvzS1uNE4bzs=;
-	b=tWIqf5iw9eow3zqsPwfCVLB2ncQwGXEjx2AyTEDKbZjJGVn41W11SbZ7xFBBsEOjzG
-	dudBh9mef8C/om0suATJzZ4HrqjRkUfe4CXbh/MVEg3/u1fHbGwmKr9G5n+bP6ku+ar+
-	yVbz+Avn4FmQYCnlAb7J9EGbVlof78+f5bIps0P5Mh5s8SRqcokB8sYiNaBAyGvTbccQ
-	igdnRaFLUDbkkmffjRjS3YqbSbUTHnZ5GZusPkWPiEI7Bxj/Uh08XODl833CJX2HyVqb
-	UNgbVUUiC5z6sxAxqPwDfLjvGgDJBU7MOQj1XHXIVnIeuHclAOEHDDYKumszS+UG3+m8
-	l6ew==
+	bh=hdzgmCtTlkltj/dbzhmcq9fOR30UBd+OkUQAESIZCR0=;
+	b=ccDWIEsQPXpuLU0S6pqP7jdkFtb5gJCu5BRHzzdE4CR1Mu3SL0HPpwFrOVh4SyprW2
+	hPEvIjqx/kZtu4kiesPVtEbIoXNdpPNjT47+eQeais8I0VP9ukK3LdW+NEg1LZk3Im40
+	jr36hvzvVB2tBO9dH/wo13MqCNTjCFyF9uls4BtTfU960bN34zqQP0cmB+eb1Qq1LL0V
+	WzzTFZJ3LpTa2hTRvJimIeFZqWwwOrf+FR3sjusGGu8XBRWzoirT7kBrrU2pGK+nl0B4
+	CVaHIrQ0iBuTpbrNvSEgfzGvffy3ZTEoTD4EuXQxRF8ctOcBh9Ib0t4Maistmp0Nq3ww
+	XBzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:mime-version:content-transfer-encoding;
-	bh=iUZpCNDLXx8+GKBOi8DGXaWYJ4GhXN5lvzS1uNE4bzs=;
-	b=JdiMAGlJVq52JpOVnXlkMDu/R0+CJOzarvG5BLvyXBkq+mXnmCbTvuxf6X3SyFBEOO
-	XOT1ODDAWSajYDsd79GsYByxt8JL+IL5wjJdpPjl4Ap4K5Tw5acD1/dOd0FOpWEXUZ0h
-	1jFjNCMrtnT9kgIiO4BL+SgsaZxmMlsyivIy9UTE6Sa4UFblrAfWP5giYigXn798Vl06
-	DIg+J0s1gDPYvIIuTrivAGYdwe7bHWhhc/rK6ahbWJdzKqkUjCIRSInaxOru7BzpO96G
-	7NpIgqFUYf/kxN2lmoyEfFCa+FI5VnmNbNLyY/pM9FzaO03MCinmHuSZp9pNkMjv3/NO
-	QIOw==
-X-Gm-Message-State: APf1xPDbRb6vBfprLDutQBEDfIO1N4RVh92iRwqmb3dKVbhWFuIjGSOz
-	8YoKgBllFrKWYSVc9a7jcaitW7/D
-X-Received: by 10.98.178.218 with SMTP id z87mr4641635pfl.88.1517977522161;
-	Tue, 06 Feb 2018 20:25:22 -0800 (PST)
+	bh=hdzgmCtTlkltj/dbzhmcq9fOR30UBd+OkUQAESIZCR0=;
+	b=eWl8xyHxc2BGHYhe4TQfBjQRc7iokaRw0RM+EM1wbeOMHDqRvA8Yh+nWu/7nkz/CW4
+	aZO4OPf+OLUGwQSJonp8lA6z0g81ZwPx38q56uLxRwDf7rJP5zUa6Dch7Tn9oSVlRUG7
+	Mb6SaYkavT8qjY90JcwjfLrvmanq/TrkXhRWtkHLJOGA0BJqnFUJy3b/6bxIh3bURIC/
+	YMUaJUb8gLHkwPOdetS4XqLV17gErwbNdY3Lt/u+cg2gHF6T6/BVLq2E7ltMDQfU3y0Y
+	6OLF/7ng8LGK47oZiHue9xpFCEnDt2IlFLWect6pL8+20m8QM/nC6eJuLrG52kPfLfgu
+	EMvw==
+X-Gm-Message-State: APf1xPDWM5RlAgNxuPGuu1VIff6eyxAa8MH0ETBLYb9Nv13eZ8UQ7pFB
+	xRkWSmpgjX1JMhBHKDzbuM9JyBt0
+X-Received: by 10.98.75.11 with SMTP id y11mr4583916pfa.169.1517977520716;
+	Tue, 06 Feb 2018 20:25:20 -0800 (PST)
 Received: from squirtle.lan (c-24-22-235-96.hsd1.wa.comcast.net.
 	[24.22.235.96]) by smtp.gmail.com with ESMTPSA id
-	x8sm1076095pfk.123.2018.02.06.20.25.20
+	x8sm1076095pfk.123.2018.02.06.20.25.19
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 06 Feb 2018 20:25:21 -0800 (PST)
+	Tue, 06 Feb 2018 20:25:20 -0800 (PST)
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 To: qemu-arm@nongnu.org
-Date: Tue,  6 Feb 2018 20:24:36 -0800
-Message-Id: <20180207042438.15422-13-andrew.smirnov@gmail.com>
+Date: Tue,  6 Feb 2018 20:24:35 -0800
+Message-Id: <20180207042438.15422-12-andrew.smirnov@gmail.com>
 X-Mailer: git-send-email 2.14.3
 In-Reply-To: <20180207042438.15422-1-andrew.smirnov@gmail.com>
 References: <20180207042438.15422-1-andrew.smirnov@gmail.com>
@@ -99,18 +99,19 @@ Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2607:f8b0:400e:c00::241
-Subject: [Qemu-arm] [PATCH v5 12/14] i.MX: Add i.MX7 SOC implementation.
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [PATCH v5 11/14] usb: Add basic code to emulate
+ Chipidea USB IP
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	"Michael S . Tsirkin" <mst@redhat.com>,
 	Andrey Smirnov <andrew.smirnov@gmail.com>,
@@ -118,35 +119,15 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Marcel Apfelbaum <marcel.apfelbaum@zoho.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, yurovsky@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Md91l5jAAcbo
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: dm/6emCHkGjn
 
-The following interfaces are partially or fully emulated:
+Add code to emulate Chipidea USB IP (used in i.MX SoCs). Tested to
+work against:
 
-    * up to 2 Cortex A9 cores (SMP works with PSCI)
-    * A7 MPCORE (identical to A15 MPCORE)
-    * 4 GPTs modules
-    * 7 GPIO controllers
-    * 2 IOMUXC controllers
-    * 1 CCM module
-    * 1 SVNS module
-    * 1 SRC module
-    * 1 GPCv2 controller
-    * 4 eCSPI controllers
-    * 4 I2C controllers
-    * 7 i.MX UART controllers
-    * 2 FlexCAN controllers
-    * 2 Ethernet controllers (FEC)
-    * 3 SD controllers (USDHC)
-    * 4 WDT modules
-    * 1 SDMA module
-    * 1 GPR module
-    * 2 USBMISC modules
-    * 2 ADC modules
-    * 1 PCIe controller
-
-Tested to boot and work with upstream Linux (4.13+) guest.
+-usb -drive if=none,id=stick,file=usb.img,format=raw -device \
+ usb-storage,bus=usb-bus.0,drive=stick
 
 Cc: Peter Maydell <peter.maydell@linaro.org>
 Cc: Jason Wang <jasowang@redhat.com>
@@ -159,849 +140,229 @@ Cc: yurovsky@gmail.com
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- default-configs/arm-softmmu.mak |   1 +
- hw/arm/Makefile.objs            |   2 +
- hw/arm/fsl-imx7.c               | 580 ++++++++++++++++++++++++++++++++++++++++
- include/hw/arm/fsl-imx7.h       | 221 +++++++++++++++
- 4 files changed, 804 insertions(+)
- create mode 100644 hw/arm/fsl-imx7.c
- create mode 100644 include/hw/arm/fsl-imx7.h
+ hw/usb/Makefile.objs      |   1 +
+ hw/usb/chipidea.c         | 176 ++++++++++++++++++++++++++++++++++++++++++++++
+ include/hw/usb/chipidea.h |  16 +++++
+ 3 files changed, 193 insertions(+)
+ create mode 100644 hw/usb/chipidea.c
+ create mode 100644 include/hw/usb/chipidea.h
 
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-index 0c5ae914ed..99fe1cd1fb 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -118,6 +118,7 @@ CONFIG_ALLWINNER_A10=y
- CONFIG_FSL_IMX6=y
- CONFIG_FSL_IMX31=y
- CONFIG_FSL_IMX25=y
-+CONFIG_FSL_IMX7=y
+diff --git a/hw/usb/Makefile.objs b/hw/usb/Makefile.objs
+index fbcd498c59..41be700812 100644
+--- a/hw/usb/Makefile.objs
++++ b/hw/usb/Makefile.objs
+@@ -12,6 +12,7 @@ common-obj-$(CONFIG_USB_XHCI_NEC) += hcd-xhci-nec.o
+ common-obj-$(CONFIG_USB_MUSB) += hcd-musb.o
  
- CONFIG_IMX_I2C=y
+ obj-$(CONFIG_TUSB6010) += tusb6010.o
++obj-$(CONFIG_IMX)      += chipidea.o
  
-diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-index 1c896bafb4..1f306c6a19 100644
---- a/hw/arm/Makefile.objs
-+++ b/hw/arm/Makefile.objs
-@@ -20,3 +20,5 @@ obj-$(CONFIG_FSL_IMX6) += fsl-imx6.o sabrelite.o
- obj-$(CONFIG_ASPEED_SOC) += aspeed_soc.o aspeed.o
- obj-$(CONFIG_MPS2) += mps2.o
- obj-$(CONFIG_MSF2) += msf2-soc.o msf2-som.o
-+obj-$(CONFIG_FSL_IMX7) += fsl-imx7.o
-+
-diff --git a/hw/arm/fsl-imx7.c b/hw/arm/fsl-imx7.c
+ # emulated usb devices
+ common-obj-$(CONFIG_USB) += dev-hub.o
+diff --git a/hw/usb/chipidea.c b/hw/usb/chipidea.c
 new file mode 100644
-index 0000000000..5e78f64ac4
+index 0000000000..60d67f88b8
 --- /dev/null
-+++ b/hw/arm/fsl-imx7.c
-@@ -0,0 +1,580 @@
++++ b/hw/usb/chipidea.c
+@@ -0,0 +1,176 @@
 +/*
 + * Copyright (c) 2018, Impinj, Inc.
 + *
-+ * i.MX7 SoC definitions
++ * Chipidea USB block emulation code
 + *
 + * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
 + *
-+ * Based on hw/arm/fsl-imx6.c
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-+ * GNU General Public License for more details.
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
 + */
 +
 +#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "qemu-common.h"
-+#include "hw/arm/fsl-imx7.h"
-+#include "hw/misc/unimp.h"
-+#include "sysemu/sysemu.h"
-+#include "qemu/error-report.h"
-+
-+#define NAME_SIZE 20
-+
-+static void fsl_imx7_init(Object *obj)
-+{
-+    BusState *sysbus = sysbus_get_default();
-+    FslIMX7State *s = FSL_IMX7(obj);
-+    char name[NAME_SIZE];
-+    int i;
-+
-+    if (smp_cpus > FSL_IMX7_NUM_CPUS) {
-+        error_report("%s: Only %d CPUs are supported (%d requested)",
-+                     TYPE_FSL_IMX7, FSL_IMX7_NUM_CPUS, smp_cpus);
-+        exit(1);
-+    }
-+
-+    for (i = 0; i < smp_cpus; i++) {
-+        object_initialize(&s->cpu[i], sizeof(s->cpu[i]),
-+                          ARM_CPU_TYPE_NAME("cortex-a7"));
-+        snprintf(name, NAME_SIZE, "cpu%d", i);
-+        object_property_add_child(obj, name, OBJECT(&s->cpu[i]),
-+                                  &error_fatal);
-+    }
-+
-+    /*
-+     * A7MPCORE
-+     */
-+    object_initialize(&s->a7mpcore, sizeof(s->a7mpcore), TYPE_A15MPCORE_PRIV);
-+    qdev_set_parent_bus(DEVICE(&s->a7mpcore), sysbus);
-+    object_property_add_child(obj, "a7mpcore",
-+                              OBJECT(&s->a7mpcore), &error_fatal);
-+
-+    /*
-+     * GPIOs 1 to 7
-+     */
-+    for (i = 0; i < FSL_IMX7_NUM_GPIOS; i++) {
-+        object_initialize(&s->gpio[i], sizeof(s->gpio[i]),
-+                          TYPE_IMX_GPIO);
-+        qdev_set_parent_bus(DEVICE(&s->gpio[i]), sysbus);
-+        snprintf(name, NAME_SIZE, "gpio%d", i);
-+        object_property_add_child(obj, name,
-+                                  OBJECT(&s->gpio[i]), &error_fatal);
-+    }
-+
-+    /*
-+     * GPT1, 2, 3, 4
-+     */
-+    for (i = 0; i < FSL_IMX7_NUM_GPTS; i++) {
-+        object_initialize(&s->gpt[i], sizeof(s->gpt[i]), TYPE_IMX7_GPT);
-+        qdev_set_parent_bus(DEVICE(&s->gpt[i]), sysbus);
-+        snprintf(name, NAME_SIZE, "gpt%d", i);
-+        object_property_add_child(obj, name, OBJECT(&s->gpt[i]),
-+                                  &error_fatal);
-+    }
-+
-+    /*
-+     * CCM
-+     */
-+    object_initialize(&s->ccm, sizeof(s->ccm), TYPE_IMX7_CCM);
-+    qdev_set_parent_bus(DEVICE(&s->ccm), sysbus);
-+    object_property_add_child(obj, "ccm", OBJECT(&s->ccm), &error_fatal);
-+
-+    /*
-+     * Analog
-+     */
-+    object_initialize(&s->analog, sizeof(s->analog), TYPE_IMX7_ANALOG);
-+    qdev_set_parent_bus(DEVICE(&s->analog), sysbus);
-+    object_property_add_child(obj, "analog", OBJECT(&s->analog), &error_fatal);
-+
-+    /*
-+     * GPCv2
-+     */
-+    object_initialize(&s->gpcv2, sizeof(s->gpcv2), TYPE_IMX_GPCV2);
-+    qdev_set_parent_bus(DEVICE(&s->gpcv2), sysbus);
-+    object_property_add_child(obj, "gpcv2", OBJECT(&s->gpcv2), &error_fatal);
-+
-+    for (i = 0; i < FSL_IMX7_NUM_ECSPIS; i++) {
-+        object_initialize(&s->spi[i], sizeof(s->spi[i]), TYPE_IMX_SPI);
-+        qdev_set_parent_bus(DEVICE(&s->spi[i]), sysbus_get_default());
-+        snprintf(name, NAME_SIZE, "spi%d", i + 1);
-+        object_property_add_child(obj, name, OBJECT(&s->spi[i]), NULL);
-+    }
-+
-+
-+    for (i = 0; i < FSL_IMX7_NUM_I2CS; i++) {
-+        object_initialize(&s->i2c[i], sizeof(s->i2c[i]), TYPE_IMX_I2C);
-+        qdev_set_parent_bus(DEVICE(&s->i2c[i]), sysbus_get_default());
-+        snprintf(name, NAME_SIZE, "i2c%d", i + 1);
-+        object_property_add_child(obj, name, OBJECT(&s->i2c[i]), NULL);
-+    }
-+
-+    /*
-+     * UART
-+     */
-+    for (i = 0; i < FSL_IMX7_NUM_UARTS; i++) {
-+            object_initialize(&s->uart[i], sizeof(s->uart[i]), TYPE_IMX_SERIAL);
-+            qdev_set_parent_bus(DEVICE(&s->uart[i]), sysbus);
-+            snprintf(name, NAME_SIZE, "uart%d", i);
-+            object_property_add_child(obj, name, OBJECT(&s->uart[i]),
-+                                      &error_fatal);
-+    }
-+
-+    /*
-+     * Ethernet
-+     */
-+    for (i = 0; i < FSL_IMX7_NUM_ETHS; i++) {
-+            object_initialize(&s->eth[i], sizeof(s->eth[i]), TYPE_IMX_ENET);
-+            qdev_set_parent_bus(DEVICE(&s->eth[i]), sysbus);
-+            snprintf(name, NAME_SIZE, "eth%d", i);
-+            object_property_add_child(obj, name, OBJECT(&s->eth[i]),
-+                                      &error_fatal);
-+    }
-+
-+    /*
-+     * SDHCI
-+     */
-+    for (i = 0; i < FSL_IMX7_NUM_USDHCS; i++) {
-+            object_initialize(&s->usdhc[i], sizeof(s->usdhc[i]),
-+                              TYPE_IMX_USDHC);
-+            qdev_set_parent_bus(DEVICE(&s->usdhc[i]), sysbus);
-+            snprintf(name, NAME_SIZE, "usdhc%d", i);
-+            object_property_add_child(obj, name, OBJECT(&s->usdhc[i]),
-+                                      &error_fatal);
-+    }
-+
-+    /*
-+     * SNVS
-+     */
-+    object_initialize(&s->snvs, sizeof(s->snvs), TYPE_IMX7_SNVS);
-+    qdev_set_parent_bus(DEVICE(&s->snvs), sysbus);
-+    object_property_add_child(obj, "snvs", OBJECT(&s->snvs), &error_fatal);
-+
-+    /*
-+     * Watchdog
-+     */
-+    for (i = 0; i < FSL_IMX7_NUM_WDTS; i++) {
-+            object_initialize(&s->wdt[i], sizeof(s->wdt[i]), TYPE_IMX2_WDT);
-+            qdev_set_parent_bus(DEVICE(&s->wdt[i]), sysbus);
-+            snprintf(name, NAME_SIZE, "wdt%d", i);
-+            object_property_add_child(obj, name, OBJECT(&s->wdt[i]),
-+                                      &error_fatal);
-+    }
-+
-+    /*
-+     * GPR
-+     */
-+    object_initialize(&s->gpr, sizeof(s->gpr), TYPE_IMX7_GPR);
-+    qdev_set_parent_bus(DEVICE(&s->gpr), sysbus);
-+    object_property_add_child(obj, "gpr", OBJECT(&s->gpr), &error_fatal);
-+
-+    object_initialize(&s->pcie, sizeof(s->pcie), TYPE_DESIGNWARE_PCIE_HOST);
-+    qdev_set_parent_bus(DEVICE(&s->pcie), sysbus);
-+    object_property_add_child(obj, "pcie", OBJECT(&s->pcie), &error_fatal);
-+
-+    for (i = 0; i < FSL_IMX7_NUM_USBS; i++) {
-+        object_initialize(&s->usb[i],
-+                          sizeof(s->usb[i]), TYPE_CHIPIDEA);
-+        qdev_set_parent_bus(DEVICE(&s->usb[i]), sysbus);
-+        snprintf(name, NAME_SIZE, "usb%d", i);
-+        object_property_add_child(obj, name,
-+                                  OBJECT(&s->usb[i]), &error_fatal);
-+    }
-+}
-+
-+static void fsl_imx7_realize(DeviceState *dev, Error **errp)
-+{
-+    FslIMX7State *s = FSL_IMX7(dev);
-+    Object *o;
-+    int i;
-+    qemu_irq irq;
-+    char name[NAME_SIZE];
-+
-+    for (i = 0; i < smp_cpus; i++) {
-+        o = OBJECT(&s->cpu[i]);
-+
-+        object_property_set_int(o, QEMU_PSCI_CONDUIT_SMC,
-+                                "psci-conduit", &error_abort);
-+
-+        /* On uniprocessor, the CBAR is set to 0 */
-+        if (smp_cpus > 1) {
-+            object_property_set_int(o, FSL_IMX7_A7MPCORE_ADDR,
-+                                    "reset-cbar", &error_abort);
-+        }
-+
-+        if (i) {
-+            /* Secondary CPUs start in PSCI powered-down state */
-+            object_property_set_bool(o, true,
-+                                     "start-powered-off", &error_abort);
-+        }
-+
-+        object_property_set_bool(o, true, "realized", &error_abort);
-+    }
-+
-+    /*
-+     * A7MPCORE
-+     */
-+    object_property_set_int(OBJECT(&s->a7mpcore), smp_cpus, "num-cpu",
-+                            &error_abort);
-+    object_property_set_int(OBJECT(&s->a7mpcore),
-+                            FSL_IMX7_MAX_IRQ + GIC_INTERNAL,
-+                            "num-irq", &error_abort);
-+
-+    object_property_set_bool(OBJECT(&s->a7mpcore), true, "realized",
-+                             &error_abort);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->a7mpcore), 0, FSL_IMX7_A7MPCORE_ADDR);
-+
-+    for (i = 0; i < smp_cpus; i++) {
-+        SysBusDevice *sbd = SYS_BUS_DEVICE(&s->a7mpcore);
-+        DeviceState  *d   = DEVICE(qemu_get_cpu(i));
-+
-+        irq = qdev_get_gpio_in(d, ARM_CPU_IRQ);
-+        sysbus_connect_irq(sbd, i, irq);
-+        irq = qdev_get_gpio_in(d, ARM_CPU_FIQ);
-+        sysbus_connect_irq(sbd, i + smp_cpus, irq);
-+    }
-+
-+    /*
-+     * A7MPCORE DAP
-+     */
-+    create_unimplemented_device("a7mpcore-dap", FSL_IMX7_A7MPCORE_DAP_ADDR,
-+                                0x100000);
-+
-+    /*
-+     * GPT1, 2, 3, 4
-+     */
-+    for (i = 0; i < FSL_IMX7_NUM_GPTS; i++) {
-+        static const hwaddr FSL_IMX7_GPTn_ADDR[FSL_IMX7_NUM_GPTS] = {
-+            FSL_IMX7_GPT1_ADDR,
-+            FSL_IMX7_GPT2_ADDR,
-+            FSL_IMX7_GPT3_ADDR,
-+            FSL_IMX7_GPT4_ADDR,
-+        };
-+
-+        s->gpt[i].ccm = IMX_CCM(&s->ccm);
-+        object_property_set_bool(OBJECT(&s->gpt[i]), true, "realized",
-+                                 &error_abort);
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->gpt[i]), 0, FSL_IMX7_GPTn_ADDR[i]);
-+    }
-+
-+    for (i = 0; i < FSL_IMX7_NUM_GPIOS; i++) {
-+        static const hwaddr FSL_IMX7_GPIOn_ADDR[FSL_IMX7_NUM_GPIOS] = {
-+            FSL_IMX7_GPIO1_ADDR,
-+            FSL_IMX7_GPIO2_ADDR,
-+            FSL_IMX7_GPIO3_ADDR,
-+            FSL_IMX7_GPIO4_ADDR,
-+            FSL_IMX7_GPIO5_ADDR,
-+            FSL_IMX7_GPIO6_ADDR,
-+            FSL_IMX7_GPIO7_ADDR,
-+        };
-+
-+        object_property_set_bool(OBJECT(&s->gpio[i]), true, "realized",
-+                                 &error_abort);
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->gpio[i]), 0, FSL_IMX7_GPIOn_ADDR[i]);
-+    }
-+
-+    /*
-+     * IOMUXC and IOMUXC_LPSR
-+     */
-+    for (i = 0; i < FSL_IMX7_NUM_IOMUXCS; i++) {
-+        static const hwaddr FSL_IMX7_IOMUXCn_ADDR[FSL_IMX7_NUM_IOMUXCS] = {
-+            FSL_IMX7_IOMUXC_ADDR,
-+            FSL_IMX7_IOMUXC_LPSR_ADDR,
-+        };
-+
-+        snprintf(name, NAME_SIZE, "iomuxc%d", i);
-+        create_unimplemented_device(name, FSL_IMX7_IOMUXCn_ADDR[i],
-+                                    FSL_IMX7_IOMUXCn_SIZE);
-+    }
-+
-+    /*
-+     * CCM
-+     */
-+    object_property_set_bool(OBJECT(&s->ccm), true, "realized", &error_abort);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->ccm), 0, FSL_IMX7_CCM_ADDR);
-+
-+    /*
-+     * Analog
-+     */
-+    object_property_set_bool(OBJECT(&s->analog), true, "realized", &error_abort);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->analog), 0, FSL_IMX7_ANALOG_ADDR);
-+
-+    /*
-+     * GPCv2
-+     */
-+    object_property_set_bool(OBJECT(&s->gpcv2), true,
-+                             "realized", &error_abort);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gpcv2), 0, FSL_IMX7_GPC_ADDR);
-+
-+    /* Initialize all ECSPI */
-+    for (i = 0; i < FSL_IMX7_NUM_ECSPIS; i++) {
-+        static const hwaddr FSL_IMX7_SPIn_ADDR[FSL_IMX7_NUM_ECSPIS] = {
-+            FSL_IMX7_ECSPI1_ADDR,
-+            FSL_IMX7_ECSPI2_ADDR,
-+            FSL_IMX7_ECSPI3_ADDR,
-+            FSL_IMX7_ECSPI4_ADDR,
-+        };
-+
-+        static const hwaddr FSL_IMX7_SPIn_IRQ[FSL_IMX7_NUM_ECSPIS] = {
-+            FSL_IMX7_ECSPI1_IRQ,
-+            FSL_IMX7_ECSPI2_IRQ,
-+            FSL_IMX7_ECSPI3_IRQ,
-+            FSL_IMX7_ECSPI4_IRQ,
-+        };
-+
-+        /* Initialize the SPI */
-+        object_property_set_bool(OBJECT(&s->spi[i]), true, "realized",
-+                                 &error_abort);
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi[i]), 0,
-+                        FSL_IMX7_SPIn_ADDR[i]);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->spi[i]), 0,
-+                           qdev_get_gpio_in(DEVICE(&s->a7mpcore),
-+                                            FSL_IMX7_SPIn_IRQ[i]));
-+    }
-+
-+    for (i = 0; i < FSL_IMX7_NUM_I2CS; i++) {
-+        static const hwaddr FSL_IMX7_I2Cn_ADDR[FSL_IMX7_NUM_I2CS] = {
-+            FSL_IMX7_I2C1_ADDR,
-+            FSL_IMX7_I2C2_ADDR,
-+            FSL_IMX7_I2C3_ADDR,
-+            FSL_IMX7_I2C4_ADDR,
-+        };
-+
-+        static const hwaddr FSL_IMX7_I2Cn_IRQ[FSL_IMX7_NUM_I2CS] = {
-+            FSL_IMX7_I2C1_IRQ,
-+            FSL_IMX7_I2C2_IRQ,
-+            FSL_IMX7_I2C3_IRQ,
-+            FSL_IMX7_I2C4_IRQ,
-+        };
-+
-+        object_property_set_bool(OBJECT(&s->i2c[i]), true, "realized",
-+                                 &error_abort);
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->i2c[i]), 0, FSL_IMX7_I2Cn_ADDR[i]);
-+
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c[i]), 0,
-+                           qdev_get_gpio_in(DEVICE(&s->a7mpcore),
-+                                            FSL_IMX7_I2Cn_IRQ[i]));
-+    }
-+
-+    /*
-+     * UART
-+     */
-+    for (i = 0; i < FSL_IMX7_NUM_UARTS; i++) {
-+        static const hwaddr FSL_IMX7_UARTn_ADDR[FSL_IMX7_NUM_UARTS] = {
-+            FSL_IMX7_UART1_ADDR,
-+            FSL_IMX7_UART2_ADDR,
-+            FSL_IMX7_UART3_ADDR,
-+            FSL_IMX7_UART4_ADDR,
-+            FSL_IMX7_UART5_ADDR,
-+            FSL_IMX7_UART6_ADDR,
-+            FSL_IMX7_UART7_ADDR,
-+        };
-+
-+        static const int FSL_IMX7_UARTn_IRQ[FSL_IMX7_NUM_UARTS] = {
-+            FSL_IMX7_UART1_IRQ,
-+            FSL_IMX7_UART2_IRQ,
-+            FSL_IMX7_UART3_IRQ,
-+            FSL_IMX7_UART4_IRQ,
-+            FSL_IMX7_UART5_IRQ,
-+            FSL_IMX7_UART6_IRQ,
-+            FSL_IMX7_UART7_IRQ,
-+        };
-+
-+
-+        if (i < MAX_SERIAL_PORTS) {
-+            qdev_prop_set_chr(DEVICE(&s->uart[i]), "chardev", serial_hds[i]);
-+        }
-+
-+        object_property_set_bool(OBJECT(&s->uart[i]), true, "realized",
-+                                 &error_abort);
-+
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->uart[i]), 0, FSL_IMX7_UARTn_ADDR[i]);
-+
-+        irq = qdev_get_gpio_in(DEVICE(&s->a7mpcore), FSL_IMX7_UARTn_IRQ[i]);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart[i]), 0, irq);
-+    }
-+
-+    /*
-+     * Ethernet
-+     */
-+    for (i = 0; i < FSL_IMX7_NUM_ETHS; i++) {
-+        static const hwaddr FSL_IMX7_ENETn_ADDR[FSL_IMX7_NUM_ETHS] = {
-+            FSL_IMX7_ENET1_ADDR,
-+            FSL_IMX7_ENET2_ADDR,
-+        };
-+
-+        object_property_set_uint(OBJECT(&s->eth[i]), FSL_IMX7_ETH_NUM_TX_RINGS,
-+                                 "tx-ring-num", &error_abort);
-+        qdev_set_nic_properties(DEVICE(&s->eth[i]), &nd_table[i]);
-+        object_property_set_bool(OBJECT(&s->eth[i]), true, "realized",
-+                                 &error_abort);
-+
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->eth[i]), 0, FSL_IMX7_ENETn_ADDR[i]);
-+
-+        irq = qdev_get_gpio_in(DEVICE(&s->a7mpcore), FSL_IMX7_ENET_IRQ(i, 0));
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->eth[i]), 0, irq);
-+        irq = qdev_get_gpio_in(DEVICE(&s->a7mpcore), FSL_IMX7_ENET_IRQ(i, 3));
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->eth[i]), 1, irq);
-+    }
-+
-+    /*
-+     * USDHC
-+     */
-+    for (i = 0; i < FSL_IMX7_NUM_USDHCS; i++) {
-+        static const hwaddr FSL_IMX7_USDHCn_ADDR[FSL_IMX7_NUM_USDHCS] = {
-+            FSL_IMX7_USDHC1_ADDR,
-+            FSL_IMX7_USDHC2_ADDR,
-+            FSL_IMX7_USDHC3_ADDR,
-+        };
-+
-+        static const int FSL_IMX7_USDHCn_IRQ[FSL_IMX7_NUM_USDHCS] = {
-+            FSL_IMX7_USDHC1_IRQ,
-+            FSL_IMX7_USDHC2_IRQ,
-+            FSL_IMX7_USDHC3_IRQ,
-+        };
-+
-+        object_property_set_bool(OBJECT(&s->usdhc[i]), true, "realized",
-+                                 &error_abort);
-+
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->usdhc[i]), 0,
-+                        FSL_IMX7_USDHCn_ADDR[i]);
-+
-+        irq = qdev_get_gpio_in(DEVICE(&s->a7mpcore), FSL_IMX7_USDHCn_IRQ[i]);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->usdhc[i]), 0, irq);
-+    }
-+
-+    /*
-+     * SNVS
-+     */
-+    object_property_set_bool(OBJECT(&s->snvs), true, "realized", &error_abort);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->snvs), 0, FSL_IMX7_SNVS_ADDR);
-+
-+    /*
-+     * SRC
-+     */
-+    create_unimplemented_device("sdma", FSL_IMX7_SRC_ADDR, FSL_IMX7_SRC_SIZE);
-+
-+    /*
-+     * Watchdog
-+     */
-+    for (i = 0; i < FSL_IMX7_NUM_WDTS; i++) {
-+        static const hwaddr FSL_IMX7_WDOGn_ADDR[FSL_IMX7_NUM_WDTS] = {
-+            FSL_IMX7_WDOG1_ADDR,
-+            FSL_IMX7_WDOG2_ADDR,
-+            FSL_IMX7_WDOG3_ADDR,
-+            FSL_IMX7_WDOG4_ADDR,
-+        };
-+
-+        object_property_set_bool(OBJECT(&s->wdt[i]), true, "realized",
-+                                 &error_abort);
-+
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->wdt[i]), 0, FSL_IMX7_WDOGn_ADDR[i]);
-+    }
-+
-+    /*
-+     * SDMA
-+     */
-+    create_unimplemented_device("sdma", FSL_IMX7_SDMA_ADDR, FSL_IMX7_SDMA_SIZE);
-+
-+
-+    object_property_set_bool(OBJECT(&s->gpr), true, "realized",
-+                             &error_abort);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gpr), 0, FSL_IMX7_GPR_ADDR);
-+
-+    object_property_set_bool(OBJECT(&s->pcie), true,
-+                             "realized", &error_abort);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->pcie), 0, FSL_IMX7_PCIE_REG_ADDR);
-+
-+    irq = qdev_get_gpio_in(DEVICE(&s->a7mpcore), FSL_IMX7_PCI_INTA_IRQ);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->pcie), 0, irq);
-+    irq = qdev_get_gpio_in(DEVICE(&s->a7mpcore), FSL_IMX7_PCI_INTB_IRQ);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->pcie), 1, irq);
-+    irq = qdev_get_gpio_in(DEVICE(&s->a7mpcore), FSL_IMX7_PCI_INTC_IRQ);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->pcie), 2, irq);
-+    irq = qdev_get_gpio_in(DEVICE(&s->a7mpcore), FSL_IMX7_PCI_INTD_IRQ);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->pcie), 3, irq);
-+
-+
-+    for (i = 0; i < FSL_IMX7_NUM_USBS; i++) {
-+        static const hwaddr FSL_IMX7_USBMISCn_ADDR[FSL_IMX7_NUM_USBS] = {
-+            FSL_IMX7_USBMISC1_ADDR,
-+            FSL_IMX7_USBMISC2_ADDR,
-+            FSL_IMX7_USBMISC3_ADDR,
-+        };
-+
-+        static const hwaddr FSL_IMX7_USBn_ADDR[FSL_IMX7_NUM_USBS] = {
-+            FSL_IMX7_USB1_ADDR,
-+            FSL_IMX7_USB2_ADDR,
-+            FSL_IMX7_USB3_ADDR,
-+        };
-+
-+        static const hwaddr FSL_IMX7_USBn_IRQ[FSL_IMX7_NUM_USBS] = {
-+            FSL_IMX7_USB1_IRQ,
-+            FSL_IMX7_USB2_IRQ,
-+            FSL_IMX7_USB3_IRQ,
-+        };
-+
-+        object_property_set_bool(OBJECT(&s->usb[i]), true, "realized",
-+                                 &error_abort);
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->usb[i]), 0,
-+                        FSL_IMX7_USBn_ADDR[i]);
-+
-+        irq = qdev_get_gpio_in(DEVICE(&s->a7mpcore), FSL_IMX7_USBn_IRQ[i]);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->usb[i]), 0, irq);
-+
-+        snprintf(name, NAME_SIZE, "usbmisc%d", i);
-+        create_unimplemented_device(name, FSL_IMX7_USBMISCn_ADDR[i],
-+                                    FSL_IMX7_USBMISCn_SIZE);
-+    }
-+
-+    /*
-+     * ADCs
-+     */
-+    for (i = 0; i < FSL_IMX7_NUM_ADCS; i++) {
-+        static const hwaddr FSL_IMX7_ADCn_ADDR[FSL_IMX7_NUM_ADCS] = {
-+            FSL_IMX7_ADC1_ADDR,
-+            FSL_IMX7_ADC2_ADDR,
-+        };
-+
-+        snprintf(name, NAME_SIZE, "adc%d", i);
-+        create_unimplemented_device(name, FSL_IMX7_ADCn_ADDR[i],
-+                                    FSL_IMX7_ADCn_SIZE);
-+    }
-+
-+    /*
-+     * LCD
-+     */
-+    create_unimplemented_device("lcdif", FSL_IMX7_LCDIF_ADDR, FSL_IMX7_LCDIF_SIZE);
-+}
-+
-+static void fsl_imx7_class_init(ObjectClass *oc, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+
-+    dc->realize = fsl_imx7_realize;
-+
-+    /* Reason: Uses serial_hds and nd_table in realize() directly */
-+    dc->user_creatable = false;
-+    dc->desc = "i.MX7 SOC";
-+}
-+
-+static const TypeInfo fsl_imx7_type_info = {
-+    .name = TYPE_FSL_IMX7,
-+    .parent = TYPE_DEVICE,
-+    .instance_size = sizeof(FslIMX7State),
-+    .instance_init = fsl_imx7_init,
-+    .class_init = fsl_imx7_class_init,
-+};
-+
-+static void fsl_imx7_register_types(void)
-+{
-+    type_register_static(&fsl_imx7_type_info);
-+}
-+type_init(fsl_imx7_register_types)
-diff --git a/include/hw/arm/fsl-imx7.h b/include/hw/arm/fsl-imx7.h
-new file mode 100644
-index 0000000000..73d779fddc
---- /dev/null
-+++ b/include/hw/arm/fsl-imx7.h
-@@ -0,0 +1,221 @@
-+/*
-+ * Copyright (c) 2017, Impinj, Inc.
-+ *
-+ * i.MX7 SoC definitions
-+ *
-+ * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation; version 2 of the License.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#ifndef FSL_IMX7_H
-+#define FSL_IMX7_H
-+
-+#include "hw/arm/arm.h"
-+#include "hw/cpu/a15mpcore.h"
-+#include "hw/intc/imx_gpcv2.h"
-+#include "hw/misc/imx7_ccm.h"
-+#include "hw/misc/imx7_snvs.h"
-+#include "hw/misc/imx7_gpr.h"
-+#include "hw/misc/imx6_src.h"
-+#include "hw/misc/imx2_wdt.h"
-+#include "hw/gpio/imx_gpio.h"
-+#include "hw/char/imx_serial.h"
-+#include "hw/timer/imx_gpt.h"
-+#include "hw/timer/imx_epit.h"
-+#include "hw/i2c/imx_i2c.h"
-+#include "hw/gpio/imx_gpio.h"
-+#include "hw/sd/sdhci.h"
-+#include "hw/ssi/imx_spi.h"
-+#include "hw/net/imx_fec.h"
-+#include "hw/pci-host/designware.h"
++#include "hw/usb/hcd-ehci.h"
 +#include "hw/usb/chipidea.h"
-+#include "exec/memory.h"
-+#include "cpu.h"
++#include "qemu/log.h"
 +
-+#define TYPE_FSL_IMX7 "fsl,imx7"
-+#define FSL_IMX7(obj) OBJECT_CHECK(FslIMX7State, (obj), TYPE_FSL_IMX7)
-+
-+enum FslIMX7Configuration {
-+    FSL_IMX7_NUM_CPUS         = 2,
-+    FSL_IMX7_NUM_UARTS        = 7,
-+    FSL_IMX7_NUM_ETHS         = 2,
-+    FSL_IMX7_ETH_NUM_TX_RINGS = 3,
-+    FSL_IMX7_NUM_USDHCS       = 3,
-+    FSL_IMX7_NUM_WDTS         = 4,
-+    FSL_IMX7_NUM_GPTS         = 4,
-+    FSL_IMX7_NUM_IOMUXCS      = 2,
-+    FSL_IMX7_NUM_GPIOS        = 7,
-+    FSL_IMX7_NUM_I2CS         = 4,
-+    FSL_IMX7_NUM_ECSPIS       = 4,
-+    FSL_IMX7_NUM_USBS         = 3,
-+    FSL_IMX7_NUM_ADCS         = 2,
++enum {
++    CHIPIDEA_USBx_DCIVERSION   = 0x000,
++    CHIPIDEA_USBx_DCCPARAMS    = 0x004,
++    CHIPIDEA_USBx_DCCPARAMS_HC = BIT(8),
 +};
 +
-+typedef struct FslIMX7State {
-+    /*< private >*/
-+    DeviceState    parent_obj;
++static uint64_t chipidea_read(void *opaque, hwaddr offset,
++                               unsigned size)
++{
++    return 0;
++}
 +
-+    /*< public >*/
-+    ARMCPU             cpu[FSL_IMX7_NUM_CPUS];
-+    A15MPPrivState     a7mpcore;
-+    IMXGPTState        gpt[FSL_IMX7_NUM_GPTS];
-+    IMXGPIOState       gpio[FSL_IMX7_NUM_GPIOS];
-+    IMX7CCMState       ccm;
-+    IMX7AnalogState    analog;
-+    IMX7SNVSState      snvs;
-+    IMXGPCv2State      gpcv2;
-+    IMXSPIState        spi[FSL_IMX7_NUM_ECSPIS];
-+    IMXI2CState        i2c[FSL_IMX7_NUM_I2CS];
-+    IMXSerialState     uart[FSL_IMX7_NUM_UARTS];
-+    IMXFECState        eth[FSL_IMX7_NUM_ETHS];
-+    SDHCIState         usdhc[FSL_IMX7_NUM_USDHCS];
-+    IMX2WdtState       wdt[FSL_IMX7_NUM_WDTS];
-+    IMX7GPRState       gpr;
-+    ChipideaState      usb[FSL_IMX7_NUM_USBS];
-+    DesignwarePCIEHost pcie;
-+} FslIMX7State;
++static void chipidea_write(void *opaque, hwaddr offset,
++                            uint64_t value, unsigned size)
++{
++}
 +
-+enum FslIMX7MemoryMap {
-+    FSL_IMX7_MMDC_ADDR            = 0x80000000,
-+    FSL_IMX7_MMDC_SIZE            = 2 * 1024 * 1024 * 1024UL,
++static const struct MemoryRegionOps chipidea_ops = {
++    .read = chipidea_read,
++    .write = chipidea_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .impl = {
++        /*
++         * Our device would not work correctly if the guest was doing
++         * unaligned access. This might not be a limitation on the
++         * real device but in practice there is no reason for a guest
++         * to access this device unaligned.
++         */
++        .min_access_size = 4,
++        .max_access_size = 4,
++        .unaligned = false,
++    },
++};
 +
-+    FSL_IMX7_GPIO1_ADDR           = 0x30200000,
-+    FSL_IMX7_GPIO2_ADDR           = 0x30210000,
-+    FSL_IMX7_GPIO3_ADDR           = 0x30220000,
-+    FSL_IMX7_GPIO4_ADDR           = 0x30230000,
-+    FSL_IMX7_GPIO5_ADDR           = 0x30240000,
-+    FSL_IMX7_GPIO6_ADDR           = 0x30250000,
-+    FSL_IMX7_GPIO7_ADDR           = 0x30260000,
++static uint64_t chipidea_dc_read(void *opaque, hwaddr offset,
++                                 unsigned size)
++{
++    switch (offset) {
++    case CHIPIDEA_USBx_DCIVERSION:
++        return 0x1;
++    case CHIPIDEA_USBx_DCCPARAMS:
++        /*
++         * Real hardware (at least i.MX7) will also report the
++         * controller as "Device Capable" (and 8 supported endpoints),
++         * but there doesn't seem to be much point in doing so, since
++         * we don't emulate that part.
++         */
++        return CHIPIDEA_USBx_DCCPARAMS_HC;
++    }
 +
-+    FSL_IMX7_IOMUXC_LPSR_GPR_ADDR = 0x30270000,
++    return 0;
++}
 +
-+    FSL_IMX7_WDOG1_ADDR           = 0x30280000,
-+    FSL_IMX7_WDOG2_ADDR           = 0x30290000,
-+    FSL_IMX7_WDOG3_ADDR           = 0x302A0000,
-+    FSL_IMX7_WDOG4_ADDR           = 0x302B0000,
++static void chipidea_dc_write(void *opaque, hwaddr offset,
++                              uint64_t value, unsigned size)
++{
++}
 +
-+    FSL_IMX7_IOMUXC_LPSR_ADDR     = 0x302C0000,
++static const struct MemoryRegionOps chipidea_dc_ops = {
++    .read = chipidea_dc_read,
++    .write = chipidea_dc_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .impl = {
++        /*
++         * Our device would not work correctly if the guest was doing
++         * unaligned access. This might not be a limitation on the real
++         * device but in practice there is no reason for a guest to access
++         * this device unaligned.
++         */
++        .min_access_size = 4,
++        .max_access_size = 4,
++        .unaligned = false,
++    },
++};
 +
-+    FSL_IMX7_GPT1_ADDR            = 0x302D0000,
-+    FSL_IMX7_GPT2_ADDR            = 0x302E0000,
-+    FSL_IMX7_GPT3_ADDR            = 0x302F0000,
-+    FSL_IMX7_GPT4_ADDR            = 0x30300000,
++static void chipidea_init(Object *obj)
++{
++    EHCIState *ehci = &SYS_BUS_EHCI(obj)->ehci;
++    ChipideaState *ci = CHIPIDEA(obj);
++    int i;
 +
-+    FSL_IMX7_IOMUXC_ADDR          = 0x30330000,
-+    FSL_IMX7_IOMUXC_GPR_ADDR      = 0x30340000,
-+    FSL_IMX7_IOMUXCn_SIZE         = 0x1000,
++    for (i = 0; i < ARRAY_SIZE(ci->iomem); i++) {
++        const struct {
++            const char *name;
++            hwaddr offset;
++            uint64_t size;
++            const struct MemoryRegionOps *ops;
++        } regions[ARRAY_SIZE(ci->iomem)] = {
++            /*
++             * Registers located between offsets 0x000 and 0xFC
++             */
++            {
++                .name   = TYPE_CHIPIDEA ".misc",
++                .offset = 0x000,
++                .size   = 0x100,
++                .ops    = &chipidea_ops,
++            },
++            /*
++             * Registers located between offsets 0x1A4 and 0x1DC
++             */
++            {
++                .name   = TYPE_CHIPIDEA ".endpoints",
++                .offset = 0x1A4,
++                .size   = 0x1DC - 0x1A4 + 4,
++                .ops    = &chipidea_ops,
++            },
++            /*
++             * USB_x_DCIVERSION and USB_x_DCCPARAMS
++             */
++            {
++                .name   = TYPE_CHIPIDEA ".dc",
++                .offset = 0x120,
++                .size   = 8,
++                .ops    = &chipidea_dc_ops,
++            },
++        };
 +
-+    FSL_IMX7_ANALOG_ADDR          = 0x30360000,
-+    FSL_IMX7_SNVS_ADDR            = 0x30370000,
-+    FSL_IMX7_CCM_ADDR             = 0x30380000,
++        memory_region_init_io(&ci->iomem[i],
++                              obj,
++                              regions[i].ops,
++                              ci,
++                              regions[i].name,
++                              regions[i].size);
 +
-+    FSL_IMX7_SRC_ADDR             = 0x30390000,
-+    FSL_IMX7_SRC_SIZE             = 0x1000,
++        memory_region_add_subregion(&ehci->mem,
++                                    regions[i].offset,
++                                    &ci->iomem[i]);
++    }
++}
 +
-+    FSL_IMX7_ADC1_ADDR            = 0x30610000,
-+    FSL_IMX7_ADC2_ADDR            = 0x30620000,
-+    FSL_IMX7_ADCn_SIZE            = 0x1000,
++static void chipidea_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    SysBusEHCIClass *sec = SYS_BUS_EHCI_CLASS(klass);
 +
-+    FSL_IMX7_GPC_ADDR             = 0x303A0000,
-+
-+    FSL_IMX7_I2C1_ADDR            = 0x30A20000,
-+    FSL_IMX7_I2C2_ADDR            = 0x30A30000,
-+    FSL_IMX7_I2C3_ADDR            = 0x30A40000,
-+    FSL_IMX7_I2C4_ADDR            = 0x30A50000,
-+
-+    FSL_IMX7_ECSPI1_ADDR          = 0x30820000,
-+    FSL_IMX7_ECSPI2_ADDR          = 0x30830000,
-+    FSL_IMX7_ECSPI3_ADDR          = 0x30840000,
-+    FSL_IMX7_ECSPI4_ADDR          = 0x30630000,
-+
-+    FSL_IMX7_LCDIF_ADDR           = 0x30730000,
-+    FSL_IMX7_LCDIF_SIZE           = 0x1000,
-+
-+    FSL_IMX7_UART1_ADDR           = 0x30860000,
 +    /*
-+     * Some versions of the reference manual claim that UART2 is @
-+     * 0x30870000, but experiments with HW + DT files in upstream
-+     * Linux kernel show that not to be true and that block is
-+     * acutally located @ 0x30890000
++     * Offsets used were taken from i.MX7Dual Applications Processor
++     * Reference Manual, Rev 0.1, p. 3177, Table 11-59
 +     */
-+    FSL_IMX7_UART2_ADDR           = 0x30890000,
-+    FSL_IMX7_UART3_ADDR           = 0x30880000,
-+    FSL_IMX7_UART4_ADDR           = 0x30A60000,
-+    FSL_IMX7_UART5_ADDR           = 0x30A70000,
-+    FSL_IMX7_UART6_ADDR           = 0x30A80000,
-+    FSL_IMX7_UART7_ADDR           = 0x30A90000,
++    sec->capsbase   = 0x100;
++    sec->opregbase  = 0x140;
++    sec->portnr     = 1;
 +
-+    FSL_IMX7_ENET1_ADDR           = 0x30BE0000,
-+    FSL_IMX7_ENET2_ADDR           = 0x30BF0000,
++    set_bit(DEVICE_CATEGORY_USB, dc->categories);
++    dc->desc = "Chipidea USB Module";
++}
 +
-+    FSL_IMX7_USB1_ADDR            = 0x30B10000,
-+    FSL_IMX7_USBMISC1_ADDR        = 0x30B10200,
-+    FSL_IMX7_USB2_ADDR            = 0x30B20000,
-+    FSL_IMX7_USBMISC2_ADDR        = 0x30B20200,
-+    FSL_IMX7_USB3_ADDR            = 0x30B30000,
-+    FSL_IMX7_USBMISC3_ADDR        = 0x30B30200,
-+    FSL_IMX7_USBMISCn_SIZE        = 0x200,
-+
-+    FSL_IMX7_USDHC1_ADDR          = 0x30B40000,
-+    FSL_IMX7_USDHC2_ADDR          = 0x30B50000,
-+    FSL_IMX7_USDHC3_ADDR          = 0x30B60000,
-+
-+    FSL_IMX7_SDMA_ADDR            = 0x30BD0000,
-+    FSL_IMX7_SDMA_SIZE            = 0x1000,
-+
-+    FSL_IMX7_A7MPCORE_ADDR        = 0x31000000,
-+    FSL_IMX7_A7MPCORE_DAP_ADDR    = 0x30000000,
-+
-+    FSL_IMX7_PCIE_REG_ADDR        = 0x33800000,
-+    FSL_IMX7_PCIE_REG_SIZE        = 16 * 1024,
-+
-+    FSL_IMX7_GPR_ADDR             = 0x30340000,
++static const TypeInfo chipidea_info = {
++    .name          = TYPE_CHIPIDEA,
++    .parent        = TYPE_SYS_BUS_EHCI,
++    .instance_size = sizeof(ChipideaState),
++    .instance_init = chipidea_init,
++    .class_init    = chipidea_class_init,
 +};
 +
-+enum FslIMX7IRQs {
-+    FSL_IMX7_USDHC1_IRQ   = 22,
-+    FSL_IMX7_USDHC2_IRQ   = 23,
-+    FSL_IMX7_USDHC3_IRQ   = 24,
++static void chipidea_register_type(void)
++{
++    type_register_static(&chipidea_info);
++}
++type_init(chipidea_register_type)
+diff --git a/include/hw/usb/chipidea.h b/include/hw/usb/chipidea.h
+new file mode 100644
+index 0000000000..1ec2e9dbda
+--- /dev/null
++++ b/include/hw/usb/chipidea.h
+@@ -0,0 +1,16 @@
++#ifndef CHIPIDEA_H
++#define CHIPIDEA_H
 +
-+    FSL_IMX7_UART1_IRQ    = 26,
-+    FSL_IMX7_UART2_IRQ    = 27,
-+    FSL_IMX7_UART3_IRQ    = 28,
-+    FSL_IMX7_UART4_IRQ    = 29,
-+    FSL_IMX7_UART5_IRQ    = 30,
-+    FSL_IMX7_UART6_IRQ    = 16,
++#include "hw/usb/hcd-ehci.h"
 +
-+    FSL_IMX7_ECSPI1_IRQ   = 31,
-+    FSL_IMX7_ECSPI2_IRQ   = 32,
-+    FSL_IMX7_ECSPI3_IRQ   = 33,
-+    FSL_IMX7_ECSPI4_IRQ   = 34,
++typedef struct ChipideaState {
++    /*< private >*/
++    EHCISysBusState parent_obj;
 +
-+    FSL_IMX7_I2C1_IRQ     = 35,
-+    FSL_IMX7_I2C2_IRQ     = 36,
-+    FSL_IMX7_I2C3_IRQ     = 37,
-+    FSL_IMX7_I2C4_IRQ     = 38,
++    MemoryRegion iomem[3];
++} ChipideaState;
 +
-+    FSL_IMX7_USB1_IRQ     = 43,
-+    FSL_IMX7_USB2_IRQ     = 42,
-+    FSL_IMX7_USB3_IRQ     = 40,
++#define TYPE_CHIPIDEA "usb-chipidea"
++#define CHIPIDEA(obj) OBJECT_CHECK(ChipideaState, (obj), TYPE_CHIPIDEA)
 +
-+    FSL_IMX7_PCI_INTA_IRQ = 122,
-+    FSL_IMX7_PCI_INTB_IRQ = 123,
-+    FSL_IMX7_PCI_INTC_IRQ = 124,
-+    FSL_IMX7_PCI_INTD_IRQ = 125,
-+
-+    FSL_IMX7_UART7_IRQ    = 126,
-+
-+#define FSL_IMX7_ENET_IRQ(i, n)  ((n) + ((i) ? 100 : 118))
-+
-+    FSL_IMX7_MAX_IRQ      = 128,
-+};
-+
-+#endif /* FSL_IMX7_H */
++#endif /* CHIPIDEA_H */
 -- 
 2.14.3
 

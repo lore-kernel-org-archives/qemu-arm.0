@@ -1,47 +1,266 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id r64sm445135wma.15.2018.02.08.09.32.00
+        by smtp.gmail.com with ESMTPSA id p12sm430978wre.83.2018.02.08.09.32.00
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
         Thu, 08 Feb 2018 09:32:05 -0800 (PST)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 574CB3E0BFD;
+	by zen.linaro.local (Postfix) with ESMTP id 463103E0BF5;
 	Thu,  8 Feb 2018 17:31:58 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 08/32] arm/translate-a64: handle_3same_64 comment fix
-Date: Thu,  8 Feb 2018 17:31:33 +0000
-Message-Id: <20180208173157.24705-9-alex.bennee@linaro.org>
+Subject: [PATCH v2 07/32] arm/translate-a64: implement half-precision F(MIN|MAX)(V|NMV)
+Date: Thu,  8 Feb 2018 17:31:32 +0000
+Message-Id: <20180208173157.24705-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.15.1
 In-Reply-To: <20180208173157.24705-1-alex.bennee@linaro.org>
 References: <20180208173157.24705-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: GsN3RVIbpDPP
+X-TUID: rKCij+EFFe52
 
-We do implement all the opcodes.
+This implements the half-precision variants of the across vector
+reduction operations. This involves a re-factor of the reduction code
+which more closely matches the ARM ARM order (and handles 8 element
+reductions).
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- target/arm/translate-a64.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
 
+--
+v1
+  - dropped the advsimd_2a stuff
+v2
+  - fixed up checkpatch
+---
+ target/arm/helper-a64.c    |  18 ++++++
+ target/arm/helper-a64.h    |   4 ++
+ target/arm/translate-a64.c | 144 ++++++++++++++++++++++++++++-----------------
+ 3 files changed, 111 insertions(+), 55 deletions(-)
+
+diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
+index 10e08bdc1f..fddd5d242b 100644
+--- a/target/arm/helper-a64.c
++++ b/target/arm/helper-a64.c
+@@ -572,3 +572,21 @@ uint64_t HELPER(paired_cmpxchg64_be_parallel)(CPUARMState *env, uint64_t addr,
+ {
+     return do_paired_cmpxchg64_be(env, addr, new_lo, new_hi, true, GETPC());
+ }
++
++/*
++ * AdvSIMD half-precision
++ */
++
++#define ADVSIMD_HELPER(name, suffix) HELPER(glue(glue(advsimd_, name), suffix))
++
++#define ADVSIMD_HALFOP(name) \
++float16 ADVSIMD_HELPER(name, h)(float16 a, float16 b, void *fpstp) \
++{ \
++    float_status *fpst = fpstp; \
++    return float16_ ## name(a, b, fpst);    \
++}
++
++ADVSIMD_HALFOP(min)
++ADVSIMD_HALFOP(max)
++ADVSIMD_HALFOP(minnum)
++ADVSIMD_HALFOP(maxnum)
+diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
+index 85d86741db..b69a557241 100644
+--- a/target/arm/helper-a64.h
++++ b/target/arm/helper-a64.h
+@@ -48,3 +48,7 @@ DEF_HELPER_FLAGS_4(paired_cmpxchg64_le_parallel, TCG_CALL_NO_WG,
+ DEF_HELPER_FLAGS_4(paired_cmpxchg64_be, TCG_CALL_NO_WG, i64, env, i64, i64, i64)
+ DEF_HELPER_FLAGS_4(paired_cmpxchg64_be_parallel, TCG_CALL_NO_WG,
+                    i64, env, i64, i64, i64)
++DEF_HELPER_3(advsimd_maxh, f16, f16, f16, ptr)
++DEF_HELPER_3(advsimd_minh, f16, f16, f16, ptr)
++DEF_HELPER_3(advsimd_maxnumh, f16, f16, f16, ptr)
++DEF_HELPER_3(advsimd_minnumh, f16, f16, f16, ptr)
 diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index f778886abc..2dd958c0e7 100644
+index 531ac5999c..f778886abc 100644
 --- a/target/arm/translate-a64.c
 +++ b/target/arm/translate-a64.c
-@@ -7220,8 +7220,7 @@ static void handle_3same_64(DisasContext *s, int opcode, bool u,
-     /* Handle 64x64->64 opcodes which are shared between the scalar
-      * and vector 3-same groups. We cover every opcode where size == 3
-      * is valid in either the three-reg-same (integer, not pairwise)
--     * or scalar-three-reg-same groups. (Some opcodes are not yet
--     * implemented.)
-+     * or scalar-three-reg-same groups.
-      */
-     TCGCond cond;
+@@ -5650,26 +5650,75 @@ static void disas_simd_zip_trn(DisasContext *s, uint32_t insn)
+     tcg_temp_free_i64(tcg_resh);
+ }
  
+-static void do_minmaxop(DisasContext *s, TCGv_i32 tcg_elt1, TCGv_i32 tcg_elt2,
+-                        int opc, bool is_min, TCGv_ptr fpst)
+-{
+-    /* Helper function for disas_simd_across_lanes: do a single precision
+-     * min/max operation on the specified two inputs,
+-     * and return the result in tcg_elt1.
+-     */
+-    if (opc == 0xc) {
+-        if (is_min) {
+-            gen_helper_vfp_minnums(tcg_elt1, tcg_elt1, tcg_elt2, fpst);
+-        } else {
+-            gen_helper_vfp_maxnums(tcg_elt1, tcg_elt1, tcg_elt2, fpst);
+-        }
++/*
++ * do_reduction_op helper
++ *
++ * This mirrors the Reduce() pseudocode in the ARM ARM. It is
++ * important for correct NaN propagation that we do these
++ * operations in exactly the order specified by the pseudocode.
++ *
++ * This is a recursive function, TCG temps should be freed by the
++ * calling function once it is done with the values.
++ */
++static TCGv_i32 do_reduction_op(DisasContext *s, int fpopcode, int rn,
++                                int esize, int size, int vmap, TCGv_ptr fpst)
++{
++    if (esize == size) {
++        int element;
++        TCGMemOp msize = esize == 16 ? MO_16 : MO_32;
++        TCGv_i32 tcg_elem;
++
++        /* We should have one register left here */
++        assert(ctpop8(vmap) == 1);
++        element = ctz32(vmap);
++        assert(element < 8);
++
++        tcg_elem = tcg_temp_new_i32();
++        read_vec_element_i32(s, tcg_elem, rn, element, msize);
++        return tcg_elem;
+     } else {
+-        assert(opc == 0xf);
+-        if (is_min) {
+-            gen_helper_vfp_mins(tcg_elt1, tcg_elt1, tcg_elt2, fpst);
+-        } else {
+-            gen_helper_vfp_maxs(tcg_elt1, tcg_elt1, tcg_elt2, fpst);
++        int bits = size / 2;
++        int shift = ctpop8(vmap) / 2;
++        int vmap_lo = (vmap >> shift) & vmap;
++        int vmap_hi = (vmap & ~vmap_lo);
++        TCGv_i32 tcg_hi, tcg_lo, tcg_res;
++
++        tcg_hi = do_reduction_op(s, fpopcode, rn, esize, bits, vmap_hi, fpst);
++        tcg_lo = do_reduction_op(s, fpopcode, rn, esize, bits, vmap_lo, fpst);
++        tcg_res = tcg_temp_new_i32();
++
++        switch (fpopcode) {
++        case 0x0c: /* fmaxnmv half-precision */
++            gen_helper_advsimd_maxnumh(tcg_res, tcg_lo, tcg_hi, fpst);
++            break;
++        case 0x0f: /* fmaxv half-precision */
++            gen_helper_advsimd_maxh(tcg_res, tcg_lo, tcg_hi, fpst);
++            break;
++        case 0x1c: /* fminnmv half-precision */
++            gen_helper_advsimd_minnumh(tcg_res, tcg_lo, tcg_hi, fpst);
++            break;
++        case 0x1f: /* fminv half-precision */
++            gen_helper_advsimd_minh(tcg_res, tcg_lo, tcg_hi, fpst);
++            break;
++        case 0x2c: /* fmaxnmv */
++            gen_helper_vfp_maxnums(tcg_res, tcg_lo, tcg_hi, fpst);
++            break;
++        case 0x2f: /* fmaxv */
++            gen_helper_vfp_maxs(tcg_res, tcg_lo, tcg_hi, fpst);
++            break;
++        case 0x3c: /* fminnmv */
++            gen_helper_vfp_minnums(tcg_res, tcg_lo, tcg_hi, fpst);
++            break;
++        case 0x3f: /* fminv */
++            gen_helper_vfp_mins(tcg_res, tcg_lo, tcg_hi, fpst);
++            break;
++        default:
++            g_assert_not_reached();
+         }
++
++        tcg_temp_free_i32(tcg_hi);
++        tcg_temp_free_i32(tcg_lo);
++        return tcg_res;
+     }
+ }
+ 
+@@ -5711,16 +5760,21 @@ static void disas_simd_across_lanes(DisasContext *s, uint32_t insn)
+         break;
+     case 0xc: /* FMAXNMV, FMINNMV */
+     case 0xf: /* FMAXV, FMINV */
+-        if (!is_u || !is_q || extract32(size, 0, 1)) {
+-            unallocated_encoding(s);
+-            return;
+-        }
+-        /* Bit 1 of size field encodes min vs max, and actual size is always
+-         * 32 bits: adjust the size variable so following code can rely on it
++        /* Bit 1 of size field encodes min vs max and the actual size
++         * depends on the encoding of the U bit. If not set (and FP16
++         * enabled) then we do half-precision float instead of single
++         * precision.
+          */
+         is_min = extract32(size, 1, 1);
+         is_fp = true;
+-        size = 2;
++        if (!is_u && arm_dc_feature(s, ARM_FEATURE_V8_FP16)) {
++            size = 1;
++        } else if (!is_u || !is_q || extract32(size, 0, 1)) {
++            unallocated_encoding(s);
++            return;
++        } else {
++            size = 2;
++        }
+         break;
+     default:
+         unallocated_encoding(s);
+@@ -5777,38 +5831,18 @@ static void disas_simd_across_lanes(DisasContext *s, uint32_t insn)
+ 
+         }
+     } else {
+-        /* Floating point ops which work on 32 bit (single) intermediates.
++        /* Floating point vector reduction ops which work across 32
++         * bit (single) or 16 bit (half-precision) intermediates.
+          * Note that correct NaN propagation requires that we do these
+          * operations in exactly the order specified by the pseudocode.
+          */
+-        TCGv_i32 tcg_elt1 = tcg_temp_new_i32();
+-        TCGv_i32 tcg_elt2 = tcg_temp_new_i32();
+-        TCGv_i32 tcg_elt3 = tcg_temp_new_i32();
+-        TCGv_ptr fpst = get_fpstatus_ptr(false);
+-
+-        assert(esize == 32);
+-        assert(elements == 4);
+-
+-        read_vec_element(s, tcg_elt, rn, 0, MO_32);
+-        tcg_gen_extrl_i64_i32(tcg_elt1, tcg_elt);
+-        read_vec_element(s, tcg_elt, rn, 1, MO_32);
+-        tcg_gen_extrl_i64_i32(tcg_elt2, tcg_elt);
+-
+-        do_minmaxop(s, tcg_elt1, tcg_elt2, opcode, is_min, fpst);
+-
+-        read_vec_element(s, tcg_elt, rn, 2, MO_32);
+-        tcg_gen_extrl_i64_i32(tcg_elt2, tcg_elt);
+-        read_vec_element(s, tcg_elt, rn, 3, MO_32);
+-        tcg_gen_extrl_i64_i32(tcg_elt3, tcg_elt);
+-
+-        do_minmaxop(s, tcg_elt2, tcg_elt3, opcode, is_min, fpst);
+-
+-        do_minmaxop(s, tcg_elt1, tcg_elt2, opcode, is_min, fpst);
+-
+-        tcg_gen_extu_i32_i64(tcg_res, tcg_elt1);
+-        tcg_temp_free_i32(tcg_elt1);
+-        tcg_temp_free_i32(tcg_elt2);
+-        tcg_temp_free_i32(tcg_elt3);
++        TCGv_ptr fpst = get_fpstatus_ptr(size == MO_16);
++        int fpopcode = opcode | is_min << 4 | is_u << 5;
++        int vmap = (1 << elements) - 1;
++        TCGv_i32 tcg_res32 = do_reduction_op(s, fpopcode, rn, esize,
++                                             (is_q ? 128 : 64), vmap, fpst);
++        tcg_gen_extu_i32_i64(tcg_res, tcg_res32);
++        tcg_temp_free_i32(tcg_res32);
+         tcg_temp_free_ptr(fpst);
+     }
+ 
+@@ -5930,7 +5964,7 @@ static void handle_simd_dupg(DisasContext *s, int is_q, int rd, int rn,
+ {
+     int size = ctz32(imm5);
+     int esize = 8 << size;
+-    int elements = (is_q ? 128 : 64)/esize;
++    int elements = (is_q ? 128 : 64) / esize;
+     int i = 0;
+ 
+     if (size > 3 || ((size == 3) && !is_q)) {
 -- 
 2.15.1

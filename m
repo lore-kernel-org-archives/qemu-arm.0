@@ -1,238 +1,197 @@
-Received: by 10.28.71.27 with SMTP id u27csp2400727wma;
-        Thu, 8 Feb 2018 10:33:30 -0800 (PST)
-X-Google-Smtp-Source: AH8x2255Qoeocp8st5bBKv+ivdeRj5fOA71G8uKpgcKTPOszLhNqz5246Fn1tsx8yq6ntyB4ojVd
-X-Received: by 10.37.223.193 with SMTP id w184mr6868ybg.100.1518114810319;
-        Thu, 08 Feb 2018 10:33:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518114810; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp2416544wma;
+        Thu, 8 Feb 2018 10:49:33 -0800 (PST)
+X-Google-Smtp-Source: AH8x226GKPjGXvac6NoJ64mWcgFXFwcWw/XxeK5NmTBR0tspWFjsUNwxEWEe7lGVXkWJvy0eZ3q4
+X-Received: by 10.157.29.228 with SMTP id w33mr141309otw.97.1518115773326;
+        Thu, 08 Feb 2018 10:49:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518115773; cv=none;
         d=google.com; s=arc-20160816;
-        b=PAAeK5HYq2YOmTB1AQ2ocxl+q4oDF+GjilI3F25GiDnhG7giwQNUALLREXehcV8wCn
-         eSB5C/DQhpfER0KpMMDkGsH/0PRnan0vd3K4aOxtTpQH3IE6KdQlBcslh5Z8GfGcFOIr
-         ERoJCeUTgASv6O6WC9BVSs2YAOx4NtNvv0B7n98oWr8daEV1YY+fY7PutH7ACfv0HGOh
-         64wmq9LewJ+feahgx+NUCDGp3PQnGpudzIXUFOfKKWEwMcrKHOAbqi0HJzLgRBdLaZpn
-         StJO/tEIyP3aeHswpBjAwNb7FmygvntThF042pLyB9Vl9FLEnT/gP6P8PswI+gqYf89g
-         GBSA==
+        b=dm2wgROroOmZY2VNsvMvKnF3O3mfzjQ8JVou2QMy/16tGcVw7l2sJyH1YxqY/GBly1
+         YX6vCn51EVpdIsqNZGR92HqJFKx/RZPOk6kVBB2hk8C6J/LV7F9hiMmB7RZVyhKoM6jw
+         2qlE/KVKVZ9iP7e4fnR73Q5OI687KN3UBlVufmEPisVkUlt0vXaaDuVZiZip1wkfbb0F
+         Q7Ju+PsE6uDZoLfwux6LujI1aDHuX31uDi5KJNE1tgB1sLOwg49Zw0uyrrqrEX/p01cP
+         9IUHxDUxkL2fHD/Y/mTUXnP239YJrJZhqBGsT/ZpQmvXO49Lndfltpjtzwec9/EAIKzn
+         wZ6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:content-disposition
-         :mime-version:references:message-id:to:from:date
-         :arc-authentication-results;
-        bh=prmdEHB2vIaLRf+vAvWtJX0xBqmkn1N/6wovMzftieg=;
-        b=J58RrqtrJoH/vCpnTqa43sGqrqIJxEmBnRkzjYuOyZB/S/6H4FpPPam2kg56X8jpSR
-         ahVvDKR5gwW5fBnt4dUMu4XL2CtpPh3DacY8iZErCWUHfW0R+xChMfnLQHveguzE3+Wo
-         Lw9WI8dJiR/MSGZD/F3IWSxHu9uS3pOR1H49JHPLAs6GsYM78BZLSpqOSyhVqx7CyY3k
-         oQnvHbRkOPynTyeT2jzdmvlN5hGCH+EEKCIcZFkP+YH55F604cCoz4JI2UOAh7auoZKg
-         X6wKKNpc+U8EnZwBdrPHyw6fI+xgo4GsCqANhOqUvLog4k1Ooorh9WoLAdRp3rWfIpYS
-         BzPA==
+        h=date:cc:to:from:resent-from:content-transfer-encoding:mime-version
+         :message-id:subject:reply-to:in-reply-to:arc-authentication-results;
+        bh=Dt/AyUi7e05m7kfv6l4wK0X7rf7MdAvTLyd1N+kDXac=;
+        b=kCi03gHHaJnC9gZPc1KvJKdLspdATx4kkl1SEE43343JsnAwIZOGfoDfTHN0s0ePwk
+         9ZWhvjDWDrMoDh7DuxrrqNma5XiPAfSD+1hxqSH3W1meRfqKLn2N/nbpdHVyd7uWUNLS
+         iaZo1XLGnFmy+LAy1RjW/3qQJkx06fyq47kuyYSAuVLShQ5UuHayvxtfAl0AEL6Hm6+W
+         80G9P8gomiFatVg+gsQr++98pqB/ukJFR0eIddI5fE79bm+db+KONaMbU+y5Dn48flAT
+         0Ume/49JkrsCryZnW17jdvZ2DMavynV6ospORcCsii7R1850HEEqPxEUSZF8qnBo8euy
+         OTJg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d204si93544ybh.425.2018.02.08.10.33.30
+       spf=pass (google.com: domain of no-reply@patchew.org designates 135.84.80.216 as permitted sender) smtp.mailfrom=no-reply@patchew.org
+Return-Path: <no-reply@patchew.org>
+Received: from sender-of-o51.zoho.com (sender-of-o51.zoho.com. [135.84.80.216])
+        by mx.google.com with ESMTPS id h27si187695otd.133.2018.02.08.10.49.32
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 08 Feb 2018 10:33:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 08 Feb 2018 10:49:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of no-reply@patchew.org designates 135.84.80.216 as permitted sender) client-ip=135.84.80.216;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60707 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ejr0j-00076p-Hq
-	for alex.bennee@linaro.org; Thu, 08 Feb 2018 13:33:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60741)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1ejqL4-0002z6-DK
-	for qemu-arm@nongnu.org; Thu, 08 Feb 2018 12:50:29 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1ejqL0-0007WM-Lc
-	for qemu-arm@nongnu.org; Thu, 08 Feb 2018 12:50:26 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:46586 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mst@redhat.com>)
-	id 1ejqL0-0007W4-FY; Thu, 08 Feb 2018 12:50:22 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id EB8224022909;
-	Thu,  8 Feb 2018 17:50:21 +0000 (UTC)
-Received: from redhat.com (ovpn-120-144.rdu2.redhat.com [10.10.120.144])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 994B02166BAE;
-	Thu,  8 Feb 2018 17:50:21 +0000 (UTC)
-Date: Thu, 8 Feb 2018 19:50:21 +0200
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Andrey Smirnov <andrew.smirnov@gmail.com>
-Message-ID: <20180208194731-mutt-send-email-mst@kernel.org>
-References: <20180207042438.15422-1-andrew.smirnov@gmail.com>
-	<20180207042438.15422-10-andrew.smirnov@gmail.com>
-	<CAFEAcA-=-+1A6toXM-ddP+iKBgHKh28Xq3VeGXfSLJ08xMRijA@mail.gmail.com>
-	<20180208193033-mutt-send-email-mst@kernel.org>
-	<CAHQ1cqGr2e8vjQUUypkoyUc=QGQDNVkjydmOadfsSCzm78nkJQ@mail.gmail.com>
+       spf=pass (google.com: domain of no-reply@patchew.org designates 135.84.80.216 as permitted sender) smtp.mailfrom=no-reply@patchew.org
+Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by mx.zohomail.com
+	with SMTPS id 1518115769857803.0548353024268; Thu, 8 Feb 2018 10:49:29 -0800 (PST)
+In-Reply-To: <20180208173157.24705-1-alex.bennee@linaro.org>
+Reply-To: <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-devel] [PATCH v2 00/32] Add ARMv8.2 half-precision functions
+Message-ID: <151811576893.315.13984750922250615297@bdbb90650ae5>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <CAHQ1cqGr2e8vjQUUypkoyUc=QGQDNVkjydmOadfsSCzm78nkJQ@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Thu, 08 Feb 2018 17:50:22 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Thu, 08 Feb 2018 17:50:22 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'mst@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [PATCH v5 09/14] pci: Use pci_config_size in
- pci_data_* accessors
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@zoho.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Andrey Yurovsky <yurovsky@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DKEUUZ5pg5Ea
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: alex.bennee@linaro.org
+Cc: famz@redhat.com, qemu-arm@nongnu.org, alex.bennee@linaro.org, qemu-devel@nongnu.org
+Date: Thu, 8 Feb 2018 10:49:29 -0800 (PST)
+X-ZohoMailClient: External
+X-TUID: Wy88g16DgNWV
 
-On Thu, Feb 08, 2018 at 09:43:53AM -0800, Andrey Smirnov wrote:
-> On Thu, Feb 8, 2018 at 9:34 AM, Michael S. Tsirkin <mst@redhat.com> wro=
-te:
-> > On Thu, Feb 08, 2018 at 05:20:53PM +0000, Peter Maydell wrote:
-> >> On 7 February 2018 at 04:24, Andrey Smirnov <andrew.smirnov@gmail.co=
-m> wrote:
-> >> > Use pci_config_size (as opposed to PCI_CONFIG_SPACE_SIZE) in
-> >> > pci_data_read() and pci_data_write(), so this function would work =
-for
-> >> > both classic PCI and PCIe use-cases.
-> >> >
-> >> > Cc: Peter Maydell <peter.maydell@linaro.org>
-> >> > Cc: Jason Wang <jasowang@redhat.com>
-> >> > Cc: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
-> >> > Cc: Marcel Apfelbaum <marcel.apfelbaum@zoho.com>
-> >> > Cc: Michael S. Tsirkin <mst@redhat.com>
-> >> > Cc: qemu-devel@nongnu.org
-> >> > Cc: qemu-arm@nongnu.org
-> >> > Cc: yurovsky@gmail.com
-> >> > Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
-> >> > ---
-> >> >  hw/pci/pci_host.c | 13 +++++++++----
-> >> >  1 file changed, 9 insertions(+), 4 deletions(-)
-> >> >
-> >> > diff --git a/hw/pci/pci_host.c b/hw/pci/pci_host.c
-> >> > index 5eaa935cb5..ea52ea07cd 100644
-> >> > --- a/hw/pci/pci_host.c
-> >> > +++ b/hw/pci/pci_host.c
-> >> > @@ -89,30 +89,35 @@ uint32_t pci_host_config_read_common(PCIDevice=
- *pci_dev, uint32_t addr,
-> >> >  void pci_data_write(PCIBus *s, uint32_t addr, uint32_t val, int l=
-en)
-> >> >  {
-> >> >      PCIDevice *pci_dev =3D pci_dev_find_by_addr(s, addr);
-> >> > -    uint32_t config_addr =3D addr & (PCI_CONFIG_SPACE_SIZE - 1);
-> >> > +    uint32_t config_addr;
-> >> >
-> >> >      if (!pci_dev) {
-> >> >          return;
-> >> >      }
-> >> >
-> >> > +    config_addr =3D addr & (pci_config_size(pci_dev) - 1);
-> >> > +
-> >> >      PCI_DPRINTF("%s: %s: addr=3D%02" PRIx32 " val=3D%08" PRIx32 "=
- len=3D%d\n",
-> >> >                  __func__, pci_dev->name, config_addr, val, len);
-> >> > -    pci_host_config_write_common(pci_dev, config_addr, PCI_CONFIG=
-_SPACE_SIZE,
-> >> > +    pci_host_config_write_common(pci_dev, config_addr,
-> >> > +                                 pci_config_size(pci_dev),
-> >> >                                   val, len);
-> >> >  }
-> >> >
-> >> >  uint32_t pci_data_read(PCIBus *s, uint32_t addr, int len)
-> >> >  {
-> >> >      PCIDevice *pci_dev =3D pci_dev_find_by_addr(s, addr);
-> >> > -    uint32_t config_addr =3D addr & (PCI_CONFIG_SPACE_SIZE - 1);
-> >> > +    uint32_t config_addr;
-> >> >      uint32_t val;
-> >> >
-> >> >      if (!pci_dev) {
-> >> >          return ~0x0;
-> >> >      }
-> >> >
-> >> > +    config_addr =3D addr & (pci_config_size(pci_dev) - 1);
-> >> > +
-> >> >      val =3D pci_host_config_read_common(pci_dev, config_addr,
-> >> > -                                      PCI_CONFIG_SPACE_SIZE, len)=
-;
-> >> > +                                      pci_config_size(pci_dev), l=
-en);
-> >> >      PCI_DPRINTF("%s: %s: addr=3D%02"PRIx32" val=3D%08"PRIx32" len=
-=3D%d\n",
-> >> >                  __func__, pci_dev->name, config_addr, val, len);
-> >> >
-> >>
-> >> I've just discovered that this breaks the e1000e-test:
-> >>
-> >> $ (cd build/clang; QTEST_QEMU_BINARY=3Dx86_64-softmmu/qemu-system-x8=
-6_64
-> >> ./tests/e1000e-test)
-> >> /x86_64/e1000e/init: **
-> >> ERROR:/home/petmay01/linaro/qemu-from-laptop/qemu/tests/e1000e-test.=
-c:118:e1000e_device_find:
-> >> 'e1000e_dev' should not be NULL
-> >>
-> >> Any idea what's going on here?
-> >>
->=20
-> Peter:
->=20
-> Don't really have a good idea what's going on, but I am guessing this
-> change broke affected pci_host_data_* methods in negative way.
->=20
-> >> thanks
-> >> -- PMM
-> >
-> > I'm yet to review these patches, but IIRC pci_data_read and friends
-> > aren't designed with pcie in mind - they implement the classic pci
-> > config space.
-> >
-> > I'd like to see more justification about how these are now going
-> > to be used.
-> >
->=20
-> Michael:
->=20
-> My only justification for this change was suggestion from Marcel to
-> use pci_data_* functions, instead of calling pci_host_config_*_common
-> explicitly in designware.c introduced in next patch in the series. My
-> v4 patches incorrectly limited config space size to 256, so such
-> replacement didn't require this patch, but switching pci_data_* to use
-> pci_config_size() seemed harmless enough. I am more than happy to got
-> back to using pci_host_config_*_common in designware.c and dropping
-> this patch.
->=20
-> Thanks,
-> Andrey Smirnov
-
-Aren't these implementing MMCFG? In that case I think you should
-reuse pcie_host_mmcfg_update, like q35 does.
-
-This would be the second user, so we might need to extend that
-interface somewhat. Let me know if that's a good fit.
-
---=20
-MST
+SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
+LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1l
+c3NhZ2UtaWQ6IDIwMTgwMjA4MTczMTU3LjI0NzA1LTEtYWxleC5iZW5uZWVAbGluYXJvLm9yZwpT
+dWJqZWN0OiBbUWVtdS1kZXZlbF0gW1BBVENIIHYyIDAwLzMyXSBBZGQgQVJNdjguMiBoYWxmLXBy
+ZWNpc2lvbiBmdW5jdGlvbnMKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gK
+CkJBU0U9YmFzZQpuPTEKdG90YWw9JChnaXQgbG9nIC0tb25lbGluZSAkQkFTRS4uIHwgd2MgLWwp
+CmZhaWxlZD0wCgpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBjb25m
+aWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQoKY29tbWl0cz0iJChnaXQgbG9nIC0tZm9ybWF0
+PSVIIC0tcmV2ZXJzZSAkQkFTRS4uKSIKZm9yIGMgaW4gJGNvbW1pdHM7IGRvCiAgICBlY2hvICJD
+aGVja2luZyBQQVRDSCAkbi8kdG90YWw6ICQoZ2l0IGxvZyAtbiAxIC0tZm9ybWF0PSVzICRjKS4u
+LiIKICAgIGlmICEgZ2l0IHNob3cgJGMgLS1mb3JtYXQ9ZW1haWwgfCAuL3NjcmlwdHMvY2hlY2tw
+YXRjaC5wbCAtLW1haWxiYWNrIC07IHRoZW4KICAgICAgICBmYWlsZWQ9MQogICAgICAgIGVjaG8K
+ICAgIGZpCiAgICBuPSQoKG4rMSkpCmRvbmUKCmV4aXQgJGZhaWxlZAo9PT0gVEVTVCBTQ1JJUFQg
+RU5EID09PQoKVXBkYXRpbmcgM2M4Y2Y1YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRiZDg4ODcxMzM4
+NApGcm9tIGh0dHBzOi8vZ2l0aHViLmNvbS9wYXRjaGV3LXByb2plY3QvcWVtdQogKiBbbmV3IHRh
+Z10gICAgICAgICAgICAgICBwYXRjaGV3LzIwMTgwMjA4MTczMTU3LjI0NzA1LTEtYWxleC5iZW5u
+ZWVAbGluYXJvLm9yZyAtPiBwYXRjaGV3LzIwMTgwMjA4MTczMTU3LjI0NzA1LTEtYWxleC5iZW5u
+ZWVAbGluYXJvLm9yZwogKiBbbmV3IHRhZ10gICAgICAgICAgICAgICBwYXRjaGV3LzIwMTgwMjA4
+MTgyMjIzLjI1NjItMS1wYm9uemluaUByZWRoYXQuY29tIC0+IHBhdGNoZXcvMjAxODAyMDgxODIy
+MjMuMjU2Mi0xLXBib256aW5pQHJlZGhhdC5jb20KU3dpdGNoZWQgdG8gYSBuZXcgYnJhbmNoICd0
+ZXN0Jwo4MjhmZGY4MDM5IGFybS90cmFuc2xhdGUtYTY0OiBhZGQgYWxsIHNpbmdsZSBvcCBGUDE2
+IHRvIGhhbmRsZV9mcF8xc3JjX2hhbGYKYmIxMjM0N2RmMCBhcm0vdHJhbnNsYXRlLWE2NDogaW1w
+bGVtZW50IHNpbWRfc2NhbGFyX3RocmVlX3JlZ19zYW1lX2ZwMTYKOWQ5MGU2NThjNSBhcm0vdHJh
+bnNsYXRlLWE2NDogYWRkIGFsbCBGUDE2IG9wcyBpbiBzaW1kX3NjYWxhcl9wYWlyd2lzZQoxOGU0
+ZDZmMWQyIGFybS90cmFuc2xhdGUtYTY0OiBhZGQgRlAxNiBGTU9WIHRvIHNpbWRfbW9kX2ltbQo0
+ODdkMjE3ODVhIGFybS90cmFuc2xhdGUtYTY0OiBhZGQgRlAxNiBGUlNRUlRFIHRvIHNpbWRfdHdv
+X3JlZ19taXNjX2ZwMTYKZTY4N2VlZTAzZCBhcm0vaGVscGVyLmM6IHJlLWZhY3RvciByc3FydGUg
+YW5kIGFkZCByc3FydGVfZjE2CjQwNzg1OTY4OTUgYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBGUDE2
+IEZTUVJUIHRvIHNpbWRfdHdvX3JlZ19taXNjX2ZwMTYKMTRlMjQ3M2EwMSBhcm0vdHJhbnNsYXRl
+LWE2NDogYWRkIEZQMTYgRlJDUFggdG8gc2ltZF90d29fcmVnX21pc2NfZnAxNgowMDgwYjlmZWIx
+IGFybS90cmFuc2xhdGUtYTY0OiBhZGQgRlAxNiBGUkVDUEUKMzIyMDMxYTVjOSBhcm0vaGVscGVy
+LmM6IHJlLWZhY3RvciByZWNwZSBhbmQgYWRkIHJlY2VwZV9mMTYKOTkzOTZlZmZjZSBhcm0vdHJh
+bnNsYXRlLWE2NDogYWRkIEZQMTYgRk5FRy9GQUJTIHRvIHNpbWRfdHdvX3JlZ19taXNjX2ZwMTYK
+ZmMwZjlkYmQwYSBhcm0vdHJhbnNsYXRlLWE2NDogYWRkIEZQMTYgU0NWVEYvVUNWRlQgdG8gc2lt
+ZF90d29fcmVnX21pc2NfZnAxNgplZDc3NTg4ZjNmIGFybS90cmFuc2xhdGUtYTY0OiBhZGQgRlAx
+NiBGQ014eCAoemVybykgdG8gc2ltZF90d29fcmVnX21pc2NfZnAxNgoyOGI2YTZhNzcyIGFybS90
+cmFuc2xhdGUtYTY0OiBhZGQgRkNWVHh4IHRvIHNpbWRfdHdvX3JlZ19taXNjX2ZwMTYKYzhjZTJm
+NzM2ZCBhcm0vdHJhbnNsYXRlLWE2NDogYWRkIEZQMTYgRlBSSU5UeCB0byBzaW1kX3R3b19yZWdf
+bWlzY19mcDE2CjkwMDU2MWFlMzYgYXJtL3RyYW5zbGF0ZS1hNjQ6IGluaXRpYWwgZGVjb2RlIGZv
+ciBzaW1kX3R3b19yZWdfbWlzY19mcDE2CmQ1NWY4ZmQyZDQgYXJtL3RyYW5zbGF0ZS1hNjQ6IGFk
+ZCBGUDE2IHgyIG9wcyBmb3Igc2ltZF9pbmRleGVkCjc5MjAwYmYzM2UgYXJtL3RyYW5zbGF0ZS1h
+NjQ6IGFkZCBGUDE2IEZNVUxYL01MUy9GTUxBIHRvIHNpbWRfaW5kZXhlZAplZWJjYzNhZWI2IGFy
+bS90cmFuc2xhdGUtYTY0OiBhZGQgRlAxNiBwYWlyd2lzZSBvcHMgc2ltZF90aHJlZV9yZWdfc2Ft
+ZV9mcDE2CmE3ZDQyYzEwOWQgYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBGUDE2IEZSW0VDUC9TUVJU
+XVMgdG8gc2ltZF90aHJlZV9yZWdfc2FtZV9mcDE2CmY0ZjhmMDA4M2IgYXJtL3RyYW5zbGF0ZS1h
+NjQ6IGFkZCBGUDE2IEZNVUxBL1gvUyB0byBzaW1kX3RocmVlX3JlZ19zYW1lX2ZwMTYKZjk5OTQx
+MDNjYSBhcm0vdHJhbnNsYXRlLWE2NDogYWRkIEZQMTYgRltBXUNbRVEvR0UvR1RdIHRvIHNpbWRf
+dGhyZWVfcmVnX3NhbWVfZnAxNgo3NDBiNTcxY2M3IGFybS90cmFuc2xhdGUtYTY0OiBhZGQgRlAx
+NiBGQUREL0ZBQkQvRlNVQi9GTVVML0ZESVYgdG8gc2ltZF90aHJlZV9yZWdfc2FtZV9mcDE2CjIy
+MTAyNGI4NzAgYXJtL3RyYW5zbGF0ZS1hNjQ6IGluaXRpYWwgZGVjb2RlIGZvciBzaW1kX3RocmVl
+X3JlZ19zYW1lX2ZwMTYKZTU1Y2Q2OGIyZSBhcm0vdHJhbnNsYXRlLWE2NDogaGFuZGxlXzNzYW1l
+XzY0IGNvbW1lbnQgZml4CmU5NjFjMmJlZTQgYXJtL3RyYW5zbGF0ZS1hNjQ6IGltcGxlbWVudCBo
+YWxmLXByZWNpc2lvbiBGKE1JTnxNQVgpKFZ8Tk1WKQpjMTc3Yzk1MDkxIHRhcmdldC9hcm0vaGVs
+cGVyOiBwYXNzIGV4cGxpY2l0IGZwc3QgdG8gc2V0X3Jtb2RlCjcxZmU3OTUzZjIgdGFyZ2V0L2Fy
+bS9jcHUuaDogYWRkIGFkZGl0aW9uYWwgZmxvYXRfc3RhdHVzIGZsYWdzCmMyYmJmZmUwNGQgdGFy
+Z2V0L2FybS9jcHUuaDogdXBkYXRlIGNvbW1lbnQgZm9yIGhhbGYtcHJlY2lzaW9uIHZhbHVlcwpm
+NWYwZTNmYTc5IHRhcmdldC9hcm0vY3B1NjQ6IGFsbG93IGZwMTYgdG8gYmUgZGlzYWJsZWQKYWI5
+NTRiMDZiYyB0YXJnZXQvYXJtL2NwdTY0OiBpbnRyb2R1Y2UgQVJNX1Y4X0ZQMTYgZmVhdHVyZSBi
+aXQKN2MzYjQxZWZlOCBpbmNsdWRlL2V4ZWMvaGVscGVyLWhlYWQuaDogc3VwcG9ydCBmMTYgaW4g
+aGVscGVyIGNhbGxzCgo9PT0gT1VUUFVUIEJFR0lOID09PQpDaGVja2luZyBQQVRDSCAxLzMyOiBp
+bmNsdWRlL2V4ZWMvaGVscGVyLWhlYWQuaDogc3VwcG9ydCBmMTYgaW4gaGVscGVyIGNhbGxzLi4u
+CkNoZWNraW5nIFBBVENIIDIvMzI6IHRhcmdldC9hcm0vY3B1NjQ6IGludHJvZHVjZSBBUk1fVjhf
+RlAxNiBmZWF0dXJlIGJpdC4uLgpDaGVja2luZyBQQVRDSCAzLzMyOiB0YXJnZXQvYXJtL2NwdTY0
+OiBhbGxvdyBmcDE2IHRvIGJlIGRpc2FibGVkLi4uCkNoZWNraW5nIFBBVENIIDQvMzI6IHRhcmdl
+dC9hcm0vY3B1Lmg6IHVwZGF0ZSBjb21tZW50IGZvciBoYWxmLXByZWNpc2lvbiB2YWx1ZXMuLi4K
+Q2hlY2tpbmcgUEFUQ0ggNS8zMjogdGFyZ2V0L2FybS9jcHUuaDogYWRkIGFkZGl0aW9uYWwgZmxv
+YXRfc3RhdHVzIGZsYWdzLi4uCkNoZWNraW5nIFBBVENIIDYvMzI6IHRhcmdldC9hcm0vaGVscGVy
+OiBwYXNzIGV4cGxpY2l0IGZwc3QgdG8gc2V0X3Jtb2RlLi4uCkNoZWNraW5nIFBBVENIIDcvMzI6
+IGFybS90cmFuc2xhdGUtYTY0OiBpbXBsZW1lbnQgaGFsZi1wcmVjaXNpb24gRihNSU58TUFYKShW
+fE5NVikuLi4KQ2hlY2tpbmcgUEFUQ0ggOC8zMjogYXJtL3RyYW5zbGF0ZS1hNjQ6IGhhbmRsZV8z
+c2FtZV82NCBjb21tZW50IGZpeC4uLgpDaGVja2luZyBQQVRDSCA5LzMyOiBhcm0vdHJhbnNsYXRl
+LWE2NDogaW5pdGlhbCBkZWNvZGUgZm9yIHNpbWRfdGhyZWVfcmVnX3NhbWVfZnAxNi4uLgpDaGVj
+a2luZyBQQVRDSCAxMC8zMjogYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBGUDE2IEZBREQvRkFCRC9G
+U1VCL0ZNVUwvRkRJViB0byBzaW1kX3RocmVlX3JlZ19zYW1lX2ZwMTYuLi4KQ2hlY2tpbmcgUEFU
+Q0ggMTEvMzI6IGFybS90cmFuc2xhdGUtYTY0OiBhZGQgRlAxNiBGW0FdQ1tFUS9HRS9HVF0gdG8g
+c2ltZF90aHJlZV9yZWdfc2FtZV9mcDE2Li4uCkNoZWNraW5nIFBBVENIIDEyLzMyOiBhcm0vdHJh
+bnNsYXRlLWE2NDogYWRkIEZQMTYgRk1VTEEvWC9TIHRvIHNpbWRfdGhyZWVfcmVnX3NhbWVfZnAx
+Ni4uLgpDaGVja2luZyBQQVRDSCAxMy8zMjogYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBGUDE2IEZS
+W0VDUC9TUVJUXVMgdG8gc2ltZF90aHJlZV9yZWdfc2FtZV9mcDE2Li4uCkNoZWNraW5nIFBBVENI
+IDE0LzMyOiBhcm0vdHJhbnNsYXRlLWE2NDogYWRkIEZQMTYgcGFpcndpc2Ugb3BzIHNpbWRfdGhy
+ZWVfcmVnX3NhbWVfZnAxNi4uLgpDaGVja2luZyBQQVRDSCAxNS8zMjogYXJtL3RyYW5zbGF0ZS1h
+NjQ6IGFkZCBGUDE2IEZNVUxYL01MUy9GTUxBIHRvIHNpbWRfaW5kZXhlZC4uLgpXQVJOSU5HOiBs
+aW5lIG92ZXIgODAgY2hhcmFjdGVycwojMjQ6IEZJTEU6IHRhcmdldC9hcm0vdHJhbnNsYXRlLWE2
+NC5jOjEwODA3OgorICAgICAgICBpZiAoc2l6ZSA9PSAxIHx8IChzaXplIDwgMiAmJiAhYXJtX2Rj
+X2ZlYXR1cmUocywgQVJNX0ZFQVRVUkVfVjhfRlAxNikpKSB7CgpXQVJOSU5HOiBsaW5lIG92ZXIg
+ODAgY2hhcmFjdGVycwojNzQ6IEZJTEU6IHRhcmdldC9hcm0vdHJhbnNsYXRlLWE2NC5jOjEwOTY5
+OgorICAgICAgICAgICAgICAgIHJlYWRfdmVjX2VsZW1lbnRfaTMyKHMsIHRjZ19yZXMsIHJkLCBw
+YXNzLCBpc19zY2FsYXIgPyBzaXplIDogTU9fMzIpOwoKV0FSTklORzogbGluZSBvdmVyIDgwIGNo
+YXJhY3RlcnMKIzc4OiBGSUxFOiB0YXJnZXQvYXJtL3RyYW5zbGF0ZS1hNjQuYzoxMDk3MzoKKyAg
+ICAgICAgICAgICAgICAgICAgICAgIC8qIEFzIHVzdWFsIGZvciBBUk0sIHNlcGFyYXRlIG5lZ2F0
+aW9uIGZvciBmdXNlZCBtdWx0aXBseS1hZGQgKi8KCldBUk5JTkc6IGxpbmUgb3ZlciA4MCBjaGFy
+YWN0ZXJzCiM4MTogRklMRTogdGFyZ2V0L2FybS90cmFuc2xhdGUtYTY0LmM6MTA5NzY6CisgICAg
+ICAgICAgICAgICAgICAgIGdlbl9oZWxwZXJfYWR2c2ltZF9tdWxhZGRoKHRjZ19yZXMsIHRjZ19v
+cCwgdGNnX2lkeCwgdGNnX3JlcywgZnBzdCk7CgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFj
+dGVycwojODU6IEZJTEU6IHRhcmdldC9hcm0vdHJhbnNsYXRlLWE2NC5jOjEwOTgwOgorICAgICAg
+ICAgICAgICAgICAgICAgICAgLyogQXMgdXN1YWwgZm9yIEFSTSwgc2VwYXJhdGUgbmVnYXRpb24g
+Zm9yIGZ1c2VkIG11bHRpcGx5LWFkZCAqLwoKV0FSTklORzogbGluZSBvdmVyIDgwIGNoYXJhY3Rl
+cnMKIzg4OiBGSUxFOiB0YXJnZXQvYXJtL3RyYW5zbGF0ZS1hNjQuYzoxMDk4MzoKKyAgICAgICAg
+ICAgICAgICAgICAgZ2VuX2hlbHBlcl92ZnBfbXVsYWRkcyh0Y2dfcmVzLCB0Y2dfb3AsIHRjZ19p
+ZHgsIHRjZ19yZXMsIGZwc3QpOwoKV0FSTklORzogbGluZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzEw
+MjogRklMRTogdGFyZ2V0L2FybS90cmFuc2xhdGUtYTY0LmM6MTA5OTM6CisgICAgICAgICAgICAg
+ICAgICAgICAgICBnZW5faGVscGVyX2FkdnNpbWRfbXVseGgodGNnX3JlcywgdGNnX29wLCB0Y2df
+aWR4LCBmcHN0KTsKCnRvdGFsOiAwIGVycm9ycywgNyB3YXJuaW5ncywgOTcgbGluZXMgY2hlY2tl
+ZAoKWW91ciBwYXRjaCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkg
+b2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1h
+aW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgpDaGVja2luZyBQQVRDSCAx
+Ni8zMjogYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBGUDE2IHgyIG9wcyBmb3Igc2ltZF9pbmRleGVk
+Li4uCkNoZWNraW5nIFBBVENIIDE3LzMyOiBhcm0vdHJhbnNsYXRlLWE2NDogaW5pdGlhbCBkZWNv
+ZGUgZm9yIHNpbWRfdHdvX3JlZ19taXNjX2ZwMTYuLi4KQ2hlY2tpbmcgUEFUQ0ggMTgvMzI6IGFy
+bS90cmFuc2xhdGUtYTY0OiBhZGQgRlAxNiBGUFJJTlR4IHRvIHNpbWRfdHdvX3JlZ19taXNjX2Zw
+MTYuLi4KQ2hlY2tpbmcgUEFUQ0ggMTkvMzI6IGFybS90cmFuc2xhdGUtYTY0OiBhZGQgRkNWVHh4
+IHRvIHNpbWRfdHdvX3JlZ19taXNjX2ZwMTYuLi4KQ2hlY2tpbmcgUEFUQ0ggMjAvMzI6IGFybS90
+cmFuc2xhdGUtYTY0OiBhZGQgRlAxNiBGQ014eCAoemVybykgdG8gc2ltZF90d29fcmVnX21pc2Nf
+ZnAxNi4uLgpDaGVja2luZyBQQVRDSCAyMS8zMjogYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBGUDE2
+IFNDVlRGL1VDVkZUIHRvIHNpbWRfdHdvX3JlZ19taXNjX2ZwMTYuLi4KRVJST1I6IHNwYWNlIHBy
+b2hpYml0ZWQgYmVmb3JlIHRoYXQgY2xvc2UgcGFyZW50aGVzaXMgJyknCiMyNTogRklMRTogdGFy
+Z2V0L2FybS9oZWxwZXIuYzoxMDg4NToKK0ZMT0FUX0NPTlZTKHNpLCBoLCAxNiwgKQoKdG90YWw6
+IDEgZXJyb3JzLCAwIHdhcm5pbmdzLCAyMTIgbGluZXMgY2hlY2tlZAoKWW91ciBwYXRjaCBoYXMg
+c3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFy
+ZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVD
+S1BBVENIIGluIE1BSU5UQUlORVJTLgoKQ2hlY2tpbmcgUEFUQ0ggMjIvMzI6IGFybS90cmFuc2xh
+dGUtYTY0OiBhZGQgRlAxNiBGTkVHL0ZBQlMgdG8gc2ltZF90d29fcmVnX21pc2NfZnAxNi4uLgpD
+aGVja2luZyBQQVRDSCAyMy8zMjogYXJtL2hlbHBlci5jOiByZS1mYWN0b3IgcmVjcGUgYW5kIGFk
+ZCByZWNlcGVfZjE2Li4uCkNoZWNraW5nIFBBVENIIDI0LzMyOiBhcm0vdHJhbnNsYXRlLWE2NDog
+YWRkIEZQMTYgRlJFQ1BFLi4uCkNoZWNraW5nIFBBVENIIDI1LzMyOiBhcm0vdHJhbnNsYXRlLWE2
+NDogYWRkIEZQMTYgRlJDUFggdG8gc2ltZF90d29fcmVnX21pc2NfZnAxNi4uLgpDaGVja2luZyBQ
+QVRDSCAyNi8zMjogYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBGUDE2IEZTUVJUIHRvIHNpbWRfdHdv
+X3JlZ19taXNjX2ZwMTYuLi4KQ2hlY2tpbmcgUEFUQ0ggMjcvMzI6IGFybS9oZWxwZXIuYzogcmUt
+ZmFjdG9yIHJzcXJ0ZSBhbmQgYWRkIHJzcXJ0ZV9mMTYuLi4KQ2hlY2tpbmcgUEFUQ0ggMjgvMzI6
+IGFybS90cmFuc2xhdGUtYTY0OiBhZGQgRlAxNiBGUlNRUlRFIHRvIHNpbWRfdHdvX3JlZ19taXNj
+X2ZwMTYuLi4KQ2hlY2tpbmcgUEFUQ0ggMjkvMzI6IGFybS90cmFuc2xhdGUtYTY0OiBhZGQgRlAx
+NiBGTU9WIHRvIHNpbWRfbW9kX2ltbS4uLgpDaGVja2luZyBQQVRDSCAzMC8zMjogYXJtL3RyYW5z
+bGF0ZS1hNjQ6IGFkZCBhbGwgRlAxNiBvcHMgaW4gc2ltZF9zY2FsYXJfcGFpcndpc2UuLi4KQ2hl
+Y2tpbmcgUEFUQ0ggMzEvMzI6IGFybS90cmFuc2xhdGUtYTY0OiBpbXBsZW1lbnQgc2ltZF9zY2Fs
+YXJfdGhyZWVfcmVnX3NhbWVfZnAxNi4uLgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFjdGVy
+cwojMzY6IEZJTEU6IHRhcmdldC9hcm0vdHJhbnNsYXRlLWE2NC5jOjc3NzU6CitzdGF0aWMgdm9p
+ZCBkaXNhc19zaW1kX3NjYWxhcl90aHJlZV9yZWdfc2FtZV9mcDE2KERpc2FzQ29udGV4dCAqcywg
+dWludDMyX3QgaW5zbikKCnRvdGFsOiAwIGVycm9ycywgMSB3YXJuaW5ncywgMTE0IGxpbmVzIGNo
+ZWNrZWQKCllvdXIgcGF0Y2ggaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYg
+YW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRo
+ZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KQ2hlY2tpbmcgUEFU
+Q0ggMzIvMzI6IGFybS90cmFuc2xhdGUtYTY0OiBhZGQgYWxsIHNpbmdsZSBvcCBGUDE2IHRvIGhh
+bmRsZV9mcF8xc3JjX2hhbGYuLi4KPT09IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNvbW1hbmQgZXhp
+dGVkIHdpdGggY29kZTogMQoKCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQ
+YXRjaGV3IFtodHRwOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0
+byBwYXRjaGV3LWRldmVsQGZyZWVsaXN0cy5vcmc=

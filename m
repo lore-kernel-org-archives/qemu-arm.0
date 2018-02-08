@@ -1,195 +1,167 @@
+Received: by 10.28.71.27 with SMTP id u27csp2337863wma;
+        Thu, 8 Feb 2018 09:33:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=GqS5bsgwt3K5AMcy185N2DbqVb+H8DCD8qxb5Y7klU8=;
+        b=dNtF5+PxeyB7lzMaR9iUXgwIxz0DzTttGVRxeabnSoSsWYNdTfYexACRv8SW58xufZ
+         j0Econ0oAV6AE95Dwm6s5fkNZ1Jb3HYjQApLk9jCe+EAHydK+raJegxKP3FPGWAiX9So
+         To/yHPKp326GptWYpUEkc+A52M9+lUbnn+SoE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=GqS5bsgwt3K5AMcy185N2DbqVb+H8DCD8qxb5Y7klU8=;
+        b=GKM3Jm0vYOLB7fHshH8z75sDCSZoNmvLz1VSZrgW/nGUUa9DsdSfpSP4C63yV2NeTH
+         56j0jppat88rZB6QH79ldodKz2znEPV8NhpGuQ34B1+1dgsia4t4yByCrR1g7LISlPzr
+         w8RkniRwjI1b7oCB9Pgwpb4oGsx2YMyAwh2s5HrLT06LIgMBWc2ELCS56dScbofKDikh
+         jZmx0B3cqn6NgPHJOp8nu32+MOAhDIID0K85/ni9D9Sszgrfd8wuJTvjpm3/dv7sL2nl
+         P8cK4ZAXJaIu3PZZrWpmT97fKQZXcMNduERbJOmfhBgW5UBvjU8+MgHSD5rmfLHjacm3
+         iHWQ==
+X-Google-Smtp-Source: AH8x224tmtU52gU3iDP3ZAA0A9yibFyvbRo9VtFAaC5fVVNLK+zAMZZp6R2Vynps1qjkFsEd478n7w==
+X-Received: by 10.223.185.123 with SMTP id b56mr1471586wrg.13.1518111125751;
+        Thu, 08 Feb 2018 09:32:05 -0800 (PST)
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id g127sm441215wmf.5.2018.02.08.09.32.05
+        by smtp.gmail.com with ESMTPSA id x190sm455675wme.27.2018.02.08.09.32.03
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 08 Feb 2018 09:32:11 -0800 (PST)
+        Thu, 08 Feb 2018 09:32:05 -0800 (PST)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 2B5553E0D84;
-	Thu,  8 Feb 2018 17:31:59 +0000 (GMT)
+	by zen.linaro.local (Postfix) with ESMTP id 8D23B3E0C74;
+	Thu,  8 Feb 2018 17:31:58 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 19/32] arm/translate-a64: add FCVTxx to simd_two_reg_misc_fp16
-Date: Thu,  8 Feb 2018 17:31:44 +0000
-Message-Id: <20180208173157.24705-20-alex.bennee@linaro.org>
+Subject: [PATCH v2 11/32] arm/translate-a64: add FP16 F[A]C[EQ/GE/GT] to simd_three_reg_same_fp16
+Date: Thu,  8 Feb 2018 17:31:36 +0000
+Message-Id: <20180208173157.24705-12-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.15.1
 In-Reply-To: <20180208173157.24705-1-alex.bennee@linaro.org>
 References: <20180208173157.24705-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 1eyYQCdYKznc
-
-This covers all the floating point convert operations.
+X-TUID: cYMY7OSaCZRm
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/helper-a64.c    | 32 +++++++++++++++++
- target/arm/helper-a64.h    |  2 ++
- target/arm/translate-a64.c | 85 +++++++++++++++++++++++++++++++++++++++++++++-
- 3 files changed, 118 insertions(+), 1 deletion(-)
+ target/arm/helper-a64.c    | 49 ++++++++++++++++++++++++++++++++++++++++++++++
+ target/arm/helper-a64.h    |  5 +++++
+ target/arm/translate-a64.c | 15 ++++++++++++++
+ 3 files changed, 69 insertions(+)
 
 diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-index 919b073635..76f3289e37 100644
+index 25e45121af..78eeda31d1 100644
 --- a/target/arm/helper-a64.c
 +++ b/target/arm/helper-a64.c
-@@ -772,3 +772,35 @@ float16 HELPER(advsimd_rinth)(float16 x, void *fp_status)
- 
-     return ret;
- }
+@@ -599,3 +599,52 @@ ADVSIMD_HALFOP(min)
+ ADVSIMD_HALFOP(max)
+ ADVSIMD_HALFOP(minnum)
+ ADVSIMD_HALFOP(maxnum)
 +
 +/*
-+ * Half-precision floating point conversion functions
-+ *
-+ * There are a multitude of conversion functions with various
-+ * different rounding modes. This is dealt with by the calling code
-+ * setting the mode appropriately before calling the helper.
++ * Floating point comparisons produce an integer result. Softfloat
++ * routines return float_relation types which we convert to the 0/-1
++ * Neon requires.
 + */
 +
-+uint32_t HELPER(advsimd_f16tosinth)(float16 a, void *fpstp)
++#define ADVSIMD_CMPRES(test) (test) ? 0xffff : 0
++
++uint32_t HELPER(advsimd_ceq_f16)(float16 a, float16 b, void *fpstp)
 +{
 +    float_status *fpst = fpstp;
-+
-+    /* Invalid if we are passed a NaN */
-+    if (float16_is_any_nan(a)) {
-+        float_raise(float_flag_invalid, fpst);
-+        return 0;
-+    }
-+    return float16_to_int16(a, fpst);
++    int compare = float16_compare_quiet(a, b, fpst);
++    return ADVSIMD_CMPRES(compare == float_relation_equal);
 +}
 +
-+uint32_t HELPER(advsimd_f16touinth)(float16 a, void *fpstp)
++uint32_t HELPER(advsimd_cge_f16)(float16 a, float16 b, void *fpstp)
 +{
 +    float_status *fpst = fpstp;
++    int compare = float16_compare(a, b, fpst);
++    return ADVSIMD_CMPRES(compare == float_relation_greater ||
++                          compare == float_relation_equal);
++}
 +
-+    /* Invalid if we are passed a NaN */
-+    if (float16_is_any_nan(a)) {
-+        float_raise(float_flag_invalid, fpst);
-+        return 0;
-+    }
-+    return float16_to_uint16(a, fpst);
++uint32_t HELPER(advsimd_cgt_f16)(float16 a, float16 b, void *fpstp)
++{
++    float_status *fpst = fpstp;
++    int compare = float16_compare(a, b, fpst);
++    return ADVSIMD_CMPRES(compare == float_relation_greater);
++}
++
++uint32_t HELPER(advsimd_acge_f16)(float16 a, float16 b, void *fpstp)
++{
++    float_status *fpst = fpstp;
++    float16 f0 = float16_abs(a);
++    float16 f1 = float16_abs(b);
++    int compare = float16_compare(f0, f1, fpst);
++    return ADVSIMD_CMPRES(compare == float_relation_greater ||
++                          compare == float_relation_equal);
++}
++
++uint32_t HELPER(advsimd_acgt_f16)(float16 a, float16 b, void *fpstp)
++{
++    float_status *fpst = fpstp;
++    float16 f0 = float16_abs(a);
++    float16 f1 = float16_abs(b);
++    int compare = float16_compare(f0, f1, fpst);
++    return ADVSIMD_CMPRES(compare == float_relation_greater);
 +}
 diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
-index b583bc0dd8..453753f4e7 100644
+index 5cbabcc27a..e701644ae7 100644
 --- a/target/arm/helper-a64.h
 +++ b/target/arm/helper-a64.h
-@@ -78,3 +78,5 @@ DEF_HELPER_3(advsimd_acge_f16, i32, f16, f16, ptr)
- DEF_HELPER_3(advsimd_acgt_f16, i32, f16, f16, ptr)
- DEF_HELPER_2(advsimd_rinth_exact, f16, f16, ptr)
- DEF_HELPER_2(advsimd_rinth, f16, f16, ptr)
-+DEF_HELPER_2(advsimd_f16tosinth, i32, f16, ptr)
-+DEF_HELPER_2(advsimd_f16touinth, i32, f16, ptr)
+@@ -57,3 +57,8 @@ DEF_HELPER_3(advsimd_maxh, f16, f16, f16, ptr)
+ DEF_HELPER_3(advsimd_minh, f16, f16, f16, ptr)
+ DEF_HELPER_3(advsimd_maxnumh, f16, f16, f16, ptr)
+ DEF_HELPER_3(advsimd_minnumh, f16, f16, f16, ptr)
++DEF_HELPER_3(advsimd_ceq_f16, i32, f16, f16, ptr)
++DEF_HELPER_3(advsimd_cge_f16, i32, f16, f16, ptr)
++DEF_HELPER_3(advsimd_cgt_f16, i32, f16, f16, ptr)
++DEF_HELPER_3(advsimd_acge_f16, i32, f16, f16, ptr)
++DEF_HELPER_3(advsimd_acgt_f16, i32, f16, f16, ptr)
 diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index a0506f094f..0049111e6d 100644
+index 93d71d8b2c..14572f26e1 100644
 --- a/target/arm/translate-a64.c
 +++ b/target/arm/translate-a64.c
-@@ -10797,6 +10797,46 @@ static void disas_simd_two_reg_misc_fp16(DisasContext *s, uint32_t insn)
-         only_in_vector = true;
-         /* current rounding mode */
-         break;
-+    case 0x1a: /* FCVTNS */
-+        need_rmode = true;
-+        rmode = FPROUNDING_TIEEVEN;
-+        break;
-+    case 0x1b: /* FCVTMS */
-+        need_rmode = true;
-+        rmode = FPROUNDING_NEGINF;
-+        break;
-+    case 0x1c: /* FCVTAS */
-+        need_rmode = true;
-+        rmode = FPROUNDING_TIEAWAY;
-+        break;
-+    case 0x3a: /* FCVTPS */
-+        need_rmode = true;
-+        rmode = FPROUNDING_POSINF;
-+        break;
-+    case 0x3b: /* FCVTZS */
-+        need_rmode = true;
-+        rmode = FPROUNDING_ZERO;
-+        break;
-+    case 0x5a: /* FCVTNU */
-+        need_rmode = true;
-+        rmode = FPROUNDING_TIEEVEN;
-+        break;
-+    case 0x5b: /* FCVTMU */
-+        need_rmode = true;
-+        rmode = FPROUNDING_NEGINF;
-+        break;
-+    case 0x5c: /* FCVTAU */
-+        need_rmode = true;
-+        rmode = FPROUNDING_TIEAWAY;
-+        break;
-+    case 0x7a: /* FCVTPU */
-+        need_rmode = true;
-+        rmode = FPROUNDING_POSINF;
-+        break;
-+    case 0x7b: /* FCVTZU */
-+        need_rmode = true;
-+        rmode = FPROUNDING_ZERO;
-+        break;
-     default:
-         fprintf(stderr, "%s: insn %#04x fpop %#2x\n", __func__, insn, fpop);
-         g_assert_not_reached();
-@@ -10830,7 +10870,36 @@ static void disas_simd_two_reg_misc_fp16(DisasContext *s, uint32_t insn)
-     }
- 
-     if (is_scalar) {
--        /* no operations yet */
-+        TCGv_i32 tcg_op = tcg_temp_new_i32();
-+        TCGv_i32 tcg_res = tcg_temp_new_i32();
-+
-+        read_vec_element_i32(s, tcg_op, rn, 0, MO_16);
-+
-+        switch (fpop) {
-+        case 0x1a: /* FCVTNS */
-+        case 0x1b: /* FCVTMS */
-+        case 0x1c: /* FCVTAS */
-+        case 0x3a: /* FCVTPS */
-+        case 0x3b: /* FCVTZS */
-+            gen_helper_advsimd_f16tosinth(tcg_res, tcg_op, tcg_fpstatus);
+@@ -9855,6 +9855,9 @@ static void disas_simd_three_reg_same_fp16(DisasContext *s, uint32_t insn)
+         case 0x2: /* FADD */
+             gen_helper_advsimd_addh(tcg_res, tcg_op1, tcg_op2, fpst);
+             break;
++        case 0x4: /* FCMEQ */
++            gen_helper_advsimd_ceq_f16(tcg_res, tcg_op1, tcg_op2, fpst);
 +            break;
-+        case 0x5a: /* FCVTNU */
-+        case 0x5b: /* FCVTMU */
-+        case 0x5c: /* FCVTAU */
-+        case 0x7a: /* FCVTPU */
-+        case 0x7b: /* FCVTZU */
-+            gen_helper_advsimd_f16touinth(tcg_res, tcg_op, tcg_fpstatus);
+         case 0x6: /* FMAX */
+             gen_helper_advsimd_maxh(tcg_res, tcg_op1, tcg_op2, fpst);
+             break;
+@@ -9870,6 +9873,12 @@ static void disas_simd_three_reg_same_fp16(DisasContext *s, uint32_t insn)
+         case 0x13: /* FMUL */
+             gen_helper_advsimd_mulh(tcg_res, tcg_op1, tcg_op2, fpst);
+             break;
++        case 0x14: /* FCMGE */
++            gen_helper_advsimd_cge_f16(tcg_res, tcg_op1, tcg_op2, fpst);
 +            break;
-+        default:
-+            g_assert_not_reached();
-+        }
-+
-+        /* limit any sign extension going on */
-+        tcg_gen_andi_i32(tcg_res, tcg_res, 0xffff);
-+        write_fp_sreg(s, rd, tcg_res);
-+
-+        tcg_temp_free_i32(tcg_res);
-+        tcg_temp_free_i32(tcg_op);
-     } else {
-         for (pass = 0; pass < (is_q ? 8 : 4); pass++) {
-             TCGv_i32 tcg_op = tcg_temp_new_i32();
-@@ -10839,6 +10908,20 @@ static void disas_simd_two_reg_misc_fp16(DisasContext *s, uint32_t insn)
-             read_vec_element_i32(s, tcg_op, rn, pass, MO_16);
- 
-             switch (fpop) {
-+            case 0x1a: /* FCVTNS */
-+            case 0x1b: /* FCVTMS */
-+            case 0x1c: /* FCVTAS */
-+            case 0x3a: /* FCVTPS */
-+            case 0x3b: /* FCVTZS */
-+                gen_helper_advsimd_f16tosinth(tcg_res, tcg_op, tcg_fpstatus);
-+                break;
-+            case 0x5a: /* FCVTNU */
-+            case 0x5b: /* FCVTMU */
-+            case 0x5c: /* FCVTAU */
-+            case 0x7a: /* FCVTPU */
-+            case 0x7b: /* FCVTZU */
-+                gen_helper_advsimd_f16touinth(tcg_res, tcg_op, tcg_fpstatus);
-+                break;
-             case 0x18: /* FRINTN */
-             case 0x19: /* FRINTM */
-             case 0x38: /* FRINTP */
++        case 0x15: /* FACGE */
++            gen_helper_advsimd_acge_f16(tcg_res, tcg_op1, tcg_op2, fpst);
++            break;
+         case 0x17: /* FDIV */
+             gen_helper_advsimd_divh(tcg_res, tcg_op1, tcg_op2, fpst);
+             break;
+@@ -9877,6 +9886,12 @@ static void disas_simd_three_reg_same_fp16(DisasContext *s, uint32_t insn)
+             gen_helper_advsimd_subh(tcg_res, tcg_op1, tcg_op2, fpst);
+             gen_helper_advsimd_absh(tcg_res, tcg_res);
+             break;
++        case 0x1c: /* FCMGT */
++            gen_helper_advsimd_cgt_f16(tcg_res, tcg_op1, tcg_op2, fpst);
++            break;
++        case 0x1d: /* FACGT */
++            gen_helper_advsimd_acgt_f16(tcg_res, tcg_op1, tcg_op2, fpst);
++            break;
+         default:
+             fprintf(stderr, "%s: insn %#04x, fpop %#2x @ %#" PRIx64 "\n",
+                     __func__, insn, fpopcode, s->pc);
 -- 
 2.15.1

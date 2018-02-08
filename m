@@ -1,44 +1,47 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id 42-v6sm27913230wrx.24.2018.05.04.05.26.11
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 May 2018 05:26:11 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id DE5243E00E9;
-	Fri,  4 May 2018 13:26:09 +0100 (BST)
-References: <20180502154344.10585-1-alex.bennee@linaro.org> <20180502154344.10585-3-alex.bennee@linaro.org> <CAFEAcA80vTz25WHGKteTU3nxSi2fUHN8dp+z8paNP03conAghQ@mail.gmail.com> <9549d686-899d-7b3b-dae3-d3cc22528e50@linaro.org>
-User-agent: mu4e 1.1.0; emacs 26.1
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, Aurelien Jarno <aurelien@aurel32.net>
-Subject: Re: [PATCH v2 2/3] fpu/softfloat: support ARM Alternative half-precision
-In-reply-to: <9549d686-899d-7b3b-dae3-d3cc22528e50@linaro.org>
-Date: Fri, 04 May 2018 13:26:09 +0100
-Message-ID: <87y3gz8v4u.fsf@linaro.org>
+        by smtp.gmail.com with ESMTPSA id r64sm445135wma.15.2018.02.08.09.32.00
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 08 Feb 2018 09:32:05 -0800 (PST)
+Received: from zen.linaroharston (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTP id 574CB3E0BFD;
+	Thu,  8 Feb 2018 17:31:58 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v2 08/32] arm/translate-a64: handle_3same_64 comment fix
+Date: Thu,  8 Feb 2018 17:31:33 +0000
+Message-Id: <20180208173157.24705-9-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.15.1
+In-Reply-To: <20180208173157.24705-1-alex.bennee@linaro.org>
+References: <20180208173157.24705-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: r5U23EreOK5j
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: GsN3RVIbpDPP
 
+We do implement all the opcodes.
 
-Richard Henderson <richard.henderson@linaro.org> writes:
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ target/arm/translate-a64.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-> On 05/03/2018 11:17 AM, Peter Maydell wrote:
->> (target/i386 notably does not do this, we should check how
->> SSE and x87 handle NaNs in fp conversions first.)
->
-> Hardware does silence NaNs.  I tested that earlier:
->
-> https://lists.gnu.org/archive/html/qemu-devel/2018-04/msg03114.html
-
-Does that include SSE? I know the hardware will silence NaN's if the
-value is ever pushed into an x87 register (as GCC will do when
-spilling/filling float).
-
->
->
-> r~
-
-
---
-Alex Benn=C3=A9e
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index f778886abc..2dd958c0e7 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -7220,8 +7220,7 @@ static void handle_3same_64(DisasContext *s, int opcode, bool u,
+     /* Handle 64x64->64 opcodes which are shared between the scalar
+      * and vector 3-same groups. We cover every opcode where size == 3
+      * is valid in either the three-reg-same (integer, not pairwise)
+-     * or scalar-three-reg-same groups. (Some opcodes are not yet
+-     * implemented.)
++     * or scalar-three-reg-same groups.
+      */
+     TCGCond cond;
+ 
+-- 
+2.15.1

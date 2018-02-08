@@ -1,123 +1,117 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id d5sm538423wra.72.2018.02.08.09.32.01
+        by smtp.gmail.com with ESMTPSA id i4sm465815wmf.3.2018.02.08.09.32.02
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
         Thu, 08 Feb 2018 09:32:05 -0800 (PST)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 7A8103E0C5D;
+	by zen.linaro.local (Postfix) with ESMTP id 9F86A3E0CCF;
 	Thu,  8 Feb 2018 17:31:58 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 10/32] arm/translate-a64: add FP16 FADD/FABD/FSUB/FMUL/FDIV to simd_three_reg_same_fp16
-Date: Thu,  8 Feb 2018 17:31:35 +0000
-Message-Id: <20180208173157.24705-11-alex.bennee@linaro.org>
+Subject: [PATCH v2 12/32] arm/translate-a64: add FP16 FMULA/X/S to simd_three_reg_same_fp16
+Date: Thu,  8 Feb 2018 17:31:37 +0000
+Message-Id: <20180208173157.24705-13-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.15.1
 In-Reply-To: <20180208173157.24705-1-alex.bennee@linaro.org>
 References: <20180208173157.24705-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: WI4hGKqVaQ7V
-
-The fprintf is only there for debugging as the skeleton is added to,
-it will be removed once the skeleton is complete.
+X-TUID: 6WkdO9QVawTQ
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v2
- - add absh helper
- - fix checkpatch violation
----
- target/arm/helper-a64.c    |  9 +++++++++
- target/arm/helper-a64.h    |  5 +++++
- target/arm/translate-a64.c | 28 ++++++++++++++++++++++++++++
- 3 files changed, 42 insertions(+)
+ target/arm/helper-a64.c    | 24 ++++++++++++++++++++++++
+ target/arm/helper-a64.h    |  2 ++
+ target/arm/translate-a64.c | 15 +++++++++++++++
+ 3 files changed, 41 insertions(+)
 
 diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-index fddd5d242b..25e45121af 100644
+index 78eeda31d1..bdfcac111f 100644
 --- a/target/arm/helper-a64.c
 +++ b/target/arm/helper-a64.c
-@@ -579,6 +579,11 @@ uint64_t HELPER(paired_cmpxchg64_be_parallel)(CPUARMState *env, uint64_t addr,
+@@ -600,6 +600,30 @@ ADVSIMD_HALFOP(max)
+ ADVSIMD_HALFOP(minnum)
+ ADVSIMD_HALFOP(maxnum)
  
- #define ADVSIMD_HELPER(name, suffix) HELPER(glue(glue(advsimd_, name), suffix))
- 
-+float16 ADVSIMD_HELPER(abs, h) (float16 a)
++/* Data processing - scalar floating-point and advanced SIMD */
++float16 HELPER(advsimd_mulxh)(float16 a, float16 b, void *fpstp)
 +{
-+    return float16_abs(a);
++    float_status *fpst = fpstp;
++
++    a = float16_squash_input_denormal(a, fpst);
++    b = float16_squash_input_denormal(b, fpst);
++
++    if ((float16_is_zero(a) && float16_is_infinity(b)) ||
++        (float16_is_infinity(a) && float16_is_zero(b))) {
++        /* 2.0 with the sign bit set to sign(A) XOR sign(B) */
++        return make_float16((1U << 14) |
++                            ((float16_val(a) ^ float16_val(b)) & (1U << 15)));
++    }
++    return float16_mul(a, b, fpst);
 +}
 +
- #define ADVSIMD_HALFOP(name) \
- float16 ADVSIMD_HELPER(name, h)(float16 a, float16 b, void *fpstp) \
- { \
-@@ -586,6 +591,10 @@ float16 ADVSIMD_HELPER(name, h)(float16 a, float16 b, void *fpstp) \
-     return float16_ ## name(a, b, fpst);    \
- }
- 
-+ADVSIMD_HALFOP(add)
-+ADVSIMD_HALFOP(sub)
-+ADVSIMD_HALFOP(mul)
-+ADVSIMD_HALFOP(div)
- ADVSIMD_HALFOP(min)
- ADVSIMD_HALFOP(max)
- ADVSIMD_HALFOP(minnum)
++/* fused multiply-accumulate */
++float16 HELPER(advsimd_muladdh)(float16 a, float16 b, float16 c, void *fpstp)
++{
++    float_status *fpst = fpstp;
++    return float16_muladd(a, b, c, 0, fpst);
++}
++
+ /*
+  * Floating point comparisons produce an integer result. Softfloat
+  * routines return float_relation types which we convert to the 0/-1
 diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
-index b69a557241..5cbabcc27a 100644
+index e701644ae7..7900299efd 100644
 --- a/target/arm/helper-a64.h
 +++ b/target/arm/helper-a64.h
-@@ -48,6 +48,11 @@ DEF_HELPER_FLAGS_4(paired_cmpxchg64_le_parallel, TCG_CALL_NO_WG,
- DEF_HELPER_FLAGS_4(paired_cmpxchg64_be, TCG_CALL_NO_WG, i64, env, i64, i64, i64)
- DEF_HELPER_FLAGS_4(paired_cmpxchg64_be_parallel, TCG_CALL_NO_WG,
-                    i64, env, i64, i64, i64)
-+DEF_HELPER_1(advsimd_absh, f16, f16)
-+DEF_HELPER_3(advsimd_addh, f16, f16, f16, ptr)
-+DEF_HELPER_3(advsimd_subh, f16, f16, f16, ptr)
-+DEF_HELPER_3(advsimd_mulh, f16, f16, f16, ptr)
-+DEF_HELPER_3(advsimd_divh, f16, f16, f16, ptr)
- DEF_HELPER_3(advsimd_maxh, f16, f16, f16, ptr)
+@@ -57,6 +57,8 @@ DEF_HELPER_3(advsimd_maxh, f16, f16, f16, ptr)
  DEF_HELPER_3(advsimd_minh, f16, f16, f16, ptr)
  DEF_HELPER_3(advsimd_maxnumh, f16, f16, f16, ptr)
+ DEF_HELPER_3(advsimd_minnumh, f16, f16, f16, ptr)
++DEF_HELPER_3(advsimd_mulxh, f16, f16, f16, ptr)
++DEF_HELPER_4(advsimd_muladdh, f16, f16, f16, f16, ptr)
+ DEF_HELPER_3(advsimd_ceq_f16, i32, f16, f16, ptr)
+ DEF_HELPER_3(advsimd_cge_f16, i32, f16, f16, ptr)
+ DEF_HELPER_3(advsimd_cgt_f16, i32, f16, f16, ptr)
 diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 5392f83794..93d71d8b2c 100644
+index 14572f26e1..3eec52eb34 100644
 --- a/target/arm/translate-a64.c
 +++ b/target/arm/translate-a64.c
-@@ -9849,6 +9849,34 @@ static void disas_simd_three_reg_same_fp16(DisasContext *s, uint32_t insn)
-         read_vec_element_i32(s, tcg_op2, rm, pass, MO_16);
- 
-         switch (fpopcode) {
-+        case 0x0: /* FMAXNM */
-+            gen_helper_advsimd_maxnumh(tcg_res, tcg_op1, tcg_op2, fpst);
+@@ -9852,9 +9852,17 @@ static void disas_simd_three_reg_same_fp16(DisasContext *s, uint32_t insn)
+         case 0x0: /* FMAXNM */
+             gen_helper_advsimd_maxnumh(tcg_res, tcg_op1, tcg_op2, fpst);
+             break;
++        case 0x1: /* FMLA */
++            read_vec_element_i32(s, tcg_res, rd, pass, MO_16);
++            gen_helper_advsimd_muladdh(tcg_res, tcg_op1, tcg_op2, tcg_res,
++                                       fpst);
 +            break;
-+        case 0x2: /* FADD */
-+            gen_helper_advsimd_addh(tcg_res, tcg_op1, tcg_op2, fpst);
+         case 0x2: /* FADD */
+             gen_helper_advsimd_addh(tcg_res, tcg_op1, tcg_op2, fpst);
+             break;
++        case 0x3: /* FMULX */
++            gen_helper_advsimd_mulxh(tcg_res, tcg_op1, tcg_op2, fpst);
 +            break;
-+        case 0x6: /* FMAX */
-+            gen_helper_advsimd_maxh(tcg_res, tcg_op1, tcg_op2, fpst);
+         case 0x4: /* FCMEQ */
+             gen_helper_advsimd_ceq_f16(tcg_res, tcg_op1, tcg_op2, fpst);
+             break;
+@@ -9864,6 +9872,13 @@ static void disas_simd_three_reg_same_fp16(DisasContext *s, uint32_t insn)
+         case 0x8: /* FMINNM */
+             gen_helper_advsimd_minnumh(tcg_res, tcg_op1, tcg_op2, fpst);
+             break;
++        case 0x9: /* FMLS */
++             /* As usual for ARM, separate negation for fused multiply-add */
++            tcg_gen_xori_i32(tcg_op1, tcg_op1, 0x8000);
++            read_vec_element_i32(s, tcg_res, rd, pass, MO_16);
++            gen_helper_advsimd_muladdh(tcg_res, tcg_op1, tcg_op2, tcg_res,
++                                       fpst);
 +            break;
-+        case 0x8: /* FMINNM */
-+            gen_helper_advsimd_minnumh(tcg_res, tcg_op1, tcg_op2, fpst);
-+            break;
-+        case 0xa: /* FSUB */
-+            gen_helper_advsimd_subh(tcg_res, tcg_op1, tcg_op2, fpst);
-+            break;
-+        case 0xe: /* FMIN */
-+            gen_helper_advsimd_minh(tcg_res, tcg_op1, tcg_op2, fpst);
-+            break;
-+        case 0x13: /* FMUL */
-+            gen_helper_advsimd_mulh(tcg_res, tcg_op1, tcg_op2, fpst);
-+            break;
-+        case 0x17: /* FDIV */
-+            gen_helper_advsimd_divh(tcg_res, tcg_op1, tcg_op2, fpst);
-+            break;
-+        case 0x1a: /* FABD */
-+            gen_helper_advsimd_subh(tcg_res, tcg_op1, tcg_op2, fpst);
-+            gen_helper_advsimd_absh(tcg_res, tcg_res);
-+            break;
-         default:
-             fprintf(stderr, "%s: insn %#04x, fpop %#2x @ %#" PRIx64 "\n",
-                     __func__, insn, fpopcode, s->pc);
+         case 0xa: /* FSUB */
+             gen_helper_advsimd_subh(tcg_res, tcg_op1, tcg_op2, fpst);
+             break;
 -- 
 2.15.1

@@ -1,138 +1,105 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp2677179wrq;
-        Mon, 9 Jul 2018 10:27:16 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpcfwGUzznDJHa5galHa42r5V4DsZtML/xGPctD2wjqv5NPNo07Nmhy5Mi5/se/y6U/MzY/k
-X-Received: by 2002:a0c:af42:: with SMTP id j2-v6mr18779019qvc.191.1531157236639;
-        Mon, 09 Jul 2018 10:27:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531157236; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp2339632wma;
+        Thu, 8 Feb 2018 09:35:08 -0800 (PST)
+X-Google-Smtp-Source: AH8x226OhtzDsCk2lJRvOIA3MMX7KkuO3rXreExwJzPkFgOy2w6zXxWyLR6OKSVJ7g9slzIBgRNx
+X-Received: by 10.37.230.205 with SMTP id d196mr1150617ybh.326.1518111308762;
+        Thu, 08 Feb 2018 09:35:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518111308; cv=none;
         d=google.com; s=arc-20160816;
-        b=b7/Vkaym05vb14nFBwftx5fw53tUJnIxBQt6WNpzKrxHhrpkdD5bs1v+Ic1dE4MSI8
-         0KUX8LHoBaAixAth5JSKj1dAKteoq8eP4glVzFLJxaeEweWXs2i2hutDDVcXgep/pk4a
-         EhtZq60xTu024nqH+1S8iXCcEWjDgE+I1hF4hQQNaqUeQuYh+HNXZdFNcIZ0/3nGg6Mk
-         lIFmRTgNU7ID05Yd24Yg/Skjm2Nz+M67Vq51v3NPHHnl91tLcSCO5KL8C7LpW9pwLV5Q
-         kutCZvn42NwxyK13dyi7Hj+Rmkx9fwUmvKzAVRol8Vm8WC5j99f51PTwgkTr9uJELotz
-         8JuA==
+        b=m0zdJ4zZ7zMlA1nrjY3J1a6N3WyWkbHb5xUPy6apEGkH3QMUxVFA3Yj6o0pHQwvB3o
+         E5lGLcjgPv6Vg25c8y+JVMsphQyk8PmF4eYtPWDhEIYKBSPm8w3nWQ6SWYXp4CGUXf9R
+         iTmzEK+Tzy3TXz+1PGNm/cSLANG87Eza6oBZKqFI2I4CnlZtuosdZq9QeLHnqiINNigY
+         PHuVzJlSdDUMbSSua+RStxb0VZ8i0uPxdQPG0uXUuVexem2LuflM3p1gq0P5wVPNA8AW
+         CLFDIvBEsIOXGQ0auBrwbrhkQfnsawAtBvang/3WZI50v0iQ7tiUm6POHyKvuFpM3PSA
+         tAHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
-         :arc-authentication-results;
-        bh=yn2l2lI3MAeR+ucEHDcwVS476CRRUGULXpfrrYBV1D0=;
-        b=uLRcefRCrJ4A5oySA2DUBwfJ3/Z0b6zqQu3KzX6gdyM87TPk2qysArMxXMkukFnBNK
-         tNgeC+j7sQvd+EqmJZt4xxzWf1BTOxG3Bync0HWJmRjJWHv68KBefiL7eA3PSA5/zXaE
-         6CWrL5g7k3ekNwSJYOFcFHuLahY+1pk/ZeAAwwpwA+ZT0VqWmvgZWQxApySfCOE0klo4
-         o3z+RCwO3VkxmknV6dIlmtim6P/jQ25XsJW7t6JbMHRCn+dAyWzZKT5hqvJ7jZbjw/V7
-         fj4rdxrRUxPgflDekT6FVYk1yMi8Q9gx5LcRi5YMxt3KAEH4lYpDSjb+oK0KJJQ8hEnR
-         +seg==
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=CF712unz81CJNSLiABzsD2QXyoE0lfFVU2uiREElnQg=;
+        b=fcA46F/1yx7Zsjbm4E1CvJmMEE37QNZiDuTPYfFiCyw+dpXXaJZ47gjvzBwsjHcsmx
+         yNz045poPLf9RyNCRj9kWxkEf7/M7clxh7sZmQHsKpaiiRoweljtNiU8UDlS991iiSw4
+         n29oaACMn6NXXMIwV8y5adKSTo4V8aVKEUHBvOaCjPXMN7U5GkOxcMa4rirJxCywk+3+
+         cBER2lON900n1bg0Z14cO2ukIqes9gQ+c96JBDFgf7Pwyr7HmMlKuolKi2aJnxv9/ZEL
+         v5Z16Wd1OZVlPOV/6Wbm/dKMeX0rr1AvJLbppennBGwyWrDKIirkPbccW3CggRPYgVbN
+         1SFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TCsSb2P/;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f3-v6si14711715qvi.172.2018.07.09.10.27.16
+        by mx.google.com with ESMTPS id s85si72959ywg.522.2018.02.08.09.35.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 09 Jul 2018 10:27:16 -0700 (PDT)
+        Thu, 08 Feb 2018 09:35:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43591 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TCsSb2P/;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:56415 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fcZwR-00073W-UM
-	for alex.bennee@linaro.org; Mon, 09 Jul 2018 13:27:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42974)
+	id 1ejq6G-0005qP-5u
+	for alex.bennee@linaro.org; Thu, 08 Feb 2018 12:35:08 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50411)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fcZwK-00073G-Rk
-	for qemu-arm@nongnu.org; Mon, 09 Jul 2018 13:27:09 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1ejptp-00033s-To
+	for qemu-arm@nongnu.org; Thu, 08 Feb 2018 12:22:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fcZwF-0000oH-T7
-	for qemu-arm@nongnu.org; Mon, 09 Jul 2018 13:27:08 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54480 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fcZwF-0000ng-NG; Mon, 09 Jul 2018 13:27:03 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 1060987927;
-	Mon,  9 Jul 2018 17:27:03 +0000 (UTC)
-Received: from [10.36.116.40] (ovpn-116-40.ams2.redhat.com [10.36.116.40])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6EE7D2026D65;
-	Mon,  9 Jul 2018 17:26:57 +0000 (UTC)
-To: Auger Eric <eric.auger@redhat.com>, Andrew Jones <drjones@redhat.com>
-References: <1529500053-21704-1-git-send-email-eric.auger@redhat.com>
-	<1529500053-21704-6-git-send-email-eric.auger@redhat.com>
-	<20180703115507.nqmyo7c5q5lrevgt@kamzik.brq.redhat.com>
-	<31c24e33-8fe8-a3c0-0430-d2f503f10932@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <ef0b3c7a-4727-e76a-754b-fd5a5cf5ffdc@redhat.com>
-Date: Mon, 9 Jul 2018 19:26:52 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1ejptp-0006hO-4h
+	for qemu-arm@nongnu.org; Thu, 08 Feb 2018 12:22:17 -0500
+Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:37592)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1ejptj-0006e8-RH; Thu, 08 Feb 2018 12:22:11 -0500
+Received: by mail-qk0-x241.google.com with SMTP id c128so6581663qkb.4;
+	Thu, 08 Feb 2018 09:22:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=CF712unz81CJNSLiABzsD2QXyoE0lfFVU2uiREElnQg=;
+	b=TCsSb2P/jwE09fWEgcvwludukvjmJRFYBAXVLZc71mKhG1Z4Q024LPcmOK6Ajo7b9q
+	/MhyYleUTnmcmaWDl6vVQHv8/WRlr0OqjztHqqJrH8CObSYoWJvOFUDbz/b/GK69fWSb
+	8LBRf2+7tHznSCR1D78cjO52gYr3XfIC7iy8IkVoK650JHO21glMLyBIRta90vDcJTzZ
+	+7DqQg3wcZbEpLL3Q5xkAIP1DZujHTk7aQn9XBlN64IND4SiVzMDnc/o7b3WhMSKKyBD
+	cioFuYqqm4VRe/BghJGPJhCQJvmaEOa6khprMYLC5siRxSk6bjKOTGuWY2xgVIP/ZX5d
+	YZlQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=CF712unz81CJNSLiABzsD2QXyoE0lfFVU2uiREElnQg=;
+	b=ZWaYteIb2I2F0TlL3NeO4w2vCMb03q4f6a6QKoWkP+p6UGAzo6LA/BWOK7h8Ab3FYE
+	6jP47AWuJ8lB90/7xWgRmJucDRHM6W+T6M1nM77ftldDgCemNdRTFWkqyIBTYYCGOjsw
+	+zjgjY15Q28Ug4cUqdANewA1D1QRFrVfTjsW+j32QypVTuVcyaXgRSqZ4DiSTAUl6cvC
+	LaCh/YIt2+1Dl/vRbV9fZwlQmGUk2gIwyjshGME/INX9mKSapKiTOj9OhnB+RZmdtXJb
+	8ZSVAHHRo04nCqnUZeHOwznwFDtXZrVDQLgs8o4ARUjpDgH2X5AOvsJ4bykuvV8/0rvz
+	noQw==
+X-Gm-Message-State: APf1xPBUBCrnLNu4R8P9ncqOj4xVNua5II8MsOjW38irCPDXxHZiZKfS
+	7yyu3rMXvdxqTQN2OwoifAA=
+X-Received: by 10.55.217.65 with SMTP id u62mr2192421qki.44.1518110531342;
+	Thu, 08 Feb 2018 09:22:11 -0800 (PST)
+Received: from x1.local ([138.117.48.219])
+	by smtp.gmail.com with ESMTPSA id l66sm253466qkf.87.2018.02.08.09.22.09
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 08 Feb 2018 09:22:10 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Andrew Jeffery <andrew@aj.id.au>
+Date: Thu,  8 Feb 2018 14:22:00 -0300
+Message-Id: <20180208172202.9984-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.16.1
 MIME-Version: 1.0
-In-Reply-To: <31c24e33-8fe8-a3c0-0430-d2f503f10932@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.1]);
-	Mon, 09 Jul 2018 17:27:03 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
-	Mon, 09 Jul 2018 17:27:03 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 5/6] hw/arm/virt: support kvm_type
- property
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::241
+Subject: [Qemu-arm] [PATCH 0/2] aspeed: simplify using the 'unimplemented
+ device' for aspeed_soc.io
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -144,72 +111,23 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, suzuki.poulose@arm.com, agraf@suse.de,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	eric.auger.pro@gmail.com, dgilbert@redhat.com, david@gibson.dropbear.id.au
+Cc: qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pITeUeIuYX6O
+X-TUID: 7SCUgN0kAVWG
 
-On 03.07.2018 14:31, Auger Eric wrote:
-> Hi Drew,
-> 
-> On 07/03/2018 01:55 PM, Andrew Jones wrote:
->> On Wed, Jun 20, 2018 at 03:07:32PM +0200, Eric Auger wrote:
->>> The kvm-type property currently is used to pass
->>> a user parameter to KVM_CREATE_VM. This matches
->>> the way KVM/ARM expects to pass the max_vm_phys_shift
->>> parameter.
->>>
->>> This patch adds the support or the kvm-type property in
->>> machvirt and also implements the machine class kvm_type()
->>> callback so that it either returns the kvm-type value
->>> provided by the user or returns the max_vm_phys_shift
->>> exposed by KVM.
->>>
->>> for instance, the usespace can use the following option to
->>> instantiate a 42b IPA guest: -machine kvm-type=42
->>
->> 'kvm-type' is a very generic name. It looks like you're creating a KVM
->> VM of type 42 (which I assume is the ultimate KVM VM that answers the
->> meaning to Life, the Universe, and Everything), but it's not obvious
->> how it relates to physical address bits. Why not call this property
->> something like 'min_vm_phys_shift'? Notice the 'min' in the name,
->> because this is where the user is stating what the minimum number of
->> physical address bits required for the VM is. IIUC, if KVM supports
->> more, then it shouldn't be a problem.
-> 
-> Well I agree with you that using kvm-type=42 is not very nice.
-> 
-> On the other hand the current kernel API to pass the VM GPA address size
-> is though the KVM_CREATE_VM kvm_type argument.
-> 
-> in accel/kvm/kvm-all.c there is all the infrastructure to fetch the
-> generic machine kvm-type machine option and decode it into type, which
-> is passed to KVM_CREATE_VM.
-> 
-> "
->     kvm_type = qemu_opt_get(qemu_get_machine_opts(), "kvm-type");
->     if (mc->kvm_type) {
->         type = mc->kvm_type(ms, kvm_type);
->     } else if (kvm_type) {
->         ret = -EINVAL;
->         fprintf(stderr, "Invalid argument kvm-type=%s\n", kvm_type);
->         goto err;
->     }
-> 
->     do {
->         ret = kvm_ioctl(s, KVM_CREATE_VM, type);
->     } while (ret == -EINTR);
-> "
-> 
-> This infrastructure already is used in hw/ppc/spapr.c
+The diffstat prooves it :)
 
-FWIW: The ppc code uses "kvm-type" to select the KVM implementation in
-the kernel, since there are two implementations: kvm-pr (which is a
-trap-and-emulate implementation) and kvm-hv (which is a
-hardware-accelerated implementation). If you now introduce kvm-type for
-ARM, too, but with a completely different meaning, I think that could
-rather be confusing for the users...?
+Philippe Mathieu-Daudé (2):
+  hw/arm/aspeed: directly map the serial device to the system address space
+  hw/arm/aspeed: simplify using the 'unimplemented device' for aspeed_soc.io
 
- Thomas
+ include/hw/arm/aspeed_soc.h |  1 -
+ hw/arm/aspeed_soc.c         | 34 ++++------------------------------
+ 2 files changed, 4 insertions(+), 31 deletions(-)
+
+-- 
+2.16.1
+

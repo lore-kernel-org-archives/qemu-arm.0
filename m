@@ -1,102 +1,98 @@
-Received: by 10.28.71.27 with SMTP id u27csp11483wma;
-        Thu, 8 Feb 2018 14:42:44 -0800 (PST)
-X-Received: by 10.107.25.195 with SMTP id 186mr849801ioz.200.1518129764657;
-        Thu, 08 Feb 2018 14:42:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518129764; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp12398wma;
+        Thu, 8 Feb 2018 14:43:56 -0800 (PST)
+X-Received: by 10.101.78.200 with SMTP id w8mr265119pgq.123.1518129835894;
+        Thu, 08 Feb 2018 14:43:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518129835; cv=none;
         d=google.com; s=arc-20160816;
-        b=X2JnDGPBYdiNt/vqw7Kjy+17gmhWOyShFXhWSjmyDfHMN3nCWFAnWrUGLFPa+Cf1f6
-         93tGvZUfgWTdRFAspCbXEiTjY03T+BL9dFjT+M+OON0UrlBBG25ipM2BID9NuMy2qo+a
-         CzBraUsblokz3VzRVnjlHNkRBfRVs363QDqEDEna3k8LKLxFPElOLVmawLT0fs4TGiWy
-         WDZ47tsM+61ToSqVCgJuN+K+se5LJ07RFAt7PMX0CjZehgmuxEqHlhbQNuXeOffNw94L
-         KZxOlLLE4eIobDzfHi8Pp8oZAjBfHoWSe4ziUlHDzrauhggvvmchygKOVi4bWdHvzJwD
-         uYMQ==
+        b=Ub/5/zak3SbjtC6v93Ou/utoPhM5qXE2GOiuHjKyu2htAPWr/Id6D+dYeiQRl6uFk/
+         w+6647SXQBLed3QSEFtM/PWAnt8D5/FjL3VQr30o1cdULgm4SUz2hpKqxMEXkrIXlQvo
+         L1C30RINUQf4PhFrzjTjjaNbVKW2/c9hTPrprbDaphT0Ltk0UEZQHKao5bXNcWta4RLv
+         91FeZkkb9Xa/kO4QtBL6d+LN8lEldQ/iHDpc45NGFWEymsA7Wb+wP/YML6m8D3uU8js/
+         OqZQSC+EfxdIQMVhsXk8/uxa25BSTTFBoD1GjEkZm2f4oC0nh1L7aTBLPy/7UCRmUARO
+         mObw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature:arc-authentication-results;
-        bh=JUaNyyy2oqec/Xd59D5QNI+8ipH/NcxcMaEszchztPc=;
-        b=vv4PjzkVym02ks3abTiPc8jai3dX0ZYwgSK5SjEzKxFRbEWkp2geGxksc9nJQ5F2Vw
-         44xIpZF4VtOpUkjzzXMCbfChNPzYesMSmKuloJKMwbN5t+0diRxy2Y3aRk1fLRPJ4pxY
-         ElxrIurHJAU54LvdzRzo/5+baGrs7yG9Sak4xpYNp/nkP0hk1JhOyetJZ+5iGgaI9/0P
-         QuX4QzZ9OC/Gbp4Q4PFA/mX+hNDseraxHSfhTmidDyeKZruXHRJCcNFjN837sOXKrq8L
-         bJrIygElvA5EUZTl5/gcZsh4FUU9uWu42gfTleNbnibwQrQ76LnQ6sFIS6cUJDsikSLA
-         2BeA==
+        bh=KFisStMu4fh4IGNbTcTmVLdYGW2yyX6RFtWzu1dzUbQ=;
+        b=QcHvQ2vYu0rkfx7u/CRL4fGpyar8k4xUhNAu/UzXJd0Nzr0LN17K8Ep8or76Wea5BS
+         SFX6xbLBlpKTNUn6fbBOmagYG7kW48cArOk8OJt6VudkwWOCt7KT9/GXbkUSxm6kxxTl
+         p7tYKAhQJvWEN//IznFCzacluKePdV6RAgznDnjuBm/Ea5w2uy923AYysW8U+gDfFNHc
+         kbE8d92ltI4P7moQdBSPM3FcJaLo5YUynI21kZsCB6gi4rrmWXmqJUTqYVz+PnNQSTdA
+         wWskHLbz7PLarqxcXBJGY3RqtnBRlWOgsmy+t/gmKm4etP03FMfk5aRpQz6EKwbA4PDW
+         pnBw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jy/8qmMo;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bg97omE3;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id z198sor602096itb.85.2018.02.08.14.42.44
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id f2sor204883pgn.216.2018.02.08.14.43.55
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 08 Feb 2018 14:42:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Thu, 08 Feb 2018 14:43:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jy/8qmMo;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bg97omE3;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=JUaNyyy2oqec/Xd59D5QNI+8ipH/NcxcMaEszchztPc=;
-        b=jy/8qmMoIidgayaWZRHbdLzlVGxWaclKxx5RAHO4WMSE1Y22gz9VPV1t/cOyQKLIQk
-         1EPo5zrvN5Zb/7qJ2+oRS6CjQON5Bf/cLmq7A47HOvNeXLDJHvM3TTdfqFV6AeizM17u
-         R6wRY15xRAIApzU/+Ac2GJwRkGo+aDJBsn+qQ=
+        bh=KFisStMu4fh4IGNbTcTmVLdYGW2yyX6RFtWzu1dzUbQ=;
+        b=bg97omE3IAyHTwTAwFQ3jeBUzV0K1O1s4Ixt31HSWj5NHpCt5Gj/ota/lj/ml/l2Aq
+         OrCQw/FhWniV+EaQAPeKWw6Jc84f9g2u2PpqHyVrSNblN0qaZqTYqZybw7pYzJkNYOl0
+         PIntTnvpumLxujhLxz3b5BVxLS9EXc1mUS/LI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:message-id:date
          :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=JUaNyyy2oqec/Xd59D5QNI+8ipH/NcxcMaEszchztPc=;
-        b=umXgTq4KJRNjHCx5KSbx/ZVNtx71ZEfXft0ADWPvscDV6VXjxSIXzQJo+nBDJTdFJR
-         pXOW9wRSPEMRMlUQZBxCKHmju1U/JgfQV6tSFrflbuclwUX3wEDemPjeIOCTH70Nyqnu
-         i18cBHgrpM09KNYcZ0RKbRGH7oRsqMfGOJu5Wsj/0T4w33HbxR1/QG5SWAw/HSu50LwZ
-         Cm+4UlvxyJGWyY1lBmiQK5PATwPx1DcHPIJWAvdhx1ztAUqzCv7bNPzNUwYTB6+zYf02
-         yQmpkV8WeVO2tfx67O1QkZLJ81PZqWkU11tDogU0D3k2BDcfyhWm24GVnEhbOGBAK6qj
-         Fhhw==
-X-Gm-Message-State: APf1xPCUzSibQvI6H+HtM7RgZhvLSsf/bnQ5hxCFznIc4ZwxOZQZ/K6c
-	DwjE3SZLc1NPyHlyzl2GxQrRqy2KcUO5tQ==
-X-Google-Smtp-Source: AH8x227a2vef2s4AVUMOz7Tb2o7goCPeJf9paxorIBY9vxkwOsV7ubJ3TRSyJqeKg8RRRsY021bPgQ==
-X-Received: by 10.36.9.73 with SMTP id 70mr932879itm.133.1518129764295;
-        Thu, 08 Feb 2018 14:42:44 -0800 (PST)
+        bh=KFisStMu4fh4IGNbTcTmVLdYGW2yyX6RFtWzu1dzUbQ=;
+        b=orQ7bEt4hBqIpRJw7ojvCbfX1++uaHUV7ZVDVyTkoEz2IG17qqmcC/8Bi+riiYUgFc
+         wyZDzpFN9+6R1TZqoLAPvp9iCpeJYZJYXnjE4JSgySM/Ol4BO8ETd5r3AI4vP+/L58aW
+         iyaVV/UhFDXpQwi00KSb6T0+mC9S0s50kodnrBh3PPS4aroVJ4mEtIUp8ttqMCiw9XUh
+         MothRewjy3n8fu1uVEKMG1I/BLsqG5CmLqiFgVaSna3Dq8H/EipFBciPrPkU0/bI3YCf
+         qfRXhF9enewxTkkiKwUvi3b6iRcq/DvXv9iLDryI79XMx3OSAqlwGCtebI3jutqGTcSF
+         W8Dg==
+X-Gm-Message-State: APf1xPCp1Z5rzqEq6Kqc2FRZ0W2ymYKyCo/aNwLFKoH2Km/3X915B33O
+	y2u5gGN8syjJjpJXtYu12yUEWChitjPQVw==
+X-Google-Smtp-Source: AH8x224a9bD82kk65L8Ssn3yIQYf/oap0s5oRBCRzCQJQN42PZMHI9Cca353crBSKoAcADvs/fQgpw==
+X-Received: by 10.101.96.71 with SMTP id b7mr577400pgv.339.1518129835461;
+        Thu, 08 Feb 2018 14:43:55 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from cloudburst.twiddle.net (174-21-6-47.tukw.qwest.net. [174.21.6.47])
-        by smtp.gmail.com with ESMTPSA id h63sm769414ith.40.2018.02.08.14.42.42
+        by smtp.gmail.com with ESMTPSA id c19sm3431345pfk.22.2018.02.08.14.43.53
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 08 Feb 2018 14:42:43 -0800 (PST)
-Subject: Re: [Qemu-devel] [PATCH v2 21/32] arm/translate-a64: add FP16
- SCVTF/UCVFT to simd_two_reg_misc_fp16
+        Thu, 08 Feb 2018 14:43:54 -0800 (PST)
+Subject: Re: [Qemu-devel] [PATCH v2 22/32] arm/translate-a64: add FP16
+ FNEG/FABS to simd_two_reg_misc_fp16
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
 References: <20180208173157.24705-1-alex.bennee@linaro.org>
- <20180208173157.24705-22-alex.bennee@linaro.org>
+ <20180208173157.24705-23-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <dbbc1aa9-079f-044b-0af6-08082730f3c2@linaro.org>
-Date: Thu, 8 Feb 2018 14:42:41 -0800
+Message-ID: <23fab91d-1ca1-0c6c-800c-f7fe6a1c109e@linaro.org>
+Date: Thu, 8 Feb 2018 14:43:51 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
  Thunderbird/52.6.0
 MIME-Version: 1.0
-In-Reply-To: <20180208173157.24705-22-alex.bennee@linaro.org>
+In-Reply-To: <20180208173157.24705-23-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: OBWp7oUhDBqg
+X-TUID: FdPD0GBJr8KE
 
 On 02/08/2018 09:31 AM, Alex Bennée wrote:
-> I've re-factored the handle_simd_intfp_conv helper to properly handle
-> half-precision as well as call plain conversion helpers when we are
-> not doing fixed point conversion.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->  target/arm/helper.c        |   4 ++
->  target/arm/helper.h        |  10 ++++
->  target/arm/translate-a64.c | 121 +++++++++++++++++++++++++++++++++++----------
->  3 files changed, 108 insertions(+), 27 deletions(-)
+> +            case 0x2f: /* FABS */
+> +                gen_helper_advsimd_absh(tcg_res, tcg_op);
+> +                break;
+> +            case 0x6f: /* FNEG */
+> +                tcg_gen_xori_i32(tcg_res, tcg_op, 0x8000);
+> +                break;
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Why is ABS a function call while NEG a bit operation?
 
 
 r~

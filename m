@@ -1,124 +1,140 @@
-Received: by 10.28.71.27 with SMTP id u27csp2538426wma;
-        Thu, 8 Feb 2018 12:59:53 -0800 (PST)
-X-Received: by 10.107.46.145 with SMTP id u17mr663960iou.269.1518123593511;
-        Thu, 08 Feb 2018 12:59:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518123593; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp2581903wma;
+        Thu, 8 Feb 2018 13:49:42 -0800 (PST)
+X-Received: by 2002:a17:902:8c81:: with SMTP id t1-v6mr371033plo.363.1518126582673;
+        Thu, 08 Feb 2018 13:49:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518126582; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZYGi37YEp8w+Oh10oynQHAaSbjTKDe0Ito/IfpUC4WaZirAtUfUnPz02lYCoxOCRyh
-         TKG2O9Nm/tuHti849+eqJf5geBXMtpZ/1Yq4XXev/UwQrtdfFAFPBcz5BL9Xq+39dDFa
-         Rs0VMSq7uTBfRiUXTmjSfepDOzO0TAFyNO7vCpq2jAn6b1ki124ZZrqv3qfGHDyVtW8U
-         8BaxY+xj8P3sDI3RykIJv9UNCNLqWCLTIViPpWm+CI0ynd7PJgn1z/dKUNxBGYalrbQB
-         6/HLvljT9oZsT6QaqXwrDzwnIDJEQaHvJhN9eN43Jc8OBIpajSnRN3O0+Qk1jVDTcWCU
-         +Cww==
+        b=gdG+yf2X9KaWUk0xNCkXJLVR0mPVAKDgGeeXny3Y7+JNqHt4dAXTKvrgPAqOedDQP4
+         sW3XGMT3xCGCkgbyS9MOpLmYi5BCKfu8Ss/QJE4SFHh/0ku7/CptGkTTSLy2lR/fo/1+
+         pL3dawC14LlyPj+Tq33u6UZYDL5MHcvUaHCNDmjbt0JMZgLv5qarTao2EsSmUPA1aQyl
+         Ja/V5z4YmSbIoKoEtr6fbaYpTmOMm700CpxO8UX7ODwx6jOcydfQuoD66L2qFlafT9S6
+         Zp/QRYlv2t9uAdiPUFPqgB04zlPXwpZA6Ntbys4EspXn0GbmExxURcN0wtHCiMG1fewJ
+         GxEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature:arc-authentication-results;
-        bh=s3kVftuzELxk2nKOx/4EoJ6ZjaXmNG1Nu4Rd2n+xZak=;
-        b=knpJveOiGGcLIKgEQAcupUIJiBOAWNeksLSy4u5h5wFRHQ4nvTXcHzCfW+vaPziQwr
-         ped9rF6uwgYuaQM4rfUfnDAR1drMP7V702DyLeeZZF+eBU/f5S+2oeuFUoyBYWYq9ASy
-         jtDTxH1myy/f4sAmofXQz44dJhwYLRg/cLSfddGPRsNeq7w6Kb3kzpDUuTXF0WNu5lUY
-         WpPDR6arfdqQ1UN9t7qpUgkx92EzfOFxPd5BpR3bBjsgeBLK15ToSNo2sI05Gy6wVNYE
-         K1d6eB6YAuyh/++5ttU0qO3Cy4zruBX1IxfzSrsVqaL3xcXRrV+ZWK4A81ElotcvzOdm
-         Ptaw==
+        bh=xBxU+/oq8im58n10OSUf8ZKdQC6+L9N431q8a+5SDxc=;
+        b=1HVxiprGo7icQmCFdAxRPEEUXpah+Q/LfZNAnguq9RITXibpL+JWc7HINAjdpOL9IQ
+         mRt0X4KeGmm7gm5J9rVfqBLlY38SbUbBT5vvZIAMVj40cCIzy9yHeRsh9Bm1gikuzT1N
+         OAdzbjqQotgARnRAdTo/MDmLUT+sX76/9GTqkvItSW23cdg3yQzWYnnJL0VHQbr0ZEBG
+         Ne7VEGb7Bv/NV0n4pXaUAao77qzrfVXSxXL4NwDFcLQxfSB9o+YDuFJG2bhe4/FSo04/
+         2s3FCtpUSI3WIccEXwGrBo0mois4euQ+FKA4PxbYauom0MBTW/nAayStwkA5IZNgEXFx
+         4ATQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JNHvzHpp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AgwoSkK7;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id e89sor481595iod.120.2018.02.08.12.59.53
+        by mx.google.com with SMTPS id s13sor271608pfg.56.2018.02.08.13.49.42
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 08 Feb 2018 12:59:53 -0800 (PST)
+        Thu, 08 Feb 2018 13:49:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JNHvzHpp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AgwoSkK7;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=s3kVftuzELxk2nKOx/4EoJ6ZjaXmNG1Nu4Rd2n+xZak=;
-        b=JNHvzHppa5d1YrBl2uWhqzayNbtAuv4OpK0y7QtO0CnCoO2pkBCGuec2vCA96SXcyc
-         zmninKIuMElUSFEL/zV3vIBLP5LpYi4CtXecc+LXQxi9+tZRC0M5VlTYEWHf720VOvYv
-         2MC0fAv/VDXfVjTI0f3HEUmnf79UJitNrYuDA=
+        bh=xBxU+/oq8im58n10OSUf8ZKdQC6+L9N431q8a+5SDxc=;
+        b=AgwoSkK7G9SAkbW2bGWmRJHZUGeG4Ntcbr/gjyyYei1XYIYMunQ769lNz2bbKkWgz9
+         uBR480trRdxtWfOohNDdlfixmVh/Kuvi9GAIL3KkkzRagN32tEDIMbNGQgOTIv9tDY3W
+         Eq7G+TdR+uUuzb1T8EMNLlxJFKl44ZKVBJK0U=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:message-id:date
          :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=s3kVftuzELxk2nKOx/4EoJ6ZjaXmNG1Nu4Rd2n+xZak=;
-        b=tmbIXk0Eg/A4NMd8aVyq3kONJeWbMdQDMw0JbKnSxLfz02rLCQmIDHhoPanESjgQDa
-         PrAoRFUwfAVTV9MKsdvBk8+eTpPbFa5f5AL0ri6rWgLQ6fJiRv+/apt55R5Ba3300MXM
-         2p3vJC0/1jAODNsT6eUiaikGVXG1sNsPGhA3LNLmcd+iD6fU9uco/RvJbKdcFqUtUTfE
-         BH++HxIgSZmbjY5cIunYDfPiQkjiPi4F0fzXR2EDyg5rrHfDzr0C8CZ4rNwVgurm1cWC
-         Ki/3CxupU5ktilx0v+//qJZORrTzTE8ls5wcqk4QcNcl84sc32fJ4Y/1afPXzaD+C5/W
-         MrIg==
-X-Gm-Message-State: APf1xPAQoleABOFeO3Phk2QtdUDQJJWuXn1uirjnlt3ZT07lFD2Lotke
-	doVZEOlDhPZtQT5MNMq45FaYWzb1
-X-Google-Smtp-Source: AH8x227ndJcNlpmkytQv0pidsCW+cLU88Isr+Odmx9w7elpHvgzHYmv6Oq/SgkgyiMRCHJSrVhFYsg==
-X-Received: by 10.107.17.211 with SMTP id 80mr480919ior.11.1518123593093;
-        Thu, 08 Feb 2018 12:59:53 -0800 (PST)
+        bh=xBxU+/oq8im58n10OSUf8ZKdQC6+L9N431q8a+5SDxc=;
+        b=sueIl8u/nrNDc/WTQKEtUmVXX/GbrujYJq7T503QTiRfZKEbPhPRyF0AkfdmoLESg0
+         4Q+L/ef7GLnEHN/E8V3RKLXXefz/LDDfLpcu5lMr26HLWXfCnM6ZdDA8r9nu9ArNgQAi
+         FGQrsDcPVoBbk79gCzVDYRsfXG6OZFLxaLaMw4qrY0CCPDWTflyquYe4pSB6dIXZB+c4
+         L+MHenNrXiW0908W+/i3lwcNsp5tixxJELL9kQ784l9TuCJKXclOqgGFNdevm8YbvlZ+
+         YLzcRYh/f6NDiaVeYLsc+GOfa/i0lL3BqvoNbmBtl3ffD7PBbdqiUB2Nd6fMoNudumI6
+         1eRA==
+X-Gm-Message-State: APf1xPDiQGxqmA/FNt2Wzqxepl69+O26Dfz+MA12wa/MCFTvl1GZB19Q
+	ue7Xla75ZNAD12o55k7Q9fccA/rHNiapsg==
+X-Google-Smtp-Source: AH8x224MNEu3R0uqQYdbwcztREj87oMvsk6kaE3DJ7P8A/Xw2kmJ4eIha2mARUZiWjDSQa04ChJeGA==
+X-Received: by 10.98.130.193 with SMTP id w184mr443984pfd.111.1518126581985;
+        Thu, 08 Feb 2018 13:49:41 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from cloudburst.twiddle.net (174-21-6-47.tukw.qwest.net. [174.21.6.47])
-        by smtp.gmail.com with ESMTPSA id s99sm600354ioe.63.2018.02.08.12.59.51
+        by smtp.gmail.com with ESMTPSA id s23sm1670167pgn.26.2018.02.08.13.49.40
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 08 Feb 2018 12:59:52 -0800 (PST)
-Subject: Re: [Qemu-devel] [PATCH v2 13/32] arm/translate-a64: add FP16
- FR[ECP/SQRT]S to simd_three_reg_same_fp16
+        Thu, 08 Feb 2018 13:49:40 -0800 (PST)
+Subject: Re: [Qemu-devel] [PATCH v2 15/32] arm/translate-a64: add FP16
+ FMULX/MLS/FMLA to simd_indexed
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
 References: <20180208173157.24705-1-alex.bennee@linaro.org>
- <20180208173157.24705-14-alex.bennee@linaro.org>
+ <20180208173157.24705-16-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <bfbbc7e6-48cb-9ff5-aa27-8226527ad4db@linaro.org>
-Date: Thu, 8 Feb 2018 12:59:49 -0800
+Message-ID: <f9f6893b-3fd7-69ed-c7ae-c54d67897955@linaro.org>
+Date: Thu, 8 Feb 2018 13:49:39 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
  Thunderbird/52.6.0
 MIME-Version: 1.0
-In-Reply-To: <20180208173157.24705-14-alex.bennee@linaro.org>
+In-Reply-To: <20180208173157.24705-16-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: 9DsNrbOsXACT
+X-TUID: MeoLjcJurn5D
 
 On 02/08/2018 09:31 AM, Alex Bennée wrote:
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->  target/arm/helper-a64.c    | 34 ++++++++++++++++++++++++++++++++++
->  target/arm/helper-a64.h    |  2 ++
->  target/arm/translate-a64.c |  6 ++++++
->  3 files changed, 42 insertions(+)
+> The helpers use the new re-factored muladd support in SoftFloat for the 
+> float16 work.
 > 
-> diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-> index bdfcac111f..6358b42472 100644
-> --- a/target/arm/helper-a64.c
-> +++ b/target/arm/helper-a64.c
-> @@ -192,6 +192,10 @@ uint64_t HELPER(neon_cgt_f64)(float64 a, float64 b, void *fpstp)
->   * versions, these do a fully fused multiply-add or
->   * multiply-add-and-halve.
->   */
-> +#define float16_two make_float16(0x4000)
-> +#define float16_three make_float16(0x4200)
-> +#define float16_one_point_five make_float16(0x3e00)
-> +
->  #define float32_two make_float32(0x40000000)
->  #define float32_three make_float32(0x40400000)
->  #define float32_one_point_five make_float32(0x3fc00000)
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org> --- 
+> target/arm/translate-a64.c | 69 
+> ++++++++++++++++++++++++++++++++++++---------- 1 file changed, 54 
+> insertions(+), 15 deletions(-)
+> 
+> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c index 
+> 3a2be1e016..83a1fa3116 100644 --- a/target/arm/translate-a64.c +++ 
+> b/target/arm/translate-a64.c @@ -10804,7 +10804,7 @@ static void 
+> disas_simd_indexed(DisasContext *s, uint32_t insn) } /* fall through */
+> case 0x9: /* FMUL, FMULX */ -        if (!extract32(size, 1, 1)) { +
+> if (size == 1 || (size < 2 && !arm_dc_feature(s, ARM_FEATURE_V8_FP16))) { 
+> unallocated_encoding(s); return; } @@ -10816,18 +10816,30 @@ static void 
+> disas_simd_indexed(DisasContext *s, uint32_t insn) }
+> 
+> if (is_fp) { -        /* low bit of size indicates single/double */ - size =
+> extract32(size, 0, 1) ? 3 : 2; -        if (size == 2) { +        /* convert
+> insn encoded size to TCGMemOp size */ +        switch (size) { + case 0: /*
+> half-precision */ +            size = MO_16; +            index = h << 2 | l
+> << 1 | m; +            break;
 
-I think we should move these somewhere else, some header
-where we don't have to keep re-defining them in various
-files within target/arm.
+FWIW, the size check for the integer insns is done in this block (in the !is_fp
+side of course).  I think it makes sense to do the size check for FP insns down
+here too.  So, e.g.
 
-I know, for instance, that I need floatN_two in translate-sve.c.
+    if (is_fp) {
+        switch (size) {
+        case 2: /* single precision */
+            ...
+        case 3: /* double precision */
+            ...
+        case 0: /* half precision */
+            size = MO_16;
+            index = ...
+            is_fp16 = true;
+            if (arm_dc_feature(s, ARM_FEATURE_V8_FP16)) {
+                break;
+            }
+            /* fallthru */
+        default: /* unallocated */
+            unallocated_encoding(s);
+            return;
+        }
+    }
 
-Just putting them in softfloat.h is probably best.
-
-Otherwise,
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Just below, you have not updated the call to get_fpstatus_ptr.
+For the record, for fcmla I needed to introduce an "is_fp16" bool here.
+(Since of course a complex fp16 is 32-bits wide.)
 
 
 r~

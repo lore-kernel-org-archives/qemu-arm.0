@@ -1,107 +1,105 @@
-Received: by 10.223.159.74 with SMTP id f10csp627962wrg;
-        Sun, 3 Dec 2017 07:03:50 -0800 (PST)
-X-Received: by 10.159.196.141 with SMTP id c13mr12088292plo.186.1512313429984;
-        Sun, 03 Dec 2017 07:03:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1512313429; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp8826wma;
+        Thu, 8 Feb 2018 14:39:19 -0800 (PST)
+X-Received: by 10.107.11.85 with SMTP id v82mr869778ioi.28.1518129559347;
+        Thu, 08 Feb 2018 14:39:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518129559; cv=none;
         d=google.com; s=arc-20160816;
-        b=cyzrUUA1G7M4t/8FYHA3/g/z7YcuTxnbl/9kECYgQCYX5OvC7XFGdMWIZyppdQpRUH
-         kfNnQffEp1IFqcV9MY77tazkrzsNeXs7jcwcVCRvZS1XRc4vi1866g1nbec4Bh+uRiUl
-         9gYGlfMeEi15ElLvPewud990S0zen7GQWLiWKCv7eseGfL+VsLjeDclUkhoN/79cdKkk
-         PyREMgHicecns6TyEjInxBcn/qyP9/KhLbheQ8za6r2zshQ/i6UTpYe7u6pqfh3QFfsh
-         r3h5C6D9ZwFR3My6rLCf23/0sgONlxB+5pX6L6clLvw8EPdID1JsrJd8xxM5B/sxfLmE
-         UYdw==
+        b=C1eMMovSQVWmjoW9JWwj0ogy1rvV6iJNyQGs7nEBTWt17VY4ETLx7p/9FkIhGSHkWt
+         LJ8w1Tt+PXy+PvFQzCFDfriXLuKe6eEpNcyTgFPuuU3M71z1O2G7u2lph+erSGGbXitL
+         ySEl9XHv8Ggr8RmWU+y8aJPZ1wNJxam+CO7Eqcqr+U5kVVvXp9kf3qipKbksj6uB2cFz
+         lLNxcrjK4p927L8q1ly1MYoHYYm3mgC5e6qH8G1psgT6Ss6kKc+iWPOh7smdy8lCEG1A
+         FkwmIbw5e1IilpM4wdPhHAVUEgH3SVAb0To/e1WEBpBNqC8zd1jRj3p4w7opKhYBkzqK
+         XfOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature:arc-authentication-results;
-        bh=zyU14laGXVLC6QI9x6d53mGUkNrmsyJ1QrzT9nQuTK4=;
-        b=svFlMdGNb546GELsr/+3dMGqiw9q2pX1SPGGTlzLdxorn31bJgRubpT/K8ZvmlMx6+
-         Ki5hzZK3Q7bNKlAOLRUZnzVhOMn6wpcs+5WjZEbHUVweB0IC8Twy8uN3h3Llr8HFPjTY
-         54xhcex0Tlih96UKXx/86Y0zxXmEPAndinqhuUfMNMmgad9DysjHfuv7QYQhNZMu6jP6
-         MJD+8l0zoPJEg3AG6BDg+TqmiYd3jw+vwomJEVV1JvujHzovOrzaO1MJhUagtsX1LqeG
-         8hIQpRbeYe1Aky1nRQ7oX+zU3Xm43oIi5KKsUHTcA5Mbw9LV5NhJDpa/0umI1Hxj9Otg
-         4ueg==
+        bh=2VXikF8Xw6vJ+6+kgeSXHmVnUM5JTtt3Pyy2a7xEcKI=;
+        b=bH/ZH3Y5slHPVdYQ7uN3bBo69eBxMctqD+mTkdVCSLdkPoLwshWaGOhnksgEKq16ow
+         U4PvWvYlW1OGiiX/g7xbILTwsu6l5xHfqQbWBma222m6fbECAGesIul7ts/f0G6zkF0F
+         BLKZwWI4Eh0C9asNlh/8NXQzcsnMJRQXwQ96VdhJQP+r+LMMj2nTEsqfrxJeJTnMUbvB
+         Dh6TAeP+W0VZHWFklZUImr7teRDUlv/o95eUlrF+c5yOEZYCnQ+OrkmTwVAi2yHHZZBX
+         L7vnYqw6TzHR/OTJZxRjnl8gCKFjr+Q8R16m1js4CxdQEKNbHY1GV7Z7ft4NM0LamSFY
+         U7Xw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=G1mVNg/4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=O8iYNqwZ;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id v6sor2978710pfk.126.2017.12.03.07.03.49
+        by mx.google.com with SMTPS id l206sor655981ita.100.2018.02.08.14.39.19
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sun, 03 Dec 2017 07:03:49 -0800 (PST)
+        Thu, 08 Feb 2018 14:39:19 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=G1mVNg/4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=O8iYNqwZ;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=zyU14laGXVLC6QI9x6d53mGUkNrmsyJ1QrzT9nQuTK4=;
-        b=G1mVNg/4vKSIuKBkPFz3DvcpKca642pOFbo1uczaKXBHEAejPUcV2O9jQ0E7YZtwIq
-         6ynb+etTMVZmCFmjIMGEVv0tkR3dnygwU7evnziv/gDASp0d9GhnO/ru0qLw0SR2xaKo
-         E50UE8Htar681n27KN7Gh3c/MhFKs2+O65Xcs=
+        bh=2VXikF8Xw6vJ+6+kgeSXHmVnUM5JTtt3Pyy2a7xEcKI=;
+        b=O8iYNqwZov7/pyjs2chM/fDvy0F4M9RKjN5LtRCG4Jqn2dvtWIM4+ZCvsy6dpONJO+
+         KQNh4ReNODswydxIjI2DPvzy3o9EwBi67bPPweRNUkiNin+J0OWNeM01KBZ3DcEDDYAW
+         JhnrMBW3GzX1VF8fYcaTgB+uUMAvIWHXxJPzw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:message-id:date
          :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=zyU14laGXVLC6QI9x6d53mGUkNrmsyJ1QrzT9nQuTK4=;
-        b=TMA954hn4dtXUtJRjdMn2HTzZ6ruasrbTGyTOQPrrja2tPWlF+QrwlgU+hvXz5mvQb
-         9n3pa83K9TZrXySIB1QTNDZZjjVVOXBjFV7E8KYQSrrzydj/VZ8SgqnRJC1eVKrk94pZ
-         i/W1O+5SJPZLueYbEs2HfRHHU/ZI33M7qQSkfySwMHw63SAJl7IQNAiDUASMgxFiqGRr
-         +0ARQFo3R5GZ3YlLiOLMJ/nJU+I8xCtcbvDx13vdoIJNlt31Q4SCPb1fOEMl7xKWJ0k9
-         8aNsOaZRFltPMgxIxJSQ4ymuhTc+bUt5/Ic7VGdsrWfhADVULe+xRRP7ZYd1kXA1IDBb
-         xpIg==
-X-Gm-Message-State: AJaThX6b7ka/ILRKV0irk5zQ5lb/SaIX/LEJRKkDccpieK5pjU83MYXG
-	on2eSMV5z+/zuQocpz4gHA3lH4/rG8Y6MQ==
-X-Google-Smtp-Source: AGs4zMZDnhHjzL6Jck8EIHuUHUeyAVFkgv13nT+wzTKeZLRIV6r4lxHZ1jOYfvyILCI5F3HUF8Sahg==
-X-Received: by 10.98.253.3 with SMTP id p3mr16655840pfh.20.1512313429196;
-        Sun, 03 Dec 2017 07:03:49 -0800 (PST)
+        bh=2VXikF8Xw6vJ+6+kgeSXHmVnUM5JTtt3Pyy2a7xEcKI=;
+        b=qPExuYoqvPG6KL0M4l7qhp/yuwh1/AeCtTfEatdx9mJ6bMIvpeu74gvLblHS+CbmLo
+         N81+Wzut0nTWwzoYwfuIVF9+C62xLF6/7LfSgB6m7/o+4VWoufx2MXI1JDjNBSLoJgMZ
+         2IwvqqhsgZpf8Rq/AqDROyAqLioLNBJkXraPVd/EiQP9Wcw/LukCLheeceEBJz5d5l/n
+         gjSdqAqL7b3V7qCJ/F5emnMxStlBCvnAJOkifZX7Wk5awMgrg4lxTd3Wr/zN625FV6mT
+         r2Q4P9MhFXA4em5yxm4kqw1nqszmEZwuOJqhMli70MvnQ8/3Y1leAv4niKnhBNGWqWI3
+         nPlA==
+X-Gm-Message-State: APf1xPALZjATkb16wZcPkuUU/IkXoUV1ShXKlG8bj56gFMNZIM24BxMJ
+	uNFrF5EGFyDRZBLLbhaJvb0WjxaH/LlKUQ==
+X-Google-Smtp-Source: AH8x225o2SsJzSV0VGE1ZtEEiQasNAjR9q/SUWwZjncW+BHHI8ZkA9xtz/NijlBouTAqWTIOSNDhVA==
+X-Received: by 10.36.178.26 with SMTP id u26mr1022974ite.4.1518129558851;
+        Thu, 08 Feb 2018 14:39:18 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
-Received: from cloudburst.twiddle.net (97-126-111-33.tukw.qwest.net. [97.126.111.33])
-        by smtp.gmail.com with ESMTPSA id t4sm21731373pfj.56.2017.12.03.07.03.47
+Received: from cloudburst.twiddle.net (174-21-6-47.tukw.qwest.net. [174.21.6.47])
+        by smtp.gmail.com with ESMTPSA id m16sm803349itm.12.2018.02.08.14.39.17
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 03 Dec 2017 07:03:48 -0800 (PST)
-Subject: Re: [PATCH 2/7] target/arm: Allow explicit writes to CONTROL.SPSEL in
- Handler mode
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <1512153879-5291-1-git-send-email-peter.maydell@linaro.org>
- <1512153879-5291-3-git-send-email-peter.maydell@linaro.org>
+        Thu, 08 Feb 2018 14:39:17 -0800 (PST)
+Subject: Re: [Qemu-devel] [PATCH v2 20/32] arm/translate-a64: add FP16 FCMxx
+ (zero) to simd_two_reg_misc_fp16
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+References: <20180208173157.24705-1-alex.bennee@linaro.org>
+ <20180208173157.24705-21-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <ff7a4f36-1892-4e1b-3ab3-7282fb8cbdf7@linaro.org>
-Date: Sun, 3 Dec 2017 07:03:46 -0800
+Message-ID: <d6f98bba-04ca-80f6-1fad-cfed416f4127@linaro.org>
+Date: Thu, 8 Feb 2018 14:39:15 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.4.0
+ Thunderbird/52.6.0
 MIME-Version: 1.0
-In-Reply-To: <1512153879-5291-3-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <20180208173157.24705-21-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: 0ddO6edvgBIP
+Content-Transfer-Encoding: 8bit
+X-TUID: 7/XrJGMrBo/G
 
-On 12/01/2017 10:44 AM, Peter Maydell wrote:
-> In ARMv7M the CPU ignores explicit writes to CONTROL.SPSEL
-> in Handler mode. In v8M the behaviour is slightly different:
-> writes to the bit are permitted but will have no effect.
-> 
-> We've already done the hard work to handle the value in
-> CONTROL.SPSEL being out of sync with what stack pointer is
-> actually in use, so all we need to do to fix this last loose
-> end is to update the condition we use to guard whether we
-> call write_v7m_control_spsel() on the register write.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  target/arm/helper.c | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
+On 02/08/2018 09:31 AM, Alex Bennée wrote:
+> +            maxpasses = hp ? (is_q ? 8 : 4) : (is_q ? 4 : 2);
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+  (8 << is_q) >> size
+
+?
+
+
+> +            read_vec_element_i32(s, tcg_op, rn, pass, hp ? MO_16 : MO_32);
+
+You already have size.
+
+> +        return;
+> +        break;
+
+Unreachable break.
 
 
 r~

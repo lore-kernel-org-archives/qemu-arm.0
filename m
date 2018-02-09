@@ -1,116 +1,107 @@
-Received: by 10.28.71.27 with SMTP id u27csp656268wma;
-        Fri, 9 Feb 2018 00:56:28 -0800 (PST)
-X-Google-Smtp-Source: AH8x225jPVJ8ZEVplhTeOGxuH4lJfZFz3VFneHle3NI2vbJJagf4C1n93z2argHVLe5rW/m8dPpA
-X-Received: by 10.129.103.87 with SMTP id b84mr1373547ywc.470.1518166588436;
-        Fri, 09 Feb 2018 00:56:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518166588; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp657618wma;
+        Fri, 9 Feb 2018 00:58:23 -0800 (PST)
+X-Google-Smtp-Source: AH8x224jTpnd1vALb8XuHun+v4J3rRleypR10a9wyMZqzX+nejO+vgrKE9EHkCRrsvhxpnd7Uiuo
+X-Received: by 10.129.4.87 with SMTP id 84mr1346705ywe.36.1518166703644;
+        Fri, 09 Feb 2018 00:58:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518166703; cv=none;
         d=google.com; s=arc-20160816;
-        b=UOwrSkuPOMtN3HCpL+/nCeazmieyjlbXUPrQ8UtxB1Jzg+zU7G5nEi6mA8Fc7t1RQ9
-         Niu3J4iukFXO2cM9/CRY2Inj0LSlXeIoyqS7W4asV1C4bqQavtV5OBm9KLhM+QmWr0Fu
-         rLIewwutg2W1jrOJWuS0NQwnuhH+nHkuwddROv9FYSorCpt0/7BPvJIH5jNf1i9P7qBK
-         TgxYVdJlWULahdNe5UERJeh9GODOQG0eEPt6aj7QDfxTYxxLEXUdxpqW0rhsdoJ/OUYj
-         8fV2yvC84H61OxHfPXBfLqaUkHEoZKEG/IDNTln8fqBonFTa3kXaBeV4mJwTPbd1isTb
-         jBzw==
+        b=bX9E1tnuEOP4WrDEL5SpVbRNSHks1w3S9d6XbqXYQ1edqSIodrxQbShiuieqyzKlCy
+         Ed8jgwbpUjVbZAhCz8+VZlQUDvpUjMshihEZEKUs5fwXQQzeBYjwk858c2DEIO2CCclY
+         9dSM+NdzKersqf1dWunKnKXzrTkHYm70tXGeAhMtHYeFFbYW8DZ/SZuNUmjZPvxuNUfm
+         nNpSaiWSgWMGqslBuVt4iZ2UDYgvXnEV7pW+cE4Dm56jRZOg7NKV4Ja+kyWWMXHmpHrV
+         0gpXFTWq6H3bTFkBSwlpCoHNUynEC7ovEe2N4RpBqFDB03qCp9sZO8PM0/iNbxyOAAtB
+         xVkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=7CYHqgeJEXnPwF94W6/TGWtXl9bZs2dNu/O10a3xOWc=;
-        b=zG2t1mPTbo93MkLKI9CeweVBntJZwvi3xVkV8bullMmC1UrPAg7sWoIroGrvH5UIdi
-         a73m2jeVp9f5aHKjRzaf2Z6uuI5U3UZVuwdWHxAoPiYx0hvmwJGVo81KmLq1jj9hv4rv
-         X0O+Bn6J9RAdRL3QEBYguHIWRzD9hzrARqXZrSJ6BiQMb57gKk9rIrwVdtTa+2JqEMoo
-         Ls/9p4LgDVj+dbdZJvPDDUrwjfNB6kWqo38BW3q1oH9Ncg68kH5yD1r4tVQLmvMrjwKp
-         96ERJocgozWVmzJZBpGzBA+wKN0nq23lKMpMO9jwCCjQ1TQvDv31jldFzWBfc4mOHddV
-         2JlQ==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=nrFIXok//Li2LqHTdjYg1uQcj9Dw5eZxM/i+HXDwNpg=;
+        b=IoYfhxWOpsQAmYLOlcDOO2c6bIVewHuPXcStoTxnxz1SaTHv644kDnCXIHGYXbBPGH
+         2Wdi7JuBrFEXxJdkCM9yHP+fyOxS84dUf/RaF73LDUgEFSQ7qM7jyHFHoE8bwJ14hCro
+         6O4uKKz/VwZirXwuwr2HmFfrQ+y0rmV0ppu9JkWeP47/A6ggIGkpBWJhmaS53J2cVMC5
+         3+ViYJhJ8jtPKde6ItRBz1KZgUJLliouaoBTKxFnZWhclVslspd5Gdxc3sSj5Te+PNs8
+         /dZUHTYwWgeahe4ciQBAnp1VeifDxyReUoBIAfdjd94VRqrFglMSJdOs3CarsGPdaGya
+         TEjA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oCA6Pv9F;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Vm7j28ug;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x2si343588ywi.112.2018.02.09.00.56.28
+        by mx.google.com with ESMTPS id y3si328965ybm.35.2018.02.09.00.58.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 09 Feb 2018 00:56:28 -0800 (PST)
+        Fri, 09 Feb 2018 00:58:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oCA6Pv9F;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Vm7j28ug;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:50112 helo=lists.gnu.org)
+Received: from localhost ([::1]:50273 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ek4Tr-0000EV-NE
-	for alex.bennee@linaro.org; Fri, 09 Feb 2018 03:56:27 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60723)
+	id 1ek4Vj-0001OI-1A
+	for alex.bennee@linaro.org; Fri, 09 Feb 2018 03:58:23 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33174)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ek4Tf-0000Ck-Uj
-	for qemu-arm@nongnu.org; Fri, 09 Feb 2018 03:56:17 -0500
+	id 1ek4VT-0001ML-Gs
+	for qemu-arm@nongnu.org; Fri, 09 Feb 2018 03:58:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ek4Te-0004aW-Vq
-	for qemu-arm@nongnu.org; Fri, 09 Feb 2018 03:56:16 -0500
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:44036)
+	id 1ek4VS-0006EA-H2
+	for qemu-arm@nongnu.org; Fri, 09 Feb 2018 03:58:07 -0500
+Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:39593)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ek4TZ-0004Xm-PY; Fri, 09 Feb 2018 03:56:09 -0500
-Received: by mail-qk0-x241.google.com with SMTP id n188so9096924qkn.11;
-	Fri, 09 Feb 2018 00:56:09 -0800 (PST)
+	id 1ek4VQ-0006CV-5a; Fri, 09 Feb 2018 03:58:04 -0500
+Received: by mail-qk0-x244.google.com with SMTP id d72so9098447qkc.6;
+	Fri, 09 Feb 2018 00:58:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=7CYHqgeJEXnPwF94W6/TGWtXl9bZs2dNu/O10a3xOWc=;
-	b=oCA6Pv9FVhHRIr1jU8DB+D9bYcp4fAlQTc1t/DfHr2knu6J06W+sL1HyqIyqKloRAO
-	WVLowibJ4b2yuZJWg1Asd+CqnL95lSm2YdbmhZKIj1idt05ErdjGLH6NDI8xIoP41jVa
-	OpDjDbfk6OHo3HDdA/sJU9nkmalKc+e2X6CMdB1oldpq40+K0I76rbJYokztj1xe0l9w
-	RCOnUdyL64bqOBH44zmkTVfsDWgJCds+fyOKTGMLkm1KEuaWMnolWQ9PgGzr3zidAM2K
-	vgOTf/+aX6/UZ6AkKLIXADiDQsEehqm0yYl1pRV+550/HmkbTAqJUY82z3HqLarMB6V6
-	oMkw==
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=nrFIXok//Li2LqHTdjYg1uQcj9Dw5eZxM/i+HXDwNpg=;
+	b=Vm7j28ugNMH1QK59A/J4i6fL0hEwZnNEmhigSDdcpAfm5RkggTPcUp+VGa6KwHGElq
+	qelk2oSbeiX7Pvg7VcQ9CYSEPZT1NDDKss/a7Wsh8kPHwB8d8ueILxJRs/PkFwUpLdZv
+	T90ZgwMx/NjiWE1HMSmvS/yfzoayGhtlFtTxqqwlIi8YnyVCBQJBj7hnmVa4zBjwWRWI
+	nmSXap3/KBeHbfgSNY7GlJdRyBehVeVUjEZKyZOjeXX/yBcfanfScxton14fKsfafVAt
+	ixHS7e3U/HS6m1HmhZ/1Gsz1vTGg9v6GYRXMx1o7NjP5B7f5oOoVV4Z1AVKKlGfxZ6zQ
+	5/vg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=7CYHqgeJEXnPwF94W6/TGWtXl9bZs2dNu/O10a3xOWc=;
-	b=RYpbTWTAKG5o/ppJgrBaaz5VkHX1rsf8PQyZsyuJdtc99z8UkafS3CExfHrKIy/oL+
-	PieFaykWTMmOLzp2Ev664j1DhoLtjEDWMsxnTmpcXrcphmcA1LpDuH2pXEu5UmerlyNt
-	1LTzzNVXIfaUwyLJaWEl3Kk4npaHQCAcg7pa/9OD2OnkAfc0aYB7tAoO/hcA3bPPhHUv
-	4u1LW4M7k4YiivEgS/suM+niUMHB9NycZP763VIDsFS5JmDftxRePiaHQZK8nI0nxb4m
-	pTwky+ei1m+87R4QQ7eGzlSQQW7Lm9hi1QRQWzyOyw8TIe2z95H7pTBmmHsqKaMKWZnr
-	LbTQ==
-X-Gm-Message-State: APf1xPB1iYukmVdulGfn29vvUxAjQ2wRCyDfVfUa/w2mm3DT8PlbWQul
-	F3+dMxcXWF/Il4C6kCa3FnaA0MVl
-X-Received: by 10.55.186.134 with SMTP id k128mr2977818qkf.23.1518166568937;
-	Fri, 09 Feb 2018 00:56:08 -0800 (PST)
-Received: from [192.168.1.11] ([138.117.48.219])
-	by smtp.gmail.com with ESMTPSA id
-	g64sm1347522qtd.17.2018.02.09.00.56.06
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=nrFIXok//Li2LqHTdjYg1uQcj9Dw5eZxM/i+HXDwNpg=;
+	b=EH3dfRGVjrzgeXj/pMEJCX3/3w0rco6fShySR7BZRNcs31q313V+0PB3OK99HtCrZC
+	5ClzXoIvVlP6l4jTggX3Td9nE8V7KMmvjX+LvuqEVw83b7FSp6gjrvewgEgjr1VzsVXO
+	2xZAtYlEnQrd0Wq5afGtTI3MwTWb1iRpS/Jp+ZUz401pyygr9XszvoEkk8L7fk2QbWWv
+	moFsmtEFvoyrPGz9ndVWLFsl8B58+mduicrlFFl4Ct/AgKWPgypGV9G7jt+SOdFVsCY6
+	dJDfElss6szp5NB/wjD8cwHCq2RHoMOWrTpBlkiM/yAkMF4hcJXxJrqezpF+M2RDLHe/
+	+RcQ==
+X-Gm-Message-State: APf1xPABJQjNQcgQJ8bRodbGQnxHE/pbtQHuin2H720SPqkCeOU4zkRb
+	16uswpraFpflAGYSfoP/AK8=
+X-Received: by 10.55.64.75 with SMTP id n72mr2888247qka.354.1518166683569;
+	Fri, 09 Feb 2018 00:58:03 -0800 (PST)
+Received: from x1.local ([138.117.48.219]) by smtp.gmail.com with ESMTPSA id
+	h195sm1363819qke.66.2018.02.09.00.58.00
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 09 Feb 2018 00:56:08 -0800 (PST)
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
-	Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>
-References: <20180208172202.9984-1-f4bug@amsat.org>
-	<20180208172202.9984-3-f4bug@amsat.org>
-	<21f7b55b-72d3-5726-ef71-032bac16e6c8@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <a6280f03-22f5-7847-d616-14a384665261@amsat.org>
-Date: Fri, 9 Feb 2018 05:56:05 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.2
+	Fri, 09 Feb 2018 00:58:02 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Andrew Jeffery <andrew@aj.id.au>
+Date: Fri,  9 Feb 2018 05:57:54 -0300
+Message-Id: <20180209085755.30414-2-f4bug@amsat.org>
+X-Mailer: git-send-email 2.16.1
+In-Reply-To: <20180209085755.30414-1-f4bug@amsat.org>
+References: <20180209085755.30414-1-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <21f7b55b-72d3-5726-ef71-032bac16e6c8@kaod.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
-Subject: Re: [Qemu-arm] [PATCH 2/2] hw/arm/aspeed: simplify using the
- 'unimplemented device' for aspeed_soc.io
+X-Received-From: 2607:f8b0:400d:c09::244
+Subject: [Qemu-arm] [PATCH v2 1/2] hw/arm/aspeed: directly map the serial
+ device to the system address space
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -122,104 +113,47 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1p2OFenb8YfZ
+X-TUID: wKZ9uM47LmDP
 
-On 02/08/2018 03:14 PM, Cédric Le Goater wrote:
-> On 02/08/2018 06:22 PM, Philippe Mathieu-Daudé wrote:
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> 
-> This looks like a good idea. (Have you actually tried it ? 
-> just asking)
+(qemu) info mtree
+ address-space: cpu-memory-0
+   0000000000000000-ffffffffffffffff (prio 0, i/o): system
+     0000000000000000-0000000007ffffff (prio 0, rom): aspeed.boot_rom
+     000000001e600000-000000001e7fffff (prio -1, i/o): aspeed_soc.io
+-      000000001e784000-000000001e78401f (prio 0, i/o): serial
+     000000001e620000-000000001e6200ff (prio 0, i/o): aspeed.smc.ast2500-fmc
+     000000001e630000-000000001e6300ff (prio 0, i/o): aspeed.smc.ast2500-spi1
+     [...]
+     000000001e720000-000000001e728fff (prio 0, ram): aspeed.sram
+     000000001e782000-000000001e782fff (prio 0, i/o): aspeed.timer
++    000000001e784000-000000001e78401f (prio 0, i/o): serial
+     000000001e785000-000000001e78501f (prio 0, i/o): aspeed.wdt
+     000000001e785020-000000001e78503f (prio 0, i/o): aspeed.wdt
 
-v1 obviously not :S v2 yes!
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/arm/aspeed_soc.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-> 
-> Reviewed-by: Cédric Le Goater <clg@kaod.org>
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index c83b7e207b..2a5d041b3b 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -257,7 +257,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+     /* UART - attach an 8250 to the IO space as our UART5 */
+     if (serial_hds[0]) {
+         qemu_irq uart5 = qdev_get_gpio_in(DEVICE(&s->vic), uart_irqs[4]);
+-        serial_mm_init(&s->iomem, ASPEED_SOC_UART_5_BASE, 2,
++        serial_mm_init(get_system_memory(),
++                       ASPEED_SOC_IOMEM_BASE + ASPEED_SOC_UART_5_BASE, 2,
+                        uart5, 38400, serial_hds[0], DEVICE_LITTLE_ENDIAN);
+     }
+ 
+-- 
+2.16.1
 
-Thanks :)
-
-> 
-> Thanks,
-> 
-> C. 
-> 
->> ---
->>  include/hw/arm/aspeed_soc.h |  1 -
->>  hw/arm/aspeed_soc.c         | 32 +++-----------------------------
->>  2 files changed, 3 insertions(+), 30 deletions(-)
->>
->> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
->> index f26914a2b9..11ec0179db 100644
->> --- a/include/hw/arm/aspeed_soc.h
->> +++ b/include/hw/arm/aspeed_soc.h
->> @@ -31,7 +31,6 @@ typedef struct AspeedSoCState {
->>  
->>      /*< public >*/
->>      ARMCPU cpu;
->> -    MemoryRegion iomem;
->>      MemoryRegion sram;
->>      AspeedVICState vic;
->>      AspeedTimerCtrlState timerctrl;
->> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
->> index a786750e14..3d21128d47 100644
->> --- a/hw/arm/aspeed_soc.c
->> +++ b/hw/arm/aspeed_soc.c
->> @@ -15,6 +15,7 @@
->>  #include "qemu-common.h"
->>  #include "cpu.h"
->>  #include "exec/address-spaces.h"
->> +#include "hw/misc/unimp.h"
->>  #include "hw/arm/aspeed_soc.h"
->>  #include "hw/char/serial.h"
->>  #include "qemu/log.h"
->> @@ -99,31 +100,6 @@ static const AspeedSoCInfo aspeed_socs[] = {
->>      },
->>  };
->>  
->> -/*
->> - * IO handlers: simply catch any reads/writes to IO addresses that aren't
->> - * handled by a device mapping.
->> - */
->> -
->> -static uint64_t aspeed_soc_io_read(void *p, hwaddr offset, unsigned size)
->> -{
->> -    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " [%u]\n",
->> -                  __func__, offset, size);
->> -    return 0;
->> -}
->> -
->> -static void aspeed_soc_io_write(void *opaque, hwaddr offset, uint64_t value,
->> -                unsigned size)
->> -{
->> -    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " <- 0x%" PRIx64 " [%u]\n",
->> -                  __func__, offset, value, size);
->> -}
->> -
->> -static const MemoryRegionOps aspeed_soc_io_ops = {
->> -    .read = aspeed_soc_io_read,
->> -    .write = aspeed_soc_io_write,
->> -    .endianness = DEVICE_LITTLE_ENDIAN,
->> -};
->> -
->>  static void aspeed_soc_init(Object *obj)
->>  {
->>      AspeedSoCState *s = ASPEED_SOC(obj);
->> @@ -199,10 +175,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->>      Error *err = NULL, *local_err = NULL;
->>  
->>      /* IO space */
->> -    memory_region_init_io(&s->iomem, NULL, &aspeed_soc_io_ops, NULL,
->> -            "aspeed_soc.io", ASPEED_SOC_IOMEM_SIZE);
->> -    memory_region_add_subregion_overlap(get_system_memory(),
->> -                                        ASPEED_SOC_IOMEM_BASE, &s->iomem, -1);
->> +    create_unimplemented_device("aspeed_soc.io",
->> +                                ASPEED_SOC_IOMEM_BASE, ASPEED_SOC_IOMEM_SIZE);
->>  
->>      /* CPU */
->>      object_property_set_bool(OBJECT(&s->cpu), true, "realized", &err);
->>
-> 
-> 

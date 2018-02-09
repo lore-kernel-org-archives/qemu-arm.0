@@ -1,100 +1,95 @@
-Received: by 10.28.71.155 with SMTP id m27csp758189wmi;
-        Fri, 13 Apr 2018 06:28:28 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx49VJjoXA1fSc7eBRwkbQfdBril7y509nbnhzhnONquwGK1I4qT4u26whUApTjRogbFRfmhY
-X-Received: by 10.200.22.50 with SMTP id p47mr3092274qtj.135.1523626108081;
-        Fri, 13 Apr 2018 06:28:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523626108; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp78339wma;
+        Thu, 8 Feb 2018 16:08:26 -0800 (PST)
+X-Google-Smtp-Source: AH8x2246ydqZb3O4nBgboGLpEmd4nUETj/iyZEI0w4H9DX8dK/77A1Wce+sSvpnaWrAwtXDRfGvY
+X-Received: by 10.37.185.140 with SMTP id r12mr569804ybg.283.1518134905921;
+        Thu, 08 Feb 2018 16:08:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518134905; cv=none;
         d=google.com; s=arc-20160816;
-        b=0Sa+VC2gzmUn/yLhIhMFnBcMeSbZlh6FUiqfnZPZ+yKu0tsKgc88WQ7NM3hRfGk5Ml
-         KCMEIwtX9n56UEyjgH4Nc7whcTI3E/5z/CWrUcNdfAR26Ws2PhUBKGuJUdwI/9Yqc826
-         DpnxlYkHUzAcF1lb4av3ZHqH10AstBwZOsygDhqWUaGSOYvTxN+ytsMgIi+aU1518QTq
-         SmQcOAUzbwSDiKBqNgBsdY1kWFCaCGjgHdckz2WflMlLD+y3WjFD08z7lJ4nsBk+gzmL
-         +JfKRYIdgsor9FNKH3YUaZn+isg/t6FLql7zIT7g+kPWR8veaumHhjRkA3lc4c97HluQ
-         oGMQ==
+        b=QL1bbzfaJ6yDHu1ZRJ2z/JV53x1pddF0MQNCsrTnzscgzKiY3xfoPfBOoRv0K7UhpM
+         aBzJ9Zd3HIUMXEvvXrFp7A5B3/uLEzomqkqSb4oPFcbWBHsXQ7QLrs6rmml9fMyGmm90
+         l87UvJ3dgUWHE0KhmMMGetdW+nwF5QDk0RRC0f7RN1FGew09/jRIQ6Xz2utKiQLJ3+si
+         2dnlYeB+SU71zM2vBfGAPvRvxh4AXAM04Bqofg6NxsuXagOL3yWYjFPEI2a4LP/3CHpm
+         LocJfg/2vpUyq1brbFxmNoQSE9UmnwXO0HKH71u7Qg6/Rh1KJqe6gsDmOmG4GKitfW6Z
+         5n8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
          :arc-authentication-results;
-        bh=dKRdVifpAVbKu5azIk5AwWokXQgwgONMOZ9COXFuysY=;
-        b=0VlX3wRhPUCbJDkwzyH6dg/U/TfuC3B391kbj4c1ZyWARpF6NthRxH8P9D1Z51LbIz
-         eni30nQY+1O8RuBoxZhGlkU4nEsoMrn98JmGAfjuwKAolwNPdji9jTTRPygabeb8ljJ3
-         3rmBgEj8Xe0V25PBZw2wcU85RPJISnDT6UpugX8Kv9V23ZBkRGCAPgLp/shrvxqEuKM8
-         q/RWBtXcLRQit+d8J4EIoyxErAg/zhS36oKOMtHjOIppMQVTjPkpM0du/0DoauQ/VCvp
-         39VH/fQRAHjj1L3psI/noYaNQC0dPD6V50AscLWLyLvaedmxSLgTmFp/f8cBPRnNPvz6
-         O5Xg==
+        bh=zfIRj/tmmogjmjieGbzDAgnNkbxDKtTi9kgrjBvYKzQ=;
+        b=Mj6+ykK5Mkp4zWOiZl2bZzowY9jMG6BSHiFrEfIpf4zJ0HhPs9aqg4QAkifdpH519a
+         uhkrHH/GITLmAahOeK1fQPMlKI5ZluIy8sJVYaFlbATmJdnYHPZcFVGpHkd504uuq6Sn
+         h/ud+oK0M5fq5rOP03P7MW6HsEpis8vz4OfLoekNas2H1VHMVKqpwwYwssdqDiSpro7y
+         oIISmms3VEzTpqYw7rNM24LELmFluYT9WmP+fNylusrBCCkEEfc0UduktjA2Bd3FSm1P
+         yey6xXPMdPbE25RvnWwRMM77Ad/siKyjhc5iXN2uVLplX6FD/kwEDhmH6MNzJvYyr0ok
+         +GCw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=dyJGpdjS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s25si559391qts.193.2018.04.13.06.28.27
+        by mx.google.com with ESMTPS id u73si196640ywu.224.2018.02.08.16.08.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 13 Apr 2018 06:28:28 -0700 (PDT)
+        Thu, 08 Feb 2018 16:08:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=dyJGpdjS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53622 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:38813 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f6ykd-0002yU-Fn
-	for alex.bennee@linaro.org; Fri, 13 Apr 2018 09:28:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49965)
+	id 1ejwEr-0000oi-9Z
+	for alex.bennee@linaro.org; Thu, 08 Feb 2018 19:08:25 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38489)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1f6ykS-0002wS-HW
-	for qemu-arm@nongnu.org; Fri, 13 Apr 2018 09:28:17 -0400
+	(envelope-from <mst@redhat.com>) id 1ejwEi-0000mM-0z
+	for qemu-arm@nongnu.org; Thu, 08 Feb 2018 19:08:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1f6ykR-0004SA-0P
-	for qemu-arm@nongnu.org; Fri, 13 Apr 2018 09:28:16 -0400
-Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:44068)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1f6ykQ-0004Ra-RV
-	for qemu-arm@nongnu.org; Fri, 13 Apr 2018 09:28:14 -0400
-Received: by mail-oi0-x244.google.com with SMTP id j143-v6so8346339oih.11
-	for <qemu-arm@nongnu.org>; Fri, 13 Apr 2018 06:28:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=dKRdVifpAVbKu5azIk5AwWokXQgwgONMOZ9COXFuysY=;
-	b=dyJGpdjSohDI5qn9r51tjL5HVMIcgZivVQtVHyAB/0uEDKybIO5bvlOMrAbROvY+Dx
-	Xhl9fdMAVjaAWOCJIYIpfp9esQJUSRBMV/R6v8z2oqUwgtg+ph5WHfgVinHmjnuwz/qP
-	UuQsxdJKN6FgHXsN5Y9dj6ph586ou0MSuJKj0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=dKRdVifpAVbKu5azIk5AwWokXQgwgONMOZ9COXFuysY=;
-	b=abbvS7u99ssNCp43CMf60/oHr8aG4K9kE/hMD9KcWuulAwe2M3M5wnRr62XvnSQbNd
-	KwBEEy9a+Vjnej3BRGyqGUOe3kmnY4dFV5Gwp/BBUfJkZHVpfllMm7EZfe6QJgfw+tMP
-	bXyvwL085dJmU2VaXDMRugncO3GiTrjNSXs9Avp6IzdzNuv7KfjNvMcf0bf5/TQKUjCG
-	prCshtsK1Z9U0D93oGqfyI8r+vAoDKwc4f+ob8Qb02EfakKlu8TLjhwoRbwQbPTXKRPX
-	QQF+FnD9lu6+PFQDcxdNEHspiIs5zEBEWPXf70mPJSRGFOtsSsW1OGD5Pz38470IxG7G
-	NFow==
-X-Gm-Message-State: ALQs6tArrjyMxU9QQW8qTE9o2gergCRbOyEdkbyhLkYISI8EkU8EvaiF
-	nTmgaAkbD5k4404IoFYl5umyAWaHzlGK8Hye4gwCdw==
-X-Received: by 2002:aca:b3c1:: with SMTP id
-	c184-v6mr8662311oif.12.1523626094126; 
-	Fri, 13 Apr 2018 06:28:14 -0700 (PDT)
+	(envelope-from <mst@redhat.com>) id 1ejwEe-0004OG-PW
+	for qemu-arm@nongnu.org; Thu, 08 Feb 2018 19:08:15 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:34280 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <mst@redhat.com>)
+	id 1ejwEe-0004LP-JZ; Thu, 08 Feb 2018 19:08:12 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 73AEB402663E;
+	Fri,  9 Feb 2018 00:08:07 +0000 (UTC)
+Received: from redhat.com (ovpn-120-144.rdu2.redhat.com [10.10.120.144])
+	by smtp.corp.redhat.com (Postfix) with SMTP id ED7112166BAE;
+	Fri,  9 Feb 2018 00:08:03 +0000 (UTC)
+Date: Fri, 9 Feb 2018 02:08:03 +0200
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Andrey Smirnov <andrew.smirnov@gmail.com>
+Message-ID: <20180209020556-mutt-send-email-mst@kernel.org>
+References: <20180207042438.15422-1-andrew.smirnov@gmail.com>
+	<20180207042438.15422-11-andrew.smirnov@gmail.com>
+	<20180208194226-mutt-send-email-mst@kernel.org>
+	<CAHQ1cqGZHie0sYudPGr-15LOEjMRT05=0+tsViKfCJBnN96Nag@mail.gmail.com>
+	<20180208221121-mutt-send-email-mst@kernel.org>
+	<CAHQ1cqHGfTYyKuMEDGPWnHBbWYV2sMrqfHU6oJV3NQSv0Xi0Qg@mail.gmail.com>
+	<20180208223323-mutt-send-email-mst@kernel.org>
+	<CAHQ1cqHxUZTFiXpzdKWk1MA9QuqHC0Ljs0-uBkWZbYsNn6ix8Q@mail.gmail.com>
 MIME-Version: 1.0
-Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Fri, 13 Apr 2018 06:27:53
-	-0700 (PDT)
-In-Reply-To: <1522160122-10744-3-git-send-email-eric.auger@redhat.com>
-References: <1522160122-10744-1-git-send-email-eric.auger@redhat.com>
-	<1522160122-10744-3-git-send-email-eric.auger@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 13 Apr 2018 14:27:53 +0100
-Message-ID: <CAFEAcA9nkLs3CF0=52DYWygrprgxexrz1_vf0r5RVfNYMA4H5A@mail.gmail.com>
-To: Eric Auger <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::244
-Subject: Re: [Qemu-arm] [RFC 2/8] hw/intc/arm_gicv3: Use an array of
- redistributor regions
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAHQ1cqHxUZTFiXpzdKWk1MA9QuqHC0Ljs0-uBkWZbYsNn6ix8Q@mail.gmail.com>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.6]);
+	Fri, 09 Feb 2018 00:08:07 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Fri, 09 Feb 2018 00:08:07 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'mst@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [PATCH v5 10/14] pci: Add support for Designware IP
+ block
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,120 +101,84 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, Christoffer Dall <cdall@kernel.org>,
-	Marc Zyngier <marc.zyngier@arm.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Eric Auger <eric.auger.pro@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@zoho.com>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	"open list:ARM" <qemu-arm@nongnu.org>, Andrey Yurovsky <yurovsky@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mDMiZa0YqB47
+X-TUID: CiOg4eWySedT
 
-On 27 March 2018 at 15:15, Eric Auger <eric.auger@redhat.com> wrote:
-> In the prospect to support multiple redistributor regions,
-> let's introduce a GICv3RDISTRegion struct datatype and a
-> statically sized array of those. For the time being, only
-> one redistributor region is used.
->
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> ---
->  hw/intc/arm_gicv3_common.c         |  5 +++--
->  hw/intc/arm_gicv3_kvm.c            |  3 ++-
->  include/hw/intc/arm_gicv3_common.h | 13 ++++++++++++-
->  3 files changed, 17 insertions(+), 4 deletions(-)
->
-> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-> index 7b54d52..cb4ee0e 100644
-> --- a/hw/intc/arm_gicv3_common.c
-> +++ b/hw/intc/arm_gicv3_common.c
-> @@ -199,11 +199,12 @@ void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
->
->      memory_region_init_io(&s->iomem_dist, OBJECT(s), ops, s,
->                            "gicv3_dist", 0x10000);
-> -    memory_region_init_io(&s->iomem_redist, OBJECT(s), ops ? &ops[1] : NULL, s,
-> +    memory_region_init_io(&s->redist_region[0].mr, OBJECT(s),
-> +                          ops ? &ops[1] : NULL, s,
->                            "gicv3_redist", 0x20000 * s->num_cpu);
->
->      sysbus_init_mmio(sbd, &s->iomem_dist);
-> -    sysbus_init_mmio(sbd, &s->iomem_redist);
-> +    sysbus_init_mmio(sbd, &s->redist_region[0].mr);
->  }
->
->  static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
-> diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-> index ec37177..a07bc55 100644
-> --- a/hw/intc/arm_gicv3_kvm.c
-> +++ b/hw/intc/arm_gicv3_kvm.c
-> @@ -755,7 +755,8 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
->
->      kvm_arm_register_device(&s->iomem_dist, -1, KVM_DEV_ARM_VGIC_GRP_ADDR,
->                              KVM_VGIC_V3_ADDR_TYPE_DIST, s->dev_fd);
-> -    kvm_arm_register_device(&s->iomem_redist, -1, KVM_DEV_ARM_VGIC_GRP_ADDR,
-> +    kvm_arm_register_device(&s->redist_region[0].mr, -1,
-> +                            KVM_DEV_ARM_VGIC_GRP_ADDR,
->                              KVM_VGIC_V3_ADDR_TYPE_REDIST, s->dev_fd);
->
->      if (kvm_has_gsi_routing()) {
-> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
-> index bccdfe1..3cf132f 100644
-> --- a/include/hw/intc/arm_gicv3_common.h
-> +++ b/include/hw/intc/arm_gicv3_common.h
-> @@ -137,12 +137,20 @@ typedef struct GICv3CPUState GICv3CPUState;
->  #define GICV3_S 0
->  #define GICV3_NS 1
->
-> +#define GICV3_MAX_RDIST_REGIONS 8
+On Thu, Feb 08, 2018 at 12:43:03PM -0800, Andrey Smirnov wrote:
+> On Thu, Feb 8, 2018 at 12:33 PM, Michael S. Tsirkin <mst@redhat.com> wrote:
+> > On Thu, Feb 08, 2018 at 12:22:53PM -0800, Andrey Smirnov wrote:
+> >> On Thu, Feb 8, 2018 at 12:11 PM, Michael S. Tsirkin <mst@redhat.com> wrote:
+> >> > On Thu, Feb 08, 2018 at 12:03:04PM -0800, Andrey Smirnov wrote:
+> >> >> >> +#define PCIE_PORT_LINK_CONTROL          0x710
+> >> >> >> +
+> >> >> >> +#define PCIE_PHY_DEBUG_R1               0x72C
+> >> >> >> +#define PCIE_PHY_DEBUG_R1_XMLH_LINK_UP  BIT(4)
+> >> >> >> +
+> >> >> >> +#define PCIE_LINK_WIDTH_SPEED_CONTROL   0x80C
+> >> >> >> +#define PORT_LOGIC_SPEED_CHANGE         (0x1 << 17)
+> >> >> >> +
+> >> >> >> +#define PCIE_MSI_ADDR_LO                0x820
+> >> >> >> +#define PCIE_MSI_ADDR_HI                0x824
+> >> >> >> +#define PCIE_MSI_INTR0_ENABLE           0x828
+> >> >> >> +#define PCIE_MSI_INTR0_MASK             0x82C
+> >> >> >> +#define PCIE_MSI_INTR0_STATUS           0x830
+> >> >> >> +
+> >> >> >> +#define PCIE_ATU_VIEWPORT               0x900
+> >> >> >> +#define PCIE_ATU_REGION_INBOUND         (0x1 << 31)
+> >> >> >> +#define PCIE_ATU_REGION_OUTBOUND        (0x0 << 31)
+> >> >> >> +#define PCIE_ATU_REGION_INDEX2          (0x2 << 0)
+> >> >> >> +#define PCIE_ATU_REGION_INDEX1          (0x1 << 0)
+> >> >> >> +#define PCIE_ATU_REGION_INDEX0          (0x0 << 0)
+> >> >> >> +#define PCIE_ATU_CR1                    0x904
+> >> >> >> +#define PCIE_ATU_TYPE_MEM               (0x0 << 0)
+> >> >> >> +#define PCIE_ATU_TYPE_IO                (0x2 << 0)
+> >> >> >> +#define PCIE_ATU_TYPE_CFG0              (0x4 << 0)
+> >> >> >> +#define PCIE_ATU_TYPE_CFG1              (0x5 << 0)
+> >> >> >> +#define PCIE_ATU_CR2                    0x908
+> >> >> >> +#define PCIE_ATU_ENABLE                 (0x1 << 31)
+> >> >> >> +#define PCIE_ATU_BAR_MODE_ENABLE        (0x1 << 30)
+> >> >> >> +#define PCIE_ATU_LOWER_BASE             0x90C
+> >> >> >> +#define PCIE_ATU_UPPER_BASE             0x910
+> >> >> >> +#define PCIE_ATU_LIMIT                  0x914
+> >> >> >> +#define PCIE_ATU_LOWER_TARGET           0x918
+> >> >> >> +#define PCIE_ATU_BUS(x)                 (((x) >> 24) & 0xff)
+> >> >> >> +#define PCIE_ATU_DEVFN(x)               (((x) >> 16) & 0xff)
+> >> >> >> +#define PCIE_ATU_UPPER_TARGET           0x91C
+> >> >
+> >> > Can you avoid a PCIE prefix for this btw?
+> >> >
+> >>
+> >> That's how those constants were named in Linux kernel, but yeah, I'll
+> >> add a prefix to them.
+> >>
+> >> Thanks,
+> >> Andrey Smirnov
+> >
+> > In that case you should not copy it into your file.
+> > Stuff from linux kernel should be imported into standard-headers.
+> >
+> 
+> Just to be sure we are on the same page, this is the file I am talking about:
+> 
+> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/pci/dwc/pcie-designware.h?h=v4.15
+> 
+> you want me to put it in standard-headers/linux and get those
+> constants from there?
+> 
+> Thanks,
+> Andrey Smirnov
 
-Where does 8 come from? Is it a limit in the kernel, or just
-a random number?
+Oh it's from a source file. I see. standard-headers/linux is for
+files exported from include/uapi.
 
-> +
->  typedef struct {
->      int irq;
->      uint8_t prio;
->      int grp;
->  } PendingIrq;
->
-> +typedef struct GICv3RDISTRegion {
+I take it back then but pls rename appropriately - and I guess
+you should only copy what you actually use.
 
-"GICv3RedistRegion"
-
-> +    hwaddr base;
-> +    uint32_t count; /* number or redistributors */
-
-"of"
-
-> +    MemoryRegion mr;
-> +} GICv3RDISTRegion ;
-> +
->  struct GICv3CPUState {
->      GICv3State *gic;
->      CPUState *cpu;
-> @@ -210,7 +218,8 @@ struct GICv3State {
->      /*< public >*/
->
->      MemoryRegion iomem_dist; /* Distributor */
-> -    MemoryRegion iomem_redist; /* Redistributors */
-> +    GICv3RDISTRegion redist_region[GICV3_MAX_RDIST_REGIONS];
-> +    uint32_t nb_redist_regions;
->
->      uint32_t num_cpu;
->      uint32_t num_irq;
-> @@ -288,6 +297,8 @@ typedef struct ARMGICv3CommonClass {
->
->      void (*pre_save)(GICv3State *s);
->      void (*post_load)(GICv3State *s);
-> +    /* register an RDIST region at @base, containing @pfns 64kB pages */
-> +    int (*register_redist_region)(GICv3State *s, hwaddr base, uint32_t pfns);
-
-"pfn" is a kernelism (and I can never remember what it means) -- can you
-use a more comprehensible variable name, please ?
-
->  } ARMGICv3CommonClass;
->
->  void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
-> --
-
-thanks
--- PMM
+-- 
+MST

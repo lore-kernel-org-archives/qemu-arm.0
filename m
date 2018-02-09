@@ -1,136 +1,161 @@
-Received: by 10.28.71.27 with SMTP id u27csp2534336wma;
-        Thu, 8 Feb 2018 12:54:39 -0800 (PST)
-X-Received: by 10.107.176.14 with SMTP id z14mr473653ioe.8.1518123279464;
-        Thu, 08 Feb 2018 12:54:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518123279; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp1260220wma;
+        Fri, 9 Feb 2018 10:38:03 -0800 (PST)
+X-Received: by 10.107.184.198 with SMTP id i189mr4168656iof.137.1518201483382;
+        Fri, 09 Feb 2018 10:38:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518201483; cv=none;
         d=google.com; s=arc-20160816;
-        b=hJwijMZ9GHYUw1jWgIuZUvVqRXhQKCdvXRr/jqcY6KBJ6c29vK4Buc79HpehgtK7Gn
-         QD+vE2TDoXr6xnRHsfhD9VOcV6GqfOwD3DBd/UmE9uDjbSTxSxlKrDU5lKIp3yFjv5RT
-         RvvVgDpLQelh8i2fmooK3Vg9kQwFfKL5yKJfn5vvOseJnqKwI6CFAp+dIO/KqYRqieqo
-         7zV/kNXNk7aK45Wo+GbBtCl/KY6KswpiChpHSdTKM5VQjpl39l/uB5J5rAoK5IhO8T1y
-         GeiBX/60KBvJBqU8cb1gKaFI+M9Bi6q3M8eNRNvHl4F7Kb7BWXcIyiAJI9oW9XYlkQx+
-         XbfA==
+        b=yXjITEO6Tb2Kbta3jGLokfEJqIuJFP8g88jZWEW0DPP3wTUbCuFIkKy8k43ZfMv2Z6
+         sJEtxKsjcFcSuZlrp9J47zTQG8AJcNg1bCb3FR9BJYmjlHLdgVFjTTcfwrxVYy4c70Mx
+         CxDkEYGZ0JcFHInJs454ReyTz2CaJkrASBJEnR/ugDLV7lBCJjAsD2J24CGc+/LFUvRt
+         GHcaAm10b3mqjwabeJ7Ou3PqAqADOR8AaAfWGSjzlhP+zd0xGs/pmG2emT+HUPMLhldH
+         i9pgizsGf9vsSzy39JQq07tK3i5KOmQy2IcGtqEpEVWHqYJj7gXfb8HHa2l5ixNuqsdH
+         Mneg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature:arc-authentication-results;
-        bh=LGvD/3QX5USKmS19G8y/3UcrH9PDbekKB8wwsYBXrkw=;
-        b=bGxh+STmOtVPRKF0h9skDUvldnk9cBZVVcKBYbp7lF0JKs9NS03GMhWCt2g+N4vH9l
-         E7lP94Ydav9UfhvtfAYKY8oyqoUPyMfHHlxfxJTsRBRZOLK18tEZ3BjwoLGSTyeaViz/
-         2WfC+xQrBkac6kEVOu4q+xYguhE9lWyF9pgzIGZs0VEt1T9muPbXJm6VTmvm8No5Ppep
-         lHRZBsyWTSr7RmPq+lag4cL+41zktAJF39TjNJspFn3OKpjRJ7cNWJQaxHDeYAKmKs+H
-         5aswMf2EnIrsFwe50TZNFaiO0ujbcMpBVoKhD9cfzCoih7VoY4sx+u5GtOueMb2vP3JE
-         3FMQ==
+        bh=eCLe5TwiTa5bYDpibY3kpySSBEUfPdji3c7aoyzwDx8=;
+        b=SbLpjS7A2nwj89LW9BjDLLshguWQ8S2i2//Gjfgg4TcovJdrwNrnruNRAE+davjCtB
+         zkZqNiCSFKr98sadUDUqJnD4lGIFzjxR98AcKZ5iEHA8m/hnukXiNZ/F/2EzQCoKeq6y
+         I74VIPz6VVd5xv+h2N+fbJDm5x6lGJ/UIR3Oen1huPq43hBlsMheBpsR4s3IOXVJkEkq
+         H4cRXZMtBYklUFwiW7NRPdw30Fn2ZA304uHDdaMO/fT5RFlQDQCifnhtDfZVw8V2wxqB
+         6pcszC/U1S6u2ySCWH7BwgknCHDw6vKoxzGHAQVGeAIeDx6WR4Jke/5HkMZsqBHrUScI
+         suqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LWcaqTEa;
+       dkim=pass header.i=@linaro.org header.s=google header.b=faLwYlr5;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id s67sor533825itg.88.2018.02.08.12.54.39
+        by mx.google.com with SMTPS id i139sor1745622ioi.209.2018.02.09.10.38.03
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 08 Feb 2018 12:54:39 -0800 (PST)
+        Fri, 09 Feb 2018 10:38:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LWcaqTEa;
+       dkim=pass header.i=@linaro.org header.s=google header.b=faLwYlr5;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=LGvD/3QX5USKmS19G8y/3UcrH9PDbekKB8wwsYBXrkw=;
-        b=LWcaqTEax1TvO9nkX9WoiPLb1BmEZv958+IIhtM5VR6ITB31faqq4XSSqA/J3MzgBd
-         Tyx1ptmWM+xGTMs0wnoyiFInFq3hrFO055Tjafu36fbkxAf4dTXv4RXfSomSZRyGKCda
-         wxmfxaVG9Dc/EgzVGNl2A+4Fvm2RKOLwnXpKc=
+        bh=eCLe5TwiTa5bYDpibY3kpySSBEUfPdji3c7aoyzwDx8=;
+        b=faLwYlr5t/Ta2KpRpIdK9SnKLhygFSqW5bC9n+vi7avlWFNvmb3hgFQtmGipbKTODD
+         YyTrmqX2i4VhN0tsRprCZTfEnOqmbPLOlsUeHg0XflnPwlW9kFHb1nKvBl3CKXYHcbhW
+         GONH5aAHFwJXYeTxja0lXTZSaNbaAa/E+wVlg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:message-id:date
          :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=LGvD/3QX5USKmS19G8y/3UcrH9PDbekKB8wwsYBXrkw=;
-        b=Ap8vJblWQPlWnhxZxodYIycBGMjpXLo9xuoqHQwS5stNFzkwMLvonHxQ2uouo5IsD9
-         VSobEDxN68WuXmNns2wN53ga4YbSApU9WZ5Tn68x8m8Yp0ig2iw7cQuJfOCmAbK7u9JV
-         jbDmkkT4anu2N5lC1U+qjzRJ+oZYSVs4CuUI8nr07hNlDsNco87GokPzR8SzYDFWERti
-         UKBlcLJDaOtWyk0cQyLekUdLapYsac2RgCBwi/litO7ose1vZY3DHETt3Z1YrTpvFcLQ
-         GWnCH1f7PkrKnZhkWQlAVj8YN2j0etqsUxiBmR4QASrNlBLWlTsSl6xaL0t7975aOhss
-         0JaA==
-X-Gm-Message-State: APf1xPB2NgFKcT8qk8mQ6BkIJ7J2Kn3cqh1jWPcfyYAKAkK1o4FoiGTH
-	Yx6jG8U8w7SbbhLWJ16VNS8pejjN3GyKFA==
-X-Google-Smtp-Source: AH8x224nMW0NFAwHsaEkrhpAgdI1pkDECnbe9W6/+9t74gGpUnYq3g9NSLKMYfDOhEqlRSbwSr5kag==
-X-Received: by 10.36.176.13 with SMTP id d13mr621080itf.71.1518123279052;
-        Thu, 08 Feb 2018 12:54:39 -0800 (PST)
+        bh=eCLe5TwiTa5bYDpibY3kpySSBEUfPdji3c7aoyzwDx8=;
+        b=L6vEydjf6dyZn+IAL7/LAsGKx7PD0Td6t5sn7lAQHhdFXjozH24pdejs8Mj31r4bpJ
+         gFHZvtFM0RKp+NOXERZBIAxP5NXQeqocJkcjefsiXwSZLIq8fQSCtvHRo0nXgZG21wrT
+         JdyLYHtejDKwpn8p9khdj9f8LEpMGrgOlPqa2ByAnp6GNXkNRCkbP4YOMf5jmkKnOv7o
+         kDFRAnjeFfjqIVK/KAZ17F7duEHhplyzrpYfEsPuBTb3y31KrPS4HJA0uXxVFkz6Yue4
+         PO2KG2PG2jvvw5yRs3VzDd3H7AWLn+Ude3OKg3yCkayF8kadrhFmBiQDD80WwZKnJnUT
+         YIlQ==
+X-Gm-Message-State: APf1xPBupiwkNFywsORifDnJej5ZnpkCae4XWhY1uAq77YPZQKN6WGzV
+	4AqkzMk+FrYlzFkIhpHU+8RNB4gk/8c0+A==
+X-Google-Smtp-Source: AH8x224TSx/EebwDqm9QsXUMFDcrZLk8BRKcCcXcP9dBziOMEQNOLDeQHmVSf8zNTLd8Q70rWY2deQ==
+X-Received: by 10.107.134.97 with SMTP id i94mr4062610iod.210.1518201482889;
+        Fri, 09 Feb 2018 10:38:02 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from cloudburst.twiddle.net (174-21-6-47.tukw.qwest.net. [174.21.6.47])
-        by smtp.gmail.com with ESMTPSA id r137sm612702ita.23.2018.02.08.12.54.37
+        by smtp.gmail.com with ESMTPSA id 193sm4188457itv.9.2018.02.09.10.38.01
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 08 Feb 2018 12:54:38 -0800 (PST)
-Subject: Re: [Qemu-devel] [PATCH v2 11/32] arm/translate-a64: add FP16
- F[A]C[EQ/GE/GT] to simd_three_reg_same_fp16
+        Fri, 09 Feb 2018 10:38:02 -0800 (PST)
+Subject: Re: [Qemu-devel] [PATCH v2 32/32] arm/translate-a64: add all single
+ op FP16 to handle_fp_1src_half
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
 References: <20180208173157.24705-1-alex.bennee@linaro.org>
- <20180208173157.24705-12-alex.bennee@linaro.org>
+ <20180208173157.24705-33-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <da2bc012-1693-3335-eb5a-921d94e6015e@linaro.org>
-Date: Thu, 8 Feb 2018 12:54:36 -0800
+Message-ID: <7ec2273c-a81a-eaa6-ef10-d229ae06e0cf@linaro.org>
+Date: Fri, 9 Feb 2018 10:37:59 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
  Thunderbird/52.6.0
 MIME-Version: 1.0
-In-Reply-To: <20180208173157.24705-12-alex.bennee@linaro.org>
+In-Reply-To: <20180208173157.24705-33-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: EqjyrnKuKK8W
+X-TUID: Y4ksKXE1zvaP
 
 On 02/08/2018 09:31 AM, Alex Bennée wrote:
+> This includes FMOV, FABS, FNEG, FSQRT and  FRINT[NPMZAXI]. We re-use
+> existing helpers to achieve this.
+> 
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
->  target/arm/helper-a64.c    | 49 ++++++++++++++++++++++++++++++++++++++++++++++
->  target/arm/helper-a64.h    |  5 +++++
->  target/arm/translate-a64.c | 15 ++++++++++++++
->  3 files changed, 69 insertions(+)
+>  target/arm/translate-a64.c | 72 ++++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 72 insertions(+)
 > 
-> diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-> index 25e45121af..78eeda31d1 100644
-> --- a/target/arm/helper-a64.c
-> +++ b/target/arm/helper-a64.c
-> @@ -599,3 +599,52 @@ ADVSIMD_HALFOP(min)
->  ADVSIMD_HALFOP(max)
->  ADVSIMD_HALFOP(minnum)
->  ADVSIMD_HALFOP(maxnum)
-> +
-> +/*
-> + * Floating point comparisons produce an integer result. Softfloat
-> + * routines return float_relation types which we convert to the 0/-1
-> + * Neon requires.
-> + */
-> +
-> +#define ADVSIMD_CMPRES(test) (test) ? 0xffff : 0
-> +
-> +uint32_t HELPER(advsimd_ceq_f16)(float16 a, float16 b, void *fpstp)
+> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+> index 92adf43a89..265bfb14d0 100644
+> --- a/target/arm/translate-a64.c
+> +++ b/target/arm/translate-a64.c
+> @@ -4508,6 +4508,66 @@ static void disas_fp_csel(DisasContext *s, uint32_t insn)
+>      tcg_temp_free_i64(t_true);
+>  }
+>  
+> +/* Floating-point data-processing (1 source) - half precision */
+> +static void handle_fp_1src_half(DisasContext *s, int opcode, int rd, int rn)
 > +{
-> +    float_status *fpst = fpstp;
-> +    int compare = float16_compare_quiet(a, b, fpst);
-> +    return ADVSIMD_CMPRES(compare == float_relation_equal);
-
-Not using float16_eq etc?
-
-> +}
+> +    TCGv_ptr fpst = NULL;
+> +    TCGv_i32 tcg_op;
+> +    TCGv_i32 tcg_res;
 > +
-> +uint32_t HELPER(advsimd_cge_f16)(float16 a, float16 b, void *fpstp)
-> +{
-> +    float_status *fpst = fpstp;
-> +    int compare = float16_compare(a, b, fpst);
-> +    return ADVSIMD_CMPRES(compare == float_relation_greater ||
-> +                          compare == float_relation_equal);
+> +    tcg_op = read_fp_sreg(s, rn);
+> +    tcg_res = tcg_temp_new_i32();
+> +
+> +    switch (opcode) {
+> +    case 0x0: /* FMOV */
+> +        tcg_gen_mov_i32(tcg_res, tcg_op);
+> +        break;
+> +    case 0x1: /* FABS */
+> +        gen_helper_advsimd_absh(tcg_res, tcg_op);
+> +        break;
+> +    case 0x2: /* FNEG */
+> +        tcg_gen_xori_i32(tcg_res, tcg_op, 0x8000);
+> +        break;
+> +    case 0x3: /* FSQRT */
+> +        gen_helper_sqrt_f16(tcg_res, tcg_op, cpu_env);
+> +        break;
+> +    case 0x8: /* FRINTN */
+> +    case 0x9: /* FRINTP */
+> +    case 0xa: /* FRINTM */
+> +    case 0xb: /* FRINTZ */
+> +    case 0xc: /* FRINTA */
+> +    {
+> +        TCGv_i32 tcg_rmode = tcg_const_i32(arm_rmode_to_sf(opcode & 7));
+> +        fpst = get_fpstatus_ptr(true);
+> +
+> +        gen_helper_set_rmode(tcg_rmode, tcg_rmode, fpst);
+> +        gen_helper_advsimd_rinth(tcg_res, tcg_op, fpst);
+> +
+> +        gen_helper_set_rmode(tcg_rmode, tcg_rmode, fpst);
+> +        tcg_temp_free_i32(tcg_rmode);
+> +        break;
+> +    }
+> +    case 0xe: /* FRINTX */
+> +        fpst = get_fpstatus_ptr(true);
+> +        gen_helper_advsimd_rinth_exact(tcg_res, tcg_op, fpst);
+> +        break;
+> +    case 0xf: /* FRINTI */
+> +        fpst = get_fpstatus_ptr(true);
+> +        gen_helper_advsimd_rinth(tcg_res, tcg_op, fpst);
+> +        break;
+> +    default:
+> +        abort();
+> +    }
+> +
+> +    write_fp_sreg(s, rd, tcg_res);
 
-Especially float16_le(b, a, fpst).
-
-Otherwise,
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Some of these helpers will zero-extend from 16 bits, but at least a few won't
+-- notably fmov and fneg.  I wonder if it wouldn't be best to have a write_fp_hreg.
 
 
 r~

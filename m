@@ -1,71 +1,72 @@
-Received: by 10.28.71.27 with SMTP id u27csp1167041wma;
-        Fri, 9 Feb 2018 09:04:59 -0800 (PST)
-X-Google-Smtp-Source: AH8x227yHcjB/ulPHcBoNMHOknifZbR7y2HWsvWqboN4JBMJcDUYfWIyHwexQv/gC/PJW9rEcFTM
-X-Received: by 10.129.133.135 with SMTP id v129mr2472053ywf.107.1518195899644;
-        Fri, 09 Feb 2018 09:04:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518195899; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp1167509wma;
+        Fri, 9 Feb 2018 09:05:23 -0800 (PST)
+X-Google-Smtp-Source: AH8x2256fhMNy59cHc5I3M8IhmVj3qjnzXt6RQJaXkCC6sK7mL8MLZGdWiobd8K/SlMR0ZtodYnJ
+X-Received: by 10.129.115.86 with SMTP id o83mr2465204ywc.0.1518195923143;
+        Fri, 09 Feb 2018 09:05:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518195923; cv=none;
         d=google.com; s=arc-20160816;
-        b=DraJnRLwgoBOQChHelbZZIuC8LF1sOg5qrjHYaaMMQZkYQADkQSLb5YXoBPJltgyvb
-         l1QQ4rDxFoPMf+ae9JZXxCzFPW8bgFzzUQnLrUT253pMVo2w2jeVBBy6YQhwC5V/9v+s
-         dxnNia/eMQCxrIbIh2pqU6J/wF6yq+53ffFg0ftKd+9N+JxwkO5u+MDOr+1HesdZLnmz
-         Pgkl3BPpAk7pzJrSkZhZts+DjYs7WpP+JRFni+L8PaqfKMgPT8BdXYkegScM0p3RDK1i
-         7Czmrmi42fEUrfkyv41Ra7libD/hH43ZKJHkcF7ridbC/vA8Qh+b7M8SB0czg4V7iail
-         RUHg==
+        b=L8AzlXPFI2m4edtuQdsX28LU+Lb8qokITWqgY3FutAeaE6a7lvBTw7+EOVDeCKil2P
+         5ytMhJtC3o1RlPxkiT+GqKYYzP6DdZn1pJCZJ5HPzjGHCzUZYqpoK01pIRuosq/AJvst
+         akgNff7Q7iQh/AjHbujiuYZmrIb+ktRjgnamovLjePIMWNK9FtzuDcGEHi4jrB6nL5kV
+         NGkVwv62iYka6kwHfmfGfuMWiBzdJa4yIb3PjhphP8req9560Bi7kc9gAY/WPuPYqOV/
+         3CGsEs5z5pz00s/J48T16ijA87yZUYBWncl9En533BFNxrRY+IEzXtEg0cVFr0aDjlWz
+         ZzYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=JnNwmIwtiCiIK6QGhT96KwxMNxVw+pKDg+tKYJ7M/UU=;
-        b=d66FI6Eb7Qaunus+/PyvPQL7ov9UOMG+M2qC/DO9ACsb7pR5ovq5/TX576GOMSsMnT
-         YlvwG/4DpEt5sbFv6FiKcmRJVy06Wp9s1B01yhSQAqlmLeAqndBGNlUXXRWPfeFIasDJ
-         dH3g8RcWhNtBN1RFJpa4bsK4gqntGo2+3mzsfk5a1D4YopGSB2Y50FNC1lTW7L2OERhg
-         9lrwPCOGr7YrGA3eA22O1SWe+RDcKrfd2monuyaGUsEzaGZos45yFkk2mUrbPbSqp1VV
-         yRtJ0mQ124d6YM14sSRxrjF0/5u8PCowxAekie0Gq4xImOGfevfxOh1oZetlygNjMz8l
-         gCNQ==
+        bh=gPZBOWG62Ml3ABPlHSWpZm/7Y3tm7VBFmIMMS/caH1M=;
+        b=KZGm4SU+f3v3uen7aWVpv9IZtk6z5wVlmuSDqCfjc2ko9DAmFkffBAH8LCCqFbgS2N
+         IfwhiEr/BUFKz4Vi06KhXObpQjHoOGxOkg2ruGqWEBsq4NQogRc7tNrpZVbwCVBBkL/z
+         rxtibJS106QpqdLymlDv4FklmC5KgmU6U7Too1DtaPTd6p9/1WAquoCkKSQB4uROS4ov
+         2ap1SxaExLveftYAskhIAK6/0+nognezL6YSOnmMK2y6NaedF4ixGr8icZ2Kc3e6+7EO
+         xdvr5gGxgx7+qYAakHfAUvsZ2oPRj9Phqw2Ei5uES6BasXw8nbFJZtsP1e5CVBPHsR45
+         DkyA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a186si461113ybb.577.2018.02.09.09.04.59
+        by mx.google.com with ESMTPS id j62si472472ybb.13.2018.02.09.09.05.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 09 Feb 2018 09:04:59 -0800 (PST)
+        Fri, 09 Feb 2018 09:05:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45158 helo=lists.gnu.org)
+Received: from localhost ([::1]:45160 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ekC6d-0000T1-2Y
-	for alex.bennee@linaro.org; Fri, 09 Feb 2018 12:04:59 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41098)
+	id 1ekC70-0000jd-GD
+	for alex.bennee@linaro.org; Fri, 09 Feb 2018 12:05:22 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40993)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1ekC0E-0003yh-Rb
+	(envelope-from <pm215@archaic.org.uk>) id 1ekC0C-0003x3-Dj
 	for qemu-arm@nongnu.org; Fri, 09 Feb 2018 11:58:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1ekC0E-0007sL-10
-	for qemu-arm@nongnu.org; Fri, 09 Feb 2018 11:58:22 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:46272)
+	(envelope-from <pm215@archaic.org.uk>) id 1ekC0B-0007no-En
+	for qemu-arm@nongnu.org; Fri, 09 Feb 2018 11:58:20 -0500
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:46290)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1ekC0D-0007fy-Mf; Fri, 09 Feb 2018 11:58:21 -0500
+	id 1ekC0B-0007la-7N; Fri, 09 Feb 2018 11:58:19 -0500
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1ekC0C-00031o-8l; Fri, 09 Feb 2018 16:58:20 +0000
+	id 1ekC0A-00030x-4G; Fri, 09 Feb 2018 16:58:18 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Fri,  9 Feb 2018 16:58:09 +0000
-Message-Id: <20180209165810.6668-11-peter.maydell@linaro.org>
+Date: Fri,  9 Feb 2018 16:58:06 +0000
+Message-Id: <20180209165810.6668-8-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.16.1
 In-Reply-To: <20180209165810.6668-1-peter.maydell@linaro.org>
 References: <20180209165810.6668-1-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH v2 10/11] target/arm: Migrate v7m.other_sp
+Subject: [Qemu-arm] [PATCH v2 07/11] target/arm: Implement writing to
+ CONTROL_NS for v8M
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,53 +81,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VcZsgmSU//yU
+X-TUID: rAxBxdn6qCfD
 
-In commit abc24d86cc0364f we accidentally broke migration of
-the stack pointer value for the mode (process, handler) the CPU
-is not currently running as. (The commit correctly removed the
-no-longer-used v7m.current_sp flag from the VMState but also
-deleted the still very much in use v7m.other_sp SP value field.)
-
-Add a subsection to migrate it again. (We don't need to care
-about trying to retain compatibility with pre-abc24d86cc0364f
-versions of QEMU, because that commit bumped the version_id
-and we've since bumped it again a couple of times.)
+In commit 50f11062d4c896 we added support for MSR/MRS access
+to the NS banked special registers, but we forgot to implement
+the support for writing to CONTROL_NS. Correct the omission.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/machine.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+ target/arm/helper.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index 25cdf4d581..1a20d6c36c 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -236,6 +236,16 @@ static const VMStateDescription vmstate_m_scr = {
-     }
- };
- 
-+static const VMStateDescription vmstate_m_other_sp = {
-+    .name = "cpu/m/other-sp",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(env.v7m.other_sp, ARMCPU),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
- static const VMStateDescription vmstate_m = {
-     .name = "cpu/m",
-     .version_id = 4,
-@@ -259,6 +269,7 @@ static const VMStateDescription vmstate_m = {
-         &vmstate_m_faultmask_primask,
-         &vmstate_m_csselr,
-         &vmstate_m_scr,
-+        &vmstate_m_other_sp,
-         NULL
-     }
- };
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 180ab75458..7c1dcb0330 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -10519,6 +10519,16 @@ void HELPER(v7m_msr)(CPUARMState *env, uint32_t maskreg, uint32_t val)
+             }
+             env->v7m.faultmask[M_REG_NS] = val & 1;
+             return;
++        case 0x94: /* CONTROL_NS */
++            if (!env->v7m.secure) {
++                return;
++            }
++            write_v7m_control_spsel_for_secstate(env,
++                                                 val & R_V7M_CONTROL_SPSEL_MASK,
++                                                 M_REG_NS);
++            env->v7m.control[M_REG_NS] &= ~R_V7M_CONTROL_NPRIV_MASK;
++            env->v7m.control[M_REG_NS] |= val & R_V7M_CONTROL_NPRIV_MASK;
++            return;
+         case 0x98: /* SP_NS */
+         {
+             /* This gives the non-secure SP selected based on whether we're
 -- 
 2.16.1
 

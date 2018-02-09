@@ -1,72 +1,73 @@
-Received: by 10.223.159.74 with SMTP id f10csp3219100wrg;
-        Tue, 5 Dec 2017 11:47:20 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMZZC34wawFIA+0y+NxR7GDQoI2sUDVTj1PXmIbgSAEx/c9kSfKmm6lARk+QnQgZqNUqlmio
-X-Received: by 10.37.180.69 with SMTP id c5mr13981030ybg.193.1512503240792;
-        Tue, 05 Dec 2017 11:47:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1512503240; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp1158720wma;
+        Fri, 9 Feb 2018 08:58:40 -0800 (PST)
+X-Google-Smtp-Source: AH8x224ve/45V4UuZXeak3W1pKxa7dFxcuoC6OjC2CQ9Mj17AwTy257woeXsL+d/Kn1L9eUcpQdx
+X-Received: by 10.37.196.133 with SMTP id u127mr2303391ybf.10.1518195520552;
+        Fri, 09 Feb 2018 08:58:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518195520; cv=none;
         d=google.com; s=arc-20160816;
-        b=USmj5t3QlrRq4dmocYtqgf9imkesNSwQHvMw5UJ0KNFmUAAMyNsOKeCvEBB4LGCd/9
-         TLlpS4xfAXa6GzXO1kf0VeG0fOT2HuqeyUnUfaDmvAQNw7hXZ6K0X/ZecKW2h7Cxn4Ko
-         PRKw6d4lkHV9mEbBh8HSQqBrdJunYrlSYAp9vqaNAuyPTFp90m8OhJkQssJxUnWX6035
-         XfDET2NLHoEN2d6JRQJKR8AfoF0f7bN3No9BQLkiJjiyOQidCyjd2M6aEhXz4wAFJxPj
-         ajF36YnbSOrVQs8LZ/UNCDssNLPMkWOnkgsReDJ8E/Xvbzv4DUf4Kb3OfVKHBpUFRmyV
-         iG7w==
+        b=rO/kRF5NNVuHbgXk6N0lXAG5I3jXFklLmKYKXkBMfZ0z//nh4F3WeuGUB3xWl70oZQ
+         XN7gAtkxg/blMLEiAkcr0Cs+1pLKe0jZF2YFCznOCCsX68RGwspR5EiOzy8PDjdsI3al
+         Y1l9OCP+nMdtXFl6sBf+smTWJybLkDE2NbhQhchl5esFpUFUeH5spBGeIHkjZBsgJvJ1
+         VVlg9lXN0Ctf5ygQ7ZmzA5V0bbX418MYb7N5gNAvnq4kyiOzbYlTXGM3HSqXvAtgV7if
+         k8blzmoZ7ZXl6QozyPG0RlkwlHvNwJ8hmLb5AlP4kYFDToxJxHSrtQrsy9NOet0tMQBu
+         7ceg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=qB9RN9afNeI8kCNbWloE9IdDxroG41xi0OTHqDEVoV8=;
-        b=a1Cr0vP5YfEYav2+qX4TUHcBA3hEN40uFpBWBBzNki+WAPM0+HPUxRw+bRby7gdWNP
-         6slDIP9Na0wc1+n7hzQoJ+9wqwamyRA8wWSWLXJe7u/yaKZh9imidZlMdglSOleDc0KY
-         RBb4K5QYJeC//a3XeRzY8RUWR28iFiuHBmfGa1cTwsH8QdxEsGjiMQv5/xmn02F7+nwJ
-         oEzPTwUCJi+rMD/59FznqGzAyWXfXaoAbqjPk/g5HsmfZCsBIOgqID6x9LzSdAaF2EL6
-         P5ajltTmU/Cv0dzpglh3chGUFEThrILJiz5nPpM4n1Ykp4h4F8HIrLVJ+4S0BV2OtHTV
-         wIdg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :arc-authentication-results;
+        bh=nsBKBcvT9fOOIQAMYM5K3Uzzx2jj37iwATt9cwFRwO0=;
+        b=jW/Pn1Mo1tS7duvamVwEsVkZYuMIgiWlkpEOd1q3u9zeoC/rzodvOwWgHQQgMJIEJk
+         WDj9IFbaCjrNuN+m3s83D3DYQPaTtUcnK84sEZpp7ICQY16iXTabj7id7L9UwlFIxJLv
+         6L03YUfrJpy5SQl57UkU5PFCTgq/I2kAF9aMTjcU4MsRbnU1ZaEGP4Xouo0lZJVrsuNw
+         jYfG2c0sH91qKKdD5McV2xVH5QYexSAMBcDtB+t53MpjpSb7xEUEkuPtFSARWD/DXlc+
+         UtptXnQ9fJzYp9v/hfWboUgc0Q6siF2jjm2OUpxFPOIf3MmkFfkd1Ree9a3ixlBvP+Xo
+         nNWg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l12si226564ywl.715.2017.12.05.11.47.20
+        by mx.google.com with ESMTPS id m2si480474ywi.502.2018.02.09.08.58.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 05 Dec 2017 11:47:20 -0800 (PST)
+        Fri, 09 Feb 2018 08:58:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51762 helo=lists.gnu.org)
+Received: from localhost ([::1]:45073 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eMJBY-0001G6-6g
-	for alex.bennee@linaro.org; Tue, 05 Dec 2017 14:47:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56546)
+	id 1ekC0W-0003xj-1q
+	for alex.bennee@linaro.org; Fri, 09 Feb 2018 11:58:40 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40809)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eMJB0-0000yu-4C
-	for qemu-arm@nongnu.org; Tue, 05 Dec 2017 14:46:47 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1ekC07-0003rz-TH
+	for qemu-arm@nongnu.org; Fri, 09 Feb 2018 11:58:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eMJAz-0002J2-78
-	for qemu-arm@nongnu.org; Tue, 05 Dec 2017 14:46:46 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:38776)
+	(envelope-from <pm215@archaic.org.uk>) id 1ekC07-0007gq-6Q
+	for qemu-arm@nongnu.org; Fri, 09 Feb 2018 11:58:15 -0500
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:46272)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1eMJAz-0002CW-0g; Tue, 05 Dec 2017 14:46:45 -0500
+	id 1ekC06-0007fy-VL; Fri, 09 Feb 2018 11:58:15 -0500
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1eMJAu-0005Ck-E7; Tue, 05 Dec 2017 19:46:40 +0000
+	id 1ekC04-0002z5-0C; Fri, 09 Feb 2018 16:58:12 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue,  5 Dec 2017 19:46:30 +0000
-Message-Id: <1512503192-2239-11-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1512503192-2239-1-git-send-email-peter.maydell@linaro.org>
-References: <1512503192-2239-1-git-send-email-peter.maydell@linaro.org>
+Date: Fri,  9 Feb 2018 16:57:59 +0000
+Message-Id: <20180209165810.6668-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.16.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 10/12] target/arm: Ignore fsr from
- get_phys_addr() in do_ats_write()
+Subject: [Qemu-arm] [PATCH v2 00/11] v8m: minor missing regs and bugfixes
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,75 +79,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-	Stefano Stabellini <sstabellini@kernel.org>, patches@linaro.org
+Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SD5szyXiqly8
+X-TUID: iUCfSzf8HQ2A
 
-In do_ats_write(), rather than using the FSR value from get_phys_addr(),
-construct the PAR values using the information in the ARMMMUFaultInfo
-struct. This allows us to create a PAR of the correct format regardless
-of what the translation table format is.
+This patchset is the result of comparing the registers
+listed in the v8M Arm ARM against what QEMU was implementing.
+It adds a collection of generally unexciting missing registers
+(most of which we can simply NOP or make reads-as-written).
+There are also a couple of bug fixes in there, of which the
+worst is the byte-to-interrupt-number conversions being
+completely wrong in several places.
 
-For the moment we leave the condition for "when should this be a
-64 bit PAR" as it was previously; this will need to be fixed to
-properly support AArch32 Hyp mode.
+Version 2 adds 3 new patches at the end:
+ * we had a couple of things we were forgetting to migrate
+ * implementation of MSPLIM and PSPLIM, which were the missing
+   special registers
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/helper.c | 16 ++++++++++------
- 1 file changed, 10 insertions(+), 6 deletions(-)
+I've updated the cache ID registers patch to use some constants
+for register bit fields; otherwise the first 8 patches are the
+same as v1. The derived-exceptions patches are in master now,
+so this should apply to master.
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index fad4923..17192f8 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -2160,7 +2160,7 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
-     hwaddr phys_addr;
-     target_ulong page_size;
-     int prot;
--    uint32_t fsr;
-+    uint32_t fsr_unused;
-     bool ret;
-     uint64_t par64;
-     MemTxAttrs attrs = {};
-@@ -2168,12 +2168,12 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
-     ARMCacheAttrs cacheattrs = {};
- 
-     ret = get_phys_addr(env, value, access_type, mmu_idx, &phys_addr, &attrs,
--                        &prot, &page_size, &fsr, &fi, &cacheattrs);
-+                        &prot, &page_size, &fsr_unused, &fi, &cacheattrs);
-+    /* TODO: this is not the correct condition to use to decide whether
-+     * to report a PAR in 64-bit or 32-bit format.
-+     */
-     if (arm_s1_regime_using_lpae_format(env, mmu_idx)) {
--        /* fsr is a DFSR/IFSR value for the long descriptor
--         * translation table format, but with WnR always clear.
--         * Convert it to a 64-bit PAR.
--         */
-+        /* Create a 64-bit PAR */
-         par64 = (1 << 11); /* LPAE bit always set */
-         if (!ret) {
-             par64 |= phys_addr & ~0xfffULL;
-@@ -2183,6 +2183,8 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
-             par64 |= (uint64_t)cacheattrs.attrs << 56; /* ATTR */
-             par64 |= cacheattrs.shareability << 7; /* SH */
-         } else {
-+            uint32_t fsr = arm_fi_to_lfsc(&fi);
-+
-             par64 |= 1; /* F */
-             par64 |= (fsr & 0x3f) << 1; /* FS */
-             /* Note that S2WLK and FSTAGE are always zero, because we don't
-@@ -2207,6 +2209,8 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
-                 par64 |= (1 << 9); /* NS */
-             }
-         } else {
-+            uint32_t fsr = arm_fi_to_sfsc(&fi);
-+
-             par64 = ((fsr & (1 << 10)) >> 5) | ((fsr & (1 << 12)) >> 6) |
-                     ((fsr & 0xf) << 1) | 1;
-         }
+thanks
+-- PMM
+
+Peter Maydell (11):
+  hw/intc/armv7m_nvic: Don't hardcode M profile ID registers in NVIC
+  hw/intc/armv7m_nvic: Fix ICSR PENDNMISET/CLR handling
+  hw/intc/armv7m_nvic: Implement M profile cache maintenance ops
+  hw/intc/armv7m_nvic: Implement v8M CPPWR register
+  hw/intc/armv7m_nvic: Implement cache ID registers
+  hw/intc/armv7m_nvic: Implement SCR
+  target/arm: Implement writing to CONTROL_NS for v8M
+  hw/intc/armv7m_nvic: Fix byte-to-interrupt number conversions
+  target/arm: Add AIRCR to vmstate struct
+  target/arm: Migrate v7m.other_sp
+  target/arm: Implement v8M MSPLIM and PSPLIM registers
+
+ target/arm/cpu.h      | 35 ++++++++++++++++++
+ hw/intc/armv7m_nvic.c | 98 ++++++++++++++++++++++++++++++++++++++-------------
+ target/arm/cpu.c      | 28 +++++++++++++++
+ target/arm/helper.c   | 56 +++++++++++++++++++++++++++++
+ target/arm/machine.c  | 84 +++++++++++++++++++++++++++++++++++++++++++
+ 5 files changed, 276 insertions(+), 25 deletions(-)
+
 -- 
-2.7.4
+2.16.1
 

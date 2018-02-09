@@ -1,84 +1,116 @@
-Received: by 10.28.71.155 with SMTP id m27csp727433wmi;
-        Tue, 27 Mar 2018 07:15:59 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELusf001OwgUShvu2V3inrhaoqAXULSeb/iZ9aRtDj3uoOmXrPXCO+XP1PafKiAtyvXbl1Ap
-X-Received: by 10.237.61.184 with SMTP id i53mr37402019qtf.293.1522160159431;
-        Tue, 27 Mar 2018 07:15:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1522160159; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp656268wma;
+        Fri, 9 Feb 2018 00:56:28 -0800 (PST)
+X-Google-Smtp-Source: AH8x225jPVJ8ZEVplhTeOGxuH4lJfZFz3VFneHle3NI2vbJJagf4C1n93z2argHVLe5rW/m8dPpA
+X-Received: by 10.129.103.87 with SMTP id b84mr1373547ywc.470.1518166588436;
+        Fri, 09 Feb 2018 00:56:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518166588; cv=none;
         d=google.com; s=arc-20160816;
-        b=wsbRCPgtYiD+N1oye1xHwImcheCrIejFN7jXKn97Sfgo5LREyeDQLw0CRPpN9feV7F
-         GuwXHUvkAF32Fi4vU2L8D8nObDXAePYugOz10fICXmoDYPSd4GFjLjkGkDxifsMuw3Lz
-         xywg/s2OQwHHUUGU/WP9sX2FdA1qzSCQMY7I4fPiWvEWOXrZxS4ZgZg+SP0QVKZ7o8V5
-         z1gwx1PXXg5rw/Qs+ODrL7nZY5xHYNLnkojBmdajr+5YExneBGgQXhdPisaDiGUKhsLU
-         2azd4nrSUh2yhf6/zbbP9Knh7nODycVkXqSaJG8ARIi+37wylrnfVbki5ervL5FwIPGH
-         pJjA==
+        b=UOwrSkuPOMtN3HCpL+/nCeazmieyjlbXUPrQ8UtxB1Jzg+zU7G5nEi6mA8Fc7t1RQ9
+         Niu3J4iukFXO2cM9/CRY2Inj0LSlXeIoyqS7W4asV1C4bqQavtV5OBm9KLhM+QmWr0Fu
+         rLIewwutg2W1jrOJWuS0NQwnuhH+nHkuwddROv9FYSorCpt0/7BPvJIH5jNf1i9P7qBK
+         TgxYVdJlWULahdNe5UERJeh9GODOQG0eEPt6aj7QDfxTYxxLEXUdxpqW0rhsdoJ/OUYj
+         8fV2yvC84H61OxHfPXBfLqaUkHEoZKEG/IDNTln8fqBonFTa3kXaBeV4mJwTPbd1isTb
+         jBzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :arc-authentication-results;
-        bh=IK+XrQJEs63A+5jz+/pyJE0z7Ft/lQqBpCbVu7+ndsM=;
-        b=TonxMyQ7vkXmhK4f4hNg7dPoICQ6EU/bYWrFuMRVJ5+Qyn4Ocmz/217fABNlNnPWG0
-         0l5EUZZgdOP+DVL/3cL9N7VI139NMILQCvPhaiBd+teMjFmSgk19pdzhV6bzr58o72qo
-         o3NazQDTNgiHcYKrkT85nj3X1dV50hdBfAZluKuC1g1BAgX/Eo9Y3MHt+XK7K7T0u/IW
-         J7phBJ6XTD5aR1tSBKPxn2DaMgOXVY4lyU9TS7Rsd8mEvUyYTLETtw8QEVZJpk9CRU06
-         GXWwkOH7GUxvWwuTau9ZP9vmPBjuWVk41lJ+zIt1GxrQ55+zQJZiZiqX19ka6SGUzXbH
-         gqTw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=7CYHqgeJEXnPwF94W6/TGWtXl9bZs2dNu/O10a3xOWc=;
+        b=zG2t1mPTbo93MkLKI9CeweVBntJZwvi3xVkV8bullMmC1UrPAg7sWoIroGrvH5UIdi
+         a73m2jeVp9f5aHKjRzaf2Z6uuI5U3UZVuwdWHxAoPiYx0hvmwJGVo81KmLq1jj9hv4rv
+         X0O+Bn6J9RAdRL3QEBYguHIWRzD9hzrARqXZrSJ6BiQMb57gKk9rIrwVdtTa+2JqEMoo
+         Ls/9p4LgDVj+dbdZJvPDDUrwjfNB6kWqo38BW3q1oH9Ncg68kH5yD1r4tVQLmvMrjwKp
+         96ERJocgozWVmzJZBpGzBA+wKN0nq23lKMpMO9jwCCjQ1TQvDv31jldFzWBfc4mOHddV
+         2JlQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oCA6Pv9F;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m18si1379242qtn.304.2018.03.27.07.15.59
+        by mx.google.com with ESMTPS id x2si343588ywi.112.2018.02.09.00.56.28
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 27 Mar 2018 07:15:59 -0700 (PDT)
+        Fri, 09 Feb 2018 00:56:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34524 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oCA6Pv9F;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:50112 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f0pOI-00032m-UA
-	for alex.bennee@linaro.org; Tue, 27 Mar 2018 10:15:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45413)
+	id 1ek4Tr-0000EV-NE
+	for alex.bennee@linaro.org; Fri, 09 Feb 2018 03:56:27 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60723)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1f0pO4-000318-Lv
-	for qemu-arm@nongnu.org; Tue, 27 Mar 2018 10:15:46 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1ek4Tf-0000Ck-Uj
+	for qemu-arm@nongnu.org; Fri, 09 Feb 2018 03:56:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1f0pO2-0006Q8-I1
-	for qemu-arm@nongnu.org; Tue, 27 Mar 2018 10:15:44 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:59994 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1f0pO2-0006Nz-5u; Tue, 27 Mar 2018 10:15:42 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4AA29401DEA6;
-	Tue, 27 Mar 2018 14:15:36 +0000 (UTC)
-Received: from localhost.localdomain.com (ovpn-116-135.ams2.redhat.com
-	[10.36.116.135])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 5FAB06F9E4;
-	Tue, 27 Mar 2018 14:15:25 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, peter.maydell@linaro.org
-Date: Tue, 27 Mar 2018 16:15:14 +0200
-Message-Id: <1522160122-10744-1-git-send-email-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Tue, 27 Mar 2018 14:15:36 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Tue, 27 Mar 2018 14:15:36 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [RFC 0/8] KVM/ARM: Relax the max 123 vcpus limitation
- along with KVM GICv3
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1ek4Te-0004aW-Vq
+	for qemu-arm@nongnu.org; Fri, 09 Feb 2018 03:56:16 -0500
+Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:44036)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1ek4TZ-0004Xm-PY; Fri, 09 Feb 2018 03:56:09 -0500
+Received: by mail-qk0-x241.google.com with SMTP id n188so9096924qkn.11;
+	Fri, 09 Feb 2018 00:56:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=7CYHqgeJEXnPwF94W6/TGWtXl9bZs2dNu/O10a3xOWc=;
+	b=oCA6Pv9FVhHRIr1jU8DB+D9bYcp4fAlQTc1t/DfHr2knu6J06W+sL1HyqIyqKloRAO
+	WVLowibJ4b2yuZJWg1Asd+CqnL95lSm2YdbmhZKIj1idt05ErdjGLH6NDI8xIoP41jVa
+	OpDjDbfk6OHo3HDdA/sJU9nkmalKc+e2X6CMdB1oldpq40+K0I76rbJYokztj1xe0l9w
+	RCOnUdyL64bqOBH44zmkTVfsDWgJCds+fyOKTGMLkm1KEuaWMnolWQ9PgGzr3zidAM2K
+	vgOTf/+aX6/UZ6AkKLIXADiDQsEehqm0yYl1pRV+550/HmkbTAqJUY82z3HqLarMB6V6
+	oMkw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=7CYHqgeJEXnPwF94W6/TGWtXl9bZs2dNu/O10a3xOWc=;
+	b=RYpbTWTAKG5o/ppJgrBaaz5VkHX1rsf8PQyZsyuJdtc99z8UkafS3CExfHrKIy/oL+
+	PieFaykWTMmOLzp2Ev664j1DhoLtjEDWMsxnTmpcXrcphmcA1LpDuH2pXEu5UmerlyNt
+	1LTzzNVXIfaUwyLJaWEl3Kk4npaHQCAcg7pa/9OD2OnkAfc0aYB7tAoO/hcA3bPPhHUv
+	4u1LW4M7k4YiivEgS/suM+niUMHB9NycZP763VIDsFS5JmDftxRePiaHQZK8nI0nxb4m
+	pTwky+ei1m+87R4QQ7eGzlSQQW7Lm9hi1QRQWzyOyw8TIe2z95H7pTBmmHsqKaMKWZnr
+	LbTQ==
+X-Gm-Message-State: APf1xPB1iYukmVdulGfn29vvUxAjQ2wRCyDfVfUa/w2mm3DT8PlbWQul
+	F3+dMxcXWF/Il4C6kCa3FnaA0MVl
+X-Received: by 10.55.186.134 with SMTP id k128mr2977818qkf.23.1518166568937;
+	Fri, 09 Feb 2018 00:56:08 -0800 (PST)
+Received: from [192.168.1.11] ([138.117.48.219])
+	by smtp.gmail.com with ESMTPSA id
+	g64sm1347522qtd.17.2018.02.09.00.56.06
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 09 Feb 2018 00:56:08 -0800 (PST)
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+	Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>
+References: <20180208172202.9984-1-f4bug@amsat.org>
+	<20180208172202.9984-3-f4bug@amsat.org>
+	<21f7b55b-72d3-5726-ef71-032bac16e6c8@kaod.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <a6280f03-22f5-7847-d616-14a384665261@amsat.org>
+Date: Fri, 9 Feb 2018 05:56:05 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.2
+MIME-Version: 1.0
+In-Reply-To: <21f7b55b-72d3-5726-ef71-032bac16e6c8@kaod.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::241
+Subject: Re: [Qemu-arm] [PATCH 2/2] hw/arm/aspeed: simplify using the
+ 'unimplemented device' for aspeed_soc.io
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -90,61 +122,104 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: marc.zyngier@arm.com, drjones@redhat.com, cdall@kernel.org,
-	zhaoshenglong@huawei.com
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qZoUYp7NprVJ
+X-TUID: 1p2OFenb8YfZ
 
-Currently the max number of VCPUs usable along with the KVM GICv3
-device is limited to 123. The rationale is a single redistributor
-region was supported and this latter was set to [0x80A0000, 0x9000000]
-within the guest physical address space, surrounded with DIST and UART
-MMIO regions.
+On 02/08/2018 03:14 PM, Cédric Le Goater wrote:
+> On 02/08/2018 06:22 PM, Philippe Mathieu-Daudé wrote:
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> 
+> This looks like a good idea. (Have you actually tried it ? 
+> just asking)
 
-[1] now allows to register several redistributor regions.
-So this series overcomes the max 123 vcpu limitation by registering
-a new redistributor region located just after the VIRT_MEM RAM region.
-The total redistributor region capacity is set to 512 vcpus.
+v1 obviously not :S v2 yes!
 
-The max supported VCPUs in non accelerated mode is not modified.
+> 
+> Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
-Best Regards
+Thanks :)
 
-Eric
-
-Host Kernel dependencies:
-[1] [RFC v2 00/12] KVM: arm/arm64: Allow multiple GICv3 redistributor regions
-https://github.com/eauger/linux/tree/4.16-rc7-rdist-regions-rfc-v2
-
-This QEMU series can be found at:
-https://github.com/eauger/qemu/tree/v2.12.0-rc0-rdist_regions-rfc
-
-Eric Auger (8):
-  linux-headers: Partial update for KVM/ARM multiple redistributor
-    region registration
-  hw/intc/arm_gicv3: Use an array of redistributor regions
-  kvm: Expose kvm_max_vcpus()
-  hw/intc/arm_gicv3: Implement register_redist_region API
-  hw/intc/arm_gicv3_kvm: Allow multiple redistributor regions
-  hw/arm/virt: Allow GICv3 DT node with multiple redistributor regions
-  hw/arm/virt-acpi-build: Handle multiple GICR structures
-  hw/arm/virt: Allow up to 512 vcpus along with KVM VGICv3
-
- accel/kvm/kvm-all.c                |  2 +-
- accel/stubs/kvm-stub.c             |  5 ++++
- hw/arm/virt-acpi-build.c           | 21 ++++++++++----
- hw/arm/virt.c                      | 55 +++++++++++++++++++++++++++++++-----
- hw/intc/arm_gicv3.c                | 21 ++++++++++++++
- hw/intc/arm_gicv3_common.c         |  9 ++++--
- hw/intc/arm_gicv3_kvm.c            | 57 ++++++++++++++++++++++++++++++++++++--
- include/hw/arm/virt.h              |  3 ++
- include/hw/intc/arm_gicv3_common.h | 14 +++++++++-
- include/sysemu/kvm.h               |  7 +++++
- linux-headers/asm-arm/kvm.h        |  7 +++--
- linux-headers/asm-arm64/kvm.h      |  7 +++--
- 12 files changed, 182 insertions(+), 26 deletions(-)
-
--- 
-2.5.5
-
+> 
+> Thanks,
+> 
+> C. 
+> 
+>> ---
+>>  include/hw/arm/aspeed_soc.h |  1 -
+>>  hw/arm/aspeed_soc.c         | 32 +++-----------------------------
+>>  2 files changed, 3 insertions(+), 30 deletions(-)
+>>
+>> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+>> index f26914a2b9..11ec0179db 100644
+>> --- a/include/hw/arm/aspeed_soc.h
+>> +++ b/include/hw/arm/aspeed_soc.h
+>> @@ -31,7 +31,6 @@ typedef struct AspeedSoCState {
+>>  
+>>      /*< public >*/
+>>      ARMCPU cpu;
+>> -    MemoryRegion iomem;
+>>      MemoryRegion sram;
+>>      AspeedVICState vic;
+>>      AspeedTimerCtrlState timerctrl;
+>> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+>> index a786750e14..3d21128d47 100644
+>> --- a/hw/arm/aspeed_soc.c
+>> +++ b/hw/arm/aspeed_soc.c
+>> @@ -15,6 +15,7 @@
+>>  #include "qemu-common.h"
+>>  #include "cpu.h"
+>>  #include "exec/address-spaces.h"
+>> +#include "hw/misc/unimp.h"
+>>  #include "hw/arm/aspeed_soc.h"
+>>  #include "hw/char/serial.h"
+>>  #include "qemu/log.h"
+>> @@ -99,31 +100,6 @@ static const AspeedSoCInfo aspeed_socs[] = {
+>>      },
+>>  };
+>>  
+>> -/*
+>> - * IO handlers: simply catch any reads/writes to IO addresses that aren't
+>> - * handled by a device mapping.
+>> - */
+>> -
+>> -static uint64_t aspeed_soc_io_read(void *p, hwaddr offset, unsigned size)
+>> -{
+>> -    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " [%u]\n",
+>> -                  __func__, offset, size);
+>> -    return 0;
+>> -}
+>> -
+>> -static void aspeed_soc_io_write(void *opaque, hwaddr offset, uint64_t value,
+>> -                unsigned size)
+>> -{
+>> -    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " <- 0x%" PRIx64 " [%u]\n",
+>> -                  __func__, offset, value, size);
+>> -}
+>> -
+>> -static const MemoryRegionOps aspeed_soc_io_ops = {
+>> -    .read = aspeed_soc_io_read,
+>> -    .write = aspeed_soc_io_write,
+>> -    .endianness = DEVICE_LITTLE_ENDIAN,
+>> -};
+>> -
+>>  static void aspeed_soc_init(Object *obj)
+>>  {
+>>      AspeedSoCState *s = ASPEED_SOC(obj);
+>> @@ -199,10 +175,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+>>      Error *err = NULL, *local_err = NULL;
+>>  
+>>      /* IO space */
+>> -    memory_region_init_io(&s->iomem, NULL, &aspeed_soc_io_ops, NULL,
+>> -            "aspeed_soc.io", ASPEED_SOC_IOMEM_SIZE);
+>> -    memory_region_add_subregion_overlap(get_system_memory(),
+>> -                                        ASPEED_SOC_IOMEM_BASE, &s->iomem, -1);
+>> +    create_unimplemented_device("aspeed_soc.io",
+>> +                                ASPEED_SOC_IOMEM_BASE, ASPEED_SOC_IOMEM_SIZE);
+>>  
+>>      /* CPU */
+>>      object_property_set_bool(OBJECT(&s->cpu), true, "realized", &err);
+>>
+> 
+> 

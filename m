@@ -1,95 +1,107 @@
-Received: by 10.28.71.27 with SMTP id u27csp78339wma;
-        Thu, 8 Feb 2018 16:08:26 -0800 (PST)
-X-Google-Smtp-Source: AH8x2246ydqZb3O4nBgboGLpEmd4nUETj/iyZEI0w4H9DX8dK/77A1Wce+sSvpnaWrAwtXDRfGvY
-X-Received: by 10.37.185.140 with SMTP id r12mr569804ybg.283.1518134905921;
-        Thu, 08 Feb 2018 16:08:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518134905; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp101963wma;
+        Thu, 8 Feb 2018 16:41:27 -0800 (PST)
+X-Google-Smtp-Source: AH8x224rQ4I9XM/w3ta72d5yOjz47i3YxZDCENkjXr9u6yFxTRl6v0cE0/S9WJIAvJ9lMqH2HiMF
+X-Received: by 10.13.251.71 with SMTP id l68mr734391ywf.355.1518136887726;
+        Thu, 08 Feb 2018 16:41:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518136887; cv=none;
         d=google.com; s=arc-20160816;
-        b=QL1bbzfaJ6yDHu1ZRJ2z/JV53x1pddF0MQNCsrTnzscgzKiY3xfoPfBOoRv0K7UhpM
-         aBzJ9Zd3HIUMXEvvXrFp7A5B3/uLEzomqkqSb4oPFcbWBHsXQ7QLrs6rmml9fMyGmm90
-         l87UvJ3dgUWHE0KhmMMGetdW+nwF5QDk0RRC0f7RN1FGew09/jRIQ6Xz2utKiQLJ3+si
-         2dnlYeB+SU71zM2vBfGAPvRvxh4AXAM04Bqofg6NxsuXagOL3yWYjFPEI2a4LP/3CHpm
-         LocJfg/2vpUyq1brbFxmNoQSE9UmnwXO0HKH71u7Qg6/Rh1KJqe6gsDmOmG4GKitfW6Z
-         5n8A==
+        b=UDIKnDe0W4oVKKJuyuiKxnYr14Ll6puVCVi3lUSnfUkcWGA5H92JIa4Ani4O0sKQRB
+         6hc3ScbiKXKDmutC2MTCyOwhlGEbcHaV0GzRhBRA8jq8ctAUEy96Q+V1BKcOf5WZr/on
+         FHSSZFinnTv+wjr2uCfsfEwzTajCciB7MWSUzu5hLNp8CY4gramBbi0aJq7ZwE7WBdHO
+         EFDlQ+C8yZeo9l0PtDt8S81Hp78m9+BbESmGZsWkNRWuUce5Pl4/CrTWxsgpL8JmJ3dn
+         Z/VaXHpW5S68z5YUemUm+ZbzuIN7oBMffUm2cudMZWit3gGkoIzeq1iFFGU5E8LP04Nx
+         BNEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
+         :list-unsubscribe:list-id:precedence:subject:mime-version:references
+         :in-reply-to:date:to:from:message-id:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=zfIRj/tmmogjmjieGbzDAgnNkbxDKtTi9kgrjBvYKzQ=;
-        b=Mj6+ykK5Mkp4zWOiZl2bZzowY9jMG6BSHiFrEfIpf4zJ0HhPs9aqg4QAkifdpH519a
-         uhkrHH/GITLmAahOeK1fQPMlKI5ZluIy8sJVYaFlbATmJdnYHPZcFVGpHkd504uuq6Sn
-         h/ud+oK0M5fq5rOP03P7MW6HsEpis8vz4OfLoekNas2H1VHMVKqpwwYwssdqDiSpro7y
-         oIISmms3VEzTpqYw7rNM24LELmFluYT9WmP+fNylusrBCCkEEfc0UduktjA2Bd3FSm1P
-         yey6xXPMdPbE25RvnWwRMM77Ad/siKyjhc5iXN2uVLplX6FD/kwEDhmH6MNzJvYyr0ok
-         +GCw==
+        bh=bJkAtxHK++4EBtUEyYnP5gHmS231hL9LxWCC5G2bpLw=;
+        b=QhI8mJ2zKTYvDihlaaMDnx/pcm+neipBLRZ2dwBgJ+DEXLL2JW6MB97K9uhPa0Rmpz
+         d9DBQghRiPnuckzFuJFKh9ItsStaccDdAdRtKCOB142tLfGHNS1ZqX6NbrRCnlu1ERcB
+         Xcktjfv1+hIliebQsFDhLHDkrA7aeJs5lbBZrULwkifrqqJzwvSYumWKP4SgyTKjbxEo
+         FQiC7ytKYq06zGfZgpTlA/NwiPhspJwdvBk7Bpxm3JVl8bYmsZWHkDB9zvtIvAOUhn1Y
+         +fKqpWnwYrox9lfgKM3qNfGlzvU/A5ehuSKt071D/3l1EgE0FQWNX0XrsKE0l+7XHuoO
+         km/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=Y6E1UjOW;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=FkyjgIMk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u73si196640ywu.224.2018.02.08.16.08.25
+        by mx.google.com with ESMTPS id n4si201699ywc.508.2018.02.08.16.41.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 08 Feb 2018 16:08:25 -0800 (PST)
+        Thu, 08 Feb 2018 16:41:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38813 helo=lists.gnu.org)
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=Y6E1UjOW;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=FkyjgIMk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:41663 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ejwEr-0000oi-9Z
-	for alex.bennee@linaro.org; Thu, 08 Feb 2018 19:08:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38489)
+	id 1ejwkp-00079p-2i
+	for alex.bennee@linaro.org; Thu, 08 Feb 2018 19:41:27 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43706)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1ejwEi-0000mM-0z
-	for qemu-arm@nongnu.org; Thu, 08 Feb 2018 19:08:17 -0500
+	(envelope-from <andrew@aj.id.au>) id 1ejwkd-00078e-Ax
+	for qemu-arm@nongnu.org; Thu, 08 Feb 2018 19:41:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1ejwEe-0004OG-PW
-	for qemu-arm@nongnu.org; Thu, 08 Feb 2018 19:08:15 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:34280 helo=mx1.redhat.com)
+	(envelope-from <andrew@aj.id.au>) id 1ejwkZ-0005Ag-CE
+	for qemu-arm@nongnu.org; Thu, 08 Feb 2018 19:41:15 -0500
+Received: from out2-smtp.messagingengine.com ([66.111.4.26]:46609)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mst@redhat.com>)
-	id 1ejwEe-0004LP-JZ; Thu, 08 Feb 2018 19:08:12 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 73AEB402663E;
-	Fri,  9 Feb 2018 00:08:07 +0000 (UTC)
-Received: from redhat.com (ovpn-120-144.rdu2.redhat.com [10.10.120.144])
-	by smtp.corp.redhat.com (Postfix) with SMTP id ED7112166BAE;
-	Fri,  9 Feb 2018 00:08:03 +0000 (UTC)
-Date: Fri, 9 Feb 2018 02:08:03 +0200
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Andrey Smirnov <andrew.smirnov@gmail.com>
-Message-ID: <20180209020556-mutt-send-email-mst@kernel.org>
-References: <20180207042438.15422-1-andrew.smirnov@gmail.com>
-	<20180207042438.15422-11-andrew.smirnov@gmail.com>
-	<20180208194226-mutt-send-email-mst@kernel.org>
-	<CAHQ1cqGZHie0sYudPGr-15LOEjMRT05=0+tsViKfCJBnN96Nag@mail.gmail.com>
-	<20180208221121-mutt-send-email-mst@kernel.org>
-	<CAHQ1cqHGfTYyKuMEDGPWnHBbWYV2sMrqfHU6oJV3NQSv0Xi0Qg@mail.gmail.com>
-	<20180208223323-mutt-send-email-mst@kernel.org>
-	<CAHQ1cqHxUZTFiXpzdKWk1MA9QuqHC0Ljs0-uBkWZbYsNn6ix8Q@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAHQ1cqHxUZTFiXpzdKWk1MA9QuqHC0Ljs0-uBkWZbYsNn6ix8Q@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Fri, 09 Feb 2018 00:08:07 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Fri, 09 Feb 2018 00:08:07 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'mst@redhat.com' RCPT:''
+	(Exim 4.71) (envelope-from <andrew@aj.id.au>)
+	id 1ejwkZ-00059h-0Y; Thu, 08 Feb 2018 19:41:11 -0500
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id C815A20DAB;
+	Thu,  8 Feb 2018 19:41:08 -0500 (EST)
+Received: from frontend2 ([10.202.2.161])
+	by compute4.internal (MEProxy); Thu, 08 Feb 2018 19:41:08 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=cc
+	:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm1; bh=bJkAtxHK++4EBtUEyYnP5gHmS231hL9LxWCC5G2bpLw=; b=Y6E1UjOW
+	mnMO2tgX4byyWcNOikcbVetRzQ5hezFa2IgxvG9h2p0eiolb0E+GUgPBwR1LVkG7
+	1A8EDm1/Qv2cE7EFAFEA7y+ZHjDHviyMApH8l5FFTaTmIhWv78CEh+qAX+beN5uJ
+	kd8uRXnJ3eb7nNbI8ZKK1ZJ7gq9rEuQA26JctsuTyiFwoB5ID8pytWoLKTFSBFmH
+	WuM/N8BccEf9RNJynjFly99QHPRVN8NEId7UER0MMoNd4HqdNJK9V3sxwi8MsHYL
+	l9B1J8Bnw9/OdczQoUC34qfnGz2ivWZkj1jWz+6jOSI9/y0b+xtP37WVJd7HWXzb
+	OuXEAafQEIqKZA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-sender
+	:x-me-sender:x-sasl-enc; s=fm1; bh=bJkAtxHK++4EBtUEyYnP5gHmS231h
+	L9LxWCC5G2bpLw=; b=FkyjgIMkOt+hAMaB2zHdBr7DmY02ANz4kNTa6hKoHV0Qm
+	Ip5t9Fh4wNhqBZAixKRKJNBiWqI9p4nMSdGy6tXrMj35rUD342X/stGnlV3vqLOg
+	4NR3H8l981l7f/Dwydh0KvG9hQyeKvC8dIqdq4+Wl7wGrbUiC9Id3uVBcPn2gVL8
+	fAeMXMWs9U7HB95tyoUPpwkN3WsL8KNXVFdqlLJUHG2XbTiUG+OZBaOTFxGSDdqK
+	k2G7nAAKDFVpJ15FFHIsnDsuDflPLApkU/3oB1e9xjikYZ1btWDdP0dQVTjVH65f
+	mAPvHRrWSJw0l715fTb+4gAcW7vKnxUfiNIfbOXvw==
+X-ME-Sender: <xms:JO58WjvbhLT3D7Uxjuk4o8zEpmf91AGmfRcsSjvNv_7o2aynfJiq2A>
+Received: from dave (unknown [203.0.153.9])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 6636E24406;
+	Thu,  8 Feb 2018 19:41:06 -0500 (EST)
+Message-ID: <1518136859.14456.14.camel@aj.id.au>
+From: Andrew Jeffery <andrew@aj.id.au>
+To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>, Peter
+	Maydell <peter.maydell@linaro.org>
+Date: Fri, 09 Feb 2018 11:10:59 +1030
+In-Reply-To: <5562bd02-5399-b1af-f183-d9a16b0a1c62@amsat.org>
+References: <20180208172202.9984-1-f4bug@amsat.org>
+	<20180208172202.9984-2-f4bug@amsat.org>
+	<CAFEAcA_0rt7cCJs43BjW3OcQh=oeby+4j2dtFPSzgCn9tqW1qQ@mail.gmail.com>
+	<5562bd02-5399-b1af-f183-d9a16b0a1c62@amsat.org>
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-g/Ze0FZMha2DgFY+D60N"
+X-Mailer: Evolution 3.26.1-1 
+Mime-Version: 1.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [PATCH v5 10/14] pci: Add support for Designware IP
- block
+X-Received-From: 66.111.4.26
+Subject: Re: [Qemu-arm] [PATCH 1/2] hw/arm/aspeed: directly map the serial
+ device to the system address space
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,84 +113,107 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@zoho.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	"open list:ARM" <qemu-arm@nongnu.org>, Andrey Yurovsky <yurovsky@gmail.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+	=?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CiOg4eWySedT
+X-TUID: YOL092h3NNeT
 
-On Thu, Feb 08, 2018 at 12:43:03PM -0800, Andrey Smirnov wrote:
-> On Thu, Feb 8, 2018 at 12:33 PM, Michael S. Tsirkin <mst@redhat.com> wrote:
-> > On Thu, Feb 08, 2018 at 12:22:53PM -0800, Andrey Smirnov wrote:
-> >> On Thu, Feb 8, 2018 at 12:11 PM, Michael S. Tsirkin <mst@redhat.com> wrote:
-> >> > On Thu, Feb 08, 2018 at 12:03:04PM -0800, Andrey Smirnov wrote:
-> >> >> >> +#define PCIE_PORT_LINK_CONTROL          0x710
-> >> >> >> +
-> >> >> >> +#define PCIE_PHY_DEBUG_R1               0x72C
-> >> >> >> +#define PCIE_PHY_DEBUG_R1_XMLH_LINK_UP  BIT(4)
-> >> >> >> +
-> >> >> >> +#define PCIE_LINK_WIDTH_SPEED_CONTROL   0x80C
-> >> >> >> +#define PORT_LOGIC_SPEED_CHANGE         (0x1 << 17)
-> >> >> >> +
-> >> >> >> +#define PCIE_MSI_ADDR_LO                0x820
-> >> >> >> +#define PCIE_MSI_ADDR_HI                0x824
-> >> >> >> +#define PCIE_MSI_INTR0_ENABLE           0x828
-> >> >> >> +#define PCIE_MSI_INTR0_MASK             0x82C
-> >> >> >> +#define PCIE_MSI_INTR0_STATUS           0x830
-> >> >> >> +
-> >> >> >> +#define PCIE_ATU_VIEWPORT               0x900
-> >> >> >> +#define PCIE_ATU_REGION_INBOUND         (0x1 << 31)
-> >> >> >> +#define PCIE_ATU_REGION_OUTBOUND        (0x0 << 31)
-> >> >> >> +#define PCIE_ATU_REGION_INDEX2          (0x2 << 0)
-> >> >> >> +#define PCIE_ATU_REGION_INDEX1          (0x1 << 0)
-> >> >> >> +#define PCIE_ATU_REGION_INDEX0          (0x0 << 0)
-> >> >> >> +#define PCIE_ATU_CR1                    0x904
-> >> >> >> +#define PCIE_ATU_TYPE_MEM               (0x0 << 0)
-> >> >> >> +#define PCIE_ATU_TYPE_IO                (0x2 << 0)
-> >> >> >> +#define PCIE_ATU_TYPE_CFG0              (0x4 << 0)
-> >> >> >> +#define PCIE_ATU_TYPE_CFG1              (0x5 << 0)
-> >> >> >> +#define PCIE_ATU_CR2                    0x908
-> >> >> >> +#define PCIE_ATU_ENABLE                 (0x1 << 31)
-> >> >> >> +#define PCIE_ATU_BAR_MODE_ENABLE        (0x1 << 30)
-> >> >> >> +#define PCIE_ATU_LOWER_BASE             0x90C
-> >> >> >> +#define PCIE_ATU_UPPER_BASE             0x910
-> >> >> >> +#define PCIE_ATU_LIMIT                  0x914
-> >> >> >> +#define PCIE_ATU_LOWER_TARGET           0x918
-> >> >> >> +#define PCIE_ATU_BUS(x)                 (((x) >> 24) & 0xff)
-> >> >> >> +#define PCIE_ATU_DEVFN(x)               (((x) >> 16) & 0xff)
-> >> >> >> +#define PCIE_ATU_UPPER_TARGET           0x91C
-> >> >
-> >> > Can you avoid a PCIE prefix for this btw?
-> >> >
-> >>
-> >> That's how those constants were named in Linux kernel, but yeah, I'll
-> >> add a prefix to them.
-> >>
-> >> Thanks,
-> >> Andrey Smirnov
-> >
-> > In that case you should not copy it into your file.
-> > Stuff from linux kernel should be imported into standard-headers.
-> >
-> 
-> Just to be sure we are on the same page, this is the file I am talking about:
-> 
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/pci/dwc/pcie-designware.h?h=v4.15
-> 
-> you want me to put it in standard-headers/linux and get those
-> constants from there?
-> 
-> Thanks,
-> Andrey Smirnov
 
-Oh it's from a source file. I see. standard-headers/linux is for
-files exported from include/uapi.
+--=-g/Ze0FZMha2DgFY+D60N
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-I take it back then but pls rename appropriately - and I guess
-you should only copy what you actually use.
+On Thu, 2018-02-08 at 14:40 -0300, Philippe Mathieu-Daud=C3=A9 wrote:
+> On 02/08/2018 02:30 PM, Peter Maydell wrote:
+> > On 8 February 2018 at 17:22, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+rg> wrote:
+> > > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> > > ---
+> > >  hw/arm/aspeed_soc.c | 2 +-
+> > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > >=20
+> > > diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> > > index c83b7e207b..a786750e14 100644
+> > > --- a/hw/arm/aspeed_soc.c
+> > > +++ b/hw/arm/aspeed_soc.c
+> > > @@ -257,7 +257,7 @@ static void aspeed_soc_realize(DeviceState *dev, =
+Error **errp)
+> > >      /* UART - attach an 8250 to the IO space as our UART5 */
+> > >      if (serial_hds[0]) {
+> > >          qemu_irq uart5 =3D qdev_get_gpio_in(DEVICE(&s->vic), uart_ir=
+qs[4]);
+> > > -        serial_mm_init(&s->iomem, ASPEED_SOC_UART_5_BASE, 2,
+> > > +        serial_mm_init(get_system_memory(), ASPEED_SOC_UART_5_BASE, =
+2,
+> > >                         uart5, 38400, serial_hds[0], DEVICE_LITTLE_EN=
+DIAN);
+> > >      }
+> >=20
+> > Is this a bug fix? It certainly changes behaviour, which
+> > suggests that a fuller commit message would be useful.
+>=20
+> This patch is buggy indeed, using system_memory the serial address
+> should be ASPEED_SOC_IOMEM_BASE + ASPEED_SOC_UART_5_BASE.
+>=20
 
--- 
-MST
+If you'd like to test, you can grab images from here:
+
+https://openpower.xyz/job/openbmc-build/distro=3Dubuntu,target=3Dromulus/
+
+For example (without the patch):
+
+    $ wget     https://openpower.xyz/job/openbmc-build/1240/distro=3Dubuntu=
+,target=3Dromulus/artifact/deploy/images/romulus/image-bmc
+...
+$ qemu-system-arm -M romulus-bmc -m 512 -drive file=3Dimage-bmc,if=3Dmtd,fo=
+rmat=3Draw -nographic
+
+
+U-Boot 2016.07 (Jan 25 2018 - 16:31:27 +0000)  =20
+
+       Watchdog enabled                        =20
+DRAM:  496 MiB                                 =20
+Flash: 32 MiB                                  =20
+*** Warning - bad CRC, using default environment
+
+In:    serial                                  =20
+Out:   serial                                  =20
+Err:   serial                                  =20
+Net:   aspeednic#0                             =20
+Error: aspeednic#0 address not set.            =20
+
+Hit any key to stop autoboot:  0               =20
+## Loading kernel from FIT Image at 20080000 ...
+...
+
+And yeah, this patch breaks output.
+
+Thanks for the cleanup though.
+
+Andrew
+--=-g/Ze0FZMha2DgFY+D60N
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIcBAABCgAGBQJafO4bAAoJEJ0dnzgO5LT5txkP/2KVWKHTkbbw2Xlr1A8iu/05
+zhY7E/oF+qorK2j2XArDxUQ0mkcfjU3/RT4fdSDawcXvwSSOMO6PrVfyauBvUmT0
+ucM9bb73E4MQYpO6iG28p5/b7zkydoszgB2wQOy9nU+Iy0cNATXRczudfEAO0RII
+7qtxdsAoqZTCUAa0U6bGXcwc5TEqgUhoQbq71Nbrx0/ncmK5kx+Vtkh7CW2Ly6Nw
+YtSml/O4GINXLms7NXB7XRh19BoifOfyJ65I0WFmeV++71GVuEYctV+DgsblkmMG
+GnVsdSplOE4cnGuRlhSraAV9L+xGTA454jJ/Akx27c231R6mcYou7z1pYLJsvZ0O
+QguK6kAtdp7ciU0NORUnrbboXjV3J4wMeCSGEvMRNtB/zaplz0I/fpCgZzIRGRng
+moipr7JoHutE3+uPahhnWVX/ZEiWPY63kpTNyuSNb/eOeZ14Tj/5oMawGlcLo54r
+OVR6WYue/yAlv5dnyke3Mjx/hY2daQBncKfp183eBKKjO7lHK7nUHoi2veEwpn3e
+NMUjFI5xRqj5FBAikVc0wJXgTvbllkTqRujHZoro31zEQYdRrTz76x1vHoQVv818
+p1utCaxdumQypBqYmQ2Yn+IbO8hEXZw5bdx/ro4WblnQt1nG8gZQawnMG3CbjlJt
+l1eKn8DCyiYkXXSb75Pg
+=pl4p
+-----END PGP SIGNATURE-----
+
+--=-g/Ze0FZMha2DgFY+D60N--
+

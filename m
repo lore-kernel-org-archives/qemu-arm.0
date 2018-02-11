@@ -1,239 +1,193 @@
-Received: by 10.28.71.27 with SMTP id u27csp3697576wma;
-        Sun, 11 Feb 2018 13:06:12 -0800 (PST)
-X-Google-Smtp-Source: AH8x224vak9MWvE8+N6+JHUk0KyoLCTlY1q8XMAH1PQjKuTQ22zWcXGrzmJnsdsZY21otxxJutgg
-X-Received: by 10.13.231.1 with SMTP id q1mr6308274ywe.359.1518383172577;
-        Sun, 11 Feb 2018 13:06:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518383172; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp3789134wma;
+        Sun, 11 Feb 2018 15:32:02 -0800 (PST)
+X-Google-Smtp-Source: AH8x2246wBc7BQFa6+LcVJkyF/3XnIjq4AfkQFTu0ZctZALK3W9qA49dPvbEVBYAoMV+J1JlM6I4
+X-Received: by 10.129.46.213 with SMTP id u204mr1351284ywu.57.1518391922820;
+        Sun, 11 Feb 2018 15:32:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518391922; cv=none;
         d=google.com; s=arc-20160816;
-        b=xiYN6OK4gQ3mpf08BUj2XfPMVyQ4harZ5YOXzFmFsouHbshSIAseOE1fAP4F3G0eKo
-         hfXEe7y+l+y69SlXTfM7c2aWWuF1XptWGr50HhTRR5dyXEtEpBiD9GbC5QkuWnAbn9xP
-         rpoQxx7QkZPNP1//mnwggfSlieNFTJmXgI4StcINDgVm1lEkewhLFBwERXPggcaiwfRo
-         /NMQ6WFvCfZlG7xyGU6curtBqeUkJmvw65uSyWX2IMf5T5Z76QbIQRO8HdEehbDGO3Xc
-         C0FyfKGIWnkQ+f0hVXTOly96USaBGaBcMUrHAxslwcG4i92Zj54vEDfv0mwl5b37VKMa
-         wV6A==
+        b=Sodfdz9OAXeWhufJ0BJl8C6Fi/IKoTBFiCph3fJ8HcfscRA3gX840FNe6ur4XsILhz
+         a6Cgq6Uzj0vQjMRt8C2EPUGSEX7C4cEdWL+eNaxJSe694786Lcs7bg7DXTFltSQLjm8s
+         4AsCQdClqwOfQO6/bH4L2QwOWK95NednHDZCUMKUx27fSYMYrx8kiat9S+QpfhXB9ziE
+         AVsYUI4bij/XasXywIeV/a5S/GfodvaMbSqacfwCURPfIvvEsHzuwrQ3jPR9FTjex90A
+         o/2dffjJ6T3PjNU6VP14ISjqWS2tMzlUiNju0BI12WXrgUffck2dmTqgT6HtVL4Tgmkb
+         tfDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=XNE6HRogROpjH970mSZvci6V/G9pwgU/mAd5NppeIP0=;
-        b=xQljvmWT9l00UTHW5mQQei0WIjzREz4NpDiRWu9KcPSEzDkeflytf1fkOlTRuylteE
-         MtvbTBhhYEI9Y0opqJqTMEw8UE+itMrEu2DHo24AeMWL+HNS8xmOnBerSqtiT0IIsGee
-         wra5NOSKhuu9Ksx0xYTtdvDwdNCCiW2OBxMCrbrABNeC8zYH/vmusPni/maNFCJrhClr
-         yZIUEtC+1k13scXaf/8sI3srRNk8zjlP/o/bV8OeAM3+6NLnJZz9Q6n6x1MepWWrKT08
-         7o5pnYExxs7Vw5T2utduCbwSmN86WPXQC2X3WuXF2r0qZn7ZN2PQsOhyHhGJ7dtfgT+Q
-         xolA==
+         :list-unsubscribe:list-id:precedence:subject:mime-version:references
+         :in-reply-to:date:to:from:message-id:dkim-signature:dkim-signature
+         :arc-authentication-results;
+        bh=B3VLopuInayyERtXs9aHilitau6M/rFjLc/uE+UL6Bc=;
+        b=SCewLZFSxZfBUpESk0EJbAwTc422pawxQ3DzoADc/XVj1nL9IDP3Dxr6OUQGtjfAdf
+         end3t1JCJiSrKYPraswKhJQFv2drVlqk0IHyusDlyWI87Gw4DoR1SesGF4UJiwRa0aq5
+         rTogWi/LA4uZy8Skr2Mz5wufEZqStyqnDTvCVtYsXTUVnUh+KK1ZPr1JQHk9dU53S2LB
+         tJd1yLr3rMKKHoRl6smuWl4oBeKAPEM0EgY1uGYizH0GqezyNUYFE2OQfRdOCTaag8pV
+         w+u2Yb24WCb66fhwEsqpItN7baO1svPEeNCefEUUex5sAT9um1Lzq6ohSQHScB3OMAdr
+         /TyA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Ay9geIMU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=AXcdqez2;
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=lHaD6F8a;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u189si1287231ywd.753.2018.02.11.13.06.12
+        by mx.google.com with ESMTPS id r62si1346961ywh.644.2018.02.11.15.32.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 11 Feb 2018 13:06:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sun, 11 Feb 2018 15:32:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Ay9geIMU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55324 helo=lists.gnu.org)
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=AXcdqez2;
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=lHaD6F8a;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:40937 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ekypA-00041C-1Q
-	for alex.bennee@linaro.org; Sun, 11 Feb 2018 16:06:12 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40507)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1el16I-0007xn-8K
+	for alex.bennee@linaro.org; Sun, 11 Feb 2018 18:32:02 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32859)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1ekyiG-0006v2-IB
-	for qemu-devel@nongnu.org; Sun, 11 Feb 2018 15:59:05 -0500
+	(envelope-from <andrew@aj.id.au>) id 1el164-0007wS-Et
+	for qemu-arm@nongnu.org; Sun, 11 Feb 2018 18:31:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1ekyiF-0004Qj-Bu
-	for qemu-devel@nongnu.org; Sun, 11 Feb 2018 15:59:04 -0500
-Received: from mail-pl0-x243.google.com ([2607:f8b0:400e:c01::243]:37033)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1ekyiF-0004Op-4d
-	for qemu-devel@nongnu.org; Sun, 11 Feb 2018 15:59:03 -0500
-Received: by mail-pl0-x243.google.com with SMTP id ay8so4067412plb.4
-	for <qemu-devel@nongnu.org>; Sun, 11 Feb 2018 12:59:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=XNE6HRogROpjH970mSZvci6V/G9pwgU/mAd5NppeIP0=;
-	b=Ay9geIMU7SCGT2QjCa77oVuAxxIqykoEwuHiZ1b8TQsyySc7FR/3P6IQ9BKnnIsAkA
-	H8DZT3nSvg8G2+0QH1MfLl0PvSt7cVzYyDZGTA/z+xvCaLNEj5C/4WhMV/MiftwUZV9t
-	tt/nsK+bey9EJg7+ILTE/kn4zFbQVXw8iXqho=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=XNE6HRogROpjH970mSZvci6V/G9pwgU/mAd5NppeIP0=;
-	b=cs5lNd84yVYXtn+BxkI7J9tGpJgk1v9NG8EMgz8eaB/m+Z6NxZPsi/eAZB5gwh9xRx
-	Tzke039aofGXm0EVKl/GubgbtBXDtOLuo4Kzhs/1TIReDGxmQpzXMSYDmAGt4Qd8POzF
-	4tTnew8UKtSx0Fwk17g0ppRuvD85dE/8qhKtOlh9i3B0CIaWOecavOsoL9XXp9XXGVH2
-	csnN7l63sMnkpkssrz3cg+o+9cfrOP92c14PuCU15TuvrFLJUjB3Z6RSybwdTufz7Tw5
-	VbKp1XTlRBHXMt5RLyBQe5vt35GQzU2dgV9VFyKmAF+RmH+kNIdxUkwiXKl5rhGj8hlE
-	kkeg==
-X-Gm-Message-State: APf1xPAIpY3tKTRlOwjeV4li3N4jgfZ5XgHwPfSFwwsBiD3/V5XO07rY
-	ynAVidxk5jUZcBGUQ2WUdAURtI3BVtI=
-X-Received: by 2002:a17:902:7297:: with SMTP id
-	d23-v6mr2607507pll.417.1518382741763; 
-	Sun, 11 Feb 2018 12:59:01 -0800 (PST)
-Received: from cloudburst.twiddle.net (174-21-6-47.tukw.qwest.net.
-	[174.21.6.47]) by smtp.gmail.com with ESMTPSA id
-	y129sm8850354pgb.27.2018.02.11.12.59.00
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Sun, 11 Feb 2018 12:59:00 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Sun, 11 Feb 2018 12:58:48 -0800
-Message-Id: <20180211205848.4568-8-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.14.3
-In-Reply-To: <20180211205848.4568-1-richard.henderson@linaro.org>
-References: <20180211205848.4568-1-richard.henderson@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c01::243
-Subject: [Qemu-devel] [PATCH v2 7/7] linux-user: Implement aarch64
- PR_SVE_SET/GET_VL
-X-BeenThere: qemu-devel@nongnu.org
+	(envelope-from <andrew@aj.id.au>) id 1el15y-0006el-RU
+	for qemu-arm@nongnu.org; Sun, 11 Feb 2018 18:31:47 -0500
+Received: from out2-smtp.messagingengine.com ([66.111.4.26]:50389)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <andrew@aj.id.au>)
+	id 1el15y-0006aj-CC; Sun, 11 Feb 2018 18:31:42 -0500
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id C53D720AC6;
+	Sun, 11 Feb 2018 18:31:39 -0500 (EST)
+Received: from frontend1 ([10.202.2.160])
+	by compute4.internal (MEProxy); Sun, 11 Feb 2018 18:31:39 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=cc
+	:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm1; bh=B3VLopuInayyERtXs9aHilitau6M/rFjLc/uE+UL6Bc=; b=AXcdqez2
+	GUBKAf0LYvI+PzVzHLIxWKLHWvqNkZKH387GlykVz9IWrnbcgXzTmfl/0P6s6FNE
+	ZhRrLlnX0KsbcpBoF+SGlP1QTWUs3Vc6yQF4Fx3PFhy5Dzb7krxBpIJeSxUea4aK
+	g3fJViN65N4Ds5DYtHUdgFRTofFxU4jKuOU4bhWg5ezt06BwwHupdbmx+Sg/Bjyw
+	D93lVHzinRXHrprbYj44V3ZbKX+DNlZ7cMDFjZLGdtylF2l6INGpYn5jkn3ZpFte
+	hWXRTD69iLUtETKpJWhswh+m/uuh5wyuLIFSm6+73lk4fSyrf/FZuFGYpQXQ2KDQ
+	MbupJJ7U/mqNaw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-sender
+	:x-me-sender:x-sasl-enc; s=fm2; bh=B3VLopuInayyERtXs9aHilitau6M/
+	rFjLc/uE+UL6Bc=; b=lHaD6F8ampQmGhWZgZZQkgSr7QwkROZiQhXA89iiPkD80
+	jxI43UV//w6FgT/PIRRiw6QIlBSJj9DaVtul+DyH4bSAFiuO5NLoAG3IEqdSuK0K
+	krlkbJzoTkHFOtBu/TEpzVRrCL0bbjcA6/koOMCuO5pfc39VANeYDCNZIr8ZEbRa
+	Gc1XY+rYuX0u5FthtDEf2TzSWtWiYdkp4O4BgqEZjIn8DVQdzlAMKwNsBfOv0PG6
+	RSvjlyFiU+8kYcz+VJrJZGveWLiqekgvVHGQ9Vk/fAFalIejNjzqCdBdUb6cuOR/
+	dMb75e4scvm0gi+FV5gHgF6abN/rf5TtdjEhbjyJw==
+X-ME-Sender: <xms:W9KAWvRwa0qJHdStGz02iMnUN8kLS1tiAQQCUVuiX4AmD2htlPereQ>
+Received: from dave (ppp118-210-154-2.bras1.adl6.internode.on.net
+	[118.210.154.2])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 7D3507E4C7;
+	Sun, 11 Feb 2018 18:31:37 -0500 (EST)
+Message-ID: <1518391890.10440.3.camel@aj.id.au>
+From: Andrew Jeffery <andrew@aj.id.au>
+To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>, Peter
+	Maydell <peter.maydell@linaro.org>, =?ISO-8859-1?Q?C=E9dric?= Le Goater
+	<clg@kaod.org>
+Date: Mon, 12 Feb 2018 10:01:30 +1030
+In-Reply-To: <20180209085755.30414-2-f4bug@amsat.org>
+References: <20180209085755.30414-1-f4bug@amsat.org>
+	<20180209085755.30414-2-f4bug@amsat.org>
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-TDJMey167qvL9LdLtzE4"
+X-Mailer: Evolution 3.26.1-1 
+Mime-Version: 1.0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.111.4.26
+Subject: Re: [Qemu-arm] [PATCH v2 1/2] hw/arm/aspeed: directly map the
+ serial device to the system address space
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mjlrQDEOORY+
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xWc2jEdNaCzD
 
-As an implementation choice, widening VL has zeroed the
-previously inaccessible portion of the sve registers.
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/cpu.h     |  2 ++
- linux-user/syscall.c | 20 +++++++++++++++++
- target/arm/cpu64.c   | 61 ++++++++++++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 83 insertions(+)
+--=-TDJMey167qvL9LdLtzE4
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 51a3e16275..8e1016cfd6 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -842,6 +842,8 @@ int arm_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
- #ifdef TARGET_AARCH64
- int aarch64_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int reg);
- int aarch64_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
-+unsigned aarch64_get_sve_vlen(CPUARMState *env);
-+unsigned aarch64_set_sve_vlen(CPUARMState *env, unsigned vlen);
- #endif
- 
- target_ulong do_arm_semihosting(CPUARMState *env);
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 82b35a6bdf..4840bf502f 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -10659,6 +10659,26 @@ abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
-             break;
-         }
- #endif
-+#ifdef TARGET_AARCH64
-+        case 50: /* PR_SVE_SET_VL */
-+            /* We cannot support either PR_SVE_SET_VL_ONEXEC
-+               or PR_SVE_VL_INHERIT.  Therefore, anything above
-+               ARM_MAX_VQ results in EINVAL.  */
-+            if (!arm_feature(cpu_env, ARM_FEATURE_SVE)
-+                || arg2 > ARM_MAX_VQ * 16 || arg2 & 15) {
-+                ret = -TARGET_EINVAL;
-+            } else {
-+                ret = aarch64_set_sve_vlen(cpu_env, arg2);
-+            }
-+            break;
-+        case 51: /* PR_SVE_GET_VL */
-+            if (arm_feature(cpu_env, ARM_FEATURE_SVE)) {
-+                ret = aarch64_get_sve_vlen(cpu_env);
-+            } else {
-+                ret = -TARGET_EINVAL;
-+            }
-+            break;
-+#endif /* AARCH64 */
-         case PR_GET_SECCOMP:
-         case PR_SET_SECCOMP:
-             /* Disable seccomp to prevent the target disabling syscalls we
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 1c330adc28..6dee78f006 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -363,3 +363,64 @@ static void aarch64_cpu_register_types(void)
- }
- 
- type_init(aarch64_cpu_register_types)
-+
-+/* Return the current cumulative SVE VLEN.  */
-+unsigned aarch64_get_sve_vlen(CPUARMState *env)
-+{
-+    return ((env->vfp.zcr_el[1] & 0xf) + 1) * 16;
-+}
-+
-+/* Set the cumulative ZCR.EL to VLEN, or the nearest supported value.
-+   Return the new value.  */
-+unsigned aarch64_set_sve_vlen(CPUARMState *env, unsigned vl)
-+{
-+    unsigned vq = vl / 16;
-+    unsigned old_vq = (env->vfp.zcr_el[1] & 0xf) + 1;
-+
-+    if (vq < 1) {
-+        vq = 1;
-+    } else if (vq > ARM_MAX_VQ) {
-+        vq = ARM_MAX_VQ;
-+    }
-+    env->vfp.zcr_el[1] = vq - 1;
-+
-+    /* The manual sez that when SVE is enabled and VL is widened the
-+     * implementation is allowed to zero the previously inaccessible
-+     * portion of the registers.  The corollary to that is that when
-+     * SVE is enabled and VL is narrowed we are also allowed to zero
-+     * the now inaccessible portion of the registers.
-+     *
-+     * The intent of this is that no predicate bit beyond VL is ever set.
-+     * Which means that some operations on predicate registers themselves
-+     * may operate on full uint64_t or even unrolled across the maximum
-+     * uint64_t[4].  Performing 4 bits of host arithmetic unconditionally
-+     * may well be cheaper than conditionals to restrict to the operation
-+     * to the relevant portion of a uint16_t[16].
-+     *
-+     * ??? Need to move this somewhere else, so that it applies to
-+     * changes to the real system registers and EL state changes.
-+     */
-+    if (vq < old_vq) {
-+        unsigned i, j;
-+        uint64_t pmask;
-+
-+        /* Zap the high bits of the zregs.  */
-+        for (i = 0; i < 32; i++) {
-+            memset(&env->vfp.zregs[i].d[2 * vq], 0, 16 * (ARM_MAX_VQ - vq));
-+        }
-+
-+        /* Zap the high bits of the pregs and ffr.  */
-+        pmask = 0;
-+        if (vq & 3) {
-+            pmask = ~(-1ULL << (16 * (vq & 3)));
-+        }
-+        for (j = vq / 4; j < ARM_MAX_VQ / 4; j++) {
-+            for (i = 0; i < 17; ++i) {
-+                env->vfp.pregs[i].p[j] &= pmask;
-+            }
-+            pmask = 0;
-+        }
-+    }
-+
-+    return vq * 16;
-+}
--- 
-2.14.3
+On Fri, 2018-02-09 at 05:57 -0300, Philippe Mathieu-Daud=C3=A9 wrote:
+> (qemu) info mtree
+>  address-space: cpu-memory-0
+>    0000000000000000-ffffffffffffffff (prio 0, i/o): system
+>      0000000000000000-0000000007ffffff (prio 0, rom): aspeed.boot_rom
+>      000000001e600000-000000001e7fffff (prio -1, i/o): aspeed_soc.io
+> -      000000001e784000-000000001e78401f (prio 0, i/o): serial
+>      000000001e620000-000000001e6200ff (prio 0, i/o):
+> aspeed.smc.ast2500-fmc
+>      000000001e630000-000000001e6300ff (prio 0, i/o):
+> aspeed.smc.ast2500-spi1
+>      [...]
+>      000000001e720000-000000001e728fff (prio 0, ram): aspeed.sram
+>      000000001e782000-000000001e782fff (prio 0, i/o): aspeed.timer
+> +    000000001e784000-000000001e78401f (prio 0, i/o): serial
+>      000000001e785000-000000001e78501f (prio 0, i/o): aspeed.wdt
+>      000000001e785020-000000001e78503f (prio 0, i/o): aspeed.wdt
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+
+Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
+
+> ---
+>  hw/arm/aspeed_soc.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> index c83b7e207b..2a5d041b3b 100644
+> --- a/hw/arm/aspeed_soc.c
+> +++ b/hw/arm/aspeed_soc.c
+> @@ -257,7 +257,8 @@ static void aspeed_soc_realize(DeviceState *dev,
+> Error **errp)
+>      /* UART - attach an 8250 to the IO space as our UART5 */
+>      if (serial_hds[0]) {
+>          qemu_irq uart5 =3D qdev_get_gpio_in(DEVICE(&s->vic),
+> uart_irqs[4]);
+> -        serial_mm_init(&s->iomem, ASPEED_SOC_UART_5_BASE, 2,
+> +        serial_mm_init(get_system_memory(),
+> +                       ASPEED_SOC_IOMEM_BASE +
+> ASPEED_SOC_UART_5_BASE, 2,
+>                         uart5, 38400, serial_hds[0],
+> DEVICE_LITTLE_ENDIAN);
+>      }
+> =20
+--=-TDJMey167qvL9LdLtzE4
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIcBAABCgAGBQJagNJSAAoJEJ0dnzgO5LT5DQYP/RlebWcj5CXw4ucpYQbYfioh
+2bw9FXCrebmlJ5uM620SOQzAUZrtN+v6zEuNAE21snKThCf/aezitsTpbYg6YYQ0
+7nRGeQ2J05LAdEiDLKTbhENOcp+U0ArNiCro0Yk2INN5jhEC33oCOWk20MlFkjrQ
+RW1D4VcKuMmTEnv/29WFpLAdORhfqKXZtQG2KY206ZG6qks3kU/NuEipQ9TfM6iL
+3JfS+8lp8VULk6/LPE/4+/ad7VX4iHWD7FDVuKZBs6E6JGLp5i4mShY5ULfbSICh
+adbs76zF7EkGRUuLhg6phIWlIhEg6kdXVh5N3w+eaHMdVnd1NFfaPtjfBHevHOkB
+lClpwtoGtr9KJHFYWYDK60DulZ4AuYcdGPn8/rrFyMuwYoid5siC6i0TV7kjXDRH
+NCy+ol+rwJxbMCdr1WZKToYq5Nhgnn9XP5u9CSQPLItAcu6coPwluzD5DXVaa5uj
++a4lxRbV4x9qnKlaIMT22WQZyA0Qmx+4NsIhVujPv2ZvJbUGpMz2GrtkGLZSKhZe
+f0jSPNvwCATVqADMPis2yE1rgZW9LRku+L4c8veKyRdFLaU1xAbLOlpMsFxDFMor
+b3uCjFot66QITJ54oDf9zMMRfWvu9mzeaBh46SLx/uTePOqPvm5lh2/uxT7fEgTB
+E8/G4OfOeQc7FX/LSN4B
+=Og61
+-----END PGP SIGNATURE-----
+
+--=-TDJMey167qvL9LdLtzE4--
 

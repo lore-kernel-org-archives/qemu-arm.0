@@ -1,95 +1,98 @@
-Received: by 10.28.71.27 with SMTP id u27csp3691644wma;
-        Sun, 11 Feb 2018 12:59:13 -0800 (PST)
-X-Google-Smtp-Source: AH8x227E2YFJOwnupZldCWsVSQcVJwbtD4hsno6QfwAIyPJoRZb0aRPCI4kCwH5yEMjEVwyfuBR7
-X-Received: by 10.37.115.84 with SMTP id o81mr6763434ybc.211.1518382753588;
-        Sun, 11 Feb 2018 12:59:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518382753; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp3691814wma;
+        Sun, 11 Feb 2018 12:59:30 -0800 (PST)
+X-Google-Smtp-Source: AH8x227RvntDaEzDzT4WbIz16xRRuNVui9dj7dGRU6Uu4yYFl6O+sE92ZQn8TKUmVhZXVkqcttJx
+X-Received: by 10.129.81.210 with SMTP id f201mr3797175ywb.77.1518382769947;
+        Sun, 11 Feb 2018 12:59:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518382769; cv=none;
         d=google.com; s=arc-20160816;
-        b=JPb8V81KVkqaOE1Oav3di60MTL9brbF/EH7mZagKfp1bp22Z9CP3T0CCzHpQpbfdBh
-         0GljFbloHBFbN5p0JyKryYaszKMJ2FK0eNu1mnlfaADcgdobOzKT6RHxsJPEo/EefIck
-         8OQwQ+lQ1POaakJ9t4WTXn/6RB52kN85IfTbYQBXYDt3xnz0FS5VvscFa3TgFEE1lIxv
-         lO70kLjVlbly0+BE+rfrk94NcH9N4J3wvS0W16s4PUcOgVYPC5d9ay+hvOeYDsFRKVK8
-         Ln7J3BS1iHtNUGU2G1p9rZASEasEGF2n0Wx+ohjMR+99b7CY0nt8vP5rf44zy9U6ZYC6
-         XrxA==
+        b=YOY49zeC/fDeK4DpHnhS3pjWbZt5qfSqt9g2EBXtiG4bGaAY6zHC9X6rwi6sHnqH4M
+         K116Y8WWtom/FgUIpuMtYfbsbSnwFDOWuSgyZQF3A0+dq8BZqCmQJx0oVsfzV0sykYAp
+         xgYlYhHUn+Jl8tdatDGMWoP7TvRaCytluJzqw20UIs74oGTK+GD0sLbjAOl/uL22DwJW
+         sm009uZWiKOFbqXE+8tBm/H3gwLSEleft0yVNNEScnLhzb/JKegSpAUbv2W4lyusgLLf
+         FHe9bh9dQcQJknzeGv8RxCQKjzlggnIDvkEndX9o1LUJxPs1P08il3KbpC99jv8VPcNL
+         Zt4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=Jz5K9chREC4LnfSvDVGWFukSRzTtwFTUyZa/F8Z0Di4=;
-        b=q/gNUNMJJbJ6MY+RJYAAzmhatzK6DvCN56RPeWPD5PEPQ4olKK113gHOwWLzY/tgae
-         d8nEhmjGU5jjYVloLO9KZpLWNqNOKeFtDiue9+iScneKUm5XI/XWIiFObif/dWnBb2oB
-         WPEJPbW81to9o5WsgE0I5GsbE0ym1dWmMxegt2Ch48f7VLV6qwG6ExqEIGEJV+uSsaTK
-         GHdtC+Cp/bcBGqEeTwJG5huw/BiJhUtPsGGAEAxlAoQhPPNdabEb99q6SthxTNfPInHM
-         9Fy/Y4bCbM1BEqWqIkVU64PnecE4mCYaT2A7nIR+fUhpact4SbsV9QVtSpMwlKEs0XPt
-         g8lg==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=db7o6VMgdo08ugsOkXJ4Br6qKJbdNpL9zH2Gp3+8vaw=;
+        b=B5BjtahMbZh0ay817ibc4qx35Myu12TI9X98ekq8bZ/DtvFyFu4CIEk0e+ABVqEZ7W
+         hGa8VDvwpQF5MsOgIW1cWulKRmz6VVOj6y6jjYNJS6ObP6L/W879D6fD4JlYQJKDWmt2
+         7nTutKMGipMC5gPHiQpw1zNoROAVVwhjTqLn6pJN5EJ79QEP6hMER661TsQRmdU0hsTW
+         AF5jDJ9G30IRnPVO703rB0nk49+NKVG/DLn+EyKk1hvpYJbjjKfVdoyscBI2znwXx9mm
+         lgrmLsQjCBMPMwgIKQCoQhqqVTIQckZ8ZAHvPhUr77QCMnjNl0w7Vpoxv2dAlaQ2obhq
+         rsFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=h0FU/T5v;
+       dkim=fail header.i=@linaro.org header.s=google header.b=dF1sML3v;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a65si730706ybg.170.2018.02.11.12.59.13
+        by mx.google.com with ESMTPS id q65si925624ywe.776.2018.02.11.12.59.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 11 Feb 2018 12:59:13 -0800 (PST)
+        Sun, 11 Feb 2018 12:59:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=h0FU/T5v;
+       dkim=fail header.i=@linaro.org header.s=google header.b=dF1sML3v;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54929 helo=lists.gnu.org)
+Received: from localhost ([::1]:54971 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ekyiO-0006lm-VQ
-	for alex.bennee@linaro.org; Sun, 11 Feb 2018 15:59:13 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40249)
+	id 1ekyif-00079H-8j
+	for alex.bennee@linaro.org; Sun, 11 Feb 2018 15:59:29 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40311)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1ekyi6-0006iZ-W2
-	for qemu-arm@nongnu.org; Sun, 11 Feb 2018 15:58:56 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1ekyi8-0006kj-Uq
+	for qemu-arm@nongnu.org; Sun, 11 Feb 2018 15:58:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1ekyi4-00042F-3Y
-	for qemu-arm@nongnu.org; Sun, 11 Feb 2018 15:58:55 -0500
-Received: from mail-pg0-x243.google.com ([2607:f8b0:400e:c05::243]:41848)
+	(envelope-from <richard.henderson@linaro.org>) id 1ekyi7-0004A1-Db
+	for qemu-arm@nongnu.org; Sun, 11 Feb 2018 15:58:56 -0500
+Received: from mail-pg0-x241.google.com ([2607:f8b0:400e:c05::241]:45731)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1ekyi3-00040x-UL
-	for qemu-arm@nongnu.org; Sun, 11 Feb 2018 15:58:52 -0500
-Received: by mail-pg0-x243.google.com with SMTP id t4so5094143pgp.8
-	for <qemu-arm@nongnu.org>; Sun, 11 Feb 2018 12:58:51 -0800 (PST)
+	id 1ekyi7-00047o-4f
+	for qemu-arm@nongnu.org; Sun, 11 Feb 2018 15:58:55 -0500
+Received: by mail-pg0-x241.google.com with SMTP id e11so207037pgq.12
+	for <qemu-arm@nongnu.org>; Sun, 11 Feb 2018 12:58:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id;
-	bh=Jz5K9chREC4LnfSvDVGWFukSRzTtwFTUyZa/F8Z0Di4=;
-	b=h0FU/T5vNb7zpipPm16DnljyVt47zy7t7boBHnFsneWl96TIFJGJqwo1C6TtT2a5lj
-	4cmGdYOdI1/JMO1QMvjpNOf1FjXFXr6BQUDqgA5OFIYmB8AkMgXINJbb2J6i9s11tLXj
-	8SwakJeRNQiarM//Hy9yoXHZkoha7pxbYMeLY=
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=db7o6VMgdo08ugsOkXJ4Br6qKJbdNpL9zH2Gp3+8vaw=;
+	b=dF1sML3vr/csfHJSssQQ0cB9ZccsJgvF75xdElASwiNpLIwcXEpzU+h7wlf8InzN0I
+	sGNElnWxT7oQ2D9RsrdFUZUpEuY8rdsyAhmtbvBF6rtimblY7g6+Gw8SICzqrGRowlCY
+	nfLl32aqy2MyBsezfYt+tYwJqNoxYFuHFrkJI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=Jz5K9chREC4LnfSvDVGWFukSRzTtwFTUyZa/F8Z0Di4=;
-	b=GXYa9a24IdLH5dswBcbWAru8rNQb9QUkg7/VmZNZs8So7cHkkbUwmr0uCSeEuYZCXf
-	GlFOa/bZW35Sc7aHOfjimgCjCGzogQJhFHhqeVUHPfX3325ruscBx3LC3Nh4RjGaqQN2
-	00IvaHRuD9L/ZfEj+dSAQ3OsTJFknBNEkXVog/bjMhK1I6uoZ1+xlV/SO24hqYru5J11
-	tE7HO455Qf3zg0aU89iWtIz8inU6gE2ABroZoyULV59T+DkIZY8SR+gC1oW28iqZjIwG
-	ryqeLSHazqKC6AbQ2FG5k7gnBU3S44DW0Itj1lY6QTc6nc3eg9coNoAYS03UAZdOoWxO
-	DgcQ==
-X-Gm-Message-State: APf1xPCQCOtLzn+SYNX+L+4Rot+FAQon+qVHpqFuheK0jFLwQSBJuErR
-	fB1cene2fx/HNX25vr3KuviesQ==
-X-Received: by 10.99.111.71 with SMTP id k68mr7547595pgc.360.1518382730804;
-	Sun, 11 Feb 2018 12:58:50 -0800 (PST)
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references;
+	bh=db7o6VMgdo08ugsOkXJ4Br6qKJbdNpL9zH2Gp3+8vaw=;
+	b=FhywXUse02vJFgihYUmG34pm9kHFg3eXEwrT0bi4xYuZ5qLoTyKnoK4p5qNniCuDep
+	wIxuxnOcUp9KETJSAeL60bAxu29L7Pa56E2nlBczxSlaYe0qp7oFSTrP9ZCca6/w02pi
+	olaYCxVPXBV/Nw/EUndCoiE6wNC3FTLJ84jGd3sCiyQ10H46BPqZ/rEc8PUh8FpihV2k
+	DPGQEv99Cnvhs1u5J6RXNYfH3Vw2+txYrMOwPu+EgE9r0Yl15Z4rS0/a8vq+YsX40eNO
+	gDXV18wUbJwbfYcFlwsvAYvS6/T5mXi3vGSjIIt8S5g+sXR0t0BRLRWZY3DsLm8qyH5X
+	V/VQ==
+X-Gm-Message-State: APf1xPA+ETGgcatiYYTcc8Z3VYS7+2XAxboUOUZEOZXh/WZgspaRq12U
+	G6CAkt3XZQpucVFaGZ6NyfEZ3g==
+X-Received: by 10.99.147.72 with SMTP id w8mr7417602pgm.300.1518382733941;
+	Sun, 11 Feb 2018 12:58:53 -0800 (PST)
 Received: from cloudburst.twiddle.net (174-21-6-47.tukw.qwest.net.
 	[174.21.6.47]) by smtp.gmail.com with ESMTPSA id
-	y129sm8850354pgb.27.2018.02.11.12.58.49
+	y129sm8850354pgb.27.2018.02.11.12.58.52
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Sun, 11 Feb 2018 12:58:49 -0800 (PST)
+	Sun, 11 Feb 2018 12:58:53 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Sun, 11 Feb 2018 12:58:41 -0800
-Message-Id: <20180211205848.4568-1-richard.henderson@linaro.org>
+Date: Sun, 11 Feb 2018 12:58:43 -0800
+Message-Id: <20180211205848.4568-3-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.14.3
+In-Reply-To: <20180211205848.4568-1-richard.henderson@linaro.org>
+References: <20180211205848.4568-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c05::243
-Subject: [Qemu-arm] [PATCH v2 0/7] target/arm: More SVE prep work
+X-Received-From: 2607:f8b0:400e:c05::241
+Subject: [Qemu-arm] [PATCH v2 2/7] target/arm: Enforce FP access to FPCR/FPSR
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,51 +107,103 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VqI5IswhUfm8
+X-TUID: 3VFVkJ4DGpGG
 
-Changes for v2:
-Include signal frames and PR_SVE_SET/GET_VL.
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/cpu.h           | 35 ++++++++++++++++++-----------------
+ target/arm/helper.c        |  6 ++++--
+ target/arm/translate-a64.c |  3 +++
+ 3 files changed, 25 insertions(+), 19 deletions(-)
 
-
-Blurb for v1:
-First, we had noted that ARM_CP_64BIT needed to be removed from
-the ZCR_EL registers, but the patch set was applied without
-actually fixing that.
-
-Second, there's an existing bug by which the FPCR/FPSR registers
-are not properly trapped when FP is disabled.  Fix that with a
-translation-time check.
-
-Third, my attempt at using .accessfn for ZCR_EL fails to take
-into account the two different exception syndromes that must be
-raised.  Although they probably aren't as important as FPCR/FPSR,
-handle them at translation time too.
-
-Fourth, when writing to an AdvSIMD register, zero the rest of
-the SVE register.
-
-
-r~
-
-
-Richard Henderson (7):
-  target/arm: Remove ARM_CP_64BIT from ZCR_EL registers
-  target/arm: Enforce FP access to FPCR/FPSR
-  target/arm: Suppress TB end for FPCR/FPSR
-  target/arm: Enforce access to ZCR_EL at translation
-  target/arm: Handle SVE registers when using clear_vec_high
-  linux-user: Support SVE in aarch64 signal frames
-  linux-user: Implement aarch64 PR_SVE_SET/GET_VL
-
- target/arm/cpu.h           |  38 ++---
- target/arm/internals.h     |   6 +
- linux-user/signal.c        | 348 ++++++++++++++++++++++++++++++++++++---------
- linux-user/syscall.c       |  20 +++
- target/arm/cpu64.c         |  61 ++++++++
- target/arm/helper.c        |  28 ++--
- target/arm/translate-a64.c | 181 +++++++++++------------
- 7 files changed, 480 insertions(+), 202 deletions(-)
-
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 521444a5a1..e966a57f8a 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1714,7 +1714,7 @@ static inline uint64_t cpreg_to_kvm_id(uint32_t cpregid)
+ }
+ 
+ /* ARMCPRegInfo type field bits. If the SPECIAL bit is set this is a
+- * special-behaviour cp reg and bits [15..8] indicate what behaviour
++ * special-behaviour cp reg and bits [11..8] indicate what behaviour
+  * it has. Otherwise it is a simple cp reg, where CONST indicates that
+  * TCG can assume the value to be constant (ie load at translate time)
+  * and 64BIT indicates a 64 bit wide coprocessor register. SUPPRESS_TB_END
+@@ -1735,24 +1735,25 @@ static inline uint64_t cpreg_to_kvm_id(uint32_t cpregid)
+  * need to be surrounded by gen_io_start()/gen_io_end(). In particular,
+  * registers which implement clocks or timers require this.
+  */
+-#define ARM_CP_SPECIAL 1
+-#define ARM_CP_CONST 2
+-#define ARM_CP_64BIT 4
+-#define ARM_CP_SUPPRESS_TB_END 8
+-#define ARM_CP_OVERRIDE 16
+-#define ARM_CP_ALIAS 32
+-#define ARM_CP_IO 64
+-#define ARM_CP_NO_RAW 128
+-#define ARM_CP_NOP (ARM_CP_SPECIAL | (1 << 8))
+-#define ARM_CP_WFI (ARM_CP_SPECIAL | (2 << 8))
+-#define ARM_CP_NZCV (ARM_CP_SPECIAL | (3 << 8))
+-#define ARM_CP_CURRENTEL (ARM_CP_SPECIAL | (4 << 8))
+-#define ARM_CP_DC_ZVA (ARM_CP_SPECIAL | (5 << 8))
+-#define ARM_LAST_SPECIAL ARM_CP_DC_ZVA
++#define ARM_CP_SPECIAL           0x0001
++#define ARM_CP_CONST             0x0002
++#define ARM_CP_64BIT             0x0004
++#define ARM_CP_SUPPRESS_TB_END   0x0008
++#define ARM_CP_OVERRIDE          0x0010
++#define ARM_CP_ALIAS             0x0020
++#define ARM_CP_IO                0x0040
++#define ARM_CP_NO_RAW            0x0080
++#define ARM_CP_NOP               (ARM_CP_SPECIAL | 0x0100)
++#define ARM_CP_WFI               (ARM_CP_SPECIAL | 0x0200)
++#define ARM_CP_NZCV              (ARM_CP_SPECIAL | 0x0300)
++#define ARM_CP_CURRENTEL         (ARM_CP_SPECIAL | 0x0400)
++#define ARM_CP_DC_ZVA            (ARM_CP_SPECIAL | 0x0500)
++#define ARM_LAST_SPECIAL         ARM_CP_DC_ZVA
++#define ARM_CP_FPU               0x1000
+ /* Used only as a terminator for ARMCPRegInfo lists */
+-#define ARM_CP_SENTINEL 0xffff
++#define ARM_CP_SENTINEL          0xffff
+ /* Mask of only the flag bits in a type field */
+-#define ARM_CP_FLAG_MASK 0xff
++#define ARM_CP_FLAG_MASK         0x10ff
+ 
+ /* Valid values for ARMCPRegInfo state field, indicating which of
+  * the AArch32 and AArch64 execution states this register is visible in.
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 4b102ec356..d41fb8371f 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -3356,10 +3356,12 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+       .writefn = aa64_daif_write, .resetfn = arm_cp_reset_ignore },
+     { .name = "FPCR", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 3, .opc2 = 0, .crn = 4, .crm = 4,
+-      .access = PL0_RW, .readfn = aa64_fpcr_read, .writefn = aa64_fpcr_write },
++      .access = PL0_RW, .type = ARM_CP_FPU,
++      .readfn = aa64_fpcr_read, .writefn = aa64_fpcr_write },
+     { .name = "FPSR", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 3, .opc2 = 1, .crn = 4, .crm = 4,
+-      .access = PL0_RW, .readfn = aa64_fpsr_read, .writefn = aa64_fpsr_write },
++      .access = PL0_RW, .type = ARM_CP_FPU,
++      .readfn = aa64_fpsr_read, .writefn = aa64_fpsr_write },
+     { .name = "DCZID_EL0", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 3, .opc2 = 7, .crn = 0, .crm = 0,
+       .access = PL0_R, .type = ARM_CP_NO_RAW,
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index fb1a4cb532..89f50558a7 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -1631,6 +1631,9 @@ static void handle_sys(DisasContext *s, uint32_t insn, bool isread,
+     default:
+         break;
+     }
++    if ((ri->type & ARM_CP_FPU) && !fp_access_check(s)) {
++        return;
++    }
+ 
+     if ((tb_cflags(s->base.tb) & CF_USE_ICOUNT) && (ri->type & ARM_CP_IO)) {
+         gen_io_start();
 -- 
 2.14.3
 

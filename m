@@ -1,99 +1,99 @@
-Received: by 10.28.71.27 with SMTP id u27csp3691920wma;
-        Sun, 11 Feb 2018 12:59:40 -0800 (PST)
-X-Google-Smtp-Source: AH8x227q9tJuJlda8t1NDIHRl7VEYYXle6EY0LbNGgx8u3mhc+t9bwUmrJAwn6FfHgyHfckQaxN1
-X-Received: by 10.129.238.16 with SMTP id l16mr6453532ywm.221.1518382780822;
-        Sun, 11 Feb 2018 12:59:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518382780; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp3692246wma;
+        Sun, 11 Feb 2018 13:00:09 -0800 (PST)
+X-Google-Smtp-Source: AH8x226Ud9D5YJ/pBFQsqNBzAp8AU7U+11aiZ1QAnCwAm0tOHLSD0+VAh92JIXkUHUUigVETDUcM
+X-Received: by 10.37.91.68 with SMTP id p65mr6469362ybb.4.1518382809405;
+        Sun, 11 Feb 2018 13:00:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518382809; cv=none;
         d=google.com; s=arc-20160816;
-        b=lzoFmmN3xeHa2vAhBOOQJ/OFL2AU8HTXu/J9YQU0FSM1qq1ByFhovscA6Pr16rN823
-         wu9qt2QnZKWSzQGV1LD14HkSdR4wQTLMAIeNYu8CFJ7wA4A+wyaRwSFOQXBsfSbYYaLa
-         H3yk3Ru3p1Ea7cg+3PlTOCmdky9rg8qCwR55bOHX31VcWv5josBEZLlXhrhOFyA5NyY8
-         W5Bgz2P7xJceanGUfD1M2iwlEwTdFHBB0VGGB+G5TJrZiyUbSrxU7QIlvMyh4YGUwYN9
-         RtyLFzU4AQrLUsUbW/Jh8JTHSsoNIKdgMSKcohUXR5dgVrHd1yFOsmL0QURyrvkM/fkq
-         SyKw==
+        b=KRI/fsvMQ6GfF/o00RUXvj4FR8u7O6nd3U/p83JS+0RKomrM6rsnFqMZ3K6vLfhliu
+         UwKFRud2HFeTqVX4zGaX33uefotDYdv83fCzOXD6z2xtCtURuvv/5HmGf7I0Qx03j+Lw
+         h1z9HNmNSSRDuxI+9W3G9Dml8phFDyb1eUgl22n2uzY7qzz3yWmp4M/VTXOihN5eKthK
+         L1xLYcaD78f0UI8WHPJDnKmKTcS2oxlSIU0fUo/zzAttCf+4Iej9kj3in0i5ss3NCZpH
+         xecOfOM0VeB2hS7mPhE5KX9d7yDufAlqdom2J/fGlqCH2wJo8Y1n1tjwbheFU8TzseaH
+         mC6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=nL6gPUlDY152kgVDfEyFrw2bQqSTgTyjJgXC6doQ4ns=;
-        b=NQZwprI+Uq+TfnjtHbzPXY8Zp0D0gmMtbyndhcCdv2s8LlWmNvvdvQSGz69kssn3sH
-         dbaYGsKITsFN3AxSgXPE9950/4eB7m5zG6VzlfxdNW/rcNd9q0uWHBOKInxpdskDUD3d
-         nsnP3rDYxpBd0RwuxV9mPAf8YqfepeBw97ddj4SIS0E7IdZpOA91e6SokZrVU8s+64b3
-         9BlPmCYvFo9BUrAxEXMH+QNd4t7j5+EE+baTbxYs+/wUW5U3pUF/+oYgRJdMznnRsg4d
-         nUR8I8kQpJMlg2lUn54wABr5xJgxyWaO34jyuL8dAyTACbpmz04161xOct/wMtSvRcKq
-         QvIA==
+        bh=0RZ/Dwu85IRJts+xxg49wprCBup0YeyQq2OHAWxr7S4=;
+        b=G812OEJbl7zA5lydYQOyc868QZwQPupTvp4vfaKhBDCxwORjwoLUPCyWvCn+lHK4DE
+         m9TGOhvK9T+OYbYgJcT/z1Fe42IIj01pLlllJjQK5u2T8rqdV9crj6IWti53S5wkxihs
+         HmHY/3Br3mnpK/FXV3e+ci18ls3TKR3CQjXyv3ji64w/3ojLRcfcK3pSppctRvPrMaa5
+         WBCvQqDTn7N8gKWS6k1CQxkQPTMGj1D37goZi2b1g4ubvn8tNPw74VeGzcHuulmrahZ7
+         FkJnYucrgmZFzpVHdVeqB8kFCt9j4sUBWW/PstGah8GF8O4t0MgNNwS44ZwAiYNLIF4t
+         nLaA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OO+lnWxN;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Fx/QatXK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s185si1301925ybc.394.2018.02.11.12.59.40
+        by mx.google.com with ESMTPS id s6si1376448ywb.516.2018.02.11.13.00.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 11 Feb 2018 12:59:40 -0800 (PST)
+        Sun, 11 Feb 2018 13:00:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OO+lnWxN;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Fx/QatXK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54942 helo=lists.gnu.org)
+Received: from localhost ([::1]:54972 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ekyiq-0006t3-7z
-	for alex.bennee@linaro.org; Sun, 11 Feb 2018 15:59:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40335)
+	id 1ekyjI-0007PR-NM
+	for alex.bennee@linaro.org; Sun, 11 Feb 2018 16:00:08 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40442)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1ekyiA-0006lp-0z
-	for qemu-devel@nongnu.org; Sun, 11 Feb 2018 15:59:00 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1ekyiE-0006qN-Co
+	for qemu-devel@nongnu.org; Sun, 11 Feb 2018 15:59:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1ekyi9-0004DX-4I
-	for qemu-devel@nongnu.org; Sun, 11 Feb 2018 15:58:58 -0500
-Received: from mail-pg0-x241.google.com ([2607:f8b0:400e:c05::241]:36565)
+	(envelope-from <richard.henderson@linaro.org>) id 1ekyiC-0004Jz-Dg
+	for qemu-devel@nongnu.org; Sun, 11 Feb 2018 15:59:02 -0500
+Received: from mail-pg0-x241.google.com ([2607:f8b0:400e:c05::241]:44445)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1ekyi8-0004C8-U6
-	for qemu-devel@nongnu.org; Sun, 11 Feb 2018 15:58:57 -0500
-Received: by mail-pg0-x241.google.com with SMTP id j9so5072948pgv.3
-	for <qemu-devel@nongnu.org>; Sun, 11 Feb 2018 12:58:56 -0800 (PST)
+	id 1ekyiC-0004J7-5L
+	for qemu-devel@nongnu.org; Sun, 11 Feb 2018 15:59:00 -0500
+Received: by mail-pg0-x241.google.com with SMTP id j9so5587281pgp.11
+	for <qemu-devel@nongnu.org>; Sun, 11 Feb 2018 12:58:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=nL6gPUlDY152kgVDfEyFrw2bQqSTgTyjJgXC6doQ4ns=;
-	b=OO+lnWxNmvkWTzfLrcSIaeRL7n6XLGjyybxXO0HWc9X9/3UddV2hiEVFEw29MlpomU
-	OWCLYvtjoblYWTL/TvZwqpwCAv1wDrQKX/N9ZLgzraEPH9xNHpAbGDI+UsOugATlNxPm
-	ZwtFixLV+X/aGqcOFLlj/cntQILV0EpsAIoiQ=
+	bh=0RZ/Dwu85IRJts+xxg49wprCBup0YeyQq2OHAWxr7S4=;
+	b=Fx/QatXKxu+Xm+t/sMDOO+ZNw0au4EpoIBDjOxaFa6WgHiplKPqcH8MlOhH3aiIoML
+	BJt/z96t7qMJopTpWqign0oufnMmzquCpizg6K/g/NklR6+Ad8f93OeqfgiKjKU1jdPs
+	lWuz8DvkMEzr7YxJPg0LchfF+cMr1xS0q4Hks=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=nL6gPUlDY152kgVDfEyFrw2bQqSTgTyjJgXC6doQ4ns=;
-	b=Vum5WTLnDzuqaZg8HjsZMqg+Y/t08h8qRmofPc3+NvFPCcK3Fa61onGEAUGfnuVfji
-	NQ88knhYrUJLrYlvFodJVXP7u8S+N6tFZqJF1CJ/jMLvxCS9HcFWsxqN3L2L8D/ew02i
-	JB54QbhB+8C3o6cCSzRhndPydMh+z8k0nJsT0GbVP9kM9Jn4D4iDAOg+5ZDOxf/CT0Th
-	a3GMOfOAavtG+J4O8/OKsGHlDDDD4Thxdxusc0oh/7zgOTzlH1fbm8oxnXYvliIpKaOe
-	YDkY2eSN406u4QGWtQE3TJcT2c8GT8laLSic4VgRInfZynqtL/8ROW8JzwduscnJnixQ
-	ov/A==
-X-Gm-Message-State: APf1xPDl85NvyLAwayBRrJhoqY2fn7I14sEZlSNK02muOCCaK8MOX7Wu
-	zMI5H29CmxgtBDsqh72ucyrviJVVwXA=
-X-Received: by 10.101.88.138 with SMTP id d10mr7978050pgu.52.1518382735654;
-	Sun, 11 Feb 2018 12:58:55 -0800 (PST)
+	bh=0RZ/Dwu85IRJts+xxg49wprCBup0YeyQq2OHAWxr7S4=;
+	b=JodwYzGVxg0pFLqGHWrH73zJJDBMAlt0onna3M+22deW3L/SIy27AyWKzWfiLzJkLq
+	gor3bTbYZOJoPFz+lnolz7iiKAJS4Xs55T2ibSBIju9sLm3xJR0Bi/GZKe/03Mb7YV+z
+	E9tFVd30g9VYvBqV7SBmYk5AGIMjJbw1jRbhs6SNgi3PsC3VJJ5oKaH6rVlx4UUTiV88
+	nsdO79VibJ2uFSC5FXfu494ixlI5PWzn1VHk5W5AlZepIMyl8bpFHK0H3+EjoOY6xk46
+	EY6Mnr72juTeHt4dDDodVE8noG6ZaGZvfzZBvMMJ0IHobRBZWDd0sUpn1ahG5naRhB0n
+	/0rg==
+X-Gm-Message-State: APf1xPDRKPxl82gna/+g0rWVRNeVV8va9HVaLPF458JmBaG/dbv1UySX
+	jiZJMAWiE+drVu/RQn3kUyqIWhPBUOo=
+X-Received: by 10.99.37.7 with SMTP id l7mr7741682pgl.311.1518382738690;
+	Sun, 11 Feb 2018 12:58:58 -0800 (PST)
 Received: from cloudburst.twiddle.net (174-21-6-47.tukw.qwest.net.
 	[174.21.6.47]) by smtp.gmail.com with ESMTPSA id
-	y129sm8850354pgb.27.2018.02.11.12.58.54
+	y129sm8850354pgb.27.2018.02.11.12.58.57
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Sun, 11 Feb 2018 12:58:54 -0800 (PST)
+	Sun, 11 Feb 2018 12:58:57 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Sun, 11 Feb 2018 12:58:44 -0800
-Message-Id: <20180211205848.4568-4-richard.henderson@linaro.org>
+Date: Sun, 11 Feb 2018 12:58:46 -0800
+Message-Id: <20180211205848.4568-6-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.14.3
 In-Reply-To: <20180211205848.4568-1-richard.henderson@linaro.org>
 References: <20180211205848.4568-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2607:f8b0:400e:c05::241
-Subject: [Qemu-devel] [PATCH v2 3/7] target/arm: Suppress TB end for
- FPCR/FPSR
+Subject: [Qemu-devel] [PATCH v2 5/7] target/arm: Handle SVE registers when
+ using clear_vec_high
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,33 +108,422 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yCRNt8apa6w5
+X-TUID: EIqPTpDRgh8q
 
-Nothing in either register affects the TB.
+When storing to an AdvSIMD FP register, all of the high
+bits of the SVE register are zeroed.  Therefore, call it
+more often with is_q as a parameter.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ target/arm/translate-a64.c | 162 +++++++++++++++++----------------------------
+ 1 file changed, 62 insertions(+), 100 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index d41fb8371f..e0184c7162 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -3356,11 +3356,11 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
-       .writefn = aa64_daif_write, .resetfn = arm_cp_reset_ignore },
-     { .name = "FPCR", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .opc2 = 0, .crn = 4, .crm = 4,
--      .access = PL0_RW, .type = ARM_CP_FPU,
-+      .access = PL0_RW, .type = ARM_CP_FPU | ARM_CP_SUPPRESS_TB_END,
-       .readfn = aa64_fpcr_read, .writefn = aa64_fpcr_write },
-     { .name = "FPSR", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .opc2 = 1, .crn = 4, .crm = 4,
--      .access = PL0_RW, .type = ARM_CP_FPU,
-+      .access = PL0_RW, .type = ARM_CP_FPU | ARM_CP_SUPPRESS_TB_END,
-       .readfn = aa64_fpsr_read, .writefn = aa64_fpsr_write },
-     { .name = "DCZID_EL0", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .opc2 = 7, .crn = 0, .crm = 0,
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index e3881d4999..1c88539d62 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -602,13 +602,30 @@ static TCGv_i32 read_fp_sreg(DisasContext *s, int reg)
+     return v;
+ }
+ 
++/* Clear the bits above an N-bit vector, for N = (is_q ? 128 : 64).
++ * If SVE is not enabled, then there are only 128 bits in the vector.
++ */
++static void clear_vec_high(DisasContext *s, bool is_q, int rd)
++{
++    unsigned ofs = fp_reg_offset(s, rd, MO_64);
++    unsigned vsz = vec_full_reg_size(s);
++
++    if (!is_q) {
++        TCGv_i64 tcg_zero = tcg_const_i64(0);
++        tcg_gen_st_i64(tcg_zero, cpu_env, ofs + 8);
++        tcg_temp_free_i64(tcg_zero);
++    }
++    if (vsz > 16) {
++        tcg_gen_gvec_dup8i(ofs + 16, vsz - 16, vsz - 16, 0);
++    }
++}
++
+ static void write_fp_dreg(DisasContext *s, int reg, TCGv_i64 v)
+ {
+-    TCGv_i64 tcg_zero = tcg_const_i64(0);
++    unsigned ofs = fp_reg_offset(s, reg, MO_64);
+ 
+-    tcg_gen_st_i64(v, cpu_env, fp_reg_offset(s, reg, MO_64));
+-    tcg_gen_st_i64(tcg_zero, cpu_env, fp_reg_hi_offset(s, reg));
+-    tcg_temp_free_i64(tcg_zero);
++    tcg_gen_st_i64(v, cpu_env, ofs);
++    clear_vec_high(s, false, reg);
+ }
+ 
+ static void write_fp_sreg(DisasContext *s, int reg, TCGv_i32 v)
+@@ -1009,6 +1026,8 @@ static void do_fp_ld(DisasContext *s, int destidx, TCGv_i64 tcg_addr, int size)
+ 
+     tcg_temp_free_i64(tmplo);
+     tcg_temp_free_i64(tmphi);
++
++    clear_vec_high(s, true, destidx);
+ }
+ 
+ /*
+@@ -1124,17 +1143,6 @@ static void write_vec_element_i32(DisasContext *s, TCGv_i32 tcg_src,
+     }
+ }
+ 
+-/* Clear the high 64 bits of a 128 bit vector (in general non-quad
+- * vector ops all need to do this).
+- */
+-static void clear_vec_high(DisasContext *s, int rd)
+-{
+-    TCGv_i64 tcg_zero = tcg_const_i64(0);
+-
+-    write_vec_element(s, tcg_zero, rd, 1, MO_64);
+-    tcg_temp_free_i64(tcg_zero);
+-}
+-
+ /* Store from vector register to memory */
+ static void do_vec_st(DisasContext *s, int srcidx, int element,
+                       TCGv_i64 tcg_addr, int size)
+@@ -2794,12 +2802,13 @@ static void disas_ldst_multiple_struct(DisasContext *s, uint32_t insn)
+                     /* For non-quad operations, setting a slice of the low
+                      * 64 bits of the register clears the high 64 bits (in
+                      * the ARM ARM pseudocode this is implicit in the fact
+-                     * that 'rval' is a 64 bit wide variable). We optimize
+-                     * by noticing that we only need to do this the first
+-                     * time we touch a register.
++                     * that 'rval' is a 64 bit wide variable).
++                     * For quad operations, we might still need to zero the
++                     * high bits of SVE.  We optimize by noticing that we only
++                     * need to do this the first time we touch a register.
+                      */
+-                    if (!is_q && e == 0 && (r == 0 || xs == selem - 1)) {
+-                        clear_vec_high(s, tt);
++                    if (e == 0 && (r == 0 || xs == selem - 1)) {
++                        clear_vec_high(s, is_q, tt);
+                     }
+                 }
+                 tcg_gen_addi_i64(tcg_addr, tcg_addr, ebytes);
+@@ -2942,10 +2951,9 @@ static void disas_ldst_single_struct(DisasContext *s, uint32_t insn)
+             write_vec_element(s, tcg_tmp, rt, 0, MO_64);
+             if (is_q) {
+                 write_vec_element(s, tcg_tmp, rt, 1, MO_64);
+-            } else {
+-                clear_vec_high(s, rt);
+             }
+             tcg_temp_free_i64(tcg_tmp);
++            clear_vec_high(s, is_q, rt);
+         } else {
+             /* Load/store one element per register */
+             if (is_load) {
+@@ -6718,7 +6726,6 @@ static void handle_vec_simd_sqshrn(DisasContext *s, bool is_scalar, bool is_q,
+     }
+ 
+     if (!is_q) {
+-        clear_vec_high(s, rd);
+         write_vec_element(s, tcg_final, rd, 0, MO_64);
+     } else {
+         write_vec_element(s, tcg_final, rd, 1, MO_64);
+@@ -6731,7 +6738,8 @@ static void handle_vec_simd_sqshrn(DisasContext *s, bool is_scalar, bool is_q,
+     tcg_temp_free_i64(tcg_rd);
+     tcg_temp_free_i32(tcg_rd_narrowed);
+     tcg_temp_free_i64(tcg_final);
+-    return;
++
++    clear_vec_high(s, is_q, rd);
+ }
+ 
+ /* SQSHLU, UQSHL, SQSHL: saturating left shifts */
+@@ -6795,10 +6803,7 @@ static void handle_simd_qshl(DisasContext *s, bool scalar, bool is_q,
+             tcg_temp_free_i64(tcg_op);
+         }
+         tcg_temp_free_i64(tcg_shift);
+-
+-        if (!is_q) {
+-            clear_vec_high(s, rd);
+-        }
++        clear_vec_high(s, is_q, rd);
+     } else {
+         TCGv_i32 tcg_shift = tcg_const_i32(shift);
+         static NeonGenTwoOpEnvFn * const fns[2][2][3] = {
+@@ -6847,8 +6852,8 @@ static void handle_simd_qshl(DisasContext *s, bool scalar, bool is_q,
+         }
+         tcg_temp_free_i32(tcg_shift);
+ 
+-        if (!is_q && !scalar) {
+-            clear_vec_high(s, rd);
++        if (!scalar) {
++            clear_vec_high(s, is_q, rd);
+         }
+     }
+ }
+@@ -6901,13 +6906,11 @@ static void handle_simd_intfp_conv(DisasContext *s, int rd, int rn,
+         }
+     }
+ 
+-    if (!is_double && elements == 2) {
+-        clear_vec_high(s, rd);
+-    }
+-
+     tcg_temp_free_i64(tcg_int);
+     tcg_temp_free_ptr(tcg_fpst);
+     tcg_temp_free_i32(tcg_shift);
++
++    clear_vec_high(s, elements << size == 16, rd);
+ }
+ 
+ /* UCVTF/SCVTF - Integer to FP conversion */
+@@ -6995,9 +6998,7 @@ static void handle_simd_shift_fpint_conv(DisasContext *s, bool is_scalar,
+             write_vec_element(s, tcg_op, rd, pass, MO_64);
+             tcg_temp_free_i64(tcg_op);
+         }
+-        if (!is_q) {
+-            clear_vec_high(s, rd);
+-        }
++        clear_vec_high(s, is_q, rd);
+     } else {
+         int maxpass = is_scalar ? 1 : is_q ? 4 : 2;
+         for (pass = 0; pass < maxpass; pass++) {
+@@ -7016,8 +7017,8 @@ static void handle_simd_shift_fpint_conv(DisasContext *s, bool is_scalar,
+             }
+             tcg_temp_free_i32(tcg_op);
+         }
+-        if (!is_q && !is_scalar) {
+-            clear_vec_high(s, rd);
++        if (!is_scalar) {
++            clear_vec_high(s, is_q, rd);
+         }
+     }
+ 
+@@ -7502,10 +7503,7 @@ static void handle_3same_float(DisasContext *s, int size, int elements,
+ 
+     tcg_temp_free_ptr(fpst);
+ 
+-    if ((elements << size) < 4) {
+-        /* scalar, or non-quad vector op */
+-        clear_vec_high(s, rd);
+-    }
++    clear_vec_high(s, elements * (size ? 8 : 4) > 8, rd);
+ }
+ 
+ /* AdvSIMD scalar three same
+@@ -7831,13 +7829,11 @@ static void handle_2misc_fcmp_zero(DisasContext *s, int opcode,
+             }
+             write_vec_element(s, tcg_res, rd, pass, MO_64);
+         }
+-        if (is_scalar) {
+-            clear_vec_high(s, rd);
+-        }
+-
+         tcg_temp_free_i64(tcg_res);
+         tcg_temp_free_i64(tcg_zero);
+         tcg_temp_free_i64(tcg_op);
++
++        clear_vec_high(s, !is_scalar, rd);
+     } else {
+         TCGv_i32 tcg_op = tcg_temp_new_i32();
+         TCGv_i32 tcg_zero = tcg_const_i32(0);
+@@ -7888,8 +7884,8 @@ static void handle_2misc_fcmp_zero(DisasContext *s, int opcode,
+         tcg_temp_free_i32(tcg_res);
+         tcg_temp_free_i32(tcg_zero);
+         tcg_temp_free_i32(tcg_op);
+-        if (!is_q && !is_scalar) {
+-            clear_vec_high(s, rd);
++        if (!is_scalar) {
++            clear_vec_high(s, is_q, rd);
+         }
+     }
+ 
+@@ -7925,12 +7921,9 @@ static void handle_2misc_reciprocal(DisasContext *s, int opcode,
+             }
+             write_vec_element(s, tcg_res, rd, pass, MO_64);
+         }
+-        if (is_scalar) {
+-            clear_vec_high(s, rd);
+-        }
+-
+         tcg_temp_free_i64(tcg_res);
+         tcg_temp_free_i64(tcg_op);
++        clear_vec_high(s, !is_scalar, rd);
+     } else {
+         TCGv_i32 tcg_op = tcg_temp_new_i32();
+         TCGv_i32 tcg_res = tcg_temp_new_i32();
+@@ -7970,8 +7963,8 @@ static void handle_2misc_reciprocal(DisasContext *s, int opcode,
+         }
+         tcg_temp_free_i32(tcg_res);
+         tcg_temp_free_i32(tcg_op);
+-        if (!is_q && !is_scalar) {
+-            clear_vec_high(s, rd);
++        if (!is_scalar) {
++            clear_vec_high(s, is_q, rd);
+         }
+     }
+     tcg_temp_free_ptr(fpst);
+@@ -8077,9 +8070,7 @@ static void handle_2misc_narrow(DisasContext *s, bool scalar,
+         write_vec_element_i32(s, tcg_res[pass], rd, destelt + pass, MO_32);
+         tcg_temp_free_i32(tcg_res[pass]);
+     }
+-    if (!is_q) {
+-        clear_vec_high(s, rd);
+-    }
++    clear_vec_high(s, is_q, rd);
+ }
+ 
+ /* Remaining saturating accumulating ops */
+@@ -8104,12 +8095,9 @@ static void handle_2misc_satacc(DisasContext *s, bool is_scalar, bool is_u,
+             }
+             write_vec_element(s, tcg_rd, rd, pass, MO_64);
+         }
+-        if (is_scalar) {
+-            clear_vec_high(s, rd);
+-        }
+-
+         tcg_temp_free_i64(tcg_rd);
+         tcg_temp_free_i64(tcg_rn);
++        clear_vec_high(s, !is_scalar, rd);
+     } else {
+         TCGv_i32 tcg_rn = tcg_temp_new_i32();
+         TCGv_i32 tcg_rd = tcg_temp_new_i32();
+@@ -8167,13 +8155,9 @@ static void handle_2misc_satacc(DisasContext *s, bool is_scalar, bool is_u,
+             }
+             write_vec_element_i32(s, tcg_rd, rd, pass, MO_32);
+         }
+-
+-        if (!is_q) {
+-            clear_vec_high(s, rd);
+-        }
+-
+         tcg_temp_free_i32(tcg_rd);
+         tcg_temp_free_i32(tcg_rn);
++        clear_vec_high(s, is_q, rd);
+     }
+ }
+ 
+@@ -8664,9 +8648,7 @@ static void handle_vec_simd_shri(DisasContext *s, bool is_q, bool is_u,
+     tcg_temp_free_i64(tcg_round);
+ 
+  done:
+-    if (!is_q) {
+-        clear_vec_high(s, rd);
+-    }
++    clear_vec_high(s, is_q, rd);
+ }
+ 
+ static void gen_shl8_ins_i64(TCGv_i64 d, TCGv_i64 a, int64_t shift)
+@@ -8855,19 +8837,18 @@ static void handle_vec_simd_shrn(DisasContext *s, bool is_q,
+     }
+ 
+     if (!is_q) {
+-        clear_vec_high(s, rd);
+         write_vec_element(s, tcg_final, rd, 0, MO_64);
+     } else {
+         write_vec_element(s, tcg_final, rd, 1, MO_64);
+     }
+-
+     if (round) {
+         tcg_temp_free_i64(tcg_round);
+     }
+     tcg_temp_free_i64(tcg_rn);
+     tcg_temp_free_i64(tcg_rd);
+     tcg_temp_free_i64(tcg_final);
+-    return;
++
++    clear_vec_high(s, is_q, rd);
+ }
+ 
+ 
+@@ -9261,9 +9242,7 @@ static void handle_3rd_narrowing(DisasContext *s, int is_q, int is_u, int size,
+         write_vec_element_i32(s, tcg_res[pass], rd, pass + part, MO_32);
+         tcg_temp_free_i32(tcg_res[pass]);
+     }
+-    if (!is_q) {
+-        clear_vec_high(s, rd);
+-    }
++    clear_vec_high(s, is_q, rd);
+ }
+ 
+ static void handle_pmull_64(DisasContext *s, int is_q, int rd, int rn, int rm)
+@@ -9671,9 +9650,7 @@ static void handle_simd_3same_pair(DisasContext *s, int is_q, int u, int opcode,
+             write_vec_element_i32(s, tcg_res[pass], rd, pass, MO_32);
+             tcg_temp_free_i32(tcg_res[pass]);
+         }
+-        if (!is_q) {
+-            clear_vec_high(s, rd);
+-        }
++        clear_vec_high(s, is_q, rd);
+     }
+ 
+     if (fpst) {
+@@ -10161,10 +10138,7 @@ static void disas_simd_3same_int(DisasContext *s, uint32_t insn)
+             tcg_temp_free_i32(tcg_op2);
+         }
+     }
+-
+-    if (!is_q) {
+-        clear_vec_high(s, rd);
+-    }
++    clear_vec_high(s, is_q, rd);
+ }
+ 
+ /* AdvSIMD three same
+@@ -10303,9 +10277,7 @@ static void handle_rev(DisasContext *s, int opcode, bool u,
+             write_vec_element(s, tcg_tmp, rd, i, grp_size);
+             tcg_temp_free_i64(tcg_tmp);
+         }
+-        if (!is_q) {
+-            clear_vec_high(s, rd);
+-        }
++        clear_vec_high(s, is_q, rd);
+     } else {
+         int revmask = (1 << grp_size) - 1;
+         int esize = 8 << size;
+@@ -10949,9 +10921,7 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
+             tcg_temp_free_i32(tcg_op);
+         }
+     }
+-    if (!is_q) {
+-        clear_vec_high(s, rd);
+-    }
++    clear_vec_high(s, is_q, rd);
+ 
+     if (need_rmode) {
+         gen_helper_set_rmode(tcg_rmode, tcg_rmode, cpu_env);
+@@ -11130,11 +11100,8 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
+             tcg_temp_free_i64(tcg_res);
+         }
+ 
+-        if (is_scalar) {
+-            clear_vec_high(s, rd);
+-        }
+-
+         tcg_temp_free_i64(tcg_idx);
++        clear_vec_high(s, !is_scalar, rd);
+     } else if (!is_long) {
+         /* 32 bit floating point, or 16 or 32 bit integer.
+          * For the 16 bit scalar case we use the usual Neon helpers and
+@@ -11238,10 +11205,7 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
+         }
+ 
+         tcg_temp_free_i32(tcg_idx);
+-
+-        if (!is_q) {
+-            clear_vec_high(s, rd);
+-        }
++        clear_vec_high(s, is_q, rd);
+     } else {
+         /* long ops: 16x16->32 or 32x32->64 */
+         TCGv_i64 tcg_res[2];
+@@ -11318,9 +11282,7 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
+             }
+             tcg_temp_free_i64(tcg_idx);
+ 
+-            if (is_scalar) {
+-                clear_vec_high(s, rd);
+-            }
++            clear_vec_high(s, !is_scalar, rd);
+         } else {
+             TCGv_i32 tcg_idx = tcg_temp_new_i32();
+ 
 -- 
 2.14.3
 

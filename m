@@ -1,316 +1,188 @@
-Received: by 10.28.71.27 with SMTP id u27csp216386wma;
-        Mon, 12 Feb 2018 11:11:42 -0800 (PST)
-X-Google-Smtp-Source: AH8x225Xws7A7UxhAhpUHO/tfVrixdXwjNKdqyBBgEjDSuEefmYDCwp3DATLT4ReNLx5HLsC9RtA
-X-Received: by 10.129.145.206 with SMTP id i197mr1337828ywg.444.1518462701923;
-        Mon, 12 Feb 2018 11:11:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518462701; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp216918wma;
+        Mon, 12 Feb 2018 11:12:18 -0800 (PST)
+X-Google-Smtp-Source: AH8x226KwZ3vHzAImwIZk7PxVx8tKdEX6VEMlkeU47z4RYRASyoVNnOoCdAckFd4dd81cw7Ck9zF
+X-Received: by 10.37.210.199 with SMTP id j190mr8274750ybg.483.1518462738655;
+        Mon, 12 Feb 2018 11:12:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518462738; cv=none;
         d=google.com; s=arc-20160816;
-        b=V+7OPAZ9euABn/J7nN3syMstYvK5WiWwcloRsOoe4FRkaKEO4an7tTPZiB+1txY1BY
-         3A3xkebhRokJNYVMlHZBNmQB8fUiOyvhgO48N2AlfXWTSoS9YMo0r7IdOJfLZWVkObbE
-         GYAPqBFvCgHcRaXL4vADqeQFkgZRAsfTHtYHxFkl9laGUHAi9jMnZ3Zy6u83//6RtpRu
-         wwgqep89lslF47WF6JTgxApgB389S407SrQrrec3E7jde7s7otQ3JYBEF23h2pdWtgJp
-         IRvFswuwjjcXlmq2D3HS3oTCNpoSbNMvd/p7BRyNxXmCrODF00tj6ozU46OJ8t1amvr6
-         Bz2w==
+        b=mvpy0ltSgseDrqCdzzZYF51sTu9Jk4U/0FHUOr7OTkTpt5hTl5X7T38s+cssH8XF2M
+         PrHgE6eTvxmMGuq67ZhbSPX6Jbged4ajC+t8Yq+bP7YTKvzZkgMXSTlacwqJB1tvhGAP
+         IIGkqNom9GOxW8PF/cyIyrX4P8eGIE30/SHyKnru1tB47PTi5x3FUd/KkjM4gtARZbt0
+         JgpyxYVs5+ekIHrE/0BHFEHiRP1z5/P85x0ren6T07cghLsGb7A5CYwGKzJFh5Wj5r3k
+         RPp+5MKBcWLI60pBYgN8JEn2MXMq/fPBNXjJKR+Gj605eIz/fpH1CWokR/uB1mgrCj/b
+         1Yig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=JDrx+ubwdztjtzqysbd4jaXJNLJNSQNIKzih3hWoIHw=;
-        b=0AKP0PNyEd1/CbWkQpfnAnQcGlhl29iXTGmfH0Bvod+Ph+PcNrYUg92REG9Z5dy5Gj
-         xBK3ygsYRZ2ZNlAS7qgVj0ZGCwC8lOZZD8ouuXf87di8w/0s6wJ8WW0jl1sSV69KBoB8
-         U+0tItypOk+vhQijzqgPLEXQeN/R402CsgnFh7Gt/GfA9oBd65R0pUnvUrH2Ew78C2F2
-         3iIdspyfVbCzDkAlTPlF9F1dfT8oPR19apR2CEDWkSy2XZips1zaszbpiMx2KoSQSlER
-         N5pN/lUE3ELRCpPEapUB7vCfy0UezCc2ForfIDydRGLmvxNABu59vZaehEtW253TvXeG
-         eqnw==
+        bh=rXtDSQjUE0WmtIdBYpMi9eDabBSLbRuDFPDHV2iW4TM=;
+        b=IX6OzgdowpVPYWCXl1cMmKGODrgsWfClbwAvQKOQqKfungyB+dA6NfnvCBee5CchVZ
+         PKQy6GsBnNsigpfEHor/4AK3caDlyMc7ITPOYeLhoLXgOmXqJL7zn6g3i4u6NXYJOQr8
+         DoH1QyB6II0/fk713XSJaA1lBXW/g1BjdWD2LXJCvsJxbdORqerCUXE8OaaWg54PdwW+
+         4QwqsHoapxu7hVBIhy5Q1VLfJPbVHhfHEE9glk0M2w+l3X2nzjzl8zQuqByVPK0L3MgM
+         FAYWqu1N4Lwf8H4cOD2vEMu8Y2ItdbxlhQTfXQQosLPRPyumDSa2AzuMQrUhoEc8maXd
+         CLzg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c184si1056636ywh.209.2018.02.12.11.11.41
+        by mx.google.com with ESMTPS id t125si1610426ywc.8.2018.02.12.11.12.18
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 12 Feb 2018 11:11:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 12 Feb 2018 11:12:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40088 helo=lists.gnu.org)
+Received: from localhost ([::1]:40102 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1elJVt-0002BA-8M
-	for alex.bennee@linaro.org; Mon, 12 Feb 2018 14:11:41 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48858)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1elJWU-00034H-3L
+	for alex.bennee@linaro.org; Mon, 12 Feb 2018 14:12:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48026)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1elJLF-0001Zv-Qd
-	for qemu-devel@nongnu.org; Mon, 12 Feb 2018 14:00:46 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1elJKS-0000dk-7U
+	for qemu-arm@nongnu.org; Mon, 12 Feb 2018 13:59:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1elJLE-0005hF-KL
-	for qemu-devel@nongnu.org; Mon, 12 Feb 2018 14:00:41 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:34292 helo=mx1.redhat.com)
+	(envelope-from <eric.auger@redhat.com>) id 1elJKR-000446-CU
+	for qemu-arm@nongnu.org; Mon, 12 Feb 2018 13:59:52 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:36794 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1elJL7-0005P5-PV; Mon, 12 Feb 2018 14:00:33 -0500
+	id 1elJKR-00043I-7b; Mon, 12 Feb 2018 13:59:51 -0500
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.3])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 371578011454;
-	Mon, 12 Feb 2018 19:00:33 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9DE177D67B;
+	Mon, 12 Feb 2018 18:59:50 +0000 (UTC)
 Received: from AMD.redhat.com (ovpn-116-182.ams2.redhat.com [10.36.116.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 1A16F1251C60;
-	Mon, 12 Feb 2018 19:00:29 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 6B77F1227915;
+	Mon, 12 Feb 2018 18:59:42 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
 	alex.williamson@redhat.com, mst@redhat.com, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org, jean-philippe.brucker@arm.com
-Date: Mon, 12 Feb 2018 18:58:19 +0000
-Message-Id: <1518461904-5305-18-git-send-email-eric.auger@redhat.com>
+Date: Mon, 12 Feb 2018 18:58:12 +0000
+Message-Id: <1518461904-5305-11-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1518461904-5305-1-git-send-email-eric.auger@redhat.com>
 References: <1518461904-5305-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Mon, 12 Feb 2018 19:00:33 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Mon, 12 Feb 2018 19:00:33 +0000 (UTC) for IP:'10.11.54.3'
+	(mx1.redhat.com [10.11.55.2]);
+	Mon, 12 Feb 2018 18:59:50 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Mon, 12 Feb 2018 18:59:50 +0000 (UTC) for IP:'10.11.54.3'
 	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-devel] [RFC v6 17/22] hw/arm/virt: Add virtio-iommu to the
- virt board
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [RFC v6 10/22] virtio-iommu: Implement attach/detach
+ command
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: wei@redhat.com, kevin.tian@intel.com, marc.zyngier@arm.com, tn@semihalf.com,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: kevin.tian@intel.com, marc.zyngier@arm.com, tn@semihalf.com,
 	will.deacon@arm.com, drjones@redhat.com, peterx@redhat.com,
 	linuc.decode@gmail.com, bharat.bhushan@nxp.com, christoffer.dall@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rS6UWZe5NSYT
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: e1vBMwPZzoBS
 
-The specific virtio-mmio node is inconditionally added on
-machine init while the binding between this latter and the
-PCIe host bridge is done on machine init done notifier, only
-if -device virtio-iommu-device was added to the qemu command
-line.
+This patch implements the endpoint attach/detach to/from
+a domain.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
 ---
+ hw/virtio/virtio-iommu.c | 39 +++++++++++++++++++++++++++++++++------
+ 1 file changed, 33 insertions(+), 6 deletions(-)
 
-v4 -> v5:
-- VirtMachineClass no_iommu added in this patch
-- Use object_resolve_path_type
----
- hw/arm/virt.c         | 83 +++++++++++++++++++++++++++++++++++++++++++++++----
- include/hw/arm/virt.h |  5 ++++
- 2 files changed, 82 insertions(+), 6 deletions(-)
-
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 08ac411..cf81716 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -54,6 +54,7 @@
- #include "hw/arm/fdt.h"
- #include "hw/intc/arm_gic.h"
- #include "hw/intc/arm_gicv3_common.h"
-+#include "hw/virtio/virtio-iommu.h"
- #include "kvm_arm.h"
- #include "hw/smbios/smbios.h"
- #include "qapi/visitor.h"
-@@ -141,6 +142,7 @@ static const MemMapEntry a15memmap[] = {
-     [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
-     [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
-     [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
-+    [VIRT_IOMMU] =              { 0x09050000, 0x00000200 },
-     [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
-     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
-     [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
-@@ -161,6 +163,7 @@ static const int a15irqmap[] = {
-     [VIRT_SECURE_UART] = 8,
-     [VIRT_MMIO] = 16, /* ...to 16 + NUM_VIRTIO_TRANSPORTS - 1 */
-     [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
-+    [VIRT_IOMMU] = 74,
-     [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
- };
- 
-@@ -941,6 +944,69 @@ static void create_pcie_irq_map(const VirtMachineState *vms,
-                            0x7           /* PCI irq */);
+diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+index 207b17a..69ff516 100644
+--- a/hw/virtio/virtio-iommu.c
++++ b/hw/virtio/virtio-iommu.c
+@@ -114,8 +114,8 @@ static void virtio_iommu_put_endpoint(gpointer data)
+     g_free(ep);
  }
  
-+static void virtio_iommu_notifier(Notifier *notifier, void *data)
-+{
-+    VirtMachineState *vms = container_of(notifier, VirtMachineState,
-+                                         virtio_iommu_done);
-+    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-+    struct arm_boot_info *info = &vms->bootinfo;
-+    bool ambiguous;
-+    Object *obj = object_resolve_path_type("", TYPE_VIRTIO_IOMMU, &ambiguous);
-+    int dtb_size;
-+    void *fdt = info->get_dtb(info, &dtb_size);
-+
-+    if (!obj) {
-+        return;
-+    }
-+
-+    if (vmc->no_iommu) {
-+        error_setg(&error_fatal, "this machine version does not support iommu");
-+    }
-+
-+    if (ambiguous) {
-+        error_setg(&error_fatal, "a single virtio-iommu device is supported!");
-+    }
-+
-+    object_property_set_bool(obj, false, "msi_bypass", &error_fatal);
-+
-+    qemu_fdt_setprop_cells(fdt, vms->pcie_host_nodename, "iommu-map",
-+                           0x0, vms->iommu_phandle, 0x0, 0x10000);
-+}
-+
-+static void create_virtio_iommu(VirtMachineState *vms, qemu_irq *pic)
-+{
-+    char *node;
-+    const char compat[] = "virtio,mmio";
-+    int irq =  vms->irqmap[VIRT_IOMMU];
-+    hwaddr base = vms->memmap[VIRT_IOMMU].base;
-+    hwaddr size = vms->memmap[VIRT_IOMMU].size;
-+    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-+
-+    if (vmc->no_iommu) {
-+        return;
-+    }
-+
-+    vms->iommu_phandle = qemu_fdt_alloc_phandle(vms->fdt);
-+
-+    sysbus_create_simple("virtio-mmio", base, pic[irq]);
-+
-+    node = g_strdup_printf("/virtio_mmio@%" PRIx64, base);
-+    qemu_fdt_add_subnode(vms->fdt, node);
-+    qemu_fdt_setprop(vms->fdt, node, "compatible", compat, sizeof(compat));
-+    qemu_fdt_setprop_sized_cells(vms->fdt, node, "reg", 2, base, 2, size);
-+
-+    qemu_fdt_setprop_cells(vms->fdt, node, "interrupts",
-+            GIC_FDT_IRQ_TYPE_SPI, irq, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
-+
-+    qemu_fdt_setprop(vms->fdt, node, "dma-coherent", NULL, 0);
-+    qemu_fdt_setprop_cell(vms->fdt, node, "#iommu-cells", 1);
-+    qemu_fdt_setprop_cell(vms->fdt, node, "phandle", vms->iommu_phandle);
-+    g_free(node);
-+
-+    vms->virtio_iommu_done.notify = virtio_iommu_notifier;
-+    qemu_add_machine_init_done_notifier(&vms->virtio_iommu_done);
-+}
-+
- static void create_pcie(VirtMachineState *vms, qemu_irq *pic)
+-viommu_domain *virtio_iommu_get_domain(VirtIOIOMMU *s, uint32_t domain_id);
+-viommu_domain *virtio_iommu_get_domain(VirtIOIOMMU *s, uint32_t domain_id)
++static viommu_domain *virtio_iommu_get_domain(VirtIOIOMMU *s,
++                                              uint32_t domain_id)
  {
-     hwaddr base_mmio = vms->memmap[VIRT_PCIE_MMIO].base;
-@@ -1016,7 +1082,8 @@ static void create_pcie(VirtMachineState *vms, qemu_irq *pic)
-         }
+     viommu_domain *domain;
+ 
+@@ -194,6 +194,8 @@ static int virtio_iommu_attach(VirtIOIOMMU *s,
+     uint32_t domain_id = le32_to_cpu(req->domain);
+     uint32_t ep_id = le32_to_cpu(req->endpoint);
+     uint32_t reserved = le32_to_cpu(req->reserved);
++    viommu_domain *domain;
++    viommu_endpoint *ep;
+ 
+     trace_virtio_iommu_attach(domain_id, ep_id);
+ 
+@@ -201,7 +203,22 @@ static int virtio_iommu_attach(VirtIOIOMMU *s,
+         return VIRTIO_IOMMU_S_INVAL;
      }
  
--    nodename = g_strdup_printf("/pcie@%" PRIx64, base);
-+    vms->pcie_host_nodename = g_strdup_printf("/pcie@%" PRIx64, base);
-+    nodename = vms->pcie_host_nodename;
-     qemu_fdt_add_subnode(vms->fdt, nodename);
-     qemu_fdt_setprop_string(vms->fdt, nodename,
-                             "compatible", "pci-host-ecam-generic");
-@@ -1055,7 +1122,6 @@ static void create_pcie(VirtMachineState *vms, qemu_irq *pic)
-     qemu_fdt_setprop_cell(vms->fdt, nodename, "#interrupt-cells", 1);
-     create_pcie_irq_map(vms, vms->gic_phandle, irq, nodename);
- 
--    g_free(nodename);
+-    return VIRTIO_IOMMU_S_UNSUPP;
++    ep = virtio_iommu_get_endpoint(s, ep_id);
++    if (ep->domain) {
++        /*
++         * the device is already attached to a domain,
++         * detach it first
++         */
++        virtio_iommu_detach_endpoint_from_domain(ep);
++    }
++
++    domain = virtio_iommu_get_domain(s, domain_id);
++    QLIST_INSERT_HEAD(&domain->endpoint_list, ep, next);
++
++    ep->domain = domain;
++    g_tree_ref(domain->mappings);
++
++    return VIRTIO_IOMMU_S_OK;
  }
  
- static void create_platform_bus(VirtMachineState *vms, qemu_irq *pic)
-@@ -1370,16 +1436,16 @@ static void machvirt_init(MachineState *machine)
- 
-     create_rtc(vms, pic);
- 
--    create_pcie(vms, pic);
--
--    create_gpio(vms, pic);
--
-     /* Create mmio transports, so the user can create virtio backends
-      * (which will be automatically plugged in to the transports). If
-      * no backend is created the transport will just sit harmlessly idle.
-      */
-     create_virtio_devices(vms, pic);
- 
-+    create_pcie(vms, pic);
-+
-+    create_gpio(vms, pic);
-+
-     vms->fw_cfg = create_fw_cfg(vms, &address_space_memory);
-     rom_set_fw(vms->fw_cfg);
- 
-@@ -1404,6 +1470,7 @@ static void machvirt_init(MachineState *machine)
-      * Notifiers are executed in registration reverse order.
-      */
-     create_platform_bus(vms, pic);
-+    create_virtio_iommu(vms, pic);
- }
- 
- static bool virt_get_secure(Object *obj, Error **errp)
-@@ -1645,8 +1712,12 @@ static void virt_2_11_instance_init(Object *obj)
- 
- static void virt_machine_2_11_options(MachineClass *mc)
+ static int virtio_iommu_detach(VirtIOIOMMU *s,
+@@ -209,14 +226,24 @@ static int virtio_iommu_detach(VirtIOIOMMU *s,
  {
-+    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
+     uint32_t ep_id = le32_to_cpu(req->endpoint);
+     uint32_t reserved = le32_to_cpu(req->reserved);
+-
+-    trace_virtio_iommu_detach(ep_id);
++    viommu_endpoint *ep;
+ 
+     if (reserved) {
+         return VIRTIO_IOMMU_S_INVAL;
+     }
+ 
+-    return VIRTIO_IOMMU_S_UNSUPP;
++    ep = g_tree_lookup(s->endpoints, GUINT_TO_POINTER(ep_id));
++    if (!ep) {
++        return VIRTIO_IOMMU_S_NOENT;
++    }
 +
-     virt_machine_2_12_options(mc);
-     SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_11);
++    if (!ep->domain) {
++        return VIRTIO_IOMMU_S_INVAL;
++    }
 +
-+    vmc->no_iommu = true;
++    virtio_iommu_detach_endpoint_from_domain(ep);
++    trace_virtio_iommu_detach(ep_id);
++    return VIRTIO_IOMMU_S_OK;
  }
- DEFINE_VIRT_MACHINE(2, 11)
  
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 7e31e99..a13b895 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -59,6 +59,7 @@ enum {
-     VIRT_GIC_V2M,
-     VIRT_GIC_ITS,
-     VIRT_GIC_REDIST,
-+    VIRT_IOMMU,
-     VIRT_UART,
-     VIRT_MMIO,
-     VIRT_RTC,
-@@ -84,12 +85,14 @@ typedef struct {
-     bool disallow_affinity_adjustment;
-     bool no_its;
-     bool no_pmu;
-+    bool no_iommu;
-     bool claim_edge_triggered_timers;
- } VirtMachineClass;
- 
- typedef struct {
-     MachineState parent;
-     Notifier machine_done;
-+    Notifier virtio_iommu_done;
-     FWCfgState *fw_cfg;
-     bool secure;
-     bool highmem;
-@@ -105,6 +108,8 @@ typedef struct {
-     uint32_t clock_phandle;
-     uint32_t gic_phandle;
-     uint32_t msi_phandle;
-+    uint32_t iommu_phandle;
-+    char *pcie_host_nodename;
-     int psci_conduit;
-     PCIBus *pci_bus;
- } VirtMachineState;
+ static int virtio_iommu_map(VirtIOIOMMU *s,
 -- 
 1.9.1
 

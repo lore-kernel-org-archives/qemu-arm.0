@@ -1,105 +1,86 @@
-Received: by 10.28.4.212 with SMTP id 203csp2095985wme;
-        Sun, 15 Apr 2018 17:14:56 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx49JKo1m5Jg9wgX8TKR8q1BiJgr3Efk0OwvuHqkc1v1dQCU77yFZdtxAzQ5H6gby2jxXTkcL
-X-Received: by 10.55.203.193 with SMTP id u62mr14001108qkl.83.1523837696342;
-        Sun, 15 Apr 2018 17:14:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523837696; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp203543wma;
+        Mon, 12 Feb 2018 10:59:16 -0800 (PST)
+X-Google-Smtp-Source: AH8x225F06eamnwmubk2qNbao9R8g+940Ir2VJXFFc8Lij0lXGyVC3gco4HjXs2ur1Mtj0Ng22qy
+X-Received: by 10.37.163.193 with SMTP id e59mr8709374ybi.434.1518461956615;
+        Mon, 12 Feb 2018 10:59:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518461956; cv=none;
         d=google.com; s=arc-20160816;
-        b=nWUb+adpE/ZqFYPAOdBuN5+Bc7rjeGYfsu8UGyhfNUg6sqrTAHue4VBbGVAEmItJFc
-         DTEt5GE8nRXSzk+vT3p8DN1cIwqFtgrLfzf/IV1n6He9YnwNsmvSu2pBwSq339H7Yjwi
-         b2JWRGKvyOaph587gjPRxmAL6C6o6VxanVuGczckdli9N+rlrOEuETBdNO4nMEPhFsX4
-         NvPzLZsuncobAV+tjpXb4NlPK9tiU3IpHTgDAaNNs3B8j/ULpdEF6HrrYV5TpzqNYynp
-         SQ3skmiGfclWnCHuypFyqCe7Q7kXN6J0qQaJeXeh35WYpmzIv0pSmwsyTMLpW8gNe4RP
-         t4BQ==
+        b=SjfNQnW0W3RfPtF6Xf4pgkL08nexSXBPUL+uGfETbXPJXuuWEC/7LZV1QkCoOPJdWN
+         nzdaurYJ0b7uY5KQ6DvutOKD0BWJ0T0OLW5LncaLdfozr8v8PFXlKb7vqpnD4KXgAi7X
+         VtqQj3nWf99iQrg2esR0y9VYKI7c74Y3wvr2llSSXjcRySTmkNy8r8vi2YOALfuWTln1
+         wef/X5b0m1+WJZgyxhhnH0aNmaxvnuIqXz999e0sVK3LCoGteNmt/Y/59WK2tZMZfhac
+         SjZIeXl1IZPMkK7fotkvH2k/xQzILg5PL5ht28B6VAZd9iXpblmYNDZTkFJHQ1JoxBjs
+         fcgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=sqnpOMBa0m016iZRbmPU4xPBAYtE8zV0lA0vCgVf68M=;
-        b=sWfGS27AO2XLwXgyOtLl7+DJ++/x65IKTK6ySNTwzb+ThIGIAnJccVY6raJ/42hw6j
-         D8BmdLsMRFMRUL1mnjuxaSjauJ3A8dIv7Fe3Fm/eNXXBou6m12I6Jg14E9/PVMYqx3z9
-         iuhQv4gS/XcqIkATedEZjEL2//oFqLZm5mN8WuXc5VZNQq3xPyd60VMXb0tnlL22WVR/
-         DNI0hL56uKjGOJhXGXhaMIOzWaIqBFH77ZTmIWFgeu3pKNQapVkNBuzviUuh1ltQZv1H
-         vEoieZQaEkG8j5PGxHg5VFsnMMCl3Yu06AdDMiOtwRYU1RebltrcasMZoemEu19G9BSU
-         Eulw==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=4Ktrrsh91Zk8tZ8z8GR1jykXv1OiExcPWvRZrJiJfQs=;
+        b=zdLtU6mfkbJXPX84JdKLWNCvGZZEASGk61wu0HMhwldYviBrEPRe1kjkJhawpRBmIB
+         SU7VbcsTB9XJRMku2S0dGhWT/VQxBCl1VR2rCvIN4KHqiGqGV4k3fcSmWgGtiOJ8PtzT
+         g93v1WnFPdABBI5QPjIgQfvbPLjyNjX+XpBapp1HNjc6z68x17+7N4JCqoEOui4mnDh0
+         4IxyFyBZr7deBC73v57Sq6jTds0+LHTlnqYAHMh93LqImrY+WUOpdUxn54Ykv8RA9L2A
+         d9qbtNlFSfNEtq1C/m6TwP2oK8yIBjxWd2TV9NupqJK4fsWHkl/kbiR7N+CHa9MT8ScK
+         A58g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=j+/vL1/Z;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g3si2530238qkm.363.2018.04.15.17.14.56
+        by mx.google.com with ESMTPS id k11si1656094ywl.783.2018.02.12.10.59.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 15 Apr 2018 17:14:56 -0700 (PDT)
+        Mon, 12 Feb 2018 10:59:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=j+/vL1/Z;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:53349 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39563 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f7rnL-0005sz-MG
-	for alex.bennee@linaro.org; Sun, 15 Apr 2018 20:14:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52335)
+	id 1elJJr-0008G4-UX
+	for alex.bennee@linaro.org; Mon, 12 Feb 2018 13:59:16 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47035)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f7rKb-00065v-7v
-	for qemu-arm@nongnu.org; Sun, 15 Apr 2018 19:45:17 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1elJJb-0008Cp-GE
+	for qemu-arm@nongnu.org; Mon, 12 Feb 2018 13:59:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f7rKX-0001Sj-U0
-	for qemu-arm@nongnu.org; Sun, 15 Apr 2018 19:45:13 -0400
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:42345)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f7rKK-0001J2-DK; Sun, 15 Apr 2018 19:44:56 -0400
-Received: by mail-qk0-x241.google.com with SMTP id d193so3389828qke.9;
-	Sun, 15 Apr 2018 16:44:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=sqnpOMBa0m016iZRbmPU4xPBAYtE8zV0lA0vCgVf68M=;
-	b=j+/vL1/Z9M6VmAwa0MLovnT/IhlSPMj4YOyBjQmBbI3JE6mhGAFKbg62thmN6lK9Cf
-	E2qlGgHbDy/f3z3xyM39bmXy/zTBG6Ka7XcMHhGSM/riS0L+hHOFJ4y0bNOag1nmLEhN
-	x0BaSV5IWmKK/ix5ILpkOSPtjqCFIPzdwRnfAM8VMnn+Ob8WJtH7nmafcr0HuLRhXJaB
-	PZCnVae8WdFx74vZEAC9Q48p/51fIfxjd+BGDm/7qdEto4oDHl19S6JrVl+K06SmjgwZ
-	cNAsdzBvwIGynpvRodzoZOCLgbBRc9UnfiPSFxuSszm7sFO7qGnmXHeR/cZa4i+6g80i
-	dbqg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=sqnpOMBa0m016iZRbmPU4xPBAYtE8zV0lA0vCgVf68M=;
-	b=TWzelZ8nJhKTh42w5BTOFAqwPnCPdpvexrZmLR0x6ayNY6Wzf0f3DGvVbQWgwzjoUU
-	z1fZSRazuQzW3SMcWUqfWmmQuADX5VSfUSj+6PA/9kIFb3oYZKIza+s6HgfaU27w4RUT
-	1B2hNl5GJlhWZUEscfpMSuKezZ3KXVver0pwfPWjnwhYTN2EJi5HORrJJjGFC9Pxrdm5
-	VyJigfJxm1viFBSKDXkln7RWS+NNoWkOUTWT/72oUsPPMyBSeaGRrnQVaAf7CQFwvQKl
-	+qS7LIJAx0yAyIHfXrKbFoeenkNznrmIarFsxGi7bewCAdNeCQD/cc1EKASfJgdsYpZN
-	y7CQ==
-X-Gm-Message-State: ALQs6tDAcUZ3xz6j3SRYyn3m7z9NpcdADWcyiD975zpOcjK21kq0FqLA
-	0AoA0YGqmALA/XSmQt6ErI/S5zOeYr0=
-X-Received: by 10.55.182.70 with SMTP id g67mr14245703qkf.314.1523835895298;
-	Sun, 15 Apr 2018 16:44:55 -0700 (PDT)
-Received: from x1.local ([138.117.48.212])
-	by smtp.gmail.com with ESMTPSA id d1sm1081394qtk.57.2018.04.15.16.44.49
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 15 Apr 2018 16:44:54 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-trivial@nongnu.org,
-	Thomas Huth <thuth@redhat.com>
-Date: Sun, 15 Apr 2018 20:42:56 -0300
-Message-Id: <20180415234307.28132-31-f4bug@amsat.org>
-X-Mailer: git-send-email 2.17.0
-In-Reply-To: <20180415234307.28132-1-f4bug@amsat.org>
-References: <20180415234307.28132-1-f4bug@amsat.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
-Subject: [Qemu-arm] [PATCH v3 30/41] hw/arm: Use the BYTE-based definitions
+	(envelope-from <eric.auger@redhat.com>) id 1elJJW-00028i-R5
+	for qemu-arm@nongnu.org; Mon, 12 Feb 2018 13:58:59 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:34152 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1elJJW-000275-N2; Mon, 12 Feb 2018 13:58:54 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 4E63B8182D2F;
+	Mon, 12 Feb 2018 18:58:53 +0000 (UTC)
+Received: from AMD.redhat.com (ovpn-116-182.ams2.redhat.com [10.36.116.182])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id ED34F1006ED7;
+	Mon, 12 Feb 2018 18:58:44 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
+	alex.williamson@redhat.com, mst@redhat.com, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org, jean-philippe.brucker@arm.com
+Date: Mon, 12 Feb 2018 18:58:03 +0000
+Message-Id: <1518461904-5305-2-git-send-email-eric.auger@redhat.com>
+In-Reply-To: <1518461904-5305-1-git-send-email-eric.auger@redhat.com>
+References: <1518461904-5305-1-git-send-email-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.8]);
+	Mon, 12 Feb 2018 18:58:53 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Mon, 12 Feb 2018 18:58:53 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: [Qemu-arm] [RFC v6 01/22] machine: Add a get_primary_pci_bus
+ callback
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -111,771 +92,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, "open list:ARM" <qemu-arm@nongnu.org>,
-	Peter Chubb <peter.chubb@nicta.com.au>,
-	Antony Pavlov <antonynpavlov@gmail.com>, Jan Kiszka <jan.kiszka@web.de>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	Andrzej Zaborowski <balrogg@gmail.com>
+Cc: kevin.tian@intel.com, marc.zyngier@arm.com, tn@semihalf.com,
+	will.deacon@arm.com, drjones@redhat.com, peterx@redhat.com,
+	linuc.decode@gmail.com, bharat.bhushan@nxp.com, christoffer.dall@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aXiuOcQIU+80
+X-TUID: C3ujgFflhPLe
 
-It eases code review, unit is explicit.
+After e492dc5a267e "pci: Eliminate pci_find_primary_bus()" we don't
+have an easy mean to retrieve the primary bus of a machine. This will be
+needed by virtio-iommu-device which is bound to be dynamically instantiated
+in at least ARM virt and Q35 machines.
 
-Patch generated using:
+Adding a get_primary_pci_bus() callback allows to retrieve the PCIBus the
+iommu is connected to.
 
-  $ git grep -E '(1024|2048|4096|8192|(<<|>>).?(10|20|30))' hw/ include/hw/
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-and modified manually.
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
 ---
- include/hw/arm/fsl-imx7.h      |  5 +++--
- include/hw/arm/stm32f205_soc.h |  5 +++--
- hw/arm/bcm2835_peripherals.c   |  3 ++-
- hw/arm/boot.c                  |  7 ++++---
- hw/arm/collie.c                |  5 +++--
- hw/arm/digic_boards.c          |  7 ++++---
- hw/arm/exynos4_boards.c        |  3 ++-
- hw/arm/gumstix.c               |  3 ++-
- hw/arm/imx25_pdk.c             |  1 +
- hw/arm/integratorcp.c          |  3 ++-
- hw/arm/mainstone.c             |  3 ++-
- hw/arm/msf2-soc.c              |  2 +-
- hw/arm/msf2-som.c              |  2 +-
- hw/arm/musicpal.c              |  9 +++++----
- hw/arm/omap_sx1.c              | 11 ++++++-----
- hw/arm/raspi.c                 |  5 +++--
- hw/arm/stellaris.c             |  5 +++--
- hw/arm/versatilepb.c           |  5 +++--
- hw/arm/vexpress.c              |  7 ++++---
- hw/arm/virt.c                  |  5 +++--
- hw/arm/xilinx_zynq.c           |  7 ++++---
- hw/misc/aspeed_sdmc.c          |  9 +++++----
- hw/misc/imx7_gpr.c             |  3 ++-
- hw/misc/omap_gpmc.c            |  5 +++--
- hw/pci-host/gpex.c             |  3 ++-
- hw/ssi/aspeed_smc.c            | 29 +++++++++++++++--------------
- 26 files changed, 88 insertions(+), 64 deletions(-)
 
-diff --git a/include/hw/arm/fsl-imx7.h b/include/hw/arm/fsl-imx7.h
-index d848262bfd..fa6bf1c455 100644
---- a/include/hw/arm/fsl-imx7.h
-+++ b/include/hw/arm/fsl-imx7.h
-@@ -19,6 +19,7 @@
- #ifndef FSL_IMX7_H
- #define FSL_IMX7_H
- 
-+#include "qemu/units.h"
- #include "hw/arm/arm.h"
- #include "hw/cpu/a15mpcore.h"
- #include "hw/intc/imx_gpcv2.h"
-@@ -86,7 +87,7 @@ typedef struct FslIMX7State {
- 
- enum FslIMX7MemoryMap {
-     FSL_IMX7_MMDC_ADDR            = 0x80000000,
--    FSL_IMX7_MMDC_SIZE            = 2 * 1024 * 1024 * 1024UL,
-+    FSL_IMX7_MMDC_SIZE            = 2 * G_BYTE,
- 
-     FSL_IMX7_GPIO1_ADDR           = 0x30200000,
-     FSL_IMX7_GPIO2_ADDR           = 0x30210000,
-@@ -176,7 +177,7 @@ enum FslIMX7MemoryMap {
-     FSL_IMX7_A7MPCORE_DAP_ADDR    = 0x30000000,
- 
-     FSL_IMX7_PCIE_REG_ADDR        = 0x33800000,
--    FSL_IMX7_PCIE_REG_SIZE        = 16 * 1024,
-+    FSL_IMX7_PCIE_REG_SIZE        = 16 * K_BYTE,
- 
-     FSL_IMX7_GPR_ADDR             = 0x30340000,
- };
-diff --git a/include/hw/arm/stm32f205_soc.h b/include/hw/arm/stm32f205_soc.h
-index 922a733f88..aeac3338d0 100644
---- a/include/hw/arm/stm32f205_soc.h
-+++ b/include/hw/arm/stm32f205_soc.h
-@@ -25,6 +25,7 @@
- #ifndef HW_ARM_STM32F205_SOC_H
- #define HW_ARM_STM32F205_SOC_H
- 
-+#include "qemu/units.h"
- #include "hw/misc/stm32f2xx_syscfg.h"
- #include "hw/timer/stm32f2xx_timer.h"
- #include "hw/char/stm32f2xx_usart.h"
-@@ -43,9 +44,9 @@
- #define STM_NUM_SPIS 3
- 
- #define FLASH_BASE_ADDRESS 0x08000000
--#define FLASH_SIZE (1024 * 1024)
-+#define FLASH_SIZE (1 * M_BYTE)
- #define SRAM_BASE_ADDRESS 0x20000000
--#define SRAM_SIZE (128 * 1024)
-+#define SRAM_SIZE (128 * K_BYTE)
- 
- typedef struct STM32F205State {
+This is a temporary solution until we decide whether the
+virtio-iommu-device should be instantiable through a -device command
+line or through a machine command line, as already suggested by Peter
+(for vsmmuv3 though).
+---
+ include/hw/boards.h | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index efb0a9e..0ed376a 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -156,6 +156,8 @@ typedef struct {
+  *    should instead use "unimplemented-device" for all memory ranges where
+  *    the guest will attempt to probe for a device that QEMU doesn't
+  *    implement and a stub device is required.
++ * @get_primary_pci_bus: return the primary PCI bus or NULL if there are
++ *    several root buses
+  */
+ struct MachineClass {
      /*< private >*/
-diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-index 13b63970d7..2db04bff6e 100644
---- a/hw/arm/bcm2835_peripherals.c
-+++ b/hw/arm/bcm2835_peripherals.c
-@@ -9,6 +9,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "hw/arm/bcm2835_peripherals.h"
- #include "hw/misc/bcm2835_mbox_defs.h"
-@@ -150,7 +151,7 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
-     for (n = 0; n < 4; n++) {
-         memory_region_init_alias(&s->ram_alias[n], OBJECT(s),
-                                  "bcm2835-gpu-ram-alias[*]", ram, 0, ram_size);
--        memory_region_add_subregion_overlap(&s->gpu_bus_mr, (hwaddr)n << 30,
-+        memory_region_add_subregion_overlap(&s->gpu_bus_mr, n * G_BYTE,
-                                             &s->ram_alias[n], 0);
-     }
- 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index 26184bcd7c..ad169708d8 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -8,6 +8,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qemu/error-report.h"
- #include "qapi/error.h"
- #include <libfdt.h>
-@@ -1039,7 +1040,7 @@ static void arm_load_kernel_notify(Notifier *notifier, void *data)
-      * the initrd at 128MB.
-      */
-     info->initrd_start = info->loader_start +
--        MIN(info->ram_size / 2, 128 * 1024 * 1024);
-+        MIN(info->ram_size / 2, 128 * M_BYTE);
- 
-     /* Assume that raw images are linux kernels, and ELF images are not.  */
-     kernel_size = arm_load_elf(info, &elf_entry, &elf_low_addr,
-@@ -1126,13 +1127,13 @@ static void arm_load_kernel_notify(Notifier *notifier, void *data)
-                  *
-                  * Let's play safe and prealign it to 2MB to give us some space.
-                  */
--                align = 2 * 1024 * 1024;
-+                align = 2 * M_BYTE;
-             } else {
-                 /*
-                  * Some 32bit kernels will trash anything in the 4K page the
-                  * initrd ends in, so make sure the DTB isn't caught up in that.
-                  */
--                align = 4096;
-+                align = 4 * K_BYTE;
-             }
- 
-             /* Place the DTB after the initrd in memory with alignment. */
-diff --git a/hw/arm/collie.c b/hw/arm/collie.c
-index f8c566e2e5..767a45f138 100644
---- a/hw/arm/collie.c
-+++ b/hw/arm/collie.c
-@@ -9,6 +9,7 @@
-  * GNU GPL, version 2 or (at your option) any later version.
-  */
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "hw/hw.h"
- #include "hw/sysbus.h"
- #include "hw/boards.h"
-@@ -39,12 +40,12 @@ static void collie_init(MachineState *machine)
-     dinfo = drive_get(IF_PFLASH, 0, 0);
-     pflash_cfi01_register(SA_CS0, NULL, "collie.fl1", 0x02000000,
-                     dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
--                    (64 * 1024), 512, 4, 0x00, 0x00, 0x00, 0x00, 0);
-+                    64 * K_BYTE, 512, 4, 0x00, 0x00, 0x00, 0x00, 0);
- 
-     dinfo = drive_get(IF_PFLASH, 0, 1);
-     pflash_cfi01_register(SA_CS1, NULL, "collie.fl2", 0x02000000,
-                     dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
--                    (64 * 1024), 512, 4, 0x00, 0x00, 0x00, 0x00, 0);
-+                    64 * K_BYTE, 512, 4, 0x00, 0x00, 0x00, 0x00, 0);
- 
-     sysbus_create_simple("scoop", 0x40800000, NULL);
- 
-diff --git a/hw/arm/digic_boards.c b/hw/arm/digic_boards.c
-index 9f11dcd11f..0a865f6e45 100644
---- a/hw/arm/digic_boards.c
-+++ b/hw/arm/digic_boards.c
-@@ -24,6 +24,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "qemu-common.h"
- #include "cpu.h"
-@@ -126,8 +127,8 @@ static void digic_load_rom(DigicBoardState *s, hwaddr addr,
- static void digic4_add_k8p3215uqb_rom(DigicBoardState *s, hwaddr addr,
-                                       const char *def_filename)
- {
--#define FLASH_K8P3215UQB_SIZE (4 * 1024 * 1024)
--#define FLASH_K8P3215UQB_SECTOR_SIZE (64 * 1024)
-+#define FLASH_K8P3215UQB_SIZE (4 * M_BYTE)
-+#define FLASH_K8P3215UQB_SECTOR_SIZE (64 * K_BYTE)
- 
-     pflash_cfi02_register(addr, NULL, "pflash", FLASH_K8P3215UQB_SIZE,
-                           NULL, FLASH_K8P3215UQB_SECTOR_SIZE,
-@@ -141,7 +142,7 @@ static void digic4_add_k8p3215uqb_rom(DigicBoardState *s, hwaddr addr,
- }
- 
- static DigicBoard digic4_board_canon_a1100 = {
--    .ram_size = 64 * 1024 * 1024,
-+    .ram_size = 64 * M_BYTE,
-     .add_rom1 = digic4_add_k8p3215uqb_rom,
-     .rom1_def_filename = "canon-a1100-rom1.bin",
- };
-diff --git a/hw/arm/exynos4_boards.c b/hw/arm/exynos4_boards.c
-index 750162cc95..11f5e44eb2 100644
---- a/hw/arm/exynos4_boards.c
-+++ b/hw/arm/exynos4_boards.c
-@@ -22,6 +22,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "qemu/error-report.h"
- #include "qemu-common.h"
-@@ -143,7 +144,7 @@ exynos4_boards_init_common(MachineState *machine,
-             " kernel_filename: %s\n"
-             " kernel_cmdline: %s\n"
-             " initrd_filename: %s\n",
--            exynos4_board_ram_size[board_type] / 1048576,
-+            exynos4_board_ram_size[board_type] / M_BYTE,
-             exynos4_board_ram_size[board_type],
-             machine->kernel_filename,
-             machine->kernel_cmdline,
-diff --git a/hw/arm/gumstix.c b/hw/arm/gumstix.c
-index ea2a3c532d..88c5ac2f62 100644
---- a/hw/arm/gumstix.c
-+++ b/hw/arm/gumstix.c
-@@ -35,6 +35,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qemu/error-report.h"
- #include "hw/hw.h"
- #include "hw/arm/pxa.h"
-@@ -47,7 +48,7 @@
- #include "sysemu/qtest.h"
- #include "cpu.h"
- 
--static const int sector_len = 128 * 1024;
-+static const int sector_len = 128 * K_BYTE;
- 
- static void connex_init(MachineState *machine)
- {
-diff --git a/hw/arm/imx25_pdk.c b/hw/arm/imx25_pdk.c
-index 9f3ee14739..29f907cedf 100644
---- a/hw/arm/imx25_pdk.c
-+++ b/hw/arm/imx25_pdk.c
-@@ -24,6 +24,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "qemu-common.h"
- #include "cpu.h"
-diff --git a/hw/arm/integratorcp.c b/hw/arm/integratorcp.c
-index 58b40efc19..466ba9dcb0 100644
---- a/hw/arm/integratorcp.c
-+++ b/hw/arm/integratorcp.c
-@@ -8,6 +8,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "qemu-common.h"
- #include "cpu.h"
-@@ -616,7 +617,7 @@ static void integratorcp_init(MachineState *machine)
-     memory_region_add_subregion(address_space_mem, 0x80000000, ram_alias);
- 
-     dev = qdev_create(NULL, TYPE_INTEGRATOR_CM);
--    qdev_prop_set_uint32(dev, "memsz", ram_size >> 20);
-+    qdev_prop_set_uint32(dev, "memsz", ram_size / M_BYTE);
-     qdev_init_nofail(dev);
-     sysbus_mmio_map((SysBusDevice *)dev, 0, 0x10000000);
- 
-diff --git a/hw/arm/mainstone.c b/hw/arm/mainstone.c
-index 4215c025fc..a89627c036 100644
---- a/hw/arm/mainstone.c
-+++ b/hw/arm/mainstone.c
-@@ -12,6 +12,7 @@
-  * GNU GPL, version 2 or (at your option) any later version.
-  */
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qemu/error-report.h"
- #include "qapi/error.h"
- #include "hw/hw.h"
-@@ -115,7 +116,7 @@ static void mainstone_common_init(MemoryRegion *address_space_mem,
-                                   MachineState *machine,
-                                   enum mainstone_model_e model, int arm_id)
- {
--    uint32_t sector_len = 256 * 1024;
-+    uint32_t sector_len = 256 * K_BYTE;
-     hwaddr mainstone_flash_base[] = { MST_FLASH_0, MST_FLASH_1 };
-     PXA2xxState *mpu;
-     DeviceState *mst_irq;
-diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
-index f68df56b97..993cee37c5 100644
---- a/hw/arm/msf2-soc.c
-+++ b/hw/arm/msf2-soc.c
-@@ -23,13 +23,13 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "qemu-common.h"
- #include "hw/arm/arm.h"
- #include "exec/address-spaces.h"
- #include "hw/char/serial.h"
- #include "hw/boards.h"
--#include "qemu/cutils.h"
- #include "hw/arm/msf2-soc.h"
- #include "hw/misc/unimp.h"
- 
-diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
-index 0795a3a3a1..829c5da65a 100644
---- a/hw/arm/msf2-som.c
-+++ b/hw/arm/msf2-som.c
-@@ -23,12 +23,12 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "qemu/error-report.h"
- #include "hw/boards.h"
- #include "hw/arm/arm.h"
- #include "exec/address-spaces.h"
--#include "qemu/cutils.h"
- #include "hw/arm/msf2-soc.h"
- #include "cpu.h"
- 
-diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-index 38d7322a19..4bc47d39eb 100644
---- a/hw/arm/musicpal.c
-+++ b/hw/arm/musicpal.c
-@@ -10,6 +10,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "qemu-common.h"
- #include "cpu.h"
-@@ -62,8 +63,8 @@
- #define MP_SRAM_BASE            0xC0000000
- #define MP_SRAM_SIZE            0x00020000
- 
--#define MP_RAM_DEFAULT_SIZE     32*1024*1024
--#define MP_FLASH_SIZE_MAX       32*1024*1024
-+#define MP_RAM_DEFAULT_SIZE     (32 * M_BYTE)
-+#define MP_FLASH_SIZE_MAX       (32 * M_BYTE)
- 
- #define MP_TIMER1_IRQ           4
- #define MP_TIMER2_IRQ           5
-@@ -1625,8 +1626,8 @@ static void musicpal_init(MachineState *machine)
-         BlockBackend *blk = blk_by_legacy_dinfo(dinfo);
- 
-         flash_size = blk_getlength(blk);
--        if (flash_size != 8*1024*1024 && flash_size != 16*1024*1024 &&
--            flash_size != 32*1024*1024) {
-+        if (flash_size != 8 * M_BYTE && flash_size != 16 * M_BYTE &&
-+            flash_size != 32 * M_BYTE) {
-             error_report("Invalid flash image size");
-             exit(1);
-         }
-diff --git a/hw/arm/omap_sx1.c b/hw/arm/omap_sx1.c
-index eccc19c77b..5acb0055d3 100644
---- a/hw/arm/omap_sx1.c
-+++ b/hw/arm/omap_sx1.c
-@@ -26,6 +26,7 @@
-  * with this program; if not, see <http://www.gnu.org/licenses/>.
-  */
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "hw/hw.h"
- #include "ui/console.h"
-@@ -87,11 +88,11 @@ static const MemoryRegionOps static_ops = {
-     .endianness = DEVICE_NATIVE_ENDIAN,
+@@ -212,6 +214,7 @@ struct MachineClass {
+                                                          unsigned cpu_index);
+     const CPUArchIdList *(*possible_cpu_arch_ids)(MachineState *machine);
+     int64_t (*get_default_cpu_node_id)(const MachineState *ms, int idx);
++    PCIBus *(*get_primary_pci_bus)(const MachineState *ms);
  };
  
--#define sdram_size	0x02000000
--#define sector_size	(128 * 1024)
--#define flash0_size	(16 * 1024 * 1024)
--#define flash1_size	( 8 * 1024 * 1024)
--#define flash2_size	(32 * 1024 * 1024)
-+#define sdram_size      (32 * M_BYTE)
-+#define sector_size     (128 * K_BYTE)
-+#define flash0_size     (16 * M_BYTE)
-+#define flash1_size     (8 * M_BYTE)
-+#define flash2_size     (32 * M_BYTE)
- #define total_ram_v1	(sdram_size + flash0_size + flash1_size + OMAP15XX_SRAM_SIZE)
- #define total_ram_v2	(sdram_size + flash2_size + OMAP15XX_SRAM_SIZE)
- 
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index 955a7c4e80..e406e47793 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -12,6 +12,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "qemu-common.h"
- #include "cpu.h"
-@@ -230,7 +231,7 @@ static void raspi2_machine_init(MachineClass *mc)
-     mc->max_cpus = BCM283X_NCPUS;
-     mc->min_cpus = BCM283X_NCPUS;
-     mc->default_cpus = BCM283X_NCPUS;
--    mc->default_ram_size = 1024 * 1024 * 1024;
-+    mc->default_ram_size = 1 * G_BYTE;
-     mc->ignore_memory_transaction_failures = true;
- };
- DEFINE_MACHINE("raspi2", raspi2_machine_init)
-@@ -253,7 +254,7 @@ static void raspi3_machine_init(MachineClass *mc)
-     mc->max_cpus = BCM283X_NCPUS;
-     mc->min_cpus = BCM283X_NCPUS;
-     mc->default_cpus = BCM283X_NCPUS;
--    mc->default_ram_size = 1024 * 1024 * 1024;
-+    mc->default_ram_size = 1 * G_BYTE;
- }
- DEFINE_MACHINE("raspi3", raspi3_machine_init)
- #endif
-diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-index de7c0fc4a6..9971556f0e 100644
---- a/hw/arm/stellaris.c
-+++ b/hw/arm/stellaris.c
-@@ -8,6 +8,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "hw/sysbus.h"
- #include "hw/ssi/ssi.h"
-@@ -1284,8 +1285,8 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
-     MemoryRegion *flash = g_new(MemoryRegion, 1);
-     MemoryRegion *system_memory = get_system_memory();
- 
--    flash_size = (((board->dc0 & 0xffff) + 1) << 1) * 1024;
--    sram_size = ((board->dc0 >> 18) + 1) * 1024;
-+    flash_size = (((board->dc0 & 0xffff) + 1) << 1) * K_BYTE;
-+    sram_size = ((board->dc0 >> 18) + 1) * K_BYTE;
- 
-     /* Flash programming is done via the SCU, so pretend it is ROM.  */
-     memory_region_init_ram(flash, NULL, "stellaris.flash", flash_size,
-diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
-index 418792cd02..312ea97719 100644
---- a/hw/arm/versatilepb.c
-+++ b/hw/arm/versatilepb.c
-@@ -8,6 +8,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "qemu-common.h"
- #include "cpu.h"
-@@ -26,8 +27,8 @@
- #include "hw/char/pl011.h"
- 
- #define VERSATILE_FLASH_ADDR 0x34000000
--#define VERSATILE_FLASH_SIZE (64 * 1024 * 1024)
--#define VERSATILE_FLASH_SECT_SIZE (256 * 1024)
-+#define VERSATILE_FLASH_SIZE (64 * M_BYTE)
-+#define VERSATILE_FLASH_SECT_SIZE (256 * K_BYTE)
- 
- /* Primary interrupt controller.  */
- 
-diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
-index 9fad79177a..d0899278bd 100644
---- a/hw/arm/vexpress.c
-+++ b/hw/arm/vexpress.c
-@@ -22,6 +22,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "qemu-common.h"
- #include "cpu.h"
-@@ -45,8 +46,8 @@
- #include "hw/cpu/a15mpcore.h"
- 
- #define VEXPRESS_BOARD_ID 0x8e0
--#define VEXPRESS_FLASH_SIZE (64 * 1024 * 1024)
--#define VEXPRESS_FLASH_SECT_SIZE (256 * 1024)
-+#define VEXPRESS_FLASH_SIZE (64 * M_BYTE)
-+#define VEXPRESS_FLASH_SECT_SIZE (256 * K_BYTE)
- 
- /* Number of virtio transports to create (0..8; limited by
-  * number of available IRQ lines).
-@@ -355,7 +356,7 @@ static void a15_daughterboard_init(const VexpressMachineState *vms,
-          * warning if we are on a host where ram_addr_t is 32 bits.
-          */
-         uint64_t rsz = ram_size;
--        if (rsz > (30ULL * 1024 * 1024 * 1024)) {
-+        if (rsz > 30 * G_BYTE) {
-             error_report("vexpress-a15: cannot model more than 30GB RAM");
-             exit(1);
-         }
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 94dcb125d3..23679ff1ae 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -29,6 +29,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "hw/sysbus.h"
- #include "hw/arm/arm.h"
-@@ -110,7 +111,7 @@ static ARMPlatformBusSystemParams platform_bus_params;
-  * terabyte of physical address space.)
-  */
- #define RAMLIMIT_GB 255
--#define RAMLIMIT_BYTES (RAMLIMIT_GB * 1024ULL * 1024 * 1024)
-+#define RAMLIMIT_BYTES (RAMLIMIT_GB * G_BYTE)
- 
- /* Addresses and sizes of our components.
-  * 0..128MB is space for a flash device so we can run bootrom code such as UEFI.
-@@ -784,7 +785,7 @@ static void create_one_flash(const char *name, hwaddr flashbase,
-     DriveInfo *dinfo = drive_get_next(IF_PFLASH);
-     DeviceState *dev = qdev_create(NULL, "cfi.pflash01");
-     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
--    const uint64_t sectorlength = 256 * 1024;
-+    const uint64_t sectorlength = 256 * K_BYTE;
- 
-     if (dinfo) {
-         qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo),
-diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-index 0f76333770..0810038689 100644
---- a/hw/arm/xilinx_zynq.c
-+++ b/hw/arm/xilinx_zynq.c
-@@ -16,6 +16,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "qemu-common.h"
- #include "cpu.h"
-@@ -40,8 +41,8 @@
- #define NUM_QSPI_FLASHES 2
- #define NUM_QSPI_BUSSES 2
- 
--#define FLASH_SIZE (64 * 1024 * 1024)
--#define FLASH_SECTOR_SIZE (128 * 1024)
-+#define FLASH_SIZE (64 * M_BYTE)
-+#define FLASH_SECTOR_SIZE (128 * K_BYTE)
- 
- #define IRQ_OFFSET 32 /* pic interrupts start from index 32 */
- 
-@@ -199,7 +200,7 @@ static void zynq_init(MachineState *machine)
-     memory_region_add_subregion(address_space_mem, 0, ext_ram);
- 
-     /* 256K of on-chip memory */
--    memory_region_init_ram(ocm_ram, NULL, "zynq.ocm_ram", 256 << 10,
-+    memory_region_init_ram(ocm_ram, NULL, "zynq.ocm_ram", 256 * K_BYTE,
-                            &error_fatal);
-     memory_region_add_subregion(address_space_mem, 0xFFFC0000, ocm_ram);
- 
-diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
-index 0df008e52a..0b89a6c5f1 100644
---- a/hw/misc/aspeed_sdmc.c
-+++ b/hw/misc/aspeed_sdmc.c
-@@ -8,6 +8,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qemu/log.h"
- #include "qemu/error-report.h"
- #include "hw/misc/aspeed_sdmc.h"
-@@ -149,7 +150,7 @@ static const MemoryRegionOps aspeed_sdmc_ops = {
- 
- static int ast2400_rambits(AspeedSDMCState *s)
- {
--    switch (s->ram_size >> 20) {
-+    switch (s->ram_size / M_BYTE) {
-     case 64:
-         return ASPEED_SDMC_DRAM_64MB;
-     case 128:
-@@ -165,13 +166,13 @@ static int ast2400_rambits(AspeedSDMCState *s)
-     /* use a common default */
-     warn_report("Invalid RAM size 0x%" PRIx64 ". Using default 256M",
-                 s->ram_size);
--    s->ram_size = 256 << 20;
-+    s->ram_size = 256 * M_BYTE;
-     return ASPEED_SDMC_DRAM_256MB;
- }
- 
- static int ast2500_rambits(AspeedSDMCState *s)
- {
--    switch (s->ram_size >> 20) {
-+    switch (s->ram_size / M_BYTE) {
-     case 128:
-         return ASPEED_SDMC_AST2500_128MB;
-     case 256:
-@@ -187,7 +188,7 @@ static int ast2500_rambits(AspeedSDMCState *s)
-     /* use a common default */
-     warn_report("Invalid RAM size 0x%" PRIx64 ". Using default 512M",
-                 s->ram_size);
--    s->ram_size = 512 << 20;
-+    s->ram_size = 512 * M_BYTE;
-     return ASPEED_SDMC_AST2500_512MB;
- }
- 
-diff --git a/hw/misc/imx7_gpr.c b/hw/misc/imx7_gpr.c
-index c2a9df29c6..b784cf05f2 100644
---- a/hw/misc/imx7_gpr.c
-+++ b/hw/misc/imx7_gpr.c
-@@ -13,6 +13,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "hw/misc/imx7_gpr.h"
- #include "qemu/log.h"
- #include "sysemu/sysemu.h"
-@@ -98,7 +99,7 @@ static void imx7_gpr_init(Object *obj)
-     IMX7GPRState *s = IMX7_GPR(obj);
- 
-     memory_region_init_io(&s->mmio, obj, &imx7_gpr_ops, s,
--                          TYPE_IMX7_GPR, 64 * 1024);
-+                          TYPE_IMX7_GPR, 64 * K_BYTE);
-     sysbus_init_mmio(sd, &s->mmio);
- }
- 
-diff --git a/hw/misc/omap_gpmc.c b/hw/misc/omap_gpmc.c
-index 84f9e4c612..94960774f4 100644
---- a/hw/misc/omap_gpmc.c
-+++ b/hw/misc/omap_gpmc.c
-@@ -19,6 +19,7 @@
-  * with this program; if not, see <http://www.gnu.org/licenses/>.
-  */
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "hw/hw.h"
- #include "hw/block/flash.h"
- #include "hw/arm/omap.h"
-@@ -850,11 +851,11 @@ struct omap_gpmc_s *omap_gpmc_init(struct omap_mpu_state_s *mpu,
-                               &omap_nand_ops,
-                               &s->cs_file[cs],
-                               "omap-nand",
--                              256 * 1024 * 1024);
-+                              256 * M_BYTE);
-     }
- 
-     memory_region_init_io(&s->prefetch.iomem, NULL, &omap_prefetch_ops, s,
--                          "omap-gpmc-prefetch", 256 * 1024 * 1024);
-+                          "omap-gpmc-prefetch", 256 * M_BYTE);
-     return s;
- }
- 
-diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
-index 2583b151a4..21993d5e83 100644
---- a/hw/pci-host/gpex.c
-+++ b/hw/pci-host/gpex.c
-@@ -29,6 +29,7 @@
-  * http://www.firmware.org/1275/practice/imap/imap0_9d.pdf
-  */
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "hw/hw.h"
- #include "hw/pci-host/gpex.h"
- 
-@@ -79,7 +80,7 @@ static void gpex_host_realize(DeviceState *dev, Error **errp)
- 
-     pcie_host_mmcfg_init(pex, PCIE_MMCFG_SIZE_MAX);
-     memory_region_init(&s->io_mmio, OBJECT(s), "gpex_mmio", UINT64_MAX);
--    memory_region_init(&s->io_ioport, OBJECT(s), "gpex_ioport", 64 * 1024);
-+    memory_region_init(&s->io_ioport, OBJECT(s), "gpex_ioport", 64 * K_BYTE);
- 
-     sysbus_init_mmio(sbd, &pex->mmio);
-     sysbus_init_mmio(sbd, &s->io_mmio);
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 5059396bc6..df21fdf8d3 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -23,6 +23,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "hw/sysbus.h"
- #include "sysemu/sysemu.h"
- #include "qemu/log.h"
-@@ -149,35 +150,35 @@
-  * Segment Address Registers.
-  */
- static const AspeedSegments aspeed_segments_legacy[] = {
--    { 0x10000000, 32 * 1024 * 1024 },
-+    { 0x10000000, 32 * M_BYTE },
- };
- 
- static const AspeedSegments aspeed_segments_fmc[] = {
--    { 0x20000000, 64 * 1024 * 1024 }, /* start address is readonly */
--    { 0x24000000, 32 * 1024 * 1024 },
--    { 0x26000000, 32 * 1024 * 1024 },
--    { 0x28000000, 32 * 1024 * 1024 },
--    { 0x2A000000, 32 * 1024 * 1024 }
-+    { 0x20000000,  64 * M_BYTE }, /* start address is readonly */
-+    { 0x24000000,  32 * M_BYTE },
-+    { 0x26000000,  32 * M_BYTE },
-+    { 0x28000000,  32 * M_BYTE },
-+    { 0x2A000000,  32 * M_BYTE }
- };
- 
- static const AspeedSegments aspeed_segments_spi[] = {
--    { 0x30000000, 64 * 1024 * 1024 },
-+    { 0x30000000,  64 * M_BYTE },
- };
- 
- static const AspeedSegments aspeed_segments_ast2500_fmc[] = {
--    { 0x20000000, 128 * 1024 * 1024 }, /* start address is readonly */
--    { 0x28000000,  32 * 1024 * 1024 },
--    { 0x2A000000,  32 * 1024 * 1024 },
-+    { 0x20000000, 128 * M_BYTE }, /* start address is readonly */
-+    { 0x28000000,  32 * M_BYTE },
-+    { 0x2A000000,  32 * M_BYTE },
- };
- 
- static const AspeedSegments aspeed_segments_ast2500_spi1[] = {
--    { 0x30000000, 32 * 1024 * 1024 }, /* start address is readonly */
--    { 0x32000000, 96 * 1024 * 1024 }, /* end address is readonly */
-+    { 0x30000000,  32 * M_BYTE }, /* start address is readonly */
-+    { 0x32000000,  96 * M_BYTE }, /* end address is readonly */
- };
- 
- static const AspeedSegments aspeed_segments_ast2500_spi2[] = {
--    { 0x38000000, 32 * 1024 * 1024 }, /* start address is readonly */
--    { 0x3A000000, 96 * 1024 * 1024 }, /* end address is readonly */
-+    { 0x38000000,  32 * M_BYTE }, /* start address is readonly */
-+    { 0x3A000000,  96 * M_BYTE }, /* end address is readonly */
- };
- 
- static const AspeedSMCController controllers[] = {
+ /**
 -- 
-2.17.0
+1.9.1
 

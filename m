@@ -1,86 +1,85 @@
-Received: by 10.28.71.27 with SMTP id u27csp203543wma;
-        Mon, 12 Feb 2018 10:59:16 -0800 (PST)
-X-Google-Smtp-Source: AH8x225F06eamnwmubk2qNbao9R8g+940Ir2VJXFFc8Lij0lXGyVC3gco4HjXs2ur1Mtj0Ng22qy
-X-Received: by 10.37.163.193 with SMTP id e59mr8709374ybi.434.1518461956615;
-        Mon, 12 Feb 2018 10:59:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518461956; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp205617wma;
+        Mon, 12 Feb 2018 11:01:14 -0800 (PST)
+X-Google-Smtp-Source: AH8x225JBm9519WF0fbWBdFxNJHlM2msXMYQ7pMdJRocA3fusmn0SE0nC/QMe8MHmlDIwBKRkTry
+X-Received: by 10.37.211.130 with SMTP id e124mr8440375ybf.152.1518462074697;
+        Mon, 12 Feb 2018 11:01:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518462074; cv=none;
         d=google.com; s=arc-20160816;
-        b=SjfNQnW0W3RfPtF6Xf4pgkL08nexSXBPUL+uGfETbXPJXuuWEC/7LZV1QkCoOPJdWN
-         nzdaurYJ0b7uY5KQ6DvutOKD0BWJ0T0OLW5LncaLdfozr8v8PFXlKb7vqpnD4KXgAi7X
-         VtqQj3nWf99iQrg2esR0y9VYKI7c74Y3wvr2llSSXjcRySTmkNy8r8vi2YOALfuWTln1
-         wef/X5b0m1+WJZgyxhhnH0aNmaxvnuIqXz999e0sVK3LCoGteNmt/Y/59WK2tZMZfhac
-         SjZIeXl1IZPMkK7fotkvH2k/xQzILg5PL5ht28B6VAZd9iXpblmYNDZTkFJHQ1JoxBjs
-         fcgA==
+        b=gSWY4L63NIE7z+RvfBC49bePy10y0Br+f7P2UQlmNMsEYlqsrKDF0vP1UVL9/aLd56
+         jZRdmL/4JbeTJ/8FfhRCXBxu7r0yDXKW7gYPOHJ6tMybaOVSvSdJkr7H9qT8WeSPdAHi
+         aJ9FyVjvTFONWBVsQkA5qwwI9q7kzYxnumRWh+Yb1OENvGtFNJkLkdQSQI98WH0s4rVJ
+         6ORv3yN0VVPLh0ohgdB/VKbfrmxA+Wu+3yW3dRYo44eF4LE08dflNxn6YU2QE0Iw7ZSE
+         Exd1AyrLcuGEQb4ccMFgxvRHfxULzR4lEhQ5wfcXZ0xYKcGqYnqbenMGAzTbsLELSMHo
+         jDng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=4Ktrrsh91Zk8tZ8z8GR1jykXv1OiExcPWvRZrJiJfQs=;
-        b=zdLtU6mfkbJXPX84JdKLWNCvGZZEASGk61wu0HMhwldYviBrEPRe1kjkJhawpRBmIB
-         SU7VbcsTB9XJRMku2S0dGhWT/VQxBCl1VR2rCvIN4KHqiGqGV4k3fcSmWgGtiOJ8PtzT
-         g93v1WnFPdABBI5QPjIgQfvbPLjyNjX+XpBapp1HNjc6z68x17+7N4JCqoEOui4mnDh0
-         4IxyFyBZr7deBC73v57Sq6jTds0+LHTlnqYAHMh93LqImrY+WUOpdUxn54Ykv8RA9L2A
-         d9qbtNlFSfNEtq1C/m6TwP2oK8yIBjxWd2TV9NupqJK4fsWHkl/kbiR7N+CHa9MT8ScK
-         A58g==
+        bh=Rbx7IWOY233saQqSFeI0AnlnPX0p9ZdU9tcau1j3BBU=;
+        b=GfPc0/FjtixW6phRY8aTBrkfum7NfcCKpHDdHSDkAtcrH9fc5JV3HFTR2PfB1yGJKJ
+         u/9XsiDsqVDkKBo7ZifgqFDAWllLyCxc08KQGbfnUk3edAysBZ8vkUWHIHxuSNpKke1n
+         zYgFuLcyZq5i5XjPtCSjccN8VaiNEHRgT3ukRMPn1XUzXiCl9NzefprW8TfAnLAoDDVz
+         WkqK8lLyRLYEWBjEAsjcbQiCgtFLeov+VO6v5+hugswdnjMkOqivRc9mJibXlzRr0omx
+         26OrP0HylEZnEM7WwXrZVHybsiFHq4Xc1TgriqZIxP20AUV8GHiSAm1E8sr8AicCSv2S
+         aWwg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k11si1656094ywl.783.2018.02.12.10.59.16
+        by mx.google.com with ESMTPS id 2si270653ybv.448.2018.02.12.11.01.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 12 Feb 2018 10:59:16 -0800 (PST)
+        Mon, 12 Feb 2018 11:01:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39563 helo=lists.gnu.org)
+Received: from localhost ([::1]:39726 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1elJJr-0008G4-UX
-	for alex.bennee@linaro.org; Mon, 12 Feb 2018 13:59:16 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47035)
+	id 1elJLl-0001mP-Vm
+	for alex.bennee@linaro.org; Mon, 12 Feb 2018 14:01:14 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47036)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1elJJb-0008Cp-GE
+	(envelope-from <eric.auger@redhat.com>) id 1elJJb-0008Cq-GN
 	for qemu-arm@nongnu.org; Mon, 12 Feb 2018 13:59:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1elJJW-00028i-R5
+	(envelope-from <eric.auger@redhat.com>) id 1elJJZ-0002Cm-IE
 	for qemu-arm@nongnu.org; Mon, 12 Feb 2018 13:58:59 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:34152 helo=mx1.redhat.com)
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:34170 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1elJJW-000275-N2; Mon, 12 Feb 2018 13:58:54 -0500
+	id 1elJJZ-0002BJ-Dp; Mon, 12 Feb 2018 13:58:57 -0500
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.3])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4E63B8182D2F;
-	Mon, 12 Feb 2018 18:58:53 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id A22F48182D2F;
+	Mon, 12 Feb 2018 18:58:56 +0000 (UTC)
 Received: from AMD.redhat.com (ovpn-116-182.ams2.redhat.com [10.36.116.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id ED34F1006ED7;
-	Mon, 12 Feb 2018 18:58:44 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 943C11006ED7;
+	Mon, 12 Feb 2018 18:58:53 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
 	alex.williamson@redhat.com, mst@redhat.com, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org, jean-philippe.brucker@arm.com
-Date: Mon, 12 Feb 2018 18:58:03 +0000
-Message-Id: <1518461904-5305-2-git-send-email-eric.auger@redhat.com>
+Date: Mon, 12 Feb 2018 18:58:04 +0000
+Message-Id: <1518461904-5305-3-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1518461904-5305-1-git-send-email-eric.auger@redhat.com>
 References: <1518461904-5305-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.11.55.8]);
-	Mon, 12 Feb 2018 18:58:53 +0000 (UTC)
+	Mon, 12 Feb 2018 18:58:56 +0000 (UTC)
 X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Mon, 12 Feb 2018 18:58:53 +0000 (UTC) for IP:'10.11.54.3'
+	Mon, 12 Feb 2018 18:58:56 +0000 (UTC) for IP:'10.11.54.3'
 	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [RFC v6 01/22] machine: Add a get_primary_pci_bus
- callback
+Subject: [Qemu-arm] [RFC v6 02/22] hw/arm/virt: Implement get_primary_pci_bus
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,49 +96,72 @@ Cc: kevin.tian@intel.com, marc.zyngier@arm.com, tn@semihalf.com,
 	linuc.decode@gmail.com, bharat.bhushan@nxp.com, christoffer.dall@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: C3ujgFflhPLe
+X-TUID: QfvmMWVJfw2d
 
-After e492dc5a267e "pci: Eliminate pci_find_primary_bus()" we don't
-have an easy mean to retrieve the primary bus of a machine. This will be
-needed by virtio-iommu-device which is bound to be dynamically instantiated
-in at least ARM virt and Q35 machines.
-
-Adding a get_primary_pci_bus() callback allows to retrieve the PCIBus the
-iommu is connected to.
+get_primary_pci_bus() returns the root bus. We also
+add the PCIBus handle to VirtMachineState.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
 ---
+ hw/arm/virt.c         | 11 ++++++++++-
+ include/hw/arm/virt.h |  1 +
+ 2 files changed, 11 insertions(+), 1 deletion(-)
 
-This is a temporary solution until we decide whether the
-virtio-iommu-device should be instantiable through a -device command
-line or through a machine command line, as already suggested by Peter
-(for vsmmuv3 though).
----
- include/hw/boards.h | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index efb0a9e..0ed376a 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -156,6 +156,8 @@ typedef struct {
-  *    should instead use "unimplemented-device" for all memory ranges where
-  *    the guest will attempt to probe for a device that QEMU doesn't
-  *    implement and a stub device is required.
-+ * @get_primary_pci_bus: return the primary PCI bus or NULL if there are
-+ *    several root buses
-  */
- struct MachineClass {
-     /*< private >*/
-@@ -212,6 +214,7 @@ struct MachineClass {
-                                                          unsigned cpu_index);
-     const CPUArchIdList *(*possible_cpu_arch_ids)(MachineState *machine);
-     int64_t (*get_default_cpu_node_id)(const MachineState *ms, int idx);
-+    PCIBus *(*get_primary_pci_bus)(const MachineState *ms);
- };
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index dbb3c80..08ac411 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -941,7 +941,7 @@ static void create_pcie_irq_map(const VirtMachineState *vms,
+                            0x7           /* PCI irq */);
+ }
  
- /**
+-static void create_pcie(const VirtMachineState *vms, qemu_irq *pic)
++static void create_pcie(VirtMachineState *vms, qemu_irq *pic)
+ {
+     hwaddr base_mmio = vms->memmap[VIRT_PCIE_MMIO].base;
+     hwaddr size_mmio = vms->memmap[VIRT_PCIE_MMIO].size;
+@@ -1004,6 +1004,7 @@ static void create_pcie(const VirtMachineState *vms, qemu_irq *pic)
+ 
+     pci = PCI_HOST_BRIDGE(dev);
+     if (pci->bus) {
++        vms->pci_bus = pci->bus;
+         for (i = 0; i < nb_nics; i++) {
+             NICInfo *nd = &nd_table[i];
+ 
+@@ -1523,6 +1524,13 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+     return ms->possible_cpus;
+ }
+ 
++static PCIBus *virt_get_primary_pci_bus(const MachineState *ms)
++{
++    VirtMachineState *vms = VIRT_MACHINE(ms);
++
++    return vms->pci_bus;
++}
++
+ static void virt_machine_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+@@ -1544,6 +1552,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+     mc->cpu_index_to_instance_props = virt_cpu_index_to_props;
+     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a15");
+     mc->get_default_cpu_node_id = virt_get_default_cpu_node_id;
++    mc->get_primary_pci_bus = virt_get_primary_pci_bus;
+ }
+ 
+ static const TypeInfo virt_machine_info = {
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 33b0ff3..7e31e99 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -106,6 +106,7 @@ typedef struct {
+     uint32_t gic_phandle;
+     uint32_t msi_phandle;
+     int psci_conduit;
++    PCIBus *pci_bus;
+ } VirtMachineState;
+ 
+ #define TYPE_VIRT_MACHINE   MACHINE_TYPE_NAME("virt")
 -- 
 1.9.1
 

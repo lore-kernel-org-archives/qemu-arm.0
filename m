@@ -1,198 +1,156 @@
-Received: by 10.28.71.27 with SMTP id u27csp220312wma;
-        Mon, 12 Feb 2018 11:15:55 -0800 (PST)
-X-Google-Smtp-Source: AH8x224GOsGAwbhD3xOSfDR9LxHyp4qvH0F3B1jH5ubW0tsyhKVyfxnf/+V2Oj+09FNpIZ8qI8ul
-X-Received: by 10.37.106.130 with SMTP id f124mr8928259ybc.445.1518462955715;
-        Mon, 12 Feb 2018 11:15:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518462955; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp221491wma;
+        Mon, 12 Feb 2018 11:17:07 -0800 (PST)
+X-Google-Smtp-Source: AH8x225lvhqAP97ey/a3DRSQH3knmAKJsh6qDT5WLuxdqVOCjJda2AiLSNmZZwR68gtrEUYBogOd
+X-Received: by 10.129.200.7 with SMTP id n7mr8466937ywi.316.1518463026928;
+        Mon, 12 Feb 2018 11:17:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518463026; cv=none;
         d=google.com; s=arc-20160816;
-        b=uym/2+1wJRswpVsM+QymxjjKVKA6DnXRVXNLSSNPEdtVGuZmKH+Dw3yoVcFL0gv76y
-         ftfjt5UDCe7o7W2fLTznGK+QtVZQwYfhMG2HHhmtiNTDJZMMwvTGmloAm7OMxlFV2vPI
-         nMC4xHcXzud+7+eSTrxbvCs7V3YC0apESRo37j28nrGmE5s8dGQRyr06JFW+AHAqv7Xb
-         qCKg9KYWvS3BHn2JHG3Nx7WZqqclIiY6CKH6FTe5/pbas5Ut3QexuSMuvUCOipltLVhU
-         KxH/7bg7G5PaNH/EI3PbLvww4L68l/ex36IJEWUJKawz6bn8TWtSjOMs+lVqK+ABrpGr
-         NHwQ==
+        b=YPkEtYfYXxYBjwtobyDE0cj4LEl+YPBTvuqFRDytiaI236curE/MycacD8UhLewQH3
+         kHJtGOx7Wfu77MndxZTtPupdFjJtfVyt6A8T5jTxcp0lRcI+RQF8krR95bYQYJDMKOqo
+         VGCuFBknADW83zfs7KttkK+KiSRnuzF8J0Wi9qMT26Vi+3rYMO9wxwS2t9qUMvtigX1Z
+         pHstgo9OHBq1DQ7DWzIQluXmVAiXATqAY1Lf4r0AD5ZgBjXYxDt8KTTuKl7JfT7SFbja
+         GT4qcdsScIJmDdVGSodwloysTK2usi1AIXYeQwkLz2+l6ZvS9Q0Z6DJTezf2wY2LxKtr
+         TSnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=LR/TrM0CO7h9Za6HZbgh/fHcg0rshvDiSbIfuxYO0XM=;
-        b=m62El784XJzkb1/6bkpUqsFxiZTJQMti3YpSn9745cUKpSPp6Z0hNM0dDtiMlCkCMh
-         SYHwJveH0jPmXhMMfllyVPRNaGEz6YVryVR4+mZtHJgupxPUGXbK6Yd3gRkJm0QHKPSa
-         Ly9mWkdV7jLwTKvUPRDUcrsVs/pQ+OSfej/zbcc91TQvuA0Fuc76B3NUlJb8SZ8H12To
-         A6L+flr1EOc5uZSNha+UYR4EzRo4G/SfrgdKprXjn3iE+GPTJwRaVsAEFUOH0Bo2dEu6
-         ext0vj3R/zLMJvLaWIvuZQbfQSJLD6nW0kT/gByoHbRXnWvWCZ3z+M9Ne65piZ+ElHQe
-         BrbA==
+        bh=K20raM31P1vHOywMPXebnUomeKK5/S2+7tzuuZ8Cdjo=;
+        b=0c6Do4t46lzV0xD8IUZnGbs2AXPhE4D0X9agV+SmzrjMl19VHI9k2DvCl7YMUUr0EC
+         +dLIs8G1IvslTmEveTAcv4sPi1Xoym8OE4nP8k+Du6OZAex2s+/nMkeafjl6qSnQvf6O
+         VDxVF2z7FOBjjXGQS/NDhgfQmqCz3Rt+PM+CHFcpsfSehn5iQKzrn2T/kgKeMt09Suq9
+         NK8tCHgJ1H0C0RKu+aOPXA7Fjz5owftKwki7v0lEUFsKHe1ffZiVAVYKPobOOE45XQUe
+         IDVM6lChS+t2hCithPR0kHZGYDqW9AkgsoThTGMHOixzZ83ejq3MUPhMgdR3ko624wQN
+         vBjQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a185si1579106ybb.570.2018.02.12.11.15.55
+        by mx.google.com with ESMTPS id z84si1577305ywa.283.2018.02.12.11.17.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 12 Feb 2018 11:15:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 12 Feb 2018 11:17:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40159 helo=lists.gnu.org)
+Received: from localhost ([::1]:40163 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1elJZz-0006FC-2x
-	for alex.bennee@linaro.org; Mon, 12 Feb 2018 14:15:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48234)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1elJb8-0006V4-Bq
+	for alex.bennee@linaro.org; Mon, 12 Feb 2018 14:17:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49160)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1elJKf-0000vT-QF
-	for qemu-arm@nongnu.org; Mon, 12 Feb 2018 14:00:10 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1elJLa-0001vS-Hm
+	for qemu-devel@nongnu.org; Mon, 12 Feb 2018 14:01:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1elJKb-0004Oc-U7
-	for qemu-arm@nongnu.org; Mon, 12 Feb 2018 14:00:05 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:37844 helo=mx1.redhat.com)
+	(envelope-from <eric.auger@redhat.com>) id 1elJLV-0006Go-W1
+	for qemu-devel@nongnu.org; Mon, 12 Feb 2018 14:01:02 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:56028 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1elJKb-0004NZ-Pm; Mon, 12 Feb 2018 14:00:01 -0500
+	id 1elJLQ-00069C-KM; Mon, 12 Feb 2018 14:00:52 -0500
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.3])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3369E404084E;
-	Mon, 12 Feb 2018 19:00:01 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0D04040FB633;
+	Mon, 12 Feb 2018 19:00:52 +0000 (UTC)
 Received: from AMD.redhat.com (ovpn-116-182.ams2.redhat.com [10.36.116.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 912E71008591;
-	Mon, 12 Feb 2018 18:59:54 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 01F491006ED7;
+	Mon, 12 Feb 2018 19:00:48 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
 	alex.williamson@redhat.com, mst@redhat.com, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org, jean-philippe.brucker@arm.com
-Date: Mon, 12 Feb 2018 18:58:14 +0000
-Message-Id: <1518461904-5305-13-git-send-email-eric.auger@redhat.com>
+Date: Mon, 12 Feb 2018 18:58:22 +0000
+Message-Id: <1518461904-5305-21-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1518461904-5305-1-git-send-email-eric.auger@redhat.com>
 References: <1518461904-5305-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Mon, 12 Feb 2018 19:00:01 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Mon, 12 Feb 2018 19:00:01 +0000 (UTC) for IP:'10.11.54.3'
+	(mx1.redhat.com [10.11.55.7]);
+	Mon, 12 Feb 2018 19:00:52 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
+	Mon, 12 Feb 2018 19:00:52 +0000 (UTC) for IP:'10.11.54.3'
 	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [RFC v6 12/22] virtio-iommu: Implement translate
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [RFC v6 20/22] hw/vfio/common: Set the
+ IOMMUMemoryRegion supported page sizes
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: kevin.tian@intel.com, marc.zyngier@arm.com, tn@semihalf.com,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: wei@redhat.com, kevin.tian@intel.com, marc.zyngier@arm.com, tn@semihalf.com,
 	will.deacon@arm.com, drjones@redhat.com, peterx@redhat.com,
 	linuc.decode@gmail.com, bharat.bhushan@nxp.com, christoffer.dall@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: asTFZYJULzLh
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: T4/AbkzS87H9
 
-This patch implements the translate callback
+We store the page_size_mask in the container and on
+vfio_listener_region_add(), the information is conveyed
+to the IOMMUMemoryRegion.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
 ---
+ hw/vfio/common.c              | 5 +++++
+ include/hw/vfio/vfio-common.h | 1 +
+ 2 files changed, 6 insertions(+)
 
-v5 -> v6:
-- replace error_report by qemu_log_mask
-
-v4 -> v5:
-- check the device domain is not NULL
-- s/printf/error_report
-- set flags to IOMMU_NONE in case of all translation faults
----
- hw/virtio/trace-events   |  1 +
- hw/virtio/virtio-iommu.c | 45 ++++++++++++++++++++++++++++++++++++++++++++-
- 2 files changed, 45 insertions(+), 1 deletion(-)
-
-diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
-index 7f7ea50..785d1fa 100644
---- a/hw/virtio/trace-events
-+++ b/hw/virtio/trace-events
-@@ -51,3 +51,4 @@ virtio_iommu_put_domain(uint32_t domain_id) "Free domain=%d"
- virtio_iommu_unmap_left_interval(uint64_t low, uint64_t high, uint64_t next_low, uint64_t next_high) "Unmap left [0x%"PRIx64",0x%"PRIx64"], new interval=[0x%"PRIx64",0x%"PRIx64"]"
- virtio_iommu_unmap_right_interval(uint64_t low, uint64_t high, uint64_t next_low, uint64_t next_high) "Unmap right [0x%"PRIx64",0x%"PRIx64"], new interval=[0x%"PRIx64",0x%"PRIx64"]"
- virtio_iommu_unmap_inc_interval(uint64_t low, uint64_t high) "Unmap inc [0x%"PRIx64",0x%"PRIx64"]"
-+virtio_iommu_translate_out(uint64_t virt_addr, uint64_t phys_addr, uint32_t sid) "0x%"PRIx64" -> 0x%"PRIx64 " for sid=%d"
-diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
-index 1986565..8c806dc 100644
---- a/hw/virtio/virtio-iommu.c
-+++ b/hw/virtio/virtio-iommu.c
-@@ -489,19 +489,62 @@ static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemoryRegion *mr, hwaddr addr,
-                                             IOMMUAccessFlags flag)
- {
-     IOMMUDevice *sdev = container_of(mr, IOMMUDevice, iommu_mr);
-+    VirtIOIOMMU *s = sdev->viommu;
-     uint32_t sid;
-+    viommu_endpoint *ep;
-+    viommu_mapping *mapping;
-+    viommu_interval interval;
-+
-+    interval.low = addr;
-+    interval.high = addr + 1;
+diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+index f895e3c..8f3fa0c 100644
+--- a/hw/vfio/common.c
++++ b/hw/vfio/common.c
+@@ -506,6 +506,7 @@ static void vfio_listener_region_add(MemoryListener *listener,
+     if (memory_region_is_iommu(section->mr)) {
+         VFIOGuestIOMMU *giommu;
+         IOMMUMemoryRegion *iommu_mr = IOMMU_MEMORY_REGION(section->mr);
++        IOMMUMemoryRegionClass *imrc = IOMMU_MEMORY_REGION_GET_CLASS(iommu_mr);
  
-     IOMMUTLBEntry entry = {
-         .target_as = &address_space_memory,
-         .iova = addr,
-         .translated_addr = addr,
--        .addr_mask = ~(hwaddr)0,
-+        .addr_mask = (1 << ctz32(s->config.page_size_mask)) - 1,
-         .perm = IOMMU_NONE,
-     };
+         trace_vfio_listener_region_add_iommu(iova, end);
+         /*
+@@ -526,6 +527,9 @@ static void vfio_listener_region_add(MemoryListener *listener,
+                             IOMMU_NOTIFIER_ALL,
+                             section->offset_within_region,
+                             int128_get64(llend));
++        if (imrc->set_page_size_mask) {
++            imrc->set_page_size_mask(iommu_mr, container->page_size_mask);
++        }
+         QLIST_INSERT_HEAD(&container->giommu_list, giommu, giommu_next);
  
-     sid = virtio_iommu_get_sid(sdev);
- 
-     trace_virtio_iommu_translate(mr->parent_obj.name, sid, addr, flag);
-+    qemu_mutex_lock(&s->mutex);
-+
-+    ep = g_tree_lookup(s->endpoints, GUINT_TO_POINTER(sid));
-+    if (!ep) {
-+        error_report("%s sid=%d is not known!!", __func__, sid);
-+        goto unlock;
-+    }
-+
-+    if (!ep->domain) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s %02x:%02x.%01x not attached to any domain\n",
-+                      __func__, PCI_BUS_NUM(sid), PCI_SLOT(sid), PCI_FUNC(sid));
-+        goto unlock;
-+    }
-+
-+    mapping = g_tree_lookup(ep->domain->mappings, (gpointer)(&interval));
-+    if (!mapping) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s no mapping for 0x%"PRIx64" for sid=%d\n",
-+                      __func__, addr, sid);
-+        goto unlock;
-+    }
-+
-+    if (((flag & IOMMU_RO) && !(mapping->flags & VIRTIO_IOMMU_MAP_F_READ)) ||
-+        ((flag & IOMMU_WO) && !(mapping->flags & VIRTIO_IOMMU_MAP_F_WRITE))) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "Permission error on 0x%"PRIx64"(%d): allowed=%d\n",
-+                      addr, flag, mapping->flags);
-+        goto unlock;
-+    }
-+    entry.translated_addr = addr - mapping->virt_addr + mapping->phys_addr;
-+    entry.perm = flag;
-+    trace_virtio_iommu_translate_out(addr, entry.translated_addr, sid);
-+
-+unlock:
-+    qemu_mutex_unlock(&s->mutex);
-     return entry;
- }
- 
+         memory_region_register_iommu_notifier(section->mr, &giommu->n);
+@@ -1053,6 +1057,7 @@ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
+             /* Assume 4k IOVA page size */
+             info.iova_pgsizes = 4096;
+         }
++        container->page_size_mask = info.iova_pgsizes;
+         vfio_host_win_add(container, 0, (hwaddr)-1, info.iova_pgsizes);
+     } else if (ioctl(fd, VFIO_CHECK_EXTENSION, VFIO_SPAPR_TCE_IOMMU) ||
+                ioctl(fd, VFIO_CHECK_EXTENSION, VFIO_SPAPR_TCE_v2_IOMMU)) {
+diff --git a/include/hw/vfio/vfio-common.h b/include/hw/vfio/vfio-common.h
+index f3a2ac9..221cc30 100644
+--- a/include/hw/vfio/vfio-common.h
++++ b/include/hw/vfio/vfio-common.h
+@@ -79,6 +79,7 @@ typedef struct VFIOContainer {
+     int fd; /* /dev/vfio/vfio, empowered by the attached groups */
+     MemoryListener listener;
+     MemoryListener prereg_listener;
++    uint64_t page_size_mask; /* page sizes supported for this container */
+     unsigned iommu_type;
+     int error;
+     bool initialized;
 -- 
 1.9.1
 

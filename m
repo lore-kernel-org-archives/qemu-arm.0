@@ -1,103 +1,96 @@
-Received: by 10.28.71.27 with SMTP id u27csp105015wma;
-        Tue, 13 Feb 2018 14:47:40 -0800 (PST)
-X-Google-Smtp-Source: AH8x226d1JBDZZCRKVQQbF6xHk45GCTiSPQRw15Obvayq2j25dYLjbIuuwO7CAqt1z2hAOwPjd8J
-X-Received: by 10.129.155.2 with SMTP id s2mr1904160ywg.219.1518562060879;
-        Tue, 13 Feb 2018 14:47:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518562060; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp143871wma;
+        Tue, 13 Feb 2018 15:36:49 -0800 (PST)
+X-Google-Smtp-Source: AH8x224zgiug4spsB9/dJHrvcc3Bd7+Fgldwei/NFYL4eWVVNA4Tu2RnR+E18AamoYUH8mopylf2
+X-Received: by 10.13.221.139 with SMTP id g133mr1997702ywe.50.1518565009500;
+        Tue, 13 Feb 2018 15:36:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518565009; cv=none;
         d=google.com; s=arc-20160816;
-        b=cDN23MnWZL62RygSPMz1IuQ0U9lQS6TcdoKBrVYRM1CMetsq/w+N56SLMmVQ7+i7wz
-         nG+P74EQIj+xoyMOqSC33Cm63LzlITDjKRAqLGNx0XzjdG63L+KBwJtpaMO2uhnmomSH
-         vgq/PJq22VGaGGxKz7uJQBgfy0wZPWPtyNOZ0Y+MxIuCbSPaxgwCCqN9MUk/vsPmdg6Q
-         fNk2dtLG/oPkM4kNbPNZ9/wcg5H7vnvoR2sk6a4E7ybrCSfbUx2cllHuVS67I3mK1Gd7
-         QwTZyLRawmrQPVnjrKKTJwU6yMzsSJYBBmqaCe4V/G/XIiFmwAclou+1gUCQV9tYy7SU
-         hC1g==
+        b=p8zikDuAZ4Olsscdl2Dk0I9iAiW10MgDZ5bCkdqhQ/ifrQoF/8R63h34Byp0WIvvyZ
+         q87NpqmzpAQxcHoQLQakxK+eMdBR+PUQkTfTgSaUDnuIYQD75tJHTciQgCKC10BVGvrp
+         UyqvSviEk/+B2Qi4L97paRhWlEN0ttaXHYIQjGM6JdhRHODX5VJcWCOyViZKaDghi5Bj
+         ezORSzFGkFnZCyIybN8DjYapxfaqL4G+un7bLWqqt3/2KPfcAvuE0CJdEjbsOIS6uOO4
+         d6xLf9o3ybKuL77p/WitRvehbtDATe6hDg/RnnMmagDvmfiRIgMrO2O8jP5RY9o1aFaa
+         3m2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=1l58liQhVEoTBQfhZIKn/V1bFN1e0jrZ4DrGgzflPG4=;
-        b=C8Xr7wRgo7U43ThpVt9jBS29E6X4+iGa8dsxkT/cFcNzjwRHx/VKtHi5ZG6oJQvS1Z
-         RplTqYavYWYXYZpb16qG1cEp+CKScVf+crbZeL1MwJ5+vQ2haRGQyQBABQFh96juwkeo
-         zsOygaAA+A0vwMqbrxp2REGggoKbQDXORXTGXIiSmJTO1pCP1FV1EsyUwyH8MEstIm3C
-         P6Eycr0EQSrXOs52imbxltATTYqW5dlx2hWv4f7HB2z5RXMT2BajbGu6Kd+kfyRrL7vt
-         F5Rf7yPAmSlS1taPH8vL/NATNTI+7XsypIsY36lrhkMrT7B0vEnGSED1zKb89upBEYhs
-         7hBg==
+        bh=gUJrldJnL1lkG058iLn4cfM82OkWjR+sV6zEv1PFc3U=;
+        b=RrzvFbWIlxc/Ia3NHcI1P4UwJtU6LWFoZUO8AkcZNGs7bFTGPdGFIwidhyclv5v7cj
+         W44uwkupY7P6aNesAe6epqQ8M+FuE5jJWRK/V7XlfRqP8s1QGKnS3bete7y3eXXmeAZC
+         G9tkkmhz8EGYwh7L+gaSdoyVMUDKehOEbp36bEC8AwRFJqljB2BOVMjH8LcAKrr8uZnm
+         MOyLAeCvfb4hRrcGJYB0IheJsmu0X0gZwB7syR53n5FO9lRGCtP5hfApIupwtUyoU5nm
+         wB0OQB1cRHNWKGsdcDLuQ4B7g9EaMGoRnrE+Ulw3JrmeBcabUT2v3Mq5e5QJMgTEygvU
+         qEOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VKg15hUF;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fTXFMFIP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o2si2053269ybm.751.2018.02.13.14.47.40
+        by mx.google.com with ESMTPS id y186si1795965ywa.439.2018.02.13.15.36.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 13 Feb 2018 14:47:40 -0800 (PST)
+        Tue, 13 Feb 2018 15:36:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VKg15hUF;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fTXFMFIP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:58634 helo=lists.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:34360 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eljMS-0005qK-5P
-	for alex.bennee@linaro.org; Tue, 13 Feb 2018 17:47:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57468)
+	id 1elk80-000134-Qt
+	for alex.bennee@linaro.org; Tue, 13 Feb 2018 18:36:48 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43480)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1eljMF-0005pf-6A
-	for qemu-arm@nongnu.org; Tue, 13 Feb 2018 17:47:28 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1elk5G-00077J-S6
+	for qemu-arm@nongnu.org; Tue, 13 Feb 2018 18:33:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1eljME-0001ZV-6B
-	for qemu-arm@nongnu.org; Tue, 13 Feb 2018 17:47:27 -0500
-Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:35960)
+	(envelope-from <peter.maydell@linaro.org>) id 1elk5F-0003oe-Ia
+	for qemu-arm@nongnu.org; Tue, 13 Feb 2018 18:33:58 -0500
+Received: from mail-ot0-x242.google.com ([2607:f8b0:4003:c0f::242]:46293)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
-	id 1eljME-0001ZD-1V; Tue, 13 Feb 2018 17:47:26 -0500
-Received: by mail-qk0-x243.google.com with SMTP id 15so24439185qkl.3;
-	Tue, 13 Feb 2018 14:47:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1elk5F-0003oQ-Cl
+	for qemu-arm@nongnu.org; Tue, 13 Feb 2018 18:33:57 -0500
+Received: by mail-ot0-x242.google.com with SMTP id w10so5329472ote.13
+	for <qemu-arm@nongnu.org>; Tue, 13 Feb 2018 15:33:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=1l58liQhVEoTBQfhZIKn/V1bFN1e0jrZ4DrGgzflPG4=;
-	b=VKg15hUF3n9Pcqifci8HCid094tajOli7MhDPDURbRCUQaAE6ua52R0moFqpV5QXyT
-	/7HlXcHJ0CllPVJvPkC9DRPWuBM2KYPeqEMEEx8JudTEXbV0+nx0jmHN4xi1JSHPIIb2
-	EnERDyolIadxcF/VbySmWymOj3QvSSw3U3mszpOr0R9YtOO1k8rDRmce/T4T6QRaO7d8
-	c7kAUP+DNmtScwzAeJhEQ+6QlXmZy85f9IloibY2b9n6oSCYS914fDJV7CbEUyARSXQD
-	OmBwH1K7IUhxc6D0DltzVAZZoMz80zpeY7BjXv2nrX1l29G2rmtev1QnzBYXSZsVMLLV
-	U44g==
+	:cc; bh=gUJrldJnL1lkG058iLn4cfM82OkWjR+sV6zEv1PFc3U=;
+	b=fTXFMFIPB+OUIOePpwPom5RIdVtJI0D5atGBg7DaF5RJVolA+nA/BHi42vcziLo//3
+	iPWTxR+jMfMxMBrSlFc4UfpnIKoAzanBH+wqzQfsgJdHyEgLxHvY7NKvuxv98+ueSBsM
+	lR2CfnlG2+wm176K8tBu4jLHKWv/UwDQZ4kcM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=1l58liQhVEoTBQfhZIKn/V1bFN1e0jrZ4DrGgzflPG4=;
-	b=ryg9GfHgmkWCEa+WYBOTlWV23hPO85E5wkcKmhig6tIVXKMgAjPyzCtWmMd3cTxItN
-	iV0P6zWI7fNwBYcuPCsRF8iR7/EAIxbpMk/H7O2J5nlTtNedP9FWtmGSaLWsNZ+9uTqg
-	Ii8qfRTDUvas+qV0hK2NfPKpxYXNWv1Q6XWkqqhU2NLlGB5Moh1edTohxkcmoyO3G8w8
-	4pKAMi6ryRKPMn6RPaPkOkatQtvRSfFT1fyt97qOSY557YV3Scv7LJuyn1SvA9Lk0r1t
-	UKgCkBZGEExaZvBuaEV8YdBms/LrZHR6JB2CoqVR3ImqGHS9Jt35aDcByCpnmFFNk1S8
-	jUQQ==
-X-Gm-Message-State: APf1xPD5wD4gZYYDcBB/Q9hzaYFan80Flf/f0xlyCHo8C/QUgczAnSq/
-	AXueF1KsP11wmZMEBm8uWblJ4QHKyBD31GwGvuw=
-X-Received: by 10.55.203.67 with SMTP id d64mr4387840qkj.210.1518562045189;
-	Tue, 13 Feb 2018 14:47:25 -0800 (PST)
+	bh=gUJrldJnL1lkG058iLn4cfM82OkWjR+sV6zEv1PFc3U=;
+	b=T4mauQ5AXVW/+6kLXsYftpFQrgjiHbqm7s7FkpONquJu7bT2Bn29BmqZ+7fg+N4UY7
+	550sZMf7RwHivzft3Hj+YWxgJpMpgb7HJ4sSXgbBL9wKqBIDwR33N1cHfI/HUm73TvjC
+	CCQp4kDHTudAOZMbwCH9smO3KsWosBkGeFfBPSur3PtDomb/SEYOFPK/b/RCnG/sTVTV
+	NGzAyHL6xwYalCL3o19zzFrb9rOTtFTIJvk4DkR9a2thNMZJb8pvbkaz6Z+Wmx9Ly4kP
+	GxqvIGjgHXiRHr4KoMaKXmM36HQJpjNYZsytEbNbHeA1JrRNFrGiGnMR1kWFB7D4JRbe
+	mK6Q==
+X-Gm-Message-State: APf1xPBx7KUUsg7HZjBdOEtoBvVp438BM8cvAhnRbIvRqqxbPCyZiTYy
+	p8XgfFC46XNf0egoBAwv6jwpVE5+/MsJr9qgwj+uSA==
+X-Received: by 10.157.16.77 with SMTP id o13mr2103014oto.54.1518564836460;
+	Tue, 13 Feb 2018 15:33:56 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.140.101.7 with HTTP; Tue, 13 Feb 2018 14:47:24 -0800 (PST)
-In-Reply-To: <20180214000837-mutt-send-email-mst@kernel.org>
-References: <20180213170712.18239-1-andrew.smirnov@gmail.com>
-	<20180213170712.18239-2-andrew.smirnov@gmail.com>
-	<20180213200450-mutt-send-email-mst@kernel.org>
-	<CAHQ1cqEpeq+M6bVTBLd6dvN7=h-s_bPTXRx_GaoMFhhpq2gTpA@mail.gmail.com>
-	<20180214000837-mutt-send-email-mst@kernel.org>
-From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Date: Tue, 13 Feb 2018 14:47:24 -0800
-Message-ID: <CAHQ1cqEDDz5ni-+MfQp7dE0x_b51=JwgU-fwS4Y+AkyDyLpxRQ@mail.gmail.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
+Received: by 10.157.18.136 with HTTP; Tue, 13 Feb 2018 15:33:36 -0800 (PST)
+In-Reply-To: <CANN23NnJWS-dT8yDZnZW_wf-L88rMU7n5fzfsgEE3b61Zoa-Rg@mail.gmail.com>
+References: <CANN23NnJWS-dT8yDZnZW_wf-L88rMU7n5fzfsgEE3b61Zoa-Rg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 13 Feb 2018 23:33:36 +0000
+Message-ID: <CAFEAcA80NDQu0t8U4vajvjyKicfzEzmXPGCoVj+iSgmmAmfAEg@mail.gmail.com>
+To: patrickelectric@gmail.com
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::243
-Subject: Re: [Qemu-arm] [PATCH v6 1/3] pci: Add support for Designware IP
- block
+X-Received-From: 2607:f8b0:4003:c0f::242
+Subject: Re: [Qemu-arm] Running qemu-system-arm with stm32f303
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -109,116 +102,76 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@zoho.com>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	"open list:ARM" <qemu-arm@nongnu.org>, Andrey Yurovsky <yurovsky@gmail.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uR7jXC14KBsT
+X-TUID: +vJNxEiApFBi
 
-On Tue, Feb 13, 2018 at 2:15 PM, Michael S. Tsirkin <mst@redhat.com> wrote:
-> On Tue, Feb 13, 2018 at 12:24:40PM -0800, Andrey Smirnov wrote:
->> On Tue, Feb 13, 2018 at 10:13 AM, Michael S. Tsirkin <mst@redhat.com> wrote:
->> > On Tue, Feb 13, 2018 at 09:07:10AM -0800, Andrey Smirnov wrote:
->> >> +static void designware_pcie_root_class_init(ObjectClass *klass, void *data)
->> >> +{
->> >> +    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
->> >> +    DeviceClass *dc = DEVICE_CLASS(klass);
->> >> +
->> >> +    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
->> >> +
->> >> +    k->vendor_id = PCI_VENDOR_ID_SYNOPSYS;
->> >> +    k->device_id = 0xABCD;
->> >> +    k->revision = 0;
->> >> +    k->class_id = PCI_CLASS_BRIDGE_PCI;
->> >> +    k->is_express = true;
->> >> +    k->is_bridge = true;
->> >> +    k->exit = pci_bridge_exitfn;
->> >> +    k->realize = designware_pcie_root_realize;
->> >> +    k->config_read = designware_pcie_root_config_read;
->> >> +    k->config_write = designware_pcie_root_config_write;
->> >> +
->> >> +    dc->reset = pci_bridge_reset;
->> >> +    /*
->> >> +     * PCI-facing part of the host bridge, not usable without the
->> >> +     * host-facing part, which can't be device_add'ed, yet.
->> >> +     */
->> >> +    dc->user_creatable = false;
->> >> +    dc->vmsd = &vmstate_designware_pcie_root;
->> >> +}
->> >> +
->> >> +static uint64_t designware_pcie_host_mmio_read(void *opaque, hwaddr addr,
->> >> +                                               unsigned int size)
->> >> +{
->> >> +    PCIHostState *pci = PCI_HOST_BRIDGE(opaque);
->> >> +    PCIDevice *device = pci_find_device(pci->bus, 0, 0);
->> >> +
->> >> +    return pci_host_config_read_common(device,
->> >> +                                       addr,
->> >> +                                       pci_config_size(device),
->> >> +                                       size);
->> >> +}
->> >> +
->> >> +static void designware_pcie_host_mmio_write(void *opaque, hwaddr addr,
->> >> +                                            uint64_t val, unsigned int size)
->> >> +{
->> >> +    PCIHostState *pci = PCI_HOST_BRIDGE(opaque);
->> >> +    PCIDevice *device = pci_find_device(pci->bus, 0, 0);
->> >> +
->> >> +    return pci_host_config_write_common(device,
->> >> +                                        addr,
->> >> +                                        pci_config_size(device),
->> >> +                                        val, size);
->> >> +}
->> >> +
->> >> +static const MemoryRegionOps designware_pci_mmio_ops = {
->> >> +    .read       = designware_pcie_host_mmio_read,
->> >> +    .write      = designware_pcie_host_mmio_write,
->> >> +    .endianness = DEVICE_NATIVE_ENDIAN,
->> >> +    .impl = {
->> >> +        /*
->> >> +         * Our device would not work correctly if the guest was doing
->> >> +         * unaligned access. This might not be a limitation on the real
->> >> +         * device but in practice there is no reason for a guest to access
->> >> +         * this device unaligned.
->> >> +         */
->> >> +        .min_access_size = 4,
->> >> +        .max_access_size = 4,
->> >> +        .unaligned = false,
->> >> +    },
->> >> +};
->> >
->> > Could you pls add some comments explaining why is DEVICE_NATIVE_ENDIAN
->> > appropriate here?  Most of these cases are plain "we never bothered
->> > about cross-endian setups". Some are "there's a mix of different
->> > endian-ness values, need to handle in a special way".
->> >
->> > I suspect you really need DEVICE_LITTLE_ENDIAN.
->> >
->>
->> That MemoryRegion corresponds to a register file permanently mapped
->> into CPU's address space, so my assumption is that SoC designers will
->> wire it according to CPUs endianness be it big or little. I am not
->> aware of any big-endian CPU based SoC on the market using Designware's
->> IP block, so I don't think there are any precedent confirming or
->> denying correctness of my assumption. IMHO, this is also the reason
->> why all of Linux driver code for that IP assumes little endianness.
+On 11 January 2018 at 00:07, patrick JP <patrickelectric@gmail.com> wrote:
+> Hello,
+> I am running QEMU v2.11.0 to run my .elf, a bare metal code.
+> The .elf runs in my stm32f303 board, flashed via stm32flash.
+> My objective is to run the .elf in my machine to do testes over the serial
+> communication, running socat PTY,link to create a bridge between
+> /dev/deviceIn and /dev/deviceOut, where /dev/deviceIn would be qemu -serial
+> argument and /dev/deviceOut the path for my python script.
+
+Hi -- just noticed this mail to the list a bit late, but:
+
+> Right now, I am running:
 >
-> IMHO if Linux driver code does cpu_to_le then it seems best to be
-> consistent with that.
->
+> qemu-system-arm -machine versatilepb -cpu cortex-m3 -nographic -monitor null
+> -serial null -semihosting -device loader,file=file.elf
+> output: segmentation fault (core dumped)
 
-Well, all of the DW code does so implicitly by using readl()/writel()
-helpers which will perform cpu_to_le/le_to_cpu under the hood. But is
-seems to me that it could be either because the access does have to be
-LE always or simply because readl()/writel() are goto memory helpers
-on ARM/LE-platforms.
+This is an incorrect commandline. The "versatilepb" machine
+will not work with M profile CPUs: it is a development
+board for the ARM926 CPU. (I really should make this
+fail with a helpful error message rather than crash.)
 
-FWIW: Somewhat similar precedent of MIPS/Boston machine can serve as
-counter-example to my assumption, since Xilinx PCIE IP there seem to
-be wired to be LE despite being attached to BE CPU.
+To use the cortex-m3 or -m4 you need to use one of the machine
+models that works with it, which is
 
-Thanks,
-Andrey Smirnov
+lm3s6965evb          Stellaris LM3S6965EVB
+lm3s811evb           Stellaris LM3S811EVB
+mps2-an385           ARM MPS2 with AN385 FPGA image for Cortex-M3
+mps2-an511           ARM MPS2 with AN511 DesignStart FPGA image for Cortex-M3
+netduino2            Netduino 2 Machine
+
+(if your QEMU is older you may not see all of these.)
+
+Generally you should select the machine with -machine,
+and let it take care of picking the right CPU.
+
+netduino2 is probably the best bet as it is an stm32f205,
+but you should check that your test binaries are built to
+be able to run on whatever board you pick. (In particular,
+don't build them to use the FPU, because QEMU's M profile
+CPUs don't emulate the FPU yet.)
+
+Also, if you pass '-serial null' you're telling QEMU to throw
+away any serial output to /dev/null, which is probably not what
+you want.
+
+> qemu-arm -d cpu,in_asm -cpu cortex-m3 -B 0x08000000 file.elf
+> log: https://pastebin.com/FyA1pc8m
+
+qemu-arm is for running single Linux binaries, not bare metal
+executables. If you try to run a bare metal executable it
+will crash as soon as it tries to look at an address
+which hasn't had RAM allocated for it, which is what that
+log file shows is happening. For M profile binaries it
+doesn't make a great deal of sense to try to use qemu-arm.
+
+I would start by getting your test binary to run "by hand".
+Once you've done that there's things you can do (as James
+Hanley suggests) to arrange to connect the serial port
+up to a TCP socket or a FIFO or whatever your test harness
+should be talking to.
+
+One final point: I would recommend that you make sure
+you're using QEMU 2.11, because we did a lot of bug
+fixing on M profile emulation recently.
+
+thanks
+-- PMM

@@ -1,94 +1,94 @@
-Received: by 10.28.71.27 with SMTP id u27csp687965wma;
-        Mon, 12 Feb 2018 20:28:17 -0800 (PST)
-X-Google-Smtp-Source: AH8x2253IT/+BEXC21TSwBSzzuTsmp623Fb8b/cZ6qwI44vMH2g9OLzQWAHqxaCxMlrI7FlbCmFp
-X-Received: by 10.37.135.7 with SMTP id a7mr9937425ybl.477.1518496097805;
-        Mon, 12 Feb 2018 20:28:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518496097; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp693131wma;
+        Mon, 12 Feb 2018 20:35:25 -0800 (PST)
+X-Google-Smtp-Source: AH8x224nzLEP5vz/Sw7Lcr0NNwhhvTrSJo4TTzPqygllEgTA7EuHYtal9nqiikYOY2sA7Oz/4pKq
+X-Received: by 10.129.193.9 with SMTP id f9mr1381492ywi.25.1518496525556;
+        Mon, 12 Feb 2018 20:35:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518496525; cv=none;
         d=google.com; s=arc-20160816;
-        b=Bop2Fvpz1m5nXyjQf0I6JEEeR8dAiD7ErtPmnqNeHH0wicT7bmf7zZsgK6fwr5iSbr
-         XXpvMoRHxuotUCeOEP06rnIIPp3GzvURnidBMo6jiCJtCAVQHyl8uOm81zuXS01uqPKO
-         CG6TIG02Qd1Rih70A51EaKumokY5ijlhk8paTkvLXvD7uKWA62iWIXDjEoDwg1uE2mpu
-         I8Nb/M2L368C8rkhtc36gSGfngn08jNWAjcawFb1y9pCkmGk8Fk1SUeHStrP4dyB2cI/
-         QYh2X9bAT44gPKpvqTtEKjQtPqLmYJPgUqV3CcyZM9BTa4ZkRh6cP3I4q2NbtXiN76XG
-         VKBA==
+        b=Lu0qPNKroqdLjwhHQei/SvghXaPp+w8B9Uq7NYU/Trl2pqqzFQDHrQ3SVy/7TR5qui
+         L7KXC4e1RJ9+ST5NZVlKDW7DtEpk4yD7YLm7eV3g05NqjEHBqqXG+Ghffhu4dmikLifd
+         ofDosvIiA9kzugfKrUQl6O2Is0baO9bvDGbQJvZJQDQ17HMzY0IvCS00YetEHAeDeT5Q
+         vLK/5SZ25dNtOolHmrJBjkHknd3vBm2j4xKOx/KMuTUuRTVcwz88t/OUU4vI4HW5cHa9
+         2sn/FEQir8GoVOPw686fTm40NZYiUNk41I4yJsSLGzeYgDn73oSWHqUvmKbhgeowcaBW
+         ymMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=Ro6NsGQE95TgqhEe4cM+3fq55Nj7p/DfcTmAK0a7k7c=;
-        b=Af5HI0OtsEdM3ZE6DPh7vQJgpgV+/VkowxTXZ2jpEgOwE9xyXZATb4TGUoWkrds8Fw
-         NAbbWy9ls+viKWtkyWT1vryYF2FK0+uZ5cscJdVSnNNpyw5++aTW0A2xrSqJSu5yS0n8
-         IK4HAPBRJ14Bmt1grXU810IFbCVgLlI7OLJuAEmJE+wKJ1Q6whxxAY8vCeh2MKExQX7J
-         rT+4rxBLHkO/ku8USPZeIBMu8K7zCVccgWLoM5ONU9i+hzYzLgYpqpVsAkd2cKxS0zdU
-         SKwUTFSpdQAaDdgZYxMY9TyVvxLvyVx+atojN/Oik/dNGJwgva8x0EH5Oqg9scU0+2Ds
-         vkMg==
+        bh=v457jH8C5UirGQbVe7z02s40zgDFDhiKAvbmiOY6FF4=;
+        b=uYQdedUx1Zg/K0p34KBDwIhC4XAhNPENXl3Qm5xORVB+BHOSvJKJDZl4OwJ5ZXfIdL
+         GdyEACUhgg0cHHmJSwT9y7jHWIlznJpvAk7UFauujRMzZWdpgmcowLxoMOlbJEfONJMQ
+         tREmW0DQohqgCDEOoOG4+Wd2VyzTbdI+7v0XavZqDDDFWkVIU6rW7do4xpVFRnJpeODA
+         5WzrDESdHFpUQ8zPR6JkO0gBl4H7jGz024qbjwQ2SgfamrmeVDuy+etz92LwMaCXg9QR
+         rsekcLWW1ITDAueii8EkpZwgR/ai9NBw9NQwF0OIfLmN8A5q9MB4uDMdXCXqMv2BGQDH
+         Fbhg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=k4Q/dpW8;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bu82+OUh;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i9si682451ywe.304.2018.02.12.20.28.17
+        by mx.google.com with ESMTPS id t140si221705ywc.707.2018.02.12.20.35.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 12 Feb 2018 20:28:17 -0800 (PST)
+        Mon, 12 Feb 2018 20:35:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=k4Q/dpW8;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bu82+OUh;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37934 helo=lists.gnu.org)
+Received: from localhost ([::1]:39189 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1elSCX-00011j-6R
-	for alex.bennee@linaro.org; Mon, 12 Feb 2018 23:28:17 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53121)
+	id 1elSJQ-0007xi-U5
+	for alex.bennee@linaro.org; Mon, 12 Feb 2018 23:35:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53066)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1elRud-0001li-3k
-	for qemu-devel@nongnu.org; Mon, 12 Feb 2018 23:09:50 -0500
+	id 1elRuX-0001hg-NI
+	for qemu-devel@nongnu.org; Mon, 12 Feb 2018 23:09:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1elRuc-00006B-69
-	for qemu-devel@nongnu.org; Mon, 12 Feb 2018 23:09:47 -0500
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:38317)
+	id 1elRuV-0008Up-2N
+	for qemu-devel@nongnu.org; Mon, 12 Feb 2018 23:09:41 -0500
+Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:34305)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1elRuc-00005x-14; Mon, 12 Feb 2018 23:09:46 -0500
-Received: by mail-qt0-x241.google.com with SMTP id k13so2229375qtg.5;
-	Mon, 12 Feb 2018 20:09:46 -0800 (PST)
+	id 1elRuU-0008Ue-Tg; Mon, 12 Feb 2018 23:09:38 -0500
+Received: by mail-qt0-x241.google.com with SMTP id d14so2250666qtg.1;
+	Mon, 12 Feb 2018 20:09:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=Ro6NsGQE95TgqhEe4cM+3fq55Nj7p/DfcTmAK0a7k7c=;
-	b=k4Q/dpW885NghB5qN4hh6kUXsMWHlg5S9r0FH1MzgZMWxowi5GpbEYAoOWPABC3q9R
-	TbwdMVxUDrojSjwVEBvL553n5mrXPVeNyjCpUoSQttPGqB/e9YpuF0sK8AvoyC8Bvdmq
-	xxm9ABU2Yfvez4neehbLk36C2g3vh4b8VZS7VuYagSuVG0U7JBRnxIDxHIVONY2eh4vk
-	yMLBMcs7RUVor+ktozv/i5hFJiBm/j4HOOEApYgeQeDOHhh8rSqesSeKyrf0InMYS9fd
-	xcghC7O1rln2ysQcWne95JGOFxsMvRg6RJ+XlyHkz9+bNXhUu0YYtCTPZVFEbJ2N70TE
-	JVLw==
+	bh=v457jH8C5UirGQbVe7z02s40zgDFDhiKAvbmiOY6FF4=;
+	b=bu82+OUht2fGWhGsbRyV+QgBzCZHmQTgsrXn3lRuWNlT1bVtRUGpXojTl4xfMrxQ5Y
+	9ceiDBayKzvUhdwuJugkbOe7hSf2u2Q/b3oM+Kz03HwqEHShdERK/XJd21HEK5un0CyW
+	LHlDj8nFP7BFdYHn/m2PSFeesbYmcYYtuggiMy+dLzwMaarsCG1y3VQ6Nnh5dY5a4Uws
+	WEySyUYlpS1EdAEZwJeif84FjEisSYixm+xV1B43GJYHFTsHiVqhkbD5xHscFGjZU87R
+	aNK9BG9bZCyrvj+9H+W4LOxnsI27BqY8dLYw8aJjhAOe5E0QKC2d8m4wGiUGwpDNXEsr
+	Kf5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=Ro6NsGQE95TgqhEe4cM+3fq55Nj7p/DfcTmAK0a7k7c=;
-	b=XaHHiTEcXc28ImmiahcshXvrRtYlnzJiOGFKAPn4emL+y4iBde+QFvBkMCxzL/J/PD
-	hpTyz8o50QOAbWtDsZlvWZ5zrcrN4UZ88t70jDkkeWaN/Zpz7JNLF1Bqw37SUEddzDSD
-	MCBk9/xrYdPG0XNsOqVra/bfnKMmurUVOH0+cHYoNUk8T62nvfdJJUeErsPQxkkNz5nm
-	IBf6y6K3ENro8uyEj3ngubLlV3ChvhTQadNX3uD8EpfEVA3mC5IrFIaweB+kymUkAAwj
-	h7D5pbZykX24fmT2XNILc6cG6Xt+LPsiNco3L0J/sAQKE48mV+qwkkeDwzFZRrU6KTn9
-	Ez1g==
-X-Gm-Message-State: APf1xPBmWNWBvXdvLcE2+JRr/hTkmrd0EUuKtP7zIH3lrBWFyxuo3cN3
-	m85dmqB1MVxFacIGabxaaWA=
-X-Received: by 10.200.27.67 with SMTP id p3mr22127741qtk.254.1518494985645;
-	Mon, 12 Feb 2018 20:09:45 -0800 (PST)
+	bh=v457jH8C5UirGQbVe7z02s40zgDFDhiKAvbmiOY6FF4=;
+	b=qJYSxv8Yd4uyJ57iApPNl8FC2J0TgHo1+jKx+/JlpMVu0kyZS7Hq4YzmJV2R58gqSc
+	J0u7i1YdC5SyHUtAcAGf2p7DQMKwK0tx/aNaVwoOZZ2lIYSIY7dw+LNPM0wPnQYDG69T
+	vilUchcmvGSk/94eKsPikixmY87ZPLCzjrPM07sEOQcRTWYUL9SflsGXqq5PRojRF90S
+	LpeXe2qyzgO3gmKzcsqV+1eKY8ujUzvsTZh70v1AoCUX8bGRCk2j3NZmYAX1oUBamgCC
+	lBB4mQb2+05oVmdu3W80NQ84HSXE+0OgJwbbNVM9Uwc9xdCH+mJhAKq/B+JNsnQDZnw+
+	bsQQ==
+X-Gm-Message-State: APf1xPBViHaTrf1yihYfjitxs/jfx+7g522VbWOZFRmHbWBTYkmfMnQp
+	WLMxH2x46GwPqdBsNglbRTc=
+X-Received: by 10.237.45.97 with SMTP id h88mr1734772qtd.284.1518494978554;
+	Mon, 12 Feb 2018 20:09:38 -0800 (PST)
 Received: from x1.local ([138.117.48.219])
-	by smtp.gmail.com with ESMTPSA id q2sm7350435qki.10.2018.02.12.20.09.42
+	by smtp.gmail.com with ESMTPSA id q2sm7350435qki.10.2018.02.12.20.09.35
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 12 Feb 2018 20:09:45 -0800 (PST)
+	Mon, 12 Feb 2018 20:09:38 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Paolo Bonzini <pbonzini@redhat.com>
-Date: Tue, 13 Feb 2018 01:08:06 -0300
-Message-Id: <20180213040809.26021-28-f4bug@amsat.org>
+Date: Tue, 13 Feb 2018 01:08:04 -0300
+Message-Id: <20180213040809.26021-26-f4bug@amsat.org>
 X-Mailer: git-send-email 2.16.1
 In-Reply-To: <20180213040809.26021-1-f4bug@amsat.org>
 References: <20180213040809.26021-1-f4bug@amsat.org>
@@ -98,8 +98,8 @@ Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: [Qemu-devel] [PATCH v13 27/30] hw/arm/xilinx_zynqmp: enable the
- UHS-I mode
+Subject: [Qemu-devel] [PATCH v13 25/30] hw/arm/fsl-imx6: implement SDHCI
+ Spec. v3
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -116,30 +116,40 @@ Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
 	Fam Zheng <famz@redhat.com>, qemu-devel@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	Alistair Francis <alistair.francis@xilinx.com>,
-	"open list:Xilinx ZynqMP" <qemu-arm@nongnu.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+	"open list:ARM" <qemu-arm@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: blLW7nVP/Clx
-
-see the Xilinx datasheet "UG1085" (v1.7)
+X-TUID: kk4GCdM69cgH
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+Acked-by: Alistair Francis <alistair.francis@xilinx.com>
 ---
- hw/arm/xlnx-zynqmp.c | 1 +
- 1 file changed, 1 insertion(+)
+ hw/arm/fsl-imx6.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-index e39ad73bec..4b93a3abd2 100644
---- a/hw/arm/xlnx-zynqmp.c
-+++ b/hw/arm/xlnx-zynqmp.c
-@@ -400,6 +400,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-          */
-         object_property_set_uint(sdhci, 3, "sd-spec-version", &err);
-         object_property_set_uint(sdhci, SDHCI_CAPABILITIES, "capareg", &err);
-+        object_property_set_uint(sdhci, UHS_I, "uhs", &err);
-         object_property_set_bool(sdhci, true, "realized", &err);
+diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
+index e6559a8b12..b6ac72de27 100644
+--- a/hw/arm/fsl-imx6.c
++++ b/hw/arm/fsl-imx6.c
+@@ -27,6 +27,8 @@
+ #include "chardev/char.h"
+ #include "qemu/error-report.h"
+ 
++#define IMX6_ESDHC_CAPABILITIES     0x057834b4
++
+ #define NAME_SIZE 20
+ 
+ static void fsl_imx6_init(Object *obj)
+@@ -348,6 +350,11 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+             { FSL_IMX6_uSDHC4_ADDR, FSL_IMX6_uSDHC4_IRQ },
+         };
+ 
++        /* UHS-I SDIO3.0 SDR104 1.8V ADMA */
++        object_property_set_uint(OBJECT(&s->esdhc[i]), 3, "sd-spec-version",
++                                 &err);
++        object_property_set_uint(OBJECT(&s->esdhc[i]), IMX6_ESDHC_CAPABILITIES,
++                                 "capareg", &err);
+         object_property_set_bool(OBJECT(&s->esdhc[i]), true, "realized", &err);
          if (err) {
              error_propagate(errp, err);
 -- 

@@ -1,214 +1,459 @@
-Received: by 10.28.71.27 with SMTP id u27csp788244wma;
-        Wed, 14 Feb 2018 02:53:08 -0800 (PST)
-X-Google-Smtp-Source: AH8x2270d1SPmyLnF6XSc+Y0bx8CN6ktBSXy8h2yYwJpqJfB1/hAQK9YNM9btl9mS6omko+i/qex
-X-Received: by 10.37.244.71 with SMTP id p7mr2718457ybe.264.1518605588150;
-        Wed, 14 Feb 2018 02:53:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518605588; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp1927377wma;
+        Wed, 14 Feb 2018 20:31:25 -0800 (PST)
+X-Google-Smtp-Source: AH8x2260FJKwjFM4xiyYx1+eCePuIvJX9+DyRyznWHk/RB4otgkfXTtjFTRmzHqmQJ4q0FQqtzvY
+X-Received: by 10.37.19.69 with SMTP id 66mr1101304ybt.421.1518669085092;
+        Wed, 14 Feb 2018 20:31:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518669085; cv=none;
         d=google.com; s=arc-20160816;
-        b=aqlg7bbdFaeJpJr1cC2ITw0Tx3SJDP+to6B3c+QdZfSq9u9F3dDhaK5BeNUeRwTGbV
-         KyTYr0izss5siKFC6/6kX5YSDdcluWESg1NDYdYpt9jo+X3f42lWI0OW2IjgCme6MimN
-         naD7G8MxV+X2XhCcsSwpBASLVprP9ibt9UYto59TSC8YssDR3CPmrUgiHuOExrO6Ny6K
-         1dtvumnOqIRFgFHzOkhfEt8msVUtb0z/mt4agqR3I6F873hStls0GlcaByI8sazudIWh
-         obp3c+qSKHnxpUpzg4YpbrRo5tClnmeRscaNGypXsV/FMJk5eXLrhduY2aVvuxUz9Trx
-         +BmQ==
+        b=f8sU75WgR2HU5p1QyMumyVUPuBPYn3JQjmvNb3YJovld98X3twgDGf+Nj7Xu2ln00G
+         yua3gs8XLc1Cdj9/PU//jHg1qY3dlFb8wBK+YQoiBwYIkacAm7u6oc3tE4TLJbS9x+Nw
+         5EQO3o0yf4id2Bf+65lW7XXJqUtEInVshBKhu15KQp+4gLPyQEQFpllnehbdEcqcc2kP
+         uCreV0oaUh3G3MEWL4GgMejhM5i8q/yKqJoHGpZrEbEVl9F/dEtCjyUEK3+nFCSTVZTM
+         HJj4SqfuQW43BqE25+oc3o59lCR9+26ziE2u01HBhfq4qU9NxG7enQb0OsTCCIDHBrVz
+         eHQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:arc-authentication-results;
-        bh=je78NUcQgngRj9GqRex5AawXeltDChrXhrWJrgR4gH8=;
-        b=nfCoS7fqLbkjZ9eBuJNKhl/BBYe1viwo1kUYd7nsB7yxbNR5m2pLys7/18QzABYF1Y
-         KmvVkSJZYvt/DtjNNXarw4PjxkP3cw2rx5byFHUFhTDG1RxQlyxdYDvFhDDcTYQM6vzh
-         JNPy6k92/F/i9Tf9FjyrqLmuaq12Hqrqqq3yylxn7hGKCurImBLyXZmHCs4AAbTLdpzU
-         QsvjkeIREHigDBl8GCKbYd6MmCq2XvBJo1NIyrny+wlndHQjY96V7xS3NtF778zYiooG
-         1ylUy3KK2SkRcC8GS0L7pwr0I6SsQxITQMIDhp5s9BdEJqE3H1KRw/KcNBpYgnZIDjBu
-         HERQ==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=DFPgGTTb0Eqq7D02FqFtfb9z6gi/xMA0DbkR3ZI1lmA=;
+        b=AfPGeLi02kP2E2pTjJIvGlhCu6SeuvkFYfXk47QSBTMDAaGr3/zue9wIYdnPFwSqOa
+         GAj7X1rs+WuWzKLcMLzDczjoPOxFFUsip9fLRk9HXINbemrOmJdA9OYW3d3tIvYh2+O3
+         q6mlig5Pca6d5gdH6ya4g/FbDodkoSG6RDAPlYeYN6lbZuY+BluQqA2wHhTen96IfLlL
+         WOa5DraU9nhrM2bbq0061C3S+1S0J4bnFRXbPdRARJHeifq1UCewv9aYTstW7YkNTrBd
+         JX/oPhr7zmO7u0Nx66Hz/bhlYoglLO3zCgT7L1cyq0dz8FdLHpXO8KrqwkFY9Nx3L5+l
+         Jswg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oHD4izyi;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z127si2221216ybf.535.2018.02.14.02.53.07
+        by mx.google.com with ESMTPS id r15si2656207ybd.446.2018.02.14.20.31.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 14 Feb 2018 02:53:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 14 Feb 2018 20:31:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35112 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oHD4izyi;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:37496 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1elugV-0000wv-L5
-	for alex.bennee@linaro.org; Wed, 14 Feb 2018 05:53:07 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36153)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1emBCe-0008WE-Ca
+	for alex.bennee@linaro.org; Wed, 14 Feb 2018 23:31:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34213)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1elugL-0000ud-Gu
-	for qemu-arm@nongnu.org; Wed, 14 Feb 2018 05:52:58 -0500
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1emBAg-0007Qb-El
+	for qemu-devel@nongnu.org; Wed, 14 Feb 2018 23:29:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1elugI-0000ta-Dr
-	for qemu-arm@nongnu.org; Wed, 14 Feb 2018 05:52:57 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:41440 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1elugI-0000rv-7z; Wed, 14 Feb 2018 05:52:54 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2B5028160F83;
-	Wed, 14 Feb 2018 10:52:43 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-21.ams2.redhat.com
-	[10.36.116.21])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 7D7B710A85AE;
-	Wed, 14 Feb 2018 10:52:33 +0000 (UTC)
-To: Geert Uytterhoeven <geert+renesas@glider.be>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Alex Williamson <alex.williamson@redhat.com>
-References: <1518189456-2873-1-git-send-email-geert+renesas@glider.be>
-	<1518189456-2873-6-git-send-email-geert+renesas@glider.be>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <79b1983f-cf83-624b-bd4d-86a2b6cc25e0@redhat.com>
-Date: Wed, 14 Feb 2018 11:52:32 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1emBAf-0003sG-0i
+	for qemu-devel@nongnu.org; Wed, 14 Feb 2018 23:29:22 -0500
+Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:45267)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1emBAe-0003s5-Rn; Wed, 14 Feb 2018 23:29:20 -0500
+Received: by mail-qt0-x244.google.com with SMTP id x27so10461764qtm.12;
+	Wed, 14 Feb 2018 20:29:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=DFPgGTTb0Eqq7D02FqFtfb9z6gi/xMA0DbkR3ZI1lmA=;
+	b=oHD4izyiGQeyFS42dzKUrmkMYODq9RBX6I3Lcum36NWNOHf49SRs8inYJrF/5Ew1Li
+	NRZmUlp+lKm8Q5lTHUD8IWohx7ZD4/z9jvdEcxoatZqHF0H653LuU9WfbZqXC8KKlk1d
+	q45i6lCQo/R4pd9f03rLgZrqGmzCQzysr/19F4KQBhig4cNQcZWZzq0ZbiCdrPgPSihx
+	37KHcId31F/Spp4v6nRBdkygB3Avg8aY13v7CWYiVgsunVYIUPxeIlPHbgyYJtaefkBi
+	AIAM7/zAM/YAolHRzl4vlGlqg9HZOvlIUklL6tZV3s7fvl5Sucz+2pxKmQcMxHGLjMgh
+	Lc6w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=DFPgGTTb0Eqq7D02FqFtfb9z6gi/xMA0DbkR3ZI1lmA=;
+	b=ikLO7kIcEuRUuUBoYnC67aSZoDZGs2ISFlmS0vQ2f/CrkOEWuFqw0M3W5+t/wE0d3z
+	dZYwxCgqrqmiFQzaLwPhd0kKgq+JB9HkdBWyEgZQI0FZmHQTaksy60Bz0ABxH3VAb1nY
+	Qps49F5kIte31Vkh+0cgf1u3X1O31C7QBYqi8OnuAXlWWG0E9BQUZn5dBtJzaQE9nB33
+	9MnqN4Rk7NdXVlzoiz5YbMVOMRs/BY6zrFCrGm2xq/FciPUiqOA3hqnthjdn3dKdT0+9
+	/fH9S3+ZWokQ3VUntxwtyMPd0//4joN9knhfyQbrAwujwRlBy3SePpKBNNFIQ3quI2Yq
+	eFMg==
+X-Gm-Message-State: APf1xPCbtyorAjG9LViMCBYaz/B7Ym8aOG9DbmEpl7F4wIdun/i0637O
+	dTovMlP8ryuKlCcZ5pW7zYYU9csR
+X-Received: by 10.200.44.116 with SMTP id e49mr2331702qta.183.1518668960115;
+	Wed, 14 Feb 2018 20:29:20 -0800 (PST)
+Received: from x1.local ([138.117.48.219]) by smtp.gmail.com with ESMTPSA id
+	t33sm10680312qtc.14.2018.02.14.20.29.13
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 14 Feb 2018 20:29:19 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Date: Thu, 15 Feb 2018 01:28:32 -0300
+Message-Id: <20180215042900.16078-3-f4bug@amsat.org>
+X-Mailer: git-send-email 2.16.1
+In-Reply-To: <20180215042900.16078-1-f4bug@amsat.org>
+References: <20180215042900.16078-1-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <1518189456-2873-6-git-send-email-geert+renesas@glider.be>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Wed, 14 Feb 2018 10:52:43 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Wed, 14 Feb 2018 10:52:43 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [PATCH/RFC 5/5] hw/arm/sysbus-fdt: Enable
- rcar-gen3-gpio dynamic instantiation
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::244
+Subject: [Qemu-devel] [PATCH 02/30] hw: include "qemu/cunits.h" and clean
+ unused "qemu/cutils.h"
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Arnd Bergmann <arnd@arndb.de>, Magnus Damm <magnus.damm@gmail.com>,
-	Alexander Graf <agraf@suse.de>, qemu-devel@nongnu.org,
-	linux-renesas-soc@vger.kernel.org,
-	Wolfram Sang <wsa+renesas@sang-engineering.com>, qemu-arm@nongnu.org,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Xiao Feng Ren <renxiaof@linux.vnet.ibm.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CVUUb5VYEKT0
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Michael Walle <michael@walle.cc>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Yongbok Kim <yongbok.kim@mips.com>, Marek Vasut <marex@denx.de>,
+	Alexander Graf <agraf@suse.de>,
+	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+	Marcel Apfelbaum <marcel@redhat.com>,
+	Samuel Thibault <samuel.thibault@ens-lyon.org>,
+	Richard Henderson <rth@twiddle.net>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"open list:ARM" <qemu-arm@nongnu.org>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Chris Wulff <crwulff@gmail.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+	Paul Burton <paul.burton@mips.com>,
+	"open list:New World" <qemu-ppc@nongnu.org>,
+	Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Q9J354qYsBja
 
-Hi Geert,
+These files were including "qemu/cutils.h" to use the byte-based size
+definitions, now available in "qemu/cunits.h".
 
-On 09/02/18 16:17, Geert Uytterhoeven wrote:
-> Allow the instantiation of a Renesas R-Car Gen3 GPIO controller device
-> from the QEMU command line:
-> 
-> -device vfio-platform,host=<device>,manufacturer=renesas,model=rcar-gen3-gpio
-> -device vfio-platform,sysfsdev=<path>,manufacturer=renesas,model=rcar-gen3-gpio
-> 
-> A specialized device tree node is created for the guest, containing
-> compatible, reg, gpio-controller, and #gpio-cells properties.
-> 
-> Not-Yet-Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
-> ---
-> Question:
->   - Why do we need the manufacturer=foo,model=bar syntax? Can't this
->     just be extracted from the host DT?
-I think this could be achieved that way too. We just need to pay
-attention to the fact the dt node creation function matches the exact
-same compatible property value.
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ include/hw/hw.h       | 1 +
+ hw/arm/msf2-soc.c     | 1 -
+ hw/arm/msf2-som.c     | 1 -
+ hw/core/loader-fit.c  | 1 -
+ hw/core/loader.c      | 1 -
+ hw/core/machine.c     | 1 -
+ hw/cris/boot.c        | 1 -
+ hw/display/sm501.c    | 1 -
+ hw/hppa/machine.c     | 1 -
+ hw/lm32/milkymist.c   | 1 -
+ hw/microblaze/boot.c  | 1 -
+ hw/mips/boston.c      | 1 -
+ hw/misc/mos6522.c     | 1 -
+ hw/nios2/boot.c       | 1 -
+ hw/ppc/mac_newworld.c | 1 -
+ hw/ppc/mac_oldworld.c | 1 -
+ hw/ppc/pnv.c          | 1 -
+ hw/ppc/prep.c         | 1 -
+ hw/ppc/spapr_rtas.c   | 1 -
+ hw/sd/sdhci.c         | 1 -
+ hw/sparc/sun4m.c      | 1 -
+ hw/sparc64/sun4u.c    | 1 -
+ hw/usb/dev-serial.c   | 1 -
+ hw/usb/dev-storage.c  | 1 -
+ 24 files changed, 1 insertion(+), 23 deletions(-)
 
-> 
-> TODO:
->   - Copy properties from the host DT, as add_amd_xgbe_fdt_node() does,
->   - Make this more generic?
+diff --git a/include/hw/hw.h b/include/hw/hw.h
+index ab4950c312..8249448cac 100644
+--- a/include/hw/hw.h
++++ b/include/hw/hw.h
+@@ -14,6 +14,7 @@
+ #include "migration/qemu-file-types.h"
+ #include "qemu/module.h"
+ #include "sysemu/reset.h"
++#include "qemu/cunits.h"
+ 
+ void QEMU_NORETURN hw_error(const char *fmt, ...) GCC_FMT_ATTR(1, 2);
+ 
+diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
+index a8ec2cdf36..952cda45ed 100644
+--- a/hw/arm/msf2-soc.c
++++ b/hw/arm/msf2-soc.c
+@@ -30,7 +30,6 @@
+ #include "hw/char/serial.h"
+ #include "hw/boards.h"
+ #include "sysemu/block-backend.h"
+-#include "qemu/cutils.h"
+ #include "hw/arm/msf2-soc.h"
+ #include "hw/misc/unimp.h"
+ 
+diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
+index 0795a3a3a1..d3e6ed00fe 100644
+--- a/hw/arm/msf2-som.c
++++ b/hw/arm/msf2-som.c
+@@ -28,7 +28,6 @@
+ #include "hw/boards.h"
+ #include "hw/arm/arm.h"
+ #include "exec/address-spaces.h"
+-#include "qemu/cutils.h"
+ #include "hw/arm/msf2-soc.h"
+ #include "cpu.h"
+ 
+diff --git a/hw/core/loader-fit.c b/hw/core/loader-fit.c
+index 0c4a7207f4..0208e5b357 100644
+--- a/hw/core/loader-fit.c
++++ b/hw/core/loader-fit.c
+@@ -22,7 +22,6 @@
+ #include "exec/memory.h"
+ #include "hw/loader.h"
+ #include "hw/loader-fit.h"
+-#include "qemu/cutils.h"
+ #include "qemu/error-report.h"
+ #include "sysemu/device_tree.h"
+ #include "sysemu/sysemu.h"
+diff --git a/hw/core/loader.c b/hw/core/loader.c
+index 91669d65aa..aa9050c65e 100644
+--- a/hw/core/loader.c
++++ b/hw/core/loader.c
+@@ -54,7 +54,6 @@
+ #include "exec/memory.h"
+ #include "exec/address-spaces.h"
+ #include "hw/boards.h"
+-#include "qemu/cutils.h"
+ 
+ #include <zlib.h>
+ 
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 5d445839e8..7a7ec0c1e1 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -19,7 +19,6 @@
+ #include "sysemu/sysemu.h"
+ #include "sysemu/numa.h"
+ #include "qemu/error-report.h"
+-#include "qemu/cutils.h"
+ #include "sysemu/qtest.h"
+ 
+ static char *machine_get_accel(Object *obj, Error **errp)
+diff --git a/hw/cris/boot.c b/hw/cris/boot.c
+index f896ed7f86..7d423ed92f 100644
+--- a/hw/cris/boot.c
++++ b/hw/cris/boot.c
+@@ -29,7 +29,6 @@
+ #include "hw/loader.h"
+ #include "elf.h"
+ #include "boot.h"
+-#include "qemu/cutils.h"
+ 
+ static void main_cpu_reset(void *opaque)
+ {
+diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+index f4bb33c279..00cf8358e2 100644
+--- a/hw/display/sm501.c
++++ b/hw/display/sm501.c
+@@ -24,7 +24,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu/cutils.h"
+ #include "qapi/error.h"
+ #include "qemu-common.h"
+ #include "cpu.h"
+diff --git a/hw/hppa/machine.c b/hw/hppa/machine.c
+index 19033e268d..22a15112df 100644
+--- a/hw/hppa/machine.c
++++ b/hw/hppa/machine.c
+@@ -17,7 +17,6 @@
+ #include "hw/timer/i8254.h"
+ #include "hw/char/serial.h"
+ #include "hw/hppa/hppa_sys.h"
+-#include "qemu/cutils.h"
+ #include "qapi/error.h"
+ #include "qemu/log.h"
+ 
+diff --git a/hw/lm32/milkymist.c b/hw/lm32/milkymist.c
+index 85d64fe58d..471a74eaa1 100644
+--- a/hw/lm32/milkymist.c
++++ b/hw/lm32/milkymist.c
+@@ -34,7 +34,6 @@
+ #include "milkymist-hw.h"
+ #include "lm32.h"
+ #include "exec/address-spaces.h"
+-#include "qemu/cutils.h"
+ 
+ #define BIOS_FILENAME    "mmone-bios.bin"
+ #define BIOS_OFFSET      0x00860000
+diff --git a/hw/microblaze/boot.c b/hw/microblaze/boot.c
+index 35bfeda7aa..5b30d63c17 100644
+--- a/hw/microblaze/boot.c
++++ b/hw/microblaze/boot.c
+@@ -34,7 +34,6 @@
+ #include "sysemu/sysemu.h"
+ #include "hw/loader.h"
+ #include "elf.h"
+-#include "qemu/cutils.h"
+ 
+ #include "boot.h"
+ 
+diff --git a/hw/mips/boston.c b/hw/mips/boston.c
+index fb23161b33..e99f3638cf 100644
+--- a/hw/mips/boston.c
++++ b/hw/mips/boston.c
+@@ -32,7 +32,6 @@
+ #include "hw/mips/cpudevs.h"
+ #include "hw/pci-host/xilinx-pcie.h"
+ #include "qapi/error.h"
+-#include "qemu/cutils.h"
+ #include "qemu/error-report.h"
+ #include "qemu/log.h"
+ #include "chardev/char.h"
+diff --git a/hw/misc/mos6522.c b/hw/misc/mos6522.c
+index 8ad9fc831e..b55e6acbe2 100644
+--- a/hw/misc/mos6522.c
++++ b/hw/misc/mos6522.c
+@@ -29,7 +29,6 @@
+ #include "hw/misc/mos6522.h"
+ #include "qemu/timer.h"
+ #include "sysemu/sysemu.h"
+-#include "qemu/cutils.h"
+ #include "qemu/log.h"
+ #include "trace.h"
+ 
+diff --git a/hw/nios2/boot.c b/hw/nios2/boot.c
+index 94f436e7fb..771e00267b 100644
+--- a/hw/nios2/boot.c
++++ b/hw/nios2/boot.c
+@@ -38,7 +38,6 @@
+ #include "sysemu/sysemu.h"
+ #include "hw/loader.h"
+ #include "elf.h"
+-#include "qemu/cutils.h"
+ 
+ #include "boot.h"
+ 
+diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
+index b832417a56..90496f5a48 100644
+--- a/hw/ppc/mac_newworld.c
++++ b/hw/ppc/mac_newworld.c
+@@ -71,7 +71,6 @@
+ #include "sysemu/block-backend.h"
+ #include "exec/address-spaces.h"
+ #include "hw/sysbus.h"
+-#include "qemu/cutils.h"
+ #include "trace.h"
+ 
+ #define MAX_IDE_BUS 2
+diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
+index d1f4546613..9b19551f56 100644
+--- a/hw/ppc/mac_oldworld.c
++++ b/hw/ppc/mac_oldworld.c
+@@ -45,7 +45,6 @@
+ #include "kvm_ppc.h"
+ #include "sysemu/block-backend.h"
+ #include "exec/address-spaces.h"
+-#include "qemu/cutils.h"
+ 
+ #define MAX_IDE_BUS 2
+ #define CFG_ADDR 0xf0000510
+diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
+index 98ee3c607a..3d943dd71b 100644
+--- a/hw/ppc/pnv.c
++++ b/hw/ppc/pnv.c
+@@ -31,7 +31,6 @@
+ #include "hw/ppc/pnv_core.h"
+ #include "hw/loader.h"
+ #include "exec/address-spaces.h"
+-#include "qemu/cutils.h"
+ #include "qapi/visitor.h"
+ #include "monitor/monitor.h"
+ #include "hw/intc/intc.h"
+diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
+index 096d4d4cfb..f7c0a48558 100644
+--- a/hw/ppc/prep.c
++++ b/hw/ppc/prep.c
+@@ -50,7 +50,6 @@
+ #include "exec/address-spaces.h"
+ #include "trace.h"
+ #include "elf.h"
+-#include "qemu/cutils.h"
+ #include "kvm_ppc.h"
+ 
+ /* SMP is not enabled, for now */
+diff --git a/hw/ppc/spapr_rtas.c b/hw/ppc/spapr_rtas.c
+index 4bb939d3d1..7e26a9fb5a 100644
+--- a/hw/ppc/spapr_rtas.c
++++ b/hw/ppc/spapr_rtas.c
+@@ -43,7 +43,6 @@
+ 
+ #include <libfdt.h>
+ #include "hw/ppc/spapr_drc.h"
+-#include "qemu/cutils.h"
+ #include "trace.h"
+ #include "hw/ppc/fdt.h"
+ 
+diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+index 97b4a473c8..cf935c2008 100644
+--- a/hw/sd/sdhci.c
++++ b/hw/sd/sdhci.c
+@@ -34,7 +34,6 @@
+ #include "hw/sd/sdhci.h"
+ #include "sdhci-internal.h"
+ #include "qemu/log.h"
+-#include "qemu/cutils.h"
+ #include "trace.h"
+ 
+ #define TYPE_SDHCI_BUS "sdhci-bus"
+diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
+index f9892e38c3..0008b90b04 100644
+--- a/hw/sparc/sun4m.c
++++ b/hw/sparc/sun4m.c
+@@ -46,7 +46,6 @@
+ #include "elf.h"
+ #include "sysemu/block-backend.h"
+ #include "trace.h"
+-#include "qemu/cutils.h"
+ 
+ /*
+  * Sun4m architecture was used in the following machines:
+diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+index da28ab9413..b84589e0b6 100644
+--- a/hw/sparc64/sun4u.c
++++ b/hw/sparc64/sun4u.c
+@@ -50,7 +50,6 @@
+ #include "hw/loader.h"
+ #include "elf.h"
+ #include "trace.h"
+-#include "qemu/cutils.h"
+ 
+ #define KERNEL_LOAD_ADDR     0x00404000
+ #define CMDLINE_ADDR         0x003ff000
+diff --git a/hw/usb/dev-serial.c b/hw/usb/dev-serial.c
+index 2829dda391..5e610722ee 100644
+--- a/hw/usb/dev-serial.c
++++ b/hw/usb/dev-serial.c
+@@ -11,7 +11,6 @@
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "qemu-common.h"
+-#include "qemu/cutils.h"
+ #include "qemu/error-report.h"
+ #include "hw/usb.h"
+ #include "hw/usb/desc.h"
+diff --git a/hw/usb/dev-storage.c b/hw/usb/dev-storage.c
+index b56c75a73a..d02c5d76c6 100644
+--- a/hw/usb/dev-storage.c
++++ b/hw/usb/dev-storage.c
+@@ -22,7 +22,6 @@
+ #include "sysemu/block-backend.h"
+ #include "sysemu/blockdev.h"
+ #include "qapi/visitor.h"
+-#include "qemu/cutils.h"
+ 
+ //#define DEBUG_MSD
+ 
+-- 
+2.16.1
 
-Yes I think devising helpers to generate regs/interrupts properties
-could help reducing the amount of code to be written
-
-Thanks
-
-Eric
-> ---
->  hw/arm/sysbus-fdt.c | 47 +++++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 47 insertions(+)
-> 
-> diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
-> index c5d4fd5604c28118..428175f343d9f3b9 100644
-> --- a/hw/arm/sysbus-fdt.c
-> +++ b/hw/arm/sysbus-fdt.c
-> @@ -416,6 +416,52 @@ static int add_amd_xgbe_fdt_node(SysBusDevice *sbdev, void *opaque)
->      return 0;
->  }
->  
-> +/**
-> + * add_rcar_gpio_fdt_node
-> + *
-> + * Generates a simple node with following properties:
-> + * compatible string, regs, #gpio-cells, gpio-controller
-> + */
-> +static int add_rcar_gpio_fdt_node(SysBusDevice *sbdev, void *opaque)
-> +{
-> +    PlatformBusFDTData *data = opaque;
-> +    PlatformBusDevice *pbus = data->pbus;
-> +    void *fdt = data->fdt;
-> +    const char *parent_node = data->pbus_node_name;
-> +    int compat_str_len, i;
-> +    char *nodename;
-> +    uint32_t *reg_attr;
-> +    uint64_t mmio_base;
-> +    VFIOPlatformDevice *vdev = VFIO_PLATFORM_DEVICE(sbdev);
-> +    VFIODevice *vbasedev = &vdev->vbasedev;
-> +
-> +    mmio_base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
-> +    nodename = g_strdup_printf("%s/%s@%" PRIx64, parent_node,
-> +                               vbasedev->name, mmio_base);
-> +    qemu_fdt_add_subnode(fdt, nodename);
-> +
-> +    compat_str_len = strlen(vdev->compat) + 1;
-> +    qemu_fdt_setprop(fdt, nodename, "compatible",
-> +                          vdev->compat, compat_str_len);
-> +
-> +    qemu_fdt_setprop(fdt, nodename, "gpio-controller", NULL, 0);
-> +    qemu_fdt_setprop_cells(fdt, nodename, "#gpio-cells", 2);
-> +
-> +    reg_attr = g_new(uint32_t, vbasedev->num_regions * 2);
-> +    for (i = 0; i < vbasedev->num_regions; i++) {
-> +        mmio_base = platform_bus_get_mmio_addr(pbus, sbdev, i);
-> +        reg_attr[2 * i] = cpu_to_be32(mmio_base);
-> +        reg_attr[2 * i + 1] = cpu_to_be32(
-> +                                memory_region_size(vdev->regions[i]->mem));
-> +    }
-> +    qemu_fdt_setprop(fdt, nodename, "reg", reg_attr,
-> +                     vbasedev->num_regions * 2 * sizeof(uint32_t));
-> +
-> +    g_free(reg_attr);
-> +    g_free(nodename);
-> +    return 0;
-> +}
-> +
->  /* manufacturer/model matching */
->  static bool vfio_platform_match(SysBusDevice *sbdev,
->                                  const BindingEntry *entry)
-> @@ -454,6 +500,7 @@ static const BindingEntry bindings[] = {
->      TYPE_BINDING(TYPE_VFIO_CALXEDA_XGMAC, add_calxeda_midway_xgmac_fdt_node),
->      TYPE_BINDING(TYPE_VFIO_AMD_XGBE, add_amd_xgbe_fdt_node),
->      VFIO_PLATFORM_BINDING("amd", "xgbe-seattle-v1a", add_amd_xgbe_fdt_node),
-> +    VFIO_PLATFORM_BINDING("renesas", "rcar-gen3-gpio", add_rcar_gpio_fdt_node),
->  #endif
->      TYPE_BINDING("", NULL), /* last element */
->  };
-> 

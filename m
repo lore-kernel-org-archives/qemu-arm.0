@@ -1,161 +1,131 @@
-Received: by 10.28.71.27 with SMTP id u27csp2572560wma;
-        Thu, 15 Feb 2018 05:23:01 -0800 (PST)
-X-Google-Smtp-Source: AH8x227HA9qJUKwSH6trFtVWEqNIfeE+7n3Mt0yHDmJP2ziYS0DcV8x+WZ5OjFjq5AC/eCqo/uNe
-X-Received: by 10.129.11.8 with SMTP id 8mr1892659ywl.156.1518700980954;
-        Thu, 15 Feb 2018 05:23:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518700980; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp2578197wma;
+        Thu, 15 Feb 2018 05:27:29 -0800 (PST)
+X-Google-Smtp-Source: AH8x224pZJ0p4ELrEIFvRq5oQ2fSYh2CDccveClLz0iV6N2QlrixU5y/0jiha5PIzUiOiv7LyyJo
+X-Received: by 10.129.107.196 with SMTP id g187mr983917ywc.459.1518701249752;
+        Thu, 15 Feb 2018 05:27:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518701249; cv=none;
         d=google.com; s=arc-20160816;
-        b=JaokYwAJPdXan2Ww0o/3nZ88GmO65zHDCC4IsebEICFA3VCBjFCdOOGuS43k1aztrX
-         BA07i2K3TANDt3NaMKwJ7vSKHaAO5eoLdSYwp62id7OuAlfspbQ2zPj3i+Ukx+pnxsF3
-         whSa9T5FlatNvmfEWVcClK/Hv7eLb8fIgELAJm8yrUV2l0O3cIzJT0gcr8DWNbNp2rto
-         jy1k+UdBiZz0k7qXrUbOdmLrNTW//pxMuvuiyk6ybplLQp+GxkQrYABBhy4mXjKV27yj
-         EDklWWLw/4SHTdMmt/LU1F92iCiuKxM92QuAn3VcBUDyz4jH7c8cmoQ0FNZhe59t0XlO
-         SNTw==
+        b=TksDS+ngpfit3c2y40sBubksVYHkgY8SWOTJNkfkJuwUyitADcGZVttTGWPamgkoMZ
+         Ab0HeZvW0XxM5ObcRk6rzBiK+/7A16bOOUMHxcQYzkeFviDD3C21evZzjearxQP9jqsz
+         xGq1n+aNXavXGek5ZC8S+R9235qVvLtKFejIHf+dbdEWR109g7nk9Uq/BamGfLHOsy5l
+         E4wywuPzWYhExMlCoQ3PpBlJhFus2mS1qPdV0X1SMfFpSgfv8bR7p5+I2LBq/mXhrNLM
+         C2dTou/5G40Y72i/e3orVHpZkLBmB5BlQaZTLYCJ4IMiiiBfmD5gSbdhJzi26DpyWlKf
+         Jp4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
          :arc-authentication-results;
-        bh=7O9scnH4y3jDydxDPjBHSLRYFglhsYUbTuXZkGxPDaE=;
-        b=MM/1SdFwGHimdaLARd71xfI9FgiRz2NKSHWm+pNgfGTQ99hCQAaYFUlD0G4ZOfQ30t
-         wJM31v5yzYpx3/i6mYU6IkgcLS/Ix2iCdJtJFTwn3G2Q5Ye3Uwepl16VJwqywoWik9vE
-         davTwfnWfvibouVOl+iQfaZSfyVcou00q2++MEm39JYzfC89jHjA4tCsuEsghqqii+kb
-         1auO6piXkW9dnybtWfXEtMUomUqxgONBGWRl7WstJpi/wZJFFPWq36UhGt3kWhJNqbih
-         c2l2LmDyEAZ067woxtxsxwBXy7HOMQZMhQs2vUZf4F8c5RVlqmMtZvA47GYzamTNZISV
-         6dgg==
+        bh=2L1o7qNq+a3+u5fqDEkpDXNHc3LIst2O99su5nIxUj0=;
+        b=s0Om1k1Ju/YkWZnbUlgROq1nTJmDtC6ujhnLbwiiefUlGkdSENbsFFQOkTvLAcxiMG
+         CVzqQt231micmafuGvdYpt7lTVqEkVaOV+nTUiBcR3TcXTdAyAmHHNwbU2V5EsoB5fOB
+         cq3rkjsobtPVx5WK2YgBPAbEvNNQioDcj4aa/TYOxIlDYe4Eq3fj/wDDLUqkDZ31mvdv
+         RGAxJuxZcbC6xwlE8c2xY1Wgm6SvzAwd8jzf12ObnWZY5cvhk1zWp0Mka2SNZgfJsGud
+         DQj18ZMVRzDB/woRMfE7pur29HW/H+l7Aj1RZwkntzLNzsWnWL09ofCuTRUrrefNM50O
+         n6og==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=aNM57KxS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r12si2667539ywc.14.2018.02.15.05.23.00
+        by mx.google.com with ESMTPS id i3si2689682ybk.480.2018.02.15.05.27.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 15 Feb 2018 05:23:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 15 Feb 2018 05:27:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=aNM57KxS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48373 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:48821 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1emJV6-0002dS-Ei
-	for alex.bennee@linaro.org; Thu, 15 Feb 2018 08:23:00 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40581)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1emJZR-0006Nr-7d
+	for alex.bennee@linaro.org; Thu, 15 Feb 2018 08:27:29 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42856)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1emJT9-0001Xs-H6
-	for qemu-devel@nongnu.org; Thu, 15 Feb 2018 08:21:00 -0500
+	(envelope-from <laurent@vivier.eu>) id 1emJZD-0006Mf-SG
+	for qemu-arm@nongnu.org; Thu, 15 Feb 2018 08:27:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1emJT8-0004T4-H2
-	for qemu-devel@nongnu.org; Thu, 15 Feb 2018 08:20:59 -0500
-Received: from mail-ot0-x243.google.com ([2607:f8b0:4003:c0f::243]:43772)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1emJT8-0004SZ-CD
-	for qemu-devel@nongnu.org; Thu, 15 Feb 2018 08:20:58 -0500
-Received: by mail-ot0-x243.google.com with SMTP id q12so23333333otg.10
-	for <qemu-devel@nongnu.org>; Thu, 15 Feb 2018 05:20:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=7O9scnH4y3jDydxDPjBHSLRYFglhsYUbTuXZkGxPDaE=;
-	b=aNM57KxSouT11A0PYU6/5byr5YlNkOvJ7D7AJEywnAyCKgtqaYYp/Iwu8KOa2m4Vvg
-	G1BRJMTmbELF0WAY8NwaJF8rmujWTn4TsMdl4pSfDmwqOw8lPghdGtUWQocXbPUt4AoG
-	cz2I03pYFa/6RM7E/ZTtv99SmDWw+bBAcuiYE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=7O9scnH4y3jDydxDPjBHSLRYFglhsYUbTuXZkGxPDaE=;
-	b=WABFkkwKJmVgzJFL6/eMuLyMvZu8n7qfQEZDS6VKkT1vbZPGlG6CDE9v7E47tNx0Gg
-	rk/HWtKu81Pq/w8JbvQZXAHHP9q/YX7lnlEYjkaVZuApyzb3Z9rVIV54+NhXgPUvQTBG
-	0Uly1oh13eYRZKqFuznIMhENHMx4QwIlsKXznxv82j12huc8EqRlf+W3Vj6K9x5N1vaV
-	B/TkEMmavNN5CvfWKLCVhtilKE4yUX7Hp1bouyWzQWN+XqsKtQJK0fHTBajnnUk4bhwz
-	qEjbSUNQpTzNVXGnj/10YtFjsiRKz6GFYaSbxuYfsuA+2Xlto/qfpyIz3Q+XdB8hwJwQ
-	WoUA==
-X-Gm-Message-State: APf1xPAQuRRDdBrcHamP+xlFox5ELD6vtO0KqEzIyYGZLEX874mb2A6p
-	RswyGnXIwBl+B8MCJMfMk0/D4dnaReHYQzXOwWC7HGqr
-X-Received: by 10.157.68.215 with SMTP id p23mr1705495otg.91.1518700857794;
-	Thu, 15 Feb 2018 05:20:57 -0800 (PST)
+	(envelope-from <laurent@vivier.eu>) id 1emJZ9-0008MA-OD
+	for qemu-arm@nongnu.org; Thu, 15 Feb 2018 08:27:15 -0500
+Received: from mout.kundenserver.de ([212.227.126.135]:34463)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1emJZ9-0008Ls-DN; Thu, 15 Feb 2018 08:27:11 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue003 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	0MNQ45-1eseIF2n9t-006tVb; Thu, 15 Feb 2018 14:26:58 +0100
+To: =?UTF-8?Q?Guido_G=c3=bcnther?= <agx@sigxcpu.org>
+References: <671eaa99f4e0bf3a58f76f9151f7cfa24662227f.1517565566.git.agx@sigxcpu.org>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <548deb35-8970-8dae-2baa-7e60c610ae4b@vivier.eu>
+Date: Thu, 15 Feb 2018 14:26:57 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.6.0
 MIME-Version: 1.0
-Received: by 10.157.18.136 with HTTP; Thu, 15 Feb 2018 05:20:37 -0800 (PST)
-In-Reply-To: <20180211205848.4568-7-richard.henderson@linaro.org>
-References: <20180211205848.4568-1-richard.henderson@linaro.org>
-	<20180211205848.4568-7-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 15 Feb 2018 13:20:37 +0000
-Message-ID: <CAFEAcA_1wbQukD_rQzxMWMox7wtOopUd5sVPiyxsH0th_anA_A@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::243
-Subject: Re: [Qemu-devel] [PATCH v2 6/7] linux-user: Support SVE in aarch64
- signal frames
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <671eaa99f4e0bf3a58f76f9151f7cfa24662227f.1517565566.git.agx@sigxcpu.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K0:qSYEnZ/CLGvARRZ7xqj5+9TyK8/ZKFNX2fp0JEdRvhwF/3eMaKl
+	RlnqCBvWlAHdpqDcz+VfXQ90WzOlD9eruiR1qe1sSqIbxFe2DOWeg3n57gCPXCKo4kVeh7O
+	VIvTDJQxDePypg3c7ddtYFJT/D1kN1/0iHaZDK5M7fq6wu2r7FHE1p2g5w9UtT6KiBf7GQF
+	hGpgsVKuq3QTdFilNotMA==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:v3O/ywcKTtA=:02mCSVz+xPCXx1U14WZIAT
+	xNO7SvOpM9d6A208/EoSCeUhWHT00IsjVlSaFVzSEjCt99H7EJA5U9CGB0Mrd8bOapBQEIIM2
+	kT6g2vR2AdXlHTnqE8fhdMfcyQiCtPHIhNqjYKGdYAGdn0T0WCwvRjpUPc6d1mzQOhpm1RlMV
+	yS2La/xBpd9Ug2Q6dSJEwlkfqD2moHJWFtrOicdj+epvipYx8pTRvc7neoBQxzzskZ2NMArr5
+	fp+yQhWB4tHelGKVsl1fNEhgWQd6TQPHpj1j7TspPej6Kg4vgKdoG26TlBfUBPH9Y9gCCnqJs
+	uukCSqn35E1CoBMFiuB2VWemSQZUfKMof3oCHKYk3Ht64SE7ozIYVKR3a17IDx4OV5KnxR18w
+	f/cPr03Q5qUy0I07gTm+8kR51RIBoO720tWxkQ0nhMtYl9ob0G/Z7JuUv29SQ1tuiJmAK939P
+	h8NIfvvzkoNwUOLHwO+fMdOVbgVuKaxLIxSd5ZFSNdhWTnC4NNPx+323CYUifveKWCq9EGY4r
+	tUsg+oCt23/HcfawCIC2QlXYl4bOw2xRpRFeEtJ3rziM+4u+4WdWnm26FGNM9LKpc6ivq9Lnu
+	vn+JIfnPWm3Lrye3u/ANoB1BYedMjKnsutfi/0bXCkCRMiu4NFGFYLT4K1Cy++Vu1HI0HZ1BN
+	eDZIUU0/UGzlqPLycQWgvIPK8R7FJ9lb64X6b3h6ePjvVnH0F/DkdVfFpaDkSvuNnsjudJ4GN
+	XQPrrlJOv2HCqNoSDcfP5s6gCd0GoeLmexMFkrAOuAryeg82HkHziBzRQz4=
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 212.227.126.135
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3] linux-user: Fix register
+ used for 6th and 7th syscall argument on aarch64
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ww02XEPbVIED
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Riku Voipio <riku.voipio@iki.fi>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LxP5ZHRvrewp
 
-On 11 February 2018 at 20:58, Richard Henderson
-<richard.henderson@linaro.org> wrote:
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Le 02/02/2018 à 11:02, Guido Günther a écrit :
+> This unbreaks the testcase from
+> 
+>     http://lists.nongnu.org/archive/html/qemu-arm/2018-01/msg00514.html
+> 
+> Thanks to Laurent Vivier for spotting the 7th one.
+> 
+> Signed-off-by: Guido Günther <agx@sigxcpu.org>
+> Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Suggested-by: Laurent Vivier <laurent@vivier.eu>
+> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  linux-user/signal.c | 348 ++++++++++++++++++++++++++++++++++++++++++----------
->  1 file changed, 283 insertions(+), 65 deletions(-)
->
-> diff --git a/linux-user/signal.c b/linux-user/signal.c
-> index 9a380b9e31..af953175db 100644
-> --- a/linux-user/signal.c
-> +++ b/linux-user/signal.c
-> @@ -1443,35 +1443,61 @@ struct target_fpsimd_context {
->      uint64_t vregs[32 * 2]; /* really uint128_t vregs[32] */
->  };
->
-> -/*
-> - * Auxiliary context saved in the sigcontext.__reserved array. Not exported to
-> - * user space as it will change with the addition of new context. User space
-> - * should check the magic/size information.
-> - */
-> -struct target_aux_context {
-> -    struct target_fpsimd_context fpsimd;
-> -    /* additional context to be added before "end" */
-> -    struct target_aarch64_ctx end;
-> +#define TARGET_EXTRA_MAGIC  0x45585401
-> +
-> +struct target_extra_context {
-> +    struct target_aarch64_ctx head;
-> +    uint64_t datap; /* 16-byte aligned pointer to extra space cast to __u64 */
-> +    uint32_t size; /* size in bytes of the extra space */
-> +    uint32_t reserved[3];
-> +};
-> +
-> +#define TARGET_SVE_MAGIC    0x53564501
-> +
-> +struct target_sve_context {
-> +    struct target_aarch64_ctx head;
-> +    uint16_t vl;
-> +    uint16_t reserved[3];
->  };
+> v3 collects *-by: replies. Anything else I can do to get this applied?
+> 
+>  linux-user/host/aarch64/safe-syscall.inc.S | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 
-I found this patch too hard to review. It looks like you've combined
-a refactoring of how we handle the AArch64 "bunch of extra auxiliary
-context records" sigframe information with the addition of the SVE
-context record. Could you split that into separate patches, please?
-A description of why the current code isn't sufficient would also
-be helpful.
+Applied to my 'linux-user-for-2.12' branch.
 
-thanks
--- PMM
+Thanks,
+Laurent
+

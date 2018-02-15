@@ -1,117 +1,98 @@
-Received: by 10.28.71.27 with SMTP id u27csp2580512wma;
-        Thu, 15 Feb 2018 05:29:15 -0800 (PST)
-X-Google-Smtp-Source: AH8x226w0fhWwpucRStAuTF4+5aH+5wQ9HeIk/Y7ljRLtlUmyo1l53ZOSpEjBPoi3Snm64XcKI7e
-X-Received: by 10.129.85.20 with SMTP id j20mr1898579ywb.285.1518701354986;
-        Thu, 15 Feb 2018 05:29:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518701354; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp2585757wma;
+        Thu, 15 Feb 2018 05:33:07 -0800 (PST)
+X-Google-Smtp-Source: AH8x225HtgVtCmDIzKKkcNwPy4Ar+x9YxJmWhgU/BGeS3ef32oLpzHOUucAVU1PYXS96IOf7Yfc+
+X-Received: by 10.37.93.6 with SMTP id r6mr1888600ybb.90.1518701587378;
+        Thu, 15 Feb 2018 05:33:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518701587; cv=none;
         d=google.com; s=arc-20160816;
-        b=tHU29q2KGe+9unwjtuZco/raKoDYB9bGcUrxv30V4bmAdPkvLMGPvYfiaZXw2kgNBR
-         O/9qGhf6WpjMRE+llSJoYw9urz3q5ivmkc0YIAG7TzlodHJiVMi37lXzZsj2deh02R4Q
-         tfFt6GaZWlVBTA4FNPfHwErLrxSvNkrAyBoTCa8G+iXYphGB10NPVosGDH4Lt2Bon9ks
-         kpWtcQfQn2IvIKTxozdWMGsnkkjhxh1S7MC0KrE5KOQ+k526OJkIHa0tBpCLCWRmNEaf
-         rExbGWqZ612dTqH5gYrVswzMuqsyDXEc3pE4Z/RbhqLgZMzW1L0QbvgIwbWPvGPOX9bi
-         QHQw==
+        b=M5eSRQvNWZB2FuM9TsjVeovQcF6seLihg3a7I/nTdkCBsElFUyFMskPfif9h8vTqQJ
+         h41iRLbymPBIjZPU/KIRV0Co/gwKblUhzw+fsu3UBGPIUwgZcxE1gRY9128jYECpWD3A
+         Cdp19ePG+vaUtlt9ZNGsDla4H4pD5ocw1l4Nc1hd+GHjxWDvJBt90wKRuriKhFyqdM6C
+         yPPeAaY0cxRleIs/o9wwaQW4fYw64ek9Xp8UfjVfm+6UK0+CHT1Qda9XsLnI/zIDDEo5
+         RL0gLki1PAqj+d15SyuQxxHGRpkoZuG/yATbKl+/qfhpg/rfQx2ZBRamfxNQskG78hWZ
+         8pqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=b1EAEE4JjqEvHwFgraug9/PJOjsUifeu7syY3fVhSDc=;
-        b=Oj0gUx5zigON8CRWYDULjyhhj4y2nXuFyvqdBU+9WXsYfVT2Z1vmtoNCyaPkKWywSQ
-         fSmK30oh80tT5C1q3Z8xeG844ZCMmWh20i4N7vv4xpGIG1ap791fQMPL2LKny+cO/fK1
-         zBu+m2xFckzMeBDFIcMfAabk1V28pkAqSYW6KBTheGr8BI4C3SRKStP4rPgXfePzHXsj
-         H6uzUZxVifsFN6KK5smr6yUWVFfgIxSg9v1w5XaQc/w/MRdQ8xH+dVn05uaGapdszQxX
-         f6cFMDUFjz+CeGriB6xTM92N7vtHtE+5SLhFjwn/Q2oHnHuZS4K3OC1D14zrRg37HBFX
-         IB0g==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=7Ysyf9czFxaS36MfjXC2g9IEXwnWg59Be+2dyhc+IDE=;
+        b=gajdyHlxwUTvV0kSnNgniS80rRwQSQCG1ombdP2+Y1nGQ43OtT8fh5ghwXNklzeK/6
+         nCaYbJfZSF7K/AZRWy0pIr6edDBmI9s3z66kSp8d7oz353N4ZJj1UxnfN4K9m+hEXF3i
+         bfosejshInWqx5qUrAldj75f6g24ct6SwPaLEaPQP0CYT51DMQDIYQj9DAp/W9eclQvY
+         qgCkl2LiyWyvrHryk/CZhCz72gSxiF+/0JPauCVqQO5aDKve8n+GigjNpSViZ0k/UOQ6
+         5LJwiYm7DXrvAPq6Fvfw0iiL65UEY3jilVbHZ5meADqonOsQ7DKT4dVpioYZLhFJTdCb
+         WY2A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Lks9d1w1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@linaro.org header.s=google header.b=XHKjUaRC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d184si1728154ybh.829.2018.02.15.05.29.14
+        by mx.google.com with ESMTPS id d76si1440054ywh.542.2018.02.15.05.33.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 15 Feb 2018 05:29:14 -0800 (PST)
+        Thu, 15 Feb 2018 05:33:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Lks9d1w1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:49016 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=XHKjUaRC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49267 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1emJb8-0007qO-DL
-	for alex.bennee@linaro.org; Thu, 15 Feb 2018 08:29:14 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43223)
+	id 1emJes-0002Wb-Nh
+	for alex.bennee@linaro.org; Thu, 15 Feb 2018 08:33:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44314)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1emJaw-0007kA-EY
-	for qemu-arm@nongnu.org; Thu, 15 Feb 2018 08:29:03 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1emJde-0001gW-4P
+	for qemu-arm@nongnu.org; Thu, 15 Feb 2018 08:31:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1emJav-000174-Ju
-	for qemu-arm@nongnu.org; Thu, 15 Feb 2018 08:29:02 -0500
-Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:35310)
+	(envelope-from <peter.maydell@linaro.org>) id 1emJdc-0002d9-Qz
+	for qemu-arm@nongnu.org; Thu, 15 Feb 2018 08:31:50 -0500
+Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:43556)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1emJaq-00015p-A4; Thu, 15 Feb 2018 08:28:56 -0500
-Received: by mail-qt0-x242.google.com with SMTP id g14so11851065qti.2;
-	Thu, 15 Feb 2018 05:28:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=b1EAEE4JjqEvHwFgraug9/PJOjsUifeu7syY3fVhSDc=;
-	b=Lks9d1w1WuqfY4jOmUBFQfL3nqIVBJ1GSyFGcSo8H0ZMRU6Cn44DBHca8nsgM/wPKz
-	Tv+gyauEnIndVk1SA8++l2v5rniQGITSGYmjBAm1VOjnYO/geU5HhYUI4vuiftvUCWem
-	vzDx0p53ml17lFAOn/1xqRMYjdOcI+HpB0/8e0VpSQFt/3oQw9e7ZTi8iJQgRCrtYDlp
-	UcOASgFVOvxvI9/MFxXAMhTMKz/ipgPV2vb2fTcSYkNCnwmARTrjUk6uJLFijM40pXQh
-	SBj6VnOkAdmj6Rpp7AvOomMcRm0LRph/mV0BxpDC9MvrqDPHypdXIxoDXYc+zxziaL8U
-	vPCQ==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1emJdc-0002cj-KC
+	for qemu-arm@nongnu.org; Thu, 15 Feb 2018 08:31:48 -0500
+Received: by mail-oi0-x244.google.com with SMTP id 4so19038379ois.10
+	for <qemu-arm@nongnu.org>; Thu, 15 Feb 2018 05:31:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=7Ysyf9czFxaS36MfjXC2g9IEXwnWg59Be+2dyhc+IDE=;
+	b=XHKjUaRC46lPqByUQuDuscjmD0OYkJ5JqNwm7kfWcnuIP5XAjYIAF1y+4TH+WT8Pgu
+	SpU/M0YtAWFy+THXqVVMXpG2HKqgAykp5gCJFlaQc1nAi82QIV4WapemQJzI/33/mrw0
+	NxG/qItZXtrIlLDsb0a8FmOaF+LgXTKI9Ev+Y=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=b1EAEE4JjqEvHwFgraug9/PJOjsUifeu7syY3fVhSDc=;
-	b=cr0tJz38eccoaAYrL2yy4ehkcIQWCTntInH+87XaPQEcW227EG6FJ4ddFcRxM2XRAi
-	nt0LJ5gZM/Q666UbqYaRx8eB7GGdWPiBBYCgpsnq/TxLuI9WmQ9vjo2UHwajt9ng1572
-	q6V6ycXh27BxDonYzONJ/QljEXWVg6cKasRWC3bJArAKm7rfjaMjdWdR5rJXVswpgCQn
-	hc8eqJoTCeIBxV/0ynGXByEZ1eoS42vZnQXJrvpIKKE9InsD6o1paEcGXpMVqhmEHaUp
-	Rph/qnSyxGAg7K03KnbdkbqE9uPrhgGm6FWk+Sevou75uh4BILanrrbVBmUvZhkPGr/z
-	MPWg==
-X-Gm-Message-State: APf1xPDeTb4vFg+DHAzgJUbuhlDMSnayXCACvM9yliRXyzZTdwamEbmI
-	rSA1d3Qb06vM2I6SfOOlrzEtay5eUn8=
-X-Received: by 10.200.0.89 with SMTP id i25mr4321578qtg.85.1518701335594;
-	Thu, 15 Feb 2018 05:28:55 -0800 (PST)
-Received: from [192.168.1.11] ([138.117.48.219])
-	by smtp.gmail.com with ESMTPSA id
-	m30sm6900155qkh.91.2018.02.15.05.28.53
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 15 Feb 2018 05:28:55 -0800 (PST)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20180208055039.24666-1-penberg@iki.fi>
-	<20180208055039.24666-4-penberg@iki.fi>
-	<CAFEAcA_008TiXr0RYmPuhPcmSY9qx=Ju8CMAu_t-z+DBRruykA@mail.gmail.com>
-	<9c52a265-6659-5c9c-27c7-eced8528fb63@amsat.org>
-	<a3f95aa2-3a13-8a67-4fe2-b7da6eace585@amsat.org>
-	<CAFEAcA8Zhih61YZNBEQQOFv_XKWknw7oN80pQbK+NgcB1mEsYQ@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <ac100745-d5e6-13c9-a9c2-72864871469e@amsat.org>
-Date: Thu, 15 Feb 2018 10:28:52 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.6.0
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=7Ysyf9czFxaS36MfjXC2g9IEXwnWg59Be+2dyhc+IDE=;
+	b=muimHkof0xKV4UfcISguKRba14i3RgRyd2258r/OKhU5ES7DtCL0G9fsQzBK/jBYud
+	c3n/IidgrJXW9QnjS90/82GtXZ+e84vUenTnJ9VLBsO1Uj/3o6nDH6M/JTgskOLg8bTz
+	J3jA+9nwZq3pmcV40xSqDdFEXtgChFWoMqMm28+yN20DjoHvy/+wxP7Fyz7JFroMisZH
+	nKSiq7X3yJqY9zs/GLstB8a36JmU9mw6B5KyJdKU2abB1hq2eu7A5iVwlOM3x1fzI20r
+	7xpRyHV+6JtNCnF57lM12fsnEJeH0jNRoBsB2vD+WjBlQr4bpXp0JfadtVqzIWAR9Saj
+	Yeuw==
+X-Gm-Message-State: APf1xPC+37G3+Kstz62sRLXUgrnpL/JDJemhd3E3ejgPcoYnk2GhA6uO
+	fQ7ZLtvTrZ66lv+kXUcLcJA4yj5BcdDwb2YeLZxDQw==
+X-Received: by 10.202.173.80 with SMTP id w77mr1646444oie.299.1518701507711;
+	Thu, 15 Feb 2018 05:31:47 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8Zhih61YZNBEQQOFv_XKWknw7oN80pQbK+NgcB1mEsYQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Received: by 10.157.18.136 with HTTP; Thu, 15 Feb 2018 05:31:27 -0800 (PST)
+In-Reply-To: <20180211205848.4568-8-richard.henderson@linaro.org>
+References: <20180211205848.4568-1-richard.henderson@linaro.org>
+	<20180211205848.4568-8-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 15 Feb 2018 13:31:27 +0000
+Message-ID: <CAFEAcA-m7AKPrSuCwRcgfMnYyN+90+6Bt5pY22=WOFH7avJXVg@mail.gmail.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::242
-Subject: Re: [Qemu-arm] [PATCH v1 3/3] raspi: Add "raspi3" machine type
+X-Received-From: 2607:f8b0:4003:c06::244
+Subject: Re: [Qemu-arm] [PATCH v2 7/7] linux-user: Implement aarch64
+ PR_SVE_SET/GET_VL
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -123,39 +104,165 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, Pekka Enberg <penberg@iki.fi>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LOGPBgxcN/7g
+X-TUID: pPg14Fynzp+N
 
-On 02/15/2018 10:18 AM, Peter Maydell wrote:
-> On 15 February 2018 at 13:14, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->> On 02/15/2018 09:49 AM, Philippe Mathieu-Daudé wrote:
->>> On 02/15/2018 09:39 AM, Peter Maydell wrote:
->>>> On 8 February 2018 at 05:50, Pekka Enberg <penberg@iki.fi> wrote:
->>
->> Now I remember why I hesitated with this patch,
->>
->> This part {
->>
->>>>> +    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a53");
->>>>> +    mc->max_cpus = BCM2836_NCPUS;
->>>>> +    mc->min_cpus = BCM2836_NCPUS;
->>>>> +    mc->default_cpus = BCM2836_NCPUS;
->>
->> } is the BCM2837 SoC, very similar to the BCM2836.
-> 
-> Yeah, we had a whole go-around about whether we should have a
-> BCM2837 object or just make the BCM2836 object have a configurable
-> CPU type. You could argue either way...
+On 11 February 2018 at 20:58, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+> As an implementation choice, widening VL has zeroed the
+> previously inaccessible portion of the sve registers.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/cpu.h     |  2 ++
+>  linux-user/syscall.c | 20 +++++++++++++++++
+>  target/arm/cpu64.c   | 61 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 83 insertions(+)
+>
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 51a3e16275..8e1016cfd6 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -842,6 +842,8 @@ int arm_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
+>  #ifdef TARGET_AARCH64
+>  int aarch64_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int reg);
+>  int aarch64_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
+> +unsigned aarch64_get_sve_vlen(CPUARMState *env);
+> +unsigned aarch64_set_sve_vlen(CPUARMState *env, unsigned vlen);
+>  #endif
+>
+>  target_ulong do_arm_semihosting(CPUARMState *env);
+> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> index 82b35a6bdf..4840bf502f 100644
+> --- a/linux-user/syscall.c
+> +++ b/linux-user/syscall.c
+> @@ -10659,6 +10659,26 @@ abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
+>              break;
+>          }
+>  #endif
+> +#ifdef TARGET_AARCH64
+> +        case 50: /* PR_SVE_SET_VL */
 
-Since both SoCs are clocked at the same freq (and we don't model the L2
-cache, the only diff) your suggestion (#ifdef TARGET_AARCH64) is the
-easiest/cleaner way to go and I'm happy with it :)
+Could you put an
+#ifndef PR_SVE_SET_VL
+#define PR_SVE_SET_VL 50
+#endif
+(ditto for PR_SVE_GET_VL) in somewhere suitable rather than using
+hard-coded constants, please?
 
-A one-line comment would be worthful although.
+> +            /* We cannot support either PR_SVE_SET_VL_ONEXEC
+> +               or PR_SVE_VL_INHERIT.  Therefore, anything above
+> +               ARM_MAX_VQ results in EINVAL.  */
+> +            if (!arm_feature(cpu_env, ARM_FEATURE_SVE)
+> +                || arg2 > ARM_MAX_VQ * 16 || arg2 & 15) {
+> +                ret = -TARGET_EINVAL;
+> +            } else {
+> +                ret = aarch64_set_sve_vlen(cpu_env, arg2);
+> +            }
+> +            break;
+> +        case 51: /* PR_SVE_GET_VL */
+> +            if (arm_feature(cpu_env, ARM_FEATURE_SVE)) {
+> +                ret = aarch64_get_sve_vlen(cpu_env);
+> +            } else {
+> +                ret = -TARGET_EINVAL;
+> +            }
 
-Regards,
+Seems a bit odd to write the if() with the working case first for one
+of these and with the error case first for the other.
 
-Phil.
+> +            break;
+> +#endif /* AARCH64 */
+>          case PR_GET_SECCOMP:
+>          case PR_SET_SECCOMP:
+>              /* Disable seccomp to prevent the target disabling syscalls we
+> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> index 1c330adc28..6dee78f006 100644
+> --- a/target/arm/cpu64.c
+> +++ b/target/arm/cpu64.c
+> @@ -363,3 +363,64 @@ static void aarch64_cpu_register_types(void)
+>  }
+>
+>  type_init(aarch64_cpu_register_types)
+> +
+> +/* Return the current cumulative SVE VLEN.  */
+> +unsigned aarch64_get_sve_vlen(CPUARMState *env)
+> +{
+> +    return ((env->vfp.zcr_el[1] & 0xf) + 1) * 16;
+
+If this is supposed to also work for system-emulation mode it needs
+to look at zcr_el[2] and [3]. If it's user-emulation mode only I
+think we should #ifdef it and add a comment so that's clear.
+Similarly with _set_. In fact if it's user-emulation only then it
+probably belongs in linux-user/arm/ ?
+
+> +}
+> +
+> +/* Set the cumulative ZCR.EL to VLEN, or the nearest supported value.
+> +   Return the new value.  */
+> +unsigned aarch64_set_sve_vlen(CPUARMState *env, unsigned vl)
+> +{
+> +    unsigned vq = vl / 16;
+> +    unsigned old_vq = (env->vfp.zcr_el[1] & 0xf) + 1;
+> +
+> +    if (vq < 1) {
+> +        vq = 1;
+> +    } else if (vq > ARM_MAX_VQ) {
+> +        vq = ARM_MAX_VQ;
+> +    }
+> +    env->vfp.zcr_el[1] = vq - 1;
+> +
+> +    /* The manual sez that when SVE is enabled and VL is widened the
+
+"says". "sez" will probably get picked up and fixed next time somebody
+runs a spellcheck over the codebase, so we might as well save them the
+work.
+
+> +     * implementation is allowed to zero the previously inaccessible
+> +     * portion of the registers.  The corollary to that is that when
+> +     * SVE is enabled and VL is narrowed we are also allowed to zero
+> +     * the now inaccessible portion of the registers.
+> +     *
+> +     * The intent of this is that no predicate bit beyond VL is ever set.
+> +     * Which means that some operations on predicate registers themselves
+> +     * may operate on full uint64_t or even unrolled across the maximum
+> +     * uint64_t[4].  Performing 4 bits of host arithmetic unconditionally
+> +     * may well be cheaper than conditionals to restrict to the operation
+
+"restrict the operation" ?
+
+> +     * to the relevant portion of a uint16_t[16].
+> +     *
+> +     * ??? Need to move this somewhere else, so that it applies to
+> +     * changes to the real system registers and EL state changes.
+> +     */
+> +    if (vq < old_vq) {
+> +        unsigned i, j;
+> +        uint64_t pmask;
+> +
+> +        /* Zap the high bits of the zregs.  */
+> +        for (i = 0; i < 32; i++) {
+> +            memset(&env->vfp.zregs[i].d[2 * vq], 0, 16 * (ARM_MAX_VQ - vq));
+> +        }
+> +
+> +        /* Zap the high bits of the pregs and ffr.  */
+> +        pmask = 0;
+> +        if (vq & 3) {
+> +            pmask = ~(-1ULL << (16 * (vq & 3)));
+> +        }
+> +        for (j = vq / 4; j < ARM_MAX_VQ / 4; j++) {
+> +            for (i = 0; i < 17; ++i) {
+> +                env->vfp.pregs[i].p[j] &= pmask;
+> +            }
+> +            pmask = 0;
+> +        }
+> +    }
+> +
+> +    return vq * 16;
+> +}
+> --
+> 2.14.3
+
+thanks
+-- PMM

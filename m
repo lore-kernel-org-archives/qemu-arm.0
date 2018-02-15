@@ -1,191 +1,168 @@
-Received: by 10.28.71.27 with SMTP id u27csp1945286wma;
-        Wed, 14 Feb 2018 20:48:49 -0800 (PST)
-X-Google-Smtp-Source: AH8x225eFaOPQa2MmJixT4EcMHdYeBSWp7F7VAJ/ZEJqqgKsZuIs43HDJjQcNniGdctLkjQ2CgCw
-X-Received: by 10.37.107.69 with SMTP id o5mr1145128ybm.337.1518670129042;
-        Wed, 14 Feb 2018 20:48:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518670129; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp2033192wma;
+        Wed, 14 Feb 2018 22:11:31 -0800 (PST)
+X-Google-Smtp-Source: AH8x227quwiQlxjx2eB+jHqjLbauIdF4bxvZlefw3foWGn7UlljyWDn0WhIfU88NCPqmk6G/+mQm
+X-Received: by 10.37.218.147 with SMTP id n141mr1220643ybf.104.1518675091585;
+        Wed, 14 Feb 2018 22:11:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518675091; cv=none;
         d=google.com; s=arc-20160816;
-        b=H8gsTF6sSnubDLDpipshoWgKrtKIhEUJVPubiDBS18zGFeKTDRJKPJldPoRQTlozef
-         uXdvKsM8WvY5Z2OaIxG+cyECQnCICcxAbdEhvR/kAOndsedkaN5XAciCnf4e/tWWPtZq
-         1cBUVuDfs5ebcW8YabdSKjcBKkb4m8QEezka5l3Yv1YgNZSR9JLphufigv6uTw5CTsL1
-         EOFIw4NOkcrSkws2C4k33NummDez6ufapjnkheay+bYdhDWzc0dw/o6ANYR2Z4p3cKYw
-         YlIQCHHgXsFn/7HqwROmISSjyiH/sqQR+gOfZDYyYX8HtHBabe3FP2m4IccW104ZZdhd
-         Hw9Q==
+        b=Ov1TckfMY6bhPUSLf3UN2ueOQ99UuD4BfStqxT6Qi9QQpjQZB6lcNtBOT2aOTWXEjw
+         Y7yXjY8gyT2H9nqMuEI/LIvTpBHeVvCibWOFgsw3iD8rh84BGiJ0reDoTUjLpNFT4lHx
+         SKUHEHWUbITAlNIoA0ThQX5A4HCfs8mVI9FGecn3UeNqe/mmUnH5hnGfvwQVT6KGJdem
+         GZlZu1to1+KKv9OmyiCEVU5Ip9YdrHBlHXwLQMhmVe7n+w0SJxJeBieaT27jBmFOshSX
+         U6qIJWaBx9aPn9nEcpGd062MxC/hwBEY2UGW/bTCXbACOrG2BQmb3eI4ZbZzqzbM4lmA
+         9sZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=tS6N32aqPY7x+TTEuvHXDv9hqaO9i7o+Ojp9fYmI5qs=;
-        b=HvWY1ZJsTDN/P1OdvIFGV4xsUkZnACt4yAja+KoOepwH3ZiHzWHerkXgAl8ParIp6U
-         /ChalygarzYZLAvIITB8dyaSKJxbaY1YTiKr3KVXqMixxgkrBBolCgatWCIHnFcqFMgm
-         +mOe4AYQSBJC7wK/yrLm2Uz/EY9H8uP0x7zX1+PbtsJ/97o7vrNYzBQxrc57rKabpysH
-         p3qGu+coTpn3ujnJLFvB0ZgJlqZea55h051VoKEaclkabXkDCC/afFS50npf1oTnC7oW
-         TUbQhFkhNl/wsHMEv1hdMcUSkmS008q8gQX0cKc9ySel7lxVzPmFXD9976n5509QDgUt
-         NJ2A==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
+         :arc-authentication-results;
+        bh=o62CNlyVkfXO2rPFV4Jwtk8nIIrh60gpcvdS1ZB+eTU=;
+        b=R5Ip0akThTDj9rNg7mCE6tgFQmw0AUs2K24/bY1M93wymPtS08X/F9C6lmPNu21Ct9
+         93f0iVkZUmGio1UPUFLP1lG0ylBdmV+oq7E3nydaPEXYRq1uOL7AJPDzJE3S3Z+KLiUl
+         a2Vo5LUwq1ngcXuJFxHz0EjdWZ5/j7G7z1NRWRauhjuJc8WxVcAQ5YzBMNQdErUQS9gL
+         B1YjIBLvR1OSz7FQDRXgTkBllYI/uFo6GbeAjm9iYkgX5UIkHtdxI1ILKnqEs+MEzV62
+         Yww0T1Wq6Bro2jQPAc8wbMsqcKFRh3gmjFPsy6iVRh9ry7zSmEkfOUTkNewG6hdP4fvR
+         puXg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kuzW07s9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g200si594369ybf.532.2018.02.14.20.48.48
+        by mx.google.com with ESMTPS id e10si175773yba.179.2018.02.14.22.11.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 14 Feb 2018 20:48:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 14 Feb 2018 22:11:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kuzW07s9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37646 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:43569 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1emBTU-0007TZ-Cl
-	for alex.bennee@linaro.org; Wed, 14 Feb 2018 23:48:48 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34695)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1emClX-0008FL-2T
+	for alex.bennee@linaro.org; Thu, 15 Feb 2018 01:11:31 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48295)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1emBBa-0008Fo-QE
-	for qemu-devel@nongnu.org; Wed, 14 Feb 2018 23:30:21 -0500
+	(envelope-from <thuth@redhat.com>) id 1emClL-0008Et-6x
+	for qemu-arm@nongnu.org; Thu, 15 Feb 2018 01:11:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1emBBZ-0004Mt-Po
-	for qemu-devel@nongnu.org; Wed, 14 Feb 2018 23:30:18 -0500
-Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:34349)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1emBBZ-0004MZ-I1; Wed, 14 Feb 2018 23:30:17 -0500
-Received: by mail-qk0-x243.google.com with SMTP id o7so15055038qkc.1;
-	Wed, 14 Feb 2018 20:30:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=tS6N32aqPY7x+TTEuvHXDv9hqaO9i7o+Ojp9fYmI5qs=;
-	b=kuzW07s9pjzL3LsNb+RTb3Exp0pKDqm1VVRrkK1XrxawR+8ZqHSf5ivIcpwbGcE2wm
-	OE7DPlclmALr8cqfMw+54JRnFQuJC3son5PKRwwJsQamhRE+BWWttfjcqlhVEaFxFjGz
-	iBJmXN6OSeDknLM9gk3gpcPyejf0y7qjSJhePWxBwaO/rs73Rb7VWNVN1kOOBUyisYLr
-	DOucHY2RYeqK3G0PsnEUDbYR6byFfSt0s4qzU/gdvPuenH8wJwmz8oesNo7OrsISSMQR
-	DHr+/Zb01oicOnGXAW8tFQZ8KuzzrHZdhY1CzPYa5Q9BfYw1RP4WAVIaQXHv7ZnOHxlx
-	lbmg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=tS6N32aqPY7x+TTEuvHXDv9hqaO9i7o+Ojp9fYmI5qs=;
-	b=UF3FG7ezWOD3nyOT7rAy9sAMPcZ7G8IdpM/Nv8H0DOv8r36JhDl8g7ZJr2IZ7FdHgx
-	wvGEuT+T5kJrrMY1pc+CZMEllzRJ3ul2IxXeXdICboDp8zyE7tc/g3HnVpxXOiT6FNmz
-	8sa4KmNFUVmthPj3GynINkak4gmhTAlgDJUkQsEQ923uJiB7FYEA1sShuceDdwIH5V9l
-	KFtcurb5NnY2OQKykizu0wzZ/IsH7IVXE4N8R1veE0eS5C2vdTEMa1voo33rnmYMMPQ5
-	4ef3mBJl1+e+wRpNGo5zCzsOt36E7HbZ7numLvNEZ46O567MFD5W1G+dasHVebTEPic/
-	dQXA==
-X-Gm-Message-State: APf1xPAxgo6YuzuuL8Q4B9Mq4hOJaZQqa4aWAxIAAuGc083vBvRTQClJ
-	nN9BDjpr5rqx0sU59TGJu4NNEV0N
-X-Received: by 10.55.219.1 with SMTP id e1mr2157125qki.151.1518669016984;
-	Wed, 14 Feb 2018 20:30:16 -0800 (PST)
-Received: from x1.local ([138.117.48.219]) by smtp.gmail.com with ESMTPSA id
-	t33sm10680312qtc.14.2018.02.14.20.30.14
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 14 Feb 2018 20:30:16 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Date: Thu, 15 Feb 2018 01:28:53 -0300
-Message-Id: <20180215042900.16078-24-f4bug@amsat.org>
-X-Mailer: git-send-email 2.16.1
-In-Reply-To: <20180215042900.16078-1-f4bug@amsat.org>
+	(envelope-from <thuth@redhat.com>) id 1emClI-0001zp-2X
+	for qemu-arm@nongnu.org; Thu, 15 Feb 2018 01:11:19 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:41078 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1emClH-0001zj-Tz; Thu, 15 Feb 2018 01:11:15 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 1750E7CBB2;
+	Thu, 15 Feb 2018 06:10:56 +0000 (UTC)
+Received: from [10.36.116.121] (ovpn-116-121.ams2.redhat.com [10.36.116.121])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id A6866100F9F9;
+	Thu, 15 Feb 2018 06:10:41 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org
 References: <20180215042900.16078-1-f4bug@amsat.org>
+	<20180215042900.16078-3-f4bug@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <8fd4272f-8c40-3804-8449-752aea88a7cc@redhat.com>
+Date: Thu, 15 Feb 2018 07:10:40 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::243
-Subject: [Qemu-devel] [PATCH 23/30] hw/net: use the BYTE-based definitions
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <20180215042900.16078-3-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.2]);
+	Thu, 15 Feb 2018 06:11:11 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Thu, 15 Feb 2018 06:11:11 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 02/30] hw: include
+ "qemu/cunits.h" and clean unused "qemu/cutils.h"
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Dmitry Fleytman <dmitry.fleytman@gmail.com>, Stefan Weil <sw@weilnetz.de>,
-	Jason Wang <jasowang@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	Beniamino Galvani <b.galvani@gmail.com>,
-	"open list:Allwinner-a10" <qemu-arm@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bWzWgizEIsAi
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Marek Vasut <marex@denx.de>, Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-ppc@nongnu.org,
+	Chris Wulff <crwulff@gmail.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Markus Armbruster <armbru@redhat.com>, Paul Burton <paul.burton@mips.com>,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Michael Walle <michael@walle.cc>, qemu-arm@nongnu.org,
+	=?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Samuel Thibault <samuel.thibault@ens-lyon.org>,
+	Marcel Apfelbaum <marcel@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Yongbok Kim <yongbok.kim@mips.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+	Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: w3ucVx8MKHQ9
 
-It ease code review, unit is explicit.
+On 15.02.2018 05:28, Philippe Mathieu-Daud=C3=A9 wrote:
+> These files were including "qemu/cutils.h" to use the byte-based size
+> definitions, now available in "qemu/cunits.h".
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  include/hw/hw.h       | 1 +
+>  hw/arm/msf2-soc.c     | 1 -
+>  hw/arm/msf2-som.c     | 1 -
+>  hw/core/loader-fit.c  | 1 -
+>  hw/core/loader.c      | 1 -
+>  hw/core/machine.c     | 1 -
+>  hw/cris/boot.c        | 1 -
+>  hw/display/sm501.c    | 1 -
+>  hw/hppa/machine.c     | 1 -
+>  hw/lm32/milkymist.c   | 1 -
+>  hw/microblaze/boot.c  | 1 -
+>  hw/mips/boston.c      | 1 -
+>  hw/misc/mos6522.c     | 1 -
+>  hw/nios2/boot.c       | 1 -
+>  hw/ppc/mac_newworld.c | 1 -
+>  hw/ppc/mac_oldworld.c | 1 -
+>  hw/ppc/pnv.c          | 1 -
+>  hw/ppc/prep.c         | 1 -
+>  hw/ppc/spapr_rtas.c   | 1 -
+>  hw/sd/sdhci.c         | 1 -
+>  hw/sparc/sun4m.c      | 1 -
+>  hw/sparc64/sun4u.c    | 1 -
+>  hw/usb/dev-serial.c   | 1 -
+>  hw/usb/dev-storage.c  | 1 -
+>  24 files changed, 1 insertion(+), 23 deletions(-)
+>=20
+> diff --git a/include/hw/hw.h b/include/hw/hw.h
+> index ab4950c312..8249448cac 100644
+> --- a/include/hw/hw.h
+> +++ b/include/hw/hw.h
+> @@ -14,6 +14,7 @@
+>  #include "migration/qemu-file-types.h"
+>  #include "qemu/module.h"
+>  #include "sysemu/reset.h"
+> +#include "qemu/cunits.h"
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- include/hw/net/allwinner_emac.h | 4 ++--
- hw/net/e1000e.c                 | 6 +++---
- hw/net/eepro100.c               | 6 ++----
- 3 files changed, 7 insertions(+), 9 deletions(-)
+Instead of adding this to a header and creating yet another possible
+recompile-the-world dependency this way, wouldn't it be better to
+include the cunits.h only from the .c files that need the definitions?
 
-diff --git a/include/hw/net/allwinner_emac.h b/include/hw/net/allwinner_emac.h
-index 4cc8aab7ec..93ec0e7067 100644
---- a/include/hw/net/allwinner_emac.h
-+++ b/include/hw/net/allwinner_emac.h
-@@ -125,8 +125,8 @@
- #define EMAC_INT_RX         (1 << 8)
- 
- /* Due to lack of specifications, size of fifos is chosen arbitrarily */
--#define TX_FIFO_SIZE        (4 * 1024)
--#define RX_FIFO_SIZE        (32 * 1024)
-+#define TX_FIFO_SIZE        (4 * K_BYTE)
-+#define RX_FIFO_SIZE        (32 * K_BYTE)
- 
- #define NUM_TX_FIFOS        2
- #define RX_HDR_SIZE         8
-diff --git a/hw/net/e1000e.c b/hw/net/e1000e.c
-index 16a9417a85..767b35fca8 100644
---- a/hw/net/e1000e.c
-+++ b/hw/net/e1000e.c
-@@ -81,10 +81,10 @@ typedef struct E1000EState {
- #define E1000E_IO_IDX       2
- #define E1000E_MSIX_IDX     3
- 
--#define E1000E_MMIO_SIZE    (128 * 1024)
--#define E1000E_FLASH_SIZE   (128 * 1024)
-+#define E1000E_MMIO_SIZE    (128 * K_BYTE)
-+#define E1000E_FLASH_SIZE   (128 * K_BYTE)
- #define E1000E_IO_SIZE      (32)
--#define E1000E_MSIX_SIZE    (16 * 1024)
-+#define E1000E_MSIX_SIZE    (16 * K_BYTE)
- 
- #define E1000E_MSIX_TABLE   (0x0000)
- #define E1000E_MSIX_PBA     (0x2000)
-diff --git a/hw/net/eepro100.c b/hw/net/eepro100.c
-index a07a63247e..6fdeb05259 100644
---- a/hw/net/eepro100.c
-+++ b/hw/net/eepro100.c
-@@ -60,8 +60,6 @@
-  * changed to pad short packets itself. */
- #define CONFIG_PAD_RECEIVED_FRAMES
- 
--#define KiB 1024
--
- /* Debug EEPRO100 card. */
- #if 0
- # define DEBUG_EEPRO100
-@@ -104,9 +102,9 @@
- /* Use 64 word EEPROM. TODO: could be a runtime option. */
- #define EEPROM_SIZE     64
- 
--#define PCI_MEM_SIZE            (4 * KiB)
-+#define PCI_MEM_SIZE            (4 * K_BYTE)
- #define PCI_IO_SIZE             64
--#define PCI_FLASH_SIZE          (128 * KiB)
-+#define PCI_FLASH_SIZE          (128 * K_BYTE)
- 
- #define BITS(n, m) (((0xffffffffU << (31 - n)) >> (31 - n + m)) << m)
- 
--- 
-2.16.1
-
+ Thomas

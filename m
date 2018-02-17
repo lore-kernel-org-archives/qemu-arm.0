@@ -1,188 +1,145 @@
-Received: by 10.28.71.27 with SMTP id u27csp706700wma;
-        Fri, 16 Feb 2018 05:39:08 -0800 (PST)
-X-Google-Smtp-Source: AH8x227SsVG1Pjdxm5pWRQmM787EuI8Af2whqo9kbYxSOvFrhRpP7ZGrehkCfYNOprIAQNe4Moq6
-X-Received: by 10.37.31.132 with SMTP id f126mr4677675ybf.498.1518788348595;
-        Fri, 16 Feb 2018 05:39:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518788348; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp1861975wma;
+        Sat, 17 Feb 2018 06:03:20 -0800 (PST)
+X-Google-Smtp-Source: AH8x2258SkaGetT5TPar34V5fl+PQW1yT+2/nILytqW/crRtYb67/+I52zl5RDvXIK5wiFicXdg4
+X-Received: by 10.129.155.3 with SMTP id s3mr3516803ywg.427.1518876200001;
+        Sat, 17 Feb 2018 06:03:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518876199; cv=none;
         d=google.com; s=arc-20160816;
-        b=jcrDrUQ1995Zij7yjYd854dcKv6yDotqL3QI1+QLlhLcTbPaj5beYPSYO+sEAWfd3A
-         wHBXYK6uq8I5IwTe7Bh1muQQkM5kShhTrvwDWfftMrbXBRVl7DkkHL9AsRoY//0LA4zy
-         sbVxO/4FpXLx3e3X2KUYFpwvy7AubdwlFP9UodJbAmLdRNY6XJb44/851bB4tVduZkuV
-         h227BMQokI+PKb7ZxsuKmxCIAOSpYuhPzzRtVhdr9GplFOKj9BOb6iN06eTHBka4GTHL
-         JpBO6Y8XC9Lno+WxhDE5+2PRaAG3WXFCjHm1ex0gaQEepDrkvcOx/HjmCN9b/RAsuuBW
-         BW4A==
+        b=RRbA1jDMyYEcbJjWXgQIM/VYY7pYsMSqQcq22iLAF3VcPuv7Efvv8KFmxOqJ01OC1n
+         yga3CSG4DcctBLWPT9z45dtzg3JuTKxFZcbK/krNNZOm4hmW1jh4Ck9itmJjY/uEncmU
+         ehcD6sODn68hbWRPbLfDxpH86Z7L975ERhohFJmWlYjsAyBItsNicnNqJOKCO1Lauhoe
+         b32NfXdA+C1Xj4amitAdx4TWLg/GYNcjxmjA1DRp0P4v5wjQh3zKbE/IupZEAgNu6e3p
+         3bCOg95EA2f9lN+s2ytqxe29acF8brFMVJyLTc13AFMUV8LCD4TJzQg/pmbIKHrPtQ4P
+         nvbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
          :dkim-signature:arc-authentication-results;
-        bh=Sl0GruKqi8Nkf2H1oew1Fkt1Q2vTXuMlZfeAj672QJs=;
-        b=izzWnxdexetGUWQmhDhr5vG/0lGMMqAKSQQMwynxTqukNC8kebNdzwN7mM9HAu+/hd
-         U0FXYyROtgno1IiosU4Gj8gjnFPBr5eN2ifOzVSv4ynHtDjRMUGvejI8tB8sxNsHeaE+
-         eWEQQGayupwpt6VZeG/02cbl7zJPQ+XNQ62nM1c7uTJ58/XWumE5SnjBY9VTz3vOnZF2
-         IM5LxIPMD7jn9r8q6WiFRqBR9GE4Qs0ojsXdT9QPUSLLbOSWpJR6BVa3n52cQzIM5whx
-         kiNY7AU3ZcUIpLacS+FPvuhdDt0ipIz72d0mTXbUSySO9UHuEDvKaIuUGvFWwhJrZ9Dj
-         RlWg==
+        bh=8g3VeqEBLLwqmfKajkLXAjgCGS5xAsK+XOXYyEJ1460=;
+        b=BfAQi00fl/i25lbCUGORcKZaeDyJnrqL2lDpR73qyPurESqS3lg1UsDXCb9WfcvDKP
+         A6Gq0+7Easrxly5WCsVtyEhSuUs+DglWi62cgzj3wWQIm56k4iBeMFeT7tcnOJ2CNIe9
+         3hHknEx5gtQx+q9AiRYhRKL/0kfcSWoAaQD8MUDKx4hOBw1MEFTz7Wai3Uhw6bNsi4Ll
+         imszUjLfZ9h61PQWdrzfqCjmtVxCvP8eN+AgkllWTRjjYTJt7kOGFhzDFdfTOMfmBx+C
+         dHUAWrasNAQWbKkevzYoGqhr4vmlQ5oi2tWjecYDVAcVy0VoExlqSUIKDYlA5UrbAzW1
+         hzMg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HGmSJ7bE;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=dOU9yWni;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b6si1208849ywh.707.2018.02.16.05.39.08
+        by mx.google.com with ESMTPS id 84si1571416ywd.494.2018.02.17.06.03.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 16 Feb 2018 05:39:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sat, 17 Feb 2018 06:03:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HGmSJ7bE;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:48594 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=dOU9yWni;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53158 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1emgEG-0002y0-2G
-	for alex.bennee@linaro.org; Fri, 16 Feb 2018 08:39:08 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54060)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1en35D-0005o2-DC
+	for alex.bennee@linaro.org; Sat, 17 Feb 2018 09:03:19 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46099)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1emg1L-0000c7-W8
-	for qemu-devel@nongnu.org; Fri, 16 Feb 2018 08:25:49 -0500
+	(envelope-from <linus.walleij@linaro.org>) id 1en34w-0005mj-RJ
+	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 09:03:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1emg1H-0003mf-9Y
-	for qemu-devel@nongnu.org; Fri, 16 Feb 2018 08:25:47 -0500
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:46166)
+	(envelope-from <linus.walleij@linaro.org>) id 1en34s-0003nG-T5
+	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 09:03:02 -0500
+Received: from mail-lf0-x244.google.com ([2a00:1450:4010:c07::244]:35289)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1emg1H-0003mK-5U; Fri, 16 Feb 2018 08:25:43 -0500
-Received: by mail-qk0-x241.google.com with SMTP id t13so378968qkj.13;
-	Fri, 16 Feb 2018 05:25:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=Sl0GruKqi8Nkf2H1oew1Fkt1Q2vTXuMlZfeAj672QJs=;
-	b=HGmSJ7bEwyCpDFdcqTDQZlLZpb5rSOZolsFUAHfoL2ns2ewxc872i1WBHiuxaS9Pk/
-	L+hocpTjJ3uOjpCnNARA55CqBxOW9cEawYzvcQVkkBAx5MBHUAtWezKeRMygsOx96b33
-	6lLDRmNHxJ+bJpa6xZgL5WwIPlrD6RDUX282I8n0RuXD6AiZ3K2PXvqpZSQ9MWwbhq/1
-	sjRMhU96ChB2bzizmSzeoSKlSA6Tta5y1mvtv6Sj6I0/tlbOoFe191wonTmfHbjelVkg
-	QdCncJOp/qAkZjjPLbR6s0mV8pD+yhbWi+4MLGkVzMAsYFfhVpPXT8fyWNgS3ZGl7ZXv
-	5yzg==
+	(Exim 4.71) (envelope-from <linus.walleij@linaro.org>)
+	id 1en34s-0003mt-HZ
+	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 09:02:58 -0500
+Received: by mail-lf0-x244.google.com with SMTP id 70so1597567lfw.2
+	for <qemu-arm@nongnu.org>; Sat, 17 Feb 2018 06:02:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id;
+	bh=8g3VeqEBLLwqmfKajkLXAjgCGS5xAsK+XOXYyEJ1460=;
+	b=dOU9yWnir0EXOfz7y+eTCzB69MQ8/P36ZIFoRc627FHtQ1pOoMW6GEmXp5j4/8mMTV
+	x8qCxqNqtHpdhZcOB0bcY+6kE/bFtxDB6Q2+sWhfBuQZL1HVdxQrMNRk/+UJ2pHytlsg
+	kOO1HnMB6mmp/VVoSLmlvVJBa/IY4Q1La58KM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=Sl0GruKqi8Nkf2H1oew1Fkt1Q2vTXuMlZfeAj672QJs=;
-	b=UtEk6XvIPMKRi0jHiiz5/vr+o9RVpMOdPrH98l9pcqLMd4eu42Eysyiw9W8h3+zkzo
-	mwvehjMdH8V/bBP7VwdQgD5JjqzSkzI4QNjyuVGHjS+bK5atOyPdW5qMqe70bEPRpjws
-	VSlYAPdKkchrusPEg3w7POrnxU+VEEuCYTy7s3aM62Q5y7Vz9xJUChOzBVfdqvIsPWNn
-	qvhtb8k/vh4hZ7jZOl91FbiD0RLzBXo4hC14XquZxfgXjjJxR5SVRw6m4t9Y4d+w35eJ
-	MCIMWKvJgTHT+qIFlqctmPT1Sq1XA8tWwI2HcdBNa68cN0pGPwbUtj9+GlEE2pVM6lqe
-	0kTQ==
-X-Gm-Message-State: APf1xPBfGI3EGAML/5u1mhxBkphHdtCso+su+LtzP5SzM4j6kRVCNboe
-	cWLsLxFkycrq6bP4GQiVanYih1pC
-X-Received: by 10.55.22.144 with SMTP id 16mr9242760qkw.11.1518787542417;
-	Fri, 16 Feb 2018 05:25:42 -0800 (PST)
-Received: from [192.168.1.11] ([138.117.48.219])
-	by smtp.gmail.com with ESMTPSA id
-	i186sm7397378qke.86.2018.02.16.05.25.40
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 16 Feb 2018 05:25:41 -0800 (PST)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-References: <20180215182421.23788-1-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <118274a7-3fc2-3245-55fb-5ddfde7b4f59@amsat.org>
-Date: Fri, 16 Feb 2018 10:25:38 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.6.0
-MIME-Version: 1.0
-In-Reply-To: <20180215182421.23788-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=8g3VeqEBLLwqmfKajkLXAjgCGS5xAsK+XOXYyEJ1460=;
+	b=SvlkzOv8Ccqia/ed+807HOb4rDyqzKY7GCpyo5OdeqeQG8hAdMxCEeqXG+rqfisSHf
+	yq0AI4Cjq72jTqqVxTShc+op+GAN875dTeaHJqAWi8j1NZ/uQY/qOqhGPe7kD5rvntep
+	i8SnFx01A40r5E3TZifR7bhmiVNpTp2gEm98xQ4O6X3HN0evFqR4nt/FMA9Bcr2V3dUW
+	b5Avfu73SH6Tz4M3WnAGVueAoQLr7ua5ypt5bkA4bZWgQ1Bw1AwxPb7zYOfaPiIJVQW5
+	PivmSl/ODleZSki8k1BvBP7WnVoebEQk/eo6iys3xSS5wT8xN4jqyylyEZJgfdvy1Dvw
+	c10A==
+X-Gm-Message-State: APf1xPASU8E+SChU953XKbSMXmc9xv9fhhuaHSl/D4F/A3O/no47TH63
+	AvO0iWrk/MVs5NU0DDcQQhj4Vw==
+X-Received: by 10.25.74.205 with SMTP id x196mr6647950lfa.46.1518876176796;
+	Sat, 17 Feb 2018 06:02:56 -0800 (PST)
+Received: from localhost.localdomain
+	(c-cb7471d5.014-348-6c756e10.cust.bredbandsbolaget.se.
+	[213.113.116.203]) by smtp.gmail.com with ESMTPSA id
+	w204sm122054lff.29.2018.02.17.06.02.55
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Sat, 17 Feb 2018 06:02:55 -0800 (PST)
+From: Linus Walleij <linus.walleij@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Sat, 17 Feb 2018 15:00:49 +0100
+Message-Id: <20180217140051.22731-1-linus.walleij@linaro.org>
+X-Mailer: git-send-email 2.14.3
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH] target/arm: Fix register
- definitions for VMIDR and VMPIDR
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4010:c07::244
+Subject: [Qemu-arm] [PATCH 1/3] hw/i2c-ddc: Do not fail writes
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Fi/DuLvZR9In
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Linus Walleij <linus.walleij@linaro.org>, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 45S3oYcN4xRl
 
-On 02/15/2018 03:24 PM, Peter Maydell wrote:
-> The register definitions for VMIDR and VMPIDR have separate
-> reginfo structs for the AArch32 and AArch64 registers. However
-> the 32-bit versions are wrong:
->  * they use offsetof instead of offsetoflow32 to mark where
->    the 32-bit value lives in the uint64_t CPU state field
+The tx function of the DDC I2C slave emulation was returning 1
+on all writes resulting in NACK in the I2C bus. Changing it to
+0 makes the DDC I2C work fine with bit-banged I2C such as the
+versatile I2C.
 
-Maybe we can replace all offsetof() by offsetof64() and forbid the use
-of offsetof() in this file, this will make A32 endian/alignment errors
-more apparent.
+I guess it was not affecting whatever I2C controller this was
+used with until now, but with the Versatile I2C it surely
+does not work.
 
->  * they don't mark themselves as ARM_CP_ALIAS
-> 
-> In particular this means that if you try to use an Arm guest CPU
-> which enables EL2 on a big-endian host it will assert at reset:
->  target/arm/cpu.c:114: cp_reg_check_reset: Assertion `oldvalue == newvalue' failed.
-> 
-> because the reset of the 32-bit register writes to the top
-> half of the uint64_t.
-> 
-> Correct the errors in the structures.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> This is necessary for 'make check' to pass on big endian
-> systems with the 'raspi3' board enabled, which is the
-> first board which has an EL2-enabled-by-default CPU.
-> ---
->  target/arm/helper.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index e7586fcf6c..e27957df38 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -5068,8 +5068,8 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->              { .name = "VPIDR", .state = ARM_CP_STATE_AA32,
->                .cp = 15, .opc1 = 4, .crn = 0, .crm = 0, .opc2 = 0,
->                .access = PL2_RW, .accessfn = access_el3_aa32ns,
-> -              .resetvalue = cpu->midr,
-> -              .fieldoffset = offsetof(CPUARMState, cp15.vpidr_el2) },
-> +              .resetvalue = cpu->midr, .type = ARM_CP_ALIAS,
-> +              .fieldoffset = offsetoflow32(CPUARMState, cp15.vpidr_el2) },
->              { .name = "VPIDR_EL2", .state = ARM_CP_STATE_AA64,
->                .opc0 = 3, .opc1 = 4, .crn = 0, .crm = 0, .opc2 = 0,
->                .access = PL2_RW, .resetvalue = cpu->midr,
-> @@ -5077,8 +5077,8 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->              { .name = "VMPIDR", .state = ARM_CP_STATE_AA32,
->                .cp = 15, .opc1 = 4, .crn = 0, .crm = 0, .opc2 = 5,
->                .access = PL2_RW, .accessfn = access_el3_aa32ns,
-> -              .resetvalue = vmpidr_def,
-> -              .fieldoffset = offsetof(CPUARMState, cp15.vmpidr_el2) },
-> +              .resetvalue = vmpidr_def, .type = ARM_CP_ALIAS,
-> +              .fieldoffset = offsetoflow32(CPUARMState, cp15.vmpidr_el2) },
->              { .name = "VMPIDR_EL2", .state = ARM_CP_STATE_AA64,
->                .opc0 = 3, .opc1 = 4, .crn = 0, .crm = 0, .opc2 = 5,
->                .access = PL2_RW,
-> 
+Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
+---
+ hw/i2c/i2c-ddc.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-After enjoying scrolling a 6666p specs,
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+diff --git a/hw/i2c/i2c-ddc.c b/hw/i2c/i2c-ddc.c
+index 199dac9e41c1..bec0c91e2dd0 100644
+--- a/hw/i2c/i2c-ddc.c
++++ b/hw/i2c/i2c-ddc.c
+@@ -259,12 +259,12 @@ static int i2c_ddc_tx(I2CSlave *i2c, uint8_t data)
+         s->reg = data;
+         s->firstbyte = false;
+         DPRINTF("[EDID] Written new pointer: %u\n", data);
+-        return 1;
++        return 0;
+     }
+ 
+     /* Ignore all writes */
+     s->reg++;
+-    return 1;
++    return 0;
+ }
+ 
+ static void i2c_ddc_init(Object *obj)
+-- 
+2.14.3
+

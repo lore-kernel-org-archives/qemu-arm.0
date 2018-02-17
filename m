@@ -1,100 +1,154 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp375027wme;
-        Mon, 21 May 2018 08:03:10 -0700 (PDT)
-X-Received: by 2002:aca:5153:: with SMTP id f80-v6mr12356915oib.78.1526914990550;
-        Mon, 21 May 2018 08:03:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1526914990; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp2069534wma;
+        Sat, 17 Feb 2018 10:23:45 -0800 (PST)
+X-Google-Smtp-Source: AH8x227Iwy0ypnX34zkXJ84f4jsdNAXgK10Pikz7AuCkaRlHm5LRBffJN6lpTPIqEbaJqAp3eVuO
+X-Received: by 10.129.207.11 with SMTP id u11mr7330381ywi.126.1518891825538;
+        Sat, 17 Feb 2018 10:23:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518891825; cv=none;
         d=google.com; s=arc-20160816;
-        b=DPl7MU725iauInbVUtqp/YMENdfJO56a24Sa24oos6OYz/yu6yuMtLrF48rLmF28B8
-         NoTnyO8ybUpOFVGbIN6QBfcFc8eoKtViBd+hzUC96jpLxDrAy0T9m//ErFl9KrC28mg/
-         cbzCF2A2t8g595HnUK4uW5F6Zgx1jjaF3q+Yse4o01faXiFk4PF/D0tnNIaauO5jlbHp
-         0ZAMzHESkVv/VbYDXx7CICc9d/xXFqiUaAVOzZsoMj6Ob7TBNsueugNqOyfOftMbin+0
-         c2oO2gHPZj5fJz9LqfQJfF3+8SPDow8py1nXBRGItP9w+Y6wp0DkOdN2VtGdbF+QGIM/
-         UA2w==
+        b=aceKUDMoyOMuB+MINGk6LCsQZx5szFZSDCMJ1uAZpFmfk9m/sL3l5OYdWOOb+tk3cX
+         8XbeJjZokRh2vQnDGOeyt2XvOFULyDEJ4HPP/ljWwvV+zg162PP4vxMZt5kbySnpyEKq
+         Ik5mOilwEgIO2frSF94a1JaGwHYp8gqt+t/DnggCKFZHcuf8R0yO6+xXSZEpOFALCuY6
+         lrbf/smerkGvd7nKMBxfHviNtW4DInPnD9/ROodjpt6j/J4nYkcm50TyKCjAcLGR4U7G
+         xaMLQfP/svEN/g5Oj6ncRwukgCVpQzfOuOUNMINkV8A0dhoqUBsTx2IyAq5HIsOa8Oky
+         y3Xw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature:arc-authentication-results;
-        bh=I5sn7q9AZU6s9FrH7GJzs+EfK73W2bh3GGxnMWfNMtw=;
-        b=r+e1rEiUMTeps/0D6hMBPoGUsktY/7JceARfDGEsKuadgZ1KjlVAsQXcweHaOKKc6F
-         v6ma4Fe5ZFfXcYeq8bLlQK2LBVYDXRLFrh6dX/VnKXf05dNyqOycH6SoeT8pr5B11+uy
-         sJrLYa2ou4f6F9wm9AnikHXnI09znAaE1HXig9aJrk+fXLP9cF2fJ1CcQRv8T/NHyMdd
-         rqj8pljJtQWX4ZidxVvog3G+ZX2lBUv6XBrADsBtX9mXTRZ+ePjWRDWbr/h2hEs04FZ/
-         JvbaNmf35BnVc9AV+FOyXgY52Utlgg6OcazNl70qLmmzbXSZBT6q6O2h/tdGIYI8/DGS
-         Hufw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=GKTCp6bvksh14RttFM3Mt9UNkxVgwo6yVS4bRZKIG/8=;
+        b=KzTGvqr37JZCHcnPV3547s8d+g1NJz/GnkYryrfEZ+YlDHOsAZQgMykddfwPWk5aNe
+         7y42x20zbSv1IexxIzBBpMU5iiLnhpK2T+A0BrVYs0j6zzaok3dPh8V8zKojOaXG7xkc
+         kW6B/rNVcqFeP4AS4mPhgfxVcHwfjmRFWajbYeeqExzkS9C+bcaB5R9zxiIg8Ccy1ylV
+         b5uBpDU3PmyeQ3p4BGCft8+sbUPv0ZNqbSdIhmM3V2kEZHxwV9vrVt3Y3BUEIVReevE9
+         00R2wfKNN9Jz0BHsvmu3fLFwHUYfV18uIhfSmaESsvz0dGyduLxtsgFUSL80mLqRWe99
+         Y/Vg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Oa221/WZ;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id w20-v6sor6932231oiw.248.2018.05.21.08.03.10
+       dkim=fail header.i=@linaro.org header.s=google header.b=XsENO705;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id f5si817284yba.354.2018.02.17.10.23.45
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 21 May 2018 08:03:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Sat, 17 Feb 2018 10:23:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Oa221/WZ;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=I5sn7q9AZU6s9FrH7GJzs+EfK73W2bh3GGxnMWfNMtw=;
-        b=Oa221/WZ6L/cNQFdhIpvYAOs+m+2fEAPRNaXYtrccxbmukUBgTARphimQcoU5l4WR7
-         QEDr9GFUDeO5ZvQlqhvAMEhGKA0csPXIIWwgGPGu3rY6ekcBmdDc2HeGQc07eTg7FodU
-         ub7UuouvDItS5Vfr6PFn7f9EdAOLmE7vsO7yc=
+       dkim=fail header.i=@linaro.org header.s=google header.b=XsENO705;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:48046 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1en79E-00006b-Ri
+	for alex.bennee@linaro.org; Sat, 17 Feb 2018 13:23:44 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39459)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <richard.henderson@linaro.org>) id 1en792-0008W7-DE
+	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:23:33 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <richard.henderson@linaro.org>) id 1en78z-0001Qj-AD
+	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:23:31 -0500
+Received: from mail-pl0-x242.google.com ([2607:f8b0:400e:c01::242]:38165)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1en78z-0001QK-4b
+	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:23:29 -0500
+Received: by mail-pl0-x242.google.com with SMTP id h10so3438745plt.5
+	for <qemu-arm@nongnu.org>; Sat, 17 Feb 2018 10:23:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=GKTCp6bvksh14RttFM3Mt9UNkxVgwo6yVS4bRZKIG/8=;
+	b=XsENO705oCj3EEvARe2kDxAKzc6yB5FChZN+2zjJDYeidOU2EZl953Q4WtV+meFwSS
+	QR9mr4zHmzh7lBikyjvhqM4Bg+iJM7deo/gqrlIPde40NXj9qQYVADwzGYVABb1kdMRD
+	3i8PXJGwhKnksw6a7Gky1u4FYErzaFgNuhbwE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=I5sn7q9AZU6s9FrH7GJzs+EfK73W2bh3GGxnMWfNMtw=;
-        b=ZqDdwT1wHZn17hW79x4382UHcBMWEfl2kO89LfSG2nkCigSDKyV388iiJ0WKxW6tnC
-         jEFpoZoeZ6O0kYjNP3ZvshV47DD5phD8v7DsX75ZQpVBRbRN6U6oP5LJ2YvURhH7n+cN
-         EnI6qiM1dO66LkH4j5NLB8NotSrTIuu3XqheH8W4I1euoI8vXywG8uWe2/6cvDMocqfn
-         tWrn/rMtuGArviAgo3Hv6nYNqbl3B1GTWsj5HqvPAPwagBDOHwDxhpOTHNSD2Q4C/YIn
-         3PqnNt8UalgjC194PAH7qex0uVuJXuenhN+ZA2O94kveUjqc8HdYMl1JkmxixiRR4UC9
-         TfZg==
-X-Gm-Message-State: ALKqPweANuJc3l7QJMKLy2EksxovzS/xR9ErBRASiTKdjssb19VhSlkx
-	H8QAdkKy4b0MMYU5KLeeJ9wIGoswUj7CFaV27sGdtJwa
-X-Google-Smtp-Source: AB8JxZqFSefmeSmAnRD1IlXtldINsOZs6EqIBIBTlK9F6LsRVSlnBqo3niP01HhzwTj505YabBt5Y9X2h7/bMkZ+kQQ=
-X-Received: by 2002:aca:cd0b:: with SMTP id d11-v6mr11172876oig.337.1526914990231;
- Mon, 21 May 2018 08:03:10 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Mon, 21 May 2018 08:02:49
- -0700 (PDT)
-In-Reply-To: <c049f864-304d-f8ee-4b2f-1476a602be30@redhat.com>
-References: <20180521140402.23318-1-peter.maydell@linaro.org>
- <20180521140402.23318-24-peter.maydell@linaro.org> <c049f864-304d-f8ee-4b2f-1476a602be30@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 21 May 2018 16:02:49 +0100
-Message-ID: <CAFEAcA_ErfYKnVrp=Dv9mNg55Y+=fFmg4eEMddGdMxUGVb9ztA@mail.gmail.com>
-Subject: Re: [PATCH 23/27] hw/core/or-irq: Support more than 16 inputs to an
- OR gate
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	"patches@linaro.org" <patches@linaro.org>, Richard Henderson <rth@twiddle.net>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: RE3rhUFE5UmN
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references;
+	bh=GKTCp6bvksh14RttFM3Mt9UNkxVgwo6yVS4bRZKIG/8=;
+	b=UrOU7Eelanl8MD8MHQg8vioaoiOmIQVzJ/kDU8d9nL25XZOnhz1JmAChjMa3x/GfrW
+	d5Aw74UYUVpg7ubtIQC3jZXzQH5IUTMuX5jsab2rAi77asag9qZDnZ029k4/Ptn8jAwy
+	OKEBlkveKXqXbGZncsSiI2RRQnYd8W43ObFswAS81Jlp7vs+MSa++7HMqeY1Sxzfu8DJ
+	MGllfnkZ3wcTn8ZqQT/6xwFM8VP9gNbO8X1Yk1w25H0QgV5RIU22TLakthrxxZ6k3jD5
+	/4rOrEFr4GBmR4tlhepnomzEVzvo2L0+sBlP0rVM3L+HvjLn/McuKKHS8286OcChoUAu
+	rHyA==
+X-Gm-Message-State: APf1xPB8fHOYbfJlgWnv1nP7N3/j5SIZ9xEZC1SLriYqfS1JXMzMMphP
+	HY9hhjSDGxVU0eyspB77/qjZug==
+X-Received: by 2002:a17:902:ab85:: with SMTP id
+	f5-v6mr9592147plr.199.1518891808245; 
+	Sat, 17 Feb 2018 10:23:28 -0800 (PST)
+Received: from cloudburst.twiddle.net ([50.0.192.64])
+	by smtp.gmail.com with ESMTPSA id
+	h15sm13466712pfi.56.2018.02.17.10.23.26
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Sat, 17 Feb 2018 10:23:27 -0800 (PST)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Sat, 17 Feb 2018 10:22:17 -0800
+Message-Id: <20180217182323.25885-2-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.14.3
+In-Reply-To: <20180217182323.25885-1-richard.henderson@linaro.org>
+References: <20180217182323.25885-1-richard.henderson@linaro.org>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c01::242
+Subject: [Qemu-arm] [PATCH v2 01/67] target/arm: Enable SVE for
+ aarch64-linux-user
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4CdGfKZ+QSGQ
 
-On 21 May 2018 at 15:34, Paolo Bonzini <pbonzini@redhat.com> wrote:
-> Why do the levels have to be migrated at all?  It should be enough if
-> the IRQ level is either migrated manually, or restored (e.g. in
-> post_save callbacks) through other data that is migrated.
+Enable ARM_FEATURE_SVE for the generic "any" cpu.
 
-This is standard behaviour for devices: they track their
-inbound irq/gpio lines, and then that becomes internal state for
-them that must be migrated.
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/cpu.c   | 7 +++++++
+ target/arm/cpu64.c | 1 +
+ 2 files changed, 8 insertions(+)
 
-If we didn't migrate the input line state, then after a migration
-the levels[] array would be all zeroes, and the next time a
-connected device signalled a high-to-low transition we'd take
-the output line low even if it should not be (because we'd have
-forgotten that some other input lines were high).
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 1b3ae62db6..10843994c3 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -150,6 +150,13 @@ static void arm_cpu_reset(CPUState *s)
+         env->cp15.sctlr_el[1] |= SCTLR_UCT | SCTLR_UCI | SCTLR_DZE;
+         /* and to the FP/Neon instructions */
+         env->cp15.cpacr_el1 = deposit64(env->cp15.cpacr_el1, 20, 2, 3);
++        /* and to the SVE instructions */
++        env->cp15.cpacr_el1 = deposit64(env->cp15.cpacr_el1, 16, 2, 3);
++        env->cp15.cptr_el[3] |= CPTR_EZ;
++        /* with maximum vector length */
++        env->vfp.zcr_el[1] = ARM_MAX_VQ - 1;
++        env->vfp.zcr_el[2] = ARM_MAX_VQ - 1;
++        env->vfp.zcr_el[3] = ARM_MAX_VQ - 1;
+ #else
+         /* Reset into the highest available EL */
+         if (arm_feature(env, ARM_FEATURE_EL3)) {
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index efc519b49b..36ef9e9d9d 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -231,6 +231,7 @@ static void aarch64_any_initfn(Object *obj)
+     set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
+     set_feature(&cpu->env, ARM_FEATURE_CRC);
+     set_feature(&cpu->env, ARM_FEATURE_V8_FP16);
++    set_feature(&cpu->env, ARM_FEATURE_SVE);
+     cpu->ctr = 0x80038003; /* 32 byte I and D cacheline size, VIPT icache */
+     cpu->dcz_blocksize = 7; /*  512 bytes */
+ }
+-- 
+2.14.3
 
-In a different world, the state would be in the qemu_irq line itself
-(in the same way that in hardware signal lines are their own state),
-but we can't get there from here.
-
-thanks
--- PMM

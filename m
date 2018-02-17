@@ -1,99 +1,100 @@
-Received: by 10.28.71.27 with SMTP id u27csp2084048wma;
-        Sat, 17 Feb 2018 10:43:25 -0800 (PST)
-X-Google-Smtp-Source: AH8x2273lNMiVS/Za2HmEDqlOBQ+j6UHYU5y3Wq2CTbXzdgXZ/Na08EqnSvcA9HiRa417w+ilukJ
-X-Received: by 10.37.218.147 with SMTP id n141mr7138669ybf.104.1518893005061;
-        Sat, 17 Feb 2018 10:43:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518893005; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp2084217wma;
+        Sat, 17 Feb 2018 10:43:40 -0800 (PST)
+X-Google-Smtp-Source: AH8x226e6ZMxsn2CE/5aXjEOPaFJLRi9RJTA3NprO2qI1mxgwyA511+CfiD5SQjAGWXLt08fjfz4
+X-Received: by 10.129.48.195 with SMTP id w186mr6152027yww.325.1518893020725;
+        Sat, 17 Feb 2018 10:43:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518893020; cv=none;
         d=google.com; s=arc-20160816;
-        b=I0OPbcViz6OdBPSWRSDLoFwyRVloaIBMCwSxb1F3E71ri+UPyWbvHSfPIhzzYj8cxZ
-         /MjZ2QQ3Z+zBRdnGNglj2WDZRHEf5A+hy2H0jEYmD99PCwCGkJUAbkebsNfbwOYbry8m
-         0WlLWNhvPKLUDaRySPsOuUCVabMihv9U7Nu+ISaRmpKrh54OPw0yQHcR+IVqYUNnK2yX
-         Ic/kIj6UutXStTTVt5bzl/Lgt9mQjAp9c5cRL4n57ZRIx6zUaEzccFjy367Gcyc+bXxa
-         gZLoIsZAnSVDhfUJN9fNFVNEtRMzrr0lgwXeLinEA8yGnz78bheGCwLuKAvL/4ikTxeg
-         msEQ==
+        b=yafZzNzHCK/6EP2OkG98MhiOcmHEVm5BO455ddik9f9nbgNhKIErJ54OeKsRcy7lZO
+         tfg6w4FqqOEqHCxAxfNpMo48pcJeVbUVA0CvsHTQrqyTAJIZAQ25EZOn+yRJkiw6hygk
+         OHSJG1/+B0x6xv9T4otGLt/1qKuAngz56H9DtHuiY3ihqhKjRltW0rWCPzESV+tmqNLO
+         jya3z9FuQdIGvWVX2tM1q6661rWXSc2KKCUcRNa5nJxaZPJ7i06jLXCo+AQ0CtB+QDDQ
+         abJKdhiZ5f/dW+yvoFZXMBYKmN2YCgsXCTqeIXFBZfQSu4npLe5HBqr5pFw9C7KCcJGh
+         qm1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=nSNLVT4lf1W1WDzUmj9fhH5V3ch8xkv1gwPhXGeJ6r0=;
-        b=jovZoLoGpfjy0b23/2V6s7F1KOyo2sZwh60B0WUT2xFS7gEvVxgIEeTu2U7BKXs160
-         FGv9C9hrBMmq99TD/3YWyFGInVldy48/iFR7WC9q0lPXeJtm8rGvAYlTAejKdRk/GOmu
-         JEwTBrE7KBjpTaqoJoUXDT+n2p93nXmJ7jnUrmaArn7kOa8vjDXV+tlF/ZPGAHGbkkKZ
-         JxdLcSnIgrUrkc6CLoBYBdD6g6ts3CLRQ7MzRPwYEfe0PieUseR6vZyzoR25zdxmaMO5
-         uFKDFIzj7bGVdlav54gTutKu7o7melA/THrGZ5LpsP3SGRINH5zuiMqI/bjnIQEtd9ae
-         /Udg==
+        bh=DwIEfXE8CNgM0TRpz0r+ylrsP3Cl/uBo6B2EBJ/28wM=;
+        b=PV/K+QG4uxjji+KDCB+vcDfrMHlVJ4YbwsZQHt1z50GTg7mo0k5FdD3ilovVsewCPO
+         Tv961P9kmUQfW1YxokuHWaIwreZyo9Q5thpnVjCQ9h1X21OFDM7kOa6aOsutWCxkan3G
+         jcJaRwT1RGyeF4fESvxMS/OPQRe6twVVpIJ57vexqkD3eJ+sBIz/7eDVwvX+l5OcTxfM
+         JDFwxNwOtJOYjkK+MHeYLSjAz0RfMhLSTqLLYuylmm9NIdaZ17M6axYd6zQBgaZgHehE
+         oi5T4M+YT6PTwiNcCen8nPCg3oNp9d0c1xFUHZobSfQqQRNyz9EhBQ/eXIpiFMsiTqZk
+         0Pfw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XMEvR+3c;
+       dkim=fail header.i=@linaro.org header.s=google header.b=jhabaLD6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p184si3149053ywh.791.2018.02.17.10.43.24
+        by mx.google.com with ESMTPS id n72si329620yba.283.2018.02.17.10.43.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 17 Feb 2018 10:43:25 -0800 (PST)
+        Sat, 17 Feb 2018 10:43:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XMEvR+3c;
+       dkim=fail header.i=@linaro.org header.s=google header.b=jhabaLD6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48205 helo=lists.gnu.org)
+Received: from localhost ([::1]:48206 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1en7SG-0008Fp-FP
-	for alex.bennee@linaro.org; Sat, 17 Feb 2018 13:43:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40063)
+	id 1en7SW-0008Ut-4N
+	for alex.bennee@linaro.org; Sat, 17 Feb 2018 13:43:40 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40119)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1en79b-0000gz-Gq
-	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:24:08 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1en79e-0000mB-Pr
+	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:24:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1en79a-0001l2-CD
-	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:24:07 -0500
-Received: from mail-pg0-x244.google.com ([2607:f8b0:400e:c05::244]:34853)
+	(envelope-from <richard.henderson@linaro.org>) id 1en79d-0001me-FF
+	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:24:10 -0500
+Received: from mail-pl0-x242.google.com ([2607:f8b0:400e:c01::242]:37014)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1en79a-0001kd-6e
-	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:24:06 -0500
-Received: by mail-pg0-x244.google.com with SMTP id l131so4361605pga.2
-	for <qemu-arm@nongnu.org>; Sat, 17 Feb 2018 10:24:06 -0800 (PST)
+	id 1en79d-0001mC-6T
+	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:24:09 -0500
+Received: by mail-pl0-x242.google.com with SMTP id ay8so3442817plb.4
+	for <qemu-arm@nongnu.org>; Sat, 17 Feb 2018 10:24:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=nSNLVT4lf1W1WDzUmj9fhH5V3ch8xkv1gwPhXGeJ6r0=;
-	b=XMEvR+3c4GAUicBd+RM9a/qV1xj0SccDnRWRLh972nZAg6gYVuzi+wWl3Tu3cC8TwB
-	fg63rVue9xMigQqDJBiS76/0vabjcdEQMdtlJ71BjC/JN9ru/dhUUC4Phz8pujpesuUF
-	aseGu2/VROm3JvmJ5H5lAf3gKFBTmE8H2PZWM=
+	bh=DwIEfXE8CNgM0TRpz0r+ylrsP3Cl/uBo6B2EBJ/28wM=;
+	b=jhabaLD67l4OK/+vLYeFc4Wb2gL/RzzTtyf+eul8Ai1bKqBT3RoGsh1oACmODiXAPU
+	NsFiVErzTnhKkC4qcJyIuOgXoGCGaVDLgv75N6ZXQZ0qMRnb8fI/Ofkpucd/gFXRL7VO
+	egXLF3Iyy5g0QLZDVCMqUvTFv6xNsi82BgPII=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=nSNLVT4lf1W1WDzUmj9fhH5V3ch8xkv1gwPhXGeJ6r0=;
-	b=GUEMhTiw6whaNI/oKVkA2q66b47QUGiEnfmtx2WFkhY3GS+liH9Q9LEsvIDEaPLYRw
-	SJT2F1G9i6ZOV6ITkp4biNtN312QzTdzEUTl4t84E54fi1qOWDXwGy8LK9YwN/pqsadv
-	XxDd33eRtjIGcqKlJAU309NasLzbAcVSh05Mi7zeZjoIBt/DiyK+0c619sh/Vk5QoIZL
-	BNovn9a6euh6ZqwyQr6CzHW4mmqPWFxIIl0uhNJuErY3cqr2I4bmgRZNiWjxjdRJExy/
-	iTOtESP5dju38WuyJW/L1owE/NDn1Kl8U0CFXooQZOnfHpF+svZHkvn3AtLlqIW6SHl7
-	f8Gg==
-X-Gm-Message-State: APf1xPAHCFB+9DYh+T4NU+OWQH6v6rD55nCzvqUdoKoUcUoT7xkrTYYC
-	9NhNH6zz0iAywolC7O0cvMUxLA==
-X-Received: by 10.98.200.80 with SMTP id z77mr787317pff.85.1518891845282;
-	Sat, 17 Feb 2018 10:24:05 -0800 (PST)
+	bh=DwIEfXE8CNgM0TRpz0r+ylrsP3Cl/uBo6B2EBJ/28wM=;
+	b=ehbCJ1B4ZhAWsVobGe1kXxIz2FhRpwAn3WQkRbZ3HUmWA/LG2OO/w78px84YsC2cvI
+	hBSH3Y4vQw9DfAfHIt7z38m7F0lT9m+7VY64Ax7MwJP2nkhS3CIPaAZcAc6ih+DAKYDX
+	OL8mByRFhxSKrPWBw6YW/KBgzTe30pmDY/tZFx6Q0tKB4lr8CATr/yyMPoyEt7V1ChMI
+	AFOeTHUmW27U5A1NHe0x6/0OpZJBb3I5c+IKaG9K0rPRPksHnyXuDbv+HYTIr6n8fhxZ
+	zT+Bq9va5DyVMiv7XjJCivCckcMuPzG32uhQQBwbe93pCVNfxVmRp5WjBmi2wjck/wMD
+	MH/g==
+X-Gm-Message-State: APf1xPD7LBtig1Xajudrv0k/G6doYIwKxC1uLlE4XjtYFwopty3EvJFF
+	pHm9jnxCHjBX79LgjCNy3aIELV0FMgw=
+X-Received: by 2002:a17:902:42c3:: with SMTP id
+	h61-v6mr9349488pld.269.1518891848270; 
+	Sat, 17 Feb 2018 10:24:08 -0800 (PST)
 Received: from cloudburst.twiddle.net ([50.0.192.64])
 	by smtp.gmail.com with ESMTPSA id
-	h15sm13466712pfi.56.2018.02.17.10.24.03
+	h15sm13466712pfi.56.2018.02.17.10.24.06
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Sat, 17 Feb 2018 10:24:04 -0800 (PST)
+	Sat, 17 Feb 2018 10:24:07 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Sat, 17 Feb 2018 10:22:40 -0800
-Message-Id: <20180217182323.25885-25-richard.henderson@linaro.org>
+Date: Sat, 17 Feb 2018 10:22:42 -0800
+Message-Id: <20180217182323.25885-27-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.14.3
 In-Reply-To: <20180217182323.25885-1-richard.henderson@linaro.org>
 References: <20180217182323.25885-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c05::244
-Subject: [Qemu-arm] [PATCH v2 24/67] target/arm: Implement SVE Bitwise
- Immediate Group
+X-Received-From: 2607:f8b0:400e:c01::242
+Subject: [Qemu-arm] [PATCH v2 26/67] target/arm: Implement SVE Permute -
+ Extract Group
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,124 +109,186 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Q6zxpK59OEbc
+X-TUID: Oab/sZkbw0VH
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate-sve.c | 50 ++++++++++++++++++++++++++++++++++++++++++++++
- target/arm/sve.decode      | 17 ++++++++++++++++
- 2 files changed, 67 insertions(+)
+ target/arm/helper-sve.h    |  2 ++
+ target/arm/sve_helper.c    | 81 ++++++++++++++++++++++++++++++++++++++++++++++
+ target/arm/translate-sve.c | 29 +++++++++++++++++
+ target/arm/sve.decode      |  9 +++++-
+ 4 files changed, 120 insertions(+), 1 deletion(-)
 
+diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
+index 79493ab647..94f4356ce9 100644
+--- a/target/arm/helper-sve.h
++++ b/target/arm/helper-sve.h
+@@ -414,6 +414,8 @@ DEF_HELPER_FLAGS_4(sve_cpy_z_h, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
+ DEF_HELPER_FLAGS_4(sve_cpy_z_s, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
+ DEF_HELPER_FLAGS_4(sve_cpy_z_d, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
+ 
++DEF_HELPER_FLAGS_4(sve_ext, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
+ DEF_HELPER_FLAGS_5(sve_and_pppp, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_5(sve_bic_pppp, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_5(sve_eor_pppp, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+index 6a95d1ec48..fb3f54300b 100644
+--- a/target/arm/sve_helper.c
++++ b/target/arm/sve_helper.c
+@@ -1469,3 +1469,84 @@ void HELPER(sve_cpy_z_d)(void *vd, void *vg, uint64_t val, uint32_t desc)
+         d[i] = (pg[H1(i)] & 1 ? val : 0);
+     }
+ }
++
++/* Big-endian hosts need to frob the byte indicies.  If the copy
++ * happens to be 8-byte aligned, then no frobbing necessary.
++ */
++static void swap_memmove(void *vd, void *vs, size_t n)
++{
++    uintptr_t d = (uintptr_t)vd;
++    uintptr_t s = (uintptr_t)vs;
++    uintptr_t o = (d | s | n) & 7;
++    size_t i;
++
++#ifndef HOST_WORDS_BIGENDIAN
++    o = 0;
++#endif
++    switch (o) {
++    case 0:
++        memmove(vd, vs, n);
++        break;
++
++    case 4:
++        if (d < s || d >= s + n) {
++            for (i = 0; i < n; i += 4) {
++                *(uint32_t *)H1_4(d + i) = *(uint32_t *)H1_4(s + i);
++            }
++        } else {
++            for (i = n; i > 0; ) {
++                i -= 4;
++                *(uint32_t *)H1_4(d + i) = *(uint32_t *)H1_4(s + i);
++            }
++        }
++        break;
++
++    case 2:
++    case 6:
++        if (d < s || d >= s + n) {
++            for (i = 0; i < n; i += 2) {
++                *(uint16_t *)H1_2(d + i) = *(uint16_t *)H1_2(s + i);
++            }
++        } else {
++            for (i = n; i > 0; ) {
++                i -= 2;
++                *(uint16_t *)H1_2(d + i) = *(uint16_t *)H1_2(s + i);
++            }
++        }
++        break;
++
++    default:
++        if (d < s || d >= s + n) {
++            for (i = 0; i < n; i++) {
++                *(uint8_t *)H1(d + i) = *(uint8_t *)H1(s + i);
++            }
++        } else {
++            for (i = n; i > 0; ) {
++                i -= 1;
++                *(uint8_t *)H1(d + i) = *(uint8_t *)H1(s + i);
++            }
++        }
++        break;
++    }
++}
++
++void HELPER(sve_ext)(void *vd, void *vn, void *vm, uint32_t desc)
++{
++    intptr_t opr_sz = simd_oprsz(desc);
++    size_t n_ofs = simd_data(desc);
++    size_t n_siz = opr_sz - n_ofs;
++
++    if (vd != vm) {
++        swap_memmove(vd, vn + n_ofs, n_siz);
++        swap_memmove(vd + n_siz, vm, n_ofs);
++    } else if (vd != vn) {
++        swap_memmove(vd + n_siz, vd, n_ofs);
++        swap_memmove(vd, vn + n_ofs, n_siz);
++    } else {
++        /* vd == vn == vm.  Need temp space.  */
++        ARMVectorReg tmp;
++        swap_memmove(&tmp, vm, n_ofs);
++        swap_memmove(vd, vd + n_ofs, n_siz);
++        memcpy(vd + n_siz, &tmp, n_ofs);
++    }
++}
 diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 702f20e97b..21b1e4df85 100644
+index dd085b084b..07a5eac092 100644
 --- a/target/arm/translate-sve.c
 +++ b/target/arm/translate-sve.c
-@@ -34,6 +34,8 @@
- #include "translate-a64.h"
- 
- typedef void GVecGen2Fn(unsigned, uint32_t, uint32_t, uint32_t, uint32_t);
-+typedef void GVecGen2iFn(unsigned, uint32_t, uint32_t,
-+                         int64_t, uint32_t, uint32_t);
- typedef void GVecGen3Fn(unsigned, uint32_t, uint32_t,
-                         uint32_t, uint32_t, uint32_t);
- 
-@@ -1648,6 +1650,54 @@ static void trans_SINCDEC_v(DisasContext *s, arg_incdec2_cnt *a,
-     }
+@@ -1790,6 +1790,35 @@ static void trans_CPY_z_i(DisasContext *s, arg_CPY_z_i *a, uint32_t insn)
+     tcg_temp_free_i64(t_imm);
  }
  
 +/*
-+ *** SVE Bitwise Immediate Group
++ *** SVE Permute Extract Group
 + */
 +
-+static void do_zz_dbm(DisasContext *s, arg_rr_dbm *a, GVecGen2iFn *gvec_fn)
++static void trans_EXT(DisasContext *s, arg_EXT *a, uint32_t insn)
 +{
-+    unsigned vsz;
-+    uint64_t imm;
++    unsigned vsz = vec_full_reg_size(s);
++    unsigned n_ofs = a->imm >= vsz ? 0 : a->imm;
++    unsigned n_siz = vsz - n_ofs;
++    unsigned d = vec_full_reg_offset(s, a->rd);
++    unsigned n = vec_full_reg_offset(s, a->rn);
++    unsigned m = vec_full_reg_offset(s, a->rm);
 +
-+    if (!logic_imm_decode_wmask(&imm, extract32(a->dbm, 12, 1),
-+                                extract32(a->dbm, 0, 6),
-+                                extract32(a->dbm, 6, 6))) {
-+        unallocated_encoding(s);
++    /* Use host vector move insns if we have appropriate sizes
++       and no unfortunate overlap.  */
++    if (m != d
++        && n_ofs == size_for_gvec(n_ofs)
++        && n_siz == size_for_gvec(n_siz)
++        && (d != n || n_siz <= n_ofs)) {
++        tcg_gen_gvec_mov(0, d, n + n_ofs, n_siz, n_siz);
++        if (n_ofs != 0) {
++            tcg_gen_gvec_mov(0, d + n_siz, m, n_ofs, n_ofs);
++        }
 +        return;
 +    }
 +
-+    vsz = vec_full_reg_size(s);
-+    gvec_fn(MO_64, vec_full_reg_offset(s, a->rd),
-+            vec_full_reg_offset(s, a->rn), imm, vsz, vsz);
-+}
-+
-+static void trans_AND_zzi(DisasContext *s, arg_rr_dbm *a, uint32_t insn)
-+{
-+    do_zz_dbm(s, a, tcg_gen_gvec_andi);
-+}
-+
-+static void trans_ORR_zzi(DisasContext *s, arg_rr_dbm *a, uint32_t insn)
-+{
-+    do_zz_dbm(s, a, tcg_gen_gvec_ori);
-+}
-+
-+static void trans_EOR_zzi(DisasContext *s, arg_rr_dbm *a, uint32_t insn)
-+{
-+    do_zz_dbm(s, a, tcg_gen_gvec_xori);
-+}
-+
-+static void trans_DUPM(DisasContext *s, arg_DUPM *a, uint32_t insn)
-+{
-+    uint64_t imm;
-+    if (!logic_imm_decode_wmask(&imm, extract32(a->dbm, 12, 1),
-+                                extract32(a->dbm, 0, 6),
-+                                extract32(a->dbm, 6, 6))) {
-+        unallocated_encoding(s);
-+        return;
-+    }
-+    do_dupi_z(s, a->rd, imm);
++    tcg_gen_gvec_3_ool(d, n, m, vsz, vsz, n_ofs, gen_helper_sve_ext);
 +}
 +
  /*
   *** SVE Memory - 32-bit Gather and Unsized Contiguous Group
   */
 diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index 5690b5fcb9..0990d135f4 100644
+index e6e10a4f84..5e3a9839d4 100644
 --- a/target/arm/sve.decode
 +++ b/target/arm/sve.decode
-@@ -50,6 +50,7 @@
+@@ -22,8 +22,9 @@
+ ###########################################################################
+ # Named fields.  These are primarily for disjoint fields.
  
- &rr_esz		rd rn esz
- &rri		rd rn imm
-+&rr_dbm		rd rn dbm
- &rrri		rd rn rm imm
- &rri_esz	rd rn imm esz
- &rrr_esz	rd rn rm esz
-@@ -112,6 +113,10 @@
- @rd_rn_tszimm	........ .. ... ... ...... rn:5 rd:5 \
- 		&rri_esz esz=%tszimm16_esz
+-%imm4_16_p1             16:4 !function=plus1
++%imm4_16_p1	16:4 !function=plus1
+ %imm6_22_5	22:1 5:5
++%imm8_16_10	16:5 10:3
+ %imm9_16_10	16:s6 10:3
+ %preg4_5	5:4
  
-+# Two register operand, one encoded bitmask.
-+@rdn_dbm	........ .. .... dbm:13 rd:5 \
-+		&rr_dbm rn=%reg_movprfx
-+
- # Basic Load/Store with 9-bit immediate offset
- @pd_rn_i9	........ ........ ...... rn:5 . rd:4	\
- 		&rri imm=%imm9_16_10
-@@ -331,6 +336,18 @@ INCDEC_v	00000100 .. 1 1 .... 1100 0 d:1 ..... .....    @incdec2_cnt u=1
- # Note these require esz != 0.
- SINCDEC_v	00000100 .. 1 0 .... 1100 d:1 u:1 ..... .....	@incdec2_cnt
+@@ -363,6 +364,12 @@ FCPY		00000101 .. 01 .... 110 imm:8 .....		@rdn_pg4
+ CPY_m_i		00000101 .. 01 .... 01 . ........ .....   @rdn_pg4 imm=%sh8_i8s
+ CPY_z_i		00000101 .. 01 .... 00 . ........ .....   @rdn_pg4 imm=%sh8_i8s
  
-+### SVE Bitwise Immediate Group
++### SVE Permute - Extract Group
 +
-+# SVE bitwise logical with immediate (unpredicated)
-+ORR_zzi		00000101 00 0000 ............. .....		@rdn_dbm
-+EOR_zzi		00000101 01 0000 ............. .....		@rdn_dbm
-+AND_zzi		00000101 10 0000 ............. .....		@rdn_dbm
++# SVE extract vector (immediate offset)
++EXT		00000101 001 ..... 000 ... rm:5 rd:5 \
++		&rrri rn=%reg_movprfx imm=%imm8_16_10
 +
-+# SVE broadcast bitmask immediate
-+DUPM		00000101 11 0000 dbm:13 rd:5
-+
-+### SVE Predicate Logical Operations Group
-+
+ ### SVE Predicate Logical Operations Group
+ 
  # SVE predicate logical operations
- AND_pppp	00100101 0. 00 .... 01 .... 0 .... 0 ....	@pd_pg_pn_pm_s
- BIC_pppp	00100101 0. 00 .... 01 .... 0 .... 1 ....	@pd_pg_pn_pm_s
 -- 
 2.14.3
 

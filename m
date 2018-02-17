@@ -1,301 +1,222 @@
-Received: by 10.28.71.27 with SMTP id u27csp2071883wma;
-        Sat, 17 Feb 2018 10:26:41 -0800 (PST)
-X-Google-Smtp-Source: AH8x22705nCAMNQXKpxIcbGd4v6n5SHZKcThmUrRW7Y6ZbahlCED6Ug8c3xD2NW0f5rXlxdRGcoF
-X-Received: by 10.129.53.17 with SMTP id c17mr6540436ywa.133.1518892001208;
-        Sat, 17 Feb 2018 10:26:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518892001; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp2073749wma;
+        Sat, 17 Feb 2018 10:29:17 -0800 (PST)
+X-Google-Smtp-Source: AH8x227gsEJx65ZXkIlY8oeFXrvc+WRiBAi1hLjZENBPdAbxPwCr2fAw8qKRcZd8CncbYR8tUwBq
+X-Received: by 10.37.75.65 with SMTP id y62mr961330yba.90.1518892157906;
+        Sat, 17 Feb 2018 10:29:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518892157; cv=none;
         d=google.com; s=arc-20160816;
-        b=pShskpyCmixO0SRte286w1XfWOgwILRjw2AWJSR+SVtVTq0OmLClpoQDEOboi3YnmG
-         QbxcrcmLLVFpDBhvny/Q4LqSAGBRZp2IngYw9X0eIzcG/HBT5viiSq3uvzJo7VTokx6a
-         n8IiOKoFL607gIGnyaxqA77HeIVDNJXR71YRfU0S3Z64emkapMttlgRrJkk4Bstsogre
-         ZhPWQwxV9YONlpsb1x4P3JRlytdHyjScJRvwUp8Bi0SJCWpBZgOO+SWlrhGNWEZecCki
-         X9+bZzIc7LfCxRMUA7SHOj0JUKEtInA0YclXE7Xwv0JjXZ2iZ4brAQqA8hufHvmO8GJ7
-         G0fQ==
+        b=FhsCe+d72rrl+ojJIo0VzIIQa88Ph0NVJki1S+X9zkKK/y1bEGLIsXLPqxEAfmnNJq
+         E5wmdP6885maL5iv/d5IMSe90tIHl7i6tnXRemHc50ByT3+eQ8OX3Rn53N7MHerTWiVC
+         +3RS8JrPmdR3JRjstSb2elvdZElMrrzU510Gmxtx4cSwyuNJMkazarzQywuyAGZoibO0
+         MkqlLGUF9WJkQIjspBOCtQWlY8QviUvhszDKrG0zDxycGogU+5Nied3vPzTU6LAH/luk
+         +G8X4kmP697fLI+d1YNkz3wBr3+eH4QxoPoLMj7V78WfuTt0rtFFv0ylMPm1KuhAUkoq
+         jX8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=JrLpQVNkAD2ooQuftQEUHc/FeKYLqxEFlP7jwgpSp7M=;
-        b=GDxi8XodZIEfm37OAN+z5OG6R0ODYD49KB3ujUZTeWiy1Cya/Nf55bahEDltFsH4oi
-         xDpJ9W9Sra3j86NLDBZ2NAg4CunsTRVUP3+Wg62y+r2KGnrCnuCC1FEol8xnMq3e6fA3
-         P2HnEUZGsakk07JXHwoWDD2NgeGPhCOKwv9qshfe94Be2RCrsyNoDrxjGYcmzsp5Mkr2
-         GTGPZncUo50S0+ht/Ol0FXXLkjb+uMdcg5XN1o65hwvqfTrNbBMPYmkkupdaCC7GFn7N
-         Sq2lLvG7bquWP8KwTCh5FAlARfo8VQyZRqG+jnmPavMtKWmnuIOzp2xZKloDo4vNcwl/
-         GDRA==
+        bh=p2OJeeH3GeRDZFkskP3/uYl1RujJsL25/T8puntaOkM=;
+        b=aDo8QaPVVSfptTOuvUWG82sVo+BsYD0m3picUaHV0vakRdz/hkJtz533wVdm6yO7l0
+         te0JE9KFEdaBSROGQirhUBcDkyfXkFpDnS+jBoPY6AGhm7k/3SaqmY5RmMGoEy7mSOe2
+         8W7bqL5scYDdYTowu+UszFlBLmqsOxkwx/pVRXggRU0zluMa6JQlhrTC1HsJ9Zpc/8VQ
+         +HBHvGLbglghL53AewY+AMq1cytR45SZyFxajB0/bPdwvJ+M+T8g6C8aPKAtt3eiqRTy
+         BQc03LV1yldFitaUWmck0WyibyN7VqDvi4BGkeIF6cGec2qpiksU3iutl9Xk67EmDQdK
+         kp0w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=bVWirNV3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZTtPAfCm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r66si2015204ywf.203.2018.02.17.10.26.41
+        by mx.google.com with ESMTPS id z7si3338911ybj.768.2018.02.17.10.29.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 17 Feb 2018 10:26:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sat, 17 Feb 2018 10:29:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=bVWirNV3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZTtPAfCm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48069 helo=lists.gnu.org)
+Received: from localhost ([::1]:48088 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1en7C4-0002kT-J2
-	for alex.bennee@linaro.org; Sat, 17 Feb 2018 13:26:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39824)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1en7Eb-0005Bq-8a
+	for alex.bennee@linaro.org; Sat, 17 Feb 2018 13:29:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39848)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1en79O-0000VJ-7U
-	for qemu-devel@nongnu.org; Sat, 17 Feb 2018 13:23:55 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1en79P-0000WV-Aq
+	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:23:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1en79M-0001dX-QY
-	for qemu-devel@nongnu.org; Sat, 17 Feb 2018 13:23:54 -0500
-Received: from mail-pl0-x243.google.com ([2607:f8b0:400e:c01::243]:44552)
+	(envelope-from <richard.henderson@linaro.org>) id 1en79O-0001eI-3h
+	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:23:55 -0500
+Received: from mail-pl0-x242.google.com ([2607:f8b0:400e:c01::242]:41326)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1en79M-0001dF-JA
-	for qemu-devel@nongnu.org; Sat, 17 Feb 2018 13:23:52 -0500
-Received: by mail-pl0-x243.google.com with SMTP id w21so3426484plp.11
-	for <qemu-devel@nongnu.org>; Sat, 17 Feb 2018 10:23:52 -0800 (PST)
+	id 1en79N-0001dy-Uf
+	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:23:54 -0500
+Received: by mail-pl0-x242.google.com with SMTP id k8so3438285pli.8
+	for <qemu-arm@nongnu.org>; Sat, 17 Feb 2018 10:23:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=JrLpQVNkAD2ooQuftQEUHc/FeKYLqxEFlP7jwgpSp7M=;
-	b=bVWirNV3nDHul8zG/O7qFSIG1shh6nqF2GybheeEh3srcQfFjTUGfmFIXxZ3H73PgV
-	hYZUxie8fh0zmZ5aqkWTv8zv27iUNqu6UIAvS8nRc9LtoHmyTr6Sdpe5mIIjbg7QOkI7
-	wv0ltXw6AQpZCrmxpbDOSSlaNhfkHK9k9asEo=
+	bh=p2OJeeH3GeRDZFkskP3/uYl1RujJsL25/T8puntaOkM=;
+	b=ZTtPAfCmp4AENayfBA1q3SlbKh7Qlc+yadSVWnyaqj3P2yqCTtBS+Xh5SduMTIlvgs
+	fmU8vd3dH/idKnbBAPdQVwV43wAICu+no7J+z+Wa37RajwsatY8KFafyIFg+tYWabHQk
+	X4iHsfoRGQvsjyqrMLmD9KM/0COyQvuN16/m8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=JrLpQVNkAD2ooQuftQEUHc/FeKYLqxEFlP7jwgpSp7M=;
-	b=SyJR5VOdM5Y622Sw0VE3ojVddKYotSPChg2DKOXTSD7o4Dk6raiLWeSLgkdFK6h6hu
-	3HvbjdNCDHa2DFqlZ5q89rxPumGJQkcz4Gy794I62LN3L7FrSK/qJYFJE8YuTlh81CpD
-	Ru5HBBLea0ybsGzJZ/aGorBir5NESYCUyXrRnsN8SH/Jnh5kw0Tykm3XBTu6YVPD92eI
-	cd/ILn774o1NcpKQYQ/fnBZNFb2+dUDFqP8DyWftUSzbhVZTcZx3t7AONve6Ggpp+J34
-	XZcjc5oy08ItlsEwfQ2FNXhF3sqaG+ldBLjDRvXFkljZYyWl7XRnV+Yj5lswuH4tPDfS
-	WL3w==
-X-Gm-Message-State: APf1xPAwkpA8+cF61GIUQuk4dTKFEjp/HnNnrf6tcR/J3aw4m2SWXPY3
-	AYREkhuuBxj+TnekiIxLSbNihj6o6M0=
-X-Received: by 2002:a17:902:6941:: with SMTP id
-	k1-v6mr4060710plt.86.1518891831346; 
-	Sat, 17 Feb 2018 10:23:51 -0800 (PST)
+	bh=p2OJeeH3GeRDZFkskP3/uYl1RujJsL25/T8puntaOkM=;
+	b=XzfCaBem2Jju4nzizCjYBYHd78IN0xdR3MLVJx+3XRdv4kSuFz2Cybf4tOxEI81Zd7
+	VrAM3/I23SuNd8JNZwwVzoYGh+8Z8F+p8V1zQlCglzks3kVfe2SQuPrX6No466IkmqWq
+	tS0FenzeXd6k56wtTgysZtcpCn+r2qpb/UP9VFZLWQP2O6ahPbmSv8w35Ik4td7bfNoD
+	CpyHZbzcelZO765zIXBCJ20+8HmXHu91DhsxoQcnjAl7pD+DhtoLbi4ixbeaCwiFo6wH
+	hTn5f/cbecPf86UO4mSr4y5cfa+KuGj8nvYQ/ihkIwuUT2rE6uxnvcYj7zZKUqXAfauk
+	EwfQ==
+X-Gm-Message-State: APf1xPBOufI7KroLcz9BZvHc3jF3hFrXvGJuSnBUb0o8kY32JCCc160t
+	3weVLQ3Kvi7nV1+l7xWbAUjOlw==
+X-Received: by 2002:a17:902:9686:: with SMTP id
+	n6-v6mr9302113plp.333.1518891833069; 
+	Sat, 17 Feb 2018 10:23:53 -0800 (PST)
 Received: from cloudburst.twiddle.net ([50.0.192.64])
 	by smtp.gmail.com with ESMTPSA id
-	h15sm13466712pfi.56.2018.02.17.10.23.49
+	h15sm13466712pfi.56.2018.02.17.10.23.51
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Sat, 17 Feb 2018 10:23:50 -0800 (PST)
+	Sat, 17 Feb 2018 10:23:52 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Sat, 17 Feb 2018 10:22:31 -0800
-Message-Id: <20180217182323.25885-16-richard.henderson@linaro.org>
+Date: Sat, 17 Feb 2018 10:22:32 -0800
+Message-Id: <20180217182323.25885-17-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.14.3
 In-Reply-To: <20180217182323.25885-1-richard.henderson@linaro.org>
 References: <20180217182323.25885-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c01::243
-Subject: [Qemu-devel] [PATCH v2 15/67] target/arm: Implement SVE Integer
- Multiply-Add Group
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400e:c01::242
+Subject: [Qemu-arm] [PATCH v2 16/67] target/arm: Implement SVE Integer
+ Arithmetic - Unpredicated Group
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zOE1ttJNu+sH
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Z/wASdTUVu1y
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper-sve.h    | 18 ++++++++++++++
- target/arm/sve_helper.c    | 58 +++++++++++++++++++++++++++++++++++++++++++++-
- target/arm/translate-sve.c | 31 +++++++++++++++++++++++++
- target/arm/sve.decode      | 17 ++++++++++++++
- 4 files changed, 123 insertions(+), 1 deletion(-)
+ target/arm/translate-sve.c | 41 ++++++++++++++++++++++++++++++++++++++---
+ target/arm/sve.decode      | 13 +++++++++++++
+ 2 files changed, 51 insertions(+), 3 deletions(-)
 
-diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-index 11644125d1..b31d497f31 100644
---- a/target/arm/helper-sve.h
-+++ b/target/arm/helper-sve.h
-@@ -345,6 +345,24 @@ DEF_HELPER_FLAGS_4(sve_neg_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(sve_neg_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(sve_neg_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- 
-+DEF_HELPER_FLAGS_6(sve_mla_b, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_6(sve_mla_h, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_6(sve_mla_s, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_6(sve_mla_d, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, i32)
-+
-+DEF_HELPER_FLAGS_6(sve_mls_b, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_6(sve_mls_h, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_6(sve_mls_s, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_6(sve_mls_d, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, i32)
-+
- DEF_HELPER_FLAGS_5(sve_and_pppp, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_5(sve_bic_pppp, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_5(sve_eor_pppp, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
-diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index e11823a727..4b08a38ce8 100644
---- a/target/arm/sve_helper.c
-+++ b/target/arm/sve_helper.c
-@@ -932,6 +932,62 @@ DO_ZPZI_D(sve_asrd_d, int64_t, DO_ASRD)
- #undef DO_SHR
- #undef DO_SHL
- #undef DO_ASRD
--
- #undef DO_ZPZI
- #undef DO_ZPZI_D
-+
-+/* Fully general four-operand expander, controlled by a predicate.
-+ */
-+#define DO_ZPZZZ(NAME, TYPE, H, OP)                           \
-+void HELPER(NAME)(void *vd, void *va, void *vn, void *vm,     \
-+                  void *vg, uint32_t desc)                    \
-+{                                                             \
-+    intptr_t i, opr_sz = simd_oprsz(desc);                    \
-+    for (i = 0; i < opr_sz; ) {                               \
-+        uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));       \
-+        do {                                                  \
-+            if (pg & 1) {                                     \
-+                TYPE nn = *(TYPE *)(vn + H(i));               \
-+                TYPE mm = *(TYPE *)(vm + H(i));               \
-+                TYPE aa = *(TYPE *)(va + H(i));               \
-+                *(TYPE *)(vd + H(i)) = OP(aa, nn, mm);        \
-+            }                                                 \
-+            i += sizeof(TYPE), pg >>= sizeof(TYPE);           \
-+        } while (i & 15);                                     \
-+    }                                                         \
-+}
-+
-+/* Similarly, specialized for 64-bit operands.  */
-+#define DO_ZPZZZ_D(NAME, TYPE, OP)                            \
-+void HELPER(NAME)(void *vd, void *va, void *vn, void *vm,     \
-+                  void *vg, uint32_t desc)                    \
-+{                                                             \
-+    intptr_t i, opr_sz = simd_oprsz(desc) / 8;                \
-+    TYPE *d = vd, *a = va, *n = vn, *m = vm;                  \
-+    uint8_t *pg = vg;                                         \
-+    for (i = 0; i < opr_sz; i += 1) {                         \
-+        if (pg[H1(i)] & 1) {                                  \
-+            TYPE aa = a[i], nn = n[i], mm = m[i];             \
-+            d[i] = OP(aa, nn, mm);                            \
-+        }                                                     \
-+    }                                                         \
-+}
-+
-+#define DO_MLA(A, N, M)  (A + N * M)
-+#define DO_MLS(A, N, M)  (A - N * M)
-+
-+DO_ZPZZZ(sve_mla_b, uint8_t, H1, DO_MLA)
-+DO_ZPZZZ(sve_mls_b, uint8_t, H1, DO_MLS)
-+
-+DO_ZPZZZ(sve_mla_h, uint16_t, H1_2, DO_MLA)
-+DO_ZPZZZ(sve_mls_h, uint16_t, H1_2, DO_MLS)
-+
-+DO_ZPZZZ(sve_mla_s, uint32_t, H1_4, DO_MLA)
-+DO_ZPZZZ(sve_mls_s, uint32_t, H1_4, DO_MLS)
-+
-+DO_ZPZZZ_D(sve_mla_d, uint64_t, DO_MLA)
-+DO_ZPZZZ_D(sve_mls_d, uint64_t, DO_MLS)
-+
-+#undef DO_MLA
-+#undef DO_MLS
-+#undef DO_ZPZZZ
-+#undef DO_ZPZZZ_D
 diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index dce8ba8dc0..b956d87636 100644
+index b956d87636..8baec6c674 100644
 --- a/target/arm/translate-sve.c
 +++ b/target/arm/translate-sve.c
-@@ -609,6 +609,37 @@ DO_ZPZW(LSL, lsl)
- 
- #undef DO_ZPZW
+@@ -235,6 +235,40 @@ static void trans_BIC_zzz(DisasContext *s, arg_BIC_zzz *a, uint32_t insn)
+     do_vector3_z(s, tcg_gen_gvec_andc, 0, a->rd, a->rn, a->rm);
+ }
  
 +/*
-+ *** SVE Integer Multiply-Add Group
++ *** SVE Integer Arithmetic - Unpredicated Group
 + */
 +
-+static void do_zpzzz_ool(DisasContext *s, arg_rprrr_esz *a,
-+                         gen_helper_gvec_5 *fn)
++static void trans_ADD_zzz(DisasContext *s, arg_rrr_esz *a, uint32_t insn)
 +{
-+    unsigned vsz = vec_full_reg_size(s);
-+    tcg_gen_gvec_5_ool(vec_full_reg_offset(s, a->rd),
-+                       vec_full_reg_offset(s, a->ra),
-+                       vec_full_reg_offset(s, a->rn),
-+                       vec_full_reg_offset(s, a->rm),
-+                       pred_full_reg_offset(s, a->pg),
-+                       vsz, vsz, 0, fn);
++    do_vector3_z(s, tcg_gen_gvec_add, a->esz, a->rd, a->rn, a->rm);
 +}
 +
-+#define DO_ZPZZZ(NAME, name) \
-+static void trans_##NAME(DisasContext *s, arg_rprrr_esz *a, uint32_t insn) \
-+{                                                                    \
-+    static gen_helper_gvec_5 * const fns[4] = {                      \
-+        gen_helper_sve_##name##_b, gen_helper_sve_##name##_h,        \
-+        gen_helper_sve_##name##_s, gen_helper_sve_##name##_d,        \
-+    };                                                               \
-+    do_zpzzz_ool(s, a, fns[a->esz]);                                 \
++static void trans_SUB_zzz(DisasContext *s, arg_rrr_esz *a, uint32_t insn)
++{
++    do_vector3_z(s, tcg_gen_gvec_sub, a->esz, a->rd, a->rn, a->rm);
 +}
 +
-+DO_ZPZZZ(MLA, mla)
-+DO_ZPZZZ(MLS, mls)
++static void trans_SQADD_zzz(DisasContext *s, arg_rrr_esz *a, uint32_t insn)
++{
++    do_vector3_z(s, tcg_gen_gvec_ssadd, a->esz, a->rd, a->rn, a->rm);
++}
 +
-+#undef DO_ZPZZZ
++static void trans_SQSUB_zzz(DisasContext *s, arg_rrr_esz *a, uint32_t insn)
++{
++    do_vector3_z(s, tcg_gen_gvec_sssub, a->esz, a->rd, a->rn, a->rm);
++}
++
++static void trans_UQADD_zzz(DisasContext *s, arg_rrr_esz *a, uint32_t insn)
++{
++    do_vector3_z(s, tcg_gen_gvec_usadd, a->esz, a->rd, a->rn, a->rm);
++}
++
++static void trans_UQSUB_zzz(DisasContext *s, arg_rrr_esz *a, uint32_t insn)
++{
++    do_vector3_z(s, tcg_gen_gvec_ussub, a->esz, a->rd, a->rn, a->rm);
++}
 +
  /*
-  *** SVE Predicate Logical Operations Group
+  *** SVE Integer Arithmetic - Binary Predicated Group
   */
+@@ -254,7 +288,8 @@ static void do_zpzz_ool(DisasContext *s, arg_rprr_esz *a, gen_helper_gvec_4 *fn)
+ }
+ 
+ #define DO_ZPZZ(NAME, name) \
+-void trans_##NAME##_zpzz(DisasContext *s, arg_rprr_esz *a, uint32_t insn) \
++static void trans_##NAME##_zpzz(DisasContext *s, arg_rprr_esz *a,         \
++                                uint32_t insn)                            \
+ {                                                                         \
+     static gen_helper_gvec_4 * const fns[4] = {                           \
+         gen_helper_sve_##name##_zpzz_b, gen_helper_sve_##name##_zpzz_h,   \
+@@ -286,7 +321,7 @@ DO_ZPZZ(ASR, asr)
+ DO_ZPZZ(LSR, lsr)
+ DO_ZPZZ(LSL, lsl)
+ 
+-void trans_SDIV_zpzz(DisasContext *s, arg_rprr_esz *a, uint32_t insn)
++static void trans_SDIV_zpzz(DisasContext *s, arg_rprr_esz *a, uint32_t insn)
+ {
+     static gen_helper_gvec_4 * const fns[4] = {
+         NULL, NULL, gen_helper_sve_sdiv_zpzz_s, gen_helper_sve_sdiv_zpzz_d
+@@ -294,7 +329,7 @@ void trans_SDIV_zpzz(DisasContext *s, arg_rprr_esz *a, uint32_t insn)
+     do_zpzz_ool(s, a, fns[a->esz]);
+ }
+ 
+-void trans_UDIV_zpzz(DisasContext *s, arg_rprr_esz *a, uint32_t insn)
++static void trans_UDIV_zpzz(DisasContext *s, arg_rprr_esz *a, uint32_t insn)
+ {
+     static gen_helper_gvec_4 * const fns[4] = {
+         NULL, NULL, gen_helper_sve_udiv_zpzz_s, gen_helper_sve_udiv_zpzz_d
 diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index b875501475..68a1823b72 100644
+index 68a1823b72..b40d7dc9a2 100644
 --- a/target/arm/sve.decode
 +++ b/target/arm/sve.decode
-@@ -48,6 +48,7 @@
- &rpr_esz	rd pg rn esz
- &rprr_s		rd pg rn rm s
- &rprr_esz	rd pg rn rm esz
-+&rprrr_esz	rd pg rn rm ra esz
- &rpri_esz	rd pg rn imm esz
- &ptrue		rd esz pat s
+@@ -68,6 +68,9 @@
+ # Three prediate operand, with governing predicate, flag setting
+ @pd_pg_pn_pm_s	........ . s:1 .. rm:4 .. pg:4 . rn:4 . rd:4	&rprr_s
  
-@@ -73,6 +74,12 @@
- @rdm_pg_rn	........ esz:2 ... ... ... pg:3 rn:5 rd:5 \
- 		&rprr_esz rm=%reg_movprfx
- 
-+# Three register operand, with governing predicate, vector element size
-+@rda_pg_rn_rm	........ esz:2 . rm:5  ... pg:3 rn:5 rd:5 \
-+		&rprrr_esz ra=%reg_movprfx
-+@rdn_pg_ra_rm	........ esz:2 . rm:5  ... pg:3 ra:5 rd:5 \
-+		&rprrr_esz rn=%reg_movprfx
++# Three operand, vector element size
++@rd_rn_rm	........ esz:2 . rm:5  ... ...  rn:5 rd:5	&rrr_esz
 +
- # One register operand, with governing predicate, vector element size
- @rd_pg_rn	........ esz:2 ... ... ... pg:3 rn:5 rd:5	&rpr_esz
+ # Two register operand, with governing predicate, vector element size
+ @rdn_pg_rm	........ esz:2 ... ... ... pg:3 rm:5 rd:5 \
+ 		&rprr_esz rn=%reg_movprfx
+@@ -205,6 +208,16 @@ MLS		00000100 .. 0 ..... 011 ... ..... .....   @rda_pg_rn_rm
+ MLA		00000100 .. 0 ..... 110 ... ..... .....   @rdn_pg_ra_rm # MAD
+ MLS		00000100 .. 0 ..... 111 ... ..... .....   @rdn_pg_ra_rm # MSB
  
-@@ -188,6 +195,16 @@ UXTH		00000100 .. 010 011 101 ... ..... .....		@rd_pg_rn
- SXTW		00000100 .. 010 100 101 ... ..... .....		@rd_pg_rn
- UXTW		00000100 .. 010 101 101 ... ..... .....		@rd_pg_rn
- 
-+### SVE Integer Multiply-Add Group
++### SVE Integer Arithmetic - Unpredicated Group
 +
-+# SVE integer multiply-add writing addend (predicated)
-+MLA		00000100 .. 0 ..... 010 ... ..... .....   @rda_pg_rn_rm
-+MLS		00000100 .. 0 ..... 011 ... ..... .....   @rda_pg_rn_rm
-+
-+# SVE integer multiply-add writing multiplicand (predicated)
-+MLA		00000100 .. 0 ..... 110 ... ..... .....   @rdn_pg_ra_rm # MAD
-+MLS		00000100 .. 0 ..... 111 ... ..... .....   @rdn_pg_ra_rm # MSB
++# SVE integer add/subtract vectors (unpredicated)
++ADD_zzz		00000100 .. 1 ..... 000 000 ..... .....		@rd_rn_rm
++SUB_zzz		00000100 .. 1 ..... 000 001 ..... .....		@rd_rn_rm
++SQADD_zzz	00000100 .. 1 ..... 000 100 ..... .....		@rd_rn_rm
++UQADD_zzz	00000100 .. 1 ..... 000 101 ..... .....		@rd_rn_rm
++SQSUB_zzz	00000100 .. 1 ..... 000 110 ..... .....		@rd_rn_rm
++UQSUB_zzz	00000100 .. 1 ..... 000 111 ..... .....		@rd_rn_rm
 +
  ### SVE Logical - Unpredicated Group
  

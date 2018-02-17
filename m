@@ -1,72 +1,114 @@
-Received: by 10.28.71.27 with SMTP id u27csp1474347wma;
-        Tue, 30 Jan 2018 07:03:20 -0800 (PST)
-X-Google-Smtp-Source: AH8x225BRJtNvov7CwaLgxnC1fltEBZVvIqpGUPRYt6AK2iPoT8rwpMfsDqKMkDoeNa+0ctWpc6J
-X-Received: by 10.37.13.86 with SMTP id 83mr1127501ybn.362.1517324600835;
-        Tue, 30 Jan 2018 07:03:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1517324600; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp2121204wma;
+        Sat, 17 Feb 2018 11:38:02 -0800 (PST)
+X-Google-Smtp-Source: AH8x226e0D3QUhGLRSYQNJUqcKpBv0ruYUUxdbH4ULf1t8ta7MzX8aOLCKMCIcOnoIRVP1i1spr3
+X-Received: by 10.37.75.133 with SMTP id y127mr7318202yba.218.1518896282423;
+        Sat, 17 Feb 2018 11:38:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518896282; cv=none;
         d=google.com; s=arc-20160816;
-        b=gZnHcsLzmx+ooKbFLnrrGLqa8VbKLJZvJ+hfbb4zAw7cO2gZTP292M2lAYr+2MeH5/
-         FZJzcRQrhVtEF2eB6eKFNucvWz058oDd2gbe7nOtxoNA4N+SX7isS4Tss9RSjmzHaBbM
-         7M2cz5sbEHVt6GFMLOtETq0MlFuSxowi4VIkM4LgJouidHyIMd/0HpqVzV3VzvT37W2B
-         1CQqRJHyvDdhVU9j/WUFsSklJ/2+ju00lCxgNVOPBm8/g8mixDT1Ut19uYFa8Kcx+E2A
-         QZaF1i52VfQ27ZIJQMwz3t38iGrCrO2tlwP6e3cCxdqTUCtPN6/A+N3qwY7YFH/xcOUo
-         5G7Q==
+        b=N9xpwOjT/s12Gn1Vd+DvzE1pdeiZCl0XDnvN96BfG59y8aN+5BV+TKt6RYmBkmzIJB
+         kr3YBXXts9ANrzScI9iGk8d8jNcmkRTrYuvE8+Oj7QMtKHifs4+ZeBvTnyZx3NjOeWc5
+         VAYUlGFRKhKffdIYN6jh53xXTp36HRpcx81soBcVO2vgRudcwTZV1HCMid4ica7Wf+Tm
+         ZfkGA4ke3mWGGGiX6rbwB8JVrckD2XgoDquEzgpco7lzFmMcy0IA/jIhlHz6mQS2Rz4I
+         kc5xjKSdxTMDAS9+vbz75q8rdkcXDPow5f3sxyta4UBR6CJY7RU7tD7JJGlPFL4utiEa
+         CwEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=wa7POKrjenT0+JVtmQlQRH+A4Kun+4t6c/JBqjbuTzM=;
-        b=K9pV6YgfZEj6/+JTQ+4IK+lQuZizR4uweM91/MbQv62SE7VqxdCT7LCFh4bh0FdZSe
-         tnmCARZF1OAofb/fGXN4otq5Fo4j9XlTh1n856wEMQH4JWXduhpj8GcLN90BjZQ0KVqk
-         VKD8xsf3f9Bohavz4u3qgr/yhBydE87ysP4yJHbErQz/Zjl+zGpSOfy5YGXJA84URLeo
-         bAC8qOSHRhxlLBuackL1ZLOBMihERYpMm25mhSLNeKRgzTSUZukEDsEUnmzxpTsraYXA
-         IaFlAdssLe5rSJQvtjT/g8rFl/XLcH0vJmS3GBzW2e/9yLeTko5qAWKqxD/VtX3PDBpA
-         W2pg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=0NcWDM+O7D3tRsWXMw0PhcMemPspzZaShDhltW9DCBw=;
+        b=oMG7KGAP85RaHz6nhSjqd7ZCXh1omAoknlRSvoC6YoOHh27zMkjZHdNgWCjGb7ZROa
+         6fSE50WntSWT9+Dj5gM61BLZ9jHWaEAu/mD2PPRsFCz7JPSRQ1mP8/VsQ3QWbXFre1UJ
+         6sXp6nVh5WBE4ZCSAyupdL1deHIAXXgdXefSl5Uvn35GXUZ/v+RyCjI2hz6LdM8S7ojb
+         zFoRpBdJSUpFjlOVm3GtFmu1peWyXQAbkKDNXL8YMug5UQHyl06VpcnUN+unRgyszGEp
+         PEvxcfcFM1uN2YSOlcGWRXTsFXWtucRVvFm88gfUDFlMx6P7wJIKHzZf3Swz1PXgEJh2
+         8BbA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tuuqAfdS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i2si474758ywl.23.2018.01.30.07.03.20
+        by mx.google.com with ESMTPS id y185si464543ywf.706.2018.02.17.11.38.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 30 Jan 2018 07:03:20 -0800 (PST)
+        Sat, 17 Feb 2018 11:38:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42071 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tuuqAfdS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:52184 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1egXRQ-0000gM-7L
-	for alex.bennee@linaro.org; Tue, 30 Jan 2018 10:03:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49089)
+	id 1en8J7-0007wo-Ls
+	for alex.bennee@linaro.org; Sat, 17 Feb 2018 14:38:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42381)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1egXQk-0000Bh-7K
-	for qemu-arm@nongnu.org; Tue, 30 Jan 2018 10:02:42 -0500
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1en7Hs-0008AO-3k
+	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:32:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1egXQd-0005Zz-NW
-	for qemu-arm@nongnu.org; Tue, 30 Jan 2018 10:02:38 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:46114)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1egXQd-0005Xp-Eq; Tue, 30 Jan 2018 10:02:31 -0500
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1egXQW-0005sJ-CG; Tue, 30 Jan 2018 15:02:24 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Tue, 30 Jan 2018 15:02:16 +0000
-Message-Id: <1517324542-6607-2-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1517324542-6607-1-git-send-email-peter.maydell@linaro.org>
-References: <1517324542-6607-1-git-send-email-peter.maydell@linaro.org>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1en7Ho-0005vs-VU
+	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:32:40 -0500
+Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:39525)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1en7Ho-0005vk-Om; Sat, 17 Feb 2018 13:32:36 -0500
+Received: by mail-qt0-x244.google.com with SMTP id f4so7710278qtj.6;
+	Sat, 17 Feb 2018 10:32:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=0NcWDM+O7D3tRsWXMw0PhcMemPspzZaShDhltW9DCBw=;
+	b=tuuqAfdSubSVhnrcWekuAe49KNmqHvr/dTViP7vPrdh2VgLrz2t32tzdBjHhixMEkW
+	0TSEs/EEyC79vT1hs2bEzHcDUFvcAn+knOt3tWC5fM2rdht6LnqMAGqPHLgmYUm4WBXk
+	BIv+u6ZcVEps3x+PfqwKhr0zLJqzeu3pnY8zjkB1/g7ZLEoknqNANNGRTcYFc7o9bF0e
+	elYgMIh8WKJcQhL6LkwKGwF+E6MjlK7LakfcL1wyzGoy4awGdXW+ylWx/HsXOVb0Hxoe
+	dG0y2MXZyaWLqpCHXWtJ5UMsLcphvW9vBiqRtBoEzEk1qAFIoLSowzAMYEME/M+PXPbK
+	q+aw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=0NcWDM+O7D3tRsWXMw0PhcMemPspzZaShDhltW9DCBw=;
+	b=HDSKxi810hM1GPKyLlBbGg3fRt1EWWyuQ8G37ktSAlWwSZRmiVPdKCfllMLx4v8eBP
+	jm9Rf4luRLt6mCTMKbBW8WsqsPbyoAdKhwaRXVwbvfgK1w0D2wIgVlTir0TwCPo+Kskb
+	hKEBBGZZYvzvtJ25Gme47c7ZmQALJnaigw0Zvnyiov682kvyOfqrx+JJHDAkTOwvLYYW
+	CJMYiPMwMSoIdD90yNi9UcDbwSAwbxIj54OwCN/hCWoVsmXP9Wyx4WJrV/N9ow4BHyp5
+	MqtkZrKwvpqAbmE7OfLdDsavPzTfyD3s+iXhAW+0Sdz411z00+REEE+x1mh9nF4jPWnB
+	jfwA==
+X-Gm-Message-State: APf1xPAICXt5nGzADnsBjxNQJ2t+G0cH91g/WkjBtent3O6M9noZyLrG
+	4VGzmTEancPkT72/JxSQ6URa3Jje
+X-Received: by 10.200.25.134 with SMTP id u6mr15570757qtj.221.1518892356051;
+	Sat, 17 Feb 2018 10:32:36 -0800 (PST)
+Received: from [192.168.1.11] ([138.117.48.219])
+	by smtp.gmail.com with ESMTPSA id
+	w18sm11365466qkw.35.2018.02.17.10.32.34
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sat, 17 Feb 2018 10:32:35 -0800 (PST)
+To: Linus Walleij <linus.walleij@linaro.org>, qemu-devel@nongnu.org
+References: <20180217140051.22731-1-linus.walleij@linaro.org>
+	<20180217140051.22731-2-linus.walleij@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <eff4f015-38ad-60e1-e1de-886bb4f93328@amsat.org>
+Date: Sat, 17 Feb 2018 15:32:32 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.6.0
+MIME-Version: 1.0
+In-Reply-To: <20180217140051.22731-2-linus.walleij@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 1/7] target/arm: Add
- armv7m_nvic_set_pending_derived()
+X-Received-From: 2607:f8b0:400d:c0d::244
+Subject: Re: [Qemu-arm] [PATCH 2/3] hw/sii9022: Add support for Silicon
+ Image SII9022
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,167 +120,238 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
+Cc: qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LXEs5zV0bd5w
+X-TUID: ZbJ1hz9H3arh
 
-In order to support derived exceptions (exceptions generated in
-the course of trying to take an exception), we need to be able
-to handle prioritizing whether to take the original exception
-or the derived exception.
+Hi Linus,
 
-We do this by introducing a new function
-armv7m_nvic_set_pending_derived() which the exception-taking code in
-helper.c will call when a derived exception occurs.  Derived
-exceptions are dealt with mostly like normal pending exceptions, so
-we share the implementation with the armv7m_nvic_set_pending()
-function.
+On 02/17/2018 11:00 AM, Linus Walleij wrote:
+> This adds support for emulating the Silicon Image SII9022 DVI/HDMI
+> bridge. It's not very clever right now, it just acknowledges
+> the switch into DDC I2C mode and back. Combining this with the
+> existing DDC I2C emulation gives the right behavior on the Versatile
+> Express emulation passing through the QEMU EDID to the emulated
+> platform.
+> 
+> Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
+> ---
+>  hw/display/Makefile.objs |   1 +
+>  hw/display/sii9022.c     | 185 +++++++++++++++++++++++++++++++++++++++++++++++
+>  2 files changed, 186 insertions(+)
+>  create mode 100644 hw/display/sii9022.c
+> 
+> diff --git a/hw/display/Makefile.objs b/hw/display/Makefile.objs
+> index d3a4cb396eb9..3c7c75b94da5 100644
+> --- a/hw/display/Makefile.objs
+> +++ b/hw/display/Makefile.objs
+> @@ -3,6 +3,7 @@ common-obj-$(CONFIG_VGA_CIRRUS) += cirrus_vga.o
+>  common-obj-$(CONFIG_G364FB) += g364fb.o
+>  common-obj-$(CONFIG_JAZZ_LED) += jazz_led.o
+>  common-obj-$(CONFIG_PL110) += pl110.o
+> +common-obj-$(CONFIG_SII9022) += sii9022.o
+>  common-obj-$(CONFIG_SSD0303) += ssd0303.o
+>  common-obj-$(CONFIG_SSD0323) += ssd0323.o
+>  common-obj-$(CONFIG_XEN) += xenfb.o
+> diff --git a/hw/display/sii9022.c b/hw/display/sii9022.c
+> new file mode 100644
+> index 000000000000..d6f3cdc04293
+> --- /dev/null
+> +++ b/hw/display/sii9022.c
+> @@ -0,0 +1,185 @@
+> +/*
+> + * Silicon Image SiI9022
+> + *
+> + * This is a pretty hollow emulation: all we do is acknowledge that we
+> + * exist (chip ID) and confirm that we get switched over into DDC mode
+> + * so the emulated host can proceed to read out EDID data. All subsequent
+> + * set-up of connectors etc will be acknowledged and ignored.
+> + *
+> + * Copyright (c) 2018 Linus Walleij
+> + *
+> + * This code is licensed under the GNU GPL v2.
+> + *
+> + * Contributions after 2012-01-13 are licensed under the terms of the
+> + * GNU GPL, version 2 or (at your option) any later version.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu-common.h"
+> +#include "hw/i2c/i2c.h"
+> +
+> +#define DEBUG_SII9022 0
+> +
+> +#define DPRINTF(fmt, ...) \
+> +    do { \
+> +        if (DEBUG_SII9022) { \
+> +            printf("sii9022: " fmt, ## __VA_ARGS__); \
+> +        } \
+> +    } while (0)
 
-Note that the way we structure this is significantly different
-from the v8M Arm ARM pseudocode: that does all the prioritization
-logic in the DerivedLateArrival() function, whereas we choose to
-let the existing "identify highest priority exception" logic
-do the prioritization for us. The effect is the same, though.
+Can you replace DPRINTF() by trace events?
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/cpu.h      | 13 ++++++++++
- hw/intc/armv7m_nvic.c | 68 +++++++++++++++++++++++++++++++++++++++++++++++++--
- hw/intc/trace-events  |  2 +-
- 3 files changed, 80 insertions(+), 3 deletions(-)
+Except that, patch looks fine.
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index d2bb59e..9ed03e6 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1506,6 +1506,19 @@ static inline bool armv7m_nvic_can_take_pending_exception(void *opaque)
-  */
- void armv7m_nvic_set_pending(void *opaque, int irq, bool secure);
- /**
-+ * armv7m_nvic_set_pending_derived: mark this derived exception as pending
-+ * @opaque: the NVIC
-+ * @irq: the exception number to mark pending
-+ * @secure: false for non-banked exceptions or for the nonsecure
-+ * version of a banked exception, true for the secure version of a banked
-+ * exception.
-+ *
-+ * Similar to armv7m_nvic_set_pending(), but specifically for derived
-+ * exceptions (exceptions generated in the course of trying to take
-+ * a different exception).
-+ */
-+void armv7m_nvic_set_pending_derived(void *opaque, int irq, bool secure);
-+/**
-  * armv7m_nvic_acknowledge_irq: make highest priority pending exception active
-  * @opaque: the NVIC
-  *
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 8ca6cee..b4a6e7c 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -503,8 +503,25 @@ static void armv7m_nvic_clear_pending(void *opaque, int irq, bool secure)
-     }
- }
- 
--void armv7m_nvic_set_pending(void *opaque, int irq, bool secure)
-+static void do_armv7m_nvic_set_pending(void *opaque, int irq, bool secure,
-+                                       bool derived)
- {
-+    /* Pend an exception, including possibly escalating it to HardFault.
-+     *
-+     * This function handles both "normal" pending of interrupts and
-+     * exceptions, and also derived exceptions (ones which occur as
-+     * a result of trying to take some other exception).
-+     *
-+     * If derived == true, the caller guarantees that we are part way through
-+     * trying to take an exception (but have not yet called
-+     * armv7m_nvic_acknowledge_irq() to make it active), and so:
-+     *  - s->vectpending is the "original exception" we were trying to take
-+     *  - irq is the "derived exception"
-+     *  - nvic_exec_prio(s) gives the priority before exception entry
-+     * Here we handle the prioritization logic which the pseudocode puts
-+     * in the DerivedLateArrival() function.
-+     */
-+
-     NVICState *s = (NVICState *)opaque;
-     bool banked = exc_is_banked(irq);
-     VecInfo *vec;
-@@ -514,7 +531,44 @@ void armv7m_nvic_set_pending(void *opaque, int irq, bool secure)
- 
-     vec = (banked && secure) ? &s->sec_vectors[irq] : &s->vectors[irq];
- 
--    trace_nvic_set_pending(irq, secure, vec->enabled, vec->prio);
-+    trace_nvic_set_pending(irq, secure, derived, vec->enabled, vec->prio);
-+
-+    if (derived) {
-+        /* Derived exceptions are always synchronous. */
-+        assert(irq >= ARMV7M_EXCP_HARD && irq < ARMV7M_EXCP_PENDSV);
-+
-+        if (irq == ARMV7M_EXCP_DEBUG &&
-+            exc_group_prio(s, vec->prio, secure) >= nvic_exec_prio(s)) {
-+            /* DebugMonitorFault, but its priority is lower than the
-+             * preempted exception priority: just ignore it.
-+             */
-+            return;
-+        }
-+
-+        if (irq == ARMV7M_EXCP_HARD && vec->prio >= s->vectpending_prio) {
-+            /* If this is a terminal exception (one which means we cannot
-+             * take the original exception, like a failure to read its
-+             * vector table entry), then we must take the derived exception.
-+             * If the derived exception can't take priority over the
-+             * original exception, then we go into Lockup.
-+             *
-+             * For QEMU, we rely on the fact that a derived exception is
-+             * terminal if and only if it's reported to us as HardFault,
-+             * which saves having to have an extra argument is_terminal
-+             * that we'd only use in one place.
-+             */
-+            cpu_abort(&s->cpu->parent_obj,
-+                      "Lockup: can't take terminal derived exception "
-+                      "(original exception priority %d)\n",
-+                      s->vectpending_prio);
-+        }
-+        /* We now continue with the same code as for a normal pending
-+         * exception, which will cause us to pend the derived exception.
-+         * We'll then take either the original or the derived exception
-+         * based on which is higher priority by the usual mechanism
-+         * for selecting the highest priority pending interrupt.
-+         */
-+    }
- 
-     if (irq >= ARMV7M_EXCP_HARD && irq < ARMV7M_EXCP_PENDSV) {
-         /* If a synchronous exception is pending then it may be
-@@ -585,6 +639,16 @@ void armv7m_nvic_set_pending(void *opaque, int irq, bool secure)
-     }
- }
- 
-+void armv7m_nvic_set_pending(void *opaque, int irq, bool secure)
-+{
-+    do_armv7m_nvic_set_pending(opaque, irq, secure, false);
-+}
-+
-+void armv7m_nvic_set_pending_derived(void *opaque, int irq, bool secure)
-+{
-+    do_armv7m_nvic_set_pending(opaque, irq, secure, true);
-+}
-+
- /* Make pending IRQ active.  */
- bool armv7m_nvic_acknowledge_irq(void *opaque)
- {
-diff --git a/hw/intc/trace-events b/hw/intc/trace-events
-index be76918..09e87d1 100644
---- a/hw/intc/trace-events
-+++ b/hw/intc/trace-events
-@@ -177,7 +177,7 @@ nvic_set_prio(int irq, bool secure, uint8_t prio) "NVIC set irq %d secure-bank %
- nvic_irq_update(int vectpending, int pendprio, int exception_prio, int level) "NVIC vectpending %d pending prio %d exception_prio %d: setting irq line to %d"
- nvic_escalate_prio(int irq, int irqprio, int runprio) "NVIC escalating irq %d to HardFault: insufficient priority %d >= %d"
- nvic_escalate_disabled(int irq) "NVIC escalating irq %d to HardFault: disabled"
--nvic_set_pending(int irq, bool secure, int en, int prio) "NVIC set pending irq %d secure-bank %d (enabled: %d priority %d)"
-+nvic_set_pending(int irq, bool secure, bool derived, int en, int prio) "NVIC set pending irq %d secure-bank %d derived %d (enabled: %d priority %d)"
- nvic_clear_pending(int irq, bool secure, int en, int prio) "NVIC clear pending irq %d secure-bank %d (enabled: %d priority %d)"
- nvic_set_pending_level(int irq) "NVIC set pending: irq %d higher prio than vectpending: setting irq line to 1"
- nvic_acknowledge_irq(int irq, int prio, bool targets_secure) "NVIC acknowledge IRQ: %d now active (prio %d targets_secure %d)"
--- 
-2.7.4
+Regards,
 
+Phil.
+
+> +
+> +#define SII9022_SYS_CTRL_DATA 0x1a
+> +#define SII9022_SYS_CTRL_PWR_DWN 0x10
+> +#define SII9022_SYS_CTRL_AV_MUTE 0x08
+> +#define SII9022_SYS_CTRL_DDC_BUS_REQ 0x04
+> +#define SII9022_SYS_CTRL_DDC_BUS_GRTD 0x02
+> +#define SII9022_SYS_CTRL_OUTPUT_MODE 0x01
+> +#define SII9022_SYS_CTRL_OUTPUT_HDMI 1
+> +#define SII9022_SYS_CTRL_OUTPUT_DVI 0
+> +#define SII9022_REG_CHIPID 0x1b
+> +#define SII9022_INT_ENABLE 0x3c
+> +#define SII9022_INT_STATUS 0x3d
+> +#define SII9022_INT_STATUS_HOTPLUG 0x01;
+> +#define SII9022_INT_STATUS_PLUGGED 0x04;
+> +
+> +#define TYPE_SII9022 "sii9022"
+> +#define SII9022(obj) OBJECT_CHECK(sii9022_state, (obj), TYPE_SII9022)
+> +
+> +typedef struct sii9022_state {
+> +    I2CSlave parent_obj;
+> +    uint8_t ptr;
+> +    bool addr_byte;
+> +    bool ddc_req;
+> +    bool ddc_skip_finish;
+> +    bool ddc;
+> +} sii9022_state;
+> +
+> +static const VMStateDescription vmstate_sii9022 = {
+> +    .name = "sii9022",
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_I2C_SLAVE(parent_obj, sii9022_state),
+> +        VMSTATE_UINT8(ptr, sii9022_state),
+> +        VMSTATE_BOOL(addr_byte, sii9022_state),
+> +        VMSTATE_BOOL(ddc_req, sii9022_state),
+> +        VMSTATE_BOOL(ddc_skip_finish, sii9022_state),
+> +        VMSTATE_BOOL(ddc, sii9022_state),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+> +static int sii9022_event(I2CSlave *i2c, enum i2c_event event)
+> +{
+> +    sii9022_state *s = SII9022(i2c);
+> +
+> +    switch (event) {
+> +    case I2C_START_SEND:
+> +        s->addr_byte = true;
+> +        break;
+> +    case I2C_START_RECV:
+> +        break;
+> +    case I2C_FINISH:
+> +        break;
+> +    case I2C_NACK:
+> +        break;
+> +    }
+> +
+> +    return 0;
+> +}
+> +
+> +static int sii9022_rx(I2CSlave *i2c)
+> +{
+> +    sii9022_state *s = SII9022(i2c);
+> +    uint8_t res = 0x00;
+> +
+> +    switch (s->ptr) {
+> +    case SII9022_SYS_CTRL_DATA:
+> +        if (s->ddc_req) {
+> +            /* Acknowledge DDC bus request */
+> +            res = SII9022_SYS_CTRL_DDC_BUS_GRTD | SII9022_SYS_CTRL_DDC_BUS_REQ;
+> +        }
+> +        break;
+> +    case SII9022_REG_CHIPID:
+> +        res = 0xb0;
+> +        break;
+> +    case SII9022_INT_STATUS:
+> +        /* Something is cold-plugged in, no interrupts */
+> +        res = SII9022_INT_STATUS_PLUGGED;
+> +        break;
+> +    default:
+> +        break;
+> +    }
+> +    DPRINTF("%02x read from %02x\n", res, s->ptr);
+> +    s->ptr++;
+> +
+> +    return res;
+> +}
+> +
+> +static int sii9022_tx(I2CSlave *i2c, uint8_t data)
+> +{
+> +    sii9022_state *s = SII9022(i2c);
+> +
+> +    if (s->addr_byte) {
+> +        s->ptr = data;
+> +        s->addr_byte = false;
+> +        return 0;
+> +    }
+> +
+> +    switch (s->ptr) {
+> +    case SII9022_SYS_CTRL_DATA:
+> +        if (data & SII9022_SYS_CTRL_DDC_BUS_REQ) {
+> +            s->ddc_req = true;
+> +            if (data & SII9022_SYS_CTRL_DDC_BUS_GRTD) {
+> +                s->ddc = true;
+> +                /* Skip this finish since we just switched to DDC */
+> +                s->ddc_skip_finish = true;
+> +                DPRINTF("switched to DDC mode\n");
+> +            }
+> +        } else {
+> +            s->ddc_req = false;
+> +            s->ddc = false;
+> +        }
+> +        break;
+> +    default:
+> +        break;
+> +    }
+> +
+> +    DPRINTF("%02x written to %02x\n", data, s->ptr);
+> +    s->ptr++;
+> +
+> +    return 0;
+> +}
+> +
+> +static void sii9022_reset(DeviceState *dev)
+> +{
+> +    sii9022_state *s = SII9022(dev);
+> +
+> +    s->ptr = 0;
+> +    s->addr_byte = false;
+> +}
+> +
+> +static void sii9022_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
+> +
+> +    k->event = sii9022_event;
+> +    k->recv = sii9022_rx;
+> +    k->send = sii9022_tx;
+> +    dc->reset = sii9022_reset;
+> +    dc->vmsd = &vmstate_sii9022;
+> +}
+> +
+> +static const TypeInfo sii9022_info = {
+> +    .name          = TYPE_SII9022,
+> +    .parent        = TYPE_I2C_SLAVE,
+> +    .instance_size = sizeof(sii9022_state),
+> +    .class_init    = sii9022_class_init,
+> +};
+> +
+> +static void sii9022_register_types(void)
+> +{
+> +    type_register_static(&sii9022_info);
+> +}
+> +
+> +type_init(sii9022_register_types)
+> 

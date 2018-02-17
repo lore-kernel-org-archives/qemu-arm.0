@@ -1,96 +1,99 @@
-Received: by 10.28.71.27 with SMTP id u27csp2069620wma;
-        Sat, 17 Feb 2018 10:23:51 -0800 (PST)
-X-Google-Smtp-Source: AH8x224dV712dyUabqQE7x6G+frp+Zlf2qpJD4UP3zw0iet4TYsfXg3dQEx5GJbso9eM312bM1ve
-X-Received: by 10.129.78.147 with SMTP id c141mr1250963ywb.369.1518891831407;
-        Sat, 17 Feb 2018 10:23:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518891831; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp2069896wma;
+        Sat, 17 Feb 2018 10:24:08 -0800 (PST)
+X-Google-Smtp-Source: AH8x2247vm66PYh/KVQXYMtWfi9qirvPV4EfCj5uEmpGHusXReb3AKDp9NQSkoXYSBrZmrTzjg+r
+X-Received: by 10.37.102.82 with SMTP id z18mr6091217ybm.226.1518891848749;
+        Sat, 17 Feb 2018 10:24:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518891848; cv=none;
         d=google.com; s=arc-20160816;
-        b=eqaBUzTWXBZORQHorERNC4MHwFBO2OlepANvNKBCdWY/7aJpGaY/C6AvAk4RFqlm1Q
-         GxeT8uf2xzvv1xDtZggVTvhlTAhARZ0bDnIyKPrfRIISTvje5QiSEqlR1/HQp++WSXK+
-         rhyOvLktP+DbnLkS3lavtXNTg8B/5w5X++LOIIR4KJ8PoIiZNMgSqZWQ5uwXYFCfIndp
-         7Znwc9vC/pMwDCDIGR/ABey7gZHs5QO2019/DrfnhpPurv1kFybhEccz3OX9lEpx4Vc+
-         /BtF7buhKLiDYmaWqfV+Mhp4IdaDcEs/Mga/gi4b18EuI0L5nEQyhyBOBnf0RWx1nEXR
-         elkg==
+        b=NVykwXjVXnGayqpxFk7Te7/jF+kgiRC8kf5mtDdK1Zg93jVP4WNvtgKYOF/nvtHvR7
+         LtDgAE50qUq0o9hVAx+WoBnPR9wz4qoZpBrYaovRblHRaUlZW3K5nDFe4wWSzdr6T2Is
+         EeE5JZ5jgosESVJkcZMAr6lzPmEidCcSVt1TUR9uSJMk7gO2GVbK0vTr8NXN2hNb1OJc
+         zHVqfv1WP6sF/o3vMJdSpACwHAArDed0AP2IiSw68b660Df+/BrQag6w2RtjAuKra24h
+         WTE0OmS8rFwYt5KQWvdP+cthzDSVZARIyTPIQPJshBAiooJpANhe1D5uy4m02SrIsvWy
+         Znfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=Ozq4WtqLivT5jWxg2n96ncRQlgTHTuUgA5WefsvrPFU=;
-        b=BVBDqIIMLCe5kl8OlDH6LyJlh3XI8gclTPh9gj14g4vwLywbAbfUWJ+86aLzDFIfmi
-         uLSoX4urffZEBl1iEO+gFWRu7V3rrC9AJNQp+efKAopRUKQ+4d1u87CcF5kSlKwvjR2Q
-         kVlJZj3eVZpXBi79pZc5+ACYkGQag4Ciu3q7B6zpU6ml46HtmItD7H6yPZZ39TewAZET
-         lWe1jHo74YOc/0VZeo/5DJTrkCi9br6HVfyhZGklSz32HCUGQOiD+R8sJoXKAeNNCExp
-         5EcImeesXf1xemD/3G5nrD3UgHCjkhFTBJ9FdsPOnxQzt0EES7fXN7184u2r3Ge9Ta1f
-         BSKg==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=OB6hZuzKEdcsMV6fxaOMHmbJji7y30odOZxKDC955Eg=;
+        b=WTmDaoPYm0vof2ukHKzBL8CXKJ3WpDD6GpVBHhT7IC3JjKaeYeCosP2aikWhFjOi/P
+         2y+0wH9yuyRvmDOcvpOrY6rqG4pchk1U7bz0pj4umEBaviILK9nz4mjzRn2pod442VAC
+         l7AK9VS9BKYp+G/ziXg37K33nHELAV6WTtlMzj85qeThDd/U0JSR5qw6SkLRS3sCTfoz
+         FuZmZWf4/Nl1eb3kaAWyVVRDMjakh6Y6ch7BQKS0tHhzBI6mPpyXZPiTmVULKwRlz5Yb
+         SQxKII0aMCLySeDLbm9GS9MWdkyS/Ls2vtoDJql7Etya8irSdl1Jaui4SIAuR6pIY1O6
+         jjJg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NFVOk4hN;
+       dkim=fail header.i=@linaro.org header.s=google header.b=c6YW+HiO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i67si3543320ywd.256.2018.02.17.10.23.51
+        by mx.google.com with ESMTPS id j80si595318ybg.161.2018.02.17.10.24.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 17 Feb 2018 10:23:51 -0800 (PST)
+        Sat, 17 Feb 2018 10:24:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NFVOk4hN;
+       dkim=fail header.i=@linaro.org header.s=google header.b=c6YW+HiO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48047 helo=lists.gnu.org)
+Received: from localhost ([::1]:48051 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1en79K-00007W-Og
-	for alex.bennee@linaro.org; Sat, 17 Feb 2018 13:23:50 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39460)
+	id 1en79b-0000RL-Vo
+	for alex.bennee@linaro.org; Sat, 17 Feb 2018 13:24:08 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39512)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1en792-0008W8-DF
-	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:23:33 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1en794-000062-D2
+	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:23:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1en78y-0001Q7-8x
-	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:23:31 -0500
-Received: from mail-pl0-x244.google.com ([2607:f8b0:400e:c01::244]:45433)
+	(envelope-from <richard.henderson@linaro.org>) id 1en792-0001SL-Q1
+	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:23:34 -0500
+Received: from mail-pl0-x244.google.com ([2607:f8b0:400e:c01::244]:32840)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1en78x-0001Pq-Us
-	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:23:28 -0500
-Received: by mail-pl0-x244.google.com with SMTP id p5so3428017plo.12
-	for <qemu-arm@nongnu.org>; Sat, 17 Feb 2018 10:23:27 -0800 (PST)
+	id 1en792-0001S5-Fv
+	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:23:32 -0500
+Received: by mail-pl0-x244.google.com with SMTP id t4so3446819plo.0
+	for <qemu-arm@nongnu.org>; Sat, 17 Feb 2018 10:23:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id;
-	bh=Ozq4WtqLivT5jWxg2n96ncRQlgTHTuUgA5WefsvrPFU=;
-	b=NFVOk4hN14V54rAn0lS8oIiUImXT2MMeTmNligt11jZRuDVZw76s0goU8wJE2RlSfA
-	t5T5XBPvAYMQCA8mLI9VxGCvgKuvSTMjBi0WgGhHevYMIEEOgjLgve3TAlgiFCpQdA8D
-	CmeV0kd1Ct0aE02D9uxwKsVJmyqBORyespouk=
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=OB6hZuzKEdcsMV6fxaOMHmbJji7y30odOZxKDC955Eg=;
+	b=c6YW+HiO4jW5Mmcf4gnYNpIVEXUf4QNj+U0Jg2oowSjDC0/ZqeWs9lzweX5V16/RKJ
+	lSUVOLET4GjNSOWuwZRZRzuYPhWNwVu0TZiXefinbqdJBHwf2XCQfLlbYiUc+pCRAQMe
+	P0XdPf3Vl95L3SlIH1V5h55EZ507BMGvLRDCk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=Ozq4WtqLivT5jWxg2n96ncRQlgTHTuUgA5WefsvrPFU=;
-	b=ALG8xgrIf4qIvlx39s7GtrmkNaAFIpm1FrfaUOR6rcA7AcRk+9cwCfFRXU/hjRQOQ1
-	fWMAvXJvhqNmofr24GrhVSpNyZ/HEtYsTq4TxKj3I/oNoYoTWZxYhtVlGMAtVO8Fm6Wj
-	5Hyyc2K9UVUTgvcynJEveFGhvl5iYF1Grok/0EV1bN7Xb0znO9zmyl5Wb72ygz/xUJgX
-	4u8HQNNjEqjzMPGJHkwDUB24B2787c86Xy77Aixg234QzPvgbXbZdpseKykg0C7Enk55
-	yNgY9FKPzvZzQCHEpVJbCNQqnYZHW0yw8xc4m/dcypzBrEKDwSkZdAju40d8IGrXKEAl
-	/yFw==
-X-Gm-Message-State: APf1xPAZbiEyXeT9RnIi8vJXpBm7pWH+CSG8BI339gdYroo4D7waU0vw
-	CSqMXyqCshBBrsqfNSxv9SmVSQ==
-X-Received: by 2002:a17:902:b488:: with SMTP id
-	y8-v6mr8853476plr.432.1518891806645; 
-	Sat, 17 Feb 2018 10:23:26 -0800 (PST)
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references;
+	bh=OB6hZuzKEdcsMV6fxaOMHmbJji7y30odOZxKDC955Eg=;
+	b=YCKC9Rp+pjSBELv3zmCkEsykSYMwgRCt9k3OFJBi4xghUnQ+fddM5vYe7zbCwBY1Aw
+	iLgJoOD9PzEcyHRkfS677lbpJawFqGNWK39Q95RqMmwDaM8eFd8RjGYXmU43ezmlkjsL
+	Unitm+73VhTM+a7DfsxW/YCVsbBtk+5Z9477Y5mhp8eC058OxHaP86VfLbWjoJqr7NSz
+	4r1kT1sDk28TR9W00ZXssfl2BaUM5a2QWd/6oJm5YaOI7BaGJ/X9alvv7RHN69kAiCgG
+	QKBANhkmg4RqGvO/lr5O/KOedNIEPAg+T3vtG7VuqTRE8ycZYnq8GTNR4HN/bKRLtbar
+	97PQ==
+X-Gm-Message-State: APf1xPAJ47s5abrAQjqPeM5DZ9zUal4+VptzHGW/aTSUVOsvo89vrcPt
+	hR/PUwiA9VdQE1vliVpOeGskWpResOw=
+X-Received: by 2002:a17:902:6e8c:: with SMTP id
+	v12-v6mr9359642plk.424.1518891811558; 
+	Sat, 17 Feb 2018 10:23:31 -0800 (PST)
 Received: from cloudburst.twiddle.net ([50.0.192.64])
 	by smtp.gmail.com with ESMTPSA id
-	h15sm13466712pfi.56.2018.02.17.10.23.24
+	h15sm13466712pfi.56.2018.02.17.10.23.30
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Sat, 17 Feb 2018 10:23:25 -0800 (PST)
+	Sat, 17 Feb 2018 10:23:30 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Sat, 17 Feb 2018 10:22:16 -0800
-Message-Id: <20180217182323.25885-1-richard.henderson@linaro.org>
+Date: Sat, 17 Feb 2018 10:22:19 -0800
+Message-Id: <20180217182323.25885-4-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.14.3
+In-Reply-To: <20180217182323.25885-1-richard.henderson@linaro.org>
+References: <20180217182323.25885-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2607:f8b0:400e:c01::244
-Subject: [Qemu-arm] [PATCH v2 00/67] target/arm: Scalable Vector Extension
+Subject: [Qemu-arm] [PATCH v2 03/67] target/arm: Add SVE decode skeleton
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,139 +108,193 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9PN4EuVYMy2m
+X-TUID: EZ0CM94L3WVQ
 
-This is 99% of the instruction set.  There are a few things missing,
-notably first-fault and non-fault loads (even these are decoded, but
-simply treated as normal loads for now).
+Including only 4, as-yet unimplemented, instruction patterns
+so that the whole thing compiles.
 
-The patch set is dependant on at least 3 other branches.
-A fully composed tree is available as
-
-  git://github.com/rth7680/qemu.git tgt-arm-sve-7
-
-There are a few checkpatch errors due to macros and typedefs, but
-nothing that isn't be obvious as a false positive.
-
-This is able to run SVE enabled Himeno and LULESH benchmarks as
-compiled by last week's gcc-8:
-
-$ ./aarch64-linux-user/qemu-aarch64 ~/himeno-advsimd
-mimax = 129 mjmax = 65 mkmax = 65
-imax = 128 jmax = 64 kmax =64
-cpu : 67.028643 sec.
-Loop executed for 200 times
-Gosa : 1.688752e-03 
-MFLOPS measured : 49.136295
-Score based on MMX Pentium 200MHz : 1.522662
-
-$ ./aarch64-linux-user/qemu-aarch64 ~/himeno-sve 
-mimax = 129 mjmax = 65 mkmax = 65
-imax = 128 jmax = 64 kmax =64
-cpu : 43.481213 sec.
-Loop executed for 200 times
-Gosa : 3.830036e-06 
-MFLOPS measured : 75.746259
-Score based on MMX Pentium 200MHz : 2.347266
-
-Hopefully the size of the patch set isn't too daunting...
-
-
-r~
-
-
-Richard Henderson (67):
-  target/arm: Enable SVE for aarch64-linux-user
-  target/arm: Introduce translate-a64.h
-  target/arm: Add SVE decode skeleton
-  target/arm: Implement SVE Bitwise Logical - Unpredicated Group
-  target/arm: Implement SVE load vector/predicate
-  target/arm: Implement SVE predicate test
-  target/arm: Implement SVE Predicate Logical Operations Group
-  target/arm: Implement SVE Predicate Misc Group
-  target/arm: Implement SVE Integer Binary Arithmetic - Predicated Group
-  target/arm: Implement SVE Integer Reduction Group
-  target/arm: Implement SVE bitwise shift by immediate (predicated)
-  target/arm: Implement SVE bitwise shift by vector (predicated)
-  target/arm: Implement SVE bitwise shift by wide elements (predicated)
-  target/arm: Implement SVE Integer Arithmetic - Unary Predicated Group
-  target/arm: Implement SVE Integer Multiply-Add Group
-  target/arm: Implement SVE Integer Arithmetic - Unpredicated Group
-  target/arm: Implement SVE Index Generation Group
-  target/arm: Implement SVE Stack Allocation Group
-  target/arm: Implement SVE Bitwise Shift - Unpredicated Group
-  target/arm: Implement SVE Compute Vector Address Group
-  target/arm: Implement SVE floating-point exponential accelerator
-  target/arm: Implement SVE floating-point trig select coefficient
-  target/arm: Implement SVE Element Count Group
-  target/arm: Implement SVE Bitwise Immediate Group
-  target/arm: Implement SVE Integer Wide Immediate - Predicated Group
-  target/arm: Implement SVE Permute - Extract Group
-  target/arm: Implement SVE Permute - Unpredicated Group
-  target/arm: Implement SVE Permute - Predicates Group
-  target/arm: Implement SVE Permute - Interleaving Group
-  target/arm: Implement SVE compress active elements
-  target/arm: Implement SVE conditionally broadcast/extract element
-  target/arm: Implement SVE copy to vector (predicated)
-  target/arm: Implement SVE reverse within elements
-  target/arm: Implement SVE vector splice (predicated)
-  target/arm: Implement SVE Select Vectors Group
-  target/arm: Implement SVE Integer Compare - Vectors Group
-  target/arm: Implement SVE Integer Compare - Immediate Group
-  target/arm: Implement SVE Partition Break Group
-  target/arm: Implement SVE Predicate Count Group
-  target/arm: Implement SVE Integer Compare - Scalars Group
-  target/arm: Implement FDUP/DUP
-  target/arm: Implement SVE Integer Wide Immediate - Unpredicated Group
-  target/arm: Implement SVE Floating Point Arithmetic - Unpredicated
-    Group
-  target/arm: Implement SVE Memory Contiguous Load Group
-  target/arm: Implement SVE Memory Contiguous Store Group
-  target/arm: Implement SVE load and broadcast quadword
-  target/arm: Implement SVE integer convert to floating-point
-  target/arm: Implement SVE floating-point arithmetic (predicated)
-  target/arm: Implement SVE FP Multiply-Add Group
-  target/arm: Implement SVE Floating Point Accumulating Reduction Group
-  target/arm: Implement SVE load and broadcast element
-  target/arm: Implement SVE store vector/predicate register
-  target/arm: Implement SVE scatter stores
-  target/arm: Implement SVE prefetches
-  target/arm: Implement SVE gather loads
-  target/arm: Implement SVE scatter store vector immediate
-  target/arm: Implement SVE floating-point compare vectors
-  target/arm: Implement SVE floating-point arithmetic with immediate
-  target/arm: Implement SVE Floating Point Multiply Indexed Group
-  target/arm: Implement SVE FP Fast Reduction Group
-  target/arm: Implement SVE Floating Point Unary Operations -
-    Unpredicated Group
-  target/arm: Implement SVE FP Compare with Zero Group
-  target/arm: Implement SVE floating-point trig multiply-add coefficient
-  target/arm: Implement SVE floating-point convert precision
-  target/arm: Implement SVE floating-point convert to integer
-  target/arm: Implement SVE floating-point round to integral value
-  target/arm: Implement SVE floating-point unary operations
-
- target/arm/cpu.h           |    7 +-
- target/arm/helper-sve.h    | 1285 ++++++++++++
- target/arm/helper.h        |   42 +
- target/arm/translate-a64.h |  110 ++
- target/arm/cpu.c           |    7 +
- target/arm/cpu64.c         |    1 +
- target/arm/sve_helper.c    | 4051 ++++++++++++++++++++++++++++++++++++++
- target/arm/translate-a64.c |  112 +-
- target/arm/translate-sve.c | 4626 ++++++++++++++++++++++++++++++++++++++++++++
- target/arm/vec_helper.c    |  178 ++
- .gitignore                 |    1 +
- target/arm/Makefile.objs   |   12 +-
- target/arm/sve.decode      | 1067 ++++++++++
- 13 files changed, 11408 insertions(+), 91 deletions(-)
- create mode 100644 target/arm/helper-sve.h
- create mode 100644 target/arm/translate-a64.h
- create mode 100644 target/arm/sve_helper.c
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/translate-a64.c | 11 +++++++-
+ target/arm/translate-sve.c | 63 ++++++++++++++++++++++++++++++++++++++++++++++
+ .gitignore                 |  1 +
+ target/arm/Makefile.objs   | 10 ++++++++
+ target/arm/sve.decode      | 45 +++++++++++++++++++++++++++++++++
+ 5 files changed, 129 insertions(+), 1 deletion(-)
  create mode 100644 target/arm/translate-sve.c
- create mode 100644 target/arm/vec_helper.c
  create mode 100644 target/arm/sve.decode
 
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index e0e7ebf68c..a50fef98af 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -12772,9 +12772,18 @@ static void disas_a64_insn(CPUARMState *env, DisasContext *s)
+     s->fp_access_checked = false;
+ 
+     switch (extract32(insn, 25, 4)) {
+-    case 0x0: case 0x1: case 0x2: case 0x3: /* UNALLOCATED */
++    case 0x0: case 0x1: case 0x3: /* UNALLOCATED */
+         unallocated_encoding(s);
+         break;
++    case 0x2:
++        if (!arm_dc_feature(s, ARM_FEATURE_SVE)) {
++            unallocated_encoding(s);
++        } else if (!sve_access_check(s) || !fp_access_check(s)) {
++            /* exception raised */
++        } else if (!disas_sve(s, insn)) {
++            unallocated_encoding(s);
++        }
++        break;
+     case 0x8: case 0x9: /* Data processing - immediate */
+         disas_data_proc_imm(s, insn);
+         break;
+diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+new file mode 100644
+index 0000000000..2c9e4733cb
+--- /dev/null
++++ b/target/arm/translate-sve.c
+@@ -0,0 +1,63 @@
++/*
++ * AArch64 SVE translation
++ *
++ * Copyright (c) 2018 Linaro, Ltd
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "qemu/osdep.h"
++#include "cpu.h"
++#include "exec/exec-all.h"
++#include "tcg-op.h"
++#include "tcg-op-gvec.h"
++#include "qemu/log.h"
++#include "arm_ldst.h"
++#include "translate.h"
++#include "internals.h"
++#include "exec/helper-proto.h"
++#include "exec/helper-gen.h"
++#include "exec/log.h"
++#include "trace-tcg.h"
++#include "translate-a64.h"
++
++/*
++ * Include the generated decoder.
++ */
++
++#include "decode-sve.inc.c"
++
++/*
++ * Implement all of the translator functions referenced by the decoder.
++ */
++
++static void trans_AND_zzz(DisasContext *s, arg_AND_zzz *a, uint32_t insn)
++{
++    unsupported_encoding(s, insn);
++}
++
++static void trans_ORR_zzz(DisasContext *s, arg_ORR_zzz *a, uint32_t insn)
++{
++    unsupported_encoding(s, insn);
++}
++
++static void trans_EOR_zzz(DisasContext *s, arg_EOR_zzz *a, uint32_t insn)
++{
++    unsupported_encoding(s, insn);
++}
++
++static void trans_BIC_zzz(DisasContext *s, arg_BIC_zzz *a, uint32_t insn)
++{
++    unsupported_encoding(s, insn);
++}
+diff --git a/.gitignore b/.gitignore
+index 704b22285d..abe2b81a26 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -140,3 +140,4 @@ trace-dtrace-root.h
+ trace-dtrace-root.dtrace
+ trace-ust-all.h
+ trace-ust-all.c
++/target/arm/decode-sve.inc.c
+diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
+index 847fb52ee0..9934cf1d4d 100644
+--- a/target/arm/Makefile.objs
++++ b/target/arm/Makefile.objs
+@@ -10,3 +10,13 @@ obj-y += gdbstub.o
+ obj-$(TARGET_AARCH64) += cpu64.o translate-a64.o helper-a64.o gdbstub64.o
+ obj-y += crypto_helper.o
+ obj-$(CONFIG_SOFTMMU) += arm-powerctl.o
++
++DECODETREE = $(SRC_PATH)/scripts/decodetree.py
++
++target/arm/decode-sve.inc.c: $(SRC_PATH)/target/arm/sve.decode $(DECODETREE)
++	$(call quiet-command,\
++	  $(PYTHON) $(DECODETREE) --decode disas_sve -o $@ $<,\
++	  "GEN", $(TARGET_DIR)$@)
++
++target/arm/translate-sve.o: target/arm/decode-sve.inc.c
++obj-$(TARGET_AARCH64) += translate-sve.o
+diff --git a/target/arm/sve.decode b/target/arm/sve.decode
+new file mode 100644
+index 0000000000..2c13a6024a
+--- /dev/null
++++ b/target/arm/sve.decode
+@@ -0,0 +1,45 @@
++# AArch64 SVE instruction descriptions
++#
++#  Copyright (c) 2017 Linaro, Ltd
++#
++# This library is free software; you can redistribute it and/or
++# modify it under the terms of the GNU Lesser General Public
++# License as published by the Free Software Foundation; either
++# version 2 of the License, or (at your option) any later version.
++#
++# This library is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++# Lesser General Public License for more details.
++#
++# You should have received a copy of the GNU Lesser General Public
++# License along with this library; if not, see <http://www.gnu.org/licenses/>.
++
++#
++# This file is processed by scripts/decodetree.py
++#
++
++###########################################################################
++# Named attribute sets.  These are used to make nice(er) names
++# when creating helpers common to those for the individual
++# instruction patterns.
++
++&rrr_esz	rd rn rm esz
++
++###########################################################################
++# Named instruction formats.  These are generally used to
++# reduce the amount of duplication between instruction patterns.
++
++# Three operand with unused vector element size
++@rd_rn_rm_e0	........ ... rm:5  ... ...  rn:5 rd:5		&rrr_esz esz=0
++
++###########################################################################
++# Instruction patterns.  Grouped according to the SVE encodingindex.xhtml.
++
++### SVE Logical - Unpredicated Group
++
++# SVE bitwise logical operations (unpredicated)
++AND_zzz		00000100 00 1 ..... 001 100 ..... .....		@rd_rn_rm_e0
++ORR_zzz		00000100 01 1 ..... 001 100 ..... .....		@rd_rn_rm_e0
++EOR_zzz		00000100 10 1 ..... 001 100 ..... .....		@rd_rn_rm_e0
++BIC_zzz		00000100 11 1 ..... 001 100 ..... .....		@rd_rn_rm_e0
 -- 
 2.14.3
 

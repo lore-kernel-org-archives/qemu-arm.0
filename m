@@ -1,87 +1,87 @@
-Received: by 10.28.71.27 with SMTP id u27csp866931wma;
-        Fri, 2 Feb 2018 07:41:55 -0800 (PST)
-X-Google-Smtp-Source: AH8x226vshUNWgcnyi30bNPwXhk23yOJkheeCzf3q/a7ZBHQ4UZPsJIXFbchxtZuVvgGNm0Xd/+y
-X-Received: by 10.129.129.69 with SMTP id r66mr27642722ywf.24.1517586115569;
-        Fri, 02 Feb 2018 07:41:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1517586115; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp2129365wma;
+        Sat, 17 Feb 2018 11:50:37 -0800 (PST)
+X-Google-Smtp-Source: AH8x226M8ITdkUV/avXtnHHiRzBXOOQz3nKgVIkiq2rv1yEfKRc6yX4YmOumNGP3z5l/j8gUX2tL
+X-Received: by 10.129.208.12 with SMTP id v12mr4377281ywi.304.1518897037659;
+        Sat, 17 Feb 2018 11:50:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518897037; cv=none;
         d=google.com; s=arc-20160816;
-        b=Jtblz+q1Hj5XRYIRzzP3lemO1T24Gxs5M7Ragy0QsXnKNNBeoTzuNz1mdNiKHPZRZm
-         8ItmW3ep+dpLOdv/5OSeadfUdyNZ1QvpaKTHBkIgp7up5iW7WRisuDjjqztsdAHAvLCu
-         DJqFAE57GjAMl8qqBep1cbChfqHt2f8denm6MuKZru4ceRGpSWkEgUZGhZEGfkRYy3LM
-         rXwLXfCZ1L5titvmAaSKXNCX1nflqqxOVA1QJ8sF3ZCEYiMh/GMirh88tNzJ2Kd6kZHy
-         8HkXmFa6ug55SH9ptdWXHgDafP/brKAQPMCd6FDTkntYIR4SF6u4ULAilaAE/y72QP5/
-         cjew==
+        b=lWXGvzxAbo8V8Egifh7jD+nMLgijCtoIOBz9I+fZjMcC/yJLwDxDUiN56G4c9XH5dG
+         1TysEUr+ri1Mg9x5Ur1fQmQt6QjaNswtnLUz3B66mcH0bKPrNyO55BcfgpOQNghx2USn
+         neMTqsC08i9izE7Yd7lFQufoy+dY4w7gl4Fc6O/ckwgc2CaQTJpVHCGl01sqpihQC7dG
+         V/3VmCmN+7JnJJexWfivnUNfEhfK0HSO6Yy/ixjoIFIcD2oPseN7ai1JndTPVCrTWR3/
+         7nVWU9p4QTcTQMv3cCFD+nJhUFPno6yR9/ksGDRhO5+sIOKNypKOKiB+AoQj9wyV96ai
+         DuiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=k8+toYzm6jxKOGG/aC8WmIztvGz99G9c+fJ74ZUt0uE=;
-        b=TovYQMC/ILNa58Zqp2HGVYzwf4ZokCVIa7Pug+cuRDgYsuMuTSJDNQfXzVa68Xjgym
-         hBD/wTyXjPJp6Rozqa5wdHxg7n/ZhtG66P6nh6Cj6ZTOXiybS95GAfNAfjKW6OwUO2xx
-         TyxsJ/QRHZyXR+sMrOwYfTgdmHwSUEhX6ot1DNFlffxoHJCksk7SVDGv24t+IocpOx66
-         cemwsY/T22fZ5c2yP/tag8oKFssnN8XVVVVCmy/Yjur3C2IJUtB4FQFdWUUavhxGl0Dr
-         /UumaJQ4OFEwtMxMnRfpCe8avNKwOk2z3PISkn5ZJdOR9XzAH+46rju0ME+hTjmqGejC
-         ua+g==
+        bh=ipQ93Po4XbjkoolwpWm0L7HMKnZoGEs6KzQ0Kd4fsrU=;
+        b=S37BlWfXJNDsWndQxoOoAO+X3+091PrIuxBGQkmzqHZbWfvIve3ciEBkBx+Mr3LxfD
+         6KY5La4EcD2cnoXdf+A4hWhIYmmpvPrNuxBLJKLFIoJ+0K/7+Tqq8HzLxUFYcfONoYPT
+         7bQcgXrHv7FC/70PS+WHwtV0R0O7WkAr0faVIa29swq2wmlQbXjNSJoZv+BIvNSHCKuU
+         qPB3hnPDhtMmtlPZjFaV/R33rEVq+Wb6RoRs+gjZixFD8ivffU4KYqJF4tmgIStzO+YK
+         DuZniaeOSUkR0vJUj6M84DXVjU9emYHEQO3z0h0SfgTmJnky0U6KdJchr/QJJe857NyI
+         C3Iw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s185si463829ybf.713.2018.02.02.07.41.55
+        by mx.google.com with ESMTPS id i123si711899ywf.113.2018.02.17.11.50.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 02 Feb 2018 07:41:55 -0800 (PST)
+        Sat, 17 Feb 2018 11:50:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37009 helo=lists.gnu.org)
+Received: from localhost ([::1]:54835 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ehdTO-0000ch-Ud
-	for alex.bennee@linaro.org; Fri, 02 Feb 2018 10:41:54 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52822)
+	id 1en8VJ-00030I-5T
+	for alex.bennee@linaro.org; Sat, 17 Feb 2018 14:50:37 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45197)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1ehcox-0006Ts-2V
-	for qemu-arm@nongnu.org; Fri, 02 Feb 2018 10:00:12 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1en7WR-0003gX-8U
+	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:47:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1ehcot-0003Mh-4g
-	for qemu-arm@nongnu.org; Fri, 02 Feb 2018 10:00:07 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:59742)
+	(envelope-from <eric.auger@redhat.com>) id 1en7WP-0002hZ-IJ
+	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:47:43 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:52370 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
-	id 1ehcos-0003M7-SH; Fri, 02 Feb 2018 10:00:03 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1en7WP-0002fy-Bb; Sat, 17 Feb 2018 13:47:41 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 99C26C0587C4;
-	Fri,  2 Feb 2018 07:50:13 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-116-227.ams2.redhat.com
-	[10.36.116.227])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 9C5E9619E9;
-	Fri,  2 Feb 2018 07:50:10 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id C628231FFF; Fri,  2 Feb 2018 08:50:09 +0100 (CET)
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Fri,  2 Feb 2018 08:50:08 +0100
-Message-Id: <20180202075009.11653-2-kraxel@redhat.com>
-In-Reply-To: <20180202075009.11653-1-kraxel@redhat.com>
-References: <20180202075009.11653-1-kraxel@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+	by mx1.redhat.com (Postfix) with ESMTPS id C96C3402242D;
+	Sat, 17 Feb 2018 18:47:40 +0000 (UTC)
+Received: from localhost.localdomain.com (ovpn-116-21.ams2.redhat.com
+	[10.36.116.21])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 33C1B2024CA2;
+	Sat, 17 Feb 2018 18:47:38 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org,
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org, prem.mallappa@gmail.com,
+	alex.williamson@redhat.com
+Date: Sat, 17 Feb 2018 19:46:54 +0100
+Message-Id: <1518893216-9983-13-git-send-email-eric.auger@redhat.com>
+In-Reply-To: <1518893216-9983-1-git-send-email-eric.auger@redhat.com>
+References: <1518893216-9983-1-git-send-email-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Fri, 02 Feb 2018 07:50:13 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.11.55.6]);
+	Sat, 17 Feb 2018 18:47:40 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Sat, 17 Feb 2018 18:47:40 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PULL 1/2] hw/audio/wm8750: move WM8750 declarations
- from i2c/i2c.h to audio/wm8750.h
+X-Received-From: 66.187.233.73
+Subject: [Qemu-arm] [PATCH v9 12/14] hw/arm/virt: Add SMMUv3 to the virt
+ board
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,203 +93,196 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	"open list:Musicpal" <qemu-arm@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>,
-	Gerd Hoffmann <kraxel@redhat.com>, Andrzej Zaborowski <balrogg@gmail.com>
+Cc: mst@redhat.com, jean-philippe.brucker@arm.com, tn@semihalf.com,
+	peterx@redhat.com, linuc.decode@gmail.com,
+	bharat.bhushan@nxp.com, christoffer.dall@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bH/KiuTHJFte
+X-TUID: cepbikMsHm3T
 
-From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+From: Prem Mallappa <prem.mallappa@broadcom.com>
 
-while here use TYPE_WM8750 and declare a data_req_cb() typedef.
+Add code to instantiate an smmuv3 in virt machine. A new iommu
+integer member is introduced in VirtMachineState to store the type
+of the iommu in use.
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Message-id: 20170919123053.32675-1-f4bug@amsat.org
-Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+
 ---
- include/hw/audio/wm8750.h  | 30 ++++++++++++++++++++++++++++++
- include/hw/i2c/i2c.h       |  9 ---------
- hw/arm/musicpal.c          |  3 ++-
- hw/arm/spitz.c             |  3 ++-
- hw/arm/z2.c                |  3 ++-
- hw/audio/marvell_88w8618.c |  1 +
- hw/audio/wm8750.c          |  6 ++----
- 7 files changed, 39 insertions(+), 16 deletions(-)
- create mode 100644 include/hw/audio/wm8750.h
+v7 -> v8:
+- integer iommu member
+- add primary-bus property
 
-diff --git a/include/hw/audio/wm8750.h b/include/hw/audio/wm8750.h
-new file mode 100644
-index 0000000000..84e7a119bb
---- /dev/null
-+++ b/include/hw/audio/wm8750.h
-@@ -0,0 +1,30 @@
-+/*
-+ * This program is free software; you can redistribute it and/or modify =
-it
-+ * under the terms and conditions of the GNU General Public License,
-+ * version 2 or later, as published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope it will be useful, but WITHOU=
-T
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License=
- for
-+ * more details.
-+ *
-+ * You should have received a copy of the GNU General Public License alo=
-ng with
-+ * this program.  If not, see <http://www.gnu.org/licenses/>.
-+ */
-+#ifndef HW_DAC_WM8750_H
-+#define HW_DAC_WM8750_H
-+
-+#include "hw/hw.h"
-+
-+#define TYPE_WM8750 "wm8750"
-+
-+typedef void data_req_cb(void *opaque, int free_out, int free_in);
-+
-+void wm8750_data_req_set(DeviceState *dev, data_req_cb *data_req, void *=
-opaque);
-+void wm8750_dac_dat(void *opaque, uint32_t sample);
-+uint32_t wm8750_adc_dat(void *opaque);
-+void *wm8750_dac_buffer(void *opaque, int samples);
-+void wm8750_dac_commit(void *opaque);
-+void wm8750_set_bclk_in(void *opaque, int new_hz);
-+
-+#endif
-diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
-index 2ce611d4c8..24e95d0155 100644
---- a/include/hw/i2c/i2c.h
-+++ b/include/hw/i2c/i2c.h
-@@ -70,15 +70,6 @@ int i2c_recv(I2CBus *bus);
-=20
- DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t add=
-r);
-=20
--/* wm8750.c */
--void wm8750_data_req_set(DeviceState *dev,
--                void (*data_req)(void *, int, int), void *opaque);
--void wm8750_dac_dat(void *opaque, uint32_t sample);
--uint32_t wm8750_adc_dat(void *opaque);
--void *wm8750_dac_buffer(void *opaque, int samples);
--void wm8750_dac_commit(void *opaque);
--void wm8750_set_bclk_in(void *opaque, int new_hz);
--
- /* lm832x.c */
- void lm832x_key_event(DeviceState *dev, int key, int state);
-=20
-diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-index b648770882..4172caf5db 100644
---- a/hw/arm/musicpal.c
-+++ b/hw/arm/musicpal.c
-@@ -25,6 +25,7 @@
- #include "hw/block/flash.h"
- #include "ui/console.h"
- #include "hw/i2c/i2c.h"
-+#include "hw/audio/wm8750.h"
- #include "sysemu/block-backend.h"
- #include "exec/address-spaces.h"
- #include "ui/pixel_ops.h"
-@@ -1691,7 +1692,7 @@ static void musicpal_init(MachineState *machine)
-         qdev_connect_gpio_out(key_dev, i, qdev_get_gpio_in(dev, i + 15))=
-;
-     }
-=20
--    wm8750_dev =3D i2c_create_slave(i2c, "wm8750", MP_WM_ADDR);
-+    wm8750_dev =3D i2c_create_slave(i2c, TYPE_WM8750, MP_WM_ADDR);
-     dev =3D qdev_create(NULL, "mv88w8618_audio");
-     s =3D SYS_BUS_DEVICE(dev);
-     qdev_prop_set_ptr(dev, "wm8750", wm8750_dev);
-diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
-index ac1e15cbbc..e419e3c00e 100644
---- a/hw/arm/spitz.c
-+++ b/hw/arm/spitz.c
-@@ -24,6 +24,7 @@
- #include "hw/devices.h"
- #include "hw/arm/sharpsl.h"
- #include "ui/console.h"
-+#include "hw/audio/wm8750.h"
- #include "audio/audio.h"
- #include "hw/boards.h"
- #include "sysemu/block-backend.h"
-@@ -745,7 +746,7 @@ static void spitz_i2c_setup(PXA2xxState *cpu)
-     DeviceState *wm;
-=20
-     /* Attach a WM8750 to the bus */
--    wm =3D i2c_create_slave(bus, "wm8750", 0);
-+    wm =3D i2c_create_slave(bus, TYPE_WM8750, 0);
-=20
-     spitz_wm8750_addr(wm, 0, 0);
-     qdev_connect_gpio_out(cpu->gpio, SPITZ_GPIO_WM,
-diff --git a/hw/arm/z2.c b/hw/arm/z2.c
-index 60561c7b7c..300e933c82 100644
---- a/hw/arm/z2.c
-+++ b/hw/arm/z2.c
-@@ -23,6 +23,7 @@
- #include "hw/block/flash.h"
- #include "sysemu/block-backend.h"
- #include "ui/console.h"
-+#include "hw/audio/wm8750.h"
- #include "audio/audio.h"
- #include "exec/address-spaces.h"
- #include "sysemu/qtest.h"
-@@ -346,7 +347,7 @@ static void z2_init(MachineState *machine)
-     z2_lcd =3D ssi_create_slave(mpu->ssp[1], "zipit-lcd");
-     bus =3D pxa2xx_i2c_bus(mpu->i2c[0]);
-     i2c_create_slave(bus, TYPE_AER915, 0x55);
--    wm =3D i2c_create_slave(bus, "wm8750", 0x1b);
-+    wm =3D i2c_create_slave(bus, TYPE_WM8750, 0x1b);
-     mpu->i2s->opaque =3D wm;
-     mpu->i2s->codec_out =3D wm8750_dac_dat;
-     mpu->i2s->codec_in =3D wm8750_adc_dat;
-diff --git a/hw/audio/marvell_88w8618.c b/hw/audio/marvell_88w8618.c
-index 4f65f8c199..e546892d3c 100644
---- a/hw/audio/marvell_88w8618.c
-+++ b/hw/audio/marvell_88w8618.c
-@@ -13,6 +13,7 @@
- #include "hw/sysbus.h"
- #include "hw/hw.h"
- #include "hw/i2c/i2c.h"
-+#include "hw/audio/wm8750.h"
- #include "audio/audio.h"
-=20
- #define MP_AUDIO_SIZE           0x00001000
-diff --git a/hw/audio/wm8750.c b/hw/audio/wm8750.c
-index 6d8b728923..416a78e869 100644
---- a/hw/audio/wm8750.c
-+++ b/hw/audio/wm8750.c
-@@ -8,8 +8,8 @@
-  */
-=20
- #include "qemu/osdep.h"
--#include "hw/hw.h"
- #include "hw/i2c/i2c.h"
-+#include "hw/audio/wm8750.h"
- #include "audio/audio.h"
-=20
- #define IN_PORT_N	3
-@@ -24,7 +24,6 @@ typedef struct {
-     int dac_hz;
- } WMRate;
-=20
--#define TYPE_WM8750 "wm8750"
- #define WM8750(obj) OBJECT_CHECK(WM8750State, (obj), TYPE_WM8750)
-=20
- typedef struct WM8750State {
-@@ -639,8 +638,7 @@ static void wm8750_fini(I2CSlave *i2c)
+v4 -> v5:
+- add dma-coherent property
+
+v2 -> v3:
+- vbi was removed. Use vms instead
+- migrate to new smmu binding format (iommu-map)
+- don't use appendprop anymore
+- add vms->smmu and guard instantiation with this latter
+- interrupts type changed to edge
+
+Conflicts:
+	hw/arm/smmuv3.c
+---
+ hw/arm/virt.c         | 64 ++++++++++++++++++++++++++++++++++++++++++++++++++-
+ include/hw/arm/virt.h | 10 ++++++++
+ 2 files changed, 73 insertions(+), 1 deletion(-)
+
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index dbb3c80..e9dca0d 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -58,6 +58,7 @@
+ #include "hw/smbios/smbios.h"
+ #include "qapi/visitor.h"
+ #include "standard-headers/linux/input.h"
++#include "hw/arm/smmuv3.h"
+ 
+ #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
+     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
+@@ -141,6 +142,7 @@ static const MemMapEntry a15memmap[] = {
+     [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
+     [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
+     [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
++    [VIRT_SMMU] =               { 0x09050000, 0x00020000 }, /* 128K, needed */
+     [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
+     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
+     [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
+@@ -161,6 +163,7 @@ static const int a15irqmap[] = {
+     [VIRT_SECURE_UART] = 8,
+     [VIRT_MMIO] = 16, /* ...to 16 + NUM_VIRTIO_TRANSPORTS - 1 */
+     [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
++    [VIRT_SMMU] = 74,    /* ...to 74 + NUM_SMMU_IRQS - 1 */
+     [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
+ };
+ 
+@@ -941,7 +944,57 @@ static void create_pcie_irq_map(const VirtMachineState *vms,
+                            0x7           /* PCI irq */);
  }
- #endif
-=20
--void wm8750_data_req_set(DeviceState *dev,
--                void (*data_req)(void *, int, int), void *opaque)
-+void wm8750_data_req_set(DeviceState *dev, data_req_cb *data_req, void *=
-opaque)
+ 
+-static void create_pcie(const VirtMachineState *vms, qemu_irq *pic)
++static void create_smmu(const VirtMachineState *vms, qemu_irq *pic,
++                        PCIBus *bus)
++{
++    char *node;
++    const char compat[] = "arm,smmu-v3";
++    int irq =  vms->irqmap[VIRT_SMMU];
++    int i;
++    hwaddr base = vms->memmap[VIRT_SMMU].base;
++    hwaddr size = vms->memmap[VIRT_SMMU].size;
++    const char irq_names[] = "eventq\0priq\0cmdq-sync\0gerror";
++    DeviceState *dev;
++
++    if (vms->iommu != VIRT_IOMMU_SMMUV3 || !vms->iommu_phandle) {
++        return;
++    }
++
++    dev = qdev_create(NULL, "arm-smmuv3");
++
++    object_property_set_link(OBJECT(dev), OBJECT(bus), "primary-bus",
++                             &error_abort);
++    qdev_init_nofail(dev);
++    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
++    for (i = 0; i < NUM_SMMU_IRQS; i++) {
++        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, pic[irq + i]);
++    }
++
++    node = g_strdup_printf("/smmuv3@%" PRIx64, base);
++    qemu_fdt_add_subnode(vms->fdt, node);
++    qemu_fdt_setprop(vms->fdt, node, "compatible", compat, sizeof(compat));
++    qemu_fdt_setprop_sized_cells(vms->fdt, node, "reg", 2, base, 2, size);
++
++    qemu_fdt_setprop_cells(vms->fdt, node, "interrupts",
++            GIC_FDT_IRQ_TYPE_SPI, irq    , GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
++            GIC_FDT_IRQ_TYPE_SPI, irq + 1, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
++            GIC_FDT_IRQ_TYPE_SPI, irq + 2, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
++            GIC_FDT_IRQ_TYPE_SPI, irq + 3, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
++
++    qemu_fdt_setprop(vms->fdt, node, "interrupt-names", irq_names,
++                     sizeof(irq_names));
++
++    qemu_fdt_setprop_cell(vms->fdt, node, "clocks", vms->clock_phandle);
++    qemu_fdt_setprop_string(vms->fdt, node, "clock-names", "apb_pclk");
++    qemu_fdt_setprop(vms->fdt, node, "dma-coherent", NULL, 0);
++
++    qemu_fdt_setprop_cell(vms->fdt, node, "#iommu-cells", 1);
++
++    qemu_fdt_setprop_cell(vms->fdt, node, "phandle", vms->iommu_phandle);
++    g_free(node);
++}
++
++static void create_pcie(VirtMachineState *vms, qemu_irq *pic)
  {
-     WM8750State *s =3D WM8750(dev);
-=20
---=20
-2.9.3
+     hwaddr base_mmio = vms->memmap[VIRT_PCIE_MMIO].base;
+     hwaddr size_mmio = vms->memmap[VIRT_PCIE_MMIO].size;
+@@ -1054,6 +1107,15 @@ static void create_pcie(const VirtMachineState *vms, qemu_irq *pic)
+     qemu_fdt_setprop_cell(vms->fdt, nodename, "#interrupt-cells", 1);
+     create_pcie_irq_map(vms, vms->gic_phandle, irq, nodename);
+ 
++    if (vms->iommu) {
++        vms->iommu_phandle = qemu_fdt_alloc_phandle(vms->fdt);
++
++        create_smmu(vms, pic, pci->bus);
++
++        qemu_fdt_setprop_cells(vms->fdt, nodename, "iommu-map",
++                               0x0, vms->iommu_phandle, 0x0, 0x10000);
++    }
++
+     g_free(nodename);
+ }
+ 
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 33b0ff3..13d3724 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -38,6 +38,7 @@
+ 
+ #define NUM_GICV2M_SPIS       64
+ #define NUM_VIRTIO_TRANSPORTS 32
++#define NUM_SMMU_IRQS          4
+ 
+ #define ARCH_GICV3_MAINT_IRQ  9
+ 
+@@ -59,6 +60,7 @@ enum {
+     VIRT_GIC_V2M,
+     VIRT_GIC_ITS,
+     VIRT_GIC_REDIST,
++    VIRT_SMMU,
+     VIRT_UART,
+     VIRT_MMIO,
+     VIRT_RTC,
+@@ -74,6 +76,12 @@ enum {
+     VIRT_SECURE_MEM,
+ };
+ 
++enum {
++    VIRT_IOMMU_NONE,
++    VIRT_IOMMU_SMMUV3,
++    VIRT_IOMMU_VIRTIO,
++};
++
+ typedef struct MemMapEntry {
+     hwaddr base;
+     hwaddr size;
+@@ -96,6 +104,7 @@ typedef struct {
+     bool its;
+     bool virt;
+     int32_t gic_version;
++    int32_t iommu;
+     struct arm_boot_info bootinfo;
+     const MemMapEntry *memmap;
+     const int *irqmap;
+@@ -105,6 +114,7 @@ typedef struct {
+     uint32_t clock_phandle;
+     uint32_t gic_phandle;
+     uint32_t msi_phandle;
++    uint32_t iommu_phandle;
+     int psci_conduit;
+ } VirtMachineState;
+ 
+-- 
+2.5.5
 

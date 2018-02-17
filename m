@@ -1,99 +1,100 @@
-Received: by 10.28.71.27 with SMTP id u27csp2069887wma;
-        Sat, 17 Feb 2018 10:24:08 -0800 (PST)
-X-Google-Smtp-Source: AH8x2249Z7EBgqJNW5NNsczrBKUH/lquyZNFSg7/r030CW1HbHNI0+8NO4nG3oqVapzOjfn60HF8
-X-Received: by 10.37.175.198 with SMTP id d6mr6970384ybj.430.1518891848328;
-        Sat, 17 Feb 2018 10:24:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518891848; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp2072538wma;
+        Sat, 17 Feb 2018 10:27:34 -0800 (PST)
+X-Google-Smtp-Source: AH8x2261GkP2xYPa5Z3Q4Ft5W1PzI9SVlYtWaqSKW0TYyXQxuvAR4gVQCwTDbhjgzrheNYZ1MrOu
+X-Received: by 10.37.194.195 with SMTP id s186mr6957243ybf.205.1518892054277;
+        Sat, 17 Feb 2018 10:27:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518892054; cv=none;
         d=google.com; s=arc-20160816;
-        b=Yj69MgaAz6pg4zRSvzOu2XCi7qy/uPytGTxb6jbrtbItcp55gt1Ea+oN2HMeEWkaC7
-         dDEX1/UoNbzD5cyk0QunW44KU1oVr8tMI+0rHKNflq4Fs3z8uPZ9+FzKqw0UH6BAGUHF
-         Hj4nc4rEhIrZdjli1eaGFmU2k0HtSLIBgkyJVxjxhVNLN8zaP78cQofvP02aJn3oVz/c
-         n3VNxrYlmGjaRGEaBNBg+cqTPlVc9kmlOMPNWK7YN8GAEYaqC/GWhJLDxct5FkzB+D4H
-         9YPIP2zHsDs4/7rAGjSZJTxre21yuZn8d129yU3Qi5q7ezAv2sGlaTBRzP4XnPe1jBC5
-         YnXQ==
+        b=hxn+fQERUE7p43KC7vb6dq9Hgyl4RxrlqCErhi5TX/N0d5cSZaj6h13mfDLUxQuMGX
+         aVHIC3DFdV6573DRodP9YxANW2cnbDuk6ejYJQDnAHTg2gsNIAjJyloLPwz6VcJoKseP
+         0A6fjwz+U3jxCVq7zIIhiUmZxxvV2XYgIlH1AHmoP9ejTziQxc7s3LWHlHD7G3Ogbk6I
+         jEco/UDjVT4F11BmY2lFXrk1r9MygfcKPwgMd0msYw50jkddWCF4GutDPp7E0DU6/e3U
+         XOdxVZrdJ2Ijq5bKcOZfrfvaAHGrVlWGc7p5mhEO3nivwSPnRi3yNIAPLT/RPJ8h5TYh
+         irxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=vA65R0gM6DJd7CAtKhNwANG6CnipdIvbj0v8v4ws5v0=;
-        b=xy24iAPFWu/d5cDE4BKoJYhS2h2h1uvhLlDrYV7zI/5rXXlVYb5cy5C2NzmreqHer8
-         5g9Yo/29dEPIno0eF6ZkFEKcQ2l3nFz6LAuV9eiKwXWGTkRzwTCi2eb4BlgnPV8x2cw+
-         V13V3ocRni6mW2wIeZxwbFqiYZrXeRhPiARUfx7mA1zPZYsuOgitZZ93YsKKxysJ5yr1
-         tTjrJBNAVvg66Oi1jMB6p7mZ1VjBFGdWVWVZkb6oREUwarFVurR3NEJnMfQTEB+tipPP
-         Ase0Tfh4n5e+KoNjwnVWTyO4jI/ULuCYcst55L4YhJkf9/9R7ZofMcAFJRN0Y9wc9Vyy
-         W45Q==
+        bh=crjT9mdFhV4QIVceZtyE/uLyIPkijbglCCBt+D3M/dI=;
+        b=P4Vas7P2OyPobwyiJ4GnlnCFeH0j3JAIhr9k02aV/MQR/NpfuGyMYrL3Qn3kIXy3yM
+         c98iePk3ufcmMyeS5f2UwSjJwk4MsAIpIT4XzkdSF/aTLGu7str2Np8qUFiQLsESFA01
+         XDvSlifk4r7XdXIWYb8ApO1WPV1sg3mKLqZ4LwEGZEaXBGn+B0ZIEcTrNugHVYItH7WS
+         9nNTSZevqlX4Gb45uMOjaXFO+TC7bqY33TC9Q/LE6eatSQtZVT4xrOz/DzA5kaRyTuAg
+         YD0EEN35oD9xAGuoPLjLf/wceBKtLmjOvf3znfQPIIIvYERUaJRHxYD9KytVvxU9N/Po
+         HrAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LgbRx/i/;
+       dkim=fail header.i=@linaro.org header.s=google header.b=et7eDw+j;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y2si3570976ywe.341.2018.02.17.10.24.08
+        by mx.google.com with ESMTPS id m130si827139ywm.121.2018.02.17.10.27.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 17 Feb 2018 10:24:08 -0800 (PST)
+        Sat, 17 Feb 2018 10:27:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LgbRx/i/;
+       dkim=fail header.i=@linaro.org header.s=google header.b=et7eDw+j;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48050 helo=lists.gnu.org)
+Received: from localhost ([::1]:48080 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1en79b-0000No-J1
-	for alex.bennee@linaro.org; Sat, 17 Feb 2018 13:24:07 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39496)
+	id 1en7Cv-0003mD-NU
+	for alex.bennee@linaro.org; Sat, 17 Feb 2018 13:27:33 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39525)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1en793-00005O-Fe
-	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:23:35 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1en795-00006v-4j
+	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:23:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1en791-0001RZ-E3
-	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:23:33 -0500
-Received: from mail-pl0-x243.google.com ([2607:f8b0:400e:c01::243]:38166)
+	(envelope-from <richard.henderson@linaro.org>) id 1en794-0001T7-46
+	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:23:35 -0500
+Received: from mail-pl0-x242.google.com ([2607:f8b0:400e:c01::242]:40418)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1en791-0001RL-4q
-	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:23:31 -0500
-Received: by mail-pl0-x243.google.com with SMTP id h10so3438778plt.5
-	for <qemu-arm@nongnu.org>; Sat, 17 Feb 2018 10:23:31 -0800 (PST)
+	id 1en793-0001Sl-Ph
+	for qemu-arm@nongnu.org; Sat, 17 Feb 2018 13:23:34 -0500
+Received: by mail-pl0-x242.google.com with SMTP id g18so3434873plo.7
+	for <qemu-arm@nongnu.org>; Sat, 17 Feb 2018 10:23:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=vA65R0gM6DJd7CAtKhNwANG6CnipdIvbj0v8v4ws5v0=;
-	b=LgbRx/i/daKnKXWQzLRHf5X4pz1xKZrLZGJXjequ6vBRObYm2NGR6NKiPXBxahEO7O
-	QYo96J9EF5aA2piYfxgNCkXC6vT1HkEu05fBkcCHYxt4uXI1de/8yb89sKvIO/iQnHVD
-	YyQ0vEnZfIoyee8JZjCilSx/GFyjj7QUfMt7U=
+	bh=crjT9mdFhV4QIVceZtyE/uLyIPkijbglCCBt+D3M/dI=;
+	b=et7eDw+j8BCHiHiM5qQ/tvuBRTE9lvahCck7xOYIWpK5kHrZGzh6Fu09G0YZHn9sSU
+	MbphDAAhkkvf7gc6iRiiCzGqsLzn9HYBvVBRcB8CwobVtGVHHblMvTI+RCJv+EZEU979
+	O3gd8yFaS1Ks4T4zJY02j5kxY3zXJxlxlGlSE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=vA65R0gM6DJd7CAtKhNwANG6CnipdIvbj0v8v4ws5v0=;
-	b=Ep/pp+RMElr9oG0l+Jj7PxcVZ4Sweb0mwfbZWWKAC96NU8f8RGQnOtnVuJFloBJY3s
-	Y8MlZ1LbD96lfsrd2KyUURX0DfuGOQ2M8lUKwXj0bCPkQcVS7uiyS3OmXjNT18KONxz2
-	R6R9JMSdTQL2u509Wu0Tu+971t6Hqm+cK7YbG8odirJtFO/j+qPfJ6Hi+cTVoYOSmmGG
-	sXhzinQJAUYAsLF5fZHRIB0gZc8apYaJbhP6g3OSgblXUOOTxqaCz1BhAf4YvGE2TTe4
-	weogBnYHwMkZix2ArFoZzdzTK+7vk884RW7c81Txj7y+INA1L2MFKoshdhn1m/mJiTse
-	BamA==
-X-Gm-Message-State: APf1xPCNWm/3FmiiCo8EE21EEeDKzwdiWeIkWXiBy2ubO7e0n3YKF/vK
-	QFN6MdaYfsSegX0AippsEyjfbQ==
-X-Received: by 2002:a17:902:4c88:: with SMTP id
-	b8-v6mr9492851ple.233.1518891810059; 
-	Sat, 17 Feb 2018 10:23:30 -0800 (PST)
+	bh=crjT9mdFhV4QIVceZtyE/uLyIPkijbglCCBt+D3M/dI=;
+	b=JU+3ZJ9wNyXY87OMEFDRQI5835olrKHlpMThOlTG/6wqbVXHzVLYFM50th1qE0+PLW
+	U0kAweoi7KwCwDKADlaIwYwN+NuILeYrHOAB67XqTIauWHjnjzYoumNlXZWRTzRjJOqE
+	WWfCEVEl+I9ifGN69T/pnbiMpcXhevtwfwnNUhCzrnQe923tXrM8wSc6ghZg+8nlMeMP
+	GS4pMbXT9ikB5TDw4Dx3TAwPGTPvu+kvuSsI5FrnKO5Ur30nPBCEQ7Ubw/GHvX0VLukL
+	FvC2jddv5fThmwtVXNBK0D9G7JcsWUwPWuVqzLQI0Ij1T/YJlkrEhn+G/4+4tTrcosnF
+	TfjA==
+X-Gm-Message-State: APf1xPBKS9GkYvtbyL5XzxjIqpLNUEqgkfY9JO7zrKJk0AaqIx3KV3eE
+	b4AY30twVfoRWVM0JGdCXUtCKfl+jwc=
+X-Received: by 2002:a17:902:8304:: with SMTP id
+	bd4-v6mr9608299plb.123.1518891812941; 
+	Sat, 17 Feb 2018 10:23:32 -0800 (PST)
 Received: from cloudburst.twiddle.net ([50.0.192.64])
 	by smtp.gmail.com with ESMTPSA id
-	h15sm13466712pfi.56.2018.02.17.10.23.28
+	h15sm13466712pfi.56.2018.02.17.10.23.31
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Sat, 17 Feb 2018 10:23:29 -0800 (PST)
+	Sat, 17 Feb 2018 10:23:32 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Sat, 17 Feb 2018 10:22:18 -0800
-Message-Id: <20180217182323.25885-3-richard.henderson@linaro.org>
+Date: Sat, 17 Feb 2018 10:22:20 -0800
+Message-Id: <20180217182323.25885-5-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.14.3
 In-Reply-To: <20180217182323.25885-1-richard.henderson@linaro.org>
 References: <20180217182323.25885-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c01::243
-Subject: [Qemu-arm] [PATCH v2 02/67] target/arm: Introduce translate-a64.h
+X-Received-From: 2607:f8b0:400e:c01::242
+Subject: [Qemu-arm] [PATCH v2 04/67] target/arm: Implement SVE Bitwise
+ Logical - Unpredicated Group
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,340 +109,93 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hpiszkVaTdiI
+X-TUID: b6VGyI+upphi
 
-Move some stuff that will be common to both translate-a64.c
-and translate-sve.c.
+These were the instructions that were stubbed out when
+introducing the decode skeleton.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate-a64.h | 110 +++++++++++++++++++++++++++++++++++++++++++++
- target/arm/translate-a64.c | 101 ++++++-----------------------------------
- 2 files changed, 123 insertions(+), 88 deletions(-)
- create mode 100644 target/arm/translate-a64.h
+ target/arm/translate-sve.c | 50 +++++++++++++++++++++++++++++++++++++++-------
+ 1 file changed, 43 insertions(+), 7 deletions(-)
 
-diff --git a/target/arm/translate-a64.h b/target/arm/translate-a64.h
-new file mode 100644
-index 0000000000..e519aee314
---- /dev/null
-+++ b/target/arm/translate-a64.h
-@@ -0,0 +1,110 @@
-+/*
-+ *  AArch64 translation, common definitions.
-+ *
-+ * This library is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU Lesser General Public
-+ * License as published by the Free Software Foundation; either
-+ * version 2 of the License, or (at your option) any later version.
-+ *
-+ * This library is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * Lesser General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU Lesser General Public
-+ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#ifndef TARGET_ARM_TRANSLATE_A64_H
-+#define TARGET_ARM_TRANSLATE_A64_H
-+
-+void unallocated_encoding(DisasContext *s);
-+
-+#define unsupported_encoding(s, insn)                                    \
-+    do {                                                                 \
-+        qemu_log_mask(LOG_UNIMP,                                         \
-+                      "%s:%d: unsupported instruction encoding 0x%08x "  \
-+                      "at pc=%016" PRIx64 "\n",                          \
-+                      __FILE__, __LINE__, insn, s->pc - 4);              \
-+        unallocated_encoding(s);                                         \
-+    } while (0)
-+
-+TCGv_i64 new_tmp_a64(DisasContext *s);
-+TCGv_i64 new_tmp_a64_zero(DisasContext *s);
-+TCGv_i64 cpu_reg(DisasContext *s, int reg);
-+TCGv_i64 cpu_reg_sp(DisasContext *s, int reg);
-+TCGv_i64 read_cpu_reg(DisasContext *s, int reg, int sf);
-+TCGv_i64 read_cpu_reg_sp(DisasContext *s, int reg, int sf);
-+void write_fp_dreg(DisasContext *s, int reg, TCGv_i64 v);
-+TCGv_ptr get_fpstatus_ptr(bool);
-+bool logic_imm_decode_wmask(uint64_t *result, unsigned int immn,
-+                            unsigned int imms, unsigned int immr);
-+uint64_t vfp_expand_imm(int size, uint8_t imm8);
-+
-+/* We should have at some point before trying to access an FP register
-+ * done the necessary access check, so assert that
-+ * (a) we did the check and
-+ * (b) we didn't then just plough ahead anyway if it failed.
-+ * Print the instruction pattern in the abort message so we can figure
-+ * out what we need to fix if a user encounters this problem in the wild.
-+ */
-+static inline void assert_fp_access_checked(DisasContext *s)
-+{
-+#ifdef CONFIG_DEBUG_TCG
-+    if (unlikely(!s->fp_access_checked || s->fp_excp_el)) {
-+        fprintf(stderr, "target-arm: FP access check missing for "
-+                "instruction 0x%08x\n", s->insn);
-+        abort();
-+    }
-+#endif
-+}
-+
-+/* Return the offset into CPUARMState of an element of specified
-+ * size, 'element' places in from the least significant end of
-+ * the FP/vector register Qn.
-+ */
-+static inline int vec_reg_offset(DisasContext *s, int regno,
-+                                 int element, TCGMemOp size)
-+{
-+    int offs = 0;
-+#ifdef HOST_WORDS_BIGENDIAN
-+    /* This is complicated slightly because vfp.zregs[n].d[0] is
-+     * still the low half and vfp.zregs[n].d[1] the high half
-+     * of the 128 bit vector, even on big endian systems.
-+     * Calculate the offset assuming a fully bigendian 128 bits,
-+     * then XOR to account for the order of the two 64 bit halves.
-+     */
-+    offs += (16 - ((element + 1) * (1 << size)));
-+    offs ^= 8;
-+#else
-+    offs += element * (1 << size);
-+#endif
-+    offs += offsetof(CPUARMState, vfp.zregs[regno]);
-+    assert_fp_access_checked(s);
-+    return offs;
-+}
-+
-+/* Return the offset info CPUARMState of the "whole" vector register Qn.  */
-+static inline int vec_full_reg_offset(DisasContext *s, int regno)
-+{
-+    assert_fp_access_checked(s);
-+    return offsetof(CPUARMState, vfp.zregs[regno]);
-+}
-+
-+/* Return a newly allocated pointer to the vector register.  */
-+static inline TCGv_ptr vec_full_reg_ptr(DisasContext *s, int regno)
-+{
-+    TCGv_ptr ret = tcg_temp_new_ptr();
-+    tcg_gen_addi_ptr(ret, cpu_env, vec_full_reg_offset(s, regno));
-+    return ret;
-+}
-+
-+/* Return the byte size of the "whole" vector register, VL / 8.  */
-+static inline int vec_full_reg_size(DisasContext *s)
-+{
-+    return s->sve_len;
-+}
-+
-+bool disas_sve(DisasContext *, uint32_t);
-+
-+#endif /* TARGET_ARM_TRANSLATE_A64_H */
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 032cbfa17d..e0e7ebf68c 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -36,13 +36,13 @@
- #include "exec/log.h"
- 
+diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+index 2c9e4733cb..50cf2a1fdd 100644
+--- a/target/arm/translate-sve.c
++++ b/target/arm/translate-sve.c
+@@ -32,6 +32,10 @@
  #include "trace-tcg.h"
-+#include "translate-a64.h"
+ #include "translate-a64.h"
  
- static TCGv_i64 cpu_X[32];
- static TCGv_i64 cpu_pc;
- 
- /* Load/store exclusive handling */
- static TCGv_i64 cpu_exclusive_high;
--static TCGv_i64 cpu_reg(DisasContext *s, int reg);
- 
- static const char *regnames[] = {
-     "x0", "x1", "x2", "x3", "x4", "x5", "x6", "x7",
-@@ -392,22 +392,13 @@ static inline void gen_goto_tb(DisasContext *s, int n, uint64_t dest)
-     }
- }
- 
--static void unallocated_encoding(DisasContext *s)
-+void unallocated_encoding(DisasContext *s)
- {
-     /* Unallocated and reserved encodings are uncategorized */
-     gen_exception_insn(s, 4, EXCP_UDEF, syn_uncategorized(),
-                        default_exception_el(s));
- }
- 
--#define unsupported_encoding(s, insn)                                    \
--    do {                                                                 \
--        qemu_log_mask(LOG_UNIMP,                                         \
--                      "%s:%d: unsupported instruction encoding 0x%08x "  \
--                      "at pc=%016" PRIx64 "\n",                          \
--                      __FILE__, __LINE__, insn, s->pc - 4);              \
--        unallocated_encoding(s);                                         \
--    } while (0)
--
- static void init_tmp_a64_array(DisasContext *s)
- {
- #ifdef CONFIG_DEBUG_TCG
-@@ -425,13 +416,13 @@ static void free_tmp_a64(DisasContext *s)
-     init_tmp_a64_array(s);
- }
- 
--static TCGv_i64 new_tmp_a64(DisasContext *s)
-+TCGv_i64 new_tmp_a64(DisasContext *s)
- {
-     assert(s->tmp_a64_count < TMP_A64_MAX);
-     return s->tmp_a64[s->tmp_a64_count++] = tcg_temp_new_i64();
- }
- 
--static TCGv_i64 new_tmp_a64_zero(DisasContext *s)
-+TCGv_i64 new_tmp_a64_zero(DisasContext *s)
- {
-     TCGv_i64 t = new_tmp_a64(s);
-     tcg_gen_movi_i64(t, 0);
-@@ -453,7 +444,7 @@ static TCGv_i64 new_tmp_a64_zero(DisasContext *s)
-  * to cpu_X[31] and ZR accesses to a temporary which can be discarded.
-  * This is the point of the _sp forms.
++typedef void GVecGen2Fn(unsigned, uint32_t, uint32_t, uint32_t, uint32_t);
++typedef void GVecGen3Fn(unsigned, uint32_t, uint32_t,
++                        uint32_t, uint32_t, uint32_t);
++
+ /*
+  * Include the generated decoder.
   */
--static TCGv_i64 cpu_reg(DisasContext *s, int reg)
-+TCGv_i64 cpu_reg(DisasContext *s, int reg)
- {
-     if (reg == 31) {
-         return new_tmp_a64_zero(s);
-@@ -463,7 +454,7 @@ static TCGv_i64 cpu_reg(DisasContext *s, int reg)
- }
- 
- /* register access for when 31 == SP */
--static TCGv_i64 cpu_reg_sp(DisasContext *s, int reg)
-+TCGv_i64 cpu_reg_sp(DisasContext *s, int reg)
- {
-     return cpu_X[reg];
- }
-@@ -472,7 +463,7 @@ static TCGv_i64 cpu_reg_sp(DisasContext *s, int reg)
-  * representing the register contents. This TCGv is an auto-freed
-  * temporary so it need not be explicitly freed, and may be modified.
+@@ -42,22 +46,54 @@
+  * Implement all of the translator functions referenced by the decoder.
   */
--static TCGv_i64 read_cpu_reg(DisasContext *s, int reg, int sf)
-+TCGv_i64 read_cpu_reg(DisasContext *s, int reg, int sf)
+ 
+-static void trans_AND_zzz(DisasContext *s, arg_AND_zzz *a, uint32_t insn)
++/* Invoke a vector expander on two Zregs.  */
++static void do_vector2_z(DisasContext *s, GVecGen2Fn *gvec_fn,
++                         int esz, int rd, int rn)
  {
-     TCGv_i64 v = new_tmp_a64(s);
-     if (reg != 31) {
-@@ -487,7 +478,7 @@ static TCGv_i64 read_cpu_reg(DisasContext *s, int reg, int sf)
-     return v;
+-    unsupported_encoding(s, insn);
++    unsigned vsz = vec_full_reg_size(s);
++    gvec_fn(esz, vec_full_reg_offset(s, rd),
++            vec_full_reg_offset(s, rn), vsz, vsz);
  }
  
--static TCGv_i64 read_cpu_reg_sp(DisasContext *s, int reg, int sf)
-+TCGv_i64 read_cpu_reg_sp(DisasContext *s, int reg, int sf)
+-static void trans_ORR_zzz(DisasContext *s, arg_ORR_zzz *a, uint32_t insn)
++/* Invoke a vector expander on three Zregs.  */
++static void do_vector3_z(DisasContext *s, GVecGen3Fn *gvec_fn,
++                         int esz, int rd, int rn, int rm)
  {
-     TCGv_i64 v = new_tmp_a64(s);
-     if (sf) {
-@@ -498,72 +489,6 @@ static TCGv_i64 read_cpu_reg_sp(DisasContext *s, int reg, int sf)
-     return v;
+-    unsupported_encoding(s, insn);
++    unsigned vsz = vec_full_reg_size(s);
++    gvec_fn(esz, vec_full_reg_offset(s, rd), vec_full_reg_offset(s, rn),
++            vec_full_reg_offset(s, rm), vsz, vsz);
  }
  
--/* We should have at some point before trying to access an FP register
-- * done the necessary access check, so assert that
-- * (a) we did the check and
-- * (b) we didn't then just plough ahead anyway if it failed.
-- * Print the instruction pattern in the abort message so we can figure
-- * out what we need to fix if a user encounters this problem in the wild.
-- */
--static inline void assert_fp_access_checked(DisasContext *s)
--{
--#ifdef CONFIG_DEBUG_TCG
--    if (unlikely(!s->fp_access_checked || s->fp_excp_el)) {
--        fprintf(stderr, "target-arm: FP access check missing for "
--                "instruction 0x%08x\n", s->insn);
--        abort();
--    }
--#endif
--}
--
--/* Return the offset into CPUARMState of an element of specified
-- * size, 'element' places in from the least significant end of
-- * the FP/vector register Qn.
-- */
--static inline int vec_reg_offset(DisasContext *s, int regno,
--                                 int element, TCGMemOp size)
--{
--    int offs = 0;
--#ifdef HOST_WORDS_BIGENDIAN
--    /* This is complicated slightly because vfp.zregs[n].d[0] is
--     * still the low half and vfp.zregs[n].d[1] the high half
--     * of the 128 bit vector, even on big endian systems.
--     * Calculate the offset assuming a fully bigendian 128 bits,
--     * then XOR to account for the order of the two 64 bit halves.
--     */
--    offs += (16 - ((element + 1) * (1 << size)));
--    offs ^= 8;
--#else
--    offs += element * (1 << size);
--#endif
--    offs += offsetof(CPUARMState, vfp.zregs[regno]);
--    assert_fp_access_checked(s);
--    return offs;
--}
--
--/* Return the offset info CPUARMState of the "whole" vector register Qn.  */
--static inline int vec_full_reg_offset(DisasContext *s, int regno)
--{
--    assert_fp_access_checked(s);
--    return offsetof(CPUARMState, vfp.zregs[regno]);
--}
--
--/* Return a newly allocated pointer to the vector register.  */
--static TCGv_ptr vec_full_reg_ptr(DisasContext *s, int regno)
--{
--    TCGv_ptr ret = tcg_temp_new_ptr();
--    tcg_gen_addi_ptr(ret, cpu_env, vec_full_reg_offset(s, regno));
--    return ret;
--}
--
--/* Return the byte size of the "whole" vector register, VL / 8.  */
--static inline int vec_full_reg_size(DisasContext *s)
--{
--    /* FIXME SVE: We should put the composite ZCR_EL* value into tb->flags.
--       In the meantime this is just the AdvSIMD length of 128.  */
--    return 128 / 8;
--}
--
- /* Return the offset into CPUARMState of a slice (from
-  * the least significant end) of FP register Qn (ie
-  * Dn, Sn, Hn or Bn).
-@@ -620,7 +545,7 @@ static void clear_vec_high(DisasContext *s, bool is_q, int rd)
-     }
+-static void trans_EOR_zzz(DisasContext *s, arg_EOR_zzz *a, uint32_t insn)
++/* Invoke a vector move on two Zregs.  */
++static void do_mov_z(DisasContext *s, int rd, int rn)
+ {
+-    unsupported_encoding(s, insn);
++    do_vector2_z(s, tcg_gen_gvec_mov, 0, rd, rn);
++}
++
++/*
++ *** SVE Logical - Unpredicated Group
++ */
++
++static void trans_AND_zzz(DisasContext *s, arg_rrr_esz *a, uint32_t insn)
++{
++    do_vector3_z(s, tcg_gen_gvec_and, 0, a->rd, a->rn, a->rm);
++}
++
++static void trans_ORR_zzz(DisasContext *s, arg_rrr_esz *a, uint32_t insn)
++{
++    if (a->rn == a->rm) { /* MOV */
++        do_mov_z(s, a->rd, a->rn);
++    } else {
++        do_vector3_z(s, tcg_gen_gvec_or, 0, a->rd, a->rn, a->rm);
++    }
++}
++
++static void trans_EOR_zzz(DisasContext *s, arg_rrr_esz *a, uint32_t insn)
++{
++    do_vector3_z(s, tcg_gen_gvec_xor, 0, a->rd, a->rn, a->rm);
  }
  
--static void write_fp_dreg(DisasContext *s, int reg, TCGv_i64 v)
-+void write_fp_dreg(DisasContext *s, int reg, TCGv_i64 v)
+ static void trans_BIC_zzz(DisasContext *s, arg_BIC_zzz *a, uint32_t insn)
  {
-     unsigned ofs = fp_reg_offset(s, reg, MO_64);
- 
-@@ -637,7 +562,7 @@ static void write_fp_sreg(DisasContext *s, int reg, TCGv_i32 v)
-     tcg_temp_free_i64(tmp);
+-    unsupported_encoding(s, insn);
++    do_vector3_z(s, tcg_gen_gvec_andc, 0, a->rd, a->rn, a->rm);
  }
- 
--static TCGv_ptr get_fpstatus_ptr(bool is_f16)
-+TCGv_ptr get_fpstatus_ptr(bool is_f16)
- {
-     TCGv_ptr statusptr = tcg_temp_new_ptr();
-     int offset;
-@@ -3130,8 +3055,8 @@ static inline uint64_t bitmask64(unsigned int length)
-  * value (ie should cause a guest UNDEF exception), and true if they are
-  * valid, in which case the decoded bit pattern is written to result.
-  */
--static bool logic_imm_decode_wmask(uint64_t *result, unsigned int immn,
--                                   unsigned int imms, unsigned int immr)
-+bool logic_imm_decode_wmask(uint64_t *result, unsigned int immn,
-+                            unsigned int imms, unsigned int immr)
- {
-     uint64_t mask;
-     unsigned e, levels, s, r;
-@@ -5164,7 +5089,7 @@ static void disas_fp_3src(DisasContext *s, uint32_t insn)
-  * the range 01....1xx to 10....0xx, and the most significant 4 bits of
-  * the mantissa; see VFPExpandImm() in the v8 ARM ARM.
-  */
--static uint64_t vfp_expand_imm(int size, uint8_t imm8)
-+uint64_t vfp_expand_imm(int size, uint8_t imm8)
- {
-     uint64_t imm;
- 
 -- 
 2.14.3
 

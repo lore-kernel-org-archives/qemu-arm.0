@@ -1,99 +1,99 @@
-Received: by 10.28.71.27 with SMTP id u27csp2088851wma;
-        Sat, 17 Feb 2018 10:51:01 -0800 (PST)
-X-Google-Smtp-Source: AH8x22788Uu5h6aCVlf1N0r+mWzMrgw9iIYqo6Qo+6yoSGXWEm/bg2LBViNj6b8C+MGGeoi+VqCC
-X-Received: by 10.37.8.6 with SMTP id 6mr6943057ybi.203.1518893461526;
-        Sat, 17 Feb 2018 10:51:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518893461; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp2088967wma;
+        Sat, 17 Feb 2018 10:51:13 -0800 (PST)
+X-Google-Smtp-Source: AH8x225Zw3HG6l+9uBlHwHz7CiSDi+xhWkJr5n6Rl/f5S4MgWHuqAt0TcN/5wBHpoZyxdVpiorpr
+X-Received: by 10.13.200.134 with SMTP id k128mr7337000ywd.390.1518893473685;
+        Sat, 17 Feb 2018 10:51:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518893473; cv=none;
         d=google.com; s=arc-20160816;
-        b=CQ4mHFPN+fP/jD1EF2M6IS9pVY2bPdLWAeaTXtMFNu6A8ryuxCiwGmEhNZkuQactPp
-         cJ8UIrwbewIwI3PVYI5DeGgVqJPZEjgC4YaAL83qqPz5hOsy6cKLk/rQvHp7IIinc/r6
-         eWTqUL/PT9Opt9jtb3vX5aPYSDfx/3GbQA/FBH5J5VZ06BcZpbUGSzv4/JGW3LBjkxgm
-         /4wjB9lwrHETXZmhyl7I7I57CwSZ22iy7XGTSYJ7diBnkggpq8yG9ZPY1nMfYdRO56nj
-         0F/zLdcu70jm3MHVpwS8zdvIsIeYo8UEiBL7yU9MMx3bT5/aGwP0ZW6ZY9n5vv1oirBp
-         EOPA==
+        b=ZILQh2Fg3XO+tByZpzS4CMNaMqM6ghBFZtTczLOh7dbisnKAt1vjBbqOOBpfbWxYED
+         dhqq0iLqgaMH67jKIJ6JhGPSmW7ZnZhqVnb9RdJtmPAzl/jKh9zZ2Ufrk1Xs+2BNFYwB
+         uVK+vxQn72btW7n6jQ+9yZncQ305JlzXyTglhwpi3JvGxYeWAGGQMRXD6DUiXqiHgakx
+         sn875ZL5VtFC0wfm/riZ+lUWXyveR86HMi/HujVWavWQaEyYpZ8gPGPOET2aLTXtr6PV
+         gh0xsSWWq1kmt1BTc0VPoMu+9KlKmPPCNcmSsOG0f4wHZ1KckUeEvwLy2LKy6rz858M8
+         uzSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=rsh86Uyni96VeArd/ErWXmUyZyr8qyIKJCMXUaKWZU0=;
-        b=av2SoZ7/Mv2bXVt56YBknUP4w6GEiHgsZhaCPVVHbgso7XdDfVTJBMcdTMMchhGzqm
-         NTy/k5xIjGZhNBM9+AFfjOKopezAKhhAMQfW1wUp1bnq6pZh1R04THE7tJKTz0hQ4iUt
-         8XUBs/M+o3OIg3+mwNLtPewo4OMcegPslF7SJFmOJ08E9rSoy+c+N6fpwcKrFm+L5xWI
-         FTJy1tUKshUhzx42fdlzstndb+TS9dCkvrkbAuMFr+enrR5rXnSWBoYHPof3EJc9xQbb
-         xigPg0Hp7Otv4wOeFkNcXJ3Qprv0HstpoC/9I3rXZbiz/6Bp10XNL+/FmOPFiN5jQFop
-         BkpQ==
+        bh=gs8jk3SnvU+rkac2DB/AmJreOmTjHJdoAqlQrUA8wrI=;
+        b=F+TomhmRk64X0ZK/KlBDkurPhEI1B1/Iln7M2yF9Ovl/SzsySB26C2uocF/MwUalJl
+         ogB9zlUeGPXsQLsROkO9IePsRd2GWP1GtX6srnih4FQJrGaOzwym1BpGbW4FyxfE18ij
+         iNDKDfD2GluCG/sgNikATfLSqDRbtiKyXIB2KrfLwlPa0D7gJqth0U500to1hHgW4p7w
+         vIWEn4wGuOoLbqsOUNMavy6hWE7EHdaXB/LNPKlmWjcBm9b99yftWIUBN+BrE0s16Cn7
+         a9fD1rhXIBa/KKgatfBqWU17I2i1wDo8zZ6Lk8m+VgD25zk9NOcOcvWJlbigy0hJlvMy
+         6YVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ghV2xgAl;
+       dkim=fail header.i=@linaro.org header.s=google header.b=LJskhUr+;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o8si3015269ywa.257.2018.02.17.10.51.01
+        by mx.google.com with ESMTPS id p17si3502844ybj.636.2018.02.17.10.51.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 17 Feb 2018 10:51:01 -0800 (PST)
+        Sat, 17 Feb 2018 10:51:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ghV2xgAl;
+       dkim=fail header.i=@linaro.org header.s=google header.b=LJskhUr+;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48265 helo=lists.gnu.org)
+Received: from localhost ([::1]:48271 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1en7Zc-0005Jz-R7
-	for alex.bennee@linaro.org; Sat, 17 Feb 2018 13:51:00 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40072)
+	id 1en7Zp-0005dI-4e
+	for alex.bennee@linaro.org; Sat, 17 Feb 2018 13:51:13 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40199)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1en79c-0000ho-1p
-	for qemu-devel@nongnu.org; Sat, 17 Feb 2018 13:24:10 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1en79k-0000sp-6u
+	for qemu-devel@nongnu.org; Sat, 17 Feb 2018 13:24:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1en79Z-0001kR-Fa
-	for qemu-devel@nongnu.org; Sat, 17 Feb 2018 13:24:08 -0500
-Received: from mail-pf0-x244.google.com ([2607:f8b0:400e:c00::244]:44407)
+	(envelope-from <richard.henderson@linaro.org>) id 1en79h-0001pf-Gj
+	for qemu-devel@nongnu.org; Sat, 17 Feb 2018 13:24:16 -0500
+Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:32803)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1en79Z-0001k9-6V
-	for qemu-devel@nongnu.org; Sat, 17 Feb 2018 13:24:05 -0500
-Received: by mail-pf0-x244.google.com with SMTP id 17so590931pfw.11
-	for <qemu-devel@nongnu.org>; Sat, 17 Feb 2018 10:24:05 -0800 (PST)
+	id 1en79h-0001pG-0e
+	for qemu-devel@nongnu.org; Sat, 17 Feb 2018 13:24:13 -0500
+Received: by mail-pf0-x241.google.com with SMTP id b8so525376pfh.0
+	for <qemu-devel@nongnu.org>; Sat, 17 Feb 2018 10:24:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=rsh86Uyni96VeArd/ErWXmUyZyr8qyIKJCMXUaKWZU0=;
-	b=ghV2xgAlpAyAP7tkVG4GrFsiHoirQYM8f+3fMFeHpeaGG20n5nCteUNfgOcoOjMrf2
-	7Y4+pB6+l4ikquN+LOzSWDNiHwYhcjNDK+AZ69QMN8jyV4QIB2wBEdGa7QgDI16lqh1M
-	GCIuHHH5atOAJH+aiJbArC+p4rzp22kKOmcLQ=
+	bh=gs8jk3SnvU+rkac2DB/AmJreOmTjHJdoAqlQrUA8wrI=;
+	b=LJskhUr+Lqcy5YCUHndW+/zRbO1Yr+Xb46iNwLPDW+Qfl9kYsg2QJYohKg8ctgeX4E
+	d3QhS4fU4tzMj35JfRn8C97WEdULBgrFvF0dYljq4YizNitO+79qa1PNcv2crCYvTw5M
+	A0suKjhxnqfuIFfW1a+Oza5KwkUYCRG/9dxBQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=rsh86Uyni96VeArd/ErWXmUyZyr8qyIKJCMXUaKWZU0=;
-	b=D1bxWO31C63itXncltWZbHQf/fVmQ7q7D47e0KAM4awxcdhZFBeFbvpry6FcDi17zQ
-	aTFL7x2hF9kgAuruQZz4ldYelSZc74pFb1GG3W8QJYbDtavJxXQ9MlYg8PYOfhnslada
-	sh7wSXuWn6+PQEOJOonJAHAXnEuG+YdmEyaO7fltWw5eOHAgnMjhTDi8a8xLTm9Vzbec
-	hI8vS3SY1xvB5WU7cSEEnZNXas2qTmYFOQDRDSjkCnjP0JPBrXTra4QPB+RLnpTJs7kp
-	nNxk2nM4OcjMVnzABFC2B8cvW50fT7p4LFm5OhKUltjsm2WZrawHCansqhihUE1WL63O
-	UjCA==
-X-Gm-Message-State: APf1xPAHJWrYsRnEVJSu8/I52sRrWIj8sQQwfjPvUREAzfH/6ePNaxZn
-	PnTjW5XJ0cMON4eD74D/tArOz2yF83U=
-X-Received: by 10.98.208.3 with SMTP id p3mr9790778pfg.8.1518891843780;
-	Sat, 17 Feb 2018 10:24:03 -0800 (PST)
+	bh=gs8jk3SnvU+rkac2DB/AmJreOmTjHJdoAqlQrUA8wrI=;
+	b=TTLpgb8vDZTBf/UC42k+81ChOHq22U2JqF25mNPH3jP8trp4ptCJCnKgIxSvXHWWzF
+	RkGMOQlXfngdnku1oWOA/O/u9maoRwF8hDnlNMdpQjucKRtimROi8F+p6UsmyUGo44BG
+	p54glat9U+iKdiijKYnDS/DrX7c3CkP3Pyh7ta1h2eBsjIksSL1nZfz8hDu2EgdjBZxZ
+	ipsoelRDVuJbGf6lQSKl9rITB5S4WAyxZooKs4crnT5Jh6NdXNPFsnJOgFrAV9aQinUo
+	fCNfe9ckWUmAbrf6QI3aNc+HcIsftoCOLfldSz1cgQMoJEZIrYW01hEvgUCjEgVB5FnA
+	ChGA==
+X-Gm-Message-State: APf1xPDETgwCE37oXnBxEvqxKzVPCBS2UXd7EHIr/3/7P3Bnx6ex+fwL
+	OcXpv3SI+p5IJo6uI9RDwLSSdnMGm7g=
+X-Received: by 10.99.63.9 with SMTP id m9mr8511033pga.247.1518891851631;
+	Sat, 17 Feb 2018 10:24:11 -0800 (PST)
 Received: from cloudburst.twiddle.net ([50.0.192.64])
 	by smtp.gmail.com with ESMTPSA id
-	h15sm13466712pfi.56.2018.02.17.10.24.02
+	h15sm13466712pfi.56.2018.02.17.10.24.10
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Sat, 17 Feb 2018 10:24:02 -0800 (PST)
+	Sat, 17 Feb 2018 10:24:10 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Sat, 17 Feb 2018 10:22:39 -0800
-Message-Id: <20180217182323.25885-24-richard.henderson@linaro.org>
+Date: Sat, 17 Feb 2018 10:22:44 -0800
+Message-Id: <20180217182323.25885-29-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.14.3
 In-Reply-To: <20180217182323.25885-1-richard.henderson@linaro.org>
 References: <20180217182323.25885-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c00::244
-Subject: [Qemu-devel] [PATCH v2 23/67] target/arm: Implement SVE Element
- Count Group
+X-Received-From: 2607:f8b0:400e:c00::241
+Subject: [Qemu-devel] [PATCH v2 28/67] target/arm: Implement SVE Permute -
+ Predicates Group
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,550 +108,478 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5xXrZi0ypzO0
+X-TUID: RLttXhK5RpZ3
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper-sve.h    |  11 ++
- target/arm/sve_helper.c    | 136 ++++++++++++++++++++++
- target/arm/translate-sve.c | 274 ++++++++++++++++++++++++++++++++++++++++++++-
- target/arm/sve.decode      |  30 ++++-
- 4 files changed, 448 insertions(+), 3 deletions(-)
+ target/arm/helper-sve.h    |   6 +
+ target/arm/sve_helper.c    | 280 +++++++++++++++++++++++++++++++++++++++++++++
+ target/arm/translate-sve.c | 110 ++++++++++++++++++
+ target/arm/sve.decode      |  18 +++
+ 4 files changed, 414 insertions(+)
 
 diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-index 4f1bd5a62f..2831e1643b 100644
+index 0c9aad575e..ff958fcebd 100644
 --- a/target/arm/helper-sve.h
 +++ b/target/arm/helper-sve.h
-@@ -393,6 +393,17 @@ DEF_HELPER_FLAGS_4(sve_ftssel_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(sve_ftssel_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(sve_ftssel_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+@@ -439,6 +439,12 @@ DEF_HELPER_FLAGS_3(sve_uunpk_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_3(sve_uunpk_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_3(sve_uunpk_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
  
-+DEF_HELPER_FLAGS_4(sve_sqaddi_b, TCG_CALL_NO_RWG, void, ptr, ptr, s32, i32)
-+DEF_HELPER_FLAGS_4(sve_sqaddi_h, TCG_CALL_NO_RWG, void, ptr, ptr, s32, i32)
-+DEF_HELPER_FLAGS_4(sve_sqaddi_s, TCG_CALL_NO_RWG, void, ptr, ptr, s64, i32)
-+DEF_HELPER_FLAGS_4(sve_sqaddi_d, TCG_CALL_NO_RWG, void, ptr, ptr, s64, i32)
-+
-+DEF_HELPER_FLAGS_4(sve_uqaddi_b, TCG_CALL_NO_RWG, void, ptr, ptr, s32, i32)
-+DEF_HELPER_FLAGS_4(sve_uqaddi_h, TCG_CALL_NO_RWG, void, ptr, ptr, s32, i32)
-+DEF_HELPER_FLAGS_4(sve_uqaddi_s, TCG_CALL_NO_RWG, void, ptr, ptr, s64, i32)
-+DEF_HELPER_FLAGS_4(sve_uqaddi_d, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
-+DEF_HELPER_FLAGS_4(sve_uqsubi_d, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
++DEF_HELPER_FLAGS_4(sve_zip_p, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve_uzp_p, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve_trn_p, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(sve_rev_p, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(sve_punpk_p, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
 +
  DEF_HELPER_FLAGS_5(sve_and_pppp, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
  DEF_HELPER_FLAGS_5(sve_bic_pppp, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
  DEF_HELPER_FLAGS_5(sve_eor_pppp, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
 diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index b4f70af23f..cfda16d520 100644
+index 466a209c1e..c3a2706a16 100644
 --- a/target/arm/sve_helper.c
 +++ b/target/arm/sve_helper.c
-@@ -1225,3 +1225,139 @@ void HELPER(sve_ftssel_d)(void *vd, void *vn, void *vm, uint32_t desc)
-         d[i] = nn ^ (mm & 2) << 62;
-     }
- }
+@@ -1664,3 +1664,283 @@ DO_UNPK(sve_uunpk_s, uint32_t, uint16_t, H4, H2)
+ DO_UNPK(sve_uunpk_d, uint64_t, uint32_t, , H4)
+ 
+ #undef DO_UNPK
 +
-+/*
-+ * Signed saturating addition with scalar operand.
-+ */
++static const uint64_t expand_bit_data[5][2] = {
++    { 0x1111111111111111ull, 0x2222222222222222ull },
++    { 0x0303030303030303ull, 0x0c0c0c0c0c0c0c0cull },
++    { 0x000f000f000f000full, 0x00f000f000f000f0ull },
++    { 0x000000ff000000ffull, 0x0000ff000000ff00ull },
++    { 0x000000000000ffffull, 0x00000000ffff0000ull }
++};
 +
-+void HELPER(sve_sqaddi_b)(void *d, void *a, int32_t b, uint32_t desc)
++/* Expand units of 2**N bits to units of 2**(N+1) bits,
++   with the higher bits zero.  */
++static uint64_t expand_bits(uint64_t x, int n)
 +{
-+    intptr_t i, oprsz = simd_oprsz(desc);
++    int i, sh;
++    for (i = 4, sh = 16; i >= n; i--, sh >>= 1) {
++        x = ((x & expand_bit_data[i][1]) << sh) | (x & expand_bit_data[i][0]);
++    }
++    return x;
++}
 +
-+    for (i = 0; i < oprsz; i += sizeof(int8_t)) {
-+        int r = *(int8_t *)(a + i) + b;
-+        if (r > INT8_MAX) {
-+            r = INT8_MAX;
-+        } else if (r < INT8_MIN) {
-+            r = INT8_MIN;
++/* Compress units of 2**(N+1) bits to units of 2**N bits.  */
++static uint64_t compress_bits(uint64_t x, int n)
++{
++    int i, sh;
++    for (i = n, sh = 1 << n; i <= 4; i++, sh <<= 1) {
++        x = ((x >> sh) & expand_bit_data[i][1]) | (x & expand_bit_data[i][0]);
++    }
++    return x;
++}
++
++void HELPER(sve_zip_p)(void *vd, void *vn, void *vm, uint32_t pred_desc)
++{
++    intptr_t oprsz = extract32(pred_desc, 0, SIMD_OPRSZ_BITS) + 2;
++    int esz = extract32(pred_desc, SIMD_DATA_SHIFT, 2);
++    intptr_t high = extract32(pred_desc, SIMD_DATA_SHIFT + 2, 1);
++    uint64_t *d = vd;
++    intptr_t i;
++
++    if (oprsz <= 8) {
++        uint64_t nn = *(uint64_t *)vn;
++        uint64_t mm = *(uint64_t *)vm;
++        int half = 4 * oprsz;
++
++        nn = extract64(nn, high * half, half);
++        mm = extract64(mm, high * half, half);
++        nn = expand_bits(nn, esz);
++        mm = expand_bits(mm, esz);
++        d[0] = nn + (mm << (1 << esz));
++    } else {
++        ARMPredicateReg tmp_n, tmp_m;
++
++        /* We produce output faster than we consume input.
++           Therefore we must be mindful of possible overlap.  */
++        if ((vn - vd) < (uintptr_t)oprsz) {
++            vn = memcpy(&tmp_n, vn, oprsz);
 +        }
-+        *(int8_t *)(d + i) = r;
++        if ((vm - vd) < (uintptr_t)oprsz) {
++            vm = memcpy(&tmp_m, vm, oprsz);
++        }
++        if (high) {
++            high = oprsz >> 1;
++        }
++
++        if ((high & 3) == 0) {
++            uint32_t *n = vn, *m = vm;
++            high >>= 2;
++
++            for (i = 0; i < DIV_ROUND_UP(oprsz, 8); i++) {
++                uint64_t nn = n[H4(high + i)];
++                uint64_t mm = m[H4(high + i)];
++
++                nn = expand_bits(nn, esz);
++                mm = expand_bits(mm, esz);
++                d[i] = nn + (mm << (1 << esz));
++            }
++        } else {
++            uint8_t *n = vn, *m = vm;
++            uint16_t *d16 = vd;
++
++            for (i = 0; i < oprsz / 2; i++) {
++                uint16_t nn = n[H1(high + i)];
++                uint16_t mm = m[H1(high + i)];
++
++                nn = expand_bits(nn, esz);
++                mm = expand_bits(mm, esz);
++                d16[H2(i)] = nn + (mm << (1 << esz));
++            }
++        }
 +    }
 +}
 +
-+void HELPER(sve_sqaddi_h)(void *d, void *a, int32_t b, uint32_t desc)
++void HELPER(sve_uzp_p)(void *vd, void *vn, void *vm, uint32_t pred_desc)
 +{
-+    intptr_t i, oprsz = simd_oprsz(desc);
++    intptr_t oprsz = extract32(pred_desc, 0, SIMD_OPRSZ_BITS) + 2;
++    int esz = extract32(pred_desc, SIMD_DATA_SHIFT, 2);
++    int odd = extract32(pred_desc, SIMD_DATA_SHIFT + 2, 1) << esz;
++    uint64_t *d = vd, *n = vn, *m = vm;
++    uint64_t l, h;
++    intptr_t i;
 +
-+    for (i = 0; i < oprsz; i += sizeof(int16_t)) {
-+        int r = *(int16_t *)(a + i) + b;
-+        if (r > INT16_MAX) {
-+            r = INT16_MAX;
-+        } else if (r < INT16_MIN) {
-+            r = INT16_MIN;
++    if (oprsz <= 8) {
++        l = compress_bits(n[0] >> odd, esz);
++        h = compress_bits(m[0] >> odd, esz);
++        d[0] = extract64(l + (h << (4 * oprsz)), 0, 8 * oprsz);
++    } else {
++        ARMPredicateReg tmp_m;
++        intptr_t oprsz_16 = oprsz / 16;
++
++        if ((vm - vd) < (uintptr_t)oprsz) {
++            m = memcpy(&tmp_m, vm, oprsz);
 +        }
-+        *(int16_t *)(d + i) = r;
++
++        for (i = 0; i < oprsz_16; i++) {
++            l = n[2 * i + 0];
++            h = n[2 * i + 1];
++            l = compress_bits(l >> odd, esz);
++            h = compress_bits(h >> odd, esz);
++            d[i] = l + (h << 32);
++        }
++
++        /* For VL which is not a power of 2, the results from M do not
++           align nicely with the uint64_t for D.  Put the aligned results
++           from M into TMP_M and then copy it into place afterward.  */
++        if (oprsz & 15) {
++            d[i] = compress_bits(n[2 * i] >> odd, esz);
++
++            for (i = 0; i < oprsz_16; i++) {
++                l = m[2 * i + 0];
++                h = m[2 * i + 1];
++                l = compress_bits(l >> odd, esz);
++                h = compress_bits(h >> odd, esz);
++                tmp_m.p[i] = l + (h << 32);
++            }
++            tmp_m.p[i] = compress_bits(m[2 * i] >> odd, esz);
++
++            swap_memmove(vd + oprsz / 2, &tmp_m, oprsz / 2);
++        } else {
++            for (i = 0; i < oprsz_16; i++) {
++                l = m[2 * i + 0];
++                h = m[2 * i + 1];
++                l = compress_bits(l >> odd, esz);
++                h = compress_bits(h >> odd, esz);
++                d[oprsz_16 + i] = l + (h << 32);
++            }
++        }
 +    }
 +}
 +
-+void HELPER(sve_sqaddi_s)(void *d, void *a, int64_t b, uint32_t desc)
-+{
-+    intptr_t i, oprsz = simd_oprsz(desc);
++static const uint64_t even_bit_esz_masks[4] = {
++    0x5555555555555555ull,
++    0x3333333333333333ull,
++    0x0f0f0f0f0f0f0f0full,
++    0x00ff00ff00ff00ffull
++};
 +
-+    for (i = 0; i < oprsz; i += sizeof(int32_t)) {
-+        int64_t r = *(int32_t *)(a + i) + b;
-+        if (r > INT32_MAX) {
-+            r = INT32_MAX;
-+        } else if (r < INT32_MIN) {
-+            r = INT32_MIN;
-+        }
-+        *(int32_t *)(d + i) = r;
++void HELPER(sve_trn_p)(void *vd, void *vn, void *vm, uint32_t pred_desc)
++{
++    intptr_t oprsz = extract32(pred_desc, 0, SIMD_OPRSZ_BITS) + 2;
++    uintptr_t esz = extract32(pred_desc, SIMD_DATA_SHIFT, 2);
++    bool odd = extract32(pred_desc, SIMD_DATA_SHIFT + 2, 1);
++    uint64_t *d = vd, *n = vn, *m = vm;
++    uint64_t mask;
++    int shr, shl;
++    intptr_t i;
++
++    shl = 1 << esz;
++    shr = 0;
++    mask = even_bit_esz_masks[esz];
++    if (odd) {
++        mask <<= shl;
++        shr = shl;
++        shl = 0;
++    }
++
++    for (i = 0; i < DIV_ROUND_UP(oprsz, 8); i++) {
++        uint64_t nn = (n[i] & mask) >> shr;
++        uint64_t mm = (m[i] & mask) << shl;
++        d[i] = nn + mm;
 +    }
 +}
 +
-+void HELPER(sve_sqaddi_d)(void *d, void *a, int64_t b, uint32_t desc)
++/* Reverse units of 2**N bits.  */
++static uint64_t reverse_bits_64(uint64_t x, int n)
 +{
-+    intptr_t i, oprsz = simd_oprsz(desc);
++    int i, sh;
 +
-+    for (i = 0; i < oprsz; i += sizeof(int64_t)) {
-+        int64_t ai = *(int64_t *)(a + i);
-+        int64_t r = ai + b;
-+        if (((r ^ ai) & ~(ai ^ b)) < 0) {
-+            /* Signed overflow.  */
-+            r = (r < 0 ? INT64_MAX : INT64_MIN);
++    x = bswap64(x);
++    for (i = 2, sh = 4; i >= n; i--, sh >>= 1) {
++        uint64_t mask = even_bit_esz_masks[i];
++        x = ((x & mask) << sh) | ((x >> sh) & mask);
++    }
++    return x;
++}
++
++static uint8_t reverse_bits_8(uint8_t x, int n)
++{
++    static const uint8_t mask[3] = { 0x55, 0x33, 0x0f };
++    int i, sh;
++
++    for (i = 2, sh = 4; i >= n; i--, sh >>= 1) {
++        x = ((x & mask[i]) << sh) | ((x >> sh) & mask[i]);
++    }
++    return x;
++}
++
++void HELPER(sve_rev_p)(void *vd, void *vn, uint32_t pred_desc)
++{
++    intptr_t oprsz = extract32(pred_desc, 0, SIMD_OPRSZ_BITS) + 2;
++    int esz = extract32(pred_desc, SIMD_DATA_SHIFT, 2);
++    intptr_t i, oprsz_2 = oprsz / 2;
++
++    if (oprsz <= 8) {
++        uint64_t l = *(uint64_t *)vn;
++        l = reverse_bits_64(l << (64 - 8 * oprsz), esz);
++        *(uint64_t *)vd = l;
++    } else if ((oprsz & 15) == 0) {
++        for (i = 0; i < oprsz_2; i += 8) {
++            intptr_t ih = oprsz - 8 - i;
++            uint64_t l = reverse_bits_64(*(uint64_t *)(vn + i), esz);
++            uint64_t h = reverse_bits_64(*(uint64_t *)(vn + ih), esz);
++            *(uint64_t *)(vd + i) = h;
++            *(uint64_t *)(vd + ih) = l;
 +        }
-+        *(int64_t *)(d + i) = r;
++    } else {
++        for (i = 0; i < oprsz_2; i += 1) {
++            intptr_t il = H1(i);
++            intptr_t ih = H1(oprsz - 1 - i);
++            uint8_t l = reverse_bits_8(*(uint8_t *)(vn + il), esz);
++            uint8_t h = reverse_bits_8(*(uint8_t *)(vn + ih), esz);
++            *(uint8_t *)(vd + il) = h;
++            *(uint8_t *)(vd + ih) = l;
++        }
 +    }
 +}
 +
-+/*
-+ * Unsigned saturating addition with scalar operand.
-+ */
-+
-+void HELPER(sve_uqaddi_b)(void *d, void *a, int32_t b, uint32_t desc)
++void HELPER(sve_punpk_p)(void *vd, void *vn, uint32_t pred_desc)
 +{
-+    intptr_t i, oprsz = simd_oprsz(desc);
++    intptr_t oprsz = extract32(pred_desc, 0, SIMD_OPRSZ_BITS) + 2;
++    intptr_t high = extract32(pred_desc, SIMD_DATA_SHIFT + 2, 1);
++    uint64_t *d = vd;
++    intptr_t i;
 +
-+    for (i = 0; i < oprsz; i += sizeof(uint8_t)) {
-+        int r = *(uint8_t *)(a + i) + b;
-+        if (r > UINT8_MAX) {
-+            r = UINT8_MAX;
-+        } else if (r < 0) {
-+            r = 0;
++    if (oprsz <= 8) {
++        uint64_t nn = *(uint64_t *)vn;
++        int half = 4 * oprsz;
++
++        nn = extract64(nn, high * half, half);
++        nn = expand_bits(nn, 0);
++        d[0] = nn;
++    } else {
++        ARMPredicateReg tmp_n;
++
++        /* We produce output faster than we consume input.
++           Therefore we must be mindful of possible overlap.  */
++        if ((vn - vd) < (uintptr_t)oprsz) {
++            vn = memcpy(&tmp_n, vn, oprsz);
 +        }
-+        *(uint8_t *)(d + i) = r;
-+    }
-+}
-+
-+void HELPER(sve_uqaddi_h)(void *d, void *a, int32_t b, uint32_t desc)
-+{
-+    intptr_t i, oprsz = simd_oprsz(desc);
-+
-+    for (i = 0; i < oprsz; i += sizeof(uint16_t)) {
-+        int r = *(uint16_t *)(a + i) + b;
-+        if (r > UINT16_MAX) {
-+            r = UINT16_MAX;
-+        } else if (r < 0) {
-+            r = 0;
++        if (high) {
++            high = oprsz >> 1;
 +        }
-+        *(uint16_t *)(d + i) = r;
-+    }
-+}
 +
-+void HELPER(sve_uqaddi_s)(void *d, void *a, int64_t b, uint32_t desc)
-+{
-+    intptr_t i, oprsz = simd_oprsz(desc);
++        if ((high & 3) == 0) {
++            uint32_t *n = vn;
++            high >>= 2;
 +
-+    for (i = 0; i < oprsz; i += sizeof(uint32_t)) {
-+        int64_t r = *(uint32_t *)(a + i) + b;
-+        if (r > UINT32_MAX) {
-+            r = UINT32_MAX;
-+        } else if (r < 0) {
-+            r = 0;
++            for (i = 0; i < DIV_ROUND_UP(oprsz, 8); i++) {
++                uint64_t nn = n[H4(high + i)];
++                d[i] = expand_bits(nn, 0);
++            }
++        } else {
++            uint16_t *d16 = vd;
++            uint8_t *n = vn;
++
++            for (i = 0; i < oprsz / 2; i++) {
++                uint16_t nn = n[H1(high + i)];
++                d16[H2(i)] = expand_bits(nn, 0);
++            }
 +        }
-+        *(uint32_t *)(d + i) = r;
-+    }
-+}
-+
-+void HELPER(sve_uqaddi_d)(void *d, void *a, uint64_t b, uint32_t desc)
-+{
-+    intptr_t i, oprsz = simd_oprsz(desc);
-+
-+    for (i = 0; i < oprsz; i += sizeof(uint64_t)) {
-+        uint64_t r = *(uint64_t *)(a + i) + b;
-+        if (r < b) {
-+            r = UINT64_MAX;
-+        }
-+        *(uint64_t *)(d + i) = r;
-+    }
-+}
-+
-+void HELPER(sve_uqsubi_d)(void *d, void *a, uint64_t b, uint32_t desc)
-+{
-+    intptr_t i, oprsz = simd_oprsz(desc);
-+
-+    for (i = 0; i < oprsz; i += sizeof(uint64_t)) {
-+        uint64_t ai = *(uint64_t *)(a + i);
-+        *(uint64_t *)(d + i) = (ai < b ? 0 : ai - b);
 +    }
 +}
 diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index e32be385fd..702f20e97b 100644
+index 3724f6290c..45e1ea87bf 100644
 --- a/target/arm/translate-sve.c
 +++ b/target/arm/translate-sve.c
-@@ -61,6 +61,11 @@ static int tszimm_shl(int x)
-     return x - (8 << tszimm_esz(x));
- }
- 
-+static inline int plus1(int x)
-+{
-+    return x + 1;
-+}
-+
- /*
-  * Include the generated decoder.
-  */
-@@ -127,7 +132,9 @@ static void do_vector3_z(DisasContext *s, GVecGen3Fn *gvec_fn,
- /* Invoke a vector move on two Zregs.  */
- static void do_mov_z(DisasContext *s, int rd, int rn)
- {
--    do_vector2_z(s, tcg_gen_gvec_mov, 0, rd, rn);
-+    if (rd != rn) {
-+        do_vector2_z(s, tcg_gen_gvec_mov, 0, rd, rn);
-+    }
- }
- 
- /* Initialize a Zreg with replications of a 64-bit immediate.  */
-@@ -168,7 +175,9 @@ static void do_vecop4_p(DisasContext *s, const GVecGen4 *gvec_op,
- /* Invoke a vector move on two Pregs.  */
- static void do_mov_p(DisasContext *s, int rd, int rn)
- {
--    do_vector2_p(s, tcg_gen_gvec_mov, 0, rd, rn);
-+    if (rd != rn) {
-+        do_vector2_p(s, tcg_gen_gvec_mov, 0, rd, rn);
-+    }
- }
- 
- /* Set the cpu flags as per a return from an SVE helper.  */
-@@ -1378,6 +1387,267 @@ static void trans_PNEXT(DisasContext *s, arg_rr_esz *a, uint32_t insn)
-     do_pfirst_pnext(s, a, gen_helper_sve_pnext);
+@@ -1932,6 +1932,116 @@ static void trans_UNPK(DisasContext *s, arg_UNPK *a, uint32_t insn)
+                        vsz, vsz, 0, fns[a->esz][a->u]);
  }
  
 +/*
-+ *** SVE Element Count Group
++ *** SVE Permute - Predicates Group
 + */
 +
-+/* Perform an inline saturating addition of a 32-bit value within
-+ * a 64-bit register.  The second operand is known to be positive,
-+ * which halves the comparisions we must perform to bound the result.
-+ */
-+static void do_sat_addsub_32(TCGv_i64 reg, TCGv_i64 val, bool u, bool d)
++static void do_perm_pred3(DisasContext *s, arg_rrr_esz *a, bool high_odd,
++                          gen_helper_gvec_3 *fn)
 +{
-+    int64_t ibound;
-+    TCGv_i64 bound;
-+    TCGCond cond;
++    unsigned vsz = pred_full_reg_size(s);
 +
-+    /* Use normal 64-bit arithmetic to detect 32-bit overflow.  */
-+    if (u) {
-+        tcg_gen_ext32u_i64(reg, reg);
-+    } else {
-+        tcg_gen_ext32s_i64(reg, reg);
-+    }
-+    if (d) {
-+        tcg_gen_sub_i64(reg, reg, val);
-+        ibound = (u ? 0 : INT32_MIN);
-+        cond = TCG_COND_LT;
-+    } else {
-+        tcg_gen_add_i64(reg, reg, val);
-+        ibound = (u ? UINT32_MAX : INT32_MAX);
-+        cond = TCG_COND_GT;
-+    }
-+    bound = tcg_const_i64(ibound);
-+    tcg_gen_movcond_i64(cond, reg, reg, bound, bound, reg);
-+    tcg_temp_free_i64(bound);
++    /* Predicate sizes may be smaller and cannot use simd_desc.
++       We cannot round up, as we do elsewhere, because we need
++       the exact size for ZIP2 and REV.  We retain the style for
++       the other helpers for consistency.  */
++    TCGv_ptr t_d = tcg_temp_new_ptr();
++    TCGv_ptr t_n = tcg_temp_new_ptr();
++    TCGv_ptr t_m = tcg_temp_new_ptr();
++    TCGv_i32 t_desc;
++    int desc;
++
++    desc = vsz - 2;
++    desc = deposit32(desc, SIMD_DATA_SHIFT, 2, a->esz);
++    desc = deposit32(desc, SIMD_DATA_SHIFT + 2, 2, high_odd);
++
++    tcg_gen_addi_ptr(t_d, cpu_env, pred_full_reg_offset(s, a->rd));
++    tcg_gen_addi_ptr(t_n, cpu_env, pred_full_reg_offset(s, a->rn));
++    tcg_gen_addi_ptr(t_m, cpu_env, pred_full_reg_offset(s, a->rm));
++    t_desc = tcg_const_i32(desc);
++
++    fn(t_d, t_n, t_m, t_desc);
++
++    tcg_temp_free_ptr(t_d);
++    tcg_temp_free_ptr(t_n);
++    tcg_temp_free_ptr(t_m);
++    tcg_temp_free_i32(t_desc);
 +}
 +
-+/* Similarly with 64-bit values.  */
-+static void do_sat_addsub_64(TCGv_i64 reg, TCGv_i64 val, bool u, bool d)
++static void do_perm_pred2(DisasContext *s, arg_rr_esz *a, bool high_odd,
++                          gen_helper_gvec_2 *fn)
 +{
-+    TCGv_i64 t0 = tcg_temp_new_i64();
-+    TCGv_i64 t1 = tcg_temp_new_i64();
-+    TCGv_i64 t2;
++    unsigned vsz = pred_full_reg_size(s);
++    TCGv_ptr t_d = tcg_temp_new_ptr();
++    TCGv_ptr t_n = tcg_temp_new_ptr();
++    TCGv_i32 t_desc;
++    int desc;
 +
-+    if (u) {
-+        if (d) {
-+            tcg_gen_sub_i64(t0, reg, val);
-+            tcg_gen_movi_i64(t1, 0);
-+            tcg_gen_movcond_i64(TCG_COND_LTU, reg, reg, val, t1, t0);
-+        } else {
-+            tcg_gen_add_i64(t0, reg, val);
-+            tcg_gen_movi_i64(t1, -1);
-+            tcg_gen_movcond_i64(TCG_COND_LTU, reg, t0, reg, t1, t0);
-+        }
-+    } else {
-+        if (d) {
-+            /* Detect signed overflow for subtraction.  */
-+            tcg_gen_xor_i64(t0, reg, val);
-+            tcg_gen_sub_i64(t1, reg, val);
-+            tcg_gen_xor_i64(reg, reg, t0);
-+            tcg_gen_and_i64(t0, t0, reg);
++    tcg_gen_addi_ptr(t_d, cpu_env, pred_full_reg_offset(s, a->rd));
++    tcg_gen_addi_ptr(t_n, cpu_env, pred_full_reg_offset(s, a->rn));
 +
-+            /* Bound the result.  */
-+            tcg_gen_movi_i64(reg, INT64_MIN);
-+            t2 = tcg_const_i64(0);
-+            tcg_gen_movcond_i64(TCG_COND_LT, reg, t0, t2, reg, t1);
-+        } else {
-+            /* Detect signed overflow for addition.  */
-+            tcg_gen_xor_i64(t0, reg, val);
-+            tcg_gen_add_i64(reg, reg, val);
-+            tcg_gen_xor_i64(t1, reg, val);
-+            tcg_gen_andc_i64(t0, t1, t0);
++    /* Predicate sizes may be smaller and cannot use simd_desc.
++       We cannot round up, as we do elsewhere, because we need
++       the exact size for ZIP2 and REV.  We retain the style for
++       the other helpers for consistency.  */
 +
-+            /* Bound the result.  */
-+            tcg_gen_movi_i64(t1, INT64_MAX);
-+            t2 = tcg_const_i64(0);
-+            tcg_gen_movcond_i64(TCG_COND_LT, reg, t0, t2, t1, reg);
-+        }
-+        tcg_temp_free_i64(t2);
-+    }
-+    tcg_temp_free_i64(t0);
-+    tcg_temp_free_i64(t1);
++    desc = vsz - 2;
++    desc = deposit32(desc, SIMD_DATA_SHIFT, 2, a->esz);
++    desc = deposit32(desc, SIMD_DATA_SHIFT + 2, 2, high_odd);
++    t_desc = tcg_const_i32(desc);
++
++    fn(t_d, t_n, t_desc);
++
++    tcg_temp_free_i32(t_desc);
++    tcg_temp_free_ptr(t_d);
++    tcg_temp_free_ptr(t_n);
 +}
 +
-+/* Similarly with a vector and a scalar operand.  */
-+static void do_sat_addsub_vec(DisasContext *s, int esz, int rd, int rn,
-+                              TCGv_i64 val, bool u, bool d)
++static void trans_ZIP1_p(DisasContext *s, arg_rrr_esz *a, uint32_t insn)
 +{
-+    unsigned vsz = vec_full_reg_size(s);
-+    TCGv_ptr dptr, nptr;
-+    TCGv_i32 t32, desc;
-+    TCGv_i64 t64;
-+
-+    dptr = tcg_temp_new_ptr();
-+    nptr = tcg_temp_new_ptr();
-+    tcg_gen_addi_ptr(dptr, cpu_env, vec_full_reg_offset(s, rd));
-+    tcg_gen_addi_ptr(nptr, cpu_env, vec_full_reg_offset(s, rn));
-+    desc = tcg_const_i32(simd_desc(vsz, vsz, 0));
-+
-+    switch (esz) {
-+    case MO_8:
-+        t32 = tcg_temp_new_i32();
-+        tcg_gen_extrl_i64_i32(t32, val);
-+        if (d) {
-+            tcg_gen_neg_i32(t32, t32);
-+        }
-+        if (u) {
-+            gen_helper_sve_uqaddi_b(dptr, nptr, t32, desc);
-+        } else {
-+            gen_helper_sve_sqaddi_b(dptr, nptr, t32, desc);
-+        }
-+        tcg_temp_free_i32(t32);
-+        break;
-+
-+    case MO_16:
-+        t32 = tcg_temp_new_i32();
-+        tcg_gen_extrl_i64_i32(t32, val);
-+        if (d) {
-+            tcg_gen_neg_i32(t32, t32);
-+        }
-+        if (u) {
-+            gen_helper_sve_uqaddi_h(dptr, nptr, t32, desc);
-+        } else {
-+            gen_helper_sve_sqaddi_h(dptr, nptr, t32, desc);
-+        }
-+        tcg_temp_free_i32(t32);
-+        break;
-+
-+    case MO_32:
-+        t64 = tcg_temp_new_i64();
-+        if (d) {
-+            tcg_gen_neg_i64(t64, val);
-+        } else {
-+            tcg_gen_mov_i64(t64, val);
-+        }
-+        if (u) {
-+            gen_helper_sve_uqaddi_s(dptr, nptr, t64, desc);
-+        } else {
-+            gen_helper_sve_sqaddi_s(dptr, nptr, t64, desc);
-+        }
-+        tcg_temp_free_i64(t64);
-+        break;
-+
-+    case MO_64:
-+        if (u) {
-+            if (d) {
-+                gen_helper_sve_uqsubi_d(dptr, nptr, val, desc);
-+            } else {
-+                gen_helper_sve_uqaddi_d(dptr, nptr, val, desc);
-+            }
-+        } else if (d) {
-+            t64 = tcg_temp_new_i64();
-+            tcg_gen_neg_i64(t64, val);
-+            gen_helper_sve_sqaddi_d(dptr, nptr, t64, desc);
-+            tcg_temp_free_i64(t64);
-+        } else {
-+            gen_helper_sve_sqaddi_d(dptr, nptr, val, desc);
-+        }
-+        break;
-+
-+    default:
-+        g_assert_not_reached();
-+    }
-+
-+    tcg_temp_free_ptr(dptr);
-+    tcg_temp_free_ptr(nptr);
-+    tcg_temp_free_i32(desc);
++    do_perm_pred3(s, a, 0, gen_helper_sve_zip_p);
 +}
 +
-+static void trans_CNT_r(DisasContext *s, arg_CNT_r *a, uint32_t insn)
++static void trans_ZIP2_p(DisasContext *s, arg_rrr_esz *a, uint32_t insn)
 +{
-+    unsigned fullsz = vec_full_reg_size(s);
-+    unsigned numelem = decode_pred_count(fullsz, a->pat, a->esz);
-+
-+    tcg_gen_movi_i64(cpu_reg(s, a->rd), numelem * a->imm);
++    do_perm_pred3(s, a, 1, gen_helper_sve_zip_p);
 +}
 +
-+static void trans_INCDEC_r(DisasContext *s, arg_incdec_cnt *a, uint32_t insn)
++static void trans_UZP1_p(DisasContext *s, arg_rrr_esz *a, uint32_t insn)
 +{
-+    unsigned fullsz = vec_full_reg_size(s);
-+    unsigned numelem = decode_pred_count(fullsz, a->pat, a->esz);
-+    int inc = numelem * a->imm * (a->d ? -1 : 1);
-+    TCGv_i64 reg = cpu_reg(s, a->rd);
-+
-+    tcg_gen_addi_i64(reg, reg, inc);
++    do_perm_pred3(s, a, 0, gen_helper_sve_uzp_p);
 +}
 +
-+static void trans_SINCDEC_r_32(DisasContext *s, arg_incdec_cnt *a,
-+                               uint32_t insn)
++static void trans_UZP2_p(DisasContext *s, arg_rrr_esz *a, uint32_t insn)
 +{
-+    unsigned fullsz = vec_full_reg_size(s);
-+    unsigned numelem = decode_pred_count(fullsz, a->pat, a->esz);
-+    int inc = numelem * a->imm;
-+    TCGv_i64 reg = cpu_reg(s, a->rd);
-+
-+    /* Use normal 64-bit arithmetic to detect 32-bit overflow.  */
-+    if (inc == 0) {
-+        if (a->u) {
-+            tcg_gen_ext32u_i64(reg, reg);
-+        } else {
-+            tcg_gen_ext32s_i64(reg, reg);
-+        }
-+    } else {
-+        TCGv_i64 t = tcg_const_i64(inc);
-+        do_sat_addsub_32(reg, t, a->u, a->d);
-+        tcg_temp_free_i64(t);
-+    }
++    do_perm_pred3(s, a, 1, gen_helper_sve_uzp_p);
 +}
 +
-+static void trans_SINCDEC_r_64(DisasContext *s, arg_incdec_cnt *a,
-+                               uint32_t insn)
++static void trans_TRN1_p(DisasContext *s, arg_rrr_esz *a, uint32_t insn)
 +{
-+    unsigned fullsz = vec_full_reg_size(s);
-+    unsigned numelem = decode_pred_count(fullsz, a->pat, a->esz);
-+    int inc = numelem * a->imm;
-+    TCGv_i64 reg = cpu_reg(s, a->rd);
-+
-+    if (inc != 0) {
-+        TCGv_i64 t = tcg_const_i64(inc);
-+        do_sat_addsub_64(reg, t, a->u, a->d);
-+        tcg_temp_free_i64(t);
-+    }
++    do_perm_pred3(s, a, 0, gen_helper_sve_trn_p);
 +}
 +
-+static void trans_INCDEC_v(DisasContext *s, arg_incdec2_cnt *a, uint32_t insn)
++static void trans_TRN2_p(DisasContext *s, arg_rrr_esz *a, uint32_t insn)
 +{
-+    unsigned fullsz = vec_full_reg_size(s);
-+    unsigned numelem = decode_pred_count(fullsz, a->pat, a->esz);
-+    int inc = numelem * a->imm;
-+
-+    if (a->esz == 0) {
-+        unallocated_encoding(s);
-+        return;
-+    }
-+    if (inc != 0) {
-+        TCGv_i64 t = tcg_const_i64(a->d ? -inc : inc);
-+        tcg_gen_gvec_adds(a->esz, vec_full_reg_offset(s, a->rd),
-+                          vec_full_reg_offset(s, a->rn), t, fullsz, fullsz);
-+        tcg_temp_free_i64(t);
-+    } else {
-+        do_mov_z(s, a->rd, a->rn);
-+    }
++    do_perm_pred3(s, a, 1, gen_helper_sve_trn_p);
 +}
 +
-+static void trans_SINCDEC_v(DisasContext *s, arg_incdec2_cnt *a,
-+                            uint32_t insn)
++static void trans_REV_p(DisasContext *s, arg_rr_esz *a, uint32_t insn)
 +{
-+    unsigned fullsz = vec_full_reg_size(s);
-+    unsigned numelem = decode_pred_count(fullsz, a->pat, a->esz);
-+    int inc = numelem * a->imm;
++    do_perm_pred2(s, a, 0, gen_helper_sve_rev_p);
++}
 +
-+    if (a->esz == 0) {
-+        unallocated_encoding(s);
-+        return;
-+    }
-+    if (inc != 0) {
-+        TCGv_i64 t = tcg_const_i64(inc);
-+        do_sat_addsub_vec(s, a->esz, a->rd, a->rn, t, a->u, a->d);
-+        tcg_temp_free_i64(t);
-+    } else {
-+        do_mov_z(s, a->rd, a->rn);
-+    }
++static void trans_PUNPKLO(DisasContext *s, arg_PUNPKLO *a, uint32_t insn)
++{
++    do_perm_pred2(s, a, 0, gen_helper_sve_punpk_p);
++}
++
++static void trans_PUNPKHI(DisasContext *s, arg_PUNPKHI *a, uint32_t insn)
++{
++    do_perm_pred2(s, a, 1, gen_helper_sve_punpk_p);
 +}
 +
  /*
   *** SVE Memory - 32-bit Gather and Unsized Contiguous Group
   */
 diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index 4ea3f33919..5690b5fcb9 100644
+index 8af47ad27b..bcbe84c3a6 100644
 --- a/target/arm/sve.decode
 +++ b/target/arm/sve.decode
-@@ -22,6 +22,7 @@
- ###########################################################################
- # Named fields.  These are primarily for disjoint fields.
+@@ -87,6 +87,7 @@
  
-+%imm4_16_p1             16:4 !function=plus1
- %imm6_22_5	22:1 5:5
- %imm9_16_10	16:s6 10:3
- %preg4_5	5:4
-@@ -58,6 +59,8 @@
- &rprrr_esz	rd pg rn rm ra esz
- &rpri_esz	rd pg rn imm esz
- &ptrue		rd esz pat s
-+&incdec_cnt	rd pat esz imm d u
-+&incdec2_cnt	rd rn pat esz imm d u
+ # Three operand, vector element size
+ @rd_rn_rm	........ esz:2 . rm:5 ... ... rn:5 rd:5		&rrr_esz
++@pd_pn_pm	........ esz:2 .. rm:4 ....... rn:4 . rd:4	&rrr_esz
+ @rdn_rm		........ esz:2 ...... ...... rm:5 rd:5 \
+ 		&rrr_esz rn=%reg_movprfx
  
- ###########################################################################
- # Named instruction formats.  These are generally used to
-@@ -115,6 +118,13 @@
- @rd_rn_i9	........ ........ ...... rn:5 rd:5	\
- 		&rri imm=%imm9_16_10
+@@ -397,6 +398,23 @@ TBL		00000101 .. 1 ..... 001100 ..... .....		@rd_rn_rm
+ # SVE unpack vector elements
+ UNPK		00000101 esz:2 1100 u:1 h:1 001110 rn:5 rd:5
  
-+# One register, pattern, and uint4+1.
-+# User must fill in U and D.
-+@incdec_cnt	........ esz:2 .. .... ...... pat:5 rd:5 \
-+		&incdec_cnt imm=%imm4_16_p1
-+@incdec2_cnt	........ esz:2 .. .... ...... pat:5 rd:5 \
-+		&incdec2_cnt imm=%imm4_16_p1 rn=%reg_movprfx
++### SVE Permute - Predicates Group
 +
- ###########################################################################
- # Instruction patterns.  Grouped according to the SVE encodingindex.xhtml.
- 
-@@ -301,7 +311,25 @@ FEXPA		00000100 .. 1 00000 101110 ..... .....		@rd_rn
- # Note esz != 0
- FTSSEL		00000100 .. 1 ..... 101100 ..... .....		@rd_rn_rm
- 
--### SVE Predicate Logical Operations Group
-+### SVE Element Count Group
++# SVE permute predicate elements
++ZIP1_p		00000101 .. 10 .... 010 000 0 .... 0 ....	@pd_pn_pm
++ZIP2_p		00000101 .. 10 .... 010 001 0 .... 0 ....	@pd_pn_pm
++UZP1_p		00000101 .. 10 .... 010 010 0 .... 0 ....	@pd_pn_pm
++UZP2_p		00000101 .. 10 .... 010 011 0 .... 0 ....	@pd_pn_pm
++TRN1_p		00000101 .. 10 .... 010 100 0 .... 0 ....	@pd_pn_pm
++TRN2_p		00000101 .. 10 .... 010 101 0 .... 0 ....	@pd_pn_pm
 +
-+# SVE element count
-+CNT_r		00000100 .. 10 .... 1110 0 0 ..... .....    @incdec_cnt d=0 u=1
++# SVE reverse predicate elements
++REV_p		00000101 .. 11 0100 010 000 0 .... 0 ....	@pd_pn
 +
-+# SVE inc/dec register by element count
-+INCDEC_r	00000100 .. 11 .... 1110 0 d:1 ..... .....	@incdec_cnt u=1
++# SVE unpack predicate elements
++PUNPKLO		00000101 00 11 0000 010 000 0 .... 0 ....	@pd_pn_e0
++PUNPKHI		00000101 00 11 0001 010 000 0 .... 0 ....	@pd_pn_e0
 +
-+# SVE saturating inc/dec register by element count
-+SINCDEC_r_32	00000100 .. 10 .... 1111 d:1 u:1 ..... .....	@incdec_cnt
-+SINCDEC_r_64	00000100 .. 11 .... 1111 d:1 u:1 ..... .....	@incdec_cnt
-+
-+# SVE inc/dec vector by element count
-+# Note this requires esz != 0.
-+INCDEC_v	00000100 .. 1 1 .... 1100 0 d:1 ..... .....    @incdec2_cnt u=1
-+
-+# SVE saturating inc/dec vector by element count
-+# Note these require esz != 0.
-+SINCDEC_v	00000100 .. 1 0 .... 1100 d:1 u:1 ..... .....	@incdec2_cnt
+ ### SVE Predicate Logical Operations Group
  
  # SVE predicate logical operations
- AND_pppp	00100101 0. 00 .... 01 .... 0 .... 0 ....	@pd_pg_pn_pm_s
 -- 
 2.14.3
 

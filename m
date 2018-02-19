@@ -1,140 +1,123 @@
-Received: by 10.28.173.206 with SMTP id w197csp4502041wme;
-        Tue, 9 Jan 2018 21:22:56 -0800 (PST)
-X-Google-Smtp-Source: ACJfBovl1lqNnSMKzi6qrQaP4CFHrWTvJjM3KQro8HqkSLkCYuTosZDl0Dvm0vB4m7YvHx67VV4b
-X-Received: by 10.84.248.145 with SMTP id q17mr12954092pll.184.1515561776183;
-        Tue, 09 Jan 2018 21:22:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515561776; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp50350wma;
+        Mon, 19 Feb 2018 07:26:24 -0800 (PST)
+X-Google-Smtp-Source: AH8x2252u90JnK5a27eToWz27W6IBAVVGrwm7W4XZ83GpzC+0MZtHqc+G5MQZLx4sz76OkhJIMIt
+X-Received: by 10.129.155.66 with SMTP id s63mr1120861ywg.285.1519053983980;
+        Mon, 19 Feb 2018 07:26:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519053983; cv=none;
         d=google.com; s=arc-20160816;
-        b=iCmYP8YHtGGRjLsEVVpz3MRbMuucoOqeAn5I9N4HiOQnrIn1ojtuWzBh4cmXvPlm8u
-         8uSVmsu5URPE5qXnttPukltopjYyvKEvJkz1/b8u2CP7yNwsaRFoNDyUv0eT8OOFCEpm
-         iqfxIcCF8nRCc2xJBWYIFUZhMM4AoWZQ1hS0rrvG1hSwVV71vJXglnQpRqxgxDvz4SXi
-         A2bAdBDAkeAKzESW0u8wyQ3D8DWQggIwJHxWckpxWLsP1cJuGkvHQk7zuwCfjH+4uoZM
-         jn/m7MbW0c5PRkU8NPSefLXx2ceg/3WpSxPMhtP07UkMOe82378pcUYNbtG3OSp/lPmJ
-         vsCg==
+        b=Y6oDmRxQjS9B79EGfpUXTjUXlmAWbgYX9eUPq+OxiylRYRprQ6Psv4yPwqhYpCT9KQ
+         QJw+JI8VIjakSimNFDBbAAxPMUDmzBQ/pPm8T/NNRlEwnc9SxbytqXwdcitxRYNVjh7/
+         XgRnsAEXueDyyZhlKoxREL1I1YDjN0r8bwIz5PxdTJoLxXlPkVJKgl7msE8LoB8ndwV/
+         y77h+FU1NWAx9RvMBqM4gMQo9HvpcaZlD2x9ngLlIHH9cy31UoaowmlPgt+uXICtJ46n
+         Kw+PmZR51PXjOOu3RqJQpKkn89UGZQryigWsBdyzmyYpbodwl0Uo7CMaZVrpZ81WKtbL
+         TCYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject:arc-authentication-results;
-        bh=WB6FYWalIrXgMzhaQywwX904x5YiM50JhqLL5nKcM30=;
-        b=X5hTbw8+kz6+/jxnzVg5/dyoDtteXKfBN0cLvvT6qUNNx9Gk3vrHe5T2G+5HaQc6Ug
-         dTRSmrtPN/DxChjD9mU64OxzkdBPFNRTodb0yBspSXrwnRyYolOher7jXTjH3DAgJP8m
-         4ugfRis1tGjW/M258RRDezt9I6Cjv/e/HwKGdmBrye2wwQZK58zAZ0kcUzzLg+9TSKOA
-         d2WAFSn/pbT1zCTpTzM9lAihiTokhdP8j1cV8ZwghDCp6HbPd93XKHwiiR92FF9m3Zt/
-         Pd8IWqzCZdA7K90FhRthCu2e8ad42CvpiDCMHLOdPY4OVC1yNkwk+lPE7aZbYR1RsXX/
-         Bvlw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=nWVqOnyeW4Qh3kSNBNsY6Amw0LmachCfqiilQtKYqoY=;
+        b=tbJV1M0bwH4IsmY1ImMFEEuNWPHEkO6Jq4kWLL0v06cu6l/4XgTv1HLVKNCdZZe73f
+         ms2cQ125dUf0YANf81S7RObm8jz1z1Lg3HKT5n9G3gnZG6w21R6YlBGTmOCT1yiwhph6
+         yF0pIMcOwpvKW0mubNO89naDBRtmkPp0rnTC+hZwdkJTlSN1O+hPDZQXssDeeE2tpBv2
+         g420GKZCib9hD2kc9agxkcIbIJTs/KEYlOkgJqE52xwQMIetTK123uksxlReu0TYuQxL
+         Pk901nwHvH5oX/jziaKNOM63XJYOCOlG500Qlr9csQSqJkvHNUBKww5ktSdf2GmHh1Z0
+         sJnw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id u128si11144154pfu.261.2018.01.09.21.22.55;
-        Tue, 09 Jan 2018 21:22:56 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@linaro.org header.s=google header.b=YxGaD8RV;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id d184si3185421ybh.829.2018.02.19.07.26.23
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 19 Feb 2018 07:26:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1752884AbeAJFWx (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 5 others); Wed, 10 Jan 2018 00:22:53 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:3709 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1752473AbeAJFWx (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Wed, 10 Jan 2018 00:22:53 -0500
-Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.58])
-        by Forcepoint Email with ESMTP id 7113714084A8A;
-        Wed, 10 Jan 2018 13:22:36 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS406-HUB.china.huawei.com
- (10.3.19.206) with Microsoft SMTP Server id 14.3.361.1; Wed, 10 Jan 2018
- 13:22:30 +0800
-Subject: Re: [PATCH v14 2/9] ACPI: Add APEI GHES table generation and CPER
- record support
-To:     Peter Maydell <peter.maydell@linaro.org>
-CC:     Igor Mammedov <imammedo@redhat.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Shannon Zhao <zhaoshenglong@huawei.com>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        "Richard Henderson" <rth@twiddle.net>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        "James Morse" <james.morse@arm.com>,
-        Christoffer Dall <christoffer.dall@linaro.org>,
-        Marc Zyngier <marc.zyngier@arm.com>,
-        kvm-devel <kvm@vger.kernel.org>,
-        "QEMU Developers" <qemu-devel@nongnu.org>,
-        qemu-arm <qemu-arm@nongnu.org>,
-        Huangshaoyu <huangshaoyu@huawei.com>,
-        "Zhengqiang (turing)" <zhengqiang10@huawei.com>,
-        Xu Wei <xuwei5@hisilicon.com>
-References: <1514440458-10515-1-git-send-email-gengdongjiu@huawei.com>
- <1514440458-10515-3-git-send-email-gengdongjiu@huawei.com>
- <20171228151809.10495a90@igors-macbook-pro.local>
- <10087bbd-28b0-b5ad-101a-e6d5ac648548@huawei.com>
- <CAFEAcA--f5eK0_zij55o09M+FyRUVH+Pnwc3tsT6rLm1kpvbBw@mail.gmail.com>
-From:   gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <c45372c1-dd9a-8224-9745-49f56188ec8c@huawei.com>
-Date:   Wed, 10 Jan 2018 13:22:30 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+       dkim=fail header.i=@linaro.org header.s=google header.b=YxGaD8RV;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:50829 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ennKh-00071w-Bu
+	for alex.bennee@linaro.org; Mon, 19 Feb 2018 10:26:23 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53547)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1ennIs-0005xZ-Lo
+	for qemu-devel@nongnu.org; Mon, 19 Feb 2018 10:24:31 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1ennIr-0002Eo-Ug
+	for qemu-devel@nongnu.org; Mon, 19 Feb 2018 10:24:30 -0500
+Received: from mail-oi0-x230.google.com ([2607:f8b0:4003:c06::230]:36666)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1ennIr-0002DZ-Oe
+	for qemu-devel@nongnu.org; Mon, 19 Feb 2018 10:24:29 -0500
+Received: by mail-oi0-x230.google.com with SMTP id 24so7320468oij.3
+	for <qemu-devel@nongnu.org>; Mon, 19 Feb 2018 07:24:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=nWVqOnyeW4Qh3kSNBNsY6Amw0LmachCfqiilQtKYqoY=;
+	b=YxGaD8RVTB/azwDANiYVzMbgXV2J+vuaVgFi/gGSgUgPUwwmvaHE7UDbkHi+/IXz3U
+	RZxYqkLncv25NGVSqoO6Q4YW3uf/8FCBtym5Nxbt7Kkfw4E/jWqDfU/WJDHoDZ2uzmvP
+	PDGTEhI5i6PgWpsND/2IwKB7ECVWB7+j+Ejq4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=nWVqOnyeW4Qh3kSNBNsY6Amw0LmachCfqiilQtKYqoY=;
+	b=HDIClNnrdBZLO8z/mtmRlDrBQmNLotOx9WEbV3Yg5ttIaY9l6UU4XR+2wYICG/UGr1
+	2sUwPvrBXsyCt3XgR9qabO43p6FZl8wEdjzvOPebo48XykgFXlEjh9/LQXuBnVFItDJQ
+	siPJ5apsigVCEPDF09skaDHyfD1djmXbTESoxiFbhIrVe1NjOjrzXLlOsjA7cv9d+Msg
+	dy74I9hNNw/TR0x0dYYI9M1Z1/qBgRxhKe0uRKUFo6Tb0W81i50OXQVM8+roOPbXHedr
+	LaxvdnjDqtD2GRhtMwKgASRm7J49CZPV+yby2ROTLr/pdTlaBMaw9gAMpPOQiHeRc4wr
+	VIPw==
+X-Gm-Message-State: APf1xPC5Ary3JVx+A91MdvZWntvOfdYHEJ1dV9/EXLNuGFbVIeGCVd2+
+	6k3fxsojDgpfgPSHlmm6Fbfsvko2+lE8CxUCJPqQAQ==
+X-Received: by 10.202.95.68 with SMTP id t65mr2433338oib.102.1519053869130;
+	Mon, 19 Feb 2018 07:24:29 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA--f5eK0_zij55o09M+FyRUVH+Pnwc3tsT6rLm1kpvbBw@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.142.68.147]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: gD+vivFCKY2X
+Received: by 10.157.33.100 with HTTP; Mon, 19 Feb 2018 07:24:08 -0800 (PST)
+In-Reply-To: <1519053606-9817-2-git-send-email-minyard@acm.org>
+References: <CACRpkda9B=frmS0QF429p-q+KoCKG=5NON-kQ0Rt-nba2powRA@mail.gmail.com>
+	<1519053606-9817-1-git-send-email-minyard@acm.org>
+	<1519053606-9817-2-git-send-email-minyard@acm.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 19 Feb 2018 15:24:08 +0000
+Message-ID: <CAFEAcA8viPEkdJru0Yfr9B0SNhNpwPtM14Ctx=8HqHmtOEjutQ@mail.gmail.com>
+To: Corey Minyard <minyard@acm.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::230
+Subject: Re: [Qemu-devel] [PATCH 1/2] i2c: Fix some brace style issues
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Corey Minyard <cminyard@mvista.com>,
+	Linus Walleij <linus.walleij@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XBaq1ZtZCKjo
 
-Peter,
-  Thank you very much for your time to review it and give some comments.
+On 19 February 2018 at 15:20,  <minyard@acm.org> wrote:
+> From: Corey Minyard <cminyard@mvista.com>
+>
+> Signed-off-by: Corey Minyard <cminyard@mvista.com>
 
-On 2018/1/10 0:51, Peter Maydell wrote:
->> the error type to Multi-bit ECC.
->>
->> [1]:
->> UEFI Spec 2.6 Errata A:
->>
->> "N.2.5 Memory Error Section"
->> -----------------+---------------+--------------+-------------------------------------------+
->>         Mnemonic |   Byte Offset |  Byte Length |        Description                        |
->> -----------------+---------------+--------------+-------------------------------------------+
->>         ........ |  ............ |  .........   |        ...........                        |
->> -----------------+---------------+--------------+-------------------------------------------+
->> Memory Error Type|     72        |       1      |Identifies the type of error that occurred:|
->>                  |               |              | 0 – Unknown                              |
->>                  |               |              | 1 – No error                             |
->>                  |               |              | 2 – Single-bit ECC                       |
->>                  |               |              | 3 – Multi-bit ECC                        |
->>                  |               |              | 4 – Single-symbol ChipKill ECC           |
->>                  |               |              | 5 – Multi-symbol ChipKill ECC            |
->>                  |               |              | 6 – Master abort                          |
->>                  |               |              | 7 – Target abort                          |
->>                  |               |              | 8 – Parity Error                          |
->>                  |               |              | 9 – Watchdog timeout                      |
->>                  |               |              | 10 – Invalid address                      |
->>                  |               |              | 11 – Mirror Broken                        |
->>                  |               |              | 12 – Memory Sparing                       |
->>                  |               |              | 13 - Scrub corrected error                |
->>                  |               |              | 14 - Scrub uncorrected error              |
->>                  |               |              | 15 - Physical Memory Map-out event        |
->>                  |               |              | All other values reserved.                |
->> -----------------+---------------+--------------+-------------------------------------------+
->>         ........ |  ............ |  .........   |        ...........                        |
->> -----------------+---------------+--------------+-------------------------------------------+
-> There's a value specified for "we don't know what the error type is",
-> which is "0 - Unknown". I think we should use that rather than claiming
-> that we have a particular type of error when we don't actually know that.
-Agree peter's suggestion. It seems "0 - Unknown" makes sense.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-> 
-> I agree with James that we don't want to report a particular type of
-> error to the guest anyway -- the VM is a virtual environment, and
-> the exact reason why the hardware/firmware/host kernel have decided
-> that a bit of RAM isn't usable any more doesn't matter to the guest.
-> We just want to report "this RAM has gone away, sorry" to it.
-Agree with peter, appreciate for the comments.
-
-> 
-> thanks
-> -- PMM
+thanks
+-- PMM

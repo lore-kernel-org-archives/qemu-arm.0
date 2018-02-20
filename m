@@ -1,73 +1,72 @@
-Received: by 10.28.71.27 with SMTP id u27csp1374209wma;
-        Tue, 20 Feb 2018 10:05:44 -0800 (PST)
-X-Google-Smtp-Source: AH8x227Y7EMicZJwen52HMHhd9vcsDeCsTfnNoZzIT5tc2RaIw0WjUZ7IfiyNPA/LLkvIz9YBfm1
-X-Received: by 2002:a25:3f01:: with SMTP id m1-v6mr400606yba.489.1519149944563;
-        Tue, 20 Feb 2018 10:05:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519149944; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp1374486wma;
+        Tue, 20 Feb 2018 10:05:56 -0800 (PST)
+X-Google-Smtp-Source: AH8x227JdRBotUPoOb0Elh4Fp4cxqYwFRHxqwfi/huERzUwg/2TTnY4Bsue5xMRul6DejLRe/5XP
+X-Received: by 10.13.204.143 with SMTP id o137mr437964ywd.59.1519149956302;
+        Tue, 20 Feb 2018 10:05:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519149956; cv=none;
         d=google.com; s=arc-20160816;
-        b=fcWFFHKJCZpe682q0JnbPKqVKyoXpGw1PUIffKHNKIMfT0RYXBnXYnzKCGCYoKf6Xz
-         T7y7cZe+8Vlw8HDUEK/aN7F7mh3mkLPUbzhQJkUzBxZsvGWdxzERtxGrIsY0SHeKmZn0
-         Bht7L1UPo3qS8ThbYwIBvnK+NHXz8M3bKKHPN7i04cEYXxofx5miCB/jwPH1+T8srvaH
-         zwXQDV0mB83la0xXRUbCwhXerL3Bxqf/J59tnGOfrRYc/uzeobjZmBSqF3DqwYZ6spnx
-         rkTJIipyStrX+AT7s1/DXzet9Rv37krETlFCSmapr3/0H68FaKmHRIp4iLebUav4sgpI
-         SUzA==
+        b=iSuN2rox5LgWMqqXqG3zu7Hxnj+9sGOjZZ0AZimFnb1J7jZbKtPSsf1LWb9whl3psx
+         Nbt7GSvFUX6pv0vUKqwJGBmS7DSRp7ylli9FcCJ8jmA2wk1949IKsIj9jg5YlbN7nS2D
+         5mIiac73tHAvHUdAEsunVxqPqcPIriaKFwnw+a+i+/4ovON3DxODv9NGDtAEdedWHOas
+         pVW2jKM7f25qgechbQgRssc1SNDVvjzHcwI/63j23SE2D+8Jyn1iu/oHR4YOix8ozeZX
+         Iiojf+XeNL9ysA4Wvg7Oi3oTLOlmJR9XAHSCNbyiphxb+vN5iV2DfacW+hBYlLjIZh9X
+         J3uQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :arc-authentication-results;
-        bh=6AG7Bg/iFSc7B0hSD09az6z9dp6MUlCvaTMmtEkdIgw=;
-        b=Ufq+PgLOpmrSErQUc1UPuGdm08jyLOhwSVwJ08lKsgAzl/QCbae3Kn1B+gGwboFS0U
-         y4gK4T1dlTOH0HQu20MLJ1jHKahMBRqopmzPI0z0IgsmH8Wv8T0FkJs/69ZpG/f+fo5W
-         YDryXx6/eAkmySEmS4cLuQWqdeDGH29G2hUah7LWwE0U6x6Ie7wm3JTUz7BQxu+1yDM+
-         uY3iHLsIkDz7SZBtSyI715B2Wwt75lq9xqP4PPTQ44f/dXvxbLxxJQMeGB2IiR5A3N9/
-         MsWdjyqeJcqdtVUELMBOKySXO3iFmUUh8/RIIlQFJviPeaBXB1xn7RWsI0zaLZJnaVVd
-         y0hg==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=0Cbds/IGqZAFv9DEOSAMpbJmZBrT9NXXNd5pY9IBOVQ=;
+        b=1Hk9/yyk6Syprn6XIDjJ/LE7k0lhyTAKxFvAb9+lr7c7ZATp49hDQsk6DA3TLtS+eT
+         W522XMl/MUpD8FRyzI7bD/4HK7NxDBFnCksi9Vt0ASBNSt6dvLgm5+Z9tMOR/xP/TzbV
+         jn5dhYP3U9SKQsuvilzJn5gSDAmg0fJto95luCk+7ZG1wn3COGQObqACUZdq1d6FKC+k
+         TgPtn224FbapYN8VIRy+X155FNVJ4mDR5e2k0szuvDE/AixN6aAnkl23givT2cNDmWwk
+         1DgkWYNyi15udb0FGywRs8IkjYXBd+lqT41YMLQsOsrGbWwIiGJ2NHA6ilARBglBC77E
+         WQAg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x18si165065ybg.666.2018.02.20.10.05.44
+        by mx.google.com with ESMTPS id x37si948532ywj.624.2018.02.20.10.05.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 20 Feb 2018 10:05:44 -0800 (PST)
+        Tue, 20 Feb 2018 10:05:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56974 helo=lists.gnu.org)
+Received: from localhost ([::1]:56975 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eoCIR-0001NQ-SS
-	for alex.bennee@linaro.org; Tue, 20 Feb 2018 13:05:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53660)
+	id 1eoCId-0001Tx-Oh
+	for alex.bennee@linaro.org; Tue, 20 Feb 2018 13:05:55 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53825)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eoCGS-00088L-2v
-	for qemu-arm@nongnu.org; Tue, 20 Feb 2018 13:03:42 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1eoCGW-0008AG-Tn
+	for qemu-arm@nongnu.org; Tue, 20 Feb 2018 13:03:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eoCGO-0001aF-Tf
-	for qemu-arm@nongnu.org; Tue, 20 Feb 2018 13:03:39 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:46524)
+	(envelope-from <pm215@archaic.org.uk>) id 1eoCGU-0001fs-SX
+	for qemu-arm@nongnu.org; Tue, 20 Feb 2018 13:03:44 -0500
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:46560)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1eoCGO-0001WQ-Hs; Tue, 20 Feb 2018 13:03:36 -0500
+	id 1eoCGU-0001br-DI; Tue, 20 Feb 2018 13:03:42 -0500
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1eoCGE-0008Py-8C; Tue, 20 Feb 2018 18:03:26 +0000
+	id 1eoCGJ-0008Rg-Ej; Tue, 20 Feb 2018 18:03:31 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 20 Feb 2018 18:03:06 +0000
-Message-Id: <20180220180325.29818-1-peter.maydell@linaro.org>
+Date: Tue, 20 Feb 2018 18:03:13 +0000
+Message-Id: <20180220180325.29818-8-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.16.1
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <20180220180325.29818-1-peter.maydell@linaro.org>
+References: <20180220180325.29818-1-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 00/19] Add Cortex-M33 and mps2-an505 board model
+Subject: [Qemu-arm] [PATCH 07/19] armv7m: Forward init-svtor property to CPU
+ object
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,216 +81,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZIdkaqPOa4el
+X-TUID: lthAyAiiFqIm
 
-This patchset enables the Cortex-M33 v8M CPU type and adds a board model
-for it: the AN505 FPGA image for the MPS2+ devboard. The AN505 uses and
-extends the "IoT Kit", which is a reference subsystem that includes the
-CPU and some devices, and is intended to be extended further to build
-a complete device. Both the IoT Kit and the FPGA use devices documented
-in the ARM CoreLink SIE-200 System IP for Embedded TRM.
+Create an "init-svtor" property on the armv7m container
+object which we can forward to the CPU object.
 
-Useful documents (these are also linked in comments in the relevant
-source files):
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ include/hw/arm/armv7m.h | 2 ++
+ hw/arm/armv7m.c         | 6 ++++++
+ 2 files changed, 8 insertions(+)
 
-Board TRM:
- http://infocenter.arm.com/help/topic/com.arm.doc.100112_0200_06_en/versatile_express_cortex_m_prototyping_systems_v2m_mps2_and_v2m_mps2plus_technical_reference_100112_0200_06_en.pdf
-Application Note AN505 (documenting the FPGA image):
- http://infocenter.arm.com/help/topic/com.arm.doc.dai0505b/index.html
-ARMv8M IoT Kit FVP User Guide (ARM ECM0601256):
- http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ecm0601256/index.html
-ARM CoreLink SIE-200 System IP for Embedded TRM (DDI 0571G):
-https://developer.arm.com/products/architecture/m-profile/docs/ddi0571/g
-
-The most complicated thing here is the various kinds of security
-controller in the system, so here's a summary of them which will
-hopefully make the patchset easier to navigate:
-
- * Secure Attribution Unit (SAU) -- this is part of the CPU. Rather like
-   the MPU, it provides registers that the guest can use to specify the
-   security attributes for memory regions. The QEMU implementation is
-   already in master. If the SAU says 'no' then a SecureFault exception
-   is taken.
- * Implementation Defined Attribution Unit (IDAU) -- an implementation
-   defined mechanism for an SoC to specify security attributes for memory.
-   In Cortex-M33 hardware, the CPU puts the address of each memory access
-   out on a special set of signal lines, and the SoC then has to respond
-   with its attribute information for that address. Typically this is set
-   up to be simple combinatorial logic; for this board, for instance the
-   IDAU reports the inverse of address bit 28 as the NS attribute, creating
-   a series of 256MB regions NS/S/NS/S... over the whole address space.
-   If the IDAU attributes are more restrictive than the SAU then the IDAU
-   overrides the SAU settings. Again, transgressions get a SecureFault.
-   In QEMU we define a QOM interface for the IDAU which can then be
-   implemented by the SoC or board class. In this series patch 4 has
-   the interface definition and the CPU use of it; patch 18 has the
-   SoC implementation of its end.
- * The Peripheral Protection Controller (PPC) is part of the interconnect
-   fabric outside the CPU. It sits in front of non-TrustZone aware devices
-   and can configurably block attempts to access them from the wrong
-   security state or privilege mode. Blocked transactions can be configured
-   to either cause a bus error, or to be RAZ/WI. The PPC has no register
-   interface of its own, but is configured by setting signal lines into it.
-   It's one of the devices in the SIE-200 TRM.
- * The Memory Protection Controller (MPC) is similar in purpose to the PPC
-   but specifically for sitting in front of RAM. It allows more granular
-   configuration of protection so that one RAM can be split between Secure
-   and Nonsecure. The IoTKit and FPGA should have MPCs, but I have not
-   implemented them in this patchset (it seemed big enough as it is :-))
-   It's also documented in the SIE-200 TRM.
- * The Master Security Controller (MSC) sits in front of the transaction
-   master interface of a non-trustzone-aware device that can initiate
-   memory transactions (DMA controllers, for instance). It allows
-   transactions made by the device to be configurably blocked, so that a
-   DMA controller can be given to the non-secure world but prevented from
-   making accesses to secure-only memory. Like the PPC, it has no register
-   interface and is configured using signal lines. It's documented in the
-   SIE-200 TRM. I haven't implemented the MSC in this patchset.
- * The IoT Kit security controller is an ad-hoc collection of registers
-   that let the guest configure various bits of the IoT Kit subsystem.
-   It includes registers that control both the 2 PPCs in the IoT Kit and
-   the 5 PPCs in the FPGA, and also registers to control the MSCs. The
-   QEMU implementation is in patches 15-17 (and used in subsequent patches).
-
-Patch series structure:
-
-Patches 1..3 make the Arm -kernel loading code honour the CPU's
-AddressSpace -- this is necessary for this board because most of the
-devices and RAM don't live in address_space_system(). They've already
-been on-list and reviewed; included here to make the series
-self-contained.
-
-Patches 4 and 5 are the CPU end of the IDAU.
-
-Patches 6 and 7 allow the board/SoC code to specify the reset value of
-the secure Vector Table Offset Register. This is configurable for
-Cortex-M33 hardware, and on this board it's not zero.
-
-Patch 8 adds the CPU definition for the Cortex-M33, since we now have
-all the component parts. At this point the only major missing feature
-in our v8M emulation is the stack-limit checking; there may of course
-still be lurking bugs.
-
-Patches 9 and 10 are trivial bugfixes/adjustments.
-
-Patch 11 adds a qdev_init_gpio_in_named_with_opaque() function that's
-identical to the existing qdev_init_gpio_in_named() but allows an
-arbitrary opaque pointer to be passed to the irq handler function
-rather than it having to be the DeviceState pointer.  This gets used
-in the IoTKit device object later.
-
-Patch 12 implements a TYPE_SPLIT_IRQ device that is a QoMified
-equivalent of our qemu_irq_split() function. It's more flexible
-because you can specify how many output lines it has, and it fits
-better in a QoM-style device too. (The diffstat in this cover letter
-seems to have decided this is a copy of or-irq with changes, but
-the patch itself does not represent it in that silly way.)
-
-Patch 13 implements the FPGAIO device which is a trivial bit
-of miscellaneous registers in the AN505 FPGA image.
-
-Patch 14 is the Peripheral Protection Controller model.
-
-Patches 15-17 implement the IoT Kit security controller; I split it
-into 3 pieces because it's quite a lot of code in one patch
-otherwise. Some of the devices in the IoT Kit are just
-unimplemented-device stubs for now.
-
-Patch 18 implements the IoT Kit object, which is pretty similar to an
-SoC container object.
-
-Finally, patch 19 provides the new board model. Most of the devices
-are left as unimplemented-device stubs, but all the stubs are
-correctly wired into the right PPCs.
-
-Incidentally, for the new devices in this patchset I've adopted the
-convention of having the header file include a "QEMU interface"
-comment that summarizes and documents all the GPIO lines, IRQs, sysbus
-memory regions and QOM properties that code that instantiates the
-device needs to know. It's a bit ad-hoc but it seems like it's worth
-documenting somehow...
-
-Some of the patches contain a variant on the sysbus_init_child()
-helper function I proposed the other day. Since that seems to have run
-into discussion about how best to do it I've just put some file-local
-functions to decrease the verbosity of the code for the moment, to
-avoid a dependency there.
-
-You can find a git branch with this series at
- https://git.linaro.org/people/peter.maydell/qemu-arm.git v8m
-
-I'm afraid I don't know of any publicly available test images for the
-board at the moment.
-
-thanks
--- PMM
-
-Peter Maydell (19):
-  loader: Add new load_ramdisk_as()
-  hw/arm/boot: Honour CPU's address space for image loads
-  hw/arm/armv7m: Honour CPU's address space for image loads
-  target/arm: Define an IDAU interface
-  armv7m: Forward idau property to CPU object
-  target/arm: Define init-svtor property for the reset secure VTOR value
-  armv7m: Forward init-svtor property to CPU object
-  target/arm: Add Cortex-M33
-  hw/misc/unimp: Move struct to header file
-  include/hw/or-irq.h: Add missing include guard
-  qdev: Add new qdev_init_gpio_in_named_with_opaque()
-  hw/core/split-irq: Device that splits IRQ lines
-  hw/misc/mps2-fpgaio: FPGA control block for MPS2 AN505
-  hw/misc/tz-ppc: Model TrustZone peripheral protection controller
-  hw/misc/iotkit-secctl: Arm IoT Kit security controller initial skeleton
-  hw/misc/iotkit-secctl: Add handling for PPCs
-  hw/misc/iotkit-secctl: Add remaining simple registers
-  hw/arm/iotkit: Model Arm IOT Kit
-  mps2-an505: New board model: MPS2 with AN505 Cortex-M33 FPGA image
-
- hw/arm/Makefile.objs                      |   2 +
- hw/core/Makefile.objs                     |   1 +
- hw/misc/Makefile.objs                     |   4 +
- include/hw/arm/armv7m.h                   |   5 +
- include/hw/arm/iotkit.h                   | 109 +++++
- include/hw/{or-irq.h => core/split-irq.h} |  32 +-
- include/hw/irq.h                          |   4 +-
- include/hw/loader.h                       |  12 +-
- include/hw/misc/iotkit-secctl.h           | 103 +++++
- include/hw/misc/mps2-fpgaio.h             |  43 ++
- include/hw/misc/tz-ppc.h                  | 101 +++++
- include/hw/misc/unimp.h                   |  10 +
- include/hw/or-irq.h                       |   5 +
- include/hw/qdev-core.h                    |  30 +-
- target/arm/cpu.h                          |   6 +
- target/arm/idau.h                         |  61 +++
- hw/arm/armv7m.c                           |  30 +-
- hw/arm/boot.c                             | 119 +++--
- hw/arm/iotkit.c                           | 598 +++++++++++++++++++++++++
- hw/arm/mps2-tz.c                          | 504 +++++++++++++++++++++
- hw/core/loader.c                          |   8 +-
- hw/core/qdev.c                            |   8 +-
- hw/core/split-irq.c                       |  89 ++++
- hw/misc/iotkit-secctl.c                   | 706 ++++++++++++++++++++++++++++++
- hw/misc/mps2-fpgaio.c                     | 176 ++++++++
- hw/misc/tz-ppc.c                          | 302 +++++++++++++
- hw/misc/unimp.c                           |  10 -
- target/arm/cpu.c                          |  64 ++-
- target/arm/helper.c                       |  28 +-
- default-configs/arm-softmmu.mak           |   5 +
- hw/misc/trace-events                      |  24 +
- 31 files changed, 3119 insertions(+), 80 deletions(-)
- create mode 100644 include/hw/arm/iotkit.h
- copy include/hw/{or-irq.h => core/split-irq.h} (63%)
- create mode 100644 include/hw/misc/iotkit-secctl.h
- create mode 100644 include/hw/misc/mps2-fpgaio.h
- create mode 100644 include/hw/misc/tz-ppc.h
- create mode 100644 target/arm/idau.h
- create mode 100644 hw/arm/iotkit.c
- create mode 100644 hw/arm/mps2-tz.c
- create mode 100644 hw/core/split-irq.c
- create mode 100644 hw/misc/iotkit-secctl.c
- create mode 100644 hw/misc/mps2-fpgaio.c
- create mode 100644 hw/misc/tz-ppc.c
-
+diff --git a/include/hw/arm/armv7m.h b/include/hw/arm/armv7m.h
+index 5c3f406ccc..78308d1484 100644
+--- a/include/hw/arm/armv7m.h
++++ b/include/hw/arm/armv7m.h
+@@ -42,6 +42,7 @@ typedef struct {
+  *   that CPU accesses see. (The NVIC, bitbanding and other CPU-internal
+  *   devices will be automatically layered on top of this view.)
+  * + Property "idau": IDAU interface (forwarded to CPU object)
++ * + Property "init-svtor": secure VTOR reset value (forwarded to CPU object)
+  */
+ typedef struct ARMv7MState {
+     /*< private >*/
+@@ -61,6 +62,7 @@ typedef struct ARMv7MState {
+     /* MemoryRegion the board provides to us (with its devices, RAM, etc) */
+     MemoryRegion *board_memory;
+     Object *idau;
++    uint32_t init_svtor;
+ } ARMv7MState;
+ 
+ #endif
+diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+index 189066812c..149aa07cd5 100644
+--- a/hw/arm/armv7m.c
++++ b/hw/arm/armv7m.c
+@@ -168,6 +168,11 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
+         error_propagate(errp, err);
+         return;
+     }
++    object_property_set_uint(OBJECT(s->cpu), s->init_svtor, "init-svtor", &err);
++    if (err != NULL) {
++        error_propagate(errp, err);
++        return;
++    }
+     object_property_set_bool(OBJECT(s->cpu), true, "realized", &err);
+     if (err != NULL) {
+         error_propagate(errp, err);
+@@ -224,6 +229,7 @@ static Property armv7m_properties[] = {
+     DEFINE_PROP_LINK("memory", ARMv7MState, board_memory, TYPE_MEMORY_REGION,
+                      MemoryRegion *),
+     DEFINE_PROP_LINK("idau", ARMv7MState, idau, TYPE_IDAU_INTERFACE, Object *),
++    DEFINE_PROP_UINT32("init-svtor", ARMv7MState, init_svtor, 0),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
 -- 
 2.16.1
 

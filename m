@@ -1,76 +1,72 @@
-Received: by 10.28.71.27 with SMTP id u27csp1384216wma;
-        Tue, 20 Feb 2018 10:14:08 -0800 (PST)
-X-Google-Smtp-Source: AH8x225vpKo6BmdMhrPOEcIbpQcFiPx1pa4DrhStZTNrkknyV1HuMp/jHRrSWSfH1Rt+JejrKJQE
-X-Received: by 10.129.134.197 with SMTP id w188mr451188ywf.293.1519150448563;
-        Tue, 20 Feb 2018 10:14:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519150448; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp1388039wma;
+        Tue, 20 Feb 2018 10:17:25 -0800 (PST)
+X-Google-Smtp-Source: AH8x227Ksv6goDSVIabVlwZmH+KnWcNAp1kAGqbFbD7ZdqeKLIUNvNk1sn+VgEwFGx3rNhwPHxRk
+X-Received: by 10.129.134.129 with SMTP id w123mr462362ywf.329.1519150644927;
+        Tue, 20 Feb 2018 10:17:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519150644; cv=none;
         d=google.com; s=arc-20160816;
-        b=zd05svXnAFXiAZgfKrzql9JEqyVzL6iUwZC5Z4BKl9fUWQ3ZBZ825qiB0cWZ+1r5F0
-         F8S5YriG1uKsr0HT3eJv0uWBEHzyiwXPDlgrGtKNHEw6ll1u1t4gpeZ1AUVa6elv95oz
-         nl3HHd0ngF8MY13egoXyqPbbixUpgSMtAiOJS6q0BI98EKY0EQcAEkzJhBIriTMq7zVa
-         j7NT8lw2xFqrWLGqx50JgZlSwYNP0ALvAW9Y7z4k7gDzTsZ5aC7q9eh38JKSKErCXkx3
-         +NwkV5VS3UXhsjxY65I3CBrzuFoQr4vLJ6QcvHuERKwodwzTE8aGc0c04500H6p/aJ4B
-         /d0g==
+        b=Gha/rfNo7gjgDvqwLxwnvSKW8xaVnezVyTqkcnY/zEl0ltUPmxEhgIIcdMx2n9ceAc
+         HY19thTWZEcdwPqtVkyN5wLBIqwzxhpDaOtor12ZIL1CSrbTJqaUnAmSIlGsMj9b+k1f
+         W9roKklLX4j9dWHxIYqRDQNgIYfW4tAf7cnQX1lrc8tlodU/BWjBeGwabP9lPgzkSBef
+         c/EL8iskXWj0xjQa4grL/FvUpXi8GKu8gPrvzEGOsfPJub4kMRoFaTabAs1oTr6DM7K8
+         8YA5Gf4OgzhXpk6uJRdzzxJU9cL6jKHxN4e6g0VystVqLBM7sg1DWKyq26bVoHqOxwCy
+         FNug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=gs+3cy9o14tWB2fh+L5DvULNYay+gHGxMu+JbcnZnz8=;
-        b=jRD1kPt7dgc9kdcc06JUVaTXNPOUTW7VxskOGAIfG1BN1HW6SGpM8X3+wSQXCIK2KL
-         UIQM8kLEAWI0IOsxPRDGu9SOjLi+ijrdMhe61UShoiR5yCVxl2i58uQLXBWBcSSEeGfC
-         KuRsdoz1K4quXLz1zvLgkWT6JlSWMTSPDYmsQcI0SxKlW6sbgOcnKQVNHq35Gw/KKFzj
-         8ZNK2V4Vd5gn/UNmkNxP5DviQ+73d5nOm3mJPPOZBqAZmoaGj/6NuXj1RABTqidnT3xo
-         XUParuHq1JtvB+R/Ze+x2eaPxvONugLz8jitQ/BlSK+eCmfAKwKXJ2fxBXtBd/kX/+/H
-         oL+g==
+        bh=sqlmBXYZrvL9yPiFKwaBm8jSEWXkgwTuY9vNbPIQRCQ=;
+        b=oS27d9aOacFwKrrlFgrP3d0VIB8uqz8V/vobVluMnlnOeCpqKtMcpUNK85Wtqx4lLc
+         zUxrkkSLyiYz7q413PaGkNsmbDTqzenonQ5Z/F1TPybEZYE0FF4ijrwpXrfxow2tsknt
+         reyDYyDw4mHHk8iVdnTDWIp9HzInwO++5U8Ap5R6Kaxc3t3kzFJABWr36yKp8F8ulBJb
+         zqpFlAg0WcXcaw0esWseROAHwQ1BpYqBTWjz/vuCbjr1vs7lRIa+JGzCh8616zqJ+wKU
+         CLzJtcH9RJ8C0XEkpqyiGon6gn4qwEzJz017NwxzERXwSsKV6SFTFjesMAgBND1lrz/b
+         nvZg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z128si1887907ywe.717.2018.02.20.10.14.08
+        by mx.google.com with ESMTPS id u63si1349203ywb.708.2018.02.20.10.17.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 20 Feb 2018 10:14:08 -0800 (PST)
+        Tue, 20 Feb 2018 10:17:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57026 helo=lists.gnu.org)
+Received: from localhost ([::1]:57050 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eoCQZ-0001YX-Ve
-	for alex.bennee@linaro.org; Tue, 20 Feb 2018 13:14:08 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53856)
+	id 1eoCTk-0004GG-77
+	for alex.bennee@linaro.org; Tue, 20 Feb 2018 13:17:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53918)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eoCGX-0008Az-HP
-	for qemu-arm@nongnu.org; Tue, 20 Feb 2018 13:03:52 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1eoCGZ-0008DG-AK
+	for qemu-arm@nongnu.org; Tue, 20 Feb 2018 13:03:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eoCGV-0001gX-Ok
-	for qemu-arm@nongnu.org; Tue, 20 Feb 2018 13:03:45 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:46560)
+	(envelope-from <pm215@archaic.org.uk>) id 1eoCGU-0001ej-68
+	for qemu-arm@nongnu.org; Tue, 20 Feb 2018 13:03:47 -0500
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:46566)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1eoCGV-0001br-Dl; Tue, 20 Feb 2018 13:03:43 -0500
+	id 1eoCGT-0001cw-MT; Tue, 20 Feb 2018 13:03:42 -0500
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1eoCGG-0008Qh-Jh; Tue, 20 Feb 2018 18:03:28 +0000
+	id 1eoCGS-0008Ut-Ed; Tue, 20 Feb 2018 18:03:40 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 20 Feb 2018 18:03:09 +0000
-Message-Id: <20180220180325.29818-4-peter.maydell@linaro.org>
+Date: Tue, 20 Feb 2018 18:03:25 +0000
+Message-Id: <20180220180325.29818-20-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.16.1
 In-Reply-To: <20180220180325.29818-1-peter.maydell@linaro.org>
 References: <20180220180325.29818-1-peter.maydell@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 03/19] hw/arm/armv7m: Honour CPU's address space
- for image loads
+Subject: [Qemu-arm] [PATCH 19/19] mps2-an505: New board model: MPS2 with
+ AN505 Cortex-M33 FPGA image
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -85,56 +81,543 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HsFepkYLCsiB
+X-TUID: DaByNMXzAvba
 
-Instead of loading guest images to the system address space, use the
-CPU's address space.  This is important if we're trying to load the
-file to memory or via an alias memory region that is provided by an
-SoC object and thus not mapped into the system address space.
+Define a new board model for the MPS2 with an AN505 FPGA image
+containing a Cortex-M33. Since the FPGA images for TrustZone
+cores (AN505, and the similar AN519 for Cortex-M23) have a
+significantly different layout of devices to the non-TrustZone
+images, we use a new source file rather than shoehorning them
+into the existing mps2.c.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/armv7m.c | 17 ++++++++++++++---
- 1 file changed, 14 insertions(+), 3 deletions(-)
+ hw/arm/Makefile.objs |   1 +
+ hw/arm/mps2-tz.c     | 504 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 505 insertions(+)
+ create mode 100644 hw/arm/mps2-tz.c
 
-diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-index 56770a7048..facc536b07 100644
---- a/hw/arm/armv7m.c
-+++ b/hw/arm/armv7m.c
-@@ -270,6 +270,9 @@ void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename, int mem_size)
-     uint64_t entry;
-     uint64_t lowaddr;
-     int big_endian;
-+    AddressSpace *as;
-+    int asidx;
-+    CPUState *cs = CPU(cpu);
- 
- #ifdef TARGET_WORDS_BIGENDIAN
-     big_endian = 1;
-@@ -282,11 +285,19 @@ void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename, int mem_size)
-         exit(1);
-     }
- 
-+    if (arm_feature(&cpu->env, ARM_FEATURE_EL3)) {
-+        asidx = ARMASIdx_S;
-+    } else {
-+        asidx = ARMASIdx_NS;
-+    }
-+    as = cpu_get_address_space(cs, asidx);
+diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+index 79cd30bb92..232258160a 100644
+--- a/hw/arm/Makefile.objs
++++ b/hw/arm/Makefile.objs
+@@ -19,5 +19,6 @@ obj-$(CONFIG_FSL_IMX31) += fsl-imx31.o kzm.o
+ obj-$(CONFIG_FSL_IMX6) += fsl-imx6.o sabrelite.o
+ obj-$(CONFIG_ASPEED_SOC) += aspeed_soc.o aspeed.o
+ obj-$(CONFIG_MPS2) += mps2.o
++obj-$(CONFIG_MPS2) += mps2-tz.o
+ obj-$(CONFIG_MSF2) += msf2-soc.o msf2-som.o
+ obj-$(CONFIG_IOTKIT) += iotkit.o
+diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
+new file mode 100644
+index 0000000000..ff414c649c
+--- /dev/null
++++ b/hw/arm/mps2-tz.c
+@@ -0,0 +1,504 @@
++/*
++ * ARM V2M MPS2 board emulation, trustzone aware FPGA images
++ *
++ * Copyright (c) 2017 Linaro Limited
++ * Written by Peter Maydell
++ *
++ *  This program is free software; you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License version 2 or
++ *  (at your option) any later version.
++ */
 +
-     if (kernel_filename) {
--        image_size = load_elf(kernel_filename, NULL, NULL, &entry, &lowaddr,
--                              NULL, big_endian, EM_ARM, 1, 0);
-+        image_size = load_elf_as(kernel_filename, NULL, NULL, &entry, &lowaddr,
-+                                 NULL, big_endian, EM_ARM, 1, 0, as);
-         if (image_size < 0) {
--            image_size = load_image_targphys(kernel_filename, 0, mem_size);
-+            image_size = load_image_targphys_as(kernel_filename, 0,
-+                                                mem_size, as);
-             lowaddr = 0;
-         }
-         if (image_size < 0) {
++/* The MPS2 and MPS2+ dev boards are FPGA based (the 2+ has a bigger
++ * FPGA but is otherwise the same as the 2). Since the CPU itself
++ * and most of the devices are in the FPGA, the details of the board
++ * as seen by the guest depend significantly on the FPGA image.
++ * This source file covers the following FPGA images, for TrustZone cores:
++ *  "mps2-an505" -- Cortex-M33 as documented in ARM Application Note AN505
++ *
++ * Links to the TRM for the board itself and to the various Application
++ * Notes which document the FPGA images can be found here:
++ * https://developer.arm.com/products/system-design/development-boards/fpga-prototyping-boards/mps2
++ *
++ * Board TRM:
++ * http://infocenter.arm.com/help/topic/com.arm.doc.100112_0200_06_en/versatile_express_cortex_m_prototyping_systems_v2m_mps2_and_v2m_mps2plus_technical_reference_100112_0200_06_en.pdf
++ * Application Note AN505:
++ * http://infocenter.arm.com/help/topic/com.arm.doc.dai0505b/index.html
++ *
++ * The AN505 defers to the Cortex-M33 processor ARMv8M IoT Kit FVP User Guide
++ * (ARM ECM0601256) for the details of some of the device layout:
++ *   http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ecm0601256/index.html
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "qemu/error-report.h"
++#include "hw/arm/arm.h"
++#include "hw/arm/armv7m.h"
++#include "hw/or-irq.h"
++#include "hw/boards.h"
++#include "exec/address-spaces.h"
++#include "sysemu/sysemu.h"
++#include "hw/misc/unimp.h"
++#include "hw/char/cmsdk-apb-uart.h"
++#include "hw/timer/cmsdk-apb-timer.h"
++#include "hw/misc/mps2-scc.h"
++#include "hw/misc/mps2-fpgaio.h"
++#include "hw/arm/iotkit.h"
++#include "hw/devices.h"
++#include "net/net.h"
++#include "hw/core/split-irq.h"
++
++typedef enum MPS2TZFPGAType {
++    FPGA_AN505,
++} MPS2TZFPGAType;
++
++typedef struct {
++    MachineClass parent;
++    MPS2TZFPGAType fpga_type;
++    const char *cpu_model;
++    uint32_t scc_id;
++} MPS2TZMachineClass;
++
++typedef struct {
++    MachineState parent;
++
++    IoTKit iotkit;
++    MemoryRegion psram;
++    MemoryRegion ssram1;
++    MemoryRegion ssram1_m;
++    MemoryRegion ssram23;
++    MPS2SCC scc;
++    MPS2FPGAIO fpgaio;
++    TZPPC ppc[5];
++    UnimplementedDeviceState ssram_mpc[3];
++    UnimplementedDeviceState spi[5];
++    UnimplementedDeviceState i2c[4];
++    UnimplementedDeviceState i2s_audio;
++    UnimplementedDeviceState gpio[5];
++    UnimplementedDeviceState dma[4];
++    UnimplementedDeviceState gfx;
++    CMSDKAPBUART uart[5];
++    SplitIRQ sec_resp_splitter;
++    qemu_or_irq uart_irq_orgate;
++} MPS2TZMachineState;
++
++#define TYPE_MPS2TZ_MACHINE "mps2tz"
++#define TYPE_MPS2TZ_AN505_MACHINE MACHINE_TYPE_NAME("mps2-an505")
++
++#define MPS2TZ_MACHINE(obj) \
++    OBJECT_CHECK(MPS2TZMachineState, obj, TYPE_MPS2TZ_MACHINE)
++#define MPS2TZ_MACHINE_GET_CLASS(obj) \
++    OBJECT_GET_CLASS(MPS2TZMachineClass, obj, TYPE_MPS2TZ_MACHINE)
++#define MPS2TZ_MACHINE_CLASS(klass) \
++    OBJECT_CLASS_CHECK(MPS2TZMachineClass, klass, TYPE_MPS2TZ_MACHINE)
++
++/* Main SYSCLK frequency in Hz */
++#define SYSCLK_FRQ 20000000
++
++/* Initialize the auxiliary RAM region @mr and map it into
++ * the memory map at @base.
++ */
++static void make_ram(MemoryRegion *mr, const char *name,
++                     hwaddr base, hwaddr size)
++{
++    memory_region_init_ram(mr, NULL, name, size, &error_fatal);
++    memory_region_add_subregion(get_system_memory(), base, mr);
++}
++
++/* Create an alias of an entire original MemoryRegion @orig
++ * located at @base in the memory map.
++ */
++static void make_ram_alias(MemoryRegion *mr, const char *name,
++                           MemoryRegion *orig, hwaddr base)
++{
++    memory_region_init_alias(mr, NULL, name, orig, 0,
++                             memory_region_size(orig));
++    memory_region_add_subregion(get_system_memory(), base, mr);
++}
++
++static void init_sysbus_child(Object *parent, const char *childname,
++                              void *child, size_t childsize,
++                              const char *childtype)
++{
++    object_initialize(child, childsize, childtype);
++    object_property_add_child(parent, childname, OBJECT(child), &error_abort);
++    qdev_set_parent_bus(DEVICE(child), sysbus_get_default());
++
++}
++
++/* Most of the devices in the AN505 FPGA image sit behind
++ * Peripheral Protection Controllers. These data structures
++ * define the layout of which devices sit behind which PPCs.
++ * The devfn for each port is a function which creates, configures
++ * and initializes the device, returning the MemoryRegion which
++ * needs to be plugged into the downstream end of the PPC port.
++ */
++typedef MemoryRegion *MakeDevFn(MPS2TZMachineState *mms, void *opaque,
++                                const char *name, hwaddr size);
++
++typedef struct PPCPortInfo {
++    const char *name;
++    MakeDevFn *devfn;
++    void *opaque;
++    hwaddr addr;
++    hwaddr size;
++} PPCPortInfo;
++
++typedef struct PPCInfo {
++    const char *name;
++    PPCPortInfo ports[TZ_NUM_PORTS];
++} PPCInfo;
++
++static MemoryRegion *make_unimp_dev(MPS2TZMachineState *mms,
++                                       void *opaque,
++                                       const char *name, hwaddr size)
++{
++    /* Initialize, configure and realize a TYPE_UNIMPLEMENTED_DEVICE,
++     * and return a pointer to its MemoryRegion.
++     */
++    UnimplementedDeviceState *uds = opaque;
++
++    init_sysbus_child(OBJECT(mms), name, uds,
++                      sizeof(UnimplementedDeviceState),
++                      TYPE_UNIMPLEMENTED_DEVICE);
++    qdev_prop_set_string(DEVICE(uds), "name", name);
++    qdev_prop_set_uint64(DEVICE(uds), "size", size);
++    object_property_set_bool(OBJECT(uds), true, "realized", &error_fatal);
++    return sysbus_mmio_get_region(SYS_BUS_DEVICE(uds), 0);
++}
++
++static MemoryRegion *make_uart(MPS2TZMachineState *mms, void *opaque,
++                               const char *name, hwaddr size)
++{
++    CMSDKAPBUART *uart = opaque;
++    int i = uart - &mms->uart[0];
++    Chardev *uartchr = i < MAX_SERIAL_PORTS ? serial_hds[i] : NULL;
++    int rxirqno = i * 2;
++    int txirqno = i * 2 + 1;
++    int combirqno = i + 10;
++    SysBusDevice *s;
++    DeviceState *iotkitdev = DEVICE(&mms->iotkit);
++    DeviceState *orgate_dev = DEVICE(&mms->uart_irq_orgate);
++
++    init_sysbus_child(OBJECT(mms), name, uart,
++                      sizeof(mms->uart[0]), TYPE_CMSDK_APB_UART);
++    qdev_prop_set_chr(DEVICE(uart), "chardev", uartchr);
++    qdev_prop_set_uint32(DEVICE(uart), "pclk-frq", SYSCLK_FRQ);
++    object_property_set_bool(OBJECT(uart), true, "realized", &error_fatal);
++    s = SYS_BUS_DEVICE(uart);
++    sysbus_connect_irq(s, 0, qdev_get_gpio_in_named(iotkitdev,
++                                                    "EXP_IRQ", txirqno));
++    sysbus_connect_irq(s, 1, qdev_get_gpio_in_named(iotkitdev,
++                                                    "EXP_IRQ", rxirqno));
++    sysbus_connect_irq(s, 2, qdev_get_gpio_in(orgate_dev, i * 2));
++    sysbus_connect_irq(s, 3, qdev_get_gpio_in(orgate_dev, i * 2 + 1));
++    sysbus_connect_irq(s, 4, qdev_get_gpio_in_named(iotkitdev,
++                                                    "EXP_IRQ", combirqno));
++    return sysbus_mmio_get_region(SYS_BUS_DEVICE(uart), 0);
++}
++
++static MemoryRegion *make_scc(MPS2TZMachineState *mms, void *opaque,
++                              const char *name, hwaddr size)
++{
++    MPS2SCC *scc = opaque;
++    DeviceState *sccdev;
++    MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_GET_CLASS(mms);
++
++    object_initialize(scc, sizeof(mms->scc), TYPE_MPS2_SCC);
++    sccdev = DEVICE(scc);
++    qdev_set_parent_bus(sccdev, sysbus_get_default());
++    qdev_prop_set_uint32(sccdev, "scc-cfg4", 0x2);
++    qdev_prop_set_uint32(sccdev, "scc-aid", 0x02000008);
++    qdev_prop_set_uint32(sccdev, "scc-id", mmc->scc_id);
++    object_property_set_bool(OBJECT(scc), true, "realized", &error_fatal);
++    return sysbus_mmio_get_region(SYS_BUS_DEVICE(sccdev), 0);
++}
++
++static MemoryRegion *make_fpgaio(MPS2TZMachineState *mms, void *opaque,
++                                 const char *name, hwaddr size)
++{
++    MPS2FPGAIO *fpgaio = opaque;
++
++    object_initialize(fpgaio, sizeof(mms->fpgaio), TYPE_MPS2_FPGAIO);
++    qdev_set_parent_bus(DEVICE(fpgaio), sysbus_get_default());
++    object_property_set_bool(OBJECT(fpgaio), true, "realized", &error_fatal);
++    return sysbus_mmio_get_region(SYS_BUS_DEVICE(fpgaio), 0);
++}
++
++static void mps2tz_common_init(MachineState *machine)
++{
++    MPS2TZMachineState *mms = MPS2TZ_MACHINE(machine);
++    MachineClass *mc = MACHINE_GET_CLASS(machine);
++    MemoryRegion *system_memory = get_system_memory();
++    DeviceState *iotkitdev;
++    DeviceState *dev_splitter;
++    int i;
++
++    if (strcmp(machine->cpu_type, mc->default_cpu_type) != 0) {
++        error_report("This board can only be used with CPU %s",
++                     mc->default_cpu_type);
++        exit(1);
++    }
++
++    init_sysbus_child(OBJECT(machine), "iotkit", &mms->iotkit,
++                      sizeof(mms->iotkit), TYPE_IOTKIT);
++    iotkitdev = DEVICE(&mms->iotkit);
++    object_property_set_link(OBJECT(&mms->iotkit), OBJECT(system_memory),
++                             "memory", &error_abort);
++    qdev_prop_set_uint32(iotkitdev, "EXP_NUMIRQ", 92);
++    qdev_prop_set_uint32(iotkitdev, "MAINCLK", SYSCLK_FRQ);
++    object_property_set_bool(OBJECT(&mms->iotkit), true, "realized",
++                             &error_fatal);
++
++    /* The sec_resp_cfg output from the IoTKit must be split into multiple
++     * lines, one for each of the PPCs we create here.
++     */
++    object_initialize(&mms->sec_resp_splitter, sizeof(mms->sec_resp_splitter),
++                      TYPE_SPLIT_IRQ);
++    object_property_add_child(OBJECT(machine), "sec-resp-splitter",
++                              OBJECT(&mms->sec_resp_splitter), &error_abort);
++    object_property_set_int(OBJECT(&mms->sec_resp_splitter), 5,
++                            "num-lines", &error_fatal);
++    object_property_set_bool(OBJECT(&mms->sec_resp_splitter), true,
++                             "realized", &error_fatal);
++    dev_splitter = DEVICE(&mms->sec_resp_splitter);
++    qdev_connect_gpio_out_named(iotkitdev, "sec_resp_cfg", 0,
++                                qdev_get_gpio_in(dev_splitter, 0));
++
++    /* The IoTKit sets up much of the memory layout, including
++     * the aliases between secure and non-secure regions in the
++     * address space. The FPGA itself contains:
++     *
++     * 0x00000000..0x003fffff  SSRAM1
++     * 0x00400000..0x007fffff  alias of SSRAM1
++     * 0x28000000..0x283fffff  4MB SSRAM2 + SSRAM3
++     * 0x40100000..0x4fffffff  AHB Master Expansion 1 interface devices
++     * 0x80000000..0x80ffffff  16MB PSRAM
++     */
++
++    /* The FPGA images have an odd combination of different RAMs,
++     * because in hardware they are different implementations and
++     * connected to different buses, giving varying performance/size
++     * tradeoffs. For QEMU they're all just RAM, though. We arbitrarily
++     * call the 16MB our "system memory", as it's the largest lump.
++     */
++    memory_region_allocate_system_memory(&mms->psram,
++                                         NULL, "mps.ram", 0x01000000);
++    memory_region_add_subregion(system_memory, 0x80000000, &mms->psram);
++
++    /* The SSRAM memories should all be behind Memory Protection Controllers,
++     * but we don't implement that yet.
++     */
++    make_ram(&mms->ssram1, "mps.ssram1", 0x00000000, 0x00400000);
++    make_ram_alias(&mms->ssram1_m, "mps.ssram1_m", &mms->ssram1, 0x00400000);
++
++    make_ram(&mms->ssram23, "mps.ssram23", 0x28000000, 0x00400000);
++
++    /* The overflow IRQs for all UARTs are ORed together.
++     * Tx, Rx and "combined" IRQs are sent to the NVIC separately.
++     * Create the OR gate for this.
++     */
++    object_initialize(&mms->uart_irq_orgate, sizeof(mms->uart_irq_orgate),
++                      TYPE_OR_IRQ);
++    object_property_add_child(OBJECT(mms), "uart-irq-orgate",
++                              OBJECT(&mms->uart_irq_orgate), &error_abort);
++    object_property_set_int(OBJECT(&mms->uart_irq_orgate), 10, "num-lines",
++                            &error_fatal);
++    object_property_set_bool(OBJECT(&mms->uart_irq_orgate), true,
++                             "realized", &error_fatal);
++    qdev_connect_gpio_out(DEVICE(&mms->uart_irq_orgate), 0,
++                          qdev_get_gpio_in_named(iotkitdev, "EXP_IRQ", 15));
++
++    /* Most of the devices in the FPGA are behind Peripheral Protection
++     * Controllers. The required order for initializing things is:
++     *  + initialize the PPC
++     *  + initialize, configure and realize downstream devices
++     *  + connect downstream device MemoryRegions to the PPC
++     *  + realize the PPC
++     *  + map the PPC's MemoryRegions to the places in the address map
++     *    where the downstream devices should appear
++     *  + wire up the PPC's control lines to the IoTKit object
++     */
++
++    const PPCInfo ppcs[] = { {
++            .name = "apb_ppcexp0",
++            .ports = {
++                { "ssram-mpc0", make_unimp_dev, &mms->ssram_mpc[0],
++                  0x58007000, 0x1000 },
++                { "ssram-mpc1", make_unimp_dev, &mms->ssram_mpc[1],
++                  0x58008000, 0x1000 },
++                { "ssram-mpc2", make_unimp_dev, &mms->ssram_mpc[2],
++                  0x58009000, 0x1000 },
++            },
++        }, {
++            .name = "apb_ppcexp1",
++            .ports = {
++                { "spi0", make_unimp_dev, &mms->spi[0], 0x40205000, 0x1000 },
++                { "spi1", make_unimp_dev, &mms->spi[1], 0x40206000, 0x1000 },
++                { "spi2", make_unimp_dev, &mms->spi[2], 0x40209000, 0x1000 },
++                { "spi3", make_unimp_dev, &mms->spi[3], 0x4020a000, 0x1000 },
++                { "spi4", make_unimp_dev, &mms->spi[4], 0x4020b000, 0x1000 },
++                { "uart0", make_uart, &mms->uart[0], 0x40200000, 0x1000 },
++                { "uart1", make_uart, &mms->uart[1], 0x40201000, 0x1000 },
++                { "uart2", make_uart, &mms->uart[2], 0x40202000, 0x1000 },
++                { "uart3", make_uart, &mms->uart[3], 0x40203000, 0x1000 },
++                { "uart4", make_uart, &mms->uart[4], 0x40204000, 0x1000 },
++                { "i2c0", make_unimp_dev, &mms->i2c[0], 0x40207000, 0x1000 },
++                { "i2c1", make_unimp_dev, &mms->i2c[1], 0x40208000, 0x1000 },
++                { "i2c2", make_unimp_dev, &mms->i2c[2], 0x4020c000, 0x1000 },
++                { "i2c3", make_unimp_dev, &mms->i2c[3], 0x4020d000, 0x1000 },
++            },
++        }, {
++            .name = "apb_ppcexp2",
++            .ports = {
++                { "scc", make_scc, &mms->scc, 0x40300000, 0x1000 },
++                { "i2s-audio", make_unimp_dev, &mms->i2s_audio,
++                  0x40301000, 0x1000 },
++                { "fpgaio", make_fpgaio, &mms->fpgaio, 0x40302000, 0x1000 },
++            },
++        }, {
++            .name = "ahb_ppcexp0",
++            .ports = {
++                { "gfx", make_unimp_dev, &mms->gfx, 0x41000000, 0x140000 },
++                { "gpio0", make_unimp_dev, &mms->gpio[0], 0x40100000, 0x1000 },
++                { "gpio1", make_unimp_dev, &mms->gpio[1], 0x40101000, 0x1000 },
++                { "gpio2", make_unimp_dev, &mms->gpio[2], 0x40102000, 0x1000 },
++                { "gpio3", make_unimp_dev, &mms->gpio[3], 0x40103000, 0x1000 },
++                { "gpio4", make_unimp_dev, &mms->gpio[4], 0x40104000, 0x1000 },
++            },
++        }, {
++            .name = "ahb_ppcexp1",
++            .ports = {
++                { "dma0", make_unimp_dev, &mms->dma[0], 0x40110000, 0x1000 },
++                { "dma1", make_unimp_dev, &mms->dma[1], 0x40111000, 0x1000 },
++                { "dma2", make_unimp_dev, &mms->dma[2], 0x40112000, 0x1000 },
++                { "dma3", make_unimp_dev, &mms->dma[3], 0x40113000, 0x1000 },
++            },
++        },
++    };
++
++    for (i = 0; i < ARRAY_SIZE(ppcs); i++) {
++        const PPCInfo *ppcinfo = &ppcs[i];
++        TZPPC *ppc = &mms->ppc[i];
++        DeviceState *ppcdev;
++        int port;
++        char *gpioname;
++
++        init_sysbus_child(OBJECT(machine), ppcinfo->name, ppc,
++                          sizeof(TZPPC), TYPE_TZ_PPC);
++        ppcdev = DEVICE(ppc);
++
++        for (port = 0; port < TZ_NUM_PORTS; port++) {
++            const PPCPortInfo *pinfo = &ppcinfo->ports[port];
++            MemoryRegion *mr;
++            char *portname;
++
++            if (!pinfo->devfn) {
++                continue;
++            }
++
++            mr = pinfo->devfn(mms, pinfo->opaque, pinfo->name, pinfo->size);
++            portname = g_strdup_printf("port[%d]", port);
++            object_property_set_link(OBJECT(ppc), OBJECT(mr),
++                                     portname, &error_fatal);
++            g_free(portname);
++        }
++
++        object_property_set_bool(OBJECT(ppc), true, "realized", &error_fatal);
++
++        for (port = 0; port < TZ_NUM_PORTS; port++) {
++            const PPCPortInfo *pinfo = &ppcinfo->ports[port];
++
++            if (!pinfo->devfn) {
++                continue;
++            }
++            sysbus_mmio_map(SYS_BUS_DEVICE(ppc), port, pinfo->addr);
++
++            gpioname = g_strdup_printf("%s_nonsec", ppcinfo->name);
++            qdev_connect_gpio_out_named(iotkitdev, gpioname, port,
++                                        qdev_get_gpio_in_named(ppcdev,
++                                                               "cfg_nonsec",
++                                                               port));
++            g_free(gpioname);
++            gpioname = g_strdup_printf("%s_ap", ppcinfo->name);
++            qdev_connect_gpio_out_named(iotkitdev, gpioname, port,
++                                        qdev_get_gpio_in_named(ppcdev,
++                                                               "cfg_ap", port));
++            g_free(gpioname);
++        }
++
++        gpioname = g_strdup_printf("%s_irq_enable", ppcinfo->name);
++        qdev_connect_gpio_out_named(iotkitdev, gpioname, 0,
++                                    qdev_get_gpio_in_named(ppcdev,
++                                                           "irq_enable", 0));
++        g_free(gpioname);
++        gpioname = g_strdup_printf("%s_irq_clear", ppcinfo->name);
++        qdev_connect_gpio_out_named(iotkitdev, gpioname, 0,
++                                    qdev_get_gpio_in_named(ppcdev,
++                                                           "irq_clear", 0));
++        g_free(gpioname);
++        gpioname = g_strdup_printf("%s_irq_status", ppcinfo->name);
++        qdev_connect_gpio_out_named(ppcdev, "irq", 0,
++                                    qdev_get_gpio_in_named(iotkitdev,
++                                                           gpioname, 0));
++        g_free(gpioname);
++
++        qdev_connect_gpio_out(dev_splitter, i,
++                              qdev_get_gpio_in_named(ppcdev,
++                                                     "cfg_sec_resp", 0));
++    }
++
++    /* In hardware this is a LAN9220; the LAN9118 is software compatible
++     * except that it doesn't support the checksum-offload feature.
++     * The ethernet controller is not behind a PPC.
++     */
++    lan9118_init(&nd_table[0], 0x42000000,
++                 qdev_get_gpio_in_named(iotkitdev, "EXP_IRQ", 16));
++
++    create_unimplemented_device("FPGA NS PC", 0x48007000, 0x1000);
++
++    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename, 0x400000);
++}
++
++static void mps2tz_class_init(ObjectClass *oc, void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++
++    mc->init = mps2tz_common_init;
++    mc->max_cpus = 1;
++}
++
++static void mps2tz_an505_class_init(ObjectClass *oc, void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++    MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_CLASS(oc);
++
++    mc->desc = "ARM MPS2 with AN505 FPGA image for Cortex-M33";
++    mmc->fpga_type = FPGA_AN505;
++    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m33");
++    mmc->scc_id = 0x41040000 | (505 << 4);
++}
++
++static const TypeInfo mps2tz_info = {
++    .name = TYPE_MPS2TZ_MACHINE,
++    .parent = TYPE_MACHINE,
++    .abstract = true,
++    .instance_size = sizeof(MPS2TZMachineState),
++    .class_size = sizeof(MPS2TZMachineClass),
++    .class_init = mps2tz_class_init,
++};
++
++static const TypeInfo mps2tz_an505_info = {
++    .name = TYPE_MPS2TZ_AN505_MACHINE,
++    .parent = TYPE_MPS2TZ_MACHINE,
++    .class_init = mps2tz_an505_class_init,
++};
++
++static void mps2tz_machine_init(void)
++{
++    type_register_static(&mps2tz_info);
++    type_register_static(&mps2tz_an505_info);
++}
++
++type_init(mps2tz_machine_init);
 -- 
 2.16.1
 

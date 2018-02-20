@@ -1,71 +1,76 @@
-Received: by 10.28.71.27 with SMTP id u27csp1382814wma;
-        Tue, 20 Feb 2018 10:12:49 -0800 (PST)
-X-Google-Smtp-Source: AH8x224zaa7tDqSDTERPaXMIsPaekLpBxQ77i3Qd/tfiaRog212Ld0rtaeNUOItizJsaAiIL5lyR
-X-Received: by 2002:a25:8506:: with SMTP id w6-v6mr444666ybk.267.1519150369456;
-        Tue, 20 Feb 2018 10:12:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519150369; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp1384216wma;
+        Tue, 20 Feb 2018 10:14:08 -0800 (PST)
+X-Google-Smtp-Source: AH8x225vpKo6BmdMhrPOEcIbpQcFiPx1pa4DrhStZTNrkknyV1HuMp/jHRrSWSfH1Rt+JejrKJQE
+X-Received: by 10.129.134.197 with SMTP id w188mr451188ywf.293.1519150448563;
+        Tue, 20 Feb 2018 10:14:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519150448; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q8HsJtKTC3vh5u4joBB/DeEh00NBIfd4RyeF2in6DBHGHBWKUkSN5LdYTHleeGHnDq
-         K1t4ZdeoWDOZ9cLBJAMA3BHqSLJ0SnHQW6Zq1a4kgqMAAgwphQ5OsihcxtXltQ77r6og
-         Uap7b0Oq3cn5emjsVkqKyooF2Y4ZQWOdsf9HOUTCWqsMpoLn4RkYKjQVmYDi5DbbC5Cy
-         +f4z7wfPaUYiVMzwg2aj3jDS1TfInzjtowSPlwzbCy/m/sEy/kX71gxOYEPmUjdt3rsW
-         ISnnBguOO20SoUb/rOStqnyuqZa6Rlmo0YIo8lm9C7gvEcG80ax2eqxcakyNpEzhdw8m
-         rPqQ==
+        b=zd05svXnAFXiAZgfKrzql9JEqyVzL6iUwZC5Z4BKl9fUWQ3ZBZ825qiB0cWZ+1r5F0
+         F8S5YriG1uKsr0HT3eJv0uWBEHzyiwXPDlgrGtKNHEw6ll1u1t4gpeZ1AUVa6elv95oz
+         nl3HHd0ngF8MY13egoXyqPbbixUpgSMtAiOJS6q0BI98EKY0EQcAEkzJhBIriTMq7zVa
+         j7NT8lw2xFqrWLGqx50JgZlSwYNP0ALvAW9Y7z4k7gDzTsZ5aC7q9eh38JKSKErCXkx3
+         +NwkV5VS3UXhsjxY65I3CBrzuFoQr4vLJ6QcvHuERKwodwzTE8aGc0c04500H6p/aJ4B
+         /d0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=WkD1/Ix/myvLTu/JFEollrkC5M7ij0XL5XYqqAaj//8=;
-        b=Q1XCgcdxtmTx9eKVeD/7t4LOe/SuupbTi7M+LOGtm8ghBBcStiGzVfDyYOgoXMHxvu
-         NS7wSTDZwYtJB2zaIUaaVdX9iaQnKkcffYVL3bin7X1Um5znQbD9hvIa4dDFJMtAzu2+
-         5j3LCk4lpXwQ/OVH024DhAA9XKSQKVY0tHamcDNQ8mKhmT13Zy+gO6pB+hkiTmTqkdAY
-         ECtRlzi9HSbZ3BI/fCPwby/KUUAI2TOL+w0GVAarL84tsnpwT8Nwn543gioqiMBbOTPX
-         Ek6RqnVC/CCtoZmlIGVYJ0VwGyV2YUNVIYS57gERP6j1EIjp8MMaw+gIQXPwy37VzjR9
-         Az7Q==
+        bh=gs+3cy9o14tWB2fh+L5DvULNYay+gHGxMu+JbcnZnz8=;
+        b=jRD1kPt7dgc9kdcc06JUVaTXNPOUTW7VxskOGAIfG1BN1HW6SGpM8X3+wSQXCIK2KL
+         UIQM8kLEAWI0IOsxPRDGu9SOjLi+ijrdMhe61UShoiR5yCVxl2i58uQLXBWBcSSEeGfC
+         KuRsdoz1K4quXLz1zvLgkWT6JlSWMTSPDYmsQcI0SxKlW6sbgOcnKQVNHq35Gw/KKFzj
+         8ZNK2V4Vd5gn/UNmkNxP5DviQ+73d5nOm3mJPPOZBqAZmoaGj/6NuXj1RABTqidnT3xo
+         XUParuHq1JtvB+R/Ze+x2eaPxvONugLz8jitQ/BlSK+eCmfAKwKXJ2fxBXtBd/kX/+/H
+         oL+g==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j123si3413299ywe.453.2018.02.20.10.12.49
+        by mx.google.com with ESMTPS id z128si1887907ywe.717.2018.02.20.10.14.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 20 Feb 2018 10:12:49 -0800 (PST)
+        Tue, 20 Feb 2018 10:14:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57020 helo=lists.gnu.org)
+Received: from localhost ([::1]:57026 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eoCPI-0000Hc-PY
-	for alex.bennee@linaro.org; Tue, 20 Feb 2018 13:12:48 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53970)
+	id 1eoCQZ-0001YX-Ve
+	for alex.bennee@linaro.org; Tue, 20 Feb 2018 13:14:08 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53856)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eoCGa-0008F5-Km
+	(envelope-from <pm215@archaic.org.uk>) id 1eoCGX-0008Az-HP
 	for qemu-arm@nongnu.org; Tue, 20 Feb 2018 13:03:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eoCGU-0001fE-Ik
-	for qemu-arm@nongnu.org; Tue, 20 Feb 2018 13:03:48 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:46554)
+	(envelope-from <pm215@archaic.org.uk>) id 1eoCGV-0001gX-Ok
+	for qemu-arm@nongnu.org; Tue, 20 Feb 2018 13:03:45 -0500
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:46560)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1eoCGT-0001ae-SZ; Tue, 20 Feb 2018 13:03:42 -0500
+	id 1eoCGV-0001br-Dl; Tue, 20 Feb 2018 13:03:43 -0500
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1eoCGR-0008UX-OK; Tue, 20 Feb 2018 18:03:39 +0000
+	id 1eoCGG-0008Qh-Jh; Tue, 20 Feb 2018 18:03:28 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 20 Feb 2018 18:03:24 +0000
-Message-Id: <20180220180325.29818-19-peter.maydell@linaro.org>
+Date: Tue, 20 Feb 2018 18:03:09 +0000
+Message-Id: <20180220180325.29818-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.16.1
 In-Reply-To: <20180220180325.29818-1-peter.maydell@linaro.org>
 References: <20180220180325.29818-1-peter.maydell@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 18/19] hw/arm/iotkit: Model Arm IOT Kit
+Subject: [Qemu-arm] [PATCH 03/19] hw/arm/armv7m: Honour CPU's address space
+ for image loads
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,766 +85,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: O2g8an/slA+w
+X-TUID: HsFepkYLCsiB
 
-Model the Arm IoT Kit documented in
-http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ecm0601256/index.html
-
-The Arm IoT Kit is a subsystem which includes a CPU and some devices,
-and is intended be extended by adding extra devices to form a
-complete system.  It is used in the MPS2 board's AN505 image for the
-Cortex-M33.
+Instead of loading guest images to the system address space, use the
+CPU's address space.  This is important if we're trying to load the
+file to memory or via an alias memory region that is provided by an
+SoC object and thus not mapped into the system address space.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/Makefile.objs            |   1 +
- include/hw/arm/iotkit.h         | 109 ++++++++
- hw/arm/iotkit.c                 | 598 ++++++++++++++++++++++++++++++++++++++++
- default-configs/arm-softmmu.mak |   1 +
- 4 files changed, 709 insertions(+)
- create mode 100644 include/hw/arm/iotkit.h
- create mode 100644 hw/arm/iotkit.c
+ hw/arm/armv7m.c | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
 
-diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-index 1c896bafb4..79cd30bb92 100644
---- a/hw/arm/Makefile.objs
-+++ b/hw/arm/Makefile.objs
-@@ -20,3 +20,4 @@ obj-$(CONFIG_FSL_IMX6) += fsl-imx6.o sabrelite.o
- obj-$(CONFIG_ASPEED_SOC) += aspeed_soc.o aspeed.o
- obj-$(CONFIG_MPS2) += mps2.o
- obj-$(CONFIG_MSF2) += msf2-soc.o msf2-som.o
-+obj-$(CONFIG_IOTKIT) += iotkit.o
-diff --git a/include/hw/arm/iotkit.h b/include/hw/arm/iotkit.h
-new file mode 100644
-index 0000000000..c6129d926b
---- /dev/null
-+++ b/include/hw/arm/iotkit.h
-@@ -0,0 +1,109 @@
-+/*
-+ * ARM IoT Kit
-+ *
-+ * Copyright (c) 2018 Linaro Limited
-+ * Written by Peter Maydell
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 or
-+ * (at your option) any later version.
-+ */
-+
-+/* This is a model of the Arm IoT Kit which is documented in
-+ * http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ecm0601256/index.html
-+ * It contains:
-+ *  a Cortex-M33
-+ *  the IDAU
-+ *  some timers and watchdogs
-+ *  two peripheral protection controllers
-+ *  a memory protection controller
-+ *  a security controller
-+ *  a bus fabric which arranges that some parts of the address
-+ *  space are secure and non-secure aliases of each other
-+ *
-+ * QEMU interface:
-+ *  + QOM property "memory" is a MemoryRegion containing the devices provided
-+ *    by the board model.
-+ *  + QOM property "MAINCLK" is the frequency of the main system clock
-+ *  + QOM property "EXP_NUMIRQ" sets the number of expansion interrupts
-+ *  + Named GPIO inputs "EXP_IRQ" 0..n are the expansion interrupts, which
-+ *    are wired to the NVIC lines 32 .. n+32
-+ * Controlling up to 4 AHB expansion PPBs which a system using the IoTKit
-+ * might provide:
-+ *  + named GPIO outputs apb_ppcexp{0,1,2,3}_nonsec[0..15]
-+ *  + named GPIO outputs apb_ppcexp{0,1,2,3}_ap[0..15]
-+ *  + named GPIO outputs apb_ppcexp{0,1,2,3}_irq_enable
-+ *  + named GPIO outputs apb_ppcexp{0,1,2,3}_irq_clear
-+ *  + named GPIO inputs apb_ppcexp{0,1,2,3}_irq_status
-+ * Controlling each of the 4 expansion AHB PPCs which a system using the IoTKit
-+ * might provide:
-+ *  + named GPIO outputs ahb_ppcexp{0,1,2,3}_nonsec[0..15]
-+ *  + named GPIO outputs ahb_ppcexp{0,1,2,3}_ap[0..15]
-+ *  + named GPIO outputs ahb_ppcexp{0,1,2,3}_irq_enable
-+ *  + named GPIO outputs ahb_ppcexp{0,1,2,3}_irq_clear
-+ *  + named GPIO inputs ahb_ppcexp{0,1,2,3}_irq_status
-+ */
-+
-+#ifndef IOTKIT_H
-+#define IOTKIT_H
-+
-+#include "hw/sysbus.h"
-+#include "hw/arm/armv7m.h"
-+#include "hw/misc/iotkit-secctl.h"
-+#include "hw/misc/tz-ppc.h"
-+#include "hw/timer/cmsdk-apb-timer.h"
-+#include "hw/misc/unimp.h"
-+#include "hw/or-irq.h"
-+#include "hw/core/split-irq.h"
-+
-+#define TYPE_IOTKIT "iotkit"
-+#define IOTKIT(obj) OBJECT_CHECK(IoTKit, (obj), TYPE_IOTKIT)
-+
-+/* We have an IRQ splitter and an OR gate input for each external PPC
-+ * and the 2 internal PPCs
-+ */
-+#define NUM_EXTERNAL_PPCS (IOTS_NUM_AHB_EXP_PPC + IOTS_NUM_APB_EXP_PPC)
-+#define NUM_PPCS (NUM_EXTERNAL_PPCS + 2)
-+
-+typedef struct IoTKit {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+
-+    /*< public >*/
-+    ARMv7MState armv7m;
-+    IoTKitSecCtl secctl;
-+    TZPPC apb_ppc0;
-+    TZPPC apb_ppc1;
-+    CMSDKAPBTIMER timer0;
-+    CMSDKAPBTIMER timer1;
-+    qemu_or_irq ppc_irq_orgate;
-+    SplitIRQ sec_resp_splitter;
-+    SplitIRQ ppc_irq_splitter[NUM_PPCS];
-+
-+    UnimplementedDeviceState dualtimer;
-+    UnimplementedDeviceState s32ktimer;
-+
-+    MemoryRegion container;
-+    MemoryRegion alias1;
-+    MemoryRegion alias2;
-+    MemoryRegion alias3;
-+    MemoryRegion sram0;
-+
-+    qemu_irq *exp_irqs;
-+    qemu_irq ppc0_irq;
-+    qemu_irq ppc1_irq;
-+    qemu_irq sec_resp_cfg;
-+    qemu_irq sec_resp_cfg_in;
-+    qemu_irq nsc_cfg_in;
-+
-+    qemu_irq irq_status_in[NUM_EXTERNAL_PPCS];
-+
-+    uint32_t nsccfg;
-+
-+    /* Properties */
-+    MemoryRegion *board_memory;
-+    uint32_t exp_numirq;
-+    uint32_t mainclk_frq;
-+} IoTKit;
-+
-+#endif
-diff --git a/hw/arm/iotkit.c b/hw/arm/iotkit.c
-new file mode 100644
-index 0000000000..c5f0a5b98a
---- /dev/null
-+++ b/hw/arm/iotkit.c
-@@ -0,0 +1,598 @@
-+/*
-+ * Arm IoT Kit
-+ *
-+ * Copyright (c) 2018 Linaro Limited
-+ * Written by Peter Maydell
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 or
-+ * (at your option) any later version.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qapi/error.h"
-+#include "trace.h"
-+#include "hw/sysbus.h"
-+#include "hw/registerfields.h"
-+#include "hw/arm/iotkit.h"
-+#include "hw/misc/unimp.h"
-+#include "hw/arm/arm.h"
-+
-+/* Create an alias region of @size bytes starting at @base
-+ * which mirrors the memory starting at @orig.
-+ */
-+static void make_alias(IoTKit *s, MemoryRegion *mr, const char *name,
-+                       hwaddr base, hwaddr size, hwaddr orig)
-+{
-+    memory_region_init_alias(mr, NULL, name, &s->container, orig, size);
-+    /* The alias is even lower priority than unimplemented_device regions */
-+    memory_region_add_subregion_overlap(&s->container, base, mr, -1500);
-+}
-+
-+static void init_sysbus_child(Object *parent, const char *childname,
-+                              void *child, size_t childsize,
-+                              const char *childtype)
-+{
-+    object_initialize(child, childsize, childtype);
-+    object_property_add_child(parent, childname, OBJECT(child), &error_abort);
-+    qdev_set_parent_bus(DEVICE(child), sysbus_get_default());
-+}
-+
-+static void irq_status_forwarder(void *opaque, int n, int level)
-+{
-+    qemu_irq destirq = opaque;
-+
-+    qemu_set_irq(destirq, level);
-+}
-+
-+static void nsccfg_handler(void *opaque, int n, int level)
-+{
-+    IoTKit *s = IOTKIT(opaque);
-+
-+    s->nsccfg = level;
-+}
-+
-+static void iotkit_forward_ppc(IoTKit *s, const char *ppcname, int ppcnum)
-+{
-+    /* Each of the 4 AHB and 4 APB PPCs that might be present in a
-+     * system using the IoTKit has a collection of control lines which
-+     * are provided by the security controller and which we want to
-+     * expose as control lines on the IoTKit device itself, so the
-+     * code using the IoTKit can wire them up to the PPCs.
-+     */
-+    SplitIRQ *splitter = &s->ppc_irq_splitter[ppcnum];
-+    DeviceState *iotkitdev = DEVICE(s);
-+    DeviceState *dev_secctl = DEVICE(&s->secctl);
-+    DeviceState *dev_splitter = DEVICE(splitter);
-+    char *name;
-+
-+    name = g_strdup_printf("%s_nonsec", ppcname);
-+    qdev_pass_gpios(dev_secctl, iotkitdev, name);
-+    g_free(name);
-+    name = g_strdup_printf("%s_ap", ppcname);
-+    qdev_pass_gpios(dev_secctl, iotkitdev, name);
-+    g_free(name);
-+    name = g_strdup_printf("%s_irq_enable", ppcname);
-+    qdev_pass_gpios(dev_secctl, iotkitdev, name);
-+    g_free(name);
-+    name = g_strdup_printf("%s_irq_clear", ppcname);
-+    qdev_pass_gpios(dev_secctl, iotkitdev, name);
-+    g_free(name);
-+
-+    /* irq_status is a little more tricky, because we need to
-+     * split it so we can send it both to the security controller
-+     * and to our OR gate for the NVIC interrupt line.
-+     * Connect up the splitter's outputs, and create a GPIO input
-+     * which will pass the line state to the input splitter.
-+     */
-+    name = g_strdup_printf("%s_irq_status", ppcname);
-+    qdev_connect_gpio_out(dev_splitter, 0,
-+                          qdev_get_gpio_in_named(dev_secctl,
-+                                                 name, 0));
-+    qdev_connect_gpio_out(dev_splitter, 1,
-+                          qdev_get_gpio_in(DEVICE(&s->ppc_irq_orgate), ppcnum));
-+    s->irq_status_in[ppcnum] = qdev_get_gpio_in(dev_splitter, 0);
-+    qdev_init_gpio_in_named_with_opaque(iotkitdev, irq_status_forwarder,
-+                                        s->irq_status_in[ppcnum], name, 1);
-+    g_free(name);
-+}
-+
-+static void iotkit_forward_sec_resp_cfg(IoTKit *s)
-+{
-+    /* Forward the 3rd output from the splitter device as a
-+     * named GPIO output of the iotkit object.
-+     */
-+    DeviceState *dev = DEVICE(s);
-+    DeviceState *dev_splitter = DEVICE(&s->sec_resp_splitter);
-+
-+    qdev_init_gpio_out_named(dev, &s->sec_resp_cfg, "sec_resp_cfg", 1);
-+    s->sec_resp_cfg_in = qemu_allocate_irq(irq_status_forwarder,
-+                                           s->sec_resp_cfg, 1);
-+    qdev_connect_gpio_out(dev_splitter, 2, s->sec_resp_cfg_in);
-+}
-+
-+static void iotkit_init(Object *obj)
-+{
-+    IoTKit *s = IOTKIT(obj);
-+    int i;
-+
-+    memory_region_init(&s->container, obj, "iotkit-container", UINT64_MAX);
-+
-+    init_sysbus_child(obj, "armv7m", &s->armv7m, sizeof(s->armv7m),
-+                      TYPE_ARMV7M);
-+    qdev_prop_set_string(DEVICE(&s->armv7m), "cpu-type",
-+                         ARM_CPU_TYPE_NAME("cortex-m33"));
-+
-+    init_sysbus_child(obj, "secctl", &s->secctl, sizeof(s->secctl),
-+                      TYPE_IOTKIT_SECCTL);
-+    init_sysbus_child(obj, "apb-ppc0", &s->apb_ppc0, sizeof(s->apb_ppc0),
-+                      TYPE_TZ_PPC);
-+    init_sysbus_child(obj, "apb-ppc1", &s->apb_ppc1, sizeof(s->apb_ppc1),
-+                      TYPE_TZ_PPC);
-+    init_sysbus_child(obj, "timer0", &s->timer0, sizeof(s->timer0),
-+                      TYPE_CMSDK_APB_TIMER);
-+    init_sysbus_child(obj, "timer1", &s->timer1, sizeof(s->timer1),
-+                      TYPE_CMSDK_APB_TIMER);
-+    init_sysbus_child(obj, "dualtimer", &s->dualtimer, sizeof(s->dualtimer),
-+                      TYPE_UNIMPLEMENTED_DEVICE);
-+    object_initialize(&s->ppc_irq_orgate, sizeof(s->ppc_irq_orgate),
-+                      TYPE_OR_IRQ);
-+    object_property_add_child(obj, "ppc-irq-orgate",
-+                              OBJECT(&s->ppc_irq_orgate), &error_abort);
-+    object_initialize(&s->sec_resp_splitter, sizeof(s->sec_resp_splitter),
-+                      TYPE_SPLIT_IRQ);
-+    object_property_add_child(obj, "sec-resp-splitter",
-+                              OBJECT(&s->sec_resp_splitter), &error_abort);
-+    for (i = 0; i < ARRAY_SIZE(s->ppc_irq_splitter); i++) {
-+        char *name = g_strdup_printf("ppc-irq-splitter-%d", i);
-+        SplitIRQ *splitter = &s->ppc_irq_splitter[i];
-+
-+        object_initialize(splitter, sizeof(*splitter), TYPE_SPLIT_IRQ);
-+        object_property_add_child(obj, name, OBJECT(splitter), &error_abort);
-+    }
-+    init_sysbus_child(obj, "s32ktimer", &s->s32ktimer, sizeof(s->s32ktimer),
-+                      TYPE_UNIMPLEMENTED_DEVICE);
-+}
-+
-+static void iotkit_exp_irq(void *opaque, int n, int level)
-+{
-+    IoTKit *s = IOTKIT(opaque);
-+
-+    qemu_set_irq(s->exp_irqs[n], level);
-+}
-+
-+static void iotkit_realize(DeviceState *dev, Error **errp)
-+{
-+    IoTKit *s = IOTKIT(dev);
-+    int i;
-+    MemoryRegion *mr;
-+    Error *err = NULL;
-+    SysBusDevice *sbd_apb_ppc0;
-+    SysBusDevice *sbd_secctl;
-+    DeviceState *dev_apb_ppc0;
-+    DeviceState *dev_apb_ppc1;
-+    DeviceState *dev_secctl;
-+    DeviceState *dev_splitter;
-+
-+    if (!s->board_memory) {
-+        error_setg(errp, "memory property was not set");
-+        return;
-+    }
-+
-+    if (!s->mainclk_frq) {
-+        error_setg(errp, "MAINCLK property was not set");
-+        return;
-+    }
-+
-+    /* Handling of which devices should be available only to secure
-+     * code is usually done differently for M profile than for A profile.
-+     * Instead of putting some devices only into the secure address space,
-+     * devices exist in both address spaces but with hard-wired security
-+     * permissions that will cause the CPU to fault for non-secure accesses.
-+     *
-+     * The IoTKit has an IDAU (Implementation Defined Access Unit),
-+     * which specifies hard-wired security permissions for different
-+     * areas of the physical address space. For the IoTKit IDAU, the
-+     * top 4 bits of the physical address are the IDAU region ID, and
-+     * if bit 28 (ie the lowest bit of the ID) is 0 then this is an NS
-+     * region, otherwise it is an S region.
-+     *
-+     * The various devices and RAMs are generally all mapped twice,
-+     * once into a region that the IDAU defines as secure and once
-+     * into a non-secure region. They sit behind either a Memory
-+     * Protection Controller (for RAM) or a Peripheral Protection
-+     * Controller (for devices), which allow a more fine grained
-+     * configuration of whether non-secure accesses are permitted.
-+     *
-+     * (The other place that guest software can configure security
-+     * permissions is in the architected SAU (Security Attribution
-+     * Unit), which is entirely inside the CPU. The IDAU can upgrade
-+     * the security attributes for a region to more restrictive than
-+     * the SAU specifies, but cannot downgrade them.)
-+     *
-+     * 0x10000000..0x1fffffff  alias of 0x00000000..0x0fffffff
-+     * 0x20000000..0x2007ffff  32KB FPGA block RAM
-+     * 0x30000000..0x3fffffff  alias of 0x20000000..0x2fffffff
-+     * 0x40000000..0x4000ffff  base peripheral region 1
-+     * 0x40010000..0x4001ffff  CPU peripherals (none for IoTKit)
-+     * 0x40020000..0x4002ffff  system control element peripherals
-+     * 0x40080000..0x400fffff  base peripheral region 2
-+     * 0x50000000..0x5fffffff  alias of 0x40000000..0x4fffffff
-+     */
-+
-+    memory_region_add_subregion_overlap(&s->container, 0, s->board_memory, -1);
-+
-+    qdev_prop_set_uint32(DEVICE(&s->armv7m), "num-irq", s->exp_numirq + 32);
-+    /* In real hardware the initial Secure VTOR is set from the INITSVTOR0
-+     * register in the IoT Kit System Control Register block, and the
-+     * initial value of that is in turn specifiable by the FPGA that
-+     * instantiates the IoT Kit. In QEMU we don't implement this wrinkle,
-+     * and simply set the CPU's init-svtor to the IoT Kit default value.
-+     */
-+    qdev_prop_set_uint32(DEVICE(&s->armv7m), "init-svtor", 0x10000000);
-+    object_property_set_link(OBJECT(&s->armv7m), OBJECT(&s->container),
-+                             "memory", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    object_property_set_link(OBJECT(&s->armv7m), OBJECT(s), "idau", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    object_property_set_bool(OBJECT(&s->armv7m), true, "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+
-+    /* Connect our EXP_IRQ GPIOs to the NVIC's lines 32 and up. */
-+    s->exp_irqs = g_new(qemu_irq, s->exp_numirq);
-+    for (i = 0; i < s->exp_numirq; i++) {
-+        s->exp_irqs[i] = qdev_get_gpio_in(DEVICE(&s->armv7m), i + 32);
-+    }
-+    qdev_init_gpio_in_named(dev, iotkit_exp_irq, "EXP_IRQ", s->exp_numirq);
-+
-+    /* Set up the big aliases first */
-+    make_alias(s, &s->alias1, "alias 1", 0x10000000, 0x10000000, 0x00000000);
-+    make_alias(s, &s->alias2, "alias 2", 0x30000000, 0x10000000, 0x20000000);
-+    /* The 0x50000000..0x5fffffff region is not a pure alias: it has
-+     * a few extra devices that only appear there (generally the
-+     * control interfaces for the protection controllers).
-+     * We implement this by mapping those devices over the top of this
-+     * alias MR at a higher priority.
-+     */
-+    make_alias(s, &s->alias3, "alias 3", 0x50000000, 0x10000000, 0x40000000);
-+
-+    /* This RAM should be behind a Memory Protection Controller, but we
-+     * don't implement that yet.
-+     */
-+    memory_region_init_ram(&s->sram0, NULL, "iotkit.sram0", 0x00008000, &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    memory_region_add_subregion(&s->container, 0x20000000, &s->sram0);
-+
-+    /* Security controller */
-+    object_property_set_bool(OBJECT(&s->secctl), true, "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    sbd_secctl = SYS_BUS_DEVICE(&s->secctl);
-+    dev_secctl = DEVICE(&s->secctl);
-+    sysbus_mmio_map(sbd_secctl, 0, 0x50080000);
-+    sysbus_mmio_map(sbd_secctl, 1, 0x40080000);
-+
-+    s->nsc_cfg_in = qemu_allocate_irq(nsccfg_handler, s, 1);
-+    qdev_connect_gpio_out_named(dev_secctl, "nsc_cfg", 0, s->nsc_cfg_in);
-+
-+    /* The sec_resp_cfg output from the security controller must be split into
-+     * multiple lines, one for each of the PPCs within the IoTKit and one
-+     * that will be an output from the IoTKit to the system.
-+     */
-+    object_property_set_int(OBJECT(&s->sec_resp_splitter), 3,
-+                            "num-lines", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    object_property_set_bool(OBJECT(&s->sec_resp_splitter), true,
-+                             "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    dev_splitter = DEVICE(&s->sec_resp_splitter);
-+    qdev_connect_gpio_out_named(dev_secctl, "sec_resp_cfg", 0,
-+                                qdev_get_gpio_in(dev_splitter, 0));
-+
-+    /* Devices behind APB PPC0:
-+     *   0x40000000: timer0
-+     *   0x40001000: timer1
-+     *   0x40002000: dual timer
-+     * We must configure and realize each downstream device and connect
-+     * it to the appropriate PPC port; then we can realize the PPC and
-+     * map its upstream ends to the right place in the container.
-+     */
-+    qdev_prop_set_uint32(DEVICE(&s->timer0), "pclk-frq", s->mainclk_frq);
-+    object_property_set_bool(OBJECT(&s->timer0), true, "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer0), 0,
-+                       qdev_get_gpio_in(DEVICE(&s->armv7m), 3));
-+    mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->timer0), 0);
-+    object_property_set_link(OBJECT(&s->apb_ppc0), OBJECT(mr), "port[0]", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+
-+    qdev_prop_set_uint32(DEVICE(&s->timer1), "pclk-frq", s->mainclk_frq);
-+    object_property_set_bool(OBJECT(&s->timer1), true, "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer1), 0,
-+                       qdev_get_gpio_in(DEVICE(&s->armv7m), 3));
-+    mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->timer1), 0);
-+    object_property_set_link(OBJECT(&s->apb_ppc0), OBJECT(mr), "port[1]", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+
-+    qdev_prop_set_string(DEVICE(&s->dualtimer), "name", "Dual timer");
-+    qdev_prop_set_uint64(DEVICE(&s->dualtimer), "size", 0x1000);
-+    object_property_set_bool(OBJECT(&s->dualtimer), true, "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->dualtimer), 0);
-+    object_property_set_link(OBJECT(&s->apb_ppc0), OBJECT(mr), "port[2]", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+
-+    object_property_set_bool(OBJECT(&s->apb_ppc0), true, "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+
-+    sbd_apb_ppc0 = SYS_BUS_DEVICE(&s->apb_ppc0);
-+    dev_apb_ppc0 = DEVICE(&s->apb_ppc0);
-+
-+    mr = sysbus_mmio_get_region(sbd_apb_ppc0, 0);
-+    memory_region_add_subregion(&s->container, 0x40000000, mr);
-+    mr = sysbus_mmio_get_region(sbd_apb_ppc0, 1);
-+    memory_region_add_subregion(&s->container, 0x40001000, mr);
-+    mr = sysbus_mmio_get_region(sbd_apb_ppc0, 2);
-+    memory_region_add_subregion(&s->container, 0x40002000, mr);
-+    for (i = 0; i < IOTS_APB_PPC0_NUM_PORTS; i++) {
-+        qdev_connect_gpio_out_named(dev_secctl, "apb_ppc0_nonsec", i,
-+                                    qdev_get_gpio_in_named(dev_apb_ppc0,
-+                                                           "cfg_nonsec", i));
-+        qdev_connect_gpio_out_named(dev_secctl, "apb_ppc0_ap", i,
-+                                    qdev_get_gpio_in_named(dev_apb_ppc0,
-+                                                           "cfg_ap", i));
-+    }
-+    qdev_connect_gpio_out_named(dev_secctl, "apb_ppc0_irq_enable", 0,
-+                                qdev_get_gpio_in_named(dev_apb_ppc0,
-+                                                       "irq_enable", 0));
-+    qdev_connect_gpio_out_named(dev_secctl, "apb_ppc0_irq_clear", 0,
-+                                qdev_get_gpio_in_named(dev_apb_ppc0,
-+                                                       "irq_clear", 0));
-+    qdev_connect_gpio_out(dev_splitter, 0,
-+                          qdev_get_gpio_in_named(dev_apb_ppc0,
-+                                                 "cfg_sec_resp", 0));
-+
-+    /* All the PPC irq lines (from the 2 internal PPCs and the 8 external
-+     * ones) are sent individually to the security controller, and also
-+     * ORed together to give a single combined PPC interrupt to the NVIC.
-+     */
-+    object_property_set_int(OBJECT(&s->ppc_irq_orgate),
-+                            NUM_PPCS, "num-lines", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    object_property_set_bool(OBJECT(&s->ppc_irq_orgate), true,
-+                             "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    qdev_connect_gpio_out(DEVICE(&s->ppc_irq_orgate), 0,
-+                          qdev_get_gpio_in(DEVICE(&s->armv7m), 10));
-+
-+    /* 0x40010000 .. 0x4001ffff: private CPU region: unused in IoTKit */
-+
-+    /* 0x40020000 .. 0x4002ffff : IoTKit system control peripheral region */
-+    /* Devices behind APB PPC1:
-+     *   0x4002f000: S32K timer
-+     */
-+    qdev_prop_set_string(DEVICE(&s->s32ktimer), "name", "S32KTIMER");
-+    qdev_prop_set_uint64(DEVICE(&s->s32ktimer), "size", 0x1000);
-+    object_property_set_bool(OBJECT(&s->s32ktimer), true, "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->s32ktimer), 0);
-+    object_property_set_link(OBJECT(&s->apb_ppc1), OBJECT(mr), "port[0]", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+
-+    object_property_set_bool(OBJECT(&s->apb_ppc1), true, "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->apb_ppc1), 0);
-+    memory_region_add_subregion(&s->container, 0x4002f000, mr);
-+
-+    dev_apb_ppc1 = DEVICE(&s->apb_ppc1);
-+    qdev_connect_gpio_out_named(dev_secctl, "apb_ppc1_nonsec", 0,
-+                                qdev_get_gpio_in_named(dev_apb_ppc1,
-+                                                       "cfg_nonsec", 0));
-+    qdev_connect_gpio_out_named(dev_secctl, "apb_ppc1_ap", 0,
-+                                qdev_get_gpio_in_named(dev_apb_ppc1,
-+                                                       "cfg_ap", 0));
-+    qdev_connect_gpio_out_named(dev_secctl, "apb_ppc1_irq_enable", 0,
-+                                qdev_get_gpio_in_named(dev_apb_ppc1,
-+                                                       "irq_enable", 0));
-+    qdev_connect_gpio_out_named(dev_secctl, "apb_ppc1_irq_clear", 0,
-+                                qdev_get_gpio_in_named(dev_apb_ppc1,
-+                                                       "irq_clear", 0));
-+    qdev_connect_gpio_out(dev_splitter, 1,
-+                          qdev_get_gpio_in_named(dev_apb_ppc1,
-+                                                 "cfg_sec_resp", 0));
-+
-+    /* Using create_unimplemented_device() maps the stub into the
-+     * system address space rather than into our container, but the
-+     * overall effect to the guest is the same.
-+     */
-+    create_unimplemented_device("SYSINFO", 0x40020000, 0x1000);
-+
-+    create_unimplemented_device("SYSCONTROL", 0x50021000, 0x1000);
-+    create_unimplemented_device("S32KWATCHDOG", 0x5002e000, 0x1000);
-+
-+    /* 0x40080000 .. 0x4008ffff : IoTKit second Base peripheral region */
-+
-+    create_unimplemented_device("NS watchdog", 0x40081000, 0x1000);
-+    create_unimplemented_device("S watchdog", 0x50081000, 0x1000);
-+
-+    create_unimplemented_device("SRAM0 MPC", 0x50083000, 0x1000);
-+
-+    for (i = 0; i < ARRAY_SIZE(s->ppc_irq_splitter); i++) {
-+        Object *splitter = OBJECT(&s->ppc_irq_splitter[i]);
-+
-+        object_property_set_int(splitter, 2, "num-lines", &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-+        object_property_set_bool(splitter, true, "realized", &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-+    }
-+
-+    for (i = 0; i < IOTS_NUM_AHB_EXP_PPC; i++) {
-+        char *ppcname = g_strdup_printf("ahb_ppcexp%d", i);
-+
-+        iotkit_forward_ppc(s, ppcname, i);
-+        g_free(ppcname);
-+    }
-+
-+    for (i = 0; i < IOTS_NUM_APB_EXP_PPC; i++) {
-+        char *ppcname = g_strdup_printf("apb_ppcexp%d", i);
-+
-+        iotkit_forward_ppc(s, ppcname, i + IOTS_NUM_AHB_EXP_PPC);
-+        g_free(ppcname);
-+    }
-+
-+    for (i = NUM_EXTERNAL_PPCS; i < NUM_PPCS; i++) {
-+        /* Wire up IRQ splitter for internal PPCs */
-+        DeviceState *devs = DEVICE(&s->ppc_irq_splitter[i]);
-+        char *gpioname = g_strdup_printf("apb_ppc%d_irq_status",
-+                                         i - NUM_EXTERNAL_PPCS);
-+        TZPPC *ppc = (i == NUM_EXTERNAL_PPCS) ? &s->apb_ppc0 : &s->apb_ppc1;
-+
-+        qdev_connect_gpio_out(devs, 0,
-+                              qdev_get_gpio_in_named(dev_secctl, gpioname, 0));
-+        qdev_connect_gpio_out(devs, 1,
-+                              qdev_get_gpio_in(DEVICE(&s->ppc_irq_orgate), i));
-+        qdev_connect_gpio_out_named(DEVICE(ppc), "irq", 0,
-+                                    qdev_get_gpio_in(devs, 0));
-+    }
-+
-+    iotkit_forward_sec_resp_cfg(s);
-+
-+    system_clock_scale = NANOSECONDS_PER_SECOND / s->mainclk_frq;
-+}
-+
-+static void iotkit_idau_check(IDAUInterface *ii, uint32_t address,
-+                              int *iregion, bool *exempt, bool *ns, bool *nsc)
-+{
-+    /* For IoTKit systems the IDAU responses are simple logical functions
-+     * of the address bits. The NSC attribute is guest-adjustable via the
-+     * NSCCFG register in the security controller.
-+     */
-+    IoTKit *s = IOTKIT(ii);
-+    int region = extract32(address, 28, 4);
-+
-+    *ns = !(region & 1);
-+    *nsc = (region == 1 && (s->nsccfg & 1)) || (region == 3 && (s->nsccfg & 2));
-+    /* 0xe0000000..0xe00fffff and 0xf0000000..0xf00fffff are exempt */
-+    *exempt = (address & 0xeff00000) == 0xe0000000;
-+    *iregion = region;
-+}
-+
-+static const VMStateDescription iotkit_vmstate = {
-+    .name = "iotkit",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(nsccfg, IoTKit),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static Property iotkit_properties[] = {
-+    DEFINE_PROP_LINK("memory", IoTKit, board_memory, TYPE_MEMORY_REGION,
-+                     MemoryRegion *),
-+    DEFINE_PROP_UINT32("EXP_NUMIRQ", IoTKit, exp_numirq, 64),
-+    DEFINE_PROP_UINT32("MAINCLK", IoTKit, mainclk_frq, 0),
-+    DEFINE_PROP_END_OF_LIST()
-+};
-+
-+static void iotkit_reset(DeviceState *dev)
-+{
-+    IoTKit *s = IOTKIT(dev);
-+
-+    s->nsccfg = 0;
-+}
-+
-+static void iotkit_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    IDAUInterfaceClass *iic = IDAU_INTERFACE_CLASS(klass);
-+
-+    dc->realize = iotkit_realize;
-+    dc->vmsd = &iotkit_vmstate;
-+    dc->props = iotkit_properties;
-+    dc->reset = iotkit_reset;
-+    iic->check = iotkit_idau_check;
-+}
-+
-+static const TypeInfo iotkit_info = {
-+    .name = TYPE_IOTKIT,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(IoTKit),
-+    .instance_init = iotkit_init,
-+    .class_init = iotkit_class_init,
-+    .interfaces = (InterfaceInfo[]) {
-+        { TYPE_IDAU_INTERFACE },
-+        { }
-+    }
-+};
-+
-+static void iotkit_register_types(void)
-+{
-+    type_register_static(&iotkit_info);
-+}
-+
-+type_init(iotkit_register_types);
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-index a2057908f0..2f735917a5 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -104,6 +104,7 @@ CONFIG_MPS2_FPGAIO=y
- CONFIG_MPS2_SCC=y
+diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+index 56770a7048..facc536b07 100644
+--- a/hw/arm/armv7m.c
++++ b/hw/arm/armv7m.c
+@@ -270,6 +270,9 @@ void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename, int mem_size)
+     uint64_t entry;
+     uint64_t lowaddr;
+     int big_endian;
++    AddressSpace *as;
++    int asidx;
++    CPUState *cs = CPU(cpu);
  
- CONFIG_TZ_PPC=y
-+CONFIG_IOTKIT=y
- CONFIG_IOTKIT_SECCTL=y
+ #ifdef TARGET_WORDS_BIGENDIAN
+     big_endian = 1;
+@@ -282,11 +285,19 @@ void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename, int mem_size)
+         exit(1);
+     }
  
- CONFIG_VERSATILE_PCI=y
++    if (arm_feature(&cpu->env, ARM_FEATURE_EL3)) {
++        asidx = ARMASIdx_S;
++    } else {
++        asidx = ARMASIdx_NS;
++    }
++    as = cpu_get_address_space(cs, asidx);
++
+     if (kernel_filename) {
+-        image_size = load_elf(kernel_filename, NULL, NULL, &entry, &lowaddr,
+-                              NULL, big_endian, EM_ARM, 1, 0);
++        image_size = load_elf_as(kernel_filename, NULL, NULL, &entry, &lowaddr,
++                                 NULL, big_endian, EM_ARM, 1, 0, as);
+         if (image_size < 0) {
+-            image_size = load_image_targphys(kernel_filename, 0, mem_size);
++            image_size = load_image_targphys_as(kernel_filename, 0,
++                                                mem_size, as);
+             lowaddr = 0;
+         }
+         if (image_size < 0) {
 -- 
 2.16.1
 

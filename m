@@ -1,318 +1,105 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id u198sm8293340wmu.44.2018.02.20.13.01.51
+Received: by 10.28.71.27 with SMTP id u27csp1034645wma;
+        Wed, 21 Feb 2018 10:16:12 -0800 (PST)
+X-Received: by 10.98.237.21 with SMTP id u21mr4147539pfh.190.1519236972733;
+        Wed, 21 Feb 2018 10:16:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519236972; cv=none;
+        d=google.com; s=arc-20160816;
+        b=KJf5XtF1os/BJP9h/GnHBToYfY8Q9UJoV+Wi1Ewf+4zqyzI+copeys+MaPXFxciIyv
+         pPwVLMGY6IQrRVsp7PQaGFL7XmtmMYRN146JOvhqSHYaGOAtnw4RsKwOM79u/js7yJxb
+         Qavbj/3rMT15Vx0hMhtMWLuTw1Z0ZEqSpt7WZeyWPRiF6bH6keTpS2JkLLnOqrhIQW4S
+         XBorzTCv3bUF8VfbOpoxFskmZvUzx9eiw3elanIxYqpcPKUZ9Z0X1CJi87WLN0Ilknqc
+         iBSWnJePZJcBFWGEq5FPZTDrEwJCzcozgj2WV3wix+CGxCyLNoD5FQuvmJJDuc99B+hC
+         jRRQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature:arc-authentication-results;
+        bh=xZnU9n6YRRF4If8OYVWEsAFxXWA+5qo9kUsgbuK0wKg=;
+        b=LRTGLfqgyYC7YZh1Pa4gmnFJ7VdrYKJIzLsXJWE+n2A85fB5VCSbaux6nKE8TaE+5b
+         J0Hjl+5R90iZhXe91V4/5cFMURSoPhkjlZ41yDSqzRpIFkuwL/RBQndPYc7UogJXCLQF
+         8Xy0bt2PnVRe27p9l9C/JTo7ezeknYb7c6REyaXhmYy8o3JAJFph1/LW778858NFbses
+         dgxYFLUHD+ygHV5vjVMq1apoJST8bA8QUyXIGU5c/P1GxeHtjVg4KYCld9km4q9PNqB9
+         skGaINsD+pewQa1fTG0Ucuw9l635PI+bgz8j5Tx52AgBIMwPJ21C9lmrMo/l3lSLC/zz
+         /h1g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cj3lvcJb;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id y6sor3670543pgb.371.2018.02.21.10.16.11
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Wed, 21 Feb 2018 10:16:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cj3lvcJb;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=xZnU9n6YRRF4If8OYVWEsAFxXWA+5qo9kUsgbuK0wKg=;
+        b=cj3lvcJbjiY1qT+SOaYkZOcBrq1HawmjF14mA2oyir5PkE5aHfdSZVT2VaqJ9rpQI4
+         HQCeJK6ev8g+nFIp1MQEuSG5sUY7n+G+Q4gTuOQoHQWWl0DDWGE970RDTmid8KYcFJ/+
+         rJhJPGsNHd01zGI23MXkukFj0PooSZibaVc6s=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=xZnU9n6YRRF4If8OYVWEsAFxXWA+5qo9kUsgbuK0wKg=;
+        b=UhWCsPr1ZyxL7qlbfD1vRJC+BzbgPVWc+9n0wrTsDQ9QD/FamoXxtZCwLUIQGGdliZ
+         9JRfVMt35hD7Z9NUyAHuBXMhdCF3rmKce2TZVcBhdd21VBSlgdxVIxnpbYV3ThgWYxJ9
+         G8MSVW9CAoQF8GFlm+IDUJRnK7iGZUwm9+w1zASLh6Af9hGxD4g7JufUc7c6Zl8o4gLn
+         jZBpZXIFGzQS1Q6ceBb6NKWoKpfLPMwOowZroGWbtk8ybN75ktG0hHGXe/9t6suTpkhl
+         vKKO5L3L8zrEC9vCLU3UU71uLmnR6nJLaXG5bda7C4Zler2f7lv/3Qyayep2i8UkqcV4
+         8GlQ==
+X-Gm-Message-State: APf1xPBr+iUUgnqzzfeTdaFoVjexSn5UaU+x+53vubNI7LYVYKPJQy9p
+	Twc/07kYkJxymqqeO1dhKifuBRcCtz7R+Q==
+X-Google-Smtp-Source: AH8x224l3xatlIzSlqRvUwhBKlj7FjerPWljI2BwJ/zE/Bh5wHgjJNxjDo2h82KgRF3EyEu9QsMDPQ==
+X-Received: by 10.99.122.74 with SMTP id j10mr3299069pgn.84.1519236971038;
+        Wed, 21 Feb 2018 10:16:11 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from cloudburst.twiddle.net (97-113-169-147.tukw.qwest.net. [97.113.169.147])
+        by smtp.gmail.com with ESMTPSA id x124sm62910052pfx.105.2018.02.21.10.16.09
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 20 Feb 2018 13:01:52 -0800 (PST)
-Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 8C79B3E0BDF;
-	Tue, 20 Feb 2018 21:01:51 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: peter.maydell@linaro.org,
-	richard.henderson@linaro.org
-Cc: qemu-devel@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Richard Henderson <rth@twiddle.net>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Riku Voipio <riku.voipio@iki.fi>,
-	Laurent Vivier <laurent@vivier.eu>,
-	qemu-arm@nongnu.org (open list:ARM)
-Subject: [PATCH] fpu/softfloat: use hardware sqrt if we can (EXPERIMENT!)
-Date: Tue, 20 Feb 2018 21:01:37 +0000
-Message-Id: <20180220210137.18018-1-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.15.1
-In-Reply-To: <CAFEAcA_Tp9cH5CBi4C6CRHpZ4ozygGSFYhdLaURBQOVZ9zVxvA@mail.gmail.com>
-References: <CAFEAcA_Tp9cH5CBi4C6CRHpZ4ozygGSFYhdLaURBQOVZ9zVxvA@mail.gmail.com>
+        Wed, 21 Feb 2018 10:16:09 -0800 (PST)
+Subject: Re: [Qemu-devel] [PATCH v2 03/32] target/arm/cpu64: allow fp16 to be
+ disabled
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+References: <20180208173157.24705-1-alex.bennee@linaro.org>
+ <20180208173157.24705-4-alex.bennee@linaro.org>
+ <CAFEAcA-=Oh=MgSGoheP70o9dy0hgo64PBtRH5u1u51bjqUAh7A@mail.gmail.com>
+ <87lgfm9u7a.fsf@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <595a9f5d-80ca-7ff9-5dd7-f4177a348afc@linaro.org>
+Date: Wed, 21 Feb 2018 10:16:07 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <87lgfm9u7a.fsf@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: nsPu49v+5Pnf
+X-TUID: CZAT38iVg6Tv
 
-This is an attempt to save some of the cost of sqrt by using the
-inbuilt support of the host hardware. The idea is assuming we start
-with a valid input we can use the hardware. If any tininess issues
-occur this will trip and FPU exception where:
+On 02/21/2018 08:35 AM, Alex Bennée wrote:
+>> Good news everybody -- this is an opportunity for a naming bikeshed
+>> discussion!
+...
+>>  * use the hwcaps names that Linux defines and prints in /proc/cpuinfo
+>>    (in this case that would be a combination of "fphp" and "asimdhp",
+>>    since hwcaps reflects the ID register setup that allows a CPU
+>>    to report support for one and not the other)
+> 
+> In naming I favour the Arm ARM over whatever Linux-ism /proc came up
+> with.
 
-  - we turn off cpu->use_host_fpu
-  - mask the FPU exceptions
-  - return to what we were doing
+Likewise.
 
-Once we return we should pick up the fact that there was something
-weird about the operation and fall-back to the pure software
-implementation.
 
-You could imagine this being extended for code generation but instead
-of returning to the code we could exit and re-generate the TB but this
-time with pure software helpers rather than any support from the
-hardware.
-
-This is a sort of fix-it-up after the fact approach because reading
-the FP state is an expensive operation for everything so let's only
-worry about exceptions when they trip...
-
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- cpus.c                        | 28 ++++++++++++++++++++++++++++
- fpu/softfloat.c               | 40 +++++++++++++++++++++++++++++++++++-----
- include/fpu/softfloat-types.h |  2 ++
- include/fpu/softfloat.h       |  4 ++++
- include/qom/cpu.h             |  1 +
- linux-user/main.c             |  8 ++++++++
- linux-user/signal.c           | 16 ++++++++++++++++
- target/arm/cpu.c              |  4 ++++
- 8 files changed, 98 insertions(+), 5 deletions(-)
-
-diff --git a/cpus.c b/cpus.c
-index f298b659f4..e435f6737b 100644
---- a/cpus.c
-+++ b/cpus.c
-@@ -23,6 +23,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include <fenv.h>
- #include "qemu/config-file.h"
- #include "cpu.h"
- #include "monitor/monitor.h"
-@@ -1078,10 +1079,36 @@ static void qemu_init_sigbus(void)
- 
-     prctl(PR_MCE_KILL, PR_MCE_KILL_SET, PR_MCE_KILL_EARLY, 0, 0);
- }
-+
-+static void sigfpu_handler(int n, siginfo_t *siginfo, void *ctx)
-+{
-+    fprintf(stderr, "%s: got %d, %p/%p\n", __func__, n, siginfo, ctx);
-+
-+    /* Called asynchronously in VCPU thread.  */
-+    g_assert(current_cpu);
-+}
-+
-+static void qemu_init_sigfpu(void)
-+{
-+    struct sigaction action;
-+
-+    memset(&action, 0, sizeof(action));
-+    action.sa_flags = SA_SIGINFO;
-+    action.sa_sigaction = sigfpu_handler;
-+    sigaction(SIGBUS, &action, NULL);
-+
-+    feenableexcept(FE_INVALID   |
-+                   FE_OVERFLOW  |
-+                   FE_UNDERFLOW |
-+                   FE_INEXACT);
-+}
- #else /* !CONFIG_LINUX */
- static void qemu_init_sigbus(void)
- {
- }
-+static void qemu_init_sigfpu(void)
-+{
-+}
- #endif /* !CONFIG_LINUX */
- 
- static QemuMutex qemu_global_mutex;
-@@ -1827,6 +1854,7 @@ static void qemu_tcg_init_vcpu(CPUState *cpu)
-     if (!tcg_region_inited) {
-         tcg_region_inited = 1;
-         tcg_region_init();
-+        qemu_init_sigfpu();
-     }
- 
-     if (qemu_tcg_mttcg_enabled() || !single_tcg_cpu_thread) {
-diff --git a/fpu/softfloat.c b/fpu/softfloat.c
-index e7fb0d357a..ec9355af7a 100644
---- a/fpu/softfloat.c
-+++ b/fpu/softfloat.c
-@@ -1905,10 +1905,12 @@ float64 float64_scalbn(float64 a, int n, float_status *status)
-  * bits to ensure we get a correctly rounded result.
-  *
-  * This does mean however the calculation is slower than before,
-- * especially for 64 bit floats.
-+ * especially for 64 bit floats. However the caller can only do checks
-+ * if they actually want to off-load to the library.
-  */
- 
--static FloatParts sqrt_float(FloatParts a, float_status *s, const FloatFmt *p)
-+static FloatParts sqrt_float(FloatParts a, float_status *s,
-+                             const FloatFmt *p, bool check_only)
- {
-     uint64_t a_frac, r_frac, s_frac;
-     int bit, last_bit;
-@@ -1928,6 +1930,10 @@ static FloatParts sqrt_float(FloatParts a, float_status *s, const FloatFmt *p)
-         return a;  /* sqrt(+inf) = +inf */
-     }
- 
-+    if (check_only) {
-+        return a;
-+    }
-+
-     assert(a.cls == float_class_normal);
- 
-     /* We need two overflow bits at the top. Adding room for that is a
-@@ -1973,21 +1979,45 @@ static FloatParts sqrt_float(FloatParts a, float_status *s, const FloatFmt *p)
- float16 __attribute__((flatten)) float16_sqrt(float16 a, float_status *status)
- {
-     FloatParts pa = float16_unpack_canonical(a, status);
--    FloatParts pr = sqrt_float(pa, status, &float16_params);
-+    FloatParts pr = sqrt_float(pa, status, &float16_params, false);
-     return float16_round_pack_canonical(pr, status);
- }
- 
- float32 __attribute__((flatten)) float32_sqrt(float32 a, float_status *status)
- {
-     FloatParts pa = float32_unpack_canonical(a, status);
--    FloatParts pr = sqrt_float(pa, status, &float32_params);
-+    FloatParts pr;
-+
-+    if (status->use_host_fpu && *status->use_host_fpu) {
-+        pr = sqrt_float(pa, status, &float32_params, true);
-+        if (pr.cls == float_class_normal) {
-+            float32 r = __builtin_sqrt(a);
-+            if (*status->use_host_fpu) {
-+                return r;
-+            }
-+        }
-+    }
-+
-+    pr = sqrt_float(pa, status, &float32_params, false);
-     return float32_round_pack_canonical(pr, status);
- }
- 
- float64 __attribute__((flatten)) float64_sqrt(float64 a, float_status *status)
- {
-     FloatParts pa = float64_unpack_canonical(a, status);
--    FloatParts pr = sqrt_float(pa, status, &float64_params);
-+    FloatParts pr = sqrt_float(pa, status, &float64_params, true);
-+
-+    if (status->use_host_fpu && *status->use_host_fpu) {
-+        pr = sqrt_float(pa, status, &float64_params, true);
-+        if (pr.cls == float_class_normal) {
-+            float64 r = __builtin_sqrt(a);
-+            if (*status->use_host_fpu) {
-+                return r;
-+            }
-+        }
-+    }
-+
-+    pr = sqrt_float(pa, status, &float64_params, false);
-     return float64_round_pack_canonical(pr, status);
- }
- 
-diff --git a/include/fpu/softfloat-types.h b/include/fpu/softfloat-types.h
-index 4e378cb612..4c32e56cad 100644
---- a/include/fpu/softfloat-types.h
-+++ b/include/fpu/softfloat-types.h
-@@ -174,6 +174,8 @@ typedef struct float_status {
-     flag flush_inputs_to_zero;
-     flag default_nan_mode;
-     flag snan_bit_is_one;
-+    /* can we use the host_fpu for some things? */
-+    bool *use_host_fpu;
- } float_status;
- 
- #endif /* SOFTFLOAT_TYPES_H */
-diff --git a/include/fpu/softfloat.h b/include/fpu/softfloat.h
-index 9b7b5e34e2..f7ee0232a2 100644
---- a/include/fpu/softfloat.h
-+++ b/include/fpu/softfloat.h
-@@ -157,6 +157,10 @@ static inline flag get_default_nan_mode(float_status *status)
- {
-     return status->default_nan_mode;
- }
-+static inline void enable_host_fpu(bool *host_fpu_flag, float_status *status)
-+{
-+    status->use_host_fpu = host_fpu_flag;
-+}
- 
- /*----------------------------------------------------------------------------
- | Routine to raise any or all of the software IEC/IEEE floating-point
-diff --git a/include/qom/cpu.h b/include/qom/cpu.h
-index aff88fa16f..337ebef8b6 100644
---- a/include/qom/cpu.h
-+++ b/include/qom/cpu.h
-@@ -396,6 +396,7 @@ struct CPUState {
-     uint32_t halted;
-     uint32_t can_do_io;
-     int32_t exception_index;
-+    bool use_host_fpu;
- 
-     /* shared by kvm, hax and hvf */
-     bool vcpu_dirty;
-diff --git a/linux-user/main.c b/linux-user/main.c
-index 7de0e02487..36b6be3b2b 100644
---- a/linux-user/main.c
-+++ b/linux-user/main.c
-@@ -20,6 +20,7 @@
- #include "qemu-version.h"
- #include <sys/syscall.h>
- #include <sys/resource.h>
-+#include <fenv.h>
- 
- #include "qapi/error.h"
- #include "qemu.h"
-@@ -4927,6 +4928,13 @@ int main(int argc, char **argv, char **envp)
-         }
-         gdb_handlesig(cpu, 0);
-     }
-+
-+    feenableexcept(FE_INVALID   |
-+                   FE_OVERFLOW  |
-+                   FE_UNDERFLOW |
-+                   FE_INEXACT);
-+    cpu->use_host_fpu = true;
-+
-     cpu_loop(env);
-     /* never exits */
-     return 0;
-diff --git a/linux-user/signal.c b/linux-user/signal.c
-index 9a380b9e31..0773d3ef18 100644
---- a/linux-user/signal.c
-+++ b/linux-user/signal.c
-@@ -20,6 +20,7 @@
- #include "qemu/bitops.h"
- #include <sys/ucontext.h>
- #include <sys/resource.h>
-+#include <fenv.h>
- 
- #include "qemu.h"
- #include "qemu-common.h"
-@@ -639,6 +640,21 @@ static void host_signal_handler(int host_signum, siginfo_t *info,
-     ucontext_t *uc = puc;
-     struct emulated_sigtable *k;
- 
-+    /* Catch any FPU exceptions we might get from having tried to use
-+     * the host FPU to speed up some calculations
-+     */
-+    if (host_signum == SIGFPE && cpu->use_host_fpu) {
-+        cpu->use_host_fpu = false;
-+        /* sadly this gets lost on the context switch when we return */
-+        fedisableexcept(FE_INVALID   |
-+                        FE_OVERFLOW  |
-+                        FE_UNDERFLOW |
-+                        FE_INEXACT);
-+        /* sigaddset(&uc->uc_sigmask, SIGFPE); */
-+        uc->__fpregs_mem.mxcsr |= 0x1f80;
-+        return;
-+    }
-+
-     /* the CPU emulator uses some host signals to detect exceptions,
-        we forward to it some signals */
-     if ((host_signum == SIGSEGV || host_signum == SIGBUS)
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 1b3ae62db6..67dce53a68 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -306,6 +306,10 @@ static void arm_cpu_reset(CPUState *s)
-                               &env->vfp.fp_status);
-     set_float_detect_tininess(float_tininess_before_rounding,
-                               &env->vfp.standard_fp_status);
-+
-+    enable_host_fpu(&s->use_host_fpu, &env->vfp.fp_status);
-+    enable_host_fpu(&s->use_host_fpu, &env->vfp.standard_fp_status);
-+
- #ifndef CONFIG_USER_ONLY
-     if (kvm_enabled()) {
-         kvm_arm_reset_vcpu(cpu);
--- 
-2.15.1
+r~

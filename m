@@ -1,99 +1,96 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2434750wre;
-        Mon, 28 May 2018 05:47:05 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKLuRRT/T+9YX1OErzEQ/LjsaQvEwJ1JZshwcAVjvibBtX9l/894VDyshJPzJ9MiAJI0c1AS
-X-Received: by 2002:ac8:2b5c:: with SMTP id 28-v6mr12302624qtv.117.1527511625405;
-        Mon, 28 May 2018 05:47:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527511625; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp286707wma;
+        Tue, 20 Feb 2018 20:05:25 -0800 (PST)
+X-Google-Smtp-Source: AH8x227VDtNetXI0fCxZHlquE4j7IwMpM/qKPUG/dkF6DUtyNO981wSW/Ln0OEb9vEyGoXHrIvLu
+X-Received: by 2002:a25:808a:: with SMTP id n10-v6mr1389702ybk.230.1519185925169;
+        Tue, 20 Feb 2018 20:05:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519185925; cv=none;
         d=google.com; s=arc-20160816;
-        b=ncwOADBD6gI8QjvT68vTb+EMO+gpfp6Y3BMdDo1MCKmEBX8b0hOzTiVEM6wcYAk5uc
-         JqdXzlEn6VAjaj6CYWjtogd65kOsBD5thoJuHNEr8pkFXIo6z1m5IyHWksjsYHEr5CW2
-         527yAjcwikXy7q61ukN67QFR/559z/zqRKQjB6TuSR49u+EhAcO08XZDjHh1mIiL6C8N
-         vYY4+NAywQRn/MPXvGRKt5MnDcxwg7qlQCVlcb1Q9k9lzovCc5Vmlr1CMt9NBV6ArqDJ
-         R84bt7d0AIXAvij7BED/w75Ma87APTuWnVmXNQY3g1fXT8rH/DN+7ZVdvwwxbPGRqHz8
-         /gXA==
+        b=awp3WLHYnEcPNe2QCKhpmVxGvaWnUcJLcV7l/bRoDj6k4eI9tRWo+IBBDknpIJp9J6
+         u+63ztqOcZvU//hMGb4u/HmQnKGs5Qp62Yc4R+RaGglYOdnJ/K62y6l0CSDxW496KtbH
+         xwjNldfXfGdt+k1jr7XqcxXT485QRIGgKX/bGRl7Xp7yFAyg3QN3bl3rt6ktAjX5w+EV
+         DQCmpDi+UJv9TNMym8tMy8fcPXRLug92ssErTBRypUvVbtsoaaZEospIwUk64gTaUe86
+         /FbEQ46VjJIdhGNLjl4tzSK83uB7rHP3N/nAiB6+BixGV4zR23U2y66bA2X6mzbtjrRu
+         Evvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=/EnknxN0WvhkCqzmTeyninFC1hLj/4VSgVtjDPxAQNY=;
-        b=I6EfFSR3zhl3IJeTMNHT+G4OB7FugsbafC+G4FArvsvIj+J+Jaow2EUHTI0G23l32Z
-         kp7THwYLgwXrUI3Cbn1CzqIPI8jN0pLwEpkcv22v8ZB7Tnk6LN3H0qQGRvVS08NWrXth
-         nrnEjl6gwV9/S5w1HRHFoYQr6NXIAisWhEBj3Y/poqp9oZpqqiJdwwfzo+Sw06iSpO/0
-         9xuvHtbxqDuNdUvlpCqspnwCkHoTD2Ltff816Cb+KB6avovDzbUERLesivPT4faEcibu
-         HS/qKbbmhRamYpCld3/2QsUqVx/bT1WMtz5sO38xsPdA4D4V12PUSzg0jNh0sbO6CIb9
-         tj5w==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :mime-version:arc-authentication-results;
+        bh=WnsR/YJ1PNSEZWMJnmiwprMFGBeJrOPFvJ/AUHezpdA=;
+        b=VfcQYnku5G5jlqDptAFdLNALkz4Aya5uy0fe/6NTk6fS4jGtinV2tInhFtvGNkVWR9
+         DwVISwI6yIB2PKkQ+xoNrI29i3ZhVUfwppBjq88ufbd2p+CZxx6a2NtcUSQGa5ARixwJ
+         jnRxYszwK84LATZ1Z50FyvSRoTwXargk6rDSyrRvSCO/HgkCp6GMO2wn2Idwa5MHJ30+
+         YgutTSplnA0FZxLNgGwMZTTULFYom+JJJD5pawpvUzS6X/3ZIrzu8jkkroJk6YSCKXRt
+         eJpOfb9uh+GQGdk0ecX2t1VxYgrYX3SaXe4UB/EBzADrP/ZfqbuD7AqfbC9mwW2DkykB
+         vMPg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=G7iVq6PA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=vt.edu
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c22-v6si3555081qtq.106.2018.05.28.05.47.05
+        by mx.google.com with ESMTPS id x10si3247670ybi.20.2018.02.20.20.05.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 28 May 2018 05:47:05 -0700 (PDT)
+        Tue, 20 Feb 2018 20:05:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=G7iVq6PA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:56051 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=vt.edu
+Received: from localhost ([::1]:59003 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNHYG-00019g-V9
-	for alex.bennee@linaro.org; Mon, 28 May 2018 08:47:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44084)
+	id 1eoLem-0005LH-Ip
+	for alex.bennee@linaro.org; Tue, 20 Feb 2018 23:05:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48524)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fNHXt-0000z1-1F
-	for qemu-arm@nongnu.org; Mon, 28 May 2018 08:46:41 -0400
+	(envelope-from <rdzhang@vt.edu>) id 1eoLSG-0003L3-4d
+	for qemu-arm@nongnu.org; Tue, 20 Feb 2018 22:52:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fNHXs-0001EI-71
-	for qemu-arm@nongnu.org; Mon, 28 May 2018 08:46:41 -0400
-Received: from mail-pl0-x243.google.com ([2607:f8b0:400e:c01::243]:32827)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
-	id 1fNHXj-0001AD-OF; Mon, 28 May 2018 08:46:31 -0400
-Received: by mail-pl0-x243.google.com with SMTP id n10-v6so7175998plp.0;
-	Mon, 28 May 2018 05:46:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id;
-	bh=/EnknxN0WvhkCqzmTeyninFC1hLj/4VSgVtjDPxAQNY=;
-	b=G7iVq6PA5iHvcRwd8dFqWBjzMGnG/H2jREWKGtKXvSKox3QavwjOvNyRRKkODFfq8x
-	Jf1yBMSxIs/n0FSM4APYMsmS1Ibb4mi2a+3MheSUsV/N6dcAE+kTTptYpCSY9z+wVTAJ
-	hWocEUIpJHNVyQ5Y7N9Cis+C5WI2l3bpVu3nKWwq4NIHYIhcT/RGcELltmQL6irYES0T
-	lPd3pg92VqhXaaju7J4hRpMT/Ln7luNOC1bszZyokUF7+KH20u2vAIcA/f0gQjbQL+Ee
-	SI0D7STke8a6DJ70CaLD2B+U/ivL5C3N7d7qEnUXWWHxv2e1fs6Z0pQOPLmhSnSuIkAk
-	UaFQ==
+	(envelope-from <rdzhang@vt.edu>) id 1eoLSC-0006VZ-WE
+	for qemu-arm@nongnu.org; Tue, 20 Feb 2018 22:52:28 -0500
+Received: from omr2.cc.ipv6.vt.edu ([2607:b400:92:8400:0:33:fb76:806e]:35076
+	helo=omr2.cc.vt.edu)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <rdzhang@vt.edu>) id 1eoLSC-0006Pb-RI
+	for qemu-arm@nongnu.org; Tue, 20 Feb 2018 22:52:24 -0500
+Received: from mr2.cc.vt.edu (junk.cc.ipv6.vt.edu
+	[IPv6:2607:b400:92:9:0:9d:8fcb:4116])
+	by omr2.cc.vt.edu (8.14.4/8.14.4) with ESMTP id w1L3qIYr019191
+	for <qemu-arm@nongnu.org>; Tue, 20 Feb 2018 22:52:18 -0500
+Received: from mail-qt0-f198.google.com (mail-qt0-f198.google.com
+	[209.85.216.198])
+	by mr2.cc.vt.edu (8.14.7/8.14.7) with ESMTP id w1L3qDES017677
+	for <qemu-arm@nongnu.org>; Tue, 20 Feb 2018 22:52:18 -0500
+Received: by mail-qt0-f198.google.com with SMTP id c25so289176qtn.12
+	for <qemu-arm@nongnu.org>; Tue, 20 Feb 2018 19:52:18 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
-	bh=/EnknxN0WvhkCqzmTeyninFC1hLj/4VSgVtjDPxAQNY=;
-	b=lGNHrhbRaUst0cNHv44wFf1ihA/Kc4tER/LVLgvmdxeg262QMu81I2/6JKuKqsnKay
-	445FnxUfLmKtf2wTGyPqtSKIKhI54RZxX8hsx9efiR6F8HUZUjj2XbFmP0rySx2utf9R
-	Ok0UB5XfHYtHU4d29vsBGlEhA7OK2qw5s+jfkBCWa/PuaHqWQhbDDyNUoWNYdTnB7Wal
-	iJz1Ai5Dudb5vS469xI1/8RKA2x8Lxk7jKrPDjrTV8iohWM8ms3QXHn3Y+eg2YZIE0t+
-	0yvKuY/ku9sXj4WTfr800V4aur+SW65L7mRGWtZjZelm+PARUjXys7CSAyNP+PnlizqV
-	tV3Q==
-X-Gm-Message-State: ALKqPwebwS6Acra9ulcRxW7qhEt6Y3bzX4sv98keir8AHswsRX+L96ZD
-	pVJEHXn7kq74Clf/ZXrLHK+2/+bD
-X-Received: by 2002:a17:902:507:: with SMTP id
-	7-v6mr13685304plf.259.1527511590204; 
-	Mon, 28 May 2018 05:46:30 -0700 (PDT)
-Received: from aurora.jms.id.au ([45.124.203.19])
-	by smtp.gmail.com with ESMTPSA id
-	s8-v6sm49880916pfh.30.2018.05.28.05.46.26
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 28 May 2018 05:46:29 -0700 (PDT)
-Received: by aurora.jms.id.au (sSMTP sendmail emulation);
-	Mon, 28 May 2018 22:16:23 +0930
-From: Joel Stanley <joel@jms.id.au>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Date: Mon, 28 May 2018 22:16:21 +0930
-Message-Id: <20180528124621.22977-1-joel@jms.id.au>
-X-Mailer: git-send-email 2.17.0
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c01::243
-Subject: [Qemu-arm] [PATCH] aspeed_scu: Implement RNG register
+	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+	bh=WnsR/YJ1PNSEZWMJnmiwprMFGBeJrOPFvJ/AUHezpdA=;
+	b=RYNv+GkPltuaqsOCW31Cu/sHkz3jg0rcwWNBFXZwDnhxjFf1Hbg3uBdCQoVvoe1bI+
+	qo6qyeh0kfbG0I7dbZ67OlK7ICxmrWoPMLWoQ+N4ZO5DidP5J9SGep3pcSEJs1pAnTl0
+	byqxsv+XxSmbfoq70tlP1sq2YhJvMvIuvFwbPtcerIBSyua3MUtFGEhOZcdX94Uhe0bH
+	sERqkfaJ6KrDlhdeWL+oXqBpL6ZH2bvpX7Y1EuInYc7ZYA41SfOUJu5dKJV66u2ip5wI
+	kn++j+0PQgNBJfJp6Fo21yAS16LJarBGf2/W78vw0G94j0duLYeatNdg9mAZSeFXAzHS
+	CTxQ==
+X-Gm-Message-State: APf1xPBjDrGAbrjnehkaKyz7lxhHuscmzk24cIjH/B0aouVbyVjjKjwM
+	qX7ggkyv97qqmMNOPZ6pSZZBPGYfks71RuhKUDE5E2/KnJFKDkh8EKuzvyEGTOJWAQrXVsFl/mz
+	i7zIpeM4CdctcSrMBNQaE2cpqLv8PlGDZ11f160Y=
+X-Received: by 10.55.145.193 with SMTP id t184mr3079614qkd.39.1519185133473;
+	Tue, 20 Feb 2018 19:52:13 -0800 (PST)
+X-Received: by 10.55.145.193 with SMTP id t184mr3079596qkd.39.1519185133143;
+	Tue, 20 Feb 2018 19:52:13 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.140.39.200 with HTTP; Tue, 20 Feb 2018 19:52:12 -0800 (PST)
+From: Rd Cheung <rdzhang@vt.edu>
+Date: Tue, 20 Feb 2018 22:52:12 -0500
+Message-ID: <CAFmp02z8NnRq6eSCDa2GYJDXE2-cK6+yS1SKHAbiBDhKV_F2yg@mail.gmail.com>
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="94eb2c084f7c359eca0565b0da31"
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 2607:b400:92:8400:0:33:fb76:806e
+X-Mailman-Approved-At: Tue, 20 Feb 2018 23:05:14 -0500
+Subject: [Qemu-arm] ARM cortex-m3 instruction fetch misbehaves during
+ do_v7m_exception_exit
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,71 +102,51 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fQ45/UPeTzLr
+X-TUID: Xupiovt+buxh
 
-The ASPEED SoCs contain a single register that returns random data when
-read. This models that register so that guests can use it.
+--94eb2c084f7c359eca0565b0da31
+Content-Type: text/plain; charset="UTF-8"
 
-Signed-off-by: Joel Stanley <joel@jms.id.au>
----
- hw/misc/aspeed_scu.c | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
+I am emulating TI RTOS(Texas Instrument real time operating system) on a
+cortex-M3 device. I have made boot up code work, but I am currently stuck
+at exception handler.
 
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index 5e6d5744eeca..8fa0cecf0fa1 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -16,6 +16,7 @@
- #include "qapi/visitor.h"
- #include "qemu/bitops.h"
- #include "qemu/log.h"
-+#include "crypto/random.h"
- #include "trace.h"
- 
- #define TO_REG(offset) ((offset) >> 2)
-@@ -154,6 +155,18 @@ static const uint32_t ast2500_a1_resets[ASPEED_SCU_NR_REGS] = {
-      [BMC_DEV_ID]      = 0x00002402U
- };
- 
-+static uint32_t aspeed_scu_get_random(void)
-+{
-+    Error *err = NULL;
-+    uint32_t num;
-+
-+    if (qcrypto_random_bytes((uint8_t *)&num, sizeof(num), &err)) {
-+        error_report_err(err);
-+    }
-+
-+    return num;
-+}
-+
- static uint64_t aspeed_scu_read(void *opaque, hwaddr offset, unsigned size)
- {
-     AspeedSCUState *s = ASPEED_SCU(opaque);
-@@ -167,6 +180,9 @@ static uint64_t aspeed_scu_read(void *opaque, hwaddr offset, unsigned size)
-     }
- 
-     switch (reg) {
-+    case RNG_DATA:
-+        return aspeed_scu_get_random();
-+        break;
-     case WAKEUP_EN:
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: Read of write-only offset 0x%" HWADDR_PRIx "\n",
-@@ -287,6 +303,9 @@ static void aspeed_scu_realize(DeviceState *dev, Error **errp)
-                           TYPE_ASPEED_SCU, SCU_IO_REGION_SIZE);
- 
-     sysbus_init_mmio(sbd, &s->iomem);
-+
-+    if (qcrypto_random_init(errp))
-+        return;
- }
- 
- static const VMStateDescription vmstate_aspeed_scu = {
--- 
-2.17.0
+when the code return from exception handler it goes to:
+0x1001c90e:  b401b402  strlt    fp, [r1], #-0x402
 
+while it should be:
+1001c90e:   B402                push       {r1}
+1001c910:   B401                push       {r0}
+
+I notice the TI RTOS return from an exception with PC with bit 0 set. But
+it should not be an issue of current qemu.
+
+Can anyone give me some clue of where to look at? Or is there any work
+around method?
+
+Thank you!
+
+Ruide Zhang
+
+--94eb2c084f7c359eca0565b0da31
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">I am emulating TI RTOS(Texas Instrument real time operatin=
+g system) on a cortex-M3 device. I have made boot up code work, but I am cu=
+rrently stuck at exception handler.=C2=A0=C2=A0<div><div><br></div><div>whe=
+n the code return from exception handler it goes to:</div><div><div><div>0x=
+1001c90e:=C2=A0 b401b402=C2=A0 strlt=C2=A0 =C2=A0 fp, [r1], #-0x402</div></=
+div><div><br></div></div><div>while it should be:</div><div><div>1001c90e:=
+=C2=A0 =C2=A0B402=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 pu=
+sh=C2=A0 =C2=A0 =C2=A0 =C2=A0{r1}</div><div>1001c910:=C2=A0 =C2=A0B401=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 push=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0{r0}</div></div></div><div><br></div><div>I notice the TI RTOS re=
+turn from an exception with PC with bit 0 set. But it should not be an issu=
+e of current qemu.</div><div><br></div><div>Can anyone give me some clue of=
+ where to look at? Or is there any work around method?</div><div><br></div>=
+<div>Thank you!</div><div><br></div><div>Ruide Zhang</div></div>
+
+--94eb2c084f7c359eca0565b0da31--

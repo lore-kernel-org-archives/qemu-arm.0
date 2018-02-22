@@ -1,85 +1,85 @@
-Received: by 10.28.71.27 with SMTP id u27csp1916015wma;
-        Thu, 22 Feb 2018 04:48:07 -0800 (PST)
-X-Google-Smtp-Source: AH8x227p4OdLNnLfM8wOqrAlkGlb45CDiUjfK9yRTmSGocV4qSQDN61R0sxuJl3JKCTQS0RdYoa5
-X-Received: by 10.13.200.67 with SMTP id k64mr4536204ywd.122.1519303687286;
-        Thu, 22 Feb 2018 04:48:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519303687; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp1916151wma;
+        Thu, 22 Feb 2018 04:48:16 -0800 (PST)
+X-Google-Smtp-Source: AH8x224QLa2EAHkdlz1fxOwF0BtAnSt+nBb8XeM2xBhxETxhl0xE46q2wBCmTaQdP0XXf8L7oS+r
+X-Received: by 2002:a25:ba48:: with SMTP id z8-v6mr4436218ybj.33.1519303696804;
+        Thu, 22 Feb 2018 04:48:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519303696; cv=none;
         d=google.com; s=arc-20160816;
-        b=bSgukDFow/nPeWNgrckzlVJSOtxl+Y/1Dk7QNzDv+y5ROCn+37/O2Fy/iCdqcmhBJd
-         j/9JaAW1rRisf4irOS1C24H0MJOvDLTn+UKKXbP4U9lt3VkP6Qa1KGFwZ0dfjv0sVKOO
-         l2Z1Wzdb6UIiVs1bu+OxsnT8HaVhImXbKFjauGsoOHIKDmodSlxCX5EMmP6afOfphjou
-         T/V5w3PYK1PojoSNrrtbe385ZKryB5oczvPm7xpLQOK64Bw/ecFi3SVKU1t0hO/25LJ/
-         JrajCTQcU6AWBf822BnLPmlH6eJ4AdKgUVAU9+4okW/NY5J5Key4Sx+9US4KtRdZ9wts
-         5JQg==
+        b=lg79M8YYE7HPXC67MI0vEg7oMUOFiTpn/4xv05KWvppovFk6CnTl6ZQYkSaMbafk7N
+         0VDEGWRsaqpcITMZq2LuliFhs4/RFfIfk7RPxcDe9rz85bsNc0qVPk2NDVLpxEQ2KQ8V
+         JDtN8SwPvdG9JcTo8wrBwYKr7l1kx+Y7529ODgxbxhcr9TNyTapclXuAmlmbh+Y33qB5
+         DnM7jz1vOSJ0m4xFuqgoNT4y3xZa3pG5tEvkXufggy24OwQ8KWfy0FwngNX+B2pFusUa
+         B8RG7zz7kMbHw55hv59xiUvQv6jaUADHFFXaEF2IDYbt06lfDBjaRawYOZqtC8GIRHX0
+         Wylw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=XqCh/q0J/tVxL1g6FRPzFjHrDRJnkSRAah0rDA/UMvo=;
-        b=aBZxGsI3WwS5116pOJZvh3TWijUPZlE3MjFYbGK4Jee4HixGIy0wdUTioO/fO6pY0j
-         29hB+wpUHBANWvA+d/sulRSwR6389FNRSAwOhDfAZDaH2sgLY1RA4ONj4rmh8IRy9txf
-         NCO6RWR4tvfFIzz+p75pNBae+iCKuqgfgXd3TIen8VTFn+T+1j1oFpbWw9EKs45w0a1F
-         gPZWn4KExBq9+gXkcJmkhiNV/kniB4JS6RhohQ0OV052aO7rRnfRbN1cbuGFTi6Hy7gu
-         yJJdkKLEXhrGVLSFor60dycNHUd/29LPYAdnxNoTXtGQqKfkcmJACYjuDony+cWnLsK1
-         0xSg==
+        bh=lk2kKuy7V1Jih6fk3NYRmOPhlbpjZ0bjBMASuYFE87c=;
+        b=eIUn6n2WiZzHuQhuLpPhAHYCyhgWzqxk+rQenRcePZw/JVHUVtP4G78drp3JKy4c8T
+         +E+mJryWS9Id4rJFYXuhpzYHvcMKX5pZUcqwHvYnmYpbwSTsC3Zn7zkfbkKbBwIM2LS8
+         IKQLy16oxWZlVjcE/0BJbDH5bHK5QQtz0fNg3ZcifwmVWODaTATFt+gy1pJecimBBLYD
+         2pAirB/L7VWE40y0zvrjb/IErJKbU2hS4UetKxXOwt1LNrQ4qAV1KOetb4oGNrD2erpL
+         xI1sjKLlbR79EMGiI5K+sdQ8Xzw2/V0KIGAkbpm5gSywD7LmUJceN865VUNYRkiuN4Oh
+         xSuA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o64si509ywc.745.2018.02.22.04.48.07
+        by mx.google.com with ESMTPS id e62-v6si3385ybi.301.2018.02.22.04.48.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 22 Feb 2018 04:48:07 -0800 (PST)
+        Thu, 22 Feb 2018 04:48:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37792 helo=lists.gnu.org)
+Received: from localhost ([::1]:37799 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eoqIA-0008Oe-NS
-	for alex.bennee@linaro.org; Thu, 22 Feb 2018 07:48:06 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53911)
+	id 1eoqIK-0000BD-75
+	for alex.bennee@linaro.org; Thu, 22 Feb 2018 07:48:16 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53996)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1eoqEg-0005ZQ-H3
-	for qemu-arm@nongnu.org; Thu, 22 Feb 2018 07:44:32 -0500
+	(envelope-from <imammedo@redhat.com>) id 1eoqEk-0005e5-QS
+	for qemu-arm@nongnu.org; Thu, 22 Feb 2018 07:44:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1eoqEe-00057A-Bd
-	for qemu-arm@nongnu.org; Thu, 22 Feb 2018 07:44:30 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:44762 helo=mx1.redhat.com)
+	(envelope-from <imammedo@redhat.com>) id 1eoqEj-0005M3-0c
+	for qemu-arm@nongnu.org; Thu, 22 Feb 2018 07:44:34 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:41766 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1eoqEe-00054x-42; Thu, 22 Feb 2018 07:44:28 -0500
+	id 1eoqEi-0005L3-Rh; Thu, 22 Feb 2018 07:44:32 -0500
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A036F40201A1;
-	Thu, 22 Feb 2018 12:44:27 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5BD37404085A;
+	Thu, 22 Feb 2018 12:44:32 +0000 (UTC)
 Received: from dell-r430-03.lab.eng.brq.redhat.com
 	(dell-r430-03.lab.eng.brq.redhat.com [10.37.153.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A8BBA2024CA9;
-	Thu, 22 Feb 2018 12:44:26 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 648582024CA9;
+	Thu, 22 Feb 2018 12:44:31 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Thu, 22 Feb 2018 13:42:52 +0100
-Message-Id: <1519303376-92875-6-git-send-email-imammedo@redhat.com>
+Date: Thu, 22 Feb 2018 13:42:56 +0100
+Message-Id: <1519303376-92875-10-git-send-email-imammedo@redhat.com>
 In-Reply-To: <1519303376-92875-1-git-send-email-imammedo@redhat.com>
 References: <1519303376-92875-1-git-send-email-imammedo@redhat.com>
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Thu, 22 Feb 2018 12:44:27 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Thu, 22 Feb 2018 12:44:27 +0000 (UTC) for IP:'10.11.54.4'
+	(mx1.redhat.com [10.11.55.5]);
+	Thu, 22 Feb 2018 12:44:32 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Thu, 22 Feb 2018 12:44:32 +0000 (UTC) for IP:'10.11.54.4'
 	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'imammedo@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH 5/9] pc: acpi: isolate FADT specific data into
- AcpiFadtData structure
+Subject: [Qemu-arm] [PATCH 9/9] tests: acpi: don't read all fields in
+ test_acpi_fadt_table()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,381 +96,253 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aUCjbr0zo1Nr
+X-TUID: OqfOy6WPQFxV
 
-move FADT data initialization out of fadt_setup() into dedicated
-init_fadt_data() that will set common for pc/q35 values in
-AcpiFadtData structure and acpi_get_pm_info() will complement
-it with pc/q35 specific values initialization.
+there is no point to read fields here but not actually
+checking them so drop it and read only header + dsdt/facs
+addresses since it's needed later to fetch that tables.
 
-That will allow to get rid of fadt_setup() and generalize
-build_fadt() so it could be easily extended for rev5 and
-reused by ARM target.
-
-While at it also move facs/dsdt/xdsdt offsets from build_fadt()
-arg list into AcpiFadtData, as they belong to the same dataset.
+With this cleanup we can get rid of AcpiFadtDescriptorRev3/
+ACPI_FADT_COMMON_DEF which have no users left.
 
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 ---
- include/hw/acpi/acpi-defs.h |  28 ++++++
- hw/i386/acpi-build.c        | 204 ++++++++++++++++++++++++--------------------
- 2 files changed, 138 insertions(+), 94 deletions(-)
+ include/hw/acpi/acpi-defs.h | 81 --------------------------------------------
+ tests/bios-tables-test.c    | 82 ++++++++++-----------------------------------
+ 2 files changed, 18 insertions(+), 145 deletions(-)
 
 diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-index 9942bc5..e0accc4 100644
+index 34e49dc..1f872ee 100644
 --- a/include/hw/acpi/acpi-defs.h
 +++ b/include/hw/acpi/acpi-defs.h
-@@ -175,6 +175,34 @@ struct AcpiFadtDescriptorRev5_1 {
+@@ -75,82 +75,6 @@ struct AcpiTableHeader {
+ } QEMU_PACKED;
+ typedef struct AcpiTableHeader AcpiTableHeader;
  
- typedef struct AcpiFadtDescriptorRev5_1 AcpiFadtDescriptorRev5_1;
- 
-+typedef struct AcpiFadtData {
-+    struct AcpiGenericAddress pm1_cnt;   /* PM1a_CNT_BLK */
-+    struct AcpiGenericAddress pm1_evt;   /* PM1a_EVT_BLK */
-+    struct AcpiGenericAddress pm_tmr;    /* PM_TMR_BLK */
-+    struct AcpiGenericAddress gpe0_blk;  /* GPE0_BLK */
-+    struct AcpiGenericAddress reset_reg; /* RESET_REG */
-+    uint8_t reset_val;         /* RESET_VALUE */
-+    uint8_t  rev;              /* Revision */
-+    uint32_t flags;            /* Flags */
-+    uint32_t smi_cmd;          /* SMI_CMD */
-+    uint16_t sci_int;          /* SCI_INT */
-+    uint8_t  int_model;        /* INT_MODEL */
-+    uint8_t  acpi_enable_cmd;  /* ACPI_ENABLE */
-+    uint8_t  acpi_disable_cmd; /* ACPI_DISABLE */
-+    uint8_t  rtc_century;      /* CENTURY */
-+    uint16_t c2_latency;       /* P_LVL2_LAT */
-+    uint16_t c3_latency;       /* P_LVL3_LAT */
-+
-+    /*
-+     * respective tables offsets within ACPI_BUILD_TABLE_FILE,
-+     * NULL if table doesn't exist (in that case field's value
-+     * won't be patched by linker and will be kept set to 0)
-+     */
-+    unsigned *facs_tbl_offset; /* FACS offset in */
-+    unsigned *dsdt_tbl_offset;
-+    unsigned *xdsdt_tbl_offset;
-+} AcpiFadtData;
-+
- #define ACPI_FADT_ARM_PSCI_COMPLIANT  (1 << 0)
- #define ACPI_FADT_ARM_PSCI_USE_HVC    (1 << 1)
- 
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index b85fefe..706ba35 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -91,17 +91,11 @@ typedef struct AcpiMcfgInfo {
- } AcpiMcfgInfo;
- 
- typedef struct AcpiPmInfo {
--    bool force_rev1_fadt;
-     bool s3_disabled;
-     bool s4_disabled;
-     bool pcihp_bridge_en;
-     uint8_t s4_val;
--    uint16_t sci_int;
--    uint8_t acpi_enable_cmd;
--    uint8_t acpi_disable_cmd;
--    uint32_t gpe0_blk;
--    uint32_t gpe0_blk_len;
--    uint32_t io_base;
-+    AcpiFadtData fadt;
-     uint16_t cpu_hp_io_base;
-     uint16_t pcihp_io_base;
-     uint16_t pcihp_io_len;
-@@ -124,20 +118,60 @@ typedef struct AcpiBuildPciBusHotplugState {
-     bool pcihp_bridge_en;
- } AcpiBuildPciBusHotplugState;
- 
-+#define ACPI_PORT_SMI_CMD           0x00b2 /* TODO: this is APM_CNT_IOPORT */
-+
-+static void init_fadt_data(Object *o, AcpiFadtData *data)
-+{
-+    uint32_t io = object_property_get_uint(o, ACPI_PM_PROP_PM_IO_BASE, NULL);
-+    AmlAddressSpace as = AML_AS_SYSTEM_IO;
-+    AcpiFadtData fadt = {
-+        .rev = 3,
-+        .flags =
-+            (1 << ACPI_FADT_F_WBINVD) |
-+            (1 << ACPI_FADT_F_PROC_C1) |
-+            (1 << ACPI_FADT_F_SLP_BUTTON) |
-+            (1 << ACPI_FADT_F_RTC_S4) |
-+            (1 << ACPI_FADT_F_USE_PLATFORM_CLOCK) |
-+            /* APIC destination mode ("Flat Logical") has an upper limit of 8
-+             * CPUs for more than 8 CPUs, "Clustered Logical" mode has to be
-+             * used
-+             */
-+            ((max_cpus > 8) ? (1 << ACPI_FADT_F_FORCE_APIC_CLUSTER_MODEL) : 0),
-+        .int_model = 1 /* Multiple APIC */,
-+        .rtc_century = RTC_CENTURY,
-+        .c2_latency = 0xfff /* C2 state not supported */,
-+        .c3_latency = 0xfff /* C3 state not supported */,
-+        .smi_cmd = ACPI_PORT_SMI_CMD,
-+        .sci_int = object_property_get_uint(o, ACPI_PM_PROP_SCI_INT, NULL),
-+        .acpi_enable_cmd =
-+            object_property_get_uint(o, ACPI_PM_PROP_ACPI_ENABLE_CMD, NULL),
-+        .acpi_disable_cmd =
-+            object_property_get_uint(o, ACPI_PM_PROP_ACPI_DISABLE_CMD, NULL),
-+        .pm1_evt = { .space_id = as, .bit_width = 4 * 8, .address = io },
-+        .pm1_cnt = { .space_id = as, .bit_width = 2 * 8, .address = io + 0x04 },
-+        .pm_tmr = { .space_id = as, .bit_width = 4 * 8, .address = io + 0x08 },
-+        .gpe0_blk = { .space_id = as, .bit_width =
-+            object_property_get_uint(o, ACPI_PM_PROP_GPE0_BLK_LEN, NULL) * 8,
-+            .address = object_property_get_uint(o, ACPI_PM_PROP_GPE0_BLK, NULL)
-+        },
-+    };
-+    *data = fadt;
-+}
-+
- static void acpi_get_pm_info(AcpiPmInfo *pm)
- {
-     Object *piix = piix4_pm_find();
-     Object *lpc = ich9_lpc_find();
-     Object *obj = piix ? piix : lpc;
-     QObject *o;
+-/*
+- * ACPI Fixed ACPI Description Table (FADT)
+- */
+-#define ACPI_FADT_COMMON_DEF /* FADT common definition */ \
+-    ACPI_TABLE_HEADER_DEF    /* ACPI common table header */ \
+-    uint32_t firmware_ctrl;  /* Physical address of FACS */ \
+-    uint32_t dsdt;         /* Physical address of DSDT */ \
+-    uint8_t  model;        /* System Interrupt Model */ \
+-    uint8_t  reserved1;    /* Reserved */ \
+-    uint16_t sci_int;      /* System vector of SCI interrupt */ \
+-    uint32_t smi_cmd;      /* Port address of SMI command port */ \
+-    uint8_t  acpi_enable;  /* Value to write to smi_cmd to enable ACPI */ \
+-    uint8_t  acpi_disable; /* Value to write to smi_cmd to disable ACPI */ \
+-    /* Value to write to SMI CMD to enter S4BIOS state */ \
+-    uint8_t  S4bios_req; \
+-    uint8_t  reserved2;    /* Reserved - must be zero */ \
+-    /* Port address of Power Mgt 1a acpi_event Reg Blk */ \
+-    uint32_t pm1a_evt_blk; \
+-    /* Port address of Power Mgt 1b acpi_event Reg Blk */ \
+-    uint32_t pm1b_evt_blk; \
+-    uint32_t pm1a_cnt_blk; /* Port address of Power Mgt 1a Control Reg Blk */ \
+-    uint32_t pm1b_cnt_blk; /* Port address of Power Mgt 1b Control Reg Blk */ \
+-    uint32_t pm2_cnt_blk;  /* Port address of Power Mgt 2 Control Reg Blk */ \
+-    uint32_t pm_tmr_blk;   /* Port address of Power Mgt Timer Ctrl Reg Blk */ \
+-    /* Port addr of General Purpose acpi_event 0 Reg Blk */ \
+-    uint32_t gpe0_blk; \
+-    /* Port addr of General Purpose acpi_event 1 Reg Blk */ \
+-    uint32_t gpe1_blk; \
+-    uint8_t  pm1_evt_len;  /* Byte length of ports at pm1_x_evt_blk */ \
+-    uint8_t  pm1_cnt_len;  /* Byte length of ports at pm1_x_cnt_blk */ \
+-    uint8_t  pm2_cnt_len;  /* Byte Length of ports at pm2_cnt_blk */ \
+-    uint8_t  pm_tmr_len;   /* Byte Length of ports at pm_tm_blk */ \
+-    uint8_t  gpe0_blk_len; /* Byte Length of ports at gpe0_blk */ \
+-    uint8_t  gpe1_blk_len; /* Byte Length of ports at gpe1_blk */ \
+-    uint8_t  gpe1_base;    /* Offset in gpe model where gpe1 events start */ \
+-    uint8_t  reserved3;    /* Reserved */ \
+-    uint16_t plvl2_lat;    /* Worst case HW latency to enter/exit C2 state */ \
+-    uint16_t plvl3_lat;    /* Worst case HW latency to enter/exit C3 state */ \
+-    uint16_t flush_size;   /* Size of area read to flush caches */ \
+-    uint16_t flush_stride; /* Stride used in flushing caches */ \
+-    uint8_t  duty_offset;  /* Bit location of duty cycle field in p_cnt reg */ \
+-    uint8_t  duty_width;   /* Bit width of duty cycle field in p_cnt reg */ \
+-    uint8_t  day_alrm;     /* Index to day-of-month alarm in RTC CMOS RAM */ \
+-    uint8_t  mon_alrm;     /* Index to month-of-year alarm in RTC CMOS RAM */ \
+-    uint8_t  century;      /* Index to century in RTC CMOS RAM */ \
+-    /* IA-PC Boot Architecture Flags (see below for individual flags) */ \
+-    uint16_t boot_flags; \
+-    uint8_t reserved;    /* Reserved, must be zero */ \
+-    /* Miscellaneous flag bits (see below for individual flags) */ \
+-    uint32_t flags; \
+-    /* 64-bit address of the Reset register */ \
+-    struct AcpiGenericAddress reset_register; \
+-    /* Value to write to the reset_register port to reset the system */ \
+-    uint8_t reset_value; \
+-    /* ARM-Specific Boot Flags (see below for individual flags) (ACPI 5.1) */ \
+-    uint16_t arm_boot_flags; \
+-    uint8_t minor_revision;  /* FADT Minor Revision (ACPI 5.1) */ \
+-    uint64_t x_facs;          /* 64-bit physical address of FACS */ \
+-    uint64_t x_dsdt;          /* 64-bit physical address of DSDT */ \
+-    /* 64-bit Extended Power Mgt 1a Event Reg Blk address */ \
+-    struct AcpiGenericAddress xpm1a_event_block; \
+-    /* 64-bit Extended Power Mgt 1b Event Reg Blk address */ \
+-    struct AcpiGenericAddress xpm1b_event_block; \
+-    /* 64-bit Extended Power Mgt 1a Control Reg Blk address */ \
+-    struct AcpiGenericAddress xpm1a_control_block; \
+-    /* 64-bit Extended Power Mgt 1b Control Reg Blk address */ \
+-    struct AcpiGenericAddress xpm1b_control_block; \
+-    /* 64-bit Extended Power Mgt 2 Control Reg Blk address */ \
+-    struct AcpiGenericAddress xpm2_control_block; \
+-    /* 64-bit Extended Power Mgt Timer Ctrl Reg Blk address */ \
+-    struct AcpiGenericAddress xpm_timer_block; \
+-    /* 64-bit Extended General Purpose Event 0 Reg Blk address */ \
+-    struct AcpiGenericAddress xgpe0_block; \
+-    /* 64-bit Extended General Purpose Event 1 Reg Blk address */ \
+-    struct AcpiGenericAddress xgpe1_block; \
 -
--    pm->force_rev1_fadt = false;
-     pm->cpu_hp_io_base = 0;
-     pm->pcihp_io_base = 0;
-     pm->pcihp_io_len = 0;
-+
-+    init_fadt_data(obj, &pm->fadt);
-     if (piix) {
-         /* w2k requires FADT(rev1) or it won't boot, keep PC compatible */
--        pm->force_rev1_fadt = true;
-+        pm->fadt.rev = 1;
-         pm->cpu_hp_io_base = PIIX4_CPU_HOTPLUG_IO_BASE;
-         pm->pcihp_io_base =
-             object_property_get_uint(obj, ACPI_PCIHP_IO_BASE_PROP, NULL);
-@@ -145,10 +179,19 @@ static void acpi_get_pm_info(AcpiPmInfo *pm)
-             object_property_get_uint(obj, ACPI_PCIHP_IO_LEN_PROP, NULL);
-     }
-     if (lpc) {
-+        struct AcpiGenericAddress r = { .space_id = AML_AS_SYSTEM_IO,
-+            .bit_width = 8, .address = ICH9_RST_CNT_IOPORT };
-+        pm->fadt.reset_reg = r;
-+        pm->fadt.reset_val = 0xf;
-+        pm->fadt.flags |= 1 << ACPI_FADT_F_RESET_REG_SUP;
-         pm->cpu_hp_io_base = ICH9_CPU_HOTPLUG_IO_BASE;
-     }
-     assert(obj);
+ struct AcpiGenericAddress {
+     uint8_t space_id;        /* Address space where struct or register exists */
+     uint8_t bit_width;       /* Size in bits of given register */
+@@ -160,11 +84,6 @@ struct AcpiGenericAddress {
+     uint64_t address;        /* 64-bit address of struct or register */
+ } QEMU_PACKED;
  
-+    /* The above need not be conditional on machine type because the reset port
-+     * happens to be the same on PIIX (pc) and ICH9 (q35). */
-+    QEMU_BUILD_BUG_ON(ICH9_RST_CNT_IOPORT != RCR_IOPORT);
-+
-     /* Fill in optional s3/s4 related properties */
-     o = object_property_get_qobject(obj, ACPI_PM_PROP_S3_DISABLED, NULL);
-     if (o) {
-@@ -172,22 +215,6 @@ static void acpi_get_pm_info(AcpiPmInfo *pm)
-     }
-     qobject_decref(o);
- 
--    /* Fill in mandatory properties */
--    pm->sci_int = object_property_get_uint(obj, ACPI_PM_PROP_SCI_INT, NULL);
+-struct AcpiFadtDescriptorRev3 {
+-    ACPI_FADT_COMMON_DEF
+-} QEMU_PACKED;
+-typedef struct AcpiFadtDescriptorRev3 AcpiFadtDescriptorRev3;
 -
--    pm->acpi_enable_cmd = object_property_get_uint(obj,
--                                                   ACPI_PM_PROP_ACPI_ENABLE_CMD,
--                                                   NULL);
--    pm->acpi_disable_cmd =
--        object_property_get_uint(obj,
--                                 ACPI_PM_PROP_ACPI_DISABLE_CMD,
--                                 NULL);
--    pm->io_base = object_property_get_uint(obj, ACPI_PM_PROP_PM_IO_BASE,
--                                           NULL);
--    pm->gpe0_blk = object_property_get_uint(obj, ACPI_PM_PROP_GPE0_BLK,
--                                            NULL);
--    pm->gpe0_blk_len = object_property_get_uint(obj, ACPI_PM_PROP_GPE0_BLK_LEN,
--                                                NULL);
-     pm->pcihp_bridge_en =
-         object_property_get_bool(obj, "acpi-pci-hotplug-with-bridge-support",
-                                  NULL);
-@@ -255,8 +282,6 @@ static void acpi_get_pci_holes(Range *hole, Range *hole64)
-                                                NULL));
+ typedef struct AcpiFadtData {
+     struct AcpiGenericAddress pm1_cnt;   /* PM1a_CNT_BLK */
+     struct AcpiGenericAddress pm1_evt;   /* PM1a_EVT_BLK */
+diff --git a/tests/bios-tables-test.c b/tests/bios-tables-test.c
+index 65b271a..cd753ff 100644
+--- a/tests/bios-tables-test.c
++++ b/tests/bios-tables-test.c
+@@ -29,7 +29,8 @@ typedef struct {
+     uint32_t rsdp_addr;
+     AcpiRsdpDescriptor rsdp_table;
+     AcpiRsdtDescriptorRev1 rsdt_table;
+-    AcpiFadtDescriptorRev3 fadt_table;
++    uint32_t dsdt_addr;
++    uint32_t facs_addr;
+     AcpiFacsDescriptorRev1 facs_table;
+     uint32_t *rsdt_tables_addr;
+     int rsdt_tables_nr;
+@@ -127,71 +128,18 @@ static void test_acpi_rsdt_table(test_data *data)
+     data->rsdt_tables_nr = tables_nr;
  }
  
--#define ACPI_PORT_SMI_CMD           0x00b2 /* TODO: this is APM_CNT_IOPORT */
+-static void test_acpi_fadt_table(test_data *data)
++static void fadt_fetch_facs_and_dsdt_ptrs(test_data *data)
+ {
+-    AcpiFadtDescriptorRev3 *fadt_table = &data->fadt_table;
+     uint32_t addr;
++    AcpiTableHeader hdr;
+ 
+     /* FADT table comes first */
+     addr = le32_to_cpu(data->rsdt_tables_addr[0]);
+-    ACPI_READ_TABLE_HEADER(fadt_table, addr);
 -
- static void acpi_align_size(GArray *blob, unsigned align)
- {
-     /* Align size to multiple of given size. This reduces the chance
-@@ -275,73 +300,53 @@ build_facs(GArray *table_data, BIOSLinker *linker)
+-    ACPI_READ_FIELD(fadt_table->firmware_ctrl, addr);
+-    ACPI_READ_FIELD(fadt_table->dsdt, addr);
+-    ACPI_READ_FIELD(fadt_table->model, addr);
+-    ACPI_READ_FIELD(fadt_table->reserved1, addr);
+-    ACPI_READ_FIELD(fadt_table->sci_int, addr);
+-    ACPI_READ_FIELD(fadt_table->smi_cmd, addr);
+-    ACPI_READ_FIELD(fadt_table->acpi_enable, addr);
+-    ACPI_READ_FIELD(fadt_table->acpi_disable, addr);
+-    ACPI_READ_FIELD(fadt_table->S4bios_req, addr);
+-    ACPI_READ_FIELD(fadt_table->reserved2, addr);
+-    ACPI_READ_FIELD(fadt_table->pm1a_evt_blk, addr);
+-    ACPI_READ_FIELD(fadt_table->pm1b_evt_blk, addr);
+-    ACPI_READ_FIELD(fadt_table->pm1a_cnt_blk, addr);
+-    ACPI_READ_FIELD(fadt_table->pm1b_cnt_blk, addr);
+-    ACPI_READ_FIELD(fadt_table->pm2_cnt_blk, addr);
+-    ACPI_READ_FIELD(fadt_table->pm_tmr_blk, addr);
+-    ACPI_READ_FIELD(fadt_table->gpe0_blk, addr);
+-    ACPI_READ_FIELD(fadt_table->gpe1_blk, addr);
+-    ACPI_READ_FIELD(fadt_table->pm1_evt_len, addr);
+-    ACPI_READ_FIELD(fadt_table->pm1_cnt_len, addr);
+-    ACPI_READ_FIELD(fadt_table->pm2_cnt_len, addr);
+-    ACPI_READ_FIELD(fadt_table->pm_tmr_len, addr);
+-    ACPI_READ_FIELD(fadt_table->gpe0_blk_len, addr);
+-    ACPI_READ_FIELD(fadt_table->gpe1_blk_len, addr);
+-    ACPI_READ_FIELD(fadt_table->gpe1_base, addr);
+-    ACPI_READ_FIELD(fadt_table->reserved3, addr);
+-    ACPI_READ_FIELD(fadt_table->plvl2_lat, addr);
+-    ACPI_READ_FIELD(fadt_table->plvl3_lat, addr);
+-    ACPI_READ_FIELD(fadt_table->flush_size, addr);
+-    ACPI_READ_FIELD(fadt_table->flush_stride, addr);
+-    ACPI_READ_FIELD(fadt_table->duty_offset, addr);
+-    ACPI_READ_FIELD(fadt_table->duty_width, addr);
+-    ACPI_READ_FIELD(fadt_table->day_alrm, addr);
+-    ACPI_READ_FIELD(fadt_table->mon_alrm, addr);
+-    ACPI_READ_FIELD(fadt_table->century, addr);
+-    ACPI_READ_FIELD(fadt_table->boot_flags, addr);
+-    ACPI_READ_FIELD(fadt_table->reserved, addr);
+-    ACPI_READ_FIELD(fadt_table->flags, addr);
+-    ACPI_READ_GENERIC_ADDRESS(fadt_table->reset_register, addr);
+-    ACPI_READ_FIELD(fadt_table->reset_value, addr);
+-    ACPI_READ_FIELD(fadt_table->arm_boot_flags, addr);
+-    ACPI_READ_FIELD(fadt_table->minor_revision, addr);
+-    ACPI_READ_FIELD(fadt_table->x_facs, addr);
+-    ACPI_READ_FIELD(fadt_table->x_dsdt, addr);
+-    ACPI_READ_GENERIC_ADDRESS(fadt_table->xpm1a_event_block, addr);
+-    ACPI_READ_GENERIC_ADDRESS(fadt_table->xpm1b_event_block, addr);
+-    ACPI_READ_GENERIC_ADDRESS(fadt_table->xpm1a_control_block, addr);
+-    ACPI_READ_GENERIC_ADDRESS(fadt_table->xpm1b_control_block, addr);
+-    ACPI_READ_GENERIC_ADDRESS(fadt_table->xpm2_control_block, addr);
+-    ACPI_READ_GENERIC_ADDRESS(fadt_table->xpm_timer_block, addr);
+-    ACPI_READ_GENERIC_ADDRESS(fadt_table->xgpe0_block, addr);
+-    ACPI_READ_GENERIC_ADDRESS(fadt_table->xgpe1_block, addr);
+-
+-    ACPI_ASSERT_CMP(fadt_table->signature, "FACP");
+-    g_assert(!acpi_calc_checksum((uint8_t *)fadt_table,
+-                                 le32_to_cpu(fadt_table->length)));
++    ACPI_READ_TABLE_HEADER(&hdr, addr);
++    ACPI_ASSERT_CMP(hdr.signature, "FACP");
++
++    ACPI_READ_FIELD(data->facs_addr, addr);
++    ACPI_READ_FIELD(data->dsdt_addr, addr);
  }
  
- /* Load chipset information in FADT */
--static void fadt_setup(AcpiFadtDescriptorRev3 *fadt, AcpiPmInfo *pm)
-+static void fadt_setup(AcpiFadtDescriptorRev3 *fadt, AcpiFadtData f)
+ static void sanitize_fadt_ptrs(test_data *data)
+@@ -206,6 +154,12 @@ static void sanitize_fadt_ptrs(test_data *data)
+             continue;
+         }
+ 
++        /* check original FADT checksum before sanitizing table */
++        g_assert(!(uint8_t)(
++            acpi_calc_checksum((uint8_t *)sdt, sizeof(AcpiTableHeader)) +
++            acpi_calc_checksum((uint8_t *)sdt->aml, sdt->aml_len)
++        ));
++
+         /* sdt->aml field offset := spec offset - header size */
+         memset(sdt->aml + 0, 0, 4); /* sanitize FIRMWARE_CTRL(36) ptr */
+         memset(sdt->aml + 4, 0, 4); /* sanitize DSDT(40) ptr */
+@@ -226,7 +180,7 @@ static void sanitize_fadt_ptrs(test_data *data)
+ static void test_acpi_facs_table(test_data *data)
  {
--    fadt->model = 1;
-+    fadt->model = f.int_model;
-     fadt->reserved1 = 0;
--    fadt->sci_int = cpu_to_le16(pm->sci_int);
--    fadt->smi_cmd = cpu_to_le32(ACPI_PORT_SMI_CMD);
--    fadt->acpi_enable = pm->acpi_enable_cmd;
--    fadt->acpi_disable = pm->acpi_disable_cmd;
-+    fadt->sci_int = cpu_to_le16(f.sci_int);
-+    fadt->smi_cmd = cpu_to_le32(f.smi_cmd);
-+    fadt->acpi_enable = f.acpi_enable_cmd;
-+    fadt->acpi_disable = f.acpi_disable_cmd;
-     /* EVT, CNT, TMR offset matches hw/acpi/core.c */
--    fadt->pm1a_evt_blk = cpu_to_le32(pm->io_base);
--    fadt->pm1a_cnt_blk = cpu_to_le32(pm->io_base + 0x04);
--    fadt->pm_tmr_blk = cpu_to_le32(pm->io_base + 0x08);
--    fadt->gpe0_blk = cpu_to_le32(pm->gpe0_blk);
-+    fadt->pm1a_evt_blk = cpu_to_le32(f.pm1_evt.address);
-+    fadt->pm1a_cnt_blk = cpu_to_le32(f.pm1_cnt.address);
-+    fadt->pm_tmr_blk = cpu_to_le32(f.pm_tmr.address);
-+    fadt->gpe0_blk = cpu_to_le32(f.gpe0_blk.address);
-     /* EVT, CNT, TMR length matches hw/acpi/core.c */
--    fadt->pm1_evt_len = 4;
--    fadt->pm1_cnt_len = 2;
--    fadt->pm_tmr_len = 4;
--    fadt->gpe0_blk_len = pm->gpe0_blk_len;
--    fadt->plvl2_lat = cpu_to_le16(0xfff); /* C2 state not supported */
--    fadt->plvl3_lat = cpu_to_le16(0xfff); /* C3 state not supported */
--    fadt->flags = cpu_to_le32((1 << ACPI_FADT_F_WBINVD) |
--                              (1 << ACPI_FADT_F_PROC_C1) |
--                              (1 << ACPI_FADT_F_SLP_BUTTON) |
--                              (1 << ACPI_FADT_F_RTC_S4));
--    fadt->flags |= cpu_to_le32(1 << ACPI_FADT_F_USE_PLATFORM_CLOCK);
--    /* APIC destination mode ("Flat Logical") has an upper limit of 8 CPUs
--     * For more than 8 CPUs, "Clustered Logical" mode has to be used
--     */
--    if (max_cpus > 8) {
--        fadt->flags |= cpu_to_le32(1 << ACPI_FADT_F_FORCE_APIC_CLUSTER_MODEL);
--    }
--    fadt->century = RTC_CENTURY;
--    if (pm->force_rev1_fadt) {
-+    fadt->pm1_evt_len = f.pm1_evt.bit_width / 8;
-+    fadt->pm1_cnt_len = f.pm1_cnt.bit_width / 8;
-+    fadt->pm_tmr_len = f.pm_tmr.bit_width / 8;
-+    fadt->gpe0_blk_len = f.gpe0_blk.bit_width / 8;
-+    fadt->plvl2_lat = cpu_to_le16(f.c2_latency);
-+    fadt->plvl3_lat = cpu_to_le16(f.c3_latency);
-+    fadt->flags = cpu_to_le32(f.flags);
-+    fadt->century = f.rtc_century;
-+    if (f.rev == 1) {
-         return;
-     }
+     AcpiFacsDescriptorRev1 *facs_table = &data->facs_table;
+-    uint32_t addr = le32_to_cpu(data->fadt_table.firmware_ctrl);
++    uint32_t addr = le32_to_cpu(data->facs_addr);
  
--    fadt->flags |= cpu_to_le32(1 << ACPI_FADT_F_RESET_REG_SUP);
--    fadt->reset_value = 0xf;
--    fadt->reset_register.space_id = AML_SYSTEM_IO;
--    fadt->reset_register.bit_width = 8;
--    fadt->reset_register.address = cpu_to_le64(ICH9_RST_CNT_IOPORT);
--    /* The above need not be conditional on machine type because the reset port
--     * happens to be the same on PIIX (pc) and ICH9 (q35). */
--    QEMU_BUILD_BUG_ON(ICH9_RST_CNT_IOPORT != RCR_IOPORT);
-+    fadt->reset_value = f.reset_val;
-+    fadt->reset_register = f.reset_reg;
-+    fadt->reset_register.address = cpu_to_le64(f.reset_reg.address);
- 
--    fadt->xpm1a_event_block.space_id = AML_SYSTEM_IO;
--    fadt->xpm1a_event_block.bit_width = fadt->pm1_evt_len * 8;
--    fadt->xpm1a_event_block.address = cpu_to_le64(pm->io_base);
-+    fadt->xpm1a_event_block = f.pm1_evt;
-+    fadt->xpm1a_event_block.address = cpu_to_le64(f.pm1_evt.address);
- 
--    fadt->xpm1a_control_block.space_id = AML_SYSTEM_IO;
--    fadt->xpm1a_control_block.bit_width = fadt->pm1_cnt_len * 8;
--    fadt->xpm1a_control_block.address = cpu_to_le64(pm->io_base + 0x4);
-+    fadt->xpm1a_control_block = f.pm1_cnt;
-+    fadt->xpm1a_control_block.address = cpu_to_le64(f.pm1_cnt.address);
- 
--    fadt->xpm_timer_block.space_id = AML_SYSTEM_IO;
--    fadt->xpm_timer_block.bit_width = fadt->pm_tmr_len * 8;
--    fadt->xpm_timer_block.address = cpu_to_le64(pm->io_base + 0x8);
-+    fadt->xpm_timer_block = f.pm_tmr;
-+    fadt->xpm_timer_block.address = cpu_to_le64(f.pm_tmr.address);
- 
--    fadt->xgpe0_block.space_id = AML_SYSTEM_IO;
--    fadt->xgpe0_block.bit_width = pm->gpe0_blk_len * 8;
--    fadt->xgpe0_block.address = cpu_to_le64(pm->gpe0_blk);
-+    fadt->xgpe0_block = f.gpe0_blk;
-+    fadt->xgpe0_block.address = cpu_to_le64(f.gpe0_blk.address);
- }
- 
- 
- /* FADT */
- static void
--build_fadt(GArray *table_data, BIOSLinker *linker, AcpiPmInfo *pm,
--           unsigned facs_tbl_offset, unsigned dsdt_tbl_offset,
-+build_fadt(GArray *table_data, BIOSLinker *linker, AcpiFadtData *f,
-            const char *oem_id, const char *oem_table_id)
+     ACPI_READ_FIELD(facs_table->signature, addr);
+     ACPI_READ_FIELD(facs_table->length, addr);
+@@ -265,7 +219,7 @@ static void fetch_table(AcpiSdtTable *sdt_table, uint32_t addr)
+ static void test_acpi_dsdt_table(test_data *data)
  {
-     AcpiFadtDescriptorRev3 *fadt = acpi_data_push(table_data, sizeof(*fadt));
-@@ -349,29 +354,32 @@ build_fadt(GArray *table_data, BIOSLinker *linker, AcpiPmInfo *pm,
-     unsigned dsdt_entry_offset = (char *)&fadt->dsdt - table_data->data;
-     unsigned xdsdt_entry_offset = (char *)&fadt->x_dsdt - table_data->data;
-     int fadt_size = sizeof(*fadt);
--    int rev = 3;
+     AcpiSdtTable dsdt_table;
+-    uint32_t addr = le32_to_cpu(data->fadt_table.dsdt);
++    uint32_t addr = le32_to_cpu(data->dsdt_addr);
  
-     /* FACS address to be filled by Guest linker */
--    bios_linker_loader_add_pointer(linker,
--        ACPI_BUILD_TABLE_FILE, fw_ctrl_offset, sizeof(fadt->firmware_ctrl),
--        ACPI_BUILD_TABLE_FILE, facs_tbl_offset);
-+    if (f->facs_tbl_offset) {
-+        bios_linker_loader_add_pointer(linker,
-+            ACPI_BUILD_TABLE_FILE, fw_ctrl_offset, sizeof(fadt->firmware_ctrl),
-+            ACPI_BUILD_TABLE_FILE, *f->facs_tbl_offset);
-+    }
- 
-     /* DSDT address to be filled by Guest linker */
--    fadt_setup(fadt, pm);
--    bios_linker_loader_add_pointer(linker,
--        ACPI_BUILD_TABLE_FILE, dsdt_entry_offset, sizeof(fadt->dsdt),
--        ACPI_BUILD_TABLE_FILE, dsdt_tbl_offset);
--    if (pm->force_rev1_fadt) {
--        rev = 1;
-+    fadt_setup(fadt, *f);
-+    if (f->dsdt_tbl_offset) {
-+        bios_linker_loader_add_pointer(linker,
-+            ACPI_BUILD_TABLE_FILE, dsdt_entry_offset, sizeof(fadt->dsdt),
-+            ACPI_BUILD_TABLE_FILE, *f->dsdt_tbl_offset);
-+    }
-+    if (f->rev == 1) {
-         fadt_size = offsetof(typeof(*fadt), reset_register);
--    } else {
-+    } else if (f->xdsdt_tbl_offset) {
-         bios_linker_loader_add_pointer(linker,
-             ACPI_BUILD_TABLE_FILE, xdsdt_entry_offset, sizeof(fadt->x_dsdt),
--            ACPI_BUILD_TABLE_FILE, dsdt_tbl_offset);
-+            ACPI_BUILD_TABLE_FILE, *f->xdsdt_tbl_offset);
-     }
- 
-     build_header(linker, table_data,
--                 (void *)fadt, "FACP", fadt_size, rev, oem_id, oem_table_id);
-+                (void *)fadt, "FACP", fadt_size, f->rev,
-+                oem_id, oem_table_id);
- }
- 
- void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
-@@ -2051,7 +2059,12 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-     aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
-     crs = aml_resource_template();
-     aml_append(crs,
--        aml_io(AML_DECODE16, pm->gpe0_blk, pm->gpe0_blk, 1, pm->gpe0_blk_len)
-+        aml_io(
-+               AML_DECODE16,
-+               pm->fadt.gpe0_blk.address,
-+               pm->fadt.gpe0_blk.address,
-+               1,
-+               pm->fadt.gpe0_blk.bit_width / 8)
-     );
-     aml_append(dev, aml_name_decl("_CRS", crs));
-     aml_append(scope, dev);
-@@ -2698,7 +2711,10 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
-     /* ACPI tables pointed to by RSDT */
-     fadt = tables_blob->len;
-     acpi_add_table(table_offsets, tables_blob);
--    build_fadt(tables_blob, tables->linker, &pm, facs, dsdt,
-+    pm.fadt.facs_tbl_offset = &facs;
-+    pm.fadt.dsdt_tbl_offset = &dsdt;
-+    pm.fadt.xdsdt_tbl_offset = &dsdt;
-+    build_fadt(tables_blob, tables->linker, &pm.fadt,
-                slic_oem.id, slic_oem.table_id);
-     aml_len += tables_blob->len - fadt;
- 
+     fetch_table(&dsdt_table, addr);
+     ACPI_ASSERT_CMP(dsdt_table.header.signature, "DSDT");
+@@ -674,7 +628,7 @@ static void test_acpi_one(const char *params, test_data *data)
+     test_acpi_rsdp_address(data);
+     test_acpi_rsdp_table(data);
+     test_acpi_rsdt_table(data);
+-    test_acpi_fadt_table(data);
++    fadt_fetch_facs_and_dsdt_ptrs(data);
+     test_acpi_facs_table(data);
+     test_acpi_dsdt_table(data);
+     fetch_rsdt_referenced_tables(data);
 -- 
 2.7.4
 

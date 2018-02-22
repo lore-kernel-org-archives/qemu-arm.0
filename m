@@ -1,96 +1,117 @@
-Received: by 10.28.71.27 with SMTP id u27csp286707wma;
-        Tue, 20 Feb 2018 20:05:25 -0800 (PST)
-X-Google-Smtp-Source: AH8x227VDtNetXI0fCxZHlquE4j7IwMpM/qKPUG/dkF6DUtyNO981wSW/Ln0OEb9vEyGoXHrIvLu
-X-Received: by 2002:a25:808a:: with SMTP id n10-v6mr1389702ybk.230.1519185925169;
-        Tue, 20 Feb 2018 20:05:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519185925; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp1730046wma;
+        Thu, 22 Feb 2018 01:06:22 -0800 (PST)
+X-Google-Smtp-Source: AH8x225qcJYmURxAPJECSTLl6IscwnNyA0nARYelrzY/8ESjxuVRnUT4Pms+cVGi1iDU7DHOJaK8
+X-Received: by 10.129.121.136 with SMTP id u130mr343263ywc.368.1519290382329;
+        Thu, 22 Feb 2018 01:06:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519290382; cv=none;
         d=google.com; s=arc-20160816;
-        b=awp3WLHYnEcPNe2QCKhpmVxGvaWnUcJLcV7l/bRoDj6k4eI9tRWo+IBBDknpIJp9J6
-         u+63ztqOcZvU//hMGb4u/HmQnKGs5Qp62Yc4R+RaGglYOdnJ/K62y6l0CSDxW496KtbH
-         xwjNldfXfGdt+k1jr7XqcxXT485QRIGgKX/bGRl7Xp7yFAyg3QN3bl3rt6ktAjX5w+EV
-         DQCmpDi+UJv9TNMym8tMy8fcPXRLug92ssErTBRypUvVbtsoaaZEospIwUk64gTaUe86
-         /FbEQ46VjJIdhGNLjl4tzSK83uB7rHP3N/nAiB6+BixGV4zR23U2y66bA2X6mzbtjrRu
-         Evvg==
+        b=Q24QFKTs7YNY8EQUeb5nPgPPINj+CYaKCKX/7VApfaMTspETnLb09YYk678+c2On+K
+         qT6nA6Cd6hmv9RfFTVpacgPNuZbySi371l0FXHi5xUsVG5HFXAwMip1cndHukhXsmmeY
+         PoDt+u7YIdxBiflqw4iQGtuZoKLLCPjiNZKwFscWZHgFLkqgcPH8GRBcT6b+d3yYfpdq
+         xjRbbHgh9CkTthG7UxfR0wEXFBrhX74L0dG4+VGc0fxAUXkRWB+CeSuwyVfE03QiHxJ5
+         60vOAdy+VV6212VkBrrUCcJvwuMUXTwRbNPYHcU221pV3FrPxLK1apQHYlzVbb34Qdqk
+         Eu0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :mime-version:arc-authentication-results;
-        bh=WnsR/YJ1PNSEZWMJnmiwprMFGBeJrOPFvJ/AUHezpdA=;
-        b=VfcQYnku5G5jlqDptAFdLNALkz4Aya5uy0fe/6NTk6fS4jGtinV2tInhFtvGNkVWR9
-         DwVISwI6yIB2PKkQ+xoNrI29i3ZhVUfwppBjq88ufbd2p+CZxx6a2NtcUSQGa5ARixwJ
-         jnRxYszwK84LATZ1Z50FyvSRoTwXargk6rDSyrRvSCO/HgkCp6GMO2wn2Idwa5MHJ30+
-         YgutTSplnA0FZxLNgGwMZTTULFYom+JJJD5pawpvUzS6X/3ZIrzu8jkkroJk6YSCKXRt
-         eJpOfb9uh+GQGdk0ecX2t1VxYgrYX3SaXe4UB/EBzADrP/ZfqbuD7AqfbC9mwW2DkykB
-         vMPg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=TRKoUYjziZfZ9BhjDM+G8PKFC3pBmINaNxeFkarGD8E=;
+        b=ZDYV1BTgp3jWa7pBgxZYjeDRSYhDK1mx8Y6VkZNEgHFimzpmDC7G5zO3KexxZRWWId
+         4LnPGTlM6Lamm8NXbzC59mt/LqqpGZj0D2knaCvOtxqWhDPdWiFueZti80NED5eErE7e
+         9bN+IzyKHWYOYrj0hoUOhrrH4DDuq0JIMIihTxjcvBgfBJRkY2k4rDlRf6Dl5C7RXJQU
+         g3PUsqFAa+q/jC/FinUN9R48i57WfMN2LeNaqe+kWVa2YIX9DPlXmanew80NpjmHGjxl
+         YxzMSUkS2EzVoWVlXjGDBXE/rv3ZP95JDO2iJuAhN1lTNsrfwVc6rIki1VrtK5Qvw10e
+         glvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=vt.edu
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YWz04uE3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x10si3247670ybi.20.2018.02.20.20.05.25
+        by mx.google.com with ESMTPS id r129si3294490ywh.285.2018.02.22.01.06.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 20 Feb 2018 20:05:25 -0800 (PST)
+        Thu, 22 Feb 2018 01:06:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=vt.edu
-Received: from localhost ([::1]:59003 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YWz04uE3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:36847 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eoLem-0005LH-Ip
-	for alex.bennee@linaro.org; Tue, 20 Feb 2018 23:05:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48524)
+	id 1eompZ-0007Eo-LV
+	for alex.bennee@linaro.org; Thu, 22 Feb 2018 04:06:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33483)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rdzhang@vt.edu>) id 1eoLSG-0003L3-4d
-	for qemu-arm@nongnu.org; Tue, 20 Feb 2018 22:52:31 -0500
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eompL-0007CL-BD
+	for qemu-arm@nongnu.org; Thu, 22 Feb 2018 04:06:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rdzhang@vt.edu>) id 1eoLSC-0006VZ-WE
-	for qemu-arm@nongnu.org; Tue, 20 Feb 2018 22:52:28 -0500
-Received: from omr2.cc.ipv6.vt.edu ([2607:b400:92:8400:0:33:fb76:806e]:35076
-	helo=omr2.cc.vt.edu)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <rdzhang@vt.edu>) id 1eoLSC-0006Pb-RI
-	for qemu-arm@nongnu.org; Tue, 20 Feb 2018 22:52:24 -0500
-Received: from mr2.cc.vt.edu (junk.cc.ipv6.vt.edu
-	[IPv6:2607:b400:92:9:0:9d:8fcb:4116])
-	by omr2.cc.vt.edu (8.14.4/8.14.4) with ESMTP id w1L3qIYr019191
-	for <qemu-arm@nongnu.org>; Tue, 20 Feb 2018 22:52:18 -0500
-Received: from mail-qt0-f198.google.com (mail-qt0-f198.google.com
-	[209.85.216.198])
-	by mr2.cc.vt.edu (8.14.7/8.14.7) with ESMTP id w1L3qDES017677
-	for <qemu-arm@nongnu.org>; Tue, 20 Feb 2018 22:52:18 -0500
-Received: by mail-qt0-f198.google.com with SMTP id c25so289176qtn.12
-	for <qemu-arm@nongnu.org>; Tue, 20 Feb 2018 19:52:18 -0800 (PST)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eompJ-0004Og-NZ
+	for qemu-arm@nongnu.org; Thu, 22 Feb 2018 04:06:07 -0500
+Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:38405)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eompJ-0004OG-EW; Thu, 22 Feb 2018 04:06:05 -0500
+Received: by mail-wm0-x243.google.com with SMTP id z9so2272233wmb.3;
+	Thu, 22 Feb 2018 01:06:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=TRKoUYjziZfZ9BhjDM+G8PKFC3pBmINaNxeFkarGD8E=;
+	b=YWz04uE3VKAbElptEePO25jchICq4xXm5WWs9G/NFzB89mkeyDJrWELSf+qO4HjqFU
+	ahjy/CxTN4R95nCWT5SE/mjSzDjq5UlmfqHNqyOCFVg7zblUK4tIfEFZkaop7RVXfFIk
+	8CeQ8+N5jLok8s8w3b9pizBHFlI/JNeDMDfuFyV8jgF3vO9njzwNeetwNijOX2wmjXrM
+	lW8uJVQH3In+tr1Jk9z0TiP2UrR9Y9L94V10jJDpAU1/iRMJtaWrASXDYykN8odOS2cH
+	T13eZRvyXjC6osh1U0GUHm9CVfyLNnR+g4sbXLsat4h2fhxN+DKlsaNZu6uuplS4FdEc
+	Y7Xg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-	bh=WnsR/YJ1PNSEZWMJnmiwprMFGBeJrOPFvJ/AUHezpdA=;
-	b=RYNv+GkPltuaqsOCW31Cu/sHkz3jg0rcwWNBFXZwDnhxjFf1Hbg3uBdCQoVvoe1bI+
-	qo6qyeh0kfbG0I7dbZ67OlK7ICxmrWoPMLWoQ+N4ZO5DidP5J9SGep3pcSEJs1pAnTl0
-	byqxsv+XxSmbfoq70tlP1sq2YhJvMvIuvFwbPtcerIBSyua3MUtFGEhOZcdX94Uhe0bH
-	sERqkfaJ6KrDlhdeWL+oXqBpL6ZH2bvpX7Y1EuInYc7ZYA41SfOUJu5dKJV66u2ip5wI
-	kn++j+0PQgNBJfJp6Fo21yAS16LJarBGf2/W78vw0G94j0duLYeatNdg9mAZSeFXAzHS
-	CTxQ==
-X-Gm-Message-State: APf1xPBjDrGAbrjnehkaKyz7lxhHuscmzk24cIjH/B0aouVbyVjjKjwM
-	qX7ggkyv97qqmMNOPZ6pSZZBPGYfks71RuhKUDE5E2/KnJFKDkh8EKuzvyEGTOJWAQrXVsFl/mz
-	i7zIpeM4CdctcSrMBNQaE2cpqLv8PlGDZ11f160Y=
-X-Received: by 10.55.145.193 with SMTP id t184mr3079614qkd.39.1519185133473;
-	Tue, 20 Feb 2018 19:52:13 -0800 (PST)
-X-Received: by 10.55.145.193 with SMTP id t184mr3079596qkd.39.1519185133143;
-	Tue, 20 Feb 2018 19:52:13 -0800 (PST)
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=TRKoUYjziZfZ9BhjDM+G8PKFC3pBmINaNxeFkarGD8E=;
+	b=R6ttkt5pZdvPK1KidqyMgRt/vjgzn5jB0ExUrj3AlvTf1KRr0uYEhAmK9B5N2a4pPR
+	kaiyEw/WZTMRmNFIgsWpGFsynYgorqzN2SUNmrRpNajAeJmNSNMSSknCmu+VXN4Ejnxf
+	pNW/P8XXuJUSs5KrJoKcurKpkGl7SWH7t0voASEqtFJXXAHBnQzjnrSf9vVCaJquRvS2
+	ug6dhZJWBLYuX1DMpnCui2AUI8zJJ4OGcDmSMhAHP2zDkC++h2NsroR+i9vHXHGT2YZd
+	Hr71Me1u84UAcZliHqe7EzmdC5gblaQspeKPeO3oYym96Kz8I/9bb+FZugNq9t1WSA9+
+	TKwA==
+X-Gm-Message-State: APf1xPAhBoVf5fwoKuBGKCtD6m19kLKb78um860mcgMX5e48JIpupsKm
+	GFY+YkJU8e6sFgx/KOtYl0NPXL0e
+X-Received: by 10.28.212.141 with SMTP id l135mr3855139wmg.122.1519290364127; 
+	Thu, 22 Feb 2018 01:06:04 -0800 (PST)
+Received: from ?IPv6:2a01:cb1d:8526:ac00:37c8:9a2b:1b7e:2ba7?
+	([2a01:cb1d:8526:ac00:37c8:9a2b:1b7e:2ba7])
+	by smtp.gmail.com with ESMTPSA id
+	n20sm16476820wrg.84.2018.02.22.01.06.02
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 22 Feb 2018 01:06:03 -0800 (PST)
+To: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, =?UTF-8?Q?Andreas_F=c3=a4rber?=
+	<afaerber@suse.de>
+References: <20180216022933.10945-1-f4bug@amsat.org>
+	<20180216022933.10945-6-f4bug@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <d19cdb63-b75e-82d6-1883-109a1d75fad8@amsat.org>
+Date: Thu, 22 Feb 2018 06:06:02 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.6.0
 MIME-Version: 1.0
-Received: by 10.140.39.200 with HTTP; Tue, 20 Feb 2018 19:52:12 -0800 (PST)
-From: Rd Cheung <rdzhang@vt.edu>
-Date: Tue, 20 Feb 2018 22:52:12 -0500
-Message-ID: <CAFmp02z8NnRq6eSCDa2GYJDXE2-cK6+yS1SKHAbiBDhKV_F2yg@mail.gmail.com>
-To: qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="94eb2c084f7c359eca0565b0da31"
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 2607:b400:92:8400:0:33:fb76:806e
-X-Mailman-Approved-At: Tue, 20 Feb 2018 23:05:14 -0500
-Subject: [Qemu-arm] ARM cortex-m3 instruction fetch misbehaves during
- do_v7m_exception_exit
+In-Reply-To: <20180216022933.10945-6-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::243
+Subject: Re: [Qemu-arm] [RFC PATCH v3 5/7] hw/sd/pl181: expose a SDBus and
+ connect the SDCard to it
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,51 +123,160 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+	Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	Michael Walle <michael@walle.cc>,
+	"open list:ARM PrimeCell and..." <qemu-arm@nongnu.org>,
+	Andrzej Zaborowski <balrogg@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Xupiovt+buxh
+X-TUID: 73vWJMu8RsyC
 
---94eb2c084f7c359eca0565b0da31
-Content-Type: text/plain; charset="UTF-8"
+ping? :)
 
-I am emulating TI RTOS(Texas Instrument real time operating system) on a
-cortex-M3 device. I have made boot up code work, but I am currently stuck
-at exception handler.
-
-when the code return from exception handler it goes to:
-0x1001c90e:  b401b402  strlt    fp, [r1], #-0x402
-
-while it should be:
-1001c90e:   B402                push       {r1}
-1001c910:   B401                push       {r0}
-
-I notice the TI RTOS return from an exception with PC with bit 0 set. But
-it should not be an issue of current qemu.
-
-Can anyone give me some clue of where to look at? Or is there any work
-around method?
-
-Thank you!
-
-Ruide Zhang
-
---94eb2c084f7c359eca0565b0da31
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">I am emulating TI RTOS(Texas Instrument real time operatin=
-g system) on a cortex-M3 device. I have made boot up code work, but I am cu=
-rrently stuck at exception handler.=C2=A0=C2=A0<div><div><br></div><div>whe=
-n the code return from exception handler it goes to:</div><div><div><div>0x=
-1001c90e:=C2=A0 b401b402=C2=A0 strlt=C2=A0 =C2=A0 fp, [r1], #-0x402</div></=
-div><div><br></div></div><div>while it should be:</div><div><div>1001c90e:=
-=C2=A0 =C2=A0B402=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 pu=
-sh=C2=A0 =C2=A0 =C2=A0 =C2=A0{r1}</div><div>1001c910:=C2=A0 =C2=A0B401=C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 push=C2=A0 =C2=A0 =C2=
-=A0 =C2=A0{r0}</div></div></div><div><br></div><div>I notice the TI RTOS re=
-turn from an exception with PC with bit 0 set. But it should not be an issu=
-e of current qemu.</div><div><br></div><div>Can anyone give me some clue of=
- where to look at? Or is there any work around method?</div><div><br></div>=
-<div>Thank you!</div><div><br></div><div>Ruide Zhang</div></div>
-
---94eb2c084f7c359eca0565b0da31--
+On 02/15/2018 11:29 PM, Philippe Mathieu-Daudé wrote:
+> using the sdbus_*() API.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+> 
+> RFC because how pl181_sdbus_create_inplace() doing class_init(SDBus) in
+> realize(pl181) seems weird...
+> 
+> from http://lists.nongnu.org/archive/html/qemu-devel/2018-02/msg01268.html:
+> 
+>     I think you have to change that sd_set_cb() code now.
+>     If you look at sd_cardchange() it uses "is this SD card
+>     object on an SDBus" to determine whether to notify the
+>     controller via the old-API IRQ lines, or using the
+>     set_inserted() and set_readonly() callbacks on the SDBusClass.
+> 
+> This previous series intended to enforce a cleaner OOP design, adding a
+> TYPE_SD_BUS_MASTER_INTERFACE TypeInfo:
+> 
+> http://lists.nongnu.org/archive/html/qemu-devel/2017-12/msg02322.html
+> http://lists.nongnu.org/archive/html/qemu-devel/2017-12/msg02326.html
+> http://lists.nongnu.org/archive/html/qemu-devel/2017-12/msg02327.html
+> ---
+> 
+>  hw/sd/pl181.c | 59 ++++++++++++++++++++++++++++++++++++++++++++---------------
+>  1 file changed, 44 insertions(+), 15 deletions(-)
+> 
+> diff --git a/hw/sd/pl181.c b/hw/sd/pl181.c
+> index 3ba1f7dd23..97e85e4a64 100644
+> --- a/hw/sd/pl181.c
+> +++ b/hw/sd/pl181.c
+> @@ -33,7 +33,7 @@ typedef struct PL181State {
+>      SysBusDevice parent_obj;
+>  
+>      MemoryRegion iomem;
+> -    SDState *card;
+> +    SDBus sdbus;
+>      uint32_t clock;
+>      uint32_t power;
+>      uint32_t cmdarg;
+> @@ -179,7 +179,7 @@ static void pl181_send_command(PL181State *s)
+>      request.cmd = s->cmd & PL181_CMD_INDEX;
+>      request.arg = s->cmdarg;
+>      DPRINTF("Command %d %08x\n", request.cmd, request.arg);
+> -    rlen = sd_do_command(s->card, &request, response);
+> +    rlen = sdbus_do_command(&s->sdbus, &request, response);
+>      if (rlen < 0)
+>          goto error;
+>      if (s->cmd & PL181_CMD_RESPONSE) {
+> @@ -223,12 +223,12 @@ static void pl181_fifo_run(PL181State *s)
+>      int is_read;
+>  
+>      is_read = (s->datactrl & PL181_DATA_DIRECTION) != 0;
+> -    if (s->datacnt != 0 && (!is_read || sd_data_ready(s->card))
+> +    if (s->datacnt != 0 && (!is_read || sdbus_data_ready(&s->sdbus))
+>              && !s->linux_hack) {
+>          if (is_read) {
+>              n = 0;
+>              while (s->datacnt && s->fifo_len < PL181_FIFO_LEN) {
+> -                value |= (uint32_t)sd_read_data(s->card) << (n * 8);
+> +                value |= (uint32_t)sdbus_read_data(&s->sdbus) << (n * 8);
+>                  s->datacnt--;
+>                  n++;
+>                  if (n == 4) {
+> @@ -249,7 +249,7 @@ static void pl181_fifo_run(PL181State *s)
+>                  }
+>                  n--;
+>                  s->datacnt--;
+> -                sd_write_data(s->card, value & 0xff);
+> +                sdbus_write_data(&s->sdbus, value & 0xff);
+>                  value >>= 8;
+>              }
+>          }
+> @@ -477,13 +477,6 @@ static void pl181_reset(DeviceState *d)
+>      s->linux_hack = 0;
+>      s->mask[0] = 0;
+>      s->mask[1] = 0;
+> -
+> -    /* We can assume our GPIO outputs have been wired up now */
+> -    sd_set_cb(s->card, s->cardstatus[0], s->cardstatus[1]);
+> -    /* Since we're still using the legacy SD API the card is not plugged
+> -     * into any bus, and we must reset it manually.
+> -     */
+> -    device_reset(DEVICE(s->card));
+>  }
+>  
+>  static void pl181_init(Object *obj)
+> @@ -499,16 +492,52 @@ static void pl181_init(Object *obj)
+>      qdev_init_gpio_out(dev, s->cardstatus, 2);
+>  }
+>  
+> +static void pl181_set_readonly(DeviceState *dev, bool level)
+> +{
+> +    PL181State *s = (PL181State *)dev;
+> +
+> +    qemu_set_irq(s->cardstatus[0], level);
+> +}
+> +
+> +static void pl181_set_inserted(DeviceState *dev, bool level)
+> +{
+> +    PL181State *s = (PL181State *)dev;
+> +
+> +    qemu_set_irq(s->cardstatus[1], level);
+> +}
+> +
+> +static void pl181_sdbus_create_inplace(SDBus *sdbus, DeviceState *dev)
+> +{
+> +    SDBusClass *sbc;
+> +
+> +    qbus_create_inplace(sdbus, sizeof(SDBus), TYPE_SD_BUS, dev, "sd-bus");
+> +
+> +    /* pl181_sdbus_class_init */
+> +    sbc = SD_BUS_GET_CLASS(sdbus);
+> +    sbc->set_inserted = pl181_set_inserted;
+> +    sbc->set_readonly = pl181_set_readonly;
+> +}
+> +
+>  static void pl181_realize(DeviceState *dev, Error **errp)
+>  {
+>      PL181State *s = PL181(dev);
+> +    DeviceState *carddev;
+>      DriveInfo *dinfo;
+> +    Error *err = NULL;
+> +
+> +    pl181_sdbus_create_inplace(&s->sdbus, dev);
+>  
+> +    /* Create and plug in the sd card */
+>      /* FIXME use a qdev drive property instead of drive_get_next() */
+>      dinfo = drive_get_next(IF_SD);
+> -    s->card = sd_init(dinfo ? blk_by_legacy_dinfo(dinfo) : NULL, false);
+> -    if (s->card == NULL) {
+> -        error_setg(errp, "sd_init failed");
+> +    carddev = qdev_create(&s->sdbus.qbus, TYPE_SD_CARD);
+> +    if (dinfo) {
+> +        qdev_prop_set_drive(carddev, "drive", blk_by_legacy_dinfo(dinfo), &err);
+> +    }
+> +    object_property_set_bool(OBJECT(carddev), true, "realized", &err);
+> +    if (err) {
+> +        error_setg(errp, "failed to init SD card: %s", error_get_pretty(err));
+> +        return;
+>      }
+>  }
+>  
+> 

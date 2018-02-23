@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id c56sm4608499wrc.82.2018.02.23.07.36.42
+        by smtp.gmail.com with ESMTPSA id r136sm2163118wmf.18.2018.02.23.07.36.42
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 Feb 2018 07:36:46 -0800 (PST)
+        Fri, 23 Feb 2018 07:36:53 -0800 (PST)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id C9B6C3E0085;
+	by zen.linaro.local (Postfix) with ESMTP id B56AC3E0BFD;
 	Fri, 23 Feb 2018 15:36:37 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-arm@nongnu.org
@@ -12,222 +12,98 @@ Cc: qemu-devel@nongnu.org,
 	richard.henderson@linaro.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v3 17/31] arm/translate-a64: add FP16 FPRINTx to simd_two_reg_misc_fp16
-Date: Fri, 23 Feb 2018 15:36:22 +0000
-Message-Id: <20180223153636.29809-18-alex.bennee@linaro.org>
+Subject: [PATCH v3 16/31] arm/translate-a64: initial decode for simd_two_reg_misc_fp16
+Date: Fri, 23 Feb 2018 15:36:21 +0000
+Message-Id: <20180223153636.29809-17-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.15.1
 In-Reply-To: <20180223153636.29809-1-alex.bennee@linaro.org>
 References: <20180223153636.29809-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: hT90kOwe/WMk
+X-TUID: kRPEtJc9g7GO
 
-This adds the full range of half-precision floating point to integral
-instructions.
+This actually covers two different sections of the encoding table:
+
+   Advanced SIMD scalar two-register miscellaneous FP16
+   Advanced SIMD two-register miscellaneous (FP16)
+
+The difference between the two is covered by a combination of Q (bit
+30) and S (bit 28). Notably the FRINTx instructions are only
+available in the vector form.
+
+This is just the decode skeleton which will be filled out by later
+patches.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
+v2
+  - checkpatch cleanups
 v3
-  - fix re-base conflicts
-  - move comment to previous commit
-  - don't double test is_scalar in unallocated checks
+  - update comment on group from following patches.
+  - rm left over debug fpf
 ---
- target/arm/helper-a64.c    |  22 ++++++++
- target/arm/helper-a64.h    |   2 +
- target/arm/translate-a64.c | 123 +++++++++++++++++++++++++++++++++++++++++++--
- 3 files changed, 142 insertions(+), 5 deletions(-)
+ target/arm/translate-a64.c | 40 ++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 40 insertions(+)
 
-diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-index 4d5ae96d8f..4fd28fdf48 100644
---- a/target/arm/helper-a64.c
-+++ b/target/arm/helper-a64.c
-@@ -745,3 +745,25 @@ uint32_t HELPER(advsimd_acgt_f16)(float16 a, float16 b, void *fpstp)
-     int compare = float16_compare(f0, f1, fpst);
-     return ADVSIMD_CMPRES(compare == float_relation_greater);
- }
-+
-+/* round to integral */
-+float16 HELPER(advsimd_rinth_exact)(float16 x, void *fp_status)
-+{
-+    return float16_round_to_int(x, fp_status);
-+}
-+
-+float16 HELPER(advsimd_rinth)(float16 x, void *fp_status)
-+{
-+    int old_flags = get_float_exception_flags(fp_status), new_flags;
-+    float16 ret;
-+
-+    ret = float16_round_to_int(x, fp_status);
-+
-+    /* Suppress any inexact exceptions the conversion produced */
-+    if (!(old_flags & float_flag_inexact)) {
-+        new_flags = get_float_exception_flags(fp_status);
-+        set_float_exception_flags(new_flags & ~float_flag_inexact, fp_status);
-+    }
-+
-+    return ret;
-+}
-diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
-index 003ffa582f..bc8d5b105b 100644
---- a/target/arm/helper-a64.h
-+++ b/target/arm/helper-a64.h
-@@ -75,3 +75,5 @@ DEF_HELPER_3(advsimd_maxnum2h, i32, i32, i32, ptr)
- DEF_HELPER_3(advsimd_minnum2h, i32, i32, i32, ptr)
- DEF_HELPER_3(advsimd_mulx2h, i32, i32, i32, ptr)
- DEF_HELPER_4(advsimd_muladd2h, i32, i32, i32, i32, ptr)
-+DEF_HELPER_2(advsimd_rinth_exact, f16, f16, ptr)
-+DEF_HELPER_2(advsimd_rinth, f16, f16, ptr)
 diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index ea453fb6d9..6f33663c7b 100644
+index 081619a389..ea453fb6d9 100644
 --- a/target/arm/translate-a64.c
 +++ b/target/arm/translate-a64.c
-@@ -11180,27 +11180,140 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
-  */
- static void disas_simd_two_reg_misc_fp16(DisasContext *s, uint32_t insn)
- {
--    int fpop, opcode, a;
-+    int fpop, opcode, a, u;
-+    int rn, rd;
-+    bool is_q;
-+    bool is_scalar;
-+    bool only_in_vector = false;
-+
-+    int pass;
-+    TCGv_i32 tcg_rmode = NULL;
-+    TCGv_ptr tcg_fpstatus = NULL;
-+    bool need_rmode = false;
-+    int rmode;
- 
-     if (!arm_dc_feature(s, ARM_FEATURE_V8_FP16)) {
-         unallocated_encoding(s);
-         return;
+@@ -11164,6 +11164,45 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
      }
+ }
  
--    if (!fp_access_check(s)) {
--        return;
--    }
-+    rd = extract32(insn, 0, 5);
-+    rn = extract32(insn, 5, 5);
- 
--    opcode = extract32(insn, 12, 4);
-     a = extract32(insn, 23, 1);
-+    u = extract32(insn, 29, 1);
-+    is_scalar = extract32(insn, 28, 1);
-+    is_q = extract32(insn, 30, 1);
++/* AdvSIMD [scalar] two register miscellaneous (FP16)
++ *
++ *   31  30  29 28  27     24  23 22 21       17 16    12 11 10 9    5 4    0
++ * +---+---+---+---+---------+---+-------------+--------+-----+------+------+
++ * | 0 | Q | U | S | 1 1 1 0 | a | 1 1 1 1 0 0 | opcode | 1 0 |  Rn  |  Rd  |
++ * +---+---+---+---+---------+---+-------------+--------+-----+------+------+
++ *   mask: 1000 1111 0111 1110 0000 1100 0000 0000 0x8f7e 0c00
++ *   val:  0000 1110 0111 1000 0000 1000 0000 0000 0x0e78 0800
++ *
++ * This actually covers two groups where scalar access is governed by
++ * bit 28. A bunch of the instructions (float to integral) only exist
++ * in the vector form and are un-allocated for the scalar decode. Also
++ * in the scalar decode Q is always 1.
++ */
++static void disas_simd_two_reg_misc_fp16(DisasContext *s, uint32_t insn)
++{
++    int fpop, opcode, a;
 +
-+    opcode = extract32(insn, 12, 5);
-     fpop = deposit32(opcode, 5, 1, a);
-+    fpop = deposit32(fpop, 6, 1, u);
- 
-     switch (fpop) {
-+    case 0x18: /* FRINTN */
-+        need_rmode = true;
-+        only_in_vector = true;
-+        rmode = FPROUNDING_TIEEVEN;
-+        break;
-+    case 0x19: /* FRINTM */
-+        need_rmode = true;
-+        only_in_vector = true;
-+        rmode = FPROUNDING_NEGINF;
-+        break;
-+    case 0x38: /* FRINTP */
-+        need_rmode = true;
-+        only_in_vector = true;
-+        rmode = FPROUNDING_POSINF;
-+        break;
-+    case 0x39: /* FRINTZ */
-+        need_rmode = true;
-+        only_in_vector = true;
-+        rmode = FPROUNDING_ZERO;
-+        break;
-+    case 0x58: /* FRINTA */
-+        need_rmode = true;
-+        only_in_vector = true;
-+        rmode = FPROUNDING_TIEAWAY;
-+        break;
-+    case 0x59: /* FRINTX */
-+    case 0x79: /* FRINTI */
-+        only_in_vector = true;
-+        /* current rounding mode */
-+        break;
-     default:
-         fprintf(stderr, "%s: insn %#04x fpop %#2x\n", __func__, insn, fpop);
-         g_assert_not_reached();
-     }
- 
-+
-+    /* Check additional constraints for the scalar encoding */
-+    if (is_scalar) {
-+        if (!is_q) {
-+            unallocated_encoding(s);
-+            return;
-+        }
-+        /* FRINTxx is only in the vector form */
-+        if (only_in_vector) {
-+            unallocated_encoding(s);
-+            return;
-+        }
++    if (!arm_dc_feature(s, ARM_FEATURE_V8_FP16)) {
++        unallocated_encoding(s);
++        return;
 +    }
 +
 +    if (!fp_access_check(s)) {
 +        return;
 +    }
 +
-+    if (need_rmode) {
-+        tcg_fpstatus = get_fpstatus_ptr(true);
++    opcode = extract32(insn, 12, 4);
++    a = extract32(insn, 23, 1);
++    fpop = deposit32(opcode, 5, 1, a);
++
++    switch (fpop) {
++    default:
++        fprintf(stderr, "%s: insn %#04x fpop %#2x\n", __func__, insn, fpop);
++        g_assert_not_reached();
 +    }
 +
-+    if (need_rmode) {
-+        tcg_rmode = tcg_const_i32(arm_rmode_to_sf(rmode));
-+        gen_helper_set_rmode(tcg_rmode, tcg_rmode, tcg_fpstatus);
-+    }
++}
 +
-+    if (is_scalar) {
-+        /* no operations yet */
-+    } else {
-+        for (pass = 0; pass < (is_q ? 8 : 4); pass++) {
-+            TCGv_i32 tcg_op = tcg_temp_new_i32();
-+            TCGv_i32 tcg_res = tcg_temp_new_i32();
-+
-+            read_vec_element_i32(s, tcg_op, rn, pass, MO_16);
-+
-+            switch (fpop) {
-+            case 0x18: /* FRINTN */
-+            case 0x19: /* FRINTM */
-+            case 0x38: /* FRINTP */
-+            case 0x39: /* FRINTZ */
-+            case 0x58: /* FRINTA */
-+            case 0x79: /* FRINTI */
-+                gen_helper_advsimd_rinth(tcg_res, tcg_op, tcg_fpstatus);
-+                break;
-+            case 0x59: /* FRINTX */
-+                gen_helper_advsimd_rinth_exact(tcg_res, tcg_op, tcg_fpstatus);
-+                break;
-+            default:
-+                g_assert_not_reached();
-+            }
-+
-+            write_vec_element_i32(s, tcg_res, rd, pass, MO_16);
-+
-+            tcg_temp_free_i32(tcg_res);
-+            tcg_temp_free_i32(tcg_op);
-+        }
-+
-+        clear_vec_high(s, is_q, rd);
-+    }
-+
-+    if (tcg_rmode) {
-+        gen_helper_set_rmode(tcg_rmode, tcg_rmode, tcg_fpstatus);
-+        tcg_temp_free_i32(tcg_rmode);
-+    }
-+
-+    if (tcg_fpstatus) {
-+        tcg_temp_free_ptr(tcg_fpstatus);
-+    }
- }
- 
  /* AdvSIMD scalar x indexed element
+  *  31 30  29 28       24 23  22 21  20  19  16 15 12  11  10 9    5 4    0
+  * +-----+---+-----------+------+---+---+------+-----+---+---+------+------+
+@@ -12237,6 +12276,7 @@ static const AArch64DecodeTable data_proc_simd[] = {
+     { 0xce800000, 0xffe00000, disas_crypto_xar },
+     { 0xce408000, 0xffe0c000, disas_crypto_three_reg_imm2 },
+     { 0x0e400400, 0x9f60c400, disas_simd_three_reg_same_fp16 },
++    { 0x0e780800, 0x8f7e0c00, disas_simd_two_reg_misc_fp16 },
+     { 0x00000000, 0x00000000, NULL }
+ };
+ 
 -- 
 2.15.1

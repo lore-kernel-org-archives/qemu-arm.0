@@ -1,99 +1,98 @@
-Received: by 10.28.71.27 with SMTP id u27csp663815wma;
-        Fri, 23 Feb 2018 06:35:11 -0800 (PST)
-X-Google-Smtp-Source: AH8x224mb0CVQF0SxC7PPW0rVkJ8ms2tPukCzkhtaEikeISEa0wxAUR75umonLcLGaVYseqtYclT
-X-Received: by 10.129.46.148 with SMTP id u142mr1123726ywu.57.1519396511153;
-        Fri, 23 Feb 2018 06:35:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519396511; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp709845wma;
+        Fri, 23 Feb 2018 07:16:13 -0800 (PST)
+X-Google-Smtp-Source: AG47ELsnWPog8RxLZM/bqlQTzFUH6e2lP1mCh+VGKsaMQTDWE4WfEWJYJs8face3I+wUz04bcNrX
+X-Received: by 2002:a25:83c4:: with SMTP id v4-v6mr1289148ybm.490.1519398972914;
+        Fri, 23 Feb 2018 07:16:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519398972; cv=none;
         d=google.com; s=arc-20160816;
-        b=LdJvSrsJ1Cg4RKlBQrHWEIYHPmFrmNQV5y/dglaL5HHlTlzAE1LfE2L79i/eHQ6TP0
-         vug1ETGDpmBgrptxk47hw9FkAlB9+UIvNVPnLUdcPBEKuZj0ajx8taigOG1iAM697nd2
-         3RJt21xJnK5U1WhA0/iQBFfGhA5WRxQLan7zHiOJWVgfZTTQ63klTHTjmjndVHIivtaH
-         RCZFfJEgIfEL3QM6xLkU8ZNx7nWOCCD1g6hKmpqXlnDnoWAKgdJmI0jQT65y33h4U1l+
-         uIHmT9YDSvEaAHkvb3g3YmNeOBkjuv8FbDtjNLwCmDxeo7DexzDwInh9pfp37JtvQxZ7
-         rXnA==
+        b=mV1WzfkAd6SYo7WyZYXA7rGtLUfyud3dBuZudQMQx4rX6CFZ6cYPlQ6yonLZgeWIbQ
+         PD78+NG5dL5cYQc+47h8zT71bPMRllhdfQk/Y0rmJHZi+WPf3orPkdCL1gCpoOETHTT7
+         I/GWk8caV8qJ4oEPc5hcyuMYCAeoRnKN9/7gxCq4tFQ/AnhiNnUSfAzmyTw2tM1sdNWR
+         WL0Z2pjDpozzFenOhPNMV39FN+yvBHyM4K4YtKWBlFMZjc8XYoY320bF5ndsy4dk+V2v
+         RfyPvS3Zh6fo2mh+/jA+rCmXPvrZRSaEP/QIF+Vn0PbtjgWLDVdM2MaSWA5BbJMmASOW
+         k6WQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=39rjFRYyfi69K0UT8xjxMZJJAFs8iUFqFyxc0O/WvpE=;
-        b=y7k3GpIsBYAyXmNt5+vBAV07Sw/515Pa7DQV2rz706M6vXjr6rdcVxBZoVpntUZJVl
-         BMOPiTBTT+CA4FNwWqanxUaet9QeLf5k7U7Abe0LunerZSa97fol1RbhdFUFgAVJd0C0
-         qH6XU2gjIp5kOcaqnbxTo0WnFS0WlhFBw3HVGwk+U89iW/9eny5dTMNwE/gJogjwHvB+
-         wCMtgDfQTW40zUu9RAV74x6OPKjZEKK1L37hzBh53wL9Badc0psXvMmIQnO7KcRlNtrG
-         txDTrY7dNbMMIAifr/g68uX6PCtK6Z5gU1n001rhc1To/E9bJurhYL0akmCFbgoHzKSo
-         NLMQ==
+        bh=7ZAnQMcpb2Td+heu+ML0lm/CCSKUOS2pmJmFVJPcN9E=;
+        b=O2VKvm8GC44k5oDYROa3297FD0fVW2QZrD5G+sMkJoBDC3miMHi0EZ88zdjP7j/Oaq
+         m6BxbFcdo7DBvj5aWTpe4Sw0IU6ByPdgAFSS3fFpczVbf0NFRzeJELndcUJmLVr9ccUQ
+         hiiJDSL8pSCW2gHw9qq9k02nskeOkFaWmDH1QqJ7YGs4xpG0yoffwPxiOLE86Qw5Yuv3
+         9p1IPRkFUD0H3vnfbLYpJRKrnjcaSuPpVbYnB3+3WyYgTEk+sOWlyK24KxTPMl8hL1qD
+         dScBygWYJ/Tq3LTXvdVeCAzpx4UIQgEEXmU8BGe/FKbll7jpT9nQHel2Uv7PL8q2qG+e
+         Mk7A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=cuTleMdM;
+       dkim=fail header.i=@linaro.org header.s=google header.b=a48niHZZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c6si415559ywk.200.2018.02.23.06.35.10
+        by mx.google.com with ESMTPS id h20si434346ywc.111.2018.02.23.07.16.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 23 Feb 2018 06:35:11 -0800 (PST)
+        Fri, 23 Feb 2018 07:16:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=cuTleMdM;
+       dkim=fail header.i=@linaro.org header.s=google header.b=a48niHZZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44932 helo=lists.gnu.org)
+Received: from localhost ([::1]:45106 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1epERK-0003QM-ID
-	for alex.bennee@linaro.org; Fri, 23 Feb 2018 09:35:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56804)
+	id 1epF52-0007Te-7f
+	for alex.bennee@linaro.org; Fri, 23 Feb 2018 10:16:12 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38250)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1epER9-0003Nd-Oa
-	for qemu-arm@nongnu.org; Fri, 23 Feb 2018 09:35:00 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1epF4S-00076j-2g
+	for qemu-arm@nongnu.org; Fri, 23 Feb 2018 10:15:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1epER8-0000a7-Nz
-	for qemu-arm@nongnu.org; Fri, 23 Feb 2018 09:34:59 -0500
-Received: from mail-pl0-x244.google.com ([2607:f8b0:400e:c01::244]:46076)
+	(envelope-from <peter.maydell@linaro.org>) id 1epF4Q-0004TF-Ji
+	for qemu-arm@nongnu.org; Fri, 23 Feb 2018 10:15:36 -0500
+Received: from mail-pf0-x243.google.com ([2607:f8b0:400e:c00::243]:34125)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1epER8-0000Zb-Ge
-	for qemu-arm@nongnu.org; Fri, 23 Feb 2018 09:34:58 -0500
-Received: by mail-pl0-x244.google.com with SMTP id v9-v6so2988432plp.12
-	for <qemu-arm@nongnu.org>; Fri, 23 Feb 2018 06:34:58 -0800 (PST)
+	id 1epF4Q-0004RO-9z
+	for qemu-arm@nongnu.org; Fri, 23 Feb 2018 10:15:34 -0500
+Received: by mail-pf0-x243.google.com with SMTP id j20so196422pfi.1
+	for <qemu-arm@nongnu.org>; Fri, 23 Feb 2018 07:15:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=39rjFRYyfi69K0UT8xjxMZJJAFs8iUFqFyxc0O/WvpE=;
-	b=cuTleMdM6KW5MF6lUM6sE1bmx+tMncKgtWlzB6fKmX9kUlmq5je2wr2c0zOaWhxcWD
-	spEIcngCQ/sNkTgQ74iGv0M7vfdxKOIAhUEWpdvXlr7jA34qI5RXWeF/nP5qO4K6f+Sc
-	rdkSpWTDRM5r+x56Ed0mAbrdh9Hdu6h8kSsuI=
+	:cc; bh=7ZAnQMcpb2Td+heu+ML0lm/CCSKUOS2pmJmFVJPcN9E=;
+	b=a48niHZZaweYfby/QXuaYBUV3XJXR+HXHIErXtFI8FX32GWm4woy/BcXmOzCL/0Qel
+	UMoVBo97h7XClIdbZqFp4hmIj1FuAvJaFiad61wvgg+Hr/1nvHLKiBk3TY3wGg9c0Gco
+	C5n2DPW7WeyjVLlSrXv5iNYLw3xmhAksQ3E9Q=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=39rjFRYyfi69K0UT8xjxMZJJAFs8iUFqFyxc0O/WvpE=;
-	b=AXzAlDYzOTZu8N/ZJS2oCBO/SVmNWX+JN7YtGD7l75kbKGQA3VMbNnmAaJzZbxZSOI
-	OVVrADVyxfrq8HGGpLYrtP5l8ftk0tE48hVjoKHj2o4ZxGTZVVNeUrmruVhja+SbYb++
-	rYxbAxaq/2XgasB+4essT/IooL+SzHoGZuBNSDqjIPbKkY+11GXyOBHeyk4wJVjqClxd
-	ZNr/jrM7wATLYkKwS4RXxoi+6+u6FnGdXjHZKD9mip863kMrWtlO2Ew85hRP0Na/JDFw
-	P/h7LCNqGF/zTF0RJfglxqC9NRanNWmWOp94mjSNDlPuiB47R+JwvwFiuNJHHvvK5WL0
-	9MEg==
-X-Gm-Message-State: APf1xPBK3evuBT2iN3jAGXSOf5D94BHt7N9VqlKdF3tqI/32rbuCE61s
-	SZQEbowJZDzjq2lRcYqA+jiv1zjzKMaGBtqblvEEng==
-X-Received: by 2002:a17:902:a515:: with SMTP id
-	s21-v6mr1905243plq.393.1519396497428; 
-	Fri, 23 Feb 2018 06:34:57 -0800 (PST)
+	bh=7ZAnQMcpb2Td+heu+ML0lm/CCSKUOS2pmJmFVJPcN9E=;
+	b=ia6Axu2E8QdY2V+j+PNMfmKcif953T24aVtF2JfCkMpYRaYjz0DMrEqskxakf263Yh
+	fkhWmexhg4BPkp0ZPvAuHpjoy/2jk7r9FzK0wec5YbemvzjIEHejvGbFxzR0ErgOGfjM
+	V0h/qgIwy7PKGXcVY1P9e/sxSU2M5zKUPeCKOt6NYMzUHW8TbI3iqb1YBDW/5jbBB/Jn
+	0Xe37p3H6yd/i0yojUh87+yAB7rLZaA4OXxAPphQJQkJtbLTKmj73Iqac0q6VqMrwy9h
+	b6iRyDKtHoQ+Ie4VESEYCMP4tL3eptDPkb1UF7sKxztO1JfX8+e7Wpx4sj5/PQeUD6cL
+	3TdQ==
+X-Gm-Message-State: APf1xPBKbGn2sRV9rSCgEQ9PPnDwb4JT9UaRypQKOxUJYvIu/hnbwtdn
+	pE2NhwLbWfKJJqpah83VsHb9Ol02VwLXenNUGE9QoA==
+X-Received: by 10.98.107.130 with SMTP id g124mr2073975pfc.225.1519398933132; 
+	Fri, 23 Feb 2018 07:15:33 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.100.241.10 with HTTP; Fri, 23 Feb 2018 06:34:36 -0800 (PST)
-In-Reply-To: <20180217182323.25885-28-richard.henderson@linaro.org>
+Received: by 10.100.241.10 with HTTP; Fri, 23 Feb 2018 07:15:12 -0800 (PST)
+In-Reply-To: <20180217182323.25885-29-richard.henderson@linaro.org>
 References: <20180217182323.25885-1-richard.henderson@linaro.org>
-	<20180217182323.25885-28-richard.henderson@linaro.org>
+	<20180217182323.25885-29-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 23 Feb 2018 14:34:36 +0000
-Message-ID: <CAFEAcA-TuO4F=QoU7WWVieX6OLDX2dEX-g-jz2Hjq4jGb3O9KA@mail.gmail.com>
+Date: Fri, 23 Feb 2018 15:15:12 +0000
+Message-ID: <CAFEAcA8BnNkgHNQd2xK8BrYzhtG4_fee3rWTKXqVxRNEf5FJNA@mail.gmail.com>
 To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c01::244
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 27/67] target/arm: Implement
- SVE Permute - Unpredicated Group
+X-Received-From: 2607:f8b0:400e:c00::243
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 28/67] target/arm: Implement
+ SVE Permute - Predicates Group
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,69 +107,225 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vgkYV3DdFQHC
+X-TUID: /hKKo5H7yMvI
 
 On 17 February 2018 at 18:22, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  target/arm/helper-sve.h    |  23 +++++++++
->  target/arm/translate-a64.h |  14 +++---
->  target/arm/sve_helper.c    | 114 +++++++++++++++++++++++++++++++++++++++++++++
->  target/arm/translate-sve.c | 113 ++++++++++++++++++++++++++++++++++++++++++++
->  target/arm/sve.decode      |  29 +++++++++++-
->  5 files changed, 285 insertions(+), 8 deletions(-)
+>  target/arm/helper-sve.h    |   6 +
+>  target/arm/sve_helper.c    | 280 +++++++++++++++++++++++++++++++++++++++++++++
+>  target/arm/translate-sve.c | 110 ++++++++++++++++++
+>  target/arm/sve.decode      |  18 +++
+>  4 files changed, 414 insertions(+)
 >
-> diff --git a/target/arm/translate-a64.h b/target/arm/translate-a64.h
-> index e519aee314..328aa7fce1 100644
-> --- a/target/arm/translate-a64.h
-> +++ b/target/arm/translate-a64.h
-> @@ -66,18 +66,18 @@ static inline void assert_fp_access_checked(DisasContext *s)
->  static inline int vec_reg_offset(DisasContext *s, int regno,
->                                   int element, TCGMemOp size)
->  {
-> -    int offs = 0;
-> +    int element_size = 1 << size;
-> +    int offs = element * element_size;
->  #ifdef HOST_WORDS_BIGENDIAN
->      /* This is complicated slightly because vfp.zregs[n].d[0] is
->       * still the low half and vfp.zregs[n].d[1] the high half
->       * of the 128 bit vector, even on big endian systems.
-> -     * Calculate the offset assuming a fully bigendian 128 bits,
-> -     * then XOR to account for the order of the two 64 bit halves.
-> +     * Calculate the offset assuming a fully little-endian 128 bits,
-> +     * then XOR to account for the order of the 64 bit units.
->       */
-> -    offs += (16 - ((element + 1) * (1 << size)));
-> -    offs ^= 8;
-> -#else
-> -    offs += element * (1 << size);
-> +    if (element_size < 8) {
-> +        offs ^= 8 - element_size;
+> diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
+> index 0c9aad575e..ff958fcebd 100644
+> --- a/target/arm/helper-sve.h
+> +++ b/target/arm/helper-sve.h
+> @@ -439,6 +439,12 @@ DEF_HELPER_FLAGS_3(sve_uunpk_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+>  DEF_HELPER_FLAGS_3(sve_uunpk_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+>  DEF_HELPER_FLAGS_3(sve_uunpk_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+>
+> +DEF_HELPER_FLAGS_4(sve_zip_p, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_4(sve_uzp_p, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_4(sve_trn_p, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_3(sve_rev_p, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_3(sve_punpk_p, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+> +
+>  DEF_HELPER_FLAGS_5(sve_and_pppp, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+>  DEF_HELPER_FLAGS_5(sve_bic_pppp, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+>  DEF_HELPER_FLAGS_5(sve_eor_pppp, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+> diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+> index 466a209c1e..c3a2706a16 100644
+> --- a/target/arm/sve_helper.c
+> +++ b/target/arm/sve_helper.c
+> @@ -1664,3 +1664,283 @@ DO_UNPK(sve_uunpk_s, uint32_t, uint16_t, H4, H2)
+>  DO_UNPK(sve_uunpk_d, uint64_t, uint32_t, , H4)
+>
+>  #undef DO_UNPK
+> +
+> +static const uint64_t expand_bit_data[5][2] = {
+> +    { 0x1111111111111111ull, 0x2222222222222222ull },
+> +    { 0x0303030303030303ull, 0x0c0c0c0c0c0c0c0cull },
+> +    { 0x000f000f000f000full, 0x00f000f000f000f0ull },
+> +    { 0x000000ff000000ffull, 0x0000ff000000ff00ull },
+> +    { 0x000000000000ffffull, 0x00000000ffff0000ull }
+> +};
+> +
+> +/* Expand units of 2**N bits to units of 2**(N+1) bits,
+> +   with the higher bits zero.  */
+
+In bitops.h we call this operation "half shuffle" (where
+it is specifically working on units of 1 bit size), and
+the inverse "half unshuffle". Worth mentioning that (or
+using similar terminology) ?
+
+> +static uint64_t expand_bits(uint64_t x, int n)
+> +{
+> +    int i, sh;
+
+Worth asserting that n is within the range we expect it to be ?
+(what range is that? 0 to 4?)
+
+> +    for (i = 4, sh = 16; i >= n; i--, sh >>= 1) {
+> +        x = ((x & expand_bit_data[i][1]) << sh) | (x & expand_bit_data[i][0]);
 > +    }
->  #endif
->      offs += offsetof(CPUARMState, vfp.zregs[regno]);
->      assert_fp_access_checked(s);
+> +    return x;
+> +}
+> +
+> +/* Compress units of 2**(N+1) bits to units of 2**N bits.  */
+> +static uint64_t compress_bits(uint64_t x, int n)
+> +{
+> +    int i, sh;
 
-This looks like it should have been in an earlier patch?
+Ditto assert.
 
-> @@ -85,7 +86,9 @@
->  @pd_pg_pn_pm_s ........ . s:1 .. rm:4 .. pg:4 . rn:4 . rd:4    &rprr_s
->
->  # Three operand, vector element size
-> -@rd_rn_rm      ........ esz:2 . rm:5  ... ...  rn:5 rd:5       &rrr_esz
-> +@rd_rn_rm      ........ esz:2 . rm:5 ... ... rn:5 rd:5         &rrr_esz
+> +    for (i = n, sh = 1 << n; i <= 4; i++, sh <<= 1) {
+> +        x = ((x >> sh) & expand_bit_data[i][1]) | (x & expand_bit_data[i][0]);
+> +    }
+> +    return x;
+> +}
+> +
+> +void HELPER(sve_zip_p)(void *vd, void *vn, void *vm, uint32_t pred_desc)
+> +{
+> +    intptr_t oprsz = extract32(pred_desc, 0, SIMD_OPRSZ_BITS) + 2;
+> +    int esz = extract32(pred_desc, SIMD_DATA_SHIFT, 2);
+> +    intptr_t high = extract32(pred_desc, SIMD_DATA_SHIFT + 2, 1);
+> +    uint64_t *d = vd;
+> +    intptr_t i;
+> +
+> +    if (oprsz <= 8) {
+> +        uint64_t nn = *(uint64_t *)vn;
+> +        uint64_t mm = *(uint64_t *)vm;
+> +        int half = 4 * oprsz;
+> +
+> +        nn = extract64(nn, high * half, half);
+> +        mm = extract64(mm, high * half, half);
+> +        nn = expand_bits(nn, esz);
+> +        mm = expand_bits(mm, esz);
+> +        d[0] = nn + (mm << (1 << esz));
 
-Another fragment that should be squashed.
+Is this actually doing an addition, or is it just an odd
+way of writing a bitwise OR when neither of the two
+inputs have 1 in the same bit position?
 
-> +@rdn_rm                ........ esz:2 ...... ...... rm:5 rd:5 \
-> +               &rrr_esz rn=%reg_movprfx
->
->  # Three operand with "memory" size, aka immediate left shift
->  @rd_rn_msz_rm  ........ ... rm:5 .... imm:2 rn:5 rd:5          &rrri
+> +    } else {
+> +        ARMPredicateReg tmp_n, tmp_m;
+> +
+> +        /* We produce output faster than we consume input.
+> +           Therefore we must be mindful of possible overlap.  */
+> +        if ((vn - vd) < (uintptr_t)oprsz) {
+> +            vn = memcpy(&tmp_n, vn, oprsz);
+> +        }
+> +        if ((vm - vd) < (uintptr_t)oprsz) {
+> +            vm = memcpy(&tmp_m, vm, oprsz);
+> +        }
+> +        if (high) {
+> +            high = oprsz >> 1;
+> +        }
+> +
+> +        if ((high & 3) == 0) {
+> +            uint32_t *n = vn, *m = vm;
+> +            high >>= 2;
+> +
+> +            for (i = 0; i < DIV_ROUND_UP(oprsz, 8); i++) {
+> +                uint64_t nn = n[H4(high + i)];
+> +                uint64_t mm = m[H4(high + i)];
+> +
+> +                nn = expand_bits(nn, esz);
+> +                mm = expand_bits(mm, esz);
+> +                d[i] = nn + (mm << (1 << esz));
+> +            }
+> +        } else {
+> +            uint8_t *n = vn, *m = vm;
+> +            uint16_t *d16 = vd;
+> +
+> +            for (i = 0; i < oprsz / 2; i++) {
+> +                uint16_t nn = n[H1(high + i)];
+> +                uint16_t mm = m[H1(high + i)];
+> +
+> +                nn = expand_bits(nn, esz);
+> +                mm = expand_bits(mm, esz);
+> +                d16[H2(i)] = nn + (mm << (1 << esz));
+> +            }
+> +        }
+> +    }
+> +}
+> +
+> +void HELPER(sve_uzp_p)(void *vd, void *vn, void *vm, uint32_t pred_desc)
+> +{
+> +    intptr_t oprsz = extract32(pred_desc, 0, SIMD_OPRSZ_BITS) + 2;
+> +    int esz = extract32(pred_desc, SIMD_DATA_SHIFT, 2);
+> +    int odd = extract32(pred_desc, SIMD_DATA_SHIFT + 2, 1) << esz;
+> +    uint64_t *d = vd, *n = vn, *m = vm;
+> +    uint64_t l, h;
+> +    intptr_t i;
+> +
+> +    if (oprsz <= 8) {
+> +        l = compress_bits(n[0] >> odd, esz);
+> +        h = compress_bits(m[0] >> odd, esz);
+> +        d[0] = extract64(l + (h << (4 * oprsz)), 0, 8 * oprsz);
+
+This looks like it's using addition for logical OR again ?
+
+> +    } else {
+> +        ARMPredicateReg tmp_m;
+> +        intptr_t oprsz_16 = oprsz / 16;
+> +
+> +        if ((vm - vd) < (uintptr_t)oprsz) {
+> +            m = memcpy(&tmp_m, vm, oprsz);
+> +        }
+> +
+> +        for (i = 0; i < oprsz_16; i++) {
+> +            l = n[2 * i + 0];
+> +            h = n[2 * i + 1];
+> +            l = compress_bits(l >> odd, esz);
+> +            h = compress_bits(h >> odd, esz);
+> +            d[i] = l + (h << 32);
+> +        }
+> +
+> +        /* For VL which is not a power of 2, the results from M do not
+> +           align nicely with the uint64_t for D.  Put the aligned results
+> +           from M into TMP_M and then copy it into place afterward.  */
+
+How much risu testing did you do of funny vector lengths ?
+
+> +        if (oprsz & 15) {
+> +            d[i] = compress_bits(n[2 * i] >> odd, esz);
+> +
+> +            for (i = 0; i < oprsz_16; i++) {
+> +                l = m[2 * i + 0];
+> +                h = m[2 * i + 1];
+> +                l = compress_bits(l >> odd, esz);
+> +                h = compress_bits(h >> odd, esz);
+> +                tmp_m.p[i] = l + (h << 32);
+> +            }
+> +            tmp_m.p[i] = compress_bits(m[2 * i] >> odd, esz);
+> +
+> +            swap_memmove(vd + oprsz / 2, &tmp_m, oprsz / 2);
+> +        } else {
+> +            for (i = 0; i < oprsz_16; i++) {
+> +                l = m[2 * i + 0];
+> +                h = m[2 * i + 1];
+> +                l = compress_bits(l >> odd, esz);
+> +                h = compress_bits(h >> odd, esz);
+> +                d[oprsz_16 + i] = l + (h << 32);
+> +            }
+> +        }
+> +    }
+> +}
+> +
+> +static const uint64_t even_bit_esz_masks[4] = {
+> +    0x5555555555555555ull,
+> +    0x3333333333333333ull,
+> +    0x0f0f0f0f0f0f0f0full,
+> +    0x00ff00ff00ff00ffull
+> +};
+
+Comment describing the purpose of these numbers would be useful.
 
 Otherwise
-
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks

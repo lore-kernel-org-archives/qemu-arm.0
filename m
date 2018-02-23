@@ -1,166 +1,88 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id c1sm2052775wmh.1.2018.02.23.09.05.17
+Received: by 10.28.71.27 with SMTP id u27csp827585wma;
+        Fri, 23 Feb 2018 09:05:51 -0800 (PST)
+X-Google-Smtp-Source: AG47ELs2WWFWLA7MRrRx3rK92p/X+mjClYrsmxAs9a9YDWhjRiY/En9hXTCo5DfRAczYU5EnFjRU
+X-Received: by 2002:a25:e087:: with SMTP id x129-v6mr1591071ybg.217.1519405551563;
+        Fri, 23 Feb 2018 09:05:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519405551; cv=none;
+        d=google.com; s=arc-20160816;
+        b=FurqO+tINcvyS/2ux9lfdtJpXMiASprvhSzGLh67RlTRFM1PFmlYNPCLj66dRWyV7Q
+         tjgXQicqQDAbna+S8Q1y9K0rcpHXdXwrcNoV1k/EaERkRD1gYf9ImHf/tO0+pkBXBMEw
+         I5DgqYR2qYL+HuxWJCL9nSsqJ5aeiLtMpaSDs8E9r15/ari9U3y3bcyE5VMKxsuh/yZC
+         KO2eJV4yGEdWicu3asGZoytdY39JasN+n31gFlbGUEgu4uT329dn39ETX6vMoBJXtqt5
+         I7tAt7JqeHPuMHHLX1lYZ86VDexhgyWI1jtDDi/OR8Z0ljhWZlOJUvLYyuNOyXJop2r2
+         smiA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:reply-to:message-id
+         :subject:cc:to:from:date:arc-authentication-results;
+        bh=pz67KZgS+YOYn43LgjmEHtBzSBO0wbwmi9vhVSHKVDk=;
+        b=EkaXLN8wqEFKclqk8QgIwamO8m7WmA3yUTgKMrLJwaub7SFKP5C1KzmB5QkwVAFSm7
+         t2hbt4GubvJElURG4441ZC4x8CWI4xnTgnI12jXpULmpy8090Z3FVLkAu1LIJldgAHrT
+         6f6WwXa9pvQLYw3x/dFO+XVyNdrUFBz4p2SSjPUzdUkHZ8PE2BZpqBFKHOiqDaKZs1+H
+         kHS1kGJparY2yzHOQM8ePG3kCZVewzDyKk68BwSKodieWSUwB3S8kEv7YFddfclZO1jk
+         PY/JxzfjX6+SbKYqlQQ4UJ5y6tw+oawnQoaNI8XAMKPVR5n5BBfG/SoZ5czyqGJTSXJN
+         ZPLg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of berrange@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <berrange@redhat.com>
+Received: from mx1.redhat.com (mx3-rdu2.redhat.com. [66.187.233.73])
+        by mx.google.com with ESMTPS id y80si618580qkg.480.2018.02.23.09.05.51
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 Feb 2018 09:05:17 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 251C23E0260;
-	Fri, 23 Feb 2018 17:05:17 +0000 (GMT)
-References: <20180217182323.25885-1-richard.henderson@linaro.org>
-User-agent: mu4e 1.1.0; emacs 26.0.91
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: Re: [Qemu-arm] [PATCH v2 00/67] target/arm: Scalable Vector Extension
-In-reply-to: <20180217182323.25885-1-richard.henderson@linaro.org>
-Date: Fri, 23 Feb 2018 17:05:17 +0000
-Message-ID: <87606nab76.fsf@linaro.org>
+        Fri, 23 Feb 2018 09:05:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 66.187.233.73 as permitted sender) client-ip=66.187.233.73;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of berrange@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com [10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 20C5D4040856;
+	Fri, 23 Feb 2018 17:05:51 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.22.189])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6F6A79C07A;
+	Fri, 23 Feb 2018 17:05:50 +0000 (UTC)
+Date: Fri, 23 Feb 2018 17:05:48 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-devel] [PATCH v1 4/8] new contrib/generate_all.sh: batch
+ risugen script
+Message-ID: <20180223170548.GH31076@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20180223154613.2096-1-alex.bennee@linaro.org>
+ <20180223154613.2096-5-alex.bennee@linaro.org>
+ <20180223161723.GF31076@redhat.com>
+ <878tbjac3d.fsf@linaro.org>
+ <20180223164937.GG31076@redhat.com>
+ <CAFEAcA-r7o=yMD+Mvo0-3Lpfe-Vvs_SdKOnJoOFnuNJn1oEdLA@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: SJ08DVWs6PoY
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAFEAcA-r7o=yMD+Mvo0-3Lpfe-Vvs_SdKOnJoOFnuNJn1oEdLA@mail.gmail.com>
+User-Agent: Mutt/1.9.2 (2017-12-15)
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]); Fri, 23 Feb 2018 17:05:51 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]); Fri, 23 Feb 2018 17:05:51 +0000 (UTC) for IP:'10.11.54.5' DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com' HELO:'smtp.corp.redhat.com' FROM:'berrange@redhat.com' RCPT:''
+X-TUID: 4GjxA7xTIfsJ
+
+On Fri, Feb 23, 2018 at 05:01:42PM +0000, Peter Maydell wrote:
+> On 23 February 2018 at 16:49, Daniel P. Berrangé <berrange@redhat.com> wrote:
+> > If it is going to live in QEMU source tree, then avoiding introducing a new
+> > license is desirable.
+> 
+> It isn't -- risu has its own repository.
+
+Ah, I see what you mean. Disregard my comments here then
 
 
-Richard Henderson <richard.henderson@linaro.org> writes:
-
-> This is 99% of the instruction set.  There are a few things missing,
-> notably first-fault and non-fault loads (even these are decoded, but
-> simply treated as normal loads for now).
->
-> The patch set is dependant on at least 3 other branches.
-> A fully composed tree is available as
->
->   git://github.com/rth7680/qemu.git tgt-arm-sve-7
-
-Well now it's down just my half-precision patches because I was able to
-apply this to my recently re-based against master arm-fp16-v3:
-
-  https://github.com/stsquad/qemu/tree/review/sve-vectors-v2-rebase
-
->
-> There are a few checkpatch errors due to macros and typedefs, but
-> nothing that isn't be obvious as a false positive.
->
-> This is able to run SVE enabled Himeno and LULESH benchmarks as
-> compiled by last week's gcc-8:
->
-> $ ./aarch64-linux-user/qemu-aarch64 ~/himeno-advsimd
-> mimax =3D 129 mjmax =3D 65 mkmax =3D 65
-> imax =3D 128 jmax =3D 64 kmax =3D64
-> cpu : 67.028643 sec.
-> Loop executed for 200 times
-> Gosa : 1.688752e-03
-> MFLOPS measured : 49.136295
-> Score based on MMX Pentium 200MHz : 1.522662
->
-> $ ./aarch64-linux-user/qemu-aarch64 ~/himeno-sve
-> mimax =3D 129 mjmax =3D 65 mkmax =3D 65
-> imax =3D 128 jmax =3D 64 kmax =3D64
-> cpu : 43.481213 sec.
-> Loop executed for 200 times
-> Gosa : 3.830036e-06
-> MFLOPS measured : 75.746259
-> Score based on MMX Pentium 200MHz : 2.347266
->
-> Hopefully the size of the patch set isn't too daunting...
->
->
-> r~
->
->
-> Richard Henderson (67):
->   target/arm: Enable SVE for aarch64-linux-user
->   target/arm: Introduce translate-a64.h
->   target/arm: Add SVE decode skeleton
->   target/arm: Implement SVE Bitwise Logical - Unpredicated Group
->   target/arm: Implement SVE load vector/predicate
->   target/arm: Implement SVE predicate test
->   target/arm: Implement SVE Predicate Logical Operations Group
->   target/arm: Implement SVE Predicate Misc Group
->   target/arm: Implement SVE Integer Binary Arithmetic - Predicated Group
->   target/arm: Implement SVE Integer Reduction Group
->   target/arm: Implement SVE bitwise shift by immediate (predicated)
->   target/arm: Implement SVE bitwise shift by vector (predicated)
->   target/arm: Implement SVE bitwise shift by wide elements (predicated)
->   target/arm: Implement SVE Integer Arithmetic - Unary Predicated Group
->   target/arm: Implement SVE Integer Multiply-Add Group
->   target/arm: Implement SVE Integer Arithmetic - Unpredicated Group
->   target/arm: Implement SVE Index Generation Group
->   target/arm: Implement SVE Stack Allocation Group
->   target/arm: Implement SVE Bitwise Shift - Unpredicated Group
->   target/arm: Implement SVE Compute Vector Address Group
->   target/arm: Implement SVE floating-point exponential accelerator
->   target/arm: Implement SVE floating-point trig select coefficient
->   target/arm: Implement SVE Element Count Group
->   target/arm: Implement SVE Bitwise Immediate Group
->   target/arm: Implement SVE Integer Wide Immediate - Predicated Group
->   target/arm: Implement SVE Permute - Extract Group
->   target/arm: Implement SVE Permute - Unpredicated Group
->   target/arm: Implement SVE Permute - Predicates Group
->   target/arm: Implement SVE Permute - Interleaving Group
->   target/arm: Implement SVE compress active elements
->   target/arm: Implement SVE conditionally broadcast/extract element
->   target/arm: Implement SVE copy to vector (predicated)
->   target/arm: Implement SVE reverse within elements
->   target/arm: Implement SVE vector splice (predicated)
->   target/arm: Implement SVE Select Vectors Group
->   target/arm: Implement SVE Integer Compare - Vectors Group
->   target/arm: Implement SVE Integer Compare - Immediate Group
->   target/arm: Implement SVE Partition Break Group
->   target/arm: Implement SVE Predicate Count Group
->   target/arm: Implement SVE Integer Compare - Scalars Group
->   target/arm: Implement FDUP/DUP
->   target/arm: Implement SVE Integer Wide Immediate - Unpredicated Group
->   target/arm: Implement SVE Floating Point Arithmetic - Unpredicated
->     Group
->   target/arm: Implement SVE Memory Contiguous Load Group
->   target/arm: Implement SVE Memory Contiguous Store Group
->   target/arm: Implement SVE load and broadcast quadword
->   target/arm: Implement SVE integer convert to floating-point
->   target/arm: Implement SVE floating-point arithmetic (predicated)
->   target/arm: Implement SVE FP Multiply-Add Group
->   target/arm: Implement SVE Floating Point Accumulating Reduction Group
->   target/arm: Implement SVE load and broadcast element
->   target/arm: Implement SVE store vector/predicate register
->   target/arm: Implement SVE scatter stores
->   target/arm: Implement SVE prefetches
->   target/arm: Implement SVE gather loads
->   target/arm: Implement SVE scatter store vector immediate
->   target/arm: Implement SVE floating-point compare vectors
->   target/arm: Implement SVE floating-point arithmetic with immediate
->   target/arm: Implement SVE Floating Point Multiply Indexed Group
->   target/arm: Implement SVE FP Fast Reduction Group
->   target/arm: Implement SVE Floating Point Unary Operations -
->     Unpredicated Group
->   target/arm: Implement SVE FP Compare with Zero Group
->   target/arm: Implement SVE floating-point trig multiply-add coefficient
->   target/arm: Implement SVE floating-point convert precision
->   target/arm: Implement SVE floating-point convert to integer
->   target/arm: Implement SVE floating-point round to integral value
->   target/arm: Implement SVE floating-point unary operations
->
->  target/arm/cpu.h           |    7 +-
->  target/arm/helper-sve.h    | 1285 ++++++++++++
->  target/arm/helper.h        |   42 +
->  target/arm/translate-a64.h |  110 ++
->  target/arm/cpu.c           |    7 +
->  target/arm/cpu64.c         |    1 +
->  target/arm/sve_helper.c    | 4051 ++++++++++++++++++++++++++++++++++++++
->  target/arm/translate-a64.c |  112 +-
->  target/arm/translate-sve.c | 4626 ++++++++++++++++++++++++++++++++++++++=
-++++++
->  target/arm/vec_helper.c    |  178 ++
->  .gitignore                 |    1 +
->  target/arm/Makefile.objs   |   12 +-
->  target/arm/sve.decode      | 1067 ++++++++++
->  13 files changed, 11408 insertions(+), 91 deletions(-)
->  create mode 100644 target/arm/helper-sve.h
->  create mode 100644 target/arm/translate-a64.h
->  create mode 100644 target/arm/sve_helper.c
->  create mode 100644 target/arm/translate-sve.c
->  create mode 100644 target/arm/vec_helper.c
->  create mode 100644 target/arm/sve.decode
-
-
---
-Alex Benn=C3=A9e
+Regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

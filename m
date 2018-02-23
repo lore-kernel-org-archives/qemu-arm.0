@@ -1,181 +1,111 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id i33sm2673188wri.70.2018.02.23.07.42.32
+        by smtp.gmail.com with ESMTPSA id v17sm2989290wrd.5.2018.02.23.07.42.34
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 Feb 2018 07:42:32 -0800 (PST)
+        Fri, 23 Feb 2018 07:42:38 -0800 (PST)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id A44553E0BDF;
-	Fri, 23 Feb 2018 15:36:37 +0000 (GMT)
+	by zen.linaro.local (Postfix) with ESMTP id 58E1F3E163C;
+	Fri, 23 Feb 2018 15:36:38 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	richard.henderson@linaro.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v3 15/31] arm/translate-a64: add FP16 x2 ops for simd_indexed
-Date: Fri, 23 Feb 2018 15:36:20 +0000
-Message-Id: <20180223153636.29809-16-alex.bennee@linaro.org>
+Subject: [PATCH v3 24/31] arm/translate-a64: add FP16 FRCPX to simd_two_reg_misc_fp16
+Date: Fri, 23 Feb 2018 15:36:29 +0000
+Message-Id: <20180223153636.29809-25-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.15.1
 In-Reply-To: <20180223153636.29809-1-alex.bennee@linaro.org>
 References: <20180223153636.29809-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: RLCq1eGtnOtp
+X-TUID: Q60BCFsbv0jO
 
-A bunch of the vectorised bitwise operations just operate on larger
-chunks at a time. We can do the same for the new half-precision
-operations by introducing some TWOHALFOP helpers which work on each
-half of a pair of half-precision operations at once.
-
-Hopefully all this hoop jumping will get simpler once we have
-generically vectorised helpers here.
+We go with the localised helper.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v2
-  - checkpatch fixes
----
- target/arm/helper-a64.c    | 46 +++++++++++++++++++++++++++++++++++++++++++++-
- target/arm/helper-a64.h    | 10 ++++++++++
- target/arm/translate-a64.c | 26 +++++++++++++++++++++-----
- 3 files changed, 76 insertions(+), 6 deletions(-)
+ target/arm/helper-a64.c    | 29 +++++++++++++++++++++++++++++
+ target/arm/helper-a64.h    |  1 +
+ target/arm/translate-a64.c |  4 ++++
+ 3 files changed, 34 insertions(+)
 
 diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-index 8fdbe034f3..4d5ae96d8f 100644
+index 722fff2349..92a0d55a9c 100644
 --- a/target/arm/helper-a64.c
 +++ b/target/arm/helper-a64.c
-@@ -629,8 +629,32 @@ ADVSIMD_HALFOP(max)
- ADVSIMD_HALFOP(minnum)
- ADVSIMD_HALFOP(maxnum)
- 
-+#define ADVSIMD_TWOHALFOP(name)                                         \
-+uint32_t ADVSIMD_HELPER(name, 2h)(uint32_t two_a, uint32_t two_b, void *fpstp) \
-+{ \
-+    float16  a1, a2, b1, b2;                        \
-+    uint32_t r1, r2;                                \
-+    float_status *fpst = fpstp;                     \
-+    a1 = extract32(two_a, 0, 16);                   \
-+    a2 = extract32(two_a, 16, 16);                  \
-+    b1 = extract32(two_b, 0, 16);                   \
-+    b2 = extract32(two_b, 16, 16);                  \
-+    r1 = float16_ ## name(a1, b1, fpst);            \
-+    r2 = float16_ ## name(a2, b2, fpst);            \
-+    return deposit32(r1, 16, 16, r2);               \
-+}
-+
-+ADVSIMD_TWOHALFOP(add)
-+ADVSIMD_TWOHALFOP(sub)
-+ADVSIMD_TWOHALFOP(mul)
-+ADVSIMD_TWOHALFOP(div)
-+ADVSIMD_TWOHALFOP(min)
-+ADVSIMD_TWOHALFOP(max)
-+ADVSIMD_TWOHALFOP(minnum)
-+ADVSIMD_TWOHALFOP(maxnum)
-+
- /* Data processing - scalar floating-point and advanced SIMD */
--float16 HELPER(advsimd_mulxh)(float16 a, float16 b, void *fpstp)
-+static float16 float16_mulx(float16 a, float16 b, void *fpstp)
- {
-     float_status *fpst = fpstp;
- 
-@@ -646,6 +670,9 @@ float16 HELPER(advsimd_mulxh)(float16 a, float16 b, void *fpstp)
-     return float16_mul(a, b, fpst);
+@@ -356,6 +356,35 @@ uint64_t HELPER(neon_addlp_u16)(uint64_t a)
  }
  
-+ADVSIMD_HALFOP(mulx)
-+ADVSIMD_TWOHALFOP(mulx)
-+
- /* fused multiply-accumulate */
- float16 HELPER(advsimd_muladdh)(float16 a, float16 b, float16 c, void *fpstp)
- {
-@@ -653,6 +680,23 @@ float16 HELPER(advsimd_muladdh)(float16 a, float16 b, float16 c, void *fpstp)
-     return float16_muladd(a, b, c, 0, fpst);
- }
- 
-+uint32_t HELPER(advsimd_muladd2h)(uint32_t two_a, uint32_t two_b,
-+                                  uint32_t two_c, void *fpstp)
+ /* Floating-point reciprocal exponent - see FPRecpX in ARM ARM */
++float16 HELPER(frecpx_f16)(float16 a, void *fpstp)
 +{
 +    float_status *fpst = fpstp;
-+    float16  a1, a2, b1, b2, c1, c2;
-+    uint32_t r1, r2;
-+    a1 = extract32(two_a, 0, 16);
-+    a2 = extract32(two_a, 16, 16);
-+    b1 = extract32(two_b, 0, 16);
-+    b2 = extract32(two_b, 16, 16);
-+    c1 = extract32(two_c, 0, 16);
-+    c2 = extract32(two_c, 16, 16);
-+    r1 = float16_muladd(a1, b1, c1, 0, fpst);
-+    r2 = float16_muladd(a2, b2, c2, 0, fpst);
-+    return deposit32(r1, 16, 16, r2);
++    uint16_t val16, sbit;
++    int16_t exp;
++
++    if (float16_is_any_nan(a)) {
++        float16 nan = a;
++        if (float16_is_signaling_nan(a, fpst)) {
++            float_raise(float_flag_invalid, fpst);
++            nan = float16_maybe_silence_nan(a, fpst);
++        }
++        if (fpst->default_nan_mode) {
++            nan = float16_default_nan(fpst);
++        }
++        return nan;
++    }
++
++    val16 = float16_val(a);
++    sbit = 0x8000 & val16;
++    exp = extract32(val16, 10, 5);
++
++    if (exp == 0) {
++        return make_float16(deposit32(sbit, 10, 5, 0x1e));
++    } else {
++        return make_float16(deposit32(sbit, 10, 5, ~exp));
++    }
 +}
 +
- /*
-  * Floating point comparisons produce an integer result. Softfloat
-  * routines return float_relation types which we convert to the 0/-1
+ float32 HELPER(frecpx_f32)(float32 a, void *fpstp)
+ {
+     float_status *fpst = fpstp;
 diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
-index 79012eee9d..003ffa582f 100644
+index 32931b17c6..339323fc3d 100644
 --- a/target/arm/helper-a64.h
 +++ b/target/arm/helper-a64.h
-@@ -65,3 +65,13 @@ DEF_HELPER_3(advsimd_acge_f16, i32, f16, f16, ptr)
- DEF_HELPER_3(advsimd_acgt_f16, i32, f16, f16, ptr)
- DEF_HELPER_3(advsimd_mulxh, f16, f16, f16, ptr)
- DEF_HELPER_4(advsimd_muladdh, f16, f16, f16, f16, ptr)
-+DEF_HELPER_3(advsimd_add2h, i32, i32, i32, ptr)
-+DEF_HELPER_3(advsimd_sub2h, i32, i32, i32, ptr)
-+DEF_HELPER_3(advsimd_mul2h, i32, i32, i32, ptr)
-+DEF_HELPER_3(advsimd_div2h, i32, i32, i32, ptr)
-+DEF_HELPER_3(advsimd_max2h, i32, i32, i32, ptr)
-+DEF_HELPER_3(advsimd_min2h, i32, i32, i32, ptr)
-+DEF_HELPER_3(advsimd_maxnum2h, i32, i32, i32, ptr)
-+DEF_HELPER_3(advsimd_minnum2h, i32, i32, i32, ptr)
-+DEF_HELPER_3(advsimd_mulx2h, i32, i32, i32, ptr)
-+DEF_HELPER_4(advsimd_muladd2h, i32, i32, i32, i32, ptr)
+@@ -41,6 +41,7 @@ DEF_HELPER_FLAGS_1(neon_addlp_s16, TCG_CALL_NO_RWG_SE, i64, i64)
+ DEF_HELPER_FLAGS_1(neon_addlp_u16, TCG_CALL_NO_RWG_SE, i64, i64)
+ DEF_HELPER_FLAGS_2(frecpx_f64, TCG_CALL_NO_RWG, f64, f64, ptr)
+ DEF_HELPER_FLAGS_2(frecpx_f32, TCG_CALL_NO_RWG, f32, f32, ptr)
++DEF_HELPER_FLAGS_2(frecpx_f16, TCG_CALL_NO_RWG, f16, f16, ptr)
+ DEF_HELPER_FLAGS_2(fcvtx_f64_to_f32, TCG_CALL_NO_RWG, f32, f64, env)
+ DEF_HELPER_FLAGS_3(crc32_64, TCG_CALL_NO_RWG_SE, i64, i64, i64, i32)
+ DEF_HELPER_FLAGS_3(crc32c_64, TCG_CALL_NO_RWG_SE, i64, i64, i64, i32)
 diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 43bff5cd09..081619a389 100644
+index 56de5711fe..a7e99e2a2f 100644
 --- a/target/arm/translate-a64.c
 +++ b/target/arm/translate-a64.c
-@@ -11418,8 +11418,13 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
-                          * multiply-add */
-                         tcg_gen_xori_i32(tcg_op, tcg_op, 0x80008000);
-                     }
--                    gen_helper_advsimd_muladdh(tcg_res, tcg_op, tcg_idx,
--                                               tcg_res, fpst);
-+                    if (is_scalar) {
-+                        gen_helper_advsimd_muladdh(tcg_res, tcg_op, tcg_idx,
-+                                                   tcg_res, fpst);
-+                    } else {
-+                        gen_helper_advsimd_muladd2h(tcg_res, tcg_op, tcg_idx,
-+                                                    tcg_res, fpst);
-+                    }
-                     break;
-                 case 2:
-                     if (opcode == 0x5) {
-@@ -11438,10 +11443,21 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
-                 switch (size) {
-                 case 1:
-                     if (u) {
--                        gen_helper_advsimd_mulxh(tcg_res, tcg_op, tcg_idx,
--                                                 fpst);
-+                        if (is_scalar) {
-+                            gen_helper_advsimd_mulxh(tcg_res, tcg_op,
-+                                                     tcg_idx, fpst);
-+                        } else {
-+                            gen_helper_advsimd_mulx2h(tcg_res, tcg_op,
-+                                                      tcg_idx, fpst);
-+                        }
-                     } else {
--                        g_assert_not_reached();
-+                        if (is_scalar) {
-+                            gen_helper_advsimd_mulh(tcg_res, tcg_op,
-+                                                    tcg_idx, fpst);
-+                        } else {
-+                            gen_helper_advsimd_mul2h(tcg_res, tcg_op,
-+                                                     tcg_idx, fpst);
-+                        }
-                     }
-                     break;
-                 case 2:
+@@ -11312,6 +11312,7 @@ static void disas_simd_two_reg_misc_fp16(DisasContext *s, uint32_t insn)
+         handle_2misc_fcmp_zero(s, fpop, is_scalar, 0, is_q, MO_16, rn, rd);
+         return;
+     case 0x3d: /* FRECPE */
++    case 0x3f: /* FRECPX */
+         break;
+     case 0x18: /* FRINTN */
+         need_rmode = true;
+@@ -11436,6 +11437,9 @@ static void disas_simd_two_reg_misc_fp16(DisasContext *s, uint32_t insn)
+         case 0x3d: /* FRECPE */
+             gen_helper_recpe_f16(tcg_res, tcg_op, tcg_fpstatus);
+             break;
++        case 0x3f: /* FRECPX */
++            gen_helper_frecpx_f16(tcg_res, tcg_op, tcg_fpstatus);
++            break;
+         case 0x5a: /* FCVTNU */
+         case 0x5b: /* FCVTMU */
+         case 0x5c: /* FCVTAU */
 -- 
 2.15.1

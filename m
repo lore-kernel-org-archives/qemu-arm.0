@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id 10sm2420740wmj.19.2018.02.23.07.36.43
+        by smtp.gmail.com with ESMTPSA id s81sm3307310wma.45.2018.02.23.07.42.32
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 Feb 2018 07:36:53 -0800 (PST)
+        Fri, 23 Feb 2018 07:42:32 -0800 (PST)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id C641F3E166A;
+	by zen.linaro.local (Postfix) with ESMTP id 0F4063E15E1;
 	Fri, 23 Feb 2018 15:36:38 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-arm@nongnu.org
@@ -12,154 +12,252 @@ Cc: qemu-devel@nongnu.org,
 	richard.henderson@linaro.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v3 30/31] arm/translate-a64: implement simd_scalar_three_reg_same_fp16
-Date: Fri, 23 Feb 2018 15:36:35 +0000
-Message-Id: <20180223153636.29809-31-alex.bennee@linaro.org>
+Subject: [PATCH v3 20/31] arm/translate-a64: add FP16 SCVTF/UCVFT to simd_two_reg_misc_fp16
+Date: Fri, 23 Feb 2018 15:36:25 +0000
+Message-Id: <20180223153636.29809-21-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.15.1
 In-Reply-To: <20180223153636.29809-1-alex.bennee@linaro.org>
 References: <20180223153636.29809-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: NGMGib+mJ2AL
+X-TUID: e++tlz9C7Bzq
 
-This covers the encoding group:
-
-  Advanced SIMD scalar three same FP16
-
-As all the helpers are already there it is simply a case of calling the
-existing helpers in the scalar context.
+I've re-factored the handle_simd_intfp_conv helper to properly handle
+half-precision as well as call plain conversion helpers when we are
+not doing fixed point conversion.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v2
-  - checkpatch fixes
-v3
-  - check for FP16 feature
-  - remove stray debug
-  - make abs a bitwise operation
-  - checkpatch long line
----
- target/arm/translate-a64.c | 99 ++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 99 insertions(+)
+ target/arm/helper.c        |   4 ++
+ target/arm/helper.h        |  10 ++++
+ target/arm/translate-a64.c | 114 +++++++++++++++++++++++++++++++++++----------
+ 3 files changed, 104 insertions(+), 24 deletions(-)
 
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 303cd1eaf9..6e3dadb754 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -11302,8 +11302,10 @@ CONV_ITOF(vfp_##name##to##p, fsz, sign) \
+ CONV_FTOI(vfp_to##name##p, fsz, sign, ) \
+ CONV_FTOI(vfp_to##name##z##p, fsz, sign, _round_to_zero)
+ 
++FLOAT_CONVS(si, h, 16, )
+ FLOAT_CONVS(si, s, 32, )
+ FLOAT_CONVS(si, d, 64, )
++FLOAT_CONVS(ui, h, 16, u)
+ FLOAT_CONVS(ui, s, 32, u)
+ FLOAT_CONVS(ui, d, 64, u)
+ 
+@@ -11386,6 +11388,8 @@ VFP_CONV_FIX_A64(sq, s, 32, 64, int64)
+ VFP_CONV_FIX(uh, s, 32, 32, uint16)
+ VFP_CONV_FIX(ul, s, 32, 32, uint32)
+ VFP_CONV_FIX_A64(uq, s, 32, 64, uint64)
++VFP_CONV_FIX_A64(sl, h, 16, 32, int32)
++VFP_CONV_FIX_A64(ul, h, 16, 32, uint32)
+ #undef VFP_CONV_FIX
+ #undef VFP_CONV_FIX_FLOAT
+ #undef VFP_CONV_FLOAT_FIX_ROUND
+diff --git a/target/arm/helper.h b/target/arm/helper.h
+index 81ecb319b3..c0f35592ff 100644
+--- a/target/arm/helper.h
++++ b/target/arm/helper.h
+@@ -120,17 +120,23 @@ DEF_HELPER_3(vfp_cmped, void, f64, f64, env)
+ DEF_HELPER_2(vfp_fcvtds, f64, f32, env)
+ DEF_HELPER_2(vfp_fcvtsd, f32, f64, env)
+ 
++DEF_HELPER_2(vfp_uitoh, f16, i32, ptr)
+ DEF_HELPER_2(vfp_uitos, f32, i32, ptr)
+ DEF_HELPER_2(vfp_uitod, f64, i32, ptr)
++DEF_HELPER_2(vfp_sitoh, f16, i32, ptr)
+ DEF_HELPER_2(vfp_sitos, f32, i32, ptr)
+ DEF_HELPER_2(vfp_sitod, f64, i32, ptr)
+ 
++DEF_HELPER_2(vfp_touih, i32, f16, ptr)
+ DEF_HELPER_2(vfp_touis, i32, f32, ptr)
+ DEF_HELPER_2(vfp_touid, i32, f64, ptr)
++DEF_HELPER_2(vfp_touizh, i32, f16, ptr)
+ DEF_HELPER_2(vfp_touizs, i32, f32, ptr)
+ DEF_HELPER_2(vfp_touizd, i32, f64, ptr)
++DEF_HELPER_2(vfp_tosih, i32, f16, ptr)
+ DEF_HELPER_2(vfp_tosis, i32, f32, ptr)
+ DEF_HELPER_2(vfp_tosid, i32, f64, ptr)
++DEF_HELPER_2(vfp_tosizh, i32, f16, ptr)
+ DEF_HELPER_2(vfp_tosizs, i32, f32, ptr)
+ DEF_HELPER_2(vfp_tosizd, i32, f64, ptr)
+ 
+@@ -142,6 +148,8 @@ DEF_HELPER_3(vfp_toshd_round_to_zero, i64, f64, i32, ptr)
+ DEF_HELPER_3(vfp_tosld_round_to_zero, i64, f64, i32, ptr)
+ DEF_HELPER_3(vfp_touhd_round_to_zero, i64, f64, i32, ptr)
+ DEF_HELPER_3(vfp_tould_round_to_zero, i64, f64, i32, ptr)
++DEF_HELPER_3(vfp_toulh, i32, f16, i32, ptr)
++DEF_HELPER_3(vfp_toslh, i32, f16, i32, ptr)
+ DEF_HELPER_3(vfp_toshs, i32, f32, i32, ptr)
+ DEF_HELPER_3(vfp_tosls, i32, f32, i32, ptr)
+ DEF_HELPER_3(vfp_tosqs, i64, f32, i32, ptr)
+@@ -166,6 +174,8 @@ DEF_HELPER_3(vfp_sqtod, f64, i64, i32, ptr)
+ DEF_HELPER_3(vfp_uhtod, f64, i64, i32, ptr)
+ DEF_HELPER_3(vfp_ultod, f64, i64, i32, ptr)
+ DEF_HELPER_3(vfp_uqtod, f64, i64, i32, ptr)
++DEF_HELPER_3(vfp_sltoh, f16, i32, i32, ptr)
++DEF_HELPER_3(vfp_ultoh, f16, i32, i32, ptr)
+ 
+ DEF_HELPER_FLAGS_2(set_rmode, TCG_CALL_NO_RWG, i32, i32, ptr)
+ DEF_HELPER_FLAGS_2(set_neon_rmode, TCG_CALL_NO_RWG, i32, i32, env)
 diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 6eae8bd8b1..6704d66be7 100644
+index c251121c2b..abe23f7d3f 100644
 --- a/target/arm/translate-a64.c
 +++ b/target/arm/translate-a64.c
-@@ -7802,6 +7802,104 @@ static void disas_simd_scalar_three_reg_same(DisasContext *s, uint32_t insn)
-     tcg_temp_free_i64(tcg_rd);
+@@ -6902,23 +6902,28 @@ static void handle_simd_intfp_conv(DisasContext *s, int rd, int rn,
+                                    int elements, int is_signed,
+                                    int fracbits, int size)
+ {
+-    bool is_double = size == 3 ? true : false;
+-    TCGv_ptr tcg_fpst = get_fpstatus_ptr(false);
+-    TCGv_i32 tcg_shift = tcg_const_i32(fracbits);
+-    TCGv_i64 tcg_int = tcg_temp_new_i64();
++    TCGv_ptr tcg_fpst = get_fpstatus_ptr(size == MO_16);
++    TCGv_i32 tcg_shift = NULL;
++
+     TCGMemOp mop = size | (is_signed ? MO_SIGN : 0);
+     int pass;
+ 
+-    for (pass = 0; pass < elements; pass++) {
+-        read_vec_element(s, tcg_int, rn, pass, mop);
++    if (fracbits || size == MO_64) {
++        tcg_shift = tcg_const_i32(fracbits);
++    }
++
++    if (size == MO_64) {
++        TCGv_i64 tcg_int64 = tcg_temp_new_i64();
++        TCGv_i64 tcg_double = tcg_temp_new_i64();
++
++        for (pass = 0; pass < elements; pass++) {
++            read_vec_element(s, tcg_int64, rn, pass, mop);
+ 
+-        if (is_double) {
+-            TCGv_i64 tcg_double = tcg_temp_new_i64();
+             if (is_signed) {
+-                gen_helper_vfp_sqtod(tcg_double, tcg_int,
++                gen_helper_vfp_sqtod(tcg_double, tcg_int64,
+                                      tcg_shift, tcg_fpst);
+             } else {
+-                gen_helper_vfp_uqtod(tcg_double, tcg_int,
++                gen_helper_vfp_uqtod(tcg_double, tcg_int64,
+                                      tcg_shift, tcg_fpst);
+             }
+             if (elements == 1) {
+@@ -6926,28 +6931,72 @@ static void handle_simd_intfp_conv(DisasContext *s, int rd, int rn,
+             } else {
+                 write_vec_element(s, tcg_double, rd, pass, MO_64);
+             }
+-            tcg_temp_free_i64(tcg_double);
+-        } else {
+-            TCGv_i32 tcg_single = tcg_temp_new_i32();
+-            if (is_signed) {
+-                gen_helper_vfp_sqtos(tcg_single, tcg_int,
+-                                     tcg_shift, tcg_fpst);
+-            } else {
+-                gen_helper_vfp_uqtos(tcg_single, tcg_int,
+-                                     tcg_shift, tcg_fpst);
++        }
++
++        tcg_temp_free_i64(tcg_int64);
++        tcg_temp_free_i64(tcg_double);
++
++    } else {
++        TCGv_i32 tcg_int32 = tcg_temp_new_i32();
++        TCGv_i32 tcg_float = tcg_temp_new_i32();
++
++        for (pass = 0; pass < elements; pass++) {
++            read_vec_element_i32(s, tcg_int32, rn, pass, mop);
++
++            switch (size) {
++            case MO_32:
++                if (fracbits) {
++                    if (is_signed) {
++                        gen_helper_vfp_sltos(tcg_float, tcg_int32,
++                                             tcg_shift, tcg_fpst);
++                    } else {
++                        gen_helper_vfp_ultos(tcg_float, tcg_int32,
++                                             tcg_shift, tcg_fpst);
++                    }
++                } else {
++                    if (is_signed) {
++                        gen_helper_vfp_sitos(tcg_float, tcg_int32, tcg_fpst);
++                    } else {
++                        gen_helper_vfp_uitos(tcg_float, tcg_int32, tcg_fpst);
++                    }
++                }
++                break;
++            case MO_16:
++                if (fracbits) {
++                    if (is_signed) {
++                        gen_helper_vfp_sltoh(tcg_float, tcg_int32,
++                                             tcg_shift, tcg_fpst);
++                    } else {
++                        gen_helper_vfp_ultoh(tcg_float, tcg_int32,
++                                             tcg_shift, tcg_fpst);
++                    }
++                } else {
++                    if (is_signed) {
++                        gen_helper_vfp_sitoh(tcg_float, tcg_int32, tcg_fpst);
++                    } else {
++                        gen_helper_vfp_uitoh(tcg_float, tcg_int32, tcg_fpst);
++                    }
++                }
++                break;
++            default:
++                g_assert_not_reached();
+             }
++
+             if (elements == 1) {
+-                write_fp_sreg(s, rd, tcg_single);
++                write_fp_sreg(s, rd, tcg_float);
+             } else {
+-                write_vec_element_i32(s, tcg_single, rd, pass, MO_32);
++                write_vec_element_i32(s, tcg_float, rd, pass, size);
+             }
+-            tcg_temp_free_i32(tcg_single);
+         }
++
++        tcg_temp_free_i32(tcg_int32);
++        tcg_temp_free_i32(tcg_float);
+     }
+ 
+-    tcg_temp_free_i64(tcg_int);
+     tcg_temp_free_ptr(tcg_fpst);
+-    tcg_temp_free_i32(tcg_shift);
++    if (tcg_shift) {
++        tcg_temp_free_i32(tcg_shift);
++    }
+ 
+     clear_vec_high(s, elements << size == 16, rd);
  }
+@@ -11236,6 +11285,23 @@ static void disas_simd_two_reg_misc_fp16(DisasContext *s, uint32_t insn)
+     rn = extract32(insn, 5, 5);
  
-+/* AdvSIMD scalar three same FP16
-+ *  31 30  29 28       24 23  22 21 20  16 15 14 13    11 10  9  5 4  0
-+ * +-----+---+-----------+---+-----+------+-----+--------+---+----+----+
-+ * | 0 1 | U | 1 1 1 1 0 | a | 1 0 |  Rm  | 0 0 | opcode | 1 | Rn | Rd |
-+ * +-----+---+-----------+---+-----+------+-----+--------+---+----+----+
-+ * v: 0101 1110 0100 0000 0000 0100 0000 0000 => 5e400400
-+ * m: 1101 1111 0110 0000 1100 0100 0000 0000 => df60c400
-+ */
-+static void disas_simd_scalar_three_reg_same_fp16(DisasContext *s,
-+                                                  uint32_t insn)
-+{
-+    int rd = extract32(insn, 0, 5);
-+    int rn = extract32(insn, 5, 5);
-+    int opcode = extract32(insn, 11, 3);
-+    int rm = extract32(insn, 16, 5);
-+    bool u = extract32(insn, 29, 1);
-+    bool a = extract32(insn, 23, 1);
-+    int fpopcode = opcode | (a << 3) |  (u << 4);
-+    TCGv_ptr fpst;
-+    TCGv_i32 tcg_op1;
-+    TCGv_i32 tcg_op2;
-+    TCGv_i32 tcg_res;
+     switch (fpop) {
++    case 0x1d: /* SCVTF */
++    case 0x5d: /* UCVTF */
++    {
++        int elements;
 +
-+    switch (fpopcode) {
-+    case 0x03: /* FMULX */
-+    case 0x04: /* FCMEQ (reg) */
-+    case 0x07: /* FRECPS */
-+    case 0x0f: /* FRSQRTS */
-+    case 0x14: /* FCMGE (reg) */
-+    case 0x15: /* FACGE */
-+    case 0x1a: /* FABD */
-+    case 0x1c: /* FCMGT (reg) */
-+    case 0x1d: /* FACGT */
-+        break;
-+    default:
-+        unallocated_encoding(s);
++        if (is_scalar) {
++            elements = 1;
++        } else {
++            elements = (is_q ? 8 : 4);
++        }
++
++        if (!fp_access_check(s)) {
++            return;
++        }
++        handle_simd_intfp_conv(s, rd, rn, elements, !u, 0, MO_16);
 +        return;
 +    }
-+
-+    if (!arm_dc_feature(s, ARM_FEATURE_V8_FP16)) {
-+        unallocated_encoding(s);
-+    }
-+
-+    if (!fp_access_check(s)) {
-+        return;
-+    }
-+
-+    fpst = get_fpstatus_ptr(true);
-+
-+    tcg_op1 = tcg_temp_new_i32();
-+    tcg_op2 = tcg_temp_new_i32();
-+    tcg_res = tcg_temp_new_i32();
-+
-+    read_vec_element_i32(s, tcg_op1, rn, 0, MO_16);
-+    read_vec_element_i32(s, tcg_op2, rm, 0, MO_16);
-+
-+    switch (fpopcode) {
-+    case 0x03: /* FMULX */
-+        gen_helper_advsimd_mulxh(tcg_res, tcg_op1, tcg_op2, fpst);
-+        break;
-+    case 0x04: /* FCMEQ (reg) */
-+        gen_helper_advsimd_ceq_f16(tcg_res, tcg_op1, tcg_op2, fpst);
-+        break;
-+    case 0x07: /* FRECPS */
-+        gen_helper_recpsf_f16(tcg_res, tcg_op1, tcg_op2, fpst);
-+        break;
-+    case 0x0f: /* FRSQRTS */
-+        gen_helper_rsqrtsf_f16(tcg_res, tcg_op1, tcg_op2, fpst);
-+        break;
-+    case 0x14: /* FCMGE (reg) */
-+        gen_helper_advsimd_cge_f16(tcg_res, tcg_op1, tcg_op2, fpst);
-+        break;
-+    case 0x15: /* FACGE */
-+        gen_helper_advsimd_acge_f16(tcg_res, tcg_op1, tcg_op2, fpst);
-+        break;
-+    case 0x1a: /* FABD */
-+        gen_helper_advsimd_subh(tcg_res, tcg_op1, tcg_op2, fpst);
-+        tcg_gen_andi_i32(tcg_res, tcg_res, 0x7fff);
-+        break;
-+    case 0x1c: /* FCMGT (reg) */
-+        gen_helper_advsimd_cgt_f16(tcg_res, tcg_op1, tcg_op2, fpst);
-+        break;
-+    case 0x1d: /* FACGT */
-+        gen_helper_advsimd_acgt_f16(tcg_res, tcg_op1, tcg_op2, fpst);
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+
-+    write_fp_sreg(s, rd, tcg_res);
-+
-+
-+    tcg_temp_free_i32(tcg_res);
-+    tcg_temp_free_i32(tcg_op1);
-+    tcg_temp_free_i32(tcg_op2);
-+    tcg_temp_free_ptr(fpst);
-+}
-+
- static void handle_2misc_64(DisasContext *s, int opcode, bool u,
-                             TCGv_i64 tcg_rd, TCGv_i64 tcg_rn,
-                             TCGv_i32 tcg_rmode, TCGv_ptr tcg_fpstatus)
-@@ -12654,6 +12752,7 @@ static const AArch64DecodeTable data_proc_simd[] = {
-     { 0xce408000, 0xffe0c000, disas_crypto_three_reg_imm2 },
-     { 0x0e400400, 0x9f60c400, disas_simd_three_reg_same_fp16 },
-     { 0x0e780800, 0x8f7e0c00, disas_simd_two_reg_misc_fp16 },
-+    { 0x5e400400, 0xdf60c400, disas_simd_scalar_three_reg_same_fp16 },
-     { 0x00000000, 0x00000000, NULL }
- };
- 
+     break;
+     case 0x2c: /* FCMGT (zero) */
+     case 0x2d: /* FCMEQ (zero) */
 -- 
 2.15.1

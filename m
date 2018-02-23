@@ -1,90 +1,166 @@
-Received: by 10.28.71.27 with SMTP id u27csp822234wma;
-        Fri, 23 Feb 2018 09:02:04 -0800 (PST)
-X-Received: by 2002:a17:902:6bc6:: with SMTP id m6-v6mr2372485plt.100.1519405323926;
-        Fri, 23 Feb 2018 09:02:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519405323; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Oj7QTmScgWjLybuGENfBH+LXXV8+xYx9oDZu6/pes0qoQ5/K6EykaicWxhJgkhc/Rl
-         xeMJZUhguZQNYXKX9nNAydX85a10tl6n1YOYJt58LWPbUxagy2JlLQueAiNgCVH6XOOQ
-         9WmU5qOB9ZnPW10C64xCNzzIy+fDExadsaoCPty/pD5AKT1/PdTonCosY9ZtFGElbxOl
-         vCy4BnrLpNsnrOCDGE9kD5RRS4sWFvrZyY4yWmESgKVUjq8Jv7KPC5K2IZfic6Tq3yIk
-         11a5jU+FPRQVNvj9feF3NQJV5RecnEd5IuJd9mebVJ+1RlRKZB2y90Y0wBX+QQcfmKZD
-         kh2A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=hyonNJ5Wd31AY8Y5lEqhK8x9MnJH26GTrphAXUcCVsA=;
-        b=EUzh5DZ5tyrSmWB54zGYlcWR/FZmiLuQr/BMEvL2IcYppCKg05hmgsXZ+6ysXwJWRM
-         NLzJ9LFLK/g4OBxI9D303Du7pnRqPFskJ2ztotaXkM6eRpuleocg4l0Lkn3zjSYBy3Qn
-         Cb/MyrvYrP1sCKqiriV7tDAgEpLuV+sd9mmpCen6X7GBgbYw9ttuSGXaY0bqMZcVMujR
-         ygLT9OYjfLwUIB/DBJY1tUvGsk45etQEbGqeQhhbkY9++S1Jafb51UnBqPggRcvH3HMH
-         Ci9qK/ow0nbRKG9mUVgTXOtfwOCeVP524C0B8naSn9k2CmKO7MAhlpTimpSxYS7zX0yg
-         JX3A==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EQqnRnLh;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id y16sor712489pgv.74.2018.02.23.09.02.03
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 23 Feb 2018 09:02:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EQqnRnLh;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=hyonNJ5Wd31AY8Y5lEqhK8x9MnJH26GTrphAXUcCVsA=;
-        b=EQqnRnLhH+NaQmgA3WB1BQmOk16ngzYjzCJ9jzADI2NV8kjG1q+OCxD/WXOXSlBUOp
-         EGbtvAJUuhvBLgwO/o06sMUb4kIFi2fc4+5y1cuse7xlvtwgHLvKySy97/EIzg7KlfCT
-         lyG2OH+XdBi5IV1X3jPSH/+1DizQsAbtro8OU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=hyonNJ5Wd31AY8Y5lEqhK8x9MnJH26GTrphAXUcCVsA=;
-        b=W7RtgG3fLhie68uYF7WxNn9xPZEbQVZ1iNTnYRx7tKhqawJ73xZtiuOYlrHTCkrHnd
-         2xZCjzBSMWS5ESFmulsQtbSzzYSmqid0snsvMJRMFarDuheVrOV3BJFgOm9B+f0EGnlm
-         nYtdgchpcTzrHaHN20mCfsdNzF6FoJdclB8coA+bJLrEgUJNOzsA2TilFqQHbh1yXKsn
-         +fLORmj5DvUvxUd/jcmWfmPAvQ/9MI1N+vW18LObW5ert53B/1uOmGAil9h/dTt55OfT
-         W11Vrh+9x40lq4a8YOEQIOqIp/VZC6/yShv4wf7rf7alxBV6v59im+O2KmkT//HSRkGr
-         qOmA==
-X-Gm-Message-State: APf1xPBQhcAr0eEYBFNgOysZFagPlH7GjESToanRqKogit1mNaY8TAPb
-	Xdim2LIsoHp9IbFcSi78mNeLxHfG1ZaLt5ml2hJVL+MlSk4=
-X-Google-Smtp-Source: AH8x224lDPq7dGPB4c4iB893iuhQhrIsrhwwMwWu2tukhE3tLcbDOE86sjTxFEMl7QxUsbInThPoXf2ki4v5jN4FJig=
-X-Received: by 10.99.175.8 with SMTP id w8mr1463280pge.390.1519405323592; Fri,
- 23 Feb 2018 09:02:03 -0800 (PST)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id c1sm2052775wmh.1.2018.02.23.09.05.17
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 23 Feb 2018 09:05:17 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id 251C23E0260;
+	Fri, 23 Feb 2018 17:05:17 +0000 (GMT)
+References: <20180217182323.25885-1-richard.henderson@linaro.org>
+User-agent: mu4e 1.1.0; emacs 26.0.91
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Subject: Re: [Qemu-arm] [PATCH v2 00/67] target/arm: Scalable Vector Extension
+In-reply-to: <20180217182323.25885-1-richard.henderson@linaro.org>
+Date: Fri, 23 Feb 2018 17:05:17 +0000
+Message-ID: <87606nab76.fsf@linaro.org>
 MIME-Version: 1.0
-Received: by 10.100.241.10 with HTTP; Fri, 23 Feb 2018 09:01:42 -0800 (PST)
-In-Reply-To: <20180223164937.GG31076@redhat.com>
-References: <20180223154613.2096-1-alex.bennee@linaro.org> <20180223154613.2096-5-alex.bennee@linaro.org>
- <20180223161723.GF31076@redhat.com> <878tbjac3d.fsf@linaro.org> <20180223164937.GG31076@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 23 Feb 2018 17:01:42 +0000
-Message-ID: <CAFEAcA-r7o=yMD+Mvo0-3Lpfe-Vvs_SdKOnJoOFnuNJn1oEdLA@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v1 4/8] new contrib/generate_all.sh: batch
- risugen script
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	qemu-arm <qemu-arm@nongnu.org>, Richard Henderson <richard.henderson@linaro.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: hjnDwuo2x7sB
+X-TUID: SJ08DVWs6PoY
 
-On 23 February 2018 at 16:49, Daniel P. Berrang=C3=A9 <berrange@redhat.com>=
- wrote:
-> If it is going to live in QEMU source tree, then avoiding introducing a n=
-ew
-> license is desirable.
 
-It isn't -- risu has its own repository.
+Richard Henderson <richard.henderson@linaro.org> writes:
 
-thanks
--- PMM
+> This is 99% of the instruction set.  There are a few things missing,
+> notably first-fault and non-fault loads (even these are decoded, but
+> simply treated as normal loads for now).
+>
+> The patch set is dependant on at least 3 other branches.
+> A fully composed tree is available as
+>
+>   git://github.com/rth7680/qemu.git tgt-arm-sve-7
+
+Well now it's down just my half-precision patches because I was able to
+apply this to my recently re-based against master arm-fp16-v3:
+
+  https://github.com/stsquad/qemu/tree/review/sve-vectors-v2-rebase
+
+>
+> There are a few checkpatch errors due to macros and typedefs, but
+> nothing that isn't be obvious as a false positive.
+>
+> This is able to run SVE enabled Himeno and LULESH benchmarks as
+> compiled by last week's gcc-8:
+>
+> $ ./aarch64-linux-user/qemu-aarch64 ~/himeno-advsimd
+> mimax =3D 129 mjmax =3D 65 mkmax =3D 65
+> imax =3D 128 jmax =3D 64 kmax =3D64
+> cpu : 67.028643 sec.
+> Loop executed for 200 times
+> Gosa : 1.688752e-03
+> MFLOPS measured : 49.136295
+> Score based on MMX Pentium 200MHz : 1.522662
+>
+> $ ./aarch64-linux-user/qemu-aarch64 ~/himeno-sve
+> mimax =3D 129 mjmax =3D 65 mkmax =3D 65
+> imax =3D 128 jmax =3D 64 kmax =3D64
+> cpu : 43.481213 sec.
+> Loop executed for 200 times
+> Gosa : 3.830036e-06
+> MFLOPS measured : 75.746259
+> Score based on MMX Pentium 200MHz : 2.347266
+>
+> Hopefully the size of the patch set isn't too daunting...
+>
+>
+> r~
+>
+>
+> Richard Henderson (67):
+>   target/arm: Enable SVE for aarch64-linux-user
+>   target/arm: Introduce translate-a64.h
+>   target/arm: Add SVE decode skeleton
+>   target/arm: Implement SVE Bitwise Logical - Unpredicated Group
+>   target/arm: Implement SVE load vector/predicate
+>   target/arm: Implement SVE predicate test
+>   target/arm: Implement SVE Predicate Logical Operations Group
+>   target/arm: Implement SVE Predicate Misc Group
+>   target/arm: Implement SVE Integer Binary Arithmetic - Predicated Group
+>   target/arm: Implement SVE Integer Reduction Group
+>   target/arm: Implement SVE bitwise shift by immediate (predicated)
+>   target/arm: Implement SVE bitwise shift by vector (predicated)
+>   target/arm: Implement SVE bitwise shift by wide elements (predicated)
+>   target/arm: Implement SVE Integer Arithmetic - Unary Predicated Group
+>   target/arm: Implement SVE Integer Multiply-Add Group
+>   target/arm: Implement SVE Integer Arithmetic - Unpredicated Group
+>   target/arm: Implement SVE Index Generation Group
+>   target/arm: Implement SVE Stack Allocation Group
+>   target/arm: Implement SVE Bitwise Shift - Unpredicated Group
+>   target/arm: Implement SVE Compute Vector Address Group
+>   target/arm: Implement SVE floating-point exponential accelerator
+>   target/arm: Implement SVE floating-point trig select coefficient
+>   target/arm: Implement SVE Element Count Group
+>   target/arm: Implement SVE Bitwise Immediate Group
+>   target/arm: Implement SVE Integer Wide Immediate - Predicated Group
+>   target/arm: Implement SVE Permute - Extract Group
+>   target/arm: Implement SVE Permute - Unpredicated Group
+>   target/arm: Implement SVE Permute - Predicates Group
+>   target/arm: Implement SVE Permute - Interleaving Group
+>   target/arm: Implement SVE compress active elements
+>   target/arm: Implement SVE conditionally broadcast/extract element
+>   target/arm: Implement SVE copy to vector (predicated)
+>   target/arm: Implement SVE reverse within elements
+>   target/arm: Implement SVE vector splice (predicated)
+>   target/arm: Implement SVE Select Vectors Group
+>   target/arm: Implement SVE Integer Compare - Vectors Group
+>   target/arm: Implement SVE Integer Compare - Immediate Group
+>   target/arm: Implement SVE Partition Break Group
+>   target/arm: Implement SVE Predicate Count Group
+>   target/arm: Implement SVE Integer Compare - Scalars Group
+>   target/arm: Implement FDUP/DUP
+>   target/arm: Implement SVE Integer Wide Immediate - Unpredicated Group
+>   target/arm: Implement SVE Floating Point Arithmetic - Unpredicated
+>     Group
+>   target/arm: Implement SVE Memory Contiguous Load Group
+>   target/arm: Implement SVE Memory Contiguous Store Group
+>   target/arm: Implement SVE load and broadcast quadword
+>   target/arm: Implement SVE integer convert to floating-point
+>   target/arm: Implement SVE floating-point arithmetic (predicated)
+>   target/arm: Implement SVE FP Multiply-Add Group
+>   target/arm: Implement SVE Floating Point Accumulating Reduction Group
+>   target/arm: Implement SVE load and broadcast element
+>   target/arm: Implement SVE store vector/predicate register
+>   target/arm: Implement SVE scatter stores
+>   target/arm: Implement SVE prefetches
+>   target/arm: Implement SVE gather loads
+>   target/arm: Implement SVE scatter store vector immediate
+>   target/arm: Implement SVE floating-point compare vectors
+>   target/arm: Implement SVE floating-point arithmetic with immediate
+>   target/arm: Implement SVE Floating Point Multiply Indexed Group
+>   target/arm: Implement SVE FP Fast Reduction Group
+>   target/arm: Implement SVE Floating Point Unary Operations -
+>     Unpredicated Group
+>   target/arm: Implement SVE FP Compare with Zero Group
+>   target/arm: Implement SVE floating-point trig multiply-add coefficient
+>   target/arm: Implement SVE floating-point convert precision
+>   target/arm: Implement SVE floating-point convert to integer
+>   target/arm: Implement SVE floating-point round to integral value
+>   target/arm: Implement SVE floating-point unary operations
+>
+>  target/arm/cpu.h           |    7 +-
+>  target/arm/helper-sve.h    | 1285 ++++++++++++
+>  target/arm/helper.h        |   42 +
+>  target/arm/translate-a64.h |  110 ++
+>  target/arm/cpu.c           |    7 +
+>  target/arm/cpu64.c         |    1 +
+>  target/arm/sve_helper.c    | 4051 ++++++++++++++++++++++++++++++++++++++
+>  target/arm/translate-a64.c |  112 +-
+>  target/arm/translate-sve.c | 4626 ++++++++++++++++++++++++++++++++++++++=
+++++++
+>  target/arm/vec_helper.c    |  178 ++
+>  .gitignore                 |    1 +
+>  target/arm/Makefile.objs   |   12 +-
+>  target/arm/sve.decode      | 1067 ++++++++++
+>  13 files changed, 11408 insertions(+), 91 deletions(-)
+>  create mode 100644 target/arm/helper-sve.h
+>  create mode 100644 target/arm/translate-a64.h
+>  create mode 100644 target/arm/sve_helper.c
+>  create mode 100644 target/arm/translate-sve.c
+>  create mode 100644 target/arm/vec_helper.c
+>  create mode 100644 target/arm/sve.decode
+
+
+--
+Alex Benn=C3=A9e

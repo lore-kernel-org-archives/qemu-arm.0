@@ -1,50 +1,61 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id 42sm2956220wrx.92.2018.02.23.07.46.14
+        by smtp.gmail.com with ESMTPSA id x189sm2978325wmg.23.2018.02.23.07.46.15
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 Feb 2018 07:46:14 -0800 (PST)
+        Fri, 23 Feb 2018 07:46:18 -0800 (PST)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id F3B723E0085;
-	Fri, 23 Feb 2018 15:46:13 +0000 (GMT)
+	by zen.linaro.local (Postfix) with ESMTP id 357FF3E042D;
+	Fri, 23 Feb 2018 15:46:14 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org,
 	richard.henderson@linaro.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH REPOST v1 0/8] Group support and random clean-ups
-Date: Fri, 23 Feb 2018 15:46:05 +0000
-Message-Id: <20180223154613.2096-1-alex.bennee@linaro.org>
+Subject: [PATCH v1 5/8] contrib/run_risu.sh: allow appending of QEMU_FLAGS
+Date: Fri, 23 Feb 2018 15:46:10 +0000
+Message-Id: <20180223154613.2096-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.15.1
+In-Reply-To: <20180223154613.2096-1-alex.bennee@linaro.org>
+References: <20180223154613.2096-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: bRbrdrbDU66O
+X-TUID: 7Hz8FJZb7HGx
 
-Hi,
+Useful if you want to disable a feature for your run. For example:
 
-This is essentially a re-post but with a wider distribution. There is
-one extra patch which adds the FP16 1 source data processing. This is for
-discussion on how best to represent all the different architectural
-versions by using the second field in the aarch64.risu file.
+  set -x QEMU_FLAGS "-cpu fp16=off"
 
-Alex Bennée (8):
-  risugen: support @GroupName in risu files
-  aarch64.risu: clean-up and annotate with groups
-  aarch64.risu: add cryptographic extensions for v8.2
-  new contrib/generate_all.sh: batch risugen script
-  contrib/run_risu.sh: allow appending of QEMU_FLAGS
-  contrib/run_risu.sh: don't set -e
-  contrib/run_risu.sh: add a visual cue for a clean-run
-  aarch64.risu: update Floating-point data-processing (1 source)
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ contrib/run_risu.sh | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
- README                  |  10 ++
- aarch64.risu            | 287 +++++++++++++++++++++++++++++++++---------------
- contrib/generate_all.sh |  96 ++++++++++++++++
- contrib/run_risu.sh     |  10 +-
- risugen                 |  24 +++-
- 5 files changed, 335 insertions(+), 92 deletions(-)
- create mode 100755 contrib/generate_all.sh
-
+diff --git a/contrib/run_risu.sh b/contrib/run_risu.sh
+index 439cd36..63649dd 100755
+--- a/contrib/run_risu.sh
++++ b/contrib/run_risu.sh
+@@ -13,6 +13,7 @@
+ #
+ # Usage:
+ #   (optional) export QEMU=/path/to/qemu
++#   (optional) export QEMU_FLAGS="-cpu any,fp16=off"
+ #   (optional) export RISU=/path/to/risu
+ #   ./run_risu.sh  ./testcases.aarch64/*.bin
+ 
+@@ -29,9 +30,10 @@ fi
+ 
+ for f in $@; do
+     t="$f.trace"
+-    echo "Running $f against $t"
++    CMD="${QEMU} ${QEMU_FLAGS} ${RISU} $f -t $t"
++    echo "Running: ${CMD}"
+     if [ -e $t ]; then
+-        ${QEMU} ${RISU} $f -t $t
++        ${CMD}
+         if [ $? == 0 ]; then
+             passed=( "${passed[@]}" $f )
+         else
 -- 
 2.15.1

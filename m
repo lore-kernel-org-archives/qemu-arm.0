@@ -1,166 +1,223 @@
-Received: by 10.28.71.27 with SMTP id u27csp493008wma;
-        Fri, 23 Feb 2018 03:51:18 -0800 (PST)
-X-Google-Smtp-Source: AG47ELs3+bsL1h63iRAxdvGccKPcdEyvJvCg58IAhLZpVWYsU3TlB4Vh8+zL1IZoGBAp38Iis3FX
-X-Received: by 2002:a25:744c:: with SMTP id p73-v6mr754935ybc.500.1519386678688;
-        Fri, 23 Feb 2018 03:51:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519386678; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp505003wma;
+        Fri, 23 Feb 2018 04:03:47 -0800 (PST)
+X-Google-Smtp-Source: AG47ELvbLIUiYpwUoBuHemz7JITieOt3BPcrMUFMtcdNFs3bbUygGmLMWtn3xwFZ+0+Gda2+2vN2
+X-Received: by 2002:a25:a54a:: with SMTP id h68-v6mr760493ybi.445.1519387427263;
+        Fri, 23 Feb 2018 04:03:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519387427; cv=none;
         d=google.com; s=arc-20160816;
-        b=jGLuo8smyzuwWWZYPq8r7bWywaCNMy7mqEG3xg47w8u2/G2M4LbgJFRcnWCS5YFZSZ
-         DlrL5cyBnnHLgqlGZQ2ZHXFmrtErT5CjKbev8uCE1i5QPjt21u07mt/XZCL1Zt67Y161
-         zamjaGnSYcxtngy8zWZ+bTHrOcqNm76drF3tfG7be9aHXKSNC+oVs9MS1+h3vNn6FJOj
-         rh1X5mpMLHJppr7W23gYXqFs/rtbX0Jt7l1osxhcVNiIItqHUClFrVS09KBRKI7rntAW
-         VCCkG9SvyiNSWlphXZO68c2fu+Kw/4j9i9/k4jcUmM7R2mGgCIL4H5dwAsY5o2IIKrll
-         xiGg==
+        b=G18QUWXW5s3kmn6tFX8IpYDey+56T59UbVRjxOcp3V8qco6By6eRopSiwG8Hk20vZ+
+         BmTaqhtDxPeybfLCD7O4voD9OkYWM45rx/LOW4NmMt39ni16CAAZKxT39G22tUBYqI4C
+         e51hEemlHmUxagiVs/e9ZeSBCpjdwVVl8w8OCqSgfV/trQEMcsATl0SHzo7JpDr+XBCb
+         O/G6wBAugBRLnP6pJfXGsZq874lICsCwpjOlBelYu79kppNZHGuK65Vu/aeOrx1DdrUc
+         IueWFgdWSczWnR5S3BrKQ9dwqwkA0k4lCnmTWLyAYJaVWz5aAj+e5Dnw2Qkis3doh9yZ
+         WJVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=j/dolb1WvIH387QKW0vgj7OK1RAlYlsEwa2TtW6YJx0=;
-        b=DY8pX9b/EjQeh27b29ECc0IN4CPlZFbt3+bg9nwZu0kJO+mWD9b8SFzMJaFHeBxWLh
-         HwKAOHeRPPL2itt5qbTzoGOyAz3I/F0AsaLwOHARRXnLYVsylgW4GEkDAkCTOp+YjzQx
-         bgN6oDh7r0bjt1qdRISIH/gSqjuu9AUBrWWuZX4QN8pUcW8wagFI3o+m8gjfveOQKNLA
-         gh5EIEegfW/ccvo/+xiEMmGSGSDjwvD0VkUuAcxT7KWdAVdIffBhxhNq0CM1OOjgbFuI
-         0NEaHyQn+AfUfijlzANmSEqUzElai2ifqAd5vKHRbhkZ9XtjurO3MwkaNAlVzA6+fo0c
-         cAtA==
+        bh=8MQ+oeMBOmvx5pYgA2EByO5F5g22W06VxZdJo43zoPY=;
+        b=kNpSFVOpiiYKTgUA5ogNx6ByAp1P+aTvi/p6urXeHWP1cj46uy1Jt59CLHPYt1vLki
+         F9vPMo/WUbYUXbk/yiBir1jS5KL/zu1AVzyjO9kg/di9S4GsRBoWnY/qqfSeO0+DbIgc
+         CRlvaeiPAPi7r7jQ8utKcIJKdMRmZia5Q/pJzHJri0qJhAjTTHmujHi7WROUhObOhtYW
+         EYQkhjIQykoaTVZlYZwVTsA3uZ3LpHdrl75Y1jQLW1pdNchDVRov+hVERVXWgaa70iM6
+         te6HeHBTJHp/sRUCnJJkDSQbn7PBQPO9aJQ+fgqo2c249iYaVvcQTtKqGYQgRMK49/8K
+         7nqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=DXUvPfsJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=QkgGh/OW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i201si365842ywe.676.2018.02.23.03.51.18
+        by mx.google.com with ESMTPS id t7-v6si373328ybg.48.2018.02.23.04.03.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 23 Feb 2018 03:51:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 23 Feb 2018 04:03:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=DXUvPfsJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=QkgGh/OW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43919 helo=lists.gnu.org)
+Received: from localhost ([::1]:43970 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1epBsk-00021m-4g
-	for alex.bennee@linaro.org; Fri, 23 Feb 2018 06:51:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39649)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1epC4o-0006Tm-OX
+	for alex.bennee@linaro.org; Fri, 23 Feb 2018 07:03:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44035)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1epBsS-0001yq-FL
-	for qemu-arm@nongnu.org; Fri, 23 Feb 2018 06:51:01 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1epC4Q-0006RX-Q1
+	for qemu-devel@nongnu.org; Fri, 23 Feb 2018 07:03:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1epBsR-000851-J1
-	for qemu-arm@nongnu.org; Fri, 23 Feb 2018 06:51:00 -0500
-Received: from mail-pl0-x241.google.com ([2607:f8b0:400e:c01::241]:45206)
+	(envelope-from <peter.maydell@linaro.org>) id 1epC4P-0003Mv-Ph
+	for qemu-devel@nongnu.org; Fri, 23 Feb 2018 07:03:22 -0500
+Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:41281)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1epBsR-00083u-DA
-	for qemu-arm@nongnu.org; Fri, 23 Feb 2018 06:50:59 -0500
-Received: by mail-pl0-x241.google.com with SMTP id v9-v6so2760547plp.12
-	for <qemu-arm@nongnu.org>; Fri, 23 Feb 2018 03:50:59 -0800 (PST)
+	id 1epC4P-0003Lo-Ks
+	for qemu-devel@nongnu.org; Fri, 23 Feb 2018 07:03:21 -0500
+Received: by mail-pf0-x241.google.com with SMTP id a17so3425687pff.8
+	for <qemu-devel@nongnu.org>; Fri, 23 Feb 2018 04:03:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=j/dolb1WvIH387QKW0vgj7OK1RAlYlsEwa2TtW6YJx0=;
-	b=DXUvPfsJuhTgCpzE8xhNk+n4f9vo9xCyO4ida6kZV10rXTD1p+MpSn1UIV+VhTBAHL
-	cz1XzWaMlboftyR1SMu2z2Wi967QmOQhTsMIeONmvmtV4e0iw95KG6L4LDdDtyiR5137
-	rL0uK3dsoZHVgYxWjq6MVqm/2ixXXLfxTKsJg=
+	:cc; bh=8MQ+oeMBOmvx5pYgA2EByO5F5g22W06VxZdJo43zoPY=;
+	b=QkgGh/OWyrKCQ8pu2jEvb4KXFy0+u+Ll1UM/EpuldC+OpVBqMMF99E8eFvaHso20ks
+	CD3FM+Yj0HaGJ6NnwmJEY5F7OPORW7GhHFcio0Eaqdllt836LPt7r8tUcihJ0LoMyiAt
+	zJ0xgJKFsxXva9JIpHxV+QO/DvSbw9n4VtOBo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=j/dolb1WvIH387QKW0vgj7OK1RAlYlsEwa2TtW6YJx0=;
-	b=mFd/2HKz+dFK0OVSatW4hCMP/SHUtgPge+yrUuRRPjPrUaspe2KJYy5UiMgFXqJMZK
-	RBGImQnOSLJUvisKGtaDci2fUn6nq6aE42q8OoP+IWm1sH2EqWbax5lIBLYfMal3X9tf
-	yc10I+xV5pemwgzplTLeSRzS2jmg9M2hSlIOfWCeAiBUTAebZvMfelbtBNAQLfaTpLdT
-	1hSy+uWxb1SjSR31cwunMmvMQbHq1AKJSaII4go9bQGRXidn+u9Ip6ZDzbWJ25CKgStq
-	SMu7q9HOLYyK1ad8+apssUs8cYpiGSH08Zf6Xk1R1aOSJz0ZOxnX70JHwhfDUocFf0Zi
-	4Ytg==
-X-Gm-Message-State: APf1xPAcFTwxhRGoODtOMnWJIVEAJPZOwkFvAwr7N3lvA+DlqaXR9hmX
-	SM8tmV41VyXhO0eu6m1eJOZRNgC5NVak3YNZGqM4eg==
-X-Received: by 2002:a17:902:8b85:: with SMTP id
-	ay5-v6mr1498805plb.329.1519386658236; 
-	Fri, 23 Feb 2018 03:50:58 -0800 (PST)
+	bh=8MQ+oeMBOmvx5pYgA2EByO5F5g22W06VxZdJo43zoPY=;
+	b=CTDWvKBdOUMJAQTvhjjdiQCTEfHvsr52lWH61yr/eo+8XfStXhLXvMaY1gB2Lfh3TH
+	55y4QIWaMg4gp4gr8tXvcsoSH0uvCVutdK+px/PYffxMUvNtRFqVfC5XYnj2WFkVeETx
+	py9cuZHC54VwXsL4mR9khTHpgOJV1zyM9unXP22NPXlMPMRsxcXU+aB9EDgra+NTUtfx
+	UCRwbqPU5m75nIqiCV11kBrjcZM3ElrmaLYKoNx8pXWv4h5g5Nj1kqs6rUD3ppJ4HvM3
+	RVQJtFJSBjdxGhxXlb6sWirlw09WdLZ0Fs8i90J2oXD3xixS5cPT9kL71xn6QHAnqIFp
+	YYzg==
+X-Gm-Message-State: APf1xPA5iotauYgWK8FmwiQThQ3WF7iUSSdopLPoSWnXqIVbb+TRpN0p
+	SGco34XaG320c3xJGoY35x03UzjZR3CMqcD1W5V6HA==
+X-Received: by 10.99.182.12 with SMTP id j12mr1299866pgf.113.1519387400537;
+	Fri, 23 Feb 2018 04:03:20 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.100.241.10 with HTTP; Fri, 23 Feb 2018 03:50:37 -0800 (PST)
-In-Reply-To: <20180217182323.25885-11-richard.henderson@linaro.org>
+Received: by 10.100.241.10 with HTTP; Fri, 23 Feb 2018 04:03:00 -0800 (PST)
+In-Reply-To: <20180217182323.25885-12-richard.henderson@linaro.org>
 References: <20180217182323.25885-1-richard.henderson@linaro.org>
-	<20180217182323.25885-11-richard.henderson@linaro.org>
+	<20180217182323.25885-12-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 23 Feb 2018 11:50:37 +0000
-Message-ID: <CAFEAcA_7Tn5SWbTOY4VqMcwDngyUvRyPvWJJJeFwhGKh_kCgsg@mail.gmail.com>
+Date: Fri, 23 Feb 2018 12:03:00 +0000
+Message-ID: <CAFEAcA_5bBJiFKZ7PGW6KW0Em9rGsZU57s97t11674Yify60Hg@mail.gmail.com>
 To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c01::241
-Subject: Re: [Qemu-arm] [PATCH v2 10/67] target/arm: Implement SVE Integer
- Reduction Group
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400e:c00::241
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH v2 11/67] target/arm: Implement
+ SVE bitwise shift by immediate (predicated)
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ej6YtC5yMfFs
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: VX2a2MpLPKUq
 
 On 17 February 2018 at 18:22, Richard Henderson
 <richard.henderson@linaro.org> wrote:
-> Excepting MOVPRFX, which isn't a reduction.  Presumably it is
-> placed within the group because of its encoding.
->
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/helper-sve.h    |  25 +++++
+>  target/arm/sve_helper.c    | 265 +++++++++++++++++++++++++++++++++++++++++++++
+>  target/arm/translate-sve.c | 128 ++++++++++++++++++++++
+>  target/arm/sve.decode      |  29 ++++-
+>  4 files changed, 445 insertions(+), 2 deletions(-)
 
-
-> @@ -306,8 +399,6 @@ DO_ZPZZ_D(sve_udiv_zpzz_d, uint64_t, DO_DIV)
->  #undef DO_ABD
->  #undef DO_MUL
->  #undef DO_DIV
-> -#undef DO_ZPZZ
-> -#undef DO_ZPZZ_D
->
->  /* Similar to the ARM LastActiveElement pseudocode function, except the
->     result is multiplied by the element size.  This includes the not found
-
-Hunk in wrong patch or incorrect?
-
-> diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-> index 116002792a..49251a53c1 100644
-> --- a/target/arm/translate-sve.c
-> +++ b/target/arm/translate-sve.c
-> @@ -276,6 +276,71 @@ void trans_UDIV_zpzz(DisasContext *s, arg_rprr_esz *a, uint32_t insn)
->
->  #undef DO_ZPZZ
 >
 > +/*
-> + *** SVE Integer Reduction Group
+> + * Helpers for extracting complex instruction fields.
 > + */
 > +
-> +typedef void gen_helper_gvec_reduc(TCGv_i64, TCGv_ptr, TCGv_ptr, TCGv_i32);
-> +static void do_vpz_ool(DisasContext *s, arg_rpr_esz *a,
-> +                       gen_helper_gvec_reduc *fn)
-> +{
-> +    unsigned vsz = vec_full_reg_size(s);
-> +    TCGv_ptr t_zn, t_pg;
-> +    TCGv_i32 desc;
-> +    TCGv_i64 temp;
-> +
-> +    if (fn == 0) {
-> +        unallocated_encoding(s);
-> +        return;
-> +    }
+> +/* See e.g. ASL (immediate, predicated).
 
-Same remarks as for patch 9 about this being too late to
-catch unallocated_encodings (or alternatively needing to
-do the sve/fp check after this). I won't bother to mention
-this issue for later patches, but you can assume it as a
-general caveat to my reviewed-by tags.
+Typo for "ASR", I guess ?
+
+> + * Returns -1 for unallocated encoding; diagnose later.
+> + */
+> +static int tszimm_esz(int x)
+> +{
+> +    x >>= 3;  /* discard imm3 */
+> +    return 31 - clz32(x);
+> +}
+> +
+> +static int tszimm_shr(int x)
+> +{
+> +    return (16 << tszimm_esz(x)) - x;
+> +}
+> +
+> +/* See e.g. LSL (immediate, predicated).  */
+> +static int tszimm_shl(int x)
+> +{
+> +    return x - (8 << tszimm_esz(x));
+> +}
+
+> --- a/target/arm/sve.decode
+> +++ b/target/arm/sve.decode
+> @@ -22,12 +22,20 @@
+>  ###########################################################################
+>  # Named fields.  These are primarily for disjoint fields.
+>
+> +%imm6_22_5     22:1 5:5
+>  %imm9_16_10    16:s6 10:3
+>  %preg4_5       5:4
+>
+> +# A combination of tsz:imm3 -- extract esize.
+> +%tszimm_esz    22:2 5:5 !function=tszimm_esz
+> +# A combination of tsz:imm3 -- extract (2 * esize) - (tsz:imm3)
+> +%tszimm_shr    22:2 5:5 !function=tszimm_shr
+> +# A combination of tsz:imm3 -- extract (tsz:imm3) - esize
+> +%tszimm_shl    22:2 5:5 !function=tszimm_shl
+> +
+>  # Either a copy of rd (at bit 0), or a different source
+>  # as propagated via the MOVPRFX instruction.
+> -%reg_movprfx           0:5
+> +%reg_movprfx   0:5
+
+Squash into relevant previous patch.
+
+>  ###########################################################################
+>  # Named attribute sets.  These are used to make nice(er) names
+> @@ -40,7 +48,7 @@
+>  &rpr_esz       rd pg rn esz
+>  &rprr_s                rd pg rn rm s
+>  &rprr_esz      rd pg rn rm esz
+> -
+> +&rpri_esz      rd pg rn imm esz
+
+Should either not delete the blank line, or don't add it in the first place.
+
+>  &ptrue         rd esz pat s
+>
+>  ###########################################################################
+> @@ -68,6 +76,11 @@
+>  # One register operand, with governing predicate, vector element size
+>  @rd_pg_rn      ........ esz:2 ... ... ... pg:3 rn:5 rd:5       &rpr_esz
+>
+> +# Two register operand, one immediate operand, with predicate,
+> +# element size encoded as TSZHL.  User must fill in imm.
+> +@rdn_pg_tszimm ........ .. ... ... ... pg:3 ..... rd:5 \
+> +               &rpri_esz rn=%reg_movprfx esz=%tszimm_esz
+> +
+>  # Basic Load/Store with 9-bit immediate offset
+>  @pd_rn_i9      ........ ........ ...... rn:5 . rd:4    \
+>                 &rri imm=%imm9_16_10
+> @@ -126,6 +139,18 @@ UMAXV              00000100 .. 001 001 001 ... ..... .....         @rd_pg_rn
+>  SMINV          00000100 .. 001 010 001 ... ..... .....         @rd_pg_rn
+>  UMINV          00000100 .. 001 011 001 ... ..... .....         @rd_pg_rn
+>
+> +### SVE Shift by Immediate - Predicated Group
+> +
+> +# SVE bitwise shift by immediate (predicated)
+> +ASR_zpzi       00000100 .. 000 000 100 ... .. ... ..... \
+> +               @rdn_pg_tszimm imm=%tszimm_shr
+> +LSR_zpzi       00000100 .. 000 001 100 ... .. ... ..... \
+> +               @rdn_pg_tszimm imm=%tszimm_shr
+> +LSL_zpzi       00000100 .. 000 011 100 ... .. ... ..... \
+> +               @rdn_pg_tszimm imm=%tszimm_shl
+> +ASRD           00000100 .. 000 100 100 ... .. ... ..... \
+> +               @rdn_pg_tszimm imm=%tszimm_shr
+> +
+>  ### SVE Logical - Unpredicated Group
+>
+>  # SVE bitwise logical operations (unpredicated)
+> --
+> 2.14.3
 
 Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>

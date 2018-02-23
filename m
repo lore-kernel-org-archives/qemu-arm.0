@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id h188sm1806595wmf.23.2018.02.23.07.42.32
+        by smtp.gmail.com with ESMTPSA id u136sm2064838wmf.5.2018.02.23.07.42.32
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
         Fri, 23 Feb 2018 07:42:32 -0800 (PST)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 2160E3E1615;
+	by zen.linaro.local (Postfix) with ESMTP id A30D23E0368;
 	Fri, 23 Feb 2018 15:36:38 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-arm@nongnu.org
@@ -12,85 +12,94 @@ Cc: qemu-devel@nongnu.org,
 	richard.henderson@linaro.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v3 21/31] arm/translate-a64: add FP16 FNEG/FABS to simd_two_reg_misc_fp16
-Date: Fri, 23 Feb 2018 15:36:26 +0000
-Message-Id: <20180223153636.29809-22-alex.bennee@linaro.org>
+Subject: [PATCH v3 28/31] arm/translate-a64: add FP16 FMOV to simd_mod_imm
+Date: Fri, 23 Feb 2018 15:36:33 +0000
+Message-Id: <20180223153636.29809-29-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.15.1
 In-Reply-To: <20180223153636.29809-1-alex.bennee@linaro.org>
 References: <20180223153636.29809-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: SpqU9MMFQcde
+X-TUID: F1a4FbZ7s9Su
 
-Neither of these operations alter the floating point status registers
-so we can do a pure bitwise operation, either squashing any sign
-bit (ABS) or inverting it (NEG).
+Only one half-precision instruction has been added to this group.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
 ---
+v2
+  - checkpatch fixes
 v3
-  - fixup re-base conflicts
-  - make both operations pure bitwise TCG
+  - use vfp_expand_imm
 ---
- target/arm/translate-a64.c | 16 +++++++++++++++-
- 1 file changed, 15 insertions(+), 1 deletion(-)
+ target/arm/translate-a64.c | 35 +++++++++++++++++++++++++----------
+ 1 file changed, 25 insertions(+), 10 deletions(-)
 
 diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index abe23f7d3f..00b04d34f9 100644
+index faec8084fa..806f2eb34a 100644
 --- a/target/arm/translate-a64.c
 +++ b/target/arm/translate-a64.c
-@@ -11262,6 +11262,7 @@ static void disas_simd_two_reg_misc_fp16(DisasContext *s, uint32_t insn)
-     TCGv_i32 tcg_rmode = NULL;
-     TCGv_ptr tcg_fpstatus = NULL;
-     bool need_rmode = false;
-+    bool need_fpst = true;
-     int rmode;
+@@ -6234,6 +6234,8 @@ static void disas_simd_copy(DisasContext *s, uint32_t insn)
+  *   MVNI - move inverted (shifted) imm into register
+  *   ORR  - bitwise OR of (shifted) imm with register
+  *   BIC  - bitwise clear of (shifted) imm with register
++ * With ARMv8.2 we also have:
++ *   FMOV half-precision
+  */
+ static void disas_simd_mod_imm(DisasContext *s, uint32_t insn)
+ {
+@@ -6248,8 +6250,11 @@ static void disas_simd_mod_imm(DisasContext *s, uint32_t insn)
+     uint64_t imm = 0;
  
-     if (!arm_dc_feature(s, ARM_FEATURE_V8_FP16)) {
-@@ -11380,6 +11381,10 @@ static void disas_simd_two_reg_misc_fp16(DisasContext *s, uint32_t insn)
-         need_rmode = true;
-         rmode = FPROUNDING_ZERO;
-         break;
-+    case 0x2f: /* FABS */
-+    case 0x6f: /* FNEG */
-+        need_fpst = false;
-+        break;
-     default:
-         fprintf(stderr, "%s: insn %#04x fpop %#2x\n", __func__, insn, fpop);
-         g_assert_not_reached();
-@@ -11403,7 +11408,7 @@ static void disas_simd_two_reg_misc_fp16(DisasContext *s, uint32_t insn)
-         return;
+     if (o2 != 0 || ((cmode == 0xf) && is_neg && !is_q)) {
+-        unallocated_encoding(s);
+-        return;
++        /* Check for FMOV (vector, immediate) - half-precision */
++        if (!(arm_dc_feature(s, ARM_FEATURE_V8_FP16) && o2 && cmode == 0xf)) {
++            unallocated_encoding(s);
++            return;
++        }
      }
  
--    if (need_rmode) {
-+    if (need_rmode || need_fpst) {
-         tcg_fpstatus = get_fpstatus_ptr(true);
-     }
- 
-@@ -11433,6 +11438,9 @@ static void disas_simd_two_reg_misc_fp16(DisasContext *s, uint32_t insn)
-         case 0x7b: /* FCVTZU */
-             gen_helper_advsimd_f16touinth(tcg_res, tcg_op, tcg_fpstatus);
-             break;
-+        case 0x6f: /* FNEG */
-+            tcg_gen_xori_i32(tcg_res, tcg_op, 0x8000);
-+            break;
-         default:
-             g_assert_not_reached();
-         }
-@@ -11476,6 +11484,12 @@ static void disas_simd_two_reg_misc_fp16(DisasContext *s, uint32_t insn)
-             case 0x59: /* FRINTX */
-                 gen_helper_advsimd_rinth_exact(tcg_res, tcg_op, tcg_fpstatus);
-                 break;
-+            case 0x2f: /* FABS */
-+                tcg_gen_andi_i32(tcg_res, tcg_op, 0x7fff);
-+                break;
-+            case 0x6f: /* FNEG */
-+                tcg_gen_xori_i32(tcg_res, tcg_op, 0x8000);
-+                break;
-             default:
-                 g_assert_not_reached();
+     if (!fp_access_check(s)) {
+@@ -6307,19 +6312,29 @@ static void disas_simd_mod_imm(DisasContext *s, uint32_t insn)
+                     imm |= 0x4000000000000000ULL;
+                 }
+             } else {
+-                imm = (abcdefgh & 0x3f) << 19;
+-                if (abcdefgh & 0x80) {
+-                    imm |= 0x80000000;
+-                }
+-                if (abcdefgh & 0x40) {
+-                    imm |= 0x3e000000;
++                if (o2) {
++                    /* FMOV (vector, immediate) - half-precision */
++                    imm = vfp_expand_imm(MO_16, abcdefgh);
++                    /* now duplicate across the lanes */
++                    imm = bitfield_replicate(imm, 16);
+                 } else {
+-                    imm |= 0x40000000;
++                    imm = (abcdefgh & 0x3f) << 19;
++                    if (abcdefgh & 0x80) {
++                        imm |= 0x80000000;
++                    }
++                    if (abcdefgh & 0x40) {
++                        imm |= 0x3e000000;
++                    } else {
++                        imm |= 0x40000000;
++                    }
++                    imm |= (imm << 32);
+                 }
+-                imm |= (imm << 32);
              }
+         }
+         break;
++    default:
++        fprintf(stderr, "%s: cmode_3_1: %x\n", __func__, cmode_3_1);
++        g_assert_not_reached();
+     }
+ 
+     if (cmode_3_1 != 7 && is_neg) {
 -- 
 2.15.1

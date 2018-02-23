@@ -1,173 +1,162 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id 59sm2515666wro.6.2018.02.23.07.42.38
+        by smtp.gmail.com with ESMTPSA id q186sm2264877wmb.33.2018.02.23.07.46.14
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 Feb 2018 07:42:40 -0800 (PST)
+        Fri, 23 Feb 2018 07:46:14 -0800 (PST)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 90A353E0B56;
-	Fri, 23 Feb 2018 15:36:37 +0000 (GMT)
+	by zen.linaro.local (Postfix) with ESMTP id 0A8ED3E0368;
+	Fri, 23 Feb 2018 15:46:14 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org,
+To: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org,
 	richard.henderson@linaro.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v3 14/31] arm/translate-a64: add FP16 FMULX/MLS/FMLA to simd_indexed
-Date: Fri, 23 Feb 2018 15:36:19 +0000
-Message-Id: <20180223153636.29809-15-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH v1 1/8] risugen: support @GroupName in risu files
+Date: Fri, 23 Feb 2018 15:46:06 +0000
+Message-Id: <20180223154613.2096-2-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.15.1
-In-Reply-To: <20180223153636.29809-1-alex.bennee@linaro.org>
-References: <20180223153636.29809-1-alex.bennee@linaro.org>
+In-Reply-To: <20180223154613.2096-1-alex.bennee@linaro.org>
+References: <20180223154613.2096-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Yi+NX/NqO5L9
+X-TUID: 1xPfc/IIeuaE
 
-The helpers use the new re-factored muladd support in SoftFloat for
-the float16 work.
+The existing pattern support is useful but it does get a little
+tedious when faced with large groups of instructions. This introduces
+the concept of a @GroupName which can be sprinkled in the risu
+definition and is attached to all instructions following its
+definition until the next group or an empty group "@" is specified.
+
+It can be combined with the existing pattern support to do things
+like:
+
+  ./risugen --group AdvSIMDAcrossVector --not-pattern ".*_RES" aarch64.risu foo.bin
+
+Multiple groups will further restrict the set, so for example:
+
+  ./risugen --group v8.2,Cryptographic aarch64.risu v8.2-crypto.bin
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v3
-  - re-jigged switch statement to fall-through for unalloc
-  - added is_fp16 bool for fpst
-  - fixed up some long lines
----
- target/arm/translate-a64.c | 83 +++++++++++++++++++++++++++++++++++++---------
- 1 file changed, 67 insertions(+), 16 deletions(-)
+ README  | 10 ++++++++++
+ risugen | 24 +++++++++++++++++++++++-
+ 2 files changed, 33 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index e96e6cdd15..43bff5cd09 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -11198,6 +11198,7 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
-     int rd = extract32(insn, 0, 5);
-     bool is_long = false;
-     bool is_fp = false;
-+    bool is_fp16 = false;
-     int index;
-     TCGv_ptr fpst;
+diff --git a/README b/README
+index e90d33c..35e8b29 100644
+--- a/README
++++ b/README
+@@ -81,6 +81,10 @@ reads the configuration file arm.risu, and generates 10000 instructions
+ based on the instruction patterns matching the regular expression
+ "VQSHL.*imm.*". The resulting binary is written to vqshlimm.out.
  
-@@ -11244,7 +11245,8 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
-         }
-         /* fall through */
-     case 0x9: /* FMUL, FMULX */
--        if (!extract32(size, 1, 1)) {
-+        if (size == 1 ||
-+            (size < 2 && !arm_dc_feature(s, ARM_FEATURE_V8_FP16))) {
-             unallocated_encoding(s);
-             return;
-         }
-@@ -11256,18 +11258,34 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
-     }
++An alternative to using regular expression patterns is to use the
++--group specifier. This relies on the configuration file having been
++annotated with suitable @ markers.
++
+ This binary can then be passed to the risu program, which is
+ written in C. You need to run risu on both an ARM native target
+ and on the program under test. The ARM native system is the 'master'
+@@ -146,6 +150,12 @@ Lines starting with a '.' are directives to risu/risugen:
+  * ".mode [thumb|arm]" specifies whether the file contains ARM
+    or Thumb instructions; it must precede all instruction patterns.
  
-     if (is_fp) {
--        /* low bit of size indicates single/double */
--        size = extract32(size, 0, 1) ? 3 : 2;
--        if (size == 2) {
-+        /* convert insn encoded size to TCGMemOp size */
-+        switch (size) {
-+        case 2: /* single precision */
-+            size = MO_32;
-             index = h << 1 | l;
--        } else {
-+            rm |= (m << 4);
-+            break;
-+        case 3: /* double precision */
-+            size = MO_64;
-             if (l || !is_q) {
-                 unallocated_encoding(s);
-                 return;
-             }
-             index = h;
-+            rm |= (m << 4);
-+            break;
-+        case 0: /* half precision */
-+            size = MO_16;
-+            index = h << 2 | l << 1 | m;
-+            is_fp16 = true;
-+            if (arm_dc_feature(s, ARM_FEATURE_V8_FP16)) {
-+                break;
-+            }
-+            /* fallthru */
-+        default: /* unallocated */
-+            unallocated_encoding(s);
-+            return;
-         }
--        rm |= (m << 4);
-     } else {
-         switch (size) {
-         case 1:
-@@ -11288,7 +11306,7 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
-     }
++Lines starting with a '@' are a grouping directive. Instructions
++following will be assigned to a comma separated list of groups. The
++list of groups is reset at the next '@' directive which may be empty.
++This provides an alternative method to selecting instructions than RE
++patterns.
++
+ Other lines are instruction patterns:
+  insnname encodingname bitfield ... [ [ !blockname ] { blocktext } ]
+ where each bitfield is either:
+diff --git a/risugen b/risugen
+index 8bfb0e9..488d804 100755
+--- a/risugen
++++ b/risugen
+@@ -20,6 +20,7 @@ use Getopt::Long;
+ use Data::Dumper;
+ use Module::Load;
+ use Text::Balanced qw { extract_bracketed extract_multiple };
++use List::Compare::Functional qw( get_intersection );
+ # Make sure we can find the per-CPU-architecture modules in the
+ # same directory as this script.
+ use FindBin;
+@@ -34,7 +35,10 @@ my @insn_keys;
  
-     if (is_fp) {
--        fpst = get_fpstatus_ptr(false);
-+        fpst = get_fpstatus_ptr(is_fp16);
-     } else {
-         fpst = NULL;
+ # The arch will be selected based on .mode directive defined in risu file.
+ my $arch = "";
++# Current groups, updated by @GroupName
++my @insn_groups;
+ 
++my @groups = ();                # include groups
+ my @pattern_re = ();            # include pattern
+ my @not_pattern_re = ();        # exclude pattern
+ 
+@@ -122,6 +126,11 @@ sub parse_config_file($)
+             exit(1);
+         }
+ 
++        if ($tokens[0] =~ /^@(.*)/ ) {
++            @insn_groups = split(/,/, $1);
++            next;
++        }
++
+         if ($tokens[0] =~ /^\./) {
+             parse_risu_directive($file, $seen_pattern, @tokens);
+             next;
+@@ -239,6 +248,9 @@ sub parse_config_file($)
+         $insnrec->{fixedbits} = $fixedbits;
+         $insnrec->{fixedbitmask} = $fixedbitmask;
+         $insnrec->{fields} = [ @fields ];
++        if (@insn_groups) {
++            $insnrec->{groups} = [ @insn_groups ];
++        }
+         $insn_details{$insnname} = $insnrec;
      }
-@@ -11390,18 +11408,51 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
-                 break;
-             }
-             case 0x5: /* FMLS */
--                /* As usual for ARM, separate negation for fused multiply-add */
--                gen_helper_vfp_negs(tcg_op, tcg_op);
--                /* fall through */
-             case 0x1: /* FMLA */
--                read_vec_element_i32(s, tcg_res, rd, pass, MO_32);
--                gen_helper_vfp_muladds(tcg_res, tcg_op, tcg_idx, tcg_res, fpst);
-+                read_vec_element_i32(s, tcg_res, rd, pass,
-+                                     is_scalar ? size : MO_32);
-+                switch (size) {
-+                case 1:
-+                    if (opcode == 0x5) {
-+                        /* As usual for ARM, separate negation for fused
-+                         * multiply-add */
-+                        tcg_gen_xori_i32(tcg_op, tcg_op, 0x80008000);
-+                    }
-+                    gen_helper_advsimd_muladdh(tcg_res, tcg_op, tcg_idx,
-+                                               tcg_res, fpst);
-+                    break;
-+                case 2:
-+                    if (opcode == 0x5) {
-+                        /* As usual for ARM, separate negation for
-+                         * fused multiply-add */
-+                        tcg_gen_xori_i32(tcg_op, tcg_op, 0x80000000);
-+                    }
-+                    gen_helper_vfp_muladds(tcg_res, tcg_op, tcg_idx,
-+                                           tcg_res, fpst);
-+                    break;
-+                default:
-+                    g_assert_not_reached();
-+                }
-                 break;
-             case 0x9: /* FMUL, FMULX */
--                if (u) {
--                    gen_helper_vfp_mulxs(tcg_res, tcg_op, tcg_idx, fpst);
--                } else {
--                    gen_helper_vfp_muls(tcg_res, tcg_op, tcg_idx, fpst);
-+                switch (size) {
-+                case 1:
-+                    if (u) {
-+                        gen_helper_advsimd_mulxh(tcg_res, tcg_op, tcg_idx,
-+                                                 fpst);
-+                    } else {
-+                        g_assert_not_reached();
-+                    }
-+                    break;
-+                case 2:
-+                    if (u) {
-+                        gen_helper_vfp_mulxs(tcg_res, tcg_op, tcg_idx, fpst);
-+                    } else {
-+                        gen_helper_vfp_muls(tcg_res, tcg_op, tcg_idx, fpst);
-+                    }
-+                    break;
-+                default:
-+                    g_assert_not_reached();
-                 }
-                 break;
-             case 0xc: /* SQDMULH */
+     close(CFILE) or die "can't close $file: $!";
+@@ -247,8 +259,15 @@ sub parse_config_file($)
+ # Select a subset of instructions based on our filter preferences
+ sub select_insn_keys ()
+ {
+-    # Get a list of the insn keys which are permitted by the re patterns
+     @insn_keys = sort keys %insn_details;
++    # Limit insn keys to those in all reqested @groups
++    if (@groups) {
++        @insn_keys = grep {
++            defined($insn_details{$_}->{groups}) &&
++                scalar @groups == get_intersection([$insn_details{$_}->{groups}, \@groups])
++        } @insn_keys
++    }
++    # Get a list of the insn keys which are permitted by the re patterns
+     if (@pattern_re) {
+         my $re = '\b((' . join(')|(',@pattern_re) . '))\b';
+         @insn_keys = grep /$re/, @insn_keys;
+@@ -277,6 +296,7 @@ Valid options:
+     --fpscr n    : set initial FPSCR (arm) or FPCR (aarch64) value (default is 0)
+     --condprob p : [ARM only] make instructions conditional with probability p
+                    (default is 0, ie all instructions are always executed)
++    --group name[,name..]: only use instructions in all defined groups
+     --pattern re[,re...] : only use instructions matching regular expression
+                    Each re must match a full word (that is, we match on
+                    the perl regex '\\b((re)|(re))\\b'). This means that
+@@ -305,6 +325,7 @@ sub main()
+     GetOptions( "help" => sub { usage(); exit(0); },
+                 "numinsns=i" => \$numinsns,
+                 "fpscr=o" => \$fpscr,
++                "group=s" => \@groups,
+                 "pattern=s" => \@pattern_re,
+                 "not-pattern=s" => \@not_pattern_re,
+                 "condprob=f" => sub {
+@@ -319,6 +340,7 @@ sub main()
+     # allow "--pattern re,re" and "--pattern re --pattern re"
+     @pattern_re = split(/,/,join(',',@pattern_re));
+     @not_pattern_re = split(/,/,join(',',@not_pattern_re));
++    @groups = split(/,/,join(',',@groups));
+ 
+     if ($#ARGV != 1) {
+         usage();
 -- 
 2.15.1

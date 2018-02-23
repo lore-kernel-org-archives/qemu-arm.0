@@ -1,159 +1,91 @@
-Received: by 10.28.71.27 with SMTP id u27csp1701625wma;
-        Sat, 24 Feb 2018 04:36:48 -0800 (PST)
-X-Google-Smtp-Source: AG47ELv7akeGHETOKSoCf13p5Nm13BA4nH0EyyDiuoRFrWaZtAdpYfHsoVKgjLXytZR/ampeZpJF
-X-Received: by 10.202.180.4 with SMTP id d4mr1670093oif.16.1519475808414;
-        Sat, 24 Feb 2018 04:36:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519475808; cv=none;
-        d=google.com; s=arc-20160816;
-        b=gkEL2Ww+4LO0/PwcPIstI+kM8Kyq2hD+HZHJFO11m9bc+VqgOOJQEe9I/SqqGCIlBD
-         W5rIbLtXGlS1QWfUBJYcee7mqgSV5VVJUDObmHcw8Q0p7WHw80KJKqLMSc8hZo1MUFVq
-         dRlVfiSyQqQJGSMXUTdxt+4LAfsht7Ss/LqdnwvYmxDPjCBSHSV84HAE7YqBVGN5oMkZ
-         s3lcBCJ3fxHjVYHN5WhKmwGgnHNlJxI/DmXyNvNLykCBGVtDihNJsE+N12aFhdWTJ0Z/
-         RHZ2cKhRTErsK+n/rtYXvmsQ3P39cXSw0+60iKDmVMSw/uj89KxB+RtSx2Y7HXd7cW3I
-         QSjg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=date:cc:to:from:resent-from:content-transfer-encoding:mime-version
-         :message-id:subject:reply-to:in-reply-to:arc-authentication-results;
-        bh=xon2mYZFm6PidGeQ3uNoQDSCv+npLSXv/0ex/sDwTR8=;
-        b=BNQhleabv4Pg6VYk9ximKZOphMzktyYJJa2fj3vBDxpccwtGgLLncu1ay7NV7QKHI1
-         z4H6P/n5MyvSAiDt9sQ6S7D4NYY70fuXvsq020aZ+7R2rEtvu5EWdjut/psQa1EePOH4
-         YMzflU98R442d4e+vPktWYGu9yxiqb1ozsGF5cMLLBSdqi1v8Jdq5+KFKybd/l8iCIL8
-         jOUtnZTAvhhxmd92KWsW5046TN2mNI0PEoUnmoofmYINVzWJywbceF4z1yt3rLkQ1pwB
-         LTkahSsxl6lomySsrfRM6OY0nZjSlQnZaywZmjmZaIPGQiIeBOOHr+zzS/xqZXadGrPP
-         kdYQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of no-reply@patchew.org designates 135.84.80.216 as permitted sender) smtp.mailfrom=no-reply@patchew.org
-Return-Path: <no-reply@patchew.org>
-Received: from sender-of-o51.zoho.com (sender-of-o51.zoho.com. [135.84.80.216])
-        by mx.google.com with ESMTPS id d11si1586949otf.516.2018.02.24.04.36.46
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id q12sm2780447wrg.37.2018.02.23.07.36.36
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Feb 2018 04:36:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of no-reply@patchew.org designates 135.84.80.216 as permitted sender) client-ip=135.84.80.216;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of no-reply@patchew.org designates 135.84.80.216 as permitted sender) smtp.mailfrom=no-reply@patchew.org
-Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by mx.zohomail.com
-	with SMTPS id 1519475802466282.90378327008636; Sat, 24 Feb 2018 04:36:42 -0800 (PST)
-In-Reply-To: <20180223153636.29809-1-alex.bennee@linaro.org>
-Reply-To: <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-devel] [PATCH v3 00/31] Add ARMv8.2 half-precision functions
-Message-ID: <151947580156.967.7291725816066564472@bdbb90650ae5>
+        Fri, 23 Feb 2018 07:36:36 -0800 (PST)
+Received: from zen.linaroharston (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTP id 7C2A13E0085;
+	Fri, 23 Feb 2018 15:36:36 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org,
+	richard.henderson@linaro.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH v3 00/31] Add ARMv8.2 half-precision functions
+Date: Fri, 23 Feb 2018 15:36:05 +0000
+Message-Id: <20180223153636.29809-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.15.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: alex.bennee@linaro.org
-Cc: famz@redhat.com, qemu-arm@nongnu.org, alex.bennee@linaro.org, richard.henderson@linaro.org, qemu-devel@nongnu.org
-Date: Sat, 24 Feb 2018 04:36:42 -0800 (PST)
-X-ZohoMailClient: External
-X-TUID: GEumhY29YC8R
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: UvGOKWRYUDwk
 
-SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
-LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1l
-c3NhZ2UtaWQ6IDIwMTgwMjIzMTUzNjM2LjI5ODA5LTEtYWxleC5iZW5uZWVAbGluYXJvLm9yZwpT
-dWJqZWN0OiBbUWVtdS1kZXZlbF0gW1BBVENIIHYzIDAwLzMxXSBBZGQgQVJNdjguMiBoYWxmLXBy
-ZWNpc2lvbiBmdW5jdGlvbnMKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gK
-CkJBU0U9YmFzZQpuPTEKdG90YWw9JChnaXQgbG9nIC0tb25lbGluZSAkQkFTRS4uIHwgd2MgLWwp
-CmZhaWxlZD0wCgpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBjb25m
-aWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5hbGdv
-cml0aG0gaGlzdG9ncmFtCgpjb21taXRzPSIkKGdpdCBsb2cgLS1mb3JtYXQ9JUggLS1yZXZlcnNl
-ICRCQVNFLi4pIgpmb3IgYyBpbiAkY29tbWl0czsgZG8KICAgIGVjaG8gIkNoZWNraW5nIFBBVENI
-ICRuLyR0b3RhbDogJChnaXQgbG9nIC1uIDEgLS1mb3JtYXQ9JXMgJGMpLi4uIgogICAgaWYgISBn
-aXQgc2hvdyAkYyAtLWZvcm1hdD1lbWFpbCB8IC4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFp
-bGJhY2sgLTsgdGhlbgogICAgICAgIGZhaWxlZD0xCiAgICAgICAgZWNobwogICAgZmkKICAgIG49
-JCgobisxKSkKZG9uZQoKZXhpdCAkZmFpbGVkCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpVcGRh
-dGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0ClN3aXRjaGVkIHRv
-IGEgbmV3IGJyYW5jaCAndGVzdCcKOTczZDZlYTg0NyBhcm0vdHJhbnNsYXRlLWE2NDogYWRkIGFs
-bCBzaW5nbGUgb3AgRlAxNiB0byBoYW5kbGVfZnBfMXNyY19oYWxmCjg2NWM1ZWZlZTcgYXJtL3Ry
-YW5zbGF0ZS1hNjQ6IGltcGxlbWVudCBzaW1kX3NjYWxhcl90aHJlZV9yZWdfc2FtZV9mcDE2CmZk
-MWZlYzlkODQgYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBhbGwgRlAxNiBvcHMgaW4gc2ltZF9zY2Fs
-YXJfcGFpcndpc2UKMzRhOWVlMWI3MiBhcm0vdHJhbnNsYXRlLWE2NDogYWRkIEZQMTYgRk1PViB0
-byBzaW1kX21vZF9pbW0KZTYxYzcxOTNhNSBhcm0vdHJhbnNsYXRlLWE2NDogYWRkIEZQMTYgRlJT
-UVJURSB0byBzaW1kX3R3b19yZWdfbWlzY19mcDE2CmRiYmJjMTU3MjEgYXJtL2hlbHBlci5jOiBy
-ZS1mYWN0b3IgcnNxcnRlIGFuZCBhZGQgcnNxcnRlX2YxNgoxZjc3NjQxNWMwIGFybS90cmFuc2xh
-dGUtYTY0OiBhZGQgRlAxNiBGU1FSVCB0byBzaW1kX3R3b19yZWdfbWlzY19mcDE2CjAxYTc5OTM2
-NTQgYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBGUDE2IEZSQ1BYIHRvIHNpbWRfdHdvX3JlZ19taXNj
-X2ZwMTYKM2UyYjNjYTgwZiBhcm0vdHJhbnNsYXRlLWE2NDogYWRkIEZQMTYgRlJFQ1BFCjMzNTE0
-YWUzMWYgYXJtL2hlbHBlci5jOiByZS1mYWN0b3IgcmVjcGUgYW5kIGFkZCByZWNlcGVfZjE2CmEx
-ZGZiODVlMGYgYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBGUDE2IEZORUcvRkFCUyB0byBzaW1kX3R3
-b19yZWdfbWlzY19mcDE2CjkyZTMzMzhiNWEgYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBGUDE2IFND
-VlRGL1VDVkZUIHRvIHNpbWRfdHdvX3JlZ19taXNjX2ZwMTYKNWI4NmNiMzc0ZiBhcm0vdHJhbnNs
-YXRlLWE2NDogYWRkIEZQMTYgRkNNeHggKHplcm8pIHRvIHNpbWRfdHdvX3JlZ19taXNjX2ZwMTYK
-MTdlMmVlZTMxYyBhcm0vdHJhbnNsYXRlLWE2NDogYWRkIEZDVlR4eCB0byBzaW1kX3R3b19yZWdf
-bWlzY19mcDE2Cjg5M2M4NDI4M2EgYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBGUDE2IEZQUklOVHgg
-dG8gc2ltZF90d29fcmVnX21pc2NfZnAxNgpjMjliYWFmOWMxIGFybS90cmFuc2xhdGUtYTY0OiBp
-bml0aWFsIGRlY29kZSBmb3Igc2ltZF90d29fcmVnX21pc2NfZnAxNgo3MTRkOTM5NWNjIGFybS90
-cmFuc2xhdGUtYTY0OiBhZGQgRlAxNiB4MiBvcHMgZm9yIHNpbWRfaW5kZXhlZApiMDI2ODc4ZDFj
-IGFybS90cmFuc2xhdGUtYTY0OiBhZGQgRlAxNiBGTVVMWC9NTFMvRk1MQSB0byBzaW1kX2luZGV4
-ZWQKZWEwMzU3YzcyNSBhcm0vdHJhbnNsYXRlLWE2NDogYWRkIEZQMTYgcGFpcndpc2Ugb3BzIHNp
-bWRfdGhyZWVfcmVnX3NhbWVfZnAxNgpkZmJlMjYwMmQ2IGFybS90cmFuc2xhdGUtYTY0OiBhZGQg
-RlAxNiBGUltFQ1AvU1FSVF1TIHRvIHNpbWRfdGhyZWVfcmVnX3NhbWVfZnAxNgpjMTc0ODljYTNi
-IGFybS90cmFuc2xhdGUtYTY0OiBhZGQgRlAxNiBGTVVMQS9YL1MgdG8gc2ltZF90aHJlZV9yZWdf
-c2FtZV9mcDE2CmU0ZmEzMDY1NzQgYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBGUDE2IEZbQV1DW0VR
-L0dFL0dUXSB0byBzaW1kX3RocmVlX3JlZ19zYW1lX2ZwMTYKNjg4YzVhMWVkYyBhcm0vdHJhbnNs
-YXRlLWE2NDogYWRkIEZQMTYgRkFERC9GQUJEL0ZTVUIvRk1VTC9GRElWIHRvIHNpbWRfdGhyZWVf
-cmVnX3NhbWVfZnAxNgozZDQ0ZjM1ZGU1IGFybS90cmFuc2xhdGUtYTY0OiBpbml0aWFsIGRlY29k
-ZSBmb3Igc2ltZF90aHJlZV9yZWdfc2FtZV9mcDE2CmRiNTc3M2UzNTcgYXJtL3RyYW5zbGF0ZS1h
-NjQ6IGhhbmRsZV8zc2FtZV82NCBjb21tZW50IGZpeAoyZTk2ZjVjNGVlIGFybS90cmFuc2xhdGUt
-YTY0OiBpbXBsZW1lbnQgaGFsZi1wcmVjaXNpb24gRihNSU58TUFYKShWfE5NVikKMjc4YjkxNjYx
-NSB0YXJnZXQvYXJtL2hlbHBlcjogcGFzcyBleHBsaWNpdCBmcHN0IHRvIHNldF9ybW9kZQo0ZWYw
-ODU1ZWIzIHRhcmdldC9hcm0vY3B1Lmg6IGFkZCBhZGRpdGlvbmFsIGZsb2F0X3N0YXR1cyBmbGFn
-cwo5MzYwMTAxYWM3IHRhcmdldC9hcm0vY3B1Lmg6IHVwZGF0ZSBjb21tZW50IGZvciBoYWxmLXBy
-ZWNpc2lvbiB2YWx1ZXMKN2EzMDUwMGU5MiB0YXJnZXQvYXJtL2NwdTY0OiBpbnRyb2R1Y2UgQVJN
-X1Y4X0ZQMTYgZmVhdHVyZSBiaXQKNDdmYmE2MThkNCBpbmNsdWRlL2V4ZWMvaGVscGVyLWhlYWQu
-aDogc3VwcG9ydCBmMTYgaW4gaGVscGVyIGNhbGxzCgo9PT0gT1VUUFVUIEJFR0lOID09PQpDaGVj
-a2luZyBQQVRDSCAxLzMxOiBpbmNsdWRlL2V4ZWMvaGVscGVyLWhlYWQuaDogc3VwcG9ydCBmMTYg
-aW4gaGVscGVyIGNhbGxzLi4uCkNoZWNraW5nIFBBVENIIDIvMzE6IHRhcmdldC9hcm0vY3B1NjQ6
-IGludHJvZHVjZSBBUk1fVjhfRlAxNiBmZWF0dXJlIGJpdC4uLgpDaGVja2luZyBQQVRDSCAzLzMx
-OiB0YXJnZXQvYXJtL2NwdS5oOiB1cGRhdGUgY29tbWVudCBmb3IgaGFsZi1wcmVjaXNpb24gdmFs
-dWVzLi4uCkNoZWNraW5nIFBBVENIIDQvMzE6IHRhcmdldC9hcm0vY3B1Lmg6IGFkZCBhZGRpdGlv
-bmFsIGZsb2F0X3N0YXR1cyBmbGFncy4uLgpDaGVja2luZyBQQVRDSCA1LzMxOiB0YXJnZXQvYXJt
-L2hlbHBlcjogcGFzcyBleHBsaWNpdCBmcHN0IHRvIHNldF9ybW9kZS4uLgpDaGVja2luZyBQQVRD
-SCA2LzMxOiBhcm0vdHJhbnNsYXRlLWE2NDogaW1wbGVtZW50IGhhbGYtcHJlY2lzaW9uIEYoTUlO
-fE1BWCkoVnxOTVYpLi4uCkNoZWNraW5nIFBBVENIIDcvMzE6IGFybS90cmFuc2xhdGUtYTY0OiBo
-YW5kbGVfM3NhbWVfNjQgY29tbWVudCBmaXguLi4KQ2hlY2tpbmcgUEFUQ0ggOC8zMTogYXJtL3Ry
-YW5zbGF0ZS1hNjQ6IGluaXRpYWwgZGVjb2RlIGZvciBzaW1kX3RocmVlX3JlZ19zYW1lX2ZwMTYu
-Li4KQ2hlY2tpbmcgUEFUQ0ggOS8zMTogYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBGUDE2IEZBREQv
-RkFCRC9GU1VCL0ZNVUwvRkRJViB0byBzaW1kX3RocmVlX3JlZ19zYW1lX2ZwMTYuLi4KQ2hlY2tp
-bmcgUEFUQ0ggMTAvMzE6IGFybS90cmFuc2xhdGUtYTY0OiBhZGQgRlAxNiBGW0FdQ1tFUS9HRS9H
-VF0gdG8gc2ltZF90aHJlZV9yZWdfc2FtZV9mcDE2Li4uCkNoZWNraW5nIFBBVENIIDExLzMxOiBh
-cm0vdHJhbnNsYXRlLWE2NDogYWRkIEZQMTYgRk1VTEEvWC9TIHRvIHNpbWRfdGhyZWVfcmVnX3Nh
-bWVfZnAxNi4uLgpDaGVja2luZyBQQVRDSCAxMi8zMTogYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBG
-UDE2IEZSW0VDUC9TUVJUXVMgdG8gc2ltZF90aHJlZV9yZWdfc2FtZV9mcDE2Li4uCkNoZWNraW5n
-IFBBVENIIDEzLzMxOiBhcm0vdHJhbnNsYXRlLWE2NDogYWRkIEZQMTYgcGFpcndpc2Ugb3BzIHNp
-bWRfdGhyZWVfcmVnX3NhbWVfZnAxNi4uLgpDaGVja2luZyBQQVRDSCAxNC8zMTogYXJtL3RyYW5z
-bGF0ZS1hNjQ6IGFkZCBGUDE2IEZNVUxYL01MUy9GTUxBIHRvIHNpbWRfaW5kZXhlZC4uLgpDaGVj
-a2luZyBQQVRDSCAxNS8zMTogYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBGUDE2IHgyIG9wcyBmb3Ig
-c2ltZF9pbmRleGVkLi4uCkNoZWNraW5nIFBBVENIIDE2LzMxOiBhcm0vdHJhbnNsYXRlLWE2NDog
-aW5pdGlhbCBkZWNvZGUgZm9yIHNpbWRfdHdvX3JlZ19taXNjX2ZwMTYuLi4KQ2hlY2tpbmcgUEFU
-Q0ggMTcvMzE6IGFybS90cmFuc2xhdGUtYTY0OiBhZGQgRlAxNiBGUFJJTlR4IHRvIHNpbWRfdHdv
-X3JlZ19taXNjX2ZwMTYuLi4KQ2hlY2tpbmcgUEFUQ0ggMTgvMzE6IGFybS90cmFuc2xhdGUtYTY0
-OiBhZGQgRkNWVHh4IHRvIHNpbWRfdHdvX3JlZ19taXNjX2ZwMTYuLi4KQ2hlY2tpbmcgUEFUQ0gg
-MTkvMzE6IGFybS90cmFuc2xhdGUtYTY0OiBhZGQgRlAxNiBGQ014eCAoemVybykgdG8gc2ltZF90
-d29fcmVnX21pc2NfZnAxNi4uLgpDaGVja2luZyBQQVRDSCAyMC8zMTogYXJtL3RyYW5zbGF0ZS1h
-NjQ6IGFkZCBGUDE2IFNDVlRGL1VDVkZUIHRvIHNpbWRfdHdvX3JlZ19taXNjX2ZwMTYuLi4KRVJS
-T1I6IHNwYWNlIHByb2hpYml0ZWQgYmVmb3JlIHRoYXQgY2xvc2UgcGFyZW50aGVzaXMgJyknCiMy
-NjogRklMRTogdGFyZ2V0L2FybS9oZWxwZXIuYzoxMTMwNToKK0ZMT0FUX0NPTlZTKHNpLCBoLCAx
-NiwgKQoKdG90YWw6IDEgZXJyb3JzLCAwIHdhcm5pbmdzLCAyMDggbGluZXMgY2hlY2tlZAoKWW91
-ciBwYXRjaCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhl
-c2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWlu
-ZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoKQ2hlY2tpbmcgUEFUQ0ggMjEvMzE6
-IGFybS90cmFuc2xhdGUtYTY0OiBhZGQgRlAxNiBGTkVHL0ZBQlMgdG8gc2ltZF90d29fcmVnX21p
-c2NfZnAxNi4uLgpDaGVja2luZyBQQVRDSCAyMi8zMTogYXJtL2hlbHBlci5jOiByZS1mYWN0b3Ig
-cmVjcGUgYW5kIGFkZCByZWNlcGVfZjE2Li4uCkNoZWNraW5nIFBBVENIIDIzLzMxOiBhcm0vdHJh
-bnNsYXRlLWE2NDogYWRkIEZQMTYgRlJFQ1BFLi4uCkNoZWNraW5nIFBBVENIIDI0LzMxOiBhcm0v
-dHJhbnNsYXRlLWE2NDogYWRkIEZQMTYgRlJDUFggdG8gc2ltZF90d29fcmVnX21pc2NfZnAxNi4u
-LgpDaGVja2luZyBQQVRDSCAyNS8zMTogYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBGUDE2IEZTUVJU
-IHRvIHNpbWRfdHdvX3JlZ19taXNjX2ZwMTYuLi4KQ2hlY2tpbmcgUEFUQ0ggMjYvMzE6IGFybS9o
-ZWxwZXIuYzogcmUtZmFjdG9yIHJzcXJ0ZSBhbmQgYWRkIHJzcXJ0ZV9mMTYuLi4KQ2hlY2tpbmcg
-UEFUQ0ggMjcvMzE6IGFybS90cmFuc2xhdGUtYTY0OiBhZGQgRlAxNiBGUlNRUlRFIHRvIHNpbWRf
-dHdvX3JlZ19taXNjX2ZwMTYuLi4KQ2hlY2tpbmcgUEFUQ0ggMjgvMzE6IGFybS90cmFuc2xhdGUt
-YTY0OiBhZGQgRlAxNiBGTU9WIHRvIHNpbWRfbW9kX2ltbS4uLgpDaGVja2luZyBQQVRDSCAyOS8z
-MTogYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBhbGwgRlAxNiBvcHMgaW4gc2ltZF9zY2FsYXJfcGFp
-cndpc2UuLi4KQ2hlY2tpbmcgUEFUQ0ggMzAvMzE6IGFybS90cmFuc2xhdGUtYTY0OiBpbXBsZW1l
-bnQgc2ltZF9zY2FsYXJfdGhyZWVfcmVnX3NhbWVfZnAxNi4uLgpDaGVja2luZyBQQVRDSCAzMS8z
-MTogYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBhbGwgc2luZ2xlIG9wIEZQMTYgdG8gaGFuZGxlX2Zw
-XzFzcmNfaGFsZi4uLgo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFuZCBleGl0ZWQgd2l0
-aCBjb2RlOiAxCgoKLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcg
-W2h0dHA6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNo
-ZXctZGV2ZWxAZnJlZWxpc3RzLm9yZw==
+Now that the softfloat re-factoring has been merged I re-based this
+directly from master. Alternatively you can grab the full tree from:
+
+  https://github.com/stsquad/qemu/tree/arm-fp16-v3
+
+I've tested with the following RISU test binaries:
+
+  http://people.linaro.org/~alex.bennee/testcases/arm64.risu/testcases.armv8.2_hp.tar.xz
+
+Which now includes insn_FP1SRC.risu.bin which tests the final patch in
+the series which wasn't being exercised by my previous set of tests.
+
+I've dropped the fp16 patch to both avoid the bikesheding but also
+because I could achieve the same effect by running RISU with:
+
+  -cpu cortex-a57
+
+The changes are all relatively minor based on feedback. The details
+are as usual included in the commit messages bellow ---.
+
+Alex Bennée (31):
+  include/exec/helper-head.h: support f16 in helper calls
+  target/arm/cpu64: introduce ARM_V8_FP16 feature bit
+  target/arm/cpu.h: update comment for half-precision values
+  target/arm/cpu.h: add additional float_status flags
+  target/arm/helper: pass explicit fpst to set_rmode
+  arm/translate-a64: implement half-precision F(MIN|MAX)(V|NMV)
+  arm/translate-a64: handle_3same_64 comment fix
+  arm/translate-a64: initial decode for simd_three_reg_same_fp16
+  arm/translate-a64: add FP16 FADD/FABD/FSUB/FMUL/FDIV to
+    simd_three_reg_same_fp16
+  arm/translate-a64: add FP16 F[A]C[EQ/GE/GT] to
+    simd_three_reg_same_fp16
+  arm/translate-a64: add FP16 FMULA/X/S to simd_three_reg_same_fp16
+  arm/translate-a64: add FP16 FR[ECP/SQRT]S to simd_three_reg_same_fp16
+  arm/translate-a64: add FP16 pairwise ops simd_three_reg_same_fp16
+  arm/translate-a64: add FP16 FMULX/MLS/FMLA to simd_indexed
+  arm/translate-a64: add FP16 x2 ops for simd_indexed
+  arm/translate-a64: initial decode for simd_two_reg_misc_fp16
+  arm/translate-a64: add FP16 FPRINTx to simd_two_reg_misc_fp16
+  arm/translate-a64: add FCVTxx to simd_two_reg_misc_fp16
+  arm/translate-a64: add FP16 FCMxx (zero) to simd_two_reg_misc_fp16
+  arm/translate-a64: add FP16 SCVTF/UCVFT to simd_two_reg_misc_fp16
+  arm/translate-a64: add FP16 FNEG/FABS to simd_two_reg_misc_fp16
+  arm/helper.c: re-factor recpe and add recepe_f16
+  arm/translate-a64: add FP16 FRECPE
+  arm/translate-a64: add FP16 FRCPX to simd_two_reg_misc_fp16
+  arm/translate-a64: add FP16 FSQRT to simd_two_reg_misc_fp16
+  arm/helper.c: re-factor rsqrte and add rsqrte_f16
+  arm/translate-a64: add FP16 FRSQRTE to simd_two_reg_misc_fp16
+  arm/translate-a64: add FP16 FMOV to simd_mod_imm
+  arm/translate-a64: add all FP16 ops in simd_scalar_pairwise
+  arm/translate-a64: implement simd_scalar_three_reg_same_fp16
+  arm/translate-a64: add all single op FP16 to handle_fp_1src_half
+
+ include/exec/helper-head.h |    3 +
+ include/fpu/softfloat.h    |   16 +-
+ target/arm/cpu.h           |   34 +-
+ target/arm/cpu64.c         |    1 +
+ target/arm/helper-a64.c    |  269 ++++++++++
+ target/arm/helper-a64.h    |   33 ++
+ target/arm/helper.c        |  479 +++++++++--------
+ target/arm/helper.h        |   14 +-
+ target/arm/translate-a64.c | 1261 +++++++++++++++++++++++++++++++++++++-------
+ target/arm/translate.c     |   12 +-
+ 10 files changed, 1695 insertions(+), 427 deletions(-)
+
+-- 
+2.15.1

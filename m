@@ -1,103 +1,100 @@
-Received: by 10.28.71.27 with SMTP id u27csp1190590wma;
-        Fri, 23 Feb 2018 15:51:47 -0800 (PST)
-X-Received: by 10.98.61.73 with SMTP id k70mr3366442pfa.10.1519429907865;
-        Fri, 23 Feb 2018 15:51:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519429907; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp1195320wma;
+        Fri, 23 Feb 2018 15:59:41 -0800 (PST)
+X-Received: by 2002:a17:902:6b83:: with SMTP id p3-v6mr3221899plk.18.1519430381492;
+        Fri, 23 Feb 2018 15:59:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519430381; cv=none;
         d=google.com; s=arc-20160816;
-        b=T1ofMdrUDBN1EAFiuW2P5xWz2FNvlhtYbXxMzPFXy41andrh800QO+LdRZjcGmULCn
-         l7P/7NYoxUU+XLBeUuZYIIYd1pBvr93qc+Iik6XvPoRXeqTT/m/2aME1zHxqD2F0xJou
-         3Ni8ksWMyp6hU+zsYTHr5yu5Fz9lgxX/i4IrQTTa3YMUSCnYfMOl8S4fkgW1FAOGqgpi
-         0lVqcEG91QIQZGciuJeFltzpwRURFyixHyeqelA+MDSK68mh50UWuArS2WmNgws0z10s
-         fApa3ge7+QCuAAzH1SD1ZB9plHyMrBS1af9gYty6l1o9Y72tWRYrUN/lqL1LmcTekhSr
-         ZA6A==
+        b=rDzThQ00EvUMk+65eFx/eLB6JJuqRGbLdXeJSYhpyhSmVe2Wse+BfMUi9R3WqSELqh
+         bFb/yU+b8S7skrGIFllE6QSKisH3O/K8fhUA3yAonpMmrh90GBCicKyPpvHBn9mXdUaQ
+         A/vNTShjCT+4P1Hzw+yZRBkkB3qq5+qkLEBWT4Mtvf+nO4Icq0LhFRZiwsbJqLIA18OI
+         rkLAjzOIpXRJyVq0zB67dYwVRP3EFwEZqH7Fe1khdeawWcruO4x6fv4HXGROV7I03e8o
+         7BDTx3DKwxRNYERd9uNTli17eSt27TxUdEYipAmGpzllCi6xIJuotdCrdLDWKj4LKO+f
+         qJ1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature:arc-authentication-results;
-        bh=sFaZk5qj4RxxHIfbOYXRfCYxU4mHILjNENCuTGLQVls=;
-        b=LOJaIEcUdrxwcGZLi5o7VrXpOI/Qp7jVEB7P8ZVuHdnWMaAKqhZIQEgL27ln5lp6fl
-         ZJDwjfMX9W5YWsoxxjaES5V/zlqAt+BOoNVVBbOJB+AEtVwlQMy7AudMcSUVhpn0Oj7k
-         aDXR3YlQ9zdfyxF3hupLFFyIZna3Nxlh3/aTdWG/IHfx4pqLa1tXXQUO6l8fdU7cIhFo
-         wczEesYU1KCS3wbZoyImJNl0+sYy+4ElJVcKSheG+ZAmMWsHUt0x2ytRhS0Og004NZS4
-         r1Zf4VzqOvKGUpGxc9+cXDZQMPckF+8wkdxqQnx6k9rkWVNHADQAJT+MFrIGhwKqKiWt
-         vZxg==
+        bh=oEgd2XtoTSUYzni7RtM2dQKPkkUNt1pOt6N9OhAX73s=;
+        b=XMldZhtW+DrBboXNH1d9nzcazjAY4cXVo0hE420cPiuO/rXYppcsxZXUGyCrFgtKgt
+         5zAS7LNCM1+jptS7IXooJiSa/2s4fjyRGwW/LBj5Qcs2UQv77urB+NsC3uVJRb8MDZyJ
+         rJxWrfy2LzzBU168lyEUoikUftfE327lHH5HFozUlMdA/VZPPcB5xRITW6Lya51aJMNt
+         gVyT4E+3dA1tEBPDnBgIpj9c+4XcP/+Kb44lHveBkQ7ng+th4UKlzTaPWkZv7Xea96PF
+         29vA68kSeFoFdfKoBCokr2Tt6kVgYZSjvgATxIXWBIyqzmDCmePMr1f/rNy7j5Y99NvC
+         OC2g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GNun6Tcs;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=eoPNAYko;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id k124sor795272pgc.238.2018.02.23.15.51.47
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id y96-v6sor1303248plh.53.2018.02.23.15.59.41
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 23 Feb 2018 15:51:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Fri, 23 Feb 2018 15:59:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GNun6Tcs;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=eoPNAYko;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=sFaZk5qj4RxxHIfbOYXRfCYxU4mHILjNENCuTGLQVls=;
-        b=GNun6TcsViVTDTTWCCdkoVid4CLNvhptTob86T1RgRI/KLuxbhIyQSr0u1LkgeFskX
-         TRmmPYiuACflRGrRnAhrns6eD804QycoKlZjiRY9d9ey1Nok8Cx4alr1rO1dQ0Di9geb
-         gbhlgtKw33PvksJQQkCUKEY3hdZxmvVa2sAyU=
+        bh=oEgd2XtoTSUYzni7RtM2dQKPkkUNt1pOt6N9OhAX73s=;
+        b=eoPNAYko0LVLE7L2DoglCvVCplDltoYkkARz7SI/SFrWFBNWUdMipG4EeAsjGN5QAe
+         erv2KVWj2enzBzuYMokkEXFJgwMX7/zQpnFgogdKH0oB97kLUr3PTwLA+NQ0cIMeBoLr
+         eU4V47eaIN1WVzR+dPhfnDwluqIP+k3Wlnb7w=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:message-id:date
          :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=sFaZk5qj4RxxHIfbOYXRfCYxU4mHILjNENCuTGLQVls=;
-        b=mytQ5vOAlKm5TnROd+qZhBk0Df9+YyU7BUFTurtp86QJj8+0xlkXibe/zygojHHmdd
-         NrQ9hKBbwlvCaoKNdrd6HVJd/EDnnHBpiZ9FWHmdmz6q4HHY+VWsZ2xLsjweIxnwW+Dr
-         b5ecGYFk4z+O+i7ov6mh8lEnoDFT+32cgrbfZKfFLUd3LkVWbMwulOPd9tfHBGcXwwSC
-         ZZWpi9YbMPfP7t5JSyV4/z5hTfSESM/ao+wDi+3OEjTK2RCpP3IqXehldk+ctcVVS2XG
-         3jKm8cIUsSt++7VQ7Jz3qvv/NDewtk5Jiw0Du7iWPuq8kMKO5dnFr6xSrWgWjpKcRXcY
-         U1eQ==
-X-Gm-Message-State: APf1xPCAYMLcqvpM4S0ugg+jDH9I/kIcUuUHYMh3KIJr8vyl/4dMDaJt
-	pUFyBsfxEp0/gHuLr5R/j4GiZa1I
-X-Google-Smtp-Source: AH8x225fF8Edj6dB33sGUBGIgz6UokJT/kfbmNi2DsnNDnQXNM8Yk+Zucth8u0SbW3t5R35ETfW7Ew==
-X-Received: by 10.101.66.196 with SMTP id l4mr2675376pgp.66.1519429907358;
-        Fri, 23 Feb 2018 15:51:47 -0800 (PST)
+        bh=oEgd2XtoTSUYzni7RtM2dQKPkkUNt1pOt6N9OhAX73s=;
+        b=BBiKvYDpfZnS9ozqu/DeZOFD2ZwS4ElxfNxLkoHB86w6w5cZDLlpewyKgvgenZFafQ
+         o1v2S2WMkpBG4ZmfG9m6GLTtwMqSB030m1DV+LzTGk/dGmsJx5XAB+0RkcN+oPvZ2IIr
+         HeMUhidP8EaC4z2wRDYCxEWLKOYYmGHNtTQUbiSjVbHIs25g3YTsQ/oHXrHqMvqNKQCC
+         ZvBY7KZkBEs1F71Ox3xWggbgsOgIjMJXEqZmtXtqJEguYiQJ7ey1tdMEIf9yOyTeFKFm
+         avFpimR95QbAKalY4Bkots6OrRX475i3HrKUQ+Dsi+RGrLtueDomjRdjBI8lgYq1Pace
+         UXCg==
+X-Gm-Message-State: APf1xPAhSyvfmf7yaCnAYXsogY9UY1cDnqcspXCTioMZ7s5P9lewZ0nh
+	1P23TRCgVSQV91EZAtP/6P1C+hol
+X-Google-Smtp-Source: AH8x225m8wsBTaSmxn9+HnVfl8MbN8omQtdr6oAE7620lJF3UN4c6ucQg+P4Wr/pZJHwlP00HA0VZA==
+X-Received: by 2002:a17:902:7f0b:: with SMTP id d11-v6mr3349417plm.350.1519430381047;
+        Fri, 23 Feb 2018 15:59:41 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from cloudburst.twiddle.net (97-113-169-147.tukw.qwest.net. [97.113.169.147])
-        by smtp.gmail.com with ESMTPSA id p79sm6268696pfi.115.2018.02.23.15.51.45
+        by smtp.gmail.com with ESMTPSA id 14sm4257497pga.53.2018.02.23.15.59.39
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 Feb 2018 15:51:46 -0800 (PST)
-Subject: Re: [PATCH v3 04/31] target/arm/cpu.h: add additional float_status
- flags
+        Fri, 23 Feb 2018 15:59:40 -0800 (PST)
+Subject: Re: [PATCH v3 13/31] arm/translate-a64: add FP16 pairwise ops
+ simd_three_reg_same_fp16
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
 References: <20180223153636.29809-1-alex.bennee@linaro.org>
- <20180223153636.29809-5-alex.bennee@linaro.org>
+ <20180223153636.29809-14-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <93ed5c75-c704-2d47-c1b8-699f419ab2b3@linaro.org>
-Date: Fri, 23 Feb 2018 15:51:43 -0800
+Message-ID: <10368265-15cd-a473-f8a6-83c075bce825@linaro.org>
+Date: Fri, 23 Feb 2018 15:59:38 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
  Thunderbird/52.6.0
 MIME-Version: 1.0
-In-Reply-To: <20180223153636.29809-5-alex.bennee@linaro.org>
+In-Reply-To: <20180223153636.29809-14-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: 4jMaC8qXY/bF
+X-TUID: ZotoUdsulWXY
 
 On 02/23/2018 07:36 AM, Alex Bennée wrote:
-> Half-precision flush to zero behaviour is controlled by a separate
-> FZ16 bit in the FPCR. To handle this we pass a pointer to
-> fp_status_fp16 when working on half-precision operations. The value of
-> the presented FPCR is calculated from an amalgam of the two when read.
+> This includes FMAXNMP, FADDP, FMAXP, FMINNMP, FMINP.
 > 
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > 
 > ---
-> v3
->   - add FPCR_[FZ/FZ16/DN] defines to cpu.h and use
->   - only propagate flag status to fp_status as they are ored later
->   - ensure dnan and round mode propagated to fp_status_fp16
+> v2
+>   - checkpatch fixes
 > ---
+>  target/arm/translate-a64.c | 208 +++++++++++++++++++++++++++++----------------
+>  1 file changed, 133 insertions(+), 75 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

@@ -1,142 +1,143 @@
-Received: by 10.28.4.212 with SMTP id 203csp1268720wme;
-        Thu, 10 May 2018 10:09:56 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZoUpuz0/nZqG2m5qvT/QewQThO8ARwssJlGoqZvVqNlYxXLw4DPe/mpvQeLReHbRxK59Fda
-X-Received: by 2002:ac8:26f5:: with SMTP id 50-v6mr2194558qtp.155.1525972196138;
-        Thu, 10 May 2018 10:09:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1525972196; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp5050194wma;
+        Tue, 27 Feb 2018 09:09:19 -0800 (PST)
+X-Received: by 10.98.28.202 with SMTP id c193mr14770929pfc.109.1519751359160;
+        Tue, 27 Feb 2018 09:09:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519751359; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pcdr9XdP1QGafg4W8QMvE7UHaVuCuap0zCVaM6jY20E1StcHLtyP1oltKlTbgokFPE
-         xtUJsqu440I6h6dgGq1XvrG3ClqIlT1gGbpEagF2DeXgXLo2Lykar0q8Ce8+RFC03Jlx
-         i+A2P0fEHUw3C1Htv9j7h2bqRmj2sPU5ajfr2e7OWQrYJzUF1U7FdW8qg/GzbbD4qLhT
-         pXaiUbTazbZDfFVMI8pG38v3PsQbFIkmxAUq4nQXwXJ9hRoDo54mb1VaDQ2+ReMWRD5k
-         NNfX3qRpKmNs9gzCLmW2Z0PZ0DeNm7daNNBa7XLm0c20t6tWL7Zv/GlbD2vnW3mJCiLC
-         c0ww==
+        b=0ShogXjPIP9DE4181Ml1U09pA331PzJa1vrSCCMYmFc+QqIxytYMNKs4BMuAwwz53i
+         gSVg2KbvAxARBKRXSJVsOW5FbIyKboAWFjZG4pjLxxsOU8GpQ5wMMFTnWTUpZrzGca9i
+         i/imRNQXXpOqCaB838O4dd6HbYejHzb8rUd7yCDHg13on6mp3Rb4isOyxGmHDUV9bO4V
+         ZeUxHcrF1ZfNHeQPlwGE6Y2dXP6Vp8OCk7z26IY08HlZlvV4ugHFjl6Rp1RPoaQeiDxA
+         RAfJMa+p1aRLH8rQ4NQWvds0jUEyrnd13try6Ae7M+iQwatJNULo5rfB6zj0jLtDpxgY
+         Vs/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=G0qC4jb7P3uGkTsE0rv4DGx35LyAuGaE4AOsjslhPgs=;
-        b=q7TbAyWF3m7tHaBZCGaZ97neFBkc+YYnHUsenlMkZzkXvc/+7naCvytMJIPRsnOz1G
-         OnwXM9DaLA1NJRrmUn/No6QLGaVVwFRzskns/WXdXRJ4woCkmpFiwCZfza4qGDLubv+W
-         PXoOn9TJSnu9TLDoU7Cdn400deKRp8eUtwXmsc4dHxDTjWjgZFkj+z07/cRA+GxAomW7
-         wGrESL255QZZ34YQ3HfTQ0XSTDTMuIshMxc4dbMHKPb76BfyEmD6+BoYbgUXohCDQT80
-         xXNbbORJd7GBPXXasXYc4k3yBfCyK8OxJFU5IlXWhlhySiTjkjvNgYRgbXiC1yfxikL4
-         KOvw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature:arc-authentication-results;
+        bh=H/96qLKaCJCnzrMp1/pFUgkeS9JFR2JuMIxwFLGPzVc=;
+        b=P2Q3X3pDxG9w8skL4OP6qCQaIbUD+3xrfl3dVgzlR8J+ofwcZb4i4QzGxvomYcQgEU
+         FthiI77znpOT2u59cYy2Sw11xLu3OltK0vXiwcdtbnB1EisTi8DHgOVaEJPIAkiZkD3o
+         gOqPehfdHSmAgE/L9B7Sn5EEl7Eqex2dOXNQcSyaoQFtLGKbGK93TsqBXQ4f2rN6nvy3
+         xsByY/nawsxFXoAE9subnUbFhWeLJ89kMhOytOSXEbo4oningQqnR6RmGYe5xlsWsKMl
+         j62khJKWz9/h4MWUzbD8CRz/fVNZXfAHLfR+YoBXYcBNtm3dPAoZJswpxaEbF8+oDPor
+         9+TQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=G0U0rI9p;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i7-v6si682460qtb.85.2018.05.10.10.09.55
+       dkim=pass header.i=@linaro.org header.s=google header.b=e49k7Swm;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id f19sor3050750pfd.87.2018.02.27.09.09.18
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 10 May 2018 10:09:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (Google Transport Security);
+        Tue, 27 Feb 2018 09:09:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=G0U0rI9p;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34849 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fGp4l-0002U7-Ls
-	for alex.bennee@linaro.org; Thu, 10 May 2018 13:09:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42103)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fGp4X-0002Jr-I8
-	for qemu-arm@nongnu.org; Thu, 10 May 2018 13:09:42 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fGp4W-00049c-Jc
-	for qemu-arm@nongnu.org; Thu, 10 May 2018 13:09:41 -0400
-Received: from mail-oi0-x230.google.com ([2607:f8b0:4003:c06::230]:45060)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fGp4W-00049I-Dr
-	for qemu-arm@nongnu.org; Thu, 10 May 2018 13:09:40 -0400
-Received: by mail-oi0-x230.google.com with SMTP id b130-v6so2375868oif.12
-	for <qemu-arm@nongnu.org>; Thu, 10 May 2018 10:09:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=G0qC4jb7P3uGkTsE0rv4DGx35LyAuGaE4AOsjslhPgs=;
-	b=G0U0rI9plv8tAgDeQpdXaiHwWwHWWrG4xLhqmFCK273D8bDA9cbhDPzX4mippjso8r
-	nxq6xHGHL/1cMcRERL1ULfLrLcvqyECXwolCEu6JPVC0gkBvsNdjkCebmvOq6r9VMIlB
-	UiwbJhn+q/lrsHRgrGats8MkuAZixgHr/+OkQ=
+       dkim=pass header.i=@linaro.org header.s=google header.b=e49k7Swm;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=H/96qLKaCJCnzrMp1/pFUgkeS9JFR2JuMIxwFLGPzVc=;
+        b=e49k7Swm8zkPEBjt7x33adnJxqHCOMU5736pXOFbGgs6+yIuyb+AkP60ZVNHn/nsrt
+         3IFSB7VEREmikSlWcL+RZSXnPWBSQAxWLBpbVfqnX9yoTpSdffuRDi+n73K0NRXhfz7s
+         +n4ohRo7fnuOsHeP1DB5JpQ12HZ59xn7Zp4ks=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=G0qC4jb7P3uGkTsE0rv4DGx35LyAuGaE4AOsjslhPgs=;
-	b=DfvM7333jgKvNj6Ep1JZVpPUhfro6XpO7ZWhU//3aBPCgGuNwR1PvMeikaXDSgeHBT
-	cBrj3hx89+3rK6t6wycV8TFJRBkuQta6g6WNQgQUVDVuodn0J8Te5Y4vW92Q1+V48nqt
-	IktxoS0tICJiwV/DfFK8P579wYviz18bW30pKGJlDRHLPHtcNT85UPbWUei2Nk+oTgDY
-	PNaocoWQwo9oRnDzwuEvx0HRkyaabkAIjFYTh0foLlqi9Ms4aWBn9NNYfZKqOTaiCkaj
-	AY5Ofcax475iN6PJKc3VFzXFSo5X+rXR2yM4j5brkfQ4x3dVGLgx/sFww4DwjVq/Unrf
-	flzA==
-X-Gm-Message-State: ALKqPwdvW76A9ajeGkioolxX1jVVEnr1fsUHZ+dmaoJxDA4UcMYP6mEy
-	tq1dGDJqSptJUQkrB7WVEETZ3wIhMU8OFCPMmIuzIQ==
-X-Received: by 2002:aca:538b:: with SMTP id
-	h133-v6mr1327171oib.252.1525972179784; 
-	Thu, 10 May 2018 10:09:39 -0700 (PDT)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=H/96qLKaCJCnzrMp1/pFUgkeS9JFR2JuMIxwFLGPzVc=;
+        b=rlFDIuwhXsSqv0uBd4YWRGvhqDlFkNZj+mw1M0Qu+nHWvagirxD8SrcWRAdrrOhV7V
+         3Rd2zyMBQ0IspZTl4USnKIoGVUPgC7+PThxm+WoRGl2Hs9fNs8mIwv+twnu8MX7pE1Tv
+         WL8pEx2ibXS03s0+vFnYdXaY8XopcB9O4RaIcmTNCbJC2s/K+i/Mgk+P9fwHDyy28BsG
+         39rfUqG/InSbcfergqzS1u7zvTjQRcuzEuAH91q2i5An0ck0giN2WRq7LxOKh6Mlmerx
+         rHCKoe3MpsvMS9XrAkTSBFv2ez0tOTa066OgKWxHfWiruD/8EUcbVCJFSEM2fkzChmYS
+         nmkw==
+X-Gm-Message-State: APf1xPA7RxUY0dGKTN5Tvf0K7nI0wqjzqldyhQUeexmNcsdQMpdDtr71
+	nZBd6ChvB4IwITodPMCFFuvIKsXo
+X-Google-Smtp-Source: AH8x225Jx4HSgVRA/4mN9pW/GogNbrBO40MjsIXSxH6EWDH3hkKvXjokWppXQWggLi6Ppv+qEr4X3g==
+X-Received: by 10.167.128.194 with SMTP id a2mr14949391pfn.186.1519751358296;
+        Tue, 27 Feb 2018 09:09:18 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from cloudburst.twiddle.net (97-113-169-147.tukw.qwest.net. [97.113.169.147])
+        by smtp.gmail.com with ESMTPSA id n7sm429913pgd.87.2018.02.27.09.09.17
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 27 Feb 2018 09:09:17 -0800 (PST)
+Subject: Re: [PATCH v4 14/31] arm/translate-a64: add FP16 FMULX/MLS/FMLA to
+ simd_indexed
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+References: <20180227143852.11175-1-alex.bennee@linaro.org>
+ <20180227143852.11175-15-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <19852743-3c93-9d0f-5ef6-8bf351a98ce7@linaro.org>
+Date: Tue, 27 Feb 2018 09:09:15 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.6.0
 MIME-Version: 1.0
-Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Thu, 10 May 2018 10:09:19
-	-0700 (PDT)
-In-Reply-To: <20180502221552.3873-1-richard.henderson@linaro.org>
-References: <20180502221552.3873-1-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 10 May 2018 18:09:19 +0100
-Message-ID: <CAFEAcA_wNfL2YqWB6xykyf2UbTjwViodUt8AvdRS+HA+RMssuw@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::230
-Subject: Re: [Qemu-arm] [PATCH v2 00/14] target/arm: Fixups for
- ARM_FEATURE_V8_FP16
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kMiJqscDOJOd
+In-Reply-To: <20180227143852.11175-15-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: USTHgwxbCMWf
 
-On 2 May 2018 at 23:15, Richard Henderson <richard.henderson@linaro.org> wrote:
-> When running the gcc testsuite with current aarch64-linux-user,
-> the testsuite detects the presence of the fp16 extension and
-> enables lots of extra tests for builtins.
->
-> Quite a few of these new tests fail because we missed implementing
-> some instructions.  We really should go back and verify that nothing
-> else is missing from this (rather large) extension.
->
-> In addition, it tests some edge conditions on data that show flaws
-> in the way we were performing integer<->fp conversion; particularly
-> with respect to scaled conversion.
->
-> Changes since v1:
->   * Rebased vs master instead of tgt-arm-sve-9.
->   * Alex did some additional digging through the ARM xhtml
->     and came up with some additional missing instructions.
->   * Everything cc'd to qemu-stable.
+On 02/27/2018 06:38 AM, Alex Bennée wrote:
+> @@ -11244,7 +11245,7 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
+>          }
+>          /* fall through */
+>      case 0x9: /* FMUL, FMULX */
+> -        if (!extract32(size, 1, 1)) {
+> +        if (size == 1) {
+>              unallocated_encoding(s);
+>              return;
+>          }
 
-I'm going to take patches 1..4 into target-arm.next, just to
-reduce the size of this a bit. Patch 5 is the FMOV one which
-is missing some decode. Otherwise I've reviewed all the ones
-which still needed review. Don't forget to fix the patch 12
-patchew warning:
-ERROR: space required before the open parenthesis '('
-#41: FILE: target/arm/translate-a64.c:4683:
-+    switch(type) {
+This is still redundant, since size == 1 is handled...
 
-thanks
--- PMM
+> @@ -11256,18 +11257,34 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
+>      }
+>  
+>      if (is_fp) {
+> -        /* low bit of size indicates single/double */
+> -        size = extract32(size, 0, 1) ? 3 : 2;
+> -        if (size == 2) {
+> +        /* convert insn encoded size to TCGMemOp size */
+> +        switch (size) {
+> +        case 2: /* single precision */
+> +            size = MO_32;
+>              index = h << 1 | l;
+> -        } else {
+> +            rm |= (m << 4);
+> +            break;
+> +        case 3: /* double precision */
+> +            size = MO_64;
+>              if (l || !is_q) {
+>                  unallocated_encoding(s);
+>                  return;
+>              }
+>              index = h;
+> +            rm |= (m << 4);
+> +            break;
+> +        case 0: /* half precision */
+> +            size = MO_16;
+> +            index = h << 2 | l << 1 | m;
+> +            is_fp16 = true;
+> +            if (arm_dc_feature(s, ARM_FEATURE_V8_FP16)) {
+> +                break;
+> +            }
+> +            /* fallthru */
+> +        default: /* unallocated */
+> +            unallocated_encoding(s);
+> +            return;
+>          }
+
+... here.  But it's not wrong and I can clean this up along with the additional
+changes I need to make to this function for fcmla support.  So,
+
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+
+r~

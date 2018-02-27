@@ -1,112 +1,114 @@
-Received: by 10.28.71.27 with SMTP id u27csp5389364wma;
-        Tue, 27 Feb 2018 15:38:31 -0800 (PST)
-X-Google-Smtp-Source: AG47ELucF7ZY2GhseY4ymWcbJghTGrjBuSR18vUYjF4B60utXaErfe9srqZEBm53nu+oRHfQuY9W
-X-Received: by 2002:a25:9090:: with SMTP id t16-v6mr10896023ybl.105.1519774711199;
-        Tue, 27 Feb 2018 15:38:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519774711; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp5391764wma;
+        Tue, 27 Feb 2018 15:41:33 -0800 (PST)
+X-Google-Smtp-Source: AH8x227A9OrEv4oNHfNJRZslb6WBMG3tOLiKPZ8ChILIXV8n56mW7ZWx//iPQjc0dkoucBD7ThVO
+X-Received: by 10.129.119.2 with SMTP id s2mr10541159ywc.441.1519774893069;
+        Tue, 27 Feb 2018 15:41:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519774893; cv=none;
         d=google.com; s=arc-20160816;
-        b=qTVFHYLUBSMGci4O+kWTNIyTxrU6KIioljPQ8fLKUev6rIDkZEkA7hCsUHOBKWKBj8
-         A0fqRPPdW7PAzksVH21VxrVmlfulHm5ZTLdOtNltdLuy5h39D/EhujRszrXsCvDoTXWi
-         DCG2rD1Zh/cuoI8Ckhn+rqqtNjq8Zgd9fJ1lreEApSFgb2fJ/Qw7Hc1Cpf819WLCAToy
-         /j7KHCcVDBax3gVi0wu7sm6TaXKyslskHXw9E6TMwA46cBq2Y7DfVJbRLs80drFSseC4
-         JBAqrmhFxCWQZNLhQoIc0RvGH4LldyOFy4u5S0UJZsMzSdoQzbXmTYIfIr+4OJYtbg2U
-         vB3g==
+        b=tuW6j43BD2g0a/WjlmEnOKAODjnxx2JJnomSO360LRyFNx4+qS4zXjgj47mtgvtF+D
+         ScGSm5t11s6YNeJ7z3+Lu7HvSqubg5NtKqBr0mx3lGAhqlZ9HtuyrDCoP5H+uhbvDFVI
+         pxcAW/NMSAvEn/CI4NuFX6O4mH0m7P1RGbMK9c1TJT73k9Qjqj4vj1pqd1edWki+LQp3
+         d0tGIvvxWK9oMIr5u5Xph+JIZXORyznz9mie70vGkbtCe0e7/btjPYkF+QkGqHofAMRT
+         mCkwX7zVLh+JC3jAypA4ayBvo05/xPnQMsUcdbFaQdeAf4EVS1S+gCzrjttLPIGsfvLe
+         3OaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :mime-version:user-agent:date:message-id:openpgp:from:references:to
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
          :dkim-signature:arc-authentication-results;
-        bh=TRhX1v5rCwZy7zDS5Ga4rPZqI8X6ZnIUWWAbNiqlsN8=;
-        b=iMxi3QIOG08LL6tL9T+ezrdIuHO85f0XtPcVUvDGWF+AykwtDJD9IvuxT12DTTgnzd
-         N9TTwjIW/8MrTfVhgDI+sYKDRWnyR4e2re1QOOmAFCAj4j7aLsxVnjOn/GFER1JCjVcG
-         C1Rr6wFwUsoubRUuvm/awaKRIIahVEX314W4gYHmZmpmM8jR99r7PMyJ2hp/nms3HaSD
-         qJ6uMO9DFAiHB+9sRckZODcmbRQMd5rEM4DV8Lb1Ouzpw7aoa70iIm25WBziaVWDOCFf
-         YktH7HHLID6uK2j0lTUmZggSazCcZSf3968bc+fFMSht9Iq9pyHTYLDAwE5wsXg8xPDE
-         gFBA==
+        bh=TGDQiLL5Ufj1GFSRFFakER9gq/PbaCkEeZ9lOsvKRWI=;
+        b=zbRiKUO6Cohy52bqMs2CWumszXv6032oseL+R3hqyw/IZXmOgDYuNgTazLXpqfPYby
+         lGMMyERvUEc2dP+09GKmuctG6it546UkDrkYbHy2Z3M9Yw5clM7EJJC0LFyzXULln4w/
+         Jpc2aTUe+vo1Is5bjAPtuJlKZGxku52XKcrwMW0WNh5rnjg0EXm4u0908n7V4G+BD4Bk
+         KCBdSftUxetwIOTsenF7tAWGIt6OKq5vvftY5duLItO0jN7lmO+8ob940iHuwSYJ0qjO
+         eDigbHQZ77bKRWU43epUVrQSQETOqHRHWZXomCprflrZ7s4sEfK1n3wAk4jP6yct/7YC
+         J+xw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jHMxoabN;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=enP68gGU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z190si53936ywd.417.2018.02.27.15.38.31
+        by mx.google.com with ESMTPS id z63si55926ywb.158.2018.02.27.15.41.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 27 Feb 2018 15:38:31 -0800 (PST)
+        Tue, 27 Feb 2018 15:41:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jHMxoabN;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=enP68gGU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:40696 helo=lists.gnu.org)
+Received: from localhost ([::1]:40705 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eqopK-0000jt-MA
-	for alex.bennee@linaro.org; Tue, 27 Feb 2018 18:38:30 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35898)
+	id 1eqosG-0001iZ-I8
+	for alex.bennee@linaro.org; Tue, 27 Feb 2018 18:41:32 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36320)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eqopC-0000jQ-Ny
-	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 18:38:23 -0500
+	id 1eqos9-0001iR-W8
+	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 18:41:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eqopB-0002BW-R1
-	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 18:38:22 -0500
-Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:54690)
+	id 1eqos9-0003w8-90
+	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 18:41:26 -0500
+Received: from mail-wr0-x243.google.com ([2a00:1450:400c:c0c::243]:41872)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eqopB-0002B1-Ij; Tue, 27 Feb 2018 18:38:21 -0500
-Received: by mail-wm0-x243.google.com with SMTP id z81so1664069wmb.4;
-	Tue, 27 Feb 2018 15:38:21 -0800 (PST)
+	id 1eqos9-0003vI-2Y; Tue, 27 Feb 2018 18:41:25 -0500
+Received: by mail-wr0-x243.google.com with SMTP id f14so517861wre.8;
+	Tue, 27 Feb 2018 15:41:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to;
-	bh=TRhX1v5rCwZy7zDS5Ga4rPZqI8X6ZnIUWWAbNiqlsN8=;
-	b=jHMxoabNANIxq75BJUDLKfsOPQdiB1KT0Z3/8BJP+wnQRoyHPAa8tm+LnAITJlOgoa
-	pcNmjAYdiPHVL2JtX7FGcxdIIK1zmm50BuvOEC2GFxB+RA+Mus43LVYUCt+Bbj8UBl2k
-	nEFkt4Iz2SO/FMxUmsbN5HWSqG0/rn7iBQyOwhNBnpawF2gm+/eNIHB64gqQcsch0nEE
-	Yuc57rum1hB625BginwAqLCVFNRPq3GRdOlnhaemH9T5qDmWoBEjNQIs1AaBp+bPcGES
-	hDS1kLaAWmHtqAUA/DngEyDsR4mgtbiNvl/Hi94wzmsssdZNZPqCkw96vBysAzvgJNSc
-	d9sw==
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=TGDQiLL5Ufj1GFSRFFakER9gq/PbaCkEeZ9lOsvKRWI=;
+	b=enP68gGUmAvUeVTT0xC7UNM2JamOl526zEV/x9+t5sEzEpO3JDVRiWq7zxR8N1O8ZS
+	RfUrm6JvAtTD1l1XkAPzwhZOIo5D3TxyjiHrm60tgC8x4SH3qNXBJz9ogukhcsal+vR6
+	f9f2HbiAM8uaL1DXnamDeyZXFBiiKMGBt6u51TT8w4iomOByCHkEO/6iJH5Lnh6S3BCi
+	+zwe+qR4Z3YDwvPgZx4xuMafPq35fDosxGMibKo/X+VBS3Mi5IcjshpGJd42DnFeODYi
+	xeHSFspJjXfxhDl7jfzrCSvbC3ZIJ//GCoV0kiMHIG4UKAd6pOLFrHOzv7wAkdmcWbTv
+	nt5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to;
-	bh=TRhX1v5rCwZy7zDS5Ga4rPZqI8X6ZnIUWWAbNiqlsN8=;
-	b=r6EhacBv+S4/ib7+4CzFsFmEfi3xn2xwcrnkcD/EC4nGbvBA1pf01ii/+aXtnqc6Og
-	MABXj2POos+c8O+eSIL+aDX4o1xK2hob/nUmZCaOpNLOVNZKtmRoebKJsWtTis0gkAr6
-	Wc+zm8QXIU92KJW1q+7OU2nBYw+BSaIvdrVCpdidQKf/pi4QUEKY3s35DiC+qkHFaxPZ
-	9ECu9LX68RFE2XW6MohQs1NwmqrMOufzooLaAKYu3mB/dKrMf8Sida+bl0HYibcftDV1
-	j90OLQ7qqk76cY9JVatMTp7yc1iym2VDaw3IuqlIGkH9kdZCt+BZo2+NQ35dTHs9hso5
-	ZTyg==
-X-Gm-Message-State: APf1xPDqVF3JGhCVi0J2Mx4Ivb0PnJMXbbjDzkjwpiAKqxradSILA2mi
-	LH8NaynP3r2dNa63r6NYsno=
-X-Received: by 10.28.62.16 with SMTP id l16mr8104588wma.54.1519774700364;
-	Tue, 27 Feb 2018 15:38:20 -0800 (PST)
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=TGDQiLL5Ufj1GFSRFFakER9gq/PbaCkEeZ9lOsvKRWI=;
+	b=C5VfcINTMUjQoqQTsV8OcENK/lXHQzj1DGfaZkt9eusGryfAtQOZEi3fjlb1A1pS7p
+	o1OFue1Lam7UEHcisoWNryFir8XW/zo7RzdXD+TyW2eO9Mr9M3W1bepMiNqwTkknxut4
+	AHNfkmQHNFwbIfTzSebrZQtzN3pWXcwCoDerXk2vxhlu5KvbO2jaNOE6kkJ31LNu+4vh
+	r7q79GL4LvTblzC2Fk5yrVjzISG1XJzsfyqAhf2pr7yxQXgNuCAuduJfiyepH4D5GJtS
+	yqYIpYhmWlFP2IbquFQmDE0/WjOv6SbQaAeXjFnuxaHMXJU4p5LjeYv7au/en3lKLWYv
+	AEGw==
+X-Gm-Message-State: APf1xPDB2nmoxoA/ru2QQWn6HZawCkxNIbBcZntBkW19n6P5fbaulr5M
+	nt/sjYpGToPRFSIwjyuPAe0=
+X-Received: by 10.223.128.67 with SMTP id 61mr15135765wrk.61.1519774884026;
+	Tue, 27 Feb 2018 15:41:24 -0800 (PST)
 Received: from ?IPv6:2a01:cb1d:8526:ac00:37c8:9a2b:1b7e:2ba7?
 	([2a01:cb1d:8526:ac00:37c8:9a2b:1b7e:2ba7])
-	by smtp.gmail.com with ESMTPSA id
-	e18sm1146819wmc.21.2018.02.27.15.38.19
+	by smtp.gmail.com with ESMTPSA id o2sm412620wro.31.2018.02.27.15.41.23
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 27 Feb 2018 15:38:19 -0800 (PST)
-To: Linus Walleij <linus.walleij@linaro.org>, qemu-devel@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-References: <20180227104903.21353-1-linus.walleij@linaro.org>
-	<20180227104903.21353-4-linus.walleij@linaro.org>
+	Tue, 27 Feb 2018 15:41:23 -0800 (PST)
+To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
+References: <1519303376-92875-1-git-send-email-imammedo@redhat.com>
+	<1519303376-92875-3-git-send-email-imammedo@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <37d1e8d7-1d73-b635-269a-fd154426cdeb@amsat.org>
-Date: Tue, 27 Feb 2018 20:38:18 -0300
+Message-ID: <04f6c23f-7ff0-6f72-279a-85e507c9e82b@amsat.org>
+Date: Tue, 27 Feb 2018 20:41:22 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.6.0
 MIME-Version: 1.0
-In-Reply-To: <20180227104903.21353-4-linus.walleij@linaro.org>
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature";
-	boundary="fXsmhgVwVcLef5cnEExs5SFYtBLUEllUV"
+In-Reply-To: <1519303376-92875-3-git-send-email-imammedo@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::243
-Subject: Re: [Qemu-arm] [PATCH 3/5] hw/i2c-ddc: Do not fail writes
+X-Received-From: 2a00:1450:400c:c0c::243
+Subject: Re: [Qemu-arm] [PATCH 2/9] pc: replace pm object initialization
+ with one-liner in acpi_get_pm_info()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -118,94 +120,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+	qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+	Shannon Zhao <zhaoshenglong@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BVY5I68CgduD
+X-TUID: +MruwVPMLn5l
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---fXsmhgVwVcLef5cnEExs5SFYtBLUEllUV
-Content-Type: multipart/mixed; boundary="HgwcLMa4Rnb7gGfq1o1b27qL7h4mMOFgx";
- protected-headers="v1"
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-To: Linus Walleij <linus.walleij@linaro.org>, qemu-devel@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, Corey Minyard <cminyard@mvista.com>
-Message-ID: <37d1e8d7-1d73-b635-269a-fd154426cdeb@amsat.org>
-Subject: Re: [PATCH 3/5] hw/i2c-ddc: Do not fail writes
-References: <20180227104903.21353-1-linus.walleij@linaro.org>
- <20180227104903.21353-4-linus.walleij@linaro.org>
-In-Reply-To: <20180227104903.21353-4-linus.walleij@linaro.org>
+On 02/22/2018 09:42 AM, Igor Mammedov wrote:
+> next patch will need it before it gets to piix4/lpc branches
+> that initializes 'obj' now.
+> 
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 
---HgwcLMa4Rnb7gGfq1o1b27qL7h4mMOFgx
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-On 02/27/2018 07:49 AM, Linus Walleij wrote:
-> The tx function of the DDC I2C slave emulation was returning 1
-> on all writes resulting in NACK in the I2C bus. Changing it to
-> 0 makes the DDC I2C work fine with bit-banged I2C such as the
-> versatile I2C.
->=20
-> I guess it was not affecting whatever I2C controller this was
-> used with until now, but with the Versatile I2C it surely
-> does not work.
->=20
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
-
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 > ---
->  hw/i2c/i2c-ddc.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/hw/i2c/i2c-ddc.c b/hw/i2c/i2c-ddc.c
-> index 199dac9e41c1..bec0c91e2dd0 100644
-> --- a/hw/i2c/i2c-ddc.c
-> +++ b/hw/i2c/i2c-ddc.c
-> @@ -259,12 +259,12 @@ static int i2c_ddc_tx(I2CSlave *i2c, uint8_t data=
-)
->          s->reg =3D data;
->          s->firstbyte =3D false;
->          DPRINTF("[EDID] Written new pointer: %u\n", data);
-> -        return 1;
-> +        return 0;
+>  hw/i386/acpi-build.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index deb440f..b85fefe 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -128,7 +128,7 @@ static void acpi_get_pm_info(AcpiPmInfo *pm)
+>  {
+>      Object *piix = piix4_pm_find();
+>      Object *lpc = ich9_lpc_find();
+> -    Object *obj = NULL;
+> +    Object *obj = piix ? piix : lpc;
+>      QObject *o;
+>  
+>      pm->force_rev1_fadt = false;
+> @@ -138,7 +138,6 @@ static void acpi_get_pm_info(AcpiPmInfo *pm)
+>      if (piix) {
+>          /* w2k requires FADT(rev1) or it won't boot, keep PC compatible */
+>          pm->force_rev1_fadt = true;
+> -        obj = piix;
+>          pm->cpu_hp_io_base = PIIX4_CPU_HOTPLUG_IO_BASE;
+>          pm->pcihp_io_base =
+>              object_property_get_uint(obj, ACPI_PCIHP_IO_BASE_PROP, NULL);
+> @@ -146,7 +145,6 @@ static void acpi_get_pm_info(AcpiPmInfo *pm)
+>              object_property_get_uint(obj, ACPI_PCIHP_IO_LEN_PROP, NULL);
 >      }
-> =20
->      /* Ignore all writes */
->      s->reg++;
-> -    return 1;
-> +    return 0;
->  }
-> =20
->  static void i2c_ddc_init(Object *obj)
->=20
-
-
---HgwcLMa4Rnb7gGfq1o1b27qL7h4mMOFgx--
-
---fXsmhgVwVcLef5cnEExs5SFYtBLUEllUV
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCgAdFiEE+qvnXhKRciHc/Wuy4+MsLN6twN4FAlqV6+oACgkQ4+MsLN6t
-wN5Y8w/8CGKWeG2YXKnSvJbxGmqvFhXUo8x+C1+rc7ejjElT56bN3AtjAOvCDSPC
-WMeUZ6J2OyHLDHHkxzmk41tm8T2h9quO8aDbaUzFVf8ThnKP07eEbO6eDiplP5Pa
-5XBvp/WEpXwwsPNXOI+Rdwigqr6ZKFA7Wn58enCtRUqbuSlSjHF9GmYFDRJsQkgH
-obsumgKoxjc/tcUe4EBvq+n2oDLBBSAstFtJ3quZP25zOR/zK1LDoMbgPfQwZn/l
-gjX+AluOanQdx6H6CZ7tgxVzS92VeuL0IT+5QZIqQI195JWFwnddtO/HvntIAAzd
-aaOo38oTUmj1qy/6j/acPUUJPaTouxjmwGisouBEu0l8kkEDjbdj+MSleEcAOr85
-A14Kv4byumMmg1tSNXMuQ42WZOGM4ZFlLh88tO8tsqql2UalmBzlQbdLQ1/Ocd2d
-je8AZVwgC5aneHK7RCugZOM/v1uqB+GuE/Xbm1VEXgJ5jFJZPtKXtjG9heIvNTp1
-RaQUSlgVvW0SUoe+cKyqXk+nosc2gOhQ4HpeLqWJKSaosTit9tlZeyDYQ0AZsH9e
-6fR3nzXG9PWpNGjEquz3RicQJfaZXnPtPUaMF646j/MyFJiPvm8e5WuCFwH9bS8Q
-5qJdt+3PJqMFoDhgDQyOlo8wPgrLDmwK8FEfwGMl1IEBdoze1hU=
-=jHaS
------END PGP SIGNATURE-----
-
---fXsmhgVwVcLef5cnEExs5SFYtBLUEllUV--
+>      if (lpc) {
+> -        obj = lpc;
+>          pm->cpu_hp_io_base = ICH9_CPU_HOTPLUG_IO_BASE;
+>      }
+>      assert(obj);
+> 

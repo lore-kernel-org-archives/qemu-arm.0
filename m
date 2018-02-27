@@ -1,85 +1,92 @@
-Received: by 10.28.173.206 with SMTP id w197csp5984395wme;
-        Wed, 17 Jan 2018 18:18:47 -0800 (PST)
-X-Google-Smtp-Source: ACJfBovhwhLSvIZQKANrus8zfwj44iQN0e2umKiqj+1AL8X3U5D5RMKXKpr+r+rV8+ItXAMF4FG+
-X-Received: by 10.37.164.73 with SMTP id f67mr20364086ybi.214.1516241927567;
-        Wed, 17 Jan 2018 18:18:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516241927; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp4840528wma;
+        Tue, 27 Feb 2018 05:47:56 -0800 (PST)
+X-Google-Smtp-Source: AG47ELti9ObDJebla4C9LbQh/mfeBo3Y2mm1cFXvORVhT0o1reRsW2ikzULSMHsXujJOVf/P4cie
+X-Received: by 2002:a25:e689:: with SMTP id d131-v6mr9265282ybh.28.1519739276221;
+        Tue, 27 Feb 2018 05:47:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519739276; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dct1h7m/Jg8qIkZ/0hXa/m/SdwZkp0hm11lEXP3/2KOGZTXJMVSj6ISTF5zEUYkONe
-         Ap4abp2j0y07uwLVxuDw79CJsEzIMsgCT8uSuXgU/agDvmldm6YNoMuoGP7dhJqNZUi8
-         ngbnNDG5mTHKcoEJcxLVVE0HCQqjiQ/DAqXSyBd3ObxwRzC/VenjITIX8su2M4qK3h0/
-         6v2nkrbjUjYgxKn/GTjpdz9yFFusm8NedWmwo3l33l8AsMVvVKbA88nbPiDsOW5th/a4
-         +wzlPzMWCx7c6V2ZGBGxB+XfG4bWVa1pZ3QTY8WwXkSdQBG6j0E4obSpbHg6OHwMJ6Ve
-         mXVQ==
+        b=TrumDdIOas0RslG6WjGTqRUIcuYaiahNrp6GoWTQ3qYK8WgEpm2JIfvzNhplUmeKCw
+         pbfmvmv6IxuE6RI6N98ZVcsK5FNILlWySS/nH4ljiQfCDqjwabVzRBr2n1hYw7BRLoWG
+         gfirzkqlAJZrB0c5NSQGKjJEq8l/dcVvNxG+6Wa1/jC71gKSAkPl93EWDqMJ3DaR2n8B
+         havUwXUfhIZ8AThRL2xjkYhxVt1Jc2MUDRuqr5vf1JNHE89KclrS9lFdy3aVnUsDC21R
+         /4S5HcUDLLchiBLak6UQk4JkNABOCduEm1F3i/ynQ1LL9PT/xKgjnvAQ08U+pgYrbDz3
+         quGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=6LY6rJTI/bQjbJU2Ns3YnJeX5pUffwzjKWjcqV8gdMw=;
-        b=EyuPQ38uZ1iTTyG/OGVRrNYn1x3yd1SzHCUyHx/mrvnURPw/aN+YDegjllirtVdfOY
-         p219b59ZLU7d0okyyeOFSAfe9rVebJoL/OzeZek7VR7+GiRviNCB7YG6OrdLJ0qbbBtv
-         NWZQsjlvmapHkJFCbXEeEXWucR0sE2TMlk0oLPCt8xQK4a5mWJ/cpkHFMrQw0nWuwnpc
-         gZb1YhmW+nRELKO1ih4tzR+aHidVQ9zDVGAEn0gCIEGhdqpw1WpJItxM0LHj7ukaaAQC
-         gyqErhV6ndPGvF3HLgI5fTCk6Trt7OdwplDeNf9Ds22lDgoJe/fMwwSB27TScS1oMArz
-         isMw==
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=iJ5GhqkLVwqJ4besQWn2DDnOyLKigMfvgQCuszkIUAE=;
+        b=ehNa9xdOFPC3/82L0YRf56QkbqGGL9G+nt2UTVjUY3XoQcYhfOSjzqplpn8BEgMDce
+         BAbDZruXjGRm0DrCTG+U8wBSRTjd1J4xQwE4THThnA75kHo92fPlE68fM77OZWCSB5Yn
+         f6LtlcxCfjev8wRZxrMSyA/OGr8ydIyoM7Y2BmUd0JKrxX8U7G4VBxwwaeu4OoK9Fdzv
+         tx2jlObRjtOXBNoue2CYJedgJgBzdp1MpTmzKvJ+xzbGkNQXVmeqlrAYSLmllk9bNYDb
+         zHA/0d5EhMdu5M61XosENDqodGJnpXaZ6vr12yf18jZucAusWRJlyg8pu1hTvpqZFF2h
+         3KfA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 83si1443537ybp.624.2018.01.17.18.18.47
+        by mx.google.com with ESMTPS id m4-v6si1914536ybb.399.2018.02.27.05.47.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 17 Jan 2018 18:18:47 -0800 (PST)
+        Tue, 27 Feb 2018 05:47:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52183 helo=lists.gnu.org)
+Received: from localhost ([::1]:37244 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ebzmw-0007E8-T3
-	for alex.bennee@linaro.org; Wed, 17 Jan 2018 21:18:46 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46062)
+	id 1eqfbn-0001ld-I2
+	for alex.bennee@linaro.org; Tue, 27 Feb 2018 08:47:55 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41444)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1ebzfH-0000k4-QJ
-	for qemu-arm@nongnu.org; Wed, 17 Jan 2018 21:10:53 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1eqfbU-0001iG-Mm
+	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 08:47:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1ebzfG-0004iS-3D
-	for qemu-arm@nongnu.org; Wed, 17 Jan 2018 21:10:51 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:42492)
+	(envelope-from <eric.auger@redhat.com>) id 1eqfbP-0003Td-O5
+	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 08:47:36 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:58052 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1ebzfF-0004hr-Qc; Wed, 17 Jan 2018 21:10:50 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1eqfbP-0003TS-GK; Tue, 27 Feb 2018 08:47:31 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BCED244826;
-	Thu, 18 Jan 2018 02:10:47 +0000 (UTC)
-Received: from localhost (ovpn-116-6.gru2.redhat.com [10.97.116.6])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 32BF717D8B;
-	Thu, 18 Jan 2018 02:10:40 +0000 (UTC)
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-devel@nongnu.org
-Date: Thu, 18 Jan 2018 00:09:47 -0200
-Message-Id: <20180118021000.27203-7-ehabkost@redhat.com>
-In-Reply-To: <20180118021000.27203-1-ehabkost@redhat.com>
-References: <20180118021000.27203-1-ehabkost@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 3129D8182D27;
+	Tue, 27 Feb 2018 13:47:27 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-135.ams2.redhat.com
+	[10.36.116.135])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 59D2C10B0F31;
+	Tue, 27 Feb 2018 13:47:17 +0000 (UTC)
+To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
+References: <1519303376-92875-1-git-send-email-imammedo@redhat.com>
+	<1519303376-92875-6-git-send-email-imammedo@redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <68d715a4-34f9-3900-1e1f-be94e16a871a@redhat.com>
+Date: Tue, 27 Feb 2018 14:47:16 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+In-Reply-To: <1519303376-92875-6-git-send-email-imammedo@redhat.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Thu, 18 Jan 2018 02:10:49 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.11.55.8]);
+	Tue, 27 Feb 2018 13:47:27 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Tue, 27 Feb 2018 13:47:27 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PULL 06/19] machine: Replace has_dynamic_sysbus with
- list of allowed devices
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 5/9] pc: acpi: isolate FADT
+ specific data into AcpiFadtData structure
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,245 +98,406 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Stefano Stabellini <sstabellini@kernel.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>, Alexander Graf <agraf@suse.de>,
-	Anthony Perard <anthony.perard@citrix.com>, qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org, Marcel Apfelbaum <marcel@redhat.com>,
-	xen-devel@lists.xenproject.org, David Gibson <david@gibson.dropbear.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+	qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+	Shannon Zhao <zhaoshenglong@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dBWWDrwEIrgO
+X-TUID: bmoOoAuzYVcN
 
-The existing has_dynamic_sysbus flag makes the machine accept
-every user-creatable sysbus device type on the command-line.
-Replace it with a list of allowed device types, so machines can
-easily accept some sysbus devices while rejecting others.
+Hi Igor,
 
-To keep exactly the same behavior as before, the existing
-has_dynamic_sysbus=3Dtrue assignments are replaced with a
-TYPE_SYS_BUS_DEVICE entry on the allowed list.  Other patches
-will replace the TYPE_SYS_BUS_DEVICE entries with more specific
-lists of devices.
+On 22/02/18 13:42, Igor Mammedov wrote:
+> move FADT data initialization out of fadt_setup() into dedicated
+> init_fadt_data() that will set common for pc/q35 values in
+> AcpiFadtData structure and acpi_get_pm_info() will complement
+> it with pc/q35 specific values initialization.
+acpi_get_pm_info only adds reset stuff + version info on top of
+previously initialized common data, right?
+> 
+> That will allow to get rid of fadt_setup() and generalize
+> build_fadt() so it could be easily extended for rev5 and
+> reused by ARM target.
+> 
+> While at it also move facs/dsdt/xdsdt offsets from build_fadt()
+> arg list into AcpiFadtData, as they belong to the same dataset.
+> 
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> ---
+>  include/hw/acpi/acpi-defs.h |  28 ++++++
+>  hw/i386/acpi-build.c        | 204 ++++++++++++++++++++++++--------------------
+>  2 files changed, 138 insertions(+), 94 deletions(-)
+> 
+> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+> index 9942bc5..e0accc4 100644
+> --- a/include/hw/acpi/acpi-defs.h
+> +++ b/include/hw/acpi/acpi-defs.h
+> @@ -175,6 +175,34 @@ struct AcpiFadtDescriptorRev5_1 {
+>  
+>  typedef struct AcpiFadtDescriptorRev5_1 AcpiFadtDescriptorRev5_1;
+>  
+> +typedef struct AcpiFadtData {
+> +    struct AcpiGenericAddress pm1_cnt;   /* PM1a_CNT_BLK */
+Any reason why we don't use the same field names as in
+AcpiFadtDescriptorRev3?
 
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: Marcel Apfelbaum <marcel@redhat.com>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Alexander Graf <agraf@suse.de>
-Cc: David Gibson <david@gibson.dropbear.id.au>
-Cc: Stefano Stabellini <sstabellini@kernel.org>
-Cc: Anthony Perard <anthony.perard@citrix.com>
-Cc: qemu-arm@nongnu.org
-Cc: qemu-ppc@nongnu.org
-Cc: xen-devel@lists.xenproject.org
-Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
-Message-Id: <20171125151610.20547-2-ehabkost@redhat.com>
-Reviewed-by: Greg Kurz <groug@kaod.org>
-Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Marcel Apfelbaum <marcel@redhat.com>
-Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
----
- include/hw/boards.h  |  5 ++++-
- hw/arm/virt.c        |  3 ++-
- hw/core/machine.c    | 43 +++++++++++++++++++++++++++++--------------
- hw/i386/pc_q35.c     |  3 ++-
- hw/ppc/e500plat.c    |  4 +++-
- hw/ppc/spapr.c       |  3 ++-
- hw/xen/xen_backend.c |  7 ++++++-
- 7 files changed, 48 insertions(+), 20 deletions(-)
+for instance pm1a_cnt?
+> +    struct AcpiGenericAddress pm1_evt;   /* PM1a_EVT_BLK */
+pm1a_evt?
+> +    struct AcpiGenericAddress pm_tmr;    /* PM_TMR_BLK */
+> +    struct AcpiGenericAddress gpe0_blk;  /* GPE0_BLK */
+> +    struct AcpiGenericAddress reset_reg; /* RESET_REG */
+> +    uint8_t reset_val;         /* RESET_VALUE */
+> +    uint8_t  rev;              /* Revision */
+> +    uint32_t flags;            /* Flags */
+> +    uint32_t smi_cmd;          /* SMI_CMD */
+> +    uint16_t sci_int;          /* SCI_INT */
+> +    uint8_t  int_model;        /* INT_MODEL */
+> +    uint8_t  acpi_enable_cmd;  /* ACPI_ENABLE */
+> +    uint8_t  acpi_disable_cmd; /* ACPI_DISABLE */
+> +    uint8_t  rtc_century;      /* CENTURY */
+> +    uint16_t c2_latency;       /* P_LVL2_LAT */
+same?
+> +    uint16_t c3_latency;       /* P_LVL3_LAT */
+> +
+> +    /*
+> +     * respective tables offsets within ACPI_BUILD_TABLE_FILE,
+> +     * NULL if table doesn't exist (in that case field's value
+> +     * won't be patched by linker and will be kept set to 0)
+> +     */
+> +    unsigned *facs_tbl_offset; /* FACS offset in */
+> +    unsigned *dsdt_tbl_offset;
+> +    unsigned *xdsdt_tbl_offset;
+> +} AcpiFadtData;
+> +
+>  #define ACPI_FADT_ARM_PSCI_COMPLIANT  (1 << 0)
+>  #define ACPI_FADT_ARM_PSCI_USE_HVC    (1 << 1)
+>  
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index b85fefe..706ba35 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -91,17 +91,11 @@ typedef struct AcpiMcfgInfo {
+>  } AcpiMcfgInfo;
+>  
+>  typedef struct AcpiPmInfo {
+> -    bool force_rev1_fadt;
+>      bool s3_disabled;
+>      bool s4_disabled;
+>      bool pcihp_bridge_en;
+>      uint8_t s4_val;
+> -    uint16_t sci_int;
+> -    uint8_t acpi_enable_cmd;
+> -    uint8_t acpi_disable_cmd;
+> -    uint32_t gpe0_blk;
+> -    uint32_t gpe0_blk_len;
+> -    uint32_t io_base;
+> +    AcpiFadtData fadt;
+>      uint16_t cpu_hp_io_base;
+>      uint16_t pcihp_io_base;
+>      uint16_t pcihp_io_len;
+> @@ -124,20 +118,60 @@ typedef struct AcpiBuildPciBusHotplugState {
+>      bool pcihp_bridge_en;
+>  } AcpiBuildPciBusHotplugState;
+>  
+> +#define ACPI_PORT_SMI_CMD           0x00b2 /* TODO: this is APM_CNT_IOPORT */
+Can't we take benefit of this series to move that define in hw/isa/apm.h?
+> +
+> +static void init_fadt_data(Object *o, AcpiFadtData *data)
+> +{
+> +    uint32_t io = object_property_get_uint(o, ACPI_PM_PROP_PM_IO_BASE, NULL);
+> +    AmlAddressSpace as = AML_AS_SYSTEM_IO;
+> +    AcpiFadtData fadt = {
+> +        .rev = 3,
+> +        .flags =
+> +            (1 << ACPI_FADT_F_WBINVD) |
+> +            (1 << ACPI_FADT_F_PROC_C1) |
+> +            (1 << ACPI_FADT_F_SLP_BUTTON) |
+> +            (1 << ACPI_FADT_F_RTC_S4) |
+> +            (1 << ACPI_FADT_F_USE_PLATFORM_CLOCK) |
+> +            /* APIC destination mode ("Flat Logical") has an upper limit of 8
+> +             * CPUs for more than 8 CPUs, "Clustered Logical" mode has to be
+> +             * used
+> +             */
+> +            ((max_cpus > 8) ? (1 << ACPI_FADT_F_FORCE_APIC_CLUSTER_MODEL) : 0),
+> +        .int_model = 1 /* Multiple APIC */,
+> +        .rtc_century = RTC_CENTURY,
+> +        .c2_latency = 0xfff /* C2 state not supported */,
+> +        .c3_latency = 0xfff /* C3 state not supported */,
+> +        .smi_cmd = ACPI_PORT_SMI_CMD,
+> +        .sci_int = object_property_get_uint(o, ACPI_PM_PROP_SCI_INT, NULL),
+> +        .acpi_enable_cmd =
+> +            object_property_get_uint(o, ACPI_PM_PROP_ACPI_ENABLE_CMD, NULL),
+> +        .acpi_disable_cmd =
+> +            object_property_get_uint(o, ACPI_PM_PROP_ACPI_DISABLE_CMD, NULL),
+> +        .pm1_evt = { .space_id = as, .bit_width = 4 * 8, .address = io },
+> +        .pm1_cnt = { .space_id = as, .bit_width = 2 * 8, .address = io + 0x04 },
+> +        .pm_tmr = { .space_id = as, .bit_width = 4 * 8, .address = io + 0x08 },
+> +        .gpe0_blk = { .space_id = as, .bit_width =
+> +            object_property_get_uint(o, ACPI_PM_PROP_GPE0_BLK_LEN, NULL) * 8,
+> +            .address = object_property_get_uint(o, ACPI_PM_PROP_GPE0_BLK, NULL)
+> +        },
+> +    };
+> +    *data = fadt;
+> +}
+> +
+>  static void acpi_get_pm_info(AcpiPmInfo *pm)
+>  {
+>      Object *piix = piix4_pm_find();
+>      Object *lpc = ich9_lpc_find();
+>      Object *obj = piix ? piix : lpc;
+>      QObject *o;
+> -
+> -    pm->force_rev1_fadt = false;
+>      pm->cpu_hp_io_base = 0;
+>      pm->pcihp_io_base = 0;
+>      pm->pcihp_io_len = 0;
+> +
+> +    init_fadt_data(obj, &pm->fadt);
+>      if (piix) {
+>          /* w2k requires FADT(rev1) or it won't boot, keep PC compatible */
+> -        pm->force_rev1_fadt = true;
+> +        pm->fadt.rev = 1;
+>          pm->cpu_hp_io_base = PIIX4_CPU_HOTPLUG_IO_BASE;
+>          pm->pcihp_io_base =
+>              object_property_get_uint(obj, ACPI_PCIHP_IO_BASE_PROP, NULL);
+> @@ -145,10 +179,19 @@ static void acpi_get_pm_info(AcpiPmInfo *pm)
+>              object_property_get_uint(obj, ACPI_PCIHP_IO_LEN_PROP, NULL);
+>      }
+>      if (lpc) {
+> +        struct AcpiGenericAddress r = { .space_id = AML_AS_SYSTEM_IO,
+> +            .bit_width = 8, .address = ICH9_RST_CNT_IOPORT };
+> +        pm->fadt.reset_reg = r;
+> +        pm->fadt.reset_val = 0xf;
+> +        pm->fadt.flags |= 1 << ACPI_FADT_F_RESET_REG_SUP;
+>          pm->cpu_hp_io_base = ICH9_CPU_HOTPLUG_IO_BASE;
+Wouldn't it be possible to pass an other parameter to init_fadt_data()
+to tell whether we are in pc or q35 or the target rev and do those
+initializations there?
+>      }
+>      assert(obj);
+>  
+> +    /* The above need not be conditional on machine type because the reset port
+> +     * happens to be the same on PIIX (pc) and ICH9 (q35). */
+> +    QEMU_BUILD_BUG_ON(ICH9_RST_CNT_IOPORT != RCR_IOPORT);
+> +
+>      /* Fill in optional s3/s4 related properties */
+>      o = object_property_get_qobject(obj, ACPI_PM_PROP_S3_DISABLED, NULL);
+>      if (o) {
+> @@ -172,22 +215,6 @@ static void acpi_get_pm_info(AcpiPmInfo *pm)
+>      }
+>      qobject_decref(o);
+>  
+> -    /* Fill in mandatory properties */
+> -    pm->sci_int = object_property_get_uint(obj, ACPI_PM_PROP_SCI_INT, NULL);
+> -
+> -    pm->acpi_enable_cmd = object_property_get_uint(obj,
+> -                                                   ACPI_PM_PROP_ACPI_ENABLE_CMD,
+> -                                                   NULL);
+> -    pm->acpi_disable_cmd =
+> -        object_property_get_uint(obj,
+> -                                 ACPI_PM_PROP_ACPI_DISABLE_CMD,
+> -                                 NULL);
+> -    pm->io_base = object_property_get_uint(obj, ACPI_PM_PROP_PM_IO_BASE,
+> -                                           NULL);
+> -    pm->gpe0_blk = object_property_get_uint(obj, ACPI_PM_PROP_GPE0_BLK,
+> -                                            NULL);
+> -    pm->gpe0_blk_len = object_property_get_uint(obj, ACPI_PM_PROP_GPE0_BLK_LEN,
+> -                                                NULL);
+>      pm->pcihp_bridge_en =
+>          object_property_get_bool(obj, "acpi-pci-hotplug-with-bridge-support",
+>                                   NULL);
+> @@ -255,8 +282,6 @@ static void acpi_get_pci_holes(Range *hole, Range *hole64)
+>                                                 NULL));
+>  }
+>  
+> -#define ACPI_PORT_SMI_CMD           0x00b2 /* TODO: this is APM_CNT_IOPORT */
+> -
+>  static void acpi_align_size(GArray *blob, unsigned align)
+>  {
+>      /* Align size to multiple of given size. This reduces the chance
+> @@ -275,73 +300,53 @@ build_facs(GArray *table_data, BIOSLinker *linker)
+>  }
+>  
+>  /* Load chipset information in FADT */
+> -static void fadt_setup(AcpiFadtDescriptorRev3 *fadt, AcpiPmInfo *pm)
+> +static void fadt_setup(AcpiFadtDescriptorRev3 *fadt, AcpiFadtData f)
+>  {
+> -    fadt->model = 1;
+> +    fadt->model = f.int_model;
+>      fadt->reserved1 = 0;
+> -    fadt->sci_int = cpu_to_le16(pm->sci_int);
+> -    fadt->smi_cmd = cpu_to_le32(ACPI_PORT_SMI_CMD);
+> -    fadt->acpi_enable = pm->acpi_enable_cmd;
+> -    fadt->acpi_disable = pm->acpi_disable_cmd;
+> +    fadt->sci_int = cpu_to_le16(f.sci_int);
+> +    fadt->smi_cmd = cpu_to_le32(f.smi_cmd);
+> +    fadt->acpi_enable = f.acpi_enable_cmd;
+> +    fadt->acpi_disable = f.acpi_disable_cmd;
+>      /* EVT, CNT, TMR offset matches hw/acpi/core.c */
+> -    fadt->pm1a_evt_blk = cpu_to_le32(pm->io_base);
+> -    fadt->pm1a_cnt_blk = cpu_to_le32(pm->io_base + 0x04);
+> -    fadt->pm_tmr_blk = cpu_to_le32(pm->io_base + 0x08);
+> -    fadt->gpe0_blk = cpu_to_le32(pm->gpe0_blk);
+> +    fadt->pm1a_evt_blk = cpu_to_le32(f.pm1_evt.address);
+> +    fadt->pm1a_cnt_blk = cpu_to_le32(f.pm1_cnt.address);
+> +    fadt->pm_tmr_blk = cpu_to_le32(f.pm_tmr.address);
+> +    fadt->gpe0_blk = cpu_to_le32(f.gpe0_blk.address);
+>      /* EVT, CNT, TMR length matches hw/acpi/core.c */
+> -    fadt->pm1_evt_len = 4;
+> -    fadt->pm1_cnt_len = 2;
+> -    fadt->pm_tmr_len = 4;
+> -    fadt->gpe0_blk_len = pm->gpe0_blk_len;
+> -    fadt->plvl2_lat = cpu_to_le16(0xfff); /* C2 state not supported */
+> -    fadt->plvl3_lat = cpu_to_le16(0xfff); /* C3 state not supported */
+> -    fadt->flags = cpu_to_le32((1 << ACPI_FADT_F_WBINVD) |
+> -                              (1 << ACPI_FADT_F_PROC_C1) |
+> -                              (1 << ACPI_FADT_F_SLP_BUTTON) |
+> -                              (1 << ACPI_FADT_F_RTC_S4));
+> -    fadt->flags |= cpu_to_le32(1 << ACPI_FADT_F_USE_PLATFORM_CLOCK);
+> -    /* APIC destination mode ("Flat Logical") has an upper limit of 8 CPUs
+> -     * For more than 8 CPUs, "Clustered Logical" mode has to be used
+> -     */
+> -    if (max_cpus > 8) {
+> -        fadt->flags |= cpu_to_le32(1 << ACPI_FADT_F_FORCE_APIC_CLUSTER_MODEL);
+> -    }
+> -    fadt->century = RTC_CENTURY;
+> -    if (pm->force_rev1_fadt) {
+> +    fadt->pm1_evt_len = f.pm1_evt.bit_width / 8;
+> +    fadt->pm1_cnt_len = f.pm1_cnt.bit_width / 8;
+> +    fadt->pm_tmr_len = f.pm_tmr.bit_width / 8;
+> +    fadt->gpe0_blk_len = f.gpe0_blk.bit_width / 8;
+> +    fadt->plvl2_lat = cpu_to_le16(f.c2_latency);
+> +    fadt->plvl3_lat = cpu_to_le16(f.c3_latency);
+> +    fadt->flags = cpu_to_le32(f.flags);
+> +    fadt->century = f.rtc_century;
+> +    if (f.rev == 1) {
+>          return;
+>      }
+>  
+> -    fadt->flags |= cpu_to_le32(1 << ACPI_FADT_F_RESET_REG_SUP);
+> -    fadt->reset_value = 0xf;
+> -    fadt->reset_register.space_id = AML_SYSTEM_IO;
+> -    fadt->reset_register.bit_width = 8;
+> -    fadt->reset_register.address = cpu_to_le64(ICH9_RST_CNT_IOPORT);
+> -    /* The above need not be conditional on machine type because the reset port
+> -     * happens to be the same on PIIX (pc) and ICH9 (q35). */
+> -    QEMU_BUILD_BUG_ON(ICH9_RST_CNT_IOPORT != RCR_IOPORT);
+> +    fadt->reset_value = f.reset_val;
+> +    fadt->reset_register = f.reset_reg;
+> +    fadt->reset_register.address = cpu_to_le64(f.reset_reg.address);
+>  
+> -    fadt->xpm1a_event_block.space_id = AML_SYSTEM_IO;
+> -    fadt->xpm1a_event_block.bit_width = fadt->pm1_evt_len * 8;
+> -    fadt->xpm1a_event_block.address = cpu_to_le64(pm->io_base);
+> +    fadt->xpm1a_event_block = f.pm1_evt;
+> +    fadt->xpm1a_event_block.address = cpu_to_le64(f.pm1_evt.address);
+>  
+> -    fadt->xpm1a_control_block.space_id = AML_SYSTEM_IO;
+> -    fadt->xpm1a_control_block.bit_width = fadt->pm1_cnt_len * 8;
+> -    fadt->xpm1a_control_block.address = cpu_to_le64(pm->io_base + 0x4);
+> +    fadt->xpm1a_control_block = f.pm1_cnt;
+> +    fadt->xpm1a_control_block.address = cpu_to_le64(f.pm1_cnt.address);
+>  
+> -    fadt->xpm_timer_block.space_id = AML_SYSTEM_IO;
+> -    fadt->xpm_timer_block.bit_width = fadt->pm_tmr_len * 8;
+> -    fadt->xpm_timer_block.address = cpu_to_le64(pm->io_base + 0x8);
+> +    fadt->xpm_timer_block = f.pm_tmr;
+> +    fadt->xpm_timer_block.address = cpu_to_le64(f.pm_tmr.address);
+>  
+> -    fadt->xgpe0_block.space_id = AML_SYSTEM_IO;
+> -    fadt->xgpe0_block.bit_width = pm->gpe0_blk_len * 8;
+> -    fadt->xgpe0_block.address = cpu_to_le64(pm->gpe0_blk);
+> +    fadt->xgpe0_block = f.gpe0_blk;
+> +    fadt->xgpe0_block.address = cpu_to_le64(f.gpe0_blk.address);
+>  }
+>  
+>  
+>  /* FADT */
+>  static void
+> -build_fadt(GArray *table_data, BIOSLinker *linker, AcpiPmInfo *pm,
+> -           unsigned facs_tbl_offset, unsigned dsdt_tbl_offset,
+> +build_fadt(GArray *table_data, BIOSLinker *linker, AcpiFadtData *f,
+>             const char *oem_id, const char *oem_table_id)
+>  {
+>      AcpiFadtDescriptorRev3 *fadt = acpi_data_push(table_data, sizeof(*fadt));
+> @@ -349,29 +354,32 @@ build_fadt(GArray *table_data, BIOSLinker *linker, AcpiPmInfo *pm,
+>      unsigned dsdt_entry_offset = (char *)&fadt->dsdt - table_data->data;
+>      unsigned xdsdt_entry_offset = (char *)&fadt->x_dsdt - table_data->data;
+>      int fadt_size = sizeof(*fadt);
+> -    int rev = 3;
+>  
+>      /* FACS address to be filled by Guest linker */
+> -    bios_linker_loader_add_pointer(linker,
+> -        ACPI_BUILD_TABLE_FILE, fw_ctrl_offset, sizeof(fadt->firmware_ctrl),
+> -        ACPI_BUILD_TABLE_FILE, facs_tbl_offset);
+> +    if (f->facs_tbl_offset) {
+this test was not there originally. How does it relate to above changes?
+> +        bios_linker_loader_add_pointer(linker,
+> +            ACPI_BUILD_TABLE_FILE, fw_ctrl_offset, sizeof(fadt->firmware_ctrl),
+> +            ACPI_BUILD_TABLE_FILE, *f->facs_tbl_offset);
+> +    }
+>  
+>      /* DSDT address to be filled by Guest linker */
+> -    fadt_setup(fadt, pm);
+> -    bios_linker_loader_add_pointer(linker,
+> -        ACPI_BUILD_TABLE_FILE, dsdt_entry_offset, sizeof(fadt->dsdt),
+> -        ACPI_BUILD_TABLE_FILE, dsdt_tbl_offset);
+> -    if (pm->force_rev1_fadt) {
+> -        rev = 1;
+> +    fadt_setup(fadt, *f);
+> +    if (f->dsdt_tbl_offset) {
+same
+> +        bios_linker_loader_add_pointer(linker,
+> +            ACPI_BUILD_TABLE_FILE, dsdt_entry_offset, sizeof(fadt->dsdt),
+> +            ACPI_BUILD_TABLE_FILE, *f->dsdt_tbl_offset);
+> +    }
+> +    if (f->rev == 1) {
+>          fadt_size = offsetof(typeof(*fadt), reset_register);
+> -    } else {
+> +    } else if (f->xdsdt_tbl_offset) {
+>          bios_linker_loader_add_pointer(linker,
+>              ACPI_BUILD_TABLE_FILE, xdsdt_entry_offset, sizeof(fadt->x_dsdt),
+> -            ACPI_BUILD_TABLE_FILE, dsdt_tbl_offset);
+> +            ACPI_BUILD_TABLE_FILE, *f->xdsdt_tbl_offset);
+>      }
+>  
+>      build_header(linker, table_data,
+> -                 (void *)fadt, "FACP", fadt_size, rev, oem_id, oem_table_id);
+> +                (void *)fadt, "FACP", fadt_size, f->rev,
+> +                oem_id, oem_table_id);
+>  }
+>  
+>  void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
+> @@ -2051,7 +2059,12 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+>      aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
+>      crs = aml_resource_template();
+>      aml_append(crs,
+> -        aml_io(AML_DECODE16, pm->gpe0_blk, pm->gpe0_blk, 1, pm->gpe0_blk_len)
+> +        aml_io(
+> +               AML_DECODE16,
+> +               pm->fadt.gpe0_blk.address,
+> +               pm->fadt.gpe0_blk.address,
+> +               1,
+> +               pm->fadt.gpe0_blk.bit_width / 8)
+>      );
+>      aml_append(dev, aml_name_decl("_CRS", crs));
+>      aml_append(scope, dev);
+> @@ -2698,7 +2711,10 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
+>      /* ACPI tables pointed to by RSDT */
+>      fadt = tables_blob->len;
+>      acpi_add_table(table_offsets, tables_blob);
+> -    build_fadt(tables_blob, tables->linker, &pm, facs, dsdt,
+> +    pm.fadt.facs_tbl_offset = &facs;
+> +    pm.fadt.dsdt_tbl_offset = &dsdt;
+> +    pm.fadt.xdsdt_tbl_offset = &dsdt;
+> +    build_fadt(tables_blob, tables->linker, &pm.fadt,
+>                 slic_oem.id, slic_oem.table_id);
+>      aml_len += tables_blob->len - fadt;
+>  
+> 
+Otherwise looks good to me.
 
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index 156b16f7a6..041bc08971 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -76,6 +76,9 @@ void machine_set_cpu_numa_node(MachineState *machine,
-                                const CpuInstanceProperties *props,
-                                Error **errp);
-=20
-+void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const char=
- *type);
-+
-+
- /**
-  * CPUArchId:
-  * @arch_id - architecture-dependent CPU ID of present or possible CPU
-@@ -179,7 +182,6 @@ struct MachineClass {
-         no_floppy:1,
-         no_cdrom:1,
-         no_sdcard:1,
--        has_dynamic_sysbus:1,
-         pci_allow_0_address:1,
-         legacy_fw_cfg_order:1;
-     int is_default;
-@@ -197,6 +199,7 @@ struct MachineClass {
-     bool ignore_memory_transaction_failures;
-     int numa_mem_align_shift;
-     const char **valid_cpu_types;
-+    strList *allowed_dynamic_sysbus_devices;
-     bool auto_enable_numa_with_memhp;
-     void (*numa_auto_assign_ram)(MachineClass *mc, NodeInfo *nodes,
-                                  int nb_nodes, ram_addr_t size);
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 543f9bd6cc..7549895fd2 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1591,7 +1591,8 @@ static void virt_machine_class_init(ObjectClass *oc=
-, void *data)
-      * configuration of the particular instance.
-      */
-     mc->max_cpus =3D 255;
--    mc->has_dynamic_sysbus =3D true;
-+    /*TODO: allow only sysbus devices that really work with this machine=
- */
-+    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_SYS_BUS_DEVICE);
-     mc->block_default_type =3D IF_VIRTIO;
-     mc->no_cdrom =3D 1;
-     mc->pci_allow_0_address =3D true;
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index c857f3f934..0320a8efa1 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -334,29 +334,44 @@ static bool machine_get_enforce_config_section(Obje=
-ct *obj, Error **errp)
-     return ms->enforce_config_section;
- }
-=20
--static void error_on_sysbus_device(SysBusDevice *sbdev, void *opaque)
-+void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const char=
- *type)
- {
--    error_report("Option '-device %s' cannot be handled by this machine"=
-,
--                 object_class_get_name(object_get_class(OBJECT(sbdev))))=
-;
--    exit(1);
-+    strList *item =3D g_new0(strList, 1);
-+
-+    item->value =3D g_strdup(type);
-+    item->next =3D mc->allowed_dynamic_sysbus_devices;
-+    mc->allowed_dynamic_sysbus_devices =3D item;
- }
-=20
--static void machine_init_notify(Notifier *notifier, void *data)
-+static void validate_sysbus_device(SysBusDevice *sbdev, void *opaque)
- {
--    Object *machine =3D qdev_get_machine();
--    ObjectClass *oc =3D object_get_class(machine);
--    MachineClass *mc =3D MACHINE_CLASS(oc);
-+    MachineState *machine =3D opaque;
-+    MachineClass *mc =3D MACHINE_GET_CLASS(machine);
-+    bool allowed =3D false;
-+    strList *wl;
-=20
--    if (mc->has_dynamic_sysbus) {
--        /* Our machine can handle dynamic sysbus devices, we're all good=
- */
--        return;
-+    for (wl =3D mc->allowed_dynamic_sysbus_devices;
-+         !allowed && wl;
-+         wl =3D wl->next) {
-+        allowed |=3D !!object_dynamic_cast(OBJECT(sbdev), wl->value);
-     }
-=20
-+    if (!allowed) {
-+        error_report("Option '-device %s' cannot be handled by this mach=
-ine",
-+                     object_class_get_name(object_get_class(OBJECT(sbdev=
-))));
-+        exit(1);
-+    }
-+}
-+
-+static void machine_init_notify(Notifier *notifier, void *data)
-+{
-+    MachineState *machine =3D MACHINE(qdev_get_machine());
-+
-     /*
--     * Loop through all dynamically created devices and check whether th=
-ere
--     * are sysbus devices among them. If there are, error out.
-+     * Loop through all dynamically created sysbus devices and check if =
-they are
-+     * all allowed.  If a device is not allowed, error out.
-      */
--    foreach_dynamic_sysbus_device(error_on_sysbus_device, NULL);
-+    foreach_dynamic_sysbus_device(validate_sysbus_device, machine);
- }
-=20
- HotpluggableCPUList *machine_query_hotpluggable_cpus(MachineState *machi=
-ne)
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index d6060043ac..d0b0e5b422 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -299,7 +299,8 @@ static void pc_q35_machine_options(MachineClass *m)
-     m->default_machine_opts =3D "firmware=3Dbios-256k.bin";
-     m->default_display =3D "std";
-     m->no_floppy =3D 1;
--    m->has_dynamic_sysbus =3D true;
-+    /*TODO: allow only sysbus devices that really work with this machine=
- */
-+    machine_class_allow_dynamic_sysbus_dev(m, TYPE_SYS_BUS_DEVICE);
-     m->max_cpus =3D 288;
- }
-=20
-diff --git a/hw/ppc/e500plat.c b/hw/ppc/e500plat.c
-index e59e80fb9e..438118c29b 100644
---- a/hw/ppc/e500plat.c
-+++ b/hw/ppc/e500plat.c
-@@ -15,6 +15,7 @@
- #include "hw/boards.h"
- #include "sysemu/device_tree.h"
- #include "sysemu/kvm.h"
-+#include "hw/sysbus.h"
- #include "hw/pci/pci.h"
- #include "hw/ppc/openpic.h"
- #include "kvm_ppc.h"
-@@ -63,7 +64,8 @@ static void e500plat_machine_init(MachineClass *mc)
-     mc->desc =3D "generic paravirt e500 platform";
-     mc->init =3D e500plat_init;
-     mc->max_cpus =3D 32;
--    mc->has_dynamic_sysbus =3D true;
-+    /*TODO: allow only sysbus devices that really work with this machine=
- */
-+    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_SYS_BUS_DEVICE);
-     mc->default_cpu_type =3D POWERPC_CPU_TYPE_NAME("e500v2_v30");
- }
-=20
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index dfd352c473..95f7f95dd1 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -3786,7 +3786,8 @@ static void spapr_machine_class_init(ObjectClass *o=
-c, void *data)
-     mc->default_boot_order =3D "";
-     mc->default_ram_size =3D 512 * M_BYTE;
-     mc->kvm_type =3D spapr_kvm_type;
--    mc->has_dynamic_sysbus =3D true;
-+    /*TODO: allow only sysbus devices that really work with this machine=
- */
-+    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_SYS_BUS_DEVICE);
-     mc->pci_allow_0_address =3D true;
-     mc->get_hotplug_handler =3D spapr_get_hotplug_handler;
-     hc->pre_plug =3D spapr_machine_device_pre_plug;
-diff --git a/hw/xen/xen_backend.c b/hw/xen/xen_backend.c
-index 0f849a26d2..82380ea9ee 100644
---- a/hw/xen/xen_backend.c
-+++ b/hw/xen/xen_backend.c
-@@ -564,7 +564,12 @@ static void xen_set_dynamic_sysbus(void)
-     ObjectClass *oc =3D object_get_class(machine);
-     MachineClass *mc =3D MACHINE_CLASS(oc);
-=20
--    mc->has_dynamic_sysbus =3D true;
-+    /*
-+     * Emulate old mc->has_dynamic_sysbus=3Dtrue assignment
-+     *
-+     *TODO: add only Xen devices to the list
-+     */
-+    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_SYS_BUS_DEVICE);
- }
-=20
- int xen_be_register(const char *type, struct XenDevOps *ops)
---=20
-2.14.3
+Thanks
 
+Eric

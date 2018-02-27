@@ -1,96 +1,96 @@
-Received: by 10.28.71.27 with SMTP id u27csp5068335wma;
-        Tue, 27 Feb 2018 09:27:30 -0800 (PST)
-X-Google-Smtp-Source: AH8x227lbndRXEKUSuWY2xHUnKCofIvUUjSNsq8gNSVpavUg33v+Jxzn+e1jskV2TC3JoTMHbRu8
-X-Received: by 10.13.212.196 with SMTP id w187mr9993177ywd.143.1519752450067;
-        Tue, 27 Feb 2018 09:27:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519752450; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp5159146wma;
+        Tue, 27 Feb 2018 11:04:11 -0800 (PST)
+X-Google-Smtp-Source: AH8x225DUj9yy8W3EKOfIVBPhJorzeYU1k+NWQ1y4u+djpF0NtfN2diihejuael8b3SZVJzG/9wU
+X-Received: by 10.13.225.18 with SMTP id k18mr10151384ywe.512.1519758251285;
+        Tue, 27 Feb 2018 11:04:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519758251; cv=none;
         d=google.com; s=arc-20160816;
-        b=AaQHIjNRjANgvrufV0nWLM4Y5tKQ+jl75D2IcffN7ajNsXC8KHzmydpz0qoEHqpwTk
-         vuMMMy0VWBVd3RXXbTwkq5TwoAqeWSATOXJqzP8SLKi3i76ccVljpF1hIPilT9AKu/sn
-         57BmtlIO/7ppP03pFk0I3CIIeNT4CPNG05b1xn3CWEY6XfO5ErDonJA9JRC3e4NCFEWS
-         uvw3YCKrdY/tDoSODOSn1za2qOwohVmh5txyFfAlK0t+0SCY7CYKaN/Cmes0dH9osBzn
-         xjessPlmjSLWktp8jfUAlxvm5ont0fvQ6bCtqFdhdrXV6HMC7PXW9g2ByIa5uDHnAGQR
-         /kjQ==
+        b=dhz658NObcQ6VY1y22oZb6NHxYvALKu5FPdAFfFibuIFT4Bc7iUs681x9MM8uMlxPn
+         CzUhw5PBE3fqgLgLkw5cP5l41QhKs2gdTJPC+uOtMNk9W2yeyHiuF1qNESfw06w9Ye1p
+         EwTsnnksjI3YMBtKwP8h/M93IZvXX/wTC1tH042Kk0JC2bgzDYS5yhp7ocMPaXhVbXf0
+         YDoyAr/1S06dqfm6Up8FVEEoD8SW4oRXqU7cj2aMw6WIn9QwPC1HYAJ8LgQKDKR43nGs
+         ZxQb+ycHBxnjiPlJZP/iW+G2MbRTzed/4rjShopalNhad5MOSMUq1SpiPkJv5mKwT41K
+         H39g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=Ad53eF5SylCmxHNEOBgipdm64CP/EmpEKaHlYsi5mmE=;
-        b=YRkn09X4YDMbPjzeSE8mi0ed3imPwVX6XQhDSXXSys25ZSVxhgs54/FOtPZ2Tccr73
-         p0RqSU55YeHWqI1q9/8hizW3UHJVAAIz1fRmEMA6+VY1OSotVZLO1T7XJ4mcJok2ociG
-         n/dyJBgYZ3+v/2vcmrEc5QXoPC5P7jPZta41kD+ZJmZzEzh4zMxmqMfjH8Xuhjf7Herk
-         6Q5jGa+T9VgjPXYrTNEi0vFbS9sib32J6lxzMW0k9HJS0qTEMoIuP8Hb+Ae0V3hxVGMf
-         1cTKWa83EKO7ku/VmpZAnQhOUUtHNh6/Vxlj8eW1Wnh3eHwe8huiw5JIT2JySH/XiTm6
-         O9wQ==
+        bh=842gACRWW8CNJZzgIGhKZjc9KUNt2pitwi6VvzPbT1g=;
+        b=iSB01f1bHrLQ0qdCXImGMJbv0157TwifR27aJUqHulAqZeVp5fKf2xPO+c83VS8ZQb
+         ImohuKqu9O+46MT7YFxMUTdn+/wM4cfO68znhGFIJiGQycyczmaPeYkPCumCVmYGbdJ9
+         mdeTZvydIA/L17lz1Anm47YmONk6X4Mz272cSbQqea+dz/moME3k2N1u+ye6S7CjQznx
+         doCbvL/QdPAnPWUnHGyAyRyXaGO34FlPugHWux4z3P8STtgh8P4zTW8JdW0p+Nenjswf
+         TPuqlCRu6eDCyexBqfDVQAfLoyZG/adjs7gUCOg0tWN0wn8E9xp4QMcRIbJmVG7GFHhH
+         GSbw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Qq1HIzPP;
+       dkim=fail header.i=@linaro.org header.s=google header.b=RvU8B7mi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x9si1998688ywl.628.2018.02.27.09.27.29
+        by mx.google.com with ESMTPS id m10si2019419ywb.799.2018.02.27.11.04.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 27 Feb 2018 09:27:30 -0800 (PST)
+        Tue, 27 Feb 2018 11:04:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Qq1HIzPP;
+       dkim=fail header.i=@linaro.org header.s=google header.b=RvU8B7mi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39010 helo=lists.gnu.org)
+Received: from localhost ([::1]:39464 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eqj2H-0007Ji-Ek
-	for alex.bennee@linaro.org; Tue, 27 Feb 2018 12:27:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56521)
+	id 1eqkXq-0006D0-Kp
+	for alex.bennee@linaro.org; Tue, 27 Feb 2018 14:04:10 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55119)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eqj25-0007HH-0i
-	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 12:27:17 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1eqkWk-0005To-KX
+	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 14:03:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eqj24-00076b-4n
-	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 12:27:17 -0500
-Received: from mail-ot0-x234.google.com ([2607:f8b0:4003:c0f::234]:46158)
+	(envelope-from <peter.maydell@linaro.org>) id 1eqkWf-0002Uf-1S
+	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 14:03:02 -0500
+Received: from mail-oi0-x22c.google.com ([2607:f8b0:4003:c06::22c]:38457)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eqj23-00076H-UZ
-	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 12:27:16 -0500
-Received: by mail-ot0-x234.google.com with SMTP id g97so4481422otg.13
-	for <qemu-arm@nongnu.org>; Tue, 27 Feb 2018 09:27:15 -0800 (PST)
+	id 1eqkWe-0002UP-Rp
+	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 14:02:56 -0500
+Received: by mail-oi0-x22c.google.com with SMTP id 123so11239670oig.5
+	for <qemu-arm@nongnu.org>; Tue, 27 Feb 2018 11:02:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=Ad53eF5SylCmxHNEOBgipdm64CP/EmpEKaHlYsi5mmE=;
-	b=Qq1HIzPPN2YL9Oqm/yXXzOoFWA//Mze3NEbyhxegyKSPpx/alZEc2/hUXLMj6jDEY9
-	Bq5gPMZoOyZtK4Li8qzoZ34FzLHGClOp9hkF0rxKvIUq8chW+nxuzOJa7G9BouoV1pSF
-	ozqVhkunSRxT8BxZQ3L6DKoxZocBAlFj9/IGw=
+	:cc; bh=842gACRWW8CNJZzgIGhKZjc9KUNt2pitwi6VvzPbT1g=;
+	b=RvU8B7miScasHqx2U9Gil+1s/PT3TBimOB5QpObYrp8JyHOZzJdbk5Ur4KyM6PcUtB
+	x1v0KWAdlO/z/Dcq+cN35tOxNr2EfmUgFT0s9UHouJtmvevH1wcTqTC91kekIr3zzKvX
+	h8anpco60FGSRGDA4EHBHqiD2Gxa5aJrHJWl0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=Ad53eF5SylCmxHNEOBgipdm64CP/EmpEKaHlYsi5mmE=;
-	b=iVIbWNFxLea+pF0qgtIsnO6dYaOeXjBCdu7myGO3nPPCrmmAqd6gt/h8M4n9XPUTlt
-	S5Jg3zVOa5kI4yRSuln5AgvlkjsX6Cm065xnrOghae0ieIhXzhQGbTroASPuEj/z0apM
-	0I98C4tLO43jldLOXAXT0R/RczA2H25GD9KF63yAeji/H9KONxm6jUHcty8uBZgGeA97
-	fqJZDQ4/2lIBaw+L2oOqXummoHWsufoO+Ez8pXLIs0meNSFZKfwurhDo/A2iwvgI/ToG
-	5iuIlJlx/y/8CACT+1misZW6TEIkUZRaQO6o52pEa+B7nrg/7WYS58KwcsjeqnJGfAGa
-	ocTQ==
-X-Gm-Message-State: APf1xPA/QzHpRbeHhIZNKtz37VWtYIRQVTbz9zKxP0sV9O4vXsuJtutL
-	G8J0aa/C6SOan7i6xhCTNmdaDuRoaE3B7mpNE0wnIA==
-X-Received: by 10.157.27.17 with SMTP id l17mr11190370otl.294.1519752435148;
-	Tue, 27 Feb 2018 09:27:15 -0800 (PST)
+	bh=842gACRWW8CNJZzgIGhKZjc9KUNt2pitwi6VvzPbT1g=;
+	b=kUjLkzf/N9AXMj7iyx3kpYc/aX8sTUQnxemiepM0lwJ2BpOgJ+uHg1NzSrgvoABPJs
+	YjvsTLA9xXBv4FBolWOJTaJ6FYLByAAJTmFfvNPL1cLqhzw9J6nnsb6GyOsZDeN4r0HE
+	cq4syuhIRJzmWtWXywfJv2pNw7nIYfHZ/xSTXrw2hy+iap7L2Y5ODjsb+imYBavrq3qn
+	/Ihr/qLYr3M+EXvg+D6AUgctq1g1NQ/IWEEPvT5K8sv/Df25Tj7gYl3QbFehBTI8/eD0
+	FVIJZBMj6MPfle8WChPMXcUw6oWJJQ2W0gQzNaj6r6x9K+S3N9rr7SkPezpUSwLUgv3O
+	XHug==
+X-Gm-Message-State: APf1xPCyTnrABB65EIEDF7FT2i4TTR9HU1nTX4oiEsdIT5GJf2tle2qP
+	byoe7e3/JfAdC12OrVYx1qTs0A+v/Yecnk4yZ4lKhw==
+X-Received: by 10.202.90.138 with SMTP id o132mr3828427oib.11.1519758176020;
+	Tue, 27 Feb 2018 11:02:56 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.157.33.100 with HTTP; Tue, 27 Feb 2018 09:26:54 -0800 (PST)
-In-Reply-To: <20180227104903.21353-1-linus.walleij@linaro.org>
-References: <20180227104903.21353-1-linus.walleij@linaro.org>
+Received: by 10.157.33.100 with HTTP; Tue, 27 Feb 2018 11:02:35 -0800 (PST)
+In-Reply-To: <1518893216-9983-1-git-send-email-eric.auger@redhat.com>
+References: <1518893216-9983-1-git-send-email-eric.auger@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 27 Feb 2018 17:26:54 +0000
-Message-ID: <CAFEAcA9h9VjyS7QjHiRkYwThGyK0NErWSPxMGD=iRT82qECi8Q@mail.gmail.com>
-To: Linus Walleij <linus.walleij@linaro.org>
+Date: Tue, 27 Feb 2018 19:02:35 +0000
+Message-ID: <CAFEAcA9KzitEO21Rgh8Azip+gVJjyobzNbk8sHuQf-ngg+Jjxg@mail.gmail.com>
+To: Eric Auger <eric.auger@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::234
-Subject: Re: [Qemu-arm] [PATCH 0/5] Versatile Express SiI9022 emulation
+X-Received-From: 2607:f8b0:4003:c06::22c
+Subject: Re: [Qemu-arm] [PATCH v9 00/14] ARM SMMUv3 Emulation Support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,38 +102,44 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+	Jean-Philippe Brucker <jean-philippe.brucker@arm.com>,
+	Tomasz Nowicki <tn@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	Peter Xu <peterx@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	Christoffer Dall <christoffer.dall@linaro.org>,
+	linuc.decode@gmail.com, Bharat Bhushan <bharat.bhushan@nxp.com>,
+	Prem Mallappa <prem.mallappa@gmail.com>, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5FAsOa6OnZW+
+X-TUID: A1XEY15NnkvT
 
-On 27 February 2018 at 10:48, Linus Walleij <linus.walleij@linaro.org> wrote:
-> This series adds proper display bridge/connector emulation
-> for the Versatile Express, implementing a simple Silicon
-> Image 9022 emulation spawning a DDC I2C child.
+On 17 February 2018 at 18:46, Eric Auger <eric.auger@redhat.com> wrote:
+> This series implements the emulation code for ARM SMMUv3.
 >
-> After the series the Versatile Express is successfully
-> presented the "QEMU monitor" through DDC I2C.
+> SMMUv3 gets instantiated by adding ",iommu=smmuv3" to the virt
+> machine option.
 >
-> The series includes two refactorings from Corey and a
-> minor bug fix for the i2c-ddc so that everything is smoothly
-> integrated.
+> VHOST integration will be handled in a separate series. VFIO
+> integration is not targeted at the moment. Only stage 1 and
+> AArch64 PTW are supported.
 >
-> Corey Minyard (2):
->   i2c: Fix some brace style issues
->   i2c: Move the bus class to i2c.h
->
-> Linus Walleij (3):
->   hw/i2c-ddc: Do not fail writes
->   hw/sii9022: Add support for Silicon Image SII9022
->   arm/vexpress: Add proper display connector emulation
+> Main changes since v8:
+> - fix mingw compilation (qemu/log.h)
+> - put gpl v2 license on all files to respect initial license
+> - change proto of smmu_ptw* to clarify inputs/outputs and
+>   prepare for iotlb emulation
+> - fix hash table lookup
+> - cleanup access type handling during ptw
+> - cleanup reset infra (parent_reset)
+> - replace some inline functions by macros
+> - fix some CMD fields
+> - increment cmdq cons only after cmd execution
+> - replace some remaining error_report by qemu_log_mask
 
-Hi; I've applied this to target-arm.next with the tweak to
-the commit message of patch 5 and the reset function in patch 4.
-Let me know if you think those are wrong or you'd prefer to
-respin the series yourself.
+What state is this series in now? Is it "seems ready to
+go, needs review"? Are you hoping it might get in for 2.12,
+or targeting 2.13 ?
 
 thanks
 -- PMM

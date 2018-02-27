@@ -1,90 +1,90 @@
-Received: by 10.28.71.27 with SMTP id u27csp4963009wma;
-        Tue, 27 Feb 2018 07:45:18 -0800 (PST)
-X-Google-Smtp-Source: AH8x227AvoAimy4rb17O91OYN3yJ6s5bzp/tRcUR1/850CLeFxygGlHfB4w8jYTgjzMRL7LqSfxQ
-X-Received: by 10.129.74.139 with SMTP id x133mr9701599ywa.400.1519746318028;
-        Tue, 27 Feb 2018 07:45:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519746318; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp4967925wma;
+        Tue, 27 Feb 2018 07:50:20 -0800 (PST)
+X-Google-Smtp-Source: AG47ELs1+znVbPtKbxFjV+G/ZXgmm1c/oMg/nhwAUQDG9IWXR3ADHeLBh9+D1ykuJtCLdf0eJ4vf
+X-Received: by 2002:a25:6e8b:: with SMTP id j133-v6mr7091436ybc.206.1519746620282;
+        Tue, 27 Feb 2018 07:50:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519746620; cv=none;
         d=google.com; s=arc-20160816;
-        b=pwDJguRY0Pa+n+wejmVIEptc5cd0I0zorQID2awa9m8yiPimZeick2plIr0d+BTEps
-         FzUODx6oRqOV5qmJXbzgLwd/2AsgaoxvLcEJpT7UAu4ZVh8pZrvj0ARm+UGJy0IMBvEL
-         6q3LDj+AEnkADnuN4H1MlAWmDC8umH5Cg2KR283F4xR1wvMpRPANqa9fll1LLfDSjTTy
-         vtG9pJEULkBnG/5mmJny6upjgYAP4XYlSrVkfrpev8dZTG5QcjBBmLSPBRvAkwqp/E/I
-         GbLjjuK5uSbT+H2JrKq5RgofbTj0Vv7wENHOUNHvfcj7GGmwnKAjmzFf1+Vgd2kTSJfD
-         Pl0g==
+        b=fGnP1O1VLbDmPKWUD9Wcmavyv+JWts4W5Hca1UQIodVw4prgrx1/ZacelkOWjXAkmT
+         Dr6N0Tx40RX2fLmcy7mWfX5uKc+v0y3D+6zbaGUaYIGm0sC9/zW/UXruY3RHVhXogVXC
+         SCeOYTPId2USoaD6AkVBxx5h2g5/FtNCgiBYbbR+eG7W+o3V00P+44CCgaswTYPXpqDE
+         EB34cGiot0woVFIh0bX+YW2UO8vrqw2rBSDprP4VP6BTRDx0ZPbFBRIeooSWud/el1tX
+         nTQoz1qW7Xh7pyEcAzvVKUlUbVDdXdGBXkIwxTTXaM6jdRvhlRDY+q7qoYRRiLswbG86
+         7wRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:to:from:date:arc-authentication-results;
-        bh=A1Uj5wONMskJWXF900O6oqOVPj22/9JWGBreMKhuuhg=;
-        b=ViUfNUpejzgt0Mv8BJpfNWI20fPVh5moTPHhprq3syPMweznkjqQKZG0HRLaEk1lVv
-         7llBONHliMmTyEQXanWwOn0Ubc57LY0ST42lolnTCIyAI/9EOsBdc3l82XqPY8piPptP
-         Q/sTFk7PCsD7GW8iLe4GGKT/Z5fUU5dD0IBOJ89mjnj2ep/muVuuWmnZWAoaTzNNFgOI
-         Vbnxh2PNQ2202rOwliUgQy28QlAX3PftUoUs8Ik9UOBcNT1KkwzgPRJ2RjbyfgTPjzcW
-         NsH+Qdb4mWtYdBEHKhrCZholjiOD8i0fTCItZNOGMkEngZXgNKXMq4hxHICBf1+JQyko
-         mQ8Q==
+        bh=PdCPrsDFRjUAyZhSJa5DJ6W7OdsIhjVFubph6ME9cN0=;
+        b=pX9pnaKooUSAyOTii1RAG+Q2gKgmMSXcBUoN5OUM6+B/RwfTj3pkEolBSILCYwP+z2
+         0u/pbrYyKzqnQIhiTDREg8nbeiyfKygGzTqIBWR8yFD9FpWW/sNWt13Ma74ZyjNgQIvD
+         A4zxHl3ZIQkvWQ8dcnGr6s840zx7xhS3MBejgFQxw4QWGuq0O1lnX9aMvvqnTHNp2ixf
+         mV2ZC6pwWxP1h46ZNTXuhWGHOCCo9nbfTsD0o/nyppYHwKxJ79xZC6ZGS7HtTa1214Sg
+         q005uMSlxft6oG7AqTMCGqs+8M1y9XLVPFx+qFdUFrrE2rDTmX9vVuFNnppMK9skYyEU
+         iOCA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t203si956295ywe.591.2018.02.27.07.45.17
+        by mx.google.com with ESMTPS id f131si1981188ywb.49.2018.02.27.07.50.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 27 Feb 2018 07:45:17 -0800 (PST)
+        Tue, 27 Feb 2018 07:50:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38172 helo=lists.gnu.org)
+Received: from localhost ([::1]:38200 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eqhRN-0001Ii-AN
-	for alex.bennee@linaro.org; Tue, 27 Feb 2018 10:45:17 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46149)
+	id 1eqhWF-0005NU-K6
+	for alex.bennee@linaro.org; Tue, 27 Feb 2018 10:50:19 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47106)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1eqhQo-0001Dc-GO
-	for qemu-devel@nongnu.org; Tue, 27 Feb 2018 10:44:45 -0500
+	(envelope-from <imammedo@redhat.com>) id 1eqhVf-0005LY-HF
+	for qemu-devel@nongnu.org; Tue, 27 Feb 2018 10:49:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1eqhQj-0006c7-0M
-	for qemu-devel@nongnu.org; Tue, 27 Feb 2018 10:44:42 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:37592 helo=mx1.redhat.com)
+	(envelope-from <imammedo@redhat.com>) id 1eqhVe-0001gl-6u
+	for qemu-devel@nongnu.org; Tue, 27 Feb 2018 10:49:43 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:57096 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1eqhQc-0006Y3-T5; Tue, 27 Feb 2018 10:44:31 -0500
+	id 1eqhVX-0001XD-Et; Tue, 27 Feb 2018 10:49:35 -0500
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5EC7140FB656;
-	Tue, 27 Feb 2018 15:44:30 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5D21340201A5;
+	Tue, 27 Feb 2018 15:49:31 +0000 (UTC)
 Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 2B8AA1C73F;
-	Tue, 27 Feb 2018 15:44:25 +0000 (UTC)
-Date: Tue, 27 Feb 2018 16:44:24 +0100
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 211E51C73F;
+	Tue, 27 Feb 2018 15:49:21 +0000 (UTC)
+Date: Tue, 27 Feb 2018 16:49:20 +0100
 From: Igor Mammedov <imammedo@redhat.com>
 To: Auger Eric <eric.auger@redhat.com>
-Message-ID: <20180227164424.21db3095@redhat.com>
-In-Reply-To: <68d715a4-34f9-3900-1e1f-be94e16a871a@redhat.com>
+Message-ID: <20180227164920.047b4885@redhat.com>
+In-Reply-To: <9277c150-6830-8fb1-0092-4bdfd6ba0486@redhat.com>
 References: <1519303376-92875-1-git-send-email-imammedo@redhat.com>
-	<1519303376-92875-6-git-send-email-imammedo@redhat.com>
-	<68d715a4-34f9-3900-1e1f-be94e16a871a@redhat.com>
+	<1519303376-92875-9-git-send-email-imammedo@redhat.com>
+	<9277c150-6830-8fb1-0092-4bdfd6ba0486@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Tue, 27 Feb 2018 15:44:30 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Tue, 27 Feb 2018 15:44:30 +0000 (UTC) for IP:'10.11.54.5'
+	(mx1.redhat.com [10.11.55.6]);
+	Tue, 27 Feb 2018 15:49:31 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Tue, 27 Feb 2018 15:49:31 +0000 (UTC) for IP:'10.11.54.5'
 	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'imammedo@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-devel] [PATCH 5/9] pc: acpi: isolate FADT specific data
- into AcpiFadtData structure
+Subject: Re: [Qemu-devel] [PATCH 8/9] virt_arm: acpi: reuse common
+ build_fadt()
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,414 +101,164 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
 	qemu-arm@nongnu.org, Shannon Zhao <zhaoshenglong@huawei.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: J5Bxb3uW9vQ2
+X-TUID: pOhVdrXWonyK
 
-On Tue, 27 Feb 2018 14:47:16 +0100
+On Tue, 27 Feb 2018 16:07:49 +0100
 Auger Eric <eric.auger@redhat.com> wrote:
 
 > Hi Igor,
-> 
 > On 22/02/18 13:42, Igor Mammedov wrote:
-> > move FADT data initialization out of fadt_setup() into dedicated
-> > init_fadt_data() that will set common for pc/q35 values in
-> > AcpiFadtData structure and acpi_get_pm_info() will complement
-> > it with pc/q35 specific values initialization.  
-> acpi_get_pm_info only adds reset stuff + version info on top of
-> previously initialized common data, right?
-yep
-
-> > That will allow to get rid of fadt_setup() and generalize
-> > build_fadt() so it could be easily extended for rev5 and
-> > reused by ARM target.
-> > 
-> > While at it also move facs/dsdt/xdsdt offsets from build_fadt()
-> > arg list into AcpiFadtData, as they belong to the same dataset.
+> > Extend generic build_fadt() to support rev5.1 FADT
+> > and reuse it for 'virt' board, it would allow to
+> > phase out usage of AcpiFadtDescriptorRev5_1 and
+> > later ACPI_FADT_COMMON_DEF.  
+> Oups sorry sent the R-b to fast. Some small comments below.
 > > 
 > > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 > > ---
-> >  include/hw/acpi/acpi-defs.h |  28 ++++++
-> >  hw/i386/acpi-build.c        | 204 ++++++++++++++++++++++++--------------------
-> >  2 files changed, 138 insertions(+), 94 deletions(-)
+> >  include/hw/acpi/acpi-defs.h | 12 ++----------
+> >  hw/acpi/aml-build.c         | 21 ++++++++++++++++++++-
+> >  hw/arm/virt-acpi-build.c    | 33 ++++++++++++---------------------
+> >  3 files changed, 34 insertions(+), 32 deletions(-)
 > > 
 > > diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-> > index 9942bc5..e0accc4 100644
+> > index e0accc4..34e49dc 100644
 > > --- a/include/hw/acpi/acpi-defs.h
 > > +++ b/include/hw/acpi/acpi-defs.h
-> > @@ -175,6 +175,34 @@ struct AcpiFadtDescriptorRev5_1 {
+> > @@ -165,16 +165,6 @@ struct AcpiFadtDescriptorRev3 {
+> >  } QEMU_PACKED;
+> >  typedef struct AcpiFadtDescriptorRev3 AcpiFadtDescriptorRev3;
 > >  
-> >  typedef struct AcpiFadtDescriptorRev5_1 AcpiFadtDescriptorRev5_1;
+> > -struct AcpiFadtDescriptorRev5_1 {
+> > -    ACPI_FADT_COMMON_DEF
+> > -    /* 64-bit Sleep Control register (ACPI 5.0) */
+> > -    struct AcpiGenericAddress sleep_control;
+> > -    /* 64-bit Sleep Status register (ACPI 5.0) */
+> > -    struct AcpiGenericAddress sleep_status;
+> > -} QEMU_PACKED;
+> > -
+> > -typedef struct AcpiFadtDescriptorRev5_1 AcpiFadtDescriptorRev5_1;
+> > -
+> >  typedef struct AcpiFadtData {
+> >      struct AcpiGenericAddress pm1_cnt;   /* PM1a_CNT_BLK */
+> >      struct AcpiGenericAddress pm1_evt;   /* PM1a_EVT_BLK */
+> > @@ -192,6 +182,8 @@ typedef struct AcpiFadtData {
+> >      uint8_t  rtc_century;      /* CENTURY */
+> >      uint16_t c2_latency;       /* P_LVL2_LAT */
+> >      uint16_t c3_latency;       /* P_LVL3_LAT */
+> > +    uint16_t arm_boot_arch;    /* ARM_BOOT_ARCH */
+> > +    uint8_t minor_ver;         /* FADT Minor Version */
 > >  
-> > +typedef struct AcpiFadtData {
-> > +    struct AcpiGenericAddress pm1_cnt;   /* PM1a_CNT_BLK */  
-> Any reason why we don't use the same field names as in
-> AcpiFadtDescriptorRev3?
-I'll amend it on respin as you suggest.
-
+> >      /*
+> >       * respective tables offsets within ACPI_BUILD_TABLE_FILE,
+> > diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> > index 17fb71b..5a33cd0 100644
+> > --- a/hw/acpi/aml-build.c
+> > +++ b/hw/acpi/aml-build.c  
 > 
-> for instance pm1a_cnt?
-> > +    struct AcpiGenericAddress pm1_evt;   /* PM1a_EVT_BLK */  
-> pm1a_evt?
-> > +    struct AcpiGenericAddress pm_tmr;    /* PM_TMR_BLK */
-> > +    struct AcpiGenericAddress gpe0_blk;  /* GPE0_BLK */
-> > +    struct AcpiGenericAddress reset_reg; /* RESET_REG */
-> > +    uint8_t reset_val;         /* RESET_VALUE */
-> > +    uint8_t  rev;              /* Revision */
-> > +    uint32_t flags;            /* Flags */
-> > +    uint32_t smi_cmd;          /* SMI_CMD */
-> > +    uint16_t sci_int;          /* SCI_INT */
-> > +    uint8_t  int_model;        /* INT_MODEL */
-> > +    uint8_t  acpi_enable_cmd;  /* ACPI_ENABLE */
-> > +    uint8_t  acpi_disable_cmd; /* ACPI_DISABLE */
-> > +    uint8_t  rtc_century;      /* CENTURY */
-> > +    uint16_t c2_latency;       /* P_LVL2_LAT */  
-> same?
-> > +    uint16_t c3_latency;       /* P_LVL3_LAT */
-> > +
-> > +    /*
-> > +     * respective tables offsets within ACPI_BUILD_TABLE_FILE,
-> > +     * NULL if table doesn't exist (in that case field's value
-> > +     * won't be patched by linker and will be kept set to 0)
-> > +     */
-> > +    unsigned *facs_tbl_offset; /* FACS offset in */
-> > +    unsigned *dsdt_tbl_offset;
-> > +    unsigned *xdsdt_tbl_offset;
-> > +} AcpiFadtData;
-> > +
-> >  #define ACPI_FADT_ARM_PSCI_COMPLIANT  (1 << 0)
-> >  #define ACPI_FADT_ARM_PSCI_USE_HVC    (1 << 1)
-> >  
-> > diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> > index b85fefe..706ba35 100644
-> > --- a/hw/i386/acpi-build.c
-> > +++ b/hw/i386/acpi-build.c
-> > @@ -91,17 +91,11 @@ typedef struct AcpiMcfgInfo {
-> >  } AcpiMcfgInfo;
-> >  
-> >  typedef struct AcpiPmInfo {
-> > -    bool force_rev1_fadt;
-> >      bool s3_disabled;
-> >      bool s4_disabled;
-> >      bool pcihp_bridge_en;
-> >      uint8_t s4_val;
-> > -    uint16_t sci_int;
-> > -    uint8_t acpi_enable_cmd;
-> > -    uint8_t acpi_disable_cmd;
-> > -    uint32_t gpe0_blk;
-> > -    uint32_t gpe0_blk_len;
-> > -    uint32_t io_base;
-> > +    AcpiFadtData fadt;
-> >      uint16_t cpu_hp_io_base;
-> >      uint16_t pcihp_io_base;
-> >      uint16_t pcihp_io_len;
-> > @@ -124,20 +118,60 @@ typedef struct AcpiBuildPciBusHotplugState {
-> >      bool pcihp_bridge_en;
-> >  } AcpiBuildPciBusHotplugState;
-> >  
-> > +#define ACPI_PORT_SMI_CMD           0x00b2 /* TODO: this is APM_CNT_IOPORT */  
-> Can't we take benefit of this series to move that define in hw/isa/apm.h?
-> > +
-> > +static void init_fadt_data(Object *o, AcpiFadtData *data)
-> > +{
-> > +    uint32_t io = object_property_get_uint(o, ACPI_PM_PROP_PM_IO_BASE, NULL);
-> > +    AmlAddressSpace as = AML_AS_SYSTEM_IO;
-> > +    AcpiFadtData fadt = {
-> > +        .rev = 3,
-> > +        .flags =
-> > +            (1 << ACPI_FADT_F_WBINVD) |
-> > +            (1 << ACPI_FADT_F_PROC_C1) |
-> > +            (1 << ACPI_FADT_F_SLP_BUTTON) |
-> > +            (1 << ACPI_FADT_F_RTC_S4) |
-> > +            (1 << ACPI_FADT_F_USE_PLATFORM_CLOCK) |
-> > +            /* APIC destination mode ("Flat Logical") has an upper limit of 8
-> > +             * CPUs for more than 8 CPUs, "Clustered Logical" mode has to be
-> > +             * used
-> > +             */
-> > +            ((max_cpus > 8) ? (1 << ACPI_FADT_F_FORCE_APIC_CLUSTER_MODEL) : 0),
-> > +        .int_model = 1 /* Multiple APIC */,
-> > +        .rtc_century = RTC_CENTURY,
-> > +        .c2_latency = 0xfff /* C2 state not supported */,
-> > +        .c3_latency = 0xfff /* C3 state not supported */,
-> > +        .smi_cmd = ACPI_PORT_SMI_CMD,
-> > +        .sci_int = object_property_get_uint(o, ACPI_PM_PROP_SCI_INT, NULL),
-> > +        .acpi_enable_cmd =
-> > +            object_property_get_uint(o, ACPI_PM_PROP_ACPI_ENABLE_CMD, NULL),
-> > +        .acpi_disable_cmd =
-> > +            object_property_get_uint(o, ACPI_PM_PROP_ACPI_DISABLE_CMD, NULL),
-> > +        .pm1_evt = { .space_id = as, .bit_width = 4 * 8, .address = io },
-> > +        .pm1_cnt = { .space_id = as, .bit_width = 2 * 8, .address = io + 0x04 },
-> > +        .pm_tmr = { .space_id = as, .bit_width = 4 * 8, .address = io + 0x08 },
-> > +        .gpe0_blk = { .space_id = as, .bit_width =
-> > +            object_property_get_uint(o, ACPI_PM_PROP_GPE0_BLK_LEN, NULL) * 8,
-> > +            .address = object_property_get_uint(o, ACPI_PM_PROP_GPE0_BLK, NULL)
-> > +        },
-> > +    };
-> > +    *data = fadt;
-> > +}
-> > +
-> >  static void acpi_get_pm_info(AcpiPmInfo *pm)
-> >  {
-> >      Object *piix = piix4_pm_find();
-> >      Object *lpc = ich9_lpc_find();
-> >      Object *obj = piix ? piix : lpc;
-> >      QObject *o;
-> > -
-> > -    pm->force_rev1_fadt = false;
-> >      pm->cpu_hp_io_base = 0;
-> >      pm->pcihp_io_base = 0;
-> >      pm->pcihp_io_len = 0;
-> > +
-> > +    init_fadt_data(obj, &pm->fadt);
-> >      if (piix) {
-> >          /* w2k requires FADT(rev1) or it won't boot, keep PC compatible */
-> > -        pm->force_rev1_fadt = true;
-> > +        pm->fadt.rev = 1;
-> >          pm->cpu_hp_io_base = PIIX4_CPU_HOTPLUG_IO_BASE;
-> >          pm->pcihp_io_base =
-> >              object_property_get_uint(obj, ACPI_PCIHP_IO_BASE_PROP, NULL);
-> > @@ -145,10 +179,19 @@ static void acpi_get_pm_info(AcpiPmInfo *pm)
-> >              object_property_get_uint(obj, ACPI_PCIHP_IO_LEN_PROP, NULL);
-> >      }
-> >      if (lpc) {
-> > +        struct AcpiGenericAddress r = { .space_id = AML_AS_SYSTEM_IO,
-> > +            .bit_width = 8, .address = ICH9_RST_CNT_IOPORT };
-> > +        pm->fadt.reset_reg = r;
-> > +        pm->fadt.reset_val = 0xf;
-> > +        pm->fadt.flags |= 1 << ACPI_FADT_F_RESET_REG_SUP;
-> >          pm->cpu_hp_io_base = ICH9_CPU_HOTPLUG_IO_BASE;  
-> Wouldn't it be possible to pass an other parameter to init_fadt_data()
-> to tell whether we are in pc or q35 or the target rev and do those
-> initializations there?
-It's possible but I wanted to keep pc/q35 specific pieces explicitly
-split from common data initialization as personally for me this way
-it's easier to see difference (i.e. there is no need to jump into init_fadt_data()).
+> nit: comment above needs to be extended to rev5.1 support
+Thanks, I'll fix it up on respin.
 
-Perhaps I should rename init_fadt_data() to init_common_fadt_data().
-
-
-> >      }
-> >      assert(obj);
+> > @@ -1755,7 +1755,14 @@ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
 > >  
-> > +    /* The above need not be conditional on machine type because the reset port
-> > +     * happens to be the same on PIIX (pc) and ICH9 (q35). */
-> > +    QEMU_BUILD_BUG_ON(ICH9_RST_CNT_IOPORT != RCR_IOPORT);
-> > +
-> >      /* Fill in optional s3/s4 related properties */
-> >      o = object_property_get_qobject(obj, ACPI_PM_PROP_S3_DISABLED, NULL);
-> >      if (o) {
-> > @@ -172,22 +215,6 @@ static void acpi_get_pm_info(AcpiPmInfo *pm)
-> >      }
-> >      qobject_decref(o);
-> >  
-> > -    /* Fill in mandatory properties */
-> > -    pm->sci_int = object_property_get_uint(obj, ACPI_PM_PROP_SCI_INT, NULL);
-> > -
-> > -    pm->acpi_enable_cmd = object_property_get_uint(obj,
-> > -                                                   ACPI_PM_PROP_ACPI_ENABLE_CMD,
-> > -                                                   NULL);
-> > -    pm->acpi_disable_cmd =
-> > -        object_property_get_uint(obj,
-> > -                                 ACPI_PM_PROP_ACPI_DISABLE_CMD,
-> > -                                 NULL);
-> > -    pm->io_base = object_property_get_uint(obj, ACPI_PM_PROP_PM_IO_BASE,
-> > -                                           NULL);
-> > -    pm->gpe0_blk = object_property_get_uint(obj, ACPI_PM_PROP_GPE0_BLK,
-> > -                                            NULL);
-> > -    pm->gpe0_blk_len = object_property_get_uint(obj, ACPI_PM_PROP_GPE0_BLK_LEN,
-> > -                                                NULL);
-> >      pm->pcihp_bridge_en =
-> >          object_property_get_bool(obj, "acpi-pci-hotplug-with-bridge-support",
-> >                                   NULL);
-> > @@ -255,8 +282,6 @@ static void acpi_get_pci_holes(Range *hole, Range *hole64)
-> >                                                 NULL));
-> >  }
-> >  
-> > -#define ACPI_PORT_SMI_CMD           0x00b2 /* TODO: this is APM_CNT_IOPORT */
-> > -
-> >  static void acpi_align_size(GArray *blob, unsigned align)
-> >  {
-> >      /* Align size to multiple of given size. This reduces the chance
-> > @@ -275,73 +300,53 @@ build_facs(GArray *table_data, BIOSLinker *linker)
-> >  }
-> >  
-> >  /* Load chipset information in FADT */
-> > -static void fadt_setup(AcpiFadtDescriptorRev3 *fadt, AcpiPmInfo *pm)
-> > +static void fadt_setup(AcpiFadtDescriptorRev3 *fadt, AcpiFadtData f)
-> >  {
-> > -    fadt->model = 1;
-> > +    fadt->model = f.int_model;
-> >      fadt->reserved1 = 0;
-> > -    fadt->sci_int = cpu_to_le16(pm->sci_int);
-> > -    fadt->smi_cmd = cpu_to_le32(ACPI_PORT_SMI_CMD);
-> > -    fadt->acpi_enable = pm->acpi_enable_cmd;
-> > -    fadt->acpi_disable = pm->acpi_disable_cmd;
-> > +    fadt->sci_int = cpu_to_le16(f.sci_int);
-> > +    fadt->smi_cmd = cpu_to_le32(f.smi_cmd);
-> > +    fadt->acpi_enable = f.acpi_enable_cmd;
-> > +    fadt->acpi_disable = f.acpi_disable_cmd;
-> >      /* EVT, CNT, TMR offset matches hw/acpi/core.c */
-> > -    fadt->pm1a_evt_blk = cpu_to_le32(pm->io_base);
-> > -    fadt->pm1a_cnt_blk = cpu_to_le32(pm->io_base + 0x04);
-> > -    fadt->pm_tmr_blk = cpu_to_le32(pm->io_base + 0x08);
-> > -    fadt->gpe0_blk = cpu_to_le32(pm->gpe0_blk);
-> > +    fadt->pm1a_evt_blk = cpu_to_le32(f.pm1_evt.address);
-> > +    fadt->pm1a_cnt_blk = cpu_to_le32(f.pm1_cnt.address);
-> > +    fadt->pm_tmr_blk = cpu_to_le32(f.pm_tmr.address);
-> > +    fadt->gpe0_blk = cpu_to_le32(f.gpe0_blk.address);
-> >      /* EVT, CNT, TMR length matches hw/acpi/core.c */
-> > -    fadt->pm1_evt_len = 4;
-> > -    fadt->pm1_cnt_len = 2;
-> > -    fadt->pm_tmr_len = 4;
-> > -    fadt->gpe0_blk_len = pm->gpe0_blk_len;
-> > -    fadt->plvl2_lat = cpu_to_le16(0xfff); /* C2 state not supported */
-> > -    fadt->plvl3_lat = cpu_to_le16(0xfff); /* C3 state not supported */
-> > -    fadt->flags = cpu_to_le32((1 << ACPI_FADT_F_WBINVD) |
-> > -                              (1 << ACPI_FADT_F_PROC_C1) |
-> > -                              (1 << ACPI_FADT_F_SLP_BUTTON) |
-> > -                              (1 << ACPI_FADT_F_RTC_S4));
-> > -    fadt->flags |= cpu_to_le32(1 << ACPI_FADT_F_USE_PLATFORM_CLOCK);
-> > -    /* APIC destination mode ("Flat Logical") has an upper limit of 8 CPUs
-> > -     * For more than 8 CPUs, "Clustered Logical" mode has to be used
-> > -     */
-> > -    if (max_cpus > 8) {
-> > -        fadt->flags |= cpu_to_le32(1 << ACPI_FADT_F_FORCE_APIC_CLUSTER_MODEL);
-> > -    }
-> > -    fadt->century = RTC_CENTURY;
-> > -    if (pm->force_rev1_fadt) {
-> > +    fadt->pm1_evt_len = f.pm1_evt.bit_width / 8;
-> > +    fadt->pm1_cnt_len = f.pm1_cnt.bit_width / 8;
-> > +    fadt->pm_tmr_len = f.pm_tmr.bit_width / 8;
-> > +    fadt->gpe0_blk_len = f.gpe0_blk.bit_width / 8;
-> > +    fadt->plvl2_lat = cpu_to_le16(f.c2_latency);
-> > +    fadt->plvl3_lat = cpu_to_le16(f.c3_latency);
-> > +    fadt->flags = cpu_to_le32(f.flags);
-> > +    fadt->century = f.rtc_century;
-> > +    if (f.rev == 1) {
-> >          return;
-> >      }
-> >  
-> > -    fadt->flags |= cpu_to_le32(1 << ACPI_FADT_F_RESET_REG_SUP);
-> > -    fadt->reset_value = 0xf;
-> > -    fadt->reset_register.space_id = AML_SYSTEM_IO;
-> > -    fadt->reset_register.bit_width = 8;
-> > -    fadt->reset_register.address = cpu_to_le64(ICH9_RST_CNT_IOPORT);
-> > -    /* The above need not be conditional on machine type because the reset port
-> > -     * happens to be the same on PIIX (pc) and ICH9 (q35). */
-> > -    QEMU_BUILD_BUG_ON(ICH9_RST_CNT_IOPORT != RCR_IOPORT);
-> > +    fadt->reset_value = f.reset_val;
-> > +    fadt->reset_register = f.reset_reg;
-> > +    fadt->reset_register.address = cpu_to_le64(f.reset_reg.address);
-> >  
-> > -    fadt->xpm1a_event_block.space_id = AML_SYSTEM_IO;
-> > -    fadt->xpm1a_event_block.bit_width = fadt->pm1_evt_len * 8;
-> > -    fadt->xpm1a_event_block.address = cpu_to_le64(pm->io_base);
-> > +    fadt->xpm1a_event_block = f.pm1_evt;
-> > +    fadt->xpm1a_event_block.address = cpu_to_le64(f.pm1_evt.address);
-> >  
-> > -    fadt->xpm1a_control_block.space_id = AML_SYSTEM_IO;
-> > -    fadt->xpm1a_control_block.bit_width = fadt->pm1_cnt_len * 8;
-> > -    fadt->xpm1a_control_block.address = cpu_to_le64(pm->io_base + 0x4);
-> > +    fadt->xpm1a_control_block = f.pm1_cnt;
-> > +    fadt->xpm1a_control_block.address = cpu_to_le64(f.pm1_cnt.address);
-> >  
-> > -    fadt->xpm_timer_block.space_id = AML_SYSTEM_IO;
-> > -    fadt->xpm_timer_block.bit_width = fadt->pm_tmr_len * 8;
-> > -    fadt->xpm_timer_block.address = cpu_to_le64(pm->io_base + 0x8);
-> > +    fadt->xpm_timer_block = f.pm_tmr;
-> > +    fadt->xpm_timer_block.address = cpu_to_le64(f.pm_tmr.address);
-> >  
-> > -    fadt->xgpe0_block.space_id = AML_SYSTEM_IO;
-> > -    fadt->xgpe0_block.bit_width = pm->gpe0_blk_len * 8;
-> > -    fadt->xgpe0_block.address = cpu_to_le64(pm->gpe0_blk);
-> > +    fadt->xgpe0_block = f.gpe0_blk;
-> > +    fadt->xgpe0_block.address = cpu_to_le64(f.gpe0_blk.address);
-> >  }
-> >  
-> >  
-> >  /* FADT */
-> >  static void
-> > -build_fadt(GArray *table_data, BIOSLinker *linker, AcpiPmInfo *pm,
-> > -           unsigned facs_tbl_offset, unsigned dsdt_tbl_offset,
-> > +build_fadt(GArray *table_data, BIOSLinker *linker, AcpiFadtData *f,
-> >             const char *oem_id, const char *oem_table_id)
-> >  {
-> >      AcpiFadtDescriptorRev3 *fadt = acpi_data_push(table_data, sizeof(*fadt));
-> > @@ -349,29 +354,32 @@ build_fadt(GArray *table_data, BIOSLinker *linker, AcpiPmInfo *pm,
-> >      unsigned dsdt_entry_offset = (char *)&fadt->dsdt - table_data->data;
-> >      unsigned xdsdt_entry_offset = (char *)&fadt->x_dsdt - table_data->data;
-> >      int fadt_size = sizeof(*fadt);
-> > -    int rev = 3;
-> >  
-> >      /* FACS address to be filled by Guest linker */
-> > -    bios_linker_loader_add_pointer(linker,
-> > -        ACPI_BUILD_TABLE_FILE, fw_ctrl_offset, sizeof(fadt->firmware_ctrl),
-> > -        ACPI_BUILD_TABLE_FILE, facs_tbl_offset);
-> > +    if (f->facs_tbl_offset) {  
-> this test was not there originally. How does it relate to above changes?
-
-[...]
-> > +    if (f->dsdt_tbl_offset) {  
-> same
-I guess it is sort of slipped in from (7/9) patch,
-as this fields can be 0 and don't need dynamic patching.
-
-Theoretically facs/dsdt could be 0 for x86 too if we drop support
-for 32bit guests (which isn't going to happen).
-
-I can move it to 7/9 which moves build_fadt into generic code from x86 specific,
-which is more appropriate place for it.
-
-
-> > +        bios_linker_loader_add_pointer(linker,
-> > +            ACPI_BUILD_TABLE_FILE, dsdt_entry_offset, sizeof(fadt->dsdt),
-> > +            ACPI_BUILD_TABLE_FILE, *f->dsdt_tbl_offset);
+> >      build_append_gas_from_struct(tbl, &f->reset_reg); /* RESET_REG */
+> >      build_append_int_noprefix(tbl, f->reset_val, 1); /* RESET_VALUE */
+> > -    build_append_int_noprefix(tbl, 0, 3); /* Reserved, ACPI 3.0 */
+> > +    /* Since ACPI 5.1 */
+> > +    if ((f->rev >= 6) || ((f->rev == 5) && f->minor_ver > 0)) {
+> > +        build_append_int_noprefix(tbl, f->arm_boot_arch, 2); /* ARM_BOOT_ARCH */
+> > +        /* FADT Minor Version */
+> > +        build_append_int_noprefix(tbl, f->minor_ver, 1);
+> > +    } else {
+> > +        build_append_int_noprefix(tbl, 0, 3); /* Reserved upto ACPI 5.0 */
 > > +    }
-> > +    if (f->rev == 1) {
-> >          fadt_size = offsetof(typeof(*fadt), reset_register);
-> > -    } else {
-> > +    } else if (f->xdsdt_tbl_offset) {
-> >          bios_linker_loader_add_pointer(linker,
-> >              ACPI_BUILD_TABLE_FILE, xdsdt_entry_offset, sizeof(fadt->x_dsdt),
-> > -            ACPI_BUILD_TABLE_FILE, dsdt_tbl_offset);
-> > +            ACPI_BUILD_TABLE_FILE, *f->xdsdt_tbl_offset);
-> >      }
+> >      build_append_int_noprefix(tbl, 0, 8); /* X_FIRMWARE_CTRL */
 > >  
-> >      build_header(linker, table_data,
-> > -                 (void *)fadt, "FACP", fadt_size, rev, oem_id, oem_table_id);
-> > +                (void *)fadt, "FACP", fadt_size, f->rev,
-> > +                oem_id, oem_table_id);
-> >  }
+> >      /* XDSDT address to be filled by Guest linker at runtime */
+> > @@ -1779,6 +1786,18 @@ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+> >      build_append_gas_from_struct(tbl, &f->gpe0_blk); /* X_GPE0_BLK */
+> >      build_append_gas(tbl, AML_AS_SYSTEM_MEMORY, 0 , 0, 0, 0); /* X_GPE1_BLK */
 > >  
-> >  void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
-> > @@ -2051,7 +2059,12 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-> >      aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
-> >      crs = aml_resource_template();
-> >      aml_append(crs,
-> > -        aml_io(AML_DECODE16, pm->gpe0_blk, pm->gpe0_blk, 1, pm->gpe0_blk_len)
-> > +        aml_io(
-> > +               AML_DECODE16,
-> > +               pm->fadt.gpe0_blk.address,
-> > +               pm->fadt.gpe0_blk.address,
-> > +               1,
-> > +               pm->fadt.gpe0_blk.bit_width / 8)
-> >      );
-> >      aml_append(dev, aml_name_decl("_CRS", crs));
-> >      aml_append(scope, dev);
-> > @@ -2698,7 +2711,10 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
-> >      /* ACPI tables pointed to by RSDT */
-> >      fadt = tables_blob->len;
-> >      acpi_add_table(table_offsets, tables_blob);
-> > -    build_fadt(tables_blob, tables->linker, &pm, facs, dsdt,
-> > +    pm.fadt.facs_tbl_offset = &facs;
-> > +    pm.fadt.dsdt_tbl_offset = &dsdt;
-> > +    pm.fadt.xdsdt_tbl_offset = &dsdt;
-> > +    build_fadt(tables_blob, tables->linker, &pm.fadt,
-> >                 slic_oem.id, slic_oem.table_id);
-> >      aml_len += tables_blob->len - fadt;
-> >  
-> >   
-> Otherwise looks good to me.
+> > +    if (f->rev <= 4) {
+> > +        goto build_hdr;
+> > +    }
+> > +
+> > +    /* SLEEP_CONTROL_REG */
+> > +    build_append_gas(tbl, AML_AS_SYSTEM_MEMORY, 0 , 0, 0, 0);
+> > +    /* SLEEP_STATUS_REG */
+> > +    build_append_gas(tbl, AML_AS_SYSTEM_MEMORY, 0 , 0, 0, 0);  
+> 
+> what about Hypervisor Vendor Identity field (8 byte) in version 6.0?
+not supported yet, hence assert below.
+When it's added we should update assert to the next supported revision.
+
+> > +
+> > +    /* TODO: extra fields need to be added to support revisions above rev5 */
+> > +    assert(f->rev == 5);  
+> OK so can't we assert before the (f->rev >= 6) check above?
 > 
 > Thanks
 > 
 > Eric
+> > +
+> >  build_hdr:
+> >      build_header(linker, tbl, (void *)(tbl->data + fadt_start),
+> >                   "FACP", tbl->len - fadt_start, f->rev, oem_id, oem_table_id);
+> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> > index b644da9..c7c6a57 100644
+> > --- a/hw/arm/virt-acpi-build.c
+> > +++ b/hw/arm/virt-acpi-build.c
+> > @@ -654,39 +654,30 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> >  static void build_fadt_rev5(GArray *table_data, BIOSLinker *linker,
+> >                              VirtMachineState *vms, unsigned dsdt_tbl_offset)
+> >  {
+> > -    int fadt_start = table_data->len;
+> > -    AcpiFadtDescriptorRev5_1 *fadt = acpi_data_push(table_data, sizeof(*fadt));
+> > -    unsigned xdsdt_entry_offset = (char *)&fadt->x_dsdt - table_data->data;
+> > -    uint16_t bootflags;
+> > +    /* ACPI v5.1 */
+> > +    AcpiFadtData fadt = {
+> > +        .rev = 5,
+> > +        .minor_ver = 1,
+> > +        .flags = 1 << ACPI_FADT_F_HW_REDUCED_ACPI,
+> > +        .xdsdt_tbl_offset = &dsdt_tbl_offset,
+> > +    };
+> >  
+> >      switch (vms->psci_conduit) {
+> >      case QEMU_PSCI_CONDUIT_DISABLED:
+> > -        bootflags = 0;
+> > +        fadt.arm_boot_arch = 0;
+> >          break;
+> >      case QEMU_PSCI_CONDUIT_HVC:
+> > -        bootflags = ACPI_FADT_ARM_PSCI_COMPLIANT | ACPI_FADT_ARM_PSCI_USE_HVC;
+> > +        fadt.arm_boot_arch = ACPI_FADT_ARM_PSCI_COMPLIANT |
+> > +                             ACPI_FADT_ARM_PSCI_USE_HVC;
+> >          break;
+> >      case QEMU_PSCI_CONDUIT_SMC:
+> > -        bootflags = ACPI_FADT_ARM_PSCI_COMPLIANT;
+> > +        fadt.arm_boot_arch = ACPI_FADT_ARM_PSCI_COMPLIANT;
+> >          break;
+> >      default:
+> >          g_assert_not_reached();
+> >      }
+> >  
+> > -    /* Hardware Reduced = 1 and use PSCI 0.2+ */
+> > -    fadt->flags = cpu_to_le32(1 << ACPI_FADT_F_HW_REDUCED_ACPI);
+> > -    fadt->arm_boot_flags = cpu_to_le16(bootflags);
+> > -
+> > -    /* ACPI v5.1 (fadt->revision.fadt->minor_revision) */
+> > -    fadt->minor_revision = 0x1;
+> > -
+> > -    /* DSDT address to be filled by Guest linker */
+> > -    bios_linker_loader_add_pointer(linker,
+> > -        ACPI_BUILD_TABLE_FILE, xdsdt_entry_offset, sizeof(fadt->x_dsdt),
+> > -        ACPI_BUILD_TABLE_FILE, dsdt_tbl_offset);
+> > -
+> > -    build_header(linker, table_data, (void *)(table_data->data + fadt_start),
+> > -                 "FACP", table_data->len - fadt_start, 5, NULL, NULL);
+> > +    build_fadt(table_data, linker, &fadt, NULL, NULL);
+> >  }
+> >  
+> >  /* DSDT */
+> >   
 

@@ -1,98 +1,98 @@
-Received: by 10.28.71.27 with SMTP id u27csp4876461wma;
-        Tue, 27 Feb 2018 06:21:39 -0800 (PST)
-X-Google-Smtp-Source: AG47ELsqBGNnu30kfOrNBqp4GYUE3INT1n8n8wRPlojLuH/3erRT5RgueBZ91uP4DfY1D5xPHmlm
-X-Received: by 2002:a25:c444:: with SMTP id u65-v6mr9620112ybf.487.1519741299720;
-        Tue, 27 Feb 2018 06:21:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519741299; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp4891651wma;
+        Tue, 27 Feb 2018 06:36:49 -0800 (PST)
+X-Google-Smtp-Source: AG47ELvHQZmDm3gsJtJVBg6YUHrzd9ePka5jQAZr5tkMPaF4akZxRFyqXQX8pDEVuPLtpY5OeF6Q
+X-Received: by 10.13.254.199 with SMTP id o190mr3162183ywf.8.1519742209538;
+        Tue, 27 Feb 2018 06:36:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519742209; cv=none;
         d=google.com; s=arc-20160816;
-        b=D5dDO+wFCLBEj5FtpGcogiL0S4dxafIcY86cCWKt4zsMt0fEAZmOU4ENNGqVNxwWRI
-         VbZN7/gnrmHNR3FwCWlWaXekhBi/2yv0neV1KNb+x4ueCPZunZ40H2og7XMrXQwEMaIv
-         LtWS2PGHcPP4TB5hOdfrzzwaM6T2JWbPQNruYrhSyh/Zqzr9O/2GWC+bSLpDGw+ohpgS
-         etNA8FNuVXspmMm1CWwHxEhOcrxHdndgH8frLMDdRvoVPP5BBs0UIsI7ues5TWCcQdoO
-         uAeLeOKnpuyiDadRZBXpKUy8/0+P2HYLXmsCwIaKvmLbBPN/nnWjVYKDBssBEGjF6KLo
-         nkKA==
+        b=zx30QD45SrjmwiDfhjXzzAI5BkBTd6TycMjjMi8imIqToDaYkF9SwA1F37ZbcCqYKf
+         L4bssHELsc+l9WrWRhcwGxeNuHr4jUCIyIP1jVN8gNhqdQhhxNE2mEh1bSuA0jsc/+Gv
+         a+IpAoHBs0I2kgIA5zaEZf18NlSQUhKRR5wjWT4H9W0sA4dbmAD925pHqhNZi+RU5QyR
+         8RyrRG1An+F6kIMQLop/c9/+EMu/sL24Q9rmA66WfhK5+OHUMPi9WFgbpdyrWhGMNGCA
+         wWi49yAfpadxxOToo0NvBcPf6aUdemLEWiRyoj+CuBZqJfwUzP/UpJxSpAoLuZPkXCcu
+         EYLQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=IVdCFZCUQq68wsuSSUYcX5BLHG6RBQjOARvghrFrEFw=;
-        b=EtPlOw7szo4jg0FJUFJ6ewd01TXrtm5BRKdMN5kNCYqrYOU9FOhfBg5BZA55EQgErl
-         rLWq1SH8voQ7v0EL537tRp8aonD+dbQ3sJYVaXnbhrIitq+TL+9t+LiQQQ7dYGopnhnS
-         DyxO5PRm/TGfGjJlXnjwjBq0C2dJRb//PrVrjbBzJ7eS2IEqF8isRWIbIReQJIHsh53m
-         rO1PxZTY8OPNiFnBbnrwx940hsUu4aUHLrb0bCWy2/mDU+MqLQ9B7JUDeXCPIj4n8EZA
-         Ip5i2RGzPuLAU9j2f84a6kqkp8K4sBooC3n6WHtt5ciE0gD6azSMQEoZuou5lwZdI9+T
-         /4KA==
+        bh=bMwm9mwDEEmdyYQc6kDGS7KslmCi4X2AtXS+M5OwBf8=;
+        b=VW3L/g1dOdp74n4g0c/8Qmaa5SF9LKUJ2of175hsgvIl7/6W/ZALx/zRMEIGlVgzDd
+         /m0FX5uoHU3vzgi0Lx5MJdnP1jEcwL7SPBb/MtNe0bew9PifTaiLVoordFy3gwdSarVC
+         zNKSbQUJvB5iU1/hMG30RBl1cNnXfKzu4HAUINUDZWL2ORF2r3yaOZbFdOmsHEyKg8Bj
+         RqKM9eqJcwNvm1k+L5fumizuh5XEK41+0wJualrTaD0kH7ReHMIpdztnNlyha66QqbWB
+         /8orKkp0FBrFXmXf9SGfRQJP62vQj4Ro1q/9V97uD0nL2MwEQwN9Q6tTqdWl/Nz5e2gJ
+         Onlw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=S7lkWgsi;
+       dkim=fail header.i=@linaro.org header.s=google header.b=QvCU67Sy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g125si1857170ywf.758.2018.02.27.06.21.39
+        by mx.google.com with ESMTPS id z7-v6si1888552ybj.768.2018.02.27.06.36.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 27 Feb 2018 06:21:39 -0800 (PST)
+        Tue, 27 Feb 2018 06:36:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=S7lkWgsi;
+       dkim=fail header.i=@linaro.org header.s=google header.b=QvCU67Sy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37571 helo=lists.gnu.org)
+Received: from localhost ([::1]:37643 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eqg8R-0003mG-6M
-	for alex.bennee@linaro.org; Tue, 27 Feb 2018 09:21:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50148)
+	id 1eqgN7-0001jf-0r
+	for alex.bennee@linaro.org; Tue, 27 Feb 2018 09:36:49 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55097)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eqg8H-0003lD-EK
-	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 09:21:30 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1eqgMx-0001it-F4
+	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 09:36:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eqg8G-0008N4-4O
-	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 09:21:29 -0500
-Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:40031)
+	(envelope-from <peter.maydell@linaro.org>) id 1eqgMw-000726-AQ
+	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 09:36:39 -0500
+Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:35216)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eqg8F-0008Mt-V1
-	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 09:21:28 -0500
-Received: by mail-oi0-x241.google.com with SMTP id c12so12971110oic.7
-	for <qemu-arm@nongnu.org>; Tue, 27 Feb 2018 06:21:27 -0800 (PST)
+	id 1eqgMw-00071i-1g
+	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 09:36:38 -0500
+Received: by mail-ot0-x244.google.com with SMTP id w2so1384309otg.2
+	for <qemu-arm@nongnu.org>; Tue, 27 Feb 2018 06:36:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=IVdCFZCUQq68wsuSSUYcX5BLHG6RBQjOARvghrFrEFw=;
-	b=S7lkWgsi+OKFnD46q3nZbQKvfpS4Dvqd6H376z6J+TpiZA/jns0oqivTh6+qmhzBbH
-	i8DjJicp9k5g3zW6hqvTWk4HwB4c8hLSjEE4yQnjj1vFNASSnwvNE6I84scBSQwM5w+6
-	s6j3XU6k7BZBTniqtcsuJuaVMNrgy1rdeUYAU=
+	:cc; bh=bMwm9mwDEEmdyYQc6kDGS7KslmCi4X2AtXS+M5OwBf8=;
+	b=QvCU67SybCAHApoBxel+gxpGuAc0MmXnQKir/szAIP2+KHiKgzQBDhhtnQAg3j4ft0
+	qe6gS/PB1DiQzNDLzMKg77VW+lEf/nNmHLpZiFTWL/CHRW+wZK94UC40V1AO4QAuUg4j
+	FZknti3itwyY7013byfl+HQ8CxDNAVIdYtNFo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=IVdCFZCUQq68wsuSSUYcX5BLHG6RBQjOARvghrFrEFw=;
-	b=XfzRStfmfvfZx6jQXL8qAhjCQJCli526+8xdAQyuLtcZ+2ER2DOGWTI6Ut2WoXulZ1
-	zb8bqr0TksqqCZURlwYQufLzBmWM9+mu0nRUYUuOgQ0O1q6Gq2jskaUvx/Nqsbsj6eOV
-	SeVZxPd6WM9/+tLRXJmxb44fKfRM0QO2xu5KaEjRpPMwY7ep2pj+0e3FXB1AyeTpudRS
-	KZhmvu1Y5tPrQT/4SzabYEOkGS4+jPky0KXo3FHof9h7rPxIUv5alKeueGrjghjh8QO8
-	cLGhw8sEThTPMk32mx1G2/gmr3fvxHuRFwleyfD8MCWxCWrNrv3Gh9hxa05guHqRoGXj
-	DiZQ==
-X-Gm-Message-State: APf1xPB1Vekorf32bNp6rPn1vrQGy0kmn6xnXbJ2us2M2Lt/zgDHmBEv
-	ClLpt5qnik/UBAqTB8wxpt4BNMz6HSas032Iwn82Ag==
-X-Received: by 10.202.68.213 with SMTP id r204mr9508352oia.80.1519741287204;
-	Tue, 27 Feb 2018 06:21:27 -0800 (PST)
+	bh=bMwm9mwDEEmdyYQc6kDGS7KslmCi4X2AtXS+M5OwBf8=;
+	b=Mq/ngPMhjEdquYBk54NFYcTogf6YAnAHs17545aCwy3jjcPm8G9FWnX/Y9lMY3xn1i
+	cAvZuhqKHlQGuwbSklns48HQUk0HVBboTRgwUkyqRC2w6OucUQb9/olgwG0hx/nvAzUU
+	gUf0zOQbxSOict/h7BPzUBq2R7mPhaTdvqX1CxW0BLUdfraIerFNoWpNQJ7pfT0uU4yt
+	ifNUFAEQvY3YG7vQ2WZKsGF1149InjUwkTBVnWjR7vtLcOHfer0lOQCK9RQj+qHYWJ5z
+	fgKK2zqDspqrU+Qfrhh/vrxCmXpaX4jdiEYDmG4wjHAvmxaJDwtlGsv4xbexJB8tsNMq
+	GRpA==
+X-Gm-Message-State: APf1xPD9kAunzo8IBxZcvIyaVhbw9IBnhEGy7ngGv28pjHu4tc+/gLKH
+	IQyz0cQqY7k2yyABSt3VjdIIhiKaS5x+78vB0ExGkA==
+X-Received: by 10.157.23.34 with SMTP id i34mr11110542ota.210.1519742197048;
+	Tue, 27 Feb 2018 06:36:37 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.157.33.100 with HTTP; Tue, 27 Feb 2018 06:21:06 -0800 (PST)
-In-Reply-To: <20180217182323.25885-53-richard.henderson@linaro.org>
+Received: by 10.157.33.100 with HTTP; Tue, 27 Feb 2018 06:36:16 -0800 (PST)
+In-Reply-To: <20180217182323.25885-54-richard.henderson@linaro.org>
 References: <20180217182323.25885-1-richard.henderson@linaro.org>
-	<20180217182323.25885-53-richard.henderson@linaro.org>
+	<20180217182323.25885-54-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 27 Feb 2018 14:21:06 +0000
-Message-ID: <CAFEAcA_ocCQF9Ha45kKiBAQLAHr4jOYGcdArqDgYGDLfQL87Vg@mail.gmail.com>
+Date: Tue, 27 Feb 2018 14:36:16 +0000
+Message-ID: <CAFEAcA8Zt6S2x=bZ6Vxs8T07D6fpMGoYZP38csaKvKsYjyvjxA@mail.gmail.com>
 To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::241
-Subject: Re: [Qemu-arm] [PATCH v2 52/67] target/arm: Implement SVE store
- vector/predicate register
+X-Received-From: 2607:f8b0:4003:c0f::244
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 53/67] target/arm: Implement
+ SVE scatter stores
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,121 +107,87 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: k6wPog96PdT5
+X-TUID: XJ6p7XKqcUGW
 
 On 17 February 2018 at 18:23, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  target/arm/translate-sve.c | 101 +++++++++++++++++++++++++++++++++++++++++++++
->  target/arm/sve.decode      |   6 +++
->  2 files changed, 107 insertions(+)
+>  target/arm/helper-sve.h    | 41 ++++++++++++++++++++++++++
+>  target/arm/sve_helper.c    | 62 ++++++++++++++++++++++++++++++++++++++++
+>  target/arm/translate-sve.c | 71 ++++++++++++++++++++++++++++++++++++++++++++++
+>  target/arm/sve.decode      | 39 +++++++++++++++++++++++++
+>  4 files changed, 213 insertions(+)
+
+
+> diff --git a/target/arm/sve.decode b/target/arm/sve.decode
+> index 5d8e1481d7..edd9340c02 100644
+> --- a/target/arm/sve.decode
+> +++ b/target/arm/sve.decode
+> @@ -81,6 +81,7 @@
+>  &rpri_load     rd pg rn imm dtype nreg
+>  &rprr_store    rd pg rn rm msz esz nreg
+>  &rpri_store    rd pg rn imm msz esz nreg
+> +&rprr_scatter_store    rd pg rn rm esz msz xs scale
 >
-> diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-> index b000a2482e..9c724980a0 100644
-> --- a/target/arm/translate-sve.c
-> +++ b/target/arm/translate-sve.c
-> @@ -3501,6 +3501,95 @@ static void do_ldr(DisasContext *s, uint32_t vofs, uint32_t len,
->      tcg_temp_free_i64(t0);
->  }
+>  ###########################################################################
+>  # Named instruction formats.  These are generally used to
+> @@ -199,6 +200,8 @@
+>  @rpri_store_msz     ....... msz:2 .. . imm:s4 ... pg:3 rn:5 rd:5    &rpri_store
+>  @rprr_store_esz_n0  ....... ..    esz:2  rm:5 ... pg:3 rn:5 rd:5 \
+>                     &rprr_store nreg=0
+> +@rprr_scatter_store ....... msz:2 ..     rm:5 ... pg:3 rn:5 rd:5 \
+> +                   &rprr_scatter_store
 >
-> +/* Similarly for stores.  */
-> +static void do_str(DisasContext *s, uint32_t vofs, uint32_t len,
-> +                   int rn, int imm)
-> +{
-> +    uint32_t len_align = QEMU_ALIGN_DOWN(len, 8);
-> +    uint32_t len_remain = len % 8;
-> +    uint32_t nparts = len / 8 + ctpop8(len_remain);
-> +    int midx = get_mem_index(s);
-> +    TCGv_i64 addr, t0;
+>  ###########################################################################
+>  # Instruction patterns.  Grouped according to the SVE encodingindex.xhtml.
+> @@ -832,3 +835,39 @@ ST_zpri            1110010 .. nreg:2 1.... 111 ... ..... ..... \
+>  # SVE store multiple structures (scalar plus scalar)         (nreg != 0)
+>  ST_zprr                1110010 msz:2 nreg:2 ..... 011 ... ..... ..... \
+>                 @rprr_store esz=%size_23
 > +
-> +    addr = tcg_temp_new_i64();
-> +    t0 = tcg_temp_new_i64();
+> +# SVE 32-bit scatter store (scalar plus 32-bit scaled offsets)
+> +# Require msz > 0 && msz <= esz.
+> +ST1_zprz       1110010 .. 11 ..... 100 ... ..... ..... \
+> +               @rprr_scatter_store xs=0 esz=2 scale=1
+> +ST1_zprz       1110010 .. 11 ..... 110 ... ..... ..... \
+> +               @rprr_scatter_store xs=1 esz=2 scale=1
 > +
-> +    /* Note that unpredicated load/store of vector/predicate registers
-> +     * are defined as a stream of bytes, which equates to little-endian
-> +     * operations on larger quantities.  There is no nice way to force
-> +     * a little-endian load for aarch64_be-linux-user out of line.
+> +# SVE 32-bit scatter store (scalar plus 32-bit unscaled offsets)
+> +# Require msz <= esz.
+> +ST1_zprz       1110010 .. 10 ..... 100 ... ..... ..... \
+> +               @rprr_scatter_store xs=0 esz=2 scale=0
+> +ST1_zprz       1110010 .. 10 ..... 110 ... ..... ..... \
+> +               @rprr_scatter_store xs=1 esz=2 scale=0
+> +
+> +# SVE 64-bit scatter store (scalar plus 64-bit scaled offset)
+> +# Require msz > 0
+> +ST1_zprz       1110010 .. 01 ..... 101 ... ..... ..... \
+> +               @rprr_scatter_store xs=2 esz=3 scale=1
+> +
+> +# SVE 64-bit scatter store (scalar plus 64-bit unscaled offset)
+> +ST1_zprz       1110010 .. 00 ..... 101 ... ..... ..... \
+> +               @rprr_scatter_store xs=2 esz=3 scale=0
+> +
+> +# SVE 64-bit scatter store (scalar plus unpacked 32-bit scaled offset)
+> +# Require msz > 0
+> +ST1_zprz       1110010 .. 01 ..... 100 ... ..... ..... \
+> +               @rprr_scatter_store xs=0 esz=3 scale=1
+> +ST1_zprz       1110010 .. 01 ..... 110 ... ..... ..... \
+> +               @rprr_scatter_store xs=1 esz=3 scale=1
+> +
+> +# SVE 64-bit scatter store (scalar plus unpacked 32-bit unscaled offset)
+> +ST1_zprz       1110010 .. 00 ..... 100 ... ..... ..... \
+> +               @rprr_scatter_store xs=0 esz=3 scale=0
+> +ST1_zprz       1110010 .. 00 ..... 110 ... ..... ..... \
+> +               @rprr_scatter_store xs=1 esz=3 scale=0
 
-"store" in this case, I assume.
 
-> +     *
-> +     * Attempt to keep code expansion to a minimum by limiting the
-> +     * amount of unrolling done.
-> +     */
-> +    if (nparts <= 4) {
-> +        int i;
-> +
-> +        for (i = 0; i < len_align; i += 8) {
-> +            tcg_gen_ld_i64(t0, cpu_env, vofs + i);
-> +            tcg_gen_addi_i64(addr, cpu_reg_sp(s, rn), imm + i);
-> +            tcg_gen_qemu_st_i64(t0, addr, midx, MO_LEQ);
-> +        }
-> +    } else {
-> +        TCGLabel *loop = gen_new_label();
-> +        TCGv_ptr i = TCGV_NAT_TO_PTR(glue(tcg_const_local_, ptr)(0));
-> +        TCGv_ptr src;
-> +
-> +        gen_set_label(loop);
-> +
-> +        src = tcg_temp_new_ptr();
-> +        tcg_gen_add_ptr(src, cpu_env, i);
-> +        tcg_gen_ld_i64(t0, src, vofs);
-> +
-> +        /* Minimize the number of local temps that must be re-read from
-> +         * the stack each iteration.  Instead, re-compute values other
-> +         * than the loop counter.
-> +         */
-> +        tcg_gen_addi_ptr(src, i, imm);
-> +#if UINTPTR_MAX == UINT32_MAX
-> +        tcg_gen_extu_i32_i64(addr, TCGV_PTR_TO_NAT(src));
-> +        tcg_gen_add_i64(addr, addr, cpu_reg_sp(s, rn));
-> +#else
-> +        tcg_gen_add_i64(addr, TCGV_PTR_TO_NAT(src), cpu_reg_sp(s, rn));
-> +#endif
+Could you write all these with the 'scale=n' part picked up from bit 21,
+rather than one pattern for scale=0 and one for scale=1 ?
 
-We should be able to avoid the ifdef with more support for tcg_*_ptr
-ops (similar to an earlier patch in the series).
-
-> +        tcg_temp_free_ptr(src);
-> +
-> +        tcg_gen_qemu_st_i64(t0, addr, midx, MO_LEQ);
-> +
-> +        tcg_gen_addi_ptr(i, i, 8);
-> +
-> +        glue(tcg_gen_brcondi_, ptr)(TCG_COND_LTU, TCGV_PTR_TO_NAT(i),
-> +                                   len_align, loop);
-> +        tcg_temp_free_ptr(i);
-> +    }
-> +
-> +    /* Predicate register stores can be any multiple of 2.  */
-> +    if (len_remain) {
-> +        tcg_gen_ld_i64(t0, cpu_env, vofs + len_align);
-> +        tcg_gen_addi_i64(addr, cpu_reg_sp(s, rn), imm + len_align);
-> +
-> +        switch (len_remain) {
-> +        case 2:
-> +        case 4:
-> +        case 8:
-> +            tcg_gen_qemu_st_i64(t0, addr, midx, MO_LE | ctz32(len_remain));
-> +            break;
-> +
-> +        case 6:
-> +            tcg_gen_qemu_st_i64(t0, addr, midx, MO_LEUL);
-> +            tcg_gen_addi_i64(addr, addr, 4);
-> +            tcg_gen_shri_i64(addr, addr, 32);
-> +            tcg_gen_qemu_st_i64(t0, addr, midx, MO_LEUW);
-> +            break;
-> +
-> +        default:
-> +            g_assert_not_reached();
-> +        }
-> +    }
-> +    tcg_temp_free_i64(addr);
-> +    tcg_temp_free_i64(t0);
-> +}
-> +
->  #undef ptr
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

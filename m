@@ -1,233 +1,67 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id y145sm11336117wmd.43.2018.02.27.06.38.59
+        by smtp.gmail.com with ESMTPSA id p21sm8962891wmc.28.2018.02.27.06.38.53
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Feb 2018 06:39:08 -0800 (PST)
+        Tue, 27 Feb 2018 06:38:54 -0800 (PST)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 326783E0C5D;
-	Tue, 27 Feb 2018 14:38:54 +0000 (GMT)
+	by zen.linaro.local (Postfix) with ESMTP id E755B3E025C;
+	Tue, 27 Feb 2018 14:38:52 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	richard.henderson@linaro.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v4 17/31] arm/translate-a64: add FP16 FPRINTx to simd_two_reg_misc_fp16
-Date: Tue, 27 Feb 2018 14:38:38 +0000
-Message-Id: <20180227143852.11175-18-alex.bennee@linaro.org>
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Richard Henderson <rth@twiddle.net>
+Subject: [PATCH v4 01/31] include/exec/helper-head.h: support f16 in helper calls
+Date: Tue, 27 Feb 2018 14:38:22 +0000
+Message-Id: <20180227143852.11175-2-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.15.1
 In-Reply-To: <20180227143852.11175-1-alex.bennee@linaro.org>
 References: <20180227143852.11175-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Hcco+icW+V5A
+X-TUID: F4rEGqQ7uuxF
 
-This adds the full range of half-precision floating point to integral
-instructions.
+This allows us to explicitly pass float16 to helpers rather than
+assuming uint32_t and dealing with the result. Of course they will be
+passed in i32 sized registers by default.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v3
-  - fix re-base conflicts
-  - move comment to previous commit
-  - don't double test is_scalar in unallocated checks
----
- target/arm/helper-a64.c    |  22 ++++++++
- target/arm/helper-a64.h    |   2 +
- target/arm/translate-a64.c | 123 +++++++++++++++++++++++++++++++++++++++++++--
- 3 files changed, 142 insertions(+), 5 deletions(-)
+ include/exec/helper-head.h | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-index 4d5ae96d8f..4fd28fdf48 100644
---- a/target/arm/helper-a64.c
-+++ b/target/arm/helper-a64.c
-@@ -745,3 +745,25 @@ uint32_t HELPER(advsimd_acgt_f16)(float16 a, float16 b, void *fpstp)
-     int compare = float16_compare(f0, f1, fpst);
-     return ADVSIMD_CMPRES(compare == float_relation_greater);
- }
-+
-+/* round to integral */
-+float16 HELPER(advsimd_rinth_exact)(float16 x, void *fp_status)
-+{
-+    return float16_round_to_int(x, fp_status);
-+}
-+
-+float16 HELPER(advsimd_rinth)(float16 x, void *fp_status)
-+{
-+    int old_flags = get_float_exception_flags(fp_status), new_flags;
-+    float16 ret;
-+
-+    ret = float16_round_to_int(x, fp_status);
-+
-+    /* Suppress any inexact exceptions the conversion produced */
-+    if (!(old_flags & float_flag_inexact)) {
-+        new_flags = get_float_exception_flags(fp_status);
-+        set_float_exception_flags(new_flags & ~float_flag_inexact, fp_status);
-+    }
-+
-+    return ret;
-+}
-diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
-index 003ffa582f..bc8d5b105b 100644
---- a/target/arm/helper-a64.h
-+++ b/target/arm/helper-a64.h
-@@ -75,3 +75,5 @@ DEF_HELPER_3(advsimd_maxnum2h, i32, i32, i32, ptr)
- DEF_HELPER_3(advsimd_minnum2h, i32, i32, i32, ptr)
- DEF_HELPER_3(advsimd_mulx2h, i32, i32, i32, ptr)
- DEF_HELPER_4(advsimd_muladd2h, i32, i32, i32, i32, ptr)
-+DEF_HELPER_2(advsimd_rinth_exact, f16, f16, ptr)
-+DEF_HELPER_2(advsimd_rinth, f16, f16, ptr)
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 9c1892c49a..3c37eb99ff 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -11180,27 +11180,140 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
-  */
- static void disas_simd_two_reg_misc_fp16(DisasContext *s, uint32_t insn)
- {
--    int fpop, opcode, a;
-+    int fpop, opcode, a, u;
-+    int rn, rd;
-+    bool is_q;
-+    bool is_scalar;
-+    bool only_in_vector = false;
-+
-+    int pass;
-+    TCGv_i32 tcg_rmode = NULL;
-+    TCGv_ptr tcg_fpstatus = NULL;
-+    bool need_rmode = false;
-+    int rmode;
- 
-     if (!arm_dc_feature(s, ARM_FEATURE_V8_FP16)) {
-         unallocated_encoding(s);
-         return;
-     }
- 
--    if (!fp_access_check(s)) {
--        return;
--    }
-+    rd = extract32(insn, 0, 5);
-+    rn = extract32(insn, 5, 5);
- 
--    opcode = extract32(insn, 12, 4);
-     a = extract32(insn, 23, 1);
-+    u = extract32(insn, 29, 1);
-+    is_scalar = extract32(insn, 28, 1);
-+    is_q = extract32(insn, 30, 1);
-+
-+    opcode = extract32(insn, 12, 5);
-     fpop = deposit32(opcode, 5, 1, a);
-+    fpop = deposit32(fpop, 6, 1, u);
- 
-     switch (fpop) {
-+    case 0x18: /* FRINTN */
-+        need_rmode = true;
-+        only_in_vector = true;
-+        rmode = FPROUNDING_TIEEVEN;
-+        break;
-+    case 0x19: /* FRINTM */
-+        need_rmode = true;
-+        only_in_vector = true;
-+        rmode = FPROUNDING_NEGINF;
-+        break;
-+    case 0x38: /* FRINTP */
-+        need_rmode = true;
-+        only_in_vector = true;
-+        rmode = FPROUNDING_POSINF;
-+        break;
-+    case 0x39: /* FRINTZ */
-+        need_rmode = true;
-+        only_in_vector = true;
-+        rmode = FPROUNDING_ZERO;
-+        break;
-+    case 0x58: /* FRINTA */
-+        need_rmode = true;
-+        only_in_vector = true;
-+        rmode = FPROUNDING_TIEAWAY;
-+        break;
-+    case 0x59: /* FRINTX */
-+    case 0x79: /* FRINTI */
-+        only_in_vector = true;
-+        /* current rounding mode */
-+        break;
-     default:
-         fprintf(stderr, "%s: insn %#04x fpop %#2x\n", __func__, insn, fpop);
-         g_assert_not_reached();
-     }
- 
-+
-+    /* Check additional constraints for the scalar encoding */
-+    if (is_scalar) {
-+        if (!is_q) {
-+            unallocated_encoding(s);
-+            return;
-+        }
-+        /* FRINTxx is only in the vector form */
-+        if (only_in_vector) {
-+            unallocated_encoding(s);
-+            return;
-+        }
-+    }
-+
-+    if (!fp_access_check(s)) {
-+        return;
-+    }
-+
-+    if (need_rmode) {
-+        tcg_fpstatus = get_fpstatus_ptr(true);
-+    }
-+
-+    if (need_rmode) {
-+        tcg_rmode = tcg_const_i32(arm_rmode_to_sf(rmode));
-+        gen_helper_set_rmode(tcg_rmode, tcg_rmode, tcg_fpstatus);
-+    }
-+
-+    if (is_scalar) {
-+        /* no operations yet */
-+    } else {
-+        for (pass = 0; pass < (is_q ? 8 : 4); pass++) {
-+            TCGv_i32 tcg_op = tcg_temp_new_i32();
-+            TCGv_i32 tcg_res = tcg_temp_new_i32();
-+
-+            read_vec_element_i32(s, tcg_op, rn, pass, MO_16);
-+
-+            switch (fpop) {
-+            case 0x18: /* FRINTN */
-+            case 0x19: /* FRINTM */
-+            case 0x38: /* FRINTP */
-+            case 0x39: /* FRINTZ */
-+            case 0x58: /* FRINTA */
-+            case 0x79: /* FRINTI */
-+                gen_helper_advsimd_rinth(tcg_res, tcg_op, tcg_fpstatus);
-+                break;
-+            case 0x59: /* FRINTX */
-+                gen_helper_advsimd_rinth_exact(tcg_res, tcg_op, tcg_fpstatus);
-+                break;
-+            default:
-+                g_assert_not_reached();
-+            }
-+
-+            write_vec_element_i32(s, tcg_res, rd, pass, MO_16);
-+
-+            tcg_temp_free_i32(tcg_res);
-+            tcg_temp_free_i32(tcg_op);
-+        }
-+
-+        clear_vec_high(s, is_q, rd);
-+    }
-+
-+    if (tcg_rmode) {
-+        gen_helper_set_rmode(tcg_rmode, tcg_rmode, tcg_fpstatus);
-+        tcg_temp_free_i32(tcg_rmode);
-+    }
-+
-+    if (tcg_fpstatus) {
-+        tcg_temp_free_ptr(tcg_fpstatus);
-+    }
- }
- 
- /* AdvSIMD scalar x indexed element
+diff --git a/include/exec/helper-head.h b/include/exec/helper-head.h
+index e1fd08f2ba..15b6a68de3 100644
+--- a/include/exec/helper-head.h
++++ b/include/exec/helper-head.h
+@@ -26,6 +26,7 @@
+ #define dh_alias_int i32
+ #define dh_alias_i64 i64
+ #define dh_alias_s64 i64
++#define dh_alias_f16 i32
+ #define dh_alias_f32 i32
+ #define dh_alias_f64 i64
+ #define dh_alias_ptr ptr
+@@ -38,6 +39,7 @@
+ #define dh_ctype_int int
+ #define dh_ctype_i64 uint64_t
+ #define dh_ctype_s64 int64_t
++#define dh_ctype_f16 float16
+ #define dh_ctype_f32 float32
+ #define dh_ctype_f64 float64
+ #define dh_ctype_ptr void *
+@@ -94,6 +96,7 @@
+ #define dh_is_signed_s32 1
+ #define dh_is_signed_i64 0
+ #define dh_is_signed_s64 1
++#define dh_is_signed_f16 0
+ #define dh_is_signed_f32 0
+ #define dh_is_signed_f64 0
+ #define dh_is_signed_tl  0
 -- 
 2.15.1

@@ -1,42 +1,42 @@
-Received: by 10.28.71.27 with SMTP id u27csp4931573wma;
-        Tue, 27 Feb 2018 07:14:30 -0800 (PST)
-X-Google-Smtp-Source: AG47ELsHdiFqC6QkwFY4tYEXIfoaDLP188GsAGpzlBnO0mg0hSXzSpkda2yUbZRHtAB7GtQ/2i14
-X-Received: by 10.157.9.129 with SMTP id q1mr11294199otd.88.1519744470065;
-        Tue, 27 Feb 2018 07:14:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519744470; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp4931948wma;
+        Tue, 27 Feb 2018 07:14:51 -0800 (PST)
+X-Google-Smtp-Source: AG47ELuxAuMp7oLEtW79PopFv9llF4C2KokABONlAe/YLmoYHsRSR3MTukxPdDVobyLaTicQUJDp
+X-Received: by 10.157.83.16 with SMTP id g16mr10049933oth.270.1519744491752;
+        Tue, 27 Feb 2018 07:14:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519744491; cv=none;
         d=google.com; s=arc-20160816;
-        b=uHtib8BdPztVbBZw+9UgZ0jN7jE6fcgijp40iRh0JlxJWh3XI7ykRjA2jwESc8BkZZ
-         edeXHQz2PpxaPoeQjHuaqDCpHivXZZKuaK3zGyDCmRqOTfSDKr8r9G7/sGM2TANUYjqM
-         JIWkc6KeG/TvKEPpVrNPJ9crYkjP5mTCO4EoiG5A8c0JcUIIwiR+6vcevi0re/xIP+7L
-         Gmhcd5zMlhyM6KRp0zE1RH5baO0P7KdfuMMX139vlnXzZLLjN4Jy6D4G9FBIzHaReJxh
-         soPHbREYhdY/ojLgwTlooEjZ2lR2rDdMdjcJtyMqZJGUzVxeYO0mMJW7aGt8qlv8ougW
-         PRRQ==
+        b=j+n77L5OXx4EZ6zis8sRp4624yhcIZSheg6VxM0pwwtCUYkFZ6+49gYvIumDRlWD+p
+         4Mdlfai1pkeVJ3RCLVpwwsA8IeE47ox5Yn/ZKZr9awDlYb6sc+KK8nIUQue6yuYayS1v
+         Al97Si5hXbPqM4xn10YIiWJ2/7GALapwNgk/hXjg+t5DoeLlfwCyprLQd3x1r22XhaPD
+         m7KUmqRaoxXtqjv4kpngPVgP5461bJQlOeIyTAYmREmfHSrD8HoxSnVDaCqSqdrHQ+p0
+         JSVi0pqzSt6dTIWC2NNg9A3S0JS+wrvae0Xk+fciYBaBnYMDjbygsmeR6c3CMRyDmC3k
+         gvpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=date:cc:to:from:resent-from:content-transfer-encoding:mime-version
          :message-id:subject:reply-to:in-reply-to:arc-authentication-results;
         bh=5f3rKexRA4o3mDkw1Okuf590B/4f1QUqH+oR0lhrckQ=;
-        b=nOgiyYGprxQrj7ltZLrpOr4YBj9hsw4tHii0vzM3MGz5NHaoxPpnANcWU7E8+AoA9Q
-         RIJGylIU3Ma8XkDu5oKnjzDEMPey6rQRvkXQRN4+3jHEkvp1A4ScOT9cAfS294ohl/r8
-         FQPz6GOgYqtqt7QbNWNWgi6v728LLGIjBUfEbN2l8eRq6kvynRJmMzripoxZCJ5NRuhF
-         mEtcvZnLV3JiIF/Pgft/XKqu3VV5M/eoTJpmsuJekkXJJMBxDb5VGzAMcWnH/QKP0Z6i
-         GL4MkTOok/XacldfboQ2QsjXO/jsdvvFdqBK/4h6f78QhGBbnwZYX57uej8TWNbdhY7J
-         w/4A==
+        b=DQAIlvqR6IMIsCpuTmnhWRRebaRjcfs3k2AVbjJbyv137Q+Lt3pK0b6ti55E9KcKNT
+         EUx9cJcaBpteOMjFZss0A3bgFen88qPPcyw0WZR8eByb7rjUyNiHs0mWX+KzZm9907Hu
+         6FzRJ2d3/RC70oOF79EAqnwHXJOiqzikeDHPwXd9nKLF+fzOa6KYD0lIX/5cpFvU3HWz
+         nQdXRA1uuiud3Id4Tw1VjDGEt3v5D9GuIKKcaN2gNwQXZ2pHGtSUhGMJ4HYB2FKcCeP8
+         Lix1aP2Lg4/LMMXbBjxX13iv6QvAvVW2/jTivTUXvQpzUri+9rmF+Kr5Si2/Qj0S28t3
+         ARPg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of no-reply@patchew.org designates 135.84.80.216 as permitted sender) smtp.mailfrom=no-reply@patchew.org
 Return-Path: <no-reply@patchew.org>
 Received: from sender-of-o51.zoho.com (sender-of-o51.zoho.com. [135.84.80.216])
-        by mx.google.com with ESMTPS id r206si3396220oif.398.2018.02.27.07.14.29
+        by mx.google.com with ESMTPS id a2si3710464otj.509.2018.02.27.07.14.51
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Feb 2018 07:14:29 -0800 (PST)
+        Tue, 27 Feb 2018 07:14:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of no-reply@patchew.org designates 135.84.80.216 as permitted sender) client-ip=135.84.80.216;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of no-reply@patchew.org designates 135.84.80.216 as permitted sender) smtp.mailfrom=no-reply@patchew.org
 Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by mx.zohomail.com
-	with SMTPS id 1519744466552848.1451215494928; Tue, 27 Feb 2018 07:14:26 -0800 (PST)
+	with SMTPS id 1519744487959739.0354930628221; Tue, 27 Feb 2018 07:14:47 -0800 (PST)
 In-Reply-To: <20180227143852.11175-1-alex.bennee@linaro.org>
 Reply-To: <qemu-devel@nongnu.org>
 Subject: Re: [Qemu-devel] [PATCH v4 00/31] Add ARMv8.2 half-precision functions
-Message-ID: <151974446473.1194.2001157501558016219@bdbb90650ae5>
+Message-ID: <151974448615.1194.10842979715913868163@bdbb90650ae5>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
@@ -44,9 +44,9 @@ Resent-From:
 From: no-reply@patchew.org
 To: alex.bennee@linaro.org
 Cc: famz@redhat.com, qemu-arm@nongnu.org, alex.bennee@linaro.org, richard.henderson@linaro.org, qemu-devel@nongnu.org
-Date: Tue, 27 Feb 2018 07:14:26 -0800 (PST)
+Date: Tue, 27 Feb 2018 07:14:47 -0800 (PST)
 X-ZohoMailClient: External
-X-TUID: I6XnDkr6Jldm
+X-TUID: anmIA9JkZAps
 
 SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
 LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1l

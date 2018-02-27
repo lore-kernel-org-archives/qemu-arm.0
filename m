@@ -1,111 +1,107 @@
-Received: by 10.28.71.27 with SMTP id u27csp5348654wma;
-        Tue, 27 Feb 2018 14:50:26 -0800 (PST)
-X-Google-Smtp-Source: AG47ELs8U4AhQrucCi5nopZZL3H0w7z1yl3o1zcWCAC1tisu3I82eH7AcTuGvYQt6GRupQmiHkTP
-X-Received: by 2002:a25:8142:: with SMTP id j2-v6mr10983556ybm.176.1519771825964;
-        Tue, 27 Feb 2018 14:50:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519771825; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp5356391wma;
+        Tue, 27 Feb 2018 15:00:49 -0800 (PST)
+X-Google-Smtp-Source: AG47ELvQzOwS2Zc/76C085PLXjrflUVwVscZrdfFzcDYleCK2XenbuFoGqqYhttTA04bsvTSYtV+
+X-Received: by 10.129.199.10 with SMTP id m10mr4462161ywi.57.1519772449726;
+        Tue, 27 Feb 2018 15:00:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519772449; cv=none;
         d=google.com; s=arc-20160816;
-        b=0NFj68VSHzgja0ZhbQ4o7sJ4Rv36LjF5RlAaRwLDVogtx63aDkMxE/LRapRJPEftNc
-         dwa4Cz6i2ewKoia2v3u/ypo6W8hhJCIxroSRPPMboCIC0c/DJblc4h9vJJKpDCxXebVu
-         V8I9y8FsJPRLxRqMCYIf1LRX34F0G5FN3L9EKdrG6PkgyArtBegfyNFi1mWIBb+EeV2n
-         7mKfgPpCad1E06HNU4Xe/cf7Xb9PeXd9hE5EJRBF/MQGhvdUn3XgnZQ5VHZ1Hxx0h0TL
-         SkDv33bK1sluQIgjXIe7gYBbyi5F3VSFAMC7cSmApeMvKh92cc1Ohk3qi2MFjUroA++i
-         GMDw==
+        b=n8OUJOryAPQod4+1QBLNqFAQwAZ2Bgs7F6ULheyu0ZWGT4/LOWxoDgCcNUCq6QxIRp
+         jHhb9KMeEiytThTFexkukOFI9lLjpTT8cBGU+fisiLVO5Qu5sJHQ/fyo6BcaT9rlcVA5
+         YRFDQa8ww6WOiuvxl+R55boKSYxfacodswHIEfDPrTQ/06Nh26Qln4Bq3tEe7FgsOwIu
+         Y/tGJJMDxNvzFA5ASc1ncijgXPjncXAJVRDR8YAeXkqtzUgFII8THyjxi2cI66jRbCGJ
+         CurfNU/bsDKAdFB/eWEXAQFqEhlh7CHP0kiUH/l2ueLnviBZvqFlhb4YxcJ64V3m211a
+         1tFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature
-         :arc-authentication-results;
-        bh=qKY1FmcnntQTMrOJFycARAZSc+F6YlijGYxIWT6rcYo=;
-        b=OU8zEf+yiN9W2P7PGucCW+DdigGb4upmU3imZ/lNtAJn/6EGpWohkB1WuT/6dMhFDy
-         RdjlK25D2jVyiU/Hz2Pog5kxLZrxL2dGqzHsCTszhZjX3tXASfjCyuwHbL5iDov3EcrL
-         UMUy4iPwSSuT1rBhfPrr6qGlnfXieezyY+U4oE/fMrLTcIT+8W7fTsZmgowSlgMVOg5i
-         YxLveKeORlQn11e/3U56v8P7tmV+5iSK2/ov1fTchwUGDDsc9Xypb3c3ppInX1rB+pZW
-         NvyaVZNRxYDYq7FXk4crmcOmCCgkU3l5s8Ervic3Pc+ipOgxS8vFHj4PwUzBaYP40Isf
-         wtHQ==
+         :content-transfer-encoding:to:message-id:date:from:mime-version
+         :dkim-signature:arc-authentication-results;
+        bh=KLYnpv5UgI90pCf/c/DmsCpy03LTuNySyuj8SyMv4l0=;
+        b=W63ot02u7B1p/9sSjnvizThZsYVXEmjw8DBONXKRKPHDf8Pq1SyHlWoUgOCLH7BvNK
+         H5a5bDQydAR7F1M7lzjdL7DmUI+q7a8VmRvuLiwmoHgZaoEP6nN8rmw3pOJ+STmWsgD+
+         4tD8VF+hwVEmWuO6Dkw5V+6IMsfk0ZFUYcN9iFvb/kzyWrK9NXCq75eUn3dSdlfXQzR4
+         biqit80GiCKlMXG+QykCIeEVwyndbuJq9DVm0b2k2B0rrJl45iz4uLzZ0pOWaEkeNy6l
+         JNZzYgTckUmZdcMlJRhIbwO+wP9sungJ8r5yj5MxyJpDcq1GYQAY9aHakjxndmdAJjV+
+         owCw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=bKd1et1I;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@secretlab-ca.20150623.gappssmtp.com header.s=20150623 header.b=Mj51iZ60;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v7-v6si37471ybk.372.2018.02.27.14.50.25
+        by mx.google.com with ESMTPS id l191si45016ywc.98.2018.02.27.15.00.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 27 Feb 2018 14:50:25 -0800 (PST)
+        Tue, 27 Feb 2018 15:00:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=bKd1et1I;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40539 helo=lists.gnu.org)
+       dkim=fail header.i=@secretlab-ca.20150623.gappssmtp.com header.s=20150623 header.b=Mj51iZ60;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:40577 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eqo4n-0006wE-Dh
-	for alex.bennee@linaro.org; Tue, 27 Feb 2018 17:50:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52126)
+	id 1eqoEr-00011y-9u
+	for alex.bennee@linaro.org; Tue, 27 Feb 2018 18:00:49 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52429)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1eqo4b-0006tJ-8k
-	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 17:50:14 -0500
+	(envelope-from <glikely@secretlab.ca>) id 1eqo5e-0007hP-FV
+	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 17:51:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1eqo4W-0004E1-9E
-	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 17:50:13 -0500
-Received: from mail-pl0-x244.google.com ([2607:f8b0:400e:c01::244]:40058)
+	(envelope-from <glikely@secretlab.ca>) id 1eqo5d-0005Dk-Hh
+	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 17:51:18 -0500
+Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:45924)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1eqo4W-0004Dd-2y
-	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 17:50:08 -0500
-Received: by mail-pl0-x244.google.com with SMTP id i6-v6so291606plt.7
-	for <qemu-arm@nongnu.org>; Tue, 27 Feb 2018 14:50:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=qKY1FmcnntQTMrOJFycARAZSc+F6YlijGYxIWT6rcYo=;
-	b=bKd1et1I1yhMZ/JiatfvD61uJGdV9Ffv+MWRTcAu8jpZ+eXIWWgsGdZBC38aApk8ve
-	TFQwq5XGwS3Oi8KZJZKdmsv7SEyFHpeSL9YuyB7pvdix+jGnaFh/Hw5x3eXJBn0YVx13
-	vMOog0yQCqiX5Vc0IxRcKhYNtdFssK3DSR5oQ=
+	(Exim 4.71) (envelope-from <glikely@secretlab.ca>)
+	id 1eqo5d-0005DM-CX
+	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 17:51:17 -0500
+Received: by mail-qk0-x242.google.com with SMTP id g2so647207qkd.12
+	for <qemu-arm@nongnu.org>; Tue, 27 Feb 2018 14:51:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=secretlab-ca.20150623.gappssmtp.com; s=20150623;
+	h=mime-version:sender:from:date:message-id:subject:to:cc
+	:content-transfer-encoding;
+	bh=KLYnpv5UgI90pCf/c/DmsCpy03LTuNySyuj8SyMv4l0=;
+	b=Mj51iZ60lf3hOu6SS5QvzAzy+Gre9zbgrshtvwEPe4YAUBQ+3fmwmdiwToQgaVM5XW
+	Ml15g9H+38swqFYpp+bDxvZ3i3TjuUooFFK3lKZeG+fE5vFKsoRM0jF7SYd/qe2k/aRm
+	CQYvvV0F5JL+GGbVQKIAW+HvFXKbBqQG7fDYalsajmSHQZpfxWtMh53iiNVaElhPhSDv
+	V5GRNSVj2r5G2Z7qtkQz35NfEV+WKaXPxqQE7dLJGUu7niRQFGFBxmQI/mmB/+i93vcW
+	v66okUTZK7xjrQk8eY33RgmkUoxjvAIY3y/2xjHo1e4itapNS7pjvcrrWN5i7yT2/mAV
+	vT8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=qKY1FmcnntQTMrOJFycARAZSc+F6YlijGYxIWT6rcYo=;
-	b=r5BjrRrfXnZMjePiO9AwcYD413WCi5j6lqEBxDMhEyzZCqZ2emNp6Svw+qNZx9Umza
-	SkgA1Gmb8Ix1lU4Er4G/e12ZjJphHwj/aW1wdBGUhC9zMgUjKda86LK2bB2C1GQ342M+
-	zT2T+M2CcM8M+xdYrxFH0zLB2eQJ0gP/xXuGB1lZ1D7cOb4jnTF8uVB8srUEgXLSKoRr
-	uDne1tbLvTDa104EbXN8j0nbxBAZftsMpsbVUb6wW+srPa/oCVqIT5ZC0brzjb7E0kTf
-	ffxRL6UIp/1e196B4OnWK8bBHkO21LRJ1+ZcAt4qQdxomygi0vEl59XjusfKpDFUZ6TN
-	HlYw==
-X-Gm-Message-State: APf1xPCe9PWsaOi4oDKFs4qzRTjR40XhuBC7zmMSuap9PPSGAHOvOmmk
-	7R5+fCpAz0GETeyrxgw7Ex6olA==
-X-Received: by 2002:a17:902:887:: with SMTP id
-	7-v6mr8094744pll.89.1519771806934; 
-	Tue, 27 Feb 2018 14:50:06 -0800 (PST)
-Received: from cloudburst.twiddle.net (97-113-169-147.tukw.qwest.net.
-	[97.113.169.147])
-	by smtp.gmail.com with ESMTPSA id v1sm172164pgt.62.2018.02.27.14.50.05
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 27 Feb 2018 14:50:06 -0800 (PST)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-References: <20180220180325.29818-1-peter.maydell@linaro.org>
-	<20180220180325.29818-20-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <50272633-16d0-7e63-4ca2-1402f0449989@linaro.org>
-Date: Tue, 27 Feb 2018 14:50:04 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.6.0
+	h=x-gm-message-state:mime-version:sender:from:date:message-id:subject
+	:to:cc:content-transfer-encoding;
+	bh=KLYnpv5UgI90pCf/c/DmsCpy03LTuNySyuj8SyMv4l0=;
+	b=dmLYS1hOXVbw9y4HfdPBFyLpS9bLgAJudbgNiRoUZTLwqYwt7g5DoTI4CR9bjCXcUJ
+	rbHtlPrSDvwq7MruswJdtrbgFMXYwxBiJvlOrXJDznDAl7hqcyARk05r14s/Id8u/3zw
+	bDsE1HATXopAvmT2yKtzjerxTxPwH1W1s87CEFKqH5/0v0BupGxop0F8yw79DLCvbBu4
+	8dbUJ0WTNUJNuTKzQfrfa0IFuONDzaPPpO77JO6etuh+1ElYVi2n+a4sDSflS++SH9Mw
+	ZFFpYBWdZKtaVOaWm7uwWYIP7XfcrOLsXEQF9KJ+C1Y4M01/Ca/U8V9Y3bdxh20znYLh
+	RA2g==
+X-Gm-Message-State: APf1xPDNVZRPw61O/uPl/WixX9YMTnow2gkgN/PxXH9UrJ8XhyM9A3+4
+	Xk3u/nqZByD+Rt1QF7njhTVX/fuga+CFSE72U+cPPA==
+X-Received: by 10.55.31.20 with SMTP id f20mr25943912qkf.290.1519771876047;
+	Tue, 27 Feb 2018 14:51:16 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20180220180325.29818-20-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Received: by 10.12.243.131 with HTTP; Tue, 27 Feb 2018 14:50:55 -0800 (PST)
+From: Grant Likely <grant.likely@secretlab.ca>
+Date: Tue, 27 Feb 2018 16:50:55 -0600
+X-Google-Sender-Auth: tgvsDuL_ffQDoQgv-KGTTuUEPfU
+Message-ID: <CACxGe6vSPG8KcmV5kpxcm3d41b9Vn++EZPAEm1qyoouZ5zPkug@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+	Peter Maydell <peter.maydell@linaro.org>,
+	Jason Wang <jasowang@redhat.com>, 
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Alistair Francis <alistair.francis@xilinx.com>, 
+	Fam Zheng <famz@redhat.com>,
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c01::244
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 19/19] mps2-an505: New board
- model: MPS2 with AN505 Cortex-M33 FPGA image
+X-Received-From: 2607:f8b0:400d:c09::242
+X-Mailman-Approved-At: Tue, 27 Feb 2018 18:00:43 -0500
+Subject: Re: [Qemu-arm] [PATCH v5 1/7] hw/mdio: Generalize etraxfs MDIO
+ bitbanging emulation
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -117,28 +113,43 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
+Cc: qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HOVXGUHeDdMK
+X-TUID: PmLlLrvtTcay
 
-On 02/20/2018 10:03 AM, Peter Maydell wrote:
-> Define a new board model for the MPS2 with an AN505 FPGA image
-> containing a Cortex-M33. Since the FPGA images for TrustZone
-> cores (AN505, and the similar AN519 for Cortex-M23) have a
-> significantly different layout of devices to the non-TrustZone
-> images, we use a new source file rather than shoehorning them
-> into the existing mps2.c.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/arm/Makefile.objs |   1 +
->  hw/arm/mps2-tz.c     | 504 +++++++++++++++++++++++++++++++++++++++++++++++++++
->  2 files changed, 505 insertions(+)
->  create mode 100644 hw/arm/mps2-tz.c
+On 22/09/2017, 12:13, "Philippe Mathieu-Daud=C3=A9"
+<philippe.mathieu.daude@gmail.com on behalf of f4bug@amsat.org> wrote:
+> From: Grant Likely <grant.likely@arm.com>
+                                  ^^^^^^^^
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Hi Philippe,
 
+Just following up on this series. I don't really have any additional
+comments. It has been many years since I looked at the code, so I'm
+quite happy for you to have picked it up.
 
-r~
+However, it is very important for you to preserve the original email
+address that I used when I submitted the patches, and do *not* use my
+arm.com address. None of this code is owned by Arm. Please change the
+From: attribution and my SoB line to use "grant.likely@secretlab.ca"
 
+Thanks,
+g.
+
+>    The etraxfs and Xilinx axienet Ethernet models implement quite a nice
+>    MDIO core that supports both bitbanging and direct register access. Th=
+is
+>    change factors the common code out into a separate file. There are no
+>    functional changes here, just movement of code.
+>
+>    The etraxfs and axienet are slightly different. The etraxfs version
+>    includes the bitbang state processing, but the axienet version has a
+>    minor enhancement for read/write of phy registers without using bitban=
+g
+>    state variables.  This patch generalizes the etraxfs version, with the
+>    axienet change backported in.
+>
+>    Signed-off-by: Grant Likely <grant.likely@arm.com>
+>    Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>    [PMD: rebased with a minor checkpatch fix]

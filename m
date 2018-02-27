@@ -1,81 +1,92 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4382894wre;
-        Tue, 29 May 2018 23:17:48 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKh6uzJ8ZKUGHryRhu+sH80bBrl+4x/xcGvCOBD+c8aGYQa8IfFk1Ur6vP7UDGoQ8scyhXI
-X-Received: by 2002:a37:bbc3:: with SMTP id l186-v6mr1188011qkf.120.1527661068874;
-        Tue, 29 May 2018 23:17:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527661068; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp4865163wma;
+        Tue, 27 Feb 2018 06:10:52 -0800 (PST)
+X-Google-Smtp-Source: AG47ELteUHLamkmDmE6NQXWlTMs0Gx+3pU3/tQsEALQBvmX1OiTxNH+RUsVttAD887jHoG/5VQ1h
+X-Received: by 10.129.141.73 with SMTP id w9mr4680146ywj.361.1519740652222;
+        Tue, 27 Feb 2018 06:10:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519740652; cv=none;
         d=google.com; s=arc-20160816;
-        b=UzCZrYbQG1vA2VtuYtzLK4atDrG+udYIAHiBh64J+bibIMxsMEx0k8/JH+MqAk+m5/
-         j75SmTI9X/wkqdUIORovwYuiuRGg/JuPbvK2qP7k1jeAloXbyztJdiMSAXx6F5KTWYc1
-         yfIKYXr/r+rD+61UmEKyy2/EANliINEW68oG1KV/XwHa/cyg8sJcQ02+3MVsuymDsrkH
-         lar3SI9+tldsah6LzxNu3ms62R1rZaGvdDMNUl05rEw8P7Dgi9RYaaQXza+VHSmZS49f
-         6emwbW6UiwkxYAnIk4C7hYYRbNBEBhtAInIWAnQ3lr/AnpFR8Yb9pf8syiWUGh2ChPaJ
-         79tQ==
+        b=DUgSBAyAwXnmduJ5VyRKYAgHADvBYzqoBLrtFgySiYGtqCofw+OJMkliNfUvDzNN5o
+         s4kT6PJ16ko0giQ1vDp+7mirrxvXfA+D/D2fgqk2RvXCQK1hLUAaNp7E4vtPtSvXSJgt
+         yb6cC+gcofd16wxpf0FPvusghMQD3Du1VSgRjUtwY01NdyfGz0jyPt+UepEtWb2yzqrj
+         XYwly9llWkqG+gae7YfJgcw77hbrhAgehFp0drh80pCHxVFLK4asFGXfy8zRdKA+Rfnf
+         hwvRHOQhmUE7llA1Gq/XuJ609UAk2t6hFA4+oE9EiKrpCvE6ZCp64O5FQo8oyK9kSRt0
+         5NWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=dIRDh6Is+0yDPTrs3uGtgwx8IgjR8pZtIDVM1ixmvIg=;
-        b=TC4mGJTgF+C5W5ukpnAcNpmThd9rc8DleYHuExOCM3S9AxoA1cQaN3Iot+Sb7Dw7iM
-         lpjcvpfgTBS3ZI+ZyzMyy4Akwf/LYiUfY5Hb3obHTjfOYvXmeY56eZMdVtplsK3waBin
-         iLqSCSNDfYoxcM38zvUcRkTuupop7wiScdUnglgPJkgZniMnyQS/E3X5z47kQ6B30eEA
-         BSTqpWJgsJSlQdXTh9rIKwiyG3qhqncobKdo196TZnSmxtcv4A6O4FtqLynCkSpcfAmN
-         ac1CWJgXngucEMSb71SB3epYtgbcd0tIUVbuxJtoTVctmuh4TV7yVX97WHpiC8VUa6xl
-         Bwnw==
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=BQia3DfQB205EAU4v5viLCE7UaEakPoO6xiSldUgwBk=;
+        b=PsNuKxCZsWm7rtM17SExIiyTLURPP6tWEJ6d81CA9o5JIcXGphNQw/4N36o9tooojl
+         GBTts7BQUPbW+9VPiDSdKaCFL5k8cUOqmf+nrGd+90860s3v7/mPHQk/Go6hdqczpDdS
+         2LVaFv/Lc7dFDL8yFJscRAK7cTpd24D1OA/Ju1cx4iyNkq2OlCOCE++R7fmbmh12vEqY
+         JuMcSU6R0T3AgcFCitCZAyamjaKMGr7difpQvSpdk0kcj4fkI+KDA/OlD3of5U6rjnh1
+         pn7DzfuTbVQri6f6L01ocStAxHVgmwMmHZ2XsyQEz1Nm+GeZpTNyF53Wn6peurTR31ED
+         pF6g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s68-v6si2251072qkf.333.2018.05.29.23.17.48
+        by mx.google.com with ESMTPS id t5-v6si1952218ybi.251.2018.02.27.06.10.52
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 May 2018 23:17:48 -0700 (PDT)
+        Tue, 27 Feb 2018 06:10:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36408 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37403 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNuQe-00024B-8u
-	for alex.bennee@linaro.org; Wed, 30 May 2018 02:17:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58463)
+	id 1eqfxz-00080x-Lg
+	for alex.bennee@linaro.org; Tue, 27 Feb 2018 09:10:51 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46401)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fNuQN-00022G-9D
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 02:17:32 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1eqfxq-0007zM-B5
+	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 09:10:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fNuQK-0001Ch-2n
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 02:17:31 -0400
-Received: from 5.mo179.mail-out.ovh.net ([46.105.43.140]:45819)
+	(envelope-from <eric.auger@redhat.com>) id 1eqfxm-0003BR-8X
+	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 09:10:42 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:46454 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fNuQJ-0001C7-Rw
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 02:17:28 -0400
-Received: from player718.ha.ovh.net (unknown [10.109.105.119])
-	by mo179.mail-out.ovh.net (Postfix) with ESMTP id 72785C48EB
-	for <qemu-arm@nongnu.org>; Wed, 30 May 2018 08:17:26 +0200 (CEST)
-Received: from zorba.kaod.org.com (LFbn-TOU-1-49-10.w86-201.abo.wanadoo.fr
-	[86.201.141.10]) (Authenticated sender: clg@kaod.org)
-	by player718.ha.ovh.net (Postfix) with ESMTPSA id 388414E009E;
-	Wed, 30 May 2018 08:17:21 +0200 (CEST)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Jason Wang <jasowang@redhat.com>
-Date: Wed, 30 May 2018 08:17:08 +0200
-Message-Id: <20180530061711.23673-2-clg@kaod.org>
-X-Mailer: git-send-email 2.13.6
-In-Reply-To: <20180530061711.23673-1-clg@kaod.org>
-References: <20180530061711.23673-1-clg@kaod.org>
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1eqfxm-0003BN-2U; Tue, 27 Feb 2018 09:10:38 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 83C154040073;
+	Tue, 27 Feb 2018 14:10:27 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-135.ams2.redhat.com
+	[10.36.116.135])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0FAC1202699A;
+	Tue, 27 Feb 2018 14:10:20 +0000 (UTC)
+To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
+References: <1519303376-92875-1-git-send-email-imammedo@redhat.com>
+	<1519303376-92875-7-git-send-email-imammedo@redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <a23cf958-d16e-3604-696b-bc77a0e1400a@redhat.com>
+Date: Tue, 27 Feb 2018 15:10:19 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 4752986459595574271
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedthedrheelgddutdeiucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <1519303376-92875-7-git-send-email-imammedo@redhat.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.5]);
+	Tue, 27 Feb 2018 14:10:27 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Tue, 27 Feb 2018 14:10:27 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 46.105.43.140
-Subject: [Qemu-arm] [PATCH v2 1/4] ftgmac100: compute maximum frame size
- depending on the protocol
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 6/9] pc: acpi: use
+ build_append_foo() API to construct FADT
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,139 +98,209 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+	qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+	Shannon Zhao <zhaoshenglong@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LRhYfrobsW3M
+X-TUID: FVjYgdJwN53L
 
-The maximum frame size includes the CRC and depends if a VLAN tag is
-inserted or not. Adjust the frame size limit in the transmit handler
-using on the FTGMAC100State buffer size and in the receive handler use
-the packet protocol.
+Hi Igor,
 
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
----
- include/hw/net/ftgmac100.h |  7 ++++++-
- hw/net/ftgmac100.c         | 23 ++++++++++++-----------
- 2 files changed, 18 insertions(+), 12 deletions(-)
+On 22/02/18 13:42, Igor Mammedov wrote:
+> build_append_foo() API doesn't need explicit endianness
+> conversions which eliminates a source of errors and
+> it makes build_fadt() look like declarative definition of
+> FADT table in ACPI spec, which makes it easy to review.
+> Also it allows easily extending FADT to support other
+> revisions which will be used by follow up patches
+> where build_fadt() will be reused for ARM target.
+> 
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-diff --git a/include/hw/net/ftgmac100.h b/include/hw/net/ftgmac100.h
-index d9bc589fbf72..94cfe0533297 100644
---- a/include/hw/net/ftgmac100.h
-+++ b/include/hw/net/ftgmac100.h
-@@ -16,6 +16,11 @@
- #include "hw/sysbus.h"
- #include "net/net.h"
-=20
-+/*
-+ * Max frame size for the receiving buffer
-+ */
-+#define FTGMAC100_MAX_FRAME_SIZE    9220
-+
- typedef struct FTGMAC100State {
-     /*< private >*/
-     SysBusDevice parent_obj;
-@@ -26,7 +31,7 @@ typedef struct FTGMAC100State {
-     qemu_irq irq;
-     MemoryRegion iomem;
-=20
--    uint8_t *frame;
-+    uint8_t frame[FTGMAC100_MAX_FRAME_SIZE];
-=20
-     uint32_t irq_state;
-     uint32_t isr;
-diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
-index 3300e8ef4a80..425ac36cff87 100644
---- a/hw/net/ftgmac100.c
-+++ b/hw/net/ftgmac100.c
-@@ -207,16 +207,18 @@ typedef struct {
- /*
-  * Max frame size for the receiving buffer
-  */
--#define FTGMAC100_MAX_FRAME_SIZE    10240
-+#define FTGMAC100_MAX_FRAME_SIZE    9220
-=20
- /* Limits depending on the type of the frame
-  *
-  *   9216 for Jumbo frames (+ 4 for VLAN)
-  *   1518 for other frames (+ 4 for VLAN)
-  */
--static int ftgmac100_max_frame_size(FTGMAC100State *s)
-+static int ftgmac100_max_frame_size(FTGMAC100State *s, uint16_t proto)
- {
--    return (s->maccr & FTGMAC100_MACCR_JUMBO_LF ? 9216 : 1518) + 4;
-+    int max =3D (s->maccr & FTGMAC100_MACCR_JUMBO_LF ? 9216 : 1518);
-+
-+    return max + (proto =3D=3D ETH_P_VLAN ? 4 : 0);
- }
-=20
- static void ftgmac100_update_irq(FTGMAC100State *s)
-@@ -408,7 +410,6 @@ static void ftgmac100_do_tx(FTGMAC100State *s, uint32=
-_t tx_ring,
-     uint8_t *ptr =3D s->frame;
-     uint32_t addr =3D tx_descriptor;
-     uint32_t flags =3D 0;
--    int max_frame_size =3D ftgmac100_max_frame_size(s);
-=20
-     while (1) {
-         FTGMAC100Desc bd;
-@@ -427,11 +428,12 @@ static void ftgmac100_do_tx(FTGMAC100State *s, uint=
-32_t tx_ring,
-             flags =3D bd.des1;
-         }
-=20
--        len =3D bd.des0 & 0x3FFF;
--        if (frame_size + len > max_frame_size) {
-+        len =3D FTGMAC100_TXDES0_TXBUF_SIZE(bd.des0);
-+        if (frame_size + len > sizeof(s->frame)) {
-             qemu_log_mask(LOG_GUEST_ERROR, "%s: frame too big : %d bytes=
-\n",
-                           __func__, len);
--            len =3D max_frame_size - frame_size;
-+            s->isr |=3D FTGMAC100_INT_XPKT_LOST;
-+            len =3D  sizeof(s->frame) - frame_size;
-         }
-=20
-         if (dma_memory_read(&address_space_memory, bd.des3, ptr, len)) {
-@@ -788,7 +790,8 @@ static ssize_t ftgmac100_receive(NetClientState *nc, =
-const uint8_t *buf,
-     uint32_t buf_len;
-     size_t size =3D len;
-     uint32_t first =3D FTGMAC100_RXDES0_FRS;
--    int max_frame_size =3D ftgmac100_max_frame_size(s);
-+    uint16_t proto =3D be16_to_cpu(PKT_GET_ETH_HDR(buf)->h_proto);
-+    int max_frame_size =3D ftgmac100_max_frame_size(s, proto);
-=20
-     if ((s->maccr & (FTGMAC100_MACCR_RXDMA_EN | FTGMAC100_MACCR_RXMAC_EN=
-))
-          !=3D (FTGMAC100_MACCR_RXDMA_EN | FTGMAC100_MACCR_RXMAC_EN)) {
-@@ -820,9 +823,9 @@ static ssize_t ftgmac100_receive(NetClientState *nc, =
-const uint8_t *buf,
-=20
-     /* Huge frames are truncated.  */
-     if (size > max_frame_size) {
--        size =3D max_frame_size;
-         qemu_log_mask(LOG_GUEST_ERROR, "%s: frame too big : %zd bytes\n"=
-,
-                       __func__, size);
-+        size =3D max_frame_size;
-         flags |=3D FTGMAC100_RXDES0_FTL;
-     }
-=20
-@@ -940,8 +943,6 @@ static void ftgmac100_realize(DeviceState *dev, Error=
- **errp)
-                           object_get_typename(OBJECT(dev)), DEVICE(dev)-=
->id,
-                           s);
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
--
--    s->frame =3D g_malloc(FTGMAC100_MAX_FRAME_SIZE);
- }
-=20
- static const VMStateDescription vmstate_ftgmac100 =3D {
---=20
-2.13.6
+Thanks
 
+Eric
+> ---
+>  hw/i386/acpi-build.c | 147 +++++++++++++++++++++++++++++----------------------
+>  1 file changed, 85 insertions(+), 62 deletions(-)
+> 
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 706ba35..544a4bc 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -299,87 +299,110 @@ build_facs(GArray *table_data, BIOSLinker *linker)
+>      facs->length = cpu_to_le32(sizeof(*facs));
+>  }
+>  
+> -/* Load chipset information in FADT */
+> -static void fadt_setup(AcpiFadtDescriptorRev3 *fadt, AcpiFadtData f)
+> -{
+> -    fadt->model = f.int_model;
+> -    fadt->reserved1 = 0;
+> -    fadt->sci_int = cpu_to_le16(f.sci_int);
+> -    fadt->smi_cmd = cpu_to_le32(f.smi_cmd);
+> -    fadt->acpi_enable = f.acpi_enable_cmd;
+> -    fadt->acpi_disable = f.acpi_disable_cmd;
+> -    /* EVT, CNT, TMR offset matches hw/acpi/core.c */
+> -    fadt->pm1a_evt_blk = cpu_to_le32(f.pm1_evt.address);
+> -    fadt->pm1a_cnt_blk = cpu_to_le32(f.pm1_cnt.address);
+> -    fadt->pm_tmr_blk = cpu_to_le32(f.pm_tmr.address);
+> -    fadt->gpe0_blk = cpu_to_le32(f.gpe0_blk.address);
+> -    /* EVT, CNT, TMR length matches hw/acpi/core.c */
+> -    fadt->pm1_evt_len = f.pm1_evt.bit_width / 8;
+> -    fadt->pm1_cnt_len = f.pm1_cnt.bit_width / 8;
+> -    fadt->pm_tmr_len = f.pm_tmr.bit_width / 8;
+> -    fadt->gpe0_blk_len = f.gpe0_blk.bit_width / 8;
+> -    fadt->plvl2_lat = cpu_to_le16(f.c2_latency);
+> -    fadt->plvl3_lat = cpu_to_le16(f.c3_latency);
+> -    fadt->flags = cpu_to_le32(f.flags);
+> -    fadt->century = f.rtc_century;
+> -    if (f.rev == 1) {
+> -        return;
+> -    }
+> -
+> -    fadt->reset_value = f.reset_val;
+> -    fadt->reset_register = f.reset_reg;
+> -    fadt->reset_register.address = cpu_to_le64(f.reset_reg.address);
+> -
+> -    fadt->xpm1a_event_block = f.pm1_evt;
+> -    fadt->xpm1a_event_block.address = cpu_to_le64(f.pm1_evt.address);
+> -
+> -    fadt->xpm1a_control_block = f.pm1_cnt;
+> -    fadt->xpm1a_control_block.address = cpu_to_le64(f.pm1_cnt.address);
+> -
+> -    fadt->xpm_timer_block = f.pm_tmr;
+> -    fadt->xpm_timer_block.address = cpu_to_le64(f.pm_tmr.address);
+> -
+> -    fadt->xgpe0_block = f.gpe0_blk;
+> -    fadt->xgpe0_block.address = cpu_to_le64(f.gpe0_blk.address);
+> -}
+> -
+> -
+>  /* FADT */
+>  static void
+> -build_fadt(GArray *table_data, BIOSLinker *linker, AcpiFadtData *f,
+> +build_fadt(GArray *tbl, BIOSLinker *linker, AcpiFadtData *f,
+>             const char *oem_id, const char *oem_table_id)
+>  {
+> -    AcpiFadtDescriptorRev3 *fadt = acpi_data_push(table_data, sizeof(*fadt));
+> -    unsigned fw_ctrl_offset = (char *)&fadt->firmware_ctrl - table_data->data;
+> -    unsigned dsdt_entry_offset = (char *)&fadt->dsdt - table_data->data;
+> -    unsigned xdsdt_entry_offset = (char *)&fadt->x_dsdt - table_data->data;
+> -    int fadt_size = sizeof(*fadt);
+> +    int off;
+> +    int fadt_start = tbl->len;
+> +
+> +    acpi_data_push(tbl, sizeof(AcpiTableHeader));
+>  
+> -    /* FACS address to be filled by Guest linker */
+> +    /* FACS address to be filled by Guest linker at runtime */
+> +    off = tbl->len;
+> +    build_append_int_noprefix(tbl, 0, 4); /* FIRMWARE_CTRL */
+>      if (f->facs_tbl_offset) {
+>          bios_linker_loader_add_pointer(linker,
+> -            ACPI_BUILD_TABLE_FILE, fw_ctrl_offset, sizeof(fadt->firmware_ctrl),
+> +            ACPI_BUILD_TABLE_FILE, off, 4,
+>              ACPI_BUILD_TABLE_FILE, *f->facs_tbl_offset);
+>      }
+>  
+> -    /* DSDT address to be filled by Guest linker */
+> -    fadt_setup(fadt, *f);
+> +    /* DSDT address to be filled by Guest linker at runtime */
+> +    off = tbl->len;
+> +    build_append_int_noprefix(tbl, 0, 4); /* DSDT */
+>      if (f->dsdt_tbl_offset) {
+>          bios_linker_loader_add_pointer(linker,
+> -            ACPI_BUILD_TABLE_FILE, dsdt_entry_offset, sizeof(fadt->dsdt),
+> +            ACPI_BUILD_TABLE_FILE, off, 4,
+>              ACPI_BUILD_TABLE_FILE, *f->dsdt_tbl_offset);
+>      }
+> +
+> +    /* ACPI1.0: INT_MODEL, ACPI2.0+: Reserved */
+> +    build_append_int_noprefix(tbl, f->int_model /* Multiple APIC */, 1);
+> +    /* Preferred_PM_Profile */
+> +    build_append_int_noprefix(tbl, 0 /* Unspecified */, 1);
+> +    build_append_int_noprefix(tbl, f->sci_int, 2); /* SCI_INT */
+> +    build_append_int_noprefix(tbl, f->smi_cmd, 4); /* SMI_CMD */
+> +    build_append_int_noprefix(tbl, f->acpi_enable_cmd, 1); /* ACPI_ENABLE */
+> +    build_append_int_noprefix(tbl, f->acpi_disable_cmd, 1); /* ACPI_DISABLE */
+> +    build_append_int_noprefix(tbl, 0 /* not supported */, 1); /* S4BIOS_REQ */
+> +    /* ACPI1.0: Reserved, ACPI2.0+: PSTATE_CNT */
+> +    build_append_int_noprefix(tbl, 0, 1);
+> +    build_append_int_noprefix(tbl, f->pm1_evt.address, 4); /* PM1a_EVT_BLK */
+> +    build_append_int_noprefix(tbl, 0, 4); /* PM1b_EVT_BLK */
+> +    build_append_int_noprefix(tbl, f->pm1_cnt.address, 4); /* PM1a_CNT_BLK */
+> +    build_append_int_noprefix(tbl, 0, 4); /* PM1b_CNT_BLK */
+> +    build_append_int_noprefix(tbl, 0, 4); /* PM2_CNT_BLK */
+> +    build_append_int_noprefix(tbl, f->pm_tmr.address, 4); /* PM_TMR_BLK */
+> +    build_append_int_noprefix(tbl, f->gpe0_blk.address, 4); /* GPE0_BLK */
+> +    build_append_int_noprefix(tbl, 0, 4); /* GPE1_BLK */
+> +    /* PM1_EVT_LEN */
+> +    build_append_int_noprefix(tbl, f->pm1_evt.bit_width / 8, 1);
+> +    /* PM1_CNT_LEN */
+> +    build_append_int_noprefix(tbl, f->pm1_cnt.bit_width / 8, 1);
+> +    build_append_int_noprefix(tbl, 0, 1); /* PM2_CNT_LEN */
+> +    build_append_int_noprefix(tbl, f->pm_tmr.bit_width / 8, 1); /* PM_TMR_LEN */
+> +    /* GPE0_BLK_LEN */
+> +    build_append_int_noprefix(tbl, f->gpe0_blk.bit_width / 8, 1);
+> +    build_append_int_noprefix(tbl, 0, 1); /* GPE1_BLK_LEN */
+> +    build_append_int_noprefix(tbl, 0, 1); /* GPE1_BASE */
+> +    build_append_int_noprefix(tbl, 0, 1); /* CST_CNT */
+> +    build_append_int_noprefix(tbl, f->c2_latency, 2); /* P_LVL2_LAT */
+> +    build_append_int_noprefix(tbl, f->c3_latency, 2); /* P_LVL3_LAT */
+> +    build_append_int_noprefix(tbl, 0, 2); /* FLUSH_SIZE */
+> +    build_append_int_noprefix(tbl, 0, 2); /* FLUSH_STRIDE */
+> +    build_append_int_noprefix(tbl, 0, 1); /* DUTY_OFFSET */
+> +    build_append_int_noprefix(tbl, 0, 1); /* DUTY_WIDTH */
+> +    build_append_int_noprefix(tbl, 0, 1); /* DAY_ALRM */
+> +    build_append_int_noprefix(tbl, 0, 1); /* MON_ALRM */
+> +    build_append_int_noprefix(tbl, f->rtc_century, 1); /* CENTURY */
+> +    build_append_int_noprefix(tbl, 0, 2); /* IAPC_BOOT_ARCH */
+> +    build_append_int_noprefix(tbl, 0, 1); /* Reserved */
+> +    build_append_int_noprefix(tbl, f->flags, 4); /* Flags */
+> +
+>      if (f->rev == 1) {
+> -        fadt_size = offsetof(typeof(*fadt), reset_register);
+> -    } else if (f->xdsdt_tbl_offset) {
+> +        goto build_hdr;
+> +    }
+> +
+> +    build_append_gas_from_struct(tbl, &f->reset_reg); /* RESET_REG */
+> +    build_append_int_noprefix(tbl, f->reset_val, 1); /* RESET_VALUE */
+> +    build_append_int_noprefix(tbl, 0, 3); /* Reserved, ACPI 3.0 */
+> +    build_append_int_noprefix(tbl, 0, 8); /* X_FIRMWARE_CTRL */
+> +
+> +    /* XDSDT address to be filled by Guest linker at runtime */
+> +    off = tbl->len;
+> +    build_append_int_noprefix(tbl, 0, 8); /* X_DSDT */
+> +    if (f->xdsdt_tbl_offset) {
+>          bios_linker_loader_add_pointer(linker,
+> -            ACPI_BUILD_TABLE_FILE, xdsdt_entry_offset, sizeof(fadt->x_dsdt),
+> +            ACPI_BUILD_TABLE_FILE, off, 8,
+>              ACPI_BUILD_TABLE_FILE, *f->xdsdt_tbl_offset);
+>      }
+>  
+> -    build_header(linker, table_data,
+> -                (void *)fadt, "FACP", fadt_size, f->rev,
+> -                oem_id, oem_table_id);
+> +    build_append_gas_from_struct(tbl, &f->pm1_evt); /* X_PM1a_EVT_BLK */
+> +    /* X_PM1b_EVT_BLK */
+> +    build_append_gas(tbl, AML_AS_SYSTEM_MEMORY, 0 , 0, 0, 0);
+> +    build_append_gas_from_struct(tbl, &f->pm1_cnt); /* X_PM1a_CNT_BLK */
+> +    /* X_PM1b_CNT_BLK */
+> +    build_append_gas(tbl, AML_AS_SYSTEM_MEMORY, 0 , 0, 0, 0);
+> +    /* X_PM2_CNT_BLK */
+> +    build_append_gas(tbl, AML_AS_SYSTEM_MEMORY, 0 , 0, 0, 0);
+> +    build_append_gas_from_struct(tbl, &f->pm_tmr); /* X_PM_TMR_BLK */
+> +    build_append_gas_from_struct(tbl, &f->gpe0_blk); /* X_GPE0_BLK */
+> +    build_append_gas(tbl, AML_AS_SYSTEM_MEMORY, 0 , 0, 0, 0); /* X_GPE1_BLK */
+> +
+> +build_hdr:
+> +    build_header(linker, tbl, (void *)(tbl->data + fadt_start),
+> +                 "FACP", tbl->len - fadt_start, f->rev, oem_id, oem_table_id);
+>  }
+>  
+>  void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
+> 

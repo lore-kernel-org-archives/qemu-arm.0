@@ -1,164 +1,191 @@
-Received: by 10.28.71.27 with SMTP id u27csp4678261wma;
-        Tue, 27 Feb 2018 02:49:35 -0800 (PST)
-X-Google-Smtp-Source: AH8x227Zc5e/ltJdTJJfSpWLaUVY2zF9T5Zpx6aY0RzfUeAMMU+RJzyQbxjLihLz9vCnTBet5FSM
-X-Received: by 10.129.40.196 with SMTP id o187mr9175658ywo.497.1519728575162;
-        Tue, 27 Feb 2018 02:49:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519728575; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp4678498wma;
+        Tue, 27 Feb 2018 02:49:52 -0800 (PST)
+X-Google-Smtp-Source: AH8x227TDHCiQQ4lkbVn1D+VwkEnud+jTfn9Kh9a3nUoNOV1WgRsIDV02uxyt9jABqEHn2yUhRag
+X-Received: by 10.13.225.18 with SMTP id k18mr8813700ywe.512.1519728592135;
+        Tue, 27 Feb 2018 02:49:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519728592; cv=none;
         d=google.com; s=arc-20160816;
-        b=S6/5MYb45qZ6T6EZ3aZOeDaIE0wit9e8M9hP8y5MCCSQLs8E30hGHhQUHEHBUEpVRg
-         xiXYsM1ZT3Vc3Qgqz6+fYvDqw6DAfhQwrdfah1/9+dg5Szb8Sd4bQKACASBhdGJ0B1nK
-         Ues2RaHoI0xlZjw93cogAcMsBKG8iQPFzTcWWh6SpF3VDYyAEbbtClZUB8KahL9eP6BP
-         B7yVzvCIaBIon8QJvCFlxfWVuqZaiKwhYooeVV76M2Yl/HDWmCOi25+qJHYYn14A8yCB
-         gBJSDX8u72gwcurrkzOog0GJu2J/DIiXmJoIOk0BHu/+P3NspQDrjeehzdNyyvrUU9LC
-         T1aw==
+        b=WeRKx+vRj5eBj3l6r1hGXEe75DD23INK29l3POZlozKHRXTRTtxoFEbeYAVgNwJv9b
+         8nJkCa76VPEESOKKZXgVGegEjlDHU7iQZt4aAlm5eW6vybtm1mWw0v0cs/OniLHWzuob
+         hBIIj61gtLVl247qmxjyh2zGXaNOT5q7VfQLfknHTNlkeq0kjj5w3iwXyBrWIjagLbHj
+         0zheRmlJvNh96lq7tn81wwp0SdFQQU2dP067s9NfwLzvInGhkbrJRqaz60xfd4tSSw0i
+         3D6tQ3zXBF6yxt3Ljsz1qQQVuWVbsLQkviCbAOvM3tKaCXjyd/hbkdjFnOSi2bqZn8KK
+         1wmA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=zxiumG5yKtpafwO9NwXhkvNlQBAThKuZqf9U2cg8vUc=;
-        b=wmmBjVGWt1AeRADIigPSaWb8O5f4V74RCHWofF6WgrprHLV7T/R6lokaDbgIyVhxR1
-         5eghi5rYT5Gy6F/fxyze1iCIBxwSWDMRsMQJepujAmwboY0zXucrxByNEa/y5CvUJuSe
-         2I4obKhgLT/rNlKWCT70DxIXmYLwvMifaJP0M0Hxh6aFNkdFWsTCMR4/NOC3ueAMA/pq
-         pe9NA3RwJ9zj/QMkC8sYgQzHrbaUc3gHlDOs0mJniLFkvwjQ3SEUtk9UfzTcFmIbkbaV
-         t/dNG3YY6Lnh5OMVBrushsQX+bocLoePk6ikJ1SN755fU3k6ojvU1hPlL/b1AKUwoFMZ
-         C/7A==
+        bh=Twqxi8BDJv63Fx0OmA4mzSxVFDLjBcftrJ1XbHyLRmQ=;
+        b=Yn26bGC3EtoIVxIoPJBiGl1XIYGgLKCLBrIC7TLLiu2UdLBnhvlE96tqwSipISx2Xx
+         2v7yvdbXM0KAK1tZrTnNfoCTCAr3huC+YYfQww020E5kUAQjNbLBGrJuzL8uKeXn0xF8
+         sS0NZUNGsxC4oadl5gLmq3bIwzJ1lX1sJXDtW2ftalRN3EKnD7MaWY9abHjVetOwtH54
+         lw4XZzlVLua+PhJkwT/ylMj2qe8HzAwEMdhGdxv9Oqq/tO4ojh3Di5BBprMcXCnNexhm
+         JQinklfxKbQgvPxdFtY8zPqbkTw0KoaCQOK5TV4edJ9kchNiHHCi0TF55R88ftVwXOOs
+         fIZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=QQKkaIRi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=gsFOflii;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t203si1830217ywt.436.2018.02.27.02.49.34
+        by mx.google.com with ESMTPS id z7si1824018ywj.123.2018.02.27.02.49.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 27 Feb 2018 02:49:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 27 Feb 2018 02:49:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=QQKkaIRi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=gsFOflii;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36161 helo=lists.gnu.org)
+Received: from localhost ([::1]:36160 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eqcpC-0006L2-HI
-	for alex.bennee@linaro.org; Tue, 27 Feb 2018 05:49:34 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54662)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eqcpT-0006Kj-HQ
+	for alex.bennee@linaro.org; Tue, 27 Feb 2018 05:49:51 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54711)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <linus.walleij@linaro.org>) id 1eqcor-0006JJ-8x
-	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 05:49:14 -0500
+	(envelope-from <linus.walleij@linaro.org>) id 1eqcos-0006Jh-Gr
+	for qemu-devel@nongnu.org; Tue, 27 Feb 2018 05:49:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <linus.walleij@linaro.org>) id 1eqcop-0004A1-JD
-	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 05:49:12 -0500
-Received: from mail-lf0-x242.google.com ([2a00:1450:4010:c07::242]:44426)
+	(envelope-from <linus.walleij@linaro.org>) id 1eqcor-0004BV-Gv
+	for qemu-devel@nongnu.org; Tue, 27 Feb 2018 05:49:14 -0500
+Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:40229)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <linus.walleij@linaro.org>)
-	id 1eqcop-00049S-B0
-	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 05:49:11 -0500
-Received: by mail-lf0-x242.google.com with SMTP id v9so26818977lfa.11
-	for <qemu-arm@nongnu.org>; Tue, 27 Feb 2018 02:49:11 -0800 (PST)
+	id 1eqcor-0004Ah-8D
+	for qemu-devel@nongnu.org; Tue, 27 Feb 2018 05:49:13 -0500
+Received: by mail-lf0-x241.google.com with SMTP id 37so26791850lfs.7
+	for <qemu-devel@nongnu.org>; Tue, 27 Feb 2018 02:49:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=zxiumG5yKtpafwO9NwXhkvNlQBAThKuZqf9U2cg8vUc=;
-	b=QQKkaIRitQQwh8B9wCarcA00y9eWsIyltP8NHq7DEBXrpOtLLoHTty+b38e1qJUJXj
-	MtvcayV9phbAEC67+jD3fvmWfj+EdMAzUsDhaNRH5cUCQfYO6r9HYP20ZmWUy8J++Obb
-	1PxgIt5IYvnehMrd1KrnPT4kdKh44I/uTx3g0=
+	bh=Twqxi8BDJv63Fx0OmA4mzSxVFDLjBcftrJ1XbHyLRmQ=;
+	b=gsFOfliisx+w6qA4RO3mVDUwM5nSPZShAx3JM5hCUcVT9Pg9+HQLROmqmEGRsaxIuz
+	K26oAFpzc29d/UgKbOn2AngiH5oRtGhWGDCE08T6w9dIlPQVfLLjkOZuBz+j9ByYKu2s
+	GOLVy5iuIzcNTNcC638XvoQ8vKAq9pVmIUUG0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=zxiumG5yKtpafwO9NwXhkvNlQBAThKuZqf9U2cg8vUc=;
-	b=Me5rQjSvEBoljFcMnLp9ffNmRyC+K+dkcGkzCQsjWjhh4qc6pljGlA9PfoM9HOV7Ic
-	S6Ng/pkbkq3sGjWg3UQhJU21eWNdhrKOyWh1yY7UTSiRMUIUEReIErso3Sm+F22ffJ0q
-	+usJX/+sGnql5U1UVOuk4xwE164N0XR+tt9taFSh1hqPMejmhpz9Lu+kNkNjwd6GnzDa
-	CRY1IOBecLh84TxW+KYOQLXY+x9Nyp4l18YMgbg4OHILRALqnpG9Vb7q29lTiUHlpVq9
-	x01aLXGfNF5nYIrC23Un8Ty3lh2PaWWeOlQEHRltBz2eHfP7o7rMwJPxT6cJowCUWR9d
-	FCrg==
-X-Gm-Message-State: APf1xPAPQ/561AtnGvDH6BQ/u6Hn+TFVMFPDuDQAIwUdcHkEI6V7B6EG
-	DjD+4npxrPt52/5yn1nTvYIzNW56TLI=
-X-Received: by 10.25.193.23 with SMTP id r23mr9068471lff.45.1519728549999;
-	Tue, 27 Feb 2018 02:49:09 -0800 (PST)
+	bh=Twqxi8BDJv63Fx0OmA4mzSxVFDLjBcftrJ1XbHyLRmQ=;
+	b=rqO2jGSkmYbYOrYzQjQZXT25D+qarCY7EDpuD3zyyf1mjDlHgz2vENV1EjViHrNNdt
+	WL0M0Q3yoQXOMEv1xpO4thDvvyyQKtjv0F2E9fzB0jSxsmu7SjtC7KLylZf+124KQasj
+	0dlgMN/5j8IDzE/rT7XESw1/uLkEVG3FiehHOkGgQUI/lGpFQQ4DEE5k0WG/9yEp+G02
+	Qt9OB/TrjsnUX49NoEOiua6hL8eVwc4es3+VPaUI71oUfcRboZgEk44c8c0NJT6Eo2KC
+	JVG9E53zCxDgaRMQz6mmi8+Osv3RKt18We74kuxKZK78luqBukPC1ZZDegHQ+MNiI5DF
+	AmIQ==
+X-Gm-Message-State: APf1xPC185/zPvXQ7WkLRbsv3qAW7AArdtDnCiiGtK3nHqLEUSty6IKi
+	wQu+DlmVHE9gLAcz1SeFlrtg/IfqjYw=
+X-Received: by 10.25.43.136 with SMTP id r130mr10141019lfr.48.1519728551677;
+	Tue, 27 Feb 2018 02:49:11 -0800 (PST)
 Received: from genomnajs.ideon.se ([85.235.10.227])
-	by smtp.gmail.com with ESMTPSA id 74sm2484148ljq.32.2018.02.27.02.49.08
+	by smtp.gmail.com with ESMTPSA id 74sm2484148ljq.32.2018.02.27.02.49.10
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 27 Feb 2018 02:49:09 -0800 (PST)
+	Tue, 27 Feb 2018 02:49:10 -0800 (PST)
 From: Linus Walleij <linus.walleij@linaro.org>
 To: qemu-devel@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 27 Feb 2018 11:48:59 +0100
-Message-Id: <20180227104903.21353-2-linus.walleij@linaro.org>
+Date: Tue, 27 Feb 2018 11:49:00 +0100
+Message-Id: <20180227104903.21353-3-linus.walleij@linaro.org>
 X-Mailer: git-send-email 2.14.3
 In-Reply-To: <20180227104903.21353-1-linus.walleij@linaro.org>
 References: <20180227104903.21353-1-linus.walleij@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4010:c07::242
-Subject: [Qemu-arm] [PATCH 1/5] i2c: Fix some brace style issues
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4010:c07::241
+Subject: [Qemu-devel] [PATCH 2/5] i2c: Move the bus class to i2c.h
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Corey Minyard <cminyard@mvista.com>,
 	Linus Walleij <linus.walleij@linaro.org>, qemu-arm@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qHN8V8KMoFHU
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: eZnZTmWGfCWc
 
 From: Corey Minyard <cminyard@mvista.com>
+
+Some devices need access to it.
 
 Signed-off-by: Corey Minyard <cminyard@mvista.com>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
 ---
- hw/i2c/core.c        | 3 +--
- include/hw/i2c/i2c.h | 6 ++----
- 2 files changed, 3 insertions(+), 6 deletions(-)
+ hw/i2c/core.c        | 17 -----------------
+ include/hw/i2c/i2c.h | 17 +++++++++++++++++
+ 2 files changed, 17 insertions(+), 17 deletions(-)
 
 diff --git a/hw/i2c/core.c b/hw/i2c/core.c
-index 59068f157eb5..9a54b61c1dbd 100644
+index 9a54b61c1dbd..cfccefca3d6c 100644
 --- a/hw/i2c/core.c
 +++ b/hw/i2c/core.c
-@@ -19,8 +19,7 @@ struct I2CNode {
+@@ -10,30 +10,13 @@
+ #include "qemu/osdep.h"
+ #include "hw/i2c/i2c.h"
  
+-typedef struct I2CNode I2CNode;
+-
+-struct I2CNode {
+-    I2CSlave *elt;
+-    QLIST_ENTRY(I2CNode) next;
+-};
+-
  #define I2C_BROADCAST 0x00
  
--struct I2CBus
--{
-+struct I2CBus {
-     BusState qbus;
-     QLIST_HEAD(, I2CNode) current_devs;
-     uint8_t saved_address;
+-struct I2CBus {
+-    BusState qbus;
+-    QLIST_HEAD(, I2CNode) current_devs;
+-    uint8_t saved_address;
+-    bool broadcast;
+-};
+-
+ static Property i2c_props[] = {
+     DEFINE_PROP_UINT8("address", struct I2CSlave, address, 0),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+-#define TYPE_I2C_BUS "i2c-bus"
+-#define I2C_BUS(obj) OBJECT_CHECK(I2CBus, (obj), TYPE_I2C_BUS)
+-
+ static const TypeInfo i2c_bus_info = {
+     .name = TYPE_I2C_BUS,
+     .parent = TYPE_BUS,
 diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
-index 24e95d015589..8fd449f645f0 100644
+index 8fd449f645f0..d727379b487a 100644
 --- a/include/hw/i2c/i2c.h
 +++ b/include/hw/i2c/i2c.h
-@@ -25,8 +25,7 @@ typedef struct I2CSlave I2CSlave;
- #define I2C_SLAVE_GET_CLASS(obj) \
-      OBJECT_GET_CLASS(I2CSlaveClass, (obj), TYPE_I2C_SLAVE)
+@@ -56,6 +56,23 @@ struct I2CSlave {
+     uint8_t address;
+ };
  
--typedef struct I2CSlaveClass
--{
-+typedef struct I2CSlaveClass {
-     DeviceClass parent_class;
- 
-     /* Callbacks provided by the device.  */
-@@ -50,8 +49,7 @@ typedef struct I2CSlaveClass
-     int (*event)(I2CSlave *s, enum i2c_event event);
- } I2CSlaveClass;
- 
--struct I2CSlave
--{
-+struct I2CSlave {
-     DeviceState qdev;
- 
-     /* Remaining fields for internal use by the I2C code.  */
++#define TYPE_I2C_BUS "i2c-bus"
++#define I2C_BUS(obj) OBJECT_CHECK(I2CBus, (obj), TYPE_I2C_BUS)
++
++typedef struct I2CNode I2CNode;
++
++struct I2CNode {
++    I2CSlave *elt;
++    QLIST_ENTRY(I2CNode) next;
++};
++
++struct I2CBus {
++    BusState qbus;
++    QLIST_HEAD(, I2CNode) current_devs;
++    uint8_t saved_address;
++    bool broadcast;
++};
++
+ I2CBus *i2c_init_bus(DeviceState *parent, const char *name);
+ void i2c_set_slave_address(I2CSlave *dev, uint8_t address);
+ int i2c_bus_busy(I2CBus *bus);
 -- 
 2.14.3
 

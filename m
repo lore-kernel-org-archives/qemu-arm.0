@@ -1,82 +1,104 @@
-Received: by 10.28.71.27 with SMTP id u27csp1213447wma;
-        Fri, 9 Feb 2018 09:51:22 -0800 (PST)
-X-Google-Smtp-Source: AH8x227pudUlOrZmLHjtA1X5yHZtniCLk2vDdyl3qWjNExm+Pn6UCyNSN8BVsEr1/mRi8RdA324N
-X-Received: by 10.129.235.13 with SMTP id n13mr2565824ywm.414.1518198682416;
-        Fri, 09 Feb 2018 09:51:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518198682; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp4659177wma;
+        Tue, 27 Feb 2018 02:25:03 -0800 (PST)
+X-Google-Smtp-Source: AG47ELudszmgUvLlEKAwYWOK035I8o0hvqNGv2riagYBc+f1SCshk6GsJPd9L14z/MQgb5GBgSK6
+X-Received: by 2002:a25:8582:: with SMTP id x2-v6mr5437477ybk.296.1519727103364;
+        Tue, 27 Feb 2018 02:25:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519727103; cv=none;
         d=google.com; s=arc-20160816;
-        b=HuViQFKxTXWbmk4kSOykXVT238DrI28iHL5XBCCJ9jc37pKdj2/c0+1ncf82Yh3OYh
-         g4ZeWm31YApINyqjeWl8UiWbfdjvjLDJv49iHpEX2iKl0BffA01sucWFH2j5wMPmFN63
-         1MRYMryqIB217ELcyI81xwMLwmAg/GcpHoycm2yEO40oj/wSFew3sRPg8CQSPNoIqfiU
-         r1qLhxp6FXDYntPRUqrJBqaeeeLoUuxBF+GHxVE/d+1a7S0FlycrXcnqQH+vZuiqvA7R
-         9I8OptRrd20eCQ+mXa7+8OizVhbzOzdVZHCbHCUHEjpusajNqY0jE8LLDV/S7n79tH66
-         6AVw==
+        b=rvhuGQ71o9PEF21qT8BGNNPx1xoSlAKNWWvXMI47EG6ThatLSoQwMTsuzNOKAzmUD+
+         hAbHPeUQ0xc8/BScgpna2+FrdFI5XEQkP1tpv0L0A3ysTyCa6rH5L4bppu9RBb88BynS
+         VQqfRUja1kDduybdgPquRID1qUDlNie4S03FfIfrkBRlC1s9qUdp/YfBL2qiOUOuqEnb
+         ggalpNeleGjXsofqfbkor90TKAYlRRbPYkIlyhqX+ih3vU86JGfSEAPaJR9gLQeBWHSK
+         zTfq3Djiw/SYrIRJs5V//Uq9ObpsJvngvQkFjEkLmNUdqcoFV/Auyu24VZXTSyLszj2F
+         +AmQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=fg58VMww4mKN1p5fXdoZdkTRsmwOPtV3092k6HwfhsI=;
-        b=noKs6LlkuiCrBrJdEnfF371UgTFrlHuw27tsck+k+3c1ua3gLYlTtoDL6HCEO/WFo9
-         4z1MPJrpff4VoF4zi25OyjLK21b5IiURWhOi9ZoiMBbHDKVS0fARak72wxekmUgz3lFe
-         pjeeHIjL1zm9P/bwYbJomceQC4YhmL2DG8ReMA3rHMdVNxNtxJvJFo7feqOKhOg9JP5d
-         zrX6h7EabYl7IbKNm5YNiadxGCLsSZhgDVjRa334c2FXhIs1tm+27Oybsp/Ajl0SfWYX
-         fMoEGs403XdV2WF8w6SvUcxBH0ot7fLCY1cfzIGNASlafr9Xkwo+k+Dda8cAx6WSMFRF
-         t6UQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=OHzTQM/t5u2Dbs2nRn2ApjRukVa5BkBAvD9OtGRMvYQ=;
+        b=yh2pjICiI4yDGhYxPgfJOI0Bx3+zmeXFlDorNqvWwddWLRtFeiX59M5IVv9yGqI2cb
+         e4JczZ6mrd1vGQqU359+RACSzXxh7u5V8gPLWfQ1AOUndPtU5nGKhw5yckO0cuMhP6Ej
+         7QJQkKAVrN4d6WKQyy7kLtTL/AjuN01y9Cp4vY1NfJxIzKBlFR76BphYfv4Dn3MnjozN
+         88j8ZcTPFakkVmFmp537FE5HFnaKc4uKu0BuevEYFC8BOC2af1Iym/lfLyOlTPwg/S/Q
+         i/lIjrfspvNXL2QCm2hvCBv7KE3sQgE+CXz7OAFgLrM9P9qvpUNglxoo+YeeT8Igyxl/
+         SwLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@linaro.org header.s=google header.b=T4Cc6Mb8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z89si500502ybh.245.2018.02.09.09.51.22
+        by mx.google.com with ESMTPS id v67-v6si405328ybc.205.2018.02.27.02.25.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 09 Feb 2018 09:51:22 -0800 (PST)
+        Tue, 27 Feb 2018 02:25:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:49877 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=T4Cc6Mb8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:36049 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ekCpV-0004SN-Qe
-	for alex.bennee@linaro.org; Fri, 09 Feb 2018 12:51:21 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54042)
+	id 1eqcRS-0008Ek-Ri
+	for alex.bennee@linaro.org; Tue, 27 Feb 2018 05:25:02 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48955)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <geert@linux-m68k.org>) id 1ekBDa-0007M8-9H
-	for qemu-arm@nongnu.org; Fri, 09 Feb 2018 11:08:08 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1eqcRK-0008EI-02
+	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 05:24:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <geert@linux-m68k.org>) id 1ekBDX-0001Et-2S
-	for qemu-arm@nongnu.org; Fri, 09 Feb 2018 11:08:06 -0500
-Received: from leibniz.telenet-ops.be ([195.130.137.77]:55064)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <geert@linux-m68k.org>)
-	id 1ekBDW-0001DK-Jy
-	for qemu-arm@nongnu.org; Fri, 09 Feb 2018 11:08:02 -0500
-Received: from laurent.telenet-ops.be (laurent.telenet-ops.be
-	[IPv6:2a02:1800:110:4::f00:19])
-	by leibniz.telenet-ops.be (Postfix) with ESMTPS id 3zdJwl1s9GzMqg5w
-	for <qemu-arm@nongnu.org>; Fri,  9 Feb 2018 16:32:55 +0100 (CET)
-Received: from ayla.of.borg ([84.194.111.163])
-	by laurent.telenet-ops.be with bizsmtp
-	id 8fHm1x02c3XaVaC01fHmCm; Fri, 09 Feb 2018 16:17:50 +0100
-Received: from ramsan.of.borg ([192.168.97.29] helo=ramsan)
-	by ayla.of.borg with esmtp (Exim 4.86_2)
-	(envelope-from <geert@linux-m68k.org>)
-	id 1ekAQs-0003S6-Pf; Fri, 09 Feb 2018 16:17:46 +0100
-Received: from geert by ramsan with local (Exim 4.86_2)
-	(envelope-from <geert@linux-m68k.org>)
-	id 1ekAQs-0000lS-OZ; Fri, 09 Feb 2018 16:17:46 +0100
-From: Geert Uytterhoeven <geert+renesas@glider.be>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	Alex Williamson <alex.williamson@redhat.com>
-Date: Fri,  9 Feb 2018 16:17:35 +0100
-Message-Id: <1518189456-2873-5-git-send-email-geert+renesas@glider.be>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1518189456-2873-1-git-send-email-geert+renesas@glider.be>
-References: <1518189456-2873-1-git-send-email-geert+renesas@glider.be>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 195.130.137.77
-X-Mailman-Approved-At: Fri, 09 Feb 2018 12:38:06 -0500
-Subject: [Qemu-arm] [PATCH/RFC 4/5] vfio: No-IOMMU mode support
+	(envelope-from <peter.maydell@linaro.org>) id 1eqcRJ-0001IX-3h
+	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 05:24:53 -0500
+Received: from mail-ot0-x22b.google.com ([2607:f8b0:4003:c0f::22b]:43684)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1eqcRI-0001IH-Ud
+	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 05:24:53 -0500
+Received: by mail-ot0-x22b.google.com with SMTP id m22so3284693otf.10
+	for <qemu-arm@nongnu.org>; Tue, 27 Feb 2018 02:24:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=OHzTQM/t5u2Dbs2nRn2ApjRukVa5BkBAvD9OtGRMvYQ=;
+	b=T4Cc6Mb8xF80WnsP4WdkO8rB3h0CNKD0nSM/XjEupCvrvN/ZV9KG0NILdYrL2luW8U
+	Zx9dh18zsX+dAnSaTQqihmQvBpvuRkv68viSZQEMCQ13reu4dA1wXElHSud2s3UUiBRE
+	TpR5FvcASpif0KsgZ/Vv3zF7cXzf3k13oFWEw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=OHzTQM/t5u2Dbs2nRn2ApjRukVa5BkBAvD9OtGRMvYQ=;
+	b=Z7Hc6DYs+wV+74ml1jCwTVwnOo7yM7V9udUygwyu0qBfgRPIDUWL3xnmUO7TtTN0Jr
+	Xyi1CKVEAltlymQiq1yfjMVNuRuQyfZC2LMS1CwWwFpz3LZLGQNImxRtjDpyho+AyXJE
+	Z3d+kPs7LTZSIl75xX7OUMcjODLRFsw46JnExcTvC3GShLxCBvmH7dkFqnROxay6X2bs
+	M/+ZPQEeJzMiVMC6WA59gy5JfwOFmPdyWLtMw68CZQXwcfOGoUyLRiMYaK1JFjFwG5SX
+	v9wpcVE6AMRbIv+sAmHILjhHXlGFgroEwOe8jRmyOH5vIpRrHbQZFxaUUXx1Y3Fbskyo
+	CIRw==
+X-Gm-Message-State: APf1xPAl9zHYHLS1FO6uB7B3vroM+1mrx06V02Sf9bfztyWJAKL80N1l
+	py72+RM7jDErleDil2Ww+bSqdwrO+S5WfVgB6w4RlQ==
+X-Received: by 10.157.7.227 with SMTP id 90mr9372744oto.126.1519727092209;
+	Tue, 27 Feb 2018 02:24:52 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.157.33.100 with HTTP; Tue, 27 Feb 2018 02:24:31 -0800 (PST)
+In-Reply-To: <CACRpkdZuNUmZbHnYwUQFJkBNQWADd5tXfc9PYv8amosbO=zn4Q@mail.gmail.com>
+References: <20180217140051.22731-1-linus.walleij@linaro.org>
+	<20180217140051.22731-2-linus.walleij@linaro.org>
+	<eff4f015-38ad-60e1-e1de-886bb4f93328@amsat.org>
+	<CACRpkdZLwbVr2O5__GpHt+y0pqpk3-j_AXD_qv5JQc3JZNRm7A@mail.gmail.com>
+	<CAFEAcA-jqgBxoEprjTPed0k_vZFGrAVd87Gj5nAfFysau4WrSw@mail.gmail.com>
+	<CACRpkdZuNUmZbHnYwUQFJkBNQWADd5tXfc9PYv8amosbO=zn4Q@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 27 Feb 2018 10:24:31 +0000
+Message-ID: <CAFEAcA_bZ-w7WWUtr8RE6rU8ELLbZpBmeuDnwZ=rLreXgJ6fRg@mail.gmail.com>
+To: Linus Walleij <linus.walleij@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::22b
+Subject: Re: [Qemu-arm] [PATCH 2/3] hw/sii9022: Add support for Silicon
+ Image SII9022
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -88,156 +110,53 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Geert Uytterhoeven <geert+renesas@glider.be>, Arnd Bergmann <arnd@arndb.de>,
-	Wolfram Sang <wsa+renesas@sang-engineering.com>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Alexander Graf <agraf@suse.de>, qemu-devel@nongnu.org,
-	linux-renesas-soc@vger.kernel.org,
-	Auger Eric <eric.auger@redhat.com>, qemu-arm@nongnu.org,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Xiao Feng Ren <renxiaof@linux.vnet.ibm.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: d262yb12hkx0
+X-TUID: BTCdhOVywwx8
 
-From: Xiao Feng Ren <renxiaof@linux.vnet.ibm.com>
+On 27 February 2018 at 10:21, Linus Walleij <linus.walleij@linaro.org> wrot=
+e:
+> On Tue, Feb 27, 2018 at 11:09 AM, Peter Maydell
+> <peter.maydell@linaro.org> wrote:
+>> On 27 February 2018 at 07:41, Linus Walleij <linus.walleij@linaro.org> w=
+rote:
+>>> On Sat, Feb 17, 2018 at 7:32 PM, Philippe Mathieu-Daud=C3=A9 <f4bug@ams=
+at.org> wrote:
+>>>
+>>>> [Me]
+>>>>> +#define DEBUG_SII9022 0
+>>>>> +
+>>>>> +#define DPRINTF(fmt, ...) \
+>>>>> +    do { \
+>>>>> +        if (DEBUG_SII9022) { \
+>>>>> +            printf("sii9022: " fmt, ## __VA_ARGS__); \
+>>>>> +        } \
+>>>>> +    } while (0)
+>>>>
+>>>> Can you replace DPRINTF() by trace events?
+>>>
+>>> Absolutely but which ones?
+>>>
+>>> I do not feel senior enough to also invent new trace events
+>>> for displays or I2C devices...
+>>
+>> Just put a trace event where you've put DPRINTF debug statements.
+>
+> Yeah, hm the question might be silly or something but I don't
+> know how to do that.
 
-Add qemu support for the newly introduced VFIO No-IOMMU driver.
+docs/devel/tracing.txt describes them, but basically:
+ * include "trace.h"
+ * define trace events with a line for each in the trace-events
+   file for the subdirectory (basically a function prototype-ish
+   thing followed by a printf-style format string)
+ * call them like normal function calls with a trace_ prefix
 
-We need to add special handling for:
-- Group character device is /dev/vfio/noiommu-$GROUP.
-- No-IOMMU does not rely on a memory listener.
-- No IOMMU will be set for its group, so no need to call
-  vfio_kvm_device_add_group.
+commit 1b640aa9292bc00beb441e97d862ba322a7ba18d is a recent one
+which converted some DRINTFs in hw/sd/sd.c to trace events.
 
-Signed-off-by: Xiao Feng Ren <renxiaof@linux.vnet.ibm.com>
-[geert: Rebase]
-Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
----
- hw/vfio/common.c              | 61 ++++++++++++++++++++++++++++++++++---------
- include/hw/vfio/vfio-common.h |  2 ++
- 2 files changed, 50 insertions(+), 13 deletions(-)
-
-diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-index f895e3c3359af779..2ee94a3304202a74 100644
---- a/hw/vfio/common.c
-+++ b/hw/vfio/common.c
-@@ -1019,6 +1019,33 @@ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
-     container->fd = fd;
-     QLIST_INIT(&container->giommu_list);
-     QLIST_INIT(&container->hostwin_list);
-+    container->noiommu = group->noiommu;
-+
-+    if (container->noiommu) {
-+        ret = ioctl(group->fd, VFIO_GROUP_SET_CONTAINER, &fd);
-+        if (ret) {
-+            error_report("vfio: failed to set group container: %m");
-+            ret = -errno;
-+            goto free_container_exit;
-+        }
-+
-+        ret = ioctl(fd, VFIO_CHECK_EXTENSION, VFIO_NOIOMMU_IOMMU);
-+        if (!ret) {
-+            error_report("vfio: No available IOMMU models");
-+            ret = -EINVAL;
-+            goto free_container_exit;
-+        }
-+
-+        ret = ioctl(fd, VFIO_SET_IOMMU, VFIO_NOIOMMU_IOMMU);
-+        if (ret) {
-+            error_report("vfio: failed to set iommu for container: %m");
-+            ret = -errno;
-+            goto free_container_exit;
-+        }
-+
-+        goto listener_register;
-+    }
-+
-     if (ioctl(fd, VFIO_CHECK_EXTENSION, VFIO_TYPE1_IOMMU) ||
-         ioctl(fd, VFIO_CHECK_EXTENSION, VFIO_TYPE1v2_IOMMU)) {
-         bool v2 = !!ioctl(fd, VFIO_CHECK_EXTENSION, VFIO_TYPE1v2_IOMMU);
-@@ -1151,15 +1178,16 @@ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
-     group->container = container;
-     QLIST_INSERT_HEAD(&container->group_list, group, container_next);
- 
--    container->listener = vfio_memory_listener;
--
--    memory_listener_register(&container->listener, container->space->as);
--
--    if (container->error) {
--        ret = container->error;
--        error_setg_errno(errp, -ret,
--                         "memory listener initialization failed for container");
--        goto listener_release_exit;
-+listener_register:
-+    if (!container->noiommu) {
-+        container->listener = vfio_memory_listener;
-+        memory_listener_register(&container->listener, container->space->as);
-+        if (container->error) {
-+            ret = container->error;
-+            error_setg_errno(errp, -ret,
-+                    "memory listener initialization failed for container");
-+            goto listener_release_exit;
-+        }
-     }
- 
-     container->initialized = true;
-@@ -1169,7 +1197,9 @@ listener_release_exit:
-     QLIST_REMOVE(group, container_next);
-     QLIST_REMOVE(container, next);
-     vfio_kvm_device_del_group(group);
--    vfio_listener_release(container);
-+    if (!container->noiommu) {
-+        vfio_listener_release(container);
-+    }
- 
- free_container_exit:
-     g_free(container);
-@@ -1195,7 +1225,7 @@ static void vfio_disconnect_container(VFIOGroup *group)
-      * since unset may destroy the backend container if it's the last
-      * group.
-      */
--    if (QLIST_EMPTY(&container->group_list)) {
-+    if (QLIST_EMPTY(&container->group_list) && !container->noiommu) {
-         vfio_listener_release(container);
-     }
- 
-@@ -1249,8 +1279,13 @@ VFIOGroup *vfio_get_group(int groupid, AddressSpace *as, Error **errp)
-     snprintf(path, sizeof(path), "/dev/vfio/%d", groupid);
-     group->fd = qemu_open(path, O_RDWR);
-     if (group->fd < 0) {
--        error_setg_errno(errp, errno, "failed to open %s", path);
--        goto free_group_exit;
-+        snprintf(path, sizeof(path), "/dev/vfio/noiommu-%d", groupid);
-+        group->fd = qemu_open(path, O_RDWR);
-+        if (group->fd < 0) {
-+            error_setg_errno(errp, errno, "failed to open %s", path);
-+            goto free_group_exit;
-+        }
-+        group->noiommu = 1;
-     }
- 
-     if (ioctl(group->fd, VFIO_GROUP_GET_STATUS, &status)) {
-diff --git a/include/hw/vfio/vfio-common.h b/include/hw/vfio/vfio-common.h
-index f3a2ac9fee02066f..aca2e33efb9b118c 100644
---- a/include/hw/vfio/vfio-common.h
-+++ b/include/hw/vfio/vfio-common.h
-@@ -77,6 +77,7 @@ struct VFIOGroup;
- typedef struct VFIOContainer {
-     VFIOAddressSpace *space;
-     int fd; /* /dev/vfio/vfio, empowered by the attached groups */
-+    bool noiommu;
-     MemoryListener listener;
-     MemoryListener prereg_listener;
-     unsigned iommu_type;
-@@ -136,6 +137,7 @@ struct VFIODeviceOps {
- typedef struct VFIOGroup {
-     int fd;
-     int groupid;
-+    bool noiommu;
-     VFIOContainer *container;
-     QLIST_HEAD(, VFIODevice) device_list;
-     QLIST_ENTRY(VFIOGroup) next;
--- 
-2.7.4
-
+thanks
+-- PMM

@@ -1,98 +1,110 @@
-Received: by 10.223.172.38 with SMTP id v35csp3458286wrc;
-        Sat, 9 Sep 2017 16:22:49 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QDqipzssugjus54xyucZryoOIq5x8vSHOYc12042tfiEPmJTqz7eqVI3c8ApxBD2zyiteAT
-X-Received: by 10.200.39.104 with SMTP id h37mr10575482qth.165.1504999369824;
-        Sat, 09 Sep 2017 16:22:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504999369; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp5348471wma;
+        Tue, 27 Feb 2018 14:50:12 -0800 (PST)
+X-Google-Smtp-Source: AH8x227tx/2FGCV748gNgGcnoXAXSuzgz2Yk+xkJ3bgyx7KEfclvoNqU0xnUp6YPyGccowmq020x
+X-Received: by 10.129.175.3 with SMTP id n3mr10389980ywh.343.1519771812470;
+        Tue, 27 Feb 2018 14:50:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519771812; cv=none;
         d=google.com; s=arc-20160816;
-        b=aW9gCJCNH8iyP+ffhZdosvc4eOe3c3IFy755hPqkWIOTcQbmPz8xq7uxz+l8C3YZf8
-         U5jnflR7ImLbeK1KinWKH7Fvf/xROwpsGU4B2KJirMemCcxH1x9u/HHgNQREAvuUcZoR
-         U7UZzsKTRhwzTBvw/vGFBnN9juoWHsizlGbFkGYE8teFazFV4I34g/qXUQrxHR7I7GY3
-         mad9fwClbBrcxZfOJu1Zj4qfWjJC5lBLWfso4ZgVoSOhxVVLk++F+2QQJV0YN1Sf1MkV
-         e/mXsiM1O72TMp0ABJQrvi4sKszHkz3vrPZZlKNSGtNGd2625p25soFLdu14CruzAO9o
-         WJ4w==
+        b=fk8gzJet+42GtzFCRFIFH+vPKk2p7BxpZ+nNVCPJvOiKHx+uW0YVE8Z+xsXbhmmSMo
+         JN4Z1pQnhqzUj32ic3H1Uz1DmmIFhVndw8cgZs7k2mcGJr8KV5v1fR4Mmd2x1d9oLwhZ
+         SW+Cqgmjfwonj0LNZExBHZIG68CPLaVx5qbzsR71hHPq2YmldyfDry4CS8jJCbdavVx1
+         tuhues0LTDu9ktUB0Tvfzez5VVZP8gKh4pCdMB7z+cfjRi9KEhnjYpVNyS7W5esTG1se
+         FYsLNiAEUjph7SiCT1DDeRTKlomQgZhN29j8OHsPJJE0woCF95w0EUqsm1v6G9cA3OI+
+         Bahg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dmarc-filter:arc-authentication-results;
-        bh=Ijnys2HwR3e89xYAEXdd0/L/CNA1UXrIRb9Ox/tWhAo=;
-        b=lLZa1gaJbAe44copCJ+6Ko1D/AGVErjlqwcqqltmQFhKLvFGee7NO1j4ZpF7Ut/paR
-         hDWoQCt5bhexU/WwrAZL1phqnIM4pY5nJzmZoJPbpS1GZYb9YeTlrZkiLLmVBE3mQApZ
-         owERwf1tgTAzyAUcfVEy7KjJYncdwMhQMgFMbut31zQPZ4XfF6VSytILa0YERPFfTTvk
-         oH7GjZ5ln3OFNlJ25VR7FyeWpMZ7GeotOyzBh08QX11pr3ifth7EefwAPcixx1dw9pYz
-         Y7mvd0ZYduqjiMOltnKnj/pDG4V3YtPZDZTjoW3Z5o2Sr94HNsEvEdbG+IpbjtbYQ+Xe
-         mM5Q==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature
+         :arc-authentication-results;
+        bh=ddH8wi7rydfgpTaf/cZrtmLbsuOPi1xtnsVUxM6fxMI=;
+        b=JogNZxKRk9bVhzn+aj2YxyL5rsb2gpkQzmqMsCozzYCVq1on0T0zb/3lnVxp5aNlig
+         8XuniX8S6yJwycJ2uH5ZJbP2w4Isj7kfrMRx0F/uPqB0QLTsNF+xkElWYOhVeq/Td/xa
+         Byy25Pvv/sZlVwp2L08iQgul2qQM9SjGkXYXfhYr4dIJnN4MzeFiqn5R3owTCOrR/NSZ
+         maF4s+DqVyQh1qfqcBytfxqZcM3xDwvioxRL1izhBkgmH6u1rdnR3S8i+jI264B8+Ciw
+         Odj2I6kFLBAQqPJJjxuBxcKejUpB/wEWClicLElcYru3VBV90ieoswbQvSc0rgXFTszJ
+         WZdQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=EdnVsEbt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e40si5820825qta.498.2017.09.09.16.22.49
+        by mx.google.com with ESMTPS id y63-v6si37035yba.744.2018.02.27.14.50.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 09 Sep 2017 16:22:49 -0700 (PDT)
+        Tue, 27 Feb 2018 14:50:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=EdnVsEbt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51148 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:40534 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dqp5L-0000Oq-KI
-	for alex.bennee@linaro.org; Sat, 09 Sep 2017 19:22:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45369)
+	id 1eqo4Z-0006io-Vd
+	for alex.bennee@linaro.org; Tue, 27 Feb 2018 17:50:12 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52090)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1dqp5G-0000Og-03
-	for qemu-arm@nongnu.org; Sat, 09 Sep 2017 19:22:42 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1eqo4Q-0006i0-FH
+	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 17:50:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1dqp5B-0008CI-Vo
-	for qemu-arm@nongnu.org; Sat, 09 Sep 2017 19:22:41 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42694)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1dqp5B-0008Bp-Op; Sat, 09 Sep 2017 19:22:37 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 30A1883F3D;
-	Sat,  9 Sep 2017 23:22:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 30A1883F3D
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=ehabkost@redhat.com
-Received: from localhost (ovpn-116-45.gru2.redhat.com [10.97.116.45])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 995F35D9C0;
-	Sat,  9 Sep 2017 23:22:34 +0000 (UTC)
-Date: Sat, 9 Sep 2017 20:22:33 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20170909232232.GM7570@localhost.localdomain>
-References: <1504533662-198084-1-git-send-email-imammedo@redhat.com>
-	<1504533662-198084-7-git-send-email-imammedo@redhat.com>
-	<20170905213152.GG17184@localhost.localdomain>
-	<CAKmqyKPWDmVYJceYao7NkD5svWqN_fYbDoUJ4uLNFdAhv+kFwg@mail.gmail.com>
-	<20170905221226.GZ7570@localhost.localdomain>
-	<CAKmqyKO4yRz3R0BJ+gz=UfLc0d_AoNtEAHn-SNFMzg3xo12D=Q@mail.gmail.com>
-	<20170909203014.GG7570@localhost.localdomain>
-	<CAFEAcA9iTepyGg17xPB_4XOnoOK6iAPsvOdJg_XLEbdk+dggGg@mail.gmail.com>
+	(envelope-from <richard.henderson@linaro.org>) id 1eqo4L-00047c-R7
+	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 17:50:02 -0500
+Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:39147)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1eqo4L-00047B-J2
+	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 17:49:57 -0500
+Received: by mail-pf0-x241.google.com with SMTP id u5so191223pfh.6
+	for <qemu-arm@nongnu.org>; Tue, 27 Feb 2018 14:49:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=ddH8wi7rydfgpTaf/cZrtmLbsuOPi1xtnsVUxM6fxMI=;
+	b=EdnVsEbtB4EiRM2sYaa8Oxbz0MiW+pcTfM56tMGSaFNmueymh3Uh2IHWWfeYRaIAFA
+	/PANdz3jiEW9M+4zVFRzMXegBoERcwCXGZM9O73pmTJ6CP8Xg2BGW6B+YkIvAiSIeao8
+	0k+S7qFbKLxWNF882mWCtT0wPLRLXP+BaoZfc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=ddH8wi7rydfgpTaf/cZrtmLbsuOPi1xtnsVUxM6fxMI=;
+	b=X29W259WW1xtNdX6OYW0o1YLcexC2Z5mT/TxtY0xpyq0K/u0Ls5oxnTZsIsUvCDOdL
+	8GEkEKzLubtY8mVnzr2/dGg/HSsHiN5eF+Hj2s11rlkt0xS+dQza6d0x/0NNjMWNwgwP
+	dMJ5iLhxqgGzDHPYTKAoV8EsnZuvnjno1j7LaBLsAg8/NrWIFqbt3SiF91kVK9EQdin0
+	8ruonbQO1t8Rn3ctjBpPRTK0LkpQvB08mSqDv6eIbuQayL6Gt1K/C34k+wyZu/lPj3bl
+	gdrg2NWxY5OrWaAqZ3RE7Muix9/iIXv1sfphiv4Nq4OkKUFL7H/Hx5yoWNVZMwci05A8
+	7C8A==
+X-Gm-Message-State: APf1xPDDl5scBJ89f6GLbTFx7vbonDOXn6yh9esSCD9Lkvxqf3jCnrXo
+	06S5x55vdGALNpf5rDpmJArEyg==
+X-Received: by 10.101.82.1 with SMTP id o1mr12697228pgp.37.1519771796065;
+	Tue, 27 Feb 2018 14:49:56 -0800 (PST)
+Received: from cloudburst.twiddle.net (97-113-169-147.tukw.qwest.net.
+	[97.113.169.147])
+	by smtp.gmail.com with ESMTPSA id a5sm245871pfn.66.2018.02.27.14.49.53
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 27 Feb 2018 14:49:54 -0800 (PST)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <20180220180325.29818-1-peter.maydell@linaro.org>
+	<20180220180325.29818-19-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <847f6200-5d9d-98fe-bf20-54295dcdab26@linaro.org>
+Date: Tue, 27 Feb 2018 14:49:52 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA9iTepyGg17xPB_4XOnoOK6iAPsvOdJg_XLEbdk+dggGg@mail.gmail.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.8.3 (2017-05-23)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Sat, 09 Sep 2017 23:22:36 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 6/6] arm: drop intermadiate
- cpu_model -> cpu type parsing and use cpu type directly
+In-Reply-To: <20180220180325.29818-19-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c00::241
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 18/19] hw/arm/iotkit: Model Arm
+ IOT Kit
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,33 +116,23 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Andrew Jones <drjones@redhat.com>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	qemu-arm <qemu-arm@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Alistair Francis <alistair23@gmail.com>,
-	Richard Henderson <rth@twiddle.net>
+Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: y9Oc9QT+wOpb
+X-TUID: dxuFTiP5bLuV
 
-On Sat, Sep 09, 2017 at 11:41:55PM +0100, Peter Maydell wrote:
-> On 9 September 2017 at 21:30, Eduardo Habkost <ehabkost@redhat.com> wrote:
-> > However, I have a suggestion for Igor: making a separate patch
-> > that renames the existing property to "x-cpu-model", and using
-> > "x-cpu-type" in this series.  This way we will explicitly
-> > document the fact that the property is not a stable
-> > user/management interface.
+On 02/20/2018 10:03 AM, Peter Maydell wrote:
+> Model the Arm IoT Kit documented in
+> http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ecm0601256/index.html
 > 
-> We have lots and lots of properties on non-user-instantiated
-> devices that aren't intended as user level configurable
-> things...
+> The Arm IoT Kit is a subsystem which includes a CPU and some devices,
+> and is intended be extended by adding extra devices to form a
+> complete system.  It is used in the MPS2 board's AN505 image for the
+> Cortex-M33.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Well, we need to deal with them somehow, otherwise we have no
-simple way to know if removing/renaming a property is really safe
-or not.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
--- 
-Eduardo
+
+r~

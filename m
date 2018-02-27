@@ -1,378 +1,251 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id r126sm5819145wmd.29.2018.02.27.06.48.05
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Feb 2018 06:48:10 -0800 (PST)
-Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 903F93E1621;
-	Tue, 27 Feb 2018 14:38:54 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org,
-	richard.henderson@linaro.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v4 22/31] arm/helper.c: re-factor recpe and add recepe_f16
-Date: Tue, 27 Feb 2018 14:38:43 +0000
-Message-Id: <20180227143852.11175-23-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.15.1
-In-Reply-To: <20180227143852.11175-1-alex.bennee@linaro.org>
-References: <20180227143852.11175-1-alex.bennee@linaro.org>
+Received: by 10.28.71.27 with SMTP id u27csp4911546wma;
+        Tue, 27 Feb 2018 06:57:56 -0800 (PST)
+X-Google-Smtp-Source: AG47ELtqFmq6RmtdMVvtzbNv2cQrfNdoqM01nP5tIl8YA7dvSVgYA1tWOVif9XSUefgP7r2gIYwH
+X-Received: by 2002:a25:dcc5:: with SMTP id y188-v6mr9530659ybe.385.1519743476182;
+        Tue, 27 Feb 2018 06:57:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519743476; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ibXlI4x9Ttg15f36JPnJhphOXaVUJaUBo05TGK+VhG3Po5pV5hU/23FuyaSnk5Cr9W
+         2KGia4iTRrQMz6l5XO0t2e3xhfGcMeSqtPdt+W/FHePLLCP7hdNbmjFCL/elumVZlIan
+         aYfkqus8vO7J2LT4tPnRKqQ44xZXHmr3VOvTB7usTQoa/AQWZdt307o1C7baKlhe/ImF
+         qDaElG/EKjuYXYA8c3yQiX6aDNM2jev+cG9lm9G6GBvCJzMZ0NV1PsMpfXarQxVIFTZX
+         sb/5/CEINQAhPZpLiacptxqcoS6MKTO8SquBnJoC7bAxMaL8qPfYDT8octR+8Pd+Ud0j
+         +Ktg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=ANFwKYmHUeBKn8gIoYGTEwP+tMNMnBiOZXiYMlT7cUc=;
+        b=q4D4zcmpWcStYwbgNNWBtx0b20g5JwkpdiDZQ0UaVzWbETEN1/EefDpszLHBxyYRgU
+         DRj2f7ePSwhEYjVrDSotNwnI9DqRmMQguKdiJygilgvCnYDC1P/aAp+ouDWFjtg8KqVN
+         bebuRWT+bGtKvzozTAguTYZcGGQ8FzkuyPRJgm/9bNwnbohliUU14PwrafM+Pcauc/Xt
+         6U8reVZvMO9R+S2nJPyWBu3VX2rFX4RnqKBeLHk/pQxtf4bKIpsgn9gPmNRi2rlW3+tG
+         OyfrKEtl/ndxAyc8CF6vuvVCvaRv95meBDUoVoBgIVaKIsc1Yyw5iK7XkaaHrMAZyiXS
+         2YIg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id r7-v6si1939117ybg.449.2018.02.27.06.57.55
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 27 Feb 2018 06:57:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37797 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eqghX-0003Pw-Hs
+	for alex.bennee@linaro.org; Tue, 27 Feb 2018 09:57:55 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56957)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <eric.auger@redhat.com>) id 1eqgT9-0007L7-LP
+	for qemu-devel@nongnu.org; Tue, 27 Feb 2018 09:43:04 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <eric.auger@redhat.com>) id 1eqgT8-0002l7-Dm
+	for qemu-devel@nongnu.org; Tue, 27 Feb 2018 09:43:03 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54640 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1eqgT1-0002YL-EY; Tue, 27 Feb 2018 09:42:55 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id B59C540201A6;
+	Tue, 27 Feb 2018 14:42:51 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-135.ams2.redhat.com
+	[10.36.116.135])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 210B9AFD69;
+	Tue, 27 Feb 2018 14:42:43 +0000 (UTC)
+To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
+References: <1519303376-92875-1-git-send-email-imammedo@redhat.com>
+	<1519303376-92875-9-git-send-email-imammedo@redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <5c1754a0-e3a5-1baa-9a69-465c8a5892ad@redhat.com>
+Date: Tue, 27 Feb 2018 15:42:42 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: 94Ioo9uX5g5z
+In-Reply-To: <1519303376-92875-9-git-send-email-imammedo@redhat.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.6]);
+	Tue, 27 Feb 2018 14:42:51 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Tue, 27 Feb 2018 14:42:51 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-devel] [PATCH 8/9] virt_arm: acpi: reuse common
+ build_fadt()
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+	qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+	Shannon Zhao <zhaoshenglong@huawei.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jpDNdbvY8vd6
 
-It looks like the ARM ARM has simplified the pseudo code for the
-calculation which is done on a fixed point 9 bit integer maths. So
-while adding f16 we can also clean this up to be a little less heavy
-on the floating point and just return the fractional part and leave
-the calle's to do the final packing of the result.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
-v3
-  - fix comment 2.0^-16
-  - f16_exp >= 29 (biased)
-  - remove confusing comment about fpst
----
- target/arm/helper.c | 224 +++++++++++++++++++++++++++++-----------------------
- target/arm/helper.h |   1 +
- 2 files changed, 128 insertions(+), 97 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 6e3dadb754..e2d0ff0b4c 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -11523,80 +11523,75 @@ float32 HELPER(rsqrts_f32)(float32 a, float32 b, CPUARMState *env)
-  * int->float conversions at run-time.  */
- #define float64_256 make_float64(0x4070000000000000LL)
- #define float64_512 make_float64(0x4080000000000000LL)
-+#define float16_maxnorm make_float16(0x7bff)
- #define float32_maxnorm make_float32(0x7f7fffff)
- #define float64_maxnorm make_float64(0x7fefffffffffffffLL)
- 
- /* Reciprocal functions
-  *
-  * The algorithm that must be used to calculate the estimate
-- * is specified by the ARM ARM, see FPRecipEstimate()
-+ * is specified by the ARM ARM, see FPRecipEstimate()/RecipEstimate
-  */
- 
--static float64 recip_estimate(float64 a, float_status *real_fp_status)
--{
--    /* These calculations mustn't set any fp exception flags,
--     * so we use a local copy of the fp_status.
--     */
--    float_status dummy_status = *real_fp_status;
--    float_status *s = &dummy_status;
--    /* q = (int)(a * 512.0) */
--    float64 q = float64_mul(float64_512, a, s);
--    int64_t q_int = float64_to_int64_round_to_zero(q, s);
--
--    /* r = 1.0 / (((double)q + 0.5) / 512.0) */
--    q = int64_to_float64(q_int, s);
--    q = float64_add(q, float64_half, s);
--    q = float64_div(q, float64_512, s);
--    q = float64_div(float64_one, q, s);
--
--    /* s = (int)(256.0 * r + 0.5) */
--    q = float64_mul(q, float64_256, s);
--    q = float64_add(q, float64_half, s);
--    q_int = float64_to_int64_round_to_zero(q, s);
-+/* See RecipEstimate()
-+ *
-+ * input is a 9 bit fixed point number
-+ * input range 256 .. 511 for a number from 0.5 <= x < 1.0.
-+ * result range 256 .. 511 for a number from 1.0 to 511/256.
-+ */
- 
--    /* return (double)s / 256.0 */
--    return float64_div(int64_to_float64(q_int, s), float64_256, s);
-+static int recip_estimate(int input)
-+{
-+    int a, b, r;
-+    assert(256 <= input && input < 512);
-+    a = (input * 2) + 1;
-+    b = (1 << 19) / a;
-+    r = (b + 1) >> 1;
-+    assert(256 <= r && r < 512);
-+    return r;
- }
- 
--/* Common wrapper to call recip_estimate */
--static float64 call_recip_estimate(float64 num, int off, float_status *fpst)
-+/*
-+ * Common wrapper to call recip_estimate
-+ *
-+ * The parameters are exponent and 64 bit fraction (without implicit
-+ * bit) where the binary point is nominally at bit 52. Returns a
-+ * float64 which can then be rounded to the appropriate size by the
-+ * callee.
-+ */
-+
-+static uint64_t call_recip_estimate(int *exp, int exp_off, uint64_t frac)
- {
--    uint64_t val64 = float64_val(num);
--    uint64_t frac = extract64(val64, 0, 52);
--    int64_t exp = extract64(val64, 52, 11);
--    uint64_t sbit;
--    float64 scaled, estimate;
-+    uint32_t scaled, estimate;
-+    uint64_t result_frac;
-+    int result_exp;
- 
--    /* Generate the scaled number for the estimate function */
--    if (exp == 0) {
-+    /* Handle sub-normals */
-+    if (*exp == 0) {
-         if (extract64(frac, 51, 1) == 0) {
--            exp = -1;
--            frac = extract64(frac, 0, 50) << 2;
-+            *exp = -1;
-+            frac <<= 2;
-         } else {
--            frac = extract64(frac, 0, 51) << 1;
-+            frac <<= 1;
-         }
-     }
- 
--    /* scaled = '0' : '01111111110' : fraction<51:44> : Zeros(44); */
--    scaled = make_float64((0x3feULL << 52)
--                          | extract64(frac, 44, 8) << 44);
--
--    estimate = recip_estimate(scaled, fpst);
-+    /* scaled = UInt('1':fraction<51:44>) */
-+    scaled = deposit32(1 << 8, 0, 8, extract64(frac, 44, 8));
-+    estimate = recip_estimate(scaled);
- 
--    /* Build new result */
--    val64 = float64_val(estimate);
--    sbit = 0x8000000000000000ULL & val64;
--    exp = off - exp;
--    frac = extract64(val64, 0, 52);
--
--    if (exp == 0) {
--        frac = 1ULL << 51 | extract64(frac, 1, 51);
--    } else if (exp == -1) {
--        frac = 1ULL << 50 | extract64(frac, 2, 50);
--        exp = 0;
-+    result_exp = exp_off - *exp;
-+    result_frac = deposit64(0, 44, 8, estimate);
-+    if (result_exp == 0) {
-+        result_frac = deposit64(result_frac >> 1, 51, 1, 1);
-+    } else if (result_exp == -1) {
-+        result_frac = deposit64(result_frac >> 2, 50, 2, 1);
-+        result_exp = 0;
-     }
- 
--    return make_float64(sbit | (exp << 52) | frac);
-+    *exp = result_exp;
-+
-+    return result_frac;
- }
- 
- static bool round_to_inf(float_status *fpst, bool sign_bit)
-@@ -11615,18 +11610,63 @@ static bool round_to_inf(float_status *fpst, bool sign_bit)
-     g_assert_not_reached();
- }
- 
-+float16 HELPER(recpe_f16)(float16 input, void *fpstp)
-+{
-+    float_status *fpst = fpstp;
-+    float16 f16 = float16_squash_input_denormal(input, fpst);
-+    uint32_t f16_val = float16_val(f16);
-+    uint32_t f16_sign = float16_is_neg(f16);
-+    int f16_exp = extract32(f16_val, 10, 5);
-+    uint32_t f16_frac = extract32(f16_val, 0, 10);
-+    uint64_t f64_frac;
-+
-+    if (float16_is_any_nan(f16)) {
-+        float16 nan = f16;
-+        if (float16_is_signaling_nan(f16, fpst)) {
-+            float_raise(float_flag_invalid, fpst);
-+            nan = float16_maybe_silence_nan(f16, fpst);
-+        }
-+        if (fpst->default_nan_mode) {
-+            nan =  float16_default_nan(fpst);
-+        }
-+        return nan;
-+    } else if (float16_is_infinity(f16)) {
-+        return float16_set_sign(float16_zero, float16_is_neg(f16));
-+    } else if (float16_is_zero(f16)) {
-+        float_raise(float_flag_divbyzero, fpst);
-+        return float16_set_sign(float16_infinity, float16_is_neg(f16));
-+    } else if (float16_abs(f16) < (1 << 8)) {
-+        /* Abs(value) < 2.0^-16 */
-+        float_raise(float_flag_overflow | float_flag_inexact, fpst);
-+        if (round_to_inf(fpst, f16_sign)) {
-+            return float16_set_sign(float16_infinity, f16_sign);
-+        } else {
-+            return float16_set_sign(float16_maxnorm, f16_sign);
-+        }
-+    } else if (f16_exp >= 29 && fpst->flush_to_zero) {
-+        float_raise(float_flag_underflow, fpst);
-+        return float16_set_sign(float16_zero, float16_is_neg(f16));
-+    }
-+
-+    f64_frac = call_recip_estimate(&f16_exp, 29,
-+                                   ((uint64_t) f16_frac) << (52 - 10));
-+
-+    /* result = sign : result_exp<4:0> : fraction<51:42> */
-+    f16_val = deposit32(0, 15, 1, f16_sign);
-+    f16_val = deposit32(f16_val, 10, 5, f16_exp);
-+    f16_val = deposit32(f16_val, 0, 10, extract64(f64_frac, 52 - 10, 10));
-+    return make_float16(f16_val);
-+}
-+
- float32 HELPER(recpe_f32)(float32 input, void *fpstp)
- {
-     float_status *fpst = fpstp;
-     float32 f32 = float32_squash_input_denormal(input, fpst);
-     uint32_t f32_val = float32_val(f32);
--    uint32_t f32_sbit = 0x80000000ULL & f32_val;
--    int32_t f32_exp = extract32(f32_val, 23, 8);
-+    bool f32_sign = float32_is_neg(f32);
-+    int f32_exp = extract32(f32_val, 23, 8);
-     uint32_t f32_frac = extract32(f32_val, 0, 23);
--    float64 f64, r64;
--    uint64_t r64_val;
--    int64_t r64_exp;
--    uint64_t r64_frac;
-+    uint64_t f64_frac;
- 
-     if (float32_is_any_nan(f32)) {
-         float32 nan = f32;
-@@ -11643,30 +11683,27 @@ float32 HELPER(recpe_f32)(float32 input, void *fpstp)
-     } else if (float32_is_zero(f32)) {
-         float_raise(float_flag_divbyzero, fpst);
-         return float32_set_sign(float32_infinity, float32_is_neg(f32));
--    } else if ((f32_val & ~(1ULL << 31)) < (1ULL << 21)) {
-+    } else if (float32_abs(f32) < (1ULL << 21)) {
-         /* Abs(value) < 2.0^-128 */
-         float_raise(float_flag_overflow | float_flag_inexact, fpst);
--        if (round_to_inf(fpst, f32_sbit)) {
--            return float32_set_sign(float32_infinity, float32_is_neg(f32));
-+        if (round_to_inf(fpst, f32_sign)) {
-+            return float32_set_sign(float32_infinity, f32_sign);
-         } else {
--            return float32_set_sign(float32_maxnorm, float32_is_neg(f32));
-+            return float32_set_sign(float32_maxnorm, f32_sign);
-         }
-     } else if (f32_exp >= 253 && fpst->flush_to_zero) {
-         float_raise(float_flag_underflow, fpst);
-         return float32_set_sign(float32_zero, float32_is_neg(f32));
-     }
- 
-+    f64_frac = call_recip_estimate(&f32_exp, 253,
-+                                   ((uint64_t) f32_frac) << (52 - 23));
- 
--    f64 = make_float64(((int64_t)(f32_exp) << 52) | (int64_t)(f32_frac) << 29);
--    r64 = call_recip_estimate(f64, 253, fpst);
--    r64_val = float64_val(r64);
--    r64_exp = extract64(r64_val, 52, 11);
--    r64_frac = extract64(r64_val, 0, 52);
--
--    /* result = sign : result_exp<7:0> : fraction<51:29>; */
--    return make_float32(f32_sbit |
--                        (r64_exp & 0xff) << 23 |
--                        extract64(r64_frac, 29, 24));
-+    /* result = sign : result_exp<7:0> : fraction<51:29> */
-+    f32_val = deposit32(0, 31, 1, f32_sign);
-+    f32_val = deposit32(f32_val, 23, 8, f32_exp);
-+    f32_val = deposit32(f32_val, 0, 23, extract64(f64_frac, 52 - 23, 23));
-+    return make_float32(f32_val);
- }
- 
- float64 HELPER(recpe_f64)(float64 input, void *fpstp)
-@@ -11674,12 +11711,9 @@ float64 HELPER(recpe_f64)(float64 input, void *fpstp)
-     float_status *fpst = fpstp;
-     float64 f64 = float64_squash_input_denormal(input, fpst);
-     uint64_t f64_val = float64_val(f64);
--    uint64_t f64_sbit = 0x8000000000000000ULL & f64_val;
--    int64_t f64_exp = extract64(f64_val, 52, 11);
--    float64 r64;
--    uint64_t r64_val;
--    int64_t r64_exp;
--    uint64_t r64_frac;
-+    bool f64_sign = float64_is_neg(f64);
-+    int f64_exp = extract64(f64_val, 52, 11);
-+    uint64_t f64_frac = extract64(f64_val, 0, 52);
- 
-     /* Deal with any special cases */
-     if (float64_is_any_nan(f64)) {
-@@ -11700,25 +11734,23 @@ float64 HELPER(recpe_f64)(float64 input, void *fpstp)
-     } else if ((f64_val & ~(1ULL << 63)) < (1ULL << 50)) {
-         /* Abs(value) < 2.0^-1024 */
-         float_raise(float_flag_overflow | float_flag_inexact, fpst);
--        if (round_to_inf(fpst, f64_sbit)) {
--            return float64_set_sign(float64_infinity, float64_is_neg(f64));
-+        if (round_to_inf(fpst, f64_sign)) {
-+            return float64_set_sign(float64_infinity, f64_sign);
-         } else {
--            return float64_set_sign(float64_maxnorm, float64_is_neg(f64));
-+            return float64_set_sign(float64_maxnorm, f64_sign);
-         }
-     } else if (f64_exp >= 2045 && fpst->flush_to_zero) {
-         float_raise(float_flag_underflow, fpst);
-         return float64_set_sign(float64_zero, float64_is_neg(f64));
-     }
- 
--    r64 = call_recip_estimate(f64, 2045, fpst);
--    r64_val = float64_val(r64);
--    r64_exp = extract64(r64_val, 52, 11);
--    r64_frac = extract64(r64_val, 0, 52);
-+    f64_frac = call_recip_estimate(&f64_exp, 2045, f64_frac);
- 
--    /* result = sign : result_exp<10:0> : fraction<51:0> */
--    return make_float64(f64_sbit |
--                        ((r64_exp & 0x7ff) << 52) |
--                        r64_frac);
-+    /* result = sign : result_exp<10:0> : fraction<51:0>; */
-+    f64_val = deposit64(0, 63, 1, f64_sign);
-+    f64_val = deposit64(f64_val, 52, 11, f64_exp);
-+    f64_val = deposit64(f64_val, 0, 52, f64_frac);
-+    return make_float64(f64_val);
- }
- 
- /* The algorithm that must be used to calculate the estimate
-@@ -11907,19 +11939,17 @@ float64 HELPER(rsqrte_f64)(float64 input, void *fpstp)
- 
- uint32_t HELPER(recpe_u32)(uint32_t a, void *fpstp)
- {
--    float_status *s = fpstp;
--    float64 f64;
-+    /* float_status *s = fpstp; */
-+    int input, estimate;
- 
-     if ((a & 0x80000000) == 0) {
-         return 0xffffffff;
-     }
- 
--    f64 = make_float64((0x3feULL << 52)
--                       | ((int64_t)(a & 0x7fffffff) << 21));
--
--    f64 = recip_estimate(f64, s);
-+    input = extract32(a, 23, 9);
-+    estimate = recip_estimate(input);
- 
--    return 0x80000000 | ((float64_val(f64) >> 21) & 0x7fffffff);
-+    return deposit32(0, (32 - 9), 9, estimate);
- }
- 
- uint32_t HELPER(rsqrte_u32)(uint32_t a, void *fpstp)
-diff --git a/target/arm/helper.h b/target/arm/helper.h
-index c0f35592ff..81d7baed6d 100644
---- a/target/arm/helper.h
-+++ b/target/arm/helper.h
-@@ -192,6 +192,7 @@ DEF_HELPER_4(vfp_muladds, f32, f32, f32, f32, ptr)
- 
- DEF_HELPER_3(recps_f32, f32, f32, f32, env)
- DEF_HELPER_3(rsqrts_f32, f32, f32, f32, env)
-+DEF_HELPER_FLAGS_2(recpe_f16, TCG_CALL_NO_RWG, f16, f16, ptr)
- DEF_HELPER_FLAGS_2(recpe_f32, TCG_CALL_NO_RWG, f32, f32, ptr)
- DEF_HELPER_FLAGS_2(recpe_f64, TCG_CALL_NO_RWG, f64, f64, ptr)
- DEF_HELPER_FLAGS_2(rsqrte_f32, TCG_CALL_NO_RWG, f32, f32, ptr)
--- 
-2.15.1
+On 22/02/18 13:42, Igor Mammedov wrote:
+> Extend generic build_fadt() to support rev5.1 FADT
+> and reuse it for 'virt' board, it would allow to
+> phase out usage of AcpiFadtDescriptorRev5_1 and
+> later ACPI_FADT_COMMON_DEF.
+> 
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+
+Eric
+> ---
+>  include/hw/acpi/acpi-defs.h | 12 ++----------
+>  hw/acpi/aml-build.c         | 21 ++++++++++++++++++++-
+>  hw/arm/virt-acpi-build.c    | 33 ++++++++++++---------------------
+>  3 files changed, 34 insertions(+), 32 deletions(-)
+> 
+> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+> index e0accc4..34e49dc 100644
+> --- a/include/hw/acpi/acpi-defs.h
+> +++ b/include/hw/acpi/acpi-defs.h
+> @@ -165,16 +165,6 @@ struct AcpiFadtDescriptorRev3 {
+>  } QEMU_PACKED;
+>  typedef struct AcpiFadtDescriptorRev3 AcpiFadtDescriptorRev3;
+>  
+> -struct AcpiFadtDescriptorRev5_1 {
+> -    ACPI_FADT_COMMON_DEF
+> -    /* 64-bit Sleep Control register (ACPI 5.0) */
+> -    struct AcpiGenericAddress sleep_control;
+> -    /* 64-bit Sleep Status register (ACPI 5.0) */
+> -    struct AcpiGenericAddress sleep_status;
+> -} QEMU_PACKED;
+> -
+> -typedef struct AcpiFadtDescriptorRev5_1 AcpiFadtDescriptorRev5_1;
+> -
+>  typedef struct AcpiFadtData {
+>      struct AcpiGenericAddress pm1_cnt;   /* PM1a_CNT_BLK */
+>      struct AcpiGenericAddress pm1_evt;   /* PM1a_EVT_BLK */
+> @@ -192,6 +182,8 @@ typedef struct AcpiFadtData {
+>      uint8_t  rtc_century;      /* CENTURY */
+>      uint16_t c2_latency;       /* P_LVL2_LAT */
+>      uint16_t c3_latency;       /* P_LVL3_LAT */
+> +    uint16_t arm_boot_arch;    /* ARM_BOOT_ARCH */
+> +    uint8_t minor_ver;         /* FADT Minor Version */
+>  
+>      /*
+>       * respective tables offsets within ACPI_BUILD_TABLE_FILE,
+> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> index 17fb71b..5a33cd0 100644
+> --- a/hw/acpi/aml-build.c
+> +++ b/hw/acpi/aml-build.c
+> @@ -1755,7 +1755,14 @@ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+>  
+>      build_append_gas_from_struct(tbl, &f->reset_reg); /* RESET_REG */
+>      build_append_int_noprefix(tbl, f->reset_val, 1); /* RESET_VALUE */
+> -    build_append_int_noprefix(tbl, 0, 3); /* Reserved, ACPI 3.0 */
+> +    /* Since ACPI 5.1 */
+> +    if ((f->rev >= 6) || ((f->rev == 5) && f->minor_ver > 0)) {
+> +        build_append_int_noprefix(tbl, f->arm_boot_arch, 2); /* ARM_BOOT_ARCH */
+> +        /* FADT Minor Version */
+> +        build_append_int_noprefix(tbl, f->minor_ver, 1);
+> +    } else {
+> +        build_append_int_noprefix(tbl, 0, 3); /* Reserved upto ACPI 5.0 */
+> +    }
+>      build_append_int_noprefix(tbl, 0, 8); /* X_FIRMWARE_CTRL */
+>  
+>      /* XDSDT address to be filled by Guest linker at runtime */
+> @@ -1779,6 +1786,18 @@ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+>      build_append_gas_from_struct(tbl, &f->gpe0_blk); /* X_GPE0_BLK */
+>      build_append_gas(tbl, AML_AS_SYSTEM_MEMORY, 0 , 0, 0, 0); /* X_GPE1_BLK */
+>  
+> +    if (f->rev <= 4) {
+> +        goto build_hdr;
+> +    }
+> +
+> +    /* SLEEP_CONTROL_REG */
+> +    build_append_gas(tbl, AML_AS_SYSTEM_MEMORY, 0 , 0, 0, 0);
+> +    /* SLEEP_STATUS_REG */
+> +    build_append_gas(tbl, AML_AS_SYSTEM_MEMORY, 0 , 0, 0, 0);
+> +
+> +    /* TODO: extra fields need to be added to support revisions above rev5 */
+> +    assert(f->rev == 5);
+> +
+>  build_hdr:
+>      build_header(linker, tbl, (void *)(tbl->data + fadt_start),
+>                   "FACP", tbl->len - fadt_start, f->rev, oem_id, oem_table_id);
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index b644da9..c7c6a57 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -654,39 +654,30 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>  static void build_fadt_rev5(GArray *table_data, BIOSLinker *linker,
+>                              VirtMachineState *vms, unsigned dsdt_tbl_offset)
+>  {
+> -    int fadt_start = table_data->len;
+> -    AcpiFadtDescriptorRev5_1 *fadt = acpi_data_push(table_data, sizeof(*fadt));
+> -    unsigned xdsdt_entry_offset = (char *)&fadt->x_dsdt - table_data->data;
+> -    uint16_t bootflags;
+> +    /* ACPI v5.1 */
+> +    AcpiFadtData fadt = {
+> +        .rev = 5,
+> +        .minor_ver = 1,
+> +        .flags = 1 << ACPI_FADT_F_HW_REDUCED_ACPI,
+> +        .xdsdt_tbl_offset = &dsdt_tbl_offset,
+> +    };
+>  
+>      switch (vms->psci_conduit) {
+>      case QEMU_PSCI_CONDUIT_DISABLED:
+> -        bootflags = 0;
+> +        fadt.arm_boot_arch = 0;
+>          break;
+>      case QEMU_PSCI_CONDUIT_HVC:
+> -        bootflags = ACPI_FADT_ARM_PSCI_COMPLIANT | ACPI_FADT_ARM_PSCI_USE_HVC;
+> +        fadt.arm_boot_arch = ACPI_FADT_ARM_PSCI_COMPLIANT |
+> +                             ACPI_FADT_ARM_PSCI_USE_HVC;
+>          break;
+>      case QEMU_PSCI_CONDUIT_SMC:
+> -        bootflags = ACPI_FADT_ARM_PSCI_COMPLIANT;
+> +        fadt.arm_boot_arch = ACPI_FADT_ARM_PSCI_COMPLIANT;
+>          break;
+>      default:
+>          g_assert_not_reached();
+>      }
+>  
+> -    /* Hardware Reduced = 1 and use PSCI 0.2+ */
+> -    fadt->flags = cpu_to_le32(1 << ACPI_FADT_F_HW_REDUCED_ACPI);
+> -    fadt->arm_boot_flags = cpu_to_le16(bootflags);
+> -
+> -    /* ACPI v5.1 (fadt->revision.fadt->minor_revision) */
+> -    fadt->minor_revision = 0x1;
+> -
+> -    /* DSDT address to be filled by Guest linker */
+> -    bios_linker_loader_add_pointer(linker,
+> -        ACPI_BUILD_TABLE_FILE, xdsdt_entry_offset, sizeof(fadt->x_dsdt),
+> -        ACPI_BUILD_TABLE_FILE, dsdt_tbl_offset);
+> -
+> -    build_header(linker, table_data, (void *)(table_data->data + fadt_start),
+> -                 "FACP", table_data->len - fadt_start, 5, NULL, NULL);
+> +    build_fadt(table_data, linker, &fadt, NULL, NULL);
+>  }
+>  
+>  /* DSDT */
+> 

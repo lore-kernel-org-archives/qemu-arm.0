@@ -1,48 +1,181 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id u136sm2072951wmf.5.2018.02.23.07.46.16
+        by smtp.gmail.com with ESMTPSA id o6sm6457262wmo.38.2018.02.27.06.38.59
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 Feb 2018 07:46:19 -0800 (PST)
+        Tue, 27 Feb 2018 06:39:05 -0800 (PST)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 4AF4B3E047D;
-	Fri, 23 Feb 2018 15:46:14 +0000 (GMT)
+	by zen.linaro.local (Postfix) with ESMTP id 0D1063E0BFD;
+	Tue, 27 Feb 2018 14:38:54 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org,
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org,
 	richard.henderson@linaro.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v1 7/8] contrib/run_risu.sh: add a visual cue for a clean-run
-Date: Fri, 23 Feb 2018 15:46:12 +0000
-Message-Id: <20180223154613.2096-8-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v4 15/31] arm/translate-a64: add FP16 x2 ops for simd_indexed
+Date: Tue, 27 Feb 2018 14:38:36 +0000
+Message-Id: <20180227143852.11175-16-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.15.1
-In-Reply-To: <20180223154613.2096-1-alex.bennee@linaro.org>
-References: <20180223154613.2096-1-alex.bennee@linaro.org>
+In-Reply-To: <20180227143852.11175-1-alex.bennee@linaro.org>
+References: <20180227143852.11175-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: m7Tv0DEkT6Lr
+X-TUID: Q2VlrPSqKRWQ
 
-It saves you from having to check the status code or wonder if the
-errors just scrolled off your screen.
+A bunch of the vectorised bitwise operations just operate on larger
+chunks at a time. We can do the same for the new half-precision
+operations by introducing some TWOHALFOP helpers which work on each
+half of a pair of half-precision operations at once.
+
+Hopefully all this hoop jumping will get simpler once we have
+generically vectorised helpers here.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- contrib/run_risu.sh | 2 ++
- 1 file changed, 2 insertions(+)
+v2
+  - checkpatch fixes
+---
+ target/arm/helper-a64.c    | 46 +++++++++++++++++++++++++++++++++++++++++++++-
+ target/arm/helper-a64.h    | 10 ++++++++++
+ target/arm/translate-a64.c | 26 +++++++++++++++++++++-----
+ 3 files changed, 76 insertions(+), 6 deletions(-)
 
-diff --git a/contrib/run_risu.sh b/contrib/run_risu.sh
-index 2d1897a..fc69d83 100755
---- a/contrib/run_risu.sh
-+++ b/contrib/run_risu.sh
-@@ -61,6 +61,8 @@ if test ${#failed[@]} -gt 0; then
-     for f in "${failed[@]}"; do
-         echo "$f"
-     done
-+else
-+    echo "No Failures ;-)"
- fi
+diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
+index 8fdbe034f3..4d5ae96d8f 100644
+--- a/target/arm/helper-a64.c
++++ b/target/arm/helper-a64.c
+@@ -629,8 +629,32 @@ ADVSIMD_HALFOP(max)
+ ADVSIMD_HALFOP(minnum)
+ ADVSIMD_HALFOP(maxnum)
  
- exit ${#failed[@]}
++#define ADVSIMD_TWOHALFOP(name)                                         \
++uint32_t ADVSIMD_HELPER(name, 2h)(uint32_t two_a, uint32_t two_b, void *fpstp) \
++{ \
++    float16  a1, a2, b1, b2;                        \
++    uint32_t r1, r2;                                \
++    float_status *fpst = fpstp;                     \
++    a1 = extract32(two_a, 0, 16);                   \
++    a2 = extract32(two_a, 16, 16);                  \
++    b1 = extract32(two_b, 0, 16);                   \
++    b2 = extract32(two_b, 16, 16);                  \
++    r1 = float16_ ## name(a1, b1, fpst);            \
++    r2 = float16_ ## name(a2, b2, fpst);            \
++    return deposit32(r1, 16, 16, r2);               \
++}
++
++ADVSIMD_TWOHALFOP(add)
++ADVSIMD_TWOHALFOP(sub)
++ADVSIMD_TWOHALFOP(mul)
++ADVSIMD_TWOHALFOP(div)
++ADVSIMD_TWOHALFOP(min)
++ADVSIMD_TWOHALFOP(max)
++ADVSIMD_TWOHALFOP(minnum)
++ADVSIMD_TWOHALFOP(maxnum)
++
+ /* Data processing - scalar floating-point and advanced SIMD */
+-float16 HELPER(advsimd_mulxh)(float16 a, float16 b, void *fpstp)
++static float16 float16_mulx(float16 a, float16 b, void *fpstp)
+ {
+     float_status *fpst = fpstp;
+ 
+@@ -646,6 +670,9 @@ float16 HELPER(advsimd_mulxh)(float16 a, float16 b, void *fpstp)
+     return float16_mul(a, b, fpst);
+ }
+ 
++ADVSIMD_HALFOP(mulx)
++ADVSIMD_TWOHALFOP(mulx)
++
+ /* fused multiply-accumulate */
+ float16 HELPER(advsimd_muladdh)(float16 a, float16 b, float16 c, void *fpstp)
+ {
+@@ -653,6 +680,23 @@ float16 HELPER(advsimd_muladdh)(float16 a, float16 b, float16 c, void *fpstp)
+     return float16_muladd(a, b, c, 0, fpst);
+ }
+ 
++uint32_t HELPER(advsimd_muladd2h)(uint32_t two_a, uint32_t two_b,
++                                  uint32_t two_c, void *fpstp)
++{
++    float_status *fpst = fpstp;
++    float16  a1, a2, b1, b2, c1, c2;
++    uint32_t r1, r2;
++    a1 = extract32(two_a, 0, 16);
++    a2 = extract32(two_a, 16, 16);
++    b1 = extract32(two_b, 0, 16);
++    b2 = extract32(two_b, 16, 16);
++    c1 = extract32(two_c, 0, 16);
++    c2 = extract32(two_c, 16, 16);
++    r1 = float16_muladd(a1, b1, c1, 0, fpst);
++    r2 = float16_muladd(a2, b2, c2, 0, fpst);
++    return deposit32(r1, 16, 16, r2);
++}
++
+ /*
+  * Floating point comparisons produce an integer result. Softfloat
+  * routines return float_relation types which we convert to the 0/-1
+diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
+index 79012eee9d..003ffa582f 100644
+--- a/target/arm/helper-a64.h
++++ b/target/arm/helper-a64.h
+@@ -65,3 +65,13 @@ DEF_HELPER_3(advsimd_acge_f16, i32, f16, f16, ptr)
+ DEF_HELPER_3(advsimd_acgt_f16, i32, f16, f16, ptr)
+ DEF_HELPER_3(advsimd_mulxh, f16, f16, f16, ptr)
+ DEF_HELPER_4(advsimd_muladdh, f16, f16, f16, f16, ptr)
++DEF_HELPER_3(advsimd_add2h, i32, i32, i32, ptr)
++DEF_HELPER_3(advsimd_sub2h, i32, i32, i32, ptr)
++DEF_HELPER_3(advsimd_mul2h, i32, i32, i32, ptr)
++DEF_HELPER_3(advsimd_div2h, i32, i32, i32, ptr)
++DEF_HELPER_3(advsimd_max2h, i32, i32, i32, ptr)
++DEF_HELPER_3(advsimd_min2h, i32, i32, i32, ptr)
++DEF_HELPER_3(advsimd_maxnum2h, i32, i32, i32, ptr)
++DEF_HELPER_3(advsimd_minnum2h, i32, i32, i32, ptr)
++DEF_HELPER_3(advsimd_mulx2h, i32, i32, i32, ptr)
++DEF_HELPER_4(advsimd_muladd2h, i32, i32, i32, i32, ptr)
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 6a264bc134..3487c0430f 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -11417,8 +11417,13 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
+                          * multiply-add */
+                         tcg_gen_xori_i32(tcg_op, tcg_op, 0x80008000);
+                     }
+-                    gen_helper_advsimd_muladdh(tcg_res, tcg_op, tcg_idx,
+-                                               tcg_res, fpst);
++                    if (is_scalar) {
++                        gen_helper_advsimd_muladdh(tcg_res, tcg_op, tcg_idx,
++                                                   tcg_res, fpst);
++                    } else {
++                        gen_helper_advsimd_muladd2h(tcg_res, tcg_op, tcg_idx,
++                                                    tcg_res, fpst);
++                    }
+                     break;
+                 case 2:
+                     if (opcode == 0x5) {
+@@ -11437,10 +11442,21 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
+                 switch (size) {
+                 case 1:
+                     if (u) {
+-                        gen_helper_advsimd_mulxh(tcg_res, tcg_op, tcg_idx,
+-                                                 fpst);
++                        if (is_scalar) {
++                            gen_helper_advsimd_mulxh(tcg_res, tcg_op,
++                                                     tcg_idx, fpst);
++                        } else {
++                            gen_helper_advsimd_mulx2h(tcg_res, tcg_op,
++                                                      tcg_idx, fpst);
++                        }
+                     } else {
+-                        g_assert_not_reached();
++                        if (is_scalar) {
++                            gen_helper_advsimd_mulh(tcg_res, tcg_op,
++                                                    tcg_idx, fpst);
++                        } else {
++                            gen_helper_advsimd_mul2h(tcg_res, tcg_op,
++                                                     tcg_idx, fpst);
++                        }
+                     }
+                     break;
+                 case 2:
 -- 
 2.15.1

@@ -1,109 +1,147 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id v8sm9188933wmh.25.2018.02.27.06.38.59
+        by smtp.gmail.com with ESMTPSA id 59sm6607374wro.57.2018.02.27.06.48.00
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Feb 2018 06:39:05 -0800 (PST)
+        Tue, 27 Feb 2018 06:48:00 -0800 (PST)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 1DF473E0C29;
-	Tue, 27 Feb 2018 14:38:54 +0000 (GMT)
+	by zen.linaro.local (Postfix) with ESMTP id 1C72D3E165C;
+	Tue, 27 Feb 2018 14:38:55 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	richard.henderson@linaro.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v4 16/31] arm/translate-a64: initial decode for simd_two_reg_misc_fp16
-Date: Tue, 27 Feb 2018 14:38:37 +0000
-Message-Id: <20180227143852.11175-17-alex.bennee@linaro.org>
+Subject: [PATCH v4 29/31] arm/translate-a64: add all FP16 ops in simd_scalar_pairwise
+Date: Tue, 27 Feb 2018 14:38:50 +0000
+Message-Id: <20180227143852.11175-30-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.15.1
 In-Reply-To: <20180227143852.11175-1-alex.bennee@linaro.org>
 References: <20180227143852.11175-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: vYFKOyXecoiL
+X-TUID: 72yHJzuwABdT
 
-This actually covers two different sections of the encoding table:
-
-   Advanced SIMD scalar two-register miscellaneous FP16
-   Advanced SIMD two-register miscellaneous (FP16)
-
-The difference between the two is covered by a combination of Q (bit
-30) and S (bit 28). Notably the FRINTx instructions are only
-available in the vector form.
-
-This is just the decode skeleton which will be filled out by later
-patches.
+I only needed to do a little light re-factoring to support the
+half-precision helpers.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v2
-  - checkpatch cleanups
-v3
-  - update comment on group from following patches.
-  - rm left over debug fpf
----
- target/arm/translate-a64.c | 40 ++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 40 insertions(+)
+ target/arm/translate-a64.c | 80 +++++++++++++++++++++++++++++++---------------
+ 1 file changed, 54 insertions(+), 26 deletions(-)
 
 diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 3487c0430f..9c1892c49a 100644
+index 7c2bc05b92..9d3a6ac49f 100644
 --- a/target/arm/translate-a64.c
 +++ b/target/arm/translate-a64.c
-@@ -11164,6 +11164,45 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
+@@ -6416,24 +6416,30 @@ static void disas_simd_scalar_pairwise(DisasContext *s, uint32_t insn)
+     case 0xf: /* FMAXP */
+     case 0x2c: /* FMINNMP */
+     case 0x2f: /* FMINP */
+-        /* FP op, size[0] is 32 or 64 bit */
++        /* FP op, size[0] is 32 or 64 bit*/
+         if (!u) {
+-            unallocated_encoding(s);
+-            return;
++            if (!arm_dc_feature(s, ARM_FEATURE_V8_FP16)) {
++                unallocated_encoding(s);
++                return;
++            } else {
++                size = MO_16;
++            }
++        } else {
++            size = extract32(size, 0, 1) ? MO_64 : MO_32;
+         }
++
+         if (!fp_access_check(s)) {
+             return;
+         }
+ 
+-        size = extract32(size, 0, 1) ? 3 : 2;
+-        fpst = get_fpstatus_ptr(false);
++        fpst = get_fpstatus_ptr(size == MO_16);
+         break;
+     default:
+         unallocated_encoding(s);
+         return;
      }
- }
  
-+/* AdvSIMD [scalar] two register miscellaneous (FP16)
-+ *
-+ *   31  30  29 28  27     24  23 22 21       17 16    12 11 10 9    5 4    0
-+ * +---+---+---+---+---------+---+-------------+--------+-----+------+------+
-+ * | 0 | Q | U | S | 1 1 1 0 | a | 1 1 1 1 0 0 | opcode | 1 0 |  Rn  |  Rd  |
-+ * +---+---+---+---+---------+---+-------------+--------+-----+------+------+
-+ *   mask: 1000 1111 0111 1110 0000 1100 0000 0000 0x8f7e 0c00
-+ *   val:  0000 1110 0111 1000 0000 1000 0000 0000 0x0e78 0800
-+ *
-+ * This actually covers two groups where scalar access is governed by
-+ * bit 28. A bunch of the instructions (float to integral) only exist
-+ * in the vector form and are un-allocated for the scalar decode. Also
-+ * in the scalar decode Q is always 1.
-+ */
-+static void disas_simd_two_reg_misc_fp16(DisasContext *s, uint32_t insn)
-+{
-+    int fpop, opcode, a;
-+
-+    if (!arm_dc_feature(s, ARM_FEATURE_V8_FP16)) {
-+        unallocated_encoding(s);
-+        return;
-+    }
-+
-+    if (!fp_access_check(s)) {
-+        return;
-+    }
-+
-+    opcode = extract32(insn, 12, 4);
-+    a = extract32(insn, 23, 1);
-+    fpop = deposit32(opcode, 5, 1, a);
-+
-+    switch (fpop) {
-+    default:
-+        fprintf(stderr, "%s: insn %#04x fpop %#2x\n", __func__, insn, fpop);
-+        g_assert_not_reached();
-+    }
-+
-+}
-+
- /* AdvSIMD scalar x indexed element
-  *  31 30  29 28       24 23  22 21  20  19  16 15 12  11  10 9    5 4    0
-  * +-----+---+-----------+------+---+---+------+-----+---+---+------+------+
-@@ -12236,6 +12275,7 @@ static const AArch64DecodeTable data_proc_simd[] = {
-     { 0xce800000, 0xffe00000, disas_crypto_xar },
-     { 0xce408000, 0xffe0c000, disas_crypto_three_reg_imm2 },
-     { 0x0e400400, 0x9f60c400, disas_simd_three_reg_same_fp16 },
-+    { 0x0e780800, 0x8f7e0c00, disas_simd_two_reg_misc_fp16 },
-     { 0x00000000, 0x00000000, NULL }
- };
+-    if (size == 3) {
++    if (size == MO_64) {
+         TCGv_i64 tcg_op1 = tcg_temp_new_i64();
+         TCGv_i64 tcg_op2 = tcg_temp_new_i64();
+         TCGv_i64 tcg_res = tcg_temp_new_i64();
+@@ -6474,27 +6480,49 @@ static void disas_simd_scalar_pairwise(DisasContext *s, uint32_t insn)
+         TCGv_i32 tcg_op2 = tcg_temp_new_i32();
+         TCGv_i32 tcg_res = tcg_temp_new_i32();
  
+-        read_vec_element_i32(s, tcg_op1, rn, 0, MO_32);
+-        read_vec_element_i32(s, tcg_op2, rn, 1, MO_32);
++        read_vec_element_i32(s, tcg_op1, rn, 0, size);
++        read_vec_element_i32(s, tcg_op2, rn, 1, size);
+ 
+-        switch (opcode) {
+-        case 0xc: /* FMAXNMP */
+-            gen_helper_vfp_maxnums(tcg_res, tcg_op1, tcg_op2, fpst);
+-            break;
+-        case 0xd: /* FADDP */
+-            gen_helper_vfp_adds(tcg_res, tcg_op1, tcg_op2, fpst);
+-            break;
+-        case 0xf: /* FMAXP */
+-            gen_helper_vfp_maxs(tcg_res, tcg_op1, tcg_op2, fpst);
+-            break;
+-        case 0x2c: /* FMINNMP */
+-            gen_helper_vfp_minnums(tcg_res, tcg_op1, tcg_op2, fpst);
+-            break;
+-        case 0x2f: /* FMINP */
+-            gen_helper_vfp_mins(tcg_res, tcg_op1, tcg_op2, fpst);
+-            break;
+-        default:
+-            g_assert_not_reached();
++        if (size == MO_16) {
++            switch (opcode) {
++            case 0xc: /* FMAXNMP */
++                gen_helper_advsimd_maxnumh(tcg_res, tcg_op1, tcg_op2, fpst);
++                break;
++            case 0xd: /* FADDP */
++                gen_helper_advsimd_addh(tcg_res, tcg_op1, tcg_op2, fpst);
++                break;
++            case 0xf: /* FMAXP */
++                gen_helper_advsimd_maxh(tcg_res, tcg_op1, tcg_op2, fpst);
++                break;
++            case 0x2c: /* FMINNMP */
++                gen_helper_advsimd_minnumh(tcg_res, tcg_op1, tcg_op2, fpst);
++                break;
++            case 0x2f: /* FMINP */
++                gen_helper_advsimd_minh(tcg_res, tcg_op1, tcg_op2, fpst);
++                break;
++            default:
++                g_assert_not_reached();
++            }
++        } else {
++            switch (opcode) {
++            case 0xc: /* FMAXNMP */
++                gen_helper_vfp_maxnums(tcg_res, tcg_op1, tcg_op2, fpst);
++                break;
++            case 0xd: /* FADDP */
++                gen_helper_vfp_adds(tcg_res, tcg_op1, tcg_op2, fpst);
++                break;
++            case 0xf: /* FMAXP */
++                gen_helper_vfp_maxs(tcg_res, tcg_op1, tcg_op2, fpst);
++                break;
++            case 0x2c: /* FMINNMP */
++                gen_helper_vfp_minnums(tcg_res, tcg_op1, tcg_op2, fpst);
++                break;
++            case 0x2f: /* FMINP */
++                gen_helper_vfp_mins(tcg_res, tcg_op1, tcg_op2, fpst);
++                break;
++            default:
++                g_assert_not_reached();
++            }
+         }
+ 
+         write_fp_sreg(s, rd, tcg_res);
 -- 
 2.15.1

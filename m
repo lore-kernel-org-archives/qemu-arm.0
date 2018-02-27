@@ -1,122 +1,119 @@
-Received: by 10.28.71.27 with SMTP id u27csp4911546wma;
-        Tue, 27 Feb 2018 06:57:56 -0800 (PST)
-X-Google-Smtp-Source: AG47ELtqFmq6RmtdMVvtzbNv2cQrfNdoqM01nP5tIl8YA7dvSVgYA1tWOVif9XSUefgP7r2gIYwH
-X-Received: by 2002:a25:dcc5:: with SMTP id y188-v6mr9530659ybe.385.1519743476182;
-        Tue, 27 Feb 2018 06:57:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519743476; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp4924782wma;
+        Tue, 27 Feb 2018 07:08:27 -0800 (PST)
+X-Google-Smtp-Source: AG47ELs4a+dC61wxxU3tITHha1Wkax0HoM+aexLjbAzCIN6JGzuBDjh/8+HDAmQYCFe8ETai5aLf
+X-Received: by 2002:a25:3f01:: with SMTP id m1-v6mr9485717yba.489.1519744107248;
+        Tue, 27 Feb 2018 07:08:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519744107; cv=none;
         d=google.com; s=arc-20160816;
-        b=ibXlI4x9Ttg15f36JPnJhphOXaVUJaUBo05TGK+VhG3Po5pV5hU/23FuyaSnk5Cr9W
-         2KGia4iTRrQMz6l5XO0t2e3xhfGcMeSqtPdt+W/FHePLLCP7hdNbmjFCL/elumVZlIan
-         aYfkqus8vO7J2LT4tPnRKqQ44xZXHmr3VOvTB7usTQoa/AQWZdt307o1C7baKlhe/ImF
-         qDaElG/EKjuYXYA8c3yQiX6aDNM2jev+cG9lm9G6GBvCJzMZ0NV1PsMpfXarQxVIFTZX
-         sb/5/CEINQAhPZpLiacptxqcoS6MKTO8SquBnJoC7bAxMaL8qPfYDT8octR+8Pd+Ud0j
-         +Ktg==
+        b=Ay5HtPByJbrtyBXmpa9oWYPPRbWWn+kjqHW+ubEXjRzpgOu8cfE/OawnVIwzvJ7Vwe
+         1HYTkhH3gFkdb6RqsdM4xRkjMcp3R1Q8l3Yp0gkXJQYbVB0jTSU/9ef8JeF8QPqBRec7
+         JqB3ID+PEFynlP0/iu6Bc9vT56O4jxkaicdvOyrqOLY3MrrB9o/I6JWfT1AfgE3hw3cW
+         +ooQGD3SioSbjmECoKKAbWIBeN0sajDoj7QAc/odBPYpFNJ6fVtbhTdr+sxRN30HBkAQ
+         XbpeD/BaOpuoxZr5LT4zr29Dcf1lcAD8OmBPulh1GCkDGw7k9hL+H+gGGaFARAeMw290
+         c3Ug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:arc-authentication-results;
-        bh=ANFwKYmHUeBKn8gIoYGTEwP+tMNMnBiOZXiYMlT7cUc=;
-        b=q4D4zcmpWcStYwbgNNWBtx0b20g5JwkpdiDZQ0UaVzWbETEN1/EefDpszLHBxyYRgU
-         DRj2f7ePSwhEYjVrDSotNwnI9DqRmMQguKdiJygilgvCnYDC1P/aAp+ouDWFjtg8KqVN
-         bebuRWT+bGtKvzozTAguTYZcGGQ8FzkuyPRJgm/9bNwnbohliUU14PwrafM+Pcauc/Xt
-         6U8reVZvMO9R+S2nJPyWBu3VX2rFX4RnqKBeLHk/pQxtf4bKIpsgn9gPmNRi2rlW3+tG
-         OyfrKEtl/ndxAyc8CF6vuvVCvaRv95meBDUoVoBgIVaKIsc1Yyw5iK7XkaaHrMAZyiXS
-         2YIg==
+        bh=MyJGhnZi66Yc3jiutYe8fZ+y3Gz9il8NmC2wH5o1zyc=;
+        b=pzxMkdASMTr3eQj09lR3Vjyh6oHfJR0nc4YsBLqPWQ2NSYbPaZhNvuJT7KbSCRxhTl
+         N8AWHCd02kOjBt+GvMbbpwpWjJFuAON+xI4rV/YHf3aXotgjwLx3EZBRETVV+0msL6hd
+         e68njwaTMeS0ON1zJWI+22EKGqDbNj4HIPwODTbr5S4MGuYenvnZxdKfRsAHLdKbXVEZ
+         VHSnSueqIxAFDPspbjPPdFBLzvDZhoxuiwVwYq902Ul8aV5wShX59uvYS8HMGdqEMRBm
+         fMAxyhZTA+qOU1VwdrtIseT94eJ8T8Yx3MPnQq9I8CAglu5w6GpRQuOu07PaaMmey5rX
+         i3Mw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r7-v6si1939117ybg.449.2018.02.27.06.57.55
+        by mx.google.com with ESMTPS id y63si1961744ywy.224.2018.02.27.07.08.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 27 Feb 2018 06:57:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 27 Feb 2018 07:08:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37797 helo=lists.gnu.org)
+Received: from localhost ([::1]:37878 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eqghX-0003Pw-Hs
-	for alex.bennee@linaro.org; Tue, 27 Feb 2018 09:57:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56957)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eqgri-00040B-JI
+	for alex.bennee@linaro.org; Tue, 27 Feb 2018 10:08:26 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35369)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1eqgT9-0007L7-LP
-	for qemu-devel@nongnu.org; Tue, 27 Feb 2018 09:43:04 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1eqgrM-0003q3-5C
+	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 10:08:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1eqgT8-0002l7-Dm
-	for qemu-devel@nongnu.org; Tue, 27 Feb 2018 09:43:03 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54640 helo=mx1.redhat.com)
+	(envelope-from <eric.auger@redhat.com>) id 1eqgrI-0001et-Pz
+	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 10:08:04 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:49204 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1eqgT1-0002YL-EY; Tue, 27 Feb 2018 09:42:55 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
+	id 1eqgrI-0001e3-Iw; Tue, 27 Feb 2018 10:08:00 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B59C540201A6;
-	Tue, 27 Feb 2018 14:42:51 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9C81D87ABA;
+	Tue, 27 Feb 2018 15:07:56 +0000 (UTC)
 Received: from localhost.localdomain (ovpn-116-135.ams2.redhat.com
 	[10.36.116.135])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 210B9AFD69;
-	Tue, 27 Feb 2018 14:42:43 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 08B20202699A;
+	Tue, 27 Feb 2018 15:07:50 +0000 (UTC)
 To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
 References: <1519303376-92875-1-git-send-email-imammedo@redhat.com>
 	<1519303376-92875-9-git-send-email-imammedo@redhat.com>
 From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <5c1754a0-e3a5-1baa-9a69-465c8a5892ad@redhat.com>
-Date: Tue, 27 Feb 2018 15:42:42 +0100
+Message-ID: <9277c150-6830-8fb1-0092-4bdfd6ba0486@redhat.com>
+Date: Tue, 27 Feb 2018 16:07:49 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.4.0
 MIME-Version: 1.0
 In-Reply-To: <1519303376-92875-9-git-send-email-imammedo@redhat.com>
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Tue, 27 Feb 2018 14:42:51 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Tue, 27 Feb 2018 14:42:51 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.1]);
+	Tue, 27 Feb 2018 15:07:56 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
+	Tue, 27 Feb 2018 15:07:56 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-devel] [PATCH 8/9] virt_arm: acpi: reuse common
- build_fadt()
-X-BeenThere: qemu-devel@nongnu.org
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 8/9] virt_arm: acpi: reuse
+ common build_fadt()
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
 	qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
 	Shannon Zhao <zhaoshenglong@huawei.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jpDNdbvY8vd6
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vL+ewvzHpwwY
 
-
-
+Hi Igor,
 On 22/02/18 13:42, Igor Mammedov wrote:
 > Extend generic build_fadt() to support rev5.1 FADT
 > and reuse it for 'virt' board, it would allow to
 > phase out usage of AcpiFadtDescriptorRev5_1 and
 > later ACPI_FADT_COMMON_DEF.
+Oups sorry sent the R-b to fast. Some small comments below.
 > 
 > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-
-Eric
 > ---
 >  include/hw/acpi/acpi-defs.h | 12 ++----------
 >  hw/acpi/aml-build.c         | 21 ++++++++++++++++++++-
@@ -157,6 +154,8 @@ Eric
 > index 17fb71b..5a33cd0 100644
 > --- a/hw/acpi/aml-build.c
 > +++ b/hw/acpi/aml-build.c
+
+nit: comment above needs to be extended to rev5.1 support
 > @@ -1755,7 +1755,14 @@ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
 >  
 >      build_append_gas_from_struct(tbl, &f->reset_reg); /* RESET_REG */
@@ -185,9 +184,16 @@ Eric
 > +    build_append_gas(tbl, AML_AS_SYSTEM_MEMORY, 0 , 0, 0, 0);
 > +    /* SLEEP_STATUS_REG */
 > +    build_append_gas(tbl, AML_AS_SYSTEM_MEMORY, 0 , 0, 0, 0);
+
+what about Hypervisor Vendor Identity field (8 byte) in version 6.0?
 > +
 > +    /* TODO: extra fields need to be added to support revisions above rev5 */
 > +    assert(f->rev == 5);
+OK so can't we assert before the (f->rev >= 6) check above?
+
+Thanks
+
+Eric
 > +
 >  build_hdr:
 >      build_header(linker, tbl, (void *)(tbl->data + fadt_start),

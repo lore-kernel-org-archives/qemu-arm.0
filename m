@@ -1,120 +1,113 @@
-Received: by 10.28.71.27 with SMTP id u27csp5365431wma;
-        Tue, 27 Feb 2018 15:09:40 -0800 (PST)
-X-Google-Smtp-Source: AH8x225P0VpOk9G5HLyq1AKET2u3FmffQGTQcRp0fKrcmPpuroLyCuJ8WjWUklSx5Tw3lBwQpmhU
-X-Received: by 10.13.218.2 with SMTP id c2mr10656177ywe.13.1519772980704;
-        Tue, 27 Feb 2018 15:09:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519772980; cv=none;
+Received: by 10.28.71.27 with SMTP id u27csp5372720wma;
+        Tue, 27 Feb 2018 15:18:16 -0800 (PST)
+X-Google-Smtp-Source: AH8x226wkPy0cJrt8nwRIffuAuwTHplXKCQjA2SCZLDp641BBnVqpto8Ngi25VFDCXtUkTWE6m+i
+X-Received: by 10.129.85.4 with SMTP id j4mr10284638ywb.301.1519773496417;
+        Tue, 27 Feb 2018 15:18:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519773496; cv=none;
         d=google.com; s=arc-20160816;
-        b=NGsPldZj/1XQqQBxebsX19PdUmM4ldBSoJAruvcncSMLQgXuIaaeZBlXBnhHLSvoxP
-         /jkewUnXXEkL01tq8s1aWUmHl6OL1I4x3M8g2B3Igdt2FyYfRnUlAYeFel21ZXYBtOys
-         RgeRU0MCtE1lYR+kieuLkD/Tpb1IY3yXWwe/+SlnMtC77fZ1/nmBI7B4aZjr3Wl6Uyef
-         FV+VWuHXY8z4o4L/ZhvmedoJ7catBLHJAEZPjT0T1RD8322tZDmOayDh6d75XY0xPklj
-         tui+xVb6Zqby38ZMHx7D0wrcnGVbckCQXr+BfrQgngLr0GqTts6YuC9PIiH9BqWgHWlp
-         tSPw==
+        b=YPnWP+tRscBPKcXd2H7xyHRqY1gp6DJy5Q6O6UobIz5acsol8pJK4eNBbJ8Xo6WbYG
+         boQM6kGdP+KR3zD/EKVt6RVNXGJ1YYh0VXTIQ6ObcCe2ijesQV9bVZqXIuDh/SuZFe9o
+         Way24fEp9JDlZzGjAIUpWxtD0bdmSn+gEypuUAIt1b1u8aOfNWcwbDdUNWlRGCdabqPY
+         LCIBtu45js0JLZwIz+yYEVha2rx1kix+kTMiGShckHJfyY+b5R1Hr3AOW+Rk/Qkza890
+         zuKbAimAop6Eak3rer9AT5mGK4mJ1XFY9cl7pp4IGP0loeJYEQjNuvz2I+H8gJzWIC1t
+         yVCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:to
          :dkim-signature:arc-authentication-results;
-        bh=j/H/PLEtXbvaxT7xXo8+CL3wBFyajFA3tck4L5grf2Y=;
-        b=JITej1jSftOOQ4UKidyHUUKHFec5F4sazhDY0laGTNZUtbcLVPHG4Dx/BFyfPS1SjW
-         5oV9/mZdgitFwAwwjyZMU9yqcQc8ghgWo4GgO6Pit0ZvDIiMAWWHtLa3FwnK8FityGkj
-         uvdd8cM8t1pNyolcsNhwVT/7IlOQE9hM1v29OSv213hzqk4jFWfYOqa8qazgW3kWyCdi
-         m0lkQsV3ai6bOzYwZar5jZ0rKrBcT25hF57SG4RYQ1Aztl+AuvPx9tqRrj8G9RmKv5oN
-         o4mnT1ZQG44yHcqEp9hlUd/mn/rOI7MEsMbqj3dIS3c7OSdCMKis8azpTSIjIVu2K4iQ
-         Lp2Q==
+        bh=pKoeYekIxg28rc9rVsdj3U/K+iAtlj3pAhB7pPTo3xA=;
+        b=1B6WLBddPCtmY2WQUsgp73AeJxU415B4urmCbZLsOEGK+b7fIz5ITNDmodI8i/JmPk
+         BV2V///MnS11qm20GV99GBGRXQnD86GffMOs20SEVZECBkfNy2LzRe3GyH0lH017SVgT
+         j6gVS3zspMGNYqDiFg1VjdDV4tA3h/k6IM1byYyWM2XHogu8+1uKXLMwqAwmPFzF6ZOc
+         WkocWh67FZbJkpOSbcYlaL65ikxK3sVKo1WJtzQc9Jp0xdX02BVBHWrrxaCFPibun0LZ
+         P9ZisaFdJoUt2ZOJQn5BwW5eSDJD3s9ijDKDI+3B+apbGcDN+5adWk9ZNMCNOOKw1JJ+
+         Cmig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vcdIX2Ll;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LYLT2nKq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t9-v6si45321ybc.138.2018.02.27.15.09.40
+        by mx.google.com with ESMTPS id v201-v6si45290ybe.780.2018.02.27.15.18.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 27 Feb 2018 15:09:40 -0800 (PST)
+        Tue, 27 Feb 2018 15:18:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vcdIX2Ll;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LYLT2nKq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:40593 helo=lists.gnu.org)
+Received: from localhost ([::1]:40634 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eqoNQ-0002ak-6H
-	for alex.bennee@linaro.org; Tue, 27 Feb 2018 18:09:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57273)
+	id 1eqoVj-0004nC-Ri
+	for alex.bennee@linaro.org; Tue, 27 Feb 2018 18:18:15 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60362)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eqoNJ-0002aU-5q
-	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 18:09:34 -0500
+	id 1eqoVb-0004mt-CI
+	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 18:18:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eqoNI-0001gf-6E
-	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 18:09:33 -0500
-Received: from mail-wr0-x243.google.com ([2a00:1450:400c:c0c::243]:43188)
+	id 1eqoVX-0007RE-CQ
+	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 18:18:07 -0500
+Received: from mail-wr0-x243.google.com ([2a00:1450:400c:c0c::243]:34129)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eqoNH-0001gC-VY
-	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 18:09:32 -0500
-Received: by mail-wr0-x243.google.com with SMTP id u49so462744wrc.10
-	for <qemu-arm@nongnu.org>; Tue, 27 Feb 2018 15:09:31 -0800 (PST)
+	id 1eqoVX-0007Qg-5M; Tue, 27 Feb 2018 18:18:03 -0500
+Received: by mail-wr0-x243.google.com with SMTP id m5so501861wrg.1;
+	Tue, 27 Feb 2018 15:18:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=j/H/PLEtXbvaxT7xXo8+CL3wBFyajFA3tck4L5grf2Y=;
-	b=vcdIX2Llm7eW5+B+8pZF9FjS1RRX6OK3DPwRmyXHsnsPMDQGZ327ZTgecMeeYCBl1Q
-	3gNYGDpdaW9/PzY38dCIUyUL4vrKWP0nmlCIStsNLIGQeEvEqT2KRPzd4Nl2ZztC6KHr
-	7fvgLLfybU3Yd3TbEV2kGK65Azj/KqQ9tBV7IBoK1R0n7B730eX+5GKLhBVs5KHQGAxd
-	jYWLD1Fx1zC1u9KXLS3zA2F3dXxMQBb6vAjCVJbyZot4cnXwnA562ReXCxBjeaL6oXJT
-	OZlMRxfmcI3ijK+xPG6Z48H5x7ui2HriaOMSf3s0Xv/oyay9yz123SVlgo0tmI4f6XfG
-	XpXA==
+	bh=pKoeYekIxg28rc9rVsdj3U/K+iAtlj3pAhB7pPTo3xA=;
+	b=LYLT2nKqpUIR0JWESwqQr7XLKm+xOZIrqYfadmstfUTz1Gb5er98s32JKdfbM/iKxp
+	a6Gs24UGC+eIDSKPe3jAXadEUyJES04QyrSe6xiubk8G6DG/eMX4QJVkhjwmTSJRR3a1
+	GtqKOsaBxHsmELBnBaoT33x1hIJEfCdoo1amWnH7XlqE19slOq8lOACRKXGZFMfj5ivb
+	t+FpPW5T4a8MmKSXbbw5/FnR6ch1y27pP9Y9xi1JPsyufMDm7aecoP5zheQxq+sOC6mv
+	ZZkaQFdVzbwbMV+h6MP6In/MyRrfWeR9JApH1mtFkZLxLoxyAyKKQYwUYMBuml86SCHO
+	w5sA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=j/H/PLEtXbvaxT7xXo8+CL3wBFyajFA3tck4L5grf2Y=;
-	b=ZJPSAzdzH6f+wQJFlE2CVGrakMpFoZdGSz99FA7FxRWtIP6dC0PQceTBlnj0f2KZ6I
-	UNiyLv9yIb4lC+LHveQrSDZIAhRxxQzhdxdOTwfadrWcX51ZPPvjXoMP4JC+ZTgsiAZE
-	taqoiKZxFhcO3eB0T40VdEEMDJs5afctI15VM+iOudJ2ktFhEdBW3enybtOSpsS3Nomv
-	0d9ckSlS0zNZrzWYf3JP/RXmeXaQ0F253tbhueGgZ6cRSIYNajwUlejeVc/avURKq4u8
-	oIql0/XDpNU4kGjYKKXqyQsMJbKKIYGcPcHPP7KUOMOiAuV4C/B2vUg/3WyXOtMyWm01
-	TLZw==
-X-Gm-Message-State: APf1xPBOTWURbHHC7nr3hifmYP7Ux31LnagEaGB77PvgwqxH1QsxWcUg
-	zrynKdC7FWk+WFIvZrK+frRo3U8E
-X-Received: by 10.223.163.222 with SMTP id m30mr4588121wrb.30.1519772970641;
-	Tue, 27 Feb 2018 15:09:30 -0800 (PST)
+	bh=pKoeYekIxg28rc9rVsdj3U/K+iAtlj3pAhB7pPTo3xA=;
+	b=gRj8Yl2JcfmWW3ocoyfOdwXggvVt63K00mDbRxpDiKHLZo6z1InSFHxn6rOk/rQ2rC
+	m0QhCaNxuepQtproSOLoBKH6vt8zHjQ0O3kt02WYA+bVKNZnvGOeAz5ggVUsxQ+o2CUt
+	0A4QO3/tF+roJa8tnMViI2C6y8T5tG+hejLkYaj/SWZlQlXi66EwdDalMU9EqdnYorNa
+	M6ASjQlkdeqiVyPZH1HAq6HArPq93kmVWMGMvUN0zEd+FATahgvmr91rMchyXeRkQDXs
+	XQAUEYtLXHSZ6mwkBRA6EGdV4WlRzGU6/iENaKliye9QGCThnV1Qf1tS3Km+kk+0ipCs
+	KCjQ==
+X-Gm-Message-State: APf1xPClvxhZp4TWE9PZx4t/wCF9llwlpXnd/3QSJlVI6Gip2LlwPDJq
+	mBFQkLMYNcIKeKLdrDmMl3Fj7RGp
+X-Received: by 10.223.145.67 with SMTP id j61mr14764057wrj.152.1519773481992; 
+	Tue, 27 Feb 2018 15:18:01 -0800 (PST)
 Received: from ?IPv6:2a01:cb1d:8526:ac00:37c8:9a2b:1b7e:2ba7?
 	([2a01:cb1d:8526:ac00:37c8:9a2b:1b7e:2ba7])
-	by smtp.gmail.com with ESMTPSA id 78sm785027wmm.22.2018.02.27.15.09.29
+	by smtp.gmail.com with ESMTPSA id r98sm591833wrb.70.2018.02.27.15.18.00
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 27 Feb 2018 15:09:30 -0800 (PST)
-To: Grant Likely <grant.likely@secretlab.ca>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Jason Wang <jasowang@redhat.com>, 
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	Fam Zheng <famz@redhat.com>, 
-	=?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
-References: <CACxGe6vSPG8KcmV5kpxcm3d41b9Vn++EZPAEm1qyoouZ5zPkug@mail.gmail.com>
+	Tue, 27 Feb 2018 15:18:01 -0800 (PST)
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+References: <20170922171323.10348-1-f4bug@amsat.org>
+	<20171009132112.GA5553@toto>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <af4c6c75-3d55-a3fc-98c3-0f2b162727ba@amsat.org>
-Date: Tue, 27 Feb 2018 20:09:29 -0300
+Message-ID: <4b2297e8-3db9-2ddc-dbaa-16c9e372a571@amsat.org>
+Date: Tue, 27 Feb 2018 20:18:01 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.6.0
 MIME-Version: 1.0
-In-Reply-To: <CACxGe6vSPG8KcmV5kpxcm3d41b9Vn++EZPAEm1qyoouZ5zPkug@mail.gmail.com>
+In-Reply-To: <20171009132112.GA5553@toto>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2a00:1450:400c:c0c::243
-Subject: Re: [Qemu-arm] [PATCH v5 1/7] hw/mdio: Generalize etraxfs MDIO
- bitbanging emulation
+Subject: Re: [Qemu-arm] [PATCH v5 0/7] Generalize MDIO framework
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -126,58 +119,68 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+	qemu-devel@nongnu.org, Alistair Francis <alistair.francis@xilinx.com>,
+	Grant Likely <grant.likely@arm.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 96swcErf/5U6
+X-TUID: XvfdaTkD2sWu
 
-Hi Grant,
+Hi Edgar,
 
-On 02/27/2018 07:50 PM, Grant Likely wrote:
-> On 22/09/2017, 12:13, "Philippe Mathieu-Daudé"
-> <philippe.mathieu.daude@gmail.com on behalf of f4bug@amsat.org> wrote:
->> From: Grant Likely <grant.likely@arm.com>
->                                   ^^^^^^^^
+On 10/09/2017 10:21 AM, Edgar E. Iglesias wrote:
+> On Fri, Sep 22, 2017 at 02:13:16PM -0300, Philippe Mathieu-Daudé wrote:
+>> Hi,
+>>
+>> I have a follow up series using multiples PHY on the MDIO bus based on this
+>> series.
 > 
-> Hi Philippe,
+> Hi Philippe!
 > 
-> Just following up on this series. I don't really have any additional
-> comments. It has been many years since I looked at the code, so I'm
-> quite happy for you to have picked it up.
+> I think this is a good improvement compared to todays state.
+> It may make sense to have the generic mdio bus functions in mdio.c
+> and specific phy models in separate files, thoughts?
 
-Except Xilinx who uses another approach, nobody in the list seemed
-interested. I used your work to run firmwares that are not opensource so
-I'm not sure - yet - how to show to the reviewers the usefulness of the
-patchset.
-I have on my TODO "compare the Xilinx tree with Grant series to see
-whichever is more likely to get merged, and search for examples/tests
-from the Xilinx wiki".
-Since I do this in my free time I have it scheduled to a low priority :(
+I'm sorry I missed your mail and noticed it today since this thread got
+awakened with Alistair's reviews.
 
-> 
-> However, it is very important for you to preserve the original email
-> address that I used when I submitted the patches, and do *not* use my
-> arm.com address. None of this code is owned by Arm. Please change the
-> From: attribution and my SoB line to use "grant.likely@secretlab.ca"
+I'll raise this series priority in my TODO and respin with Grant correct
+S-o-b, Alistair comments addressed and split MDIO/PHY as you suggested.
 
-Yes, I first thought this domain was not in use anymore but noticed
-later this was mistake and was planing to correct it, I apologize for this.
+After spending 2 months with the SD bus, I now fill more confident to
+rework the MDIO bus and think of unit testing and tracing.
 
 Regards,
 
 Phil.
 
->>    The etraxfs and Xilinx axienet Ethernet models implement quite a nice
->>    MDIO core that supports both bitbanging and direct register access. This
->>    change factors the common code out into a separate file. There are no
->>    functional changes here, just movement of code.
 >>
->>    The etraxfs and axienet are slightly different. The etraxfs version
->>    includes the bitbang state processing, but the axienet version has a
->>    minor enhancement for read/write of phy registers without using bitbang
->>    state variables.  This patch generalizes the etraxfs version, with the
->>    axienet change backported in.
+>> Grant's previous work:
+>> http://lists.nongnu.org/archive/html/qemu-devel/2013-02/msg00257.html
 >>
->>    Signed-off-by: Grant Likely <grant.likely@arm.com>
->>    Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>    [PMD: rebased with a minor checkpatch fix]
+>> "There is more work to be done, particularly in moving to the common GPIO api,
+>>  but that work can be done as a follow on patch series."
+>>
+>> Grant Likely (7):
+>>   hw/mdio: Generalize etraxfs MDIO bitbanging emulation
+>>   hw/mdio: Add PHY register definition
+>>   hw/mdio: Generalize phy initialization routine
+>>   hw/mdio: Mask out read-only bits.
+>>   hw/mdio: Refactor bitbanging state machine
+>>   hw/mdio: Add VMState support
+>>   hw/mdio: Use bitbang core for smc91c111 network device
+>>
+>>  include/hw/net/mdio.h   | 124 +++++++++++++++++++++
+>>  hw/net/etraxfs_eth.c    | 291 +-----------------------------------------------
+>>  hw/net/mdio.c           | 280 ++++++++++++++++++++++++++++++++++++++++++++++
+>>  hw/net/smc91c111.c      |  27 ++++-
+>>  hw/net/xilinx_axienet.c | 189 +------------------------------
+>>  hw/net/Makefile.objs    |   2 +
+>>  6 files changed, 438 insertions(+), 475 deletions(-)
+>>  create mode 100644 include/hw/net/mdio.h
+>>  create mode 100644 hw/net/mdio.c
+>>
+>> -- 
+>> 2.14.1
+>>

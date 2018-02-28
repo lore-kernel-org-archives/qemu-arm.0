@@ -1,102 +1,95 @@
-Received: by 10.28.91.67 with SMTP id p64csp706904wmb;
-        Wed, 28 Feb 2018 07:02:29 -0800 (PST)
-X-Received: by 10.157.25.29 with SMTP id j29mr13517380ota.325.1519830149327;
-        Wed, 28 Feb 2018 07:02:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519830149; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp827938wmb;
+        Wed, 28 Feb 2018 08:58:05 -0800 (PST)
+X-Received: by 10.99.124.7 with SMTP id x7mr14636774pgc.356.1519837085659;
+        Wed, 28 Feb 2018 08:58:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519837085; cv=none;
         d=google.com; s=arc-20160816;
-        b=n6pSiJv/ARNHXjuPELcjO7MppMEeMtVV/NII6CNmMJXTEYouT0s4LUNDlz910/ZjfY
-         bQnE5yfJ3BdZqYJxkkUZcdQOBMIaGqvOFpGwjtvnq04dYBloUIldYHVajNKApE8P5uuM
-         iYNiH6EWQCipEZnv1OEdP6L61p8K1qLWkClhsvRQ4Fnd6KnYXNWAXo4L2p1zgWD6RtsN
-         FDvnOaux98aYsi7/OmvDRWwpw8+krth6XfoUO1TWuW5B79v015guHaocdiR32B/eds1C
-         6aZRC3EI0cmIcqBYkdGFEjWVrlpjTGxzHb4puZWOnj98lXYJPu+b00InifwbuFBVgcfh
-         9X2Q==
+        b=CSKV876VJIVpNk7NXNf5Jetn6G6EAn2HpqJIFlENShuvSi9tS3z0Y2XQcAFADYoBSP
+         tCJql2jcm2ckYEq9V00ccnVOxBlGKExkenya/iE/v2AyiScovXHDBLeVh5iPvnR+hvoD
+         pWOW6EI9Iapl14M/8nFYsCxrurA1I33j50g8w9rSzFXetm76F6J0SyAOIuIm8pDQ7Q/U
+         8F2kWdqTNlueMAKZvnFbOzGy2N013xy3yCA/1vifsfsfXSmcc6jik7Uf/gM03kzQQzQZ
+         qvN0JsTl5mBu7EHv8A3lBt5DbEsR9Q8fXdAg5lTt3GI2cLVj7Ff6vFNPHxAVuvLDY7PX
+         rkag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=UlEkn31mPGzCmPRwe3xvQ0wWSjnZ7ZpylKHZyVxqXWw=;
-        b=aiHMvWHL+r6PycFVaZhLYBbR0qcs1DPWWo9p1J9WIY0IZlb6CSg9zny2sOsxtw77Dx
-         J2yeGJ+ua8gccJHdHZdbadwTulMT5mKwl3xwuahTXTs1xs/5K5HLe5LkpfirlgkIXtu4
-         e7S050bdM2b6YKKYfcB/g7D5i5O7aIRnS0P5iNa9cOYUhmxlJcIyTTa/hk8iR8OVFQRZ
-         Z1hbNIfuPpA0ny/8LfzzgyydiZJO7lrJhg0iQD+UCjqEBKcnOnyJk5sAAwKOI0rldNqo
-         4pYuzh9vz/DcrFJ1hveFQ771q4wUCqefYerj0sgf5fZseFSuTMDeO5lvJjX52J/sA+Vq
-         4sBw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature:arc-authentication-results;
+        bh=Mop8OmpSXotpchPIWOSice3eEnznSTscrXckm2H3bGM=;
+        b=d1XtFMKqJcruclhAi9Ve2cxdSr1NYKoA3ZGNGcloEbIgdGWCf4rTcZsMg0na+hjs5V
+         byWjQDjIM6urlusHhFjmI9jVlNxl6Hvi6BFQC35sYIC7947jjRbRTQ1ZskP6xa6WacI1
+         R/2NvaCzzbElEUYyhC0wLJ+guUnp2A6f396a5uHT79A/luup0X6hqXWPL0MLqnGWGNjp
+         tEvt1fssLaQNnKtkJlHS6xfg3jKgmFnkm0YPi+vEdrt5JueuQtXeQ1VGCP4qJZwd1s5R
+         toH1wF2aGIxrVgsIjUtV7GEIlmuAYjo/XsAzNrlcfMIP0auDUlnCY4FkzDjs87NOv+gp
+         3fvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bKXC9ect;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BYilgkB4;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
+Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id t26sor719217ote.148.2018.02.28.07.02.29
+        by mx.google.com with SMTPS id g31-v6sor700935pld.40.2018.02.28.08.58.05
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 28 Feb 2018 07:02:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Wed, 28 Feb 2018 08:58:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bKXC9ect;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BYilgkB4;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=UlEkn31mPGzCmPRwe3xvQ0wWSjnZ7ZpylKHZyVxqXWw=;
-        b=bKXC9ect8jvGa0XeYFcg+BZeklM4jpOW5lWGq0ewOBIrcRsSRS8l1gX5PtBrtDncrl
-         GWJLgYNWqE7HZjFGlcAD5sghWh3S59XON5u4XyrLYosilG8svmiQ0yKQQidC0tfCxwyp
-         w+uN5p0flV0CZk1ydmna+Db3th5uNfOLvAdRA=
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=Mop8OmpSXotpchPIWOSice3eEnznSTscrXckm2H3bGM=;
+        b=BYilgkB4DEa0Tv+F1i1ipDE3/Zi2SReoYyTr4syfsTu1J+jBFEBkgbpQnzlxctMeE2
+         IrGoTl6KIj5GYtFcDhIDVY9UEzBiLTObWrVNqjcOhRGm/JDPuoFhyRRUE8bbdZex/PrP
+         nvqz+uAucaR61pXL5uUopChT1LiVXXhI71F9I=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=UlEkn31mPGzCmPRwe3xvQ0wWSjnZ7ZpylKHZyVxqXWw=;
-        b=Wb7JgUUwaUGqt9sBoRrYTm3vs14kdxfdzjZrAKaGzEIWhp88bEhwApFW7vgm2gYvKK
-         +UYmWYBzt66O/na6sZQo6q30wVQMj7PnmvNCW5OnO9mUzFGY3f+lVxrkuGyP+SrhCwTB
-         tYQ0Ee4FsLoUgsK7Mm2hyyCa+RiVLeBOCI8JSVhAZRjCPlHctH4QpS7fut2rWrM781nb
-         flg7QyEhBYzCtcWgNMglRsY/FD/Qh1VLY3VvpNv8YfpWPWV2RzOP36bhU90HJFVx5lg3
-         a5b9zQBjkaHSayQExdLczY2wekMYG1mpIfrwMLqU273s9zwu7xbxs62P+4D1Kf85kvo4
-         KZhw==
-X-Gm-Message-State: APf1xPCAlFyBBru6TSkIX7JbjkmwPX9aHPy9/qHVsebSBJPm++wvs9JO
-	8x7A/aUq9IP1xuke6d/LBd47UAAEUBVjnRt45kxxsOOjU4g=
-X-Google-Smtp-Source: AG47ELs5E4yOHq5e3O1xz9T60gfM0K2iVwVijWo5FsDwik7BgiUjPJtI5ke7eqHTl5UrN/QFPXcJbirE2ly4j5MS+7k=
-X-Received: by 10.157.3.70 with SMTP id 64mr12660807otv.258.1519830148495;
- Wed, 28 Feb 2018 07:02:28 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.157.33.100 with HTTP; Wed, 28 Feb 2018 07:02:07 -0800 (PST)
-In-Reply-To: <87woyxutms.fsf@linaro.org>
-References: <20180227143852.11175-1-alex.bennee@linaro.org>
- <CAFEAcA8LEG=bzXrj3etTdf_q3-AcMVfCCqSGQ2OkXUPGBHkMBQ@mail.gmail.com> <87woyxutms.fsf@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 28 Feb 2018 15:02:07 +0000
-Message-ID: <CAFEAcA9LGHjneP9qi0s2jyQE=hz=fa6fadgv-0Znujr62H-0NQ@mail.gmail.com>
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=Mop8OmpSXotpchPIWOSice3eEnznSTscrXckm2H3bGM=;
+        b=oFVRlijwTQxUdRltq3QsFgIAvPqW+BrusWmS3vG4gmXrb1Mla46WN/+kq/gXs0G1Ff
+         VYJjGPm73+rjAr62c9N+XASATKmq0BoVPTI14a1UfgmBCgkcZ+BvBMNYXJ7Doeq1Ftsx
+         xOooID4R3KJsuw0a1cJiFj1K6fPdVAmJE0eyloQdNwYx+4DZyxFTJbEVYBHgso/Xamvo
+         7ZMwyYPG6K2CydNX9I25ydj8Wbg+2NWTOobx7gr4xxYorZvGOPaXigm17Nw3wAMoUeB2
+         72ca3tHRrx1XYzoAD3hTJ0Jv0BhvWhTYKRnkcGM6g5V47CB3/d+1yRm1lHxi3RjIT8R/
+         Cnsg==
+X-Gm-Message-State: APf1xPDOwQRTaTz/hQleJ2i9YDd3U0+/+WCUlJuUfAwpZuM9cWyEFr1X
+	D92M1owidzwPXRJPpycJDB839twp
+X-Google-Smtp-Source: AH8x226dzvLKiQMdokUb/0aGond8vC0EkUeNtR4Rw/kBz78In2ZBd9Z7aTLixELeXKsnPH5ek0jGog==
+X-Received: by 2002:a17:902:461:: with SMTP id 88-v6mr18554070ple.88.1519837085220;
+        Wed, 28 Feb 2018 08:58:05 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from cloudburst.twiddle.net (97-113-169-147.tukw.qwest.net. [97.113.169.147])
+        by smtp.gmail.com with ESMTPSA id d186sm4679689pfd.1.2018.02.28.08.58.03
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 28 Feb 2018 08:58:04 -0800 (PST)
 Subject: Re: [Qemu-arm] [PATCH v4 00/31] Add ARMv8.2 half-precision functions
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, Richard Henderson <richard.henderson@linaro.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: WYaH4iocOrEp
+To: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+References: <20180227143852.11175-1-alex.bennee@linaro.org>
+ <CAFEAcA8LEG=bzXrj3etTdf_q3-AcMVfCCqSGQ2OkXUPGBHkMBQ@mail.gmail.com>
+ <87woyxutms.fsf@linaro.org>
+ <CAFEAcA9LGHjneP9qi0s2jyQE=hz=fa6fadgv-0Znujr62H-0NQ@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <51845d05-364d-864b-9380-0d8b09776efb@linaro.org>
+Date: Wed, 28 Feb 2018 08:58:02 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.6.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA9LGHjneP9qi0s2jyQE=hz=fa6fadgv-0Znujr62H-0NQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: uZiec1jQpiwP
 
-On 28 February 2018 at 13:32, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
-> Peter Maydell <peter.maydell@linaro.org> writes:
->> (3) Is this complete fp16 support or are there still more pieces to come=
-?
->> I'm assuming it's all done...
->
-> All AArch64 is done. I'm not sure how much AArch32 is needed for SVE
-> support. The ARM ARM says "When this feature is implemented it is
-> implemented in both Advanced SIMD and floating-point, and in AArch64 and
-> AArch32 states." but I think it is legal to have a 64 bit only CPU
-> without AArch32?
+On 02/28/2018 07:02 AM, Peter Maydell wrote:
+> Do you have a feel for how much work the AArch32 side is?
 
-64-bit only is legal, but none of our current implemented CPUs
-(including the proposed "max") are 64-bit only :-)
-For linux-user it doesn't matter, because the code will only
-run as AArch64 anyway, but before we advertise it in the ID
-registers for system emulation I would definitely prefer to have
-the AArch32 instructions.
+Based on my experience adding fcmla support to aa32, probably less than a week.
 
-Do you have a feel for how much work the AArch32 side is?
 
-thanks
--- PMM
+r~

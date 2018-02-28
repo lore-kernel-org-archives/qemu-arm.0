@@ -1,97 +1,89 @@
-Received: by 10.28.91.67 with SMTP id p64csp564382wmb;
-        Wed, 28 Feb 2018 04:44:50 -0800 (PST)
-X-Google-Smtp-Source: AH8x2276WFLvEcc0G3yHzC68szYzv0NybCsiyZt+vJ5e+cFzP+hWpfD4159DMJpGj031l73Ei/mL
-X-Received: by 10.129.113.133 with SMTP id m127mr11447331ywc.76.1519821890570;
-        Wed, 28 Feb 2018 04:44:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519821890; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp669298wmb;
+        Wed, 28 Feb 2018 06:25:39 -0800 (PST)
+X-Google-Smtp-Source: AG47ELtbAMnSsK45YmLEePXgWGbydp2Rc+VljOnT0r555mbt3wvGXOSdRjoFt38kF5nKnjFAByhb
+X-Received: by 10.13.208.69 with SMTP id s66mr11676672ywd.483.1519827939648;
+        Wed, 28 Feb 2018 06:25:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519827939; cv=none;
         d=google.com; s=arc-20160816;
-        b=h4u5BigznT2tYObSGUdVL5puULbiXcKAcOJIYkzNL2te1RCN6arrZewyEw8j66nzFK
-         NkVqVhPlajZWcoeeHIIiqlKeldSJD/YoILMj8f6V8nWNFXi7sCWl7i7gq3N5jIwBdn2G
-         P99hDHYuPXM+tyVKiaCk3Eo8YEaK1dTlfSqXWgTosdX/iTkXIILKeVFEsQY4/ApvbHem
-         FFJgHtWZ6Rw1ESCTabeuUSeZSteuIvTSOprkBEuAucxvhylz+Y3f2EZ4cYKp2N+IjdtI
-         pHXXXu1Bm0iGOOErDPi+i4eW2P+gA9WWX4uZpjU15PcNvvHrLOPAbuSul9MKDstYzm/c
-         I4VA==
+        b=0/4e5vuoVoZZxLU+tfxsIpp362b5uGJmVwJ503VbtzRjUtqKydFxAdnZRyZIok2xAn
+         HIvBcoPZZe7zLcQMctTw3t6fUpNECqy8yRM76fVuKhkYek28hv1CMN9ZJELQPHt4Xk8e
+         8BfYCMZwra8Xw0dTdV3bWWvbVjxj70hpCKWShp+RiSFsB4KWBju8X6l+X0qNhYupWMIs
+         IlRO2axY/lCO1VBgzeOWZm5opl0TQZH0cU0z/r1wiBuTYgEv2552XZVcAdib79/evUnb
+         jJeBAcbDjs0I3hgFyzGR3649drml8QV9jqtiEQzCT3uf/PbeTyMTaPc7LjhXuL9zTGa0
+         jkGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=ihAw8orTJbOquXU/T+rocCNFFEJGctfuOKX0KK3MPJc=;
-        b=GYG5SBweQFqxk05qecvOWPtCcXWdtt0hjmNsBHLc1ofjuYmT5NlRNM+WrqFdtzr9JW
-         hnSqrsH3Q1gUzGZL/aOyjVIU8Bp1ZuqqVxDyHsIgps/LjUrQOr72GfgxVWs7yf0CfkBY
-         ie6CosHV2PiabS2EnrYxpKFn83tPWdmDhSdas+IvK/zE5XS8b0bYNGDywhEry1SGGs/f
-         kpxSpZ2uFx8+4WcT3qP+L571jiko2mdXlolcOZjXuJ0w4SG3rZ7dvwFZkJ6qW0l8C/Yk
-         zDeTuI9nf15ZuNKqYQf7iS9TwiOiq9gFBBExDPOdwxqEHMprL1kYyLzeELzDTGu+JB/+
-         f5aw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=zm1QGdDGSfpv5ShlqIrKFJAH48iwWG8t+QvOVonYSLM=;
+        b=WhVhqsXlsO+qSjxiQnQzR41rY6IiHdqeM57UykP95ay/hhysfyDS/BOLjZhfRNu4qq
+         utJM+rYSQM+ML3GlPFSs5nAiJ69kdpMQ8Gr/BtbiOpEGbIVXNUnQtcGa6xURA9fHyo5e
+         WfYmCPRzGIiA8EwHcgJmG6+iAztO1tI0qyIoZRvCamitJD6mezGze/WOITk6bRGNbWV1
+         pZ8mtmy2Eoiy5zCFBMsFCx2JwSRUytRoZOG3Nw86CkoTM7lCvjoDUMBH5nfnpXp3UOxm
+         hvbdDKIetunGPlwIe+M1b/ev0BNKP2JjlOHJK6KqWGYUJpaDSC0ZwHJmAWq7T0/gbiRS
+         UAQA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LGxyDLFF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h124si247872ywe.566.2018.02.28.04.44.50
+        by mx.google.com with ESMTPS id n206-v6si284429ybg.673.2018.02.28.06.25.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 28 Feb 2018 04:44:50 -0800 (PST)
+        Wed, 28 Feb 2018 06:25:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LGxyDLFF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43778 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:44597 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1er16I-0002lF-2H
-	for alex.bennee@linaro.org; Wed, 28 Feb 2018 07:44:50 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39224)
+	id 1er2fq-0004f1-U9
+	for alex.bennee@linaro.org; Wed, 28 Feb 2018 09:25:39 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33422)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <linus.walleij@linaro.org>) id 1er169-0002jp-2R
-	for qemu-arm@nongnu.org; Wed, 28 Feb 2018 07:44:42 -0500
+	(envelope-from <imammedo@redhat.com>) id 1er2fd-0004eI-I4
+	for qemu-arm@nongnu.org; Wed, 28 Feb 2018 09:25:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <linus.walleij@linaro.org>) id 1er168-0006bM-Ah
-	for qemu-arm@nongnu.org; Wed, 28 Feb 2018 07:44:41 -0500
-Received: from mail-it0-x22c.google.com ([2607:f8b0:4001:c0b::22c]:37492)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <linus.walleij@linaro.org>)
-	id 1er168-0006aP-4b
-	for qemu-arm@nongnu.org; Wed, 28 Feb 2018 07:44:40 -0500
-Received: by mail-it0-x22c.google.com with SMTP id k79so3353611ita.2
-	for <qemu-arm@nongnu.org>; Wed, 28 Feb 2018 04:44:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=ihAw8orTJbOquXU/T+rocCNFFEJGctfuOKX0KK3MPJc=;
-	b=LGxyDLFFxd7TF8yN6JtcLQGB76eXxzanf6Cm2S43wXEeeIcUdZ72CIgDBbilI6QMLg
-	jm1FL2LVi1wxl+FSlNwcwpkVdLd8pxRuem3Tw8BJBJp5GX8Uh9kxgz2Rilir1V3XKeuH
-	e86ZciwX0ACKxj4DiWbKkGaClO/tmXihQOzgA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=ihAw8orTJbOquXU/T+rocCNFFEJGctfuOKX0KK3MPJc=;
-	b=JVYWc3e69fw7B7a3bpopk2sEoABjDHp50ABEOjqL3txSDXuBqF9qq/G7RdbOOCVT2l
-	aBI33dDQnDfHjM6dKs90Ii8NhZqNJj5CnSQdxudv9jsXlFw7JtLBZw/rtZaaci+dOR1B
-	gG9qFwmjn2nzFOMzwZr52oeoRe7b48RhREb2ZhTHeAcShAb/r0ZvzZIUtzqNXgZnFhAu
-	unUKhxBTvHV614sXytgNNpw1tQ7HNRL/xKr6Y856CRjH1LfLybiHOxzGOXThAINxyi+n
-	KRkHs3pXXPpxfYV/BtwM4wE6hf9FTc+Yckkbzs4qC/bJdvPwzj707bPCE/PLA0iH0UJU
-	kjFA==
-X-Gm-Message-State: APf1xPD3jzDNy+fZWXSalZ6Hs9TAlEM+Hqm9NA3h1bzz0de+Q2Tnf6lU
-	QPslN/oEMSkPbx0LsfTmi7Rvl0Omr1CwNv/u5pHiRQ==
-X-Received: by 10.36.120.19 with SMTP id p19mr9623578itc.115.1519821879219;
-	Wed, 28 Feb 2018 04:44:39 -0800 (PST)
+	(envelope-from <imammedo@redhat.com>) id 1er2fc-0001tB-Bm
+	for qemu-arm@nongnu.org; Wed, 28 Feb 2018 09:25:25 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:35394 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1er2fc-0001sv-0e; Wed, 28 Feb 2018 09:25:24 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 956834015184;
+	Wed, 28 Feb 2018 14:25:23 +0000 (UTC)
+Received: from dell-r430-03.lab.eng.brq.redhat.com
+	(dell-r430-03.lab.eng.brq.redhat.com [10.37.153.18])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id B3827946B7;
+	Wed, 28 Feb 2018 14:25:22 +0000 (UTC)
+From: Igor Mammedov <imammedo@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Wed, 28 Feb 2018 15:23:47 +0100
+Message-Id: <1519827835-239519-3-git-send-email-imammedo@redhat.com>
+In-Reply-To: <1519827835-239519-1-git-send-email-imammedo@redhat.com>
+References: <1519827835-239519-1-git-send-email-imammedo@redhat.com>
 MIME-Version: 1.0
-Received: by 10.79.230.25 with HTTP; Wed, 28 Feb 2018 04:44:38 -0800 (PST)
-In-Reply-To: <CAFEAcA9h9VjyS7QjHiRkYwThGyK0NErWSPxMGD=iRT82qECi8Q@mail.gmail.com>
-References: <20180227104903.21353-1-linus.walleij@linaro.org>
-	<CAFEAcA9h9VjyS7QjHiRkYwThGyK0NErWSPxMGD=iRT82qECi8Q@mail.gmail.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Wed, 28 Feb 2018 13:44:38 +0100
-Message-ID: <CACRpkdatS-+MF1+sv3i+DhgCaVwepvc2jntwqe64D8DPEpho_Q@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4001:c0b::22c
-Subject: Re: [Qemu-arm] [PATCH 0/5] Versatile Express SiI9022 emulation
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.6]);
+	Wed, 28 Feb 2018 14:25:23 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Wed, 28 Feb 2018 14:25:23 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'imammedo@redhat.com' RCPT:''
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: [Qemu-arm] [PATCH v2 02/10] pc: replace pm object initialization
+ with one-liner in acpi_get_pm_info()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,45 +95,53 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: Auger Eric <eric.auger@redhat.com>, Shannon Zhao <zhaoshenglong@huawei.com>,
+	qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CuQNkKnp6M0p
+X-TUID: 1+wsI9En5lZ2
 
-On Tue, Feb 27, 2018 at 6:26 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 27 February 2018 at 10:48, Linus Walleij <linus.walleij@linaro.org> wrote:
->> This series adds proper display bridge/connector emulation
->> for the Versatile Express, implementing a simple Silicon
->> Image 9022 emulation spawning a DDC I2C child.
->>
->> After the series the Versatile Express is successfully
->> presented the "QEMU monitor" through DDC I2C.
->>
->> The series includes two refactorings from Corey and a
->> minor bug fix for the i2c-ddc so that everything is smoothly
->> integrated.
->>
->> Corey Minyard (2):
->>   i2c: Fix some brace style issues
->>   i2c: Move the bus class to i2c.h
->>
->> Linus Walleij (3):
->>   hw/i2c-ddc: Do not fail writes
->>   hw/sii9022: Add support for Silicon Image SII9022
->>   arm/vexpress: Add proper display connector emulation
->
-> Hi; I've applied this to target-arm.next with the tweak to
-> the commit message of patch 5 and the reset function in patch 4.
-> Let me know if you think those are wrong or you'd prefer to
-> respin the series yourself.
+next patch will need it before it gets to piix4/lpc branches
+that initializes 'obj' now.
 
-I am certain you did it better than I could, thanks a lot.
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+---
+ hw/i386/acpi-build.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-I forgot about the reset business, sorry :(
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index deb440f..b85fefe 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -128,7 +128,7 @@ static void acpi_get_pm_info(AcpiPmInfo *pm)
+ {
+     Object *piix =3D piix4_pm_find();
+     Object *lpc =3D ich9_lpc_find();
+-    Object *obj =3D NULL;
++    Object *obj =3D piix ? piix : lpc;
+     QObject *o;
+=20
+     pm->force_rev1_fadt =3D false;
+@@ -138,7 +138,6 @@ static void acpi_get_pm_info(AcpiPmInfo *pm)
+     if (piix) {
+         /* w2k requires FADT(rev1) or it won't boot, keep PC compatible =
+*/
+         pm->force_rev1_fadt =3D true;
+-        obj =3D piix;
+         pm->cpu_hp_io_base =3D PIIX4_CPU_HOTPLUG_IO_BASE;
+         pm->pcihp_io_base =3D
+             object_property_get_uint(obj, ACPI_PCIHP_IO_BASE_PROP, NULL)=
+;
+@@ -146,7 +145,6 @@ static void acpi_get_pm_info(AcpiPmInfo *pm)
+             object_property_get_uint(obj, ACPI_PCIHP_IO_LEN_PROP, NULL);
+     }
+     if (lpc) {
+-        obj =3D lpc;
+         pm->cpu_hp_io_base =3D ICH9_CPU_HOTPLUG_IO_BASE;
+     }
+     assert(obj);
+--=20
+2.7.4
 
-I will test it once it hits the trunk!
-
-Yours,
-Linus Walleij

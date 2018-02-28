@@ -1,90 +1,101 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp7180808wrq;
-        Thu, 28 Jun 2018 02:04:38 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpcvXzZAzU/LkWpu2pjpmdrEk5/FmEog1MMFxbUdJ04lqUJf+8EpfVtOIhIVg7J/E/WajbkE
-X-Received: by 2002:a0c:e987:: with SMTP id z7-v6mr8320471qvn.202.1530176678301;
-        Thu, 28 Jun 2018 02:04:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530176678; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp983773wmb;
+        Wed, 28 Feb 2018 11:31:46 -0800 (PST)
+X-Google-Smtp-Source: AH8x224IJjR5EGD1gDK4Lr92HrbQpASLmOuvE+gxcPhc/fyDrQgg/j+vqEVqrWakLfrArtpDGJyH
+X-Received: by 10.13.192.196 with SMTP id b187mr12809012ywd.415.1519846306498;
+        Wed, 28 Feb 2018 11:31:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519846306; cv=none;
         d=google.com; s=arc-20160816;
-        b=Sq1iMcj3p6HIBPPALvePBV78TZaFdT19C2BxxeaV5wJoOp6I7L/MwzYEBaERSZvOb8
-         fYOszaDJ7VeRGqFZdNhivLQaxzzRy2MUuZWplpN0dyZGfeTwJenEJ7uOyBdsEbGaDWzQ
-         kMR6ERYMAaS6AZWqZmF6Ws0sBPToeDhhVRSVi/7H9wrpc/mG6juwYZPWrXnwr+ONiGdM
-         DmACk7+VORamSxQacT7GtGoj5dcbBQHBfodDwDe6KZXe8U8nf3UK4x/20BgA2P3n7phO
-         qF6BoXFrh7XZpyAXVJIO24BIt5UXmyT9oFB1xhf1+3Zye4JMpahHnYFhmSVxva+YiC8c
-         VMtg==
+        b=I9v7RsGEaAFzGouBr90fw2+RofrTGgEjx5GTlNr59CVd1Gh7hIPqa7OK6K277XZTrp
+         e6aVM+niBBm9MoxunFbKkwFxtQnxz9ewdcLKRqxiqWYxLO5iTdTSVJywiQtzi20bQ3MX
+         Mz0fVtoLbFM76qnTeVdXtjfJD99M3TQMEDIA5DRdwA0TDkSTSVeTKewtQzd66qNL4MrT
+         LiZfD99D4XjeMh9bVwv2uQMTNGYmbvwbLurxzoqXGZhOq3sGSpoIEe03PaVjAOsRCBbX
+         iuzilCOZyxz8Rl0g3O+3HDDFOi37PSn00XLyXhbqLD+C6sI3wkxGn43i2/Y25pbNvnGJ
+         DQYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :arc-authentication-results;
-        bh=bYcFr+1tqQfIbVyu/55khTLRcIu9tp0UJJT54vple9M=;
-        b=o2ugm02QJ5C6+6PTDayHK1A8gfD1sgiOk+wv96Oiwit6NNnw040ndI2P1Xjw8MFdFW
-         XcHztoa9ddQYA75uzLXexrDbcLQxEMQ5wDlR+3gXrzh5ggTpK5Vnp4XpEh+kAkkfIFRn
-         DscpQifc7uYRCMMmowSY6A41DnjN4DEZP1SoDBUI+hNdqa7dw9Dtpu8UZe4Gw2mWZ1ok
-         QkLyMvZ6vDJANu5CnMAo+QEekGgwaPgkaFMmFhaFivwvz1/44RCzgBK8P0CE7jLTTdT4
-         tFapjmoGkeRtbR2+4PaQr8pXxWFHQ08kIPF22WbHkw/S7oOHF7lXIgzbQ0+U4z3EqoCH
-         Ha7g==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=C+LBVsUbMAmUMQMRRDna4m9qepUMTuzHPuMIaSfKS6Q=;
+        b=HVLxc78nsjIc2+TYRfE5rTs2dhvCxXr9kakKAKCtxUxiMV/3ekHnx6ix2MOdZSn7a2
+         K+KH4b+syRRtziGP/Y375/IH13enBqZ74gjHzSYp7lfErBZBk3tvn9w4gYPAK74ksB/U
+         qGuJdPjXfNfuqOYQr5+kJ7qUZV90wot05I2W5druhjq7fVYqCXRYA78RJfS50AqZoQSg
+         Iv9aYU9/K4F3xe6hRquXyNWXeVffNsNXlfJq6vGSbNnUPcMCqE0z12OueesSxkf8wsXF
+         pdNtmfeIZysZE4zIk4OisLdysXxkeg7sGafF5X6L+CKHpOTjALNyMZjG2x3vOb2m2syK
+         MoPQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@linaro.org header.s=google header.b=kWbd+GJ9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q97-v6si2372042qkq.350.2018.06.28.02.04.38
+        by mx.google.com with ESMTPS id o9-v6si365296ybk.791.2018.02.28.11.31.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Jun 2018 02:04:38 -0700 (PDT)
+        Wed, 28 Feb 2018 11:31:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35151 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=kWbd+GJ9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:46402 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fYSqz-0001zt-T3
-	for alex.bennee@linaro.org; Thu, 28 Jun 2018 05:04:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43172)
+	id 1er7S5-0003Fj-SS
+	for alex.bennee@linaro.org; Wed, 28 Feb 2018 14:31:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35408)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1fYSqn-0001zU-NC
-	for qemu-arm@nongnu.org; Thu, 28 Jun 2018 05:04:31 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1er7Rs-0003FF-ML
+	for qemu-arm@nongnu.org; Wed, 28 Feb 2018 14:31:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1fYSqi-0004EF-Cf
-	for qemu-arm@nongnu.org; Thu, 28 Jun 2018 05:04:25 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:35012 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1fYSqi-0004DU-4a; Thu, 28 Jun 2018 05:04:20 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E354B738E0;
-	Thu, 28 Jun 2018 09:04:18 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id E4147213ED6A;
-	Thu, 28 Jun 2018 09:04:17 +0000 (UTC)
-Date: Thu, 28 Jun 2018 11:04:15 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Hongbo Zhang <hongbo.zhang@linaro.org>
-Message-ID: <20180628090415.lysdgq66x5kkgq3x@kamzik.brq.redhat.com>
-References: <1530094388-607-1-git-send-email-hongbo.zhang@linaro.org>
-	<20180627165616.34d36aaf@redhat.com>
-	<CAHmQWvDAHmDvamC8tUF8JbLjbssAax+5Hza6S+w_go=YbM4wDA@mail.gmail.com>
+	(envelope-from <richard.henderson@linaro.org>) id 1er7Ro-0006DV-Oh
+	for qemu-arm@nongnu.org; Wed, 28 Feb 2018 14:31:32 -0500
+Received: from mail-pf0-x244.google.com ([2607:f8b0:400e:c00::244]:42877)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1er7Ro-0006D5-JA
+	for qemu-arm@nongnu.org; Wed, 28 Feb 2018 14:31:28 -0500
+Received: by mail-pf0-x244.google.com with SMTP id a16so1409158pfn.9
+	for <qemu-arm@nongnu.org>; Wed, 28 Feb 2018 11:31:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=C+LBVsUbMAmUMQMRRDna4m9qepUMTuzHPuMIaSfKS6Q=;
+	b=kWbd+GJ9qbhiPKU+X7KA85YM4axGkmE+CxENp7VmgEFCzkEn8A+f/Jv9B/XoD6+c5C
+	7iGowi+v1ysIWUgFTCdeWaaFzFMgTcyh3XOFRLt/UVLphfnUdhUyemi4CSQZs39xJ/h6
+	+NEGEPH9GfWNJDld1Z8mV3m42sm5HvyNwzENY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=C+LBVsUbMAmUMQMRRDna4m9qepUMTuzHPuMIaSfKS6Q=;
+	b=Hd6gmpAZHa+j1UOa2OIQB32cSHx8OdsLy45mtg9uunyfGKEyDbBpdDB9ZZ+aR02yc6
+	fSsVg3q/qC2vlnSrkbrdUZj10w4aLJq0LbSMeC/laijPUJip7IyLRxKUwb3iffS8la49
+	0ca8DOjnfY9+l6vE39T0qw5pQTILgM6qw5T04V0KhEnurmJwWNI6BT8iSxF4o1haw7lX
+	jY5VzdvbWRMLOC+Furvf1lgssyxaHCxdT+MVgDHgt1IRljpH4b9DbYfxpMVXvsvOuJPI
+	2TWOhRSzTDSL3JfEGnlyTdTK2US8upXkEpQR8MpqZSYf4wu0oUwau0sVWmRYFVZqQSDH
+	Y9Pg==
+X-Gm-Message-State: APf1xPCoehLHferjE9gg+ZxXHPDnqpre7WyX/z1J4Ccy1IHjAjjjb1HA
+	bMXEep/Y0qCZgDEN8BvzwTYTrQ==
+X-Received: by 10.98.70.198 with SMTP id o67mr18611338pfi.173.1519846287315;
+	Wed, 28 Feb 2018 11:31:27 -0800 (PST)
+Received: from cloudburst.twiddle.net (97-113-169-147.tukw.qwest.net.
+	[97.113.169.147]) by smtp.gmail.com with ESMTPSA id
+	k185sm4200212pgk.94.2018.02.28.11.31.25
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Wed, 28 Feb 2018 11:31:26 -0800 (PST)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Wed, 28 Feb 2018 11:31:09 -0800
+Message-Id: <20180228193125.20577-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.14.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAHmQWvDAHmDvamC8tUF8JbLjbssAax+5Hza6S+w_go=YbM4wDA@mail.gmail.com>
-User-Agent: NeoMutt/20180622
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.1]);
-	Thu, 28 Jun 2018 09:04:18 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
-	Thu, 28 Jun 2018 09:04:18 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'drjones@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/arm: Add SBSA machine type
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c00::244
+Subject: [Qemu-arm] [PATCH v3 00/16] ARM v8.1 simd + v8.3 complex insns
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,167 +107,51 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Igor Mammedov <imammedo@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Q/TlY7SmoAAr
+X-TUID: l8J7jV7RKRmG
 
-On Thu, Jun 28, 2018 at 04:11:56PM +0800, Hongbo Zhang wrote:
-> On 27 June 2018 at 22:56, Igor Mammedov <imammedo@redhat.com> wrote:
-> > On Wed, 27 Jun 2018 18:13:08 +0800
-> > Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
-> >
-> >> This patch introduces a new Arm machine type 'SBSA' with features:
-> >>  - Based on legacy 'virt' machine type.
-> >>  - Newly designed memory map.
-> >>  - EL2 and EL3 are enabled by default.
-> >>  - AHCI controller attached to system bus, and then CDROM and hard disc
-> >>    can be added to it.
-> >>  - EHCI controller attached to system bus, with USB mouse and key board
-> >>    installed by default.
-> >>  - E1000 ethernet card on PCIE bus.
-> >>  - VGA display adaptor on PCIE bus.
-> >>  - Default CPU type cortex-a57, 4 cores, and 1G bytes memory.
-> >>  - No virtio functions enabled, since this is to emulate real hardware.
-> > I'd drop all default (convenience) devices unless they are specified in SBSA,
-> > and make management explicitly provide needed devices on CLI.
-> >
-> Thanks for review.
-> 
-> I mentioned these default values because they are different from the
-> 'virt' machine from which this sbsa machine derives. (sbsa has uart
-> too, it is same with 'virt' PL011).
-> Qemu implementation should has such default values, if the sbsa
-> machine does not offer them, they fallback to the parent machine's.
+I believe I've incorporated all of Peter's feedback from v2.
+This is based on target-arm.next, which now contains Alex's fp16 work.
 
-QEMU's default devices is one of the problems with QEMU. Any serious
-use of QEMU must be done with '-nodefaults' and then explicit devices.
-To avoid requiring long command lines QEMU supports '-readconfig'. We
-already have two mach-virt configs that can be used as a basis for a
-new SBSA config. See docs/config/mach-virt-graphical.cfg and
-docs/config/mach-virt-serial.cfg.
+Re-tested our standard aarch64 risu tests with -cpu cortex-a57,
+and against the new risu tests I posted this morning for aa64 and aa32.
 
-> The parent 'virt' machine's default cpu type is cortext-a15, that is
-> not proper for a armv8 server, and its default memory is 128M, that is
-> not enough to load uefi, even 512M cannot either, so I set the sbsa
-> defualt minimal memory to 1G.
 
-config files support setting a memory size, but unfortunately not the
-CPU type. I'm not sure why it doesn't. Maybe readconfig can be taught
-to do so?
+r~
 
-> 
-> The core numbers, is a new default. Server is smp in common sense,
-> single core isn't like a server, so some even want to set to max
-> capability as default, but this isn't good either I think, because
-> gicv3 memory space in Qemu can even support more than 200 cores, that
-> is too much.
 
-Core numbers can be managed with config
-[smp-opts]
-  cpus = "4"
+Richard Henderson (16):
+  target/arm: Add ARM_FEATURE_V8_RDM
+  target/arm: Refactor disas_simd_indexed decode
+  target/arm: Refactor disas_simd_indexed size checks
+  target/arm: Decode aa64 armv8.1 scalar three same extra
+  target/arm: Decode aa64 armv8.1 three same extra
+  target/arm: Decode aa64 armv8.1 scalar/vector x indexed element
+  target/arm: Decode aa32 armv8.1 three same
+  target/arm: Decode aa32 armv8.1 two reg and a scalar
+  target/arm: Enable ARM_FEATURE_V8_RDM
+  target/arm: Add ARM_FEATURE_V8_FCMA
+  target/arm: Decode aa64 armv8.3 fcadd
+  target/arm: Decode aa64 armv8.3 fcmla
+  target/arm: Decode aa32 armv8.3 3-same
+  target/arm: Decode aa32 armv8.3 2-reg-index
+  target/arm: Decode t32 simd 3reg and 2reg_scalar extension
+  target/arm: Enable ARM_FEATURE_V8_FCMA
 
-> (gicv2 currently support 8 cores, but there are issues to boot smp for
-> both gicv2 and gicv3 now, it should be another thread)
-> 
-> >>
-> >> This is the prototype, more features can be added in futrue.
-> >>
-> >> Purpose of this is to have a standard QEMU platform for Arm firmware
-> >> developement etc. where the legacy machines cannot meets requirements.
-> >>
-> >> Arm Trusted Firmware and UEFI porting to this are done seperately.
-> >>
-> >> Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
-> >> ---
-> > [...]
-> >
-> >> @@ -94,6 +98,8 @@
-> >>
-> >>  #define PLATFORM_BUS_NUM_IRQS 64
-> >>
-> >> +#define SATA_NUM_PORTS 6
-> >> +
-> >>  /* RAM limit in GB. Since VIRT_MEM starts at the 1GB mark, this means
-> >>   * RAM can go up to the 256GB mark, leaving 256GB of the physical
-> >>   * address space unallocated and free for future use between 256G and 512G.
-> >> @@ -168,6 +174,47 @@ static const int a15irqmap[] = {
-> >>      [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
-> >>  };
-> >>
-> >> +static const MemMapEntry sbsa_memmap[] = {
-> >> +    /* Space up to 0x8000000 is reserved for a boot ROM */
-> >> +    [VIRT_FLASH] =              {          0, 0x08000000 },
-> >> +    [VIRT_CPUPERIPHS] =         { 0x08000000, 0x00020000 },
-> >> +    /* GIC distributor and CPU interfaces sit inside the CPU peripheral space */
-> >> +    [VIRT_GIC_DIST] =           { 0x08000000, 0x00010000 },
-> >> +    [VIRT_GIC_CPU] =            { 0x08010000, 0x00010000 },
-> >> +    [VIRT_GIC_V2M] =            { 0x08020000, 0x00001000 },
-> >> +    /* The space in between here is reserved for GICv3 CPU/vCPU/HYP */
-> >> +    [VIRT_GIC_ITS] =            { 0x08080000, 0x00020000 },
-> >> +    /* This redistributor space allows up to 2*64kB*123 CPUs */
-> >> +    [VIRT_GIC_REDIST] =         { 0x080A0000, 0x00F60000 },
-> >> +    [VIRT_UART] =               { 0x09000000, 0x00001000 },
-> >> +    [VIRT_RTC] =                { 0x09010000, 0x00001000 },
-> >> +    [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
-> >> +    [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
-> >> +    [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
-> >> +    [VIRT_AHCI] =               { 0x09050000, 0x00010000 },
-> >> +    [VIRT_EHCI] =               { 0x09060000, 0x00010000 },
-> >> +    [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
-> >> +    [VIRT_SECURE_MEM] =         { 0x0e000000, 0x01000000 },
-> >> +    [VIRT_PCIE_MMIO] =          { 0x10000000, 0x7fff0000 },
-> >> +    [VIRT_PCIE_PIO] =           { 0x8fff0000, 0x00010000 },
-> >> +    [VIRT_PCIE_ECAM] =          { 0x90000000, 0x10000000 },
-> >> +    /* Second PCIe window, 508GB wide at the 4GB boundary */
-> >> +    [VIRT_PCIE_MMIO_HIGH] =     { 0x100000000ULL, 0x7F00000000ULL },
-> >> +    [VIRT_MEM] =                { 0x8000000000ULL, RAMLIMIT_BYTES },
-> > does spec require support for 32-bit guest or is it only 64bit,
-> > if the later I'd put it somewhere high where we can increase region
-> > to terrabytes.
-> >
-> Spec only requires it to be compliant with armv8.
-> Designed purpose of this is to run 64bit guests, because in practice
-> an arm server is usually 64bit.
+ target/arm/cpu.h           |   2 +
+ target/arm/helper.h        |  31 +++
+ linux-user/elfload.c       |   2 +
+ target/arm/cpu.c           |   2 +
+ target/arm/cpu64.c         |   2 +
+ target/arm/translate-a64.c | 514 ++++++++++++++++++++++++++++++++++++---------
+ target/arm/translate.c     | 275 +++++++++++++++++++++---
+ target/arm/vec_helper.c    | 429 +++++++++++++++++++++++++++++++++++++
+ target/arm/Makefile.objs   |   2 +-
+ 9 files changed, 1133 insertions(+), 126 deletions(-)
+ create mode 100644 target/arm/vec_helper.c
 
-I agree with Igor that if we're going to add a new machine type that is
-only for 64bit, then we shouldn't base our memory map on mach-virt's,
-but rather create a new one taking advantage of a much larger address
-space. Firmware would need to start taking the base of RAM from the
-DTB, and the address of the DTB from x0, but it probably should anyway.
+-- 
+2.14.3
 
-> 
-> > another idea that was floating around (considering we don't care about legacy)
-> > is to use flexible base address and tell firmware[*] via register where it's.
-> > Then it would be able to support 32 guest with small amount of RAM
-> > and 64 bit guests with huge amount of RAM using a single memory range.
-> > (to keep memory management simple). It's also future friendly, as in case
-> > if we need to move it we could do easily by changing base address for new machine
-> > type only and firmware would automatically pick it up from register
-> > (without all compat nightmare we have with 2 regions in pc/q35 machines).
-> >
-> > [*] When I've talked with Laszlo about it he said it was not easy to do in uefi
-> > but still possible.
-> Sounds not easy.
-> I think the first step is to get this merged, and then we can add more
-> features if necessary.
-> I've already seen some points in trusted firmware and uefi need to be fixed.
-
-It sounds to me like the current mach-virt machine type, with an SBSA
-readconfig file would be sufficient for now, and that we should only
-merge a new machine type when firmware supports a dynamic RAM base,
-allowing the new machine type to have quite a different memory map.
-
-> 
-> >
-> > same applies to GIG regions/mmio/ecam where we are twisting our hands when trying to
-> > increase number of things.
-> >
-> > [...]
-> >
->
-
-Thanks,
-drew 

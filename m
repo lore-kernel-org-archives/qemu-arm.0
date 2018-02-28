@@ -1,469 +1,133 @@
-Received: by 10.28.91.67 with SMTP id p64csp674476wmb;
-        Wed, 28 Feb 2018 06:30:47 -0800 (PST)
-X-Google-Smtp-Source: AG47ELsbodp2xepJZf+vazOi+7Fk/XOAz2N0kuBvGdU6lvkyyg9N8P7nbExtWSRV5k8qCdLxav3o
-X-Received: by 10.13.251.130 with SMTP id l124mr12242084ywf.205.1519828247894;
-        Wed, 28 Feb 2018 06:30:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519828247; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp819821wmb;
+        Wed, 28 Feb 2018 08:48:42 -0800 (PST)
+X-Google-Smtp-Source: AG47ELtYcG92J3fI/OeUU68PY0UrEjFgoBnteL0Jx5GIbZQbc4EDLXtnAZByppvoPluQfwKYeHSJ
+X-Received: by 2002:a25:8806:: with SMTP id c6-v6mr3932500ybl.238.1519836522338;
+        Wed, 28 Feb 2018 08:48:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519836522; cv=none;
         d=google.com; s=arc-20160816;
-        b=kU5YXlsL6RgVOD8pio2N5Go6G5hbLBpk3i4WXbU2kENX4ZohW7UbGnyswT4poSdzSP
-         kdhSHVUP5blSOlTGjDX2+IyhJ346di8X10IrY55lSz7ZSA2kkU8pKWCvpEajd3ZcRWIy
-         8v+HoOP/IMhltVDGYCuZfYKhZOxMhiMuOWbxL/Dbxj10FN6Hm53qH3/JA5o1sfz12Q6k
-         uBTrvAKLhrEA/It4G1ezBR3aXgjiKAgELDGDWVIpEpMpSNzC3xZmt/xHKA0c8obNBhN7
-         nvS3XF9XuY87hDUK9MWOePW4EEIIHmZ4ddTfsnkAto4EQGaCI9DEAxpJbzynH7vboxyW
-         PiFA==
+        b=GE+z7KsQx+1GACNEpb50F28xyY/bPlMek5sGYnoAZiEJNF/wpth/K+YcRQ2CCupjsg
+         l6PchDpL7qJDXAJC9GY5/oZ4gkziJa+GyXOdDnELhJBZAetPjHnZthWkj9E13nzM+cb/
+         HpShxdQzhefVWIOz+ZIealyKebk6NREjaneuE+u7WA/ojqnxWtnMgvbx0ZKHH+O23OUi
+         P+yxAUHWMLrzseufPt8sND0OmJSYommSlT5NX+AF/04cCGOdmZJd3w8gM49D/Hgf9lYj
+         Tg4oDSvSZR4zKD3Q9iz+TGgS/vU1qUrm78Q7heh6pzj+KJ3/XBeFAT2GqBp2SWOLVhy3
+         GdfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=RFVO1CmbSeM4Rmhw0jMKAhE8zYL+VPAQbkJIM0jFIzI=;
-        b=slH9suHfuUGig5RnGh6AmKN5IobWDc3Ah98rWHu7uLZWJrJxaSZ01klwsUpLw9J1ZZ
-         c9usp72x8kzu/4vbBnqTcgvhbRzNA0k7u23sws/ng6qn6J2/a3+ddgfoqda4r/b4LxeA
-         8yT6ANP36+KuY3vGuAfMLYGauL3UCkijlUB8cKBENI4tx/CYc0IcDVTf0M5cRCfEnxv2
-         wT3gOtXJDge8LkBSSh6D0j55sShvOu5JsQ8o/okqpEsaGpIqcxdjRL0s0/gAGegP7KAc
-         vgcp9FNnJ6vSj9ozZQavUdyEC0qNt4gqgzUVStnXfe4pqy5CNau1k8Zs/IPJFyG/nEJm
-         uWeg==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=Ikd4yfm9Om4MC+SXJvg6wkAJLhmDC/ivc4uftczw75g=;
+        b=SKUQXQoMkX/FcqSlfElh/7LsvsIDUr/87v6EfUAxPc0sp3A1SnPfFbbZ4QUflEsQZF
+         E/dbfXLArlTbV84cnI7tAfUwNXHSbCQaF34NKc02SdgnGYy30Qtyjc0ofJfnmxCFNitU
+         9SqMBqSJb6ZsdoNaJcqqQChKKRSYzflykkvh5ciG4VMFmP6/HGlgBayTfTGEEWXHaGoC
+         24A/jJGjsDAL7NLRBbMLwowhlaNI+7NJzYe/FDtrNrEhI7on6h8vKZmp0bNG9TzXH1bn
+         1rId1HJcnmY/OqKr86M2spRG8CuO6keSTgKEcmJFO0GBUtkzgFFFvCZzX+OkAO9OiM9D
+         0TTA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=Bnx5MbfM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v18-v6si284452ybm.559.2018.02.28.06.30.47
+        by mx.google.com with ESMTPS id g64si329708ywb.342.2018.02.28.08.48.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 28 Feb 2018 06:30:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 28 Feb 2018 08:48:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44638 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=Bnx5MbfM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45501 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1er2kp-0000P4-5i
-	for alex.bennee@linaro.org; Wed, 28 Feb 2018 09:30:47 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33748)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1er4uH-0000ge-QF
+	for alex.bennee@linaro.org; Wed, 28 Feb 2018 11:48:41 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46075)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1er2fw-0004yR-3i
-	for qemu-devel@nongnu.org; Wed, 28 Feb 2018 09:25:48 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1er4u0-0000fm-AR
+	for qemu-arm@nongnu.org; Wed, 28 Feb 2018 11:48:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1er2ft-00021d-56
-	for qemu-devel@nongnu.org; Wed, 28 Feb 2018 09:25:44 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:37546 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1er2fg-0001v2-9Y; Wed, 28 Feb 2018 09:25:28 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E0A0C40FB647;
-	Wed, 28 Feb 2018 14:25:27 +0000 (UTC)
-Received: from dell-r430-03.lab.eng.brq.redhat.com
-	(dell-r430-03.lab.eng.brq.redhat.com [10.37.153.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 0FEF3946B7;
-	Wed, 28 Feb 2018 14:25:26 +0000 (UTC)
-From: Igor Mammedov <imammedo@redhat.com>
+	(envelope-from <richard.henderson@linaro.org>) id 1er4tx-000717-68
+	for qemu-arm@nongnu.org; Wed, 28 Feb 2018 11:48:24 -0500
+Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:35225)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1er4tw-0006zU-V0
+	for qemu-arm@nongnu.org; Wed, 28 Feb 2018 11:48:21 -0500
+Received: by mail-pf0-x241.google.com with SMTP id y186so1225465pfb.2
+	for <qemu-arm@nongnu.org>; Wed, 28 Feb 2018 08:48:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id;
+	bh=Ikd4yfm9Om4MC+SXJvg6wkAJLhmDC/ivc4uftczw75g=;
+	b=Bnx5MbfMj+/10mVHdQzljhd7VdP1ba8cVJRaa4/fGr1+Biym9VLooDnoDksKr8gR2i
+	DsssWFWQ7+WRI77ge+Ey8/RJhlMBDF4nPbuZVdMW8dv5EVPqcDiZQuvT6cJbCf78TEAs
+	u2ebWVhYJebhLi8UOJYerP4ABWRCKqmNlwih8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=Ikd4yfm9Om4MC+SXJvg6wkAJLhmDC/ivc4uftczw75g=;
+	b=kaCWjc0LcEYz4fXLYBIdXETKZUwx3wHqmltEsh/B6NU2r8eN9qBLxjWYLn0DGBaiif
+	4AeSxuVTQp1J1Th2Tg1SDKihJ64jduhO7m1J1FZWy3zV/EUoUaHj9+eXjzH71nsG7AN2
+	BNVrMO7PUSkv39zXOIelQRUuahajwD2ndubjVksupJ6S+6X6lYIbY8TPSU/L4+k7m8WK
+	r8IfbY0kzojBSh21D2yRXFO3If+x9WYCjqYas+0TAOM+JKwiKXV/4rJXuQ7x6bCJSkKZ
+	5wA6FkuUeO2oZSmxwQkeKMoTEPTwSona2CsSQn/cm57ZvNoMw1jdxSXLwuUHP9yuLitT
+	re7A==
+X-Gm-Message-State: APf1xPATmIQbCRszEel/ALjA5D+mL0GubWZ6HwChEX3t++TWgpI0NG+P
+	Zupg1M3tMODEJxy2OYvPl+snsg==
+X-Received: by 10.99.114.80 with SMTP id c16mr14723720pgn.436.1519836498954;
+	Wed, 28 Feb 2018 08:48:18 -0800 (PST)
+Received: from cloudburst.twiddle.net (97-113-169-147.tukw.qwest.net.
+	[97.113.169.147])
+	by smtp.gmail.com with ESMTPSA id p9sm4123698pgs.89.2018.02.28.08.48.16
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Wed, 28 Feb 2018 08:48:17 -0800 (PST)
+From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Wed, 28 Feb 2018 15:23:51 +0100
-Message-Id: <1519827835-239519-7-git-send-email-imammedo@redhat.com>
-In-Reply-To: <1519827835-239519-1-git-send-email-imammedo@redhat.com>
-References: <1519827835-239519-1-git-send-email-imammedo@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Wed, 28 Feb 2018 14:25:27 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Wed, 28 Feb 2018 14:25:27 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'imammedo@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-devel] [PATCH v2 06/10] pc: acpi: isolate FADT specific data
- into AcpiFadtData structure
-X-BeenThere: qemu-devel@nongnu.org
+Date: Wed, 28 Feb 2018 08:48:12 -0800
+Message-Id: <20180228164816.24110-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.14.3
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c00::241
+Subject: [Qemu-arm] [RISU 0/3] ARM additions for v8.1-simd and v8.3-compnum
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Auger Eric <eric.auger@redhat.com>, Shannon Zhao <zhaoshenglong@huawei.com>,
-	qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: l1QMExkxhQcV
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +3kieGPFdQYN
 
-move FADT data initialization out of fadt_setup() into dedicated
-init_fadt_data() that will set common for pc/q35 values in
-AcpiFadtData structure and acpi_get_pm_info() will complement
-it with pc/q35 specific values initialization.
+I've rebased these onto master.  There don't seem to be any
+consistent examples of how extensions are to be named in this
+new group-enabled world, but it's my opinion that the bike
+shed should be green.
 
-That will allow to get rid of fadt_setup() and generalize
-build_fadt() so it could be easily extended for rev5 and
-reused by ARM target.
+Since fp16 support is not yet present on the AArch32 side,
+I have disabled generation of those instructions here.
 
-While at it also move facs/dsdt/xdsdt offsets from build_fadt()
-arg list into AcpiFadtData, as they belong to the same dataset.
 
-Signed-off-by: Igor Mammedov <imammedo@redhat.com>
----
-v2:
-changes requested by Auger Eric <eric.auger@redhat.com>
-  - s/pm1_/pm1a_/
-  - s/c2_latency/plvl2_lat/
-  - s/c3_latency/plvl3_lat/
-  - cleanup ACPI_PORT_SMI_CMD TODO, move  it to hw/isa/apm.h
-  - move
-       if (f->facs_tbl_offset) / if (f->dsdt_tbl_offset)
-           bios_linker_loader_add_pointer(...)
-    into the patch that makes build_fadt() generic
----
- include/hw/acpi/acpi-defs.h |  28 +++++++
- hw/i386/acpi-build.c        | 190 ++++++++++++++++++++++++--------------------
- 2 files changed, 130 insertions(+), 88 deletions(-)
+r~
 
-diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-index 9942bc5..3fb0ace 100644
---- a/include/hw/acpi/acpi-defs.h
-+++ b/include/hw/acpi/acpi-defs.h
-@@ -175,6 +175,34 @@ struct AcpiFadtDescriptorRev5_1 {
- 
- typedef struct AcpiFadtDescriptorRev5_1 AcpiFadtDescriptorRev5_1;
- 
-+typedef struct AcpiFadtData {
-+    struct AcpiGenericAddress pm1a_cnt;   /* PM1a_CNT_BLK */
-+    struct AcpiGenericAddress pm1a_evt;   /* PM1a_EVT_BLK */
-+    struct AcpiGenericAddress pm_tmr;    /* PM_TMR_BLK */
-+    struct AcpiGenericAddress gpe0_blk;  /* GPE0_BLK */
-+    struct AcpiGenericAddress reset_reg; /* RESET_REG */
-+    uint8_t reset_val;         /* RESET_VALUE */
-+    uint8_t  rev;              /* Revision */
-+    uint32_t flags;            /* Flags */
-+    uint32_t smi_cmd;          /* SMI_CMD */
-+    uint16_t sci_int;          /* SCI_INT */
-+    uint8_t  int_model;        /* INT_MODEL */
-+    uint8_t  acpi_enable_cmd;  /* ACPI_ENABLE */
-+    uint8_t  acpi_disable_cmd; /* ACPI_DISABLE */
-+    uint8_t  rtc_century;      /* CENTURY */
-+    uint16_t plvl2_lat;        /* P_LVL2_LAT */
-+    uint16_t plvl3_lat;        /* P_LVL3_LAT */
-+
-+    /*
-+     * respective tables offsets within ACPI_BUILD_TABLE_FILE,
-+     * NULL if table doesn't exist (in that case field's value
-+     * won't be patched by linker and will be kept set to 0)
-+     */
-+    unsigned *facs_tbl_offset; /* FACS offset in */
-+    unsigned *dsdt_tbl_offset;
-+    unsigned *xdsdt_tbl_offset;
-+} AcpiFadtData;
-+
- #define ACPI_FADT_ARM_PSCI_COMPLIANT  (1 << 0)
- #define ACPI_FADT_ARM_PSCI_USE_HVC    (1 << 1)
- 
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 699f3a0..1f88ed1 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -91,17 +91,11 @@ typedef struct AcpiMcfgInfo {
- } AcpiMcfgInfo;
- 
- typedef struct AcpiPmInfo {
--    bool force_rev1_fadt;
-     bool s3_disabled;
-     bool s4_disabled;
-     bool pcihp_bridge_en;
-     uint8_t s4_val;
--    uint16_t sci_int;
--    uint8_t acpi_enable_cmd;
--    uint8_t acpi_disable_cmd;
--    uint32_t gpe0_blk;
--    uint32_t gpe0_blk_len;
--    uint32_t io_base;
-+    AcpiFadtData fadt;
-     uint16_t cpu_hp_io_base;
-     uint16_t pcihp_io_base;
-     uint16_t pcihp_io_len;
-@@ -124,20 +118,59 @@ typedef struct AcpiBuildPciBusHotplugState {
-     bool pcihp_bridge_en;
- } AcpiBuildPciBusHotplugState;
- 
-+static void init_common_fadt_data(Object *o, AcpiFadtData *data)
-+{
-+    uint32_t io = object_property_get_uint(o, ACPI_PM_PROP_PM_IO_BASE, NULL);
-+    AmlAddressSpace as = AML_AS_SYSTEM_IO;
-+    AcpiFadtData fadt = {
-+        .rev = 3,
-+        .flags =
-+            (1 << ACPI_FADT_F_WBINVD) |
-+            (1 << ACPI_FADT_F_PROC_C1) |
-+            (1 << ACPI_FADT_F_SLP_BUTTON) |
-+            (1 << ACPI_FADT_F_RTC_S4) |
-+            (1 << ACPI_FADT_F_USE_PLATFORM_CLOCK) |
-+            /* APIC destination mode ("Flat Logical") has an upper limit of 8
-+             * CPUs for more than 8 CPUs, "Clustered Logical" mode has to be
-+             * used
-+             */
-+            ((max_cpus > 8) ? (1 << ACPI_FADT_F_FORCE_APIC_CLUSTER_MODEL) : 0),
-+        .int_model = 1 /* Multiple APIC */,
-+        .rtc_century = RTC_CENTURY,
-+        .plvl2_lat = 0xfff /* C2 state not supported */,
-+        .plvl3_lat = 0xfff /* C3 state not supported */,
-+        .smi_cmd = ACPI_PORT_SMI_CMD,
-+        .sci_int = object_property_get_uint(o, ACPI_PM_PROP_SCI_INT, NULL),
-+        .acpi_enable_cmd =
-+            object_property_get_uint(o, ACPI_PM_PROP_ACPI_ENABLE_CMD, NULL),
-+        .acpi_disable_cmd =
-+            object_property_get_uint(o, ACPI_PM_PROP_ACPI_DISABLE_CMD, NULL),
-+        .pm1a_evt = { .space_id = as, .bit_width = 4 * 8, .address = io },
-+        .pm1a_cnt = { .space_id = as, .bit_width = 2 * 8,
-+                      .address = io + 0x04 },
-+        .pm_tmr = { .space_id = as, .bit_width = 4 * 8, .address = io + 0x08 },
-+        .gpe0_blk = { .space_id = as, .bit_width =
-+            object_property_get_uint(o, ACPI_PM_PROP_GPE0_BLK_LEN, NULL) * 8,
-+            .address = object_property_get_uint(o, ACPI_PM_PROP_GPE0_BLK, NULL)
-+        },
-+    };
-+    *data = fadt;
-+}
-+
- static void acpi_get_pm_info(AcpiPmInfo *pm)
- {
-     Object *piix = piix4_pm_find();
-     Object *lpc = ich9_lpc_find();
-     Object *obj = piix ? piix : lpc;
-     QObject *o;
--
--    pm->force_rev1_fadt = false;
-     pm->cpu_hp_io_base = 0;
-     pm->pcihp_io_base = 0;
-     pm->pcihp_io_len = 0;
-+
-+    init_common_fadt_data(obj, &pm->fadt);
-     if (piix) {
-         /* w2k requires FADT(rev1) or it won't boot, keep PC compatible */
--        pm->force_rev1_fadt = true;
-+        pm->fadt.rev = 1;
-         pm->cpu_hp_io_base = PIIX4_CPU_HOTPLUG_IO_BASE;
-         pm->pcihp_io_base =
-             object_property_get_uint(obj, ACPI_PCIHP_IO_BASE_PROP, NULL);
-@@ -145,10 +178,19 @@ static void acpi_get_pm_info(AcpiPmInfo *pm)
-             object_property_get_uint(obj, ACPI_PCIHP_IO_LEN_PROP, NULL);
-     }
-     if (lpc) {
-+        struct AcpiGenericAddress r = { .space_id = AML_AS_SYSTEM_IO,
-+            .bit_width = 8, .address = ICH9_RST_CNT_IOPORT };
-+        pm->fadt.reset_reg = r;
-+        pm->fadt.reset_val = 0xf;
-+        pm->fadt.flags |= 1 << ACPI_FADT_F_RESET_REG_SUP;
-         pm->cpu_hp_io_base = ICH9_CPU_HOTPLUG_IO_BASE;
-     }
-     assert(obj);
- 
-+    /* The above need not be conditional on machine type because the reset port
-+     * happens to be the same on PIIX (pc) and ICH9 (q35). */
-+    QEMU_BUILD_BUG_ON(ICH9_RST_CNT_IOPORT != RCR_IOPORT);
-+
-     /* Fill in optional s3/s4 related properties */
-     o = object_property_get_qobject(obj, ACPI_PM_PROP_S3_DISABLED, NULL);
-     if (o) {
-@@ -172,22 +214,6 @@ static void acpi_get_pm_info(AcpiPmInfo *pm)
-     }
-     qobject_decref(o);
- 
--    /* Fill in mandatory properties */
--    pm->sci_int = object_property_get_uint(obj, ACPI_PM_PROP_SCI_INT, NULL);
--
--    pm->acpi_enable_cmd = object_property_get_uint(obj,
--                                                   ACPI_PM_PROP_ACPI_ENABLE_CMD,
--                                                   NULL);
--    pm->acpi_disable_cmd =
--        object_property_get_uint(obj,
--                                 ACPI_PM_PROP_ACPI_DISABLE_CMD,
--                                 NULL);
--    pm->io_base = object_property_get_uint(obj, ACPI_PM_PROP_PM_IO_BASE,
--                                           NULL);
--    pm->gpe0_blk = object_property_get_uint(obj, ACPI_PM_PROP_GPE0_BLK,
--                                            NULL);
--    pm->gpe0_blk_len = object_property_get_uint(obj, ACPI_PM_PROP_GPE0_BLK_LEN,
--                                                NULL);
-     pm->pcihp_bridge_en =
-         object_property_get_bool(obj, "acpi-pci-hotplug-with-bridge-support",
-                                  NULL);
-@@ -273,73 +299,53 @@ build_facs(GArray *table_data, BIOSLinker *linker)
- }
- 
- /* Load chipset information in FADT */
--static void fadt_setup(AcpiFadtDescriptorRev3 *fadt, AcpiPmInfo *pm)
-+static void fadt_setup(AcpiFadtDescriptorRev3 *fadt, AcpiFadtData f)
- {
--    fadt->model = 1;
-+    fadt->model = f.int_model;
-     fadt->reserved1 = 0;
--    fadt->sci_int = cpu_to_le16(pm->sci_int);
--    fadt->smi_cmd = cpu_to_le32(ACPI_PORT_SMI_CMD);
--    fadt->acpi_enable = pm->acpi_enable_cmd;
--    fadt->acpi_disable = pm->acpi_disable_cmd;
-+    fadt->sci_int = cpu_to_le16(f.sci_int);
-+    fadt->smi_cmd = cpu_to_le32(f.smi_cmd);
-+    fadt->acpi_enable = f.acpi_enable_cmd;
-+    fadt->acpi_disable = f.acpi_disable_cmd;
-     /* EVT, CNT, TMR offset matches hw/acpi/core.c */
--    fadt->pm1a_evt_blk = cpu_to_le32(pm->io_base);
--    fadt->pm1a_cnt_blk = cpu_to_le32(pm->io_base + 0x04);
--    fadt->pm_tmr_blk = cpu_to_le32(pm->io_base + 0x08);
--    fadt->gpe0_blk = cpu_to_le32(pm->gpe0_blk);
-+    fadt->pm1a_evt_blk = cpu_to_le32(f.pm1a_evt.address);
-+    fadt->pm1a_cnt_blk = cpu_to_le32(f.pm1a_cnt.address);
-+    fadt->pm_tmr_blk = cpu_to_le32(f.pm_tmr.address);
-+    fadt->gpe0_blk = cpu_to_le32(f.gpe0_blk.address);
-     /* EVT, CNT, TMR length matches hw/acpi/core.c */
--    fadt->pm1_evt_len = 4;
--    fadt->pm1_cnt_len = 2;
--    fadt->pm_tmr_len = 4;
--    fadt->gpe0_blk_len = pm->gpe0_blk_len;
--    fadt->plvl2_lat = cpu_to_le16(0xfff); /* C2 state not supported */
--    fadt->plvl3_lat = cpu_to_le16(0xfff); /* C3 state not supported */
--    fadt->flags = cpu_to_le32((1 << ACPI_FADT_F_WBINVD) |
--                              (1 << ACPI_FADT_F_PROC_C1) |
--                              (1 << ACPI_FADT_F_SLP_BUTTON) |
--                              (1 << ACPI_FADT_F_RTC_S4));
--    fadt->flags |= cpu_to_le32(1 << ACPI_FADT_F_USE_PLATFORM_CLOCK);
--    /* APIC destination mode ("Flat Logical") has an upper limit of 8 CPUs
--     * For more than 8 CPUs, "Clustered Logical" mode has to be used
--     */
--    if (max_cpus > 8) {
--        fadt->flags |= cpu_to_le32(1 << ACPI_FADT_F_FORCE_APIC_CLUSTER_MODEL);
--    }
--    fadt->century = RTC_CENTURY;
--    if (pm->force_rev1_fadt) {
-+    fadt->pm1_evt_len = f.pm1a_evt.bit_width / 8;
-+    fadt->pm1_cnt_len = f.pm1a_cnt.bit_width / 8;
-+    fadt->pm_tmr_len = f.pm_tmr.bit_width / 8;
-+    fadt->gpe0_blk_len = f.gpe0_blk.bit_width / 8;
-+    fadt->plvl2_lat = cpu_to_le16(f.plvl2_lat);
-+    fadt->plvl3_lat = cpu_to_le16(f.plvl3_lat);
-+    fadt->flags = cpu_to_le32(f.flags);
-+    fadt->century = f.rtc_century;
-+    if (f.rev == 1) {
-         return;
-     }
- 
--    fadt->flags |= cpu_to_le32(1 << ACPI_FADT_F_RESET_REG_SUP);
--    fadt->reset_value = 0xf;
--    fadt->reset_register.space_id = AML_SYSTEM_IO;
--    fadt->reset_register.bit_width = 8;
--    fadt->reset_register.address = cpu_to_le64(ICH9_RST_CNT_IOPORT);
--    /* The above need not be conditional on machine type because the reset port
--     * happens to be the same on PIIX (pc) and ICH9 (q35). */
--    QEMU_BUILD_BUG_ON(ICH9_RST_CNT_IOPORT != RCR_IOPORT);
-+    fadt->reset_value = f.reset_val;
-+    fadt->reset_register = f.reset_reg;
-+    fadt->reset_register.address = cpu_to_le64(f.reset_reg.address);
- 
--    fadt->xpm1a_event_block.space_id = AML_SYSTEM_IO;
--    fadt->xpm1a_event_block.bit_width = fadt->pm1_evt_len * 8;
--    fadt->xpm1a_event_block.address = cpu_to_le64(pm->io_base);
-+    fadt->xpm1a_event_block = f.pm1a_evt;
-+    fadt->xpm1a_event_block.address = cpu_to_le64(f.pm1a_evt.address);
- 
--    fadt->xpm1a_control_block.space_id = AML_SYSTEM_IO;
--    fadt->xpm1a_control_block.bit_width = fadt->pm1_cnt_len * 8;
--    fadt->xpm1a_control_block.address = cpu_to_le64(pm->io_base + 0x4);
-+    fadt->xpm1a_control_block = f.pm1a_cnt;
-+    fadt->xpm1a_control_block.address = cpu_to_le64(f.pm1a_cnt.address);
- 
--    fadt->xpm_timer_block.space_id = AML_SYSTEM_IO;
--    fadt->xpm_timer_block.bit_width = fadt->pm_tmr_len * 8;
--    fadt->xpm_timer_block.address = cpu_to_le64(pm->io_base + 0x8);
-+    fadt->xpm_timer_block = f.pm_tmr;
-+    fadt->xpm_timer_block.address = cpu_to_le64(f.pm_tmr.address);
- 
--    fadt->xgpe0_block.space_id = AML_SYSTEM_IO;
--    fadt->xgpe0_block.bit_width = pm->gpe0_blk_len * 8;
--    fadt->xgpe0_block.address = cpu_to_le64(pm->gpe0_blk);
-+    fadt->xgpe0_block = f.gpe0_blk;
-+    fadt->xgpe0_block.address = cpu_to_le64(f.gpe0_blk.address);
- }
- 
- 
- /* FADT */
- static void
--build_fadt(GArray *table_data, BIOSLinker *linker, AcpiPmInfo *pm,
--           unsigned facs_tbl_offset, unsigned dsdt_tbl_offset,
-+build_fadt(GArray *table_data, BIOSLinker *linker, AcpiFadtData *f,
-            const char *oem_id, const char *oem_table_id)
- {
-     AcpiFadtDescriptorRev3 *fadt = acpi_data_push(table_data, sizeof(*fadt));
-@@ -347,29 +353,29 @@ build_fadt(GArray *table_data, BIOSLinker *linker, AcpiPmInfo *pm,
-     unsigned dsdt_entry_offset = (char *)&fadt->dsdt - table_data->data;
-     unsigned xdsdt_entry_offset = (char *)&fadt->x_dsdt - table_data->data;
-     int fadt_size = sizeof(*fadt);
--    int rev = 3;
- 
-     /* FACS address to be filled by Guest linker */
-     bios_linker_loader_add_pointer(linker,
-         ACPI_BUILD_TABLE_FILE, fw_ctrl_offset, sizeof(fadt->firmware_ctrl),
--        ACPI_BUILD_TABLE_FILE, facs_tbl_offset);
-+        ACPI_BUILD_TABLE_FILE, *f->facs_tbl_offset);
- 
-     /* DSDT address to be filled by Guest linker */
--    fadt_setup(fadt, pm);
-+    fadt_setup(fadt, *f);
-     bios_linker_loader_add_pointer(linker,
-         ACPI_BUILD_TABLE_FILE, dsdt_entry_offset, sizeof(fadt->dsdt),
--        ACPI_BUILD_TABLE_FILE, dsdt_tbl_offset);
--    if (pm->force_rev1_fadt) {
--        rev = 1;
-+        ACPI_BUILD_TABLE_FILE, *f->dsdt_tbl_offset);
-+
-+    if (f->rev == 1) {
-         fadt_size = offsetof(typeof(*fadt), reset_register);
--    } else {
-+    } else if (f->xdsdt_tbl_offset) {
-         bios_linker_loader_add_pointer(linker,
-             ACPI_BUILD_TABLE_FILE, xdsdt_entry_offset, sizeof(fadt->x_dsdt),
--            ACPI_BUILD_TABLE_FILE, dsdt_tbl_offset);
-+            ACPI_BUILD_TABLE_FILE, *f->xdsdt_tbl_offset);
-     }
- 
-     build_header(linker, table_data,
--                 (void *)fadt, "FACP", fadt_size, rev, oem_id, oem_table_id);
-+                (void *)fadt, "FACP", fadt_size, f->rev,
-+                oem_id, oem_table_id);
- }
- 
- void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
-@@ -2049,7 +2055,12 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-     aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
-     crs = aml_resource_template();
-     aml_append(crs,
--        aml_io(AML_DECODE16, pm->gpe0_blk, pm->gpe0_blk, 1, pm->gpe0_blk_len)
-+        aml_io(
-+               AML_DECODE16,
-+               pm->fadt.gpe0_blk.address,
-+               pm->fadt.gpe0_blk.address,
-+               1,
-+               pm->fadt.gpe0_blk.bit_width / 8)
-     );
-     aml_append(dev, aml_name_decl("_CRS", crs));
-     aml_append(scope, dev);
-@@ -2696,7 +2707,10 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
-     /* ACPI tables pointed to by RSDT */
-     fadt = tables_blob->len;
-     acpi_add_table(table_offsets, tables_blob);
--    build_fadt(tables_blob, tables->linker, &pm, facs, dsdt,
-+    pm.fadt.facs_tbl_offset = &facs;
-+    pm.fadt.dsdt_tbl_offset = &dsdt;
-+    pm.fadt.xdsdt_tbl_offset = &dsdt;
-+    build_fadt(tables_blob, tables->linker, &pm.fadt,
-                slic_oem.id, slic_oem.table_id);
-     aml_len += tables_blob->len - fadt;
- 
+
+Richard Henderson (3):
+  Add aa64 sqrdml[as]h
+  Add aa64 fcadd + fcmla
+  Add arm and thumb vqrdml[as]h, vcadd, vcmla
+
+ aarch64.risu | 37 +++++++++++++++++++++++++++++++++++++
+ arm.risu     | 25 +++++++++++++++++++++++++
+ thumb.risu   | 25 +++++++++++++++++++++++++
+ 3 files changed, 87 insertions(+)
+
 -- 
-2.7.4
+2.14.3
 

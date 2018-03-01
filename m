@@ -1,97 +1,97 @@
-Received: by 10.28.91.67 with SMTP id p64csp1893996wmb;
-        Thu, 1 Mar 2018 06:27:50 -0800 (PST)
-X-Google-Smtp-Source: AG47ELsHTPA54y8Bv3qdkP9PvGUFngoIyrxfWYWD8WT8683Y/ZOSNP90S/2nk+8R7ieg7i7ygGgT
-X-Received: by 10.129.146.206 with SMTP id j197mr1180085ywg.199.1519914470366;
-        Thu, 01 Mar 2018 06:27:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519914470; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp1962715wmb;
+        Thu, 1 Mar 2018 07:29:05 -0800 (PST)
+X-Google-Smtp-Source: AG47ELtvGrJlL4cNpVsSOXsasbT2VzokpvTcqHQTIcgZX3pk+kbEvvzBTAT5aT41URL49elfDUtD
+X-Received: by 2002:a25:c693:: with SMTP id k141-v6mr1402434ybf.72.1519918145526;
+        Thu, 01 Mar 2018 07:29:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519918145; cv=none;
         d=google.com; s=arc-20160816;
-        b=wkiGp31hKoHcHwoVjOX1g6oT8ZTto+4Hojq2qbNeVa19kB99tldyPyMSx7KEa9x0OD
-         UhCMGbsAWJFeMt4EqwYgpXZRnHBpXQAND4dc7wGK9l1nwhtSK2ukCC8XsDvkNMtJ5R33
-         Gugyd6+fDQQmlFQNHjKOVDYDiwOXxTy8EVDnOklbbqOPzcZlDMeM8ecSlSpsuG/AHNMC
-         WlQwlqfnR3TjRNTh5dyi9Jp4V3QW6F/a2jiCihDzD1odk4roohjc3Fuw5FI/sJGIv7AP
-         eHBX42yOQaByCHj7jP/xE+P7zxUxpxNY4HZL7k3mYpFAJfnibqbJ24UflKYD6bTvb+6D
-         H1RQ==
+        b=nbSoXyifKU/W79/+PsJaKxVMdgmzqAecaX+mvejfwXEhUEECIG/T4cMoo5Ybb7zrl8
+         BGfaC94wmlOPOLKMGRzrvb/gPLPA9FC7ESnrK+LMT/oFI0Iiz4sPDMhUOY40k/5yT7tL
+         Bbp/VjgQKKiwEsc4eu1QRO2K5Hp8I4jFMIF8j9QMDPgkzMIgPpm19eJzmG8FCJal1oN9
+         Thmq778Jg0fMQ+EIIW+zlZEQg9FVSUkY35JitDm9aht1IoUpyJFVGkeBS+ZGD2VT5/Hr
+         SjzNBT4Y1KHcOiW9RUNLyE+ygnVTSd5nnmq4TSlm/wfhOSpK4NYJeH5IRt/wAqMkZ0vn
+         Il5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=g730AQkHA7N0+UuFOU1QONFlUqY5j+GVB7YJR9XeOcI=;
-        b=voRR1Iv1sjo2o2qWzxtQAUswY5KlDu6WGZnlTC8As/vPKpcrW/+eaSLwVImjSOfmH/
-         3vH5qhcyQ08p4hxUAdJRhlqpjPKfgaxlvd3vkveX0O8jMDHmWiyYBGLjk5QmVeural7f
-         WM06+46qjoulvXP4Tl7gerwLBo+fqEpG7ixJFu+B2CvqWAL3m9oKko58EfGGMgLEsI0L
-         EWQ9Z2zCEB4VSNkAhAn6hrDeKGlYtwcPOhkrR+3IcZHqhNvcFGRmEmQmf7ON2EsxH93d
-         LkaukYHOHQeGiZkxBgJH3ObGSGt+uUntOXEPuH4ryvw9Zmrlg074Wtv3cUJZbIhudZCg
-         0mCw==
+        bh=Vg/EliaITrrT5SjFI4JZSydZ9YMYC5C9K6bOYiF2iFU=;
+        b=kxSgyzSMGCMEVO7ev/36triG4/xZjHG0gOj8Q7ITP2kxGYIqEn9masoez+wrVqLOTc
+         oz6t5UNTfjzgyaNs4qBWuofyRqP/X7wsx1WfOtWiPneos2P2tJBu004NeXXlIGB0pPW7
+         jSpFYl6fy19ulHPCM1ha5L8lt+7q1WA51+msx+3wyWTsHGi+pPuut4F9JF2Maah1JkFI
+         50Nj/VDeZFsKF+pXOhdzNpxohEnLz58z6OKNgoFLprVZtSa1aXrHPeiLYwy1inzCoBev
+         cpVIpzxoAR767aZZPUFgXoNNDJXfAOaiFUAxU+j1jrKaOVMjUvD+tlDPY7s0cFug7u84
+         bsmA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=cL6YvlZS;
+       dkim=fail header.i=@linaro.org header.s=google header.b=IsyljuEf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m124-v6si662887ybb.725.2018.03.01.06.27.50
+        by mx.google.com with ESMTPS id a185si673520ywf.569.2018.03.01.07.29.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 01 Mar 2018 06:27:50 -0800 (PST)
+        Thu, 01 Mar 2018 07:29:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=cL6YvlZS;
+       dkim=fail header.i=@linaro.org header.s=google header.b=IsyljuEf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57292 helo=lists.gnu.org)
+Received: from localhost ([::1]:57580 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1erPBV-0004pA-QP
-	for alex.bennee@linaro.org; Thu, 01 Mar 2018 09:27:49 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32925)
+	id 1erQ8m-0004wq-Ti
+	for alex.bennee@linaro.org; Thu, 01 Mar 2018 10:29:04 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49555)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1erPBN-0004on-IY
-	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 09:27:42 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1erQ8Y-0004vi-OZ
+	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 10:28:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1erPBM-00078O-SR
-	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 09:27:41 -0500
-Received: from mail-oi0-x233.google.com ([2607:f8b0:4003:c06::233]:41164)
+	(envelope-from <peter.maydell@linaro.org>) id 1erQ8X-00021f-IE
+	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 10:28:50 -0500
+Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:44913)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1erPBM-00078F-MO
-	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 09:27:40 -0500
-Received: by mail-oi0-x233.google.com with SMTP id g5so4572436oiy.8
-	for <qemu-arm@nongnu.org>; Thu, 01 Mar 2018 06:27:40 -0800 (PST)
+	id 1erQ8X-00021M-B5
+	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 10:28:49 -0500
+Received: by mail-oi0-x243.google.com with SMTP id b8so4726963oib.11
+	for <qemu-arm@nongnu.org>; Thu, 01 Mar 2018 07:28:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=g730AQkHA7N0+UuFOU1QONFlUqY5j+GVB7YJR9XeOcI=;
-	b=cL6YvlZSTMlaufB40GgdAUd5GAuhzhl9I+A/ljfidygBcOWhFmdeaWouz61fUQ/mZm
-	Ba1jbfnA66KA4XoMXUsU9J1QZHt/QfzVuZQFMjgTv8mBr6d6GY7BLdNDNJpMgsm0PqGw
-	czUesZq2U1hHHN1iqXLjaMusvpZqsxoGEjaW4=
+	:cc; bh=Vg/EliaITrrT5SjFI4JZSydZ9YMYC5C9K6bOYiF2iFU=;
+	b=IsyljuEfh+YPzeObOsz77tJAxYVJC3c0XcuXkiXVIT/l6nAg0q/6hX0OXszxhV8e8d
+	inFyGVFrB8FlBNlx4N8qIap3zUwb1hafUZ2RKKN2n/ZRHWGuOpwvR7+rxFXwasPPl+MC
+	7KCNHJ+9BndadjvEOCuxLe2jofVxIZOQf/jZ0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=g730AQkHA7N0+UuFOU1QONFlUqY5j+GVB7YJR9XeOcI=;
-	b=DavOeoTaz4ocfkyEdkuG3X9Wq1BGEqq8d+n+j4XWg0q7GzqTB/HYlDQte9WWKsLMUi
-	YAyUdorVNcKeHmonjwP06VA0Tn0eKDMf2+J9gTv6ROAa6eRjo6M87gv7D01u7GLkueau
-	aC3qZN+es4ya8YYV/f++mxaCJ3qowyoXvm8vDWrhKdPufhjZeJMdqHdL+R2Pjv3h+HGJ
-	I0tUDowwR7AC3wF3jXzQri/5SWq3gO7I0wvZ9/UE3Dpbq9siZAcfFlNkdUHr+sKrg07o
-	4Uf20UrrS1I/XVU6rsez+i5eRcUJn3pu2lzD/Lbz1W103Ddyk2e5tbn2O/r87wvgJbs1
-	kjtw==
-X-Gm-Message-State: AElRT7HG64JDbK5BfhUgYeSfTjBW/L7UrVdwjFchMGBI1Wh87SgMLzQV
-	gjw6nxjhVR63yomhelJfFDt5AXp2DTRfhuvwkuBjzA==
-X-Received: by 10.202.216.67 with SMTP id p64mr1232433oig.337.1519914459940;
-	Thu, 01 Mar 2018 06:27:39 -0800 (PST)
+	bh=Vg/EliaITrrT5SjFI4JZSydZ9YMYC5C9K6bOYiF2iFU=;
+	b=qx20B+b9k6zNB+MVmIQBDr9LkXSTzYJ14KS6Q1YdqwwBZ2iyl9nLKcqriIdwwt5IQZ
+	Ln7w7mnY1FjykRgbFcFAyqqjlwF7MkYbQGNhgIdfM2Hs8iDLiKmgLqWVnh/6LnzYXYOB
+	WSyBp/2Jb5hDg4/6WW29PLyYl+oOxyvQBlrhVvG3aX5Tgjlvk42rQLVmx5qOi1YhcMcC
+	w1C6hLyCgV1uEGXX8cUZT215xJgTU7pNYbCeFFdy6xs3VKiAio3K92wDTPLrTRlZx9GL
+	ONrdZOuDEcFwnjiynlvQWs4uKuqDchOP2qs7dJMjUwI4c5QnoSAcXZ2j0PdbpAeD+fWT
+	mIqw==
+X-Gm-Message-State: APf1xPCd5gxlWo4NEOAjY7ekrv969aj09LJppGBlQoQk9lub8uiRthN3
+	81R6wI4leSe198lk/7++4iV11cmqiTBS5SxEjuwO61Rh
+X-Received: by 10.202.95.68 with SMTP id t65mr1526012oib.102.1519918128529;
+	Thu, 01 Mar 2018 07:28:48 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.157.33.100 with HTTP; Thu, 1 Mar 2018 06:27:19 -0800 (PST)
+Received: by 10.157.33.100 with HTTP; Thu, 1 Mar 2018 07:28:28 -0800 (PST)
 In-Reply-To: <CAFEAcA-pUMgUnR0cWd9j7n0EyTeXkMTzhPQU_fqhyaXy1hMfxw@mail.gmail.com>
 References: <20180228193125.20577-1-richard.henderson@linaro.org>
 	<20180228193125.20577-13-richard.henderson@linaro.org>
 	<CAFEAcA-pUMgUnR0cWd9j7n0EyTeXkMTzhPQU_fqhyaXy1hMfxw@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 1 Mar 2018 14:27:19 +0000
-Message-ID: <CAFEAcA-+ZDFE6s7NYfkhcc8vxMD=R-3gt5gL1NPhr6gWX8pmoA@mail.gmail.com>
+Date: Thu, 1 Mar 2018 15:28:28 +0000
+Message-ID: <CAFEAcA-FOV6JSaZrhD+FZ-T46n_e--suEDbha5EXAEPyW5YAEw@mail.gmail.com>
 To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::233
+X-Received-From: 2607:f8b0:4003:c06::243
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 12/16] target/arm: Decode
  aa64 armv8.3 fcmla
 X-BeenThere: qemu-arm@nongnu.org
@@ -108,15 +108,136 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: okUJx01pXIip
+X-TUID: jd+SzIY6sOQv
 
 On 1 March 2018 at 13:33, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 28 February 2018 at 19:31, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>>  target/arm/helper.h        |  11 ++++
+>>  target/arm/translate-a64.c |  94 +++++++++++++++++++++++++---
+>>  target/arm/vec_helper.c    | 149 +++++++++++++++++++++++++++++++++++++++++++++
+>>  3 files changed, 246 insertions(+), 8 deletions(-)
+>>
+>> diff --git a/target/arm/helper.h b/target/arm/helper.h
+>> index 1e2d7025de..0d2094f2be 100644
+>> --- a/target/arm/helper.h
+>> +++ b/target/arm/helper.h
+>> @@ -585,6 +585,17 @@ DEF_HELPER_FLAGS_5(gvec_fcadds, TCG_CALL_NO_RWG,
+>>  DEF_HELPER_FLAGS_5(gvec_fcaddd, TCG_CALL_NO_RWG,
+>>                     void, ptr, ptr, ptr, ptr, i32)
+>>
+>> +DEF_HELPER_FLAGS_5(gvec_fcmlah, TCG_CALL_NO_RWG,
+>> +                   void, ptr, ptr, ptr, ptr, i32)
+>> +DEF_HELPER_FLAGS_5(gvec_fcmlah_idx, TCG_CALL_NO_RWG,
+>> +                   void, ptr, ptr, ptr, ptr, i32)
+>> +DEF_HELPER_FLAGS_5(gvec_fcmlas, TCG_CALL_NO_RWG,
+>> +                   void, ptr, ptr, ptr, ptr, i32)
+>> +DEF_HELPER_FLAGS_5(gvec_fcmlas_idx, TCG_CALL_NO_RWG,
+>> +                   void, ptr, ptr, ptr, ptr, i32)
+>> +DEF_HELPER_FLAGS_5(gvec_fcmlad, TCG_CALL_NO_RWG,
+>> +                   void, ptr, ptr, ptr, ptr, i32)
+>> +
+>>  #ifdef TARGET_AARCH64
+>>  #include "helper-a64.h"
+>>  #endif
+>> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+>> index efed4fd9d2..31ff0479e6 100644
+>> --- a/target/arm/translate-a64.c
+>> +++ b/target/arm/translate-a64.c
+>> @@ -10842,6 +10842,10 @@ static void disas_simd_three_reg_same_extra(DisasContext *s, uint32_t insn)
+>>          }
+>>          feature = ARM_FEATURE_V8_RDM;
+>>          break;
+>> +    case 0x8: /* FCMLA, #0 */
+>> +    case 0x9: /* FCMLA, #90 */
+>> +    case 0xa: /* FCMLA, #180 */
+>> +    case 0xb: /* FCMLA, #270 */
+>>      case 0xc: /* FCADD, #90 */
+>>      case 0xe: /* FCADD, #270 */
+>>          if (size == 0
+>> @@ -10891,6 +10895,29 @@ static void disas_simd_three_reg_same_extra(DisasContext *s, uint32_t insn)
+>>          }
+>>          return;
+>>
+>> +    case 0x8: /* FCMLA, #0 */
+>> +    case 0x9: /* FCMLA, #90 */
+>> +    case 0xa: /* FCMLA, #180 */
+>> +    case 0xb: /* FCMLA, #270 */
+>> +        rot = extract32(opcode, 0, 2);
+>> +        switch (size) {
+>> +        case 1:
+>> +            gen_gvec_op3_fpst(s, is_q, rd, rn, rm, true, rot,
+>> +                              gen_helper_gvec_fcmlah);
+>> +            break;
+>> +        case 2:
+>> +            gen_gvec_op3_fpst(s, is_q, rd, rn, rm, false, rot,
+>> +                              gen_helper_gvec_fcmlas);
+>> +            break;
+>> +        case 3:
+>> +            gen_gvec_op3_fpst(s, is_q, rd, rn, rm, false, rot,
+>> +                              gen_helper_gvec_fcmlad);
+>> +            break;
+>> +        default:
+>> +            g_assert_not_reached();
+>> +        }
+>> +        return;
+>> +
+>>      case 0xc: /* FCADD, #90 */
+>>      case 0xe: /* FCADD, #270 */
+>>          rot = extract32(opcode, 1, 1);
+>
 > Shouldn't there be a feature check on ARM_FEATURE_V8_FCMA somewhere
 > in the three_reg_same_extra code path?
+>
+>
+>> diff --git a/target/arm/vec_helper.c b/target/arm/vec_helper.c
+>> index a868ca6aac..d81eb7730d 100644
+>> --- a/target/arm/vec_helper.c
+>> +++ b/target/arm/vec_helper.c
+>> @@ -278,3 +278,152 @@ void HELPER(gvec_fcaddd)(void *vd, void *vn, void *vm,
+>>      }
+>>      clear_tail(d, opr_sz, simd_maxsz(desc));
+>>  }
+>> +
+>> +void HELPER(gvec_fcmlah)(void *vd, void *vn, void *vm,
+>> +                         void *vfpst, uint32_t desc)
+>> +{
+>> +    uintptr_t opr_sz = simd_oprsz(desc);
+>> +    float16 *d = vd;
+>> +    float16 *n = vn;
+>> +    float16 *m = vm;
+>> +    float_status *fpst = vfpst;
+>> +    intptr_t flip = extract32(desc, SIMD_DATA_SHIFT, 1);
+>> +    uint32_t neg_imag = extract32(desc, SIMD_DATA_SHIFT + 1, 1);
+>> +    uint32_t neg_real = flip ^ neg_imag;
+>> +    uintptr_t i;
+>> +
+>> +    /* Shift boolean to the sign bit so we can xor to negate.  */
+>> +    neg_real <<= 15;
+>> +    neg_imag <<= 15;
+>> +
+>> +    for (i = 0; i < opr_sz / 2; i += 2) {
+>> +        float16 e1 = n[H2(i + flip)];
+>> +        float16 e2 = m[H2(i + flip)] ^ neg_real;
+>> +        float16 e3 = e1;
+>> +        float16 e4 = m[H2(i + 1 - flip)] ^ neg_imag;
+>
+> These don't match up with the element1 ... element4 in the
+> Arm ARM pseudocode. It's e2 and e4 that are always the same,
+> not e1 and e3. Ditto in the other functions.
 
-Oh, there is, because FCADD &c are also (feature bit name
-notwithstanding) under that feature bit.
+Specifically I think:
+ this code    pseudocode
+   e1          element2
+   e2          element1
+   e3          element4
+   e4          element2
 
+So if we renumber these to match the pseudocode
+
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

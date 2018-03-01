@@ -1,183 +1,142 @@
-Received: by 10.28.91.67 with SMTP id p64csp1632010wmb;
-        Thu, 1 Mar 2018 01:51:00 -0800 (PST)
-X-Google-Smtp-Source: AG47ELtUdsbG537kH7bK8AmhxUlfqKgNp+BPSK3SdekO9jyoRSN2gLTsjG0tu8y7tdbjhcVdAus6
-X-Received: by 2002:a25:3dc5:: with SMTP id k188-v6mr468425yba.508.1519897860401;
-        Thu, 01 Mar 2018 01:51:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519897860; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp1644607wmb;
+        Thu, 1 Mar 2018 02:06:15 -0800 (PST)
+X-Google-Smtp-Source: AG47ELsbfGazhInRJObrOjsnuclHfz+QvIDSDoopOp3oYLBxV7l8Bdvp4xUL4NhiBfTYNxvI0rmt
+X-Received: by 10.55.43.220 with SMTP id r89mr1903912qkr.152.1519898774933;
+        Thu, 01 Mar 2018 02:06:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519898774; cv=none;
         d=google.com; s=arc-20160816;
-        b=C5GA951th78B3UXq4T5AAZQXVi+/4EWLCyklil/jI+E1pMpFNUL7VogdoyFK/VK8O0
-         hwnn3yW4zGt71iMdotr+1/M9ZzTcKLQSZVwiaMBsz81wBFPlLyeZUr4Ap1dwfPDgQqz4
-         uhdasP6JjrIe7n6k5buTJrHgns38JuSE8nMSWGwubZwDrhAkycy+lwhKb8QdFDHP0EGi
-         JmFZg+1HVpC+Vj+DayFbSaO7MCi0ee4RF2aXECNyL1pses27ohlAU4qP9rUtwuOTPToO
-         x6lWnypKibpZ60dC7IDLOHyKS3cTzuT2hdbvJIP8kN5LX6sHZmYgms084rL5OHud67v6
-         ASYA==
+        b=j4aE55iz0IW7rDC4FW7vcKtrDp4+F7QvD7ZKaZveSMlZtLGHp1Gwx1sW6pnacG6ZPQ
+         tjc+bZccinX5xotFyaZAphWkGMI8VxaOpOWMkXagpdBQDC4QCaBW1zcLaxlQByUEdWk3
+         c7J6JIeJGweG5Imtjnj/2xhZdq1wKacH1MsNPdMnmKJH6XM5y3OPJIZDrqD340eiuG1A
+         OhthooEoRdN2qMJnJj709WVn6m4FPkQcwrXgExrkNs/Yq7HdD+jYqgbs2lsG479uJoUz
+         EOizwQa1ikdj5lSlYH8mQLhljbZkV6GQ/fgwTHWKmz1hdntgVjXLGTLqdaEy8AlB6ySI
+         i1Bg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date:arc-authentication-results;
-        bh=5rLNX0jjUzrJs0jwXoLwrLllyHoP5qtKhzrdjgv4Uug=;
-        b=LhuPsTEuI1Ae8NBkUP8L3u5vTbRGB+TVsJ5AbFHk4dIYqKIpGTgxaiBXWClDQjEDiQ
-         6npxzLIBGMR1FZgEPdX+r0Hyzd4b0S8XaJ1yWTwIQmIcamMNYg5xnZsjTUlZakDEzdP0
-         RNPsgc+LdO0PJL9yjE9dkv3WDxvmPFpriPixisPArEU8oYkqJFktVDZpRxwGq7StUJ5s
-         pHm5JGmD42AbKGQOiMqRa5i+tHGJ13bU7IBDso0TVMlB8b8d7DCERgAoyGuVXfjprpvv
-         BPBhA1h6LxHVxzBtLhvMC99/LGYKa2JFEKm8dW4736fCAhaFs4forUw+KqUICAGfh9IE
-         QTQQ==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc:to
+         :subject:message-id:date:from:references:in-reply-to:mime-version
+         :dkim-signature:arc-authentication-results;
+        bh=g2v8Un81JQsy4UwTf5D8NX4edfRkpemuA5HG8/k4+7M=;
+        b=hfqhDySSCj6wwx9Q+jAzMaeSCd+8xlZtP2onxAtCYUmgckXCTWEzJ+4bCGsbtwtfTU
+         99LDLfSkRPsPO6OlEqRg3eGNVMOyeeFn08cxGwlWt6R7mZpwcX0ISb502/G8uCcGg8WT
+         KiXoDc/nPiLbv73KkrX9IkhSIcRAA96Lf0hUzyX5L9PZ53s0dKEGtIbD2KkHhnfAeirU
+         JymgyYNJnU3GZFBRYSxzxHyHOG56ANUE4ADTWsSYGVAWe3tjWE+iEGNBSETb5GHyDfGX
+         kc7HAVMjH0UC8e/ioZ/0Uv52//loM62a10rHtr+bBd/inD7lSOyKg4OP/wm/i3HmfUhC
+         lMrA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g66si583068ywg.635.2018.03.01.01.51.00
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 01 Mar 2018 01:51:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=gVm9EPXw;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id m34si4116602qtc.121.2018.03.01.02.06.14;
+        Thu, 01 Mar 2018 02:06:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49197 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1erKrb-0003tK-TZ
-	for alex.bennee@linaro.org; Thu, 01 Mar 2018 04:50:59 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38598)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1erKrP-0003pP-C6
-	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 04:50:48 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1erKrM-0001ip-9X
-	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 04:50:47 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:59984 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1erKrM-0001iY-1t; Thu, 01 Mar 2018 04:50:44 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 00D9440FB650;
-	Thu,  1 Mar 2018 09:50:40 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 5E1DB10AF9E4;
-	Thu,  1 Mar 2018 09:50:31 +0000 (UTC)
-Date: Thu, 1 Mar 2018 10:50:30 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Andrew Jones <drjones@redhat.com>
-Message-ID: <20180301105030.2b716e68@redhat.com>
-In-Reply-To: <20180227132131.fipafmnb56a7fj76@kamzik.brq.redhat.com>
-References: <000e01d3afad$b9a13830$2ce3a890$@codeaurora.org>
-	<20180227104708.GA11391@cbox>
-	<ac329e1b1f5265a805916ab4f8708f9d@codeaurora.org>
-	<20180227124604.GA2373@cbox>
-	<20180227132131.fipafmnb56a7fj76@kamzik.brq.redhat.com>
+       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=gVm9EPXw;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 15DEE49E05;
+	Thu,  1 Mar 2018 04:59:16 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@linaro.org
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id f1PezcDAgl7r; Thu,  1 Mar 2018 04:58:54 -0500 (EST)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 8937849E00;
+	Thu,  1 Mar 2018 04:58:54 -0500 (EST)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 6DB9842121
+ for <kvmarm@lists.cs.columbia.edu>; Thu,  1 Mar 2018 04:58:53 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 4kVJeb60c1my for <kvmarm@lists.cs.columbia.edu>;
+ Thu,  1 Mar 2018 04:58:32 -0500 (EST)
+Received: from mail-oi0-f53.google.com (mail-oi0-f53.google.com
+ [209.85.218.53])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id 5964549E00
+ for <kvmarm@lists.cs.columbia.edu>; Thu,  1 Mar 2018 04:58:32 -0500 (EST)
+Received: by mail-oi0-f53.google.com with SMTP id c18so4046606oiy.9
+ for <kvmarm@lists.cs.columbia.edu>; Thu, 01 Mar 2018 02:05:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+ :cc; bh=NF5arrQn3GhJ91uMzJJs+0y/dHJkR3Tfai150KZ0N7w=;
+ b=gVm9EPXwBCDFCoMd/K1EX+w8lxiXI4bF25+G8S31w0XYfMU9HwrpILNN0HlRFlASCh
+ mBpk/y3sTuueRU0DI25ATMeEe8fO5u43ceWCfYnLkt8A16b03G0cgYBsRjRA3axI+L3r
+ ddUiDE4Wf4FNABT9ctIAGV5bLDzuZPAGCDfHc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+ :message-id:subject:to:cc;
+ bh=NF5arrQn3GhJ91uMzJJs+0y/dHJkR3Tfai150KZ0N7w=;
+ b=rQbp9qVaNGyfqP0W+vukyUEN33XW4TdooNWT++/2pxB1PUdsxaP+DId/IzvUd+O/Y/
+ U7oQdWLhY9sBSbcywCDzTRasyVnhZiJqOJzqbP/CuVmstPDh5WqOGALSbKZfY6hGhG6w
+ Pk6/6yAjjJMJ3YtWs0bhBcPaKjZotY62BnwIdDm5HTZ6mGhUZaplbmgovZm/jStQJOKm
+ 9VY4LAcHbDjzbXce2KrmO9GfXHYojA7J/JdnpJHkhpZR1FtKhSpTD+s8JfsroNyv3B/U
+ +tIZcW1i7a6iBF/7/Yt+SipWozDCO/Fk0XdGss1YrN5C0y2pEJFjKckzeG9F6e2zjm/i
+ RkYQ==
+X-Gm-Message-State: AElRT7HtNgAq6SlcWi/grJmMrusElMDB+eZhBLFufRkh478Ek8VZvOJ7
+ oHVXJG3JYotkyUdEjtiCnf9HslcrZNmcmqNWYgJ1uA==
+X-Received: by 10.202.17.13 with SMTP id 13mr710121oir.164.1519898730211; Thu,
+ 01 Mar 2018 02:05:30 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Thu, 01 Mar 2018 09:50:40 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Thu, 01 Mar 2018 09:50:40 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'imammedo@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
+Received: by 10.157.33.100 with HTTP; Thu, 1 Mar 2018 02:05:09 -0800 (PST)
+In-Reply-To: <20180301105030.2b716e68@redhat.com>
+References: <000e01d3afad$b9a13830$2ce3a890$@codeaurora.org>
+ <20180227104708.GA11391@cbox>
+ <ac329e1b1f5265a805916ab4f8708f9d@codeaurora.org>
+ <20180227124604.GA2373@cbox>
+ <20180227132131.fipafmnb56a7fj76@kamzik.brq.redhat.com>
+ <20180301105030.2b716e68@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 1 Mar 2018 10:05:09 +0000
+Message-ID: <CAFEAcA9yaU745Asy--jM0nu8FDJ62CEXSH_TKa-ZZfC16qye6w@mail.gmail.com>
 Subject: Re: [Qemu-arm] [Qemu-devel] VCPU hotplug on KVM/ARM
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: Christoffer Dall <cdall@cs.columbia.edu>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Christoffer Dall <christofferdall@christofferdall.dk>,
+ qemu-arm <qemu-arm@nongnu.org>, kvmarm@lists.cs.columbia.edu
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: bthakur@codeaurora.org, Christoffer Dall <cdall@cs.columbia.edu>,
-	Christoffer Dall <cdall@kernel.org>, qemu-devel@nongnu.org,
-	Christoffer Dall <christofferdall@christofferdall.dk>,
-	qemu-arm@nongnu.org, kvmarm@lists.cs.columbia.edu
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LEKS8n8A/XBS
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: 9+Re4IDKYY8u
 
-On Tue, 27 Feb 2018 14:21:31 +0100
-Andrew Jones <drjones@redhat.com> wrote:
+On 1 March 2018 at 09:50, Igor Mammedov <imammedo@redhat.com> wrote:
+> In QEMU on x86 (and I think ppc, s390 as well), we create vCPUs on demand.
+>
+> It would be nice if ARM would be able to do that too,
+> so that it could take advantage of the same code.
 
-> On Tue, Feb 27, 2018 at 01:46:04PM +0100, Christoffer Dall wrote:
-> > On Tue, Feb 27, 2018 at 05:34:28PM +0530, bthakur@codeaurora.org wrote:  
-> > > Hi Christoffer,
-> > > 
-> > > Thanks for your reply.
-> > > 
-> > > On 2018-02-27 16:17, Christoffer Dall wrote:  
-> > > >Hi Bhupinder,
-> > > >
-> > > >On Tue, Feb 27, 2018 at 03:01:17PM +0530, bthakur@codeaurora.org wrote:  
-> > > >>I hope it is the right forum to post my query.
-> > > >>
-> > > >>
-> > > >>
-> > > >>I am currently looking at the possibility of adding a new VCPU to a
-> > > >>running
-> > > >>guest VM in KVM/ARM. I see that currently, it is not allowed to add a
-> > > >>new
-> > > >>VCPU to a guest VM, if it is already initialized. The first check in
-> > > >>kvm_arch_vcpu_create() returns failure if it is already initialized.
-> > > >>  
-> > > >
-> > > >This would require a major rework of a lot of logic surrounding the GIC
-> > > >and other parts of KVM initialization.
-> > > >  
-> > > >>
-> > > >>
-> > > >>There was some work done in QEMU to add support for VCPU hotplug:
-> > > >>https://lists.gnu.org/archive/html/qemu-arm/2017-05/msg00404.html
-> > > >>
-> > > >>
-> > > >>
-> > > >>But I am looking at the KVM side for enabling adding a new VCPU. If you
-> > > >>can
-> > > >>point me to any relevant work/resources, which I can refer to then it
-> > > >>will
-> > > >>help me.
-> > > >>  
-> > > >
-> > > >I don't have any specific pointers, but I was always told that the way
-> > > >we were going to do CPU hotplug would be to instantiate a large number
-> > > >of VCPUs, and hotplug would be equivalent to turning on a VCPU which was
-> > > >previously powered off.
-> > > >
-> > > >Is this not still a feasible solution?  
-> > > It should be a feasible solution provided the guest VM is not able to
-> > > control the onlining/offlining of VCPUs. It should be controlled by the
-> > > Host.
-> > >   
-> > 
-> > KVM could simply refuse to turn on some of the CPUs unless given
-> > permission from host userspace.
-> >   
-> > > >
-> > > >How does VCPU hotplug work on x86?  
-> > > On x86, you can add a vcpu through libvirt setvcpu command and it shows up
-> > > in the guest VM as a new CPU if you do lscpu.
-> > >   
-> > 
-> > Sure, but what is the mechanism, does x86 qemu actually call
-> > KVM_CREATE_VCPU, or is this also a question of turning on already
-> > created vcpus ?
-In QEMU on x86 (and I think ppc, s390 as well), we create vCPUs on demand.
+It's not clear to me how that would work, given that for
+instance the interrupt controller wants to know up-front
+how many CPUs it has to deal with.
 
-It would be nice if ARM would be able to do that too,
-so that it could take advantage of the same code.
-
- 
-> CC'ing Igor and qemu-devel
-> 
-> drew
-> 
-
+thanks
+-- PMM
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

@@ -1,92 +1,90 @@
-Received: by 10.28.91.67 with SMTP id p64csp1592719wmb;
-        Thu, 1 Mar 2018 01:00:29 -0800 (PST)
-X-Google-Smtp-Source: AG47ELuqvXv0350149jx0laNL+fHlQp234YxaWc11k5VQrKaMP8jGb6ZEhyFxuTYR227UO69PMA2
-X-Received: by 2002:a25:9185:: with SMTP id w5-v6mr573637ybl.352.1519894829278;
-        Thu, 01 Mar 2018 01:00:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519894829; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp1610495wmb;
+        Thu, 1 Mar 2018 01:22:17 -0800 (PST)
+X-Google-Smtp-Source: AG47ELvLX7gY8BpE1C+04DTs+to2x9M2tKp5HY62nDDj70+y8sk7ae1Nxe7uzWSp+5uQhA6C+92J
+X-Received: by 2002:a25:bac9:: with SMTP id a9-v6mr590555ybk.183.1519896137728;
+        Thu, 01 Mar 2018 01:22:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519896137; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZXcpFG8iHupF2Igh/OUXGnJnOPBJOqLlej7mhQeRi14nk88XLWKdaF4DXAEBCBPIJD
-         nS/emiVprIIASTPR0Dcj2wyjtXV5fBYt51gDi232RcoWialxghoQ3I2HHHwfmqUVnDFD
-         gJO2iD1USecp7k6684n8BAObyxH8G67FlB6HoMGCYAc9arU7mzcUFNXokFnfkt2PclRu
-         inWDM96lshSpdU55SsuglPGntOj7eX/LHxcmkHwRO1yCrkw6zzR7Ftdrr1gqWF4HXSA8
-         eyrfLLWvtVhGWCD3Aj4mkU3W/IbMqUo8dLZ7/dWrWehDikGtNMVMONklA4zWWfFIFqPe
-         /U+A==
+        b=XV6qbrXv0+HMaGJA+MffChBTbHKiJdlDEePh+dRutF6gt5c7OwQgH0bzyIqJXYn/oL
+         lUmZs3AK9DjxhL9uJF6L6OSpnS6SsekkIbpezpt81EuZJu84wdL7tIVWaptGVQhhUnin
+         l4v3lcSX7+wERmVBxPvI2PeK5zjnNY8TH+6A0k4nQ3H21R3oTrzeo8ddhMAXd12zHI1a
+         YmUA470UFH0x9QdQYl1kqMPewEf5+VxV79AMLoumWMZWNQxObe9FV7/gAEgtGsPdXO49
+         butmDVBdGw3nwEsm6jDAdeHTPy7ZsV6BrD8fz8fi9zRXx7XKCkf1R/+K87KmVWCDClU/
+         Z7HA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:arc-authentication-results;
-        bh=OOok/Cv8CLDRpnZhdUVNI3gCOh+n7B6POo9Ahe1t26s=;
-        b=O/rhSQXIYXDIRU3gbsVKjgobD2ouNUvUvulQoSLCXpNZxTWH1sS4XxYhifYSs7MRYk
-         9xqypR1kKcTtr6GXn9vXQt9HkfeqcWCqCxqozHK210lLrFsvOyxwI4sifvLl7N14u66P
-         8FBGG4a59PuTvX/onXvU2YjyzZHWpPrU8W7qgJU6ExqCmpBnjx0gBgq/e3ZrMaII8t9i
-         HLX0E7UyjGhIptE3QBGq3LtWHvEhhKhX/Ghjz9sAwuDYIzvge5XWy/TNxj2CUVGPXEEz
-         ZvgtFDSSxUNocBf0v6MzJmzBAO7U1RWEFZjVroIcfDPBXVMP8S5PblPpYWW8S84V+xyg
-         6+wQ==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date:arc-authentication-results;
+        bh=iMewUmgZRJ9J5B2/Sm3b2bjzGAjq1E4WPADIW3tkBJ8=;
+        b=sJDtjMTETFMWUUAlfhzz+c5fy5Q9C80Bbfvbkwn51Iddm9PF3RCcj6hjbxM+kjcg8Y
+         +mg/HC5060DrGWJJwqKvOY34qSvJMBKMlWkkPGYLfdfx/IuSdivtPC+39y73z09KUA2X
+         GJjZkVeBct1Fpt9D1a3ZljNdI38zpFIJCRW9CNU3ginKjnYf5dTS1A0sTb3PO5ZXexc7
+         i6TfrI/Zbby43k+qpuwLgqNTzZkc4M8f8pCtYmPgko+TOswsCfq8XdGtgsSRhV+CnBGM
+         Ul/Lw6jEu9BnP2pRoWOznJFeKV/vH1+G8+sUsNw7P7Ddc+c7GT4ZV8D+o0lcmLg6IYUq
+         ax/g==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q16si564451ywa.770.2018.03.01.01.00.29
+        by mx.google.com with ESMTPS id h128si575721ywc.442.2018.03.01.01.22.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 01 Mar 2018 01:00:29 -0800 (PST)
+        Thu, 01 Mar 2018 01:22:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49005 helo=lists.gnu.org)
+Received: from localhost ([::1]:49077 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1erK4i-0003wI-IC
-	for alex.bennee@linaro.org; Thu, 01 Mar 2018 04:00:28 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55917)
+	id 1erKPp-0001gr-4U
+	for alex.bennee@linaro.org; Thu, 01 Mar 2018 04:22:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60584)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1erK3a-0002xs-RL
-	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 03:59:20 -0500
+	(envelope-from <imammedo@redhat.com>) id 1erKPe-0001gU-Rv
+	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 04:22:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1erK3X-0004pc-8G
-	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 03:59:18 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:37314 helo=mx1.redhat.com)
+	(envelope-from <imammedo@redhat.com>) id 1erKPY-0002Z2-HR
+	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 04:22:06 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:40726 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1erK3X-0004pG-2T; Thu, 01 Mar 2018 03:59:15 -0500
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1erKPY-0002Yk-Bp; Thu, 01 Mar 2018 04:22:00 -0500
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 83E014026787;
-	Thu,  1 Mar 2018 08:59:14 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-135.ams2.redhat.com
-	[10.36.116.135])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1B2E62144B26;
-	Thu,  1 Mar 2018 08:59:08 +0000 (UTC)
-To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
+	by mx1.redhat.com (Postfix) with ESMTPS id 17B088424D;
+	Thu,  1 Mar 2018 09:21:56 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id CAD27213AEF5;
+	Thu,  1 Mar 2018 09:21:54 +0000 (UTC)
+Date: Thu, 1 Mar 2018 10:21:53 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Auger Eric <eric.auger@redhat.com>
+Message-ID: <20180301102153.0a07f96c@redhat.com>
+In-Reply-To: <986e15d2-47cd-be73-da0f-39874b38a325@redhat.com>
 References: <1519827835-239519-1-git-send-email-imammedo@redhat.com>
-	<1519827835-239519-11-git-send-email-imammedo@redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <f73ea65f-dbab-b575-fd76-e772b576d865@redhat.com>
-Date: Thu, 1 Mar 2018 09:59:07 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	<1519827835-239519-10-git-send-email-imammedo@redhat.com>
+	<986e15d2-47cd-be73-da0f-39874b38a325@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <1519827835-239519-11-git-send-email-imammedo@redhat.com>
-Content-Type: text/plain; charset=windows-1252
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Thu, 01 Mar 2018 08:59:14 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Thu, 01 Mar 2018 08:59:14 +0000 (UTC) for IP:'10.11.54.6'
+	(mx1.redhat.com [10.11.55.2]);
+	Thu, 01 Mar 2018 09:21:56 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Thu, 01 Mar 2018 09:21:56 +0000 (UTC) for IP:'10.11.54.6'
 	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+	HELO:'smtp.corp.redhat.com' FROM:'imammedo@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [PATCH v2 10/10] tests: acpi: don't read all fields
- in test_acpi_fadt_table()
+Subject: Re: [Qemu-arm] [PATCH v2 09/10] virt_arm: acpi: reuse common
+ build_fadt()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,264 +96,183 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Shannon Zhao <zhaoshenglong@huawei.com>, qemu-arm@nongnu.org,
-	"Michael S. Tsirkin" <mst@redhat.com>
+Cc: Shannon Zhao <zhaoshenglong@huawei.com>, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TIobkYlfVhkn
+X-TUID: PANGN5Zo7Eti
 
-Hi Igor,
+On Thu, 1 Mar 2018 09:51:14 +0100
+Auger Eric <eric.auger@redhat.com> wrote:
 
-On 28/02/18 15:23, Igor Mammedov wrote:
-> there is no point to read fields here but not actually
-> checking them so drop it and read only header + dsdt/facs
-> addresses since it's needed later to fetch that tables.
-> 
-> With this cleanup we can get rid of AcpiFadtDescriptorRev3/
-> ACPI_FADT_COMMON_DEF which have no users left.
-> 
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-My only comment is you could have removed include/hw/acpi/acpi-defs.h
-defs in a separate subsequent patch after updating the test stuff. Besides,
+> Hi,
+> On 28/02/18 15:23, Igor Mammedov wrote:
+> > Extend generic build_fadt() to support rev5.1 FADT
+> > and reuse it for 'virt' board, it would allow to
+> > phase out usage of AcpiFadtDescriptorRev5_1 and
+> > later ACPI_FADT_COMMON_DEF.
+> > 
+> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > ---
+> > v2:
+> >   - update comment to mention that build_fadt() supports 5.1 revision
+> > ---
+> >  include/hw/acpi/acpi-defs.h | 12 ++----------
+> >  hw/acpi/aml-build.c         | 23 +++++++++++++++++++++--
+> >  hw/arm/virt-acpi-build.c    | 33 ++++++++++++---------------------
+> >  3 files changed, 35 insertions(+), 33 deletions(-)
+> > 
+> > diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+> > index 3fb0ace..fe15e95 100644
+> > --- a/include/hw/acpi/acpi-defs.h
+> > +++ b/include/hw/acpi/acpi-defs.h
+> > @@ -165,16 +165,6 @@ struct AcpiFadtDescriptorRev3 {
+> >  } QEMU_PACKED;
+> >  typedef struct AcpiFadtDescriptorRev3 AcpiFadtDescriptorRev3;
+> >  
+> > -struct AcpiFadtDescriptorRev5_1 {
+> > -    ACPI_FADT_COMMON_DEF
+> > -    /* 64-bit Sleep Control register (ACPI 5.0) */
+> > -    struct AcpiGenericAddress sleep_control;
+> > -    /* 64-bit Sleep Status register (ACPI 5.0) */
+> > -    struct AcpiGenericAddress sleep_status;
+> > -} QEMU_PACKED;
+> > -
+> > -typedef struct AcpiFadtDescriptorRev5_1 AcpiFadtDescriptorRev5_1;
+> > -
+> >  typedef struct AcpiFadtData {
+> >      struct AcpiGenericAddress pm1a_cnt;   /* PM1a_CNT_BLK */
+> >      struct AcpiGenericAddress pm1a_evt;   /* PM1a_EVT_BLK */
+> > @@ -192,6 +182,8 @@ typedef struct AcpiFadtData {
+> >      uint8_t  rtc_century;      /* CENTURY */
+> >      uint16_t plvl2_lat;        /* P_LVL2_LAT */
+> >      uint16_t plvl3_lat;        /* P_LVL3_LAT */
+> > +    uint16_t arm_boot_arch;    /* ARM_BOOT_ARCH */
+> > +    uint8_t minor_ver;         /* FADT Minor Version */
+> >  
+> >      /*
+> >       * respective tables offsets within ACPI_BUILD_TABLE_FILE,
+> > diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> > index 8f45298..3fa557c 100644
+> > --- a/hw/acpi/aml-build.c
+> > +++ b/hw/acpi/aml-build.c
+> > @@ -1679,7 +1679,7 @@ void build_slit(GArray *table_data, BIOSLinker *linker)
+> >                   table_data->len - slit_start, 1, NULL, NULL);
+> >  }
+> >  
+> > -/* build rev1/rev3 FADT */
+> > +/* build rev1/rev3/rev5.1 FADT */
+> >  void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+> >                  const char *oem_id, const char *oem_table_id)
+> >  {
+> > @@ -1755,7 +1755,14 @@ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+> >  
+> >      build_append_gas_from_struct(tbl, &f->reset_reg); /* RESET_REG */
+> >      build_append_int_noprefix(tbl, f->reset_val, 1); /* RESET_VALUE */
+> > -    build_append_int_noprefix(tbl, 0, 3); /* Reserved, ACPI 3.0 */
+> > +    /* Since ACPI 5.1 */
+> > +    if ((f->rev >= 6) || ((f->rev == 5) && f->minor_ver > 0)) {
+> > +        build_append_int_noprefix(tbl, f->arm_boot_arch, 2); /* ARM_BOOT_ARCH */
+> > +        /* FADT Minor Version */
+> > +        build_append_int_noprefix(tbl, f->minor_ver, 1);
+> > +    } else {
+> > +        build_append_int_noprefix(tbl, 0, 3); /* Reserved upto ACPI 5.0 */
+> > +    }
+> >      build_append_int_noprefix(tbl, 0, 8); /* X_FIRMWARE_CTRL */
+> >  
+> >      /* XDSDT address to be filled by Guest linker at runtime */
+> > @@ -1779,6 +1786,18 @@ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+> >      build_append_gas_from_struct(tbl, &f->gpe0_blk); /* X_GPE0_BLK */
+> >      build_append_gas(tbl, AML_AS_SYSTEM_MEMORY, 0 , 0, 0, 0); /* X_GPE1_BLK */
+> >  
+> > +    if (f->rev <= 4) {
+> > +        goto build_hdr;
+> > +    }
+> > +
+> > +    /* SLEEP_CONTROL_REG */
+> > +    build_append_gas(tbl, AML_AS_SYSTEM_MEMORY, 0 , 0, 0, 0);
+> > +    /* SLEEP_STATUS_REG */
+> > +    build_append_gas(tbl, AML_AS_SYSTEM_MEMORY, 0 , 0, 0, 0);
+> > +
+> > +    /* TODO: extra fields need to be added to support revisions above rev5 */
+> > +    assert(f->rev == 5);  
+> My previous comment about asserting here if f->rev != 5 and previous
+> (f->rev >= 6) check was skipped but that's not a big deal.
+I've thought that I've replied to comment,
+maybe I just didn't get meaning behind question?
+So I'll try to explain again.
 
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+If we reach this point rev must be 5, so f->rev >= 6 would be confusing
+at this point. When v6 support is added this assert should be moved after
+v6 stuff and condition is amended to f->rev == 6.
 
-Eric
-> ---
->  include/hw/acpi/acpi-defs.h | 81 --------------------------------------------
->  tests/bios-tables-test.c    | 82 ++++++++++-----------------------------------
->  2 files changed, 18 insertions(+), 145 deletions(-)
+ 
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Thanks!
+
 > 
-> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-> index fe15e95..5955eb4 100644
-> --- a/include/hw/acpi/acpi-defs.h
-> +++ b/include/hw/acpi/acpi-defs.h
-> @@ -75,82 +75,6 @@ struct AcpiTableHeader {
->  } QEMU_PACKED;
->  typedef struct AcpiTableHeader AcpiTableHeader;
->  
-> -/*
-> - * ACPI Fixed ACPI Description Table (FADT)
-> - */
-> -#define ACPI_FADT_COMMON_DEF /* FADT common definition */ \
-> -    ACPI_TABLE_HEADER_DEF    /* ACPI common table header */ \
-> -    uint32_t firmware_ctrl;  /* Physical address of FACS */ \
-> -    uint32_t dsdt;         /* Physical address of DSDT */ \
-> -    uint8_t  model;        /* System Interrupt Model */ \
-> -    uint8_t  reserved1;    /* Reserved */ \
-> -    uint16_t sci_int;      /* System vector of SCI interrupt */ \
-> -    uint32_t smi_cmd;      /* Port address of SMI command port */ \
-> -    uint8_t  acpi_enable;  /* Value to write to smi_cmd to enable ACPI */ \
-> -    uint8_t  acpi_disable; /* Value to write to smi_cmd to disable ACPI */ \
-> -    /* Value to write to SMI CMD to enter S4BIOS state */ \
-> -    uint8_t  S4bios_req; \
-> -    uint8_t  reserved2;    /* Reserved - must be zero */ \
-> -    /* Port address of Power Mgt 1a acpi_event Reg Blk */ \
-> -    uint32_t pm1a_evt_blk; \
-> -    /* Port address of Power Mgt 1b acpi_event Reg Blk */ \
-> -    uint32_t pm1b_evt_blk; \
-> -    uint32_t pm1a_cnt_blk; /* Port address of Power Mgt 1a Control Reg Blk */ \
-> -    uint32_t pm1b_cnt_blk; /* Port address of Power Mgt 1b Control Reg Blk */ \
-> -    uint32_t pm2_cnt_blk;  /* Port address of Power Mgt 2 Control Reg Blk */ \
-> -    uint32_t pm_tmr_blk;   /* Port address of Power Mgt Timer Ctrl Reg Blk */ \
-> -    /* Port addr of General Purpose acpi_event 0 Reg Blk */ \
-> -    uint32_t gpe0_blk; \
-> -    /* Port addr of General Purpose acpi_event 1 Reg Blk */ \
-> -    uint32_t gpe1_blk; \
-> -    uint8_t  pm1_evt_len;  /* Byte length of ports at pm1_x_evt_blk */ \
-> -    uint8_t  pm1_cnt_len;  /* Byte length of ports at pm1_x_cnt_blk */ \
-> -    uint8_t  pm2_cnt_len;  /* Byte Length of ports at pm2_cnt_blk */ \
-> -    uint8_t  pm_tmr_len;   /* Byte Length of ports at pm_tm_blk */ \
-> -    uint8_t  gpe0_blk_len; /* Byte Length of ports at gpe0_blk */ \
-> -    uint8_t  gpe1_blk_len; /* Byte Length of ports at gpe1_blk */ \
-> -    uint8_t  gpe1_base;    /* Offset in gpe model where gpe1 events start */ \
-> -    uint8_t  reserved3;    /* Reserved */ \
-> -    uint16_t plvl2_lat;    /* Worst case HW latency to enter/exit C2 state */ \
-> -    uint16_t plvl3_lat;    /* Worst case HW latency to enter/exit C3 state */ \
-> -    uint16_t flush_size;   /* Size of area read to flush caches */ \
-> -    uint16_t flush_stride; /* Stride used in flushing caches */ \
-> -    uint8_t  duty_offset;  /* Bit location of duty cycle field in p_cnt reg */ \
-> -    uint8_t  duty_width;   /* Bit width of duty cycle field in p_cnt reg */ \
-> -    uint8_t  day_alrm;     /* Index to day-of-month alarm in RTC CMOS RAM */ \
-> -    uint8_t  mon_alrm;     /* Index to month-of-year alarm in RTC CMOS RAM */ \
-> -    uint8_t  century;      /* Index to century in RTC CMOS RAM */ \
-> -    /* IA-PC Boot Architecture Flags (see below for individual flags) */ \
-> -    uint16_t boot_flags; \
-> -    uint8_t reserved;    /* Reserved, must be zero */ \
-> -    /* Miscellaneous flag bits (see below for individual flags) */ \
-> -    uint32_t flags; \
-> -    /* 64-bit address of the Reset register */ \
-> -    struct AcpiGenericAddress reset_register; \
-> -    /* Value to write to the reset_register port to reset the system */ \
-> -    uint8_t reset_value; \
-> -    /* ARM-Specific Boot Flags (see below for individual flags) (ACPI 5.1) */ \
-> -    uint16_t arm_boot_flags; \
-> -    uint8_t minor_revision;  /* FADT Minor Revision (ACPI 5.1) */ \
-> -    uint64_t x_facs;          /* 64-bit physical address of FACS */ \
-> -    uint64_t x_dsdt;          /* 64-bit physical address of DSDT */ \
-> -    /* 64-bit Extended Power Mgt 1a Event Reg Blk address */ \
-> -    struct AcpiGenericAddress xpm1a_event_block; \
-> -    /* 64-bit Extended Power Mgt 1b Event Reg Blk address */ \
-> -    struct AcpiGenericAddress xpm1b_event_block; \
-> -    /* 64-bit Extended Power Mgt 1a Control Reg Blk address */ \
-> -    struct AcpiGenericAddress xpm1a_control_block; \
-> -    /* 64-bit Extended Power Mgt 1b Control Reg Blk address */ \
-> -    struct AcpiGenericAddress xpm1b_control_block; \
-> -    /* 64-bit Extended Power Mgt 2 Control Reg Blk address */ \
-> -    struct AcpiGenericAddress xpm2_control_block; \
-> -    /* 64-bit Extended Power Mgt Timer Ctrl Reg Blk address */ \
-> -    struct AcpiGenericAddress xpm_timer_block; \
-> -    /* 64-bit Extended General Purpose Event 0 Reg Blk address */ \
-> -    struct AcpiGenericAddress xgpe0_block; \
-> -    /* 64-bit Extended General Purpose Event 1 Reg Blk address */ \
-> -    struct AcpiGenericAddress xgpe1_block; \
-> -
->  struct AcpiGenericAddress {
->      uint8_t space_id;        /* Address space where struct or register exists */
->      uint8_t bit_width;       /* Size in bits of given register */
-> @@ -160,11 +84,6 @@ struct AcpiGenericAddress {
->      uint64_t address;        /* 64-bit address of struct or register */
->  } QEMU_PACKED;
->  
-> -struct AcpiFadtDescriptorRev3 {
-> -    ACPI_FADT_COMMON_DEF
-> -} QEMU_PACKED;
-> -typedef struct AcpiFadtDescriptorRev3 AcpiFadtDescriptorRev3;
-> -
->  typedef struct AcpiFadtData {
->      struct AcpiGenericAddress pm1a_cnt;   /* PM1a_CNT_BLK */
->      struct AcpiGenericAddress pm1a_evt;   /* PM1a_EVT_BLK */
-> diff --git a/tests/bios-tables-test.c b/tests/bios-tables-test.c
-> index 65b271a..cd753ff 100644
-> --- a/tests/bios-tables-test.c
-> +++ b/tests/bios-tables-test.c
-> @@ -29,7 +29,8 @@ typedef struct {
->      uint32_t rsdp_addr;
->      AcpiRsdpDescriptor rsdp_table;
->      AcpiRsdtDescriptorRev1 rsdt_table;
-> -    AcpiFadtDescriptorRev3 fadt_table;
-> +    uint32_t dsdt_addr;
-> +    uint32_t facs_addr;
->      AcpiFacsDescriptorRev1 facs_table;
->      uint32_t *rsdt_tables_addr;
->      int rsdt_tables_nr;
-> @@ -127,71 +128,18 @@ static void test_acpi_rsdt_table(test_data *data)
->      data->rsdt_tables_nr = tables_nr;
->  }
->  
-> -static void test_acpi_fadt_table(test_data *data)
-> +static void fadt_fetch_facs_and_dsdt_ptrs(test_data *data)
->  {
-> -    AcpiFadtDescriptorRev3 *fadt_table = &data->fadt_table;
->      uint32_t addr;
-> +    AcpiTableHeader hdr;
->  
->      /* FADT table comes first */
->      addr = le32_to_cpu(data->rsdt_tables_addr[0]);
-> -    ACPI_READ_TABLE_HEADER(fadt_table, addr);
-> -
-> -    ACPI_READ_FIELD(fadt_table->firmware_ctrl, addr);
-> -    ACPI_READ_FIELD(fadt_table->dsdt, addr);
-> -    ACPI_READ_FIELD(fadt_table->model, addr);
-> -    ACPI_READ_FIELD(fadt_table->reserved1, addr);
-> -    ACPI_READ_FIELD(fadt_table->sci_int, addr);
-> -    ACPI_READ_FIELD(fadt_table->smi_cmd, addr);
-> -    ACPI_READ_FIELD(fadt_table->acpi_enable, addr);
-> -    ACPI_READ_FIELD(fadt_table->acpi_disable, addr);
-> -    ACPI_READ_FIELD(fadt_table->S4bios_req, addr);
-> -    ACPI_READ_FIELD(fadt_table->reserved2, addr);
-> -    ACPI_READ_FIELD(fadt_table->pm1a_evt_blk, addr);
-> -    ACPI_READ_FIELD(fadt_table->pm1b_evt_blk, addr);
-> -    ACPI_READ_FIELD(fadt_table->pm1a_cnt_blk, addr);
-> -    ACPI_READ_FIELD(fadt_table->pm1b_cnt_blk, addr);
-> -    ACPI_READ_FIELD(fadt_table->pm2_cnt_blk, addr);
-> -    ACPI_READ_FIELD(fadt_table->pm_tmr_blk, addr);
-> -    ACPI_READ_FIELD(fadt_table->gpe0_blk, addr);
-> -    ACPI_READ_FIELD(fadt_table->gpe1_blk, addr);
-> -    ACPI_READ_FIELD(fadt_table->pm1_evt_len, addr);
-> -    ACPI_READ_FIELD(fadt_table->pm1_cnt_len, addr);
-> -    ACPI_READ_FIELD(fadt_table->pm2_cnt_len, addr);
-> -    ACPI_READ_FIELD(fadt_table->pm_tmr_len, addr);
-> -    ACPI_READ_FIELD(fadt_table->gpe0_blk_len, addr);
-> -    ACPI_READ_FIELD(fadt_table->gpe1_blk_len, addr);
-> -    ACPI_READ_FIELD(fadt_table->gpe1_base, addr);
-> -    ACPI_READ_FIELD(fadt_table->reserved3, addr);
-> -    ACPI_READ_FIELD(fadt_table->plvl2_lat, addr);
-> -    ACPI_READ_FIELD(fadt_table->plvl3_lat, addr);
-> -    ACPI_READ_FIELD(fadt_table->flush_size, addr);
-> -    ACPI_READ_FIELD(fadt_table->flush_stride, addr);
-> -    ACPI_READ_FIELD(fadt_table->duty_offset, addr);
-> -    ACPI_READ_FIELD(fadt_table->duty_width, addr);
-> -    ACPI_READ_FIELD(fadt_table->day_alrm, addr);
-> -    ACPI_READ_FIELD(fadt_table->mon_alrm, addr);
-> -    ACPI_READ_FIELD(fadt_table->century, addr);
-> -    ACPI_READ_FIELD(fadt_table->boot_flags, addr);
-> -    ACPI_READ_FIELD(fadt_table->reserved, addr);
-> -    ACPI_READ_FIELD(fadt_table->flags, addr);
-> -    ACPI_READ_GENERIC_ADDRESS(fadt_table->reset_register, addr);
-> -    ACPI_READ_FIELD(fadt_table->reset_value, addr);
-> -    ACPI_READ_FIELD(fadt_table->arm_boot_flags, addr);
-> -    ACPI_READ_FIELD(fadt_table->minor_revision, addr);
-> -    ACPI_READ_FIELD(fadt_table->x_facs, addr);
-> -    ACPI_READ_FIELD(fadt_table->x_dsdt, addr);
-> -    ACPI_READ_GENERIC_ADDRESS(fadt_table->xpm1a_event_block, addr);
-> -    ACPI_READ_GENERIC_ADDRESS(fadt_table->xpm1b_event_block, addr);
-> -    ACPI_READ_GENERIC_ADDRESS(fadt_table->xpm1a_control_block, addr);
-> -    ACPI_READ_GENERIC_ADDRESS(fadt_table->xpm1b_control_block, addr);
-> -    ACPI_READ_GENERIC_ADDRESS(fadt_table->xpm2_control_block, addr);
-> -    ACPI_READ_GENERIC_ADDRESS(fadt_table->xpm_timer_block, addr);
-> -    ACPI_READ_GENERIC_ADDRESS(fadt_table->xgpe0_block, addr);
-> -    ACPI_READ_GENERIC_ADDRESS(fadt_table->xgpe1_block, addr);
-> -
-> -    ACPI_ASSERT_CMP(fadt_table->signature, "FACP");
-> -    g_assert(!acpi_calc_checksum((uint8_t *)fadt_table,
-> -                                 le32_to_cpu(fadt_table->length)));
-> +    ACPI_READ_TABLE_HEADER(&hdr, addr);
-> +    ACPI_ASSERT_CMP(hdr.signature, "FACP");
-> +
-> +    ACPI_READ_FIELD(data->facs_addr, addr);
-> +    ACPI_READ_FIELD(data->dsdt_addr, addr);
->  }
->  
->  static void sanitize_fadt_ptrs(test_data *data)
-> @@ -206,6 +154,12 @@ static void sanitize_fadt_ptrs(test_data *data)
->              continue;
->          }
->  
-> +        /* check original FADT checksum before sanitizing table */
-> +        g_assert(!(uint8_t)(
-> +            acpi_calc_checksum((uint8_t *)sdt, sizeof(AcpiTableHeader)) +
-> +            acpi_calc_checksum((uint8_t *)sdt->aml, sdt->aml_len)
-> +        ));
-> +
->          /* sdt->aml field offset := spec offset - header size */
->          memset(sdt->aml + 0, 0, 4); /* sanitize FIRMWARE_CTRL(36) ptr */
->          memset(sdt->aml + 4, 0, 4); /* sanitize DSDT(40) ptr */
-> @@ -226,7 +180,7 @@ static void sanitize_fadt_ptrs(test_data *data)
->  static void test_acpi_facs_table(test_data *data)
->  {
->      AcpiFacsDescriptorRev1 *facs_table = &data->facs_table;
-> -    uint32_t addr = le32_to_cpu(data->fadt_table.firmware_ctrl);
-> +    uint32_t addr = le32_to_cpu(data->facs_addr);
->  
->      ACPI_READ_FIELD(facs_table->signature, addr);
->      ACPI_READ_FIELD(facs_table->length, addr);
-> @@ -265,7 +219,7 @@ static void fetch_table(AcpiSdtTable *sdt_table, uint32_t addr)
->  static void test_acpi_dsdt_table(test_data *data)
->  {
->      AcpiSdtTable dsdt_table;
-> -    uint32_t addr = le32_to_cpu(data->fadt_table.dsdt);
-> +    uint32_t addr = le32_to_cpu(data->dsdt_addr);
->  
->      fetch_table(&dsdt_table, addr);
->      ACPI_ASSERT_CMP(dsdt_table.header.signature, "DSDT");
-> @@ -674,7 +628,7 @@ static void test_acpi_one(const char *params, test_data *data)
->      test_acpi_rsdp_address(data);
->      test_acpi_rsdp_table(data);
->      test_acpi_rsdt_table(data);
-> -    test_acpi_fadt_table(data);
-> +    fadt_fetch_facs_and_dsdt_ptrs(data);
->      test_acpi_facs_table(data);
->      test_acpi_dsdt_table(data);
->      fetch_rsdt_referenced_tables(data);
+> Thanks
 > 
+> Eric
+> > +
+> >  build_hdr:
+> >      build_header(linker, tbl, (void *)(tbl->data + fadt_start),
+> >                   "FACP", tbl->len - fadt_start, f->rev, oem_id, oem_table_id);
+> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> > index b644da9..c7c6a57 100644
+> > --- a/hw/arm/virt-acpi-build.c
+> > +++ b/hw/arm/virt-acpi-build.c
+> > @@ -654,39 +654,30 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> >  static void build_fadt_rev5(GArray *table_data, BIOSLinker *linker,
+> >                              VirtMachineState *vms, unsigned dsdt_tbl_offset)
+> >  {
+> > -    int fadt_start = table_data->len;
+> > -    AcpiFadtDescriptorRev5_1 *fadt = acpi_data_push(table_data, sizeof(*fadt));
+> > -    unsigned xdsdt_entry_offset = (char *)&fadt->x_dsdt - table_data->data;
+> > -    uint16_t bootflags;
+> > +    /* ACPI v5.1 */
+> > +    AcpiFadtData fadt = {
+> > +        .rev = 5,
+> > +        .minor_ver = 1,
+> > +        .flags = 1 << ACPI_FADT_F_HW_REDUCED_ACPI,
+> > +        .xdsdt_tbl_offset = &dsdt_tbl_offset,
+> > +    };
+> >  
+> >      switch (vms->psci_conduit) {
+> >      case QEMU_PSCI_CONDUIT_DISABLED:
+> > -        bootflags = 0;
+> > +        fadt.arm_boot_arch = 0;
+> >          break;
+> >      case QEMU_PSCI_CONDUIT_HVC:
+> > -        bootflags = ACPI_FADT_ARM_PSCI_COMPLIANT | ACPI_FADT_ARM_PSCI_USE_HVC;
+> > +        fadt.arm_boot_arch = ACPI_FADT_ARM_PSCI_COMPLIANT |
+> > +                             ACPI_FADT_ARM_PSCI_USE_HVC;
+> >          break;
+> >      case QEMU_PSCI_CONDUIT_SMC:
+> > -        bootflags = ACPI_FADT_ARM_PSCI_COMPLIANT;
+> > +        fadt.arm_boot_arch = ACPI_FADT_ARM_PSCI_COMPLIANT;
+> >          break;
+> >      default:
+> >          g_assert_not_reached();
+> >      }
+> >  
+> > -    /* Hardware Reduced = 1 and use PSCI 0.2+ */
+> > -    fadt->flags = cpu_to_le32(1 << ACPI_FADT_F_HW_REDUCED_ACPI);
+> > -    fadt->arm_boot_flags = cpu_to_le16(bootflags);
+> > -
+> > -    /* ACPI v5.1 (fadt->revision.fadt->minor_revision) */
+> > -    fadt->minor_revision = 0x1;
+> > -
+> > -    /* DSDT address to be filled by Guest linker */
+> > -    bios_linker_loader_add_pointer(linker,
+> > -        ACPI_BUILD_TABLE_FILE, xdsdt_entry_offset, sizeof(fadt->x_dsdt),
+> > -        ACPI_BUILD_TABLE_FILE, dsdt_tbl_offset);
+> > -
+> > -    build_header(linker, table_data, (void *)(table_data->data + fadt_start),
+> > -                 "FACP", table_data->len - fadt_start, 5, NULL, NULL);
+> > +    build_fadt(table_data, linker, &fadt, NULL, NULL);
+> >  }
+> >  
+> >  /* DSDT */
+> >   
+

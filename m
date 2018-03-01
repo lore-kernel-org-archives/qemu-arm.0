@@ -1,112 +1,147 @@
-Received: by 10.223.159.82 with SMTP id f18csp598174wrg;
-        Tue, 21 Nov 2017 04:08:29 -0800 (PST)
-X-Received: by 10.28.35.80 with SMTP id j77mr1027788wmj.109.1511266109322;
-        Tue, 21 Nov 2017 04:08:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1511266109; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp1835649wmb;
+        Thu, 1 Mar 2018 05:33:31 -0800 (PST)
+X-Google-Smtp-Source: AG47ELvPvK6tcZ8jrZIm1716HAKycQ/pZgVffy0sMKXux4EISbhfZ8FysUe7atwMihtdJCOcXEC4
+X-Received: by 10.55.195.138 with SMTP id r10mr2882111qkl.269.1519911211237;
+        Thu, 01 Mar 2018 05:33:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519911211; cv=none;
         d=google.com; s=arc-20160816;
-        b=c1++7hiaaQK57p1olar3zNcymZfu6TJC4TCKGq/cnCwCpGkgfYByHh+0Xjsx4Tf4aS
-         BvcmwFtIqFKN8gTX83gPmvTiw3VgeA+o0BlxAFS4o1wcGRRTnA2K6wvIheea/ipvUOY6
-         Wq0dMfATO4Nw+x+8No0qu3R4ZOgcfj8LKOFHf4l+ijTeAN32T61ezdTaUtuRy4uuNqdU
-         HL2URWz8Qb+vAgySwa54WoBMTUBb2na/KoI0eYeuEbaUMJOZAtSuTC1rRSlhYC5EeEwN
-         sgdSaNDvXnD5CLTMd9UYlgOoe0SyLBP2btg3GH4eyJ6rNV6D+7VTq31+4XySzUSqy+ra
-         HkQQ==
+        b=lOeb2WqmoTKzY97oFNPf9dinfnMhJPWbo3uioxFuac9CVHvImbE1P1+jSw5M0oI8Y8
+         QB35zf4YtkhG8Mup6QdM05BBf+HanG65eSWDiCt21OiYyWjEqjCJpwpAUGu4GrQ08x3r
+         vdtrwNF1Mv2q8YyO4OmgV34oKk3F3NqK1ZSBiOFnsnthnfZyWHez5hZ+GYykb4q1tRNU
+         v4ZVsU7SFFx+++olZNdFeucqhaZy/UGWHWduUbMBdVrlL6RVHuxHDxM6BRwiKsfkQcN8
+         QMPAXRqw/x10AMTwHlWhkwmMPfqxF5udN2bS6YvTPt42ugPqYzIMVMxjV0dy/1Wqrw9l
+         aA8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:organization:from:references:to:subject
          :arc-authentication-results;
-        bh=cFYkcd5JsR/sPKFHRLgaq7vfIKncg095I256KGOpY3s=;
-        b=IhikptB7QEMP5GjUMEm81+PVjZYnrv3yCHd3gIQc49Jm9c4XrQKrqCga1zuj8Kz6am
-         z1eSEgn2IdbLHKsVhUfmq71VSKcrOlxI6TvJqefP2QNV3Yryw+o1IKOrwtmdAqAWODEK
-         pM74K3BsRB7XIwqreiJ+k8x5xasA3hBi8g5VRLSdMx89Ifd1urUHyt4NC28nzz4R/GmJ
-         Kppj843S/2nhKHHfgV9Nz1TomWZ3mFzq6xYHu0ZbrIg4tQLPvvhhFnoihCI1OCrtPpRX
-         9zei9+KophIPXzzJ1dWRzwdnHkCcp0yCHJiVsKfvO4ONwqjFzTTuqbRba0jJTt3WveKI
-         F3qQ==
+        bh=hUooVSSFpRMJFpoXu5aPrey8FTbC0ji6myTmbaJOAUY=;
+        b=qpQQ1LW23x4fxX5LO8O2P4gtiUnZ6BpVQPd1/8+IqTtUoCrlBv0oazj13IvKIPH+xA
+         04pKuVDb+JYRTU8wjtor8w5IROhSCfTR9u1tPuFmaynXH8VVAcQZXVsG5f2RmDl6KPAk
+         /sIa+9b/T/6gKmzisKheIyPEGDxfjHmol88Y/hR7NBvzxzc2HT9hgFEDLGOq0XpBSyPV
+         IHf90roLPU63EotpHotZl4nckGmLQbIElYApjowmBXvBb3jN1fTgRh9M8xKHEqwp/9pe
+         W1V+VH2fdqwJLWlBjmwnrk5/YAjtZkkkKgeB6l7MDmMwnHXkL87AOKKodYi1sDiTQMrS
+         G9iQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=De3uOMyl;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 1sor263320wmu.34.2017.11.21.04.08.29
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 21 Nov 2017 04:08:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id v10si4550885qth.127.2018.03.01.05.33.30;
+        Thu, 01 Mar 2018 05:33:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=De3uOMyl;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=cFYkcd5JsR/sPKFHRLgaq7vfIKncg095I256KGOpY3s=;
-        b=De3uOMyliFF6XsosBlCS5yv3ZnaznFujldeJurN3rXJjlVkW9t1OAZUhIC9xmAzaAk
-         Ib50oHUzzkQ/VxGUnD4t2kstsgpuzLT3tnIRpv0TYhjNTxnH6gvJM2vzhFQHcYOqLHKG
-         i5/ts38KfAVKD1IV0RBErlESImNl1/c+gAy2k=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=cFYkcd5JsR/sPKFHRLgaq7vfIKncg095I256KGOpY3s=;
-        b=oZj81LJIDG+2HU3eaPtxJ9qSxiRz3rUdzHClyB/o/p2ir/jddNsm7xkRmSOL7oK5TD
-         z8QeaSjsQeJPqaC4GZq8pDcUpw5llOVCjZZavh+YbQ8jOxT/XBvh8V5OhkAXQgwts13p
-         ssrdkH+IpuA1Ej29B6S9I/rp9LNtoxOAMYKgquOuOOaxYXIMTl5Yv7w31aOTxAV5bbIJ
-         fsD52tPsx0U/oyozh6NZALeYaIyXHoZzuhbG+hGuBFaZFITUyjlHv7PziCIhk9y2ehGd
-         rerouVhiInHrvVe1ZJpwhLfKx0IzlBTeSQZvlPcHJjrOYzuaoW8nUDogdfqpnOAqQCNV
-         kOCQ==
-X-Gm-Message-State: AJaThX7gewYfGsxdJZ17oASkMSshYOdcaaHNZ4QDph557cY588rvme4O
-	NOO/Ewt1jTey5RX9bGr9YSmNRogPnHProLlrLoPXTT3F0Do=
-X-Google-Smtp-Source: AGs4zMZ6CbIo/a6VZffBGdB+HzwXSL+ttFZH3X1ALCZIYgRg0vfb9/58ukw8E7p5VApHHl5npZjdxEMDaCmMjdAIjQ8=
-X-Received: by 10.28.112.22 with SMTP id l22mr1088163wmc.35.1511266108804;
- Tue, 21 Nov 2017 04:08:28 -0800 (PST)
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id EFE4749E56;
+	Thu,  1 Mar 2018 08:26:31 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: -1.501
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.501 required=6.1 tests=[BAYES_00=-1.9,
+	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_MED=-2.3] autolearn=no
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id nNhhUGuuWdhi; Thu,  1 Mar 2018 08:26:10 -0500 (EST)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 8AF5949D6F;
+	Thu,  1 Mar 2018 08:26:10 -0500 (EST)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 0B9DF402D3
+ for <kvmarm@lists.cs.columbia.edu>; Thu,  1 Mar 2018 08:26:09 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id vz+5W1+VvrcG for <kvmarm@lists.cs.columbia.edu>;
+ Thu,  1 Mar 2018 08:25:42 -0500 (EST)
+Received: from mx1.redhat.com (mx3-rdu2.redhat.com [66.187.233.73])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id D6D7D402C7
+ for <kvmarm@lists.cs.columbia.edu>; Thu,  1 Mar 2018 08:25:42 -0500 (EST)
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.5])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 4F00FEB6F4;
+ Thu,  1 Mar 2018 13:32:41 +0000 (UTC)
+Received: from [10.36.116.189] (ovpn-116-189.ams2.redhat.com [10.36.116.189])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B360E9C06B;
+ Thu,  1 Mar 2018 13:32:39 +0000 (UTC)
+Subject: Re: [Qemu-devel] [Qemu-arm] VCPU hotplug on KVM/ARM
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Igor Mammedov <imammedo@redhat.com>
+References: <000e01d3afad$b9a13830$2ce3a890$@codeaurora.org>
+ <20180227104708.GA11391@cbox>
+ <ac329e1b1f5265a805916ab4f8708f9d@codeaurora.org>
+ <20180227124604.GA2373@cbox>
+ <20180227132131.fipafmnb56a7fj76@kamzik.brq.redhat.com>
+ <20180301105030.2b716e68@redhat.com>
+ <CAFEAcA9yaU745Asy--jM0nu8FDJ62CEXSH_TKa-ZZfC16qye6w@mail.gmail.com>
+From: David Hildenbrand <david@redhat.com>
+Organization: Red Hat GmbH
+Message-ID: <b049a501-cd5e-8c22-9c62-88c950e01b1b@redhat.com>
+Date: Thu, 1 Mar 2018 14:32:39 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.5.2
 MIME-Version: 1.0
-Received: by 10.223.187.195 with HTTP; Tue, 21 Nov 2017 04:08:08 -0800 (PST)
-In-Reply-To: <20171031145444.13766-1-alex.bennee@linaro.org>
-References: <20171031145444.13766-1-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 21 Nov 2017 12:08:08 +0000
-Message-ID: <CAFEAcA9SrXVLAwoi=ZDxkCN9WOMVtQyR_jEkn9b3qn-yb9=dKQ@mail.gmail.com>
-Subject: Re: [RISU PATCH 0/7] Add @Group support and some aarch64.risu cleanups
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: AUOsuZI0MvZY
+In-Reply-To: <CAFEAcA9yaU745Asy--jM0nu8FDJ62CEXSH_TKa-ZZfC16qye6w@mail.gmail.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.11.55.1]); Thu, 01 Mar 2018 13:32:41 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
+ Thu, 01 Mar 2018 13:32:41 +0000 (UTC) for IP:'10.11.54.5'
+ DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+ HELO:'smtp.corp.redhat.com' FROM:'david@redhat.com' RCPT:''
+Cc: Christoffer Dall <cdall@cs.columbia.edu>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Christoffer Dall <christofferdall@christofferdall.dk>,
+ qemu-arm <qemu-arm@nongnu.org>, kvmarm@lists.cs.columbia.edu
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: UOMoAU7qD2pQ
 
-On 31 October 2017 at 14:54, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
-> Hi Peter,
+On 01.03.2018 11:05, Peter Maydell wrote:
+> On 1 March 2018 at 09:50, Igor Mammedov <imammedo@redhat.com> wrote:
+>> In QEMU on x86 (and I think ppc, s390 as well), we create vCPUs on demand.>>
+>> It would be nice if ARM would be able to do that too,
+>> so that it could take advantage of the same code.
+> 
+> It's not clear to me how that would work, given that for
+> instance the interrupt controller wants to know up-front
+> how many CPUs it has to deal with.
 >
-> My RISU patch queue was running a little long so I thought I should
-> push up stuff that was ready. The first few patches are simply
-> clean-ups to the aarch64.risu file, mostly removing duplicate blocks
-> that have crept in.
->
-> There is a prerequisite clean-up patch which moves the filtering into
-> the common risugen code and passes an array of keys to the backend.
->
-> Then I add support for @GroupName annotations which allow for a nicer
-> selection of groups of instructions. This works across all
-> architectures now.
->
-> Finally a big (but mechanical) update of the aarch64.risu file. I've
-> aligned the names of the major groups to what the ASL/ARM ARM uses and
-> added some example @Groups for the gross sections. I expect to add
-> more fine-grained groups later as we add the new half-precision and
-> SVE instructions.
->
-> Alex Benn=C3=A9e (7):
->   aarch64.risu: document naming conventions
->   aarch64.risu: remove duplicate AdvSIMD Scalar 3 same block
->   aarch64.risu: remove duplicate AdvSIMD scalar 2 reg misc block
->   aarch64.risu: update AdvancedSIMD across lanes
->   risugen/risugen_$arch: factor out instruction selection
->   risugen: support @GroupName in risu files
->   aarch64.risu: clean-up and annotate with groups
 
-I've pushed patches 1-5 to risu master, and provided comments
-on patch 6. I'm going to just assume 7 is ok.
+So how is cpu hotplug handled in HW? Or doesn't it even exist there?
 
-thanks
--- PMM
+(we have max_cpus for the interrupt controller, but not sure if that is
+what we want)
+
+> thanks
+> -- PMM
+> 
+-- 
+
+Thanks,
+
+David / dhildenb
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

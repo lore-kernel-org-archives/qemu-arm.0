@@ -1,152 +1,183 @@
-Received: by 10.223.150.237 with SMTP id u100csp374491wrb;
-        Tue, 7 Nov 2017 10:53:47 -0800 (PST)
-X-Received: by 10.28.217.136 with SMTP id q130mr109932wmg.89.1510080827057;
-        Tue, 07 Nov 2017 10:53:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510080827; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp1632010wmb;
+        Thu, 1 Mar 2018 01:51:00 -0800 (PST)
+X-Google-Smtp-Source: AG47ELtUdsbG537kH7bK8AmhxUlfqKgNp+BPSK3SdekO9jyoRSN2gLTsjG0tu8y7tdbjhcVdAus6
+X-Received: by 2002:a25:3dc5:: with SMTP id k188-v6mr468425yba.508.1519897860401;
+        Thu, 01 Mar 2018 01:51:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519897860; cv=none;
         d=google.com; s=arc-20160816;
-        b=NR1xvq9ehJZex7d6hiC8kKz3AwQn8excjYclawxBXSLdd2fnVr0aYXKHI6ocZbaV9l
-         LF4kPdFbVDo45CYiDtokGPXJQUE3UbBp2tZjpodNG2swv68uXYhuZSju+jG1JjIuEcu6
-         G/VpSLmZ2YGu8K0wAiUVieWDQHBIqdahZf5qqX23pNUkQxQW9v5MYS+9ltK/VmGOm7su
-         wmSIcGDcslXWqSLZywoqwVz8r/E9eqXGe8j9JAk06NZdYshUKxlyMFBaGqcN7uwnDrmh
-         8Q9M7i5DZQeyvgKBYSSkTHRuCZ2ssIr7lbUt/aFB8kTbqCmoQE8XoRR9ZFB6ZpdF0mxf
-         Gukw==
+        b=C5GA951th78B3UXq4T5AAZQXVi+/4EWLCyklil/jI+E1pMpFNUL7VogdoyFK/VK8O0
+         hwnn3yW4zGt71iMdotr+1/M9ZzTcKLQSZVwiaMBsz81wBFPlLyeZUr4Ap1dwfPDgQqz4
+         uhdasP6JjrIe7n6k5buTJrHgns38JuSE8nMSWGwubZwDrhAkycy+lwhKb8QdFDHP0EGi
+         JmFZg+1HVpC+Vj+DayFbSaO7MCi0ee4RF2aXECNyL1pses27ohlAU4qP9rUtwuOTPToO
+         x6lWnypKibpZ60dC7IDLOHyKS3cTzuT2hdbvJIP8kN5LX6sHZmYgms084rL5OHud67v6
+         ASYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=En/2cUdJQ0Rf66BWaYOzRS3OOL0w5SlMaAzSd+ZAz2Q=;
-        b=x3WRdYUB5OUYn+DmyxxCN9Nw2TiQE7YIDmojH7INBGT5wq+tC9KwIlXH0fVgXDIxnV
-         2zzDWhAoEUTnBulcFQeB9QBTOzT/NVIvhYPIF8EyWuwR2/O/AXr+Av3/idtMAd3H+/Rk
-         zRGNExuNlqA6QCal7rSF9XpOCYc10DPv1h3mMbDy2dkL29R8ACPEbZVzD+3pehlp9RiS
-         tOeqTQmAGtg4NHRMj69k5HVzu3iw11EHSyH2bvLikTt/mYGxZ79A+Ld1uu3MsCvO8Irg
-         w0mEAfxmkKa/2+AsCnAor+si4AsdiCd5SOKkbnKJDWMxwmZlodJbwEid1YjSSyyw1MQQ
-         dFtQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date:arc-authentication-results;
+        bh=5rLNX0jjUzrJs0jwXoLwrLllyHoP5qtKhzrdjgv4Uug=;
+        b=LhuPsTEuI1Ae8NBkUP8L3u5vTbRGB+TVsJ5AbFHk4dIYqKIpGTgxaiBXWClDQjEDiQ
+         6npxzLIBGMR1FZgEPdX+r0Hyzd4b0S8XaJ1yWTwIQmIcamMNYg5xnZsjTUlZakDEzdP0
+         RNPsgc+LdO0PJL9yjE9dkv3WDxvmPFpriPixisPArEU8oYkqJFktVDZpRxwGq7StUJ5s
+         pHm5JGmD42AbKGQOiMqRa5i+tHGJ13bU7IBDso0TVMlB8b8d7DCERgAoyGuVXfjprpvv
+         BPBhA1h6LxHVxzBtLhvMC99/LGYKa2JFEKm8dW4736fCAhaFs4forUw+KqUICAGfh9IE
+         QTQQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LlR4pNa7;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id x13sor884949wrg.77.2017.11.07.10.53.47
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id g66si583068ywg.635.2018.03.01.01.51.00
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 07 Nov 2017 10:53:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 01 Mar 2018 01:51:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LlR4pNa7;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=En/2cUdJQ0Rf66BWaYOzRS3OOL0w5SlMaAzSd+ZAz2Q=;
-        b=LlR4pNa7XyDtmHOQIQYVuR6CPN/HO86kSMbBvmmTokzmAH1x719qaDbEnIinoW9+my
-         vPtu54sROL7PMBwd1CRHohpAPdVyw/WcWimb8KzpHxefJAw0w4hSFu+AYQ7lmHeLVsw0
-         o7cVJjTfVuVCB3uxpiGX2eexjbUCJ8YnppldI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=En/2cUdJQ0Rf66BWaYOzRS3OOL0w5SlMaAzSd+ZAz2Q=;
-        b=QBxN86Yu7lWdhmM8knXWNeXaDWxhryUGBD86IwinfiNSQkoODfTZGIvbkJPqqnKFqK
-         bwGcQlpqR3zCrNLRVNtuKjQ+yyaALAGuzyrZ6yTPh/YPRnrgL/ExDhSOUKZ3lQbQR4+8
-         da4YU6mdVV7AZztkNSeVsfSeQgO9E4Bjv7NIhC9u3HexdB8ihuCcLBqg7+bmNwGHbCpt
-         UfnG94jyTxxvp9+KnIEVAtc9aGLMkodH2pTmRCR/7Z5FezCaG4M0v6EKJl4xh2NGYsnY
-         txGi2oUgGX6uPxMdi4jjm9BZ/r5Q3yw+HUQB7H+SBLYQne4C8d0GQ3jT3ZH40MmftRuu
-         mWRg==
-X-Gm-Message-State: AJaThX4Soe565Mj+bNUMLONYWqwPiWvhnQAvz45Dagv3ClyyJj0MWp90
-	oyvvTe9uiDx0GBXn9UwflfqH3q63x3uQCPNlF8z2NnZZhLY=
-X-Google-Smtp-Source: ABhQp+TAZkHYtkj4g1O9cxNCPHXtbiLV4dLFgRBaPjkN7fDVotN1WF+lKW2B+LBY6/HIC21htYXZMd7V/j6tTEsrfr8=
-X-Received: by 10.223.151.212 with SMTP id t20mr2348805wrb.2.1510080826626;
- Tue, 07 Nov 2017 10:53:46 -0800 (PST)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:49197 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1erKrb-0003tK-TZ
+	for alex.bennee@linaro.org; Thu, 01 Mar 2018 04:50:59 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38598)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <imammedo@redhat.com>) id 1erKrP-0003pP-C6
+	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 04:50:48 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <imammedo@redhat.com>) id 1erKrM-0001ip-9X
+	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 04:50:47 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:59984 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1erKrM-0001iY-1t; Thu, 01 Mar 2018 04:50:44 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 00D9440FB650;
+	Thu,  1 Mar 2018 09:50:40 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 5E1DB10AF9E4;
+	Thu,  1 Mar 2018 09:50:31 +0000 (UTC)
+Date: Thu, 1 Mar 2018 10:50:30 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Andrew Jones <drjones@redhat.com>
+Message-ID: <20180301105030.2b716e68@redhat.com>
+In-Reply-To: <20180227132131.fipafmnb56a7fj76@kamzik.brq.redhat.com>
+References: <000e01d3afad$b9a13830$2ce3a890$@codeaurora.org>
+	<20180227104708.GA11391@cbox>
+	<ac329e1b1f5265a805916ab4f8708f9d@codeaurora.org>
+	<20180227124604.GA2373@cbox>
+	<20180227132131.fipafmnb56a7fj76@kamzik.brq.redhat.com>
 MIME-Version: 1.0
-Received: by 10.223.161.5 with HTTP; Tue, 7 Nov 2017 10:53:26 -0800 (PST)
-In-Reply-To: <87r2taq66h.fsf@linaro.org>
-References: <20171107165226.22546-1-alex.bennee@linaro.org>
- <CAFEAcA-E4Tq0gi3q5z+_5JOy0-j0=59p5WiKNFP9qmKG8=r4bg@mail.gmail.com> <87r2taq66h.fsf@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 7 Nov 2017 18:53:26 +0000
-Message-ID: <CAFEAcA_2QhC5BRJX51n4FP7EBOZ2qyq-H3hRhoGRLMTD=gP=Nw@mail.gmail.com>
-Subject: Re: [PATCH] accel/tcg/translate-all: expand cpu_restore_state retaddr check
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	Richard Henderson <rth@twiddle.net>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: AhNbgj0FV8dK
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.7]);
+	Thu, 01 Mar 2018 09:50:40 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
+	Thu, 01 Mar 2018 09:50:40 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'imammedo@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [Qemu-devel] VCPU hotplug on KVM/ARM
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: bthakur@codeaurora.org, Christoffer Dall <cdall@cs.columbia.edu>,
+	Christoffer Dall <cdall@kernel.org>, qemu-devel@nongnu.org,
+	Christoffer Dall <christofferdall@christofferdall.dk>,
+	qemu-arm@nongnu.org, kvmarm@lists.cs.columbia.edu
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LEKS8n8A/XBS
 
-On 7 November 2017 at 18:45, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
->
-> Peter Maydell <peter.maydell@linaro.org> writes:
->
->> On 7 November 2017 at 16:52, Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
-rote:
->>> We are still seeing signals during translation time when we walk over
->>> a page protection boundary. This expands the check to ensure the
->>> retaddr is inside the code generation buffer. The original suggestion
->>> was to check versus tcg_ctx.code_gen_ptr but as we now segment the
->>> translation buffer we have to settle for just a general check for
->>> being inside.
->>>
->>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->>> Reported-by: Peter Maydell <peter.maydell@linaro.org>
->>> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
->>> Cc: Richard Henderson <rth@twiddle.net>
->>> ---
->>>  accel/tcg/translate-all.c | 20 ++++++++++++--------
->>>  1 file changed, 12 insertions(+), 8 deletions(-)
->>>
->>> diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
->>> index 34c5e28d07..eb255af402 100644
->>> --- a/accel/tcg/translate-all.c
->>> +++ b/accel/tcg/translate-all.c
->>> @@ -357,16 +357,20 @@ bool cpu_restore_state(CPUState *cpu, uintptr_t r=
-etaddr)
->>>      TranslationBlock *tb;
->>>      bool r =3D false;
->>>
->>> -    /* A retaddr of zero is invalid so we really shouldn't have ended
->>> -     * up here. The target code has likely forgotten to check retaddr
->>> -     * !=3D 0 before attempting to restore state. We return early to
->>> -     * avoid blowing up on a recursive tb_lock(). The target must have
->>> -     * previously survived a failed cpu_restore_state because
->>> -     * tb_find_pc(0) would have failed anyway. It still should be
->>> -     * fixed though.
->>> +    /* The retaddr has to be in the region of current code buffer. If
->>> +     * it's not we will not be able to resolve it here. If it is zero
->>> +     * the calling code has likely forgotten to check retaddr before
->>> +     * calling here.
->>
->> This part of the comment isn't correct -- it's entirely expected
->> that we will get here with a zero retaddr, because that is
->> how the rest of the code tells this function "no state restoration
->> required".
->
-> Then why call cpu_restore_state at all? We should be consistent as there
-> are plenty of places that do things like:
->
->     if (pc) {
->         /* now we have a real cpu fault */
->         cpu_restore_state(cs, pc);
->     }
->
-> I'm happy to make a 0 retaddr officially valid and actually document it
-> in exec-all.h. It's not like most callers even bother checking the
-> return code.
+On Tue, 27 Feb 2018 14:21:31 +0100
+Andrew Jones <drjones@redhat.com> wrote:
 
-Hmm, there's more places than I expected that do that "don't call
-if 0" check than I thought. Overall it seems better to me to officially
-allow the zero, rather than having lots of callsites that all have
-to remember to check.
+> On Tue, Feb 27, 2018 at 01:46:04PM +0100, Christoffer Dall wrote:
+> > On Tue, Feb 27, 2018 at 05:34:28PM +0530, bthakur@codeaurora.org wrote:  
+> > > Hi Christoffer,
+> > > 
+> > > Thanks for your reply.
+> > > 
+> > > On 2018-02-27 16:17, Christoffer Dall wrote:  
+> > > >Hi Bhupinder,
+> > > >
+> > > >On Tue, Feb 27, 2018 at 03:01:17PM +0530, bthakur@codeaurora.org wrote:  
+> > > >>I hope it is the right forum to post my query.
+> > > >>
+> > > >>
+> > > >>
+> > > >>I am currently looking at the possibility of adding a new VCPU to a
+> > > >>running
+> > > >>guest VM in KVM/ARM. I see that currently, it is not allowed to add a
+> > > >>new
+> > > >>VCPU to a guest VM, if it is already initialized. The first check in
+> > > >>kvm_arch_vcpu_create() returns failure if it is already initialized.
+> > > >>  
+> > > >
+> > > >This would require a major rework of a lot of logic surrounding the GIC
+> > > >and other parts of KVM initialization.
+> > > >  
+> > > >>
+> > > >>
+> > > >>There was some work done in QEMU to add support for VCPU hotplug:
+> > > >>https://lists.gnu.org/archive/html/qemu-arm/2017-05/msg00404.html
+> > > >>
+> > > >>
+> > > >>
+> > > >>But I am looking at the KVM side for enabling adding a new VCPU. If you
+> > > >>can
+> > > >>point me to any relevant work/resources, which I can refer to then it
+> > > >>will
+> > > >>help me.
+> > > >>  
+> > > >
+> > > >I don't have any specific pointers, but I was always told that the way
+> > > >we were going to do CPU hotplug would be to instantiate a large number
+> > > >of VCPUs, and hotplug would be equivalent to turning on a VCPU which was
+> > > >previously powered off.
+> > > >
+> > > >Is this not still a feasible solution?  
+> > > It should be a feasible solution provided the guest VM is not able to
+> > > control the onlining/offlining of VCPUs. It should be controlled by the
+> > > Host.
+> > >   
+> > 
+> > KVM could simply refuse to turn on some of the CPUs unless given
+> > permission from host userspace.
+> >   
+> > > >
+> > > >How does VCPU hotplug work on x86?  
+> > > On x86, you can add a vcpu through libvirt setvcpu command and it shows up
+> > > in the guest VM as a new CPU if you do lscpu.
+> > >   
+> > 
+> > Sure, but what is the mechanism, does x86 qemu actually call
+> > KVM_CREATE_VCPU, or is this also a question of turning on already
+> > created vcpus ?
+In QEMU on x86 (and I think ppc, s390 as well), we create vCPUs on demand.
 
-Incidentally if retaddr is zero then
-(retaddr < (uintptr_t) tcg_init_ctx.code_gen_buffer)
-is always true and you don't need to explicitly check for zero, though
-it might be clearer to do so if we think we might change the rest
-of the condition in future.
+It would be nice if ARM would be able to do that too,
+so that it could take advantage of the same code.
 
-thanks
--- PMM
+ 
+> CC'ing Igor and qemu-devel
+> 
+> drew
+> 
+

@@ -1,90 +1,92 @@
-Received: by 10.28.71.155 with SMTP id m27csp771915wmi;
-        Fri, 13 Apr 2018 06:41:42 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4+8sGmvC1XvJD/i8wbwyJxp0EzXswWqIjhzur/9DdxR3UAkk/dqE4HJaMF5p1tt2vfio3sG
-X-Received: by 10.55.17.132 with SMTP id 4mr4438621qkr.86.1523626902565;
-        Fri, 13 Apr 2018 06:41:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523626902; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp1579998wmb;
+        Thu, 1 Mar 2018 00:41:35 -0800 (PST)
+X-Google-Smtp-Source: AG47ELt1HmpdjQsezQq7SW9+IgDtlaZ+WjaZvrOZDfJ+UBazMpY9wDY/zQvKwZNjgA90NJI8K1xu
+X-Received: by 10.129.216.13 with SMTP id d13mr520195ywj.167.1519893695794;
+        Thu, 01 Mar 2018 00:41:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519893695; cv=none;
         d=google.com; s=arc-20160816;
-        b=d8+/f0BG7L5NEalxgWvWaHcCWpJpvkGw1ga/ZqMWCKUaxJPOEl+tojxipBxn1OzEyR
-         pQHbbkDTWdZuxy+LEvdsLQaZesTej8/KE6xl98AYNEv9KFfs4dJyV/u5w98W6PyCHtlN
-         FwmLu/myevQKQkKpDZdTMgwG4OBOWhF5wHDMI4JK2SaxHftErY8lt7icAVlTV4a/8PdL
-         U2jycQ5T/+qzZty+9I/CkfpeMwYMW10haTBgJTlgqC5CKIMudOvPL4EkzyunPyam4nZM
-         a66/Fu1KV5iD3Lz8SVBG6xfv6WiOu+9g5nPg3qA1ScaqBu6JvbMwltjeL4fPyxZrq8im
-         Odtw==
+        b=ICj4b2BiNXNtAIMfQglFadKJEL35UaNORxfiu/mXX6HWNOWhJ4LjTxlRzjp95oxlFT
+         iw/U+rPTWHmYme0OCA6Ebr+og4U16DvdsDKwx4N+ygme7A6jhcIVkIfyTQQpRU1P/Hlc
+         UrNI9iTKGN9Y0WRwZX86ogt1jJ9Sc2akAXo/xF8KREdGxbe2d3ns3ytJHsoQI/Bkrs+1
+         Y6Qu5rk1tlX6n0lJzA2Seu0ElaX7t7opoxfjlHppzwe83TglchPrmmIawYWEbz87QwZy
+         Ix2FMv+j+nh/dCvlR4zic59NrxJW9lvMvgjCY+f/hyMCDOkvVdmlQjFm7GHLZEnxt1YC
+         OjTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date:arc-authentication-results;
-        bh=ln6NSgVf63tcNNpX3OCNAHKzP82jnQw8MVPdn7/QNFQ=;
-        b=yl6StYrMsHQZpidiq3W2ulniMqqKPsTtTVkr+Rnv6PrBjV3HZ6B6yCny60uYpXgGk9
-         NqAxJW757GKfUNSOfZ8/obq2ZhRCMh7v0kyGhgak9urEFF0I8oKdHjwxY+200aWfpO7S
-         2hrfRUudNrZDTNMgxKjxz3ia7Z9KLcwtxwBXIFslvLbGOit8boLVsNyjn/nV2VYmvERl
-         dLcpfzYT7iVHAx5xErPvRiF9uPi5P5RqZis5wiD125S0D2kyTXFxAuiIwJ11+6+YaNhg
-         ihBfJra9GwIwoxDv3AaMkYsjzBA5adIT5WnUdf2Gca2T7gDAlw8/TrwrYe/cQ2Lokctl
-         yIHw==
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=PhyJ3ntK9oElGqhlqhkqTbpdiOmjHu3HEAv5ay2fxsg=;
+        b=eSAXx9knTg9hFhhMCv/AQA1GkVjj82yuVc6HOuPpbZ2dcDNjr1hynIvPQMXZV7AmNP
+         DEI+VvSFjaJQ7Dxi7q6C1S5Tv0VDn8vJ6oKWqQmAU8IKpqlg9zx/6Sm7UoP37SEdDB2e
+         0NCZ6uFObxOThCG0d9uhgYptEEc+cZEoCO8mCzZAgbWDXSFjsnGEUNpcmqTxmN60aujO
+         Lz6AHb5j3BAq2wbAx7jkxEV3jPOYfQludpdkbco443VKouY6GxptpLhj87/d5vvlzSNb
+         JQt0xQj8qRoUdLetF8+XkAYt7tKdrRV5g2F2BNGp9tHvri2PNzDLTlGJvfSixvNrt/Pr
+         78OA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 133si5482604qkg.77.2018.04.13.06.41.42
+        by mx.google.com with ESMTPS id k10si584021ywl.783.2018.03.01.00.41.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 13 Apr 2018 06:41:42 -0700 (PDT)
+        Thu, 01 Mar 2018 00:41:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54482 helo=lists.gnu.org)
+Received: from localhost ([::1]:48899 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f6yxP-0004PN-Oa
-	for alex.bennee@linaro.org; Fri, 13 Apr 2018 09:41:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58597)
+	id 1erJmR-00061M-9X
+	for alex.bennee@linaro.org; Thu, 01 Mar 2018 03:41:35 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51685)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1f6yww-00048f-OR
-	for qemu-arm@nongnu.org; Fri, 13 Apr 2018 09:41:11 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1erJmJ-000619-G3
+	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 03:41:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1f6ywr-0003Es-VN
-	for qemu-arm@nongnu.org; Fri, 13 Apr 2018 09:41:10 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:34792 helo=mx1.redhat.com)
+	(envelope-from <eric.auger@redhat.com>) id 1erJmE-0005DU-Jr
+	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 03:41:27 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:41972 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1f6ywr-0003Ef-RW; Fri, 13 Apr 2018 09:41:05 -0400
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1erJmE-0005Cy-Dp; Thu, 01 Mar 2018 03:41:22 -0500
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 660954040856;
-	Fri, 13 Apr 2018 13:41:05 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C78B0215CDC8;
-	Fri, 13 Apr 2018 13:41:01 +0000 (UTC)
-Date: Fri, 13 Apr 2018 15:41:00 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20180413154100.1731a448@redhat.com>
-In-Reply-To: <CAFEAcA9LVUfmHGor=OmnXf0Dhj5zP_e++WELKwtx0Ru7VcRA-g@mail.gmail.com>
-References: <1523551221-11612-1-git-send-email-imammedo@redhat.com>
-	<1523551221-11612-2-git-send-email-imammedo@redhat.com>
-	<CAFEAcA9LVUfmHGor=OmnXf0Dhj5zP_e++WELKwtx0Ru7VcRA-g@mail.gmail.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 8C251EAEA0;
+	Thu,  1 Mar 2018 08:41:11 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-135.ams2.redhat.com
+	[10.36.116.135])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 908FE2144B26;
+	Thu,  1 Mar 2018 08:41:05 +0000 (UTC)
+To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
+References: <1519827835-239519-1-git-send-email-imammedo@redhat.com>
+	<1519827835-239519-6-git-send-email-imammedo@redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <b36a0028-ba18-fa57-8992-450857be6b40@redhat.com>
+Date: Thu, 1 Mar 2018 09:41:04 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+In-Reply-To: <1519827835-239519-6-git-send-email-imammedo@redhat.com>
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Fri, 13 Apr 2018 13:41:05 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Fri, 13 Apr 2018 13:41:05 +0000 (UTC) for IP:'10.11.54.6'
+	(mx1.redhat.com [10.11.55.1]);
+	Thu, 01 Mar 2018 08:41:11 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
+	Thu, 01 Mar 2018 08:41:11 +0000 (UTC) for IP:'10.11.54.6'
 	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'imammedo@redhat.com' RCPT:''
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [PATCH for-2.13 1/4] arm: reuse
- arm_boot_address_space() in armv7m_load_kernel()
+Subject: Re: [Qemu-arm] [PATCH v2 05/10] acpi: move ACPI_PORT_SMI_CMD define
+ to header it belongs to
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,32 +98,65 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: Shannon Zhao <zhaoshenglong@huawei.com>, qemu-arm@nongnu.org,
+	"Michael S. Tsirkin" <mst@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +rX/r+Fj2n/Q
+X-TUID: cmToOXXvW4Vv
 
-On Thu, 12 Apr 2018 19:22:13 +0100
-Peter Maydell <peter.maydell@linaro.org> wrote:
+Hi,
 
-> On 12 April 2018 at 17:40, Igor Mammedov <imammedo@redhat.com> wrote:
-> > reduce code duplication by resusing arm_boot_address_space()
-> >
-> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> > ---
-> >  include/hw/arm/arm.h |  2 ++
-> >  hw/arm/armv7m.c      | 10 +---------
-> >  hw/arm/boot.c        | 16 ++++++++--------
-> >  3 files changed, 11 insertions(+), 17 deletions(-)  
+On 28/02/18 15:23, Igor Mammedov wrote:
+> ACPI_PORT_SMI_CMD is alias for APM_CNT_IOPORT,
+> so make it really one instead of duplicating its value.
 > 
-> This minor duplication was deliberate, because hw/arm/armv7m.c
-> is for M profile cores only, and hw/arm/boot.c is for
-> A/R profile cores only. I don't think that saving a
-> single if/else in armv7m.c really justifies blurring
-> that dividing line.
-I'll drop patch on respin
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-> thanks
-> -- PMM
-
+Eric
+> ---
+>  include/hw/isa/apm.h | 3 +++
+>  hw/i386/acpi-build.c | 2 --
+>  hw/isa/apm.c         | 1 -
+>  3 files changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/include/hw/isa/apm.h b/include/hw/isa/apm.h
+> index 4839ff1..b7098bf 100644
+> --- a/include/hw/isa/apm.h
+> +++ b/include/hw/isa/apm.h
+> @@ -5,6 +5,9 @@
+>  #include "hw/hw.h"
+>  #include "exec/memory.h"
+>  
+> +#define APM_CNT_IOPORT  0xb2
+> +#define ACPI_PORT_SMI_CMD APM_CNT_IOPORT
+> +
+>  typedef void (*apm_ctrl_changed_t)(uint32_t val, void *arg);
+>  
+>  typedef struct APMState {
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index b85fefe..699f3a0 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -255,8 +255,6 @@ static void acpi_get_pci_holes(Range *hole, Range *hole64)
+>                                                 NULL));
+>  }
+>  
+> -#define ACPI_PORT_SMI_CMD           0x00b2 /* TODO: this is APM_CNT_IOPORT */
+> -
+>  static void acpi_align_size(GArray *blob, unsigned align)
+>  {
+>      /* Align size to multiple of given size. This reduces the chance
+> diff --git a/hw/isa/apm.c b/hw/isa/apm.c
+> index e232b0d..c3101ef 100644
+> --- a/hw/isa/apm.c
+> +++ b/hw/isa/apm.c
+> @@ -34,7 +34,6 @@
+>  #endif
+>  
+>  /* fixed I/O location */
+> -#define APM_CNT_IOPORT  0xb2
+>  #define APM_STS_IOPORT  0xb3
+>  
+>  static void apm_ioport_writeb(void *opaque, hwaddr addr, uint64_t val,
+> 

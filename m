@@ -1,93 +1,92 @@
-Received: by 10.28.71.155 with SMTP id m27csp775910wmi;
-        Fri, 13 Apr 2018 06:45:40 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx481VcK0jiYkLOXuDxLjLyWfV7zJa3nXMkw7loEQAA5w+cIfuHBtnPPCRR6Fo4XhFgYEoer/
-X-Received: by 10.55.239.5 with SMTP id j5mr4565608qkk.105.1523627140037;
-        Fri, 13 Apr 2018 06:45:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523627140; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp2043767wmb;
+        Thu, 1 Mar 2018 08:44:34 -0800 (PST)
+X-Google-Smtp-Source: AG47ELueh3sBU+yEKxjDJzARG4ivlPw5EoeVHfMPrsRqPvT7adyrmCLdxF3sN/mWoTJU46a/iwn2
+X-Received: by 2002:a25:b441:: with SMTP id c1-v6mr1664221ybg.218.1519922674074;
+        Thu, 01 Mar 2018 08:44:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519922674; cv=none;
         d=google.com; s=arc-20160816;
-        b=AeWCLOZAjg0rhXF6ntbY4S41dSEDksNNV26cuGjLPr0eJr4yUYyg1zYyIs0BBso7Hf
-         LNbk1hW10Wr9Tpoztzek+BGrFniT/mdqBOmXVlepoDkvfQx3fr1mlu/Dg6ZABMgkQTUC
-         KOdcyDESfjP0CohyEnjhvSjs/TsUXb/2nMgmT91/F7WlaV7VNJG2DtSw6wKwltHfPk2A
-         pUnYZTicBFTlAzEbPFSCjswX0KKI8gfvPhRM8wQ9ip+Hif/TCBZD6yk1a36zzZ5S8Vss
-         aeVKiUzJo0jOfSiS9yaEs0fsOdnx8nSyQXxq0U7oTBEbGmyBCiXZ+Z2a+bQb73xtjkiD
-         TenA==
+        b=aoPfnr9ZdmJxwijE3QbQEk2t3/jf/6E/Jba83COyz04czYc/0jYHsV0VSw8CmGiwe+
+         +5eOabcA3LsrorHrRIlR+wlEiCF+ltoQTm/RYinPZ6SydcTHbFMhgtfIcNiWsCfjM702
+         6Pd6GfL+ZhdgD4mS8AzPjG0QxZ7n/5kOwg372EmUPlCtn8geYTHKE5yZqRpLTTkOGyBN
+         kXOgZExAZyBSWBFFBU/8pAZe5FJ9z52gPWl++pWo0QhCgPrEX3aE9/Y3cxbs56Dw+5rW
+         mNXshFAWHEjxF1KRmt1pTVPhfwIdQuN31I+a3OhxO73hbs2RerhbugmhVf/n91RrO9bY
+         tQeA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:arc-authentication-results;
-        bh=HOJ7xcXdkq7m7W/RFfExuGldD4EZgG/2A0fhoRV2nB8=;
-        b=tuw5JuqdA3kM3bOMjr5SnAhnpmTxDTbFejDgesXkcEM5dH8KVODWN8ApKLzrvWxHng
-         jaE6l7qiZszBEat1WTjA7fSaW9iHpMfRu6N/3bWonE1+L8UOnYsx/N5Xvt5nmQvvBmdc
-         +sBi0u/hCOBB0ggOBxwxFROVliRy/nAzLHZF0KKLs8Hi58O2AWRbmoeqJlHQdwT9ICav
-         G0ldaDxVUz43y+6/aEO5UHTpy3YPiGEbdm++drvtcMiv1Tg4NRgeQ5KpfguRt4TXaEsM
-         5cCm795o9ZaMQFx+5RcU6CG0ualOJm5NUEmi68ncAcaZN073vVT/z3IElnr0Qnpt2AI4
-         77RA==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date:arc-authentication-results;
+        bh=/ojDaCmdGv+ckUyeZXLsEJCzLQe8nLdGVhAYpbA5R8c=;
+        b=zuDzvdqXTL1JGjPKA7JaD1oSpS2rb3BytH57jbjtotTPUwSmNUwb64cDXk1C14XHJ7
+         SrqBenpwknA0PB5YAVsEWhEeYY/uVMlNo0NY4PjUUVhEwUPmCAy4cV3vJWLwBRc7w4Op
+         l92rYyppVKmD1JHhEZivqpOJSJCzMo2D6HsnmdfPCm0A42MudsErQgMSGXT9altFYRav
+         /R/uRJl7DS0qegnj38KHsLR7vAawZwQPxwWA8O8ht6Os2x104DOu0E01WtRUpAxs6tem
+         /ktNSM/SWF163WEl1zjjlI1IOYM4/ZRcCDZQ8KpVwYwRMrdtih69Gw3JOJyHC4tMShWI
+         lIBg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l189si7368286qkb.39.2018.04.13.06.45.39
+        by mx.google.com with ESMTPS id x126-v6si704848ybx.514.2018.03.01.08.44.33
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 13 Apr 2018 06:45:40 -0700 (PDT)
+        Thu, 01 Mar 2018 08:44:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54757 helo=lists.gnu.org)
+Received: from localhost ([::1]:58035 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f6z1H-0007JL-Eq
-	for alex.bennee@linaro.org; Fri, 13 Apr 2018 09:45:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33473)
+	id 1erRJp-0004f3-GS
+	for alex.bennee@linaro.org; Thu, 01 Mar 2018 11:44:33 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48364)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1f6z17-0007Hu-40
-	for qemu-arm@nongnu.org; Fri, 13 Apr 2018 09:45:30 -0400
+	(envelope-from <imammedo@redhat.com>) id 1erRJW-0004aa-Mj
+	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 11:44:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1f6z12-0006Fh-0L
-	for qemu-arm@nongnu.org; Fri, 13 Apr 2018 09:45:29 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:49872 helo=mx1.redhat.com)
+	(envelope-from <imammedo@redhat.com>) id 1erRJS-0007Mt-Mt
+	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 11:44:14 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:52380 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1f6z11-0006Fb-SZ; Fri, 13 Apr 2018 09:45:23 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1erRJS-0007MS-FP; Thu, 01 Mar 2018 11:44:10 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3AE104182D59;
-	Fri, 13 Apr 2018 13:45:23 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-192.ams2.redhat.com
-	[10.36.116.192])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id C9E4910F1BF8;
-	Fri, 13 Apr 2018 13:45:19 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1522160122-10744-1-git-send-email-eric.auger@redhat.com>
-	<1522160122-10744-7-git-send-email-eric.auger@redhat.com>
-	<CAFEAcA_p+ibaMyePwKW_dMQ_M7BHADnzvN_5_mjOLmUtEp=m2Q@mail.gmail.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <75f90e1b-5460-bdba-9bd9-b32a87f40e06@redhat.com>
-Date: Fri, 13 Apr 2018 15:45:18 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	by mx1.redhat.com (Postfix) with ESMTPS id EA6FB4084FEC;
+	Thu,  1 Mar 2018 16:44:05 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id E53329C069;
+	Thu,  1 Mar 2018 16:43:56 +0000 (UTC)
+Date: Thu, 1 Mar 2018 17:43:55 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Auger Eric <eric.auger@redhat.com>
+Message-ID: <20180301174355.2d0ef5ae@redhat.com>
+In-Reply-To: <ad05c82f-eb31-694d-4688-ae250287cfd6@redhat.com>
+References: <1519827835-239519-1-git-send-email-imammedo@redhat.com>
+	<1519827835-239519-10-git-send-email-imammedo@redhat.com>
+	<986e15d2-47cd-be73-da0f-39874b38a325@redhat.com>
+	<20180301102153.0a07f96c@redhat.com>
+	<ad05c82f-eb31-694d-4688-ae250287cfd6@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_p+ibaMyePwKW_dMQ_M7BHADnzvN_5_mjOLmUtEp=m2Q@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Fri, 13 Apr 2018 13:45:23 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Fri, 13 Apr 2018 13:45:23 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+	(mx1.redhat.com [10.11.55.5]);
+	Thu, 01 Mar 2018 16:44:05 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Thu, 01 Mar 2018 16:44:05 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'imammedo@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 6/8] hw/arm/virt: Allow GICv3 DT
- node with multiple redistributor regions
+Subject: Re: [Qemu-arm] [PATCH v2 09/10] virt_arm: acpi: reuse common
+ build_fadt()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,62 +98,87 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, Christoffer Dall <cdall@kernel.org>,
-	Marc Zyngier <marc.zyngier@arm.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Eric Auger <eric.auger.pro@gmail.com>
+Cc: Shannon Zhao <zhaoshenglong@huawei.com>, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /ZouvKWLjtVt
+X-TUID: HaZe0BagCBw0
 
-Hi Peter,
+On Thu, 1 Mar 2018 10:38:52 +0100
+Auger Eric <eric.auger@redhat.com> wrote:
 
-On 13/04/18 15:36, Peter Maydell wrote:
-> On 27 March 2018 at 15:15, Eric Auger <eric.auger@redhat.com> wrote:
->> This patch adds the GICState handle in the virtual machine state and
->> allows to create a GIC device tree node advertising multiple redistributor
->> regions.
->>
->> There is one range per distributor region following the GIC distributor.
->> Please refer to kernel documentation for further details:
->> Documentation/devicetree/bindings/interrupt-controller/arm,gic-v3.txt
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+[...]
+> >>>  {
+> >>> @@ -1755,7 +1755,14 @@ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+> >>>  
+> >>>      build_append_gas_from_struct(tbl, &f->reset_reg); /* RESET_REG */
+> >>>      build_append_int_noprefix(tbl, f->reset_val, 1); /* RESET_VALUE */
+> >>> -    build_append_int_noprefix(tbl, 0, 3); /* Reserved, ACPI 3.0 */  
+> I meant we could have assert(f->rev < 6) here
+> >>> +    /* Since ACPI 5.1 */
+> >>> +    if ((f->rev >= 6) || ((f->rev == 5) && f->minor_ver > 0)) {  
+> and remove (f->rev >= 6) as in any case rev6 is not supported
+> (Hypervisor Vendor Identity field (8 byte) not duly added).
 > 
->> +
->> +        num_reg_values =  4 * (s->nb_redist_regions + 1);
->> +        regs = g_new0(uint64_t, num_reg_values);
->> +        qemu_fdt_setprop_cell(vms->fdt, "/intc", "#redistributor-regions",
->> +                              s->nb_redist_regions);
->> +        regs[0] = 2;
->> +        regs[1] = vms->memmap[VIRT_GIC_DIST].base;
->> +        regs[2] = 2;
->> +        regs[3] = vms->memmap[VIRT_GIC_DIST].size;
->> +
->> +        for (r = 1; r <= s->nb_redist_regions; r++) {
->> +            regs[4 * r] = 2;
->> +            regs[4 * r  + 1] = s->redist_region[r - 1].base;
->> +            regs[4 * r  + 2] = 2;
->> +            /* count redistributors of 2 x 64kB pages */
->> +            regs[4 * r  + 3] = (uint64_t)s->redist_region[r - 1].count << 17;
-> 
-> Board code shouldn't be reaching into the GIC device state struct like this.
+> Or do I miss something?
+Nope, you are right.
+I've missed 'code above' part and didn't get suggestion the first time.
 
-I will add a dedicated API.
+The reason why I didn't assert here is to keep this part
+(in the middle of table) working correctly without need
+to touch it when later revisions will add new fields at
+the end of table. So all we would have to do is to add
+new code at the end and update assert that sets revision limit.
 
-Thanks
+condition here essentially implements specs, i.e. 
+from 5.1 onward reserved space should be used for now defined fields.
 
-Eric
+We might add similar conditions, for other 'Reserved' fields,
+in the future if new revisions start to use them.
+
+> Thanks
 > 
->> +        }
->> +        qemu_fdt_setprop_sized_cells_from_array(vms->fdt, "/intc", "reg",
->> +                                                num_reg_values / 2, regs);
->> +        g_free(regs);
->> +
->>          if (vms->virt) {
->>              qemu_fdt_setprop_cells(vms->fdt, "/intc", "interrupts",
-> 
-> thanks
-> -- PMM
-> 
+> Eric
+> >>> +        build_append_int_noprefix(tbl, f->arm_boot_arch, 2); /* ARM_BOOT_ARCH */
+> >>> +        /* FADT Minor Version */
+> >>> +        build_append_int_noprefix(tbl, f->minor_ver, 1);
+> >>> +    } else {
+> >>> +        build_append_int_noprefix(tbl, 0, 3); /* Reserved upto ACPI 5.0 */
+> >>> +    }
+> >>>      build_append_int_noprefix(tbl, 0, 8); /* X_FIRMWARE_CTRL */
+> >>>  
+> >>>      /* XDSDT address to be filled by Guest linker at runtime */
+> >>> @@ -1779,6 +1786,18 @@ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+> >>>      build_append_gas_from_struct(tbl, &f->gpe0_blk); /* X_GPE0_BLK */
+> >>>      build_append_gas(tbl, AML_AS_SYSTEM_MEMORY, 0 , 0, 0, 0); /* X_GPE1_BLK */
+> >>>  
+> >>> +    if (f->rev <= 4) {
+> >>> +        goto build_hdr;
+> >>> +    }
+> >>> +
+> >>> +    /* SLEEP_CONTROL_REG */
+> >>> +    build_append_gas(tbl, AML_AS_SYSTEM_MEMORY, 0 , 0, 0, 0);
+> >>> +    /* SLEEP_STATUS_REG */
+> >>> +    build_append_gas(tbl, AML_AS_SYSTEM_MEMORY, 0 , 0, 0, 0);
+> >>> +
+> >>> +    /* TODO: extra fields need to be added to support revisions above rev5 */
+> >>> +    assert(f->rev == 5);    
+> >> My previous comment about asserting here if f->rev != 5 and previous
+> >> (f->rev >= 6) check was skipped but that's not a big deal.  
+> > I've thought that I've replied to comment,
+> > maybe I just didn't get meaning behind question?
+> > So I'll try to explain again.
+> > 
+> > If we reach this point rev must be 5, so f->rev >= 6 would be confusing
+> > at this point. When v6 support is added this assert should be moved after
+> > v6 stuff and condition is amended to f->rev == 6.
+> > 
+> >    
+> >> Reviewed-by: Eric Auger <eric.auger@redhat.com>  
+> > Thanks!
+> >   
+> >>
+> >> Thanks
+> >>
+> >> Eric  
+[...]

@@ -1,99 +1,93 @@
-Received: by 10.28.91.67 with SMTP id p64csp1877427wmb;
-        Thu, 1 Mar 2018 06:12:46 -0800 (PST)
-X-Google-Smtp-Source: AG47ELsb5WktMEUe1QW75UWJHE99nhHCLD7JIt9q0k3vMHd38xN7GCgOpPTEOw0WVaPjUjQDMnIf
-X-Received: by 10.13.211.130 with SMTP id v124mr1170214ywd.476.1519913565894;
-        Thu, 01 Mar 2018 06:12:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519913565; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp1878788wmb;
+        Thu, 1 Mar 2018 06:14:01 -0800 (PST)
+X-Google-Smtp-Source: AG47ELuo9Kgq0/of42w+j+fBZiG7pn72Qu4w/puon5VwhnXvN99KK2n8vtoGjmlb8x3sHCnZWCxd
+X-Received: by 10.129.46.2 with SMTP id u2mr1128461ywu.309.1519913641623;
+        Thu, 01 Mar 2018 06:14:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519913641; cv=none;
         d=google.com; s=arc-20160816;
-        b=d07kiCAh3LXKQxnefCMmJWfAZYfg6VsADn7u1KfQij1vJWbGb0iKecajKiCwo9stsY
-         xgv1S0VzaU59z0kLgccIdMT4X0J2EwDaMP6AKDseGCoHNGDgARK2kWX9AQHsl2NT2ENi
-         q62eMEZlyu+caWwRysq2eIqVzILoyMvsdhXma3sUcYUuDgX/pv85E0nGImwESms4f9sH
-         Jc2/kcn9VczgkyMX8JnWT16urGaPjt1SAmuv0zgjvCPpR9xLmirQnvvw2SnpyePdKiot
-         hQGKti5c0RjoCX0glR+JN1lrRz0BTJOQOS3LXkXcWHq3+CQ7ZEGx/GqJbcL5AlDfDyl1
-         dLnQ==
+        b=A6KzENQH1V3RD57qvMq+3kAbmZ777iCdGsLop40af4nrZ5hQtmYA+31QoDgoB81AYJ
+         Fp8gAd3yKvjXvkN6h/ZUqPJ3FubQ4IeTVJhCrXdQ/J9Wlcn82OGXpg1pnnVUN99DcViL
+         xJndjGLp2REJuWt5Nzy7WlIGGgkn3bZ68xv32mfW0snEaWT7GK8bZzK8oSOqbtJHQH0n
+         dUU70F7uvjgoDGV7PDfHMt3b2elwWIQc5sjYCWU9HDj6ayxW4JZ5UiVLTr7J5+DWxc5P
+         GTd9SK5zMeV/Mt+gOEQjHBneLHIPcCVEb1bCnhVpFYSyPQUEUeiCgCQecY85AuRPB4Rn
+         AOnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
          :arc-authentication-results;
-        bh=xi/IsLx3snr+BJa7Fuv3I0PyDBDY7yDJOy/VZCjxJx0=;
-        b=Uj6e6QIOo6OpTa7+CdZrpsKzregdS79vESv+S2eKDW7lKIka7CMuNk/ZXhRnA4qGeo
-         iwuehR4UAoVvKA47u8Oj22xw60wyuHuZkV+gn3zpvFQQVJ/yUjXLKfKE4g7Uim4+aDPG
-         UuA7q6PrutwgqnorUFJDEz+qrY859Oz4Ki28NFjzcIqxKI6Sj0xZyBXco5Dh1ni3d4Am
-         K3NJVW4oKb2Y/1Q+U9hz9tt3VkRNkP7HaAe/9VhC94W2nHMSyXRZJ2X+VQOyaXlHV6cZ
-         iMK5JffBYs0IfV4apU/uTFJ0AX8X+Ul4HBaX9yTBHlRyKJa3+il24Ysf2eVCWGSCSJra
-         1vww==
+        bh=u4P+9yIP8UIvh3Q1ZYHkBBI2UfZ9R2EN/fRMyM0zj3g=;
+        b=HyGp1tl5kQf4Aao7VC1hXtJusFAyAEqrlvDqsRixdB6d4hvRxA/VlKhs12LtNczMh+
+         NaKRPyI8I9r5iba2oQVd7TJsVSNVKtKs27pSfbyReNHd6JN1uQ40OeOXXYnQTQTjWUbt
+         Dz6vWJYQLu7hUUWqnQGjCWsnu5JOhPQpH8m7JikYt56LD5hu7keA3oVw0hDPU7Ods2QF
+         les3H72RoqLBKj3XQUroBg4oGZcfw2LNMHhb0DOkYfLrboKU1ediCWid3+MvcCKPfAlS
+         8gADAsGOVX3sE56uu+GKUuOIYBLMTxUTGbMw/kDT8Tgoda9thiCXAB5Kvuo3FO29Kt5Q
+         7GGA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=gtqDQhNN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i11-v6si661222ybi.569.2018.03.01.06.12.45
+        by mx.google.com with ESMTPS id p62si661907ywp.128.2018.03.01.06.14.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 01 Mar 2018 06:12:45 -0800 (PST)
+        Thu, 01 Mar 2018 06:14:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=gtqDQhNN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57156 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57162 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1erOwv-0004zg-9K
-	for alex.bennee@linaro.org; Thu, 01 Mar 2018 09:12:45 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55975)
+	id 1erOy9-00068E-2k
+	for alex.bennee@linaro.org; Thu, 01 Mar 2018 09:14:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56374)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1erOwj-0004xQ-1M
-	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 09:12:33 -0500
+	(envelope-from <thuth@redhat.com>) id 1erOxp-00063C-T7
+	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 09:13:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1erOwd-0005jM-5B
-	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 09:12:32 -0500
-Received: from mail-ot0-x243.google.com ([2607:f8b0:4003:c0f::243]:39851)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1erOwc-0005iU-W5
-	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 09:12:27 -0500
-Received: by mail-ot0-x243.google.com with SMTP id h8so5657903oti.6
-	for <qemu-arm@nongnu.org>; Thu, 01 Mar 2018 06:12:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=xi/IsLx3snr+BJa7Fuv3I0PyDBDY7yDJOy/VZCjxJx0=;
-	b=gtqDQhNNc4KwyDwd7FTzGzivOwA7U7RfYUF8fwHEREzPSuvfJh+gzkLTeMcHRr2PgO
-	x35BV77JfwZ3MVk8JDNRQ/8DeEDXYgkE5czIOl4rN2pwpBrHRqqeqok3wzL0H/g2EacI
-	t7K3dPfqAUhl32b5s21F/TyMnI5od5i8quzBA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=xi/IsLx3snr+BJa7Fuv3I0PyDBDY7yDJOy/VZCjxJx0=;
-	b=DxUg0UJiFy5mjR0n63Kx/fXBMcOAmJzGA3nFS+e4Z27jKHf0OmwMCa6Mywwn1nePqY
-	tNQu7Uwcs1i2hSQPUwWjomIit5C3jqfQ8pn55F612glIMMjhMf6Oj0ihUH1mODy5ULWf
-	VDulafT3cgx7MiCdlbr8fpE7yq09/y39U/0DM09++3PUKiyEWA05Vi2tRuP/WxU+PDvf
-	hDpAdgNEPpLNYJ1jD6qtXh5KUsvjeFeR/pnQA5UZT6BFqu5Pcqh3AXGJwuj9/eoJu2Nv
-	GciYNVpfc2X8KvzmMYZtCEBfgoAkvJ+zredPzpTtKYsDCcw6x7uMqfvTaUF6NwoGa6qA
-	kuog==
-X-Gm-Message-State: APf1xPC52nOiMEc5tNEHdDU0lcRJGHkHGUjX0h1kk321PD7GPnTNoN8c
-	EuY/VUur1KPdT6+WxNZYj/UB1xmCDeDp063Zl4nIdw==
-X-Received: by 10.157.27.17 with SMTP id l17mr1465915otl.294.1519913546181;
-	Thu, 01 Mar 2018 06:12:26 -0800 (PST)
+	(envelope-from <thuth@redhat.com>) id 1erOxl-0006uh-Sv
+	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 09:13:41 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:45304 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1erOxl-0006tf-No; Thu, 01 Mar 2018 09:13:37 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id CD809402291E;
+	Thu,  1 Mar 2018 14:13:33 +0000 (UTC)
+Received: from [10.36.116.91] (ovpn-116-91.ams2.redhat.com [10.36.116.91])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id F315BAFD61;
+	Thu,  1 Mar 2018 14:13:28 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1519883168-22092-1-git-send-email-thuth@redhat.com>
+	<CAFEAcA9Q9+sK5S1BREuCAVp4J5tU_mexDZU9nBuett3W7bQp-Q@mail.gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <8459fa75-826e-b42b-a002-e45b309d9e4b@redhat.com>
+Date: Thu, 1 Mar 2018 15:13:27 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.6.0
 MIME-Version: 1.0
-Received: by 10.157.33.100 with HTTP; Thu, 1 Mar 2018 06:12:05 -0800 (PST)
-In-Reply-To: <CAFEAcA_o86z59NmYJhbdLbZnvZ0kdAuSRqLrwrVkysS_+EDqqQ@mail.gmail.com>
-References: <20180228193125.20577-1-richard.henderson@linaro.org>
-	<20180228193125.20577-17-richard.henderson@linaro.org>
-	<CAFEAcA_o86z59NmYJhbdLbZnvZ0kdAuSRqLrwrVkysS_+EDqqQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 1 Mar 2018 14:12:05 +0000
-Message-ID: <CAFEAcA92Kt_w9_x1imqgmoQi7D_jT-ujqh2FexB53iRhZK4VAw@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::243
-Subject: Re: [Qemu-arm] [PATCH v3 16/16] target/arm: Enable
- ARM_FEATURE_V8_FCMA
+In-Reply-To: <CAFEAcA9Q9+sK5S1BREuCAVp4J5tU_mexDZU9nBuett3W7bQp-Q@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.6]);
+	Thu, 01 Mar 2018 14:13:33 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Thu, 01 Mar 2018 14:13:33 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [PATCH] hw/arm: Use more CONFIG switches to decide
+ which object files should be linked
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,17 +102,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9Pu5Fzbj82xN
+X-TUID: ln+AEDa00oHu
 
-On 1 March 2018 at 13:20, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 28 February 2018 at 19:31, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->> Enable it for the "any" CPU used by *-linux-user.
+On 01.03.2018 14:03, Peter Maydell wrote:
+> On 1 March 2018 at 05:46, Thomas Huth <thuth@redhat.com> wrote:
+>> A lot of ARM object files are linked into the executable unconditional=
+ly,
+>> even though we have corresponding CONFIG switches like CONFIG_PXA2XX o=
+r
+>> CONFIG_OMAP. We should make sure to use these switches in the Makefile=
+ so
+>> that the users can disable certain unwanted boards and devices more ea=
+sily.
+>> Also introduce the new switch CONFIG_STRONGARM to be able to disable t=
+he
+>> "Collie" machine if it is not wanted.
+>>
+>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>> ---
+>>  default-configs/arm-softmmu.mak |  2 ++
+>>  hw/arm/Makefile.objs            | 26 +++++++++++++++++---------
+>>  2 files changed, 19 insertions(+), 9 deletions(-)
+>>
+>> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-sof=
+tmmu.mak
+>> index ca34cf4..43f382a 100644
+>> --- a/default-configs/arm-softmmu.mak
+>> +++ b/default-configs/arm-softmmu.mak
+>> @@ -133,3 +133,5 @@ CONFIG_GPIO_KEY=3Dy
+>>  CONFIG_MSF2=3Dy
+>>  CONFIG_FW_CFG_DMA=3Dy
+>>  CONFIG_XILINX_AXI=3Dy
+>> +
+>> +CONFIG_STRONGARM=3Dy
+>> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+>> index 1c896ba..5e1e0a9 100644
+>> --- a/hw/arm/Makefile.objs
+>> +++ b/hw/arm/Makefile.objs
+>> @@ -1,15 +1,23 @@
+>> -obj-y +=3D boot.o collie.o exynos4_boards.o gumstix.o highbank.o
+>> -obj-$(CONFIG_DIGIC) +=3D digic_boards.o
+>> -obj-y +=3D integratorcp.o mainstone.o musicpal.o nseries.o
+>> -obj-y +=3D omap_sx1.o palm.o realview.o spitz.o stellaris.o
+>> -obj-y +=3D tosa.o versatilepb.o vexpress.o virt.o xilinx_zynq.o z2.o
+>> +obj-y +=3D boot.o virt.o sysbus-fdt.o
+>>  obj-$(CONFIG_ACPI) +=3D virt-acpi-build.o
+>> -obj-y +=3D netduino2.o
+>> -obj-y +=3D sysbus-fdt.o
+>> +obj-$(CONFIG_ARM_V7M) +=3D highbank.o netduino2.o vexpress.o
+>=20
+> This is definitely wrong -- highbank and vexpress are not V7M
+> platforms.
 
-> We should be setting some hwcap bits in linux-user for these new feature
-> bits (and RDM), right?
+Ooops, sorry, seems like I mixed up V7M with v7-A :-(
 
-Oh, you did that back in the patch where you added the feature bit.
-Sorry, I'm clearly skimming these patches a little too quickly.
+> Netduino2 is a v7M platform, but I don't think we
+> should be making it conditional on ARM_V7M -- we have per-board
+> configs for other boards, so you'd have a CONFIG_NETDUINO2 here
+> if you wanted it.
 
--- PMM
+OK, I think I'll simply introduce proper config switches for all three
+boards.
+
+>> +obj-$(CONFIG_ASPEED_SOC) +=3D integratorcp.o musicpal.o versatilepb.o
+>=20
+> This is wrong too -- none of these are aspeed-based devices.
+
+*facepalm* ... looks like I grep'ed that wrong (I was searching for
+"arm926" IIRC) ... I'll add proper config switches for those boards, too.
+
+ Thomas

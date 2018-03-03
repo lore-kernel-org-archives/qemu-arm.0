@@ -1,97 +1,97 @@
-Received: by 10.28.91.67 with SMTP id p64csp729860wmb;
-        Sat, 3 Mar 2018 06:42:08 -0800 (PST)
-X-Google-Smtp-Source: AG47ELtvDkDhohMeKN/3d5CwzynBYeA21e3KA/6UM54Y25r07aUgzbIglCvDusRkGi6xPmg6Z3/g
-X-Received: by 10.13.243.3 with SMTP id c3mr5807952ywf.336.1520088128747;
-        Sat, 03 Mar 2018 06:42:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520088128; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp729891wmb;
+        Sat, 3 Mar 2018 06:42:11 -0800 (PST)
+X-Google-Smtp-Source: AG47ELsQdrkXlni1JZPVDvcaP9gx5MG0MY2nXFKSQ8vDOw6boDPSGRd1osltg+xI6u7pgWkOHiyp
+X-Received: by 2002:a25:910c:: with SMTP id v12-v6mr5799628ybl.2.1520088131312;
+        Sat, 03 Mar 2018 06:42:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520088131; cv=none;
         d=google.com; s=arc-20160816;
-        b=jm+YtWb1/gNXWXgA3PJSm3iIGMlE6bQL6Ja5EybGL8Rjgq5dbcL85/+7T/u1P34b2W
-         FxFHZtGJ6ZBdoM6ClCBZPLk01xCslftlM28EyZZC6wKBgnWNSLfln0yl+y7VDdgA6qUX
-         7dKg5kQHwnA5KmHSD5e/ufmDrqjy4nkOOc0tkUrGi35diSNcotv2OkStIHZs7wOTIE9B
-         I13uuVJjAgVTtT0FACQx5R2kVPVzx+xxjTyaJoa9jSB0y2EABnMXlVpTf7+ljh12IFa+
-         nQCHlDiOi9ka46oMyhh1H1Ow4hIhn6sYI8grB2v/95CyxxH+41RfCNkVbSK7pl/cFq0R
-         HqKg==
+        b=tM10s5AP0E4x8EldbVZ2miEOwSGz6UNoOHOl/7+hTgJUrNReQ0ojX6UbkeCiLvitmR
+         lBQmKJTbMLPGI9gWINXXwXEogDKFtSSYceuknXcRq6vH/6/oRns65JYRKJwPMYZhfGXM
+         jYCAlBWHwZaL4XGyhkDWXns6WNPDm2ntOqD0vG0S6THquodqXGT9MCVlcU3uAA7bjq6n
+         8hSIfmsc+RAuvhMmZPG0GghZ8s1sz3W2X41kZ3nJP60lt0nE9l5L4tRGXsDkNVExJuO2
+         MQsRgZkdxWlbU3IGaoX7zi9siD30/e6MxcQOweD9XKjOOf+tkL3XESFb6VMQ57ud+KkE
+         TZ3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=LnFbmuldPnDENQxOdtBF+tFSPotpLRSL/upgvG0UeKs=;
-        b=dkMFD0flBA/GtWM5sP8gCu10wGBRysyI4ATBD/EuGTvH04fR7tCc4Nn/hl4gt0FQmK
-         57glxanD2mYv66Nrjpd2V34C7xxiCpFdmoYFenA/Rc0cl+okX9bg9b9ubP9pcaBcywpY
-         tkquwfsXq9Y26q3YuQmUYFTD+vrjRYomD4AKe0Xa/g1Q9kgsuUuHFYXBUKuW0E3vDhW9
-         QKTrsbFnnkeZyvvjIabu49aLTScXImHdlHhNmkz+YaakQwFqiAomE5CdpRPRObEnfTe+
-         G8JtGE26E9ySiaMqTytyCJ2F2iBNUlqkqZvbMSGk/tS3ES0mFFxx9P3GBr5fhswji+x/
-         ot8w==
+        bh=TzbfQHhRuCXJGiOFy0Tfsa3XjAPdBD+AVNn/qejvqyY=;
+        b=Lxxa18ZY4HNXsl71hHW5qV7CQlO8JC5amTyaLft7AS4Ef8nO59bQiyK0ZGkasvzSL8
+         W+d5h9UvQVWDVpsouR8wGKzKMn6r57pT7S3ndYhrNM3TkbaAOG74F7sQC80TPrmnAKWA
+         HsnK3Y7k63bNNrqtrvat4LJYr+zKYr74BARJt80WLmQHqNK/8wg79JB4O9shzo1SkNXZ
+         Ko0lvLWD2jW2FmKfLRw5GopJBUYlajIg6CXJkT8+gUwO7JlS0deGH+7Ny2glVn/yN4KY
+         t+tja78kEImeQv0cLGbQn2cUuLXkUnXNBmOZubVtvQO6vk4R4h1HzZjDkoRByxWvvuS1
+         wZUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=UbUD20KC;
+       dkim=fail header.i=@linaro.org header.s=google header.b=hx6NL43f;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h1si1476251ywf.301.2018.03.03.06.42.08
+        by mx.google.com with ESMTPS id k7si1166924ywb.516.2018.03.03.06.42.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 03 Mar 2018 06:42:08 -0800 (PST)
+        Sat, 03 Mar 2018 06:42:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=UbUD20KC;
+       dkim=fail header.i=@linaro.org header.s=google header.b=hx6NL43f;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40509 helo=lists.gnu.org)
+Received: from localhost ([::1]:40510 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1es8MS-0000my-4v
-	for alex.bennee@linaro.org; Sat, 03 Mar 2018 09:42:08 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56901)
+	id 1es8MU-0000oO-P9
+	for alex.bennee@linaro.org; Sat, 03 Mar 2018 09:42:10 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56869)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1es8J3-0006Dy-2S
-	for qemu-arm@nongnu.org; Sat, 03 Mar 2018 09:38:38 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1es8J0-00067o-WF
+	for qemu-arm@nongnu.org; Sat, 03 Mar 2018 09:38:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1es8J1-0003xL-Dv
-	for qemu-arm@nongnu.org; Sat, 03 Mar 2018 09:38:37 -0500
-Received: from mail-wr0-x242.google.com ([2a00:1450:400c:c0c::242]:39216)
+	(envelope-from <richard.henderson@linaro.org>) id 1es8J0-0003wi-2C
+	for qemu-arm@nongnu.org; Sat, 03 Mar 2018 09:38:35 -0500
+Received: from mail-wr0-x244.google.com ([2a00:1450:400c:c0c::244]:42211)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1es8J1-0003x2-4w
-	for qemu-arm@nongnu.org; Sat, 03 Mar 2018 09:38:35 -0500
-Received: by mail-wr0-x242.google.com with SMTP id w77so12879218wrc.6
-	for <qemu-arm@nongnu.org>; Sat, 03 Mar 2018 06:38:35 -0800 (PST)
+	id 1es8Iz-0003wM-PL
+	for qemu-arm@nongnu.org; Sat, 03 Mar 2018 09:38:34 -0500
+Received: by mail-wr0-x244.google.com with SMTP id k9so12843266wre.9
+	for <qemu-arm@nongnu.org>; Sat, 03 Mar 2018 06:38:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=LnFbmuldPnDENQxOdtBF+tFSPotpLRSL/upgvG0UeKs=;
-	b=UbUD20KChOGKXvw0kTzeUuB5tSmJ/mvzIN2NKH+3GOVEEisb/LnY8pRQCRicO2WWFh
-	/jgd1QuUOhOVGNPHIbvj5mB9a3WGUvC1SUSWD1jaaVd1Ga9MxMxkOKrhS3k9jHDu6Lkb
-	9MuUOKzha9Niv7uK30wAFz1Q10DGCyGlUDLIw=
+	bh=TzbfQHhRuCXJGiOFy0Tfsa3XjAPdBD+AVNn/qejvqyY=;
+	b=hx6NL43fVhtQWG7PX5fjtXNseFHPToq0LApuS5efWPyMEQsUTX9oeMovpNrtx0HAdG
+	nlJT/bOrlkTgKsax5mqQBtXPMQy5bsmiPGLajkKBFaUGDlQTLNrRYKTMCjeM4yBZP6m5
+	VgxHazsxc1OiwSQgm3VL3K8rPkdxkDKTQXqhg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=LnFbmuldPnDENQxOdtBF+tFSPotpLRSL/upgvG0UeKs=;
-	b=pIlos5+YxZlqM/cONmGgabsvBlNiZK7TRHtyfu2yGpilkLIPc6gy7fYvHGmxarYgaQ
-	tMG1VQXH2HLIk3rSsTk4a77TAR7QYdvxE7aM21K5C8qf0hauWWjpJNr2xlTifk31s9TW
-	X5ITDPpk7kvl3Pfkq5g1hP6mdUAg9DJqvlnxhgOt4rBMV8gtP8TFw4O/y9qRxlkO/+Hy
-	hj+WO4WinaRDt8gHzUd5D0eyMdwj7Rp9wfZpehb9NzF7KMBvgnLEsRMJxWa8szZGNdpw
-	E+UfN6xgmwdjADY4ePftdJp/LsW2iAF+EZBi8BzkkwZ4X406C/NTVEBLBx0WhGE756n8
-	1tew==
-X-Gm-Message-State: APf1xPBmzGOrgfLHt0dYXywk9Kcp3AbHkZN6nTT+HvwIqXegMBbiy1s4
-	XK3Hr5HagSdqYqmAJRrdU9TbiNml0WY=
-X-Received: by 10.223.150.148 with SMTP id u20mr7248045wrb.276.1520087913950; 
-	Sat, 03 Mar 2018 06:38:33 -0800 (PST)
+	bh=TzbfQHhRuCXJGiOFy0Tfsa3XjAPdBD+AVNn/qejvqyY=;
+	b=KGcV61M9hlVPryplPTKJlaGUBv7vLUpqstch7KoJdx92Chb2c3xwWjhBujx7jlB/SJ
+	OI0PVyCcak0tc48bniT7WRlLJNbTo7KuF9pzbEzVRNo0KM/WRP8ZUUMIZ1iJWCF4HzQ0
+	pRwt49DTVYY4kzYAb8y/ETbaS9tpkMoIR1vndPrsJhCdZ6xDq7DFxm3PImJi5RFL6O4e
+	+fC3TfK9D53n1B/DbgeF0M2kWiunkjTepyphMtI0Sju5QqJXRMqvBGis39LphAkFQypE
+	aQSTB+a8gMf/4+V3ARYQcLTBqnj+s+1z+sINNaPDErDc8cJ2LlWBY9dQsyfK0Fke2jxM
+	vNbg==
+X-Gm-Message-State: APf1xPBk8T+u+e4jO5ENH9vK/f1w4LnTva1MHXNmWXia/ulzGYtHAw76
+	Dt5HeSYQs0xNhyf8cSsZMoMVVQ==
+X-Received: by 10.223.195.147 with SMTP id p19mr8203044wrf.224.1520087912713; 
+	Sat, 03 Mar 2018 06:38:32 -0800 (PST)
 Received: from cloudburst.twiddle.net ([37.205.61.206])
-	by smtp.gmail.com with ESMTPSA id 4sm2732686wmz.31.2018.03.03.06.38.32
+	by smtp.gmail.com with ESMTPSA id 4sm2732686wmz.31.2018.03.03.06.38.31
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Sat, 03 Mar 2018 06:38:33 -0800 (PST)
+	Sat, 03 Mar 2018 06:38:31 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Sat,  3 Mar 2018 14:38:23 +0000
-Message-Id: <20180303143823.27055-6-richard.henderson@linaro.org>
+Date: Sat,  3 Mar 2018 14:38:22 +0000
+Message-Id: <20180303143823.27055-5-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.14.3
 In-Reply-To: <20180303143823.27055-1-richard.henderson@linaro.org>
 References: <20180303143823.27055-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::242
-Subject: [Qemu-arm] [PATCH v4 5/5] aarch64-linux-user: Add support for SVE
+X-Received-From: 2a00:1450:400c:c0c::244
+Subject: [Qemu-arm] [PATCH v4 4/5] aarch64-linux-user: Add support for EXTRA
  signal frame records
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -107,307 +107,165 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YIaD3vO7V5WS
+X-TUID: VMtacLnZ5MEP
 
-Depending on the currently selected size of the SVE vector registers,
-we can either store the data within the "standard" allocation, or we
-may beedn to allocate additional space with an EXTRA record.
+The EXTRA record allows for additional space to be allocated
+beyon what is currently reserved.  Add code to emit and read
+this record type.
+
+Nothing uses extra space yet.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- linux-user/signal.c | 210 +++++++++++++++++++++++++++++++++++++++++++++++-----
- 1 file changed, 192 insertions(+), 18 deletions(-)
+ linux-user/signal.c | 74 +++++++++++++++++++++++++++++++++++++++++++++--------
+ 1 file changed, 63 insertions(+), 11 deletions(-)
 
 diff --git a/linux-user/signal.c b/linux-user/signal.c
-index c31cf0601d..92513f655c 100644
+index f9eef3d753..c31cf0601d 100644
 --- a/linux-user/signal.c
 +++ b/linux-user/signal.c
-@@ -1452,6 +1452,34 @@ struct target_extra_context {
-     uint32_t reserved[3];
+@@ -1443,6 +1443,15 @@ struct target_fpsimd_context {
+     uint64_t vregs[32 * 2]; /* really uint128_t vregs[32] */
  };
  
-+#define TARGET_SVE_MAGIC    0x53564501
++#define TARGET_EXTRA_MAGIC  0x45585401
 +
-+struct target_sve_context {
++struct target_extra_context {
 +    struct target_aarch64_ctx head;
-+    uint16_t vl;
-+    uint16_t reserved[3];
-+    /* The actual SVE data immediately follows.  It is layed out
-+     * according to TARGET_SVE_SIG_{Z,P}REG_OFFSET, based off of
-+     * the original struct pointer.
-+     */
++    uint64_t datap; /* 16-byte aligned pointer to extra space cast to __u64 */
++    uint32_t size; /* size in bytes of the extra space */
++    uint32_t reserved[3];
 +};
-+
-+#define TARGET_SVE_VQ_BYTES  16
-+
-+#define TARGET_SVE_SIG_ZREG_SIZE(VQ)  ((VQ) * TARGET_SVE_VQ_BYTES)
-+#define TARGET_SVE_SIG_PREG_SIZE(VQ)  ((VQ) * (TARGET_SVE_VQ_BYTES / 8))
-+
-+#define TARGET_SVE_SIG_REGS_OFFSET \
-+    QEMU_ALIGN_UP(sizeof(struct target_sve_context), TARGET_SVE_VQ_BYTES)
-+#define TARGET_SVE_SIG_ZREG_OFFSET(VQ, N) \
-+    (TARGET_SVE_SIG_REGS_OFFSET + TARGET_SVE_SIG_ZREG_SIZE(VQ) * (N))
-+#define TARGET_SVE_SIG_PREG_OFFSET(VQ, N) \
-+    (TARGET_SVE_SIG_ZREG_OFFSET(VQ, 32) + TARGET_SVE_SIG_PREG_SIZE(VQ) * (N))
-+#define TARGET_SVE_SIG_FFR_OFFSET(VQ) \
-+    (TARGET_SVE_SIG_PREG_OFFSET(VQ, 16))
-+#define TARGET_SVE_SIG_CONTEXT_SIZE(VQ) \
-+    (TARGET_SVE_SIG_PREG_OFFSET(VQ, 17))
 +
  struct target_rt_sigframe {
      struct target_siginfo info;
      struct target_ucontext uc;
-@@ -1526,6 +1554,34 @@ static void target_setup_end_record(struct target_aarch64_ctx *end)
-     __put_user(0, &end->size);
- }
- 
-+static void target_setup_sve_record(struct target_sve_context *sve,
-+                                    CPUARMState *env, int vq, int size)
-+{
-+    int i, j;
-+
-+    __put_user(TARGET_SVE_MAGIC, &sve->head.magic);
-+    __put_user(size, &sve->head.size);
-+    __put_user(vq * TARGET_SVE_VQ_BYTES, &sve->vl);
-+
-+    /* Note that SVE regs are stored as a byte stream, with each byte element
-+     * at a subsequent address.  This corresponds to a little-endian store
-+     * of our 64-bit hunks.
-+     */
-+    for (i = 0; i < 32; ++i) {
-+        uint64_t *z = (void *)sve + TARGET_SVE_SIG_ZREG_OFFSET(vq, i);
-+        for (j = 0; j < vq * 2; ++j) {
-+            __put_user_e(env->vfp.zregs[i].d[j], z + j, le);
-+        }
-+    }
-+    for (i = 0; i <= 16; ++i) {
-+        uint16_t *p = (void *)sve + TARGET_SVE_SIG_PREG_OFFSET(vq, i);
-+        for (j = 0; j < vq; ++j) {
-+            uint64_t r = env->vfp.pregs[i].p[j >> 2];
-+            __put_user_e(r >> ((j & 3) * 16), p + j, le);
-+        }
-+    }
-+}
-+
- static void target_restore_general_frame(CPUARMState *env,
-                                          struct target_rt_sigframe *sf)
- {
-@@ -1569,14 +1625,45 @@ static void target_restore_fpsimd_record(CPUARMState *env,
+@@ -1502,6 +1511,15 @@ static void target_setup_fpsimd_record(struct target_fpsimd_context *fpsimd,
      }
  }
  
-+static void target_restore_sve_record(CPUARMState *env,
-+                                      struct target_sve_context *sve, int vq)
++static void target_setup_extra_record(struct target_extra_context *extra,
++                                      uint64_t datap, uint32_t extra_size)
 +{
-+    int i, j;
-+
-+    /* Note that SVE regs are stored as a byte stream, with each byte element
-+     * at a subsequent address.  This corresponds to a little-endian load
-+     * of our 64-bit hunks.
-+     */
-+    for (i = 0; i < 32; ++i) {
-+        uint64_t *z = (void *)sve + TARGET_SVE_SIG_ZREG_OFFSET(vq, i);
-+        for (j = 0; j < vq * 2; ++j) {
-+            __get_user_e(env->vfp.zregs[i].d[j], z + j, le);
-+        }
-+    }
-+    for (i = 0; i <= 16; ++i) {
-+        uint16_t *p = (void *)sve + TARGET_SVE_SIG_PREG_OFFSET(vq, i);
-+        for (j = 0; j < vq; ++j) {
-+            uint16_t r;
-+            __get_user_e(r, p + j, le);
-+            if (j & 3) {
-+                env->vfp.pregs[i].p[j >> 2] |= (uint64_t)r << ((j & 3) * 16);
-+            } else {
-+                env->vfp.pregs[i].p[j >> 2] = r;
-+            }
-+        }
-+    }
++    __put_user(TARGET_EXTRA_MAGIC, &extra->head.magic);
++    __put_user(sizeof(struct target_extra_context), &extra->head.size);
++    __put_user(datap, &extra->datap);
++    __put_user(extra_size, &extra->size);
 +}
 +
+ static void target_setup_end_record(struct target_aarch64_ctx *end)
+ {
+     __put_user(0, &end->magic);
+@@ -1554,48 +1572,74 @@ static void target_restore_fpsimd_record(CPUARMState *env,
  static int target_restore_sigframe(CPUARMState *env,
                                     struct target_rt_sigframe *sf)
  {
-     struct target_aarch64_ctx *ctx, *extra = NULL;
+-    struct target_aarch64_ctx *ctx;
++    struct target_aarch64_ctx *ctx, *extra = NULL;
      struct target_fpsimd_context *fpsimd = NULL;
-+    struct target_sve_context *sve = NULL;
-     uint64_t extra_datap = 0;
-     bool used_extra = false;
-     bool err = false;
-+    int vq = 0, sve_size = 0;
++    uint64_t extra_datap = 0;
++    bool used_extra = false;
++    bool err = false;
  
      target_restore_general_frame(env, sf);
  
-@@ -1608,6 +1695,18 @@ static int target_restore_sigframe(CPUARMState *env,
+     ctx = (struct target_aarch64_ctx *)sf->uc.tuc_mcontext.__reserved;
+     while (ctx) {
+-        uint32_t magic, size;
++        uint32_t magic, size, extra_size;
+ 
+         __get_user(magic, &ctx->magic);
+         __get_user(size, &ctx->size);
+         switch (magic) {
+         case 0:
+             if (size != 0) {
+-                return 1;
++                err = true;
++                goto exit;
++            }
++            if (used_extra) {
++                ctx = NULL;
++            } else {
++                ctx = extra;
++                used_extra = true;
+             }
+-            ctx = NULL;
+             continue;
+ 
+         case TARGET_FPSIMD_MAGIC:
+             if (fpsimd || size != sizeof(struct target_fpsimd_context)) {
+-                return 1;
++                err = true;
++                goto exit;
+             }
              fpsimd = (struct target_fpsimd_context *)ctx;
              break;
  
-+        case TARGET_SVE_MAGIC:
-+            if (arm_feature(env, ARM_FEATURE_SVE)) {
-+                vq = (env->vfp.zcr_el[1] & 0xf) + 1;
-+                sve_size = QEMU_ALIGN_UP(TARGET_SVE_SIG_CONTEXT_SIZE(vq), 16);
-+                if (!sve && size == sve_size) {
-+                    sve = (struct target_sve_context *)ctx;
-+                    break;
-+                }
++        case TARGET_EXTRA_MAGIC:
++            if (extra || size != sizeof(struct target_extra_context)) {
++                err = true;
++                goto exit;
 +            }
++            __get_user(extra_datap,
++                       &((struct target_extra_context *)ctx)->datap);
++            __get_user(extra_size,
++                       &((struct target_extra_context *)ctx)->size);
++            extra = lock_user(VERIFY_READ, extra_datap, extra_size, 0);
++            break;
++
+         default:
+             /* Unknown record -- we certainly didn't generate it.
+              * Did we in fact get out of sync?
+              */
+-            return 1;
 +            err = true;
 +            goto exit;
-+
-         case TARGET_EXTRA_MAGIC:
-             if (extra || size != sizeof(struct target_extra_context)) {
-                 err = true;
-@@ -1637,12 +1736,18 @@ static int target_restore_sigframe(CPUARMState *env,
-         err = true;
+         }
+         ctx = (void *)ctx + size;
      }
  
-+    /* SVE data, if present, overwrites FPSIMD data.  */
-+    if (sve) {
-+        target_restore_sve_record(env, sve, vq);
-+    }
-+
-  exit:
-     unlock_user(extra, extra_datap, 0);
-     return err;
- }
- 
--static abi_ulong get_sigframe(struct target_sigaction *ka, CPUARMState *env)
-+static abi_ulong get_sigframe(struct target_sigaction *ka,
-+                              CPUARMState *env, int size)
- {
-     abi_ulong sp;
- 
-@@ -1655,30 +1760,97 @@ static abi_ulong get_sigframe(struct target_sigaction *ka, CPUARMState *env)
-         sp = target_sigaltstack_used.ss_sp + target_sigaltstack_used.ss_size;
+     /* Require FPSIMD always.  */
+-    if (!fpsimd) {
+-        return 1;
++    if (fpsimd) {
++        target_restore_fpsimd_record(env, fpsimd);
++    } else {
++        err = true;
      }
+-    target_restore_fpsimd_record(env, fpsimd);
  
--    sp = (sp - sizeof(struct target_rt_sigframe)) & ~15;
-+    sp = (sp - size) & ~15;
- 
-     return sp;
+-    return 0;
++ exit:
++    unlock_user(extra, extra_datap, 0);
++    return err;
  }
  
-+typedef struct {
-+    int total_size;
-+    int extra_base;
-+    int extra_size;
-+    int std_end_ofs;
-+    int extra_ofs;
-+    int extra_end_ofs;
-+} target_sigframe_layout;
-+
-+static int alloc_sigframe_space(int this_size, target_sigframe_layout *l)
-+{
-+    /* Make sure there will always be space for the end marker.  */
-+    const int std_size = sizeof(struct target_rt_sigframe)
-+                         - sizeof(struct target_aarch64_ctx);
-+    int this_loc = l->total_size;
-+
-+    if (l->extra_base) {
-+        /* Once we have begun an extra space, all allocations go there.  */
-+        l->extra_size += this_size;
-+    } else if (this_size + this_loc > std_size) {
-+        /* This allocation does not fit in the standard space.  */
-+        /* Allocate the extra record.  */
-+        l->extra_ofs = this_loc;
-+        l->total_size += sizeof(struct target_extra_context);
-+
-+        /* Allocate the standard end record.  */
-+        l->std_end_ofs = l->total_size;
-+        l->total_size += sizeof(struct target_aarch64_ctx);
-+
-+        /* Allocate the requested record.  */
-+        l->extra_base = this_loc = l->total_size;
-+        l->extra_size = this_size;
-+    }
-+    l->total_size += this_size;
-+
-+    return this_loc;
-+}
-+
- static void target_setup_frame(int usig, struct target_sigaction *ka,
-                                target_siginfo_t *info, target_sigset_t *set,
+ static abi_ulong get_sigframe(struct target_sigaction *ka, CPUARMState *env)
+@@ -1621,7 +1665,8 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
                                 CPUARMState *env)
  {
--    int size = offsetof(struct target_rt_sigframe, uc.tuc_mcontext.__reserved);
--    int fpsimd_ofs, end1_ofs, fr_ofs, end2_ofs = 0;
--    int extra_ofs = 0, extra_base = 0, extra_size = 0;
-+    target_sigframe_layout layout = {
-+        /* Begin with the size pointing to the reserved space.  */
-+        .total_size = offsetof(struct target_rt_sigframe,
-+                               uc.tuc_mcontext.__reserved),
-+    };
-+    int fpsimd_ofs, fr_ofs, sve_ofs = 0, vq = 0, sve_size = 0;
+     int size = offsetof(struct target_rt_sigframe, uc.tuc_mcontext.__reserved);
+-    int fpsimd_ofs, end1_ofs, fr_ofs;
++    int fpsimd_ofs, end1_ofs, fr_ofs, end2_ofs = 0;
++    int extra_ofs = 0, extra_base = 0, extra_size = 0;
      struct target_rt_sigframe *frame;
      struct target_rt_frame_record *fr;
      abi_ulong frame_addr, return_addr;
- 
--    fpsimd_ofs = size;
--    size += sizeof(struct target_fpsimd_context);
--    end1_ofs = size;
--    size += sizeof(struct target_aarch64_ctx);
--    fr_ofs = size;
--    size += sizeof(struct target_rt_frame_record);
-+    /* FPSIMD record is always in the standard space.  */
-+    fpsimd_ofs = alloc_sigframe_space(sizeof(struct target_fpsimd_context),
-+                                      &layout);
- 
--    frame_addr = get_sigframe(ka, env);
-+    /* SVE state needs saving only if it exists.  */
-+    if (arm_feature(env, ARM_FEATURE_SVE)) {
-+        vq = (env->vfp.zcr_el[1] & 0xf) + 1;
-+        sve_size = QEMU_ALIGN_UP(TARGET_SVE_SIG_CONTEXT_SIZE(vq), 16);
-+        sve_ofs = alloc_sigframe_space(sve_size, &layout);
-+    }
-+
-+    if (layout.extra_ofs) {
-+        /* Reserve space for the extra end marker.  The standard end marker
-+         * will have been allocated when we allocated the extra record.
-+         */
-+        layout.extra_end_ofs
-+            = alloc_sigframe_space(sizeof(struct target_aarch64_ctx), &layout);
-+    } else {
-+        /* Reserve space for the standard end marker.
-+         * Do not use alloc_sigframe_space because we cheat
-+         * std_size therein to reserve space for this.
-+         */
-+        layout.std_end_ofs = layout.total_size;
-+        layout.total_size += sizeof(struct target_aarch64_ctx);
-+    }
-+
-+    /* Reserve space for the return code.  On a real system this would
-+     * be within the VDSO.  So, despite the name this is not a "real"
-+     * record within the frame.
-+     */
-+    fr_ofs = layout.total_size;
-+    layout.total_size += sizeof(struct target_rt_frame_record);
-+
-+    frame_addr = get_sigframe(ka, env, layout.total_size);
-     trace_user_setup_frame(env, frame_addr);
-     if (!lock_user_struct(VERIFY_WRITE, frame, frame_addr, 0)) {
-         goto give_sigsegv;
-@@ -1686,13 +1858,15 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
+@@ -1641,7 +1686,14 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
  
      target_setup_general_frame(frame, env, set);
      target_setup_fpsimd_record((void *)frame + fpsimd_ofs, env);
--    if (extra_ofs) {
--        target_setup_extra_record((void *)frame + extra_ofs,
--                                  frame_addr + extra_base, extra_size);
-+    target_setup_end_record((void *)frame + layout.std_end_ofs);
-+    if (layout.extra_ofs) {
-+        target_setup_extra_record((void *)frame + layout.extra_ofs,
-+                                  frame_addr + layout.extra_base,
-+                                  layout.extra_size);
-+        target_setup_end_record((void *)frame + layout.extra_end_ofs);
-     }
--    target_setup_end_record((void *)frame + end1_ofs);
--    if (end2_ofs) {
--        target_setup_end_record((void *)frame + end2_ofs);
-+    if (sve_ofs) {
-+        target_setup_sve_record((void *)frame + sve_ofs, env, vq, sve_size);
-     }
++    if (extra_ofs) {
++        target_setup_extra_record((void *)frame + extra_ofs,
++                                  frame_addr + extra_base, extra_size);
++    }
+     target_setup_end_record((void *)frame + end1_ofs);
++    if (end2_ofs) {
++        target_setup_end_record((void *)frame + end2_ofs);
++    }
  
      /* Set up the stack frame for unwinding.  */
+     fr = (void *)frame + fr_ofs;
 -- 
 2.14.3
 

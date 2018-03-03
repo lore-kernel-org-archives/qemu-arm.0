@@ -1,141 +1,235 @@
-Received: by 10.28.71.27 with SMTP id u27csp2319235wma;
-        Thu, 22 Feb 2018 11:13:12 -0800 (PST)
-X-Google-Smtp-Source: AH8x224GBQ86xzU9lrvzlKzVrlhj273QYMyq6yU4Aag+oNm4ZCG5FfG95NJTAWxn9b5iAqVF48FQ
-X-Received: by 10.13.208.197 with SMTP id s188mr5554522ywd.217.1519326791909;
-        Thu, 22 Feb 2018 11:13:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519326791; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp1104823wmb;
+        Sat, 3 Mar 2018 16:14:47 -0800 (PST)
+X-Google-Smtp-Source: AG47ELteEzeqgn+ATkv8hqJqYef4F8azcu0L8GGzbKmfN+lHWyVuzJRivcsW7eF29gkzKP+y3+Ym
+X-Received: by 2002:a25:2586:: with SMTP id l128-v6mr6375389ybl.198.1520122487605;
+        Sat, 03 Mar 2018 16:14:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520122487; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZjigzsxTKa9EuLirOLkFVi8T7DU+1326FkOuLztfRZcs5OxCy2e2va8sZKUkqJFSiE
-         VAI5W6vioJe9+HMoftZCnb+8G3EFAfmVshiYMM0Ifvm0Wzr3E6+D7W2iwB2Ga/WgOMwX
-         pJ5k23PE34bUiyUhKSLFH1COeDp5lVCmFz0Qfx6Vx5ZrsicQJc6/TKxZeD78a/3HP2WC
-         wqjPzVa81AGh18AS/rksfLTW5r2eOrB2XO6+hEMRk2sc+pWtiRiQAPNWbkmeK+v9qpOv
-         Pe0+rOidlIuEoGyQyBJ1smDo8GewxqlnH34D84N0K167JMwF4JVQlVvK67aNmtSfl5ln
-         3pQA==
+        b=Ai0vLYOkF5aYrgA6GX9kcMSRozfp9HPKNz62jOyQDRsC80bZcJi+wPVoeI2gl4TBIs
+         zvRJkuHL3AXDmnsofAjDlC38bfKpCsNrQuRhVcD3TuujJ8LHDfhvKySqP+ocAN1fZUhw
+         pm2sQBods4Bc9fvxnoHUb8nId7/Ytc/NdWD8DtjAXMdH8C0IaEUXbkhTwDzaNQYh+aJd
+         WG4789+MiC9YkdRCzR+k+NLXf2CTScxaCeQXC1As7WSq/VOOQd/VXLa1biH+cFlbmOfY
+         NiYCp463P5d1lV4hIBU1/05NIyIlBIFN2PchsRHrJDUOAaz9B9FXQfnvpxG5r/td2m+F
+         gfWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=hDRdlMm04drG9Xo4n2ovJZBAkKTpFalHiUl34pyrTlo=;
-        b=XA3C8VnX+j+rkL//aPOhVfgYYB6ZAfdre50yN0Hbh64Cb+kmUcDo+x6IwANLAeS6NO
-         /+hi2r0+iVNn+cBU7zdjM7ajSD+FrISyoCE50GaXw9WtpxaCRznhd2aCmZMhbdXjvekp
-         go0Hw68Y4zlGFfUToFpmRcYh7MjsrSk1EY9L54rQSx561Z4dtpUDRBC7VDtELN1tlXcJ
-         kQHAQPWofCLPahxDr6bnzms+9IXMfP85GbcOcP3Z56Ik24LnF24FViuRuFNhI66MS2+O
-         h41l8wlzgarsa33EF++yBe0YERIHIqrPdqs0RI7l5kQXRZIeb+ClqIMNXbhVLClAemfZ
-         7QMg==
+        bh=Owgg2rna0MD3CzpAnt8gv1AOdpJjAwGrfKV8aBYb7TY=;
+        b=qYtmVzLbJwEpZk/CWpbSPeyzJbKX+4j1ATz+BK1WpCJ8dksktO6/zPGZeVPUsdGbVp
+         gBlMcZ8UPPYgvE9Vul0Nkj253ZQKQRjLkcUGn7QKiRg/gO+53nrlWcW/jRtnclgaSLpp
+         o97RU57NbtFj6859572ybefEH0ktZvNdYjk14sgXDMk3rJ4bwHJk3/R/oHhToWTyynPz
+         dUVp2YhsqvvmA5aJYp+/9o1CWqK6HmDsqdFQ4bueH+XUaIX470GJoeuq0/DO95mUUQBZ
+         +wv/lQvaA0rbxnog69PSjunkk5yAFJQXhkRgAG9ThQuny7ywAlpV1nvkgdt55MC7SGVE
+         BGsw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=BabW02cH;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AtRj8x4t;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f126-v6si114824ybc.654.2018.02.22.11.13.10
+        by mx.google.com with ESMTPS id l185-v6si1605840ybf.633.2018.03.03.16.14.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 22 Feb 2018 11:13:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sat, 03 Mar 2018 16:14:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=BabW02cH;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40570 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AtRj8x4t;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:42792 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eowIo-0002Bs-Ei
-	for alex.bennee@linaro.org; Thu, 22 Feb 2018 14:13:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60411)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1esHIc-0006xA-UZ
+	for alex.bennee@linaro.org; Sat, 03 Mar 2018 19:14:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40199)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eowHr-0001sz-Ug
-	for qemu-devel@nongnu.org; Thu, 22 Feb 2018 14:12:13 -0500
+	(envelope-from <andrew.smirnov@gmail.com>) id 1esHIM-0006uC-90
+	for qemu-arm@nongnu.org; Sat, 03 Mar 2018 19:14:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eowHq-0007HM-JU
-	for qemu-devel@nongnu.org; Thu, 22 Feb 2018 14:12:11 -0500
-Received: from mail-ot0-x22f.google.com ([2607:f8b0:4003:c0f::22f]:37682)
+	(envelope-from <andrew.smirnov@gmail.com>) id 1esHIL-0000ZV-3S
+	for qemu-arm@nongnu.org; Sat, 03 Mar 2018 19:14:30 -0500
+Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:42050)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eowHq-0007Gp-FL
-	for qemu-devel@nongnu.org; Thu, 22 Feb 2018 14:12:10 -0500
-Received: by mail-ot0-x22f.google.com with SMTP id e64so5607185ote.4
-	for <qemu-devel@nongnu.org>; Thu, 22 Feb 2018 11:12:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
+	id 1esHIK-0000ZG-Tl; Sat, 03 Mar 2018 19:14:29 -0500
+Received: by mail-qk0-x242.google.com with SMTP id b130so16519188qkg.9;
+	Sat, 03 Mar 2018 16:14:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=hDRdlMm04drG9Xo4n2ovJZBAkKTpFalHiUl34pyrTlo=;
-	b=BabW02cHGTctw8O8BfGn7x+XXKvAfOo0mAO1NrS+6yj42dD/tI9lDL6BYGMU5BCO4P
-	r5A8GNGRzhQ1zZ3kmT2/FqqRraXll4LKFmenEU6UPI0uWbuOkH80U6giFRdvK68XB0BY
-	ykUH1Uu/UZB2NrotNEQrV4RGiYdu1BStqxkeQ=
+	:cc; bh=Owgg2rna0MD3CzpAnt8gv1AOdpJjAwGrfKV8aBYb7TY=;
+	b=AtRj8x4t0CI0CG6/NsJrALhJkysqE1erSlhtUeh92rkxl6ck6wLQYlGeWB43ZaBmlL
+	Sr517Vegfyxz+3YrFxzHBh/XjtFz2boBOJiE9z1k53Q8GEP8gJFjM+5ypNUCR+Hn+IHA
+	Au72nk5KBNpTHkYghGMV/UTeUjUV4UBYaDy8PcrvYWJu4WLAW0Mjb6TBQc16+K8HRdI5
+	M3Fj0y5JoFI6MBSoZm7NCxvz1Sh1FcdOZQ1vyuVuRCxVds+0xrt0USQcv5IJItuLbHxn
+	3UnM2yGbQjuJmazEqdYl0ynogQiEzqQQ9Pv2TW7rygwS73vOKTTEZKeI+kdhILDKna13
+	jCGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=hDRdlMm04drG9Xo4n2ovJZBAkKTpFalHiUl34pyrTlo=;
-	b=aD20WIeaQG0qq4IiP01HY5y0S1qdJThQh2EJcEER6a0lej4v18AHDXaPN721e3yTtg
-	hElDbcM8jUc532Z3GKGaLFD10HTiDvKCsWV+ck7RERq0L03QoC0zsFgbd64kI9ctktNy
-	wsY8pZWDucIPYHlU++RalqFkJBt0GcAtM5hBZ6Oej44hPYC+RYGmjC7PZcUMK3d0UEs2
-	2wNTYmcm/jveOBJYf3qDkFYwuPMw3lUHjutOSHlwYUDG0t+6VAOUen8rQqG558JX4aMN
-	4OQLuoVq36u7rzdpRicZt3zSbaJDwNo3EwwVfQof0x+5cZWURwUDWbAk3fcRiDRTKNrO
-	0F5Q==
-X-Gm-Message-State: APf1xPBW7RQ/iuxzLU54dbaNOEA0/mvi+krMg0lVRADyAJePO9DZB9Ff
-	lg/LMBxnTzdtnFel99tv80BaEltcaj/X3bnwuccWW7S1
-X-Received: by 10.157.7.227 with SMTP id 90mr5648409oto.126.1519326729732;
-	Thu, 22 Feb 2018 11:12:09 -0800 (PST)
+	bh=Owgg2rna0MD3CzpAnt8gv1AOdpJjAwGrfKV8aBYb7TY=;
+	b=onsS4B+cOgysj19PMBpuygyFn9CvviR4K7c3MVKwzg3vNQAzfu1DVFkHv7FNpiRT+z
+	OeDFfkoa8KDWV/cKZImf3ZtGBrhf5MOyU4x+sjlFAfRa2szLXC5rGsBUEw1JqtyccMHk
+	iHoJqXdGgJcMUWEiNib66/DoeI9Tf5qFkIMXezCfT2Be7+YlJDP30dyb22Po3/NQpAk/
+	iuUwnj3oPoAALZmhdHw96KLY/fBo3n/x//QWLHqhRgZFpCJ2ivENhmWgDXADHY+vhecJ
+	0urHGgiOcF+QHpqwR1ET/KZgj4iEdOXjEHkwhccxgmIJ5cRSlwacFVm6CvRCXSv6WzJf
+	/G/w==
+X-Gm-Message-State: AElRT7F7oRKiJxQ6KnyTsbkBnxpOFyY7sKEHf3juhSxcI5+vETwECNMB
+	/l83c7h69IAAi8hfD9zsgysC98VYRM4qKOtg5us=
+X-Received: by 10.55.142.71 with SMTP id q68mr15249643qkd.40.1520119556213;
+	Sat, 03 Mar 2018 15:25:56 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.157.33.100 with HTTP; Thu, 22 Feb 2018 11:11:49 -0800 (PST)
-In-Reply-To: <151932620203.726.14470172414364772802@bdbb90650ae5>
-References: <20180220180325.29818-1-peter.maydell@linaro.org>
-	<151932620203.726.14470172414364772802@bdbb90650ae5>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 22 Feb 2018 19:11:49 +0000
-Message-ID: <CAFEAcA90bTkHb+AF2W7Jv3GMENo0Ni3rK6GnzNVtk+RF89VuCg@mail.gmail.com>
-To: QEMU Developers <qemu-devel@nongnu.org>
+Received: by 10.140.80.146 with HTTP; Sat, 3 Mar 2018 15:25:55 -0800 (PST)
+In-Reply-To: <CAHQ1cqEDDz5ni-+MfQp7dE0x_b51=JwgU-fwS4Y+AkyDyLpxRQ@mail.gmail.com>
+References: <20180213170712.18239-1-andrew.smirnov@gmail.com>
+	<20180213170712.18239-2-andrew.smirnov@gmail.com>
+	<20180213200450-mutt-send-email-mst@kernel.org>
+	<CAHQ1cqEpeq+M6bVTBLd6dvN7=h-s_bPTXRx_GaoMFhhpq2gTpA@mail.gmail.com>
+	<20180214000837-mutt-send-email-mst@kernel.org>
+	<CAHQ1cqEDDz5ni-+MfQp7dE0x_b51=JwgU-fwS4Y+AkyDyLpxRQ@mail.gmail.com>
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+Date: Sat, 3 Mar 2018 15:25:55 -0800
+Message-ID: <CAHQ1cqGKSJcV5warB_mHUHvikGdAUST-otPUXzHhLwR2KV=SPw@mail.gmail.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::22f
-Subject: Re: [Qemu-devel] [PATCH 00/19] Add Cortex-M33 and mps2-an505 board
- model
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400d:c09::242
+Subject: Re: [Qemu-arm] [PATCH v6 1/3] pci: Add support for Designware IP
+ block
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, Fam Zheng <famz@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	"patches@linaro.org" <patches@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7kM5cMD0eG8u
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@zoho.com>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	"open list:ARM" <qemu-arm@nongnu.org>, Andrey Yurovsky <yurovsky@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: feUqKn8YcWzZ
 
-On 22 February 2018 at 19:03,  <no-reply@patchew.org> wrote:
-
-> WARNING: line over 80 characters
-> #530: FILE: include/hw/misc/iotkit-secctl.h:14:
-> + * http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ecm0601256/index.html
-
-> WARNING: line over 80 characters
-> #660: FILE: include/hw/arm/iotkit.h:13:
-> + * http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ecm0601256/index.html
-
-> ERROR: line over 90 characters
-> #54: FILE: hw/arm/mps2-tz.c:21:
-> + * https://developer.arm.com/products/system-design/development-boards/fpga-prototyping-boards/mps2
+On Tue, Feb 13, 2018 at 2:47 PM, Andrey Smirnov
+<andrew.smirnov@gmail.com> wrote:
+> On Tue, Feb 13, 2018 at 2:15 PM, Michael S. Tsirkin <mst@redhat.com> wrote:
+>> On Tue, Feb 13, 2018 at 12:24:40PM -0800, Andrey Smirnov wrote:
+>>> On Tue, Feb 13, 2018 at 10:13 AM, Michael S. Tsirkin <mst@redhat.com> wrote:
+>>> > On Tue, Feb 13, 2018 at 09:07:10AM -0800, Andrey Smirnov wrote:
+>>> >> +static void designware_pcie_root_class_init(ObjectClass *klass, void *data)
+>>> >> +{
+>>> >> +    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
+>>> >> +    DeviceClass *dc = DEVICE_CLASS(klass);
+>>> >> +
+>>> >> +    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>>> >> +
+>>> >> +    k->vendor_id = PCI_VENDOR_ID_SYNOPSYS;
+>>> >> +    k->device_id = 0xABCD;
+>>> >> +    k->revision = 0;
+>>> >> +    k->class_id = PCI_CLASS_BRIDGE_PCI;
+>>> >> +    k->is_express = true;
+>>> >> +    k->is_bridge = true;
+>>> >> +    k->exit = pci_bridge_exitfn;
+>>> >> +    k->realize = designware_pcie_root_realize;
+>>> >> +    k->config_read = designware_pcie_root_config_read;
+>>> >> +    k->config_write = designware_pcie_root_config_write;
+>>> >> +
+>>> >> +    dc->reset = pci_bridge_reset;
+>>> >> +    /*
+>>> >> +     * PCI-facing part of the host bridge, not usable without the
+>>> >> +     * host-facing part, which can't be device_add'ed, yet.
+>>> >> +     */
+>>> >> +    dc->user_creatable = false;
+>>> >> +    dc->vmsd = &vmstate_designware_pcie_root;
+>>> >> +}
+>>> >> +
+>>> >> +static uint64_t designware_pcie_host_mmio_read(void *opaque, hwaddr addr,
+>>> >> +                                               unsigned int size)
+>>> >> +{
+>>> >> +    PCIHostState *pci = PCI_HOST_BRIDGE(opaque);
+>>> >> +    PCIDevice *device = pci_find_device(pci->bus, 0, 0);
+>>> >> +
+>>> >> +    return pci_host_config_read_common(device,
+>>> >> +                                       addr,
+>>> >> +                                       pci_config_size(device),
+>>> >> +                                       size);
+>>> >> +}
+>>> >> +
+>>> >> +static void designware_pcie_host_mmio_write(void *opaque, hwaddr addr,
+>>> >> +                                            uint64_t val, unsigned int size)
+>>> >> +{
+>>> >> +    PCIHostState *pci = PCI_HOST_BRIDGE(opaque);
+>>> >> +    PCIDevice *device = pci_find_device(pci->bus, 0, 0);
+>>> >> +
+>>> >> +    return pci_host_config_write_common(device,
+>>> >> +                                        addr,
+>>> >> +                                        pci_config_size(device),
+>>> >> +                                        val, size);
+>>> >> +}
+>>> >> +
+>>> >> +static const MemoryRegionOps designware_pci_mmio_ops = {
+>>> >> +    .read       = designware_pcie_host_mmio_read,
+>>> >> +    .write      = designware_pcie_host_mmio_write,
+>>> >> +    .endianness = DEVICE_NATIVE_ENDIAN,
+>>> >> +    .impl = {
+>>> >> +        /*
+>>> >> +         * Our device would not work correctly if the guest was doing
+>>> >> +         * unaligned access. This might not be a limitation on the real
+>>> >> +         * device but in practice there is no reason for a guest to access
+>>> >> +         * this device unaligned.
+>>> >> +         */
+>>> >> +        .min_access_size = 4,
+>>> >> +        .max_access_size = 4,
+>>> >> +        .unaligned = false,
+>>> >> +    },
+>>> >> +};
+>>> >
+>>> > Could you pls add some comments explaining why is DEVICE_NATIVE_ENDIAN
+>>> > appropriate here?  Most of these cases are plain "we never bothered
+>>> > about cross-endian setups". Some are "there's a mix of different
+>>> > endian-ness values, need to handle in a special way".
+>>> >
+>>> > I suspect you really need DEVICE_LITTLE_ENDIAN.
+>>> >
+>>>
+>>> That MemoryRegion corresponds to a register file permanently mapped
+>>> into CPU's address space, so my assumption is that SoC designers will
+>>> wire it according to CPUs endianness be it big or little. I am not
+>>> aware of any big-endian CPU based SoC on the market using Designware's
+>>> IP block, so I don't think there are any precedent confirming or
+>>> denying correctness of my assumption. IMHO, this is also the reason
+>>> why all of Linux driver code for that IP assumes little endianness.
+>>
+>> IMHO if Linux driver code does cpu_to_le then it seems best to be
+>> consistent with that.
+>>
 >
-> ERROR: line over 90 characters
-> #57: FILE: hw/arm/mps2-tz.c:24:
-> + * http://infocenter.arm.com/help/topic/com.arm.doc.100112_0200_06_en/versatile_express_cortex_m_prototyping_systems_v2m_mps2_and_v2m_mps2plus_technical_reference_100112_0200_06_en.pdf
+> Well, all of the DW code does so implicitly by using readl()/writel()
+> helpers which will perform cpu_to_le/le_to_cpu under the hood. But is
+> seems to me that it could be either because the access does have to be
+> LE always or simply because readl()/writel() are goto memory helpers
+> on ARM/LE-platforms.
 >
-> WARNING: line over 80 characters
-> #63: FILE: hw/arm/mps2-tz.c:30:
-> + *   http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ecm0601256/index.html
+> FWIW: Somewhat similar precedent of MIPS/Boston machine can serve as
+> counter-example to my assumption, since Xilinx PCIE IP there seem to
+> be wired to be LE despite being attached to BE CPU.
+>
 
-Does anybody better with perl and more familiar with checkpatch's
-internals feel like tweaking it to suppress the over-long-line
-complaint for URLs ?
+Michael, Peter:
 
-thanks
--- PMM
+Just in case we are in an accidental deadlock waiting on each other,
+my assumption is that this patch in particular and the rest in the
+series are good as is to be applied. Please let me know if any changes
+need to be made and I'll submit v7.
+
+Thanks,
+Andrey Smirnov

@@ -1,170 +1,239 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp4380581wru;
-        Tue, 14 Aug 2018 11:26:31 -0700 (PDT)
-X-Google-Smtp-Source: AA+uWPwBXZQzSV9G5bWFogCUbbSFfWFv/ekRTPNlW7QP00K+OI+HFCqC2lhBKNfkMchl7pe/EoCf
-X-Received: by 2002:a37:8506:: with SMTP id h6-v6mr20041680qkd.175.1534271191210;
-        Tue, 14 Aug 2018 11:26:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1534271191; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp1228259wmb;
+        Sat, 3 Mar 2018 20:00:20 -0800 (PST)
+X-Google-Smtp-Source: AG47ELuAAq2eOlWImINCYEhy2SKsLfW0ygoJPoncMmGKgh2KD8l5kWnSbZtjeVk2pYwt2sqQYCR1
+X-Received: by 10.129.178.68 with SMTP id q65mr7044347ywh.148.1520136020087;
+        Sat, 03 Mar 2018 20:00:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520136020; cv=none;
         d=google.com; s=arc-20160816;
-        b=VTgWTM0f1p75lfW+7ywZI/LeELkUIuRIx6wHBNqExJuaDbscGd0IeYlEGbQPcYhqtd
-         1IQlFQkhMNOY3gBZSQrt5fDXkltzxLwIzfIqVcfPgsd9sENKrfDEYPi8UPoTfrcNCKxx
-         +wwzzPclnKFxqH6Vqe65IE1nVBSaKmtwn0KngnR9lX0xhHjlFZP890wxWulOxk44F72O
-         mbegpjcI6YiWdAEAKtEUJGDMHr6difA3zZ0hwUvsaiwu6h105embIOiU2RtmcXT3xvn5
-         4Vy0PJZJLJ9nQz5FH5el/Y+c3XTt2MfpnpVpDUEVoRTlX4Q45qBEtH7FXLzCTzBCkukC
-         8rVA==
+        b=hehKwIbmE1WUyx6yIhgpBV3M1862Nfq/3u5/tYPB4M7aTPO/wIo2llJ5Zdu6lPK5mx
+         PnEYtXSahq/ll1WWlvjunURlN0qbRmRxGFiHsekhRRzqFGTjEM+VUH4InYkaCXidT+Xf
+         K1kl5abMLjcv7+pcsnesHr8Q7J9+j4sI0IwgSJj8ypIaarl00IQvm/HQx+5sALVrEbD1
+         aTf7z9QUHx5/3poQnL8ZvuYeDPuW1dIN6wH/oRk64qKFfV7BqkgLJkAFfxKzjkoNtuaW
+         VXxJudUqmgS7bAvyaMoJATo5KiBRZ2Q027QrYc7aCQVyTBDxMrtHNz3q8ws6uABV9Xxu
+         E3yQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=dR+sIMhSzyBPJVNcoV84w2lW3MinFwxrlZIrffzws4k=;
-        b=NJm0eGSpylPbjndnXhD8JxQB6vMIMfGrMFZkuwNTw7XxoXJpehq53qXtfOhXV/Tvoq
-         dqdaVaapB8dJFi/sblCU75SQn2Ex/TfmxlnehiNU9F0PI0n+u6IgmCKRYvmnGheo+0CC
-         gw2FUPDtUv3bYiNdvWoVhu4WBxsi9u4cKrWRPn1H7eJEMyYqT28k52eV+GlYb7tQxKfA
-         Je5skRF6YVIEuLgxl5/nS8p81N+ZzhhvjqXBtTvg2qLvtMD07HgcvmqQkWG/NClRsVT0
-         7fcJ3BpRaFrFQuZ4UXLJeLyMXymFil8JRJAd49wpKK1rgKk6kMBHAoYJba8xk3/LNfGF
-         6wUA==
+        bh=ZqsnDl4oiZawHIftmA8mnq6CYkxwNiiuOk+5qJ4KSOk=;
+        b=SxMMa3CVOWugOTMBs7G1qA8al8peWV3vKc7glSuk5BPRMAM5rSSihM65r7svuH33wt
+         Ybh/Z+ErRgph07hKBeuZ7cO2a00lHBrhJu3k+EMT4GCfzTPxmAF16xvkL8PLoXL4aSF8
+         I9+qjlvZR0zin4zjGkeH8lOcFgQPOra6o+wJGWHxrdEMQU2Ptv3lEWy7yoXyNo9YKwP5
+         VidpcjvNAsI9aTFGLLW2haaPRnZG/XczAqTpSFOm79LB/KF9DJQEqyHvnmmic9596rb6
+         /F9TdNVUZu7kRuX3b8ZNk5Q71Yr2mSdGjpv+V+cm23tdifpOqti98qpXfGa/UH2Nybko
+         jJDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VduoHso+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k4-v6si1222180qkf.310.2018.08.14.11.26.31
+        by mx.google.com with ESMTPS id x126-v6si1639286ybx.514.2018.03.03.20.00.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 14 Aug 2018 11:26:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sat, 03 Mar 2018 20:00:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45627 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VduoHso+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:43472 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fpe1W-0001Bb-KV
-	for alex.bennee@linaro.org; Tue, 14 Aug 2018 14:26:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50827)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1esKot-0000J0-Fj
+	for alex.bennee@linaro.org; Sat, 03 Mar 2018 23:00:19 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43907)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rka@sysgo.com>) id 1fpdrz-0002Yw-AP
-	for qemu-devel@nongnu.org; Tue, 14 Aug 2018 14:17:04 -0400
+	(envelope-from <andrew.smirnov@gmail.com>) id 1esKoh-0000Ej-Jx
+	for qemu-arm@nongnu.org; Sat, 03 Mar 2018 23:00:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rka@sysgo.com>) id 1fpdrX-0004tf-Lq
-	for qemu-devel@nongnu.org; Tue, 14 Aug 2018 14:16:39 -0400
-Received: from mail.sysgo.com ([176.9.12.79]:60778)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rka@sysgo.com>)
-	id 1fpdqW-0003kw-9X; Tue, 14 Aug 2018 14:15:08 -0400
-From: Roman Kapl <rka@sysgo.com>
-To: 
-Date: Tue, 14 Aug 2018 18:19:48 +0200
-Message-Id: <20180814161948.13590-1-rka@sysgo.com>
-X-Mailer: git-send-email 2.11.0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 176.9.12.79
-Subject: [Qemu-devel] [PATCH] target/arm: crash on conditional instr in it
+	(envelope-from <andrew.smirnov@gmail.com>) id 1esKog-0001do-HB
+	for qemu-arm@nongnu.org; Sat, 03 Mar 2018 23:00:07 -0500
+Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:38614)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
+	id 1esKog-0001di-Bk; Sat, 03 Mar 2018 23:00:06 -0500
+Received: by mail-qt0-x241.google.com with SMTP id n12so16660550qtl.5;
+	Sat, 03 Mar 2018 20:00:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=ZqsnDl4oiZawHIftmA8mnq6CYkxwNiiuOk+5qJ4KSOk=;
+	b=VduoHso+CmFgQHJ70YgW+OPxaXdwyRXQmC8DRd5DYfWRmRBr+Ld+E1LqHqodel/Cd7
+	Es4lPTErPI/ljH2p1VCST7uVWoGxGjEPZCsAjVCv2qJ01YbWUqlZMHA6qdLXedwmi5HP
+	Lcx2mroCILsf0ANwGPEoiMfsfHR7Aue80K5U+YbJ3MuTWWdMtWdV7bnApjziB668gWM7
+	rh2l0KlzlwArWm1gwWihSWTzhY9wIxzPa8zZyOK+9CBSu0X887ZGvaY1wxAFhjKBxbo0
+	bnO3Ikr36x54ZNvV5N1ujLT1ywZQCfLeV7WZfgP808WU/i+ZwE4MbX/uW1zO/y1aPnaO
+	ZSAQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=ZqsnDl4oiZawHIftmA8mnq6CYkxwNiiuOk+5qJ4KSOk=;
+	b=sG1xct1ECoOJtX/YP1jxYcl0sSc+JUrsDhFEn82tTJVKy59UOcsZMOGA8NHTNNXjy7
+	3FiRW3XARyld3R8gF7tztBO3C9GvfsHKZFGIn6Svcim3RLM4UzXPs6C6XcimUNWtxw3W
+	sFio//Os2gAEa27b9dLsbm1XW5C+t5v5UZPmVCSzBTHisx+9R30UfFykJi4cvpKmsMwN
+	l3icg6n5q/30IRUBvLBQePEYqjDkEgrvfFpUWjEfuoliA9ahnglw/V5oko/ERHKZgREi
+	SwMx2rAfidp+6pePdbxYO7nVyM/vHgy9y/SJQte6IE89+ti4/lmAl0WV0nAfrqjy5Twh
+	/A3g==
+X-Gm-Message-State: AElRT7GVMxieaPbnA98jqzjNlQty1tA2mz7fe3vleEpfcpC1XYWfWWx9
+	oEzHq2wdcg1N6mkq5BovZ7ysoqMDRibr1O0V1L0=
+X-Received: by 10.200.49.226 with SMTP id i31mr16453867qte.42.1520136005469;
+	Sat, 03 Mar 2018 20:00:05 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.140.80.146 with HTTP; Sat, 3 Mar 2018 20:00:04 -0800 (PST)
+In-Reply-To: <20180304055334-mutt-send-email-mst@kernel.org>
+References: <20180213170712.18239-1-andrew.smirnov@gmail.com>
+	<20180213170712.18239-2-andrew.smirnov@gmail.com>
+	<20180213200450-mutt-send-email-mst@kernel.org>
+	<CAHQ1cqEpeq+M6bVTBLd6dvN7=h-s_bPTXRx_GaoMFhhpq2gTpA@mail.gmail.com>
+	<20180214000837-mutt-send-email-mst@kernel.org>
+	<CAHQ1cqEDDz5ni-+MfQp7dE0x_b51=JwgU-fwS4Y+AkyDyLpxRQ@mail.gmail.com>
+	<20180304055334-mutt-send-email-mst@kernel.org>
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+Date: Sat, 3 Mar 2018 20:00:04 -0800
+Message-ID: <CAHQ1cqFfHP=CWZ81=ki7UREpsPS+qBFUmwq9ggrvFj5uBzd1MA@mail.gmail.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::241
+Subject: Re: [Qemu-arm] [PATCH v6 1/3] pci: Add support for Designware IP
  block
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, Roman Kapl <rka@sysgo.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wkT63qB62dcY
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@zoho.com>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	"open list:ARM" <qemu-arm@nongnu.org>, Andrey Yurovsky <yurovsky@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Wnm0OnYAKjw2
 
-If an instruction is conditional (like CBZ) and it is executed conditionally
-(using the ITx instruction), a jump to undefined label is generated.
+On Sat, Mar 3, 2018 at 7:55 PM, Michael S. Tsirkin <mst@redhat.com> wrote:
+> On Tue, Feb 13, 2018 at 02:47:24PM -0800, Andrey Smirnov wrote:
+>> On Tue, Feb 13, 2018 at 2:15 PM, Michael S. Tsirkin <mst@redhat.com> wrote:
+>> > On Tue, Feb 13, 2018 at 12:24:40PM -0800, Andrey Smirnov wrote:
+>> >> On Tue, Feb 13, 2018 at 10:13 AM, Michael S. Tsirkin <mst@redhat.com> wrote:
+>> >> > On Tue, Feb 13, 2018 at 09:07:10AM -0800, Andrey Smirnov wrote:
+>> >> >> +static void designware_pcie_root_class_init(ObjectClass *klass, void *data)
+>> >> >> +{
+>> >> >> +    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
+>> >> >> +    DeviceClass *dc = DEVICE_CLASS(klass);
+>> >> >> +
+>> >> >> +    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>> >> >> +
+>> >> >> +    k->vendor_id = PCI_VENDOR_ID_SYNOPSYS;
+>> >> >> +    k->device_id = 0xABCD;
+>> >> >> +    k->revision = 0;
+>> >> >> +    k->class_id = PCI_CLASS_BRIDGE_PCI;
+>> >> >> +    k->is_express = true;
+>> >> >> +    k->is_bridge = true;
+>> >> >> +    k->exit = pci_bridge_exitfn;
+>> >> >> +    k->realize = designware_pcie_root_realize;
+>> >> >> +    k->config_read = designware_pcie_root_config_read;
+>> >> >> +    k->config_write = designware_pcie_root_config_write;
+>> >> >> +
+>> >> >> +    dc->reset = pci_bridge_reset;
+>> >> >> +    /*
+>> >> >> +     * PCI-facing part of the host bridge, not usable without the
+>> >> >> +     * host-facing part, which can't be device_add'ed, yet.
+>> >> >> +     */
+>> >> >> +    dc->user_creatable = false;
+>> >> >> +    dc->vmsd = &vmstate_designware_pcie_root;
+>> >> >> +}
+>> >> >> +
+>> >> >> +static uint64_t designware_pcie_host_mmio_read(void *opaque, hwaddr addr,
+>> >> >> +                                               unsigned int size)
+>> >> >> +{
+>> >> >> +    PCIHostState *pci = PCI_HOST_BRIDGE(opaque);
+>> >> >> +    PCIDevice *device = pci_find_device(pci->bus, 0, 0);
+>> >> >> +
+>> >> >> +    return pci_host_config_read_common(device,
+>> >> >> +                                       addr,
+>> >> >> +                                       pci_config_size(device),
+>> >> >> +                                       size);
+>> >> >> +}
+>> >> >> +
+>> >> >> +static void designware_pcie_host_mmio_write(void *opaque, hwaddr addr,
+>> >> >> +                                            uint64_t val, unsigned int size)
+>> >> >> +{
+>> >> >> +    PCIHostState *pci = PCI_HOST_BRIDGE(opaque);
+>> >> >> +    PCIDevice *device = pci_find_device(pci->bus, 0, 0);
+>> >> >> +
+>> >> >> +    return pci_host_config_write_common(device,
+>> >> >> +                                        addr,
+>> >> >> +                                        pci_config_size(device),
+>> >> >> +                                        val, size);
+>> >> >> +}
+>> >> >> +
+>> >> >> +static const MemoryRegionOps designware_pci_mmio_ops = {
+>> >> >> +    .read       = designware_pcie_host_mmio_read,
+>> >> >> +    .write      = designware_pcie_host_mmio_write,
+>> >> >> +    .endianness = DEVICE_NATIVE_ENDIAN,
+>> >> >> +    .impl = {
+>> >> >> +        /*
+>> >> >> +         * Our device would not work correctly if the guest was doing
+>> >> >> +         * unaligned access. This might not be a limitation on the real
+>> >> >> +         * device but in practice there is no reason for a guest to access
+>> >> >> +         * this device unaligned.
+>> >> >> +         */
+>> >> >> +        .min_access_size = 4,
+>> >> >> +        .max_access_size = 4,
+>> >> >> +        .unaligned = false,
+>> >> >> +    },
+>> >> >> +};
+>> >> >
+>> >> > Could you pls add some comments explaining why is DEVICE_NATIVE_ENDIAN
+>> >> > appropriate here?  Most of these cases are plain "we never bothered
+>> >> > about cross-endian setups". Some are "there's a mix of different
+>> >> > endian-ness values, need to handle in a special way".
+>> >> >
+>> >> > I suspect you really need DEVICE_LITTLE_ENDIAN.
+>> >> >
+>> >>
+>> >> That MemoryRegion corresponds to a register file permanently mapped
+>> >> into CPU's address space, so my assumption is that SoC designers will
+>> >> wire it according to CPUs endianness be it big or little. I am not
+>> >> aware of any big-endian CPU based SoC on the market using Designware's
+>> >> IP block, so I don't think there are any precedent confirming or
+>> >> denying correctness of my assumption. IMHO, this is also the reason
+>> >> why all of Linux driver code for that IP assumes little endianness.
+>> >
+>> > IMHO if Linux driver code does cpu_to_le then it seems best to be
+>> > consistent with that.
+>> >
+>>
+>> Well, all of the DW code does so implicitly by using readl()/writel()
+>> helpers which will perform cpu_to_le/le_to_cpu under the hood. But is
+>> seems to me that it could be either because the access does have to be
+>> LE always or simply because readl()/writel() are goto memory helpers
+>> on ARM/LE-platforms.
+>
+> PCI things generally tend to be LE since that's how standard
+> PCI registers are defined, and being consistent avoids confusion.
+>
+>> FWIW: Somewhat similar precedent of MIPS/Boston machine can serve as
+>> counter-example to my assumption, since Xilinx PCIE IP there seem to
+>> be wired to be LE despite being attached to BE CPU.
+>>
+>> Thanks,
+>> Andrey Smirnov
+>
+> OK so the above seems to imply it really should be LE, right?
+>
 
-Fix the 'skip on condtion' code to create a new label only if it does not
-already exist. Previously multiple labels were created, but only the last one of
-them was set.
+Sure, I'll change the endianness and submit v7.
 
-Signed-off-by: Roman Kapl <rka@sysgo.com>
----
- target/arm/translate.c | 32 ++++++++++++++++++--------------
- 1 file changed, 18 insertions(+), 14 deletions(-)
-
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index f845da7c63..f7c03a36e6 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -8480,6 +8480,16 @@ static void gen_srs(DisasContext *s,
-     s->base.is_jmp = DISAS_UPDATE;
- }
- 
-+/* Skip this instruction if the condition is true */
-+static void arm_conditional_skip(DisasContext *s, uint32_t cond)
-+{
-+    if (!s->condjmp) {
-+        s->condlabel = gen_new_label();
-+        s->condjmp = 1;
-+    }
-+    arm_gen_test_cc(cond, s->condlabel);
-+}
-+
- static void disas_arm_insn(DisasContext *s, unsigned int insn)
- {
-     unsigned int cond, val, op1, i, shift, rm, rs, rn, rd, sh;
-@@ -8709,9 +8719,7 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-     if (cond != 0xe) {
-         /* if not always execute, we generate a conditional jump to
-            next instruction */
--        s->condlabel = gen_new_label();
--        arm_gen_test_cc(cond ^ 1, s->condlabel);
--        s->condjmp = 1;
-+        arm_conditional_skip(s, cond ^ 1);
-     }
-     if ((insn & 0x0f900000) == 0x03000000) {
-         if ((insn & (1 << 21)) == 0) {
-@@ -11205,9 +11213,7 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
-                 /* Conditional branch.  */
-                 op = (insn >> 22) & 0xf;
-                 /* Generate a conditional jump to next instruction.  */
--                s->condlabel = gen_new_label();
--                arm_gen_test_cc(op ^ 1, s->condlabel);
--                s->condjmp = 1;
-+                arm_conditional_skip(s, op ^ 1);
- 
-                 /* offset[11:1] = insn[10:0] */
-                 offset = (insn & 0x7ff) << 1;
-@@ -12131,8 +12137,10 @@ static void disas_thumb_insn(DisasContext *s, uint32_t insn)
-         case 1: case 3: case 9: case 11: /* czb */
-             rm = insn & 7;
-             tmp = load_reg(s, rm);
--            s->condlabel = gen_new_label();
--            s->condjmp = 1;
-+            if (!s->condjmp) {
-+                s->condlabel = gen_new_label();
-+                s->condjmp = 1;
-+            }
-             if (insn & (1 << 11))
-                 tcg_gen_brcondi_i32(TCG_COND_EQ, tmp, 0, s->condlabel);
-             else
-@@ -12295,9 +12303,7 @@ static void disas_thumb_insn(DisasContext *s, uint32_t insn)
-             break;
-         }
-         /* generate a conditional jump to next instruction */
--        s->condlabel = gen_new_label();
--        arm_gen_test_cc(cond ^ 1, s->condlabel);
--        s->condjmp = 1;
-+        arm_conditional_skip(s, cond ^ 1);
- 
-         /* jump to the offset */
-         val = (uint32_t)s->pc + 2;
-@@ -12676,9 +12682,7 @@ static void thumb_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
-         uint32_t cond = dc->condexec_cond;
- 
-         if (cond != 0x0e) {     /* Skip conditional when condition is AL. */
--            dc->condlabel = gen_new_label();
--            arm_gen_test_cc(cond ^ 1, dc->condlabel);
--            dc->condjmp = 1;
-+            arm_conditional_skip(dc, cond ^ 1);
-         }
-     }
- 
--- 
-2.11.0
-
+Thanks,
+Andrey Smrinov

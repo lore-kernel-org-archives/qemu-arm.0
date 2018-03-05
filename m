@@ -1,93 +1,84 @@
-Received: by 10.28.4.212 with SMTP id 203csp816692wme;
-        Wed, 25 Apr 2018 06:25:15 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZopJREuH6KH4q/4FGydkk5qTReF/14i/S+8VdYdpPhh0fCFKuh6CsV7V5I1p7m6l6xLAdoO
-X-Received: by 10.55.136.70 with SMTP id k67mr6481673qkd.250.1524662715485;
-        Wed, 25 Apr 2018 06:25:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1524662715; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp2723888wmb;
+        Mon, 5 Mar 2018 08:22:54 -0800 (PST)
+X-Google-Smtp-Source: AG47ELvrQXCn3cLnDnO/CyusHFp3pDkB926S4IEhVW5pJRW7yIhfL/nwSzm2+uYsximCFgGKiMNT
+X-Received: by 10.129.124.134 with SMTP id x128mr9491736ywc.332.1520266974271;
+        Mon, 05 Mar 2018 08:22:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520266974; cv=none;
         d=google.com; s=arc-20160816;
-        b=TeR/8/JZf05b9xI9l6/o8F4sZDgo7AF0IO6O3Uy80ojKVVhAQE5/0RZV3kj9we0iqJ
-         uIcPaf3R/LGdHchqYx38h74oexBXKJTwTUyAmkixDwUZcOH+Ki0ox/rmVdhEwW/viXk/
-         gLrnxJc/te0UZA9pC1pROeghgQAHxhsrD0RzOXldOBmr3RX9hiIWXIiTiStz5/siPtd/
-         HzH549xNiL9r7saGk9JTkLLX21ch1fnUgMH4IlkZuTEsPbibb1cfWVgLQS+kStSfU3RT
-         0gfu6fo8WrsDw9rxa2kzyYs2BaijN1Yj+tMaGueeiTc8ACe+bf39CZu33AgtpvpZtFf6
-         lvzA==
+        b=0qKeRfbL5uTIzK2fNGMtrT4uz3JXsLkiyNK4eYKeS8A9b3mreWey3kxCrvDUZ2lxMq
+         +QSJQZve74M+6jjK0GfVR4P6k4Xp++u7YLEQAxZ7Ne0kVTTg27G622U8M6sUNrlS6odf
+         tWe0tMfVlWjTV6ak6J4/mDeGEjDZ/b844OddsvxXuBzADTL95wK2Nhlaa5RNK5JR84bD
+         y4JFR2nvB1Ayx47NsRAYJsR96nTUsW+UxoZq4gP2wQ0eyu8oG4WUD69qceF/gW9a1DTK
+         KFoMRjscJwoCuqUKyuQJHRZqnvxfMBJB9w9cOk71r+kokOgG43HdQcsn70iNlTMeDyAp
+         d2Gw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
-         :from:arc-authentication-results;
-        bh=jCirntKQl9BFqCbyEjdRq11ocPhYa4hnwzd6ypsR4jM=;
-        b=aNA+3bTNhGOZ0Mgg7YOz0kP7SgU6jZY9V8d0Bac71j113Rd5l8vi4AdcPMc/Fd4qDB
-         kvEBwrNjTKsP996n1heub+rnfgHdlby4hhezA7bRQkYqX0qyE9Nn4JAkpGOfP15VK/a7
-         wLKk2LPH4mU+l0MK89w4DT0LbHLX1txq49z7XSGcQMa0/fBg27rw0nbGNszz+d4c6enB
-         DKscixQAY0SXs6zjsGPRNrYw/DO8S/iyY5y0BVvR4vUk4l7x+8BJOTVc4CZ985D1buYi
-         BqZZIrKel/HY2usPh8KE6l0D908s2pTT987QtsHV3BAZITGgiugGndlHWxlwKqS5TcAo
-         Hv/g==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :arc-authentication-results;
+        bh=lqdbHwTdzRBy1L5R4+U7BHHnh2DggiPEsXgMhdy3LrI=;
+        b=V4HCylb93688C4UmONNajayNjW/CRKz8iMqidONBzSV8hRXa3cCUjC0uQe91D3oVkv
+         9upTISUqGWV85Rn/SRedOVz9qmDo7d0LmKedFwxpGHYKcFUQJw6Q3yRVGpHoVZpft2my
+         YEjZ/YfnYaKQFI4Xx8lBFUyXwxXKxl69m1PrHEZxLP7zjP+hD+VA6KNTQYPqDi6NCi2F
+         9dKO8gVQkLBEcXqfLz3BTENJUsWzmn+gtEdWeVNrw2dknXSb3Gttd8S5/Ed/dWXfSiNr
+         kgnEHZKibQkUltSQdSgoHnYJ5xe+qlqqjhNv+Nr2PFahgQfYqKVGssMZ4lmpi/q2h9+y
+         qMXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u36-v6si11607709qtb.18.2018.04.25.06.25.15
+        by mx.google.com with ESMTPS id i187si2211428ywb.52.2018.03.05.08.22.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 25 Apr 2018 06:25:15 -0700 (PDT)
+        Mon, 05 Mar 2018 08:22:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36911 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:50233 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fBKQ6-00049c-U1
-	for alex.bennee@linaro.org; Wed, 25 Apr 2018 09:25:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40354)
+	id 1esst3-0002D1-Nn
+	for alex.bennee@linaro.org; Mon, 05 Mar 2018 11:22:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54533)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1fBKPw-00045q-FO
-	for qemu-arm@nongnu.org; Wed, 25 Apr 2018 09:25:06 -0400
+	(envelope-from <thuth@redhat.com>) id 1essss-0002CI-Lz
+	for qemu-arm@nongnu.org; Mon, 05 Mar 2018 11:22:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1fBKPt-0000mW-Ay
-	for qemu-arm@nongnu.org; Wed, 25 Apr 2018 09:25:04 -0400
-Received: from lhrrgout.huawei.com ([194.213.3.17]:64513 helo=huawei.com)
+	(envelope-from <thuth@redhat.com>) id 1esssp-0003kg-SA
+	for qemu-arm@nongnu.org; Mon, 05 Mar 2018 11:22:42 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:34260 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1fBKPt-0000l8-5f; Wed, 25 Apr 2018 09:25:01 -0400
-Received: from lhreml702-cah.china.huawei.com (unknown [172.18.7.106])
-	by Forcepoint Email with ESMTP id 1FACD2CDC74C1;
-	Wed, 25 Apr 2018 14:24:55 +0100 (IST)
-Received: from FRAEML704-CAH.china.huawei.com (10.206.14.35) by
-	lhreml702-cah.china.huawei.com (10.201.108.43) with Microsoft SMTP
-	Server (TLS) id 14.3.382.0; Wed, 25 Apr 2018 14:24:56 +0100
-Received: from FRAEML521-MBX.china.huawei.com ([169.254.1.156]) by
-	FRAEML704-CAH.china.huawei.com ([10.206.14.35]) with mapi id
-	14.03.0382.000; Wed, 25 Apr 2018 15:24:44 +0200
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Andrew Jones <drjones@redhat.com>
-Thread-Topic: [Qemu-devel] [RFC 3/5] hw/arm: add scattered RAM memory region
-	support
-Thread-Index: AQHTXOYlQiE9hVh570Cux4XapwClL6MT5SMAgPTPhXCACDIaAIABiztQ
-Date: Wed, 25 Apr 2018 13:24:44 +0000
-Message-ID: <5FC3163CFD30C246ABAA99954A238FA83869381A@FRAEML521-MBX.china.huawei.com>
-References: <1510622154-17224-1-git-send-email-zhuyijun@huawei.com>
-	<1510622154-17224-4-git-send-email-zhuyijun@huawei.com>
-	<20171114145002.jbrw7k4n2m2rfwes@kamzik.brq.redhat.com>
-	<5FC3163CFD30C246ABAA99954A238FA83868CA39@FRAEML521-MBX.china.huawei.com>
-	<20180424152932.tszber3blx32luro@kamzik.brq.redhat.com>
-In-Reply-To: <20180424152932.tszber3blx32luro@kamzik.brq.redhat.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.227.237]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 194.213.3.17
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 3/5] hw/arm: add scattered RAM
- memory region support
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1esssp-0003kS-Mx; Mon, 05 Mar 2018 11:22:39 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2A065D1448;
+	Mon,  5 Mar 2018 16:22:36 +0000 (UTC)
+Received: from thh440s.redhat.com (ovpn-116-103.ams2.redhat.com
+	[10.36.116.103])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id E340F2144B21;
+	Mon,  5 Mar 2018 16:22:30 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Date: Mon,  5 Mar 2018 17:22:29 +0100
+Message-Id: <1520266949-29817-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.2]);
+	Mon, 05 Mar 2018 16:22:36 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Mon, 05 Mar 2018 16:22:36 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: [Qemu-arm] [PATCH v2] hw/arm: Use more CONFIG switches for the
+ object files
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,128 +90,107 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Linuxarm <linuxarm@huawei.com>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"xuwei \(O\)" <xuwei5@huawei.com>,
-	Zhaoshenglong <zhaoshenglong@huawei.com>,
-	Igor Mammedov <imammedo@redhat.com>
+Cc: qemu-devel@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: U1e+t4NbiaEX
+X-TUID: AnLIm9rIEB+E
 
-Hi Drew,
+A lot of ARM object files are linked into the executable unconditionally,
+even though we have corresponding CONFIG switches like CONFIG_PXA2XX or
+CONFIG_OMAP. We should make sure to use these switches in the Makefile so
+that the users can disable certain unwanted boards and devices more easily.
+While we're at it, also add some new switches for the boards that do not
+have a CONFIG option yet.
 
-> -----Original Message-----
-> From: Andrew Jones [mailto:drjones@redhat.com]
-> Sent: Tuesday, April 24, 2018 4:30 PM
-> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-> Cc: peter.maydell@linaro.org; qemu-devel@nongnu.org; Linuxarm
-> <linuxarm@huawei.com>; eric.auger@redhat.com; qemu-arm@nongnu.org;
-> xuwei (O) <xuwei5@huawei.com>; Zhaoshenglong
-> <zhaoshenglong@huawei.com>; Igor Mammedov <imammedo@redhat.com>
-> Subject: Re: [Qemu-devel] [RFC 3/5] hw/arm: add scattered RAM memory
-> region support
->=20
-> On Thu, Apr 19, 2018 at 09:06:30AM +0000, Shameerali Kolothum Thodi wrote=
-:
-> > > From: Andrew Jones [mailto:drjones@redhat.com] Instead of using
-> > > memory region aliases, it would be best if each RAM region was
-> > > modeled with pc-dimms, as that would move us towards supporting
-> > > memory hotplug and allow the regions to be explicitly identified
-> > > (start/size) on the command line - supporting migration. Actually,
-> > > how does this series address migration? What if the host we migrate
-> > > to doesn't have the same reserved regions in sysfs?
-> >
-> > Thanks for going through this series and comments.
-> >
-> > I am looking into reviving this series based on the new proposed vfio
-> > iova interface[1]. The vfio interface will now provide  a list of valid=
- iova
-> ranges.
-> > That means, instead of working on reserved regions to find out the
-> > valid  memory regions, the code here will have the valid regions list d=
-irectly.
-> >
-> > The above comment of yours mentions about modelling the memory regions
-> > with pc-dimms. If I understand that proposal correctly, in case the
-> > iova list has  multiple entries in it(means there are holes in the
-> > memory) the extra regions has to be added as a pc-dimm slot memory.
->=20
-> Hi Shameer,
->=20
-> iiuc, the concern is that the valid region list may look something like t=
-his made
-> up example:
->=20
->  0x000e0000000 0x000000011fffffff
->  0x00180000000 0x00000002ffffffff
->  0x02000000000 0x0000011fffffffff
->  0x22000000000 0xffffffffffffffff
->=20
-> You then want to avoid overlapping the holes with memory, because the hol=
-es
-> represent regions that may have platform devices assigned, which need to =
-keep
-> 1:1 gpa -> hpa mappings.
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ v2:
+ - Fixed the miscategorization of the boards in v1
+ - Add separate config switches for the boards that did not have a
+   config switch yet.
 
-Yes, the holes are basically reserved regions not translated by iommu.
+ default-configs/arm-softmmu.mak |  7 +++++++
+ hw/arm/Makefile.objs            | 30 +++++++++++++++++++++---------
+ 2 files changed, 28 insertions(+), 9 deletions(-)
 
-> If that's the case, then I think the biggest problem with the made up exa=
-mple is
-> the initial hole [0x0 0xdfffffff], as that would overlap the currently ha=
-rd coded
-> base of RAM (0x40000000). Indeed we were thinking that the base of RAM
-> would be modeled as a non-pluggable dimm of size 1G at the 1G boundary. A=
-s
-> for the rest of memory (for memory > 1G), in the made up example we could
-> just allocate a single pc-dimm from a memory region representing the
-> [0x22000000000 0xffffffffffffffff] range without any hassle.
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+index d724106..96071c8 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -47,6 +47,7 @@ CONFIG_A9MPCORE=y
+ CONFIG_A15MPCORE=y
+ 
+ CONFIG_ARM_V7M=y
++CONFIG_NETDUINO2=y
+ 
+ CONFIG_ARM_GIC=y
+ CONFIG_ARM_GIC_KVM=$(CONFIG_KVM)
+@@ -109,6 +110,7 @@ CONFIG_TZ_PPC=y
+ CONFIG_IOTKIT=y
+ CONFIG_IOTKIT_SECCTL=y
+ 
++CONFIG_VERSATILE=y
+ CONFIG_VERSATILE_PCI=y
+ CONFIG_VERSATILE_I2C=y
+ 
+@@ -117,6 +119,7 @@ CONFIG_VFIO_XGMAC=y
+ CONFIG_VFIO_AMD_XGBE=y
+ 
+ CONFIG_SDHCI=y
++CONFIG_INTEGRATOR=y
+ CONFIG_INTEGRATOR_DEBUG=y
+ 
+ CONFIG_ALLWINNER_A10_PIT=y
+@@ -140,3 +143,7 @@ CONFIG_GPIO_KEY=y
+ CONFIG_MSF2=y
+ CONFIG_FW_CFG_DMA=y
+ CONFIG_XILINX_AXI=y
++
++CONFIG_STRONGARM=y
++CONFIG_HIGHBANK=y
++CONFIG_MUSICPAL=y
+diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+index 2322581..53611a7 100644
+--- a/hw/arm/Makefile.objs
++++ b/hw/arm/Makefile.objs
+@@ -1,15 +1,27 @@
+-obj-y += boot.o collie.o exynos4_boards.o gumstix.o highbank.o
+-obj-$(CONFIG_DIGIC) += digic_boards.o
+-obj-y += integratorcp.o mainstone.o musicpal.o nseries.o
+-obj-y += omap_sx1.o palm.o realview.o spitz.o stellaris.o
+-obj-y += tosa.o versatilepb.o vexpress.o virt.o xilinx_zynq.o z2.o
++obj-y += boot.o virt.o sysbus-fdt.o
+ obj-$(CONFIG_ACPI) += virt-acpi-build.o
+-obj-y += netduino2.o
+-obj-y += sysbus-fdt.o
++obj-$(CONFIG_DIGIC) += digic_boards.o
++obj-$(CONFIG_EXYNOS4) += exynos4_boards.o
++obj-$(CONFIG_HIGHBANK) += highbank.o
++obj-$(CONFIG_INTEGRATOR) += integratorcp.o
++obj-$(CONFIG_MAINSTONE) += mainstone.o
++obj-$(CONFIG_MUSICPAL) += musicpal.o
++obj-$(CONFIG_NETDUINO2) += netduino2.o
++obj-$(CONFIG_NSERIES) += nseries.o
++obj-$(CONFIG_OMAP) += omap_sx1.o palm.o
++obj-$(CONFIG_PXA2XX) += gumstix.o spitz.o tosa.o z2.o
++obj-$(CONFIG_REALVIEW) += realview.o
++obj-$(CONFIG_STELLARIS) += stellaris.o
++obj-$(CONFIG_STRONGARM) += collie.o
++obj-$(CONFIG_VERSATILE) += vexpress.o versatilepb.o
++obj-$(CONFIG_ZYNQ) += xilinx_zynq.o
+ 
+-obj-y += armv7m.o exynos4210.o pxa2xx.o pxa2xx_gpio.o pxa2xx_pic.o
++obj-$(CONFIG_ARM_V7M) += armv7m.o
++obj-$(CONFIG_EXYNOS4) += exynos4210.o
++obj-$(CONFIG_PXA2XX) += pxa2xx.o pxa2xx_gpio.o pxa2xx_pic.o
+ obj-$(CONFIG_DIGIC) += digic.o
+-obj-y += omap1.o omap2.o strongarm.o
++obj-$(CONFIG_OMAP) += omap1.o omap2.o
++obj-$(CONFIG_STRONGARM) += strongarm.o
+ obj-$(CONFIG_ALLWINNER_A10) += allwinner-a10.o cubieboard.o
+ obj-$(CONFIG_RASPI) += bcm2835_peripherals.o bcm2836.o raspi.o
+ obj-$(CONFIG_STM32F205_SOC) += stm32f205_soc.o
+-- 
+1.8.3.1
 
-Right. I was more worried about a highly fragmented case where we have to
-model multiple pc-dimms to accommodate all the required memory. But that
-may be a highly unlikely scenario.
-=20
-> > Having gone through
-> > the Qemu source, I am not sure what is the best way to accomplish that.
-> > (of course I am not that familiar with the Qemu source). Is it ok to
-> > invoke
-> > qdev_device_add() from here? Any pointers on this is very appreciated.
->=20
-> I'm not an expert on that (nor any of this stuff, really - hopefully what=
- I've
-> written above isn't completely bonkers). I've CC'ed Igor for help.
-> I've also CC'ed Eric, because of the magic word 'vfio'.
-
-Thanks. I am moving in this direction at the moment.  Please let me know
-if there is a better way of doing this, than invoking user_creatable_add_op=
-ts()
-for mem backend object creation and qdev_device_add() for pc-dimm dev.
-
-> > One more point is, considering the fact that ARM64 linux kernel still
-> > doesn't support hotplug memory at the moment, not sure how much we
-> > gain from the pc-dimm model.
->=20
-> It will eventually. Moving towards the pc-dimm model now, in order to han=
-dle
-> the non-contiguous memory needs, will go a long ways to enabling hotplug
-> later.
-
-Ok. I will try to come up with something and will post as an RFC.=20
-
-Appreciate your feedback,
-Shameer
-
->=20
-> Thanks,
-> drew
->=20
-> >
-> > Please let me know your thoughts on this.
-> >
-> > Thanks,
-> > Shameer
-> >
-> > [1]. https://lkml.org/lkml/2018/4/18/293

@@ -1,112 +1,105 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp729794wrq;
-        Fri, 29 Jun 2018 06:31:05 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpfB1/yJfYLJGkJS28uf16iff+BpAr8qc8ouvKmySDZM60jMCe8VYv0+X1sWTyxOOZK+AoXz
-X-Received: by 2002:a0c:94f1:: with SMTP id k46-v6mr13114634qvk.113.1530279064895;
-        Fri, 29 Jun 2018 06:31:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530279064; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp2458364wmb;
+        Mon, 5 Mar 2018 03:54:06 -0800 (PST)
+X-Google-Smtp-Source: AG47ELsHVhOH2PjD6mWvzXNNPdqHwvbXJ9+SNIGeh+lnj8UAvS+wp+q6+mZEp3uedmUwiWKx/G4Q
+X-Received: by 2002:a25:a126:: with SMTP id z35-v6mr8573671ybh.482.1520250846213;
+        Mon, 05 Mar 2018 03:54:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520250846; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y2YkZDrjsIWIUnBGR3JfKcAcQcEq5ylTtIxecmNbVzwYxWBirMfZxLW2g76JC+OPJ6
-         nD/sY1vTZvwOGZucB1u3gXYuFeRyEZXNCykVARxcM7fU2HIlwUV+/vrMuLxOUbRbbBrq
-         6jPCXX/xU9dfomvaJluKCIPBHkVWHr0Gmy3pQsNSyv1xwzF0PRqxiFt4OfF4ZL7EYbHv
-         grMiEXRJ9oVNBr68X1D8ZxSrCU5VkdLC9pNNcM1mSK2n4PZ2RMYDk1VKOFfrHK6YguGI
-         GUfvMU/Pj2ToZefE3eFqucz93zgL5LqbkioIeq2EoLTXycdeHaPNFCCxQIvs5DzYbpBW
-         7csQ==
+        b=q/vf6495kH0bkxu08qgfR/Fbyb+wKCZs0p7OiC1eThtnkqNphlUH5WuUy6m/9QkNls
+         tBRDFRIrtihp+MrNekC55ZmvbmxN2fcNLT+tosW3+CTySeqBYkzxdE8m7DsDDlgmvMz/
+         soQ9dNOjmHbt4Vi4H2pEX2h3HWpZ5pPbVjPfcvsvdv8hbwdzl98rJym/joYilpRoVIes
+         Pf4aZYUP8xzqR0evbIfspozdgVFL/9If1IEVvlRHs5Acg2ngKFOotRwd+P191B4yLgXY
+         zuwppLlFmkktxlI6XxfIBbR/yNCXqNZhNFGb0kIE/cszu34RWwXA7w12+6de1rLchouH
+         SRcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:dkim-signature
-         :dkim-signature:arc-authentication-results;
-        bh=Kn7BQtlK6jylqweUwb7jgUIlPTPO+6KMm49AYSx9FWg=;
-        b=mgAodyfeyYQWDXLQExF61nmOVlGRVU59kdTYB2SYaQHflZ18F9cVwrVm7s5S3UpRwm
-         o6cUAVJHJuvEssYh3Ra7hCNusbOVc55tblSNSJCcOifZdVIDmftqLuiFNeqzldG0CQTb
-         cvG2PKesiPczsYMLgOv46noUyoJehoxGG90AwdMTf/OvnZtg1F8l1Me6+DwV4ZlLUJzJ
-         QLhPeuyW0z8f/mT6qZgEhvia30MXzKFLQAErZutSoNkPyqhIxepsQZ4Fucp6wSUrICXG
-         5GawFqWi/wJwFaAyqMBLZiQLHcUmFZBld5erBgqYKCWkUF+PFf89cQsI/7jg1HJXrw35
-         VAwg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=CAb+wta0wEs2+Mdeu4nRoeUEL/WV+6Oly8onn57JaZY=;
+        b=JU2caKEVq2+7ea/MVDoksxZY7yWlraFGaJP9f9q9bOd4v97LMfUntbgjPF7U6S7y+9
+         9DqAg+t8Zq9SGAFTmSblYAjEbn531oI1HqMWjOixB88ckTsy6Yu8SohaOuvgAKWQAz0s
+         nazHp+zA/TggJiy3mybRR0mMacV9jlr9ScvqNAGO8jQzzSf0nHgy6mqQoLUvkdU8fqtU
+         CUgM3Qhe+7Mzny2BqiXGXu9OfXr9SOOdt9ZrISGwXSgmeXJjmbP3X1mw63PhIkn1wCcW
+         uMkiQKTJ8zt9TkM2GMfJhgrsd+d7uElYslGdFYx4rxQhPeY1ODg5Zz0E3XXM1IKJN5SW
+         jpZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=uCe6PokQ;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=7SF37hjK;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=7SF37hjK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=g0uKD8Bz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y4-v6si1782804qva.178.2018.06.29.06.31.04
+        by mx.google.com with ESMTPS id v66-v6si1123993ybb.735.2018.03.05.03.54.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 29 Jun 2018 06:31:04 -0700 (PDT)
+        Mon, 05 Mar 2018 03:54:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=uCe6PokQ;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=7SF37hjK;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=7SF37hjK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42134 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=g0uKD8Bz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:48819 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fYtUO-0007ac-6j
-	for alex.bennee@linaro.org; Fri, 29 Jun 2018 09:31:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37850)
+	id 1esogv-0006C8-JN
+	for alex.bennee@linaro.org; Mon, 05 Mar 2018 06:54:05 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41928)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fYtU6-0007Zt-Tf
-	for qemu-arm@nongnu.org; Fri, 29 Jun 2018 09:30:49 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1esoI2-0004Bs-QA
+	for qemu-arm@nongnu.org; Mon, 05 Mar 2018 06:28:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fYtU1-0006l6-Si
-	for qemu-arm@nongnu.org; Fri, 29 Jun 2018 09:30:46 -0400
-Received: from greensocs.com ([193.104.36.180]:58557)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>)
-	id 1fYtU1-0006ZV-Ho; Fri, 29 Jun 2018 09:30:41 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id 6FD614434B0;
-	Fri, 29 Jun 2018 15:30:34 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1530279034;
-	bh=hy2xioeOgpWDvjVWNTqy9JfacgGmvViw5GG6aQwA0B0=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=uCe6PokQcZ8qX+glvR6h0qVezPl90zgGcl+hWtR3rkCjWM64qRTh2Ja6fnAAriHDM
-	/od8K53tLl6gmTF1XOg44yO5mk8oaIqXqJWyV1hS5xMez43PFgiQCvaS/CsZlHZ0ES
-	en0/jFgcTPlZxzXC2yKTPrRi7UGCJ1dEevn92heg=
-X-Virus-Scanned: amavisd-new at greensocs.com
-Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=7SF37hjK;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=7SF37hjK
-Received: from greensocs.com ([127.0.0.1])
-	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9-y2MaalaNpm; Fri, 29 Jun 2018 15:30:33 +0200 (CEST)
-Received: by greensocs.com (Postfix, from userid 998)
-	id EA23C4434AF; Fri, 29 Jun 2018 15:30:32 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1530279032;
-	bh=hy2xioeOgpWDvjVWNTqy9JfacgGmvViw5GG6aQwA0B0=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=7SF37hjKAF7IXVvDtHUL+CAct+moPM+LSWquIAE/GM2sAfwAYvZdnGiKFOylb2mKH
-	zjJ9elEdPMpTKIlqQ21MKumD+Joa46ted4X6tsVWn6WpZiWfU6UVIq8DMmIfdjsDue
-	eUObLbdtngNUfR8MM2B/r5jaec33VtG66iuissX4=
-Received: from michell-laptop.hive.antfield.fr
-	(LFbn-LYO-1-488-36.w2-7.abo.wanadoo.fr [2.7.77.36])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	(Authenticated sender: luc.michel@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id CADF44434A7;
-	Fri, 29 Jun 2018 15:30:31 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1530279032;
-	bh=hy2xioeOgpWDvjVWNTqy9JfacgGmvViw5GG6aQwA0B0=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=7SF37hjKAF7IXVvDtHUL+CAct+moPM+LSWquIAE/GM2sAfwAYvZdnGiKFOylb2mKH
-	zjJ9elEdPMpTKIlqQ21MKumD+Joa46ted4X6tsVWn6WpZiWfU6UVIq8DMmIfdjsDue
-	eUObLbdtngNUfR8MM2B/r5jaec33VtG66iuissX4=
-From: Luc Michel <luc.michel@greensocs.com>
-To: qemu-devel@nongnu.org
-Date: Fri, 29 Jun 2018 15:29:38 +0200
-Message-Id: <20180629132954.24269-5-luc.michel@greensocs.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20180629132954.24269-1-luc.michel@greensocs.com>
-References: <20180629132954.24269-1-luc.michel@greensocs.com>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 193.104.36.180
-Subject: [Qemu-arm] [PATCH v3 04/20] vmstate.h: Provide
- VMSTATE_UINT16_SUB_ARRAY
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1esoI1-0007MT-NS
+	for qemu-arm@nongnu.org; Mon, 05 Mar 2018 06:28:22 -0500
+Received: from mail-wm0-x242.google.com ([2a00:1450:400c:c09::242]:36237)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1esoHr-0007AJ-Mp; Mon, 05 Mar 2018 06:28:11 -0500
+Received: by mail-wm0-x242.google.com with SMTP id 188so14712854wme.1;
+	Mon, 05 Mar 2018 03:28:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=CAb+wta0wEs2+Mdeu4nRoeUEL/WV+6Oly8onn57JaZY=;
+	b=g0uKD8Bz41lLLpCdd7h2n1k/d/ABz17jHPoLxsT0pojJ/Jz5vXTr2/9WRAa/7t3maU
+	lL7PEGK1rI3BOeW1D1Q8pXtncg/l4ExrA6JD6NXvuJPetWELCg1xzOXHsdaBihslca5H
+	tmiYPgRYG5BXrxyWgKfxvf/8QN78ZEvnsoorHVhuzpRbXsNXffr4fw/tas01JPaU49cS
+	3hK0xSle69AQWb7Ns439u5d6Ddi+j1t0/ITB630LnZ0Wuwv8La8cFAKuV3QMZhoaKAbH
+	fIYjZuTHzoH1vhftxNLmVXw74r2mcitb08iITiGEsR9vwURRtckytRv5AO/oceDj+9XZ
+	xc5Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=CAb+wta0wEs2+Mdeu4nRoeUEL/WV+6Oly8onn57JaZY=;
+	b=YCgAqhLJKBjTo6dzXghc0LLdEMQ+y0+GG41iIrf/yR6u7zGAzvA643pybNfVQpUU89
+	/LyZ9XcO2oQZzeytTtnitb0I28cjEHPV1++qhxWXWQ6/soBN3YE4o0eYOPNkxb4Nb8Nl
+	55d+aeGMKcHN+eDzzaZMUzdVkBn+lRt678ewlf1/MHAKD3n4vufZR92UzWu1VzIAQvkY
+	p4ZuAb6c5b6nRB6H6tbNOG1trc864CivvOrEX76+KE/YPX/5EJs0arYycK04O4wk/NfZ
+	askSuBVk3ryWHEq2p/Zda9kb5dWpNtdEcQk8wUpI42RCboU7oVuiirx0sXbddvUPlLd7
+	ACkA==
+X-Gm-Message-State: AElRT7EZmTKYwTuGFIobn8pvNt6+OFZyukZp/wVDkJbzI+YKpyHJgX8x
+	TyQD7Wqi6EzRVv1qjaBp9ffMOv/mZQs=
+X-Received: by 10.28.223.212 with SMTP id w203mr8465248wmg.96.1520249290532;
+	Mon, 05 Mar 2018 03:28:10 -0800 (PST)
+Received: from x1.local (ABayonne-654-1-79-224.w86-222.abo.wanadoo.fr.
+	[86.222.222.224]) by smtp.gmail.com with ESMTPSA id
+	k45sm11744388wrf.62.2018.03.05.03.28.09
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 05 Mar 2018 03:28:09 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-trivial@nongnu.org
+Date: Mon,  5 Mar 2018 08:27:25 -0300
+Message-Id: <20180305112732.26471-24-f4bug@amsat.org>
+X-Mailer: git-send-email 2.16.2
+In-Reply-To: <20180305112732.26471-1-f4bug@amsat.org>
+References: <20180305112732.26471-1-f4bug@amsat.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::242
+Subject: [Qemu-arm] [PATCH v2 23/30] hw/net: use the BYTE-based definitions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -118,36 +111,88 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, mark.burton@greensocs.com,
-	saipava@xilinx.com, edgari@xilinx.com, qemu-arm@nongnu.org,
-	Jan Kiszka <jan.kiszka@web.de>, Luc Michel <luc.michel@greensocs.com>
+Cc: Dmitry Fleytman <dmitry.fleytman@gmail.com>, Stefan Weil <sw@weilnetz.de>,
+	Jason Wang <jasowang@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, Beniamino Galvani <b.galvani@gmail.com>,
+	"open list:Allwinner-a10" <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1Cyw67W6vaLK
+X-TUID: u93NDtVTMr02
 
-Provide a VMSTATE_UINT16_SUB_ARRAY macro to save a uint16_t sub-array in
-a VMState.
+It eases code review, unit is explicit.
 
-Signed-off-by: Luc Michel <luc.michel@greensocs.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Patch generated using:
+
+  $ git grep -E '(1024|2048|4096|8192|(<<|>>).?(10|20|30))' hw/ include/hw/
+
+and modified manually.
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/migration/vmstate.h | 3 +++
- 1 file changed, 3 insertions(+)
+ include/hw/net/allwinner_emac.h | 4 ++--
+ hw/net/e1000e.c                 | 6 +++---
+ hw/net/eepro100.c               | 6 ++----
+ 3 files changed, 7 insertions(+), 9 deletions(-)
 
-diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
-index 42b946ce90..2b501d0466 100644
---- a/include/migration/vmstate.h
-+++ b/include/migration/vmstate.h
-@@ -923,6 +923,9 @@ extern const VMStateInfo vmstate_info_qtailq;
- #define VMSTATE_UINT16_ARRAY(_f, _s, _n)                               \
-     VMSTATE_UINT16_ARRAY_V(_f, _s, _n, 0)
+diff --git a/include/hw/net/allwinner_emac.h b/include/hw/net/allwinner_emac.h
+index 4cc8aab7ec..93ec0e7067 100644
+--- a/include/hw/net/allwinner_emac.h
++++ b/include/hw/net/allwinner_emac.h
+@@ -125,8 +125,8 @@
+ #define EMAC_INT_RX         (1 << 8)
  
-+#define VMSTATE_UINT16_SUB_ARRAY(_f, _s, _start, _num)                \
-+    VMSTATE_SUB_ARRAY(_f, _s, _start, _num, 0, vmstate_info_uint16, uint16_t)
-+
- #define VMSTATE_UINT16_2DARRAY(_f, _s, _n1, _n2)                      \
-     VMSTATE_UINT16_2DARRAY_V(_f, _s, _n1, _n2, 0)
+ /* Due to lack of specifications, size of fifos is chosen arbitrarily */
+-#define TX_FIFO_SIZE        (4 * 1024)
+-#define RX_FIFO_SIZE        (32 * 1024)
++#define TX_FIFO_SIZE        (4 * K_BYTE)
++#define RX_FIFO_SIZE        (32 * K_BYTE)
+ 
+ #define NUM_TX_FIFOS        2
+ #define RX_HDR_SIZE         8
+diff --git a/hw/net/e1000e.c b/hw/net/e1000e.c
+index 16a9417a85..767b35fca8 100644
+--- a/hw/net/e1000e.c
++++ b/hw/net/e1000e.c
+@@ -81,10 +81,10 @@ typedef struct E1000EState {
+ #define E1000E_IO_IDX       2
+ #define E1000E_MSIX_IDX     3
+ 
+-#define E1000E_MMIO_SIZE    (128 * 1024)
+-#define E1000E_FLASH_SIZE   (128 * 1024)
++#define E1000E_MMIO_SIZE    (128 * K_BYTE)
++#define E1000E_FLASH_SIZE   (128 * K_BYTE)
+ #define E1000E_IO_SIZE      (32)
+-#define E1000E_MSIX_SIZE    (16 * 1024)
++#define E1000E_MSIX_SIZE    (16 * K_BYTE)
+ 
+ #define E1000E_MSIX_TABLE   (0x0000)
+ #define E1000E_MSIX_PBA     (0x2000)
+diff --git a/hw/net/eepro100.c b/hw/net/eepro100.c
+index a07a63247e..6fdeb05259 100644
+--- a/hw/net/eepro100.c
++++ b/hw/net/eepro100.c
+@@ -60,8 +60,6 @@
+  * changed to pad short packets itself. */
+ #define CONFIG_PAD_RECEIVED_FRAMES
+ 
+-#define KiB 1024
+-
+ /* Debug EEPRO100 card. */
+ #if 0
+ # define DEBUG_EEPRO100
+@@ -104,9 +102,9 @@
+ /* Use 64 word EEPROM. TODO: could be a runtime option. */
+ #define EEPROM_SIZE     64
+ 
+-#define PCI_MEM_SIZE            (4 * KiB)
++#define PCI_MEM_SIZE            (4 * K_BYTE)
+ #define PCI_IO_SIZE             64
+-#define PCI_FLASH_SIZE          (128 * KiB)
++#define PCI_FLASH_SIZE          (128 * K_BYTE)
+ 
+ #define BITS(n, m) (((0xffffffffU << (31 - n)) >> (31 - n + m)) << m)
  
 -- 
-2.17.1
+2.16.2
 

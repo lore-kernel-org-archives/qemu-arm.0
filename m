@@ -1,95 +1,116 @@
-Received: by 10.28.71.27 with SMTP id u27csp1897214wma;
-        Sun, 21 Jan 2018 08:49:56 -0800 (PST)
-X-Google-Smtp-Source: AH8x227cs6afHI0Cj+PNXjcX4UKbx7WTm5cEYzENZFAoFNwkxWggO5BNwWDrz2C1anxp6tiWkwje
-X-Received: by 10.129.56.5 with SMTP id f5mr4900143ywa.80.1516553396015;
-        Sun, 21 Jan 2018 08:49:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516553396; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp2406754wmb;
+        Mon, 5 Mar 2018 02:51:22 -0800 (PST)
+X-Google-Smtp-Source: AG47ELsgT6RCNZVC50PWrr0GGyYKdOSzjkwb2+TIsU2H5MEA/yEO6J3nTrfcCcbB50e5/q4MlhaY
+X-Received: by 10.129.175.86 with SMTP id x22mr8956284ywj.158.1520247082841;
+        Mon, 05 Mar 2018 02:51:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520247082; cv=none;
         d=google.com; s=arc-20160816;
-        b=Tvqq+fQsKxhhLwYL20Z7/xfVfI7HLf86uCTmtrLfBlWP/L+nUA2O7kg90dUrrM3dgb
-         qisPXQ14QCNiODTuIiQCDtzAAArvANHKOS/ItVPoVTkCnNjSrItPtdCyLcmKDzbrZZqp
-         ck1QvIhZNdZ3kCfZJ4odzVye6iOoYOztqivRUiqMGxXWv1uUh8MrvTMihaz7zsNm+i2s
-         r3K/K5c0l+L5I8EcFmwfO33GRZuZ9Fcbevi8KVeH2XRQZaYFXIyTB5tEOlhV9/gwr/wU
-         pq9WfxGpCUBF6S+cNhYhz9kyqE/vDMe1SuhFyG2lKLXn4HihGYpnhdXouXAPMPkak4nM
-         J4Lw==
+        b=lToGOOqIjbyzW0EsGOEbjdZSzPCJ8N8bR9RzHvbIbiZoqGcf5SY7N3N5YqQr2RQcet
+         yh8cEoMJrTEYQlt82eQsjSNG1DafVPn5ZGh2YGJxDpTvaPwc8H9BfObwFQdG0OW82Y4L
+         g9oQYKeVyEjdLzIKcp/bKnkv93vmhFWDd9qlbPBlr+hWf0EhPIf7QUzEHn8vwICjHjwH
+         qsHYDMM5RKGfaDP2nWby50j8+2BBdQTSfKukHmL4K269qWPqmbhNlS35SBMEaK+SwE/9
+         PtT8nfhv8C+UvUdzLLgl6N85p8guEA6NgxcIpWHn+V6/tOlxL2jQ3oM/0Q/1t0MEoaUw
+         lUzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:to:from:date:arc-authentication-results;
-        bh=Iauq2mqt+whQw9R1j52sjJVqCFAhGQLHDpXRhLvfFU0=;
-        b=f7Qsf6CxqX4V0cD794tIGNP+MBV2TkrTL3jBf/dsqo1bT8C8ghscDi86kxJcaTBjOp
-         48Xi1fZiPrenVl7jtHeAGddomwQmSOs8Wk8Ar5LyGclq7u13cHF6SzJPL66xHL0fLkgg
-         Ku31PaVxjAasfEIJ+6qGVFyXzc9hPFso648xT3W2g4HM8Fbq58gqfFIy/FW4sZaX31CA
-         vV6wBiHFVt+5E39KBWBztmmoKUkFIQsdFsFSDzEduaX8+/bTam0OaK7rf/3HRatLKKE4
-         sSwXGUa8KEtRgS75DdNzv3rrNYsYBbn56xREITereR+h0hYyovErHt978Qdmg+KKGoVj
-         nuZQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=yDGoaX5u4f43vZDC8otyy9QCSKdmyYBBKQmL8NtWoC8=;
+        b=zePJsZoAnwbc4M1yEAZWctA8G3znjN0qLfZs7TDpa3DpoPoMIiqivrmV45+kCNShcJ
+         PxPFNd/yfJqoTh+so9i/0hPjzyad+E2u7RCXXbbLu8+FkRFvHOgF4zcUVZfQ4BX14cqP
+         h16XSiqSiEB3vPb9zKzfGxWsxuFFhLyZg/A1q2pYGtknNmAQaFsTAbvRZzg4jotwSPrS
+         RAM0/QAulRrnwPFz44NIHo9FgJLIFVlEX/a6kman3BK3DFhbG8wkQpgDZABShCfSVGUT
+         5Vz5pvxeGGYpiDlNT+5nzUIAwQPZ1KdhhyUYTzMFzCUE7O8d8N9IUPdPEKPnpAbNWaNB
+         YwKw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NQRGGqxV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f73si3197357ywb.323.2018.01.21.08.49.55
+        by mx.google.com with ESMTPS id w14-v6si2022426ybm.136.2018.03.05.02.51.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 21 Jan 2018 08:49:56 -0800 (PST)
+        Mon, 05 Mar 2018 02:51:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NQRGGqxV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37128 helo=lists.gnu.org)
+Received: from localhost ([::1]:48511 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1edIod-0007e9-GR
-	for alex.bennee@linaro.org; Sun, 21 Jan 2018 11:49:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56749)
+	id 1esniE-0005Dl-9T
+	for alex.bennee@linaro.org; Mon, 05 Mar 2018 05:51:22 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34251)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <k.kozlowski.k@gmail.com>) id 1edIoR-0007cy-4W
-	for qemu-arm@nongnu.org; Sun, 21 Jan 2018 11:49:44 -0500
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1esni2-0005Bf-Gi
+	for qemu-arm@nongnu.org; Mon, 05 Mar 2018 05:51:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <k.kozlowski.k@gmail.com>) id 1edIoQ-00057L-FY
-	for qemu-arm@nongnu.org; Sun, 21 Jan 2018 11:49:43 -0500
-Received: from mail-wm0-f68.google.com ([74.125.82.68]:40255)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1esnhy-0005oj-K9
+	for qemu-arm@nongnu.org; Mon, 05 Mar 2018 05:51:10 -0500
+Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:37794)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <k.kozlowski.k@gmail.com>)
-	id 1edIoK-000554-Ae; Sun, 21 Jan 2018 11:49:36 -0500
-Received: by mail-wm0-f68.google.com with SMTP id v123so12344970wmd.5;
-	Sun, 21 Jan 2018 08:49:34 -0800 (PST)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1esnhm-0005ik-Eq; Mon, 05 Mar 2018 05:50:54 -0500
+Received: by mail-wm0-x244.google.com with SMTP id 139so14568147wmn.2;
+	Mon, 05 Mar 2018 02:50:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=yDGoaX5u4f43vZDC8otyy9QCSKdmyYBBKQmL8NtWoC8=;
+	b=NQRGGqxV9/vabXXaukEauwFDLhQWMDSERHOOTPaEIaZuBKXh0JEniywaRmtuDQWCCY
+	ljN1hEF0gvOrbvSMoe0klf+7Ch8Z8sx1an8S5ub/Y4RocV1Y4KIeZKE/wGcOdBPHWzmD
+	LebcRTQLp7AtSNpjE0F/XbQAeN68CuT51GWziRTB6Xxz+vGDTHvvI5oC001hXT/V96qw
+	s/sGlyEg/GpH5D1f3ng68j55xAb35aEB3Gd67QBSnYo8Je/7bhZ+EnRnSTxLCBBhMIJJ
+	uefe/GDOgh/AlIWgcoY4/Kd8kxUm4nGBC2pttRLxxr9CRJlaPOIGdfg7jadqYowqFHR5
+	EAxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:content-transfer-encoding
-	:in-reply-to:user-agent;
-	bh=Iauq2mqt+whQw9R1j52sjJVqCFAhGQLHDpXRhLvfFU0=;
-	b=tJwzmJRCboZCrNiyTfbKqVC3h6ETNtb3Hywwf6bFbsQo9C9h0f1Tk1TiZaF+r6pkB6
-	zGi2E82HBb1kJ9D7haL7VaytH1ZuONnKbvEjU9iylSb7EpntbSVwCUpMPIBkp1rHN/Rf
-	16846caqlgm+aQHIdpsGUE2I3963PAEqlMgAk94RZ4SAgRomtVUFEvM5fLKyph70Xx+e
-	RfiXm/41yf89TNMTCviO0CnUxXPh9UO/k0+kQ7fvgj7lrJ92DojN944KjQ8d+IyY9rED
-	4mBuvPGDI3P5dXehg/KHiQmN7nsaiFp3jOAKviuWeoCBWImqHV/ktdiZ1rUj+UMopmr1
-	Conw==
-X-Gm-Message-State: AKwxytdh5V5MqLBTT2S/9vccDJZ55k5MQVyLk7i0D32TRG7wF6wIYnwR
-	cuzCF918JSpVprj08655Wzk=
-X-Received: by 10.80.220.141 with SMTP id r13mr9262422edk.120.1516553372896;
-	Sun, 21 Jan 2018 08:49:32 -0800 (PST)
-Received: from kozik-lap ([178.38.148.193])
-	by smtp.googlemail.com with ESMTPSA id
-	k12sm9652831edl.86.2018.01.21.08.49.31
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Sun, 21 Jan 2018 08:49:32 -0800 (PST)
-Date: Sun, 21 Jan 2018 17:49:29 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Message-ID: <20180121164929.mq3jenhseu7ylj4y@kozik-lap>
-References: <20180118182510.15630-1-f4bug@amsat.org>
-	<20180118183108.16009-16-f4bug@amsat.org>
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=yDGoaX5u4f43vZDC8otyy9QCSKdmyYBBKQmL8NtWoC8=;
+	b=MGhjJzYSVsNWIwNUu4TE2lAal1IDr/Y/lxkNVGoIlBLiUUpm4FSPcZPw5O7AHuCsKy
+	bsONe6szQ10PejNsMPSsRlOx1xQczM9VlF3kD9VfgqIsIPNdgp677kTesYtCskVJJPmt
+	wTItRIukpYYbHxQyemxr7z0LpPiOgde2GYxgUlLR5X1wxz+9FEIfAExlmA+e0tX5enVQ
+	K3D8MGeEpnYyxDtx2BJHaUn6xN34W9VLbiW47Wp1J6aak5rEsSSdq3T5v6chrlip9+Nf
+	72LTFZdaBeQgG5V+woSfiy+00oJN1Q+W8TXHcPe63J6baTPXKd5nuGPeFs29NWjAgnuq
+	bgXg==
+X-Gm-Message-State: AElRT7HuJUv0yuyLJTtkWdSnT26RzKTlh23GFNMoSYOCvGCfTDUWFOfa
+	7BP8FfQiAJXL7SS0Mzxm1l4=
+X-Received: by 10.28.128.137 with SMTP id b131mr8391063wmd.121.1520247053317; 
+	Mon, 05 Mar 2018 02:50:53 -0800 (PST)
+Received: from [192.168.1.16] (ABayonne-654-1-79-224.w86-222.abo.wanadoo.fr.
+	[86.222.222.224]) by smtp.gmail.com with ESMTPSA id
+	b30sm24076137wra.34.2018.03.05.02.50.51
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 05 Mar 2018 02:50:52 -0800 (PST)
+To: Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+	Eric Blake <eblake@redhat.com>
+References: <20180215042900.16078-1-f4bug@amsat.org>
+	<20180215042900.16078-3-f4bug@amsat.org>
+	<8fd4272f-8c40-3804-8449-752aea88a7cc@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <5036928a-f7dd-ae77-9ca4-0aaa9d5b8673@amsat.org>
+Date: Mon, 5 Mar 2018 07:50:50 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.6.0
 MIME-Version: 1.0
+In-Reply-To: <8fd4272f-8c40-3804-8449-752aea88a7cc@redhat.com>
 Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20180118183108.16009-16-f4bug@amsat.org>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 74.125.82.68
-Subject: Re: [Qemu-arm] [PATCH v8 16/17] hw/arm/exynos4210: implement SDHCI
- Spec v2
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::244
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 02/30] hw: include
+ "qemu/cunits.h" and clean unused "qemu/cutils.h"
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,31 +122,78 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-devel@nongnu.org,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Kevin O'Connor <kevin@koconnor.net>, Stefan Hajnoczi <stefanha@redhat.com>,
-	Marcel Apfelbaum <marcel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	"open list:Exynos" <qemu-arm@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	qemu-devel@nongnu.org, Michael Walle <michael@walle.cc>,
+	Yongbok Kim <yongbok.kim@mips.com>, Marek Vasut <marex@denx.de>,
+	Markus Armbruster <armbru@redhat.com>,
+	=?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+	Marcel Apfelbaum <marcel@redhat.com>,
+	Samuel Thibault <samuel.thibault@ens-lyon.org>,
+	Richard Henderson <rth@twiddle.net>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Chris Wulff <crwulff@gmail.com>,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+	Paul Burton <paul.burton@mips.com>, qemu-ppc@nongnu.org,
+	Aurelien Jarno <aurelien@aurel32.net>, Gerd Hoffmann <kraxel@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: G1YyHzJu2Hsa
+X-TUID: HDvZA++ZTvr0
 
-On Thu, Jan 18, 2018 at 03:31:07PM -0300, Philippe Mathieu-Daud=C3=A9 wrote:
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> Acked-by: Alistair Francis <alistair.francis@xilinx.com>
-> ---
-> Krzysztof kindly checked those values with Manaul, the Samsung datasheet =
-:)
->=20
->  hw/arm/exynos4210.c | 21 +++++++++++++++++++--
->  1 file changed, 19 insertions(+), 2 deletions(-)
->=20
+Hi Thomas,
 
-Acked-by: Krzysztof Kozlowski <krzk@kernel.org>
+On 02/15/2018 03:10 AM, Thomas Huth wrote:
+> On 15.02.2018 05:28, Philippe Mathieu-Daudé wrote:
+>> These files were including "qemu/cutils.h" to use the byte-based size
+>> definitions, now available in "qemu/cunits.h".
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>  include/hw/hw.h       | 1 +
+>>  hw/arm/msf2-soc.c     | 1 -
+>>  hw/arm/msf2-som.c     | 1 -
+>>  hw/core/loader-fit.c  | 1 -
+>>  hw/core/loader.c      | 1 -
+>>  hw/core/machine.c     | 1 -
+>>  hw/cris/boot.c        | 1 -
+>>  hw/display/sm501.c    | 1 -
+>>  hw/hppa/machine.c     | 1 -
+>>  hw/lm32/milkymist.c   | 1 -
+>>  hw/microblaze/boot.c  | 1 -
+>>  hw/mips/boston.c      | 1 -
+>>  hw/misc/mos6522.c     | 1 -
+>>  hw/nios2/boot.c       | 1 -
+>>  hw/ppc/mac_newworld.c | 1 -
+>>  hw/ppc/mac_oldworld.c | 1 -
+>>  hw/ppc/pnv.c          | 1 -
+>>  hw/ppc/prep.c         | 1 -
+>>  hw/ppc/spapr_rtas.c   | 1 -
+>>  hw/sd/sdhci.c         | 1 -
+>>  hw/sparc/sun4m.c      | 1 -
+>>  hw/sparc64/sun4u.c    | 1 -
+>>  hw/usb/dev-serial.c   | 1 -
+>>  hw/usb/dev-storage.c  | 1 -
+>>  24 files changed, 1 insertion(+), 23 deletions(-)
+>>
+>> diff --git a/include/hw/hw.h b/include/hw/hw.h
+>> index ab4950c312..8249448cac 100644
+>> --- a/include/hw/hw.h
+>> +++ b/include/hw/hw.h
+>> @@ -14,6 +14,7 @@
+>>  #include "migration/qemu-file-types.h"
+>>  #include "qemu/module.h"
+>>  #include "sysemu/reset.h"
+>> +#include "qemu/cunits.h"
+> 
+> Instead of adding this to a header and creating yet another possible
+> recompile-the-world dependency this way, wouldn't it be better to
+> include the cunits.h only from the .c files that need the definitions?
 
-Best regards,
-Krzysztof
+I was waiting for other opinions but I can change if you prefer;
+meanwhile I'll respin this patch as RFC.
 
+Regards,
+
+Phil.

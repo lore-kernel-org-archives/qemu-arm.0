@@ -1,160 +1,182 @@
-Received: by 10.28.91.67 with SMTP id p64csp2684994wmb;
-        Mon, 5 Mar 2018 07:45:45 -0800 (PST)
-X-Google-Smtp-Source: AG47ELuc0/4d2Tfv/NiNyHEWKaEOsd+Aza6yDK9pXb/AL2RsNOMXpk8rCfgl3eEiPUbUvRXqTZZ1
-X-Received: by 10.129.129.194 with SMTP id r185mr9674190ywf.313.1520264745174;
-        Mon, 05 Mar 2018 07:45:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520264745; cv=none;
-        d=google.com; s=arc-20160816;
-        b=YmGcuX9lqmkGa9pfxIl+hvtdQVDGlX40lLs7DXy7vHG9IAbEOpe/XDmndTC3r6bCMI
-         ARTzSMunPrCGiYrw3oSGuTJYi31phROSDlc3CWdJ4FzlB9UsPJvDJzTIxxjBAuGpjrRq
-         s+HC68OYH7LRurTbbB95z76GqhrdoLu3qRThyElzlj6gj4VhlCHWh6YrARyDWPmVpLAl
-         avGiLOJ9r8RCRT9XihcuGd9PK1ZwrV5x5Bc8EJ9NfF6Y95G00W3jUZ+0WB80HJyScUaZ
-         iCpDJbcAYqDsixIomSDuUK2ZOfDKrzYTs3c5PWKuus7GHSgTIaRZ3huKFQRh6/8LEOg8
-         wYSw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=6RsZ4W2qIZCqqvD2ILK9VfxHIpAvcclQ/c42auaf2ts=;
-        b=BuNDBXIf1wZJhjfFbYjAXvqRvtEim7bXDwtYqDzgK9nEBnPD+lsY1bj4McwvjXTZ/c
-         8mGn/D/N40SZdkFJO2ur+UQZ+9NGLwVyPdB7krlGo6n3zn8RdUZKlzgJmYb+D3VVtFae
-         JcHsg30LRq5q/5Pbk4dOJKC8X1JHfg2NMI888ENESQJCc9BNn1dYsldNiG1+RuwGOLV/
-         8GNSvwwDIApI6OWCJtpLzQ9h7RVCypCY645nD9wcgCG0gi8hO0ILu5XAdwHPXb34Hn5C
-         mMBPF4EjnbMU282kuH953ZrVJsg3mQGozg9IT3qPZYua1NZMcM8sO2AMlPkoYofWZmqL
-         xiDQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=agEEJhsb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n186si2136902ywf.531.2018.03.05.07.45.45
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 05 Mar 2018 07:45:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=agEEJhsb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50056 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1essJ6-0002KB-K9
-	for alex.bennee@linaro.org; Mon, 05 Mar 2018 10:45:44 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44691)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1essI5-0001XF-7D
-	for qemu-arm@nongnu.org; Mon, 05 Mar 2018 10:44:42 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1essI4-0007vS-FP
-	for qemu-arm@nongnu.org; Mon, 05 Mar 2018 10:44:41 -0500
-Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:42180)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1essI4-0007vC-AG
-	for qemu-arm@nongnu.org; Mon, 05 Mar 2018 10:44:40 -0500
-Received: by mail-oi0-x241.google.com with SMTP id c18so12333638oiy.9
-	for <qemu-arm@nongnu.org>; Mon, 05 Mar 2018 07:44:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=6RsZ4W2qIZCqqvD2ILK9VfxHIpAvcclQ/c42auaf2ts=;
-	b=agEEJhsbS869XBpRPTsVQHw+ZRU82/bLy/MdXIq8LjD51FU2bHmxF+qx04GlWwXqzb
-	FgrcFt6YTIW67sKQ/k6IpqRvucyoiJ9lHwghHjypfU5OI3rkB1640YMjPW9UQlPLYaDg
-	GfZOexf5dArO0cV3Npy+49N4emiT7hOFuH9IU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=6RsZ4W2qIZCqqvD2ILK9VfxHIpAvcclQ/c42auaf2ts=;
-	b=NzQmmoVybfA3Qp/fMTO1p34lGMNk3i43x/d+7Cl44rzFwrvMVKYcict7vBSmY9iRH0
-	SLjXG1fknlfmMTy/E4cV9khZhKIkuhKctoEArEXt9rdigkcbqYslTezsrm/Uf2oHQdcw
-	JQzzVlJ9mEe5wGDr3m7bEemkbJ4o+yheEIFLUo9qaW1yYq0XtevmsysyHPx2rcSjAHtb
-	2sap7uYZk9J91+DSChRLmzPDMa5q5qAspEzGZHPJuRxE+QGIM1ySp/oP5+RgCOJ9GoFG
-	TITsmvHSJax2RUlEB5daPVENW4qeNBCZ402crfI3/VLtpNRBjYCpl1FN3EN/aj3FpzIG
-	24DQ==
-X-Gm-Message-State: APf1xPDR1NT3+vnleL/Ik1acdRuHMgOW/kT19l6aeLuWVGoMY/gXjCml
-	m0BkhytMdiulrCotENepgx2ZG5YeJrL0KlUq/TpxKg==
-X-Received: by 10.202.90.138 with SMTP id o132mr9050308oib.11.1520264679560;
-	Mon, 05 Mar 2018 07:44:39 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.157.33.100 with HTTP; Mon, 5 Mar 2018 07:44:19 -0800 (PST)
-In-Reply-To: <20180303143823.27055-6-richard.henderson@linaro.org>
-References: <20180303143823.27055-1-richard.henderson@linaro.org>
-	<20180303143823.27055-6-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 5 Mar 2018 15:44:19 +0000
-Message-ID: <CAFEAcA_Fp4nvXDW+UucRw=vEF8DwniwsfhnC0KdumBA8OF294Q@mail.gmail.com>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id m7sm36785251wrm.35.2018.03.06.04.28.53
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 06 Mar 2018 04:28:53 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id 2338C3E01BE;
+	Tue,  6 Mar 2018 12:28:53 +0000 (GMT)
+References: <20180303143823.27055-1-richard.henderson@linaro.org> <20180303143823.27055-2-richard.henderson@linaro.org>
+User-agent: mu4e 1.1.0; emacs 26.0.91
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::241
-Subject: Re: [Qemu-arm] [PATCH v4 5/5] aarch64-linux-user: Add support for
- SVE signal frame records
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HgpUkOvhicCq
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Subject: Re: [Qemu-devel] [PATCH v4 1/5] linux-user: Implement aarch64 PR_SVE_SET/GET_VL
+In-reply-to: <20180303143823.27055-2-richard.henderson@linaro.org>
+Date: Tue, 06 Mar 2018 12:28:53 +0000
+Message-ID: <87a7vltmka.fsf@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: teDexcu05L3W
 
-On 3 March 2018 at 14:38, Richard Henderson
-<richard.henderson@linaro.org> wrote:
-> Depending on the currently selected size of the SVE vector registers,
-> we can either store the data within the "standard" allocation, or we
-> may beedn to allocate additional space with an EXTRA record.
+
+Richard Henderson <richard.henderson@linaro.org> writes:
+
+> As an implementation choice, widening VL has zeroed the
+> previously inaccessible portion of the sve registers.
 >
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  linux-user/signal.c | 210 +++++++++++++++++++++++++++++++++++++++++++++++-----
->  1 file changed, 192 insertions(+), 18 deletions(-)
+>  linux-user/aarch64/target_syscall.h |  3 +++
+>  target/arm/cpu.h                    |  1 +
+>  linux-user/syscall.c                | 27 ++++++++++++++++++++++++
+>  target/arm/cpu64.c                  | 41 +++++++++++++++++++++++++++++++=
+++++++
+>  4 files changed, 72 insertions(+)
+>
+> diff --git a/linux-user/aarch64/target_syscall.h b/linux-user/aarch64/tar=
+get_syscall.h
+> index 604ab99b14..205265e619 100644
+> --- a/linux-user/aarch64/target_syscall.h
+> +++ b/linux-user/aarch64/target_syscall.h
+> @@ -19,4 +19,7 @@ struct target_pt_regs {
+>  #define TARGET_MLOCKALL_MCL_CURRENT 1
+>  #define TARGET_MLOCKALL_MCL_FUTURE  2
+>
+> +#define TARGET_PR_SVE_SET_VL  50
+> +#define TARGET_PR_SVE_GET_VL  51
 
-> +static int alloc_sigframe_space(int this_size, target_sigframe_layout *l)
+For some reason I thought we might get this from our copy of
+linux-headers but it seems we only do that for KVM bits.
+
+> +
+>  #endif /* AARCH64_TARGET_SYSCALL_H */
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 8dd6b788df..5f4566f017 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -861,6 +861,7 @@ int arm_cpu_write_elf32_note(WriteCoreDumpFunction f,=
+ CPUState *cs,
+>  #ifdef TARGET_AARCH64
+>  int aarch64_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int reg);
+>  int aarch64_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
+> +void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq);
+>  #endif
+>
+>  target_ulong do_arm_semihosting(CPUARMState *env);
+> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> index e24f43c4a2..38f40e2692 100644
+> --- a/linux-user/syscall.c
+> +++ b/linux-user/syscall.c
+> @@ -10670,6 +10670,33 @@ abi_long do_syscall(void *cpu_env, int num, abi_=
+long arg1,
+>              break;
+>          }
+>  #endif
+> +#ifdef TARGET_AARCH64
+> +        case TARGET_PR_SVE_SET_VL:
+> +            /* We cannot support either PR_SVE_SET_VL_ONEXEC
+> +               or PR_SVE_VL_INHERIT.  Therefore, anything above
+> +               ARM_MAX_VQ results in EINVAL.  */
+> +            ret =3D -TARGET_EINVAL;
+> +            if (arm_feature(cpu_env, ARM_FEATURE_SVE)
+> +                && arg2 >=3D 0 && arg2 <=3D ARM_MAX_VQ * 16 && !(arg2 & =
+15)) {
+> +                CPUARMState *env =3D cpu_env;
+
+The kernel code splits the arg2 up into VL and flags. We don't seem to
+be doing that here.
+
+	vl =3D arg & PR_SVE_VL_LEN_MASK;
+	flags =3D arg & ~vl;
+
+I'm not sure what && !(arg2 & 15) is doing but PR_SVE_VL_LEN_MASK is
+0xffff, Perhaps some defines would be useful to make it clearer.
+
+> +                int old_vq =3D (env->vfp.zcr_el[1] & 0xf) + 1;
+> +                int vq =3D MAX(arg2 / 16, 1);
+> +
+> +                if (vq < old_vq) {
+> +                    aarch64_sve_narrow_vq(env, vq);
+> +                }
+> +                env->vfp.zcr_el[1] =3D vq - 1;
+
+It seems odd not to have setting this inside cpu64.c. Won't a similar
+manipulation need to be made for system mode? I'd keep all the logic
+together in aarch64_sve_narrow_vq (or maybe call it aarch64_sve_set_vq
+and pass it the current exception level).
+
+> +                ret =3D vq * 16;
+> +            }
+> +            break;
+> +        case TARGET_PR_SVE_GET_VL:
+> +            ret =3D -TARGET_EINVAL;
+> +            if (arm_feature(cpu_env, ARM_FEATURE_SVE)) {
+> +                CPUARMState *env =3D cpu_env;
+> +                ret =3D ((env->vfp.zcr_el[1] & 0xf) + 1) * 16;
+> +            }
+> +            break;
+> +#endif /* AARCH64 */
+>          case PR_GET_SECCOMP:
+>          case PR_SET_SECCOMP:
+>              /* Disable seccomp to prevent the target disabling syscalls =
+we
+> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> index 4228713b19..74b485b382 100644
+> --- a/target/arm/cpu64.c
+> +++ b/target/arm/cpu64.c
+> @@ -366,3 +366,44 @@ static void aarch64_cpu_register_types(void)
+>  }
+>
+>  type_init(aarch64_cpu_register_types)
+> +
+> +/* The manual says that when SVE is enabled and VQ is widened the
+> + * implementation is allowed to zero the previously inaccessible
+> + * portion of the registers.  The corollary to that is that when
+> + * SVE is enabled and VQ is narrowed we are also allowed to zero
+> + * the now inaccessible portion of the registers.
+> + *
+> + * The intent of this is that no predicate bit beyond VQ is ever set.
+> + * Which means that some operations on predicate registers themselves
+> + * may operate on full uint64_t or even unrolled across the maximum
+> + * uint64_t[4].  Performing 4 bits of host arithmetic unconditionally
+> + * may well be cheaper than conditionals to restrict the operation
+> + * to the relevant portion of a uint16_t[16].
+> + *
+> + * TODO: Need to call this for changes to the real system registers
+> + * and EL state changes.
+> + */
+> +void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq)
 > +{
-> +    /* Make sure there will always be space for the end marker.  */
-> +    const int std_size = sizeof(struct target_rt_sigframe)
-> +                         - sizeof(struct target_aarch64_ctx);
-> +    int this_loc = l->total_size;
+> +    int i, j;
+> +    uint64_t pmask;
 > +
-> +    if (l->extra_base) {
-> +        /* Once we have begun an extra space, all allocations go there.  */
-> +        l->extra_size += this_size;
-> +    } else if (this_size + this_loc > std_size) {
-> +        /* This allocation does not fit in the standard space.  */
-
-I think strictly this runs into trouble if it lets us put something
-in the standard space that runs right up to the end marker and
-doesn't leave space for the extra marker, and then the next thing
-can't put in the extra marker. But this won't happen in practice,
-so I don't think we really need to try to handle that.
-
-> +        /* Allocate the extra record.  */
-> +        l->extra_ofs = this_loc;
-> +        l->total_size += sizeof(struct target_extra_context);
+> +    assert(vq >=3D 1 && vq <=3D ARM_MAX_VQ);
 > +
-> +        /* Allocate the standard end record.  */
-> +        l->std_end_ofs = l->total_size;
-> +        l->total_size += sizeof(struct target_aarch64_ctx);
-> +
-> +        /* Allocate the requested record.  */
-> +        l->extra_base = this_loc = l->total_size;
-> +        l->extra_size = this_size;
+> +    /* Zap the high bits of the zregs.  */
+> +    for (i =3D 0; i < 32; i++) {
+> +        memset(&env->vfp.zregs[i].d[2 * vq], 0, 16 * (ARM_MAX_VQ - vq));
 > +    }
-> +    l->total_size += this_size;
 > +
-> +    return this_loc;
+> +    /* Zap the high bits of the pregs and ffr.  */
+> +    pmask =3D 0;
+> +    if (vq & 3) {
+> +        pmask =3D ~(-1ULL << (16 * (vq & 3)));
+> +    }
+
+The kernel defines SVE_VQ_BYTES for clarity, perhaps we should do so to
+here.
+
+> +    for (j =3D vq / 4; j < ARM_MAX_VQ / 4; j++) {
+> +        for (i =3D 0; i < 17; ++i) {
+> +            env->vfp.pregs[i].p[j] &=3D pmask;
+> +        }
+> +        pmask =3D 0;
+> +    }
 > +}
 
-thanks
--- PMM
+
+--
+Alex Benn=C3=A9e

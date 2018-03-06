@@ -1,495 +1,377 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id v8sm3898377wmh.9.2018.03.06.07.46.51
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 06 Mar 2018 07:46:51 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 3DE1D3E01BE;
-	Tue,  6 Mar 2018 15:46:51 +0000 (GMT)
-References: <20180305112732.26471-1-f4bug@amsat.org> <20180305112732.26471-8-f4bug@amsat.org>
-User-agent: mu4e 1.1.0; emacs 26.0.91
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Peter Crosthwaite <crosthwaite.peter@gmail.com>, Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org, "open list\:ARM" <qemu-arm@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>, Antony Pavlov <antonynpavlov@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Peter Chubb <peter.chubb@nicta.com.au>
-Subject: Re: [Qemu-devel] [PATCH v2 07/30] hw/arm: use the BYTE-based definitions
-In-reply-to: <20180305112732.26471-8-f4bug@amsat.org>
-Date: Tue, 06 Mar 2018 15:46:51 +0000
-Message-ID: <87zi3lrytw.fsf@linaro.org>
+Received: by 10.28.91.67 with SMTP id p64csp3703154wmb;
+        Tue, 6 Mar 2018 04:56:02 -0800 (PST)
+X-Google-Smtp-Source: AG47ELuPi/m1zOH8FutsnZySNh7Ge2rC+pTLEm7cDUGSR6cpcYXvSLvjHGFxnFvl576CfxchFOiz
+X-Received: by 2002:a25:9883:: with SMTP id l3-v6mr11778738ybo.24.1520340962447;
+        Tue, 06 Mar 2018 04:56:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520340962; cv=none;
+        d=google.com; s=arc-20160816;
+        b=zGfAQlBEGphiwjlDyy3qAFxccbnYeTxoqjxydcRG6vp40tnzh2qkZF2tC/x6yl3NtQ
+         4OjmjvjH9pgERGOrvrwL0JI7mtPQCtrWd2c1VQriHVsiXMHOxbMdbiTDsMqwFZo/ieGN
+         ioojo2YbeeCOwa3X2VuL3x9JtKPBHSd5ogK40/0Ux1/E9zV0sFpa4Fb66Xycfq1k+JAO
+         YapsFd0ay6JY44xPDFSK3MCCMrYFvYZWHBzhKGGTK6ZAmgftRD8IUhBkKMhqSyp1vXn3
+         Pv2n1hYIZ47WQm/qkkoN5j3eanlCteqzvQDIz3xJwf3Mgl8MKlG+3XshdmEQjogg+w4l
+         SoJA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=8DYTh3ifXlfM9ksJAhKjNRRsCx5UKF086u9co5t48gU=;
+        b=euLXhOV0U1EZLUAhP3RcMrJz+/xB/b9+PgXXnbac0kdJzZlitJJ/2YsHHA+69P4HBC
+         UN3Y5FJwOuTHmsDcq2USLvamTjwTS7gNDVDGCMIpVVDPdrHiHTFJoix7LTgn5QBlQWYI
+         CoNXQxxbZZ0W5TanqTjgpeguRE0zGKEe+J2iA0LNQ8GJ/D8beOwpnzxQw3AlJD3yru7T
+         JFDXS57U9++7NOqKf/H7hCUEx1oFy+SPzOZJzEDPBEpvWA89HHFyfpwCYAc5lL/wllAq
+         YCrE/3mpCmj9AUD2PDtt1slO2wA4mebQOgxVTirvv7y+9lyVT/te7Yr8L4RIYdJ4iaQ9
+         zvwg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id q2-v6si538036ybk.263.2018.03.06.04.56.02
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 06 Mar 2018 04:56:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55255 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1etC8P-0008V3-SV
+	for alex.bennee@linaro.org; Tue, 06 Mar 2018 07:56:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41255)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <pm215@archaic.org.uk>) id 1etC82-0008Od-MI
+	for qemu-arm@nongnu.org; Tue, 06 Mar 2018 07:55:40 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <pm215@archaic.org.uk>) id 1etC81-0004op-6w
+	for qemu-arm@nongnu.org; Tue, 06 Mar 2018 07:55:38 -0500
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:46810)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1etC80-0004jX-Ry; Tue, 06 Mar 2018 07:55:37 -0500
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1etC7s-0004VN-AR; Tue, 06 Mar 2018 12:55:28 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Tue,  6 Mar 2018 12:55:21 +0000
+Message-Id: <20180306125526.27838-2-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.16.2
+In-Reply-To: <20180306125526.27838-1-peter.maydell@linaro.org>
+References: <20180306125526.27838-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: vcZSMW41BOiA
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH v2 1/6] target/arm: Query host CPU features
+ on-demand at instance init
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Igor Mammedov <imammedo@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	patches@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4lxacFCGOlUn
 
+Currently we query the host CPU features in the class init function
+for the TYPE_ARM_HOST_CPU class, so that we can later copy them
+from the class object into the instance object in the object
+instance init function. This is awkward for implementing "-cpu max",
+which should work like "-cpu host" for KVM but like "cpu with all
+implemented features" for TCG.
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+Move the place where we store the information about the host CPU from
+a class object to static variables in kvm.c, and then in the instance
+init function call a new kvm_arm_set_cpu_features_from_host()
+function which will query the host kernel if necessary and then
+fill in the CPU instance fields.
 
-> It eases code review, unit is explicit.
->
-> Patch generated using:
->
->   $ git grep -E '(1024|2048|4096|8192|(<<|>>).?(10|20|30))' hw/ include/h=
-w/
->
-> and modified manually.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+This allows us to drop the special class struct and class init
+function for TYPE_ARM_HOST_CPU entirely.
 
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+We can't delay the probe until realize, because the ARM
+instance_post_init hook needs to look at the feature bits we
+set, so we need to do it in the initfn. This is safe because
+the probing doesn't affect the actual VM state (it creates a
+separate scratch VM to do its testing), but the probe might fail.
+Because we can't report errors in retrieving the host features
+in the initfn, we check this belatedly in the realize function
+(the intervening code will be able to cope with the relevant
+fields in the CPU structure being zero).
 
-> ---
->  include/hw/arm/stm32f205_soc.h |  4 ++--
->  hw/arm/boot.c                  |  6 +++---
->  hw/arm/collie.c                |  4 ++--
->  hw/arm/digic_boards.c          |  6 +++---
->  hw/arm/gumstix.c               |  2 +-
->  hw/arm/integratorcp.c          |  2 +-
->  hw/arm/mainstone.c             |  2 +-
->  hw/arm/musicpal.c              |  8 ++++----
->  hw/arm/omap_sx1.c              |  8 ++++----
->  hw/arm/raspi.c                 |  4 ++--
->  hw/arm/stellaris.c             |  4 ++--
->  hw/arm/versatilepb.c           |  4 ++--
->  hw/arm/vexpress.c              |  6 +++---
->  hw/arm/virt.c                  |  4 ++--
->  hw/arm/xilinx_zynq.c           |  4 ++--
->  hw/misc/aspeed_sdmc.c          |  8 ++++----
->  hw/misc/imx7_gpr.c             |  2 +-
->  hw/misc/omap_gpmc.c            |  4 ++--
->  hw/ssi/aspeed_smc.c            | 28 ++++++++++++++--------------
->  19 files changed, 55 insertions(+), 55 deletions(-)
->
-> diff --git a/include/hw/arm/stm32f205_soc.h b/include/hw/arm/stm32f205_so=
-c.h
-> index 922a733f88..e30ae33c65 100644
-> --- a/include/hw/arm/stm32f205_soc.h
-> +++ b/include/hw/arm/stm32f205_soc.h
-> @@ -43,9 +43,9 @@
->  #define STM_NUM_SPIS 3
->
->  #define FLASH_BASE_ADDRESS 0x08000000
-> -#define FLASH_SIZE (1024 * 1024)
-> +#define FLASH_SIZE (1 * M_BYTE)
->  #define SRAM_BASE_ADDRESS 0x20000000
-> -#define SRAM_SIZE (128 * 1024)
-> +#define SRAM_SIZE (128 * K_BYTE)
->
->  typedef struct STM32F205State {
->      /*< private >*/
-> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index 6d0c92ab88..51df96a6c8 100644
-> --- a/hw/arm/boot.c
-> +++ b/hw/arm/boot.c
-> @@ -1015,7 +1015,7 @@ static void arm_load_kernel_notify(Notifier *notifi=
-er, void *data)
->       * the initrd at 128MB.
->       */
->      info->initrd_start =3D info->loader_start +
-> -        MIN(info->ram_size / 2, 128 * 1024 * 1024);
-> +        MIN(info->ram_size / 2, 128 * M_BYTE);
->
->      /* Assume that raw images are linux kernels, and ELF images are not.=
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ target/arm/cpu.h     |  5 +++++
+ target/arm/kvm_arm.h | 35 ++++++++++++++++++++++++-----------
+ target/arm/cpu.c     | 13 +++++++++++++
+ target/arm/kvm.c     | 36 +++++++++++++++++++-----------------
+ target/arm/kvm32.c   |  8 ++++----
+ target/arm/kvm64.c   |  8 ++++----
+ 6 files changed, 69 insertions(+), 36 deletions(-)
+
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 8dd6b788df..1df46ad7a0 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -745,6 +745,11 @@ struct ARMCPU {
+     /* Uniprocessor system with MP extensions */
+     bool mp_is_up;
+ 
++    /* True if we tried kvm_arm_host_cpu_features() during CPU instance_init
++     * and the probe failed (so we need to report the error in realize)
++     */
++    bool host_cpu_probe_failed;
++
+     /* The instance init functions for implementation-specific subclasses
+      * set these fields to specify the implementation-dependent values of
+      * various constant registers and reset values of non-constant
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index cfb7e5af72..1e2364007d 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -152,20 +152,16 @@ bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
+ void kvm_arm_destroy_scratch_host_vcpu(int *fdarray);
+ 
+ #define TYPE_ARM_HOST_CPU "host-" TYPE_ARM_CPU
+-#define ARM_HOST_CPU_CLASS(klass) \
+-    OBJECT_CLASS_CHECK(ARMHostCPUClass, (klass), TYPE_ARM_HOST_CPU)
+-#define ARM_HOST_CPU_GET_CLASS(obj) \
+-    OBJECT_GET_CLASS(ARMHostCPUClass, (obj), TYPE_ARM_HOST_CPU)
+-
+-typedef struct ARMHostCPUClass {
+-    /*< private >*/
+-    ARMCPUClass parent_class;
+-    /*< public >*/
+ 
++/**
++ * ARMHostCPUFeatures: information about the host CPU (identified
++ * by asking the host kernel)
++ */
++typedef struct ARMHostCPUFeatures {
+     uint64_t features;
+     uint32_t target;
+     const char *dtb_compatible;
+-} ARMHostCPUClass;
++} ARMHostCPUFeatures;
+ 
+ /**
+  * kvm_arm_get_host_cpu_features:
+@@ -174,8 +170,16 @@ typedef struct ARMHostCPUClass {
+  * Probe the capabilities of the host kernel's preferred CPU and fill
+  * in the ARMHostCPUClass struct accordingly.
   */
->      kernel_size =3D arm_load_elf(info, &elf_entry, &elf_low_addr,
-> @@ -1102,13 +1102,13 @@ static void arm_load_kernel_notify(Notifier *noti=
-fier, void *data)
->                   *
->                   * Let's play safe and prealign it to 2MB to give us som=
-e space.
->                   */
-> -                align =3D 2 * 1024 * 1024;
-> +                align =3D 2 * M_BYTE;
->              } else {
->                  /*
->                   * Some 32bit kernels will trash anything in the 4K page=
- the
->                   * initrd ends in, so make sure the DTB isn't caught up =
-in that.
->                   */
-> -                align =3D 4096;
-> +                align =3D 4 * K_BYTE;
->              }
->
->              /* Place the DTB after the initrd in memory with alignment. =
-*/
-> diff --git a/hw/arm/collie.c b/hw/arm/collie.c
-> index f8c566e2e5..1695863629 100644
-> --- a/hw/arm/collie.c
-> +++ b/hw/arm/collie.c
-> @@ -39,12 +39,12 @@ static void collie_init(MachineState *machine)
->      dinfo =3D drive_get(IF_PFLASH, 0, 0);
->      pflash_cfi01_register(SA_CS0, NULL, "collie.fl1", 0x02000000,
->                      dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-> -                    (64 * 1024), 512, 4, 0x00, 0x00, 0x00, 0x00, 0);
-> +                    64 * K_BYTE, 512, 4, 0x00, 0x00, 0x00, 0x00, 0);
->
->      dinfo =3D drive_get(IF_PFLASH, 0, 1);
->      pflash_cfi01_register(SA_CS1, NULL, "collie.fl2", 0x02000000,
->                      dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-> -                    (64 * 1024), 512, 4, 0x00, 0x00, 0x00, 0x00, 0);
-> +                    64 * K_BYTE, 512, 4, 0x00, 0x00, 0x00, 0x00, 0);
->
->      sysbus_create_simple("scoop", 0x40800000, NULL);
->
-> diff --git a/hw/arm/digic_boards.c b/hw/arm/digic_boards.c
-> index 9f11dcd11f..04e52e776f 100644
-> --- a/hw/arm/digic_boards.c
-> +++ b/hw/arm/digic_boards.c
-> @@ -126,8 +126,8 @@ static void digic_load_rom(DigicBoardState *s, hwaddr=
- addr,
->  static void digic4_add_k8p3215uqb_rom(DigicBoardState *s, hwaddr addr,
->                                        const char *def_filename)
->  {
-> -#define FLASH_K8P3215UQB_SIZE (4 * 1024 * 1024)
-> -#define FLASH_K8P3215UQB_SECTOR_SIZE (64 * 1024)
-> +#define FLASH_K8P3215UQB_SIZE (4 * M_BYTE)
-> +#define FLASH_K8P3215UQB_SECTOR_SIZE (64 * K_BYTE)
->
->      pflash_cfi02_register(addr, NULL, "pflash", FLASH_K8P3215UQB_SIZE,
->                            NULL, FLASH_K8P3215UQB_SECTOR_SIZE,
-> @@ -141,7 +141,7 @@ static void digic4_add_k8p3215uqb_rom(DigicBoardState=
- *s, hwaddr addr,
->  }
->
->  static DigicBoard digic4_board_canon_a1100 =3D {
-> -    .ram_size =3D 64 * 1024 * 1024,
-> +    .ram_size =3D 64 * M_BYTE,
->      .add_rom1 =3D digic4_add_k8p3215uqb_rom,
->      .rom1_def_filename =3D "canon-a1100-rom1.bin",
->  };
-> diff --git a/hw/arm/gumstix.c b/hw/arm/gumstix.c
-> index ea2a3c532d..fc15df1d12 100644
-> --- a/hw/arm/gumstix.c
-> +++ b/hw/arm/gumstix.c
-> @@ -47,7 +47,7 @@
->  #include "sysemu/qtest.h"
->  #include "cpu.h"
->
-> -static const int sector_len =3D 128 * 1024;
-> +static const int sector_len =3D 128 * K_BYTE;
->
->  static void connex_init(MachineState *machine)
->  {
-> diff --git a/hw/arm/integratorcp.c b/hw/arm/integratorcp.c
-> index e8303b83be..4e711194ef 100644
-> --- a/hw/arm/integratorcp.c
-> +++ b/hw/arm/integratorcp.c
-> @@ -609,7 +609,7 @@ static void integratorcp_init(MachineState *machine)
->      memory_region_add_subregion(address_space_mem, 0x80000000, ram_alias=
-);
->
->      dev =3D qdev_create(NULL, TYPE_INTEGRATOR_CM);
-> -    qdev_prop_set_uint32(dev, "memsz", ram_size >> 20);
-> +    qdev_prop_set_uint32(dev, "memsz", ram_size / M_BYTE);
->      qdev_init_nofail(dev);
->      sysbus_mmio_map((SysBusDevice *)dev, 0, 0x10000000);
->
-> diff --git a/hw/arm/mainstone.c b/hw/arm/mainstone.c
-> index 4215c025fc..37c21ed6d0 100644
-> --- a/hw/arm/mainstone.c
-> +++ b/hw/arm/mainstone.c
-> @@ -115,7 +115,7 @@ static void mainstone_common_init(MemoryRegion *addre=
-ss_space_mem,
->                                    MachineState *machine,
->                                    enum mainstone_model_e model, int arm_=
-id)
->  {
-> -    uint32_t sector_len =3D 256 * 1024;
-> +    uint32_t sector_len =3D 256 * K_BYTE;
->      hwaddr mainstone_flash_base[] =3D { MST_FLASH_0, MST_FLASH_1 };
->      PXA2xxState *mpu;
->      DeviceState *mst_irq;
-> diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-> index 38d7322a19..d6d1ce75c5 100644
-> --- a/hw/arm/musicpal.c
-> +++ b/hw/arm/musicpal.c
-> @@ -62,8 +62,8 @@
->  #define MP_SRAM_BASE            0xC0000000
->  #define MP_SRAM_SIZE            0x00020000
->
-> -#define MP_RAM_DEFAULT_SIZE     32*1024*1024
-> -#define MP_FLASH_SIZE_MAX       32*1024*1024
-> +#define MP_RAM_DEFAULT_SIZE     (32 * M_BYTE)
-> +#define MP_FLASH_SIZE_MAX       (32 * M_BYTE)
->
->  #define MP_TIMER1_IRQ           4
->  #define MP_TIMER2_IRQ           5
-> @@ -1625,8 +1625,8 @@ static void musicpal_init(MachineState *machine)
->          BlockBackend *blk =3D blk_by_legacy_dinfo(dinfo);
->
->          flash_size =3D blk_getlength(blk);
-> -        if (flash_size !=3D 8*1024*1024 && flash_size !=3D 16*1024*1024 =
-&&
-> -            flash_size !=3D 32*1024*1024) {
-> +        if (flash_size !=3D 8 * M_BYTE && flash_size !=3D 16 * M_BYTE &&
-> +            flash_size !=3D 32 * M_BYTE) {
->              error_report("Invalid flash image size");
->              exit(1);
->          }
-> diff --git a/hw/arm/omap_sx1.c b/hw/arm/omap_sx1.c
-> index eccc19c77b..729af8bb80 100644
-> --- a/hw/arm/omap_sx1.c
-> +++ b/hw/arm/omap_sx1.c
-> @@ -88,10 +88,10 @@ static const MemoryRegionOps static_ops =3D {
->  };
->
->  #define sdram_size	0x02000000
-> -#define sector_size	(128 * 1024)
-> -#define flash0_size	(16 * 1024 * 1024)
-> -#define flash1_size	( 8 * 1024 * 1024)
-> -#define flash2_size	(32 * 1024 * 1024)
-> +#define sector_size (128 * K_BYTE)
-> +#define flash0_size (16 * M_BYTE)
-> +#define flash1_size (8 * M_BYTE)
-> +#define flash2_size (32 * M_BYTE)
->  #define total_ram_v1	(sdram_size + flash0_size + flash1_size + OMAP15XX_=
-SRAM_SIZE)
->  #define total_ram_v2	(sdram_size + flash2_size + OMAP15XX_SRAM_SIZE)
->
-> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-> index a37881433c..4b54fa5ad4 100644
-> --- a/hw/arm/raspi.c
-> +++ b/hw/arm/raspi.c
-> @@ -183,7 +183,7 @@ static void raspi2_machine_init(MachineClass *mc)
->      mc->max_cpus =3D BCM2836_NCPUS;
->      mc->min_cpus =3D BCM2836_NCPUS;
->      mc->default_cpus =3D BCM2836_NCPUS;
-> -    mc->default_ram_size =3D 1024 * 1024 * 1024;
-> +    mc->default_ram_size =3D 1 * G_BYTE;
->      mc->ignore_memory_transaction_failures =3D true;
->  };
->  DEFINE_MACHINE("raspi2", raspi2_machine_init)
-> @@ -206,7 +206,7 @@ static void raspi3_machine_init(MachineClass *mc)
->      mc->max_cpus =3D BCM2836_NCPUS;
->      mc->min_cpus =3D BCM2836_NCPUS;
->      mc->default_cpus =3D BCM2836_NCPUS;
-> -    mc->default_ram_size =3D 1024 * 1024 * 1024;
-> +    mc->default_ram_size =3D 1 * G_BYTE;
->  }
->  DEFINE_MACHINE("raspi3", raspi3_machine_init)
->  #endif
-> diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-> index de7c0fc4a6..8ff7567126 100644
-> --- a/hw/arm/stellaris.c
-> +++ b/hw/arm/stellaris.c
-> @@ -1284,8 +1284,8 @@ static void stellaris_init(MachineState *ms, stella=
-ris_board_info *board)
->      MemoryRegion *flash =3D g_new(MemoryRegion, 1);
->      MemoryRegion *system_memory =3D get_system_memory();
->
-> -    flash_size =3D (((board->dc0 & 0xffff) + 1) << 1) * 1024;
-> -    sram_size =3D ((board->dc0 >> 18) + 1) * 1024;
-> +    flash_size =3D (((board->dc0 & 0xffff) + 1) << 1) * K_BYTE;
-> +    sram_size =3D ((board->dc0 >> 18) + 1) * K_BYTE;
->
->      /* Flash programming is done via the SCU, so pretend it is ROM.  */
->      memory_region_init_ram(flash, NULL, "stellaris.flash", flash_size,
-> diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
-> index 418792cd02..041f12beb7 100644
-> --- a/hw/arm/versatilepb.c
-> +++ b/hw/arm/versatilepb.c
-> @@ -26,8 +26,8 @@
->  #include "hw/char/pl011.h"
->
->  #define VERSATILE_FLASH_ADDR 0x34000000
-> -#define VERSATILE_FLASH_SIZE (64 * 1024 * 1024)
-> -#define VERSATILE_FLASH_SECT_SIZE (256 * 1024)
-> +#define VERSATILE_FLASH_SIZE (64 * M_BYTE)
-> +#define VERSATILE_FLASH_SECT_SIZE (256 * K_BYTE)
->
->  /* Primary interrupt controller.  */
->
-> diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
-> index 9fad79177a..7b12dfca41 100644
-> --- a/hw/arm/vexpress.c
-> +++ b/hw/arm/vexpress.c
-> @@ -45,8 +45,8 @@
->  #include "hw/cpu/a15mpcore.h"
->
->  #define VEXPRESS_BOARD_ID 0x8e0
-> -#define VEXPRESS_FLASH_SIZE (64 * 1024 * 1024)
-> -#define VEXPRESS_FLASH_SECT_SIZE (256 * 1024)
-> +#define VEXPRESS_FLASH_SIZE (64 * M_BYTE)
-> +#define VEXPRESS_FLASH_SECT_SIZE (256 * K_BYTE)
->
->  /* Number of virtio transports to create (0..8; limited by
->   * number of available IRQ lines).
-> @@ -355,7 +355,7 @@ static void a15_daughterboard_init(const VexpressMach=
-ineState *vms,
->           * warning if we are on a host where ram_addr_t is 32 bits.
->           */
->          uint64_t rsz =3D ram_size;
-> -        if (rsz > (30ULL * 1024 * 1024 * 1024)) {
-> +        if (rsz > 30 * G_BYTE) {
->              error_report("vexpress-a15: cannot model more than 30GB RAM"=
-);
->              exit(1);
->          }
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index dbb3c8036a..8202a428e0 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -110,7 +110,7 @@ static ARMPlatformBusSystemParams platform_bus_params;
->   * terabyte of physical address space.)
->   */
->  #define RAMLIMIT_GB 255
-> -#define RAMLIMIT_BYTES (RAMLIMIT_GB * 1024ULL * 1024 * 1024)
-> +#define RAMLIMIT_BYTES (RAMLIMIT_GB * G_BYTE)
->
->  /* Addresses and sizes of our components.
->   * 0..128MB is space for a flash device so we can run bootrom code such =
-as UEFI.
-> @@ -783,7 +783,7 @@ static void create_one_flash(const char *name, hwaddr=
- flashbase,
->      DriveInfo *dinfo =3D drive_get_next(IF_PFLASH);
->      DeviceState *dev =3D qdev_create(NULL, "cfi.pflash01");
->      SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
-> -    const uint64_t sectorlength =3D 256 * 1024;
-> +    const uint64_t sectorlength =3D 256 * K_BYTE;
->
->      if (dinfo) {
->          qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo),
-> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-> index 0f76333770..7a68503e68 100644
-> --- a/hw/arm/xilinx_zynq.c
-> +++ b/hw/arm/xilinx_zynq.c
-> @@ -40,8 +40,8 @@
->  #define NUM_QSPI_FLASHES 2
->  #define NUM_QSPI_BUSSES 2
->
-> -#define FLASH_SIZE (64 * 1024 * 1024)
-> -#define FLASH_SECTOR_SIZE (128 * 1024)
-> +#define FLASH_SIZE (64 * M_BYTE)
-> +#define FLASH_SECTOR_SIZE (128 * K_BYTE)
->
->  #define IRQ_OFFSET 32 /* pic interrupts start from index 32 */
->
-> diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
-> index 0df008e52a..eaf090b7b1 100644
-> --- a/hw/misc/aspeed_sdmc.c
-> +++ b/hw/misc/aspeed_sdmc.c
-> @@ -149,7 +149,7 @@ static const MemoryRegionOps aspeed_sdmc_ops =3D {
->
->  static int ast2400_rambits(AspeedSDMCState *s)
->  {
-> -    switch (s->ram_size >> 20) {
-> +    switch (s->ram_size / M_BYTE) {
->      case 64:
->          return ASPEED_SDMC_DRAM_64MB;
->      case 128:
-> @@ -165,13 +165,13 @@ static int ast2400_rambits(AspeedSDMCState *s)
->      /* use a common default */
->      warn_report("Invalid RAM size 0x%" PRIx64 ". Using default 256M",
->                  s->ram_size);
-> -    s->ram_size =3D 256 << 20;
-> +    s->ram_size =3D 256 * M_BYTE;
->      return ASPEED_SDMC_DRAM_256MB;
->  }
->
->  static int ast2500_rambits(AspeedSDMCState *s)
->  {
-> -    switch (s->ram_size >> 20) {
-> +    switch (s->ram_size / M_BYTE) {
->      case 128:
->          return ASPEED_SDMC_AST2500_128MB;
->      case 256:
-> @@ -187,7 +187,7 @@ static int ast2500_rambits(AspeedSDMCState *s)
->      /* use a common default */
->      warn_report("Invalid RAM size 0x%" PRIx64 ". Using default 512M",
->                  s->ram_size);
-> -    s->ram_size =3D 512 << 20;
-> +    s->ram_size =3D 512 * M_BYTE;
->      return ASPEED_SDMC_AST2500_512MB;
->  }
->
-> diff --git a/hw/misc/imx7_gpr.c b/hw/misc/imx7_gpr.c
-> index c2a9df29c6..3d46bdbd09 100644
-> --- a/hw/misc/imx7_gpr.c
-> +++ b/hw/misc/imx7_gpr.c
-> @@ -98,7 +98,7 @@ static void imx7_gpr_init(Object *obj)
->      IMX7GPRState *s =3D IMX7_GPR(obj);
->
->      memory_region_init_io(&s->mmio, obj, &imx7_gpr_ops, s,
-> -                          TYPE_IMX7_GPR, 64 * 1024);
-> +                          TYPE_IMX7_GPR, 64 * K_BYTE);
->      sysbus_init_mmio(sd, &s->mmio);
->  }
->
-> diff --git a/hw/misc/omap_gpmc.c b/hw/misc/omap_gpmc.c
-> index 84f9e4c612..af6b620e3e 100644
-> --- a/hw/misc/omap_gpmc.c
-> +++ b/hw/misc/omap_gpmc.c
-> @@ -850,11 +850,11 @@ struct omap_gpmc_s *omap_gpmc_init(struct omap_mpu_=
-state_s *mpu,
->                                &omap_nand_ops,
->                                &s->cs_file[cs],
->                                "omap-nand",
-> -                              256 * 1024 * 1024);
-> +                              256 * M_BYTE);
->      }
->
->      memory_region_init_io(&s->prefetch.iomem, NULL, &omap_prefetch_ops, =
-s,
-> -                          "omap-gpmc-prefetch", 256 * 1024 * 1024);
-> +                          "omap-gpmc-prefetch", 256 * M_BYTE);
->      return s;
->  }
->
-> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-> index 5059396bc6..b51cb6c0a9 100644
-> --- a/hw/ssi/aspeed_smc.c
-> +++ b/hw/ssi/aspeed_smc.c
-> @@ -149,35 +149,35 @@
->   * Segment Address Registers.
->   */
->  static const AspeedSegments aspeed_segments_legacy[] =3D {
-> -    { 0x10000000, 32 * 1024 * 1024 },
-> +    { 0x10000000, 32 * M_BYTE },
->  };
->
->  static const AspeedSegments aspeed_segments_fmc[] =3D {
-> -    { 0x20000000, 64 * 1024 * 1024 }, /* start address is readonly */
-> -    { 0x24000000, 32 * 1024 * 1024 },
-> -    { 0x26000000, 32 * 1024 * 1024 },
-> -    { 0x28000000, 32 * 1024 * 1024 },
-> -    { 0x2A000000, 32 * 1024 * 1024 }
-> +    { 0x20000000,  64 * M_BYTE }, /* start address is readonly */
-> +    { 0x24000000,  32 * M_BYTE },
-> +    { 0x26000000,  32 * M_BYTE },
-> +    { 0x28000000,  32 * M_BYTE },
-> +    { 0x2A000000,  32 * M_BYTE }
->  };
->
->  static const AspeedSegments aspeed_segments_spi[] =3D {
-> -    { 0x30000000, 64 * 1024 * 1024 },
-> +    { 0x30000000,  64 * M_BYTE },
->  };
->
->  static const AspeedSegments aspeed_segments_ast2500_fmc[] =3D {
-> -    { 0x20000000, 128 * 1024 * 1024 }, /* start address is readonly */
-> -    { 0x28000000,  32 * 1024 * 1024 },
-> -    { 0x2A000000,  32 * 1024 * 1024 },
-> +    { 0x20000000, 128 * M_BYTE }, /* start address is readonly */
-> +    { 0x28000000,  32 * M_BYTE },
-> +    { 0x2A000000,  32 * M_BYTE },
->  };
->
->  static const AspeedSegments aspeed_segments_ast2500_spi1[] =3D {
-> -    { 0x30000000, 32 * 1024 * 1024 }, /* start address is readonly */
-> -    { 0x32000000, 96 * 1024 * 1024 }, /* end address is readonly */
-> +    { 0x30000000,  32 * M_BYTE }, /* start address is readonly */
-> +    { 0x32000000,  96 * M_BYTE }, /* end address is readonly */
->  };
->
->  static const AspeedSegments aspeed_segments_ast2500_spi2[] =3D {
-> -    { 0x38000000, 32 * 1024 * 1024 }, /* start address is readonly */
-> -    { 0x3A000000, 96 * 1024 * 1024 }, /* end address is readonly */
-> +    { 0x38000000,  32 * M_BYTE }, /* start address is readonly */
-> +    { 0x3A000000,  96 * M_BYTE }, /* end address is readonly */
->  };
->
->  static const AspeedSMCController controllers[] =3D {
+-bool kvm_arm_get_host_cpu_features(ARMHostCPUClass *ahcc);
++bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf);
+ 
++/**
++ * kvm_arm_set_cpu_features_from_host:
++ * @cpu: ARMCPU to set the features for
++ *
++ * Set up the ARMCPU struct fields up to match the information probed
++ * from the host CPU.
++ */
++void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu);
+ 
+ /**
+  * kvm_arm_sync_mpstate_to_kvm
+@@ -200,6 +204,15 @@ void kvm_arm_pmu_init(CPUState *cs);
+ 
+ #else
+ 
++static inline void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
++{
++    /* This should never actually be called in the "not KVM" case,
++     * but set up the fields to indicate an error anyway.
++     */
++    cpu->kvm_target = QEMU_KVM_ARM_TARGET_NONE;
++    cpu->host_cpu_probe_failed = true;
++}
++
+ static inline int kvm_arm_vgic_probe(void)
+ {
+     return 0;
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 6b77aaa445..abf9fb2160 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -725,6 +725,19 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+     int pagebits;
+     Error *local_err = NULL;
+ 
++    /* If we needed to query the host kernel for the CPU features
++     * then it's possible that might have failed in the initfn, but
++     * this is the first point where we can report it.
++     */
++    if (cpu->host_cpu_probe_failed) {
++        if (!kvm_enabled()) {
++            error_setg(errp, "The 'host' CPU type can only be used with KVM");
++        } else {
++            error_setg(errp, "Failed to retrieve host CPU features");
++        }
++        return;
++    }
++
+     cpu_exec_realizefn(cs, &local_err);
+     if (local_err != NULL) {
+         error_propagate(errp, local_err);
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 1219d0062b..1c0e57690a 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -33,6 +33,8 @@ const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
+ 
+ static bool cap_has_mp_state;
+ 
++static ARMHostCPUFeatures arm_host_cpu_features;
++
+ int kvm_arm_vcpu_init(CPUState *cs)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+@@ -129,30 +131,32 @@ void kvm_arm_destroy_scratch_host_vcpu(int *fdarray)
+     }
+ }
+ 
+-static void kvm_arm_host_cpu_class_init(ObjectClass *oc, void *data)
++void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+ {
+-    ARMHostCPUClass *ahcc = ARM_HOST_CPU_CLASS(oc);
++    CPUARMState *env = &cpu->env;
+ 
+-    /* All we really need to set up for the 'host' CPU
+-     * is the feature bits -- we rely on the fact that the
+-     * various ID register values in ARMCPU are only used for
+-     * TCG CPUs.
+-     */
+-    if (!kvm_arm_get_host_cpu_features(ahcc)) {
+-        fprintf(stderr, "Failed to retrieve host CPU features!\n");
+-        abort();
++    if (!arm_host_cpu_features.dtb_compatible) {
++        if (!kvm_enabled() ||
++            !kvm_arm_get_host_cpu_features(&arm_host_cpu_features)) {
++            /* We can't report this error yet, so flag that we need to
++             * in arm_cpu_realizefn().
++             */
++            cpu->kvm_target = QEMU_KVM_ARM_TARGET_NONE;
++            cpu->host_cpu_probe_failed = true;
++            return;
++        }
+     }
++
++    cpu->kvm_target = arm_host_cpu_features.target;
++    cpu->dtb_compatible = arm_host_cpu_features.dtb_compatible;
++    env->features = arm_host_cpu_features.features;
+ }
+ 
+ static void kvm_arm_host_cpu_initfn(Object *obj)
+ {
+-    ARMHostCPUClass *ahcc = ARM_HOST_CPU_GET_CLASS(obj);
+     ARMCPU *cpu = ARM_CPU(obj);
+-    CPUARMState *env = &cpu->env;
+ 
+-    cpu->kvm_target = ahcc->target;
+-    cpu->dtb_compatible = ahcc->dtb_compatible;
+-    env->features = ahcc->features;
++    kvm_arm_set_cpu_features_from_host(cpu);
+ }
+ 
+ static const TypeInfo host_arm_cpu_type_info = {
+@@ -163,8 +167,6 @@ static const TypeInfo host_arm_cpu_type_info = {
+     .parent = TYPE_ARM_CPU,
+ #endif
+     .instance_init = kvm_arm_host_cpu_initfn,
+-    .class_init = kvm_arm_host_cpu_class_init,
+-    .class_size = sizeof(ARMHostCPUClass),
+ };
+ 
+ int kvm_arch_init(MachineState *ms, KVMState *s)
+diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
+index f77c9c494b..1740cda47d 100644
+--- a/target/arm/kvm32.c
++++ b/target/arm/kvm32.c
+@@ -28,7 +28,7 @@ static inline void set_feature(uint64_t *features, int feature)
+     *features |= 1ULL << feature;
+ }
+ 
+-bool kvm_arm_get_host_cpu_features(ARMHostCPUClass *ahcc)
++bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+ {
+     /* Identify the feature bits corresponding to the host CPU, and
+      * fill out the ARMHostCPUClass fields accordingly. To do this
+@@ -74,13 +74,13 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUClass *ahcc)
+         return false;
+     }
+ 
+-    ahcc->target = init.target;
++    ahcf->target = init.target;
+ 
+     /* This is not strictly blessed by the device tree binding docs yet,
+      * but in practice the kernel does not care about this string so
+      * there is no point maintaining an KVM_ARM_TARGET_* -> string table.
+      */
+-    ahcc->dtb_compatible = "arm,arm-v7";
++    ahcf->dtb_compatible = "arm,arm-v7";
+ 
+     for (i = 0; i < ARRAY_SIZE(idregs); i++) {
+         ret = ioctl(fdarray[2], KVM_GET_ONE_REG, &idregs[i]);
+@@ -132,7 +132,7 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUClass *ahcc)
+         set_feature(&features, ARM_FEATURE_VFP4);
+     }
+ 
+-    ahcc->features = features;
++    ahcf->features = features;
+ 
+     return true;
+ }
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index ac728494a4..e0b8246283 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -443,7 +443,7 @@ static inline void unset_feature(uint64_t *features, int feature)
+     *features &= ~(1ULL << feature);
+ }
+ 
+-bool kvm_arm_get_host_cpu_features(ARMHostCPUClass *ahcc)
++bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+ {
+     /* Identify the feature bits corresponding to the host CPU, and
+      * fill out the ARMHostCPUClass fields accordingly. To do this
+@@ -471,8 +471,8 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUClass *ahcc)
+         return false;
+     }
+ 
+-    ahcc->target = init.target;
+-    ahcc->dtb_compatible = "arm,arm-v8";
++    ahcf->target = init.target;
++    ahcf->dtb_compatible = "arm,arm-v8";
+ 
+     kvm_arm_destroy_scratch_host_vcpu(fdarray);
+ 
+@@ -486,7 +486,7 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUClass *ahcc)
+     set_feature(&features, ARM_FEATURE_AARCH64);
+     set_feature(&features, ARM_FEATURE_PMU);
+ 
+-    ahcc->features = features;
++    ahcf->features = features;
+ 
+     return true;
+ }
+-- 
+2.16.2
 
-
---
-Alex Benn=C3=A9e

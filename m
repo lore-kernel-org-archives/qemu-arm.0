@@ -1,91 +1,98 @@
-Received: by 10.28.91.67 with SMTP id p64csp3814995wmb;
-        Tue, 6 Mar 2018 06:48:02 -0800 (PST)
-X-Google-Smtp-Source: AG47ELvz1d068kqShEkTp6nTAjgjlI6Vx6PiyzQuYmjThlf9VCwJwalEtkSZ2IfUqLI0wblKqvMJ
-X-Received: by 2002:a25:67c6:: with SMTP id b189-v6mr11447703ybc.199.1520347682156;
-        Tue, 06 Mar 2018 06:48:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520347682; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp3818612wmb;
+        Tue, 6 Mar 2018 06:51:38 -0800 (PST)
+X-Google-Smtp-Source: AG47ELugrzOxvhzopUvKBmBtGr43HpQaZCbZxBRO7g4exnWQD6+6aGsPM6tdEjrgoNkFIL0k7ZbH
+X-Received: by 10.129.98.215 with SMTP id w206mr11809072ywb.172.1520347898489;
+        Tue, 06 Mar 2018 06:51:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520347898; cv=none;
         d=google.com; s=arc-20160816;
-        b=pjEQP+wxDjwVezow0bYR/fr1jgb24wETB9du5Ht6lS8uBuc/TJli7eoscqn6YXkRkL
-         iVeb9iY7cBfWe/l+t8wbYOwP6xb38bTr5ryjNSxzwTpH53KshLPrALg1Nzuhy1REl8mi
-         jpYCoDbbyTKcUcK2hcW9U0f1VQrAp6VRwFvMOObIFPEPJuT+BLFPspu7zirQEnCPQYTs
-         s0zQk9rugB7jIDoCjSkzJd6j+Tf/AivQj2GxLVq17o0/4bTVZzSaqLe2ey02cCKyj/Fo
-         ZEGgwO3zXcTGVAPxy25Iu1ctABAIcK2Nl3UleGVAMmzXbnE4IXjHaeiumIoSe1Qp+sq7
-         ditw==
+        b=lhUkLCtNiBDBdVkQ66KqWsE3KvGty/cOqAVhoqZeinXfpII3wF2klHDoxx5ba6R/Xe
+         Bv44g+R4ax4aWHN+dVhHijXR9HW6f/wE7JJwsqwTOGThF5YCxAFKXaWDyO0ENEhCXM72
+         va3G5sJRtZbXNp5BalyeDXxqvOaZAQeZE5OAl1NEfqOeCRnScUqxctMAJBMfK6dfqpnW
+         /JkaADFvb1o5FrT/jbYqI834OuqImTyQ7EOzagbzVMNdGdOomLmbWLTwsM4pFd989luO
+         uUXTx4M1qjno8p+XSfM/1GtI6bSEAf4VWxoHMKk6zb/bmYztl8cB65flxLih2uPN2ySx
+         TXEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:arc-authentication-results;
-        bh=+xhu1f45zKFUva41217HFkxkC/JdvTp6r4Zsm+OXfwI=;
-        b=G6qiifHKdWjgp+0qPZcvIXyvkMc2cYa92cYLtmAyAByWnZXg+lEuaEU+5VYGQ30RMQ
-         G5VSg9sk7VoxiQdchaNX5qiCcH/HZN6DA/bsyqzVtVU+bhBUJ390qRVwKHHKdkMj+Y+W
-         Y2PBxwq43ZSjf02xkpurNCt1lsFYzvw4FFg6qZCdVPDK2h8kXSVzYGFv9uXtq6V1u7Cs
-         nkwGMsS3Lcd4HJRdkng+WxnvGvIIg1kYY+w0eO7ssb8e1spXw+Svvkilhvi1UHs2lH//
-         n4yF2uA4mb6ZFi97Z6Zn/GCvh4+0rvnZBa9W5FsyZqMDl05qJ/HaxqSF5/oVYulQGatU
-         7NmA==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=YmUUZIBcAODkJP85C41ftuL7hYQkYgZIEdLIIL+YglU=;
+        b=pEEYC/X8gid/T4QzHKz+bRnASa9Zh9YTS4NQOce9jY7gyDLQfBYpNsZGOBxuW/lYyV
+         06inIKsmDuVXvvCZnQCrdCDAC4tnO5yY2EpmlzQanwv3DFMRREYXPyydnh3/wne6uNkJ
+         FqbB9Tx0jdosYH/DB9a8MQEitMRmC59JzektKjGzfRPvceFQmoRTiNxkK5wuwYTwmdhW
+         YBA9fnXMpips6pxI8KeAOAw1eJszZlza5XvRl+OELCFaer+x8yrnGMp9NvIKypjLkhfw
+         qhZU/XBIzyv3Btz9RKrD4GWBo6+qxkyx1qMoHa/J81NQ8i2YmvlwkQFioRMp5hEFYmgW
+         Z5iw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=NetTDOWu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r9si2641187ywe.31.2018.03.06.06.48.01
+        by mx.google.com with ESMTPS id c4si2660483ywk.438.2018.03.06.06.51.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 06 Mar 2018 06:48:02 -0800 (PST)
+        Tue, 06 Mar 2018 06:51:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=NetTDOWu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56232 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56250 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1etDsn-0000cL-Gm
-	for alex.bennee@linaro.org; Tue, 06 Mar 2018 09:48:01 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38580)
+	id 1etDwH-0003Sr-Tu
+	for alex.bennee@linaro.org; Tue, 06 Mar 2018 09:51:37 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39241)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1etDsa-0000aV-3A
-	for qemu-arm@nongnu.org; Tue, 06 Mar 2018 09:47:49 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1etDul-0002He-2m
+	for qemu-arm@nongnu.org; Tue, 06 Mar 2018 09:50:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1etDsW-0008F7-W0
-	for qemu-arm@nongnu.org; Tue, 06 Mar 2018 09:47:48 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:38356 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1etDsW-0008Ed-QV; Tue, 06 Mar 2018 09:47:44 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B9C3D404008D;
-	Tue,  6 Mar 2018 14:47:43 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-135.ams2.redhat.com
-	[10.36.116.135])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id EBF562026DFD;
-	Tue,  6 Mar 2018 14:47:40 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>
+	(envelope-from <peter.maydell@linaro.org>) id 1etDuk-0000zl-AS
+	for qemu-arm@nongnu.org; Tue, 06 Mar 2018 09:50:03 -0500
+Received: from mail-oi0-x230.google.com ([2607:f8b0:4003:c06::230]:37785)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1etDuk-0000zR-4c
+	for qemu-arm@nongnu.org; Tue, 06 Mar 2018 09:50:02 -0500
+Received: by mail-oi0-x230.google.com with SMTP id f186so15000915oig.4
+	for <qemu-arm@nongnu.org>; Tue, 06 Mar 2018 06:50:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=YmUUZIBcAODkJP85C41ftuL7hYQkYgZIEdLIIL+YglU=;
+	b=NetTDOWu5r0k4mRuAmxm1TgFEwtOk1g8rS4cVpQAY2EFweQykjHwjXFfAwM2ZuHwOP
+	3sEmfqQdii35VG9nvHSrSoLEdS7DC1oX56hdqX0xM+Q1HAIZDOY5OPC84pa3hKXNN8M3
+	7g09TQx6cfN/7H0OWgd/h66mtQ/+gHCj4r+Nk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=YmUUZIBcAODkJP85C41ftuL7hYQkYgZIEdLIIL+YglU=;
+	b=TNWl6iHB/aAE/dJ3kqUI+jT4KMxRsIOvZbCH3XbFSxCUub0Xs2IeJtX5VZ8yStU5Mj
+	11bpSLEU0QqnzC+Y1gy3Ovr/ZTFzXg4x7HKjmpiRYh2avB9NVVX6Jjh0aKETuRVN/Nbt
+	rmvD4YsQZfzIi39rxvFrtNnKFZ9GK1Qtk0tm66BB0rVUD2xCgSBDx49RbHafEJEtYKz+
+	kbHP7SsZrqKNOQ91AQ6q/kPksbFteLxrFXK9HXPZt6szHmuZ155ynJMC+SYEbN4z5w4O
+	aGSOz4b9c6PEF4v26VEJDJ5eRYfBXXDgZqnqTQaRO9Z6SzCQXjVmGYHffaSaIULfZUUj
+	8Cew==
+X-Gm-Message-State: AElRT7EvlzejXUzclKM170pQyI6dMjEOzo1JQkGnzAPqKPaJ9BzdyyiO
+	pQ23Tn84lakWOM01wszOQfbWYyfyJwORoz6wMNiFYQ==
+X-Received: by 10.202.216.67 with SMTP id p64mr11416396oig.337.1520347801347; 
+	Tue, 06 Mar 2018 06:50:01 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.157.33.100 with HTTP; Tue, 6 Mar 2018 06:49:40 -0800 (PST)
+In-Reply-To: <e54bcea4-3b04-7409-89c1-b2a79010c969@redhat.com>
 References: <1518893216-9983-1-git-send-email-eric.auger@redhat.com>
 	<1518893216-9983-3-git-send-email-eric.auger@redhat.com>
 	<CAFEAcA-uMZwR8HfVDx0Rau9G2unMypWJEL0o3ACPHxCqZ+g=_Q@mail.gmail.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <e54bcea4-3b04-7409-89c1-b2a79010c969@redhat.com>
-Date: Tue, 6 Mar 2018 15:47:39 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-uMZwR8HfVDx0Rau9G2unMypWJEL0o3ACPHxCqZ+g=_Q@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Tue, 06 Mar 2018 14:47:43 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Tue, 06 Mar 2018 14:47:43 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
+	<e54bcea4-3b04-7409-89c1-b2a79010c969@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 6 Mar 2018 14:49:40 +0000
+Message-ID: <CAFEAcA_mtH-=tKzJP=iFeABK+_4Lp6rapnXdJKT9OCxLqyLQgA@mail.gmail.com>
+To: Auger Eric <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::230
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v9 02/14] hw/arm/smmu-common:
  IOMMU memory region and address space setup
 X-BeenThere: qemu-arm@nongnu.org
@@ -109,175 +116,40 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
 	Christoffer Dall <christoffer.dall@linaro.org>, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: o/5OreSorChA
+X-TUID: cm5v08ETlR3x
 
-Hi Peter,
+On 6 March 2018 at 14:47, Auger Eric <eric.auger@redhat.com> wrote:
+> Hi Peter,
+>
+> On 06/03/18 15:08, Peter Maydell wrote:
+>> On 17 February 2018 at 18:46, Eric Auger <eric.auger@redhat.com> wrote:
+>>> +    if (!smmu_pci_bus) {
+>>> +        GHashTableIter iter;
+>>> +
+>>> +        g_hash_table_iter_init(&iter, s->smmu_as_by_busptr);
+>>> +        while (g_hash_table_iter_next(&iter, NULL, (void **)&smmu_pci_bus)) {
+>>> +            if (pci_bus_num(smmu_pci_bus->bus) == bus_num) {
+>>> +                s->smmu_as_by_bus_num[bus_num] = smmu_pci_bus;
+>>> +                return smmu_pci_bus;
+>>> +            }
+>>> +        }
+>>
+>> Why do we populate this hashtable lazily rather than when we
+>> put the SMMUPciBus in the smmu_as_by_busptr table? Do we
+>> expect this function not to ordinarily be called?
+>
+> This function only is used when handling invalidations (vhost/vfio). I
+> can even remove it from this series at this stage and re-introduce
+> latter on. From the SID, you retrieve bus_num, retrieve the SMMUPciBus.
+> Andd from the function number you can then retrieve the IOMMU mr at
+> smmu_bus->pbdev[devfn]
+>
+> That's the purpose of ths function. But I will remove it.
 
-On 06/03/18 15:08, Peter Maydell wrote:
-> On 17 February 2018 at 18:46, Eric Auger <eric.auger@redhat.com> wrote:
->> We enumerate all the PCI devices attached to the SMMU and
->> initialize an associated IOMMU memory region and address space.
->> This happens on SMMU base instance init.
->>
->> Those info are stored in SMMUDevice objects. The devices are
->> grouped according to the PCIBus they belong to. A hash table
->> indexed by the PCIBus poinet is used. Also an array indexed by
-> 
-> "pointer".
-OK
-> 
->> the bus number allows to find the list of SMMUDevices.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>
->> ---
->> v8 -> v9:
->> - fix key value for lookup
->>
->> v7 -> v8:
->> - introduce SMMU_MAX_VA_BITS
->> - use PCI bus handle as a key
->> - do not clear s->smmu_as_by_bus_num
->> - use g_new0 instead of g_malloc0
->> - use primary_bus field
->> ---
->>  hw/arm/smmu-common.c         | 59 ++++++++++++++++++++++++++++++++++++++++++++
->>  include/hw/arm/smmu-common.h |  6 +++++
->>  2 files changed, 65 insertions(+)
->>
->> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
->> index 86a5aab..d0516dc 100644
->> --- a/hw/arm/smmu-common.c
->> +++ b/hw/arm/smmu-common.c
->> @@ -28,12 +28,71 @@
->>  #include "qemu/error-report.h"
->>  #include "hw/arm/smmu-common.h"
->>
->> +SMMUPciBus *smmu_find_as_from_bus_num(SMMUState *s, uint8_t bus_num)
->> +{
->> +    SMMUPciBus *smmu_pci_bus = s->smmu_as_by_bus_num[bus_num];
-> 
-> Variable name suggests this is a table of AddressSpaces indexed by
-> bus number, but the code says we're getting SMMUPCIBus objects from it?
-Yes I can rename this variable. It stems from x86 naming (see
-hw/intel_iommu.c vtd_find_as_from_bus_num). The code here does the same
-functionality with arm smmu datatypes.
-SMMUPciBus ~ VTDBus and smmu_as_by_bus_num ~ vtd_as_by_bus_num
+No, it's fine here. You should just have a comment about why
+it makes sense to lazily populate the hashtable (it's overall
+going to be slower than if we populated it up front), to
+document the rationale for the design decision.
 
-purpose is to find the SMUPciBus which matches the bus number passed in
-parameter.
-
-> 
->> +
->> +    if (!smmu_pci_bus) {
->> +        GHashTableIter iter;
->> +
->> +        g_hash_table_iter_init(&iter, s->smmu_as_by_busptr);
->> +        while (g_hash_table_iter_next(&iter, NULL, (void **)&smmu_pci_bus)) {
->> +            if (pci_bus_num(smmu_pci_bus->bus) == bus_num) {
->> +                s->smmu_as_by_bus_num[bus_num] = smmu_pci_bus;
->> +                return smmu_pci_bus;
->> +            }
->> +        }
-> 
-> Why do we populate this hashtable lazily rather than when we
-> put the SMMUPciBus in the smmu_as_by_busptr table? Do we
-> expect this function not to ordinarily be called?
-
-This function only is used when handling invalidations (vhost/vfio). I
-can even remove it from this series at this stage and re-introduce
-latter on. From the SID, you retrieve bus_num, retrieve the SMMUPciBus.
-Andd from the function number you can then retrieve the IOMMU mr at
-smmu_bus->pbdev[devfn]
-
-That's the purpose of ths function. But I will remove it.
-> 
->> +    }
->> +    return smmu_pci_bus;
->> +}
->> +
->> +static AddressSpace *smmu_find_add_as(PCIBus *bus, void *opaque, int devfn)
->> +{
->> +    SMMUState *s = opaque;
->> +    SMMUPciBus *sbus = g_hash_table_lookup(s->smmu_as_by_busptr, bus);
->> +    SMMUDevice *sdev;
->> +
->> +    if (!sbus) {
->> +        sbus = g_malloc0(sizeof(SMMUPciBus) +
->> +                         sizeof(SMMUDevice *) * SMMU_PCI_DEVFN_MAX);
->> +        sbus->bus = bus;
->> +        g_hash_table_insert(s->smmu_as_by_busptr, bus, sbus);
->> +    }
->> +
->> +    sdev = sbus->pbdev[devfn];
->> +    if (!sdev) {
->> +        char *name = g_strdup_printf("%s-%d-%d",
->> +                                     s->mrtypename,
->> +                                     pci_bus_num(bus), devfn);
->> +        sdev = sbus->pbdev[devfn] = g_new0(SMMUDevice, 1);
->> +
->> +        sdev->smmu = s;
->> +        sdev->bus = bus;
->> +        sdev->devfn = devfn;
->> +
->> +        memory_region_init_iommu(&sdev->iommu, sizeof(sdev->iommu),
->> +                                 s->mrtypename,
->> +                                 OBJECT(s), name, 1ULL << SMMU_MAX_VA_BITS);
->> +        address_space_init(&sdev->as,
->> +                           MEMORY_REGION(&sdev->iommu), name);
-> 
-> This leaks the memory pointed to by name, doesn't it?
-> (address_space_init() takes a copy of the name string, so you want
-> to g_free(name) here.)
-Hum yes. Will free it.
-> 
->> +    }
->> +
->> +    return &sdev->as;
->> +}
->> +
->>  static void smmu_base_realize(DeviceState *dev, Error **errp)
->>  {
->>      SMMUState *s = ARM_SMMU(dev);
->>
->>      s->configs = g_hash_table_new_full(NULL, NULL, NULL, g_free);
->>      s->iotlb = g_hash_table_new_full(NULL, NULL, NULL, g_free);
->> +    s->smmu_as_by_busptr = g_hash_table_new(NULL, NULL);
->> +
->> +    if (s->primary_bus) {
->> +        pci_setup_iommu(s->primary_bus, smmu_find_add_as, s);
->> +    } else {
->> +        error_setg(errp, "SMMU is not attached to any PCI bus!");
->> +    }
->>  }
->>
->>  static void smmu_base_reset(DeviceState *dev)
->> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
->> index 8a9d931..aee96c2 100644
->> --- a/include/hw/arm/smmu-common.h
->> +++ b/include/hw/arm/smmu-common.h
->> @@ -121,4 +121,10 @@ typedef struct {
->>  #define ARM_SMMU_GET_CLASS(obj)                              \
->>      OBJECT_GET_CLASS(SMMUBaseClass, (obj), TYPE_ARM_SMMU)
->>
->> +SMMUPciBus *smmu_find_as_from_bus_num(SMMUState *s, uint8_t bus_num);
->> +
->> +static inline uint16_t smmu_get_sid(SMMUDevice *sdev)
->> +{
->> +    return  ((pci_bus_num(sdev->bus) & 0xff) << 8) | sdev->devfn;
->> +}
-> 
-> Can we have at least brief documentation comments for any
-> new functions or prototypes added to header files, please?
-Sure.
-
-Thanks
-
-Eric
-> 
->>  #endif  /* HW_ARM_SMMU_COMMON */
->> --
-> 
-> thanks
-> -- PMM
-> 
+thanks
+-- PMM

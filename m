@@ -1,198 +1,356 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id p29sm12821860wmf.3.2018.03.06.06.26.03
+        by smtp.gmail.com with ESMTPSA id q74sm12410727wmg.11.2018.03.06.06.27.23
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 06 Mar 2018 06:26:03 -0800 (PST)
+        Tue, 06 Mar 2018 06:27:23 -0800 (PST)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 648FB3E0270;
-	Tue,  6 Mar 2018 14:26:03 +0000 (GMT)
-References: <20180303143823.27055-1-richard.henderson@linaro.org> <20180303143823.27055-5-richard.henderson@linaro.org>
+	by zen.linaro.local (Postfix) with ESMTPS id 8EDFF3E0270;
+	Tue,  6 Mar 2018 14:27:23 +0000 (GMT)
+References: <20180303143823.27055-1-richard.henderson@linaro.org> <20180303143823.27055-6-richard.henderson@linaro.org>
 User-agent: mu4e 1.1.0; emacs 26.0.91
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: Re: [Qemu-arm] [PATCH v4 4/5] aarch64-linux-user: Add support for EXTRA signal frame records
-In-reply-to: <20180303143823.27055-5-richard.henderson@linaro.org>
-Date: Tue, 06 Mar 2018 14:26:03 +0000
-Message-ID: <87371dth50.fsf@linaro.org>
+Subject: Re: [Qemu-arm] [PATCH v4 5/5] aarch64-linux-user: Add support for SVE signal frame records
+In-reply-to: <20180303143823.27055-6-richard.henderson@linaro.org>
+Date: Tue, 06 Mar 2018 14:27:23 +0000
+Message-ID: <871sgxth2s.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 9w8WBzeXPl0q
+X-TUID: KfoMCaGCWbC2
 
 
 Richard Henderson <richard.henderson@linaro.org> writes:
 
-> The EXTRA record allows for additional space to be allocated
-> beyon what is currently reserved.  Add code to emit and read
-> this record type.
->
-> Nothing uses extra space yet.
+> Depending on the currently selected size of the SVE vector registers,
+> we can either store the data within the "standard" allocation, or we
+> may beedn to allocate additional space with an EXTRA record.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  linux-user/signal.c | 210 ++++++++++++++++++++++++++++++++++++++++++++++=
++-----
+>  1 file changed, 192 insertions(+), 18 deletions(-)
+>
+> diff --git a/linux-user/signal.c b/linux-user/signal.c
+> index c31cf0601d..92513f655c 100644
+> --- a/linux-user/signal.c
+> +++ b/linux-user/signal.c
+> @@ -1452,6 +1452,34 @@ struct target_extra_context {
+>      uint32_t reserved[3];
+>  };
+>
+> +#define TARGET_SVE_MAGIC    0x53564501
+> +
+> +struct target_sve_context {
+> +    struct target_aarch64_ctx head;
+> +    uint16_t vl;
+> +    uint16_t reserved[3];
+> +    /* The actual SVE data immediately follows.  It is layed out
+> +     * according to TARGET_SVE_SIG_{Z,P}REG_OFFSET, based off of
+> +     * the original struct pointer.
+> +     */
+> +};
+> +
+> +#define TARGET_SVE_VQ_BYTES  16
+
+Ahh there it is. I guess if we do a later clean-up we can use this
 
 Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-> ---
->  linux-user/signal.c | 74 +++++++++++++++++++++++++++++++++++++++++++++--=
-------
->  1 file changed, 63 insertions(+), 11 deletions(-)
->
-> diff --git a/linux-user/signal.c b/linux-user/signal.c
-> index f9eef3d753..c31cf0601d 100644
-> --- a/linux-user/signal.c
-> +++ b/linux-user/signal.c
-> @@ -1443,6 +1443,15 @@ struct target_fpsimd_context {
->      uint64_t vregs[32 * 2]; /* really uint128_t vregs[32] */
->  };
->
-> +#define TARGET_EXTRA_MAGIC  0x45585401
+
 > +
-> +struct target_extra_context {
-> +    struct target_aarch64_ctx head;
-> +    uint64_t datap; /* 16-byte aligned pointer to extra space cast to __=
-u64 */
-> +    uint32_t size; /* size in bytes of the extra space */
-> +    uint32_t reserved[3];
-> +};
+> +#define TARGET_SVE_SIG_ZREG_SIZE(VQ)  ((VQ) * TARGET_SVE_VQ_BYTES)
+> +#define TARGET_SVE_SIG_PREG_SIZE(VQ)  ((VQ) * (TARGET_SVE_VQ_BYTES / 8))
+> +
+> +#define TARGET_SVE_SIG_REGS_OFFSET \
+> +    QEMU_ALIGN_UP(sizeof(struct target_sve_context), TARGET_SVE_VQ_BYTES)
+> +#define TARGET_SVE_SIG_ZREG_OFFSET(VQ, N) \
+> +    (TARGET_SVE_SIG_REGS_OFFSET + TARGET_SVE_SIG_ZREG_SIZE(VQ) * (N))
+> +#define TARGET_SVE_SIG_PREG_OFFSET(VQ, N) \
+> +    (TARGET_SVE_SIG_ZREG_OFFSET(VQ, 32) + TARGET_SVE_SIG_PREG_SIZE(VQ) *=
+ (N))
+> +#define TARGET_SVE_SIG_FFR_OFFSET(VQ) \
+> +    (TARGET_SVE_SIG_PREG_OFFSET(VQ, 16))
+> +#define TARGET_SVE_SIG_CONTEXT_SIZE(VQ) \
+> +    (TARGET_SVE_SIG_PREG_OFFSET(VQ, 17))
 > +
 >  struct target_rt_sigframe {
 >      struct target_siginfo info;
 >      struct target_ucontext uc;
-> @@ -1502,6 +1511,15 @@ static void target_setup_fpsimd_record(struct targ=
-et_fpsimd_context *fpsimd,
+> @@ -1526,6 +1554,34 @@ static void target_setup_end_record(struct target_=
+aarch64_ctx *end)
+>      __put_user(0, &end->size);
+>  }
+>
+> +static void target_setup_sve_record(struct target_sve_context *sve,
+> +                                    CPUARMState *env, int vq, int size)
+> +{
+> +    int i, j;
+> +
+> +    __put_user(TARGET_SVE_MAGIC, &sve->head.magic);
+> +    __put_user(size, &sve->head.size);
+> +    __put_user(vq * TARGET_SVE_VQ_BYTES, &sve->vl);
+> +
+> +    /* Note that SVE regs are stored as a byte stream, with each byte el=
+ement
+> +     * at a subsequent address.  This corresponds to a little-endian sto=
+re
+> +     * of our 64-bit hunks.
+> +     */
+> +    for (i =3D 0; i < 32; ++i) {
+> +        uint64_t *z =3D (void *)sve + TARGET_SVE_SIG_ZREG_OFFSET(vq, i);
+> +        for (j =3D 0; j < vq * 2; ++j) {
+> +            __put_user_e(env->vfp.zregs[i].d[j], z + j, le);
+> +        }
+> +    }
+> +    for (i =3D 0; i <=3D 16; ++i) {
+> +        uint16_t *p =3D (void *)sve + TARGET_SVE_SIG_PREG_OFFSET(vq, i);
+> +        for (j =3D 0; j < vq; ++j) {
+> +            uint64_t r =3D env->vfp.pregs[i].p[j >> 2];
+> +            __put_user_e(r >> ((j & 3) * 16), p + j, le);
+> +        }
+> +    }
+> +}
+> +
+>  static void target_restore_general_frame(CPUARMState *env,
+>                                           struct target_rt_sigframe *sf)
+>  {
+> @@ -1569,14 +1625,45 @@ static void target_restore_fpsimd_record(CPUARMSt=
+ate *env,
 >      }
 >  }
 >
-> +static void target_setup_extra_record(struct target_extra_context *extra,
-> +                                      uint64_t datap, uint32_t extra_siz=
-e)
+> +static void target_restore_sve_record(CPUARMState *env,
+> +                                      struct target_sve_context *sve, in=
+t vq)
 > +{
-> +    __put_user(TARGET_EXTRA_MAGIC, &extra->head.magic);
-> +    __put_user(sizeof(struct target_extra_context), &extra->head.size);
-> +    __put_user(datap, &extra->datap);
-> +    __put_user(extra_size, &extra->size);
+> +    int i, j;
+> +
+> +    /* Note that SVE regs are stored as a byte stream, with each byte el=
+ement
+> +     * at a subsequent address.  This corresponds to a little-endian load
+> +     * of our 64-bit hunks.
+> +     */
+> +    for (i =3D 0; i < 32; ++i) {
+> +        uint64_t *z =3D (void *)sve + TARGET_SVE_SIG_ZREG_OFFSET(vq, i);
+> +        for (j =3D 0; j < vq * 2; ++j) {
+> +            __get_user_e(env->vfp.zregs[i].d[j], z + j, le);
+> +        }
+> +    }
+> +    for (i =3D 0; i <=3D 16; ++i) {
+> +        uint16_t *p =3D (void *)sve + TARGET_SVE_SIG_PREG_OFFSET(vq, i);
+> +        for (j =3D 0; j < vq; ++j) {
+> +            uint16_t r;
+> +            __get_user_e(r, p + j, le);
+> +            if (j & 3) {
+> +                env->vfp.pregs[i].p[j >> 2] |=3D (uint64_t)r << ((j & 3)=
+ * 16);
+> +            } else {
+> +                env->vfp.pregs[i].p[j >> 2] =3D r;
+> +            }
+> +        }
+> +    }
 > +}
 > +
->  static void target_setup_end_record(struct target_aarch64_ctx *end)
->  {
->      __put_user(0, &end->magic);
-> @@ -1554,48 +1572,74 @@ static void target_restore_fpsimd_record(CPUARMSt=
-ate *env,
 >  static int target_restore_sigframe(CPUARMState *env,
 >                                     struct target_rt_sigframe *sf)
 >  {
-> -    struct target_aarch64_ctx *ctx;
-> +    struct target_aarch64_ctx *ctx, *extra =3D NULL;
+>      struct target_aarch64_ctx *ctx, *extra =3D NULL;
 >      struct target_fpsimd_context *fpsimd =3D NULL;
-> +    uint64_t extra_datap =3D 0;
-> +    bool used_extra =3D false;
-> +    bool err =3D false;
+> +    struct target_sve_context *sve =3D NULL;
+>      uint64_t extra_datap =3D 0;
+>      bool used_extra =3D false;
+>      bool err =3D false;
+> +    int vq =3D 0, sve_size =3D 0;
 >
 >      target_restore_general_frame(env, sf);
 >
->      ctx =3D (struct target_aarch64_ctx *)sf->uc.tuc_mcontext.__reserved;
->      while (ctx) {
-> -        uint32_t magic, size;
-> +        uint32_t magic, size, extra_size;
->
->          __get_user(magic, &ctx->magic);
->          __get_user(size, &ctx->size);
->          switch (magic) {
->          case 0:
->              if (size !=3D 0) {
-> -                return 1;
-> +                err =3D true;
-> +                goto exit;
-> +            }
-> +            if (used_extra) {
-> +                ctx =3D NULL;
-> +            } else {
-> +                ctx =3D extra;
-> +                used_extra =3D true;
->              }
-> -            ctx =3D NULL;
->              continue;
->
->          case TARGET_FPSIMD_MAGIC:
->              if (fpsimd || size !=3D sizeof(struct target_fpsimd_context)=
-) {
-> -                return 1;
-> +                err =3D true;
-> +                goto exit;
->              }
+> @@ -1608,6 +1695,18 @@ static int target_restore_sigframe(CPUARMState *en=
+v,
 >              fpsimd =3D (struct target_fpsimd_context *)ctx;
 >              break;
 >
-> +        case TARGET_EXTRA_MAGIC:
-> +            if (extra || size !=3D sizeof(struct target_extra_context)) {
-> +                err =3D true;
-> +                goto exit;
+> +        case TARGET_SVE_MAGIC:
+> +            if (arm_feature(env, ARM_FEATURE_SVE)) {
+> +                vq =3D (env->vfp.zcr_el[1] & 0xf) + 1;
+> +                sve_size =3D QEMU_ALIGN_UP(TARGET_SVE_SIG_CONTEXT_SIZE(v=
+q), 16);
+> +                if (!sve && size =3D=3D sve_size) {
+> +                    sve =3D (struct target_sve_context *)ctx;
+> +                    break;
+> +                }
 > +            }
-> +            __get_user(extra_datap,
-> +                       &((struct target_extra_context *)ctx)->datap);
-> +            __get_user(extra_size,
-> +                       &((struct target_extra_context *)ctx)->size);
-> +            extra =3D lock_user(VERIFY_READ, extra_datap, extra_size, 0);
-> +            break;
-> +
->          default:
->              /* Unknown record -- we certainly didn't generate it.
->               * Did we in fact get out of sync?
->               */
-> -            return 1;
 > +            err =3D true;
 > +            goto exit;
->          }
->          ctx =3D (void *)ctx + size;
+> +
+>          case TARGET_EXTRA_MAGIC:
+>              if (extra || size !=3D sizeof(struct target_extra_context)) {
+>                  err =3D true;
+> @@ -1637,12 +1736,18 @@ static int target_restore_sigframe(CPUARMState *e=
+nv,
+>          err =3D true;
 >      }
 >
->      /* Require FPSIMD always.  */
-> -    if (!fpsimd) {
-> -        return 1;
-> +    if (fpsimd) {
-> +        target_restore_fpsimd_record(env, fpsimd);
-> +    } else {
-> +        err =3D true;
->      }
-> -    target_restore_fpsimd_record(env, fpsimd);
->
-> -    return 0;
-> + exit:
-> +    unlock_user(extra, extra_datap, 0);
-> +    return err;
+> +    /* SVE data, if present, overwrites FPSIMD data.  */
+> +    if (sve) {
+> +        target_restore_sve_record(env, sve, vq);
+> +    }
+> +
+>   exit:
+>      unlock_user(extra, extra_datap, 0);
+>      return err;
 >  }
 >
->  static abi_ulong get_sigframe(struct target_sigaction *ka, CPUARMState *=
+> -static abi_ulong get_sigframe(struct target_sigaction *ka, CPUARMState *=
 env)
-> @@ -1621,7 +1665,8 @@ static void target_setup_frame(int usig, struct tar=
-get_sigaction *ka,
+> +static abi_ulong get_sigframe(struct target_sigaction *ka,
+> +                              CPUARMState *env, int size)
+>  {
+>      abi_ulong sp;
+>
+> @@ -1655,30 +1760,97 @@ static abi_ulong get_sigframe(struct target_sigac=
+tion *ka, CPUARMState *env)
+>          sp =3D target_sigaltstack_used.ss_sp + target_sigaltstack_used.s=
+s_size;
+>      }
+>
+> -    sp =3D (sp - sizeof(struct target_rt_sigframe)) & ~15;
+> +    sp =3D (sp - size) & ~15;
+>
+>      return sp;
+>  }
+>
+> +typedef struct {
+> +    int total_size;
+> +    int extra_base;
+> +    int extra_size;
+> +    int std_end_ofs;
+> +    int extra_ofs;
+> +    int extra_end_ofs;
+> +} target_sigframe_layout;
+> +
+> +static int alloc_sigframe_space(int this_size, target_sigframe_layout *l)
+> +{
+> +    /* Make sure there will always be space for the end marker.  */
+> +    const int std_size =3D sizeof(struct target_rt_sigframe)
+> +                         - sizeof(struct target_aarch64_ctx);
+> +    int this_loc =3D l->total_size;
+> +
+> +    if (l->extra_base) {
+> +        /* Once we have begun an extra space, all allocations go there. =
+ */
+> +        l->extra_size +=3D this_size;
+> +    } else if (this_size + this_loc > std_size) {
+> +        /* This allocation does not fit in the standard space.  */
+> +        /* Allocate the extra record.  */
+> +        l->extra_ofs =3D this_loc;
+> +        l->total_size +=3D sizeof(struct target_extra_context);
+> +
+> +        /* Allocate the standard end record.  */
+> +        l->std_end_ofs =3D l->total_size;
+> +        l->total_size +=3D sizeof(struct target_aarch64_ctx);
+> +
+> +        /* Allocate the requested record.  */
+> +        l->extra_base =3D this_loc =3D l->total_size;
+> +        l->extra_size =3D this_size;
+> +    }
+> +    l->total_size +=3D this_size;
+> +
+> +    return this_loc;
+> +}
+> +
+>  static void target_setup_frame(int usig, struct target_sigaction *ka,
+>                                 target_siginfo_t *info, target_sigset_t *=
+set,
 >                                 CPUARMState *env)
 >  {
->      int size =3D offsetof(struct target_rt_sigframe, uc.tuc_mcontext.__r=
+> -    int size =3D offsetof(struct target_rt_sigframe, uc.tuc_mcontext.__r=
 eserved);
-> -    int fpsimd_ofs, end1_ofs, fr_ofs;
-> +    int fpsimd_ofs, end1_ofs, fr_ofs, end2_ofs =3D 0;
-> +    int extra_ofs =3D 0, extra_base =3D 0, extra_size =3D 0;
+> -    int fpsimd_ofs, end1_ofs, fr_ofs, end2_ofs =3D 0;
+> -    int extra_ofs =3D 0, extra_base =3D 0, extra_size =3D 0;
+> +    target_sigframe_layout layout =3D {
+> +        /* Begin with the size pointing to the reserved space.  */
+> +        .total_size =3D offsetof(struct target_rt_sigframe,
+> +                               uc.tuc_mcontext.__reserved),
+> +    };
+> +    int fpsimd_ofs, fr_ofs, sve_ofs =3D 0, vq =3D 0, sve_size =3D 0;
 >      struct target_rt_sigframe *frame;
 >      struct target_rt_frame_record *fr;
 >      abi_ulong frame_addr, return_addr;
-> @@ -1641,7 +1686,14 @@ static void target_setup_frame(int usig, struct ta=
-rget_sigaction *ka,
+>
+> -    fpsimd_ofs =3D size;
+> -    size +=3D sizeof(struct target_fpsimd_context);
+> -    end1_ofs =3D size;
+> -    size +=3D sizeof(struct target_aarch64_ctx);
+> -    fr_ofs =3D size;
+> -    size +=3D sizeof(struct target_rt_frame_record);
+> +    /* FPSIMD record is always in the standard space.  */
+> +    fpsimd_ofs =3D alloc_sigframe_space(sizeof(struct target_fpsimd_cont=
+ext),
+> +                                      &layout);
+>
+> -    frame_addr =3D get_sigframe(ka, env);
+> +    /* SVE state needs saving only if it exists.  */
+> +    if (arm_feature(env, ARM_FEATURE_SVE)) {
+> +        vq =3D (env->vfp.zcr_el[1] & 0xf) + 1;
+> +        sve_size =3D QEMU_ALIGN_UP(TARGET_SVE_SIG_CONTEXT_SIZE(vq), 16);
+> +        sve_ofs =3D alloc_sigframe_space(sve_size, &layout);
+> +    }
+> +
+> +    if (layout.extra_ofs) {
+> +        /* Reserve space for the extra end marker.  The standard end mar=
+ker
+> +         * will have been allocated when we allocated the extra record.
+> +         */
+> +        layout.extra_end_ofs
+> +            =3D alloc_sigframe_space(sizeof(struct target_aarch64_ctx), =
+&layout);
+> +    } else {
+> +        /* Reserve space for the standard end marker.
+> +         * Do not use alloc_sigframe_space because we cheat
+> +         * std_size therein to reserve space for this.
+> +         */
+> +        layout.std_end_ofs =3D layout.total_size;
+> +        layout.total_size +=3D sizeof(struct target_aarch64_ctx);
+> +    }
+> +
+> +    /* Reserve space for the return code.  On a real system this would
+> +     * be within the VDSO.  So, despite the name this is not a "real"
+> +     * record within the frame.
+> +     */
+> +    fr_ofs =3D layout.total_size;
+> +    layout.total_size +=3D sizeof(struct target_rt_frame_record);
+> +
+> +    frame_addr =3D get_sigframe(ka, env, layout.total_size);
+>      trace_user_setup_frame(env, frame_addr);
+>      if (!lock_user_struct(VERIFY_WRITE, frame, frame_addr, 0)) {
+>          goto give_sigsegv;
+> @@ -1686,13 +1858,15 @@ static void target_setup_frame(int usig, struct t=
+arget_sigaction *ka,
 >
 >      target_setup_general_frame(frame, env, set);
 >      target_setup_fpsimd_record((void *)frame + fpsimd_ofs, env);
-> +    if (extra_ofs) {
-> +        target_setup_extra_record((void *)frame + extra_ofs,
-> +                                  frame_addr + extra_base, extra_size);
-> +    }
->      target_setup_end_record((void *)frame + end1_ofs);
-> +    if (end2_ofs) {
-> +        target_setup_end_record((void *)frame + end2_ofs);
-> +    }
+> -    if (extra_ofs) {
+> -        target_setup_extra_record((void *)frame + extra_ofs,
+> -                                  frame_addr + extra_base, extra_size);
+> +    target_setup_end_record((void *)frame + layout.std_end_ofs);
+> +    if (layout.extra_ofs) {
+> +        target_setup_extra_record((void *)frame + layout.extra_ofs,
+> +                                  frame_addr + layout.extra_base,
+> +                                  layout.extra_size);
+> +        target_setup_end_record((void *)frame + layout.extra_end_ofs);
+>      }
+> -    target_setup_end_record((void *)frame + end1_ofs);
+> -    if (end2_ofs) {
+> -        target_setup_end_record((void *)frame + end2_ofs);
+> +    if (sve_ofs) {
+> +        target_setup_sve_record((void *)frame + sve_ofs, env, vq, sve_si=
+ze);
+>      }
 >
 >      /* Set up the stack frame for unwinding.  */
->      fr =3D (void *)frame + fr_ofs;
 
 
 --

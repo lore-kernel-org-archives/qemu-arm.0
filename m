@@ -1,182 +1,115 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id m7sm36785251wrm.35.2018.03.06.04.28.53
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 06 Mar 2018 04:28:53 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 2338C3E01BE;
-	Tue,  6 Mar 2018 12:28:53 +0000 (GMT)
-References: <20180303143823.27055-1-richard.henderson@linaro.org> <20180303143823.27055-2-richard.henderson@linaro.org>
-User-agent: mu4e 1.1.0; emacs 26.0.91
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: Re: [Qemu-devel] [PATCH v4 1/5] linux-user: Implement aarch64 PR_SVE_SET/GET_VL
-In-reply-to: <20180303143823.27055-2-richard.henderson@linaro.org>
-Date: Tue, 06 Mar 2018 12:28:53 +0000
-Message-ID: <87a7vltmka.fsf@linaro.org>
+Received: by 10.28.91.67 with SMTP id p64csp3705685wmb;
+        Tue, 6 Mar 2018 04:59:17 -0800 (PST)
+X-Received: by 10.157.87.121 with SMTP id x54mr12397514oti.289.1520341156902;
+        Tue, 06 Mar 2018 04:59:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520341156; cv=none;
+        d=google.com; s=arc-20160816;
+        b=D4v5S47wcdhPQJnIHEDBEQWK1hEXbOfM4qOytalnzLNi/aRAhlTOq2gN1MNLwWsYiu
+         mXh68cEJFFUqa23aZBW1UyPtOMsQ+PY0wqmb73UgSs0zSQVfIUlN2f/SHY7fcU710g6t
+         /VEbXf3y1SiuQuxBoWzuXUZrP7Co893wTJyrGGWjEjL4wEJC0Jw3Syii79dF4NJeiJDy
+         rxjCnzlS02Xv8JFEbTjIVCwkEBahc6/laHSjBrJi9Risd4iZb+4ay12U5iov2+lw2MFu
+         3KR78tkmy9+/klSnM11Z09W83RfQjAU1iXwdR9qQUmHkRi/U+B2j2CZKHfiHUSrKVNZz
+         JKAw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=Of9VRWU1U1rgNWXj93MDR2rkNXEo61PFuSGFC57tqgg=;
+        b=gFEhDMW4Vf0QfHi+dfzlbt50d8PHyXeXWkHqlHdxQ/9CteYagzgthFzQjx42yVIucb
+         CsvIXlgFYpqGCtGZeDDsJ+zoh+sQfI3UBmnfgVN471ryDKf2GpS9Q1uCoBN1+RaajJRL
+         Z6XmxrXP26flKkCbSGhcfTwkw90lO03ogF1UTi5/Je37Iq0RHVRyroXsyHUeBAwGRfoo
+         6ELum7r2cUfLjm3IwcXYiQm/6+KidCNXu+AgwhCiqwVSUPpUSE6LtBrnupTZXZwbkau2
+         XmaGndAUag+UKH0zC+HNCSDygPyJQEc4oPt8w9wqe2y+HAaDe7mqTt93HtBzmCuPY6y/
+         rwEg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LeS+3hIN;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id c4sor5946846otf.166.2018.03.06.04.59.16
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 06 Mar 2018 04:59:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LeS+3hIN;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=Of9VRWU1U1rgNWXj93MDR2rkNXEo61PFuSGFC57tqgg=;
+        b=LeS+3hINQQbNRchzA89SFiCrGh5JJtCEqR6NXeFyuW4IKa7BlWimINpYtfC6OoJOG1
+         mcIxY5OKMP4/vScZesiVfD4DrdKODzak51jP0C0lWw+vst4vlEnmhiFJRz081OZc0gmf
+         lxuGO1lKFJrbYQGClYzat4QwTyNid5SjoaU60=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=Of9VRWU1U1rgNWXj93MDR2rkNXEo61PFuSGFC57tqgg=;
+        b=pE2C+N1nRSbdEI6P37XhOWJ38u2r6FZ6pusOb8UmaeQNvij5DYPi6cGNFV+FRhISPZ
+         EtwhZuJEGNYnA1TlB1LeNdRnctVA+WXhgnYWoC4p0NIP3EG5eRDAecKSNA3nDaXGgqCN
+         9k6y5ljacX0FzcJCflptlNWr7tS+FvYi2u8gWnp9i+Qj4G6be5vaByaY/GdH80vMfKOE
+         LchmZ8ikcEmBFYeT0BH71eaEO76EooFbtxWHeY1icZ3q3jEjTCSlIgsCGIl5z87gYhaO
+         ZFMuBeEeckEbYvARIR7v1/tGN0zohxZhkw3G30rB0xLY2jfr+ZewTHqYGTB+Lpf9fX2L
+         wxrw==
+X-Gm-Message-State: AElRT7FSiAKpSLrtc+rao5nd2pnYw7jDbhev2wJ2W7/n/737lkIMKBs3
+	0YWA//GNlH5DImowmFZnSqlpnzmFmS0KUCROs1XhpauFlDE=
+X-Google-Smtp-Source: AG47ELviQbvjPDPpYii1KBpl2zpCHHLJBHkEMLtuKBH1KkQQEJsTeE53FF4FyXEbZk8XLTFV5sg1pW+kV+80LnJPzhc=
+X-Received: by 10.157.69.152 with SMTP id x24mr12197668ote.126.1520341156159;
+ Tue, 06 Mar 2018 04:59:16 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Received: by 10.157.33.100 with HTTP; Tue, 6 Mar 2018 04:58:55 -0800 (PST)
+In-Reply-To: <87a7vltmka.fsf@linaro.org>
+References: <20180303143823.27055-1-richard.henderson@linaro.org>
+ <20180303143823.27055-2-richard.henderson@linaro.org> <87a7vltmka.fsf@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 6 Mar 2018 12:58:55 +0000
+Message-ID: <CAFEAcA8hNzeCSe2DNwUfzeKOSonHY5uoc31m68F2YQsvcyjJLQ@mail.gmail.com>
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v4 1/5] linux-user: Implement
+ aarch64 PR_SVE_SET/GET_VL
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: teDexcu05L3W
+X-TUID: WyyMPltGDJ5o
 
-
-Richard Henderson <richard.henderson@linaro.org> writes:
-
-> As an implementation choice, widening VL has zeroed the
-> previously inaccessible portion of the sve registers.
+On 6 March 2018 at 12:28, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrote:
 >
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  linux-user/aarch64/target_syscall.h |  3 +++
->  target/arm/cpu.h                    |  1 +
->  linux-user/syscall.c                | 27 ++++++++++++++++++++++++
->  target/arm/cpu64.c                  | 41 +++++++++++++++++++++++++++++++=
-++++++
->  4 files changed, 72 insertions(+)
+> Richard Henderson <richard.henderson@linaro.org> writes:
 >
-> diff --git a/linux-user/aarch64/target_syscall.h b/linux-user/aarch64/tar=
-get_syscall.h
-> index 604ab99b14..205265e619 100644
-> --- a/linux-user/aarch64/target_syscall.h
-> +++ b/linux-user/aarch64/target_syscall.h
-> @@ -19,4 +19,7 @@ struct target_pt_regs {
->  #define TARGET_MLOCKALL_MCL_CURRENT 1
->  #define TARGET_MLOCKALL_MCL_FUTURE  2
+>> As an implementation choice, widening VL has zeroed the
+>> previously inaccessible portion of the sve registers.
+>>
+>> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+
+>> +                int old_vq =3D (env->vfp.zcr_el[1] & 0xf) + 1;
+>> +                int vq =3D MAX(arg2 / 16, 1);
+>> +
+>> +                if (vq < old_vq) {
+>> +                    aarch64_sve_narrow_vq(env, vq);
+>> +                }
+>> +                env->vfp.zcr_el[1] =3D vq - 1;
 >
-> +#define TARGET_PR_SVE_SET_VL  50
-> +#define TARGET_PR_SVE_GET_VL  51
+> It seems odd not to have setting this inside cpu64.c. Won't a similar
+> manipulation need to be made for system mode? I'd keep all the logic
+> together in aarch64_sve_narrow_vq (or maybe call it aarch64_sve_set_vq
+> and pass it the current exception level).
 
-For some reason I thought we might get this from our copy of
-linux-headers but it seems we only do that for KVM bits.
+I think I asked Richard to put it into linux-user because it was
+in target/arm in an earlier version of this series. The manipulation
+that's happening here is kind of linux-specific (if it were for
+system mode we'd need to think about ZCR_EL2 and ZCR_EL3 as well),
+and the analogy is with cpu_set_tls/cpu_get_tls which are in
+linux-user/arm/target_cpu.h.
 
-> +
->  #endif /* AARCH64_TARGET_SYSCALL_H */
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 8dd6b788df..5f4566f017 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -861,6 +861,7 @@ int arm_cpu_write_elf32_note(WriteCoreDumpFunction f,=
- CPUState *cs,
->  #ifdef TARGET_AARCH64
->  int aarch64_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int reg);
->  int aarch64_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
-> +void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq);
->  #endif
->
->  target_ulong do_arm_semihosting(CPUARMState *env);
-> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-> index e24f43c4a2..38f40e2692 100644
-> --- a/linux-user/syscall.c
-> +++ b/linux-user/syscall.c
-> @@ -10670,6 +10670,33 @@ abi_long do_syscall(void *cpu_env, int num, abi_=
-long arg1,
->              break;
->          }
->  #endif
-> +#ifdef TARGET_AARCH64
-> +        case TARGET_PR_SVE_SET_VL:
-> +            /* We cannot support either PR_SVE_SET_VL_ONEXEC
-> +               or PR_SVE_VL_INHERIT.  Therefore, anything above
-> +               ARM_MAX_VQ results in EINVAL.  */
-> +            ret =3D -TARGET_EINVAL;
-> +            if (arm_feature(cpu_env, ARM_FEATURE_SVE)
-> +                && arg2 >=3D 0 && arg2 <=3D ARM_MAX_VQ * 16 && !(arg2 & =
-15)) {
-> +                CPUARMState *env =3D cpu_env;
+NB: I've already put this series in target-arm.next -- do you want
+me to drop them ? (That would mean they won't go in 2.12, given
+RTH is away.)
 
-The kernel code splits the arg2 up into VL and flags. We don't seem to
-be doing that here.
-
-	vl =3D arg & PR_SVE_VL_LEN_MASK;
-	flags =3D arg & ~vl;
-
-I'm not sure what && !(arg2 & 15) is doing but PR_SVE_VL_LEN_MASK is
-0xffff, Perhaps some defines would be useful to make it clearer.
-
-> +                int old_vq =3D (env->vfp.zcr_el[1] & 0xf) + 1;
-> +                int vq =3D MAX(arg2 / 16, 1);
-> +
-> +                if (vq < old_vq) {
-> +                    aarch64_sve_narrow_vq(env, vq);
-> +                }
-> +                env->vfp.zcr_el[1] =3D vq - 1;
-
-It seems odd not to have setting this inside cpu64.c. Won't a similar
-manipulation need to be made for system mode? I'd keep all the logic
-together in aarch64_sve_narrow_vq (or maybe call it aarch64_sve_set_vq
-and pass it the current exception level).
-
-> +                ret =3D vq * 16;
-> +            }
-> +            break;
-> +        case TARGET_PR_SVE_GET_VL:
-> +            ret =3D -TARGET_EINVAL;
-> +            if (arm_feature(cpu_env, ARM_FEATURE_SVE)) {
-> +                CPUARMState *env =3D cpu_env;
-> +                ret =3D ((env->vfp.zcr_el[1] & 0xf) + 1) * 16;
-> +            }
-> +            break;
-> +#endif /* AARCH64 */
->          case PR_GET_SECCOMP:
->          case PR_SET_SECCOMP:
->              /* Disable seccomp to prevent the target disabling syscalls =
-we
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index 4228713b19..74b485b382 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -366,3 +366,44 @@ static void aarch64_cpu_register_types(void)
->  }
->
->  type_init(aarch64_cpu_register_types)
-> +
-> +/* The manual says that when SVE is enabled and VQ is widened the
-> + * implementation is allowed to zero the previously inaccessible
-> + * portion of the registers.  The corollary to that is that when
-> + * SVE is enabled and VQ is narrowed we are also allowed to zero
-> + * the now inaccessible portion of the registers.
-> + *
-> + * The intent of this is that no predicate bit beyond VQ is ever set.
-> + * Which means that some operations on predicate registers themselves
-> + * may operate on full uint64_t or even unrolled across the maximum
-> + * uint64_t[4].  Performing 4 bits of host arithmetic unconditionally
-> + * may well be cheaper than conditionals to restrict the operation
-> + * to the relevant portion of a uint16_t[16].
-> + *
-> + * TODO: Need to call this for changes to the real system registers
-> + * and EL state changes.
-> + */
-> +void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq)
-> +{
-> +    int i, j;
-> +    uint64_t pmask;
-> +
-> +    assert(vq >=3D 1 && vq <=3D ARM_MAX_VQ);
-> +
-> +    /* Zap the high bits of the zregs.  */
-> +    for (i =3D 0; i < 32; i++) {
-> +        memset(&env->vfp.zregs[i].d[2 * vq], 0, 16 * (ARM_MAX_VQ - vq));
-> +    }
-> +
-> +    /* Zap the high bits of the pregs and ffr.  */
-> +    pmask =3D 0;
-> +    if (vq & 3) {
-> +        pmask =3D ~(-1ULL << (16 * (vq & 3)));
-> +    }
-
-The kernel defines SVE_VQ_BYTES for clarity, perhaps we should do so to
-here.
-
-> +    for (j =3D vq / 4; j < ARM_MAX_VQ / 4; j++) {
-> +        for (i =3D 0; i < 17; ++i) {
-> +            env->vfp.pregs[i].p[j] &=3D pmask;
-> +        }
-> +        pmask =3D 0;
-> +    }
-> +}
-
-
---
-Alex Benn=C3=A9e
+thanks
+-- PMM

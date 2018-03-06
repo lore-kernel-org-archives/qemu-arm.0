@@ -1,100 +1,98 @@
-Received: by 10.28.91.67 with SMTP id p64csp201191wmb;
-        Wed, 7 Mar 2018 08:36:30 -0800 (PST)
-X-Google-Smtp-Source: AG47ELtfngdtwQSXkrqmT+HON+TbDyZmmpAEajeZaH9sXtwv+LjMohr9dq36yPEBJjf50hWFCnwf
-X-Received: by 2002:a25:c707:: with SMTP id w7-v6mr14092612ybe.14.1520440590308;
-        Wed, 07 Mar 2018 08:36:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520440590; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp3774784wmb;
+        Tue, 6 Mar 2018 06:08:43 -0800 (PST)
+X-Google-Smtp-Source: AG47ELsnKL7I2dZdHLhnaTV3NDLTo3rJowuODRSBzw/l9tux2Oggu60q/0JOZwrlskVwl9FRVcnt
+X-Received: by 10.129.125.65 with SMTP id y62mr11509860ywc.190.1520345323665;
+        Tue, 06 Mar 2018 06:08:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520345323; cv=none;
         d=google.com; s=arc-20160816;
-        b=OPQ6b2DlWyBfnd0yAXpcrU88Z9XfWEncHTmkuTxLgI6ai140wUo6Yk1vn8If82ETqM
-         Fr0e+MTpGyk/UdGsnI46z6Es6UDNjsbweymGhRsNRfYxb1IajKfVKWvJSI1vhrcQuG2X
-         qYZbMzizee4O93+mGIJLlQlzya22sdDh/1HK92cKrhmNMigEg9tmbFLcIIXX1eBanpqH
-         PR0RoFApGueh9OZ66vqDYR7VNjQwHCGJSjun14TfO8DMk5PQ8Rh8OZDSAMtngz0H2EEe
-         MLTfYQZq2rUp0SeKoDVZaOTndKinWGqpRc3WRK/fRvM0g1P5/aRagdXIgRAfe9S4IeI9
-         yZsg==
+        b=I+uE4AWWwv03aeUV+3B6E56F9wPcGcWPdQngaPGGXsIbNPmbrBvn3Kkg97K3a+UDZ1
+         szhMRY+1djNy9LeuNiRv/Fdi/zA5fXkhJQiFx+Bc/DXSNd4EERYCUGwDKZdnSl94Koeg
+         YXHQlzuFnWnEg/L10gRbdU9nPNE8CVYKOvpn8gu9vVrIjclF4wFUXmgYFfzCA9zJk/ph
+         cOLJPV7NqDQOifH/FM58WWTX3mmi+OueL79H12VjguBaySpPwmh1ws3Tj7nHGLr0u1iz
+         KHj/14ubvTIJjlxhWhaL95V06lN9g/kKb5ND597UoGBjtNvqdHw9juXSqnrFU/J+QRGb
+         L9Dw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=Ps/5BVWKMexKeXwikD9bcOdB8SUYqvqOBoVl70549mk=;
-        b=tRBWlVxwfNp8ZPDIUHGFQVIrbmdp1swshlG2p3kfi0K9f0tHi5hoiz/Zqu4D+CTBQX
-         LYckPUyEW6EHMd4FRzVDZFwIgIRJbpfNGu8d6r2oGqHNu1+fYSE+F6gA/Kv2ysgaTMZf
-         VsnrHeUm2FKplGLtOK42+UP1W41YhQ8qee1dCAQTY++S73HJ+dBkTLK12sH+js4U1qg3
-         pzrLBig95DLPUwd7Vr28ft1W7rlZC0/OQuhJPDlc8aAGQfIhrFWXkaf/c2yz7iaDuJx2
-         9XeHQgymCeEqmEOMosGSgqMRUfg4pCtB/BEz38aoDZLkZh+qMiBZwyCshpDze/EDGjnG
-         0kIA==
+        bh=anyzf6t2lLOmaccnW1PXctBZw79AejjqiK2FwefrJzM=;
+        b=is7ECeGN/z12TNKLgNDAZXgxFd90uP/LpGgXcfXe5NHqYWlQS6NKMbu+MYaf6c63fS
+         i6+N0r4CEBSN31atUxS2U+lxje6ppF0F7J5NGmHrcbSQSC93m5HITxc3REwGlQAKU/+O
+         uzyLxXnIlqXfVOtxmlIPRgubqBk3uruWpCvAJlhuWiCy7pVjD0zOp0bdkkarMkaqghYj
+         3tKFf71BrFLQAcbQLVlmEW6gRxbmGWTwMXIJ1DoMYT4GB4M35a+MYQ5fMm9sg9OKcu85
+         zGdIaqKeaeFKb7u9D0pvEJKRTMjPigLnRQxEnRD902nq+1DWJ/iijLwhBagQKSTyWEgE
+         3+3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=fwzkfKd0;
+       dkim=fail header.i=@linaro.org header.s=google header.b=TiBmvCi6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x187si174831ywb.760.2018.03.07.08.36.30
+        by mx.google.com with ESMTPS id u84-v6si1661217yba.445.2018.03.06.06.08.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 07 Mar 2018 08:36:30 -0800 (PST)
+        Tue, 06 Mar 2018 06:08:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=fwzkfKd0;
+       dkim=fail header.i=@linaro.org header.s=google header.b=TiBmvCi6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34263 helo=lists.gnu.org)
+Received: from localhost ([::1]:56060 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1etc3J-0005lv-Om
-	for alex.bennee@linaro.org; Wed, 07 Mar 2018 11:36:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46997)
+	id 1etDGl-0004eo-17
+	for alex.bennee@linaro.org; Tue, 06 Mar 2018 09:08:43 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59344)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1etc3A-0005lA-34
-	for qemu-arm@nongnu.org; Wed, 07 Mar 2018 11:36:21 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1etDGY-0004dC-L7
+	for qemu-arm@nongnu.org; Tue, 06 Mar 2018 09:08:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1etc39-00012S-1g
-	for qemu-arm@nongnu.org; Wed, 07 Mar 2018 11:36:20 -0500
-Received: from mail-oi0-x22a.google.com ([2607:f8b0:4003:c06::22a]:46653)
+	(envelope-from <peter.maydell@linaro.org>) id 1etDGX-00076s-Cq
+	for qemu-arm@nongnu.org; Tue, 06 Mar 2018 09:08:30 -0500
+Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:43656)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1etc38-000127-S7
-	for qemu-arm@nongnu.org; Wed, 07 Mar 2018 11:36:18 -0500
-Received: by mail-oi0-x22a.google.com with SMTP id x12so2102610oie.13
-	for <qemu-arm@nongnu.org>; Wed, 07 Mar 2018 08:36:18 -0800 (PST)
+	id 1etDGX-00076V-6p
+	for qemu-arm@nongnu.org; Tue, 06 Mar 2018 09:08:29 -0500
+Received: by mail-ot0-x244.google.com with SMTP id m22so18397158otf.10
+	for <qemu-arm@nongnu.org>; Tue, 06 Mar 2018 06:08:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=Ps/5BVWKMexKeXwikD9bcOdB8SUYqvqOBoVl70549mk=;
-	b=fwzkfKd0oBRckrCOQLfE7uiYmHV61GMs8J5FKcNylTRBdJw4WxzxMJpNJjWAppb6al
-	o8QmnJCwvbUkVrqns/h0EfL9F0rY/YElzGVuHlyK9qPH2iw5crKD93CykxnE7wNvawSA
-	0k9HuY9bmY+3Zn9bOp53nJVGU1LA3NE64ekCE=
+	:cc; bh=anyzf6t2lLOmaccnW1PXctBZw79AejjqiK2FwefrJzM=;
+	b=TiBmvCi6v6thc5kTfVUQst6uuSbnYFbTbcCASrb5fDMJqnujx7gUWWjRgpYoKLgD1x
+	9yqXwYwgDkANlG7GEBkmuFkF0zAoRY2T6e6Q5zbIwURigBRUb7yV2P0MnAWcPpyQx+G1
+	L7UbnfCgC3Faaaaq435PL2B62Ahh2wbFp04OI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=Ps/5BVWKMexKeXwikD9bcOdB8SUYqvqOBoVl70549mk=;
-	b=k3kQWeRHS0J3PKc5mLpg6Xz4J3cU86bHGvnxXJf0WNq1OdtXkebqA0dNplO5bVOic5
-	PFFv9K1M/V1XaiO7J1iH4n2Mt5ED8UDP9bl4KBw/XQA70dnPNpImXMzyXf/M6LXRAwDI
-	EAumFgvKkPLH/rSpYSb+1+1fNa5Qe0QKvc5hcGc2VXaYdW1FrO5M+pSi8Z6vJwrR8kBQ
-	eMdBdGuyo6PndDZSsWJGDyZJYjYr8HPzRpoM/xqSdkQcfwz1EtEniAUTD+5TXgBRH2GI
-	Mc8HzoPMj+ffqjc+XtoJde9jo4T1Upsa6s3Dw0WLxSxIA64OeenBHcuW/O37A2WvYQ41
-	QvVw==
-X-Gm-Message-State: AElRT7FpLpyaPU0RtvdkxRQoM5LwE+h2SFUvBFfEoyG9OcLl/R6dF815
-	3VWauXs40qVcUqIsS9YItZUStBSZTo4c9igbRnkQCw==
-X-Received: by 10.202.61.198 with SMTP id k189mr14696663oia.252.1520440577917; 
-	Wed, 07 Mar 2018 08:36:17 -0800 (PST)
+	bh=anyzf6t2lLOmaccnW1PXctBZw79AejjqiK2FwefrJzM=;
+	b=q9udVYV5UWXkNa76a0MN19+guX5pcLcd9JhfJIQmVTv5ZQwJmqGtW+qC/t6PLj/FAh
+	/6kECSo0l2eiRyZYblWMgitL754R63UTLTabCAVCUfbFu9bm2YNGwpcnhuxyKJms6xt1
+	xn8j9AmmJH+atDAvx/qmS95dQI0K3VraRHkM7d+q5MT2pOKzc17954Qz7JUnMkBzpUba
+	vYxf38E4AVvZv5/PfCj320qK1oRIPgmQzy5dKhm5uAqq5wo+SB/yltcV95uouQ8LOBOg
+	dtz1vsmScD+2Dn6GGafqE4kKJTgmhwOyijevPFP+gO3aMOwBIv6MQl9SeVkbqb90nBuW
+	l/ZQ==
+X-Gm-Message-State: AElRT7FycSXjGlG4hr2ABtc+gTnb4BsNmPswr1x6cde86EQSYEoVOgMr
+	m5UfG3JLce+BNeqacB+ZrGx5HLe9NxJZy/DbajEkKw==
+X-Received: by 10.157.23.34 with SMTP id i34mr13931311ota.210.1520345308387;
+	Tue, 06 Mar 2018 06:08:28 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.157.33.100 with HTTP; Wed, 7 Mar 2018 08:35:57 -0800 (PST)
-In-Reply-To: <f1e870f8-9669-ffde-0556-bc8b16467356@redhat.com>
+Received: by 10.157.33.100 with HTTP; Tue, 6 Mar 2018 06:08:07 -0800 (PST)
+In-Reply-To: <1518893216-9983-3-git-send-email-eric.auger@redhat.com>
 References: <1518893216-9983-1-git-send-email-eric.auger@redhat.com>
-	<1518893216-9983-4-git-send-email-eric.auger@redhat.com>
-	<CAFEAcA_scj3Nw+W6a7NL6bRR3ZGvUx1NLa4cWSmvfOA1BCEPgQ@mail.gmail.com>
-	<f1e870f8-9669-ffde-0556-bc8b16467356@redhat.com>
+	<1518893216-9983-3-git-send-email-eric.auger@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 7 Mar 2018 16:35:57 +0000
-Message-ID: <CAFEAcA8+CDvbsQw5EKz5t0JJa1oNpteu+=X5JHxFNdyBUu7OTw@mail.gmail.com>
-To: Auger Eric <eric.auger@redhat.com>
+Date: Tue, 6 Mar 2018 14:08:07 +0000
+Message-ID: <CAFEAcA-uMZwR8HfVDx0Rau9G2unMypWJEL0o3ACPHxCqZ+g=_Q@mail.gmail.com>
+To: Eric Auger <eric.auger@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::22a
-Subject: Re: [Qemu-arm] [PATCH v9 03/14] hw/arm/smmu-common: VMSAv8-64 page
- table walk
+X-Received-From: 2607:f8b0:4003:c0f::244
+Subject: Re: [Qemu-arm] [PATCH v9 02/14] hw/arm/smmu-common: IOMMU memory
+ region and address space setup
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -116,58 +114,148 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
 	Prem Mallappa <prem.mallappa@gmail.com>, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Zxsp8HcEs2mC
+X-TUID: lN626Ei51daK
 
-On 7 March 2018 at 16:23, Auger Eric <eric.auger@redhat.com> wrote:
-> Hi Peter,
+On 17 February 2018 at 18:46, Eric Auger <eric.auger@redhat.com> wrote:
+> We enumerate all the PCI devices attached to the SMMU and
+> initialize an associated IOMMU memory region and address space.
+> This happens on SMMU base instance init.
 >
-> On 06/03/18 20:43, Peter Maydell wrote:
->> On 17 February 2018 at 18:46, Eric Auger <eric.auger@redhat.com> wrote:
+> Those info are stored in SMMUDevice objects. The devices are
+> grouped according to the PCIBus they belong to. A hash table
+> indexed by the PCIBus poinet is used. Also an array indexed by
 
->>> +int smmu_ptw(SMMUTransCfg *cfg, dma_addr_t iova, IOMMUAccessFlags perm,
->>> +             IOMMUTLBEntry *tlbe, SMMUPTWEventInfo *info)
->>> +{
->>> +    if (!cfg->aa64) {
->>> +        error_setg(&error_fatal,
->>> +                   "SMMUv3 model does not support VMSAv8-32 page walk yet");
->>
->> This sort of guest-provokable error should not be fatal -- log
->> it with LOG_UNIMP and carry on as best you can (in this case
->> the spec should say what happens for SMMUv3 implementations which
->> don't support AArch32 tables).
-> This code should never been entered as the check is done when decoding
-> the CD in the smmuv3. However since it is a base class I wanted to
-> enphase the ptw was only supporting AArch32.
+"pointer".
 
-Ah, right. That should be an assert() with a brief comment
-about why the condition will never trigger.
+> the bus number allows to find the list of SMMUDevices.
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>
+> ---
+> v8 -> v9:
+> - fix key value for lookup
+>
+> v7 -> v8:
+> - introduce SMMU_MAX_VA_BITS
+> - use PCI bus handle as a key
+> - do not clear s->smmu_as_by_bus_num
+> - use g_new0 instead of g_malloc0
+> - use primary_bus field
+> ---
+>  hw/arm/smmu-common.c         | 59 ++++++++++++++++++++++++++++++++++++++++++++
+>  include/hw/arm/smmu-common.h |  6 +++++
+>  2 files changed, 65 insertions(+)
+>
+> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+> index 86a5aab..d0516dc 100644
+> --- a/hw/arm/smmu-common.c
+> +++ b/hw/arm/smmu-common.c
+> @@ -28,12 +28,71 @@
+>  #include "qemu/error-report.h"
+>  #include "hw/arm/smmu-common.h"
+>
+> +SMMUPciBus *smmu_find_as_from_bus_num(SMMUState *s, uint8_t bus_num)
+> +{
+> +    SMMUPciBus *smmu_pci_bus = s->smmu_as_by_bus_num[bus_num];
 
+Variable name suggests this is a table of AddressSpaces indexed by
+bus number, but the code says we're getting SMMUPCIBus objects from it?
 
->>> +#define is_permission_fault(ap, perm) \
->>> +    (((perm) & IOMMU_WO) && ((ap) & 0x2))
->>
->> Don't we also need to check AP bit 1 in some cases?
->> (when the StreamWorld is S or NS EL1 and either (a) the incoming
->> transaction has its attrs.user = 1 and STE.PRIVCFG is 0b0x, or
->> (b) STE.PRIVCFG is 0b10).
-> I think I don't need to as I don't support this feature at the moment:
-> spec says:
-> "When SMMU_IDR1.ATTR_PERMS_OVR=0, this field is RES0 and the incoming
-> PRIV attribute is used."
-> But to be honest I was not aware this existed ;()
+> +
+> +    if (!smmu_pci_bus) {
+> +        GHashTableIter iter;
+> +
+> +        g_hash_table_iter_init(&iter, s->smmu_as_by_busptr);
+> +        while (g_hash_table_iter_next(&iter, NULL, (void **)&smmu_pci_bus)) {
+> +            if (pci_bus_num(smmu_pci_bus->bus) == bus_num) {
+> +                s->smmu_as_by_bus_num[bus_num] = smmu_pci_bus;
+> +                return smmu_pci_bus;
+> +            }
+> +        }
 
-I think you still need to check the incoming transaction
-for user vs priv, even if you don't support STE.PRIVCFG.
+Why do we populate this hashtable lazily rather than when we
+put the SMMUPciBus in the smmu_as_by_busptr table? Do we
+expect this function not to ordinarily be called?
 
->>> +
->>> +#define PTE_AP_TO_PERM(ap) \
->>> +    (IOMMU_ACCESS_FLAG(true, !((ap) & 0x2)))
->>
->> Similarly here.
-> ?
+> +    }
+> +    return smmu_pci_bus;
+> +}
+> +
+> +static AddressSpace *smmu_find_add_as(PCIBus *bus, void *opaque, int devfn)
+> +{
+> +    SMMUState *s = opaque;
+> +    SMMUPciBus *sbus = g_hash_table_lookup(s->smmu_as_by_busptr, bus);
+> +    SMMUDevice *sdev;
+> +
+> +    if (!sbus) {
+> +        sbus = g_malloc0(sizeof(SMMUPciBus) +
+> +                         sizeof(SMMUDevice *) * SMMU_PCI_DEVFN_MAX);
+> +        sbus->bus = bus;
+> +        g_hash_table_insert(s->smmu_as_by_busptr, bus, sbus);
+> +    }
+> +
+> +    sdev = sbus->pbdev[devfn];
+> +    if (!sdev) {
+> +        char *name = g_strdup_printf("%s-%d-%d",
+> +                                     s->mrtypename,
+> +                                     pci_bus_num(bus), devfn);
+> +        sdev = sbus->pbdev[devfn] = g_new0(SMMUDevice, 1);
+> +
+> +        sdev->smmu = s;
+> +        sdev->bus = bus;
+> +        sdev->devfn = devfn;
+> +
+> +        memory_region_init_iommu(&sdev->iommu, sizeof(sdev->iommu),
+> +                                 s->mrtypename,
+> +                                 OBJECT(s), name, 1ULL << SMMU_MAX_VA_BITS);
+> +        address_space_init(&sdev->as,
+> +                           MEMORY_REGION(&sdev->iommu), name);
 
-Can't just ignore AP bit 1 (or 0, if you're counting it that way).
+This leaks the memory pointed to by name, doesn't it?
+(address_space_init() takes a copy of the name string, so you want
+to g_free(name) here.)
 
+> +    }
+> +
+> +    return &sdev->as;
+> +}
+> +
+>  static void smmu_base_realize(DeviceState *dev, Error **errp)
+>  {
+>      SMMUState *s = ARM_SMMU(dev);
+>
+>      s->configs = g_hash_table_new_full(NULL, NULL, NULL, g_free);
+>      s->iotlb = g_hash_table_new_full(NULL, NULL, NULL, g_free);
+> +    s->smmu_as_by_busptr = g_hash_table_new(NULL, NULL);
+> +
+> +    if (s->primary_bus) {
+> +        pci_setup_iommu(s->primary_bus, smmu_find_add_as, s);
+> +    } else {
+> +        error_setg(errp, "SMMU is not attached to any PCI bus!");
+> +    }
+>  }
+>
+>  static void smmu_base_reset(DeviceState *dev)
+> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+> index 8a9d931..aee96c2 100644
+> --- a/include/hw/arm/smmu-common.h
+> +++ b/include/hw/arm/smmu-common.h
+> @@ -121,4 +121,10 @@ typedef struct {
+>  #define ARM_SMMU_GET_CLASS(obj)                              \
+>      OBJECT_GET_CLASS(SMMUBaseClass, (obj), TYPE_ARM_SMMU)
+>
+> +SMMUPciBus *smmu_find_as_from_bus_num(SMMUState *s, uint8_t bus_num);
+> +
+> +static inline uint16_t smmu_get_sid(SMMUDevice *sdev)
+> +{
+> +    return  ((pci_bus_num(sdev->bus) & 0xff) << 8) | sdev->devfn;
+> +}
+
+Can we have at least brief documentation comments for any
+new functions or prototypes added to header files, please?
+
+>  #endif  /* HW_ARM_SMMU_COMMON */
+> --
 
 thanks
 -- PMM

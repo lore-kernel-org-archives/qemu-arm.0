@@ -1,147 +1,131 @@
-Received: by 10.28.91.67 with SMTP id p64csp1835649wmb;
-        Thu, 1 Mar 2018 05:33:31 -0800 (PST)
-X-Google-Smtp-Source: AG47ELvPvK6tcZ8jrZIm1716HAKycQ/pZgVffy0sMKXux4EISbhfZ8FysUe7atwMihtdJCOcXEC4
-X-Received: by 10.55.195.138 with SMTP id r10mr2882111qkl.269.1519911211237;
-        Thu, 01 Mar 2018 05:33:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519911211; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp4892560wmb;
+        Wed, 7 Mar 2018 04:48:20 -0800 (PST)
+X-Google-Smtp-Source: AG47ELtgOALteLP8+baHnT+MdADGNlFTKezihkU8JUvO/I6Wpe2uPhf6bXvxYDFjJsIS1wKDEwUf
+X-Received: by 10.13.237.129 with SMTP id w123mr679116ywe.475.1520426900224;
+        Wed, 07 Mar 2018 04:48:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520426900; cv=none;
         d=google.com; s=arc-20160816;
-        b=lOeb2WqmoTKzY97oFNPf9dinfnMhJPWbo3uioxFuac9CVHvImbE1P1+jSw5M0oI8Y8
-         QB35zf4YtkhG8Mup6QdM05BBf+HanG65eSWDiCt21OiYyWjEqjCJpwpAUGu4GrQ08x3r
-         vdtrwNF1Mv2q8YyO4OmgV34oKk3F3NqK1ZSBiOFnsnthnfZyWHez5hZ+GYykb4q1tRNU
-         v4ZVsU7SFFx+++olZNdFeucqhaZy/UGWHWduUbMBdVrlL6RVHuxHDxM6BRwiKsfkQcN8
-         QMPAXRqw/x10AMTwHlWhkwmMPfqxF5udN2bS6YvTPt42ugPqYzIMVMxjV0dy/1Wqrw9l
-         aA8g==
+        b=v8MCDlJSdHDDm71IXrW/fBhJcqN8qa4XeiaLnTEHicVTsKlAhL3k2sdhqD5aTgwNlG
+         N3Hcugxo6ecpyslsbO4RAlgg1K047O+Bm0YgAkXoTH2z2A8xOoEq+87Al+iPuzCHM47I
+         5wDilBGYe0I1zwAzRWFdUh9FHVkYDQ9WdkzIaVI6F9kO6VmwI4OL7hPJAaJQ8JoCw0fF
+         +ELh2T0MpJwBNEdxvVOk8VIhHsQGjUmH2TDhknlCRS7W0aSI8kHludk6Cx/row4/0wrF
+         6IdbsRGu2Mzw66iz3KE6zfQkv9rg6JYdSxlRUkHdGi4o2rIbUEHzG4xa3GVruwdkLPFD
+         2OKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:from:references:to:subject
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:organization:from:references:to
          :arc-authentication-results;
-        bh=hUooVSSFpRMJFpoXu5aPrey8FTbC0ji6myTmbaJOAUY=;
-        b=qpQQ1LW23x4fxX5LO8O2P4gtiUnZ6BpVQPd1/8+IqTtUoCrlBv0oazj13IvKIPH+xA
-         04pKuVDb+JYRTU8wjtor8w5IROhSCfTR9u1tPuFmaynXH8VVAcQZXVsG5f2RmDl6KPAk
-         /sIa+9b/T/6gKmzisKheIyPEGDxfjHmol88Y/hR7NBvzxzc2HT9hgFEDLGOq0XpBSyPV
-         IHf90roLPU63EotpHotZl4nckGmLQbIElYApjowmBXvBb3jN1fTgRh9M8xKHEqwp/9pe
-         W1V+VH2fdqwJLWlBjmwnrk5/YAjtZkkkKgeB6l7MDmMwnHXkL87AOKKodYi1sDiTQMrS
-         G9iQ==
+        bh=33ePGMlftlrWzh2e5KICWqTK9P4MPSlxmt5XyUZBYjI=;
+        b=M5kufmaCUAIDFuFUQdd5F8Uuu4kUCXP16rnLJ/Ahk26Ep6cBXKvRK3d6HwYwL5GFV+
+         y9G7/K6s7wNV6713CGdhkByF/g57MjTNnJEqP77KMID9iI/XFipUTKxa4msHU2LzN4fr
+         lDdOxx80Xa8siF4HdGsgplnh3HeJuykDSP3PFxE0b6Q3+6UqbyVFHCZzTQu8/1iGFxPU
+         JDvpZXonZLfhyR79odEh/ZhppaYVyRL4ktlCR+J3hGH+21o4aicdVxT14wuuQciu7PxI
+         8/st+3rF+OkqR2ZzzFYpRgMf2GpNiEffvo1FjXcSscU058Xu43BVXKPLB8AFEvVgVU7b
+         OHcg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id v10si4550885qth.127.2018.03.01.05.33.30;
-        Thu, 01 Mar 2018 05:33:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id 136si2987987ywr.267.2018.03.07.04.48.19
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Wed, 07 Mar 2018 04:48:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id EFE4749E56;
-	Thu,  1 Mar 2018 08:26:31 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: -1.501
-X-Spam-Level: 
-X-Spam-Status: No, score=-1.501 required=6.1 tests=[BAYES_00=-1.9,
-	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_MED=-2.3] autolearn=no
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nNhhUGuuWdhi; Thu,  1 Mar 2018 08:26:10 -0500 (EST)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 8AF5949D6F;
-	Thu,  1 Mar 2018 08:26:10 -0500 (EST)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 0B9DF402D3
- for <kvmarm@lists.cs.columbia.edu>; Thu,  1 Mar 2018 08:26:09 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vz+5W1+VvrcG for <kvmarm@lists.cs.columbia.edu>;
- Thu,  1 Mar 2018 08:25:42 -0500 (EST)
-Received: from mx1.redhat.com (mx3-rdu2.redhat.com [66.187.233.73])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id D6D7D402C7
- for <kvmarm@lists.cs.columbia.edu>; Thu,  1 Mar 2018 08:25:42 -0500 (EST)
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 4F00FEB6F4;
- Thu,  1 Mar 2018 13:32:41 +0000 (UTC)
-Received: from [10.36.116.189] (ovpn-116-189.ams2.redhat.com [10.36.116.189])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B360E9C06B;
- Thu,  1 Mar 2018 13:32:39 +0000 (UTC)
-Subject: Re: [Qemu-devel] [Qemu-arm] VCPU hotplug on KVM/ARM
-To: Peter Maydell <peter.maydell@linaro.org>,
- Igor Mammedov <imammedo@redhat.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:33014 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1etYUV-0001cE-Kh
+	for alex.bennee@linaro.org; Wed, 07 Mar 2018 07:48:19 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53740)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <marc.zyngier@arm.com>) id 1etYU2-0001Ng-4d
+	for qemu-arm@nongnu.org; Wed, 07 Mar 2018 07:47:51 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <marc.zyngier@arm.com>) id 1etYTx-0006fm-8w
+	for qemu-arm@nongnu.org; Wed, 07 Mar 2018 07:47:50 -0500
+Received: from usa-sjc-mx-foss1.foss.arm.com ([217.140.101.70]:57600
+	helo=foss.arm.com) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <marc.zyngier@arm.com>)
+	id 1etYTx-0006fa-1I; Wed, 07 Mar 2018 07:47:45 -0500
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id C2FF01435;
+	Wed,  7 Mar 2018 04:47:42 -0800 (PST)
+Received: from [10.1.207.62] (usa-sjc-imap-foss1.foss.arm.com [10.72.51.249])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id
+	6C47A3F487; Wed,  7 Mar 2018 04:47:41 -0800 (PST)
+To: David Hildenbrand <david@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Igor Mammedov <imammedo@redhat.com>
 References: <000e01d3afad$b9a13830$2ce3a890$@codeaurora.org>
- <20180227104708.GA11391@cbox>
- <ac329e1b1f5265a805916ab4f8708f9d@codeaurora.org>
- <20180227124604.GA2373@cbox>
- <20180227132131.fipafmnb56a7fj76@kamzik.brq.redhat.com>
- <20180301105030.2b716e68@redhat.com>
- <CAFEAcA9yaU745Asy--jM0nu8FDJ62CEXSH_TKa-ZZfC16qye6w@mail.gmail.com>
-From: David Hildenbrand <david@redhat.com>
-Organization: Red Hat GmbH
-Message-ID: <b049a501-cd5e-8c22-9c62-88c950e01b1b@redhat.com>
-Date: Thu, 1 Mar 2018 14:32:39 +0100
+	<20180227104708.GA11391@cbox>
+	<ac329e1b1f5265a805916ab4f8708f9d@codeaurora.org>
+	<20180227124604.GA2373@cbox>
+	<20180227132131.fipafmnb56a7fj76@kamzik.brq.redhat.com>
+	<20180301105030.2b716e68@redhat.com>
+	<CAFEAcA9yaU745Asy--jM0nu8FDJ62CEXSH_TKa-ZZfC16qye6w@mail.gmail.com>
+	<b049a501-cd5e-8c22-9c62-88c950e01b1b@redhat.com>
+From: Marc Zyngier <marc.zyngier@arm.com>
+Organization: ARM Ltd
+Message-ID: <acd04e77-33c9-71f1-c140-1f9c20da8022@arm.com>
+Date: Wed, 7 Mar 2018 12:47:39 +0000
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.5.2
+	Thunderbird/52.6.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9yaU745Asy--jM0nu8FDJ62CEXSH_TKa-ZZfC16qye6w@mail.gmail.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.11.55.1]); Thu, 01 Mar 2018 13:32:41 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
- Thu, 01 Mar 2018 13:32:41 +0000 (UTC) for IP:'10.11.54.5'
- DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
- HELO:'smtp.corp.redhat.com' FROM:'david@redhat.com' RCPT:''
-Cc: Christoffer Dall <cdall@cs.columbia.edu>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Christoffer Dall <christofferdall@christofferdall.dk>,
- qemu-arm <qemu-arm@nongnu.org>, kvmarm@lists.cs.columbia.edu
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+In-Reply-To: <b049a501-cd5e-8c22-9c62-88c950e01b1b@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-GB
 Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: UOMoAU7qD2pQ
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 217.140.101.70
+Subject: Re: [Qemu-arm] [Qemu-devel]  VCPU hotplug on KVM/ARM
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Christoffer Dall <cdall@cs.columbia.edu>,
+	Christoffer Dall <christofferdall@christofferdall.dk>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>, kvmarm@lists.cs.columbia.edu
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DYN1pYWM7qZn
 
-On 01.03.2018 11:05, Peter Maydell wrote:
-> On 1 March 2018 at 09:50, Igor Mammedov <imammedo@redhat.com> wrote:
->> In QEMU on x86 (and I think ppc, s390 as well), we create vCPUs on demand.>>
->> It would be nice if ARM would be able to do that too,
->> so that it could take advantage of the same code.
+On 01/03/18 13:32, David Hildenbrand wrote:
+> On 01.03.2018 11:05, Peter Maydell wrote:
+>> On 1 March 2018 at 09:50, Igor Mammedov <imammedo@redhat.com> wrote:
+>>> In QEMU on x86 (and I think ppc, s390 as well), we create vCPUs on demand.>>
+>>> It would be nice if ARM would be able to do that too,
+>>> so that it could take advantage of the same code.
+>>
+>> It's not clear to me how that would work, given that for
+>> instance the interrupt controller wants to know up-front
+>> how many CPUs it has to deal with.
+>>
 > 
-> It's not clear to me how that would work, given that for
-> instance the interrupt controller wants to know up-front
-> how many CPUs it has to deal with.
->
+> So how is cpu hotplug handled in HW? Or doesn't it even exist there?
 
-So how is cpu hotplug handled in HW? Or doesn't it even exist there?
+I don't know of any physical system offering that facility.
 
-(we have max_cpus for the interrupt controller, but not sure if that is
-what we want)
-
-> thanks
-> -- PMM
-> 
--- 
+> (we have max_cpus for the interrupt controller, but not sure if that is
+> what we want)
+We'd need something along those lines. Each CPU has a notional point to
+point link to the interrupt controller (to the redistributor, to be
+precise), and this entity must pre-exist.
 
 Thanks,
 
-David / dhildenb
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+	M.
+-- 
+Jazz is not dead. It just smells funny...

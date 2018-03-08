@@ -1,166 +1,231 @@
-Received: by 10.28.91.67 with SMTP id p64csp4212727wmb;
-        Tue, 6 Mar 2018 13:32:36 -0800 (PST)
-X-Google-Smtp-Source: AG47ELsArw2DegKOFkFwZEPllgDyTQrpnewMC2I/5uZDLBOiLLMGpHU6RP1iglWXWWyFVwRUyZkm
-X-Received: by 2002:a25:e057:: with SMTP id x84-v6mr12345344ybg.419.1520371956292;
-        Tue, 06 Mar 2018 13:32:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520371956; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp1200965wmb;
+        Thu, 8 Mar 2018 05:06:31 -0800 (PST)
+X-Google-Smtp-Source: AG47ELsIoM1gCcsJpKytm/fOA/8jpUi1ARVpMzLy+KnZSlPaQbFo6BlqCc9+e9y1U8VglhI9ILsy
+X-Received: by 10.28.113.79 with SMTP id m76mr12092258wmc.27.1520514391424;
+        Thu, 08 Mar 2018 05:06:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520514391; cv=none;
         d=google.com; s=arc-20160816;
-        b=b7doOJIAAM4Fk+GEbKFQDNfYTz+Sz8ks9aa5rkdkZ8R3p4IFWGbNFPK4WXrLyJhsZF
-         BxJTweyBR2KdnXPqE22hRmBuOn4iJc+WDjX0E9CaBmiRg+XcgEzdV1uxgQBu3kN9CEgx
-         pxX+67oheg1kiBcrNsh1VuS8G4WueqjLzDF7CWlomcLogPeKAIJjLxFnZgxtzfM02HrF
-         KGXG/I4r3lr8U19x2pV9Dh+yO/w0BhWQqKR14N1K4OBVTTXJulcZnuakAKJwWUKDiZ5X
-         vWesQmsPbX6QcaTcY2JIKhw6K37SyNld2/7nkF64FJ2bnNjV5+J7rJIqS6NuqOL9IMMs
-         TBjg==
+        b=rbf1AvaerXyHvPD5rAav5kGEoDrbVmAl8YI1z83samUGptGwF311ZisaO/LYaDUy/N
+         fbu10M+akLoaP7qG4UfTEj8rIOkG8ss5QF5P+0v4wlE0FWHfMLWR0HOWUKJXIGo6cXfo
+         Y7OxTJSMaarAn1zKCsBlQWU6KzaevwVwmrVP266Jqwzh++x2ORo7P0zrmMlP/O4EHv0d
+         y94qNc8qif0RpoI1AkgUDQe9VfSubgofjuQpfB4Vb7BvG4nCZorQSOYr8qa70lmMubTw
+         hOXQYeOJC7BeuFFf7xeT17G/dIK5QJe6Md4/mov5Dv3LXsXSHcxralCdrXs2hXg1PGQz
+         AGgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature:arc-authentication-results;
-        bh=nuju2m9P7HN6XAWG9r91DeK/yVZVljRr+/+y+TLl9lo=;
-        b=Pc4itPgs8jo+Vivby6igKvd4qO6WRClI69Wl9/1OJQRCW5DSMHGzkGpYI0D3VGUEc8
-         3BGM3YArmB0Ec4aw+EJ+Z48iYLGtMRUPzFfya4uq4/iIbAVzM+GIHozFWnLnoEI6VTMh
-         j6iPPl5YVVRcip1kaHn/PNP2BEsq90n/WkTGxopMagNHm8wGFSSvnJWTW+zhw0ZCTAaE
-         VR2JiE7a1heJ0ICKP+kkTXWy9nW1IykU/tjXTxtfR5WfVb5LMu5N+qmlbSoQtxP4vLKW
-         Sgp8GFuF0Ey6Sv98DoHwqQ1oyrb9FEkzOwIdZM/Q6llTwy+zy3QKHNoSGsiPEnNR9eHM
-         GPAw==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :arc-authentication-results;
+        bh=g7GVZdS2kJWGvZcqfY0PDGUXQ25SQaD2oyPYknhcc90=;
+        b=F4WJ6WYEQE1NpL/kGcn+LEkP1h5+In6QCkCrVacmhZkL3mCqrqfhaCN3/bL1sbBHdb
+         hwpKkaqhH/xah6mTOg8fklUvG6b2kkg0Dv287fsOf5c8dLrS6veOvrcthO6IeQBmuQ7n
+         gKw1JomPQEKa1wU6+thVKHpSoaUf5lFeNW1kD8NtzutLkeU/yDVoLgdgyy2LE8bFuN23
+         sp0PiJOGL4P02oR43VFOSy9nhIsTqqfN/e0FWsSnDYlp5ExHhpLctnVAJLwbGIS7YuyW
+         2k9VF1szupv3Df9tMgzDTISGgiIFWW6vOFKW97KKtMwXBJhTzjDVjdHqIZt1TJa3Oe+X
+         S6Ag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DTdiLD65;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h62-v6si2671261ybb.356.2018.03.06.13.32.36
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 06 Mar 2018 13:32:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <pm215@archaic.org.uk>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+        by mx.google.com with ESMTPS id r31si14831025wrb.482.2018.03.08.05.06.31
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 08 Mar 2018 05:06:31 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DTdiLD65;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:58347 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1etKCJ-0005hU-Ks
-	for alex.bennee@linaro.org; Tue, 06 Mar 2018 16:32:35 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34280)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <groeck7@gmail.com>) id 1etJxd-0000cv-I9
-	for qemu-devel@nongnu.org; Tue, 06 Mar 2018 16:17:26 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <groeck7@gmail.com>) id 1etJxc-0003gv-FL
-	for qemu-devel@nongnu.org; Tue, 06 Mar 2018 16:17:25 -0500
-Received: from mail-pl0-x243.google.com ([2607:f8b0:400e:c01::243]:35358)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <groeck7@gmail.com>)
-	id 1etJxX-0003Z5-Mx; Tue, 06 Mar 2018 16:17:19 -0500
-Received: by mail-pl0-x243.google.com with SMTP id w22-v6so42298pll.2;
-	Tue, 06 Mar 2018 13:17:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=nuju2m9P7HN6XAWG9r91DeK/yVZVljRr+/+y+TLl9lo=;
-	b=DTdiLD650cNlPCljT7xXdbsUsgAZkcXaNMTUaZGpP0v31TAx84yAMHOEh+AeUbXY1y
-	W50F5kdf5kW+oTawKUJH97NF0Uk2TwXyt0nh/rW5zyjkRpdcFyNeRd1Hb0x2lCy5RSqS
-	03liaqUOK7HryKQybc5wSLsqv6xBUdwUETFqc44gRcuqRw9BH3n9urW0bdPKvoe333lu
-	adnFodu+14kfz3dCJsWHIkI0qhmlmYDEu6TNT4t4hPSxuwn2QCxEOxtFZauN7F4IL7oL
-	h2kV0FlgAEgPhjleIQ1wTrioFlH7F4ZG8YNuhpH/jLmTe/iUfrciZEaKJKUVp8D0xzpd
-	4uEQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
-	:references:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=nuju2m9P7HN6XAWG9r91DeK/yVZVljRr+/+y+TLl9lo=;
-	b=jlnUcf9lRjQWIZBu4lk+p1N/cN6Q55ySlsyQ19/bUrPBrGiByGdpT2LTfR1gsO+qjS
-	zRzV/WgjAHGWXFAOSXyXnx2megec6SalZhNMbW5BYGin3G7sZHLheLORdvID7hUcFHdp
-	4bl5aR4zThoUlLkfp8IgT6kg5UI59jsW24n4CMZeqHirUD36tY+i0sDhrHM/uceaUQbf
-	PtbkbFEcEhAP4cOFk1likFVUZszCDDRUxuDZKfR5Mo6VWq3o+21efhlDz4nagMFRsqCW
-	bfBCDhGEQBuT/mDxAy1dEDHVNK6V2BaDNObYBxvtGfajZ1HB+4UP+NuVoV9ubcWRf7cR
-	bEXQ==
-X-Gm-Message-State: AElRT7HvV1solK965HdMWGFmN2t44UyRskUtIj5MNIryrduGK80gQzXX
-	5NQA8lapruNDNPGB7mlb8J8=
-X-Received: by 2002:a17:902:52a6:: with SMTP id
-	a35-v6mr12586607pli.179.1520371038582; 
-	Tue, 06 Mar 2018 13:17:18 -0800 (PST)
-Received: from localhost (108-223-40-66.lightspeed.sntcca.sbcglobal.net.
-	[108.223.40.66]) by smtp.gmail.com with ESMTPSA id
-	h26sm24427341pgv.22.2018.03.06.13.17.17
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 06 Mar 2018 13:17:17 -0800 (PST)
-Date: Tue, 6 Mar 2018 13:17:16 -0800
-From: Guenter Roeck <linux@roeck-us.net>
-To: Andrey Smirnov <andrew.smirnov@gmail.com>
-Message-ID: <20180306211716.GA21453@roeck-us.net>
-References: <20180305061237.21484-1-andrew.smirnov@gmail.com>
-	<CAFEAcA_Y3oY0w3Xmrs0BTfhXw1s7S-8pESZ-rB2HgXzZ_5Vxmw@mail.gmail.com>
-	<CAHQ1cqFrb3eryu9Dvi2=8aV_=K-MX9bqPHNAH4Fc4p402Sm0Bw@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAHQ1cqFrb3eryu9Dvi2=8aV_=K-MX9bqPHNAH4Fc4p402Sm0Bw@mail.gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c01::243
-Subject: Re: [Qemu-devel] [RESEND PATCH v7 0/3] Initial i.MX7 support
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S . Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@zoho.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Andrey Yurovsky <yurovsky@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OLjAb2Ee8V40
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1etvFe-0005zA-SR; Thu, 08 Mar 2018 13:06:30 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: patches@linaro.org,
+	Igor Mammedov <imammedo@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH v3 4/6] target/arm: Make 'any' CPU just an alias for 'max'
+Date: Thu,  8 Mar 2018 13:06:24 +0000
+Message-Id: <20180308130626.12393-5-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.16.2
+In-Reply-To: <20180308130626.12393-1-peter.maydell@linaro.org>
+References: <20180308130626.12393-1-peter.maydell@linaro.org>
+X-TUID: AWe6CP0lliFO
 
-On Mon, Mar 05, 2018 at 07:50:23AM -0800, Andrey Smirnov wrote:
-> On Mon, Mar 5, 2018 at 7:31 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> > On 5 March 2018 at 06:12, Andrey Smirnov <andrew.smirnov@gmail.com> wrote:
-> >> RESEND due to botched original v7 submission (patch 1/3 broken)
-> >>
-> >> Hi everyone,
-> >>
-> >> This v7 of the patch series containing the work that I've done in
-> >> order to enable support for i.MX7 emulation in QEMU.
-> >
-> > Thanks; applied to target-arm.next.
-> >
-> > By the way there were a couple of i.MX bug reports this weekend:
-> > https://bugs.launchpad.net/qemu/+bug/1753314  (about the UART)
-> 
-> Sure, might not be able to look at it immediately but I'll give it a
-> spin by the end of this week.
-> 
-> > https://bugs.launchpad.net/qemu/+bug/1753309  (about ethernet)
-> >
-> 
-> Peter:
-> 
-> Ha! This is a rather amusing coincidence since I was just talking
-> about this exact bug with Guenter Roeck (added to this thread), who
-> was going to submit a patch to fix it.
-> 
-> Guenter:
-> 
-> Sorry for just randomly pulling you into this seemingly random
-> discussion, but I though this additional context would be helpful to
-> you.
-> 
-I just updated https://bugs.launchpad.net/qemu/+bug/1753309 with my
-observations. As it turns out, the Ethernet interface on older kernels
-(4.9 and older) only works with the current version of qemu. It is
-possible to fix the problem by applying upstream commit 4c8777892e80b
-to v4.9 and older kernels. However, I don't know if the problem is also
-seen with real hardware, or if there is some other problem lurking
-somewhere in qemu.
+Now we have a working '-cpu max', the linux-user-only
+'any' CPU is pretty much the same thing, so implement it
+that way.
 
-Guenter
+For the moment we don't add any of the extra feature bits
+to the system-emulation "max", because we don't set the
+ID register bits we would need to to advertise those
+features as present.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/cpu.c   | 52 +++++++++++++++++++++++++----------------------
+ target/arm/cpu64.c | 59 ++++++++++++++++++++++++++----------------------------
+ 2 files changed, 56 insertions(+), 55 deletions(-)
+
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index e46ddcc613..6068efb8ff 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -965,9 +965,19 @@ static ObjectClass *arm_cpu_class_by_name(const char *cpu_model)
+     ObjectClass *oc;
+     char *typename;
+     char **cpuname;
++    const char *cpunamestr;
+ 
+     cpuname = g_strsplit(cpu_model, ",", 1);
+-    typename = g_strdup_printf(ARM_CPU_TYPE_NAME("%s"), cpuname[0]);
++    cpunamestr = cpuname[0];
++#ifdef CONFIG_USER_ONLY
++    /* For backwards compatibility usermode emulation allows "-cpu any",
++     * which has the same semantics as "-cpu max".
++     */
++    if (!strcmp(cpunamestr, "any")) {
++        cpunamestr = "max";
++    }
++#endif
++    typename = g_strdup_printf(ARM_CPU_TYPE_NAME("%s"), cpunamestr);
+     oc = object_class_by_name(typename);
+     g_strfreev(cpuname);
+     g_free(typename);
+@@ -1711,29 +1721,23 @@ static void arm_max_initfn(Object *obj)
+         kvm_arm_set_cpu_features_from_host(cpu);
+     } else {
+         cortex_a15_initfn(obj);
+-        /* In future we might add feature bits here even if the
+-         * real-world A15 doesn't implement them.
+-         */
+-    }
+-}
+-#endif
+-
+ #ifdef CONFIG_USER_ONLY
+-static void arm_any_initfn(Object *obj)
+-{
+-    ARMCPU *cpu = ARM_CPU(obj);
+-    set_feature(&cpu->env, ARM_FEATURE_V8);
+-    set_feature(&cpu->env, ARM_FEATURE_VFP4);
+-    set_feature(&cpu->env, ARM_FEATURE_NEON);
+-    set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
+-    set_feature(&cpu->env, ARM_FEATURE_V8_AES);
+-    set_feature(&cpu->env, ARM_FEATURE_V8_SHA1);
+-    set_feature(&cpu->env, ARM_FEATURE_V8_SHA256);
+-    set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
+-    set_feature(&cpu->env, ARM_FEATURE_CRC);
+-    set_feature(&cpu->env, ARM_FEATURE_V8_RDM);
+-    set_feature(&cpu->env, ARM_FEATURE_V8_FCMA);
+-    cpu->midr = 0xffffffff;
++        /* We don't set these in system emulation mode for the moment,
++         * since we don't correctly set the ID registers to advertise them,
++         */
++        set_feature(&cpu->env, ARM_FEATURE_V8);
++        set_feature(&cpu->env, ARM_FEATURE_VFP4);
++        set_feature(&cpu->env, ARM_FEATURE_NEON);
++        set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
++        set_feature(&cpu->env, ARM_FEATURE_V8_AES);
++        set_feature(&cpu->env, ARM_FEATURE_V8_SHA1);
++        set_feature(&cpu->env, ARM_FEATURE_V8_SHA256);
++        set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
++        set_feature(&cpu->env, ARM_FEATURE_CRC);
++        set_feature(&cpu->env, ARM_FEATURE_V8_RDM);
++        set_feature(&cpu->env, ARM_FEATURE_V8_FCMA);
++#endif
++    }
+ }
+ #endif
+ 
+@@ -1789,7 +1793,7 @@ static const ARMCPUInfo arm_cpus[] = {
+     { .name = "max",         .initfn = arm_max_initfn },
+ #endif
+ #ifdef CONFIG_USER_ONLY
+-    { .name = "any",         .initfn = arm_any_initfn },
++    { .name = "any",         .initfn = arm_max_initfn },
+ #endif
+ #endif
+     { .name = NULL }
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 9042d3dfd1..3429875787 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -226,38 +226,38 @@ static void aarch64_max_initfn(Object *obj)
+         kvm_arm_set_cpu_features_from_host(cpu);
+     } else {
+         aarch64_a57_initfn(obj);
+-        /* In future we might add feature bits here even if the
+-         * real-world A57 doesn't implement them.
++#ifdef CONFIG_USER_ONLY
++        /* We don't set these in system emulation mode for the moment,
++         * since we don't correctly set the ID registers to advertise them,
++         * and in some cases they're only available in AArch64 and not AArch32,
++         * whereas the architecture requires them to be present in both if
++         * present in either.
+          */
++        set_feature(&cpu->env, ARM_FEATURE_V8);
++        set_feature(&cpu->env, ARM_FEATURE_VFP4);
++        set_feature(&cpu->env, ARM_FEATURE_NEON);
++        set_feature(&cpu->env, ARM_FEATURE_AARCH64);
++        set_feature(&cpu->env, ARM_FEATURE_V8_AES);
++        set_feature(&cpu->env, ARM_FEATURE_V8_SHA1);
++        set_feature(&cpu->env, ARM_FEATURE_V8_SHA256);
++        set_feature(&cpu->env, ARM_FEATURE_V8_SHA512);
++        set_feature(&cpu->env, ARM_FEATURE_V8_SHA3);
++        set_feature(&cpu->env, ARM_FEATURE_V8_SM3);
++        set_feature(&cpu->env, ARM_FEATURE_V8_SM4);
++        set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
++        set_feature(&cpu->env, ARM_FEATURE_CRC);
++        set_feature(&cpu->env, ARM_FEATURE_V8_RDM);
++        set_feature(&cpu->env, ARM_FEATURE_V8_FP16);
++        set_feature(&cpu->env, ARM_FEATURE_V8_FCMA);
++        /* For usermode -cpu max we can use a larger and more efficient DCZ
++         * blocksize since we don't have to follow what the hardware does.
++         */
++        cpu->ctr = 0x80038003; /* 32 byte I and D cacheline size, VIPT icache */
++        cpu->dcz_blocksize = 7; /*  512 bytes */
++#endif
+     }
+ }
+ 
+-#ifdef CONFIG_USER_ONLY
+-static void aarch64_any_initfn(Object *obj)
+-{
+-    ARMCPU *cpu = ARM_CPU(obj);
+-
+-    set_feature(&cpu->env, ARM_FEATURE_V8);
+-    set_feature(&cpu->env, ARM_FEATURE_VFP4);
+-    set_feature(&cpu->env, ARM_FEATURE_NEON);
+-    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+-    set_feature(&cpu->env, ARM_FEATURE_V8_AES);
+-    set_feature(&cpu->env, ARM_FEATURE_V8_SHA1);
+-    set_feature(&cpu->env, ARM_FEATURE_V8_SHA256);
+-    set_feature(&cpu->env, ARM_FEATURE_V8_SHA512);
+-    set_feature(&cpu->env, ARM_FEATURE_V8_SHA3);
+-    set_feature(&cpu->env, ARM_FEATURE_V8_SM3);
+-    set_feature(&cpu->env, ARM_FEATURE_V8_SM4);
+-    set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
+-    set_feature(&cpu->env, ARM_FEATURE_CRC);
+-    set_feature(&cpu->env, ARM_FEATURE_V8_RDM);
+-    set_feature(&cpu->env, ARM_FEATURE_V8_FP16);
+-    set_feature(&cpu->env, ARM_FEATURE_V8_FCMA);
+-    cpu->ctr = 0x80038003; /* 32 byte I and D cacheline size, VIPT icache */
+-    cpu->dcz_blocksize = 7; /*  512 bytes */
+-}
+-#endif
+-
+ typedef struct ARMCPUInfo {
+     const char *name;
+     void (*initfn)(Object *obj);
+@@ -268,9 +268,6 @@ static const ARMCPUInfo aarch64_cpus[] = {
+     { .name = "cortex-a57",         .initfn = aarch64_a57_initfn },
+     { .name = "cortex-a53",         .initfn = aarch64_a53_initfn },
+     { .name = "max",                .initfn = aarch64_max_initfn },
+-#ifdef CONFIG_USER_ONLY
+-    { .name = "any",         .initfn = aarch64_any_initfn },
+-#endif
+     { .name = NULL }
+ };
+ 
+-- 
+2.16.2

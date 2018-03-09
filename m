@@ -1,119 +1,219 @@
-Received: by 10.28.91.67 with SMTP id p64csp1200999wmb;
-        Thu, 8 Mar 2018 05:06:33 -0800 (PST)
-X-Google-Smtp-Source: AG47ELvocb7hJ935bbR5NbJXOWLamlTYJrL/4HgH3e1jnIh28lBZ3SFRZIJ8sKLqurnkbKyHhX1W
-X-Received: by 10.25.228.18 with SMTP id b18mr15088802lfh.61.1520514393062;
-        Thu, 08 Mar 2018 05:06:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520514393; cv=none;
-        d=google.com; s=arc-20160816;
-        b=I7n0+OjjGaLpxrqm3M7PG+FWaGaLiQd/2T4jfnyG3+4j0NVI8legStFiXZ+MgITCRr
-         aeKpDhFiYRekAKM9uDVJjpy4YG0ops2RC4BapJ/lbs6nFYpqb5kwx7dHf96QlgDOEi7a
-         h19fuRYxP2zOUqO76m8h1RrFAhRhpMlpua5PJnUAASMyL2w1655qBKueBOxfsKk52MhC
-         4NYqC6Yo7zcivIRW7qj+Jv2zmzhnah7bUtbzPGomHl/WJR9hKVnwZ36mxfN2H0KvLL7B
-         J001HTxskWUua0kII2TjtLqnYWlyY2Hmp1a6x4jab/ItbK522i9XnuIdcgvbK8ldd3Pk
-         i/EQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :arc-authentication-results;
-        bh=swZCpyIxmNtZupe/BWVZaMk/478ba7WYRGLlZWC5elM=;
-        b=Q0xlmzruuvqVS7tJ32+/t5VmneuEuwhjgabsbsWjzN4/HFoaGWIQhJUoyNAeCIjfVh
-         hDSrypTGi+UAkW8ixxQQAmyIhrL4g14jsO7m0yATbs+7lk/gk25xb0hSKSRrIDAmsUE4
-         VictFp8Xw0jhl+ScVBrWZO4pRu9jb+9gV6Xm7wpUhlxg8kcbLoN/4C6KwPHKOe8XIrEE
-         5ncLUnSBax1LZbgbCSK0fC8fAdNB7glZ6ZSJTAccw5UJBiJ/vsh7N1CYrYKIduTYuOWc
-         HAaBiP/wlt5HzxqG3EonMmurBqi6alfRcCB6KPhEsk1IvSxhHhUimj66qtUClUwRz+0d
-         Kk/w==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <pm215@archaic.org.uk>
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by mx.google.com with ESMTPS id o11si8121864lfi.411.2018.03.08.05.06.32
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Mar 2018 05:06:33 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1etvFg-0005zj-9z; Thu, 08 Mar 2018 13:06:32 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: patches@linaro.org,
-	Igor Mammedov <imammedo@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v3 6/6] hw/arm/virt: Support -machine gic-version=max
-Date: Thu,  8 Mar 2018 13:06:26 +0000
-Message-Id: <20180308130626.12393-7-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.16.2
-In-Reply-To: <20180308130626.12393-1-peter.maydell@linaro.org>
-References: <20180308130626.12393-1-peter.maydell@linaro.org>
-X-TUID: HeL0YPJypn53
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id 55sm1138974wrz.6.2018.03.09.05.45.47
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 09 Mar 2018 05:45:47 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id 442E13E009E;
+	Fri,  9 Mar 2018 13:45:47 +0000 (GMT)
+References: <20180308130626.12393-1-peter.maydell@linaro.org> <20180308130626.12393-5-peter.maydell@linaro.org>
+User-agent: mu4e 1.1.0; emacs 26.0.91
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org, Igor
+ Mammedov <imammedo@redhat.com>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <f4bug@amsat.org>
+Subject: Re: [PATCH v3 4/6] target/arm: Make 'any' CPU just an alias for 'max'
+In-reply-to: <20180308130626.12393-5-peter.maydell@linaro.org>
+Date: Fri, 09 Mar 2018 13:45:47 +0000
+Message-ID: <874llpl5v8.fsf@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: JbQhr6GJ6TPF
 
-Add support for passing 'max' to -machine gic-version. By analogy
-with the -cpu max option, this picks the "best available" GIC version
-whether you're using KVM or TCG, so it behaves like 'host' when
-using KVM, and gives you GICv3 when using TCG.
 
-Also like '-cpu host', using -machine gic-version=max' means there
-is no guarantee of migration compatibility between QEMU versions;
-in future 'max' might mean '4'.
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/arm/virt.c | 29 +++++++++++++++++++----------
- 1 file changed, 19 insertions(+), 10 deletions(-)
+> Now we have a working '-cpu max', the linux-user-only
+> 'any' CPU is pretty much the same thing, so implement it
+> that way.
+>
+> For the moment we don't add any of the extra feature bits
+> to the system-emulation "max", because we don't set the
+> ID register bits we would need to to advertise those
+> features as present.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index cda4b83586..2c07245047 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1207,16 +1207,23 @@ static void machvirt_init(MachineState *machine)
-     /* We can probe only here because during property set
-      * KVM is not available yet
-      */
--    if (!vms->gic_version) {
-+    if (vms->gic_version <= 0) {
-+        /* "host" or "max" */
-         if (!kvm_enabled()) {
--            error_report("gic-version=host requires KVM");
--            exit(1);
--        }
--
--        vms->gic_version = kvm_arm_vgic_probe();
--        if (!vms->gic_version) {
--            error_report("Unable to determine GIC version supported by host");
--            exit(1);
-+            if (vms->gic_version == 0) {
-+                error_report("gic-version=host requires KVM");
-+                exit(1);
-+            } else {
-+                /* "max": currently means 3 for TCG */
-+                vms->gic_version = 3;
-+            }
-+        } else {
-+            vms->gic_version = kvm_arm_vgic_probe();
-+            if (!vms->gic_version) {
-+                error_report(
-+                    "Unable to determine GIC version supported by host");
-+                exit(1);
-+            }
-         }
-     }
- 
-@@ -1480,9 +1487,11 @@ static void virt_set_gic_version(Object *obj, const char *value, Error **errp)
-         vms->gic_version = 2;
-     } else if (!strcmp(value, "host")) {
-         vms->gic_version = 0; /* Will probe later */
-+    } else if (!strcmp(value, "max")) {
-+        vms->gic_version = -1; /* Will probe later */
-     } else {
-         error_setg(errp, "Invalid gic-version value");
--        error_append_hint(errp, "Valid values are 3, 2, host.\n");
-+        error_append_hint(errp, "Valid values are 3, 2, host, max.\n");
-     }
- }
- 
--- 
-2.16.2
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+> ---
+>  target/arm/cpu.c   | 52 +++++++++++++++++++++++++----------------------
+>  target/arm/cpu64.c | 59 ++++++++++++++++++++++++++----------------------=
+------
+>  2 files changed, 56 insertions(+), 55 deletions(-)
+>
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index e46ddcc613..6068efb8ff 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -965,9 +965,19 @@ static ObjectClass *arm_cpu_class_by_name(const char=
+ *cpu_model)
+>      ObjectClass *oc;
+>      char *typename;
+>      char **cpuname;
+> +    const char *cpunamestr;
+>
+>      cpuname =3D g_strsplit(cpu_model, ",", 1);
+> -    typename =3D g_strdup_printf(ARM_CPU_TYPE_NAME("%s"), cpuname[0]);
+> +    cpunamestr =3D cpuname[0];
+> +#ifdef CONFIG_USER_ONLY
+> +    /* For backwards compatibility usermode emulation allows "-cpu any",
+> +     * which has the same semantics as "-cpu max".
+> +     */
+> +    if (!strcmp(cpunamestr, "any")) {
+> +        cpunamestr =3D "max";
+> +    }
+> +#endif
+> +    typename =3D g_strdup_printf(ARM_CPU_TYPE_NAME("%s"), cpunamestr);
+>      oc =3D object_class_by_name(typename);
+>      g_strfreev(cpuname);
+>      g_free(typename);
+> @@ -1711,29 +1721,23 @@ static void arm_max_initfn(Object *obj)
+>          kvm_arm_set_cpu_features_from_host(cpu);
+>      } else {
+>          cortex_a15_initfn(obj);
+> -        /* In future we might add feature bits here even if the
+> -         * real-world A15 doesn't implement them.
+> -         */
+> -    }
+> -}
+> -#endif
+> -
+>  #ifdef CONFIG_USER_ONLY
+> -static void arm_any_initfn(Object *obj)
+> -{
+> -    ARMCPU *cpu =3D ARM_CPU(obj);
+> -    set_feature(&cpu->env, ARM_FEATURE_V8);
+> -    set_feature(&cpu->env, ARM_FEATURE_VFP4);
+> -    set_feature(&cpu->env, ARM_FEATURE_NEON);
+> -    set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
+> -    set_feature(&cpu->env, ARM_FEATURE_V8_AES);
+> -    set_feature(&cpu->env, ARM_FEATURE_V8_SHA1);
+> -    set_feature(&cpu->env, ARM_FEATURE_V8_SHA256);
+> -    set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
+> -    set_feature(&cpu->env, ARM_FEATURE_CRC);
+> -    set_feature(&cpu->env, ARM_FEATURE_V8_RDM);
+> -    set_feature(&cpu->env, ARM_FEATURE_V8_FCMA);
+> -    cpu->midr =3D 0xffffffff;
+> +        /* We don't set these in system emulation mode for the moment,
+> +         * since we don't correctly set the ID registers to advertise th=
+em,
+> +         */
+> +        set_feature(&cpu->env, ARM_FEATURE_V8);
+> +        set_feature(&cpu->env, ARM_FEATURE_VFP4);
+> +        set_feature(&cpu->env, ARM_FEATURE_NEON);
+> +        set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
+> +        set_feature(&cpu->env, ARM_FEATURE_V8_AES);
+> +        set_feature(&cpu->env, ARM_FEATURE_V8_SHA1);
+> +        set_feature(&cpu->env, ARM_FEATURE_V8_SHA256);
+> +        set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
+> +        set_feature(&cpu->env, ARM_FEATURE_CRC);
+> +        set_feature(&cpu->env, ARM_FEATURE_V8_RDM);
+> +        set_feature(&cpu->env, ARM_FEATURE_V8_FCMA);
+> +#endif
+> +    }
+>  }
+>  #endif
+>
+> @@ -1789,7 +1793,7 @@ static const ARMCPUInfo arm_cpus[] =3D {
+>      { .name =3D "max",         .initfn =3D arm_max_initfn },
+>  #endif
+>  #ifdef CONFIG_USER_ONLY
+> -    { .name =3D "any",         .initfn =3D arm_any_initfn },
+> +    { .name =3D "any",         .initfn =3D arm_max_initfn },
+>  #endif
+>  #endif
+>      { .name =3D NULL }
+> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> index 9042d3dfd1..3429875787 100644
+> --- a/target/arm/cpu64.c
+> +++ b/target/arm/cpu64.c
+> @@ -226,38 +226,38 @@ static void aarch64_max_initfn(Object *obj)
+>          kvm_arm_set_cpu_features_from_host(cpu);
+>      } else {
+>          aarch64_a57_initfn(obj);
+> -        /* In future we might add feature bits here even if the
+> -         * real-world A57 doesn't implement them.
+> +#ifdef CONFIG_USER_ONLY
+> +        /* We don't set these in system emulation mode for the moment,
+> +         * since we don't correctly set the ID registers to advertise th=
+em,
+> +         * and in some cases they're only available in AArch64 and not A=
+Arch32,
+> +         * whereas the architecture requires them to be present in both =
+if
+> +         * present in either.
+>           */
+> +        set_feature(&cpu->env, ARM_FEATURE_V8);
+> +        set_feature(&cpu->env, ARM_FEATURE_VFP4);
+> +        set_feature(&cpu->env, ARM_FEATURE_NEON);
+> +        set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+> +        set_feature(&cpu->env, ARM_FEATURE_V8_AES);
+> +        set_feature(&cpu->env, ARM_FEATURE_V8_SHA1);
+> +        set_feature(&cpu->env, ARM_FEATURE_V8_SHA256);
+> +        set_feature(&cpu->env, ARM_FEATURE_V8_SHA512);
+> +        set_feature(&cpu->env, ARM_FEATURE_V8_SHA3);
+> +        set_feature(&cpu->env, ARM_FEATURE_V8_SM3);
+> +        set_feature(&cpu->env, ARM_FEATURE_V8_SM4);
+> +        set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
+> +        set_feature(&cpu->env, ARM_FEATURE_CRC);
+> +        set_feature(&cpu->env, ARM_FEATURE_V8_RDM);
+> +        set_feature(&cpu->env, ARM_FEATURE_V8_FP16);
+> +        set_feature(&cpu->env, ARM_FEATURE_V8_FCMA);
+> +        /* For usermode -cpu max we can use a larger and more efficient =
+DCZ
+> +         * blocksize since we don't have to follow what the hardware doe=
+s.
+> +         */
+> +        cpu->ctr =3D 0x80038003; /* 32 byte I and D cacheline size, VIPT=
+ icache */
+> +        cpu->dcz_blocksize =3D 7; /*  512 bytes */
+> +#endif
+>      }
+>  }
+>
+> -#ifdef CONFIG_USER_ONLY
+> -static void aarch64_any_initfn(Object *obj)
+> -{
+> -    ARMCPU *cpu =3D ARM_CPU(obj);
+> -
+> -    set_feature(&cpu->env, ARM_FEATURE_V8);
+> -    set_feature(&cpu->env, ARM_FEATURE_VFP4);
+> -    set_feature(&cpu->env, ARM_FEATURE_NEON);
+> -    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+> -    set_feature(&cpu->env, ARM_FEATURE_V8_AES);
+> -    set_feature(&cpu->env, ARM_FEATURE_V8_SHA1);
+> -    set_feature(&cpu->env, ARM_FEATURE_V8_SHA256);
+> -    set_feature(&cpu->env, ARM_FEATURE_V8_SHA512);
+> -    set_feature(&cpu->env, ARM_FEATURE_V8_SHA3);
+> -    set_feature(&cpu->env, ARM_FEATURE_V8_SM3);
+> -    set_feature(&cpu->env, ARM_FEATURE_V8_SM4);
+> -    set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
+> -    set_feature(&cpu->env, ARM_FEATURE_CRC);
+> -    set_feature(&cpu->env, ARM_FEATURE_V8_RDM);
+> -    set_feature(&cpu->env, ARM_FEATURE_V8_FP16);
+> -    set_feature(&cpu->env, ARM_FEATURE_V8_FCMA);
+> -    cpu->ctr =3D 0x80038003; /* 32 byte I and D cacheline size, VIPT ica=
+che */
+> -    cpu->dcz_blocksize =3D 7; /*  512 bytes */
+> -}
+> -#endif
+> -
+>  typedef struct ARMCPUInfo {
+>      const char *name;
+>      void (*initfn)(Object *obj);
+> @@ -268,9 +268,6 @@ static const ARMCPUInfo aarch64_cpus[] =3D {
+>      { .name =3D "cortex-a57",         .initfn =3D aarch64_a57_initfn },
+>      { .name =3D "cortex-a53",         .initfn =3D aarch64_a53_initfn },
+>      { .name =3D "max",                .initfn =3D aarch64_max_initfn },
+> -#ifdef CONFIG_USER_ONLY
+> -    { .name =3D "any",         .initfn =3D aarch64_any_initfn },
+> -#endif
+>      { .name =3D NULL }
+>  };
+
+
+--
+Alex Benn=C3=A9e

@@ -1,101 +1,93 @@
-Received: by 10.28.91.67 with SMTP id p64csp871133wmb;
-        Mon, 12 Mar 2018 08:06:36 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELsNilunuGzdiDxigzZ+5a/NGQOC4OqrDYXclX0pIO7fVQKOl3S8u7y+VAgMh7it6iE2qiEf
-X-Received: by 10.129.208.12 with SMTP id v12mr4781695ywi.304.1520867196630;
-        Mon, 12 Mar 2018 08:06:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1520867196; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp883243wmb;
+        Mon, 12 Mar 2018 08:16:56 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELvMbvDyuMhOo++MYD7/2X/D7t8fgAFQxE9os3IGogrIrzfEYSRTHC39MRoahoVpLgfobd4g
+X-Received: by 10.129.73.133 with SMTP id w127mr4772718ywa.320.1520867816638;
+        Mon, 12 Mar 2018 08:16:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1520867816; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZgVXP+6upzJGxNO7oMADJqV28SgtnRI2YV3D9ucYFrH6hf3uWePcWQN9UKoYjy82rs
-         W4toknLJ6WTya6FYdOLo7QQWMUcYUAEuplPaAn2swQ4Xu7jTR/OWxNsIvaJbc4XLx9D7
-         FCxuKpMiNtJHBI0BxnOnfER90B49M/XKOGUuI0hHS1BryRjZ+M+jjvfNWDn2jFPV4rEe
-         xOh+mZfpsmqGJmQUCTt4JjPwZNOWdYjMo8M8DeM253Ax1tIxOYVbVz0ReHjUsKGgPyGh
-         Dt0848Rr1ZZ+2K4Tm1VNGxPDQYJorXp5GGvSDX6aTRTxsGU+TkfYcNF88JH5T16PhH+K
-         NwFg==
+        b=XlUVemp9xjrU5GPhNB6qfyThsnlJhp/HeECuJJHtmIXyJ18YAVfN9i5aCckLE8ciL4
+         Ux16HwbrHDcnTZRGgRzx+k4JIX/69z8Gq7hqFiFE/wm/erG6N437jPzoVePbkkfC+tfW
+         Gr//cB6a4lhg5sELm7nS/O7aMiL/fAiokPtf8sVAzGgviUhVQpGrSUCXDcY670dKk2pE
+         II/fpR6o2SaOjRg6tjB6eF6yADpvFJJJCkP6+0ixqdLRCbnWIMBQC3ZTuU3mOyYBADNf
+         wppsQbndJrKZAp6Vyi2JVHQ0v/eSoMs0e65PCmHyKlL7BO6e1BzCu0dwkfcgHJwg/Wzv
+         SitQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=awMELAwtfHR73ARUOzoYZm9A+W2xnmdSfFGBb5AOALs=;
-        b=kFZAv1YWShXW+CLIlTeVtLmQ5tjxaVfPiATupstNYjwYf7wzhcA37jGylv26W73g14
-         znNmSvPVH5OZHSulgwh7b01tgwwONQ68P0DIBSnDnwPxkGVeEFUW2NIRQfh/DQzHGwLh
-         DESAys3gk1kjoTI05LDob00E/GJW/6IT9P5+4MXxz+3HELcw1FwHlcfrQZrneQusMJhI
-         7dU2gjAGWC0TglxMSboOXmvs6xE/RHD/2l70a5BsVLP/3KFMBVwxVyPzKkM7+lTKwov5
-         JOiqvRjM+QbLy8RCwtsAMeDen7nbXSreklWMoNS4cM8acR6YgX2DknU9el0Cugi+vQPP
-         SSlQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=7cf+Gr97mZXBfKNDnTxIqYJChe7Ue69HSaog+8gm83Q=;
+        b=X1OdlbaIq5UdvcARxVouJdoSV6ZG7qARZ7qR29dFuMW7QJq/0FQVJQVmEzS3Km1FVV
+         BVSnjOPPFnHHvp4Y3wLsohSnh1eLO5gQuya7eTm5rpAAae573QWgXnTErwtONNoHAQ0N
+         I8MFGBgwWjsSdZj7VcD1WmbNFyIDQqU34ZQ+kHuLOPhSDLPO+JY1WmzzjsdGY7bOIhm3
+         wgCUIISAX7WSa4dF0Zpu9asCOFwMuSFtzBxxNV6TJRwmyl7PQRxWIP0oEhyC3McfmNqK
+         tCsM8zLQtm99vFj5RfBjTaXKukpIRYwhhvSo0qEBMaQwMr/hLDU/B1/hu+3ETQjSBx53
+         XDLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=VtQr6BLR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u201si1249828ywf.33.2018.03.12.08.06.36
+        by mx.google.com with ESMTPS id 206si970651ywn.399.2018.03.12.08.16.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 12 Mar 2018 08:06:36 -0700 (PDT)
+        Mon, 12 Mar 2018 08:16:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=VtQr6BLR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59397 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59489 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1evP24-0007xu-0u
-	for alex.bennee@linaro.org; Mon, 12 Mar 2018 11:06:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48681)
+	id 1evPC3-0007cy-Us
+	for alex.bennee@linaro.org; Mon, 12 Mar 2018 11:16:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51359)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1evP1p-0007v6-3p
-	for qemu-arm@nongnu.org; Mon, 12 Mar 2018 11:06:23 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1evPBw-0007cp-Vf
+	for qemu-arm@nongnu.org; Mon, 12 Mar 2018 11:16:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1evP1h-0005vj-Ef
-	for qemu-arm@nongnu.org; Mon, 12 Mar 2018 11:06:21 -0400
-Received: from mail-ot0-x241.google.com ([2607:f8b0:4003:c0f::241]:42574)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1evP1h-0005v3-8m
-	for qemu-arm@nongnu.org; Mon, 12 Mar 2018 11:06:13 -0400
-Received: by mail-ot0-x241.google.com with SMTP id l5so15546413otf.9
-	for <qemu-arm@nongnu.org>; Mon, 12 Mar 2018 08:06:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=awMELAwtfHR73ARUOzoYZm9A+W2xnmdSfFGBb5AOALs=;
-	b=VtQr6BLRhzbD9ptadyY18P60HMIaxC9h00Z9j2jZh7CMzarAnIYJI+IVycNIJmQ3YI
-	+bB4eQO2qWFWGTrMf+xT7YQOkDTNhXCQnL6vUs4g7axXcZK6YrJi1jq34mNBJGGs6d91
-	+k9YMI9LTDcojsFNPTwAaxc+gXOb+7hV6A8lA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=awMELAwtfHR73ARUOzoYZm9A+W2xnmdSfFGBb5AOALs=;
-	b=Uh5Yp099KNeu6nRqJw8nUZP+xm2RStxyfVSMslYmLfY2ID/d3WLXne/DY2P6wOpDf9
-	zFa5BFHxA7s0w0/X9LdP2tqchCfeBz6Lp9/91aS5gfz++i9mScZA4U510K0pjD2odxwX
-	uDv1Wj7CSX+2rib7AbecZnLA276Zn/nf4Lv1ceNwG5MUQHqEPjgGmMNH6GdWyhUvFkTB
-	um1/EiBZPl1gZeFs1/J7Du18Fc/Mv+Z1BkVBQUPoRB0BnILRxGIPj+h4/Qz6rqOV4hvp
-	m4+dl1RPS98jUksjQJFOvZtFLCCqkY+Bq2GZKS7cPgLIlQXwTI9I7JfCDgd93gacliyf
-	JMqQ==
-X-Gm-Message-State: AElRT7FnTAEzanpzguqff/oltqdDOzxm9w/THDvOBF2iILElF5HPg8W8
-	sT2He/uUh5utJjrOA6c5a3lqJsPm1RgiQeqhfbjHqQ==
-X-Received: by 10.157.23.34 with SMTP id i34mr6069955ota.210.1520867172548;
-	Mon, 12 Mar 2018 08:06:12 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:2164:0:0:0:0:0 with HTTP; Mon, 12 Mar 2018 08:05:52
-	-0700 (PDT)
-In-Reply-To: <f22e252d-463e-78ed-f405-6164b0c8d566@redhat.com>
+	(envelope-from <eric.auger@redhat.com>) id 1evPBs-00011r-US
+	for qemu-arm@nongnu.org; Mon, 12 Mar 2018 11:16:48 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:33724 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1evPBs-00010L-MW; Mon, 12 Mar 2018 11:16:44 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 767D2C33F;
+	Mon, 12 Mar 2018 15:16:40 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-135.ams2.redhat.com
+	[10.36.116.135])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 512257C53;
+	Mon, 12 Mar 2018 15:16:27 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <1518893216-9983-1-git-send-email-eric.auger@redhat.com>
-	<1518893216-9983-13-git-send-email-eric.auger@redhat.com>
-	<CAFEAcA-BZ=wcpEKVQnX0dBh7tZVPNfHRm1E39DYEMZ=UStEamA@mail.gmail.com>
-	<f22e252d-463e-78ed-f405-6164b0c8d566@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 12 Mar 2018 15:05:52 +0000
-Message-ID: <CAFEAcA8W66ZorjHp_C4-DvZhn2V+sLyAecRhv4pJ833BriWv-Q@mail.gmail.com>
-To: Auger Eric <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::241
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v9 12/14] hw/arm/virt: Add
- SMMUv3 to the virt board
+	<1518893216-9983-12-git-send-email-eric.auger@redhat.com>
+	<CAFEAcA_9cmK9gebqE9997fzhTzKT6Ky9q4jn=fxwziopDyK9Ew@mail.gmail.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <cc6029a1-c177-ee8c-d09b-0ed2af81c897@redhat.com>
+Date: Mon, 12 Mar 2018 16:16:25 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA_9cmK9gebqE9997fzhTzKT6Ky9q4jn=fxwziopDyK9Ew@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.1]);
+	Mon, 12 Mar 2018 15:16:40 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
+	Mon, 12 Mar 2018 15:16:40 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [PATCH v9 11/14] target/arm/kvm: Translate the MSI
+ doorbell in kvm_arch_fixup_msi_route
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,30 +104,111 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
 	Tomasz Nowicki <tn@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
 	Peter Xu <peterx@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
 	qemu-arm <qemu-arm@nongnu.org>,
-	Prem Mallappa <prem.mallappa@gmail.com>, linuc.decode@gmail.com,
-	Bharat Bhushan <bharat.bhushan@nxp.com>,
 	Christoffer Dall <christoffer.dall@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, linuc.decode@gmail.com,
+	Bharat Bhushan <bharat.bhushan@nxp.com>,
+	Prem Mallappa <prem.mallappa@gmail.com>,
 	Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5pV7aLBHxoTl
+X-TUID: QlykVvpjtvro
 
-On 12 March 2018 at 15:01, Auger Eric <eric.auger@redhat.com> wrote:
-> Hi Peter,
->
-> On 12/03/18 13:46, Peter Maydell wrote:
->> On 17 February 2018 at 18:46, Eric Auger <eric.auger@redhat.com> wrote:
->>> +    qemu_fdt_setprop(vms->fdt, node, "dma-coherent", NULL, 0);
+Hi Peter,
+On 12/03/18 12:59, Peter Maydell wrote:
+> On 17 February 2018 at 18:46, Eric Auger <eric.auger@redhat.com> wrote:
+>> In case the MSI is translated by an IOMMU we need to fixup the
+>> MSI route with the translated address.
 >>
->> Is this definitely the right setting for dma-coherent? My (possibly
->> naive) thought is that for an emulated SMMU our page-table walks are
->> going to be coherent with the CPU's view.
->
-> Indeed we add the dma-capable property to make the DMA ops of the SMMU
-> cache coherent with the CPU. We pass NULL/O since there is just
-> dma-coherent in the dt property. What am I missing?
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>
+>> ---
+>>
+>> v5 -> v6:
+>> - use IOMMUMemoryRegionClass API
+>>
+>> It is still unclear to me if we need to register an IOMMUNotifier
+>> to handle any change in the MSI doorbell which would occur behind
+>> the scene and would not lead to any call to kvm_arch_fixup_msi_route().
+> 
+> Paolo, do you know the answer to this question ?
+> 
+>> ---
+>>  target/arm/kvm.c        | 27 +++++++++++++++++++++++++++
+>>  target/arm/trace-events |  3 +++
+>>  2 files changed, 30 insertions(+)
+>>
+>> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+>> index 1219d00..9f5976a 100644
+>> --- a/target/arm/kvm.c
+>> +++ b/target/arm/kvm.c
+>> @@ -20,8 +20,13 @@
+>>  #include "sysemu/kvm.h"
+>>  #include "kvm_arm.h"
+>>  #include "cpu.h"
+>> +#include "trace.h"
+>>  #include "internals.h"
+>>  #include "hw/arm/arm.h"
+>> +#include "hw/pci/pci.h"
+>> +#include "hw/pci/msi.h"
+>> +#include "hw/arm/smmu-common.h"
+>> +#include "hw/arm/smmuv3.h"
+>>  #include "exec/memattrs.h"
+>>  #include "exec/address-spaces.h"
+>>  #include "hw/boards.h"
+>> @@ -666,6 +671,28 @@ int kvm_arm_vgic_probe(void)
+>>  int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
+>>                               uint64_t address, uint32_t data, PCIDevice *dev)
+>>  {
+>> +    AddressSpace *as = pci_device_iommu_address_space(dev);
+>> +    IOMMUMemoryRegionClass *imrc;
+>> +    IOMMUTLBEntry entry;
+>> +    SMMUDevice *sdev;
+>> +
+>> +    if (as == &address_space_memory) {
+>> +        return 0;
+>> +    }
+>> +
+>> +    /* MSI doorbell address is translated by an IOMMU */
+>> +    sdev = container_of(as, SMMUDevice, as);
+>> +    imrc = IOMMU_MEMORY_REGION_GET_CLASS(&sdev->iommu);
+>> +
+>> +    entry = imrc->translate(&sdev->iommu, address, IOMMU_WO);
+>> +
+>> +    route->u.msi.address_lo = entry.translated_addr;
+>> +    route->u.msi.address_hi = entry.translated_addr >> 32;
+>> +
+>> +    trace_kvm_arm_fixup_msi_route(address, sdev->devfn,
+>> +                                  sdev->iommu.parent_obj.name,
+>> +                                  entry.translated_addr);
+>> +
+>>      return 0;
+>>  }
+> 
+> It seems a bit odd that:
+>  * the code for arm for "PCI devices behind IOMMU need to have
+>    the MSI doorbell writes go through the IOMMU" looks rather
+>    different from the code for x86 for the same thing
+ARM SMMU translates MSIs whereas Intel/AMD IOMMU do not translate them.
+Hence this implementation
+>  * the code here needs to know specifically that this is an SMMU
+>    and not some other kind of IOMMU
+Yes when introducing virtio-iommu we will need to get this fixed. We
+need a way to retrieve the iommu mr from the as. I will work on this
+concurrently.
+> 
+> I would have expected this to be more generic-to-all-IOMMU
+> APIs and maybe even implemented in the generic KVM support code...
+> 
+> The x86 code seems to be similarly x86-specific though, so
+> this is more of a "perhaps there is a cleanup opportunity here"
+> observation I guess.
 
-My mistake, I thought this was the equivalent of "dma-coherent = 0;".
+OK
 
-thanks
--- PMM
+Thanks
+
+Eric
+> 
+> thanks
+> -- PMM
+> 

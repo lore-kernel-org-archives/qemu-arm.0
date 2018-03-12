@@ -1,87 +1,103 @@
-Received: by 10.28.91.67 with SMTP id p64csp598701wmb;
-        Mon, 12 Mar 2018 03:35:46 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELs+tY5S0viCauzGDFiDLY0di860EP+dSwS7PGwoeZHHMMcWwZqnrMZ1x2qF3iKImqtQoIVD
-X-Received: by 10.13.239.70 with SMTP id y67mr4252944ywe.506.1520850946770;
-        Mon, 12 Mar 2018 03:35:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1520850946; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp628836wmb;
+        Mon, 12 Mar 2018 04:10:34 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELv6QmRSru9wcXoBLlDRmUjW7To5qjlPO8BFlzVyDCBbUbpVH6gPZoYCmDaIAc1B0EIDMQeI
+X-Received: by 2002:a25:810d:: with SMTP id o13-v6mr4272085ybk.340.1520853034822;
+        Mon, 12 Mar 2018 04:10:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1520853034; cv=none;
         d=google.com; s=arc-20160816;
-        b=XqmhKkCNzc1+PWAsTziU9HNSjx5TtftVI7e9efCBC0F14bb2GGmJQDDS5xkjIsXYrG
-         RjxsOieLeYAT4aEqlgsl4qIA76qWKRGTd9HnAqCaKwg88KF5ZmA/MWq469ZI5a4zrKkK
-         A7ulqwZbkycdZfsf/6/V5ETf0T7jl88FuY1Of1xdw9g8TS1nITTQQ94K2YbvBwWa6hDh
-         DmL71rE2Bg5zVxM4GHO3gRq+nhnfv4BZYVK6sZgWK9hgS+rHN18DTVL7a9cL8M2fmHpL
-         He7jX2DKpxaYvmQRQ7Sc8p7aJt185Rg8QzODTGXDRxPMF+dFt/3Vn61wFpgbhiVHos7P
-         Izyw==
+        b=SR0ZtYwuCzUksT1sCg7PZ41UuEu8J4I5m1KuwMQ6uqlzHEGTQTq/SfpQtKCoZG1hzq
+         u0c3uJdW7+Yq7c7vArWlB0XlyPotVfah1PYK2wnZCSG5E1bNsECL9d2S9S96GwPQrOAb
+         10twQC+oXLgxBkUNqHIIXjL7Nno4mjFCZN4cZQ3cIcXjNx01tf+y7uU0WQ4p4l22LN4s
+         V3eoa/fILTAPs5uZKytRxevlAVXouDIyHsVT51ZJDTVaBfhPx9uYtzuye+IdubpTfIub
+         9nmHwhL+TsTUdbg4H951gqmuCJFaSsFQtIRtted3wkwFzZpm9WLaLOzUuloQqRDmFMGv
+         BNIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=NJDSU+CRlqGhycqDDrYXWdWGtmAcbg7ApBOQ0OAeWhA=;
-        b=FqAUGkkSilOQw9QNM/ASpHDZ6qyHuqn/AfCYvNAXWYeDjQf7I184FH0L0oh8POUZcg
-         5/Mhzwfz/aXUQj90JCWQWgaXkZxXbfrYwogJa2v5nd1WK/0JGcJdMWD8SlyX9f6u+YEH
-         iRWCw9AiM2x6pTHuL4R0xrIRlKEnPnxWBhdi/jgJQZGqxXapfK/XAa9vYWtmSltK7lkw
-         OsDWHWYt24UZl4rhz9hcrtV7+sm5vlvdsR3fltjHYUnFcRHL7PYzn3rms6ZiTHuweVrI
-         7qxPh+xGZbIs0SHma/OqQKHeolExnyeD5SjEAlULnhaUNWJ0grTyV7tCzjCzyZs1xSQQ
-         qFHQ==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=TGp1GeASNBnWgK9RIqhBKGV6aAt0/M4qIXXfVyKtxl8=;
+        b=qvAi6BRvTfZ4/tkm5p0/tLeoLSRTRtu13Vk4CQqyzaYpNsHbblT0Bi3zsAKyYlxv4Y
+         2SZ3wxkCwboUfbYbzn3c/KrD4MAi9FxQF81543HsWMXvuQ9RGvpqEtrSYEtqG/bjE/iX
+         E8i690NSLbzJVMRETM7ji2Zg+TOmzx4gVox/z6GprdI3+BERnpcTDrJqDZdEdpiEitqN
+         3Pwj30y7asWUymkrhrGycupMCBshSGF6Znr0tXLuSTDz2eI/wBAdrTiKw5TYexzYoJbi
+         9boIAK0YJRiNMOXH42NYuHVdJjrOblCqir0TU6nUGij0rEFpLrtH1nnLtlp1Rt29PX0Z
+         xfZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@linaro.org header.s=google header.b=aE4Dq/iQ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 130si1182066yws.788.2018.03.12.03.35.46
+        by mx.google.com with ESMTPS id m8si145615ywi.24.2018.03.12.04.10.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 12 Mar 2018 03:35:46 -0700 (PDT)
+        Mon, 12 Mar 2018 04:10:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:57617 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=aE4Dq/iQ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57793 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1evKny-0007Ti-7T
-	for alex.bennee@linaro.org; Mon, 12 Mar 2018 06:35:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39033)
+	id 1evLLe-0000Nl-7L
+	for alex.bennee@linaro.org; Mon, 12 Mar 2018 07:10:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48327)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <abdallah.bouassida@lauterbach.com>)
-	id 1evKkK-0004Nl-Dm
-	for qemu-arm@nongnu.org; Mon, 12 Mar 2018 06:32:01 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1evLLU-0000MY-TX
+	for qemu-arm@nongnu.org; Mon, 12 Mar 2018 07:10:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <abdallah.bouassida@lauterbach.com>)
-	id 1evKkI-0003fb-TW
-	for qemu-arm@nongnu.org; Mon, 12 Mar 2018 06:32:00 -0400
-Received: from smtp1.lauterbach.com ([62.154.241.196]:51018)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <abdallah.bouassida@lauterbach.com>)
-	id 1evKkI-0003Bd-HB
-	for qemu-arm@nongnu.org; Mon, 12 Mar 2018 06:31:58 -0400
-Received: (qmail 13483 invoked by uid 484); 12 Mar 2018 10:31:41 -0000
-X-Qmail-Scanner-Diagnostics: from 41.224.44.126 by smtp1.lauterbach.com
-	(envelope-from <abdallah.bouassida@lauterbach.com>,
-	uid 484) with qmail-scanner-2.11 
-	(mhr: 1.0. clamdscan: 0.99/21437. spamassassin: 3.4.0.  
-	Clear:RC:1(41.224.44.126):. 
-	Processed in 0.131647 secs); 12 Mar 2018 10:31:41 -0000
-Received: from unknown (HELO localhost.localdomain)
-	(Authenticated_SSL:abouassida@[41.224.44.126])
-	(envelope-sender <abdallah.bouassida@lauterbach.com>)
-	by smtp1.lauterbach.com (qmail-ldap-1.03) with ECDHE-RSA-AES256-SHA
-	encrypted SMTP
-	for <qemu-devel@nongnu.org>; 12 Mar 2018 10:31:40 -0000
-From: Abdallah Bouassida <abdallah.bouassida@lauterbach.com>
-To: qemu-devel@nongnu.org,
-	peter.maydell@linaro.org
-Date: Mon, 12 Mar 2018 11:31:30 +0100
-Message-Id: <1520850690-23245-5-git-send-email-abdallah.bouassida@lauterbach.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1520850690-23245-1-git-send-email-abdallah.bouassida@lauterbach.com>
-References: <1520850690-23245-1-git-send-email-abdallah.bouassida@lauterbach.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1evLLT-0004cF-UW
+	for qemu-arm@nongnu.org; Mon, 12 Mar 2018 07:10:24 -0400
+Received: from mail-ot0-x22e.google.com ([2607:f8b0:4003:c0f::22e]:43435)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1evLLT-0004aV-ON
+	for qemu-arm@nongnu.org; Mon, 12 Mar 2018 07:10:23 -0400
+Received: by mail-ot0-x22e.google.com with SMTP id m22so14828495otf.10
+	for <qemu-arm@nongnu.org>; Mon, 12 Mar 2018 04:10:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=TGp1GeASNBnWgK9RIqhBKGV6aAt0/M4qIXXfVyKtxl8=;
+	b=aE4Dq/iQSGfGWfNfOjvRNo8dtUFUJg6e/uXhYthnDkyuHAJXXl9qfGmTIPm2U2XmS4
+	8zonEQgZm89hrumofT6ZcFZyMusJyLxlMusdJwiFyqkUkQOricAJ5LrzJeF/iUHjppTa
+	8hQORWQhN1GdFh/AVW6fePdsRxUatboYbVuOc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=TGp1GeASNBnWgK9RIqhBKGV6aAt0/M4qIXXfVyKtxl8=;
+	b=eYhoGj98dtS9o8s6BnY/Ho5uBiCzxdS6cqPCCbhCTikpGzQWcikqdXXdQMa8kguDbJ
+	bMeQ464KprhN/3RqseIx1O5z2/fymKNlRrhwE0UABmOG5U/Ne71L3MeydjUj6aAPHyUM
+	PhprBOqw8ldwjAWl0jeWMjwuqkd+AJ8OoxyTlPv8LXitMAvAtZ1HrhPVzqiYrK26Gq88
+	QNiy3IrRHYxHbttQZWg78rUEss+gxpOKSaIZwXvyzpvO76+xBenDCwPhalJ001e7u63g
+	fte0EeVPi/sN54iQMkpFbKhHbwyeSsDPZY/ovhSCQjWjVQGUxNsnYxG6/vD1l1vgaJfn
+	IhLg==
+X-Gm-Message-State: AElRT7Eec2Y2VAyhb3rl5oDUe/U10XJuk7y7Bnv/SC4ewSQjx2qr/ie7
+	2kEoIwavSw4L/CkJVKy++Akr3wl91YpJDjvMFmPVOA==
+X-Received: by 10.157.72.231 with SMTP id a36mr5367808otj.308.1520853023072;
+	Mon, 12 Mar 2018 04:10:23 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 62.154.241.196
-Subject: [Qemu-arm] [PATCH v4 4/4] target/arm: Add arm_gdb_set_sysreg()
- callback
+Received: by 2002:a9d:2164:0:0:0:0:0 with HTTP; Mon, 12 Mar 2018 04:10:02
+	-0700 (PDT)
+In-Reply-To: <8ecafc78-5ea0-5d83-41d4-0b9b95bcdf21@gmail.com>
+References: <1518893216-9983-1-git-send-email-eric.auger@redhat.com>
+	<1518893216-9983-11-git-send-email-eric.auger@redhat.com>
+	<CAFEAcA8grbFO7E0yoci_dwr2xnH8ujS8cJnpNxGdz=JOged=Gw@mail.gmail.com>
+	<a35ca106-b405-8c07-95b6-ff65f324fae4@redhat.com>
+	<CAFEAcA-08=3jyf1fpdD6AumJmbL=64iLOpoySVCfot7CXiD4Og@mail.gmail.com>
+	<8ecafc78-5ea0-5d83-41d4-0b9b95bcdf21@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 12 Mar 2018 11:10:02 +0000
+Message-ID: <CAFEAcA9--5Ja9-jNVp7dJEN_y4is25NT9TSQcakDdSkpSV8R9A@mail.gmail.com>
+To: Eric Auger <eric.auger.pro@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::22e
+Subject: Re: [Qemu-arm] [PATCH v9 10/14] hw/arm/smmuv3: Abort on vfio or
+ vhost case
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,62 +109,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: khaled.jmal@lauterbach.com, qemu-arm@nongnu.org,
-	Abdallah Bouassida <abdallah.bouassida@lauterbach.com>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+	Jean-Philippe Brucker <jean-philippe.brucker@arm.com>,
+	Tomasz Nowicki <tn@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	Peter Xu <peterx@redhat.com>, Auger Eric <eric.auger@redhat.com>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	Christoffer Dall <christoffer.dall@linaro.org>,
+	linuc.decode@gmail.com, Bharat Bhushan <bharat.bhushan@nxp.com>,
+	Prem Mallappa <prem.mallappa@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZlmSSeZl4+V6
+X-TUID: ZZ9yYqgm6lpm
 
-This is a callback to set the cp-regs registered by the dynamic XML.
+On 12 March 2018 at 10:53, Eric Auger <eric.auger.pro@gmail.com> wrote:
+> Hi Peter,
+>
+> On 09/03/18 18:59, Peter Maydell wrote:
+>> On 9 March 2018 at 17:53, Auger Eric <eric.auger@redhat.com> wrote:
+>>> Hi Peter,
+>>> On 08/03/18 20:06, Peter Maydell wrote:
+>>>> On 17 February 2018 at 18:46, Eric Auger <eric.auger@redhat.com> wrote:
+>>>>> +static void smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
+>>>>> +                                       IOMMUNotifierFlag old,
+>>>>> +                                       IOMMUNotifierFlag new)
+>>>>> +{
+>>>>> +    if (old == IOMMU_NOTIFIER_NONE) {
+>>>>> +        error_setg(&error_fatal,
+>>>>> +                   "SMMUV3: vhost and vfio notifiers not yet supported");
+>>>>> +    }
+>>>>> +}
+>>>>
+>>>> Is this triggerable by the guest, or by the user on the command
+>>>> line, or only by a bug in the board or other QEMU code?
+>>> by the user on the command line.
+>>
+>> OK. Do they get this error immediately on startup, or only later
+>> in execution? (If the latter, is it possible to make the error
+>> happen earlier?)
 
-Signed-off-by: Abdallah Bouassida <abdallah.bouassida@lauterbach.com>
----
->> Adding to that our customers may need this write access, our tool TRACE32®
->> needs this also in some particular cases. For example: temporary disabling MMU
->> to do a physical memory access.
+> later in execution. We also have to handle the case where such device is
+> hot-plugged. At best if could be done on smmu_find_add_as() by checking
+> the type of attached device but this wouldn't happen much earlier. By
+> the way we will soon support vhost and we will just rule out vfio
+> integration by detecting map notifiers.
 
-> By clearing the SCTLR bit? That's a good example of a case that
-> won't work reliably. If you clear the SCTLR.M bit via raw_write
-> this will not perform the tlb_flush() that it needs to, which
-> means that if anything does a memory access via the QEMU TLB
-> it may get the wrong cached results. If you always clear the
-> bit, do one gdb memory access then set the bit then it will
-> probably not run into problems but you're walking on thin ice.
+Hmm. error_fatal is a bit unfortunate for a hotplug event -- ideally
+you would want to cause the hotplug to cleanly fail without aborting
+the running QEMU session.
 
-Does adding tlb_flush() before or after write_raw_cp_reg()
-could solve the reliability issue for other particular cases?
-Or is there any improvement that could be done for this write
-callback in order to get more reliable results for other
-particular cases?
-
- target/arm/helper.c | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
-
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 5929e0b..bb5a97c 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -239,6 +239,20 @@ static int arm_gdb_get_sysreg(CPUARMState *env, uint8_t *buf, int reg)
- 
- static int arm_gdb_set_sysreg(CPUARMState *env, uint8_t *buf, int reg)
- {
-+    ARMCPU *cpu = arm_env_get_cpu(env);
-+    const ARMCPRegInfo *ri;
-+    uint32_t key;
-+    uint32_t tmp;
-+
-+    tmp = ldl_p(buf);
-+    key = cpu->dyn_xml.cpregs_keys[reg];
-+    ri = get_arm_cp_reginfo(arm_env_get_cpu(env)->cp_regs, key);
-+    if (ri) {
-+        if (!(ri->type & ARM_CP_CONST)) {
-+            write_raw_cp_reg(env, ri, tmp);
-+            return cpreg_field_is_64bit(ri) ? 8 : 4;
-+        }
-+    }
-     return 0;
- }
- 
--- 
-2.7.4
-
+thanks
+-- PMM

@@ -1,198 +1,285 @@
-Received: by 10.28.91.67 with SMTP id p64csp982276wmb;
-        Tue, 13 Mar 2018 10:41:45 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELtxI/kCqYjaKvz8al/gci3654EeKNbOFQZgz6FKCgrug5zXdIu4eQr/4BOUq0RgzwAUFCU1
-X-Received: by 10.55.148.6 with SMTP id w6mr2164448qkd.293.1520962905456;
-        Tue, 13 Mar 2018 10:41:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1520962905; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp719104wmb;
+        Mon, 12 Mar 2018 05:47:07 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELuxBO7otJZxU5uLOS5WwHOXmdStrpiQ6tlZhU5rVuS0PCjzlLGoJjMFJxjeToUCn5+mHVXg
+X-Received: by 2002:a25:103:: with SMTP id 3-v6mr4404473ybb.374.1520858827571;
+        Mon, 12 Mar 2018 05:47:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1520858827; cv=none;
         d=google.com; s=arc-20160816;
-        b=DJ9MLfXDWh+wBf+zp0L3RLpbLH3ZRJqB6D3BwRg/KQerbsrrC2iFbTxjCNnqL69p6m
-         +BJ7ObI7gzvueLENiJyo5t9sYlIyXhTn8Htv8I2gr6gYzJk9WASIZduHY2S/sySnw7Va
-         oBaS153xRXZQQBCoUxqeRlZcRCN5REgmNrq7im+fjJg2Hyhz57Qaq1XsZeuHfqvW4CiO
-         f1BNrI4NozP4T/t7TW4kHr/LjWXghTEEBGmmWNb5HvH2r2xNZ4TBiWa6KKVl6nF3jm8c
-         MCCBe8lHy1FFSHc6xrrSZAV0UxqoQM8QHEem3yhI83oWgzCVyVTQbI8bBF/oI/UaEB1C
-         Z+9Q==
+        b=esnHG7ZDQNpgDrH337cox8pTM312qyTxPfTfVGgqedyf1MtHbXNRSjnh2ArCkTCNKn
+         nBX6aoKyObMQt1pZQljQyWpSJFrJY2xhaSKnLv4HJkCFPGHJNHuFgEmcFMDTYW+Adb+R
+         FVwkh4ginpOivg7xCB0PCcONdtS1/qFJdnW2u6tvWwNxLIdrHchILHabvpc/K6Vee/L9
+         0A4/BoxmipQ5sFM6y2MZkTrCc8ESkFnJBUB4bbS+aNO9B35G6o1TJP0P6k1nA97/nbWy
+         kJnxWFSfNhw0Ei/rlHIPPEzUNmnNdxpwKyS0GRRBWgW3pMsRwD31DP6GMSy5izZVx/ye
+         LW3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=FGkejSjzKb4XAG721HBiOFjqkyk1T4dzDi781MjZy/8=;
-        b=QaL5D9RgFZUWi/KhCcGvPAnYC6ZfiFQW3aQYOvDw5bY5Dn0ZbpJUd9OOGFT20M6EEa
-         w020lQM7RKY7mEVPmffQ0ue7kpokkLUi32Jrv91DLhoPoyMr0DZTIgxTXmPg7q2/lUWG
-         rEuJUTTsrZp4B/ExuEpeDCjT0g1kFnx8I5/kMrmB3Pd6N4QIphCg2I9wrWc8vznREQbA
-         wsjSy/OiF1xfonajpc8dUEIEoVRW6rWf4WnBrQsTm01JZEKmEGjNTx3DgrbzHI+uMnrf
-         acLLa8x75UEJ/EdYyeI2pDW1V6QGjE9kuuMO+sodfRYoINQbpjAiV6MVJlvrhTdzYJSY
-         RuSA==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=w+ea/umGwwbnONIktCd4TzMK2++N9oeCmNEk/gifxek=;
+        b=ASyhPIjEf2VvAwT3JN+8HFZyIhdWJKXhf1e1FWqzua6pkFar8Qu1FAeiQpJ8X0mxPb
+         EnMQqfMO83NucopUXCsvB1XlR5IPJiYQNEqJRDg46L39IYkj+2sHqrEy/e4ck447k0je
+         CldXcCubDFYO6deKB73vtuFD6YJoecI57tO5boZmx6LfR4WmrG2AEYEYQO8S7bW2jC3Q
+         AY+h2Yek0l+6UuGlKM7pNwJWEcO4l/F3v43povty0QbCQnyALJtRX+wZaCzm3Ahd2FVc
+         FYkemMVIp/+luEnciP56N9y+cRONb3VFTW3hRuMjyrsatCV+wLMl9ZLucihcvMERNSha
+         hh4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=D8hfYjrJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=JhdeQF9k;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m60si660755qte.95.2018.03.13.10.41.45
+        by mx.google.com with ESMTPS id y8si1269002ywi.5.2018.03.12.05.47.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 13 Mar 2018 10:41:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 12 Mar 2018 05:47:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=D8hfYjrJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=JhdeQF9k;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41562 helo=lists.gnu.org)
+Received: from localhost ([::1]:58507 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1evnvk-0006H1-Q8
-	for alex.bennee@linaro.org; Tue, 13 Mar 2018 13:41:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45037)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1evMr4-0003QJ-Ux
+	for alex.bennee@linaro.org; Mon, 12 Mar 2018 08:47:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40965)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1evnLs-0008H6-1m
-	for qemu-devel@nongnu.org; Tue, 13 Mar 2018 13:04:41 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1evMqp-0003K6-9S
+	for qemu-arm@nongnu.org; Mon, 12 Mar 2018 08:46:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1evnLq-0002ny-Ui
-	for qemu-devel@nongnu.org; Tue, 13 Mar 2018 13:04:40 -0400
-Received: from mail-oi0-x234.google.com ([2607:f8b0:4003:c06::234]:46344)
+	(envelope-from <peter.maydell@linaro.org>) id 1evMqn-0002OV-K7
+	for qemu-arm@nongnu.org; Mon, 12 Mar 2018 08:46:51 -0400
+Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:44080)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1evnLq-0002ni-QY
-	for qemu-devel@nongnu.org; Tue, 13 Mar 2018 13:04:38 -0400
-Received: by mail-oi0-x234.google.com with SMTP id x12so266087oie.13
-	for <qemu-devel@nongnu.org>; Tue, 13 Mar 2018 10:04:38 -0700 (PDT)
+	id 1evMqn-0002NB-ES
+	for qemu-arm@nongnu.org; Mon, 12 Mar 2018 08:46:49 -0400
+Received: by mail-ot0-x244.google.com with SMTP id 79so15079880oth.11
+	for <qemu-arm@nongnu.org>; Mon, 12 Mar 2018 05:46:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=FGkejSjzKb4XAG721HBiOFjqkyk1T4dzDi781MjZy/8=;
-	b=D8hfYjrJD7j4TYEDDMLFsvuGpX3dyWo7CKcegBHRovuip49eysGQ9yXQ6iMscH6afU
-	GEbaLd1jlqDRUo0n+VXSNDWxA9qG57I6QiugvXQ0IAEHqaOiy873IsyFrxKvU0Gnnfru
-	VK5fs/fVZndHhF+4sb0bKq6lW+mLfbjFL5+vc=
+	:cc; bh=w+ea/umGwwbnONIktCd4TzMK2++N9oeCmNEk/gifxek=;
+	b=JhdeQF9kK9HujmLLMn/OUoDP3+BPLv0tpJgNgzXuDLhIVwOlCGeUDK3jWJkA9w5boU
+	tAkVLBQX9T3e5921nJuSzKIKVxGjrmN0ELIMTV7SwAkH1kPRDYMarm7pdqnsxQTFfMd6
+	0lbjdA3HjjE+gAgr7ZGD6zzZeXCBt6Otc6cmg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=FGkejSjzKb4XAG721HBiOFjqkyk1T4dzDi781MjZy/8=;
-	b=RxXDVPBzqnOiPj11VCqPgx80tWiSYyjQXfoHZYj8Nu/my/aiBVgMIZIO8gaJ2oxYGc
-	HmDA/i5oPMbsESW4FYhD64e6T2dEelXQScB4SJAbCeyqMg5mmiqtBGKABDNuODuaawr/
-	yyVBijjv1hdLu1pc4MU7Vf0LmsMYDv4qgTIQK6zDZxGBWyiTdwBcj8I8K4gEfcVBbnlS
-	0E//Y1O13PY50kDfrRgs60/+KdQ7DMkuzKQrVQyApvO8gr3b+78xQosZAONZcofzfufw
-	Hp1oqSYVHz0V22H+vnwo2a2xqdGxagN9Y1grtfYvPZfNvLtGNb7ej2SHcOzDQnCElWtf
-	bQ1A==
-X-Gm-Message-State: AElRT7GZTEyjKN3dkcoo8SV1aPRXcwFwBrUFer57SEJcLuJPANe7aCwc
-	dxpBKXv1P8nQf42eSeAdKSfBUsBEAdtOSMzO8HYRhg==
-X-Received: by 10.202.17.13 with SMTP id 13mr859916oir.164.1520960677983; Tue,
-	13 Mar 2018 10:04:37 -0700 (PDT)
+	:message-id:subject:to:cc;
+	bh=w+ea/umGwwbnONIktCd4TzMK2++N9oeCmNEk/gifxek=;
+	b=Ck79g59F0joYdhf04LtsIQOR/MGUYtnlOCoy9iApV2Tae3R5P60OOg2636nMF/iijo
+	yfNUN7sq+VmgnUN9G0GjOEkQfi5F7sGDydnz15Zt5GyuwKOHq7eVZoYl+Zq0TwffLt1p
+	3Pm+5sIK2bNTyJ0GFVCX2IDeSnn1xVN47f8ZjMqvj92ip61vyhWs3ya2SkUv/dHPs2q/
+	rN0/U/vij3SMewRQumpiGeU9CuhPHdeGjIalqWnh6JYPkFslBJfEGeoYbgxyDG31v4Sh
+	00vNurrLhoYg8uOI8ElSrv4w1qBKgHoTCW0R9QrSWhGOszt7Jj/TCc4DHP9qC8sidPn4
+	KC6g==
+X-Gm-Message-State: AElRT7Hr6kO0sPukOKlAjIqW48SdY948PAzGvpdAnn4zuTzvS73H4IiZ
+	0859zFQC6xmkWmerf6FrbaXwMrAEH+e6XyMNj6qC9g==
+X-Received: by 10.157.72.231 with SMTP id a36mr5560833otj.308.1520858808495;
+	Mon, 12 Mar 2018 05:46:48 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a9d:2164:0:0:0:0:0 with HTTP; Tue, 13 Mar 2018 10:04:17
+Received: by 2002:a9d:2164:0:0:0:0:0 with HTTP; Mon, 12 Mar 2018 05:46:28
 	-0700 (PDT)
-In-Reply-To: <1520850690-23245-5-git-send-email-abdallah.bouassida@lauterbach.com>
-References: <1520850690-23245-1-git-send-email-abdallah.bouassida@lauterbach.com>
-	<1520850690-23245-5-git-send-email-abdallah.bouassida@lauterbach.com>
+In-Reply-To: <1518893216-9983-13-git-send-email-eric.auger@redhat.com>
+References: <1518893216-9983-1-git-send-email-eric.auger@redhat.com>
+	<1518893216-9983-13-git-send-email-eric.auger@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 13 Mar 2018 17:04:17 +0000
-Message-ID: <CAFEAcA8B-U-DNT2Bxe5CDLiH+B-qA=oje0Vsgb0XAdwR5uaLsQ@mail.gmail.com>
-To: Abdallah Bouassida <abdallah.bouassida@lauterbach.com>
+Date: Mon, 12 Mar 2018 12:46:28 +0000
+Message-ID: <CAFEAcA-BZ=wcpEKVQnX0dBh7tZVPNfHRm1E39DYEMZ=UStEamA@mail.gmail.com>
+To: Eric Auger <eric.auger@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::234
-Subject: Re: [Qemu-devel] [PATCH v4 4/4] target/arm: Add
- arm_gdb_set_sysreg() callback
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4003:c0f::244
+Subject: Re: [Qemu-arm] [PATCH v9 12/14] hw/arm/virt: Add SMMUv3 to the virt
+ board
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Khaled Jmal <khaled.jmal@lauterbach.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AQn+vj35ODWH
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+	Jean-Philippe Brucker <jean-philippe.brucker@arm.com>,
+	Tomasz Nowicki <tn@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	Peter Xu <peterx@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	Christoffer Dall <christoffer.dall@linaro.org>,
+	linuc.decode@gmail.com, Bharat Bhushan <bharat.bhushan@nxp.com>,
+	Prem Mallappa <prem.mallappa@gmail.com>,
+	Eric Auger <eric.auger.pro@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: u7nAhm2JPSLf
 
-On 12 March 2018 at 10:31, Abdallah Bouassida
-<abdallah.bouassida@lauterbach.com> wrote:
-> This is a callback to set the cp-regs registered by the dynamic XML.
+On 17 February 2018 at 18:46, Eric Auger <eric.auger@redhat.com> wrote:
+> From: Prem Mallappa <prem.mallappa@broadcom.com>
 >
-> Signed-off-by: Abdallah Bouassida <abdallah.bouassida@lauterbach.com>
+> Add code to instantiate an smmuv3 in virt machine. A new iommu
+> integer member is introduced in VirtMachineState to store the type
+> of the iommu in use.
+>
+> Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>
 > ---
->>> Adding to that our customers may need this write access, our tool TRACE=
-32=C2=AE
->>> needs this also in some particular cases. For example: temporary disabl=
-ing MMU
->>> to do a physical memory access.
+> v7 -> v8:
+> - integer iommu member
+> - add primary-bus property
 >
->> By clearing the SCTLR bit? That's a good example of a case that
->> won't work reliably. If you clear the SCTLR.M bit via raw_write
->> this will not perform the tlb_flush() that it needs to, which
->> means that if anything does a memory access via the QEMU TLB
->> it may get the wrong cached results. If you always clear the
->> bit, do one gdb memory access then set the bit then it will
->> probably not run into problems but you're walking on thin ice.
+> v4 -> v5:
+> - add dma-coherent property
 >
-> Does adding tlb_flush() before or after write_raw_cp_reg()
-> could solve the reliability issue for other particular cases?
-> Or is there any improvement that could be done for this write
-> callback in order to get more reliable results for other
-> particular cases?
+> v2 -> v3:
+> - vbi was removed. Use vms instead
+> - migrate to new smmu binding format (iommu-map)
+> - don't use appendprop anymore
+> - add vms->smmu and guard instantiation with this latter
+> - interrupts type changed to edge
+>
+> Conflicts:
+>         hw/arm/smmuv3.c
+> ---
+>  hw/arm/virt.c         | 64 ++++++++++++++++++++++++++++++++++++++++++++++++++-
+>  include/hw/arm/virt.h | 10 ++++++++
+>  2 files changed, 73 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index dbb3c80..e9dca0d 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -58,6 +58,7 @@
+>  #include "hw/smbios/smbios.h"
+>  #include "qapi/visitor.h"
+>  #include "standard-headers/linux/input.h"
+> +#include "hw/arm/smmuv3.h"
+>
+>  #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
+>      static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
+> @@ -141,6 +142,7 @@ static const MemMapEntry a15memmap[] = {
+>      [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
+>      [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
+>      [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
+> +    [VIRT_SMMU] =               { 0x09050000, 0x00020000 }, /* 128K, needed */
 
-(We kind of discussed some of this on IRC, so this is just writing
-that conversation down as I understand the situation. I think we
-can get the first 3 patches in to shape to apply without having
-to resolve the writing-registers part first, anyway.)
+What does the "needed" comment mean here?
 
-I think there's an underlying unaddressed design question here,
-which is: what should the semantics of gdbstub writes to system
-registers be, and how can we best implement that? At the moment
-system registers have basically two access methods:
- * real guest reads and writes, which we open-code in the
-   code-generation parts of translate.c and translate-a64.c.
-   This includes access-permission checks that don't allow a
-   guest running at a lower exception level to access higher EL
-   registers, and is also the code path that uses the CPRegInfo
-   accessfn, readfn and writefn functions if a register spec
-   defines them.
- * "raw" reads and writes. These were designed for VM migration
-   and for synchronization of state with the kernel when running
-   under KVM. That means they're not expected to actually be
-   changing the state of the CPU, and they just update the
-   underlying CPU state data structure fields for the most part.
+>      [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
+>      /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
+>      [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
+> @@ -161,6 +163,7 @@ static const int a15irqmap[] = {
+>      [VIRT_SECURE_UART] = 8,
+>      [VIRT_MMIO] = 16, /* ...to 16 + NUM_VIRTIO_TRANSPORTS - 1 */
+>      [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
+> +    [VIRT_SMMU] = 74,    /* ...to 74 + NUM_SMMU_IRQS - 1 */
+>      [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
+>  };
+>
+> @@ -941,7 +944,57 @@ static void create_pcie_irq_map(const VirtMachineState *vms,
+>                             0x7           /* PCI irq */);
+>  }
+>
+> -static void create_pcie(const VirtMachineState *vms, qemu_irq *pic)
+> +static void create_smmu(const VirtMachineState *vms, qemu_irq *pic,
+> +                        PCIBus *bus)
 
-Neither of those is necessarily the right thing for a write from GDB.
+Side suggestion: if you add "algorithm = histogram" to the [diff] section
+of your .gitconfig, you will probably find that it doesn't generate patches
+with this sort of silly patch hunk any more. I only discovered this
+config setting recently but I think it's better than the default.
 
-We get away with using 'raw read' for reads from GDB because
-generally that gives us the right value and if we do happen
-to return a wrong value that's pretty harmless: it won't have
-upset the state of QEMU. But raw writes are potentially dangerous
-if we let the user make them. SCTLR.M is one example discussed
-above. Another is if you allow the user to write SCR_EL3 directly
-when the CPU isn't at EL3 then you might be allowing them to set
-SCR_EL3.NS =3D=3D 0 with a PSTATE indicating EL2; QEMU will likely
-assert() shortly after because that's not architecturally valid.
+> +{
+> +    char *node;
+> +    const char compat[] = "arm,smmu-v3";
+> +    int irq =  vms->irqmap[VIRT_SMMU];
+> +    int i;
+> +    hwaddr base = vms->memmap[VIRT_SMMU].base;
+> +    hwaddr size = vms->memmap[VIRT_SMMU].size;
+> +    const char irq_names[] = "eventq\0priq\0cmdq-sync\0gerror";
+> +    DeviceState *dev;
+> +
+> +    if (vms->iommu != VIRT_IOMMU_SMMUV3 || !vms->iommu_phandle) {
+> +        return;
+> +    }
+> +
+> +    dev = qdev_create(NULL, "arm-smmuv3");
+> +
+> +    object_property_set_link(OBJECT(dev), OBJECT(bus), "primary-bus",
+> +                             &error_abort);
+> +    qdev_init_nofail(dev);
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
+> +    for (i = 0; i < NUM_SMMU_IRQS; i++) {
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, pic[irq + i]);
+> +    }
+> +
+> +    node = g_strdup_printf("/smmuv3@%" PRIx64, base);
+> +    qemu_fdt_add_subnode(vms->fdt, node);
+> +    qemu_fdt_setprop(vms->fdt, node, "compatible", compat, sizeof(compat));
+> +    qemu_fdt_setprop_sized_cells(vms->fdt, node, "reg", 2, base, 2, size);
+> +
+> +    qemu_fdt_setprop_cells(vms->fdt, node, "interrupts",
+> +            GIC_FDT_IRQ_TYPE_SPI, irq    , GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
+> +            GIC_FDT_IRQ_TYPE_SPI, irq + 1, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
+> +            GIC_FDT_IRQ_TYPE_SPI, irq + 2, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
+> +            GIC_FDT_IRQ_TYPE_SPI, irq + 3, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
+> +
+> +    qemu_fdt_setprop(vms->fdt, node, "interrupt-names", irq_names,
+> +                     sizeof(irq_names));
+> +
+> +    qemu_fdt_setprop_cell(vms->fdt, node, "clocks", vms->clock_phandle);
+> +    qemu_fdt_setprop_string(vms->fdt, node, "clock-names", "apb_pclk");
+> +    qemu_fdt_setprop(vms->fdt, node, "dma-coherent", NULL, 0);
 
-Using an equivalent of the "real guest write" path would at
-least be a bit safer than a raw write, but I'm not sure that
-"sorry, can't do a physical memory access because the CPU's
-at EL0 and we can't write SCTLR" is the behaviour you want...
+Is this definitely the right setting for dma-coherent? My (possibly
+naive) thought is that for an emulated SMMU our page-table walks are
+going to be coherent with the CPU's view.
 
-So my feeling is that to safely support guest sysreg writes
-from the gdbstub we need to:
- * define what the semantics of doing that are (preferably
-   by reference to something architectural, eg what you get
-   if you try it via halting debug mode)
- * provide some way of getting those semantics, which is probably
-   another function pointer in the regdef struct for a gdb write
- * go through the various regdefs and update them to be able
-   to handle gdb writes (either by providing a function to do
-   the job, or by being flagged as "raw write is ok for gdb
-   write" or something. Will depend on the individual register.)
+> +
+> +    qemu_fdt_setprop_cell(vms->fdt, node, "#iommu-cells", 1);
+> +
+> +    qemu_fdt_setprop_cell(vms->fdt, node, "phandle", vms->iommu_phandle);
+> +    g_free(node);
+> +}
 
-The really important part here is 1, I think. Part 3 will be
-a bit tedious, but I don't think there is any way to avoid
-it. There's no "works for all registers" shortcut.
+> +enum {
+> +    VIRT_IOMMU_NONE,
+> +    VIRT_IOMMU_SMMUV3,
+> +    VIRT_IOMMU_VIRTIO,
+> +};
+> +
+>  typedef struct MemMapEntry {
+>      hwaddr base;
+>      hwaddr size;
+> @@ -96,6 +104,7 @@ typedef struct {
+>      bool its;
+>      bool virt;
+>      int32_t gic_version;
+> +    int32_t iommu;
+
+This is always one of the VIRT_IOMMU_* values, right?
+I think we should give that enum a typedef name and then
+use the type here.
+
+>      struct arm_boot_info bootinfo;
+>      const MemMapEntry *memmap;
+>      const int *irqmap;
+> @@ -105,6 +114,7 @@ typedef struct {
+>      uint32_t clock_phandle;
+>      uint32_t gic_phandle;
+>      uint32_t msi_phandle;
+> +    uint32_t iommu_phandle;
+>      int psci_conduit;
+>  } VirtMachineState;
+>
+
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

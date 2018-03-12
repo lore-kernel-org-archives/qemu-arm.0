@@ -1,100 +1,97 @@
-Received: by 10.28.91.67 with SMTP id p64csp730448wmb;
-        Mon, 12 Mar 2018 06:00:01 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELuEiuq9vDYKG8TJaAMMCYsRPUg7uHvwGDyypxEWftHPjd8mPPkSj23RcXBT+qkpaZ9hhggk
-X-Received: by 10.129.89.212 with SMTP id n203mr1372884ywb.437.1520859601150;
-        Mon, 12 Mar 2018 06:00:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1520859601; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp779340wmb;
+        Mon, 12 Mar 2018 06:44:07 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELvE0Ln3zMvjb8M00xGRPp+du94OB9Viuact9ZXzXrFu/IOwykkeCWz59Uvjku6nCq7mGxa7
+X-Received: by 10.129.177.131 with SMTP id p125mr4660786ywh.61.1520862247100;
+        Mon, 12 Mar 2018 06:44:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1520862247; cv=none;
         d=google.com; s=arc-20160816;
-        b=YNLgJayCZbzr3+pr3uweNaM4hAf9qCQXU2x9ciuoTXU/DhiqEHUbbb9tXFB0TF9R2K
-         qQqyEGaSB1HdbN6Pi2m+GgxuH4Yn6dR1XMMaJt0LuM8vQY54wRAZgsW3CfHrdaBhtvKL
-         HJ2GdQ5UXJjnERNtTSIdGm5LVLpWsaQkc3WNKR79EPgyDNGmvi2cN4Fxcgf9rUrnx7VA
-         Q1akfebrOcokDYWq44+2DWgT6K54sdxtXr82cPJAWAuSaG6qfKDhPnYpG2t747Nuf+Lc
-         QngiQThqcgjXx5u+q7CFgos9na4L7a+K46c10RJ3dYK3SFtBtr0vIu/jI6ydrk8hmqVt
-         GJYw==
+        b=Oj7HdHGGmID6P5J/fwAocKUVLy0STAO6PuhvP/wOzBuMyOJqlyqbokPZc6Up3JQmQH
+         HoCuNER6p/dLYty32/jQSuQvo8RbYGR/BJN+bRNO8PcW0fsy0I42GSUF7dqMKgMkgaC7
+         HkfY8FNT2OXv7w0w3VI2JHsZOgJGYlqt4OgdEnTo+yRJef60TtQOzk1EaNTljyvOicx/
+         9zN8hX28FEriD+JySRXtR9Y98TCgu899RstGQkmSmgObyn3Wo3PI+M+VF3bm4dk0A6Wi
+         NGv6v4L9bwVhgkEKRu4+OsNMCqfJYxBh6LyXf6ZFxbcgWsE3hEpr0UnfqLdvu57II1zy
+         tiQA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=TyomQApxXIaTq8ttA7ia4VAayHuYbKjX2APgEuh4ZGw=;
-        b=oB3JlBGOKDQopwQhqMiU6DjkcNXlc+NyKkSdhMMmLPk9ITrphjB4+iu/tSsvDNMCsQ
-         Pv96agUygm0VeEZJTzYMdh7O9GB10uyyt8QhvedmSIprSEfjjaFtxR0Lqd3hPWrHkhl2
-         V3dWJro0b3+fG+s6kn83Mi0G+Vc7GaLIkEmwDBVjtx3QBLv8BtvlBxyzxhkzYMNB+/BO
-         Tb5TTbkHKLPLL/W7tuTVw7cEdDBOI+5/wqcrShder+3SmsvWeorHTYssMQ5p/4I4JBhP
-         /ggMUzhy1Smu0Grkoxp76uxt+YPDS85+swD/wSb5IK+01+ysKKsz5mvOzVyauWcOAPDP
-         UTYw==
+        bh=ILNswcluNl6rPNHWelP+DUJ0u5PXNHMVk5VnSlIIHEE=;
+        b=kRIqGNbLxTjYX9zJeXQNnoRXPLmsvlNZWvRqTjuW+pQd9UzcDXHn1OnNGKEemlwxCR
+         VbB8Gr9FTj2NHvONHmXIrR9CKdWb/yAewS6vC1rHf6XRS1gNIlPWXP/vH0j+2YFL8bEM
+         KQNpVDJ6Z+YTBjdqdIXn3O7DOkuq3UA9S7092SSvSeAo1vTt07XDx1N5z2BMpP0Bg2yx
+         OWF4M3z1w429w0R3yRjMchXa0MY3gUANRRmppfdCHzItuzQyaA+OrfZcCyRO9ToD4VCt
+         RlJZ/euxMO5mmQwqjcRToUKAHAzSJLQEheA8LyDzpMxsTURkVL4X+KxjBuEKQOdkFHms
+         zFSA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=epVi9py9;
+       dkim=fail header.i=@linaro.org header.s=google header.b=QJ2rJvwX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p205-v6si1171435ybb.297.2018.03.12.06.00.00
+        by mx.google.com with ESMTPS id q2si1251549ywj.109.2018.03.12.06.44.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 12 Mar 2018 06:00:01 -0700 (PDT)
+        Mon, 12 Mar 2018 06:44:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=epVi9py9;
+       dkim=fail header.i=@linaro.org header.s=google header.b=QJ2rJvwX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58579 helo=lists.gnu.org)
+Received: from localhost ([::1]:58941 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1evN3Y-0005zN-KM
-	for alex.bennee@linaro.org; Mon, 12 Mar 2018 09:00:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44010)
+	id 1evNkE-0005lM-JA
+	for alex.bennee@linaro.org; Mon, 12 Mar 2018 09:44:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56101)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1evN20-0004YO-D0
-	for qemu-arm@nongnu.org; Mon, 12 Mar 2018 08:58:25 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1evNk6-0005kj-33
+	for qemu-arm@nongnu.org; Mon, 12 Mar 2018 09:43:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1evN1z-0005dJ-Nc
-	for qemu-arm@nongnu.org; Mon, 12 Mar 2018 08:58:24 -0400
-Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:36848)
+	(envelope-from <peter.maydell@linaro.org>) id 1evNk5-00035k-0L
+	for qemu-arm@nongnu.org; Mon, 12 Mar 2018 09:43:58 -0400
+Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:44209)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1evN1z-0005cT-IB
-	for qemu-arm@nongnu.org; Mon, 12 Mar 2018 08:58:23 -0400
-Received: by mail-oi0-x243.google.com with SMTP id u73so12180920oie.3
-	for <qemu-arm@nongnu.org>; Mon, 12 Mar 2018 05:58:23 -0700 (PDT)
+	id 1evNk4-000351-R4
+	for qemu-arm@nongnu.org; Mon, 12 Mar 2018 09:43:56 -0400
+Received: by mail-oi0-x244.google.com with SMTP id b8so12295145oib.11
+	for <qemu-arm@nongnu.org>; Mon, 12 Mar 2018 06:43:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=TyomQApxXIaTq8ttA7ia4VAayHuYbKjX2APgEuh4ZGw=;
-	b=epVi9py9Ly6eA8TuPOl7gv3z1grEda+3OcbQfhCpFpWPXOUKgjlAjPgcKQov5eJmUi
-	11UlKAhsv7jx0w09zpzHuuIKmMzRzYvTNZBo7XL3xw4UXwXhRnggKs5meA8jJhAAp1Jw
-	XZw7HZDZr25u1Yggw/Q7YKHEChQP1uKXUTUk0=
+	:cc; bh=ILNswcluNl6rPNHWelP+DUJ0u5PXNHMVk5VnSlIIHEE=;
+	b=QJ2rJvwXlQPa1R7TC/UuPsM17B48JATSKG7QDBvs5FUIhuPpwaJD9EOOHnJ5Ox2a9E
+	1criJANcTL91L90Tw8S3eleIZMExQheoB/L99nBI2CKv5jb/3HQOKD/Jpc042awDO6xG
+	K3PBdmidJhHlv6gcDp9vBcXqZriUYOiavkhL4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=TyomQApxXIaTq8ttA7ia4VAayHuYbKjX2APgEuh4ZGw=;
-	b=JV8LCqFiv7lxnG9LI4Zg9Cb8B5V+72+afqPUxujqjZcufwqqPArt4WQcIYYodpGnks
-	tYvD38P5a8k7zyWWsnaiiuEEIM+5aZyatlPhX8Vxb567QjvpcomAK7Z+ND+T2xGeeJe2
-	wMPxmJJWiSF8ba2CaS2P9Ks7nm7tG6fDGvFEvFHWyQ5ssv7nG7m3ma4UF1M7I9dKyZQa
-	LfHXD1GE98iU7R8t/h2noEkf/je6gEE393TjMbWLRnMHdBMfCrlokYMA8TQtv8xzd90G
-	kS9jQ1k3aQrg4UO+3jO8vO4543EIJ9Tr8Gr93nuxg9VXsfA8+7UDyf0K9ImmJxlgC7BL
-	Rg7w==
-X-Gm-Message-State: AElRT7HoNbO1KNRZ2H7FADgPldSv/0fhAQ06c1P0rH6vNA3l7AsRfFbO
-	QNtLEwApTucuBnb6pM6Oayiny4hNr7rLEYuo7/4kGw==
-X-Received: by 10.202.97.87 with SMTP id v84mr4982469oib.12.1520859502853;
-	Mon, 12 Mar 2018 05:58:22 -0700 (PDT)
+	bh=ILNswcluNl6rPNHWelP+DUJ0u5PXNHMVk5VnSlIIHEE=;
+	b=m0eNeV08H6wgQTIsxOkFj2ST8AuFNUqzEmEi31WAyIErlGf35L1lGDbqVOJFGTw7qv
+	BPhlhQGSspBV04J9aSWDHrkFPw5h8MZ8T6nSf+dPdIm4Dv43KAsBj8nYawbX96vcf20F
+	xt7NzisSnw4JPHOrIE7lcBDkwRrHvm7eFb4+BkZDs5GJL802AdXqilkx4f1Eyi3/PUka
+	yYzcxsEE9nMRezu3s9PTsI9ET28G3MxMRCYFTTGwWgGP42evTo+uIEpndh3gc9S/0dvq
+	h5nh+OQdqFCDofaHkOgWfoP4AfTA001/MUdBdx3/IgUl+p+qRq/+dY9eULIKUEXreEKJ
+	PVjg==
+X-Gm-Message-State: AElRT7Ep6TFdDg8atvF8sSkTFOlx4UxVwA4IItp+Udgf+HQMLGZEaru0
+	l14lvK4DAA7RmR1fEPgaEv0zcPqBG14a5pRREfiLJg==
+X-Received: by 10.202.61.198 with SMTP id k189mr5050227oia.252.1520862235980; 
+	Mon, 12 Mar 2018 06:43:55 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a9d:2164:0:0:0:0:0 with HTTP; Mon, 12 Mar 2018 05:58:02
+Received: by 2002:a9d:2164:0:0:0:0:0 with HTTP; Mon, 12 Mar 2018 06:43:35
 	-0700 (PDT)
-In-Reply-To: <74aa2e5e-ed1b-3cf8-8ddc-41f7ef90ad7b@redhat.com>
-References: <1518893216-9983-1-git-send-email-eric.auger@redhat.com>
-	<CAFEAcA9KzitEO21Rgh8Azip+gVJjyobzNbk8sHuQf-ngg+Jjxg@mail.gmail.com>
-	<74aa2e5e-ed1b-3cf8-8ddc-41f7ef90ad7b@redhat.com>
+In-Reply-To: <1520723090-22130-1-git-send-email-linux@roeck-us.net>
+References: <1520723090-22130-1-git-send-email-linux@roeck-us.net>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 12 Mar 2018 12:58:02 +0000
-Message-ID: <CAFEAcA-Mb_o88ieynaY8k6xehTyAoC13Dkf0QUUyOGmEjRd7XA@mail.gmail.com>
-To: Auger Eric <eric.auger@redhat.com>
+Date: Mon, 12 Mar 2018 13:43:35 +0000
+Message-ID: <CAFEAcA_M51Yv-B78uY9NXBYSD02aXf5As+eXNTcyrNxYqtML=Q@mail.gmail.com>
+To: Guenter Roeck <linux@roeck-us.net>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::243
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v9 00/14] ARM SMMUv3 Emulation
- Support
+X-Received-From: 2607:f8b0:4003:c06::244
+Subject: Re: [Qemu-arm] [PATCH v3] fsl-imx6: Swap Ethernet interrupt defines
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,36 +103,57 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
-	Jean-Philippe Brucker <jean-philippe.brucker@arm.com>,
-	Tomasz Nowicki <tn@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	Peter Xu <peterx@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Prem Mallappa <prem.mallappa@gmail.com>, linuc.decode@gmail.com,
-	Bharat Bhushan <bharat.bhushan@nxp.com>,
-	Christoffer Dall <christoffer.dall@linaro.org>,
-	Eric Auger <eric.auger.pro@gmail.com>
+Cc: Bill Paul <wpaul@windriver.com>, Andrey Smirnov <andrew.smirnov@gmail.com>,
+	Jason Wang <jasowang@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	Jean-Christophe Dubois <jcd@tribudubois.net>,
+	qemu-arm <qemu-arm@nongnu.org>, Chris Healy <cphealy@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: S7Dzr4zkHCjp
+X-TUID: VwAR3aYImxOb
 
-On 28 February 2018 at 08:44, Auger Eric <eric.auger@redhat.com> wrote:
-> On 27/02/18 20:02, Peter Maydell wrote:
->> On 17 February 2018 at 18:46, Eric Auger <eric.auger@redhat.com> wrote:
->>> This series implements the emulation code for ARM SMMUv3.
+On 10 March 2018 at 23:04, Guenter Roeck <linux@roeck-us.net> wrote:
+> The sabrelite machine model used by qemu-system-arm is based on the
+> Freescale/NXP i.MX6Q processor. This SoC has an on-board ethernet
+> controller which is supported in QEMU using the imx_fec.c module
+> (actually called imx.enet for this model.)
+>
+> The include/hw/arm/fsm-imx6.h file defines the interrupt vectors for the
+> imx.enet device like this:
+>
+>  #define FSL_IMX6_ENET_MAC_1588_IRQ 118
+>  #define FSL_IMX6_ENET_MAC_IRQ 119
+>
+> According to https://www.nxp.com/docs/en/reference-manual/IMX6DQRM.pdf,
+> page 225, in Table 3-1. ARM Cortex A9 domain interrupt summary,
+> interrupts are as follows.
+>
+> 150 ENET MAC 0 IRQ
+> 151 ENET MAC 0 1588 Timer interrupt
+>
+> where
+>
+> 150 - 32 == 118
+> 151 - 32 == 119
+>
+> In other words, the vector definitions in the fsl-imx6.h file are reversed.
+>
+> Fixing the interrupts alone causes problems with older Linux kernels:
+> The Ethernet interface will fail to probe with Linux v4.9 and earlier.
+> Linux v4.1 and earlier will crash due to a bug in Ethernet driver probe
+> error handling. This is a Linux kernel problem, not a qemu problem:
+> the Linux kernel only worked by accident since it requested both interrupts.
+>
+> For backward compatibility, generate the Ethernet interrupt on both interrupt
+> lines. This was shown to work from all Linux kernel releases starting with
+> v3.16.
+>
+> Link: https://bugs.launchpad.net/qemu/+bug/1753309
+> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 
->> What state is this series in now? Is it "seems ready to
->> go, needs review"? Are you hoping it might get in for 2.12,
->> or targeting 2.13 ?
+Applied to target-arm.next for 2.12.
 
-> Yes I think it is in a decent state and I would be happy to get some new
-> reviews, for a tentative pull in 2.12. In any case I will be reactive on
-> any comment in that prospect.
+Thanks to everybody who helped in identifying what the behaviour here
+was and coming up with this useful workaround to avoid breaking
+previously-working guests.
 
-Hi, Eric. I've now gone through the patchset and reviewed it. Sorry
-I didn't manage to get to this in time to be able to put it into 2.12,
-but there weren't any major or structural issues, so we should be
-able to get this into the tree early in the 2.13 dev cycle.
-
-thanks
 -- PMM

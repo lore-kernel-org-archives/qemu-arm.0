@@ -1,736 +1,274 @@
-Received: by 10.28.91.67 with SMTP id p64csp1116773wmb;
-        Fri, 9 Mar 2018 10:47:29 -0800 (PST)
-X-Google-Smtp-Source: AG47ELt/ZmTcyr/0YL6ITwk51OUL+A66wQ2wdJNscwpWF8jADJiFQaWelD25aUw76A4djhRZ4VHF
-X-Received: by 2002:a25:bec7:: with SMTP id k7-v6mr20401945ybm.413.1520621249549;
-        Fri, 09 Mar 2018 10:47:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520621249; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp1292793wmb;
+        Tue, 13 Mar 2018 16:38:46 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELva9RhqOBQTjyeod8iAIlRgh8uhssi8ybL/tho+5zDANIeA4kj36dkNFl+FZI0w2jWo5TqT
+X-Received: by 10.55.46.130 with SMTP id u124mr3938531qkh.61.1520984326005;
+        Tue, 13 Mar 2018 16:38:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1520984325; cv=none;
         d=google.com; s=arc-20160816;
-        b=mu7TCKBFdJY7gXITaRern1KAvZYUNwUoaQpFexBqlswdvr+zxOCyApl/G18OSs7UdR
-         eV42EM1oSj4NonCE8sZkVH23QCFkExTlWcJ/KB599MVt4V4aEzUeIGuzZ3P4DJsZhm7Y
-         rVC5Krw/SmxGaehyU1tFDyuOHHX4u2ljDiTgEOoXMj4MFlzilQI+hpUu0Am2t9TPnBcl
-         RkEeP2iY6cuRDgXavF27WQoi5kNRe9614uasX0ydY/gVMCLiznycRf6pIoQ4ByvFFC9K
-         IlpZ2mFGXmqfNR/u61yYaDzkVYHy2dps6jHy5GOXmM6J9A48lG2pqAkTMqQAWwyhOmSY
-         ayRQ==
+        b=FvnH21/lIvX/ZYZgEW4PRjWOX+n4LVqrMwPZUMR05Jnu6ZFKRvTDxhu8rxAZsTHqI1
+         qLZN1WecBwccmC4BP3avsIYXy6wMuC1NP799nAN//ZdPky8o9k5b103+G+t7No2/fKb3
+         pCz8Q5sGz/KgL107CTW43SISYdB/oi6d6Z2rNl4rxk8ktWBA+na4ieK9a8ScEJtBje6I
+         kdIZIVPzXbF9FzXFemJRz1JAdOmRGtxbAvUAkuh5Y4963ts2g/kbLj101n84xqYqmU15
+         q35puoYnaPteLRP3qWb+b2erQmU2Mdl5IjY45LvwZVYKK1haIgrLNooHdfa2PWQk8Jgy
+         f2mA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=WqjzCxCFLleahap2aBItVgWtg942lE32UU6ujKyyWfM=;
-        b=vApasoYM6Vi4Kcp4wPege/FR25QksoBbBfPezEiZY6yhbAlh7g6QQG0EH71gfLfaw2
-         QwX5CXV2gNc/qo+ctD2noGzNme7mh4FE3yzch0zB9Q/ah5UWoQvxRgA8oy8Efm58itNC
-         PeVS04tVCuTHw4ZLzND8aGBtnp3FDRCnsBclR06UZG9/vYaf6eI3VU+cqC16PylDEk+n
-         bXZ57n0Guj03WSnAyhk6b+7nBdx28MjvUgxK+TufWhADrFQsg8ytIESB+brdWDiz80tN
-         KzEQVE5wpVsjWDGBnxwB6L4fSBEH6NrgNYOIHuTTYPr59crvNaH2R68+GZxX0uxfZNK6
-         YDbg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=RInQLjRd2be//vO7OoFY5u9jtw//9xO+5lc/41/ZmqM=;
+        b=bpZ20tXfF4ZIxw9dSumfCShmDNMQzePTj8y8pkL1vjUXqQ1+j0hYMwxbhneFr5QnTU
+         EZKkkPmweupJRQoj6IyrBQLroCMlBpp+UKeX8hOekRRJ+NFGK3/al1Z0xHNA+9a713Ov
+         uKLpYvkYqOnjzUIQOr6LbDgKNYlPhzc6IEoo9NaZBCnuFkHFTQ1OAx+mf2hyr5pnus63
+         /s6V9sBtlTjBai/UKJfgHmizrVQ8TqvnE4gMqF6405eun7kP0j48uxmL4nAWKsdQhJN6
+         y/pfTcLU8cc77wMalyD4DsPjyLlDR9oFMRVZKcd2KBwAnmiUUV6JCkX4/WMv7m7fLLHl
+         85Dw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=j6CYb9DE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=thEkri0w;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x67si272228ywf.155.2018.03.09.10.47.29
+        by mx.google.com with ESMTPS id t6si1387619qtt.479.2018.03.13.16.38.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 09 Mar 2018 10:47:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 13 Mar 2018 16:38:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=j6CYb9DE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47412 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=thEkri0w;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:43558 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1euN3A-0005Rp-Vv
-	for alex.bennee@linaro.org; Fri, 09 Mar 2018 13:47:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54993)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1evtVF-0007YM-CZ
+	for alex.bennee@linaro.org; Tue, 13 Mar 2018 19:38:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33155)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1euN2v-0005RR-Tl
-	for qemu-arm@nongnu.org; Fri, 09 Mar 2018 13:47:16 -0500
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1evstw-0008Eg-ER
+	for qemu-devel@nongnu.org; Tue, 13 Mar 2018 19:00:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1euN2t-0003Bk-Kn
-	for qemu-arm@nongnu.org; Fri, 09 Mar 2018 13:47:13 -0500
-Received: from mail-ot0-x229.google.com ([2607:f8b0:4003:c0f::229]:42219)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1evsts-0002oc-EN
+	for qemu-devel@nongnu.org; Tue, 13 Mar 2018 19:00:12 -0400
+Received: from mail-wm0-x242.google.com ([2a00:1450:400c:c09::242]:51181)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1euN2t-0003Bb-DW
-	for qemu-arm@nongnu.org; Fri, 09 Mar 2018 13:47:11 -0500
-Received: by mail-ot0-x229.google.com with SMTP id l5so9550657otf.9
-	for <qemu-arm@nongnu.org>; Fri, 09 Mar 2018 10:47:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=WqjzCxCFLleahap2aBItVgWtg942lE32UU6ujKyyWfM=;
-	b=j6CYb9DEE2TE1gXLtLlvR1kx/aXfGVag2YHGZ49v67mztkGB1eDbn0/K1jlPP5TAWx
-	Xt0GNpGJ9TMesLNoa6fAUNDwUNqp4YXLti9AkNpbEW54lPLf5GPNY6/e12jZ8h188Wbz
-	SEGF/zAOlXBj2B0XFw1wgY6OQ4zd7Xrv9iVT8=
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1evsts-0002oG-49; Tue, 13 Mar 2018 19:00:08 -0400
+Received: by mail-wm0-x242.google.com with SMTP id w128so905567wmw.0;
+	Tue, 13 Mar 2018 16:00:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=RInQLjRd2be//vO7OoFY5u9jtw//9xO+5lc/41/ZmqM=;
+	b=thEkri0wrR6ampQOQunwe0xjEJyR3cNkUtBKjKvWI57Tij/TgGtkKJtiobHU0QQNvK
+	x87TVVGiGDGXZYEi6DFcKWoBa+omOrTNaz3zwx+CqlsXW0d8Ui11efFSXebMEhZO7Bs/
+	pd0Pl5f1MMC1fpvkyzekL0hLXMMz3BdnsiXkU10Kz9Yl/uMMYyH2mqNf20ViXMuSRwHO
+	E21FE2auxJEXMwpqxVIq4GFwv9hPiq8lL1zzQMYtoyqbAL62uPw3G09R1+6NcG/6cZiC
+	Pu/uXLH0jq/jqhX5axXjZ6wI3j/BUGXM8K0FuD+H09rce7r1N0Mp+znimzJ0ZfmAxQMh
+	xzVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=WqjzCxCFLleahap2aBItVgWtg942lE32UU6ujKyyWfM=;
-	b=NfaCqxrBs87Uvb54lbPFaroO7fD3sILTFCWyUxRzLtN6Z/GjvtNzhGlDdAKwgmmuTp
-	83pJZitSw0seNprMTMfUjg8tFSHZxD/Qq7gUXimKJAqbf4Y3tBNHSg3gL9X2/5RW4PYJ
-	Ra2Wk9rCWPBrc83g8IpY4eEfpyn0Z2HyFvqIVaU/lWfZj0GtkdJQKPPvdXJYnUtJGRuc
-	23CV6OVv09i38KgdeC9x21/Hpb2qs42ZQuuE9BPYxiCXnrdFxQC7VPjwq7ATOnbSWEi0
-	llnGRuwTulwd9gWJ5Q6QNpo9Fr2QL+Nm5IVjVklZoILtBIv98eLiABvSdkxtwr+nE+jd
-	g9VQ==
-X-Gm-Message-State: AElRT7HwpYuPk+/5qvEE6VOuHVIG0umMRry7Ij08n9cq/YkpqaO4Iq5q
-	OfdacFtHR3zN0s0v9VeJlzTbFSbICNOjnOafw9nwxw==
-X-Received: by 10.157.28.156 with SMTP id l28mr22349774ota.316.1520621230369; 
-	Fri, 09 Mar 2018 10:47:10 -0800 (PST)
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=RInQLjRd2be//vO7OoFY5u9jtw//9xO+5lc/41/ZmqM=;
+	b=UaB/lOnl+MfrnAAI+pNlW3C/qeXIbq/fi/gy0ag6K0SYR8Z2KqdwHhfTfV8CVdAbwB
+	Jo753dfgatVa4HngIG5HE23YRnyJqIi7VjJpDzw9HeVUPLYiXeZ3PLalg3pjY/9mwTmK
+	cEKcJY/o08bO4L3dNs/WoNV0lQ+s9qpVpgYmM+5snVaecWT32BUZ6Sxu5zQvwcYWzrn0
+	oepmOqGsWxxr1enkjJc9bd3mRqDE2AlH/RA4wM+q0rcXARn/BVMbgoYgwc4Rp6bu8ak6
+	UQiG12UpLbjK+o6xOpHyeqh+pDXkGe9ZkYv2ELayE8v4TJ2Fk+ufnO8ClsdjQYR8wp4Q
+	7UJA==
+X-Gm-Message-State: AElRT7F63fnZ6OEQya3k3UzbzghksjFCRfVC+6S5QOKI/qZS4yhFFRxh
+	7H8H5pbc8mOEgeIkKuymxzM=
+X-Received: by 10.28.217.205 with SMTP id q196mr2133299wmg.149.1520982006948; 
+	Tue, 13 Mar 2018 16:00:06 -0700 (PDT)
+Received: from [192.168.1.29] (AStrasbourg-554-1-221-65.w86-204.abo.wanadoo.fr.
+	[86.204.94.65]) by smtp.gmail.com with ESMTPSA id
+	g38sm1605726wra.77.2018.03.13.16.00.05
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 13 Mar 2018 16:00:06 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <20180313153458.26822-1-peter.maydell@linaro.org>
+	<20180313153458.26822-7-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <a16c5078-cae8-f9ca-c6bf-ab60937c0dc3@amsat.org>
+Date: Wed, 14 Mar 2018 00:00:05 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.6.0
 MIME-Version: 1.0
-Received: by 10.157.33.100 with HTTP; Fri, 9 Mar 2018 10:46:49 -0800 (PST)
-In-Reply-To: <1518893216-9983-10-git-send-email-eric.auger@redhat.com>
-References: <1518893216-9983-1-git-send-email-eric.auger@redhat.com>
-	<1518893216-9983-10-git-send-email-eric.auger@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 9 Mar 2018 18:46:49 +0000
-Message-ID: <CAFEAcA-g5u+OAcsQ4oFapRF55tJLkjiNqk4PBvcjaTUGpwc0bA@mail.gmail.com>
-To: Eric Auger <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <20180313153458.26822-7-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::229
-Subject: Re: [Qemu-arm] [PATCH v9 09/14] hw/arm/smmuv3: Implement translate
- callback
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:400c:c09::242
+Subject: Re: [Qemu-devel] [PATCH 6/9] hw/arm/bcm2836: Create proper bcm2837
+ device
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
-	Jean-Philippe Brucker <jean-philippe.brucker@arm.com>,
-	Tomasz Nowicki <tn@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	Peter Xu <peterx@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Christoffer Dall <christoffer.dall@linaro.org>,
-	linuc.decode@gmail.com, Bharat Bhushan <bharat.bhushan@nxp.com>,
-	Prem Mallappa <prem.mallappa@gmail.com>, eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lvo2hqNZCQac
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Pekka Enberg <penberg@iki.fi>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>, patches@linaro.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: VX3TeSgAE4L3
 
-On 17 February 2018 at 18:46, Eric Auger <eric.auger@redhat.com> wrote:
-> This patch implements the IOMMU Memory Region translate()
-> callback. Most of the code relates to the translation
-> configuration decoding and check (STE, CD).
->
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->
+On 03/13/2018 04:34 PM, Peter Maydell wrote:
+> The bcm2837 is pretty similar to the bcm2836, but it does have
+> some differences. Notably, the MPIDR affinity aff1 values it
+> sets for the CPUs are 0x0, rather than the 0xf that the bcm2836
+> uses, and if this is wrong Linux will not boot.
+> 
+> Rather than trying to have one device with properties that
+> configure it differently for the two cases, create two
+> separate QOM devices for the two SoCs. We use the same approach
+> as hw/arm/aspeed_soc.c and share code and have a data table
+> that might differ per-SoC. For the moment the two types don't
+> actually have different behaviour.
+
+:)
+
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
 > ---
-> v8 -> v9:
-> - use SMMU_EVENT_STRING macro
-> - get rid of last erro_report's
-> - decode asid
-> - handle config abort before ptw
-> - add 64-bit single-copy atomic comment
->
-> v7 -> v8:
-> - use address_space_rw
-> - s/Ste/STE, s/Cd/CD
-> - use dma_memory_read
-> - remove everything related to stage 2
-> - collect data for both TTx
-> - renamings
-> - pass the event handle all along the config decoding path
-> - decode tbi, ars
-> ---
->  hw/arm/smmuv3-internal.h | 146 ++++++++++++++++++++
->  hw/arm/smmuv3.c          | 341 +++++++++++++++++++++++++++++++++++++++++++++++
->  hw/arm/trace-events      |   9 ++
->  3 files changed, 496 insertions(+)
->
-> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-> index 3929f69..b203426 100644
-> --- a/hw/arm/smmuv3-internal.h
-> +++ b/hw/arm/smmuv3-internal.h
-> @@ -462,4 +462,150 @@ typedef struct SMMUEventInfo {
->
->  void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *event);
->
-> +/* Configuration Data */
-> +
-> +/* STE Level 1 Descriptor */
-> +typedef struct STEDesc {
-> +    uint32_t word[2];
-> +} STEDesc;
-> +
-> +/* CD Level 1 Descriptor */
-> +typedef struct CDDesc {
-> +    uint32_t word[2];
-> +} CDDesc;
-> +
-> +/* Stream Table Entry(STE) */
-> +typedef struct STE {
-> +    uint32_t word[16];
-> +} STE;
-> +
-> +/* Context Descriptor(CD) */
-> +typedef struct CD {
-> +    uint32_t word[16];
-> +} CD;
-> +
-> +/* STE fields */
-> +
-> +#define STE_VALID(x)   extract32((x)->word[0], 0, 1) /* 0 */
-
-I'm not sure what the comment is supposed to be telling me ?
-
-> +
-> +#define STE_CONFIG(x)  extract32((x)->word[0], 1, 3)
-> +#define STE_CFG_S1_ENABLED(config) (config & 0x1)
-> +#define STE_CFG_S2_ENABLED(config) (config & 0x2)
-> +#define STE_CFG_ABORT(config)      (!(config & 0x4))
-> +#define STE_CFG_BYPASS(config)     (config == 0x4)
-> +
-> +#define STE_S1FMT(x)   extract32((x)->word[0], 4 , 2)
-> +#define STE_S1CDMAX(x) extract32((x)->word[1], 27, 5)
-> +#define STE_EATS(x)    extract32((x)->word[2], 28, 2)
-> +#define STE_STRW(x)    extract32((x)->word[2], 30, 2)
-> +#define STE_S2VMID(x)  extract32((x)->word[4], 0 , 16)
-> +#define STE_S2T0SZ(x)  extract32((x)->word[5], 0 , 6)
-> +#define STE_S2SL0(x)   extract32((x)->word[5], 6 , 2)
-> +#define STE_S2TG(x)    extract32((x)->word[5], 14, 2)
-> +#define STE_S2PS(x)    extract32((x)->word[5], 16, 3)
-> +#define STE_S2AA64(x)  extract32((x)->word[5], 19, 1)
-> +#define STE_S2HD(x)    extract32((x)->word[5], 24, 1)
-> +#define STE_S2HA(x)    extract32((x)->word[5], 25, 1)
-> +#define STE_S2S(x)     extract32((x)->word[5], 26, 1)
-> +#define STE_CTXPTR(x)                                           \
-> +    ({                                                          \
-> +        unsigned long addr;                                     \
-> +        addr = (uint64_t)extract32((x)->word[1], 0, 16) << 32;  \
-> +        addr |= (uint64_t)((x)->word[0] & 0xffffffc0);          \
-> +        addr;                                                   \
-> +    })
-> +
-> +#define STE_S2TTB(x)                                            \
-> +    ({                                                          \
-> +        unsigned long addr;                                     \
-> +        addr = (uint64_t)extract32((x)->word[7], 0, 16) << 32;  \
-> +        addr |= (uint64_t)((x)->word[6] & 0xfffffff0);          \
-> +        addr;                                                   \
-> +    })
-> +
-> +static inline int oas2bits(int oas_field)
-> +{
-> +    switch (oas_field) {
-> +    case 0b011:
-> +        return 42;
-> +    case 0b100:
-> +        return 44;
-> +    default:
-> +        return 32 + (1 << oas_field);
-
-Is this right? For instance OAS == 0b001 should be 36,
-but 32 + (1 << 1) == 34 ?  0b110 should be 52, but
-32 + (1 << 6) == 96 ?
-
-I'm not sure there's a neat relationship between the field
-values and the address sizes here, so maybe we should just
-have a switch with a case for each value?
-
-> +   }
-> +}
-> +
-> +static inline int pa_range(STE *ste)
-> +{
-> +    int oas_field = MIN(STE_S2PS(ste), SMMU_IDR5_OAS);
-> +
-> +    if (!STE_S2AA64(ste)) {
-> +        return 40;
-> +    }
-> +
-> +    return oas2bits(oas_field);
-> +}
-> +
-> +#define MAX_PA(ste) ((1 << pa_range(ste)) - 1)
-> +
-> +/* CD fields */
-> +
-> +#define CD_VALID(x)   extract32((x)->word[0], 30, 1)
-> +#define CD_ASID(x)    extract32((x)->word[1], 16, 16)
-> +#define CD_TTB(x, sel)                                      \
-> +    ({                                                      \
-> +        uint64_t hi, lo;                                    \
-> +        hi = extract32((x)->word[(sel) * 2 + 3], 0, 16);    \
-
-Spec says TTB0/1 fields go up to bit 19. You want the whole lot
-even if we don't support address sizes that wide because out
-of range high bits should cause an illegal CD error, not be ignored.
-
-> +        hi <<= 32;                                          \
-> +        lo = (x)->word[(sel) * 2 + 2] & ~0xf;               \
-
-Does this ~0xf end up correctly sign extending up into the top 32 bits?
-ULL suffix would make it certain.
-
-> +        hi | lo;                                            \
-> +    })
-> +
-> +#define CD_TSZ(x, sel)   extract32((x)->word[0], (16 * (sel)) + 0, 6)
-> +#define CD_TG(x, sel)    extract32((x)->word[0], (16 * (sel)) + 6, 2)
-> +#define CD_EPD(x, sel)   extract32((x)->word[0], (16 * (sel)) + 14, 1)
-> +#define CD_ENDI(x)       extract32((x)->word[0], 15, 1)
-> +#define CD_IPS(x)        extract32((x)->word[1], 0 , 3)
-> +#define CD_TBI(x)        extract32((x)->word[1], 6 , 2)
-> +#define CD_S(x)          extract32((x)->word[1], 12, 1)
-> +#define CD_R(x)          extract32((x)->word[1], 13, 1)
-> +#define CD_A(x)          extract32((x)->word[1], 14, 1)
-> +#define CD_AARCH64(x)    extract32((x)->word[1], 9 , 1)
-> +
-> +#define CDM_VALID(x)    ((x)->word[0] & 0x1)
-> +
-> +static inline int is_cd_valid(SMMUv3State *s, STE *ste, CD *cd)
-> +{
-> +    return CD_VALID(cd);
-> +}
-> +
-> +/**
-> + * tg2granule - Decodes the CD translation granule size field according
-> + * to the ttbr in use
-> + * @bits: TG0/1 fields
-> + * @ttbr: ttbr index in use
+>  include/hw/arm/bcm2836.h | 19 +++++++++++++++++++
+>  hw/arm/bcm2836.c         | 37 ++++++++++++++++++++++++++++++++-----
+>  hw/arm/raspi.c           |  3 ++-
+>  3 files changed, 53 insertions(+), 6 deletions(-)
+> 
+> diff --git a/include/hw/arm/bcm2836.h b/include/hw/arm/bcm2836.h
+> index 9a10a76631..93248399ba 100644
+> --- a/include/hw/arm/bcm2836.h
+> +++ b/include/hw/arm/bcm2836.h
+> @@ -20,6 +20,13 @@
+>  
+>  #define BCM283X_NCPUS 4
+>  
+> +/* These type names are for specific SoCs; other than instantiating
+> + * them, code using these devices should always handle them via the
+> + * BCM283x base class, so they have no BCM2836(obj) etc macros.
 > + */
-> +static inline int tg2granule(int bits, int ttbr)
-> +{
-> +    switch (bits) {
-> +    case 1:
-> +        return ttbr ? 14 : 16;
-> +    case 2:
-> +        return ttbr ? 12 : 14;
-> +    case 3:
-> +        return ttbr ? 16 : 12;
-> +    default:
-> +        return 12;
-
-TG0 == 0b11 and TG1 == 0b00 are reserved and should cause
-an illegal CD error if the config means they would be used,
-not be treated as if they were one of the other values.
-
-The spec has a definition of a CD_ILLEGAL expression which
-specifies what conditions should cause an illegal CD error.
-It might be useful to have something in the patchset that looks
-like that, and then later you can just assert that you're
-not dealing with illegal values, or ignore them.
-
-> +    }
-> +}
+> +#define TYPE_BCM2836 "bcm2836"
+> +#define TYPE_BCM2837 "bcm2837"
 > +
-> +#define L1STD_L2PTR(stm) ({                                 \
-> +            uint64_t hi, lo;                            \
-> +            hi = (stm)->word[1];                        \
-> +            lo = (stm)->word[0] & ~(uint64_t)0x1f;      \
-
-I see here you have a cast to force the mask to 64-bits wide.
-ULL suffix would be shorter, but in any case do the same thing
-in all places.
-
-> +            hi << 32 | lo;                              \
-> +        })
-
-This would definitely be better as an inline function rather than
-a multiline macro that has to use the GCC extension to define
-macro-local variables and return a value.
-
+>  typedef struct BCM283XState {
+>      /*< private >*/
+>      DeviceState parent_obj;
+> @@ -33,4 +40,16 @@ typedef struct BCM283XState {
+>      BCM2835PeripheralState peripherals;
+>  } BCM283XState;
+>  
+> +typedef struct BCM283XInfo BCM283XInfo;
 > +
-> +#define L1STD_SPAN(stm) (extract32((stm)->word[0], 0, 4))
+> +typedef struct BCM283XClass {
+> +    DeviceClass parent_class;
+> +    const BCM283XInfo *info;
+> +} BCM283XClass;
 > +
->  #endif
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 0adfe53..384393f 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -289,6 +289,344 @@ static void smmuv3_init_regs(SMMUv3State *s)
->      s->sid_split = 0;
+> +#define BCM283X_CLASS(klass) \
+> +    OBJECT_CLASS_CHECK(BCM283XClass, (klass), TYPE_BCM283X)
+> +#define BCM283X_GET_CLASS(obj) \
+> +    OBJECT_GET_CLASS(BCM283XClass, (obj), TYPE_BCM283X)
+> +
+>  #endif /* BCM2836_H */
+> diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+> index 1d1908654b..07d2705f96 100644
+> --- a/hw/arm/bcm2836.c
+> +++ b/hw/arm/bcm2836.c
+> @@ -23,6 +23,19 @@
+>  /* "QA7" (Pi2) interrupt controller and mailboxes etc. */
+>  #define BCM2836_CONTROL_BASE    0x40000000
+>  
+> +struct BCM283XInfo {
+> +    const char *name;
+> +};
+> +
+> +static const BCM283XInfo bcm283x_socs[] = {
+> +    {
+> +        .name = TYPE_BCM2836,
+> +    },
+> +    {
+> +        .name = TYPE_BCM2837,
+> +    },
+> +};
+> +
+>  static void bcm2836_init(Object *obj)
+>  {
+>      BCM283XState *s = BCM283X(obj);
+> @@ -156,25 +169,39 @@ static Property bcm2836_props[] = {
+>      DEFINE_PROP_END_OF_LIST()
+>  };
+>  
+> -static void bcm2836_class_init(ObjectClass *oc, void *data)
+> +static void bcm283x_class_init(ObjectClass *oc, void *data)
+>  {
+>      DeviceClass *dc = DEVICE_CLASS(oc);
+> +    BCM283XClass *bc = BCM283X_CLASS(oc);
+>  
+> -    dc->props = bcm2836_props;
+> +    bc->info = data;
+>      dc->realize = bcm2836_realize;
+> +    dc->props = bcm2836_props;
 >  }
->
-> +static int smmu_get_ste(SMMUv3State *s, dma_addr_t addr, STE *buf,
-> +                        SMMUEventInfo *event)
-> +{
-> +    int ret;
-> +
-> +    trace_smmuv3_get_ste(addr);
-> +    /* TODO: guarantee 64-bit single-copy atomicity */
-> +    ret = dma_memory_read(&address_space_memory, addr,
-> +                          (void *)buf, sizeof(*buf));
-> +    if (ret != MEMTX_OK) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "Cannot fetch pte at address=0x%"PRIx64"\n", addr);
-> +        event->type = SMMU_EVT_F_STE_FETCH;
-> +        event->u.f_ste_fetch.addr = addr;
-> +        return -EINVAL;
-> +    }
-> +    return 0;
-> +
-> +}
-> +
-> +/* @ssid > 0 not supported yet */
-> +static int smmu_get_cd(SMMUv3State *s, STE *ste, uint32_t ssid,
-> +                       CD *buf, SMMUEventInfo *event)
-> +{
-> +    dma_addr_t addr = STE_CTXPTR(ste);
-> +    int ret;
-> +
-> +    trace_smmuv3_get_cd(addr);
-> +    /* TODO: guarantee 64-bit single-copy atomicity */
-> +    ret = dma_memory_read(&address_space_memory, addr,
-> +                           (void *)buf, sizeof(*buf));
-> +    if (ret != MEMTX_OK) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "Cannot fetch pte at address=0x%"PRIx64"\n", addr);
-> +        event->type = SMMU_EVT_F_CD_FETCH;
-> +        event->u.f_ste_fetch.addr = addr;
-> +        return -EINVAL;
-> +    }
-> +    return 0;
-> +}
-> +
-> +static int decode_ste(SMMUv3State *s, SMMUTransCfg *cfg,
-> +                      STE *ste, SMMUEventInfo *event)
-> +{
-> +    uint32_t config = STE_CONFIG(ste);
-> +    int ret = -EINVAL;
-> +
-> +    if (STE_CFG_ABORT(config)) {
-> +        /* abort but don't record any event */
-> +        cfg->aborted = true;
-> +        return ret;
-> +    }
-> +
-> +    if (STE_CFG_BYPASS(config)) {
-> +        cfg->bypassed = true;
-> +        return ret;
-> +    }
-> +
-> +    if (!STE_VALID(ste)) {
-> +        goto bad_ste;
-> +    }
-> +
-> +    if (STE_CFG_S2_ENABLED(config)) {
-> +        error_setg(&error_fatal, "SMMUv3 does not support stage 2 yet");
-
-Usual remarks about not using error_setg() for this kind of thing.
-
-> +    }
-> +
-> +    if (STE_S1CDMAX(ste) != 0) {
-> +        error_setg(&error_fatal,
-> +                   "SMMUv3 does not support multiple context descriptors yet");
-> +        goto bad_ste;
-> +    }
-> +    return 0;
-> +
-> +bad_ste:
-> +    event->type = SMMU_EVT_C_BAD_STE;
-> +    return -EINVAL;
-> +}
-> +
-> +/**
-> + * smmu_find_ste - Return the stream table entry associated
-> + * to the sid
-> + *
-> + * @s: smmuv3 handle
-> + * @sid: stream ID
-> + * @ste: returned stream table entry
-> + * @event: handle to an event info
-> + *
-> + * Supports linear and 2-level stream table
-> + * Return 0 on success, -EINVAL otherwise
-> + */
-> +static int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
-> +                         SMMUEventInfo *event)
-> +{
-> +    dma_addr_t addr;
-> +    int ret;
-> +
-> +    trace_smmuv3_find_ste(sid, s->features, s->sid_split);
-> +    /* Check SID range */
-> +    if (sid > (1 << SMMU_IDR1_SIDSIZE)) {
-> +        event->type = SMMU_EVT_C_BAD_STREAMID;
-> +        return -EINVAL;
-> +    }
-> +    if (s->features & SMMU_FEATURE_2LVL_STE) {
-> +        int l1_ste_offset, l2_ste_offset, max_l2_ste, span;
-> +        dma_addr_t strtab_base, l1ptr, l2ptr;
-> +        STEDesc l1std;
-> +
-> +        strtab_base = s->strtab_base & SMMU_BASE_ADDR_MASK;
-> +        l1_ste_offset = sid >> s->sid_split;
-> +        l2_ste_offset = sid & ((1 << s->sid_split) - 1);
-> +        l1ptr = (dma_addr_t)(strtab_base + l1_ste_offset * sizeof(l1std));
-> +        /* TODO: guarantee 64-bit single-copy atomicity */
-> +        ret = dma_memory_read(&address_space_memory, l1ptr,
-> +                              (uint8_t *)&l1std, sizeof(l1std));
-> +        if (ret != MEMTX_OK) {
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                          "Could not read L1PTR at 0X%"PRIx64"\n", l1ptr);
-> +            event->type = SMMU_EVT_F_STE_FETCH;
-> +            event->u.f_ste_fetch.addr = l1ptr;
-> +            return -EINVAL;
-> +        }
-> +
-> +        span = L1STD_SPAN(&l1std);
-> +
-> +        if (!span) {
-> +            /* l2ptr is not valid */
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                          "invalid sid=%d (L1STD span=0)\n", sid);
-> +            event->type = SMMU_EVT_C_BAD_STREAMID;
-> +            return -EINVAL;
-> +        }
-> +        max_l2_ste = (1 << span) - 1;
-> +        l2ptr = L1STD_L2PTR(&l1std);
-> +        trace_smmuv3_find_ste_2lvl(s->strtab_base, l1ptr, l1_ste_offset,
-> +                                   l2ptr, l2_ste_offset, max_l2_ste);
-> +        if (l2_ste_offset > max_l2_ste) {
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                          "l2_ste_offset=%d > max_l2_ste=%d\n",
-> +                          l2_ste_offset, max_l2_ste);
-> +            event->type = SMMU_EVT_C_BAD_STE;
-> +            return -EINVAL;
-> +        }
-> +        addr = L1STD_L2PTR(&l1std) + l2_ste_offset * sizeof(*ste);
-> +    } else {
-> +        addr = s->strtab_base + sid * sizeof(*ste);
-> +    }
-> +
-> +    if (smmu_get_ste(s, addr, ste, event)) {
-> +        return -EINVAL;
-> +    }
-> +
-> +    return 0;
-> +}
-> +
-> +static int decode_cd(SMMUTransCfg *cfg, CD *cd, SMMUEventInfo *event)
-> +{
-> +    int ret = -EINVAL;
+>  
+> -static const TypeInfo bcm2836_type_info = {
+> +static const TypeInfo bcm283x_type_info = {
+>      .name = TYPE_BCM283X,
+>      .parent = TYPE_DEVICE,
+>      .instance_size = sizeof(BCM283XState),
+>      .instance_init = bcm2836_init,
+> -    .class_init = bcm2836_class_init,
+> +    .class_size = sizeof(BCM283XClass),
+> +    .abstract = true,
+>  };
+>  
+>  static void bcm2836_register_types(void)
+>  {
+> -    type_register_static(&bcm2836_type_info);
 > +    int i;
 > +
-> +    if (!CD_VALID(cd) || !CD_AARCH64(cd)) {
-> +        goto error;
+> +    type_register_static(&bcm283x_type_info);
+> +    for (i = 0; i < ARRAY_SIZE(bcm283x_socs); i++) {
+> +        TypeInfo ti = {
+> +            .name = bcm283x_socs[i].name,
+> +            .parent = TYPE_BCM283X,
+> +            .class_init = bcm283x_class_init,
+> +            .class_data = (void *) &bcm283x_socs[i],
+> +        };
+> +        type_register(&ti);
 > +    }
-> +
-> +    /* we support only those at the moment */
-> +    cfg->aa64 = true;
-> +    cfg->stage = 1;
-> +
-> +    cfg->oas = oas2bits(CD_IPS(cd));
-> +    cfg->oas = MIN(oas2bits(SMMU_IDR5_OAS), cfg->oas);
-> +    cfg->tbi = CD_TBI(cd);
-> +    cfg->asid = CD_ASID(cd);
-> +
-> +    trace_smmuv3_decode_cd(cfg->oas);
-> +
-> +    /* decode data dependent on TT */
-> +    for (i = 0; i <= 1; i++) {
-> +        int tg, tsz;
-> +        SMMUTransTableInfo *tt = &cfg->tt[i];
-> +
-> +        cfg->tt[i].disabled = CD_EPD(cd, i);
-> +        if (cfg->tt[i].disabled) {
-> +            continue;
-> +        }
-> +
-> +        tsz = CD_TSZ(cd, i);
-> +        if (tsz < 16 || tsz > 39) {
-> +            goto error;
-> +        }
-> +
-> +        tg = CD_TG(cd, i);
-> +        tt->granule_sz = tg2granule(tg, i);
-> +        if ((tt->granule_sz != 12 && tt->granule_sz != 16) || CD_ENDI(cd)) {
-> +            goto error;
-> +        }
-> +
-> +        tt->tsz = tsz;
-> +        tt->initial_level = 4 - (64 - tsz - 4) / (tt->granule_sz - 3);
-> +        tt->ttb = CD_TTB(cd, i);
-> +        tt->ttb = extract64(tt->ttb, 0, cfg->oas);
-> +        trace_smmuv3_decode_cd_tt(i, tt->tsz, tt->ttb,
-> +                                  tt->granule_sz, tt->initial_level);
-> +    }
-> +
-> +    event->record_trans_faults = CD_R(cd);
-> +
-> +    return 0;
-> +
-> +error:
-> +    event->type = SMMU_EVT_C_BAD_CD;
-> +    return ret;
-> +}
-> +
-> +/**
-> + * smmuv3_decode_config - Prepare the translation configuration
-> + * for the @mr iommu region
-> + * @mr: iommu memory region the translation config must be prepared for
-> + * @cfg: output translation configuration which is populated through
-> + *       the different configuration decodng steps
-
-"decoding"
-
-> + * @event: must be zero'ed by the caller
-> + *
-> + * return < 0 if the translation needs to be aborted (@event is filled
-> + * accordingly). Return 0 otherwise.
-> + */
-> +static int smmuv3_decode_config(IOMMUMemoryRegion *mr, SMMUTransCfg *cfg,
-> +                                SMMUEventInfo *event)
-> +{
-> +    SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
-> +    uint32_t sid = smmu_get_sid(sdev);
-> +    SMMUv3State *s = sdev->smmu;
-> +    int ret = -EINVAL;
-> +    STE ste;
-> +    CD cd;
-> +
-> +    if (smmu_find_ste(s, sid, &ste, event)) {
-> +        return ret;
-> +    }
-> +
-> +    if (decode_ste(s, cfg, &ste, event)) {
-> +        return ret;
-> +    }
-> +
-> +    if (smmu_get_cd(s, &ste, 0 /* ssid */, &cd, event)) {
-> +        return ret;
-> +    }
-> +
-> +    return decode_cd(cfg, &cd, event);
-> +}
-> +
-> +static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
-> +                                      IOMMUAccessFlags flag)
-> +{
-> +    SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
-> +    SMMUv3State *s = sdev->smmu;
-> +    uint32_t sid = smmu_get_sid(sdev);
-> +    SMMUEventInfo event = {.type = SMMU_EVT_OK, .sid = sid};
-> +    SMMUPTWEventInfo ptw_info = {};
-> +    SMMUTransCfg cfg = {};
-> +    IOMMUTLBEntry entry = {
-> +        .target_as = &address_space_memory,
-> +        .iova = addr,
-> +        .translated_addr = addr,
-> +        .addr_mask = ~(hwaddr)0,
-> +        .perm = IOMMU_NONE,
-> +    };
-> +    int ret = 0;
-> +
-> +    if (!smmu_enabled(s)) {
-> +        goto out;
-> +    }
-> +
-> +    ret = smmuv3_decode_config(mr, &cfg, &event);
-> +    if (ret) {
-> +        goto out;
-> +    }
-> +
-> +    if (cfg.aborted) {
-> +        goto out;
-> +    }
-> +
-> +    ret = smmu_ptw(&cfg, addr, flag, &entry, &ptw_info);
-> +    if (ret) {
-> +        switch (ptw_info.type) {
-> +        case SMMU_PTW_ERR_WALK_EABT:
-> +            event.type = SMMU_EVT_F_WALK_EABT;
-> +            event.u.f_walk_eabt.addr = addr;
-> +            event.u.f_walk_eabt.rnw = flag & 0x1;
-> +            event.u.f_walk_eabt.class = 0x1;
-> +            event.u.f_walk_eabt.addr2 = ptw_info.addr;
-> +            break;
-> +        case SMMU_PTW_ERR_TRANSLATION:
-> +            if (event.record_trans_faults) {
-> +                event.type = SMMU_EVT_F_TRANSLATION;
-> +                event.u.f_translation.addr = addr;
-> +                event.u.f_translation.rnw = flag & 0x1;
-> +            }
-> +            break;
-> +        case SMMU_PTW_ERR_ADDR_SIZE:
-> +            if (event.record_trans_faults) {
-> +                event.type = SMMU_EVT_F_ADDR_SIZE;
-> +                event.u.f_addr_size.addr = addr;
-> +                event.u.f_addr_size.rnw = flag & 0x1;
-> +            }
-> +            break;
-> +        case SMMU_PTW_ERR_ACCESS:
-> +            if (event.record_trans_faults) {
-> +                event.type = SMMU_EVT_F_ACCESS;
-> +                event.u.f_access.addr = addr;
-> +                event.u.f_access.rnw = flag & 0x1;
-> +            }
-> +            break;
-> +        case SMMU_PTW_ERR_PERMISSION:
-> +            if (event.record_trans_faults) {
-> +                event.type = SMMU_EVT_F_PERMISSION;
-> +                event.u.f_permission.addr = addr;
-> +                event.u.f_permission.rnw = flag & 0x1;
-> +            }
-> +            break;
-> +        default:
-> +            error_setg(&error_fatal, "SMMUV3 BUG");
-
-g_assert_not_reached(), I guess ?
-
-> +        }
-> +    }
-> +
-> +    trace_smmuv3_translate(mr->parent_obj.name, sid, addr,
-> +                           entry.translated_addr, entry.perm);
-> +out:
-> +    if (ret) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s translation failed for iova=0x%"PRIx64" (%s)\n",
-> +                      mr->parent_obj.name, addr, SMMU_EVENT_STRING(event.type));
-> +        entry.perm = IOMMU_NONE;
-> +        smmuv3_record_event(s, &event);
-> +    } else if (!cfg.aborted) {
-> +        entry.perm = flag;
-> +    }
-> +
-> +    return entry;
-> +}
-> +
->  static int smmuv3_cmdq_consume(SMMUv3State *s)
->  {
->      SMMUCmdError cmd_error = SMMU_CERROR_NONE;
-> @@ -739,6 +1077,9 @@ static void smmuv3_class_init(ObjectClass *klass, void *data)
->  static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
->                                                    void *data)
->  {
-> +    IOMMUMemoryRegionClass *imrc = IOMMU_MEMORY_REGION_CLASS(klass);
-> +
-> +    imrc->translate = smmuv3_translate;
 >  }
->
->  static const TypeInfo smmuv3_type_info = {
-> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-> index c79c15e..1102bd4 100644
-> --- a/hw/arm/trace-events
-> +++ b/hw/arm/trace-events
-> @@ -29,3 +29,12 @@ smmuv3_write_mmio_idr(hwaddr addr, uint64_t val) "write to RO/Unimpl reg 0x%lx v
->  smmuv3_write_mmio_evtq_cons_bef_clear(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "Before clearing interrupt prod:0x%x cons:0x%x prod.w:%d cons.w:%d"
->  smmuv3_write_mmio_evtq_cons_after_clear(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "after clearing interrupt prod:0x%x cons:0x%x prod.w:%d cons.w:%d"
->  smmuv3_record_event(const char *type, uint32_t sid) "%s sid=%d"
-> +smmuv3_find_ste(uint16_t sid, uint32_t features, uint16_t sid_split) "SID:0x%x features:0x%x, sid_split:0x%x"
-> +smmuv3_find_ste_2lvl(uint64_t strtab_base, hwaddr l1ptr, int l1_ste_offset, hwaddr l2ptr, int l2_ste_offset, int max_l2_ste) "strtab_base:0x%lx l1ptr:0x%"PRIx64" l1_off:0x%x, l2ptr:0x%"PRIx64" l2_off:0x%x max_l2_ste:%d"
-> +smmuv3_get_ste(hwaddr addr) "STE addr: 0x%"PRIx64
-> +smmuv3_translate_bypass(const char *n, uint16_t sid, hwaddr addr, bool is_write) "%s sid=%d bypass iova:0x%"PRIx64" is_write=%d"
-> +smmuv3_translate_in(uint16_t sid, int pci_bus_num, hwaddr strtab_base) "SID:0x%x bus:%d strtab_base:0x%"PRIx64
-> +smmuv3_get_cd(hwaddr addr) "CD addr: 0x%"PRIx64
-> +smmuv3_translate(const char *n, uint16_t sid, hwaddr iova, hwaddr translated, int perm) "%s sid=%d iova=0x%"PRIx64" translated=0x%"PRIx64" perm=0x%x"
-> +smmuv3_decode_cd(uint32_t oas) "oas=%d"
-> +smmuv3_decode_cd_tt(int i, uint32_t tsz, uint64_t ttb, uint32_t granule_sz, int initial_level) "TT[%d]:tsz:%d ttb:0x%"PRIx64" granule_sz:%d, initial_level = %d"
-> --
-
-More hwaddrs in here that should be uint64_t.
-
-thanks
--- PMM
+>  
+>  type_init(bcm2836_register_types)
+> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+> index 58c6e80a17..f588720138 100644
+> --- a/hw/arm/raspi.c
+> +++ b/hw/arm/raspi.c
+> @@ -136,7 +136,8 @@ static void raspi_init(MachineState *machine, int version)
+>      BusState *bus;
+>      DeviceState *carddev;
+>  
+> -    object_initialize(&s->soc, sizeof(s->soc), TYPE_BCM283X);
+> +    object_initialize(&s->soc, sizeof(s->soc),
+> +                      version == 3 ? TYPE_BCM2837 : TYPE_BCM2836);
+>      object_property_add_child(OBJECT(machine), "soc", OBJECT(&s->soc),
+>                                &error_abort);
+>  
+> 

@@ -1,148 +1,176 @@
-Received: by 10.28.91.67 with SMTP id p64csp994896wmb;
-        Wed, 28 Feb 2018 11:44:30 -0800 (PST)
-X-Google-Smtp-Source: AG47ELuaKm5iy0i8V5kA2/hgjo4cnehJiwgp4/ZRLENNTJ/inryNDATXcCFEGnCRiti9AUcQW+K0
-X-Received: by 2002:a25:c7cd:: with SMTP id w196-v6mr13336161ybe.193.1519847070168;
-        Wed, 28 Feb 2018 11:44:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519847070; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp1298769wmb;
+        Tue, 13 Mar 2018 16:48:21 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELtzJBYQkUy0CChNrP919PtNSbgjMUwjlZRusNiymNJF7SrKtZd9AB9HjARy6XM8dFR3JnTV
+X-Received: by 10.200.47.120 with SMTP id k53mr4125995qta.151.1520984901774;
+        Tue, 13 Mar 2018 16:48:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1520984901; cv=none;
         d=google.com; s=arc-20160816;
-        b=ogB8UO05HpaUIMoOdp54fYQMDgA6E1vb6iNyhRje+kFW+/8rgrIPOqNfKojqEwrilz
-         090ygO8JE7GTrdlrAC1AUbCq0JVjwYyWkPOz0RAtsYGfqpx5Aem3oaMZL/pLJmts57U9
-         p8Fpl6YM4xPQa6iCahnSARbXjb4YxzlWDyjCyQihY9uv20w8g4raS1Bf2WQzUGzTevvx
-         0pZoVjYhz8TW36BV/qKQgdQZuwyWcFIsZU/dQZdQ4Uvr+TBqNfOLa2sj3N00/naBzkI8
-         fp2R0d4oU35rauPdlsCjblyg/NhkVPzJOT6RZnnP/us8S7cC+tekvuiBvQJJKFxBqaw2
-         sFJA==
+        b=EQ9Pm1QGHnsctK1odjDsJP96YK3VAJWmdpHNdA2/Hec/l6wPfKvrCcQy76U5GXtdN9
+         SKOrmzw6lVSEzgUKYphFDmO+0e1KFz2mYFFZE6/0nXEsHFY3H5eLIOk5pjXTTN1u++0O
+         g+m78y1JBA9x+Vl+1qOAep0CO43EScMDGq/2OB8D5ETAM3cH4NIvrix9Bh8HliJXxOgb
+         fTbdsLVitjfE2ES6lsIUBH859T9qf3NkW9XWQO1VQtbYuHJElOPrOKNDhip4klKyWP4e
+         MKbNpti23ydhuaUBPnOoJ0aw54CMBxbSYZtojznaSUSJdd2uvrt3gUeyk/V18usrCM1/
+         EPbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=G8wDRM28kIfKn4QAnTQXP7Nr7iSo1v6usJSUJDiitjY=;
-        b=X10duzlgiX/FZ9iIm8LMfe6HLhF1e655soVAWlGn9QWhMJe0oX4Im3lGEt4RDTcfm2
-         jON2GgEgHp3IIiMm50YoMZsnQxpvg7fOAQn6GquHM2coQetKVTWLk+L8tHrC2B/3HCxf
-         Ywanozr9X+evfHNUg9r53cHgtF5Xvlx2Z5U7KLGUTo+xDWeRdeXLuUjTfobICKzYig1B
-         1kn02p4HS9jgB3PgvQy2NUQP+YjtkgRkp2H0ElIi2sziZFwQWL2YhJqlp3+MDso3YL4t
-         88Mgbyt7kAXjnJ6RvQKomvlHgeDxJxqtH/1d1IOJVq3Hbh+htOtQ5i2NSCfPqLa+mrLj
-         L43w==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=jOLMcSiwcifXItM3BwShhD+SI28pNjJUDJtkjkauv48=;
+        b=wlEjSXrjC8mkFqnGpybTkNzfmbbH8x3LZl9ETz2f4NE31eq17r+3h1y3irSzRmiq0v
+         clzDu+bdCYqsy7qWlu8n1hfBmkl15ccKLh4+qhoanFMLa9YJzYvheZCP88AtvpcmiXCd
+         D367ErETK6UL11TsQ+SqZbsQ4oJd11ZBpeTW/U/tVna4CzgaBncEe9BOW2uDzqbhXU2x
+         Q7zUUl3Sy/IwLURR+agvNrmcaXwfU70KaVgKh2WzzIXzwuMPz9UUT6xp1gIPWikIx5iO
+         9/7J0on+eGXYwaV6VLN4k3cXDxxTlvE8aokfiP7lk/wzD86UoztxiKubpdzIZc18VL0G
+         S4eA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Ky/BiErS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oLVPpD+Q;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r187si162472ywb.209.2018.02.28.11.44.30
+        by mx.google.com with ESMTPS id n65si1321854qte.323.2018.03.13.16.48.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 28 Feb 2018 11:44:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 13 Mar 2018 16:48:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Ky/BiErS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46496 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oLVPpD+Q;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:43635 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1er7eP-0005de-Kn
-	for alex.bennee@linaro.org; Wed, 28 Feb 2018 14:44:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35814)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1evteX-00082Z-8F
+	for alex.bennee@linaro.org; Tue, 13 Mar 2018 19:48:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37369)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1er7SB-0003Yf-Nn
-	for qemu-devel@nongnu.org; Wed, 28 Feb 2018 14:31:52 -0500
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1evtEC-00007w-Bb
+	for qemu-arm@nongnu.org; Tue, 13 Mar 2018 19:21:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1er7SA-0006VC-RT
-	for qemu-devel@nongnu.org; Wed, 28 Feb 2018 14:31:51 -0500
-Received: from mail-pl0-x244.google.com ([2607:f8b0:400e:c01::244]:36888)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1evtEB-0002zz-EJ
+	for qemu-arm@nongnu.org; Tue, 13 Mar 2018 19:21:08 -0400
+Received: from mail-wr0-x241.google.com ([2a00:1450:400c:c0c::241]:45166)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1er7SA-0006Ug-Lj
-	for qemu-devel@nongnu.org; Wed, 28 Feb 2018 14:31:50 -0500
-Received: by mail-pl0-x244.google.com with SMTP id ay8-v6so2120098plb.4
-	for <qemu-devel@nongnu.org>; Wed, 28 Feb 2018 11:31:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=G8wDRM28kIfKn4QAnTQXP7Nr7iSo1v6usJSUJDiitjY=;
-	b=Ky/BiErSijmkbBjXnVW0X2kDLLF2HkcYkRWayi1dKCWKcuRyeiwFBeiMlXTvgY9dLo
-	hjeMv8CzsgdwKQwQK86xAiOaSc6npScr0gLupPKG664pGgr8/a4HQ7D4aP2pJbUowF8I
-	SqOM1BaQ2lx4soeoI1zQ8XGEFA4i8wxi+L0/g=
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1evtE4-0002vz-1c; Tue, 13 Mar 2018 19:21:00 -0400
+Received: by mail-wr0-x241.google.com with SMTP id h2so2589967wre.12;
+	Tue, 13 Mar 2018 16:20:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=jOLMcSiwcifXItM3BwShhD+SI28pNjJUDJtkjkauv48=;
+	b=oLVPpD+Q/fyOBT037jrAImzrY+lj7KBrUhAR4jw5WWpobRCaAVGpfXoe6gmWsRcjfJ
+	s/wLPDv0MWGq7wafjd8SPiTnah/LQqNHBNUGIRb6GzpHMrH5/gXQnbyeqc2EG6ePOOTp
+	BrTXUMVNZPPUTcYCJrNZtjWWK7Yhbn+9Kyk3WGtnlEaNdzQW23Psw9jdlUSuQTpApIZn
+	tTcqHdzJzsCRdoyJ83/D7fA8mk0/7NMQoXfQrPO9/3zvZs3O4S6aTAsPP5ZmlYQaCT/o
+	0hZRQ+nfaqWfLHb2BwLWrFFbrS3KpkuVgDqe7WN41+o2KjtzLLw/lFXwxE9xkNsiZzUT
+	v/mA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=G8wDRM28kIfKn4QAnTQXP7Nr7iSo1v6usJSUJDiitjY=;
-	b=Dcts0fhlS1R3i0vLi8hQXj33aHhtBLJiFbTCS06alqa+H4y7fLuohQgavQAT5lsSz3
-	9JxN1dgHxiTOedDRJPsHnjoupeK/lqgVes+MoCEJMvgduKLZBBPHnLDZmamHuiEbxmi0
-	DmPnmo5Ap8MvyUtiKYXcBVCZXc7XAqNxmK/YTkaLBHM1QdlEbcdS5n33z3YhvU6ToPgq
-	jXXmZzD3pqQ8sNXxAvTBhQ0Y8vIxTPDcU73/60nqqoqu5uJC+YEnEXooYvj5CP0fevaT
-	LTQ6zTq8i/S4AIwWXR6rxLmvkEzEvZ2OyrZfwm6BQGGVbBgKKxeTkgEOPu80NvHjuNn6
-	PDHA==
-X-Gm-Message-State: APf1xPBDRwUUqGHLAaoLYktmpdMMNBT51oqT6QvYpQc0efZC9V4FvN+v
-	eCd04S0TL1fMMb8jrXcRsdfONJREawY=
-X-Received: by 2002:a17:902:a512:: with SMTP id
-	s18-v6mr18972966plq.296.1519846309446; 
-	Wed, 28 Feb 2018 11:31:49 -0800 (PST)
-Received: from cloudburst.twiddle.net (97-113-169-147.tukw.qwest.net.
-	[97.113.169.147]) by smtp.gmail.com with ESMTPSA id
-	k185sm4200212pgk.94.2018.02.28.11.31.48
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Wed, 28 Feb 2018 11:31:48 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Wed, 28 Feb 2018 11:31:24 -0800
-Message-Id: <20180228193125.20577-16-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.14.3
-In-Reply-To: <20180228193125.20577-1-richard.henderson@linaro.org>
-References: <20180228193125.20577-1-richard.henderson@linaro.org>
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=jOLMcSiwcifXItM3BwShhD+SI28pNjJUDJtkjkauv48=;
+	b=S0RpCzHcX9WTXzw5osuaEN1fFKXfW19r/S8UpDVs/q3pq6Chp2liVH8gCzjevuRdW0
+	0y6sXs0/hzKSsNXU4GdV6t7pygvLnYa3e1wJBr0ABW1VUkQmJJYR5aZTRz6NTus+abHU
+	IFb7HqsodgoO7kDQFBrNeGJF50x1N4Fwej4kxkoyd+D5P3dGfrRMmMXcprouLwPq8TDY
+	ZnTYzH6rl6LDvKKf8hXVTlKOZyFPsVvXRQvIof76C4qn3K9Sa0uHml8qxXyH20v2Yxzn
+	c9SvQ0ZV7fo9dA6EhK9lnAovZbFlMQmvfhaE3Cndmfn/5ovDJkytyVaXmF/H9DST9o2z
+	S+tQ==
+X-Gm-Message-State: AElRT7F+NJAa111h/buNRKbHl/4JBoJr1L4wLNMN8eSP09lb4MpgfL5p
+	Mm94NJTwLGl8vjkHVXk/I8A=
+X-Received: by 10.223.153.45 with SMTP id x42mr2039557wrb.124.1520983258978;
+	Tue, 13 Mar 2018 16:20:58 -0700 (PDT)
+Received: from [192.168.1.29] (AStrasbourg-554-1-221-65.w86-204.abo.wanadoo.fr.
+	[86.204.94.65]) by smtp.gmail.com with ESMTPSA id
+	140sm1865385wmi.34.2018.03.13.16.20.57
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 13 Mar 2018 16:20:58 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <20180313153458.26822-1-peter.maydell@linaro.org>
+	<20180313153458.26822-2-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <e77539c8-5c9e-4ee5-edc4-a4d044e5c476@amsat.org>
+Date: Wed, 14 Mar 2018 00:20:57 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.6.0
+MIME-Version: 1.0
+In-Reply-To: <20180313153458.26822-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c01::244
-Subject: [Qemu-devel] [PATCH v3 15/16] target/arm: Decode t32 simd 3reg and
- 2reg_scalar extension
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:400c:c0c::241
+Subject: Re: [Qemu-arm] [PATCH 1/9] hw/arm/raspi: Don't do board-setup or
+ secure-boot for raspi3
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: x8XqsoVeKlSZ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Pekka Enberg <penberg@iki.fi>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>, patches@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0QEsGVvLO8/s
 
-Happily, the bits are in the same places compared to a32.
+On 03/13/2018 04:34 PM, Peter Maydell wrote:
+> For the rpi1 and 2 we want to boot the Linux kernel via some
+> custom setup code that makes sure that the SMC instruction
+> acts as a no-op, because it's used for cache maintenance.
+> The rpi3 boots AArch64 kernels, which don't need SMC for
+> cache maintenance and always expect to be booted non-secure.
+> Don't fill in the aarch32-specific parts of the binfo struct.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  hw/arm/raspi.c | 17 +++++++++++++----
+>  1 file changed, 13 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+> index a37881433c..1ac0737149 100644
+> --- a/hw/arm/raspi.c
+> +++ b/hw/arm/raspi.c
+> @@ -82,10 +82,19 @@ static void setup_boot(MachineState *machine, int version, size_t ram_size)
+>      binfo.board_id = raspi_boardid[version];
+>      binfo.ram_size = ram_size;
+>      binfo.nb_cpus = smp_cpus;
+> -    binfo.board_setup_addr = BOARDSETUP_ADDR;
+> -    binfo.write_board_setup = write_board_setup;
+> -    binfo.secure_board_setup = true;
+> -    binfo.secure_boot = true;
+> +
+> +    if (version <= 2) {
+> +        /* The rpi1 and 2 require some custom setup code to run in Secure
+> +         * mode before booting a kernel (to set up the SMC vectors so
+> +         * that we get a no-op SMC; this is used by Linux to call the
+> +         * firmware for some cache maintenance operations.
+> +         * The rpi3 doesn't need this.
+> +         */
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/translate.c | 14 +++++++++++++-
- 1 file changed, 13 insertions(+), 1 deletion(-)
+I was expecting a much complicated fix... neat.
 
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 3ad8b4031c..ba6ab7d287 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -10774,7 +10774,19 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
-                                default_exception_el(s));
-             break;
-         }
--        if (((insn >> 24) & 3) == 3) {
-+        if ((insn & 0xfe000a00) == 0xfc000800
-+            && arm_dc_feature(s, ARM_FEATURE_V8)) {
-+            /* The Thumb2 and ARM encodings are identical.  */
-+            if (disas_neon_insn_3same_ext(s, insn)) {
-+                goto illegal_op;
-+            }
-+        } else if ((insn & 0xff000a00) == 0xfe000800
-+                   && arm_dc_feature(s, ARM_FEATURE_V8)) {
-+            /* The Thumb2 and ARM encodings are identical.  */
-+            if (disas_neon_insn_2reg_scalar_ext(s, insn)) {
-+                goto illegal_op;
-+            }
-+        } else if (((insn >> 24) & 3) == 3) {
-             /* Translate into the equivalent ARM encoding.  */
-             insn = (insn & 0xe2ffffff) | ((insn & (1 << 28)) >> 4) | (1 << 28);
-             if (disas_neon_data_insn(s, insn)) {
--- 
-2.14.3
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
+> +        binfo.board_setup_addr = BOARDSETUP_ADDR;
+> +        binfo.write_board_setup = write_board_setup;
+> +        binfo.secure_board_setup = true;
+> +        binfo.secure_boot = true;
+> +    }
+>  
+>      /* Pi2 and Pi3 requires SMP setup */
+>      if (version >= 2) {
+> 

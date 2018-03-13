@@ -1,351 +1,295 @@
-Received: by 10.28.4.212 with SMTP id 203csp2631730wme;
-        Mon, 16 Apr 2018 06:08:38 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx48O3ryJ4tJRCPW5FNXB5UdOEomvqSDP1akz8ppEJvrR7947IUjAooR4PBUcOj8Q+5YjfHwu
-X-Received: by 10.55.18.35 with SMTP id c35mr16042979qkh.165.1523884118734;
-        Mon, 16 Apr 2018 06:08:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523884118; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp1291965wmb;
+        Tue, 13 Mar 2018 16:37:29 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELtlPGNkjkg+t8k0NMzGTzHnsasY0xl6VPNMf40khjZ8oE+X634NCo+rv8FJYK+LU7QfD4Dc
+X-Received: by 10.200.82.6 with SMTP id r6mr4045849qtn.31.1520984248950;
+        Tue, 13 Mar 2018 16:37:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1520984248; cv=none;
         d=google.com; s=arc-20160816;
-        b=k0qejajIs7UrFiGy/2K+CJrRcTn60hf+RPO2uKVN0mqoxHazVY9dJmeo4E+SrLP9M1
-         slYmI8FW8R9r7yCvPIrx5aIpnLioPKkCYnzr5iuArX90UptrMs1e3SMiEAtRQOolG7sK
-         CWN5LKe68hFrVen9M9UyFndu+KYq1Ozayad5ky453mF9BAsypMAMnYlt4fx/1Vrn/v5M
-         2g0dbRhQTysuJY8iTOqqw31h4WzaNUrTlKPrp+Nyg4vcgxy+dYo0ZC4pXTzpMmwgTDgi
-         3yE2bAhJu4WVd3WFSYglDLfpHkvL9Gg1+Kzwy8K+MFmpdmlP92BhK8Mhb2HrX+BHUsUm
-         WmgA==
+        b=KJEI7ONupRfP3e5loJU/EmRDMBzpOJs6VZIgYKyln0BQhSdeyQ4HFMEL3Vvy1cmXtg
+         SV9hdiFEdfh3hhChVtmf+fwHCeMNj54MDtBs2tvCy1EQurb0uzW9Jx0Zm23TM8brWXmQ
+         YoOeUibVxO/3NVVzSWrGK2cxFuWWGC3Fd+X5W9nylUSAmJZ3YgYE5Pa0yzVpGpCwNhdT
+         lWOqVGNkGFVDNWJy92dMLioy1wRk5SntpNeZ8nu6FaNeF/jR2V2W1ckVQbaHso7yy+7h
+         30VHbAr90gnnLTP2rL8rrsqd6EiD6W0A6PODU++1Bg5ly0ctX9FwORw9ODtUsVmSULrh
+         Eoww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=D7B80F6hvaRL2Td0pc8qj7oD9bAoXlo0HmvnrFeMfHY=;
-        b=WEA64xC1uIp0P3saGQ2QN8hjPTENiovHuVyPzlLNj6D+ip1JwUjjmMXa6XSwe7g8Um
-         2uXU/oJKP4e0hiubLednj1bKKwfWlcCn0ccWzXyENJ+fNJT0tDU+y94FhdVdqy9se6LB
-         zXwO/MLsWmjDNUl/m+ZqvSaLyd9TqN6M+MZCgZWb09MITmZz03K8420NTZBbFAGleEq5
-         ITc2v/0YOroDOSoTg/vcbTWF7UjdKvgVHknAdC8CANI9Ynl9quNssfRJ0oWRObYEH6+n
-         5NBl169/X/uSNa9+sTgKCZH+HDmPPDDMI7gpjccM1ypQXRp1im+nR6t6QVOCuSWTg02M
-         w9kw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=mE66iRHi88berb+sS9bs06kQnu3I8dRwOWnnv+U7IDE=;
+        b=R2rE3g3EyrSeqfmXb5G9Cl4N7PkVTJ4KPmzMJ6s3eH5tCH29oMZG+rojZhfWpKDJAv
+         AGg4hIG+DWkuqJX7KxylECUfb5TJqKjL8wQQl+BNbxKy01bugGu9an2iwWQjHMpICqgo
+         7mYNQYxoavnwm7XQz5galO8dWbUZt2c2vs92cwDZpLhHdt5LyBL3J36UEJcxd2h+xV4g
+         tyLHXyvu3TjrJy59sn/dkm1iTbcKOS3DdvGeqc5FUl6Qcfqbts/U2kHKHFsKuclEW3Zc
+         LVZZh6w63l6UQH+SyHN6Qx8ZaWABNVqHvKCMvADqkIzfrn1cKY1ycYlnEDZW62+DEQio
+         z9aA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=hYqgKioh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rV5BU95l;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w31si4781474qtg.190.2018.04.16.06.08.38
+        by mx.google.com with ESMTPS id y31si1428677qth.363.2018.03.13.16.37.28
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 16 Apr 2018 06:08:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 13 Mar 2018 16:37:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=hYqgKioh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45247 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rV5BU95l;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:43552 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f83s6-0007di-79
-	for alex.bennee@linaro.org; Mon, 16 Apr 2018 09:08:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38053)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1evtU0-0006La-Cl
+	for alex.bennee@linaro.org; Tue, 13 Mar 2018 19:37:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60855)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1f83ry-0007co-NI
-	for qemu-arm@nongnu.org; Mon, 16 Apr 2018 09:08:32 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1evsrw-0006GO-RX
+	for qemu-devel@nongnu.org; Tue, 13 Mar 2018 18:58:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1f83rw-0003NR-He
-	for qemu-arm@nongnu.org; Mon, 16 Apr 2018 09:08:30 -0400
-Received: from mail-ot0-x234.google.com ([2607:f8b0:4003:c0f::234]:44816)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1evsrs-0001zJ-QO
+	for qemu-devel@nongnu.org; Tue, 13 Mar 2018 18:58:08 -0400
+Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:51163)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1f83rw-0003Mr-9K
-	for qemu-arm@nongnu.org; Mon, 16 Apr 2018 09:08:28 -0400
-Received: by mail-ot0-x234.google.com with SMTP id p33-v6so17231100otp.11
-	for <qemu-arm@nongnu.org>; Mon, 16 Apr 2018 06:08:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=D7B80F6hvaRL2Td0pc8qj7oD9bAoXlo0HmvnrFeMfHY=;
-	b=hYqgKiohD92SMGEWeZFLyfGdNGOBfbq+Oc/3DV9+4VwJ70tvU4JUJfoqBoS5eYfoSy
-	m6IOaTj7pDA4aOnza7eZC6d4fN8xhDh2IIn44rWrKOYUu3jqkkzXvuA8vL2rOxxlDqRL
-	sJszbhOV6T/5Ert4wYOUV/75B1wzvgbstqep0=
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1evsrs-0001yl-GQ; Tue, 13 Mar 2018 18:58:04 -0400
+Received: by mail-wm0-x244.google.com with SMTP id w128so899542wmw.0;
+	Tue, 13 Mar 2018 15:58:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=mE66iRHi88berb+sS9bs06kQnu3I8dRwOWnnv+U7IDE=;
+	b=rV5BU95lewC9U5iVoRG//A69kXn2bLc9o1nY2dgfjnY398WiY+9djP0RF0ihZSyK28
+	i+1NKm27rfgIRLLaeVMg5QTwr3Tm4RUtZPwGoclMq8ke5Nc13T0kydxxzy2I++ycaP0U
+	h4VmQ+9ZWxLj7ozSo0YxGzTSCv2wfiLYqUmP9LDVtKE/we++lvBi3Nael8hNXauCzYS4
+	2zuFOYvdYYYccCMJMoYmxsMGfyZdoGkNyL9DtPLDveJaFIn6NmlYzpf41gPJZ0kwpl8k
+	Hc+Uzd2gNpP9fM0zzbo4HEZ12kVJfQDkzJwgzLe3bsqYi9fpN5ZePzZlRW977GD2Pl8z
+	CsoQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=D7B80F6hvaRL2Td0pc8qj7oD9bAoXlo0HmvnrFeMfHY=;
-	b=EusG7W1olX99UMkyeuvLa1tqdlNUo92KRzDcXwIhBtkxXCWmQWdWQtw1/QNEUO6cx2
-	y8oy3oHzmHCTW6z6SwDGla9cINsImxXDjJEwmvJb69WDx8AnkMl09bLCeDEAoD8ce6d0
-	zHkIQckQUE8WwCDHrdHqk/uVccwkvT7M4T+P09R3PZ9dKyt3EdotekmOT9Q6rA+cOMev
-	HJz1s/fGHNfQJqVP7WpKFbWxuJ/FVkKw2U0y6hlUj7gU7ok1n+cD02J2Rfth2mM5tK3q
-	+EpP5sGRbzlvmLFDRHA2EbFdYuNzvOBKPo9z5C/Scpda8xaTyZXHQQH61FPPGcWiMczO
-	uQhg==
-X-Gm-Message-State: ALQs6tBpfZmWjyguLrAgQVoLjSTTqtGYrzjgMacveVbSsjbL5t0AdZzt
-	8O4DMKls6wiIY8GZu6bEFmmp166d77tK20TSI/j58Q==
-X-Received: by 2002:a9d:2f88:: with SMTP id
-	r8-v6mr4767181otb.210.1523884107494; 
-	Mon, 16 Apr 2018 06:08:27 -0700 (PDT)
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=mE66iRHi88berb+sS9bs06kQnu3I8dRwOWnnv+U7IDE=;
+	b=toYhfDQTQyoP4BMonmZFTZBi7Z4A23benvPyo4YgUmoC0KsDPnrnt8/S11QhN/xmZm
+	4fEgkmuh1RGhpuFEnHdPTvMiOC7Z6ApJtb6yI0Jx62Ff2kouTx5XWB3WMKQByDwuLlyE
+	5oe6muNNUi7XtW5O8WBoNadDXmRl3ni5zW42eAjPkiPERkdZaZ2oL+KB9TWp1S4FrxyS
+	zJpJWlQkNR8HYwxyPw6Kk23kynKIP2CT5IeGJWRTQOZciziqcXWD13aZdanjSAUukGak
+	rbzoNpC2Fv61O03GbZ1CsxVqAiEyxwy8dHVTiUV4pffMBX10QProCYShSKLDhOAPzwRK
+	2yrA==
+X-Gm-Message-State: AElRT7GB7fZFTeciujhJ1gyeW7NQEPNobMOQJGZ533U6yeOneEz3Oj4p
+	4B3zx5nQbSakfao8iwEdTN0=
+X-Received: by 10.28.111.19 with SMTP id k19mr1929674wmc.147.1520981883350;
+	Tue, 13 Mar 2018 15:58:03 -0700 (PDT)
+Received: from [192.168.1.29] (AStrasbourg-554-1-221-65.w86-204.abo.wanadoo.fr.
+	[86.204.94.65])
+	by smtp.gmail.com with ESMTPSA id c17sm268193wrg.60.2018.03.13.15.58.01
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 13 Mar 2018 15:58:02 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <20180313153458.26822-1-peter.maydell@linaro.org>
+	<20180313153458.26822-6-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <85567144-145d-40ed-ce32-4b1a7606aeef@amsat.org>
+Date: Tue, 13 Mar 2018 23:58:01 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.6.0
 MIME-Version: 1.0
-Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Mon, 16 Apr 2018 06:08:07
-	-0700 (PDT)
-In-Reply-To: <1523518688-26674-5-git-send-email-eric.auger@redhat.com>
-References: <1523518688-26674-1-git-send-email-eric.auger@redhat.com>
-	<1523518688-26674-5-git-send-email-eric.auger@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 16 Apr 2018 14:08:07 +0100
-Message-ID: <CAFEAcA979S2Hxdv6t+sODtyV8Z_G0kuJGUSe7P63psVMwTun3Q@mail.gmail.com>
-To: Eric Auger <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <20180313153458.26822-6-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::234
-Subject: Re: [Qemu-arm] [PATCH v11 04/17] hw/arm/smmuv3: Skeleton
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:400c:c09::244
+Subject: Re: [Qemu-devel] [PATCH 5/9] hw/arm/bcm2836: Rename bcm2836
+ type/struct to bcm283x
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Christoffer Dall <cdall@kernel.org>, "Michael S. Tsirkin" <mst@redhat.com>,
-	Jean-Philippe Brucker <jean-philippe.brucker@arm.com>,
-	Tomasz Nowicki <tn@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	Peter Xu <peterx@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>, linuc.decode@gmail.com,
-	Bharat Bhushan <bharat.bhushan@nxp.com>,
-	Jintack Lim <jintack@cs.columbia.edu>,
-	Prem Mallappa <prem.mallappa@gmail.com>,
-	Eric Auger <eric.auger.pro@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AolBnNp/CSVu
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Pekka Enberg <penberg@iki.fi>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>, patches@linaro.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: V1j7RNi7xPyT
 
-On 12 April 2018 at 08:37, Eric Auger <eric.auger@redhat.com> wrote:
-> From: Prem Mallappa <prem.mallappa@broadcom.com>
->
-> This patch implements a skeleton for the smmuv3 device.
-> Datatypes and register definitions are introduced. The MMIO
-> region, the interrupts and the queue are initialized.
->
-> Only the MMIO read operation is implemented here.
->
-> Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->
+On 03/13/2018 04:34 PM, Peter Maydell wrote:
+> Our BCM2836 type is really a generic one that can be any of
+> the bcm283x family. Rename it accordingly. We change only
+> the names which are visible via the header file to the
+> rest of the QEMU code, leaving private function names
+> in bcm2836.c as they are.
+> 
+> This is a preliminary to making bcm283x be an abstract
+> parent class to specific types for the bcm2836 and bcm2837.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
 > ---
-> v10 -> v11:
-> - remove irq_ctrl_ack and return irq_ctrl on A_IRQ_CTRL_ACK
->   read
->
-> v9 -> v10:
-> - s/hwaddr/uint64_t in trace-events
-> - add comments
-> - s->mrtypename = TYPE_SMMUV3_IOMMU_MEMORY_REGION
-> - removed iidr and idr from VMState
-> - use VMSTATE_STRUCT for the queues
-> - use qemu_log_mask(LOG_UNIMP,*) for unimplemented regs
-> - added SMMU_CMDQS, SMMU_EVENTQS
-> - use ops with attributes
-> - split readl/readll
-> - put id_regs in an array
-> - removed smmu_read64
-> - removed SMMU_FEATURE_2LVL_STE and NB_REGS
-> - RAZ when read access at unexpected address
->
-> v8 -> v9:
-> - add #include "qemu/log.h"
-> - add parent_reset
->
-> v7 -> v8:
-> - remove __smmu_data structs
-> - revisit struct SMMUQueue
-> - do not advertise stage 2 support anymore
-> - use the register definition API and get rid of REG array
-> - get read of queue structs
->
-> v6 -> v7:
-> - split into several patches
->
-> v5 -> v6:
-> - Use IOMMUMemoryregion
-> - regs become uint32_t and fix 64b MMIO access (.impl)
-> - trace_smmuv3_write/read_mmio take the size param
->
-> v4 -> v5:
-> - change smmuv3_translate proto (IOMMUAccessFlags flag)
-> - has_stagex replaced by is_ste_stagex
-> - smmu_cfg_populate removed
-> - added smmuv3_decode_config and reworked error management
-> - remwork the naming of IOMMU mrs
-> - fix SMMU_CMDQ_CONS offset
->
-> v3 -> v4
-> - smmu_irq_update
-> - fix hash key allocation
-> - set smmu_iommu_ops
-> - set SMMU_REG_CR0,
-> - smmuv3_translate: ret.perm not set in bypass mode
-> - use trace events
-> - renamed STM2U64 into L1STD_L2PTR and STMSPAN into L1STD_SPAN
-> - rework smmu_find_ste
-> - fix tg2granule in TT0/0b10 corresponds to 16kB
->
-> v2 -> v3:
-> - move creation of include/hw/arm/smmuv3.h to this patch to fix compil issue
-> - compilation allowed
-> - fix sbus allocation in smmu_init_pci_iommu
-> - restructure code into headers
-> - misc cleanups
->
-> Conflicts:
->         hw/arm/Makefile.objs
-> ---
->  hw/arm/Makefile.objs     |   2 +-
->  hw/arm/smmuv3-internal.h | 167 ++++++++++++++++++++++
->  hw/arm/smmuv3.c          | 365 +++++++++++++++++++++++++++++++++++++++++++++++
->  hw/arm/trace-events      |   3 +
->  include/hw/arm/smmuv3.h  |  87 +++++++++++
->  5 files changed, 623 insertions(+), 1 deletion(-)
->  create mode 100644 hw/arm/smmuv3-internal.h
->  create mode 100644 hw/arm/smmuv3.c
->  create mode 100644 include/hw/arm/smmuv3.h
->
-> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-> index 558436f..d51fcec 100644
-> --- a/hw/arm/Makefile.objs
-> +++ b/hw/arm/Makefile.objs
-> @@ -35,4 +35,4 @@ obj-$(CONFIG_MPS2) += mps2-tz.o
->  obj-$(CONFIG_MSF2) += msf2-soc.o msf2-som.o
->  obj-$(CONFIG_IOTKIT) += iotkit.o
->  obj-$(CONFIG_FSL_IMX7) += fsl-imx7.o mcimx7d-sabre.o
-> -obj-$(CONFIG_ARM_SMMUV3) += smmu-common.o
-> +obj-$(CONFIG_ARM_SMMUV3) += smmu-common.o smmuv3.o
-> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-> new file mode 100644
-> index 0000000..a6461fe
-> --- /dev/null
-> +++ b/hw/arm/smmuv3-internal.h
-> @@ -0,0 +1,167 @@
-> +/*
-> + * ARM SMMUv3 support - Internal API
-> + *
-> + * Copyright (C) 2014-2016 Broadcom Corporation
-> + * Copyright (c) 2017 Red Hat, Inc.
-> + * Written by Prem Mallappa, Eric Auger
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + *
-> + * You should have received a copy of the GNU General Public License along
-> + * with this program; if not, see <http://www.gnu.org/licenses/>.
-> + */
-> +
-> +#ifndef HW_ARM_SMMU_V3_INTERNAL_H
-> +#define HW_ARM_SMMU_V3_INTERNAL_H
-> +
-> +#include "qemu/log.h"
-> +#include "trace.h"
-> +#include "qemu/error-report.h"
-
-I don't think you use these headers in this .h file -- they should
-probably be included from the .c file(s) instead.
-
-> +#include "hw/arm/smmu-common.h"
-> +
-> +/* MMIO Registers */
-> +
-> +REG32(IDR0,                0x0)
-> +    FIELD(IDR0, S1P,         1 , 1)
-> +    FIELD(IDR0, TTF,         2 , 2)
-> +    FIELD(IDR0, COHACC,      4 , 1)
-> +    FIELD(IDR0, ASID16,      12, 1)
-> +    FIELD(IDR0, TTENDIAN,    21, 2)
-> +    FIELD(IDR0, STALL_MODEL, 24, 2)
-> +    FIELD(IDR0, TERM_MODEL,  26, 1)
-> +    FIELD(IDR0, STLEVEL,     27, 2)
-> +
-> +REG32(IDR1,                0x4)
-> +    FIELD(IDR1, SIDSIZE,      0 , 6)
-> +    FIELD(IDR1, EVENTQS,      16, 5)
-> +    FIELD(IDR1, CMDQS,        21, 5)
-> +
-> +#define SMMU_IDR1_SIDSIZE 16
-> +#define SMMU_CMDQS   19
-> +#define SMMU_EVENTQS 19
-> +
-> +REG32(IDR2,                0x8)
-> +REG32(IDR3,                0xc)
-> +REG32(IDR4,                0x10)
-> +REG32(IDR5,                0x14)
-> +     FIELD(IDR5, OAS,         0, 3);
-> +     FIELD(IDR5, GRAN4K,      4, 1);
-> +     FIELD(IDR5, GRAN16K,     5, 1);
-> +     FIELD(IDR5, GRAN64K,     6, 1);
-> +
-> +#define SMMU_IDR5_OAS 4
-> +
-> +REG32(IIDR,                0x1c)
-> +REG32(CR0,                 0x20)
-> +    FIELD(CR0, SMMU_ENABLE,   0, 1)
-> +    FIELD(CR0, EVENTQEN,      2, 1)
-> +    FIELD(CR0, CMDQEN,        3, 1)
-> +
-> +REG32(CR0ACK,              0x24)
-> +REG32(CR1,                 0x28)
-> +REG32(CR2,                 0x2c)
-> +REG32(STATUSR,             0x40)
-> +REG32(IRQ_CTRL,            0x50)
-> +    FIELD(IRQ_CTRL, GERROR_IRQEN,        0, 1)
-> +    FIELD(IRQ_CTRL, PRI_IRQEN,           1, 1)
-> +    FIELD(IRQ_CTRL, EVENTQ_IRQEN,        2, 1)
-> +
-> +REG32(IRQ_CTRL_ACK,        0x54)
-> +REG32(GERROR,              0x60)
-> +    FIELD(GERROR, CMDQ_ERR,           0, 1)
-> +    FIELD(GERROR, EVENTQ_ABT_ERR,     2, 1)
-> +    FIELD(GERROR, PRIQ_ABT_ERR,       3, 1)
-> +    FIELD(GERROR, MSI_CMDQ_ABT_ERR,   4, 1)
-> +    FIELD(GERROR, MSI_EVENTQ_ABT_ERR, 5, 1)
-> +    FIELD(GERROR, MSI_PRIQ_ABT_ERR,   6, 1)
-> +    FIELD(GERROR, MSI_GERROR_ABT_ERR, 7, 1)
-> +    FIELD(GERROR, MSI_SFM_ERR,        8, 1)
-> +
-> +REG32(GERRORN,             0x64)
-> +
-> +#define A_GERROR_IRQ_CFG0  0x68 /* 64b */
-> +REG32(GERROR_IRQ_CFG1, 0x70)
-> +REG32(GERROR_IRQ_CFG2, 0x74)
-> +
-> +#define A_STRTAB_BASE      0x80 /* 64b */
-
-Why do this constant and A_GERROR_IRQ_CFG0 have different values
-but the same cryptic comment ?
-
-
-> +static inline uint64_t smmu_read64(uint64_t r, unsigned offset,
-> +                                   unsigned size)
-
-Looks like this function is unused now ?
-
-
-> +    /*
-> +     * Return the value of the Primecell/Corelink ID registers at the
-> +     * specified offset from the first ID register.
-> +     * These value indicate an ARM implementation of MMU600 p1
-> +     */
-> +    static const uint8_t smmuv3_ids[] = {
-> +        0x4, 0, 0, 0, 0x84, 0xB4, 0xF0, 0x10, 0x0D, 0xF0, 0x05, 0xB1
-
-Can you be consistent about whether you put the leading 0 in
-for hex values less than 0x10 (0x4 vs 0x0D) ?
-
-
-Otherwise
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
--- PMM
+>  include/hw/arm/bcm2836.h | 12 ++++++------
+>  hw/arm/bcm2836.c         | 17 +++++++++--------
+>  hw/arm/raspi.c           | 16 ++++++++--------
+>  3 files changed, 23 insertions(+), 22 deletions(-)
+> 
+> diff --git a/include/hw/arm/bcm2836.h b/include/hw/arm/bcm2836.h
+> index 4758b4ae54..9a10a76631 100644
+> --- a/include/hw/arm/bcm2836.h
+> +++ b/include/hw/arm/bcm2836.h
+> @@ -15,12 +15,12 @@
+>  #include "hw/arm/bcm2835_peripherals.h"
+>  #include "hw/intc/bcm2836_control.h"
+>  
+> -#define TYPE_BCM2836 "bcm2836"
+> -#define BCM2836(obj) OBJECT_CHECK(BCM2836State, (obj), TYPE_BCM2836)
+> +#define TYPE_BCM283X "bcm283x"
+> +#define BCM283X(obj) OBJECT_CHECK(BCM283XState, (obj), TYPE_BCM283X)
+>  
+> -#define BCM2836_NCPUS 4
+> +#define BCM283X_NCPUS 4
+>  
+> -typedef struct BCM2836State {
+> +typedef struct BCM283XState {
+>      /*< private >*/
+>      DeviceState parent_obj;
+>      /*< public >*/
+> @@ -28,9 +28,9 @@ typedef struct BCM2836State {
+>      char *cpu_type;
+>      uint32_t enabled_cpus;
+>  
+> -    ARMCPU cpus[BCM2836_NCPUS];
+> +    ARMCPU cpus[BCM283X_NCPUS];
+>      BCM2836ControlState control;
+>      BCM2835PeripheralState peripherals;
+> -} BCM2836State;
+> +} BCM283XState;
+>  
+>  #endif /* BCM2836_H */
+> diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+> index 9266f27c14..1d1908654b 100644
+> --- a/hw/arm/bcm2836.c
+> +++ b/hw/arm/bcm2836.c
+> @@ -25,7 +25,7 @@
+>  
+>  static void bcm2836_init(Object *obj)
+>  {
+> -    BCM2836State *s = BCM2836(obj);
+> +    BCM283XState *s = BCM283X(obj);
+>  
+>      object_initialize(&s->control, sizeof(s->control), TYPE_BCM2836_CONTROL);
+>      object_property_add_child(obj, "control", OBJECT(&s->control), NULL);
+> @@ -44,7 +44,7 @@ static void bcm2836_init(Object *obj)
+>  
+>  static void bcm2836_realize(DeviceState *dev, Error **errp)
+>  {
+> -    BCM2836State *s = BCM2836(dev);
+> +    BCM283XState *s = BCM283X(dev);
+>      Object *obj;
+>      Error *err = NULL;
+>      int n;
+> @@ -52,7 +52,7 @@ static void bcm2836_realize(DeviceState *dev, Error **errp)
+>      /* common peripherals from bcm2835 */
+>  
+>      obj = OBJECT(dev);
+> -    for (n = 0; n < BCM2836_NCPUS; n++) {
+> +    for (n = 0; n < BCM283X_NCPUS; n++) {
+>          object_initialize(&s->cpus[n], sizeof(s->cpus[n]),
+>                            s->cpu_type);
+>          object_property_add_child(obj, "cpu[*]", OBJECT(&s->cpus[n]),
+> @@ -102,7 +102,7 @@ static void bcm2836_realize(DeviceState *dev, Error **errp)
+>      sysbus_connect_irq(SYS_BUS_DEVICE(&s->peripherals), 1,
+>          qdev_get_gpio_in_named(DEVICE(&s->control), "gpu-fiq", 0));
+>  
+> -    for (n = 0; n < BCM2836_NCPUS; n++) {
+> +    for (n = 0; n < BCM283X_NCPUS; n++) {
+>          /* Mirror bcm2836, which has clusterid set to 0xf
+>           * TODO: this should be converted to a property of ARM_CPU
+>           */
+> @@ -150,8 +150,9 @@ static void bcm2836_realize(DeviceState *dev, Error **errp)
+>  }
+>  
+>  static Property bcm2836_props[] = {
+> -    DEFINE_PROP_STRING("cpu-type", BCM2836State, cpu_type),
+> -    DEFINE_PROP_UINT32("enabled-cpus", BCM2836State, enabled_cpus, BCM2836_NCPUS),
+> +    DEFINE_PROP_STRING("cpu-type", BCM283XState, cpu_type),
+> +    DEFINE_PROP_UINT32("enabled-cpus", BCM283XState, enabled_cpus,
+> +                       BCM283X_NCPUS),
+>      DEFINE_PROP_END_OF_LIST()
+>  };
+>  
+> @@ -164,9 +165,9 @@ static void bcm2836_class_init(ObjectClass *oc, void *data)
+>  }
+>  
+>  static const TypeInfo bcm2836_type_info = {
+> -    .name = TYPE_BCM2836,
+> +    .name = TYPE_BCM283X,
+>      .parent = TYPE_DEVICE,
+> -    .instance_size = sizeof(BCM2836State),
+> +    .instance_size = sizeof(BCM283XState),
+>      .instance_init = bcm2836_init,
+>      .class_init = bcm2836_class_init,
+>  };
+> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+> index 1ac0737149..58c6e80a17 100644
+> --- a/hw/arm/raspi.c
+> +++ b/hw/arm/raspi.c
+> @@ -32,7 +32,7 @@
+>  static const int raspi_boardid[] = {[1] = 0xc42, [2] = 0xc43, [3] = 0xc44};
+>  
+>  typedef struct RasPiState {
+> -    BCM2836State soc;
+> +    BCM283XState soc;
+>      MemoryRegion ram;
+>  } RasPiState;
+>  
+> @@ -136,7 +136,7 @@ static void raspi_init(MachineState *machine, int version)
+>      BusState *bus;
+>      DeviceState *carddev;
+>  
+> -    object_initialize(&s->soc, sizeof(s->soc), TYPE_BCM2836);
+> +    object_initialize(&s->soc, sizeof(s->soc), TYPE_BCM283X);
+>      object_property_add_child(OBJECT(machine), "soc", OBJECT(&s->soc),
+>                                &error_abort);
+>  
+> @@ -189,9 +189,9 @@ static void raspi2_machine_init(MachineClass *mc)
+>      mc->no_floppy = 1;
+>      mc->no_cdrom = 1;
+>      mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a15");
+> -    mc->max_cpus = BCM2836_NCPUS;
+> -    mc->min_cpus = BCM2836_NCPUS;
+> -    mc->default_cpus = BCM2836_NCPUS;
+> +    mc->max_cpus = BCM283X_NCPUS;
+> +    mc->min_cpus = BCM283X_NCPUS;
+> +    mc->default_cpus = BCM283X_NCPUS;
+>      mc->default_ram_size = 1024 * 1024 * 1024;
+>      mc->ignore_memory_transaction_failures = true;
+>  };
+> @@ -212,9 +212,9 @@ static void raspi3_machine_init(MachineClass *mc)
+>      mc->no_floppy = 1;
+>      mc->no_cdrom = 1;
+>      mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a53");
+> -    mc->max_cpus = BCM2836_NCPUS;
+> -    mc->min_cpus = BCM2836_NCPUS;
+> -    mc->default_cpus = BCM2836_NCPUS;
+> +    mc->max_cpus = BCM283X_NCPUS;
+> +    mc->min_cpus = BCM283X_NCPUS;
+> +    mc->default_cpus = BCM283X_NCPUS;
+>      mc->default_ram_size = 1024 * 1024 * 1024;
+>  }
+>  DEFINE_MACHINE("raspi3", raspi3_machine_init)
+> 

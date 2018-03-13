@@ -1,89 +1,114 @@
-Received: by 10.28.4.212 with SMTP id 203csp4792265wme;
-        Tue, 1 May 2018 05:10:19 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZo1iwVF5rZnvp9ZqjbqlJD8/VwJVCs0jx09n5rTJawPCvx6U9Wv0+CS5Zarr00uMjh8zuhU
-X-Received: by 2002:a0c:aac1:: with SMTP id g1-v6mr13362511qvb.67.1525176619040;
-        Tue, 01 May 2018 05:10:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1525176619; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp1295228wmb;
+        Tue, 13 Mar 2018 16:42:49 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELtscXUasHMkbIC3Hrf+Le17pzzEKPHc6O75D06Iq4m9doWF6+EtWkemeQyp4mrOeL1SIKJW
+X-Received: by 10.237.55.225 with SMTP id j88mr4015219qtb.213.1520984569253;
+        Tue, 13 Mar 2018 16:42:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1520984569; cv=none;
         d=google.com; s=arc-20160816;
-        b=jk4z85ZyB7GvFyPMn0Nmah9qSTbFYABL18CG/AwMsLxVpz3ibSTGQSh7LDOKQTsAoH
-         oV5/eoaLHEXYVW4naJPXsgA+Bvgf9ZHHWxdnFydlUbiJzFse0ALwnBfhCWA3lDgnnowk
-         6Hl3gWzCvoUyURfrlCl9GR+2AFJp2I6hApFdDLu4HwT5vSapaKigCeU2VMxKxtfiX97s
-         43AKKThYXWeHRlNTtdPlLF5S8gQyH80Qmm1cyhtzD8sESlwNfKubiwiM31LqG9Je64c9
-         1Q756sVp5j5cveSr2XVEVw9AnB7BpFZF3o82JJrgeNARrxPsJrK6xlTmKSbJsz/wQWx5
-         jljw==
+        b=ckR0SPPDRdqq9UE5x8uA6/H/60l9DCiCrOEq4ui5aIwfghvdZpAtYeQdR0+eMPZwsI
+         wlH9r1qVoKtYSDbSx5y19YoJ6wrXk6q6UenbtAYGlNQk5XWJOl3pZAppraCugXG8gjW0
+         YQINPQ8kJjmzjJNEMaPSZYbhyre7nCAz8gt8Lr00I/7GqpdAGNI3rOGmq+q8HZ2rU7xF
+         +W8vzmTuNGW0H1QAIPgdUTttF+Sg3Glij6Xnvq4i0JtQd6PWNtgZUei+06CPP6idI8rO
+         VSRkt5fhVFysRPZeH+rYfGU1OeqN8GY0L47yAvC/RWhl7OQQ4W9W0X1bkKRAKp64rQ7L
+         EgVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=LruWVtTSn1W6YZdX5myU9SpzdsVs+sFkdyzJcaOFJ1s=;
-        b=eSn86dA22w6whwKxOro/2Frk7FlgmS1CCuYIGZVlMi9AsaSmh9QtOoYut62EpqVzbZ
-         7jaM3JgtSkbaGwSR4iwO7hH5OATLMtcum78lckB2r2qbXxZVS2elY+ARFa+tK7ShALw6
-         KTP3oEh8heaFnBebGFS/D1reFIP3yfwdfWldpYxMRH9q6mlqy+shDwQmEFnasvmMqeP0
-         iil1adSU+d5v2o6DopA5nrjgdSMIvPDVpJvgPt7QDJ0AFyxT7WZuPmAg+obccwW83pfv
-         l3y7kxk6Eqvx4plnBzIqqAyLQD9PlsIJ2TNgr+rFniCkN3S/VAtyFPgDvCKENTMUQsZy
-         /pVg==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=UGzb1VIHPPpTPOscQv8vkcfqWTLFEm3X5J2Q2OUCdBg=;
+        b=iCPpjFwafaK7MU2rDWAmiYfSWlUnnR2mmUNj1wXTzpy5q/foh9L/qTrcqBFGUqCuu+
+         zM7it8JTUEHFwJqp3zpsQBSqX8wG1aDy/AW8gVKiQrFPlwIJlQCFrfjvr4U8vt9lmhff
+         l8tXiNeivXQQ93GmFIThn1BubbeQEJrIq9S4pBirAyDh3zS89p6DDJOIVokM+ngyUw3j
+         X3G8Atbh569WgH2mUfEUc1S7Co7xXZCz6Zy0E7WRnTnhAgsbHBYuq1JVSF5j2NPpR6Rp
+         2ziBPGmLOgExvUtiP57XtgrKugoQbWT0r2vLc71XfpNKMTwYrZ5mHxalNVIVwj+E/IAP
+         U60w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DM87dL52;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w2-v6si4669280qvn.267.2018.05.01.05.10.18
+        by mx.google.com with ESMTPS id v4si25141qka.230.2018.03.13.16.42.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 01 May 2018 05:10:19 -0700 (PDT)
+        Tue, 13 Mar 2018 16:42:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42255 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DM87dL52;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:43595 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fDU6s-0005p3-EJ
-	for alex.bennee@linaro.org; Tue, 01 May 2018 08:10:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52446)
+	id 1evtZA-0002xy-LE
+	for alex.bennee@linaro.org; Tue, 13 Mar 2018 19:42:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34674)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1fDU6O-0005aX-0M
-	for qemu-arm@nongnu.org; Tue, 01 May 2018 08:09:50 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1evt0P-0005DJ-Bm
+	for qemu-arm@nongnu.org; Tue, 13 Mar 2018 19:06:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1fDU6J-0003QK-BZ
-	for qemu-arm@nongnu.org; Tue, 01 May 2018 08:09:47 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:44448 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1fDU6J-0003Pv-5T; Tue, 01 May 2018 08:09:43 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D312D406C760;
-	Tue,  1 May 2018 12:09:42 +0000 (UTC)
-Received: from dell-r430-03.lab.eng.brq.redhat.com
-	(dell-r430-03.lab.eng.brq.redhat.com [10.37.153.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id F0DCC2022C00;
-	Tue,  1 May 2018 12:09:41 +0000 (UTC)
-From: Igor Mammedov <imammedo@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Tue,  1 May 2018 14:08:40 +0200
-Message-Id: <1525176522-200354-4-git-send-email-imammedo@redhat.com>
-In-Reply-To: <1525176522-200354-1-git-send-email-imammedo@redhat.com>
-References: <1525176522-200354-1-git-send-email-imammedo@redhat.com>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1evt0O-0005ss-8r
+	for qemu-arm@nongnu.org; Tue, 13 Mar 2018 19:06:53 -0400
+Received: from mail-wr0-x243.google.com ([2a00:1450:400c:c0c::243]:36199)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1evt0I-0005q0-Os; Tue, 13 Mar 2018 19:06:46 -0400
+Received: by mail-wr0-x243.google.com with SMTP id d10so2617899wrf.3;
+	Tue, 13 Mar 2018 16:06:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=UGzb1VIHPPpTPOscQv8vkcfqWTLFEm3X5J2Q2OUCdBg=;
+	b=DM87dL52G1M/OiMFKTJ8hz5KRxJ13Mt19Of7k3cVWvCgRKEroBmdhez2KBwMbU3wH3
+	07k9BdGcrgixKfWzBYOdFLkoKT+BVK7reuiy730EqC9McYEWOGXQ8GV+OuKVWSLmJh70
+	8YhmPGFkYjbjHbgtysInZzP3g6um+nD5j5YwLtVlw7YJsFOlMVxH7aBljS6s+s65bhgc
+	MZbB6GaTQfdX0q/4d++xeLkEXK+PC71VqGFQeD3xT8D9zPu0LSe5WsbJr1guIBZJLfLh
+	0NJMt2cYzDt5I7l8i92ru39ZoNkCzf+rJ6/H1Bn8aQp/U75hQhkVW1BtCXcY6DDvqdmZ
+	RtgA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=UGzb1VIHPPpTPOscQv8vkcfqWTLFEm3X5J2Q2OUCdBg=;
+	b=ZfVbhUGbkvfjcFm9UlVvZpxnQUf/gvNkpRRcj/uM0LSHmqVKNhVbFRcmNATMamXImk
+	DSmogAeJ3u9ZCyLsnFVA5MfRs+uN8Tgi9IQeuKD7xXc3YffoWyk4chzEqVuZsfCHEbqN
+	LC5oATKyiS4Ay8Sqo90wUR8aVNVwGs9W6bioVYMjSFYPTLPFB78oDSMdl6w2xif7Flz4
+	OvJ4o9wASpaVRr8hxvKK7hjfXd0hDIn/FMgzXdxgbelchLXQY9/3o1SmBRolCgHFiNit
+	XGiG2hjd9zJF9Yltim2D1746DClAkOzx5izOtKn4zOHUnicKBFKFYLyPwP9n35dwmDTV
+	Y7MA==
+X-Gm-Message-State: AElRT7HBKG0sf+MuP5+j2acwXsUSi4B4NkvBb/qv99muElaOessonHQ3
+	H9FdKueYABFHdVLvgCybDPc=
+X-Received: by 10.28.101.69 with SMTP id z66mr2124630wmb.143.1520982405765;
+	Tue, 13 Mar 2018 16:06:45 -0700 (PDT)
+Received: from [192.168.1.29] (AStrasbourg-554-1-221-65.w86-204.abo.wanadoo.fr.
+	[86.204.94.65])
+	by smtp.gmail.com with ESMTPSA id z3sm70779wme.3.2018.03.13.16.06.44
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 13 Mar 2018 16:06:45 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <20180313153458.26822-1-peter.maydell@linaro.org>
+	<20180313153458.26822-9-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <459dc453-911a-0d9c-dc8a-26f39fa9cf75@amsat.org>
+Date: Wed, 14 Mar 2018 00:06:43 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Tue, 01 May 2018 12:09:42 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Tue, 01 May 2018 12:09:42 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'imammedo@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH v3 3/5] arm/boot: split load_dtb() from
- arm_load_kernel()
+In-Reply-To: <20180313153458.26822-9-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::243
+Subject: Re: [Qemu-arm] [PATCH 8/9] hw/arm/bcm2836: Hardcode correct CPU type
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,624 +120,102 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, eric.auger@redhat.com
+Cc: Pekka Enberg <penberg@iki.fi>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KTnGuE7XYoOd
+X-TUID: 8R+jdBEkDoZs
 
-load_dtb() depends on arm_load_kernel() to figure out place
-in RAM where it should be loaded, but it's not required for
-arm_load_kernel() to work. Sometimes it's neccesary for
-devices added with -device/device_add to be enumerated in
-DTB as well, which's lead to [1] and surrounding commits to
-add 2 more machine_done notifiers with non obvious ordering
-to make dynamic sysbus devices initialization happen in
-the right order.
+On 03/13/2018 04:34 PM, Peter Maydell wrote:
+> Now we have separate types for BCM2386 and BCM2387, we might as well
+> just hard-code the CPU type they use rather than having it passed
+> through as an object property. This then lets us put the initialization
+> of the CPU object in init rather than realize.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-However instead of moving whole arm_load_kernel() in to
-machine_done, it's sufficient to move only load_dtb() into
-virt_machine_done() notifier and remove ArmLoadKernelNotifier/
-/PlatformBusFDTNotifierParams notifiers, which saves us ~90LOC
-and simplifies code flow quite a bit.
-Later would allow to consolidate DTB generation within one
-function for 'mach-virt' board and make it reentrant so it
-could generate updated DTB in device hotplug secenarios.
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-While at it rename load_dtb() to arm_load_dtb() since it's
-public now.
-
-Add additional field skip_dtb_autoload to struct arm_boot_info
-to allow manual DTB load later in mach-virt and to avoid touching
-all other boards to explicitly call arm_load_dtb().
-
- 1) (ac9d32e hw/arm/boot: arm_load_kernel implemented as a machine init d=
-one notifier)
-
-Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Andrew Jones <drjones@redhat.com>
----
-v3:
-  * (Andrew Jones <drjones@redhat.com>)
-      - make sure that dtb_limit initialized to 0
-      - drop stale comment
-      - drop not needed line movement
-      - drop not needed extra new line
-v2:
-  - fix rebase conflicts due to dropped
-        [PATCH for-2.13 1/4] arm: reuse  arm_boot_address_space() in armv=
-7m_load_kernel()
-  - add doc comment to new skip_dtb_autoload field
----
- include/hw/arm/arm.h        | 45 +++++++++++++++++++++-------
- include/hw/arm/sysbus-fdt.h | 37 +++++------------------
- hw/arm/boot.c               | 72 ++++++++++++---------------------------=
-------
- hw/arm/sysbus-fdt.c         | 61 +++-----------------------------------
- hw/arm/virt.c               | 64 +++++++++++++++++++--------------------=
--
- 5 files changed, 94 insertions(+), 185 deletions(-)
-
-diff --git a/include/hw/arm/arm.h b/include/hw/arm/arm.h
-index ce769bd..70fa228 100644
---- a/include/hw/arm/arm.h
-+++ b/include/hw/arm/arm.h
-@@ -39,15 +39,6 @@ DeviceState *armv7m_init(MemoryRegion *system_memory, =
-int mem_size, int num_irq,
-  */
- void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename, int me=
-m_size);
-=20
--/*
-- * struct used as a parameter of the arm_load_kernel machine init
-- * done notifier
-- */
--typedef struct {
--    Notifier notifier; /* actual notifier */
--    ARMCPU *cpu; /* handle to the first cpu object */
--} ArmLoadKernelNotifier;
--
- /* arm_boot.c */
- struct arm_boot_info {
-     uint64_t ram_size;
-@@ -56,6 +47,13 @@ struct arm_boot_info {
-     const char *initrd_filename;
-     const char *dtb_filename;
-     hwaddr loader_start;
-+    hwaddr dtb_start;
-+    hwaddr dtb_limit;
-+    /* If set to True, arm_load_kernel() will not load DTB.
-+     * It allows board to load DTB manually later.
-+     * (default: False)
-+     */
-+    bool skip_dtb_autoload;
-     /* multicore boards that use the default secondary core boot functio=
-ns
-      * need to put the address of the secondary boot code, the boot reg,
-      * and the GIC address in the next 3 values, respectively. boards th=
-at
-@@ -94,8 +92,6 @@ struct arm_boot_info {
-      * the user it should implement this hook.
-      */
-     void (*modify_dtb)(const struct arm_boot_info *info, void *fdt);
--    /* machine init done notifier executing arm_load_dtb */
--    ArmLoadKernelNotifier load_kernel_notifier;
-     /* Used internally by arm_boot.c */
-     int is_linux;
-     hwaddr initrd_start;
-@@ -143,6 +139,33 @@ struct arm_boot_info {
-  */
- void arm_load_kernel(ARMCPU *cpu, struct arm_boot_info *info);
-=20
-+AddressSpace *arm_boot_address_space(ARMCPU *cpu,
-+                                     const struct arm_boot_info *info);
-+
-+/**
-+ * arm_load_dtb() - load a device tree binary image into memory
-+ * @addr:       the address to load the image at
-+ * @binfo:      struct describing the boot environment
-+ * @addr_limit: upper limit of the available memory area at @addr
-+ * @as:         address space to load image to
-+ *
-+ * Load a device tree supplied by the machine or by the user  with the
-+ * '-dtb' command line option, and put it at offset @addr in target
-+ * memory.
-+ *
-+ * If @addr_limit contains a meaningful value (i.e., it is strictly grea=
-ter
-+ * than @addr), the device tree is only loaded if its size does not exce=
-ed
-+ * the limit.
-+ *
-+ * Returns: the size of the device tree image on success,
-+ *          0 if the image size exceeds the limit,
-+ *          -1 on errors.
-+ *
-+ * Note: Must not be called unless have_dtb(binfo) is true.
-+ */
-+int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-+                 hwaddr addr_limit, AddressSpace *as);
-+
- /* Write a secure board setup routine with a dummy handler for SMCs */
- void arm_write_secure_board_setup_dummy_smc(ARMCPU *cpu,
-                                             const struct arm_boot_info *=
-info,
-diff --git a/include/hw/arm/sysbus-fdt.h b/include/hw/arm/sysbus-fdt.h
-index e15bb81..340c382 100644
---- a/include/hw/arm/sysbus-fdt.h
-+++ b/include/hw/arm/sysbus-fdt.h
-@@ -24,37 +24,14 @@
- #ifndef HW_ARM_SYSBUS_FDT_H
- #define HW_ARM_SYSBUS_FDT_H
-=20
--#include "hw/arm/arm.h"
--#include "qemu-common.h"
--#include "hw/sysbus.h"
--
--/*
-- * struct that contains dimensioning parameters of the platform bus
-- */
--typedef struct {
--    hwaddr platform_bus_base; /* start address of the bus */
--    hwaddr platform_bus_size; /* size of the bus */
--    int platform_bus_first_irq; /* first hwirq assigned to the bus */
--    int platform_bus_num_irqs; /* number of hwirq assigned to the bus */
--} ARMPlatformBusSystemParams;
--
--/*
-- * struct that contains all relevant info to build the fdt nodes of
-- * platform bus and attached dynamic sysbus devices
-- * in the future might be augmented with additional info
-- * such as PHY, CLK handles ...
-- */
--typedef struct {
--    const ARMPlatformBusSystemParams *system_params;
--    struct arm_boot_info *binfo;
--    const char *intc; /* parent interrupt controller name */
--} ARMPlatformBusFDTParams;
-+#include "exec/hwaddr.h"
-=20
- /**
-- * arm_register_platform_bus_fdt_creator - register a machine init done
-- * notifier that creates the device tree nodes of the platform bus and
-- * associated dynamic sysbus devices
-+ * platform_bus_add_all_fdt_nodes - create all the platform bus nodes
-+ *
-+ * builds the parent platform bus node and all the nodes of dynamic
-+ * sysbus devices attached to it.
-  */
--void arm_register_platform_bus_fdt_creator(ARMPlatformBusFDTParams *fdt_=
-params);
--
-+void platform_bus_add_all_fdt_nodes(void *fdt, const char *intc, hwaddr =
-addr,
-+                                    hwaddr bus_size, int irq_start);
- #endif
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index 9ae6ab2..ad71dd4 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -36,8 +36,8 @@
- #define ARM64_TEXT_OFFSET_OFFSET    8
- #define ARM64_MAGIC_OFFSET          56
-=20
--static AddressSpace *arm_boot_address_space(ARMCPU *cpu,
--                                            const struct arm_boot_info *=
-info)
-+AddressSpace *arm_boot_address_space(ARMCPU *cpu,
-+                                     const struct arm_boot_info *info)
- {
-     /* Return the address space to use for bootloader reads and writes.
-      * We prefer the secure address space if the CPU has it and we're
-@@ -486,29 +486,8 @@ static void fdt_add_psci_node(void *fdt)
-     qemu_fdt_setprop_cell(fdt, "/psci", "migrate", migrate_fn);
- }
-=20
--/**
-- * load_dtb() - load a device tree binary image into memory
-- * @addr:       the address to load the image at
-- * @binfo:      struct describing the boot environment
-- * @addr_limit: upper limit of the available memory area at @addr
-- * @as:         address space to load image to
-- *
-- * Load a device tree supplied by the machine or by the user  with the
-- * '-dtb' command line option, and put it at offset @addr in target
-- * memory.
-- *
-- * If @addr_limit contains a meaningful value (i.e., it is strictly grea=
-ter
-- * than @addr), the device tree is only loaded if its size does not exce=
-ed
-- * the limit.
-- *
-- * Returns: the size of the device tree image on success,
-- *          0 if the image size exceeds the limit,
-- *          -1 on errors.
-- *
-- * Note: Must not be called unless have_dtb(binfo) is true.
-- */
--static int load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
--                    hwaddr addr_limit, AddressSpace *as)
-+int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-+                 hwaddr addr_limit, AddressSpace *as)
- {
-     void *fdt =3D NULL;
-     int size, rc;
-@@ -935,7 +914,7 @@ static uint64_t load_aarch64_image(const char *filena=
-me, hwaddr mem_base,
-     return size;
- }
-=20
--static void arm_load_kernel_notify(Notifier *notifier, void *data)
-+void arm_load_kernel(ARMCPU *cpu, struct arm_boot_info *info)
- {
-     CPUState *cs;
-     int kernel_size;
-@@ -945,11 +924,6 @@ static void arm_load_kernel_notify(Notifier *notifie=
-r, void *data)
-     int elf_machine;
-     hwaddr entry;
-     static const ARMInsnFixup *primary_loader;
--    ArmLoadKernelNotifier *n =3D DO_UPCAST(ArmLoadKernelNotifier,
--                                         notifier, notifier);
--    ARMCPU *cpu =3D n->cpu;
--    struct arm_boot_info *info =3D
--        container_of(n, struct arm_boot_info, load_kernel_notifier);
-     AddressSpace *as =3D arm_boot_address_space(cpu, info);
-=20
-     /* The board code is not supposed to set secure_board_setup unless
-@@ -959,6 +933,7 @@ static void arm_load_kernel_notify(Notifier *notifier=
-, void *data)
-     assert(!(info->secure_board_setup && kvm_enabled()));
-=20
-     info->dtb_filename =3D qemu_opt_get(qemu_get_machine_opts(), "dtb");
-+    info->dtb_limit =3D 0;
-=20
-     /* Load the kernel.  */
-     if (!info->kernel_filename || info->firmware_loaded) {
-@@ -968,9 +943,7 @@ static void arm_load_kernel_notify(Notifier *notifier=
-, void *data)
-              * the kernel is supposed to be loaded by the bootloader), c=
-opy the
-              * DTB to the base of RAM for the bootloader to pick up.
-              */
--            if (load_dtb(info->loader_start, info, 0, as) < 0) {
--                exit(1);
--            }
-+            info->dtb_start =3D info->loader_start;
-         }
-=20
-         if (info->kernel_filename) {
-@@ -1050,15 +1023,14 @@ static void arm_load_kernel_notify(Notifier *noti=
-fier, void *data)
-          */
-         if (elf_low_addr > info->loader_start
-             || elf_high_addr < info->loader_start) {
--            /* Pass elf_low_addr as address limit to load_dtb if it may =
-be
-+            /* Set elf_low_addr as address limit for arm_load_dtb if it =
-may be
-              * pointing into RAM, otherwise pass '0' (no limit)
-              */
-             if (elf_low_addr < info->loader_start) {
-                 elf_low_addr =3D 0;
-             }
--            if (load_dtb(info->loader_start, info, elf_low_addr, as) < 0=
-) {
--                exit(1);
--            }
-+            info->dtb_start =3D info->loader_start;
-+            info->dtb_limit =3D elf_low_addr;
-         }
-     }
-     entry =3D elf_entry;
-@@ -1116,7 +1088,6 @@ static void arm_load_kernel_notify(Notifier *notifi=
-er, void *data)
-          */
-         if (have_dtb(info)) {
-             hwaddr align;
--            hwaddr dtb_start;
-=20
-             if (elf_machine =3D=3D EM_AARCH64) {
-                 /*
-@@ -1136,11 +1107,9 @@ static void arm_load_kernel_notify(Notifier *notif=
-ier, void *data)
-             }
-=20
-             /* Place the DTB after the initrd in memory with alignment. =
-*/
--            dtb_start =3D QEMU_ALIGN_UP(info->initrd_start + initrd_size=
-, align);
--            if (load_dtb(dtb_start, info, 0, as) < 0) {
--                exit(1);
--            }
--            fixupcontext[FIXUP_ARGPTR] =3D dtb_start;
-+            info->dtb_start =3D QEMU_ALIGN_UP(info->initrd_start + initr=
-d_size,
-+                                           align);
-+            fixupcontext[FIXUP_ARGPTR] =3D info->dtb_start;
-         } else {
-             fixupcontext[FIXUP_ARGPTR] =3D info->loader_start + KERNEL_A=
-RGS_ADDR;
-             if (info->ram_size >=3D (1ULL << 32)) {
-@@ -1173,15 +1142,6 @@ static void arm_load_kernel_notify(Notifier *notif=
-ier, void *data)
-     for (cs =3D CPU(cpu); cs; cs =3D CPU_NEXT(cs)) {
-         ARM_CPU(cs)->env.boot_info =3D info;
-     }
--}
--
--void arm_load_kernel(ARMCPU *cpu, struct arm_boot_info *info)
--{
--    CPUState *cs;
--
--    info->load_kernel_notifier.cpu =3D cpu;
--    info->load_kernel_notifier.notifier.notify =3D arm_load_kernel_notif=
-y;
--    qemu_add_machine_init_done_notifier(&info->load_kernel_notifier.noti=
-fier);
-=20
-     /* CPU objects (unlike devices) are not automatically reset on syste=
-m
-      * reset, so we must always register a handler to do so. If we're
-@@ -1191,6 +1151,12 @@ void arm_load_kernel(ARMCPU *cpu, struct arm_boot_=
-info *info)
-     for (cs =3D first_cpu; cs; cs =3D CPU_NEXT(cs)) {
-         qemu_register_reset(do_cpu_reset, ARM_CPU(cs));
-     }
-+
-+    if (!info->skip_dtb_autoload) {
-+        if (arm_load_dtb(info->dtb_start, info, info->dtb_limit, as) < 0=
-) {
-+            exit(1);
-+        }
-+    }
- }
-=20
- static const TypeInfo arm_linux_boot_if_info =3D {
-diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
-index 80ff70e..e4c492e 100644
---- a/hw/arm/sysbus-fdt.c
-+++ b/hw/arm/sysbus-fdt.c
-@@ -49,15 +49,6 @@ typedef struct PlatformBusFDTData {
-     PlatformBusDevice *pbus;
- } PlatformBusFDTData;
-=20
--/*
-- * struct used when calling the machine init done notifier
-- * that constructs the fdt nodes of platform bus devices
-- */
--typedef struct PlatformBusFDTNotifierParams {
--    Notifier notifier;
--    ARMPlatformBusFDTParams *fdt_params;
--} PlatformBusFDTNotifierParams;
--
- /* struct that associates a device type name and a node creation functio=
-n */
- typedef struct NodeCreationPair {
-     const char *typename;
-@@ -453,42 +444,17 @@ static void add_fdt_node(SysBusDevice *sbdev, void =
-*opaque)
-     exit(1);
- }
-=20
--/**
-- * add_all_platform_bus_fdt_nodes - create all the platform bus nodes
-- *
-- * builds the parent platform bus node and all the nodes of dynamic
-- * sysbus devices attached to it.
-- */
--static void add_all_platform_bus_fdt_nodes(ARMPlatformBusFDTParams *fdt_=
-params)
-+void platform_bus_add_all_fdt_nodes(void *fdt, const char *intc, hwaddr =
-addr,
-+                                    hwaddr bus_size, int irq_start)
- {
-     const char platcomp[] =3D "qemu,platform\0simple-bus";
-     PlatformBusDevice *pbus;
-     DeviceState *dev;
-     gchar *node;
--    uint64_t addr, size;
--    int irq_start, dtb_size;
--    struct arm_boot_info *info =3D fdt_params->binfo;
--    const ARMPlatformBusSystemParams *params =3D fdt_params->system_para=
-ms;
--    const char *intc =3D fdt_params->intc;
--    void *fdt =3D info->get_dtb(info, &dtb_size);
--
--    /*
--     * If the user provided a dtb, we assume the dynamic sysbus nodes
--     * already are integrated there. This corresponds to a use case wher=
-e
--     * the dynamic sysbus nodes are complex and their generation is not =
-yet
--     * supported. In that case the user can take charge of the guest dt
--     * while qemu takes charge of the qom stuff.
--     */
--    if (info->dtb_filename) {
--        return;
--    }
-=20
-     assert(fdt);
-=20
--    node =3D g_strdup_printf("/platform@%"PRIx64, params->platform_bus_b=
-ase);
--    addr =3D params->platform_bus_base;
--    size =3D params->platform_bus_size;
--    irq_start =3D params->platform_bus_first_irq;
-+    node =3D g_strdup_printf("/platform@%"PRIx64, addr);
-=20
-     /* Create a /platform node that we can put all devices into */
-     qemu_fdt_add_subnode(fdt, node);
-@@ -499,7 +465,7 @@ static void add_all_platform_bus_fdt_nodes(ARMPlatfor=
-mBusFDTParams *fdt_params)
-      */
-     qemu_fdt_setprop_cells(fdt, node, "#size-cells", 1);
-     qemu_fdt_setprop_cells(fdt, node, "#address-cells", 1);
--    qemu_fdt_setprop_cells(fdt, node, "ranges", 0, addr >> 32, addr, siz=
-e);
-+    qemu_fdt_setprop_cells(fdt, node, "ranges", 0, addr >> 32, addr, bus=
-_size);
-=20
-     qemu_fdt_setprop_phandle(fdt, node, "interrupt-parent", intc);
-=20
-@@ -518,22 +484,3 @@ static void add_all_platform_bus_fdt_nodes(ARMPlatfo=
-rmBusFDTParams *fdt_params)
-=20
-     g_free(node);
- }
--
--static void platform_bus_fdt_notify(Notifier *notifier, void *data)
--{
--    PlatformBusFDTNotifierParams *p =3D DO_UPCAST(PlatformBusFDTNotifier=
-Params,
--                                                notifier, notifier);
--
--    add_all_platform_bus_fdt_nodes(p->fdt_params);
--    g_free(p->fdt_params);
--    g_free(p);
--}
--
--void arm_register_platform_bus_fdt_creator(ARMPlatformBusFDTParams *fdt_=
-params)
--{
--    PlatformBusFDTNotifierParams *p =3D g_new(PlatformBusFDTNotifierPara=
-ms, 1);
--
--    p->fdt_params =3D fdt_params;
--    p->notifier.notify =3D platform_bus_fdt_notify;
--    qemu_add_machine_init_done_notifier(&p->notifier);
--}
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 75f0e30..71661c6 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -93,8 +93,6 @@
-=20
- #define PLATFORM_BUS_NUM_IRQS 64
-=20
--static ARMPlatformBusSystemParams platform_bus_params;
--
- /* RAM limit in GB. Since VIRT_MEM starts at the 1GB mark, this means
-  * RAM can go up to the 256GB mark, leaving 256GB of the physical
-  * address space unallocated and free for future use between 256G and 51=
-2G.
-@@ -1063,40 +1061,23 @@ static void create_platform_bus(VirtMachineState =
-*vms, qemu_irq *pic)
-     DeviceState *dev;
-     SysBusDevice *s;
-     int i;
--    ARMPlatformBusFDTParams *fdt_params =3D g_new(ARMPlatformBusFDTParam=
-s, 1);
-     MemoryRegion *sysmem =3D get_system_memory();
-=20
--    platform_bus_params.platform_bus_base =3D vms->memmap[VIRT_PLATFORM_=
-BUS].base;
--    platform_bus_params.platform_bus_size =3D vms->memmap[VIRT_PLATFORM_=
-BUS].size;
--    platform_bus_params.platform_bus_first_irq =3D vms->irqmap[VIRT_PLAT=
-FORM_BUS];
--    platform_bus_params.platform_bus_num_irqs =3D PLATFORM_BUS_NUM_IRQS;
--
--    fdt_params->system_params =3D &platform_bus_params;
--    fdt_params->binfo =3D &vms->bootinfo;
--    fdt_params->intc =3D "/intc";
--    /*
--     * register a machine init done notifier that creates the device tre=
-e
--     * nodes of the platform bus and its children dynamic sysbus devices
--     */
--    arm_register_platform_bus_fdt_creator(fdt_params);
--
-     dev =3D qdev_create(NULL, TYPE_PLATFORM_BUS_DEVICE);
-     dev->id =3D TYPE_PLATFORM_BUS_DEVICE;
--    qdev_prop_set_uint32(dev, "num_irqs",
--        platform_bus_params.platform_bus_num_irqs);
--    qdev_prop_set_uint32(dev, "mmio_size",
--        platform_bus_params.platform_bus_size);
-+    qdev_prop_set_uint32(dev, "num_irqs", PLATFORM_BUS_NUM_IRQS);
-+    qdev_prop_set_uint32(dev, "mmio_size", vms->memmap[VIRT_PLATFORM_BUS=
-].size);
-     qdev_init_nofail(dev);
-     vms->platform_bus_dev =3D dev;
--    s =3D SYS_BUS_DEVICE(dev);
-=20
--    for (i =3D 0; i < platform_bus_params.platform_bus_num_irqs; i++) {
--        int irqn =3D platform_bus_params.platform_bus_first_irq + i;
-+    s =3D SYS_BUS_DEVICE(dev);
-+    for (i =3D 0; i < PLATFORM_BUS_NUM_IRQS; i++) {
-+        int irqn =3D vms->irqmap[VIRT_PLATFORM_BUS] + i;
-         sysbus_connect_irq(s, i, pic[irqn]);
-     }
-=20
-     memory_region_add_subregion(sysmem,
--                                platform_bus_params.platform_bus_base,
-+                                vms->memmap[VIRT_PLATFORM_BUS].base,
-                                 sysbus_mmio_get_region(s, 0));
- }
-=20
-@@ -1167,6 +1148,26 @@ void virt_machine_done(Notifier *notifier, void *d=
-ata)
- {
-     VirtMachineState *vms =3D container_of(notifier, VirtMachineState,
-                                          machine_done);
-+    ARMCPU *cpu =3D ARM_CPU(first_cpu);
-+    struct arm_boot_info *info =3D &vms->bootinfo;
-+    AddressSpace *as =3D arm_boot_address_space(cpu, info);
-+
-+    /*
-+     * If the user provided a dtb, we assume the dynamic sysbus nodes
-+     * already are integrated there. This corresponds to a use case wher=
-e
-+     * the dynamic sysbus nodes are complex and their generation is not =
-yet
-+     * supported. In that case the user can take charge of the guest dt
-+     * while qemu takes charge of the qom stuff.
-+     */
-+    if (info->dtb_filename =3D=3D NULL) {
-+        platform_bus_add_all_fdt_nodes(vms->fdt, "/intc",
-+                                       vms->memmap[VIRT_PLATFORM_BUS].ba=
-se,
-+                                       vms->memmap[VIRT_PLATFORM_BUS].si=
-ze,
-+                                       vms->irqmap[VIRT_PLATFORM_BUS]);
-+    }
-+    if (arm_load_dtb(info->dtb_start, info, info->dtb_limit, as) < 0) {
-+        exit(1);
-+    }
-=20
-     virt_acpi_setup(vms);
-     virt_build_smbios(vms);
-@@ -1394,8 +1395,7 @@ static void machvirt_init(MachineState *machine)
-     vms->fw_cfg =3D create_fw_cfg(vms, &address_space_memory);
-     rom_set_fw(vms->fw_cfg);
-=20
--    vms->machine_done.notify =3D virt_machine_done;
--    qemu_add_machine_init_done_notifier(&vms->machine_done);
-+    create_platform_bus(vms, pic);
-=20
-     vms->bootinfo.ram_size =3D machine->ram_size;
-     vms->bootinfo.kernel_filename =3D machine->kernel_filename;
-@@ -1405,16 +1405,12 @@ static void machvirt_init(MachineState *machine)
-     vms->bootinfo.board_id =3D -1;
-     vms->bootinfo.loader_start =3D vms->memmap[VIRT_MEM].base;
-     vms->bootinfo.get_dtb =3D machvirt_dtb;
-+    vms->bootinfo.skip_dtb_autoload =3D true;
-     vms->bootinfo.firmware_loaded =3D firmware_loaded;
-     arm_load_kernel(ARM_CPU(first_cpu), &vms->bootinfo);
-=20
--    /*
--     * arm_load_kernel machine init done notifier registration must
--     * happen before the platform_bus_create call. In this latter,
--     * another notifier is registered which adds platform bus nodes.
--     * Notifiers are executed in registration reverse order.
--     */
--    create_platform_bus(vms, pic);
-+    vms->machine_done.notify =3D virt_machine_done;
-+    qemu_add_machine_init_done_notifier(&vms->machine_done);
- }
-=20
- static bool virt_get_secure(Object *obj, Error **errp)
---=20
-2.7.4
-
+> ---
+>  hw/arm/bcm2836.c | 22 +++++++++++++---------
+>  hw/arm/raspi.c   |  2 --
+>  2 files changed, 13 insertions(+), 11 deletions(-)
+> 
+> diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+> index 7140257c98..12f75b55a7 100644
+> --- a/hw/arm/bcm2836.c
+> +++ b/hw/arm/bcm2836.c
+> @@ -25,16 +25,19 @@
+>  
+>  struct BCM283XInfo {
+>      const char *name;
+> +    const char *cpu_type;
+>      int clusterid;
+>  };
+>  
+>  static const BCM283XInfo bcm283x_socs[] = {
+>      {
+>          .name = TYPE_BCM2836,
+> +        .cpu_type = ARM_CPU_TYPE_NAME("cortex-a15"),
+>          .clusterid = 0xf,
+>      },
+>      {
+>          .name = TYPE_BCM2837,
+> +        .cpu_type = ARM_CPU_TYPE_NAME("cortex-a53"),
+>          .clusterid = 0x0,
+>      },
+>  };
+> @@ -42,6 +45,16 @@ static const BCM283XInfo bcm283x_socs[] = {
+>  static void bcm2836_init(Object *obj)
+>  {
+>      BCM283XState *s = BCM283X(obj);
+> +    BCM283XClass *bc = BCM283X_GET_CLASS(obj);
+> +    const BCM283XInfo *info = bc->info;
+> +    int n;
+> +
+> +    for (n = 0; n < BCM283X_NCPUS; n++) {
+> +        object_initialize(&s->cpus[n], sizeof(s->cpus[n]),
+> +                          info->cpu_type);
+> +        object_property_add_child(obj, "cpu[*]", OBJECT(&s->cpus[n]),
+> +                                  &error_abort);
+> +    }
+>  
+>      object_initialize(&s->control, sizeof(s->control), TYPE_BCM2836_CONTROL);
+>      object_property_add_child(obj, "control", OBJECT(&s->control), NULL);
+> @@ -69,14 +82,6 @@ static void bcm2836_realize(DeviceState *dev, Error **errp)
+>  
+>      /* common peripherals from bcm2835 */
+>  
+> -    obj = OBJECT(dev);
+> -    for (n = 0; n < BCM283X_NCPUS; n++) {
+> -        object_initialize(&s->cpus[n], sizeof(s->cpus[n]),
+> -                          s->cpu_type);
+> -        object_property_add_child(obj, "cpu[*]", OBJECT(&s->cpus[n]),
+> -                                  &error_abort);
+> -    }
+> -
+>      obj = object_property_get_link(OBJECT(dev), "ram", &err);
+>      if (obj == NULL) {
+>          error_setg(errp, "%s: required ram link not found: %s",
+> @@ -168,7 +173,6 @@ static void bcm2836_realize(DeviceState *dev, Error **errp)
+>  }
+>  
+>  static Property bcm2836_props[] = {
+> -    DEFINE_PROP_STRING("cpu-type", BCM283XState, cpu_type),
+>      DEFINE_PROP_UINT32("enabled-cpus", BCM283XState, enabled_cpus,
+>                         BCM283X_NCPUS),
+>      DEFINE_PROP_END_OF_LIST()
+> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+> index f588720138..ae15997669 100644
+> --- a/hw/arm/raspi.c
+> +++ b/hw/arm/raspi.c
+> @@ -150,8 +150,6 @@ static void raspi_init(MachineState *machine, int version)
+>      /* Setup the SOC */
+>      object_property_add_const_link(OBJECT(&s->soc), "ram", OBJECT(&s->ram),
+>                                     &error_abort);
+> -    object_property_set_str(OBJECT(&s->soc), machine->cpu_type, "cpu-type",
+> -                            &error_abort);
+>      object_property_set_int(OBJECT(&s->soc), smp_cpus, "enabled-cpus",
+>                              &error_abort);
+>      int board_rev = version == 3 ? 0xa02082 : 0xa21041;
+> 

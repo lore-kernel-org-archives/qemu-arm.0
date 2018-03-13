@@ -1,130 +1,167 @@
-Received: by 10.28.91.67 with SMTP id p64csp852783wmb;
-        Tue, 13 Mar 2018 08:39:14 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELs2ktQ7HOk1RQhZI1a4zDn+BMwfwqHg69BXk2DpsIe+AmTsPq6V2XeAiKRBvq+3TYf8U0F5
-X-Received: by 10.55.198.3 with SMTP id b3mr1562667qkj.196.1520955554345;
-        Tue, 13 Mar 2018 08:39:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1520955554; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp852815wmb;
+        Tue, 13 Mar 2018 08:39:15 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELuSgJz4pqSQWwuzCaMjtMwzoBb6M9tMAijxk8UiKY2S29zrJaWgWWCH1t0ki3SDOv0P3w/d
+X-Received: by 10.55.163.130 with SMTP id m124mr1659152qke.256.1520955555719;
+        Tue, 13 Mar 2018 08:39:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1520955555; cv=none;
         d=google.com; s=arc-20160816;
-        b=wNYadFMrdrSLhYS10wUzOTJvrVOPCw3aXYfqNLHOCC3JyPPD8zkHqh8U7+lOHWwZR0
-         sEbJEDbrPCKtNSvETDWTgGADu+w1W92XtJDqIr0rxa0y1c+SV6j0SJ4SoWFi/Ee2r3EB
-         mr76OmWObS03xafdGUZ2OOAtF4vEJA+jM4yJ99wx86dSO+9w+4FyU/qal/+3VXoRoB2s
-         5LC6cXl96mb7P2fI3yFHPJglCr1ZMVLdxFZb378KmTKyV66hsq/oylfooY9qlGUiksjn
-         5vwPW0b8xNM7q0xpzPRq67rEK3vOpyy0ndhgDzyMXinERFyav4vPGeldAzzhDsd6FjHT
-         De5g==
+        b=U0jvXagM7Uj1HxjsIBM+1bL6OvT/pFuY6TK/RO2IqFWYfaJ0z73thE6XimGrc4YfoG
+         oJsm2J3wsjoMDP75a5pfqGcWEqH5kJIECxPawA0ZEp+9MdnzZbTRzbY72kS+tocz46Zl
+         F0xizrWuWu34fW/n7LVtuo6QOli0qvw/ooXjw22S3yPXs6T7hopasNJ52a+oYAp81k5s
+         dmVffQn6lbcrzuNd1CV6RsHMg+1prciaV48XM7FIkrHeMnIukGStmBXDtlmTJO7AueAj
+         m9hOB6QWgJisH39kb6Ib9wlIPL0A43iPMmuldNDE0pqQTsfPrisCk/AMqrnZrhtxxABg
+         doCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=Moax0p294uKndt3CiguMn4SsRQy9dHzyxg2cfG3e5vo=;
-        b=Z1G+tZSeGXQ8s7Ev3lheGKUk46BJ4VoZF5aMxkSKBEDrelehEG2vromUcYR4jS4QCa
-         yzGicuRmnoifLDaNriDQiA2JmtdC2JelFyR9fPzNUlGQuZ/F4K1QjP7PzV8btCFHcvNQ
-         zuXlhFSaOgURunahZX+QIx/JzTq8fW12Uv+ytOgwd8IWDyBi7frLNIrILx9D0PoCJu0y
-         PBpZW5l55HRmpfX7kVvd5+Hwg9AEJptF12uOH7THf5AlSu/MnYmN1+uHlyf5dTN6VGs4
-         CRfXAMScjm0g4FzpjQrEIZ0gMfUXLPj3ZC5WRDw9V0bThuv7Q6ejNPGeShdF1YimXhTr
-         u4iQ==
+        bh=CvnRNeh6ibfMrYNuS93D15H2Eb2EK4mAY4BMUSe1ppY=;
+        b=ThWesdKvenBs4KFrUTJSbd1zgjbvUKFoVSXql8v1ffUbVpJxLYIJQs1USkoAyvsQ+T
+         7n648Zauk9Efd+pdtf+vdN9dAB4OPvrWbxl4lxotlYxpKaMgVUy4UXoDkRNZgeDFr009
+         gBsgprvfTu7hV6wCdVIpmqxXvcl+/v6txc4SnBDs/R0vpoVMuivq//lGPlcdmpC+kbb7
+         vdZHsbqETkiihEqDEcgRGtXvryO8WKrR4rjbHm//UTu33JbR0aTJU+80nBTbk3Se0oFG
+         VqcS7b1noSCoRZmjqIBFv6yqoWpR+HJizYRbvR7LLsFhCG9+yY5p8gzv/38D1NnB7TKV
+         8LXQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g125si434469qkd.467.2018.03.13.08.39.14
+        by mx.google.com with ESMTPS id k97si460909qkh.153.2018.03.13.08.39.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 13 Mar 2018 08:39:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 13 Mar 2018 08:39:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40571 helo=lists.gnu.org)
+Received: from localhost ([::1]:40566 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1evm1B-00013j-LO
-	for alex.bennee@linaro.org; Tue, 13 Mar 2018 11:39:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46948)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1evm1D-0000OL-4g
+	for alex.bennee@linaro.org; Tue, 13 Mar 2018 11:39:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47141)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1evlxK-0005Mh-79
-	for qemu-arm@nongnu.org; Tue, 13 Mar 2018 11:35:15 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1evlxV-0005fK-O6
+	for qemu-devel@nongnu.org; Tue, 13 Mar 2018 11:35:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1evlxG-0005mg-6r
-	for qemu-arm@nongnu.org; Tue, 13 Mar 2018 11:35:11 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1evlxP-0005sb-Rw
+	for qemu-devel@nongnu.org; Tue, 13 Mar 2018 11:35:25 -0400
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:47058)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1evlxF-0005j0-Vu; Tue, 13 Mar 2018 11:35:10 -0400
+	id 1evlxH-0005j0-8X; Tue, 13 Mar 2018 11:35:11 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1evlx7-0003EE-O2; Tue, 13 Mar 2018 15:35:01 +0000
+	id 1evlxD-0003Gh-Gd; Tue, 13 Mar 2018 15:35:07 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 13 Mar 2018 15:34:50 +0000
-Message-Id: <20180313153458.26822-2-peter.maydell@linaro.org>
+Date: Tue, 13 Mar 2018 15:34:58 +0000
+Message-Id: <20180313153458.26822-10-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.16.2
 In-Reply-To: <20180313153458.26822-1-peter.maydell@linaro.org>
 References: <20180313153458.26822-1-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 1/9] hw/arm/raspi: Don't do board-setup or
- secure-boot for raspi3
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [PATCH 9/9] hw/arm/raspi: Provide spin-loop code for
+ AArch64 CPUs
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	Pekka Enberg <penberg@iki.fi>,
 	Andrew Baumann <Andrew.Baumann@microsoft.com>, patches@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7b7IhCe75dq5
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: I0kX3g2T2qdN
 
-For the rpi1 and 2 we want to boot the Linux kernel via some
-custom setup code that makes sure that the SMC instruction
-acts as a no-op, because it's used for cache maintenance.
-The rpi3 boots AArch64 kernels, which don't need SMC for
-cache maintenance and always expect to be booted non-secure.
-Don't fill in the aarch32-specific parts of the binfo struct.
+The raspi3 has AArch64 CPUs, which means that our smpboot
+code for keeping the secondary CPUs in a pen needs to have
+a version for A64 as well as A32. Without this, the
+secondary CPUs go into an infinite loop of taking undefined
+instruction exceptions.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/raspi.c | 17 +++++++++++++----
- 1 file changed, 13 insertions(+), 4 deletions(-)
+ hw/arm/raspi.c | 41 ++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 40 insertions(+), 1 deletion(-)
 
 diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index a37881433c..1ac0737149 100644
+index ae15997669..06f1e08ca9 100644
 --- a/hw/arm/raspi.c
 +++ b/hw/arm/raspi.c
-@@ -82,10 +82,19 @@ static void setup_boot(MachineState *machine, int version, size_t ram_size)
-     binfo.board_id = raspi_boardid[version];
-     binfo.ram_size = ram_size;
-     binfo.nb_cpus = smp_cpus;
--    binfo.board_setup_addr = BOARDSETUP_ADDR;
--    binfo.write_board_setup = write_board_setup;
--    binfo.secure_board_setup = true;
--    binfo.secure_boot = true;
-+
-+    if (version <= 2) {
-+        /* The rpi1 and 2 require some custom setup code to run in Secure
-+         * mode before booting a kernel (to set up the SMC vectors so
-+         * that we get a no-op SMC; this is used by Linux to call the
-+         * firmware for some cache maintenance operations.
-+         * The rpi3 doesn't need this.
-+         */
-+        binfo.board_setup_addr = BOARDSETUP_ADDR;
-+        binfo.write_board_setup = write_board_setup;
-+        binfo.secure_board_setup = true;
-+        binfo.secure_boot = true;
-+    }
+@@ -27,6 +27,7 @@
+ #define BOARDSETUP_ADDR (MVBAR_ADDR + 0x20) /* board setup code */
+ #define FIRMWARE_ADDR_2 0x8000 /* Pi 2 loads kernel.img here by default */
+ #define FIRMWARE_ADDR_3 0x80000 /* Pi 3 loads kernel.img here by default */
++#define SPINTABLE_ADDR  0xd8 /* Pi 3 bootloader spintable */
  
+ /* Table of Linux board IDs for different Pi versions */
+ static const int raspi_boardid[] = {[1] = 0xc42, [2] = 0xc43, [3] = 0xc44};
+@@ -63,6 +64,40 @@ static void write_smpboot(ARMCPU *cpu, const struct arm_boot_info *info)
+                        info->smp_loader_start);
+ }
+ 
++static void write_smpboot64(ARMCPU *cpu, const struct arm_boot_info *info)
++{
++    /* Unlike the AArch32 version we don't need to call the board setup hook.
++     * The mechanism for doing the spin-table is also entirely different.
++     * We must have four 64-bit fields at absolute addresses
++     * 0xd8, 0xe0, 0xe8, 0xf0 in RAM, which are the flag variables for
++     * our CPUs, and which we must ensure are zero initialized before
++     * the primary CPU goes into the kernel. We put these variables inside
++     * a rom blob, so that the reset for ROM contents zeroes them for us.
++     */
++    static const uint32_t smpboot[] = {
++        0xd2801b05, /*        mov     x5, 0xd8 */
++        0xd53800a6, /*        mrs     x6, mpidr_el1 */
++        0x924004c6, /*        and     x6, x6, #0x3 */
++        0xd503205f, /* spin:  wfe */
++        0xf86678a4, /*        ldr     x4, [x5,x6,lsl #3] */
++        0xb4ffffc4, /*        cbz     x4, spin */
++        0xd2800000, /*        mov     x0, #0x0 */
++        0xd2800001, /*        mov     x1, #0x0 */
++        0xd2800002, /*        mov     x2, #0x0 */
++        0xd2800003, /*        mov     x3, #0x0 */
++        0xd61f0080, /*        br      x4 */
++    };
++
++    static const uint64_t spintables[] = {
++        0, 0, 0, 0
++    };
++
++    rom_add_blob_fixed("raspi_smpboot", smpboot, sizeof(smpboot),
++                       info->smp_loader_start);
++    rom_add_blob_fixed("raspi_spintables", spintables, sizeof(spintables),
++                       SPINTABLE_ADDR);
++}
++
+ static void write_board_setup(ARMCPU *cpu, const struct arm_boot_info *info)
+ {
+     arm_write_secure_board_setup_dummy_smc(cpu, info, MVBAR_ADDR);
+@@ -99,7 +134,11 @@ static void setup_boot(MachineState *machine, int version, size_t ram_size)
      /* Pi2 and Pi3 requires SMP setup */
      if (version >= 2) {
+         binfo.smp_loader_start = SMPBOOT_ADDR;
+-        binfo.write_secondary_boot = write_smpboot;
++        if (version == 2) {
++            binfo.write_secondary_boot = write_smpboot;
++        } else {
++            binfo.write_secondary_boot = write_smpboot64;
++        }
+         binfo.secondary_cpu_reset_hook = reset_secondary;
+     }
+ 
 -- 
 2.16.2
 

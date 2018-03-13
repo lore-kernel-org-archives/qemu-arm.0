@@ -1,149 +1,172 @@
-Received: by 10.28.91.67 with SMTP id p64csp892288wmb;
-        Mon, 12 Mar 2018 08:25:11 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELtL2/bEa0+vHKvpjnRCeclzgK/wMHyYlSBbE0V/UcgZSYnZPnrp2+68cVis+zPITQMdKSfx
-X-Received: by 2002:a25:a145:: with SMTP id z63-v6mr4971213ybh.96.1520868311797;
-        Mon, 12 Mar 2018 08:25:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1520868311; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp1294664wmb;
+        Tue, 13 Mar 2018 16:41:50 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELu/rjiZaeIg17r63y/96m5woh80YokBb+s+xLR8A4nYML02rESF7MdIUJ3fmEC3Ff87AyzL
+X-Received: by 10.55.192.20 with SMTP id o20mr3667281qki.257.1520984510753;
+        Tue, 13 Mar 2018 16:41:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1520984510; cv=none;
         d=google.com; s=arc-20160816;
-        b=aE5FBttLdRC6JQUkJVW0NFGDRKe2Cqz0olQ6cd2z/ci4MONmqS+Z1pdpBqeo+U/p0M
-         b6W13JjS8DvEygTG0NWw6D1KigMqj+ZstKJknU24NiuZFn3dCC/eXIH5fRxqTzOV98LN
-         BvnejXhyjfPleIwJiL6kPkOOGh6b1qWtmEKNhOZwik95fSb6aBjdqBgIXy+vcJO3VicZ
-         Vzp3wltnvGZpynW/Z5KBL8xTeRCc7cCdzypfGqdJlZolrZI4P5rycDk4U1Rl3+Zj9vMk
-         NbEpqbTGDcD6kCSpo0EQgjQZFfiGvWMHXKOY//4Hq7/hKxI55B6kmy/P+pVpiPpPXJI/
-         zTLA==
+        b=QzurVasP8wMICDNYZ8S7nByTmLhl3JWfBD61rjwEutvMukDp5wNYUEgf8iBdXzvwb7
+         5qCOz+DFwBKhmlyiG96XZ1lalwtkQYQXuI7aNzo1+yLQySLZ13EKQSUa+Vj68mWSxczM
+         wY6pVGz3bjzWfcVT4yZnWesMh3QQF1cGv8K6P1Lt2dOYJfoPNg+G+SwNCbuP0af4qDnR
+         23zmF8MUGBnt45pW4LMxh+xQbkX8b7SWKZirjAmXgxjvOVO8lSh+SvU+EVQvXCeTgx72
+         iOiFVmgvby4922kw5OuEw+a2JUUdAITZdlXmZ40DGJiek0dOninf4IEVORqrYDGKYw6s
+         mxfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:arc-authentication-results;
-        bh=Xca/KsxvvP/oUfskmHRoOPMp73GYsoM7YVZ5TEwewN4=;
-        b=zgLZTzLXQAccPvQiYFTpTM5T+RUsRV97VrhCWF4LP0vjjWJKybQHzqWYiRpPL10XXI
-         pWu93HK7QYc+HVTRn/Iyg7n1eC0ClHRw7dmSu5gIFAK2M5ddyTlCCqiyjcDztHS/6kL5
-         5ogJh/0npiSDtIShm+kLewWXSiALn2YZGUtVM7+XDnp4O130xP6haqImssRsKE4okALm
-         2+rGDMnh7DED5T9Y3xgfgIpIOCM4+NIXI510HI8iuJHK1COPaHb6ojDFbOB4GcUX0wtc
-         F9FJQ0hWjxdBq3eLFiHjZAjH1F4phf+gbEG3g5ZXb13zfHrDj6IRnopNn6N+N8MDoNgY
-         lQqg==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=ok9K/kmR05ycITh156gQcy9SU86daOmAla2A2ul4p/0=;
+        b=IUNb0vBKsF0rkD3kHI7ZsuyD8mRHSCTwRUbG3v3+MuPyjNSOTdRgIiJRnP/eiT/yPC
+         1AasVTpPO17lNYIoujIdntcsh1vBLz8Q626s5chqdX1vflYVKYpEav4dshHnnUX+inuZ
+         v+8D/K/byHslf4ERdGbDCQKo5yinb43+exAozczlUKlX+bq9GcTfoXNcSZkluqCPfb+G
+         Sh3whrcHCSyWtCidu/3AYzSAklYwYRH/lWFJKgLqzqf7VWInYWCe6nfLdPsRku34weZc
+         XZ+Ab1bqSvHdS0EcB5IPfHjQ79sx27McpAm/M2bOmQT0PHmOKxcIyR3+CiwswyYJ05dd
+         BPpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KZ+lP1SF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z22-v6si1210765ybi.801.2018.03.12.08.25.11
+        by mx.google.com with ESMTPS id t43si1371034qte.455.2018.03.13.16.41.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 12 Mar 2018 08:25:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 13 Mar 2018 16:41:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59521 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KZ+lP1SF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:43576 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1evPK3-00046B-64
-	for alex.bennee@linaro.org; Mon, 12 Mar 2018 11:25:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52763)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1evtYE-0001XQ-8G
+	for alex.bennee@linaro.org; Tue, 13 Mar 2018 19:41:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33977)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1evPI5-0002E6-Fr
-	for qemu-arm@nongnu.org; Mon, 12 Mar 2018 11:23:15 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1evsxz-00039N-Ig
+	for qemu-devel@nongnu.org; Tue, 13 Mar 2018 19:04:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1evPI2-00008m-Ap
-	for qemu-arm@nongnu.org; Mon, 12 Mar 2018 11:23:09 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:43544 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1evPI2-00008M-79; Mon, 12 Mar 2018 11:23:06 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2F64D4000B6E;
-	Mon, 12 Mar 2018 15:23:02 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-135.ams2.redhat.com
-	[10.36.116.135])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9729D2166BAE;
-	Mon, 12 Mar 2018 15:22:55 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1518893216-9983-1-git-send-email-eric.auger@redhat.com>
-	<CAFEAcA9KzitEO21Rgh8Azip+gVJjyobzNbk8sHuQf-ngg+Jjxg@mail.gmail.com>
-	<74aa2e5e-ed1b-3cf8-8ddc-41f7ef90ad7b@redhat.com>
-	<CAFEAcA-Mb_o88ieynaY8k6xehTyAoC13Dkf0QUUyOGmEjRd7XA@mail.gmail.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <20cc43e6-47b9-c7e7-09bb-21d170aab182@redhat.com>
-Date: Mon, 12 Mar 2018 16:22:54 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1evsxv-0004Tu-Dm
+	for qemu-devel@nongnu.org; Tue, 13 Mar 2018 19:04:23 -0400
+Received: from mail-wr0-x243.google.com ([2a00:1450:400c:c0c::243]:44091)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1evsxv-0004TV-74; Tue, 13 Mar 2018 19:04:19 -0400
+Received: by mail-wr0-x243.google.com with SMTP id v65so2527536wrc.11;
+	Tue, 13 Mar 2018 16:04:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=ok9K/kmR05ycITh156gQcy9SU86daOmAla2A2ul4p/0=;
+	b=KZ+lP1SFXkFd0M6j3Q5UCqmUshLFapQhJh6MBsTB7o3+wpeWI8OYlAuc+fXzWMLk19
+	pZ99QMecMrGjf4F3mJk7429tSQfXmDIMGbHayIcCKbWIOsI8eRSMQQAZ2ov5oyE2goWj
+	PNucmoXcEyNE+yKSDjBACEoEKgixdb+cVtNXgxA1cR6iq1ycbfNCChLYCdQ2cQaKZOQl
+	NnC6fdzFIEqkocWGH0rCZYVIKPGiaEzPSnNhPJvJ7cof8hYFZgliQ20GJt9w5zM4BWrm
+	W+x1OIgk6SMKKq49fe1hVq5h/7DO5doFIhhYuCpS69MpliQ61VK49sIZF+r5x13wmplv
+	XL3A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=ok9K/kmR05ycITh156gQcy9SU86daOmAla2A2ul4p/0=;
+	b=J/Su4J6fKiQ4+IatiXxXv2aNa6RbleJlvhu1AVhN03odRYXRx84RRcGq0JgespEWmE
+	dERiZiyHxhNKyflyFVdgeu9r8TxFl6A5W1hvxYCmOSi4lp9sqA+Kr52FNafn8a+PO41X
+	Tam7Rt0H4+py4mKHMN4vzI7k1nD8qwh2s7d70cciwWHYl+cOqKsLzWjY3Rb3f5wEjoX6
+	BsDbtS5neHuXL3rWq43s6BMdDSRNprZ9nGmIjoHrk5QyoOkfEHsk9lB+uO5RBVIzMn46
+	zfTzX/VytYTYC3wbR+6RyQrUSFv6VhCUQLWKVQ23To8uPekUog45rX+6E8L5L84L5EQh
+	ksoQ==
+X-Gm-Message-State: AElRT7GCGWY/O+8HvG9SNNdsmOVPuI1+txkuk7nTHOoY0RqKsihkWuqY
+	kj9gT/QFqbMKwSB5C2N73XE=
+X-Received: by 10.223.151.129 with SMTP id s1mr1986770wrb.206.1520982258001;
+	Tue, 13 Mar 2018 16:04:18 -0700 (PDT)
+Received: from [192.168.1.29] (AStrasbourg-554-1-221-65.w86-204.abo.wanadoo.fr.
+	[86.204.94.65]) by smtp.gmail.com with ESMTPSA id
+	140sm1584307wmy.38.2018.03.13.16.04.17
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 13 Mar 2018 16:04:17 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <20180313153458.26822-1-peter.maydell@linaro.org>
+	<20180313153458.26822-5-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <8d743296-5c80-6a3c-5632-4067828e9b94@amsat.org>
+Date: Wed, 14 Mar 2018 00:04:12 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.6.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-Mb_o88ieynaY8k6xehTyAoC13Dkf0QUUyOGmEjRd7XA@mail.gmail.com>
+In-Reply-To: <20180313153458.26822-5-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Mon, 12 Mar 2018 15:23:02 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Mon, 12 Mar 2018 15:23:02 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v9 00/14] ARM SMMUv3 Emulation
- Support
-X-BeenThere: qemu-arm@nongnu.org
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::243
+Subject: Re: [Qemu-devel] [PATCH 4/9] hw/arm/bcm2386: Fix parent type of
+ bcm2386
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
-	Jean-Philippe Brucker <jean-philippe.brucker@arm.com>,
-	Tomasz Nowicki <tn@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	Peter Xu <peterx@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Prem Mallappa <prem.mallappa@gmail.com>, linuc.decode@gmail.com,
-	Bharat Bhushan <bharat.bhushan@nxp.com>,
-	Christoffer Dall <christoffer.dall@linaro.org>,
-	Eric Auger <eric.auger.pro@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pZMpjqPtX9hw
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Pekka Enberg <penberg@iki.fi>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>, patches@linaro.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +AxzhnCKsk4P
 
-Hi Peter,
+On 03/13/2018 04:34 PM, Peter Maydell wrote:
+> The TypeInfo and state struct for bcm2386 disagree about what the
+> parent class is -- the TypeInfo says it's TYPE_SYS_BUS_DEVICE,
+> but the BCM2386State struct only defines the parent_obj field
+> as DeviceState. This would have caused problems if anything
+> actually tried to treat the object as a TYPE_SYS_BUS_DEVICE.
+> Fix the TypeInfo to use TYPE_DEVICE as the parent, since we don't
+> need any of the additional functionality TYPE_SYS_BUS_DEVICE
+> provides.
 
-On 12/03/18 13:58, Peter Maydell wrote:
-> On 28 February 2018 at 08:44, Auger Eric <eric.auger@redhat.com> wrote:
->> On 27/02/18 20:02, Peter Maydell wrote:
->>> On 17 February 2018 at 18:46, Eric Auger <eric.auger@redhat.com> wrote:
->>>> This series implements the emulation code for ARM SMMUv3.
+I once wondered if we can dump the whole devices hierarchy (xml format)
+and check consistency, or generate hyperlink doc and graph for the wiki...
+
 > 
->>> What state is this series in now? Is it "seems ready to
->>> go, needs review"? Are you hoping it might get in for 2.12,
->>> or targeting 2.13 ?
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+> ---
+> I noticed this when I tried to make the type into one which
+> has its own class struct, because we hit the assert that the
+> child's class struct had better be bigger than the parent's.
+
+Yeah once you understand this obscure assert(), it is VERY useful.
+
+> ---
+>  hw/arm/bcm2836.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
->> Yes I think it is in a decent state and I would be happy to get some new
->> reviews, for a tentative pull in 2.12. In any case I will be reactive on
->> any comment in that prospect.
-> 
-> Hi, Eric. I've now gone through the patchset and reviewed it. Sorry
-> I didn't manage to get to this in time to be able to put it into 2.12,
-> but there weren't any major or structural issues, so we should be
-> able to get this into the tree early in the 2.13 dev cycle.
-
-No worries. I am already really grateful to you for the time you spent
-on this comprehensive review.
-
-I have taken into account most of your comments already. I will run some
-more tests and post v10 this week then.
-
-Thanks
-
-Eric
-> 
-> thanks
-> -- PMM
+> diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+> index 40e8b25a46..9266f27c14 100644
+> --- a/hw/arm/bcm2836.c
+> +++ b/hw/arm/bcm2836.c
+> @@ -165,7 +165,7 @@ static void bcm2836_class_init(ObjectClass *oc, void *data)
+>  
+>  static const TypeInfo bcm2836_type_info = {
+>      .name = TYPE_BCM2836,
+> -    .parent = TYPE_SYS_BUS_DEVICE,
+> +    .parent = TYPE_DEVICE,
+>      .instance_size = sizeof(BCM2836State),
+>      .instance_init = bcm2836_init,
+>      .class_init = bcm2836_class_init,
 > 

@@ -1,116 +1,98 @@
-Received: by 10.28.91.67 with SMTP id p64csp1297391wmb;
-        Tue, 13 Mar 2018 16:46:12 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELudHZO3oRT6E5WFQ/DNZLDG0gqrPX0dfRcIZa04KTaqw8qKyowrJ8qTNF/304akbIfJMi8t
-X-Received: by 10.55.78.134 with SMTP id c128mr3963663qkb.226.1520984772750;
-        Tue, 13 Mar 2018 16:46:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1520984772; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp1669866wmb;
+        Thu, 15 Mar 2018 10:13:36 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELvKZataC9ztLWqYkQn5lwxgBkKIBavqL7Zot5ZDrU7QPLfXdZaD82ptY1I7WRqBROv5Gc2O
+X-Received: by 10.55.4.132 with SMTP id 126mr13852584qke.277.1521134016621;
+        Thu, 15 Mar 2018 10:13:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521134016; cv=none;
         d=google.com; s=arc-20160816;
-        b=tk4cwoMFWBYuPLcpzaMvyOZehh4NemMP1r+lhzyRNSLmt0CppyKd37TyYr7iOf5yqb
-         phgV7fyRN8Kom8QTR67YK45hxc7zzsTfhnCVOmX7y7GoeCZ/qPaMY/YZ9Qj4i46MuTQe
-         F6tNeD20cyBGhwy+DZqnxJCzcow//7GUwBbhxwtFAiqGLZoFsn0RgLSoVZrRuqL0IUz/
-         QciNaVF8bvryyHkj5e/qHCYvV467ES5+OZYOikJnR+935827OGB5vPQwTAZlEeI3ERDJ
-         3tNiu/eeKE0AczupstGG/S2l6y5LwBlfYzdJN7ufpwRorgctr7tbg4jhEA6vg9f8NEaj
-         sylg==
+        b=oiSx/16+03Xr0ZlhNmxg23haRLjm5aLpPoRN38T9RIVsNyTZd/D5Tu+C2fcxpRPHGg
+         dfoSNnBLH2OSBLeHcOO82Jh1Fx4kb3H410Iy7Zj5so5tDyYczhGtd6qqsfQotTZxtM3X
+         Uspnepcg2rValO9teCDMzS/nk8WBiccG6GQfc6ENbkzO3VZZHwHOxSMBx6B3ka+aKE5f
+         1Gr0oszLH5qc7oNsGnQyxuM9q4W6X5gd3DcTUjTlBJ7qWwb5AwEMMGP7FjCYz85vGyhZ
+         Ud8aErrsoWHYc54VFTMlGxMZyXW1s9HRlAqy5L9CNfQMbmknFulrt2v1+ixEgN/iWSqw
+         CSQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=p6CeBZyQdlSyYfYnZiEnZr5tAKrn9fambR6Djb85xD4=;
-        b=PZc5SAGYArGTJIco4YYe1MIS4GsEOh9EwcIuZj9DHAfaLion6rRynrSKqEzz1czpPl
-         vOwX3tDfmha6BjBQgcn7UEo8YnqRoFnI7ViVySWyNV95iivzFF3oGBclTou1ZxPanDmu
-         hP59iY2ppQ8HnEhVNfZTWPIuEF7fYvf9NP475U8gsLgj47KeaI68/TlPMzdGVTKwkJ7Z
-         gRQMrQR+NTCiNoaqGfxxekOkP6TmohRxnoH31qN63NobIucTiEM/GCQnOivzzQ70sjbD
-         jRIyxCkXCeiRidirGkJkRmWQSOqxriOWZdTJQWumjHllvoAWGCBWd13CQYt9pa/M+136
-         K8sA==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=5U/rTgHkOSa6uNIlCcOQd9SNMOOkVyAh0ay896ouWLk=;
+        b=IIUaNnXtIBfxrTQvxlk23mF05aEi7Ra7M7o8Nm9juDYokSbB1QgVOs0NwWPyxRSBv5
+         X80rLGg1TuKWHCPyGHfsiRahBC9iJol5PrjQintu2/oOwf3s4Eb/m6bvdkafj8dSLJ/v
+         KifD2sa77uq1Toq+6rB2uT6wKKSnRrp9cJWfthri/gp+awnNPQT/hN7kTIPSlgKgsPPM
+         PWqNk+A6e6wZJAls2xzlcPIba9SK622mnotB+RODwOQ0GDe5AHoBj/zSTru6tDnVLIlJ
+         pR2Jo7otpyTdjEmr/ULJdRW/bDdA/LKWEgMBx4bMXvKbQcKyno5qG/w4p87gg95UmGXu
+         QmAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nO3Tw3cd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@linaro.org header.s=google header.b=LpZzd/nn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p14si1420159qtj.222.2018.03.13.16.46.12
+        by mx.google.com with ESMTPS id h32si3091730qtk.57.2018.03.15.10.13.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 13 Mar 2018 16:46:12 -0700 (PDT)
+        Thu, 15 Mar 2018 10:13:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nO3Tw3cd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:43619 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=LpZzd/nn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:52640 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1evtcS-0006Ax-8g
-	for alex.bennee@linaro.org; Tue, 13 Mar 2018 19:46:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36693)
+	id 1ewWRc-0001sZ-2c
+	for alex.bennee@linaro.org; Thu, 15 Mar 2018 13:13:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54276)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1evtAH-0004iA-4g
-	for qemu-arm@nongnu.org; Tue, 13 Mar 2018 19:17:08 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1ewWRS-0001s5-0U
+	for qemu-arm@nongnu.org; Thu, 15 Mar 2018 13:13:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1evtAG-0001Qt-1f
-	for qemu-arm@nongnu.org; Tue, 13 Mar 2018 19:17:05 -0400
-Received: from mail-wr0-x229.google.com ([2a00:1450:400c:c0c::229]:40196)
+	(envelope-from <peter.maydell@linaro.org>) id 1ewWRR-0002WO-2p
+	for qemu-arm@nongnu.org; Thu, 15 Mar 2018 13:13:25 -0400
+Received: from mail-oi0-x22d.google.com ([2607:f8b0:4003:c06::22d]:34581)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1evtAB-0001Nz-5z; Tue, 13 Mar 2018 19:16:59 -0400
-Received: by mail-wr0-x229.google.com with SMTP id s12so105064wre.7;
-	Tue, 13 Mar 2018 16:16:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=p6CeBZyQdlSyYfYnZiEnZr5tAKrn9fambR6Djb85xD4=;
-	b=nO3Tw3cdIfA0YmDqOrx/YqRILb6CaaXxxvZqHihNmwHyPWayTkhTnjHF6vV0UyGdpo
-	915HhgKCFgvKJASQ1hoZTUv8aYgY6SQcl2BdZLsMS/2fU9UsRMe0/Y6dqdn4ndWrNMlo
-	xR39xYNItxjO9dXX5Z+TZi0J/nc7veBKxNZepLMd3yM8ywBciaTw9tqJQkFjvISJeKK3
-	bxlO8+fZEf21Sr4ErKS4UMCMH3ndHgCHFS7B7mN+39TlBr4ldQOzND9w1RK2NZWJrPUB
-	j6oMjQeiHaOTklntywFGx36TtEKVPsdi/8QDaDlkvvNG1YHbiiS/A9FnJ5Ie+sP7+d6O
-	Zarg==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1ewWRQ-0002W3-SI
+	for qemu-arm@nongnu.org; Thu, 15 Mar 2018 13:13:24 -0400
+Received: by mail-oi0-x22d.google.com with SMTP id e79so2372573oih.1
+	for <qemu-arm@nongnu.org>; Thu, 15 Mar 2018 10:13:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=5U/rTgHkOSa6uNIlCcOQd9SNMOOkVyAh0ay896ouWLk=;
+	b=LpZzd/nnJ/pt3l3naP7FOZKmi4wIWNiSUoCcRHMHyGekKXdvJS4xSFE+hp2Kt5A/68
+	7xUhHtAZURLA+HErGrUlOW/TSDPNmdYK+lF6hS7WVa7nLv3hnRQ5g+IOOlw5EorOJsy7
+	oMhRlLVycsovD5li9wVREaQZx88iQmQij4LXw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=p6CeBZyQdlSyYfYnZiEnZr5tAKrn9fambR6Djb85xD4=;
-	b=CZTBl6+S/RX/mX3P95tnduzcrToLYcezhz/rRreTAG/OVM2jFSU2eLmxsebWmKQBgD
-	NAV9Q7+6XcjllSEDlrHTliNNl4BL3gjGwTaLcsj55D5eVlbnqozY+pvnPiJaYXjf15B7
-	cIvX/w2aXPv+ugbGc8BSySmJ04G0/xCerA9bAcOV32pNZCz9CVhWBIR7UrfXlL5U3qRd
-	TZTjnSnumIbMe9YrSHUn0ihka3tdvGMZb8lmvtiE1fuHF+CruBbv9u6n93NiJTm/ka7E
-	W8WTXow/zvTR1jKW1agFKyNFJCH5Zxwt8Y8UE88WwpwlNNj06+F5E7DYnlwj+k+lNOH5
-	Iv/w==
-X-Gm-Message-State: AElRT7ELCuQL0BLD8sLiysZOagT6CnQ0q/wT/+bkq/+i+ggb1/u24TgH
-	yFFCKOwNC7UttRGr0jLqpFw=
-X-Received: by 10.223.199.138 with SMTP id l10mr2028509wrg.137.1520983018180; 
-	Tue, 13 Mar 2018 16:16:58 -0700 (PDT)
-Received: from [192.168.1.29] (AStrasbourg-554-1-221-65.w86-204.abo.wanadoo.fr.
-	[86.204.94.65]) by smtp.gmail.com with ESMTPSA id
-	i12sm1342705wrc.28.2018.03.13.16.16.56
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 13 Mar 2018 16:16:57 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>,
-	Alistair Francis <alistair23@gmail.com>
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=5U/rTgHkOSa6uNIlCcOQd9SNMOOkVyAh0ay896ouWLk=;
+	b=g+hmHMZuoeXHKv0XGCkpdnjyT5ufSKZPOoIuc/PDY/cGbzptFGwsvr3+1N/XTECLuM
+	EYvVvwXj3td6IjSwDbvvnpGlRctZYkOTtoOiaTnogXa6YN0aeTV8o9a5FF7vyaLys/4/
+	5kuETxF/K3ui94ZBiJHtcRV8481V+96n6LpBXw+dIJAQqtLagTBK8at5eWIXQmIMcjm3
+	dALfEGjU61sRCBdTkGOgHUmXDWR3XpWt6lqOXvjoiJnAVEIjcE9P5gQxahgcMKgLu5ZK
+	Kf8MPtZZog7DPmPEBili4bsFeUeMxqtnyJT6esaok+DwoCSezqAlo3BxYL+pNNtvUJ3h
+	QTFQ==
+X-Gm-Message-State: AElRT7G8JzO37tm3QEyrFRWZcmZs2CO41XnCbiNSzzIj0Q0pWaLO9hHn
+	JETEbDJZYQrOys8pxG3PVBVokKBAETtUa/jsm+29hA==
+X-Received: by 10.202.17.13 with SMTP id 13mr5413914oir.164.1521134004112;
+	Thu, 15 Mar 2018 10:13:24 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:2164:0:0:0:0:0 with HTTP; Thu, 15 Mar 2018 10:13:03
+	-0700 (PDT)
+In-Reply-To: <MWHPR21MB018983B74A652443B70680F19ED20@MWHPR21MB0189.namprd21.prod.outlook.com>
 References: <20180313153458.26822-1-peter.maydell@linaro.org>
 	<20180313153458.26822-9-peter.maydell@linaro.org>
 	<MWHPR21MB018983B74A652443B70680F19ED20@MWHPR21MB0189.namprd21.prod.outlook.com>
-	<CAFEAcA8O7EEhoS83eRLH5bVmog_Qu1tAgUzR6NsE+GD2a7FsDw@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <742160b4-2ab0-fba1-dd2f-78823c194558@amsat.org>
-Date: Wed, 14 Mar 2018 00:16:56 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.6.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8O7EEhoS83eRLH5bVmog_Qu1tAgUzR6NsE+GD2a7FsDw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 15 Mar 2018 17:13:03 +0000
+Message-ID: <CAFEAcA_9YQ4bSzHgM8yLAPtPZ2C70u13kTCLf4rHGPCBUgNiZA@mail.gmail.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::229
+X-Received-From: 2607:f8b0:4003:c06::22d
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 8/9] hw/arm/bcm2836: Hardcode
  correct CPU type
 X-BeenThere: qemu-arm@nongnu.org
@@ -124,75 +106,34 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+Cc: "patches@linaro.org" <patches@linaro.org>,
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"patches@linaro.org" <patches@linaro.org>, Pekka Enberg <penberg@iki.fi>
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Pekka Enberg <penberg@iki.fi>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7nV6U/JrCDla
+X-TUID: g+7SsAavYid2
 
-On 03/13/2018 06:09 PM, Peter Maydell wrote:
-> On 13 March 2018 at 16:55, Andrew Baumann <Andrew.Baumann@microsoft.com> wrote:
->>> From: Qemu-devel <qemu-devel-
->>> bounces+andrew.baumann=microsoft.com@nongnu.org> On Behalf Of Peter
->>> Maydell
->>> Sent: Tuesday, 13 March 2018 08:35
->>>
->>> Now we have separate types for BCM2386 and BCM2387, we might as well
->>> just hard-code the CPU type they use rather than having it passed
->>> through as an object property. This then lets us put the initialization
->>> of the CPU object in init rather than realize.
->>>
->>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> 
->>>  static const BCM283XInfo bcm283x_socs[] = {
->>>      {
->>>          .name = TYPE_BCM2836,
->>> +        .cpu_type = ARM_CPU_TYPE_NAME("cortex-a15"),
+On 13 March 2018 at 16:55, Andrew Baumann <Andrew.Baumann@microsoft.com> wrote:
+>> From: Qemu-devel <qemu-devel-
+>> bounces+andrew.baumann=microsoft.com@nongnu.org> On Behalf Of Peter
+>> Maydell
+>> Sent: Tuesday, 13 March 2018 08:35
 >>
->> At some point I remember seeing a patch to change this to cortex-a7. Is there a reason we didn't make that change?
->>
->> (Background: the real Pi2 has an A7. When I first implemented the machine model there was no A7 emulation in QEMU, so I used the A15 which was the closest equivalent.)
-> 
-> Yeah, we should do that. I'd forgotten about that, I think
-> things just got lost in the shuffle of having several
-> patchsets that tried to change the same things at once.
-> 
-> I guess the simplest thing is to add a patch at the end of
-> the series that fixes the cpu type for bcm2836.
+>> Now we have separate types for BCM2386 and BCM2387, we might as well
+>> just hard-code the CPU type they use rather than having it passed
+>> through as an object property. This then lets us put the initialization
+>> of the CPU object in init rather than realize.
 
-Peter, here is the patch Andrew remembered (maybe can be applied at the
-end):
-http://lists.nongnu.org/archive/html/qemu-devel/2018-02/msg04286.html
+> What about the default_cpu_type field of MachineClass set in
+> raspi[23]_machine_init? That seems irrelevant now...
 
-> 
-> 
->>> --- a/hw/arm/raspi.c
->>> +++ b/hw/arm/raspi.c
->>> @@ -150,8 +150,6 @@ static void raspi_init(MachineState *machine, int
->>> version)
->>>      /* Setup the SOC */
->>>      object_property_add_const_link(OBJECT(&s->soc), "ram", OBJECT(&s->ram),
->>>                                     &error_abort);
->>> -    object_property_set_str(OBJECT(&s->soc), machine->cpu_type, "cpu-type",
->>> -                            &error_abort);
->>>      object_property_set_int(OBJECT(&s->soc), smp_cpus, "enabled-cpus",
->>>                              &error_abort);
->>>      int board_rev = version == 3 ? 0xa02082 : 0xa21041;
->>
->> What about the default_cpu_type field of MachineClass set in
->> raspi[23]_machine_init? That seems irrelevant now...
-> 
-> Mmm. It doesn't hurt anything, though.
-> 
->> Also, if anyone cares (I don't), we also just lost the ability
->> to override the CPU type of a raspi model.
-> 
-> Yeah, that's deliberate -- I think that letting the user randomly
-> plug nonexistent combinations together just confuses people when
-> they don't work. I guess I should call it out in the commit message
-> though.
-> 
-> thanks
-> -- PMM
-> 
+Igor, can you help with this question? For a board that always
+has one CPU type (because the real hardware only ever has
+one SoC, and that SoC QOM object hard codes the CPU type)
+does it still need to set the mc->default_cpu_type field in
+its MachineClass, or does that become pointless ?
+
+thanks
+-- PMM

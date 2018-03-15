@@ -1,96 +1,115 @@
-Received: by 10.28.91.67 with SMTP id p64csp1192079wmb;
-        Thu, 15 Mar 2018 02:46:16 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELs5mW5EKAL60tYyia0cB90lBREIGFEEzqBJ/koEobyiNvy1Az/uExX/5evG200ymnMkh6HQ
-X-Received: by 10.200.55.157 with SMTP id d29mr4819407qtc.61.1521107176814;
-        Thu, 15 Mar 2018 02:46:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521107176; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp1329268wmb;
+        Thu, 15 Mar 2018 05:11:17 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELvo1iMDC5YK66L/5oEZLoWykCwOxjMr4eWw8S0GbJ5+vlyicx8FV92slvFFI0sJV/umFI6g
+X-Received: by 10.237.57.106 with SMTP id l97mr12745185qte.198.1521115877879;
+        Thu, 15 Mar 2018 05:11:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521115877; cv=none;
         d=google.com; s=arc-20160816;
-        b=JzRJFDjnTfjPpL0c+Wpw5sNKxHch6fM1MzCV/PhjkZweF2FAqBCJOUprplSvd9Klol
-         Cdlzt+RXOqaANPMThdMliTbtduAI2O5yU6I9Bgd3wwt/iysrBS6tNz+mrmSXDPuOMr3y
-         Tn6gVrw34jZ31739fKEu0H3IrMa8cS+tydFb3AE1oqWH/ED3sxjX1g3SEB3Bydv/H09M
-         g+8M4rDxB8ruW3pTFQWqM7MHNLhfzyl6MxRn+YSG0FQKXeBahyiY1yO9W8nPb3aWrLM+
-         7N+PvkvAKBIiJLv5ewsSGIovTdy7+fMBRgIxz5VMIyK0Fcuw7vBRdf2N1K/8dNgVXoXB
-         wQzw==
+        b=btCqHWo1B2dDVjkngptK33wevnIDuDd6B9gnry4ICkXdYD2rZURZbaH6rfijUy0k3h
+         n7z+PUNhQlgWha5yj5ifzsbxSSP1x7/zeW65uGrsZ2q/eFcY1dmn2mv8Xwo5qxvxJQ1o
+         GeHgMj8IOsFlYyahde0eGz+VVF+eX/WuNjzsbqdglVD5hFC7IhrwWILFKsU6kry6ngNp
+         eqelLddCqAjIrbTb6lzYQVnczffCkq8mKvh3CUE2KPawUEl3eBSjgJQUYLGvtHmMcXQl
+         g9C7QEP/+4HOftxjZ5MF9gTEsrocE/dHdq0IxZDXiFOgV4ox9ET6J0a67TjXsCw9WluM
+         zEAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:arc-authentication-results;
-        bh=HB2GgmOvtUmErg5W3GnMIFU8rKsvdWqvq2qm1OVZKcs=;
-        b=cDjb4qLmRR7u4vKpIME1gS4o0blQOXmD8onLp/bg1VSY0F7oDInBpTHT7I7e7SjjQO
-         78iPC3cP6TcvGDh5XZN6ReXdHwWRrBjqvZoQ5E48qUFfVULTknnb1C0yR3qWvApOujLv
-         PWhYJMP7diRQiRJtaAScGFsQ8tkAdCRufMVsd8HqJt9mhRRQREEoxXI/PiJDliUvL9Ss
-         5LenbCxuusUNvmWvPhaOE6U7gp6nragXEDEISPC6b4yqylx1zApKYT3MGIvr8l/1nfkj
-         23nd018ERPIjdT7yhfe/92n+DtL673KiHH9u7jRiaFOLUjoLwljoF2Y1JSK22LT7io7f
-         IINw==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=kK/C11GzpNVG1whTEdN5i5etb3aIFJBQ4uf/HuDzZow=;
+        b=WBouno3wbOMAk8spcggAJJeDzi8kpdg4aFLxc7KKg9Ns143+99keJ8UGLSUZZ/qHMX
+         rbT10l2FlVig0C7DhffytLmDau7BV0hcY+xFylkQOaQwcHSrgNulgdELlmZjXtSXfiDi
+         hR2AdyPVx8bPVxmOymQyjF9u3Fbyujnn0VvDs/j0mlD3t8I1KwOZrmuKn/XcZw+lDXDO
+         SHnjZ/sq/cdCvTWHfN6A1gh20UebXDn2aBRNwpyNmKTI57SMpDxs67XavxnEWFmRdZMk
+         Xup2MBrPcZppeJJeWqrbEvYGSIDROr32+S01GXcnaWugLv08reXBgSuQE3BiezJg/W1a
+         3TJw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Nyj+4AjK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j8si4461175qkm.303.2018.03.15.02.46.16
+        by mx.google.com with ESMTPS id k126si1794802qkf.323.2018.03.15.05.11.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 15 Mar 2018 02:46:16 -0700 (PDT)
+        Thu, 15 Mar 2018 05:11:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50417 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Nyj+4AjK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:51140 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ewPSi-0006A4-Bn
-	for alex.bennee@linaro.org; Thu, 15 Mar 2018 05:46:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44949)
+	id 1ewRj3-0006SJ-Bo
+	for alex.bennee@linaro.org; Thu, 15 Mar 2018 08:11:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52242)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1ewPSX-00067D-Sc
-	for qemu-arm@nongnu.org; Thu, 15 Mar 2018 05:46:09 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1ewRiq-0006OY-7I
+	for qemu-arm@nongnu.org; Thu, 15 Mar 2018 08:11:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1ewPSU-0006YP-Nt
-	for qemu-arm@nongnu.org; Thu, 15 Mar 2018 05:46:05 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:48632 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1ewPSU-0006Ww-IP; Thu, 15 Mar 2018 05:46:02 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 68CA7D1459;
-	Thu, 15 Mar 2018 09:46:01 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-135.ams2.redhat.com
-	[10.36.116.135])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 123CA1208F76;
-	Thu, 15 Mar 2018 09:45:51 +0000 (UTC)
-To: Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-References: <1518893216-9983-1-git-send-email-eric.auger@redhat.com>
-	<1518893216-9983-12-git-send-email-eric.auger@redhat.com>
-	<CAFEAcA_9cmK9gebqE9997fzhTzKT6Ky9q4jn=fxwziopDyK9Ew@mail.gmail.com>
-	<cc6029a1-c177-ee8c-d09b-0ed2af81c897@redhat.com>
-	<75aee987-a08b-570f-ec10-8b4853d853c6@redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <ee14227e-8d0a-6f5e-cc60-2bfa0f029723@redhat.com>
-Date: Thu, 15 Mar 2018 10:45:50 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1ewRip-0000no-9R
+	for qemu-arm@nongnu.org; Thu, 15 Mar 2018 08:11:04 -0400
+Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:52890)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1ewRik-0000hA-Su; Thu, 15 Mar 2018 08:10:59 -0400
+Received: by mail-wm0-x243.google.com with SMTP id t3so9974741wmc.2;
+	Thu, 15 Mar 2018 05:10:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=kK/C11GzpNVG1whTEdN5i5etb3aIFJBQ4uf/HuDzZow=;
+	b=Nyj+4AjKozrlgkabUweJ3G1aUr54R0e3pCgc3Q4odN7nR1RL1b+njYgDwvji3IbUOs
+	kUo+X2XFHhvNgxnuGfbiRQzJR3pAEFA+6aP1q7H2eRyawF//+j3nfHfn6erh1LfS3VG6
+	FOtY1ABiU6M9niRxkxljCbt73ow/9LZTcpFFyhgwOXG1dVmcOqGYVJ9EimtTkZpb8rSP
+	bx9jZ0c8xnjCmxmhlqbVps4jRdCcsuLdmkgN5a0aAZMdchPEyI5EDSAqKSJubjMZLO9K
+	/+5jKs1ZupW7hCIwCE7+rXA7tsqIIsH3uq8jV7JCKUT4XCUp3eLikZzojxuR3F0/AJ96
+	iIYw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=kK/C11GzpNVG1whTEdN5i5etb3aIFJBQ4uf/HuDzZow=;
+	b=BQibT9kWibF8+fnb1HVzHg2ulRh5DcP7Yh8q3fMo6kX53RFaAEgha6ri2yGqHR1n4Y
+	F7RgULLqyrwbRoNY00aRX/aMdW8OGLc/NBX0IjBJLVMjzmFb5jr9KTjSidKBHuQ4OHCK
+	5qp4Tl1HbHEi3igUxGC7o6EMTystOPY0q8Uljvn+L21WrXNaOpXscUGDjpfglBRyOsGU
+	MkUFsqTiip+So2pFJV0vbfT+0bCdoDLwfQTRhWu2jk1fekG2+XKVafNwzsR7yKMnfOED
+	tPN3kEZLj/dWatAWEHepFtlW+hEokWPKgOq3BGCQ/46ejz628UmTf90C1S9bgSt8+6fG
+	eiQw==
+X-Gm-Message-State: AElRT7Fw15kZXDPDl8JuJ8HM24f4K50ttiC1G42cpdV5HoNP6b74VQ9Q
+	FLij67w2thvC3k1Osoj/SCM=
+X-Received: by 10.28.183.9 with SMTP id h9mr4122744wmf.99.1521115857757;
+	Thu, 15 Mar 2018 05:10:57 -0700 (PDT)
+Received: from [192.168.1.29] (AStrasbourg-554-1-221-65.w86-204.abo.wanadoo.fr.
+	[86.204.94.65])
+	by smtp.gmail.com with ESMTPSA id e6sm4528404wra.67.2018.03.15.05.10.56
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 15 Mar 2018 05:10:57 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <20180313153458.26822-1-peter.maydell@linaro.org>
+	<20180313153458.26822-8-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <8d9b206b-3d30-5ceb-cf37-07cf5857afc3@amsat.org>
+Date: Thu, 15 Mar 2018 13:10:56 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.6.0
 MIME-Version: 1.0
-In-Reply-To: <75aee987-a08b-570f-ec10-8b4853d853c6@redhat.com>
+In-Reply-To: <20180313153458.26822-8-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Thu, 15 Mar 2018 09:46:01 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Thu, 15 Mar 2018 09:46:01 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [PATCH v9 11/14] target/arm/kvm: Translate the MSI
- doorbell in kvm_arch_fixup_msi_route
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::243
+Subject: Re: [Qemu-arm] [PATCH 7/9] hw/arm/bcm2836: Use correct affinity
+ values for BCM2837
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,67 +121,69 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
-	Jean-Philippe Brucker <jean-philippe.brucker@arm.com>,
-	Tomasz Nowicki <tn@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	Peter Xu <peterx@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Christoffer Dall <christoffer.dall@linaro.org>,
-	linuc.decode@gmail.com, Bharat Bhushan <bharat.bhushan@nxp.com>,
-	Prem Mallappa <prem.mallappa@gmail.com>,
-	Eric Auger <eric.auger.pro@gmail.com>
+Cc: Pekka Enberg <penberg@iki.fi>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LQovPyj46yPV
+X-TUID: gOnMLqxRkpzz
 
-Hi Paolo,
+On 03/13/2018 04:34 PM, Peter Maydell wrote:
+> The BCM2837 sets the Aff1 field of the MPIDR affinity values for the
+> CPUs to 0, whereas the BCM2836 uses 0xf. Set this correctly, as it
+> is required for Linux to boot.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-On 13/03/18 14:37, Paolo Bonzini wrote:
-> On 12/03/2018 16:16, Auger Eric wrote:
->>> It is still unclear to me if we need to register an IOMMUNotifier
->>> to handle any change in the MSI doorbell which would occur behind
->>> the scene and would not lead to any call to kvm_arch_fixup_msi_route().
->>
->> Paolo, do you know the answer to this question ?
-> 
-> Yes, x86 is wrong in this respect (it wouldn't use an IOMMUNotifier, but
-> it still should process Interrupt Entry Cache invalidations).
+I don't have the datasheet for this SoC,
+but checked Linux dts ("ARM CPUs bindings -> cpus and cpu node bindings
+definition" from doc/Documentation/devicetree/bindings/arm/cpus.txt,
+then arch/arm/boot/dts/bcm283[67].dtsi). This might be useful to add in
+the commit description.
 
-I am not sure anymore of the issue we want to fix. The concen I had in
-mind was: what if the MSI doorbell gets unmapped. We would need to be
-notified in some way. As the doorbell lies in MMIO space, no
-IOMMUNotifier is attached to it at the moment. On the other hand, if the
-doorbell gets unmapped, can't we expect some kind of tear down of the
-route? Paolo, is it the use case you are talking about here?
-> 
->>> It seems a bit odd that:
->>>  * the code for arm for "PCI devices behind IOMMU need to have
->>>    the MSI doorbell writes go through the IOMMU" looks rather
->>>    different from the code for x86 for the same thing
->>
->> ARM SMMU translates MSIs whereas Intel/AMD IOMMU do not translate them.
->> Hence this implementation
-> 
-> More precisely, Intel IOMMU implements interrupt remapping through an
-> MMIO region instead of an IOMMU region, because on x86 interrupt
-> remapping can also change the MSI value and not just the address.
-thank you for the clarification. Yes I too much focused on IOMMU DMA
-translation and forgot the x86 interrupt remapping stuff which
-corresponds to what is done here.
-> 
->>>  * the code here needs to know specifically that this is an SMMU
->>>    and not some other kind of IOMMU
->> Yes when introducing virtio-iommu we will need to get this fixed. We
->> need a way to retrieve the iommu mr from the as. I will work on this
->> concurrently.
-> 
-> Probably something like address_space_translate can be used?
-Yes achieved with address_space_translate + memory_region_find
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Thanks
-
-Eric
-
+> ---
+>  hw/arm/bcm2836.c | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
 > 
-> Paolo
+> diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+> index 07d2705f96..7140257c98 100644
+> --- a/hw/arm/bcm2836.c
+> +++ b/hw/arm/bcm2836.c
+> @@ -25,14 +25,17 @@
+>  
+>  struct BCM283XInfo {
+>      const char *name;
+> +    int clusterid;
+>  };
+>  
+>  static const BCM283XInfo bcm283x_socs[] = {
+>      {
+>          .name = TYPE_BCM2836,
+> +        .clusterid = 0xf,
+>      },
+>      {
+>          .name = TYPE_BCM2837,
+> +        .clusterid = 0x0,
+>      },
+>  };
+>  
+> @@ -58,6 +61,8 @@ static void bcm2836_init(Object *obj)
+>  static void bcm2836_realize(DeviceState *dev, Error **errp)
+>  {
+>      BCM283XState *s = BCM283X(dev);
+> +    BCM283XClass *bc = BCM283X_GET_CLASS(dev);
+> +    const BCM283XInfo *info = bc->info;
+>      Object *obj;
+>      Error *err = NULL;
+>      int n;
+> @@ -119,7 +124,7 @@ static void bcm2836_realize(DeviceState *dev, Error **errp)
+>          /* Mirror bcm2836, which has clusterid set to 0xf
+>           * TODO: this should be converted to a property of ARM_CPU
+>           */
+> -        s->cpus[n].mp_affinity = 0xF00 | n;
+> +        s->cpus[n].mp_affinity = (info->clusterid << 8) | n;
+>  
+>          /* set periphbase/CBAR value for CPU-local registers */
+>          object_property_set_int(OBJECT(&s->cpus[n]),
 > 

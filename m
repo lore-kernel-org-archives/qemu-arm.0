@@ -1,99 +1,101 @@
-Received: by 10.28.91.67 with SMTP id p64csp672554wmb;
-        Mon, 12 Mar 2018 05:00:12 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELsLTnpzPBmiaUhgM8z0V5X1DouN4ysI73l5Y9PKeHZJUBudE+aAMgjDJ5lODGNZUzGm2BsG
-X-Received: by 10.13.246.129 with SMTP id g123mr4348655ywf.124.1520856012561;
-        Mon, 12 Mar 2018 05:00:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1520856012; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp1276863wmb;
+        Fri, 16 Mar 2018 13:36:31 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELvgZeE7aFief1kPzkbSJxwYz5IKJTGcRYpzq9s1AGf1hXrFzoqnOdSwRpJVyD/d6tfz0mMw
+X-Received: by 10.237.47.165 with SMTP id m34mr5025193qtd.178.1521232591821;
+        Fri, 16 Mar 2018 13:36:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521232591; cv=none;
         d=google.com; s=arc-20160816;
-        b=EnLQvNQMKh4I3uOqSJ+vl1mONH/la9b3jhc7idN9i4Ynga116Ki7BCXJhKMFJmb2bO
-         TxkTRh3qB/uRFuZiRl6gQj6yynh9R8LwfK32oHgqBLsS92P2/IR0KajsvAs66T4lfBDc
-         Ei7aS8rFvTFoEHtuWwEaaEve9/aaFl7WT1Hx32FrKRg1ixZU0QipkLH1Zimw7kZwjcoP
-         nsZNoj3CAUT28xPFmLpCiAa346ACaPThLrtCJA1IP4vMBh/B3GrblYZC+8wgISTJb6Nn
-         9jAqMwgOTwWXWrxB5ga7bjG+tAdal+ZVRulx+D7vAWcZPTaaMb2kk6J3B5AB3qdP0y+6
-         ozDw==
+        b=skGfpECPiD5Q7GjnhGb/Cvtv2RBdbMDNhJO+44FsS8JOSpJqBj5+O5Vx2cQxFJrQiQ
+         iTDH16tlkb4H+/HGyExD2hztmU7e6WnXWWcBZ+WSLziq5wx5CpaQqme0VCufzm6QbXnI
+         wevIzmWSrAJVIV801Ym5uD+bJe6f3DvSWh6SgaGjReIV7vuknXFNsZNW1IXWaQKPtZhT
+         bVPTjizbs4OSk3IsJmyh5A7cHxrnpkaPCOS+jIiCET/4hM1MD+YXxkTVUqOPPAr+67Zz
+         wNVvyGcm6KNDGMpfD5fr72dPAKu4p8GD4XRxK4zT6Via3+epvLttelRaJ6XH3K68ROlG
+         XqMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dmarc-filter:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=nUQBEnrlk55quKCSQGErXisS69+guuAa5OwaDklPBWQ=;
-        b=KgZYEYPH+SSCCAJJ4n++LUYSuTsyI1vCkiYGh1KKp6QuRC112cEkMadU2EoS1LCiNN
-         4eD6TnHF5nPSYyFnUre7jfi1ejx53YnDqpShEZGeLzgord920wCZQs7DZbchdiGFg0Hk
-         XjlVPZHz9BMhMiwa2QkvUc4CQtIscfIrLPjJPKpuj0szvQTTkdsV8H69UzvkCDOgjrHI
-         swU6mkg5tJFNUnFAMMrr/JRuN2D8dl1BDhNXaS+sKO74oME5Yem1RtCtU54kX2usOT+1
-         lODZZQWXDFViK/Sl0NXJQaEY4L3fQFCgddkPwQJobObQ2QRuy1M4tVk6mhhil35u70pS
-         XvUQ==
+        bh=iRXB+yLz+U8KioyvXOBBQ/ewMBUx8e+kYfwd7XBysqE=;
+        b=XrI6rInOC71PV3OEClR6ZKmU7R8YieJQVRfIEiErkVsBd4Jhk3gwuXOA/tzT3U/GBH
+         gvACilyH43ikENy//ZhPoMOPFjgWVaJZBGsB9gRcl5qlZriJU1QCu25aAKXideagE5bt
+         UMbDQsswjXYy+DSYL9hHQ5Dd4a11hz1VePxpdqiZo6NxPpq0WmWWmeWJfC262S/+w05G
+         /LxGy/7K7olmfWOVmEAdNUDlOowUZHtOg8CQpE+Qx7eeMzGXnkRZ4zKGUxKhHKHfsOM5
+         5S4Iy8e/utAs1ZMlWAdtsAVvqxQT6EVfPPazvrk90C9MpC6mzyQZsDd3lpq8JerNoS4w
+         SRQA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=bFx6AhxA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=Ad0hi1kD;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=FKzOinkM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w129si1245069ywd.258.2018.03.12.05.00.12
+        by mx.google.com with ESMTPS id o66si1315535qkf.456.2018.03.16.13.36.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 12 Mar 2018 05:00:12 -0700 (PDT)
+        Fri, 16 Mar 2018 13:36:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=bFx6AhxA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57987 helo=lists.gnu.org)
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=Ad0hi1kD;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=FKzOinkM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:59455 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1evM7f-0006LI-S8
-	for alex.bennee@linaro.org; Mon, 12 Mar 2018 08:00:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58359)
+	id 1eww5X-0000kv-CL
+	for alex.bennee@linaro.org; Fri, 16 Mar 2018 16:36:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43817)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1evM7T-0006JH-99
-	for qemu-arm@nongnu.org; Mon, 12 Mar 2018 08:00:01 -0400
+	(envelope-from <alindsay@codeaurora.org>) id 1eww1E-0005fx-F9
+	for qemu-arm@nongnu.org; Fri, 16 Mar 2018 16:32:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1evM7S-0005fo-7a
-	for qemu-arm@nongnu.org; Mon, 12 Mar 2018 07:59:59 -0400
-Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:39601)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1evM7S-0005eb-1s
-	for qemu-arm@nongnu.org; Mon, 12 Mar 2018 07:59:58 -0400
-Received: by mail-ot0-x244.google.com with SMTP id h8so14959257oti.6
-	for <qemu-arm@nongnu.org>; Mon, 12 Mar 2018 04:59:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=nUQBEnrlk55quKCSQGErXisS69+guuAa5OwaDklPBWQ=;
-	b=bFx6AhxAYxrRlrxe+FPmzu6caAaGmRMj1g1mLywN1ppY0BSwHaBjJ+018cYqXjLmhn
-	tx5DQO/PwT1FDw6EW4WYA/4Hzd2t7KkgrQUoGZ/MKwb7aASUPNhT+bZowDCcf+msDlJp
-	rDHQn+TpcEYkczY/QSwiR289knj5ZwAzZxprE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=nUQBEnrlk55quKCSQGErXisS69+guuAa5OwaDklPBWQ=;
-	b=Crr+g74WWuvoDVBz8f1Mzmx2cPPuKAW4hZipffLFDgxENfXSNtOngcZbBAwaQBtbtK
-	KASvkH3GrbRI8c32Px0z8fCTmwrgJOZn2AhKSo8Wz2o0GUnDbfs/wwgjEIfGC8ioHYEp
-	nAjTFeLxOu6OLbx9dcQV1EXzLa1to2z7gjsHLh2CDudXkoWN/fVvd0Xt95KW2qfE2Lkn
-	JIcd937LHdIb10L2MIYKLsvj+ry6IUVH7fa/aVs+zzJQKze2aIg7iPWz46UmRsOJEtzy
-	doSWpZVTPnxXavOcVLGJ1gYR17DN1Bc6Wsq8yOsxKRx8mpoKtN+JgS6yPI8O/gp6qIDi
-	prUw==
-X-Gm-Message-State: AElRT7FVzq4Wd0EzxZTXYbOgTFzWufRk3dhydzF5AK2WZ0+X9axtIfI9
-	GA1vm1iC+fF81+QVd19euJtTcN9ZrFpCUApotmkSvg==
-X-Received: by 10.157.69.152 with SMTP id x24mr4951526ote.126.1520855997133;
-	Mon, 12 Mar 2018 04:59:57 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:2164:0:0:0:0:0 with HTTP; Mon, 12 Mar 2018 04:59:36
-	-0700 (PDT)
-In-Reply-To: <1518893216-9983-12-git-send-email-eric.auger@redhat.com>
-References: <1518893216-9983-1-git-send-email-eric.auger@redhat.com>
-	<1518893216-9983-12-git-send-email-eric.auger@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 12 Mar 2018 11:59:36 +0000
-Message-ID: <CAFEAcA_9cmK9gebqE9997fzhTzKT6Ky9q4jn=fxwziopDyK9Ew@mail.gmail.com>
-To: Eric Auger <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::244
-Subject: Re: [Qemu-arm] [PATCH v9 11/14] target/arm/kvm: Translate the MSI
- doorbell in kvm_arch_fixup_msi_route
+	(envelope-from <alindsay@codeaurora.org>) id 1eww1D-00035T-Hx
+	for qemu-arm@nongnu.org; Fri, 16 Mar 2018 16:32:04 -0400
+Received: from smtp.codeaurora.org ([198.145.29.96]:55512)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <alindsay@codeaurora.org>)
+	id 1eww1D-00034I-8B; Fri, 16 Mar 2018 16:32:03 -0400
+Received: by smtp.codeaurora.org (Postfix, from userid 1000)
+	id 4B94560F71; Fri, 16 Mar 2018 20:32:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
+	s=default; t=1521232322;
+	bh=F0eczBJ8qIiSvzJV57Z/jtH2JVu0o4r0fUmil4HtDUo=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=Ad0hi1kDngS68clfk0K9kdtkC/14hdhfKtE15cE8o/1AGEcj9HDpSD1zoz2FwdiVU
+	QFIq6/No2RnCxV3+gFHh3IIujjfI+hC4k6/p7B3WtIC8xJAst8jf9edy+6SUkKIH2q
+	a36QLmJXGCkNySAMpjjeIpytlNthxoUHZWEiBGkU=
+Received: from mossypile.qualcomm.com (global_nat1_iad_fw.qualcomm.com
+	[129.46.232.65])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
+	(No client certificate requested)
+	(Authenticated sender: alindsay@smtp.codeaurora.org)
+	by smtp.codeaurora.org (Postfix) with ESMTPSA id B3C5060F5C;
+	Fri, 16 Mar 2018 20:32:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
+	s=default; t=1521232321;
+	bh=F0eczBJ8qIiSvzJV57Z/jtH2JVu0o4r0fUmil4HtDUo=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=FKzOinkMW71Gjme2wGt35AVAKPEYno5uMSPj7vcD/NYJ7YSzk10BJJKbxhfZ4K3Oa
+	iHh/yBDHaC8qhQLIwRIC4Hc3GZg3oV7+mWqeINVlXoUHuVAO+2N0tq2p58Q8Hi7b5h
+	QafrLnZ6l+zZH9YxVmsK3XjlvCcQq8ZS+VEPf0YQ=
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org B3C5060F5C
+Authentication-Results: pdx-caf-mail.web.codeaurora.org;
+	dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: pdx-caf-mail.web.codeaurora.org;
+	spf=none smtp.mailfrom=alindsay@codeaurora.org
+From: Aaron Lindsay <alindsay@codeaurora.org>
+To: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Alistair Francis <alistair.francis@xilinx.com>, Wei Huang <wei@redhat.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Date: Fri, 16 Mar 2018 16:31:02 -0400
+Message-Id: <1521232280-13089-5-git-send-email-alindsay@codeaurora.org>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1521232280-13089-1-git-send-email-alindsay@codeaurora.org>
+References: <1521232280-13089-1-git-send-email-alindsay@codeaurora.org>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 198.145.29.96
+Subject: [Qemu-arm] [PATCH v3 04/22] target/arm: Treat PMCCNTR as alias of
+ PMCCNTR_EL0
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,102 +107,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
-	Jean-Philippe Brucker <jean-philippe.brucker@arm.com>,
-	Tomasz Nowicki <tn@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	Peter Xu <peterx@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Christoffer Dall <christoffer.dall@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, linuc.decode@gmail.com,
-	Bharat Bhushan <bharat.bhushan@nxp.com>,
-	Prem Mallappa <prem.mallappa@gmail.com>,
-	Eric Auger <eric.auger.pro@gmail.com>
+Cc: Aaron Lindsay <alindsay@codeaurora.org>,
+	Michael Spradling <mspradli@codeaurora.org>,
+	qemu-devel@nongnu.org, Digant Desai <digantd@codeaurora.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7Frnv36aHf95
+X-TUID: OJyG1vgPgoBc
 
-On 17 February 2018 at 18:46, Eric Auger <eric.auger@redhat.com> wrote:
-> In case the MSI is translated by an IOMMU we need to fixup the
-> MSI route with the translated address.
->
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->
-> ---
->
-> v5 -> v6:
-> - use IOMMUMemoryRegionClass API
->
-> It is still unclear to me if we need to register an IOMMUNotifier
-> to handle any change in the MSI doorbell which would occur behind
-> the scene and would not lead to any call to kvm_arch_fixup_msi_route().
+They share the same underlying state
 
-Paolo, do you know the answer to this question ?
+Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
+---
+ target/arm/helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> ---
->  target/arm/kvm.c        | 27 +++++++++++++++++++++++++++
->  target/arm/trace-events |  3 +++
->  2 files changed, 30 insertions(+)
->
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 1219d00..9f5976a 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -20,8 +20,13 @@
->  #include "sysemu/kvm.h"
->  #include "kvm_arm.h"
->  #include "cpu.h"
-> +#include "trace.h"
->  #include "internals.h"
->  #include "hw/arm/arm.h"
-> +#include "hw/pci/pci.h"
-> +#include "hw/pci/msi.h"
-> +#include "hw/arm/smmu-common.h"
-> +#include "hw/arm/smmuv3.h"
->  #include "exec/memattrs.h"
->  #include "exec/address-spaces.h"
->  #include "hw/boards.h"
-> @@ -666,6 +671,28 @@ int kvm_arm_vgic_probe(void)
->  int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
->                               uint64_t address, uint32_t data, PCIDevice *dev)
->  {
-> +    AddressSpace *as = pci_device_iommu_address_space(dev);
-> +    IOMMUMemoryRegionClass *imrc;
-> +    IOMMUTLBEntry entry;
-> +    SMMUDevice *sdev;
-> +
-> +    if (as == &address_space_memory) {
-> +        return 0;
-> +    }
-> +
-> +    /* MSI doorbell address is translated by an IOMMU */
-> +    sdev = container_of(as, SMMUDevice, as);
-> +    imrc = IOMMU_MEMORY_REGION_GET_CLASS(&sdev->iommu);
-> +
-> +    entry = imrc->translate(&sdev->iommu, address, IOMMU_WO);
-> +
-> +    route->u.msi.address_lo = entry.translated_addr;
-> +    route->u.msi.address_hi = entry.translated_addr >> 32;
-> +
-> +    trace_kvm_arm_fixup_msi_route(address, sdev->devfn,
-> +                                  sdev->iommu.parent_obj.name,
-> +                                  entry.translated_addr);
-> +
->      return 0;
->  }
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 5e48982..5634561 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -1318,7 +1318,7 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
+       .fieldoffset = offsetof(CPUARMState, cp15.c9_pmselr),
+       .writefn = pmselr_write, .raw_writefn = raw_write, },
+     { .name = "PMCCNTR", .cp = 15, .crn = 9, .crm = 13, .opc1 = 0, .opc2 = 0,
+-      .access = PL0_RW, .resetvalue = 0, .type = ARM_CP_IO,
++      .access = PL0_RW, .resetvalue = 0, .type = ARM_CP_ALIAS | ARM_CP_IO,
+       .readfn = pmccntr_read, .writefn = pmccntr_write32,
+       .accessfn = pmreg_access_ccntr },
+     { .name = "PMCCNTR_EL0", .state = ARM_CP_STATE_AA64,
+-- 
+Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies, Inc.
+Qualcomm Technologies, Inc. is a member of the
+Code Aurora Forum, a Linux Foundation Collaborative Project.
 
-It seems a bit odd that:
- * the code for arm for "PCI devices behind IOMMU need to have
-   the MSI doorbell writes go through the IOMMU" looks rather
-   different from the code for x86 for the same thing
- * the code here needs to know specifically that this is an SMMU
-   and not some other kind of IOMMU
-
-I would have expected this to be more generic-to-all-IOMMU
-APIs and maybe even implemented in the generic KVM support code...
-
-The x86 code seems to be similarly x86-specific though, so
-this is more of a "perhaps there is a cleanup opportunity here"
-observation I guess.
-
-thanks
--- PMM

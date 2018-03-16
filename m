@@ -1,83 +1,83 @@
-Received: by 10.28.91.67 with SMTP id p64csp1282068wmb;
-        Fri, 16 Mar 2018 13:42:37 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELtTmToXsLYzEfUb9tOFpO73LEhMcT2fkc03oIQGpW0ZUOi6x7ZJOqw1zzGJvBe16dOxH6G/
-X-Received: by 10.55.99.88 with SMTP id x85mr4783385qkb.142.1521232957378;
-        Fri, 16 Mar 2018 13:42:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521232957; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp1282351wmb;
+        Fri, 16 Mar 2018 13:43:03 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELtPoAIXesvR96NDxQ5g/x/qf2Hk6Z1ykozFVRwMkgHpQkrM8BOEe/HgD88xW9eEemKn6bo9
+X-Received: by 10.55.168.206 with SMTP id r197mr4695940qke.311.1521232983672;
+        Fri, 16 Mar 2018 13:43:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521232983; cv=none;
         d=google.com; s=arc-20160816;
-        b=KhsoQQPEgFeWcJXMLQmpmzcsAoexH3s5abTdyrq6GW1dO/bFk1tq4NowGXPe/DI8pe
-         J+pDxRijN7KLXD788c9oS0KvvczdBESIVFpybJB7fOFbmhwdVJArOAWBoEZUb7IFxFrq
-         YySiB6zgffVel9H+4J2NjIvwRM5gtJRzqKj/WAMx5wP3h58ps/lnYFpUG1myVpsL4Z3b
-         2tt6StC+NQi5QieLncBK/1jcsfFlzsClcGvPGXDX6oWWEDONhXszYK1ARm5eXMribdre
-         EFMIV15+hcUj67k6ubxZRdhuoZytteGkeS57Yy3IzJz5J/Ta+5tzKYfugQsBsfmSyFTH
-         8Ecw==
+        b=zEO6deo0jE4rGoCiP4yXvIwjRJfZaiK2zy9dp1+XlqXtUqJCl3XVixmVsc1xHBhVg9
+         qliVqzdrDat0fRTrzn8gJ+rYxZ2aMwfm9byi7y6oRzfQgbD00ZEMp2WpGyAtIJU8HFmJ
+         /TG4sr4ZFw4cW/Xra98R15uscOVDXcnrBRMmQJNwN1OuzH2WC21kHgF2OI+bm9IviRsp
+         5uZj0Ox7nbLHpzXbEn03VUoZkEO/UmaW55woCj/8x0xtmAY/WMAobs782IcctOKl4q0C
+         9F5g3N3uyOzF9z4nU6U3smOwH99mqWpVUkniFKP7DjH76sf45yNzTsBkxY+vLTs62w6n
+         OgiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dmarc-filter:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=cf08+3ofaO0UuREe3rZMk7XONrzEESQqEEFpTzIlFv8=;
-        b=jl9y/R9gW6b+DIbSOFLwWhkhkTxuGlwXwkPn4Q5sBC7xmy7RNiHPcOEAtby1qap9/l
-         GuKjofL+gcEb8S375Z5Or9Xx2nzdVMP3pR8YGTxJyOqs/kdnQKZ07I1+xmUPksU/9Ewe
-         BO5DSxHo3cOdmhUWCrEJtpVH2g0wLOVx3Yd9qXSyKSC7rEcivjU6NWlKcLAsz2Ge9pAy
-         3fxIo7TT0kirvMCkUyEmIj7B0T75iVc79C3xe6+OiBuMDK/quH/1sIG9Cq0K0S2MTcSz
-         5mIHIRYqnoEKYowX+X53fO5I4e0impSxarybuMvNmImveeOfHHM/sVbMQ8VkXzuD449T
-         ArjQ==
+        bh=bkSuI58qwKfkCFhX1rp8R8mjqo38YOLtUXNQbWIbVOA=;
+        b=ygjFd33zZvj0vtfV4j83aJLxRlf7kMty4DjxLUH6xGF1USU03BXO+Seq35tXgR/D5E
+         vGRFFKDVOIr7BKtRui96Zw1EC/T+QRjaujEsd8EPLVdovfY11btEBH9+78fW+F65s04m
+         ECuwT9hyydM0OOgv+EtNh1f8zAtxJxxckWYlOcGqhiT6E8aSOiL2dWdOL+RInP/0lZAN
+         De3CsINMGtqUMudiQvV7a03PLBlGrn+v8GtaKQjh7f6zjUqAAZeVp46N/GJ+c++AFhgU
+         lX+TBk5ifyIkDCRe7TfD1sT6FGwlls+P23FZ9cHDQSpv/QU/75f0jE3Lt1K8foC7M2vQ
+         aOkA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=l6zjIb64;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=I88OiByO;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=BwNiXTN0;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=m+OWEsfl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u125si1008062qkh.30.2018.03.16.13.42.37
+        by mx.google.com with ESMTPS id y28si7727313qtm.465.2018.03.16.13.43.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 16 Mar 2018 13:42:37 -0700 (PDT)
+        Fri, 16 Mar 2018 13:43:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=l6zjIb64;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=I88OiByO;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=BwNiXTN0;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=m+OWEsfl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:59500 helo=lists.gnu.org)
+Received: from localhost ([::1]:59504 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ewwBQ-0006M4-R9
-	for alex.bennee@linaro.org; Fri, 16 Mar 2018 16:42:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44121)
+	id 1ewwBr-0006jF-2p
+	for alex.bennee@linaro.org; Fri, 16 Mar 2018 16:43:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44373)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alindsay@codeaurora.org>) id 1eww1R-0005sv-EH
-	for qemu-arm@nongnu.org; Fri, 16 Mar 2018 16:32:23 -0400
+	(envelope-from <alindsay@codeaurora.org>) id 1eww1a-000625-Qs
+	for qemu-arm@nongnu.org; Fri, 16 Mar 2018 16:32:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alindsay@codeaurora.org>) id 1eww1Q-0003Lw-J3
-	for qemu-arm@nongnu.org; Fri, 16 Mar 2018 16:32:17 -0400
-Received: from smtp.codeaurora.org ([198.145.29.96]:56094)
+	(envelope-from <alindsay@codeaurora.org>) id 1eww1Z-0003X3-Hh
+	for qemu-arm@nongnu.org; Fri, 16 Mar 2018 16:32:26 -0400
+Received: from smtp.codeaurora.org ([198.145.29.96]:56492)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <alindsay@codeaurora.org>)
-	id 1eww1Q-0003Kv-CT; Fri, 16 Mar 2018 16:32:16 -0400
+	id 1eww1Z-0003Vf-6v; Fri, 16 Mar 2018 16:32:25 -0400
 Received: by smtp.codeaurora.org (Postfix, from userid 1000)
-	id 2975E60591; Fri, 16 Mar 2018 20:32:11 +0000 (UTC)
+	id E4C9F60FF0; Fri, 16 Mar 2018 20:32:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1521232335;
-	bh=Mei56ULqGTG+C/oz1buEngvG2VoWQjuJdwMqt+rhk5Y=;
+	s=default; t=1521232344;
+	bh=yzoqbs4P5Iex9Ul3iVM12jHg/u0/AhPoLIV/ZWAuxic=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=l6zjIb64i0/xm1FeD2+KNVs71xvIEyAVEabv+NzJ4HnEc6Tt8CKafBdb0ItHSdXFI
-	5geDGJ2GIJJmGy+JLKj4F0fb5t19N2QvDGdE1R0/62gxi+6lyI0FDIWOL/bk4SL2Mp
-	68RITqvlPjFJaU8e+RGCdmrpvtvTRhcwVOhrnywM=
+	b=BwNiXTN0bCsoqBnIxVkzJZSAKHFMHnTe/faaxGHciRFHUZcRk5IWL2KXLZ7IiLHtO
+	oYgww4y/fxb1XR0GrPSUJUXI6G/Ae9/NClOkYY+euVbmh2wnYpywpLpmgSnSdnP1ba
+	w6inr5VC95iGbQVXuR49crZ5KRQWp+3MALtOk6hA=
 Received: from mossypile.qualcomm.com (global_nat1_iad_fw.qualcomm.com
 	[129.46.232.65])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: alindsay@smtp.codeaurora.org)
-	by smtp.codeaurora.org (Postfix) with ESMTPSA id B97A360F94;
-	Fri, 16 Mar 2018 20:32:09 +0000 (UTC)
+	by smtp.codeaurora.org (Postfix) with ESMTPSA id 9DE33607A2;
+	Fri, 16 Mar 2018 20:32:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1521232330;
-	bh=Mei56ULqGTG+C/oz1buEngvG2VoWQjuJdwMqt+rhk5Y=;
+	s=default; t=1521232340;
+	bh=yzoqbs4P5Iex9Ul3iVM12jHg/u0/AhPoLIV/ZWAuxic=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=I88OiByOZlYos5hFdMp1VbRCWT5SkacFLp49X0JrxCu/kFNE+VFoTFO1TRb781GoP
-	T8j56YorD4kHPmF75lD+fItxA1XsqVtZKNdrNtDKRvnQGisdSygEjnaBM635ZlDGZv
-	TWmOX2CW5NCHebwvnQKeklsVVNrB4NpSA6YFTfkk=
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org B97A360F94
+	b=m+OWEsflL6/xK7AcOWqFvBi8I/5Zlst6Au/4joPOdXzz/wOVmg7De60JAT0UL99y6
+	4o1P8YmOXNaqk0biGYegmNpeiaiHIY7ZsuT7FW+NetmMMJGvzGdSklHF61sC2Qv/Ob
+	I/Tu9QcC+3FnKn8lPbcpw2GrQ7qVCu9M/qCOw1K4=
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 9DE33607A2
 Authentication-Results: pdx-caf-mail.web.codeaurora.org;
 	dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: pdx-caf-mail.web.codeaurora.org;
@@ -86,16 +86,16 @@ From: Aaron Lindsay <alindsay@codeaurora.org>
 To: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
 	Alistair Francis <alistair.francis@xilinx.com>, Wei Huang <wei@redhat.com>,
 	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Date: Fri, 16 Mar 2018 16:31:09 -0400
-Message-Id: <1521232280-13089-12-git-send-email-alindsay@codeaurora.org>
+Date: Fri, 16 Mar 2018 16:31:16 -0400
+Message-Id: <1521232280-13089-19-git-send-email-alindsay@codeaurora.org>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1521232280-13089-1-git-send-email-alindsay@codeaurora.org>
 References: <1521232280-13089-1-git-send-email-alindsay@codeaurora.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 198.145.29.96
-Subject: [Qemu-arm] [PATCH v3 11/22] target/arm: Fix bitmask for PMCCFILTR
- writes
+Subject: [Qemu-arm] [PATCH v3 18/22] target/arm: Add array for supported PMU
+ events, generate PMCEID[01]
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,28 +112,104 @@ Cc: Aaron Lindsay <alindsay@codeaurora.org>,
 	qemu-devel@nongnu.org, Digant Desai <digantd@codeaurora.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: L1929J0eVcId
+X-TUID: 9FZXvqS4QDik
 
-It was shifted to the left one bit too few.
+This commit doesn't add any supported events, but provides the framework
+for adding them. We store the pm_event structs in a simple array, and
+provide the mapping from the event numbers to array indexes in
+the supported_event_map array.
 
 Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
 ---
- target/arm/helper.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/arm/cpu.c    |  4 ++++
+ target/arm/cpu.h    | 10 ++++++++++
+ target/arm/helper.c | 37 +++++++++++++++++++++++++++++++++++++
+ 3 files changed, 51 insertions(+)
 
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index e544f1d..69d6a80 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -889,6 +889,10 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+         unset_feature(env, ARM_FEATURE_PMU);
+         cpu->id_aa64dfr0 &= ~0xf00;
+     } else {
++        uint64_t pmceid = get_pmceid(&cpu->env);
++        cpu->pmceid0 = pmceid & 0xffffffff;
++        cpu->pmceid1 = (pmceid >> 32) & 0xffffffff;
++
+         arm_register_pre_el_change_hook(cpu, &pmu_pre_el_change, 0);
+         arm_register_el_change_hook(cpu, &pmu_post_el_change, 0);
+     }
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index cc1e2fb..19f005d 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -931,6 +931,16 @@ void pmu_op_finish(CPUARMState *env, uint64_t prev_cycles);
+ void pmu_pre_el_change(ARMCPU *cpu, void *ignored);
+ void pmu_post_el_change(ARMCPU *cpu, void *ignored);
+ 
++/*
++ * get_pmceid
++ * @env: CPUARMState
++ *
++ * Return the PMCEID[01] register values corresponding to the counters which
++ * are supported given the current configuration (0 is low 32, 1 is high 32
++ * bits)
++ */
++uint64_t get_pmceid(CPUARMState *env);
++
+ /* SCTLR bit meanings. Several bits have been reused in newer
+  * versions of the architecture; in that case we define constants
+  * for both old and new bit meanings. Code which tests against those
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 50eaed7..0102357 100644
+index 2073d56..6a4f900 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -1123,7 +1123,7 @@ static void pmccfiltr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                             uint64_t value)
- {
-     uint64_t saved_cycles = pmccntr_op_start(env);
--    env->cp15.pmccfiltr_el0 = value & 0x7E000000;
-+    env->cp15.pmccfiltr_el0 = value & 0xfc000000;
-     pmccntr_op_finish(env, saved_cycles);
- }
+@@ -925,6 +925,43 @@ static const ARMCPRegInfo v6_cp_reginfo[] = {
+ /* Bits allowed to be set/cleared for PMCNTEN* and PMINTEN* */
+ #define PMU_COUNTER_MASK(env) ((1 << 31) | ((1 << PMU_NUM_COUNTERS(env)) - 1))
  
++typedef struct pm_event {
++    uint16_t number; /* PMEVTYPER.evtCount is 10 bits wide */
++    /* If the event is supported on this CPU (used to generate PMCEID[01]) */
++    bool (*supported)(CPUARMState *);
++    /* Retrieve the current count of the underlying event. The programmed
++     * counters hold a difference from the return value from this function */
++    uint64_t (*get_count)(CPUARMState *);
++} pm_event;
++
++#define SUPPORTED_EVENT_SENTINEL UINT16_MAX
++static const pm_event pm_events[] = {
++    { .number = SUPPORTED_EVENT_SENTINEL }
++};
++static uint16_t supported_event_map[0x3f];
++
++/*
++ * Called upon initialization to build PMCEID0 (low 32 bits) and PMCEID1 (high
++ * 32). We also use it to build a map of ARM event numbers to indices in
++ * our pm_events array.
++ */
++uint64_t get_pmceid(CPUARMState *env)
++{
++    uint64_t pmceid = 0;
++    unsigned int i = 0;
++    while (pm_events[i].number != SUPPORTED_EVENT_SENTINEL) {
++        const pm_event *cnt = &pm_events[i];
++        if (cnt->number < 0x3f && cnt->supported(env)) {
++            pmceid |= (1 << cnt->number);
++            supported_event_map[cnt->number] = i;
++        } else {
++            supported_event_map[cnt->number] = SUPPORTED_EVENT_SENTINEL;
++        }
++        i++;
++    }
++    return pmceid;
++}
++
+ static CPAccessResult pmreg_access(CPUARMState *env, const ARMCPRegInfo *ri,
+                                    bool isread)
+ {
 -- 
 Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies, Inc.
 Qualcomm Technologies, Inc. is a member of the

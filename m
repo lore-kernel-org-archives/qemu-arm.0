@@ -1,319 +1,170 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id y9-v6sm14064439wrh.63.2018.05.03.03.19.48
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 May 2018 03:19:48 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 6413E3E00E9;
-	Thu,  3 May 2018 11:19:48 +0100 (BST)
-References: <1524153386-3550-1-git-send-email-abdallah.bouassida@lauterbach.com> <1524153386-3550-4-git-send-email-abdallah.bouassida@lauterbach.com>
-User-agent: mu4e 1.1.0; emacs 26.1
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Abdallah Bouassida <abdallah.bouassida@lauterbach.com>
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, qemu-arm@nongnu.org, khaled.jmal@lauterbach.com
-Subject: Re: [PATCH v6 3/3] target/arm: Add the XML dynamic generation
-In-reply-to: <1524153386-3550-4-git-send-email-abdallah.bouassida@lauterbach.com>
-Date: Thu, 03 May 2018 11:19:48 +0100
-Message-ID: <874ljp9h2z.fsf@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: yo8DrFcx9NBU
+Received: by 10.28.91.67 with SMTP id p64csp1283254wmb;
+        Fri, 16 Mar 2018 13:44:13 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELtxOCwZIEFX5Y10fq/Th7jPcfZ5J2lut/dxCnKNigAbTHINrj0pXggB1kDIKVylbnLVS0hF
+X-Received: by 10.55.161.130 with SMTP id k124mr4886548qke.113.1521233053395;
+        Fri, 16 Mar 2018 13:44:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521233053; cv=none;
+        d=google.com; s=arc-20160816;
+        b=BofrlRtN4f7tXgVcDygpoHbDBqsVsY39/XCHmdr/XQcnyjyMuCPDrKGEUQuC//PNoe
+         86aiavMuOpAmqMtQkVYJ1xevfsvMZAanp1uwTOWLE5t3veUeh5WgUXxV73KsP7gaSCTb
+         e4XXT1/KEiNRA/sovkYXIrWo4SubmehXuDHPwMBBT2Py4Q7R5BhmMMtuth6cm6WxBhEH
+         /aLJO653gOxj1CzhJXq35ASMhSdFnQan3ZDNoWaHkzdjBL3eLXdxfFTW4f59TSf0iAbG
+         WglkZf+1MkfaFYjfAleJ9Zupw8sjPY8nBTx5D1nRVy6zZilSxmgToFRSbsM47OgQrtxK
+         zmeg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dmarc-filter:dkim-signature:dkim-signature
+         :arc-authentication-results;
+        bh=kEjJzaZyzvrlW+shoiS9gDcZWl7tggTJF6mpnYBZmN8=;
+        b=uKdCcFHAQwPUkFf2YWNWyS0RBI89yrJPmhZ0MDTbXP/K94nVd4xl4PEwMve56SXLxN
+         mEbrkj34uvy19dS1bRp47cnbLQG0xOpM9DQ8FGf8Vbwlrbq1of2J6I/5lJRlh0jCMmAV
+         FYJhOMmNqTmIle6bk4BEugSc3pksLoGJC1XIIKvdHDGxiwKAh7akXjczGYWJptASFwXq
+         Fr8J49LIlouZ/YT3HxxSFPBjpQSSZR1WbCeBSgQ4BZd8ujybGoFnKkv75l+6sSs50zYv
+         e0Fp7jGE+m3uOQeb5ubF4NcjsdooGN9DXH16LYfqTRgmxqdAV3YuihyruK8HFZuDGm+3
+         EF+g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=RUbvExjy;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=gAakCXul;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id i64si1780957qka.71.2018.03.16.13.44.13
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 16 Mar 2018 13:44:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=RUbvExjy;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=gAakCXul;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:59516 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ewwCy-0007ut-Pj
+	for alex.bennee@linaro.org; Fri, 16 Mar 2018 16:44:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44089)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <alindsay@codeaurora.org>) id 1eww1Q-0005ra-9W
+	for qemu-arm@nongnu.org; Fri, 16 Mar 2018 16:32:17 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <alindsay@codeaurora.org>) id 1eww1P-0003KK-5Q
+	for qemu-arm@nongnu.org; Fri, 16 Mar 2018 16:32:16 -0400
+Received: from smtp.codeaurora.org ([198.145.29.96]:56030)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <alindsay@codeaurora.org>)
+	id 1eww1O-0003JS-T5; Fri, 16 Mar 2018 16:32:15 -0400
+Received: by smtp.codeaurora.org (Postfix, from userid 1000)
+	id C7ACA60F5F; Fri, 16 Mar 2018 20:32:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
+	s=default; t=1521232334;
+	bh=H4BJ0JtiSDLo4BBdMiQXq3me1X+hprXnYd3d0940vl8=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=RUbvExjyK8uuIB8VJB+5uTWvoREr1tMr9eR5rGoSxabntj/CCXdn283Iwmio9nUAv
+	2E6IgZKQFMaCsryWuq/Gg4DSkM+K+dRA6GBvuQsZpcv0ZP6fdnf5T6TyhpI+T09AgK
+	8s1HisVoNJdOqaB117htuHkswcby18LAM9VlRG1A=
+Received: from mossypile.qualcomm.com (global_nat1_iad_fw.qualcomm.com
+	[129.46.232.65])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
+	(No client certificate requested)
+	(Authenticated sender: alindsay@smtp.codeaurora.org)
+	by smtp.codeaurora.org (Postfix) with ESMTPSA id 6633C60F8D;
+	Fri, 16 Mar 2018 20:32:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
+	s=default; t=1521232329;
+	bh=H4BJ0JtiSDLo4BBdMiQXq3me1X+hprXnYd3d0940vl8=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=gAakCXulPwI5/b16r8iFbYsRkyuhHfyQozbLA4KU/VFdir0RGn9/2CWuZBhRv8P1b
+	vNT8fVIOcS/fcQ+cRHCwZqsWZeHUylUtohUVHrD78vU7cRQYBoI6S4Z95DLci4DDbt
+	t1zhvsw6uvjMkMin12iZU4plMCMvI94GoxLRLUWA=
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 6633C60F8D
+Authentication-Results: pdx-caf-mail.web.codeaurora.org;
+	dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: pdx-caf-mail.web.codeaurora.org;
+	spf=none smtp.mailfrom=alindsay@codeaurora.org
+From: Aaron Lindsay <alindsay@codeaurora.org>
+To: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Alistair Francis <alistair.francis@xilinx.com>, Wei Huang <wei@redhat.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Date: Fri, 16 Mar 2018 16:31:08 -0400
+Message-Id: <1521232280-13089-11-git-send-email-alindsay@codeaurora.org>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1521232280-13089-1-git-send-email-alindsay@codeaurora.org>
+References: <1521232280-13089-1-git-send-email-alindsay@codeaurora.org>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 198.145.29.96
+Subject: [Qemu-arm] [PATCH v3 10/22] target/arm: Allow EL change hooks to do
+ IO
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Aaron Lindsay <alindsay@codeaurora.org>,
+	Michael Spradling <mspradli@codeaurora.org>,
+	qemu-devel@nongnu.org, Digant Desai <digantd@codeaurora.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: U1BOQyTR1e4N
 
+During code generation, surround CPSR writes and exception returns which
+call the EL change hooks with gen_io_start/end. The immediate need is
+for the PMU to access the clock and icount during EL change to support
+mode filtering.
 
-Abdallah Bouassida <abdallah.bouassida@lauterbach.com> writes:
+Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
+---
+ target/arm/translate-a64.c | 2 ++
+ target/arm/translate.c     | 4 ++++
+ 2 files changed, 6 insertions(+)
 
-> Generate an XML description for the cp-regs.
-> Register these regs with the gdb_register_coprocessor().
-> Add arm_gdb_get_sysreg() to use it as a callback to read those regs.
-> Add a dummy arm_gdb_set_sysreg().
->
-> Signed-off-by: Abdallah Bouassida <abdallah.bouassida@lauterbach.com>
-> ---
->  gdbstub.c            | 10 +++++++
->  include/qom/cpu.h    |  5 +++-
->  target/arm/cpu.c     |  1 +
->  target/arm/cpu.h     | 26 ++++++++++++++++++
->  target/arm/gdbstub.c | 76 ++++++++++++++++++++++++++++++++++++++++++++++=
-++++++
->  target/arm/helper.c  | 26 ++++++++++++++++++
->  6 files changed, 143 insertions(+), 1 deletion(-)
->
-> diff --git a/gdbstub.c b/gdbstub.c
-> index a76b2fa..4b56a43 100644
-> --- a/gdbstub.c
-> +++ b/gdbstub.c
-> @@ -674,6 +674,16 @@ static const char *get_feature_xml(const char *p, co=
-nst char **newp,
->          }
->          return target_xml;
->      }
-> +    if (cc->gdb_get_dynamic_xml) {
-> +        CPUState *cpu =3D first_cpu;
-> +        char *xmlname =3D g_strndup(p, len);
-> +        const char *xml =3D cc->gdb_get_dynamic_xml(cpu, xmlname);
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 31ff047..e1ae676 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -1919,7 +1919,9 @@ static void disas_uncond_b_reg(DisasContext *s, uint32_t insn)
+             unallocated_encoding(s);
+             return;
+         }
++        gen_io_start();
+         gen_helper_exception_return(cpu_env);
++        gen_io_end();
+         /* Must exit loop to check un-masked IRQs */
+         s->base.is_jmp = DISAS_EXIT;
+         return;
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index ba6ab7d..fd5871e 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -4536,7 +4536,9 @@ static void gen_rfe(DisasContext *s, TCGv_i32 pc, TCGv_i32 cpsr)
+      * appropriately depending on the new Thumb bit, so it must
+      * be called after storing the new PC.
+      */
++    gen_io_start();
+     gen_helper_cpsr_write_eret(cpu_env, cpsr);
++    gen_io_end();
+     tcg_temp_free_i32(cpsr);
+     /* Must exit loop to check un-masked IRQs */
+     s->base.is_jmp = DISAS_EXIT;
+@@ -9828,7 +9830,9 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+                 if (exc_return) {
+                     /* Restore CPSR from SPSR.  */
+                     tmp = load_cpu_field(spsr);
++                    gen_io_start();
+                     gen_helper_cpsr_write_eret(cpu_env, tmp);
++                    gen_io_end();
+                     tcg_temp_free_i32(tmp);
+                     /* Must exit loop to check un-masked IRQs */
+                     s->base.is_jmp = DISAS_EXIT;
+-- 
+Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies, Inc.
+Qualcomm Technologies, Inc. is a member of the
+Code Aurora Forum, a Linux Foundation Collaborative Project.
 
-Last time I asked:
-
-"although I'm confused as to why you need to g_strdup the string. You
-already have p and its not like gdb_get_dynamic_xml couldn't dup the
-string if it needed to (which it doesn't seem to)."
-
-You could argue it as a bounding exercise from a potentially hostile
-gdbstub packet but if that is the intention a comment should go here.
-
-> +
-> +        g_free(xmlname);
-> +        if (xml) {
-> +            return xml;
-> +        }
-> +    }
->      for (i =3D 0; ; i++) {
->          name =3D xml_builtin[i][0];
->          if (!name || (strncmp(name, p, len) =3D=3D 0 && strlen(name) =3D=
-=3D len))
-> diff --git a/include/qom/cpu.h b/include/qom/cpu.h
-> index 14e45c4..9d3afc6 100644
-> --- a/include/qom/cpu.h
-> +++ b/include/qom/cpu.h
-> @@ -132,6 +132,9 @@ struct TranslationBlock;
->   *           before the insn which triggers a watchpoint rather than aft=
-er it.
->   * @gdb_arch_name: Optional callback that returns the architecture name =
-known
->   * to GDB. The caller must free the returned string with g_free.
-> + * @gdb_get_dynamic_xml: Callback to return dynamically generated XML fo=
-r the
-> + *   gdb stub. Returns a pointer to the XML contents for the specified X=
-ML file
-> + *   or NULL if the CPU doesn't have a dynamically generated content for=
- it.
->   * @cpu_exec_enter: Callback for cpu_exec preparation.
->   * @cpu_exec_exit: Callback for cpu_exec cleanup.
->   * @cpu_exec_interrupt: Callback for processing interrupts in cpu_exec.
-> @@ -198,7 +201,7 @@ typedef struct CPUClass {
->      const struct VMStateDescription *vmsd;
->      const char *gdb_core_xml_file;
->      gchar * (*gdb_arch_name)(CPUState *cpu);
-> -
-> +    const char * (*gdb_get_dynamic_xml)(CPUState *cpu, const char *xmlna=
-me);
->      void (*cpu_exec_enter)(CPUState *cpu);
->      void (*cpu_exec_exit)(CPUState *cpu);
->      bool (*cpu_exec_interrupt)(CPUState *cpu, int interrupt_request);
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 022d8c5..38b8b1c 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -1879,6 +1879,7 @@ static void arm_cpu_class_init(ObjectClass *oc, voi=
-d *data)
->      cc->gdb_num_core_regs =3D 26;
->      cc->gdb_core_xml_file =3D "arm-core.xml";
->      cc->gdb_arch_name =3D arm_gdb_arch_name;
-> +    cc->gdb_get_dynamic_xml =3D arm_gdb_get_dynamic_xml;
->      cc->gdb_stop_before_watchpoint =3D true;
->      cc->debug_excp_handler =3D arm_debug_excp_handler;
->      cc->debug_check_watchpoint =3D arm_debug_check_watchpoint;
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 436f675..9544043 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -133,6 +133,19 @@ enum {
->     s<2n+1> maps to the most significant half of d<n>
->   */
->
-> +/**
-> + * DynamicGDBXMLInfo:
-> + * @desc: Contains the XML descriptions.
-> + * @num_cpregs: Number of the Coprocessor registers seen by GDB.
-> + * @cpregs_keys: Array that contains the corresponding Key of
-> + * a given cpreg with the same order of the cpreg in the XML description.
-> + */
-> +typedef struct DynamicGDBXMLInfo {
-> +    char *desc;
-> +    int num_cpregs;
-> +    uint32_t *cpregs_keys;
-> +} DynamicGDBXMLInfo;
-> +
->  /* CPU state for each instance of a generic timer (in cp15 c14) */
->  typedef struct ARMGenericTimer {
->      uint64_t cval; /* Timer CompareValue register */
-> @@ -682,6 +695,8 @@ struct ARMCPU {
->      uint64_t *cpreg_vmstate_values;
->      int32_t cpreg_vmstate_array_len;
->
-> +    DynamicGDBXMLInfo dyn_xml;
-> +
->      /* Timers used by the generic (architected) timer */
->      QEMUTimer *gt_timer[NUM_GTIMERS];
->      /* GPIO outputs for generic timer */
-> @@ -863,6 +878,17 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *c=
-pu, vaddr addr,
->  int arm_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int reg);
->  int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
->
-> +/* Dynamically generates for gdb stub an XML description of the sysregs =
-from
-> + * the cp_regs hashtable. Returns the registered sysregs number.
-> + */
-> +int arm_gen_dynamic_xml(CPUState *cpu);
-> +
-> +/* Returns the dynamically generated XML for the gdb stub.
-> + * Returns a pointer to the XML contents for the specified XML file or N=
-ULL
-> + * if the XML name doesn't match the predefined one.
-> + */
-> +const char *arm_gdb_get_dynamic_xml(CPUState *cpu, const char *xmlname);
-> +
->  int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
->                               int cpuid, void *opaque);
->  int arm_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
-> diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-> index 04c1208..e80cfb4 100644
-> --- a/target/arm/gdbstub.c
-> +++ b/target/arm/gdbstub.c
-> @@ -22,6 +22,11 @@
->  #include "cpu.h"
->  #include "exec/gdbstub.h"
->
-> +typedef struct RegisterSysregXmlParam {
-> +    CPUState *cs;
-> +    GString *s;
-> +} RegisterSysregXmlParam;
-> +
->  /* Old gdb always expect FPA registers.  Newer (xml-aware) gdb only expe=
-ct
->     whatever the target description contains.  Due to a historical mishap
->     the FPA registers appear in between core integer regs and the CPSR.
-> @@ -101,3 +106,74 @@ int arm_cpu_gdb_write_register(CPUState *cs, uint8_t=
- *mem_buf, int n)
->      /* Unknown register.  */
->      return 0;
->  }
-> +
-> +static void arm_gen_one_xml_reg_tag(GString *s, DynamicGDBXMLInfo *dyn_x=
-ml,
-> +                                    ARMCPRegInfo *ri, uint32_t ri_key,
-> +                                    int bitsize)
-> +{
-> +    g_string_append_printf(s, "<reg name=3D\"%s\"", ri->name);
-> +    g_string_append_printf(s, " bitsize=3D\"%d\"", bitsize);
-> +    g_string_append_printf(s, " group=3D\"cp_regs\"/>");
-> +    dyn_xml->num_cpregs++;
-> +    dyn_xml->cpregs_keys[dyn_xml->num_cpregs - 1] =3D ri_key;
-> +}
-> +
-> +static void arm_register_sysreg_for_xml(gpointer key, gpointer value,
-> +                                        gpointer p)
-> +{
-> +    uint32_t ri_key =3D *(uint32_t *)key;
-> +    ARMCPRegInfo *ri =3D value;
-> +    RegisterSysregXmlParam *param =3D (RegisterSysregXmlParam *)p;
-> +    GString *s =3D param->s;
-> +    ARMCPU *cpu =3D ARM_CPU(param->cs);
-> +    CPUARMState *env =3D &cpu->env;
-> +    DynamicGDBXMLInfo *dyn_xml =3D &cpu->dyn_xml;
-> +
-> +    if (!(ri->type & (ARM_CP_NO_RAW | ARM_CP_NO_GDB))) {
-> +        if (arm_feature(env, ARM_FEATURE_AARCH64)) {
-> +            if (ri->state =3D=3D ARM_CP_STATE_AA64) {
-> +                arm_gen_one_xml_reg_tag(s , dyn_xml, ri, ri_key, 64);
-> +            }
-> +        } else {
-> +            if (ri->state =3D=3D ARM_CP_STATE_AA32) {
-> +                if (!arm_feature(env, ARM_FEATURE_EL3) &&
-> +                    (ri->secure & ARM_CP_SECSTATE_S)) {
-> +                    return;
-> +                }
-> +                if (ri->type & ARM_CP_64BIT) {
-> +                    arm_gen_one_xml_reg_tag(s , dyn_xml, ri, ri_key, 64);
-> +                } else {
-> +                    arm_gen_one_xml_reg_tag(s , dyn_xml, ri, ri_key, 32);
-> +                }
-> +            }
-> +        }
-> +    }
-> +}
-> +
-> +int arm_gen_dynamic_xml(CPUState *cs)
-> +{
-> +    ARMCPU *cpu =3D ARM_CPU(cs);
-> +    GString *s =3D g_string_new(NULL);
-> +    RegisterSysregXmlParam param =3D {cs, s};
-> +
-> +    cpu->dyn_xml.num_cpregs =3D 0;
-> +    cpu->dyn_xml.cpregs_keys =3D g_malloc(sizeof(uint32_t *) *
-> +                                        g_hash_table_size(cpu->cp_regs));
-> +    g_string_printf(s, "<?xml version=3D\"1.0\"?>");
-> +    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\=
-">");
-> +    g_string_append_printf(s, "<feature name=3D\"org.qemu.gdb.arm.sys.re=
-gs\">");
-> +    g_hash_table_foreach(cpu->cp_regs, arm_register_sysreg_for_xml, &par=
-am);
-> +    g_string_append_printf(s, "</feature>");
-> +    cpu->dyn_xml.desc =3D g_string_free(s, false);
-> +    return cpu->dyn_xml.num_cpregs;
-> +}
-> +
-> +const char *arm_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
-> +{
-> +    ARMCPU *cpu =3D ARM_CPU(cs);
-> +
-> +    if (strcmp(xmlname, "system-registers.xml") =3D=3D 0) {
-> +        return cpu->dyn_xml.desc;
-> +    }
-> +    return NULL;
-> +}
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 858bda2..db77662 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -220,6 +220,29 @@ static void write_raw_cp_reg(CPUARMState *env, const=
- ARMCPRegInfo *ri,
->      }
->  }
->
-> +static int arm_gdb_get_sysreg(CPUARMState *env, uint8_t *buf, int reg)
-> +{
-> +    ARMCPU *cpu =3D arm_env_get_cpu(env);
-> +    const ARMCPRegInfo *ri;
-> +    uint32_t key;
-> +
-> +    key =3D cpu->dyn_xml.cpregs_keys[reg];
-> +    ri =3D get_arm_cp_reginfo(cpu->cp_regs, key);
-> +    if (ri) {
-> +        if (cpreg_field_is_64bit(ri)) {
-> +            return gdb_get_reg64(buf, (uint64_t)read_raw_cp_reg(env, ri)=
-);
-> +        } else {
-> +            return gdb_get_reg32(buf, (uint32_t)read_raw_cp_reg(env, ri)=
-);
-> +        }
-> +    }
-> +    return 0;
-> +}
-> +
-> +static int arm_gdb_set_sysreg(CPUARMState *env, uint8_t *buf, int reg)
-> +{
-> +    return 0;
-> +}
-> +
->  static bool raw_accessors_invalid(const ARMCPRegInfo *ri)
->  {
->     /* Return true if the regdef would cause an assertion if you called
-> @@ -5474,6 +5497,9 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU =
-*cpu)
->          gdb_register_coprocessor(cs, vfp_gdb_get_reg, vfp_gdb_set_reg,
->                                   19, "arm-vfp.xml", 0);
->      }
-> +    gdb_register_coprocessor(cs, arm_gdb_get_sysreg, arm_gdb_set_sysreg,
-> +                             arm_gen_dynamic_xml(cs),
-> +                             "system-registers.xml", 0);
->  }
->
->  /* Sort alphabetically by type name, except for "any". */
-
-
---
-Alex Benn=C3=A9e

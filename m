@@ -1,148 +1,257 @@
-Received: by 10.28.71.155 with SMTP id m27csp730792wmi;
-        Tue, 27 Mar 2018 07:18:48 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELt3U5Eh2KD4fia28lV6wy9YYSm7A0JCrWFEAwoA7tGYFW8JpIZBgN4850K44AyHbMLEbEBa
-X-Received: by 2002:a25:4743:: with SMTP id u64-v6mr15544182yba.347.1522160328472;
-        Tue, 27 Mar 2018 07:18:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1522160328; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp1977730wmb;
+        Sun, 18 Mar 2018 15:41:38 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELuuxiZ1wKZ1++l5ZNxVlUnH10kOgOt+URsMo8IsPb2LGx7u+qjKOyNdISMPhJcwllsDMZ2g
+X-Received: by 10.55.185.69 with SMTP id j66mr15024685qkf.216.1521412898550;
+        Sun, 18 Mar 2018 15:41:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521412898; cv=none;
         d=google.com; s=arc-20160816;
-        b=zgU5jPqtuVW/UlnfHDy4jkGoCjOZpvZRN0XUIUwZyvN/4rBfFwm6Jt/kL+kyoFEPfG
-         i2HSZCz30J1SsLBdsykEZE3KcK/SQT9R3jZh1im0TXu+b7QqlBmUOfoj+anHMw4s26u6
-         5qjolHaWpk7pqUD64ZhpEUljwCB0r5xG/MGE3kIq4XAs6kvZq5Qg/f1YAJ0BeqJBXoL1
-         gwd5az/rvaPwW9SpBubTcgzu8MNqAnZMAP+yn3CAM6boGeW/wwi2Fp0/gRjLlP+aF5DI
-         9j1Iwl/wZhB+6gz42QRbBOF3N7JXi/NGt6TSWZOtLDKDvNflFYEW76gyXGgZ6j9IuLoN
-         NIFA==
+        b=RNZMyzH+6DCoH9Q/Fvr79RuHvEhr/fZyFRSzqUXImPXxRWeGxfssYAyOjFeB4h0QXo
+         eRolkPxXZLmmj9bZRtAVUvwV/7YmiV270hQt5RDxjbekSXgzRfPAjgC/xzEquaF8QYpf
+         t2av+0GaT4daD5YrBoKbYzTvKROiQasgJOv5c8zL88qNbRNbN6tGNZtGgoRYTDOZCgRj
+         6xJ12vXr3PjjTcv0auB0WXM/AfnqfWOg+x6bfp2kgHjr4wv4HD2aEAW3Gl8cgYeSelWf
+         rO5cMLdC81P3oChfv7+DlQlO1tQy6oFGkGzrqBfQyjo+0hKGG6uo/dqnwCR8wK9ref8t
+         W00g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=itQGIDt7kXb0toYHM0LxAGqwAQ4IJ1GHS/1mpcqMrFw=;
-        b=XeKy10Mv3E9uwIubYOdi/v8q8ZiOd1KJBt3MP6ds5RrRqyXFatDd9zzdjQNsf6oE6n
-         LG8Bjbz9XbnMwNpBnnhp3zDD7ZATX9koCDTNb0rtfwdrjNbZPkQHF1LK0FNpQAILVf5w
-         S6a0bj4FogtJ260E0CuVsMLfsilKC84Y+xFcXTVD8U4Hv/L+Nc7jf6dHDGnn+HKI63/q
-         DlqILTwNe5BjIx2siz2RkO6O/Ni7VXUOqU8cA89cjpgw4i3Y4cyuiI1W2scNmZr8nSdA
-         llmN7AMdg7TsSfZwgpdjHAa5ErhLJeURxKSzFYcLfbMG8API99JhJPFHhKa2a7Y1n23c
-         61Mg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=bGajhwqFlATUtGlQsm6XpcLmdMXBZZu6vawiyvyALkI=;
+        b=Di305CVuvHcLuf6R1WF578LCsq4sMEc9btRS+lImmzGTDogFHzxCNqAh2+6zut8w5F
+         ujtUE45bLd7EtNmrG644s+lY/Cq8P3sgYl1EJBxhWdOb3Qs0l6P3YWCzlB5XMvX9/Nef
+         NGc18S36NW6KCEBR2sRfUVJoDIP796+NQzoJTwV54aLmRvzAeT3wYCF+mp8XdIQniYNb
+         uHP38oYwuxmw6mcWbqka1sQixKn6cWmT5wj/vDJXbI9H1q1MXQHhtCVzxB/TxrduoblT
+         M/vt8eE7KwgPW4ZadlkCdNqrSpYiPZQJVu/Ymtj0yWSyAAhwbaOKAEMJFesH1XRQ04MG
+         8JQA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SBEVLwGn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l17si1396149qkk.482.2018.03.27.07.18.48
+        by mx.google.com with ESMTPS id m4si7904980qta.250.2018.03.18.15.41.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 27 Mar 2018 07:18:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sun, 18 Mar 2018 15:41:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34538 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SBEVLwGn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:39352 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f0pR1-0007WB-W6
-	for alex.bennee@linaro.org; Tue, 27 Mar 2018 10:18:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45410)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1exgzi-0004nM-3k
+	for alex.bennee@linaro.org; Sun, 18 Mar 2018 18:41:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39395)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1f0pO4-000314-LN
-	for qemu-arm@nongnu.org; Tue, 27 Mar 2018 10:15:48 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1exgzT-0004n9-GK
+	for qemu-devel@nongnu.org; Sun, 18 Mar 2018 18:41:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1f0pO1-0006P1-CR
-	for qemu-arm@nongnu.org; Tue, 27 Mar 2018 10:15:44 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:59992 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1f0pO1-0006O0-7a; Tue, 27 Mar 2018 10:15:41 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6D4B3401DEBF;
-	Tue, 27 Mar 2018 14:15:38 +0000 (UTC)
-Received: from localhost.localdomain.com (ovpn-116-135.ams2.redhat.com
-	[10.36.116.135])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 8F2196F9E7;
-	Tue, 27 Mar 2018 14:15:36 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, peter.maydell@linaro.org
-Date: Tue, 27 Mar 2018 16:15:15 +0200
-Message-Id: <1522160122-10744-2-git-send-email-eric.auger@redhat.com>
-In-Reply-To: <1522160122-10744-1-git-send-email-eric.auger@redhat.com>
-References: <1522160122-10744-1-git-send-email-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Tue, 27 Mar 2018 14:15:38 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Tue, 27 Mar 2018 14:15:38 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [RFC 1/8] linux-headers: Partial update for KVM/ARM
- multiple redistributor region registration
-X-BeenThere: qemu-arm@nongnu.org
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1exgzQ-0004VP-Cy
+	for qemu-devel@nongnu.org; Sun, 18 Mar 2018 18:41:23 -0400
+Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:38870)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1exgzQ-0004Si-3D; Sun, 18 Mar 2018 18:41:20 -0400
+Received: by mail-wm0-x243.google.com with SMTP id l16so2777775wmh.3;
+	Sun, 18 Mar 2018 15:41:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=bGajhwqFlATUtGlQsm6XpcLmdMXBZZu6vawiyvyALkI=;
+	b=SBEVLwGn5dzdqce4gse62HEuHoGh8T7eGot+8BDmybYAGmmkTCjsu1eyUuLvTy7Yq5
+	fcyhjRa50McdqIdubyPsWnUAJxL8JE6FCE91SLGTOhIpOvmivnbfDkto81nFiRQFTueX
+	xy25UuCdIPIIRxYDmZzn0UkOrOInFgxDmimZ8FUe5pDpTRij7eetaYyBuX8ov00Ddwen
+	n+cVxQ6zPhM+40JazK+1T/Ok7npTr4/pC/SNeLg82WRJuwhFUnlEH2ClbzMQYOFxVVBx
+	2VMLAiKWgfXNbqOVUwOWWxrafT7F4CBt8ZhBgEldjsFwLoImNtJ9awIAS2JgW/P7h5Pp
+	eUeg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=bGajhwqFlATUtGlQsm6XpcLmdMXBZZu6vawiyvyALkI=;
+	b=Fzn7KLNERPSmOW4rGjrFiDLFbTCkCAQ6d4cPpbReW4Ig3aWdIMuQVh5FpI9jO+q2eZ
+	zTDI21IPn/vT9RqZdo4xtZXecZ9+eJZPTJUn3SWxhwgB9ToxNRhTk9nWKuDO2JM9Cbf0
+	mpvNpKB/3LAkHARR8vNdSP9k6IgMw6aS1lQAnjxgJK/Fc+ZXZzb9PjYlDGYCUDiXIx/E
+	NYoWWTW2veSp5kGCoZH5v8AWC0rKpW4EJvL3arrD2Cc5A3Cr/Dlts3MEKtbbr1REwD3l
+	GHuX542aAG5EHM458iqqrW3g96iW1y10tBUPewjV5cuNzQR0rc8d8PHD4L+7Sg8PJkMi
+	Jb5w==
+X-Gm-Message-State: AElRT7EAmZ/GZ0sVIZSH7xeOnIGhwbeq053bXkVrjPSeQORUk9Ox0oc0
+	EGQF56m9cFlfmqChIlCmsVA=
+X-Received: by 10.28.16.135 with SMTP id 129mr6086410wmq.86.1521412878705;
+	Sun, 18 Mar 2018 15:41:18 -0700 (PDT)
+Received: from [192.168.1.37] (67.23.27.109.rev.sfr.net. [109.27.23.67])
+	by smtp.gmail.com with ESMTPSA id
+	142sm13669297wmq.47.2018.03.18.15.41.17
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sun, 18 Mar 2018 15:41:18 -0700 (PDT)
+To: Aaron Lindsay <alindsay@codeaurora.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	Wei Huang <wei@redhat.com>, 
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+References: <1521232280-13089-1-git-send-email-alindsay@codeaurora.org>
+	<1521232280-13089-9-git-send-email-alindsay@codeaurora.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <9c99641e-af00-e229-02a1-7d396b5132d1@amsat.org>
+Date: Sun, 18 Mar 2018 23:41:16 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.6.0
+MIME-Version: 1.0
+In-Reply-To: <1521232280-13089-9-git-send-email-alindsay@codeaurora.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::243
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH v3 08/22] target/arm: Support
+ multiple EL change hooks
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: marc.zyngier@arm.com, drjones@redhat.com, cdall@kernel.org,
-	zhaoshenglong@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kO76/BY9FM/+
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, Michael Spradling <mspradli@codeaurora.org>,
+	qemu-devel@nongnu.org, Digant Desai <digantd@codeaurora.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: If05jVnUDfBW
 
-This updates KVM/ARM headers against
-https://github.com/eauger/linux/tree/4.16-rc7-rdist-regions-rfc-v2
+On 03/16/2018 09:31 PM, Aaron Lindsay wrote:
+> Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
+> ---
+>  target/arm/cpu.c       | 15 ++++++++++-----
+>  target/arm/cpu.h       | 23 ++++++++++++-----------
+>  target/arm/internals.h |  7 ++++---
+>  3 files changed, 26 insertions(+), 19 deletions(-)
+> 
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 072cbbf..5f782bf 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -55,13 +55,16 @@ static bool arm_cpu_has_work(CPUState *cs)
+>           | CPU_INTERRUPT_EXITTB);
+>  }
+>  
+> -void arm_register_el_change_hook(ARMCPU *cpu, ARMELChangeHook *hook,
+> +void arm_register_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn *hook,
+>                                   void *opaque)
+>  {
+> -    /* We currently only support registering a single hook function */
+> -    assert(!cpu->el_change_hook);
+> -    cpu->el_change_hook = hook;
+> -    cpu->el_change_hook_opaque = opaque;
+> +    ARMELChangeHook *entry;
+> +    entry = g_malloc0(sizeof (*entry));
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- linux-headers/asm-arm/kvm.h   | 7 ++++---
- linux-headers/asm-arm64/kvm.h | 7 ++++---
- 2 files changed, 8 insertions(+), 6 deletions(-)
+imho g_malloc() is enough.
 
-diff --git a/linux-headers/asm-arm/kvm.h b/linux-headers/asm-arm/kvm.h
-index 4392955..7ef378b 100644
---- a/linux-headers/asm-arm/kvm.h
-+++ b/linux-headers/asm-arm/kvm.h
-@@ -88,9 +88,10 @@ struct kvm_regs {
- #define KVM_VGIC_V2_CPU_SIZE		0x2000
- 
- /* Supported VGICv3 address types  */
--#define KVM_VGIC_V3_ADDR_TYPE_DIST	2
--#define KVM_VGIC_V3_ADDR_TYPE_REDIST	3
--#define KVM_VGIC_ITS_ADDR_TYPE		4
-+#define KVM_VGIC_V3_ADDR_TYPE_DIST		2
-+#define KVM_VGIC_V3_ADDR_TYPE_REDIST		3
-+#define KVM_VGIC_ITS_ADDR_TYPE			4
-+#define KVM_VGIC_V3_ADDR_TYPE_REDIST_REGION	5
- 
- #define KVM_VGIC_V3_DIST_SIZE		SZ_64K
- #define KVM_VGIC_V3_REDIST_SIZE		(2 * SZ_64K)
-diff --git a/linux-headers/asm-arm64/kvm.h b/linux-headers/asm-arm64/kvm.h
-index 4e80651..25c520a 100644
---- a/linux-headers/asm-arm64/kvm.h
-+++ b/linux-headers/asm-arm64/kvm.h
-@@ -88,9 +88,10 @@ struct kvm_regs {
- #define KVM_VGIC_V2_CPU_SIZE		0x2000
- 
- /* Supported VGICv3 address types  */
--#define KVM_VGIC_V3_ADDR_TYPE_DIST	2
--#define KVM_VGIC_V3_ADDR_TYPE_REDIST	3
--#define KVM_VGIC_ITS_ADDR_TYPE		4
-+#define KVM_VGIC_V3_ADDR_TYPE_DIST		2
-+#define KVM_VGIC_V3_ADDR_TYPE_REDIST		3
-+#define KVM_VGIC_ITS_ADDR_TYPE			4
-+#define KVM_VGIC_V3_ADDR_TYPE_REDIST_REGION	5
- 
- #define KVM_VGIC_V3_DIST_SIZE		SZ_64K
- #define KVM_VGIC_V3_REDIST_SIZE		(2 * SZ_64K)
--- 
-2.5.5
+> +
+> +    entry->hook = hook;
+> +    entry->opaque = opaque;
+> +
+> +    QLIST_INSERT_HEAD(&cpu->el_change_hooks, entry, node);
+>  }
+>  
+>  static void cp_reg_reset(gpointer key, gpointer value, gpointer opaque)
+> @@ -744,6 +747,8 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>          return;
+>      }
+>  
+> +    QLIST_INIT(&cpu->el_change_hooks);
+> +
 
+You missed to fill arm_cpu_unrealizefn() with:
+
+    QLIST_FOREACH(...) {
+        QLIST_REMOVE(...);
+        g_free(...);
+    }
+
+>      /* Some features automatically imply others: */
+>      if (arm_feature(env, ARM_FEATURE_V8)) {
+>          set_feature(env, ARM_FEATURE_V7);
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index f17592b..3b45d3d 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -633,11 +633,17 @@ typedef struct CPUARMState {
+>  
+>  /**
+>   * ARMELChangeHook:
+> - * type of a function which can be registered via arm_register_el_change_hook()
+> - * to get callbacks when the CPU changes its exception level or mode.
+> + * Support registering functions with ARMELChangeHookFn's signature via
+> + * arm_register_el_change_hook() to get callbacks when the CPU changes its
+> + * exception level or mode.
+>   */
+> -typedef void ARMELChangeHook(ARMCPU *cpu, void *opaque);
+> -
+> +typedef void ARMELChangeHookFn(ARMCPU *cpu, void *opaque);
+> +typedef struct ARMELChangeHook ARMELChangeHook;
+> +struct ARMELChangeHook {
+> +    ARMELChangeHookFn *hook;
+> +    void *opaque;
+> +    QLIST_ENTRY(ARMELChangeHook) node;
+> +};
+>  
+>  /* These values map onto the return values for
+>   * QEMU_PSCI_0_2_FN_AFFINITY_INFO */
+> @@ -826,8 +832,7 @@ struct ARMCPU {
+>       */
+>      bool cfgend;
+>  
+> -    ARMELChangeHook *el_change_hook;
+> -    void *el_change_hook_opaque;
+> +    QLIST_HEAD(, ARMELChangeHook) el_change_hooks;
+>  
+>      int32_t node_id; /* NUMA node this CPU belongs to */
+>  
+> @@ -2895,12 +2900,8 @@ static inline AddressSpace *arm_addressspace(CPUState *cs, MemTxAttrs attrs)
+>   * CPU changes exception level or mode. The hook function will be
+>   * passed a pointer to the ARMCPU and the opaque data pointer passed
+>   * to this function when the hook was registered.
+> - *
+> - * Note that we currently only support registering a single hook function,
+> - * and will assert if this function is called twice.
+> - * This facility is intended for the use of the GICv3 emulation.
+>   */
+> -void arm_register_el_change_hook(ARMCPU *cpu, ARMELChangeHook *hook,
+> +void arm_register_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn *hook,
+>                                   void *opaque);
+>  
+>  /**
+> diff --git a/target/arm/internals.h b/target/arm/internals.h
+> index 47cc224..7df3eda 100644
+> --- a/target/arm/internals.h
+> +++ b/target/arm/internals.h
+> @@ -727,11 +727,12 @@ void arm_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
+>                                     int mmu_idx, MemTxAttrs attrs,
+>                                     MemTxResult response, uintptr_t retaddr);
+>  
+> -/* Call the EL change hook if one has been registered */
+> +/* Call any registered EL change hooks */
+>  static inline void arm_call_el_change_hook(ARMCPU *cpu)
+>  {
+> -    if (cpu->el_change_hook) {
+> -        cpu->el_change_hook(cpu, cpu->el_change_hook_opaque);
+> +    ARMELChangeHook *hook, *next;
+> +    QLIST_FOREACH_SAFE(hook, &cpu->el_change_hooks, node, next) {
+> +        hook->hook(cpu, hook->opaque);
+>      }
+>  }
+>  
+> 

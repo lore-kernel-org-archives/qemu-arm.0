@@ -1,156 +1,173 @@
-Received: by 10.28.71.27 with SMTP id u27csp1048368wma;
-        Fri, 26 Jan 2018 11:04:00 -0800 (PST)
-X-Google-Smtp-Source: AH8x224aecrv1oJxMxIr/YeqyJXxiq8q+sEfP9qyADJN+LfP+eug6pc06QNWh16s50GEVfZQ74UF
-X-Received: by 10.37.81.200 with SMTP id f191mr11668207ybb.143.1516993440005;
-        Fri, 26 Jan 2018 11:04:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516993440; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp1998609wmb;
+        Sun, 18 Mar 2018 16:15:08 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELuRVahTsDjcXg7gbQirqIa3vASjNzA0/LpswSPWtFiWzTuYSbHLxwMrdhVUEVjaBkb33vQK
+X-Received: by 10.200.56.76 with SMTP id r12mr15804210qtb.125.1521414908841;
+        Sun, 18 Mar 2018 16:15:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521414908; cv=none;
         d=google.com; s=arc-20160816;
-        b=GsVIXfhHxW7cjW1vY668hBylh85J2AksnNJYoIkvbZjP4ZdSHaI+wN0Hmg+AVOlWgj
-         Cuy4X9szTlZRMv0fZRaGu/javPenLBAf/uUBhqbMQkdHNOGnNsxnXbcae1rHKQ+isqPx
-         YX9d9e0SFQitC2EQw6n/osSsg9y+Hv0V9T/VKISUGJa3w7uaDEccy7SH2Nd7nyb7MiAc
-         rg77JYY/ZZgYMkaxqahue6GbzOLU7St4hWFB2FfFyouchb3V5Q9Qj4BgUIjUzAKL2dH5
-         op24IPvbCEI53mzfD6fJFfbx9OiffRH5APcmfxI22QOO9VwQA2ugOj5tJL/GG+nZGfeb
-         KzFw==
+        b=weKH43ky3QSiIM++ZYWntdQSKEhd1h9CoV8WGy9opDUeZ27W8LNQuVJ+m58NYQMTrY
+         6DVKVqtpmZnp5OHgcsv8pQrMefydo64tYfyKVyJ5pcnoreRwmPYMF63MJggeSsqNcevc
+         04/A53J2jT5K+KqOWd1J3A+3sOP6equ28PxJEgFXwL2otkniU6hzzL1B69Vw9N+/chfK
+         5XDVg+Xo/GMtyroA8BjSC66ioG1Tdrdn4FyH8T/O9Svzz6t1Zwk3D6zO01UjlhBCte5r
+         Qy02/JusowMZHGt+UPpNYJsPxiP5c0xYoCtDKv7Ks2J4Mq/1QJoI+PTWErfjS0dztxsT
+         gG4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature
-         :arc-authentication-results;
-        bh=8Dz1M2X+no5h5Vzk/k3Zg+o6ODC09UJ4GHbyUKfPDFw=;
-        b=kXuQedgbOUDJ/lGSQvuKT+t0ehdudlGDEPQicAaw+NQa6itM7xm+gPIcGUFqQ4nc2j
-         HySD+T3X719/H5rQoETJfE2/8ORghNH/ObLowfDCsBn/3or1q9o5EtTkfnRQlkZLcaho
-         KOEF0qg6BzlfQGahXx4auEwGH2LTV3gKXq1EXmUb9g6pcBK/OdTWiZCrjGJLNL/tJJpb
-         NCkb0uiByrT0hGwEPKKo/wJ7ZoGxtco9r1VXCB6pz11RhMMge3LimQny7Cz5TIonwxUt
-         SgxpbrDGV6IXps3/geUQ3PqcKIoszB7wG6KBOymo/AoW1qTjSo8+sxz1T6Fz8jFtpy3B
-         mkfg==
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=e3Vj4tMRoGY+2sO4Hj2lHwHwlfcgDNlmSMrdSOnSaic=;
+        b=WxAE7s2jE2Lo6DiN2su1kOgnzEk9DLJneQA8g/9jbZU1mwJkRKINPgjRqCO5DcJ7LF
+         UZY3HhED9CpzZyCC2+37d0wATVyZdJdBe4JRKdUjS7SgCkGPtpokpTiEIkZRPowcIPPI
+         5SP33g2/jJh5jrE4P+G9UvkYUPiaCsQbDbRgXWIVUlNcj3wN5IBUzwTZ3PAbMr3Sofb/
+         VwEnM17NdTNwD75aVt2zEmWJeph2Nw5fs5C5wPYCM890R0AnTv/UZlwWh0e2ZpBZyV11
+         XMm/n4gqMGGUqnTEwIzcV5I6x54bsO8yMUi+OnnK0y67Qj+PGemGdZZhOTndaV07yDgK
+         v5Pg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OFE+6Nyd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LF+MTqoj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k143si3794164ybk.435.2018.01.26.11.03.59
+        by mx.google.com with ESMTPS id y28si12968641qtm.465.2018.03.18.16.15.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 26 Jan 2018 11:03:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sun, 18 Mar 2018 16:15:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OFE+6Nyd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46429 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LF+MTqoj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:39430 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ef9I7-0001tY-HJ
-	for alex.bennee@linaro.org; Fri, 26 Jan 2018 14:03:59 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34292)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1exhW8-0005SK-CX
+	for alex.bennee@linaro.org; Sun, 18 Mar 2018 19:15:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44372)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1ef9Hy-0001su-KO
-	for qemu-arm@nongnu.org; Fri, 26 Jan 2018 14:03:51 -0500
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1exhVl-0005Qa-8P
+	for qemu-devel@nongnu.org; Sun, 18 Mar 2018 19:14:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1ef9Hv-0002b8-OJ
-	for qemu-arm@nongnu.org; Fri, 26 Jan 2018 14:03:50 -0500
-Received: from mail-pf0-x236.google.com ([2607:f8b0:400e:c00::236]:42300)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1exhVi-000079-2q
+	for qemu-devel@nongnu.org; Sun, 18 Mar 2018 19:14:45 -0400
+Received: from mail-wr0-x242.google.com ([2a00:1450:400c:c0c::242]:35072)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1ef9Hv-0002af-Ho
-	for qemu-arm@nongnu.org; Fri, 26 Jan 2018 14:03:47 -0500
-Received: by mail-pf0-x236.google.com with SMTP id b25so854648pfd.9
-	for <qemu-arm@nongnu.org>; Fri, 26 Jan 2018 11:03:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=8Dz1M2X+no5h5Vzk/k3Zg+o6ODC09UJ4GHbyUKfPDFw=;
-	b=OFE+6Nydv36UFDxAekOBDyh5JSwxaQyqdEBpods4r9FzGCg/KASMg3mvvNKPO6ul5f
-	FtW25rAyV8Qy5unOhonrcwI6aMog70AJTVhR7zVCa82CB0u29KlpK2a0Oo5PAe9hn8w+
-	TpgVMwjL7E6fxaSB0NpOsy4S2ygLE7tU/73Fo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1exhVh-00006w-Rk; Sun, 18 Mar 2018 19:14:42 -0400
+Received: by mail-wr0-x242.google.com with SMTP id n12so16813025wra.2;
+	Sun, 18 Mar 2018 16:14:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=8Dz1M2X+no5h5Vzk/k3Zg+o6ODC09UJ4GHbyUKfPDFw=;
-	b=R3UifpzWUbPYFYm293vSq8w5t7QQ77cyu1bB5ua6Nmmp+lMEK31iL1Q93dD51bpFdY
-	jyuB+n8Io/3NFixVOC1wpXE0s6m1NYIZraR5ca8pBDwmZebavr6AzWMgtWuYlU6GbgrK
-	yZ2xpWmM3XVZc1z2jczBCohqYH7M6dASYEY/Ruv8TgiOZWmyGsxiSBqtdMXJBtA93dmJ
-	qSYDMboiAv6U4HlAYNhtHsTHZJKCRcv8k4rrXJKNzGxtNEO6qYYldaq7cp3dzVCnRsc+
-	MHz7vcQmv0sdHMCmZ7FLxFg3Z87N05/ijjV/8IVFEzKE1zj6WRH8Xz3/4tzluiZt9oLE
-	dcSg==
-X-Gm-Message-State: AKwxyteRNKWGRpZwwDctQaAKFq1/mAJoiw6YhlKdxZtJmFJEnIVj4R97
-	IKFl96M3Pu2iLFNw8dwfTT3ZRjxzLN4=
-X-Received: by 10.101.91.140 with SMTP id i12mr15752618pgr.297.1516993426168; 
-	Fri, 26 Jan 2018 11:03:46 -0800 (PST)
-Received: from cloudburst.twiddle.net (174-21-6-47.tukw.qwest.net.
-	[174.21.6.47]) by smtp.gmail.com with ESMTPSA id
-	e185sm21947752pfg.155.2018.01.26.11.03.44
+	bh=e3Vj4tMRoGY+2sO4Hj2lHwHwlfcgDNlmSMrdSOnSaic=;
+	b=LF+MTqojt5tvpeqPLXtmhtm8BEQciVdMBJpb92rl36gsKvtZYA0S4sfQuIZ2rh5PWa
+	gUMqqFxRTEkevqk2Oy8lR/jHK6dAIWBzEiLAtKuBIs+otSTfe2eJxY6x9/oT1gbmUf1q
+	YZIxuVoZYuIGj9AbFjOMny089s2t5+gYB/aIshJNq2kYwUTRaTjqW6kWxm080AbGkNcR
+	ykxXxeqSZw0NiXAUHKRTSPhMbakJxqREzmFxVEngy0dVWSFB6yvTDuvo4nxb7c+3Puhs
+	WC0xiHoXt7ZayLEo9Q0PcIDFS7inX52ywrYhJff8Hxzx7WRz8+2PPV+yhLUyi9IiBeKL
+	MTwg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=e3Vj4tMRoGY+2sO4Hj2lHwHwlfcgDNlmSMrdSOnSaic=;
+	b=aGN3tuioBKbN/+5su4D7H2QeYjoxo7wfC1cw3rg9+GqEMwsqhQDhtP8BIMdMA8VZmG
+	v1XNLRKX3hhOwq5ZTikz1IXr517INYU8+LDUysLa39dY2crK3Oblx02MmKLfyTAGYbPn
+	96/ee78om5aoHaCwE7dmTgSblrT1B3FRegReUQgHgARvdrpBAomE4lXLqv+gZWoHeXrF
+	Ya6lYsd7/E0NbuKTQUJfPX6fOfyPVyTQCBZwM+Q8C4U0x1yQryqW/1Xub+hjIYeqqZ3i
+	aCw2FUGLONXHtEv+j9mb6nKNgjCN0DAa/PPu5x930fxCeg3C3FFJVhR11gFZE0JYRUeA
+	18xA==
+X-Gm-Message-State: AElRT7FYu7YMoAdaULifhLeCAbo90OYdCdmkn+Y8dExY/dVNvhvILXrI
+	Xb4CzG+C2IAnJMEsF0RvqQQ=
+X-Received: by 10.223.182.16 with SMTP id f16mr7355548wre.51.1521414880641;
+	Sun, 18 Mar 2018 16:14:40 -0700 (PDT)
+Received: from [192.168.1.37] (67.23.27.109.rev.sfr.net. [109.27.23.67])
+	by smtp.gmail.com with ESMTPSA id
+	b5sm15249078wrb.42.2018.03.18.16.14.39
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 26 Jan 2018 11:03:45 -0800 (PST)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20171218172425.18200-1-richard.henderson@linaro.org>
-	<20171218172425.18200-10-richard.henderson@linaro.org>
-	<CAFEAcA9Dmdh+u7AZHhjEkS3zc6i4yf+Eo1-NuksgVdo1cqmKFQ@mail.gmail.com>
-	<707306d7-8ee4-ab6b-2154-290647a72779@linaro.org>
-	<CAFEAcA9PGHMPeATRHESeUEWaU17OpVw99p-+U9KzOPaitSgEGQ@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <161aba52-a937-2481-23a5-0bd2d589e23e@linaro.org>
-Date: Fri, 26 Jan 2018 11:03:43 -0800
+	Sun, 18 Mar 2018 16:14:39 -0700 (PDT)
+To: Aaron Lindsay <alindsay@codeaurora.org>, qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	Wei Huang <wei@redhat.com>, 
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+References: <1521232280-13089-1-git-send-email-alindsay@codeaurora.org>
+	<1521232280-13089-15-git-send-email-alindsay@codeaurora.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <9af89876-bf5d-4696-a430-664fcd5a02fa@amsat.org>
+Date: Mon, 19 Mar 2018 00:14:38 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.2
+	Thunderbird/52.6.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9PGHMPeATRHESeUEWaU17OpVw99p-+U9KzOPaitSgEGQ@mail.gmail.com>
+In-Reply-To: <1521232280-13089-15-git-send-email-alindsay@codeaurora.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c00::236
-Subject: Re: [Qemu-arm] [PATCH v2 09/11] target/arm: Decode aa64 armv8.3
- fcmla
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:400c:c0c::242
+Subject: Re: [Qemu-devel] [PATCH v3 14/22] target/arm: Make PMOVSCLR 64 bits
+ wide
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wpj/iyQ8ReAJ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Michael Spradling <mspradli@codeaurora.org>, qemu-devel@nongnu.org,
+	Digant Desai <digantd@codeaurora.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tiyzNSU/JGZN
 
-On 01/26/2018 02:07 AM, Peter Maydell wrote:
->> The SVE pseudocode for the same operation is clearer than that in the main ARM
->> ARM, and is nearer to what I used:
->>
->>   for e = 0 to elements-1
->>     if ElemP[mask, e, esize] == '1' then
->>         pair = e - (e MOD 2);  // index of first element in pair
->>         addend = Elem[result, e, esize];
->>         if IsEven(e) then  // real part
->>             // realD = realA [+-] flip ? (imagN * imagM) : (realN * realM)
->>             element1 = Elem[operand1, pair + flip, esize];
->>             element2 = Elem[operand2, pair + flip, esize];
->>             if neg_real then element2 = FPNeg(element2);
->>         else  // imaginary part
->>             // imagD = imagA [+-] flip ? (imagN * realM) : (realN * imagM)
->>             element1 = Elem[operand1, pair + flip, esize];
->>             element2 = Elem[operand2, pair + (1 - flip), esize];
->>             if neg_imag then element2 = FPNeg(element2);
->>         Elem[result, e, esize] = FPMulAdd(addend, element1, element2, FPCR);
->>
->> In my version, e0/e1 are element1/element2 (real) and e2/e3 are
->> element1/element2 (imag).
+Hi Aaron,
+
+On 03/16/2018 09:31 PM, Aaron Lindsay wrote:
+> This is a bug fix to ensure 64-bit reads of this register don't read
+> adjacent data.
 > 
-> Thanks. Could we use the same indexing (1/2/3/4) as the final Arm ARM
-> pseudocode?
+> Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
+> ---
+>  target/arm/cpu.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 9c3b5ef..fb2f983 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -367,7 +367,7 @@ typedef struct CPUARMState {
+>          uint32_t c9_data;
+>          uint64_t c9_pmcr; /* performance monitor control register */
+>          uint64_t c9_pmcnten; /* perf monitor counter enables */
+> -        uint32_t c9_pmovsr; /* perf monitor overflow status */
+> +        uint64_t c9_pmovsr; /* perf monitor overflow status */
 
-Done.
+This doesn't look correct, since this reg is 32b.
 
+I *think* the correct fix is in ARMCPRegInfo v7_cp_reginfo[]:
 
-r~
+    { .name = "PMOVSR", ...
+-     ..., .fieldoffset = offsetof(CPUARMState, cp15.c9_pmovsr),
++     ..., .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pmovsr),
+      .accessfn = pmreg_access,
+      .writefn = pmovsr_write,
+      .raw_writefn = raw_write },
 
+>          uint32_t c9_pmuserenr; /* perf monitor user enable */
+>          uint64_t c9_pmselr; /* perf monitor counter selection register */
+>          uint64_t c9_pminten; /* perf monitor interrupt enables */
+> 
+
+Regards,
+
+Phil.

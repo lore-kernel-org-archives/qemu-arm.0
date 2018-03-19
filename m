@@ -1,103 +1,70 @@
-Received: by 10.28.91.67 with SMTP id p64csp2743133wmb;
-        Mon, 19 Mar 2018 08:31:59 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELvpkYrngE4akt+wBJr7ArWUMMb6q0so/DaFsJ19V45brGiPE9lfLsK0S92F98B9v5/lTiwJ
-X-Received: by 10.237.34.136 with SMTP id p8mr6558129qtc.316.1521473519210;
-        Mon, 19 Mar 2018 08:31:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521473519; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp2789111wmb;
+        Mon, 19 Mar 2018 09:16:15 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELuVUBTMK4Bxfk1ltidJ+f89V++Du81cSRbO33MjD0KxcGMgS9tKEIMdiK/lbY0ChNhcpl6X
+X-Received: by 10.129.131.215 with SMTP id t206mr7275915ywf.93.1521476174989;
+        Mon, 19 Mar 2018 09:16:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521476174; cv=none;
         d=google.com; s=arc-20160816;
-        b=KQsfAWDAQ2DWleJcycNPFHv9+r8wfytbjk5QGwrZEcWymEMTsLr7JmNdRbnS6ZVazJ
-         oyPuBRYfKuyUs33VuaF++slImOn94wIXyHPFekDxJEURwjE8YtGjVqtzuDOMMwu/nFB0
-         iiCatL24ZCFAXYDzBz7hEWG4FBcEd2WnjvP81fRwN4bB0Qedc+bpXXCEIZTyfzosGRaQ
-         G2PjgTztp0FBKJimnEQ8uK5cWXEInficlao5oc9yOCUfR1zhPRU87gWJCrypuIGhknNU
-         Axz9DNQ++rGPnqmpLU2xfWPn2G/e3GxDv0uKVKpaEduT2AslCKjdzA7F51Ob8OmVqR3q
-         MQgw==
+        b=a6uGVm+rlreGY0XFyF8Ds9gBKFoFz7gPBFQRPcbUleJnyUyNlbCg90KTVIExGZpHWj
+         Wx+Rq990GI0H9fwKqGiOmme6H+TUBkyPuwM6e4+VPaEU7pVoFd0oFJosE1STcT2loM2V
+         psPmQYZRFL3gNYdXsz1soppyor//8OMIPjSXJ0jHYlysHkihqmIgjivc3lY+tpnvVf5v
+         hBJkkRkDgVURHxN8PqaGuSOrhrY06QAkCy5GtCfmMuhzP4OwljIBB2zA5hv2c7JR9VMD
+         iv9xZtaYfLltWkGbbonf9FMdPRWn7+cwt0YQwc5Xr81Qg9XihmhUJsS85IbFTdvWMoJK
+         cUgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=ug/IM+J2+JDeDxb69u0EyzCEuZ1K4P6NcpgYNIrZMpk=;
-        b=UCvcqZNqHcoUe/5S+uIyFYVUbbG9kCHnpIjJEBmv4/5+VBsk3nEowcxIJ/E7aXHIbf
-         yx5QbnjP3wqniZsjP4kO/lIJF+y4qDnqWp934UtNja1biXaXY1vy6VAu9+ATGmgEAo3b
-         De0WYgbaL4AMx8u6pgcDY0vLTbkIfgdd/QpS5bwwbFYBVH1TlTcyfXZi2AvUFn+8MUlb
-         ngq6oUF7HhQMNS4X0ee3iqVnMbixDTDVImQjgg/RYW6Uk72d8iOgrVXWRR49/4rDbCHM
-         FO32iaOpe9IpDHiCZEb46nzOelUgTrhFacWRB6eLg6il4se5eTf8f1Ex4LJm0ROolgLg
-         lTyQ==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :arc-authentication-results;
+        bh=1sGL5mSyCUemikTAEc/k6XhYB+snRlg8XZtZF06DE9s=;
+        b=ow6iHwEHon+9TEVDGoNun9oNMeUcUE4sDpGmQL5+ppx7rnwr3ceA+ZeZr6CR4TT+t2
+         eHGr5vwtig1oAf+hZX3cj9FDIkWH00SLGoc6QWsNuEgjkzfw/h/aiH14NG6WDmXMduCf
+         5InvJWPftXkfpRUVsKgyJlR4xrCgQ26GdrBh/jvnrlNB84+BK+n4q2MQGx5gvQRdIsn/
+         wVtq0XPCrrnyFGO8Mqdwfv5lRB5rW4az+0OYswRYbc6pwyuM8VRMPPk1QvEGCHXeXhBl
+         ZI6i+35+H3AtstlKmYDpuqETNHVFI0WawhxzlJhJF7pTQ2hy9IOT2vsN9pwCyA8EqVVf
+         EbAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=RBQTd8Qf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h52si275027qtb.336.2018.03.19.08.31.59
+        by mx.google.com with ESMTPS id d5si362007qte.480.2018.03.19.09.16.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 19 Mar 2018 08:31:59 -0700 (PDT)
+        Mon, 19 Mar 2018 09:16:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=RBQTd8Qf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42572 helo=lists.gnu.org)
+Received: from localhost ([::1]:42858 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1exwlP-0007Uk-78
-	for alex.bennee@linaro.org; Mon, 19 Mar 2018 11:31:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60660)
+	id 1exxSI-0006v5-Ea
+	for alex.bennee@linaro.org; Mon, 19 Mar 2018 12:16:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43176)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1exwlG-0007UK-4U
-	for qemu-arm@nongnu.org; Mon, 19 Mar 2018 11:31:47 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1exxS6-0006uo-WF
+	for qemu-arm@nongnu.org; Mon, 19 Mar 2018 12:16:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1exwlF-0001QA-5N
-	for qemu-arm@nongnu.org; Mon, 19 Mar 2018 11:31:46 -0400
-Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:38829)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1exwlF-0001Pp-1E
-	for qemu-arm@nongnu.org; Mon, 19 Mar 2018 11:31:45 -0400
-Received: by mail-oi0-x241.google.com with SMTP id c3so1620611oib.5
-	for <qemu-arm@nongnu.org>; Mon, 19 Mar 2018 08:31:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=ug/IM+J2+JDeDxb69u0EyzCEuZ1K4P6NcpgYNIrZMpk=;
-	b=RBQTd8QfmEb/8rg/pAqt/fWxY5z00LRytIxsPVeK0oUeulEgWwVqRrB2Lsz6VX0YSG
-	8XVFx97TDt6OMxaGdgczQQaXnyRcosRQO8F70wyo6/85GLrLqe854cd0+TncFTFiI4Yk
-	tFY2nkPa69Ap5r1XNu1A1P/jV57o5dA5Kpi0o=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=ug/IM+J2+JDeDxb69u0EyzCEuZ1K4P6NcpgYNIrZMpk=;
-	b=fF4PqASWOHoi2/hDIkP2llCVz5iFC7B11DpFrJfTDReorNKX4DGMHiBM3gPxn9wAp7
-	eaAMk5d/TTTtr5/890RJoVU7LIYdr+3LPFzdS+ducK3QpZTNDor6u+F2jEn4MUaWYmlD
-	lCMsx3xeZQcALxHsshp2+0NEyE68BFniMWWT8xBo2EQgG8j+HrCuY8mXZ24HiIp8TliN
-	1RZpr4SVp6zzEffnaiKTSBtQAULTcznBP56YHgGA4kBhjfpCTq0qfapm2VeT1MYF3piP
-	XRMejvkm5sgDt7iZTAOUDIJ00laIsEfeicl2rVei2a6z/7xKL4PTjmeLkq68YjeBoGQT
-	h/qQ==
-X-Gm-Message-State: AElRT7EZZ2oyWvL6DAuBgMbtIxKF/IP4X1rIvFptqrbTU1Vvc2eon4xR
-	G3Squ8BY3NbXnvLAdevw3HDzoGVgHP9VkxiyudY69A==
-X-Received: by 10.202.97.87 with SMTP id v84mr7466576oib.12.1521473501780;
-	Mon, 19 Mar 2018 08:31:41 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Mon, 19 Mar 2018 08:31:21
-	-0700 (PDT)
-In-Reply-To: <20180319152426.GB24561@codeaurora.org>
-References: <1521232280-13089-1-git-send-email-alindsay@codeaurora.org>
-	<1521232280-13089-15-git-send-email-alindsay@codeaurora.org>
-	<9af89876-bf5d-4696-a430-664fcd5a02fa@amsat.org>
-	<20180319152426.GB24561@codeaurora.org>
+	(envelope-from <pm215@archaic.org.uk>) id 1exxS6-00007r-4N
+	for qemu-arm@nongnu.org; Mon, 19 Mar 2018 12:16:02 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:40414)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1exxS5-000077-TH; Mon, 19 Mar 2018 12:16:02 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1exxS2-0002tJ-59; Mon, 19 Mar 2018 16:15:58 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 19 Mar 2018 15:31:21 +0000
-Message-ID: <CAFEAcA_1gVEziptLMoEm-noVM7EZqP=KLg1uyaLfAd+7PToHdQ@mail.gmail.com>
-To: Aaron Lindsay <alindsay@codeaurora.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Mon, 19 Mar 2018 16:15:54 +0000
+Message-Id: <20180319161556.16446-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.16.2
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::241
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 14/22] target/arm: Make
- PMOVSCLR 64 bits wide
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH for-2.12 0/2] bcm2835_sdhost: fix interrupt
+ handling
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -109,62 +76,64 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Michael Spradling <mspradli@codeaurora.org>,
-	Digant Desai <digantd@codeaurora.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>
+Cc: Pekka Enberg <penberg@iki.fi>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 680hajBScQur
+X-TUID: 5/CbyRqOgDih
 
-On 19 March 2018 at 15:24, Aaron Lindsay <alindsay@codeaurora.org> wrote:
-> Phil,
->
-> On Mar 19 00:14, Philippe Mathieu-Daud=C3=A9 wrote:
->> Hi Aaron,
->>
->> On 03/16/2018 09:31 PM, Aaron Lindsay wrote:
->> > This is a bug fix to ensure 64-bit reads of this register don't read
->> > adjacent data.
->> >
->> > Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
->> > ---
->> >  target/arm/cpu.h | 2 +-
->> >  1 file changed, 1 insertion(+), 1 deletion(-)
->> >
->> > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
->> > index 9c3b5ef..fb2f983 100644
->> > --- a/target/arm/cpu.h
->> > +++ b/target/arm/cpu.h
->> > @@ -367,7 +367,7 @@ typedef struct CPUARMState {
->> >          uint32_t c9_data;
->> >          uint64_t c9_pmcr; /* performance monitor control register */
->> >          uint64_t c9_pmcnten; /* perf monitor counter enables */
->> > -        uint32_t c9_pmovsr; /* perf monitor overflow status */
->> > +        uint64_t c9_pmovsr; /* perf monitor overflow status */
->>
->> This doesn't look correct, since this reg is 32b.
->>
->> I *think* the correct fix is in ARMCPRegInfo v7_cp_reginfo[]:
->>
->>     { .name =3D "PMOVSR", ...
->> -     ..., .fieldoffset =3D offsetof(CPUARMState, cp15.c9_pmovsr),
->> +     ..., .fieldoffset =3D offsetoflow32(CPUARMState, cp15.c9_pmovsr),
->>       .accessfn =3D pmreg_access,
->>       .writefn =3D pmovsr_write,
->>       .raw_writefn =3D raw_write },
->
-> Nearly all of these PMU registers are 32 bits wide, but most of them are
-> implemented as 64-bit registers (PMCR, PMCNTEN*, PMSELR, PMINTEN* are a
-> few examples I see in this patch's context). My understanding is that
-> AArch64 register accesses are handled as 64 bits, even if the register
-> itself isn't that wide (though I haven't personally verified this).
+This patchset fixes the code in the bcm2835_sdhost device
+so that it raises interrupts in more plausible places.
 
-Correct. Technically there's no such thing as a 32-bit wide AArch64
-system register -- that is just a shorthand in the Arm ARM for
-"64-bit wide with the top 32-bits being RES0".
+The Linux bcm2835_sdhost driver doesn't work on QEMU at the moment,
+because our model raises spurious data interrupts.  Our function
+bcm2835_sdhost_fifo_run() will flag an interrupt any time it is
+called with s->datacnt == 0, even if the host hasn't actually issued
+a data read or write command yet.  This means that the driver gets a
+spurious data interrupt as soon as it enables IRQs and then does
+something else that causes us to call the fifo_run routine, like
+writing to SDHCFG, and before it does the write to SDCMD to issue the
+read.  The driver's IRQ handler then spins forever complaining that
+there's no data and the SD controller isn't in a state where there's
+going to be any data:
+    
+[   41.040738] sdhost-bcm2835 3f202000.mmc: fsm 1, hsts 00000000
+[   41.042059] sdhost-bcm2835 3f202000.mmc: fsm 1, hsts 00000000
+(continues forever).
+    
+Move the interrupt flag setting to more plausible places:
+ * for BUSY, raise this as soon as a BUSYWAIT command has executed
+ * for DATA, raise this when the FIFO has any space free (for a write)
+   or any data in it (for a read)
+ * for BLOCK, raise this when the data count is 0 and we've
+   actually done some reading or writing
+    
+This is pure guesswork since the documentation for this hardware is
+not public, but it is sufficient to get the Linux bcm2835_sdhost
+driver to work.
+
+If anybody has other OSes than Linux that use the sdhost SD
+controller (not the 'Arasan' one, which is a different bit of
+the SoC) testing with those would be appreciated. If anybody
+has documentation for this hardware that would be even better.
+
+With these patches plus the previous set, I can get the Debian
+raspi3 image to boot (though there are a lot of warnings relating
+to the pl011 UART for some reason).
 
 thanks
 -- PMM
+
+Peter Maydell (2):
+  hw/sd/bcm2835_sdhost: Add tracepoints
+  hw/sd/bcm2835_sdhost: Don't raise spurious interrupts
+
+ hw/sd/bcm2835_sdhost.c | 51 +++++++++++++++++++++++++++++++-------------------
+ hw/sd/trace-events     |  6 ++++++
+ 2 files changed, 38 insertions(+), 19 deletions(-)
+
+-- 
+2.16.2
+

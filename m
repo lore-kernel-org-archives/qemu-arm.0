@@ -1,92 +1,80 @@
-Received: by 10.28.91.67 with SMTP id p64csp2688345wmb;
-        Mon, 19 Mar 2018 07:41:04 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELtLXYUsQsKhvV3AjhDBiiigytlz7S1xcGLrJb2JLVGQDagGUT/xlRt55Z2m5yITEp85iLN8
-X-Received: by 10.200.11.70 with SMTP id m6mr18361884qti.95.1521470464748;
-        Mon, 19 Mar 2018 07:41:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521470464; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp2733468wmb;
+        Mon, 19 Mar 2018 08:22:38 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELtleQZ9zO5vC9zWcnBD1SJB+KlPfbKt7PKlxYGmKB9wARNENweNyiuOshuXKcJ4GVwJ3fcT
+X-Received: by 2002:a25:bc8d:: with SMTP id e13-v6mr7310820ybk.273.1521472958691;
+        Mon, 19 Mar 2018 08:22:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521472958; cv=none;
         d=google.com; s=arc-20160816;
-        b=DX1J0YY3t1ZTRxypMGfa8MXNhX0OerJWgPHNwIBz+EmFIZ7GTp5C93eAJvjK5Nr3eK
-         VFWyJvdLuUS9OrotZuBBOL8fRprBnj64fNwdCSsvECySPEiXFuWvTowpiNq/PLB/s/JB
-         bfL933wLMlMqv4fGp/atBEAuvqaIbaoXUq0nbIpJ030sg8wUxmqDcB8sYTtmJDuHx3JA
-         Xhzw5GIj73O8UhKmV/SjUAUzAm2R8AEWI5Kl+4fAIltxV7NfQJik0KstJavesDU/augb
-         xi4g9iC/tophoWQNRF5vRIOJ65VdM4MSdswo1U7sBAcneUAW9q7m5K92JusvoZET+X21
-         l3eg==
+        b=tw8Pnj9ZyViQ12X5ZkXZlOoVea+c74+bmuiuHkUhD+E8xWAnkiKjfUPcVmeJWsBGDN
+         YfZMwpCTH14L8awH2ILH3euSrAUwQEnh9eCIJwC1lNvOnCU2gmqK0VX5Wy9fu4YdpYm8
+         xKdv1xRzXC9D7kAYwfPcOTYZsvwKUXJp/1AqKabGDyjA2WRN+12eWbpdz1Rqd0G31ECA
+         lnzOnhVEHBioI+CnP5ZIaHanH34cFkwrBMXaUHoWZvtoV7wndpxGHSM3AlSx3ZfV9ptl
+         v97JOIo8SuczsEcbTzFY7Z+HN6+/Eje9FtF0wahED76XcDQtcugUxLuucNVI4340cdBw
+         nZ0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date:arc-authentication-results;
-        bh=Y3iLyGgPY79OBHeIF062Mjl0+kqf8xXjls3lIKb4pw4=;
-        b=WVU/L6s1Un56TP33L0iVGctfMx2pJjBCv8XvCHXaCjM+E5RR7iIkZsigONtTBvl6sL
-         +1Znu8RJyRI4pavVT8uc9+/RXUadNezAVF3saP7uk9kFcSYvAjOHW8U3/qvmI6HGQvPp
-         fAzfTllrwGirSavS7SvJ0uD/QAAKQxMNvvCTdYaK+md0TwxD/9ivTN8cFD2MTkLOTzwx
-         e9bTHLR9nnd4IRVM9i856ejjIEfWsaQeKOlUYJDYhbH4CGIlQpxGq1DcL9LFoX2FNFzy
-         tH57DMsd74fbdc+pBASDKSi25dUuriiauvNg4hYPVFl52w5AdAKmiQuzXrPBGCN135S1
-         cw/w==
+         :content-transfer-encoding:in-reply-to:references:to:mime-version
+         :user-agent:from:date:message-id:arc-authentication-results;
+        bh=qj1eg28bu8plPDeZu1MYKmnwIJlt9jX/tW1FUG8W/nk=;
+        b=swOuCkB1pv5WfAYnURlT1u9Q41gr3E2kMuKRzu2fN7eZ/FRo2WiCeP9o6Pbaf8LX6I
+         76a5yD6Im/3dcOdNT0efK5t67lLftAJQPejcMKLyDYzcMpWKsYnH61i4aaGxdTO5xE3k
+         64D4zB5ywFf/iPIOZh5kF1zJyOJNSS/dxt2Nzlehxcawy0/fqCRB1YeucuH+18TGKY1w
+         /Ur6cn/c1fvi7glHY7q6QN8JYSL6E+addjFYeHRHmTav1CrFeiuWg2HsE/ZrWJTowvhe
+         Wt1jvMRNIM0H+KITLQHF46cFCrktaBNDl+O3LUpqdG9CgQ8E59mYdRpvtUNrTSXU1W84
+         dCfw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n6si157435qtk.375.2018.03.19.07.41.04
+        by mx.google.com with ESMTPS id s8si253003qta.266.2018.03.19.08.22.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 19 Mar 2018 07:41:04 -0700 (PDT)
+        Mon, 19 Mar 2018 08:22:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42348 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:42524 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1exvyC-0002vo-8s
-	for alex.bennee@linaro.org; Mon, 19 Mar 2018 10:41:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47965)
+	id 1exwcQ-0002dL-7P
+	for alex.bennee@linaro.org; Mon, 19 Mar 2018 11:22:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58136)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1exvxx-0002t5-OH
-	for qemu-arm@nongnu.org; Mon, 19 Mar 2018 10:40:54 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1exwbF-00021g-Lv
+	for qemu-arm@nongnu.org; Mon, 19 Mar 2018 11:21:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1exvxt-0007u6-M2
-	for qemu-arm@nongnu.org; Mon, 19 Mar 2018 10:40:49 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:35208 helo=mx1.redhat.com)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1exwbB-0008Cr-1I
+	for qemu-arm@nongnu.org; Mon, 19 Mar 2018 11:21:25 -0400
+Received: from [45.249.212.35] (port=55307 helo=huawei.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1exvxt-0007tM-HK; Mon, 19 Mar 2018 10:40:45 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3A5C982FC4A2;
-	Mon, 19 Mar 2018 14:40:34 +0000 (UTC)
-Received: from igors-macbook-pro.local (ovpn-112-31.ams2.redhat.com
-	[10.36.112.31])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 9A821AB3F5;
-	Mon, 19 Mar 2018 14:40:23 +0000 (UTC)
-Date: Mon, 19 Mar 2018 15:40:20 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20180319154020.6d668399@igors-macbook-pro.local>
-In-Reply-To: <CAFEAcA_9YQ4bSzHgM8yLAPtPZ2C70u13kTCLf4rHGPCBUgNiZA@mail.gmail.com>
-References: <20180313153458.26822-1-peter.maydell@linaro.org>
-	<20180313153458.26822-9-peter.maydell@linaro.org>
-	<MWHPR21MB018983B74A652443B70680F19ED20@MWHPR21MB0189.namprd21.prod.outlook.com>
-	<CAFEAcA_9YQ4bSzHgM8yLAPtPZ2C70u13kTCLf4rHGPCBUgNiZA@mail.gmail.com>
+	(Exim 4.71) (envelope-from <zhaoshenglong@huawei.com>)
+	id 1exwbA-00089r-54; Mon, 19 Mar 2018 11:21:20 -0400
+Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.59])
+	by Forcepoint Email with ESMTP id 318E0BC2DC7B9;
+	Mon, 19 Mar 2018 22:34:06 +0800 (CST)
+Received: from [127.0.0.1] (10.177.16.142) by DGGEMS407-HUB.china.huawei.com
+	(10.3.19.207) with Microsoft SMTP Server id 14.3.361.1; Mon, 19 Mar 2018
+	22:33:59 +0800
+Message-ID: <5AAFCA19.7020507@huawei.com>
+Date: Mon, 19 Mar 2018 22:32:57 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+To: Peter Maydell <peter.maydell@linaro.org>, Eric Auger
+	<eric.auger@redhat.com>
+References: <1518893216-9983-1-git-send-email-eric.auger@redhat.com>	<1518893216-9983-14-git-send-email-eric.auger@redhat.com>
+	<CAFEAcA810AsyBgCJ2vSKcxqRYKGZgJ3RLEqmJt_c5aa9j9t_Kw@mail.gmail.com>
+In-Reply-To: <CAFEAcA810AsyBgCJ2vSKcxqRYKGZgJ3RLEqmJt_c5aa9j9t_Kw@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Mon, 19 Mar 2018 14:40:34 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Mon, 19 Mar 2018 14:40:34 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'imammedo@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 8/9] hw/arm/bcm2836: Hardcode
- correct CPU type
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 45.249.212.35
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v9 13/14]
+ hw/arm/virt-acpi-build: Add smmuv3 node in IORT table
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,53 +86,195 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "patches@linaro.org" <patches@linaro.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>,
-	Philippe =?UTF-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Pekka Enberg <penberg@iki.fi>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+	Jean-Philippe Brucker <jean-philippe.brucker@arm.com>,
+	Tomasz Nowicki <tn@semihalf.com>, QEMU
+	Developers <qemu-devel@nongnu.org>, Peter Xu <peterx@redhat.com>, Shannon
+	Zhao <shannon.zhaosl@gmail.com>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	Prem Mallappa <prem.mallappa@gmail.com>, linuc.decode@gmail.com,
+	Bharat Bhushan <bharat.bhushan@nxp.com>, Christoffer
+	Dall <christoffer.dall@linaro.org>, Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZQeh8Me8cto2
+X-TUID: nMKzQOzhlFHO
 
-On Thu, 15 Mar 2018 17:13:03 +0000
-Peter Maydell <peter.maydell@linaro.org> wrote:
 
-> On 13 March 2018 at 16:55, Andrew Baumann <Andrew.Baumann@microsoft.com> wrote:
-> >> From: Qemu-devel <qemu-devel-
-> >> bounces+andrew.baumann=microsoft.com@nongnu.org> On Behalf Of Peter
-> >> Maydell
-> >> Sent: Tuesday, 13 March 2018 08:35
-> >>
-> >> Now we have separate types for BCM2386 and BCM2387, we might as well
-> >> just hard-code the CPU type they use rather than having it passed
-> >> through as an object property. This then lets us put the initialization
-> >> of the CPU object in init rather than realize.
+
+On 2018/3/12 20:48, Peter Maydell wrote:
+> On 17 February 2018 at 18:46, Eric Auger <eric.auger@redhat.com> wrote:
+>> From: Prem Mallappa <prem.mallappa@broadcom.com>
+>>
+>> This patch builds the smmuv3 node in the ACPI IORT table.
+>>
+>> The RID space of the root complex, which spans 0x0-0x10000
+>> maps to streamid space 0x0-0x10000 in smmuv3, which in turn
+>> maps to deviceid space 0x0-0x10000 in the ITS group.
+>>
+>> The guest must feature the IOMMU probe deferral series
+>> (https://lkml.org/lkml/2017/4/10/214) which fixes streamid
+>> multiple lookup. This bug is not related to the SMMU emulation.
+>>
+>> Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>
+>> ---
+>>
+>> v2 -> v3:
+>> - integrate into the existing IORT table made up of ITS, RC nodes
+>> - take into account vms->smmu
+>> - match linux actbl2.h acpi_iort_smmu_v3 field names
+>> ---
+>>  hw/arm/virt-acpi-build.c    | 56 +++++++++++++++++++++++++++++++++++++++------
+>>  include/hw/acpi/acpi-defs.h | 15 ++++++++++++
+>>  2 files changed, 64 insertions(+), 7 deletions(-)
 > 
-> > What about the default_cpu_type field of MachineClass set in
-> > raspi[23]_machine_init? That seems irrelevant now...
+> Since ACPI is definitely not my area of expertise, I've cc'd
+> Shannon on this patch. Shannon, could you take a look at it, please?
 > 
-> Igor, can you help with this question? For a board that always
-> has one CPU type (because the real hardware only ever has
-> one SoC, and that SoC QOM object hard codes the CPU type)
-> does it still need to set the mc->default_cpu_type field in
-> its MachineClass, or does that become pointless ?
+Sure.
 
-Since board ignores whatever were specified on '-cpu' and 
-there aren't any checks in board code for current_machine->cpu_type,
-removing mc->default_cpu_type won't really affect anything.
+>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+>> index f7fa795..4b5ad91 100644
+>> --- a/hw/arm/virt-acpi-build.c
+>> +++ b/hw/arm/virt-acpi-build.c
+>> @@ -393,19 +393,26 @@ build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned xsdt_tbl_offset)
+>>  }
+>>
+>>  static void
+>> -build_iort(GArray *table_data, BIOSLinker *linker)
+>> +build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>>  {
+>> -    int iort_start = table_data->len;
+>> +    int nb_nodes, iort_start = table_data->len;
+>>      AcpiIortIdMapping *idmap;
+>>      AcpiIortItsGroup *its;
+>>      AcpiIortTable *iort;
+>> -    size_t node_size, iort_length;
+>> +    AcpiIortSmmu3 *smmu;
+>> +    size_t node_size, iort_length, smmu_offset = 0;
+>>      AcpiIortRC *rc;
+>>
+>>      iort = acpi_data_push(table_data, sizeof(*iort));
+>>
+>> +    if (vms->iommu) {
+use if (vms->iommu == VIRT_IOMMU_SMMUV3) ? in case we support other
+types of SMMU.
 
-With current code in vl.c and with default_cpu_type set, user will
-get error if he specified non existing cpu_model with -cpu.
-If default_cpu_type were NULL, -cpu is completely ignored.
+>> +        nb_nodes = 3; /* RC, ITS, SMMUv3 */
+>> +    } else {
+>> +        nb_nodes = 2; /* RC, ITS */
+>> +    }
+>> +
+>>      iort_length = sizeof(*iort);
+>> -    iort->node_count = cpu_to_le32(2); /* RC and ITS nodes */
+>> +    iort->node_count = cpu_to_le32(nb_nodes);
+>>      iort->node_offset = cpu_to_le32(sizeof(*iort));
+>>
+>>      /* ITS group node */
+>> @@ -418,6 +425,35 @@ build_iort(GArray *table_data, BIOSLinker *linker)
+>>      its->its_count = cpu_to_le32(1);
+>>      its->identifiers[0] = 0; /* MADT translation_id */
+>>
+>> +    if (vms->iommu == VIRT_IOMMU_SMMUV3) {
+>> +        int irq =  vms->irqmap[VIRT_SMMU];
+>> +
+>> +        /* SMMUv3 node */
+>> +        smmu_offset = cpu_to_le32(iort->node_offset + node_size);
+no need cpu_to_le32 here.
+Otherwise: Reviewed-by: Shannon Zhao <zhaoshenglong@huawei.com>
 
-But once http://patchwork.ozlabs.org/patch/870297/ is applied
-it will error out the same way as if default_cpu_type were
-set since vl.c won't rely on it anymore for parsing cpu_model.
-
-So in short it's ok to remove mc->default_cpu_type here.
-
+>> +        node_size = sizeof(*smmu) + sizeof(*idmap);
+>> +        iort_length += node_size;
+>> +        smmu = acpi_data_push(table_data, node_size);
+>> +
+>> +
+>> +        smmu->type = ACPI_IORT_NODE_SMMU_V3;
+>> +        smmu->length = cpu_to_le16(node_size);
+>> +        smmu->mapping_count = cpu_to_le32(1);
+>> +        smmu->mapping_offset = cpu_to_le32(sizeof(*smmu));
+>> +        smmu->base_address = cpu_to_le64(vms->memmap[VIRT_SMMU].base);
+>> +        smmu->event_gsiv = cpu_to_le32(irq);
+>> +        smmu->pri_gsiv = cpu_to_le32(irq + 1);
+>> +        smmu->gerr_gsiv = cpu_to_le32(irq + 2);
+>> +        smmu->sync_gsiv = cpu_to_le32(irq + 3);
+>> +
+>> +        /* Identity RID mapping covering the whole input RID range */
+>> +        idmap = &smmu->id_mapping_array[0];
+>> +        idmap->input_base = 0;
+>> +        idmap->id_count = cpu_to_le32(0xFFFF);
+>> +        idmap->output_base = 0;
+>> +        /* output IORT node is the ITS group node (the first node) */
+>> +        idmap->output_reference = cpu_to_le32(iort->node_offset);
+>> +    }
+>> +
+>>      /* Root Complex Node */
+>>      node_size = sizeof(*rc) + sizeof(*idmap);
+>>      iort_length += node_size;
+>> @@ -438,8 +474,14 @@ build_iort(GArray *table_data, BIOSLinker *linker)
+>>      idmap->input_base = 0;
+>>      idmap->id_count = cpu_to_le32(0xFFFF);
+>>      idmap->output_base = 0;
+>> -    /* output IORT node is the ITS group node (the first node) */
+>> -    idmap->output_reference = cpu_to_le32(iort->node_offset);
+>> +
+>> +    if (vms->iommu) {
+>> +        /* output IORT node is the smmuv3 node */
+>> +        idmap->output_reference = cpu_to_le32(smmu_offset);
+>> +    } else {
+>> +        /* output IORT node is the ITS group node (the first node) */
+>> +        idmap->output_reference = cpu_to_le32(iort->node_offset);
+>> +    }
+>>
+>>      iort->length = cpu_to_le32(iort_length);
+>>
+>> @@ -786,7 +828,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>>
+>>      if (its_class_name() && !vmc->no_its) {
+>>          acpi_add_table(table_offsets, tables_blob);
+>> -        build_iort(tables_blob, tables->linker);
+>> +        build_iort(tables_blob, tables->linker, vms);
+>>      }
+>>
+>>      /* XSDT is pointed to by RSDP */
+>> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+>> index 80c8099..068ce28 100644
+>> --- a/include/hw/acpi/acpi-defs.h
+>> +++ b/include/hw/acpi/acpi-defs.h
+>> @@ -700,6 +700,21 @@ struct AcpiIortItsGroup {
+>>  } QEMU_PACKED;
+>>  typedef struct AcpiIortItsGroup AcpiIortItsGroup;
+>>
+>> +struct AcpiIortSmmu3 {
+>> +    ACPI_IORT_NODE_HEADER_DEF
+>> +    uint64_t base_address;
+>> +    uint32_t flags;
+>> +    uint32_t reserved2;
+>> +    uint64_t vatos_address;
+>> +    uint32_t model;
+>> +    uint32_t event_gsiv;
+>> +    uint32_t pri_gsiv;
+>> +    uint32_t gerr_gsiv;
+>> +    uint32_t sync_gsiv;
+>> +    AcpiIortIdMapping id_mapping_array[0];
+>> +} QEMU_PACKED;
+>> +typedef struct AcpiIortSmmu3 AcpiIortSmmu3;
+>> +
+>>  struct AcpiIortRC {
+>>      ACPI_IORT_NODE_HEADER_DEF
+>>      AcpiIortMemoryAccess memory_properties;
+>> --
+>> 2.5.5
+>>
 > 
 > thanks
 > -- PMM
+> 
+> 
+> .
+> 
+
+-- 
+Shannon
 

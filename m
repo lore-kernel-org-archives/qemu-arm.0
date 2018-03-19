@@ -1,80 +1,106 @@
-Received: by 10.28.91.67 with SMTP id p64csp2733468wmb;
-        Mon, 19 Mar 2018 08:22:38 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELtleQZ9zO5vC9zWcnBD1SJB+KlPfbKt7PKlxYGmKB9wARNENweNyiuOshuXKcJ4GVwJ3fcT
-X-Received: by 2002:a25:bc8d:: with SMTP id e13-v6mr7310820ybk.273.1521472958691;
-        Mon, 19 Mar 2018 08:22:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521472958; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp2735592wmb;
+        Mon, 19 Mar 2018 08:24:44 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELsQYxw/BNLZpQnCIU2XiLW/nXHktgKaO+f+6gR7cN/x6mawRXohYx0t2E1eiOP43JR3dLpQ
+X-Received: by 10.55.33.144 with SMTP id f16mr18563305qki.158.1521473084340;
+        Mon, 19 Mar 2018 08:24:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521473084; cv=none;
         d=google.com; s=arc-20160816;
-        b=tw8Pnj9ZyViQ12X5ZkXZlOoVea+c74+bmuiuHkUhD+E8xWAnkiKjfUPcVmeJWsBGDN
-         YfZMwpCTH14L8awH2ILH3euSrAUwQEnh9eCIJwC1lNvOnCU2gmqK0VX5Wy9fu4YdpYm8
-         xKdv1xRzXC9D7kAYwfPcOTYZsvwKUXJp/1AqKabGDyjA2WRN+12eWbpdz1Rqd0G31ECA
-         lnzOnhVEHBioI+CnP5ZIaHanH34cFkwrBMXaUHoWZvtoV7wndpxGHSM3AlSx3ZfV9ptl
-         v97JOIo8SuczsEcbTzFY7Z+HN6+/Eje9FtF0wahED76XcDQtcugUxLuucNVI4340cdBw
-         nZ0Q==
+        b=W/+fSEVDEgJNZtMLeRbMqegnOlqCa8vT6RQ67urG3Y28qVXg0n4fl6lVMSH66AgWwP
+         TLIDSHL/ADUMfPWbZb36O91nGfC2YQqRDiGCDQnDdk4BbDw3UeXsQW1M2cOJl0ddgrbQ
+         8QEWtNf5JYUYwltIBl+IpSvqsGKbLSFeZx7hkvyPaHGiROlkcrYFv82lN5YFQXR6z6vS
+         wA2pMJXdG55C6xw3v8EIswZ8ME529JhJr6rvF4qO1hDSLfdciP7oZQz75xJZVUE+janU
+         v6ah63rLWUxUfk9oXTy7hnnLRiasd5EWP095KQSBrs3Qou9ma2QU1mcQ06bNRL+gkUJ0
+         b/5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:references:to:mime-version
-         :user-agent:from:date:message-id:arc-authentication-results;
-        bh=qj1eg28bu8plPDeZu1MYKmnwIJlt9jX/tW1FUG8W/nk=;
-        b=swOuCkB1pv5WfAYnURlT1u9Q41gr3E2kMuKRzu2fN7eZ/FRo2WiCeP9o6Pbaf8LX6I
-         76a5yD6Im/3dcOdNT0efK5t67lLftAJQPejcMKLyDYzcMpWKsYnH61i4aaGxdTO5xE3k
-         64D4zB5ywFf/iPIOZh5kF1zJyOJNSS/dxt2Nzlehxcawy0/fqCRB1YeucuH+18TGKY1w
-         /Ur6cn/c1fvi7glHY7q6QN8JYSL6E+addjFYeHRHmTav1CrFeiuWg2HsE/ZrWJTowvhe
-         Wt1jvMRNIM0H+KITLQHF46cFCrktaBNDl+O3LUpqdG9CgQ8E59mYdRpvtUNrTSXU1W84
-         dCfw==
+         :content-transfer-encoding:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dmarc-filter:dkim-signature:dkim-signature
+         :arc-authentication-results;
+        bh=xWnvoNzHSnCQV1IWXS55EKpHgDS8SHuCYjpc4vOH5y4=;
+        b=y3JxFbpX2cR2P4UxtqCmU3v6a106xhN53QWp0SLvf5XZt66FLm96qni5xdKMym1T5C
+         /IU+S7u8q0ExzM6Uyr67XIyS5MwRGwSh4PbaZOKT6G2gSVERIGtNm3GQeoirzF7WcUXU
+         XVYuk/qWFByhumJGbmQ3ca54A8tWrHSSOIQVVUh1Qtp4X4fQPr/XxTCSYxIeQnoOrwTi
+         P3bmYAWxQTwFj8KmPPUoMMRie83d/1J3mu3tbYC0fmiC2vrtuc/Jw8NvxAEvDB7z/sP0
+         O3M6XT/gDiR0D8G3L45EBPje4nwyfrsSeV2iWWC9LhJR17/Wf2VxW3a9ncZKYBTZ0ym2
+         QcKA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=neutral (body hash did not verify) header.i=@codeaurora.org header.s=default header.b=HlR8DLbe;
+       dkim=neutral (body hash did not verify) header.i=@codeaurora.org header.s=default header.b=NHImUd20;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s8si253003qta.266.2018.03.19.08.22.38
+        by mx.google.com with ESMTPS id q22si273212qtg.158.2018.03.19.08.24.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 19 Mar 2018 08:22:38 -0700 (PDT)
+        Mon, 19 Mar 2018 08:24:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=neutral (body hash did not verify) header.i=@codeaurora.org header.s=default header.b=HlR8DLbe;
+       dkim=neutral (body hash did not verify) header.i=@codeaurora.org header.s=default header.b=NHImUd20;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:42524 helo=lists.gnu.org)
+Received: from localhost ([::1]:42535 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1exwcQ-0002dL-7P
-	for alex.bennee@linaro.org; Mon, 19 Mar 2018 11:22:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58136)
+	id 1exweR-0003eh-Rv
+	for alex.bennee@linaro.org; Mon, 19 Mar 2018 11:24:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58749)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1exwbF-00021g-Lv
-	for qemu-arm@nongnu.org; Mon, 19 Mar 2018 11:21:30 -0400
+	(envelope-from <alindsay@codeaurora.org>) id 1exweK-0003eU-9k
+	for qemu-arm@nongnu.org; Mon, 19 Mar 2018 11:24:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1exwbB-0008Cr-1I
-	for qemu-arm@nongnu.org; Mon, 19 Mar 2018 11:21:25 -0400
-Received: from [45.249.212.35] (port=55307 helo=huawei.com)
+	(envelope-from <alindsay@codeaurora.org>) id 1exweH-0002AM-5L
+	for qemu-arm@nongnu.org; Mon, 19 Mar 2018 11:24:36 -0400
+Received: from smtp.codeaurora.org ([198.145.29.96]:45358)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <zhaoshenglong@huawei.com>)
-	id 1exwbA-00089r-54; Mon, 19 Mar 2018 11:21:20 -0400
-Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.59])
-	by Forcepoint Email with ESMTP id 318E0BC2DC7B9;
-	Mon, 19 Mar 2018 22:34:06 +0800 (CST)
-Received: from [127.0.0.1] (10.177.16.142) by DGGEMS407-HUB.china.huawei.com
-	(10.3.19.207) with Microsoft SMTP Server id 14.3.361.1; Mon, 19 Mar 2018
-	22:33:59 +0800
-Message-ID: <5AAFCA19.7020507@huawei.com>
-Date: Mon, 19 Mar 2018 22:32:57 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+	(Exim 4.71) (envelope-from <alindsay@codeaurora.org>)
+	id 1exweG-000288-S4; Mon, 19 Mar 2018 11:24:33 -0400
+Received: by smtp.codeaurora.org (Postfix, from userid 1000)
+	id ABECE6016D; Mon, 19 Mar 2018 15:24:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
+	s=default; t=1521473070;
+	bh=Um9vOyAJnMnrJcH1Wc/S+txY8cUqNUYyrGedNIJ0qWs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=HlR8DLbed2MztVsrPzVDPCUFeOxInxprVN4Y2IX1WyecQseyx/2Kpeis/DdQqOldV
+	6mYYpGWRp/vMx2OADcyFZHVJb4zSLQJF9ef7DqZpOTCqMfWTpnp1Z27zDEFLIUdmvz
+	GuWDqQB8hEpPkqHU/fY2KEB25jDWEjQ2OkS+qL0c=
+Received: from codeaurora.org (global_nat1_iad_fw.qualcomm.com [129.46.232.65])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	(Authenticated sender: alindsay@smtp.codeaurora.org)
+	by smtp.codeaurora.org (Postfix) with ESMTPSA id D17E26055D;
+	Mon, 19 Mar 2018 15:24:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
+	s=default; t=1521473069;
+	bh=Um9vOyAJnMnrJcH1Wc/S+txY8cUqNUYyrGedNIJ0qWs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=NHImUd20uOS3dOkLYnntP7HuAd+ZspOdw0hB9rntBqwn2DMwkK921De3aB0WiSs+V
+	wk60RmwcjuQvJ4pN62rBJjq95CQ+6NrGLfTcGR4s+zGahDfDSotkaIGTGMyh0Op99V
+	j9u1VYZMB4alTsAA81lv9d2Uz/+JswE2WcGAFm/o=
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org D17E26055D
+Authentication-Results: pdx-caf-mail.web.codeaurora.org;
+	dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: pdx-caf-mail.web.codeaurora.org;
+	spf=none smtp.mailfrom=alindsay@codeaurora.org
+Date: Mon, 19 Mar 2018 11:24:27 -0400
+From: Aaron Lindsay <alindsay@codeaurora.org>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Message-ID: <20180319152426.GB24561@codeaurora.org>
+References: <1521232280-13089-1-git-send-email-alindsay@codeaurora.org>
+	<1521232280-13089-15-git-send-email-alindsay@codeaurora.org>
+	<9af89876-bf5d-4696-a430-664fcd5a02fa@amsat.org>
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>, Eric Auger
-	<eric.auger@redhat.com>
-References: <1518893216-9983-1-git-send-email-eric.auger@redhat.com>	<1518893216-9983-14-git-send-email-eric.auger@redhat.com>
-	<CAFEAcA810AsyBgCJ2vSKcxqRYKGZgJ3RLEqmJt_c5aa9j9t_Kw@mail.gmail.com>
-In-Reply-To: <CAFEAcA810AsyBgCJ2vSKcxqRYKGZgJ3RLEqmJt_c5aa9j9t_Kw@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 45.249.212.35
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v9 13/14]
- hw/arm/virt-acpi-build: Add smmuv3 node in IORT table
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <9af89876-bf5d-4696-a430-664fcd5a02fa@amsat.org>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 198.145.29.96
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 14/22] target/arm: Make
+ PMOVSCLR 64 bits wide
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,195 +112,80 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
-	Jean-Philippe Brucker <jean-philippe.brucker@arm.com>,
-	Tomasz Nowicki <tn@semihalf.com>, QEMU
-	Developers <qemu-devel@nongnu.org>, Peter Xu <peterx@redhat.com>, Shannon
-	Zhao <shannon.zhaosl@gmail.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Prem Mallappa <prem.mallappa@gmail.com>, linuc.decode@gmail.com,
-	Bharat Bhushan <bharat.bhushan@nxp.com>, Christoffer
-	Dall <christoffer.dall@linaro.org>, Eric Auger <eric.auger.pro@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Michael Spradling <mspradli@codeaurora.org>,
+	Digant Desai <digantd@codeaurora.org>, qemu-devel@nongnu.org,
+	Alistair Francis <alistair.francis@xilinx.com>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nMKzQOzhlFHO
+X-TUID: xZBDdDhDd/tQ
 
+Phil,
 
+On Mar 19 00:14, Philippe Mathieu-Daud=E9 wrote:
+> Hi Aaron,
+>=20
+> On 03/16/2018 09:31 PM, Aaron Lindsay wrote:
+> > This is a bug fix to ensure 64-bit reads of this register don't read
+> > adjacent data.
+> >=20
+> > Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
+> > ---
+> >  target/arm/cpu.h | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >=20
+> > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> > index 9c3b5ef..fb2f983 100644
+> > --- a/target/arm/cpu.h
+> > +++ b/target/arm/cpu.h
+> > @@ -367,7 +367,7 @@ typedef struct CPUARMState {
+> >          uint32_t c9_data;
+> >          uint64_t c9_pmcr; /* performance monitor control register */
+> >          uint64_t c9_pmcnten; /* perf monitor counter enables */
+> > -        uint32_t c9_pmovsr; /* perf monitor overflow status */
+> > +        uint64_t c9_pmovsr; /* perf monitor overflow status */
+>=20
+> This doesn't look correct, since this reg is 32b.
+>=20
+> I *think* the correct fix is in ARMCPRegInfo v7_cp_reginfo[]:
+>=20
+>     { .name =3D "PMOVSR", ...
+> -     ..., .fieldoffset =3D offsetof(CPUARMState, cp15.c9_pmovsr),
+> +     ..., .fieldoffset =3D offsetoflow32(CPUARMState, cp15.c9_pmovsr),
+>       .accessfn =3D pmreg_access,
+>       .writefn =3D pmovsr_write,
+>       .raw_writefn =3D raw_write },
 
-On 2018/3/12 20:48, Peter Maydell wrote:
-> On 17 February 2018 at 18:46, Eric Auger <eric.auger@redhat.com> wrote:
->> From: Prem Mallappa <prem.mallappa@broadcom.com>
->>
->> This patch builds the smmuv3 node in the ACPI IORT table.
->>
->> The RID space of the root complex, which spans 0x0-0x10000
->> maps to streamid space 0x0-0x10000 in smmuv3, which in turn
->> maps to deviceid space 0x0-0x10000 in the ITS group.
->>
->> The guest must feature the IOMMU probe deferral series
->> (https://lkml.org/lkml/2017/4/10/214) which fixes streamid
->> multiple lookup. This bug is not related to the SMMU emulation.
->>
->> Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>
->> ---
->>
->> v2 -> v3:
->> - integrate into the existing IORT table made up of ITS, RC nodes
->> - take into account vms->smmu
->> - match linux actbl2.h acpi_iort_smmu_v3 field names
->> ---
->>  hw/arm/virt-acpi-build.c    | 56 +++++++++++++++++++++++++++++++++++++++------
->>  include/hw/acpi/acpi-defs.h | 15 ++++++++++++
->>  2 files changed, 64 insertions(+), 7 deletions(-)
-> 
-> Since ACPI is definitely not my area of expertise, I've cc'd
-> Shannon on this patch. Shannon, could you take a look at it, please?
-> 
-Sure.
+Nearly all of these PMU registers are 32 bits wide, but most of them are
+implemented as 64-bit registers (PMCR, PMCNTEN*, PMSELR, PMINTEN* are a
+few examples I see in this patch's context). My understanding is that
+AArch64 register accesses are handled as 64 bits, even if the register
+itself isn't that wide (though I haven't personally verified this). See
+an earlier email from Peter from v2 of this patchset:
 
->> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->> index f7fa795..4b5ad91 100644
->> --- a/hw/arm/virt-acpi-build.c
->> +++ b/hw/arm/virt-acpi-build.c
->> @@ -393,19 +393,26 @@ build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned xsdt_tbl_offset)
->>  }
->>
->>  static void
->> -build_iort(GArray *table_data, BIOSLinker *linker)
->> +build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>  {
->> -    int iort_start = table_data->len;
->> +    int nb_nodes, iort_start = table_data->len;
->>      AcpiIortIdMapping *idmap;
->>      AcpiIortItsGroup *its;
->>      AcpiIortTable *iort;
->> -    size_t node_size, iort_length;
->> +    AcpiIortSmmu3 *smmu;
->> +    size_t node_size, iort_length, smmu_offset = 0;
->>      AcpiIortRC *rc;
->>
->>      iort = acpi_data_push(table_data, sizeof(*iort));
->>
->> +    if (vms->iommu) {
-use if (vms->iommu == VIRT_IOMMU_SMMUV3) ? in case we support other
-types of SMMU.
+https://lists.nongnu.org/archive/html/qemu-devel/2017-10/msg03983.html
 
->> +        nb_nodes = 3; /* RC, ITS, SMMUv3 */
->> +    } else {
->> +        nb_nodes = 2; /* RC, ITS */
->> +    }
->> +
->>      iort_length = sizeof(*iort);
->> -    iort->node_count = cpu_to_le32(2); /* RC and ITS nodes */
->> +    iort->node_count = cpu_to_le32(nb_nodes);
->>      iort->node_offset = cpu_to_le32(sizeof(*iort));
->>
->>      /* ITS group node */
->> @@ -418,6 +425,35 @@ build_iort(GArray *table_data, BIOSLinker *linker)
->>      its->its_count = cpu_to_le32(1);
->>      its->identifiers[0] = 0; /* MADT translation_id */
->>
->> +    if (vms->iommu == VIRT_IOMMU_SMMUV3) {
->> +        int irq =  vms->irqmap[VIRT_SMMU];
->> +
->> +        /* SMMUv3 node */
->> +        smmu_offset = cpu_to_le32(iort->node_offset + node_size);
-no need cpu_to_le32 here.
-Otherwise: Reviewed-by: Shannon Zhao <zhaoshenglong@huawei.com>
+Does this still look wrong to you? If so, I'll take a more thorough look
+into how these accesses work.
 
->> +        node_size = sizeof(*smmu) + sizeof(*idmap);
->> +        iort_length += node_size;
->> +        smmu = acpi_data_push(table_data, node_size);
->> +
->> +
->> +        smmu->type = ACPI_IORT_NODE_SMMU_V3;
->> +        smmu->length = cpu_to_le16(node_size);
->> +        smmu->mapping_count = cpu_to_le32(1);
->> +        smmu->mapping_offset = cpu_to_le32(sizeof(*smmu));
->> +        smmu->base_address = cpu_to_le64(vms->memmap[VIRT_SMMU].base);
->> +        smmu->event_gsiv = cpu_to_le32(irq);
->> +        smmu->pri_gsiv = cpu_to_le32(irq + 1);
->> +        smmu->gerr_gsiv = cpu_to_le32(irq + 2);
->> +        smmu->sync_gsiv = cpu_to_le32(irq + 3);
->> +
->> +        /* Identity RID mapping covering the whole input RID range */
->> +        idmap = &smmu->id_mapping_array[0];
->> +        idmap->input_base = 0;
->> +        idmap->id_count = cpu_to_le32(0xFFFF);
->> +        idmap->output_base = 0;
->> +        /* output IORT node is the ITS group node (the first node) */
->> +        idmap->output_reference = cpu_to_le32(iort->node_offset);
->> +    }
->> +
->>      /* Root Complex Node */
->>      node_size = sizeof(*rc) + sizeof(*idmap);
->>      iort_length += node_size;
->> @@ -438,8 +474,14 @@ build_iort(GArray *table_data, BIOSLinker *linker)
->>      idmap->input_base = 0;
->>      idmap->id_count = cpu_to_le32(0xFFFF);
->>      idmap->output_base = 0;
->> -    /* output IORT node is the ITS group node (the first node) */
->> -    idmap->output_reference = cpu_to_le32(iort->node_offset);
->> +
->> +    if (vms->iommu) {
->> +        /* output IORT node is the smmuv3 node */
->> +        idmap->output_reference = cpu_to_le32(smmu_offset);
->> +    } else {
->> +        /* output IORT node is the ITS group node (the first node) */
->> +        idmap->output_reference = cpu_to_le32(iort->node_offset);
->> +    }
->>
->>      iort->length = cpu_to_le32(iort_length);
->>
->> @@ -786,7 +828,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->>
->>      if (its_class_name() && !vmc->no_its) {
->>          acpi_add_table(table_offsets, tables_blob);
->> -        build_iort(tables_blob, tables->linker);
->> +        build_iort(tables_blob, tables->linker, vms);
->>      }
->>
->>      /* XSDT is pointed to by RSDP */
->> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
->> index 80c8099..068ce28 100644
->> --- a/include/hw/acpi/acpi-defs.h
->> +++ b/include/hw/acpi/acpi-defs.h
->> @@ -700,6 +700,21 @@ struct AcpiIortItsGroup {
->>  } QEMU_PACKED;
->>  typedef struct AcpiIortItsGroup AcpiIortItsGroup;
->>
->> +struct AcpiIortSmmu3 {
->> +    ACPI_IORT_NODE_HEADER_DEF
->> +    uint64_t base_address;
->> +    uint32_t flags;
->> +    uint32_t reserved2;
->> +    uint64_t vatos_address;
->> +    uint32_t model;
->> +    uint32_t event_gsiv;
->> +    uint32_t pri_gsiv;
->> +    uint32_t gerr_gsiv;
->> +    uint32_t sync_gsiv;
->> +    AcpiIortIdMapping id_mapping_array[0];
->> +} QEMU_PACKED;
->> +typedef struct AcpiIortSmmu3 AcpiIortSmmu3;
->> +
->>  struct AcpiIortRC {
->>      ACPI_IORT_NODE_HEADER_DEF
->>      AcpiIortMemoryAccess memory_properties;
->> --
->> 2.5.5
->>
-> 
-> thanks
-> -- PMM
-> 
-> 
-> .
-> 
+> >          uint32_t c9_pmuserenr; /* perf monitor user enable */
 
--- 
-Shannon
+Whatever we decide should likely be done to PMUSERENR too - I think I
+overlooked this one before.
 
+> >          uint64_t c9_pmselr; /* perf monitor counter selection regist=
+er */
+> >          uint64_t c9_pminten; /* perf monitor interrupt enables */
+> >=20
+>=20
+> Regards,
+>=20
+> Phil.
+
+-Aaron
+
+--=20
+Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies=
+, Inc.
+Qualcomm Technologies, Inc. is a member of the
+Code Aurora Forum, a Linux Foundation Collaborative Project.

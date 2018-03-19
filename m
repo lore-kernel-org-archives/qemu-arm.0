@@ -1,100 +1,99 @@
-Received: by 10.28.91.67 with SMTP id p64csp2804031wmb;
-        Mon, 19 Mar 2018 09:31:14 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELvKJFmEZP+OixegHLqqjhpqUgf7nYtJXE3J3+wGw65iclwmNhbJND/lWBkL6ANpgWwa48Jn
-X-Received: by 10.129.71.9 with SMTP id u9mr1054504ywa.433.1521477074346;
-        Mon, 19 Mar 2018 09:31:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521477074; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp2807974wmb;
+        Mon, 19 Mar 2018 09:35:15 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELuL8AlrOg76Gn/D8uEZTaYSIGL8LBhsjncjKXI7dETtC3t8JzPADaH798hIRNpykwp/11vN
+X-Received: by 10.200.65.17 with SMTP id q17mr11413395qtl.122.1521477315020;
+        Mon, 19 Mar 2018 09:35:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521477315; cv=none;
         d=google.com; s=arc-20160816;
-        b=mVLDo7bQp79rPrQtbCcsX4hPADWNKK+4monYfOZ+CF+CQG0nUpteviVVyWBAgDGIVS
-         n8cDGTXwdcXcSPXEy4R/BGrQWObqFWi6BHRI+pocpukeKpRz4d79RzI0jxB/D3Lgjbcd
-         t5ZxRqS2ozX6sTW3V6C6Ofv/HN0GPLWLNTiYhVyzHFvEty1uruyeMP+rwlltBEWR+PKZ
-         ZpaZhyn7+fnUrUmLsYxql4tXVBTL5IxJ69EV9gaIsZWRZVyjDcItI7SREZTRrTMJfPav
-         p0i4BTBnTNvwIWJvEO4On1mqxlxetjolfDUBq7iwQgEK2PE49jXgK+/7FFN1Zn2MmgBg
-         MgOw==
+        b=M+CvTdwE/sTO3D5Okkw7r6iSdTFvfk/BgBstwTTtJIqrd6eK/O2k9IdFa5jcLFk5o5
+         8ZxExbqx7mq7LX4Kkj0iMBxPkBaDQKZ7lDc3QHj3U2DmJwq/4yxyZrNM01Jk3fman2fi
+         Bta+qKvZr7yS4TMxzQ08xDvNFlfQV6ri6WOsOV48TydZK1nGgeJ3+ZJ5Txln3DJ3jVCH
+         eLyiSS+z72yDf1qRHFsiCumAhMmNMwzEDmU9q1pdcDXXMmRBuw2lf/0eLumpLGfhOho6
+         9gibYDrFZjLws+wHodUiA7zIRroSpsYAyVAHzYOmzMYOz5vHIAUKS3JXVKtZCApwjYFK
+         78RA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=w8C/D4atoI2gA3cUG1pqivDlnaGmgibnYIV5DdKWnoc=;
-        b=Xa7HjUxpO6xhtMtuKZ7trzzICjP72qVf5+/TM5aiuPpWewp+78jECzrTOanSSL+BWg
-         qP8k1behb/sanVRVHvegoM9Y7bIZbkwOxWsC+vyq6N3zhHo7x4eozKWaCrZ6B2eo8BxE
-         FF216CYetbuoa2J2gRgeOCq2Rg5ztlJUaoY02BK32dZb3CwhXGNxBFDhvDpodDog3wIN
-         tMUzb25vzUXF9tjpX/T7cGWm8+VZd5YUmRTEiab7GXHAsPOaOYmUlGi63wH7SIreNJj6
-         sTsw/n5PEz6CpbIBwhyDFjRz0mZVoc5XH96LsR24fsFXCpgP73UeshbEnf+XtWSIafcz
-         ANHQ==
+        bh=bz5OJkfVcEa8ZuBkkDwMutnYpysAWPvFEuEdJH8ic+Q=;
+        b=rAdjQM/K8vj2t0pELsTKNpTCSvzla14b9CRhXUulGnNrIkLtaE/ajmmbupd7EsfHdv
+         UNZxZkvDjtmn1CxB9h6uMKfbDAFm+u2NJgbKh5ntOAAfhlQ5ornNoUuMDvjfVcYGQTQT
+         4hLmuvlCK1tfQpJ4stS3D3T5zzKxuNaBn+j22OkVxCKmIdlBwifuzXhCp8kXDev1GOmb
+         q5q+ziZWcRFTP3HJn76WLDa3vRx1/rJoYDesVvM+RzHDBcd2M0fYRlUmIlN2IqYhJL5f
+         +9fVws4nkRVmS30u3DlgFZotZebfLZuDD39w6hK8iEATOj4hL/W/T5vVMYca0fmG+8mW
+         byHg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=GBwm4q6N;
+       dkim=fail header.i=@linaro.org header.s=google header.b=gZj/vopJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z1si385649qkb.293.2018.03.19.09.31.14
+        by mx.google.com with ESMTPS id d3si381870qtd.470.2018.03.19.09.35.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 19 Mar 2018 09:31:14 -0700 (PDT)
+        Mon, 19 Mar 2018 09:35:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=GBwm4q6N;
+       dkim=fail header.i=@linaro.org header.s=google header.b=gZj/vopJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42932 helo=lists.gnu.org)
+Received: from localhost ([::1]:42951 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1exxgn-0007Jh-Pq
-	for alex.bennee@linaro.org; Mon, 19 Mar 2018 12:31:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47839)
+	id 1exxkg-0001Bm-F9
+	for alex.bennee@linaro.org; Mon, 19 Mar 2018 12:35:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49232)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1exxga-0007I5-B6
-	for qemu-arm@nongnu.org; Mon, 19 Mar 2018 12:31:01 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1exxkW-0001AG-5I
+	for qemu-arm@nongnu.org; Mon, 19 Mar 2018 12:35:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1exxgZ-0004Kp-6w
-	for qemu-arm@nongnu.org; Mon, 19 Mar 2018 12:31:00 -0400
-Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:42922)
+	(envelope-from <peter.maydell@linaro.org>) id 1exxkV-0006YA-87
+	for qemu-arm@nongnu.org; Mon, 19 Mar 2018 12:35:04 -0400
+Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:35184)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1exxgZ-0004KF-2E
-	for qemu-arm@nongnu.org; Mon, 19 Mar 2018 12:30:59 -0400
-Received: by mail-ot0-x244.google.com with SMTP id v23-v6so2740834oth.9
-	for <qemu-arm@nongnu.org>; Mon, 19 Mar 2018 09:30:58 -0700 (PDT)
+	id 1exxkV-0006Xp-3d
+	for qemu-arm@nongnu.org; Mon, 19 Mar 2018 12:35:03 -0400
+Received: by mail-oi0-x243.google.com with SMTP id a189so7864830oii.2
+	for <qemu-arm@nongnu.org>; Mon, 19 Mar 2018 09:35:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=w8C/D4atoI2gA3cUG1pqivDlnaGmgibnYIV5DdKWnoc=;
-	b=GBwm4q6NT3JAAx7QQOYbS7s3lNBiqoG7sZtouuDqwkDPpqoheCsChOCSLpGrXrdo/5
-	Nwv5c8hg5Hn9ujD6WvTot/S6lLCz+u3bD3jvgmmQEPrAw7D6ufikp5kWTY4B6XnWR6Rp
-	7bn7b8shb1H5REXv2UlPt29ZxJDm03Kup++ww=
+	:cc; bh=bz5OJkfVcEa8ZuBkkDwMutnYpysAWPvFEuEdJH8ic+Q=;
+	b=gZj/vopJYGQftxPmYXHbj9Kd4AxmvmBdJ/TajrziCPLXFZEGaSqjzszn7AnZ/r7FP2
+	JRkih7mRsRon4NqWO93A9Jrjv/yOm4VO8CLhAW+MjbRNbXfGe4RlGRkCl38MUxprBhiE
+	4S+vYb4vollsWpEQVCyqEh5mw1zokKzW1Xdng=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=w8C/D4atoI2gA3cUG1pqivDlnaGmgibnYIV5DdKWnoc=;
-	b=ZS3dyDmZGyWLA5hyfXXwjiLflYmK+6cXWT7JoJV/9j8VsKLpKnZnfVdAHJG7isWtQZ
-	pFUoxAaHhAhqy5ZMy02SP8HQgXin0WSksPsnT/7xYPbog8tDsC+FLX/elWp3HEQRbYP7
-	svXhI2vFNd8PU8ac1o35e48f/7JtR7nXdJQ4hPyZ+ykLUYVjbNuCo9kpUH19bzbPi/mG
-	8UTnWq52BJfm5L9Kb6Kup81oCbX3W5Ynk+bzxIZb1LXSCEoywiyF1Fnoru3DVVSNYqOZ
-	X4OJ2Ul0q9z6MMT/r9QGNl+8DjO069VYMKRIjv4ie4Hp8rL9dNcB9FoyUwEbOsquN/zD
-	Rx2Q==
-X-Gm-Message-State: AElRT7FcBVLaxA9NxMpVHvjnl19TMboOtdmMge9QZltMtbHbeWgEHxDs
-	3QnEX/CjstvyZ7ZhsgnX3w60k6RLkLC0i11JoVYAWA==
-X-Received: by 2002:a9d:4598:: with SMTP id
-	x24-v6mr7740512ote.126.1521477058117; 
-	Mon, 19 Mar 2018 09:30:58 -0700 (PDT)
+	bh=bz5OJkfVcEa8ZuBkkDwMutnYpysAWPvFEuEdJH8ic+Q=;
+	b=iS8GSkrXtnn64gA54jIeyE+xi/yVhj67en/oykmAR36hUtOGltW+k4FRV6emPYC7fo
+	D7Gg4jm9wBLNj628dbQ/2YjdVtVaGJAFTYXsBkRctCO+UsR0Va3RfqV16vBKB0zjucCy
+	4UBrAc3V6Q+xlJLWr6KGBTS/Vwe6mQgyIhdp5OqkT3eS+pqNj3tp4DCLtunDqPPp+YaS
+	BF9ARUhFzckZm10qeE9bjG4S+0XtKKna+/sIts1iIYTnG/I3SNbdBe7u8HyYOEsylByz
+	TymMC7P6kgikpNkrHOof9JFpUpxQsFA4dNapVXeLBsIrh0IkBiI39C91Twc/WtlD4Wln
+	en4w==
+X-Gm-Message-State: AElRT7FjTV0E/3m+n9l+Ag/E0SOW7udzEbJDEbB8V5k9SmsRQcjLYZJu
+	9RJtU1TF2EMDiKG0UmCDRP0bNEWoCq+MjC139aPS4j+P
+X-Received: by 10.202.1.199 with SMTP id 190mr7837944oib.80.1521477302262;
+	Mon, 19 Mar 2018 09:35:02 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Mon, 19 Mar 2018 09:30:37
+Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Mon, 19 Mar 2018 09:34:41
 	-0700 (PDT)
-In-Reply-To: <1521470177-14760-3-git-send-email-zhaoshenglong@huawei.com>
-References: <1521470177-14760-1-git-send-email-zhaoshenglong@huawei.com>
-	<1521470177-14760-3-git-send-email-zhaoshenglong@huawei.com>
+In-Reply-To: <20180319161556.16446-3-peter.maydell@linaro.org>
+References: <20180319161556.16446-1-peter.maydell@linaro.org>
+	<20180319161556.16446-3-peter.maydell@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 19 Mar 2018 16:30:37 +0000
-Message-ID: <CAFEAcA8677=cuetsXuobJDWDEw1HKNZiecXAC8+PCzPQ8jP7TA@mail.gmail.com>
-To: Shannon Zhao <zhaoshenglong@huawei.com>
+Date: Mon, 19 Mar 2018 16:34:41 +0000
+Message-ID: <CAFEAcA8=Akk685sVg8HsV3a014GK=THkGbDixoKFQkh_pss4PA@mail.gmail.com>
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::244
-Subject: Re: [Qemu-arm] [PATCH 2/2] arm_gicv3_kvm: kvm_dist_get/put: skip
- the registers banked by GICR
+X-Received-From: 2607:f8b0:4003:c06::243
+Subject: Re: [Qemu-arm] [PATCH for-2.12 2/2] hw/sd/bcm2835_sdhost: Don't
+ raise spurious interrupts
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,100 +105,68 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: "patches@linaro.org" <patches@linaro.org>,
+	Gerd Hoffmann <kraxel@redhat.com>, Pekka Enberg <penberg@iki.fi>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: g/HqYAkPcXJz
+X-TUID: FYN8fcb9pipt
 
-On 19 March 2018 at 14:36, Shannon Zhao <zhaoshenglong@huawei.com> wrote:
-> It should skip to getting/putting the registers banked by GICR so that
-> it could get/put the correct ones.
+On 19 March 2018 at 16:15, Peter Maydell <peter.maydell@linaro.org> wrote:
+> The Linux bcm2835_sdhost driver doesn't work on QEMU, because our
+> model raises spurious data interrupts.  Our function
+> bcm2835_sdhost_fifo_run() will flag an interrupt any time it is
+> called with s->datacnt == 0, even if the host hasn't actually issued
+> a data read or write command yet.  This means that the driver gets a
+> spurious data interrupt as soon as it enables IRQs and then does
+> something else that causes us to call the fifo_run routine, like
+> writing to SDHCFG, and before it does the write to SDCMD to issue the
+> read.  The driver's IRQ handler then spins forever complaining that
+> there's no data and the SD controller isn't in a state where there's
+> going to be any data:
 >
-> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
-
-Can you explain what the consequences of the current code are
-(ie is there a bug here that we are fixing?), and why the changes
-are correct, please?
-
-
+> [   41.040738] sdhost-bcm2835 3f202000.mmc: fsm 1, hsts 00000000
+> [   41.042059] sdhost-bcm2835 3f202000.mmc: fsm 1, hsts 00000000
+> (continues forever).
+>
+> Move the interrupt flag setting to more plausible places:
+>  * for BUSY, raise this as soon as a BUSYWAIT command has executed
+>  * for DATA, raise this when the FIFO has any space free (for a write)
+>    or any data in it (for a read)
+>  * for BLOCK, raise this when the data count is 0 and we've
+>    actually done some reading or writing
+>
+> This is pure guesswork since the documentation for this hardware is
+> not public, but it is sufficient to get the Linux bcm2835_sdhost
+> driver to work.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/intc/arm_gicv3_kvm.c | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
+>  hw/sd/bcm2835_sdhost.c | 43 +++++++++++++++++++++++--------------------
+>  1 file changed, 23 insertions(+), 20 deletions(-)
 >
-> diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-> index 7000716..e967e4f 100644
-> --- a/hw/intc/arm_gicv3_kvm.c
-> +++ b/hw/intc/arm_gicv3_kvm.c
-> @@ -136,6 +136,8 @@ static void kvm_dist_get_priority(GICv3State *s, uint32_t offset, uint8_t *bmp)
->      int irq;
+> diff --git a/hw/sd/bcm2835_sdhost.c b/hw/sd/bcm2835_sdhost.c
+> index 79f3c5ceeb..0fd0853fa3 100644
+> --- a/hw/sd/bcm2835_sdhost.c
+> +++ b/hw/sd/bcm2835_sdhost.c
+> @@ -137,6 +137,9 @@ static void bcm2835_sdhost_send_command(BCM2835SDHostState *s)
+>          }
+>  #undef RWORD
+>      }
+> +    if ((s->cmd & SDCMD_BUSYWAIT) && (s->config & SDHCFG_BUSY_IRPT_EN)) {
+> +        s->status |= SDHSTS_BUSY_IRPT;
+> +    }
+>      return;
 >
->      field = (uint32_t *)bmp;
-> +    /* The first 8 GICD_IPRIORITYR should skip. */
+>  error:
 
-It would be helpful to explain why we can skip the first 8 registers;
-similarly below.
+Oops, I had a comment here that should go above this if() that I failed
+to refresh into the patch before sending it:
 
-(I suspect the answer here is "for the KVM GICv3, affinity routing is always
-enabled, and the first 8 GICD_IPRIORITYR<n> registers are always RAZ/WI,
-so we don't need to sync them", for instance.)
-
-> +    offset += (8 * sizeof(uint32_t));
->      for_each_dist_irq_reg(irq, s->num_irq, 8) {
->          kvm_gicd_access(s, offset, &reg, false);
->          *field = reg;
-> @@ -150,6 +152,8 @@ static void kvm_dist_put_priority(GICv3State *s, uint32_t offset, uint8_t *bmp)
->      int irq;
->
->      field = (uint32_t *)bmp;
-> +    /* The first 8 GICD_IPRIORITYR should skip. */
-> +    offset += (8 * sizeof(uint32_t));
->      for_each_dist_irq_reg(irq, s->num_irq, 8) {
->          reg = *field;
->          kvm_gicd_access(s, offset, &reg, true);
-> @@ -164,6 +168,8 @@ static void kvm_dist_get_edge_trigger(GICv3State *s, uint32_t offset,
->      uint32_t reg;
->      int irq;
->
-> +    /* The first 2 GICD_ICFGR should skip. */
-> +    offset += (2 * sizeof(uint32_t));
->      for_each_dist_irq_reg(irq, s->num_irq, 2) {
->          kvm_gicd_access(s, offset, &reg, false);
->          reg = half_unshuffle32(reg >> 1);
-> @@ -181,6 +187,8 @@ static void kvm_dist_put_edge_trigger(GICv3State *s, uint32_t offset,
->      uint32_t reg;
->      int irq;
->
-> +    /* The first 2 GICD_ICFGR should skip. */
-> +    offset += (2 * sizeof(uint32_t));
->      for_each_dist_irq_reg(irq, s->num_irq, 2) {
->          reg = *gic_bmp_ptr32(bmp, irq);
->          if (irq % 32 != 0) {
-> @@ -222,6 +230,8 @@ static void kvm_dist_getbmp(GICv3State *s, uint32_t offset, uint32_t *bmp)
->      uint32_t reg;
->      int irq;
->
-> +    /* The first 1 GICD_XXXX should skip. */
-> +    offset += (1 * sizeof(uint32_t));
->      for_each_dist_irq_reg(irq, s->num_irq, 1) {
->          kvm_gicd_access(s, offset, &reg, false);
->          *gic_bmp_ptr32(bmp, irq) = reg;
-> @@ -236,6 +246,10 @@ static void kvm_dist_putbmp(GICv3State *s, uint32_t offset,
->      int irq;
->
->      clroffset_index = clroffset;
-> +    /* The first 1 GICD_XXXX should skip. */
-
-This looks like placeholder text that hasn't been filled in ?
-
-> +    offset += (1 * sizeof(uint32_t));
-> +    if (clroffset != 0)
-> +        clroffset_index += (1 * sizeof(uint32_t));
->      for_each_dist_irq_reg(irq, s->num_irq, 1) {
->          /* If this bitmap is a set/clear register pair, first write to the
->           * clear-reg to clear all bits before using the set-reg to write
-> --
-> 2.0.4
++    /* We never really delay commands, so if this was a 'busywait' command
++     * then we've completed it now and can raise the interrupt.
++     */
 
 thanks
 -- PMM

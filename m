@@ -1,165 +1,187 @@
-Received: by 10.28.71.27 with SMTP id u27csp4931948wma;
-        Tue, 27 Feb 2018 07:14:51 -0800 (PST)
-X-Google-Smtp-Source: AG47ELuxAuMp7oLEtW79PopFv9llF4C2KokABONlAe/YLmoYHsRSR3MTukxPdDVobyLaTicQUJDp
-X-Received: by 10.157.83.16 with SMTP id g16mr10049933oth.270.1519744491752;
-        Tue, 27 Feb 2018 07:14:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519744491; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp3505100wmb;
+        Tue, 20 Mar 2018 00:28:00 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELuKJMc0l8fQsqRsV2qu1CV6mUHuDATNhb7sURL0NA/Zq2Gr6G0illtt90FjZdgVmGH6Yu74
+X-Received: by 10.55.23.101 with SMTP id i98mr22380788qkh.91.1521530880708;
+        Tue, 20 Mar 2018 00:28:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521530880; cv=none;
         d=google.com; s=arc-20160816;
-        b=j+n77L5OXx4EZ6zis8sRp4624yhcIZSheg6VxM0pwwtCUYkFZ6+49gYvIumDRlWD+p
-         4Mdlfai1pkeVJ3RCLVpwwsA8IeE47ox5Yn/ZKZr9awDlYb6sc+KK8nIUQue6yuYayS1v
-         Al97Si5hXbPqM4xn10YIiWJ2/7GALapwNgk/hXjg+t5DoeLlfwCyprLQd3x1r22XhaPD
-         m7KUmqRaoxXtqjv4kpngPVgP5461bJQlOeIyTAYmREmfHSrD8HoxSnVDaCqSqdrHQ+p0
-         JSVi0pqzSt6dTIWC2NNg9A3S0JS+wrvae0Xk+fciYBaBnYMDjbygsmeR6c3CMRyDmC3k
-         gvpA==
+        b=f/zyJZINBukUm3+1OxIzmcOS79bX2kbXhYfwBQ+hikufOOJ4zHeYhgomodp7FpwYr2
+         rj24Ubwa5bKleHL6zM+IItYyzRBFL9evk+DMaS0pyOtGcI4gj55v+k3Bkx/FOrg6Wz67
+         AB/sQDWi7v0neWMJYB9c6YHOWmqpsTzOGR6NQY+C3W/xOcAeaALbJMjqJZiLJ8m3/6UG
+         5mTEMsBlK3XU3e7MNxJGEU00/5Oc7MLI4wDy2Ii/ks7kOrfzntVpvj3XW0FTVh3EtbpG
+         VuH+KZyEbosx+i76ZhNIZrVFbUTanDCjnJw+1rjMQ2Xc7HdfqjF6FkcZT+IYLb+oRaF0
+         79OQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=date:cc:to:from:resent-from:content-transfer-encoding:mime-version
-         :message-id:subject:reply-to:in-reply-to:arc-authentication-results;
-        bh=5f3rKexRA4o3mDkw1Okuf590B/4f1QUqH+oR0lhrckQ=;
-        b=DQAIlvqR6IMIsCpuTmnhWRRebaRjcfs3k2AVbjJbyv137Q+Lt3pK0b6ti55E9KcKNT
-         EUx9cJcaBpteOMjFZss0A3bgFen88qPPcyw0WZR8eByb7rjUyNiHs0mWX+KzZm9907Hu
-         6FzRJ2d3/RC70oOF79EAqnwHXJOiqzikeDHPwXd9nKLF+fzOa6KYD0lIX/5cpFvU3HWz
-         nQdXRA1uuiud3Id4Tw1VjDGEt3v5D9GuIKKcaN2gNwQXZ2pHGtSUhGMJ4HYB2FKcCeP8
-         Lix1aP2Lg4/LMMXbBjxX13iv6QvAvVW2/jTivTUXvQpzUri+9rmF+Kr5Si2/Qj0S28t3
-         ARPg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:mime-version:references
+         :in-reply-to:message-id:date:to:from:arc-authentication-results;
+        bh=NYVCd4NQtbCWZEXx3Jud+x1DgxI4uzGjqNfISLbfAWM=;
+        b=woVYqzkiZCPHOwI6XX0pg6PBBLqV5g/rFTCLGHQFnEZyao/8Yy434qVAImYmQPxB1A
+         JirEemN0zGyVX9u6TIWP+h/hnVxv9cnnm6koggrCxVm2MxrMgOE+mjaNJbOHU74vGJBS
+         AJfVxK0ArgdUIbI183dhEbqrGXAXF2vUqhoZRMailQ3mTEvGIA4piy18pBpDgfxRBFZQ
+         ScMBOEmYsBZfBGVTv6X9xd1cLaXxg9urJFRLdEuYtcT3SRpAGz9aSZrBTk4YQoGVpNmj
+         7ncrVdg4Z+/nGnQIZFxeFQhquz1Cvk0RhmxE8yQnQ1vqkZaf5TrBlzFiFRdxg8/ZRLmt
+         2FKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of no-reply@patchew.org designates 135.84.80.216 as permitted sender) smtp.mailfrom=no-reply@patchew.org
-Return-Path: <no-reply@patchew.org>
-Received: from sender-of-o51.zoho.com (sender-of-o51.zoho.com. [135.84.80.216])
-        by mx.google.com with ESMTPS id a2si3710464otj.509.2018.02.27.07.14.51
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Feb 2018 07:14:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of no-reply@patchew.org designates 135.84.80.216 as permitted sender) client-ip=135.84.80.216;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id w35si1347322qtb.316.2018.03.20.00.28.00
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 20 Mar 2018 00:28:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of no-reply@patchew.org designates 135.84.80.216 as permitted sender) smtp.mailfrom=no-reply@patchew.org
-Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by mx.zohomail.com
-	with SMTPS id 1519744487959739.0354930628221; Tue, 27 Feb 2018 07:14:47 -0800 (PST)
-In-Reply-To: <20180227143852.11175-1-alex.bennee@linaro.org>
-Reply-To: <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-devel] [PATCH v4 00/31] Add ARMv8.2 half-precision functions
-Message-ID: <151974448615.1194.10842979715913868163@bdbb90650ae5>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:46617 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eyBge-0001By-6l
+	for alex.bennee@linaro.org; Tue, 20 Mar 2018 03:28:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47855)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1eyBgU-0001BR-Ho
+	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 03:27:52 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1eyBgQ-0008Sl-Kg
+	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 03:27:50 -0400
+Received: from [45.249.212.35] (port=43374 helo=huawei.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <zhaoshenglong@huawei.com>)
+	id 1eyBgQ-0008Pa-9H; Tue, 20 Mar 2018 03:27:46 -0400
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.58])
+	by Forcepoint Email with ESMTP id 52051C37BED46;
+	Tue, 20 Mar 2018 15:27:41 +0800 (CST)
+Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
+	DGGEMS414-HUB.china.huawei.com (10.3.19.214) with Microsoft SMTP Server
+	id 14.3.361.1; Tue, 20 Mar 2018 15:27:36 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+To: <qemu-arm@nongnu.org>
+Date: Tue, 20 Mar 2018 15:26:49 +0800
+Message-ID: <1521530809-11780-3-git-send-email-zhaoshenglong@huawei.com>
+X-Mailer: git-send-email 1.9.0.msysgit.0
+In-Reply-To: <1521530809-11780-1-git-send-email-zhaoshenglong@huawei.com>
+References: <1521530809-11780-1-git-send-email-zhaoshenglong@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: alex.bennee@linaro.org
-Cc: famz@redhat.com, qemu-arm@nongnu.org, alex.bennee@linaro.org, richard.henderson@linaro.org, qemu-devel@nongnu.org
-Date: Tue, 27 Feb 2018 07:14:47 -0800 (PST)
-X-ZohoMailClient: External
-X-TUID: anmIA9JkZAps
+Content-Type: text/plain
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 45.249.212.35
+Subject: [Qemu-arm] [PATCH v2 2/2] arm_gicv3_kvm: kvm_dist_get/put: skip the
+ registers banked by GICR
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, eric.auger@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6i0D4lxc5Lrr
 
-SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
-LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1l
-c3NhZ2UtaWQ6IDIwMTgwMjI3MTQzODUyLjExMTc1LTEtYWxleC5iZW5uZWVAbGluYXJvLm9yZwpT
-dWJqZWN0OiBbUWVtdS1kZXZlbF0gW1BBVENIIHY0IDAwLzMxXSBBZGQgQVJNdjguMiBoYWxmLXBy
-ZWNpc2lvbiBmdW5jdGlvbnMKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gK
-CkJBU0U9YmFzZQpuPTEKdG90YWw9JChnaXQgbG9nIC0tb25lbGluZSAkQkFTRS4uIHwgd2MgLWwp
-CmZhaWxlZD0wCgpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBjb25m
-aWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5hbGdv
-cml0aG0gaGlzdG9ncmFtCgpjb21taXRzPSIkKGdpdCBsb2cgLS1mb3JtYXQ9JUggLS1yZXZlcnNl
-ICRCQVNFLi4pIgpmb3IgYyBpbiAkY29tbWl0czsgZG8KICAgIGVjaG8gIkNoZWNraW5nIFBBVENI
-ICRuLyR0b3RhbDogJChnaXQgbG9nIC1uIDEgLS1mb3JtYXQ9JXMgJGMpLi4uIgogICAgaWYgISBn
-aXQgc2hvdyAkYyAtLWZvcm1hdD1lbWFpbCB8IC4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFp
-bGJhY2sgLTsgdGhlbgogICAgICAgIGZhaWxlZD0xCiAgICAgICAgZWNobwogICAgZmkKICAgIG49
-JCgobisxKSkKZG9uZQoKZXhpdCAkZmFpbGVkCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpVcGRh
-dGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0CkZyb20gaHR0cHM6
-Ly9naXRodWIuY29tL3BhdGNoZXctcHJvamVjdC9xZW11CiB0IFt0YWcgdXBkYXRlXSAgICAgICAg
-ICAgIHBhdGNoZXcvMTUxOTMwMzM3Ni05Mjg3NS0xLWdpdC1zZW5kLWVtYWlsLWltYW1tZWRvQHJl
-ZGhhdC5jb20gLT4gcGF0Y2hldy8xNTE5MzAzMzc2LTkyODc1LTEtZ2l0LXNlbmQtZW1haWwtaW1h
-bW1lZG9AcmVkaGF0LmNvbQogKiBbbmV3IHRhZ10gICAgICAgICAgICAgICBwYXRjaGV3LzIwMTgw
-MjI3MTQzODUyLjExMTc1LTEtYWxleC5iZW5uZWVAbGluYXJvLm9yZyAtPiBwYXRjaGV3LzIwMTgw
-MjI3MTQzODUyLjExMTc1LTEtYWxleC5iZW5uZWVAbGluYXJvLm9yZwpTd2l0Y2hlZCB0byBhIG5l
-dyBicmFuY2ggJ3Rlc3QnCjc2MGQyM2YzNDQgYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBhbGwgc2lu
-Z2xlIG9wIEZQMTYgdG8gaGFuZGxlX2ZwXzFzcmNfaGFsZgozZWEyNDdlMTIzIGFybS90cmFuc2xh
-dGUtYTY0OiBpbXBsZW1lbnQgc2ltZF9zY2FsYXJfdGhyZWVfcmVnX3NhbWVfZnAxNgozN2U1MmUy
-NWM4IGFybS90cmFuc2xhdGUtYTY0OiBhZGQgYWxsIEZQMTYgb3BzIGluIHNpbWRfc2NhbGFyX3Bh
-aXJ3aXNlCjYxMGEyZGVkODcgYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBGUDE2IEZNT1YgdG8gc2lt
-ZF9tb2RfaW1tCjU0MjRiMjJhNjQgYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBGUDE2IEZSU1FSVEUg
-dG8gc2ltZF90d29fcmVnX21pc2NfZnAxNgozZTI0NzBhMWYyIGFybS9oZWxwZXIuYzogcmUtZmFj
-dG9yIHJzcXJ0ZSBhbmQgYWRkIHJzcXJ0ZV9mMTYKZjY1ZGM5YzIyMSBhcm0vdHJhbnNsYXRlLWE2
-NDogYWRkIEZQMTYgRlNRUlQgdG8gc2ltZF90d29fcmVnX21pc2NfZnAxNgowMmE4NzZlOGIyIGFy
-bS90cmFuc2xhdGUtYTY0OiBhZGQgRlAxNiBGUkNQWCB0byBzaW1kX3R3b19yZWdfbWlzY19mcDE2
-CjEwYzI3NjkyODEgYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBGUDE2IEZSRUNQRQo5OWFiOGFjYzZi
-IGFybS9oZWxwZXIuYzogcmUtZmFjdG9yIHJlY3BlIGFuZCBhZGQgcmVjZXBlX2YxNgoxNmI2OGMw
-MzU1IGFybS90cmFuc2xhdGUtYTY0OiBhZGQgRlAxNiBGTkVHL0ZBQlMgdG8gc2ltZF90d29fcmVn
-X21pc2NfZnAxNgo3MTljY2M5YzJiIGFybS90cmFuc2xhdGUtYTY0OiBhZGQgRlAxNiBTQ1ZURi9V
-Q1ZGVCB0byBzaW1kX3R3b19yZWdfbWlzY19mcDE2CjQzNTZkNzQ4NmUgYXJtL3RyYW5zbGF0ZS1h
-NjQ6IGFkZCBGUDE2IEZDTXh4ICh6ZXJvKSB0byBzaW1kX3R3b19yZWdfbWlzY19mcDE2CmRiYmZi
-NWYzZGIgYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBGQ1ZUeHggdG8gc2ltZF90d29fcmVnX21pc2Nf
-ZnAxNgozNDQzMWUzNzc5IGFybS90cmFuc2xhdGUtYTY0OiBhZGQgRlAxNiBGUFJJTlR4IHRvIHNp
-bWRfdHdvX3JlZ19taXNjX2ZwMTYKOWZiOTViYjM1OSBhcm0vdHJhbnNsYXRlLWE2NDogaW5pdGlh
-bCBkZWNvZGUgZm9yIHNpbWRfdHdvX3JlZ19taXNjX2ZwMTYKZmY4MWI1YTVkZiBhcm0vdHJhbnNs
-YXRlLWE2NDogYWRkIEZQMTYgeDIgb3BzIGZvciBzaW1kX2luZGV4ZWQKZWEwMGZhOGViMCBhcm0v
-dHJhbnNsYXRlLWE2NDogYWRkIEZQMTYgRk1VTFgvTUxTL0ZNTEEgdG8gc2ltZF9pbmRleGVkCjg3
-ZjQxYWUwNTcgYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBGUDE2IHBhaXJ3aXNlIG9wcyBzaW1kX3Ro
-cmVlX3JlZ19zYW1lX2ZwMTYKZDQ3ODcxOTRkZSBhcm0vdHJhbnNsYXRlLWE2NDogYWRkIEZQMTYg
-RlJbRUNQL1NRUlRdUyB0byBzaW1kX3RocmVlX3JlZ19zYW1lX2ZwMTYKYWQ3YjY0MjQxNCBhcm0v
-dHJhbnNsYXRlLWE2NDogYWRkIEZQMTYgRk1VTEEvWC9TIHRvIHNpbWRfdGhyZWVfcmVnX3NhbWVf
-ZnAxNgpjZDUxYWI3ODdjIGFybS90cmFuc2xhdGUtYTY0OiBhZGQgRlAxNiBGW0FdQ1tFUS9HRS9H
-VF0gdG8gc2ltZF90aHJlZV9yZWdfc2FtZV9mcDE2CmU3MGQ4YzJhNmMgYXJtL3RyYW5zbGF0ZS1h
-NjQ6IGFkZCBGUDE2IEZBREQvRkFCRC9GU1VCL0ZNVUwvRkRJViB0byBzaW1kX3RocmVlX3JlZ19z
-YW1lX2ZwMTYKZTU5ZGM5NWRjMSBhcm0vdHJhbnNsYXRlLWE2NDogaW5pdGlhbCBkZWNvZGUgZm9y
-IHNpbWRfdGhyZWVfcmVnX3NhbWVfZnAxNgo4N2VjZTRlMGQxIGFybS90cmFuc2xhdGUtYTY0OiBo
-YW5kbGVfM3NhbWVfNjQgY29tbWVudCBmaXgKYmY1M2U3MmMwNiBhcm0vdHJhbnNsYXRlLWE2NDog
-aW1wbGVtZW50IGhhbGYtcHJlY2lzaW9uIEYoTUlOfE1BWCkoVnxOTVYpCjY1OTQ5ZmYyNWUgdGFy
-Z2V0L2FybS9oZWxwZXI6IHBhc3MgZXhwbGljaXQgZnBzdCB0byBzZXRfcm1vZGUKNGEyYjQ4ZmIz
-MiB0YXJnZXQvYXJtL2NwdS5oOiBhZGQgYWRkaXRpb25hbCBmbG9hdF9zdGF0dXMgZmxhZ3MKY2E0
-ZjMzYmE4MSB0YXJnZXQvYXJtL2NwdS5oOiB1cGRhdGUgY29tbWVudCBmb3IgaGFsZi1wcmVjaXNp
-b24gdmFsdWVzCmU4YmUyNjFiZDcgdGFyZ2V0L2FybS9jcHU2NDogaW50cm9kdWNlIEFSTV9WOF9G
-UDE2IGZlYXR1cmUgYml0CmUxNWM1YjJiMDQgaW5jbHVkZS9leGVjL2hlbHBlci1oZWFkLmg6IHN1
-cHBvcnQgZjE2IGluIGhlbHBlciBjYWxscwoKPT09IE9VVFBVVCBCRUdJTiA9PT0KQ2hlY2tpbmcg
-UEFUQ0ggMS8zMTogaW5jbHVkZS9leGVjL2hlbHBlci1oZWFkLmg6IHN1cHBvcnQgZjE2IGluIGhl
-bHBlciBjYWxscy4uLgpDaGVja2luZyBQQVRDSCAyLzMxOiB0YXJnZXQvYXJtL2NwdTY0OiBpbnRy
-b2R1Y2UgQVJNX1Y4X0ZQMTYgZmVhdHVyZSBiaXQuLi4KQ2hlY2tpbmcgUEFUQ0ggMy8zMTogdGFy
-Z2V0L2FybS9jcHUuaDogdXBkYXRlIGNvbW1lbnQgZm9yIGhhbGYtcHJlY2lzaW9uIHZhbHVlcy4u
-LgpDaGVja2luZyBQQVRDSCA0LzMxOiB0YXJnZXQvYXJtL2NwdS5oOiBhZGQgYWRkaXRpb25hbCBm
-bG9hdF9zdGF0dXMgZmxhZ3MuLi4KQ2hlY2tpbmcgUEFUQ0ggNS8zMTogdGFyZ2V0L2FybS9oZWxw
-ZXI6IHBhc3MgZXhwbGljaXQgZnBzdCB0byBzZXRfcm1vZGUuLi4KQ2hlY2tpbmcgUEFUQ0ggNi8z
-MTogYXJtL3RyYW5zbGF0ZS1hNjQ6IGltcGxlbWVudCBoYWxmLXByZWNpc2lvbiBGKE1JTnxNQVgp
-KFZ8Tk1WKS4uLgpDaGVja2luZyBQQVRDSCA3LzMxOiBhcm0vdHJhbnNsYXRlLWE2NDogaGFuZGxl
-XzNzYW1lXzY0IGNvbW1lbnQgZml4Li4uCkNoZWNraW5nIFBBVENIIDgvMzE6IGFybS90cmFuc2xh
-dGUtYTY0OiBpbml0aWFsIGRlY29kZSBmb3Igc2ltZF90aHJlZV9yZWdfc2FtZV9mcDE2Li4uCkNo
-ZWNraW5nIFBBVENIIDkvMzE6IGFybS90cmFuc2xhdGUtYTY0OiBhZGQgRlAxNiBGQUREL0ZBQkQv
-RlNVQi9GTVVML0ZESVYgdG8gc2ltZF90aHJlZV9yZWdfc2FtZV9mcDE2Li4uCkNoZWNraW5nIFBB
-VENIIDEwLzMxOiBhcm0vdHJhbnNsYXRlLWE2NDogYWRkIEZQMTYgRltBXUNbRVEvR0UvR1RdIHRv
-IHNpbWRfdGhyZWVfcmVnX3NhbWVfZnAxNi4uLgpDaGVja2luZyBQQVRDSCAxMS8zMTogYXJtL3Ry
-YW5zbGF0ZS1hNjQ6IGFkZCBGUDE2IEZNVUxBL1gvUyB0byBzaW1kX3RocmVlX3JlZ19zYW1lX2Zw
-MTYuLi4KQ2hlY2tpbmcgUEFUQ0ggMTIvMzE6IGFybS90cmFuc2xhdGUtYTY0OiBhZGQgRlAxNiBG
-UltFQ1AvU1FSVF1TIHRvIHNpbWRfdGhyZWVfcmVnX3NhbWVfZnAxNi4uLgpDaGVja2luZyBQQVRD
-SCAxMy8zMTogYXJtL3RyYW5zbGF0ZS1hNjQ6IGFkZCBGUDE2IHBhaXJ3aXNlIG9wcyBzaW1kX3Ro
-cmVlX3JlZ19zYW1lX2ZwMTYuLi4KQ2hlY2tpbmcgUEFUQ0ggMTQvMzE6IGFybS90cmFuc2xhdGUt
-YTY0OiBhZGQgRlAxNiBGTVVMWC9NTFMvRk1MQSB0byBzaW1kX2luZGV4ZWQuLi4KQ2hlY2tpbmcg
-UEFUQ0ggMTUvMzE6IGFybS90cmFuc2xhdGUtYTY0OiBhZGQgRlAxNiB4MiBvcHMgZm9yIHNpbWRf
-aW5kZXhlZC4uLgpDaGVja2luZyBQQVRDSCAxNi8zMTogYXJtL3RyYW5zbGF0ZS1hNjQ6IGluaXRp
-YWwgZGVjb2RlIGZvciBzaW1kX3R3b19yZWdfbWlzY19mcDE2Li4uCkNoZWNraW5nIFBBVENIIDE3
-LzMxOiBhcm0vdHJhbnNsYXRlLWE2NDogYWRkIEZQMTYgRlBSSU5UeCB0byBzaW1kX3R3b19yZWdf
-bWlzY19mcDE2Li4uCkNoZWNraW5nIFBBVENIIDE4LzMxOiBhcm0vdHJhbnNsYXRlLWE2NDogYWRk
-IEZDVlR4eCB0byBzaW1kX3R3b19yZWdfbWlzY19mcDE2Li4uCkNoZWNraW5nIFBBVENIIDE5LzMx
-OiBhcm0vdHJhbnNsYXRlLWE2NDogYWRkIEZQMTYgRkNNeHggKHplcm8pIHRvIHNpbWRfdHdvX3Jl
-Z19taXNjX2ZwMTYuLi4KQ2hlY2tpbmcgUEFUQ0ggMjAvMzE6IGFybS90cmFuc2xhdGUtYTY0OiBh
-ZGQgRlAxNiBTQ1ZURi9VQ1ZGVCB0byBzaW1kX3R3b19yZWdfbWlzY19mcDE2Li4uCkVSUk9SOiBz
-cGFjZSBwcm9oaWJpdGVkIGJlZm9yZSB0aGF0IGNsb3NlIHBhcmVudGhlc2lzICcpJwojMjY6IEZJ
-TEU6IHRhcmdldC9hcm0vaGVscGVyLmM6MTEzMDU6CitGTE9BVF9DT05WUyhzaSwgaCwgMTYsICkK
-CnRvdGFsOiAxIGVycm9ycywgMCB3YXJuaW5ncywgMjA4IGxpbmVzIGNoZWNrZWQKCllvdXIgcGF0
-Y2ggaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVy
-cm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBz
-ZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KCkNoZWNraW5nIFBBVENIIDIxLzMxOiBhcm0v
-dHJhbnNsYXRlLWE2NDogYWRkIEZQMTYgRk5FRy9GQUJTIHRvIHNpbWRfdHdvX3JlZ19taXNjX2Zw
-MTYuLi4KQ2hlY2tpbmcgUEFUQ0ggMjIvMzE6IGFybS9oZWxwZXIuYzogcmUtZmFjdG9yIHJlY3Bl
-IGFuZCBhZGQgcmVjZXBlX2YxNi4uLgpDaGVja2luZyBQQVRDSCAyMy8zMTogYXJtL3RyYW5zbGF0
-ZS1hNjQ6IGFkZCBGUDE2IEZSRUNQRS4uLgpDaGVja2luZyBQQVRDSCAyNC8zMTogYXJtL3RyYW5z
-bGF0ZS1hNjQ6IGFkZCBGUDE2IEZSQ1BYIHRvIHNpbWRfdHdvX3JlZ19taXNjX2ZwMTYuLi4KQ2hl
-Y2tpbmcgUEFUQ0ggMjUvMzE6IGFybS90cmFuc2xhdGUtYTY0OiBhZGQgRlAxNiBGU1FSVCB0byBz
-aW1kX3R3b19yZWdfbWlzY19mcDE2Li4uCkNoZWNraW5nIFBBVENIIDI2LzMxOiBhcm0vaGVscGVy
-LmM6IHJlLWZhY3RvciByc3FydGUgYW5kIGFkZCByc3FydGVfZjE2Li4uCkNoZWNraW5nIFBBVENI
-IDI3LzMxOiBhcm0vdHJhbnNsYXRlLWE2NDogYWRkIEZQMTYgRlJTUVJURSB0byBzaW1kX3R3b19y
-ZWdfbWlzY19mcDE2Li4uCkNoZWNraW5nIFBBVENIIDI4LzMxOiBhcm0vdHJhbnNsYXRlLWE2NDog
-YWRkIEZQMTYgRk1PViB0byBzaW1kX21vZF9pbW0uLi4KQ2hlY2tpbmcgUEFUQ0ggMjkvMzE6IGFy
-bS90cmFuc2xhdGUtYTY0OiBhZGQgYWxsIEZQMTYgb3BzIGluIHNpbWRfc2NhbGFyX3BhaXJ3aXNl
-Li4uCkNoZWNraW5nIFBBVENIIDMwLzMxOiBhcm0vdHJhbnNsYXRlLWE2NDogaW1wbGVtZW50IHNp
-bWRfc2NhbGFyX3RocmVlX3JlZ19zYW1lX2ZwMTYuLi4KQ2hlY2tpbmcgUEFUQ0ggMzEvMzE6IGFy
-bS90cmFuc2xhdGUtYTY0OiBhZGQgYWxsIHNpbmdsZSBvcCBGUDE2IHRvIGhhbmRsZV9mcF8xc3Jj
-X2hhbGYuLi4KPT09IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29k
-ZTogMQoKCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRw
-Oi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRl
-dmVsQGZyZWVsaXN0cy5vcmc=
+While we skip the GIC_INTERNAL irqs, we don't change the register offset
+accordingly. This will overlap the GICR registers value and leave the
+last GIC_INTERNAL irq's registers out of update.
+
+Fix this by skipping the registers banked by GICR.
+
+Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+---
+ hw/intc/arm_gicv3_kvm.c | 38 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 38 insertions(+)
+
+diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
+index 3536795..d423cba 100644
+--- a/hw/intc/arm_gicv3_kvm.c
++++ b/hw/intc/arm_gicv3_kvm.c
+@@ -136,6 +136,12 @@ static void kvm_dist_get_priority(GICv3State *s, uint32_t offset, uint8_t *bmp)
+     int irq;
+ 
+     field = (uint32_t *)bmp;
++    /* For the KVM GICv3, affinity routing is always enabled, and the first 8
++     * GICD_IPRIORITYR<n> registers are always RAZ/WI. The corresponding
++     * functionality is replaced by GICR_IPRIORITYR<n>. So it doesn't need to
++     * sync them.
++     */
++    offset += (8 * sizeof(uint32_t));
+     for_each_dist_irq_reg(irq, s->num_irq, 8) {
+         kvm_gicd_access(s, offset, &reg, false);
+         *field = reg;
+@@ -150,6 +156,12 @@ static void kvm_dist_put_priority(GICv3State *s, uint32_t offset, uint8_t *bmp)
+     int irq;
+ 
+     field = (uint32_t *)bmp;
++    /* For the KVM GICv3, affinity routing is always enabled, and the first 8
++     * GICD_IPRIORITYR<n> registers are always RAZ/WI. The corresponding
++     * functionality is replaced by GICR_IPRIORITYR<n>. So it doesn't need to
++     * sync them.
++     */
++    offset += (8 * sizeof(uint32_t));
+     for_each_dist_irq_reg(irq, s->num_irq, 8) {
+         reg = *field;
+         kvm_gicd_access(s, offset, &reg, true);
+@@ -164,6 +176,12 @@ static void kvm_dist_get_edge_trigger(GICv3State *s, uint32_t offset,
+     uint32_t reg;
+     int irq;
+ 
++    /* For the KVM GICv3, affinity routing is always enabled, and the first 2
++     * GICD_ICFGR<n> registers are always RAZ/WI. The corresponding
++     * functionality is replaced by GICR_ICFGR<n>. So it doesn't need to sync
++     * them.
++     */
++    offset += (2 * sizeof(uint32_t));
+     for_each_dist_irq_reg(irq, s->num_irq, 2) {
+         kvm_gicd_access(s, offset, &reg, false);
+         reg = half_unshuffle32(reg >> 1);
+@@ -181,6 +199,12 @@ static void kvm_dist_put_edge_trigger(GICv3State *s, uint32_t offset,
+     uint32_t reg;
+     int irq;
+ 
++    /* For the KVM GICv3, affinity routing is always enabled, and the first 2
++     * GICD_ICFGR<n> registers are always RAZ/WI. The corresponding
++     * functionality is replaced by GICR_ICFGR<n>. So it doesn't need to sync
++     * them.
++     */
++    offset += (2 * sizeof(uint32_t));
+     for_each_dist_irq_reg(irq, s->num_irq, 2) {
+         reg = *gic_bmp_ptr32(bmp, irq);
+         if (irq % 32 != 0) {
+@@ -222,6 +246,12 @@ static void kvm_dist_getbmp(GICv3State *s, uint32_t offset, uint32_t *bmp)
+     uint32_t reg;
+     int irq;
+ 
++    /* For the KVM GICv3, affinity routing is always enabled, and the
++     * GICD_IGROUPR0/GICD_ISENABLER0/GICD_ISPENDR0/GICD_ISACTIVER0 registers
++     * are always RAZ/WI. The corresponding functionality is replaced by the
++     * GICR registers. So it doesn't need to sync them.
++     */
++    offset += (1 * sizeof(uint32_t));
+     for_each_dist_irq_reg(irq, s->num_irq, 1) {
+         kvm_gicd_access(s, offset, &reg, false);
+         *gic_bmp_ptr32(bmp, irq) = reg;
+@@ -235,6 +265,14 @@ static void kvm_dist_putbmp(GICv3State *s, uint32_t offset,
+     uint32_t reg;
+     int irq;
+ 
++    /* For the KVM GICv3, affinity routing is always enabled, and the
++     * GICD_IGROUPR0/GICD_ISENABLER0/GICD_ISPENDR0/GICD_ISACTIVER0 registers
++     * are always RAZ/WI. The corresponding functionality is replaced by the
++     * GICR registers. So it doesn't need to sync them.
++     */
++    offset += (1 * sizeof(uint32_t));
++    if (clroffset != 0)
++        clroffset += (1 * sizeof(uint32_t));
+     for_each_dist_irq_reg(irq, s->num_irq, 1) {
+         /* If this bitmap is a set/clear register pair, first write to the
+          * clear-reg to clear all bits before using the set-reg to write
+-- 
+2.0.4
+
+

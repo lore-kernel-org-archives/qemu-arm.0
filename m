@@ -1,96 +1,72 @@
-Received: by 10.28.71.155 with SMTP id m27csp1566547wmi;
-        Thu, 29 Mar 2018 04:18:52 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4/PLJZ9tB60tdEAO/BfXQCQVH9pH5uSMsYU3RODOIrRIjyEL9dvGxQGpnas849mHASzV4Us
-X-Received: by 10.200.54.109 with SMTP id n42mr10308939qtb.271.1522322332552;
-        Thu, 29 Mar 2018 04:18:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1522322332; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp3848966wmb;
+        Tue, 20 Mar 2018 06:41:44 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELt5+rPj6FfhvirqkAnRMpVaPpawSz3RHlLN3jkclGagfr7t7NWxuGUtRjWA9pw4qql7fHhJ
+X-Received: by 10.200.46.139 with SMTP id h11mr6738829qta.253.1521553304111;
+        Tue, 20 Mar 2018 06:41:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521553304; cv=none;
         d=google.com; s=arc-20160816;
-        b=ezBGKApVbYRxexAOP0ZYqoN9a1a7Zqnhp9UoLaJ955U1xuirk0qlcF43fX5QUfj25m
-         1TgArJy+Wdn5L00Yj7I9uPi+6C2iSZitzpa3sgu5rrDRw3CP8ElopNta7VTZFO/kksg5
-         xvHpS+6WrShQGmW9l/rBfvEJhoCUBSNc6K5viBeMUzgVfKYNiL1sL8nKiR0CgcdekcOL
-         SOu80AxoNorWg4LLcl67Jj41bRpLkH2q6XaxtycN1ejLdM1K+WzFheYvVBlGTTUZg44u
-         81C10Z0x+nmFtUpscDRR+9hvBpDI1Sa0/yydvQeWJTRaeyCzZimS+buPEtA7uFADHX1Z
-         bAnQ==
+        b=E1PqdeHtIZFegRnUrX9bSd2tjiXAcvUA7FCzUG37I+z97CB8BvBx8/dK+2AUUJsboP
+         6mREZkQBfYyJnoG9w3cWgcLsjycXvd9l3HlMyp05uiQy0wiWeq7borR4l87jN6tGtNBP
+         kJk2w8q9DOgU29+Hkr6FDDS3RTKW0sBNbBC9d/0nhdUN5X+HlyOGMwq4+joL4agzT8mM
+         xtXxTMnJvXCbzCY7Q7oKv8yX9dnsMn9veAD9mOLhPvB1SBMyGAUIzNOwJwmtDzX5cd+e
+         X/jgF5iF06ti4WP1c5UPzlW1j/6jPW21wqswL8BTFDzWybYs2cXETqhBpe9iBOeSvMjX
+         VUKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :arc-authentication-results;
-        bh=EjhcyfJupeMsrf1YQT+EAGADzSZ1bVmHesqKzisevB4=;
-        b=cLtkQNqxkHut+diNWTk1XK8vpT2LUZTnCoJcjzzyhsC4sqWsvZAamRl7ZXQKNXStd9
-         N1Jp+Z5KQNJK+iOxLBHIRM9FzXL6zoVsJw3nSWSZUblYbSc+2qArDBSbxtcn0MDSoFG9
-         3kfsFqQmlxJlYMI0jBjbXt9uyAZ9Nl2NSzdgs7LmctKoUmOCojiv8JKsJlC4Z10hMyaD
-         cHp0vr0tnhfUh+slyzeCPWlV4LxFYxzWvwfEbOxJqZfvL7WNNaRN+09ZkDuTofxNx3mO
-         tQcozRnZmYwl5Q7pNd0FSUx/dp0xxZDxkaLA82NXM6LFkWFJs6Wo+zF5DWB4HzM531yx
-         A3qQ==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=W27jp9ZZKBsVTF4/ByPRGcfZ/hlRyxCxkyjcFXZiww4=;
+        b=fomiveZETZlwqSAXJKtGDBX8MHN7iN/1TDevdXO5bnVpeyq235w5NZrtzB08s5iYpQ
+         kcO81ctxZKw4WCQ63OYwVPS8AuKYpDfjwhpvSS/sbP/Vk+MupcjTOhuytmiJzAvi0xID
+         Gvmp471QiUYV4V+g1C+Oy/emCt0dnTZkOAhFL7OCAztKUDBuuqpGAAn0lGm/8UnYT4Ry
+         DlGAIwo6aT65UzRPT19RcBi3N/cSTTcjdsSooQ6rHlxY8t9DHO2KqAOlJFoRr2t2Zq2p
+         uPESDa3/LfPAw8m7KBViEsvI3F7/W50IxEkTMR3N6ZYbzrN4Gob+WArZzuT4Tmfv3wyf
+         ctyg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g15si5652931qtk.215.2018.03.29.04.18.52
+        by mx.google.com with ESMTPS id 141si2164129qke.370.2018.03.20.06.41.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 29 Mar 2018 04:18:52 -0700 (PDT)
+        Tue, 20 Mar 2018 06:41:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42134 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:48685 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f1Va0-00016q-2U
-	for alex.bennee@linaro.org; Thu, 29 Mar 2018 07:18:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32789)
+	id 1eyHWJ-00037O-Id
+	for alex.bennee@linaro.org; Tue, 20 Mar 2018 09:41:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32856)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1f1VSZ-0002q2-56
-	for qemu-arm@nongnu.org; Thu, 29 Mar 2018 07:11:17 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1eyHW3-00035F-Aj
+	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 09:41:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1f1VSU-00043v-Sn
-	for qemu-arm@nongnu.org; Thu, 29 Mar 2018 07:11:10 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:34668 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgilbert@redhat.com>)
-	id 1f1VSU-00043X-Nl; Thu, 29 Mar 2018 07:11:06 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5AE2381A6D28;
-	Thu, 29 Mar 2018 11:11:06 +0000 (UTC)
-Received: from work-vm (ovpn-117-104.ams2.redhat.com [10.36.117.104])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id A698E8444F;
-	Thu, 29 Mar 2018 11:11:02 +0000 (UTC)
-Date: Thu, 29 Mar 2018 12:11:00 +0100
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20180329111059.GD2982@work-vm>
-References: <1521530809-11780-1-git-send-email-zhaoshenglong@huawei.com>
-	<1521530809-11780-3-git-send-email-zhaoshenglong@huawei.com>
-	<CAFEAcA96qV_f7i_36Yzb-QV7W9SRHKfJpg=rvv3tia2X-Xi7QQ@mail.gmail.com>
-	<5AB0F254.3050503@huawei.com>
-	<CAFEAcA-Ct3qa0OFZ4U+9RH68SQJgmkxJKKS5e+if_MuL2pSu3A@mail.gmail.com>
-	<5AB21130.2020309@huawei.com>
-	<CAFEAcA8yr+KJFwBSksMP-VjNbsSd190VCzB4wGwOCoaX2ScDiA@mail.gmail.com>
-	<CAFEAcA_r=S=YWAuZue1zZnFdtFYK2wU7NnaCcGThZU_u33qD4g@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA_r=S=YWAuZue1zZnFdtFYK2wU7NnaCcGThZU_u33qD4g@mail.gmail.com>
-User-Agent: Mutt/1.9.2 (2017-12-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Thu, 29 Mar 2018 11:11:06 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Thu, 29 Mar 2018 11:11:06 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'dgilbert@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [PATCH v2 2/2] arm_gicv3_kvm: kvm_dist_get/put: skip
- the registers banked by GICR
+	(envelope-from <pm215@archaic.org.uk>) id 1eyHW2-00041L-5y
+	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 09:41:27 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:40476)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1eyHW1-0003s8-Vf; Tue, 20 Mar 2018 09:41:26 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1eyHVu-00045A-Fa; Tue, 20 Mar 2018 13:41:18 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Tue, 20 Mar 2018 13:41:13 +0000
+Message-Id: <20180320134114.30418-4-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.16.2
+In-Reply-To: <20180320134114.30418-1-peter.maydell@linaro.org>
+References: <20180320134114.30418-1-peter.maydell@linaro.org>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH for-2.12 3/4] target/arm: Set FSR for BKPT,
+ BRK when raising exception
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,87 +78,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Juan Quintela <quintela@redhat.com>,
-	Shannon Zhao <zhaoshenglong@huawei.com>
+Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JVLietUCwAIL
+X-TUID: ZA2h7TfNcGxI
 
-* Peter Maydell (peter.maydell@linaro.org) wrote:
-> On 23 March 2018 at 12:08, Peter Maydell <peter.maydell@linaro.org> wrote:
-> > On 21 March 2018 at 08:00, Shannon Zhao <zhaoshenglong@huawei.com> wrote:
-> >> On 2018/3/20 19:54, Peter Maydell wrote:
-> >>> Can you still successfully migrate a VM from a QEMU version
-> >>> without this bugfix to one with the bugfix ?
-> >>>
-> >> I've tested this case. I can migrate a VM between these two versions.
-> >
-> > Hmm. Looking at the code I can't see how that would work,
-> > except by accident. Let me see if I understand what's happening
-> > here:
-> >
-> > In the code in master, we have QEMU data structures
-> > (bitmaps, etc) which have one entry for each of GICV3_MAXIRQ
-> > irqs. That includes the RAZ/WI unused space for the SPIs/PPIs, so
-> > for a 1-bit-per-irq bitmap:
-> >  [0x00000000, irq 32, irq 33, .... ]
-> >
-> > When we fill in the values from KVM into these data structures,
-> > we start after the unused space, because the for_each_dist_irq_reg()
-> > macro starts with _irq = GIC_INTERNAL. But we forgot to adjust
-> > the offset value we use for the KVM access, so we start by
-> > reading the RAZ/WI values from KVM, and the data structure
-> > contents end up with:
-> >  [0x00000000, 0x00000000, irq 32, irq 33, ... ]
-> > (and the last irqs wouldn't get transferred).
-> >
-> > With this change to the code we will get the offset right and
-> > the data structure will be filled as
-> >  [0x00000000, irq 32, irq 33, .... ]
-> >
-> > But for migration from the old version, the data structure
-> > we receive from the migration source will contain the old
-> > broken layout of
-> >  [0x00000000, 0x00000000, irq 32, irq 33, ... ]
-> > so if the new code doesn't do anything special to handle
-> > migration from that old version then it will write zeroes to
-> > irq 32..63, and then write incorrect values for all the irqs
-> > after that, won't it?
-> >
-> > That suggests to me that we need to have some code in the
-> > migration post-load routine that identifies that the data
-> > is coming from an old version with this bug, and shifts
-> > all the data down in the arrays so that the code to write
-> > it to the kernel can handle it.
-> 
-> I was thinking a bit more about how to handle this, and
-> my best idea was:
-> 
-> (1) send something in the migration stream that says
-> "I don't have this bug" (version number change?
-> vmstate field that's just a "no bug" flag? subsection
-> with no contents?)
-> 
-> (2) on the destination, if the source doesn't tell us
-> it doesn't have this bug, and we are running KVM, then
-> shift all the data in the arrays down to fix it up
-> [Strictly what we want to know is if the source is
-> running KVM, not if the destination is, but I don't
-> know of a way to find that out, and in practice TCG->KVM
-> migrations don't work anyway, so it's not a big deal.]
-> 
-> Juan, David, do you have any suggestions for the best
-> mechanism for part 1; or is there some clever way to
-> handle this sort of bug that I've missed?
+Now that we have a helper function specifically for the BRK and
+BKPT instructions, we can set the exception.fsr there rather
+than in arm_cpu_do_interrupt_aarch32(). This allows us to
+use our new arm_debug_exception_fsr() helper.
 
-The subsection is probably the best bet; unless that is you can find
-a bit to misuse in an existing field.
+In particular this fixes a bug where we were hardcoding the
+short-form IFSR value, which is wrong if the target exception
+level has LPAE enabled.
 
-Dave
+Fixes: https://bugs.launchpad.net/qemu/+bug/1756927
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/helper.c    | 1 -
+ target/arm/op_helper.c | 2 ++
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
-> thanks
-> -- PMM
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 09893e3f72..dcb8476d9e 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -7910,7 +7910,6 @@ static void arm_cpu_do_interrupt_aarch32(CPUState *cs)
+         offset = 0;
+         break;
+     case EXCP_BKPT:
+-        env->exception.fsr = 2;
+         /* Fall through to prefetch abort.  */
+     case EXCP_PREFETCH_ABORT:
+         A32_BANKED_CURRENT_REG_SET(env, ifsr, env->exception.fsr);
+diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
+index 75efff9edf..8e1e521193 100644
+--- a/target/arm/op_helper.c
++++ b/target/arm/op_helper.c
+@@ -488,6 +488,8 @@ void HELPER(exception_with_syndrome)(CPUARMState *env, uint32_t excp,
+  */
+ void HELPER(exception_bkpt_insn)(CPUARMState *env, uint32_t syndrome)
+ {
++    /* FSR will only be used if the debug target EL is AArch32. */
++    env->exception.fsr = arm_debug_exception_fsr(env);
+     raise_exception(env, EXCP_BKPT, syndrome, arm_debug_target_el(env));
+ }
+ 
+-- 
+2.16.2
+

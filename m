@@ -1,34 +1,34 @@
-Received: by 10.28.91.67 with SMTP id p64csp3867844wmb;
+Received: by 10.28.91.67 with SMTP id p64csp3867847wmb;
         Tue, 20 Mar 2018 06:59:30 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELuDxZMfeXK+rXigaLJQ4k+h2yl/qTym9jsebCeyKRWxrXlcIiepOku9bzT5iR4KUjMiIClr
-X-Received: by 10.55.160.139 with SMTP id j133mr24139100qke.18.1521554370456;
+X-Google-Smtp-Source: AG47ELsh/Voy392WLW/SRbjaEcuRbo1i08iC6havWyaLhxcN1nX/Lwgupec696E+YK8G/bG3ZtJq
+X-Received: by 10.55.107.65 with SMTP id g62mr24137578qkc.102.1521554370600;
         Tue, 20 Mar 2018 06:59:30 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1521554370; cv=none;
         d=google.com; s=arc-20160816;
-        b=xDKk1sCLfFZ73q02vZtPAXAnq4XooZI0YeG+hDHMUiWp7GAyMunK9k6FaYlJT9zfpU
-         F5La82Y7i0xkwcGaGrQa6A2EpUtOj64G6uLsqPVp9XRNuFltziYv2egcg1tm1CCJB+hh
-         q16Gk0/3uUIkp54KxsTGGDqHyxykGhiiGra2ygiHOkgQxRiLxknsw1bqWfPbER5Jpzie
-         2mmoQSdIlKTo/zxKQuEyfl0F899E/xszZiOt0WvCU4ElPTUr+F36prXhzxqWNUutDKmz
-         3RnzTaBif2p9tXPiSyhLaKsZd3me8ixQP6R6yK5DdGcFqm/Q/tu1ZIdUIFn9GuHoxd+Z
-         Zuhg==
+        b=u0xnEzWSfKADiz3lSgItaviM4Wbyp8kmKCC97eQaA0dFgul4snvlUI+6YJB44CuhWO
+         pHfYHYBnZxuPAgZxMk+R3+MNy+r5uOvhMv3ZtW0F25WobBYeuwzHpysxZDdgpqHy7pXk
+         8ajkZx5MFAaZqf4zNIzmH7kWu5xArEh5XATJP5CkbfSuT15n77GKFMp7YArwkGTR7PiF
+         CdF4KoG8BnR7Ak66mZPOZXnfeOSOImMQCKwJbmIIgX0TisbcRDpSVHAt85ByUtPO6fk8
+         x2ajmtUgsKLQhWBNJZywlgSBOhNnrHezXQSfFdxPS16Dqelv1wMUGBxBz7oNRPgIoZlw
+         7RHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :mime-version:user-agent:date:message-id:from:references:to
+         :content-disposition:mime-version:references:message-id:to:from:date
          :arc-authentication-results;
-        bh=uR/UiuC3pMFoxPmM27UZEaQz/ocFq/BzUzMkQEVj9Zc=;
-        b=o//np5XB/tbTp+kmQ3ALe2kp/6PuTNjgXHTeq49Migs/Jo0zIjq2cVRauUozxFF10T
-         9axoQnq85AUf76P3x8JlU8yrXbwePXdJCrIEN4zteXK7wU7uPz7RcBzOQXrmNCgNeUg1
-         tQUtJM0rHiA9VMFXZss3Gp9dqtiWuSVJ8Os3ksjGkNdfUsMGYxpoz55AoLX0ZDJjhIuG
-         Rsw7zFwu0hu1L9o6bCnkRZ72Nb3MnwgMm9cttbo4lwheA6TGdcmq26/afZ2BHOHQe1RP
-         Drhn8g+CP9Rjrezw23KUcGtG1K52a7hIdnTXJlzDflGrN6tSSZngd8oZobsutnyR0A+4
-         2WEQ==
+        bh=DSKqFDK0Xbow7EH4ertxCT9aKQ7ZVSeLylCT80zK7LQ=;
+        b=hX3wjursVTRyKPi6p3c3KyzLg+G+AEpl4Uueg1UMi4rzBxhBTDpadJcVRcAXFq3EJk
+         YqpnUReRUkI3bLBTr6kBB7i9MEzsrc0oeQSSvI2lHKY28yZjQQG1CvnqUTZ3y6DN8DrY
+         RwaZgT2lxIp7FOvBJyJwaUMudjJFB17DiAPGoXExHXyzas7eeXInXz2YKQNYW2b889aZ
+         Zo0OYLfCCBYqudURhLBtYFowNrwrFgRz5FN9s0E9JeZciS6w0QdzD+Msuwzo1pbmMdt6
+         Bbkk8BWMGrN+ey9+gL5wdg0mXPG6u7zG18TuOoJDeBlnHEcYCyRK+pDFkKGFaUSqRlGD
+         IHAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r184si349347qkc.380.2018.03.20.06.59.30
+        by mx.google.com with ESMTPS id w36si2058578qta.192.2018.03.20.06.59.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
         Tue, 20 Mar 2018 06:59:30 -0700 (PDT)
@@ -36,34 +36,35 @@ Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.or
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48940 helo=lists.gnu.org)
+Received: from localhost ([::1]:48939 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eyHnV-0006ZE-Qw
-	for alex.bennee@linaro.org; Tue, 20 Mar 2018 09:59:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38090)
+	id 1eyHnW-0006YM-44
+	for alex.bennee@linaro.org; Tue, 20 Mar 2018 09:59:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37467)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mreitz@redhat.com>) id 1eyHj7-0004sd-3n
-	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 09:54:58 -0400
+	(envelope-from <mst@redhat.com>) id 1eyHic-0004Vr-IB
+	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 09:54:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mreitz@redhat.com>) id 1eyHj3-0004J5-UU
-	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 09:54:57 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:40980 helo=mx1.redhat.com)
+	(envelope-from <mst@redhat.com>) id 1eyHiZ-0003tj-CN
+	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 09:54:26 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:59310 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mreitz@redhat.com>)
-	id 1eyHj3-0004It-OT; Tue, 20 Mar 2018 09:54:53 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
+	(Exim 4.71) (envelope-from <mst@redhat.com>)
+	id 1eyHiZ-0003sy-6R; Tue, 20 Mar 2018 09:54:23 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9AB4C40267D7;
-	Tue, 20 Mar 2018 13:54:52 +0000 (UTC)
-Received: from dresden.str.redhat.com (ovpn-116-248.ams2.redhat.com
-	[10.36.116.248])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 3D7D82166BDA;
-	Tue, 20 Mar 2018 13:54:39 +0000 (UTC)
-To: =?UTF-8?Q?Daniel_P._Berrang=c3=a9?= <berrange@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id CE9F6406F8BE;
+	Tue, 20 Mar 2018 13:54:18 +0000 (UTC)
+Received: from redhat.com (ovpn-125-54.rdu2.redhat.com [10.10.125.54])
+	by smtp.corp.redhat.com (Postfix) with SMTP id 6C0F210AF9E7;
+	Tue, 20 Mar 2018 13:53:51 +0000 (UTC)
+Date: Tue, 20 Mar 2018 15:53:51 +0200
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Message-ID: <20180320155042-mutt-send-email-mst@kernel.org>
 References: <1521510562-529051-1-git-send-email-mst@redhat.com>
 	<8f06e1e3-4823-d8e8-43bd-c092c523849e@vivier.eu>
 	<20180320094406.GD4530@redhat.com>
@@ -72,25 +73,19 @@ References: <1521510562-529051-1-git-send-email-mst@redhat.com>
 	<20180320142756-mutt-send-email-mst@kernel.org>
 	<20180320123900.GO4530@redhat.com>
 	<20180320133216.u4hdijttdnyjbfpu@sirius.home.kraxel.org>
-	<20180320134117.GS4530@redhat.com>
-From: Max Reitz <mreitz@redhat.com>
-Message-ID: <8e14f681-6572-062b-c503-c5ad091793d7@redhat.com>
-Date: Tue, 20 Mar 2018 14:54:37 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.6.0
+	<6061af99-0c27-e02b-e185-fe1dfca1a96a@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20180320134117.GS4530@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="3bVcvjt7gGf3BwAy0eGre8GNjlP4mR8zE"
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <6061af99-0c27-e02b-e185-fe1dfca1a96a@redhat.com>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Tue, 20 Mar 2018 13:54:53 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Tue, 20 Mar 2018 13:54:53 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'mreitz@redhat.com' RCPT:''
+	(mx1.redhat.com [10.11.55.7]);
+	Tue, 20 Mar 2018 13:54:19 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
+	Tue, 20 Mar 2018 13:54:19 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'mst@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
@@ -112,38 +107,38 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Dmitry Fleytman <dmitry.fleytman@gmail.com>, sheepdog@lists.wpkg.org,
 	Ronnie Sahlberg <ronniesahlberg@gmail.com>,
 	Li Zhijian <lizhijian@cn.fujitsu.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
+	David Hildenbrand <david@redhat.com>,
 	Jeff Cody <jcody@redhat.com>, Zhang Chen <zhangckid@gmail.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	qemu-devel@nongnu.org, "Richard W.M. Jones" <rjones@redhat.com>,
-	Keith Busch <keith.busch@intel.com>,
-	Max Filippov <jcmvbkbc@gmail.com>, Jiri Pirko <jiri@resnulli.us>,
-	Eric Blake <eblake@redhat.com>, Michael Roth <mdroth@linux.vnet.ibm.com>,
+	Keith Busch <keith.busch@intel.com>, Max Filippov <jcmvbkbc@gmail.com>,
+	Gerd Hoffmann <kraxel@redhat.com>, Jiri Pirko <jiri@resnulli.us>,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>, Eric Blake <eblake@redhat.com>,
+	Michael Roth <mdroth@linux.vnet.ibm.com>,
 	Marcelo Tosatti <mtosatti@redhat.com>, Josh Durgin <jdurgin@redhat.com>,
 	Stefano Stabellini <sstabellini@kernel.org>,
 	Alberto Garcia <berto@igalia.com>,
 	zhanghailiang <zhang.zhanghailiang@huawei.com>,
 	Ben Warren <ben@skyportsystems.com>, Marcel Apfelbaum <marcel@redhat.com>,
-	Yongbok Kim <yongbok.kim@mips.com>, David Hildenbrand <david@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
+	Yongbok Kim <yongbok.kim@mips.com>, Markus Armbruster <armbru@redhat.com>,
 	Stefan Berger <stefanb@linux.vnet.ibm.com>,
 	Christian Borntraeger <borntraeger@de.ibm.com>, kvm@vger.kernel.org,
-	=?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+	=?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
 	Shannon Zhao <zhaoshenglong@huawei.com>,
 	Anthony Perard <anthony.perard@citrix.com>,
 	Liu Yuan <namei.unix@gmail.com>,
 	David Gibson <david@gibson.dropbear.id.au>,
 	Andrzej Zaborowski <balrogg@gmail.com>, Jason Wang <jasowang@redhat.com>,
 	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Thomas Huth <thuth@redhat.com>, Riku Voipio <riku.voipio@iki.fi>,
-	Fam Zheng <famz@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+	Riku Voipio <riku.voipio@iki.fi>, Fam Zheng <famz@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
 	Corey Minyard <minyard@acm.org>, Amit Shah <amit@kernel.org>,
 	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>, Stefan Weil <sw@weilnetz.de>,
 	Xie Changlong <xiechanglong.d@gmail.com>,
 	Alistair Francis <alistair@alistair23.me>, Peter Lieven <pl@kamp.de>,
 	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
 	Fabien Chouteau <chouteau@adacore.com>, Greg Kurz <groug@kaod.org>,
-	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
 	Alex Williamson <alex.williamson@redhat.com>,
 	qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
 	Yuval Shaia <yuval.shaia@oracle.com>,
@@ -151,177 +146,54 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	xen-devel@lists.xenproject.org, BALATON Zoltan <balaton@eik.bme.hu>,
 	John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
 	Kevin Wolf <kwolf@redhat.com>, Alexander Graf <agraf@suse.de>,
+	Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
 	qemu-block@nongnu.org, Hitoshi Mitake <mitake.hitoshi@lab.ntt.co.jp>,
 	Wen Congyang <wencongyang2@huawei.com>, qemu-s390x@nongnu.org,
 	Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
 	Juan Quintela <quintela@redhat.com>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
-	=?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>,
+	Max Reitz <mreitz@redhat.com>, Michael Walle <michael@walle.cc>,
+	qemu-ppc@nongnu.org, Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
 	Igor Mammedov <imammedo@redhat.com>, Hannes Reinecke <hare@suse.com>,
 	Aurelien Jarno <aurelien@aurel32.net>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KVz/NqlMyetm
+X-TUID: 9/oOKG5zq68F
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---3bVcvjt7gGf3BwAy0eGre8GNjlP4mR8zE
-Content-Type: multipart/mixed; boundary="4gOSWLc8jSeDKOBpdGY3ouMP1Tras99J8";
- protected-headers="v1"
-From: Max Reitz <mreitz@redhat.com>
-To: =?UTF-8?Q?Daniel_P._Berrang=c3=a9?= <berrange@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, Laurent Vivier
- <laurent@vivier.eu>, qemu-devel@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Crosthwaite <crosthwaite.peter@gmail.com>,
- Richard Henderson <rth@twiddle.net>, Eduardo Habkost <ehabkost@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Jeff Cody <jcody@redhat.com>, Fam Zheng <famz@redhat.com>,
- John Snow <jsnow@redhat.com>, Stefan Weil <sw@weilnetz.de>,
- Stefan Hajnoczi <stefanha@redhat.com>,
- Ronnie Sahlberg <ronniesahlberg@gmail.com>, Peter Lieven <pl@kamp.de>,
- Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- Alberto Garcia <berto@igalia.com>, Josh Durgin <jdurgin@redhat.com>,
- Hitoshi Mitake <mitake.hitoshi@lab.ntt.co.jp>,
- Liu Yuan <namei.unix@gmail.com>, "Richard W.M. Jones" <rjones@redhat.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Greg Kurz <groug@kaod.org>,
- Ben Warren <ben@skyportsystems.com>, Peter Maydell
- <peter.maydell@linaro.org>, Shannon Zhao <zhaoshenglong@huawei.com>,
- Michael Walle <michael@walle.cc>, Keith Busch <keith.busch@intel.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Anthony Perard <anthony.perard@citrix.com>,
- Fabien Chouteau <chouteau@adacore.com>, Amit Shah <amit@kernel.org>,
- Marcel Apfelbaum <marcel@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- BALATON Zoltan <balaton@eik.bme.hu>, Alexander Graf <agraf@suse.de>,
- Cornelia Huck <cohuck@redhat.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- David Gibson <david@gibson.dropbear.id.au>, Corey Minyard <minyard@acm.org>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Peter Chubb <peter.chubb@nicta.com.au>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>, Jason Wang
- <jasowang@redhat.com>, Yongbok Kim <yongbok.kim@mips.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Jiri Pirko <jiri@resnulli.us>,
- Yuval Shaia <yuval.shaia@oracle.com>, David Hildenbrand <david@redhat.com>,
- Hannes Reinecke <hare@suse.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>, Andrzej Zaborowski <balrogg@gmail.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- zhanghailiang <zhang.zhanghailiang@huawei.com>,
- Juan Quintela <quintela@redhat.com>, Michael Roth
- <mdroth@linux.vnet.ibm.com>, =?UTF-8?Q?Andreas_F=c3=a4rber?=
- <afaerber@suse.de>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Riku Voipio <riku.voipio@iki.fi>, Zhang Chen <zhangckid@gmail.com>,
- Li Zhijian <lizhijian@cn.fujitsu.com>, Wen Congyang
- <wencongyang2@huawei.com>, Xie Changlong <xiechanglong.d@gmail.com>,
- Marcelo Tosatti <mtosatti@redhat.com>, Aurelien Jarno
- <aurelien@aurel32.net>, kvm@vger.kernel.org, qemu-block@nongnu.org,
- sheepdog@lists.wpkg.org, qemu-arm@nongnu.org,
- xen-devel@lists.xenproject.org, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
- Thomas Huth <thuth@redhat.com>
-Message-ID: <8e14f681-6572-062b-c503-c5ad091793d7@redhat.com>
-Subject: Re: [PATCH] qemu: include generated files with <> and not ""
-References: <1521510562-529051-1-git-send-email-mst@redhat.com>
- <8f06e1e3-4823-d8e8-43bd-c092c523849e@vivier.eu>
- <20180320094406.GD4530@redhat.com>
- <20180320141107-mutt-send-email-mst@kernel.org>
- <20180320121841.GN4530@redhat.com>
- <20180320142756-mutt-send-email-mst@kernel.org>
- <20180320123900.GO4530@redhat.com>
- <20180320133216.u4hdijttdnyjbfpu@sirius.home.kraxel.org>
- <20180320134117.GS4530@redhat.com>
-In-Reply-To: <20180320134117.GS4530@redhat.com>
+On Tue, Mar 20, 2018 at 02:46:46PM +0100, Thomas Huth wrote:
+> On 20.03.2018 14:32, Gerd Hoffmann wrote:
+> >   Hi,
+> > 
+> >>> So for these, we should use "".  None of these are generated files though.
+> >>
+> >> That leads to crazy inconsistent message for developers where 50% of QEMU
+> >> header files must use <> and the other 50% of header files must use "".
+> > 
+> > The rules are pretty simple though:
+> > 
+> >    (1) Headers which are generated use <>.
+> >    (2) Headers which are in include/ use <>.
+> >    (3) Headers sitting in the same directory as the source files use "".
+> 
+> Ugh, no. Please don't. The normal way of including header files in QEMU
 
---4gOSWLc8jSeDKOBpdGY3ouMP1Tras99J8
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+Stress on "in QEMU".
 
-On 2018-03-20 14:41, Daniel P. Berrang=C3=A9 wrote:
-> On Tue, Mar 20, 2018 at 02:32:16PM +0100, Gerd Hoffmann wrote:
->>   Hi,
->>
->>>> So for these, we should use "".  None of these are generated files t=
-hough.
->>>
->>> That leads to crazy inconsistent message for developers where 50% of =
-QEMU
->>> header files must use <> and the other 50% of header files must use "=
-".
->>
->> The rules are pretty simple though:
->>
->>    (1) Headers which are generated use <>.
->>    (2) Headers which are in include/ use <>.
->>    (3) Headers sitting in the same directory as the source files use "=
-".
->=20
-> We have 1200 header files in QEMU - a developer might just reasonably r=
-emember
-> which header file is a QEMU header, vs which is a 3rd party system head=
-er.
-> Expecting devs to remember which of those 3 buckets each QEMU header fa=
-lls
-> under is unreasonable IMHO.=20
+> is to use "" - also for headers that are not in the same directory. For
+> example just do a
+> 
+>  grep -r '^#include.*hw/' hw/
+> 
+> from the top directory and you'll see what I mean. Changing that rule is
+> crazy.
+> So please, let's just fix the configure script to detect some
+> more stale files in the source tree, and we're done.
+> 
+>  Thomas
 
-I agree with this in principle, but I don't find it unreasonable for
-someone to look up whether a header file exists in the same directory.
-I find that much simpler than to look up whether it is a system header,
-actually.
+The rule probably served a useful purpose when all
+headers where in the same directory as the source.
+we moved them out so that is no longer the case.
 
-And I have to agree with Michael that his rule when to use "" (if the
-file is in the same directory) and when to use <> (otherwise) is
-actually what every C developer might do by instinct.  (I guess it's
-also easier to check in a script than the original guideline?)
-
-However, I also think that if any problem arises because "" was used for
-a generated file and that then uses a stale file, the bug is somewhere
-else.  And I think that while Michael's proposal is the more intuitive
-(C) way, it is a tiny bit more complicated to explain than 'Use "" for
-qemu headers, <> for everything else'.
-
-But I guess the main advantage with using this rule I see is that it's
-better for people reading the code.  It's just nice to know whether a
-file belongs to qemu or not by just looking at the #include statement.
-(Note that this implies that it is indeed more difficult to determine
-whether a header belongs to qemu than whether it sits in the same
-directory as the C file, though!)  So I think the old (current) rule is
-better for reading code, Michael's rule would be better for writing
-code.  I think reading code is what should be easier.
-
-But since that may be eaten up by build breakages due to stale files, I
-don't have a strong opinion either way.  I just wanted to chime in
-because in my opinion 'Use "" for headers in the same directory, <> for
-everything else' is by no means an unreasonably complicated rule for
-people writing code.
-
-Max
-
-
---4gOSWLc8jSeDKOBpdGY3ouMP1Tras99J8--
-
---3bVcvjt7gGf3BwAy0eGre8GNjlP4mR8zE
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQFGBAEBCAAwFiEEkb62CjDbPohX0Rgp9AfbAGHVz0AFAlqxEp0SHG1yZWl0ekBy
-ZWRoYXQuY29tAAoJEPQH2wBh1c9AJsUIAJd2GeUBJFTYmeKR5uxkvBIkRHGgRyAm
-H76Sk1MnAhHTVPGKLoMDwweaSnCz+XAFo3P3YJJbFSNvaWUd3ZN8roiyOlPtYnNY
-6cBk9GrLnzWW8VYmEkCP4xmA0Hkowm+IKD374TBqc17h3Fzxs1obPQJxhJ8xKpvH
-dc10DJ6la/R+dyQAe8lTVBg5zXh44Q2zoslSvLVVE1PDcWlo+fIHai7eB5kzYyu3
-jSKqdAoJvDD7d/FRndl37+Yb6AcbgUZP3U/7ntRE7Omk471b7FcoqN03GtlY0Unk
-hxi0sjM6SAsgGtjEm0Jiqypwlq+luCn5ekS1JI7U+/4Lo2KC5EOLD6o=
-=wiAH
------END PGP SIGNATURE-----
-
---3bVcvjt7gGf3BwAy0eGre8GNjlP4mR8zE--
+-- 
+MST

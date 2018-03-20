@@ -1,85 +1,86 @@
-Received: by 10.28.91.67 with SMTP id p64csp3780271wmb;
-        Tue, 20 Mar 2018 05:41:49 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELvoZLpMn3pkt4dUZelw2lR4GHwwXpya96/s2LDRJl540ka9DCdKSI5QbNRC6GZnaMm7fsbI
-X-Received: by 10.200.15.58 with SMTP id e55mr23606148qtk.261.1521549709785;
-        Tue, 20 Mar 2018 05:41:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521549709; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp3781199wmb;
+        Tue, 20 Mar 2018 05:42:45 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELvJwz9QiCyx5fR7qpT3gJYLRxd4p3PkoW9KTrVrCOZeQTJNPUGHq6+/fIpKVR8sAYAb6taX
+X-Received: by 10.200.53.110 with SMTP id z43mr24245553qtb.278.1521549765069;
+        Tue, 20 Mar 2018 05:42:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521549765; cv=none;
         d=google.com; s=arc-20160816;
-        b=BMV7plqvkC4nbGEW04ecB1Duac2D8pn/MfITwLBoEdWyvBbUDiQT3YRu2alrtXLYya
-         nV01V5XMvggcoAqW88mCoI5LlDyhGokri3zay1PnooIT3IitOtnSmMUWY+WFxlToMkzT
-         EjTEunmZcaJba5pFBk6RVHhq0sE3Pq4a3sR3+tZm9Y/QMHCK1SNSwdyTLfrE27A4v65D
-         oYKSNKczc8rPUcYaEJp6LSkYyZO/7JuCwNNlgiyDXBzRdlUHjzSjkEMe90XH2jYJdR7L
-         jHxfwAGnygHIaqH4pwMd9R5G8hDDjnlEzVCFVwGBgsnFHgBLrXbMfHY9glLxjWnabmwv
-         7mDQ==
+        b=nVrmkw04IE4cTEqCrXZtqZEbvwARpqhLUGivcC9UpWsF3bzON0jGXdaswV8WjE+3UK
+         c5zD5fTQnsS1krQ44vZZkTcapMBiUhSuNbzP3TLP89pG8gAX/BTKs0mV66aQF/Nznvsl
+         q0UOicLAJ7+cYmb/qYmH2f7js0ayidZUKoOXmz/w8O1SXStLR6rHHcIoWoVbtCpuFtNB
+         JJMeJE5y49kwvEwglQy+KyMGqPgeVe8j0WDhNv68fhmcBBRDVbgn75IobR1HdGoaWQ2o
+         nzYHwbYpqfcuy/8yLhePBbxZ42H8+jhyz3ozWK4q0/8lRxdcJDZH979gETfHk0LPD47j
+         RRew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=vSFFc3oKY0GJDc/Hjco/aVHMF32mGmvSPMnMjE+SuSg=;
-        b=wV1Tm0TFeOU10Yxx2z35gpXHDprz9YVcPE3dX+ng9gSy1MUytA7mEcXTBdnkUX5Bq3
-         g6NhygBm1u/cWbgCYpinGAABIMqD+ojFiZ8/oaASYzhM6QGzAxIdnssPDn49jzXOj3bt
-         LqNGAoz/KTeII7ZK2cBFfswwq9L8PJTG3XaPZV9+Hc4V1YnKF3FxwVGJUw9Af9fTbLMM
-         sFXAXCsiLLTQLN8sVgI+DQCNfmr9LhrutFRS3ONNDSgoS/QsdRBubYFfpbVOuZnTrEvn
-         iMlcADm37NU8oWbx9iDrYq/sl3cS3PsQ7VS71/0UfQ9GkbNzQc3n4V+qTHvvU51y4DuJ
-         8Skw==
+        bh=D2V1KgLDpcmEYFGgkgm/7g1WnW6emh5KTCVpoLe1YoQ=;
+        b=XpvMHJI4yc1WsWBlDNUO6Lm83HZgh0yVTVu2v9BI75qEF1Z2UOPmTgCggj+gAcxZyA
+         amJkJS83IicAwG//ZcdFmAEx1ZRhMhaNjZn5mklJcOV0jD3H6df36e7SwS5ZEFdklc4r
+         w88QA8dOf7reEnz/D624PjZikcY1DiykMUJGqUlIS4W3De15vOjUFrQmiUfLuBOZfLPv
+         4P4v9Fv3YdWE83k0kzKOHdNJpEg5TTecDWMnKeyaNHH/6wytG/Xqr9V9C4umrpRAWIl/
+         /lKhos7MY82lCooZBUBf63tPld5AUXJ72ZfE4x9MVbNNPYjY9fyu31galT1HQxxtdIYD
+         kulA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t70si2007040qka.408.2018.03.20.05.41.49
+        by mx.google.com with ESMTPS id c29si1933889qtb.39.2018.03.20.05.42.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 20 Mar 2018 05:41:49 -0700 (PDT)
+        Tue, 20 Mar 2018 05:42:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48231 helo=lists.gnu.org)
+Received: from localhost ([::1]:48234 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eyGaL-0002CZ-92
-	for alex.bennee@linaro.org; Tue, 20 Mar 2018 08:41:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42737)
+	id 1eyGbE-00031D-Hm
+	for alex.bennee@linaro.org; Tue, 20 Mar 2018 08:42:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42978)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1eyGWz-0007Qn-0O
-	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 08:38:22 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1eyGXa-0008Ct-D5
+	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 08:39:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1eyGWx-0003N9-4K
-	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 08:38:21 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:39096 helo=mx1.redhat.com)
+	(envelope-from <eric.auger@redhat.com>) id 1eyGXY-0003p9-Uz
+	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 08:38:58 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:53048 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1eyGWw-0003Mk-Uy; Tue, 20 Mar 2018 08:38:19 -0400
+	id 1eyGXY-0003oy-QG; Tue, 20 Mar 2018 08:38:56 -0400
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 696834040853;
-	Tue, 20 Mar 2018 12:38:18 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 50457A2017;
+	Tue, 20 Mar 2018 12:38:56 +0000 (UTC)
 Received: from localhost.localdomain.com (ovpn-116-135.ams2.redhat.com
 	[10.36.116.135])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id CBA7494581;
-	Tue, 20 Mar 2018 12:38:15 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id B5D2194583;
+	Tue, 20 Mar 2018 12:38:53 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org, prem.mallappa@gmail.com
-Date: Tue, 20 Mar 2018 13:37:28 +0100
-Message-Id: <1521549456-14072-7-git-send-email-eric.auger@redhat.com>
+Date: Tue, 20 Mar 2018 13:37:35 +0100
+Message-Id: <1521549456-14072-14-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1521549456-14072-1-git-send-email-eric.auger@redhat.com>
 References: <1521549456-14072-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Tue, 20 Mar 2018 12:38:18 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Tue, 20 Mar 2018 12:38:18 +0000 (UTC) for IP:'10.11.54.5'
+	(mx1.redhat.com [10.11.55.2]);
+	Tue, 20 Mar 2018 12:38:56 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Tue, 20 Mar 2018 12:38:56 +0000 (UTC) for IP:'10.11.54.5'
 	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH v10 06/14] hw/arm/smmuv3: Queue helpers
+Subject: [Qemu-arm] [PATCH v10 13/14] hw/arm/virt-acpi-build: Add smmuv3
+ node in IORT table
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,374 +97,161 @@ Cc: cdall@kernel.org, mst@redhat.com, jean-philippe.brucker@arm.com,
 	linuc.decode@gmail.com, bharat.bhushan@nxp.com, jintack@cs.columbia.edu
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HsfApHyL5x9L
+X-TUID: R7dEc//p23Wp
 
-We introduce helpers to read/write into the command and event
-circular queues.
+From: Prem Mallappa <prem.mallappa@broadcom.com>
 
-smmuv3_write_eventq and smmuv3_cmq_consume will become static
-in subsequent patches.
+This patch builds the smmuv3 node in the ACPI IORT table.
 
-Invalidation commands are not yet dealt with. We do not cache
-data that need to be invalidated. This will change with vhost
-integration.
+The RID space of the root complex, which spans 0x0-0x10000
+maps to streamid space 0x0-0x10000 in smmuv3, which in turn
+maps to deviceid space 0x0-0x10000 in the ITS group.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+The guest must feature the IOMMU probe deferral series
+(https://lkml.org/lkml/2017/4/10/214) which fixes streamid
+multiple lookup. This bug is not related to the SMMU emulation.
+
 Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Shannon Zhao <zhaoshenglong@huawei.com>
 
 ---
+
 v9 -> v10:
-- simplified macros
-- s/BASE/Q_BASE
-- use log2size field
-- static inline functions replacing some macros
-- simplified queue_prod_incr/queue_cons_incr and use deposit32
-- trace for cmdq_consume failure
+- replaced vms->iommu tests by vms->iommu == VIRT_IOMMU_SMMUV3
+- Added Shannon's R-b
 
-v8 -> v9:
-- fix CMD_SSID & CMD_ADDR + some renamings
-- do cons increment after the execution of the command
-- add Q_INCONSISTENT()
-
-v7 -> v8
-- use address_space_rw
-- helpers inspired from spec
+v2 -> v3:
+- integrate into the existing IORT table made up of ITS, RC nodes
+- take into account vms->smmu
+- match linux actbl2.h acpi_iort_smmu_v3 field names
 ---
- hw/arm/smmuv3-internal.h | 154 +++++++++++++++++++++++++++++++++++++++++++++++
- hw/arm/smmuv3.c          | 136 +++++++++++++++++++++++++++++++++++++++++
- hw/arm/trace-events      |   5 ++
- 3 files changed, 295 insertions(+)
+ hw/arm/virt-acpi-build.c    | 55 +++++++++++++++++++++++++++++++++++++++------
+ include/hw/acpi/acpi-defs.h | 15 +++++++++++++
+ 2 files changed, 63 insertions(+), 7 deletions(-)
 
-diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-index 32f81d4..968fa25 100644
---- a/hw/arm/smmuv3-internal.h
-+++ b/hw/arm/smmuv3-internal.h
-@@ -156,4 +156,158 @@ static inline bool smmuv3_gerror_irq_enabled(SMMUv3State *s)
- void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq, uint32_t gerror_mask);
- void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t gerrorn);
- 
-+/* Queue Handling */
-+
-+#define Q_BASE(q)          ((q)->base & SMMU_BASE_ADDR_MASK)
-+#define WRAP_MASK(q)       (1 << (q)->log2size)
-+#define INDEX_MASK(q)      (((1 << (q)->log2size)) - 1)
-+#define WRAP_INDEX_MASK(q) ((1 << ((q)->log2size + 1)) - 1)
-+
-+#define Q_CONS(q) ((q)->cons & INDEX_MASK(q))
-+#define Q_PROD(q) ((q)->prod & INDEX_MASK(q))
-+
-+#define Q_CONS_ENTRY(q)  (Q_BASE(q) + (q)->entry_size * Q_CONS(q))
-+#define Q_PROD_ENTRY(q)  (Q_BASE(q) + (q)->entry_size * Q_PROD(q))
-+
-+#define Q_CONS_WRAP(q) (((q)->cons & WRAP_MASK(q)) >> (q)->log2size)
-+#define Q_PROD_WRAP(q) (((q)->prod & WRAP_MASK(q)) >> (q)->log2size)
-+
-+static inline bool smmuv3_q_full(SMMUQueue *q)
-+{
-+    return ((q->cons ^ q->prod) & WRAP_INDEX_MASK(q)) == WRAP_MASK(q);
-+}
-+
-+static inline bool smmuv3_q_empty(SMMUQueue *q)
-+{
-+    return (q->cons & WRAP_INDEX_MASK(q)) == (q->prod & WRAP_INDEX_MASK(q));
-+}
-+
-+static inline void queue_prod_incr(SMMUQueue *q)
-+{
-+    q->prod = (q->prod + 1) & WRAP_INDEX_MASK(q);
-+}
-+
-+static inline void queue_cons_incr(SMMUQueue *q)
-+{
-+    q->cons = deposit32(q->cons, 0, q->log2size + 1, q->cons + 1);
-+}
-+
-+static inline bool smmuv3_cmdq_enabled(SMMUv3State *s)
-+{
-+    return FIELD_EX32(s->cr[0], CR0, CMDQEN);
-+}
-+
-+static inline bool smmuv3_eventq_enabled(SMMUv3State *s)
-+{
-+    return FIELD_EX32(s->cr[0], CR0, EVENTQEN);
-+}
-+
-+static inline void smmu_write_cmdq_err(SMMUv3State *s, uint32_t err_type)
-+{
-+    s->cmdq.cons = FIELD_DP32(s->cmdq.cons, CMDQ_CONS, ERR, err_type);
-+}
-+
-+void smmuv3_write_eventq(SMMUv3State *s, Evt *evt);
-+
-+/* Commands */
-+
-+typedef enum SMMUCommandType {
-+    SMMU_CMD_PREFETCH_CONFIG = 0x01,
-+    SMMU_CMD_PREFETCH_ADDR,
-+    SMMU_CMD_CFGI_STE,
-+    SMMU_CMD_CFGI_STE_RANGE,
-+    SMMU_CMD_CFGI_CD,
-+    SMMU_CMD_CFGI_CD_ALL,
-+    SMMU_CMD_CFGI_ALL,
-+    SMMU_CMD_TLBI_NH_ALL     = 0x10,
-+    SMMU_CMD_TLBI_NH_ASID,
-+    SMMU_CMD_TLBI_NH_VA,
-+    SMMU_CMD_TLBI_NH_VAA,
-+    SMMU_CMD_TLBI_EL3_ALL    = 0x18,
-+    SMMU_CMD_TLBI_EL3_VA     = 0x1a,
-+    SMMU_CMD_TLBI_EL2_ALL    = 0x20,
-+    SMMU_CMD_TLBI_EL2_ASID,
-+    SMMU_CMD_TLBI_EL2_VA,
-+    SMMU_CMD_TLBI_EL2_VAA,  /* 0x23 */
-+    SMMU_CMD_TLBI_S12_VMALL  = 0x28,
-+    SMMU_CMD_TLBI_S2_IPA     = 0x2a,
-+    SMMU_CMD_TLBI_NSNH_ALL   = 0x30,
-+    SMMU_CMD_ATC_INV         = 0x40,
-+    SMMU_CMD_PRI_RESP,
-+    SMMU_CMD_RESUME          = 0x44,
-+    SMMU_CMD_STALL_TERM,
-+    SMMU_CMD_SYNC,          /* 0x46 */
-+} SMMUCommandType;
-+
-+static const char *cmd_stringify[] = {
-+    [SMMU_CMD_PREFETCH_CONFIG] = "SMMU_CMD_PREFETCH_CONFIG",
-+    [SMMU_CMD_PREFETCH_ADDR]   = "SMMU_CMD_PREFETCH_ADDR",
-+    [SMMU_CMD_CFGI_STE]        = "SMMU_CMD_CFGI_STE",
-+    [SMMU_CMD_CFGI_STE_RANGE]  = "SMMU_CMD_CFGI_STE_RANGE",
-+    [SMMU_CMD_CFGI_CD]         = "SMMU_CMD_CFGI_CD",
-+    [SMMU_CMD_CFGI_CD_ALL]     = "SMMU_CMD_CFGI_CD_ALL",
-+    [SMMU_CMD_CFGI_ALL]        = "SMMU_CMD_CFGI_ALL",
-+    [SMMU_CMD_TLBI_NH_ALL]     = "SMMU_CMD_TLBI_NH_ALL",
-+    [SMMU_CMD_TLBI_NH_ASID]    = "SMMU_CMD_TLBI_NH_ASID",
-+    [SMMU_CMD_TLBI_NH_VA]      = "SMMU_CMD_TLBI_NH_VA",
-+    [SMMU_CMD_TLBI_NH_VAA]     = "SMMU_CMD_TLBI_NH_VAA",
-+    [SMMU_CMD_TLBI_EL3_ALL]    = "SMMU_CMD_TLBI_EL3_ALL",
-+    [SMMU_CMD_TLBI_EL3_VA]     = "SMMU_CMD_TLBI_EL3_VA",
-+    [SMMU_CMD_TLBI_EL2_ALL]    = "SMMU_CMD_TLBI_EL2_ALL",
-+    [SMMU_CMD_TLBI_EL2_ASID]   = "SMMU_CMD_TLBI_EL2_ASID",
-+    [SMMU_CMD_TLBI_EL2_VA]     = "SMMU_CMD_TLBI_EL2_VA",
-+    [SMMU_CMD_TLBI_EL2_VAA]    = "SMMU_CMD_TLBI_EL2_VAA",
-+    [SMMU_CMD_TLBI_S12_VMALL]  = "SMMU_CMD_TLBI_S12_VMALL",
-+    [SMMU_CMD_TLBI_S2_IPA]     = "SMMU_CMD_TLBI_S2_IPA",
-+    [SMMU_CMD_TLBI_NSNH_ALL]   = "SMMU_CMD_TLBI_NSNH_ALL",
-+    [SMMU_CMD_ATC_INV]         = "SMMU_CMD_ATC_INV",
-+    [SMMU_CMD_PRI_RESP]        = "SMMU_CMD_PRI_RESP",
-+    [SMMU_CMD_RESUME]          = "SMMU_CMD_RESUME",
-+    [SMMU_CMD_STALL_TERM]      = "SMMU_CMD_STALL_TERM",
-+    [SMMU_CMD_SYNC]            = "SMMU_CMD_SYNC",
-+};
-+
-+static inline const char *smmu_cmd_string(SMMUCommandType type)
-+{
-+    return cmd_stringify[type] ? cmd_stringify[type] : "UNKNOWN";
-+}
-+
-+/* CMDQ fields */
-+
-+typedef enum {
-+    SMMU_CERROR_NONE = 0,
-+    SMMU_CERROR_ILL,
-+    SMMU_CERROR_ABT,
-+    SMMU_CERROR_ATC_INV_SYNC,
-+} SMMUCmdError;
-+
-+enum { /* Command completion notification */
-+    CMD_SYNC_SIG_NONE,
-+    CMD_SYNC_SIG_IRQ,
-+    CMD_SYNC_SIG_SEV,
-+};
-+
-+#define CMD_TYPE(x)         extract32((x)->word[0], 0 , 8)
-+#define CMD_SSEC(x)         extract32((x)->word[0], 10, 1)
-+#define CMD_SSV(x)          extract32((x)->word[0], 11, 1)
-+#define CMD_RESUME_AC(x)    extract32((x)->word[0], 12, 1)
-+#define CMD_RESUME_AB(x)    extract32((x)->word[0], 13, 1)
-+#define CMD_SYNC_CS(x)      extract32((x)->word[0], 12, 2)
-+#define CMD_SSID(x)         extract32((x)->word[0], 12, 20)
-+#define CMD_SID(x)          ((x)->word[1])
-+#define CMD_VMID(x)         extract32((x)->word[1], 0 , 16)
-+#define CMD_ASID(x)         extract32((x)->word[1], 16, 16)
-+#define CMD_RESUME_STAG(x)  extract32((x)->word[2], 0 , 16)
-+#define CMD_RESP(x)         extract32((x)->word[2], 11, 2)
-+#define CMD_LEAF(x)         extract32((x)->word[2], 0 , 1)
-+#define CMD_STE_RANGE(x)    extract32((x)->word[2], 0 , 5)
-+#define CMD_ADDR(x) ({                                        \
-+            uint64_t high = (uint64_t)(x)->word[3];           \
-+            uint64_t low = extract32((x)->word[2], 12, 20);    \
-+            uint64_t addr = high << 32 | (low << 12);         \
-+            addr;                                             \
-+        })
-+
-+int smmuv3_cmdq_consume(SMMUv3State *s);
-+
- #endif
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 990c02e..6c9d68b 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -94,6 +94,46 @@ void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t new_gerrorn)
-     trace_smmuv3_write_gerrorn(toggled & pending, s->gerrorn);
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index f7fa795..d2221b8 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -393,19 +393,26 @@ build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned xsdt_tbl_offset)
  }
  
-+static inline MemTxResult queue_read(SMMUQueue *q, void *data)
-+{
-+    dma_addr_t addr = Q_CONS_ENTRY(q);
-+
-+    return dma_memory_read(&address_space_memory, addr, data, q->entry_size);
-+}
-+
-+static MemTxResult queue_write(SMMUQueue *q, void *data)
-+{
-+    dma_addr_t addr = Q_PROD_ENTRY(q);
-+    MemTxResult ret;
-+
-+    ret = dma_memory_write(&address_space_memory, addr, data, q->entry_size);
-+    if (ret != MEMTX_OK) {
-+        return ret;
-+    }
-+
-+    queue_prod_incr(q);
-+    return MEMTX_OK;
-+}
-+
-+void smmuv3_write_eventq(SMMUv3State *s, Evt *evt)
-+{
-+    SMMUQueue *q = &s->eventq;
-+
-+    if (!smmuv3_eventq_enabled(s)) {
-+        return;
-+    }
-+
-+    if (smmuv3_q_full(q)) {
-+        return;
-+    }
-+
-+    queue_write(q, evt);
-+
-+    if (smmuv3_q_empty(q)) {
-+        smmuv3_trigger_irq(s, SMMU_IRQ_EVTQ, 0);
-+    }
-+}
-+
- static void smmuv3_init_regs(SMMUv3State *s)
+ static void
+-build_iort(GArray *table_data, BIOSLinker *linker)
++build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
  {
-     /**
-@@ -133,6 +173,102 @@ static void smmuv3_init_regs(SMMUv3State *s)
-     s->sid_split = 0;
- }
+-    int iort_start = table_data->len;
++    int nb_nodes, iort_start = table_data->len;
+     AcpiIortIdMapping *idmap;
+     AcpiIortItsGroup *its;
+     AcpiIortTable *iort;
+-    size_t node_size, iort_length;
++    AcpiIortSmmu3 *smmu;
++    size_t node_size, iort_length, smmu_offset = 0;
+     AcpiIortRC *rc;
  
-+int smmuv3_cmdq_consume(SMMUv3State *s)
-+{
-+    SMMUCmdError cmd_error = SMMU_CERROR_NONE;
-+    SMMUQueue *q = &s->cmdq;
-+    SMMUCommandType type = 0;
-+
-+    if (!smmuv3_cmdq_enabled(s)) {
-+        return 0;
-+    }
-+    /*
-+     * some commands depend on register values, typically CR0. In case those
-+     * register values change while handling the command, spec says it
-+     * is UNPREDICTABLE whether the command is interpreted under the new
-+     * or old value.
-+     */
-+
-+    while (!smmuv3_q_empty(q)) {
-+        uint32_t pending = s->gerror ^ s->gerrorn;
-+        Cmd cmd;
-+
-+        trace_smmuv3_cmdq_consume(Q_PROD(q), Q_CONS(q),
-+                                  Q_PROD_WRAP(q), Q_CONS_WRAP(q));
-+
-+        if (FIELD_EX32(pending, GERROR, CMDQ_ERR)) {
-+            break;
-+        }
-+
-+        if (queue_read(q, &cmd) != MEMTX_OK) {
-+            cmd_error = SMMU_CERROR_ABT;
-+            break;
-+        }
-+
-+        type = CMD_TYPE(&cmd);
-+
-+        trace_smmuv3_cmdq_opcode(smmu_cmd_string(type));
-+
-+        switch (type) {
-+        case SMMU_CMD_SYNC:
-+            if (CMD_SYNC_CS(&cmd) & CMD_SYNC_SIG_IRQ) {
-+                smmuv3_trigger_irq(s, SMMU_IRQ_CMD_SYNC, 0);
-+            }
-+            break;
-+        case SMMU_CMD_PREFETCH_CONFIG:
-+        case SMMU_CMD_PREFETCH_ADDR:
-+        case SMMU_CMD_CFGI_STE:
-+        case SMMU_CMD_CFGI_STE_RANGE: /* same as SMMU_CMD_CFGI_ALL */
-+        case SMMU_CMD_CFGI_CD:
-+        case SMMU_CMD_CFGI_CD_ALL:
-+        case SMMU_CMD_TLBI_NH_ALL:
-+        case SMMU_CMD_TLBI_NH_ASID:
-+        case SMMU_CMD_TLBI_NH_VA:
-+        case SMMU_CMD_TLBI_NH_VAA:
-+        case SMMU_CMD_TLBI_EL3_ALL:
-+        case SMMU_CMD_TLBI_EL3_VA:
-+        case SMMU_CMD_TLBI_EL2_ALL:
-+        case SMMU_CMD_TLBI_EL2_ASID:
-+        case SMMU_CMD_TLBI_EL2_VA:
-+        case SMMU_CMD_TLBI_EL2_VAA:
-+        case SMMU_CMD_TLBI_S12_VMALL:
-+        case SMMU_CMD_TLBI_S2_IPA:
-+        case SMMU_CMD_TLBI_NSNH_ALL:
-+        case SMMU_CMD_ATC_INV:
-+        case SMMU_CMD_PRI_RESP:
-+        case SMMU_CMD_RESUME:
-+        case SMMU_CMD_STALL_TERM:
-+            trace_smmuv3_unhandled_cmd(type);
-+            break;
-+        default:
-+            cmd_error = SMMU_CERROR_ILL;
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "Illegal command type: %d\n", CMD_TYPE(&cmd));
-+            break;
-+        }
-+        if (cmd_error) {
-+            break;
-+        }
-+        /*
-+         * We only increment the cons index after the completion of
-+         * the command. We do that because the SYNC returns immediately
-+         * and does not check the completion of previous commands
-+         */
-+        queue_cons_incr(q);
+     iort = acpi_data_push(table_data, sizeof(*iort));
+ 
++    if (vms->iommu == VIRT_IOMMU_SMMUV3) {
++        nb_nodes = 3; /* RC, ITS, SMMUv3 */
++    } else {
++        nb_nodes = 2; /* RC, ITS */
 +    }
 +
-+    if (cmd_error) {
-+        trace_smmuv3_cmdq_consume_error(smmu_cmd_string(type), cmd_error);
-+        smmu_write_cmdq_err(s, cmd_error);
-+        smmuv3_trigger_irq(s, SMMU_IRQ_GERROR, R_GERROR_CMDQ_ERR_MASK);
+     iort_length = sizeof(*iort);
+-    iort->node_count = cpu_to_le32(2); /* RC and ITS nodes */
++    iort->node_count = cpu_to_le32(nb_nodes);
+     iort->node_offset = cpu_to_le32(sizeof(*iort));
+ 
+     /* ITS group node */
+@@ -418,6 +425,34 @@ build_iort(GArray *table_data, BIOSLinker *linker)
+     its->its_count = cpu_to_le32(1);
+     its->identifiers[0] = 0; /* MADT translation_id */
+ 
++    if (vms->iommu == VIRT_IOMMU_SMMUV3) {
++        int irq =  vms->irqmap[VIRT_SMMU];
++
++        /* SMMUv3 node */
++        smmu_offset = iort->node_offset + node_size;
++        node_size = sizeof(*smmu) + sizeof(*idmap);
++        iort_length += node_size;
++        smmu = acpi_data_push(table_data, node_size);
++
++        smmu->type = ACPI_IORT_NODE_SMMU_V3;
++        smmu->length = cpu_to_le16(node_size);
++        smmu->mapping_count = cpu_to_le32(1);
++        smmu->mapping_offset = cpu_to_le32(sizeof(*smmu));
++        smmu->base_address = cpu_to_le64(vms->memmap[VIRT_SMMU].base);
++        smmu->event_gsiv = cpu_to_le32(irq);
++        smmu->pri_gsiv = cpu_to_le32(irq + 1);
++        smmu->gerr_gsiv = cpu_to_le32(irq + 2);
++        smmu->sync_gsiv = cpu_to_le32(irq + 3);
++
++        /* Identity RID mapping covering the whole input RID range */
++        idmap = &smmu->id_mapping_array[0];
++        idmap->input_base = 0;
++        idmap->id_count = cpu_to_le32(0xFFFF);
++        idmap->output_base = 0;
++        /* output IORT node is the ITS group node (the first node) */
++        idmap->output_reference = cpu_to_le32(iort->node_offset);
 +    }
 +
-+    trace_smmuv3_cmdq_consume_out(Q_PROD(q), Q_CONS(q),
-+                                  Q_PROD_WRAP(q), Q_CONS_WRAP(q));
+     /* Root Complex Node */
+     node_size = sizeof(*rc) + sizeof(*idmap);
+     iort_length += node_size;
+@@ -438,8 +473,14 @@ build_iort(GArray *table_data, BIOSLinker *linker)
+     idmap->input_base = 0;
+     idmap->id_count = cpu_to_le32(0xFFFF);
+     idmap->output_base = 0;
+-    /* output IORT node is the ITS group node (the first node) */
+-    idmap->output_reference = cpu_to_le32(iort->node_offset);
 +
-+    return 0;
-+}
++    if (vms->iommu == VIRT_IOMMU_SMMUV3) {
++        /* output IORT node is the smmuv3 node */
++        idmap->output_reference = cpu_to_le32(smmu_offset);
++    } else {
++        /* output IORT node is the ITS group node (the first node) */
++        idmap->output_reference = cpu_to_le32(iort->node_offset);
++    }
+ 
+     iort->length = cpu_to_le32(iort_length);
+ 
+@@ -786,7 +827,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+ 
+     if (its_class_name() && !vmc->no_its) {
+         acpi_add_table(table_offsets, tables_blob);
+-        build_iort(tables_blob, tables->linker);
++        build_iort(tables_blob, tables->linker, vms);
+     }
+ 
+     /* XSDT is pointed to by RSDP */
+diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+index 80c8099..068ce28 100644
+--- a/include/hw/acpi/acpi-defs.h
++++ b/include/hw/acpi/acpi-defs.h
+@@ -700,6 +700,21 @@ struct AcpiIortItsGroup {
+ } QEMU_PACKED;
+ typedef struct AcpiIortItsGroup AcpiIortItsGroup;
+ 
++struct AcpiIortSmmu3 {
++    ACPI_IORT_NODE_HEADER_DEF
++    uint64_t base_address;
++    uint32_t flags;
++    uint32_t reserved2;
++    uint64_t vatos_address;
++    uint32_t model;
++    uint32_t event_gsiv;
++    uint32_t pri_gsiv;
++    uint32_t gerr_gsiv;
++    uint32_t sync_gsiv;
++    AcpiIortIdMapping id_mapping_array[0];
++} QEMU_PACKED;
++typedef struct AcpiIortSmmu3 AcpiIortSmmu3;
 +
- static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
-                                    unsigned size, MemTxAttrs attrs)
- {
-diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index b77f8d2..38b35fa 100644
---- a/hw/arm/trace-events
-+++ b/hw/arm/trace-events
-@@ -18,3 +18,8 @@ smmuv3_read_mmio(uint64_t addr, uint64_t val, unsigned size, uint32_t r) "addr:
- smmuv3_trigger_irq(int irq) "irq=%d"
- smmuv3_write_gerror(uint32_t toggled, uint32_t gerror) "toggled=0x%x, new GERROR=0x%x"
- smmuv3_write_gerrorn(uint32_t acked, uint32_t gerrorn) "acked=0x%x, new GERRORN=0x%x"
-+smmuv3_unhandled_cmd(uint32_t type) "Unhandled command type=%d"
-+smmuv3_cmdq_consume(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "prod=%d cons=%d prod.wrap=%d cons.wrap=%d"
-+smmuv3_cmdq_opcode(const char *opcode) "<--- %s"
-+smmuv3_cmdq_consume_out(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "prod:%d, cons:%d, prod_wrap:%d, cons_wrap:%d "
-+smmuv3_cmdq_consume_error(const char *cmd_name, uint8_t cmd_error) "Error on %s command execution: %d"
+ struct AcpiIortRC {
+     ACPI_IORT_NODE_HEADER_DEF
+     AcpiIortMemoryAccess memory_properties;
 -- 
 2.5.5
 

@@ -1,115 +1,118 @@
-Received: by 10.28.91.67 with SMTP id p64csp3834741wmb;
-        Tue, 20 Mar 2018 06:29:10 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELsvZRGm8HWdytCqdUMMBmKkK3qJE5bsPlaPqj63mjJKi1Hotpg4T2YXuPjY4KtTenb+Rv0m
-X-Received: by 10.237.59.253 with SMTP id s58mr23782345qte.83.1521552550533;
-        Tue, 20 Mar 2018 06:29:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521552550; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp3835466wmb;
+        Tue, 20 Mar 2018 06:29:50 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELvW1xdvWAV9b+SEJ4y/5y8acvVjTnqgO8wImMCd37sLO8REutye4iK0ksYqaq0s1S1kOT5A
+X-Received: by 10.55.64.22 with SMTP id n22mr23432290qka.186.1521552590359;
+        Tue, 20 Mar 2018 06:29:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521552590; cv=none;
         d=google.com; s=arc-20160816;
-        b=l5rzMX70RDZBjmSpICFoUEiGwtbiNLaqO0XDK7n3xDA8O0deW/m7enhgvM9xJQ75Lk
-         pRoq6I+JKpC4KalfQ6dzKj/D4KM/ySleDVGSr7mpXvJYo0L9tAxmcpmEEl+TqdxFtRnL
-         cq68DnylUL3hZPFrHRyKKWAv34Oe3jTp6oag3ReUpds0oK6JGvVPJ30wwxUqz7hdLy8a
-         F82SreZpsBue3QjUVap7UCeOvdTErYRSS4ZCFEfMfzzC1yMxPMSvCKMhfbTihEL3S1xJ
-         a/ipJnPjb5vXESvZFMllbsRXd23fyDukLgQ6sS+3QFaDSuompBg3BQ+sDQz9lRHD2nlE
-         27oA==
+        b=oBv3ElZA4BXRhJRKPHfx01pGrmsr39cJJ2+7UA8ehZAU8k8wHxIQVabRf3AFSpmjWJ
+         Of8sf5DFtI0U3RRRhjbgwR8LMefWnkuKgw2jnmmd1BjQ8Xc2F6SfleKKPwDXW/jxf/pH
+         Kdh7CoLwMT5Rduw8tCUW6uVGzVflct5QbrW8DtSpIG3kujqmjC4xQ+HpKZAcJ7K1jxpi
+         QheVDR6ckyaXFxxI4iu6m831LoaTDvPvFH/4yp4y8ZJJbaky+ZCOyIT682KWLs7mTO4K
+         ssztvDPUMviUxGmP2q1yqVp6IDAhwVCXOrFf5rnwL6fX27vP1oNDHxh/DX7xe+2fX7IJ
+         QI0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
+         :content-transfer-encoding:in-reply-to:content-disposition
+         :mime-version:references:message-id:to:from:date
          :arc-authentication-results;
-        bh=+bwIM9MKPC4MfDJ9MuDsmRISEbwv54SSpCtum9h2jmc=;
-        b=qd4QDFh01yDs2dQ77bS2mqn55VZVPC6CIwd1FS/q4O9hejmYjEqA/R63fpG+8x7edQ
-         6dGsEgNuHWOjfQAsDnBeG+6VWasLgcfRssSU2tJKKwBgns4by8eXJ9d+0DHNmUeYliET
-         7BO7hX985gN/lfJdbpP1bL3vw+8S5O5T+GygOSGOikpWdgjXXdZSYSaBh72ReuKLHC+E
-         UcmXZ3TkuJA7iQzA3GjZm8Bm+ueCc5kz1zijjYqTaVs1EONhR2PCrDYXOJamyAmdH1pF
-         ETmO6PrJ7KapqHKsrG2UosynW5E6gy2rPMRBXlb9E+jwE/PhPDJB+wWsHiTfF4aJw8w3
-         S6Eg==
+        bh=7gjoQSNw163tg464kRzpbftibXjwV42rCIjo2E3oy2w=;
+        b=QofCjh0p2V++1W+zj4nmwdGxSKeb+3WaFRgpal6LwZBQd3CoBBUFj49t173iS7jPiR
+         9/Sjf5yNZMvOLtVlPPLAyC9F8u9bN7ic2+/qFlVlteo29hkDf9WKrsjBJblGTxfdIXCf
+         GUFEql23pYoWiUsanCq+3Kf/wutvMEabRugvlrK/OnMSZcbO96XEkLniR/PTktiPkzna
+         oR79QckYQj6UvTQmAkDaAB+WdiRvGZhYYyctu1Gn5FA1mgRp9h4XwTe2CJVwriiLFy+P
+         pt04A5kc7sbLwty80PapVO9aHSmKbND9fjwhCmxoVQ+sDdP+Y5rlWosSI7wM3x41Miof
+         XnUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x83si237258qka.472.2018.03.20.06.29.10
+        by mx.google.com with ESMTPS id s123si1191795qke.479.2018.03.20.06.29.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 20 Mar 2018 06:29:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 20 Mar 2018 06:29:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:48533 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:48535 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eyHK9-0000qa-Tw
-	for alex.bennee@linaro.org; Tue, 20 Mar 2018 09:29:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45116)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eyHKn-00013v-IZ
+	for alex.bennee@linaro.org; Tue, 20 Mar 2018 09:29:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40118)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1eyD96-0000uh-9m
-	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 05:01:32 -0400
+	(envelope-from <mst@redhat.com>) id 1eyGO8-0004LL-16
+	for qemu-devel@nongnu.org; Tue, 20 Mar 2018 08:29:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1eyD93-0006Rj-97
-	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 05:01:28 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:51543)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1eyD92-0006Q3-TG; Tue, 20 Mar 2018 05:01:25 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue002 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	0MTbOB-1f8tgX41pf-00SM3a; Tue, 20 Mar 2018 09:58:39 +0100
-To: "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org
+	(envelope-from <mst@redhat.com>) id 1eyGO6-0004vW-AV
+	for qemu-devel@nongnu.org; Tue, 20 Mar 2018 08:29:12 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:37988 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <mst@redhat.com>)
+	id 1eyGNy-0004qu-8f; Tue, 20 Mar 2018 08:29:02 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id EBF1F412A2A0;
+	Tue, 20 Mar 2018 12:28:50 +0000 (UTC)
+Received: from redhat.com (ovpn-121-0.rdu2.redhat.com [10.10.121.0])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 34C972024CA6;
+	Tue, 20 Mar 2018 12:28:42 +0000 (UTC)
+Date: Tue, 20 Mar 2018 14:28:42 +0200
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>
+Message-ID: <20180320142756-mutt-send-email-mst@kernel.org>
 References: <1521510562-529051-1-git-send-email-mst@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <8f06e1e3-4823-d8e8-43bd-c092c523849e@vivier.eu>
-Date: Tue, 20 Mar 2018 09:58:23 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.6.0
+	<8f06e1e3-4823-d8e8-43bd-c092c523849e@vivier.eu>
+	<20180320094406.GD4530@redhat.com>
+	<20180320141107-mutt-send-email-mst@kernel.org>
+	<20180320121841.GN4530@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <1521510562-529051-1-git-send-email-mst@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:2YhHCWiI+xr40SuCO1shGPAgbxTClsX4d8ca4N6X8Th9+/nXwD4
-	Tr1xCoe/UbET7oyN4FDyAxhPfb0FPnIN+w4viGg0Mf604yVKDbBJyW+jJHIRTlGEtqJnATd
-	tY0JzORzbiJJGN5+K2/GqGuuKsonUcudWTUhwe+qF4QslTw4oqsGhtdoBtGXPjrMJDzqe0O
-	YxVR8LneBxQL9SDTBK/cg==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:0jf/PQSAPaI=:x+TVr5Wc8wIQmoFydtgRQa
-	uu8tXDcVA93Py1UsA5wdDFzdQ/8j+ko0n6lMeVV7oJG0BWOGnNHH97csnHkf7o1M7wsYMOqo/
-	MURsCEuebe0lRWPuaiU5IdnQGv5KZ2K9ngM6orJsX7FcNaAYWW8DumUww0IY1gjKHcmCL287l
-	zeXeRBa9QLR1ETdM4L+oEmolTClE+Rd7+0/r5kYTeXsuRKwP5iloJZgaVH2ZlGV+7vYY/6DaJ
-	4E9pjUOXG9Uxy7h0G8pJfloE1KdlFLjmnvkPLV3yPXWKeMmKfMbKEqhi/AFhIPWVCB8ZG5G52
-	UarbotMR1b3FP73l2ZtDSvENuH40SteT4x5uL6kKWOiVVPF5Qs3ZatfLfoY8pPDa07J9IgcXR
-	MHoJ4N09YLojKLvmjgT011tXnvUez+kEtx6YPC86jD67jz/qqjlSG9107CAI3b3CWj0RiWEV0
-	2eH+mBnqDnHu9DIeEMrbHH55NveYXANmKqp8HkzpcXAbirxpi8UGyolgrl0eDwOizSnyzeoa4
-	1Sl2v6NLVRtLUOQjdhP+QqH31txzpq11BVQw43U9TvsM2eqxAh2IHQuxnv1zfcqjNIYWkyhsa
-	YE3qh2H8Wmuw/tE9fc0+Nd+o6e0nh5cLYrxNBX7trDDX3nRPAizMr8owI152/yYyRPOUidrcD
-	8EfU0yBq8o4rE0c2awIlPOX0X0m634Ln6J1vCq/Ps9n2xGK57STiGxwAosc6Acoe5pfxIIQxF
-	wlRdA9SuKo4g8TsgYA6ZD51UNXIbX0Y7XmhCvMYxRr9T+fPFoM9oEGT2t2s=
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <20180320121841.GN4530@redhat.com>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.6]);
+	Tue, 20 Mar 2018 12:28:51 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Tue, 20 Mar 2018 12:28:51 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'mst@redhat.com' RCPT:''
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 212.227.126.133
-X-Mailman-Approved-At: Tue, 20 Mar 2018 09:28:26 -0400
-Subject: Re: [Qemu-arm] [PATCH] qemu: include generated files with <> and
+X-Received-From: 66.187.233.73
+X-Mailman-Approved-At: Tue, 20 Mar 2018 09:27:42 -0400
+Subject: Re: [Qemu-devel] [PATCH] qemu: include generated files with <> and
  not ""
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
-	sheepdog@lists.wpkg.org, Stefan Hajnoczi <stefanha@redhat.com>,
+	Dmitry Fleytman <dmitry.fleytman@gmail.com>, sheepdog@lists.wpkg.org,
+	Ronnie Sahlberg <ronniesahlberg@gmail.com>,
 	Li Zhijian <lizhijian@cn.fujitsu.com>,
 	David Hildenbrand <david@redhat.com>,
 	Jeff Cody <jcody@redhat.com>, Zhang Chen <zhangckid@gmail.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	BALATON Zoltan <balaton@eik.bme.hu>, Keith Busch <keith.busch@intel.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Gerd Hoffmann <kraxel@redhat.com>, Jiri Pirko <jiri@resnulli.us>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>, Eric Blake <eblake@redhat.com>,
+	qemu-devel@nongnu.org, "Richard W.M. Jones" <rjones@redhat.com>,
+	Keith Busch <keith.busch@intel.com>, Max Filippov <jcmvbkbc@gmail.com>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Jiri Pirko <jiri@resnulli.us>, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
 	Michael Roth <mdroth@linux.vnet.ibm.com>,
 	Marcelo Tosatti <mtosatti@redhat.com>, Josh Durgin <jdurgin@redhat.com>,
 	Stefano Stabellini <sstabellini@kernel.org>,
@@ -119,13 +122,12 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Yongbok Kim <yongbok.kim@mips.com>, Markus Armbruster <armbru@redhat.com>,
 	Stefan Berger <stefanb@linux.vnet.ibm.com>,
 	Christian Borntraeger <borntraeger@de.ibm.com>, kvm@vger.kernel.org,
-	=?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+	=?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
 	Shannon Zhao <zhaoshenglong@huawei.com>,
 	Anthony Perard <anthony.perard@citrix.com>,
 	Liu Yuan <namei.unix@gmail.com>,
 	David Gibson <david@gibson.dropbear.id.au>,
-	Andrzej Zaborowski <balrogg@gmail.com>, Jason Wang <jasowang@redhat.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Jason Wang <jasowang@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
 	Thomas Huth <thuth@redhat.com>, Riku Voipio <riku.voipio@iki.fi>,
 	Fam Zheng <famz@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
 	Corey Minyard <minyard@acm.org>, Amit Shah <amit@kernel.org>,
@@ -134,111 +136,134 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Alistair Francis <alistair@alistair23.me>, Peter Lieven <pl@kamp.de>,
 	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
 	Fabien Chouteau <chouteau@adacore.com>, Greg Kurz <groug@kaod.org>,
-	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
 	Alex Williamson <alex.williamson@redhat.com>,
 	qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
 	Yuval Shaia <yuval.shaia@oracle.com>,
-	Ronnie Sahlberg <ronniesahlberg@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
 	xen-devel@lists.xenproject.org, John Snow <jsnow@redhat.com>,
 	Richard Henderson <rth@twiddle.net>,
 	Kevin Wolf <kwolf@redhat.com>, Alexander Graf <agraf@suse.de>,
-	"=?UTF-8?Q?Daniel_P._Berrang=c3=a9?=" <berrange@redhat.com>,
-	qemu-block@nongnu.org, Hitoshi Mitake <mitake.hitoshi@lab.ntt.co.jp>,
+	qemu-block@nongnu.org, Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Hitoshi Mitake <mitake.hitoshi@lab.ntt.co.jp>,
 	Wen Congyang <wencongyang2@huawei.com>, qemu-s390x@nongnu.org,
-	Cornelia Huck <cohuck@redhat.com>,
-	"Richard W.M. Jones" <rjones@redhat.com>,
+	Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
 	Juan Quintela <quintela@redhat.com>,
 	Max Reitz <mreitz@redhat.com>, Michael Walle <michael@walle.cc>,
-	qemu-ppc@nongnu.org, =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>,
+	qemu-ppc@nongnu.org, Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
 	Igor Mammedov <imammedo@redhat.com>, Hannes Reinecke <hare@suse.com>,
 	Aurelien Jarno <aurelien@aurel32.net>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WzcHBnFS2InH
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +gRWia4ZLwOi
 
-Le 20/03/2018 à 02:54, Michael S. Tsirkin a écrit :
-> QEMU coding style at the moment asks for all non-system
-> include files to be used with #include "foo.h".
-> However this rule actually does not make sense and
-> creates issues for when the included file is generated.
+On Tue, Mar 20, 2018 at 12:18:41PM +0000, Daniel P. Berrang=E9 wrote:
+> On Tue, Mar 20, 2018 at 02:12:24PM +0200, Michael S. Tsirkin wrote:
+> > On Tue, Mar 20, 2018 at 09:44:06AM +0000, Daniel P. Berrang=E9 wrote:
+> > > On Tue, Mar 20, 2018 at 09:58:23AM +0100, Laurent Vivier wrote:
+> > > > Le 20/03/2018 =E0 02:54, Michael S. Tsirkin a =E9crit=A0:
+> > > > > QEMU coding style at the moment asks for all non-system
+> > > > > include files to be used with #include "foo.h".
+> > > > > However this rule actually does not make sense and
+> > > > > creates issues for when the included file is generated.
+> > > >=20
+> > > > If you change that, we can have issue when a system include has t=
+he same
+> > > > name as our local include. With "<FILE>", system header are taken=
+ first.
+> > >=20
+> > > > > In C, include "file" means look in current directory,
+> > > > > then on include search path. Current directory here
+> > > > > means the source file directory.
+> > > > > By comparison include <file> means look on include search path.
+> > > >=20
+> > > > Not exactly, there is the notion of "system header" too.
+> > > >=20
+> > > > https://gcc.gnu.org/onlinedocs/cpp/Include-Syntax.html
+> > > >=20
+> > > > #include <file>
+> > > > This variant is used for system header files. It searches for a f=
+ile
+> > > > named file in a standard list of system directories. You can prep=
+end
+> > > > directories to this list with the -I option (see Invocation).
+> > > >=20
+> > > > #include "file"
+> > > > This variant is used for header files of your own program. It sea=
+rches
+> > > > for a file named file first in the directory containing the curre=
+nt
+> > > > file, then in the quote directories and then the same directories=
+ used
+> > > > for <file>. You can prepend directories to the list of quote dire=
+ctories
+> > > > with the -iquote option.
+> > > >=20
+> > > > > As generated files are not in the search directory (unless the =
+build
+> > > > > directory happens to match the source directory), it does not m=
+ake sense
+> > > > > to include them with "" - doing so is merely more work for prep=
+rocessor
+> > > > > and a source or errors if a stale file happens to exist in the =
+source
+> > > > > directory.
+> > > >=20
+> > > > I agree there is a problem with stale files. But linux, for insta=
+nce,
+> > > > asks for a "make mrproper" to avoid this.
+> > >=20
+> > > We can follow what autoconf does, and add a check to configure to s=
+ee if
+> > > there are generated files left in the source dir, when configuring =
+with
+> > > builddir !=3D srcdir, and exit with error, telling user to clean th=
+eir
+> > > src dir first.
+> > >=20
+> > > > > This changes include directives for all generated files, across=
+ the
+> > > > > tree. The idea is to avoid sending a huge amount of email.  But=
+ when
+> > > > > merging, the changes will be split with one commit per file, e.=
+g. for
+> > > > > ease of bisect in case of build failures, and to ease merging.
+> > > > >=20
+> > > > > Note that should some generated files be missed by this tree-wi=
+de
+> > > > > refactoring, it isn't a big deal - this merely maintains the st=
+atus quo,
+> > > > > and this can be addressed by a separate patch on top.
+> > > > >=20
+> > > > > Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+> > > >=20
+> > > > I think your idea conflicts with what Markus has started to do:
+> > >=20
+> > > Yes, I don't think we should revert what Markus started.   Both way=
+s of
+> > > referencing QEMU headers have downsides, but I think "..." has fewe=
+r
+> > > downsides that "<....">.
+> >=20
+> > Could you please explain what the advantage of "" is?
+> > It seems to be gone since we moved headers away from
+> > source.
+>=20
+> We moved *some* headers into the include/ directory tree.
+>=20
+> I still count 650+ headers which are alongside the .c files.
+>=20
+> Regards,
+> Daniel
 
-If you change that, we can have issue when a system include has the same
-name as our local include. With "<FILE>", system header are taken first.
+So for these, we should use "".  None of these are generated files though=
+.
 
-> In C, include "file" means look in current directory,
-> then on include search path. Current directory here
-> means the source file directory.
-> By comparison include <file> means look on include search path.
-
-Not exactly, there is the notion of "system header" too.
-
-https://gcc.gnu.org/onlinedocs/cpp/Include-Syntax.html
-
-#include <file>
-This variant is used for system header files. It searches for a file
-named file in a standard list of system directories. You can prepend
-directories to this list with the -I option (see Invocation).
-
-#include "file"
-This variant is used for header files of your own program. It searches
-for a file named file first in the directory containing the current
-file, then in the quote directories and then the same directories used
-for <file>. You can prepend directories to the list of quote directories
-with the -iquote option.
-
-> As generated files are not in the search directory (unless the build
-> directory happens to match the source directory), it does not make sense
-> to include them with "" - doing so is merely more work for preprocessor
-> and a source or errors if a stale file happens to exist in the source
-> directory.
-
-I agree there is a problem with stale files. But linux, for instance,
-asks for a "make mrproper" to avoid this.
-
-> This changes include directives for all generated files, across the
-> tree. The idea is to avoid sending a huge amount of email.  But when
-> merging, the changes will be split with one commit per file, e.g. for
-> ease of bisect in case of build failures, and to ease merging.
-> 
-> Note that should some generated files be missed by this tree-wide
-> refactoring, it isn't a big deal - this merely maintains the status quo,
-> and this can be addressed by a separate patch on top.
-> 
-> Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
-
-I think your idea conflicts with what Markus has started to do:
-
-commit d8e39b70625d4ba1e998439d1a077b4b978930e7
-Author: Markus Armbruster <armbru@redhat.com>
-Date:   Thu Feb 1 12:18:28 2018 +0100
-
-    Use #include "..." for our own headers, <...> for others
-
-    System headers should be included with <...>, our own headers with
-    "...".  Offenders tracked down with an ugly, brittle and probably
-    buggy Perl script.  Previous iteration was commit a9c94277f0.
-
-    Delete inclusions of "string.h" and "strings.h" instead of fixing them
-    to <string.h> and <strings.h>, because we always include these via
-    osdep.h.
-
-    Put the cleaned up system header includes first.
-
-    While there, separate #include from file comment with exactly one
-    blank line.
-
-commit a9c94277f07d19d3eb14f199c3e93491aa3eae0e
-Author: Markus Armbruster <armbru@redhat.com>
-Date:   Wed Jun 22 19:11:19 2016 +0200
-
-    Use #include "..." for our own headers, <...> for others
-
-    Tracked down with an ugly, brittle and probably buggy Perl script.
-
-    Also move includes converted to <...> up so they get included before
-    ours where that's obviously okay.
-
-Thanks,
-Laurent
+> --=20
+> |: https://berrange.com      -o-    https://www.flickr.com/photos/dberr=
+ange :|
+> |: https://libvirt.org         -o-            https://fstop138.berrange=
+.com :|
+> |: https://entangle-photo.org    -o-    https://www.instagram.com/dberr=
+ange :|

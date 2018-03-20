@@ -1,100 +1,92 @@
-Received: by 10.28.4.212 with SMTP id 203csp4801056wme;
-        Tue, 1 May 2018 05:19:45 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZqCIvpTk57q+QnuCWc5mmhQvvfJCgqoQPpUUqsd4YOxiAjGaie7edRMVGu9ExRXiVn7LMsS
-X-Received: by 2002:ac8:41d5:: with SMTP id o21-v6mr13535670qtm.207.1525177185399;
-        Tue, 01 May 2018 05:19:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1525177185; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp3535263wmb;
+        Tue, 20 Mar 2018 01:08:15 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELsZ5BUc4hxqW8hiPpAl1TpHcHtO2tDWaRTuU4fsvbiTH20/OYVhgOhAL6VOw79c7U1lvRXj
+X-Received: by 10.55.24.1 with SMTP id j1mr22705066qkh.23.1521533295256;
+        Tue, 20 Mar 2018 01:08:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521533295; cv=none;
         d=google.com; s=arc-20160816;
-        b=jA8MwV8ffa/T2Lha302BN9PR8dNR9oNPFD8IYY8wIHt6yKHkgiCWLTdo0F2vGjGRCY
-         dQZDigSs8dnv5cQEAl66i4bOt7mZiH6wBoBLfsuOyy+exw9ind9SuDrvKqlm+oDRJ1m6
-         0VKwYxA4T5TYWThVH7FZSuQuXmCdQrt2D0AeUa/+WfF9dCq2r6WLGZ3poDdM/A3I7gqb
-         g6KhywHLVYAJe+3IREY+YUpzlf9B5+je5Mgnf9oPTBbaFIaM4WpneZYjXn28fkXyWMmx
-         4WCyGqtZZ+zh2SfU+8UqcK6EN7h00IpmzWUGhYU3bc7M8Pf1GdrvXTcNzrWvHY7FLsNm
-         QScA==
+        b=xqkJCJif5Yh0eYXPHY+D4vNUyW5WhLhJ9hvo+AgdCq+6PifLDg4rTNPjlkPspzGhzp
+         ur0QnemaYS5zZJvTcSSyoPfHJnfzWloKrz5QuvZtiKzrZZ9RLRKJ3n4/TR+ls+IzQ1G6
+         XWHN9tgNUDhCWc80msmJSZOeWFthOTPXPF5CAtzF1M9jAWMeSTS5srXednosPQqjlMpm
+         EwnFwkIbicnFZTf0etzAsYbPbAE6qy7tM5LLmTgknmAwSOQoia87tQVyQ15xro9cOHL/
+         8Dchh9R5RkjN2L4I7OnkqiBc+B4ADJRxqmCjw3n2kJsq5gjXzzMaL+sHTN9Wrhew36hP
+         +PVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=IK2gWq3T+0FYTLHoAgn2oI4bc3zdhDyKhkgj5tjxjO4=;
-        b=ejyHtqlMa8gGlZ7r0cokWUEfFoWqI131GryT04PQjgrYZuBCD+lik6OWesaWVfagNg
-         mw+ygnp3lLIv1XG1asCH4bS9LABvW6CxkQIG+H7dDteOqlSxtxqpOh7KGx5S2NKOIb9Q
-         uSiZiTcE8Y4fiXqizBwxg4MSLGMtciEFVHefFCdlgaEIL/TXH7D2JPMex6+TuuCc3Y/V
-         5EJTOwg7Jo3ZsBIPSVqlCsNdW/aCgZ5T/Z7++ra56zThdwrCbQ9hoEijc/YMpkvHKZGD
-         Aj7ntwx6mTnkL+gK86/ptmFJXlUR2go8jSoLY6CmAVj1elDtwXHWFoXE5vMgbqw5822e
-         D4Lg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=wcJhX+ZYmWP1cOQ9IR3nGH+1n1kZ3rMWF+4lO6LuyzM=;
+        b=woZ5l72ewYVPRDdU9juF/zQu9OPMJxcmr7IJvFIdWmZLZtt6mkIkOU41Ak1ARECG9S
+         KfxjE8O+djJU+MyJH9Ks3wyUmzmnUSKrFfEfcgcFebslTPZvdxr7QBkcDqw47SSRi/cH
+         OiG+5o+sM4wGMdf2lDvlaG4sL8LKQVFKOmcjTxs0179Mi5nP0QUaMlia6hqZzMcTboTh
+         YTCwoXdSOVJqTPmX4FMabfVnlRP5qBKIDszpmxcrDqN+dZS9bckuT8m/T9tqUs3hKBuf
+         OrAenLP+W0Cm2L50dGlD3vYd8yFDc7caeMCX6z5KP25l73A3EZb20QnhsLA1CAJKdrOW
+         8GVg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LFtcb0an;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x142si2515952qka.34.2018.05.01.05.19.44
+        by mx.google.com with ESMTPS id s10si1288566qtn.80.2018.03.20.01.08.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 01 May 2018 05:19:45 -0700 (PDT)
+        Tue, 20 Mar 2018 01:08:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LFtcb0an;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42292 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:46742 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fDUG0-0001mg-Kr
-	for alex.bennee@linaro.org; Tue, 01 May 2018 08:19:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54376)
+	id 1eyCJa-0003nF-PA
+	for alex.bennee@linaro.org; Tue, 20 Mar 2018 04:08:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58846)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fDUFq-0001mL-9B
-	for qemu-arm@nongnu.org; Tue, 01 May 2018 08:19:35 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1eyCJO-0003mI-Fw
+	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 04:08:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fDUFp-0007gJ-FV
-	for qemu-arm@nongnu.org; Tue, 01 May 2018 08:19:34 -0400
-Received: from mail-ot0-x22a.google.com ([2607:f8b0:4003:c0f::22a]:41248)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fDUFp-0007g2-Aa
-	for qemu-arm@nongnu.org; Tue, 01 May 2018 08:19:33 -0400
-Received: by mail-ot0-x22a.google.com with SMTP id t1-v6so12729832oth.8
-	for <qemu-arm@nongnu.org>; Tue, 01 May 2018 05:19:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=IK2gWq3T+0FYTLHoAgn2oI4bc3zdhDyKhkgj5tjxjO4=;
-	b=LFtcb0an1s5MUVHV/iC+e+UhbLoS8Et9EDTGbHSLG75rn8HRPCDq2w/CgwFJi3PX4O
-	n+DR551L4jevSJYzw9PWdHykHP0n4XWrGIRcIt6/OYyJ81c5kEWPAeApvF7eBqdSkC6B
-	4PZAflnWNjNN1WtPPd7416F+kHzelmHX3p5yI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=IK2gWq3T+0FYTLHoAgn2oI4bc3zdhDyKhkgj5tjxjO4=;
-	b=TwdMIuck+zn+Kd/ttMc1XZ1hcBEL6bn9GPvGyctmFP6Yb20SnL71/GLa5Lx9IA7S2R
-	qvZCtdNQgY6Cbo967+w4+uICP9rbEHJj1wYmqSyyVbuwfe5XK90qZMamgUtL8+01sPPD
-	Av+2y00dU2Jyf7XHAhrYtXri6tV9x+EV0bPPIvrA4mvHwuAdrTUn+tRcT3ATUJatFYxC
-	UwkXGb8n8xMjBDq+ab9xMY1N06ip9BE8rvVoRsasJKTnRT+ezP27zz3YulMY8HZOK8Dv
-	b6tJCW5ItRAL5adCgIGhXpNOJKY9wLqDViPyU8tNuZ8czcushnDmQ0StTJL0VKL8+wJX
-	chkw==
-X-Gm-Message-State: ALQs6tCmbuUWu8Gf/A0bd0/25a02DjwgDFXSN3BCM5UJk77l4Jj63la2
-	wdfK/OCbPX3oP2xE2HrPYiaSsZZVLUn9qMlmViLohg==
-X-Received: by 2002:a9d:3bf5:: with SMTP id
-	k108-v6mr11070548otc.308.1525177172672; 
-	Tue, 01 May 2018 05:19:32 -0700 (PDT)
+	(envelope-from <eric.auger@redhat.com>) id 1eyCJJ-0006LV-Nj
+	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 04:08:02 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:59652 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1eyCJJ-0006Ks-IT; Tue, 20 Mar 2018 04:07:57 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id BFF98406804F;
+	Tue, 20 Mar 2018 08:07:46 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-135.ams2.redhat.com
+	[10.36.116.135])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id E1DA77C59;
+	Tue, 20 Mar 2018 08:07:40 +0000 (UTC)
+To: Shannon Zhao <zhaoshenglong@huawei.com>, qemu-arm@nongnu.org
+References: <1521530809-11780-1-git-send-email-zhaoshenglong@huawei.com>
+	<1521530809-11780-2-git-send-email-zhaoshenglong@huawei.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <95234cb8-c6a5-be7b-f3da-60c24a3c2d2d@redhat.com>
+Date: Tue, 20 Mar 2018 09:07:39 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP;
-	Tue, 1 May 2018 05:19:12 -0700 (PDT)
-In-Reply-To: <1525176522-200354-5-git-send-email-imammedo@redhat.com>
-References: <1525176522-200354-1-git-send-email-imammedo@redhat.com>
-	<1525176522-200354-5-git-send-email-imammedo@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 1 May 2018 13:19:12 +0100
-Message-ID: <CAFEAcA8iq9gJuC=ODK7wY_3m4B66o0LqJi9aK2PEfHha4q68nA@mail.gmail.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::22a
-Subject: Re: [Qemu-arm] [PATCH v3 4/5] arm: boot: set boot_info starting
- from first_cpu
+In-Reply-To: <1521530809-11780-2-git-send-email-zhaoshenglong@huawei.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.5]);
+	Tue, 20 Mar 2018 08:07:46 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Tue, 20 Mar 2018 08:07:46 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 1/2] arm_gicv3_kvm: increase
+ clroffset accordingly
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,28 +98,43 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xMmN/Dlrm7WX
+X-TUID: 836Yk8By2+oE
 
-On 1 May 2018 at 13:08, Igor Mammedov <imammedo@redhat.com> wrote:
-> even though nothing is currently broken, make sure that boot_info
-> is set on all CPUs.
->
-> Ref:
-> "Message-ID: <CAFEAcA_NMWuA8WSs3cNeY6xX1kerO_uAcN_3=fK02BEhHJW86g@mail.gmail.com>"
+Hi Shannon,
 
-Can you include the rationale in the commit message rather
-than just pointing to a message-id, please?
+On 20/03/18 08:26, Shannon Zhao wrote:
+> It forgot to increase clroffset during the loop. So it only clear the
+> first 4 bytes.
 
->
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> --
+Fixes 367b9f527becdd20ddf116e17a3c0c2bbc486920
+ ("hw/intc/arm_gicv3_kvm: Implement get/put functions")
+> 
+> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-Otherwise
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Nice catch!
 
-thanks
--- PMM
+Thanks
+
+Eric
+
+> ---
+>  hw/intc/arm_gicv3_kvm.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
+> index ec37177..3536795 100644
+> --- a/hw/intc/arm_gicv3_kvm.c
+> +++ b/hw/intc/arm_gicv3_kvm.c
+> @@ -243,6 +243,7 @@ static void kvm_dist_putbmp(GICv3State *s, uint32_t offset,
+>          if (clroffset != 0) {
+>              reg = 0;
+>              kvm_gicd_access(s, clroffset, &reg, true);
+> +            clroffset += 4;
+>          }
+>          reg = *gic_bmp_ptr32(bmp, irq);
+>          kvm_gicd_access(s, offset, &reg, true);
+> 

@@ -1,72 +1,72 @@
-Received: by 10.28.91.67 with SMTP id p64csp3848966wmb;
-        Tue, 20 Mar 2018 06:41:44 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELt5+rPj6FfhvirqkAnRMpVaPpawSz3RHlLN3jkclGagfr7t7NWxuGUtRjWA9pw4qql7fHhJ
-X-Received: by 10.200.46.139 with SMTP id h11mr6738829qta.253.1521553304111;
-        Tue, 20 Mar 2018 06:41:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521553304; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp3849019wmb;
+        Tue, 20 Mar 2018 06:41:46 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELs8eLPb5ITaXfiR5/VBhuChjwlEfupFva2SKm3L/nwasu/M9NJnRgyBDzDSHTRb+CSzZ7wv
+X-Received: by 2002:a25:d752:: with SMTP id o79-v6mr9049361ybg.154.1521553306669;
+        Tue, 20 Mar 2018 06:41:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521553306; cv=none;
         d=google.com; s=arc-20160816;
-        b=E1PqdeHtIZFegRnUrX9bSd2tjiXAcvUA7FCzUG37I+z97CB8BvBx8/dK+2AUUJsboP
-         6mREZkQBfYyJnoG9w3cWgcLsjycXvd9l3HlMyp05uiQy0wiWeq7borR4l87jN6tGtNBP
-         kJk2w8q9DOgU29+Hkr6FDDS3RTKW0sBNbBC9d/0nhdUN5X+HlyOGMwq4+joL4agzT8mM
-         xtXxTMnJvXCbzCY7Q7oKv8yX9dnsMn9veAD9mOLhPvB1SBMyGAUIzNOwJwmtDzX5cd+e
-         X/jgF5iF06ti4WP1c5UPzlW1j/6jPW21wqswL8BTFDzWybYs2cXETqhBpe9iBOeSvMjX
-         VUKA==
+        b=sF9UDGUOb5QmHfEmzDGdcGMJpd8bSzTtxCXVWPj0SqUISjm8ty4inHgSXEVPi8PeHV
+         kib8c5cq+F2ES0iC+TulSqi+RoqlPvoimvClY1xiX00Y8jGA+BEyPkvvFDlQj0Umev1+
+         F+ItFmctv9TQlWFsrMnsuoDb7d1S40jh8vVxF3zBpKYpqUcH2+TnRldAKybQBQcQ0Bvv
+         OT5HHR4rwdlSShAJZCEQzQDXipeRWGCoiAjSrJm34jgqwZF8Jc2inzoSpodv9QkrycE4
+         qlfmhX1YCGrUCOPdYp735tE95gPx18ONSMeXah3pasV91RoQE0Ov+cWthamjCUgxApqK
+         HJNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=W27jp9ZZKBsVTF4/ByPRGcfZ/hlRyxCxkyjcFXZiww4=;
-        b=fomiveZETZlwqSAXJKtGDBX8MHN7iN/1TDevdXO5bnVpeyq235w5NZrtzB08s5iYpQ
-         kcO81ctxZKw4WCQ63OYwVPS8AuKYpDfjwhpvSS/sbP/Vk+MupcjTOhuytmiJzAvi0xID
-         Gvmp471QiUYV4V+g1C+Oy/emCt0dnTZkOAhFL7OCAztKUDBuuqpGAAn0lGm/8UnYT4Ry
-         DlGAIwo6aT65UzRPT19RcBi3N/cSTTcjdsSooQ6rHlxY8t9DHO2KqAOlJFoRr2t2Zq2p
-         uPESDa3/LfPAw8m7KBViEsvI3F7/W50IxEkTMR3N6ZYbzrN4Gob+WArZzuT4Tmfv3wyf
-         ctyg==
+        bh=o4nRWIPb9ruu30W/QmaR7hUnBzHJofdsGMUv+bXSGeo=;
+        b=w2FoGHsUPothfrrXHHGnz1lUD9CwtmPI6WsZUBMU5R5sj6Fjn9hO5iB4XXpAqKhHCo
+         K6FUAcWMvON1d+gZ+tV6yY0wOf+KjCc0pvcNvr2NT3Gj3Kd1cuqXmDRJQ2yZRKlFOJUM
+         KJ9d4yHg+ZisZTKaCnNqIgJCAbHOUN173hlITbtkjsp9vftoUm7B51k0/IEDkrCpqGwL
+         nDl3fH2K6zrCDNBGFsFjT20wZSIFCy7tviiVppUJGKlhWs4gTc3+CP4qc6mIw9WqMdiI
+         2kS6xQcs1owgelFTHlCfmM+fAv/eLYuPVo9sobm29hPUT1pzIfomTSBmeq4tYRz3cdq8
+         Z7TQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 141si2164129qke.370.2018.03.20.06.41.43
+        by mx.google.com with ESMTPS id z37si2029294qtj.105.2018.03.20.06.41.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 20 Mar 2018 06:41:44 -0700 (PDT)
+        Tue, 20 Mar 2018 06:41:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48685 helo=lists.gnu.org)
+Received: from localhost ([::1]:48686 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eyHWJ-00037O-Id
-	for alex.bennee@linaro.org; Tue, 20 Mar 2018 09:41:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32856)
+	id 1eyHWM-000393-4Z
+	for alex.bennee@linaro.org; Tue, 20 Mar 2018 09:41:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32880)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eyHW3-00035F-Aj
-	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 09:41:28 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1eyHW5-00036o-5P
+	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 09:41:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1eyHW2-00041L-5y
-	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 09:41:27 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1eyHW4-00043H-5G
+	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 09:41:29 -0400
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:40476)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1eyHW1-0003s8-Vf; Tue, 20 Mar 2018 09:41:26 -0400
+	id 1eyHW3-0003s8-TZ; Tue, 20 Mar 2018 09:41:28 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1eyHVu-00045A-Fa; Tue, 20 Mar 2018 13:41:18 +0000
+	id 1eyHVs-00044O-QV; Tue, 20 Mar 2018 13:41:16 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 20 Mar 2018 13:41:13 +0000
-Message-Id: <20180320134114.30418-4-peter.maydell@linaro.org>
+Date: Tue, 20 Mar 2018 13:41:11 +0000
+Message-Id: <20180320134114.30418-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.16.2
 In-Reply-To: <20180320134114.30418-1-peter.maydell@linaro.org>
 References: <20180320134114.30418-1-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH for-2.12 3/4] target/arm: Set FSR for BKPT,
- BRK when raising exception
+Subject: [Qemu-arm] [PATCH for-2.12 1/4] target/arm: Honour MDCR_EL2.TDE
+ when routing exceptions due to BKPT/BRK
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,48 +81,133 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZA2h7TfNcGxI
+X-TUID: 006iEOWdjvRe
 
-Now that we have a helper function specifically for the BRK and
-BKPT instructions, we can set the exception.fsr there rather
-than in arm_cpu_do_interrupt_aarch32(). This allows us to
-use our new arm_debug_exception_fsr() helper.
+The MDCR_EL2.TDE bit allows the exception level targeted by debug
+exceptions to be set to EL2 for code executing at EL0.  We handle
+this in the arm_debug_target_el() function, but this is only used for
+hardware breakpoint and watchpoint exceptions, not for the exception
+generated when the guest executes an AArch32 BKPT or AArch64 BRK
+instruction.  We don't have enough information for a translate-time
+equivalent of arm_debug_target_el(), so instead make BKPT and BRK
+call a special purpose helper which can do the routing, rather than
+the generic exception_with_syndrome helper.
 
-In particular this fixes a bug where we were hardcoding the
-short-form IFSR value, which is wrong if the target exception
-level has LPAE enabled.
-
-Fixes: https://bugs.launchpad.net/qemu/+bug/1756927
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper.c    | 1 -
- target/arm/op_helper.c | 2 ++
- 2 files changed, 2 insertions(+), 1 deletion(-)
+ target/arm/helper.h        |  1 +
+ target/arm/op_helper.c     |  8 ++++++++
+ target/arm/translate-a64.c | 15 +++++++++++++--
+ target/arm/translate.c     | 19 ++++++++++++++-----
+ 4 files changed, 36 insertions(+), 7 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 09893e3f72..dcb8476d9e 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -7910,7 +7910,6 @@ static void arm_cpu_do_interrupt_aarch32(CPUState *cs)
-         offset = 0;
-         break;
-     case EXCP_BKPT:
--        env->exception.fsr = 2;
-         /* Fall through to prefetch abort.  */
-     case EXCP_PREFETCH_ABORT:
-         A32_BANKED_CURRENT_REG_SET(env, ifsr, env->exception.fsr);
+diff --git a/target/arm/helper.h b/target/arm/helper.h
+index 0d2094f2be..34e8cc8904 100644
+--- a/target/arm/helper.h
++++ b/target/arm/helper.h
+@@ -47,6 +47,7 @@ DEF_HELPER_FLAGS_3(sel_flags, TCG_CALL_NO_RWG_SE,
+                    i32, i32, i32, i32)
+ DEF_HELPER_2(exception_internal, void, env, i32)
+ DEF_HELPER_4(exception_with_syndrome, void, env, i32, i32, i32)
++DEF_HELPER_2(exception_bkpt_insn, void, env, i32)
+ DEF_HELPER_1(setend, void, env)
+ DEF_HELPER_2(wfi, void, env, i32)
+ DEF_HELPER_1(wfe, void, env)
 diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
-index 75efff9edf..8e1e521193 100644
+index 7a88fd2c92..4b123d2bd6 100644
 --- a/target/arm/op_helper.c
 +++ b/target/arm/op_helper.c
-@@ -488,6 +488,8 @@ void HELPER(exception_with_syndrome)(CPUARMState *env, uint32_t excp,
-  */
- void HELPER(exception_bkpt_insn)(CPUARMState *env, uint32_t syndrome)
- {
-+    /* FSR will only be used if the debug target EL is AArch32. */
-+    env->exception.fsr = arm_debug_exception_fsr(env);
-     raise_exception(env, EXCP_BKPT, syndrome, arm_debug_target_el(env));
+@@ -483,6 +483,14 @@ void HELPER(exception_with_syndrome)(CPUARMState *env, uint32_t excp,
+     raise_exception(env, excp, syndrome, target_el);
  }
+ 
++/* Raise an EXCP_BKPT with the specified syndrome register value,
++ * targeting the correct exception level for debug exceptions.
++ */
++void HELPER(exception_bkpt_insn)(CPUARMState *env, uint32_t syndrome)
++{
++    raise_exception(env, EXCP_BKPT, syndrome, arm_debug_target_el(env));
++}
++
+ uint32_t HELPER(cpsr_read)(CPUARMState *env)
+ {
+     return cpsr_read(env) & ~(CPSR_EXEC | CPSR_RESERVED);
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 31ff0479e6..510951f7c7 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -321,6 +321,18 @@ static void gen_exception_insn(DisasContext *s, int offset, int excp,
+     s->base.is_jmp = DISAS_NORETURN;
+ }
+ 
++static void gen_exception_bkpt_insn(DisasContext *s, int offset,
++                                    uint32_t syndrome)
++{
++    TCGv_i32 tcg_syn;
++
++    gen_a64_set_pc_im(s->pc - offset);
++    tcg_syn = tcg_const_i32(syndrome);
++    gen_helper_exception_bkpt_insn(cpu_env, tcg_syn);
++    tcg_temp_free_i32(tcg_syn);
++    s->base.is_jmp = DISAS_NORETURN;
++}
++
+ static void gen_ss_advance(DisasContext *s)
+ {
+     /* If the singlestep state is Active-not-pending, advance to
+@@ -1839,8 +1851,7 @@ static void disas_exc(DisasContext *s, uint32_t insn)
+             break;
+         }
+         /* BRK */
+-        gen_exception_insn(s, 4, EXCP_BKPT, syn_aa64_bkpt(imm16),
+-                           default_exception_el(s));
++        gen_exception_bkpt_insn(s, 4, syn_aa64_bkpt(imm16));
+         break;
+     case 2:
+         if (op2_ll != 0) {
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index ba6ab7d287..68f0c585f4 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -1248,6 +1248,18 @@ static void gen_exception_insn(DisasContext *s, int offset, int excp,
+     s->base.is_jmp = DISAS_NORETURN;
+ }
+ 
++static void gen_exception_bkpt_insn(DisasContext *s, int offset, int syn)
++{
++    TCGv_i32 tcg_syn;
++
++    gen_set_condexec(s);
++    gen_set_pc_im(s, s->pc - offset);
++    tcg_syn = tcg_const_i32(syn);
++    gen_helper_exception_bkpt_insn(cpu_env, tcg_syn);
++    tcg_temp_free_i32(tcg_syn);
++    s->base.is_jmp = DISAS_NORETURN;
++}
++
+ /* Force a TB lookup after an instruction that changes the CPU state.  */
+ static inline void gen_lookup_tb(DisasContext *s)
+ {
+@@ -8774,9 +8786,7 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+             case 1:
+                 /* bkpt */
+                 ARCH(5);
+-                gen_exception_insn(s, 4, EXCP_BKPT,
+-                                   syn_aa32_bkpt(imm16, false),
+-                                   default_exception_el(s));
++                gen_exception_bkpt_insn(s, 4, syn_aa32_bkpt(imm16, false));
+                 break;
+             case 2:
+                 /* Hypervisor call (v7) */
+@@ -11983,8 +11993,7 @@ static void disas_thumb_insn(DisasContext *s, uint32_t insn)
+         {
+             int imm8 = extract32(insn, 0, 8);
+             ARCH(5);
+-            gen_exception_insn(s, 2, EXCP_BKPT, syn_aa32_bkpt(imm8, true),
+-                               default_exception_el(s));
++            gen_exception_bkpt_insn(s, 2, syn_aa32_bkpt(imm8, true));
+             break;
+         }
  
 -- 
 2.16.2

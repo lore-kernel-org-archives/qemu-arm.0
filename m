@@ -1,234 +1,107 @@
-Received: by 10.28.91.67 with SMTP id p64csp4125282wmb;
-        Tue, 20 Mar 2018 10:50:18 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELunqq9NFsnvCipfdUoP4jSnXUtm6YSUsmwQ2ZaQKqkVZ/9+TtAy25a3uaSZeTWX4T+A5A5I
-X-Received: by 10.200.39.67 with SMTP id h3mr12869939qth.115.1521568217873;
-        Tue, 20 Mar 2018 10:50:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521568217; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp5497281wmb;
+        Wed, 21 Mar 2018 13:16:53 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELshB3UymkY6xGi8vqk5eT3+zwsOkrM5fuEMzwQxCvW2VhCFIjPr8Wz0/dDmoYftE12mvvcS
+X-Received: by 10.101.97.205 with SMTP id j13mr2225668pgv.266.1521663413074;
+        Wed, 21 Mar 2018 13:16:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521663413; cv=none;
         d=google.com; s=arc-20160816;
-        b=tWqcaG/4oevIBWeBP3MrgX59N2ItdJbI5WizVJwxLmV5Mq/Vx2JL66hRvoK/Bg++67
-         4lq39xsQ8nrC/BRmBwmyfFkMAazcAWxbC2l1zLp72eJXAS4wMMwydWzeuVMJWVVI4Cuy
-         YA3EFgjQhpLK4aa+B9PzMG7+ERTNrHFTUbGFINEciRakDyzj6hf+2AQBBoWNsiPg4PRm
-         BO48Fyp2eyBeDY55PdsbxbjEsTY3Zi3hrlRgZD+coR+hGhRx0FR+OcplqzSb5+lEM4kJ
-         p/tgpXX1arvHhWu9n+mlxgi7c9MLQGOyawShlM6agcBHg0fbsHZ3Fnzxee6GycqlPoEm
-         nc2A==
+        b=o2RybK2ZQ4ozzZzNMbn4sPo+Jzjz/XfsktlGazborYzhmIGQLrK2O3doBt+8SWCKAi
+         S3CZ6EZr+1UIZsZUNr6GeWMupAmKeCqBpnCc8OL2xkSgP6IhaoGd9vWBRF+fyWYncpht
+         PIdKR0QSZkikqP9liJjdlRnCoF2hgYh2GDCFGA1m61sQZNuLu7jK57rhpyIEvhhYis63
+         9c8Thn+T7sd6rYSsvkjdHDS1C7oMeLd1mbVr4V4hFZeubXJkSFQWCmAvuBVeO/X2IwT7
+         Amnhgk/PUrM+xTFQ06DX7zS6nYeSpnpQa+AVumftiAnlAJU8RD9SHG19+vrfcCY6YCAe
+         UBBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:content-disposition
-         :mime-version:references:message-id:to:from:date
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=IkhGHHI2pXxb9ryYAm40dG1nZEcLfxmVL6sRfApFOC4=;
-        b=HFN15bUJlKl6oLUyywUPHnbw9PJAc9admUmKDPLC/SMmv0Y0SV5E7HUCMwbBluTxhs
-         FCxXedbg1meatrG9u1vGCZ4Nb8jA2YrBYR/5Q9P2Pp9dQUN8LnSqV27N/8I5bmXTIc/Z
-         mjiwNLSUmFVwffLJ7eBIeFeIF6LBEds3rA0Cw4hk8j7pst2/zIRcHZKz9KUDzaqdGMWo
-         wJDntazbhsuRx5pOqlOtgCgX5aop5UCdlA1Qqnl/nPRBd1GBwLv6AJEjAAjisxaSpLUY
-         aQFkS2wxyRDgHKmEeVW1E4wW3A31qsKh0i8qxACooMfcmTeWSUMj+Se54lE2GcvJq304
-         zj2w==
+        bh=nblGJnBRifQ4hjO38nbiChsolu5z/ZAfscy357YyB1E=;
+        b=gOuBLWY1CfFT1CXIxgjmwtEkQLoeFHJa8RSxxhalzSkCzGrIydEh79to8xsXqAnQ0k
+         ZpVlL+gplYyFVLHkChMF4cwrnbDLjyWGzAiLDODS/YTll98kuXH5KtBfLeU8n7J7l/jv
+         xUUJdUqvTN20uB1Vw8TRUi8QcJGYehI1+nQB0XbrDkX2qYaEHkmoiHoX/gpuCg6KOpVc
+         2bS3VG8RXHCRopKpqSye3MuFOS0asCIWU2OsLwhCjdWWKPn/oKTsnlrKelca3y7EeRIt
+         Si3SZb78lEh5kbTJ6MOyhBQs8fGRQWwc6FbZk7fQk3/e0uwkGC4om/2kDR3JO9M4NBeN
+         hn0A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e94si3616802qkh.27.2018.03.20.10.50.17
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 20 Mar 2018 10:50:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       dkim=pass header.i=@braap.org header.s=mesmtp header.b=T8/iQpjP;
+       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=ctI+GrmO;
+       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.29 as permitted sender) smtp.mailfrom=cota@braap.org
+Return-Path: <cota@braap.org>
+Received: from out5-smtp.messagingengine.com (out5-smtp.messagingengine.com. [66.111.4.29])
+        by mx.google.com with ESMTPS id j20-v6si4248144pll.86.2018.03.21.13.16.52
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 21 Mar 2018 13:16:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cota@braap.org designates 66.111.4.29 as permitted sender) client-ip=66.111.4.29;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51027 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eyLOr-00046x-EK
-	for alex.bennee@linaro.org; Tue, 20 Mar 2018 13:50:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56345)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1eyLOg-00045J-Lr
-	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 13:50:08 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1eyLOc-0001Fp-AM
-	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 13:50:06 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:37404 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mst@redhat.com>)
-	id 1eyLOc-0001FV-4k; Tue, 20 Mar 2018 13:50:02 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6D65D8D774;
-	Tue, 20 Mar 2018 17:49:50 +0000 (UTC)
-Received: from redhat.com (ovpn-125-54.rdu2.redhat.com [10.10.125.54])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 3D933215CDA7;
-	Tue, 20 Mar 2018 17:49:41 +0000 (UTC)
-Date: Tue, 20 Mar 2018 19:49:41 +0200
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>
-Message-ID: <20180320194454-mutt-send-email-mst@kernel.org>
-References: <1521510562-529051-1-git-send-email-mst@redhat.com>
-	<b068cb91-b8ba-175c-40f5-a7c9c8163575@weilnetz.de>
-	<20180320185130-mutt-send-email-mst@kernel.org>
-	<20180320173401.GG4530@redhat.com>
+       dkim=pass header.i=@braap.org header.s=mesmtp header.b=T8/iQpjP;
+       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=ctI+GrmO;
+       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.29 as permitted sender) smtp.mailfrom=cota@braap.org
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id 27D2A214CE;
+	Wed, 21 Mar 2018 16:16:52 -0400 (EDT)
+Received: from frontend1 ([10.202.2.160])
+  by compute4.internal (MEProxy); Wed, 21 Mar 2018 16:16:52 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-sender
+	:x-me-sender:x-sasl-enc; s=mesmtp; bh=nblGJnBRifQ4hjO38nbiChsolu
+	5z/ZAfscy357YyB1E=; b=T8/iQpjPc9Iq9MjIM3oLCW/wY/QB/yB6NQftmb5cq+
+	gdeGbLjrUQmYhzAfiZf1sYmlW8No2l3+lTX/9SXL56tCBfrguW1TwKun6yDOW0/n
+	BKMzUtmFp0k5X9kAAAkbOC4sorZZ0c1gQ5rGtQVZzMFrWviD/LGAkD7WwpK3L+RS
+	M=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-transfer-encoding:content-type
+	:date:from:in-reply-to:message-id:mime-version:references
+	:subject:to:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=nblGJn
+	BRifQ4hjO38nbiChsolu5z/ZAfscy357YyB1E=; b=ctI+GrmOvgpD/RUlQ0Q+U0
+	9x4y3BTxK61np7iUQvhigCV3XIjKke4VtVYF9KWbDnlKSOBtqvoQmaN52Sj5N4eG
+	yznAJgYUBy3A4Mt7AVJ0MExie+PPe09X+SQYMgNzyW+8wWjN5LHiQy+S5eX9LIzq
+	gYdc7tq15CTgsMUg/BxYy2nP12ltpOROB3fpknnfIYYpGMbKsoIEO/r4LOJ6gWs0
+	H1naoDKpW+++LM7PDK77Iud8naha0cwJ99scGfMekHnWvInSDFkAVVap8bXMvR9P
+	dSQ/Cnwsrr/tgT19KUGQG9rZQeBqSIGgee7L32mOMqQcVTOj8NSR9ZCFJbOPgyGg
+	==
+X-ME-Sender: <xms:tL2yWnnDYGveZpfSCunGbWWUB2bxWeeWMTY9wsq-nG-IJlBOz9_7mQ>
+Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
+	by mail.messagingengine.com (Postfix) with ESMTPA id D3A647E16E;
+	Wed, 21 Mar 2018 16:16:51 -0400 (EDT)
+Date: Wed, 21 Mar 2018 16:16:51 -0400
+From: "Emilio G. Cota" <cota@braap.org>
+To: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
+Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Riku Voipio <riku.voipio@iki.fi>, qemu-devel@nongnu.org,
+	Laurent Vivier <laurent@vivier.eu>,
+	"open list:ARM" <qemu-arm@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Richard Henderson <rth@twiddle.net>
+Subject: Re: [Qemu-devel] [PATCH] fpu/softfloat: use hardware sqrt if we can
+ (EXPERIMENT!)
+Message-ID: <20180321201651.GA32458@flamenco>
+References: <CAFEAcA_Tp9cH5CBi4C6CRHpZ4ozygGSFYhdLaURBQOVZ9zVxvA@mail.gmail.com>
+ <20180220210137.18018-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <20180320173401.GG4530@redhat.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Tue, 20 Mar 2018 17:49:50 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Tue, 20 Mar 2018 17:49:50 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'mst@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] qemu: include generated files
- with <> and not ""
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Dmitry Fleytman <dmitry.fleytman@gmail.com>, sheepdog@lists.wpkg.org,
-	Ronnie Sahlberg <ronniesahlberg@gmail.com>,
-	Li Zhijian <lizhijian@cn.fujitsu.com>,
-	David Hildenbrand <david@redhat.com>,
-	Jeff Cody <jcody@redhat.com>, Zhang Chen <zhangckid@gmail.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
-	Keith Busch <keith.busch@intel.com>,
-	Max Filippov <jcmvbkbc@gmail.com>, Greg Kurz <groug@kaod.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	Yongbok Kim <yongbok.kim@mips.com>, Eduardo Habkost <ehabkost@redhat.com>,
-	Hannes Reinecke <hare@suse.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Alberto Garcia <berto@igalia.com>,
-	zhanghailiang <zhang.zhanghailiang@huawei.com>,
-	Ben Warren <ben@skyportsystems.com>,
-	Stefan Berger <stefanb@linux.vnet.ibm.com>, John Snow <jsnow@redhat.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
-	Alexander Graf <agraf@suse.de>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	=?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Marcel Apfelbaum <marcel@redhat.com>,
-	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Jason Wang <jasowang@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
-	Riku Voipio <riku.voipio@iki.fi>, Jiri Pirko <jiri@resnulli.us>,
-	Michael Roth <mdroth@linux.vnet.ibm.com>,
-	Corey Minyard <minyard@acm.org>, Amit Shah <amit@kernel.org>,
-	Stefan Weil <sw@weilnetz.de>, Xie Changlong <xiechanglong.d@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Peter Lieven <pl@kamp.de>, Josh Durgin <jdurgin@redhat.com>,
-	Fabien Chouteau <chouteau@adacore.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
-	Yuval Shaia <yuval.shaia@oracle.com>,
-	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
-	Liu Yuan <namei.unix@gmail.com>, xen-devel@lists.xenproject.org,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Fam Zheng <famz@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	Kevin Wolf <kwolf@redhat.com>, kvm@vger.kernel.org, qemu-block@nongnu.org,
-	Hitoshi Mitake <mitake.hitoshi@lab.ntt.co.jp>,
-	Wen Congyang <wencongyang2@huawei.com>, qemu-s390x@nongnu.org,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	"Richard W.M. Jones" <rjones@redhat.com>,
-	Juan Quintela <quintela@redhat.com>,
-	Max Reitz <mreitz@redhat.com>, Michael Walle <michael@walle.cc>,
-	qemu-ppc@nongnu.org, Cornelia Huck <cohuck@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
-	Aurelien Jarno <aurelien@aurel32.net>, Laurent Vivier <laurent@vivier.eu>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +VyTyD6ZfHtK
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20180220210137.18018-1-alex.bennee@linaro.org>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-TUID: P31QEVN1h/WS
 
-On Tue, Mar 20, 2018 at 05:34:01PM +0000, Daniel P. Berrang=C3=A9 wrote:
-> On Tue, Mar 20, 2018 at 07:10:42PM +0200, Michael S. Tsirkin wrote:
-> > On Tue, Mar 20, 2018 at 05:33:42PM +0100, Stefan Weil wrote:
-> > > Using <> for system include files and "" for local include files is=
- a
-> > > convention, and as far as I know most projects adhere to that
-> > > convention. So does QEMU currently. Such conventions are not only
-> > > important for humans, but also for tools. There are more tools than=
- the
-> > > C preprocessor which handle <> and "" differently. For example the =
-GNU
-> > > compiler uses -MD or -MMD to automatically generate dependency rule=
-s for
-> > > make. While -MD generates dependencies to all include files, -MMD d=
-oes
-> > > so only for user include files, but not for system include files. "=
-user"
-> > > and "system" means the different forms how include statements are
-> > > written. QEMU still seems to use -MMD:
-> > >=20
-> > > rules.mak:QEMU_DGFLAGS +=3D -MMD -MP -MT $@ -MF $(@D)/$(*F).d
-> >=20
-> > To my knowledge, and according to my limited testing,
-> > system headers in this context means
-> > the default ones not supplied with -I.
->=20
-> GCC's definition of system header is here:
->=20
->   https://gcc.gnu.org/onlinedocs/cpp/System-Headers.html
->=20
->=20
-> Regards,
-> Daniel
+On Tue, Feb 20, 2018 at 21:01:37 +0000, Alex Bennée wrote:
+> This is an attempt to save some of the cost of sqrt by using the
+> inbuilt support of the host hardware. The idea is assuming we start
+> with a valid input we can use the hardware. If any tininess issues
+> occur this will trip and FPU exception where:
+> 
+>   - we turn off cpu->use_host_fpu
+>   - mask the FPU exceptions
+>   - return to what we were doing
 
-Proves my point, does it not?  You will note that it does not refer to
-include <> anywhere.
+Please see this thread for an alternative approach:
 
-    2.8 System Headers
-    The header files declaring interfaces to the operating system and run=
-time libraries often cannot be written in strictly conforming C. Therefor=
-e, GCC gives code found in system headers special treatment. All warnings=
-, other than those generated by =E2=80=98#warning=E2=80=99 (see Diagnosti=
-cs), are suppressed while GCC is processing a system header. Macros defin=
-ed in a system header are immune to a few warnings wherever they are expa=
-nded. This immunity is granted on an ad-hoc basis, when we find that a wa=
-rning generates lots of false positives because of code in macros defined=
- in system headers.
+  [Qemu-devel] [PATCH v1 00/14] fp-test + hostfloat
+  https://lists.gnu.org/archive/html/qemu-devel/2018-03/msg05908.html
 
-    Normally, only the headers found in specific directories are consider=
-ed system headers. These directories are determined when GCC is compiled.=
- There are, however, two ways to make normal headers into system headers:
-
-    Header files found in directories added to the search path with the -=
-isystem and -idirafter command-line options are treated as system headers=
- for the purposes of diagnostics.
-    There is also a directive, #pragma GCC system_header, which tells GCC=
- to consider the rest of the current include file a system header, no mat=
-ter where it was found. Code that comes before the =E2=80=98#pragma=E2=80=
-=99 in the file is not affected. #pragma GCC system_header has no effect =
-in the primary source file.
-
-
-Conclusion: #include <> is ignored for purposes of determining whether a =
-header is
-a system one or not.
-
-
-> --=20
-> |: https://berrange.com      -o-    https://www.flickr.com/photos/dberr=
-ange :|
-> |: https://libvirt.org         -o-            https://fstop138.berrange=
-.com :|
-> |: https://entangle-photo.org    -o-    https://www.instagram.com/dberr=
-ange :|
+		Emilio

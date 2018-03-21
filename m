@@ -1,90 +1,91 @@
-Received: by 10.28.91.67 with SMTP id p64csp5053751wmb;
-        Wed, 21 Mar 2018 06:15:42 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4/03WohZ/Mk9O1IJmfsTh1IK7+4HGoJN0rzpPeodx4he/OdDB4ZHM9mORVY32bEs19Pdtp3
-X-Received: by 10.55.49.8 with SMTP id x8mr481069qkx.66.1521638142424;
-        Wed, 21 Mar 2018 06:15:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521638142; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp5064728wmb;
+        Wed, 21 Mar 2018 06:26:09 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELu58lyis/XuAqH8TaAcRSYPNO0P59uYQvKUqpEm1iP7N1ym2ONz8m4YqFpOzllnsCR2raR8
+X-Received: by 10.55.74.195 with SMTP id x186mr13270235qka.201.1521638769551;
+        Wed, 21 Mar 2018 06:26:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521638769; cv=none;
         d=google.com; s=arc-20160816;
-        b=klr95pqWl3SSdZoCCLqJpSd2AxfkSsZNHXK9GSBzzv+f5bBckw3ev8OtqwYftHVc/5
-         BpINJXrQT04Rth1RrhRMerCq0Sd6zAEkSXOiIGZWXxAC77CdGvjqWAXzY5lJq+sAsNa3
-         cTCiJGN/fMgcoNZzl5IsK9P5mCzR4lpqNgmPPXe4+EVHVukSbRO9WQBePy6AV2QoqMm6
-         xxXivbKMhFB0IReNO8buIS8mmS0KdFh8IiFDs9p4oFAgkDKm1Sioza8yNgYOIOBAOgYt
-         T++oVV1BhcWl/2ipQF2CsqSJ1CsaGm1sL4bHwZHUrEeR21Dz3n88l6mT+dM69tQ5kWUt
-         Sl7w==
+        b=nDDEzM/tALAPvFRvEJ6omU98jWO11Q70/6KnRnGeuE4p/eLE6ZWJxGsS49dySjZL+7
+         AvJaikiX2tCTHIZ32nsBs7oCfbLIPen0it1jFDDKPKfC7wgrb24qEvkgBoMXcnuT6/rO
+         e38rUREvDLnyNG1hhnhhf8GIFLVqp8L6LQxOhXvUGkWwtnvqJl7T1UunfxbVuaC+GPAK
+         Z9bFBIwtdfL/mw99frYHUeoe2QAcxhoj5iHG8bWDkf6T3WiITYp4tI561zfMXXSkxqCu
+         O0jobsioKy8yVTAPjSnS4wvRoNy2YGWOng5VadzB3LIvOtMmQOVzxwNV+ptMmDxl6t1U
+         oUJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
+         :list-unsubscribe:list-id:precedence:subject:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
          :arc-authentication-results;
-        bh=MQ0X0qhsdeIIwyGuz55r+pPvEg9fNh2JVKcDiQkqB2g=;
-        b=mkB9uREVsPvp4pIRo0Xb1wiLocsdk1CTiQUOeHioSm76rbH0fZV9N2f26I9XE/UOdQ
-         evhaFpyhwpPPgFcHb+CWdLXGX5BHnk3zwMs0eegTDzMzHNURIyXGjqN89sm1CZ/X9ZR4
-         RKyndB/P2MB6sAsKvAWuw3WmdyDjMPXFS1yXwmCQylANVgX5P6trnhkhCVWzREhKFiqg
-         h+ynkUVp5vTGy7+GDYjyWgRDhG9pUtrqAnkvsISveD7yMcJAc0Zq+dfPnOB/JELa3R88
-         2bVGDb0bGkPFNCD3ubFRBPQHKP+DfBsOZj4+rDPlmLi35z3aNraL5QBOZUfzfDhD9ieJ
-         zq1A==
+        bh=hzAtrzaRwNZRzj68J56MPupgvRQZ328MciO9tU7xIwU=;
+        b=kBX81q6b/2bstu4oQwRqmeHQHbqArlJrLgsHTwVFGNIab/8E4cylR1Qwla0GSg7rrl
+         GJocQ8nPB/Yl8UZapA9SvGW08z2PtyMnhuXseNRH2m+CHgC1TJgZcjTyYg20/nX+LCEQ
+         00guS+WljvVHL8LHHjeA0XwMkg1HGpIOKS8Ineimez89a6i4HWrGJMdLjBkn7AzYMWYg
+         +5KdZ0G+0K/eh9YayPIfstDRw3KjgMJQwJmOeQzWmcEdhGca5iD9wfPxZJibZF37XX1b
+         Mm7oxYdBMrkETNnxRF7NAuDAQRhVkJBU1ESwqBplrmAAoUCNcjAwWHV5bi8syEBmm48/
+         iH0g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g12si912454qtg.444.2018.03.21.06.15.42
+        by mx.google.com with ESMTPS id h12si4478915qte.21.2018.03.21.06.26.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 21 Mar 2018 06:15:42 -0700 (PDT)
+        Wed, 21 Mar 2018 06:26:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54965 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:55025 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eydaf-0003Rv-Uf
-	for alex.bennee@linaro.org; Wed, 21 Mar 2018 09:15:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43643)
+	id 1eydkn-0005Fz-2k
+	for alex.bennee@linaro.org; Wed, 21 Mar 2018 09:26:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45402)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1eydaT-0003OB-Qi
-	for qemu-arm@nongnu.org; Wed, 21 Mar 2018 09:15:30 -0400
+	(envelope-from <mst@redhat.com>) id 1eydjT-0004GQ-1z
+	for qemu-arm@nongnu.org; Wed, 21 Mar 2018 09:24:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1eydaP-0007mk-QI
-	for qemu-arm@nongnu.org; Wed, 21 Mar 2018 09:15:29 -0400
-Received: from mail.weilnetz.de ([37.120.169.71]:43468
-	helo=v2201612906741603.powersrv.de)
+	(envelope-from <mst@redhat.com>) id 1eydjS-0005y0-5R
+	for qemu-arm@nongnu.org; Wed, 21 Mar 2018 09:24:47 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54290 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <sw@weilnetz.de>)
-	id 1eydaP-0007lk-B0; Wed, 21 Mar 2018 09:15:25 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by v2201612906741603.powersrv.de (Postfix) with ESMTP id B81C9DAB74B;
-	Wed, 21 Mar 2018 14:15:23 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
-Received: from v2201612906741603.powersrv.de ([127.0.0.1])
-	by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
-	port 10024)
-	with ESMTP id xgXFDEqWd3_B; Wed, 21 Mar 2018 14:15:22 +0100 (CET)
-Received: from edv32.bib.uni-mannheim.de (pD9E011F5.dip0.t-ipconnect.de
-	[217.224.17.245])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(Exim 4.71) (envelope-from <mst@redhat.com>)
+	id 1eydjS-0005xf-04; Wed, 21 Mar 2018 09:24:46 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by v2201612906741603.powersrv.de (Postfix) with ESMTPSA id A5064DA4CE2; 
-	Wed, 21 Mar 2018 14:15:20 +0100 (CET)
-To: "Michael S. Tsirkin" <mst@redhat.com>, Thomas Huth <thuth@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id AD666402678E;
+	Wed, 21 Mar 2018 13:24:41 +0000 (UTC)
+Received: from redhat.com (ovpn-124-179.rdu2.redhat.com [10.10.124.179])
+	by smtp.corp.redhat.com (Postfix) with SMTP id D275C2166BDA;
+	Wed, 21 Mar 2018 13:24:37 +0000 (UTC)
+Date: Wed, 21 Mar 2018 15:24:37 +0200
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20180321152306-mutt-send-email-mst@kernel.org>
 References: <1521510562-529051-1-git-send-email-mst@redhat.com>
 	<8f06e1e3-4823-d8e8-43bd-c092c523849e@vivier.eu>
 	<20180320135548-mutt-send-email-mst@kernel.org>
 	<459fa95d-8f0a-22fa-80fb-4af22ccf49b3@redhat.com>
 	<20180321150543-mutt-send-email-mst@kernel.org>
-From: Stefan Weil <sw@weilnetz.de>
-Message-ID: <7890493f-cbda-f56a-54a1-448cde871a14@weilnetz.de>
-Date: Wed, 21 Mar 2018 14:15:20 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.6.0
+	<7890493f-cbda-f56a-54a1-448cde871a14@weilnetz.de>
 MIME-Version: 1.0
-In-Reply-To: <20180321150543-mutt-send-email-mst@kernel.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: de-DE
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <7890493f-cbda-f56a-54a1-448cde871a14@weilnetz.de>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.6]);
+	Wed, 21 Mar 2018 13:24:42 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Wed, 21 Mar 2018 13:24:42 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'mst@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 37.120.169.71
+X-Received-From: 66.187.233.73
 Subject: Re: [Qemu-arm] [Qemu-ppc] [PATCH] qemu: include generated files
  with <> and not ""
 X-BeenThere: qemu-arm@nongnu.org
@@ -118,13 +119,13 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Michael Roth <mdroth@linux.vnet.ibm.com>,
 	"Richard W.M. Jones" <rjones@redhat.com>,
 	Christian Borntraeger <borntraeger@de.ibm.com>,
-	=?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
-	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+	=?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
+	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
 	Shannon Zhao <zhaoshenglong@huawei.com>,
 	Marcel Apfelbaum <marcel@redhat.com>, Liu Yuan <namei.unix@gmail.com>,
 	Richard Henderson <rth@twiddle.net>,
 	Andrzej Zaborowski <balrogg@gmail.com>, Jason Wang <jasowang@redhat.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
 	Alistair Francis <alistair@alistair23.me>, Jiri Pirko <jiri@resnulli.us>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Corey Minyard <minyard@acm.org>, Amit Shah <amit@kernel.org>,
@@ -139,7 +140,7 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Zhang Chen <zhangckid@gmail.com>, xen-devel@lists.xenproject.org,
 	John Snow <jsnow@redhat.com>, David Gibson <david@gibson.dropbear.id.au>,
 	Kevin Wolf <kwolf@redhat.com>, kvm@vger.kernel.org,
-	"=?UTF-8?Q?Daniel_P._Berrang=c3=a9?=" <berrange@redhat.com>,
+	Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
 	qemu-block@nongnu.org, Hitoshi Mitake <mitake.hitoshi@lab.ntt.co.jp>,
 	Markus Armbruster <armbru@redhat.com>, qemu-s390x@nongnu.org,
 	Marcelo Tosatti <mtosatti@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
@@ -149,19 +150,25 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Igor Mammedov <imammedo@redhat.com>, qemu-ppc@nongnu.org,
 	Wen Congyang <wencongyang2@huawei.com>, Cornelia Huck <cohuck@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0yCG4OnqoW6S
+X-TUID: McOWu1KKhXra
 
-Am 21.03.2018 um 14:08 schrieb Michael S. Tsirkin:
-> It still leaves us with a host of problems e.g. the problem of stale
-> headers in the source directory.
+On Wed, Mar 21, 2018 at 02:15:20PM +0100, Stefan Weil wrote:
+> Am 21.03.2018 um 14:08 schrieb Michael S. Tsirkin:
+> > It still leaves us with a host of problems e.g. the problem of stale
+> > headers in the source directory.
+> 
+> There have already been suggestions in the past to forbid in-tree
+> builds. Would it help if configure would refuse to run from the root
+> source directory? At least .gitignore could be much smaller then.
+> 
+> Stefan
 
-There have already been suggestions in the past to forbid in-tree
-builds. Would it help if configure would refuse to run from the root
-source directory? At least .gitignore could be much smaller then.
+I think I have a better idea, not relying on external tools.
+Will post a proposal shortly.
 
-Stefan
-
+-- 
+MST

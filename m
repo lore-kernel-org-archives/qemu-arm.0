@@ -1,110 +1,112 @@
-Received: by 10.28.91.67 with SMTP id p64csp5208164wmb;
-        Wed, 21 Mar 2018 08:36:50 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELsxKPsubfjkhA+2VITFOalNInTPjkIvGTQX+/Dcr0GB47XwIJXO9+tsoRn9g8Qsq+le9sbb
-X-Received: by 10.237.55.193 with SMTP id j59mr8203598qtb.110.1521646610093;
-        Wed, 21 Mar 2018 08:36:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521646610; cv=none;
+Received: by 10.28.91.67 with SMTP id p64csp5215692wmb;
+        Wed, 21 Mar 2018 08:43:59 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELuw3vhQ9nUOJKUem+wXyg2SesTqiiZpUn21oUE1oMBIFJ/Aegj7QMxxIV9aUIAaQC+My1ry
+X-Received: by 10.200.22.50 with SMTP id p47mr29995014qtj.135.1521647039664;
+        Wed, 21 Mar 2018 08:43:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521647039; cv=none;
         d=google.com; s=arc-20160816;
-        b=PyIOOfSKSHZcYW/X8u8W41y/202OnO9GH/mNX8bPBqmIFMqj2kiwQ78X0g4lKKb+tP
-         UuDPJ6et4CmrjH8xwCf2ZuhbjRy9bKsb7Ff/Cdz7152i++n+ENuu3KhUEHBHuzbFMs0X
-         fSJ00Cp3gNF5x6PSp5fA4SjktcT3nf5qJ+j/RgH6NHX0214VZtyUoXCrmtPBmPZaKLhm
-         hmhgsrVc6TknO4OfUr3XdvwJZhJMlGBydX8m0pQ8UpAXhail84fITikMQwwb5scO5ZY3
-         lI40JjTZs15Q6yxVZDo9IBUoFSYFB+zboIEFrRuvhQgFxR8lvfhhNrvr+ZGonOBE44Jn
-         TH7A==
+        b=GIG+DfBTkjCn5DaR6P81tpHQfgidRsLZWMa5X2Vnl50EkRD00DEp0Ouyz71ay/qmkZ
+         Wo0WuKpBm3Ob9WqL7LtTQqXXnhNAn7D9b55sZFlSilNFdzABjnjGsOrR6IkUcAaHxqVk
+         oRph47tTg2QXuAwsQJGn+bkDJqdU9CeLXkVcOigH69D5bSh7aG7N11yvh4icY8baTpXy
+         Tmv1x3ryVgduZTaLFV7+t8Xk7tfrqLDEhoO1QNLYZKempzKsea1iNiPzCBfbYX5HYvoA
+         JDI+ilRCEaccNHMTxeaVksQYUNoI2p0aLerl/yU1WkQSqv3bZXac2frsK+obN9LndjB4
+         /DTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:content-disposition
+         :mime-version:references:message-id:to:from:date
          :arc-authentication-results;
-        bh=rMI+0AHao3TXiOzMNOa7qwbt142WvSF0OMpWUvWT4pE=;
-        b=m+jpX07+byWuG+nUS2+UH01u5Q84RMxaFj4slODtevMXQw271b+c4BHWj0/GzqUCSD
-         /ssdFlpjSbEElHY4ujTts5YbymbZv8CUW7b2vOHAByr0SuSHv/X6tR3zx9MnGn0pEo0z
-         UF1Rp1JtUN5DFpMuMVtbU9m5n/ImRs3KM7vEz2u6N2mAi5MBCO72J9WgQ0V35JMHxPkm
-         zRiRWf7geNwyW7satqNsxsztT4/EXAhG+9Odhd6YmHPSZ/FZ5aA2ISM2t1QLewEkG03G
-         2bXpdB5LvvCEsGNKIGLYNXrDbIuJ4E907a7mq5GZqiuBCQMevOl++Kui+k0vbFHxSpbr
-         lEhw==
+        bh=WtfkeFxkOMnJVTYkN+FgRmV9F2ABPNsLusvfHiMszfY=;
+        b=GP/QYoF+mgZJvNHSjiRzR3cOcbJBlAcBNUfBw6QOu/QJm8ArEdwmlnBfd5geKXruJo
+         dmkXo2udPDstZz3yzIf0zp8hf/fN16lUj+NR+MonPrc0kS4oeKAHWG/8ipQ8nfzh+DMc
+         NJRwFIf4bnpLYV6+K1m3c7tl2swukdP/bx4NUbNE5GA44WtYHMOovNeEg2lSHTUb91uU
+         eapf9YMmZhLxFmHY6BhV/4+sU787j+QcQRu4bz1v/NNwpUj7yxD8imXoKU6uv3RANAiE
+         +V04w4xbjr/0c4J3sQvtuEuZM6TTmJPpnNHoM4oU/pe/ZKUKLyRc3x83T+2vIzeKTm/v
+         aZAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c84si5985954qkh.117.2018.03.21.08.36.49
+        by mx.google.com with ESMTPS id d28si586632qkh.274.2018.03.21.08.43.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 21 Mar 2018 08:36:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 21 Mar 2018 08:43:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55819 helo=lists.gnu.org)
+Received: from localhost ([::1]:55873 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eyfnF-0003g6-Ij
-	for alex.bennee@linaro.org; Wed, 21 Mar 2018 11:36:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52544)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1eyfuB-0002rC-6a
+	for alex.bennee@linaro.org; Wed, 21 Mar 2018 11:43:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54632)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1eyflU-0002QH-Vr
-	for qemu-devel@nongnu.org; Wed, 21 Mar 2018 11:35:01 -0400
+	(envelope-from <mst@redhat.com>) id 1eyfqe-0007WB-01
+	for qemu-arm@nongnu.org; Wed, 21 Mar 2018 11:40:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1eyflT-0001Sa-Vp
-	for qemu-devel@nongnu.org; Wed, 21 Mar 2018 11:35:01 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:42866 helo=mx1.redhat.com)
+	(envelope-from <mst@redhat.com>) id 1eyfqc-00049e-Ew
+	for qemu-arm@nongnu.org; Wed, 21 Mar 2018 11:40:20 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54174 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <kwolf@redhat.com>)
-	id 1eyflN-0001OB-4A; Wed, 21 Mar 2018 11:34:53 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
+	(Exim 4.71) (envelope-from <mst@redhat.com>)
+	id 1eyfqc-00049B-5P; Wed, 21 Mar 2018 11:40:18 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id EFFABEAEB3;
-	Wed, 21 Mar 2018 15:34:51 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-117-20.ams2.redhat.com
-	[10.36.117.20])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id B43272166BDA;
-	Wed, 21 Mar 2018 15:34:40 +0000 (UTC)
-Date: Wed, 21 Mar 2018 16:34:39 +0100
-From: Kevin Wolf <kwolf@redhat.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Message-ID: <20180321153439.GC3898@localhost.localdomain>
+	by mx1.redhat.com (Postfix) with ESMTPS id ACE0EA27ED;
+	Wed, 21 Mar 2018 15:40:16 +0000 (UTC)
+Received: from redhat.com (ovpn-124-179.rdu2.redhat.com [10.10.124.179])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 1325394562;
+	Wed, 21 Mar 2018 15:39:49 +0000 (UTC)
+Date: Wed, 21 Mar 2018 17:39:48 +0200
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>
+Message-ID: <20180321173309-mutt-send-email-mst@kernel.org>
 References: <1521642402-197739-1-git-send-email-mst@redhat.com>
+	<20180321151922.GR8551@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <1521642402-197739-1-git-send-email-mst@redhat.com>
-User-Agent: Mutt/1.9.1 (2017-09-22)
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+In-Reply-To: <20180321151922.GR8551@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.1]);
-	Wed, 21 Mar 2018 15:34:52 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
-	Wed, 21 Mar 2018 15:34:52 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'kwolf@redhat.com' RCPT:''
+	(mx1.redhat.com [10.11.55.2]);
+	Wed, 21 Mar 2018 15:40:17 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Wed, 21 Mar 2018 15:40:17 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'mst@redhat.com' RCPT:''
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-devel] [PATCH v2] qemu: replace "" with <> in headers
-X-BeenThere: qemu-devel@nongnu.org
+Subject: Re: [Qemu-arm] [PATCH v2] qemu: replace "" with <> in headers
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
 	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
 	Li Zhijian <lizhijian@cn.fujitsu.com>,
 	David Hildenbrand <david@redhat.com>, Jeff Cody <jcody@redhat.com>,
 	Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org,
-	Keith Busch <keith.busch@intel.com>, Max Filippov <jcmvbkbc@gmail.com>,
-	Hannes Reinecke <hare@suse.com>,
+	BALATON Zoltan <balaton@eik.bme.hu>, Keith Busch <keith.busch@intel.com>,
+	Max Filippov <jcmvbkbc@gmail.com>, Hannes Reinecke <hare@suse.com>,
 	Gerd Hoffmann <kraxel@redhat.com>, Fam Zheng <famz@redhat.com>,
-	Max Reitz <mreitz@redhat.com>, Josh Durgin <jdurgin@redhat.com>,
+	Max Reitz <mreitz@redhat.com>, Eric Blake <eblake@redhat.com>,
+	Josh Durgin <jdurgin@redhat.com>,
 	Stefano Stabellini <sstabellini@kernel.org>,
 	Alberto Garcia <berto@igalia.com>,
 	zhanghailiang <zhang.zhanghailiang@huawei.com>,
@@ -118,7 +120,8 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
 	Shannon Zhao <zhaoshenglong@huawei.com>,
 	Marcel Apfelbaum <marcel@redhat.com>, Liu Yuan <namei.unix@gmail.com>,
-	Richard Henderson <rth@twiddle.net>, Jason Wang <jasowang@redhat.com>,
+	Richard Henderson <rth@twiddle.net>,
+	Andrzej Zaborowski <balrogg@gmail.com>, Jason Wang <jasowang@redhat.com>,
 	Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
 	Alistair Francis <alistair@alistair23.me>, Jiri Pirko <jiri@resnulli.us>,
 	Eduardo Habkost <ehabkost@redhat.com>,
@@ -132,9 +135,8 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
 	Ronnie Sahlberg <ronniesahlberg@gmail.com>,
 	Zhang Chen <zhangckid@gmail.com>, xen-devel@lists.xenproject.org,
-	John Snow <jsnow@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>, kvm@vger.kernel.org,
-	qemu-block@nongnu.org, Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	John Snow <jsnow@redhat.com>, David Gibson <david@gibson.dropbear.id.au>,
+	Kevin Wolf <kwolf@redhat.com>, kvm@vger.kernel.org, qemu-block@nongnu.org,
 	Hitoshi Mitake <mitake.hitoshi@lab.ntt.co.jp>,
 	Markus Armbruster <armbru@redhat.com>, qemu-s390x@nongnu.org,
 	Marcelo Tosatti <mtosatti@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
@@ -146,56 +148,92 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
 	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FBXAO01Vnqmj
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: SIEPPCiPPeoj
 
-Am 21.03.2018 um 15:46 hat Michael S. Tsirkin geschrieben:
-> Our current scheme is to use
->  #include ""
-> for internal headers, and
->  #include <>
-> for external ones.
-> 
-> Unfortunately this is not based on compiler support: from C point of
-> view, the "" form merely looks up headers in the current directory
-> and then falls back on <> directories.
-> 
-> Thus, for example, a system header trace.h - should it be present - will
-> conflict with our local trace.h
+On Wed, Mar 21, 2018 at 03:19:22PM +0000, Daniel P. Berrang=E9 wrote:
+> On Wed, Mar 21, 2018 at 04:46:32PM +0200, Michael S. Tsirkin wrote:
+> > Our current scheme is to use
+> >  #include ""
+> > for internal headers, and
+> >  #include <>
+> > for external ones.
+> >=20
+> > Unfortunately this is not based on compiler support: from C point of
+> > view, the "" form merely looks up headers in the current directory
+> > and then falls back on <> directories.
+> >=20
+> > Thus, for example, a system header trace.h - should it be present - w=
+ill
+> > conflict with our local trace.h
+>=20
+> If our local "trace.h" is in the current directory, then using ""
+> is right and you can still use <trace.h> to get the system version.
+>=20
+> If our local trace.h is in include/ top level, then it is going to
+> block use of the system trace.h regardless of whether we use <> or ""
+>=20
+> Fortunately our include/ tree uses sub-dirs, so we would typically
+> use  #include "$subdir/trace.h" and  #include <trace.h> would still
+> find the system header.
+> We just have to be careful we don't add stuff at the top level of
+> our include/ dir with names that are liable to clash. This might
+> suggest renaming  include/elf.h to include/qemu/elf.h, or just
+> moving elf.h to the qemu/ subdirectory. Likewise include/glib-compat.h
+> might be better moved to qemu/ subdirectory.
+>=20
 
-You're right that there is a conflict, even though only in one
-direction: "trace.h" is unambiguously the local trace.h in our source
-tree, but <trace.h> refers to the same local header rather than the
-system header as you would expect.
+This is exactly what this patch proposes, with a uniform scheme:
+start everything with qemu/.
 
-An easy way to resolve this conflict would be using -iquote rather than
--I for directories in the source tree, so that <trace.h> unambiguously
-refers to the system header and "trace.h" unambiguously refers to the
-QEMU header.
+>=20
+> > As another example of problems, a header by the same name in the sour=
+ce
+> > directory will always be picked up first - before any headers in
+> > the include directory.
+>=20
+> There's only a couple of headers in the top level of our include/
+> directory - everything else is pulled in with a named path
+> eg #include "block/block_int.h", so that would not conflict with
+> reference to a bare #include "block_int.h" from the current directory.
 
-> As another example of problems, a header by the same name in the source
-> directory will always be picked up first - before any headers in
-> the include directory.
-> 
-> Let's change the scheme: make sure all headers that are not
-> in the source directory are included through a path
-> starting with qemu/ , thus:
-> 
->  #include <>
-> 
-> headers in the same directory as source are included with
-> 
->  #include ""
-> 
-> as per standard.
-> 
-> This (untested) patch is just to start the discussion and does not
-> change all of the codebase. If there's agreement, this will be
-> run on all code to converting code to this scheme.
+We can not know that there are no system headers that start with block/ o=
+n
+any current or future systems.
 
-Renaming files is always painful. If that's the fix, the cure might be
-worse than the disease. As far as I know, the conflict is only
-theoretical, so in that case I'd say: If it ain't broke, don't fix it.
+> > Let's change the scheme: make sure all headers that are not
+> > in the source directory are included through a path
+> > starting with qemu/ , thus:
+> >=20
+> >  #include <>
+> >=20
+> > headers in the same directory as source are included with
+> >=20
+> >  #include ""
+> >=20
+> > as per standard.
+>=20
+> As stated before, I consider this a step backwards - it is a
+> good clear standard to use "" for project local includes and
+> <> for 3rd party / system includes IMHO. The change doesn't
+> do anything beneficial for the two scenarios described above
+> AFAICT.
 
-Kevin
+I think you are mistaken on the last point:
+1. Everything will be under qemu/ so we never clash with a system file
+2. A local stale file anywhere in source directory is completely ignored
+   since source is not on -I path.
+
+I hope this clarifies things.
+
+>=20
+> Regards,
+> Daniel
+> --=20
+> |: https://berrange.com      -o-    https://www.flickr.com/photos/dberr=
+ange :|
+> |: https://libvirt.org         -o-            https://fstop138.berrange=
+.com :|
+> |: https://entangle-photo.org    -o-    https://www.instagram.com/dberr=
+ange :|

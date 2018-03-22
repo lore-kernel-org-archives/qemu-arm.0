@@ -1,95 +1,115 @@
-Received: by 10.28.71.155 with SMTP id m27csp803648wmi;
-        Thu, 22 Mar 2018 13:35:03 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELs1yMgHi8a8InSuP0RAi++5/aXAVOjVpgPgF6COZTllBc+SAFIxWKjCPVEGAXT1VD+89aAN
-X-Received: by 10.237.36.238 with SMTP id u43mr36072787qtc.116.1521750903115;
-        Thu, 22 Mar 2018 13:35:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521750903; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp810191wmi;
+        Thu, 22 Mar 2018 13:43:17 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELuEqFV+hjyW+koSAxQ9qA/KVvcSMbvEc57GWPFfXG1OVR1OCVAPE17vdSTuIfD8xcdWupRy
+X-Received: by 10.55.26.86 with SMTP id a83mr28891102qka.165.1521751397561;
+        Thu, 22 Mar 2018 13:43:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521751397; cv=none;
         d=google.com; s=arc-20160816;
-        b=jjwV1O7VuX9QvT0sy2HYSqGlBC2hHDAkRK4+yaTIk3gww9keixK9eOiD557bV1gxHp
-         WOz2UiAwLsVcKxXAcc+anFefCYDSjTX6dCdrwZgWqDuYFRbGT45L+PJUeSCWe6T87eOJ
-         kDHU5ox99umfPhACknxyONHe6/1B8g3sV1lQmyd5wncwQw339Lto6Se95lQ/6R3qoFZR
-         xMYNcShUxM1ZwHl9n3NceHazvdhsAVYJybbYEYknGnQqg4l1hpubgsXDFa/Ta4tuaa7o
-         DzV+tMgO4D0TykYCFbiJsnNLyphBYjxNeIKQvNORBkdiym0k6xC4ViNuHmmRSgOIGY/H
-         4c8g==
+        b=MhNQpHkUTD5vLTQ5BcBez6VklHPuWKFObWYKuAfjAosD+XX6Lf0wKlqZkgM5sdnwJJ
+         tENP6Xz5UzTSsIMC2reTOHsmi4f5uiwwJm0Cjm+xvdEvysHWaqwx/sQQLyxzOJfiL836
+         Xd9MewC5f4+hxB5lP3Y07cqjJUmidE4AWX6BhPL4Bjji6q0oxbQDd0q7+D7YGTf/AF80
+         JtS3APXe8VBFP2MtvJ2UTJ7OH9QvkOn2KuTbGcjPkf0279xkWaA8P0TBzBqJvdHatGJ3
+         QmrIqy74hXB2KObqbSHH9s4Z93FZiHNXQk101MDyJYUIwLqw08Tao5+Wd4dDTAkoc8vy
+         UrXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
-         :arc-authentication-results;
-        bh=Yt66mWi8w5mVnL5SFzGD+cq/Hx7CWMSXlZfzNnVSB4E=;
-        b=0ezhE/rT72/6n8h4fHQ4vMKio2CwfiG+3XLYieILzWLbI3UikuPWJ2IMtcftykim+I
-         lApmNK++84TpB01Ju5oL+d13RSccXNGgcEjBCpEr4RTRXKKrcKfmEQh0xgwk2k1A0J1F
-         1ObsqxA6obZJrXyshx7pAuVY1BSTZHJTKUkJWwwoIqijkKC6z67D0oh9b/YAm2og8CLx
-         dHusi0gAXGKfUunCex3oNjBBUOYvux9WVsQ5fMvHmx0sza8CYmGaXQWDS2pqhOL0MSS0
-         /HUglyOpfH99g3C3BjPn4rPEIrtQOh6YBtPK4eICJPiVM01Pqo+XUjPr/QGAEJFfqbqQ
-         z/gA==
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=9Vhu/3Gph1hdb4atYGz5p3tkRulbqaTFZmTMAH5Udpc=;
+        b=piEXCwGLHmD+4eHdEen3Wc9lcpru53Ei+HmeDd1kNfE+qbZaTu1enlU/5Yg7+GasYX
+         TgX6R6lVSo2bgo8nwE45PEfGtFLYKF0xNikZetdbZx2x1ASE5CBE/xy2Jt1prm7wNILj
+         Wf4CALmn9m3IN57aLn+lpm0X0QEDGlP5Xvpl9LtleLcC2pKDWPoFCqP1Ke2HeeRFyOUb
+         dxwfXHiaI8IhCcQgj3TlhFRE/HBUFXOphRB5Q/u5iaakj7VugWUsx3lZW5wE93ZYITpa
+         uT9kNPis0buYFYR3z+CJL0yzFh2HHFWWNLnYqCG3gmCeZDU6rUS+E91tdl5ceZ+fOHro
+         1e6w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LMRDutBb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g38si3015022qtf.128.2018.03.22.13.35.02
+        by mx.google.com with ESMTPS id s86si4522007qki.394.2018.03.22.13.43.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 22 Mar 2018 13:35:03 -0700 (PDT)
+        Thu, 22 Mar 2018 13:43:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34784 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LMRDutBb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:34811 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ez6vO-0008JE-LS
-	for alex.bennee@linaro.org; Thu, 22 Mar 2018 16:35:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34549)
+	id 1ez73N-0003cI-5e
+	for alex.bennee@linaro.org; Thu, 22 Mar 2018 16:43:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36187)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1ez6uz-0008Ha-JD
-	for qemu-devel@nongnu.org; Thu, 22 Mar 2018 16:34:39 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1ez72M-0003HC-DH
+	for qemu-devel@nongnu.org; Thu, 22 Mar 2018 16:42:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1ez6uy-0004nV-I7
-	for qemu-devel@nongnu.org; Thu, 22 Mar 2018 16:34:37 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54054 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1ez6ur-0004lh-LK; Thu, 22 Mar 2018 16:34:29 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 501F5406805D;
-	Thu, 22 Mar 2018 20:34:18 +0000 (UTC)
-Received: from [10.36.116.71] (ovpn-116-71.ams2.redhat.com [10.36.116.71])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 71595D7E16;
-	Thu, 22 Mar 2018 20:33:30 +0000 (UTC)
-To: "Michael S. Tsirkin" <mst@redhat.com>, Kevin Wolf <kwolf@redhat.com>
-References: <1521642402-197739-1-git-send-email-mst@redhat.com>
-	<20180321153439.GC3898@localhost.localdomain>
-	<20180321175452-mutt-send-email-mst@kernel.org>
-	<20180321162203.GE3898@localhost.localdomain>
-	<20180322211902-mutt-send-email-mst@kernel.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <aba29cf7-637a-c967-9b2f-59060a1c1330@redhat.com>
-Date: Thu, 22 Mar 2018 21:33:29 +0100
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1ez72J-0007NM-Ag
+	for qemu-devel@nongnu.org; Thu, 22 Mar 2018 16:42:14 -0400
+Received: from mail-qk0-x22c.google.com ([2607:f8b0:400d:c09::22c]:38755)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1ez72J-0007MY-5d; Thu, 22 Mar 2018 16:42:11 -0400
+Received: by mail-qk0-x22c.google.com with SMTP id 132so10736396qkd.5;
+	Thu, 22 Mar 2018 13:42:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=9Vhu/3Gph1hdb4atYGz5p3tkRulbqaTFZmTMAH5Udpc=;
+	b=LMRDutBbCwWeDHAk2XBLB80dJGoL+oKxxFuM5XpUjA2C1Mqnaq6U2fBk/HZAu2ty6I
+	ZtUJE7XIN+U86d7/eNxhfeETwPIvtQd+hykHobzGs4fun2j66lE7A+PDQIe6vr2+ZTHX
+	ABiccjY50l3efXlGmVr4BHH1Wbs+pH0yLoxHG6EAJUxmliYJnmsBD+w2hD/WS3HBmgLx
+	mWHR7I4icqhlLtqq/SnrINKNciEXK0tp44oLTsSldPsKA29zOh3VrQW6tUr3FNGUYFdq
+	JKKUYD/+xnKWWxlsCMuyumFmPHcv+peEvCnODd2CeY/eBfnjR7zgxuHVEycw3xrW2FTW
+	wJpA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=9Vhu/3Gph1hdb4atYGz5p3tkRulbqaTFZmTMAH5Udpc=;
+	b=c4RCqSNLEHz4joQY/hlAnf1mpJ2l6y9fxCvONKTKHfHTwpTEhIf/8S/sWW79AsDuY2
+	Y5KDecYhi87cIh6YEnNDyEJzEq9rOME42Y7Nb+p9AgDAGQgIXSxdOQbBXuRRNPl5PA5x
+	N5flOpc840ARrJyW2l4cYVmQbjJt4e5nO73Rk8eQ5MnYPeuVAJcBIlx80eFVUgytm9jS
+	FCKGtz8P/qSduLDBvtjoWmMlZRcjuW8LuEpxMz4MoEK3MpU8Tlmkf2C7yhXHmccKLdno
+	jlnTaJ2AvlmnR4Kmq4ANeeeMoWbadAPD1tHr+7I+CzE5lxhrTHOOm4wd/YayWdgDcGHq
+	OHCA==
+X-Gm-Message-State: AElRT7Hwk5HhtEU1RSw4CM9McON16Q1tSNoiN/RqXiUeWAm2U6oVH5Sk
+	KWZzS+SFDQ4hCf84PgOQgqk=
+X-Received: by 10.55.103.4 with SMTP id b4mr36108467qkc.138.1521751330289;
+	Thu, 22 Mar 2018 13:42:10 -0700 (PDT)
+Received: from [192.168.1.11] ([138.117.48.212])
+	by smtp.gmail.com with ESMTPSA id
+	y58sm2155218qta.42.2018.03.22.13.42.06
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 22 Mar 2018 13:42:09 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>
+References: <20180315133441.24149-1-peter.maydell@linaro.org>
+	<20180322142343.jvc6pxxvl5zhfjgy@hawk.localdomain>
+	<CAFEAcA8Vti8NnrQK4U4kLuk=nNMC5=KiKjc6wT7cLDnCHFj-8w@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <48f559bd-9f54-bcdd-1f3c-f6fafccfc54e@amsat.org>
+Date: Thu, 22 Mar 2018 17:42:02 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.6.0
 MIME-Version: 1.0
-In-Reply-To: <20180322211902-mutt-send-email-mst@kernel.org>
+In-Reply-To: <CAFEAcA8Vti8NnrQK4U4kLuk=nNMC5=KiKjc6wT7cLDnCHFj-8w@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Thu, 22 Mar 2018 20:34:18 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Thu, 22 Mar 2018 20:34:18 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'pbonzini@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-devel] [PATCH v2] qemu: replace "" with <> in headers
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::22c
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH for-2.12] hw/intc/arm_gicv3: Fix
+ secure-GIC NS ICC_PMR and ICC_RPR accesses
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,83 +121,50 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
-	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
-	Li Zhijian <lizhijian@cn.fujitsu.com>,
-	David Hildenbrand <david@redhat.com>, Jeff Cody <jcody@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org,
-	Keith Busch <keith.busch@intel.com>, Max Filippov <jcmvbkbc@gmail.com>,
-	Hannes Reinecke <hare@suse.com>,
-	Gerd Hoffmann <kraxel@redhat.com>, Fam Zheng <famz@redhat.com>,
-	Max Reitz <mreitz@redhat.com>, Josh Durgin <jdurgin@redhat.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Alberto Garcia <berto@igalia.com>,
-	zhanghailiang <zhang.zhanghailiang@huawei.com>,
-	Ben Warren <ben@skyportsystems.com>,
-	Stefan Berger <stefanb@linux.vnet.ibm.com>,
-	Yongbok Kim <yongbok.kim@mips.com>,
-	Michael Roth <mdroth@linux.vnet.ibm.com>,
-	"Richard W.M. Jones" <rjones@redhat.com>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	=?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
-	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Marcel Apfelbaum <marcel@redhat.com>, Liu Yuan <namei.unix@gmail.com>,
-	Richard Henderson <rth@twiddle.net>, Jason Wang <jasowang@redhat.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>, Jiri Pirko <jiri@resnulli.us>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Corey Minyard <minyard@acm.org>, Amit Shah <amit@kernel.org>,
-	Stefan Weil <sw@weilnetz.de>, Xie Changlong <xiechanglong.d@gmail.com>,
-	Riku Voipio <riku.voipio@iki.fi>, Peter Lieven <pl@kamp.de>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Yuval Shaia <yuval.shaia@oracle.com>, Greg Kurz <groug@kaod.org>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
-	Ronnie Sahlberg <ronniesahlberg@gmail.com>,
-	Zhang Chen <zhangckid@gmail.com>, xen-devel@lists.xenproject.org,
-	John Snow <jsnow@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>, kvm@vger.kernel.org,
-	qemu-block@nongnu.org, Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Hitoshi Mitake <mitake.hitoshi@lab.ntt.co.jp>,
-	Markus Armbruster <armbru@redhat.com>, qemu-s390x@nongnu.org,
-	Marcelo Tosatti <mtosatti@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
-	Juan Quintela <quintela@redhat.com>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
-	Wen Congyang <wencongyang2@huawei.com>, Cornelia Huck <cohuck@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	=?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	"patches@linaro.org" <patches@linaro.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8BxcB2Tno2w6
+X-TUID: w+Pz6VFGbwLd
 
-On 22/03/2018 20:29, Michael S. Tsirkin wrote:
-> On Wed, Mar 21, 2018 at 05:22:03PM +0100, Kevin Wolf wrote:
->>> It's all still very much a non-standard convention and so less robust
->>> than prefixing file name with a project-specifix prefix.
->> I've always had the impression that it's by far the most common
->> convention, to the point that I'd blindly assume it when joining a new
->> project.
->=20
-> Any examples?
+Hi Peter,
 
-GCC - https://github.com/gcc-mirror/gcc/blob/master/gcc/reload.c
-Libvirt - https://github.com/libvirt/libvirt/blob/master/src/util/virproc=
-ess.c
-SDL - https://github.com/SDL-mirror/SDL/blob/master/src/core/unix/SDL_pol=
-l.c
+On 03/22/2018 03:29 PM, Peter Maydell wrote:
+> On 22 March 2018 at 14:23, Andrew Jones <drjones@redhat.com> wrote:
+>> On Thu, Mar 15, 2018 at 01:34:41PM +0000, Peter Maydell wrote:
+>>> If the GIC has the security extension support enabled, then a
+>>> non-secure access to ICC_PMR must take account of the non-secure
+>>> view of interrupt priorities, where real priorities 0..0x7f
+>>> are secure-only and not visible to the non-secure guest, and
+>>> priorities 0x80..0xff are shown to the guest as if they were
+>>> 0x00..0xff. We had the logic here wrong:
+>>
+>> 0x00..0x7f
+> 
+> I think 0x00..0xff is correct.
 
-Anything but Linux really.
+I guess Andrew only suggested to correct the hex prefix in your comment:
+- ... where real priorities 0..0x7f
++ ... where real priorities 0x00..0x7f
 
-I find <qemu/foo/bar.h> verbose and unnecessary.  The only advantage
-of your proposal is that files included from the source directory would b=
-e
-clearly noticeable.  That said, it's easy to add a checkpatch.pl rule tha=
-t
-detects when ".../..." is used on a file not under include/.
-
-Paolo
+> The conversion from actual
+> priority value to the NS-view is
+>    if (prio & 0x80 == 0) {
+>        nsview = 0;
+>    } else {
+>        nsview = (prio << 1) & 0xff;
+>    }
+> 
+> so:
+>    real priority     NS view
+>     0x80              0x00
+>     0x90              0x20
+>     0xa0              0x40
+>     0xb0              0x60
+>     0xc0              0x80
+>     0xd0              0xa0
+>     0xe0              0xc0
+>     0xf0              0xe0
+> 
+> the NS view covers the whole 0x00..0xff range, but more sparsely.
+> (OK, technically you can't ever read 0xff, only 0xfe.)

@@ -1,99 +1,94 @@
-Received: by 10.28.71.155 with SMTP id m27csp306414wmi;
-        Thu, 22 Mar 2018 05:52:13 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx48gOmNV6MUWHC6I05vRpTE2zFt7kDuBgYFHtm5I+WyWXkI/jC1EkfQpJJ0DeITEl5zTnRFh
-X-Received: by 10.237.47.99 with SMTP id l90mr7784583qtd.27.1521723133062;
-        Thu, 22 Mar 2018 05:52:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521723133; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp370647wmi;
+        Thu, 22 Mar 2018 06:48:16 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELuqzjwGuZR61wGhGTgIzr6gnuAl/sT2EoWg4eRfW9NMCsn1YiqTnb/JPz6wa0qUA19fZ8nP
+X-Received: by 10.55.217.77 with SMTP id u74mr34766591qki.148.1521726495887;
+        Thu, 22 Mar 2018 06:48:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521726495; cv=none;
         d=google.com; s=arc-20160816;
-        b=AN/tTEAQmkaJ8XzeZUJWd9g49mvrTArnJFhp2Kz89n3fVn2pH8hB+XT5tG+ov3lg6R
-         J+ZM6BkpKMgeZoMi5cxGRDqnAp7SabjxmhIxlpNPk+ZRTfkEBECuRIeNDIeEOo/uRyQ9
-         qVHRFE5VP645PCvbLaCf9NNvDvuqz8FhTR18DP7EaUeuOqXHg9MDEqhAGWomwUa9ju8d
-         6xA8BM7bqqmwOoSaVZ6zdtdDuH1yt8EaovIK/M1a0pg2mqXkqtJWapWOzne+9Sle4Yvj
-         pigCpcKpQKGj+7VGYYH8DdRjKI9H34a9ahk5lVllhjmz22B5JzYhprPV34DXjR3+MtUE
-         j95A==
+        b=vpSFzr4zTRIQ1ILjto7/f/JTbPki91ij2iL8LPqPbeerH7jSjB4sqdS1Yg1O8NG8xn
+         DBGfdzFs58ttpehBFUKZOK5QC8RpoZZvCku5Y4bbCZLTHZqhSNFT2y6ghQml6DqziB+V
+         2ZwhxEe7wl/GwxKm/iA1GE4SP5F0HN6SQcliC9mnxr/w4W2/FQlLEEVxMkTBVDnnZFXt
+         nLROT5AwGd1BFs8vFw1oKFTZK4nEodsw+zl84Kb2q/c+8THGj9Usjlwj48Z6Ztm3xlJ9
+         PwuoAOtlkihVc7oiv2jhVkQmLlFxfEvsCoxyMmrJp1MhJ7NOGQP7M57/3zEosgzQirIx
+         Wn/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
          :arc-authentication-results;
-        bh=XHN4vkjp2wWeG0w3dqsS2QoKRsyI57A20/SShmcLl4E=;
-        b=TKxlZNs7IAgc17T+V4ZgaZjd4hNkBXq2QWyTssg5TyDJtgHaDNbZEfhmmAECCHDrfE
-         tjPg8yss9I2psiuPMXYdv4K+9a0/F7sjvy4Ialwe+XxhqMUkEf1jbU/xCXVkCtnRhozF
-         helY2dnC1lITrR150tG6ljYPm6ydsmqejtOXyjE1GdYnt93DyOkDYu2aX27kF8SN2yaj
-         02Wsq4+vxSWi5LL7tggkuCX+PlqI4n03w4Xau4nRqaI1ThPpo8cBvfr3Cn/RPJLXD9+c
-         Gmz2NNl+XGRlf9mhLHBw3VDhcxRTvaVYFx+qvbV7t6x/d+nn2mmBG2ltVc2IFIkWbjn/
-         DO+A==
+        bh=Iy5oTbJUN9UVG3hE1JlRs+1fcwOLlO2VoyH27oskVsA=;
+        b=lXh6JQwlOOcyJdYpda9m8eDDUFEAhpA8Tmoag0XGae0bdKKzhT4JLHsyYu3TG/utkK
+         7e3f0OwW8fCeL8TlQCFRQrnnqvblXynCdCLpVZNH+Zw+Te8NS6pI6RF9DT0u7YHISrar
+         iQal5qIFQ4//JSmlFvPmT2C57zjOoDOkdyNHbAClQy9MEW7dZiBBvvFpClavhPWF8Inu
+         0n9e0h9OEmC5O1ZzUF4egDFwAaJ9ZcQXtvurG/PavHZtkD8OC6iV2i0EimBJJyLjPwhj
+         hgTo+K9LM9KuPGjUGp4Hx30plEgWlIWuLqaT6pKjKRQXSnoucBKIIVCVyi+45hbRBqxx
+         4Yvg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JLh4Hidz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z185si757346qke.190.2018.03.22.05.52.12
+        by mx.google.com with ESMTPS id v33si1046685qth.314.2018.03.22.06.48.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 22 Mar 2018 05:52:13 -0700 (PDT)
+        Thu, 22 Mar 2018 06:48:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JLh4Hidz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60614 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:60901 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eyzhU-0004Ps-IX
-	for alex.bennee@linaro.org; Thu, 22 Mar 2018 08:52:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59377)
+	id 1ez0Zj-00041g-Ds
+	for alex.bennee@linaro.org; Thu, 22 Mar 2018 09:48:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48480)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eyzhF-0004PL-E3
-	for qemu-arm@nongnu.org; Thu, 22 Mar 2018 08:51:58 -0400
+	(envelope-from <wei@redhat.com>) id 1ez0Za-00041Q-4S
+	for qemu-arm@nongnu.org; Thu, 22 Mar 2018 09:48:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eyzhE-0002va-Bf
-	for qemu-arm@nongnu.org; Thu, 22 Mar 2018 08:51:57 -0400
-Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:41130)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eyzhE-0002vD-7K
-	for qemu-arm@nongnu.org; Thu, 22 Mar 2018 08:51:56 -0400
-Received: by mail-ot0-x244.google.com with SMTP id i28-v6so9280993otf.8
-	for <qemu-arm@nongnu.org>; Thu, 22 Mar 2018 05:51:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=XHN4vkjp2wWeG0w3dqsS2QoKRsyI57A20/SShmcLl4E=;
-	b=JLh4HidzCBwdtWBbbOdQ4qDMhXsUmGXPDJPUMf7J+W4tc9ZpDsdtz3q+dlb61mICCT
-	9B8iTOpXpjLeDouDxCTUFA6VwrmKtXSJBC657/M37O2js6HPjG1xgZXUJaTsryfexe2T
-	ZMIxpRvoD4RBu1n26hQuqTsE4aN7Wbc6ySPzo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=XHN4vkjp2wWeG0w3dqsS2QoKRsyI57A20/SShmcLl4E=;
-	b=mUp8GGeFQTKixOjplxa75FxJ/o54yGHtC0B5YCtWufQF3sn1NDSI5Cb37uCkP4XFTX
-	t9X3vlij0XzYw5xVvrHbByl2wl8u3OYi47DfbIOOxIBR4Bw0WBizTif98QK+lLJwQr+s
-	FWLBvsDFSbePqDtqYAKftWMnjGG9/x7AM6NdZkmIKp2ngAO0SiboAJFlBX/Wo325QV9e
-	/e8q1tjb5XtMmoFPVWiocHQhLPh8dvVei+RRll04DoaO3jw1yxdcrGNOLLNS9LrTOIQB
-	qwicFOtzY1fc9qfrkgWh99Bg5J8lalPQ2AFGYtOkfqHfuYEcydqtElTN9EvRdPQX0o8s
-	YaNA==
-X-Gm-Message-State: AElRT7FE3/3K0MKCTWA35FMSeL1yRDET3WcJdcIboqQFim3aqtlGWWM8
-	mU7vJfF1VuJRjiKvAuNlr0n3HKezjtrxjbnBuHcneezS
-X-Received: by 2002:a9d:4598:: with SMTP id
-	x24-v6mr14868519ote.126.1521723115167; 
-	Thu, 22 Mar 2018 05:51:55 -0700 (PDT)
+	(envelope-from <wei@redhat.com>) id 1ez0ZW-0000T5-61
+	for qemu-arm@nongnu.org; Thu, 22 Mar 2018 09:48:06 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:41536 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <wei@redhat.com>)
+	id 1ez0ZW-0000Sh-1V; Thu, 22 Mar 2018 09:48:02 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E9C00406805B;
+	Thu, 22 Mar 2018 13:47:50 +0000 (UTC)
+Received: from [10.10.125.19] (ovpn-125-19.rdu2.redhat.com [10.10.125.19])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id E7CEE2023230;
+	Thu, 22 Mar 2018 13:47:44 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>
+References: <20180322031216.14569-1-wei@redhat.com>
+	<20180322080156.x2q7w6wtdrvc3wk3@hawk.localdomain>
+	<CAFEAcA_Sb6iz-8cg00JXhNF5pMS3z2=QxhoEhwSgG6PG04nKqg@mail.gmail.com>
+From: Wei Huang <wei@redhat.com>
+Message-ID: <1571d9c0-de78-3daa-20f6-3e0e293f6658@redhat.com>
+Date: Thu, 22 Mar 2018 08:47:44 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.6.0
 MIME-Version: 1.0
-Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Thu, 22 Mar 2018 05:51:34
-	-0700 (PDT)
-In-Reply-To: <20180315133441.24149-1-peter.maydell@linaro.org>
-References: <20180315133441.24149-1-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 22 Mar 2018 12:51:34 +0000
-Message-ID: <CAFEAcA_hAmDDdbTpR2PYu0SLd5nJvwcw34xRgiHXtiU_5kQxWg@mail.gmail.com>
-To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::244
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-2.12] hw/intc/arm_gicv3: Fix
- secure-GIC NS ICC_PMR and ICC_RPR accesses
+In-Reply-To: <CAFEAcA_Sb6iz-8cg00JXhNF5pMS3z2=QxhoEhwSgG6PG04nKqg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.5]);
+	Thu, 22 Mar 2018 13:47:50 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Thu, 22 Mar 2018 13:47:50 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'wei@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/1] mach-virt: Set VM's SMBIOS
+ system version to mc->desc
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,69 +100,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "patches@linaro.org" <patches@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 07ql4VUGYEBr
+X-TUID: 1hJOVEQ9X+Kp
 
-Ping for code review -- it would be nice to put this bugfix
-into rc1.
 
-thanks
--- PMM
 
-On 15 March 2018 at 13:34, Peter Maydell <peter.maydell@linaro.org> wrote:
-> If the GIC has the security extension support enabled, then a
-> non-secure access to ICC_PMR must take account of the non-secure
-> view of interrupt priorities, where real priorities 0..0x7f
-> are secure-only and not visible to the non-secure guest, and
-> priorities 0x80..0xff are shown to the guest as if they were
-> 0x00..0xff. We had the logic here wrong:
->  * on reads, the priority is in the secure range if bit 7
->    is clear, not if it is set
->  * on writes, we want to set bit 7, not mask everything else
->
-> Our ICC_RPR read code had the same error as ICC_PMR.
->
-> (Compare the GICv3 spec pseudocode functions ICC_RPR_EL1
-> and ICC_PMR_EL1.)
->
-> Fixes: https://bugs.launchpad.net/qemu/+bug/1748434
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/intc/arm_gicv3_cpuif.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
->
-> diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-> index 5cbafaf497..26f5eeda94 100644
-> --- a/hw/intc/arm_gicv3_cpuif.c
-> +++ b/hw/intc/arm_gicv3_cpuif.c
-> @@ -836,7 +836,7 @@ static uint64_t icc_pmr_read(CPUARMState *env, const ARMCPRegInfo *ri)
->          /* NS access and Group 0 is inaccessible to NS: return the
->           * NS view of the current priority
->           */
-> -        if (value & 0x80) {
-> +        if ((value & 0x80) == 0) {
->              /* Secure priorities not visible to NS */
->              value = 0;
->          } else if (value != 0xff) {
-> @@ -871,7 +871,7 @@ static void icc_pmr_write(CPUARMState *env, const ARMCPRegInfo *ri,
->              /* Current PMR in the secure range, don't allow NS to change it */
->              return;
->          }
-> -        value = (value >> 1) & 0x80;
-> +        value = (value >> 1) | 0x80;
->      }
->      cs->icc_pmr_el1 = value;
->      gicv3_cpuif_update(cs);
-> @@ -1609,7 +1609,7 @@ static uint64_t icc_rpr_read(CPUARMState *env, const ARMCPRegInfo *ri)
->      if (arm_feature(env, ARM_FEATURE_EL3) &&
->          !arm_is_secure(env) && (env->cp15.scr_el3 & SCR_FIQ)) {
->          /* NS GIC access and Group 0 is inaccessible to NS */
-> -        if (prio & 0x80) {
-> +        if ((prio & 0x80) == 0) {
->              /* NS mustn't see priorities in the Secure half of the range */
->              prio = 0;
->          } else if (prio != 0xff) {
-> --
-> 2.16.2
+On 03/22/2018 05:53 AM, Peter Maydell wrote:
+> On 22 March 2018 at 08:01, Andrew Jones <drjones@redhat.com> wrote:
+>> I agree we should change the useless 1.0, but shouldn't we use
+>> mc->name instead of mc->desc? mc->name would make it consistent
+>> with pc-piix and q35 and also be a less verbose "version". We'd
+>> get e.g.
+>>
+>>  System Information
+>>         Manufacturer: QEMU
+>>         Product Name: KVM Virtual Machine
+>>         Version: virt-2.12
+>>         Serial Number: Not Specified
+> 
+> I would vote for consistency with x86, I think.
+
+Drew and you like ->name better because of its conciseness consistency
+with x86. In my view virt-2.xx is not very informative. "Version" info
+in real machine could be verbose. Using my Thinkpad as example:
+
+	Manufacturer: LENOVO
+	Product Name: 20FAS1EG0N
+	Version: ThinkPad T460s
+
+With that said, I will change it to mc->name.
+
+> 
+> thanks
+> -- PMM
+> 

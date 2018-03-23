@@ -1,193 +1,148 @@
-Received: by 10.28.91.67 with SMTP id p64csp4305156wmb;
-        Tue, 20 Mar 2018 14:03:17 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELtXQzr5KIW8HNplLWIRazTbPFOTRc1sdRNMcby0UAd/Y0RLOYaPHpqaBEZl3B9LniVTWYzd
-X-Received: by 2002:a25:c3c2:: with SMTP id t185-v6mr10672887ybf.487.1521579797206;
-        Tue, 20 Mar 2018 14:03:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521579797; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp271822wmi;
+        Fri, 23 Mar 2018 03:09:16 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELuWJ+l4lwKvPIRwe7yCQTCgNfdevGiPHPAYGDFpZdzk2wbWms0NNiiYgbO/6eVuUK/IVrzT
+X-Received: by 10.237.59.99 with SMTP id q32mr23547293qte.222.1521799756414;
+        Fri, 23 Mar 2018 03:09:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521799756; cv=none;
         d=google.com; s=arc-20160816;
-        b=TK3GD6Yb6M1KHiC05wEfP72AwZFj1t0SvXHibNL+2RrXu3SEtH04XPks3/ZHmYgd3l
-         qxlVHIBkw5lDeepXUfjNSHWt1doIGnEahmQTbMk7Pn6u919p1O3lar5Q4CmCALMvmqZW
-         +AJ61yY5UFgxuQ10Hv4v26B2cHPTYWT3Jh68ev3YiXAG9jOYLSYOCe0VpnkyIyz8KOfC
-         /3dNUm2v2WS9DTZpIXPvGqb6nAzVULav5FWhwnFgGRjHTCRJEryACQYVxvFWm6zDqwgF
-         yyLkmOlWYT4/CTT2j5VTcUAkW247uPmOfcmnIx9gq5yTMcA9Iep7qow0MZHwNNlZf8OL
-         WySA==
+        b=CAFnJwpLtkAzEyX6Q6jG7uTVN3aO5MnXHkBaqKEcWG2xO6vT0yVxll/u9/5fK3bj2m
+         I7+nL3B3kyinrDte4IULagKobnnpOmI/MojY1Wd0JALUGHg/2AOuTHj5QltSJLQjn60G
+         BlGl2an96Kynu/BV//5+/wz91CUrFJrid9TsAQvBl4+fAVUKireRNrfBY6C8n4iAf/oE
+         YPwGHdqo5DAY+Ib1fFTWUPiWjAgaxg++APYQhZFrc9o9Ucg8B5GflZlyn4cNL0pISOKY
+         CN5AWSHRUkpmZvZWe7M+6HRDVfGXHNPaOLU/IyO9DEthn9wJYeYwuTz8b7dmjyI3hyBL
+         aO1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:arc-authentication-results;
-        bh=35wVrckPQbuXAQnMhU6zBcIBrJEV5bPFcYa+m8fpKug=;
-        b=yDh5XTfCrp2rQpzyqYkuvUm5D5aMqB5juNfiMj+837v259tBPKCuOzZgOM0t2BQ/De
-         xM8OFbWDSUEIFi5i0y37SbU1yR0Q3bbW54bBvADfjl9w1lr0jT/WcrUZhkKxMrWXKwXV
-         a82B9+BZv/yQf/IAdmKO8/5Ah8uLwWR9tfb9pyMcCC8z/E93LKwDEN7z8OTGNVUbc6pi
-         Lw/8GLyn0MszQlkGvtgzWIsljXPqA0oJcFxBUfu89WUL0Xy8jc0rIYEskHw/mT/lwNls
-         m0cBCNF6lQYf66kLb2nadDYossRO7uyuFFp5e8hvubfAMZHAJS2jBMxTwm9dp6iBqrVa
-         ysCA==
+         :content-transfer-encoding:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :arc-authentication-results;
+        bh=1+9benbJh9bwYIED1waWRM6bOr4AXzU6nwOUBc91fvM=;
+        b=n9YNCx4T9Z4bzlLfpNReWFoN3BrNLaT7RbASeH02Nk7OABKOd1kIoc9czJ87MRWii2
+         6UpgAQRaCJboyXvJWdCpBz9sBXpt9+ORVUxWgdPcreyF+E9KEOYpq2H6DrFD0L7R2Bp5
+         0yHn7j0KWHWsM4Z6S8sQxsA1bPcGsg+9cChq/IuiR7ooihCQkHIGPvFh8AvTW7ETXLXp
+         gv/FUqj9PmIQUQpgxJ2gBBays8SF7UAHd6i+Sliyu7q3Mm6qm6TH4LIq7CLpaXfRbVEY
+         XOuWCNFcgNfDQLcYKgwrS8Yij1X8gONJbNQViulQ6SoRUIXq7FvePpqs1YbwFCQZvf3o
+         PuXA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n2si1920131qtl.217.2018.03.20.14.03.17
+        by mx.google.com with ESMTPS id 79si954005qkr.186.2018.03.23.03.09.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 20 Mar 2018 14:03:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 23 Mar 2018 03:09:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51723 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36954 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eyOPc-0005mE-OH
-	for alex.bennee@linaro.org; Tue, 20 Mar 2018 17:03:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48797)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ezJdL-0000O7-Uy
+	for alex.bennee@linaro.org; Fri, 23 Mar 2018 06:09:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52405)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eyONx-00059U-B7
-	for qemu-devel@nongnu.org; Tue, 20 Mar 2018 17:01:38 -0400
+	(envelope-from <drjones@redhat.com>) id 1ezJdD-0000NJ-9B
+	for qemu-arm@nongnu.org; Fri, 23 Mar 2018 06:09:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eyONw-0007XJ-3k
-	for qemu-devel@nongnu.org; Tue, 20 Mar 2018 17:01:33 -0400
-Received: from mail-yw0-f195.google.com ([209.85.161.195]:42849)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eyONp-0007TM-Qe; Tue, 20 Mar 2018 17:01:25 -0400
-Received: by mail-yw0-f195.google.com with SMTP id z82so1008346ywd.9;
-	Tue, 20 Mar 2018 14:01:25 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=1PJKLQzqqXL7Bwzw2IUmbDmzLiDzy5fXsqwfLNfGS+0=;
-	b=CxtZJ86hJfdWy/zvmYu7hcdkw6ooHQU9Xw6ufwEbr96W9mqTEc1knXJbe8B5syfyze
-	iOqItfS7cLH2tfKJiJYaC4Wuz8wmtbRr3aXU40TRofJt8YP0IzjyL31CmQMgvmG8DWjO
-	Kw/llysEuFOK53UI3L0s7pOPZaoLx2TqxtqMl4unR38qEgv5jhqIQI3zd9KhqaeRDKcC
-	QuPqXMGHg9bGh+7tMHDJNM9YwxI8KwQBmjN1qBg496pS+ITViUsFEXODSxVieZ+DEh8G
-	/VkSVpkkzZpf7OWgf1qWLsoKfRQLtCeg4mEttUdSrQDow71DSA6lcDaLAQxLF++IahkU
-	Jn3A==
-X-Gm-Message-State: AElRT7GZNSi5YP8b78LO3eTqpVeOmE38q+/ufpxJuvJsPZYLIb4d68sY
-	J9KQTbc5/ldlOtkxVTXYzAmoHxXrdLCcWNcR+fw=
-X-Received: by 10.13.208.199 with SMTP id s190mr1597490ywd.33.1521579685052;
-	Tue, 20 Mar 2018 14:01:25 -0700 (PDT)
+	(envelope-from <drjones@redhat.com>) id 1ezJdA-0003HD-IC
+	for qemu-arm@nongnu.org; Fri, 23 Mar 2018 06:09:07 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:56080 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <drjones@redhat.com>)
+	id 1ezJdA-0003GZ-Ct; Fri, 23 Mar 2018 06:09:04 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0D31D722CE;
+	Fri, 23 Mar 2018 10:08:53 +0000 (UTC)
+Received: from hawk.localdomain (ovpn-204-59.brq.redhat.com [10.40.204.59])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 000CE2166BAE;
+	Fri, 23 Mar 2018 10:08:45 +0000 (UTC)
+Date: Fri, 23 Mar 2018 11:08:43 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Message-ID: <20180323100843.i7xrvfodcpi7rtr5@hawk.localdomain>
+References: <20180315133441.24149-1-peter.maydell@linaro.org>
+	<20180322142343.jvc6pxxvl5zhfjgy@hawk.localdomain>
+	<CAFEAcA8Vti8NnrQK4U4kLuk=nNMC5=KiKjc6wT7cLDnCHFj-8w@mail.gmail.com>
+	<48f559bd-9f54-bcdd-1f3c-f6fafccfc54e@amsat.org>
 MIME-Version: 1.0
-References: <1521232280-13089-1-git-send-email-alindsay@codeaurora.org>
-	<1521232280-13089-9-git-send-email-alindsay@codeaurora.org>
-	<9c99641e-af00-e229-02a1-7d396b5132d1@amsat.org>
-	<20180320204523.GE24561@codeaurora.org>
-In-Reply-To: <20180320204523.GE24561@codeaurora.org>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Tue, 20 Mar 2018 21:01:14 +0000
-Message-ID: <CAAdtpL5L7BNv4VpLQbebjEsMsSO7uiyLPHxziJ=4Vyafh+StPQ@mail.gmail.com>
-To: Aaron Lindsay <alindsay@codeaurora.org>
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <48f559bd-9f54-bcdd-1f3c-f6fafccfc54e@amsat.org>
+User-Agent: Mutt/1.6.0.1 (2016-04-01)
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.2]);
+	Fri, 23 Mar 2018 10:08:53 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Fri, 23 Mar 2018 10:08:53 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'drjones@redhat.com' RCPT:''
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.161.195
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Content-Filtered-By: Mailman/MimeDel 2.1.21
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH v3 08/22] target/arm: Support
- multiple EL change hooks
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-2.12] hw/intc/arm_gicv3: Fix
+ secure-GIC NS ICC_PMR and ICC_RPR accesses
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Wei Huang <wei@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
-	Michael Spradling <mspradli@codeaurora.org>,
-	Digant Desai <digantd@codeaurora.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>, qemu-devel@nongnu.org,
-	Alistair Francis <alistair.francis@xilinx.com>, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iakZqagLFq/m
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	"patches@linaro.org" <patches@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: X7HZcfV/Q+ej
 
-Le 20 mars 2018 9:45 PM, "Aaron Lindsay" <alindsay@codeaurora.org> a =C3=A9=
-crit :
+On Thu, Mar 22, 2018 at 05:42:02PM -0300, Philippe Mathieu-Daud=E9 wrote:
+> Hi Peter,
+>=20
+> On 03/22/2018 03:29 PM, Peter Maydell wrote:
+> > On 22 March 2018 at 14:23, Andrew Jones <drjones@redhat.com> wrote:
+> >> On Thu, Mar 15, 2018 at 01:34:41PM +0000, Peter Maydell wrote:
+> >>> If the GIC has the security extension support enabled, then a
+> >>> non-secure access to ICC_PMR must take account of the non-secure
+> >>> view of interrupt priorities, where real priorities 0..0x7f
+> >>> are secure-only and not visible to the non-secure guest, and
+> >>> priorities 0x80..0xff are shown to the guest as if they were
+> >>> 0x00..0xff. We had the logic here wrong:
+> >>
+> >> 0x00..0x7f
+> >=20
+> > I think 0x00..0xff is correct.
+>=20
+> I guess Andrew only suggested to correct the hex prefix in your comment=
+:
+> - ... where real priorities 0..0x7f
+> + ... where real priorities 0x00..0x7f
 
-On Mar 18 23:41, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 03/16/2018 09:31 PM, Aaron Lindsay wrote:
-> > Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
-> > ---
-> >  target/arm/cpu.c       | 15 ++++++++++-----
-> >  target/arm/cpu.h       | 23 ++++++++++++-----------
-> >  target/arm/internals.h |  7 ++++---
-> >  3 files changed, 26 insertions(+), 19 deletions(-)
-> >
-> > diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> > index 072cbbf..5f782bf 100644
-> > --- a/target/arm/cpu.c
-> > +++ b/target/arm/cpu.c
-> > @@ -55,13 +55,16 @@ static bool arm_cpu_has_work(CPUState *cs)
-> >           | CPU_INTERRUPT_EXITTB);
-> >  }
-> >
-> > -void arm_register_el_change_hook(ARMCPU *cpu, ARMELChangeHook *hook,
-> > +void arm_register_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn *hook,
-> >                                   void *opaque)
-> >  {
-> > -    /* We currently only support registering a single hook function */
-> > -    assert(!cpu->el_change_hook);
-> > -    cpu->el_change_hook =3D hook;
-> > -    cpu->el_change_hook_opaque =3D opaque;
-> > +    ARMELChangeHook *entry;
-> > +    entry =3D g_malloc0(sizeof (*entry));
->
-> imho g_malloc() is enough.
+Actually I just hadn't thought that through properly. But thanks for
+giving me the benefit of the doubt :-)
 
-It seems like the only difference is between initializing it to zero
-(g_malloc0) and making it as uninitialized (g_malloc) for coverity. Are
-there coding standards for when we should choose which?
+> >=20
+> > the NS view covers the whole 0x00..0xff range, but more sparsely.
+> > (OK, technically you can't ever read 0xff, only 0xfe.)
+>=20
 
+You can read 0xff, because 0xff will be written when either 0xfe or 0xff
+are written. Then, when reading, priority =3D=3D 0xff will fail the !=3D =
+0xff
+test (which is QEMU's implementation of the pseudo code where PRIMask()
+is hardcoded to 0xff). In that case it'll just return the priority value
+unchanged, which is 0xff.
 
-Since you initialize all members, bzero is not necessary; until someone add
-another member to the structure. So your way is correct and safer, with a
-ridiculous performance penalty.
-
-
-
->
-> > +
-> > +    entry->hook =3D hook;
-> > +    entry->opaque =3D opaque;
-> > +
-> > +    QLIST_INSERT_HEAD(&cpu->el_change_hooks, entry, node);
-> >  }
-> >
-> >  static void cp_reg_reset(gpointer key, gpointer value, gpointer opaque=
-)
-> > @@ -744,6 +747,8 @@ static void arm_cpu_realizefn(DeviceState *dev,
-Error **errp)
-> >          return;
-> >      }
-> >
-> > +    QLIST_INIT(&cpu->el_change_hooks);
-> > +
->
-> You missed to fill arm_cpu_unrealizefn() with:
->
->     QLIST_FOREACH(...) {
->         QLIST_REMOVE(...);
->         g_free(...);
->     }
-
-Do you mean arm_cpu_finalizefn()?
-
-
-Yes :)
-
-
-
--Aaron
-
-
---
-Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies,
-Inc.
-Qualcomm Technologies, Inc. is a member of the
-Code Aurora Forum, a Linux Foundation Collaborative Project.
+Thanks,
+drew

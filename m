@@ -1,101 +1,93 @@
-Received: by 10.28.71.155 with SMTP id m27csp955903wmi;
-        Fri, 23 Mar 2018 14:43:50 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4+J2TaOq9h9G+uSBX7SaoVNbBbBCUp2Pa+9L+JjA/tAS9wKCbBG1ASTJWndLV64CPZPqTtR
-X-Received: by 10.237.45.132 with SMTP id i4mr15247038qtd.64.1521841430432;
-        Fri, 23 Mar 2018 14:43:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521841430; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp974323wmi;
+        Fri, 23 Mar 2018 15:08:45 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELujYvq+6jrZqY28dfgszqLmrf4h4885VUX9fqIfScJPWzSyZ7lrPmpg39HsmM1I7h27iQE6
+X-Received: by 10.55.215.70 with SMTP id m67mr45007711qki.123.1521842925562;
+        Fri, 23 Mar 2018 15:08:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521842925; cv=none;
         d=google.com; s=arc-20160816;
-        b=XrukrirsUdskrtVa+bcUqJe6BFfMxsk8GImV7BOwHw+2blndz4R6vKYo99wH4BkAX/
-         x795LiQqFY9t1d0yykrNYIwkvXSASCISBXOP6N/XvfTvN2tXPdPUb6GgA1ezdS1PMRjZ
-         MaRDLWT8kKBVGaBrsFNVyeubQmGg7LzBEAiJHTr3ae2wSxBEmg8l/4QjgAYahUGc+Ytk
-         56vkv0rObEon3SLmZ6cqm9qxpdkWScdBnI1obXP3W0fVyK4K0zoKbJ+TYgmQ8wC94puG
-         vUKbkIGzCi2OV0tue+nsS5zgKl6bQR59obANmcVQpZKf19TIfrjydaJX1hRZv3zJF1BY
-         98Lg==
+        b=g4Gm1WlEoEvOukHDTu2Z5IVFpjozO5i4aXBWkUDSJeisQMRyOtzPMwNLM/Hn0NN5Ry
+         guMYAPXjIRVwS9tBqTlKfz3/Ekj6BQjOJthreA6CXryjqfBkHbjvqtGBkudSY+gA3xYO
+         yBHSve6eLG3VrhFMy2CuW7MLG+GJ6XZWxEk8ikirzzlmrDmWUeyu54kJZIIgOtj+blo+
+         WE1/89GRCzWzga154xKWXBXUWjw9zAIXaUjovqhAVgAeIJTdccuGbKo1V8dxLt9HYoka
+         ui491fnpyfcvJAE+9HOveu1eifHjvfvm5fej67BAlvqNa28YpEDpJrghIg622vAjraLk
+         8oTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=eX2J2g0aJayXRlA5wdtH6IjLx/RHhQKe0Cicc0ENZqI=;
-        b=DaiGoAepZc3ZM5LD8k6D1NacQiRoT8hj3YI12fMIvDuPfkuvdK1noYXfMvFtNQypG2
-         4YbC8S74+Sves01tGutojskVVcvzY0/cKRCj5z/+OB6aPvwSlBMkmGeFityLvlZsrpdZ
-         0weIx7oprnnXUZBeIvI3Qo2SIC42yaEMdO20owPoQrwc7hl+54SFKSDIkQlZCkO40xKB
-         QofNXCCrVF7QBzR3vv2QmuSjYXr5sa8Z62PHKBzZJDxA/YCpO6kbIFE5o6593QaqnMey
-         aC4PjFNqwO+HvqGcKVtxYrr0EQP/M/w4dUdib6bPoVYcH++jhEncCM2nM5uBkCKfIVbt
-         cZGA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
+         :arc-authentication-results;
+        bh=L9QRm0J9/6EwrmFbCZg53gSwEZsBLzTflyyBm+6/9xI=;
+        b=OWZl3ZY7GiZDCSF3zZxVthf9iIJK77cMeAT1/tkheIrwTKtA3ZpkHmUH16rMmenBet
+         MHwYiR2s/xhDMneEr2iKl4txbnmrQol8B9CpGR/If3NPIeTHXRju8467Tf5JWIpVlTkH
+         2ilmrUunvKml8GJqqdEO+qtpsklzgUJLeUAkMYTNbnIuSujLBjIAwOHNtRXOUA1xEf/7
+         5ZLYYQWSoAKPyo5VK6zBmoapWhQ8g0xXUE9VmRCfbpiv8JFm3w9ZXEdnmODpCWP1NFc0
+         2D3JIx1JJgV1Ejuyl6KTiWpGRj3Qnr5M7MJm4gbgZcfCLQWqZ6NnQcq2kDu08stCKKKt
+         dULg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=I6CLxjBs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z85si3992318qkb.362.2018.03.23.14.43.50
+        by mx.google.com with ESMTPS id q64si668843qkh.395.2018.03.23.15.08.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 23 Mar 2018 14:43:50 -0700 (PDT)
+        Fri, 23 Mar 2018 15:08:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=I6CLxjBs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39957 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:40045 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ezUTV-00069f-VF
-	for alex.bennee@linaro.org; Fri, 23 Mar 2018 17:43:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59810)
+	id 1ezUrd-0008VO-2b
+	for alex.bennee@linaro.org; Fri, 23 Mar 2018 18:08:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37811)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <onursahin08@gmail.com>) id 1ezUTM-00067W-2i
-	for qemu-arm@nongnu.org; Fri, 23 Mar 2018 17:43:42 -0400
+	(envelope-from <lvivier@redhat.com>) id 1ezUrU-0008Uv-Lf
+	for qemu-arm@nongnu.org; Fri, 23 Mar 2018 18:08:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <onursahin08@gmail.com>) id 1ezUTL-0006A0-4E
-	for qemu-arm@nongnu.org; Fri, 23 Mar 2018 17:43:40 -0400
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:46084)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <onursahin08@gmail.com>)
-	id 1ezUTG-000664-Kx; Fri, 23 Mar 2018 17:43:34 -0400
-Received: by mail-qk0-x242.google.com with SMTP id o184so14457121qkd.13;
-	Fri, 23 Mar 2018 14:43:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=eX2J2g0aJayXRlA5wdtH6IjLx/RHhQKe0Cicc0ENZqI=;
-	b=I6CLxjBs8knh0nTA3c35oqRaLVjUj/YuxCqHbEt6OcPkPahB123qzYELDK+HZkG+n+
-	OPfNbXzQoLF89hZRU6htRqFzuVfBNuSL9n22SHxvzbT4TbV5C4s3RfSbf2TULKQgIV3N
-	5mLKTZlfXJ9uJrfz5z4bOC9X5qi8OmVx7DSh++Vk1OQfymm8D1/MRi/xsllXBwNia0Hj
-	YaDCoH7jq+A1b7ZBP5MgNCd7twJtd2sHxbg+7uJjD83C6nz4IARtqF2YAJdSv+UahPKz
-	ig+WTmdN2jMAdj6An0Fj50HBNFB5CAwDhwCZRRieH4yKUT7eNgJIGCSNIEoEratJw3m+
-	bBog==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=eX2J2g0aJayXRlA5wdtH6IjLx/RHhQKe0Cicc0ENZqI=;
-	b=tqd8FS3Rzcn7fB5PEDvDpaczNIhwMK3z23OhZ7Tcg1QQihoQ3CWhiCl9kPE5CsIlUj
-	pfQo/Qc+aKDyNseFXC9xMT4s6Aw6UW+zM0CzWSDf+HMEJWuvUntHc33H0uC2P8KB873m
-	RhLwgCFk2zadZHRN0yVOMtBYlBP7KZLHFO29LaLhQfMXQPmZC0NAepQevYRCJl7QiOYV
-	MYDFcnuXV4wi8FHndkfO24VWRNmk+O5c5HlInN7vxWavNaKA1YSDKA9QbrEd9NUIaaGe
-	Cw1WHhItYXYwilSs6RxJZ5TVToanrXohJTyau0gxN+4LBn2Tbo/KZ+pR/tYszGmbESzy
-	hICw==
-X-Gm-Message-State: AElRT7HR0f1FtIleFtHmpvZOjtjydSl9z/lC5SveKMmf4TW9vOmf63WO
-	eTTrCwyBhU10a64Q+OfhsUeNWAi4
-X-Received: by 10.55.4.129 with SMTP id 123mr16022086qke.203.1521841413559;
-	Fri, 23 Mar 2018 14:43:33 -0700 (PDT)
-Received: from dhcp-acadmin-128-197-176-145.bu.edu (proteus.bu.edu.
-	[128.197.176.135])
-	by smtp.gmail.com with ESMTPSA id p2sm7320102qkf.71.2018.03.23.14.43.31
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 23 Mar 2018 14:43:32 -0700 (PDT)
-From: Onur Sahin <onursahin08@gmail.com>
-To: qemu-devel@nongnu.org
-Date: Fri, 23 Mar 2018 17:43:06 -0400
-Message-Id: <1521841386-27498-1-git-send-email-onursahin08@gmail.com>
-X-Mailer: git-send-email 1.8.3.1
-In-Reply-To: <CAFEAcA9G3xVjmjys2R4-NXRHiZwLVLRO7ZQDZ0AhNMHHFhHV8A@mail.gmail.com>
-References: <CAFEAcA9G3xVjmjys2R4-NXRHiZwLVLRO7ZQDZ0AhNMHHFhHV8A@mail.gmail.com>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::242
-Subject: [Qemu-arm] [PATCH v2] target-arm: Check undefined opcodes for SWP
- in A32 decoder
+	(envelope-from <lvivier@redhat.com>) id 1ezUrR-0005Wj-Bc
+	for qemu-arm@nongnu.org; Fri, 23 Mar 2018 18:08:36 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:55234 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <lvivier@redhat.com>)
+	id 1ezUrR-0005VJ-7E; Fri, 23 Mar 2018 18:08:33 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0D198406E8A4;
+	Fri, 23 Mar 2018 22:08:17 +0000 (UTC)
+Received: from [10.40.204.35] (ovpn-204-35.brq.redhat.com [10.40.204.35])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id A212E10B2B4B;
+	Fri, 23 Mar 2018 22:08:01 +0000 (UTC)
+To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
+References: <20180323143202.28879-1-lvivier@redhat.com>
+	<fae663dc-71c9-7a1e-e951-25e95d385c2e@redhat.com>
+From: Laurent Vivier <lvivier@redhat.com>
+Message-ID: <a25005fb-904a-9f38-f191-d4f671fe8435@redhat.com>
+Date: Fri, 23 Mar 2018 23:08:00 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.6.0
+MIME-Version: 1.0
+In-Reply-To: <fae663dc-71c9-7a1e-e951-25e95d385c2e@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.7]);
+	Fri, 23 Mar 2018 22:08:17 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
+	Fri, 23 Mar 2018 22:08:17 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'lvivier@redhat.com' RCPT:''
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [PATCH v2 0/5] coccinelle: re-run scripts from
+ scripts/coccinelle
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,57 +99,47 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org,
-	Onur Sahin <onursahin08@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Jason Wang <jasowang@redhat.com>, Alexander Graf <agraf@suse.de>,
+	Max Filippov <jcmvbkbc@gmail.com>, Yongbok Kim <yongbok.kim@mips.com>,
+	Alberto Garcia <berto@igalia.com>, qemu-block@nongnu.org,
+	qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+	Richard Henderson <rth@twiddle.net>, Fam Zheng <famz@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	qemu-arm@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
+	Kevin Wolf <kwolf@redhat.com>,
+	"=?UTF-8?Q?Daniel_P._Berrang=c3=a9?=" <berrange@redhat.com>,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	Max Reitz <mreitz@redhat.com>, qemu-ppc@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3f0jcWoUJ6Ui
+X-TUID: gujK5ecyQvv6
 
-Thanks for the feedback Peter. Removing the redundant check on bit
-23 and adding checks for the "should be" bits as well (bits [11:8]).
+On 23/03/2018 18:47, Eric Blake wrote:
+> On 03/23/2018 09:31 AM, Laurent Vivier wrote:
+>> I've re-run some scripts from the coccinelle directory,
+>> and they have found some problems.
+>>
+>> This series fixes them.
+>>
+>> v2: only change PATCH 4/4
+>> =C2=A0=C2=A0 - keep comments
+>> =C2=A0=C2=A0 - fix indentation
+>> =C2=A0=C2=A0 I didn't remove changes in autogenerated files as it
+>> =C2=A0=C2=A0 seems they are generated only once.
+>>
+>> Daniel P. Berrang=C3=A9 (1):
+>> =C2=A0=C2=A0 make: improve check for stale generated files in source d=
+ir
+>=20
+> Is the inclusion of this patch compared to v1 intentional?
 
-The following patch should make sure we are not treating
-architecturally Undefined instructions as a SWP, by verifying
-the opcodes as per section A8.8.229 of ARMv7-A specification.
+Oh, no, sorry... I've put this in my branch to test it and forgot to
+remove it...
 
-Best,
-Onur
-
-Signed-off-by: Onur Sahin <onursahin08@gmail.com>
----
- target/arm/translate.c | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
-
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index ba6ab7d..1fb0b8f 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -9227,11 +9227,14 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-                             }
-                         }
-                         tcg_temp_free_i32(addr);
--                    } else {
-+                    } else if ((insn & 0x00300f00) == 0) {
-+                        /* 0bcccc_0001_0x00_xxxx_xxxx_0000_1001_xxxx
-+                        *  - SWP, SWPB
-+                        */
-+
-                         TCGv taddr;
-                         TCGMemOp opc = s->be_data;
- 
--                        /* SWP instruction */
-                         rm = (insn) & 0xf;
- 
-                         if (insn & (1 << 22)) {
-@@ -9249,6 +9252,8 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-                                                 get_mem_index(s), opc);
-                         tcg_temp_free(taddr);
-                         store_reg(s, rd, tmp);
-+                    } else {
-+                        goto illegal_op;
-                     }
-                 }
-             } else {
--- 
-1.8.3.1
+Thanks,
+Laurent
 

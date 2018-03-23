@@ -1,93 +1,98 @@
-Received: by 10.28.71.155 with SMTP id m27csp341725wmi;
-        Fri, 23 Mar 2018 04:22:45 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELt6oDw0uSvjTvi7zqwgo8YKCJEROm/+BZxnpdzqUf+l460levGafvFEXEoPc8K8+nbjh6VW
-X-Received: by 10.55.112.133 with SMTP id l127mr41718397qkc.224.1521804165523;
-        Fri, 23 Mar 2018 04:22:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521804165; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp368581wmi;
+        Fri, 23 Mar 2018 04:50:49 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELtmFPyRTwTVeiTuzQaHUIlCtMT2FTmL8ZzCLPOYqyneeRlv1Nmp69FzbDcW8bmLiAZHa6VE
+X-Received: by 10.55.89.7 with SMTP id n7mr40845022qkb.15.1521805849027;
+        Fri, 23 Mar 2018 04:50:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521805849; cv=none;
         d=google.com; s=arc-20160816;
-        b=s7PTcQ0+thtjDEvNxR4AlkNSjvTBii33Y5NNl5cVmbhW9Zs0mulnzUryyjfdwnX7XT
-         /6zpL/Rke8bjldKfXgPKcH36MvKeWZatW6cIyt+PBdw7EvE0vCIqb0IHPGOgpwZb7uja
-         FSuZ2usdleAL5QIoL0PBQTUdqxNTJnjfwofppDkI7lGyLSYmlnulKyPjGKfU2ssQsH6U
-         jaIz8JrA0Sl7ZVIFGr/32KEviZOR5r+s7cjizXbjNkJIq+vs/2gxBaM2UHjfQwMWbvid
-         niX0qcPykAva3wLwqpXf3riOwFumaUdsHoi3sYyV7iK9z08xOczTqSYJ6mmcCHO9oqoS
-         uHiQ==
+        b=nqNqp3pA8jJRNkqiSkuFuxV4yiLD5J56x2FEVzZJPp9iO8QqKVuNuJiD5i2g4mbdvD
+         CMbRlcg9KikYEYzcECG5KvJY/28aQIRIjtBkImaAV5hz9o+UxNW/MZcTroFGoab+imk9
+         BR+uoia50LhVdZ/c4DMRK5zzjbRruA5jLk2NDTW12vOIAxaIfb2nP1yVgLmCDjXJQ8MO
+         w1qivlmCjOVNdKYw7lsrcRxvzZZpU8pQ10Dyouw0XmHJIVMB+Pm5Rvn4/ApEBxGq2hBa
+         kQrZmb2pSr13mhiP6qZmpxQxlDVmY2l187xQR6v+0zSudQIlkgwT/v313hYQfug4+XTl
+         7r2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=WrHQCAWSEDiaau3MVfIjGZpxSiOCNus14NzwHFx91G4=;
-        b=T7o17/H5sSej0/SSHR4NwT9sDB96IMmUCDSnvxEBWfOENkmhKyiv+/HeefC4SIkswc
-         wOCR25/GAw6uJctq01PxZZ/UwgvUbojICO162EaQq4fQ9cykSocKNCf5fZf1Inukc5hs
-         2F3ILR7JM9saq/AW/7pVmc6O4pO80BpswKGnvlqb5Ay+dbhIw5JxuMbRXQkO/GfGjuF0
-         EjDoiLXFQJCFjaQorh0qofEOq+JMll3Dox1KOMNPOBSlXnxhqeGnVYx2napULEQJvY+f
-         qXWJwGpHH9isvG2h9BQfIVXTcdXbw5A9HNOaw1tWBM/hDkAeRcXgHCNfI8elJM9HFo8s
-         aGPg==
+        bh=5PZoWcIEtfKjOYLuE8ySmA+UwCfzdpXhnOFRyevyct0=;
+        b=qM7B2brcG4fwRBKZtBDXVq4Xc/Kp6SrI2jeSxMITH7aH9OjyZR+TltndOFbP+CCG3G
+         UWqdnYH+AUHfyVFjvoRP1b3BxStaJZbgCFSF701Z8TQcr9yvrW7RtyXHMUWE7YyJwhHQ
+         udT0Mr0t8mW5xfR9wxJ5WyCiE6isEvdaj71sUoBdFBIYaEbF+l5lsYWsHB5UvbfDdthR
+         Y4p4ZYG0OsUEDZGfSNQyRzZsLgOSanWIgyBETKi5ENaBVYC82+rqR+jhKADT2UDQ6maU
+         Wwm5tX23078K2UAapYC+jP8WDMaYfZWHhrS8c7sLOIRyAJ0+x6bYUB9uRy2luZ5s3wme
+         UGVw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=dQKwnXrH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d64si5239589qkf.416.2018.03.23.04.22.45
+        by mx.google.com with ESMTPS id q130si1354531qka.320.2018.03.23.04.50.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 23 Mar 2018 04:22:45 -0700 (PDT)
+        Fri, 23 Mar 2018 04:50:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=dQKwnXrH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37217 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:37308 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ezKmT-0003S4-3B
-	for alex.bennee@linaro.org; Fri, 23 Mar 2018 07:22:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40234)
+	id 1ezLDc-0003wy-Ht
+	for alex.bennee@linaro.org; Fri, 23 Mar 2018 07:50:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48775)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1ezKmL-0003Rc-OE
-	for qemu-arm@nongnu.org; Fri, 23 Mar 2018 07:22:38 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1ezLDQ-0003wc-O9
+	for qemu-arm@nongnu.org; Fri, 23 Mar 2018 07:50:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1ezKmI-0007kH-Ku
-	for qemu-arm@nongnu.org; Fri, 23 Mar 2018 07:22:37 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:35954 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <kwolf@redhat.com>)
-	id 1ezKmI-0007jh-Ev; Fri, 23 Mar 2018 07:22:34 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 666FF406E8A4;
-	Fri, 23 Mar 2018 11:22:22 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-117-65.ams2.redhat.com
-	[10.36.117.65])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 714B41C71C;
-	Fri, 23 Mar 2018 11:21:44 +0000 (UTC)
-Date: Fri, 23 Mar 2018 12:21:43 +0100
-From: Kevin Wolf <kwolf@redhat.com>
-To: Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>
-Message-ID: <20180323112143.GC5025@localhost.localdomain>
-References: <1521746188-496856-1-git-send-email-mst@redhat.com>
-	<20180323102227.GF16270@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1ezLDP-0008RY-Pv
+	for qemu-arm@nongnu.org; Fri, 23 Mar 2018 07:50:36 -0400
+Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:33514)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1ezLDP-0008QQ-GK
+	for qemu-arm@nongnu.org; Fri, 23 Mar 2018 07:50:35 -0400
+Received: by mail-oi0-x242.google.com with SMTP id 126-v6so4085187oig.0
+	for <qemu-arm@nongnu.org>; Fri, 23 Mar 2018 04:50:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=5PZoWcIEtfKjOYLuE8ySmA+UwCfzdpXhnOFRyevyct0=;
+	b=dQKwnXrHHF5vEE38104RoFRuUYMsRygdOAAoAYh0B3CTY4C6bfbkF9LXOT4ol1PAkD
+	o73QSvngqp6nHtll5FjGhObQ9AH5XgbDzoYd/nmS8zzZAG5wEfXOjymtEPDIvz+urEBk
+	SX0YpT7KkXmLAg8hjdF4ZGg6/tzQvdKkr5p+M=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=5PZoWcIEtfKjOYLuE8ySmA+UwCfzdpXhnOFRyevyct0=;
+	b=qhYaUxtlZzsxYMUzkDOGjMjGzPbPKBxd4W0MIoD5vmW+D0WRk4HES+ylRtskQsdRlE
+	bNQBLlXiyqJ5N01Lqd8ROPrGMcRgCogjZzV8eWaMMNyDpnkNiDVCahU9kfYqSOrP0Pxh
+	kUIwOwGtLVpS9NjO0LKYJscrcQrVeugdXyqbJMOIH/tmHRPuOUP4/ZqxR5UiCMl35c05
+	ZRazvPWM1UYP0z5QCIHaQDW3edfTHrlfWzdc8YVgPDd248JjeYHaAMwiTlyS+M650C0R
+	OiDYR35/aDPObV1fZRvJlWTWA19dOp8svxTQNg7UeSh4AuRqbrLAeNASWA/xXjjri0hu
+	yhZQ==
+X-Gm-Message-State: AElRT7HI8M54rNpbGJjRS4V5QBU95Q6nX6G4REOuwnDwsa9CmaMuOW4N
+	ZqhOGFC72x8YMTbKj6pTU5qS6VTsB8D9kQ2bDCMe3A==
+X-Received: by 10.202.97.87 with SMTP id v84mr16531686oib.12.1521805834541;
+	Fri, 23 Mar 2018 04:50:34 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <20180323102227.GF16270@redhat.com>
-User-Agent: Mutt/1.9.1 (2017-09-22)
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Fri, 23 Mar 2018 11:22:23 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Fri, 23 Mar 2018 11:22:23 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'kwolf@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [PATCH v2 1/2] make: move generated headers to
- qemu-build/
+Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Fri, 23 Mar 2018 04:50:14
+	-0700 (PDT)
+In-Reply-To: <1521777509-22896-1-git-send-email-onursahin08@gmail.com>
+References: <1521777509-22896-1-git-send-email-onursahin08@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 23 Mar 2018 11:50:14 +0000
+Message-ID: <CAFEAcA9G3xVjmjys2R4-NXRHiZwLVLRO7ZQDZ0AhNMHHFhHV8A@mail.gmail.com>
+To: Onur Sahin <onursahin08@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::242
+Subject: Re: [Qemu-arm] [PATCH] target-arm: Check undefined opcodes for SWP
+ in A32 decoder
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,98 +104,98 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
-	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
-	Li Zhijian <lizhijian@cn.fujitsu.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, Jeff Cody <jcody@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org,
-	BALATON Zoltan <balaton@eik.bme.hu>, Keith Busch <keith.busch@intel.com>,
-	Max Filippov <jcmvbkbc@gmail.com>, Hannes Reinecke <hare@suse.com>,
-	Gerd Hoffmann <kraxel@redhat.com>, Fam Zheng <famz@redhat.com>,
-	Max Reitz <mreitz@redhat.com>, Eric Blake <eblake@redhat.com>,
-	Josh Durgin <jdurgin@redhat.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Alberto Garcia <berto@igalia.com>,
-	zhanghailiang <zhang.zhanghailiang@huawei.com>,
-	Ben Warren <ben@skyportsystems.com>,
-	Stefan Berger <stefanb@linux.vnet.ibm.com>,
-	Yongbok Kim <yongbok.kim@mips.com>, David Hildenbrand <david@redhat.com>,
-	Michael Roth <mdroth@linux.vnet.ibm.com>,
-	"Richard W.M. Jones" <rjones@redhat.com>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	=?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
-	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Marcel Apfelbaum <marcel@redhat.com>, Liu Yuan <namei.unix@gmail.com>,
-	Richard Henderson <rth@twiddle.net>,
-	Andrzej Zaborowski <balrogg@gmail.com>, Jason Wang <jasowang@redhat.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>, Jiri Pirko <jiri@resnulli.us>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Corey Minyard <minyard@acm.org>, Amit Shah <amit@kernel.org>,
-	Stefan Weil <sw@weilnetz.de>, Xie Changlong <xiechanglong.d@gmail.com>,
-	Riku Voipio <riku.voipio@iki.fi>, Peter Lieven <pl@kamp.de>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Yuval Shaia <yuval.shaia@oracle.com>, Greg Kurz <groug@kaod.org>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
-	Ronnie Sahlberg <ronniesahlberg@gmail.com>,
-	Zhang Chen <zhangckid@gmail.com>, xen-devel@lists.xenproject.org,
-	John Snow <jsnow@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>, kvm@vger.kernel.org,
-	qemu-block@nongnu.org, Hitoshi Mitake <mitake.hitoshi@lab.ntt.co.jp>,
-	Markus Armbruster <armbru@redhat.com>, qemu-s390x@nongnu.org,
-	Marcelo Tosatti <mtosatti@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
-	Juan Quintela <quintela@redhat.com>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	Michael Walle <michael@walle.cc>,
-	Igor Mammedov <imammedo@redhat.com>, qemu-ppc@nongnu.org,
-	Wen Congyang <wencongyang2@huawei.com>, Cornelia Huck <cohuck@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WYTb816Xg8Qe
+X-TUID: Uxe2ukjsVnbL
 
-Am 23.03.2018 um 11:22 hat Daniel P. Berrang=E9 geschrieben:
-> On Thu, Mar 22, 2018 at 09:27:55PM +0200, Michael S. Tsirkin wrote:
-> > Make sure all generated files go into qemu-build subdirectory.
-> > We can then include them like this:
-> >  #include "qemu-build/trace.h"
-> >=20
-> > This serves two purposes:
-> > - make it easy to detect which files are in the source
-> >   directory (a bit more work for writers, easier for readers)
-> > - reduce chances of conflicts with possible stale files in source
-> >   directory (which could be left over from e.g. old patches, etc)
->=20
-> If people care about this, then they can just be doing a build
-> with  srcdir !=3D builddir config.  If people are using srcdir =3D=3D b=
-uilddir
-> then they likely *want* all the generated files in their srcdir.
->=20
-> IMHO it would be valid for us to consider if we could just mandate
-> srcdir !=3D builddir, but if people object to such a proposal, then I
-> don't think we should arbitrarily move all generated source files
-> in this way, as that's effectively the same thing forced onto devs.
+On 23 March 2018 at 03:58, Onur Sahin <onursahin08@gmail.com> wrote:
+> Hi all,
+>
+> I have noticed that the decoding part in ARM/A32 does not verify the
+> opcodes for SWP instructions. The opcode field ([23:20]) for SWP
+> instructions should be 0 or 4, and QEMU does not check against these
+> values.
+>
+> Other opcode values less than 8 are Undefined within the encoding
+> space of sychronization primitives (e.g., SWP, LDREX*). See section
+> A5.2.10 of ARMv7-A manual for reference. Because of the missing opcode
+> check, QEMU happily executes these Undefined cases as a SWP instruction.
+>
+> The following fix adds proper opcode checks before assuming a valid SWP.
+>
+> Best,
+> Onur
+>
+> Signed-off-by: Onur Sahin <onursahin08@gmail.com>
 
-Not necessarily. I build from the srcdir simply because it's more
-convenient to be able to easily start the editor and make from the same
-directory (or sometimes start make from inside the editor). I suppose
-that (or for users, being too lazy to create a second directory for that
-one-time build) is the motivation for most other users of srcdir =3D=3D
-builddir, too.
+Yes, we've been historically a bit lax with our arm decoding.
+It's good to tighten it up, I think. Thanks for sending this patch;
+I have some review comments below.
 
-I don't really mind where generated source files are stored, they just
-happen to end up in my root source directory if I want to be able to
-build from there without dealing with paths. I won't be angry if they
-are suddenly in a different directory as long as it doesn't mean more
-typing for me. Moving them to a separate directory might in fact make
-things a bit nicer occasionally. Not enough for me to actively propose
-such a change, but if Michael wants to do this, I'm certainly not
-opposed.
+> ---
+>  target-arm/translate.c | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+>
+> diff --git a/target-arm/translate.c b/target-arm/translate.c
+> index bd5d5cb..fb31c12 100644
+> --- a/target-arm/translate.c
+> +++ b/target-arm/translate.c
+> @@ -8831,7 +8831,7 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+>                              }
+>                          }
+>                          tcg_temp_free_i32(addr);
+> -                    } else {
+> +                    } else if (!(insn & 0x00B00000)) {
 
-Kevin
+I think we have already checked bit 23, so we don't need to check it again
+(this is the else case of the "if (insn & (1 << 23))" condition).
+I think we should also be checking bits [11:8] are zeroes. These are
+"(0)" in the instruction description, which means that the instruction
+is UNPREDICTABLE if those are not zero (see A5.1.2 "UNDEFINED and
+UNPREDICTABLE instruction set space"). It's architecturally permitted
+to not check those bits, but elsewhere in the decoder we generally
+prefer to UNDEF on the UNPREDICTABLE cases.
+
+So I would make this condition
+    } else if ((insn & 0x00300f00) == 0) {
+
+I have been adding comments to the decoder as I modify it which
+indicate what bits have been decoded at various points. In this case
+I think we should add
+       /* 0bcccc_0001_0x00_xxxx_xxxx_0000_1001_xxxx
+        *  - SWP, SWPB
+        */
+
+just inside this else if () { ...} block.
+
+(and then you can delete the "SWP instruction" comment.)
+
+>                          /* SWP instruction */
+
+What version of QEMU did you make this patch against? The current
+git master has some other lines between the '} else {' and this
+comment. Generally patches should be against git master, as that's
+where all our development happens.
+
+>                          rm = (insn) & 0xf;
+>
+> @@ -8852,6 +8852,9 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+>                          tcg_temp_free_i32(addr);
+>                          store_reg(s, rd, tmp2);
+>                      }
+> +                    else {
+
+Minor style nit: the "else {" should go on the same line as the
+preceding "}".
+
+> +                        goto illegal_op;
+> +                    }
+>                  }
+>              } else {
+>                  int address_offset;
+> --
+> 1.8.3.1
+
+thanks
+-- PMM

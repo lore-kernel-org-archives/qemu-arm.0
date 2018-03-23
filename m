@@ -1,86 +1,88 @@
-Received: by 10.28.71.155 with SMTP id m27csp551514wmi;
-        Fri, 23 Mar 2018 07:32:29 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELvD7WmQCLvh4tGa9SiTcBmTakisVhwAF1KLpGw50m2HYikGCOf9M64JyYKx/LlLrFoO+LSH
-X-Received: by 10.237.57.5 with SMTP id l5mr36868913qte.200.1521815549387;
-        Fri, 23 Mar 2018 07:32:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521815549; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp551753wmi;
+        Fri, 23 Mar 2018 07:32:44 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELtpdQtVIIB1ZvKid+NZZ7webaNOli1EBUsdHGImigzylxfbXNXP6sFKny9z5pCvQuyEDf3U
+X-Received: by 10.55.198.153 with SMTP id s25mr38762174qkl.221.1521815564022;
+        Fri, 23 Mar 2018 07:32:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521815564; cv=none;
         d=google.com; s=arc-20160816;
-        b=hbpr69mwdP3w5WUhDHjhVBRUSHHvti9CTl9fx1lTfF3HsyHSlZE8senh3fHLz5tH21
-         /yzlPc76jgOK02fITcDm7eh/jtwFC0qw2HKJ5INoLygVbcMYcRv5aCqQPBf7VeAEUMEL
-         sflPRzJQcmYkj3FcunaVcq7ur/v36wErS820J2RI4DTji+E1GpRxEBMGYzELqrvfv+CI
-         7boR/dmT9SfsJWIV1c387XNF2Yf+5AYSNsci1f2IcOkTAKNfHKReBf6BNJ59zqzx0mwf
-         qH+yI8/I/jLMi/Cltxrhhrr/GaILOfqkWfgY17KM+MHs4gr9PmM37xDIW8LmpF634v0K
-         sn/w==
+        b=mkpDDBz8k3ztW/9pEamYZrHLOyz+fISfnqAIIa8ZCVjyW2FHwsokghTbPNOQGDKGyn
+         Fyk/W9f1u5wUydqbwPVLsc1XnElwJkby8b3/fFmLEvziRbZEVuPgx2lWGFkul6Rn3oeF
+         HSZg1LKfti9M31lO7Lom528FOFn6JejNNNAF7/2Klmxi5gdqEEDIIJlfJMe7jxhlmJKo
+         uP7pufSJK7cpYo/1OqehofQvb2Q2GlmxMJv4RDSs4d9AVTGOM+hcGEl8BNCV1ER8ZPK4
+         MUzqryHauVHmGjfQicx13U8FJ1BmjDh8/kzS+C44p0YYu7N3qFHMm0NNep63xX0Iinhl
+         yo/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :arc-authentication-results;
-        bh=q4DPA+m8J7edAMYX+TBdcjUgd6gbdEufqwAib3i81yc=;
-        b=mRZHe+Qzu5Bi4bheiSvZAw50wnwRmsRi3KUbVa/plEUyKmL7Am/lGWXiKvwul8QsMd
-         HEQfap9MfPpCaCDuKcrOpmh44cWtEwnMT3pWsLK6IOpo8ozXev4uT6O4SyGKuBBx31eP
-         +RLJMMuIjfsgsDh+GSWphxvS5gl4CDrrORGd1cYj8Kw8VeFDU9zP2lyD9vqaYzXsbkeO
-         ypYe37DPnkC6tNkrZlZd3uv0xzD/JwZ5xgU4hFDxKoUW+A3euELdJBaFBDoryAWMmmQA
-         5ljED+X+Gwzt7AZIy/47Fj/jCI7+ZB+PEqL5DgclamY8Wt3yoYzv24wQzr13pX1XJZC5
-         tkDw==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=b9x9aE+h2Gts3z0T7Pgvm1VEek78s7+lZZsSSwBrumc=;
+        b=qtKc8L2gbRfd/k/9EifREtvL87OMyYm5hfYwwk03DvRY0+/pzIPzGoYp6os47Ev36y
+         EQuT8OjPIPN7wmLKcjeV1JJ+qnLr75wEucFf35Wh69ue+nFqlRe3+vrLcA2ECylp+vAU
+         dOsmPHHZwlIhBzanR8yBuPMga9BNOo0MCx+jfiZ2xu1LO1XLxaxfmjOfvb1XHZUW1QZ/
+         wYR1UK8J6Arw2ce62/OT6J6v0djjgd7S8iFSQy2kLHcxuVEcYtXpHUHuV8XRWUQgCEps
+         ut8aKX5uK+CiVaeGhk5SFn/cC2H91mXkfDfDKTRhpNaxTOgnLQT1vpUgK1G4jaknPdVu
+         8RBg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b97si3466625qkh.406.2018.03.23.07.32.29
+        by mx.google.com with ESMTPS id g38si1213040qtf.128.2018.03.23.07.32.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 23 Mar 2018 07:32:29 -0700 (PDT)
+        Fri, 23 Mar 2018 07:32:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38336 helo=lists.gnu.org)
+Received: from localhost ([::1]:38338 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ezNk4-0003wJ-UG
-	for alex.bennee@linaro.org; Fri, 23 Mar 2018 10:32:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36222)
+	id 1ezNkJ-00044Y-AM
+	for alex.bennee@linaro.org; Fri, 23 Mar 2018 10:32:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36282)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1ezNjr-0003w1-L0
-	for qemu-arm@nongnu.org; Fri, 23 Mar 2018 10:32:16 -0400
+	(envelope-from <lvivier@redhat.com>) id 1ezNk0-00041R-D4
+	for qemu-arm@nongnu.org; Fri, 23 Mar 2018 10:32:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1ezNjn-00031E-Nd
-	for qemu-arm@nongnu.org; Fri, 23 Mar 2018 10:32:15 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:50602 helo=mx1.redhat.com)
+	(envelope-from <lvivier@redhat.com>) id 1ezNju-00035y-Gf
+	for qemu-arm@nongnu.org; Fri, 23 Mar 2018 10:32:24 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:50626 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <lvivier@redhat.com>)
-	id 1ezNjn-00030P-JO; Fri, 23 Mar 2018 10:32:11 -0400
+	id 1ezNju-00035l-C5; Fri, 23 Mar 2018 10:32:18 -0400
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id F0F5077068;
-	Fri, 23 Mar 2018 14:32:10 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id D12269BA46;
+	Fri, 23 Mar 2018 14:32:17 +0000 (UTC)
 Received: from thinkpad.redhat.com (ovpn-204-35.brq.redhat.com [10.40.204.35])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 0EF072023233;
-	Fri, 23 Mar 2018 14:32:02 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 6B7482023233;
+	Fri, 23 Mar 2018 14:32:11 +0000 (UTC)
 From: Laurent Vivier <lvivier@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Fri, 23 Mar 2018 15:31:57 +0100
-Message-Id: <20180323143202.28879-1-lvivier@redhat.com>
+Date: Fri, 23 Mar 2018 15:31:58 +0100
+Message-Id: <20180323143202.28879-2-lvivier@redhat.com>
+In-Reply-To: <20180323143202.28879-1-lvivier@redhat.com>
+References: <20180323143202.28879-1-lvivier@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.11.55.1]);
-	Fri, 23 Mar 2018 14:32:11 +0000 (UTC)
+	Fri, 23 Mar 2018 14:32:17 +0000 (UTC)
 X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
-	Fri, 23 Mar 2018 14:32:11 +0000 (UTC) for IP:'10.11.54.4'
+	Fri, 23 Mar 2018 14:32:17 +0000 (UTC) for IP:'10.11.54.4'
 	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'lvivier@redhat.com' RCPT:''
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH v2 0/5] coccinelle: re-run scripts from
- scripts/coccinelle
+Subject: [Qemu-arm] [PATCH v2 1/5] make: improve check for stale generated
+ files in source dir
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,8 +100,8 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Max Filippov <jcmvbkbc@gmail.com>, Eric Blake <eblake@redhat.com>,
 	Alberto Garcia <berto@igalia.com>, qemu-block@nongnu.org,
 	qemu-trivial@nongnu.org, Yongbok Kim <yongbok.kim@mips.com>,
-	Markus Armbruster <armbru@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	Laurent Vivier <lvivier@redhat.com>, Fam Zheng <famz@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Richard Henderson <rth@twiddle.net>, Fam Zheng <famz@redhat.com>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
 	qemu-arm@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
@@ -110,58 +112,81 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NLeCc2MPhNZe
+X-TUID: SUqF7owE3IJ5
 
-I've re-run some scripts from the coccinelle directory,
-and they have found some problems.
+From: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
 
-This series fixes them.
+When doing a build with builddir !=3D srcdir, if any generated files are
+accidentally present in srcdir from a previous build, these can cause
+unexpected failures.
 
-v2: only change PATCH 4/4
-  - keep comments
-  - fix indentation
-  I didn't remove changes in autogenerated files as it
-  seems they are generated only once.
+Currently there is a rule that checks for existance of config-host.mak,
+but there have been cases where config-host.mak is absent, while other
+generated files still exist.
 
-Daniel P. Berrang=C3=A9 (1):
-  make: improve check for stale generated files in source dir
+Update the check to look at every file listed in $(GENERATED_FILES). To
+do this we must move the check further down after $(GENERATED_FILES) has
+been populated.
 
-Laurent Vivier (4):
-  error: Strip trailing '\n' from error string arguments (again again)
-  error: Remove NULL checks on error_propagate() calls
-  qdict: remove useless cast
-  Remove unnecessary variables for function return value
-
- Makefile                                           | 29 +++++++----
- accel/tcg/translate-all.c                          |  5 +-
- block/nvme.c                                       | 11 ++---
- block/quorum.c                                     |  6 +--
- hw/arm/exynos4210.c                                |  6 +--
- hw/block/vhost-user-blk.c                          |  5 +-
- hw/hppa/dino.c                                     |  5 +-
- hw/misc/mos6522.c                                  |  8 +---
- hw/net/ftgmac100.c                                 |  5 +-
- hw/ppc/pnv_lpc.c                                   | 16 ++-----
- io/channel-websock.c                               |  4 +-
- io/net-listener.c                                  |  6 +--
- monitor.c                                          |  2 +-
- target/i386/hax-darwin.c                           | 10 ++--
- target/i386/hvf/hvf.c                              | 24 +++++-----
- target/mips/dsp_helper.c                           | 15 ++----
- target/xtensa/core-dc232b/xtensa-modules.c         | 56 ++++++----------=
-------
- target/xtensa/core-dc233c/xtensa-modules.c         | 56 ++++++----------=
-------
- target/xtensa/core-de212/xtensa-modules.c          | 48 +++++-----------=
+Signed-off-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
 ---
- target/xtensa/core-fsf/xtensa-modules.c            | 32 ++++---------
- .../xtensa/core-sample_controller/xtensa-modules.c | 24 +++-------
- target/xtensa/translate.c                          |  7 +--
- tests/m48t59-test.c                                |  6 +--
- tests/test-thread-pool.c                           |  6 +--
- util/uri.c                                         |  5 +-
- 25 files changed, 117 insertions(+), 280 deletions(-)
+ Makefile | 29 +++++++++++++++++++----------
+ 1 file changed, 19 insertions(+), 10 deletions(-)
 
+diff --git a/Makefile b/Makefile
+index 727ef118f3..d588a13687 100644
+--- a/Makefile
++++ b/Makefile
+@@ -52,16 +52,6 @@ endif
+=20
+ .git-submodule-status: git-submodule-update config-host.mak
+=20
+-# Check that we're not trying to do an out-of-tree build from
+-# a tree that's been used for an in-tree build.
+-ifneq ($(realpath $(SRC_PATH)),$(realpath .))
+-ifneq ($(wildcard $(SRC_PATH)/config-host.mak),)
+-$(error This is an out of tree build but your source tree ($(SRC_PATH)) =
+\
+-seems to have been used for an in-tree build. You can fix this by runnin=
+g \
+-"$(MAKE) distclean && rm -rf *-linux-user *-softmmu" in your source tree=
+)
+-endif
+-endif
+-
+ CONFIG_SOFTMMU :=3D $(if $(filter %-softmmu,$(TARGET_DIRS)),y)
+ CONFIG_USER_ONLY :=3D $(if $(filter %-user,$(TARGET_DIRS)),y)
+ CONFIG_XEN :=3D $(CONFIG_XEN_BACKEND)
+@@ -1028,6 +1018,25 @@ ifdef SIGNCODE
+ endif # SIGNCODE
+ endif # CONFIG_WIN
+=20
++define nl
++
++
++endef
++
++CHECK_FILES =3D config-host.mak $(filter-out .git-submodule-status, $(GE=
+NERATED_FILES))
++UNEXPECTED_FILES =3D $(wildcard $(CHECK_FILES:%=3D$(SRC_PATH)/%))
++
++# Check that we're not trying to do an out-of-tree build from
++# a tree that's been used for an in-tree build.
++ifneq ($(realpath $(SRC_PATH)),$(realpath .))
++ifneq ($(UNEXPECTED_FILES),)
++$(error Stale files in source tree:${nl}${nl} $(UNEXPECTED_FILES:%=3D  %=
+${nl}) ${nl}\
++This is an out of tree build but your source tree ($(SRC_PATH)) \
++seems to have been used for an in-tree build. You can fix this by runnin=
+g \
++"$(MAKE) distclean && rm -rf *-linux-user *-softmmu" in your source tree=
+)
++endif
++endif
++
+ # Add a dependency on the generated files, so that they are always
+ # rebuilt before other object files
+ ifneq ($(wildcard config-host.mak),)
 --=20
 2.14.3
 

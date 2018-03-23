@@ -1,96 +1,90 @@
-Received: by 10.28.71.155 with SMTP id m27csp288005wmi;
-        Fri, 23 Mar 2018 03:27:00 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELt/LY8tA1GkQQ/vMQQIMe3it+rlOKlM2v6rK0yYVQtkc3x6DPYkEmIhTudMI18GEPxLpLZP
-X-Received: by 10.237.44.100 with SMTP id f91mr41608756qtd.80.1521800820115;
-        Fri, 23 Mar 2018 03:27:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521800820; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp380487wmi;
+        Fri, 23 Mar 2018 05:02:19 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELsne+0nA4cYeSnnN29WJZ1pbTfsYdXbLYQkPMYmjpAcHrTLmCaANrY8lcYRSSnLMcenwCHy
+X-Received: by 10.237.60.155 with SMTP id d27mr40635375qtf.210.1521806539481;
+        Fri, 23 Mar 2018 05:02:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521806539; cv=none;
         d=google.com; s=arc-20160816;
-        b=otmiqJQhymHzt7HT3dp7NJMkeGpuLQe/k1cbDnMQ6gVpTcyi7RGNHwmkZJWkoSSKg2
-         +NL9Xa725EWbltEMxbrgD6wL6oI43JMUSnZqMXksE0BvOFNJJEhTrktRylKLMoESbq9r
-         HY5BCtSeGW8IAiBVR50Pr3sgHZ3bArgzI/flcGjXPLtgxz9/Xbr/yu7qQmx/mGtrZg3+
-         RsjJr/ksYy12zUdf00FxxtxToKdHstZIv4oI/AHgD+YAoto8mSKRSLdrkmcQvjJlCdXM
-         POD1Bj4ebgEuV/ljT0d0UV6URmmCnfM6/Nm+FU2p7hDoAwl/7WSPvj0Tbqj/RzbyhTBo
-         FBpA==
+        b=HdHV/kx1CaBHPJ1NRZZWxOJbTZPpARRf39n8mMHH3FoABrw4r2z1/mbrtxx84Rh8Fm
+         jabSwTpFQb7uvH2Lg1dMKVLSmQMzH9rLV1W4oQNpTy9zRz/EKI8ekKby6GXwIW8gUY4s
+         OcJQqCrZl2cxybp7FJWmZ7bD/gJX2IcvzWMLZJ9mgNKVRD39IlQ2rXaV8aIs//964EAz
+         Q5VwGjPXMrgJWOP6W9TAN3WfD+XtubdpOXpP9qtGA4N8T9a/hsNuy+Px1L/utnTC7vhw
+         4iKrbuN1U/wgUg350dFLsxigga6+G94K+nmgmbuBagZ2GEQMx2enwNYrW2sogkVkBQlh
+         W3JA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=1FeHCVnkwdK0zKC+2NPalboy1JybXlNqioF1c1LoXv0=;
-        b=GryYoj8WUDyxqN/7Cut8QSsLn9WIxQHFLkyqxX6Y5WzQEb+t0sPVmtV04CaV207rp3
-         ZxifED4+P0rE4RaE1Bx6T+3sLvX14gm0p3hEtIvUSwR5hIJAx9Px0jxLfGIAKfXOXkTb
-         sz+5gYPuKOjhff+VUUkhtZ/mH91Bs8sGpS/0MWO2/P6l7BCuGkK3RcBl4ZsVzLrXxkFD
-         kXvDm91N2woBv04CxMdVnzd377y3zuzzus8AhoPkSc9pObkBlSFWnHbBkdkhYRivpWak
-         CTaOUL5AhomR9SCnUWNN+0xH3WkTnOC0OpqU924VpD82Ra/aLfHm7xpgg7MjujLPXXGN
-         eq8w==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=dixQkviGsNIBVRsCO1TExDocd2tcYQQgSUBU33tD+Do=;
+        b=pqZG307YOuRmDo75dJg0eJ9pwNo9cXyogXaiSC1CDX8tS22X2j5oqu33DskAqeDwW/
+         ebKQpc6Nam5B8xi3mmLFlBwxzi5VjCF8UxX4KEx8nV3JEWJ/toG6tEMLWM0urIC2B9Ud
+         DkkIqOWlgG/PeRqSDjtgl/EJ4wjmmu6vXXBYn7OjhbZk4qkz7Owq+MIL2r3KhpaRTIUx
+         rPwfZcVzbF291O6zXHEHUF51AQkUpIKQMqQ4Vacsj9il8h4mSZAsu19I07kJUTF65NUs
+         SswX73zuet8kcSkTw0oOL7NmdDr5ad+MUdQFUhLIGw/iHudZvdGVIvfMk/Nemhf8aFRe
+         oyeg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=AdR1GNHP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m124si604450qkf.48.2018.03.23.03.26.59
+        by mx.google.com with ESMTPS id 41si4052720qtb.20.2018.03.23.05.02.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 23 Mar 2018 03:27:00 -0700 (PDT)
+        Fri, 23 Mar 2018 05:02:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=AdR1GNHP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37042 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37610 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ezJuV-0000u6-JK
-	for alex.bennee@linaro.org; Fri, 23 Mar 2018 06:26:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56656)
+	id 1ezLOl-0007ah-2j
+	for alex.bennee@linaro.org; Fri, 23 Mar 2018 08:02:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53500)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ezJuM-0000tq-KO
-	for qemu-arm@nongnu.org; Fri, 23 Mar 2018 06:26:51 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1ezLOZ-0007Y4-RP
+	for qemu-arm@nongnu.org; Fri, 23 Mar 2018 08:02:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ezJuL-0004Y0-Qp
-	for qemu-arm@nongnu.org; Fri, 23 Mar 2018 06:26:50 -0400
-Received: from mail-oi0-x22d.google.com ([2607:f8b0:4003:c06::22d]:34080)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1ezJuL-0004Xo-LC
-	for qemu-arm@nongnu.org; Fri, 23 Mar 2018 06:26:49 -0400
-Received: by mail-oi0-x22d.google.com with SMTP id u141-v6so9904506oif.1
-	for <qemu-arm@nongnu.org>; Fri, 23 Mar 2018 03:26:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=1FeHCVnkwdK0zKC+2NPalboy1JybXlNqioF1c1LoXv0=;
-	b=AdR1GNHPEYhdhEbNCebhNB+NDXBLE/89gZUIUMu0ZmRzHzo9DsvjgD1Og23vVcMoL9
-	GsA9HvazT2pR52ZzVHk5tU/6XofV/3WbInHY4/YCFyALB2/A60gJWrdIQ+AD2sOT4bf9
-	yNM6yv2x17+cx3prrHRJHswxN0Hkn7PjkPiAs=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=1FeHCVnkwdK0zKC+2NPalboy1JybXlNqioF1c1LoXv0=;
-	b=VTDuOlabwSuYxtcKMUlPZOlxjklSHgP4ucZ6PToxsTYbjP+7Ymb9DBvth66I8lwz1x
-	6C/S83smT1ePywsKP94S48C7OWgedYS7gySqVCYuXg75dIMhFJk5d6txEopk0W6y0H+J
-	JACe608eVIRnx3NXqA1A0EJLxdEOFykrbp+xZ+6zELaLN/O/hgBt8S2sGVQYugTF2HGd
-	ZmurCkB1FVSJkPsM+q2fQc3Dr3IDDgiSyxiMysAifho8KL6FTJoMt4c8h7B8T5OEjxKw
-	N4b2nXj2Tqrlia9/eARIgT26B2y/Q/OWQ1wAtdOuGAd/x3mpHXW+9bD7d45pWryRx5Qu
-	sPLA==
-X-Gm-Message-State: AElRT7E7c1Dag3K+PJYmoOeM2ONaAaxr3tlpUJW4UKEaN2KRuYB8IyQn
-	f4ujtZPOVgOgHFsdUbm0kSx1Me8M7nbfqhGgJ7ewHw==
-X-Received: by 10.202.224.67 with SMTP id x64mr2456299oig.164.1521800808830;
-	Fri, 23 Mar 2018 03:26:48 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Fri, 23 Mar 2018 03:26:28
-	-0700 (PDT)
-In-Reply-To: <d29ae6aa-5758-277b-b754-4e6fe7666e6b@redhat.com>
+	(envelope-from <eric.auger@redhat.com>) id 1ezLOU-0001Zw-Bo
+	for qemu-arm@nongnu.org; Fri, 23 Mar 2018 08:02:07 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:59782 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1ezLOU-0001ZZ-6v; Fri, 23 Mar 2018 08:02:02 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 47028722D7;
+	Fri, 23 Mar 2018 12:01:51 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-135.ams2.redhat.com
+	[10.36.116.135])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 3AF3E2166BAE;
+	Fri, 23 Mar 2018 12:01:44 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <d29ae6aa-5758-277b-b754-4e6fe7666e6b@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 23 Mar 2018 10:26:28 +0000
-Message-ID: <CAFEAcA9dHPLj6aF=JsS8dXaDWf_ONQ_A+SD1xXQO7DdsWK3yAw@mail.gmail.com>
-To: Auger Eric <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::22d
+	<CAFEAcA9dHPLj6aF=JsS8dXaDWf_ONQ_A+SD1xXQO7DdsWK3yAw@mail.gmail.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <6b4fbb94-2c28-27c2-17e4-b3ce593eb04d@redhat.com>
+Date: Fri, 23 Mar 2018 13:01:43 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA9dHPLj6aF=JsS8dXaDWf_ONQ_A+SD1xXQO7DdsWK3yAw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.2]);
+	Fri, 23 Mar 2018 12:01:51 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Fri, 23 Mar 2018 12:01:51 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
 Subject: Re: [Qemu-arm] Regression on KVM qemu-system-aarch64 since
  "monitor: enable IO thread for (qmp & !mux) typed"
 X-BeenThere: qemu-arm@nongnu.org
@@ -108,22 +102,34 @@ Cc: qemu-arm <qemu-arm@nongnu.org>, Eric Blake <eblake@redhat.com>,
 	qemu list <qemu-devel@nongnu.org>, Peter Xu <peterx@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: u+aoqG5UUr8H
+X-TUID: tAENVjXvaxRR
 
-On 23 March 2018 at 10:24, Auger Eric <eric.auger@redhat.com> wrote:
-> Hi,
->
-> I observe a regression on KVM accelerated qemu-system-aarch64:
->
-> Unexpected error in kvm_device_access() at
-> /home/augere/UPSTREAM/qemu/accel/kvm/kvm-all.c:2164:
-> 2018-03-23T09:59:59.629439Z qemu-system-aarch64: KVM_GET_DEVICE_ATTR
-> failed: Group 6 attr 0x000000000000c664: Device or resource busy
-> 2018-03-23 10:00:00.085+0000: shutting down, reason=crashed
+Hi,
 
-Can you get a backtrace for this? (I guess you'd need to fiddle
-with the kvm_device_access() code to make it assert rather
-than passing back the error).
+On 23/03/18 11:26, Peter Maydell wrote:
+> On 23 March 2018 at 10:24, Auger Eric <eric.auger@redhat.com> wrote:
+>> Hi,
+>>
+>> I observe a regression on KVM accelerated qemu-system-aarch64:
+>>
+>> Unexpected error in kvm_device_access() at
+>> /home/augere/UPSTREAM/qemu/accel/kvm/kvm-all.c:2164:
+>> 2018-03-23T09:59:59.629439Z qemu-system-aarch64: KVM_GET_DEVICE_ATTR
+>> failed: Group 6 attr 0x000000000000c664: Device or resource busy
+>> 2018-03-23 10:00:00.085+0000: shutting down, reason=crashed
+> 
+> Can you get a backtrace for this? (I guess you'd need to fiddle
+> with the kvm_device_access() code to make it assert rather
+> than passing back the error).
 
-thanks
--- PMM
+OK. I will try to do so. As I could have expected, I cannot reproduce on
+a standalone qemu command line. The problem observed above is seen with
+libvirt launch which may be doing some other QMP stuff concurrently?
+
+Thanks
+
+Eric
+> 
+> thanks
+> -- PMM
+> 

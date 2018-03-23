@@ -1,83 +1,94 @@
-Received: by 10.28.71.155 with SMTP id m27csp556933wmi;
-        Fri, 23 Mar 2018 07:37:33 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELvu/sP+UkHuUtr0ZIo4eah4vatO/8zSyBWrMiw/vzapoax3K3KoG2ppNhnhqx2nrFcnJwht
-X-Received: by 10.237.54.161 with SMTP id f30mr42533316qtb.128.1521815853451;
-        Fri, 23 Mar 2018 07:37:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521815853; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp707232wmi;
+        Fri, 23 Mar 2018 09:59:40 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELuWGQ1J6bieVfEVadNshpC4+Kitke+K8cZNph5jTlEj2ZRzmvlGpCZWgbyMdSWz4pJPm5d4
+X-Received: by 10.55.24.214 with SMTP id 83mr42711957qky.267.1521824380594;
+        Fri, 23 Mar 2018 09:59:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521824380; cv=none;
         d=google.com; s=arc-20160816;
-        b=djR0SBTUfUPFJXz5j63GyXpSgh5kCoyMaMbW36m59qSAOmLRrtwJ476G6Xva9Oo9yY
-         Uhoxs7RHqNG1yfa3CNY53t6p2Hdz1RMBlUcw/VGlkjjp7MKbCaJ4KS/wLzBC3GCHjLIx
-         h63ak6rjfUnuaWTOxWzzoMphwABHZWITuJEcabsNuVmv3sbXsmeZCU9DmOJR0cYq6v+O
-         979O7a/BZMtnDA1u0trH62M4JqckP/1dlfYXv0lXaFCU1JVAZWORzWtrHOWntDNRuIVo
-         znFa+gX6zclHx+XoIC4wDGDARx9d5rDO5PLJqYNDV/Wha3rpBQLQnA/wySJ7wUy120wZ
-         2VZg==
+        b=kxpPlhd4kOKZJ70MbQYJEWenhNAmB+EA9T7HjsT2xMDzUYKWr9KMpY0FVTeDs18s49
+         +sdST2E/s8TmXUULh5LJeoiHHfrdxX3Xz5VIE3vNvjclcmXSVJtlyZbEYR2V3Sbou83C
+         r/nFoyNEP3Mh6dY/D9aUL/u8o3cYRObVaQxbgA/mU2aV2XDBssbmz733diltp2y+1R+2
+         kPQ1wlZVe9glpHo/p8uz6/YAxN5NwKjMZ/vjbbSt1b6Gn5dRqU5NMCcHVyuR5z3tmbtG
+         h0dcFkA7hWQBWR/n8/MiStq/9APRmGQlfYZ1VrnQlSygWX01lawH8gbEAy7bL8R9R1IM
+         dp9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=5wKmzbUKtw4FnzTEL63X00nsXkzYAVHDrN2oCw/ACHk=;
-        b=dEptfIlREv8/FQUa8LrHFr3atfV6AFOxtKermNlGJhxRVFbGDtZjbuPzfbXh8rUd+C
-         6ntwfDree1shIQ8KdNbpqJrXTsOryvW444ZWxMc9B6Zxp7pO/S+KBJwWMPNNLeWaXAX7
-         I73Z78v9tya2AWx3MSJEcVsYotCxd51AUzLbDbW5XxiZg5QgpQ3RUCVylV0JsVrCvU81
-         mXwYyeD4MeY7kBsrVjJSvU45oq0U6YCFJ0Ex//mB4Y8RdPO0mZy+io0OIL5QhUf4XjIh
-         LE5/If1bG4Qccx3kdlIuFKMerDtT0G3hnVxCrXlTocQZfGNdG0TGcQKSrMSqY2OIhKTg
-         vV6g==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:organization:from:references:to
+         :arc-authentication-results;
+        bh=sbzHTCwIjHAafthepwL1x7kykPz3dZ6X9cW7RPoD9ZY=;
+        b=QGGSyfJqWO0xqGDUtt7Zh7J/QTD2Oe1XISmGKSh08Lc4YE2hLdOZhhGvRgoI+RsA8X
+         ngGHoARkfbzE3J8BWyvoBlJdejM7E1f5XLfzGLYtToPuOsEm91dSsk3oJKfj0hPhgBdw
+         gU1xB5CeytTUfxt84s1nKFgur2habo0C2fGvTNHYiZGB9E/yMcCUUOHIuhy1PkZ95ksP
+         XBQ8juCpF8hVcQ1fgDA2IkS9ukRkWaU/xJ/4x+s6ZA4YojeOLFm8Mgh9RIpgw6J2thse
+         lHjGkbwFWqgKS0GwdpsXKC9alhTZ6gtohWqHElIfCpiAsmK0k7TvZBeZkSaeVlerpA3z
+         e9Lw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n4si6082787qkb.276.2018.03.23.07.37.33
+        by mx.google.com with ESMTPS id u91si5370633qtd.226.2018.03.23.09.59.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 23 Mar 2018 07:37:33 -0700 (PDT)
+        Fri, 23 Mar 2018 09:59:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38374 helo=lists.gnu.org)
+Received: from localhost ([::1]:39046 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ezNoy-0008Sq-UC
-	for alex.bennee@linaro.org; Fri, 23 Mar 2018 10:37:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36416)
+	id 1ezQ2W-0000LX-5Y
+	for alex.bennee@linaro.org; Fri, 23 Mar 2018 12:59:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53969)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1ezNkG-0004BU-5N
-	for qemu-arm@nongnu.org; Fri, 23 Mar 2018 10:32:46 -0400
+	(envelope-from <eblake@redhat.com>) id 1ezQ2Q-0000LQ-2X
+	for qemu-arm@nongnu.org; Fri, 23 Mar 2018 12:59:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1ezNkF-0003FL-AS
-	for qemu-arm@nongnu.org; Fri, 23 Mar 2018 10:32:40 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:50668 helo=mx1.redhat.com)
+	(envelope-from <eblake@redhat.com>) id 1ezQ2L-0007WD-Sm
+	for qemu-arm@nongnu.org; Fri, 23 Mar 2018 12:59:34 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:58184 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lvivier@redhat.com>)
-	id 1ezNkF-0003F4-5f; Fri, 23 Mar 2018 10:32:39 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1ezQ2L-0007Vb-OM; Fri, 23 Mar 2018 12:59:29 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9AAF2EB70F;
-	Fri, 23 Mar 2018 14:32:38 +0000 (UTC)
-Received: from thinkpad.redhat.com (ovpn-204-35.brq.redhat.com [10.40.204.35])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A12012023233;
-	Fri, 23 Mar 2018 14:32:32 +0000 (UTC)
-From: Laurent Vivier <lvivier@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Fri, 23 Mar 2018 15:32:01 +0100
-Message-Id: <20180323143202.28879-5-lvivier@redhat.com>
-In-Reply-To: <20180323143202.28879-1-lvivier@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 68F074040073;
+	Fri, 23 Mar 2018 16:59:24 +0000 (UTC)
+Received: from [10.10.121.135] (ovpn-121-135.rdu2.redhat.com [10.10.121.135])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 2D85910B2B26;
+	Fri, 23 Mar 2018 16:59:09 +0000 (UTC)
+To: Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org
 References: <20180323143202.28879-1-lvivier@redhat.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+	<20180323143202.28879-3-lvivier@redhat.com>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <0c54fe9f-fccc-58fc-6d43-22b1d53183f3@redhat.com>
+Date: Fri, 23 Mar 2018 11:59:09 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.6.0
+MIME-Version: 1.0
+In-Reply-To: <20180323143202.28879-3-lvivier@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.1]);
-	Fri, 23 Mar 2018 14:32:38 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
-	Fri, 23 Mar 2018 14:32:38 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'lvivier@redhat.com' RCPT:''
+	(mx1.redhat.com [10.11.55.5]);
+	Fri, 23 Mar 2018 16:59:24 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Fri, 23 Mar 2018 16:59:24 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eblake@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH v2 4/5] qdict: remove useless cast
+Subject: Re: [Qemu-arm] [PATCH v2 2/5] error: Strip trailing '\n' from error
+ string arguments (again again)
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,83 +103,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
 	Jason Wang <jasowang@redhat.com>, Alexander Graf <agraf@suse.de>,
-	Max Filippov <jcmvbkbc@gmail.com>, Eric Blake <eblake@redhat.com>,
+	Max Filippov <jcmvbkbc@gmail.com>, Yongbok Kim <yongbok.kim@mips.com>,
 	Alberto Garcia <berto@igalia.com>, qemu-block@nongnu.org,
-	qemu-trivial@nongnu.org, Yongbok Kim <yongbok.kim@mips.com>,
-	Markus Armbruster <armbru@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	Laurent Vivier <lvivier@redhat.com>, Fam Zheng <famz@redhat.com>,
+	qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+	Richard Henderson <rth@twiddle.net>, Fam Zheng <famz@redhat.com>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
 	qemu-arm@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
 	Kevin Wolf <kwolf@redhat.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	"=?UTF-8?Q?Daniel_P._Berrang=c3=a9?=" <berrange@redhat.com>,
 	Igor Mitsyanko <i.mitsyanko@gmail.com>,
 	Max Reitz <mreitz@redhat.com>, qemu-ppc@nongnu.org,
 	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AH1j2CoehY03
+X-TUID: MYc2ygCAmxyY
 
-Re-run Coccinelle script scripts/coccinelle/qobject.cocci
+On 03/23/2018 09:31 AM, Laurent Vivier wrote:
+> Re-run Coccinelle script scripts/coccinelle/err-bad-newline.cocci,
+> and found new error_report() occurences with '\n'.
 
-Signed-off-by: Laurent Vivier <lvivier@redhat.com>
----
- block/nvme.c | 11 +++++------
- monitor.c    |  2 +-
- 2 files changed, 6 insertions(+), 7 deletions(-)
+s/occurences/occurrences/
 
-diff --git a/block/nvme.c b/block/nvme.c
-index 8bca57aae6..c4f3a7bc94 100644
---- a/block/nvme.c
-+++ b/block/nvme.c
-@@ -695,12 +695,11 @@ static void nvme_parse_filename(const char *filename, QDict *options,
-         unsigned long ns;
-         const char *slash = strchr(tmp, '/');
-         if (!slash) {
--            qdict_put(options, NVME_BLOCK_OPT_DEVICE,
--                      qstring_from_str(tmp));
-+            qdict_put_str(options, NVME_BLOCK_OPT_DEVICE, tmp);
-             return;
-         }
-         device = g_strndup(tmp, slash - tmp);
--        qdict_put(options, NVME_BLOCK_OPT_DEVICE, qstring_from_str(device));
-+        qdict_put_str(options, NVME_BLOCK_OPT_DEVICE, device);
-         g_free(device);
-         namespace = slash + 1;
-         if (*namespace && qemu_strtoul(namespace, NULL, 10, &ns)) {
-@@ -708,8 +707,8 @@ static void nvme_parse_filename(const char *filename, QDict *options,
-                        namespace);
-             return;
-         }
--        qdict_put(options, NVME_BLOCK_OPT_NAMESPACE,
--                  qstring_from_str(*namespace ? namespace : "1"));
-+        qdict_put_str(options, NVME_BLOCK_OPT_NAMESPACE,
-+                      *namespace ? namespace : "1");
-     }
- }
- 
-@@ -1082,7 +1081,7 @@ static void nvme_refresh_filename(BlockDriverState *bs, QDict *opts)
-                  bs->drv->format_name);
-     }
- 
--    qdict_put(opts, "driver", qstring_from_str(bs->drv->format_name));
-+    qdict_put_str(opts, "driver", bs->drv->format_name);
-     bs->full_open_options = opts;
- }
- 
-diff --git a/monitor.c b/monitor.c
-index 6ccd2fc089..6e7667d82f 100644
---- a/monitor.c
-+++ b/monitor.c
-@@ -4316,7 +4316,7 @@ static QObject *get_qmp_greeting(Monitor *mon)
-             /* Monitors that are not using IOThread won't support OOB */
-             continue;
-         }
--        qlist_append(cap_list, qstring_from_str(QMPCapability_str(cap)));
-+        qlist_append_str(cap_list, QMPCapability_str(cap));
-     }
- 
-     return qobject_from_jsonf("{'QMP': {'version': %p, 'capabilities': %p}}",
+> 
+> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+> ---
+>   target/i386/hvf/hvf.c | 24 ++++++++++++------------
+>   1 file changed, 12 insertions(+), 12 deletions(-)
+
+Reviewed-by: Eric Blake <eblake@redhat.com>
+
 -- 
-2.14.3
-
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org

@@ -1,86 +1,82 @@
-Received: by 10.28.71.155 with SMTP id m27csp734401wmi;
-        Tue, 27 Mar 2018 07:22:03 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELs+OxL7P9dEi5aN/658ugi6tZvBMrEuuM2v/hj+HbHDnvD5Uo1CHFeNDsH3+2P6WPOuzsEq
-X-Received: by 10.129.230.3 with SMTP id u3mr26612226ywl.448.1522160523560;
-        Tue, 27 Mar 2018 07:22:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1522160523; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp736662wmi;
+        Tue, 27 Mar 2018 07:23:58 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELtwQrnSwsobdAzqvJ1vohWzMQDdI9htN3OgviyVxnUNJOcYSAEe1ZiTwa1Sn3V0gMLTXL7p
+X-Received: by 10.129.131.215 with SMTP id t206mr26506450ywf.93.1522160638841;
+        Tue, 27 Mar 2018 07:23:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1522160638; cv=none;
         d=google.com; s=arc-20160816;
-        b=yWNfHBAlkC00ApIMKtspJ3cnkZQDr9k/qxCu7dhq4P9M/OJW0CJ+K2Yaqp11oxA8FH
-         R5Pu6Tnc1LhIIyCWUeO9kj0Z9ax2SPDvyNART7M75b+BzXAHuYYv7xMzADlWdgYc8paA
-         rbE+pmgtyUlgG+h/uMo5O7wYeWKgMWuyGwXeqJBUDEiUhFWhmDacGSq36gcbx3racI7x
-         oaPdpcGOGQWHI5a2b7B/92UfjKzA4DA6GlfMKKxdnyakkYIte8LAwy9dPoKBsY2LIM6O
-         0bWssbJSRyVYEWIgmq7zsm66yqP2eiskOcVw52CKsDrwC+iNb+F8iziojfBv+FZ0xp4Z
-         sTjQ==
+        b=HVIvrmV0QspVKwpvysL4FPH2mhvS2m+z01oVbtoPUpFUJHS8b12O1r0fdZdJ/JBN9B
+         y7h6s5mxgz5eF84zXxnOtoO/ZmNlXBRssNWA7NSrWSAiW3rBbhX5x4WVu+gUXdXOFj+1
+         yAp+BS478p7jATpKRJFr4amgFmWRNLXLJAY6FF+5qCALQ1ivmr3P7lgD71m5mlSvCTOy
+         U3j18LdajUZ/SAxH+7lfF1uf+UmzaD2ToFhzFI6ZiKffyACXL9QXejJTwiKKEvXl84uj
+         97k8T2ETvCs+kfrQebbqph27UGsD4v05oq3oorCTN3OjhhYwt5o1YXCiBPvsyZzKmNXa
+         Ax0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=9DR87fbig5UCoxteX77qBhxRXKRgFg8k4nF5gAPGF+w=;
-        b=f/gFjAheLHnWJWQtv+UtgRxds2jzj2OhC1YeZWAJS0GihZ7TTK7R4nSbp9zFQb19VR
-         Fogu278PMGpm+WVYgx5Ax8cajv/76/2vUA7s1pdhmo0jZLGkCleD7uvEq/WnFiXcV+rW
-         sVyUwRUk5wrQ55ExwVvBZAVraqmIbUbXZw2mRff+NZ8VRi38d8iLhnroir9SUmJG957L
-         9wkXXhA7KHHWnySmPLeYPdQTwGC1all4ZARcwTg9g1gHWa19WWVlBf/bxEBjGaMp3Ftw
-         X7g1efUGOHLkmyL3jdYp/WBbEZMqbecciMFCfvQscWbP2SsUvFCgdYgbrIc6oWKmpNRE
-         AU4w==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:organization:user-agent
+         :references:in-reply-to:to:from:message-id:date
+         :arc-authentication-results;
+        bh=G79jkJndaLb5F6zvdYLsXOXFcn+6zxX8zVKt7NU1DvY=;
+        b=dMguo7IistoCfvu8bfcKL0KRpijAfFw2oIKTvSJGClIOc87a+SVDWB5ZNjJtCTzQKO
+         /pmO6mfJdZtV9d08Xfpa5jErto5a5J6N4eB7bVI/JmNqPO2PJYEtWUoy3KqnnU00yazl
+         EAWc7VoYki5rJMaZa9k9cUNunoK4Njnjnh01EhL0RNqSccZMTg5QyznYc3G0IBwsYSE7
+         ECWG1ruVuvlopwra0t7df8LaAFBSSGq2Vs3iL2vhexLXzA4sBSN3D00442pLSvzow0no
+         m8rxz25eY7smXhB9qye3gXZFjwbiNqUDEXCGdvjFaLxc+MZve/gjYXprsCk5+47SJFjC
+         oavA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s129si1452391qkc.154.2018.03.27.07.22.03
+        by mx.google.com with ESMTPS id t66si1326058qkb.206.2018.03.27.07.23.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 27 Mar 2018 07:22:03 -0700 (PDT)
+        Tue, 27 Mar 2018 07:23:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34566 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:34578 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f0pUB-0001ry-2P
-	for alex.bennee@linaro.org; Tue, 27 Mar 2018 10:22:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45766)
+	id 1f0pW2-0003EH-5n
+	for alex.bennee@linaro.org; Tue, 27 Mar 2018 10:23:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47286)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1f0pOM-0003Hs-DO
-	for qemu-arm@nongnu.org; Tue, 27 Mar 2018 10:16:08 -0400
+	(envelope-from <marc.zyngier@arm.com>) id 1f0pVE-0002jJ-Pd
+	for qemu-arm@nongnu.org; Tue, 27 Mar 2018 10:23:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1f0pOJ-0006kn-7V
-	for qemu-arm@nongnu.org; Tue, 27 Mar 2018 10:16:02 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:48752 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1f0pOJ-0006kf-2l; Tue, 27 Mar 2018 10:15:59 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id ACE7F406DE12;
-	Tue, 27 Mar 2018 14:15:58 +0000 (UTC)
-Received: from localhost.localdomain.com (ovpn-116-135.ams2.redhat.com
-	[10.36.116.135])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id CFFDE6F9E6;
-	Tue, 27 Mar 2018 14:15:56 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, peter.maydell@linaro.org
-Date: Tue, 27 Mar 2018 16:15:22 +0200
-Message-Id: <1522160122-10744-9-git-send-email-eric.auger@redhat.com>
-In-Reply-To: <1522160122-10744-1-git-send-email-eric.auger@redhat.com>
-References: <1522160122-10744-1-git-send-email-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Tue, 27 Mar 2018 14:15:58 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Tue, 27 Mar 2018 14:15:58 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+	(envelope-from <marc.zyngier@arm.com>) id 1f0pVB-0001ov-Fe
+	for qemu-arm@nongnu.org; Tue, 27 Mar 2018 10:23:08 -0400
+Received: from usa-sjc-mx-foss1.foss.arm.com ([217.140.101.70]:36560
+	helo=foss.arm.com) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <marc.zyngier@arm.com>)
+	id 1f0pVB-0001oY-6F; Tue, 27 Mar 2018 10:23:05 -0400
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 02E0E1596;
+	Tue, 27 Mar 2018 07:23:03 -0700 (PDT)
+Received: from big-swifty.misterjones.org (big-swifty.cambridge.arm.com
+	[10.1.26.198])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id C8C213F487;
+	Tue, 27 Mar 2018 07:22:56 -0700 (PDT)
+Date: Tue, 27 Mar 2018 15:22:46 +0100
+Message-ID: <86605hsimh.wl-marc.zyngier@arm.com>
+From: Marc Zyngier <marc.zyngier@arm.com>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>
+In-Reply-To: <20180209110314.11766-23-peter.maydell@linaro.org>
+References: <20180209110314.11766-23-peter.maydell@linaro.org>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+	FLIM/1.14.9 (=?ISO-8859-4?Q?Goj=F2?=) APEL/10.8 EasyPG/1.0.0 Emacs/25.1
+	(aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+Organization: ARM Ltd
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [RFC 8/8] hw/arm/virt: Allow up to 512 vcpus along with
- KVM VGICv3
+X-Received-From: 217.140.101.70
+Subject: Re: [Qemu-arm] [PULL,
+ 22/30] hw/arm: Move virt's PSCI DT fixup code to arm/boot.c
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,76 +88,143 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: marc.zyngier@arm.com, drjones@redhat.com, cdall@kernel.org,
-	zhaoshenglong@huawei.com
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@zoho.com>, qemu-devel@nongnu.org,
+	Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
+	qemu-arm@nongnu.org, yurovsky@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: S92WmWg7GZWW
+X-TUID: INDCkYEDI7mg
 
-With KVM acceleration and if KVM VGICV3 supports to set multiple
-redistributor regions, we now allow up to 512 vcpus.
+On Fri, 09 Feb 2018 11:03:06 +0000,
+Peter Maydell wrote:
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- hw/arm/virt.c         | 17 ++++++++++++++++-
- include/hw/arm/virt.h |  1 +
- 2 files changed, 17 insertions(+), 1 deletion(-)
+Hi Peter, Andrey,
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 8258f6f..cdb1a75 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -149,8 +149,10 @@ static const MemMapEntry a15memmap[] = {
-     [VIRT_PCIE_PIO] =           { 0x3eff0000, 0x00010000 },
-     [VIRT_PCIE_ECAM] =          { 0x3f000000, 0x01000000 },
-     [VIRT_MEM] =                { 0x40000000, RAMLIMIT_BYTES },
-+    /* Allows 512 - 123 additional vcpus (each 2x64kB) */
-+    [VIRT_GIC_REDIST2] =        { 0x4000000000ULL, 0x30A0000LL },
-     /* Second PCIe window, 512GB wide at the 512GB boundary */
--    [VIRT_PCIE_MMIO_HIGH] =   { 0x8000000000ULL, 0x8000000000ULL },
-+    [VIRT_PCIE_MMIO_HIGH] =     { 0x8000000000ULL, 0x8000000000ULL },
- };
- 
- static const int a15irqmap[] = {
-@@ -553,6 +555,11 @@ static void create_gic(VirtMachineState *vms, qemu_irq *pic)
-         agcc->register_redist_region((GICv3State *)gicdev,
-                                  vms->memmap[VIRT_GIC_REDIST].base,
-                                  vms->memmap[VIRT_GIC_REDIST].size >> 17);
-+        if (vms->smp_cpus > 123) {
-+            agcc->register_redist_region((GICv3State *)gicdev,
-+                     vms->memmap[VIRT_GIC_REDIST2].base,
-+                                 vms->memmap[VIRT_GIC_REDIST2].size >> 17);
-+        }
-     } else {
-         sysbus_mmio_map(gicbusdev, 1, vms->memmap[VIRT_GIC_CPU].base);
-     }
-@@ -1284,6 +1291,14 @@ static void machvirt_init(MachineState *machine)
-      */
-     if (vms->gic_version == 3) {
-         virt_max_cpus = vms->memmap[VIRT_GIC_REDIST].size / 0x20000;
-+        if (kvm_max_vcpus(kvm_state) > 255) {
-+            /*
-+             * VGICv3 KVM device capability to set multiple redistributor
-+             * was introduced at the same time KVM_MAX_VCPUS was bumped
-+             * from 255 to 512
-+             */
-+            virt_max_cpus += vms->memmap[VIRT_GIC_REDIST2].size / 0x20000;
-+        }
-     } else {
-         virt_max_cpus = GIC_NCPU;
-     }
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index d168291..801a4ad 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -60,6 +60,7 @@ enum {
-     VIRT_GIC_V2M,
-     VIRT_GIC_ITS,
-     VIRT_GIC_REDIST,
-+    VIRT_GIC_REDIST2,
-     VIRT_UART,
-     VIRT_MMIO,
-     VIRT_RTC,
--- 
-2.5.5
+>=20
+> From: Andrey Smirnov <andrew.smirnov@gmail.com>
+>=20
+> Move virt's PSCI DT fixup code to arm/boot.c and set this fixup to
+> happen automatically for every board that doesn't mark "psci-conduit"
+> as disabled. This way emulated boards other than "virt" that rely on
+> PSIC for SMP could benefit from that code.
+>=20
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: Jason Wang <jasowang@redhat.com>
+> Cc: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+> Cc: Marcel Apfelbaum <marcel.apfelbaum@zoho.com>
+> Cc: Michael S. Tsirkin <mst@redhat.com>
+> Cc: qemu-devel@nongnu.org
+> Cc: qemu-arm@nongnu.org
+> Cc: yurovsky@gmail.com
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
+> Reviewed-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  hw/arm/boot.c | 65 +++++++++++++++++++++++++++++++++++++++++++++++++++++=
+++++++
+>  hw/arm/virt.c | 61 -----------------------------------------------------=
+--
+>  2 files changed, 65 insertions(+), 61 deletions(-)
+>=20
+> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> index bb244ec359..9b174b982c 100644
+> --- a/hw/arm/boot.c
+> +++ b/hw/arm/boot.c
+> @@ -385,6 +385,69 @@ static void set_kernel_args_old(const struct arm_boo=
+t_info *info)
+>      }
+>  }
+> =20
+> +static void fdt_add_psci_node(void *fdt)
+> +{
+> +    uint32_t cpu_suspend_fn;
+> +    uint32_t cpu_off_fn;
+> +    uint32_t cpu_on_fn;
+> +    uint32_t migrate_fn;
+> +    ARMCPU *armcpu =3D ARM_CPU(qemu_get_cpu(0));
+> +    const char *psci_method;
+> +    int64_t psci_conduit;
+> +
+> +    psci_conduit =3D object_property_get_int(OBJECT(armcpu),
+> +                                           "psci-conduit",
+> +                                           &error_abort);
+> +    switch (psci_conduit) {
+> +    case QEMU_PSCI_CONDUIT_DISABLED:
+> +        return;
+> +    case QEMU_PSCI_CONDUIT_HVC:
+> +        psci_method =3D "hvc";
+> +        break;
+> +    case QEMU_PSCI_CONDUIT_SMC:
+> +        psci_method =3D "smc";
+> +        break;
+> +    default:
+> +        g_assert_not_reached();
+> +    }
+> +
+> +    qemu_fdt_add_subnode(fdt, "/psci");
+> +    if (armcpu->psci_version =3D=3D 2) {
+> +        const char comp[] =3D "arm,psci-0.2\0arm,psci";
+> +        qemu_fdt_setprop(fdt, "/psci", "compatible", comp, sizeof(comp));
+> +
+> +        cpu_off_fn =3D QEMU_PSCI_0_2_FN_CPU_OFF;
+> +        if (arm_feature(&armcpu->env, ARM_FEATURE_AARCH64)) {
+> +            cpu_suspend_fn =3D QEMU_PSCI_0_2_FN64_CPU_SUSPEND;
+> +            cpu_on_fn =3D QEMU_PSCI_0_2_FN64_CPU_ON;
+> +            migrate_fn =3D QEMU_PSCI_0_2_FN64_MIGRATE;
+> +        } else {
+> +            cpu_suspend_fn =3D QEMU_PSCI_0_2_FN_CPU_SUSPEND;
+> +            cpu_on_fn =3D QEMU_PSCI_0_2_FN_CPU_ON;
+> +            migrate_fn =3D QEMU_PSCI_0_2_FN_MIGRATE;
+> +        }
+> +    } else {
+> +        qemu_fdt_setprop_string(fdt, "/psci", "compatible", "arm,psci");
+> +
+> +        cpu_suspend_fn =3D QEMU_PSCI_0_1_FN_CPU_SUSPEND;
+> +        cpu_off_fn =3D QEMU_PSCI_0_1_FN_CPU_OFF;
+> +        cpu_on_fn =3D QEMU_PSCI_0_1_FN_CPU_ON;
+> +        migrate_fn =3D QEMU_PSCI_0_1_FN_MIGRATE;
+> +    }
+> +
+> +    /* We adopt the PSCI spec's nomenclature, and use 'conduit' to refer
+> +     * to the instruction that should be used to invoke PSCI functions.
+> +     * However, the device tree binding uses 'method' instead, so that is
+> +     * what we should use here.
+> +     */
+> +    qemu_fdt_setprop_string(fdt, "/psci", "method", psci_method);
+> +
+> +    qemu_fdt_setprop_cell(fdt, "/psci", "cpu_suspend", cpu_suspend_fn);
+> +    qemu_fdt_setprop_cell(fdt, "/psci", "cpu_off", cpu_off_fn);
+> +    qemu_fdt_setprop_cell(fdt, "/psci", "cpu_on", cpu_on_fn);
+> +    qemu_fdt_setprop_cell(fdt, "/psci", "migrate", migrate_fn);
+> +}
+> +
+>  /**
+>   * load_dtb() - load a device tree binary image into memory
+>   * @addr:       the address to load the image at
+> @@ -541,6 +604,8 @@ static int load_dtb(hwaddr addr, const struct arm_boo=
+t_info *binfo,
+>          }
+>      }
+> =20
+> +    fdt_add_psci_node(fdt);
+> +
 
+This particular change broke one of my favourite use cases, which is
+to feed the guest with a hand-crafted DTB, and expect QEMU to just
+take it as granted, and not touch it.
+
+I now get an error:
+
+qemu-system-aarch64: FDT: Failed to create subnode /psci: FDT_ERR_EXISTS
+
+The obvious workaround would be to test the presence of the /psci node
+before generating it (such as done for the /chosen node, for example).
+
+Thanks,
+
+	M.
+
+--=20
+Jazz is not dead, it just smell funny.

@@ -1,33 +1,33 @@
-Received: by 10.28.71.155 with SMTP id m27csp727427wmi;
+Received: by 10.28.71.155 with SMTP id m27csp727433wmi;
         Tue, 27 Mar 2018 07:15:59 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELun/8CoFSaqyidUt3kUqIuHoQL2dN24bYm2oFS/34OGtdYWqDPn5Bm58bSIGSsPkMwN/HpR
-X-Received: by 10.129.238.15 with SMTP id l15mr25509992ywm.32.1522160159037;
+X-Google-Smtp-Source: AG47ELusf001OwgUShvu2V3inrhaoqAXULSeb/iZ9aRtDj3uoOmXrPXCO+XP1PafKiAtyvXbl1Ap
+X-Received: by 10.237.61.184 with SMTP id i53mr37402019qtf.293.1522160159431;
         Tue, 27 Mar 2018 07:15:59 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1522160159; cv=none;
         d=google.com; s=arc-20160816;
-        b=0oiXbsy9q1xQVgssnUd+5QXNnpXmmP2yUERLGe8kOzHiYy/MVfHNvmP9+m++P5wXKY
-         AQ/CHGcKrzmrE/QgwmYjL4+3mEvKbVwj/ZiCTY0DW5SkLcT0gXJg07WE+MaJ7RUDkmtb
-         fBjcgDndSQEf2tEBU1/z59lxVo1H6hTjqZ+YjvBUU8ArlmGe3APYqrMF65RR/FdS1bVc
-         jHgGuPTxzct7sWzODlNDktRAMW5lDAiUKWCDgw5ecVx5yJNUDMxyhAsFVlAmMtQS+ynQ
-         Xs8lhUgmBpFP37shdPzIiKLTXlXqL4AnvUbKhx0TkAI+nv5bSAA2o34ZFD9u516Jmjxj
-         36JA==
+        b=wsbRCPgtYiD+N1oye1xHwImcheCrIejFN7jXKn97Sfgo5LREyeDQLw0CRPpN9feV7F
+         GuwXHUvkAF32Fi4vU2L8D8nObDXAePYugOz10fICXmoDYPSd4GFjLjkGkDxifsMuw3Lz
+         xywg/s2OQwHHUUGU/WP9sX2FdA1qzSCQMY7I4fPiWvEWOXrZxS4ZgZg+SP0QVKZ7o8V5
+         z1gwx1PXXg5rw/Qs+ODrL7nZY5xHYNLnkojBmdajr+5YExneBGgQXhdPisaDiGUKhsLU
+         2azd4nrSUh2yhf6/zbbP9Knh7nODycVkXqSaJG8ARIi+37wylrnfVbki5ervL5FwIPGH
+         pJjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=yY+AzxMVyBNd670IrkrUVsHjNRNgvUL86TvZ3Oeh8I8=;
-        b=mxPo+mLTrTg5cNANnflW2zOhO6R1mQL12XnNY99NMjAsTIdqm3mXywEDl3nMSvbvwk
-         GMXfM3CZ7Ekjanfrkhspkkv87dteRxaHq1CO9eF7UeA79wEaCI9pJQSRkcIGkj38A3tI
-         6jgd0EuNLkjCA9f/HJZs9BCYWmVCVZdGStKbwYNe0CMhWgfVA7L59ab/s1YKyY69bgMr
-         ptyVBWvE8KbpGUrPjpW0holemM17LM7V6kUANd+Tw5XosXJgR60ApRPuRylAU2YbwzMD
-         aSVDBLKUq5YWm1I3tjfl+AOYOEMoE8ZRJjyFB1LU8CRphw6+9qY8jl57O1FCU9TPRtu6
-         gLaQ==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :arc-authentication-results;
+        bh=IK+XrQJEs63A+5jz+/pyJE0z7Ft/lQqBpCbVu7+ndsM=;
+        b=TonxMyQ7vkXmhK4f4hNg7dPoICQ6EU/bYWrFuMRVJ5+Qyn4Ocmz/217fABNlNnPWG0
+         0l5EUZZgdOP+DVL/3cL9N7VI139NMILQCvPhaiBd+teMjFmSgk19pdzhV6bzr58o72qo
+         o3NazQDTNgiHcYKrkT85nj3X1dV50hdBfAZluKuC1g1BAgX/Eo9Y3MHt+XK7K7T0u/IW
+         J7phBJ6XTD5aR1tSBKPxn2DaMgOXVY4lyU9TS7Rsd8mEvUyYTLETtw8QEVZJpk9CRU06
+         GXWwkOH7GUxvWwuTau9ZP9vmPBjuWVk41lJ+zIt1GxrQ55+zQJZiZiqX19ka6SGUzXbH
+         gqTw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l47si1544322qta.320.2018.03.27.07.15.58
+        by mx.google.com with ESMTPS id m18si1379242qtn.304.2018.03.27.07.15.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
         Tue, 27 Mar 2018 07:15:59 -0700 (PDT)
@@ -35,52 +35,50 @@ Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.or
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34525 helo=lists.gnu.org)
+Received: from localhost ([::1]:34524 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f0pOI-000331-JF
+	id 1f0pOI-00032m-UA
 	for alex.bennee@linaro.org; Tue, 27 Mar 2018 10:15:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45411)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45413)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1f0pO4-000315-Lb
-	for qemu-arm@nongnu.org; Tue, 27 Mar 2018 10:15:45 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1f0pO4-000318-Lv
+	for qemu-arm@nongnu.org; Tue, 27 Mar 2018 10:15:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1f0pO2-0006Pe-AN
+	(envelope-from <eric.auger@redhat.com>) id 1f0pO2-0006Q8-I1
 	for qemu-arm@nongnu.org; Tue, 27 Mar 2018 10:15:44 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:51248 helo=mx1.redhat.com)
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:59994 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1f0pO2-0006OH-3e; Tue, 27 Mar 2018 10:15:42 -0400
+	id 1f0pO2-0006Nz-5u; Tue, 27 Mar 2018 10:15:42 -0400
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9524D722C6;
-	Tue, 27 Mar 2018 14:15:40 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 4AA29401DEA6;
+	Tue, 27 Mar 2018 14:15:36 +0000 (UTC)
 Received: from localhost.localdomain.com (ovpn-116-135.ams2.redhat.com
 	[10.36.116.135])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B14CB8442C;
-	Tue, 27 Mar 2018 14:15:38 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 5FAB06F9E4;
+	Tue, 27 Mar 2018 14:15:25 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org
-Date: Tue, 27 Mar 2018 16:15:16 +0200
-Message-Id: <1522160122-10744-3-git-send-email-eric.auger@redhat.com>
-In-Reply-To: <1522160122-10744-1-git-send-email-eric.auger@redhat.com>
-References: <1522160122-10744-1-git-send-email-eric.auger@redhat.com>
+Date: Tue, 27 Mar 2018 16:15:14 +0200
+Message-Id: <1522160122-10744-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Tue, 27 Mar 2018 14:15:40 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Tue, 27 Mar 2018 14:15:40 +0000 (UTC) for IP:'10.11.54.5'
+	(mx1.redhat.com [10.11.55.6]);
+	Tue, 27 Mar 2018 14:15:36 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Tue, 27 Mar 2018 14:15:36 +0000 (UTC) for IP:'10.11.54.5'
 	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [RFC 2/8] hw/intc/arm_gicv3: Use an array of
- redistributor regions
+Subject: [Qemu-arm] [RFC 0/8] KVM/ARM: Relax the max 123 vcpus limitation
+ along with KVM GICv3
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,97 +94,57 @@ Cc: marc.zyngier@arm.com, drjones@redhat.com, cdall@kernel.org,
 	zhaoshenglong@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ibb5g1OB9VOY
+X-TUID: qZoUYp7NprVJ
 
-In the prospect to support multiple redistributor regions,
-let's introduce a GICv3RDISTRegion struct datatype and a
-statically sized array of those. For the time being, only
-one redistributor region is used.
+Currently the max number of VCPUs usable along with the KVM GICv3
+device is limited to 123. The rationale is a single redistributor
+region was supported and this latter was set to [0x80A0000, 0x9000000]
+within the guest physical address space, surrounded with DIST and UART
+MMIO regions.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- hw/intc/arm_gicv3_common.c         |  5 +++--
- hw/intc/arm_gicv3_kvm.c            |  3 ++-
- include/hw/intc/arm_gicv3_common.h | 13 ++++++++++++-
- 3 files changed, 17 insertions(+), 4 deletions(-)
+[1] now allows to register several redistributor regions.
+So this series overcomes the max 123 vcpu limitation by registering
+a new redistributor region located just after the VIRT_MEM RAM region.
+The total redistributor region capacity is set to 512 vcpus.
 
-diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-index 7b54d52..cb4ee0e 100644
---- a/hw/intc/arm_gicv3_common.c
-+++ b/hw/intc/arm_gicv3_common.c
-@@ -199,11 +199,12 @@ void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
- 
-     memory_region_init_io(&s->iomem_dist, OBJECT(s), ops, s,
-                           "gicv3_dist", 0x10000);
--    memory_region_init_io(&s->iomem_redist, OBJECT(s), ops ? &ops[1] : NULL, s,
-+    memory_region_init_io(&s->redist_region[0].mr, OBJECT(s),
-+                          ops ? &ops[1] : NULL, s,
-                           "gicv3_redist", 0x20000 * s->num_cpu);
- 
-     sysbus_init_mmio(sbd, &s->iomem_dist);
--    sysbus_init_mmio(sbd, &s->iomem_redist);
-+    sysbus_init_mmio(sbd, &s->redist_region[0].mr);
- }
- 
- static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
-diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-index ec37177..a07bc55 100644
---- a/hw/intc/arm_gicv3_kvm.c
-+++ b/hw/intc/arm_gicv3_kvm.c
-@@ -755,7 +755,8 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
- 
-     kvm_arm_register_device(&s->iomem_dist, -1, KVM_DEV_ARM_VGIC_GRP_ADDR,
-                             KVM_VGIC_V3_ADDR_TYPE_DIST, s->dev_fd);
--    kvm_arm_register_device(&s->iomem_redist, -1, KVM_DEV_ARM_VGIC_GRP_ADDR,
-+    kvm_arm_register_device(&s->redist_region[0].mr, -1,
-+                            KVM_DEV_ARM_VGIC_GRP_ADDR,
-                             KVM_VGIC_V3_ADDR_TYPE_REDIST, s->dev_fd);
- 
-     if (kvm_has_gsi_routing()) {
-diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
-index bccdfe1..3cf132f 100644
---- a/include/hw/intc/arm_gicv3_common.h
-+++ b/include/hw/intc/arm_gicv3_common.h
-@@ -137,12 +137,20 @@ typedef struct GICv3CPUState GICv3CPUState;
- #define GICV3_S 0
- #define GICV3_NS 1
- 
-+#define GICV3_MAX_RDIST_REGIONS 8
-+
- typedef struct {
-     int irq;
-     uint8_t prio;
-     int grp;
- } PendingIrq;
- 
-+typedef struct GICv3RDISTRegion {
-+    hwaddr base;
-+    uint32_t count; /* number or redistributors */
-+    MemoryRegion mr;
-+} GICv3RDISTRegion ;
-+
- struct GICv3CPUState {
-     GICv3State *gic;
-     CPUState *cpu;
-@@ -210,7 +218,8 @@ struct GICv3State {
-     /*< public >*/
- 
-     MemoryRegion iomem_dist; /* Distributor */
--    MemoryRegion iomem_redist; /* Redistributors */
-+    GICv3RDISTRegion redist_region[GICV3_MAX_RDIST_REGIONS];
-+    uint32_t nb_redist_regions;
- 
-     uint32_t num_cpu;
-     uint32_t num_irq;
-@@ -288,6 +297,8 @@ typedef struct ARMGICv3CommonClass {
- 
-     void (*pre_save)(GICv3State *s);
-     void (*post_load)(GICv3State *s);
-+    /* register an RDIST region at @base, containing @pfns 64kB pages */
-+    int (*register_redist_region)(GICv3State *s, hwaddr base, uint32_t pfns);
- } ARMGICv3CommonClass;
- 
- void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
+The max supported VCPUs in non accelerated mode is not modified.
+
+Best Regards
+
+Eric
+
+Host Kernel dependencies:
+[1] [RFC v2 00/12] KVM: arm/arm64: Allow multiple GICv3 redistributor regions
+https://github.com/eauger/linux/tree/4.16-rc7-rdist-regions-rfc-v2
+
+This QEMU series can be found at:
+https://github.com/eauger/qemu/tree/v2.12.0-rc0-rdist_regions-rfc
+
+Eric Auger (8):
+  linux-headers: Partial update for KVM/ARM multiple redistributor
+    region registration
+  hw/intc/arm_gicv3: Use an array of redistributor regions
+  kvm: Expose kvm_max_vcpus()
+  hw/intc/arm_gicv3: Implement register_redist_region API
+  hw/intc/arm_gicv3_kvm: Allow multiple redistributor regions
+  hw/arm/virt: Allow GICv3 DT node with multiple redistributor regions
+  hw/arm/virt-acpi-build: Handle multiple GICR structures
+  hw/arm/virt: Allow up to 512 vcpus along with KVM VGICv3
+
+ accel/kvm/kvm-all.c                |  2 +-
+ accel/stubs/kvm-stub.c             |  5 ++++
+ hw/arm/virt-acpi-build.c           | 21 ++++++++++----
+ hw/arm/virt.c                      | 55 +++++++++++++++++++++++++++++++-----
+ hw/intc/arm_gicv3.c                | 21 ++++++++++++++
+ hw/intc/arm_gicv3_common.c         |  9 ++++--
+ hw/intc/arm_gicv3_kvm.c            | 57 ++++++++++++++++++++++++++++++++++++--
+ include/hw/arm/virt.h              |  3 ++
+ include/hw/intc/arm_gicv3_common.h | 14 +++++++++-
+ include/sysemu/kvm.h               |  7 +++++
+ linux-headers/asm-arm/kvm.h        |  7 +++--
+ linux-headers/asm-arm64/kvm.h      |  7 +++--
+ 12 files changed, 182 insertions(+), 26 deletions(-)
+
 -- 
 2.5.5
 

@@ -1,86 +1,105 @@
-Received: by 10.28.91.67 with SMTP id p64csp3787099wmb;
-        Tue, 20 Mar 2018 05:48:21 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELsUvlZyI7G8tDGUbwprc8S0IES4neuw98Iss44v0jS89Vhy4xXsShtQEwQe+qt2UAIXGNPg
-X-Received: by 10.237.47.1 with SMTP id l1mr24420415qtd.10.1521550101235;
-        Tue, 20 Mar 2018 05:48:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521550101; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp1542888wmi;
+        Thu, 29 Mar 2018 03:55:45 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx4/EXAsMSkbTDK6pt7VCm136N7vyKbpAzrVeP8relF2liyt86axz+8qCB4J10ZOkRbxYzEc3
+X-Received: by 10.200.39.39 with SMTP id g36mr10235708qtg.227.1522320945006;
+        Thu, 29 Mar 2018 03:55:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1522320945; cv=none;
         d=google.com; s=arc-20160816;
-        b=bP5vaJcAGBbvu66CzRijGNUYEbrMfGShTkvEusVi78vTAuJJaiZ3fsxTfc0HAC3bZE
-         ueBH9vTrxAJnzDB2KH0Q8e0NDtCQCgWjv10W1QxhcU2I/pVA5KvUBMsM/1Z+9XRLjgvy
-         rlDBpCz8BhEzOM1zmIt4kK7jIOBV0r4nwrfQlQzo/bjt6KI6oczJXtq4r5lwzDsjvFj/
-         vQ6MHfflhxEYwy9IKFiTuz0W6jFUNJ3HuYuJzvgT/GWzM1k5zUM1Bc89KMBXkN1hGhXZ
-         PDIrxOEtM9+X/121nzwnNwyOF9siSXLWAu2ETP6wnjn6zj+gVvjBKNYLsGLEAmTcjvgc
-         fuSA==
+        b=Bat5k5pv9DQdhZrhIqxWPv2RW7lxSp+tA+PFp9Z0yQn2Xe4b7B/+6Q0n/25Hk9QVZu
+         34HQDlsnpo7OPCY83jUq0wUg047Um5kCCC9OUnYfH8mIWkqGFK79KxbIapfUKB740SAu
+         Qh8hrYGAaFWQWGaw0pLVUi3NxdyPPmmXqEWMP/68TRFPnNEwAWVDdK4zX/MLDhIU0b8e
+         v3gNsfNfb9innz1S5NnWlEe7IlMwVoTMK2VOuy90GMFxI3E2VuQDFj+f3eWPkuT2Ua1Y
+         kfKKsertLP4mUW/lPe+bIBo/SXusrWGcPxS0djq32FaRgvmT38EEnyEaAaNRwvtywAsG
+         LS7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=Qq6MGBT6UKzNqBHOTShRrt3PO1b7XkdPV7OMK4j2Un4=;
-        b=YZrgUlmJqOt5Qao66aiHBR8FIbysEMA+fwHFDGnlPCE3SmsRZByQTxM1Vl89NgsMUa
-         W7C6KbnH660XWuZcYmhyVXT6d6JwpqlY5ccxilCppHICHX3rlsNKJEun0YMCotc6s/vo
-         l/wtXpVrdUXF5yVezVPyrG67yMBUVoDvtsJOLE2vn+IA7nKz/PTIFjGOVL4Xk66b+CPp
-         QaPmXPEHNJxPs+eq0XYid9uvxyJLVi/FWGe4PlmcbkB2uBZQ2U0TlllNiJwjmXeQ4cxw
-         TT7egyVGtvN8Cqa5/qsVK64jOf3S5qGjQqzTOzPADFTUf27SrrtJ8Zlq7/oO2sM4HXfI
-         i35A==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=FpqsDV5M/fmszCsqRZr1Nr4L39sWPbwRCeGNdh4jI/w=;
+        b=CPC/NanmDg9rZoMiXBfUeXFrTjlq8L4a/Mgm4f79p95Iu+I1SL0GfpfgFyMhDAcqml
+         DtSzbhskj/F+BF9GcJc7FJcNOUohsMIbQTc0m1K0UnbJf4yWWIscVazgyo/F8hDEIG/x
+         Ta+04v0OzMY+EeN0UV6KFCDPM5170DxtPTZBEz6ywx4cqbsel6I/n/SIFjWslfdqyOum
+         Y6tVqxvcsae29ucQ0psWVMm8zOeYxh79yDmrnDqSB2EeQhy/yCtC6K3mz12OCEhSv79m
+         Ix2psDuoned+2MD1xQ9lpX3voqIQc3fdQSJIPO8idawqrjYZ+K/znEZaCMIhOr7Y1a91
+         PGUA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=LuqrvODs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v17si1931120qtv.276.2018.03.20.05.48.21
+        by mx.google.com with ESMTPS id f21si6093691qkm.343.2018.03.29.03.55.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 20 Mar 2018 05:48:21 -0700 (PDT)
+        Thu, 29 Mar 2018 03:55:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=LuqrvODs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48276 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:40572 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eyGge-0007wl-NF
-	for alex.bennee@linaro.org; Tue, 20 Mar 2018 08:48:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42914)
+	id 1f1VDJ-0003lY-Id
+	for alex.bennee@linaro.org; Thu, 29 Mar 2018 06:55:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57670)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1eyGXU-000844-CS
-	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 08:38:53 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1f1VDB-0003ik-Cl
+	for qemu-arm@nongnu.org; Thu, 29 Mar 2018 06:55:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1eyGXT-0003le-5U
-	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 08:38:52 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:39150 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1eyGXS-0003lN-Vz; Tue, 20 Mar 2018 08:38:51 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 72914406804F;
-	Tue, 20 Mar 2018 12:38:50 +0000 (UTC)
-Received: from localhost.localdomain.com (ovpn-116-135.ams2.redhat.com
-	[10.36.116.135])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 0A53294583;
-	Tue, 20 Mar 2018 12:38:38 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, peter.maydell@linaro.org, prem.mallappa@gmail.com
-Date: Tue, 20 Mar 2018 13:37:33 +0100
-Message-Id: <1521549456-14072-12-git-send-email-eric.auger@redhat.com>
-In-Reply-To: <1521549456-14072-1-git-send-email-eric.auger@redhat.com>
-References: <1521549456-14072-1-git-send-email-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Tue, 20 Mar 2018 12:38:50 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Tue, 20 Mar 2018 12:38:50 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH v10 11/14] target/arm/kvm: Translate the MSI
- doorbell in kvm_arch_fixup_msi_route
+	(envelope-from <peter.maydell@linaro.org>) id 1f1VDA-0005or-AJ
+	for qemu-arm@nongnu.org; Thu, 29 Mar 2018 06:55:17 -0400
+Received: from mail-ot0-x231.google.com ([2607:f8b0:4003:c0f::231]:42304)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1f1VDA-0005oZ-1Y
+	for qemu-arm@nongnu.org; Thu, 29 Mar 2018 06:55:16 -0400
+Received: by mail-ot0-x231.google.com with SMTP id h55-v6so4461839ote.9
+	for <qemu-arm@nongnu.org>; Thu, 29 Mar 2018 03:55:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=FpqsDV5M/fmszCsqRZr1Nr4L39sWPbwRCeGNdh4jI/w=;
+	b=LuqrvODsz1oh4CEUfBOh4GNiyt8Iw4/UbBM0moy7ltSh63sFBvtZGyee3n5j9ib/gN
+	/pkXE4YI5/ITgU+L+pSRz1xu0i6As5DDMrLCQTA3/aUYQ74sWChp4lK40QzSn//g87ow
+	yhcDsh/hYF9M8aHrcfJd5XbTYw8JvDEqtjW/0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=FpqsDV5M/fmszCsqRZr1Nr4L39sWPbwRCeGNdh4jI/w=;
+	b=fIcxkBYYdLGUVrVR5KvXPqvSyeFAgcoU17wyyaOtbsixydc4YZxUESCseT1NH03IFf
+	8I+jAXUuyawTLy+HkxIrpeHG1RXul1Oqe+ODDjYj5FiqF/Zni1AJnhEWMj9J/lCjaDt4
+	H85uWVeFc1pLvenciCWliRWyYrz/jBCU/+Y2dXh2TwpZOirOUebdTLQY6aAFyGGHSO4A
+	H6QGq8H7eW3RxQmCwAvkNrj7Wf+tZ2Mo/Vo/aPdoRnvV/jwqVIxAizlvITbpbrqyret4
+	vezuWPruP2rlH9rfWc+BaF/wNcUKwUo1ne3sfCRqjd99anTnrU57LIQ1Kp+TxyQzDbbJ
+	qLFQ==
+X-Gm-Message-State: ALQs6tCSBx8HngW5fPHs9SC/AmGvRQz8PORVqVRq7NiegpaAJ5pwSzlz
+	11n6opK5KZr28uL2rboowajyMbpWaokzYqgtie5AxQ==
+X-Received: by 2002:a9d:2129:: with SMTP id
+	i38-v6mr4885407otb.210.1522320915056; 
+	Thu, 29 Mar 2018 03:55:15 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Thu, 29 Mar 2018 03:54:54
+	-0700 (PDT)
+In-Reply-To: <CAFEAcA8yr+KJFwBSksMP-VjNbsSd190VCzB4wGwOCoaX2ScDiA@mail.gmail.com>
+References: <1521530809-11780-1-git-send-email-zhaoshenglong@huawei.com>
+	<1521530809-11780-3-git-send-email-zhaoshenglong@huawei.com>
+	<CAFEAcA96qV_f7i_36Yzb-QV7W9SRHKfJpg=rvv3tia2X-Xi7QQ@mail.gmail.com>
+	<5AB0F254.3050503@huawei.com>
+	<CAFEAcA-Ct3qa0OFZ4U+9RH68SQJgmkxJKKS5e+if_MuL2pSu3A@mail.gmail.com>
+	<5AB21130.2020309@huawei.com>
+	<CAFEAcA8yr+KJFwBSksMP-VjNbsSd190VCzB4wGwOCoaX2ScDiA@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 29 Mar 2018 11:54:54 +0100
+Message-ID: <CAFEAcA_r=S=YWAuZue1zZnFdtFYK2wU7NnaCcGThZU_u33qD4g@mail.gmail.com>
+To: Shannon Zhao <zhaoshenglong@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::231
+Subject: Re: [Qemu-arm] [PATCH v2 2/2] arm_gicv3_kvm: kvm_dist_get/put: skip
+ the registers banked by GICR
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,87 +111,79 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: cdall@kernel.org, mst@redhat.com, jean-philippe.brucker@arm.com,
-	tn@semihalf.com, peterx@redhat.com, alex.williamson@redhat.com,
-	linuc.decode@gmail.com, bharat.bhushan@nxp.com, jintack@cs.columbia.edu
+Cc: Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Juan Quintela <quintela@redhat.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0rIsHq5da/t8
+X-TUID: Rp4IXFbJ5p5w
 
-In case the MSI is translated by an IOMMU we need to fixup the
-MSI route with the translated address.
+On 23 March 2018 at 12:08, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 21 March 2018 at 08:00, Shannon Zhao <zhaoshenglong@huawei.com> wrote:
+>> On 2018/3/20 19:54, Peter Maydell wrote:
+>>> Can you still successfully migrate a VM from a QEMU version
+>>> without this bugfix to one with the bugfix ?
+>>>
+>> I've tested this case. I can migrate a VM between these two versions.
+>
+> Hmm. Looking at the code I can't see how that would work,
+> except by accident. Let me see if I understand what's happening
+> here:
+>
+> In the code in master, we have QEMU data structures
+> (bitmaps, etc) which have one entry for each of GICV3_MAXIRQ
+> irqs. That includes the RAZ/WI unused space for the SPIs/PPIs, so
+> for a 1-bit-per-irq bitmap:
+>  [0x00000000, irq 32, irq 33, .... ]
+>
+> When we fill in the values from KVM into these data structures,
+> we start after the unused space, because the for_each_dist_irq_reg()
+> macro starts with _irq = GIC_INTERNAL. But we forgot to adjust
+> the offset value we use for the KVM access, so we start by
+> reading the RAZ/WI values from KVM, and the data structure
+> contents end up with:
+>  [0x00000000, 0x00000000, irq 32, irq 33, ... ]
+> (and the last irqs wouldn't get transferred).
+>
+> With this change to the code we will get the offset right and
+> the data structure will be filled as
+>  [0x00000000, irq 32, irq 33, .... ]
+>
+> But for migration from the old version, the data structure
+> we receive from the migration source will contain the old
+> broken layout of
+>  [0x00000000, 0x00000000, irq 32, irq 33, ... ]
+> so if the new code doesn't do anything special to handle
+> migration from that old version then it will write zeroes to
+> irq 32..63, and then write incorrect values for all the irqs
+> after that, won't it?
+>
+> That suggests to me that we need to have some code in the
+> migration post-load routine that identifies that the data
+> is coming from an old version with this bug, and shifts
+> all the data down in the arrays so that the code to write
+> it to the kernel can handle it.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+I was thinking a bit more about how to handle this, and
+my best idea was:
 
----
-v9 -> v10:
-- use address_space_translate
+(1) send something in the migration stream that says
+"I don't have this bug" (version number change?
+vmstate field that's just a "no bug" flag? subsection
+with no contents?)
 
-v5 -> v6:
-- use IOMMUMemoryRegionClass API
----
- target/arm/kvm.c        | 27 +++++++++++++++++++++++++++
- target/arm/trace-events |  3 +++
- 2 files changed, 30 insertions(+)
+(2) on the destination, if the source doesn't tell us
+it doesn't have this bug, and we are running KVM, then
+shift all the data in the arrays down to fix it up
+[Strictly what we want to know is if the source is
+running KVM, not if the destination is, but I don't
+know of a way to find that out, and in practice TCG->KVM
+migrations don't work anyway, so it's not a big deal.]
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index ecc39ac..c6f6aa8 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -20,8 +20,10 @@
- #include "sysemu/kvm.h"
- #include "kvm_arm.h"
- #include "cpu.h"
-+#include "trace.h"
- #include "internals.h"
- #include "hw/arm/arm.h"
-+#include "hw/pci/pci.h"
- #include "exec/memattrs.h"
- #include "exec/address-spaces.h"
- #include "hw/boards.h"
-@@ -649,6 +651,31 @@ int kvm_arm_vgic_probe(void)
- int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
-                              uint64_t address, uint32_t data, PCIDevice *dev)
- {
-+    AddressSpace *as = pci_device_iommu_address_space(dev);
-+    hwaddr xlat, len, doorbell_gpa;
-+    MemoryRegionSection mrs;
-+    MemoryRegion *mr;
-+
-+    if (as == &address_space_memory) {
-+        return 0;
-+    }
-+
-+    /* MSI doorbell address is translated by an IOMMU */
-+
-+    rcu_read_lock();
-+    mr = address_space_translate(as, address, &xlat, &len, true);
-+    if (!mr) {
-+        return 1;
-+    }
-+    mrs = memory_region_find(mr, xlat, 0);
-+    doorbell_gpa = mrs.offset_within_address_space;
-+    rcu_read_unlock();
-+
-+    route->u.msi.address_lo = doorbell_gpa;
-+    route->u.msi.address_hi = doorbell_gpa >> 32;
-+
-+    trace_kvm_arm_fixup_msi_route(address, doorbell_gpa);
-+
-     return 0;
- }
- 
-diff --git a/target/arm/trace-events b/target/arm/trace-events
-index 9e37131..6b759f9 100644
---- a/target/arm/trace-events
-+++ b/target/arm/trace-events
-@@ -8,3 +8,6 @@ arm_gt_tval_write(int timer, uint64_t value) "gt_tval_write: timer %d value 0x%"
- arm_gt_ctl_write(int timer, uint64_t value) "gt_ctl_write: timer %d value 0x%" PRIx64
- arm_gt_imask_toggle(int timer, int irqstate) "gt_ctl_write: timer %d IMASK toggle, new irqstate %d"
- arm_gt_cntvoff_write(uint64_t value) "gt_cntvoff_write: value 0x%" PRIx64
-+
-+# target/arm/kvm.c
-+kvm_arm_fixup_msi_route(uint64_t iova, uint64_t gpa) "MSI iova = 0x%"PRIx64" is translated into 0x%"PRIx64
--- 
-2.5.5
+Juan, David, do you have any suggestions for the best
+mechanism for part 1; or is there some clever way to
+handle this sort of bug that I've missed?
 
+thanks
+-- PMM

@@ -1,172 +1,390 @@
-Received: by 10.28.71.155 with SMTP id m27csp2934059wmi;
-        Mon, 2 Apr 2018 13:57:52 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4+e+t3Nt9yvV13W/Vo7XnWzAqKRjflbsRMxc7spodZyUplCjMsqqMCt4sKldPayxXO4/Wmn
-X-Received: by 10.200.71.18 with SMTP id f18mr4954515qtp.166.1522702671967;
-        Mon, 02 Apr 2018 13:57:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1522702671; cv=none;
-        d=google.com; s=arc-20160816;
-        b=c9dz2bqEqWiL/O4FKLFLEfFDXYsZ3dxPgjNkEqujcXOqvYwYZNwVwXGXCvK0G9bjiC
-         reS2ibfJIVa32sjfizSCPUjFxKT0cjMFN4J8GDDpRtQDjuXxYcJc05FRBclvbKTPG5zT
-         ERpqHWjg+HT7eB5IGJAVjEeJJCvYhmrripNr6RcRAW3Iu4nwy7LOcl8EvpVzfmPEfVWR
-         lWHOO5MSMHN0v+HhfJoWNQ/SLnJ1k0a4rGw0T3eFRpyQMwqaOaixOBZW6X27kT76NbOK
-         UEIE87svQ7qFRcP4MQsP9LTZrv9M6hsvW6vaMPQiQwH0CB3DBzENhrx0I0XGEHxLbG4h
-         ApgQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=j5hCjwdbgetEvET5j7CHQRxg5xvqGHAqqVaYk9agXn4=;
-        b=c7G4jH0L8Iz707+ZrEJXRDp5E/5IbS3hGe9tp6PCxxPtM5WD1T5vzmEgB+ZX+uq/aO
-         DBJGnN4uN6c1+HZdQ8IQR2/UUv28zAoJ7Ze1MDpuQQJc2sHI/zPfDncmTm9yXTOihDlk
-         leuHkbX3+g6tycvCyhjc8fsETYFyhSZzIWSzVncqKDKGafCZFWjGvX8WvQVkKb+GaxmZ
-         Im6lddqs8vexE+xL68dV+AL5+cTMP/n59nPYkT5KR9AyWu9nAsTOv51FcQXr5yCkANIM
-         KRKf9qUo8bBhzjlHq+J/y6lLROY9pSDujn5Sqpr1LxVPh3LUZC9Hc0FCCaOHmmSJwBw0
-         p0hQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gEMk19Sy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u44si1544924qta.219.2018.04.02.13.57.51
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 02 Apr 2018 13:57:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gEMk19Sy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:34640 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f36WV-0005V1-GD
-	for alex.bennee@linaro.org; Mon, 02 Apr 2018 16:57:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43467)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1f36W0-0005Ee-JN
-	for qemu-arm@nongnu.org; Mon, 02 Apr 2018 16:57:21 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1f36Vz-0008GJ-1W
-	for qemu-arm@nongnu.org; Mon, 02 Apr 2018 16:57:20 -0400
-Received: from mail-pl0-x243.google.com ([2607:f8b0:400e:c01::243]:44608)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
-	id 1f36Vu-0008BC-99; Mon, 02 Apr 2018 16:57:14 -0400
-Received: by mail-pl0-x243.google.com with SMTP id b6-v6so3772314pla.11;
-	Mon, 02 Apr 2018 13:57:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id;
-	bh=j5hCjwdbgetEvET5j7CHQRxg5xvqGHAqqVaYk9agXn4=;
-	b=gEMk19SykIlxDTNlKQ+8wVahDv9WeJATeSZAS7DpF5oSIj3I2K6fJ8uucHM8S7o+sG
-	bw4IZZQDsWaQra9DrX+qwESAh1wqNbt/5xRMHdiFBOYlclnurZZhoIOHPu9SDcJzYefA
-	lcs8mglB4MOuhefCIVi2JcgI1t4fHKDYN6IUvOFEmXzieHa46SFGFbWVLTUC6llp6own
-	k6rYcUiKpGUReuctIOEw9sWEUGHoRkQ8hsrBOLrKDB1zeskqpTf5nVRProQcD8+LaEvF
-	DmFY+yEmIyzTW0kOlWap9BY68EvcV67cCzLr659/6yt/RMS057KElfKkBX83Fv96bURI
-	YmaQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=j5hCjwdbgetEvET5j7CHQRxg5xvqGHAqqVaYk9agXn4=;
-	b=KvjjU2boWDob8YyYWGuOfKmvuID63uwD497gDPyZzjCAAeedqprtII3esvnguXt/Mw
-	yyMHiZTEn6YDiCP08hTBUUcksfZ1mVPi6TUuQ77PYFap4AOc0wSQQE+6oEANqEQEdZCq
-	t7kVMEShxEW0twAe9mXvRi1T6sEGS/V2FPbPiTZ+6GmMK57bjR/hlHFn1Nlugln5qzGv
-	e6uYQtn3nDp2NkZz1MwPbKmw6+r8cK8D91HvWaJXc7UsQNR6yvmx/0Xax4lrO9R5Zgsc
-	claZQCREw6fKFwMEj+a+TCgyfxUGyfP8j+RAunVqEvR3gY7RIXEhHpGY6czOLdHstCuN
-	mKjA==
-X-Gm-Message-State: AElRT7Him4dm3SShHmAYsWqEkzPc8AcFrtDQh7pJE445KThi7COItiSA
-	vJq22g9EvHJ0aeuWxIrlcOU=
-X-Received: by 10.99.178.88 with SMTP id t24mr7390121pgo.212.1522702632358;
-	Mon, 02 Apr 2018 13:57:12 -0700 (PDT)
-Received: from squirtle.westlake.spaceflightindustries.com ([173.226.206.194])
-	by smtp.gmail.com with ESMTPSA id
-	k185sm1693326pgk.94.2018.04.02.13.57.11
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 02 Apr 2018 13:57:11 -0700 (PDT)
-From: Andrey Smirnov <andrew.smirnov@gmail.com>
-To: Marc Zyngier <marc.zyngier@arm.com>
-Date: Mon,  2 Apr 2018 13:56:54 -0700
-Message-Id: <20180402205654.14572-1-andrew.smirnov@gmail.com>
-X-Mailer: git-send-email 2.14.3
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c01::243
-Subject: [Qemu-arm] [PATCH] hw/arm: Allow manually specified /psci node
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrey Smirnov <andrew.smirnov@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MexU9kd7kQBk
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id 69sm161123wmn.9.2018.04.03.02.01.47
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 03 Apr 2018 02:01:47 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id B10553E01DF;
+	Tue,  3 Apr 2018 10:01:46 +0100 (BST)
+References: <20180217182323.25885-1-richard.henderson@linaro.org> <20180217182323.25885-3-richard.henderson@linaro.org>
+User-agent: mu4e 1.1.0; emacs 26.0.91
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Subject: Re: [Qemu-arm] [PATCH v2 02/67] target/arm: Introduce translate-a64.h
+In-reply-to: <20180217182323.25885-3-richard.henderson@linaro.org>
+Date: Tue, 03 Apr 2018 10:01:46 +0100
+Message-ID: <871sfwek91.fsf@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: eVc9Xc8LubBb
 
-Change the code to avoid exiting QEMU if user provided DTB contains
-manually specified /psci node and skip any /psci related fixups
-instead.
 
-Fixes: 4cbca7d9b4 ("hw/arm: Move virt's PSCI DT fixup code to
-arm/boot.c")
+Richard Henderson <richard.henderson@linaro.org> writes:
 
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: Marc Zyngier <marc.zyngier@arm.com>
-Cc: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
----
+> Move some stuff that will be common to both translate-a64.c
+> and translate-sve.c.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 
-Mark:
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-Sorry about the inconvenience, here's the fix (hopefully) to the
-prolem you reported in [1]. Let me know if skipping all PSCI related
-DTB fixup if /psic node is present is not the behaviour you had in
-mind for your suggested fix.
+> ---
+>  target/arm/translate-a64.h | 110 +++++++++++++++++++++++++++++++++++++++=
+++++++
+>  target/arm/translate-a64.c | 101 ++++++---------------------------------=
+--
+>  2 files changed, 123 insertions(+), 88 deletions(-)
+>  create mode 100644 target/arm/translate-a64.h
+>
+> diff --git a/target/arm/translate-a64.h b/target/arm/translate-a64.h
+> new file mode 100644
+> index 0000000000..e519aee314
+> --- /dev/null
+> +++ b/target/arm/translate-a64.h
+> @@ -0,0 +1,110 @@
+> +/*
+> + *  AArch64 translation, common definitions.
+> + *
+> + * This library is free software; you can redistribute it and/or
+> + * modify it under the terms of the GNU Lesser General Public
+> + * License as published by the Free Software Foundation; either
+> + * version 2 of the License, or (at your option) any later version.
+> + *
+> + * This library is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+> + * Lesser General Public License for more details.
+> + *
+> + * You should have received a copy of the GNU Lesser General Public
+> + * License along with this library; if not, see <http://www.gnu.org/lice=
+nses/>.
+> + */
+> +
+> +#ifndef TARGET_ARM_TRANSLATE_A64_H
+> +#define TARGET_ARM_TRANSLATE_A64_H
+> +
+> +void unallocated_encoding(DisasContext *s);
+> +
+> +#define unsupported_encoding(s, insn)                                   =
+ \
+> +    do {                                                                =
+ \
+> +        qemu_log_mask(LOG_UNIMP,                                        =
+ \
+> +                      "%s:%d: unsupported instruction encoding 0x%08x " =
+ \
+> +                      "at pc=3D%016" PRIx64 "\n",                       =
+   \
+> +                      __FILE__, __LINE__, insn, s->pc - 4);             =
+ \
+> +        unallocated_encoding(s);                                        =
+ \
+> +    } while (0)
+> +
+> +TCGv_i64 new_tmp_a64(DisasContext *s);
+> +TCGv_i64 new_tmp_a64_zero(DisasContext *s);
+> +TCGv_i64 cpu_reg(DisasContext *s, int reg);
+> +TCGv_i64 cpu_reg_sp(DisasContext *s, int reg);
+> +TCGv_i64 read_cpu_reg(DisasContext *s, int reg, int sf);
+> +TCGv_i64 read_cpu_reg_sp(DisasContext *s, int reg, int sf);
+> +void write_fp_dreg(DisasContext *s, int reg, TCGv_i64 v);
+> +TCGv_ptr get_fpstatus_ptr(bool);
+> +bool logic_imm_decode_wmask(uint64_t *result, unsigned int immn,
+> +                            unsigned int imms, unsigned int immr);
+> +uint64_t vfp_expand_imm(int size, uint8_t imm8);
+> +
+> +/* We should have at some point before trying to access an FP register
+> + * done the necessary access check, so assert that
+> + * (a) we did the check and
+> + * (b) we didn't then just plough ahead anyway if it failed.
+> + * Print the instruction pattern in the abort message so we can figure
+> + * out what we need to fix if a user encounters this problem in the wild.
+> + */
+> +static inline void assert_fp_access_checked(DisasContext *s)
+> +{
+> +#ifdef CONFIG_DEBUG_TCG
+> +    if (unlikely(!s->fp_access_checked || s->fp_excp_el)) {
+> +        fprintf(stderr, "target-arm: FP access check missing for "
+> +                "instruction 0x%08x\n", s->insn);
+> +        abort();
+> +    }
+> +#endif
+> +}
+> +
+> +/* Return the offset into CPUARMState of an element of specified
+> + * size, 'element' places in from the least significant end of
+> + * the FP/vector register Qn.
+> + */
+> +static inline int vec_reg_offset(DisasContext *s, int regno,
+> +                                 int element, TCGMemOp size)
+> +{
+> +    int offs =3D 0;
+> +#ifdef HOST_WORDS_BIGENDIAN
+> +    /* This is complicated slightly because vfp.zregs[n].d[0] is
+> +     * still the low half and vfp.zregs[n].d[1] the high half
+> +     * of the 128 bit vector, even on big endian systems.
+> +     * Calculate the offset assuming a fully bigendian 128 bits,
+> +     * then XOR to account for the order of the two 64 bit halves.
+> +     */
+> +    offs +=3D (16 - ((element + 1) * (1 << size)));
+> +    offs ^=3D 8;
+> +#else
+> +    offs +=3D element * (1 << size);
+> +#endif
+> +    offs +=3D offsetof(CPUARMState, vfp.zregs[regno]);
+> +    assert_fp_access_checked(s);
+> +    return offs;
+> +}
+> +
+> +/* Return the offset info CPUARMState of the "whole" vector register Qn.=
+  */
+> +static inline int vec_full_reg_offset(DisasContext *s, int regno)
+> +{
+> +    assert_fp_access_checked(s);
+> +    return offsetof(CPUARMState, vfp.zregs[regno]);
+> +}
+> +
+> +/* Return a newly allocated pointer to the vector register.  */
+> +static inline TCGv_ptr vec_full_reg_ptr(DisasContext *s, int regno)
+> +{
+> +    TCGv_ptr ret =3D tcg_temp_new_ptr();
+> +    tcg_gen_addi_ptr(ret, cpu_env, vec_full_reg_offset(s, regno));
+> +    return ret;
+> +}
+> +
+> +/* Return the byte size of the "whole" vector register, VL / 8.  */
+> +static inline int vec_full_reg_size(DisasContext *s)
+> +{
+> +    return s->sve_len;
+> +}
+> +
+> +bool disas_sve(DisasContext *, uint32_t);
+> +
+> +#endif /* TARGET_ARM_TRANSLATE_A64_H */
+> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+> index 032cbfa17d..e0e7ebf68c 100644
+> --- a/target/arm/translate-a64.c
+> +++ b/target/arm/translate-a64.c
+> @@ -36,13 +36,13 @@
+>  #include "exec/log.h"
+>
+>  #include "trace-tcg.h"
+> +#include "translate-a64.h"
+>
+>  static TCGv_i64 cpu_X[32];
+>  static TCGv_i64 cpu_pc;
+>
+>  /* Load/store exclusive handling */
+>  static TCGv_i64 cpu_exclusive_high;
+> -static TCGv_i64 cpu_reg(DisasContext *s, int reg);
+>
+>  static const char *regnames[] =3D {
+>      "x0", "x1", "x2", "x3", "x4", "x5", "x6", "x7",
+> @@ -392,22 +392,13 @@ static inline void gen_goto_tb(DisasContext *s, int=
+ n, uint64_t dest)
+>      }
+>  }
+>
+> -static void unallocated_encoding(DisasContext *s)
+> +void unallocated_encoding(DisasContext *s)
+>  {
+>      /* Unallocated and reserved encodings are uncategorized */
+>      gen_exception_insn(s, 4, EXCP_UDEF, syn_uncategorized(),
+>                         default_exception_el(s));
+>  }
+>
+> -#define unsupported_encoding(s, insn)                                   =
+ \
+> -    do {                                                                =
+ \
+> -        qemu_log_mask(LOG_UNIMP,                                        =
+ \
+> -                      "%s:%d: unsupported instruction encoding 0x%08x " =
+ \
+> -                      "at pc=3D%016" PRIx64 "\n",                       =
+   \
+> -                      __FILE__, __LINE__, insn, s->pc - 4);             =
+ \
+> -        unallocated_encoding(s);                                        =
+ \
+> -    } while (0)
+> -
+>  static void init_tmp_a64_array(DisasContext *s)
+>  {
+>  #ifdef CONFIG_DEBUG_TCG
+> @@ -425,13 +416,13 @@ static void free_tmp_a64(DisasContext *s)
+>      init_tmp_a64_array(s);
+>  }
+>
+> -static TCGv_i64 new_tmp_a64(DisasContext *s)
+> +TCGv_i64 new_tmp_a64(DisasContext *s)
+>  {
+>      assert(s->tmp_a64_count < TMP_A64_MAX);
+>      return s->tmp_a64[s->tmp_a64_count++] =3D tcg_temp_new_i64();
+>  }
+>
+> -static TCGv_i64 new_tmp_a64_zero(DisasContext *s)
+> +TCGv_i64 new_tmp_a64_zero(DisasContext *s)
+>  {
+>      TCGv_i64 t =3D new_tmp_a64(s);
+>      tcg_gen_movi_i64(t, 0);
+> @@ -453,7 +444,7 @@ static TCGv_i64 new_tmp_a64_zero(DisasContext *s)
+>   * to cpu_X[31] and ZR accesses to a temporary which can be discarded.
+>   * This is the point of the _sp forms.
+>   */
+> -static TCGv_i64 cpu_reg(DisasContext *s, int reg)
+> +TCGv_i64 cpu_reg(DisasContext *s, int reg)
+>  {
+>      if (reg =3D=3D 31) {
+>          return new_tmp_a64_zero(s);
+> @@ -463,7 +454,7 @@ static TCGv_i64 cpu_reg(DisasContext *s, int reg)
+>  }
+>
+>  /* register access for when 31 =3D=3D SP */
+> -static TCGv_i64 cpu_reg_sp(DisasContext *s, int reg)
+> +TCGv_i64 cpu_reg_sp(DisasContext *s, int reg)
+>  {
+>      return cpu_X[reg];
+>  }
+> @@ -472,7 +463,7 @@ static TCGv_i64 cpu_reg_sp(DisasContext *s, int reg)
+>   * representing the register contents. This TCGv is an auto-freed
+>   * temporary so it need not be explicitly freed, and may be modified.
+>   */
+> -static TCGv_i64 read_cpu_reg(DisasContext *s, int reg, int sf)
+> +TCGv_i64 read_cpu_reg(DisasContext *s, int reg, int sf)
+>  {
+>      TCGv_i64 v =3D new_tmp_a64(s);
+>      if (reg !=3D 31) {
+> @@ -487,7 +478,7 @@ static TCGv_i64 read_cpu_reg(DisasContext *s, int reg=
+, int sf)
+>      return v;
+>  }
+>
+> -static TCGv_i64 read_cpu_reg_sp(DisasContext *s, int reg, int sf)
+> +TCGv_i64 read_cpu_reg_sp(DisasContext *s, int reg, int sf)
+>  {
+>      TCGv_i64 v =3D new_tmp_a64(s);
+>      if (sf) {
+> @@ -498,72 +489,6 @@ static TCGv_i64 read_cpu_reg_sp(DisasContext *s, int=
+ reg, int sf)
+>      return v;
+>  }
+>
+> -/* We should have at some point before trying to access an FP register
+> - * done the necessary access check, so assert that
+> - * (a) we did the check and
+> - * (b) we didn't then just plough ahead anyway if it failed.
+> - * Print the instruction pattern in the abort message so we can figure
+> - * out what we need to fix if a user encounters this problem in the wild.
+> - */
+> -static inline void assert_fp_access_checked(DisasContext *s)
+> -{
+> -#ifdef CONFIG_DEBUG_TCG
+> -    if (unlikely(!s->fp_access_checked || s->fp_excp_el)) {
+> -        fprintf(stderr, "target-arm: FP access check missing for "
+> -                "instruction 0x%08x\n", s->insn);
+> -        abort();
+> -    }
+> -#endif
+> -}
+> -
+> -/* Return the offset into CPUARMState of an element of specified
+> - * size, 'element' places in from the least significant end of
+> - * the FP/vector register Qn.
+> - */
+> -static inline int vec_reg_offset(DisasContext *s, int regno,
+> -                                 int element, TCGMemOp size)
+> -{
+> -    int offs =3D 0;
+> -#ifdef HOST_WORDS_BIGENDIAN
+> -    /* This is complicated slightly because vfp.zregs[n].d[0] is
+> -     * still the low half and vfp.zregs[n].d[1] the high half
+> -     * of the 128 bit vector, even on big endian systems.
+> -     * Calculate the offset assuming a fully bigendian 128 bits,
+> -     * then XOR to account for the order of the two 64 bit halves.
+> -     */
+> -    offs +=3D (16 - ((element + 1) * (1 << size)));
+> -    offs ^=3D 8;
+> -#else
+> -    offs +=3D element * (1 << size);
+> -#endif
+> -    offs +=3D offsetof(CPUARMState, vfp.zregs[regno]);
+> -    assert_fp_access_checked(s);
+> -    return offs;
+> -}
+> -
+> -/* Return the offset info CPUARMState of the "whole" vector register Qn.=
+  */
+> -static inline int vec_full_reg_offset(DisasContext *s, int regno)
+> -{
+> -    assert_fp_access_checked(s);
+> -    return offsetof(CPUARMState, vfp.zregs[regno]);
+> -}
+> -
+> -/* Return a newly allocated pointer to the vector register.  */
+> -static TCGv_ptr vec_full_reg_ptr(DisasContext *s, int regno)
+> -{
+> -    TCGv_ptr ret =3D tcg_temp_new_ptr();
+> -    tcg_gen_addi_ptr(ret, cpu_env, vec_full_reg_offset(s, regno));
+> -    return ret;
+> -}
+> -
+> -/* Return the byte size of the "whole" vector register, VL / 8.  */
+> -static inline int vec_full_reg_size(DisasContext *s)
+> -{
+> -    /* FIXME SVE: We should put the composite ZCR_EL* value into tb->fla=
+gs.
+> -       In the meantime this is just the AdvSIMD length of 128.  */
+> -    return 128 / 8;
+> -}
+> -
+>  /* Return the offset into CPUARMState of a slice (from
+>   * the least significant end) of FP register Qn (ie
+>   * Dn, Sn, Hn or Bn).
+> @@ -620,7 +545,7 @@ static void clear_vec_high(DisasContext *s, bool is_q=
+, int rd)
+>      }
+>  }
+>
+> -static void write_fp_dreg(DisasContext *s, int reg, TCGv_i64 v)
+> +void write_fp_dreg(DisasContext *s, int reg, TCGv_i64 v)
+>  {
+>      unsigned ofs =3D fp_reg_offset(s, reg, MO_64);
+>
+> @@ -637,7 +562,7 @@ static void write_fp_sreg(DisasContext *s, int reg, T=
+CGv_i32 v)
+>      tcg_temp_free_i64(tmp);
+>  }
+>
+> -static TCGv_ptr get_fpstatus_ptr(bool is_f16)
+> +TCGv_ptr get_fpstatus_ptr(bool is_f16)
+>  {
+>      TCGv_ptr statusptr =3D tcg_temp_new_ptr();
+>      int offset;
+> @@ -3130,8 +3055,8 @@ static inline uint64_t bitmask64(unsigned int lengt=
+h)
+>   * value (ie should cause a guest UNDEF exception), and true if they are
+>   * valid, in which case the decoded bit pattern is written to result.
+>   */
+> -static bool logic_imm_decode_wmask(uint64_t *result, unsigned int immn,
+> -                                   unsigned int imms, unsigned int immr)
+> +bool logic_imm_decode_wmask(uint64_t *result, unsigned int immn,
+> +                            unsigned int imms, unsigned int immr)
+>  {
+>      uint64_t mask;
+>      unsigned e, levels, s, r;
+> @@ -5164,7 +5089,7 @@ static void disas_fp_3src(DisasContext *s, uint32_t=
+ insn)
+>   * the range 01....1xx to 10....0xx, and the most significant 4 bits of
+>   * the mantissa; see VFPExpandImm() in the v8 ARM ARM.
+>   */
+> -static uint64_t vfp_expand_imm(int size, uint8_t imm8)
+> +uint64_t vfp_expand_imm(int size, uint8_t imm8)
+>  {
+>      uint64_t imm;
 
-Thanks,
-Andrey Smirnov
 
-[1] http://lists.gnu.org/archive/html/qemu-devel/2018-03/msg06914.html
-
- hw/arm/boot.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
-
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index 6d0c92ab88..d9f9375cdb 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -422,6 +422,7 @@ static void fdt_add_psci_node(void *fdt)
-     ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(0));
-     const char *psci_method;
-     int64_t psci_conduit;
-+    int rc;
- 
-     psci_conduit = object_property_get_int(OBJECT(armcpu),
-                                            "psci-conduit",
-@@ -439,6 +440,15 @@ static void fdt_add_psci_node(void *fdt)
-         g_assert_not_reached();
-     }
- 
-+    /*
-+     * If /psci node is present in provided DTB, assume that no fixup
-+     * is necessary and all PSCI configuration should be taken as-is
-+     */
-+    rc = fdt_path_offset(fdt, "/psci");
-+    if (rc >= 0) {
-+        return;
-+    }
-+
-     qemu_fdt_add_subnode(fdt, "/psci");
-     if (armcpu->psci_version == 2) {
-         const char comp[] = "arm,psci-0.2\0arm,psci";
--- 
-2.14.3
-
+--
+Alex Benn=C3=A9e

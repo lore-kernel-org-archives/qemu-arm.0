@@ -1,233 +1,261 @@
-Received: by 10.28.71.155 with SMTP id m27csp4760806wmi;
-        Wed, 4 Apr 2018 04:42:46 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx48oYzy5/RWnigiHXvcdt1hZirv9ZY9TwXWgMTjk+qL2AZG8SFKDxHnyYOX7AJH7Fu4mFIN1
-X-Received: by 10.55.116.71 with SMTP id p68mr23267516qkc.29.1522842166535;
-        Wed, 04 Apr 2018 04:42:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1522842166; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp4768888wmi;
+        Wed, 4 Apr 2018 04:52:01 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx4/Rk8UfTXjnzbjrCt+eMp5icWV3qhnyCXQTpw5UQDZS1iTcEJJljCrUCWHj6D3SDOgCMw6q
+X-Received: by 10.200.56.76 with SMTP id r12mr26748175qtb.125.1522842721756;
+        Wed, 04 Apr 2018 04:52:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1522842721; cv=none;
         d=google.com; s=arc-20160816;
-        b=hJ6bB2NYoq/bsCavYqzAw/7nfdkvrIKknk4Yq48mDxnuVLdwDGAEqNfNGELCgLr7jJ
-         GESz3be8YbFUmMv0ZO3+HOyNOO+MmkWthW7ZoBnQxR3dQo8ENDojf/vkilrcP9RC1kEp
-         TebA37RY5gM4s2OjOcwVfquakanW0cKKQTMWBoE49QxBrTQX8HQXEecjuKBBKNm7N9hl
-         oFL5g6nRuB7XQ2G9LtP9SuU1ImOEn6Qy5EA9bp6hulH3s2SDHwioZCFPFC0ckiYuVIiC
-         p2rfdUj7qovTPOF9YpfmLvLUdevUBL68wXMn1UxYZi/xd4ArKx9P/7W0Vc/2gBWZG1Zy
-         skzQ==
+        b=c3Xzny6UaXu46q8oOxER6eIeLiy3xTLuvd4M6+yKsQJtVJke3tQ+3IdKaFZkuJ5VCZ
+         ptCoFic9kmOZxX5qpS+tVSV5KTEh2KW+cTrxreOJXRufkHM7W4jPTq+sH75hBFTzofVk
+         dLXe9ljuDOYh7x3Tt6vDPYE/bPMkNijekW+A1XuTx0mwwwOWvC19V/O3cNxZnTaF8Aoj
+         M9UhS1t2N3SWR80u/BQq71dgpW4n6v8x/IuYGeeBVPcMlo+43KAKewM3kR7guDmHmPqV
+         eRoujeZ65fcy8Fm1m1Rg6S+dlVEcE8LFWy+oZtG8Ks/F9i89RsD50/SSNrqRL2Pm7mjO
+         TqRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:to
          :dkim-signature:arc-authentication-results;
-        bh=ryKk5ZDFsddShs2WRbApzWZVPQuG0b/bD5kNIhkJgrc=;
-        b=genvvZDl39hObjB2qnU1VrP3sIkZnaqMPr6rDvYk4ofEw04a1ByQsAdyW8ReRyHKiu
-         XV1fFIVHbxkc0Mr3nE/yQXfHvC/IEQv9uf45zr/QY1kWrx154SEzdfZmj//HT3Qsv98E
-         BPDgq2SgZPxOWAuuXcTMVt0Nq5eRtv/CjnSvBdIaxCF3TJkaPcmOj6NPnWdlFxbOrWSS
-         DGW2Pwb8V3fr1aTXtFF6fqoZPrBVCi1NBZrheFupfFVuj8WCx7BKuNMoL7Kimy901iMr
-         4invqgrsX+jf+SzpNDMjdhY418vEwwo0gpWYxkiQCGu1SY4mevx9Vu+6Xa/ZOeqdw4Ac
-         PNvg==
+        bh=AUNj4pXPlKrLyidyo4wQxwfpwZ+cAkvALOpYaW6YhbU=;
+        b=r4HZ7qQASRdE4wv/TIr6+gVD/3iKSJcpmQrmb8/F8s5GgYy8jWUgdK2scEfl2klQAk
+         DR24OPZARSrXTLUHRVYXC5P6HWcy1HyrxHqhOD/BUeF/X+xtWf8ut9MvafW+woMJK/Nn
+         HSh2Pd9z/BfJVYE9EK3z1kx2GK6bj1rN85kf3PIoL+9xG/9jK4xoNLSOsICfVJ2O10TK
+         /Rse4LzjJhMAskPvGcd8Wws9nomFXA0Q0xAmc4n3CA5PN4xFpUSGaSddk3m225oHzp81
+         PG3FS12SeRqaHWHFPotlHHHQ3bTq5gVIe0oJpyuUkdeYW9D5KhP9YNaOcH/xDpbnysRV
+         mGbA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=B9RDyvoG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=apU1t5pC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o14si5838135qta.484.2018.04.04.04.42.46
+        by mx.google.com with ESMTPS id p24si3288592qtc.221.2018.04.04.04.52.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 04 Apr 2018 04:42:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 04 Apr 2018 04:52:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=B9RDyvoG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51436 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=apU1t5pC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:51927 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f3goQ-0000vY-3f
-	for alex.bennee@linaro.org; Wed, 04 Apr 2018 07:42:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35101)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1f3gxN-0005j0-9x
+	for alex.bennee@linaro.org; Wed, 04 Apr 2018 07:52:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36899)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f3go9-0000vC-MR
-	for qemu-devel@nongnu.org; Wed, 04 Apr 2018 07:42:30 -0400
+	id 1f3gwE-00051z-QJ
+	for qemu-arm@nongnu.org; Wed, 04 Apr 2018 07:50:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f3go6-0007a3-IW
-	for qemu-devel@nongnu.org; Wed, 04 Apr 2018 07:42:29 -0400
-Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:36846)
+	id 1f3gwD-0006ww-SH
+	for qemu-arm@nongnu.org; Wed, 04 Apr 2018 07:50:50 -0400
+Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:44972)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f3go6-0007Z4-DG; Wed, 04 Apr 2018 07:42:26 -0400
-Received: by mail-qt0-x242.google.com with SMTP id w23so14608990qtn.3;
-	Wed, 04 Apr 2018 04:42:26 -0700 (PDT)
+	id 1f3gw6-0006lu-HJ; Wed, 04 Apr 2018 07:50:42 -0400
+Received: by mail-qk0-x244.google.com with SMTP id u9so8661386qkk.11;
+	Wed, 04 Apr 2018 04:50:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=ryKk5ZDFsddShs2WRbApzWZVPQuG0b/bD5kNIhkJgrc=;
-	b=B9RDyvoGCWJ7tnwKALLOyWZBXzHYor7dXghbjfN64ZW4OD6BSDlyycDbE6lV42MK9Q
-	ZVmRO3sc9Dfmh7qXRrX+V3DA8SaglLcXBcx45gYwZfvM7Oc02jeimCRjf1hwE3aoeU6i
-	bldWvvFgVOccWbLA43CgnhJPzZ0jyxT3GMGDDLeipjyJ4Xegconu64wG4g3xo1snSgYv
-	IsH8dWrl4q8qg/APPO9t1klQGlea+xCqhZEyVphgQeUO+UYNC5T9D4M0anW/nDNBNN29
-	LT2YgFeXm8CHGxBeI97mZrRKRZcRNdsLDMzrPVZwNB10VSV9Bjq7XPl+5xUkLQ1QpGhf
-	crIg==
+	bh=AUNj4pXPlKrLyidyo4wQxwfpwZ+cAkvALOpYaW6YhbU=;
+	b=apU1t5pC56qTmMFDnRVEt1LRBX8LHveWbjo17xc2Zhiw2dvQ/6L3LB59hbPc1NwrG5
+	b8BlPLuTTvZ8p2d4dTmz9DaoSNavmMxR2W6IPPweOPI+eJ/vC+1zNsN1EzxTdQYLU1D5
+	KL/Z2NwfMKC8vSSrkutPOUw0l6xElAeg/1ikgW/TFdTw9yEC40zhFTVhlfg/Lyqwt1sI
+	CCXyToYXntXP+YsTH3Rn5vvYQJ+tf4tb44QQIOjN1BqAL185J9zOrLiWL66AjRWC9unP
+	fU/cvHOmzWPV1B7onznINzcfTgyQdHXc8gFj3aCQlqpCrYCEd+QJgp7T3NFRBSaVIxu9
+	kCKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=ryKk5ZDFsddShs2WRbApzWZVPQuG0b/bD5kNIhkJgrc=;
-	b=n/1bODG51E0F6RT4dNpQoMhEmfqHJzKAnrMGLYhgFPW7Mk5Cl8K0Fbgh04pLThRKRP
-	MZdsxSFY1FAOc33oC3cryhelf//l08G91D+Im2gSbSgPrVWrId5nP48oC/Z7ov9Jn4tu
-	sqd7eQ6+Sk+thZam+xEpcy8bK6ZcCb3+TkmHKTqPFLLMfLJYSWe+gsGmhPUAaX/T6DwE
-	8hPgdTiEUwYWCvHGKkRnoNzsuFgUm9Gmvwt7YTHJtP/mbPIbw44Un8P3KitdSWxskTxR
-	/5stSoAA56e95QxxZjgBJ60xkPkKrGB+H7ezxRB4K/Iw1B8KC7ad5GD0r65uq6DNajKG
-	HHww==
-X-Gm-Message-State: ALQs6tDUjdxHVnhqSntTpmwUInx2s2S8coLbUuKzEQ631W5ntXyln/gz
-	b31ysRjumFq4jGxrmv5hA2g=
-X-Received: by 10.200.41.237 with SMTP id 42mr26388129qtt.159.1522842145670;
-	Wed, 04 Apr 2018 04:42:25 -0700 (PDT)
+	bh=AUNj4pXPlKrLyidyo4wQxwfpwZ+cAkvALOpYaW6YhbU=;
+	b=qzOA3BctRUn2LKO5PYKyxIfI3k7jYRZ2HbuSnli44Gsx/495pk4MhfnYEfJtEjb5zQ
+	OsSoPiO+fo7wEigfGJdFz/ra/WBF2njtnNELdB2WCWcWgwLttZZpkRepwHfscPCtLu0O
+	IbBWZcmOhF08pSloYlNRc5c2/DPPnsSkObTlxtqY0tTmm8F6e9XtLbNhhQ+vxMsvcxsk
+	CT6C48PSeH7/uDWTtDp1SHTlCB37TzRgnv4r6QgR/aArBOitVmlgVJAVtVKz4r6xZbwr
+	hrLomBYm1tjUDACDu1qWY21qzR+Z4gB5SPc4qLc1g3nnXcd2Xmaxt5Dxm9ja1pjbBrk3
+	qRqg==
+X-Gm-Message-State: ALQs6tAk1zMVzsNlC7c2PoMzoYuNgT1Qw2HpWMUw+GmT1hggfWclFcqT
+	x+LUEVaay7eD0+7wAnymOjI=
+X-Received: by 10.55.54.12 with SMTP id d12mr17441118qka.340.1522842641819;
+	Wed, 04 Apr 2018 04:50:41 -0700 (PDT)
 Received: from [192.168.1.11] ([138.117.48.212])
 	by smtp.gmail.com with ESMTPSA id
-	f17sm3521447qkm.60.2018.04.04.04.42.23
+	m103sm4392886qkh.20.2018.04.04.04.50.39
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 04 Apr 2018 04:42:25 -0700 (PDT)
+	Wed, 04 Apr 2018 04:50:41 -0700 (PDT)
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 References: <20180319161556.16446-1-peter.maydell@linaro.org>
-	<20180319161556.16446-2-peter.maydell@linaro.org>
+	<20180319161556.16446-3-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <6431180d-fcaa-6a9c-de22-5ded33433be8@amsat.org>
-Date: Wed, 4 Apr 2018 08:42:21 -0300
+Message-ID: <6db56a4f-f877-8052-e6e7-65f3ac58a95b@amsat.org>
+Date: Wed, 4 Apr 2018 08:50:38 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <20180319161556.16446-2-peter.maydell@linaro.org>
+In-Reply-To: <20180319161556.16446-3-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::242
-Subject: Re: [Qemu-devel] [PATCH for-2.12 1/2] hw/sd/bcm2835_sdhost: Add
- tracepoints
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400d:c09::244
+Subject: Re: [Qemu-arm] [PATCH for-2.12 2/2] hw/sd/bcm2835_sdhost: Don't
+ raise spurious interrupts
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Pekka Enberg <penberg@iki.fi>, Gerd Hoffmann <kraxel@redhat.com>,
 	Andrew Baumann <Andrew.Baumann@microsoft.com>, patches@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Fha0OkIUnKNf
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: l1xkDt87dgUF
 
 Hi Peter,
 
 On 03/19/2018 01:15 PM, Peter Maydell wrote:
-> Add some tracepoints to the bcm2835_sdhost driver, to assist
-> debugging.
+> The Linux bcm2835_sdhost driver doesn't work on QEMU, because our
+> model raises spurious data interrupts.  Our function
+> bcm2835_sdhost_fifo_run() will flag an interrupt any time it is
+> called with s->datacnt == 0, even if the host hasn't actually issued
+> a data read or write command yet.  This means that the driver gets a
+> spurious data interrupt as soon as it enables IRQs and then does
+> something else that causes us to call the fifo_run routine, like
+> writing to SDHCFG, and before it does the write to SDCMD to issue the
+> read.  The driver's IRQ handler then spins forever complaining that
+> there's no data and the SD controller isn't in a state where there's
+> going to be any data:
+> 
+> [   41.040738] sdhost-bcm2835 3f202000.mmc: fsm 1, hsts 00000000
+> [   41.042059] sdhost-bcm2835 3f202000.mmc: fsm 1, hsts 00000000
+> (continues forever).
+> 
+> Move the interrupt flag setting to more plausible places:
+>  * for BUSY, raise this as soon as a BUSYWAIT command has executed
+>  * for DATA, raise this when the FIFO has any space free (for a write)
+>    or any data in it (for a read)
+>  * for BLOCK, raise this when the data count is 0 and we've
+>    actually done some reading or writing
+> 
+> This is pure guesswork since the documentation for this hardware is
+> not public, but it is sufficient to get the Linux bcm2835_sdhost
+> driver to work.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/sd/bcm2835_sdhost.c | 10 ++++++++++
->  hw/sd/trace-events     |  6 ++++++
->  2 files changed, 16 insertions(+)
+>  hw/sd/bcm2835_sdhost.c | 43 +++++++++++++++++++++++--------------------
+>  1 file changed, 23 insertions(+), 20 deletions(-)
 > 
 > diff --git a/hw/sd/bcm2835_sdhost.c b/hw/sd/bcm2835_sdhost.c
-> index f7f4e656df..79f3c5ceeb 100644
+> index 79f3c5ceeb..0fd0853fa3 100644
 > --- a/hw/sd/bcm2835_sdhost.c
 > +++ b/hw/sd/bcm2835_sdhost.c
-> @@ -15,6 +15,7 @@
->  #include "qemu/log.h"
->  #include "sysemu/blockdev.h"
->  #include "hw/sd/bcm2835_sdhost.h"
-> +#include "trace.h"
->  
->  #define TYPE_BCM2835_SDHOST_BUS "bcm2835-sdhost-bus"
->  #define BCM2835_SDHOST_BUS(obj) \
-> @@ -99,6 +100,7 @@ static void bcm2835_sdhost_update_irq(BCM2835SDHostState *s)
->  {
->      uint32_t irq = s->status &
->          (SDHSTS_BUSY_IRPT | SDHSTS_BLOCK_IRPT | SDHSTS_SDIO_IRPT);
-> +    trace_bcm2835_sdhost_update_irq(irq);
->      qemu_set_irq(s->irq, !!irq);
->  }
->  
-> @@ -211,6 +213,7 @@ static void bcm2835_sdhost_fifo_run(BCM2835SDHostState *s)
->  
->          s->edm &= ~0xf;
->          s->edm |= SDEDM_FSM_DATAMODE;
-> +        trace_bcm2835_sdhost_edm_change("datacnt 0", s->edm);
->  
->          if (s->config & SDHCFG_DATA_IRPT_EN) {
->              s->status |= SDHSTS_SDIO_IRPT;
-> @@ -229,6 +232,7 @@ static void bcm2835_sdhost_fifo_run(BCM2835SDHostState *s)
->  
->      s->edm &= ~(0x1f << 4);
->      s->edm |= ((s->fifo_len & 0x1f) << 4);
-> +    trace_bcm2835_sdhost_edm_change("fifo run", s->edm);
->  }
->  
->  static uint64_t bcm2835_sdhost_read(void *opaque, hwaddr offset,
-> @@ -280,6 +284,8 @@ static uint64_t bcm2835_sdhost_read(void *opaque, hwaddr offset,
->          break;
->      }
->  
-> +    trace_bcm2835_sdhost_read(offset, res, size);
-> +
->      return res;
->  }
->  
-> @@ -288,6 +294,8 @@ static void bcm2835_sdhost_write(void *opaque, hwaddr offset,
->  {
->      BCM2835SDHostState *s = (BCM2835SDHostState *)opaque;
->  
-> +    trace_bcm2835_sdhost_write(offset, value, size);
-> +
->      switch (offset) {
->      case SDCMD:
->          s->cmd = value;
-> @@ -314,6 +322,7 @@ static void bcm2835_sdhost_write(void *opaque, hwaddr offset,
->              value &= ~0xf;
+> @@ -137,6 +137,9 @@ static void bcm2835_sdhost_send_command(BCM2835SDHostState *s)
 >          }
->          s->edm = value;
-> +        trace_bcm2835_sdhost_edm_change("guest register write", s->edm);
->          break;
->      case SDHCFG:
->          s->config = value;
-> @@ -390,6 +399,7 @@ static void bcm2835_sdhost_reset(DeviceState *dev)
->      s->cmd = 0;
->      s->cmdarg = 0;
->      s->edm = 0x0000c60f;
-> +    trace_bcm2835_sdhost_edm_change("device reset", s->edm);
->      s->config = 0;
->      s->hbct = 0;
->      s->hblc = 0;
-> diff --git a/hw/sd/trace-events b/hw/sd/trace-events
-> index 2059ace61f..bfd1d62efc 100644
-> --- a/hw/sd/trace-events
-> +++ b/hw/sd/trace-events
-> @@ -1,5 +1,11 @@
->  # See docs/devel/tracing.txt for syntax documentation.
+>  #undef RWORD
+>      }
+> +    if ((s->cmd & SDCMD_BUSYWAIT) && (s->config & SDHCFG_BUSY_IRPT_EN)) {
+> +        s->status |= SDHSTS_BUSY_IRPT;
+> +    }
+>      return;
 >  
-> +# hw/sd/bcm2835_sdhost.c
-> +bcm2835_sdhost_read(uint64_t offset, uint64_t data, unsigned size) "offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
-> +bcm2835_sdhost_write(uint64_t offset, uint64_t data, unsigned size) "offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
+>  error:
+> @@ -187,18 +190,27 @@ static void bcm2835_sdhost_fifo_run(BCM2835SDHostState *s)
+>                  n++;
+>                  if (n == 4) {
+>                      bcm2835_sdhost_fifo_push(s, value);
+> +                    s->status |= SDHSTS_DATA_FLAG;
 
-Can you use the more explicit "size_t" and "%zu" please?
+^ I'd move this line in bcm2835_sdhost_fifo_push(),
+
+> +                    if (s->config & SDHCFG_DATA_IRPT_EN) {
+> +                        s->status |= SDHSTS_SDIO_IRPT;
+> +                    }
+>                      n = 0;
+>                      value = 0;
+>                  }
+>              }
+>              if (n != 0) {
+>                  bcm2835_sdhost_fifo_push(s, value);
+> +                s->status |= SDHSTS_DATA_FLAG;
+
+removing this one.
+
+>              }
+>          } else { /* write */
+>              n = 0;
+>              while (s->datacnt > 0 && (s->fifo_len > 0 || n > 0)) {
+>                  if (n == 0) {
+>                      value = bcm2835_sdhost_fifo_pop(s);
+> +                    s->status |= SDHSTS_DATA_FLAG;
+> +                    if (s->config & SDHCFG_DATA_IRPT_EN) {
+> +                        s->status |= SDHSTS_SDIO_IRPT;
+> +                    }
+>                      n = 4;
+>                  }
+>                  n--;
+> @@ -207,28 +219,19 @@ static void bcm2835_sdhost_fifo_run(BCM2835SDHostState *s)
+>                  value >>= 8;
+>              }
+>          }
+> +        if (s->datacnt == 0) {
+> +            s->edm &= ~0xf;
+
+while here, let's use SDEDM_FSM_MASK.
+
+> +            s->edm |= SDEDM_FSM_DATAMODE;
+> +            trace_bcm2835_sdhost_edm_change("datacnt 0", s->edm);
+> +
+> +            if ((s->cmd & SDCMD_WRITE_CMD) &&
+> +                (s->config & SDHCFG_BLOCK_IRPT_EN)) {
+> +                s->status |= SDHSTS_BLOCK_IRPT;
+> +            }
+> +        }
+
+Your guesswork makes sens to me.
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-> +bcm2835_sdhost_edm_change(const char *why, uint32_t edm) "(%s) EDM now 0x%x"
-> +bcm2835_sdhost_update_irq(uint32_t irq) "IRQ bits 0x%x\n"
-> +
->  # hw/sd/core.c
->  sdbus_command(const char *bus_name, uint8_t cmd, uint32_t arg, uint8_t crc) "@%s CMD%02d arg 0x%08x crc 0x%02x"
->  sdbus_read(const char *bus_name, uint8_t value) "@%s value 0x%02x"
+>      }
+> -    if (s->datacnt == 0) {
+> -        s->status |= SDHSTS_DATA_FLAG;
+>  
+> -        s->edm &= ~0xf;
+> -        s->edm |= SDEDM_FSM_DATAMODE;
+> -        trace_bcm2835_sdhost_edm_change("datacnt 0", s->edm);
+> -
+> -        if (s->config & SDHCFG_DATA_IRPT_EN) {
+> -            s->status |= SDHSTS_SDIO_IRPT;
+> -        }
+> -
+> -        if ((s->cmd & SDCMD_BUSYWAIT) && (s->config & SDHCFG_BUSY_IRPT_EN)) {
+> -            s->status |= SDHSTS_BUSY_IRPT;
+> -        }
+> -
+> -        if ((s->cmd & SDCMD_WRITE_CMD) && (s->config & SDHCFG_BLOCK_IRPT_EN)) {
+> -            s->status |= SDHSTS_BLOCK_IRPT;
+> -        }
+> -
+> -        bcm2835_sdhost_update_irq(s);
+> -    }
+> +    bcm2835_sdhost_update_irq(s);
+>  
+>      s->edm &= ~(0x1f << 4);
+>      s->edm |= ((s->fifo_len & 0x1f) << 4);
 > 

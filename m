@@ -1,83 +1,100 @@
-Received: by 10.28.71.155 with SMTP id m27csp5683364wmi;
-        Wed, 4 Apr 2018 23:09:35 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx485GpfBN219y0WNuSG7hti1nDZgpFr5BIxclavr4bfBbu0ABc+Vr9eUuehumDXJvZy46ked
-X-Received: by 10.55.32.71 with SMTP id g68mr27330176qkg.129.1522908575051;
-        Wed, 04 Apr 2018 23:09:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1522908575; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp5683664wmi;
+        Wed, 4 Apr 2018 23:09:58 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx49eidRyFXzPdu+c/oLGu+vaycsh76ZkBUrOwxdQrW3uLR0oR8vPSO3w118E0QDSaSmYg3sg
+X-Received: by 10.55.143.71 with SMTP id r68mr10645646qkd.296.1522908598674;
+        Wed, 04 Apr 2018 23:09:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1522908598; cv=none;
         d=google.com; s=arc-20160816;
-        b=jufO484IB8g1LM6a9ShwcRFPIa1L8sVoyvwF+iASw+W64vDNuqz+dJ6kNoTDIT9fqi
-         jQ4FcH5lR00n8hQJ4vXQ7VdVrrf/LhPkkQcqhzmcLXLa5D2W/cp8QX9DmPg0GGHFlKRr
-         yOCnczcycKqAE1Zl1MAge7zPu/KjdI1nOrWdXEU6N2u1V0wH+co/OhOXWxw4C0xTCoIC
-         rTqpswiOyadfEZ5GPR9iONqyNu2T//DECzG6bSf/zMKTYUjc/+gDEtHVpsjQm3kMlpOn
-         pQDvJF05Eup7l63Y4jtGKDUbBJlX6FAqSHZUhnbF3cDrDde9LAg+oYq9awZzzjz6EEPr
-         oQ2Q==
+        b=iLUDkHyx2W6ue0Ho/LMJx5i+gSDQB3fz+0UQOaCkDneO6PpytIfJYBq7EzcGks6Gq4
+         VC2ZlS9ces9osRZylUKm8Q1i66eUxgZeRCYL/YFeM8o5Ar5O7LyUeKaKplW2YWbK7plX
+         5mBEakhscRJb9gNOncuKCY3ae00FGzbMwZMxF/RQhWcLxuh/Fw/X6OM1v0vQsXDbvco0
+         v6J7vwED6B1/AiZ/jA6VPaWphGTevFFJCe8ayurBU2Uie6edCLA5K2WQdkKbr+q7n9fi
+         LPnt/qhMdpFz8hJm5MHKaPCKFV0Wonjg+sp/mpL0Ahw9ZcDkEJSdyeOoMRIU9O9GJEqq
+         eahA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :arc-authentication-results;
-        bh=joq29DYUnQeIXmJskBboxcivhXOV7eosXjtkfVs0W3Q=;
-        b=oh7zHHQ0abnH40CHnH309NlMbZe0tUTj3IbzJlYh2SbfD4GU/96MK1P5XNrnd3KzOp
-         aot3C2riFeuDZM0auWu1/32L5Oa8/gJSykWo8NNS0aJ0+QljKe4xqLczGLxdv6FE4usn
-         TkdR4KbXYzdhfN07TGIQceo2KCgwpF5O0aijTD/Ebhm7AE74CMgSjZAb62q4Q0k/6YPk
-         V1IV9nG94rh/XLHqZaHyxxb72vMRtPl8svzZkRSs/13jBPS6R7Wl4GFgHEex3M0QMBRZ
-         I7ZCIhBVuHhVGjOeAKZ1QK0Xzo8APQFtkYlQRgHrOk9Z9Am8PPJKLPU1tNJYpuMDrl03
-         Ucvw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=npLrmEgvPEjchNtT4F1f3BmzK/CvmffDU9kmJn9r9rc=;
+        b=VLVxqKQC5r1m2Gko734qOEwmlts02WAWOL45Z/S70yQLIfUpGLLIG5PXQpF67bWPgo
+         Wz0aUBvf+CLIOMJe50Yqq9xI/Xn+tlC5Io8Oxn2yVE/9lDHDKCnlIyFCOLmaSxPxaebY
+         2XVAkqWjEOoCV0iQD2rWmmN4kgVgzEJ+YgEs7FGweyJ4QJkV+52L3ZNgQi9MlyXCiteh
+         6Aog4ZQsdEn6IDAwbdftpuzAlBORiim27q3R7prGgZ0etnLAK+JVAmHWykB9Qn+cII2K
+         SK+RJr+HqKzCESJOTcRsTYsaZ/hTIPIPBgyt2mqH0QoPAj6cxPWMD+FyCZc4Zmg5G5v9
+         Krrg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Xl3v+z4y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t9si550499qtg.216.2018.04.04.23.09.34
+        by mx.google.com with ESMTPS id n20si5523348qtl.390.2018.04.04.23.09.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 04 Apr 2018 23:09:35 -0700 (PDT)
+        Wed, 04 Apr 2018 23:09:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Xl3v+z4y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60931 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:60954 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f3y5W-0006es-Ht
-	for alex.bennee@linaro.org; Thu, 05 Apr 2018 02:09:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51136)
+	id 1f3y5u-0006wZ-3c
+	for alex.bennee@linaro.org; Thu, 05 Apr 2018 02:09:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51188)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1f3y5N-0006d0-Ky
-	for qemu-arm@nongnu.org; Thu, 05 Apr 2018 02:09:26 -0400
+	(envelope-from <bjsprakash.linux@gmail.com>) id 1f3y5h-0006t0-Rg
+	for qemu-arm@nongnu.org; Thu, 05 Apr 2018 02:09:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1f3y5J-0008CY-Io
-	for qemu-arm@nongnu.org; Thu, 05 Apr 2018 02:09:25 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:50790 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1f3y5J-0008BQ-Dn; Thu, 05 Apr 2018 02:09:21 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5F35A404084A;
-	Thu,  5 Apr 2018 06:09:17 +0000 (UTC)
-Received: from thh440s.redhat.com (ovpn-116-84.ams2.redhat.com [10.36.116.84])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 599AC1208F6C;
-	Thu,  5 Apr 2018 06:09:12 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-devel@nongnu.org
-Date: Thu,  5 Apr 2018 08:09:11 +0200
-Message-Id: <1522908551-14885-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Thu, 05 Apr 2018 06:09:17 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Thu, 05 Apr 2018 06:09:17 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH for-2.12] hw/arm/fsl-imx: Fix introspection
- problem with fsl-imx6 and fsl-imx7
+	(envelope-from <bjsprakash.linux@gmail.com>) id 1f3y5g-00005e-VZ
+	for qemu-arm@nongnu.org; Thu, 05 Apr 2018 02:09:45 -0400
+Received: from mail-oi0-x22f.google.com ([2607:f8b0:4003:c06::22f]:35782)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <bjsprakash.linux@gmail.com>)
+	id 1f3y5e-0008WD-Ng; Thu, 05 Apr 2018 02:09:42 -0400
+Received: by mail-oi0-x22f.google.com with SMTP id z8-v6so21536889oix.2;
+	Wed, 04 Apr 2018 23:09:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:from:date:message-id:subject:to;
+	bh=npLrmEgvPEjchNtT4F1f3BmzK/CvmffDU9kmJn9r9rc=;
+	b=Xl3v+z4ykYsFHqcCpTnK+2zCNoDpwvdoU/MdD1s52EDcpz5fL1wZUzC/cpMkbAOziR
+	pw6v9xz1J4q3KfFVfdH/s9Bstl1eZmtt2+1mQCidmT2BRfAVnz/LEC/4xOdqJWDNs0TJ
+	qcR6IYelOD6dt08auP2vm9jvwT/ipv+aXyJ+RdFJN0x8AYUF/+PG3DwJ/wXgvtDv5MbC
+	t5R310D4upkf+dsIp+JaHiAJHqo+s4DFWE5saycLoazaZYB5/9reUNYPZmLgHGfsBJ2a
+	U1cdIciCcdUSM96Aec8Xa8Ka9jAIT5G9xgtRS2sEsNwKXdl4bSMd7PuJmHCJoA1DcuuX
+	YR+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+	bh=npLrmEgvPEjchNtT4F1f3BmzK/CvmffDU9kmJn9r9rc=;
+	b=cfJCSly9yWxKUHPWIvIoUBu5odXfpa8WFCbCAzEfwwtQTK1n9/pR0Gk/GKWLssQk8F
+	EUnxAH3OTJBCirBL8KsWcQXUiGEVDiVmkzDJhy5xMHlFAnE6zc1Ec4fagKnHj1lbRUYR
+	cE0tL+eusxde6ufdfY+m+p8Qv/4bZ3OoPPmooUY5pCAdgQUFHCfSXYCMa/CxkCgzEHpC
+	iaUpeKc0Pe+w/+Lo6XMZMNOsZLuvJev/2qXx1g5Vk2AOFJku6WEkv0HrByYwhazkLpi2
+	sDk7qG5ZUMte0LOMofBJ6R3rhGs5Gd44l127ozaljZZ4joaN68jXLCKurAZVJBeAgmjB
+	GSug==
+X-Gm-Message-State: ALQs6tBTijrvIjWMUipQuiRycs/t5YMSbBwV0BN35W24/W3NxnjyFsc5
+	7H9/sLnHgok6Vl+DpuJQXW6PF+uzHwKwCOiKBZP/zETC
+X-Received: by 2002:aca:32d6:: with SMTP id
+	y205-v6mr12310423oiy.146.1522908581717; 
+	Wed, 04 Apr 2018 23:09:41 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:4041:0:0:0:0:0 with HTTP;
+	Wed, 4 Apr 2018 23:09:41 -0700 (PDT)
+From: Prakash B <bjsprakash.linux@gmail.com>
+Date: Thu, 5 Apr 2018 11:39:41 +0530
+Message-ID: <CACJhumcLYPhMkO5idkL0eW6nsdbwhFv3KMWi9c5Q5bPv_2Rq6g@mail.gmail.com>
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+	Peter Maydell <peter.maydell@linaro.org>,
+	Eric Auger <eric.auger@redhat.com>, 
+	Sunil Goutham <sgoutham@cavium.com>, bprakash@caviumnetworks.com,
+	berrange@redhat.com
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::22f
+Subject: [Qemu-arm] Virito devices bridge vs Macvtap performance
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -89,109 +106,50 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wGAbZQtV++Ag
+X-TUID: Myc0jhbT81q2
 
-QEMU currently exits unexpectedly when trying to introspect the fsl-imx6
-and fsl-imx7 devices on systems with many SMP CPUs:
+Hi,
 
-$ echo "{'execute':'qmp_capabilities'}"\
-       "{'execute':'device-list-properties',"\
-       " 'arguments':{'typename':'fsl,imx6'}}" \
-       | arm-softmmu/qemu-system-arm -M virt,accel=qtest -qmp stdio -smp 8
-{"QMP": {"version": {"qemu": {"micro": 91, "minor": 11, "major": 2},
- "package": "build-all"}, "capabilities": []}}
-{"return": {}}
-fsl,imx6: Only 4 CPUs are supported (8 requested)
+I am doing kvm guest network performance analysis to compare relevant
+alternatives for  virtio devices on Arrach64.
 
-And:
+I have generated bridge tap and macvtap performance numbers  on guest
+10G interface
+connected back to  another 10G on other host.
 
-$ echo "{'execute':'qmp_capabilities'}"\
-       "{'execute':'device-list-properties',"\
-       " 'arguments':{'typename':'fsl,imx7'}}" \
-       | arm-softmmu/qemu-system-arm -M raspi2,accel=qtest -qmp stdio
-{"QMP": {"version": {"qemu": {"micro": 91, "minor": 11, "major": 2},
- "package": "build-all"}, "capabilities": []}}
-{"return": {}}
-fsl,imx7: Only 2 CPUs are supported (4 requested)
+The results for guest with  "macvtap" vs  "bridge" are  marginally
+differed and the difference is +/- 3%. As per my understanding on
+macvtap, expected better performance values with macvtap.
 
-This happens because these devices are doing an exit() from their
-instance_init function - which should never be done since instance_init
-can be called at any time for device introspection! Fix it by moving
-the deadly check into the realize() function instead.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- hw/arm/fsl-imx6.c | 14 +++++++-------
- hw/arm/fsl-imx7.c | 13 +++++++------
- 2 files changed, 14 insertions(+), 13 deletions(-)
+--------------------<Begin of commands > --------------------
+for  macvtap device:-
+-netdev tap,vhost=on,vhostforce=on,id=macvtap_netdev,fd=3
+3<>/dev/tap$(cat /sys/class/net/macvtap1/ifindex)  \
+ -device virtionet-pci,netdev=macvtap_netdev,id=net0,mac=$(cat
+/sys/class/net/macvtap1/address)
 
-diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
-index b6ac72d..9dfbc9a 100644
---- a/hw/arm/fsl-imx6.c
-+++ b/hw/arm/fsl-imx6.c
-@@ -37,13 +37,7 @@ static void fsl_imx6_init(Object *obj)
-     char name[NAME_SIZE];
-     int i;
- 
--    if (smp_cpus > FSL_IMX6_NUM_CPUS) {
--        error_report("%s: Only %d CPUs are supported (%d requested)",
--                     TYPE_FSL_IMX6, FSL_IMX6_NUM_CPUS, smp_cpus);
--        exit(1);
--    }
--
--    for (i = 0; i < smp_cpus; i++) {
-+    for (i = 0; i < MIN(smp_cpus, FSL_IMX6_NUM_CPUS); i++) {
-         object_initialize(&s->cpu[i], sizeof(s->cpu[i]),
-                           "cortex-a9-" TYPE_ARM_CPU);
-         snprintf(name, NAME_SIZE, "cpu%d", i);
-@@ -119,6 +113,12 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
-     uint16_t i;
-     Error *err = NULL;
- 
-+    if (smp_cpus > FSL_IMX6_NUM_CPUS) {
-+        error_setg(errp, "%s: Only %d CPUs are supported (%d requested)",
-+                   TYPE_FSL_IMX6, FSL_IMX6_NUM_CPUS, smp_cpus);
-+        return;
-+    }
-+
-     for (i = 0; i < smp_cpus; i++) {
- 
-         /* On uniprocessor, the CBAR is set to 0 */
-diff --git a/hw/arm/fsl-imx7.c b/hw/arm/fsl-imx7.c
-index 26ef36c..390b431 100644
---- a/hw/arm/fsl-imx7.c
-+++ b/hw/arm/fsl-imx7.c
-@@ -35,13 +35,8 @@ static void fsl_imx7_init(Object *obj)
-     char name[NAME_SIZE];
-     int i;
- 
--    if (smp_cpus > FSL_IMX7_NUM_CPUS) {
--        error_report("%s: Only %d CPUs are supported (%d requested)",
--                     TYPE_FSL_IMX7, FSL_IMX7_NUM_CPUS, smp_cpus);
--        exit(1);
--    }
- 
--    for (i = 0; i < smp_cpus; i++) {
-+    for (i = 0; i < MIN(smp_cpus, FSL_IMX7_NUM_CPUS); i++) {
-         object_initialize(&s->cpu[i], sizeof(s->cpu[i]),
-                           ARM_CPU_TYPE_NAME("cortex-a7"));
-         snprintf(name, NAME_SIZE, "cpu%d", i);
-@@ -197,6 +192,12 @@ static void fsl_imx7_realize(DeviceState *dev, Error **errp)
-     qemu_irq irq;
-     char name[NAME_SIZE];
- 
-+    if (smp_cpus > FSL_IMX7_NUM_CPUS) {
-+        error_setg(errp, "%s: Only %d CPUs are supported (%d requested)",
-+                   TYPE_FSL_IMX7, FSL_IMX7_NUM_CPUS, smp_cpus);
-+        return;
-+    }
-+
-     for (i = 0; i < smp_cpus; i++) {
-         o = OBJECT(&s->cpu[i]);
- 
--- 
-1.8.3.1
+for Bridge tap device:-
+-netdev type=tap,vhost=on,vhostforce=on,id=tap0,ifname=tap0,script=no,downscript=no
+-device virtio-net-pci,netdev=tap0,mac=12:03:04:05:06:07
 
+-----------------------< End of commands> ------------------------
+
+Anyone please tell me if I missed anything.
+
+Other information.
+-------------------------
+Kernel sources :  4.14.28
+qemu-aarch64 :  2.11.91
+
+Did the same  experiments with ThunderX vnic and Intel 10G nic and
+results are as mentioned above.
+Tried macvtap in bridge and passthru modes.
+
+
+Tell me if  you  need further investigations or more data .
+
+thanks,
+Prakash B

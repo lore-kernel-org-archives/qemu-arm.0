@@ -1,99 +1,99 @@
-Received: by 10.28.71.155 with SMTP id m27csp6012630wmi;
-        Thu, 5 Apr 2018 05:59:53 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx49ZtT8kBCB04dhT1lP4fZxSu0HUd/54JS6TVK17uwEOq2AVjQ8mCRvWdKF5um1NBihBbGgM
-X-Received: by 10.200.32.153 with SMTP id 25mr31726993qtd.274.1522933191236;
-        Thu, 05 Apr 2018 05:59:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1522933191; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp6021333wmi;
+        Thu, 5 Apr 2018 06:06:09 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx49phfjkj5T3UJQiTnouaH0OWH5h40MDJjtx/IFR2MioRpfKoQRLm69ejZLwDYqlVxHNulY3
+X-Received: by 10.55.74.19 with SMTP id x19mr29687704qka.345.1522933569504;
+        Thu, 05 Apr 2018 06:06:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1522933569; cv=none;
         d=google.com; s=arc-20160816;
-        b=RtOB8REZ6qYUg0pd8LnLhe6U0YTS484uQCb/yIKJucw+rGPeiw4KddM/kZ7ZYZ1edQ
-         bCZRt8ag2FSmeY0HDyc7MOSPl2JsZrSrWJYi5pILTX21sbFQ9Q0oIoods59hymExgLlm
-         ExL2P95iBD09y4FN2MihMJUk9j/dDiUFhO5k+/Ah88y2/Y2QzfrRaH7fKR0gMLdVoxoH
-         IsBDvkLBB/UTaRnQyW63TKNiSkWaDRnioEEJY+PEqD0XZxnwxL3DEP5KxmZaOMoZZxJh
-         +3N18OzbVhk6Mt7LOByWmOeUkFkUEh7+aqw3yb93+sc2YO64VSgaSlJV6+YNIVExB7Lc
-         v2cw==
+        b=j0HF76GET8v0djLuBlJ5IfT3QmWktDctSoeX58HqcXLqt/nr4+i1UQCLW7SlbLEY2s
+         V3LbHu4nfP/ZXtON80mF3F0EJlJKwcUWKk1GYejHn0dvI5xvWEAMgKFER3yu8uFAvVWe
+         PiZQCaAt+Bn/YllKpGSy4sB6LbNup2tyRQEXoqKZsZtqD/u51s81dxVy+tdbTrklKILI
+         RvvOapjyH227NVzYtwyl3cssNZXDesiAO9r32gG6XXFimx4rksr+PUXwEDX3ByuItUGO
+         Bvdtsrqy1iXos4tYb5ekhCWP8UKWqhF+f/o7oQguVHsDIdFmiR85KeK06fgfr/3Zaf7w
+         McUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=QIAj6UbNpqc2G4t06KgRH7i1zdBI2FNZzvFx+/TQN8w=;
-        b=Z27uSvS9eWK/tFwz3JOto+LoZuCyaTER2N688BE62SOGO2S99KhD7KBm2kPS4UjgQv
-         vDMk62ufl+MT8VThurDLaTGxfaaRfY+vAA5jlgd/JXbE/l7PMpAqJGnpt3imDnH8zG5W
-         U9OTRnlVmMlJB0rQEFm3iFLlO2YW7eZhGIEAuLI4qwRSYcIr89cueCE308iF8QF3RCzQ
-         /sEnPlYHTwZEZwht15pIS9YhYSpTFZyN1LdJ0Y9Egbc9TIgtXV2vmQdbPqmsRnm8K9uq
-         NfigQ5vsc4VPIQANnXvIlfTch6+NJq06Ta9EcD2Lk5vg2QRdwr1Aq7ifVfNl1t/dMgtz
-         DvLA==
+        bh=s5QcyU7ZiFjY/rQbCQn6q6IwHH8i4a4ZGCZbalvkORE=;
+        b=Yvz34KNNEEGjWV28rGvGhEtWuylgL8/Q7y+40gHMM2etg+i4pW3+Qu9pQFRBMqmAqO
+         5ghFlKHAScJSUh/6VMdESPbS6ScTILoQXa7h6OvC68sW1uCDCVhxCiPXgQtFiPGoqMg5
+         Cb1BraC38zDkPI3RYX33FqXsBUWq/PJRbLHc1knVKnogiM5E8s9Y3L4wVteohF/2HpTw
+         9OTy4uwTJJjtFiYMsSQ83T9uH/4uI94paL53NEDuxxAcGwGnkFmlbmegLwH2tGWzACtQ
+         8KkwJyICZ713ZuxCuqoRbUYYaCBbw1SMMY8+caDQFuY0PnU/vPFuRcXXGvL6lY121KvN
+         F7xw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZSh+RUYV;
+       dkim=fail header.i=@linaro.org header.s=google header.b=k2N6rjbe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c4si2085878qtp.289.2018.04.05.05.59.51
+        by mx.google.com with ESMTPS id x63si3387299qkc.92.2018.04.05.06.06.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 05 Apr 2018 05:59:51 -0700 (PDT)
+        Thu, 05 Apr 2018 06:06:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZSh+RUYV;
+       dkim=fail header.i=@linaro.org header.s=google header.b=k2N6rjbe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56183 helo=lists.gnu.org)
+Received: from localhost ([::1]:56559 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f44UY-0000xC-OP
-	for alex.bennee@linaro.org; Thu, 05 Apr 2018 08:59:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57706)
+	id 1f44af-0003rW-0d
+	for alex.bennee@linaro.org; Thu, 05 Apr 2018 09:06:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59054)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1f44UQ-0000wj-Vd
-	for qemu-arm@nongnu.org; Thu, 05 Apr 2018 08:59:44 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1f44aP-0003n2-H0
+	for qemu-arm@nongnu.org; Thu, 05 Apr 2018 09:05:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1f44UP-0000zY-VK
-	for qemu-arm@nongnu.org; Thu, 05 Apr 2018 08:59:43 -0400
-Received: from mail-ot0-x229.google.com ([2607:f8b0:4003:c0f::229]:41482)
+	(envelope-from <peter.maydell@linaro.org>) id 1f44aL-0004oY-L6
+	for qemu-arm@nongnu.org; Thu, 05 Apr 2018 09:05:53 -0400
+Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:43710)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1f44UP-0000zG-PQ
-	for qemu-arm@nongnu.org; Thu, 05 Apr 2018 08:59:41 -0400
-Received: by mail-ot0-x229.google.com with SMTP id i28-v6so27066738otf.8
-	for <qemu-arm@nongnu.org>; Thu, 05 Apr 2018 05:59:41 -0700 (PDT)
+	id 1f44aL-0004nV-Fj
+	for qemu-arm@nongnu.org; Thu, 05 Apr 2018 09:05:49 -0400
+Received: by mail-oi0-x243.google.com with SMTP id u84-v6so22446311oie.10
+	for <qemu-arm@nongnu.org>; Thu, 05 Apr 2018 06:05:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=QIAj6UbNpqc2G4t06KgRH7i1zdBI2FNZzvFx+/TQN8w=;
-	b=ZSh+RUYVovmGTUj7vcKo8KRCcTojE6RstdtfPWaHRTW7mzkyf1XZjalmpP+YuKnKCB
-	wfcYD6q+bpQpHb4YkDOvimtM09pqD+UbI8OzIymSCVEyC9TACvzmxddYhK8AJTvWHprt
-	VUmi8Hzq2nxMVZnougDQLr7rXvUUnf2RHZLHI=
+	:cc; bh=s5QcyU7ZiFjY/rQbCQn6q6IwHH8i4a4ZGCZbalvkORE=;
+	b=k2N6rjbeqcPUifGRp1df1U0Yb1DCixnaZXb/0z/halTwqcwF1baPfcVe6dqvto0bA5
+	zxXjbHuQ3HyM/d3A9ZSxpCL1V99vGlsvdllLoJKWVciQFzDB8P87h/69hDop3K60gpqm
+	JPbFGImuU/15eLi5g0HWIvo4rgeKkVm4TO+hI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=QIAj6UbNpqc2G4t06KgRH7i1zdBI2FNZzvFx+/TQN8w=;
-	b=mSjvI9dejspnLvYZ2vIzEPvW2RaTSuJKLuIv4m/RUCKvggoz/svthOwz/227VSn43i
-	ojxNd2awqnLVNCXHC/QuaLnmUCT9HLIIiZvuN7+oiCvtxrt/HdG6PY8kpc2Cafw6DhkA
-	UE6DcHeFXeQHKwQAf4tUIWN9qYJ5urBOlOXCJjlljX2s2Amny8MSEezhnGa9CBOpVeUt
-	lsD7M+NQqp8pyNVK6C0pnUs4KDade0LYH6ZL9LIbEz0vxdjhQo9SLP4ChOpnAi7XOQMO
-	bdCGS8rQWAIGpdiFBJEWFYEyBQydRdtGAQ0QVpoxUrIcM8ib8rgU27oIC+04bHbXUx8N
-	8gNA==
-X-Gm-Message-State: ALQs6tA4hZuPcJdWQBsdXIO06B0KjK4BzqOyJ9VoucaW1jp4TYBD0tc3
-	1SqXhmh3dw0PBoC9VYhZw9ytyEdsL9SVFmP9OmYImg==
-X-Received: by 2002:a9d:3a45:: with SMTP id
-	j63-v6mr12722329otc.126.1522933180818; 
-	Thu, 05 Apr 2018 05:59:40 -0700 (PDT)
+	bh=s5QcyU7ZiFjY/rQbCQn6q6IwHH8i4a4ZGCZbalvkORE=;
+	b=fb4iLvxeps3lqbfvJFVDuTKrw4gjryG8Jm8EZThwO2qSrimu8WnDVz9xOCVdf00gu0
+	2b7OKrRRVbP6PZEhUj/WnDvn3mMabYUqyOHXXKrnH5HZFRNv4O5DMLJdmz6JKLEOgRmr
+	O2PYK1NsMIl02lixoSK+RBqN1/coU0vijWTRlyS1JDoiiVnVDRkAjqN0scdAH27yxgo5
+	2RQ+EFW60yCBFDI8rvLRZjwcGlgd/mTsISoRNxQIP/Jljsh7vxc5ZARBOwVVunKQ54d0
+	KdClITjUaX/spMLIN02UE1qfMlPA3+3biUcwNgvWCgsFJM310eW4rtM/g50MCI32pm7q
+	ahfQ==
+X-Gm-Message-State: ALQs6tB0+jHBIHHsZVk75xoxJDEGcNLotDtAEGocqPbtpTy0d8YIelyz
+	1DHqOSXF5qXtJEbbOSJcqckJ8VNBlRUVxZAzLEbGew==
+X-Received: by 2002:aca:d455:: with SMTP id
+	l82-v6mr13275503oig.102.1522933548719; 
+	Thu, 05 Apr 2018 06:05:48 -0700 (PDT)
 MIME-Version: 1.0
 Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP;
-	Thu, 5 Apr 2018 05:59:20 -0700 (PDT)
-In-Reply-To: <1522862420-7484-1-git-send-email-thuth@redhat.com>
-References: <1522862420-7484-1-git-send-email-thuth@redhat.com>
+	Thu, 5 Apr 2018 06:05:28 -0700 (PDT)
+In-Reply-To: <1522908551-14885-1-git-send-email-thuth@redhat.com>
+References: <1522908551-14885-1-git-send-email-thuth@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 5 Apr 2018 13:59:20 +0100
-Message-ID: <CAFEAcA8wMp=9GToj0bZy3et8O2sxk7_zQjxsbkYuzHqJ4eaKaQ@mail.gmail.com>
+Date: Thu, 5 Apr 2018 14:05:28 +0100
+Message-ID: <CAFEAcA81joSt3wNxaezi0ZzpOZm=Wt0TShcmQ0YtAYV+_ipeeA@mail.gmail.com>
 To: Thomas Huth <thuth@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::229
-Subject: Re: [Qemu-arm] [PATCH for-2.12] hw/arm/allwinner-a10: Do not use
- nd_table in instance_init function
+X-Received-From: 2607:f8b0:4003:c06::243
+Subject: Re: [Qemu-arm] [PATCH for-2.12] hw/arm/fsl-imx: Fix introspection
+ problem with fsl-imx6 and fsl-imx7
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,57 +105,41 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Beniamino Galvani <b.galvani@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7J461q/+zfqX
+X-TUID: y6lhtLT6L5rn
 
-On 4 April 2018 at 18:20, Thomas Huth <thuth@redhat.com> wrote:
-> The instance_init function of a device can be called at any time, even
-> if the device is not going to be used (i.e. not going to be realized).
-> So a instance_init function must not do things that could cause QEMU
-> to exit, like calling qemu_check_nic_model(&nd_table[0], ...) for example.
-> But this is what the instance_init function of the allwinner-a10 device
-> is currently doing - and this causes QEMU to quit unexpectedly when
-> you run the 'device-list-properties' QMP command for example:
+On 5 April 2018 at 07:09, Thomas Huth <thuth@redhat.com> wrote:
+> QEMU currently exits unexpectedly when trying to introspect the fsl-imx6
+> and fsl-imx7 devices on systems with many SMP CPUs:
 >
 > $ echo "{'execute':'qmp_capabilities'}"\
 >        "{'execute':'device-list-properties',"\
->        " 'arguments':{'typename':'allwinner-a10'}}" \
->        | arm-softmmu/qemu-system-arm -M mps2-an505,accel=qtest -qmp stdio
+>        " 'arguments':{'typename':'fsl,imx6'}}" \
+>        | arm-softmmu/qemu-system-arm -M virt,accel=qtest -qmp stdio -smp 8
 > {"QMP": {"version": {"qemu": {"micro": 91, "minor": 11, "major": 2},
 >  "package": "build-all"}, "capabilities": []}}
 > {"return": {}}
-> Unsupported NIC model: lan9118
+> fsl,imx6: Only 4 CPUs are supported (8 requested)
 >
-> ... and QEMU quits after printing the last line (which should not happen
-> just because of running 'device-list-properties' here).
->
-> And with the cubieboard, this even causes QEMU to abort():
+> And:
 >
 > $ echo "{'execute':'qmp_capabilities'}"\
 >        "{'execute':'device-list-properties',"\
->        " 'arguments':{'typename':'allwinner-a10'}}" \
->        | arm-softmmu/qemu-system-arm -M cubieboard,accel=qtest -qmp stdio
+>        " 'arguments':{'typename':'fsl,imx7'}}" \
+>        | arm-softmmu/qemu-system-arm -M raspi2,accel=qtest -qmp stdio
 > {"QMP": {"version": {"qemu": {"micro": 91, "minor": 11, "major": 2},
 >  "package": "build-all"}, "capabilities": []}}
 > {"return": {}}
-> Unexpected error in error_set_from_qdev_prop_error() at hw/core/qdev-properties.c:1095:
-> Property 'allwinner-emac.netdev' can't take value 'hub0port0', it's in use
-> Aborted (core dumped)
+> fsl,imx7: Only 2 CPUs are supported (4 requested)
 >
-> To fix the problem we've got to move the offending code to the realize
-> function instead.
+> This happens because these devices are doing an exit() from their
+> instance_init function - which should never be done since instance_init
+> can be called at any time for device introspection! Fix it by moving
+> the deadly check into the realize() function instead.
 >
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  I know, an even cleaner fix would likely be to remove serial_hds and
->  nd_table from the device completely and wire it up from the board code
->  instead - but that's a major rework compared to this simple fix here,
->  which we likely should avoid at this point in time of the hard freeze
->  period.
->
 
 
 

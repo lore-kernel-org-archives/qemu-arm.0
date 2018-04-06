@@ -1,203 +1,129 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id d73sm501394wma.16.2018.02.08.09.40.28
+Received: by 10.28.71.155 with SMTP id m27csp966337wmi;
+        Fri, 6 Apr 2018 10:28:03 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx4/M0x85hyYvi0qvqIui9fpJjgZaj6tDD/QsXkOARYlv2tKp6bN/vk/80NFfpG33jk33S1wl
+X-Received: by 10.223.168.4 with SMTP id l4mr18029943wrc.170.1523035683865;
+        Fri, 06 Apr 2018 10:28:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523035683; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Fxkwonz84teuLoAz87o5gYJ/c2hhbPvGHCvU+QIfHmCM2Op1tGrknS2z4W606Bm2zB
+         fj19SfYCXl9fJ6NwJTk8RPK3j2n8yFtpgOSFPmKHtYO4zcbvy1Qp2Na84IlaqToGqUOX
+         3WEocwq2m8fj8Ajz/tIfnrFYZVpALLcz2ZFZjP8bMH+GIgFldDwZGz3bZ9rxFKsGxVsO
+         rYCDLqGLy/riGN4to3GXWgz81nLEERl34Tw/AE7ejMHW1ZmQe598PTyGCIcxo+SqjboG
+         C/bGsYUoRbb1L9x9k2WnB75m1TOeO6DJti+vWMcXYAOK9q5Q5LwPwodUjR+mstyEqlAR
+         cdsA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-language:content-transfer-encoding:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :arc-authentication-results;
+        bh=au/mpbww5qOQkj002BPaM6M8foWm83TpFi3c1/biqPo=;
+        b=gxO3wdjlEQ6EuFg+AFRcwCdrnKv4kGXQmsRFurWFZQgPtwd/ZTqmQQWcjECV8e8Dd8
+         Qap5AwJF6dOvCXXVtPaM1xeJGmK5LMs4ZgOQWi9DKBPEcxlMtnLNBVEcOiVzzdnVsxYv
+         3OSznKsAJt6Dy+jl1nM8cqq/b1mpqYmai7n8dMadX3KsP5CL85ggPHFkQovjg3c1L5/x
+         MgtdoN7fwRqwVf65obefXMu3mEPz/HW33ic7xgCwHVvzjnnK+67WHMNexY6Fx+GmpOa0
+         nFWDjraAHvp1L7EfLEpg4KfQKOnz1ofGpf5CjkuKx42EePUD0fMnFUpYCz3N989FEzvu
+         rruw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of abdallah.bouassida@lauterbach.com designates 62.154.241.196 as permitted sender) smtp.mailfrom=abdallah.bouassida@lauterbach.com
+Return-Path: <abdallah.bouassida@lauterbach.com>
+Received: from smtp1.lauterbach.com (smtp1.lauterbach.com. [62.154.241.196])
+        by mx.google.com with ESMTPS id 22si7636873wrw.358.2018.04.06.10.28.03
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 08 Feb 2018 09:40:30 -0800 (PST)
-Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id E71983E0D02;
-	Thu,  8 Feb 2018 17:31:58 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 16/32] arm/translate-a64: add FP16 x2 ops for simd_indexed
-Date: Thu,  8 Feb 2018 17:31:41 +0000
-Message-Id: <20180208173157.24705-17-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.15.1
-In-Reply-To: <20180208173157.24705-1-alex.bennee@linaro.org>
-References: <20180208173157.24705-1-alex.bennee@linaro.org>
+        Fri, 06 Apr 2018 10:28:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of abdallah.bouassida@lauterbach.com designates 62.154.241.196 as permitted sender) client-ip=62.154.241.196;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of abdallah.bouassida@lauterbach.com designates 62.154.241.196 as permitted sender) smtp.mailfrom=abdallah.bouassida@lauterbach.com
+Received: (qmail 9370 invoked by uid 484); 6 Apr 2018 17:28:03 -0000
+X-Qmail-Scanner-Diagnostics: from 41.224.44.126 by smtp1.lauterbach.com (envelope-from <abdallah.bouassida@lauterbach.com>, uid 484) with qmail-scanner-2.11 
+ (mhr: 1.0. clamdscan: 0.99/21437. spamassassin: 3.4.0.  
+ Clear:RC:1(41.224.44.126):. 
+ Processed in 0.190145 secs); 06 Apr 2018 17:28:03 -0000
+Received: from unknown (HELO [192.168.187.23]) (Authenticated_SSL:abouassida@[41.224.44.126])
+          (envelope-sender <abdallah.bouassida@lauterbach.com>)
+          by smtp1.lauterbach.com (qmail-ldap-1.03) with ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
+          for <qemu-arm@nongnu.org>; 6 Apr 2018 17:28:02 -0000
+Subject: Re: [Qemu-arm] [PATCH v5 3/3] target/arm: Add the XML dynamic
+ generation
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ peter.maydell@linaro.org
+Cc: qemu-devel@nongnu.org, khaled.jmal@lauterbach.com, qemu-arm@nongnu.org
+References: <1521034084-17344-1-git-send-email-abdallah.bouassida@lauterbach.com>
+ <1521034084-17344-4-git-send-email-abdallah.bouassida@lauterbach.com>
+ <87h8orcg3a.fsf@linaro.org>
+From: Abdallah Bouassida <abdallah.bouassida@lauterbach.com>
+Message-ID: <7a39d3f5-af2b-e21d-fa10-798b67fe4f63@lauterbach.com>
+Date: Fri, 6 Apr 2018 18:28:05 +0100
+User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: NhD/Ern7QeHi
+In-Reply-To: <87h8orcg3a.fsf@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+X-TUID: CRnPKufvc6VI
 
-A bunch of the vectorised bitwise operations just operate on larger
-chunks at a time. We can do the same for the new half-precision
-operations by introducing some TWOHALFOP helpers which work on each
-half of a pair of half-precision operations at once.
+Hi Alex,
 
-Hopefully all this hoop jumping will get simpler once we have
-generically vectorised helpers here.
+First of all, thanks for the review!
+>> +static int arm_gdb_get_sysreg(CPUARMState *env, uint8_t *buf, int reg)
+>> +{
+>> +    ARMCPU *cpu = arm_env_get_cpu(env);
+>> +    const ARMCPRegInfo *ri;
+>> +    uint32_t key;
+>> +
+>> +    key = cpu->dyn_xml.cpregs_keys[reg];
+>> +    ri = get_arm_cp_reginfo(cpu->cp_regs, key);
+>> +    if (ri) {
+>> +        if (cpreg_field_is_64bit(ri)) {
+>> +            return gdb_get_reg64(buf, (uint64_t)read_raw_cp_reg(env, ri));
+>> +        } else {
+>> +            return gdb_get_reg32(buf, (uint32_t)read_raw_cp_reg(env, ri));
+>> +        }
+>> +    }
+>> +    return 0;
+> There is something odd going on here because if I run a simple little
+> features binary
+> (https://github.com/stsquad/testcases/blob/master/aarch64/features.c) I
+> get:
+>
+>   ID_AA64ISAR0_EL1    : 0x0000000000011120
+>   ID_AA64ISAR1_EL1    : 0x0000000000000000
+>   ID_AA64MMFR0_EL1    : 0x00000000ff000000
+>   ID_AA64MMFR1_EL1    : 0x0000000000000000
+>   ID_AA64PFR0_EL1     : 0x0000000000000011
+>   ID_AA64PFR1_EL1     : 0x0000000000000000
+>   ID_AA64DFR0_EL1     : 0x0000000000000006
+>   ID_AA64DFR1_EL1     : 0x0000000000000000
+>   MIDR_EL1            : 0x00000000411fd070
+>   MPIDR_EL1           : 0x0000000080000000
+>   REVIDR_EL1          : 0x0000000000000000
+>
+> However in the gdb output we see:
+>
+>   ID_AA64ISAR0_EL1           0x11120	69920
+>   ID_AA64ISAR1_EL1           0x0	0
+>   ID_AA64MMFR0_EL1           0x1124	4388  <-?
+>   ID_AA64MMFR1_EL1           0x0	0
+>   ID_PFR0                    0x131	305   <-name and value?
+>   ID_AA64PFR1_EL1            0x0	0
+>   ID_AA64DFR0_EL1            0x10305106	271601926 <-?
+>   ID_AA64DFR1_EL1            0x0	0
+>   REVIDR_EL1                 0x0	0
+>
+> So why the discrepancies?
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>  ID_AA64MMFR0_EL1           0x1124	4388  <-?
+>  ID_AA64DFR0_EL1            0x10305106	271601926 <-?
+I get the same value in x1 (= 0x1124) and x2 (= 0x10305106) when I execute 
+the following instructions on the guest:
+  MRS x1, ID_AA64MMFR0_EL1
+  MRS x2, ID_AA64DFR0_EL1
+So, I think that there is no problem on how GDB is reading these registers!
 
----
-v2
-  - checkpatch fixes
----
- target/arm/helper-a64.c    | 46 +++++++++++++++++++++++++++++++++++++++++++++-
- target/arm/helper-a64.h    | 10 ++++++++++
- target/arm/translate-a64.c | 36 +++++++++++++++++++++++++++++-------
- 3 files changed, 84 insertions(+), 8 deletions(-)
+>  ID_PFR0                    0x131	305   <-name and value?
+This is not ID_AA64PFR0_EL1 - the ID_AA64PFR0_EL1 is not registered in our
+dynamic XML as it has "ARM_CP_NO_RAW" type.
+So should we add some modifications to handle this special case?
 
-diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-index 6358b42472..8f0f59ea31 100644
---- a/target/arm/helper-a64.c
-+++ b/target/arm/helper-a64.c
-@@ -634,8 +634,32 @@ ADVSIMD_HALFOP(max)
- ADVSIMD_HALFOP(minnum)
- ADVSIMD_HALFOP(maxnum)
- 
-+#define ADVSIMD_TWOHALFOP(name)                                         \
-+uint32_t ADVSIMD_HELPER(name, 2h)(uint32_t two_a, uint32_t two_b, void *fpstp) \
-+{ \
-+    float16  a1, a2, b1, b2;                        \
-+    uint32_t r1, r2;                                \
-+    float_status *fpst = fpstp;                     \
-+    a1 = extract32(two_a, 0, 16);                   \
-+    a2 = extract32(two_a, 16, 16);                  \
-+    b1 = extract32(two_b, 0, 16);                   \
-+    b2 = extract32(two_b, 16, 16);                  \
-+    r1 = float16_ ## name(a1, b1, fpst);            \
-+    r2 = float16_ ## name(a2, b2, fpst);            \
-+    return deposit32(r1, 16, 16, r2);               \
-+}
-+
-+ADVSIMD_TWOHALFOP(add)
-+ADVSIMD_TWOHALFOP(sub)
-+ADVSIMD_TWOHALFOP(mul)
-+ADVSIMD_TWOHALFOP(div)
-+ADVSIMD_TWOHALFOP(min)
-+ADVSIMD_TWOHALFOP(max)
-+ADVSIMD_TWOHALFOP(minnum)
-+ADVSIMD_TWOHALFOP(maxnum)
-+
- /* Data processing - scalar floating-point and advanced SIMD */
--float16 HELPER(advsimd_mulxh)(float16 a, float16 b, void *fpstp)
-+static float16 float16_mulx(float16 a, float16 b, void *fpstp)
- {
-     float_status *fpst = fpstp;
- 
-@@ -651,6 +675,9 @@ float16 HELPER(advsimd_mulxh)(float16 a, float16 b, void *fpstp)
-     return float16_mul(a, b, fpst);
- }
- 
-+ADVSIMD_HALFOP(mulx)
-+ADVSIMD_TWOHALFOP(mulx)
-+
- /* fused multiply-accumulate */
- float16 HELPER(advsimd_muladdh)(float16 a, float16 b, float16 c, void *fpstp)
- {
-@@ -658,6 +685,23 @@ float16 HELPER(advsimd_muladdh)(float16 a, float16 b, float16 c, void *fpstp)
-     return float16_muladd(a, b, c, 0, fpst);
- }
- 
-+uint32_t HELPER(advsimd_muladd2h)(uint32_t two_a, uint32_t two_b,
-+                                  uint32_t two_c, void *fpstp)
-+{
-+    float_status *fpst = fpstp;
-+    float16  a1, a2, b1, b2, c1, c2;
-+    uint32_t r1, r2;
-+    a1 = extract32(two_a, 0, 16);
-+    a2 = extract32(two_a, 16, 16);
-+    b1 = extract32(two_b, 0, 16);
-+    b2 = extract32(two_b, 16, 16);
-+    c1 = extract32(two_c, 0, 16);
-+    c2 = extract32(two_c, 16, 16);
-+    r1 = float16_muladd(a1, b1, c1, 0, fpst);
-+    r2 = float16_muladd(a2, b2, c2, 0, fpst);
-+    return deposit32(r1, 16, 16, r2);
-+}
-+
- /*
-  * Floating point comparisons produce an integer result. Softfloat
-  * routines return float_relation types which we convert to the 0/-1
-diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
-index d347f473d4..d2dd46d07b 100644
---- a/target/arm/helper-a64.h
-+++ b/target/arm/helper-a64.h
-@@ -61,6 +61,16 @@ DEF_HELPER_3(advsimd_maxnumh, f16, f16, f16, ptr)
- DEF_HELPER_3(advsimd_minnumh, f16, f16, f16, ptr)
- DEF_HELPER_3(advsimd_mulxh, f16, f16, f16, ptr)
- DEF_HELPER_4(advsimd_muladdh, f16, f16, f16, f16, ptr)
-+DEF_HELPER_3(advsimd_add2h, i32, i32, i32, ptr)
-+DEF_HELPER_3(advsimd_sub2h, i32, i32, i32, ptr)
-+DEF_HELPER_3(advsimd_mul2h, i32, i32, i32, ptr)
-+DEF_HELPER_3(advsimd_div2h, i32, i32, i32, ptr)
-+DEF_HELPER_3(advsimd_max2h, i32, i32, i32, ptr)
-+DEF_HELPER_3(advsimd_min2h, i32, i32, i32, ptr)
-+DEF_HELPER_3(advsimd_maxnum2h, i32, i32, i32, ptr)
-+DEF_HELPER_3(advsimd_minnum2h, i32, i32, i32, ptr)
-+DEF_HELPER_3(advsimd_mulx2h, i32, i32, i32, ptr)
-+DEF_HELPER_4(advsimd_muladd2h, i32, i32, i32, i32, ptr)
- DEF_HELPER_3(advsimd_ceq_f16, i32, f16, f16, ptr)
- DEF_HELPER_3(advsimd_cge_f16, i32, f16, f16, ptr)
- DEF_HELPER_3(advsimd_cgt_f16, i32, f16, f16, ptr)
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 83a1fa3116..f01bab801c 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -10966,21 +10966,31 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
-             }
-             case 0x5: /* FMLS */
-             case 0x1: /* FMLA */
--                read_vec_element_i32(s, tcg_res, rd, pass, is_scalar ? size : MO_32);
-+                read_vec_element_i32(s, tcg_res, rd, pass,
-+                                     is_scalar ? size : MO_32);
-                 switch (size) {
-                 case 1:
-                     if (opcode == 0x5) {
--                        /* As usual for ARM, separate negation for fused multiply-add */
-+                        /* As usual for ARM, separate negation for fused
-+                         * multiply-add. */
-                         tcg_gen_xori_i32(tcg_op, tcg_op, 0x80008000);
-                     }
--                    gen_helper_advsimd_muladdh(tcg_res, tcg_op, tcg_idx, tcg_res, fpst);
-+                    if (is_scalar) {
-+                        gen_helper_advsimd_muladdh(tcg_res, tcg_op, tcg_idx,
-+                                                   tcg_res, fpst);
-+                    } else {
-+                        gen_helper_advsimd_muladd2h(tcg_res, tcg_op, tcg_idx,
-+                                                    tcg_res, fpst);
-+                    }
-                     break;
-                 case 2:
-                     if (opcode == 0x5) {
--                        /* As usual for ARM, separate negation for fused multiply-add */
-+                        /* As usual for ARM, separate negation for fused
-+                         * multiply-add. */
-                         tcg_gen_xori_i32(tcg_op, tcg_op, 0x80000000);
-                     }
--                    gen_helper_vfp_muladds(tcg_res, tcg_op, tcg_idx, tcg_res, fpst);
-+                    gen_helper_vfp_muladds(tcg_res, tcg_op, tcg_idx,
-+                                           tcg_res, fpst);
-                     break;
-                 default:
-                     g_assert_not_reached();
-@@ -10990,9 +11000,21 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
-                 switch (size) {
-                 case 1:
-                     if (u) {
--                        gen_helper_advsimd_mulxh(tcg_res, tcg_op, tcg_idx, fpst);
-+                        if (is_scalar) {
-+                            gen_helper_advsimd_mulxh(tcg_res, tcg_op,
-+                                                     tcg_idx, fpst);
-+                        } else {
-+                            gen_helper_advsimd_mulx2h(tcg_res, tcg_op,
-+                                                      tcg_idx, fpst);
-+                        }
-                     } else {
--                        g_assert_not_reached();
-+                        if (is_scalar) {
-+                            gen_helper_advsimd_mulh(tcg_res, tcg_op,
-+                                                    tcg_idx, fpst);
-+                        } else {
-+                            gen_helper_advsimd_mul2h(tcg_res, tcg_op,
-+                                                     tcg_idx, fpst);
-+                        }
-                     }
-                     break;
-                 case 2:
--- 
-2.15.1
+Best regards,
+Abdallah

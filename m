@@ -1,86 +1,87 @@
-Received: by 10.28.71.155 with SMTP id m27csp3449000wmi;
-        Tue, 10 Apr 2018 00:42:13 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4/r3gTeLzevNs+AIoUqAtpUSUI57O/OPRGUcFTfC3cW6AlYaaZGxofwSqqs1XuuMCWgtKo7
-X-Received: by 10.200.71.18 with SMTP id f18mr43639235qtp.166.1523346133249;
-        Tue, 10 Apr 2018 00:42:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523346133; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp3500968wmi;
+        Tue, 10 Apr 2018 01:52:42 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx48KaIdgGTogi05AzkZ0Rpk5TK6NeaHkUuQ1iZmQlMeaCM5olrRvBO2ZBPbBMJNlyEGzb9+6
+X-Received: by 10.237.47.227 with SMTP id m90mr59129069qtd.33.1523350362442;
+        Tue, 10 Apr 2018 01:52:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523350362; cv=none;
         d=google.com; s=arc-20160816;
-        b=wvq/PDNyumIsughwBxgYCdnAeo9+QtHOMkXJjgPZgKj40jwPVFtDTqCg0AlkHtuMff
-         ag3rwTAmHlFAtQ00SqqruUBNDHb74rbuNmrYWYl3rUliRbf6jpwXvcNNL40QGtQa1MmN
-         xInYRIW0M4jrlEo6FUrBJ7ZppkqkVEXmSNau11B3NsxBSfYBTPU7dQGzwLFERmXi5HGy
-         IYQiPL98yb2D8qSRgtSqiEhc1uRHi4tl+qxszt7Nq22wQzdLNjcyuHVCbpI6FcdlcU8D
-         Ugbqpba18H1h4flUdhgXm26YtEuUXXLm2WgVloyMCx7Zqjxrl5RBjrySULMZcslo02em
-         Wv+g==
+        b=hiTBJ0TP2fP+PJxIO7Y+GVVQQYX7ZCh9f9Jw9VRrkWUxYpRqyWcX3pzl9MkCnV/nt2
+         tjvgGfJ3rYTZ7WvbYSv/gzODX17ng7WHa8kXoylZJWrjZAV/bSTWss84fPuOsbybLu7C
+         yVLhkunCZobtc3NW8ZM9UGQ+DszJdilAi64qAODBAMJkGdyCvGpNJdzMVTgysiMpmx21
+         AA+19SV/1zXnISF6uKBOfwkvmSgBd0e1PZNNf63sDK61vpKkrqovNnJCenRpQdn6Pnmn
+         HC3or5B9WpM2/zyuOw5YH7NKQ1/6kLYHujbduhAxXc1baX4CA7MuvJ9sYIPXpkuQBLu4
+         wgsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to:date
-         :to:from:message-id:arc-authentication-results;
-        bh=q3dStekWfweLwRwgqfR4txBazSjpI5I0uXtILXYX9Zg=;
-        b=dy02gy2a7GllYbfky2NMAepRl0pbTM/zwpcwo+sX0lCndMhMp+1go6qkHaWZf6w+FN
-         +MSjvUNX2CXP8lo/bv0A/3IJmvdM6T3SO6f39yA+X5Nh8KHC6Pextrwz11zyleg7420i
-         oRelaO11KGfL5NtUeJEwBCyW4J9E3yVVQEMWwM7gRD4Mll3/UAwHSafDHY3yMcRy7J/B
-         bN3UG8iZHZ29r7qHM8EzSp037qiqHRVEygalvUTE9/TP4Pee0RAeVyCcSXW8n0GUk2If
-         ABIVQ5oKCdYPpVmqddPHS3aIIPf7rPFWXRNztdTvu98uERfBNOB698JgyO/VDbKIJuOd
-         mG5Q==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:subject:user-agent
+         :in-reply-to:content-disposition:mime-version:references:message-id
+         :to:from:date:arc-authentication-results;
+        bh=R/wRQjgxN9j69sGrwVoCwkdKmx5NDDiDY23y+iK6Nrs=;
+        b=n2BRcGgmKGNxTndQn5dMfGZXcE7rTejj68YCvG5TclhdErgjG8DfBk3inmI5/EZfCn
+         +tbUNmT4fa9VcWRo3l/RuGcNryH7VHHz0HKcDWb0jcSfNQ0HLyn5FFBEEARQscjcC8En
+         nZ56QjMTPKyGBUqUoDLVepGux2oB2uTckQ6ETiXe0SlxrWqa+Tx4FBzb6sObITAljIgW
+         Ezx11hY7eg8bi69S/bFyree1F0/HSnBRem3OFqJp9/R2yvFNhDB4b285wtrsAOM6vUT4
+         Cw9jFjTLhQHkuUZq8GFbkASNuicWgJM+1134EYPC2zTa/UBR7+2buZXNlwnOiOdJtNfX
+         tCjw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g76si127095qke.10.2018.04.10.00.42.13
+        by mx.google.com with ESMTPS id n137si299591qkn.283.2018.04.10.01.52.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 10 Apr 2018 00:42:13 -0700 (PDT)
+        Tue, 10 Apr 2018 01:52:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49893 helo=lists.gnu.org)
+Received: from localhost ([::1]:54669 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f5nuu-0007h3-O3
-	for alex.bennee@linaro.org; Tue, 10 Apr 2018 03:42:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55995)
+	id 1f5p18-0007ws-0b
+	for alex.bennee@linaro.org; Tue, 10 Apr 2018 04:52:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41635)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <abologna@redhat.com>) id 1f5nuh-0007fK-FH
-	for qemu-arm@nongnu.org; Tue, 10 Apr 2018 03:42:00 -0400
+	(envelope-from <berrange@redhat.com>) id 1f5p0q-0007rR-LL
+	for qemu-arm@nongnu.org; Tue, 10 Apr 2018 04:52:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <abologna@redhat.com>) id 1f5nud-0001nM-Ej
-	for qemu-arm@nongnu.org; Tue, 10 Apr 2018 03:41:59 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54764 helo=mx1.redhat.com)
+	(envelope-from <berrange@redhat.com>) id 1f5p0m-0002sK-KG
+	for qemu-arm@nongnu.org; Tue, 10 Apr 2018 04:52:24 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:55368 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <abologna@redhat.com>)
-	id 1f5nud-0001mt-AD; Tue, 10 Apr 2018 03:41:55 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
+	(Exim 4.71) (envelope-from <berrange@redhat.com>)
+	id 1f5p0m-0002sE-Fl; Tue, 10 Apr 2018 04:52:20 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 42ECD8011462;
-	Tue, 10 Apr 2018 07:41:44 +0000 (UTC)
-Received: from inaba.usersys.redhat.com (unknown [10.43.2.44])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 37CD56353F;
-	Tue, 10 Apr 2018 07:41:34 +0000 (UTC)
-Message-ID: <1523346093.16671.23.camel@redhat.com>
-From: Andrea Bolognani <abologna@redhat.com>
-To: Wei Huang <wei@redhat.com>, "Daniel P." =?ISO-8859-1?Q?Berrang=E9?=
-	<berrange@redhat.com>
-Date: Tue, 10 Apr 2018 09:41:33 +0200
-In-Reply-To: <6bb12858-3b4e-e92f-93ea-b8708c8be870@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 042E440201A1;
+	Tue, 10 Apr 2018 08:52:10 +0000 (UTC)
+Received: from redhat.com (unknown [10.33.36.63])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id F37F121B2F58;
+	Tue, 10 Apr 2018 08:52:02 +0000 (UTC)
+Date: Tue, 10 Apr 2018 09:52:00 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Andrea Bolognani <abologna@redhat.com>
+Message-ID: <20180410085200.GD5155@redhat.com>
 References: <20180409154921.29906-1-wei@redhat.com>
 	<20180409155634.GO18283@redhat.com>
 	<6bb12858-3b4e-e92f-93ea-b8708c8be870@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+	<1523346093.16671.23.camel@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <1523346093.16671.23.camel@redhat.com>
+User-Agent: Mutt/1.9.2 (2017-12-15)
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Tue, 10 Apr 2018 07:41:44 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Tue, 10 Apr 2018 07:41:44 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'abologna@redhat.com' RCPT:''
+	(mx1.redhat.com [10.11.55.6]);
+	Tue, 10 Apr 2018 08:52:10 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Tue, 10 Apr 2018 08:52:10 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'berrange@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
@@ -97,39 +98,49 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Cc: peter.maydell@linaro.org, drjones@redhat.com, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cfeE5K4ETrSh
+X-TUID: vOsTawWz1IRd
 
-On Mon, 2018-04-09 at 11:29 -0500, Wei Huang wrote:
-> > > Running mach-virt machine types (i.e. "-M virt") on different systems can
-> > > result in various misleading warnings if -cpu and/or gic-version not specified.
-> > > For KVM, this can be solved mostly by using "host" type. But the "host" type
-> > > doesn't work for TCG. Compared with "host", the "max" type not only supports
-> > > auto detection under KVM mode, but also works with TCG. So this patch set
-> > > "max" as the default types for both -cpu and gic-version.
+On Tue, Apr 10, 2018 at 09:41:33AM +0200, Andrea Bolognani wrote:
+> On Mon, 2018-04-09 at 11:29 -0500, Wei Huang wrote:
+> > > > Running mach-virt machine types (i.e. "-M virt") on different systems can
+> > > > result in various misleading warnings if -cpu and/or gic-version not specified.
+> > > > For KVM, this can be solved mostly by using "host" type. But the "host" type
+> > > > doesn't work for TCG. Compared with "host", the "max" type not only supports
+> > > > auto detection under KVM mode, but also works with TCG. So this patch set
+> > > > "max" as the default types for both -cpu and gic-version.
+> > > 
+> > > Hmm, generally we aim for the config provided by a machine type to be stable
+> > > across QEMU versions.
 > > 
-> > Hmm, generally we aim for the config provided by a machine type to be stable
-> > across QEMU versions.
+> > I understand this principle. But in reality, under KVM mode, the default
+> > config most time doesn't work. If end users specify cpu type manually,
+> > it still doesn't work because the host CPU is vendor-specific design
+> > (e.g. "cortex-a57" doesn't work on QCOM's machine). So we end up with
+> > using "-cpu host" all the time. My argument for this patch is that "-cpu
+> > max" isn't worse than "-cpu host".
 > 
-> I understand this principle. But in reality, under KVM mode, the default
-> config most time doesn't work. If end users specify cpu type manually,
-> it still doesn't work because the host CPU is vendor-specific design
-> (e.g. "cortex-a57" doesn't work on QCOM's machine). So we end up with
-> using "-cpu host" all the time. My argument for this patch is that "-cpu
-> max" isn't worse than "-cpu host".
+> I figure the people not explicitly specifying a CPU model on the
+> command line will probably also use '-M virt' instead of versioned
+> machine types, which means they will get a different guest behavior
+> after upgrading QEMU regardless.
 
-I figure the people not explicitly specifying a CPU model on the
-command line will probably also use '-M virt' instead of versioned
-machine types, which means they will get a different guest behavior
-after upgrading QEMU regardless.
+Libvirt uses versioned machine types and does not specify -cpu unless the
+user has added <cpu> to their XML. IOW libvirt assumes the default CPU
+model is stable because that's what QEMU has promised in the past.
 
-Defaulting to 'max' for '-cpu' and 'gic-version' makes it convenient
-to quickly and concisely start a guest; if you care about guest ABI
-at all, then you are already specifying everything explicitly on the
-command line instead of relying on defaults - or using libvirt ;)
+> Defaulting to 'max' for '-cpu' and 'gic-version' makes it convenient
+> to quickly and concisely start a guest; if you care about guest ABI
+> at all, then you are already specifying everything explicitly on the
+> command line instead of relying on defaults - or using libvirt ;)
 
+Regards,
+Daniel
 -- 
-Andrea Bolognani / Red Hat / Virtualization
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

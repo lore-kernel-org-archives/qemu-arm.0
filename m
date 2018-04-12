@@ -1,931 +1,230 @@
-Received: by 10.28.71.27 with SMTP id u27csp666452wma;
-        Wed, 24 Jan 2018 06:11:29 -0800 (PST)
-X-Received: by 10.200.52.233 with SMTP id x38mr10127837qtb.267.1516803089193;
-        Wed, 24 Jan 2018 06:11:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516803089; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp1487017wmi;
+        Wed, 11 Apr 2018 21:53:44 -0700 (PDT)
+X-Received: by 10.46.153.13 with SMTP id v13mr4425212lji.145.1523508823930;
+        Wed, 11 Apr 2018 21:53:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523508823; cv=none;
         d=google.com; s=arc-20160816;
-        b=naQUzqATXZ4lC40gKxXdtv9ZWHRw+xHH+XavtGqt3t7JdacEAd06AQrXnMWN4t7cWR
-         AWfA+8YusD68KkvLX/h3Yw7nakNski8dl3T33IqRhjBrsrFEZ3kO/AJ9ykTqqWU29d+O
-         Den0V8to1iz2pUST/ctX4qG9VmgWSoE/I+hxB2uXL3WWlqn50qJp7oQUMVJV5HUTADMg
-         NHunKa4ooi7YFE1haD9X165G1UIoXqeuDn/BXqMnOD3ocNkfqJYAa8a5+Ocnd2cBod1c
-         bKJT58QIS9gUz5BjDlV5Slc9HVUqsJSETw5Oh5Hy8gXEVuFfw8w4nWklrMNL1nOR1wm1
-         mCOg==
+        b=zOxMUt3S0mvuu+ZXLpOCAx0LWsLEL6h0povg7UI4nwcEhu6mRoGXf2wzCtCQCCWe6A
+         4ZK+/aEB4MMj9pnqO0qp6RXOxRzeMFt4PGllJ4vmQFNNV47GIlZ3Xmz4E7PPnmd+uK0M
+         ZUrnyhgr31TxMgbpjRyVtzQJRH6hwRxvZsZw0HVyK05Iy2TCzKTAvYaryAVxjfFiqVlY
+         GC92/IzOcfxgy3TbQe/FRA2ga/PwZraYAuNTaanr7SbwuDbTvY3FNbr/kXKqQkg7jXjv
+         XNCHgbLZYPKIiJC9ufZfavEp572l9vS5YvRGwQct7f5hHgbGODwYOxEAnNS7ia2dW+3h
+         wVYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:mime-version:user-agent:date:message-id:openpgp:from
-         :references:cc:to:subject:sender:dkim-signature
-         :arc-authentication-results;
-        bh=1jXeg6tibz0qq+LtZ7L0T+zY1o79+J5RIan/vB/+03g=;
-        b=fsSXqZH+KvZYcKvCmfLqJLwc24dw05V1HubBTaeJMHMiJkJGosmpyBmatePaQnHnO5
-         RlSJGTLj9egTN/bOGZzO+hhMHeUkXXFsAXiuNmjINBxV8cXurewu268ZticY1P/6MrE+
-         Er0PSGp/yBhTVDsgT7rVNcQpTURl506GiHmCCMksUOgLCqaMB+sTxmHlZVDlzUJB5SoH
-         vOHyJ48unIyabNrvVEv0vB3YR5SXYCoUTWIAGQcvvo9g9QzqJz85aM2LYDriDW1HShYx
-         sgeLoZb8mBRBu0EPoxFDdEwoOCxjJE5ICLHEHRMoJK+sNf8vg2LgX53IkrQTItwNtAR2
-         aeFA==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=Md50rOukI8w6WtPr22LSXlLXJ2mHETuX7WC9yf0gOW0=;
+        b=g8IajdSbOgpas/kFzv1lvJ+yHYw7786YUErqBDe1qCI1mEKdOGjSU+8zPKxDBEAiAG
+         eEuwFeibp1NXXgJgeSVMT9oNENN1T1nJn6+oAgGXvtIoyO53o5Yun9p9TaB6v+AyzrOt
+         PSRFnZ790N4sFngUw5UpNgYGpbC+KA8alYA3Z3FQJ/hmfxbVf6KUzKOLuYCn3yUgMrAe
+         jQEhsNdBeZoDPKQdGDa+w5bfDy1kWsDSHMixBp97xd1xmMPio/g4c3ZgGyJQ0f+9ZOJS
+         j0OVCQA2Wg7LkY74zMoJ7Ad1J5W2yPWZ6s41Pc/cqOfeT7D5Qyh5hxDiGVpfD8z6XUmk
+         VMmQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DqvHiNmA;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id x5sor2136405qta.22.2018.01.24.06.11.28
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XP6npEf3;
+       spf=pass (google.com: domain of ajaygargnsit@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ajaygargnsit@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <ajaygargnsit@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id n74sor742077lje.97.2018.04.11.21.53.43
         (Google Transport Security);
-        Wed, 24 Jan 2018 06:11:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Wed, 11 Apr 2018 21:53:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ajaygargnsit@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DqvHiNmA;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XP6npEf3;
+       spf=pass (google.com: domain of ajaygargnsit@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ajaygargnsit@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:openpgp:message-id:date
-         :user-agent:mime-version:in-reply-to;
-        bh=1jXeg6tibz0qq+LtZ7L0T+zY1o79+J5RIan/vB/+03g=;
-        b=DqvHiNmA/vjYuSQaKAQGLh5guoy1ML9xJZpqy31yrWbCN9EIqDAmwwoEZGGXCvLdIq
-         Sys66pzG+JkdriJMFE3jmPZiJ186EAJgzAnWeNK0S1QjqC/+OzQNIezL2YxN4w2OG+4c
-         4FoJKbamsPQZqfdoEiLU9QEv9aiZjLGmIKATH3yF986pfbf8qVLSeToOGHKlSYJuR3wJ
-         adYg34Z+L1yMNZXXYjoQZwhGuzEjUZTqUr/4wx57XHj5pDsGQ+ybVj++twex+2Ir2ITn
-         EakVAAHzCZeS+eytwVsbGLXNlKxMHf3NRf7iBndmR/znWToftBHRonxwhJjtZhVwsxlQ
-         HNag==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=Md50rOukI8w6WtPr22LSXlLXJ2mHETuX7WC9yf0gOW0=;
+        b=XP6npEf3n41oPXnSD1yCk7wmFXU0iv/418SoA+MRgurA+4ckFZim/YhfMyNQKIgOwU
+         r5XIRwOOC2XDcP9Y9QPJP/wrqRuFhNaoaxzKebHguUPpbWbH4xB4zkhBQmZhZJdxQMzZ
+         i5emkC+e403X33Z9AuyubPKpEZIhxKMyquqTfHNz7pYu0Aaqe/VWWypHsRfisHUfK/Fn
+         zAu7blnxmdWBjcaVkndVb2LqWqImayMGdyl4gWHvXj/sg0mOxbNlKLKfIvxG9XOReX/M
+         wBnib0sg07F/vX/E0UgXLKBQArAldOf99gbqULuc84chq9+d/YFUOXZdNjznSQZ8bkH1
+         YH3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-         :message-id:date:user-agent:mime-version:in-reply-to;
-        bh=1jXeg6tibz0qq+LtZ7L0T+zY1o79+J5RIan/vB/+03g=;
-        b=unnefS/CyqxyXYS1lf0fbNtvuufdQnp4yiiSUXpw7+WaaB4/9y6+B84VLr4Hz4aD5z
-         CEQQKssWj82i0Wlq77LmEi+iwmmCMrKQoBnRq/RGEaRShp3p85wYozRJYDesOL5jT8OZ
-         3l9paBIkAchh7kzPuIOqD1Om9rPQjRGTVtUa8AUMhTjcmG67x80XNtZEpksBih2DXaEQ
-         h3dYUHM5iKR9UhMbpAhiYPcA8RgHFnP+VPNndwV7LJEDAQryKxCwyeHcviO6O3UDkF0D
-         hJqvmKAB/Z8FILNuKCNoERvV7DvJtB1cnyPJbAH3dCqmMdHnqGxI34EYSHO3oBsMejls
-         nUnQ==
-X-Gm-Message-State: AKwxyteHXZVW4H93WUW4Mqh6CQPJFEEWXBWWcV3OB0igSrQAqK8Atnf4
-	vHhFLnNHoX6TKSQH0ky5Xgs=
-X-Google-Smtp-Source: AH8x224Kda857uEeOlezZBwwEcZ+9ByE5P3ITsLe5mhhs/p54y/9xDC1Az+0+qUF2HOWVSOuoY0wTw==
-X-Received: by 10.200.34.149 with SMTP id f21mr9876473qta.298.1516803088145;
-        Wed, 24 Jan 2018 06:11:28 -0800 (PST)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from [192.168.1.11] ([138.117.48.219])
-        by smtp.gmail.com with ESMTPSA id m31sm2053498qtd.23.2018.01.24.06.11.21
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 24 Jan 2018 06:11:27 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v3 04/22] target/*/cpu.h: remove softfloat.h
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- richard.henderson@linaro.org, peter.maydell@linaro.org, laurent@vivier.eu,
- bharata@linux.vnet.ibm.com, andrew@andrewdutcher.com
-Cc: Marek Vasut <marex@denx.de>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Anthony Green <green@moxielogic.com>, Chris Wulff <crwulff@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Alexander Graf <agraf@suse.de>, Max Filippov <jcmvbkbc@gmail.com>,
- "open list:S390" <qemu-s390x@nongnu.org>, "open list:ARM"
- <qemu-arm@nongnu.org>, "open list:PowerPC" <qemu-ppc@nongnu.org>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Stafford Horne <shorne@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
-References: <20180124131315.30567-1-alex.bennee@linaro.org>
- <20180124131315.30567-5-alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <c4655cb5-ab0b-a502-3219-65f1726a7cd5@amsat.org>
-Date: Wed, 24 Jan 2018 11:11:16 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.5.2
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=Md50rOukI8w6WtPr22LSXlLXJ2mHETuX7WC9yf0gOW0=;
+        b=eCFEaJ9xoZ/+fqB/MHeMZ/BbQgY3BgL3VXqsR+PZBkVk9IUT71jYBBSwYCpK7kaQyI
+         P1BQfC/oaaspOmG8b3i71aHR+zL+hJjKelS+RQVXoGtIucokg4/QoLOu3cp0Doy8+zvF
+         ll99vATZwlppb7GaIiwAMxHzbhc499l9VyNX8zA/6TRmpQrnLxl9kbbTE35yVc0/LMOy
+         vYl69i5ca1LjO7nxiqfmfWgq7q9rYS0B09OZB9p+rHrfciVRxSOWQWlEe2ybFfOokmdw
+         yi15hCROs40SDT6AfICBlu7s+gcC+ADyjNJavgGnL4n3Zd1B0IIsHOMDjC552ktDwkqk
+         hEuA==
+X-Gm-Message-State: ALQs6tAah8soe6SU3Y12XlB6kbT7ZL/iL3eicZKUeadQA4rhuPjglsB/
+	eG2Jbrd/o2AZW7qPATgyS5BLGcXUDprNjarrTxAEnQ==
+X-Google-Smtp-Source: AIpwx48T0SUHVvGUJnG6uI+jGAWmkmIMIS4Vs44lVAN/8c/QfOn3VBFil4uOCf5ngJTI+hyrwDG/zre0VG5HiST0HJU=
+X-Received: by 10.46.144.153 with SMTP id l25mr4858589ljg.55.1523508823251;
+ Wed, 11 Apr 2018 21:53:43 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20180124131315.30567-5-alex.bennee@linaro.org>
-Content-Type: multipart/signed; micalg=pgp-sha512;
- protocol="application/pgp-signature";
- boundary="K3v5rLTTtwFwY5LKJcphaln3hWc6LM0ft"
-X-TUID: PHtALA5BVypK
+Received: by 2002:a19:c64a:0:0:0:0:0 with HTTP; Wed, 11 Apr 2018 21:53:42
+ -0700 (PDT)
+In-Reply-To: <CAHP4M8V_NBFS9T_+TQzAPgw56n9THk-phqUiLuRw6DJRn+UQAw@mail.gmail.com>
+References: <CAHP4M8VnuS5KijfVw9eDz41KPwaT4rJ+4VEU==EbBgdwgFKJhA@mail.gmail.com>
+ <87efjov999.fsf@linaro.org> <CAHP4M8W-WuBmJUdb6LGR1t3tPayrnaS+b1ZZ1zew71aM==-imA@mail.gmail.com>
+ <87d0z8v78e.fsf@linaro.org> <CAHP4M8VSzm4L6oS06J-e93FwjuHM=weJf2MegCaDNH8MPbsqgA@mail.gmail.com>
+ <CAFEAcA91iNyUnahri9EdL7Th1Q9v44765z0OJexxMrNUD_DXEQ@mail.gmail.com>
+ <CAHP4M8ViS=O4R+sMmR=CmkbgQtwd8RHGxLwNb5m_aMS_M++f6A@mail.gmail.com>
+ <CAFEAcA8xG_GrVL5zgZqN26OQGj0UHWFNZ9xWEmHJyaiUFZLH8Q@mail.gmail.com>
+ <CAHP4M8WEuR5JJTV_KggwJok0Pzbu8=4BifLuFOjhv3T9hfjUUg@mail.gmail.com>
+ <CAHP4M8UESYxeJOd5Y+Hj1K26QUb2D1UJJoBTh9SYCsvuwBP95w@mail.gmail.com> <CAHP4M8V_NBFS9T_+TQzAPgw56n9THk-phqUiLuRw6DJRn+UQAw@mail.gmail.com>
+From: Ajay Garg <ajaygargnsit@gmail.com>
+Date: Thu, 12 Apr 2018 10:23:42 +0530
+Message-ID: <CAHP4M8VYmpm2paarNJjMtiVtkZk5imZixHHmoqZmggdeyRRW3w@mail.gmail.com>
+Subject: Re: [Qemu-arm] [Qemu-devel] Crash when running hello-world unikernel
+ for ARM
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	rumpkernel-users@freelists.org, qemu-arm <qemu-arm@nongnu.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: TRHmFcnTIdaP
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---K3v5rLTTtwFwY5LKJcphaln3hWc6LM0ft
-Content-Type: multipart/mixed; boundary="o32Jpy60bU1gh6XNG9yRHolgX9mw9QHtj";
- protected-headers="v1"
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- richard.henderson@linaro.org, peter.maydell@linaro.org, laurent@vivier.eu,
- bharata@linux.vnet.ibm.com, andrew@andrewdutcher.com
-Cc: Marek Vasut <marex@denx.de>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Anthony Green <green@moxielogic.com>, Chris Wulff <crwulff@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Alexander Graf <agraf@suse.de>, Max Filippov <jcmvbkbc@gmail.com>,
- "open list:S390" <qemu-s390x@nongnu.org>, "open list:ARM"
- <qemu-arm@nongnu.org>, "open list:PowerPC" <qemu-ppc@nongnu.org>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Stafford Horne <shorne@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
-Message-ID: <c4655cb5-ab0b-a502-3219-65f1726a7cd5@amsat.org>
-Subject: Re: [Qemu-devel] [PATCH v3 04/22] target/*/cpu.h: remove softfloat.h
-References: <20180124131315.30567-1-alex.bennee@linaro.org>
- <20180124131315.30567-5-alex.bennee@linaro.org>
-In-Reply-To: <20180124131315.30567-5-alex.bennee@linaro.org>
+Is "integratorcp" the same board that rumprun is being built for
+(https://github.com/rumpkernel/rumprun/tree/master/platform/hw/arch/arm/integrator)?
 
---o32Jpy60bU1gh6XNG9yRHolgX9mw9QHtj
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-On 01/24/2018 10:12 AM, Alex Benn=C3=A9e wrote:
-> As cpu.h is another typically widely included file which doesn't need
-> full access to the softfloat API we can remove the includes from here
-> as well. Where they do need types it's typically for float_status and
-> the rounding modes so we move that to softfloat-types.h as well.
->=20
-> As a result of not having softfloat in every cpu.h call we now need to
-> add it to various helpers that do need the full softfloat.h
-> definitions.
->=20
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-
-> ---
->  include/fpu/softfloat-types.h   | 64 +++++++++++++++++++++++++++++++++=
-++++++++
->  include/fpu/softfloat.h         | 53 ---------------------------------=
--
->  target/alpha/cpu.h              |  2 --
->  target/arm/cpu.c                |  1 +
->  target/arm/cpu.h                |  2 --
->  target/arm/helper-a64.c         |  1 +
->  target/arm/helper.c             |  1 +
->  target/arm/neon_helper.c        |  1 +
->  target/hppa/cpu.c               |  1 +
->  target/hppa/cpu.h               |  1 -
->  target/hppa/op_helper.c         |  1 +
->  target/i386/cpu.h               |  4 ---
->  target/i386/fpu_helper.c        |  1 +
->  target/m68k/cpu.c               |  2 +-
->  target/m68k/cpu.h               |  1 -
->  target/m68k/fpu_helper.c        |  1 +
->  target/m68k/helper.c            |  1 +
->  target/m68k/translate.c         |  2 ++
->  target/microblaze/cpu.c         |  1 +
->  target/microblaze/cpu.h         |  2 +-
->  target/microblaze/op_helper.c   |  1 +
->  target/moxie/cpu.h              |  1 -
->  target/nios2/cpu.h              |  1 -
->  target/openrisc/cpu.h           |  1 -
->  target/openrisc/fpu_helper.c    |  1 +
->  target/ppc/cpu.h                |  1 -
->  target/ppc/fpu_helper.c         |  1 +
->  target/ppc/int_helper.c         |  1 +
->  target/ppc/translate_init.c     |  1 +
->  target/s390x/cpu.c              |  1 +
->  target/s390x/cpu.h              |  2 --
->  target/s390x/fpu_helper.c       |  1 +
->  target/sh4/cpu.c                |  1 +
->  target/sh4/cpu.h                |  2 --
->  target/sh4/op_helper.c          |  1 +
->  target/sparc/cpu.h              |  2 --
->  target/sparc/fop_helper.c       |  1 +
->  target/tricore/cpu.h            |  1 -
->  target/tricore/fpu_helper.c     |  1 +
->  target/tricore/helper.c         |  1 +
->  target/unicore32/cpu.c          |  1 +
->  target/unicore32/cpu.h          |  1 -
->  target/unicore32/ucf64_helper.c |  1 +
->  target/xtensa/cpu.h             |  1 -
->  target/xtensa/op_helper.c       |  1 +
->  45 files changed, 93 insertions(+), 78 deletions(-)
->=20
-> diff --git a/include/fpu/softfloat-types.h b/include/fpu/softfloat-type=
-s.h
-> index 8210a94ea1..4e378cb612 100644
-> --- a/include/fpu/softfloat-types.h
-> +++ b/include/fpu/softfloat-types.h
-> @@ -80,6 +80,12 @@ this code that are retained.
->  #ifndef SOFTFLOAT_TYPES_H
->  #define SOFTFLOAT_TYPES_H
-> =20
-> +/* This 'flag' type must be able to hold at least 0 and 1. It should
-> + * probably be replaced with 'bool' but the uses would need to be audi=
-ted
-> + * to check that they weren't accidentally relying on it being a large=
-r type.
-> + */
-> +typedef uint8_t flag;
-> +
->  /*
->   * Software IEC/IEEE floating-point types.
->   */
-> @@ -112,4 +118,62 @@ typedef struct {
->  #define make_float128(high_, low_) ((float128) { .high =3D high_, .low=
- =3D low_ })
->  #define make_float128_init(high_, low_) { .high =3D high_, .low =3D lo=
-w_ }
-> =20
-> +/*
-> + * Software IEC/IEEE floating-point underflow tininess-detection mode.=
-
-> + */
-> +
-> +enum {
-> +    float_tininess_after_rounding  =3D 0,
-> +    float_tininess_before_rounding =3D 1
-> +};
-> +
-> +/*
-> + *Software IEC/IEEE floating-point rounding mode.
-> + */
-> +
-> +enum {
-> +    float_round_nearest_even =3D 0,
-> +    float_round_down         =3D 1,
-> +    float_round_up           =3D 2,
-> +    float_round_to_zero      =3D 3,
-> +    float_round_ties_away    =3D 4,
-> +    /* Not an IEEE rounding mode: round to the closest odd mantissa va=
-lue */
-> +    float_round_to_odd       =3D 5,
-> +};
-> +
-> +/*
-> + * Software IEC/IEEE floating-point exception flags.
-> + */
-> +
-> +enum {
-> +    float_flag_invalid   =3D  1,
-> +    float_flag_divbyzero =3D  4,
-> +    float_flag_overflow  =3D  8,
-> +    float_flag_underflow =3D 16,
-> +    float_flag_inexact   =3D 32,
-> +    float_flag_input_denormal =3D 64,
-> +    float_flag_output_denormal =3D 128
-> +};
-> +
-> +
-> +/*
-> + * Floating Point Status. Individual architectures may maintain
-> + * several versions of float_status for different functions. The
-> + * correct status for the operation is then passed by reference to
-> + * most of the softfloat functions.
-> + */
-> +
-> +typedef struct float_status {
-> +    signed char float_detect_tininess;
-> +    signed char float_rounding_mode;
-> +    uint8_t     float_exception_flags;
-> +    signed char floatx80_rounding_precision;
-> +    /* should denormalised results go to zero and set the inexact flag=
-? */
-> +    flag flush_to_zero;
-> +    /* should denormalised inputs go to zero and set the input_denorma=
-l flag? */
-> +    flag flush_inputs_to_zero;
-> +    flag default_nan_mode;
-> +    flag snan_bit_is_one;
-> +} float_status;
-> +
->  #endif /* SOFTFLOAT_TYPES_H */
-> diff --git a/include/fpu/softfloat.h b/include/fpu/softfloat.h
-> index 4e16e22e58..f3b9008f78 100644
-> --- a/include/fpu/softfloat.h
-> +++ b/include/fpu/softfloat.h
-> @@ -82,12 +82,6 @@ this code that are retained.
->  #ifndef SOFTFLOAT_H
->  #define SOFTFLOAT_H
-> =20
-> -/* This 'flag' type must be able to hold at least 0 and 1. It should
-> - * probably be replaced with 'bool' but the uses would need to be audi=
-ted
-> - * to check that they weren't accidentally relying on it being a large=
-r type.
-> - */
-> -typedef uint8_t flag;
-> -
->  #define LIT64( a ) a##LL
-> =20
->  /*--------------------------------------------------------------------=
---------
-> @@ -102,53 +96,6 @@ enum {
-> =20
->  #include "fpu/softfloat-types.h"
-> =20
-> -/*--------------------------------------------------------------------=
---------
-> -| Software IEC/IEEE floating-point underflow tininess-detection mode.
-> -*---------------------------------------------------------------------=
--------*/
-> -enum {
-> -    float_tininess_after_rounding  =3D 0,
-> -    float_tininess_before_rounding =3D 1
-> -};
-> -
-> -/*--------------------------------------------------------------------=
---------
-> -| Software IEC/IEEE floating-point rounding mode.
-> -*---------------------------------------------------------------------=
--------*/
-> -enum {
-> -    float_round_nearest_even =3D 0,
-> -    float_round_down         =3D 1,
-> -    float_round_up           =3D 2,
-> -    float_round_to_zero      =3D 3,
-> -    float_round_ties_away    =3D 4,
-> -    /* Not an IEEE rounding mode: round to the closest odd mantissa va=
-lue */
-> -    float_round_to_odd       =3D 5,
-> -};
-> -
-> -/*--------------------------------------------------------------------=
---------
-> -| Software IEC/IEEE floating-point exception flags.
-> -*---------------------------------------------------------------------=
--------*/
-> -enum {
-> -    float_flag_invalid   =3D  1,
-> -    float_flag_divbyzero =3D  4,
-> -    float_flag_overflow  =3D  8,
-> -    float_flag_underflow =3D 16,
-> -    float_flag_inexact   =3D 32,
-> -    float_flag_input_denormal =3D 64,
-> -    float_flag_output_denormal =3D 128
-> -};
-> -
-> -typedef struct float_status {
-> -    signed char float_detect_tininess;
-> -    signed char float_rounding_mode;
-> -    uint8_t     float_exception_flags;
-> -    signed char floatx80_rounding_precision;
-> -    /* should denormalised results go to zero and set the inexact flag=
-? */
-> -    flag flush_to_zero;
-> -    /* should denormalised inputs go to zero and set the input_denorma=
-l flag? */
-> -    flag flush_inputs_to_zero;
-> -    flag default_nan_mode;
-> -    flag snan_bit_is_one;
-> -} float_status;
-> -
->  static inline void set_float_detect_tininess(int val, float_status *st=
-atus)
->  {
->      status->float_detect_tininess =3D val;
-> diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
-> index 0a9ad35f06..fcb380b769 100644
-> --- a/target/alpha/cpu.h
-> +++ b/target/alpha/cpu.h
-> @@ -33,8 +33,6 @@
-> =20
->  #include "exec/cpu-defs.h"
-> =20
-> -#include "fpu/softfloat.h"
-> -
->  #define ICACHE_LINE_SIZE 32
->  #define DCACHE_LINE_SIZE 32
-> =20
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index cc1856c32b..34a7d5631e 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -34,6 +34,7 @@
->  #include "sysemu/hw_accel.h"
->  #include "kvm_arm.h"
->  #include "disas/capstone.h"
-> +#include "fpu/softfloat.h"
-> =20
->  static void arm_cpu_set_pc(CPUState *cs, vaddr value)
->  {
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 96316700dd..62186e2025 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -39,8 +39,6 @@
->  #include "cpu-qom.h"
->  #include "exec/cpu-defs.h"
-> =20
-> -#include "fpu/softfloat.h"
-> -
->  #define EXCP_UDEF            1   /* undefined instruction */
->  #define EXCP_SWI             2   /* software interrupt */
->  #define EXCP_PREFETCH_ABORT  3
-> diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-> index 3e00a9ead1..320a7d220e 100644
-> --- a/target/arm/helper-a64.c
-> +++ b/target/arm/helper-a64.c
-> @@ -31,6 +31,7 @@
->  #include "exec/cpu_ldst.h"
->  #include "qemu/int128.h"
->  #include "tcg.h"
-> +#include "fpu/softfloat.h"
->  #include <zlib.h> /* For crc32 */
-> =20
->  /* C2.4.7 Multiply and divide */
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index c83c901a86..6ae7aae96b 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -15,6 +15,7 @@
->  #include <zlib.h> /* For crc32 */
->  #include "exec/semihost.h"
->  #include "sysemu/kvm.h"
-> +#include "fpu/softfloat.h"
-> =20
->  #define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurabl=
-e */
-> =20
-> diff --git a/target/arm/neon_helper.c b/target/arm/neon_helper.c
-> index ebdf7c9b10..2a4592c041 100644
-> --- a/target/arm/neon_helper.c
-> +++ b/target/arm/neon_helper.c
-> @@ -11,6 +11,7 @@
->  #include "cpu.h"
->  #include "exec/exec-all.h"
->  #include "exec/helper-proto.h"
-> +#include "fpu/softfloat.h"
-> =20
->  #define SIGNBIT (uint32_t)0x80000000
->  #define SIGNBIT64 ((uint64_t)1 << 63)
-> diff --git a/target/hppa/cpu.c b/target/hppa/cpu.c
-> index 9e7b0d4ccb..83db1e0bf9 100644
-> --- a/target/hppa/cpu.c
-> +++ b/target/hppa/cpu.c
-> @@ -23,6 +23,7 @@
->  #include "cpu.h"
->  #include "qemu-common.h"
->  #include "exec/exec-all.h"
-> +#include "fpu/softfloat.h"
-> =20
-> =20
->  static void hppa_cpu_set_pc(CPUState *cs, vaddr value)
-> diff --git a/target/hppa/cpu.h b/target/hppa/cpu.h
-> index 8d14077763..10523711da 100644
-> --- a/target/hppa/cpu.h
-> +++ b/target/hppa/cpu.h
-> @@ -31,7 +31,6 @@
->  #define CPUArchState struct CPUHPPAState
-> =20
->  #include "exec/cpu-defs.h"
-> -#include "fpu/softfloat.h"
-> =20
->  #define TARGET_PAGE_BITS 12
-> =20
-> diff --git a/target/hppa/op_helper.c b/target/hppa/op_helper.c
-> index 3104404e8d..1542d7c172 100644
-> --- a/target/hppa/op_helper.c
-> +++ b/target/hppa/op_helper.c
-> @@ -22,6 +22,7 @@
->  #include "exec/exec-all.h"
->  #include "exec/helper-proto.h"
->  #include "exec/cpu_ldst.h"
-> +#include "fpu/softfloat.h"
-> =20
->  void QEMU_NORETURN HELPER(excp)(CPUHPPAState *env, int excp)
->  {
-> diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-> index 30cc5628d2..65298f5f30 100644
-> --- a/target/i386/cpu.h
-> +++ b/target/i386/cpu.h
-> @@ -52,10 +52,6 @@
-> =20
->  #define CPUArchState struct CPUX86State
-> =20
-> -#ifdef CONFIG_TCG
-> -#include "fpu/softfloat.h"
-> -#endif
-> -
->  enum {
->      R_EAX =3D 0,
->      R_ECX =3D 1,
-> diff --git a/target/i386/fpu_helper.c b/target/i386/fpu_helper.c
-> index 9014b6f88a..ea5a0c4861 100644
-> --- a/target/i386/fpu_helper.c
-> +++ b/target/i386/fpu_helper.c
-> @@ -24,6 +24,7 @@
->  #include "qemu/host-utils.h"
->  #include "exec/exec-all.h"
->  #include "exec/cpu_ldst.h"
-> +#include "fpu/softfloat.h"
-> =20
->  #define FPU_RC_MASK         0xc00
->  #define FPU_RC_NEAR         0x000
-> diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
-> index 03126ba543..71b9929971 100644
-> --- a/target/m68k/cpu.c
-> +++ b/target/m68k/cpu.c
-> @@ -24,7 +24,7 @@
->  #include "qemu-common.h"
->  #include "migration/vmstate.h"
->  #include "exec/exec-all.h"
-> -
-> +#include "fpu/softfloat.h"
-> =20
->  static void m68k_cpu_set_pc(CPUState *cs, vaddr value)
->  {
-> diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
-> index 2985b039e1..1f650542dd 100644
-> --- a/target/m68k/cpu.h
-> +++ b/target/m68k/cpu.h
-> @@ -28,7 +28,6 @@
->  #include "qemu-common.h"
->  #include "exec/cpu-defs.h"
->  #include "cpu-qom.h"
-> -#include "fpu/softfloat.h"
-> =20
->  #define OS_BYTE     0
->  #define OS_WORD     1
-> diff --git a/target/m68k/fpu_helper.c b/target/m68k/fpu_helper.c
-> index 665e7609af..3c5a82aaa0 100644
-> --- a/target/m68k/fpu_helper.c
-> +++ b/target/m68k/fpu_helper.c
-> @@ -23,6 +23,7 @@
->  #include "exec/helper-proto.h"
->  #include "exec/exec-all.h"
->  #include "exec/cpu_ldst.h"
-> +#include "fpu/softfloat.h"
-> =20
->  /* Undefined offsets may be different on various FPU.
->   * On 68040 they return 0.0 (floatx80_zero)
-> diff --git a/target/m68k/helper.c b/target/m68k/helper.c
-> index a999389e9a..70550a23ca 100644
-> --- a/target/m68k/helper.c
-> +++ b/target/m68k/helper.c
-> @@ -24,6 +24,7 @@
->  #include "exec/gdbstub.h"
-> =20
->  #include "exec/helper-proto.h"
-> +#include "fpu/softfloat.h"
-> =20
->  #define SIGNBIT (1u << 31)
-> =20
-> diff --git a/target/m68k/translate.c b/target/m68k/translate.c
-> index f0e86a73d4..533a7e3a5d 100644
-> --- a/target/m68k/translate.c
-> +++ b/target/m68k/translate.c
-> @@ -32,6 +32,8 @@
-> =20
->  #include "trace-tcg.h"
->  #include "exec/log.h"
-> +#include "fpu/softfloat.h"
-> +
-> =20
->  //#define DEBUG_DISPATCH 1
-> =20
-> diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
-> index 5700652e06..393520f3ef 100644
-> --- a/target/microblaze/cpu.c
-> +++ b/target/microblaze/cpu.c
-> @@ -28,6 +28,7 @@
->  #include "hw/qdev-properties.h"
->  #include "migration/vmstate.h"
->  #include "exec/exec-all.h"
-> +#include "fpu/softfloat.h"
-> =20
->  static const struct {
->      const char *name;
-> diff --git a/target/microblaze/cpu.h b/target/microblaze/cpu.h
-> index 52b6b6aec7..b3e41f781b 100644
-> --- a/target/microblaze/cpu.h
-> +++ b/target/microblaze/cpu.h
-> @@ -28,7 +28,7 @@
->  #define CPUArchState struct CPUMBState
-> =20
->  #include "exec/cpu-defs.h"
-> -#include "fpu/softfloat.h"
-> +#include "fpu/softfloat-types.h"
->  struct CPUMBState;
->  typedef struct CPUMBState CPUMBState;
->  #if !defined(CONFIG_USER_ONLY)
-> diff --git a/target/microblaze/op_helper.c b/target/microblaze/op_helpe=
-r.c
-> index 4cf51568df..2567bf4031 100644
-> --- a/target/microblaze/op_helper.c
-> +++ b/target/microblaze/op_helper.c
-> @@ -24,6 +24,7 @@
->  #include "qemu/host-utils.h"
->  #include "exec/exec-all.h"
->  #include "exec/cpu_ldst.h"
-> +#include "fpu/softfloat.h"
-> =20
->  #define D(x)
-> =20
-> diff --git a/target/moxie/cpu.h b/target/moxie/cpu.h
-> index d37e6a5572..3c60c3e435 100644
-> --- a/target/moxie/cpu.h
-> +++ b/target/moxie/cpu.h
-> @@ -34,7 +34,6 @@
->  #define MOXIE_EX_BREAK      16
-> =20
->  #include "exec/cpu-defs.h"
-> -#include "fpu/softfloat.h"
-> =20
->  #define TARGET_PAGE_BITS 12     /* 4k */
-> =20
-> diff --git a/target/nios2/cpu.h b/target/nios2/cpu.h
-> index 88823a6d4d..1443b226fb 100644
-> --- a/target/nios2/cpu.h
-> +++ b/target/nios2/cpu.h
-> @@ -27,7 +27,6 @@
->  #define CPUArchState struct CPUNios2State
-> =20
->  #include "exec/cpu-defs.h"
-> -#include "fpu/softfloat.h"
->  #include "qom/cpu.h"
->  struct CPUNios2State;
->  typedef struct CPUNios2State CPUNios2State;
-> diff --git a/target/openrisc/cpu.h b/target/openrisc/cpu.h
-> index cc22dc8871..3256f7b6ef 100644
-> --- a/target/openrisc/cpu.h
-> +++ b/target/openrisc/cpu.h
-> @@ -29,7 +29,6 @@ struct OpenRISCCPU;
-> =20
->  #include "qemu-common.h"
->  #include "exec/cpu-defs.h"
-> -#include "fpu/softfloat.h"
->  #include "qom/cpu.h"
-> =20
->  #define TYPE_OPENRISC_CPU "or1k-cpu"
-> diff --git a/target/openrisc/fpu_helper.c b/target/openrisc/fpu_helper.=
-c
-> index 1375cea948..977a1e8e55 100644
-> --- a/target/openrisc/fpu_helper.c
-> +++ b/target/openrisc/fpu_helper.c
-> @@ -22,6 +22,7 @@
->  #include "cpu.h"
->  #include "exec/helper-proto.h"
->  #include "exception.h"
-> +#include "fpu/softfloat.h"
-> =20
->  static inline uint32_t ieee_ex_to_openrisc(OpenRISCCPU *cpu, int fexcp=
-)
->  {
-> diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
-> index 603a38cae8..43fbe7d7cf 100644
-> --- a/target/ppc/cpu.h
-> +++ b/target/ppc/cpu.h
-> @@ -79,7 +79,6 @@
-> =20
->  #include "exec/cpu-defs.h"
->  #include "cpu-qom.h"
-> -#include "fpu/softfloat.h"
-> =20
->  #if defined (TARGET_PPC64)
->  #define PPC_ELF_MACHINE     EM_PPC64
-> diff --git a/target/ppc/fpu_helper.c b/target/ppc/fpu_helper.c
-> index c4dab159e4..9ae418a577 100644
-> --- a/target/ppc/fpu_helper.c
-> +++ b/target/ppc/fpu_helper.c
-> @@ -21,6 +21,7 @@
->  #include "exec/helper-proto.h"
->  #include "exec/exec-all.h"
->  #include "internal.h"
-> +#include "fpu/softfloat.h"
-> =20
->  static inline float128 float128_snan_to_qnan(float128 x)
->  {
-> diff --git a/target/ppc/int_helper.c b/target/ppc/int_helper.c
-> index 3a50f1e1b7..35bdf09773 100644
-> --- a/target/ppc/int_helper.c
-> +++ b/target/ppc/int_helper.c
-> @@ -23,6 +23,7 @@
->  #include "qemu/host-utils.h"
->  #include "exec/helper-proto.h"
->  #include "crypto/aes.h"
-> +#include "fpu/softfloat.h"
-> =20
->  #include "helper_regs.h"
->  /*********************************************************************=
-********/
-> diff --git a/target/ppc/translate_init.c b/target/ppc/translate_init.c
-> index 55c99c97e3..54ec2e122a 100644
-> --- a/target/ppc/translate_init.c
-> +++ b/target/ppc/translate_init.c
-> @@ -36,6 +36,7 @@
->  #include "sysemu/qtest.h"
->  #include "qemu/cutils.h"
->  #include "disas/capstone.h"
-> +#include "fpu/softfloat.h"
-> =20
->  //#define PPC_DUMP_CPU
->  //#define PPC_DEBUG_SPR
-> diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
-> index ae3cee91a2..c6670850dd 100644
-> --- a/target/s390x/cpu.c
-> +++ b/target/s390x/cpu.c
-> @@ -42,6 +42,7 @@
->  #include "sysemu/arch_init.h"
->  #include "sysemu/sysemu.h"
->  #endif
-> +#include "fpu/softfloat.h"
-> =20
->  #define CR0_RESET       0xE0UL
->  #define CR14_RESET      0xC2000000UL;
-> diff --git a/target/s390x/cpu.h b/target/s390x/cpu.h
-> index 1a8b6b9ae9..072dd1597f 100644
-> --- a/target/s390x/cpu.h
-> +++ b/target/s390x/cpu.h
-> @@ -41,8 +41,6 @@
-> =20
->  #include "exec/cpu-all.h"
-> =20
-> -#include "fpu/softfloat.h"
-> -
->  #define NB_MMU_MODES 4
->  #define TARGET_INSN_START_EXTRA_WORDS 1
-> =20
-> diff --git a/target/s390x/fpu_helper.c b/target/s390x/fpu_helper.c
-> index 334159119f..43f8bf1c94 100644
-> --- a/target/s390x/fpu_helper.c
-> +++ b/target/s390x/fpu_helper.c
-> @@ -24,6 +24,7 @@
->  #include "exec/exec-all.h"
->  #include "exec/cpu_ldst.h"
->  #include "exec/helper-proto.h"
-> +#include "fpu/softfloat.h"
-> =20
->  /* #define DEBUG_HELPER */
->  #ifdef DEBUG_HELPER
-> diff --git a/target/sh4/cpu.c b/target/sh4/cpu.c
-> index e0b99fbc89..4f8c830fe3 100644
-> --- a/target/sh4/cpu.c
-> +++ b/target/sh4/cpu.c
-> @@ -25,6 +25,7 @@
->  #include "qemu-common.h"
->  #include "migration/vmstate.h"
->  #include "exec/exec-all.h"
-> +#include "fpu/softfloat.h"
-> =20
-> =20
->  static void superh_cpu_set_pc(CPUState *cs, vaddr value)
-> diff --git a/target/sh4/cpu.h b/target/sh4/cpu.h
-> index a2c26e0597..d8edab6997 100644
-> --- a/target/sh4/cpu.h
-> +++ b/target/sh4/cpu.h
-> @@ -40,8 +40,6 @@
-> =20
->  #include "exec/cpu-defs.h"
-> =20
-> -#include "fpu/softfloat.h"
-> -
->  #define TARGET_PAGE_BITS 12	/* 4k XXXXX */
-> =20
->  #define TARGET_PHYS_ADDR_SPACE_BITS 32
-> diff --git a/target/sh4/op_helper.c b/target/sh4/op_helper.c
-> index d798f239cf..a8c71a6988 100644
-> --- a/target/sh4/op_helper.c
-> +++ b/target/sh4/op_helper.c
-> @@ -21,6 +21,7 @@
->  #include "exec/helper-proto.h"
->  #include "exec/exec-all.h"
->  #include "exec/cpu_ldst.h"
-> +#include "fpu/softfloat.h"
-> =20
->  #ifndef CONFIG_USER_ONLY
-> =20
-> diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
-> index 9fde547fac..f9d5469697 100644
-> --- a/target/sparc/cpu.h
-> +++ b/target/sparc/cpu.h
-> @@ -29,8 +29,6 @@
-> =20
->  #include "exec/cpu-defs.h"
-> =20
-> -#include "fpu/softfloat.h"
-> -
->  /*#define EXCP_INTERRUPT 0x100*/
-> =20
->  /* trap definitions */
-> diff --git a/target/sparc/fop_helper.c b/target/sparc/fop_helper.c
-> index c7fb176e4c..b6642fd1d7 100644
-> --- a/target/sparc/fop_helper.c
-> +++ b/target/sparc/fop_helper.c
-> @@ -21,6 +21,7 @@
->  #include "cpu.h"
->  #include "exec/exec-all.h"
->  #include "exec/helper-proto.h"
-> +#include "fpu/softfloat.h"
-> =20
->  #define QT0 (env->qt0)
->  #define QT1 (env->qt1)
-> diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
-> index f41d2ceb69..e7dfe4bcc6 100644
-> --- a/target/tricore/cpu.h
-> +++ b/target/tricore/cpu.h
-> @@ -24,7 +24,6 @@
->  #include "qemu-common.h"
->  #include "cpu-qom.h"
->  #include "exec/cpu-defs.h"
-> -#include "fpu/softfloat.h"
-> =20
->  #define CPUArchState struct CPUTriCoreState
-> =20
-> diff --git a/target/tricore/fpu_helper.c b/target/tricore/fpu_helper.c
-> index 7979bb6692..df162902d6 100644
-> --- a/target/tricore/fpu_helper.c
-> +++ b/target/tricore/fpu_helper.c
-> @@ -20,6 +20,7 @@
->  #include "qemu/osdep.h"
->  #include "cpu.h"
->  #include "exec/helper-proto.h"
-> +#include "fpu/softfloat.h"
-> =20
->  #define QUIET_NAN 0x7fc00000
->  #define ADD_NAN   0x7fc00001
-> diff --git a/target/tricore/helper.c b/target/tricore/helper.c
-> index 378c2a4a76..45276d3782 100644
-> --- a/target/tricore/helper.c
-> +++ b/target/tricore/helper.c
-> @@ -19,6 +19,7 @@
-> =20
->  #include "cpu.h"
->  #include "exec/exec-all.h"
-> +#include "fpu/softfloat.h"
-> =20
->  enum {
->      TLBRET_DIRTY =3D -4,
-> diff --git a/target/unicore32/cpu.c b/target/unicore32/cpu.c
-> index 17dc1504d7..93cbae39d9 100644
-> --- a/target/unicore32/cpu.c
-> +++ b/target/unicore32/cpu.c
-> @@ -18,6 +18,7 @@
->  #include "qemu-common.h"
->  #include "migration/vmstate.h"
->  #include "exec/exec-all.h"
-> +#include "fpu/softfloat.h"
-> =20
->  static void uc32_cpu_set_pc(CPUState *cs, vaddr value)
->  {
-> diff --git a/target/unicore32/cpu.h b/target/unicore32/cpu.h
-> index 3dc6fbc6c7..061aaa9fb4 100644
-> --- a/target/unicore32/cpu.h
-> +++ b/target/unicore32/cpu.h
-> @@ -23,7 +23,6 @@
->  #include "qemu-common.h"
->  #include "cpu-qom.h"
->  #include "exec/cpu-defs.h"
-> -#include "fpu/softfloat.h"
-> =20
->  #define NB_MMU_MODES            2
-> =20
-> diff --git a/target/unicore32/ucf64_helper.c b/target/unicore32/ucf64_h=
-elper.c
-> index 6c919010c3..fad3fa6618 100644
-> --- a/target/unicore32/ucf64_helper.c
-> +++ b/target/unicore32/ucf64_helper.c
-> @@ -11,6 +11,7 @@
->  #include "qemu/osdep.h"
->  #include "cpu.h"
->  #include "exec/helper-proto.h"
-> +#include "fpu/softfloat.h"
-> =20
->  /*
->   * The convention used for UniCore-F64 instructions:
-> diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
-> index d9404aa50a..25655a4a07 100644
-> --- a/target/xtensa/cpu.h
-> +++ b/target/xtensa/cpu.h
-> @@ -36,7 +36,6 @@
->  #include "qemu-common.h"
->  #include "cpu-qom.h"
->  #include "exec/cpu-defs.h"
-> -#include "fpu/softfloat.h"
->  #include "xtensa-isa.h"
-> =20
->  #define NB_MMU_MODES 4
-> diff --git a/target/xtensa/op_helper.c b/target/xtensa/op_helper.c
-> index 012552817f..435b53a4b2 100644
-> --- a/target/xtensa/op_helper.c
-> +++ b/target/xtensa/op_helper.c
-> @@ -34,6 +34,7 @@
->  #include "exec/cpu_ldst.h"
->  #include "exec/address-spaces.h"
->  #include "qemu/timer.h"
-> +#include "fpu/softfloat.h"
-> =20
->  void xtensa_cpu_do_unaligned_access(CPUState *cs,
->          vaddr addr, MMUAccessType access_type,
->=20
+On Thu, Apr 12, 2018 at 9:56 AM, Ajay Garg <ajaygargnsit@gmail.com> wrote:
+> Actually just realised that qemu does support integratorcp as one of
+> the supported-boards.
+>
+> Unfortunately, when I use
+>           qemu-system-arm -machine integratorcp -nographic -kernel helloer.bin
+> the shell just hangs :(
+>
+>
+> Following are the details when run through gdb :
+>
+> ##########################################################################
+> GNU gdb (Debian 7.7.1+dfsg-5) 7.7.1
+> Copyright (C) 2014 Free Software Foundation, Inc.
+> License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+> This is free software: you are free to change and redistribute it.
+> There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+> and "show warranty" for details.
+> This GDB was configured as "arm-linux-gnueabihf".
+> Type "show configuration" for configuration details.
+> For bug reporting instructions, please see:
+> <http://www.gnu.org/software/gdb/bugs/>.
+> Find the GDB manual and other documentation resources online at:
+> <http://www.gnu.org/software/gdb/documentation/>.
+> For help, type "help".
+> Type "apropos word" to search for commands related to "word"...
+> Reading symbols from qemu-system-arm...(no debugging symbols found)...done.
+> (gdb) r
+> Starting program: /usr/bin/qemu-system-arm -machine integratorcp
+> -nographic -kernel helloer.bin
+> [Thread debugging using libthread_db enabled]
+> Using host libthread_db library "/lib/arm-linux-gnueabihf/libthread_db.so.1".
+> [New Thread 0xb388f290 (LWP 596)]
+>
+> Program received signal SIGUSR1, User defined signal 1.
+> [Switching to Thread 0xb388f290 (LWP 596)]
+> memset () at ../ports/sysdeps/arm/memset.S:50
+> 50    ../ports/sysdeps/arm/memset.S: No such file or directory.
+> (gdb) bt
+> #0  memset () at ../ports/sysdeps/arm/memset.S:50
+> #1  0xb65e1c6c in ?? () from /lib/arm-linux-gnueabihf/libglib-2.0.so.0
+> Backtrace stopped: previous frame identical to this frame (corrupt stack?)
+> (gdb)
+> ##########################################################################
+>
+> On Wed, Apr 11, 2018 at 12:49 PM, Ajay Garg <ajaygargnsit@gmail.com> wrote:
+>> Hi All.
+>>
+>> Just wondering if there is something specific that needs to changed at
+>> https://github.com/rumpkernel/rumprun/tree/master/platform/hw/arch/arm/integrator
+>> in order to get a hello-world app run on "virt" machine?
+>>
+>> If so, I would request the rumprun-guys to kindly throw in some light,
+>> on what needs to be done in order to have something run on a "virt"
+>> machine in qemu-context.
+>>
+>>
+>> Thanks and Regards,
+>> Ajay
+>>
+>> On Tue, Apr 10, 2018 at 3:49 PM, Ajay Garg <ajaygargnsit@gmail.com> wrote:
+>>> Thanks Peter .. my sincere gratitude.
+>>> You pin-pointed the real issue ..
+>>>
+>>>
+>>>
+>>> On Tue, Apr 10, 2018 at 2:50 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+>>>> On 10 April 2018 at 09:16, Ajay Garg <ajaygargnsit@gmail.com> wrote:
+>>>>> On Tue, Apr 10, 2018 at 1:08 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+>>>>>> What hardware (what CPU, board, etc) is this "rumprun" software
+>>>>>> expecting to run on?
+>>>>>
+>>>>> Yep, just to ensure that there are no cross-compiling issues, I am
+>>>>> building rumprun on the pseudo-real hardware itself.
+>>>>> In our case, the pseudo-real hardware are :
+>>>>>
+>>>>> a)
+>>>>> An ARM32 "virt" hardware/machine in a qemu environment
+>>>>> (https://translatedcode.wordpress.com/2016/11/03/installing-debian-on-qemus-32-bit-arm-virt-board/)
+>>>>>
+>>>>> Once I start  this machine, all environment is arm32, and I compile
+>>>>> rumprun within this environemnt without any cross-compiling.
+>>>>>
+>>>>> b)
+>>>>> A beaglebone-green-wireless.
+>>>>> This is a arm32 machine bottoms-up, so no question of cross-compiling
+>>>>> whatsoever here :)
+>>>>>
+>>>>> In both cases, I then use qemu-system-arm (on the "virt" machine, and
+>>>>> beaglebone-green-wireless itself).
+>>>>
+>>>> That's telling me what setups you're trying to compile in,
+>>>> which doesn't correspond necessarily to what the guest
+>>>> OS is built to run on.
+>>>>
+>>>>> One query : It is apparent that there is nested qemu-virtualization in
+>>>>> step a), could that be an issue?
+>>>>
+>>>> Why are you running this in a nested setup? I don't understand
+>>>> the purpose of doing that. It would be simpler and faster to
+>>>> just run the guest on a QEMU running in your native host system.
+>>>>
+>>>> Assuming this is the source for the guest you're trying to run:
+>>>>
+>>>> https://github.com/rumpkernel/rumprun/tree/master/platform/hw/arch
+>>>>
+>>>> that suggests that the only Arm board it supports is "integrator"
+>>>> (which is an absolutely ancient devboard with very little memory,
+>>>> no PCI and no virtio support). You need to confirm what Arm hardware
+>>>> this 'rumpkernel' is actually intended to run on, and then give QEMU
+>>>> the right command line arguments to emulate that hardware. I can't
+>>>> really help any further, I'm afraid -- you need somebody who knows
+>>>> about this guest OS.
+>>>>
+>>>> thanks
+>>>> -- PMM
+>>>
+>>>
+>>>
+>>> --
+>>> Regards,
+>>> Ajay
+>>
+>>
+>>
+>> --
+>> Regards,
+>> Ajay
+>
+>
+>
+> --
+> Regards,
+> Ajay
 
 
---o32Jpy60bU1gh6XNG9yRHolgX9mw9QHtj--
 
---K3v5rLTTtwFwY5LKJcphaln3hWc6LM0ft
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCgAdFiEE+qvnXhKRciHc/Wuy4+MsLN6twN4FAlpolAQACgkQ4+MsLN6t
-wN4WNRAAyYvlNqhp0G6D9LDZ5agUjUgKGwxeE3rQi2qTpWMX0oU+nVHt3BNi4Yds
-T2wYFnd9sjrhjBq+QKxP47OZt5gmrfcYVBkyH7Y0zkVycuanmVUhhYYiCeX284rv
-IKwtLiZZwqpdyVAUbDCgk637nHIOWFFlRuY194Iev9yc9bPi05vgEgyVybe68xLJ
-H1BB39ZvATmWdk551UrM3ZfmJ8gUVcb/j0D3X3/Uec60U2CGvz9wYmvIrNar/wM4
-tXIUAkSKRtd3IJsPs5IzLqfVxFoYtczHQvGm3+YcnUBB/0MeGxBpUqQ/3lJsjHDz
-2OO+qVA043I1EtUYPeLB/Izwv1tytW/MHDSyJQyuv9ze/egUCdUH+N2EujJ/nur4
-Tqn+u66U9g5GjTA8VL3aNboN2NXL2IrDjIpjDP72qwCyNU1l8RPL871efOBfHqKC
-dC36uun1PNbODscJfUxbArm3PdyJVYjRTi7nP96/L5tH1UtxYaJKZIjvrH9ugCJy
-YuAepN8fkuXCZEtWHRI0mTOHJJA54i4FuKPSbHjp6RJKAGP3HyQQigNx9dXDJqsA
-L1INW8N9+LaGWYZkHtT2WSOo/AB8ubbsTRLA/HNNwbsPUJ7STvNQkONTpu2KUx/1
-x8ATSR6osG+mlnZ8f3IpeJYxhe8UuFy9quZuvkqEwjNIodM58M8=
-=J4P4
------END PGP SIGNATURE-----
-
---K3v5rLTTtwFwY5LKJcphaln3hWc6LM0ft--
+-- 
+Regards,
+Ajay

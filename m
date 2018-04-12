@@ -1,86 +1,86 @@
-Received: by 10.28.71.155 with SMTP id m27csp1606916wmi;
-        Thu, 12 Apr 2018 00:42:36 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx49/BkPQSzpDoMnmkKnG1thu1LlHnaHxpT4Isyv374FxIFYFlw9pHfMpKa33A43VZ8QLrvU4
-X-Received: by 10.237.35.216 with SMTP id k24mr12089296qtc.40.1523518956492;
-        Thu, 12 Apr 2018 00:42:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523518956; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp1607016wmi;
+        Thu, 12 Apr 2018 00:42:45 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx4+Brw5ysyssF97NksPjH/tHi5QM7OWPNHsBXqt6itOaPZF3aLRHiEdBt5wn8Vr6UM6K977r
+X-Received: by 10.200.7.69 with SMTP id k5mr12104062qth.165.1523518965632;
+        Thu, 12 Apr 2018 00:42:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523518965; cv=none;
         d=google.com; s=arc-20160816;
-        b=eVjqEIzR53VTu/gR0l2xKMtse1PTwKkO+7M0hSzII315VJAmuLMKp/QYFti+zjyWTi
-         1frR4CF0SSdVcvm88nwQxpFyjrGo5YHEhmE8zo2609CNxYHPbSrqQedKBKrIsQE5uJzZ
-         p+exxs/OwozdRzVwFLGGQAL0kpSDzzLZKs04BRT+Jivwe7sK3uot+6ejzVuOc4yCBOSj
-         xJOHQOfSG6Zu9nuPq/rCeglmRbiu7gHJyX78QxGb0PPYOk00vGw23yuQnj4d6I401PrK
-         DJ1ZHnYtzgfAb+TcUq0c7xqwHhBMAKaq9GqauXvt5teciQ4NE1gXsdEUXHfdgzQOI9jq
-         kTsQ==
+        b=0oNQ9QJs5YavMbx3ztJzowXT9/o7c4K0gfBfuPAmoGbNYk8xtLDH+YcMuidjXBl1k+
+         b/VcVUKNTEqYAzCmrKQn7JRg8+FnJWwHVxFaIqew3wHbSNCkOjNCPf49OYphyMpN+bBt
+         cinCw8d92/3z5rfMhqv5IYE3J47mYAm2hTSeZ/k2F/1O0mD43XSLNmXTFA05qInEJJa4
+         JFpSUSiPy/BUgBZo9NSOV2bUNQH9vVOUhCztcdsFU8FVyEbUbmJS1GY21qNMef/sBd6t
+         75t073Ckhd7lG/ZlyfyiPHvteUv24mzF04G6Qkpob3VV9DU0IfsIv+U+lBprZ8ilqgup
+         MtGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=ErmOpDFKylj33hhMc8bLXlxPWUHt+D0Ek8u65POLN/w=;
-        b=ALgGNINa8LqRiJOX8DCK0aqzQtyzW11fvHzFjF/TBnWdgEVnnZIneHZUi1MGZTtwfC
-         72zcFx/ljxmvIN2gixq3SYdrqQTeU3+9P+vZZ4yjkFdQ3EZTq81BXXeIl6ljEv/do44B
-         RY7nIkDbPMA/BXFWdZNCEzw6mm6pOzmF4+wTkGBB08wRZNsJWWAhDypuuVYk7Ikt+YmJ
-         Rq2v6PY9EfPp5Kklqt5660S0oenbL/OzP3yajOQkJ2Isu36XHU8VAGLEkG4uZYut3rYc
-         u+RHJkYzOIrqXM0JKgoqjQ9mPgcynJVxK/F4OjlA0fT99JNiWEuqvafnnqRpy4N26Q18
-         k1bA==
+        bh=a/avb07Ps2eu1iDrBVdZPtAg2Sc3MZWxJSfc6Uaypn8=;
+        b=JVKW5MbzthBstt2cP0FElH3ljSHCVz1xn3nnKzZT+b2jvTWQNiGRAmjj7xNHs7PpAC
+         +wLzJd6vabRi/zO7zLiHdby935BZofBLYEoUH/45iRod+rPwSPBe4MsN1Y6NPl5Ms+gf
+         PTRvq89Ub4kNhr65133EfwOrRXEeSENRk1CFwt/dNKL5vpjLV5hP8JIw11MyC7IOrq8K
+         QTsshORtuOmgDNe1ELgg75v52Z7kPJF5tyDe1TZXDWLtMZ6h9cw4fV+CkO8zu4dEp6Rb
+         em1R4R5L/gP90dLDjKMX68D0uETcqbPDlG88zbDUfwzSulgpnGxd2zM0xDbmdQ/Wm17s
+         4QGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o38si4017637qto.130.2018.04.12.00.42.36
+        by mx.google.com with ESMTPS id f15si3829716qkm.97.2018.04.12.00.42.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 12 Apr 2018 00:42:36 -0700 (PDT)
+        Thu, 12 Apr 2018 00:42:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44076 helo=lists.gnu.org)
+Received: from localhost ([::1]:44090 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f6WsN-0001sO-Vf
-	for alex.bennee@linaro.org; Thu, 12 Apr 2018 03:42:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49223)
+	id 1f6WsX-000226-4S
+	for alex.bennee@linaro.org; Thu, 12 Apr 2018 03:42:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49476)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1f6WoZ-0006Uv-HX
-	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 03:38:40 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1f6Wor-0006rV-5N
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 03:38:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1f6WoY-00035o-3G
-	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 03:38:39 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:34336 helo=mx1.redhat.com)
+	(envelope-from <eric.auger@redhat.com>) id 1f6Woq-0003Iz-7T
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 03:38:57 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:51388 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1f6WoX-00035N-Un; Thu, 12 Apr 2018 03:38:38 -0400
+	id 1f6Woq-0003IL-0Z; Thu, 12 Apr 2018 03:38:56 -0400
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6D2D24075A67;
-	Thu, 12 Apr 2018 07:38:37 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6C5BE4023BAD;
+	Thu, 12 Apr 2018 07:38:55 +0000 (UTC)
 Received: from localhost.localdomain.com (ovpn-116-192.ams2.redhat.com
 	[10.36.116.192])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id CFD43215CDC6;
-	Thu, 12 Apr 2018 07:38:34 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D0C81215CDC6;
+	Thu, 12 Apr 2018 07:38:52 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org, prem.mallappa@gmail.com
-Date: Thu, 12 Apr 2018 09:37:56 +0200
-Message-Id: <1523518688-26674-6-git-send-email-eric.auger@redhat.com>
+Date: Thu, 12 Apr 2018 09:38:02 +0200
+Message-Id: <1523518688-26674-12-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1523518688-26674-1-git-send-email-eric.auger@redhat.com>
 References: <1523518688-26674-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Thu, 12 Apr 2018 07:38:37 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Thu, 12 Apr 2018 07:38:37 +0000 (UTC) for IP:'10.11.54.6'
+	(mx1.redhat.com [10.11.55.7]);
+	Thu, 12 Apr 2018 07:38:55 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
+	Thu, 12 Apr 2018 07:38:55 +0000 (UTC) for IP:'10.11.54.6'
 	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH v11 05/17] hw/arm/smmuv3: Wired IRQ and GERROR
- helpers
+Subject: [Qemu-arm] [PATCH v11 11/17] target/arm/kvm: Translate the MSI
+ doorbell in kvm_arch_fixup_msi_route
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,177 +97,83 @@ Cc: cdall@kernel.org, mst@redhat.com, jean-philippe.brucker@arm.com,
 	linuc.decode@gmail.com, bharat.bhushan@nxp.com, jintack@cs.columbia.edu
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rtfvRRg3wkjx
+X-TUID: S6vtBMV2Jaod
 
-We introduce some helpers to handle wired IRQs and especially
-GERROR interrupt. SMMU writes GERROR register on GERROR event
-and SW acks GERROR interrupts by setting GERRORn.
-
-The Wired interrupts are edge sensitive hence the pulse usage.
+In case the MSI is translated by an IOMMU we need to fixup the
+MSI route with the translated address.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
+Signed-off-by: Bharat Bhushan <Bharat.Bhushan@nxp.com>
 
 ---
-v9 - v10:
-- s/hwaddr/uint64_t in trace-events
-- use qemu_log_mask LOG_UNIMP on PRI IRQ
-- add a comment saying smmuv3_trigger_irq and smmuv3_write_gerrorn
-  will become static later on
-- write gerrorn without filtering (ie. even if the guest toggles non
-  active IRQs)
-- pulse if at least one new IRQ type
-- smmuv3_eventq_irq_enabled and smmuv3_gerror_irq_enabled become
-  static inline
+v9 -> v10:
+- use address_space_translate
 
-v7 -> v8:
-- remove SMMU_PENDING_GERRORS macro
-- properly toggle gerror
-- properly sanitize gerrorn write
+v5 -> v6:
+- use IOMMUMemoryRegionClass API
 ---
- hw/arm/smmuv3-internal.h | 36 +++++++++++----------------
- hw/arm/smmuv3.c          | 64 ++++++++++++++++++++++++++++++++++++++++++++++++
- hw/arm/trace-events      |  3 +++
- 3 files changed, 81 insertions(+), 22 deletions(-)
+ target/arm/kvm.c        | 27 +++++++++++++++++++++++++++
+ target/arm/trace-events |  3 +++
+ 2 files changed, 30 insertions(+)
 
-diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-index a6461fe..32f81d4 100644
---- a/hw/arm/smmuv3-internal.h
-+++ b/hw/arm/smmuv3-internal.h
-@@ -129,28 +129,6 @@ typedef struct Evt  {
-     uint32_t word[8];
- } Evt;
- 
--/**
-- * smmu_read64 - 64-bit register read utility function supporting
-- * aligned 32-bit word access to both 32-bit halves and aligned 64-bit
-- * access.
-- *
-- * @r: register address
-- * @offset: byte offset if 32-bit access
-- * @size: read byte size
-- */
--static inline uint64_t smmu_read64(uint64_t r, unsigned offset,
--                                   unsigned size)
--{
--    if (size == 8) {
--        return r;
--    }
--
--    /* 32 bit access */
--    assert(!offset || offset == 4);
--
--    return extract64(r, offset << 3, 32);
--}
--
- static inline uint32_t smmuv3_idreg(int regoffset)
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index ecc39ac..c6f6aa8 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -20,8 +20,10 @@
+ #include "sysemu/kvm.h"
+ #include "kvm_arm.h"
+ #include "cpu.h"
++#include "trace.h"
+ #include "internals.h"
+ #include "hw/arm/arm.h"
++#include "hw/pci/pci.h"
+ #include "exec/memattrs.h"
+ #include "exec/address-spaces.h"
+ #include "hw/boards.h"
+@@ -649,6 +651,31 @@ int kvm_arm_vgic_probe(void)
+ int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
+                              uint64_t address, uint32_t data, PCIDevice *dev)
  {
-     /*
-@@ -164,4 +142,18 @@ static inline uint32_t smmuv3_idreg(int regoffset)
-     return smmuv3_ids[regoffset / 4];
++    AddressSpace *as = pci_device_iommu_address_space(dev);
++    hwaddr xlat, len, doorbell_gpa;
++    MemoryRegionSection mrs;
++    MemoryRegion *mr;
++
++    if (as == &address_space_memory) {
++        return 0;
++    }
++
++    /* MSI doorbell address is translated by an IOMMU */
++
++    rcu_read_lock();
++    mr = address_space_translate(as, address, &xlat, &len, true);
++    if (!mr) {
++        return 1;
++    }
++    mrs = memory_region_find(mr, xlat, 0);
++    doorbell_gpa = mrs.offset_within_address_space;
++    rcu_read_unlock();
++
++    route->u.msi.address_lo = doorbell_gpa;
++    route->u.msi.address_hi = doorbell_gpa >> 32;
++
++    trace_kvm_arm_fixup_msi_route(address, doorbell_gpa);
++
+     return 0;
  }
  
-+static inline bool smmuv3_eventq_irq_enabled(SMMUv3State *s)
-+{
-+    return FIELD_EX32(s->irq_ctrl, IRQ_CTRL, EVENTQ_IRQEN);
-+}
+diff --git a/target/arm/trace-events b/target/arm/trace-events
+index 9e37131..6b759f9 100644
+--- a/target/arm/trace-events
++++ b/target/arm/trace-events
+@@ -8,3 +8,6 @@ arm_gt_tval_write(int timer, uint64_t value) "gt_tval_write: timer %d value 0x%"
+ arm_gt_ctl_write(int timer, uint64_t value) "gt_ctl_write: timer %d value 0x%" PRIx64
+ arm_gt_imask_toggle(int timer, int irqstate) "gt_ctl_write: timer %d IMASK toggle, new irqstate %d"
+ arm_gt_cntvoff_write(uint64_t value) "gt_cntvoff_write: value 0x%" PRIx64
 +
-+static inline bool smmuv3_gerror_irq_enabled(SMMUv3State *s)
-+{
-+    return FIELD_EX32(s->irq_ctrl, IRQ_CTRL, GERROR_IRQEN);
-+}
-+
-+/* public until callers get introduced */
-+void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq, uint32_t gerror_mask);
-+void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t gerrorn);
-+
- #endif
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index dba4656..46683a8 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -30,6 +30,70 @@
- #include "hw/arm/smmuv3.h"
- #include "smmuv3-internal.h"
- 
-+/**
-+ * smmuv3_trigger_irq - pulse @irq if enabled and update
-+ * GERROR register in case of GERROR interrupt
-+ *
-+ * @irq: irq type
-+ * @gerror_mask: mask of gerrors to toggle (relevant if @irq is GERROR)
-+ */
-+void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq, uint32_t gerror_mask)
-+{
-+
-+    bool pulse = false;
-+
-+    switch (irq) {
-+    case SMMU_IRQ_EVTQ:
-+        pulse = smmuv3_eventq_irq_enabled(s);
-+        break;
-+    case SMMU_IRQ_PRIQ:
-+        qemu_log_mask(LOG_UNIMP, "PRI not yet supported\n");
-+        break;
-+    case SMMU_IRQ_CMD_SYNC:
-+        pulse = true;
-+        break;
-+    case SMMU_IRQ_GERROR:
-+    {
-+        uint32_t pending = s->gerror ^ s->gerrorn;
-+        uint32_t new_gerrors = ~pending & gerror_mask;
-+
-+        if (!new_gerrors) {
-+            /* only toggle non pending errors */
-+            return;
-+        }
-+        s->gerror ^= new_gerrors;
-+        trace_smmuv3_write_gerror(new_gerrors, s->gerror);
-+
-+        pulse = smmuv3_gerror_irq_enabled(s);
-+        break;
-+    }
-+    }
-+    if (pulse) {
-+            trace_smmuv3_trigger_irq(irq);
-+            qemu_irq_pulse(s->irq[irq]);
-+    }
-+}
-+
-+void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t new_gerrorn)
-+{
-+    uint32_t pending = s->gerror ^ s->gerrorn;
-+    uint32_t toggled = s->gerrorn ^ new_gerrorn;
-+
-+    if (toggled & ~pending) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "guest toggles non pending errors = 0x%x\n",
-+                      toggled & ~pending);
-+    }
-+
-+    /*
-+     * We do not raise any error in case guest toggles bits corresponding
-+     * to not active IRQs (CONSTRAINED UNPREDICTABLE)
-+     */
-+    s->gerrorn = new_gerrorn;
-+
-+    trace_smmuv3_write_gerrorn(toggled & pending, s->gerrorn);
-+}
-+
- static void smmuv3_init_regs(SMMUv3State *s)
- {
-     /**
-diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index 2f3d74a..b77f8d2 100644
---- a/hw/arm/trace-events
-+++ b/hw/arm/trace-events
-@@ -15,3 +15,6 @@ smmu_get_pte(uint64_t baseaddr, int index, uint64_t pteaddr, uint64_t pte) "base
- 
- #hw/arm/smmuv3.c
- smmuv3_read_mmio(uint64_t addr, uint64_t val, unsigned size, uint32_t r) "addr: 0x%"PRIx64" val:0x%"PRIx64" size: 0x%x(%d)"
-+smmuv3_trigger_irq(int irq) "irq=%d"
-+smmuv3_write_gerror(uint32_t toggled, uint32_t gerror) "toggled=0x%x, new GERROR=0x%x"
-+smmuv3_write_gerrorn(uint32_t acked, uint32_t gerrorn) "acked=0x%x, new GERRORN=0x%x"
++# target/arm/kvm.c
++kvm_arm_fixup_msi_route(uint64_t iova, uint64_t gpa) "MSI iova = 0x%"PRIx64" is translated into 0x%"PRIx64
 -- 
 2.5.5
 

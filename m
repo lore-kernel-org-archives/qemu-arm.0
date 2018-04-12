@@ -1,112 +1,100 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp588924wrq;
-        Wed, 6 Jun 2018 02:32:05 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJQDLygmqKEFl0SkkyjiCO0AT/ChjOGpfwTU2O/FZGuxoM+Czfwx8/yO5uJM1WPvFMTo2zE
-X-Received: by 2002:ac8:21e5:: with SMTP id 34-v6mr1996071qtz.198.1528277525262;
-        Wed, 06 Jun 2018 02:32:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528277525; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp2085095wmi;
+        Thu, 12 Apr 2018 09:08:27 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx48R7eELQYoBx7faIPHcRVowQB2A4yaZQBY7SLsxKC81oYK+2YjeYOQaHhkEawgWvFwEk28e
+X-Received: by 10.13.251.5 with SMTP id l5mr717350ywf.323.1523549306976;
+        Thu, 12 Apr 2018 09:08:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523549306; cv=none;
         d=google.com; s=arc-20160816;
-        b=vuY1QqjTULBuQrxl5mRXlM0Ty/q8wUnNRMZSPgh1/NhfSkPjnydwE34MI5gg6ImvZy
-         xkkIrQVtLr5dhWvIEql6asihIYis7EcmQHhAMea8cam9lPLKEN0wIc6wdXh7onoysMgO
-         CshiD+XOZbPOeySXXraZGLCG07ZjEk2Bmk6Q1G4vV+zj7Qj4oKoHajRD69t/JZi7gNiq
-         qPUHI7EJduCIf37IIAUsvnO0wDezQD9u4vcNBZk9au5N5ilsJc7fUIIEMRCM4p5MeIyX
-         VFhigc8pFnJ2MVbpSpIv331v/lBqLCBwXjVKctmMGJXTn+aowa/7jri2bpPreZ1PFKwP
-         qLBw==
+        b=Ix1bBDqbaXK83UP0utHmQB6gu0z9jsaEzrY1IXBNFmWP4ojmZnF7YXzL2fejKLLm/L
+         u12M1EhR/K2mre3LKbJhiSUBSvMWLDjZK+QYS1xrk4kv5ZiNzWRjAB2xFJi8Kh6Lqxh4
+         kUBw3IpIHitx4g7C4YW65mnb3YdDmtbdTcIdAqNss3reY4vbqvnJb1nu9aNNVI8PBKH5
+         ZddbaI/xFYZ15h7W3Akah6PDd9AS3pZe2nx079ao5LhWalAmWwemrQWZ7x/RhrzPtxgI
+         2j82fll2uKAc9A9JtbGO5Te2C/MLYst2TwMxMDxe4+IvAXCdHHyut21tqQiv0QXL8RCJ
+         6vQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:dkim-signature
-         :dkim-signature:arc-authentication-results;
-        bh=mUF6JYBIs8bapmruX0S4vkXtU4Tlvn4f4Pxjmr7UVbA=;
-        b=ejQ3Oehf7E6R7mUnRAcneaW2y86DxWriW1IXbpjFGG413P+yDHd9cV77nWC3pud9GY
-         I2FAB5/V0r3/CQmvptCbiQjNAPIZ8WdoymnuenEhVqf7rtM6x14M5iRO1RpF6/j4OmYK
-         4JCxoaKKOcRym7/uVA3XUZVRNAa22WwysAq5bk0BDT8b/Nb0OQqdMRCMiEx9YE+Mx+tJ
-         VDo7F0/dbUgS/7XYdQzlSBga2TDUn4FWJRmmbIolEq+scYg4m+pl0C/j609RSWAB29dD
-         H6WtFuBf/GofdcNU9DMTIIKmEdfXyqsJJpbVBV3o14v54+nu8ggDfXViglNdz5wBDBpu
-         g3vQ==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=3mMPHyfF5SAKS8KifyudL60zWR3csGHQvtfgv2CwiKU=;
+        b=wxmLwNee3ZXi3tTmvDidaOxEFb0QOPVbVI1Sr30gmZQreemPETWJMuqCRQou7G1nyn
+         B/PyovMcZEKXZORR4rdY3yZrinJH27bIbtPlQd76u708IK1R0bYZ4+fYSqh/OQlTx/ae
+         TK8McCVU1iRKHn2D8t0eHrN+dmsMBONs9i0vTSZ95HzbEa9Qw07gnq2R69mDQ6Ohb15m
+         pMVCvkSrthmfNF52lQwmjDjyELRmVma7/TDISN4Ck/JdLHzPHwqpcrv4HGNpn9GDpuyF
+         PS4Yopx0GQUxss7EzYrIdBljfrG68eXxaRaRmg1mVKQsllrCzC26BaQ0BI+QC17WD1UF
+         10Hw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=5/7xSwhH;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=L5MSCPR6;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=L5MSCPR6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@linaro.org header.s=google header.b=czYzJDEc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a10-v6si2951235qvd.43.2018.06.06.02.32.05
+        by mx.google.com with ESMTPS id v140si5130955qka.110.2018.04.12.09.08.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 06 Jun 2018 02:32:05 -0700 (PDT)
+        Thu, 12 Apr 2018 09:08:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=5/7xSwhH;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=L5MSCPR6;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=L5MSCPR6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51016 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=czYzJDEc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:50742 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fQUnU-0001iu-M1
-	for alex.bennee@linaro.org; Wed, 06 Jun 2018 05:32:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33818)
+	id 1f6elu-0000Fg-Ga
+	for alex.bennee@linaro.org; Thu, 12 Apr 2018 12:08:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56033)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fQUnG-0001iP-AL
-	for qemu-arm@nongnu.org; Wed, 06 Jun 2018 05:31:51 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1f6elX-00005A-CP
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 12:08:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fQUnD-0003gm-0U
-	for qemu-arm@nongnu.org; Wed, 06 Jun 2018 05:31:50 -0400
-Received: from greensocs.com ([193.104.36.180]:53694)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>)
-	id 1fQUnC-0003fX-ID; Wed, 06 Jun 2018 05:31:46 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id A2B8F443552;
-	Wed,  6 Jun 2018 11:31:38 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1528277498;
-	bh=2sAi8a9Z+tTbV0tR7/7r0u+odNweZxuimVSx40dIFdk=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=5/7xSwhHKsR2wlVcEVnSAIf+YhLHKMS1wKlpfS98setBdUPGOE5lFwHUTYbdBm7yU
-	43JVe5g/g1RegO2Gc7PZXWyfg/TsZEyeHBdQlmx6VdSbDQMOE187u3PnQSmfsw9LuA
-	GfEuj4OVRQpeTI0Vrdz0FICFwoe8UciNdq9zkHz8=
-X-Virus-Scanned: amavisd-new at greensocs.com
-Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=L5MSCPR6;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=L5MSCPR6
-Received: from greensocs.com ([127.0.0.1])
-	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CKNhkdNDX3Um; Wed,  6 Jun 2018 11:31:37 +0200 (CEST)
-Received: by greensocs.com (Postfix, from userid 998)
-	id 996F544354B; Wed,  6 Jun 2018 11:31:37 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1528277497;
-	bh=2sAi8a9Z+tTbV0tR7/7r0u+odNweZxuimVSx40dIFdk=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=L5MSCPR6JOmxF8be6JpTrehO76KQf9gvI2o0D2O3SHxwVqzRdNAuCU05DPM/DqcCA
-	3qDUV2Ugt6tgIXBoQ4lDPFK/3TSoXm34fqekrge9RlpEONt78JDEEj127scH9BZNdX
-	7kV3qKvepx4itIVLeb6BBqF5ydy9SrVuUGjb6Wr4=
-Received: from michell-laptop.bar.greensocs.com (antfield.tima.u-ga.fr
-	[147.171.129.253])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	(Authenticated sender: luc.michel@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id 4689D443557;
-	Wed,  6 Jun 2018 11:31:37 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1528277497;
-	bh=2sAi8a9Z+tTbV0tR7/7r0u+odNweZxuimVSx40dIFdk=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=L5MSCPR6JOmxF8be6JpTrehO76KQf9gvI2o0D2O3SHxwVqzRdNAuCU05DPM/DqcCA
-	3qDUV2Ugt6tgIXBoQ4lDPFK/3TSoXm34fqekrge9RlpEONt78JDEEj127scH9BZNdX
-	7kV3qKvepx4itIVLeb6BBqF5ydy9SrVuUGjb6Wr4=
-From: luc.michel@greensocs.com
-To: qemu-devel@nongnu.org
-Date: Wed,  6 Jun 2018 11:30:57 +0200
-Message-Id: <20180606093101.30518-3-luc.michel@greensocs.com>
-X-Mailer: git-send-email 2.17.0
-In-Reply-To: <20180606093101.30518-1-luc.michel@greensocs.com>
-References: <20180606093101.30518-1-luc.michel@greensocs.com>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 193.104.36.180
-Subject: [Qemu-arm] [PATCH 2/6] intc/arm_gic: Remove some dead code and put
- some functions static
+	(envelope-from <peter.maydell@linaro.org>) id 1f6elW-0006wY-GG
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 12:08:03 -0400
+Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:42061)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1f6elW-0006vd-Al
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 12:08:02 -0400
+Received: by mail-ot0-x244.google.com with SMTP id h55-v6so6595073ote.9
+	for <qemu-arm@nongnu.org>; Thu, 12 Apr 2018 09:08:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=3mMPHyfF5SAKS8KifyudL60zWR3csGHQvtfgv2CwiKU=;
+	b=czYzJDEcWKuaplwC/5rwhn7r21/dQRf3ncU6fAtEpK9xSt28/o0hi870VkPsfbz/mz
+	XsD7UQOH6UGWxiJPiA899ewIuzs3JcLjWifUTBbUKKR3rUPuZ6ZoGdLRSRCCZ2PIy8tr
+	d0V5D7wsoYZrQzHx+GWw2LBMjmOWNmgmYIvqg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=3mMPHyfF5SAKS8KifyudL60zWR3csGHQvtfgv2CwiKU=;
+	b=FXw+2366hs+CeE1xNmd3H1/3ZcnibOnamCmln49pZIgGk5jM2CfETm2yoWNus/yyIj
+	XuVqvD88wa7O/asJWdtEO54JE1+ZlUBtfbQssDg1esFFSiUCx4MC3A/4hdn1kDU/CIqt
+	t8RNSHleOpwYI9FTV/YeVDmUprvs5IHkqgvQzItQrY9Id0X8kCCrfk8tUSxdwuu7AOj5
+	S8OUwLfGiI2VYcPz6GvOnaFQoCH6sA3h4v7wbp3uHMxU0FxSvtObFR9Ek9J7yvoQgXkf
+	GJBowysAJe6yKcvAu1NcpM1Rt1a4BHI86ccVANaVpufGs/rcJ0s8QohkliuO2Ogtv1pS
+	RN2w==
+X-Gm-Message-State: ALQs6tCvhLgM+lONIsx772RUoqSbHLyucogvUOqt3psI/J1P1r0VPcj7
+	j1DidzWRHw4s+ySSfCFkS4Wp76uFRR6JMtNz/qxs7A==
+X-Received: by 2002:a9d:56f0:: with SMTP id
+	b45-v6mr1151552otj.294.1523549281564; 
+	Thu, 12 Apr 2018 09:08:01 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Thu, 12 Apr 2018 09:07:41
+	-0700 (PDT)
+In-Reply-To: <1521232280-13089-3-git-send-email-alindsay@codeaurora.org>
+References: <1521232280-13089-1-git-send-email-alindsay@codeaurora.org>
+	<1521232280-13089-3-git-send-email-alindsay@codeaurora.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 12 Apr 2018 17:07:41 +0100
+Message-ID: <CAFEAcA_sMbYp2cu2im=kWaxRrzpW8z2mBx5=ihSAHba4K5T_8A@mail.gmail.com>
+To: Aaron Lindsay <alindsay@codeaurora.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::244
+Subject: Re: [Qemu-arm] [PATCH v3 02/22] target/arm: A15 PMCEID0
+ initialization style nit
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -118,96 +106,36 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, mark.burton@greensocs.com,
-	saipava@xilinx.com, edgari@xilinx.com, qemu-arm@nongnu.org,
-	Jan Kiszka <jan.kiszka@web.de>, Luc MICHEL <luc.michel@greensocs.com>
+Cc: Michael Spradling <mspradli@codeaurora.org>,
+	Digant Desai <digantd@codeaurora.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: P8i6htMUio8H
+X-TUID: dyQz4Iu8Fxl4
 
-From: Luc MICHEL <luc.michel@greensocs.com>
+On 16 March 2018 at 20:31, Aaron Lindsay <alindsay@codeaurora.org> wrote:
+> Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
+> ---
+>  target/arm/cpu.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 022d8c5..072cbbf 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -1524,7 +1524,7 @@ static void cortex_a15_initfn(Object *obj)
+>      cpu->id_pfr0 = 0x00001131;
+>      cpu->id_pfr1 = 0x00011011;
+>      cpu->id_dfr0 = 0x02010555;
+> -    cpu->pmceid0 = 0x0000000;
+> +    cpu->pmceid0 = 0x00000000;
+>      cpu->pmceid1 = 0x00000000;
+>      cpu->id_afr0 = 0x00000000;
+>      cpu->id_mmfr0 = 0x10201105;
 
-Some functions are now only used in arm_gic.c, put them static. Some of
-them where only used by the NVIC implementation and are not used
-anymore, so remove them.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Signed-off-by: Luc MICHEL <luc.michel@greensocs.com>
----
- hw/intc/arm_gic.c      | 23 ++---------------------
- hw/intc/gic_internal.h |  4 ----
- 2 files changed, 2 insertions(+), 25 deletions(-)
-
-diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-index 141f3e7a48..679b19fb94 100644
---- a/hw/intc/arm_gic.c
-+++ b/hw/intc/arm_gic.c
-@@ -71,7 +71,7 @@ static inline bool gic_has_groups(GICState *s)
- 
- /* TODO: Many places that call this routine could be optimized.  */
- /* Update interrupt status after enabled or pending bits have been changed.  */
--void gic_update(GICState *s)
-+static void gic_update(GICState *s)
- {
-     int best_irq;
-     int best_prio;
-@@ -137,19 +137,6 @@ void gic_update(GICState *s)
-     }
- }
- 
--void gic_set_pending_private(GICState *s, int cpu, int irq)
--{
--    int cm = 1 << cpu;
--
--    if (gic_test_pending(s, irq, cm)) {
--        return;
--    }
--
--    DPRINTF("Set %d pending cpu %d\n", irq, cpu);
--    GIC_DIST_SET_PENDING(irq, cm);
--    gic_update(s);
--}
--
- static void gic_set_irq_11mpcore(GICState *s, int irq, int level,
-                                  int cm, int target)
- {
-@@ -565,7 +552,7 @@ static void gic_deactivate_irq(GICState *s, int cpu, int irq, MemTxAttrs attrs)
-     GIC_DIST_CLEAR_ACTIVE(irq, cm);
- }
- 
--void gic_complete_irq(GICState *s, int cpu, int irq, MemTxAttrs attrs)
-+static void gic_complete_irq(GICState *s, int cpu, int irq, MemTxAttrs attrs)
- {
-     int cm = 1 << cpu;
-     int group;
-@@ -1418,12 +1405,6 @@ static const MemoryRegionOps gic_cpu_ops = {
-     .endianness = DEVICE_NATIVE_ENDIAN,
- };
- 
--/* This function is used by nvic model */
--void gic_init_irqs_and_distributor(GICState *s)
--{
--    gic_init_irqs_and_mmio(s, gic_set_irq, gic_ops);
--}
--
- static void arm_gic_realize(DeviceState *dev, Error **errp)
- {
-     /* Device instance realize function for the GIC sysbus device */
-diff --git a/hw/intc/gic_internal.h b/hw/intc/gic_internal.h
-index 6f8d242904..a2075a94db 100644
---- a/hw/intc/gic_internal.h
-+++ b/hw/intc/gic_internal.h
-@@ -75,11 +75,7 @@
- /* The special cases for the revision property: */
- #define REV_11MPCORE 0
- 
--void gic_set_pending_private(GICState *s, int cpu, int irq);
- uint32_t gic_acknowledge_irq(GICState *s, int cpu, MemTxAttrs attrs);
--void gic_complete_irq(GICState *s, int cpu, int irq, MemTxAttrs attrs);
--void gic_update(GICState *s);
--void gic_init_irqs_and_distributor(GICState *s);
- void gic_dist_set_priority(GICState *s, int cpu, int irq, uint8_t val,
-                            MemTxAttrs attrs);
- 
--- 
-2.17.0
-
+thanks
+-- PMM

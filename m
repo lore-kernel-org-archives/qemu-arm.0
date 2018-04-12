@@ -1,102 +1,100 @@
-Received: by 10.28.71.155 with SMTP id m27csp2146638wmi;
-        Thu, 12 Apr 2018 10:08:40 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx48mTEHBhGo/tQIh4mdlFejCXEgeNYC8xOT50EwpZ7PvNagevp4AQX3C2zGgnX0IqxRNmBSB
-X-Received: by 10.55.200.69 with SMTP id c66mr2237562qkj.150.1523552920421;
-        Thu, 12 Apr 2018 10:08:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523552920; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp2159878wmi;
+        Thu, 12 Apr 2018 10:22:34 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx4/dT5++gjNUiqzwobE1nPkEqRXPdmsHP9Frr/Q0rtg1TpVAoK+Qq75lzmR5zwwYlWl1Qlh/
+X-Received: by 10.200.35.67 with SMTP id b3mr2393912qtb.91.1523553754699;
+        Thu, 12 Apr 2018 10:22:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523553754; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZDYwD+9n6qOZ18+hlECMm4EK7qF4xCeDJRICLi0P311d5SPD3+FKshZd94jtFAPsgm
-         Iis4zlSNEEI66V/ZsqIz+ptnLneeFax00NbNETaAdJxOMIYuBwZcUZ5994wSBmDqQpOd
-         faKAvIELGaLMwzka1kXrqEbAIG7b9TcO2a7KlvQMEigMn98F27tMOBXaPtcuWxzIrXTN
-         PbKrzduYyQRnfUKw78eK+AUbxRV8ZQr084AJPoyRmjtVlLsys3lX6Ar+yQCIILADfMU8
-         6b8+d54Q62/AjUvr5DWhUwtkaQkMK/eRBpu9EJVBeyCP+ySLhvYjs+3fihqySVRa6OXd
-         OTGQ==
+        b=IfH6UMbTCM+MmlRg0XSNfgxpqCO4cVFAt35tMrrkHAx3fSpjFnqKhLLpu1AtZZdGgl
+         DmxMkzs9lFvnAWKsJa217GzUFd1gIOhrF0/pZK3NuLMpwZnoAPLNgJs8maZP8ERnzxuF
+         8GZbZEJp5n/VUCJ7XkqiugMaxYbeUcf5oKDGesSP8IBzxYZNG7UyzVKXq3o6PY9qfnh9
+         qG1cf5aPjovW6IEkCTm9rEhzlXF6mxxKV2pcT+SeV4xMb1iBxLoHpFbCcI3GR09nCr6P
+         Rvo8dJJvVLC5biK/gg/Uah5oTESSLTPwAGNnqm3RFBvIVAp8roZAuU6DT/8nnv3x5o6V
+         ezkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dmarc-filter:dkim-signature:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=iwCEbdHa7VTRygO46ez1EYmnE/Yh6tVNqTGg06Y951M=;
-        b=TgE3JStcR8YsdTM41Hcrku7PpN0W82yLWFwTUnAHlLxcwwq8fqu8hiv1Fgc8fJvmna
-         SnV9f/rGuKSS1qlDx336xjmWVe7bwYylfy+mbXUv2iJz1a+axCjHqbLC0Yr46lyIhKgC
-         16qulqgpNvR8P7fXHs1NisYTOi90mVgj306nRxZpB8seUvkRymoFgrekaT45IuTzoNW/
-         M1CRJBTGt+QjHJJvkKum3ozR8vAQDQ+xy6DvxDD9pPn9zZ5jg+CkFfVCBA5nqWmTBIMC
-         Uz7PBdWRS1v/Gth0wR/eMhrPglmOKjboYIPOy5yx1WVfIsdyU4HoPDnu25nEOqFYKWqC
-         ltvw==
+        bh=SKsLG6t8t6CoKAb8vYylLFCsAi1llE2Po+sSFcekbH0=;
+        b=pYSY6pYUmyG1CydAn0pgP0m+tDuM4KonLL7Tvd6fQ6BPtuk2Lm45D5N8VR/PBjQ8W0
+         tkJShLLM/6N2Tk5r5oHwaMxB4/HoOQjLD4RcB6fULFCvD/sH+1B1zwTjkkcAWbwxB3qa
+         uZkTciLqjMhGVPI0+Ju9QJ8+v+Sm13n3uhWprClvXRBVaGmWZLLrzFGd13Si5ZmA6WHB
+         qiVBriyunrafxvJ5Qnqord0KufVjH99GrTRYmgnsDig5JhUMYgHeJn1wBigNVeCxD5O1
+         FIQdLofF5e0+W9g4qYVKZ5KX3R0Mt4G9qzEkH6i+2TFA9wwJzF/nIznvQCN9Y3r+RpTU
+         Ttzg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=iHP8POBF;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=ByFbNjun;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@linaro.org header.s=google header.b=dMAU7xpr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o24si3569095qtb.58.2018.04.12.10.08.40
+        by mx.google.com with ESMTPS id c6si5143516qkb.164.2018.04.12.10.22.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 12 Apr 2018 10:08:40 -0700 (PDT)
+        Thu, 12 Apr 2018 10:22:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=iHP8POBF;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=ByFbNjun;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:55587 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=dMAU7xpr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56547 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f6fiB-0000ND-To
-	for alex.bennee@linaro.org; Thu, 12 Apr 2018 13:08:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53765)
+	id 1f6fve-0001FN-5I
+	for alex.bennee@linaro.org; Thu, 12 Apr 2018 13:22:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35882)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alindsay@codeaurora.org>) id 1f6fhz-0000LD-5q
-	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 13:08:28 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1f6fvR-0001DW-2B
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 13:22:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alindsay@codeaurora.org>) id 1f6fht-0003Ta-Em
-	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 13:08:27 -0400
-Received: from smtp.codeaurora.org ([198.145.29.96]:40042)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <alindsay@codeaurora.org>)
-	id 1f6fht-0003Sz-4V; Thu, 12 Apr 2018 13:08:21 -0400
-Received: by smtp.codeaurora.org (Postfix, from userid 1000)
-	id 0298A60817; Thu, 12 Apr 2018 17:08:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1523552900;
-	bh=WvdeneUaCw0ip+yogIlnfZbfi6YP1Tu49YXH8EdoTX8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=iHP8POBFHL1F5bRlwALe20jcHMnE+fd4UMn37/vgTCg5aD10exIA8QU6WM8nLpYfC
-	s0GQbmeVEJITMVJOjc7getV6c5I6PukUctQacnHpXmQa+UygdSRPoTT6GBWvszaChH
-	QuDjulXrDvmmjpOg/NgNV4a6tKVJgGq/y3Uiz71k=
-Received: from codeaurora.org (global_nat1_iad_fw.qualcomm.com [129.46.232.65])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	(Authenticated sender: alindsay@smtp.codeaurora.org)
-	by smtp.codeaurora.org (Postfix) with ESMTPSA id A056E60C55;
-	Thu, 12 Apr 2018 17:08:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1523552899;
-	bh=WvdeneUaCw0ip+yogIlnfZbfi6YP1Tu49YXH8EdoTX8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ByFbNjun7zzwRuPtX+HdqIBiAzYzCaajOx/ogNL3NZoTljljxng2Nll4I1l0T71zS
-	DJ9YE70T/1yaINdYC1sr5ATfPRnamogNVB+9OLgA1NjE4GzPHgNfeaHm7/IKKqjGOx
-	XCJAabZgnXr6mgG3/eDLgNkvzeMiuhDcdfnDyX+4=
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org A056E60C55
-Authentication-Results: pdx-caf-mail.web.codeaurora.org;
-	dmarc=none (p=none dis=none) header.from=codeaurora.org
-Authentication-Results: pdx-caf-mail.web.codeaurora.org;
-	spf=none smtp.mailfrom=alindsay@codeaurora.org
-Date: Thu, 12 Apr 2018 13:08:16 -0400
-From: Aaron Lindsay <alindsay@codeaurora.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20180412170816.GI24561@codeaurora.org>
+	(envelope-from <peter.maydell@linaro.org>) id 1f6fvQ-0003j6-5g
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 13:22:21 -0400
+Received: from mail-ot0-x234.google.com ([2607:f8b0:4003:c0f::234]:36359)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1f6fvQ-0003il-1F
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 13:22:20 -0400
+Received: by mail-ot0-x234.google.com with SMTP id n40-v6so6878106otd.3
+	for <qemu-arm@nongnu.org>; Thu, 12 Apr 2018 10:22:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=SKsLG6t8t6CoKAb8vYylLFCsAi1llE2Po+sSFcekbH0=;
+	b=dMAU7xpr3ba9vzkIxYb/vLxclHW11Qhj1Jrql5mcgo6AmmkpBLgKjeNsrny80sXKr7
+	Ncj0C2PedklLA34U76dUst0eXoBGdaGqlxsVNxYmHfFrvGoNabzEG8J7DoGMaWJ/nGTP
+	Q2VFsY8th1sY6k6khJ1e4wk1J/yPcjgIIgcQs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=SKsLG6t8t6CoKAb8vYylLFCsAi1llE2Po+sSFcekbH0=;
+	b=PSo+mDQNj9xSPUiJVsVLJekVfLvsDNROYbd2sbrzFQIX7I1oNNl0t8NrtO8HX6Xxjd
+	YLHkJfLNiHd+9kKLzUPnBRpega6CbKpfKB+CbRKBHOEWN8/E7uxfsYxk37XJ788fF/BG
+	arzuwz1Tz3PKeEgGFRo0EDQ970TcWv3lzpOWsOaK8B72OIZbk4sa11377PC8WOdo7KWP
+	oCrcXQrCElSvFJSutw4h7BsDSE1ohiS21L1E6prnl1DAD4Vu+j/KkKzhudzY65hNtSJj
+	0UJ65eEn5/qinzY/cl5Fu4RLd+HNIjpAMH2sAf1FvO86X6dtgr59RsfwlV8SHhgq3m+B
+	mM+w==
+X-Gm-Message-State: ALQs6tAVWF/qAQ6I5YKPrjkTo1kvVlVYT6XQ4vcHDCbXRD0gldO0gkZ7
+	GgMc7uq8uGIh8qlcrRh4WhpU9vMOYMnVH4dv5JwUWw==
+X-Received: by 2002:a9d:56f0:: with SMTP id
+	b45-v6mr1345875otj.294.1523553739500; 
+	Thu, 12 Apr 2018 10:22:19 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Thu, 12 Apr 2018 10:21:59
+	-0700 (PDT)
+In-Reply-To: <20180412170816.GI24561@codeaurora.org>
 References: <1521232280-13089-1-git-send-email-alindsay@codeaurora.org>
 	<1521232280-13089-11-git-send-email-alindsay@codeaurora.org>
 	<CAFEAcA8XARzPc-YEoQVQUEoV2gL+ZOLsqzxhh36xzqjXZXniPw@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA8XARzPc-YEoQVQUEoV2gL+ZOLsqzxhh36xzqjXZXniPw@mail.gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 198.145.29.96
+	<20180412170816.GI24561@codeaurora.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 12 Apr 2018 18:21:59 +0100
+Message-ID: <CAFEAcA8E0NiXMZDRmU1zKCsm78Y15b-f=mbxvqywhfnW81XR7A@mail.gmail.com>
+To: Aaron Lindsay <alindsay@codeaurora.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::234
 Subject: Re: [Qemu-arm] [PATCH v3 10/22] target/arm: Allow EL change hooks
  to do IO
 X-BeenThere: qemu-arm@nongnu.org
@@ -117,89 +115,46 @@ Cc: Michael Spradling <mspradli@codeaurora.org>,
 	qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HgaQ6vmOQ+Lv
+X-TUID: kv937fhuk6VA
 
-On Apr 12 17:53, Peter Maydell wrote:
-> On 16 March 2018 at 20:31, Aaron Lindsay <alindsay@codeaurora.org> wrote:
-> > During code generation, surround CPSR writes and exception returns which
-> > call the EL change hooks with gen_io_start/end. The immediate need is
-> > for the PMU to access the clock and icount during EL change to support
-> > mode filtering.
-> >
-> > Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
-> > ---
-> >  target/arm/translate-a64.c | 2 ++
-> >  target/arm/translate.c     | 4 ++++
-> >  2 files changed, 6 insertions(+)
-> >
-> > diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-> > index 31ff047..e1ae676 100644
-> > --- a/target/arm/translate-a64.c
-> > +++ b/target/arm/translate-a64.c
-> > @@ -1919,7 +1919,9 @@ static void disas_uncond_b_reg(DisasContext *s, uint32_t insn)
-> >              unallocated_encoding(s);
-> >              return;
-> >          }
-> > +        gen_io_start();
-> >          gen_helper_exception_return(cpu_env);
-> > +        gen_io_end();
-> 
-> You don't want to call gen_io_start() or gen_io_end() unless
-> tb_cflags(s->base.tb) & CF_USE_ICOUNT) is true.
-> 
-> (Ditto in the other cases below.)
+On 12 April 2018 at 18:08, Aaron Lindsay <alindsay@codeaurora.org> wrote:
+> On Apr 12 17:53, Peter Maydell wrote:
+>> On 16 March 2018 at 20:31, Aaron Lindsay <alindsay@codeaurora.org> wrote:
+>> > During code generation, surround CPSR writes and exception returns which
+>> > call the EL change hooks with gen_io_start/end. The immediate need is
+>> > for the PMU to access the clock and icount during EL change to support
+>> > mode filtering.
+>> >
+>> > Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
+>> > ---
+>> >  target/arm/translate-a64.c | 2 ++
+>> >  target/arm/translate.c     | 4 ++++
+>> >  2 files changed, 6 insertions(+)
+>> >
+>> > diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+>> > index 31ff047..e1ae676 100644
+>> > --- a/target/arm/translate-a64.c
+>> > +++ b/target/arm/translate-a64.c
+>> > @@ -1919,7 +1919,9 @@ static void disas_uncond_b_reg(DisasContext *s, uint32_t insn)
+>> >              unallocated_encoding(s);
+>> >              return;
+>> >          }
+>> > +        gen_io_start();
+>> >          gen_helper_exception_return(cpu_env);
+>> > +        gen_io_end();
+>>
+>> You don't want to call gen_io_start() or gen_io_end() unless
+>> tb_cflags(s->base.tb) & CF_USE_ICOUNT) is true.
+>>
+>> (Ditto in the other cases below.)
+>
+> I assume there's nothing tricky about this and updating this as follows
+> is sufficient?
 
-I assume there's nothing tricky about this and updating this as follows
-is sufficient?
+Yes, that's sufficient. (The other thing that needs to happen
+for a gen_io_start/end is that the insn has to end the TB --
+but in all these cases that's already true as they set
+s->base.is_jmp = DISAS_EXIT.)
 
-> > +        if (tb_cflags(s->base.tb) & CF_USE_ICOUNT) {
-> > +            gen_io_start();
-> > +        }
-> >          gen_helper_exception_return(cpu_env);
-> > +        if (tb_cflags(s->base.tb) & CF_USE_ICOUNT) {
-> > +            gen_io_end();
-> > +        }
-
--Aaron
-
-> 
-> >          /* Must exit loop to check un-masked IRQs */
-> >          s->base.is_jmp = DISAS_EXIT;
-> >          return;
-> > diff --git a/target/arm/translate.c b/target/arm/translate.c
-> > index ba6ab7d..fd5871e 100644
-> > --- a/target/arm/translate.c
-> > +++ b/target/arm/translate.c
-> > @@ -4536,7 +4536,9 @@ static void gen_rfe(DisasContext *s, TCGv_i32 pc, TCGv_i32 cpsr)
-> >       * appropriately depending on the new Thumb bit, so it must
-> >       * be called after storing the new PC.
-> >       */
-> > +    gen_io_start();
-> >      gen_helper_cpsr_write_eret(cpu_env, cpsr);
-> > +    gen_io_end();
-> >      tcg_temp_free_i32(cpsr);
-> >      /* Must exit loop to check un-masked IRQs */
-> >      s->base.is_jmp = DISAS_EXIT;
-> > @@ -9828,7 +9830,9 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-> >                  if (exc_return) {
-> >                      /* Restore CPSR from SPSR.  */
-> >                      tmp = load_cpu_field(spsr);
-> > +                    gen_io_start();
-> >                      gen_helper_cpsr_write_eret(cpu_env, tmp);
-> > +                    gen_io_end();
-> >                      tcg_temp_free_i32(tmp);
-> >                      /* Must exit loop to check un-masked IRQs */
-> >                      s->base.is_jmp = DISAS_EXIT;
-> > --
-> > Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies, Inc.
-> > Qualcomm Technologies, Inc. is a member of the
-> > Code Aurora Forum, a Linux Foundation Collaborative Project.
-> >
-> 
-> thanks
-> -- PMM
-
--- 
-Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies, Inc.
-Qualcomm Technologies, Inc. is a member of the
-Code Aurora Forum, a Linux Foundation Collaborative Project.
+thanks
+-- PMM

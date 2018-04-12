@@ -1,101 +1,70 @@
-Received: by 10.28.71.155 with SMTP id m27csp1868960wmi;
-        Thu, 12 Apr 2018 05:50:41 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx48uP2iFFRTs8xPPMggHAzoGkx5Qw48e6Dg1rWJZFtIfOl6dOC88Z7u2DPh0q5TIpkLHnpaz
-X-Received: by 10.55.159.204 with SMTP id i195mr1011431qke.188.1523537441436;
-        Thu, 12 Apr 2018 05:50:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523537441; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp1949048wmi;
+        Thu, 12 Apr 2018 07:02:49 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx49QMW4x58Ph8fll2PYdD1H7J5shAbuROKeBtPE126AfGwOhgecVIeqv87eHhiwKOXpHH0WF
+X-Received: by 10.129.62.31 with SMTP id l31mr465301ywa.34.1523541769476;
+        Thu, 12 Apr 2018 07:02:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523541769; cv=none;
         d=google.com; s=arc-20160816;
-        b=HDuii+20qKus/W+ghgLbyYRwurLVWBooBcbDgZCoINixqyNLF+IIyHRWBHmU1uz8GP
-         evV77Czd/qdFflkIP88h46umHXukcPjW0okC/8zz6087pnl1l0lm8v2cYBarGReQwQI3
-         KHpuRhjsejHWqxBOR+RkqZTZbH28oXfKjSv+qAJNFKtkeS2hZw4ud03CIv/udlbNZcGq
-         0stgyUhgifL2KjBXJ9EuzDV2U1pwWoBCa0hRCZ/Wo4kMxFJU8YcEeZ0B3QR9aqNG0St8
-         htBSZ18kbuX0tVALelnAloXWsbHbCbyyNDAWgE2ZSNzpzgb/VHLnL1usVx/rmEOK5gME
-         ILTA==
+        b=D63lczz7KMiozYRjVa3hcucNpqEBEQE+130h7iYWys/2rKFXmUsAflbNu9WigN4gFA
+         RntctGZb/xLCAdIn/1WQflSK4O20xKI+6cFKlZsW2OEhNgXu5awNkxp4A2vuCtmyE3eB
+         e3qPFuqi3P9DH2IUgnrMiZIUqgOI+vPdsPJvl5P0NacQEKjEmyQn6zTqRYzeuPWXj+Ie
+         nvIlEZ6UzreJolyCZpHLmwH6TanabUj9hf0F3CfFykeFArkSgNoZi7TBrekAwAQQacji
+         JDEQlAZ3iC23QZK+lDX7RFFhe/csD3KmVbrK3nZUtIm7mlMyjtnHuqqTJLKnhHTCmoKn
+         pAeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
          :arc-authentication-results;
-        bh=VHv9HmsWt/80//kwXZVhzwwg3fAwIwPL17IU/w340hA=;
-        b=F+pNh/GUhuBX52Xaex32NB1rzcCA0QSFjsrMhK0UCKK1nKrVVrp/FrTKP8fhG2UjKc
-         Gb6dA2aXtT+6Q6BlNZynqM+uTakxdtUpTroKfsocPy+NNy3VooafdSHrzPbqAzmvvUsi
-         ijjT0IKy3BLrxsJjv+G09TrrX0AYMGlWJHv8wZsuJMLEck/Cf9f4PhbU6vIAWu55HlsD
-         sHoXUUja9QpOa6MO/WV4yLryTgbnORafQ+lFYbqtUsR7EBvIcL1MU1kLCsAatLnKyQmU
-         VAlWSNBqXoQT8M5zZ44ZUfTZ3z60kharIZY2fuXNThuiEn+qOvmNYN3W3/zT4kxVlL9l
-         MMbw==
+        bh=7BNJSD6kSyeAWy4h09Zdk1smEW1HMoxGmDgyTve+9EU=;
+        b=f8UuL3yYXvwv50m852qT/lu4KcGTFjo0Kk/fldNoOohGISlYR1mA/qhWXlPQnn7b9z
+         716GyDUVjAG+GfHR8QWdqiq4sc6DZ1Od3nQ2xbOLNVcCu468KtsxfUBnRHxE7dVQNAQO
+         qaHdul4zX6iN3NbKgGJweMQMa0VKzeda5PDziLUYcB0O10igNvugpuC9zHmrnQ9wq6oZ
+         gt7gGOKXmO3Oh2zi7eVoBVvTc1HLKD7cmPY4tAMVR5p9hzHYwetxBNBSjNupMHf3+bIO
+         tjk8nrL9oF208CR/hRoRNdkm7C9tLWBlnErLzD7GOTF+DOq7tIyPv8jxjkVfjI11KsyA
+         +IlQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fBx/u0Ug;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h7si3998629qkb.485.2018.04.12.05.50.41
+        by mx.google.com with ESMTPS id x94si1387062qte.94.2018.04.12.07.02.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 12 Apr 2018 05:50:41 -0700 (PDT)
+        Thu, 12 Apr 2018 07:02:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fBx/u0Ug;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37209 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42088 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f6bgW-0003wM-Re
-	for alex.bennee@linaro.org; Thu, 12 Apr 2018 08:50:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48752)
+	id 1f6coL-00078O-0c
+	for alex.bennee@linaro.org; Thu, 12 Apr 2018 10:02:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40024)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <geert.uytterhoeven@gmail.com>) id 1f6bgH-0003ty-Py
-	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 08:50:26 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1f6co8-00077p-RA
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 10:02:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <geert.uytterhoeven@gmail.com>) id 1f6bgG-0005c4-GK
-	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 08:50:25 -0400
-Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:33432)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <geert.uytterhoeven@gmail.com>)
-	id 1f6bgG-0005bb-C0; Thu, 12 Apr 2018 08:50:24 -0400
-Received: by mail-qk0-x244.google.com with SMTP id d206so5847691qkb.0;
-	Thu, 12 Apr 2018 05:50:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc;
-	bh=VHv9HmsWt/80//kwXZVhzwwg3fAwIwPL17IU/w340hA=;
-	b=fBx/u0UgTA6TUBm5qSo6AJetOKgBLPTKJdVue2rTZO/Z3qMB+ExZoCc3yq2tbAzU3c
-	gUgWlNzOUdxeFKbygHAVw5cR4cd66/xqXaX1Lat3XSabV4YRG4Tx1Kz+lnDBLbA08UiE
-	eOxdAGHGLCXm1uK9ThYVx4582pPEpe2x4swJhnvEc4VMtzTJTpi4LJs/I6JCAu+b9e++
-	Z+ofK1EKLeBQvMFYEULO5cGI3rUBj7ymgzqn2iCj8IXhc8GRRf3zhfNJb3b9D8dTUxIz
-	oxh8zSGvUeptbOVOoUWFuEVF022cTCzHhZNx1eA/vNei+UbPGtw23PBBAYo2CT8Hw6e/
-	03ZA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc;
-	bh=VHv9HmsWt/80//kwXZVhzwwg3fAwIwPL17IU/w340hA=;
-	b=slRMMU3fvLkONwNeY/DWAEt89e4K9hzxhG/dV+iTi9ThChQgNMa7+G13XyKP+ROx6t
-	bidd7VEeb1pgay1X+svgU5AvbfF60TMpKeMWPRzzRr417Dl5ZrIG7WUY/6ZyD7U/EPWL
-	HjdaOBrKPvG+7wJUilQZ1ADmPgDXLNXEFY4wA2A79UksaDLixfokUYWenLF2mX9YPQ71
-	4THt9xeIVoDOMZwuBnMrZUjID6SQZ5TgteoFYSx60g3L6wpJ1YhwTNvTxHNWVJG3myby
-	T6X4UdLMeCm7wy8IFa0LAiL7kzZHFvWBThMLXgtwE+5GkOdE9q3II7CreWTEe5KZTS81
-	MACA==
-X-Gm-Message-State: ALQs6tC7Mc872QTnud+oDsb6CG4uOGVpZjlBn9f9+neQbJYtAPG4Livk
-	2M48vPD9+AzEIOsZj1JsVUla/XX2AfKVDG/FJxw=
-X-Received: by 10.55.127.70 with SMTP id a67mr1007211qkd.328.1523537423397;
-	Thu, 12 Apr 2018 05:50:23 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.200.23.67 with HTTP; Thu, 12 Apr 2018 05:50:22 -0700 (PDT)
-In-Reply-To: <3ee22637-a0a9-306a-4e6d-14295d4bcb27@redhat.com>
-References: <1518189456-2873-1-git-send-email-geert+renesas@glider.be>
-	<1518189456-2873-4-git-send-email-geert+renesas@glider.be>
-	<3ee22637-a0a9-306a-4e6d-14295d4bcb27@redhat.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Thu, 12 Apr 2018 14:50:22 +0200
-X-Google-Sender-Auth: ElyuCNcO4SDeUlw1cTYgpIXJIqY
-Message-ID: <CAMuHMdUKLg2S-cySkN1_6esgt7ZEjqRwxHdB73i6+f9MaGjh6Q@mail.gmail.com>
-To: Auger Eric <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+	(envelope-from <pm215@archaic.org.uk>) id 1f6co4-0002zD-1R
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 10:02:36 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:40790)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1f6co3-0002uR-QG; Thu, 12 Apr 2018 10:02:31 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1f6cnv-0000P0-0w; Thu, 12 Apr 2018 15:02:23 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Thu, 12 Apr 2018 15:02:22 +0100
+Message-Id: <20180412140222.2096-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.16.2
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::244
-Subject: Re: [Qemu-arm] [PATCH/RFC 3/5] hw/arm/virt: Allow dynamic sysbus
- devices again
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH for-2.12] linux-user/signal.c: Put AArch64 frame
+ record in the right place
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,55 +76,73 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Arnd Bergmann <arnd@arndb.de>, Magnus Damm <magnus.damm@gmail.com>,
-	Alexander Graf <agraf@suse.de>, QEMU Developers <qemu-devel@nongnu.org>,
-	Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
-	Wolfram Sang <wsa+renesas@sang-engineering.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Xiao Feng Ren <renxiaof@linux.vnet.ibm.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Riku Voipio <riku.voipio@iki.fi>, Richard Henderson <rth@twiddle.net>,
+	Laurent Vivier <laurent@vivier.eu>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xN0fDvn8Ke5k
+X-TUID: QF8IHTnYGATi
 
-Hi Eric,
+AArch64 stack frames include a 'frame record' which holds a pointer
+to the next frame record in the chain and the LR on entry to the
+function. The procedure calling standard doesn't mandate where
+exactly this frame record is in the stack frame, but for signal
+frames the kernel puts it right at the top. We used to put it
+there too, but in commit 7f0f4208b3a96f22 we accidentally put
+the "enlarge to the 4K reserved space minimum" check after the
+"allow for the frame record" code, rather than before it, with
+the effect that the frame record would be inside the reserved
+space and immediately after the last used part of it.
 
-On Wed, Feb 14, 2018 at 11:37 AM, Auger Eric <eric.auger@redhat.com> wrote:
-> On 09/02/18 16:17, Geert Uytterhoeven wrote:
->> Allow the instantation of generic dynamic sysbus devices again, without
->> the need to create a new device-specific vfio type.
->>
->> This is a partial revert of commit  6f2062b9758ebc64 ("hw/arm/virt:
->> Allow only supported dynamic sysbus devices").
->>
->> Not-Yet-Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
->> ---
->>  hw/arm/virt.c | 1 +
->>  1 file changed, 1 insertion(+)
->>
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index b334c82edae9fb1f..fa83784fc08ed076 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -1596,6 +1596,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
->>      mc->max_cpus = 255;
->>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_CALXEDA_XGMAC);
->>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_AMD_XGBE);
->> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_SYS_BUS_DEVICE);
-> Couldn't you limit that to TYPE_VFIO_PLATFORM instead?
+Move the frame record back out of the reserved space to where
+we used to put it.
 
-Yep, that works. Thanks!
+This bug shouldn't break any sensible guest code, but test
+programs that deliberately look at the internal details
+of the signal frame layout will not find what they are
+expecting to see.
 
-Gr{oetje,eeting}s,
+Fixes: 7f0f4208b3a96f22
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+I'm marking this as for-2.12 on the basis that it puts our frame
+layout back to exactly what 2.11 had, and so seems safest.
+No sensible guest code should really care, though, so this is
+in the "only if we're doing an rc4" bucket; but I think that the
+softfloat fixes deserve an rc4 anyway.
 
-                        Geert
+ linux-user/signal.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
+diff --git a/linux-user/signal.c b/linux-user/signal.c
+index 8d9e6e8410..e6dfe0adfd 100644
+--- a/linux-user/signal.c
++++ b/linux-user/signal.c
+@@ -1843,6 +1843,12 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
+         layout.total_size += sizeof(struct target_aarch64_ctx);
+     }
+ 
++    /* We must always provide at least the standard 4K reserved space,
++     * even if we don't use all of it (this is part of the ABI)
++     */
++    layout.total_size = MAX(layout.total_size,
++                            sizeof(struct target_rt_sigframe));
++
+     /* Reserve space for the return code.  On a real system this would
+      * be within the VDSO.  So, despite the name this is not a "real"
+      * record within the frame.
+@@ -1850,12 +1856,6 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
+     fr_ofs = layout.total_size;
+     layout.total_size += sizeof(struct target_rt_frame_record);
+ 
+-    /* We must always provide at least the standard 4K reserved space,
+-     * even if we don't use all of it (this is part of the ABI)
+-     */
+-    layout.total_size = MAX(layout.total_size,
+-                            sizeof(struct target_rt_sigframe));
+-
+     frame_addr = get_sigframe(ka, env, layout.total_size);
+     trace_user_setup_frame(env, frame_addr);
+     if (!lock_user_struct(VERIFY_WRITE, frame, frame_addr, 0)) {
 -- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+2.16.2
 
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds

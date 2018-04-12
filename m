@@ -1,86 +1,86 @@
-Received: by 10.28.71.155 with SMTP id m27csp1607085wmi;
-        Thu, 12 Apr 2018 00:42:50 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4+Yqjhd6P/W9K5WE1wojAjlet87acWB8UTIySSNuXJRWCSoOh26+VHWw3BfEK6ptR55gwmA
-X-Received: by 10.55.20.135 with SMTP id 7mr5510524qku.236.1523518970207;
-        Thu, 12 Apr 2018 00:42:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523518970; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp1607354wmi;
+        Thu, 12 Apr 2018 00:43:11 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx4+hJqonNgPO4v/63roSwnCjEXOUabeb+sJyiIXEpY25bfHOnSk4tGXIVz65LINzW0tmAV+y
+X-Received: by 10.237.39.67 with SMTP id n61mr11746306qtd.36.1523518991112;
+        Thu, 12 Apr 2018 00:43:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523518991; cv=none;
         d=google.com; s=arc-20160816;
-        b=vegyvdGMJRMHnC3aBr9YUlEghLcwzGl9jWT49e5VQgFhQRK0D3Oc1wmnZ502c2a2zH
-         zAJNxIDsjIavuoimq5/tY48BLfNYgdbzJdCLt46s2ASzxPPH6FTO4nw/YlfOGX+lpX18
-         t6BAavgNnFqgvVY3YXSfYDIXuGY/Bh9KXEEWxwxrWoBCSAoxc9qbkREaJZsSDbEL714R
-         qPvrus1439zmS2jekAoDIZtYUlf35B2clXFItpgAXSptWAP8bj4FzYS+5uuM/qyYq8De
-         xMvmxteuB3TC2pI8PPPNi1Nqd9bs2zpePt8gUGI9Pi7lnBefgmojgz7+xtNDGglcgIzF
-         qZqg==
+        b=Sb1z4KTWMjVXKhdCB7H59TpMntZVlJRx2YQFayWlX/vSKyOedHql3/uxol65MkGa2T
+         lRyWshopB4Vm507QoiEppVEmoJJtcZF+DZZMDD4ELPZpzFMvZ0ZyU54lmEd7rQ4bwo6z
+         oYFw7+HAkpevm6jsJBUpy4Jl60mg+aqx3gB8GzBJ6VnugoHbiRWYALrSAEjb3faCUABW
+         hPyCi99E56Q0g+/QKksX7jjoVrgYxSNUALJ5XuLEoGUsD9EGnjfXY2AcK7kJfzv7D/+i
+         wprySfsOmaocYVJXMDP7EyIBHthNjPi47HKtkz0s+P5aXhKdeKatkkk5N/2DTvSDYPgN
+         GAnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=0wtyfMtxxOdHjTt9qxjOaAC+B02UYnH3hk8SLkHoVV8=;
-        b=gJCU9qgh1p4NoszemaOAiuvxecGT7s/Q2RFmJqtcefV4utCwbQI0mXKMryDNHVvjPz
-         FtuZvLtabgI1ZPsTmaPEtD2SjJvxAYaTQpT5NrGNtag/fXcMUONT4jsldk2GGBGJkAHJ
-         9/bDXD8Af+YlCxDxveSYkcjhj50FdJcnt2S2slyCs/7861J9ZCBJdUVAmMeW2ovk2dqH
-         /J3P8kwXMSnMbPqEqFXvB8JE58cu7dizocpvPjNzURHVX6NvOhEWzzY6lIgS6NvZPBdV
-         MlaUmOp8dtoquJytDzFbX1auq9+CVXjwgXPLyiDbtg1fkbbnMP7JaMgkq6wcP7sTKEVH
-         GZLA==
+        bh=Z4yS5vUppotvFdFtF3QlgRqBSPv6ncVPV09SyJ4aT4o=;
+        b=iajtP16J+Mdc8tLIVP8q4B8EEcgQpLeWxOjv0zpM5SWsuFNwPwQp/n1sWaLza3bjSa
+         uFVBJ5z8DIBGayGxQD14U7462/lnXtay0QmneOPkz7S9HHA47F16pYk+g/TkJluTFrsP
+         +esbfuqAj/VAti5eQs9GGjNZywGJfA5Y5xSfDqF31FZWkJXP0jwGM3W3bUb7uLocU/ob
+         z48rRMnO5FzPrTG0YXx2Qk7LsFFfucwDYrZyCZ7Yg6MTfS4KDGwCVTm5cACKTn5i1OqL
+         yLVSPU7XQj9lzqijYyaIqGt04/xRdUwVmOxYkDFFV7wndfA2Tvu6RD5utvgtAQWF1PKl
+         y1zQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h64si3205927qkd.31.2018.04.12.00.42.50
+        by mx.google.com with ESMTPS id o19si3192956qtb.37.2018.04.12.00.43.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 12 Apr 2018 00:42:50 -0700 (PDT)
+        Thu, 12 Apr 2018 00:43:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44092 helo=lists.gnu.org)
+Received: from localhost ([::1]:44094 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f6Wsb-00028m-JB
-	for alex.bennee@linaro.org; Thu, 12 Apr 2018 03:42:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49296)
+	id 1f6Wsw-0002P7-JI
+	for alex.bennee@linaro.org; Thu, 12 Apr 2018 03:43:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49340)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1f6Wof-0006bG-VA
-	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 03:38:47 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1f6Woj-0006gZ-0M
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 03:38:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1f6Woe-0003Be-6r
-	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 03:38:45 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:35554 helo=mx1.redhat.com)
+	(envelope-from <eric.auger@redhat.com>) id 1f6Woh-0003DN-EH
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 03:38:49 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:56798 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1f6Woe-0003BC-18; Thu, 12 Apr 2018 03:38:44 -0400
+	id 1f6Woh-0003D9-8I; Thu, 12 Apr 2018 03:38:47 -0400
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 84A1981A88A0;
-	Thu, 12 Apr 2018 07:38:43 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id BE18C722C3;
+	Thu, 12 Apr 2018 07:38:46 +0000 (UTC)
 Received: from localhost.localdomain.com (ovpn-116-192.ams2.redhat.com
 	[10.36.116.192])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id E6AD3215CDC6;
-	Thu, 12 Apr 2018 07:38:40 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id C71BD215CDC6;
+	Thu, 12 Apr 2018 07:38:43 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org, prem.mallappa@gmail.com
-Date: Thu, 12 Apr 2018 09:37:58 +0200
-Message-Id: <1523518688-26674-8-git-send-email-eric.auger@redhat.com>
+Date: Thu, 12 Apr 2018 09:37:59 +0200
+Message-Id: <1523518688-26674-9-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1523518688-26674-1-git-send-email-eric.auger@redhat.com>
 References: <1523518688-26674-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Thu, 12 Apr 2018 07:38:43 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Thu, 12 Apr 2018 07:38:43 +0000 (UTC) for IP:'10.11.54.6'
+	(mx1.redhat.com [10.11.55.2]);
+	Thu, 12 Apr 2018 07:38:46 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Thu, 12 Apr 2018 07:38:46 +0000 (UTC) for IP:'10.11.54.6'
 	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH v11 07/17] hw/arm/smmuv3: Implement MMIO write
- operations
+Subject: [Qemu-arm] [PATCH v11 08/17] hw/arm/smmuv3: Event queue recording
+ helper
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,285 +97,328 @@ Cc: cdall@kernel.org, mst@redhat.com, jean-philippe.brucker@arm.com,
 	linuc.decode@gmail.com, bharat.bhushan@nxp.com, jintack@cs.columbia.edu
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ReEDUdgEiHt/
+X-TUID: rDBbp6dhW1Jj
 
-Now we have relevant helpers for queue and irq
-management, let's implement MMIO write operations.
+Let's introduce a helper function aiming at recording an
+event in the event queue.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
 
 ---
 v9 -> v10:
-- s/hwaddr/uint64_t in trace-events
-- added SMMU_FEATURE_2LVL_STE in this patch
-- removed smmu_write64 and created writel/writell infra
-- store capped log2size
-- mask CR0 reserved bits
+- rework SMMU_EVENT_STRING
+- trigger a GERROR EVENTQ_ABT_ERR in case of eventq write failure
+
+v8 -> v9:
+- add SMMU_EVENT_STRING
 
 v7 -> v8:
-- precise in the commit message invalidation commands
-  are not yet treated.
-- use new queue helpers
-- do not decode unhandled commands at this stage
+- use dma_addr_t instead of hwaddr in smmuv3_record_event()
+- introduce struct SMMUEventInfo
+- add event_stringify + helpers for all fields
 ---
- hw/arm/smmuv3-internal.h |   8 +--
- hw/arm/smmuv3.c          | 172 +++++++++++++++++++++++++++++++++++++++++++++--
- hw/arm/trace-events      |   6 ++
- 3 files changed, 175 insertions(+), 11 deletions(-)
+ hw/arm/smmuv3-internal.h | 142 ++++++++++++++++++++++++++++++++++++++++++++++-
+ hw/arm/smmuv3.c          | 108 +++++++++++++++++++++++++++++++++--
+ hw/arm/trace-events      |   1 +
+ 3 files changed, 243 insertions(+), 8 deletions(-)
 
 diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-index 968fa25..8550be0 100644
+index 8550be0..8e546bf 100644
 --- a/hw/arm/smmuv3-internal.h
 +++ b/hw/arm/smmuv3-internal.h
-@@ -64,6 +64,8 @@ REG32(CR0,                 0x20)
-     FIELD(CR0, EVENTQEN,      2, 1)
-     FIELD(CR0, CMDQEN,        3, 1)
- 
-+#define SMMU_CR0_RESERVED 0xFFFFFC20
-+
- REG32(CR0ACK,              0x24)
- REG32(CR1,                 0x28)
- REG32(CR2,                 0x2c)
-@@ -152,10 +154,6 @@ static inline bool smmuv3_gerror_irq_enabled(SMMUv3State *s)
-     return FIELD_EX32(s->irq_ctrl, IRQ_CTRL, GERROR_IRQEN);
+@@ -205,8 +205,6 @@ static inline void smmu_write_cmdq_err(SMMUv3State *s, uint32_t err_type)
+     s->cmdq.cons = FIELD_DP32(s->cmdq.cons, CMDQ_CONS, ERR, err_type);
  }
  
--/* public until callers get introduced */
--void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq, uint32_t gerror_mask);
--void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t gerrorn);
+-void smmuv3_write_eventq(SMMUv3State *s, Evt *evt);
 -
- /* Queue Handling */
+ /* Commands */
  
- #define Q_BASE(q)          ((q)->base & SMMU_BASE_ADDR_MASK)
-@@ -308,6 +306,6 @@ enum { /* Command completion notification */
-             addr;                                             \
-         })
+ typedef enum SMMUCommandType {
+@@ -308,4 +306,144 @@ enum { /* Command completion notification */
  
--int smmuv3_cmdq_consume(SMMUv3State *s);
-+#define SMMU_FEATURE_2LVL_STE (1 << 0)
+ #define SMMU_FEATURE_2LVL_STE (1 << 0)
  
++/* Events */
++
++typedef enum SMMUEventType {
++    SMMU_EVT_OK                 = 0x00,
++    SMMU_EVT_F_UUT              = 0x01,
++    SMMU_EVT_C_BAD_STREAMID     = 0x02,
++    SMMU_EVT_F_STE_FETCH        = 0x03,
++    SMMU_EVT_C_BAD_STE          = 0x04,
++    SMMU_EVT_F_BAD_ATS_TREQ     = 0x05,
++    SMMU_EVT_F_STREAM_DISABLED  = 0x06,
++    SMMU_EVT_F_TRANS_FORBIDDEN  = 0x07,
++    SMMU_EVT_C_BAD_SUBSTREAMID  = 0x08,
++    SMMU_EVT_F_CD_FETCH         = 0x09,
++    SMMU_EVT_C_BAD_CD           = 0x0a,
++    SMMU_EVT_F_WALK_EABT        = 0x0b,
++    SMMU_EVT_F_TRANSLATION      = 0x10,
++    SMMU_EVT_F_ADDR_SIZE        = 0x11,
++    SMMU_EVT_F_ACCESS           = 0x12,
++    SMMU_EVT_F_PERMISSION       = 0x13,
++    SMMU_EVT_F_TLB_CONFLICT     = 0x20,
++    SMMU_EVT_F_CFG_CONFLICT     = 0x21,
++    SMMU_EVT_E_PAGE_REQ         = 0x24,
++} SMMUEventType;
++
++static const char *event_stringify[] = {
++    [SMMU_EVT_OK]                       = "SMMU_EVT_OK",
++    [SMMU_EVT_F_UUT]                    = "SMMU_EVT_F_UUT",
++    [SMMU_EVT_C_BAD_STREAMID]           = "SMMU_EVT_C_BAD_STREAMID",
++    [SMMU_EVT_F_STE_FETCH]              = "SMMU_EVT_F_STE_FETCH",
++    [SMMU_EVT_C_BAD_STE]                = "SMMU_EVT_C_BAD_STE",
++    [SMMU_EVT_F_BAD_ATS_TREQ]           = "SMMU_EVT_F_BAD_ATS_TREQ",
++    [SMMU_EVT_F_STREAM_DISABLED]        = "SMMU_EVT_F_STREAM_DISABLED",
++    [SMMU_EVT_F_TRANS_FORBIDDEN]        = "SMMU_EVT_F_TRANS_FORBIDDEN",
++    [SMMU_EVT_C_BAD_SUBSTREAMID]        = "SMMU_EVT_C_BAD_SUBSTREAMID",
++    [SMMU_EVT_F_CD_FETCH]               = "SMMU_EVT_F_CD_FETCH",
++    [SMMU_EVT_C_BAD_CD]                 = "SMMU_EVT_C_BAD_CD",
++    [SMMU_EVT_F_WALK_EABT]              = "SMMU_EVT_F_WALK_EABT",
++    [SMMU_EVT_F_TRANSLATION]            = "SMMU_EVT_F_TRANSLATION",
++    [SMMU_EVT_F_ADDR_SIZE]              = "SMMU_EVT_F_ADDR_SIZE",
++    [SMMU_EVT_F_ACCESS]                 = "SMMU_EVT_F_ACCESS",
++    [SMMU_EVT_F_PERMISSION]             = "SMMU_EVT_F_PERMISSION",
++    [SMMU_EVT_F_TLB_CONFLICT]           = "SMMU_EVT_F_TLB_CONFLICT",
++    [SMMU_EVT_F_CFG_CONFLICT]           = "SMMU_EVT_F_CFG_CONFLICT",
++    [SMMU_EVT_E_PAGE_REQ]               = "SMMU_EVT_E_PAGE_REQ",
++};
++
++static inline const char *smmu_event_string(SMMUEventType type)
++{
++    return event_stringify[type] ? event_stringify[type] : "UNKNOWN";
++}
++
++/*  Encode an event record */
++typedef struct SMMUEventInfo {
++    SMMUEventType type;
++    uint32_t sid;
++    bool recorded;
++    bool record_trans_faults;
++    union {
++        struct {
++            uint32_t ssid;
++            bool ssv;
++            dma_addr_t addr;
++            bool rnw;
++            bool pnu;
++            bool ind;
++       } f_uut;
++       struct ssid_info {
++            uint32_t ssid;
++            bool ssv;
++       } c_bad_streamid;
++       struct ssid_addr_info {
++            uint32_t ssid;
++            bool ssv;
++            dma_addr_t addr;
++       } f_ste_fetch;
++       struct ssid_info c_bad_ste;
++       struct {
++            dma_addr_t addr;
++            bool rnw;
++       } f_transl_forbidden;
++       struct {
++            uint32_t ssid;
++       } c_bad_substream;
++       struct ssid_addr_info f_cd_fetch;
++       struct ssid_info c_bad_cd;
++       struct full_info {
++            bool stall;
++            uint16_t stag;
++            uint32_t ssid;
++            bool ssv;
++            bool s2;
++            dma_addr_t addr;
++            bool rnw;
++            bool pnu;
++            bool ind;
++            uint8_t class;
++            dma_addr_t addr2;
++       } f_walk_eabt;
++       struct full_info f_translation;
++       struct full_info f_addr_size;
++       struct full_info f_access;
++       struct full_info f_permission;
++       struct ssid_info f_cfg_conflict;
++       /**
++        * not supported yet:
++        * F_BAD_ATS_TREQ
++        * F_BAD_ATS_TREQ
++        * F_TLB_CONFLICT
++        * E_PAGE_REQUEST
++        * IMPDEF_EVENTn
++        */
++    } u;
++} SMMUEventInfo;
++
++/* EVTQ fields */
++
++#define EVT_Q_OVERFLOW        (1 << 31)
++
++#define EVT_SET_TYPE(x, v)              deposit32((x)->word[0], 0 , 8 ,  v)
++#define EVT_SET_SSV(x, v)               deposit32((x)->word[0], 11, 1 ,  v)
++#define EVT_SET_SSID(x, v)              deposit32((x)->word[0], 12, 20, v)
++#define EVT_SET_SID(x, v)               ((x)->word[1] =  v)
++#define EVT_SET_STAG(x, v)              deposit32((x)->word[2], 0 , 16, v)
++#define EVT_SET_STALL(x, v)             deposit32((x)->word[2], 31, 1 , v)
++#define EVT_SET_PNU(x, v)               deposit32((x)->word[3], 1 , 1 , v)
++#define EVT_SET_IND(x, v)               deposit32((x)->word[3], 2 , 1 , v)
++#define EVT_SET_RNW(x, v)               deposit32((x)->word[3], 3 , 1 , v)
++#define EVT_SET_S2(x, v)                deposit32((x)->word[3], 7 , 1 , v)
++#define EVT_SET_CLASS(x, v)             deposit32((x)->word[3], 8 , 2 , v)
++#define EVT_SET_ADDR(x, addr) ({                    \
++            (x)->word[5] = (uint32_t)(addr >> 32);        \
++            (x)->word[4] = (uint32_t)(addr & 0xffffffff); \
++        })
++#define EVT_SET_ADDR2(x, addr) ({                    \
++            deposit32((x)->word[7], 3, 29, addr >> 16);        \
++            deposit32((x)->word[7], 0, 16, addr & 0xffff); \
++        })
++
++void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *event);
++
  #endif
 diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 899f0e0..82ad1af 100644
+index 82ad1af..2ef1bfc 100644
 --- a/hw/arm/smmuv3.c
 +++ b/hw/arm/smmuv3.c
-@@ -37,7 +37,8 @@
-  * @irq: irq type
-  * @gerror_mask: mask of gerrors to toggle (relevant if @irq is GERROR)
-  */
--void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq, uint32_t gerror_mask)
-+static void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq,
-+                               uint32_t gerror_mask)
- {
- 
-     bool pulse = false;
-@@ -74,7 +75,7 @@ void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq, uint32_t gerror_mask)
-     }
+@@ -116,23 +116,119 @@ static MemTxResult queue_write(SMMUQueue *q, void *data)
+     return MEMTX_OK;
  }
  
--void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t new_gerrorn)
-+static void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t new_gerrorn)
+-void smmuv3_write_eventq(SMMUv3State *s, Evt *evt)
++static MemTxResult smmuv3_write_eventq(SMMUv3State *s, Evt *evt)
  {
-     uint32_t pending = s->gerror ^ s->gerrorn;
-     uint32_t toggled = s->gerrorn ^ new_gerrorn;
-@@ -173,7 +174,7 @@ static void smmuv3_init_regs(SMMUv3State *s)
-     s->sid_split = 0;
- }
- 
--int smmuv3_cmdq_consume(SMMUv3State *s)
-+static int smmuv3_cmdq_consume(SMMUv3State *s)
- {
-     SMMUCmdError cmd_error = SMMU_CERROR_NONE;
-     SMMUQueue *q = &s->cmdq;
-@@ -269,11 +270,170 @@ int smmuv3_cmdq_consume(SMMUv3State *s)
-     return 0;
- }
- 
--static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
-+static MemTxResult smmu_writell(SMMUv3State *s, hwaddr offset,
-+                               uint64_t value, MemTxAttrs attrs)
-+{
-+    switch (offset) {
-+    case A_GERROR_IRQ_CFG0:
-+        s->gerror_irq_cfg0 = value;
-+        return MEMTX_OK;
-+    case A_STRTAB_BASE:
-+        s->strtab_base = value;
-+        return MEMTX_OK;
-+    case A_CMDQ_BASE:
-+        s->cmdq.base = value;
-+        s->cmdq.log2size = extract64(s->cmdq.base, 0, 5);
-+        if (s->cmdq.log2size > SMMU_CMDQS) {
-+            s->cmdq.log2size = SMMU_CMDQS;
-+        }
-+        return MEMTX_OK;
-+    case A_EVENTQ_BASE:
-+        s->eventq.base = value;
-+        s->eventq.log2size = extract64(s->eventq.base, 0, 5);
-+        if (s->eventq.log2size > SMMU_EVENTQS) {
-+            s->eventq.log2size = SMMU_EVENTQS;
-+        }
-+        return MEMTX_OK;
-+    case A_EVENTQ_IRQ_CFG0:
-+        s->eventq_irq_cfg0 = value;
-+        return MEMTX_OK;
-+    default:
-+        qemu_log_mask(LOG_UNIMP,
-+                      "%s Unexpected 64-bit access to 0x%"PRIx64" (WI)\n",
-+                      __func__, offset);
-+        return MEMTX_OK;
-+    }
-+}
-+
-+static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
-+                               uint64_t value, MemTxAttrs attrs)
-+{
-+    switch (offset) {
-+    case A_CR0:
-+        s->cr[0] = value;
-+        s->cr0ack = value & ~SMMU_CR0_RESERVED;
-+        /* in case the command queue has been enabled */
-+        smmuv3_cmdq_consume(s);
-+        return MEMTX_OK;
-+    case A_CR1:
-+        s->cr[1] = value;
-+        return MEMTX_OK;
-+    case A_CR2:
-+        s->cr[2] = value;
-+        return MEMTX_OK;
-+    case A_IRQ_CTRL:
-+        s->irq_ctrl = value;
-+        return MEMTX_OK;
-+    case A_GERRORN:
-+        smmuv3_write_gerrorn(s, value);
-+        /*
-+         * By acknowledging the CMDQ_ERR, SW may notify cmds can
-+         * be processed again
-+         */
-+        smmuv3_cmdq_consume(s);
-+        return MEMTX_OK;
-+    case A_GERROR_IRQ_CFG0: /* 64b */
-+        s->gerror_irq_cfg0 = deposit64(s->gerror_irq_cfg0, 0, 32, value);
-+        return MEMTX_OK;
-+    case A_GERROR_IRQ_CFG0 + 4:
-+        s->gerror_irq_cfg0 = deposit64(s->gerror_irq_cfg0, 32, 32, value);
-+        return MEMTX_OK;
-+    case A_GERROR_IRQ_CFG1:
-+        s->gerror_irq_cfg1 = value;
-+        return MEMTX_OK;
-+    case A_GERROR_IRQ_CFG2:
-+        s->gerror_irq_cfg2 = value;
-+        return MEMTX_OK;
-+    case A_STRTAB_BASE: /* 64b */
-+        s->strtab_base = deposit64(s->strtab_base, 0, 32, value);
-+        return MEMTX_OK;
-+    case A_STRTAB_BASE + 4:
-+        s->strtab_base = deposit64(s->strtab_base, 32, 32, value);
-+        return MEMTX_OK;
-+    case A_STRTAB_BASE_CFG:
-+        s->strtab_base_cfg = value;
-+        if (FIELD_EX32(value, STRTAB_BASE_CFG, FMT) == 1) {
-+            s->sid_split = FIELD_EX32(value, STRTAB_BASE_CFG, SPLIT);
-+            s->features |= SMMU_FEATURE_2LVL_STE;
-+        }
-+        return MEMTX_OK;
-+    case A_CMDQ_BASE: /* 64b */
-+        s->cmdq.base = deposit64(s->cmdq.base, 0, 32, value);
-+        s->cmdq.log2size = extract64(s->cmdq.base, 0, 5);
-+        if (s->cmdq.log2size > SMMU_CMDQS) {
-+            s->cmdq.log2size = SMMU_CMDQS;
-+        }
-+        return MEMTX_OK;
-+    case A_CMDQ_BASE + 4: /* 64b */
-+        s->cmdq.base = deposit64(s->cmdq.base, 32, 32, value);
-+        return MEMTX_OK;
-+    case A_CMDQ_PROD:
-+        s->cmdq.prod = value;
-+        smmuv3_cmdq_consume(s);
-+        return MEMTX_OK;
-+    case A_CMDQ_CONS:
-+        s->cmdq.cons = value;
-+        return MEMTX_OK;
-+    case A_EVENTQ_BASE: /* 64b */
-+        s->eventq.base = deposit64(s->eventq.base, 0, 32, value);
-+        s->eventq.log2size = extract64(s->eventq.base, 0, 5);
-+        if (s->eventq.log2size > SMMU_EVENTQS) {
-+            s->eventq.log2size = SMMU_EVENTQS;
-+        }
-+        return MEMTX_OK;
-+    case A_EVENTQ_BASE + 4:
-+        s->eventq.base = deposit64(s->eventq.base, 32, 32, value);
-+        return MEMTX_OK;
-+    case A_EVENTQ_PROD:
-+        s->eventq.prod = value;
-+        return MEMTX_OK;
-+    case A_EVENTQ_CONS:
-+        s->eventq.cons = value;
-+        return MEMTX_OK;
-+    case A_EVENTQ_IRQ_CFG0: /* 64b */
-+        s->eventq_irq_cfg0 = deposit64(s->eventq_irq_cfg0, 0, 32, value);
-+        return MEMTX_OK;
-+    case A_EVENTQ_IRQ_CFG0 + 4:
-+        s->eventq_irq_cfg0 = deposit64(s->eventq_irq_cfg0, 32, 32, value);
-+        return MEMTX_OK;
-+    case A_EVENTQ_IRQ_CFG1:
-+        s->eventq_irq_cfg1 = value;
-+        return MEMTX_OK;
-+    case A_EVENTQ_IRQ_CFG2:
-+        s->eventq_irq_cfg2 = value;
-+        return MEMTX_OK;
-+    default:
-+        qemu_log_mask(LOG_UNIMP,
-+                      "%s Unexpected 32-bit access to 0x%"PRIx64" (WI)\n",
-+                      __func__, offset);
-+        return MEMTX_OK;
-+    }
-+}
-+
-+static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t value,
-                                    unsigned size, MemTxAttrs attrs)
- {
--    /* not yet implemented */
--    return MEMTX_ERROR;
-+    SMMUState *sys = opaque;
-+    SMMUv3State *s = ARM_SMMUV3(sys);
+     SMMUQueue *q = &s->eventq;
 +    MemTxResult r;
 +
-+    /* CONSTRAINED UNPREDICTABLE choice to have page0/1 be exact aliases */
-+    offset &= ~0x10000;
-+
-+    switch (size) {
-+    case 8:
-+        r = smmu_writell(s, offset, value, attrs);
-+        break;
-+    case 4:
-+        r = smmu_writel(s, offset, value, attrs);
-+        break;
-+    default:
-+        r = MEMTX_ERROR;
-+        break;
++    if (!smmuv3_eventq_enabled(s)) {
++        return MEMTX_ERROR;
 +    }
 +
-+    trace_smmuv3_write_mmio(offset, value, size, r);
-+    return r;
++    if (smmuv3_q_full(q)) {
++        return MEMTX_ERROR;
++    }
++
++    r = queue_write(q, evt);
++    if (r != MEMTX_OK) {
++        return r;
++    }
++
++    if (smmuv3_q_empty(q)) {
++        smmuv3_trigger_irq(s, SMMU_IRQ_EVTQ, 0);
++    }
++    return MEMTX_OK;
++}
++
++void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *info)
++{
++    Evt evt;
++    MemTxResult r;
+ 
+     if (!smmuv3_eventq_enabled(s)) {
+         return;
+     }
+ 
+-    if (smmuv3_q_full(q)) {
++    EVT_SET_TYPE(&evt, info->type);
++    EVT_SET_SID(&evt, info->sid);
++
++    switch (info->type) {
++    case SMMU_EVT_OK:
+         return;
++    case SMMU_EVT_F_UUT:
++        EVT_SET_SSID(&evt, info->u.f_uut.ssid);
++        EVT_SET_SSV(&evt,  info->u.f_uut.ssv);
++        EVT_SET_ADDR(&evt, info->u.f_uut.addr);
++        EVT_SET_RNW(&evt,  info->u.f_uut.rnw);
++        EVT_SET_PNU(&evt,  info->u.f_uut.pnu);
++        EVT_SET_IND(&evt,  info->u.f_uut.ind);
++        break;
++    case SMMU_EVT_C_BAD_STREAMID:
++        EVT_SET_SSID(&evt, info->u.c_bad_streamid.ssid);
++        EVT_SET_SSV(&evt,  info->u.c_bad_streamid.ssv);
++        break;
++    case SMMU_EVT_F_STE_FETCH:
++        EVT_SET_SSID(&evt, info->u.f_ste_fetch.ssid);
++        EVT_SET_SSV(&evt,  info->u.f_ste_fetch.ssv);
++        EVT_SET_ADDR(&evt, info->u.f_ste_fetch.addr);
++        break;
++    case SMMU_EVT_C_BAD_STE:
++        EVT_SET_SSID(&evt, info->u.c_bad_ste.ssid);
++        EVT_SET_SSV(&evt,  info->u.c_bad_ste.ssv);
++        break;
++    case SMMU_EVT_F_STREAM_DISABLED:
++        break;
++    case SMMU_EVT_F_TRANS_FORBIDDEN:
++        EVT_SET_ADDR(&evt, info->u.f_transl_forbidden.addr);
++        EVT_SET_RNW(&evt, info->u.f_transl_forbidden.rnw);
++        break;
++    case SMMU_EVT_C_BAD_SUBSTREAMID:
++        EVT_SET_SSID(&evt, info->u.c_bad_substream.ssid);
++        break;
++    case SMMU_EVT_F_CD_FETCH:
++        EVT_SET_SSID(&evt, info->u.f_cd_fetch.ssid);
++        EVT_SET_SSV(&evt,  info->u.f_cd_fetch.ssv);
++        EVT_SET_ADDR(&evt, info->u.f_cd_fetch.addr);
++        break;
++    case SMMU_EVT_C_BAD_CD:
++        EVT_SET_SSID(&evt, info->u.c_bad_cd.ssid);
++        EVT_SET_SSV(&evt,  info->u.c_bad_cd.ssv);
++        break;
++    case SMMU_EVT_F_WALK_EABT:
++    case SMMU_EVT_F_TRANSLATION:
++    case SMMU_EVT_F_ADDR_SIZE:
++    case SMMU_EVT_F_ACCESS:
++    case SMMU_EVT_F_PERMISSION:
++        EVT_SET_STALL(&evt, info->u.f_walk_eabt.stall);
++        EVT_SET_STAG(&evt, info->u.f_walk_eabt.stag);
++        EVT_SET_SSID(&evt, info->u.f_walk_eabt.ssid);
++        EVT_SET_SSV(&evt, info->u.f_walk_eabt.ssv);
++        EVT_SET_S2(&evt, info->u.f_walk_eabt.s2);
++        EVT_SET_ADDR(&evt, info->u.f_walk_eabt.addr);
++        EVT_SET_RNW(&evt, info->u.f_walk_eabt.rnw);
++        EVT_SET_PNU(&evt, info->u.f_walk_eabt.pnu);
++        EVT_SET_IND(&evt, info->u.f_walk_eabt.ind);
++        EVT_SET_CLASS(&evt, info->u.f_walk_eabt.class);
++        EVT_SET_ADDR2(&evt, info->u.f_walk_eabt.addr2);
++        break;
++    case SMMU_EVT_F_CFG_CONFLICT:
++        EVT_SET_SSID(&evt, info->u.f_cfg_conflict.ssid);
++        EVT_SET_SSV(&evt,  info->u.f_cfg_conflict.ssv);
++        break;
++    /* rest is not implemented */
++    case SMMU_EVT_F_BAD_ATS_TREQ:
++    case SMMU_EVT_F_TLB_CONFLICT:
++    case SMMU_EVT_E_PAGE_REQ:
++    default:
++        g_assert_not_reached();
+     }
+ 
+-    queue_write(q, evt);
+-
+-    if (smmuv3_q_empty(q)) {
+-        smmuv3_trigger_irq(s, SMMU_IRQ_EVTQ, 0);
++    trace_smmuv3_record_event(smmu_event_string(info->type), info->sid);
++    r = smmuv3_write_eventq(s, &evt);
++    if (r != MEMTX_OK) {
++        smmuv3_trigger_irq(s, SMMU_IRQ_GERROR, R_GERROR_EVENTQ_ABT_ERR_MASK);
+     }
++    info->recorded = true;
  }
  
- static MemTxResult smmu_readll(SMMUv3State *s, hwaddr offset,
+ static void smmuv3_init_regs(SMMUv3State *s)
 diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index 38b35fa..781542a 100644
+index 781542a..9936e10 100644
 --- a/hw/arm/trace-events
 +++ b/hw/arm/trace-events
-@@ -23,3 +23,9 @@ smmuv3_cmdq_consume(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t con
- smmuv3_cmdq_opcode(const char *opcode) "<--- %s"
- smmuv3_cmdq_consume_out(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "prod:%d, cons:%d, prod_wrap:%d, cons_wrap:%d "
- smmuv3_cmdq_consume_error(const char *cmd_name, uint8_t cmd_error) "Error on %s command execution: %d"
-+smmuv3_update(bool is_empty, uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "q empty:%d prod:%d cons:%d p.wrap:%d p.cons:%d"
-+smmuv3_update_check_cmd(int error) "cmdq not enabled or error :0x%x"
-+smmuv3_write_mmio(uint64_t addr, uint64_t val, unsigned size, uint32_t r) "addr: 0x%"PRIx64" val:0x%"PRIx64" size: 0x%x(%d)"
-+smmuv3_write_mmio_idr(uint64_t addr, uint64_t val) "write to RO/Unimpl reg 0x%lx val64:0x%lx"
-+smmuv3_write_mmio_evtq_cons_bef_clear(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "Before clearing interrupt prod:0x%x cons:0x%x prod.w:%d cons.w:%d"
-+smmuv3_write_mmio_evtq_cons_after_clear(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "after clearing interrupt prod:0x%x cons:0x%x prod.w:%d cons.w:%d"
+@@ -29,3 +29,4 @@ smmuv3_write_mmio(uint64_t addr, uint64_t val, unsigned size, uint32_t r) "addr:
+ smmuv3_write_mmio_idr(uint64_t addr, uint64_t val) "write to RO/Unimpl reg 0x%lx val64:0x%lx"
+ smmuv3_write_mmio_evtq_cons_bef_clear(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "Before clearing interrupt prod:0x%x cons:0x%x prod.w:%d cons.w:%d"
+ smmuv3_write_mmio_evtq_cons_after_clear(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "after clearing interrupt prod:0x%x cons:0x%x prod.w:%d cons.w:%d"
++smmuv3_record_event(const char *type, uint32_t sid) "%s sid=%d"
 -- 
 2.5.5
 

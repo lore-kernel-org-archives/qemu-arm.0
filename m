@@ -1,116 +1,99 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4256814wre;
-        Tue, 29 May 2018 20:03:39 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKK432X0T0GvjAcgDhvlLsyFbvT8lVNH6XR/sjQLB79hmEPpAwFNsZ7V91YoBVBQ7l+3qgzj
-X-Received: by 2002:ac8:1978:: with SMTP id g53-v6mr939566qtk.282.1527649419539;
-        Tue, 29 May 2018 20:03:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527649419; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp2165452wmi;
+        Thu, 12 Apr 2018 10:28:56 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx4+iBJjLX+uBt4wcrHpsxiMwA31A7Rg58LjmNal8JdJDmJKej3vSSU7vtEzorN/5rxKAVGZU
+X-Received: by 10.200.57.117 with SMTP id t50mr2535338qtb.22.1523554136761;
+        Thu, 12 Apr 2018 10:28:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523554136; cv=none;
         d=google.com; s=arc-20160816;
-        b=PNDXNp66BGC/DDPsq+g4P1kKe3m8X/PNqftsFy0JJ+ycwqi+BWFmObCzojUB5ZnVEA
-         j4HELhmGOXlG+0/OntoY1l5loasxGbCG5iZ9QpE+dvYNJ2n225je8iME5H2Cm3gZo5MN
-         ama1uKpe0PzjSqVPM1uC5GsppEiBC0otSCFPkQG2/hOazihr3Xzfu2A6tGqlxA+2XpdT
-         f8PXof9i8DQXLjwPdeQ3IIbtMuGcLuG1TIge7HZ5zvs4YyRP5HcBO/xh4Tbo4EqMZZOa
-         7eupSx3rnTgtx371qxbt/0D26NUIMDRUfd5H/gQs80gsq3xl/Bv20JNOcwEXNvur8Wfz
-         WKAQ==
+        b=x7p26kVvg1v5aZRLeKefGJ6zN9RdF1U1ajxSMNHgxHYxFLMbWMexlG+p+eV1Soz9tN
+         L11/hRBWFJFn5/ixqsg6R0qIl8eUz/gadw5I/EtQx+/zy9tMyCkVAB+Bxhyu3EoG6DQU
+         Twm6a1iLpDtSwXiUAfUUegtNfwAQD0BuiMWNga2FYHuEUULZiMWeWmKu2XrsKndb7xVE
+         7+47rBg37nYV0tPPmjK49lmF5hK/CZ9G2qwMTSwCocXbMO4odxlmtBLwx4T7LC6+/ErU
+         JM8Yk6m+vOXazjW1Kqi9C5uom91RwxtZhA6jfVKeTjnkM9R2dibd0LcqBSLtD3IrGAtM
+         nkiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=2oRER/S+3dBxLitNAG9gKswQDgW9h6fAJwuRbtdb+f4=;
-        b=mCT9r38SvWTGDNKEMEcnqjwTHqzTAELx53KOxkx3qr0CVWUIeNV/D2XGTloxqutnOp
-         yyB3Lzj/fQHEVHo+iN7iQIz4mK1pjrFtrzkiKHt9R9yDfvauzMp0aiAOEXMz5eNZJhZe
-         K1WSW9U1lIrZ6jd/CzhIoF12nj1QlbnHSqR1NwsIM2Saju50seqzBbLv/raqqJbNL0R2
-         8NOVw+O7PER/a2Zrnmnde84ixamceNN6cxmTbL1vq+lgWj2s1tCqnS4M/zEb5MP4OZSz
-         yNGNAJZ3Ab70arMXKYTWCFgOq4uggdq47ZdPjnkwWOdALbIcb6dVt087FSz+7d+jpOA/
-         p4xQ==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=pK9TagOiT6Mx9vzVK8NdIlB2wvaRmW5UqTx0xgcngvU=;
+        b=zAIT4aH/zGLJ77RVxDsR9Wn1SoAVh76rYTTp7WgJs8VFCziyZd01v4mSiQOSpFnK9J
+         5/SZZeH4K1M7TMe0GADw2daA9va+F8gy7wV748l8pCl5S6sPwmKxgoQlRbXiX1KPMIw7
+         +2DO8f8cHh7h3PC5KQLUKv7V3HNyx/Xp/GxPHntya0H/vLEQXFh8m+ObGrmA5ZY73cFx
+         IJGKJ1EbV9ViR0RKasywwDW6Vg/6TFgF14aqID2RmMZS1Zh2tNSl8hPDaQ6lRRc0/xIk
+         9sK/1fVFwFJqN4LL8uVYQYtQ9k472g5HHglcpyX21ibVXhOmL9iIB6RSUjT8O6pf8+bZ
+         5x5g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oYfOW15f;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@linaro.org header.s=google header.b=glk3up+1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o12-v6si7719626qtp.401.2018.05.29.20.03.39
+        by mx.google.com with ESMTPS id t10si290857qki.254.2018.04.12.10.28.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 May 2018 20:03:39 -0700 (PDT)
+        Thu, 12 Apr 2018 10:28:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oYfOW15f;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:35926 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=glk3up+1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56946 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNrOl-0000dq-2q
-	for alex.bennee@linaro.org; Tue, 29 May 2018 23:03:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58609)
+	id 1f6g1o-0004uM-6j
+	for alex.bennee@linaro.org; Thu, 12 Apr 2018 13:28:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40117)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNrOX-0000bP-TX
-	for qemu-arm@nongnu.org; Tue, 29 May 2018 23:03:27 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1f6g1b-0004sY-0x
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 13:28:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNrOW-0006cC-Tf
-	for qemu-arm@nongnu.org; Tue, 29 May 2018 23:03:25 -0400
-Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:40551)
+	(envelope-from <peter.maydell@linaro.org>) id 1f6g1a-0007si-4o
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 13:28:43 -0400
+Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:41361)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNrOQ-0006Xy-9b; Tue, 29 May 2018 23:03:18 -0400
-Received: by mail-qt0-x244.google.com with SMTP id h2-v6so21478961qtp.7;
-	Tue, 29 May 2018 20:03:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=2oRER/S+3dBxLitNAG9gKswQDgW9h6fAJwuRbtdb+f4=;
-	b=oYfOW15fWhH5E9QTKVQiDvFp+M6KAtStXFEXnjnyOxtmMtZNk6L9Pv1QsOEnjAzuGB
-	+0iPnxcL1XzsjLoYo0ymKcGse+75c7XOZhg59KsWZgV1i28vT/nU5hY8nWT5uO1YhifE
-	MoKNWxkt7/c9+iQ6oyVsPh3+ugsSu1HO93xDTbGgNDy3Wdh5vFGHAEcS7sRR4mGPBNtt
-	QjGR7ugDfjo8rZJRn4NA4rxiroWvCvMdBrryzdO9T0jYaCZLnu3uZwYV1deD2daj8zu1
-	lRYWMJ6xjo//0ZvpQiSn6gpJVM28fvCjcfFwui0zMJJffRl8zFIsrT3KbogrmeDv3/fP
-	Si7Q==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1f6g1Z-0007sQ-Up
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 13:28:42 -0400
+Received: by mail-oi0-x241.google.com with SMTP id 188-v6so5912707oih.8
+	for <qemu-arm@nongnu.org>; Thu, 12 Apr 2018 10:28:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=pK9TagOiT6Mx9vzVK8NdIlB2wvaRmW5UqTx0xgcngvU=;
+	b=glk3up+1eYm7WdiNPGBHWq5MLfvgVrhQjP7zr2yWfaS07IoZhufigFiqGfYrWR5nJC
+	H8yWZUW7u1uJSCyznVKZKeX8xCKNM1SIsfqfqBtB6gW2wxbEI1VFCaymIfUUQoXyTDix
+	rRaM3TXjMhQ5zEmSVhaokSdhGsj10BkdnhkFs=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=2oRER/S+3dBxLitNAG9gKswQDgW9h6fAJwuRbtdb+f4=;
-	b=d1ky0fCf3hERMoTJlvu72osnh3abpP78XFwAlPnJA5IjejEWTGXFj6OWSz729lWUwh
-	NFVhbpEFc0QgAg8UmIERIlhGxHBpG2n6vCXN7XyttX/t34A3U8hDYZSo6c0rOVncqQ6q
-	uIgzMqNmCdmBaN9Wfowa2kPsw7Fil9S6eBUMx1zES/ItKjscLWkM1YQXuCdMWoddowit
-	PsaPLOVNMYlJYB5n6Us4zawmUAdg0rjgp5JN94KKMmFmQk/MVinZzTvxmPU34nOf/HIU
-	yROPXrroUMjoWw/haTcJFqUnSwC9w9TXed9qSY0ZC3SwpYDXAP8uSJs8o32IVBbpLomU
-	/Ubw==
-X-Gm-Message-State: APt69E37kn5cJKRKTWPPL22swSBPMTHU7+99ss8Khh7MTRzHokcJtR+J
-	X6rAVT7LyEy/VL1d5+f14LAAHQMf
-X-Received: by 2002:a0c:a525:: with SMTP id
-	y34-v6mr858188qvy.206.1527649397538; 
-	Tue, 29 May 2018 20:03:17 -0700 (PDT)
-Received: from [192.168.1.11] ([138.117.48.222])
-	by smtp.gmail.com with ESMTPSA id
-	y84-v6sm23275085qkb.23.2018.05.29.20.03.15
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 29 May 2018 20:03:16 -0700 (PDT)
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org
-References: <20180529062838.20556-1-clg@kaod.org>
-	<20180529062838.20556-3-clg@kaod.org>
-	<b0cb42ea-16f7-7806-814c-f472867e1a6a@amsat.org>
-	<e21c77e5-c1de-eaf9-5357-1147f5d14ca0@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <da14dbd1-1064-c721-0104-fe872643e4aa@amsat.org>
-Date: Wed, 30 May 2018 00:03:11 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=pK9TagOiT6Mx9vzVK8NdIlB2wvaRmW5UqTx0xgcngvU=;
+	b=dDKvXxxPBgUtUwl+MJ562uyEXv2RO5AIh5UfwEjfkA0KDP2m+wmdyu+YjLxSRjU8LQ
+	CdS2sLKtHL3ivGLGANXgr1Z7zvPDPVeA6YmhD/jyiINQ2L12dALp0vphOePe1UVMKVLk
+	KggiZFQzVYFHoxDMfmRJBUQNrFmfqzHTffbic89LFSM+MepNmmJRtzW+D6K5eJh0snGP
+	7BUPK6wurgaZng+Ly/Uot8DCYDovS6Nt0y7w6ZxcSNmmQ/OxUwAQ4pL6UyUURsvPV2ef
+	MyDOe3wzfeSRhDoBOvKZ2peCi0DaUc+wIStbtgaE9VL7e2c7w6Ra5NcPuks5BafjAvnD
+	NoaQ==
+X-Gm-Message-State: ALQs6tBA2wfGzmWvHInO8tYxpZE2AfxC5eVYacm+f0PbXB1P6JSt4vZY
+	Ym/ork3Eswg6iSfgxJVjfNdF9vnVRhTffjmvJdQx4A==
+X-Received: by 2002:aca:d455:: with SMTP id
+	l82-v6mr6652513oig.102.1523554121264; 
+	Thu, 12 Apr 2018 10:28:41 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <e21c77e5-c1de-eaf9-5357-1147f5d14ca0@kaod.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Thu, 12 Apr 2018 10:28:20
+	-0700 (PDT)
+In-Reply-To: <1521232280-13089-17-git-send-email-alindsay@codeaurora.org>
+References: <1521232280-13089-1-git-send-email-alindsay@codeaurora.org>
+	<1521232280-13089-17-git-send-email-alindsay@codeaurora.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 12 Apr 2018 18:28:20 +0100
+Message-ID: <CAFEAcA8Z0hiFD+VZpvje_76rG+W4NKuEJhNp6cUxUK9eA6+=1Q@mail.gmail.com>
+To: Aaron Lindsay <alindsay@codeaurora.org>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::244
-Subject: Re: [Qemu-arm] [PATCH 2/6] ftgmac100: add IEEE 802.1Q VLAN support
+X-Received-From: 2607:f8b0:4003:c06::241
+Subject: Re: [Qemu-arm] [PATCH v3 16/22] target/arm: Implement PMOVSSET
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -122,100 +105,62 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Samuel Thibault <samuel.thibault@ens-lyon.org>,
-	Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org
+Cc: Michael Spradling <mspradli@codeaurora.org>,
+	Digant Desai <digantd@codeaurora.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aRjNkGqpdM2b
+X-TUID: +v5Yi5y7WqU3
 
-On 05/29/2018 01:56 PM, Cédric Le Goater wrote:
-> On 05/29/2018 03:34 PM, Philippe Mathieu-Daudé wrote:
->> Hi Cédric,
->>
->> On 05/29/2018 03:28 AM, Cédric Le Goater wrote:
->>> The ftgmac100 NIC supports VLAN tag insertion and the MAC engine also
->>> has a control to remove VLAN tags from received packets.
->>>
->>> The VLAN control bits and VLAN tag information are contained in the
->>> second word of the transmit and receive descriptors. The Insert VLAN
->>> bit and the VLAN Tag available bit are only valid in the first segment
->>> of the packet.
->>>
->>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->>> ---
->>>  hw/net/ftgmac100.c | 32 +++++++++++++++++++++++++++++++-
->>>  1 file changed, 31 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
->>> index 7598d08c9cb9..50af1222464a 100644
->>> --- a/hw/net/ftgmac100.c
->>> +++ b/hw/net/ftgmac100.c
->>> @@ -443,6 +443,24 @@ static void ftgmac100_do_tx(FTGMAC100State *s, uint32_t tx_ring,
->>>              break;
->>>          }
->>>  
->>> +        /* Check for VLAN */
->>> +        if (bd.des0 & FTGMAC100_TXDES0_FTS &&
->>> +            bd.des1 & FTGMAC100_TXDES1_INS_VLANTAG &&
->>> +            be16_to_cpu(PKT_GET_ETH_HDR(ptr)->h_proto) != ETH_P_VLAN) {
->>> +            if (frame_size + len + 4 > sizeof(s->frame)) {
->>> +                qemu_log_mask(LOG_GUEST_ERROR, "%s: frame too big : %d bytes\n",
->>> +                              __func__, len);
->>> +                s->isr |= FTGMAC100_INT_XPKT_LOST;
->>> +                len =  sizeof(s->frame) - frame_size - 4;
->>> +            }
->>> +            memmove(ptr + 16, ptr + 12, len - 12);
->>> +            ptr[12] = 0x81;
->>> +            ptr[13] = 0x00;
->>
->>                stw_be_p(ptr + 12, ETH_P_VLAN);
->>
->>> +            ptr[14] = (uint8_t) bd.des1 >> 8;
->>> +            ptr[15] = (uint8_t) bd.des1;
->>
->>                stw_be_p(ptr + 12, bd.des1);
-> 
-> ptr + 14
+On 16 March 2018 at 20:31, Aaron Lindsay <alindsay@codeaurora.org> wrote:
+> Adding an array for v7VE+ CP registers was necessary so that PMOVSSET
+> wasn't defined for all v7 processors.
+>
+> Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
+> ---
+>  target/arm/helper.c | 32 +++++++++++++++++++++++++++++++-
+>  1 file changed, 31 insertions(+), 1 deletion(-)
+>
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index d4f06e6..f5e800e 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -1241,9 +1241,17 @@ static void pmcntenclr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>  static void pmovsr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>                           uint64_t value)
+>  {
+> +    value &= PMU_COUNTER_MASK(env);
+>      env->cp15.c9_pmovsr &= ~value;
+>  }
+>
+> +static void pmovsset_write(CPUARMState *env, const ARMCPRegInfo *ri,
+> +                         uint64_t value)
+> +{
+> +    value &= PMU_COUNTER_MASK(env);
+> +    env->cp15.c9_pmovsr |= value;
+> +}
+> +
+>  static void pmxevtyper_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>                               uint64_t value)
+>  {
+> @@ -1406,7 +1414,7 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
+>        .fieldoffset = offsetof(CPUARMState, cp15.c9_pmcnten),
+>        .writefn = pmcntenclr_write },
+>      { .name = "PMOVSR", .cp = 15, .crn = 9, .crm = 12, .opc1 = 0, .opc2 = 3,
+> -      .access = PL0_RW, .fieldoffset = offsetof(CPUARMState, cp15.c9_pmovsr),
+> +      .access = PL0_RW, .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pmovsr),
+>        .accessfn = pmreg_access,
+>        .writefn = pmovsr_write,
+>        .raw_writefn = raw_write },
 
-copy/paste mistake ;)
+This change is half of a bug fix (the other half being to make the
+field in the CPU struct be uint64_t rather than uint32_t). That
+bug fix should be in a patch of its own.
 
->>> +            len += 4;
->>> +        }
->>> +
->>>          ptr += len;
->>>          frame_size += len;
->>>          if (bd.des0 & FTGMAC100_TXDES0_LTS) {
->>> @@ -858,7 +876,19 @@ static ssize_t ftgmac100_receive(NetClientState *nc, const uint8_t *buf,
->>>              buf_len += size - 4;
->>>          }
->>>          buf_addr = bd.des3;
->>> -        dma_memory_write(&address_space_memory, buf_addr, buf, buf_len);
->>> +        if (first && proto == ETH_P_VLAN && buf_len >= 18) {
->>> +            bd.des1 = (buf[14] << 8) | buf[15] | FTGMAC100_RXDES1_VLANTAG_AVAIL;
->>
->>                bd.des1 = lduw_be_p(buf + 14) |
->> FTGMAC100_RXDES1_VLANTAG_AVAIL;
->>
->>> +            if (s->maccr & FTGMAC100_MACCR_RM_VLAN) {
->>> +                dma_memory_write(&address_space_memory, buf_addr, buf, 12);
->>> +                dma_memory_write(&address_space_memory, buf_addr + 12, buf + 16,
->>> +                                 buf_len - 16);
->>> +            } else {
->>> +                dma_memory_write(&address_space_memory, buf_addr, buf, buf_len);
->>> +            }
->>> +        } else {
->>> +            bd.des1 = 0;
->>> +            dma_memory_write(&address_space_memory, buf_addr, buf, buf_len);
->>> +        }
->>>          buf += buf_len;
->>>          if (size < 4) {
->>>              dma_memory_write(&address_space_memory, buf_addr + buf_len,
->>>
->>
->> With ldst API uses:
->> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>
-> 
-> Sure, I will fix these.
+pmuserenr has the same bug (uint32_t state field accessed by
+a STATE_AA64 sysreg).
 
-Thanks!
+thanks
+-- PMM

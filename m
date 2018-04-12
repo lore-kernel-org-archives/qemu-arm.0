@@ -1,85 +1,86 @@
-Received: by 10.28.71.155 with SMTP id m27csp1606743wmi;
-        Thu, 12 Apr 2018 00:42:21 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx48Ig8Wqc4kjNUBWtmZR5BO1ZzoEG2hfNvWQvWdR6miRmScpxNLE8FGeYZm208PYr5VdhyFn
-X-Received: by 10.55.150.67 with SMTP id y64mr11197176qkd.318.1523518941490;
-        Thu, 12 Apr 2018 00:42:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523518941; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp1606916wmi;
+        Thu, 12 Apr 2018 00:42:36 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx49/BkPQSzpDoMnmkKnG1thu1LlHnaHxpT4Isyv374FxIFYFlw9pHfMpKa33A43VZ8QLrvU4
+X-Received: by 10.237.35.216 with SMTP id k24mr12089296qtc.40.1523518956492;
+        Thu, 12 Apr 2018 00:42:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523518956; cv=none;
         d=google.com; s=arc-20160816;
-        b=mxHb5sK4xNyBsqvDIiW93yE05zQJmQE2seoU2StYsx1WRXTno15vlaen9FhjhjUWL0
-         Eg+9pst5nEriRcoW8c9S/2jdbm3dT/FiYU0IOzHSSa1Y29t11CExqhzL4Ado0chw7iti
-         nfYIcmI4VxHqWk2L8RUy8hy0I8rYlIBcwKYdOgeXYALtIyah8cuKnV1dCQRjjuExql41
-         AkXcuaiXFEqyPOKQY7PYwhG46EaN11ZRfY+FmnKUT8pW23pPyvZ6LgdHnDzNvbaayWeH
-         1eGGkoK/EAewC++tWnk7UOd/BATm5+PvwFfnP6oyhmYBkWBcLs+24T3OhbeVHw/4eavp
-         zE6w==
+        b=eVjqEIzR53VTu/gR0l2xKMtse1PTwKkO+7M0hSzII315VJAmuLMKp/QYFti+zjyWTi
+         1frR4CF0SSdVcvm88nwQxpFyjrGo5YHEhmE8zo2609CNxYHPbSrqQedKBKrIsQE5uJzZ
+         p+exxs/OwozdRzVwFLGGQAL0kpSDzzLZKs04BRT+Jivwe7sK3uot+6ejzVuOc4yCBOSj
+         xJOHQOfSG6Zu9nuPq/rCeglmRbiu7gHJyX78QxGb0PPYOk00vGw23yuQnj4d6I401PrK
+         DJ1ZHnYtzgfAb+TcUq0c7xqwHhBMAKaq9GqauXvt5teciQ4NE1gXsdEUXHfdgzQOI9jq
+         kTsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=rgvGwaZA4X9w8wx9Lt9bdmnwDyya5494XeX1ITsUa1M=;
-        b=hRqqBisgGYgU7PG/shiraFiJi1idcn3dayctZ6HH+uyCIElHPkC3vZqORE4e0S/So+
-         Tgs9uc1lpdgfrhnxmsqnugkT7PoWdE1xjs4EWdBnyF6r8PfWZzYpIrOdNKFGJNWaMfQ6
-         b+gvSj6Ya5svUPOWTuMd0NGDjH+8zytyxpK5FH9m9Peq2BkrmUcXVvCHCcmHeWKR9RSe
-         cJ3EbldvgOvMUvFprux88fB8nGC1YIY2/Ygbb60AkPL8NvRqJoa6INhsyF/8KzkxnNRc
-         OdmsAHDbIdr6+/fReBFgGAjWcwrRoXg8XUcFM4553H5xZv7hI6opUNgbM2aHaJLCW+mm
-         8j7w==
+        bh=ErmOpDFKylj33hhMc8bLXlxPWUHt+D0Ek8u65POLN/w=;
+        b=ALgGNINa8LqRiJOX8DCK0aqzQtyzW11fvHzFjF/TBnWdgEVnnZIneHZUi1MGZTtwfC
+         72zcFx/ljxmvIN2gixq3SYdrqQTeU3+9P+vZZ4yjkFdQ3EZTq81BXXeIl6ljEv/do44B
+         RY7nIkDbPMA/BXFWdZNCEzw6mm6pOzmF4+wTkGBB08wRZNsJWWAhDypuuVYk7Ikt+YmJ
+         Rq2v6PY9EfPp5Kklqt5660S0oenbL/OzP3yajOQkJ2Isu36XHU8VAGLEkG4uZYut3rYc
+         u+RHJkYzOIrqXM0JKgoqjQ9mPgcynJVxK/F4OjlA0fT99JNiWEuqvafnnqRpy4N26Q18
+         k1bA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j5si372708qtj.2.2018.04.12.00.42.21
+        by mx.google.com with ESMTPS id o38si4017637qto.130.2018.04.12.00.42.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 12 Apr 2018 00:42:21 -0700 (PDT)
+        Thu, 12 Apr 2018 00:42:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44071 helo=lists.gnu.org)
+Received: from localhost ([::1]:44076 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f6Ws8-0001eU-UA
-	for alex.bennee@linaro.org; Thu, 12 Apr 2018 03:42:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49294)
+	id 1f6WsN-0001sO-Vf
+	for alex.bennee@linaro.org; Thu, 12 Apr 2018 03:42:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49223)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1f6Wof-0006bE-V3
-	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 03:38:47 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1f6WoZ-0006Uv-HX
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 03:38:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1f6Wob-00039Q-AO
-	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 03:38:45 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:34360 helo=mx1.redhat.com)
+	(envelope-from <eric.auger@redhat.com>) id 1f6WoY-00035o-3G
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 03:38:39 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:34336 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1f6Wob-00038i-4f; Thu, 12 Apr 2018 03:38:41 -0400
+	id 1f6WoX-00035N-Un; Thu, 12 Apr 2018 03:38:38 -0400
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A2A39405728C;
-	Thu, 12 Apr 2018 07:38:40 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6D2D24075A67;
+	Thu, 12 Apr 2018 07:38:37 +0000 (UTC)
 Received: from localhost.localdomain.com (ovpn-116-192.ams2.redhat.com
 	[10.36.116.192])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B0E5E215CDC6;
-	Thu, 12 Apr 2018 07:38:37 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id CFD43215CDC6;
+	Thu, 12 Apr 2018 07:38:34 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org, prem.mallappa@gmail.com
-Date: Thu, 12 Apr 2018 09:37:57 +0200
-Message-Id: <1523518688-26674-7-git-send-email-eric.auger@redhat.com>
+Date: Thu, 12 Apr 2018 09:37:56 +0200
+Message-Id: <1523518688-26674-6-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1523518688-26674-1-git-send-email-eric.auger@redhat.com>
 References: <1523518688-26674-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.11.55.6]);
-	Thu, 12 Apr 2018 07:38:40 +0000 (UTC)
+	Thu, 12 Apr 2018 07:38:37 +0000 (UTC)
 X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Thu, 12 Apr 2018 07:38:40 +0000 (UTC) for IP:'10.11.54.6'
+	Thu, 12 Apr 2018 07:38:37 +0000 (UTC) for IP:'10.11.54.6'
 	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH v11 06/17] hw/arm/smmuv3: Queue helpers
+Subject: [Qemu-arm] [PATCH v11 05/17] hw/arm/smmuv3: Wired IRQ and GERROR
+ helpers
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,374 +97,177 @@ Cc: cdall@kernel.org, mst@redhat.com, jean-philippe.brucker@arm.com,
 	linuc.decode@gmail.com, bharat.bhushan@nxp.com, jintack@cs.columbia.edu
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qqlLqlozzx7S
+X-TUID: rtfvRRg3wkjx
 
-We introduce helpers to read/write into the command and event
-circular queues.
+We introduce some helpers to handle wired IRQs and especially
+GERROR interrupt. SMMU writes GERROR register on GERROR event
+and SW acks GERROR interrupts by setting GERRORn.
 
-smmuv3_write_eventq and smmuv3_cmq_consume will become static
-in subsequent patches.
-
-Invalidation commands are not yet dealt with. We do not cache
-data that need to be invalidated. This will change with vhost
-integration.
+The Wired interrupts are edge sensitive hence the pulse usage.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
 
 ---
-v9 -> v10:
-- simplified macros
-- s/BASE/Q_BASE
-- use log2size field
-- static inline functions replacing some macros
-- simplified queue_prod_incr/queue_cons_incr and use deposit32
-- trace for cmdq_consume failure
+v9 - v10:
+- s/hwaddr/uint64_t in trace-events
+- use qemu_log_mask LOG_UNIMP on PRI IRQ
+- add a comment saying smmuv3_trigger_irq and smmuv3_write_gerrorn
+  will become static later on
+- write gerrorn without filtering (ie. even if the guest toggles non
+  active IRQs)
+- pulse if at least one new IRQ type
+- smmuv3_eventq_irq_enabled and smmuv3_gerror_irq_enabled become
+  static inline
 
-v8 -> v9:
-- fix CMD_SSID & CMD_ADDR + some renamings
-- do cons increment after the execution of the command
-- add Q_INCONSISTENT()
-
-v7 -> v8
-- use address_space_rw
-- helpers inspired from spec
+v7 -> v8:
+- remove SMMU_PENDING_GERRORS macro
+- properly toggle gerror
+- properly sanitize gerrorn write
 ---
- hw/arm/smmuv3-internal.h | 154 +++++++++++++++++++++++++++++++++++++++++++++++
- hw/arm/smmuv3.c          | 136 +++++++++++++++++++++++++++++++++++++++++
- hw/arm/trace-events      |   5 ++
- 3 files changed, 295 insertions(+)
+ hw/arm/smmuv3-internal.h | 36 +++++++++++----------------
+ hw/arm/smmuv3.c          | 64 ++++++++++++++++++++++++++++++++++++++++++++++++
+ hw/arm/trace-events      |  3 +++
+ 3 files changed, 81 insertions(+), 22 deletions(-)
 
 diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-index 32f81d4..968fa25 100644
+index a6461fe..32f81d4 100644
 --- a/hw/arm/smmuv3-internal.h
 +++ b/hw/arm/smmuv3-internal.h
-@@ -156,4 +156,158 @@ static inline bool smmuv3_gerror_irq_enabled(SMMUv3State *s)
- void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq, uint32_t gerror_mask);
- void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t gerrorn);
+@@ -129,28 +129,6 @@ typedef struct Evt  {
+     uint32_t word[8];
+ } Evt;
  
-+/* Queue Handling */
-+
-+#define Q_BASE(q)          ((q)->base & SMMU_BASE_ADDR_MASK)
-+#define WRAP_MASK(q)       (1 << (q)->log2size)
-+#define INDEX_MASK(q)      (((1 << (q)->log2size)) - 1)
-+#define WRAP_INDEX_MASK(q) ((1 << ((q)->log2size + 1)) - 1)
-+
-+#define Q_CONS(q) ((q)->cons & INDEX_MASK(q))
-+#define Q_PROD(q) ((q)->prod & INDEX_MASK(q))
-+
-+#define Q_CONS_ENTRY(q)  (Q_BASE(q) + (q)->entry_size * Q_CONS(q))
-+#define Q_PROD_ENTRY(q)  (Q_BASE(q) + (q)->entry_size * Q_PROD(q))
-+
-+#define Q_CONS_WRAP(q) (((q)->cons & WRAP_MASK(q)) >> (q)->log2size)
-+#define Q_PROD_WRAP(q) (((q)->prod & WRAP_MASK(q)) >> (q)->log2size)
-+
-+static inline bool smmuv3_q_full(SMMUQueue *q)
+-/**
+- * smmu_read64 - 64-bit register read utility function supporting
+- * aligned 32-bit word access to both 32-bit halves and aligned 64-bit
+- * access.
+- *
+- * @r: register address
+- * @offset: byte offset if 32-bit access
+- * @size: read byte size
+- */
+-static inline uint64_t smmu_read64(uint64_t r, unsigned offset,
+-                                   unsigned size)
+-{
+-    if (size == 8) {
+-        return r;
+-    }
+-
+-    /* 32 bit access */
+-    assert(!offset || offset == 4);
+-
+-    return extract64(r, offset << 3, 32);
+-}
+-
+ static inline uint32_t smmuv3_idreg(int regoffset)
+ {
+     /*
+@@ -164,4 +142,18 @@ static inline uint32_t smmuv3_idreg(int regoffset)
+     return smmuv3_ids[regoffset / 4];
+ }
+ 
++static inline bool smmuv3_eventq_irq_enabled(SMMUv3State *s)
 +{
-+    return ((q->cons ^ q->prod) & WRAP_INDEX_MASK(q)) == WRAP_MASK(q);
++    return FIELD_EX32(s->irq_ctrl, IRQ_CTRL, EVENTQ_IRQEN);
 +}
 +
-+static inline bool smmuv3_q_empty(SMMUQueue *q)
++static inline bool smmuv3_gerror_irq_enabled(SMMUv3State *s)
 +{
-+    return (q->cons & WRAP_INDEX_MASK(q)) == (q->prod & WRAP_INDEX_MASK(q));
++    return FIELD_EX32(s->irq_ctrl, IRQ_CTRL, GERROR_IRQEN);
 +}
 +
-+static inline void queue_prod_incr(SMMUQueue *q)
-+{
-+    q->prod = (q->prod + 1) & WRAP_INDEX_MASK(q);
-+}
-+
-+static inline void queue_cons_incr(SMMUQueue *q)
-+{
-+    q->cons = deposit32(q->cons, 0, q->log2size + 1, q->cons + 1);
-+}
-+
-+static inline bool smmuv3_cmdq_enabled(SMMUv3State *s)
-+{
-+    return FIELD_EX32(s->cr[0], CR0, CMDQEN);
-+}
-+
-+static inline bool smmuv3_eventq_enabled(SMMUv3State *s)
-+{
-+    return FIELD_EX32(s->cr[0], CR0, EVENTQEN);
-+}
-+
-+static inline void smmu_write_cmdq_err(SMMUv3State *s, uint32_t err_type)
-+{
-+    s->cmdq.cons = FIELD_DP32(s->cmdq.cons, CMDQ_CONS, ERR, err_type);
-+}
-+
-+void smmuv3_write_eventq(SMMUv3State *s, Evt *evt);
-+
-+/* Commands */
-+
-+typedef enum SMMUCommandType {
-+    SMMU_CMD_PREFETCH_CONFIG = 0x01,
-+    SMMU_CMD_PREFETCH_ADDR,
-+    SMMU_CMD_CFGI_STE,
-+    SMMU_CMD_CFGI_STE_RANGE,
-+    SMMU_CMD_CFGI_CD,
-+    SMMU_CMD_CFGI_CD_ALL,
-+    SMMU_CMD_CFGI_ALL,
-+    SMMU_CMD_TLBI_NH_ALL     = 0x10,
-+    SMMU_CMD_TLBI_NH_ASID,
-+    SMMU_CMD_TLBI_NH_VA,
-+    SMMU_CMD_TLBI_NH_VAA,
-+    SMMU_CMD_TLBI_EL3_ALL    = 0x18,
-+    SMMU_CMD_TLBI_EL3_VA     = 0x1a,
-+    SMMU_CMD_TLBI_EL2_ALL    = 0x20,
-+    SMMU_CMD_TLBI_EL2_ASID,
-+    SMMU_CMD_TLBI_EL2_VA,
-+    SMMU_CMD_TLBI_EL2_VAA,  /* 0x23 */
-+    SMMU_CMD_TLBI_S12_VMALL  = 0x28,
-+    SMMU_CMD_TLBI_S2_IPA     = 0x2a,
-+    SMMU_CMD_TLBI_NSNH_ALL   = 0x30,
-+    SMMU_CMD_ATC_INV         = 0x40,
-+    SMMU_CMD_PRI_RESP,
-+    SMMU_CMD_RESUME          = 0x44,
-+    SMMU_CMD_STALL_TERM,
-+    SMMU_CMD_SYNC,          /* 0x46 */
-+} SMMUCommandType;
-+
-+static const char *cmd_stringify[] = {
-+    [SMMU_CMD_PREFETCH_CONFIG] = "SMMU_CMD_PREFETCH_CONFIG",
-+    [SMMU_CMD_PREFETCH_ADDR]   = "SMMU_CMD_PREFETCH_ADDR",
-+    [SMMU_CMD_CFGI_STE]        = "SMMU_CMD_CFGI_STE",
-+    [SMMU_CMD_CFGI_STE_RANGE]  = "SMMU_CMD_CFGI_STE_RANGE",
-+    [SMMU_CMD_CFGI_CD]         = "SMMU_CMD_CFGI_CD",
-+    [SMMU_CMD_CFGI_CD_ALL]     = "SMMU_CMD_CFGI_CD_ALL",
-+    [SMMU_CMD_CFGI_ALL]        = "SMMU_CMD_CFGI_ALL",
-+    [SMMU_CMD_TLBI_NH_ALL]     = "SMMU_CMD_TLBI_NH_ALL",
-+    [SMMU_CMD_TLBI_NH_ASID]    = "SMMU_CMD_TLBI_NH_ASID",
-+    [SMMU_CMD_TLBI_NH_VA]      = "SMMU_CMD_TLBI_NH_VA",
-+    [SMMU_CMD_TLBI_NH_VAA]     = "SMMU_CMD_TLBI_NH_VAA",
-+    [SMMU_CMD_TLBI_EL3_ALL]    = "SMMU_CMD_TLBI_EL3_ALL",
-+    [SMMU_CMD_TLBI_EL3_VA]     = "SMMU_CMD_TLBI_EL3_VA",
-+    [SMMU_CMD_TLBI_EL2_ALL]    = "SMMU_CMD_TLBI_EL2_ALL",
-+    [SMMU_CMD_TLBI_EL2_ASID]   = "SMMU_CMD_TLBI_EL2_ASID",
-+    [SMMU_CMD_TLBI_EL2_VA]     = "SMMU_CMD_TLBI_EL2_VA",
-+    [SMMU_CMD_TLBI_EL2_VAA]    = "SMMU_CMD_TLBI_EL2_VAA",
-+    [SMMU_CMD_TLBI_S12_VMALL]  = "SMMU_CMD_TLBI_S12_VMALL",
-+    [SMMU_CMD_TLBI_S2_IPA]     = "SMMU_CMD_TLBI_S2_IPA",
-+    [SMMU_CMD_TLBI_NSNH_ALL]   = "SMMU_CMD_TLBI_NSNH_ALL",
-+    [SMMU_CMD_ATC_INV]         = "SMMU_CMD_ATC_INV",
-+    [SMMU_CMD_PRI_RESP]        = "SMMU_CMD_PRI_RESP",
-+    [SMMU_CMD_RESUME]          = "SMMU_CMD_RESUME",
-+    [SMMU_CMD_STALL_TERM]      = "SMMU_CMD_STALL_TERM",
-+    [SMMU_CMD_SYNC]            = "SMMU_CMD_SYNC",
-+};
-+
-+static inline const char *smmu_cmd_string(SMMUCommandType type)
-+{
-+    return cmd_stringify[type] ? cmd_stringify[type] : "UNKNOWN";
-+}
-+
-+/* CMDQ fields */
-+
-+typedef enum {
-+    SMMU_CERROR_NONE = 0,
-+    SMMU_CERROR_ILL,
-+    SMMU_CERROR_ABT,
-+    SMMU_CERROR_ATC_INV_SYNC,
-+} SMMUCmdError;
-+
-+enum { /* Command completion notification */
-+    CMD_SYNC_SIG_NONE,
-+    CMD_SYNC_SIG_IRQ,
-+    CMD_SYNC_SIG_SEV,
-+};
-+
-+#define CMD_TYPE(x)         extract32((x)->word[0], 0 , 8)
-+#define CMD_SSEC(x)         extract32((x)->word[0], 10, 1)
-+#define CMD_SSV(x)          extract32((x)->word[0], 11, 1)
-+#define CMD_RESUME_AC(x)    extract32((x)->word[0], 12, 1)
-+#define CMD_RESUME_AB(x)    extract32((x)->word[0], 13, 1)
-+#define CMD_SYNC_CS(x)      extract32((x)->word[0], 12, 2)
-+#define CMD_SSID(x)         extract32((x)->word[0], 12, 20)
-+#define CMD_SID(x)          ((x)->word[1])
-+#define CMD_VMID(x)         extract32((x)->word[1], 0 , 16)
-+#define CMD_ASID(x)         extract32((x)->word[1], 16, 16)
-+#define CMD_RESUME_STAG(x)  extract32((x)->word[2], 0 , 16)
-+#define CMD_RESP(x)         extract32((x)->word[2], 11, 2)
-+#define CMD_LEAF(x)         extract32((x)->word[2], 0 , 1)
-+#define CMD_STE_RANGE(x)    extract32((x)->word[2], 0 , 5)
-+#define CMD_ADDR(x) ({                                        \
-+            uint64_t high = (uint64_t)(x)->word[3];           \
-+            uint64_t low = extract32((x)->word[2], 12, 20);    \
-+            uint64_t addr = high << 32 | (low << 12);         \
-+            addr;                                             \
-+        })
-+
-+int smmuv3_cmdq_consume(SMMUv3State *s);
++/* public until callers get introduced */
++void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq, uint32_t gerror_mask);
++void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t gerrorn);
 +
  #endif
 diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 46683a8..899f0e0 100644
+index dba4656..46683a8 100644
 --- a/hw/arm/smmuv3.c
 +++ b/hw/arm/smmuv3.c
-@@ -94,6 +94,46 @@ void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t new_gerrorn)
-     trace_smmuv3_write_gerrorn(toggled & pending, s->gerrorn);
- }
+@@ -30,6 +30,70 @@
+ #include "hw/arm/smmuv3.h"
+ #include "smmuv3-internal.h"
  
-+static inline MemTxResult queue_read(SMMUQueue *q, void *data)
++/**
++ * smmuv3_trigger_irq - pulse @irq if enabled and update
++ * GERROR register in case of GERROR interrupt
++ *
++ * @irq: irq type
++ * @gerror_mask: mask of gerrors to toggle (relevant if @irq is GERROR)
++ */
++void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq, uint32_t gerror_mask)
 +{
-+    dma_addr_t addr = Q_CONS_ENTRY(q);
 +
-+    return dma_memory_read(&address_space_memory, addr, data, q->entry_size);
++    bool pulse = false;
++
++    switch (irq) {
++    case SMMU_IRQ_EVTQ:
++        pulse = smmuv3_eventq_irq_enabled(s);
++        break;
++    case SMMU_IRQ_PRIQ:
++        qemu_log_mask(LOG_UNIMP, "PRI not yet supported\n");
++        break;
++    case SMMU_IRQ_CMD_SYNC:
++        pulse = true;
++        break;
++    case SMMU_IRQ_GERROR:
++    {
++        uint32_t pending = s->gerror ^ s->gerrorn;
++        uint32_t new_gerrors = ~pending & gerror_mask;
++
++        if (!new_gerrors) {
++            /* only toggle non pending errors */
++            return;
++        }
++        s->gerror ^= new_gerrors;
++        trace_smmuv3_write_gerror(new_gerrors, s->gerror);
++
++        pulse = smmuv3_gerror_irq_enabled(s);
++        break;
++    }
++    }
++    if (pulse) {
++            trace_smmuv3_trigger_irq(irq);
++            qemu_irq_pulse(s->irq[irq]);
++    }
 +}
 +
-+static MemTxResult queue_write(SMMUQueue *q, void *data)
++void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t new_gerrorn)
 +{
-+    dma_addr_t addr = Q_PROD_ENTRY(q);
-+    MemTxResult ret;
++    uint32_t pending = s->gerror ^ s->gerrorn;
++    uint32_t toggled = s->gerrorn ^ new_gerrorn;
 +
-+    ret = dma_memory_write(&address_space_memory, addr, data, q->entry_size);
-+    if (ret != MEMTX_OK) {
-+        return ret;
++    if (toggled & ~pending) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "guest toggles non pending errors = 0x%x\n",
++                      toggled & ~pending);
 +    }
 +
-+    queue_prod_incr(q);
-+    return MEMTX_OK;
-+}
++    /*
++     * We do not raise any error in case guest toggles bits corresponding
++     * to not active IRQs (CONSTRAINED UNPREDICTABLE)
++     */
++    s->gerrorn = new_gerrorn;
 +
-+void smmuv3_write_eventq(SMMUv3State *s, Evt *evt)
-+{
-+    SMMUQueue *q = &s->eventq;
-+
-+    if (!smmuv3_eventq_enabled(s)) {
-+        return;
-+    }
-+
-+    if (smmuv3_q_full(q)) {
-+        return;
-+    }
-+
-+    queue_write(q, evt);
-+
-+    if (smmuv3_q_empty(q)) {
-+        smmuv3_trigger_irq(s, SMMU_IRQ_EVTQ, 0);
-+    }
++    trace_smmuv3_write_gerrorn(toggled & pending, s->gerrorn);
 +}
 +
  static void smmuv3_init_regs(SMMUv3State *s)
  {
      /**
-@@ -133,6 +173,102 @@ static void smmuv3_init_regs(SMMUv3State *s)
-     s->sid_split = 0;
- }
- 
-+int smmuv3_cmdq_consume(SMMUv3State *s)
-+{
-+    SMMUCmdError cmd_error = SMMU_CERROR_NONE;
-+    SMMUQueue *q = &s->cmdq;
-+    SMMUCommandType type = 0;
-+
-+    if (!smmuv3_cmdq_enabled(s)) {
-+        return 0;
-+    }
-+    /*
-+     * some commands depend on register values, typically CR0. In case those
-+     * register values change while handling the command, spec says it
-+     * is UNPREDICTABLE whether the command is interpreted under the new
-+     * or old value.
-+     */
-+
-+    while (!smmuv3_q_empty(q)) {
-+        uint32_t pending = s->gerror ^ s->gerrorn;
-+        Cmd cmd;
-+
-+        trace_smmuv3_cmdq_consume(Q_PROD(q), Q_CONS(q),
-+                                  Q_PROD_WRAP(q), Q_CONS_WRAP(q));
-+
-+        if (FIELD_EX32(pending, GERROR, CMDQ_ERR)) {
-+            break;
-+        }
-+
-+        if (queue_read(q, &cmd) != MEMTX_OK) {
-+            cmd_error = SMMU_CERROR_ABT;
-+            break;
-+        }
-+
-+        type = CMD_TYPE(&cmd);
-+
-+        trace_smmuv3_cmdq_opcode(smmu_cmd_string(type));
-+
-+        switch (type) {
-+        case SMMU_CMD_SYNC:
-+            if (CMD_SYNC_CS(&cmd) & CMD_SYNC_SIG_IRQ) {
-+                smmuv3_trigger_irq(s, SMMU_IRQ_CMD_SYNC, 0);
-+            }
-+            break;
-+        case SMMU_CMD_PREFETCH_CONFIG:
-+        case SMMU_CMD_PREFETCH_ADDR:
-+        case SMMU_CMD_CFGI_STE:
-+        case SMMU_CMD_CFGI_STE_RANGE: /* same as SMMU_CMD_CFGI_ALL */
-+        case SMMU_CMD_CFGI_CD:
-+        case SMMU_CMD_CFGI_CD_ALL:
-+        case SMMU_CMD_TLBI_NH_ALL:
-+        case SMMU_CMD_TLBI_NH_ASID:
-+        case SMMU_CMD_TLBI_NH_VA:
-+        case SMMU_CMD_TLBI_NH_VAA:
-+        case SMMU_CMD_TLBI_EL3_ALL:
-+        case SMMU_CMD_TLBI_EL3_VA:
-+        case SMMU_CMD_TLBI_EL2_ALL:
-+        case SMMU_CMD_TLBI_EL2_ASID:
-+        case SMMU_CMD_TLBI_EL2_VA:
-+        case SMMU_CMD_TLBI_EL2_VAA:
-+        case SMMU_CMD_TLBI_S12_VMALL:
-+        case SMMU_CMD_TLBI_S2_IPA:
-+        case SMMU_CMD_TLBI_NSNH_ALL:
-+        case SMMU_CMD_ATC_INV:
-+        case SMMU_CMD_PRI_RESP:
-+        case SMMU_CMD_RESUME:
-+        case SMMU_CMD_STALL_TERM:
-+            trace_smmuv3_unhandled_cmd(type);
-+            break;
-+        default:
-+            cmd_error = SMMU_CERROR_ILL;
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "Illegal command type: %d\n", CMD_TYPE(&cmd));
-+            break;
-+        }
-+        if (cmd_error) {
-+            break;
-+        }
-+        /*
-+         * We only increment the cons index after the completion of
-+         * the command. We do that because the SYNC returns immediately
-+         * and does not check the completion of previous commands
-+         */
-+        queue_cons_incr(q);
-+    }
-+
-+    if (cmd_error) {
-+        trace_smmuv3_cmdq_consume_error(smmu_cmd_string(type), cmd_error);
-+        smmu_write_cmdq_err(s, cmd_error);
-+        smmuv3_trigger_irq(s, SMMU_IRQ_GERROR, R_GERROR_CMDQ_ERR_MASK);
-+    }
-+
-+    trace_smmuv3_cmdq_consume_out(Q_PROD(q), Q_CONS(q),
-+                                  Q_PROD_WRAP(q), Q_CONS_WRAP(q));
-+
-+    return 0;
-+}
-+
- static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
-                                    unsigned size, MemTxAttrs attrs)
- {
 diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index b77f8d2..38b35fa 100644
+index 2f3d74a..b77f8d2 100644
 --- a/hw/arm/trace-events
 +++ b/hw/arm/trace-events
-@@ -18,3 +18,8 @@ smmuv3_read_mmio(uint64_t addr, uint64_t val, unsigned size, uint32_t r) "addr:
- smmuv3_trigger_irq(int irq) "irq=%d"
- smmuv3_write_gerror(uint32_t toggled, uint32_t gerror) "toggled=0x%x, new GERROR=0x%x"
- smmuv3_write_gerrorn(uint32_t acked, uint32_t gerrorn) "acked=0x%x, new GERRORN=0x%x"
-+smmuv3_unhandled_cmd(uint32_t type) "Unhandled command type=%d"
-+smmuv3_cmdq_consume(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "prod=%d cons=%d prod.wrap=%d cons.wrap=%d"
-+smmuv3_cmdq_opcode(const char *opcode) "<--- %s"
-+smmuv3_cmdq_consume_out(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "prod:%d, cons:%d, prod_wrap:%d, cons_wrap:%d "
-+smmuv3_cmdq_consume_error(const char *cmd_name, uint8_t cmd_error) "Error on %s command execution: %d"
+@@ -15,3 +15,6 @@ smmu_get_pte(uint64_t baseaddr, int index, uint64_t pteaddr, uint64_t pte) "base
+ 
+ #hw/arm/smmuv3.c
+ smmuv3_read_mmio(uint64_t addr, uint64_t val, unsigned size, uint32_t r) "addr: 0x%"PRIx64" val:0x%"PRIx64" size: 0x%x(%d)"
++smmuv3_trigger_irq(int irq) "irq=%d"
++smmuv3_write_gerror(uint32_t toggled, uint32_t gerror) "toggled=0x%x, new GERROR=0x%x"
++smmuv3_write_gerrorn(uint32_t acked, uint32_t gerrorn) "acked=0x%x, new GERRORN=0x%x"
 -- 
 2.5.5
 

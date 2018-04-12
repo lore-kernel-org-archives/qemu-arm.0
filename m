@@ -1,279 +1,387 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp3518041wrq;
-        Sun, 10 Jun 2018 19:26:34 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKL5574LodLQ9bvnGw8W8+vLyn69mp/buEtNXxjecePxqwX+9c5j0iLpeLMGQYBQuQ0ziT7b
-X-Received: by 2002:a37:b507:: with SMTP id e7-v6mr2275204qkf.31.1528683994186;
-        Sun, 10 Jun 2018 19:26:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528683994; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp2154168wmi;
+        Thu, 12 Apr 2018 10:16:20 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx4/IhtnUwXLUJffun4OSkJa1GL1YSxG5OiJMtAGqOZAJ0mCFUZi7NPyA6ZSTBY4hEfp0+huU
+X-Received: by 2002:a25:8583:: with SMTP id x3-v6mr911083ybk.76.1523553380791;
+        Thu, 12 Apr 2018 10:16:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523553380; cv=none;
         d=google.com; s=arc-20160816;
-        b=tJa3mi9wcR8ZZFJGGFxLZ2yXqRoLOITPbklGQaGhCqkBHP+pFB1WZGcAV65IIi66+R
-         z1cbXHi7BvN0CesR+F8P49Ta3/ib+kNPjGWQQ+ibZ+fkuxadYFk0eJ5GTEWlFATm0/kf
-         ZqkQE+MkZO8Sbs2vru4c4uoqGIFnBFnokf8eDhKKbEUjwG5UYtVUUgMdHrfQ0NlkJZ/p
-         /NS0qNqbeLB91MKavQ01W3EY3ZEafPrb+nnJqp+e3bFiee0+L0dEGQlYaDD07cvOqhzh
-         9eeMTg+3X89YcNsbgE9lfjmwrV3GNdRzWlqbH343ZYkr+lKAXSUwUKYp0KlbfEjz16mS
-         +qrA==
+        b=ArkiuVJFlhFJ1/KfqYW5N8YA2nsUeQP60ysBE5FZkGYM90g/ozj/Bowi0dRPvUT4Pp
+         NiLGtKnIBA4xyu3wupNcoV8Qt/SYO3E96E0oKvjo+5hB8uuW8SnWsrC/pFSnJrhNr7aS
+         zdsuVHV+hmRUitrtEC3kU3C/9Yuq6Y05zw4T1qct+VacK7Mcjp4eN+Lnj3jnu2UnjpC4
+         dvX5E44XNw8LMUFHayRvIJUdY/N1bA0JMuK3SPsm/rvzy0/g6KGQdgAIjzyoTkxraTdh
+         O2ZTtVDzCqVnykj9zzF7S2zUeUeduSpTRW6wIauFu+ZJPjJs4CMW3JngR7X7nd3X4V/b
+         8pgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature:arc-authentication-results;
-        bh=j+PdRGfANr5jB+1b+71fRt1XEq4npXzxA8IU7tHPTEk=;
-        b=CRHa/CS9HQxfgDxQXnfvdbPtVtrpnOBfs/6ijI3ELuIP/tMya/j0varmq+lR5QEARW
-         TrhofFDgYp5sm896TXUAxBqdqvcIAZjF6BosnsAs4KIpLJhevTOszISaGygK8LpkpTBv
-         bgx9KdbFcnNMVHkilQLZJg4M8l0fAc3YYXZ6vvfVORnjpPIxbjBCueZeAIC04BV2ecFP
-         iOSC4ObaE6q2O+BBaBDVHfaksd5ZIbm9rHKB5/h4zsZylbiud2VfUMdGZwLwNoMwLm0J
-         YxKwPo/oBck91O47rHRgpel854iYva/7cQlkDTSMUSheRoaNBm/jWOGPDDbINhV4ogpu
-         xONg==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=VuXqfyA8uTv4pdhjafUr0kEppycT93A5bSySJxlfjXY=;
+        b=CmUVk0D1yyG07Wf8vnv2m6oVCMesBVZ1lU1IbbUWnnjFhWzAtGjHxVVjNW7eY6bNKb
+         7AuiG0WelmU9zVy0GMhvl2FtXXLr70k5hxK+ihFdYwAUl3RFs1ha/xJWU+IjZAwaArME
+         MpMyibNcFFOKNiD3OKcpdkFPnoMfTuGC72D55dgLuxc6/3kkBVzDnyzXnH4lieT1lst7
+         5zQfco3SaHo+qw3MepQuoZh6U3zrEaKY615sJbbhw0Boij0HZctYKaewMDQ9FeJPv62v
+         6jzHJh/IjGuUhHEsQE46fiSoEThWUJ7l8lywd/8lxiZ41a9Sg8gHHo3lzd8fsmItkNW+
+         sxrA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=lyFl2Cxn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=VWbE9NhW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n48-v6si40970350qtf.329.2018.06.10.19.26.34
+        by mx.google.com with ESMTPS id j184si1396491qka.142.2018.04.12.10.16.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 10 Jun 2018 19:26:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 12 Apr 2018 10:16:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=lyFl2Cxn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46073 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=VWbE9NhW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56165 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fSCXR-0002hs-Kp
-	for alex.bennee@linaro.org; Sun, 10 Jun 2018 22:26:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54040)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1f6fpc-0005CY-6p
+	for alex.bennee@linaro.org; Thu, 12 Apr 2018 13:16:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59277)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1fSCX0-0002eO-53
-	for qemu-devel@nongnu.org; Sun, 10 Jun 2018 22:26:07 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1f6fpQ-0005B0-3J
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 13:16:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1fSCWy-0007yb-Qn
-	for qemu-devel@nongnu.org; Sun, 10 Jun 2018 22:26:06 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:36807)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1fSCWu-0007qW-ED; Sun, 10 Jun 2018 22:26:01 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 413xhL4kYGz9rxs; Mon, 11 Jun 2018 12:25:54 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1528683954;
-	bh=RHOuKCA86nSI/aID3/eRBp2zdrTBmABVVZ02vFDEAvA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=lyFl2Cxn4kPACpn+nw4T/pKDi3y4RYVhmMGp2UNyFjqANKpbFw8fann9qnhKYiNZ5
-	ZNtqqolwRp/aBTlxM4URxxwQvYUXjVgmUYThgqap3H0rlEEf+vXIzkRe7+vdVWtEhf
-	att30nlALdY+LzWxuJue0tmjoX1mwbvrk0nrKdFw=
-Date: Mon, 11 Jun 2018 12:16:42 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Message-ID: <20180611021642.GE2737@umbus.fritz.box>
-References: <20180611011501.10235-1-f4bug@amsat.org>
-	<20180611011501.10235-7-f4bug@amsat.org>
+	(envelope-from <peter.maydell@linaro.org>) id 1f6fpO-0008PJ-3H
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 13:16:08 -0400
+Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:41570)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1f6fpN-0008N0-TP
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 13:16:06 -0400
+Received: by mail-ot0-x244.google.com with SMTP id m22-v6so6835868otf.8
+	for <qemu-arm@nongnu.org>; Thu, 12 Apr 2018 10:16:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=VuXqfyA8uTv4pdhjafUr0kEppycT93A5bSySJxlfjXY=;
+	b=VWbE9NhW+iZ5mihf/tCVC8gH5Ber6rZxN2cRR6+OikZtivskfyrAjISZwD5NNC2KTP
+	pvgOCJP65k3lC2cbh8MQ2QruP4VlQlqkNQOczmMOEsCbMbe5noLiw/NP6hzcfzgSUpLI
+	XpnfZoA1c386hMUzFBscmvDxd68eeDLxrcw8I=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=VuXqfyA8uTv4pdhjafUr0kEppycT93A5bSySJxlfjXY=;
+	b=SL6hBUdl/MV+f9qSmqF9DoNmV3udsHXTsEOE+dzi/0EuHtN7GLDy2DAXdEM/Z9NNRR
+	XVqCmE3Ig1vD4g8qm5SIYB6VMVLUVXvEvCKZ9KCRhbAooFS8fSCqVEt6nVP+7APrq901
+	uejbZw6KBCZ/lNEaNNzPD2o2rKSHZRtY9VAWDNVPdCBscrj3EzvmB6BOX/8lEs0gilkZ
+	x6r8Omt8Mnz2x9GepS39fArMZj8gZN9+Qa2aBe9H+QMpcTAdXkM/HOz4MEipz+jiTGaR
+	5DzT+OY/RDHCtqR8cZH3Py5IxsTif7Sa6ii4zHHHl/sZ10GODHHP+M3pX/QqLPWmpLiZ
+	+O5g==
+X-Gm-Message-State: ALQs6tBi62Une+hmFOVa/GS/s2dsEnkW3F9us1cH3mTwZEZEGgpZa5bO
+	fbuRbw0xz51iRlFGXN+ibK/D1uM91ZdQVVtpSOV9Gg==
+X-Received: by 2002:a9d:3a45:: with SMTP id
+	j63-v6mr1219148otc.126.1523553365052; 
+	Thu, 12 Apr 2018 10:16:05 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="hwvH6HDNit2nSK4j"
-Content-Disposition: inline
-In-Reply-To: <20180611011501.10235-7-f4bug@amsat.org>
-User-Agent: Mutt/1.10.0 (2018-05-17)
+Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Thu, 12 Apr 2018 10:15:44
+	-0700 (PDT)
+In-Reply-To: <1521232280-13089-13-git-send-email-alindsay@codeaurora.org>
+References: <1521232280-13089-1-git-send-email-alindsay@codeaurora.org>
+	<1521232280-13089-13-git-send-email-alindsay@codeaurora.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 12 Apr 2018 18:15:44 +0100
+Message-ID: <CAFEAcA_UP-DgPZPL8-sMAs9TFHiUrfya8LAxAnO2U_WJAMH6yg@mail.gmail.com>
+To: Aaron Lindsay <alindsay@codeaurora.org>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-devel] [PATCH v4 06/40] hw: Directly use "qemu/units.h"
- instead of "qemu/cutils.h"
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4003:c0f::244
+Subject: Re: [Qemu-arm] [PATCH v3 12/22] target/arm: Filter cycle counter
+ based on PMCCFILTR_EL0
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
-	Stefan Weil <sw@weilnetz.de>, Alexander Graf <agraf@suse.de>,
-	qemu-devel@nongnu.org, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	Paul Burton <paul.burton@mips.com>, "open list:ARM" <qemu-arm@nongnu.org>,
-	"open list:PowerPC" <qemu-ppc@nongnu.org>,
-	Yongbok Kim <yongbok.kim@mips.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: n1/DSXUNinzd
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Michael Spradling <mspradli@codeaurora.org>,
+	Digant Desai <digantd@codeaurora.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: o7+IKmBnxx0m
 
-
---hwvH6HDNit2nSK4j
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Sun, Jun 10, 2018 at 10:14:27PM -0300, Philippe Mathieu-Daud=E9 wrote:
-> These files don't use anything exposed by "qemu/cutils.h",
-> simplify preprocessing including directly "qemu/units.h".
->=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
-
-ppc parts
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-
+On 16 March 2018 at 20:31, Aaron Lindsay <alindsay@codeaurora.org> wrote:
+> The pmu_counter_filtered and pmu_op_start/finish functions are generic
+> (as opposed to PMCCNTR-specific) to allow for the implementation of
+> other events.
+>
+> Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
 > ---
->  hw/arm/msf2-soc.c  | 2 +-
->  hw/arm/msf2-som.c  | 2 +-
->  hw/core/machine.c  | 2 +-
->  hw/display/sm501.c | 2 +-
->  hw/mips/boston.c   | 2 +-
->  hw/ppc/pnv.c       | 2 +-
->  hw/ppc/ppc440_uc.c | 2 +-
->  7 files changed, 7 insertions(+), 7 deletions(-)
->=20
-> diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
-> index 530e461c42..edb3ba824f 100644
-> --- a/hw/arm/msf2-soc.c
-> +++ b/hw/arm/msf2-soc.c
-> @@ -23,13 +23,13 @@
->   */
-> =20
->  #include "qemu/osdep.h"
-> +#include "qemu/units.h"
->  #include "qapi/error.h"
->  #include "qemu-common.h"
->  #include "hw/arm/arm.h"
->  #include "exec/address-spaces.h"
->  #include "hw/char/serial.h"
->  #include "hw/boards.h"
-> -#include "qemu/cutils.h"
->  #include "hw/arm/msf2-soc.h"
->  #include "hw/misc/unimp.h"
-> =20
-> diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
-> index ed533bbde1..2432b5e935 100644
-> --- a/hw/arm/msf2-som.c
-> +++ b/hw/arm/msf2-som.c
-> @@ -23,12 +23,12 @@
->   */
-> =20
->  #include "qemu/osdep.h"
-> +#include "qemu/units.h"
->  #include "qapi/error.h"
->  #include "qemu/error-report.h"
->  #include "hw/boards.h"
->  #include "hw/arm/arm.h"
->  #include "exec/address-spaces.h"
-> -#include "qemu/cutils.h"
->  #include "hw/arm/msf2-soc.h"
->  #include "cpu.h"
-> =20
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index ccf3a4b9c7..2077328bcc 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -11,6 +11,7 @@
->   */
-> =20
->  #include "qemu/osdep.h"
-> +#include "qemu/units.h"
->  #include "hw/boards.h"
->  #include "qapi/error.h"
->  #include "qapi/qapi-visit-common.h"
-> @@ -19,7 +20,6 @@
->  #include "sysemu/sysemu.h"
->  #include "sysemu/numa.h"
->  #include "qemu/error-report.h"
-> -#include "qemu/cutils.h"
->  #include "sysemu/qtest.h"
-> =20
->  static char *machine_get_accel(Object *obj, Error **errp)
-> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-> index 1c6c9445c5..bbb9274886 100644
-> --- a/hw/display/sm501.c
-> +++ b/hw/display/sm501.c
-> @@ -24,7 +24,7 @@
->   */
-> =20
->  #include "qemu/osdep.h"
-> -#include "qemu/cutils.h"
-> +#include "qemu/units.h"
->  #include "qapi/error.h"
->  #include "qemu-common.h"
->  #include "cpu.h"
-> diff --git a/hw/mips/boston.c b/hw/mips/boston.c
-> index 512c60c03e..b7bfeccf4c 100644
-> --- a/hw/mips/boston.c
-> +++ b/hw/mips/boston.c
-> @@ -18,6 +18,7 @@
->   */
-> =20
->  #include "qemu/osdep.h"
-> +#include "qemu/units.h"
->  #include "qemu-common.h"
-> =20
->  #include "exec/address-spaces.h"
-> @@ -32,7 +33,6 @@
->  #include "hw/mips/cpudevs.h"
->  #include "hw/pci-host/xilinx-pcie.h"
->  #include "qapi/error.h"
-> -#include "qemu/cutils.h"
->  #include "qemu/error-report.h"
->  #include "qemu/log.h"
->  #include "chardev/char.h"
-> diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
-> index bdb6f63d2c..0df4a4fd74 100644
-> --- a/hw/ppc/pnv.c
-> +++ b/hw/ppc/pnv.c
-> @@ -18,6 +18,7 @@
->   */
-> =20
->  #include "qemu/osdep.h"
-> +#include "qemu/units.h"
->  #include "qapi/error.h"
->  #include "sysemu/sysemu.h"
->  #include "sysemu/numa.h"
-> @@ -31,7 +32,6 @@
->  #include "hw/ppc/pnv_core.h"
->  #include "hw/loader.h"
->  #include "exec/address-spaces.h"
-> -#include "qemu/cutils.h"
->  #include "qapi/visitor.h"
->  #include "monitor/monitor.h"
->  #include "hw/intc/intc.h"
-> diff --git a/hw/ppc/ppc440_uc.c b/hw/ppc/ppc440_uc.c
-> index b5b31b4b9b..1ab2235f20 100644
-> --- a/hw/ppc/ppc440_uc.c
-> +++ b/hw/ppc/ppc440_uc.c
-> @@ -9,8 +9,8 @@
->   */
-> =20
->  #include "qemu/osdep.h"
-> +#include "qemu/units.h"
->  #include "qemu-common.h"
-> -#include "qemu/cutils.h"
->  #include "qemu/error-report.h"
->  #include "qapi/error.h"
->  #include "cpu.h"
+>  target/arm/cpu.c    |  3 ++
+>  target/arm/cpu.h    | 37 +++++++++++++++++++----
+>  target/arm/helper.c | 87 ++++++++++++++++++++++++++++++++++++++++++++++++++---
+>  3 files changed, 116 insertions(+), 11 deletions(-)
+>
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index a2cb21e..b0d032c 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -887,6 +887,9 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>      if (!cpu->has_pmu) {
+>          unset_feature(env, ARM_FEATURE_PMU);
+>          cpu->id_aa64dfr0 &= ~0xf00;
+> +    } else {
+> +        arm_register_pre_el_change_hook(cpu, &pmu_pre_el_change, 0);
+> +        arm_register_el_change_hook(cpu, &pmu_post_el_change, 0);
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+You probably don't want to do this if we're using KVM, as there
+are some code paths where we call do_interrupt() when using KVM
+which will trigger the hooks and likely do unexpected things.
+(For instance kvm_arm_handle_debug() does this to set the guest
+up to take debug exceptions.)
 
---hwvH6HDNit2nSK4j
-Content-Type: application/pgp-signature; name="signature.asc"
+>      }
+>
+>      if (!arm_feature(env, ARM_FEATURE_EL2)) {
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index b0ef727..9c3b5ef 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -458,6 +458,11 @@ typedef struct CPUARMState {
+>           * was reset. Otherwise it stores the counter value
+>           */
+>          uint64_t c15_ccnt;
+> +        /* ccnt_cached_cycles is used to hold the last cycle count when
+> +         * c15_ccnt holds the guest-visible count instead of the delta during
+> +         * PMU operations which require this.
+> +         */
+> +        uint64_t ccnt_cached_cycles;
 
------BEGIN PGP SIGNATURE-----
+Can this ever hold valid state at a point when we need to do VM
+migration, or is it purely temporary ?
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlsd24oACgkQbDjKyiDZ
-s5Ln1g//Y2NqOI+6mFTH/jXIvbRZ8BQI3ijwEd/4LOI55DqKcmxv9kOJOZ2SYu0A
-NtpG1sIpfBBZAD53gYbp/1hcnVjNDTc7MnqosQcNNeJaAM8nAIpP82rGqFrHaVgu
-RQpu4B+H57NoC4veqQy6gVZjscRLBAPNNo7QwvPRSE5rgnrPahRf6ADeFsodKgOS
-rmdpbKY4aL3uwU8jFIg32D6NeAWk/+/JcLKrVoeveOHZjm2qWWgtuCvyuy0ag96s
-p1rjoJV+eb+ySG2fbLwOtvmCLAKzohByVLKNEK7Lmc5l9d+F5mQnk1DfXBlp/og6
-w/XayDbtiNic9+mpRsGxTH3GQf9NTDIwD2e9OcrDeb7kNDa3w7P5q1qSJVe1GgEZ
-aY1KbS4GEMOCndLX3YcAD94BLJMMzyl+vmmF6ibag0kKSvgNLvK2ht61S61IqpmT
-9Y9IPXduQKBa7iwT+PHnljmHgHt/nkb6v66bRqxZFQFNodEx9+yW62BE2CUjMZlW
-yISo9VKfxV/5h+mOrj3X3JRt2hmtYrvnr54YvUr+QGawCfbcJu3ir2huxEjahM8Z
-9gxffm63KHn7zN6acf4GqGaV8jQ++s4Z0eem5BqA+F+Zl5jPw1s6r+nv1D7dcMK/
-oTQtNUenrAtG/2P8PeylEzPn3YmjY6PPGySH5cYlnnpHFTOLxqI=
-=GKJu
------END PGP SIGNATURE-----
+>          uint64_t pmccfiltr_el0; /* Performance Monitor Filter Register */
+>          uint64_t vpidr_el2; /* Virtualization Processor ID Register */
+>          uint64_t vmpidr_el2; /* Virtualization Multiprocessor ID Register */
+> @@ -896,15 +901,35 @@ int cpu_arm_signal_handler(int host_signum, void *pinfo,
+>                             void *puc);
+>
+>  /**
+> - * pmccntr_sync
+> + * pmccntr_op_start/finish
 
---hwvH6HDNit2nSK4j--
+Shouldn't this doc change and prototype change have gone with the earlier
+patch that changed the implementation?
+
+>   * @env: CPUARMState
+>   *
+> - * Synchronises the counter in the PMCCNTR. This must always be called twice,
+> - * once before any action that might affect the timer and again afterwards.
+> - * The function is used to swap the state of the register if required.
+> - * This only happens when not in user mode (!CONFIG_USER_ONLY)
+> + * Convert the counter in the PMCCNTR between its delta form (the typical mode
+> + * when it's enabled) and the guest-visible value. These two calls must always
+> + * surround any action which might affect the counter, and the return value
+> + * from pmccntr_op_start must be supplied as the second argument to
+> + * pmccntr_op_finish.
+> + */
+> +uint64_t pmccntr_op_start(CPUARMState *env);
+> +void pmccntr_op_finish(CPUARMState *env, uint64_t prev_cycles);
+> +
+> +/**
+> + * pmu_op_start/finish
+> + * @env: CPUARMState
+> + *
+> + * Convert all PMU counters between their delta form (the typical mode when
+> + * they are enabled) and the guest-visible values. These two calls must
+> + * surround any action which might affect the counters, and the return value
+> + * from pmu_op_start must be supplied as the second argument to pmu_op_finish.
+> + */
+> +uint64_t pmu_op_start(CPUARMState *env);
+> +void pmu_op_finish(CPUARMState *env, uint64_t prev_cycles);
+> +
+> +/**
+> + * Functions to register as EL change hooks for PMU mode filtering
+>   */
+> -void pmccntr_sync(CPUARMState *env);
+> +void pmu_pre_el_change(ARMCPU *cpu, void *ignored);
+> +void pmu_post_el_change(ARMCPU *cpu, void *ignored);
+>
+>  /* SCTLR bit meanings. Several bits have been reused in newer
+>   * versions of the architecture; in that case we define constants
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 0102357..95b09d6 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -908,6 +908,15 @@ static const ARMCPRegInfo v6_cp_reginfo[] = {
+>  #define PMCRC   0x4
+>  #define PMCRE   0x1
+>
+> +#define PMXEVTYPER_P          0x80000000
+> +#define PMXEVTYPER_U          0x40000000
+> +#define PMXEVTYPER_NSK        0x20000000
+> +#define PMXEVTYPER_NSU        0x10000000
+> +#define PMXEVTYPER_NSH        0x08000000
+> +#define PMXEVTYPER_M          0x04000000
+> +#define PMXEVTYPER_MT         0x02000000
+> +#define PMXEVTYPER_EVTCOUNT   0x000003ff
+> +
+>  #define PMU_NUM_COUNTERS(env) ((env->cp15.c9_pmcr & PMCRN_MASK) >> PMCRN_SHIFT)
+>  /* Bits allowed to be set/cleared for PMCNTEN* and PMINTEN* */
+>  #define PMU_COUNTER_MASK(env) ((1 << 31) | ((1 << PMU_NUM_COUNTERS(env)) - 1))
+> @@ -998,7 +1007,7 @@ static CPAccessResult pmreg_access_ccntr(CPUARMState *env,
+>
+>  static inline bool arm_ccnt_enabled(CPUARMState *env)
+>  {
+> -    /* This does not support checking PMCCFILTR_EL0 register */
+> +    /* Does not check PMCCFILTR_EL0, which is handled by pmu_counter_filtered */
+>
+>      if (!(env->cp15.c9_pmcr & PMCRE) || !(env->cp15.c9_pmcnten & (1 << 31))) {
+>          return false;
+> @@ -1006,6 +1015,44 @@ static inline bool arm_ccnt_enabled(CPUARMState *env)
+>
+>      return true;
+>  }
+> +
+> +/* Returns true if the counter corresponding to the passed-in pmevtyper or
+> + * pmccfiltr value is filtered using the current state */
+
+"is filtered (ie does not count events)" would make it clearer.
+
+Nit: */ should be on a line of its own.
+
+> +static inline bool pmu_counter_filtered(CPUARMState *env, uint64_t pmxevtyper)
+> +{
+> +    bool secure = arm_is_secure(env);
+> +    int el = arm_current_el(env);
+> +
+> +    bool P   = pmxevtyper & PMXEVTYPER_P;
+> +    bool U   = pmxevtyper & PMXEVTYPER_U;
+> +    bool NSK = pmxevtyper & PMXEVTYPER_NSK;
+> +    bool NSU = pmxevtyper & PMXEVTYPER_NSU;
+> +    bool NSH = pmxevtyper & PMXEVTYPER_NSH;
+> +    bool M   = pmxevtyper & PMXEVTYPER_M;
+
+Lowercase for variable names, please.
+
+> +
+> +    if (el == 1 && P) {
+> +        return true;
+> +    } else if (el == 0 && U) {
+> +        return true;
+> +    }
+> +
+> +    if (arm_feature(env, ARM_FEATURE_EL3)) {
+> +        if (el == 1 && !secure && NSK != P) {
+> +            return true;
+> +        } else if (el == 0 && !secure && NSU != U) {
+> +            return true;
+> +        } else if (el == 3 && secure && M != P) {
+> +            return true;
+> +        }
+> +    }
+> +
+> +    if (arm_feature(env, ARM_FEATURE_EL2) && el == 2 && !secure && !NSH) {
+> +        return true;
+> +    }
+
+This doesn't follow the structure that the Arm ARM pseudocode
+uses, which makes it a bit tricky to review. (see AArch64.CountEvents()).
+It also doesn't implement the same logic -- for instance this
+code will return true if we're in NS EL1 and the U bit is set,
+whereas the pseudocode returns true for NS EL1 only if U != NSU.
+
+> +    return false;
+> +}
+> +
+>  /*
+>   * Ensure c15_ccnt is the guest-visible count so that operations such as
+>   * enabling/disabling the counter or filtering, modifying the count itself,
+> @@ -1023,7 +1070,8 @@ uint64_t pmccntr_op_start(CPUARMState *env)
+>                            ARM_CPU_FREQ, NANOSECONDS_PER_SECOND);
+>  #endif
+>
+> -    if (arm_ccnt_enabled(env)) {
+> +    if (arm_ccnt_enabled(env) &&
+> +          !pmu_counter_filtered(env, env->cp15.pmccfiltr_el0)) {
+>
+>          uint64_t eff_cycles = cycles;
+>          if (env->cp15.c9_pmcr & PMCRD) {
+> @@ -1043,7 +1091,8 @@ uint64_t pmccntr_op_start(CPUARMState *env)
+>   */
+>  void pmccntr_op_finish(CPUARMState *env, uint64_t prev_cycles)
+>  {
+> -    if (arm_ccnt_enabled(env)) {
+> +    if (arm_ccnt_enabled(env) &&
+> +          !pmu_counter_filtered(env, env->cp15.pmccfiltr_el0)) {
+>          if (env->cp15.c9_pmcr & PMCRD) {
+>              /* Increment once every 64 processor clock cycles */
+> @@ -1054,10 +1103,30 @@ void pmccntr_op_finish(CPUARMState *env, uint64_t prev_cycles)
+>      }
+>  }
+>
+> +uint64_t pmu_op_start(CPUARMState *env)
+> +{
+> +    return pmccntr_op_start(env);
+> +}
+
+Do these two functions end up being different at the end
+of the patchset?
+
+> +
+> +void pmu_op_finish(CPUARMState *env, uint64_t prev_cycles)
+> +{
+> +    pmccntr_op_finish(env, prev_cycles);
+> +}
+> +
+> +void pmu_pre_el_change(ARMCPU *cpu, void *ignored)
+> +{
+> +    cpu->env.cp15.ccnt_cached_cycles = pmu_op_start(&cpu->env);
+> +}
+> +
+> +void pmu_post_el_change(ARMCPU *cpu, void *ignored)
+> +{
+> +    pmu_op_finish(&cpu->env, cpu->env.cp15.ccnt_cached_cycles);
+> +}
+> +
+>  static void pmcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>                         uint64_t value)
+>  {
+> -    uint64_t saved_cycles = pmccntr_op_start(env);
+> +    uint64_t saved_cycles = pmu_op_start(env);
+>
+>      if (value & PMCRC) {
+>          /* The counter has been reset */
+> @@ -1068,7 +1137,7 @@ static void pmcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>      env->cp15.c9_pmcr &= ~0x39;
+>      env->cp15.c9_pmcr |= (value & 0x39);
+>
+> -    pmccntr_op_finish(env, saved_cycles);
+> +    pmu_op_finish(env, saved_cycles);
+>  }
+>
+>  static uint64_t pmccntr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+> @@ -1117,6 +1186,14 @@ void pmccntr_op_finish(CPUARMState *env, uint64_t prev_cycles)
+>  {
+>  }
+>
+> +uint64_t pmu_op_start(CPUARMState *env)
+> +{
+> +}
+> +
+> +void pmu_op_finish(CPUARMState *env, uint64_t prev_cycles)
+> +{
+> +}
+> +
+>  #endif
+>
+>  static void pmccfiltr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+> --
+
+thanks
+-- PMM

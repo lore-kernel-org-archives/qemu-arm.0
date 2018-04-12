@@ -1,100 +1,100 @@
-Received: by 10.28.71.155 with SMTP id m27csp2088173wmi;
-        Thu, 12 Apr 2018 09:11:16 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx49VO/+aicPh+mU1Ac4QEWBiB2wOU1WbKxCggOBMZpxnjF3+Nc8viYdP9AIo56+SpLHvKlHp
-X-Received: by 10.237.50.227 with SMTP id z90mr419763qtd.14.1523549476156;
-        Thu, 12 Apr 2018 09:11:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523549476; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp2096827wmi;
+        Thu, 12 Apr 2018 09:19:09 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx4/f1iyF147pIRl7T9UqgdqLxd+0qqIF5/DMHaIlU6hsD+cRyoJkpq8Oki30z4a36ODbOKJG
+X-Received: by 2002:a25:3216:: with SMTP id y22-v6mr781253yby.277.1523549948956;
+        Thu, 12 Apr 2018 09:19:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523549948; cv=none;
         d=google.com; s=arc-20160816;
-        b=K2d64f5DEqIfSdFkscN1Ts5hA/8iR7chaGDWhHl5m73rRad71JEzvZMBuNJDtxExso
-         wJHwFcrPzlQx/z8OImrJRxj5hrtT+RD2wdzI/0jAdqW1aQCrETRvWT3+uT5M/N9HcmQV
-         7t4KGtFsnDaobgwzQFnVQQK/qB9+Lp3vFTjpq/gUrGKmyJESL/2k6X7xuzUsDxtIf8mi
-         CszXZIO94KO/c4W7dSRMVpcXAV9V3Tvj1zRQbe5H4hoNYj/rBgCFwFdo5WUZez4UAh8p
-         SP4hrAdEO3Ny/cAbn4/Vp+W1KDLfiDId6hYYZ54Qbb2lBgy0BK8RQkrbTPQzNVdlqVlx
-         Dtxg==
+        b=nGRmFmBtJX/wcaZWTciB6ZaBvIqgYNAzndjD5KsD6u009qy5YFEfED7FLEJ72/TjIf
+         J75rvoBV45tPrnw3o+XdT3VHKFn/C0SqSAZJY6T1Zug7uRNshr2rp+SNkFpiAXdKauR5
+         ASW2HgI/Bf1oiIgOHwolMjDEyRgg2C7N9fL4Y3HUCjrmoBfCOOEJ/Nnaj4twMAItVXpW
+         A11Ql376P8uBXivKUwP1IQ52xcLL9RGOxbpvpvGN8ro5wwxGqyDxxDLVj/++GGxPwaoi
+         /LEnBUnhaLuMAKDw5fC10qRI2z0gw+22J9+JuxAV46XiuSmYbJpF+wCvTASjeIM+7Hks
+         CYyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=YfPvOvqg1pebA3IH2cisiMpploPYY1qkROQsX3bwXwk=;
-        b=LEI8dbVgEvYatpdAIdadobDNHGmqSzqz0UhBSzNtyCTw50852L5xd/4eyi826KYUtU
-         Spzg6vJstTaMc0IlINUTvzGMSDiQAD8qYRanU8otx17/USNnUiJ8JrK8QaeUeZMm5S0e
-         Inu8hUcK4fG/D4O7CGEYflfZ6bPlcImbm6e//h+6P0omy+kWR7Aouen6uI3PtPlV/Op6
-         0cD4SCTHkQDuA1f2UXsQovhrqgP68aedqHLramHerwY4wbO3IRjM/KXJigHYYalZSpcE
-         QuQ3kZjFspbKbEOZj4X7yM4fqewu3QYDvxeYyXv8wZzBAOUqK0Ac5LpkOPYqgspUZ3rV
-         qssQ==
+        bh=dnxVRFNQho5ffRDo2/cWgX8imzA/4mVmxKeskxAj64E=;
+        b=TYo52myJITBnfJgW2hq6MLCchAhzf0naXn2O879EGCFf6v0/LzJlptj3PONI9HqA4D
+         TBrQRZD3toLeFK9jMuxCuR6JUBK8SKB4B+ohKu4Biw0Xb04ZcPaWYhT0g6RtYX1Vq64J
+         legLBxaYy7BTMQOMFf0XcuJ6sauyaOStzW6aGCirQciqXF9JrGgDhfPDLANy4XqfgbU7
+         dQhE+Qh25DLY//CwoPQFw6a8v3A74HTaG1wyc5dBxx0gIV0Eiz19CsRthrFNOHbi580J
+         j89zLqy0hgK5bnUf+ftB0acMroS81FiF3Ah5zsN10SZSjyg8llh0ksCDKCJmKDCSPPed
+         U/Sg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=KQi5hSCt;
+       dkim=fail header.i=@linaro.org header.s=google header.b=eRbDwMKU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m21si1778460qkm.275.2018.04.12.09.11.16
+        by mx.google.com with ESMTPS id m72si265361qki.29.2018.04.12.09.19.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 12 Apr 2018 09:11:16 -0700 (PDT)
+        Thu, 12 Apr 2018 09:19:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=KQi5hSCt;
+       dkim=fail header.i=@linaro.org header.s=google header.b=eRbDwMKU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51088 helo=lists.gnu.org)
+Received: from localhost ([::1]:51842 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f6eod-00029H-KP
-	for alex.bennee@linaro.org; Thu, 12 Apr 2018 12:11:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58594)
+	id 1f6ewG-0006xP-Ft
+	for alex.bennee@linaro.org; Thu, 12 Apr 2018 12:19:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37675)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1f6eoV-00028d-Ha
-	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 12:11:08 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1f6ew2-0006t7-6g
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 12:18:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1f6eoU-0004hE-J8
-	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 12:11:07 -0400
-Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:34261)
+	(envelope-from <peter.maydell@linaro.org>) id 1f6ew1-0004Y4-C6
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 12:18:54 -0400
+Received: from mail-ot0-x242.google.com ([2607:f8b0:4003:c0f::242]:39542)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1f6eoU-0004h1-DT
-	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 12:11:06 -0400
-Received: by mail-oi0-x244.google.com with SMTP id u141-v6so5694189oif.1
-	for <qemu-arm@nongnu.org>; Thu, 12 Apr 2018 09:11:06 -0700 (PDT)
+	id 1f6ew1-0004Xn-5Y
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 12:18:53 -0400
+Received: by mail-ot0-x242.google.com with SMTP id a14-v6so6654516otf.6
+	for <qemu-arm@nongnu.org>; Thu, 12 Apr 2018 09:18:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=YfPvOvqg1pebA3IH2cisiMpploPYY1qkROQsX3bwXwk=;
-	b=KQi5hSCtr4+e8EvZkExt8PZtaGfhqYyyDCyIcr4v0H241VkfUpBEyGJRxhPuNgjXsY
-	A8RABcv2noH2AJ9XVVAS+Ex2NFmcbsSQA+nOWFWRNm4G7EW+VKaniWDdzgfrMeRA4aHJ
-	OD99vbr5R7gDtbJuZsaaor1llP3eAuNbKVIm4=
+	:cc; bh=dnxVRFNQho5ffRDo2/cWgX8imzA/4mVmxKeskxAj64E=;
+	b=eRbDwMKU6Swpp0Yov+Soe1byt2R4jgHWd1OcwHQv+bJaAWRbPorouhfJ22WjuM+m+t
+	b+gOIvPL+DgDbZZApqPdDMcMqHScSgCfUNLzMd4KT2JtqcPFb52mtqNbqCUwgtU4k9kW
+	ZILC/UqR0NguyGt9+BiKMy26BowCBhludCf/Q=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=YfPvOvqg1pebA3IH2cisiMpploPYY1qkROQsX3bwXwk=;
-	b=cDxfMNBqG91FbraEKz+SFH2hn4/De39gkIG23eK3z9fmLu740ErHZMw0RCKWVOKmqb
-	efDzSYnDUx7TBwhdnHYsokWICCWdqyw9xFJXDasVLhk9yLmb6Z1HJFCEUJZnNwK4OOkq
-	AGSTU3O1WklavFSUcdVdBaAwwtBWjdcQp2vps0eR0vk8XXojrxn/SMtpaUMTqu2Dkxut
-	QeUG1szwqyBAdh0X4CTdEFYms9EasQ8adB3jYAnPn87a1KmatGY+xVBB4hwoKWmG+d7Q
-	ToOGfxjzijZBmJI9Yz2GTKVIDINBxmY6gFBG0mdP2gm1Uhi9A9Qi/Y2fiRl0qZ6HrR3y
-	4qfA==
-X-Gm-Message-State: ALQs6tBLnes+/q+Yi6h7DO6RVXnZ9oEXXBWURvv1iSOekKRUiS8Dxr1s
-	l6m7EMxbkaIhTYHbLpiDZuCCYTQoF8VyobtyG5jEpg==
-X-Received: by 2002:aca:d455:: with SMTP id
-	l82-v6mr6459952oig.102.1523549465790; 
-	Thu, 12 Apr 2018 09:11:05 -0700 (PDT)
+	bh=dnxVRFNQho5ffRDo2/cWgX8imzA/4mVmxKeskxAj64E=;
+	b=hSvcT6YqmitfysyWQok0b3rSYLDGthH6P712k+MyNvMVEBPn23bn4V7Paq8Yo3jVYQ
+	4UN94IbmQrnW+j99wEfHrMUoq4HA4GClSHo9rm6Ugwkm2+YoOvrqz/h0evvWvsrecKol
+	iBKBICI5ALh6g1540IwZjaN+OqTxCl+VoPluNselZJFyD+jczFKWHKS2FtaR9+DMPrbK
+	pE+5h+DJFUAFvdKF8iDlwCKQkAiiizBuH2EBTf3VmDZLzs8dWxTEvcATmD4HZ9/Q+W7q
+	Fuop1synm7osQH8gmHcmA1/KzIRXin1U+E2xKyeOjT55Y9Abcb+3N1t34CnCPgSCxHyL
+	/SbA==
+X-Gm-Message-State: ALQs6tDDlU9L3C1URXinrXEKZz5QJYvCUlxOPdy2H6NU1xvi5sZEObXt
+	8bfd4wZKkkDJTqQcrEeAn7mFq1sVUkaj+QWpYP9PEQ==
+X-Received: by 2002:a9d:285d:: with SMTP id
+	h29-v6mr1075231otd.205.1523549932449; 
+	Thu, 12 Apr 2018 09:18:52 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Thu, 12 Apr 2018 09:10:45
+Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Thu, 12 Apr 2018 09:18:32
 	-0700 (PDT)
-In-Reply-To: <1521232280-13089-5-git-send-email-alindsay@codeaurora.org>
+In-Reply-To: <1521232280-13089-6-git-send-email-alindsay@codeaurora.org>
 References: <1521232280-13089-1-git-send-email-alindsay@codeaurora.org>
-	<1521232280-13089-5-git-send-email-alindsay@codeaurora.org>
+	<1521232280-13089-6-git-send-email-alindsay@codeaurora.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 12 Apr 2018 17:10:45 +0100
-Message-ID: <CAFEAcA8vjBaExLH_EfbWZ3nwxksL1eY67V4gkWTmu3431Az_Hg@mail.gmail.com>
+Date: Thu, 12 Apr 2018 17:18:32 +0100
+Message-ID: <CAFEAcA9Hd5dsfPM=ggepk2MxFJdxHB1uiJzwpDy5628D7JF5ow@mail.gmail.com>
 To: Aaron Lindsay <alindsay@codeaurora.org>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::244
-Subject: Re: [Qemu-arm] [PATCH v3 04/22] target/arm: Treat PMCCNTR as alias
- of PMCCNTR_EL0
+X-Received-From: 2607:f8b0:4003:c0f::242
+Subject: Re: [Qemu-arm] [PATCH v3 05/22] target/arm: Reorganize PMCCNTR read, write,
+ sync
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -113,34 +113,60 @@ Cc: Michael Spradling <mspradli@codeaurora.org>,
 	qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rddxYdtIju0B
+X-TUID: IF5JH62Q9flQ
 
 On 16 March 2018 at 20:31, Aaron Lindsay <alindsay@codeaurora.org> wrote:
-> They share the same underlying state
+> pmccntr_read and pmccntr_write contained duplicate code that was already
+> being handled by pmccntr_sync. Split pmccntr_sync into pmccntr_op_start
+> and pmccntr_op_finish, passing the clock value between the two, to avoid
+> losing time between the two calls.
 >
 > Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
 > ---
->  target/arm/helper.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  target/arm/helper.c | 101 +++++++++++++++++++++++++++++-----------------------
+>  1 file changed, 56 insertions(+), 45 deletions(-)
 >
 > diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 5e48982..5634561 100644
+> index 5634561..6480b80 100644
 > --- a/target/arm/helper.c
 > +++ b/target/arm/helper.c
-> @@ -1318,7 +1318,7 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
->        .fieldoffset = offsetof(CPUARMState, cp15.c9_pmselr),
->        .writefn = pmselr_write, .raw_writefn = raw_write, },
->      { .name = "PMCCNTR", .cp = 15, .crn = 9, .crm = 13, .opc1 = 0, .opc2 = 0,
-> -      .access = PL0_RW, .resetvalue = 0, .type = ARM_CP_IO,
-> +      .access = PL0_RW, .resetvalue = 0, .type = ARM_CP_ALIAS | ARM_CP_IO,
->        .readfn = pmccntr_read, .writefn = pmccntr_write32,
->        .accessfn = pmreg_access_ccntr },
->      { .name = "PMCCNTR_EL0", .state = ARM_CP_STATE_AA64,
-> --
+> @@ -1000,28 +1000,58 @@ static inline bool arm_ccnt_enabled(CPUARMState *env)
+>
+>      return true;
+>  }
+> -
+> -void pmccntr_sync(CPUARMState *env)
 
-Does this fix an observed bug (presumably migration related),
-or is it just something you saw in code inspection ?
-Worth noting in the commit message if the former.
+If you configure your git to use the 'histogram' diff algorithm
+("git config --global diff.algorithm histogram", or edit ~/.gitconfig
+equivalently), does it make git format-patch make less of a mess
+of this commit ?
+
+> +/*
+> + * Ensure c15_ccnt is the guest-visible count so that operations such as
+> + * enabling/disabling the counter or filtering, modifying the count itself,
+> + * etc. can be done logically. This is essentially a no-op if the counter is
+> + * not enabled at the time of the call.
+> + *
+> + * The current cycle count is returned so that it can be passed into the paired
+> + * pmccntr_op_finish() call which must follow each call to pmccntr_op_start().
+> + */
+> +uint64_t pmccntr_op_start(CPUARMState *env)
+>  {
+> -    uint64_t temp_ticks;
+> -
+> -    temp_ticks = muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL),
+> +    uint64_t cycles = 0;
+> +#ifndef CONFIG_USER_ONLY
+> +    cycles = muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL),
+>                            ARM_CPU_FREQ, NANOSECONDS_PER_SECOND);
+> +#endif
+
+Is this ifdef necessary? You have a do-nothing version of
+pmccntr_op_start() for CONFIG_USER_ONLY later on, so presumably
+this one is already inside a suitable ifndef.
+
+Otherwise
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

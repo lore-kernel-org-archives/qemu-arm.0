@@ -1,289 +1,176 @@
-Received: by 10.28.71.155 with SMTP id m27csp1607492wmi;
-        Thu, 12 Apr 2018 00:43:21 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4/rZtjvTQli+m3v1lORUv56fPhgPoW/fhprVRPQuyTuS5WUDPsii5CEQKyu46kh81Hyf+n4
-X-Received: by 10.55.112.199 with SMTP id l190mr11471908qkc.335.1523519001833;
-        Thu, 12 Apr 2018 00:43:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523519001; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp1609377wmi;
+        Thu, 12 Apr 2018 00:45:59 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx4/bJRTorH78hI/UJ5OSuNaLGQ/6gHTusrgOE/G6eId8cg425XT4GaM5tOYQT8ex+sx0Tb/n
+X-Received: by 10.55.166.79 with SMTP id p76mr11153121qke.248.1523519159693;
+        Thu, 12 Apr 2018 00:45:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523519159; cv=none;
         d=google.com; s=arc-20160816;
-        b=iQlJtFZJ30fa32qOJa0/TeNeVZi9YHPJv4MszyxyfEVMxYRbxJQRmbXcvtRBriOcDO
-         HMssPnioMjm1ZlBbVq02HF8tvYar6ZDlAWUKlgbOb1SuaU1J8bEBjcStu5cWWnihOXBs
-         ZM9Dw8WAV44i6pOzKUvoFxpEIlDY1Q/2694jQGhbAPIzIK1cDQ5WqJLZvL+gU5TWxCGI
-         4a0VyybRe4XROVQAQdvgM/m3CA9EW/ANbKKJwJS1Y9BoNJWQTrC5pmvm9aFq8rDl/D86
-         iBAAyqCW9kR8t26Xr673vbAOWrOrfI9V/jsBSofIAkT8OL3Wk8BfmnLoN4M/LK7mWFZY
-         bkmA==
+        b=kKUfzu9xH5m+arkS6A82QLgEV6yPBPyQLJioc6LcEU3EG3Bfo+QIDvjzt1M4/5IP+4
+         shJoNvEVeJUNP3pzGeWbjW+ALBZNXDhUR9hNfyiQaVvWkRGpxxlVbWh3vvB+4PbFmm/Z
+         ZiuKcOES5r9yKIPsqxzK1Y1Cz0p13I+RcBUIVBhk/cEaSWhR3vo8LdriK5VnjWU/oN+j
+         bzXU3o/N2qncUkHAaslWiNrgFER0HxcZhR4o4m9y0AgicJiDJYLKqiB6ttOF8g/7stS8
+         ggD8yw36ZeDWtx1MD3pCiOs0/Mi7n0FiNtiq6CJtnQF9JdtfpSiWk+HlHpoO5Q/JPuoq
+         eUWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=6+E6jizY2DYBpkikD6rgtECbvOqVUv7mgG9kZQpd5dI=;
-        b=WxxY9qBdE5LeFNxCVJichYRvtDy9ykGJ7ysCHsmIZ07Sz4r8ePxVMytuywmkA3YbNZ
-         lWhzuMDg0Bqt5vhMbuBP/va/sGlLBqyUIRlGN0x4n4ResX4Y07SHBz9wQ/M//FHgU+uf
-         et345bGpWez++ICTP7GbG/UKqcNEh2qI4kLoqwgamxO8ycTBk2ioixNVvVqOT+tiXZt2
-         kxWbAIGCiRsNgWDffNoD5qqYX49e0iiEbire7gR2SbBkiAXAIinpss96WkNf+1gOzHoF
-         /vWRdcm2Mu6HseXFe1wCiCX3+eVTqnwNhpk8ai/r3jLzLu3xTP1i2o9qo6+LmBtxKVru
-         t51A==
+        bh=gz7Xu4wXdjYwjJ9/WzEAZlrGsT3by+zt47LZ5fxsdIc=;
+        b=ImsXV0O3EdjXZ1jedkRSdHoq2GHe/25TLGlGA6iHMhfEpuH7ewZMFF4N86oZxIiJBA
+         LYXy5lC2/+9T9V//GZjfREx4drT/daZ7y3aJ8ETf+POzn5C2vc/w5xOaE7kY3GA3P41u
+         ESgkwnUWGMB3KCXuW8s8Xz7HE0wew009DBNkTXMrIXsuXQGvkTyCVLnkNb+FqkVddTbr
+         CUNBfA+7WHak1s9It6duec6mcELVrpAb930ftbS7l4KIBc1X9n4/jl44GK0foii6T3u3
+         x0mIr5NwW/wsfy6gO3AP1t7b3g5Fn3OFhMqBqRIuJdqWX4DT99DwdSZQSb8x5a3WQB/T
+         kqyg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d23si174509qkg.460.2018.04.12.00.43.21
+        by mx.google.com with ESMTPS id l66si2875771qkd.129.2018.04.12.00.45.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 12 Apr 2018 00:43:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 12 Apr 2018 00:45:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44093 helo=lists.gnu.org)
+Received: from localhost ([::1]:44117 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f6Wt7-0002GP-Ag
-	for alex.bennee@linaro.org; Thu, 12 Apr 2018 03:43:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49639)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1f6Wvf-0005ag-4U
+	for alex.bennee@linaro.org; Thu, 12 Apr 2018 03:45:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49646)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1f6Wp0-00073P-DS
-	for qemu-devel@nongnu.org; Thu, 12 Apr 2018 03:39:07 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1f6Wp0-00073t-VQ
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 03:39:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1f6Wow-0003Nl-1f
-	for qemu-devel@nongnu.org; Thu, 12 Apr 2018 03:39:06 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:34410 helo=mx1.redhat.com)
+	(envelope-from <eric.auger@redhat.com>) id 1f6Woz-0003PY-0X
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 03:39:07 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:35648 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1f6Wos-0003Ku-Rr; Thu, 12 Apr 2018 03:38:58 -0400
+	id 1f6Woy-0003P7-S9; Thu, 12 Apr 2018 03:39:04 -0400
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 56DC34075A67;
-	Thu, 12 Apr 2018 07:38:58 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 55B1281A88CD;
+	Thu, 12 Apr 2018 07:39:04 +0000 (UTC)
 Received: from localhost.localdomain.com (ovpn-116-192.ams2.redhat.com
 	[10.36.116.192])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B10FA215CDC6;
-	Thu, 12 Apr 2018 07:38:55 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 79704215CDC6;
+	Thu, 12 Apr 2018 07:39:01 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org, prem.mallappa@gmail.com
-Date: Thu, 12 Apr 2018 09:38:03 +0200
-Message-Id: <1523518688-26674-13-git-send-email-eric.auger@redhat.com>
+Date: Thu, 12 Apr 2018 09:38:05 +0200
+Message-Id: <1523518688-26674-15-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1523518688-26674-1-git-send-email-eric.auger@redhat.com>
 References: <1523518688-26674-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Thu, 12 Apr 2018 07:38:58 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Thu, 12 Apr 2018 07:38:58 +0000 (UTC) for IP:'10.11.54.6'
+	(mx1.redhat.com [10.11.55.8]);
+	Thu, 12 Apr 2018 07:39:04 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Thu, 12 Apr 2018 07:39:04 +0000 (UTC) for IP:'10.11.54.6'
 	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-devel] [PATCH v11 12/17] hw/arm/virt: Add SMMUv3 to the virt
- board
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PATCH v11 14/17] hw/arm/virt: Introduce the iommu option
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: cdall@kernel.org, mst@redhat.com, jean-philippe.brucker@arm.com,
 	tn@semihalf.com, peterx@redhat.com, alex.williamson@redhat.com,
 	linuc.decode@gmail.com, bharat.bhushan@nxp.com, jintack@cs.columbia.edu
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nT4SUmio6CjQ
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jHQ/5DGSQ74d
 
-From: Prem Mallappa <prem.mallappa@broadcom.com>
+ARM virt machine now exposes a new "iommu" option.
+The SMMUv3 IOMMU is instantiated using -machine virt,iommu=smmuv3.
 
-Add code to instantiate an smmuv3 in virt machine. A new iommu
-integer member is introduced in VirtMachineState to store the type
-of the iommu in use.
-
-Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
 
 ---
 v9 -> v10:
-- add VirtIOMMUType
-- add Peter's R-b
+- remove no_iommu
 
 v7 -> v8:
-- integer iommu member
-- add primary-bus property
+- Revert to machine option, now dubbed "iommu", preparing for virtio
+  instantiation.
 
-v4 -> v5:
-- add dma-coherent property
-
-v2 -> v3:
-- vbi was removed. Use vms instead
-- migrate to new smmu binding format (iommu-map)
-- don't use appendprop anymore
-- add vms->smmu and guard instantiation with this latter
-- interrupts type changed to edge
+v5 -> v6: machine 2_11
 ---
- hw/arm/virt.c         | 64 ++++++++++++++++++++++++++++++++++++++++++++++++++-
- include/hw/arm/virt.h | 10 ++++++++
- 2 files changed, 73 insertions(+), 1 deletion(-)
+ hw/arm/virt.c | 36 ++++++++++++++++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
 
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 94dcb12..1799702 100644
+index 1799702..a3398d6 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -58,6 +58,7 @@
- #include "hw/smbios/smbios.h"
- #include "qapi/visitor.h"
- #include "standard-headers/linux/input.h"
-+#include "hw/arm/smmuv3.h"
- 
- #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
-     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
-@@ -141,6 +142,7 @@ static const MemMapEntry a15memmap[] = {
-     [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
-     [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
-     [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
-+    [VIRT_SMMU] =               { 0x09050000, 0x00020000 },
-     [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
-     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
-     [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
-@@ -161,6 +163,7 @@ static const int a15irqmap[] = {
-     [VIRT_SECURE_UART] = 8,
-     [VIRT_MMIO] = 16, /* ...to 16 + NUM_VIRTIO_TRANSPORTS - 1 */
-     [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
-+    [VIRT_SMMU] = 74,    /* ...to 74 + NUM_SMMU_IRQS - 1 */
-     [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
- };
- 
-@@ -942,7 +945,57 @@ static void create_pcie_irq_map(const VirtMachineState *vms,
-                            0x7           /* PCI irq */);
+@@ -1560,6 +1560,34 @@ static void virt_set_gic_version(Object *obj, const char *value, Error **errp)
+     }
  }
  
--static void create_pcie(const VirtMachineState *vms, qemu_irq *pic)
-+static void create_smmu(const VirtMachineState *vms, qemu_irq *pic,
-+                        PCIBus *bus)
++static char *virt_get_iommu(Object *obj, Error **errp)
 +{
-+    char *node;
-+    const char compat[] = "arm,smmu-v3";
-+    int irq =  vms->irqmap[VIRT_SMMU];
-+    int i;
-+    hwaddr base = vms->memmap[VIRT_SMMU].base;
-+    hwaddr size = vms->memmap[VIRT_SMMU].size;
-+    const char irq_names[] = "eventq\0priq\0cmdq-sync\0gerror";
-+    DeviceState *dev;
++    VirtMachineState *vms = VIRT_MACHINE(obj);
 +
-+    if (vms->iommu != VIRT_IOMMU_SMMUV3 || !vms->iommu_phandle) {
-+        return;
++    switch (vms->iommu) {
++    case VIRT_IOMMU_NONE:
++        return g_strdup("none");
++    case VIRT_IOMMU_SMMUV3:
++        return g_strdup("smmuv3");
++    default:
++        g_assert_not_reached();
 +    }
-+
-+    dev = qdev_create(NULL, "arm-smmuv3");
-+
-+    object_property_set_link(OBJECT(dev), OBJECT(bus), "primary-bus",
-+                             &error_abort);
-+    qdev_init_nofail(dev);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
-+    for (i = 0; i < NUM_SMMU_IRQS; i++) {
-+        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, pic[irq + i]);
-+    }
-+
-+    node = g_strdup_printf("/smmuv3@%" PRIx64, base);
-+    qemu_fdt_add_subnode(vms->fdt, node);
-+    qemu_fdt_setprop(vms->fdt, node, "compatible", compat, sizeof(compat));
-+    qemu_fdt_setprop_sized_cells(vms->fdt, node, "reg", 2, base, 2, size);
-+
-+    qemu_fdt_setprop_cells(vms->fdt, node, "interrupts",
-+            GIC_FDT_IRQ_TYPE_SPI, irq    , GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
-+            GIC_FDT_IRQ_TYPE_SPI, irq + 1, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
-+            GIC_FDT_IRQ_TYPE_SPI, irq + 2, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
-+            GIC_FDT_IRQ_TYPE_SPI, irq + 3, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
-+
-+    qemu_fdt_setprop(vms->fdt, node, "interrupt-names", irq_names,
-+                     sizeof(irq_names));
-+
-+    qemu_fdt_setprop_cell(vms->fdt, node, "clocks", vms->clock_phandle);
-+    qemu_fdt_setprop_string(vms->fdt, node, "clock-names", "apb_pclk");
-+    qemu_fdt_setprop(vms->fdt, node, "dma-coherent", NULL, 0);
-+
-+    qemu_fdt_setprop_cell(vms->fdt, node, "#iommu-cells", 1);
-+
-+    qemu_fdt_setprop_cell(vms->fdt, node, "phandle", vms->iommu_phandle);
-+    g_free(node);
 +}
 +
-+static void create_pcie(VirtMachineState *vms, qemu_irq *pic)
- {
-     hwaddr base_mmio = vms->memmap[VIRT_PCIE_MMIO].base;
-     hwaddr size_mmio = vms->memmap[VIRT_PCIE_MMIO].size;
-@@ -1055,6 +1108,15 @@ static void create_pcie(const VirtMachineState *vms, qemu_irq *pic)
-     qemu_fdt_setprop_cell(vms->fdt, nodename, "#interrupt-cells", 1);
-     create_pcie_irq_map(vms, vms->gic_phandle, irq, nodename);
- 
-+    if (vms->iommu) {
-+        vms->iommu_phandle = qemu_fdt_alloc_phandle(vms->fdt);
++static void virt_set_iommu(Object *obj, const char *value, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
 +
-+        create_smmu(vms, pic, pci->bus);
-+
-+        qemu_fdt_setprop_cells(vms->fdt, nodename, "iommu-map",
-+                               0x0, vms->iommu_phandle, 0x0, 0x10000);
++    if (!strcmp(value, "smmuv3")) {
++        vms->iommu = VIRT_IOMMU_SMMUV3;
++    } else if (!strcmp(value, "none")) {
++        vms->iommu = VIRT_IOMMU_NONE;
++    } else {
++        error_setg(errp, "Invalid iommu value");
++        error_append_hint(errp, "Valid values are none, smmuv3.\n");
 +    }
++}
 +
-     g_free(nodename);
+ static CpuInstanceProperties
+ virt_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
+ {
+@@ -1692,6 +1720,14 @@ static void virt_2_12_instance_init(Object *obj)
+                                         NULL);
+     }
+ 
++    /* Default disallows iommu instantiation */
++    vms->iommu = VIRT_IOMMU_NONE;
++    object_property_add_str(obj, "iommu", virt_get_iommu, virt_set_iommu, NULL);
++    object_property_set_description(obj, "iommu",
++                                    "Set the IOMMU model among "
++                                    "none, smmuv3 (default none)",
++                                    NULL);
++
+     vms->memmap = a15memmap;
+     vms->irqmap = a15irqmap;
  }
- 
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index ba0c1a4..886372c 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -38,6 +38,7 @@
- 
- #define NUM_GICV2M_SPIS       64
- #define NUM_VIRTIO_TRANSPORTS 32
-+#define NUM_SMMU_IRQS          4
- 
- #define ARCH_GICV3_MAINT_IRQ  9
- 
-@@ -59,6 +60,7 @@ enum {
-     VIRT_GIC_V2M,
-     VIRT_GIC_ITS,
-     VIRT_GIC_REDIST,
-+    VIRT_SMMU,
-     VIRT_UART,
-     VIRT_MMIO,
-     VIRT_RTC,
-@@ -74,6 +76,12 @@ enum {
-     VIRT_SECURE_MEM,
- };
- 
-+typedef enum VirtIOMMUType {
-+    VIRT_IOMMU_NONE,
-+    VIRT_IOMMU_SMMUV3,
-+    VIRT_IOMMU_VIRTIO,
-+} VirtIOMMUType;
-+
- typedef struct MemMapEntry {
-     hwaddr base;
-     hwaddr size;
-@@ -97,6 +105,7 @@ typedef struct {
-     bool its;
-     bool virt;
-     int32_t gic_version;
-+    VirtIOMMUType iommu;
-     struct arm_boot_info bootinfo;
-     const MemMapEntry *memmap;
-     const int *irqmap;
-@@ -106,6 +115,7 @@ typedef struct {
-     uint32_t clock_phandle;
-     uint32_t gic_phandle;
-     uint32_t msi_phandle;
-+    uint32_t iommu_phandle;
-     int psci_conduit;
- } VirtMachineState;
- 
 -- 
 2.5.5
 

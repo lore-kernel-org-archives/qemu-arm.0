@@ -1,70 +1,86 @@
-Received: by 10.28.71.155 with SMTP id m27csp3785176wmi;
-        Tue, 10 Apr 2018 06:42:17 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4/KmOU8FW2lyYGuTnoCTSLiV14/DA0pIl4DWDlsuYdW1FpneBFZ38tiqMlGi3JoRj9c6A2O
-X-Received: by 10.200.42.217 with SMTP id c25mr731314qta.310.1523367737718;
-        Tue, 10 Apr 2018 06:42:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523367737; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp1604217wmi;
+        Thu, 12 Apr 2018 00:38:49 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx4+6M20w2PNez0Ap6osMUjAp1J6wQa/5Cw+sRKsr8zwRzPw3QaVWZFuuNdg4TJAZUKnUbZnV
+X-Received: by 10.200.40.102 with SMTP id 35mr11925123qtr.92.1523518729755;
+        Thu, 12 Apr 2018 00:38:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523518729; cv=none;
         d=google.com; s=arc-20160816;
-        b=iPCeH1ea9ot15/04do5TWycUTCmajlyIaiCAvYKVJ3ACtYjTHK64kkGUpHNskPu5rY
-         hjFel3A7G9G/+BdP5kxnArecZpuqib8ttMn7+Og9XRKcMjwTYDO3VK5+6ggUZyziUBI4
-         f30qDEuV8Cr8nFxQ7N5eqWOHw2bxv8U7l5JKnVVVp5IVwrz0wJ99qq9FmarKIaVekIeO
-         Fa9QqShVvBOY5Fg7TcDavRqtnT5LZgVq9nb69REvRJI8xgiy2r2rL6/LfgcDEnDrjGBn
-         TnAcVVBlTTLn3yPPiZy64YaR5yDaY+jomHEhtv3sjT+F4BmtsuTgpXy1RE9VT4bZnH9I
-         37JA==
+        b=c4r95US1UkfipdJ3rmQyCqySUOpq0HT7izc3++ZyY1/MwOpMETaFPPOzmHmyhJCz6m
+         uWSu4Mfyoo7R2Ktp+XjDhr6BiLZ/9u4DlE/uTM7J76rL4Gggc8VLNrQoYP1hvqPQDHnT
+         uBnp3zPDtBcAw+en1NHFpGVCwl0F9ohcHEcO3rMLxLLaxAnMhfcMTzojRmNnp2X0+U+V
+         eWwu7A7mzY6b6ef/UqEx7I8xzWpAlhrsSqBGS8Xoc2uRxhiYNDeqCF7p/T2ZqE27phWp
+         sB19zMnAZ9/+OPEP6EBICGC0WyJIQXFPyLwslHCIYyIMDiTz/9ZdiWlpomQtbPUHi9Sn
+         Vj0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :arc-authentication-results;
-        bh=AzmQhTlrVyFyR6dp6J43afLMOXMX7x7hURGBlD6tEcI=;
-        b=LvvHPaexxKCW7pnZjxA83QY+xhy6I7s562nnK8kQR4I7nK5N/tgL1b4XtZXjqAZuDT
-         FFk0aSXpZO3SHXd+41DH5xxpWQXsD1sPnsida9K8tQmAgz5Q23DT8I2EQBD4tTny58Al
-         ZWwauevPkI54yQf32qxpWrPh4xtmk0XQjr3VP3jaDgym/nvvISCLVP1+XQccGLGWRDMi
-         JqWe0X9VIVUmfD/taV3p8hLIyaEdanymE69runbnEkTfjwhNtSzRJbMMIDNS95VGbSMR
-         JAyNddgMWr2/ISHKc/9HoFesGSISatczO+yF5znwxiwY26fK0epoMyWzqYDpde6mKIe4
-         x9LA==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=exCn/lQ4/UaX902liZWYvIEY54+DWkqNlv8VeQrcpf4=;
+        b=OYN24+PZLoiqYpnpIzX7+4LX7C50xAiGOwp/CK3+4rD7wQET9PXvEUE76RLnmPke3l
+         zkoBOJjDd8Dnuw0Jr237W4ONU+bD2enCob4i6jgLDfHK0UZB2mrgY7xrrAKxj0YjIox+
+         gG9O1FEdrczwzFHU/Wpm9+yu18IdAMp9GWvstGaQllZKyA8njraJ/m4HlT968rjxd1e6
+         gbpEUTC/DUxUrXq1H9uzyeHJH9ChJmsRAvaOYvfTgw6MUeSdACCY2RNFO4AtUhSks9N4
+         YbVabooshG0D2kXvwMKax16RTEgBlrpHmVkL0fq9TBPR4dXisJE9XI4aEzF0WYxKUsZ2
+         L3LA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k18si1129538qtj.115.2018.04.10.06.42.17
+        by mx.google.com with ESMTPS id o77si2683632qko.192.2018.04.12.00.38.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 10 Apr 2018 06:42:17 -0700 (PDT)
+        Thu, 12 Apr 2018 00:38:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46002 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:44044 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f5tXN-0004ao-7E
-	for alex.bennee@linaro.org; Tue, 10 Apr 2018 09:42:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45492)
+	id 1f6Woj-0006T0-3A
+	for alex.bennee@linaro.org; Thu, 12 Apr 2018 03:38:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49103)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1f5tXE-0004a6-Vs
-	for qemu-arm@nongnu.org; Tue, 10 Apr 2018 09:42:09 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1f6WoU-0006Qx-2O
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 03:38:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1f5tXD-0005Mz-TH
-	for qemu-arm@nongnu.org; Tue, 10 Apr 2018 09:42:09 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:40766)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1f5tXD-0005MC-Jp; Tue, 10 Apr 2018 09:42:07 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1f5tXB-00005I-1D; Tue, 10 Apr 2018 14:42:05 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Tue, 10 Apr 2018 14:42:03 +0100
-Message-Id: <20180410134203.17552-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.16.2
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH for-2.12] hw/char/cmsdk-apb-uart.c: Correctly
- clear INTSTATUS bits on writes
+	(envelope-from <eric.auger@redhat.com>) id 1f6WoP-0002zR-K9
+	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 03:38:34 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:34332 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1f6WoP-0002xp-En; Thu, 12 Apr 2018 03:38:29 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 8A68D4075A67;
+	Thu, 12 Apr 2018 07:38:25 +0000 (UTC)
+Received: from localhost.localdomain.com (ovpn-116-192.ams2.redhat.com
+	[10.36.116.192])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id E6227215CDC6;
+	Thu, 12 Apr 2018 07:38:22 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, peter.maydell@linaro.org, prem.mallappa@gmail.com
+Date: Thu, 12 Apr 2018 09:37:52 +0200
+Message-Id: <1523518688-26674-2-git-send-email-eric.auger@redhat.com>
+In-Reply-To: <1523518688-26674-1-git-send-email-eric.auger@redhat.com>
+References: <1523518688-26674-1-git-send-email-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.6]);
+	Thu, 12 Apr 2018 07:38:25 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Thu, 12 Apr 2018 07:38:25 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: [Qemu-arm] [PATCH v11 01/17] hw/arm/smmu-common: smmu base device
+ and datatypes
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,42 +92,314 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-stable@nongnu.org, patches@linaro.org
+Cc: cdall@kernel.org, mst@redhat.com, jean-philippe.brucker@arm.com,
+	tn@semihalf.com, peterx@redhat.com, alex.williamson@redhat.com,
+	linuc.decode@gmail.com, bharat.bhushan@nxp.com, jintack@cs.columbia.edu
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DgAvcEveTjwL
+X-TUID: bo1FyOXUEFni
 
-The CMSDK APB UART INTSTATUS register bits are all write-one-to-clear.
-We were getting this correct for the TXO and RXO bits (which need
-special casing because their state lives in the STATE register),
-but had forgotten to handle the normal bits for RX and TX which
-we do store in our s->intstatus field.
+The patch introduces the smmu base device and class for the ARM
+smmu. Devices for specific versions will be derived from this
+base device.
 
-Perform the W1C operation on the bits in s->intstatus too.
+We also introduce some important datatypes.
 
-Fixes: https://bugs.launchpad.net/qemu/+bug/1760262
-Cc: qemu-stable@nongnu.org
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
 ---
-Not a disaster if this doesn't get into 2.12, I guess. I think
-it's missed the rc3 boat, so if we need an rc4 for some other
-reason we can put it in.
+v10 -> v11:
+- remove hash tables for configs and iotlb which will be
+  introduced later on
 
- hw/char/cmsdk-apb-uart.c | 1 +
- 1 file changed, 1 insertion(+)
+v9 -> v10:
+- invoke the parent_realize
+- use device_class_set_parent_realize
+- use "" to include headers
+- fix indent in SMMUTransCfg
+- rename smmu_as_by_busptr into smmu_pcibus_by_busptr and
+         smmu_as_by_bus_num into smmu_pcibus_by_bus_num
+- mrtypename becomes const
+- add Peter's R-b
 
-diff --git a/hw/char/cmsdk-apb-uart.c b/hw/char/cmsdk-apb-uart.c
-index 1ad1e14295..9c0929d8a2 100644
---- a/hw/char/cmsdk-apb-uart.c
-+++ b/hw/char/cmsdk-apb-uart.c
-@@ -274,6 +274,7 @@ static void uart_write(void *opaque, hwaddr offset, uint64_t value,
-          * is then reflected into the intstatus value by the update function).
-          */
-         s->state &= ~(value & (R_INTSTATUS_TXO_MASK | R_INTSTATUS_RXO_MASK));
-+        s->intstatus &= ~value;
-         cmsdk_apb_uart_update(s);
-         break;
-     case A_BAUDDIV:
+v8 -> v9:
+- remove page walk callback type from this patch (vhost related)
+- add a new hash table for caching configuration data
+- add reset function
+- add asid
+
+v7 -> v8:
+- add bus_num property
+- add primary-bus property
+- add realize and remove instance_init
+- rename TYPE and related macros to match naming convention using
+  for GIC
+- add SMMUPageTableWalkEventInfo
+- tt[2] in translation config
+
+v3 -> v4:
+- added smmu_find_as_from_bus_num
+- SMMU_PCI_BUS_MAX and SMMU_PCI_DEVFN_MAX in smmu-common header
+- new fields in SMMUState:
+  - iommu_ops, smmu_as_by_busptr, smmu_as_by_bus_num
+- add aa64[] field in SMMUTransCfg
+
+v3:
+- moved the base code in a separate patch to ease the review.
+- clearer separation between base class and smmuv3 class
+- translate_* only implemented as class methods
+
+Conflicts:
+	default-configs/aarch64-softmmu.mak
+
+Conflicts:
+	hw/arm/Makefile.objs
+---
+ default-configs/aarch64-softmmu.mak |   1 +
+ hw/arm/Makefile.objs                |   1 +
+ hw/arm/smmu-common.c                |  81 +++++++++++++++++++++++
+ include/hw/arm/smmu-common.h        | 124 ++++++++++++++++++++++++++++++++++++
+ 4 files changed, 207 insertions(+)
+ create mode 100644 hw/arm/smmu-common.c
+ create mode 100644 include/hw/arm/smmu-common.h
+
+diff --git a/default-configs/aarch64-softmmu.mak b/default-configs/aarch64-softmmu.mak
+index 9ddccf8..6f790f0 100644
+--- a/default-configs/aarch64-softmmu.mak
++++ b/default-configs/aarch64-softmmu.mak
+@@ -8,3 +8,4 @@ CONFIG_DDC=y
+ CONFIG_DPCD=y
+ CONFIG_XLNX_ZYNQMP=y
+ CONFIG_XLNX_ZYNQMP_ARM=y
++CONFIG_ARM_SMMUV3=y
+diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+index 2885e3e..558436f 100644
+--- a/hw/arm/Makefile.objs
++++ b/hw/arm/Makefile.objs
+@@ -35,3 +35,4 @@ obj-$(CONFIG_MPS2) += mps2-tz.o
+ obj-$(CONFIG_MSF2) += msf2-soc.o msf2-som.o
+ obj-$(CONFIG_IOTKIT) += iotkit.o
+ obj-$(CONFIG_FSL_IMX7) += fsl-imx7.o mcimx7d-sabre.o
++obj-$(CONFIG_ARM_SMMUV3) += smmu-common.o
+diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+new file mode 100644
+index 0000000..e086ff5
+--- /dev/null
++++ b/hw/arm/smmu-common.c
+@@ -0,0 +1,81 @@
++/*
++ * Copyright (C) 2014-2016 Broadcom Corporation
++ * Copyright (c) 2017 Red Hat, Inc.
++ * Written by Prem Mallappa, Eric Auger
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 as
++ * published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * Author: Prem Mallappa <pmallapp@broadcom.com>
++ *
++ */
++
++#include "qemu/osdep.h"
++#include "sysemu/sysemu.h"
++#include "exec/address-spaces.h"
++#include "trace.h"
++#include "exec/target_page.h"
++#include "qom/cpu.h"
++#include "hw/qdev-properties.h"
++#include "qapi/error.h"
++
++#include "qemu/error-report.h"
++#include "hw/arm/smmu-common.h"
++
++static void smmu_base_realize(DeviceState *dev, Error **errp)
++{
++    SMMUBaseClass *sbc = ARM_SMMU_GET_CLASS(dev);
++    Error *local_err = NULL;
++
++    sbc->parent_realize(dev, &local_err);
++    if (local_err) {
++        error_propagate(errp, local_err);
++        return;
++    }
++}
++
++static void smmu_base_reset(DeviceState *dev)
++{
++    /* will be filled later on */
++}
++
++static Property smmu_dev_properties[] = {
++    DEFINE_PROP_UINT8("bus_num", SMMUState, bus_num, 0),
++    DEFINE_PROP_LINK("primary-bus", SMMUState, primary_bus, "PCI", PCIBus *),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void smmu_base_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    SMMUBaseClass *sbc = ARM_SMMU_CLASS(klass);
++
++    dc->props = smmu_dev_properties;
++    device_class_set_parent_realize(dc, smmu_base_realize,
++                                    &sbc->parent_realize);
++    dc->reset = smmu_base_reset;
++}
++
++static const TypeInfo smmu_base_info = {
++    .name          = TYPE_ARM_SMMU,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(SMMUState),
++    .class_data    = NULL,
++    .class_size    = sizeof(SMMUBaseClass),
++    .class_init    = smmu_base_class_init,
++    .abstract      = true,
++};
++
++static void smmu_base_register_types(void)
++{
++    type_register_static(&smmu_base_info);
++}
++
++type_init(smmu_base_register_types)
++
+diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+new file mode 100644
+index 0000000..5910692
+--- /dev/null
++++ b/include/hw/arm/smmu-common.h
+@@ -0,0 +1,124 @@
++/*
++ * ARM SMMU Support
++ *
++ * Copyright (C) 2015-2016 Broadcom Corporation
++ * Copyright (c) 2017 Red Hat, Inc.
++ * Written by Prem Mallappa, Eric Auger
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 as
++ * published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ */
++
++#ifndef HW_ARM_SMMU_COMMON_H
++#define HW_ARM_SMMU_COMMON_H
++
++#include "hw/sysbus.h"
++#include "hw/pci/pci.h"
++
++#define SMMU_PCI_BUS_MAX      256
++#define SMMU_PCI_DEVFN_MAX    256
++
++#define SMMU_MAX_VA_BITS      48
++
++/*
++ * Page table walk error types
++ */
++typedef enum {
++    SMMU_PTW_ERR_NONE,
++    SMMU_PTW_ERR_WALK_EABT,   /* Translation walk external abort */
++    SMMU_PTW_ERR_TRANSLATION, /* Translation fault */
++    SMMU_PTW_ERR_ADDR_SIZE,   /* Address Size fault */
++    SMMU_PTW_ERR_ACCESS,      /* Access fault */
++    SMMU_PTW_ERR_PERMISSION,  /* Permission fault */
++} SMMUPTWEventType;
++
++typedef struct SMMUPTWEventInfo {
++    SMMUPTWEventType type;
++    dma_addr_t addr; /* fetched address that induced an abort, if any */
++} SMMUPTWEventInfo;
++
++typedef struct SMMUTransTableInfo {
++    bool disabled;             /* is the translation table disabled? */
++    uint64_t ttb;              /* TT base address */
++    uint8_t tsz;               /* input range, ie. 2^(64 -tsz)*/
++    uint8_t granule_sz;        /* granule page shift */
++    uint8_t initial_level;     /* initial lookup level */
++} SMMUTransTableInfo;
++
++/*
++ * Generic structure populated by derived SMMU devices
++ * after decoding the configuration information and used as
++ * input to the page table walk
++ */
++typedef struct SMMUTransCfg {
++    int stage;                 /* translation stage */
++    bool aa64;                 /* arch64 or aarch32 translation table */
++    bool disabled;             /* smmu is disabled */
++    bool bypassed;             /* translation is bypassed */
++    bool aborted;              /* translation is aborted */
++    uint64_t ttb;              /* TT base address */
++    uint8_t oas;               /* output address width */
++    uint8_t tbi;               /* Top Byte Ignore */
++    uint16_t asid;
++    SMMUTransTableInfo tt[2];
++} SMMUTransCfg;
++
++typedef struct SMMUDevice {
++    void               *smmu;
++    PCIBus             *bus;
++    int                devfn;
++    IOMMUMemoryRegion  iommu;
++    AddressSpace       as;
++} SMMUDevice;
++
++typedef struct SMMUNotifierNode {
++    SMMUDevice *sdev;
++    QLIST_ENTRY(SMMUNotifierNode) next;
++} SMMUNotifierNode;
++
++typedef struct SMMUPciBus {
++    PCIBus       *bus;
++    SMMUDevice   *pbdev[0]; /* Parent array is sparse, so dynamically alloc */
++} SMMUPciBus;
++
++typedef struct SMMUState {
++    /* <private> */
++    SysBusDevice  dev;
++    const char *mrtypename;
++    MemoryRegion iomem;
++
++    GHashTable *smmu_pcibus_by_busptr;
++    GHashTable *configs; /* cache for configuration data */
++    GHashTable *iotlb;
++    SMMUPciBus *smmu_pcibus_by_bus_num[SMMU_PCI_BUS_MAX];
++    PCIBus *pci_bus;
++    QLIST_HEAD(, SMMUNotifierNode) notifiers_list;
++    uint8_t bus_num;
++    PCIBus *primary_bus;
++} SMMUState;
++
++typedef struct {
++    /* <private> */
++    SysBusDeviceClass parent_class;
++
++    /*< public >*/
++
++    DeviceRealize parent_realize;
++
++} SMMUBaseClass;
++
++#define TYPE_ARM_SMMU "arm-smmu"
++#define ARM_SMMU(obj) OBJECT_CHECK(SMMUState, (obj), TYPE_ARM_SMMU)
++#define ARM_SMMU_CLASS(klass)                                    \
++    OBJECT_CLASS_CHECK(SMMUBaseClass, (klass), TYPE_ARM_SMMU)
++#define ARM_SMMU_GET_CLASS(obj)                              \
++    OBJECT_GET_CLASS(SMMUBaseClass, (obj), TYPE_ARM_SMMU)
++
++#endif  /* HW_ARM_SMMU_COMMON */
 -- 
-2.16.2
+2.5.5
 

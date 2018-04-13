@@ -1,92 +1,102 @@
-Received: by 10.28.91.67 with SMTP id p64csp2043767wmb;
-        Thu, 1 Mar 2018 08:44:34 -0800 (PST)
-X-Google-Smtp-Source: AG47ELueh3sBU+yEKxjDJzARG4ivlPw5EoeVHfMPrsRqPvT7adyrmCLdxF3sN/mWoTJU46a/iwn2
-X-Received: by 2002:a25:b441:: with SMTP id c1-v6mr1664221ybg.218.1519922674074;
-        Thu, 01 Mar 2018 08:44:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519922674; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp776995wmi;
+        Fri, 13 Apr 2018 06:46:43 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx49Iv2Rd3yVfwvii4qKHyx+cgAbZFJIJwKdSGga4oky1sg+B7rvWwLtEHTo/pChmgSlOsq7L
+X-Received: by 10.129.31.213 with SMTP id f204mr4800613ywf.197.1523627203627;
+        Fri, 13 Apr 2018 06:46:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523627203; cv=none;
         d=google.com; s=arc-20160816;
-        b=aoPfnr9ZdmJxwijE3QbQEk2t3/jf/6E/Jba83COyz04czYc/0jYHsV0VSw8CmGiwe+
-         +5eOabcA3LsrorHrRIlR+wlEiCF+ltoQTm/RYinPZ6SydcTHbFMhgtfIcNiWsCfjM702
-         6Pd6GfL+ZhdgD4mS8AzPjG0QxZ7n/5kOwg372EmUPlCtn8geYTHKE5yZqRpLTTkOGyBN
-         kXOgZExAZyBSWBFFBU/8pAZe5FJ9z52gPWl++pWo0QhCgPrEX3aE9/Y3cxbs56Dw+5rW
-         mNXshFAWHEjxF1KRmt1pTVPhfwIdQuN31I+a3OhxO73hbs2RerhbugmhVf/n91RrO9bY
-         tQeA==
+        b=v90VM7fDT0hqK7g9jjo/vHbb1sPFksvZQaXIGmuHwTUGkKfyxqA0cDbRWKRK9eB6LP
+         wzlzcyN1PGioJjZldWV8dgXpJPRArfVpv70mQVLFexz2mljIiIezeh1yeTh6oRvQ39NP
+         q7e/vxjrgpCA3Vf5+ws6lE9zaQ0HQbEdbypyT9prjENstUzeskIc1wxDy1P2mi9YJcGs
+         mlCnFvTl3GKpIU8kH4XENIP1WTahisCiObV0mMTRhTBhiILT39TJFTWalHfOAm8ti50S
+         O0sJVN5P3bUkNYuFTn2sKKCfeI5JPraFD7iWLdu0cErizaeVKZcrjpmUvR0eoE80FwHX
+         lC+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date:arc-authentication-results;
-        bh=/ojDaCmdGv+ckUyeZXLsEJCzLQe8nLdGVhAYpbA5R8c=;
-        b=zuDzvdqXTL1JGjPKA7JaD1oSpS2rb3BytH57jbjtotTPUwSmNUwb64cDXk1C14XHJ7
-         SrqBenpwknA0PB5YAVsEWhEeYY/uVMlNo0NY4PjUUVhEwUPmCAy4cV3vJWLwBRc7w4Op
-         l92rYyppVKmD1JHhEZivqpOJSJCzMo2D6HsnmdfPCm0A42MudsErQgMSGXT9altFYRav
-         /R/uRJl7DS0qegnj38KHsLR7vAawZwQPxwWA8O8ht6Os2x104DOu0E01WtRUpAxs6tem
-         /ktNSM/SWF163WEl1zjjlI1IOYM4/ZRcCDZQ8KpVwYwRMrdtih69Gw3JOJyHC4tMShWI
-         lIBg==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=g9XKmtv9BRx6z6A9Tdfr4YWms9QdAyj/bdh9QF/IJ9U=;
+        b=eS/+9GKTPkua5OBvaWaWKtMYWmpO+bkJoPhYCXpqklOadgNyKz5zbTp3BUEULMEN6i
+         oZgpCR3QL8ax9ygVjijRS7IWhgNO3htQDzcQl56ZsyeFrQatiMg0vukkxhBA0O0srLJy
+         Sg3umNcjk2HUzFIJokjvzu9TztOB7gK4JSeoB2wBT0etVwzFX6a5RjTlivt/DckXeTNr
+         ku3Repd6Otal+1WHMINVTfX50xkBd4TAl+jQnbmQG7UNiLV8R3xE/KVeIxCTVhR9PnwJ
+         VBu5NIKADtDAjk5rvl9vaSLvoc8VJDZM0cITc5SUlR8M3yrwlWpZAiGu5+ZUY/wiemxI
+         KHsw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=al5WCSPf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x126-v6si704848ybx.514.2018.03.01.08.44.33
+        by mx.google.com with ESMTPS id 39si7813183qtn.41.2018.04.13.06.46.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 01 Mar 2018 08:44:34 -0800 (PST)
+        Fri, 13 Apr 2018 06:46:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=al5WCSPf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58035 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54841 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1erRJp-0004f3-GS
-	for alex.bennee@linaro.org; Thu, 01 Mar 2018 11:44:33 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48364)
+	id 1f6z2H-00084h-N6
+	for alex.bennee@linaro.org; Fri, 13 Apr 2018 09:46:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34081)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1erRJW-0004aa-Mj
-	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 11:44:19 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1f6z22-00082W-5p
+	for qemu-arm@nongnu.org; Fri, 13 Apr 2018 09:46:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1erRJS-0007Mt-Mt
-	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 11:44:14 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:52380 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1erRJS-0007MS-FP; Thu, 01 Mar 2018 11:44:10 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id EA6FB4084FEC;
-	Thu,  1 Mar 2018 16:44:05 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id E53329C069;
-	Thu,  1 Mar 2018 16:43:56 +0000 (UTC)
-Date: Thu, 1 Mar 2018 17:43:55 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
-Message-ID: <20180301174355.2d0ef5ae@redhat.com>
-In-Reply-To: <ad05c82f-eb31-694d-4688-ae250287cfd6@redhat.com>
-References: <1519827835-239519-1-git-send-email-imammedo@redhat.com>
-	<1519827835-239519-10-git-send-email-imammedo@redhat.com>
-	<986e15d2-47cd-be73-da0f-39874b38a325@redhat.com>
-	<20180301102153.0a07f96c@redhat.com>
-	<ad05c82f-eb31-694d-4688-ae250287cfd6@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1f6z21-00070N-Fl
+	for qemu-arm@nongnu.org; Fri, 13 Apr 2018 09:46:26 -0400
+Received: from mail-ot0-x233.google.com ([2607:f8b0:4003:c0f::233]:33158)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1f6z21-0006zo-AK
+	for qemu-arm@nongnu.org; Fri, 13 Apr 2018 09:46:25 -0400
+Received: by mail-ot0-x233.google.com with SMTP id 23-v6so9908402otj.0
+	for <qemu-arm@nongnu.org>; Fri, 13 Apr 2018 06:46:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=g9XKmtv9BRx6z6A9Tdfr4YWms9QdAyj/bdh9QF/IJ9U=;
+	b=al5WCSPfr0eBqwa5TYOMNgUvoXTFca3cYsIpZx6Q0tYJ2OsHFKyY/6Kbw4TWmdwQ1H
+	yApl2t3fMhXX/Qbrzbbg84C0avz6OfLDMxidwYHaQkLkVyKSySVuJl07Wwzc5WAFk5Bi
+	EoTOs6U6oH97VKC7i8FYHg5BEqOqblXNC1fHk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=g9XKmtv9BRx6z6A9Tdfr4YWms9QdAyj/bdh9QF/IJ9U=;
+	b=EbRk6zNj/jeg3OdO4r3qkDfbtbfe1O26GbEyGrtWHEj3eGvtheBkyRbkow4f8Mp766
+	OS0dT7TA8tM/3l7hADisq9NqfG4akpHGV6LNIiloEMWY57cgQ75gYMRMl5vQROmelXBk
+	zdrs9gpy2g0A4OlV+KtMuoAR5EpFJ8RcZw7YdS/gWb0GZ9MLdjT0FSu9oa91Y4wnRafR
+	lTqQ1HOHSxAUe5l4mjByJO0tXpOYzjPPSqaUkFXkuK65tSb2lfeYF2sU31X0xOug/3WS
+	aBTu5na7K3BWs85Jknalqd2oXgVWTraE3O3bgG9wgYlGJQAPptlgjYt60Fd03geGQ9+H
+	DxcA==
+X-Gm-Message-State: ALQs6tC5LUdM/l7C5QHM9Gt/SX5vUtzNi3D8cbjv3z8RW31PjIU9fnI0
+	ifaMJlzjjXkpfQTfQs0ETfdwN5tFUS5bVKSqpzNXZA==
+X-Received: by 2002:a9d:5cc1:: with SMTP id
+	r1-v6mr3502939oti.258.1523627184586; 
+	Fri, 13 Apr 2018 06:46:24 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Thu, 01 Mar 2018 16:44:05 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Thu, 01 Mar 2018 16:44:05 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'imammedo@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [PATCH v2 09/10] virt_arm: acpi: reuse common
- build_fadt()
+Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Fri, 13 Apr 2018 06:46:04
+	-0700 (PDT)
+In-Reply-To: <e2fcd39f-f7f9-f8a2-7ef2-68a626e6bd0f@redhat.com>
+References: <1522160122-10744-1-git-send-email-eric.auger@redhat.com>
+	<1522160122-10744-5-git-send-email-eric.auger@redhat.com>
+	<CAFEAcA8sQSuVcYPyE58tjapxxe6FNdD5qcyftYrZeWQ0fbev8w@mail.gmail.com>
+	<e2fcd39f-f7f9-f8a2-7ef2-68a626e6bd0f@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 13 Apr 2018 14:46:04 +0100
+Message-ID: <CAFEAcA-D083O3EVoF_DXPpXf2ax6Kfad9HOToFjZg8tnRE=g7Q@mail.gmail.com>
+To: Auger Eric <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::233
+Subject: Re: [Qemu-arm] [RFC 4/8] hw/intc/arm_gicv3: Implement
+ register_redist_region API
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,87 +108,26 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Shannon Zhao <zhaoshenglong@huawei.com>, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Andrew Jones <drjones@redhat.com>, Christoffer Dall <cdall@kernel.org>,
+	Marc Zyngier <marc.zyngier@arm.com>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Shannon Zhao <zhaoshenglong@huawei.com>,
+	Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HaZe0BagCBw0
+X-TUID: IZ9uVq7NYuYD
 
-On Thu, 1 Mar 2018 10:38:52 +0100
-Auger Eric <eric.auger@redhat.com> wrote:
+On 13 April 2018 at 14:44, Auger Eric <eric.auger@redhat.com> wrote:
+> Actually this is an API provided to the machine and not the device
+> itself directly playing with the mapping.
+>
+> If not acceptable, I need to match the existing notifier framework and
+> do something similar taking into account the new GROUP/ATTR address
+> semantics here.
 
-[...]
-> >>>  {
-> >>> @@ -1755,7 +1755,14 @@ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
-> >>>  
-> >>>      build_append_gas_from_struct(tbl, &f->reset_reg); /* RESET_REG */
-> >>>      build_append_int_noprefix(tbl, f->reset_val, 1); /* RESET_VALUE */
-> >>> -    build_append_int_noprefix(tbl, 0, 3); /* Reserved, ACPI 3.0 */  
-> I meant we could have assert(f->rev < 6) here
-> >>> +    /* Since ACPI 5.1 */
-> >>> +    if ((f->rev >= 6) || ((f->rev == 5) && f->minor_ver > 0)) {  
-> and remove (f->rev >= 6) as in any case rev6 is not supported
-> (Hypervisor Vendor Identity field (8 byte) not duly added).
-> 
-> Or do I miss something?
-Nope, you are right.
-I've missed 'code above' part and didn't get suggestion the first time.
+I think I'd rather that we continue to tell the kernel about
+the addresses of device related regions in the same general
+way that we do at the moment.
 
-The reason why I didn't assert here is to keep this part
-(in the middle of table) working correctly without need
-to touch it when later revisions will add new fields at
-the end of table. So all we would have to do is to add
-new code at the end and update assert that sets revision limit.
-
-condition here essentially implements specs, i.e. 
-from 5.1 onward reserved space should be used for now defined fields.
-
-We might add similar conditions, for other 'Reserved' fields,
-in the future if new revisions start to use them.
-
-> Thanks
-> 
-> Eric
-> >>> +        build_append_int_noprefix(tbl, f->arm_boot_arch, 2); /* ARM_BOOT_ARCH */
-> >>> +        /* FADT Minor Version */
-> >>> +        build_append_int_noprefix(tbl, f->minor_ver, 1);
-> >>> +    } else {
-> >>> +        build_append_int_noprefix(tbl, 0, 3); /* Reserved upto ACPI 5.0 */
-> >>> +    }
-> >>>      build_append_int_noprefix(tbl, 0, 8); /* X_FIRMWARE_CTRL */
-> >>>  
-> >>>      /* XDSDT address to be filled by Guest linker at runtime */
-> >>> @@ -1779,6 +1786,18 @@ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
-> >>>      build_append_gas_from_struct(tbl, &f->gpe0_blk); /* X_GPE0_BLK */
-> >>>      build_append_gas(tbl, AML_AS_SYSTEM_MEMORY, 0 , 0, 0, 0); /* X_GPE1_BLK */
-> >>>  
-> >>> +    if (f->rev <= 4) {
-> >>> +        goto build_hdr;
-> >>> +    }
-> >>> +
-> >>> +    /* SLEEP_CONTROL_REG */
-> >>> +    build_append_gas(tbl, AML_AS_SYSTEM_MEMORY, 0 , 0, 0, 0);
-> >>> +    /* SLEEP_STATUS_REG */
-> >>> +    build_append_gas(tbl, AML_AS_SYSTEM_MEMORY, 0 , 0, 0, 0);
-> >>> +
-> >>> +    /* TODO: extra fields need to be added to support revisions above rev5 */
-> >>> +    assert(f->rev == 5);    
-> >> My previous comment about asserting here if f->rev != 5 and previous
-> >> (f->rev >= 6) check was skipped but that's not a big deal.  
-> > I've thought that I've replied to comment,
-> > maybe I just didn't get meaning behind question?
-> > So I'll try to explain again.
-> > 
-> > If we reach this point rev must be 5, so f->rev >= 6 would be confusing
-> > at this point. When v6 support is added this assert should be moved after
-> > v6 stuff and condition is amended to f->rev == 6.
-> > 
-> >    
-> >> Reviewed-by: Eric Auger <eric.auger@redhat.com>  
-> > Thanks!
-> >   
-> >>
-> >> Thanks
-> >>
-> >> Eric  
-[...]
+thanks
+-- PMM

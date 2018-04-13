@@ -1,100 +1,93 @@
-Received: by 10.28.71.155 with SMTP id m27csp765798wmi;
-        Fri, 13 Apr 2018 06:35:33 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4/lk3CK9d/xWFTLDE4Q36UL0jxB1AsL72Ux41ivR+gkLpG7FxPctaIythJDPCqSLcena5KZ
-X-Received: by 2002:a25:29c1:: with SMTP id p184-v6mr4440428ybp.253.1523626533215;
-        Fri, 13 Apr 2018 06:35:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523626533; cv=none;
+Received: by 10.28.71.155 with SMTP id m27csp768542wmi;
+        Fri, 13 Apr 2018 06:38:08 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx4/gcB9ufCskDikt9lxjOqzfXrMEG6VZh/yerpSKSM0G6eEGFgfHdkM94hJAxv4rP5zMCE07
+X-Received: by 10.129.152.17 with SMTP id p17mr4677959ywg.163.1523626688009;
+        Fri, 13 Apr 2018 06:38:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523626688; cv=none;
         d=google.com; s=arc-20160816;
-        b=yPstPo0ifnfnuts9xfLOGr964afNJRRDoqlP6bSlHB4hh1CHZeGORYCxlZTw29sBEQ
-         3NtTWngmKQlJEvQFrcJVj4dZWUlhsQ/c9LMP4Px8i7JV9HpGdyXrLi0DT60b9YJMoHuM
-         ZbPsgen83KmXTrKlrfKM0dpEBUezCttCUtCf2d7zK5HKTI3qZfxnB4j8MxRkAmUocDdb
-         Yqn3Ug7I7wDDYbklNbVbMKbCck2vSFLsul0pvIQD1ZrU1Y+stoF/0QoybsTZqc9LnRyE
-         +vd/6ICmqjhztNwpfp8armqM94Yr2mvaSHmJrWevZBHZuGBJLVKXmrGznNyUYQ8en4Sz
-         DxUA==
+        b=JCyEmSSh2lco/wD/IOnu5ITpoRQVZLxvoToVK6ajDsc/M8cJ2MmHXMZ6Y4GU08spBZ
+         33VsZ1AL9yeaJ6mZtIfW3qbt2Jdr+Rld1UZAT++j1l0ubKcAGi+lEinHcUo0ZaLZllDK
+         h3KlKBWohwf+Urq3UT7/2CKhRzK27GnB6n4HX7oKLUfRzqFRC/ZcjSk+y/Bn3gfYQeD/
+         sO5enahDOALo0kEz5Ru7kLYsrbHBzCYeRLaxaJx0uaXL9MGUhvD6vCbGbYv0Y2GsdIbd
+         vzlrc6zBClIY+qy13N+aM41NGTSKMTmk3DfMVw0jX5/OfxUGw89HdovAtN2qgldojBs+
+         VyIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=6Mtltdhe3k1ZZFNkBSsq2rK4qNcWvbZ7yLdUOW1Dz1g=;
-        b=RYsIwMTOsvTY0rjrjxeES4NxSA43PGaruV098Ibl3R+ZRRDtp+qR6V04dUK+z6YjjR
-         syDciqqjO3FhR/1Ruk6SHuSub9yHnGTxypkHGhNOfpn8d76O1MIdSccnLDYGWZPK/3WT
-         7sz2a30XB6xmlba+P5qikPb6u1iB8IGcZVfFrwsiCQFgiftFukLZ/mZsYCtq2QkzbEd2
-         G3VaHoWtkSAc8HnVpg0Vs5aQ/aeY4Xhpi0njPMhOx9vJi5Tojl9xy56WZb6PcOZk/sv1
-         fLKs0+wp7hAV0RyfeXlDJecxCZcVWuiQZPoEEJ5v+QjhzdquKrNTAQeOQqdE3T0zThnS
-         rOqQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=d8onPAkl5oUjtyhJop0Qv7ylydomb2eICJhUfOy8UUs=;
+        b=WHOI3FXDMaE4BKjPICVKScdYCZYvOtHRwF7Dt9hYsZSYouDzc5tuiTLE1My/cBG7J+
+         M91enJh//tLcW22eoXQ4iFu+6VFP1j52afdnG13nEVk7ppMrLKaq9kTQn8WnSMLWbmCv
+         BWsmM0eOpuD3EZLUrGuLEScvTlhrMIQkEyqRCZHuUW1o7gBC6zVzw73pUHtNDZfqSLCK
+         0S6lZ6fxY5FKFYSMyyhypSp3oEQNEBXOyGLcU2s2iY/edL8TEmWhR59o/P/hOjF8dGkS
+         77X8OsQ4V7nR3uucQHPmNEE1z612Ntz3MLuhkG/xLcu6pdfgCxPBYWlnZJcENQYRr1cc
+         5PHQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=UeSbHNRU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g15si3545989qta.378.2018.04.13.06.35.33
+        by mx.google.com with ESMTPS id m68si27817qkd.298.2018.04.13.06.38.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 13 Apr 2018 06:35:33 -0700 (PDT)
+        Fri, 13 Apr 2018 06:38:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=UeSbHNRU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54048 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:54172 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f6yrU-0007LQ-JX
-	for alex.bennee@linaro.org; Fri, 13 Apr 2018 09:35:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54964)
+	id 1f6ytz-0000yw-GE
+	for alex.bennee@linaro.org; Fri, 13 Apr 2018 09:38:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55647)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1f6yrC-0007FR-L7
-	for qemu-arm@nongnu.org; Fri, 13 Apr 2018 09:35:15 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1f6ysM-0008Fu-6z
+	for qemu-arm@nongnu.org; Fri, 13 Apr 2018 09:36:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1f6yrB-0008U1-Dy
-	for qemu-arm@nongnu.org; Fri, 13 Apr 2018 09:35:14 -0400
-Received: from mail-ot0-x243.google.com ([2607:f8b0:4003:c0f::243]:36760)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1f6yrB-0008TK-0l
-	for qemu-arm@nongnu.org; Fri, 13 Apr 2018 09:35:13 -0400
-Received: by mail-ot0-x243.google.com with SMTP id n40-v6so9868494otd.3
-	for <qemu-arm@nongnu.org>; Fri, 13 Apr 2018 06:35:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=6Mtltdhe3k1ZZFNkBSsq2rK4qNcWvbZ7yLdUOW1Dz1g=;
-	b=UeSbHNRUnJGi2ZTQ8G23mj1wD2jZ7xXDSnTQ7/7/Hx6gvMYXqBzbPzaS0QE/hUFFFC
-	JjbSG/aFSfmYWzMMax0NXF5eEIEOMeeqVvkzXn86nhX8KL1XVA79JiQJFm6547cJNiHt
-	JqnE6JnoO8ukD3VDsPm9wkiZbrz/YADo0tybc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=6Mtltdhe3k1ZZFNkBSsq2rK4qNcWvbZ7yLdUOW1Dz1g=;
-	b=Qv5BbmYKM0BrOcFMoXAXO9yEeLRumlBhAHANQWxyrLFyKR4b3iObW0qLTJwt0lUkmY
-	MDYC+6KblIQ/5iKScZ9xpucArOXp+IDx8bqLvEpRaLQC7dMS+RMksSxr1ORe2ASzgWRd
-	NqfBYkxJxti6TJS3Pp8qumemZCIkMJ7PE1PzwVWVplafeOtJgc8fgPPuTigaYRPNoK1G
-	t00IRI5zTiyka5uIWd/OTby5aorpKXf7PMeWA4jk12kBhVwbSo3y1hrrlmi6nQ0YFOjk
-	8RHsvqMfDLQJ8PcVq+bURg0WDondFvaLpYMrVNnxKJGRVfnuNqxHXR5P9hh1LS7UF45q
-	GalQ==
-X-Gm-Message-State: ALQs6tA0lI0omo3i8dQym4X8pOa9yxXTOk6BfSWCoK+x+HBmyFzpUexd
-	/znB3lDfooxEE8XGvYl/T3SU0fI1zIQw14FhwZ4UM8Ch
-X-Received: by 2002:a9d:5cc1:: with SMTP id
-	r1-v6mr3479444oti.258.1523626512020; 
-	Fri, 13 Apr 2018 06:35:12 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Fri, 13 Apr 2018 06:34:51
-	-0700 (PDT)
-In-Reply-To: <1522160122-10744-5-git-send-email-eric.auger@redhat.com>
+	(envelope-from <eric.auger@redhat.com>) id 1f6ysH-0000bb-9C
+	for qemu-arm@nongnu.org; Fri, 13 Apr 2018 09:36:26 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:45788 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1f6ysH-0000az-20; Fri, 13 Apr 2018 09:36:21 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 009648DC3A;
+	Fri, 13 Apr 2018 13:36:20 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-192.ams2.redhat.com
+	[10.36.116.192])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1F66010F1BF8;
+	Fri, 13 Apr 2018 13:36:15 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <1522160122-10744-1-git-send-email-eric.auger@redhat.com>
-	<1522160122-10744-5-git-send-email-eric.auger@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 13 Apr 2018 14:34:51 +0100
-Message-ID: <CAFEAcA8sQSuVcYPyE58tjapxxe6FNdD5qcyftYrZeWQ0fbev8w@mail.gmail.com>
-To: Eric Auger <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::243
-Subject: Re: [Qemu-arm] [RFC 4/8] hw/intc/arm_gicv3: Implement
- register_redist_region API
+	<1522160122-10744-3-git-send-email-eric.auger@redhat.com>
+	<CAFEAcA9nkLs3CF0=52DYWygrprgxexrz1_vf0r5RVfNYMA4H5A@mail.gmail.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <f25aa530-3464-cf3d-a8bb-a143a757be72@redhat.com>
+Date: Fri, 13 Apr 2018 15:36:14 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA9nkLs3CF0=52DYWygrprgxexrz1_vf0r5RVfNYMA4H5A@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.2]);
+	Fri, 13 Apr 2018 13:36:20 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Fri, 13 Apr 2018 13:36:20 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [RFC 2/8] hw/intc/arm_gicv3: Use an array of
+ redistributor regions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -113,107 +106,126 @@ Cc: Andrew Jones <drjones@redhat.com>, Christoffer Dall <cdall@kernel.org>,
 	Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0NNQeSFZehn9
+X-TUID: b/dyWdw9yVkP
 
-On 27 March 2018 at 15:15, Eric Auger <eric.auger@redhat.com> wrote:
-> This patch defines and implements the register_redist_region() API
-> for both arm_gicv3 and arm_gicv3_kvm. Virt machine now directly calls
-> the function to set the single redistributor region. The associated
-> memory region init is removed from gicv3_init_irqs_and_mmio.
->
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> ---
->  hw/arm/virt.c                      |  6 +++++-
->  hw/intc/arm_gicv3.c                | 21 +++++++++++++++++++++
->  hw/intc/arm_gicv3_common.c         | 10 ++++++----
->  hw/intc/arm_gicv3_kvm.c            | 38 +++++++++++++++++++++++++++++++++++---
->  include/hw/intc/arm_gicv3_common.h |  5 +++--
->  5 files changed, 70 insertions(+), 10 deletions(-)
->
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 94dcb12..0eef6aa 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -526,7 +526,11 @@ static void create_gic(VirtMachineState *vms, qemu_irq *pic)
->      gicbusdev = SYS_BUS_DEVICE(gicdev);
->      sysbus_mmio_map(gicbusdev, 0, vms->memmap[VIRT_GIC_DIST].base);
->      if (type == 3) {
-> -        sysbus_mmio_map(gicbusdev, 1, vms->memmap[VIRT_GIC_REDIST].base);
-> +        ARMGICv3CommonClass *agcc = ARM_GICV3_COMMON_GET_CLASS(gicdev);
-> +
-> +        agcc->register_redist_region((GICv3State *)gicdev,
-> +                                 vms->memmap[VIRT_GIC_REDIST].base,
-> +                                 vms->memmap[VIRT_GIC_REDIST].size >> 17);
+Hi Peter,
 
-What is this magic number 17 ?
+On 13/04/18 15:27, Peter Maydell wrote:
+> On 27 March 2018 at 15:15, Eric Auger <eric.auger@redhat.com> wrote:
+>> In the prospect to support multiple redistributor regions,
+>> let's introduce a GICv3RDISTRegion struct datatype and a
+>> statically sized array of those. For the time being, only
+>> one redistributor region is used.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> ---
+>>  hw/intc/arm_gicv3_common.c         |  5 +++--
+>>  hw/intc/arm_gicv3_kvm.c            |  3 ++-
+>>  include/hw/intc/arm_gicv3_common.h | 13 ++++++++++++-
+>>  3 files changed, 17 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+>> index 7b54d52..cb4ee0e 100644
+>> --- a/hw/intc/arm_gicv3_common.c
+>> +++ b/hw/intc/arm_gicv3_common.c
+>> @@ -199,11 +199,12 @@ void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
+>>
+>>      memory_region_init_io(&s->iomem_dist, OBJECT(s), ops, s,
+>>                            "gicv3_dist", 0x10000);
+>> -    memory_region_init_io(&s->iomem_redist, OBJECT(s), ops ? &ops[1] : NULL, s,
+>> +    memory_region_init_io(&s->redist_region[0].mr, OBJECT(s),
+>> +                          ops ? &ops[1] : NULL, s,
+>>                            "gicv3_redist", 0x20000 * s->num_cpu);
+>>
+>>      sysbus_init_mmio(sbd, &s->iomem_dist);
+>> -    sysbus_init_mmio(sbd, &s->iomem_redist);
+>> +    sysbus_init_mmio(sbd, &s->redist_region[0].mr);
+>>  }
+>>
+>>  static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
+>> diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
+>> index ec37177..a07bc55 100644
+>> --- a/hw/intc/arm_gicv3_kvm.c
+>> +++ b/hw/intc/arm_gicv3_kvm.c
+>> @@ -755,7 +755,8 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
+>>
+>>      kvm_arm_register_device(&s->iomem_dist, -1, KVM_DEV_ARM_VGIC_GRP_ADDR,
+>>                              KVM_VGIC_V3_ADDR_TYPE_DIST, s->dev_fd);
+>> -    kvm_arm_register_device(&s->iomem_redist, -1, KVM_DEV_ARM_VGIC_GRP_ADDR,
+>> +    kvm_arm_register_device(&s->redist_region[0].mr, -1,
+>> +                            KVM_DEV_ARM_VGIC_GRP_ADDR,
+>>                              KVM_VGIC_V3_ADDR_TYPE_REDIST, s->dev_fd);
+>>
+>>      if (kvm_has_gsi_routing()) {
+>> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+>> index bccdfe1..3cf132f 100644
+>> --- a/include/hw/intc/arm_gicv3_common.h
+>> +++ b/include/hw/intc/arm_gicv3_common.h
+>> @@ -137,12 +137,20 @@ typedef struct GICv3CPUState GICv3CPUState;
+>>  #define GICV3_S 0
+>>  #define GICV3_NS 1
+>>
+>> +#define GICV3_MAX_RDIST_REGIONS 8
+> 
+> Where does 8 come from? Is it a limit in the kernel, or just
+> a random number?
+Kernel has no limit as the redist regions are handled through a list
+there. 8 is purely arbitrate. I thought it was overkill to handle a list
+here.
+> 
+>> +
+>>  typedef struct {
+>>      int irq;
+>>      uint8_t prio;
+>>      int grp;
+>>  } PendingIrq;
+>>
+>> +typedef struct GICv3RDISTRegion {
+> 
+> "GICv3RedistRegion"
+> 
+>> +    hwaddr base;
+>> +    uint32_t count; /* number or redistributors */
+> 
+> "of"
+> 
+>> +    MemoryRegion mr;
+>> +} GICv3RDISTRegion ;
+>> +
+>>  struct GICv3CPUState {
+>>      GICv3State *gic;
+>>      CPUState *cpu;
+>> @@ -210,7 +218,8 @@ struct GICv3State {
+>>      /*< public >*/
+>>
+>>      MemoryRegion iomem_dist; /* Distributor */
+>> -    MemoryRegion iomem_redist; /* Redistributors */
+>> +    GICv3RDISTRegion redist_region[GICV3_MAX_RDIST_REGIONS];
+>> +    uint32_t nb_redist_regions;
+>>
+>>      uint32_t num_cpu;
+>>      uint32_t num_irq;
+>> @@ -288,6 +297,8 @@ typedef struct ARMGICv3CommonClass {
+>>
+>>      void (*pre_save)(GICv3State *s);
+>>      void (*post_load)(GICv3State *s);
+>> +    /* register an RDIST region at @base, containing @pfns 64kB pages */
+>> +    int (*register_redist_region)(GICv3State *s, hwaddr base, uint32_t pfns);
+> 
+> "pfn" is a kernelism (and I can never remember what it means) -- can you
+> use a more comprehensible variable name, please ?
+In pratice it has become count (number of redistributors within the
+region) but I forgot to update the declaration here, sorry.
 
->      } else {
->          sysbus_mmio_map(gicbusdev, 1, vms->memmap[VIRT_GIC_CPU].base);
->      }
-> diff --git a/hw/intc/arm_gicv3.c b/hw/intc/arm_gicv3.c
-> index 479c667..37f7564 100644
-> --- a/hw/intc/arm_gicv3.c
-> +++ b/hw/intc/arm_gicv3.c
-> @@ -378,6 +378,26 @@ static void arm_gic_realize(DeviceState *dev, Error **errp)
->      gicv3_init_cpuif(s);
->  }
->
-> +static int arm_gicv3_register_redist_region(GICv3State *s, hwaddr base,
-> +                                            uint32_t count)
-> +{
-> +    SysBusDevice *sbd = SYS_BUS_DEVICE(s);
-> +
-> +    if (s->nb_redist_regions > 0) {
-> +        return -EINVAL;
-> +    }
-> +
-> +    s->redist_region[s->nb_redist_regions].base = base;
-> +    s->redist_region[s->nb_redist_regions].count = count;
-> +    memory_region_init_io(&s->redist_region[s->nb_redist_regions].mr, OBJECT(s),
-> +                          gic_ops, s, "gicv3_redist", 0x20000 * count);
-> +    sysbus_init_mmio(sbd, &s->redist_region[s->nb_redist_regions].mr);
-> +    sysbus_mmio_map(sbd, 1, base);
+Thanks
 
-Devices should never call sysbus_mmio_map() -- they should
-just provide sysbus MMIO regions, and let the board code map
-them in the right places. More generally the device code
-shouldn't be told where in the memory map it is. kvm_arm_register_device()
-goes to some lengths to maintain this abstraction (by setting
-up a notifier to tell the kernel where things are only once
-everything has been created and mapped).
-
-Similar remarks apply to other changes in this patch (and
-I suspect will need some restructuring to address).
-
-> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
-> index 3cf132f..549ccc3 100644
-> --- a/include/hw/intc/arm_gicv3_common.h
-> +++ b/include/hw/intc/arm_gicv3_common.h
-> @@ -220,6 +220,7 @@ struct GICv3State {
->      MemoryRegion iomem_dist; /* Distributor */
->      GICv3RDISTRegion redist_region[GICV3_MAX_RDIST_REGIONS];
->      uint32_t nb_redist_regions;
-> +    bool support_multiple_redist_regions;
->
->      uint32_t num_cpu;
->      uint32_t num_irq;
-> @@ -297,8 +298,8 @@ typedef struct ARMGICv3CommonClass {
->
->      void (*pre_save)(GICv3State *s);
->      void (*post_load)(GICv3State *s);
-> -    /* register an RDIST region at @base, containing @pfns 64kB pages */
-> -    int (*register_redist_region)(GICv3State *s, hwaddr base, uint32_t pfns);
-> +    /* register an RDIST region at @base, containing @count redistributors */
-> +    int (*register_redist_region)(GICv3State *s, hwaddr base, uint32_t count);
-
-This looks like a change that should have been folded into a
-previous patch.
-
->  } ARMGICv3CommonClass;
->
->  void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
-> --
-> 2.5.5
-
-thanks
--- PMM
+Eric
+> 
+>>  } ARMGICv3CommonClass;
+>>
+>>  void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
+>> --
+> 
+> thanks
+> -- PMM
+> 

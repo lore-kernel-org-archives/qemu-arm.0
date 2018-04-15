@@ -1,249 +1,244 @@
-Received: by 10.28.71.27 with SMTP id u27csp3797645wma;
-        Sun, 11 Feb 2018 15:47:06 -0800 (PST)
-X-Google-Smtp-Source: AH8x224dOvqaDE9T/Qf/B/HkcdPa4MvqPi5PstUy6j+YyK5T/kRxPmTf8eXLeGjrGU8PcHoLuQOF
-X-Received: by 10.13.197.131 with SMTP id h125mr6756518ywd.151.1518392826263;
-        Sun, 11 Feb 2018 15:47:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518392826; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp2084636wme;
+        Sun, 15 Apr 2018 16:55:40 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx4/1LM0WBA/cX4JC996o7LPgD3MokhSlX4W/qSfu+hxfjncCZ8ZsTncFbA9yTGmFgeJcYciF
+X-Received: by 10.55.176.193 with SMTP id z184mr14251020qke.120.1523836540438;
+        Sun, 15 Apr 2018 16:55:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523836540; cv=none;
         d=google.com; s=arc-20160816;
-        b=k/rOWM3S0Cez9CwKSS6SMH3TBko3I+NaNoUrFQQfF5EBotzG2ysHhAlD5ICtZGj1xG
-         0MpQRcS+Rc5YlH1EkBa2SjeLD/v2maMBiK8oJwAdTDhTdOlILLQCRI3utAt8anAGFq+c
-         reslQ9FWp2UqahREl2GtSyDpnB4E06o3ohZKMtyL8WU1z+zz8SinWiRZ9U4WB4bPrXCy
-         Qrt+bpvSiZjiFC2IXV316fLWqqaryZnDfexv5haHselElPF1nWM/GIW63lWe5SWsXcyW
-         mhGvQQtBx3PCSzKE8ylmaeEA7qoLbJb2E5eb/Lhy7hOUFImocrUAOaY4XtDqySU6Y9na
-         lqrw==
+        b=afUo3G/Is3CssGSerfqTgKdpaVCTtD7SQo5dQtJlSMksrb5RHg/e49f1HsaVZ2AJc0
+         Jc7JBDSYsNPid1auOwQxhqzf0y2BROTrNqPRkBsz0MPkCHLfJMNzFekBpfr+qPtNscWo
+         6f0/SVvlbGtNCbXHRF9KaqQoUbyIzEEL3pIBSH3uvVzxWdeVZ1fkE/nVSKn+97DqcNT3
+         tXNYSx2ojtWn727aZh0wD78o6GRUHGVsLkP1JursOhuXbCfOpgyqX+AtBKV/Hke5adQR
+         HgHw76lpFSQVdeZbIAjxJWwTrAYdUSB/TzYFgdfmODZQptxY+bNG2HU+f/of3LmBDOkL
+         E/Dw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:references
-         :in-reply-to:date:to:from:message-id:dkim-signature:dkim-signature
-         :arc-authentication-results;
-        bh=t5PvMOWewPsg87b0godjf1G//1aZruxzbMEx/fEZ3n4=;
-        b=dIvoft52XsNIglJMrrDQzQB6M73K4M38vWIZV5OUIklFgIchiGBILm2EgRJ/NYcxbO
-         qV6aN/ukGv0WrsWEgf5arUQDB19Nxf6cf8RBwbR5tgLzj/RWWMj2ZAbM5vm+hwJDFNN3
-         QCS4/M73C9GJ0n3iubu+XrG3DfKdm0eArXv3dAmVqTPQvutx0dPPZ/6mRgo+j+PGpLcD
-         kG06TMxUSHBRF4lHVY4AKBJ4r0L+lrbIoTzsjuO/P78Pn8w5mtUpxQktcqbceoBZlFX1
-         zOUQW80vtiQrWNEVT/Ct+AE9rwhg5d2lS7REbk9SWt8y2s19X7eA8gdYOlEiDmgEZb1t
-         OJkQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=86o8dKC93x01hL9xCcRHnNJazGc4w4JtLIf3gq6jfbs=;
+        b=R8aTfgTyuK8TO8/GCoFJUprEEVYFod41qPHUNR3QA77+57FIBfVNb/iNaFGB+ExrMx
+         IHnQibf5yp4ZwPMMEF2gd+ECSPZiLhMTJT43y2yx6S3jiLvzrbWKoterEr8dwsddzKVW
+         44PdxJJ4yBqc+EHbqebIBcj+PbfvKxWEw7L1IIMOeWCHi0nsvZsVwF6QqMTBrBENmIy/
+         zcJDMkMbIQ1jVJ0purJtidQsDYRzJppdxY6JeTcCgZB02jNR+G5Xx8mxBIniS6OsCXR9
+         H5GAY0wGc9AEzq84kUFrB4srynTQvruS4WwGe+2BVH9VRzftLxs3YmT/YBNe5ciPiYf2
+         H3bQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=YNm4RmB7;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=eJPhxu+i;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kU5mZHGy;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u190si841464ybf.20.2018.02.11.15.47.06
+        by mx.google.com with ESMTPS id q30si432718qtg.61.2018.04.15.16.55.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 11 Feb 2018 15:47:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sun, 15 Apr 2018 16:55:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=YNm4RmB7;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=eJPhxu+i;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:42312 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kU5mZHGy;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:52764 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1el1Kr-00066Z-Nu
-	for alex.bennee@linaro.org; Sun, 11 Feb 2018 18:47:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45071)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1f7rUh-0005YN-SS
+	for alex.bennee@linaro.org; Sun, 15 Apr 2018 19:55:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52374)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1el1Kg-00065P-Cp
-	for qemu-arm@nongnu.org; Sun, 11 Feb 2018 18:46:55 -0500
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1f7rKc-00067p-SO
+	for qemu-devel@nongnu.org; Sun, 15 Apr 2018 19:45:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1el1Kc-00069F-E0
-	for qemu-arm@nongnu.org; Sun, 11 Feb 2018 18:46:54 -0500
-Received: from out2-smtp.messagingengine.com ([66.111.4.26]:51055)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <andrew@aj.id.au>)
-	id 1el1Kc-00067s-AC; Sun, 11 Feb 2018 18:46:50 -0500
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id 6290C20AE7;
-	Sun, 11 Feb 2018 18:46:49 -0500 (EST)
-Received: from frontend2 ([10.202.2.161])
-	by compute4.internal (MEProxy); Sun, 11 Feb 2018 18:46:49 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=cc
-	:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm1; bh=t5PvMOWewPsg87b0godjf1G//1aZruxzbMEx/fEZ3n4=; b=YNm4RmB7
-	gPayVyJDxZtVvPZjgnIDncNmdjoh5WkUftOnFgI1ZH8s5WuBOKOjRVOzlXa50dHB
-	n7HGGLwFPruyfCXKJrJSfidyFI2UJJW8xak2L+hzwQicHtou8CC6MiwD3C1awmen
-	NDWkO4CkcX3ZUnsLYWVqvnWWedl5zmYKGHn6pwMxgwRhPOcXIqQnUyrFhcd0HxZQ
-	/jZMyHiGNyl7zdy1TIwlAQj4WBLT1t+w9RKCxBCJbjPXfaik3nwxQ717a6RAyKkd
-	nS7tqJVIaXgilCg6hU269ROT7rsw8QZPATPeL9bSx6bIKkJpIPBNuzRfLFTJvRSH
-	MN+aT723r6DTRg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm2; bh=t5PvMOWewPsg87b0godjf1G//1aZr
-	uxzbMEx/fEZ3n4=; b=eJPhxu+i+ghPt+Lho52/V7KGdGSzIjwV26K7X2MuZhxkx
-	XvrZUM/hF9X6nCBDfRpxqT7YZ7pgKSgH+xLAD5s1ru04I8Lc85+62mZy3NCRTrtm
-	APGAExdXkdrZFCf2iq8ltI2cfVzxYXnnrUpoZ4ghr/zwrxxfw8zDPn7uVVVax0VE
-	zpsSsJhuoIB7cngxcrm1ISQBizs4pHDs+hs/7FmeHLxdCX6etalMBtgKNUdTZWFl
-	uAwDaIm5PzD5vajCA5U7Gifvf/aJSzs8fe85Zu+XIJoeWXnyLKQEQS+ld3xKxSfp
-	Dk7Q8S23pJtusbP6/xi6cYW6ESgBStlVh9Isx5KPg==
-X-ME-Sender: <xms:6dWAWhTchky5HFnXy-7WGwzvgYvRkwhUKmHryUQ_iW4QqZkYRR0kHg>
-Received: from dave (ppp118-210-154-2.bras1.adl6.internode.on.net
-	[118.210.154.2])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 18FC3246D5;
-	Sun, 11 Feb 2018 18:46:46 -0500 (EST)
-Message-ID: <1518392803.10440.4.camel@aj.id.au>
-From: Andrew Jeffery <andrew@aj.id.au>
-To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>, Peter
-	Maydell <peter.maydell@linaro.org>, =?ISO-8859-1?Q?C=E9dric?= Le Goater
-	<clg@kaod.org>
-Date: Mon, 12 Feb 2018 10:16:43 +1030
-In-Reply-To: <20180209085755.30414-3-f4bug@amsat.org>
-References: <20180209085755.30414-1-f4bug@amsat.org>
-	<20180209085755.30414-3-f4bug@amsat.org>
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-TpvD1ofaHkNBfHlCabic"
-X-Mailer: Evolution 3.26.1-1 
-Mime-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.111.4.26
-Subject: Re: [Qemu-arm] [PATCH v2 2/2] hw/arm/aspeed: simplify using the
- 'unimplemented device' for aspeed_soc.io
-X-BeenThere: qemu-arm@nongnu.org
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1f7rKb-0001Wg-Ry
+	for qemu-devel@nongnu.org; Sun, 15 Apr 2018 19:45:14 -0400
+Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:39893)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1f7rKY-0001Tc-Qd; Sun, 15 Apr 2018 19:45:10 -0400
+Received: by mail-qk0-x243.google.com with SMTP id j73so14799144qke.6;
+	Sun, 15 Apr 2018 16:45:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=86o8dKC93x01hL9xCcRHnNJazGc4w4JtLIf3gq6jfbs=;
+	b=kU5mZHGyhsIGeqpHAszZ64Y5Lz57g4t9CG4wwPV7gPpOWJI6VfWTSyqn1JOiwyRMun
+	85ppD4/R2XURtQMT7eCfLjlvUi91NZwW8LIBduujLGwDjd3n25+rTSPoOV4GZRazcF7T
+	NxcbhUa4xYuTHLXB7jmQfwcMhiQW4pF6+RR5tP6My+bX+fLfUKXTo8+D32bm/2Vy8nH4
+	mkMX24VM1FRAKc8+wr4munlYj6rAhASOupgTk4MXYb4PZsQ4k6Ux+rTvQhwi96T30JxI
+	NExKlSis3ydfusIevqKssR71J9+Fp+VzPds/EeSTWXeUrUj2O4yEnqfR/Vm+QHOJRE1+
+	Io5w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=86o8dKC93x01hL9xCcRHnNJazGc4w4JtLIf3gq6jfbs=;
+	b=SCtENUfZRM+5FUrBwsXlxHmSiX+Sbf5Vnhj+q2C6birv+RiwWhluulmghP1Paphp+K
+	kCJbGgvOB5nkEPmeYgu1jQzdKmqnErEM4XDH929QsM97Y6KWvAQEokQcOLXN+a0y1c2n
+	Nbi4vo436RgDgEqaFi71Wam5QnCyKnASKv940k2Cd66FFzn7Rus7SiDv98Myw3o7Y8fF
+	Hv0lAAT5EE+e6e9KRtNdU3pU41U6Ogxz8GR/B+V1y5QKyquRiAEwtVqtmuvo+NzXuAmM
+	dZNAJDYfLQltrFU24tEulM6N+/4erjT7aE5FB4EYyR62DrVYfeABDG5Iyyu7uD82y7Xx
+	IuAw==
+X-Gm-Message-State: ALQs6tCrXCH/0Gd8QROTsyyx9FeL2bsF3uCnxa0z/T0c37x8uVQmsgSU
+	wz/XllBNpeSzq/v4VwbeBR4m6lZfWYU=
+X-Received: by 10.55.195.217 with SMTP id r86mr7514017qkl.267.1523835909939;
+	Sun, 15 Apr 2018 16:45:09 -0700 (PDT)
+Received: from x1.local ([138.117.48.212])
+	by smtp.gmail.com with ESMTPSA id d1sm1081394qtk.57.2018.04.15.16.45.05
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sun, 15 Apr 2018 16:45:09 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-trivial@nongnu.org,
+	Thomas Huth <thuth@redhat.com>
+Date: Sun, 15 Apr 2018 20:42:59 -0300
+Message-Id: <20180415234307.28132-34-f4bug@amsat.org>
+X-Mailer: git-send-email 2.17.0
+In-Reply-To: <20180415234307.28132-1-f4bug@amsat.org>
+References: <20180415234307.28132-1-f4bug@amsat.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::243
+Subject: [Qemu-devel] [PATCH v3 33/41] hw/net: Use the BYTE-based definitions
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: evSTRX0SEoyq
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Dmitry Fleytman <dmitry.fleytman@gmail.com>, Stefan Weil <sw@weilnetz.de>,
+	Jason Wang <jasowang@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, Beniamino Galvani <b.galvani@gmail.com>,
+	"open list:Allwinner-a10" <qemu-arm@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: sweMwJaVfnhO
 
+It eases code review, unit is explicit.
 
---=-TpvD1ofaHkNBfHlCabic
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Patch generated using:
 
-On Fri, 2018-02-09 at 05:57 -0300, Philippe Mathieu-Daud=C3=A9 wrote:
-> (qemu) info mtree
->  address-space: cpu-memory-0
->    0000000000000000-ffffffffffffffff (prio 0, i/o): system
->      0000000000000000-0000000007ffffff (prio 0, rom): aspeed.boot_rom
-> -    000000001e600000-000000001e7fffff (prio -1, i/o): aspeed_soc.io
-> +    000000001e600000-000000001e7fffff (prio -1000, i/o): aspeed_soc.io
->      000000001e620000-000000001e6200ff (prio 0, i/o): aspeed.smc.ast2500-=
-fmc
->      000000001e630000-000000001e6300ff (prio 0, i/o): aspeed.smc.ast2500-=
-spi1
->      000000001e631000-000000001e6310ff (prio 0, i/o): aspeed.smc.ast2500-=
-spi2
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+  $ git grep -E '(1024|2048|4096|8192|(<<|>>).?(10|20|30))' hw/ include/hw/
 
-Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
+and modified manually.
 
-> ---
->  include/hw/arm/aspeed_soc.h |  1 -
->  hw/arm/aspeed_soc.c         | 32 +++-----------------------------
->  2 files changed, 3 insertions(+), 30 deletions(-)
->=20
-> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> index f26914a2b9..11ec0179db 100644
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -31,7 +31,6 @@ typedef struct AspeedSoCState {
-> =20
->      /*< public >*/
->      ARMCPU cpu;
-> -    MemoryRegion iomem;
->      MemoryRegion sram;
->      AspeedVICState vic;
->      AspeedTimerCtrlState timerctrl;
-> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-> index 2a5d041b3b..30d25f8b06 100644
-> --- a/hw/arm/aspeed_soc.c
-> +++ b/hw/arm/aspeed_soc.c
-> @@ -15,6 +15,7 @@
->  #include "qemu-common.h"
->  #include "cpu.h"
->  #include "exec/address-spaces.h"
-> +#include "hw/misc/unimp.h"
->  #include "hw/arm/aspeed_soc.h"
->  #include "hw/char/serial.h"
->  #include "qemu/log.h"
-> @@ -99,31 +100,6 @@ static const AspeedSoCInfo aspeed_socs[] =3D {
->      },
->  };
-> =20
-> -/*
-> - * IO handlers: simply catch any reads/writes to IO addresses that aren'=
-t
-> - * handled by a device mapping.
-> - */
-> -
-> -static uint64_t aspeed_soc_io_read(void *p, hwaddr offset, unsigned size=
-)
-> -{
-> -    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " [%u]\n",
-> -                  __func__, offset, size);
-> -    return 0;
-> -}
-> -
-> -static void aspeed_soc_io_write(void *opaque, hwaddr offset, uint64_t va=
-lue,
-> -                unsigned size)
-> -{
-> -    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " <- 0x%" PRIx64 " [%=
-u]\n",
-> -                  __func__, offset, value, size);
-> -}
-> -
-> -static const MemoryRegionOps aspeed_soc_io_ops =3D {
-> -    .read =3D aspeed_soc_io_read,
-> -    .write =3D aspeed_soc_io_write,
-> -    .endianness =3D DEVICE_LITTLE_ENDIAN,
-> -};
-> -
->  static void aspeed_soc_init(Object *obj)
->  {
->      AspeedSoCState *s =3D ASPEED_SOC(obj);
-> @@ -199,10 +175,8 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
-or **errp)
->      Error *err =3D NULL, *local_err =3D NULL;
-> =20
->      /* IO space */
-> -    memory_region_init_io(&s->iomem, NULL, &aspeed_soc_io_ops, NULL,
-> -            "aspeed_soc.io", ASPEED_SOC_IOMEM_SIZE);
-> -    memory_region_add_subregion_overlap(get_system_memory(),
-> -                                        ASPEED_SOC_IOMEM_BASE, &s->iomem=
-, -1);
-> +    create_unimplemented_device("aspeed_soc.io",
-> +                                ASPEED_SOC_IOMEM_BASE, ASPEED_SOC_IOMEM_=
-SIZE);
-> =20
->      /* CPU */
->      object_property_set_bool(OBJECT(&s->cpu), true, "realized", &err);
---=-TpvD1ofaHkNBfHlCabic
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ include/hw/net/allwinner_emac.h | 5 +++--
+ hw/net/e1000e.c                 | 7 ++++---
+ hw/net/e1000x_common.c          | 3 ++-
+ hw/net/eepro100.c               | 7 +++----
+ 4 files changed, 12 insertions(+), 10 deletions(-)
 
------BEGIN PGP SIGNATURE-----
-
-iQIcBAABCgAGBQJagNXjAAoJEJ0dnzgO5LT5/LQQAIn/fCv07xrGvbCdMHuMppvU
-699TnfphyNyrL0NzCOBHa77X5X5BShHfoAav8v4HPKaWIK1Exm3AV302GezZ0/hy
-qwW2AyV332HqvjzcoEPj8kNAh8skcq8EhuclebJPcSWt50eQeE6ep8uA5sBqGMe+
-M0cPxs+mDCDi/YsbSFUwAJ1X5ACgBFh89867Z/42oqHHo6vtwmEGIvEaKtX1VW9C
-Fh7ziHjhecyDQvntQ9Ms4a/ZuKoOA7nSCx93nLv8Kens8qXpyNu6lZ8rtM2iZt7b
-XISMdM98ymxhebbFHIpLowj8MAPp0vVyPhdtb85PEiRqE+2EdYujOQngBK62ACeR
-jrq29dhuKCBxF3LGm9y3EV1zGNOCHIQCRHnYjzkh763NOECwTsAE/FqedtummTe8
-IYiot3v9TkDsKOV6h0owqDWXInqynk5xpLBCqtm0WJmg02+ol7dhjUEYptsarKNr
-GJ7KJyMC+qrbP6u89BCDQrjgJoNyfV12R5D7A7MaadlbVCK5ct6RrbrcITjWi/1i
-KJ4AJyJSxttooGQMhhM1h1SIA74VKhiMYlbbhchtqHWV4ZuqVE1wrxXHfLE8TN4e
-mXr6KMe8JNVnzv+65trcZ0lvdnDVckEDX9LApPXmtf4ykLJK+urt1xhjiJXQtzYw
-wNX4cQRNmMq+ubMsGaiJ
-=rM6u
------END PGP SIGNATURE-----
-
---=-TpvD1ofaHkNBfHlCabic--
+diff --git a/include/hw/net/allwinner_emac.h b/include/hw/net/allwinner_emac.h
+index 4cc8aab7ec..4b53b6485c 100644
+--- a/include/hw/net/allwinner_emac.h
++++ b/include/hw/net/allwinner_emac.h
+@@ -23,6 +23,7 @@
+ #ifndef ALLWINNER_EMAC_H
+ #define ALLWINNER_EMAC_H
+ 
++#include "qemu/units.h"
+ #include "net/net.h"
+ #include "qemu/fifo8.h"
+ #include "hw/net/mii.h"
+@@ -125,8 +126,8 @@
+ #define EMAC_INT_RX         (1 << 8)
+ 
+ /* Due to lack of specifications, size of fifos is chosen arbitrarily */
+-#define TX_FIFO_SIZE        (4 * 1024)
+-#define RX_FIFO_SIZE        (32 * 1024)
++#define TX_FIFO_SIZE        (4 * K_BYTE)
++#define RX_FIFO_SIZE        (32 * K_BYTE)
+ 
+ #define NUM_TX_FIFOS        2
+ #define RX_HDR_SIZE         8
+diff --git a/hw/net/e1000e.c b/hw/net/e1000e.c
+index 16a9417a85..101efe7c83 100644
+--- a/hw/net/e1000e.c
++++ b/hw/net/e1000e.c
+@@ -34,6 +34,7 @@
+ */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ #include "net/net.h"
+ #include "net/tap.h"
+ #include "qemu/range.h"
+@@ -81,10 +82,10 @@ typedef struct E1000EState {
+ #define E1000E_IO_IDX       2
+ #define E1000E_MSIX_IDX     3
+ 
+-#define E1000E_MMIO_SIZE    (128 * 1024)
+-#define E1000E_FLASH_SIZE   (128 * 1024)
++#define E1000E_MMIO_SIZE    (128 * K_BYTE)
++#define E1000E_FLASH_SIZE   (128 * K_BYTE)
+ #define E1000E_IO_SIZE      (32)
+-#define E1000E_MSIX_SIZE    (16 * 1024)
++#define E1000E_MSIX_SIZE    (16 * K_BYTE)
+ 
+ #define E1000E_MSIX_TABLE   (0x0000)
+ #define E1000E_MSIX_PBA     (0x2000)
+diff --git a/hw/net/e1000x_common.c b/hw/net/e1000x_common.c
+index eb0e097137..58c8db77e9 100644
+--- a/hw/net/e1000x_common.c
++++ b/hw/net/e1000x_common.c
+@@ -23,6 +23,7 @@
+ */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ #include "hw/hw.h"
+ #include "hw/pci/pci.h"
+ #include "net/net.h"
+@@ -111,7 +112,7 @@ bool e1000x_is_oversized(uint32_t *mac, size_t size)
+     static const int maximum_ethernet_vlan_size = 1522;
+     /* this is the size past which hardware will
+        drop packets when setting LPE=1 */
+-    static const int maximum_ethernet_lpe_size = 16384;
++    static const int maximum_ethernet_lpe_size = 16 * K_BYTE;
+ 
+     if ((size > maximum_ethernet_lpe_size ||
+         (size > maximum_ethernet_vlan_size
+diff --git a/hw/net/eepro100.c b/hw/net/eepro100.c
+index a07a63247e..a02e2b55e8 100644
+--- a/hw/net/eepro100.c
++++ b/hw/net/eepro100.c
+@@ -41,6 +41,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ #include "hw/hw.h"
+ #include "hw/pci/pci.h"
+ #include "net/net.h"
+@@ -60,8 +61,6 @@
+  * changed to pad short packets itself. */
+ #define CONFIG_PAD_RECEIVED_FRAMES
+ 
+-#define KiB 1024
+-
+ /* Debug EEPRO100 card. */
+ #if 0
+ # define DEBUG_EEPRO100
+@@ -104,9 +103,9 @@
+ /* Use 64 word EEPROM. TODO: could be a runtime option. */
+ #define EEPROM_SIZE     64
+ 
+-#define PCI_MEM_SIZE            (4 * KiB)
++#define PCI_MEM_SIZE            (4 * K_BYTE)
+ #define PCI_IO_SIZE             64
+-#define PCI_FLASH_SIZE          (128 * KiB)
++#define PCI_FLASH_SIZE          (128 * K_BYTE)
+ 
+ #define BITS(n, m) (((0xffffffffU << (31 - n)) >> (31 - n + m)) << m)
+ 
+-- 
+2.17.0
 

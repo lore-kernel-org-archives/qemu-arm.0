@@ -1,100 +1,100 @@
-Received: by 10.28.91.67 with SMTP id p64csp844864wmb;
-        Fri, 9 Mar 2018 06:19:38 -0800 (PST)
-X-Google-Smtp-Source: AG47ELs41v+S60hlJ76JmjhK0JodQ9CCY9wmOim0QR0A8YNcR0EtGzlycIeMTjXW1zLGRAs+5UZy
-X-Received: by 10.129.92.134 with SMTP id q128mr4058467ywb.138.1520605178090;
-        Fri, 09 Mar 2018 06:19:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520605178; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp2634947wme;
+        Mon, 16 Apr 2018 06:11:29 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx49pM/rV8oOVcr/UwuzC3pr75eIOS13f7/Cl1/Fmc2q6ooQPqBFawxyo5xJ2/mAUHY656F/X
+X-Received: by 10.13.194.194 with SMTP id e185mr10278220ywd.316.1523884289491;
+        Mon, 16 Apr 2018 06:11:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523884289; cv=none;
         d=google.com; s=arc-20160816;
-        b=Kb+KRyNBGGAe3LsuFSyDvfkikA/0VREprFvSD4JtDx2WCMqrng6+eLTeZXE9D53v1s
-         /bYl2kAVxL9vfZUsngMp6jW7Xsw+6xn6nc9cRej9GANiMtOgkPDfivlsWDDxHKBoDVXr
-         JFwwX7ikMak7wZcBBJFdnDOvtIECuPII1l8PDRjeBg+aVChn5qyFZXTEok6JYnDPbnVD
-         6Qah1OpjR/Xvda/G+xd3wM7NK5W7x/5X+uC1WVjNK6RX7p+u45kH36xyraQSV2C3bD1q
-         mrv2txzHPWL1QVa821hplaqVhn9hcr0uzrYTijkRNRp0YmXv5qknfIchgojQcYzxGPpI
-         TBwg==
+        b=QV+wbRfQqDHP9tC8sCe/ipMFmIcA/aUtn+z3YCa2ftwRB3HI2BW/ngOpIp5oa7C0mf
+         s/+tflDAujeQ3GEO2BWBsbZaZCYgFbdRYDmY6SXWN3YAGi9HqLwbbmwbg0s0PT3mQOY8
+         EYFN6n5nz0ny56bUR7lCAKosOEOglr5wW8hL2iysoBD7AtlYJaNk4HzffkOcL82FMGRq
+         GO0BjCkDOHltcmdMs41Tinzg1XwTMf0zJoGLOjIhYliaARoBNfnlozagJlUM09X6RNKu
+         3cB7IBZRNnE6lfkZQS0XQpxQcFBY7GDFyvU2ssNZHTrzEVd0pw0HpUNNsZ3UyLLIyqpP
+         8WQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=A/HpASE8f5OHaoBUpmgRouzkb1d1eKsK7P8RgF6WziI=;
-        b=YZL8aYH1JHJirtbUfA7z4N1F6469ewqlrgccLQyV+T/mZSWypxHgeJ3SmhABZJPBsi
-         cVRe/0bXaJwj84Mk0VNEJjPiFhaYLUDQt2bVSPqLmqqrhcO3q6wedRDAmaXkVJmro3L3
-         uaQ+T9fnfLXNjVw6CF7OmdGX4CUT05LCLUlbLCTJvtlKxmXqyt32JVwW4oMbzAOAcEDv
-         wlqBtqvhUVX+ExTu7QrnvT+bwPPnh1jA18sHREgCg3patqBHzabyxDo/8XQ845KB1NrI
-         tYfrGs/gE14JSrpFP9sHXE73itoFUGemwIbMDgPC5QTGZx5dsuvZsJgrBCK5x0kYwwxS
-         Ehvw==
+        bh=3vYrExzs8iJymk07i1SBNbLy7q7Ik54JYBtsvLgmZXQ=;
+        b=QG/Q30E48vMGpmu7zjVvJTZ/w7Q/+by7JTTVRbYvZsCrDzXaDIEZqMYlWrIkocRBcd
+         PWgEV8URYFQJjjp2trK9S2B5UjmZLSlmximOrIx/5m8mS0MiNvBZfxFCXznlBOMbo9tJ
+         RRAGanCCGa1bdg85nmWvmElvvhxvw7vIyjO/GGmv8UNLMMv6ZNMvL2HZNb7Nb73LxijP
+         HhKYEMBjygGN1k3QXlqEzjy6BmH+A6AbM9dlkODWpL/pqu3pBQhKTnMdY/9zDENMqajv
+         Okn1DmvoE113B+03h+H42pIcpD9CBgIzTmxapSfnzTNgZ81CNxaOwlmMPqHuFnhHIX0K
+         EODQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=gxASBIye;
+       dkim=fail header.i=@linaro.org header.s=google header.b=BiYsb1OM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y189-v6si182056ybf.596.2018.03.09.06.19.37
+        by mx.google.com with ESMTPS id h7si8706782qkf.327.2018.04.16.06.11.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 09 Mar 2018 06:19:38 -0800 (PST)
+        Mon, 16 Apr 2018 06:11:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=gxASBIye;
+       dkim=fail header.i=@linaro.org header.s=google header.b=BiYsb1OM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45535 helo=lists.gnu.org)
+Received: from localhost ([::1]:45404 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1euIrx-0006Cg-IL
-	for alex.bennee@linaro.org; Fri, 09 Mar 2018 09:19:37 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57432)
+	id 1f83uq-0000Yy-Or
+	for alex.bennee@linaro.org; Mon, 16 Apr 2018 09:11:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40098)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1euIrh-0006AN-8I
-	for qemu-arm@nongnu.org; Fri, 09 Mar 2018 09:19:27 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1f83uj-0000Ym-0a
+	for qemu-arm@nongnu.org; Mon, 16 Apr 2018 09:11:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1euIrc-0004YO-CO
-	for qemu-arm@nongnu.org; Fri, 09 Mar 2018 09:19:21 -0500
-Received: from mail-ot0-x242.google.com ([2607:f8b0:4003:c0f::242]:34599)
+	(envelope-from <peter.maydell@linaro.org>) id 1f83ui-0005Qz-1b
+	for qemu-arm@nongnu.org; Mon, 16 Apr 2018 09:11:20 -0400
+Received: from mail-ot0-x242.google.com ([2607:f8b0:4003:c0f::242]:36865)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1euIrc-0004YB-6n
-	for qemu-arm@nongnu.org; Fri, 09 Mar 2018 09:19:16 -0500
-Received: by mail-ot0-x242.google.com with SMTP id n74so8808081ota.1
-	for <qemu-arm@nongnu.org>; Fri, 09 Mar 2018 06:19:16 -0800 (PST)
+	id 1f83uh-0005Qf-RF
+	for qemu-arm@nongnu.org; Mon, 16 Apr 2018 09:11:19 -0400
+Received: by mail-ot0-x242.google.com with SMTP id y46-v6so17276993otd.4
+	for <qemu-arm@nongnu.org>; Mon, 16 Apr 2018 06:11:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=A/HpASE8f5OHaoBUpmgRouzkb1d1eKsK7P8RgF6WziI=;
-	b=gxASBIyevEQ+rLuXx8IApizFHvisuRAjarGzt3h/W434528B6pGaJ/Z/2L38tBzce9
-	e5P77XJWD8mvV3GfXv8oGWE9i1OOtI3OCUmnGAsgzhpPLLOIUTwqCrbblu9zfkBCZinE
-	QFbxQ3t4N67PsE03NmYJvfZvsO+1scqSV/BgY=
+	:cc; bh=3vYrExzs8iJymk07i1SBNbLy7q7Ik54JYBtsvLgmZXQ=;
+	b=BiYsb1OMyMBO79vK71eY0MLWO4Sg+/b1NQcjlcpqsS4VfKwBIGlSHnBpOGCNPnprSO
+	DojlEgP2iBYDWFw3vDDUw2pNvkN7Xh8fOCGo+mZZSUkO7boDzmzMb21YPW9yJRLdMIyu
+	7Y66ig9G6Q+1raWjVzE7wQpLQHaS08neuEcms=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=A/HpASE8f5OHaoBUpmgRouzkb1d1eKsK7P8RgF6WziI=;
-	b=L0SSsgB9rJ2xwqdLLFUvLxuwrTyK+8BOvl5+aTVCjRFS2Xf/+w3Qt2GW1sbQVNKERT
-	3qQ9nyqbfB0PeZgGOOEiI2QlMJoMpX11hhXZBFFRJU9JJsX8d0W+V1sq5Xyj5xOIA5Pj
-	Wnx2rc8BvQV/ooAz0d8kwqCAmQnjUKX1ITX4vdUlPPBML0/MExXihW7bXrg675B18+wf
-	DJd9yZEDI/+rr27LH1d9ucP+Ns5sMUNo2QnAGzeRKXYBqCAjTPw76FG6niCDzZTUpOxl
-	urtw5qoAOtGyU04JX4fv5CPC+ldRH8LdO88IGyiXwP7ZnpLpOh4g64FLLsbXY1t46Z+V
-	5/rg==
-X-Gm-Message-State: AElRT7GTGmjXM9LzXuvAxJMEb3uAPtRcJ8efxW2ZQbUOpB6uEO6CFArF
-	pKVgHJuE7xUIv/hIkkrE+Zyf95lugUM04YyIiE20XA==
-X-Received: by 10.157.3.70 with SMTP id 64mr20435407otv.258.1520605155369;
-	Fri, 09 Mar 2018 06:19:15 -0800 (PST)
+	bh=3vYrExzs8iJymk07i1SBNbLy7q7Ik54JYBtsvLgmZXQ=;
+	b=HVZvoageFoPoT+HTUwPgWeuiLgHMp0IBhsBZMG0X4qCfhZ8P5Pp76wlol6H1HJAs2l
+	o5DRQKxcEcBvp/0SHtRqrlhtfPJn+K7+Z1zKtUZRFQwfmNIldz0tEFqm50EmaYvZEPQw
+	BkTOrvksIa51Pfyu3VBVSyfH4FU1gE7/Xuf56sjqgmHTodOxb02cFmDo5b8y4ngiSmTv
+	7K5+EIMpcF5hBwal/ljz/8p+M6rNU5g2rTSYJ0xgo4nKHIn8yH05n5DnN96EgHTmUy0Q
+	y9XMAldCg4h+1kjNjRfWvZWVFmbdPFXUitP+T+vpVJIt9JyEGNyVElDLLh4r6ddcM4GU
+	mLgw==
+X-Gm-Message-State: ALQs6tD1YSPXs1Dh2ylpmQEko8NeXDLbOZWxtlrtoSxVHZLl4HZCqr/c
+	kdysIyNwMUg+/FDpPX6fA9/kqezV+Oy0Op+DGphsvA==
+X-Received: by 2002:a9d:4a90:: with SMTP id
+	i16-v6mr4296798otf.294.1523884279150; 
+	Mon, 16 Apr 2018 06:11:19 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.157.33.100 with HTTP; Fri, 9 Mar 2018 06:18:54 -0800 (PST)
-In-Reply-To: <2d530201-d5f3-1b02-17a9-1c2ed9e2d5e2@redhat.com>
-References: <1518893216-9983-1-git-send-email-eric.auger@redhat.com>
-	<1518893216-9983-6-git-send-email-eric.auger@redhat.com>
-	<CAFEAcA_4ANVq-Rd63R7BOhd2axy7_Jn-BchzAksKR6g7JbjnTA@mail.gmail.com>
-	<2d530201-d5f3-1b02-17a9-1c2ed9e2d5e2@redhat.com>
+Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Mon, 16 Apr 2018 06:10:58
+	-0700 (PDT)
+In-Reply-To: <1523518688-26674-6-git-send-email-eric.auger@redhat.com>
+References: <1523518688-26674-1-git-send-email-eric.auger@redhat.com>
+	<1523518688-26674-6-git-send-email-eric.auger@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 9 Mar 2018 14:18:54 +0000
-Message-ID: <CAFEAcA8or88+BG48VbWyVf3jg6xkw1+3AXvg49pg6dn5SRRF0Q@mail.gmail.com>
-To: Auger Eric <eric.auger@redhat.com>
+Date: Mon, 16 Apr 2018 14:10:58 +0100
+Message-ID: <CAFEAcA-8xH7Tmr7mz9Gjk6jX=RgjVWX9cqVnpNr2kCAs0pb5xg@mail.gmail.com>
+To: Eric Auger <eric.auger@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2607:f8b0:4003:c0f::242
-Subject: Re: [Qemu-arm] [PATCH v9 05/14] hw/arm/smmuv3: Wired IRQ and GERROR
- helpers
+Subject: Re: [Qemu-arm] [PATCH v11 05/17] hw/arm/smmuv3: Wired IRQ and
+ GERROR helpers
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,43 +106,87 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+Cc: Christoffer Dall <cdall@kernel.org>, "Michael S. Tsirkin" <mst@redhat.com>,
 	Jean-Philippe Brucker <jean-philippe.brucker@arm.com>,
 	Tomasz Nowicki <tn@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
 	Peter Xu <peterx@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Christoffer Dall <christoffer.dall@linaro.org>,
-	linuc.decode@gmail.com, Bharat Bhushan <bharat.bhushan@nxp.com>,
-	Prem Mallappa <prem.mallappa@gmail.com>, eric.auger.pro@gmail.com
+	qemu-arm <qemu-arm@nongnu.org>, linuc.decode@gmail.com,
+	Bharat Bhushan <bharat.bhushan@nxp.com>,
+	Jintack Lim <jintack@cs.columbia.edu>,
+	Prem Mallappa <prem.mallappa@gmail.com>,
+	Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lBrYio5DqkE8
+X-TUID: 5GQ2PCcJdL9e
 
-On 9 March 2018 at 14:03, Auger Eric <eric.auger@redhat.com> wrote:
-> On 08/03/18 18:49, Peter Maydell wrote:
->>> +#define smmuv3_eventq_irq_enabled(s)                   \
->>> +    (FIELD_EX32(s->irq_ctrl, IRQ_CTRL, EVENTQ_IRQEN))
->>> +#define smmuv3_gerror_irq_enabled(s)                  \
->>> +    (FIELD_EX32(s->irq_ctrl, IRQ_CTRL, GERROR_IRQEN))
->>
->> These are only ever used in smmuv3.c, so you can just move them
->> to there (and make them inline functions, ideally).
-> smmuv3-internal.h contains helpers, macros which are only used by
-> smmuv3.c . I though this could avoid putting too much code in smmuv3.c
-> and would help in the readability.
+On 12 April 2018 at 08:37, Eric Auger <eric.auger@redhat.com> wrote:
+> We introduce some helpers to handle wired IRQs and especially
+> GERROR interrupt. SMMU writes GERROR register on GERROR event
+> and SW acks GERROR interrupts by setting GERRORn.
 >
-> what is the exact benefit of transforming those into inline functions
-> instead of macros. Not meaning I don't want to take this into account
-> but to improve my coding style ;-)
+> The Wired interrupts are edge sensitive hence the pulse usage.
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
+>
+> ---
+> v9 - v10:
+> - s/hwaddr/uint64_t in trace-events
+> - use qemu_log_mask LOG_UNIMP on PRI IRQ
+> - add a comment saying smmuv3_trigger_irq and smmuv3_write_gerrorn
+>   will become static later on
+> - write gerrorn without filtering (ie. even if the guest toggles non
+>   active IRQs)
+> - pulse if at least one new IRQ type
+> - smmuv3_eventq_irq_enabled and smmuv3_gerror_irq_enabled become
+>   static inline
+>
+> v7 -> v8:
+> - remove SMMU_PENDING_GERRORS macro
+> - properly toggle gerror
+> - properly sanitize gerrorn write
+> ---
+>  hw/arm/smmuv3-internal.h | 36 +++++++++++----------------
+>  hw/arm/smmuv3.c          | 64 ++++++++++++++++++++++++++++++++++++++++++++++++
+>  hw/arm/trace-events      |  3 +++
+>  3 files changed, 81 insertions(+), 22 deletions(-)
+>
+> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+> index a6461fe..32f81d4 100644
+> --- a/hw/arm/smmuv3-internal.h
+> +++ b/hw/arm/smmuv3-internal.h
+> @@ -129,28 +129,6 @@ typedef struct Evt  {
+>      uint32_t word[8];
+>  } Evt;
+>
+> -/**
+> - * smmu_read64 - 64-bit register read utility function supporting
+> - * aligned 32-bit word access to both 32-bit halves and aligned 64-bit
+> - * access.
+> - *
+> - * @r: register address
+> - * @offset: byte offset if 32-bit access
+> - * @size: read byte size
+> - */
+> -static inline uint64_t smmu_read64(uint64_t r, unsigned offset,
+> -                                   unsigned size)
+> -{
+> -    if (size == 8) {
+> -        return r;
+> -    }
+> -
+> -    /* 32 bit access */
+> -    assert(!offset || offset == 4);
+> -
+> -    return extract64(r, offset << 3, 32);
+> -}
+> -
 
-You get the benefit of type checking (and it self-documents that
-the macros want to be passed an SMMUv3State*). You don't have to
-worry about trying to write your macro to not evaluate arguments multiple
-times. These are one-liners so they're fairly easy to read,
-but when you get to 3 or 4 lines you end up with a lot of '\'
-lines and the inline function is I think more clearly better.
-I prefer to save macros for cases where you really need a macro
-and can't get the same effect with a function.
+Ah, this change should be squashed into the previous patch,
+which addresses one of my review comments there.
+
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

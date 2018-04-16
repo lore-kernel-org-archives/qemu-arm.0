@@ -1,95 +1,110 @@
-Received: by 10.28.4.212 with SMTP id 203csp406990wme;
-        Thu, 26 Apr 2018 23:32:37 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZpO0V3DFpwmRPLfSJmXj6LNhZaGpC5zAZQGYa0Lu6b/BSZzlLxZHf3lomH6j77pQxdiy8yZ
-X-Received: by 2002:a0c:d1f1:: with SMTP id k46-v6mr916330qvh.58.1524810757694;
-        Thu, 26 Apr 2018 23:32:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1524810757; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp3024994wme;
+        Mon, 16 Apr 2018 12:42:47 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx4/a5sLjZzcQolOxnA5wH8LjHGC20vWEpm6J1yZGc04b52R0JqowqnbH4IChLxKU7ELVYb/m
+X-Received: by 2002:a25:c283:: with SMTP id s125-v6mr12311961ybf.279.1523907766991;
+        Mon, 16 Apr 2018 12:42:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523907766; cv=none;
         d=google.com; s=arc-20160816;
-        b=bHtLy9n/WcQ9qxkIVitC6pFflWX9ftQ0Fws0hkpxd4nTWE/iANqi0V9pTmHxjNrSlz
-         zKmSiefRMje5TbG5txJV20HQ4RQpGi8dfb/s4TVyL9zqdKjhC+d2BHvq2nIc6spn5qxe
-         IrFhsfmKu7APrlFW73DhjpJyy/gDJ6xT082Sc7At35HkC3bII1o1bqwZ5wOXJrUNNTo+
-         Xs+jBBXX/XF/OVzt4MzrmngjEo9fnfX1WWbMLejOfz1Ui0hpx1UiPuUAW/h+9hPiD4G6
-         eXkz/UqSv8gq2oBVhMoMrWPdrZOXI8joPisc6ZhgldAUWeWCJ6kE7B/cdz6dDEdW29Uc
-         A4pA==
+        b=lUK3LW3NHoCOTYl6OaCaLhITlQSpcaEodm4PNEeFipLbYzd4fEsKJj3s1ik19Yab0w
+         kFgCISURbGrApSn+qw/SH82yTFLDUsKu7LfdQXErSvqlA/bm+J9Ms54HMJopaGlhHGpo
+         khr6moeZQwEllvwwYW8h5/k23KP/0ezPWRHF0zm2EuFS+Zkdvqpt+Ffhh/wym3PGOE3D
+         jrORLzYo8KZoPJxZjpi3I0i0njPBoBiWJHyo9p+jsPAuksLXco7CaiQVebnC6+JjcH6X
+         429UR4+Qlo5g0uoiRn8Xz94sYPRoTN3Ahf1AZXP16Oivgex1TElbnapNhS4jYIRhC86v
+         X2Yg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
-         :message-id:in-reply-to:date:references:to:from
-         :arc-authentication-results;
-        bh=HAwPIFr4tcNLqTUAAmerWjvBX+H7QuxyMvZ7HRwKHKg=;
-        b=sMqUKnrsT/r6wzA0/16m1jw5ReAE6SyiiuHcmiE6l7QEVgIDpzzlrzHYRMtE0JXdSM
-         S8YuLQ136p4pnXNFSEU8QERC95/hiED7F33B2MMzGDDgKnwByjRdlnuKR9NtxHIhq6E4
-         zImJiWxtRmstSjduGgzVSkdhfAhORl5mKGwl9CPXL8SGrJ51z2NWnW1cjt9NYpGKiS2j
-         Cjx7dYki2QG04mNaPUBt/96qEUfajB7Cd0SjWHoYCdQkeMlfTkfMbFDKLAW1JdpG8OeD
-         1Tpq56KUii0e9JNxRzgXbvZz9FrCDS9t808FxI+Jy8ZsASxa2t3FKF/+yUorcLpDRQ3a
-         soYQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=p29XJKc4mJfSfxHpNaM5M0x9S4Gu3nI6w8oeft8hwUU=;
+        b=mENhzl356IK1Zm7zcb5NR0iiyQvJ4DuEcHBsfuqt/OS+XqiNAkG2OYd90EKqLj4Lgh
+         Bhrw2+7+PURMTgxKnV8QI82OPpfXXExuSlhPiDxM7wydBJGAXV+5Tt749dSCJUgcTH+K
+         XkKTnBQ3oKclEEHuW1My26dlcoCtgmu1N6fcWJnE/jJqaoXrkoqAZ38jxqFXVRa5I74W
+         K6CQiaV8EwS4smwltDirddnEpuBks8ncIA5m+ZRy21wLGR8wdu7GRlsOLXOV8qOXVLqB
+         04BnUnfhhYio6niPCk49CEmgfXwxnSWiFnFv5v7BlDoe5JQokQLL2KjLqIDarX4OSEkm
+         tiKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=X7Nn+6fh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x1-v6si679265qvh.200.2018.04.26.23.32.37
+        by mx.google.com with ESMTPS id s192si6135331qke.261.2018.04.16.12.42.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 26 Apr 2018 23:32:37 -0700 (PDT)
+        Mon, 16 Apr 2018 12:42:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=X7Nn+6fh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45995 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:39271 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fBwvs-0004gi-RF
-	for alex.bennee@linaro.org; Fri, 27 Apr 2018 02:32:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48755)
+	id 1f8A1W-0006f6-IG
+	for alex.bennee@linaro.org; Mon, 16 Apr 2018 15:42:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48622)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1fBwvM-0004Sh-T3
-	for qemu-arm@nongnu.org; Fri, 27 Apr 2018 02:32:05 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1f8A1J-0006dk-Va
+	for qemu-arm@nongnu.org; Mon, 16 Apr 2018 15:42:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1fBwvI-00073v-0Y
-	for qemu-arm@nongnu.org; Fri, 27 Apr 2018 02:32:04 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:47846 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1fBwvH-00073f-SP; Fri, 27 Apr 2018 02:31:59 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 516C540858CD;
-	Fri, 27 Apr 2018 06:31:59 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-129.ams2.redhat.com
-	[10.36.116.129])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 2B15F215CDCB;
-	Fri, 27 Apr 2018 06:31:59 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 0C1AC1138645; Fri, 27 Apr 2018 08:31:58 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-References: <1521452376-25099-1-git-send-email-thuth@redhat.com>
-	<87bme62nu0.fsf@dusky.pond.sub.org>
-	<068649bc-1546-6fc5-3e41-63512196cbf8@redhat.com>
-	<20180427003215.GU29865@localhost.localdomain>
-Date: Fri, 27 Apr 2018 08:31:58 +0200
-In-Reply-To: <20180427003215.GU29865@localhost.localdomain> (Eduardo Habkost's
-	message of "Thu, 26 Apr 2018 21:32:15 -0300")
-Message-ID: <87o9i5uplt.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.3 (gnu/linux)
+	(envelope-from <richard.henderson@linaro.org>) id 1f8A1G-0008Pd-Rt
+	for qemu-arm@nongnu.org; Mon, 16 Apr 2018 15:42:33 -0400
+Received: from mail-pg0-x243.google.com ([2607:f8b0:400e:c05::243]:45160)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1f8A1G-0008Of-LR
+	for qemu-arm@nongnu.org; Mon, 16 Apr 2018 15:42:30 -0400
+Received: by mail-pg0-x243.google.com with SMTP id z21so592175pgv.12
+	for <qemu-arm@nongnu.org>; Mon, 16 Apr 2018 12:42:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=p29XJKc4mJfSfxHpNaM5M0x9S4Gu3nI6w8oeft8hwUU=;
+	b=X7Nn+6fhsCcCDNUr2xdpXofkvEa2X59rkc0QQUsm1DIM0QztlQIbvR2EcjO4Xru6XC
+	ZV17pQpd3kAGdJHHw1GevOZYpXq9SP1HUUYtm296AI7fNsya8UIOVpI4sy4PaseSWXOC
+	r15AwTznA5qE3PY/FTnPrBAg82RglFplAJP5I=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=p29XJKc4mJfSfxHpNaM5M0x9S4Gu3nI6w8oeft8hwUU=;
+	b=O66L/DGxeYGewJB32JOKc2Ia7eNNeC0np+xsJw+vSQoobd6/0GMpI3uiM0nfBxu5/7
+	sCe38tQkiQQW9/PHIubGndy9kpeUAZABTT+2xzUhxzW1wd44Vs6OKeKZy+WVnwlPy+HO
+	j/2vAnmj00CKeXQIl7FdN1113gPb4NlVGQN27jy6JDPIN32BJlFNaPVzAjOxq/FfRiDc
+	5r6ky0ef5oaMTXIv+AH3fukA9XoVMOchj0q7whytBMvZ1mFsFqU8I5VfHFeco44kDJAW
+	dPGK5GBsjWoDxQoMAQovHqpRsQ/f/yBAjTPlran7VM7aueHi8Ozt/efBQp0lh9N2QVUB
+	UzfA==
+X-Gm-Message-State: ALQs6tDQhLeyIMQHC+V09LcC3PJY7y0fAIoX9Ow1+E1+Y0+Xb5VGPHeC
+	u9bD6IVOuH15MvplCCspJdfrXQ==
+X-Received: by 10.98.83.199 with SMTP id h190mr6361581pfb.146.1523907749618;
+	Mon, 16 Apr 2018 12:42:29 -0700 (PDT)
+Received: from cloudburst.twiddle.net (cpe-66-75-76-48.hawaii.res.rr.com.
+	[66.75.76.48]) by smtp.gmail.com with ESMTPSA id
+	f19sm31345260pfd.19.2018.04.16.12.42.27
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 16 Apr 2018 12:42:28 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <20180416151923.22588-1-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <b0d166e4-b84d-e450-b46b-73b609c1185a@linaro.org>
+Date: Mon, 16 Apr 2018 09:42:25 -1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.7.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Fri, 27 Apr 2018 06:31:59 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Fri, 27 Apr 2018 06:31:59 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'armbru@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH] tests/device-introspect:
- Test devices with all machines, not only with "none"
+In-Reply-To: <20180416151923.22588-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c05::243
+Subject: Re: [Qemu-arm] [Qemu-devel] [prefix=PATCH for-2.12?] linux-user:
+ check that all of AArch64 SVE extended sigframe is writable
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,69 +116,44 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org
+Cc: Riku Voipio <riku.voipio@iki.fi>, Laurent Vivier <laurent@vivier.eu>,
+	patches@linaro.org, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xAn5N48ntEEa
+X-TUID: t/MUX1mwWwT7
 
-Eduardo Habkost <ehabkost@redhat.com> writes:
+On 04/16/2018 05:19 AM, Peter Maydell wrote:
+> In commit 8c5931de0ac7738809 we added support for SVE extended
+> sigframe records.  These mean that the signal frame might now be
+> larger than the size of the target_rt_sigframe record, so make sure
+> we call lock_user on the entire frame size when we're creating it.
+> (The code for restoring the signal frame already correctly handles
+> the extended records by locking the 'extra' section separately to the
+> main section.)
+> 
+> In particular, this fixes a bug even for non-SVE signal frames,
+> because it extends the locked section to cover the
+> target_rt_frame_record. Previously this was part of 'struct
+> target_rt_sigframe', but in commit e1eecd1d9d4c1ade3 we pulled
+> it out into its own struct, and so locking the target_rt_sigframe
+> alone doesn't cover it. This bug would mean that we would fail
+> to correctly handle the case where a signal was taken with
+> SP pointing 16 bytes into an unwritable page, with the page
+> immediately below it in memory being writable.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> The requirements to trigger the bug sound implausible, except
+> that the stack page might be unwritable because we just
+> executed some trampoline code from it, so perhaps not so
+> unlikely as it first seems? Not sure whether to put into 2.12
+> or not...
+> ---
+>  linux-user/signal.c | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
 
-> On Thu, Apr 26, 2018 at 05:20:25PM +0200, Thomas Huth wrote:
->> On 26.04.2018 13:45, Markus Armbruster wrote:
->> > Thomas Huth <thuth@redhat.com> writes:
->> [...]
->> >> @@ -260,6 +263,26 @@ static void test_abstract_interfaces(void)
->> >>      qtest_end();
->> >>  }
->> >>  
->> >> +static void add_machine_test_case(const char *mname)
->> >> +{
->> >> +    char *path, *args;
->> >> +
->> >> +    /* Ignore blacklisted machines */
->> >> +    if (g_str_equal("xenfv", mname) || g_str_equal("xenpv", mname)) {
->> >> +        return;
->> >> +    }
->> >> +
->> >> +    path = g_strdup_printf("device/introspect/concrete-defaults-%s", mname);
->> >> +    args = g_strdup_printf("-machine %s", mname);
->> >> +    qtest_add_data_func(path, args, test_device_intro_concrete);
->> > 
->> > This runs test_device_intro_concrete() with "-machine M" for all machine
->> > types M, in SPEED=slow mode.
->> > 
->> >> +    g_free(path);
->> >> +
->> >> +    path = g_strdup_printf("device/introspect/concrete-nodefaults-%s", mname);
->> >> +    args = g_strdup_printf("-nodefaults -machine %s", mname);
->> >> +    qtest_add_data_func(path, args, test_device_intro_concrete);
->> > 
->> > This runs test_device_intro_concrete() with "-nodefaults -machine M" for
->> > all machine types M, in SPEED=slow mode.
->> > 
->> > Has "without -nodefaults" exposed additional bugs?
->> 
->> After testing this with all machines, I had to discover that
->> "-nodefaults" does not work so easily: A lot of the embedded machines
->> (especially the ARM machines) simply refuse to work with "-nodefaults"
->> and exit immediately instead. E.g.:
->> 
->> $ arm-softmmu/qemu-system-arm -nodefaults -nographic -M n810,accel=qtest
->> qemu-system-arm: missing SecureDigital device
+Yes, let's just go ahead and fix this all properly now.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-These are all bugs.  --nodefaults is supposed to suppress *optional*
-devices, not mandatory ones.
 
->> So we'd either need a rather big black list for the machines that do not
->> work, or simply drop the "-nodefaults" tests from this patch.
->
-> Or we could try to test all machines anyway, but not consider it
-> an error if QEMU just does exit(1).  Can the qtest C API give us
-> that information?
->
-> (Or we could simply let -nodefaults aside by now, and do this
-> after we implement this test case in Python.)
-
-Or we could fix the bugs.
+r~

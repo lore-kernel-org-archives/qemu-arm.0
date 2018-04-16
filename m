@@ -1,84 +1,84 @@
-Received: by 10.28.4.212 with SMTP id 203csp2376276wme;
-        Mon, 16 Apr 2018 01:01:29 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4+Ut+eDijPBTJVP9EK0IZ5mskjsktDp0TwDApzhmAC04PmYt5mXSFrLuC73FWSRYGkAGQ2w
-X-Received: by 10.237.49.17 with SMTP id 17mr15368414qtg.267.1523865689550;
-        Mon, 16 Apr 2018 01:01:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523865689; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp2389257wme;
+        Mon, 16 Apr 2018 01:19:51 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx49HOhsEi4YKr06r34iKOH+/z5FQKRIV4mE6SdQ+yXV6FkJyGkbR71PyCbSXU4mnO3yKx6q2
+X-Received: by 10.200.44.67 with SMTP id e3mr14566835qta.21.1523866790927;
+        Mon, 16 Apr 2018 01:19:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523866790; cv=none;
         d=google.com; s=arc-20160816;
-        b=prhE0oYfm1SBO+QOZOf5CSOwlwYANAmzSjhGuzQ328kTa9RVcGvdsvzZgfugJXBppT
-         5CFLTW416I9exYewEy08P8w9PYo1jp/0FORTMrce1NQf04It+i2NgItRGBbfISRjTMVH
-         HksXb6QJaj7eaM3xHYTZkEthovmMe/MTm4wQKB3Rw85ZaQIDIwPeBPvcbRBbQk2GRK4N
-         5X9C4krdS5IbfY/PMfB9VfBHKdlS/dsoHiBV7OmzQ1kf5Q7CECS5f72hXaYliaOzxojN
-         3xD6TYaYRnD/+nT7DvzqQzHorB8eChCGdwXMieYGHJncPwbmJZgem3DpoJ+YILfMbHmr
-         jzYA==
+        b=NlFH8amk1o/iD3E+3ye4uBopGH+Xj5Co5hrwH3AWg6g//qoAX7kKhdYtK1LRk5Lfg2
+         nMP2hX8+rqdmnrSL/e0R30RKODxDHiwIofdFimcDSXL6ntPn6l83nZZlqbP0BCyTQvcX
+         l/UFeSlhPjDxJ+R0bkdqWz1vDY5/Qyuw45JtT4Sp74nvHNP292IH8vuzgvOx/P4eTj0Z
+         +rrDL2zJT+5+moR+F+P5iXyA99qXA14dq3GueWb8wNmX0Kd2y/sgjqX3gbI2q7ut3Zvg
+         pk00ercaEk89X9zbdwwtUzOVRIe20yVsLdQtmZQBi+vK2kg+PTicUEQUTUVsiNSTDB16
+         SofQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:to:from:date:arc-authentication-results;
-        bh=KTrurRju1VeTQWScnBBtnopG3oa5xXyM1CD8vmpLbL0=;
-        b=k0I3l712S56Xpji4Xw5GBfgeRKVWm4GzIVyCtuLzOEEnmkRRSq3QFgTNaGjK4ZGT1d
-         UKouoeYKl9/DllPBTHJ9Mm+Lzwh6ZLw9CF2+RT/SPE6AnwqYjCdVG/t1HEyLxWCpfGdy
-         8i2tro9ycB/iZ9KvXh1vCQ/RKBE0H6FGrcat+0nPjie7RGRkTBPqZhFBu1F7gKZWpnPn
-         RZW5T9r8fCdYiOP3O5vFhypLy/IZX04LQrzYJHnwAN0ea/nU//LDcBagTOhut/meQQ2Q
-         9eBTTHRszvGZqpRj21G3jAHQ9c/gdFg+S51IMPLhep1qizmwMs2/4SxsXc1va3RP4x4q
-         gegg==
+        bh=t/q9njNFr8GuXDs3SLVNfjbwpA1IptMnk/GyBMQ8NeE=;
+        b=orR28RN+TekptVZTNmWWhfZZiU9HSM5GYZV1lv26Za3ST65ZVq9p15AQtpMLcwXca9
+         C38WSGaVn991onl4saW8Rphbd90ZFRA7xqaxEzpsL2OcB+G46CDG+hDRif4VSwMBYmTF
+         aB+YnLbBqX252BKOI3pioIz+In/8MynVVmxQYSBBQsPcipqbXlDmVWhAUEyJ+Ps+KXF6
+         Xs9zQB991dkoU3RahCK6NMtn/VMx1sDDAoC+EpoEKlG/4KycQ3yX5ehMf/cVfIdFdjuQ
+         yV2ISRLyEvTao27aSTF60j7jwg0bYsg565f+5/b/W184nMCmQNb8yj1ycA2Ll4iwWzpf
+         bxLg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c50si51316qtk.384.2018.04.16.01.01.29
+        by mx.google.com with ESMTPS id q91si1453302qtd.371.2018.04.16.01.19.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 16 Apr 2018 01:01:29 -0700 (PDT)
+        Mon, 16 Apr 2018 01:19:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54158 helo=lists.gnu.org)
+Received: from localhost ([::1]:55240 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f7z4q-00036I-VJ
-	for alex.bennee@linaro.org; Mon, 16 Apr 2018 04:01:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47889)
+	id 1f7zMZ-0001rw-95
+	for alex.bennee@linaro.org; Mon, 16 Apr 2018 04:19:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58270)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1f7z4c-00034F-Sd
-	for qemu-arm@nongnu.org; Mon, 16 Apr 2018 04:01:18 -0400
+	(envelope-from <imammedo@redhat.com>) id 1f7zMN-0001qN-B7
+	for qemu-arm@nongnu.org; Mon, 16 Apr 2018 04:19:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1f7z4U-0003SP-GP
-	for qemu-arm@nongnu.org; Mon, 16 Apr 2018 04:01:13 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:42252 helo=mx1.redhat.com)
+	(envelope-from <imammedo@redhat.com>) id 1f7zMK-0006kV-Js
+	for qemu-arm@nongnu.org; Mon, 16 Apr 2018 04:19:35 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54954 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1f7z4U-0003PU-9M; Mon, 16 Apr 2018 04:01:06 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
+	id 1f7zMK-0006kF-CM; Mon, 16 Apr 2018 04:19:32 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C8BBB40676C0;
-	Mon, 16 Apr 2018 08:00:59 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5B43F84257;
+	Mon, 16 Apr 2018 08:19:22 +0000 (UTC)
 Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 5BD1A7C48;
-	Mon, 16 Apr 2018 08:00:50 +0000 (UTC)
-Date: Mon, 16 Apr 2018 10:00:49 +0200
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 106E72024CA9;
+	Mon, 16 Apr 2018 08:19:15 +0000 (UTC)
+Date: Mon, 16 Apr 2018 10:19:14 +0200
 From: Igor Mammedov <imammedo@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
-Message-ID: <20180416100049.793f879e@redhat.com>
-In-Reply-To: <b80208b4-ff33-3862-3d52-97b56aa5c788@redhat.com>
+To: David Gibson <david@gibson.dropbear.id.au>
+Message-ID: <20180416101914.1184e90e@redhat.com>
+In-Reply-To: <20180416024355.GA20551@umbus.fritz.box>
 References: <1523551221-11612-1-git-send-email-imammedo@redhat.com>
 	<1523551221-11612-3-git-send-email-imammedo@redhat.com>
-	<b80208b4-ff33-3862-3d52-97b56aa5c788@redhat.com>
+	<20180416024355.GA20551@umbus.fritz.box>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Mon, 16 Apr 2018 08:00:59 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Mon, 16 Apr 2018 08:00:59 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.2]);
+	Mon, 16 Apr 2018 08:19:22 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Mon, 16 Apr 2018 08:19:22 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'imammedo@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
@@ -96,18 +96,16 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, agraf@suse.de,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, david@gibson.dropbear.id.au
+Cc: peter.maydell@linaro.org, agraf@suse.de, qemu-devel@nongnu.org,
+	eric.auger@redhat.com, qemu-arm@nongnu.org, qemu-ppc@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kdIMW5ZetWcv
+X-TUID: /mYt2tnTzEwh
 
-On Fri, 13 Apr 2018 20:00:18 +0200
-Auger Eric <eric.auger@redhat.com> wrote:
+On Mon, 16 Apr 2018 12:43:55 +1000
+David Gibson <david@gibson.dropbear.id.au> wrote:
 
-> Hi Igor,
-> 
-> On 12/04/18 18:40, Igor Mammedov wrote:
+> On Thu, Apr 12, 2018 at 06:40:19PM +0200, Igor Mammedov wrote:
 > > platform-bus were using machine_done notifier to get and map
 > > (assign irq/mmio resources) dynamically added sysbus devices
 > > after all '-device' options had been processed.
@@ -242,13 +240,7 @@ Auger Eric <eric.auger@redhat.com> wrote:
 > > +    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
 > > +
 > > +    if (object_dynamic_cast(OBJECT(dev), TYPE_SYS_BUS_DEVICE)) {
-> > +        if (vms->platform_bus_dev) {  
-> do we need this check? Isn't this function supposed to be called only
-> after the machine creation, time at which the platform_bus_dev is created.
-it's necessary as device plug callback is called for every device
-including platform_bus so we need to wait till vms->platform_bus_dev is set
-before using it with platform_bus_link_device()
-
+> > +        if (vms->platform_bus_dev) {
 > > +            platform_bus_link_device(PLATFORM_BUS_DEVICE(vms->platform_bus_dev),
 > > +                                     SYS_BUS_DEVICE(dev));
 > > +        }
@@ -337,20 +329,7 @@ before using it with platform_bus_link_device()
 > > -     * Generate a bitmap of used IRQ lines, as the user might have specified
 > > -     * them on the command line.
 > > -     */
-> > -    plaform_bus_refresh_irqs(pb);  
-> I have a doubt about this being moved at realize time and above comment.
-> Seems to say the userspace can define the gsi on the command line. I am
-> not used to this property, tried sysbus-irq[n] but the property does not
-> seem to be recognized.
-The only reason to call it at realize time is to get irq map of sysbus
-devices that existed before plaform_bus device has been created.
-
-For any devices that's created after that it's not needed,
-device_plug callback will take care of it by calling
-platform_bus_link_device() every time a sysbus device is
-successfully realized. (i.e. every time -device option is processed)
-
-
+> > -    plaform_bus_refresh_irqs(pb);
 > > -
 > > -    foreach_dynamic_sysbus_device(link_sysbus_device, pb);
 > > -}
@@ -381,8 +360,15 @@ successfully realized. (i.e. every time -device option is processed)
 > >  #define MPC8XXX_GPIO_OFFSET        0x000FF000ULL
 > >  #define MPC8XXX_GPIO_IRQ           47
 > >  
-> > +static SysBusDevice *pbus_dev;
-> > +
+> > +static SysBusDevice *pbus_dev;  
+> 
+> I'm not thrilled about adding a new global for information that really
+> belongs in the machine state.  Although I do recognize that adding an
+> actual MachineState subtype that didn't previously exist is a bit of a pain.
+yep, adding MachineState seemed too much for the task that's why I've used global.
+I can switch to actual MachineState here if you'd prefer it.
+
+
 > >  struct boot_info
 > >  {
 > >      uint32_t dt_base;
@@ -496,7 +482,19 @@ successfully realized. (i.e. every time -device option is processed)
 > > +    MachineClass *mc = MACHINE_CLASS(oc);
 > > +
 > > +    emc->get_hotplug_handler = mc->get_hotplug_handler;
-> > +    mc->get_hotplug_handler = e500plat_machine_get_hotpug_handler;
+> > +    mc->get_hotplug_handler = e500plat_machine_get_hotpug_handler;  
+> 
+> I'm pretty sure the parent type will never have a handler, so I'm not
+> sure this is really necessary.
+It seems that only PC machine handles chain correctly while other
+targets /spapr,s390x/ don't.
+
+Perhaps we should just drop caching original
+MachineClass::get_hotplug_handler (which is NULL) everywhere
+so it will be consistent across boards.
+If we ever need chaining here, we could add it then and do
+it consistently for every board that uses it.
+ 
 > > +    hc->plug = e500plat_machine_device_plug_cb;
 > > +
 > >      mc->desc = "generic paravirt e500 platform";
@@ -524,11 +522,4 @@ successfully realized. (i.e. every time -device option is processed)
 > > +}
 > > +type_init(e500plat_register_types)  
 > 
-> Otherwise I gave a try on Seattle with the Calxeda xgmac vfio-device and
-> I do not observe any regression with my sample command line.
-> 
-> Thanks
-> 
-> Eric
-> >   
 

@@ -1,93 +1,100 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2529862wre;
-        Mon, 28 May 2018 07:22:12 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJ5MBUGlSDJs6q1ZLxqY3M+RSnBSt9pVOYwpjAo6d9ItmjU+ppprMqwg+YOXJnNUa68SBEw
-X-Received: by 2002:a0c:8cc5:: with SMTP id q5-v6mr12436801qvb.60.1527517332543;
-        Mon, 28 May 2018 07:22:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527517332; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp3666559wme;
+        Tue, 17 Apr 2018 03:51:22 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx48wRBoUHen7J6utppk3gbm5TAiy7cJ2ed+0ucQbZCLm8dn4oy+cDGohkteG4kB8KG7DlG+3
+X-Received: by 10.55.93.65 with SMTP id r62mr1714049qkb.143.1523962282206;
+        Tue, 17 Apr 2018 03:51:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523962282; cv=none;
         d=google.com; s=arc-20160816;
-        b=08B7FCvSQ2x6UDkgiGfadUnliqvH70fWTlkY3tAoKWsTWdGxF1/kzVi9yWryBvb4kG
-         mY2QUNAqQlBdLpJi7wFkq0vmarapJD78P2x1CadVWKC9X7Sfi+eI3i19S8CkIpnWbl9Z
-         JDw3/ctYmBJR+yDzM5naqhn7zNDxElUjJ0bSRjryjdimliZHS4bdjBpeyAP2w8l3fxxI
-         XCHTRzTpWEMqHUfQVug9uWtorSJ7kFr8h14C+LC4XiO0RecT6pzWG5ButugBKvELODDg
-         BPFmJDIFLp3thrnUAVJjia18rdOsQ3q7DogHet/egquRlwYZPMgxHmTIBOXTdCS9zULo
-         uqoQ==
+        b=BXd/u6Hoi6JShHWfGECJwxdcPzpM3nuuXniJWnomVvszq2TVJniyPgqA6BgTaFKRhV
+         HPctv9+IC7bBDDaE1bR1kc/+RmLwsJN/cZRNT0cOE5XSV6Vx9KOZKQQ7BOMhhHHdCHyr
+         2WpO2UuYelifQHca0VacmbkAXwrs0fvRjx272F+bzVe5sCsnQdJkmaXId94B6Ci2r1Jq
+         UWGaz8Prvn+4avihX3UyATuQDNR8DAGa7cqwvvMSp4A0E86sVSE/bu3oj3s2VbPo2qId
+         ZPRkBuMUCp8tPMyheTdmnfMeqNNqls1Zt5pyXg3ooJo6tL66/1MWG7jmhTk3UoxW57Jf
+         KpFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:arc-authentication-results;
-        bh=UGJOftHOwOKL3YYxEDbX4oYX5Iy5ZWP+UQ5QeLvr8oE=;
-        b=ZnBErYE/YDUMa3UwYqeCRxh/eFmAdI0OwXdOx32Niy9pH0WEOUSvHLeDEeYgGEr6sm
-         hpuh6dStr46TAZo7JtEnulpt6MigWmOmZ85IbI6To4/8HPoqvz7Gfaz2a2xsf+shScoP
-         XmQuT1bvxXMiIceISvNTpWDSPGL1RBAjXryF3rEOvP6peL3/dkwS/TaxbMk4R97QQJVG
-         joPKfuwEsfIsT71VqVCUaZqu+cVYCuvEmlfo83dyX5r0NUTW1Ev95YDVg1IW9VEUaQWz
-         rLgJmNuYVQl3JJGupBEjthO4+23slTktpV7sJIM6W8w9lPx0WOQov3vcOmFwqe9+5+NM
-         fboA==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=Y8ICYXvgbMw+2hSLUbIAkM6zhN1UwhTT8m5rr6bRxxs=;
+        b=H58k6xctMY5aMvfkjtJJ2Z+LTEvXRjDIXAEG9/cBsGq9JnCHwel/6QpMAndeqczyFp
+         1vM6HQUsPakVvvDVJSD1OJv1xmx9iAxnz8QUUwRgPVKfmflhJC8aIptdBkuRduSSqZrn
+         N7F0QkbSyLBeRSO5SVE3wDtICIJOwl//m8JjbatoUR89GtiWaPfyii+yTsKvZWyifwAe
+         WyoXhh5oM8It4OVaNxHIGcPV+cvnn8bXX9RhOOlzVaXINQqE/Dyc6/OCBgTYb6goe5f+
+         rkDKBgEKpyYxSOuikN5AE8/3REcBxVydL+4Yxli6xu+Zch/Jhgh6bWjLlLpgwGfwcLwb
+         HxVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=M8C2Di0j;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n7-v6si4675179qvh.44.2018.05.28.07.22.12
+        by mx.google.com with ESMTPS id j90si86712qtb.375.2018.04.17.03.51.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 28 May 2018 07:22:12 -0700 (PDT)
+        Tue, 17 Apr 2018 03:51:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=M8C2Di0j;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56487 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58646 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNJ2K-00083v-0q
-	for alex.bennee@linaro.org; Mon, 28 May 2018 10:22:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45236)
+	id 1f8OCn-0005W9-MT
+	for alex.bennee@linaro.org; Tue, 17 Apr 2018 06:51:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48355)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fNJ1z-0007xv-Qu
-	for qemu-arm@nongnu.org; Mon, 28 May 2018 10:21:53 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1f8OCd-0005UW-82
+	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 06:51:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fNJ1y-0006PK-Bb
-	for qemu-arm@nongnu.org; Mon, 28 May 2018 10:21:51 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:59178 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1fNJ1y-0006P5-5n; Mon, 28 May 2018 10:21:50 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B7BFC401EF05;
-	Mon, 28 May 2018 14:21:49 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-69.ams2.redhat.com
-	[10.36.116.69])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1DCB82166BB2;
-	Mon, 28 May 2018 14:21:47 +0000 (UTC)
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20180516152026.2920-1-shameerali.kolothum.thodi@huawei.com>
-	<20180516152026.2920-5-shameerali.kolothum.thodi@huawei.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <fb37761c-6e74-5aca-b258-8d8c060ca4dc@redhat.com>
-Date: Mon, 28 May 2018 16:21:40 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	(envelope-from <peter.maydell@linaro.org>) id 1f8OCX-0001zo-0x
+	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 06:51:11 -0400
+Received: from mail-ot0-x241.google.com ([2607:f8b0:4003:c0f::241]:36682)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1f8OCW-0001wI-PJ
+	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 06:51:04 -0400
+Received: by mail-ot0-x241.google.com with SMTP id p2-v6so4038821otf.3
+	for <qemu-arm@nongnu.org>; Tue, 17 Apr 2018 03:51:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=Y8ICYXvgbMw+2hSLUbIAkM6zhN1UwhTT8m5rr6bRxxs=;
+	b=M8C2Di0jeO7HtSvcH47TlM/EvNr6aq6/JtOWDZuWbvG+O1Zj5GxUY9cl03McmMBYx8
+	C+tzjQmkaUu+ws8tnHh4sOmD2KKAwblg3X4osY7W7HtPbVUVM6MFGIvOO2fwb84YDnkz
+	dYSoXJD7JNZlAAPKBpYP3hO3JgTYX6GMwTp2c=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=Y8ICYXvgbMw+2hSLUbIAkM6zhN1UwhTT8m5rr6bRxxs=;
+	b=ADRGCNz0Swj4ML+S5SZU20mqv0J2uGO33JALK04xplBWly7fQ3BGw1oixfJ5ndGsFm
+	Q3FXBUBo9bAH5Cju11rB4ZBxj4U2RElzsZVPq9bXIYZ8Hql3wYfI9AMEOs8bO5XL6p6X
+	NigUvZJPlnQe563rAC45HhStuUVw/Pg/UjAQCLK+B5ko/at7CMQN3c68LTvM2fO/xvho
+	XQd97ktjmCcQwUaOoTJme6sYJaHuoDG6kPSr0ISswrzBE/GET8Zo/tKlNUVbccK8Hj7i
+	PEtYDHKvbD0bjp4Not+lXwHWT6v8Wn2mT7XPjU+65hQQgfF/r4+rCWX61p52JbzcrRn5
+	Dn+g==
+X-Gm-Message-State: ALQs6tBMFxXHgQNwqxwUDXPk3l0PgHwlXuDwvovtpSPsWhru0kgRgf4t
+	SP8yEHhA+53wvCQc9OdQpIvQ1QE2CKecAVUcNO0c7A==
+X-Received: by 2002:a9d:32f5:: with SMTP id
+	u108-v6mr916097otb.308.1523962263776; 
+	Tue, 17 Apr 2018 03:51:03 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20180516152026.2920-5-shameerali.kolothum.thodi@huawei.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Mon, 28 May 2018 14:21:49 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Mon, 28 May 2018 14:21:49 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v2 4/6] hw/arm: Changes required
- to accommodate non-contiguous DT mem nodes
+Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Tue, 17 Apr 2018 03:50:43
+	-0700 (PDT)
+In-Reply-To: <1523518688-26674-10-git-send-email-eric.auger@redhat.com>
+References: <1523518688-26674-1-git-send-email-eric.auger@redhat.com>
+	<1523518688-26674-10-git-send-email-eric.auger@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 17 Apr 2018 11:50:43 +0100
+Message-ID: <CAFEAcA975eWahb21gKHXJ0g1yenkmuYx4dysNgPZb_qEQ7FCMA@mail.gmail.com>
+To: Eric Auger <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::241
+Subject: Re: [Qemu-arm] [PATCH v11 09/17] hw/arm/smmuv3: Implement translate
+ callback
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,201 +106,179 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, jonathan.cameron@huawei.com,
-	linuxarm@huawei.com, alex.williamson@redhat.com,
-	zhaoshenglong@huawei.com, imammedo@redhat.com
+Cc: Christoffer Dall <cdall@kernel.org>, "Michael S. Tsirkin" <mst@redhat.com>,
+	Jean-Philippe Brucker <jean-philippe.brucker@arm.com>,
+	Tomasz Nowicki <tn@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	Peter Xu <peterx@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>, linuc.decode@gmail.com,
+	Bharat Bhushan <bharat.bhushan@nxp.com>,
+	Jintack Lim <jintack@cs.columbia.edu>,
+	Prem Mallappa <prem.mallappa@gmail.com>,
+	Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: D905HiomkMFC
+X-TUID: O9m5yVWevYLH
 
-Hi Shameer,
+On 12 April 2018 at 08:38, Eric Auger <eric.auger@redhat.com> wrote:
+> This patch implements the IOMMU Memory Region translate()
+> callback. Most of the code relates to the translation
+> configuration decoding and check (STE, CD).
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
 
-On 05/16/2018 05:20 PM, Shameer Kolothum wrote:
-> This makes changes to the DT mem node creation such that its easier
-> to add non-contiguous mem modeled as non-pluggable and a pc-dimm
-> mem later.
-See comments below. I think you should augment the description here with
-what the patch exactly adds:
-- a new helper function
-- a new dimm node?
-
-and if possible split functional changes into separate patches?
-> 
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> ---
->  hw/arm/boot.c        | 91 ++++++++++++++++++++++++++++++++++++----------------
->  include/hw/arm/arm.h | 12 +++++++
->  2 files changed, 75 insertions(+), 28 deletions(-)
-> 
-> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index 26184bc..73db0aa 100644
-> --- a/hw/arm/boot.c
-> +++ b/hw/arm/boot.c
-> @@ -486,6 +486,27 @@ static void fdt_add_psci_node(void *fdt)
->      qemu_fdt_setprop_cell(fdt, "/psci", "migrate", migrate_fn);
->  }
->  
-> +static char *create_memory_fdt(void *fdt, uint32_t acells, hwaddr mem_base,
-> +                                          uint32_t scells, hwaddr mem_len)
-Other dt node creation functions are named fdt_add_*_node
+> +/* @ssid > 0 not supported yet */
+> +static int smmu_get_cd(SMMUv3State *s, STE *ste, uint32_t ssid,
+> +                       CD *buf, SMMUEventInfo *event)
 > +{
-> +    char *nodename = NULL;
-> +    int rc;
+> +    dma_addr_t addr = STE_CTXPTR(ste);
+> +    int ret;
 > +
-> +    nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
-> +    qemu_fdt_add_subnode(fdt, nodename);
-> +    qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
-> +    rc = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg", acells, mem_base,
-> +                                      scells, mem_len);
-> +    if (rc < 0) {
-> +        fprintf(stderr, "couldn't set %s/reg\n", nodename);
-> +        g_free(nodename);
-> +        return NULL;
+> +    trace_smmuv3_get_cd(addr);
+> +    /* TODO: guarantee 64-bit single-copy atomicity */
+> +    ret = dma_memory_read(&address_space_memory, addr,
+> +                           (void *)buf, sizeof(*buf));
+> +    if (ret != MEMTX_OK) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "Cannot fetch pte at address=0x%"PRIx64"\n", addr);
+> +        event->type = SMMU_EVT_F_CD_FETCH;
+> +        event->u.f_ste_fetch.addr = addr;
+> +        return -EINVAL;
 > +    }
-> +
-> +    return nodename;
+> +    return 0;
 > +}
 > +
+> +/* Returns <0 if the caller has no need to purse the translation */
+
+Typo, but I'm not sure what you meant instead of "purse".
+
+> +static int decode_ste(SMMUv3State *s, SMMUTransCfg *cfg,
+> +                      STE *ste, SMMUEventInfo *event)
+> +{
+> +    uint32_t config = STE_CONFIG(ste);
+> +    int ret = -EINVAL;
 > +
->  /**
->   * load_dtb() - load a device tree binary image into memory
->   * @addr:       the address to load the image at
-> @@ -567,50 +588,64 @@ static int load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
->          goto fail;
->      }
->  
-> +    /*
-> +     * Turn the /memory node created before into a NOP node, then create
-> +     * /memory@addr nodes for all numa nodes respectively.
-> +     */
-> +    qemu_fdt_nop_node(fdt, "/memory");
-I don't really understand why this gets moved outside of the if
-(nb_numa_nodes > 0) { check. Also the comment above mention numa nodes
-whereas it are not necessarily in the numa case anymore.
+> +    if (STE_CFG_ABORT(config)) {
+> +        cfg->aborted = true; /* abort but don't record any event */
+> +        return ret;
+> +    }
 > +
->      if (nb_numa_nodes > 0) {
-> -        /*
-> -         * Turn the /memory node created before into a NOP node, then create
-> -         * /memory@addr nodes for all numa nodes respectively.
-> -         */
-> -        qemu_fdt_nop_node(fdt, "/memory");
-> +        hwaddr mem_sz;
+> +    if (STE_CFG_BYPASS(config)) {
+> +        cfg->bypassed = true;
+> +        return ret;
+> +    }
 > +
->          mem_base = binfo->loader_start;
-> +        mem_sz = binfo->ram_size;
->          for (i = 0; i < nb_numa_nodes; i++) {
-> -            mem_len = numa_info[i].node_mem;
-> -            nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
-> -            qemu_fdt_add_subnode(fdt, nodename);
-> -            qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
-> -            rc = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
-> -                                              acells, mem_base,
-> +            mem_len = MIN(numa_info[i].node_mem, mem_sz);
-I fail to understand how this change relates to the topic of this patch.
-If this adds a consistency check, this may be put in another patch?
+> +    if (!STE_VALID(ste)) {
+> +        goto bad_ste;
+> +    }
+
+This check is happening too late -- if STE.V is 0 then other STE fields
+must be ignored, including STE.Config, so it has to be done as the first
+thing in this function.
+
 > +
-> +            nodename = create_memory_fdt(fdt, acells, mem_base,
->                                                scells, mem_len);
-You could simplify the review by just introducing the new dt node
-creation function in a 1st patch and then introduce the changes to
-support non contiguous DT mem nodes.
-> -            if (rc < 0) {
-> -                fprintf(stderr, "couldn't set %s/reg for node %d\n", nodename,
-> -                        i);
-> +            if (!nodename) {
->                  goto fail;
->              }
->  
->              qemu_fdt_setprop_cell(fdt, nodename, "numa-node-id", i);
-> -            mem_base += mem_len;
->              g_free(nodename);
-> +            mem_base += mem_len;
-> +            mem_sz -= mem_len;
-> +            if (!mem_sz) {
-> +                break;
-So what does it mean practically if we break here. Not all the num nodes
-will function? Outputting a mesg for the end user may be useful.
-> +           }
->          }
-> -    } else {
-> -        Error *err = NULL;
->  
-> -        rc = fdt_path_offset(fdt, "/memory");
-> -        if (rc < 0) {
-> -            qemu_fdt_add_subnode(fdt, "/memory");
-> -        }
-> +        /* Create the node for initial pc-dimm ram, if any */
-> +        if (binfo->dimm_mem) {
->  
-> -        if (!qemu_fdt_getprop(fdt, "/memory", "device_type", NULL, &err)) {
-> -            qemu_fdt_setprop_string(fdt, "/memory", "device_type", "memory");
-> +            nodename = create_memory_fdt(fdt, acells, binfo->dimm_mem->base,
-> +                                              scells, binfo->dimm_mem->size);
-> +            if (!nodename) {
-> +                goto fail;
-> +            }
-> +            qemu_fdt_setprop_cell(fdt, nodename, "numa-node-id",
-> +                                                 binfo->dimm_mem->node);
-> +            g_free(nodename);
->          }
->  
-> -        rc = qemu_fdt_setprop_sized_cells(fdt, "/memory", "reg",
-> -                                          acells, binfo->loader_start,
-> -                                          scells, binfo->ram_size);
-> -        if (rc < 0) {
-> -            fprintf(stderr, "couldn't set /memory/reg\n");
-> +    } else {
+> +    if (STE_CFG_S2_ENABLED(config)) {
+> +        qemu_log_mask(LOG_UNIMP, "SMMUv3 does not support stage 2 yet\n");
+> +        goto bad_ste;
+> +    }
 > +
-> +        nodename = create_memory_fdt(fdt, acells, binfo->loader_start,
-> +                                         scells, binfo->ram_size);
-> +        if (!nodename) {
->              goto fail;
->          }
+> +    if (STE_S1CDMAX(ste) != 0) {
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "SMMUv3 does not support multiple context descriptors yet\n");
+> +        goto bad_ste;
+> +    }
 > +
-> +        if (binfo->dimm_mem) {
-> +            nodename = create_memory_fdt(fdt, acells, binfo->dimm_mem->base,
-> +                                              scells, binfo->dimm_mem->size);
-> +            if (!nodename) {
-> +                goto fail;
-> +            }
-> +            g_free(nodename);
+> +    if (STE_S1STALLD(ste)) {
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "SMMUv3 S1 stalling fault model not allowed yet\n");
+> +        goto bad_ste;
+> +    }
+> +    return 0;
+> +
+> +bad_ste:
+> +    event->type = SMMU_EVT_C_BAD_STE;
+> +    return -EINVAL;
+> +}
+
+> +static int decode_cd(SMMUTransCfg *cfg, CD *cd, SMMUEventInfo *event)
+> +{
+> +    int ret = -EINVAL;
+> +    int i;
+> +
+> +    if (!CD_VALID(cd) || !CD_AARCH64(cd)) {
+> +        goto bad_cd;
+> +    }
+> +
+> +    /* we support only those at the moment */
+> +    cfg->aa64 = true;
+> +    cfg->stage = 1;
+> +
+> +    cfg->oas = oas2bits(CD_IPS(cd));
+> +    cfg->oas = MIN(oas2bits(SMMU_IDR5_OAS), cfg->oas);
+> +    cfg->tbi = CD_TBI(cd);
+> +    cfg->asid = CD_ASID(cd);
+> +
+> +    trace_smmuv3_decode_cd(cfg->oas);
+> +
+> +    /* decode data dependent on TT */
+> +    for (i = 0; i <= 1; i++) {
+> +        int tg, tsz;
+> +        SMMUTransTableInfo *tt = &cfg->tt[i];
+> +
+> +        cfg->tt[i].disabled = CD_EPD(cd, i);
+> +        if (cfg->tt[i].disabled) {
+> +            continue;
 > +        }
-as this code gets duplicated, a helper function may be relevant?
+> +
+> +        if (!CD_A(cd)) {
+> +            goto bad_cd; /* SMMU_IDR0.TERM_MODEL == 1 */
+> +        }
+> +        if (CD_S(cd)) {
+> +            goto bad_cd; /* !STE_SECURE && SMMU_IDR0.STALL_MODEL == 1 */
+> +        }
+> +        if (CD_HA(cd) || CD_HD(cd)) {
+> +            goto bad_cd; /* HTTU = 0 */
+> +        }
 
-Thanks
+The location of this check means you're going to be ignoring HA and HD
+if EPD0 and EPD1 are both zero, which isn't what the spec says.
+Since the HA/HD bits aren't dependent on EPD*, it would make more sense
+for this check to be outside the for() loop. This applies
+to some of the other checks too: check the pseudocode CD_ILLEGAL
+expression and in particular which parts of it involve checks for
+N_TRANS_CFG0 or N_TRANSL_CFG1. At least the CD_A and CD_S checks
+should also be outside the loop.
 
-Eric
->      }
->  
->      rc = fdt_path_offset(fdt, "/chosen");
-> diff --git a/include/hw/arm/arm.h b/include/hw/arm/arm.h
-> index ce769bd..0ee3b4e 100644
-> --- a/include/hw/arm/arm.h
-> +++ b/include/hw/arm/arm.h
-> @@ -48,6 +48,12 @@ typedef struct {
->      ARMCPU *cpu; /* handle to the first cpu object */
->  } ArmLoadKernelNotifier;
->  
-> +struct dimm_mem_info {
-> +    int node;
-> +    hwaddr base;
-> +    hwaddr size;
-> +};
 > +
->  /* arm_boot.c */
->  struct arm_boot_info {
->      uint64_t ram_size;
-> @@ -124,6 +130,12 @@ struct arm_boot_info {
->      bool secure_board_setup;
->  
->      arm_endianness endianness;
+> +        tsz = CD_TSZ(cd, i);
+> +        if (tsz < 16 || tsz > 39) {
+> +            goto bad_cd;
+> +        }
 > +
-> +    /* This is used to model a pc-dimm based mem if the valid iova region
-> +     * is non-contiguous.
-> +     */
-> +    struct dimm_mem_info *dimm_mem;
+> +        tg = CD_TG(cd, i);
+> +        tt->granule_sz = tg2granule(tg, i);
+> +        if ((tt->granule_sz != 12 && tt->granule_sz != 16) || CD_ENDI(cd)) {
+> +            goto bad_cd;
+> +        }
 > +
->  };
->  
->  /**
-> 
+> +        tt->tsz = tsz;
+> +        tt->initial_level = 4 - (64 - tsz - 4) / (tt->granule_sz - 3);
+> +        tt->ttb = CD_TTB(cd, i);
+> +        if (tt->ttb & ~(MAKE_64BIT_MASK(0, cfg->oas))) {
+> +            goto bad_cd;
+> +        }
+> +        trace_smmuv3_decode_cd_tt(i, tt->tsz, tt->ttb,
+> +                                  tt->granule_sz, tt->initial_level);
+> +    }
+> +
+> +    event->record_trans_faults = CD_R(cd);
+> +
+> +    return 0;
+> +
+> +bad_cd:
+> +    event->type = SMMU_EVT_C_BAD_CD;
+> +    return ret;
+> +}
+
+thanks
+-- PMM

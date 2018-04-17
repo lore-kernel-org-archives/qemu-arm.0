@@ -1,97 +1,102 @@
-Received: by 10.28.71.155 with SMTP id m27csp2155475wmi;
-        Thu, 12 Apr 2018 10:17:46 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx49NOcgl+2+6NzUoOHEyIUj/5QT3SNZCEuvfZY8Ql4REP/DaFejQMRarmVVf38LgVAENPMhX
-X-Received: by 10.55.109.129 with SMTP id i123mr2333584qkc.114.1523553466350;
-        Thu, 12 Apr 2018 10:17:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523553466; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp3883401wme;
+        Tue, 17 Apr 2018 07:23:39 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx4+W3aJ/yX1x+NWcpjVcqFoWz1IRfbAa8oze72aIsQygmH6lOF4shU2DXN5dd9/JRAADLI75
+X-Received: by 2002:a25:7242:: with SMTP id n63-v6mr1432358ybc.20.1523975019118;
+        Tue, 17 Apr 2018 07:23:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523975019; cv=none;
         d=google.com; s=arc-20160816;
-        b=H1WfdGhVXdqkqGFrU+mvC0b3JhzzXvuY3SABA0+9GJ/H4uC3qJJtHs8vJP5d/fGxwR
-         JCG1O4Jz88pPdQ5V7fACYNi3AUOKPyFC4p60w9TM0QcdKKrZUkh13QE4HEx71xAKIVDQ
-         wX9FjV7Gznv/m0B5t4mYVXHCspEogWmCR2RXxCpOqx354yFJLhZ9EAV0I/VGa2VQNs4s
-         5qVfjte6Sh801L5f3L3D1HbQgVycN6bHPkDalFX82FWEc6tJB5JJlejBzLWFKayCoGKZ
-         +sUtg8xQ/ZuHzmECHujOGiVSj2yxlG3E2PcMYi3LZOvZCsv0Hx1OGnrVRKchkJPqE2S9
-         YjzA==
+        b=IHzhPJbkgjIdCms8B52Qa3jQMh0UXE1KVDuQ3aqNleoJUxuCIt2h7aD49YXluQ4SZn
+         V3fqlA+UQuyPlqIxvaMwTKYS2XNjKyzly/mCZMV5JyImISVG8M2IovKCWW6AeH3kro3P
+         Bmfum29c6W3nRqLI4mAN++0WGU8BalZMNB7JBHz1lnr90pquUpjhyIg7IdBITtKLBDdt
+         pTZgewcS+dKc/n4nNrhwAn8EZIOZjH8cWOHfwxKnZ8OENB/RPAoVlcY5LKwGsBHdMwFv
+         ZFEQMWVZZb/LyVs4qjVDxVUdgS3ET8vwHam+gUaSeeOiunTJz3+onISDV+ZGKPMWNNox
+         Q4Gw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dmarc-filter:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=OC+BKEh9fCAnnAYj63dmU6Z0ckoq8BnJimAfCsaulNI=;
-        b=VwKKFfdouI/i2oxSdAAV7jvuOR4X0JhJ4dKQXVDGdIIeD4SYmLUwumVdRxPkRAvMaC
-         J0DGmimmXvNu05J9RxaYBc3A8O1zdpvLgRXDf0oy8vhWTl/U6HURkqa1BX8MS1VjbiIG
-         eEncnUAlSZM36pgL+bZhjVZ4oV/maJCSrFk8W3bbrILvvGtOXotOZJqrxKxHymEJwO2X
-         QJcQjZ6oktkWbv0x14TGUC1SsUuCYPOYggXaMwNEdfRBQlgl0tcDIh9EQGJfqT/mBZN+
-         G+dTupobcpFB0uZA1TKH79Zyo8ICDocQeqo1YxaDH7madnX4xKPFAgJHAONeF/idvafu
-         xHXQ==
+        bh=Q/QuUZ0nj8PjMoYafUHh5S9JsJGKo8GO2i7zjaxSa30=;
+        b=sMfwTDzGWf5P39XDwOwPdkzNNDWHc1mDFqL4ck9enc+6YhcZW3k8oQm3lQO0F+ZuQj
+         4NaEkMEP9VLxjT1SXLarLWyQ+o1s+B5YWWjHLWmAaASgmBq17LXXuXUizZrCw5rFHg/+
+         jgcN1DVzHjG10DsJFIXZIrPfnyFRLrEyXdoBk6jR8HOBWfUrYVMpbs0KJMdCsyeY6z4m
+         SNoh98TKhH2LNUkWt3xn/+0Z/yz3pCR3YuDeJQpEkGqF0l8MCtEp8n4/AVJtQA8zouiR
+         bgGCq0BH7HqpFFkI0Xlu3memZde1uh6Xvn/omEGoo+W0HWKFlJyqK2itQg37UToPf/4L
+         yTjQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=PxWYYtXB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=R9emNFeJ;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=MIzqtuyU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p57si1030005qtf.335.2018.04.12.10.17.46
+        by mx.google.com with ESMTPS id p141si4314795qke.286.2018.04.17.07.23.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 12 Apr 2018 10:17:46 -0700 (PDT)
+        Tue, 17 Apr 2018 07:23:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=PxWYYtXB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56238 helo=lists.gnu.org)
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=R9emNFeJ;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=MIzqtuyU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:41796 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f6fqz-0005yK-QN
-	for alex.bennee@linaro.org; Thu, 12 Apr 2018 13:17:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60152)
+	id 1f8RWE-0003lY-KQ
+	for alex.bennee@linaro.org; Tue, 17 Apr 2018 10:23:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43816)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1f6fqh-0005wm-JK
-	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 13:17:28 -0400
+	(envelope-from <alindsay@codeaurora.org>) id 1f8RW4-0003k3-54
+	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 10:23:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1f6fqg-00011O-Ke
-	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 13:17:27 -0400
-Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:39948)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1f6fqg-000113-Ew
-	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 13:17:26 -0400
-Received: by mail-oi0-x242.google.com with SMTP id x9-v6so5883083oig.7
-	for <qemu-arm@nongnu.org>; Thu, 12 Apr 2018 10:17:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=OC+BKEh9fCAnnAYj63dmU6Z0ckoq8BnJimAfCsaulNI=;
-	b=PxWYYtXB18hj6I5E5uSEOM49RetsuskQxUMoH8DlXEPXInUzPkRJCTeooh1p5/iD6y
-	5JFN4H7gW7m6WP69czbO61O4UE01+QKbXVFv9NTCNH7LSgfaB2vt5+6UnmdzQQuRYE21
-	KUXWRxoaKe82sEI11/lx78zSyd6AUxd9iq6n4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=OC+BKEh9fCAnnAYj63dmU6Z0ckoq8BnJimAfCsaulNI=;
-	b=WLPO4a0zhi6IAF8pwIZaHtD9PY9IE3SXX+Yzg6SgSHrDH1zYtLHxl0Rt4z56g5reJq
-	0BPdntq6fm117WNKUsr990YTylB1JRhI/CKG1WUB9KlkKYM3DZGlvLTxj/sJoJK0Q38V
-	7K9lKN5rEgtGaVTyKNK+UpNbnGR4FNbBwFNvcLxe9vkfqDjgUTG5XqSJtj0tfgPpAcnu
-	47eUnpTJqfuaTZnBP/D1qLy7/XKmYfcMyLafDNNYky9dHJ0maEW7ADdbnSNJAN++z7RQ
-	Wpa8aZdFkKbSq2ZGKv4FpGoVcgjPlpMhrlo6+SqXheqn/TEbdQOIgrzdKIus6V4nEMfU
-	YbLg==
-X-Gm-Message-State: ALQs6tD5ucIcX/3oti7wn4nByD9x6fw/hcvSoEJXgguomCLUemQh46uq
-	V85qC+GdsHbXmDyMb9LWC81Zs37dCEz3VrPd64w5RQ==
-X-Received: by 2002:aca:1c7:: with SMTP id 190-v6mr6623857oib.80.1523553445826;
-	Thu, 12 Apr 2018 10:17:25 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Thu, 12 Apr 2018 10:17:05
-	-0700 (PDT)
-In-Reply-To: <1521232280-13089-16-git-send-email-alindsay@codeaurora.org>
+	(envelope-from <alindsay@codeaurora.org>) id 1f8RW1-0004P8-AM
+	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 10:23:28 -0400
+Received: from smtp.codeaurora.org ([198.145.29.96]:46468)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <alindsay@codeaurora.org>)
+	id 1f8RW1-0004ON-12; Tue, 17 Apr 2018 10:23:25 -0400
+Received: by smtp.codeaurora.org (Postfix, from userid 1000)
+	id EC5D66072E; Tue, 17 Apr 2018 14:23:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
+	s=default; t=1523975003;
+	bh=qyEaVW77V/nfJFf+TaQKxZ0KZRM52EQIplh3wjLn/00=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=R9emNFeJLwGmjrxdGAl6jBCs4wkbR18/NCLgHoiyKDs2cAIya5FEQQ4r19sTs7MMX
+	izF9CV9K2nmXPXhRXtgpY2tDWy0rxMNk+VT+EYZUo0Zbd6LLxXPTQ70gtQleUOIAy2
+	5HgPuC59049xhmyFBnlHtZfeg7yraP94MGfoYanQ=
+Received: from codeaurora.org (global_nat1_iad_fw.qualcomm.com [129.46.232.65])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	(Authenticated sender: alindsay@smtp.codeaurora.org)
+	by smtp.codeaurora.org (Postfix) with ESMTPSA id 61B57606AC;
+	Tue, 17 Apr 2018 14:23:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
+	s=default; t=1523975001;
+	bh=qyEaVW77V/nfJFf+TaQKxZ0KZRM52EQIplh3wjLn/00=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=MIzqtuyUi445xaSIYaXxzSCfANiTJ/Zf2LYbSBpOAyCMWC/FghlYf/nSMQ7Evb4ON
+	0pwD0LV1XJrHpyKk9UmOOM23nnreaw/4BDgwayaO+4cyA414DiQGQ+6dnGTQumMAuN
+	LtiqQ0kpQAEY7PR1vUBV5gJehknN1qO8rF7qABSQ=
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 61B57606AC
+Authentication-Results: pdx-caf-mail.web.codeaurora.org;
+	dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: pdx-caf-mail.web.codeaurora.org;
+	spf=none smtp.mailfrom=alindsay@codeaurora.org
+Date: Tue, 17 Apr 2018 10:23:18 -0400
+From: Aaron Lindsay <alindsay@codeaurora.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20180417142318.GO24561@codeaurora.org>
 References: <1521232280-13089-1-git-send-email-alindsay@codeaurora.org>
 	<1521232280-13089-16-git-send-email-alindsay@codeaurora.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 12 Apr 2018 18:17:05 +0100
-Message-ID: <CAFEAcA9bYdwByseqCMKSVtWV59mNruT3jJfWWLju1koCnwSb=Q@mail.gmail.com>
-To: Aaron Lindsay <alindsay@codeaurora.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::242
+	<CAFEAcA9bYdwByseqCMKSVtWV59mNruT3jJfWWLju1koCnwSb=Q@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA9bYdwByseqCMKSVtWV59mNruT3jJfWWLju1koCnwSb=Q@mail.gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 198.145.29.96
 Subject: Re: [Qemu-arm] [PATCH v3 15/22] target/arm: Add ARM_FEATURE_V7VE
  for v7 Virtualization Extensions
 X-BeenThere: qemu-arm@nongnu.org
@@ -112,57 +117,70 @@ Cc: Michael Spradling <mspradli@codeaurora.org>,
 	qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2XMc9RXLhm1u
+X-TUID: dBOyEGBriP6g
 
-On 16 March 2018 at 20:31, Aaron Lindsay <alindsay@codeaurora.org> wrote:
-> Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
-> ---
->  target/arm/cpu.c | 3 +++
->  target/arm/cpu.h | 1 +
->  2 files changed, 4 insertions(+)
->
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index b0d032c..e544f1d 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -765,6 +765,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->      /* Some features automatically imply others: */
->      if (arm_feature(env, ARM_FEATURE_V8)) {
->          set_feature(env, ARM_FEATURE_V7);
-> +        set_feature(env, ARM_FEATURE_V7VE);
->          set_feature(env, ARM_FEATURE_ARM_DIV);
->          set_feature(env, ARM_FEATURE_LPAE);
->      }
-> @@ -1481,6 +1482,7 @@ static void cortex_a7_initfn(Object *obj)
->
->      cpu->dtb_compatible = "arm,cortex-a7";
->      set_feature(&cpu->env, ARM_FEATURE_V7);
-> +    set_feature(&cpu->env, ARM_FEATURE_V7VE);
->      set_feature(&cpu->env, ARM_FEATURE_VFP4);
->      set_feature(&cpu->env, ARM_FEATURE_NEON);
->      set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
-> @@ -1526,6 +1528,7 @@ static void cortex_a15_initfn(Object *obj)
->
->      cpu->dtb_compatible = "arm,cortex-a15";
->      set_feature(&cpu->env, ARM_FEATURE_V7);
-> +    set_feature(&cpu->env, ARM_FEATURE_V7VE);
->      set_feature(&cpu->env, ARM_FEATURE_VFP4);
->      set_feature(&cpu->env, ARM_FEATURE_NEON);
->      set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index fb2f983..cc1e2fb 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -1439,6 +1439,7 @@ enum arm_features {
->      ARM_FEATURE_OMAPCP, /* OMAP specific CP15 ops handling.  */
->      ARM_FEATURE_THUMB2EE,
->      ARM_FEATURE_V7MP,    /* v7 Multiprocessing Extensions */
-> +    ARM_FEATURE_V7VE,    /* v7 with Virtualization Extensions */
->      ARM_FEATURE_V4T,
->      ARM_FEATURE_V5,
->      ARM_FEATURE_STRONGARM,
+On Apr 12 18:17, Peter Maydell wrote:
+> On 16 March 2018 at 20:31, Aaron Lindsay <alindsay@codeaurora.org> wrote:
+> > Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
+> > ---
+> >  target/arm/cpu.c | 3 +++
+> >  target/arm/cpu.h | 1 +
+> >  2 files changed, 4 insertions(+)
+> >
+> > diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> > index b0d032c..e544f1d 100644
+> > --- a/target/arm/cpu.c
+> > +++ b/target/arm/cpu.c
+> > @@ -765,6 +765,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+> >      /* Some features automatically imply others: */
+> >      if (arm_feature(env, ARM_FEATURE_V8)) {
+> >          set_feature(env, ARM_FEATURE_V7);
+> > +        set_feature(env, ARM_FEATURE_V7VE);
+> >          set_feature(env, ARM_FEATURE_ARM_DIV);
+> >          set_feature(env, ARM_FEATURE_LPAE);
+> >      }
+> > @@ -1481,6 +1482,7 @@ static void cortex_a7_initfn(Object *obj)
+> >
+> >      cpu->dtb_compatible = "arm,cortex-a7";
+> >      set_feature(&cpu->env, ARM_FEATURE_V7);
+> > +    set_feature(&cpu->env, ARM_FEATURE_V7VE);
+> >      set_feature(&cpu->env, ARM_FEATURE_VFP4);
+> >      set_feature(&cpu->env, ARM_FEATURE_NEON);
+> >      set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
+> > @@ -1526,6 +1528,7 @@ static void cortex_a15_initfn(Object *obj)
+> >
+> >      cpu->dtb_compatible = "arm,cortex-a15";
+> >      set_feature(&cpu->env, ARM_FEATURE_V7);
+> > +    set_feature(&cpu->env, ARM_FEATURE_V7VE);
+> >      set_feature(&cpu->env, ARM_FEATURE_VFP4);
+> >      set_feature(&cpu->env, ARM_FEATURE_NEON);
+> >      set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
+> > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> > index fb2f983..cc1e2fb 100644
+> > --- a/target/arm/cpu.h
+> > +++ b/target/arm/cpu.h
+> > @@ -1439,6 +1439,7 @@ enum arm_features {
+> >      ARM_FEATURE_OMAPCP, /* OMAP specific CP15 ops handling.  */
+> >      ARM_FEATURE_THUMB2EE,
+> >      ARM_FEATURE_V7MP,    /* v7 Multiprocessing Extensions */
+> > +    ARM_FEATURE_V7VE,    /* v7 with Virtualization Extensions */
+> >      ARM_FEATURE_V4T,
+> >      ARM_FEATURE_V5,
+> >      ARM_FEATURE_STRONGARM,
+> 
+> What's the difference between this and ARM_FEATURE_EL2 ?
 
-What's the difference between this and ARM_FEATURE_EL2 ?
+I use ARM_FEATURE_V7VE in a later patch to guard against implementing
+PMOVSSET on v7 machines which don't implement the virtualization
+extensions
+(http://lists.nongnu.org/archive/html/qemu-devel/2018-03/msg04917.html).
+I could use ARM_FEATURE_EL2, but declaring that v7 machines supported
+EL2 didn't feel right. I don't feel strongly one way or the other - how
+do you prefer to handle this?
 
-thanks
--- PMM
+-Aaron
+
+-- 
+Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies, Inc.
+Qualcomm Technologies, Inc. is a member of the
+Code Aurora Forum, a Linux Foundation Collaborative Project.

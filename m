@@ -1,83 +1,83 @@
-Received: by 10.28.4.212 with SMTP id 203csp4250771wme;
-        Tue, 17 Apr 2018 13:39:47 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx48RgMfkU6nD9v1rObEDVWUbLTMSsB9/MfFzgSenzh/GJ+hjJzBbW4XToUk7JeDSRvX/paxq
-X-Received: by 10.55.1.211 with SMTP id u80mr2972723qkg.17.1523997587048;
-        Tue, 17 Apr 2018 13:39:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523997587; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp4250993wme;
+        Tue, 17 Apr 2018 13:40:05 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx4/zX9atnGsag7+NU8Fv2ZyqK5GGvu9cLE4excKVc47mjOdHwsPVSUsr1/eQ90fHH1Af/Bfy
+X-Received: by 10.55.6.145 with SMTP id 139mr3477965qkg.232.1523997605266;
+        Tue, 17 Apr 2018 13:40:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523997605; cv=none;
         d=google.com; s=arc-20160816;
-        b=oz9b6BAQzaKb+pGbcU1UDzxifsEWHaXVzQ0Mfd06n1i4NF79aZBUjtRmTN/ybwnG+Y
-         MTcRppH78msqdP6ISFQtuviiTBBbmWMKs+EkT1CYufC1ODjirsdIRAhmI+xN6U1H/48N
-         YnD/H5egtfX9F15RhSkHAezkYRu4T0t4gLaayJLhS4Wvm2TdkurhMrvJGwktDRCuqPIJ
-         gHGss+ZTORmhoOv6UQ8C9sFzpsMTegD57I8xx/JnALUG0eE8rFK5i8gx5iJqBrgFvKNm
-         uLhJJGaPbfza+GujHqnKV7yjnLc78xzmZH4GmVXEJtEeiJoHbALXfii4wq+W0U59kdn4
-         b9Tw==
+        b=QtgXn/b/6s8kgiYVsoDtO+ru9qG9xYDPyYhchfEuyQigOixAt82ezFNMXQ/7aCJCkd
+         1LkvjPK4o3m6TmlNiyu/D5yGQXTAq82nNPfRBgh2+q0qI8ReLkHMo/lXPbZLmAMMkUA5
+         pyswV18pXW8YXQZhzFnAcFu5Mu2W4Y1JzIwNYba0HrnXqgyZvX0ASYU38j0KVMT5a5XW
+         vsFx4/P7fLmt2Hc7svMmM3/cXun601zC+myav/p2KadmMyI4VGYrYvbH7vSmg2gFlA87
+         18yaVW0AQm14S5kIZs5mcoK0DtfFvjvyUErcUlR6GWSp1akpYi/bYZz+e3ZFCWGK05RP
+         Rtwg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dmarc-filter:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=XiT2HkVnjl8L1632Q+tiel8Lob5M7udfWvYnvVemr/k=;
-        b=GtdN+IEarRGZhM9BgRnPS0Ar7k6iTZ3v9LOizYfrYLgix7WuxQGtrVV/z1jrqJH3Ga
-         T3yLyVdZ82qtEYy+87XgqAeVvDnb/Q66bmtTRmeQrr2yZiLMtFhY4sxQGsnTBdxUrbal
-         OnTDzfK2pwOq+11kv2RuGSooBbhcNoSTS9cytwq92gHSg6AEGRKwUYTZoaT241kHSv1h
-         HSbmHX/lC1Y2KxvbOO2wdxalZHmXWH9t/1XVo7I/w/R2aw7fqt9NEJ2F0XZxvjIAY8xi
-         bORIUt3BW/WlXkdK+Nw/YdjzjIIR7bZE9TZKZsXk2jNDKPEuGXHGhA0wLC8pcArCCbMA
-         SqEg==
+        bh=W286HjSeOdvAnFRBQGDEJyVMv9Y6pxYTv09U565CbyY=;
+        b=dFxEGBunx2hV4+Ak8M/UaE/Tnm6yllPsfaWFJHSs1AwKOXRMv5Iu8rXNIdHgePeQzc
+         KJEpiwQHGUDf8jEPVvC//TdueKT2XjN8V7ynOBpMibqirgD3W1qakqFzy/QDFzdEkf9O
+         ax41p6UQJuk7i7zy8q4Fgq7hjGbN2nPq4pn3KsE5BRu5JTyliF5wDg26U4CHisQDbVP9
+         d0deAch32uBeRLQSyP5JiPgtC9+WorXyekD9ePncUU4NKuXg36A7wDRjXpAPWkAS0WeJ
+         Bu3jkLKUpy3ZAP7k9Ji6VoIV2XffYeWil5YFrR5QuS+GGdqCughsyDRKyenhj1BNZmSJ
+         f+/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=LE/cBVhm;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=LE/cBVhm;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=M8rJ/0Ck;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=ZTSPwaUS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b18si1920771qta.108.2018.04.17.13.39.46
+        by mx.google.com with ESMTPS id 3si3304701qtp.263.2018.04.17.13.40.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 17 Apr 2018 13:39:47 -0700 (PDT)
+        Tue, 17 Apr 2018 13:40:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=LE/cBVhm;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=LE/cBVhm;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=M8rJ/0Ck;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=ZTSPwaUS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:33290 helo=lists.gnu.org)
+Received: from localhost ([::1]:33293 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f8XOE-0003P0-CH
-	for alex.bennee@linaro.org; Tue, 17 Apr 2018 16:39:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50414)
+	id 1f8XOW-0003fV-NH
+	for alex.bennee@linaro.org; Tue, 17 Apr 2018 16:40:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50489)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alindsay@codeaurora.org>) id 1f8XNO-0002mo-3z
-	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 16:38:57 -0400
+	(envelope-from <alindsay@codeaurora.org>) id 1f8XNS-0002qG-85
+	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 16:39:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alindsay@codeaurora.org>) id 1f8XNM-0004W7-A0
-	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 16:38:54 -0400
-Received: from smtp.codeaurora.org ([198.145.29.96]:39330)
+	(envelope-from <alindsay@codeaurora.org>) id 1f8XNP-0004up-6J
+	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 16:38:58 -0400
+Received: from smtp.codeaurora.org ([198.145.29.96]:39508)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <alindsay@codeaurora.org>)
-	id 1f8XNL-0004Mt-Ua; Tue, 17 Apr 2018 16:38:52 -0400
+	id 1f8XNO-0004ks-Mk; Tue, 17 Apr 2018 16:38:54 -0400
 Received: by smtp.codeaurora.org (Postfix, from userid 1000)
-	id EB60560FB1; Tue, 17 Apr 2018 20:38:50 +0000 (UTC)
+	id 837A56081C; Tue, 17 Apr 2018 20:38:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1523997530;
-	bh=m54t/EdXHI6+NMEuDeA91ZwmkdHPxSlAYvTwFkt6Rns=;
+	s=default; t=1523997533;
+	bh=pKHHlnkDIueaN38xQZ32d12ndkBEvfAczS3U73kwyRE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=LE/cBVhmBZ0KvclJQuiB/FPMDaVqjm8JfYk8yvK2ZPiru7BzpfYAHMbeIvoaug+so
-	nvUQz5+qza4z5qKgVjhT+E0gF/JdWtUF9KHtz+f49UmN87uxQ1OTMy74WsbTBXNuDc
-	t/MBDmwwVpYGxPdlQcojzvB72UnYlUXZxTXYdiZs=
+	b=M8rJ/0Ckc2m2PfY1EqfL2z3O6mKIMqfV245L49nt9Ei17vnVsNMb3VMDtgo7qZ46E
+	Lf82xhYY9HnjKesbyLQlhqQs9TlKroP07wLSmxCzGsQNtKlGMWAB11LXZa/0XiB/8p
+	rYubgCIXOOzqSbTN+C3CsU1TGYokiX7CUrPlwWIk=
 Received: from mossypile.qualcomm.com (global_nat1_iad_fw.qualcomm.com
 	[129.46.232.65])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: alindsay@smtp.codeaurora.org)
-	by smtp.codeaurora.org (Postfix) with ESMTPSA id 5421260F6D;
-	Tue, 17 Apr 2018 20:38:49 +0000 (UTC)
+	by smtp.codeaurora.org (Postfix) with ESMTPSA id 8794E6081C;
+	Tue, 17 Apr 2018 20:38:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1523997530;
-	bh=m54t/EdXHI6+NMEuDeA91ZwmkdHPxSlAYvTwFkt6Rns=;
+	s=default; t=1523997532;
+	bh=pKHHlnkDIueaN38xQZ32d12ndkBEvfAczS3U73kwyRE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=LE/cBVhmBZ0KvclJQuiB/FPMDaVqjm8JfYk8yvK2ZPiru7BzpfYAHMbeIvoaug+so
-	nvUQz5+qza4z5qKgVjhT+E0gF/JdWtUF9KHtz+f49UmN87uxQ1OTMy74WsbTBXNuDc
-	t/MBDmwwVpYGxPdlQcojzvB72UnYlUXZxTXYdiZs=
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 5421260F6D
+	b=ZTSPwaUSQVsSogkefP9h97A91skLafWf3Tblr+AU8kX3bNAefIaQ1Q8sRc+N3KsvX
+	mgsSHiqD1KCjvRrkRFLM52geO8N0Sc1Du8kzZhJhyHLFbVQSmEZ4Y53v4KCEjdfsxC
+	B4/NTuuAtwpyvU5FhSViBtK9hRUbb+5QckpPA4sk=
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 8794E6081C
 Authentication-Results: pdx-caf-mail.web.codeaurora.org;
 	dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: pdx-caf-mail.web.codeaurora.org;
@@ -86,16 +86,16 @@ From: Aaron Lindsay <alindsay@codeaurora.org>
 To: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
 	Alistair Francis <alistair.francis@xilinx.com>, Wei Huang <wei@redhat.com>,
 	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Date: Tue, 17 Apr 2018 16:37:48 -0400
-Message-Id: <1523997485-1905-5-git-send-email-alindsay@codeaurora.org>
+Date: Tue, 17 Apr 2018 16:37:50 -0400
+Message-Id: <1523997485-1905-7-git-send-email-alindsay@codeaurora.org>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1523997485-1905-1-git-send-email-alindsay@codeaurora.org>
 References: <1523997485-1905-1-git-send-email-alindsay@codeaurora.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 198.145.29.96
-Subject: [Qemu-arm] [PATCH v4 04/21] target/arm: Mask PMU register writes
- based on PMCR_EL0.N
+Subject: [Qemu-arm] [PATCH v4 06/21] target/arm: Support multiple EL change
+ hooks
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,89 +112,131 @@ Cc: Aaron Lindsay <alindsay@codeaurora.org>,
 	qemu-devel@nongnu.org, Digant Desai <digantd@codeaurora.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: R/AF8e5mKwAP
-
-This is in preparation for enabling counters other than PMCCNTR
+X-TUID: yEVvZNK3KC+i
 
 Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper.c | 31 ++++++++++++++++++++++---------
- 1 file changed, 22 insertions(+), 9 deletions(-)
+ target/arm/cpu.c       | 21 ++++++++++++++++-----
+ target/arm/cpu.h       | 20 ++++++++++----------
+ target/arm/internals.h |  7 ++++---
+ 3 files changed, 30 insertions(+), 18 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index f6269a2..8bec07e 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -52,11 +52,6 @@ typedef struct V8M_SAttributes {
- static void v8m_security_lookup(CPUARMState *env, uint32_t address,
-                                 MMUAccessType access_type, ARMMMUIdx mmu_idx,
-                                 V8M_SAttributes *sattrs);
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 022d8c5..1f689f6 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -55,13 +55,15 @@ static bool arm_cpu_has_work(CPUState *cs)
+          | CPU_INTERRUPT_EXITTB);
+ }
+ 
+-void arm_register_el_change_hook(ARMCPU *cpu, ARMELChangeHook *hook,
++void arm_register_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn *hook,
+                                  void *opaque)
+ {
+-    /* We currently only support registering a single hook function */
+-    assert(!cpu->el_change_hook);
+-    cpu->el_change_hook = hook;
+-    cpu->el_change_hook_opaque = opaque;
++    ARMELChangeHook *entry = g_new0(ARMELChangeHook, 1);
++
++    entry->hook = hook;
++    entry->opaque = opaque;
++
++    QLIST_INSERT_HEAD(&cpu->el_change_hooks, entry, node);
+ }
+ 
+ static void cp_reg_reset(gpointer key, gpointer value, gpointer opaque)
+@@ -552,6 +554,8 @@ static void arm_cpu_initfn(Object *obj)
+     cpu->cp_regs = g_hash_table_new_full(g_int_hash, g_int_equal,
+                                          g_free, g_free);
+ 
++    QLIST_INIT(&cpu->el_change_hooks);
++
+ #ifndef CONFIG_USER_ONLY
+     /* Our inbound IRQ and FIQ lines */
+     if (kvm_enabled()) {
+@@ -713,7 +717,14 @@ static void arm_cpu_post_init(Object *obj)
+ static void arm_cpu_finalizefn(Object *obj)
+ {
+     ARMCPU *cpu = ARM_CPU(obj);
++    ARMELChangeHook *hook, *next;
++
+     g_hash_table_destroy(cpu->cp_regs);
++
++    QLIST_FOREACH_SAFE(hook, &cpu->el_change_hooks, node, next) {
++        QLIST_REMOVE(hook, node);
++        g_free(hook);
++    }
+ }
+ 
+ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index ff349f5..50d129b 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -642,12 +642,17 @@ typedef struct CPUARMState {
+ } CPUARMState;
+ 
+ /**
+- * ARMELChangeHook:
++ * ARMELChangeHookFn:
+  * type of a function which can be registered via arm_register_el_change_hook()
+  * to get callbacks when the CPU changes its exception level or mode.
+  */
+-typedef void ARMELChangeHook(ARMCPU *cpu, void *opaque);
 -
--/* Definitions for the PMCCNTR and PMCR registers */
--#define PMCRD   0x8
--#define PMCRC   0x4
--#define PMCRE   0x1
- #endif
++typedef void ARMELChangeHookFn(ARMCPU *cpu, void *opaque);
++typedef struct ARMELChangeHook ARMELChangeHook;
++struct ARMELChangeHook {
++    ARMELChangeHookFn *hook;
++    void *opaque;
++    QLIST_ENTRY(ARMELChangeHook) node;
++};
  
- static int vfp_gdb_get_reg(CPUARMState *env, uint8_t *buf, int reg)
-@@ -906,6 +901,24 @@ static const ARMCPRegInfo v6_cp_reginfo[] = {
-     REGINFO_SENTINEL
- };
+ /* These values map onto the return values for
+  * QEMU_PSCI_0_2_FN_AFFINITY_INFO */
+@@ -836,8 +841,7 @@ struct ARMCPU {
+      */
+     bool cfgend;
  
-+/* Definitions for the PMU registers */
-+#define PMCRN_MASK  0xf800
-+#define PMCRN_SHIFT 11
-+#define PMCRD   0x8
-+#define PMCRC   0x4
-+#define PMCRE   0x1
-+
-+static inline uint32_t pmu_num_counters(CPUARMState *env)
-+{
-+  return (env->cp15.c9_pmcr & PMCRN_MASK) >> PMCRN_SHIFT;
-+}
-+
-+/* Bits allowed to be set/cleared for PMCNTEN* and PMINTEN* */
-+static inline uint64_t pmu_counter_mask(CPUARMState *env)
-+{
-+  return (1 << 31) | ((1 << pmu_num_counters(env)) - 1);
-+}
-+
- static CPAccessResult pmreg_access(CPUARMState *env, const ARMCPRegInfo *ri,
-                                    bool isread)
- {
-@@ -1119,14 +1132,14 @@ static void pmccfiltr_write(CPUARMState *env, const ARMCPRegInfo *ri,
- static void pmcntenset_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                             uint64_t value)
- {
--    value &= (1 << 31);
-+    value &= pmu_counter_mask(env);
-     env->cp15.c9_pmcnten |= value;
- }
+-    ARMELChangeHook *el_change_hook;
+-    void *el_change_hook_opaque;
++    QLIST_HEAD(, ARMELChangeHook) el_change_hooks;
  
- static void pmcntenclr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                              uint64_t value)
- {
--    value &= (1 << 31);
-+    value &= pmu_counter_mask(env);
-     env->cp15.c9_pmcnten &= ~value;
- }
+     int32_t node_id; /* NUMA node this CPU belongs to */
  
-@@ -1174,14 +1187,14 @@ static void pmintenset_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                              uint64_t value)
- {
-     /* We have no event counters so only the C bit can be changed */
--    value &= (1 << 31);
-+    value &= pmu_counter_mask(env);
-     env->cp15.c9_pminten |= value;
- }
+@@ -2906,12 +2910,8 @@ static inline AddressSpace *arm_addressspace(CPUState *cs, MemTxAttrs attrs)
+  * CPU changes exception level or mode. The hook function will be
+  * passed a pointer to the ARMCPU and the opaque data pointer passed
+  * to this function when the hook was registered.
+- *
+- * Note that we currently only support registering a single hook function,
+- * and will assert if this function is called twice.
+- * This facility is intended for the use of the GICv3 emulation.
+  */
+-void arm_register_el_change_hook(ARMCPU *cpu, ARMELChangeHook *hook,
++void arm_register_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn *hook,
+                                  void *opaque);
  
- static void pmintenclr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                              uint64_t value)
+ /**
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 8ce944b..6358c2a 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -727,11 +727,12 @@ void arm_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
+                                    int mmu_idx, MemTxAttrs attrs,
+                                    MemTxResult response, uintptr_t retaddr);
+ 
+-/* Call the EL change hook if one has been registered */
++/* Call any registered EL change hooks */
+ static inline void arm_call_el_change_hook(ARMCPU *cpu)
  {
--    value &= (1 << 31);
-+    value &= pmu_counter_mask(env);
-     env->cp15.c9_pminten &= ~value;
+-    if (cpu->el_change_hook) {
+-        cpu->el_change_hook(cpu, cpu->el_change_hook_opaque);
++    ARMELChangeHook *hook, *next;
++    QLIST_FOREACH_SAFE(hook, &cpu->el_change_hooks, node, next) {
++        hook->hook(cpu, hook->opaque);
+     }
  }
  
 -- 

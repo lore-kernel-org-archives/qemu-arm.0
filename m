@@ -1,83 +1,83 @@
-Received: by 10.28.4.212 with SMTP id 203csp4258076wme;
-        Tue, 17 Apr 2018 13:49:14 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx490RiU+7KxdjOeBrxlws4enA0UCeRTiDRcTJJP3tsVe9PXiP2FpdllzfTkrnrg+NKrkrYaI
-X-Received: by 10.55.110.4 with SMTP id j4mr3767523qkc.272.1523998154891;
-        Tue, 17 Apr 2018 13:49:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523998154; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp4263000wme;
+        Tue, 17 Apr 2018 13:55:51 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx48y4cDwTVwQhIxzV8E0CqaYt7i2vpWqGDdBGvStML6lZo1BgV+p+Nc+0HsD0g/av/E9ogBA
+X-Received: by 10.55.102.75 with SMTP id a72mr3585263qkc.218.1523998550948;
+        Tue, 17 Apr 2018 13:55:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523998550; cv=none;
         d=google.com; s=arc-20160816;
-        b=RRmOvU4ePWVkP1QOVnINS0jhZ/ADgAlJKNSR9ZaZLVv3kkMaRK1yhsaeMVsgyxWkW9
-         UNdZieVbEi/H6eUdqwvIAD9B9WG/yuYJW17T+ekhUvPOYYKu2F7+Wnu6LCH9FNaHGgNP
-         QhK35p4I7mebjAKbKxjCNlcqO3Ka7ZcUW6uvecaH5yfBbvrT8Nw+c5GfkwTHVq/npxxV
-         nJXBLgTqS+ec68n1WP68uwwWcOdVWjBgDNRGkWK35aD+7Btm7jntUdkp7aa+0r3JWTp7
-         icNBn9+7UNLep+Rf+mE5xdxdlJzcbQRTiWlgUYyDA8+ECbL9ws69kj39AMV5chEP0whc
-         J5aA==
+        b=I+ojjo85M8lBkixJvApvo2M49u4pl0hSFQsERN8cgrGyN3qpuzuJV9hw4t247uspJV
+         dnfTCD0RS8JhK1FPFBszJpWGhe7zpN3q2N/BwugfdMXbPBHuUa84Ep68BN2DEtQJXeA8
+         ws4qkLMLP63f1qbRLYH2yRk5N8sIJwVKb8T8O6zly5N/+llng6sTmRZC2IFRX1fe2QS6
+         xNG9Mv1EBk8+97zfC7UTnVwxcEN7CG2Ru/APXQdqDpkOKXX8lSSPHLXfylxcL1CA+bzf
+         pAHUdH+Cx5oMGIE8fzisCWoIASPXixGuVVbtwKWbFCdd6MbLVM8ohpcSZbaCoAW1xCt2
+         /zYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dmarc-filter:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=d2fUiI7vqpRUJnd6ztLrQi8kstFNL8QhJfuPqAjJ+1E=;
-        b=Y2oXWDfJfrW4dJDJc6ghEVBIpZ4r+whtdFjPCb4ua3qYwN7O5F6/IUU2u88HmBHePL
-         JEX59WRv6zfKlW2SYCAm6+el4DycIwYO2JsnDFQjjwbmvk2MZxdHUt6aE/oih3v9PRJb
-         Dv9ay/72Xicy3MW8MRkvAvq3c+Q1qaZHFLbf1P2bDYcoryIC5AI8wh13wcedx/EygDfN
-         zmBn3flGKVacmVIwG46eyITJwXLrUeMDtlMnfvB1S7QaXAF/OB2Ol6uViOpvHRWbbfhq
-         8og6UXnqLMhaBkYo2DAFBf/1I6HNx9G3HUHluqTZVlNu6z8PJhBl+5IBib/58asKttoo
-         NXWA==
+        bh=jEkDpaz5/DwJWjRODPNCWzDJn2ttG++wh6AZW/F4L6c=;
+        b=p5c1h19SL4Wr05Dj+W9qzaizuiohCvuf71icRgL/FZ8quTQKFPphShYh7tbbrBZ5GK
+         rz/jRQf9pDK0USegLaFHVC/vp8r3Uh7A2JSy3nMZels1RBTcVgMYvRY8+PdQHskb4Cm0
+         InbbstP4VzTP9lCXlM7Z7177YaQgEMweG2pv1mSEYMfEBB/AG+e2E8zn6BIuz3mYEbYb
+         4H0WIOuBxGBG0AJBZa+pZ/4uFno3/xsZDBWz77WO5W+qWdQxwIB3vOdqPAlmER1RQVwk
+         Ri1/QChGKMaIljoEm0TeZdraFCK2eYx73u84d99aRM0NJhZRRs0db7xjSE6mWZz44n+U
+         LYSw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=YhvJ0khC;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=P4RLCbqM;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=PwnmfpKI;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=aHt/9584;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m68si1572293qkd.298.2018.04.17.13.49.14
+        by mx.google.com with ESMTPS id q30si6364365qtg.61.2018.04.17.13.55.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 17 Apr 2018 13:49:14 -0700 (PDT)
+        Tue, 17 Apr 2018 13:55:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=YhvJ0khC;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=P4RLCbqM;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=PwnmfpKI;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=aHt/9584;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:33400 helo=lists.gnu.org)
+Received: from localhost ([::1]:33540 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f8XXO-0002uF-8w
-	for alex.bennee@linaro.org; Tue, 17 Apr 2018 16:49:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50739)
+	id 1f8Xdm-0008TW-Ca
+	for alex.bennee@linaro.org; Tue, 17 Apr 2018 16:55:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50812)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alindsay@codeaurora.org>) id 1f8XNe-00032k-AT
-	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 16:39:14 -0400
+	(envelope-from <alindsay@codeaurora.org>) id 1f8XNj-00038h-Ay
+	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 16:39:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alindsay@codeaurora.org>) id 1f8XNc-0006L8-8O
-	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 16:39:10 -0400
-Received: from smtp.codeaurora.org ([198.145.29.96]:40112)
+	(envelope-from <alindsay@codeaurora.org>) id 1f8XNh-00071p-Hi
+	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 16:39:15 -0400
+Received: from smtp.codeaurora.org ([198.145.29.96]:40352)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <alindsay@codeaurora.org>)
-	id 1f8XNb-0006CC-OI; Tue, 17 Apr 2018 16:39:08 -0400
+	id 1f8XNh-0006rJ-1z; Tue, 17 Apr 2018 16:39:13 -0400
 Received: by smtp.codeaurora.org (Postfix, from userid 1000)
-	id 12C3C60FB1; Tue, 17 Apr 2018 20:39:04 +0000 (UTC)
+	id 9CF3060FFA; Tue, 17 Apr 2018 20:39:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1523997546;
-	bh=oU7VGZkZTlzl2Jleg5SMD9XIAH3JOHaYtZV6624s5HI=;
+	s=default; t=1523997551;
+	bh=Nv7Qybaw0WMEg3i8AzOdmQOOF/a6g/QmST/S3HGUFus=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=YhvJ0khCaRiWr2jHakysEyel/PWckuPBD9kpoNbAhUfYB661b1q4SueWURpWnACEd
-	KvqQaZi+XaZ8BCS7JA/h6j+A5gpxQRSygWJXmUFJrRJhRcUPmuwbLY+9xtjuYWkbeI
-	jcoQ0QmjtRdTav/v8KQHiwYMpl/8EWWhLKepk+M4=
+	b=PwnmfpKImNMb/1dTBVEZG9F4ae0HMKrC87DfbGbcSZRR5Avyzik9whTXlIqSRziM1
+	zFjL3ldohHAkIAux+Ziy2PKoOass+88vlbI3N6Lh4+L04AMtSldSSJAqbxBaKo6ykX
+	qKF24Ga47ywGHvXeW4Wpy3mx2VTXMrEorZolWSP0=
 Received: from mossypile.qualcomm.com (global_nat1_iad_fw.qualcomm.com
 	[129.46.232.65])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: alindsay@smtp.codeaurora.org)
-	by smtp.codeaurora.org (Postfix) with ESMTPSA id 9E84A60F8E;
-	Tue, 17 Apr 2018 20:39:01 +0000 (UTC)
+	by smtp.codeaurora.org (Postfix) with ESMTPSA id 125E061137;
+	Tue, 17 Apr 2018 20:39:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1523997542;
-	bh=oU7VGZkZTlzl2Jleg5SMD9XIAH3JOHaYtZV6624s5HI=;
+	s=default; t=1523997548;
+	bh=Nv7Qybaw0WMEg3i8AzOdmQOOF/a6g/QmST/S3HGUFus=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=P4RLCbqM9I6wskjcUAnNheuFOqKL3/1qfhxFtvfL3TYL3f3miysMwZdi1Cn3k63cL
-	wsgUf5KU7/YkvaUkt9h284H17VxGbrkl3OFP/kIo+BwHrFSDmXq/1QGaXuZPwx5M19
-	O+BmqHAQBlNt1U3MjUq+/BWcHkjEGmB0qGW7RAII=
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 9E84A60F8E
+	b=aHt/9584RDM93j1x3gpxwIawRe1K8u7S69Bu1jUuEnh72XTWpr1EShkGOc2iQXoYS
+	Yr6gol0VufPnIQ7m95+HvqPWZRiYUVdfEOeQsWMzQ81EdfSMzVCpWE4jGprkR78lR3
+	zv2lmzTFAYBtMkVM4clqpd4vykCgMgiVrNUiBSys=
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 125E061137
 Authentication-Results: pdx-caf-mail.web.codeaurora.org;
 	dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: pdx-caf-mail.web.codeaurora.org;
@@ -86,15 +86,15 @@ From: Aaron Lindsay <alindsay@codeaurora.org>
 To: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
 	Alistair Francis <alistair.francis@xilinx.com>, Wei Huang <wei@redhat.com>,
 	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Date: Tue, 17 Apr 2018 16:37:58 -0400
-Message-Id: <1523997485-1905-15-git-send-email-alindsay@codeaurora.org>
+Date: Tue, 17 Apr 2018 16:38:02 -0400
+Message-Id: <1523997485-1905-19-git-send-email-alindsay@codeaurora.org>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1523997485-1905-1-git-send-email-alindsay@codeaurora.org>
 References: <1523997485-1905-1-git-send-email-alindsay@codeaurora.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 198.145.29.96
-Subject: [Qemu-arm] [PATCH v4 14/21] target/arm: Implement PMOVSSET
+Subject: [Qemu-arm] [PATCH v4 18/21] target/arm: PMU: Set PMCR.N to 4
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -111,74 +111,40 @@ Cc: Aaron Lindsay <alindsay@codeaurora.org>,
 	qemu-devel@nongnu.org, Digant Desai <digantd@codeaurora.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xjdUMy92xuaa
+X-TUID: ithN0J7tB//9
 
-Adding an array for v7VE+ CP registers was necessary so that PMOVSSET
-wasn't defined for all v7 processors.
+This both advertises that we support four counters and adds them to the
+implementation because the PMU_NUM_COUNTERS macro reads this value from
+the PMCR.
 
 Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
 ---
- target/arm/helper.c | 30 ++++++++++++++++++++++++++++++
- 1 file changed, 30 insertions(+)
+ target/arm/helper.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 20b42b4..572709e 100644
+index b91f022..7970129 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -1262,9 +1262,17 @@ static void pmcntenclr_write(CPUARMState *env, const ARMCPRegInfo *ri,
- static void pmovsr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                          uint64_t value)
- {
-+    value &= PMU_COUNTER_MASK(env);
-     env->cp15.c9_pmovsr &= ~value;
- }
- 
-+static void pmovsset_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                         uint64_t value)
-+{
-+    value &= PMU_COUNTER_MASK(env);
-+    env->cp15.c9_pmovsr |= value;
-+}
-+
- static void pmxevtyper_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                              uint64_t value)
- {
-@@ -1614,6 +1622,25 @@ static const ARMCPRegInfo v7mp_cp_reginfo[] = {
-     REGINFO_SENTINEL
- };
- 
-+static const ARMCPRegInfo v7ve_cp_reginfo[] = {
-+    /* Performance monitor registers which are not implemented in v7 before
-+     * v7ve:
-+     */
-+    { .name = "PMOVSSET", .cp = 15, .opc1 = 0, .crn = 9, .crm = 14, .opc2 = 3,
-+      .access = PL0_RW, .accessfn = pmreg_access,
-+      .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pmovsr),
-+      .writefn = pmovsset_write,
-+      .raw_writefn = raw_write },
-+    { .name = "PMOVSSET_EL0", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 14, .opc2 = 3,
-+      .access = PL0_RW, .accessfn = pmreg_access,
-+      .type = ARM_CP_ALIAS,
-+      .fieldoffset = offsetof(CPUARMState, cp15.c9_pmovsr),
-+      .writefn = pmovsset_write,
-+      .raw_writefn = raw_write },
-+    REGINFO_SENTINEL
-+};
-+
- static void teecr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                         uint64_t value)
- {
-@@ -4965,6 +4992,9 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-         !arm_feature(env, ARM_FEATURE_PMSA)) {
-         define_arm_cp_regs(cpu, v7mp_cp_reginfo);
-     }
-+    if (arm_feature(env, ARM_FEATURE_V7VE)) {
-+        define_arm_cp_regs(cpu, v7ve_cp_reginfo);
-+    }
-     if (arm_feature(env, ARM_FEATURE_V7)) {
-         /* v7 performance monitor control register: same implementor
-          * field as main ID register, and we implement only the cycle
+@@ -1587,7 +1587,7 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
+       .access = PL1_W, .type = ARM_CP_NOP },
+     /* Performance monitors are implementation defined in v7,
+      * but with an ARM recommended set of registers, which we
+-     * follow (although we don't actually implement any counters)
++     * follow.
+      *
+      * Performance registers fall into three categories:
+      *  (a) always UNDEF in PL0, RW in PL1 (PMINTENSET, PMINTENCLR)
+@@ -5205,7 +5205,8 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+             .access = PL0_RW, .accessfn = pmreg_access,
+             .type = ARM_CP_IO,
+             .fieldoffset = offsetof(CPUARMState, cp15.c9_pmcr),
+-            .resetvalue = cpu->midr & 0xff000000,
++            /* 4 counters enabled */
++            .resetvalue = (cpu->midr & 0xff000000) | (0x4 << PMCRN_SHIFT),
+             .writefn = pmcr_write, .raw_writefn = raw_write,
+         };
+         define_one_arm_cp_reg(cpu, &pmcr);
 -- 
 Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies, Inc.
 Qualcomm Technologies, Inc. is a member of the

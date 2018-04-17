@@ -1,83 +1,84 @@
-Received: by 10.28.4.212 with SMTP id 203csp4254001wme;
-        Tue, 17 Apr 2018 13:44:06 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4+8D6yOVb2nKtwlUWxerGGI7jp2lMc7/XwWwfIekG1iir7BDn/I3m2tAoVCQEC/YohGy7Vw
-X-Received: by 10.55.64.22 with SMTP id n22mr3649265qka.186.1523997846784;
-        Tue, 17 Apr 2018 13:44:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523997846; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp4254274wme;
+        Tue, 17 Apr 2018 13:44:27 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZpOEmMVVRzMmsdaq488YI+Z3TRDkvW0fI6/T4oFljBvm+vMi1IThS5gjEeDv6Z/ykQhk4fz
+X-Received: by 10.55.221.133 with SMTP id u5mr867166qku.376.1523997867325;
+        Tue, 17 Apr 2018 13:44:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523997867; cv=none;
         d=google.com; s=arc-20160816;
-        b=vkpPdVtGAneOfXgKFqG4DacDhlCwSSZizJW0iAHIiyHFVRBW0kEtEpSId2AN1kdeEv
-         uHs94ddqTmmlj1OG+HLfW0y5dI0FxMegWQ300JnAuFOtbuwsL6uEko5ucY+cOz8V1Z7r
-         E+HlRd4U4e080rxaKxShciUH4v4lmEYSfOOZw135MeeK34+1/Ic8hxwA+rCKiVHqu1wy
-         1T0lE4fRSmFXiuWY2rXRJbwd6gecEzrKDKCgmnRNNa0oWiojNIgwwvFLVwMctkG/KF+k
-         GCcn8UrbEc3dCZbaBcqurVKzCHzgphuROlxNhO6eiJ6swhdZ/Bv8EnwA/UclG/1A2LHS
-         hbQw==
+        b=gPC9/VVQ0bp7DzEXqhWXFhIo6zegIVMhUkjtNAvPPyE/dGtf9Q6JzQWgISxck5vhYX
+         36n7s9VxcwtPqhuZiktp1CCW3TwdnGgqM7vwmyalWtu+of3y7ALs50zvQQnqQbGcTxvx
+         JHNjQMqdWS5WhtmQQKdKEeeB1cdUs979QAxpmD8YqGeeF5jOEiyjQClvGpHaR9g3OwIo
+         vr7v28HUnOnJy6mh+tUkHGjuuhLqXX46OkbLeY1+BqH3BPXtpoNVoyHN0R1yhrvuDZm7
+         a6W+0UVayHFwZN+8uzSW1617uB6sorylc2y9JdAZW6Fvko5v8sq6tvz+4YbBHUt46xEC
+         fnWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dmarc-filter:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=QrMbEWQBozVQcX3czjSjSfb+m4ZcEr7/Ye6ApAWn+Ok=;
-        b=wC8IAvgq1sO44/JtRFaS753I4fdGdS/pqCu4GtQJmnuIFsN45sTVJAbLch5TGW1p86
-         gqVHdl7ihxkiqAmI5lb6c7iXbDLuycOPCazxKNmWINTVenSUG2HKkiQilhuOj2b/EwfE
-         8ROl6SxX+is/jPAqWakEPd3TMvf0GQ22u/VGEdqmBgxBwhR+U7Avtsmwv5rSLtiKgym9
-         SWb/uYIZLEdDc+GCZUq6G6hlfyFXus07sW4Foqcgb6Br3riF2nH2d+GeJGDg5ZaxL2dx
-         wDybkYY+xKIcuZc9xzaJqFr6R5C0DdgeWOCxqfTi9YszEVqJvBxWzLHoqeJGBApq9tDU
-         Z5oA==
+        bh=aBxdIY1oqvr7K82nKIVVBzL4b7c7k/ABpQ+yLjQPaTw=;
+        b=QsqGiIKfrrTlsQB7UZ081VtukZzaNTLIFFpfV9paBqnb697+/jstg6IU5j/T+Qh0VD
+         HepUEmJkwoP/aneiU5EOLHJsWMY/Vh+3s3GK3g3ugK0aqqvdgJp2geX9Tpyg7F6C3IWZ
+         FECTTGMbnQDBFYmWsACuxd1NR2RL3LH4NzmtEg/x9Y59SLyk7qpYKqm6YGFh5AuPNNbj
+         mRyb53sRWuXxaV3Bq5kF4EaScD4ieSTDSlu5ONHoEGeZmP5O+H82U2AhbocDmRlcSRz0
+         Xceq/alZ6o15mcxFsH9f7LHQg+HR9LJbOQIRK9WS8DbnX4YDjccrb/PJ1EC0l65wTTh+
+         DlCg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=CXoxQHnD;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=amBHsDD6;
+       dkim=neutral (body hash did not verify) header.i=@codeaurora.org header.s=default header.b=ZonyT4iq;
+       dkim=neutral (body hash did not verify) header.i=@codeaurora.org header.s=default header.b=gSlWzbjm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v68si1338283qkv.99.2018.04.17.13.44.06
+        by mx.google.com with ESMTPS id n137si5869775qkn.283.2018.04.17.13.44.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 17 Apr 2018 13:44:06 -0700 (PDT)
+        Tue, 17 Apr 2018 13:44:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=CXoxQHnD;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=amBHsDD6;
+       dkim=neutral (body hash did not verify) header.i=@codeaurora.org header.s=default header.b=ZonyT4iq;
+       dkim=neutral (body hash did not verify) header.i=@codeaurora.org header.s=default header.b=gSlWzbjm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:33335 helo=lists.gnu.org)
+Received: from localhost ([::1]:33347 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f8XSQ-00076e-6X
-	for alex.bennee@linaro.org; Tue, 17 Apr 2018 16:44:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51110)
+	id 1f8XSk-0007MT-RW
+	for alex.bennee@linaro.org; Tue, 17 Apr 2018 16:44:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50788)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alindsay@codeaurora.org>) id 1f8XNx-0003MQ-4d
-	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 16:39:34 -0400
+	(envelope-from <alindsay@codeaurora.org>) id 1f8XNi-000376-3Q
+	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 16:39:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alindsay@codeaurora.org>) id 1f8XNs-0008BY-Gn
-	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 16:39:29 -0400
-Received: from smtp.codeaurora.org ([198.145.29.96]:40714)
+	(envelope-from <alindsay@codeaurora.org>) id 1f8XNe-0006e5-U4
+	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 16:39:14 -0400
+Received: from smtp.codeaurora.org ([198.145.29.96]:40218)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <alindsay@codeaurora.org>)
-	id 1f8XNs-00084C-1X; Tue, 17 Apr 2018 16:39:24 -0400
+	id 1f8XNe-0006UW-EY; Tue, 17 Apr 2018 16:39:10 -0400
 Received: by smtp.codeaurora.org (Postfix, from userid 1000)
-	id 3136360FED; Tue, 17 Apr 2018 20:39:14 +0000 (UTC)
+	id AF2FE6110D; Tue, 17 Apr 2018 20:39:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1523997562;
-	bh=Y1Y1FUG/W4ScbrMYLIzDDzOcAtYV0bVXIPw5DO2lbJc=;
+	s=default; t=1523997548;
+	bh=0oKULlpn8JuVsEz+Gu/ZC3s8HQ9Kx3McMdVTHUim1uk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=CXoxQHnDpbSVNFDJ8HHApDs6/qPvEC9p97t+39sgndn0V/kHOktUZOIuO60hrcdDR
-	XJ8bASFREL56YuMZYbKqqrUHdxM2pi+rRMkSKwEYETbAShKLdLSe4z/17ZbksFLA7C
-	MW7HR9jhhKNhnDA2gAkMSByLjds+CsyKz5m8R4Tw=
+	b=ZonyT4iqOQQaxdObkOWfr53EfblEWdvIHFx9EbVF7lRDGY8Mh4gsU2kSO9EmUmXZO
+	wKNh8+zZfm+2nj3bnbl7uXlqFvHzTr56hcky7vrmH2dZtzGw9K0EiFTPYnVAoozXGO
+	9Su0CexSzaenaXSM+FBJ9X9cvMp99rSg45Wb+kig=
 Received: from mossypile.qualcomm.com (global_nat1_iad_fw.qualcomm.com
 	[129.46.232.65])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: alindsay@smtp.codeaurora.org)
-	by smtp.codeaurora.org (Postfix) with ESMTPSA id 0F49A60FF8;
-	Tue, 17 Apr 2018 20:39:10 +0000 (UTC)
+	by smtp.codeaurora.org (Postfix) with ESMTPSA id 3D32961133;
+	Tue, 17 Apr 2018 20:39:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1523997552;
-	bh=Y1Y1FUG/W4ScbrMYLIzDDzOcAtYV0bVXIPw5DO2lbJc=;
+	s=default; t=1523997541;
+	bh=0oKULlpn8JuVsEz+Gu/ZC3s8HQ9Kx3McMdVTHUim1uk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=amBHsDD6y3asYoRzd+p+JBWH2fpclCu5+OdyzpQISzHy4kSQRFAaZ5Oxw+faS3qQg
-	GhbhYvS1p6cXIilHHRbafrh9EgeRyf/soCGml3cY25ZgDnkDU8QE9v3Z/DV4xQoT29
-	xghvFjFF/tuk6X+Eg0hkCAPYE2bQXE2NfobwqyWQ=
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 0F49A60FF8
+	b=gSlWzbjmTbldhC21xMaFrqazfRskm9Tu9w6ZwjDCduLrtxPPUnCwfYROdAQtCdyT9
+	Yb0YObJIvJApbCR/vFqWGE8DLA2OUcOHTr97/InnkgEhH0T+wMMcpbHhR8o8AeOyP5
+	k67Da+ERUNWsB0hXbHFKhzytDsS9rAynzSqslEmo=
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 3D32961133
 Authentication-Results: pdx-caf-mail.web.codeaurora.org;
 	dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: pdx-caf-mail.web.codeaurora.org;
@@ -86,16 +87,19 @@ From: Aaron Lindsay <alindsay@codeaurora.org>
 To: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
 	Alistair Francis <alistair.francis@xilinx.com>, Wei Huang <wei@redhat.com>,
 	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Date: Tue, 17 Apr 2018 16:38:05 -0400
-Message-Id: <1523997485-1905-22-git-send-email-alindsay@codeaurora.org>
+Date: Tue, 17 Apr 2018 16:37:57 -0400
+Message-Id: <1523997485-1905-14-git-send-email-alindsay@codeaurora.org>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1523997485-1905-1-git-send-email-alindsay@codeaurora.org>
 References: <1523997485-1905-1-git-send-email-alindsay@codeaurora.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 198.145.29.96
-Subject: [Qemu-arm] [PATCH v4 21/21] target/arm: Send interrupts on PMU
- counter overflow
+Subject: [Qemu-arm] [PATCH v4 13/21] target/arm: Add ARM_FEATURE_V7VE for v7
+ Virtualization Extensions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,357 +116,59 @@ Cc: Aaron Lindsay <alindsay@codeaurora.org>,
 	qemu-devel@nongnu.org, Digant Desai <digantd@codeaurora.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HY3n3lWznY8c
-
-Setup a QEMUTimer to get a callback when we expect counters to next
-overflow and trigger an interrupt at that time.
+X-TUID: EdX/Janw6+O8
 
 Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 ---
- target/arm/cpu.c    |  11 +++++
- target/arm/cpu.h    |   7 +++
- target/arm/helper.c | 128 ++++++++++++++++++++++++++++++++++++++++++++++++----
- 3 files changed, 137 insertions(+), 9 deletions(-)
+ target/arm/cpu.c | 3 +++
+ target/arm/cpu.h | 1 +
+ 2 files changed, 4 insertions(+)
 
 diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 22063ca..592b7fc 100644
+index 2228e4c..9d27ffc 100644
 --- a/target/arm/cpu.c
 +++ b/target/arm/cpu.c
-@@ -741,6 +741,12 @@ static void arm_cpu_finalizefn(Object *obj)
-         QLIST_REMOVE(hook, node);
-         g_free(hook);
+@@ -774,6 +774,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error=
+ **errp)
+     /* Some features automatically imply others: */
+     if (arm_feature(env, ARM_FEATURE_V8)) {
+         set_feature(env, ARM_FEATURE_V7);
++        set_feature(env, ARM_FEATURE_V7VE);
+         set_feature(env, ARM_FEATURE_ARM_DIV);
+         set_feature(env, ARM_FEATURE_LPAE);
      }
-+#ifndef CONFIG_USER_ONLY
-+    if (arm_feature(&cpu->env, ARM_FEATURE_PMU)) {
-+        timer_deinit(cpu->pmu_timer);
-+        timer_free(cpu->pmu_timer);
-+    }
-+#endif
- }
- 
- static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-@@ -907,6 +913,11 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-             arm_register_pre_el_change_hook(cpu, &pmu_pre_el_change, 0);
-             arm_register_el_change_hook(cpu, &pmu_post_el_change, 0);
-         }
-+
-+#ifndef CONFIG_USER_ONLY
-+        cpu->pmu_timer = timer_new(QEMU_CLOCK_VIRTUAL, 1, arm_pmu_timer_cb,
-+                cpu);
-+#endif
-     } else {
-         cpu->pmceid0 = 0x00000000;
-         cpu->pmceid1 = 0x00000000;
+@@ -1490,6 +1491,7 @@ static void cortex_a7_initfn(Object *obj)
+=20
+     cpu->dtb_compatible =3D "arm,cortex-a7";
+     set_feature(&cpu->env, ARM_FEATURE_V7);
++    set_feature(&cpu->env, ARM_FEATURE_V7VE);
+     set_feature(&cpu->env, ARM_FEATURE_VFP4);
+     set_feature(&cpu->env, ARM_FEATURE_NEON);
+     set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
+@@ -1535,6 +1537,7 @@ static void cortex_a15_initfn(Object *obj)
+=20
+     cpu->dtb_compatible =3D "arm,cortex-a15";
+     set_feature(&cpu->env, ARM_FEATURE_V7);
++    set_feature(&cpu->env, ARM_FEATURE_V7VE);
+     set_feature(&cpu->env, ARM_FEATURE_VFP4);
+     set_feature(&cpu->env, ARM_FEATURE_NEON);
+     set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
 diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 2f07196..e9b6dab 100644
+index 9f769ae..132e08d 100644
 --- a/target/arm/cpu.h
 +++ b/target/arm/cpu.h
-@@ -702,6 +702,8 @@ struct ARMCPU {
- 
-     /* Timers used by the generic (architected) timer */
-     QEMUTimer *gt_timer[NUM_GTIMERS];
-+    /* Timer used by the PMU */
-+    QEMUTimer *pmu_timer;
-     /* GPIO outputs for generic timer */
-     qemu_irq gt_timer_outputs[NUM_GTIMERS];
-     /* GPIO output for GICv3 maintenance interrupt signal */
-@@ -933,6 +935,11 @@ void pmu_op_start(CPUARMState *env);
- void pmu_op_finish(CPUARMState *env);
- 
- /**
-+ * Called when a PMU counter is due to overflow
-+ */
-+void arm_pmu_timer_cb(void *opaque);
-+
-+/**
-  * Functions to register as EL change hooks for PMU mode filtering
-  */
- void pmu_pre_el_change(ARMCPU *cpu, void *ignored);
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 046e37c..2efdc63 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -905,6 +905,7 @@ static const ARMCPRegInfo v6_cp_reginfo[] = {
- /* Definitions for the PMU registers */
- #define PMCRN_MASK  0xf800
- #define PMCRN_SHIFT 11
-+#define PMCRLC  0x40
- #define PMCRDP  0x10
- #define PMCRD   0x8
- #define PMCRC   0x4
-@@ -920,6 +921,8 @@ static const ARMCPRegInfo v6_cp_reginfo[] = {
- #define PMXEVTYPER_MT         0x02000000
- #define PMXEVTYPER_EVTCOUNT   0x000003ff
- 
-+#define PMEVCNTR_OVERFLOW_MASK ((uint64_t)1 << 31)
-+
- #define PMCCFILTR             0xf8000000
- #define PMCCFILTR_M           PMXEVTYPER_M
- #define PMCCFILTR_EL0         (PMCCFILTR | PMCCFILTR_M)
-@@ -942,6 +945,11 @@ typedef struct pm_event {
-     /* Retrieve the current count of the underlying event. The programmed
-      * counters hold a difference from the return value from this function */
-     uint64_t (*get_count)(CPUARMState *);
-+    /* Return how many nanoseconds it will take (at a minimum) for count events
-+     * to occur. A negative value indicates the counter will never overflow, or
-+     * that the counter has otherwise arranged for the overflow bit to be set
-+     * and the PMU interrupt to be raised on overflow. */
-+    int64_t (*ns_per_count)(uint64_t);
- } pm_event;
- 
- static bool event_always_supported(CPUARMState *env)
-@@ -958,6 +966,11 @@ static uint64_t swinc_get_count(CPUARMState *env)
-     return 0;
- }
- 
-+static int64_t swinc_ns_per(uint64_t ignored)
-+{
-+    return -1;
-+}
-+
- /*
-  * Return the underlying cycle count for the PMU cycle counters. If we're in
-  * usermode, simply return 0.
-@@ -973,6 +986,11 @@ static uint64_t cycles_get_count(CPUARMState *env)
- }
- 
- #ifndef CONFIG_USER_ONLY
-+static int64_t cycles_ns_per(uint64_t cycles)
-+{
-+    return ARM_CPU_FREQ / NANOSECONDS_PER_SECOND;
-+}
-+
- static bool instructions_supported(CPUARMState *env)
- {
-     return use_icount == 1 /* Precise instruction counting */;
-@@ -982,22 +1000,30 @@ static uint64_t instructions_get_count(CPUARMState *env)
- {
-     return (uint64_t)cpu_get_icount_raw();
- }
-+
-+static int64_t instructions_ns_per(uint64_t icount)
-+{
-+    return cpu_icount_to_ns((int64_t)icount);
-+}
- #endif
- 
- #define SUPPORTED_EVENT_SENTINEL UINT16_MAX
- static const pm_event pm_events[] = {
-     { .number = 0x000, /* SW_INCR */
-       .supported = event_always_supported,
--      .get_count = swinc_get_count
-+      .get_count = swinc_get_count,
-+      .ns_per_count = swinc_ns_per
-     },
- #ifndef CONFIG_USER_ONLY
-     { .number = 0x008, /* INST_RETIRED, Instruction architecturally executed */
-       .supported = instructions_supported,
--      .get_count = instructions_get_count
-+      .get_count = instructions_get_count,
-+      .ns_per_count = instructions_ns_per
-     },
-     { .number = 0x011, /* CPU_CYCLES, Cycle */
-       .supported = event_always_supported,
--      .get_count = cycles_get_count
-+      .get_count = cycles_get_count,
-+      .ns_per_count = cycles_ns_per
-     },
- #endif
-     { .number = SUPPORTED_EVENT_SENTINEL }
-@@ -1185,6 +1211,13 @@ static inline bool pmu_counter_enabled(CPUARMState *env, uint8_t counter)
-     return enabled && !prohibited && !filtered;
- }
- 
-+static void pmu_update_irq(CPUARMState *env)
-+{
-+    ARMCPU *cpu = arm_env_get_cpu(env);
-+    qemu_set_irq(cpu->pmu_interrupt, (env->cp15.c9_pmcr & PMCRE) &&
-+            (env->cp15.c9_pminten & env->cp15.c9_pmovsr));
-+}
-+
- /*
-  * Ensure c15_ccnt is the guest-visible count so that operations such as
-  * enabling/disabling the counter or filtering, modifying the count itself,
-@@ -1202,7 +1235,18 @@ void pmccntr_op_start(CPUARMState *env)
-             eff_cycles /= 64;
-         }
- 
--        env->cp15.c15_ccnt = eff_cycles - env->cp15.c15_ccnt_delta;
-+        uint64_t new_pmccntr = eff_cycles - env->cp15.c15_ccnt_delta;
-+
-+        unsigned int overflow_bit = (env->cp15.c9_pmcr & PMCRLC) ? 63 : 31;
-+        uint64_t overflow_mask = (uint64_t)1 << overflow_bit;
-+        if (!(new_pmccntr & overflow_mask) &&
-+                (env->cp15.c15_ccnt & overflow_mask)) {
-+            env->cp15.c9_pmovsr |= (1 << 31);
-+            new_pmccntr &= ~overflow_mask;
-+            pmu_update_irq(env);
-+        }
-+
-+        env->cp15.c15_ccnt = new_pmccntr;
-     }
-     env->cp15.c15_ccnt_delta = cycles;
- }
-@@ -1215,13 +1259,24 @@ void pmccntr_op_start(CPUARMState *env)
- void pmccntr_op_finish(CPUARMState *env)
- {
-     if (pmu_counter_enabled(env, 31)) {
--        uint64_t prev_cycles = env->cp15.c15_ccnt_delta;
-+#ifndef CONFIG_USER_ONLY
-+        uint64_t delta = ((env->cp15.c9_pmcr & PMCRLC) ?
-+                UINT64_MAX : UINT32_MAX) - (uint32_t)env->cp15.c15_ccnt + 1;
-+        int64_t overflow_in = cycles_ns_per(delta);
- 
-+        if (overflow_in > 0) {
-+            int64_t overflow_at = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
-+                overflow_in;
-+            ARMCPU *cpu = arm_env_get_cpu(env);
-+            timer_mod_anticipate_ns(cpu->pmu_timer, overflow_at);
-+        }
-+#endif
-+
-+        uint64_t prev_cycles = env->cp15.c15_ccnt_delta;
-         if (env->cp15.c9_pmcr & PMCRD) {
-             /* Increment once every 64 processor clock cycles */
-             prev_cycles /= 64;
-         }
--
-         env->cp15.c15_ccnt_delta = prev_cycles - env->cp15.c15_ccnt;
-     }
- }
-@@ -1234,8 +1289,15 @@ static void pmevcntr_op_start(CPUARMState *env, uint8_t counter)
-     uint64_t count = pm_events[event_idx].get_count(env);
- 
-     if (pmu_counter_enabled(env, counter)) {
--        env->cp15.c14_pmevcntr[counter] =
--            count - env->cp15.c14_pmevcntr_delta[counter];
-+        uint64_t new_pmevcntr = count - env->cp15.c14_pmevcntr_delta[counter];
-+
-+        if (!(new_pmevcntr & PMEVCNTR_OVERFLOW_MASK) &&
-+                (env->cp15.c14_pmevcntr[counter] & PMEVCNTR_OVERFLOW_MASK)) {
-+            env->cp15.c9_pmovsr |= (1 << counter);
-+            new_pmevcntr &= ~PMEVCNTR_OVERFLOW_MASK;
-+            pmu_update_irq(env);
-+        }
-+        env->cp15.c14_pmevcntr[counter] = new_pmevcntr;
-     }
-     env->cp15.c14_pmevcntr_delta[counter] = count;
- }
-@@ -1243,6 +1305,21 @@ static void pmevcntr_op_start(CPUARMState *env, uint8_t counter)
- static void pmevcntr_op_finish(CPUARMState *env, uint8_t counter)
- {
-     if (pmu_counter_enabled(env, counter)) {
-+#ifndef CONFIG_USER_ONLY
-+        uint16_t event = env->cp15.c14_pmevtyper[counter] & PMXEVTYPER_EVTCOUNT;
-+        uint16_t event_idx = supported_event_map[event];
-+        uint64_t delta = UINT32_MAX -
-+            (uint32_t)env->cp15.c14_pmevcntr[counter] + 1;
-+        int64_t overflow_in = pm_events[event_idx].ns_per_count(delta);
-+
-+        if (overflow_in > 0) {
-+            int64_t overflow_at = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
-+                overflow_in;
-+            ARMCPU *cpu = arm_env_get_cpu(env);
-+            timer_mod_anticipate_ns(cpu->pmu_timer, overflow_at);
-+        }
-+#endif
-+
-         env->cp15.c14_pmevcntr_delta[counter] -=
-             env->cp15.c14_pmevcntr[counter];
-     }
-@@ -1276,6 +1353,19 @@ void pmu_post_el_change(ARMCPU *cpu, void *ignored)
-     pmu_op_finish(&cpu->env);
- }
- 
-+void arm_pmu_timer_cb(void *opaque)
-+{
-+    ARMCPU *cpu = opaque;
-+
-+    /* Update all the counter values based on the current underlying counts,
-+     * triggering interrupts to be raised, if necessary. pmu_op_finish() also
-+     * has the effect of setting the cpu->pmu_timer to the next earliest time a
-+     * counter may expire.
-+     */
-+    pmu_op_start(&cpu->env);
-+    pmu_op_finish(&cpu->env);
-+}
-+
- static void pmcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                        uint64_t value)
- {
-@@ -1312,7 +1402,21 @@ static void pmswinc_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                 /* counter is SW_INCR */
-                 (env->cp15.c14_pmevtyper[i] & PMXEVTYPER_EVTCOUNT) == 0x0) {
-             pmevcntr_op_start(env, i);
--            env->cp15.c14_pmevcntr[i]++;
-+
-+            /* Detect if this write causes an overflow since we can't predict
-+             * PMSWINC overflows like we can for other events
-+             */
-+            uint64_t new_pmswinc = env->cp15.c14_pmevcntr[i] + 1;
-+
-+            if (!(new_pmswinc & PMEVCNTR_OVERFLOW_MASK) &&
-+                    (env->cp15.c14_pmevcntr[i] & PMEVCNTR_OVERFLOW_MASK)) {
-+                env->cp15.c9_pmovsr |= (1 << i);
-+                new_pmswinc &= ~PMEVCNTR_OVERFLOW_MASK;
-+                pmu_update_irq(env);
-+            }
-+
-+            env->cp15.c14_pmevcntr[i] = new_pmswinc;
-+
-             pmevcntr_op_finish(env, i);
-         }
-     }
-@@ -1383,6 +1487,7 @@ static void pmcntenset_write(CPUARMState *env, const ARMCPRegInfo *ri,
- {
-     value &= pmu_counter_mask(env);
-     env->cp15.c9_pmcnten |= value;
-+    pmu_update_irq(env);
- }
- 
- static void pmcntenclr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -1390,6 +1495,7 @@ static void pmcntenclr_write(CPUARMState *env, const ARMCPRegInfo *ri,
- {
-     value &= pmu_counter_mask(env);
-     env->cp15.c9_pmcnten &= ~value;
-+    pmu_update_irq(env);
- }
- 
- static void pmovsr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -1397,6 +1503,7 @@ static void pmovsr_write(CPUARMState *env, const ARMCPRegInfo *ri,
- {
-     value &= pmu_counter_mask(env);
-     env->cp15.c9_pmovsr &= ~value;
-+    pmu_update_irq(env);
- }
- 
- static void pmovsset_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -1404,6 +1511,7 @@ static void pmovsset_write(CPUARMState *env, const ARMCPRegInfo *ri,
- {
-     value &= pmu_counter_mask(env);
-     env->cp15.c9_pmovsr |= value;
-+    pmu_update_irq(env);
- }
- 
- static void pmevtyper_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -1529,6 +1637,7 @@ static void pmintenset_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     /* We have no event counters so only the C bit can be changed */
-     value &= pmu_counter_mask(env);
-     env->cp15.c9_pminten |= value;
-+    pmu_update_irq(env);
- }
- 
- static void pmintenclr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -1536,6 +1645,7 @@ static void pmintenclr_write(CPUARMState *env, const ARMCPRegInfo *ri,
- {
-     value &= pmu_counter_mask(env);
-     env->cp15.c9_pminten &= ~value;
-+    pmu_update_irq(env);
- }
- 
- static void vbar_write(CPUARMState *env, const ARMCPRegInfo *ri,
--- 
-Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies, Inc.
+@@ -1445,6 +1445,7 @@ enum arm_features {
+     ARM_FEATURE_OMAPCP, /* OMAP specific CP15 ops handling.  */
+     ARM_FEATURE_THUMB2EE,
+     ARM_FEATURE_V7MP,    /* v7 Multiprocessing Extensions */
++    ARM_FEATURE_V7VE,    /* v7 with Virtualization Extensions */
+     ARM_FEATURE_V4T,
+     ARM_FEATURE_V5,
+     ARM_FEATURE_STRONGARM,
+--=20
+Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies=
+, Inc.
 Qualcomm Technologies, Inc. is a member of the
 Code Aurora Forum, a Linux Foundation Collaborative Project.
 

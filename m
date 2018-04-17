@@ -1,83 +1,83 @@
-Received: by 10.28.4.212 with SMTP id 203csp4254481wme;
-        Tue, 17 Apr 2018 13:44:41 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx494wOkYjAOnTv/yLnns6Fb6JRl4TOpcTbYeStBjUHbWkVLF/4F3lr2wkarO9RG8uhkup8NM
-X-Received: by 10.55.93.65 with SMTP id r62mr3437184qkb.143.1523997881140;
-        Tue, 17 Apr 2018 13:44:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523997881; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp4254646wme;
+        Tue, 17 Apr 2018 13:44:55 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx49NvjKlNru3gewfAyfKMVBpgBZ8pcLULfqddJFCmpo+/ql/lGdPcq/7dHmUXEoAlCWER5kC
+X-Received: by 10.55.20.36 with SMTP id e36mr3587363qkh.315.1523997895285;
+        Tue, 17 Apr 2018 13:44:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523997895; cv=none;
         d=google.com; s=arc-20160816;
-        b=b1DK3UCpzDQOlEoc2JXVfXHAsPw2W2PubAypZmRva6wnGV85Aw/oCgojWfE0axjUm9
-         4QA+zQ0olPu5AeYzQonMtGTO4CtJtGqfawsbkmblQTRB1O2Qo8mJTKN/RiLNvDqKss6G
-         3+gxwt59cJdxgGU4krHd3tgENjZk8bquOjWgMW1k5tv5/MBjmEbrPFs2wUX1y6uGlumm
-         Q0iet21Hs+amxixanZVRFfnq6dljAOGbJXTovZXm1d1ZMQcCGcA0b8jEJow4tm6JxUXv
-         sfe3sxbjxLyNZ5JEc/G216zTtiY80Ru29eO6us1bPd962sQtTzvInHryrcJuLxYZpmq3
-         jS/Q==
+        b=eiRV+NdeM2L8FfeC1UWVlmSgKUU2g4shIWvq01LvmC2C2pEDqQdqEg9teeavpwPp+u
+         pYlvt3CytgF/130cXKz+rpdxI/sB72Seu6/aOG2u/ZRfDFnyP+APNeLuR9LdpyG8llIt
+         VMXZ1RP4OTNmVLwMXu/wGoPBeA1+UGvDRRjnghUkltOaNrbtrZ7BlNo0X2mACNKIaP8f
+         X1TBQNeHbW1rn16umV2EP/qqSxe3byGz6mAEkDv1Z6+aCBXu5/fG5QJKPiXKaCcensDw
+         6N0jTroy9Up2bT2P92jZX/vI0XANHH5WjwlLTQDEolp58dJf+g9KuEOk+3+DElZmS1Wl
+         bp0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dmarc-filter:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=J64GKgKbMbc8LYjkI59CzQfHR0LidOj97V+xwEoKe1E=;
-        b=H7+apkehFcT8+MWL6WY5KVqeS4MsDhrqd25/cYrY1dqI7rSftZq9D8JJkWAeCIkvue
-         pZnvAoDUNvwwjFP+Wtxo7CZXH3YdHhmilWXJzJFwqmhtRykjlhmjRb8vVJT3cwnIclwB
-         yuYaqF/E9240wRkQIFpK32Afx6o5Pb0RfD4r0rfStw9CvN+pFyWYMDIkAiNsGX+KsvX8
-         QtcJK5Q2hKBFwIiV0+9njRkUo/5IjrzRQoDNtz9a6U/8WKI7bzbNleh9gnxBOX/HpNH2
-         wSJwsP0fHrhdmozZwbu/z9aZ+ehfeDVxD7ZfUp7Cekk80Y2KuNR/Zz7eIBTK4IbM/3DD
-         41Ig==
+        bh=xAzv3LgbIDZvp5tntBDxNb+jJ/fQoEeCrBzfNK9TWj4=;
+        b=CVnk8cnVJHqfkLdYFd4sUfl4rqdeTwcnkDmaixPPXzyN2+jbOBEEkMR0OcfaDtnTi8
+         ytN/MHq5tBl8K99U33/k2Bpg+k+/yue3M9okmtDmU31OKJXpUIvevHY15yEr/Fpmp+E9
+         azfmi/5fZQ90b4EuSGCjeFEuMmrY1qFlV8QZTGa6eFar1KhO0Zs4TDWaMUbSYHdqkcMs
+         Q8Qw06PPfj2AmSeUzHIZiqqkJUw9VX0iqnee2Mwqm/lW5wivSAKndFlgFFHfL43ZeM2J
+         XxgHJE0DeH20vlVrV3UqLdGIpE1h4WMI0k4W45Z1eMtPnoyFW/V4W+gpTArbsFPPkN6j
+         BDnQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=T09JOAHm;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=l79b6FI5;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=A5zyQzm2;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=iX4aIJGv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x45si3027438qth.217.2018.04.17.13.44.40
+        by mx.google.com with ESMTPS id y24si3650385qtm.252.2018.04.17.13.44.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 17 Apr 2018 13:44:41 -0700 (PDT)
+        Tue, 17 Apr 2018 13:44:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=T09JOAHm;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=l79b6FI5;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=A5zyQzm2;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=iX4aIJGv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:33349 helo=lists.gnu.org)
+Received: from localhost ([::1]:33350 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f8XSy-0007Zq-JG
-	for alex.bennee@linaro.org; Tue, 17 Apr 2018 16:44:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50802)
+	id 1f8XTC-0007mi-NG
+	for alex.bennee@linaro.org; Tue, 17 Apr 2018 16:44:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50827)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alindsay@codeaurora.org>) id 1f8XNi-000383-PN
-	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 16:39:18 -0400
+	(envelope-from <alindsay@codeaurora.org>) id 1f8XNj-000397-NC
+	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 16:39:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alindsay@codeaurora.org>) id 1f8XNg-0006pw-6Q
-	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 16:39:14 -0400
-Received: from smtp.codeaurora.org ([198.145.29.96]:40276)
+	(envelope-from <alindsay@codeaurora.org>) id 1f8XNg-0006vz-Qx
+	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 16:39:15 -0400
+Received: from smtp.codeaurora.org ([198.145.29.96]:40318)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <alindsay@codeaurora.org>)
-	id 1f8XNf-0006fn-So; Tue, 17 Apr 2018 16:39:12 -0400
+	id 1f8XNg-0006lH-DQ; Tue, 17 Apr 2018 16:39:12 -0400
 Received: by smtp.codeaurora.org (Postfix, from userid 1000)
-	id 3723B6081C; Tue, 17 Apr 2018 20:39:08 +0000 (UTC)
+	id D066760FF7; Tue, 17 Apr 2018 20:39:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1523997550;
-	bh=meTjskNCzVprdv1hIohzSs2e7p3QlAO+XWhT6wsYkVw=;
+	s=default; t=1523997551;
+	bh=eQywwxTT5EzOjtfw9UAXBucHrz+66tDEx61Jdc+4vqI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=T09JOAHm1uoGPI7FBI72/x/EzKqN6u6p4tghIlwhCsJxmbhhD0brnF1Ak0KwdhqG/
-	32mQiT/IGZ8LzMWg4kZm/HWA6sojJBf3IXXjXQNE5rckw4EW1eB9s+uzhksur4wPYv
-	E8A1G250k7b1T92d73BkjnmDvrRg7pt4cYqUMXlQ=
+	b=A5zyQzm2gQ6jlMqO1sB2kRmnebmBc4dtpU9Dl4+EOKRUAs1h5+RpFUKZCUzPJ89ap
+	NtU8Nw4lm5Eic97I1g8PBgfT4DzXv+4UBKZZaU9YYMYAFmymL3yB2CTSwqlceiMXYD
+	8Ojn5jOQwILdhSxx8wN99BBFXTMnzgNNQlbEnE68=
 Received: from mossypile.qualcomm.com (global_nat1_iad_fw.qualcomm.com
 	[129.46.232.65])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: alindsay@smtp.codeaurora.org)
-	by smtp.codeaurora.org (Postfix) with ESMTPSA id B1B1D61133;
-	Tue, 17 Apr 2018 20:39:05 +0000 (UTC)
+	by smtp.codeaurora.org (Postfix) with ESMTPSA id 18AFF60F74;
+	Tue, 17 Apr 2018 20:39:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1523997546;
-	bh=meTjskNCzVprdv1hIohzSs2e7p3QlAO+XWhT6wsYkVw=;
+	s=default; t=1523997544;
+	bh=eQywwxTT5EzOjtfw9UAXBucHrz+66tDEx61Jdc+4vqI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=l79b6FI5EXH8T4v1/8LIDZz6xOSWhjgIJK6wLJTSC6JocidL9iTO/5XbTrzl/C0ev
-	Bhk5UYskfjRFm+vCvygt8LiSEkInBf/qXqPxzC5Ter6WYU3zkhDnx+ahWq/HfVWmnq
-	7GVphcIm8dG1fAoGHTVmtMpwSPIxPzHyzcjbBCXY=
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org B1B1D61133
+	b=iX4aIJGv1dQ6AeKpHwTCPomEs18aObx1VvsR56GJR1er7KFhe//im1Sgj6aJUMMP5
+	09X3olYsy9bL0IQIy/JnlefYg+ff19oqcro9qfeJ61qJlU4sMKwZwfIn/wlAEG1UMU
+	0kYB+M0Mi4ZkbMV5cMH4BmApWOTe3OtcrwZhxo8w=
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 18AFF60F74
 Authentication-Results: pdx-caf-mail.web.codeaurora.org;
 	dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: pdx-caf-mail.web.codeaurora.org;
@@ -86,16 +86,16 @@ From: Aaron Lindsay <alindsay@codeaurora.org>
 To: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
 	Alistair Francis <alistair.francis@xilinx.com>, Wei Huang <wei@redhat.com>,
 	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Date: Tue, 17 Apr 2018 16:38:01 -0400
-Message-Id: <1523997485-1905-18-git-send-email-alindsay@codeaurora.org>
+Date: Tue, 17 Apr 2018 16:37:59 -0400
+Message-Id: <1523997485-1905-16-git-send-email-alindsay@codeaurora.org>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1523997485-1905-1-git-send-email-alindsay@codeaurora.org>
 References: <1523997485-1905-1-git-send-email-alindsay@codeaurora.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 198.145.29.96
-Subject: [Qemu-arm] [PATCH v4 17/21] target/arm: PMU: Add instruction and
- cycle events
+Subject: [Qemu-arm] [PATCH v4 15/21] target/arm: Add array for supported PMU
+ events, generate PMCEID[01]
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,175 +112,149 @@ Cc: Aaron Lindsay <alindsay@codeaurora.org>,
 	qemu-devel@nongnu.org, Digant Desai <digantd@codeaurora.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qoLW1XEPFTzV
+X-TUID: z9d8alLZI6fy
 
-The instruction event is only enabled when icount is used, cycles are
-always supported. Always defining get_cycle_count (but altering its
-behavior depending on CONFIG_USER_ONLY) allows us to remove some
-CONFIG_USER_ONLY #defines throughout the rest of the code.
+This commit doesn't add any supported events, but provides the framework
+for adding them. We store the pm_event structs in a simple array, and
+provide the mapping from the event numbers to array indexes in the
+supported_event_map array. Because the value of PMCEID[01] depends upon
+which events are supported at runtime, generate it dynamically.
 
 Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
 ---
- target/arm/helper.c | 88 ++++++++++++++++++++++++++---------------------------
- 1 file changed, 43 insertions(+), 45 deletions(-)
+ target/arm/cpu.c    | 20 +++++++++++++-------
+ target/arm/cpu.h    | 10 ++++++++++
+ target/arm/cpu64.c  |  2 --
+ target/arm/helper.c | 37 +++++++++++++++++++++++++++++++++++++
+ 4 files changed, 60 insertions(+), 9 deletions(-)
 
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 9d27ffc..22063ca 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -897,9 +897,19 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+     if (!cpu->has_pmu) {
+         unset_feature(env, ARM_FEATURE_PMU);
+         cpu->id_aa64dfr0 &= ~0xf00;
+-    } else if (!kvm_enabled()) {
+-        arm_register_pre_el_change_hook(cpu, &pmu_pre_el_change, 0);
+-        arm_register_el_change_hook(cpu, &pmu_post_el_change, 0);
++    }
++    if (arm_feature(env, ARM_FEATURE_PMU)) {
++        uint64_t pmceid = get_pmceid(&cpu->env);
++        cpu->pmceid0 = pmceid & 0xffffffff;
++        cpu->pmceid1 = (pmceid >> 32) & 0xffffffff;
++
++        if (!kvm_enabled()) {
++            arm_register_pre_el_change_hook(cpu, &pmu_pre_el_change, 0);
++            arm_register_el_change_hook(cpu, &pmu_post_el_change, 0);
++        }
++    } else {
++        cpu->pmceid0 = 0x00000000;
++        cpu->pmceid1 = 0x00000000;
+     }
+ 
+     if (!arm_feature(env, ARM_FEATURE_EL2)) {
+@@ -1511,8 +1521,6 @@ static void cortex_a7_initfn(Object *obj)
+     cpu->id_pfr0 = 0x00001131;
+     cpu->id_pfr1 = 0x00011011;
+     cpu->id_dfr0 = 0x02010555;
+-    cpu->pmceid0 = 0x00000000;
+-    cpu->pmceid1 = 0x00000000;
+     cpu->id_afr0 = 0x00000000;
+     cpu->id_mmfr0 = 0x10101105;
+     cpu->id_mmfr1 = 0x40000000;
+@@ -1557,8 +1565,6 @@ static void cortex_a15_initfn(Object *obj)
+     cpu->id_pfr0 = 0x00001131;
+     cpu->id_pfr1 = 0x00011011;
+     cpu->id_dfr0 = 0x02010555;
+-    cpu->pmceid0 = 0x0000000;
+-    cpu->pmceid1 = 0x00000000;
+     cpu->id_afr0 = 0x00000000;
+     cpu->id_mmfr0 = 0x10201105;
+     cpu->id_mmfr1 = 0x20000000;
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 132e08d..f058f5c 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -935,6 +935,16 @@ void pmu_op_finish(CPUARMState *env);
+ void pmu_pre_el_change(ARMCPU *cpu, void *ignored);
+ void pmu_post_el_change(ARMCPU *cpu, void *ignored);
+ 
++/*
++ * get_pmceid
++ * @env: CPUARMState
++ *
++ * Return the PMCEID[01] register values corresponding to the counters which
++ * are supported given the current configuration (0 is low 32, 1 is high 32
++ * bits)
++ */
++uint64_t get_pmceid(CPUARMState *env);
++
+ /* SCTLR bit meanings. Several bits have been reused in newer
+  * versions of the architecture; in that case we define constants
+  * for both old and new bit meanings. Code which tests against those
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 991d764..7da0ea4 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -141,8 +141,6 @@ static void aarch64_a57_initfn(Object *obj)
+     cpu->id_isar5 = 0x00011121;
+     cpu->id_aa64pfr0 = 0x00002222;
+     cpu->id_aa64dfr0 = 0x10305106;
+-    cpu->pmceid0 = 0x00000000;
+-    cpu->pmceid1 = 0x00000000;
+     cpu->id_aa64isar0 = 0x00011120;
+     cpu->id_aa64mmfr0 = 0x00001124;
+     cpu->dbgdidr = 0x3516d000;
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index b36630f..b91f022 100644
+index 572709e..7a715a6 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -15,6 +15,7 @@
- #include "arm_ldst.h"
- #include <zlib.h> /* For crc32 */
- #include "exec/semihost.h"
-+#include "sysemu/cpus.h"
- #include "sysemu/kvm.h"
- #include "fpu/softfloat.h"
+@@ -933,6 +933,43 @@ static inline uint64_t pmu_counter_mask(CPUARMState *env)
+   return (1 << 31) | ((1 << pmu_num_counters(env)) - 1);
+ }
  
-@@ -943,8 +944,49 @@ typedef struct pm_event {
-     uint64_t (*get_count)(CPUARMState *);
- } pm_event;
- 
-+static bool event_always_supported(CPUARMState *env)
-+{
-+    return true;
-+}
++typedef struct pm_event {
++    uint16_t number; /* PMEVTYPER.evtCount is 10 bits wide */
++    /* If the event is supported on this CPU (used to generate PMCEID[01]) */
++    bool (*supported)(CPUARMState *);
++    /* Retrieve the current count of the underlying event. The programmed
++     * counters hold a difference from the return value from this function */
++    uint64_t (*get_count)(CPUARMState *);
++} pm_event;
++
++#define SUPPORTED_EVENT_SENTINEL UINT16_MAX
++static const pm_event pm_events[] = {
++    { .number = SUPPORTED_EVENT_SENTINEL }
++};
++static uint16_t supported_event_map[0x3f];
 +
 +/*
-+ * Return the underlying cycle count for the PMU cycle counters. If we're in
-+ * usermode, simply return 0.
++ * Called upon initialization to build PMCEID0 (low 32 bits) and PMCEID1 (high
++ * 32). We also use it to build a map of ARM event numbers to indices in
++ * our pm_events array.
 + */
-+static uint64_t cycles_get_count(CPUARMState *env)
++uint64_t get_pmceid(CPUARMState *env)
 +{
-+#ifndef CONFIG_USER_ONLY
-+    return muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL),
-+                   ARM_CPU_FREQ, NANOSECONDS_PER_SECOND);
-+#else
-+    return 0;
-+#endif
++    uint64_t pmceid = 0;
++    unsigned int i = 0;
++    while (pm_events[i].number != SUPPORTED_EVENT_SENTINEL) {
++        const pm_event *cnt = &pm_events[i];
++        if (cnt->number < 0x3f && cnt->supported(env)) {
++            pmceid |= (1 << cnt->number);
++            supported_event_map[cnt->number] = i;
++        } else {
++            supported_event_map[cnt->number] = SUPPORTED_EVENT_SENTINEL;
++        }
++        i++;
++    }
++    return pmceid;
 +}
 +
-+#ifndef CONFIG_USER_ONLY
-+static bool instructions_supported(CPUARMState *env)
-+{
-+    return use_icount == 1 /* Precise instruction counting */;
-+}
-+
-+static uint64_t instructions_get_count(CPUARMState *env)
-+{
-+    return (uint64_t)cpu_get_icount_raw();
-+}
-+#endif
-+
- #define SUPPORTED_EVENT_SENTINEL UINT16_MAX
- static const pm_event pm_events[] = {
-+#ifndef CONFIG_USER_ONLY
-+    { .number = 0x008, /* INST_RETIRED, Instruction architecturally executed */
-+      .supported = instructions_supported,
-+      .get_count = instructions_get_count
-+    },
-+    { .number = 0x011, /* CPU_CYCLES, Cycle */
-+      .supported = event_always_supported,
-+      .get_count = cycles_get_count
-+    },
-+#endif
-     { .number = SUPPORTED_EVENT_SENTINEL }
- };
- static uint16_t supported_event_map[0x3f];
-@@ -1024,8 +1066,6 @@ static CPAccessResult pmreg_access_swinc(CPUARMState *env,
-     return pmreg_access(env, ri, isread);
- }
- 
--#ifndef CONFIG_USER_ONLY
--
- static CPAccessResult pmreg_access_selr(CPUARMState *env,
-                                         const ARMCPRegInfo *ri,
-                                         bool isread)
-@@ -1140,9 +1180,7 @@ static inline bool pmu_counter_enabled(CPUARMState *env, uint8_t counter)
-  */
- void pmccntr_op_start(CPUARMState *env)
+ static CPAccessResult pmreg_access(CPUARMState *env, const ARMCPRegInfo *ri,
+                                    bool isread)
  {
--    uint64_t cycles = 0;
--    cycles = muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL),
--                          ARM_CPU_FREQ, NANOSECONDS_PER_SECOND);
-+    uint64_t cycles = cycles_get_count(env);
- 
-     if (pmu_counter_enabled(env, 31)) {
-         uint64_t eff_cycles = cycles;
-@@ -1285,42 +1323,6 @@ static void pmccntr_write32(CPUARMState *env, const ARMCPRegInfo *ri,
-     pmccntr_write(env, ri, deposit64(cur_val, 0, 32, value));
- }
- 
--#else /* CONFIG_USER_ONLY */
--
--void pmccntr_op_start(CPUARMState *env)
--{
--}
--
--void pmccntr_op_finish(CPUARMState *env)
--{
--}
--
--void pmevcntr_op_start(CPUARMState *env, uint8_t i)
--{
--}
--
--void pmevcntr_op_finish(CPUARMState *env, uint8_t i)
--{
--}
--
--void pmu_op_start(CPUARMState *env)
--{
--}
--
--void pmu_op_finish(CPUARMState *env)
--{
--}
--
--void pmu_pre_el_change(ARMCPU *cpu, void *ignored)
--{
--}
--
--void pmu_post_el_change(ARMCPU *cpu, void *ignored)
--{
--}
--
--#endif
--
- static void pmccfiltr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                             uint64_t value)
- {
-@@ -1633,7 +1635,6 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
-     /* Unimplemented so WI. */
-     { .name = "PMSWINC", .cp = 15, .crn = 9, .crm = 12, .opc1 = 0, .opc2 = 4,
-       .access = PL0_W, .accessfn = pmreg_access_swinc, .type = ARM_CP_NOP },
--#ifndef CONFIG_USER_ONLY
-     { .name = "PMSELR", .cp = 15, .crn = 9, .crm = 12, .opc1 = 0, .opc2 = 5,
-       .access = PL0_RW, .type = ARM_CP_ALIAS,
-       .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pmselr),
-@@ -1653,7 +1654,6 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
-       .access = PL0_RW, .accessfn = pmreg_access_ccntr,
-       .type = ARM_CP_IO,
-       .readfn = pmccntr_read, .writefn = pmccntr_write, },
--#endif
-     { .name = "PMCCFILTR", .cp = 15, .opc1 = 0, .crn = 14, .crm = 15, .opc2 = 7,
-       .writefn = pmccfiltr_write_a32, .readfn = pmccfiltr_read_a32,
-       .access = PL0_RW, .accessfn = pmreg_access,
-@@ -5191,7 +5191,6 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-          * field as main ID register, and we implement only the cycle
-          * count register.
-          */
--#ifndef CONFIG_USER_ONLY
-         ARMCPRegInfo pmcr = {
-             .name = "PMCR", .cp = 15, .crn = 9, .crm = 12, .opc1 = 0, .opc2 = 0,
-             .access = PL0_RW,
-@@ -5245,7 +5244,6 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-             g_free(pmevtyper_name);
-             g_free(pmevtyper_el0_name);
-         }
--#endif
-         ARMCPRegInfo clidr = {
-             .name = "CLIDR", .state = ARM_CP_STATE_BOTH,
-             .opc0 = 3, .crn = 0, .crm = 0, .opc1 = 1, .opc2 = 1,
 -- 
 Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies, Inc.
 Qualcomm Technologies, Inc. is a member of the

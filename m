@@ -1,93 +1,91 @@
-Received: by 10.28.4.212 with SMTP id 203csp611696wme;
-        Wed, 2 May 2018 04:32:03 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZoSZM43JrdDtVtIZWGeeh2kulLjLsDI6SrboguB1yX9UT8EFzbOtXcNw1giQ+PSCWL7z6T8
-X-Received: by 2002:a0c:9557:: with SMTP id m23-v6mr15836616qvm.142.1525260723153;
-        Wed, 02 May 2018 04:32:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1525260723; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp3707016wme;
+        Tue, 17 Apr 2018 04:36:23 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx4+7NdrF/GVknhi49ihzYGZ6csJOFNedF9TtsZeKPJYQsNUkZw/Sj+SK4H8/vKnqNwcXrEJ8
+X-Received: by 10.200.54.83 with SMTP id n19mr1942113qtb.271.1523964983072;
+        Tue, 17 Apr 2018 04:36:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523964983; cv=none;
         d=google.com; s=arc-20160816;
-        b=0RRZIirF47ay4QIagUFQ7MqULNxVO+7XX/gfhocBw6Gc0fGwwPp4lxQ6hWUDuBsSyQ
-         9YCH36ahfUEjqvu4CzSIwDkDfQ0Hex15VhmKb9qm9bssGzu0m2/TSvvgL4hb2AIornHC
-         eBdk/W4PTf4IvWXUbfDnQsRFwtwZvpsPtGFRIZqA41wGixrWkmbz4TSaHpsvwUz7D136
-         lVv+Nivv1IS/sHWWww0AtHqzQ4nfwl5iAm6Wig8CUvSgLPfNW9HMTO8dh4pbgybiTohM
-         MNtwCktkMYvBFvkn859BT+NPPmEmtx7/mwX/NMvBlOKEnfIeFRinChhWEEE8IwlEPwfL
-         nD5g==
+        b=yLI4aRuzgvhF5PD0s0ZSGnXzAvKPFRHg7czzblfJdTMdT+ppI0Vt/1s9vzn0DoHbRJ
+         +oGp5FuwWpKNNzJp6ZEJ011RBQoS27UrcoHYnnsxXx8cFGohTP5VPiGoYRpKsG+I/26q
+         pEgNeXA/QVTyqVuOmsW1K0Ra+Gj0tuGOhaWgiI68J9x6yPgx6AFY/qPhG84YMAuuCDL1
+         5l1AakZ6r1BDDC+l2gAuOTTvXBWqc/QbJqYEfm7AgOJfYCm73U6oCloUZmmm6IXuWuqY
+         sJBos774Fg6nvqdY0AVwJlmOTWXGuhnA7rhjRFTgCO6mMQa6AFmodMJzlwLeVvdwdLfN
+         xYWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
-         :arc-authentication-results;
-        bh=u4TPDYQCLFM4et5uNJj1CX1V6zJsszx/deXPTKe078o=;
-        b=Zlh1F06H/9ZVuxTkvKuYB5Qcqn5E/VhAdSgBU+DGQMU7MdEvAcPZ0lYG1oac+5vNuF
-         gSHnxM75/809JQpwBxka9FiwvUVVbNrGsAKTY4wG7PiAsurEumkUW10Y5RgEEanJTbPH
-         /VeZTijNa+eIuV5yuA9YyHY5GjqUTmOEFBYDc2+jDOW+jtB+swiF/oBuNI6U6WN3Igvn
-         +OFqdQYuzk7pDXPorKSnxOCCbjQzFz6ZwY28Q5XD9REn/XOMUILn2XYR3Kqj+U8Hn48w
-         wh2+sOrfovR8OotOLCPqEAcbbgS6Xxqi9LZtOqjhbPMmfdzU2kUDQnRLAw6SRXfvQoMr
-         87JQ==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date:arc-authentication-results;
+        bh=S3bQyDixBmfTgEInyGOqa9hxX0btjmjVZkyrw49S2Qs=;
+        b=OudLakEyxy+6n/tnhhGEjAYC7apEe9QRdceK/n5boMDSfPqdBElQfY/aY0HqrKB3jJ
+         +WPDaqDipqGDB5minIxxtiiib6vDK1TFwKkw7RnKudoQ7lcDPnXgVt7xTvTvpqv7/B8H
+         b60v8Vo/A0YPro923m+CkjAHw+2uLnCN2vm6XQk9Rvugk7frIbxwERl03pv7CmgmpHLp
+         VQKP7XhUfrYCuVDOnjPb8MSCZkReRy0SaMbJQ5F9EbKtGopojWNqPLKK/3sJdvC6m7pQ
+         TGPBQ6OlaMbMgVrFv46QrjL3C/NmoZEyisLI5oM1iW94Mu9AQGnHlzShZU5A/Qwn2Jm9
+         x6sw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i13si110979qke.123.2018.05.02.04.32.02
+        by mx.google.com with ESMTPS id f63si638677qtb.192.2018.04.17.04.36.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 02 May 2018 04:32:03 -0700 (PDT)
+        Tue, 17 Apr 2018 04:36:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49776 helo=lists.gnu.org)
+Received: from localhost ([::1]:32822 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fDpzO-0008Bc-Eu
-	for alex.bennee@linaro.org; Wed, 02 May 2018 07:32:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44439)
+	id 1f8OuM-00039O-Jk
+	for alex.bennee@linaro.org; Tue, 17 Apr 2018 07:36:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45950)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1fDpzI-0008BL-8b
-	for qemu-arm@nongnu.org; Wed, 02 May 2018 07:31:57 -0400
+	(envelope-from <imammedo@redhat.com>) id 1f8OuB-00038M-0B
+	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 07:36:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1fDpzF-00027G-3i
-	for qemu-arm@nongnu.org; Wed, 02 May 2018 07:31:56 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:51974 helo=mx1.redhat.com)
+	(envelope-from <imammedo@redhat.com>) id 1f8Ou7-0004y3-0s
+	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 07:36:11 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:45360 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lersek@redhat.com>)
-	id 1fDpzE-000273-TN; Wed, 02 May 2018 07:31:53 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1f8Ou6-0004u5-F5; Tue, 17 Apr 2018 07:36:06 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 847EE406E8B9;
-	Wed,  2 May 2018 11:31:49 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-120-197.rdu2.redhat.com
-	[10.10.120.197])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 0BE452156617;
-	Wed,  2 May 2018 11:31:47 +0000 (UTC)
-To: Auger Eric <eric.auger@redhat.com>, qemu list <qemu-devel@nongnu.org>,
-	qemu-arm <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>
-References: <f41972e8-0ae2-7c1d-a66a-499a841080e3@redhat.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <13d95529-d61e-fc30-ffd4-f1ef93edad40@redhat.com>
-Date: Wed, 2 May 2018 13:31:47 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	by mx1.redhat.com (Postfix) with ESMTPS id E1175406E8B9;
+	Tue, 17 Apr 2018 11:35:54 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 9E67C7C26;
+	Tue, 17 Apr 2018 11:35:45 +0000 (UTC)
+Date: Tue, 17 Apr 2018 13:35:44 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20180417133544.0102ef0b@redhat.com>
+In-Reply-To: <CAFEAcA_nM4VanwwPKB3bpL6=wvk=u-bh1b+O3ahNFMpRnchcsg@mail.gmail.com>
+References: <1523551221-11612-1-git-send-email-imammedo@redhat.com>
+	<1523551221-11612-4-git-send-email-imammedo@redhat.com>
+	<CAFEAcA-AVuHMao5kQUrfEYWpGL0y-CwbuqCA_8ZSZrVbqz9nCg@mail.gmail.com>
+	<CAFEAcA_nM4VanwwPKB3bpL6=wvk=u-bh1b+O3ahNFMpRnchcsg@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <f41972e8-0ae2-7c1d-a66a-499a841080e3@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.11.55.7]);
-	Wed, 02 May 2018 11:31:49 +0000 (UTC)
+	Tue, 17 Apr 2018 11:35:54 +0000 (UTC)
 X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Wed, 02 May 2018 11:31:49 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'lersek@redhat.com' RCPT:''
+	Tue, 17 Apr 2018 11:35:54 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'imammedo@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] Expand ECAM region in machvirt 2_13?
+Subject: Re: [Qemu-arm] [PATCH for-2.13 3/4] arm: always start from
+ first_cpu when registering loader cpu reset callback
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,71 +97,71 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Cc: Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uW+7AD0wrS40
+X-TUID: 04L/kOXzj90S
 
-On 05/01/18 17:59, Auger Eric wrote:
-> Hi,
+On Mon, 16 Apr 2018 18:17:51 +0100
+Peter Maydell <peter.maydell@linaro.org> wrote:
+
+> On 12 April 2018 at 19:29, Peter Maydell <peter.maydell@linaro.org> wrote:
+> > On 12 April 2018 at 17:40, Igor Mammedov <imammedo@redhat.com> wrote:  
+> >> if arm_load_kernel() were passed non first_cpu, QEMU would end up
+> >> with partially set do_cpu_reset() callback leaving some CPUs without it.
+> >>
+> >> Make sure that do_cpu_reset() is registered for all CPUs by enumerating
+> >> CPUs from first_cpu.
+> >>
+> >> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> >> ---
+> >>  hw/arm/boot.c | 2 +-
+> >>  1 file changed, 1 insertion(+), 1 deletion(-)
+> >>
+> >> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> >> index 2f464ca..2591fee 100644
+> >> --- a/hw/arm/boot.c
+> >> +++ b/hw/arm/boot.c
+> >> @@ -1188,7 +1188,7 @@ void arm_load_kernel(ARMCPU *cpu, struct arm_boot_info *info)
+> >>       * actually loading a kernel, the handler is also responsible for
+> >>       * arranging that we start it correctly.
+> >>       */
+> >> -    for (cs = CPU(cpu); cs; cs = CPU_NEXT(cs)) {
+> >> +    for (cs = first_cpu; cs; cs = CPU_NEXT(cs)) {
+> >>          qemu_register_reset(do_cpu_reset, ARM_CPU(cs));
+> >>      }
+> >>  }  
+> >
+> > Definitely a bug fix, so:
+> > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> >
+> > I think though that in at least some cases we'll still mishandle
+> > being passed anything other than first_cpu as the CPU pointer,
+> > because in do_cpu_reset() we do some checks for "do this if
+> > cs == first_cpu", on the assumption that first_cpu is the
+> > primary CPU that we're booting. We should instead I suppose
+> > be checking against the CPU pointer we're given as the
+> > arm_load_kernel() argument (which I think do_cpu_reset() can
+> > get at via info->load_kernel_notifier.cpu).
+> >
+> > We should probably analyse which boards actually pass anything
+> > other than first_cpu -- I suspect it will end up just being
+> > the xilinx board which has both A and R profile cores...  
 > 
-> I would like to resume the discussion on extending the number of PCI
-> buses to 256 (as in Q35) as a follow-up of past discussions:
-> https://lists.gnu.org/archive/html/qemu-devel/2018-01/msg03631.html.
+> I did the check, and in fact all of our boards always pass the
+> first CPU as the boot CPU. Xilinx comes the closest, in that
+> the SoC object has a boot-cpu property to pick a boot CPU, but
+> since none of our boards set that it defaults to the first CPU.
 > 
-> With the current 16MB ECAM region we are limited to 16 PCIe busses.
+> Since this patch isn't very related to the rest of the series
+> I've just applied it to target-arm.next ready for 2.13 (with
+> a note in the commit message that in practice it isn't a behaviour
+> change). Let me know if that's awkward for you and you'd prefer
+> to keep it in this series, in which case I'll drop it.
+That's fine, I'll just rebase v2 on top of it.
+
 > 
-> Could we envision to have a 256MB ECAM region and move it to another
-> location beyond 256GB, in virt2_13 machine type?
-> 
-> Current ECAM range within [0x3f000000, 0x40000000]
-> would be kept unchanged for legacy and when vms->highmem is set to false.
-> Migration from <2_13 to >=2_13 would be allowed whereas migration from
->> =2.13 to <2.13 wouldn't.
+> thanks
+> -- PMM
 
-If I understand correctly, the idea is to *move* the current one range,
-if the virt machine type is >= 2.13 and highmem is set to true (which is
-the default IIUC, from 2.12 onward).
-
-For 64-bit (AARCH64) ArmVirtQemu, that should work fine. The firmware
-takes the ECAM base and size from the "pci-host-ecam-generic" DT node,
-property "reg", uint64_t elements #0 and #1. (Sorry if this isn't exact
-DT lingo, I'm paraphrasing the firmware source code.) If the QEMU patch
-just changes the values, that should work transparently.
-
-For 32-bit (ARM) ArmVirtQemu, this change (the new ECAM default) could
-be a problem. PCI stuff in the firmware wouldn't work unless people
-specified highmem=off on the QEMU command line.
-
-Now, I notice highmen defaults to "on" starting with 2.12 even for
-"qemu-system-arm -M virt", not just "qemu-system-aarch64 -M virt", so
-why doesn't that already cause a problem with PCI in the 32-bit guest fw?
-
-Because, currently "highmen" only controls the presence of the 64-bit
-PCI MMIO aperture for BAR allocation; it has no effect on config space.
-And if the 64-bit PCI MMIO aperture is exposed to the 32-bit guest
-firmware, the latter simply ignores the former, and works with the
-32-bit aperture solely (which is always there).
-
-So, for "qemu-system-arm -M virt" compatibility, I think we might need a
-separate machine type property, which should default to "on" only on
-qemu-system-aarch64 (if such distinctions are allowed).
-
-Of course, I can't tell if the 32-bit ArmVirtQemu firmware is possible
-to run on "qemu-system-aarch64 -M virt". (I think it is; I recall
-something something about ARMv8 having ARMv7 compat, but I don't
-remember ever trying.) If that's the case, then even the above
-suggestion won't work, because it would break 32-bit guest fw that the
-user has run (for whatever reason) on "qemu-system-aarch64 -M virt". In
-this case, I believe we can't just change the contents of the current
-"pci-host-ecam-generic" node, but we should implement some structural
-DTB addition that old firmware will simply not notice, while new
-(64-bit) firmware will specifically look for (and prefer over the old DT
-stuff).
-
-Ard, what's your take? (Sorry if you've already followed up, my email
-processing lags.)
-
-Thanks
-Laszlo

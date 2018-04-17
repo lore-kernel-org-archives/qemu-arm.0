@@ -1,103 +1,101 @@
-Received: by 10.28.4.212 with SMTP id 203csp3945627wme;
-        Tue, 17 Apr 2018 08:21:24 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4+m+aXMR+iOFPOwezbHOddW3vq31K0Xq4q1WHWNac+jV9jVaPcBh6KN5MdTB09eWsAQaXti
-X-Received: by 10.129.52.201 with SMTP id b192mr1608127ywa.120.1523978484530;
-        Tue, 17 Apr 2018 08:21:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523978484; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp3962750wme;
+        Tue, 17 Apr 2018 08:38:18 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx4/HjpTvh6ZKHwxs9zyl5S/5mRauYg16DDoTWXuKCZHO+d7K/dRYHbP56fm93VWOTA6AyyAz
+X-Received: by 10.129.228.77 with SMTP id t13mr1597608ywl.92.1523979498107;
+        Tue, 17 Apr 2018 08:38:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523979498; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dbtaarm/imzWKgvXSV+TdQfqYff0gezxWfSfOMipzN3oP+Fi+U6pgBQzwuxRfd7+Iq
-         +R4Y66e2wTix4s0B8uA5P8AJBZnm0mXsgjrYbJ+DZO+/9fHxgjyzEtEScR37kFuHghEb
-         U3BsFp3srgj5DVllvxWgeHmOe7ftIdqLVrzf7xkLRazHwsPFKmi1Phfd7kGLl8r8wJYx
-         wsFlUAUGW8XyM0g+KVNgqgW+I6BQIHw8qTJIOkULZiEEpRAg/n3Yzj25oN4QNYbzeL3B
-         uurmjpVPnZcACV15cuG1U5NqDE29RYU03kgKMFy7EXpM+O1EFtL/Yzl86z8laH1aDcxF
-         xmdw==
+        b=QKMjB5YDhSL07Y26ujyYIiX+qk0Ta6QHMaXqrpPMwJAR4mXl4xDGb85T38nb9YC/s3
+         JFSUihQ5NGnI2VN6JUEcLbCHoYtzj9seuMySMwFg91FkkWvXS1lHYGE/h/Kce49kZATS
+         KApSi6dNH+yVwZXa+YT7KQ2O7pXmCKaSQlLYCxZIiCtztWq+x6ddgjztQX2SQc7aRdvB
+         F/4N5JUU9Yccf/kwoi3hwZdclcjB7i2K0ltz3GH0AL19nplz+nElT6XolLe3YC9lAn8N
+         MDknVx1oU5F9Q+IBaEi3GEyWvgXer92+oy6RcWyh8LOhKYW236F84DyI+RKRczQtV14Y
+         +F3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dmarc-filter:dkim-signature:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=yK0wH9Le7lOvab4rDS5eIdgAlHqXYf7cl5BNveEDbSY=;
-        b=l7Is27xMNqlvYDtz6q5WLnzmvChHWdrdIQDQjg/LlS8Cm6JZK31iOGISxr52XDZAb4
-         V2ULc8VEF6zoSQd4M16ouf+WIGrUk1saiMzBd1H0EaaRjg4Ti3vKGhsSNuc9iVZjdcDu
-         3E8L0O8r08Wh9imCSWUa+HYJuCPnnIymtKa0/+PGoRmJEMspgjOXwzrCu9A2DqZx7OG1
-         I59uGB7Ns/RN8lip2cWxy1IlGCjwWlkI/ripCQWvvfCm2uUF81pRhKLuTnS19nrmecI/
-         uiXejOdbUQKFufFDCHjNSd+2awYNPnHutqYjPHeyuy7YD5+o2roftLfds0m+nww+GEhW
-         9o2w==
+        bh=hI2eGS4YCESD5i6DtqeIeIjLOPfeTSdYZw+fiil/8/w=;
+        b=wTWjeMl6ulMoY9I8Nnr4wJ6LIreo9uzFRFEIYpWFEIyZLsILTWBuptVTWuOHrLj0Pl
+         TI8S+jBN5PrbUzSehoZ27NdOawdmpT/oi0yxP0Uh9k5Ck5m2+bQbWZa7E3D6MLdazSIM
+         A+DefidRhx3nJ86jXYSgTtzDQ46p6IQWyuuRHJD8YEZ3vKLClDwdZRdY/wgY6g1DnkQi
+         pDtE6SI8Nn1waQ3oDMZ50tgk4/Q5wFqeC641oKU6sV/QwD9DEWIz2ek6um6CmPEFwYKz
+         sZYuMU6M9gS8EFKOkNdyxd+U6ARzmX67DoPasgU+4/PJh1TTtJ7GgwQcCMbnzeCSTjfD
+         vcKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=XvlA51Iw;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=NGw14yX7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@linaro.org header.s=google header.b=bdIYfzwc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c73si1335932qka.162.2018.04.17.08.21.24
+        by mx.google.com with ESMTPS id v1si6154946qth.145.2018.04.17.08.38.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 17 Apr 2018 08:21:24 -0700 (PDT)
+        Tue, 17 Apr 2018 08:38:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=XvlA51Iw;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=NGw14yX7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45013 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=bdIYfzwc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45957 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f8SQ7-00028n-VE
-	for alex.bennee@linaro.org; Tue, 17 Apr 2018 11:21:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44904)
+	id 1f8SgT-0000GP-I9
+	for alex.bennee@linaro.org; Tue, 17 Apr 2018 11:38:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52414)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alindsay@codeaurora.org>) id 1f8SPv-00024d-Np
-	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 11:21:15 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1f8SgH-0000FV-LD
+	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 11:38:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alindsay@codeaurora.org>) id 1f8SPp-00021q-Pi
-	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 11:21:11 -0400
-Received: from smtp.codeaurora.org ([198.145.29.96]:36812)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <alindsay@codeaurora.org>)
-	id 1f8SPp-00021J-G0; Tue, 17 Apr 2018 11:21:05 -0400
-Received: by smtp.codeaurora.org (Postfix, from userid 1000)
-	id 5C245606AC; Tue, 17 Apr 2018 15:21:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1523978464;
-	bh=jhiTXO5xKxIrdKTEPq6B9i2CZVvxRnULFI6I3wvZv+Q=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XvlA51IwfPsg4Vl/bbQXLtk0weLtASezzejxHJ87+a8dfx+5ME20Pr5RlNlPvuTi0
-	Qz1Bbf9n3ORH206gXhdgSKpnML5de3jkl+CjfCjFGVMoiSiDoQcwhs+daw2vfErONE
-	L9XPxWAan1rI3lFGeHKGK0iS3Miz9ZJBJLDR3mO8=
-Received: from codeaurora.org (global_nat1_iad_fw.qualcomm.com [129.46.232.65])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	(Authenticated sender: alindsay@smtp.codeaurora.org)
-	by smtp.codeaurora.org (Postfix) with ESMTPSA id EDE52606AC;
-	Tue, 17 Apr 2018 15:21:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1523978463;
-	bh=jhiTXO5xKxIrdKTEPq6B9i2CZVvxRnULFI6I3wvZv+Q=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=NGw14yX7zBQv2k4iKOntf7xw++Blfkdxy59lLb5Iejm2qSOFyhebzY3/IJ+a8fWIr
-	FmPwYeo/i3+UL+5o7OMdzQQg9uJ/mxACWfk1jo+dE4SAyBhzq9juUfah6EMQWOP39B
-	qwgglPiBSXKh1q3TAYChVeNj0vUcmxJai3rmpNFw=
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org EDE52606AC
-Authentication-Results: pdx-caf-mail.web.codeaurora.org;
-	dmarc=none (p=none dis=none) header.from=codeaurora.org
-Authentication-Results: pdx-caf-mail.web.codeaurora.org;
-	spf=none smtp.mailfrom=alindsay@codeaurora.org
-Date: Tue, 17 Apr 2018 11:21:01 -0400
-From: Aaron Lindsay <alindsay@codeaurora.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20180417152101.GP24561@codeaurora.org>
+	(envelope-from <peter.maydell@linaro.org>) id 1f8SgG-0004Rf-I0
+	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 11:38:05 -0400
+Received: from mail-ot0-x22b.google.com ([2607:f8b0:4003:c0f::22b]:47097)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1f8SgG-0004RN-DB
+	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 11:38:04 -0400
+Received: by mail-ot0-x22b.google.com with SMTP id v64-v6so21844716otb.13
+	for <qemu-arm@nongnu.org>; Tue, 17 Apr 2018 08:38:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=hI2eGS4YCESD5i6DtqeIeIjLOPfeTSdYZw+fiil/8/w=;
+	b=bdIYfzwcHKi9jU7BmUU4vNG5PgiIkJcCG+dpmjOWSilqBJIrrbVy/3ogVj6O/CNPSq
+	BKGc01y6sJTiuOC2mLwC43vnZ+XIXsSPwFvOWrJRYoMeQR4CLOO9oLn4CHmk0e9lMZ7W
+	h/QGrSede/M1qTo8CY9TNs2h4WF29UmnmJ30k=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=hI2eGS4YCESD5i6DtqeIeIjLOPfeTSdYZw+fiil/8/w=;
+	b=NHU0JJyg1kjzahtLZ/ic7E/YeDS4F1Ildwy9e2bs0ki2oVoLZAwT3mp1KhBCV7MZPR
+	4g9R8ulMQRDZKsUcXP1TL6GqoAvklS7/qLGy5yXX8xWyFJviz5BdFFyFRUIFsvmdtTfK
+	fuSQQRxvb5qxLtxTtzr0tnoo9BcJ+GxMTe/9rtO2eEmGMyjm7NF7ipZSMF8B1P0i/q7z
+	XDDc84tAoxoM4bqZcpBC8nvTBphrzqqP04K8brUzZ+UYrgRXqy5NzmilmoxVuVLzpYVb
+	ehVblA4YbFYYTL7zfvCN8pnoKFEx0pqSbrAyImCgx6FzgF6FUreT7VlLzFutltS5licw
+	iHPw==
+X-Gm-Message-State: ALQs6tD/8xs7vY2SekKigpS8HM05tvt4EhwJ1ohl2W9woF6Aqa0IYDEo
+	uQaw3HuY47yAryh0ZfCIp21Z0qWTA749bXXoFEqc8A==
+X-Received: by 2002:a9d:1b46:: with SMTP id
+	l64-v6mr1660843otl.316.1523979483483; 
+	Tue, 17 Apr 2018 08:38:03 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Tue, 17 Apr 2018 08:37:43
+	-0700 (PDT)
+In-Reply-To: <20180417152101.GP24561@codeaurora.org>
 References: <1521232280-13089-1-git-send-email-alindsay@codeaurora.org>
 	<1521232280-13089-13-git-send-email-alindsay@codeaurora.org>
 	<CAFEAcA_UP-DgPZPL8-sMAs9TFHiUrfya8LAxAnO2U_WJAMH6yg@mail.gmail.com>
 	<20180412173625.GK24561@codeaurora.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20180412173625.GK24561@codeaurora.org>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 198.145.29.96
+	<20180417152101.GP24561@codeaurora.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 17 Apr 2018 16:37:43 +0100
+Message-ID: <CAFEAcA_QdPChiMPtZt7t_aqQTUcSDweGVG0anchKYH6KtEgEYw@mail.gmail.com>
+To: Aaron Lindsay <alindsay@codeaurora.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::22b
 Subject: Re: [Qemu-arm] [PATCH v3 12/22] target/arm: Filter cycle counter
  based on PMCCFILTR_EL0
 X-BeenThere: qemu-arm@nongnu.org
@@ -118,43 +116,44 @@ Cc: Michael Spradling <mspradli@codeaurora.org>,
 	qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ep495mWsOn8K
+X-TUID: ksKEz5vQvgmB
 
-On Apr 12 13:36, Aaron Lindsay wrote:
-> On Apr 12 18:15, Peter Maydell wrote:
-> > On 16 March 2018 at 20:31, Aaron Lindsay <alindsay@codeaurora.org> wrote:
-> > > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> > > index b0ef727..9c3b5ef 100644
-> > > --- a/target/arm/cpu.h
-> > > +++ b/target/arm/cpu.h
-> > > @@ -458,6 +458,11 @@ typedef struct CPUARMState {
-> > >           * was reset. Otherwise it stores the counter value
-> > >           */
-> > >          uint64_t c15_ccnt;
-> > > +        /* ccnt_cached_cycles is used to hold the last cycle count when
-> > > +         * c15_ccnt holds the guest-visible count instead of the delta during
-> > > +         * PMU operations which require this.
-> > > +         */
-> > > +        uint64_t ccnt_cached_cycles;
-> > 
-> > Can this ever hold valid state at a point when we need to do VM
-> > migration, or is it purely temporary ?
-> 
-> I believe that as of this version of the patch it is temporary and will
-> not need to be migrated. However, I believe it's going to be necessary
-> to have two variables to represent the state of each counter in order to
-> implement interrupt on overflow. 
+On 17 April 2018 at 16:21, Aaron Lindsay <alindsay@codeaurora.org> wrote:
+> On Apr 12 13:36, Aaron Lindsay wrote:
+>> On Apr 12 18:15, Peter Maydell wrote:
+>> > On 16 March 2018 at 20:31, Aaron Lindsay <alindsay@codeaurora.org> wrote:
+>> > > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+>> > > index b0ef727..9c3b5ef 100644
+>> > > --- a/target/arm/cpu.h
+>> > > +++ b/target/arm/cpu.h
+>> > > @@ -458,6 +458,11 @@ typedef struct CPUARMState {
+>> > >           * was reset. Otherwise it stores the counter value
+>> > >           */
+>> > >          uint64_t c15_ccnt;
+>> > > +        /* ccnt_cached_cycles is used to hold the last cycle count when
+>> > > +         * c15_ccnt holds the guest-visible count instead of the delta during
+>> > > +         * PMU operations which require this.
+>> > > +         */
+>> > > +        uint64_t ccnt_cached_cycles;
+>> >
+>> > Can this ever hold valid state at a point when we need to do VM
+>> > migration, or is it purely temporary ?
+>>
+>> I believe that as of this version of the patch it is temporary and will
+>> not need to be migrated. However, I believe it's going to be necessary
+>> to have two variables to represent the state of each counter in order to
+>> implement interrupt on overflow.
+>
+> Coming back around to this, I don't see a way around using two variables
+> to hold PMCCNTR's full state to make interrupt on overflow work. I
+> haven't been able to find other examples or documentation covering state
+> needing to be updated in more than one location for a given CP register
+> - do you know of any I've missed or have recommendations about how to
+> approach this?
 
-Coming back around to this, I don't see a way around using two variables
-to hold PMCCNTR's full state to make interrupt on overflow work. I
-haven't been able to find other examples or documentation covering state
-needing to be updated in more than one location for a given CP register
-- do you know of any I've missed or have recommendations about how to
-approach this?
+Can you explain the problem in more detail? In general it's a bit of
+a red flag if you think you need more state storage space than the
+hardware has, and I don't think there's any "hidden" state in the h/w here.
 
--Aaron
-
--- 
-Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies, Inc.
-Qualcomm Technologies, Inc. is a member of the
-Code Aurora Forum, a Linux Foundation Collaborative Project.
+thanks
+-- PMM

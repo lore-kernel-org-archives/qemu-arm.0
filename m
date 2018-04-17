@@ -1,100 +1,94 @@
-Received: by 10.28.4.212 with SMTP id 203csp4289554wme;
-        Tue, 17 Apr 2018 14:27:20 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx49aeEe0xWE3EJfO0c3+9aNAS1eJeIQRrHmnBPWorkRsFAZJH14mN8PaZuUmt5chszlAiGlF
-X-Received: by 10.200.15.17 with SMTP id e17mr3915915qtk.261.1524000440013;
-        Tue, 17 Apr 2018 14:27:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1524000440; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp4295254wme;
+        Tue, 17 Apr 2018 14:34:36 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx49ygEuMi33+EcbtWwqzX9ytKRWsd6cVnI7V++wcQlzJ3qsLCv4IltS2eF6Vv+gCzBEMoPRf
+X-Received: by 2002:a25:b58a:: with SMTP id q10-v6mr2787521ybj.62.1524000875894;
+        Tue, 17 Apr 2018 14:34:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1524000875; cv=none;
         d=google.com; s=arc-20160816;
-        b=tdAEGLXT3IH5kgyAWbkpRyxR92aHcfu5r8OwDki8dqM7JQ1ZN+fZkenqOZgd3XdZJ9
-         A4fY+A4eFRKYEKx98ikFn+4AcGROFcDqktHTcaoqaVzdPizK7WFUXuEzIaxvXT9RO9sP
-         SqAu2s6DmkMyDwI7wjBv/DcmdXwBwqemNHZOx/op+M2qnUSk18nu7F+r/54o4rudUtVJ
-         HN3VafFQO/6M7YZqCB0F/iKNh4PFzzwHjgqmk+sPD54rKLWckq6XyqmnHMwjuGvJRhsj
-         CroDD462U1Wm0lviDXXbxseRZWw3WJqUFf2OaUDxwNv8ZQCwl4GM4f9zwWUvp59G14oF
-         Kh2g==
+        b=q2wfWIltcRUGmF3b5yTjY6miZr1gogzpHO6/4bSrtvebB/Liy8YY42hV6z57m9L2XT
+         w7mfqXlefF+gCPmhTPXQ0AEtdnH6RzLdk41+kJTe1HApWt+zN/LOD7ofvm29KiBmUlFA
+         WPwxoJiTtZEnsZ5Jthexd3FOdAPyuSzsvKv+YRU2NiOguWpJtPcNypQN/vgyNIAAwLKf
+         +xL/PGguClDCR+LqzsjTWJih1i0AbGKcWWOK5mxWowFTC3r4Ny5yVe9hDYogoNyegkVB
+         i0v2VpRBkt2F47qD0mmCpVwVsAIhOrL6CGIL5LTfTH2GdIHjqq/GnVNGB+Ibr+iFu28n
+         OATA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=XpQ7TfHvL5DywncTIPn0kDqOY75Opyz6Vgs0kTX49wA=;
-        b=e/d5L9bUaNgAIlnLvr5SsFE6Ob+tOKMZsioEW3cISAW2+hJIJr5sudBwBkoaTp3ySO
-         JOm5gW+m4COyfyC/sSeT3ISapvIvIsWNd5nHc56OQ1XhEEdn6c5+eNbf48v8uRfurBPJ
-         n6PnYfkuXaDyk6fzgshGv3BKqkgMoiAyuUbvF6W9KT0CTdObO8+cRsYAjn/T7MKBN/sj
-         HjMq/lwvGnwjnyuBGd5+gsV6B/bVo+E1sVLNRaJmf8PQ7tMN1azLOWl7Afj1hDi3DbvB
-         Fzlszt7wBdQ10zByXZTcDgqJcHVHNdBROtHMQ77S8mieK4V/f4CrfhuHKIr+rHc2wSX0
-         u9AA==
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=wgSCCdXHJn46bNJNeP0G/CNBG38WxjsYiRq6mRz5whI=;
+        b=DaPpQSp1eSvuv/0nauMdCq9A9yR/5g7eM+3c4H7Bl09LKrW87ALFXxc7h3yWKx9aFc
+         pP6c5tNKYHU0HTEgfN7Vti0y1byyYUVx7z18nNeHRrrHGG++QF+yQLUXL/pskyW3fK6N
+         //Brvch1TqTrMEQbiHa8WAfY5u7DbZJupXjWykaift5df8fBfScVdUewLgR+FtYVviBv
+         /etOOiBpfWdWGTQUpoESZkGgBsazjkcn8sRzhHS7muQLrHpUnRa75FbpAnZomw0TQvk0
+         UR3awMXrU8X7Ihvpn49NxpXl9CF6F5ZFmVYJ0j4h4yuoVLkhUouLdsgEN5WP+hcKq4Rf
+         s5cw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hRGDEVfb;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=a/iKrX2n;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i64si3719474qkf.279.2018.04.17.14.27.19
+        by mx.google.com with ESMTPS id r11si4973214qkk.245.2018.04.17.14.34.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 17 Apr 2018 14:27:19 -0700 (PDT)
+        Tue, 17 Apr 2018 14:34:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hRGDEVfb;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=a/iKrX2n;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:35898 helo=lists.gnu.org)
+Received: from localhost ([::1]:36239 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f8Y8F-0006oZ-GF
-	for alex.bennee@linaro.org; Tue, 17 Apr 2018 17:27:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50596)
+	id 1f8YFH-0002jV-Ci
+	for alex.bennee@linaro.org; Tue, 17 Apr 2018 17:34:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53595)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hwertz10@gmail.com>) id 1f8Y82-0006mV-Uo
-	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 17:27:08 -0400
+	(envelope-from <hwertz10@gmail.com>) id 1f8YDM-0001Tx-Df
+	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 17:32:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <hwertz10@gmail.com>) id 1f8Y81-0000yy-7t
-	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 17:27:06 -0400
-Received: from mail-wr0-x22e.google.com ([2a00:1450:400c:c0c::22e]:38382)
+	(envelope-from <hwertz10@gmail.com>) id 1f8YDF-0005UF-3B
+	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 17:32:36 -0400
+Received: from mail-wr0-x22a.google.com ([2a00:1450:400c:c0c::22a]:34759)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <hwertz10@gmail.com>)
-	id 1f8Y80-0000oI-Rq; Tue, 17 Apr 2018 17:27:05 -0400
-Received: by mail-wr0-x22e.google.com with SMTP id h3so26687583wrh.5;
-	Tue, 17 Apr 2018 14:27:04 -0700 (PDT)
+	id 1f8YDE-0005N7-M7; Tue, 17 Apr 2018 17:32:28 -0400
+Received: by mail-wr0-x22a.google.com with SMTP id d19so39364014wre.1;
+	Tue, 17 Apr 2018 14:32:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=XpQ7TfHvL5DywncTIPn0kDqOY75Opyz6Vgs0kTX49wA=;
-	b=hRGDEVfbpoAcm2luZ9BN6gJ+s3DVSXS+BjdJ3zB9H2SWR/rXhY/YJz5biCXE0zxxVp
-	k0ai44J/aCc60fRYzC6jORZPAl/7c81j7A2jin5fPkqbKESaCqfTbAf29cMifJhirkOV
-	hYRIIrQ+U5T1unSxYmZqSRwP7qauLc/1QZsNkoEt32zIEEqxZd8OxRMQW3hrvVVRIZ8m
-	AOeMXrYEP6f8BgTStumKFOdG75UCbi7Ds3lX0G8kJVE5ngM0eLUooZrFRpOIbOJ7oZH/
-	pY6eM51guwoGyXHf05kRQMyGmhrSqVd3Q771e8Udhk64AuR1fBPfjfF5x3Dqg1pcS0n9
-	LH6Q==
+	h=mime-version:from:date:message-id:subject:to;
+	bh=wgSCCdXHJn46bNJNeP0G/CNBG38WxjsYiRq6mRz5whI=;
+	b=a/iKrX2nCfJkne/xEB4T2VR1eN82xqfc52uBS/WsTka0DFvLJiESPQiRe4/7tzKvTW
+	Mp2JPxWTM/5k2bBlPrLqrNhaPAOqwk/195DS38lJtdezc+EIaHqWMTEv7n1yyVI4NnUC
+	0atOQvGrgExGtNtaROEgBcVvxp7zmKEL90dHbc5B9iuIaAFjlFHpycSk5DaUPOohkiBH
+	3Y9UMwmqLkfPs5Ww+lhzRq7KztGZiMpn6bkJ7QS2powE7OFO3xw/4jw2K07+AWQpkdUs
+	oBr7ufEm92E8TSK0Ctu3J2FerbAEI9Kk51ewhV2UHds5FFzsg66pFAyoiSMaCvnUseHM
+	FYtA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=XpQ7TfHvL5DywncTIPn0kDqOY75Opyz6Vgs0kTX49wA=;
-	b=PPmMBcfgpTbegR7JUUaHKvakhLolp4IU6pGrzw7UJg3O0mgDRKqmeth8eijocYrz8z
-	swxH/dL0KJzaOPbeK7hq8V4+CSPx1FRBBSDWsvJNLXH93HF2K3bIIHTgbr97MC8U0smx
-	WrwaVQeJ6u6DZ5VDPmiX/uMqbEbVJCoEwyfBOkhQhcDYGH+4wWa/qMYQVKPPUXtxrflw
-	wa+JfEjDe8q7dVL89XszkOTprdIglo37r8dodMvF8+WrHiY35fCowQ5Ekrqe4sZJubR6
-	QOlpbrqhqaxJU+JIPtcfmLCpHIymTL+wzo3sEEIi3vNPDRzpf/owA2svzF7MOsz98g/O
-	wg7Q==
-X-Gm-Message-State: ALQs6tCzOB3cbAk2mdcWZwtRNXUT2tA4UCLWeG1yMvnqgbHkWle2bk5Q
-	OR/2FLnWmL5/xVjpR7KU/dd7RRlyDLWI/gwaXJo=
-X-Received: by 10.28.144.196 with SMTP id s187mr2113549wmd.82.1524000423235;
-	Tue, 17 Apr 2018 14:27:03 -0700 (PDT)
+	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+	bh=wgSCCdXHJn46bNJNeP0G/CNBG38WxjsYiRq6mRz5whI=;
+	b=Yh8zf34y0tNvf8dZNWsLWloL5TqKZPydwUYs5p8k6aNk1tHK2trCg5gb6oW55zBbHg
+	2OW7cNcpeMOxxP29ONWSFn13lVrANWCtD8ua6jzGN3/b55FxbfkRb/O8gE0wiPZYCeBH
+	wnmSD5YEd5mp/GX6nYmqPBlPrllitR/5KLWxp345sqYX7iKTDexEce0Zvq2ays4Jzz9+
+	KYrcF/C0wUw1u54tocXEIb6li84pEZ6yECCoy4jF659cMihP0vNzNY81eE+u4uXioy4B
+	U7mqZZyRjh9Po2xOu095N83WA9uQVjun9ci6GXgJ29QLOaqqySD3pkzBsKHnrW0PrkkG
+	BUeQ==
+X-Gm-Message-State: ALQs6tAsCLnEFQ+lSyMNRs53wzXAlm6bvBWbS5GAgpxYGl0nlNF31jmU
+	/udC/XFckP+sXJJr4hkO8R9/VRrrs0WV5VcAGKtZBmHaP8I=
+X-Received: by 10.223.178.87 with SMTP id y23mr2736935wra.95.1524000747308;
+	Tue, 17 Apr 2018 14:32:27 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.223.129.104 with HTTP; Tue, 17 Apr 2018 14:27:02 -0700 (PDT)
-In-Reply-To: <CAFEAcA_Hti-FYqEse7ubdNyVr3fPHO==e6MDv9Ym4KVYJcYTwA@mail.gmail.com>
-References: <CAOuPqTE8GsN_+REWzSt4DOiqddSbZC-kOH=WnYG3U8ge3GsLoA@mail.gmail.com>
-	<CAFEAcA_Hti-FYqEse7ubdNyVr3fPHO==e6MDv9Ym4KVYJcYTwA@mail.gmail.com>
+Received: by 10.223.129.104 with HTTP; Tue, 17 Apr 2018 14:32:26 -0700 (PDT)
 From: Henry Wertz <hwertz10@gmail.com>
-Date: Tue, 17 Apr 2018 16:27:02 -0500
-Message-ID: <CAOuPqTG_C_dLF+RPxP_=A7575KWSg=dTbuN6-94HCDqsTEJPOQ@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary="001a11473788dd5adb056a11ffcf"
+Date: Tue, 17 Apr 2018 16:32:26 -0500
+Message-ID: <CAOuPqTFJABMcDHmQcNoNZioBBJ8RcreeevsRfh5b46ZgKZLetw@mail.gmail.com>
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: multipart/mixed; boundary="f403045f1a0a2e9baf056a1213be"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::22e
-Subject: Re: [Qemu-arm] [Qemu-devel] Patch for ARM memory barriers and
- getdent
+X-Received-From: 2a00:1450:400c:c0c::22a
+Subject: [Qemu-arm] ARM memory barrier patch
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,121 +100,91 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <Laurent@vivier.eu>, Riku Voipio <riku.voipio@iki.fi>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KzpvCqzUhxal
+X-TUID: fX1IUMn5CJTM
 
---001a11473788dd5adb056a11ffcf
+--f403045f1a0a2e9baf056a1213be
+Content-Type: multipart/alternative; boundary="f403045f1a0a2e9bac056a1213bc"
+
+--f403045f1a0a2e9bac056a1213bc
 Content-Type: text/plain; charset="UTF-8"
 
-Hi Henry; thanks for these patches. Please could you provide
-> a Signed-off-by: line for them? This says you're happy for us
-> to apply them to QEMU under our license, and we can't do anything
-> with them without one. The top part of
-> https://wiki.qemu.org/Contribute/SubmitAPatch
-> has more detail.
->
-     Yup, I'll resubmit both in proper format.
-
-> You'll probably have better luck if you submit patches as separate
-> emails rather than all in one -- the set of people who care about
->
-     Can do.
-
-In general, 64-bit binary on a 32-bit host is not supported by linux-user.
-> Various things are likely to go wrong for anything but the simplest
-> of guest binaries. You need a 64-bit host to reliably use linux-user
-> for a 64-bit guest binary.
->
-     I didn't test it very hard, I was only using it to run the couple
-Android SDK binaries (aapt and friends) that Android Studio runs; these in
-general open a file or two, process them, write out a result, so they
-probably are pretty simple guest binaries.  Nevertheless,with this patch
-these few x86-64 binaries run on 32-bit ARM and (last I checked) 32-bit
-Intel.
+Please find submitted a patch for ARM memory barriers.  This patch is
+against qemu-2.12-rc2 but I do believe it should apply for anything from
+2.11.x to current. (the code being patched was added in for 2.11 series.)
 
 
->
-> I think your change isn't sufficient to handle the "target 32 bits
-> and host 64 bits" case, because the 64-on-32 code path that you're
-> using for it uses the guest's buffer size as the size of the
-> host buffer it allocates to pass to the host syscall.
->
-....
+I found with qemu 2.11.x or newer that I would get an illegal instruction
+error running some Intel binaries on my ARM chromebook.  On investigation,
+I found it was quitting on memory barriers.
+qemu instruction:
+mb $0x31
+was translating as:
+0x604050cc:  5bf07ff5  blpl     #0x600250a8
 
-> Maybe I'm missing a clever trick?
->
-     As far as I can tell, it makes a "linux_dirent" and "target_dirent"
-and is pretty careful to calculate rather than assume offsets, and so on as
-it copies data from one struct to the other.  i didn't look before, but
-there is in fact a line "assert(count1 + treclen <= count);" that would
-trigger if the buffer is going to be overflowed.  I think the code may not
-have even been needed, except that d_type (file type) was moved to the
-"middle" of the dirent64 struct instead of at the end.
+After patch it gives:
+0x604050cc:  f57ff05b  dmb      ish
 
-Thanks!
--- Henry
+In short, I found INSN_DMB_ISH (memory barrier for ARMv7) appeared to be
+correct based on online docs, but due to some endian-related shenanigans it
+had to be byte-swapped to suit qemu; it appears INSN_DMB_MCR (memory
+barrier for ARMv6) also should be byte swapped  (and this patch does so).
+I have not checked for correctness of aarch64's barrier instruction.
 
---001a11473788dd5adb056a11ffcf
+Signed-off-by: Henry Wertz <hwertz10@gmail.com>
+
+--f403045f1a0a2e9bac056a1213bc
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><br><div class=3D"gmail_extra"><br><div class=3D"gmail_quo=
-te"><span class=3D""></span><br><span class=3D""></span><blockquote class=
-=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padd=
-ing-left:1ex"><span class=3D"">
-</span>Hi Henry; thanks for these patches. Please could you provide<br>
-a Signed-off-by: line for them? This says you&#39;re happy for us<br>
-to apply them to QEMU under our license, and we can&#39;t do anything<br>
-with them without one. The top part of<br>
-<a href=3D"https://wiki.qemu.org/Contribute/SubmitAPatch" rel=3D"noreferrer=
-" target=3D"_blank">https://wiki.qemu.org/<wbr>Contribute/SubmitAPatch</a><=
-br>
-has more detail.<br>
-<span class=3D""></span></blockquote><div>=C2=A0 =C2=A0=C2=A0 Yup, I&#39;ll=
- resubmit both in proper format.<span class=3D""></span><br><span class=3D"=
-"></span></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex=
-;border-left:1px #ccc solid;padding-left:1ex"><span class=3D"">
-</span>You&#39;ll probably have better luck if you submit patches as separa=
-te<br>
-emails rather than all in one -- the set of people who care about<br>
-</blockquote><div>=C2=A0 =C2=A0=C2=A0 Can do. <span class=3D""><br></span><=
-span class=3D""></span><br><span class=3D""></span></div><blockquote class=
-=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padd=
-ing-left:1ex"><span class=3D"">
-</span>In general, 64-bit binary on a 32-bit host is not supported by linux=
--user.<br>
-Various things are likely to go wrong for anything but the simplest<br>
-of guest binaries. You need a 64-bit host to reliably use linux-user<br>
-for a 64-bit guest binary.<br></blockquote><div>=C2=A0 =C2=A0=C2=A0 I didn&=
-#39;t test it very hard, I was only using it to run the couple Android SDK =
-binaries (aapt and friends) that Android Studio runs; these in general open=
- a file or two, process them, write out a result, so they probably are pret=
-ty simple guest binaries.=C2=A0 Nevertheless,with this patch these few x86-=
-64 binaries run on 32-bit ARM and (last I checked) 32-bit Intel.<br>=C2=A0<=
-br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;borde=
-r-left:1px #ccc solid;padding-left:1ex">
-<br>
-I think your change isn&#39;t sufficient to handle the &quot;target 32 bits=
-<br>
-and host 64 bits&quot; case, because the 64-on-32 code path that you&#39;re=
-<br>
-using for it uses the guest&#39;s buffer size as the size of the<br>
-host buffer it allocates to pass to the host syscall. <br></blockquote><div=
->.... <br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8e=
-x;border-left:1px #ccc solid;padding-left:1ex">
-Maybe I&#39;m missing a clever trick?<br></blockquote><div>=C2=A0 =C2=A0=C2=
-=A0 As far as I can tell, it makes a &quot;linux_dirent&quot; and &quot;tar=
-get_dirent&quot; and is pretty careful to calculate rather than assume offs=
-ets, and so on as it copies data from one struct to the other.=C2=A0 i didn=
-&#39;t look before, but there is in fact a line &quot;assert(count1 + trecl=
-en &lt;=3D count);&quot; that would trigger if the buffer is going to be ov=
-erflowed.=C2=A0 I think the code may not have even been needed, except that=
- d_type (file type) was moved to the &quot;middle&quot; of the dirent64 str=
-uct instead of at the end.<br><br></div><div>Thanks!<br></div><div>-- Henry=
-<br></div></div></div></div>
+<div dir=3D"ltr"><div><span class=3D"gmail-im">Please find submitted a patc=
+h for ARM memory barriers.=C2=A0 This patch is<br>
+against qemu-2.12-rc2 but I do believe it should apply for anything from<br=
+>
+2.11.x to current. (the code being patched was added in for 2.11 series.)<b=
+r><br></span><br><span class=3D"gmail-im">I found with qemu 2.11.x or newer=
+ that I would get an illegal instruction<br>
+error running some Intel binaries on my ARM chromebook.=C2=A0 On investigat=
+ion,<br>
+I found it was quitting on memory barriers.<br>
+qemu instruction:<br>
+mb $0x31<br>
+was translating as:<br>
+0x604050cc:=C2=A0 5bf07ff5=C2=A0 blpl=C2=A0 =C2=A0 =C2=A0#0x600250a8<br><br=
+>
+After patch it gives:<br>
+0x604050cc:=C2=A0 f57ff05b=C2=A0 dmb=C2=A0 =C2=A0 =C2=A0 ish<br><br>
+In short, I found INSN_DMB_ISH (memory barrier for ARMv7) appeared to be co=
+rrect based on online docs, but due to some endian-related shenanigans it h=
+ad to be byte-swapped to suit qemu; it appears INSN_DMB_MCR (memory barrier=
+ for ARMv6) also should be byte swapped=C2=A0 (and this patch does so).<br>
+I have not checked for correctness of aarch64&#39;s barrier instruction.<br=
+><br></span></div><span class=3D"gmail-im">Signed-off-by: Henry Wertz &lt;<=
+a href=3D"mailto:hwertz10@gmail.com">hwertz10@gmail.com</a>&gt;<br><br>
+</span></div>
 
---001a11473788dd5adb056a11ffcf--
+--f403045f1a0a2e9bac056a1213bc--
+--f403045f1a0a2e9baf056a1213be
+Content-Type: text/x-patch; charset="US-ASCII"; name="arm-mb.patch"
+Content-Disposition: attachment; filename="arm-mb.patch"
+Content-Transfer-Encoding: base64
+X-Attachment-Id: f_jg46ow5z0
+
+KioqIHRjZy9hcm0vdGNnLXRhcmdldC5pbmMuYy5vcmlnCTIwMTgtMDQtMDQgMTU6Mjg6NTAuMDAw
+MDAwMDAwIC0wNTAwCi0tLSB0Y2cvYXJtL3RjZy10YXJnZXQuaW5jLmMJMjAxOC0wNC0xNiAxMjo1
+NTowNC45MTc1MTg4OTggLTA1MDAKKioqKioqKioqKioqKioqCioqKiAxNTgsMTY3ICoqKioKICAg
+ICAgSU5TTl9MRFJEX1JFRyAgPSAweDAwMDAwMGQwLAogICAgICBJTlNOX1NUUkRfSU1NICA9IDB4
+MDA0MDAwZjAsCiAgICAgIElOU05fU1RSRF9SRUcgID0gMHgwMDAwMDBmMCwKICAKISAgICAgSU5T
+Tl9ETUJfSVNIICAgPSAweDViZjA3ZmY1LAohICAgICBJTlNOX0RNQl9NQ1IgICA9IDB4YmEwZjA3
+ZWUsCiAgCiAgICAgIC8qIEFyY2hpdGVjdGVkIG5vcCBpbnRyb2R1Y2VkIGluIHY2ay4gICovCiAg
+ICAgIC8qID8/PyBUaGlzIGlzIGFuIE1TUiAoaW1tKSAwLDAsMCBpbnNuLiAgQW55b25lIGtub3cg
+aWYgdGhpcwogICAgICAgICBhbHNvIEp1c3QgU28gSGFwcGVuZWQgdG8gZG8gbm90aGluZyBvbiBw
+cmUtdjZrIHNvIHRoYXQgd2UKLS0tIDE1OCwxNjcgLS0tLQogICAgICBJTlNOX0xEUkRfUkVHICA9
+IDB4MDAwMDAwZDAsCiAgICAgIElOU05fU1RSRF9JTU0gID0gMHgwMDQwMDBmMCwKICAgICAgSU5T
+Tl9TVFJEX1JFRyAgPSAweDAwMDAwMGYwLAogIAohICAgICBJTlNOX0RNQl9JU0ggICA9IDB4ZjU3
+ZmYwNWIsCiEgICAgIElOU05fRE1CX01DUiAgID0gMHhlZTA3MGZiYSwKICAKICAgICAgLyogQXJj
+aGl0ZWN0ZWQgbm9wIGludHJvZHVjZWQgaW4gdjZrLiAgKi8KICAgICAgLyogPz8/IFRoaXMgaXMg
+YW4gTVNSIChpbW0pIDAsMCwwIGluc24uICBBbnlvbmUga25vdyBpZiB0aGlzCiAgICAgICAgIGFs
+c28gSnVzdCBTbyBIYXBwZW5lZCB0byBkbyBub3RoaW5nIG9uIHByZS12Nmsgc28gdGhhdCB3ZQo=
+--f403045f1a0a2e9baf056a1213be--

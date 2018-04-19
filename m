@@ -1,232 +1,815 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp3567881wre;
-        Tue, 29 May 2018 06:25:18 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKAN1oPiplb5WAeoymOvzMO923bZaaSntJ7pWceQseGhvQqADWxsLwXhLAoOCdXMOlwrKcv
-X-Received: by 2002:a37:6894:: with SMTP id d142-v6mr15045116qkc.348.1527600318307;
-        Tue, 29 May 2018 06:25:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527600318; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp216584wme;
+        Wed, 18 Apr 2018 21:16:13 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx49n1mSTHhqJrbRNWTEvxP4iZBthV9k3tKE0mq4hsloi1TR5nhFv7BGwjY25ikkl7qdBWFLG
+X-Received: by 10.55.40.132 with SMTP id o4mr4515248qko.228.1524111373207;
+        Wed, 18 Apr 2018 21:16:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1524111373; cv=none;
         d=google.com; s=arc-20160816;
-        b=O9+Chxam9u3R8zsIx/ScTGZ1k8u0dNMFUytO1zH2BsyPwyoytLlMiGDe/DDmxwMfTQ
-         3957UIRwVaLbFoU+fW1bsz4m8dDWQXnyMGXi17/gEYmt3zaDQ1gh7KYN9WeYQLTuZSsh
-         rtV5E/8dnkxaSPvLBYqbqkZ0gtrURC3rQXt+6Jx9Sj5K9wKIpV4h1sMb5/K1WZAD974h
-         SbW//CJuP0LmiXJJl7MfaWTnPh8GC5Sz7ktAPKi8GvrcR7oWU1JCKGJDXgADx+eJfTzs
-         CY4cK2Z5S9/wPtj52M0WxADlGmEpGu7khS2EwY5MwZanZ58emROquwM6VtbRS6MNri0L
-         c/pw==
+        b=blVRNNlzUi81fXvmWJ8jE2eGZLB3qNSq9THOIin5i+4lIOFP4poea6G5zpUjeNNrgq
+         Lm0ISHYOD27Irk2M+mBqMS4JOzUPomHFquru0DcBBMsZc2iLvWXTHHT4kq0/Zb2M6VZT
+         pFOapXVK4K/FhX4MlIZbxkr88zAd1oGAOLIILGMx0aARLBlTp8w+blNIACwQdkEr8fRx
+         hOO7jv6Zj4wy+MLYncfE1WG6kU8znxx6IDReP6iixIWHEmXqeuLpAGpBD4MZoX+le2AS
+         TwVL8xIQjKIBIyHqzurIJH7Gb0nonPxfEHuwS/hxVMnBg3X8kuHiaSat3YTqFzF87mqt
+         4n6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
          :dkim-signature:arc-authentication-results;
-        bh=MQ5l33LFwWCQFS+P8+GCpwTkN1h//inrPi6Th5yvMWk=;
-        b=wqBg6Hugv4ztzWj2vDsF+b+VwZH4AgneLZUnOiimGUAiRPKx6p7orWnc/OmUOEEAjM
-         CnBNqBPv3xD4lR2LDCTgiYaUj09ITPjNB3zdU6B4Xxs/A0C+hmV5R/5mezkpghJ6EMhT
-         +PcE1WQ5zEWkWMBcnoqRtE8AgLtUslCCX1Ab6E7hOnjqkQ+J9PJInL2IG03SsNRY1GMn
-         JDsZ6L9Y8W6vPK2vwfdOKvFPki7aoSZuO4Soms1Q/fdBhATgl2ixw6Tv7Dz0l0TN372X
-         0k7bCdq4vCHeTcCu9IZy1s7P2AyCEDG1ZJc3wIvwm8FnpozGMN1a3qJZ/rLrZdinHeCl
-         W89A==
+        bh=3wjCRxjNT9C+YiKbPu0bZAeXCT41iy6MSVhAMEblunM=;
+        b=gUxkm/ZfJNWoFBFtzsOIv6iKtzf4U1Z0UJmfp2yTJLW5eUb+e5nFkbfnLKBWvtpMp8
+         AeHj8+By+GJEiAedBcRgUzws7Do/VCk8nMhoUCO9y26bq6sGCQe3w1aTfLVtQmQQ+JeY
+         yeihkqOq1O3S3dmj9eYtOVHBVo2pxQ469Uya1LdfmuE8mCkxUPFG1/ULfIxKLEnBt/ox
+         IsBp1yW8jg6Qums/2YwR8Q4GKoLwlS4rRuPU/DpNowFxQKUwlS3tzlU6HGJAZcJygHFF
+         w4sXzvQ6shf5f0QKMexhZEdLSvhuP68ESV7LHI2F1v3ZKRFFHhj4dgQghdmj90szTMLM
+         d/cw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PFjVGeyb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=LfweX7f9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c43-v6si4662635qta.21.2018.05.29.06.25.18
+        by mx.google.com with ESMTPS id c56-v6si3905642qtc.294.2018.04.18.21.16.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 May 2018 06:25:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 18 Apr 2018 21:16:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PFjVGeyb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:32998 helo=lists.gnu.org)
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=LfweX7f9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:46192 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNecn-0005vn-P1
-	for alex.bennee@linaro.org; Tue, 29 May 2018 09:25:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50490)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1f90zU-0005w6-Md
+	for alex.bennee@linaro.org; Thu, 19 Apr 2018 00:16:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57008)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNecR-0005ul-Ol
-	for qemu-devel@nongnu.org; Tue, 29 May 2018 09:24:56 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1f90zJ-0005vT-PW
+	for qemu-arm@nongnu.org; Thu, 19 Apr 2018 00:16:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNecO-0007vG-F2
-	for qemu-devel@nongnu.org; Tue, 29 May 2018 09:24:55 -0400
-Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:33331)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNecO-0007uh-AQ; Tue, 29 May 2018 09:24:52 -0400
-Received: by mail-qt0-x242.google.com with SMTP id e8-v6so18579378qth.0;
-	Tue, 29 May 2018 06:24:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=MQ5l33LFwWCQFS+P8+GCpwTkN1h//inrPi6Th5yvMWk=;
-	b=PFjVGeybMB0+6FeXjql8ZfP8pBWiOrAdVvwQFj4/F4txiYZRjLte6gS2OfnfmdTK+6
-	9MwYmloKGruSoJzmO70rUB+DBAOemPKZcW0PSddiOLanc3n4xH0jYeWS+tweKcjRyW5L
-	KUqEHuDjGDEWoDP90xfCSMKDYVCSoxrHlMMBhdBx1wl+2TJcTDDsQllmCIGAXjUI9qmn
-	NvTsS4lt3CVG+8q7NuMLG3j1dQVYDUowhnMkVDZavIe7DK5RuaKCOvXQ/RmApGizkIBa
-	b+rV46mQKRuUuHgtK6HrqtDizuKO5PHKmkrAgGOki5gXbtH4zS0DLoxQwfkOcbxL4JKJ
-	jApg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=MQ5l33LFwWCQFS+P8+GCpwTkN1h//inrPi6Th5yvMWk=;
-	b=X26rV5Nh/LIT4pGy1IRcJMuO6tYSibXP7CJaUw8H8gqd8No8+nSr7I89Q7J/ZkEFE/
-	ygLkozuVJh41o6WTrY/XvAhhePGmkBnv+QlK7CLtRZH4eE6yvUuuG1D1K06DyvfcZNGa
-	U6Bf64RgnsaLe2KF/M0HfqtwNqWh8IwN5Z3hszk7+JkqtHuab3krlCdVG3ndEZChFrrr
-	wlOlvpYe4lZKJC7dlFlbaplLb18rlvRZk5kD9SbZY7tSoNJ3oX6hdsCLWHyG3cPa6uir
-	h1BhS61MJNUXTtWjKsx8+feva7v54VeDUOu1/vQ2fYkhJ/U0tmIvsCm82pFxQA7EJHfA
-	wiCQ==
-X-Gm-Message-State: ALKqPwdeDkT+FUaFFK0BsMFPiRQKOdPSWBqtUEmb0TCkexQtx8PrTbSb
-	lyfmkBoiko5NcDM0oY7E5TBoYRRwPQU=
-X-Received: by 2002:a0c:bf12:: with SMTP id
-	m18-v6mr15479952qvi.247.1527600291585; 
-	Tue, 29 May 2018 06:24:51 -0700 (PDT)
-Received: from [192.168.1.11] ([138.117.48.222])
-	by smtp.gmail.com with ESMTPSA id
-	l8-v6sm5668523qtf.77.2018.05.29.06.24.49
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 29 May 2018 06:24:51 -0700 (PDT)
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org
-References: <20180529062838.20556-1-clg@kaod.org>
-	<20180529062838.20556-7-clg@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <1d6ade72-ef0b-54c3-22f2-af2e514edb5a@amsat.org>
-Date: Tue, 29 May 2018 10:24:48 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	(envelope-from <dgibson@ozlabs.org>) id 1f90zG-0005vF-CK
+	for qemu-arm@nongnu.org; Thu, 19 Apr 2018 00:16:01 -0400
+Received: from ozlabs.org ([203.11.71.1]:39517)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1f90zE-0005hR-W8; Thu, 19 Apr 2018 00:15:58 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 40RQdg4Ml9z9s1w; Thu, 19 Apr 2018 14:15:51 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1524111351;
+	bh=sWiCKnBlBLiq2X4j/rkG+67JufCOzVjNmZwL1wiWxms=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=LfweX7f9EzW67hbcTnZ+1P1spxcK3TJqLsKYHzWk6SbrVJxWE4XKlSg1kWdHZkzsn
+	4v+S9G+sKnMJ5yuEr+OiE1gC0OzCNDnGioUgjA+ewFlttjb+ruYHwFTQZcx5flt9GC
+	CwzR3j2ioqLhJFvg9FhSzYNlP2rOAmmQtO8CcmYg=
+Date: Thu, 19 Apr 2018 14:15:20 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20180419041520.GJ2317@umbus.fritz.box>
+References: <1524061685-83305-1-git-send-email-imammedo@redhat.com>
+	<1524061685-83305-3-git-send-email-imammedo@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20180529062838.20556-7-clg@kaod.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::242
-Subject: Re: [Qemu-devel] [PATCH 6/6] slirp/ncsi: add checksum support
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="HSQ3hISbU3Um6hch"
+Content-Disposition: inline
+In-Reply-To: <1524061685-83305-3-git-send-email-imammedo@redhat.com>
+User-Agent: Mutt/1.9.2 (2017-12-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 203.11.71.1
+Subject: Re: [Qemu-arm] [PATCH for-2.13 v2 2/5] ppc: e500: switch E500 based
+ machines to full machine definition
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Samuel Thibault <samuel.thibault@ens-lyon.org>,
-	Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: T7IHSKIzkSsG
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, Alexander Graf <agraf@suse.de>,
+	qemu-devel@nongnu.org, eric.auger@redhat.com,
+	qemu-arm@nongnu.org, "open list:e500" <qemu-ppc@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jV2MwEKqJ93I
 
-On 05/29/2018 03:28 AM, Cédric Le Goater wrote:
-> The checksum field of a NC-SI packet contains a value that may be
-> included in each command and response. The verification is optional
-> but the Linux driver does so when a non-zero value is provided. Let's
-> extend the model to compute the checksum value and exercise a little
-> more the Linux driver.
 
-Due to
-- "If the originator of an NC-SI Control packet is not generating a
-checksum, the originator shall use a value of all zeros for the header
-checksum field."
-- "All receivers of NC-SI Control packets shall accept packets with all
-zeros as the checksum value (provided that other fields and the CRC are
-correct)."
-- "The receiver of an NC-SI Control packet may reject (silently discard)
-a packet that has an incorrect non-zero checksum."
+--HSQ3hISbU3Um6hch
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I was tempted to suggest you to check the input checksum if any, but
-"A controller that generates checksums is not required to verify
-checksums that it receives." so we don't care.
+On Wed, Apr 18, 2018 at 04:28:02PM +0200, Igor Mammedov wrote:
+> Convert PPCE500Params to PCCE500MachineClass which it essentially is,
+> and introduce PCCE500MachineState to keep track of E500 specific
+> state instead of adding global variables or extra parameters to
+> functions when we need to keep data beyond machine init
+> (i.e. make it look like typical fully defined machine).
+>=20
+> It's pretty shallow conversion instead of currently used trivial
+> DEFINE_MACHINE() macro. It adds extra 60LOC of boilerplate code
+> of full machine definition.
+>=20
+> The patch on top[1] will use PCCE500MachineState to keep track of
+> platform_bus device and add E500Plate specific machine class
+> to use HOTPLUG_HANDLER for explicitly initializing dynamic
+> sysbus devices at the time they are added instead of delaying
+> it to machine done time by platform_bus_init_notify() which is
+> being removed.
+>=20
+> 1)  <1523551221-11612-3-git-send-email-imammedo@redhat.com>
+>=20
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> Suggested-by: David Gibson <david@gibson.dropbear.id.au>
 
-> 
-> See section "8.2.2.3 - 2's Complement Checksum Compensation" in the
-> Network Controller Sideband Interface (NC-SI) Specification for more
-> details.
-> 
-> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+As noted elsewhere, I've already merged this into my ppc-for-2.13
+tree.  However, don't let that stop you from posting and/or queueing
+it elsewhere.  Whoever ends up merging first once 2.13 opens, it
+should be easy to resolve.
+
 > ---
->  slirp/ncsi.c | 29 +++++++++++++++++++++++++----
->  1 file changed, 25 insertions(+), 4 deletions(-)
-> 
-> diff --git a/slirp/ncsi.c b/slirp/ncsi.c
-> index f00253641ea4..fbfb79713f23 100644
-> --- a/slirp/ncsi.c
-> +++ b/slirp/ncsi.c
-> @@ -8,9 +8,23 @@
->   */
->  #include "qemu/osdep.h"
->  #include "slirp.h"
-> +#include "net/checksum.h"
->  
->  #include "ncsi-pkt.h"
->  
-> +static uint32_t ncsi_calculate_checksum(unsigned char *data, int len)
-
-"NC-SI packet payload interpreted as a series of 16-bit unsigned integer
-values."
-
-Can you use the "uint32_t ncsi_calculate_checksum(uint16_t *data, size_t
-length)" prototype instead if you respin?
-
-Regardless:
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
+>=20
+> CC: Alexander Graf <agraf@suse.de> (supporter:e500)
+> CC: David Gibson <david@gibson.dropbear.id.au> (maintainer:PowerPC)
+> CC: qemu-ppc@nongnu.org (open list:e500)
+> ---
+>  hw/ppc/e500.h      |  29 ++++++++++---
+>  hw/ppc/e500.c      | 119 ++++++++++++++++++++++++++++-------------------=
+------
+>  hw/ppc/e500plat.c  |  64 +++++++++++++++++-----------
+>  hw/ppc/mpc8544ds.c |  47 +++++++++++++--------
+>  4 files changed, 156 insertions(+), 103 deletions(-)
+>=20
+> diff --git a/hw/ppc/e500.h b/hw/ppc/e500.h
+> index 70ba1d8..621403b 100644
+> --- a/hw/ppc/e500.h
+> +++ b/hw/ppc/e500.h
+> @@ -3,12 +3,21 @@
+> =20
+>  #include "hw/boards.h"
+> =20
+> -typedef struct PPCE500Params {
+> -    int pci_first_slot;
+> -    int pci_nr_slots;
+> +typedef struct PPCE500MachineState {
+> +    /*< private >*/
+> +    MachineState parent_obj;
+> +
+> +} PPCE500MachineState;
+> +
+> +typedef struct PPCE500MachineClass {
+> +    /*< private >*/
+> +    MachineClass parent_class;
+> =20
+>      /* required -- must at least add toplevel board compatible */
+> -    void (*fixup_devtree)(struct PPCE500Params *params, void *fdt);
+> +    void (*fixup_devtree)(void *fdt);
+> +
+> +    int pci_first_slot;
+> +    int pci_nr_slots;
+> =20
+>      int mpic_version;
+>      bool has_mpc8xxx_gpio;
+> @@ -22,10 +31,18 @@ typedef struct PPCE500Params {
+>      hwaddr pci_mmio_base;
+>      hwaddr pci_mmio_bus_base;
+>      hwaddr spin_base;
+> -} PPCE500Params;
+> +} PPCE500MachineClass;
+> =20
+> -void ppce500_init(MachineState *machine, PPCE500Params *params);
+> +void ppce500_init(MachineState *machine);
+> =20
+>  hwaddr booke206_page_size_to_tlb(uint64_t size);
+> =20
+> +#define TYPE_PPCE500_MACHINE      "ppce500-base-machine"
+> +#define PPCE500_MACHINE(obj) \
+> +    OBJECT_CHECK(PPCE500MachineState, (obj), TYPE_PPCE500_MACHINE)
+> +#define PPCE500_MACHINE_GET_CLASS(obj) \
+> +    OBJECT_GET_CLASS(PPCE500MachineClass, obj, TYPE_PPCE500_MACHINE)
+> +#define PPCE500_MACHINE_CLASS(klass) \
+> +    OBJECT_CLASS_CHECK(PPCE500MachineClass, klass, TYPE_PPCE500_MACHINE)
+> +
+>  #endif
+> diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
+> index 9a85a41..30b42a8 100644
+> --- a/hw/ppc/e500.c
+> +++ b/hw/ppc/e500.c
+> @@ -221,14 +221,14 @@ static void sysbus_device_create_devtree(SysBusDevi=
+ce *sbdev, void *opaque)
+>      }
+>  }
+> =20
+> -static void platform_bus_create_devtree(PPCE500Params *params, void *fdt,
+> -                                        const char *mpic)
+> +static void platform_bus_create_devtree(const PPCE500MachineClass *pmc,
+> +                                        void *fdt, const char *mpic)
+>  {
+> -    gchar *node =3D g_strdup_printf("/platform@%"PRIx64, params->platfor=
+m_bus_base);
+> +    gchar *node =3D g_strdup_printf("/platform@%"PRIx64, pmc->platform_b=
+us_base);
+>      const char platcomp[] =3D "qemu,platform\0simple-bus";
+> -    uint64_t addr =3D params->platform_bus_base;
+> -    uint64_t size =3D params->platform_bus_size;
+> -    int irq_start =3D params->platform_bus_first_irq;
+> +    uint64_t addr =3D pmc->platform_bus_base;
+> +    uint64_t size =3D pmc->platform_bus_size;
+> +    int irq_start =3D pmc->platform_bus_first_irq;
+>      PlatformBusDevice *pbus;
+>      DeviceState *dev;
+> =20
+> @@ -265,8 +265,7 @@ static void platform_bus_create_devtree(PPCE500Params=
+ *params, void *fdt,
+>      g_free(node);
+>  }
+> =20
+> -static int ppce500_load_device_tree(MachineState *machine,
+> -                                    PPCE500Params *params,
+> +static int ppce500_load_device_tree(PPCE500MachineState *pms,
+>                                      hwaddr addr,
+>                                      hwaddr initrd_base,
+>                                      hwaddr initrd_size,
+> @@ -274,6 +273,8 @@ static int ppce500_load_device_tree(MachineState *mac=
+hine,
+>                                      hwaddr kernel_size,
+>                                      bool dry_run)
+>  {
+> +    MachineState *machine =3D MACHINE(pms);
+> +    const PPCE500MachineClass *pmc =3D PPCE500_MACHINE_GET_CLASS(pms);
+>      CPUPPCState *env =3D first_cpu->env_ptr;
+>      int ret =3D -1;
+>      uint64_t mem_reg_property[] =3D { 0, cpu_to_be64(machine->ram_size) =
+};
+> @@ -295,12 +296,12 @@ static int ppce500_load_device_tree(MachineState *m=
+achine,
+>      int len;
+>      uint32_t pci_ranges[14] =3D
+>          {
+> -            0x2000000, 0x0, params->pci_mmio_bus_base,
+> -            params->pci_mmio_base >> 32, params->pci_mmio_base,
+> +            0x2000000, 0x0, pmc->pci_mmio_bus_base,
+> +            pmc->pci_mmio_base >> 32, pmc->pci_mmio_base,
+>              0x0, 0x20000000,
+> =20
+>              0x1000000, 0x0, 0x0,
+> -            params->pci_pio_base >> 32, params->pci_pio_base,
+> +            pmc->pci_pio_base >> 32, pmc->pci_pio_base,
+>              0x0, 0x10000,
+>          };
+>      QemuOpts *machine_opts =3D qemu_get_machine_opts();
+> @@ -391,7 +392,7 @@ static int ppce500_load_device_tree(MachineState *mac=
+hine,
+>      for (i =3D smp_cpus - 1; i >=3D 0; i--) {
+>          CPUState *cpu;
+>          char cpu_name[128];
+> -        uint64_t cpu_release_addr =3D params->spin_base + (i * 0x20);
+> +        uint64_t cpu_release_addr =3D pmc->spin_base + (i * 0x20);
+> =20
+>          cpu =3D qemu_get_cpu(i);
+>          if (cpu =3D=3D NULL) {
+> @@ -425,7 +426,7 @@ static int ppce500_load_device_tree(MachineState *mac=
+hine,
+> =20
+>      qemu_fdt_add_subnode(fdt, "/aliases");
+>      /* XXX These should go into their respective devices' code */
+> -    snprintf(soc, sizeof(soc), "/soc@%"PRIx64, params->ccsrbar_base);
+> +    snprintf(soc, sizeof(soc), "/soc@%"PRIx64, pmc->ccsrbar_base);
+>      qemu_fdt_add_subnode(fdt, soc);
+>      qemu_fdt_setprop_string(fdt, soc, "device_type", "soc");
+>      qemu_fdt_setprop(fdt, soc, "compatible", compatible_sb,
+> @@ -433,7 +434,7 @@ static int ppce500_load_device_tree(MachineState *mac=
+hine,
+>      qemu_fdt_setprop_cell(fdt, soc, "#address-cells", 1);
+>      qemu_fdt_setprop_cell(fdt, soc, "#size-cells", 1);
+>      qemu_fdt_setprop_cells(fdt, soc, "ranges", 0x0,
+> -                           params->ccsrbar_base >> 32, params->ccsrbar_b=
+ase,
+> +                           pmc->ccsrbar_base >> 32, pmc->ccsrbar_base,
+>                             MPC8544_CCSRBAR_SIZE);
+>      /* XXX should contain a reasonable value */
+>      qemu_fdt_setprop_cell(fdt, soc, "bus-frequency", 0);
+> @@ -493,7 +494,7 @@ static int ppce500_load_device_tree(MachineState *mac=
+hine,
+>      qemu_fdt_setprop_cell(fdt, msi, "linux,phandle", msi_ph);
+> =20
+>      snprintf(pci, sizeof(pci), "/pci@%llx",
+> -             params->ccsrbar_base + MPC8544_PCI_REGS_OFFSET);
+> +             pmc->ccsrbar_base + MPC8544_PCI_REGS_OFFSET);
+>      qemu_fdt_add_subnode(fdt, pci);
+>      qemu_fdt_setprop_cell(fdt, pci, "cell-index", 0);
+>      qemu_fdt_setprop_string(fdt, pci, "compatible", "fsl,mpc8540-pci");
+> @@ -501,7 +502,7 @@ static int ppce500_load_device_tree(MachineState *mac=
+hine,
+>      qemu_fdt_setprop_cells(fdt, pci, "interrupt-map-mask", 0xf800, 0x0,
+>                             0x0, 0x7);
+>      pci_map =3D pci_map_create(fdt, qemu_fdt_get_phandle(fdt, mpic),
+> -                             params->pci_first_slot, params->pci_nr_slot=
+s,
+> +                             pmc->pci_first_slot, pmc->pci_nr_slots,
+>                               &len);
+>      qemu_fdt_setprop(fdt, pci, "interrupt-map", pci_map, len);
+>      qemu_fdt_setprop_phandle(fdt, pci, "interrupt-parent", mpic);
+> @@ -513,8 +514,8 @@ static int ppce500_load_device_tree(MachineState *mac=
+hine,
+>      qemu_fdt_setprop_cell(fdt, pci, "fsl,msi", msi_ph);
+>      qemu_fdt_setprop(fdt, pci, "ranges", pci_ranges, sizeof(pci_ranges));
+>      qemu_fdt_setprop_cells(fdt, pci, "reg",
+> -                           (params->ccsrbar_base + MPC8544_PCI_REGS_OFFS=
+ET) >> 32,
+> -                           (params->ccsrbar_base + MPC8544_PCI_REGS_OFFS=
+ET),
+> +                           (pmc->ccsrbar_base + MPC8544_PCI_REGS_OFFSET)=
+ >> 32,
+> +                           (pmc->ccsrbar_base + MPC8544_PCI_REGS_OFFSET),
+>                             0, 0x1000);
+>      qemu_fdt_setprop_cell(fdt, pci, "clock-frequency", 66666666);
+>      qemu_fdt_setprop_cell(fdt, pci, "#interrupt-cells", 1);
+> @@ -522,15 +523,15 @@ static int ppce500_load_device_tree(MachineState *m=
+achine,
+>      qemu_fdt_setprop_cell(fdt, pci, "#address-cells", 3);
+>      qemu_fdt_setprop_string(fdt, "/aliases", "pci0", pci);
+> =20
+> -    if (params->has_mpc8xxx_gpio) {
+> +    if (pmc->has_mpc8xxx_gpio) {
+>          create_dt_mpc8xxx_gpio(fdt, soc, mpic);
+>      }
+> =20
+> -    if (params->has_platform_bus) {
+> -        platform_bus_create_devtree(params, fdt, mpic);
+> +    if (pmc->has_platform_bus) {
+> +        platform_bus_create_devtree(pmc, fdt, mpic);
+>      }
+> =20
+> -    params->fixup_devtree(params, fdt);
+> +    pmc->fixup_devtree(fdt);
+> =20
+>      if (toplevel_compat) {
+>          qemu_fdt_setprop(fdt, "/", "compatible", toplevel_compat,
+> @@ -551,8 +552,7 @@ out:
+>  }
+> =20
+>  typedef struct DeviceTreeParams {
+> -    MachineState *machine;
+> -    PPCE500Params params;
+> +    PPCE500MachineState *machine;
+>      hwaddr addr;
+>      hwaddr initrd_base;
+>      hwaddr initrd_size;
+> @@ -564,7 +564,7 @@ typedef struct DeviceTreeParams {
+>  static void ppce500_reset_device_tree(void *opaque)
+>  {
+>      DeviceTreeParams *p =3D opaque;
+> -    ppce500_load_device_tree(p->machine, &p->params, p->addr, p->initrd_=
+base,
+> +    ppce500_load_device_tree(p->machine, p->addr, p->initrd_base,
+>                               p->initrd_size, p->kernel_base, p->kernel_s=
+ize,
+>                               false);
+>  }
+> @@ -575,8 +575,7 @@ static void ppce500_init_notify(Notifier *notifier, v=
+oid *data)
+>      ppce500_reset_device_tree(p);
+>  }
+> =20
+> -static int ppce500_prep_device_tree(MachineState *machine,
+> -                                    PPCE500Params *params,
+> +static int ppce500_prep_device_tree(PPCE500MachineState *machine,
+>                                      hwaddr addr,
+>                                      hwaddr initrd_base,
+>                                      hwaddr initrd_size,
+> @@ -585,7 +584,6 @@ static int ppce500_prep_device_tree(MachineState *mac=
+hine,
+>  {
+>      DeviceTreeParams *p =3D g_new(DeviceTreeParams, 1);
+>      p->machine =3D machine;
+> -    p->params =3D *params;
+>      p->addr =3D addr;
+>      p->initrd_base =3D initrd_base;
+>      p->initrd_size =3D initrd_size;
+> @@ -597,9 +595,8 @@ static int ppce500_prep_device_tree(MachineState *mac=
+hine,
+>      qemu_add_machine_init_done_notifier(&p->notifier);
+> =20
+>      /* Issue the device tree loader once, so that we get the size of the=
+ blob */
+> -    return ppce500_load_device_tree(machine, params, addr, initrd_base,
+> -                                    initrd_size, kernel_base, kernel_siz=
+e,
+> -                                    true);
+> +    return ppce500_load_device_tree(machine, addr, initrd_base, initrd_s=
+ize,
+> +                                    kernel_base, kernel_size, true);
+>  }
+> =20
+>  /* Create -kernel TLB entries for BookE.  */
+> @@ -685,17 +682,19 @@ static void ppce500_cpu_reset(void *opaque)
+>      mmubooke_create_initial_mapping(env);
+>  }
+> =20
+> -static DeviceState *ppce500_init_mpic_qemu(PPCE500Params *params,
+> +static DeviceState *ppce500_init_mpic_qemu(PPCE500MachineState *pms,
+>                                             qemu_irq **irqs)
+>  {
+>      DeviceState *dev;
+>      SysBusDevice *s;
+>      int i, j, k;
+> +    MachineState *machine =3D MACHINE(pms);
+> +    const PPCE500MachineClass *pmc =3D PPCE500_MACHINE_GET_CLASS(pms);
+> =20
+>      dev =3D qdev_create(NULL, TYPE_OPENPIC);
+> -    object_property_add_child(qdev_get_machine(), "pic", OBJECT(dev),
+> +    object_property_add_child(OBJECT(machine), "pic", OBJECT(dev),
+>                                &error_fatal);
+> -    qdev_prop_set_uint32(dev, "model", params->mpic_version);
+> +    qdev_prop_set_uint32(dev, "model", pmc->mpic_version);
+>      qdev_prop_set_uint32(dev, "nb_cpus", smp_cpus);
+> =20
+>      qdev_init_nofail(dev);
+> @@ -711,7 +710,7 @@ static DeviceState *ppce500_init_mpic_qemu(PPCE500Par=
+ams *params,
+>      return dev;
+>  }
+> =20
+> -static DeviceState *ppce500_init_mpic_kvm(PPCE500Params *params,
+> +static DeviceState *ppce500_init_mpic_kvm(const PPCE500MachineClass *pmc,
+>                                            qemu_irq **irqs, Error **errp)
+>  {
+>      Error *err =3D NULL;
+> @@ -719,7 +718,7 @@ static DeviceState *ppce500_init_mpic_kvm(PPCE500Para=
+ms *params,
+>      CPUState *cs;
+> =20
+>      dev =3D qdev_create(NULL, TYPE_KVM_OPENPIC);
+> -    qdev_prop_set_uint32(dev, "model", params->mpic_version);
+> +    qdev_prop_set_uint32(dev, "model", pmc->mpic_version);
+> =20
+>      object_property_set_bool(OBJECT(dev), true, "realized", &err);
+>      if (err) {
+> @@ -739,11 +738,12 @@ static DeviceState *ppce500_init_mpic_kvm(PPCE500Pa=
+rams *params,
+>      return dev;
+>  }
+> =20
+> -static DeviceState *ppce500_init_mpic(MachineState *machine,
+> -                                      PPCE500Params *params,
+> +static DeviceState *ppce500_init_mpic(PPCE500MachineState *pms,
+>                                        MemoryRegion *ccsr,
+>                                        qemu_irq **irqs)
+>  {
+> +    MachineState *machine =3D MACHINE(pms);
+> +    const PPCE500MachineClass *pmc =3D PPCE500_MACHINE_GET_CLASS(pms);
+>      DeviceState *dev =3D NULL;
+>      SysBusDevice *s;
+> =20
+> @@ -751,7 +751,7 @@ static DeviceState *ppce500_init_mpic(MachineState *m=
+achine,
+>          Error *err =3D NULL;
+> =20
+>          if (machine_kernel_irqchip_allowed(machine)) {
+> -            dev =3D ppce500_init_mpic_kvm(params, irqs, &err);
+> +            dev =3D ppce500_init_mpic_kvm(pmc, irqs, &err);
+>          }
+>          if (machine_kernel_irqchip_required(machine) && !dev) {
+>              error_reportf_err(err,
+> @@ -761,7 +761,7 @@ static DeviceState *ppce500_init_mpic(MachineState *m=
+achine,
+>      }
+> =20
+>      if (!dev) {
+> -        dev =3D ppce500_init_mpic_qemu(params, irqs);
+> +        dev =3D ppce500_init_mpic_qemu(pms, irqs);
+>      }
+> =20
+>      s =3D SYS_BUS_DEVICE(dev);
+> @@ -778,10 +778,12 @@ static void ppce500_power_off(void *opaque, int lin=
+e, int on)
+>      }
+>  }
+> =20
+> -void ppce500_init(MachineState *machine, PPCE500Params *params)
+> +void ppce500_init(MachineState *machine)
+>  {
+>      MemoryRegion *address_space_mem =3D get_system_memory();
+>      MemoryRegion *ram =3D g_new(MemoryRegion, 1);
+> +    PPCE500MachineState *pms =3D PPCE500_MACHINE(machine);
+> +    const PPCE500MachineClass *pmc =3D PPCE500_MACHINE_GET_CLASS(machine=
+);
+>      PCIBus *pci_bus;
+>      CPUPPCState *env =3D NULL;
+>      uint64_t loadaddr;
+> @@ -835,8 +837,7 @@ void ppce500_init(MachineState *machine, PPCE500Param=
+s *params)
+>          irqs[i][OPENPIC_OUTPUT_INT] =3D input[PPCE500_INPUT_INT];
+>          irqs[i][OPENPIC_OUTPUT_CINT] =3D input[PPCE500_INPUT_CINT];
+>          env->spr_cb[SPR_BOOKE_PIR].default_value =3D cs->cpu_index =3D i;
+> -        env->mpic_iack =3D params->ccsrbar_base +
+> -                         MPC8544_MPIC_REGS_OFFSET + 0xa0;
+> +        env->mpic_iack =3D pmc->ccsrbar_base + MPC8544_MPIC_REGS_OFFSET =
++ 0xa0;
+> =20
+>          ppc_booke_timers_init(cpu, 400000000, PPC_TIMER_E500);
+> =20
+> @@ -869,10 +870,10 @@ void ppce500_init(MachineState *machine, PPCE500Par=
+ams *params)
+>      qdev_init_nofail(dev);
+>      ccsr =3D CCSR(dev);
+>      ccsr_addr_space =3D &ccsr->ccsr_space;
+> -    memory_region_add_subregion(address_space_mem, params->ccsrbar_base,
+> +    memory_region_add_subregion(address_space_mem, pmc->ccsrbar_base,
+>                                  ccsr_addr_space);
+> =20
+> -    mpicdev =3D ppce500_init_mpic(machine, params, ccsr_addr_space, irqs=
+);
+> +    mpicdev =3D ppce500_init_mpic(pms, ccsr_addr_space, irqs);
+> =20
+>      /* Serial */
+>      if (serial_hds[0]) {
+> @@ -898,7 +899,7 @@ void ppce500_init(MachineState *machine, PPCE500Param=
+s *params)
+>      dev =3D qdev_create(NULL, "e500-pcihost");
+>      object_property_add_child(qdev_get_machine(), "pci-host", OBJECT(dev=
+),
+>                                &error_abort);
+> -    qdev_prop_set_uint32(dev, "first_slot", params->pci_first_slot);
+> +    qdev_prop_set_uint32(dev, "first_slot", pmc->pci_first_slot);
+>      qdev_prop_set_uint32(dev, "first_pin_irq", pci_irq_nrs[0]);
+>      qdev_init_nofail(dev);
+>      s =3D SYS_BUS_DEVICE(dev);
+> @@ -921,9 +922,9 @@ void ppce500_init(MachineState *machine, PPCE500Param=
+s *params)
+>      }
+> =20
+>      /* Register spinning region */
+> -    sysbus_create_simple("e500-spin", params->spin_base, NULL);
+> +    sysbus_create_simple("e500-spin", pmc->spin_base, NULL);
+> =20
+> -    if (params->has_mpc8xxx_gpio) {
+> +    if (pmc->has_mpc8xxx_gpio) {
+>          qemu_irq poweroff_irq;
+> =20
+>          dev =3D qdev_create(NULL, "mpc8xxx_gpio");
+> @@ -939,21 +940,21 @@ void ppce500_init(MachineState *machine, PPCE500Par=
+ams *params)
+>      }
+> =20
+>      /* Platform Bus Device */
+> -    if (params->has_platform_bus) {
+> +    if (pmc->has_platform_bus) {
+>          dev =3D qdev_create(NULL, TYPE_PLATFORM_BUS_DEVICE);
+>          dev->id =3D TYPE_PLATFORM_BUS_DEVICE;
+> -        qdev_prop_set_uint32(dev, "num_irqs", params->platform_bus_num_i=
+rqs);
+> -        qdev_prop_set_uint32(dev, "mmio_size", params->platform_bus_size=
+);
+> +        qdev_prop_set_uint32(dev, "num_irqs", pmc->platform_bus_num_irqs=
+);
+> +        qdev_prop_set_uint32(dev, "mmio_size", pmc->platform_bus_size);
+>          qdev_init_nofail(dev);
+>          s =3D SYS_BUS_DEVICE(dev);
+> =20
+> -        for (i =3D 0; i < params->platform_bus_num_irqs; i++) {
+> -            int irqn =3D params->platform_bus_first_irq + i;
+> +        for (i =3D 0; i < pmc->platform_bus_num_irqs; i++) {
+> +            int irqn =3D pmc->platform_bus_first_irq + i;
+>              sysbus_connect_irq(s, i, qdev_get_gpio_in(mpicdev, irqn));
+>          }
+> =20
+>          memory_region_add_subregion(address_space_mem,
+> -                                    params->platform_bus_base,
+> +                                    pmc->platform_bus_base,
+>                                      sysbus_mmio_get_region(s, 0));
+>      }
+> =20
+> @@ -1056,7 +1057,7 @@ void ppce500_init(MachineState *machine, PPCE500Par=
+ams *params)
+>              exit(1);
+>      }
+> =20
+> -    dt_size =3D ppce500_prep_device_tree(machine, params, dt_base,
+> +    dt_size =3D ppce500_prep_device_tree(pms, dt_base,
+>                                         initrd_base, initrd_size,
+>                                         kernel_base, kernel_size);
+>      if (dt_size < 0) {
+> @@ -1085,9 +1086,17 @@ static const TypeInfo e500_ccsr_info =3D {
+>      .instance_init =3D e500_ccsr_initfn,
+>  };
+> =20
+> +static const TypeInfo ppce500_info =3D {
+> +    .name          =3D TYPE_PPCE500_MACHINE,
+> +    .parent        =3D TYPE_MACHINE,
+> +    .abstract      =3D true,
+> +    .class_size    =3D sizeof(PPCE500MachineClass),
+> +};
+> +
+>  static void e500_register_types(void)
+>  {
+>      type_register_static(&e500_ccsr_info);
+> +    type_register_static(&ppce500_info);
+>  }
+> =20
+>  type_init(e500_register_types)
+> diff --git a/hw/ppc/e500plat.c b/hw/ppc/e500plat.c
+> index 81d03e1..f69aadb 100644
+> --- a/hw/ppc/e500plat.c
+> +++ b/hw/ppc/e500plat.c
+> @@ -21,7 +21,7 @@
+>  #include "hw/ppc/openpic.h"
+>  #include "kvm_ppc.h"
+> =20
+> -static void e500plat_fixup_devtree(PPCE500Params *params, void *fdt)
+> +static void e500plat_fixup_devtree(void *fdt)
+>  {
+>      const char model[] =3D "QEMU ppce500";
+>      const char compatible[] =3D "fsl,qemu-e500";
+> @@ -33,40 +33,54 @@ static void e500plat_fixup_devtree(PPCE500Params *par=
+ams, void *fdt)
+> =20
+>  static void e500plat_init(MachineState *machine)
+>  {
+> -    PPCE500Params params =3D {
+> -        .pci_first_slot =3D 0x1,
+> -        .pci_nr_slots =3D PCI_SLOT_MAX - 1,
+> -        .fixup_devtree =3D e500plat_fixup_devtree,
+> -        .mpic_version =3D OPENPIC_MODEL_FSL_MPIC_42,
+> -        .has_mpc8xxx_gpio =3D true,
+> -        .has_platform_bus =3D true,
+> -        .platform_bus_base =3D 0xf00000000ULL,
+> -        .platform_bus_size =3D (128ULL * 1024 * 1024),
+> -        .platform_bus_first_irq =3D 5,
+> -        .platform_bus_num_irqs =3D 10,
+> -        .ccsrbar_base =3D 0xFE0000000ULL,
+> -        .pci_pio_base =3D 0xFE1000000ULL,
+> -        .pci_mmio_base =3D 0xC00000000ULL,
+> -        .pci_mmio_bus_base =3D 0xE0000000ULL,
+> -        .spin_base =3D 0xFEF000000ULL,
+> -    };
+> -
+> +    PPCE500MachineClass *pmc =3D PPCE500_MACHINE_GET_CLASS(machine);
+>      /* Older KVM versions don't support EPR which breaks guests when we =
+announce
+>         MPIC variants that support EPR. Revert to an older one for those =
+*/
+>      if (kvm_enabled() && !kvmppc_has_cap_epr()) {
+> -        params.mpic_version =3D OPENPIC_MODEL_FSL_MPIC_20;
+> +        pmc->mpic_version =3D OPENPIC_MODEL_FSL_MPIC_20;
+>      }
+> =20
+> -    ppce500_init(machine, &params);
+> +    ppce500_init(machine);
+>  }
+> =20
+> -static void e500plat_machine_init(MachineClass *mc)
+> +#define TYPE_E500PLAT_MACHINE  MACHINE_TYPE_NAME("ppce500")
+> +
+> +static void e500plat_machine_class_init(ObjectClass *oc, void *data)
+>  {
+> +    PPCE500MachineClass *pmc =3D PPCE500_MACHINE_CLASS(oc);
+> +    MachineClass *mc =3D MACHINE_CLASS(oc);
+> +
+> +    pmc->pci_first_slot =3D 0x1;
+> +    pmc->pci_nr_slots =3D PCI_SLOT_MAX - 1;
+> +    pmc->fixup_devtree =3D e500plat_fixup_devtree;
+> +    pmc->mpic_version =3D OPENPIC_MODEL_FSL_MPIC_42;
+> +    pmc->has_mpc8xxx_gpio =3D true;
+> +    pmc->has_platform_bus =3D true;
+> +    pmc->platform_bus_base =3D 0xf00000000ULL;
+> +    pmc->platform_bus_size =3D (128ULL * 1024 * 1024);
+> +    pmc->platform_bus_first_irq =3D 5;
+> +    pmc->platform_bus_num_irqs =3D 10;
+> +    pmc->ccsrbar_base =3D 0xFE0000000ULL;
+> +    pmc->pci_pio_base =3D 0xFE1000000ULL;
+> +    pmc->pci_mmio_base =3D 0xC00000000ULL;
+> +    pmc->pci_mmio_bus_base =3D 0xE0000000ULL;
+> +    pmc->spin_base =3D 0xFEF000000ULL;
+> +
+>      mc->desc =3D "generic paravirt e500 platform";
+>      mc->init =3D e500plat_init;
+>      mc->max_cpus =3D 32;
+> -    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_ETSEC_COMMON);
+>      mc->default_cpu_type =3D POWERPC_CPU_TYPE_NAME("e500v2_v30");
+> -}
+> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_ETSEC_COMMON);
+> + }
+> +
+> +static const TypeInfo e500plat_info =3D {
+> +    .name          =3D TYPE_E500PLAT_MACHINE,
+> +    .parent        =3D TYPE_PPCE500_MACHINE,
+> +    .class_init    =3D e500plat_machine_class_init,
+> +};
+> =20
+> -DEFINE_MACHINE("ppce500", e500plat_machine_init)
+> +static void e500plat_register_types(void)
 > +{
-> +    uint32_t checksum = 0;
-> +    int i;
+> +    type_register_static(&e500plat_info);
+> +}
+> +type_init(e500plat_register_types)
+> diff --git a/hw/ppc/mpc8544ds.c b/hw/ppc/mpc8544ds.c
+> index 1717953..ab30a2a 100644
+> --- a/hw/ppc/mpc8544ds.c
+> +++ b/hw/ppc/mpc8544ds.c
+> @@ -18,7 +18,7 @@
+>  #include "qemu/error-report.h"
+>  #include "cpu.h"
+> =20
+> -static void mpc8544ds_fixup_devtree(PPCE500Params *params, void *fdt)
+> +static void mpc8544ds_fixup_devtree(void *fdt)
+>  {
+>      const char model[] =3D "MPC8544DS";
+>      const char compatible[] =3D "MPC8544DS\0MPC85xxDS";
+> @@ -30,33 +30,46 @@ static void mpc8544ds_fixup_devtree(PPCE500Params *pa=
+rams, void *fdt)
+> =20
+>  static void mpc8544ds_init(MachineState *machine)
+>  {
+> -    PPCE500Params params =3D {
+> -        .pci_first_slot =3D 0x11,
+> -        .pci_nr_slots =3D 2,
+> -        .fixup_devtree =3D mpc8544ds_fixup_devtree,
+> -        .mpic_version =3D OPENPIC_MODEL_FSL_MPIC_20,
+> -        .ccsrbar_base =3D 0xE0000000ULL,
+> -        .pci_mmio_base =3D 0xC0000000ULL,
+> -        .pci_mmio_bus_base =3D 0xC0000000ULL,
+> -        .pci_pio_base =3D 0xE1000000ULL,
+> -        .spin_base =3D 0xEF000000ULL,
+> -    };
+> -
+>      if (machine->ram_size > 0xc0000000) {
+>          error_report("The MPC8544DS board only supports up to 3GB of RAM=
+");
+>          exit(1);
+>      }
+> =20
+> -    ppce500_init(machine, &params);
+> +    ppce500_init(machine);
+>  }
+> =20
+> -
+> -static void ppce500_machine_init(MachineClass *mc)
+> +static void e500plat_machine_class_init(ObjectClass *oc, void *data)
+>  {
+> +    MachineClass *mc =3D MACHINE_CLASS(oc);
+> +    PPCE500MachineClass *pmc =3D PPCE500_MACHINE_CLASS(oc);
 > +
-> +    for (i = 0; i < len; i += 2) {
-> +        checksum += (((uint32_t)data[i] << 8) | data[i + 1]);
-> +    }
+> +    pmc->pci_first_slot =3D 0x11;
+> +    pmc->pci_nr_slots =3D 2;
+> +    pmc->fixup_devtree =3D mpc8544ds_fixup_devtree;
+> +    pmc->mpic_version =3D OPENPIC_MODEL_FSL_MPIC_20;
+> +    pmc->ccsrbar_base =3D 0xE0000000ULL;
+> +    pmc->pci_mmio_base =3D 0xC0000000ULL;
+> +    pmc->pci_mmio_bus_base =3D 0xC0000000ULL;
+> +    pmc->pci_pio_base =3D 0xE1000000ULL;
+> +    pmc->spin_base =3D 0xEF000000ULL;
 > +
-> +    checksum = (~checksum + 1);
-> +    return checksum;
+>      mc->desc =3D "mpc8544ds";
+>      mc->init =3D mpc8544ds_init;
+>      mc->max_cpus =3D 15;
+>      mc->default_cpu_type =3D POWERPC_CPU_TYPE_NAME("e500v2_v30");
+>  }
+> =20
+> -DEFINE_MACHINE("mpc8544ds", ppce500_machine_init)
+> +#define TYPE_MPC8544DS_MACHINE  MACHINE_TYPE_NAME("mpc8544ds")
+> +
+> +static const TypeInfo mpc8544ds_info =3D {
+> +    .name          =3D TYPE_MPC8544DS_MACHINE,
+> +    .parent        =3D TYPE_PPCE500_MACHINE,
+> +    .class_init    =3D e500plat_machine_class_init,
+> +};
+> +
+> +static void mpc8544ds_register_types(void)
+> +{
+> +    type_register_static(&mpc8544ds_info);
 > +}
 > +
->  /* Get Capabilities */
->  static int ncsi_rsp_handler_gc(struct ncsi_rsp_pkt_hdr *rnh)
->  {
-> @@ -108,6 +122,9 @@ void ncsi_input(Slirp *slirp, const uint8_t *pkt, int pkt_len)
->          (ncsi_reply + ETH_HLEN);
->      const struct ncsi_rsp_handler *handler = NULL;
->      int i;
-> +    int ncsi_rsp_len = sizeof(*nh);
-> +    uint32_t checksum;
-> +    uint32_t *pchecksum;
->  
->      memset(ncsi_reply, 0, sizeof(ncsi_reply));
->  
-> @@ -137,15 +154,19 @@ void ncsi_input(Slirp *slirp, const uint8_t *pkt, int pkt_len)
->              /* TODO: handle errors */
->              handler->handler(rnh);
->          }
-> +        ncsi_rsp_len += handler->payload;
->      } else {
->          rnh->common.length = 0;
->          rnh->code          = htons(NCSI_PKT_RSP_C_UNAVAILABLE);
->          rnh->reason        = htons(NCSI_PKT_RSP_R_UNKNOWN);
->      }
->  
-> -    /* TODO: add a checksum at the end of the frame but the specs
-> -     * allows it to be zero */
-> +    /* add a checksum at the end of the frame (the specs allows it to
-> +     * be zero */
-> +    checksum = ncsi_calculate_checksum((unsigned char *) rnh, ncsi_rsp_len);
-> +    pchecksum = (uint32_t *)((void *) rnh + ncsi_rsp_len);
-> +    *pchecksum = htonl(checksum);
-> +    ncsi_rsp_len += 4;
->  
-> -    slirp_output(slirp->opaque, ncsi_reply, ETH_HLEN + sizeof(*nh) +
-> -                 (handler ? handler->payload : 0) + 4);
-> +    slirp_output(slirp->opaque, ncsi_reply, ETH_HLEN + ncsi_rsp_len);
->  }
-> 
+> +type_init(mpc8544ds_register_types)
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--HSQ3hISbU3Um6hch
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlrYF9UACgkQbDjKyiDZ
+s5IqnBAArYXYcA6EQAGpJWDfHCanvRy5XKJ6Af+nmZOc3Jlr2LQwb/lAEjmK+29p
+OnmTMmkfCr2ky9ByuLdsojLQWFKqA2lufErzN3lc7he8Gkm0ejVtpYrRfHmLiYoD
+hLZ2Y6AQS9OpWdagJycepLCmNSa9BT28MciYaD4420kCrpDJGHMud7ix5PRTzh2B
+C3Z31bhack657fLJYdT4/APNrJMvD2EP0hKQYpJ9dhKiD+ZEwXqUVSXDnORZ+EFm
+oJgwQACNf3W5RIcZ8p0YDfjLqQkxKjaQJ36CY32a9gTBISoUf70jwHHQYfB1dWnO
+iTiUxv4oZaV0nR/C1Yz3Fjysolj+6kcyhXjYcUJ0uefoBp7I+qDrDS8Tg8pjZgm1
+558bLbWcirEVwP9FUfBhuk3Rf1JnsLrFZg4ICTN5XJckPsH3xJgw1U3rS/SZas8B
+Ky7hQgHFHcUsXq7lHwZZGN/EO9GDkdCmohJjLg5zXzPyBgaJMld2byeeRdfUYVYm
+rIdzH5QsxYgWuZGiqCr1T8UIR6X8TRmoArwK0J2HM4Q44n2SqloRWopUqGDpO0AS
+dcCjfgP7qMMfnFJJHfL2SSpACcU7PtgWapxzmCvhOWeq/9ewuhxbrmGCvkMdRE2+
+0pzDtTlQaSBIXadKHCkl25El9R3A1rMvAMru4Q8lNFWpvWKWHds=
+=LvuB
+-----END PGP SIGNATURE-----
+
+--HSQ3hISbU3Um6hch--

@@ -1,85 +1,98 @@
-Received: by 10.28.4.212 with SMTP id 203csp450812wme;
-        Thu, 19 Apr 2018 02:48:17 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZp/R8/L5EBdIsm7oH1HhOQMtjwlZmFdEPDz3UX01876r6t/nauDL+SPRYxhPebd4ywB+PD0
-X-Received: by 10.55.31.220 with SMTP id n89mr5065118qkh.408.1524131297012;
-        Thu, 19 Apr 2018 02:48:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1524131297; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp510857wme;
+        Thu, 19 Apr 2018 04:00:41 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx4+Xb6V48FCkP1ko6MkCoDEwKyQWE4Au6TktfsF5+PqGuADaNUCx4Q2CohEat6q5Yr15Ifd/
+X-Received: by 2002:aed:3fd0:: with SMTP id w16-v6mr5698404qth.315.1524135641537;
+        Thu, 19 Apr 2018 04:00:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1524135641; cv=none;
         d=google.com; s=arc-20160816;
-        b=bsVeEWBtjU6FLE+DonNMAq7U3xb3Tp1t7Vg0nIqo8LqeBFGTQSNvh/fQHAg5eu9j4r
-         upzpy3roYvZZW0sEyY8uPzYnYNJj7Da4GtRXjI+/48iwmiFUp/v0ASPtMg1S7SIFHpYs
-         QwiuDJxZM6X5H+qP3hyLJTU4ja65L8PbYDJ0a/qSkRrBpB/z+ie34vLKg5HuE+9XIQk/
-         LR7mLj+ikVWIT5aQj7wMQBWchdQ4wL55XAcxZwQg5QTWDs4zLxznxf1HAQR7IGDI14He
-         FEO4OMtfwMHSExccz9WZTBuUIVenEp3hmI38m3uBmPEVm3/5cR6LqtCW1bEhg0a7VERB
-         UFNA==
+        b=C8hFkgdNMPpF2cl88M49wh7C0NoDPcd4t/tEJ94MRxxALyB5Idv4R+gWg5OiiuUN4P
+         eJqTUxFSzmvU3wep/323R7QOl5Yo/t5a97jffDDuUQ8D5iy7rdDI+86ermCI9L7/Jd+I
+         88jeN1o9QRT8blAW6fOFOk9qwEJhiO1ibcHhJ+jLWRrRLxixjcCSLdBaSurrnVdYty9E
+         iYZupZ8UdBoz6f1DTtCcvC2p1iVTMw/13/yqC96hCSxCEDoFxyIs+xB5EtzcvltSQ1tU
+         9lqgrALczFJjiqwiD4ltdw8iTxxishX5Yhbz615JxIH8c8ZaXj7AT4IZ69dt7GyZpCHD
+         WAuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature:arc-authentication-results;
-        bh=lyki/vr0YtsABMPvJkUmEp4SgKnO3ACJDAAEQx8Jxu8=;
-        b=EX3dm+iv+ILX9m7FCAaUgQUBvYqH/QyWGi3I2Ixar7reR1UrzmbfGsyC6qzBulXOps
-         l95qTYLym0ZlTeskx4Y14D7l/2wDiTj6+aSr7t9/K40+/1wiXvgIUYSMCidAxKhDUZOp
-         7oHMPLtUgBfnJypqrKwmuXQMRuf/BmtsktVsWh/VeUzWBRyoCb2vlnSJZ3AHqwbAiXX9
-         2HGubenh/3mfingk2I3axATdwqhdYCPivocBHjEqVeOL4ANsBqB6IsT76wj1ACj7U8lE
-         Jr2ugKm9ovLep3PNfuO/xwtUPNdebx/Fy8uGbyygH2yGeechHjXtxtNWgVNu+l43aewq
-         j5IQ==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=mVyiFc2B5QEbnfu78H3CUqYMK3au/GMX3M9BNASn1Z8=;
+        b=LeSTzeXFmybuBkUzT+SGmU4rjCrCmT3bqwsCp5BW/kKsnB73AFZfSFx90PUidiMSzf
+         NtDN9OOAjHTJ31PkFww4vqBoA0nyX9Yb8alQlwIEAmGtxkpkTGbKVjqCiogiuj90CKWE
+         Fylnp41ccqaNGfg/mxgyX3upy/A2yAWIA+ijvr+WVQWJXOJ4A0tDq2oNsRq4wWj8yAU3
+         VRWYseEpu68E0GLZ6yD8Il6juamvzkA6HZf5ynnJmHRUvLmVmU48WmD2nJmbPWG895gy
+         BKGQk19RZlmGuTrApz0gunqUA0K7QLCUHmpjMqG73L8ItR5mjBd1PWQaIiZO3ZdXzL+0
+         oDOw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=APFtKdbZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=pass header.i=@linaro.org header.s=google header.b=MlWYbjhF;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q36-v6si4216096qtf.211.2018.04.19.02.48.16
+        by mx.google.com with ESMTPS id k26si74616qve.98.2018.04.19.04.00.41
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 19 Apr 2018 02:48:16 -0700 (PDT)
+        Thu, 19 Apr 2018 04:00:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=APFtKdbZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:34834 helo=lists.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=MlWYbjhF;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:38757 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f96Aq-0007GS-Fe
-	for alex.bennee@linaro.org; Thu, 19 Apr 2018 05:48:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49104)
+	id 1f97Iu-0008Ag-W6
+	for alex.bennee@linaro.org; Thu, 19 Apr 2018 07:00:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56483)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1f96Af-0007Fx-P3
-	for qemu-arm@nongnu.org; Thu, 19 Apr 2018 05:48:06 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1f97Ig-00089M-Ai
+	for qemu-arm@nongnu.org; Thu, 19 Apr 2018 07:00:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1f96Ac-0004ZL-Ly
-	for qemu-arm@nongnu.org; Thu, 19 Apr 2018 05:48:05 -0400
-Received: from ozlabs.org ([203.11.71.1]:55811)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1f96Ab-0004Xw-H6; Thu, 19 Apr 2018 05:48:02 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 40RZ0s2SKhz9s1v; Thu, 19 Apr 2018 19:47:57 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1524131277;
-	bh=5w/9R5t1ostTe3erNpfZssuglAFHrCitMkT7/jj5XmE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=APFtKdbZnOT6HL8LqEpXZRFpqVv8V/uXA5M50wlagwLvYOlwiLdz7A548slooK9jY
-	NKr33d31tjfO7S90EbfoCil+JTW7LclgagHJUe9+MWGtfPQqPlfPQ0WNngLCBG9pC/
-	EQ1UhR6tXpOWjDrajX9jhKtNaPm4rHhlTyZ5Zhk0=
-Date: Thu, 19 Apr 2018 19:47:45 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20180419094745.GL2317@umbus.fritz.box>
-References: <1524061685-83305-1-git-send-email-imammedo@redhat.com>
-	<1524061685-83305-3-git-send-email-imammedo@redhat.com>
-	<20180419041520.GJ2317@umbus.fritz.box>
-	<20180419103019.39f8850a@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1f97Ic-0002Fp-6h
+	for qemu-arm@nongnu.org; Thu, 19 Apr 2018 07:00:26 -0400
+Received: from mail-ot0-x243.google.com ([2607:f8b0:4003:c0f::243]:43216)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1f97Ic-0002FP-0F
+	for qemu-arm@nongnu.org; Thu, 19 Apr 2018 07:00:22 -0400
+Received: by mail-ot0-x243.google.com with SMTP id d9-v6so5342664oth.10
+	for <qemu-arm@nongnu.org>; Thu, 19 Apr 2018 04:00:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=mVyiFc2B5QEbnfu78H3CUqYMK3au/GMX3M9BNASn1Z8=;
+	b=MlWYbjhFbBktaQ4xLwRAu0vjkjWHkhY9gS3pww9JPTNJtOrRqNsDOuOV4GW6LssPzC
+	TzQfoJuQTaMJr9WtLja+0kh/F4Qpo0uG7BbQCjZrty4xMOHSpJH2i8C+pk7/67Qzzmbw
+	+Its/oTl6SKpPZfcY/aMAowIfvB8USm1hc1hc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=mVyiFc2B5QEbnfu78H3CUqYMK3au/GMX3M9BNASn1Z8=;
+	b=LnfVmatxZXs9yUlkhsJzR3BMait8kAk0NMMTGrN0YcO+UcthXuopbISdFStBIxSZDs
+	l5s2MWB34NGj3I8jwRKvu0gBVda1vvEVirUwZ7x9fp6XZDNRDaiY+QinhaeDPj7wTGB2
+	tt8A98/PKibsRpf0cIn7aqIAADYlPmDLTTbf5PkCl/xqTgJhDWqsGrpg/voHpvJUfXLf
+	D3EY+JaFdmUieBmfjwNUWd/y47hkpHavW9s19QYIJKEq/s2HTy2H2rhcAFMTPrbikxKF
+	VBCrNBtn7oucXzhwVMYTdDnhGaxuA7MuJXidsYqcyyxLxbz7dpFUu2XMYmrzuHJKcl4r
+	dRrg==
+X-Gm-Message-State: ALQs6tDZcCRu2dHZbBKQJF0qICEQR3M7wPeacfaQ0yKOYBt/ZMCGQm4O
+	p0cS4earx11/eFFtHH5DxdoG1E2zp3xCzskOczfuuA==
+X-Received: by 2002:a9d:4a90:: with SMTP id
+	i16-v6mr3828584otf.294.1524135620953; 
+	Thu, 19 Apr 2018 04:00:20 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="DN8g+DOX2TxGxleI"
-Content-Disposition: inline
-In-Reply-To: <20180419103019.39f8850a@redhat.com>
-User-Agent: Mutt/1.9.2 (2017-12-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 203.11.71.1
-Subject: Re: [Qemu-arm] [PATCH for-2.13 v2 2/5] ppc: e500: switch E500 based
- machines to full machine definition
+Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Thu, 19 Apr 2018 04:00:00
+	-0700 (PDT)
+In-Reply-To: <CAOuPqTF3nG157ShF-hW+poXbr25zODOz8pj+o9XdY=ZgU8qpFQ@mail.gmail.com>
+References: <CAOuPqTF3nG157ShF-hW+poXbr25zODOz8pj+o9XdY=ZgU8qpFQ@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 19 Apr 2018 12:00:00 +0100
+Message-ID: <CAFEAcA9d=oEKfnW0Jr2vrSD8mu0xPbUYk6PAk7dxUqXjJUTooQ@mail.gmail.com>
+To: Henry Wertz <hwertz10@gmail.com>
+Content-Type: multipart/mixed; boundary="0000000000004726c6056a317a38"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::243
+Subject: Re: [Qemu-arm] getdents patch for 64-bit app on 32-bit host
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,82 +104,98 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Alexander Graf <agraf@suse.de>,
-	qemu-devel@nongnu.org, eric.auger@redhat.com,
-	qemu-arm@nongnu.org, "open list:e500" <qemu-ppc@nongnu.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hbl/ZuCvWpSP
+X-TUID: dqPzmfI8IGVm
 
+--0000000000004726c6056a317a38
+Content-Type: text/plain; charset="UTF-8"
 
---DN8g+DOX2TxGxleI
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On 17 April 2018 at 22:53, Henry Wertz <hwertz10@gmail.com> wrote:
+> Peter Maydell has raised a concern about possible buffer overflows in this
+> code (which was meant to handle 32-bit app on 64-bit system, not 64-bit on
+> 32-bit).  I must admit I haven't gone through the dirent-copying code with a
+> fine-toothed comb... it appeared to work for my use case.  That said, the
+> code seems to be careful about using offsetof() rather than making any
+> assumptions.  In addition, the dirent-copying code appears to have an assert
+> that would crash qemu if it was going to write past the end of the dirent
+> buffer -- always nice to have plenty of sanity checks!
 
-On Thu, Apr 19, 2018 at 10:30:19AM +0200, Igor Mammedov wrote:
-> On Thu, 19 Apr 2018 14:15:20 +1000
-> David Gibson <david@gibson.dropbear.id.au> wrote:
->=20
-> > On Wed, Apr 18, 2018 at 04:28:02PM +0200, Igor Mammedov wrote:
-> > > Convert PPCE500Params to PCCE500MachineClass which it essentially is,
-> > > and introduce PCCE500MachineState to keep track of E500 specific
-> > > state instead of adding global variables or extra parameters to
-> > > functions when we need to keep data beyond machine init
-> > > (i.e. make it look like typical fully defined machine).
-> > >=20
-> > > It's pretty shallow conversion instead of currently used trivial
-> > > DEFINE_MACHINE() macro. It adds extra 60LOC of boilerplate code
-> > > of full machine definition.
-> > >=20
-> > > The patch on top[1] will use PCCE500MachineState to keep track of
-> > > platform_bus device and add E500Plate specific machine class
-> > > to use HOTPLUG_HANDLER for explicitly initializing dynamic
-> > > sysbus devices at the time they are added instead of delaying
-> > > it to machine done time by platform_bus_init_notify() which is
-> > > being removed.
-> > >=20
-> > > 1)  <1523551221-11612-3-git-send-email-imammedo@redhat.com>
-> > >=20
-> > > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> > > Suggested-by: David Gibson <david@gibson.dropbear.id.au> =20
-> >=20
-> > As noted elsewhere, I've already merged this into my ppc-for-2.13
-> > tree.  However, don't let that stop you from posting and/or queueing
-> > it elsewhere.  Whoever ends up merging first once 2.13 opens, it
-> > should be easy to resolve.
-> Yep, that's been intention, i.e. have whole series on list so
-> reader won't have to hunt for queued dependencies in different trees.
-> After all it's trivial to fix merge conflict when path is merged
-> in several trees.
+If you build the attached test program for x86-64 (which is a
+minor tweak on the test program in the Linux getdents manpage):
+ gcc -g -Wall -o /tmp/getdents getdents.c -static
 
-Right, I figured.  Just making sure it was clear that me merging it
-didn't mean I wanted you to exclude it from your own queue.
+and then on a 32-bit Arm host take a qemu-x86_64 with your patch
+applied, and a test directory like this:
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+$ ls /tmp/testdir/
+abcd  abcde
 
---DN8g+DOX2TxGxleI
-Content-Type: application/pgp-signature; name="signature.asc"
+and run it, QEMU will abort on the assert that we don't run off
+the end of the buffer:
 
------BEGIN PGP SIGNATURE-----
+$ ./build/all-a32/x86_64-linux-user/qemu-x86_64 ~/getdents /tmp/testdir
+linux_dirent struct size 24 bytes
+buffer space 32 bytes
+qemu-x86_64: /home/peter.maydell/qemu/linux-user/syscall.c:10197:
+do_syscall: Assertion `count1 + treclen <= count' failed.
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlrYZbsACgkQbDjKyiDZ
-s5LFFRAA5Z8F1NFJOFnX/sfhoF79+ECjJubBvFOQV/xnzTwBeDqDcguyJIAx27bA
-xbp5RFs7e2E7aaGf49vINGrdR6vVygoOEXfXtSDYkBzAK7e3gm3sldSTj/KFRlaP
-h1FBzMme4tSmFYkEFD6xgNvY05VG27PEpv/9oEzTAPWwSpWRBorG0eFchsieySNu
-IBPgEiDO3DFHZVfYLyEOzhPMoZBoHlnekpWllRhx00ARpY8twRXk8dma4qu5mt7+
-0pHJrQ206Bi6xeHKYdYJovZfu+YhCogkvoXM+P7TKVq0AEAzy8ly9urDy2H4sscc
-N9vPI87RDL0aKkKph8k6tn3pjg0DckGTI8iqWjvmlCV4GE8yHQyI4/9GClYbq2pC
-bUdnPZe4O/RZfhW499bXfDJny89bun9JXv0rbLPbPYYm6o8/cQmEf7Q177eJGh2p
-7/2mTJsLcSsK7FH8y47eHiO+XAGKw2v3CgOlnq6yol5Moyp9zayuIGvpj7bVjJdY
-2IzeVsXMQDWslpBxRYh2JehDS57djygwKWwCFFeiUxUdKOOiHpSzrEDhr0f70Z9S
-CpdPZ4639U7bhv4qbT5lp/0Vuszt1bOoh6XzmJwdOErh88aFeFxIXYYzq/v19nKt
-VQ90KpEK6Ri6zpz04nJLNMS3RCQtFGwoCXKMcRFQbB6p301WSJk=
-=yfHk
------END PGP SIGNATURE-----
+This is because the guest linux_dirent is bigger than the host
+linux_dirent, and therefore just because the host syscall
+successfully fit the record into the buffer doesn't mean we
+can fit the guest record into the buffer.
 
---DN8g+DOX2TxGxleI--
+I don't see any way to fix this, because the records are variable size.
+
+thanks
+-- PMM
+
+--0000000000004726c6056a317a38
+Content-Type: text/x-csrc; charset="US-ASCII"; name="getdents.c"
+Content-Disposition: attachment; filename="getdents.c"
+Content-Transfer-Encoding: base64
+X-Attachment-Id: f_jg6ez6p61
+
+LyogZ2V0ZGVudHMgdGVzdCBwcm9ncmFtLgogKiBKdXN0IHJlYWQgYSBzaW5nbGUgZGlyZWN0b3J5
+IGVudHJ5LCB1c2luZwogKiBhIGJ1ZmZlciBleGFjdGx5IGJpZyBlbm91Z2guCiAqIFRoaXMgaXMg
+dGhlIHRlc3QgcHJvZ3JhbSBmcm9tIHRoZSBMaW51eCBnZXRkZW50cyBtYW5wYWdlLAogKiB3aXRo
+IGEgZmV3IHR3ZWFrcy4KICovCgojZGVmaW5lIF9HTlVfU09VUkNFCiNpbmNsdWRlIDxkaXJlbnQu
+aD4gICAgIC8qIERlZmluZXMgRFRfKiBjb25zdGFudHMgKi8KI2luY2x1ZGUgPGZjbnRsLmg+CiNp
+bmNsdWRlIDxzdGRpby5oPgojaW5jbHVkZSA8dW5pc3RkLmg+CiNpbmNsdWRlIDxzdGRsaWIuaD4K
+I2luY2x1ZGUgPHN5cy9zdGF0Lmg+CiNpbmNsdWRlIDxzeXMvc3lzY2FsbC5oPgojaW5jbHVkZSA8
+c3RyaW5nLmg+CgpzdHJ1Y3QgbGludXhfZGlyZW50IHsKICAgIGxvbmcgICAgICAgICAgIGRfaW5v
+OwogICAgb2ZmX3QgICAgICAgICAgZF9vZmY7CiAgICB1bnNpZ25lZCBzaG9ydCBkX3JlY2xlbjsK
+ICAgIGNoYXIgICAgICAgICAgIGRfbmFtZVtdOwp9OwoKI2RlZmluZSBCVUZfU0laRSAzMgoKI2Rl
+ZmluZSBoYW5kbGVfZXJyb3IobXNnKSBcCiAgICBkbyB7IHBlcnJvcihtc2cpOyBleGl0KEVYSVRf
+RkFJTFVSRSk7IH0gd2hpbGUgKDApCgojZGVmaW5lIENBTkFSWSAweGZmCgppbnQgbWFpbihpbnQg
+YXJnYywgY2hhciAqKmFyZ3YpCnsKICAgIGludCBmZCwgbnJlYWQ7CiAgICBjaGFyIGJ1ZltCVUZf
+U0laRSAqIDJdOwogICAgc3RydWN0IGxpbnV4X2RpcmVudCAqZDsKICAgIGludCBicG9zOwogICAg
+Y2hhciBkX3R5cGU7CgogICAgcHJpbnRmKCJsaW51eF9kaXJlbnQgc3RydWN0IHNpemUgJWxkIGJ5
+dGVzXG4iLCBzaXplb2Yoc3RydWN0IGxpbnV4X2RpcmVudCkpOwogICAgcHJpbnRmKCJidWZmZXIg
+c3BhY2UgJWQgYnl0ZXNcbiIsIEJVRl9TSVpFKTsKICAgIG1lbXNldChidWYsIENBTkFSWSwgc2l6
+ZW9mKGJ1ZikpOwoKICAgIGZkID0gb3BlbihhcmdjID4gMSA/IGFyZ3ZbMV0gOiAiLiIsIE9fUkRP
+TkxZIHwgT19ESVJFQ1RPUlkpOwogICAgaWYgKGZkID09IC0xKQogICAgICAgIGhhbmRsZV9lcnJv
+cigib3BlbiIpOwoKICAgIGZvciAoIDsgOyApIHsKICAgICAgICBucmVhZCA9IHN5c2NhbGwoU1lT
+X2dldGRlbnRzLCBmZCwgYnVmLCBCVUZfU0laRSk7CiAgICAgICAgaWYgKG5yZWFkID09IC0xKQog
+ICAgICAgICAgICBoYW5kbGVfZXJyb3IoImdldGRlbnRzIik7CgogICAgICAgIGlmIChucmVhZCA9
+PSAwKQogICAgICAgICAgICBicmVhazsKCiAgICAgICAgcHJpbnRmKCItLS0tLS0tLS0tLS0tLS0g
+bnJlYWQ9JWQgLS0tLS0tLS0tLS0tLS0tXG4iLCBucmVhZCk7CiAgICAgICAgcHJpbnRmKCJpbm9k
+ZSMgICAgZmlsZSB0eXBlICBkX3JlY2xlbiAgZF9vZmYgICBkX25hbWVcbiIpOwogICAgICAgIGZv
+ciAoYnBvcyA9IDA7IGJwb3MgPCBucmVhZDspIHsKICAgICAgICAgICAgZCA9IChzdHJ1Y3QgbGlu
+dXhfZGlyZW50ICopIChidWYgKyBicG9zKTsKICAgICAgICAgICAgcHJpbnRmKCIlOGxkICAiLCBk
+LT5kX2lubyk7CiAgICAgICAgICAgIGRfdHlwZSA9ICooYnVmICsgYnBvcyArIGQtPmRfcmVjbGVu
+IC0gMSk7CiAgICAgICAgICAgIHByaW50ZigiJS0xMHMgIiwgKGRfdHlwZSA9PSBEVF9SRUcpID8g
+ICJyZWd1bGFyIiA6CiAgICAgICAgICAgICAgICAgICAoZF90eXBlID09IERUX0RJUikgPyAgImRp
+cmVjdG9yeSIgOgogICAgICAgICAgICAgICAgICAgKGRfdHlwZSA9PSBEVF9GSUZPKSA/ICJGSUZP
+IiA6CiAgICAgICAgICAgICAgICAgICAoZF90eXBlID09IERUX1NPQ0spID8gInNvY2tldCIgOgog
+ICAgICAgICAgICAgICAgICAgKGRfdHlwZSA9PSBEVF9MTkspID8gICJzeW1saW5rIiA6CiAgICAg
+ICAgICAgICAgICAgICAoZF90eXBlID09IERUX0JMSykgPyAgImJsb2NrIGRldiIgOgogICAgICAg
+ICAgICAgICAgICAgKGRfdHlwZSA9PSBEVF9DSFIpID8gICJjaGFyIGRldiIgOiAiPz8/Iik7CiAg
+ICAgICAgICAgIHByaW50ZigiJTRkICUxMGxsZCAgJXNcbiIsIGQtPmRfcmVjbGVuLAogICAgICAg
+ICAgICAgICAgICAgKGxvbmcgbG9uZykgZC0+ZF9vZmYsIGQtPmRfbmFtZSk7CiAgICAgICAgICAg
+IGJwb3MgKz0gZC0+ZF9yZWNsZW47CiAgICAgICAgfQoKICAgICAgICBpZiAoKHVuc2lnbmVkIGNo
+YXIpYnVmW0JVRl9TSVpFXSAhPSBDQU5BUlkpIHsKICAgICAgICAgICAgcHJpbnRmKCJCdWZmZXIg
+b3ZlcnJ1bjogc3lzY2FsbCB3cm90ZSBwYXN0IGVuZCBvZiBidWZmZXJcbiIpOwogICAgICAgICAg
+ICBleGl0KDEpOwogICAgICAgIH0KICAgIH0KCiAgICBleGl0KEVYSVRfU1VDQ0VTUyk7Cn0K
+--0000000000004726c6056a317a38--

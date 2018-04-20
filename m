@@ -1,98 +1,70 @@
-Received: by 10.28.4.212 with SMTP id 203csp615408wme;
-        Fri, 20 Apr 2018 03:57:30 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZro7XlhP99CUdfgrSlggVixPt3gVYcUeiKYt5JNlnM/7msYNrYhIxtIN4Pm5ueDxAj/BtDb
-X-Received: by 2002:ac8:5293:: with SMTP id s19-v6mr4550549qtn.311.1524221849962;
-        Fri, 20 Apr 2018 03:57:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1524221849; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp925420wme;
+        Fri, 20 Apr 2018 08:57:48 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZqsEq9vtJ7ZAawop5jjUupsAjHrBpYpwp0kOn5tQwLZ7rcwUFkAPFdliNvZLDDc7ZZPMP5m
+X-Received: by 2002:ac8:424f:: with SMTP id r15-v6mr5469803qtm.395.1524239868449;
+        Fri, 20 Apr 2018 08:57:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1524239868; cv=none;
         d=google.com; s=arc-20160816;
-        b=CvCVKcAoKu2AXuiAjs0Ye6Z4pzoND0QILJT+eqD6fxwlo6oceHyY7JwQM56Fr1LDV5
-         uHm+3ee3qSFL7+HG5GAlMs0LBRNQHPgtJsQHiBWa/XxLPPOWrHs9T0xgXRbWRjhS66Jx
-         LFNsecg0Afee6niYnspt17p9LwVI0ZnW/HXO5BiZQg6AZgH9u8n+06V1C+Aot/6GLE3s
-         0FNoTWQT6RFbb+0rn6TGJfYKZE0cA/xpqgr5+2xnWVNruIi1L1ABd6P4hueVcPTAuVfL
-         BCcUPXNpwP3+jsS0FHWkpn/T3upamOl1T6q2NjUAJDqLX6qFBltHC9Plo2ysc8ADqcvM
-         E/eQ==
+        b=CJEU/tkZt0jAc+pC4vu1qGOZXMEMmDKiNZFdK3FYvawZQDZNsAy+sQDZp2UBiEktJs
+         dnsDihv9HqmhRuhi+6IGCx05wuXWdIImDga3XQ1YulsU6uIA9CG7+mE4xSPl0Uku7Yhz
+         97I4Z/57NDPjUQLudb9XVAGXmIp5XjF1tlWh5UXLJ+oXarZT1IJo5r5GuNajnkn0h3bJ
+         opsYU9xK47K4stbJ+eenfs8BOdzPHy8A6A8LupyCm+QWdNfbQYzJbIRXwrDi9/msYUPf
+         y6ExKszfEqsaM2VWO3NCsjGnOKbxLLFjOYhfYcRVOPRlmqK+sEAlXjhnk9fLBFaLJEtX
+         sAQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
          :arc-authentication-results;
-        bh=pVDXHFEQLQhTxAWXsDrxgDcknLZDFFq0FNFRxt5dGmA=;
-        b=xZWHLZ6WQuG+e0EAW6fB+iBi2lDqC/gv9GZ6uVGF6TU/7ZMoLqxAdbtBY14zkDYG3o
-         h9gPHBw5lfmugFEpQfnyYdtJb2wxsYjvUhGPiV25fFsdJaG1/j1EA37YSdaMKul3e8ae
-         Cg7KzMZR58VfsKVy/QJZUk6dtzysnbbx8N+EXVZoe3rX0/2zriIeQBiMC06/L8HqJZ2y
-         f6IsAb0jrbmYiYtYgNTKJjEO1BPxtoM0LUfT1TrppdvKfW2b6RoDlUh2/V1orOGs/is1
-         0yPHeWFp/6Ks483r95Z2IKIcTKrYWJ0tNs8daZdGnjbvONU4ZjNicynpNX4mAEAg2/Ii
-         4K3A==
+        bh=x64wu9paW0rkvW76CIBZWD+msqV2gD6zV6b4bOujsiU=;
+        b=gJP1eGslFSeSKFJpNuY6NWack/UTWO4QiXw4bC31cXW9EiPhumYpcBvKgh/Hool8YS
+         HFSHoexTYTPH76lmkQcidFh1LWL681ZFzIK3U9u7t9walBOtnL1AmxkdCPvjrH4RqD6B
+         XrrVQoQmNwj3pIbv3SItibolkOHi92lfZgntcEalAnp0MYaU/oBiSjR5pfdToKDrGo+z
+         E9fH9P3f51bjKTly8fAJtKF/RePnVVoHBYZQf/TP+PnxJqG5yvS0bnfL1P4qn8LbKSrI
+         63z39TaSZtlrY6KJo2kV6Pg5kznhWVHBKLQlKIIbs2jtuAmajZgK/1qU/UJ2PtHQnGeT
+         Z5Cw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=EoZdXG4p;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 12si4047956qko.320.2018.04.20.03.57.29
+        by mx.google.com with ESMTPS id u10si7692063qkk.323.2018.04.20.08.57.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 20 Apr 2018 03:57:29 -0700 (PDT)
+        Fri, 20 Apr 2018 08:57:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=EoZdXG4p;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47355 helo=lists.gnu.org)
+Received: from localhost ([::1]:39254 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f9TjN-0001bF-GX
-	for alex.bennee@linaro.org; Fri, 20 Apr 2018 06:57:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36503)
+	id 1f9YPz-000327-S2
+	for alex.bennee@linaro.org; Fri, 20 Apr 2018 11:57:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54124)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1f9ThZ-0000TX-2j
-	for qemu-devel@nongnu.org; Fri, 20 Apr 2018 06:55:38 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1f9YOB-0001qZ-2A
+	for qemu-devel@nongnu.org; Fri, 20 Apr 2018 11:55:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1f9ThY-00031E-9q
-	for qemu-devel@nongnu.org; Fri, 20 Apr 2018 06:55:37 -0400
-Received: from mail-oi0-x229.google.com ([2607:f8b0:4003:c06::229]:35647)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1f9ThY-00030w-51
-	for qemu-devel@nongnu.org; Fri, 20 Apr 2018 06:55:36 -0400
-Received: by mail-oi0-x229.google.com with SMTP id c15-v6so7651322oic.2
-	for <qemu-devel@nongnu.org>; Fri, 20 Apr 2018 03:55:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=pVDXHFEQLQhTxAWXsDrxgDcknLZDFFq0FNFRxt5dGmA=;
-	b=EoZdXG4pPuR+2k115tsN87spfuioT4NH2SH95Zv+I1qxNlWL0zTb0z2j7uHgoGxG+w
-	unglMs4G0EgJBR5kLCk0DBpE6iKXQn+0HwFmSehywJAf6iA+115Tx8FhkC7Oozqlil9E
-	qpZbzJJ1oqLZ88ae3M4WT6tfgkAuhAkEUzW74=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=pVDXHFEQLQhTxAWXsDrxgDcknLZDFFq0FNFRxt5dGmA=;
-	b=O3gJ/zjd+NknOujhHoD7rTdsZq2YpzDm/MDAdPcGKtmFYvKuIF3r9ZRzXlglDgNzej
-	L+eDZJpIvYEyl2KqrOsO7ElEsJ2E+55VAUj+7m+QJcoHHbIbup2s+gZYq30AIGSgtXEY
-	U7A7Ukz4G62dRegJHXRDdkuLauqAf9lfRy2h40/HTwXrj48aBYEnm0NdM2cyAqK8SgBa
-	SGJoWQga1SOa20Dk+IH8L703BvFFDGjDbfzoWMcTauPA/ByvWmDT1hhLB0lqh86ZSOWi
-	pXLgVwgb4/djK386ra6GzeXVUtxC61mDgaaELRZeK/zlTpyuyjpWaQM6aKz9nhR5Mm6G
-	Qk8Q==
-X-Gm-Message-State: ALQs6tAfO+y0a1xIVPYXlCin5o7YTsxdNXwvY0M/3EKBouDKBwJ8SFoC
-	1dcC+wm+gpxDnaDaIWmYAx0xLINfhovqW/pInuqWxg==
-X-Received: by 2002:aca:b3c1:: with SMTP id
-	c184-v6mr5964513oif.12.1524221735336; 
-	Fri, 20 Apr 2018 03:55:35 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Fri, 20 Apr 2018 03:55:14
-	-0700 (PDT)
-In-Reply-To: <1523997485-1905-1-git-send-email-alindsay@codeaurora.org>
-References: <1523997485-1905-1-git-send-email-alindsay@codeaurora.org>
+	(envelope-from <pm215@archaic.org.uk>) id 1f9YOA-0000z1-9g
+	for qemu-devel@nongnu.org; Fri, 20 Apr 2018 11:55:55 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:41084)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1f9YO8-0000xb-0f; Fri, 20 Apr 2018 11:55:52 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1f9YO5-0007Yo-17; Fri, 20 Apr 2018 16:55:49 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 20 Apr 2018 11:55:14 +0100
-Message-ID: <CAFEAcA847b02nswyaUipGNnJUYRyMt5GyA3mgX_NbaUtqQWyBw@mail.gmail.com>
-To: Aaron Lindsay <alindsay@codeaurora.org>
-Content-Type: text/plain; charset="UTF-8"
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Fri, 20 Apr 2018 16:55:47 +0100
+Message-Id: <20180420155547.9497-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.17.0
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::229
-Subject: Re: [Qemu-devel] [PATCH v4 00/21] More fully implement ARM PMUv3
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-devel] [PATCH] hw/arm/raspi: Don't bother setting
+ default_cpu_type
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,49 +76,50 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Wei Huang <wei@redhat.com>, Michael Spradling <mspradli@codeaurora.org>,
-	Digant Desai <digantd@codeaurora.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>
+Cc: Igor Mammedov <imammedo@redhat.com>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>, patches@linaro.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4o5pzYHXe6Bd
+X-TUID: P/f4Oj+dVVE6
 
-On 17 April 2018 at 21:37, Aaron Lindsay <alindsay@codeaurora.org> wrote:
-> The ARM PMU implementation currently contains a basic cycle counter, but it is
-> often useful to gather counts of other events and filter them based on
-> execution mode. These patches flesh out the implementations of various PMU
-> registers including PM[X]EVCNTR and PM[X]EVTYPER, add a struct definition to
-> represent arbitrary counter types, implement mode filtering, send interrupts on
-> counter overflow, and add instruction, cycle, and software increment events.
->
-> Notable changes since v3:
->
-> * Detect counter overflow and send interrupts accordingly (adds a 'shadow' copy
->   of both PMCCNTR and general-purpose counters, possibly/probably Doing It
->   Wrong)
-> * Update counter filtering code to more closely resemble the ARM documentation
->   in form and functionality
-> * Don't mix EL change hooks and KVM
-> * Don't call gen_io_start/end if not actually using icount
-> * Reorganized a few of the patches to more logically group changes
-> * Clarify and otherwise improve a few comments
-> * There are also a number of less significant changes scattered around
+In commit 210f47840dd62, we changed the bcm2836 SoC object to
+always create a CPU of the correct type for that SoC model. This
+makes the default_cpu_type settings in the MachineClass structs
+for the raspi2 and raspi3 boards redundant. We didn't change
+those at the time because it would have meant a temporary
+regression in a corner case of error handling if the user
+requested a non-existing CPU type. The -cpu parse handling
+changes in 2278b93941d42c3 mean that it no longer implicitly
+depends on default_cpu_type for this to work, so we can now
+delete the redundant default_cpu_type fields.
 
-In the interests of cutting down the size of this patchset for
-future rounds, I'm going to apply these patches to target-arm.next:
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+Tidying up a loose end from the raspi changes I did last month...
 
-> 1  target/arm: Check PMCNTEN for whether PMCCNTR is enabled
-> 2  target/arm: Treat PMCCNTR as alias of PMCCNTR_EL0
-> 4  target/arm: Mask PMU register writes based on PMCR_EL0.N
-> 5  target/arm: Fetch GICv3 state directly from CPUARMState
-> 6  target/arm: Support multiple EL change hooks
-> 7  target/arm: Add pre-EL change hooks
-> 8  target/arm: Allow EL change hooks to do IO
-> 9  target/arm: Fix bitmask for PMCCFILTR writes
-> 12 target/arm: Make PMOVSCLR and PMUSERENR 64 bits wide
+ hw/arm/raspi.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-thanks
--- PMM
+diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+index 955a7c4e80..66899c28dc 100644
+--- a/hw/arm/raspi.c
++++ b/hw/arm/raspi.c
+@@ -226,7 +226,6 @@ static void raspi2_machine_init(MachineClass *mc)
+     mc->no_parallel = 1;
+     mc->no_floppy = 1;
+     mc->no_cdrom = 1;
+-    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a7");
+     mc->max_cpus = BCM283X_NCPUS;
+     mc->min_cpus = BCM283X_NCPUS;
+     mc->default_cpus = BCM283X_NCPUS;
+@@ -249,7 +248,6 @@ static void raspi3_machine_init(MachineClass *mc)
+     mc->no_parallel = 1;
+     mc->no_floppy = 1;
+     mc->no_cdrom = 1;
+-    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a53");
+     mc->max_cpus = BCM283X_NCPUS;
+     mc->min_cpus = BCM283X_NCPUS;
+     mc->default_cpus = BCM283X_NCPUS;
+-- 
+2.17.0
+

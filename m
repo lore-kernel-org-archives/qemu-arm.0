@@ -1,92 +1,93 @@
-Received: by 10.28.4.212 with SMTP id 203csp1011824wme;
-        Tue, 24 Apr 2018 09:04:57 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZoAEMaQopz2zPjhtvkDtoQ6eHxhhn8llBc8dqcuxnC4C3BT1iVOxNXyDiVjenmVoQH1H1UL
-X-Received: by 10.55.168.140 with SMTP id r134mr27006902qke.41.1524585897850;
-        Tue, 24 Apr 2018 09:04:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1524585897; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp47751wme;
+        Mon, 23 Apr 2018 13:18:44 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZqLUo6lCLCbfWGfgcmOciRbju0FkXw4qQx/p+lSUlGDzATGOWstsm+e0va4Dpxo4daDUtRM
+X-Received: by 2002:ac8:2ff6:: with SMTP id m51-v6mr16054151qta.265.1524514724056;
+        Mon, 23 Apr 2018 13:18:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1524514724; cv=none;
         d=google.com; s=arc-20160816;
-        b=OGAcjl/Lx5Vjy9W1SAm9cxwaJYjy3TsFszPrck4qrJVTgvN6MyjLq78WXcqM1RpBIX
-         YRwaU8zM63g++oFY20VzQEho1WzLQBz9I7SM1UDsJh3JYvB2/XLyxnl4LzvRK1ieQMRA
-         U58tAS3Z4Y83bYJIm9nLBKtMtiUdXk8xWDgOUlg1eai9WuHRPf9n9HXi5JEb9kghY7x5
-         Y8pSCTL0fqa/hSv2PTUFpT7XtB+alFlbTxxBa9oe9nQaz8x22aSYpxXGrXXpQQg7VnNd
-         bCbTJDkKwVg32qi9CM99UWooi/2vwMrsUg88dXry4Yu5RhdXusLPEb2AuKqKfJcFBPsd
-         PMKg==
+        b=djXTlRwsycdqIhEbn04GBTOL0AwGiHgoIP0EvMisDyu5KJAHKX6XVlkVSjdj6wUynk
+         xJB0y4+0rlyMLXCHW3WHTffHRRHwJDXJd1IsUwo432zLQ2MkTQfv9M2m56LitoS5Dhff
+         Jl18v99M09DvvNg0TdhKXAfBxn5+NmOcFW6Woeat1nRx8hk5UPCU/I6yDox+nwoSaRNc
+         J7xVlhhoI6eiLercGgb3H4/f9JcOHsxRL8kD7mbGOawePTt2CFjFzIRduawFMLhxq3CQ
+         aTjYQGSOMHyiDgZeS8R9vLC2xJS56Ok6bY/U60OrhyJmS1oH7bEqos6Hq3KBGsa5tumH
+         JLBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :arc-authentication-results;
-        bh=HRk7Rsr9FzjVrmvLH+86RnLKToBvHgVWfWLjPJyv/gs=;
-        b=UBb0GMWw3rBLgOOUVbHouVAa6/FELrPFAh1GCTUX/kVkmyoydcrwuCxhB8///AzDdr
-         ZnghKZfYTs3jbgopjOrYepDuJcVNGBa000cde1Jlpe/kK7WIlBfq1vd85V2DKKZIrGrE
-         Rob8fttY1IIosEB46o1um+iLOdc5eib2dumvRbuCcSjpgjEAL/U7gmI0WaIHMDdojfJw
-         Ly/keF/2d5/E6DkrZ563GP03yEUb79iO7t+a8hoKRqWJHuAsj3EVZX6i9U1X4/50au8v
-         K/LwuMKQXWLdEWBzd1BE6MKgUHh/mHacZ7DxVVC6roeHavhzXCYGyWyn4NBIYgFVp9cb
-         J4Jw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=8mow0SfmytEMKQtN8ioGDGYg4cG+kxQweZNjq89qOMw=;
+        b=LE7JwesDG93NcFPzaf0uN/NFNlepnAautM64GHkMslVjulHB42+/i6Cyuyu1Nohqgl
+         enfxrBYtEnl8R6Hi4VD1emMsWhbGMCJkCZe3nZWd6U8XzcI40CZBMZwhRI4rMcu81kqc
+         vmk37WmWmw6dh57NjpuYD7e7ktvP2HRqIDHtQBHJCjONr+6G/V2xTRKfzay2z4D0quie
+         x/2DETyeAPSCkrCXcRR+jQvNiuzbWGzBDqsyg5tAEGaX7zrGL5Gau5kB39nF33G1mBwh
+         sh1JUnhlZqQg6k3s58YMtXZCO0jSzpCl4joDhzvdbKnx3iFMcsGMoHDlKTgfOqnr2s+x
+         IDEQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m21si1111675qkk.216.2018.04.24.09.04.57
+        by mx.google.com with ESMTPS id l27-v6si849245qtc.334.2018.04.23.13.18.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 24 Apr 2018 09:04:57 -0700 (PDT)
+        Mon, 23 Apr 2018 13:18:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59335 helo=lists.gnu.org)
+Received: from localhost ([::1]:55334 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fB0R7-00065F-9W
-	for alex.bennee@linaro.org; Tue, 24 Apr 2018 12:04:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49152)
+	id 1fAhv9-0006ff-HN
+	for alex.bennee@linaro.org; Mon, 23 Apr 2018 16:18:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44764)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1fAzsy-000395-M1
-	for qemu-arm@nongnu.org; Tue, 24 Apr 2018 11:29:41 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1fAhuY-0006N6-1L
+	for qemu-arm@nongnu.org; Mon, 23 Apr 2018 16:18:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1fAzsv-0004xM-De
-	for qemu-arm@nongnu.org; Tue, 24 Apr 2018 11:29:40 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:59944 helo=mx1.redhat.com)
+	(envelope-from <eric.auger@redhat.com>) id 1fAhuU-0000Rn-Pm
+	for qemu-arm@nongnu.org; Mon, 23 Apr 2018 16:18:06 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:58252 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1fAzsv-0004wC-6S; Tue, 24 Apr 2018 11:29:37 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1fAhuU-0000RJ-Kg; Mon, 23 Apr 2018 16:18:02 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8DCC9406F96F;
-	Tue, 24 Apr 2018 15:29:36 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 30A692023227;
-	Tue, 24 Apr 2018 15:29:34 +0000 (UTC)
-Date: Tue, 24 Apr 2018 17:29:32 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-Message-ID: <20180424152932.tszber3blx32luro@kamzik.brq.redhat.com>
-References: <1510622154-17224-1-git-send-email-zhuyijun@huawei.com>
-	<1510622154-17224-4-git-send-email-zhuyijun@huawei.com>
-	<20171114145002.jbrw7k4n2m2rfwes@kamzik.brq.redhat.com>
-	<5FC3163CFD30C246ABAA99954A238FA83868CA39@FRAEML521-MBX.china.huawei.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 8E09A4072CFC;
+	Mon, 23 Apr 2018 20:17:58 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-141.ams2.redhat.com
+	[10.36.116.141])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id EB83A215CDC8;
+	Mon, 23 Apr 2018 20:17:50 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1523518688-26674-1-git-send-email-eric.auger@redhat.com>
+	<1523518688-26674-9-git-send-email-eric.auger@redhat.com>
+	<CAFEAcA-gwTH7DE4v5qzRpcBYtbWZpi0AMgVxPM7tX3Zsp-pLMQ@mail.gmail.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <3e8cd42f-8c96-3a68-c1cd-f20739f47a30@redhat.com>
+Date: Mon, 23 Apr 2018 22:17:48 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <5FC3163CFD30C246ABAA99954A238FA83868CA39@FRAEML521-MBX.china.huawei.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+In-Reply-To: <CAFEAcA-gwTH7DE4v5qzRpcBYtbWZpi0AMgVxPM7tX3Zsp-pLMQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Tue, 24 Apr 2018 15:29:36 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Tue, 24 Apr 2018 15:29:36 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'drjones@redhat.com' RCPT:''
+	(mx1.redhat.com [10.11.55.7]);
+	Mon, 23 Apr 2018 20:17:58 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
+	Mon, 23 Apr 2018 20:17:58 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 3/5] hw/arm: add scattered RAM
- memory region support
+Subject: Re: [Qemu-arm] [PATCH v11 08/17] hw/arm/smmuv3: Event queue
+ recording helper
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,87 +99,229 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Linuxarm <linuxarm@huawei.com>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"xuwei \(O\)" <xuwei5@huawei.com>,
-	Zhaoshenglong <zhaoshenglong@huawei.com>,
-	Igor Mammedov <imammedo@redhat.com>
+Cc: Christoffer Dall <cdall@kernel.org>, "Michael S. Tsirkin" <mst@redhat.com>,
+	Jean-Philippe Brucker <jean-philippe.brucker@arm.com>,
+	Tomasz Nowicki <tn@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	Peter Xu <peterx@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>, linuc.decode@gmail.com,
+	Bharat Bhushan <bharat.bhushan@nxp.com>,
+	Jintack Lim <jintack@cs.columbia.edu>,
+	Prem Mallappa <prem.mallappa@gmail.com>,
+	Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vdwqK4+6Ipin
+X-TUID: ZG0xk6/bhpOz
 
-On Thu, Apr 19, 2018 at 09:06:30AM +0000, Shameerali Kolothum Thodi wrote:
-> > From: Andrew Jones [mailto:drjones@redhat.com]
-> > Instead of using memory region aliases, it would be best if each RAM
-> > region was modeled with pc-dimms, as that would move us towards supporting
-> > memory hotplug and allow the regions to be explicitly identified
-> > (start/size) on the command line - supporting migration. Actually, how
-> > does this series address migration? What if the host we migrate to doesn't
-> > have the same reserved regions in sysfs?
+Hi Peter,
+
+On 04/16/2018 06:51 PM, Peter Maydell wrote:
+> On 12 April 2018 at 08:37, Eric Auger <eric.auger@redhat.com> wrote:
+>> Let's introduce a helper function aiming at recording an
+>> event in the event queue.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>
+>> ---
+>> v9 -> v10:
+>> - rework SMMU_EVENT_STRING
+>> - trigger a GERROR EVENTQ_ABT_ERR in case of eventq write failure
+>>
+>> v8 -> v9:
+>> - add SMMU_EVENT_STRING
+>>
+>> v7 -> v8:
+>> - use dma_addr_t instead of hwaddr in smmuv3_record_event()
+>> - introduce struct SMMUEventInfo
+>> - add event_stringify + helpers for all fields
+>> ---
+>>  hw/arm/smmuv3-internal.h | 142 ++++++++++++++++++++++++++++++++++++++++++++++-
+>>  hw/arm/smmuv3.c          | 108 +++++++++++++++++++++++++++++++++--
+>>  hw/arm/trace-events      |   1 +
+>>  3 files changed, 243 insertions(+), 8 deletions(-)
+>>
+>> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+>> index 8550be0..8e546bf 100644
+>> --- a/hw/arm/smmuv3-internal.h
+>> +++ b/hw/arm/smmuv3-internal.h
+>> @@ -205,8 +205,6 @@ static inline void smmu_write_cmdq_err(SMMUv3State *s, uint32_t err_type)
+>>      s->cmdq.cons = FIELD_DP32(s->cmdq.cons, CMDQ_CONS, ERR, err_type);
+>>  }
+>>
+>> -void smmuv3_write_eventq(SMMUv3State *s, Evt *evt);
+>> -
+>>  /* Commands */
+>>
+>>  typedef enum SMMUCommandType {
+>> @@ -308,4 +306,144 @@ enum { /* Command completion notification */
+>>
+>>  #define SMMU_FEATURE_2LVL_STE (1 << 0)
+>>
+>> +/* Events */
+>> +
+>> +typedef enum SMMUEventType {
+>> +    SMMU_EVT_OK                 = 0x00,
+>> +    SMMU_EVT_F_UUT              = 0x01,
+>> +    SMMU_EVT_C_BAD_STREAMID     = 0x02,
+>> +    SMMU_EVT_F_STE_FETCH        = 0x03,
+>> +    SMMU_EVT_C_BAD_STE          = 0x04,
+>> +    SMMU_EVT_F_BAD_ATS_TREQ     = 0x05,
+>> +    SMMU_EVT_F_STREAM_DISABLED  = 0x06,
+>> +    SMMU_EVT_F_TRANS_FORBIDDEN  = 0x07,
+>> +    SMMU_EVT_C_BAD_SUBSTREAMID  = 0x08,
+>> +    SMMU_EVT_F_CD_FETCH         = 0x09,
+>> +    SMMU_EVT_C_BAD_CD           = 0x0a,
+>> +    SMMU_EVT_F_WALK_EABT        = 0x0b,
 > 
-> Thanks for going through this series and comments.
+> Most of the other enums you let the auto-increment deal
+> with long runs of consecutive integers like this. I don't
+> much care which but being consistent is generally nicer.
 > 
-> I am looking into reviving this series based on the new proposed vfio iova 
-> interface[1]. The vfio interface will now provide  a list of valid iova ranges.
-> That means, instead of working on reserved regions to find out the valid
->  memory regions, the code here will have the valid regions list directly.
+>> +    SMMU_EVT_F_TRANSLATION      = 0x10,
+>> +    SMMU_EVT_F_ADDR_SIZE        = 0x11,
+>> +    SMMU_EVT_F_ACCESS           = 0x12,
+>> +    SMMU_EVT_F_PERMISSION       = 0x13,
+>> +    SMMU_EVT_F_TLB_CONFLICT     = 0x20,
+>> +    SMMU_EVT_F_CFG_CONFLICT     = 0x21,
+>> +    SMMU_EVT_E_PAGE_REQ         = 0x24,
+>> +} SMMUEventType;
+>> +
+>> +static const char *event_stringify[] = {
+>> +    [SMMU_EVT_OK]                       = "SMMU_EVT_OK",
+>> +    [SMMU_EVT_F_UUT]                    = "SMMU_EVT_F_UUT",
+>> +    [SMMU_EVT_C_BAD_STREAMID]           = "SMMU_EVT_C_BAD_STREAMID",
+>> +    [SMMU_EVT_F_STE_FETCH]              = "SMMU_EVT_F_STE_FETCH",
+>> +    [SMMU_EVT_C_BAD_STE]                = "SMMU_EVT_C_BAD_STE",
+>> +    [SMMU_EVT_F_BAD_ATS_TREQ]           = "SMMU_EVT_F_BAD_ATS_TREQ",
+>> +    [SMMU_EVT_F_STREAM_DISABLED]        = "SMMU_EVT_F_STREAM_DISABLED",
+>> +    [SMMU_EVT_F_TRANS_FORBIDDEN]        = "SMMU_EVT_F_TRANS_FORBIDDEN",
+>> +    [SMMU_EVT_C_BAD_SUBSTREAMID]        = "SMMU_EVT_C_BAD_SUBSTREAMID",
+>> +    [SMMU_EVT_F_CD_FETCH]               = "SMMU_EVT_F_CD_FETCH",
+>> +    [SMMU_EVT_C_BAD_CD]                 = "SMMU_EVT_C_BAD_CD",
+>> +    [SMMU_EVT_F_WALK_EABT]              = "SMMU_EVT_F_WALK_EABT",
+>> +    [SMMU_EVT_F_TRANSLATION]            = "SMMU_EVT_F_TRANSLATION",
+>> +    [SMMU_EVT_F_ADDR_SIZE]              = "SMMU_EVT_F_ADDR_SIZE",
+>> +    [SMMU_EVT_F_ACCESS]                 = "SMMU_EVT_F_ACCESS",
+>> +    [SMMU_EVT_F_PERMISSION]             = "SMMU_EVT_F_PERMISSION",
+>> +    [SMMU_EVT_F_TLB_CONFLICT]           = "SMMU_EVT_F_TLB_CONFLICT",
+>> +    [SMMU_EVT_F_CFG_CONFLICT]           = "SMMU_EVT_F_CFG_CONFLICT",
+>> +    [SMMU_EVT_E_PAGE_REQ]               = "SMMU_EVT_E_PAGE_REQ",
+>> +};
+>> +
+>> +static inline const char *smmu_event_string(SMMUEventType type)
+>> +{
+>> +    return event_stringify[type] ? event_stringify[type] : "UNKNOWN";
 > 
-> The above comment of yours mentions about modelling the memory regions
-> with pc-dimms. If I understand that proposal correctly, in case the iova list
-> has  multiple entries in it(means there are holes in the memory) the extra
-> regions has to be added as a pc-dimm slot memory.
+> Same remarks about being defensive about out of range values
+> apply here, I expect.
+I think this one is safe as called from smmuv3_record_event(). Type is
+is sanitized in that case. Adding the check against ARRAY_SIZE though.
 
-Hi Shameer,
+Thanks
 
-iiuc, the concern is that the valid region list may look something like
-this made up example:
-
- 0x000e0000000 0x000000011fffffff
- 0x00180000000 0x00000002ffffffff
- 0x02000000000 0x0000011fffffffff
- 0x22000000000 0xffffffffffffffff
-
-You then want to avoid overlapping the holes with memory, because the
-holes represent regions that may have platform devices assigned, which
-need to keep 1:1 gpa -> hpa mappings.
-
-If that's the case, then I think the biggest problem with the made up
-example is the initial hole [0x0 0xdfffffff], as that would overlap the
-currently hard coded base of RAM (0x40000000). Indeed we were thinking
-that the base of RAM would be modeled as a non-pluggable dimm of size
-1G at the 1G boundary. As for the rest of memory (for memory > 1G), in
-the made up example we could just allocate a single pc-dimm from a memory
-region representing the [0x22000000000 0xffffffffffffffff] range without
-any hassle.
-
-> Having gone through
-> the Qemu source, I am not sure what is the best way to accomplish that.
-> (of course I am not that familiar with the Qemu source). Is it ok to invoke
-> qdev_device_add() from here? Any pointers on this is very appreciated.
-
-I'm not an expert on that (nor any of this stuff, really - hopefully what
-I've written above isn't completely bonkers). I've CC'ed Igor for help.
-I've also CC'ed Eric, because of the magic word 'vfio'.
-
+Eric
 > 
-> One more point is, considering the fact that ARM64 linux kernel still doesn't
-> support hotplug memory at the moment, not sure how much we gain
-> from the pc-dimm model.
-
-It will eventually. Moving towards the pc-dimm model now, in order to
-handle the non-contiguous memory needs, will go a long ways to enabling
-hotplug later.
-
-Thanks,
-drew
-
+>> +}
+>> +
+>> +/*  Encode an event record */
+>> +typedef struct SMMUEventInfo {
+>> +    SMMUEventType type;
+>> +    uint32_t sid;
+>> +    bool recorded;
+>> +    bool record_trans_faults;
+>> +    union {
+>> +        struct {
+>> +            uint32_t ssid;
+>> +            bool ssv;
+>> +            dma_addr_t addr;
+>> +            bool rnw;
+>> +            bool pnu;
+>> +            bool ind;
+>> +       } f_uut;
+>> +       struct ssid_info {
+>> +            uint32_t ssid;
+>> +            bool ssv;
+>> +       } c_bad_streamid;
 > 
-> Please let me know your thoughts on this.
+> If we were being really picky about coding style these
+> embedded struct names like ssid_info ought to be camelcase.
 > 
-> Thanks,
-> Shameer
+>> +       struct ssid_addr_info {
+>> +            uint32_t ssid;
+>> +            bool ssv;
+>> +            dma_addr_t addr;
+>> +       } f_ste_fetch;
+>> +       struct ssid_info c_bad_ste;
+>> +       struct {
+>> +            dma_addr_t addr;
+>> +            bool rnw;
+>> +       } f_transl_forbidden;
+>> +       struct {
+>> +            uint32_t ssid;
+>> +       } c_bad_substream;
+>> +       struct ssid_addr_info f_cd_fetch;
+>> +       struct ssid_info c_bad_cd;
+>> +       struct full_info {
+>> +            bool stall;
+>> +            uint16_t stag;
+>> +            uint32_t ssid;
+>> +            bool ssv;
+>> +            bool s2;
+>> +            dma_addr_t addr;
+>> +            bool rnw;
+>> +            bool pnu;
+>> +            bool ind;
+>> +            uint8_t class;
+>> +            dma_addr_t addr2;
+>> +       } f_walk_eabt;
+>> +       struct full_info f_translation;
+>> +       struct full_info f_addr_size;
+>> +       struct full_info f_access;
+>> +       struct full_info f_permission;
+>> +       struct ssid_info f_cfg_conflict;
+>> +       /**
+>> +        * not supported yet:
+>> +        * F_BAD_ATS_TREQ
+>> +        * F_BAD_ATS_TREQ
+>> +        * F_TLB_CONFLICT
+>> +        * E_PAGE_REQUEST
+>> +        * IMPDEF_EVENTn
+>> +        */
+>> +    } u;
+>> +} SMMUEventInfo;
+>> +
+>> +/* EVTQ fields */
+>> +
+>> +#define EVT_Q_OVERFLOW        (1 << 31)
+>> +
+>> +#define EVT_SET_TYPE(x, v)              deposit32((x)->word[0], 0 , 8 ,  v)
+>> +#define EVT_SET_SSV(x, v)               deposit32((x)->word[0], 11, 1 ,  v)
+>> +#define EVT_SET_SSID(x, v)              deposit32((x)->word[0], 12, 20, v)
+>> +#define EVT_SET_SID(x, v)               ((x)->word[1] =  v)
+>> +#define EVT_SET_STAG(x, v)              deposit32((x)->word[2], 0 , 16, v)
+>> +#define EVT_SET_STALL(x, v)             deposit32((x)->word[2], 31, 1 , v)
+>> +#define EVT_SET_PNU(x, v)               deposit32((x)->word[3], 1 , 1 , v)
+>> +#define EVT_SET_IND(x, v)               deposit32((x)->word[3], 2 , 1 , v)
+>> +#define EVT_SET_RNW(x, v)               deposit32((x)->word[3], 3 , 1 , v)
+>> +#define EVT_SET_S2(x, v)                deposit32((x)->word[3], 7 , 1 , v)
+>> +#define EVT_SET_CLASS(x, v)             deposit32((x)->word[3], 8 , 2 , v)
 > 
-> [1]. https://lkml.org/lkml/2018/4/18/293
+> There's some weird extra spaces in these macros.
+> 
+>> +#define EVT_SET_ADDR(x, addr) ({                    \
+>> +            (x)->word[5] = (uint32_t)(addr >> 32);        \
+>> +            (x)->word[4] = (uint32_t)(addr & 0xffffffff); \
+>> +        })
+>> +#define EVT_SET_ADDR2(x, addr) ({                    \
+>> +            deposit32((x)->word[7], 3, 29, addr >> 16);        \
+>> +            deposit32((x)->word[7], 0, 16, addr & 0xffff); \
+>> +        })
+> 
+> These don't need the GCC ({ }) extension -- you can just do them
+> as normal do { ... } while (0) macros.
+> 
+> Otherwise
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> 
+> thanks
+> -- PMM
+> 

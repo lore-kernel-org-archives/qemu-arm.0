@@ -1,289 +1,385 @@
-Received: by 10.28.4.212 with SMTP id 203csp881478wme;
-        Wed, 25 Apr 2018 07:25:12 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZo471XhCUwsIMF+HhY/2VN5SlzZvUN7z8JEcFoPi27SkuPPMPBQLIkOCcorZH9kueF0ml+f
-X-Received: by 2002:ac8:4057:: with SMTP id j23-v6mr18372103qtl.64.1524666312622;
-        Wed, 25 Apr 2018 07:25:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1524666312; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp881862wme;
+        Wed, 25 Apr 2018 07:25:36 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZqn+Q1y9WxHPrCFf0dg0o5pXZBeX/vnH3j+N/+IdmfzgZEUjGAgZMsv3PPYYeaLKdTgDCit
+X-Received: by 10.55.109.129 with SMTP id i123mr28945343qkc.114.1524666336563;
+        Wed, 25 Apr 2018 07:25:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1524666336; cv=none;
         d=google.com; s=arc-20160816;
-        b=plOBviNFponXc7dcvd50xX6loOYim1i56arjvzVn+bUhRNcVhdl7fbj45zIqjl3cad
-         fhxbxtqED1LqPr+nfjndIaP7gVbkZQGorw7h9mt7v8oFx3G2C498N7yQy4ADCj2u0I0d
-         mrCprfBZKk7ERzYeZCyH9ytSEDtuo+4wFJh9V7eGO0iEk/QPVJpS3KKuxp5VCUGhCpjg
-         TlTrig/ECAUlRELTzJMTxvSofcK/yqLFgtP569XmmGifnbWQFzozAQaqq7luPrw21F4/
-         uptlHiHWff0tO1mlKMdZ+wCAZnKxM9qZH9WTD2C9vDSMlYMP9wpBsTJPV8l9VwRnyNYE
-         zrPg==
+        b=AotZa9HSeXWf7jdbCDpG8XuRqCtHIvgX1rXZH+d09SSqsmPFuTiFrEfUaDwObU5r1+
+         0mGiC82JDNlqygBdaRU7rIbpidFsX2pcaRhdr611ql48TIFkPcaRJ1+aNKcWXm39uKia
+         8yLB17RqFCYOkox2c0N73Wd7j2HoLTbvrPlpnl4xt3yh0pirOf9uxa6IROKJwRlalyHk
+         DoJWzy4Ls0FbbZKVgw2jTuJHyl6Yc536e3bRrcNW7H7pQrJO80+iSg/P3KeX6H+yVGEf
+         Ia9fXJgluDjJWMlpYrZgZtk6QPDQO6MoAnF0HteiAjsHkmtTt4qWljkzoOb0UGea2thl
+         ubqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=6+E6jizY2DYBpkikD6rgtECbvOqVUv7mgG9kZQpd5dI=;
-        b=Nt0MT53UaOtMUpEABaatwj8Izec0koS6kpyIzJnhxRR9XIFIfzB7gnPVW0a1BzfyOz
-         ut3RAtC/5rEP+7/H/hfaRI/qM+OOY1ztebWo0nXOkBV3CVVZGgeiOLgXYWArrh5EqhKH
-         cfm6+jQfLIFiodvGBBVJjrMaoXVXoVTTrWNcheCFZae9ofZKL/3H713IswtuLA7bLSkV
-         RUbeHkBcpXVWfy2voQ8AzzL1v7Z3WLJKn4VC/xafai56VOjKsV1XkcIiw0WzHX4xEhXL
-         q466QvVadwCK0RE9LcEwVyg9tVIkhCLsa63CQwYU0q/pvljtPUDPQLdLFVj89fSWlJj4
-         Fx+g==
+        bh=BuMiVaG6DR/RRSbO1buowNd2zAzE8+xiqy9IbOQQZJc=;
+        b=md9qZjEJGR4zLX41mqqpQIKh6IYNMiNAJzSxgEGs363n3qw4ASa/xlBrkSfSJAY9qs
+         do8rmM6bETMrTtVdyFUtf3M14Ab4nvK/p0PwJLYmX87hSuy1TOIFs8kwvCn5JpuF/wxk
+         Bqi0uA1eHiQfF6c615AJ1S96JKXGqaQPB9Mb2zr3A6GQ7Mo7baFFlvW+L+SOC8rO0nPr
+         3OPQGCGXCT4Ih37O1YPmuPRauLQb6YCQ/pbYF7OoKMwbCiA24WBhvz1UHZCXEQ09nrXG
+         LHSjem5qN4h5seVYAhLblHLaWhH+vJ28oWKwMPBKVx8ClAgd2EIZxyuB6iwRnJvlhadd
+         1GPg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o41-v6si1853617qtc.99.2018.04.25.07.25.12
+        by mx.google.com with ESMTPS id o57-v6si5138370qtf.181.2018.04.25.07.25.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 25 Apr 2018 07:25:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 25 Apr 2018 07:25:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37214 helo=lists.gnu.org)
+Received: from localhost ([::1]:37220 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fBLM8-0006oh-1s
-	for alex.bennee@linaro.org; Wed, 25 Apr 2018 10:25:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56007)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fBLMV-0007T7-Uq
+	for alex.bennee@linaro.org; Wed, 25 Apr 2018 10:25:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55781)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fBLE8-0000vp-6D
-	for qemu-devel@nongnu.org; Wed, 25 Apr 2018 10:16:59 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1fBLDp-0000cn-6N
+	for qemu-arm@nongnu.org; Wed, 25 Apr 2018 10:16:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fBLE6-00068P-Rd
-	for qemu-devel@nongnu.org; Wed, 25 Apr 2018 10:16:56 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:43418 helo=mx1.redhat.com)
+	(envelope-from <eric.auger@redhat.com>) id 1fBLDm-0005sC-2w
+	for qemu-arm@nongnu.org; Wed, 25 Apr 2018 10:16:37 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:33128 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1fBLE0-00063U-NN; Wed, 25 Apr 2018 10:16:48 -0400
+	id 1fBLDl-0005ru-US; Wed, 25 Apr 2018 10:16:34 -0400
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 554FC87ABE;
-	Wed, 25 Apr 2018 14:16:48 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 8B8098DC3B;
+	Wed, 25 Apr 2018 14:16:33 +0000 (UTC)
 Received: from localhost.localdomain.com (ovpn-116-141.ams2.redhat.com
 	[10.36.116.141])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A877B2023239;
-	Wed, 25 Apr 2018 14:16:45 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 040BC2023239;
+	Wed, 25 Apr 2018 14:16:30 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org, prem.mallappa@gmail.com
-Date: Wed, 25 Apr 2018 16:15:57 +0200
-Message-Id: <1524665762-31355-13-git-send-email-eric.auger@redhat.com>
+Date: Wed, 25 Apr 2018 16:15:52 +0200
+Message-Id: <1524665762-31355-8-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1524665762-31355-1-git-send-email-eric.auger@redhat.com>
 References: <1524665762-31355-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.1]);
-	Wed, 25 Apr 2018 14:16:48 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
-	Wed, 25 Apr 2018 14:16:48 +0000 (UTC) for IP:'10.11.54.4'
+	(mx1.redhat.com [10.11.55.2]);
+	Wed, 25 Apr 2018 14:16:33 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Wed, 25 Apr 2018 14:16:33 +0000 (UTC) for IP:'10.11.54.4'
 	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-devel] [PATCH v12 12/17] hw/arm/virt: Add SMMUv3 to the virt
- board
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PATCH v12 07/17] hw/arm/smmuv3: Implement MMIO write
+ operations
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: cdall@kernel.org, mst@redhat.com, jean-philippe.brucker@arm.com,
 	tn@semihalf.com, peterx@redhat.com, alex.williamson@redhat.com,
 	linuc.decode@gmail.com, bharat.bhushan@nxp.com, jintack@cs.columbia.edu
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zMW/0uwwTqLa
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2ZPQqc76EA+e
 
-From: Prem Mallappa <prem.mallappa@broadcom.com>
+Now we have relevant helpers for queue and irq
+management, let's implement MMIO write operations.
 
-Add code to instantiate an smmuv3 in virt machine. A new iommu
-integer member is introduced in VirtMachineState to store the type
-of the iommu in use.
-
-Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 ---
+v11 -> v12:
+- s/value/data in smmu_write_mmio and friends
+- added Peter's R-b
+
 v9 -> v10:
-- add VirtIOMMUType
-- add Peter's R-b
+- s/hwaddr/uint64_t in trace-events
+- added SMMU_FEATURE_2LVL_STE in this patch
+- removed smmu_write64 and created writel/writell infra
+- store capped log2size
+- mask CR0 reserved bits
 
 v7 -> v8:
-- integer iommu member
-- add primary-bus property
-
-v4 -> v5:
-- add dma-coherent property
-
-v2 -> v3:
-- vbi was removed. Use vms instead
-- migrate to new smmu binding format (iommu-map)
-- don't use appendprop anymore
-- add vms->smmu and guard instantiation with this latter
-- interrupts type changed to edge
+- precise in the commit message invalidation commands
+  are not yet treated.
+- use new queue helpers
+- do not decode unhandled commands at this stage
 ---
- hw/arm/virt.c         | 64 ++++++++++++++++++++++++++++++++++++++++++++++++++-
- include/hw/arm/virt.h | 10 ++++++++
- 2 files changed, 73 insertions(+), 1 deletion(-)
+ hw/arm/smmuv3-internal.h |   8 +--
+ hw/arm/smmuv3.c          | 170 +++++++++++++++++++++++++++++++++++++++++++++--
+ hw/arm/trace-events      |   6 ++
+ 3 files changed, 174 insertions(+), 10 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 94dcb12..1799702 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -58,6 +58,7 @@
- #include "hw/smbios/smbios.h"
- #include "qapi/visitor.h"
- #include "standard-headers/linux/input.h"
-+#include "hw/arm/smmuv3.h"
+diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+index 223d840..282285d 100644
+--- a/hw/arm/smmuv3-internal.h
++++ b/hw/arm/smmuv3-internal.h
+@@ -61,6 +61,8 @@ REG32(CR0,                 0x20)
+     FIELD(CR0, EVENTQEN,      2, 1)
+     FIELD(CR0, CMDQEN,        3, 1)
  
- #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
-     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
-@@ -141,6 +142,7 @@ static const MemMapEntry a15memmap[] = {
-     [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
-     [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
-     [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
-+    [VIRT_SMMU] =               { 0x09050000, 0x00020000 },
-     [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
-     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
-     [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
-@@ -161,6 +163,7 @@ static const int a15irqmap[] = {
-     [VIRT_SECURE_UART] = 8,
-     [VIRT_MMIO] = 16, /* ...to 16 + NUM_VIRTIO_TRANSPORTS - 1 */
-     [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
-+    [VIRT_SMMU] = 74,    /* ...to 74 + NUM_SMMU_IRQS - 1 */
-     [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
- };
- 
-@@ -942,7 +945,57 @@ static void create_pcie_irq_map(const VirtMachineState *vms,
-                            0x7           /* PCI irq */);
++#define SMMU_CR0_RESERVED 0xFFFFFC20
++
+ REG32(CR0ACK,              0x24)
+ REG32(CR1,                 0x28)
+ REG32(CR2,                 0x2c)
+@@ -149,10 +151,6 @@ static inline bool smmuv3_gerror_irq_enabled(SMMUv3State *s)
+     return FIELD_EX32(s->irq_ctrl, IRQ_CTRL, GERROR_IRQEN);
  }
  
--static void create_pcie(const VirtMachineState *vms, qemu_irq *pic)
-+static void create_smmu(const VirtMachineState *vms, qemu_irq *pic,
-+                        PCIBus *bus)
+-/* public until callers get introduced */
+-void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq, uint32_t gerror_mask);
+-void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t gerrorn);
+-
+ /* Queue Handling */
+ 
+ #define Q_BASE(q)          ((q)->base & SMMU_BASE_ADDR_MASK)
+@@ -314,6 +312,6 @@ enum { /* Command completion notification */
+             addr;                                             \
+         })
+ 
+-int smmuv3_cmdq_consume(SMMUv3State *s);
++#define SMMU_FEATURE_2LVL_STE (1 << 0)
+ 
+ #endif
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 8f50f15..d581ada 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -38,7 +38,8 @@
+  * @irq: irq type
+  * @gerror_mask: mask of gerrors to toggle (relevant if @irq is GERROR)
+  */
+-void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq, uint32_t gerror_mask)
++static void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq,
++                               uint32_t gerror_mask)
+ {
+ 
+     bool pulse = false;
+@@ -75,7 +76,7 @@ void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq, uint32_t gerror_mask)
+     }
+ }
+ 
+-void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t new_gerrorn)
++static void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t new_gerrorn)
+ {
+     uint32_t pending = s->gerror ^ s->gerrorn;
+     uint32_t toggled = s->gerrorn ^ new_gerrorn;
+@@ -174,7 +175,7 @@ static void smmuv3_init_regs(SMMUv3State *s)
+     s->sid_split = 0;
+ }
+ 
+-int smmuv3_cmdq_consume(SMMUv3State *s)
++static int smmuv3_cmdq_consume(SMMUv3State *s)
+ {
+     SMMUCmdError cmd_error = SMMU_CERROR_NONE;
+     SMMUQueue *q = &s->cmdq;
+@@ -270,11 +271,170 @@ int smmuv3_cmdq_consume(SMMUv3State *s)
+     return 0;
+ }
+ 
++static MemTxResult smmu_writell(SMMUv3State *s, hwaddr offset,
++                               uint64_t data, MemTxAttrs attrs)
 +{
-+    char *node;
-+    const char compat[] = "arm,smmu-v3";
-+    int irq =  vms->irqmap[VIRT_SMMU];
-+    int i;
-+    hwaddr base = vms->memmap[VIRT_SMMU].base;
-+    hwaddr size = vms->memmap[VIRT_SMMU].size;
-+    const char irq_names[] = "eventq\0priq\0cmdq-sync\0gerror";
-+    DeviceState *dev;
-+
-+    if (vms->iommu != VIRT_IOMMU_SMMUV3 || !vms->iommu_phandle) {
-+        return;
++    switch (offset) {
++    case A_GERROR_IRQ_CFG0:
++        s->gerror_irq_cfg0 = data;
++        return MEMTX_OK;
++    case A_STRTAB_BASE:
++        s->strtab_base = data;
++        return MEMTX_OK;
++    case A_CMDQ_BASE:
++        s->cmdq.base = data;
++        s->cmdq.log2size = extract64(s->cmdq.base, 0, 5);
++        if (s->cmdq.log2size > SMMU_CMDQS) {
++            s->cmdq.log2size = SMMU_CMDQS;
++        }
++        return MEMTX_OK;
++    case A_EVENTQ_BASE:
++        s->eventq.base = data;
++        s->eventq.log2size = extract64(s->eventq.base, 0, 5);
++        if (s->eventq.log2size > SMMU_EVENTQS) {
++            s->eventq.log2size = SMMU_EVENTQS;
++        }
++        return MEMTX_OK;
++    case A_EVENTQ_IRQ_CFG0:
++        s->eventq_irq_cfg0 = data;
++        return MEMTX_OK;
++    default:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s Unexpected 64-bit access to 0x%"PRIx64" (WI)\n",
++                      __func__, offset);
++        return MEMTX_OK;
 +    }
-+
-+    dev = qdev_create(NULL, "arm-smmuv3");
-+
-+    object_property_set_link(OBJECT(dev), OBJECT(bus), "primary-bus",
-+                             &error_abort);
-+    qdev_init_nofail(dev);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
-+    for (i = 0; i < NUM_SMMU_IRQS; i++) {
-+        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, pic[irq + i]);
-+    }
-+
-+    node = g_strdup_printf("/smmuv3@%" PRIx64, base);
-+    qemu_fdt_add_subnode(vms->fdt, node);
-+    qemu_fdt_setprop(vms->fdt, node, "compatible", compat, sizeof(compat));
-+    qemu_fdt_setprop_sized_cells(vms->fdt, node, "reg", 2, base, 2, size);
-+
-+    qemu_fdt_setprop_cells(vms->fdt, node, "interrupts",
-+            GIC_FDT_IRQ_TYPE_SPI, irq    , GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
-+            GIC_FDT_IRQ_TYPE_SPI, irq + 1, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
-+            GIC_FDT_IRQ_TYPE_SPI, irq + 2, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
-+            GIC_FDT_IRQ_TYPE_SPI, irq + 3, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
-+
-+    qemu_fdt_setprop(vms->fdt, node, "interrupt-names", irq_names,
-+                     sizeof(irq_names));
-+
-+    qemu_fdt_setprop_cell(vms->fdt, node, "clocks", vms->clock_phandle);
-+    qemu_fdt_setprop_string(vms->fdt, node, "clock-names", "apb_pclk");
-+    qemu_fdt_setprop(vms->fdt, node, "dma-coherent", NULL, 0);
-+
-+    qemu_fdt_setprop_cell(vms->fdt, node, "#iommu-cells", 1);
-+
-+    qemu_fdt_setprop_cell(vms->fdt, node, "phandle", vms->iommu_phandle);
-+    g_free(node);
 +}
 +
-+static void create_pcie(VirtMachineState *vms, qemu_irq *pic)
++static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
++                               uint64_t data, MemTxAttrs attrs)
++{
++    switch (offset) {
++    case A_CR0:
++        s->cr[0] = data;
++        s->cr0ack = data & ~SMMU_CR0_RESERVED;
++        /* in case the command queue has been enabled */
++        smmuv3_cmdq_consume(s);
++        return MEMTX_OK;
++    case A_CR1:
++        s->cr[1] = data;
++        return MEMTX_OK;
++    case A_CR2:
++        s->cr[2] = data;
++        return MEMTX_OK;
++    case A_IRQ_CTRL:
++        s->irq_ctrl = data;
++        return MEMTX_OK;
++    case A_GERRORN:
++        smmuv3_write_gerrorn(s, data);
++        /*
++         * By acknowledging the CMDQ_ERR, SW may notify cmds can
++         * be processed again
++         */
++        smmuv3_cmdq_consume(s);
++        return MEMTX_OK;
++    case A_GERROR_IRQ_CFG0: /* 64b */
++        s->gerror_irq_cfg0 = deposit64(s->gerror_irq_cfg0, 0, 32, data);
++        return MEMTX_OK;
++    case A_GERROR_IRQ_CFG0 + 4:
++        s->gerror_irq_cfg0 = deposit64(s->gerror_irq_cfg0, 32, 32, data);
++        return MEMTX_OK;
++    case A_GERROR_IRQ_CFG1:
++        s->gerror_irq_cfg1 = data;
++        return MEMTX_OK;
++    case A_GERROR_IRQ_CFG2:
++        s->gerror_irq_cfg2 = data;
++        return MEMTX_OK;
++    case A_STRTAB_BASE: /* 64b */
++        s->strtab_base = deposit64(s->strtab_base, 0, 32, data);
++        return MEMTX_OK;
++    case A_STRTAB_BASE + 4:
++        s->strtab_base = deposit64(s->strtab_base, 32, 32, data);
++        return MEMTX_OK;
++    case A_STRTAB_BASE_CFG:
++        s->strtab_base_cfg = data;
++        if (FIELD_EX32(data, STRTAB_BASE_CFG, FMT) == 1) {
++            s->sid_split = FIELD_EX32(data, STRTAB_BASE_CFG, SPLIT);
++            s->features |= SMMU_FEATURE_2LVL_STE;
++        }
++        return MEMTX_OK;
++    case A_CMDQ_BASE: /* 64b */
++        s->cmdq.base = deposit64(s->cmdq.base, 0, 32, data);
++        s->cmdq.log2size = extract64(s->cmdq.base, 0, 5);
++        if (s->cmdq.log2size > SMMU_CMDQS) {
++            s->cmdq.log2size = SMMU_CMDQS;
++        }
++        return MEMTX_OK;
++    case A_CMDQ_BASE + 4: /* 64b */
++        s->cmdq.base = deposit64(s->cmdq.base, 32, 32, data);
++        return MEMTX_OK;
++    case A_CMDQ_PROD:
++        s->cmdq.prod = data;
++        smmuv3_cmdq_consume(s);
++        return MEMTX_OK;
++    case A_CMDQ_CONS:
++        s->cmdq.cons = data;
++        return MEMTX_OK;
++    case A_EVENTQ_BASE: /* 64b */
++        s->eventq.base = deposit64(s->eventq.base, 0, 32, data);
++        s->eventq.log2size = extract64(s->eventq.base, 0, 5);
++        if (s->eventq.log2size > SMMU_EVENTQS) {
++            s->eventq.log2size = SMMU_EVENTQS;
++        }
++        return MEMTX_OK;
++    case A_EVENTQ_BASE + 4:
++        s->eventq.base = deposit64(s->eventq.base, 32, 32, data);
++        return MEMTX_OK;
++    case A_EVENTQ_PROD:
++        s->eventq.prod = data;
++        return MEMTX_OK;
++    case A_EVENTQ_CONS:
++        s->eventq.cons = data;
++        return MEMTX_OK;
++    case A_EVENTQ_IRQ_CFG0: /* 64b */
++        s->eventq_irq_cfg0 = deposit64(s->eventq_irq_cfg0, 0, 32, data);
++        return MEMTX_OK;
++    case A_EVENTQ_IRQ_CFG0 + 4:
++        s->eventq_irq_cfg0 = deposit64(s->eventq_irq_cfg0, 32, 32, data);
++        return MEMTX_OK;
++    case A_EVENTQ_IRQ_CFG1:
++        s->eventq_irq_cfg1 = data;
++        return MEMTX_OK;
++    case A_EVENTQ_IRQ_CFG2:
++        s->eventq_irq_cfg2 = data;
++        return MEMTX_OK;
++    default:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s Unexpected 32-bit access to 0x%"PRIx64" (WI)\n",
++                      __func__, offset);
++        return MEMTX_OK;
++    }
++}
++
+ static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
+                                    unsigned size, MemTxAttrs attrs)
  {
-     hwaddr base_mmio = vms->memmap[VIRT_PCIE_MMIO].base;
-     hwaddr size_mmio = vms->memmap[VIRT_PCIE_MMIO].size;
-@@ -1055,6 +1108,15 @@ static void create_pcie(const VirtMachineState *vms, qemu_irq *pic)
-     qemu_fdt_setprop_cell(vms->fdt, nodename, "#interrupt-cells", 1);
-     create_pcie_irq_map(vms, vms->gic_phandle, irq, nodename);
- 
-+    if (vms->iommu) {
-+        vms->iommu_phandle = qemu_fdt_alloc_phandle(vms->fdt);
+-    /* not yet implemented */
+-    return MEMTX_ERROR;
++    SMMUState *sys = opaque;
++    SMMUv3State *s = ARM_SMMUV3(sys);
++    MemTxResult r;
 +
-+        create_smmu(vms, pic, pci->bus);
++    /* CONSTRAINED UNPREDICTABLE choice to have page0/1 be exact aliases */
++    offset &= ~0x10000;
 +
-+        qemu_fdt_setprop_cells(vms->fdt, nodename, "iommu-map",
-+                               0x0, vms->iommu_phandle, 0x0, 0x10000);
++    switch (size) {
++    case 8:
++        r = smmu_writell(s, offset, data, attrs);
++        break;
++    case 4:
++        r = smmu_writel(s, offset, data, attrs);
++        break;
++    default:
++        r = MEMTX_ERROR;
++        break;
 +    }
 +
-     g_free(nodename);
++    trace_smmuv3_write_mmio(offset, data, size, r);
++    return r;
  }
  
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index ba0c1a4..886372c 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -38,6 +38,7 @@
- 
- #define NUM_GICV2M_SPIS       64
- #define NUM_VIRTIO_TRANSPORTS 32
-+#define NUM_SMMU_IRQS          4
- 
- #define ARCH_GICV3_MAINT_IRQ  9
- 
-@@ -59,6 +60,7 @@ enum {
-     VIRT_GIC_V2M,
-     VIRT_GIC_ITS,
-     VIRT_GIC_REDIST,
-+    VIRT_SMMU,
-     VIRT_UART,
-     VIRT_MMIO,
-     VIRT_RTC,
-@@ -74,6 +76,12 @@ enum {
-     VIRT_SECURE_MEM,
- };
- 
-+typedef enum VirtIOMMUType {
-+    VIRT_IOMMU_NONE,
-+    VIRT_IOMMU_SMMUV3,
-+    VIRT_IOMMU_VIRTIO,
-+} VirtIOMMUType;
-+
- typedef struct MemMapEntry {
-     hwaddr base;
-     hwaddr size;
-@@ -97,6 +105,7 @@ typedef struct {
-     bool its;
-     bool virt;
-     int32_t gic_version;
-+    VirtIOMMUType iommu;
-     struct arm_boot_info bootinfo;
-     const MemMapEntry *memmap;
-     const int *irqmap;
-@@ -106,6 +115,7 @@ typedef struct {
-     uint32_t clock_phandle;
-     uint32_t gic_phandle;
-     uint32_t msi_phandle;
-+    uint32_t iommu_phandle;
-     int psci_conduit;
- } VirtMachineState;
- 
+ static MemTxResult smmu_readll(SMMUv3State *s, hwaddr offset,
+diff --git a/hw/arm/trace-events b/hw/arm/trace-events
+index 38b35fa..781542a 100644
+--- a/hw/arm/trace-events
++++ b/hw/arm/trace-events
+@@ -23,3 +23,9 @@ smmuv3_cmdq_consume(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t con
+ smmuv3_cmdq_opcode(const char *opcode) "<--- %s"
+ smmuv3_cmdq_consume_out(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "prod:%d, cons:%d, prod_wrap:%d, cons_wrap:%d "
+ smmuv3_cmdq_consume_error(const char *cmd_name, uint8_t cmd_error) "Error on %s command execution: %d"
++smmuv3_update(bool is_empty, uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "q empty:%d prod:%d cons:%d p.wrap:%d p.cons:%d"
++smmuv3_update_check_cmd(int error) "cmdq not enabled or error :0x%x"
++smmuv3_write_mmio(uint64_t addr, uint64_t val, unsigned size, uint32_t r) "addr: 0x%"PRIx64" val:0x%"PRIx64" size: 0x%x(%d)"
++smmuv3_write_mmio_idr(uint64_t addr, uint64_t val) "write to RO/Unimpl reg 0x%lx val64:0x%lx"
++smmuv3_write_mmio_evtq_cons_bef_clear(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "Before clearing interrupt prod:0x%x cons:0x%x prod.w:%d cons.w:%d"
++smmuv3_write_mmio_evtq_cons_after_clear(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "after clearing interrupt prod:0x%x cons:0x%x prod.w:%d cons.w:%d"
 -- 
 2.5.5
 

@@ -1,115 +1,93 @@
-Received: by 10.28.91.67 with SMTP id p64csp2097608wmb;
-        Thu, 1 Mar 2018 09:35:50 -0800 (PST)
-X-Google-Smtp-Source: AG47ELub1NYDJKjoaW6nCpQKQKl+J7wqmUHvu9WjD7DhOfGjaAsKUdsOOXfuOtc1RLCgtc+C3ayv
-X-Received: by 10.129.169.9 with SMTP id g9mr1786402ywh.379.1519925750242;
-        Thu, 01 Mar 2018 09:35:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519925750; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp816692wme;
+        Wed, 25 Apr 2018 06:25:15 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZopJREuH6KH4q/4FGydkk5qTReF/14i/S+8VdYdpPhh0fCFKuh6CsV7V5I1p7m6l6xLAdoO
+X-Received: by 10.55.136.70 with SMTP id k67mr6481673qkd.250.1524662715485;
+        Wed, 25 Apr 2018 06:25:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1524662715; cv=none;
         d=google.com; s=arc-20160816;
-        b=BLrTcbLu5S71iUVSzZNGOdjX1LIgnNbQnbMs3CSQReiOWjJHZTqD11rG23Z0o0BF3k
-         QaBodAAyh/NTTZgFHIuwuoyTaOzt6DgO2LdajARkR1y5NI4AsftEk6A6TrpMzFInlKLg
-         dXdDHXQdVUZ2eu0sMdcu1AB2kuQShXRty+JIqs0mKI0Rh7nmZLBz1SPnAs/mN9RVY4f1
-         EHoEZ6xal6XLY6NTge4X284CcgRrxNPif+HUIgnQvZNI7YIvCqyL6yO8LpJC07LcCcxg
-         6MPlA9h8aEHvGEEOh8dHojTAJtVhJiQV51OgNnO0k03dUT7WBfnYfeiDuvrWwH1lu90Z
-         eqOA==
+        b=TeR/8/JZf05b9xI9l6/o8F4sZDgo7AF0IO6O3Uy80ojKVVhAQE5/0RZV3kj9we0iqJ
+         uIcPaf3R/LGdHchqYx38h74oexBXKJTwTUyAmkixDwUZcOH+Ki0ox/rmVdhEwW/viXk/
+         gLrnxJc/te0UZA9pC1pROeghgQAHxhsrD0RzOXldOBmr3RX9hiIWXIiTiStz5/siPtd/
+         HzH549xNiL9r7saGk9JTkLLX21ch1fnUgMH4IlkZuTEsPbibb1cfWVgLQS+kStSfU3RT
+         0gfu6fo8WrsDw9rxa2kzyYs2BaijN1Yj+tMaGueeiTc8ACe+bf39CZu33AgtpvpZtFf6
+         lvzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=gVHRzux2/AENUpeEJ0I872sI4D5DPNGNNvtLCSWGXZE=;
-        b=kkT2ERcWaAHBGf+OZD2HCcnAPSOI2HZ80uAbJVmeTsJKfq3plvbY5bDrK5K2WjUU/z
-         YTC62DQ8rnI+ZpdQlCfmaQdjiKikYCs8QI0q047wKomClj2nW+RtyX8ZUwH6T3X1DZHO
-         0bdg1eGrbLxXsr9BPWkzoZkefSc8bMDCZ3kzIXQlKOnXwWcidkH1P4AuxZG02CT9r2S/
-         7L23u25vY0DvwZf8L/MVXi13xmIUp1+n333Q5dt37OEuR4p4beGrxOx9MwovPVbMhEl7
-         YDRDiJCJktlNJbB6bsD6hYEaEICMi2OI8Hj81XoiShdV2vIMok9UxeAew5ZYqqTq0u/g
-         2tqg==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
+         :from:arc-authentication-results;
+        bh=jCirntKQl9BFqCbyEjdRq11ocPhYa4hnwzd6ypsR4jM=;
+        b=aNA+3bTNhGOZ0Mgg7YOz0kP7SgU6jZY9V8d0Bac71j113Rd5l8vi4AdcPMc/Fd4qDB
+         kvEBwrNjTKsP996n1heub+rnfgHdlby4hhezA7bRQkYqX0qyE9Nn4JAkpGOfP15VK/a7
+         wLKk2LPH4mU+l0MK89w4DT0LbHLX1txq49z7XSGcQMa0/fBg27rw0nbGNszz+d4c6enB
+         DKscixQAY0SXs6zjsGPRNrYw/DO8S/iyY5y0BVvR4vUk4l7x+8BJOTVc4CZ985D1buYi
+         BqZZIrKel/HY2usPh8KE6l0D908s2pTT987QtsHV3BAZITGgiugGndlHWxlwKqS5TcAo
+         Hv/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Z54RcU+J;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g191-v6si726739yba.40.2018.03.01.09.35.50
+        by mx.google.com with ESMTPS id u36-v6si11607709qtb.18.2018.04.25.06.25.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 01 Mar 2018 09:35:50 -0800 (PST)
+        Wed, 25 Apr 2018 06:25:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Z54RcU+J;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:58496 helo=lists.gnu.org)
+Received: from localhost ([::1]:36911 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1erS7R-0006vM-Mn
-	for alex.bennee@linaro.org; Thu, 01 Mar 2018 12:35:49 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41595)
+	id 1fBKQ6-00049c-U1
+	for alex.bennee@linaro.org; Wed, 25 Apr 2018 09:25:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40354)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1erS7L-0006v7-O3
-	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 12:35:45 -0500
+	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1fBKPw-00045q-FO
+	for qemu-arm@nongnu.org; Wed, 25 Apr 2018 09:25:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1erS7H-0002HL-IZ
-	for qemu-arm@nongnu.org; Thu, 01 Mar 2018 12:35:43 -0500
-Received: from mail-wr0-x242.google.com ([2a00:1450:400c:c0c::242]:44686)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1erS7H-0002Gz-1I; Thu, 01 Mar 2018 12:35:39 -0500
-Received: by mail-wr0-x242.google.com with SMTP id v65so7410168wrc.11;
-	Thu, 01 Mar 2018 09:35:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=gVHRzux2/AENUpeEJ0I872sI4D5DPNGNNvtLCSWGXZE=;
-	b=Z54RcU+JmPA95Q9rgf1kJ2f06mfnlgSflj4JICxGdn/L77r+VRwo+59JvLEIDHp/jb
-	5M+f21Mt4MawLG4ia39KcOE5msyL2MDrS7S657yJ1NgFYLRh52vFSn7MYDFkmqxQqhFl
-	90/x/K0CUo4NLjCxyqgwWNtvTwOEYEoZe543WYtjM5pm4YUvjPBYlNXA7MV2A7hyMxCM
-	ckgTcY6DPoNtrvZHdqWtTpPro6Mgw8vc1xpHnvMwV9yOuttigSUgfE0gdQtQUHxmoymu
-	RMnzE8fFrlNDMDuReA3MIqBOY8o1ax6y5Qub/r3TgPZsOmEJ2XmmKduxj7dSLVZ8mPtt
-	1bfQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=gVHRzux2/AENUpeEJ0I872sI4D5DPNGNNvtLCSWGXZE=;
-	b=fyjmigIm851OozpjLD8KA2N65uHu6uUzUCfiP5RJ3ju/7MHGMtSwTSGU+hr3YPu+CL
-	50TMV5zoQYlj0iIJ+3/8m9cpxmk7+9GkU+dsLNqat1mE1fju+VFUmTCz7ioEDOlN6AiV
-	f3puSvSjdsxrhm/XOdB3tLSUSyjkiYnU+W+ZdA1Wa6bB5In8McMz9VdD098pqbQfPeOZ
-	NQ7oeMhPE8Ctke1PSj01NAgsH5OYckpn/rut6nCruEUmGIt/c9MYo/ti1dwDHHdahqJo
-	OnRzounnc9bPs/HkWq6mlorL6UtHSL4tlZ9qvur0/NBDTQG4JAnfDskHNPPeG58j2TtC
-	26vQ==
-X-Gm-Message-State: APf1xPASOZPBQaZtLKp4Dmh2LewaZwd+oPS2pHkapHWMATYdKR4llfEm
-	OfWhYFIi5F+AdmxY8y7J6/oAEKrG
-X-Received: by 10.223.176.33 with SMTP id f30mr2630418wra.75.1519925737633;
-	Thu, 01 Mar 2018 09:35:37 -0800 (PST)
-Received: from [192.168.1.19] (LFbn-MON-1-648-178.w2-4.abo.wanadoo.fr.
-	[2.4.22.178]) by smtp.gmail.com with ESMTPSA id
-	l73sm8322506wma.15.2018.03.01.09.35.36
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 01 Mar 2018 09:35:36 -0800 (PST)
-To: Alistair Francis <alistair.francis@xilinx.com>, qemu-devel@nongnu.org,
-	edgar.iglesias@xilinx.com, edgar.iglesias@gmail.com
-References: <cover.1516650109.git.alistair.francis@xilinx.com>
-	<3a974495bbab40c66cf3f1edc9fbfcee31f3a178.1516650109.git.alistair.francis@xilinx.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <44924025-264f-c7a4-c1ce-7c6f0cdd9bb0@amsat.org>
-Date: Thu, 1 Mar 2018 14:35:35 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.6.0
-MIME-Version: 1.0
-In-Reply-To: <3a974495bbab40c66cf3f1edc9fbfcee31f3a178.1516650109.git.alistair.francis@xilinx.com>
-Content-Type: text/plain; charset=utf-8
+	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1fBKPt-0000mW-Ay
+	for qemu-arm@nongnu.org; Wed, 25 Apr 2018 09:25:04 -0400
+Received: from lhrrgout.huawei.com ([194.213.3.17]:64513 helo=huawei.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1fBKPt-0000l8-5f; Wed, 25 Apr 2018 09:25:01 -0400
+Received: from lhreml702-cah.china.huawei.com (unknown [172.18.7.106])
+	by Forcepoint Email with ESMTP id 1FACD2CDC74C1;
+	Wed, 25 Apr 2018 14:24:55 +0100 (IST)
+Received: from FRAEML704-CAH.china.huawei.com (10.206.14.35) by
+	lhreml702-cah.china.huawei.com (10.201.108.43) with Microsoft SMTP
+	Server (TLS) id 14.3.382.0; Wed, 25 Apr 2018 14:24:56 +0100
+Received: from FRAEML521-MBX.china.huawei.com ([169.254.1.156]) by
+	FRAEML704-CAH.china.huawei.com ([10.206.14.35]) with mapi id
+	14.03.0382.000; Wed, 25 Apr 2018 15:24:44 +0200
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: Andrew Jones <drjones@redhat.com>
+Thread-Topic: [Qemu-devel] [RFC 3/5] hw/arm: add scattered RAM memory region
+	support
+Thread-Index: AQHTXOYlQiE9hVh570Cux4XapwClL6MT5SMAgPTPhXCACDIaAIABiztQ
+Date: Wed, 25 Apr 2018 13:24:44 +0000
+Message-ID: <5FC3163CFD30C246ABAA99954A238FA83869381A@FRAEML521-MBX.china.huawei.com>
+References: <1510622154-17224-1-git-send-email-zhuyijun@huawei.com>
+	<1510622154-17224-4-git-send-email-zhuyijun@huawei.com>
+	<20171114145002.jbrw7k4n2m2rfwes@kamzik.brq.redhat.com>
+	<5FC3163CFD30C246ABAA99954A238FA83868CA39@FRAEML521-MBX.china.huawei.com>
+	<20180424152932.tszber3blx32luro@kamzik.brq.redhat.com>
+In-Reply-To: <20180424152932.tszber3blx32luro@kamzik.brq.redhat.com>
+Accept-Language: en-GB, en-US
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::242
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v7 3/9] xlnx-zynqmp-pmu: Add the
- CPU and memory
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.202.227.237]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 194.213.3.17
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 3/5] hw/arm: add scattered RAM
+ memory region support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -121,156 +99,128 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: alistair23@gmail.com, qemu-arm@nongnu.org
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	Linuxarm <linuxarm@huawei.com>,
+	"eric.auger@redhat.com" <eric.auger@redhat.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"xuwei \(O\)" <xuwei5@huawei.com>,
+	Zhaoshenglong <zhaoshenglong@huawei.com>,
+	Igor Mammedov <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tgh4uPg0qLZc
+X-TUID: U1e+t4NbiaEX
 
-Hi Alistair, Edgar,
+Hi Drew,
 
-On 01/22/2018 04:43 PM, Alistair Francis wrote:
-> Connect the MicroBlaze CPU and the ROM and RAM memory regions.
-> 
-> Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
-> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-> ---
-> 
-> V6:
->  - Pass initrd instead of kernel to microblaze_load_kernel()
-> V4:
->  - Remove the ZCU102 name
-> V2:
->  - Fix the pmu-cpu name
->  - Use err and errp for CPU realise instead of error_fatal
-> 
->  hw/microblaze/xlnx-zynqmp-pmu.c | 70 +++++++++++++++++++++++++++++++++++++++--
->  1 file changed, 68 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/microblaze/xlnx-zynqmp-pmu.c b/hw/microblaze/xlnx-zynqmp-pmu.c
-> index ac0f78928a..145837b372 100644
-> --- a/hw/microblaze/xlnx-zynqmp-pmu.c
-> +++ b/hw/microblaze/xlnx-zynqmp-pmu.c
-> @@ -18,8 +18,11 @@
->  #include "qemu/osdep.h"
->  #include "qapi/error.h"
->  #include "qemu-common.h"
-> +#include "exec/address-spaces.h"
->  #include "hw/boards.h"
-> +#include "hw/qdev-properties.h"
->  #include "cpu.h"
-> +#include "boot.h"
->  
->  /* Define the PMU device */
->  
-> @@ -27,21 +30,56 @@
->  #define XLNX_ZYNQMP_PMU_SOC(obj) OBJECT_CHECK(XlnxZynqMPPMUSoCState, (obj), \
->                                                TYPE_XLNX_ZYNQMP_PMU_SOC)
->  
-> +#define XLNX_ZYNQMP_PMU_ROM_SIZE    0x8000
-> +#define XLNX_ZYNQMP_PMU_ROM_ADDR    0xFFD00000
-> +#define XLNX_ZYNQMP_PMU_RAM_ADDR    0xFFDC0000
-> +
->  typedef struct XlnxZynqMPPMUSoCState {
->      /*< private >*/
->      DeviceState parent_obj;
->  
->      /*< public >*/
-> +    MicroBlazeCPU cpu;
->  }  XlnxZynqMPPMUSoCState;
->  
->  static void xlnx_zynqmp_pmu_soc_init(Object *obj)
->  {
-> +    XlnxZynqMPPMUSoCState *s = XLNX_ZYNQMP_PMU_SOC(obj);
->  
-> +    object_initialize(&s->cpu, sizeof(s->cpu),
-> +                      TYPE_MICROBLAZE_CPU);
-> +    object_property_add_child(obj, "pmu-cpu", OBJECT(&s->cpu),
-> +                              &error_abort);
->  }
->  
->  static void xlnx_zynqmp_pmu_soc_realize(DeviceState *dev, Error **errp)
->  {
-> -
-> +    XlnxZynqMPPMUSoCState *s = XLNX_ZYNQMP_PMU_SOC(dev);
-> +    Error *err = NULL;
-> +
-> +    object_property_set_uint(OBJECT(&s->cpu), XLNX_ZYNQMP_PMU_ROM_ADDR,
-> +                             "base-vectors", &error_abort);
-> +    object_property_set_bool(OBJECT(&s->cpu), true, "use-stack-protection",
-> +                             &error_abort);
-> +    object_property_set_uint(OBJECT(&s->cpu), 0, "use-fpu", &error_abort);
-> +    object_property_set_uint(OBJECT(&s->cpu), 0, "use-hw-mul", &error_abort);
-> +    object_property_set_bool(OBJECT(&s->cpu), true, "use-barrel",
-> +                             &error_abort);
-> +    object_property_set_bool(OBJECT(&s->cpu), true, "use-msr-instr",
-> +                             &error_abort);
-> +    object_property_set_bool(OBJECT(&s->cpu), true, "use-pcmp-instr",
-> +                             &error_abort);
-> +    object_property_set_bool(OBJECT(&s->cpu), false, "use-mmu", &error_abort);
-> +    object_property_set_bool(OBJECT(&s->cpu), true, "endianness",
-> +                             &error_abort);
-> +    object_property_set_str(OBJECT(&s->cpu), "8.40.b", "version",
-> +                            &error_abort);
-> +    object_property_set_uint(OBJECT(&s->cpu), 0, "pvr", &error_abort);
-> +    object_property_set_bool(OBJECT(&s->cpu), true, "realized", &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
->  }
->  
->  static void xlnx_zynqmp_pmu_soc_class_init(ObjectClass *oc, void *data)
-> @@ -70,7 +108,35 @@ type_init(xlnx_zynqmp_pmu_soc_register_types)
->  
->  static void xlnx_zynqmp_pmu_init(MachineState *machine)
->  {
-> -
-> +    XlnxZynqMPPMUSoCState *pmu = g_new0(XlnxZynqMPPMUSoCState, 1);
-> +    MemoryRegion *address_space_mem = get_system_memory();
-> +    MemoryRegion *pmu_rom = g_new(MemoryRegion, 1);
-> +    MemoryRegion *pmu_ram = g_new(MemoryRegion, 1);
-> +
-> +    /* Create the ROM */
-> +    memory_region_init_rom(pmu_rom, NULL, "xlnx-zynqmp-pmu.rom",
-> +                           XLNX_ZYNQMP_PMU_ROM_SIZE, &error_fatal);
-> +    memory_region_add_subregion(address_space_mem, XLNX_ZYNQMP_PMU_ROM_ADDR,
-> +                                pmu_rom);
-> +
-> +    /* Create the RAM */
+> -----Original Message-----
+> From: Andrew Jones [mailto:drjones@redhat.com]
+> Sent: Tuesday, April 24, 2018 4:30 PM
+> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+> Cc: peter.maydell@linaro.org; qemu-devel@nongnu.org; Linuxarm
+> <linuxarm@huawei.com>; eric.auger@redhat.com; qemu-arm@nongnu.org;
+> xuwei (O) <xuwei5@huawei.com>; Zhaoshenglong
+> <zhaoshenglong@huawei.com>; Igor Mammedov <imammedo@redhat.com>
+> Subject: Re: [Qemu-devel] [RFC 3/5] hw/arm: add scattered RAM memory
+> region support
+>=20
+> On Thu, Apr 19, 2018 at 09:06:30AM +0000, Shameerali Kolothum Thodi wrote=
+:
+> > > From: Andrew Jones [mailto:drjones@redhat.com] Instead of using
+> > > memory region aliases, it would be best if each RAM region was
+> > > modeled with pc-dimms, as that would move us towards supporting
+> > > memory hotplug and allow the regions to be explicitly identified
+> > > (start/size) on the command line - supporting migration. Actually,
+> > > how does this series address migration? What if the host we migrate
+> > > to doesn't have the same reserved regions in sysfs?
+> >
+> > Thanks for going through this series and comments.
+> >
+> > I am looking into reviving this series based on the new proposed vfio
+> > iova interface[1]. The vfio interface will now provide  a list of valid=
+ iova
+> ranges.
+> > That means, instead of working on reserved regions to find out the
+> > valid  memory regions, the code here will have the valid regions list d=
+irectly.
+> >
+> > The above comment of yours mentions about modelling the memory regions
+> > with pc-dimms. If I understand that proposal correctly, in case the
+> > iova list has  multiple entries in it(means there are holes in the
+> > memory) the extra regions has to be added as a pc-dimm slot memory.
+>=20
+> Hi Shameer,
+>=20
+> iiuc, the concern is that the valid region list may look something like t=
+his made
+> up example:
+>=20
+>  0x000e0000000 0x000000011fffffff
+>  0x00180000000 0x00000002ffffffff
+>  0x02000000000 0x0000011fffffffff
+>  0x22000000000 0xffffffffffffffff
+>=20
+> You then want to avoid overlapping the holes with memory, because the hol=
+es
+> represent regions that may have platform devices assigned, which need to =
+keep
+> 1:1 gpa -> hpa mappings.
 
-A bit late, but we maybe want a check such:
+Yes, the holes are basically reserved regions not translated by iommu.
 
-       if (machine->ram_size > 128 * K_BYTE) {
-           warn_report("shrinking RAM to 128kB");
-           machine->ram_size = 128 * K_BYTE;
-       }
+> If that's the case, then I think the biggest problem with the made up exa=
+mple is
+> the initial hole [0x0 0xdfffffff], as that would overlap the currently ha=
+rd coded
+> base of RAM (0x40000000). Indeed we were thinking that the base of RAM
+> would be modeled as a non-pluggable dimm of size 1G at the 1G boundary. A=
+s
+> for the rest of memory (for memory > 1G), in the made up example we could
+> just allocate a single pc-dimm from a memory region representing the
+> [0x22000000000 0xffffffffffffffff] range without any hassle.
 
-> +    memory_region_init_ram(pmu_ram, NULL, "xlnx-zynqmp-pmu.ram",
-> +                           machine->ram_size, &error_fatal);
-> +    memory_region_add_subregion(address_space_mem, XLNX_ZYNQMP_PMU_RAM_ADDR,
-> +                                pmu_ram);
-> +
-> +    /* Create the PMU device */
-> +    object_initialize(pmu, sizeof(XlnxZynqMPPMUSoCState), TYPE_XLNX_ZYNQMP_PMU_SOC);
-> +    object_property_add_child(OBJECT(machine), "pmu", OBJECT(pmu),
-> +                              &error_abort);
-> +    object_property_set_bool(OBJECT(pmu), true, "realized", &error_fatal);
-> +
-> +    /* Load the kernel */
-> +    microblaze_load_kernel(&pmu->cpu, XLNX_ZYNQMP_PMU_RAM_ADDR,
-> +                           machine->ram_size,
-> +                           machine->initrd_filename,
-> +                           machine->dtb,
-> +                           NULL);
->  }
->  
->  static void xlnx_zynqmp_pmu_machine_init(MachineClass *mc)
-> 
+Right. I was more worried about a highly fragmented case where we have to
+model multiple pc-dimms to accommodate all the required memory. But that
+may be a highly unlikely scenario.
+=20
+> > Having gone through
+> > the Qemu source, I am not sure what is the best way to accomplish that.
+> > (of course I am not that familiar with the Qemu source). Is it ok to
+> > invoke
+> > qdev_device_add() from here? Any pointers on this is very appreciated.
+>=20
+> I'm not an expert on that (nor any of this stuff, really - hopefully what=
+ I've
+> written above isn't completely bonkers). I've CC'ed Igor for help.
+> I've also CC'ed Eric, because of the magic word 'vfio'.
 
-and here:
+Thanks. I am moving in this direction at the moment.  Please let me know
+if there is a better way of doing this, than invoking user_creatable_add_op=
+ts()
+for mem backend object creation and qdev_device_add() for pc-dimm dev.
 
-       mc->default_ram_size = 128 * K_BYTE,
+> > One more point is, considering the fact that ARM64 linux kernel still
+> > doesn't support hotplug memory at the moment, not sure how much we
+> > gain from the pc-dimm model.
+>=20
+> It will eventually. Moving towards the pc-dimm model now, in order to han=
+dle
+> the non-contiguous memory needs, will go a long ways to enabling hotplug
+> later.
 
-Regards,
+Ok. I will try to come up with something and will post as an RFC.=20
 
-Phil.
+Appreciate your feedback,
+Shameer
+
+>=20
+> Thanks,
+> drew
+>=20
+> >
+> > Please let me know your thoughts on this.
+> >
+> > Thanks,
+> > Shameer
+> >
+> > [1]. https://lkml.org/lkml/2018/4/18/293

@@ -1,86 +1,86 @@
-Received: by 10.28.4.212 with SMTP id 203csp881862wme;
-        Wed, 25 Apr 2018 07:25:36 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZqn+Q1y9WxHPrCFf0dg0o5pXZBeX/vnH3j+N/+IdmfzgZEUjGAgZMsv3PPYYeaLKdTgDCit
-X-Received: by 10.55.109.129 with SMTP id i123mr28945343qkc.114.1524666336563;
-        Wed, 25 Apr 2018 07:25:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1524666336; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp882167wme;
+        Wed, 25 Apr 2018 07:25:53 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx4/3ZHTpH1x/G/dw6CeCxv3ybSGdCKoE8dN05NubDcWLxjCGrQisgHrz11dmkDJo6TRA+VVP
+X-Received: by 10.233.224.5 with SMTP id m5mr31963405qkk.333.1524666353509;
+        Wed, 25 Apr 2018 07:25:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1524666353; cv=none;
         d=google.com; s=arc-20160816;
-        b=AotZa9HSeXWf7jdbCDpG8XuRqCtHIvgX1rXZH+d09SSqsmPFuTiFrEfUaDwObU5r1+
-         0mGiC82JDNlqygBdaRU7rIbpidFsX2pcaRhdr611ql48TIFkPcaRJ1+aNKcWXm39uKia
-         8yLB17RqFCYOkox2c0N73Wd7j2HoLTbvrPlpnl4xt3yh0pirOf9uxa6IROKJwRlalyHk
-         DoJWzy4Ls0FbbZKVgw2jTuJHyl6Yc536e3bRrcNW7H7pQrJO80+iSg/P3KeX6H+yVGEf
-         Ia9fXJgluDjJWMlpYrZgZtk6QPDQO6MoAnF0HteiAjsHkmtTt4qWljkzoOb0UGea2thl
-         ubqg==
+        b=mHjQ/yyHBrPztLqPxVl7AxR5tFYyraLBAHN4sDirf9jyrHZVmRwifhnBekIYY2wiFZ
+         2yIdJZyapA7hT12cvSjKk8WYeEbPDb0+NDlDh1TzxxO5R7db+EsrCXvZLwkYHU34NLNO
+         4wdhNWj2+JOZXU7wL7HPAzrEIkUrO7pX6N7HiC0HM2trKUUGDcrv1zO9D8mYyEuwlTlT
+         N335Br5bSGkCXIXpBdQ3/m+rMGeTGkuJvtISSKh3kAzr9nM8z4YFu0FIf9wUA+gJ44zg
+         yfSPvDoNv0a+I8l0in9pITA/UXu4VJHR9SUeOD2OFIMD22mKyfrIfXZ4JHu11g4bGgl6
+         gokg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=BuMiVaG6DR/RRSbO1buowNd2zAzE8+xiqy9IbOQQZJc=;
-        b=md9qZjEJGR4zLX41mqqpQIKh6IYNMiNAJzSxgEGs363n3qw4ASa/xlBrkSfSJAY9qs
-         do8rmM6bETMrTtVdyFUtf3M14Ab4nvK/p0PwJLYmX87hSuy1TOIFs8kwvCn5JpuF/wxk
-         Bqi0uA1eHiQfF6c615AJ1S96JKXGqaQPB9Mb2zr3A6GQ7Mo7baFFlvW+L+SOC8rO0nPr
-         3OPQGCGXCT4Ih37O1YPmuPRauLQb6YCQ/pbYF7OoKMwbCiA24WBhvz1UHZCXEQ09nrXG
-         LHSjem5qN4h5seVYAhLblHLaWhH+vJ28oWKwMPBKVx8ClAgd2EIZxyuB6iwRnJvlhadd
-         1GPg==
+        bh=racTB5oReQqqyigak487TUAI0t24ouneB/ATTswtKvo=;
+        b=YT0NA7Fpo6pfOqQZttttFtjEp8DzuYUT3sc702SkjLSQhZf5afmSCxtjpL/3k43Rt6
+         VfhfNIXwPZrGyBy+5X7vxsEIptWB4WfdmQbYri14MxoOSu6ebDkSlxLFM9iZRqw0C7KX
+         Ta/xp3gJhJfLceMWOFlNkDe7Gep9tPZzP52d9m01S1bQaVk7YAsAVHdw2XqQWjlmsrV1
+         HD29mnxBFa3FgO8hd5omw2UVDK4i3moGl3M8jMn6eElNYtNJlN3ijIAqki7wFTlQWDnU
+         0w2OXwo/M090qJ3T+KER0MWhJR/35nz/I3Z7/Adh7DVsSgLXgMNdsR2/j68Lrgjj4z9s
+         dTKw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o57-v6si5138370qtf.181.2018.04.25.07.25.36
+        by mx.google.com with ESMTPS id i63-v6si3439819qtb.111.2018.04.25.07.25.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 25 Apr 2018 07:25:36 -0700 (PDT)
+        Wed, 25 Apr 2018 07:25:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37220 helo=lists.gnu.org)
+Received: from localhost ([::1]:37224 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fBLMV-0007T7-Uq
-	for alex.bennee@linaro.org; Wed, 25 Apr 2018 10:25:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55781)
+	id 1fBLMn-0007jp-0f
+	for alex.bennee@linaro.org; Wed, 25 Apr 2018 10:25:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55857)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fBLDp-0000cn-6N
-	for qemu-arm@nongnu.org; Wed, 25 Apr 2018 10:16:39 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1fBLDw-0000j8-VS
+	for qemu-arm@nongnu.org; Wed, 25 Apr 2018 10:16:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fBLDm-0005sC-2w
-	for qemu-arm@nongnu.org; Wed, 25 Apr 2018 10:16:37 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:33128 helo=mx1.redhat.com)
+	(envelope-from <eric.auger@redhat.com>) id 1fBLDr-0005ww-SX
+	for qemu-arm@nongnu.org; Wed, 25 Apr 2018 10:16:44 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:55282 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1fBLDl-0005ru-US; Wed, 25 Apr 2018 10:16:34 -0400
+	id 1fBLDr-0005wb-NT; Wed, 25 Apr 2018 10:16:39 -0400
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8B8098DC3B;
-	Wed, 25 Apr 2018 14:16:33 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 4B8E8406C741;
+	Wed, 25 Apr 2018 14:16:39 +0000 (UTC)
 Received: from localhost.localdomain.com (ovpn-116-141.ams2.redhat.com
 	[10.36.116.141])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 040BC2023239;
-	Wed, 25 Apr 2018 14:16:30 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id AAB392023239;
+	Wed, 25 Apr 2018 14:16:36 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org, prem.mallappa@gmail.com
-Date: Wed, 25 Apr 2018 16:15:52 +0200
-Message-Id: <1524665762-31355-8-git-send-email-eric.auger@redhat.com>
+Date: Wed, 25 Apr 2018 16:15:54 +0200
+Message-Id: <1524665762-31355-10-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1524665762-31355-1-git-send-email-eric.auger@redhat.com>
 References: <1524665762-31355-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Wed, 25 Apr 2018 14:16:33 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Wed, 25 Apr 2018 14:16:33 +0000 (UTC) for IP:'10.11.54.4'
+	(mx1.redhat.com [10.11.55.5]);
+	Wed, 25 Apr 2018 14:16:39 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Wed, 25 Apr 2018 14:16:39 +0000 (UTC) for IP:'10.11.54.4'
 	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH v12 07/17] hw/arm/smmuv3: Implement MMIO write
- operations
+Subject: [Qemu-arm] [PATCH v12 09/17] hw/arm/smmuv3: Implement translate
+ callback
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,289 +97,621 @@ Cc: cdall@kernel.org, mst@redhat.com, jean-philippe.brucker@arm.com,
 	linuc.decode@gmail.com, bharat.bhushan@nxp.com, jintack@cs.columbia.edu
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2ZPQqc76EA+e
+X-TUID: gxX+ZiSmREs0
 
-Now we have relevant helpers for queue and irq
-management, let's implement MMIO write operations.
+This patch implements the IOMMU Memory Region translate()
+callback. Most of the code relates to the translation
+configuration decoding and check (STE, CD).
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 ---
 v11 -> v12:
-- s/value/data in smmu_write_mmio and friends
-- added Peter's R-b
+- check fixes in decode_cd
+- in decode_ste, first check the STE validity
+- initial_level computed in ptw
+
+v10 -> v11:
+- in case of error, print ret instead of the event.type which
+  may be set to OK if recording is off. This was misleading.
+- trace point at the output of translate, only in case of sucess
 
 v9 -> v10:
 - s/hwaddr/uint64_t in trace-events
-- added SMMU_FEATURE_2LVL_STE in this patch
-- removed smmu_write64 and created writel/writell infra
-- store capped log2size
-- mask CR0 reserved bits
+- use qemu_log_mask(LOG_UNIMP, in some situations where assert
+  was done
+- report bad_ste if stage2 is found in STE
+- check TTB does not exceed IPS
+- fix oas2bits, CD_TTB
+- tg2granule handles illegal cases
+- convert L1STD_L2PTR macro into an inline function
+- added S1STALLD, CD_A, CD_S, CD_HA, CD_HD checks
+
+v8 -> v9:
+- use SMMU_EVENT_STRING macro
+- get rid of last erro_report's
+- decode asid
+- handle config abort before ptw
+- add 64-bit single-copy atomic comment
 
 v7 -> v8:
-- precise in the commit message invalidation commands
-  are not yet treated.
-- use new queue helpers
-- do not decode unhandled commands at this stage
+- use address_space_rw
+- s/Ste/STE, s/Cd/CD
+- use dma_memory_read
+- remove everything related to stage 2
+- collect data for both TTx
+- renamings
+- pass the event handle all along the config decoding path
+- decode tbi, ars
 ---
- hw/arm/smmuv3-internal.h |   8 +--
- hw/arm/smmuv3.c          | 170 +++++++++++++++++++++++++++++++++++++++++++++--
- hw/arm/trace-events      |   6 ++
- 3 files changed, 174 insertions(+), 10 deletions(-)
+ hw/arm/smmuv3-internal.h | 160 +++++++++++++++++++++
+ hw/arm/smmuv3.c          | 358 +++++++++++++++++++++++++++++++++++++++++++++++
+ hw/arm/trace-events      |   9 ++
+ 3 files changed, 527 insertions(+)
 
 diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-index 223d840..282285d 100644
+index 2d50300..a9d714b 100644
 --- a/hw/arm/smmuv3-internal.h
 +++ b/hw/arm/smmuv3-internal.h
-@@ -61,6 +61,8 @@ REG32(CR0,                 0x20)
-     FIELD(CR0, EVENTQEN,      2, 1)
-     FIELD(CR0, CMDQEN,        3, 1)
+@@ -458,4 +458,164 @@ typedef struct SMMUEventInfo {
  
-+#define SMMU_CR0_RESERVED 0xFFFFFC20
+ void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *event);
+ 
++/* Configuration Data */
 +
- REG32(CR0ACK,              0x24)
- REG32(CR1,                 0x28)
- REG32(CR2,                 0x2c)
-@@ -149,10 +151,6 @@ static inline bool smmuv3_gerror_irq_enabled(SMMUv3State *s)
-     return FIELD_EX32(s->irq_ctrl, IRQ_CTRL, GERROR_IRQEN);
- }
- 
--/* public until callers get introduced */
--void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq, uint32_t gerror_mask);
--void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t gerrorn);
--
- /* Queue Handling */
- 
- #define Q_BASE(q)          ((q)->base & SMMU_BASE_ADDR_MASK)
-@@ -314,6 +312,6 @@ enum { /* Command completion notification */
-             addr;                                             \
-         })
- 
--int smmuv3_cmdq_consume(SMMUv3State *s);
-+#define SMMU_FEATURE_2LVL_STE (1 << 0)
- 
++/* STE Level 1 Descriptor */
++typedef struct STEDesc {
++    uint32_t word[2];
++} STEDesc;
++
++/* CD Level 1 Descriptor */
++typedef struct CDDesc {
++    uint32_t word[2];
++} CDDesc;
++
++/* Stream Table Entry(STE) */
++typedef struct STE {
++    uint32_t word[16];
++} STE;
++
++/* Context Descriptor(CD) */
++typedef struct CD {
++    uint32_t word[16];
++} CD;
++
++/* STE fields */
++
++#define STE_VALID(x)   extract32((x)->word[0], 0, 1)
++
++#define STE_CONFIG(x)  extract32((x)->word[0], 1, 3)
++#define STE_CFG_S1_ENABLED(config) (config & 0x1)
++#define STE_CFG_S2_ENABLED(config) (config & 0x2)
++#define STE_CFG_ABORT(config)      (!(config & 0x4))
++#define STE_CFG_BYPASS(config)     (config == 0x4)
++
++#define STE_S1FMT(x)       extract32((x)->word[0], 4 , 2)
++#define STE_S1CDMAX(x)     extract32((x)->word[1], 27, 5)
++#define STE_S1STALLD(x)    extract32((x)->word[2], 27, 1)
++#define STE_EATS(x)        extract32((x)->word[2], 28, 2)
++#define STE_STRW(x)        extract32((x)->word[2], 30, 2)
++#define STE_S2VMID(x)      extract32((x)->word[4], 0 , 16)
++#define STE_S2T0SZ(x)      extract32((x)->word[5], 0 , 6)
++#define STE_S2SL0(x)       extract32((x)->word[5], 6 , 2)
++#define STE_S2TG(x)        extract32((x)->word[5], 14, 2)
++#define STE_S2PS(x)        extract32((x)->word[5], 16, 3)
++#define STE_S2AA64(x)      extract32((x)->word[5], 19, 1)
++#define STE_S2HD(x)        extract32((x)->word[5], 24, 1)
++#define STE_S2HA(x)        extract32((x)->word[5], 25, 1)
++#define STE_S2S(x)         extract32((x)->word[5], 26, 1)
++#define STE_CTXPTR(x)                                           \
++    ({                                                          \
++        unsigned long addr;                                     \
++        addr = (uint64_t)extract32((x)->word[1], 0, 16) << 32;  \
++        addr |= (uint64_t)((x)->word[0] & 0xffffffc0);          \
++        addr;                                                   \
++    })
++
++#define STE_S2TTB(x)                                            \
++    ({                                                          \
++        unsigned long addr;                                     \
++        addr = (uint64_t)extract32((x)->word[7], 0, 16) << 32;  \
++        addr |= (uint64_t)((x)->word[6] & 0xfffffff0);          \
++        addr;                                                   \
++    })
++
++static inline int oas2bits(int oas_field)
++{
++    switch (oas_field) {
++    case 0:
++        return 32;
++    case 1:
++        return 36;
++    case 2:
++        return 40;
++    case 3:
++        return 42;
++    case 4:
++        return 44;
++    case 5:
++        return 48;
++    }
++    return -1;
++}
++
++static inline int pa_range(STE *ste)
++{
++    int oas_field = MIN(STE_S2PS(ste), SMMU_IDR5_OAS);
++
++    if (!STE_S2AA64(ste)) {
++        return 40;
++    }
++
++    return oas2bits(oas_field);
++}
++
++#define MAX_PA(ste) ((1 << pa_range(ste)) - 1)
++
++/* CD fields */
++
++#define CD_VALID(x)   extract32((x)->word[0], 30, 1)
++#define CD_ASID(x)    extract32((x)->word[1], 16, 16)
++#define CD_TTB(x, sel)                                      \
++    ({                                                      \
++        uint64_t hi, lo;                                    \
++        hi = extract32((x)->word[(sel) * 2 + 3], 0, 19);    \
++        hi <<= 32;                                          \
++        lo = (x)->word[(sel) * 2 + 2] & ~0xfULL;            \
++        hi | lo;                                            \
++    })
++
++#define CD_TSZ(x, sel)   extract32((x)->word[0], (16 * (sel)) + 0, 6)
++#define CD_TG(x, sel)    extract32((x)->word[0], (16 * (sel)) + 6, 2)
++#define CD_EPD(x, sel)   extract32((x)->word[0], (16 * (sel)) + 14, 1)
++#define CD_ENDI(x)       extract32((x)->word[0], 15, 1)
++#define CD_IPS(x)        extract32((x)->word[1], 0 , 3)
++#define CD_TBI(x)        extract32((x)->word[1], 6 , 2)
++#define CD_HD(x)         extract32((x)->word[1], 10 , 1)
++#define CD_HA(x)         extract32((x)->word[1], 11 , 1)
++#define CD_S(x)          extract32((x)->word[1], 12, 1)
++#define CD_R(x)          extract32((x)->word[1], 13, 1)
++#define CD_A(x)          extract32((x)->word[1], 14, 1)
++#define CD_AARCH64(x)    extract32((x)->word[1], 9 , 1)
++
++#define CDM_VALID(x)    ((x)->word[0] & 0x1)
++
++static inline int is_cd_valid(SMMUv3State *s, STE *ste, CD *cd)
++{
++    return CD_VALID(cd);
++}
++
++/**
++ * tg2granule - Decodes the CD translation granule size field according
++ * to the ttbr in use
++ * @bits: TG0/1 fields
++ * @ttbr: ttbr index in use
++ */
++static inline int tg2granule(int bits, int ttbr)
++{
++    switch (bits) {
++    case 0:
++        return ttbr ? 0  : 12;
++    case 1:
++        return ttbr ? 14 : 16;
++    case 2:
++        return ttbr ? 12 : 14;
++    case 3:
++        return ttbr ? 16 :  0;
++    default:
++        return 0;
++    }
++}
++
++static inline uint64_t l1std_l2ptr(STEDesc *desc)
++{
++    uint64_t hi, lo;
++
++    hi = desc->word[1];
++    lo = desc->word[0] & ~0x1fULL;
++    return hi << 32 | lo;
++}
++
++#define L1STD_SPAN(stm) (extract32((stm)->word[0], 0, 4))
++
  #endif
 diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 8f50f15..d581ada 100644
+index cfce013..d896834 100644
 --- a/hw/arm/smmuv3.c
 +++ b/hw/arm/smmuv3.c
-@@ -38,7 +38,8 @@
-  * @irq: irq type
-  * @gerror_mask: mask of gerrors to toggle (relevant if @irq is GERROR)
-  */
--void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq, uint32_t gerror_mask)
-+static void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq,
-+                               uint32_t gerror_mask)
- {
- 
-     bool pulse = false;
-@@ -75,7 +76,7 @@ void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq, uint32_t gerror_mask)
-     }
- }
- 
--void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t new_gerrorn)
-+static void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t new_gerrorn)
- {
-     uint32_t pending = s->gerror ^ s->gerrorn;
-     uint32_t toggled = s->gerrorn ^ new_gerrorn;
-@@ -174,7 +175,7 @@ static void smmuv3_init_regs(SMMUv3State *s)
+@@ -271,6 +271,361 @@ static void smmuv3_init_regs(SMMUv3State *s)
      s->sid_split = 0;
  }
  
--int smmuv3_cmdq_consume(SMMUv3State *s)
-+static int smmuv3_cmdq_consume(SMMUv3State *s)
++static int smmu_get_ste(SMMUv3State *s, dma_addr_t addr, STE *buf,
++                        SMMUEventInfo *event)
++{
++    int ret;
++
++    trace_smmuv3_get_ste(addr);
++    /* TODO: guarantee 64-bit single-copy atomicity */
++    ret = dma_memory_read(&address_space_memory, addr,
++                          (void *)buf, sizeof(*buf));
++    if (ret != MEMTX_OK) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "Cannot fetch pte at address=0x%"PRIx64"\n", addr);
++        event->type = SMMU_EVT_F_STE_FETCH;
++        event->u.f_ste_fetch.addr = addr;
++        return -EINVAL;
++    }
++    return 0;
++
++}
++
++/* @ssid > 0 not supported yet */
++static int smmu_get_cd(SMMUv3State *s, STE *ste, uint32_t ssid,
++                       CD *buf, SMMUEventInfo *event)
++{
++    dma_addr_t addr = STE_CTXPTR(ste);
++    int ret;
++
++    trace_smmuv3_get_cd(addr);
++    /* TODO: guarantee 64-bit single-copy atomicity */
++    ret = dma_memory_read(&address_space_memory, addr,
++                           (void *)buf, sizeof(*buf));
++    if (ret != MEMTX_OK) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "Cannot fetch pte at address=0x%"PRIx64"\n", addr);
++        event->type = SMMU_EVT_F_CD_FETCH;
++        event->u.f_ste_fetch.addr = addr;
++        return -EINVAL;
++    }
++    return 0;
++}
++
++/* Returns <0 if the caller has no need to continue the translation */
++static int decode_ste(SMMUv3State *s, SMMUTransCfg *cfg,
++                      STE *ste, SMMUEventInfo *event)
++{
++    uint32_t config;
++    int ret = -EINVAL;
++
++    if (!STE_VALID(ste)) {
++        goto bad_ste;
++    }
++
++    config = STE_CONFIG(ste);
++
++    if (STE_CFG_ABORT(config)) {
++        cfg->aborted = true; /* abort but don't record any event */
++        return ret;
++    }
++
++    if (STE_CFG_BYPASS(config)) {
++        cfg->bypassed = true;
++        return ret;
++    }
++
++    if (STE_CFG_S2_ENABLED(config)) {
++        qemu_log_mask(LOG_UNIMP, "SMMUv3 does not support stage 2 yet\n");
++        goto bad_ste;
++    }
++
++    if (STE_S1CDMAX(ste) != 0) {
++        qemu_log_mask(LOG_UNIMP,
++                      "SMMUv3 does not support multiple context descriptors yet\n");
++        goto bad_ste;
++    }
++
++    if (STE_S1STALLD(ste)) {
++        qemu_log_mask(LOG_UNIMP,
++                      "SMMUv3 S1 stalling fault model not allowed yet\n");
++        goto bad_ste;
++    }
++    return 0;
++
++bad_ste:
++    event->type = SMMU_EVT_C_BAD_STE;
++    return -EINVAL;
++}
++
++/**
++ * smmu_find_ste - Return the stream table entry associated
++ * to the sid
++ *
++ * @s: smmuv3 handle
++ * @sid: stream ID
++ * @ste: returned stream table entry
++ * @event: handle to an event info
++ *
++ * Supports linear and 2-level stream table
++ * Return 0 on success, -EINVAL otherwise
++ */
++static int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
++                         SMMUEventInfo *event)
++{
++    dma_addr_t addr;
++    int ret;
++
++    trace_smmuv3_find_ste(sid, s->features, s->sid_split);
++    /* Check SID range */
++    if (sid > (1 << SMMU_IDR1_SIDSIZE)) {
++        event->type = SMMU_EVT_C_BAD_STREAMID;
++        return -EINVAL;
++    }
++    if (s->features & SMMU_FEATURE_2LVL_STE) {
++        int l1_ste_offset, l2_ste_offset, max_l2_ste, span;
++        dma_addr_t strtab_base, l1ptr, l2ptr;
++        STEDesc l1std;
++
++        strtab_base = s->strtab_base & SMMU_BASE_ADDR_MASK;
++        l1_ste_offset = sid >> s->sid_split;
++        l2_ste_offset = sid & ((1 << s->sid_split) - 1);
++        l1ptr = (dma_addr_t)(strtab_base + l1_ste_offset * sizeof(l1std));
++        /* TODO: guarantee 64-bit single-copy atomicity */
++        ret = dma_memory_read(&address_space_memory, l1ptr,
++                              (uint8_t *)&l1std, sizeof(l1std));
++        if (ret != MEMTX_OK) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "Could not read L1PTR at 0X%"PRIx64"\n", l1ptr);
++            event->type = SMMU_EVT_F_STE_FETCH;
++            event->u.f_ste_fetch.addr = l1ptr;
++            return -EINVAL;
++        }
++
++        span = L1STD_SPAN(&l1std);
++
++        if (!span) {
++            /* l2ptr is not valid */
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "invalid sid=%d (L1STD span=0)\n", sid);
++            event->type = SMMU_EVT_C_BAD_STREAMID;
++            return -EINVAL;
++        }
++        max_l2_ste = (1 << span) - 1;
++        l2ptr = l1std_l2ptr(&l1std);
++        trace_smmuv3_find_ste_2lvl(s->strtab_base, l1ptr, l1_ste_offset,
++                                   l2ptr, l2_ste_offset, max_l2_ste);
++        if (l2_ste_offset > max_l2_ste) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "l2_ste_offset=%d > max_l2_ste=%d\n",
++                          l2_ste_offset, max_l2_ste);
++            event->type = SMMU_EVT_C_BAD_STE;
++            return -EINVAL;
++        }
++        addr = l2ptr + l2_ste_offset * sizeof(*ste);
++    } else {
++        addr = s->strtab_base + sid * sizeof(*ste);
++    }
++
++    if (smmu_get_ste(s, addr, ste, event)) {
++        return -EINVAL;
++    }
++
++    return 0;
++}
++
++static int decode_cd(SMMUTransCfg *cfg, CD *cd, SMMUEventInfo *event)
++{
++    int ret = -EINVAL;
++    int i;
++
++    if (!CD_VALID(cd) || !CD_AARCH64(cd)) {
++        goto bad_cd;
++    }
++    if (!CD_A(cd)) {
++        goto bad_cd; /* SMMU_IDR0.TERM_MODEL == 1 */
++    }
++    if (CD_S(cd)) {
++        goto bad_cd; /* !STE_SECURE && SMMU_IDR0.STALL_MODEL == 1 */
++    }
++    if (CD_HA(cd) || CD_HD(cd)) {
++        goto bad_cd; /* HTTU = 0 */
++    }
++
++    /* we support only those at the moment */
++    cfg->aa64 = true;
++    cfg->stage = 1;
++
++    cfg->oas = oas2bits(CD_IPS(cd));
++    cfg->oas = MIN(oas2bits(SMMU_IDR5_OAS), cfg->oas);
++    cfg->tbi = CD_TBI(cd);
++    cfg->asid = CD_ASID(cd);
++
++    trace_smmuv3_decode_cd(cfg->oas);
++
++    /* decode data dependent on TT */
++    for (i = 0; i <= 1; i++) {
++        int tg, tsz;
++        SMMUTransTableInfo *tt = &cfg->tt[i];
++
++        cfg->tt[i].disabled = CD_EPD(cd, i);
++        if (cfg->tt[i].disabled) {
++            continue;
++        }
++
++        tsz = CD_TSZ(cd, i);
++        if (tsz < 16 || tsz > 39) {
++            goto bad_cd;
++        }
++
++        tg = CD_TG(cd, i);
++        tt->granule_sz = tg2granule(tg, i);
++        if ((tt->granule_sz != 12 && tt->granule_sz != 16) || CD_ENDI(cd)) {
++            goto bad_cd;
++        }
++
++        tt->tsz = tsz;
++        tt->ttb = CD_TTB(cd, i);
++        if (tt->ttb & ~(MAKE_64BIT_MASK(0, cfg->oas))) {
++            goto bad_cd;
++        }
++        trace_smmuv3_decode_cd_tt(i, tt->tsz, tt->ttb, tt->granule_sz);
++    }
++
++    event->record_trans_faults = CD_R(cd);
++
++    return 0;
++
++bad_cd:
++    event->type = SMMU_EVT_C_BAD_CD;
++    return ret;
++}
++
++/**
++ * smmuv3_decode_config - Prepare the translation configuration
++ * for the @mr iommu region
++ * @mr: iommu memory region the translation config must be prepared for
++ * @cfg: output translation configuration which is populated through
++ *       the different configuration decoding steps
++ * @event: must be zero'ed by the caller
++ *
++ * return < 0 if the translation needs to be aborted (@event is filled
++ * accordingly). Return 0 otherwise.
++ */
++static int smmuv3_decode_config(IOMMUMemoryRegion *mr, SMMUTransCfg *cfg,
++                                SMMUEventInfo *event)
++{
++    SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
++    uint32_t sid = smmu_get_sid(sdev);
++    SMMUv3State *s = sdev->smmu;
++    int ret = -EINVAL;
++    STE ste;
++    CD cd;
++
++    if (smmu_find_ste(s, sid, &ste, event)) {
++        return ret;
++    }
++
++    if (decode_ste(s, cfg, &ste, event)) {
++        return ret;
++    }
++
++    if (smmu_get_cd(s, &ste, 0 /* ssid */, &cd, event)) {
++        return ret;
++    }
++
++    return decode_cd(cfg, &cd, event);
++}
++
++static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
++                                      IOMMUAccessFlags flag)
++{
++    SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
++    SMMUv3State *s = sdev->smmu;
++    uint32_t sid = smmu_get_sid(sdev);
++    SMMUEventInfo event = {.type = SMMU_EVT_OK, .sid = sid};
++    SMMUPTWEventInfo ptw_info = {};
++    SMMUTransCfg cfg = {};
++    IOMMUTLBEntry entry = {
++        .target_as = &address_space_memory,
++        .iova = addr,
++        .translated_addr = addr,
++        .addr_mask = ~(hwaddr)0,
++        .perm = IOMMU_NONE,
++    };
++    int ret = 0;
++
++    if (!smmu_enabled(s)) {
++        goto out;
++    }
++
++    ret = smmuv3_decode_config(mr, &cfg, &event);
++    if (ret) {
++        goto out;
++    }
++
++    if (cfg.aborted) {
++        goto out;
++    }
++
++    ret = smmu_ptw(&cfg, addr, flag, &entry, &ptw_info);
++    if (ret) {
++        switch (ptw_info.type) {
++        case SMMU_PTW_ERR_WALK_EABT:
++            event.type = SMMU_EVT_F_WALK_EABT;
++            event.u.f_walk_eabt.addr = addr;
++            event.u.f_walk_eabt.rnw = flag & 0x1;
++            event.u.f_walk_eabt.class = 0x1;
++            event.u.f_walk_eabt.addr2 = ptw_info.addr;
++            break;
++        case SMMU_PTW_ERR_TRANSLATION:
++            if (event.record_trans_faults) {
++                event.type = SMMU_EVT_F_TRANSLATION;
++                event.u.f_translation.addr = addr;
++                event.u.f_translation.rnw = flag & 0x1;
++            }
++            break;
++        case SMMU_PTW_ERR_ADDR_SIZE:
++            if (event.record_trans_faults) {
++                event.type = SMMU_EVT_F_ADDR_SIZE;
++                event.u.f_addr_size.addr = addr;
++                event.u.f_addr_size.rnw = flag & 0x1;
++            }
++            break;
++        case SMMU_PTW_ERR_ACCESS:
++            if (event.record_trans_faults) {
++                event.type = SMMU_EVT_F_ACCESS;
++                event.u.f_access.addr = addr;
++                event.u.f_access.rnw = flag & 0x1;
++            }
++            break;
++        case SMMU_PTW_ERR_PERMISSION:
++            if (event.record_trans_faults) {
++                event.type = SMMU_EVT_F_PERMISSION;
++                event.u.f_permission.addr = addr;
++                event.u.f_permission.rnw = flag & 0x1;
++            }
++            break;
++        default:
++            g_assert_not_reached();
++        }
++    }
++out:
++    if (ret) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s translation failed for iova=0x%"PRIx64"(%d)\n",
++                      mr->parent_obj.name, addr, ret);
++        entry.perm = IOMMU_NONE;
++        smmuv3_record_event(s, &event);
++    } else if (!cfg.aborted) {
++        entry.perm = flag;
++        trace_smmuv3_translate(mr->parent_obj.name, sid, addr,
++                               entry.translated_addr, entry.perm);
++    }
++
++    return entry;
++}
++
+ static int smmuv3_cmdq_consume(SMMUv3State *s)
  {
      SMMUCmdError cmd_error = SMMU_CERROR_NONE;
-     SMMUQueue *q = &s->cmdq;
-@@ -270,11 +271,170 @@ int smmuv3_cmdq_consume(SMMUv3State *s)
-     return 0;
- }
- 
-+static MemTxResult smmu_writell(SMMUv3State *s, hwaddr offset,
-+                               uint64_t data, MemTxAttrs attrs)
-+{
-+    switch (offset) {
-+    case A_GERROR_IRQ_CFG0:
-+        s->gerror_irq_cfg0 = data;
-+        return MEMTX_OK;
-+    case A_STRTAB_BASE:
-+        s->strtab_base = data;
-+        return MEMTX_OK;
-+    case A_CMDQ_BASE:
-+        s->cmdq.base = data;
-+        s->cmdq.log2size = extract64(s->cmdq.base, 0, 5);
-+        if (s->cmdq.log2size > SMMU_CMDQS) {
-+            s->cmdq.log2size = SMMU_CMDQS;
-+        }
-+        return MEMTX_OK;
-+    case A_EVENTQ_BASE:
-+        s->eventq.base = data;
-+        s->eventq.log2size = extract64(s->eventq.base, 0, 5);
-+        if (s->eventq.log2size > SMMU_EVENTQS) {
-+            s->eventq.log2size = SMMU_EVENTQS;
-+        }
-+        return MEMTX_OK;
-+    case A_EVENTQ_IRQ_CFG0:
-+        s->eventq_irq_cfg0 = data;
-+        return MEMTX_OK;
-+    default:
-+        qemu_log_mask(LOG_UNIMP,
-+                      "%s Unexpected 64-bit access to 0x%"PRIx64" (WI)\n",
-+                      __func__, offset);
-+        return MEMTX_OK;
-+    }
-+}
-+
-+static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
-+                               uint64_t data, MemTxAttrs attrs)
-+{
-+    switch (offset) {
-+    case A_CR0:
-+        s->cr[0] = data;
-+        s->cr0ack = data & ~SMMU_CR0_RESERVED;
-+        /* in case the command queue has been enabled */
-+        smmuv3_cmdq_consume(s);
-+        return MEMTX_OK;
-+    case A_CR1:
-+        s->cr[1] = data;
-+        return MEMTX_OK;
-+    case A_CR2:
-+        s->cr[2] = data;
-+        return MEMTX_OK;
-+    case A_IRQ_CTRL:
-+        s->irq_ctrl = data;
-+        return MEMTX_OK;
-+    case A_GERRORN:
-+        smmuv3_write_gerrorn(s, data);
-+        /*
-+         * By acknowledging the CMDQ_ERR, SW may notify cmds can
-+         * be processed again
-+         */
-+        smmuv3_cmdq_consume(s);
-+        return MEMTX_OK;
-+    case A_GERROR_IRQ_CFG0: /* 64b */
-+        s->gerror_irq_cfg0 = deposit64(s->gerror_irq_cfg0, 0, 32, data);
-+        return MEMTX_OK;
-+    case A_GERROR_IRQ_CFG0 + 4:
-+        s->gerror_irq_cfg0 = deposit64(s->gerror_irq_cfg0, 32, 32, data);
-+        return MEMTX_OK;
-+    case A_GERROR_IRQ_CFG1:
-+        s->gerror_irq_cfg1 = data;
-+        return MEMTX_OK;
-+    case A_GERROR_IRQ_CFG2:
-+        s->gerror_irq_cfg2 = data;
-+        return MEMTX_OK;
-+    case A_STRTAB_BASE: /* 64b */
-+        s->strtab_base = deposit64(s->strtab_base, 0, 32, data);
-+        return MEMTX_OK;
-+    case A_STRTAB_BASE + 4:
-+        s->strtab_base = deposit64(s->strtab_base, 32, 32, data);
-+        return MEMTX_OK;
-+    case A_STRTAB_BASE_CFG:
-+        s->strtab_base_cfg = data;
-+        if (FIELD_EX32(data, STRTAB_BASE_CFG, FMT) == 1) {
-+            s->sid_split = FIELD_EX32(data, STRTAB_BASE_CFG, SPLIT);
-+            s->features |= SMMU_FEATURE_2LVL_STE;
-+        }
-+        return MEMTX_OK;
-+    case A_CMDQ_BASE: /* 64b */
-+        s->cmdq.base = deposit64(s->cmdq.base, 0, 32, data);
-+        s->cmdq.log2size = extract64(s->cmdq.base, 0, 5);
-+        if (s->cmdq.log2size > SMMU_CMDQS) {
-+            s->cmdq.log2size = SMMU_CMDQS;
-+        }
-+        return MEMTX_OK;
-+    case A_CMDQ_BASE + 4: /* 64b */
-+        s->cmdq.base = deposit64(s->cmdq.base, 32, 32, data);
-+        return MEMTX_OK;
-+    case A_CMDQ_PROD:
-+        s->cmdq.prod = data;
-+        smmuv3_cmdq_consume(s);
-+        return MEMTX_OK;
-+    case A_CMDQ_CONS:
-+        s->cmdq.cons = data;
-+        return MEMTX_OK;
-+    case A_EVENTQ_BASE: /* 64b */
-+        s->eventq.base = deposit64(s->eventq.base, 0, 32, data);
-+        s->eventq.log2size = extract64(s->eventq.base, 0, 5);
-+        if (s->eventq.log2size > SMMU_EVENTQS) {
-+            s->eventq.log2size = SMMU_EVENTQS;
-+        }
-+        return MEMTX_OK;
-+    case A_EVENTQ_BASE + 4:
-+        s->eventq.base = deposit64(s->eventq.base, 32, 32, data);
-+        return MEMTX_OK;
-+    case A_EVENTQ_PROD:
-+        s->eventq.prod = data;
-+        return MEMTX_OK;
-+    case A_EVENTQ_CONS:
-+        s->eventq.cons = data;
-+        return MEMTX_OK;
-+    case A_EVENTQ_IRQ_CFG0: /* 64b */
-+        s->eventq_irq_cfg0 = deposit64(s->eventq_irq_cfg0, 0, 32, data);
-+        return MEMTX_OK;
-+    case A_EVENTQ_IRQ_CFG0 + 4:
-+        s->eventq_irq_cfg0 = deposit64(s->eventq_irq_cfg0, 32, 32, data);
-+        return MEMTX_OK;
-+    case A_EVENTQ_IRQ_CFG1:
-+        s->eventq_irq_cfg1 = data;
-+        return MEMTX_OK;
-+    case A_EVENTQ_IRQ_CFG2:
-+        s->eventq_irq_cfg2 = data;
-+        return MEMTX_OK;
-+    default:
-+        qemu_log_mask(LOG_UNIMP,
-+                      "%s Unexpected 32-bit access to 0x%"PRIx64" (WI)\n",
-+                      __func__, offset);
-+        return MEMTX_OK;
-+    }
-+}
-+
- static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
-                                    unsigned size, MemTxAttrs attrs)
+@@ -795,6 +1150,9 @@ static void smmuv3_class_init(ObjectClass *klass, void *data)
+ static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
+                                                   void *data)
  {
--    /* not yet implemented */
--    return MEMTX_ERROR;
-+    SMMUState *sys = opaque;
-+    SMMUv3State *s = ARM_SMMUV3(sys);
-+    MemTxResult r;
++    IOMMUMemoryRegionClass *imrc = IOMMU_MEMORY_REGION_CLASS(klass);
 +
-+    /* CONSTRAINED UNPREDICTABLE choice to have page0/1 be exact aliases */
-+    offset &= ~0x10000;
-+
-+    switch (size) {
-+    case 8:
-+        r = smmu_writell(s, offset, data, attrs);
-+        break;
-+    case 4:
-+        r = smmu_writel(s, offset, data, attrs);
-+        break;
-+    default:
-+        r = MEMTX_ERROR;
-+        break;
-+    }
-+
-+    trace_smmuv3_write_mmio(offset, data, size, r);
-+    return r;
++    imrc->translate = smmuv3_translate;
  }
  
- static MemTxResult smmu_readll(SMMUv3State *s, hwaddr offset,
+ static const TypeInfo smmuv3_type_info = {
 diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index 38b35fa..781542a 100644
+index 9936e10..d7273bd 100644
 --- a/hw/arm/trace-events
 +++ b/hw/arm/trace-events
-@@ -23,3 +23,9 @@ smmuv3_cmdq_consume(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t con
- smmuv3_cmdq_opcode(const char *opcode) "<--- %s"
- smmuv3_cmdq_consume_out(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "prod:%d, cons:%d, prod_wrap:%d, cons_wrap:%d "
- smmuv3_cmdq_consume_error(const char *cmd_name, uint8_t cmd_error) "Error on %s command execution: %d"
-+smmuv3_update(bool is_empty, uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "q empty:%d prod:%d cons:%d p.wrap:%d p.cons:%d"
-+smmuv3_update_check_cmd(int error) "cmdq not enabled or error :0x%x"
-+smmuv3_write_mmio(uint64_t addr, uint64_t val, unsigned size, uint32_t r) "addr: 0x%"PRIx64" val:0x%"PRIx64" size: 0x%x(%d)"
-+smmuv3_write_mmio_idr(uint64_t addr, uint64_t val) "write to RO/Unimpl reg 0x%lx val64:0x%lx"
-+smmuv3_write_mmio_evtq_cons_bef_clear(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "Before clearing interrupt prod:0x%x cons:0x%x prod.w:%d cons.w:%d"
-+smmuv3_write_mmio_evtq_cons_after_clear(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "after clearing interrupt prod:0x%x cons:0x%x prod.w:%d cons.w:%d"
+@@ -30,3 +30,12 @@ smmuv3_write_mmio_idr(uint64_t addr, uint64_t val) "write to RO/Unimpl reg 0x%lx
+ smmuv3_write_mmio_evtq_cons_bef_clear(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "Before clearing interrupt prod:0x%x cons:0x%x prod.w:%d cons.w:%d"
+ smmuv3_write_mmio_evtq_cons_after_clear(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "after clearing interrupt prod:0x%x cons:0x%x prod.w:%d cons.w:%d"
+ smmuv3_record_event(const char *type, uint32_t sid) "%s sid=%d"
++smmuv3_find_ste(uint16_t sid, uint32_t features, uint16_t sid_split) "SID:0x%x features:0x%x, sid_split:0x%x"
++smmuv3_find_ste_2lvl(uint64_t strtab_base, uint64_t l1ptr, int l1_ste_offset, uint64_t l2ptr, int l2_ste_offset, int max_l2_ste) "strtab_base:0x%lx l1ptr:0x%"PRIx64" l1_off:0x%x, l2ptr:0x%"PRIx64" l2_off:0x%x max_l2_ste:%d"
++smmuv3_get_ste(uint64_t addr) "STE addr: 0x%"PRIx64
++smmuv3_translate_bypass(const char *n, uint16_t sid, uint64_t addr, bool is_write) "%s sid=%d bypass iova:0x%"PRIx64" is_write=%d"
++smmuv3_translate_in(uint16_t sid, int pci_bus_num, uint64_t strtab_base) "SID:0x%x bus:%d strtab_base:0x%"PRIx64
++smmuv3_get_cd(uint64_t addr) "CD addr: 0x%"PRIx64
++smmuv3_translate(const char *n, uint16_t sid, uint64_t iova, uint64_t translated, int perm) "%s sid=%d iova=0x%"PRIx64" translated=0x%"PRIx64" perm=0x%x"
++smmuv3_decode_cd(uint32_t oas) "oas=%d"
++smmuv3_decode_cd_tt(int i, uint32_t tsz, uint64_t ttb, uint32_t granule_sz) "TT[%d]:tsz:%d ttb:0x%"PRIx64" granule_sz:%d"
 -- 
 2.5.5
 

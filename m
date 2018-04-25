@@ -1,86 +1,86 @@
-Received: by 10.28.4.212 with SMTP id 203csp875240wme;
-        Wed, 25 Apr 2018 07:19:06 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZpBnRUf40GevEqzutCNCqYvx2zruqhZ2BaT6y8EG6r5v6W9RQq7APaZFsYXLYdPYXvYWQB1
-X-Received: by 2002:ac8:2edc:: with SMTP id i28-v6mr16828412qta.401.1524665946500;
-        Wed, 25 Apr 2018 07:19:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1524665946; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp876248wme;
+        Wed, 25 Apr 2018 07:20:03 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx48rLRbR9hdBopLHcI8JbnBvAoxmfW2hHVQzKzAz7HOa1Mf60zaDT577oX6WnHJk+h1UpyAn
+X-Received: by 10.55.162.13 with SMTP id l13mr29333542qke.124.1524666003491;
+        Wed, 25 Apr 2018 07:20:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1524666003; cv=none;
         d=google.com; s=arc-20160816;
-        b=X47rI69wPVmAWhfpgw4TeyLhfLbJaCl2l37/QcCZ17GtUR6/mOKAlbcKXBkXnPucSH
-         kZHkEW8G31/vjmGCjgReb6JUQ/x9IPCMvhPBj8a+0ksxCFcCPFHf+zRSjiC8uHMffDC6
-         krfd+2zVQSaB3423bX5vkNT/QaGUSsmX5xsOJODMYakjHDRVhDxF9rFch95OqtT2KaL1
-         CfLdHRpGoMLlhCt1MRfybQs0LJRoLG9eZR1Y96NVXN9ieJ0JXqVE+WTBob1oGi6ChjxS
-         u3PpoF4gV3ul7ixAB3u/xVHGZT7CaegCKtevGHnYXyUpiyZNeKsRlYRL4gZgR0NJpNRv
-         KKyg==
+        b=FbcCP9Yg8Ks9rhsgU3f/+4QsWzX+l1MPeAcpL2v/DGFkkuAHyh1yunRRLWwJivT/Fz
+         ciWjWxoEtspSuOrpXFihzUD17eq5LJ19+03BfnD2nREd4tqp1PJEgehTBr/+mm5IkOte
+         qAWRtcSw0Tgf4Q1ogZ8Cxn7PM2+2aPwdcUcmShlZWlkW5fzPa9UOGEGRgu79wspg379D
+         4FGAtXiRpmhsE3Itr2+YFylmfUmay/2P59w8wn0RPRKoOjb/2R4llV+8la5qCvdaZqPx
+         1HJMCO4RGQyBJVpiRvNwQg5IX9jzgOqVFa4WJ59cJipiZhks05Yeb64/EbuPE3rYmX/J
+         tLCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=G2X3jDL3Jw8j1BQ/HTd0gP1CH9EmS2DA7nebJZ0fNvs=;
-        b=J1iiicSQnNne8M2B/Y7+wBnYdxEaYJAyWZu/txodnOS4zs7QudMTjwJL7qvZkPBJDB
-         QCyOEHxdC1RnvWiFUiufYhwqLVMWaotklxOAIWiT9Rj6uDn7pbtQJPx369JDTo3vjXY6
-         Ml1XR46hKWNMSOD3OylKto3qZghcDuUzeJKYinwv1G25wljEiJrT/PNLM68WFaIdl6Rl
-         KX1o6tFXcPF5sS53mozgYhZyO9pHdCPqs85JFNK0yRG5JSL+nZHwHGAoT6HDCf219k5x
-         E6AyvDLGpiB6seQDkjgkmf9UZ4xllKqiw/TVi5TNaw/r1AtS+JCsG7ZQps91NdE1gKih
-         mOOg==
+        bh=Fl8BgZrKEyfZ92ikMRHqr5FCbVuM8DOiYiOf/sU3N6k=;
+        b=WZPRI5B6lZpp+OdjOEuQ464C+45hVJ9ONVmhkUjukp8+FXTTzR5nfRHeA71bZMNymM
+         SbBwt1rG/1KCySe6L+LQJGnv9Pv3av4OmH4ug5EMX2KyBg8F6jxalh/G3VLL4WaXEpWo
+         aQ56+OnXegmihXAFc05nYYIjsSOZ7AuttqEXRx5/5c5R2bmLdd/Yzrx8BBfQRK5UpE4A
+         jt5QijRrca4zHMdyBIMOhD8vAuxwOCsgCt+QtlRyfa8yW6YH286FSIMf9qbDNJvFkNsR
+         JKA37/+HTI5dcqXx1K5bHXHwBTwFXEdYiuiXaag84B9SwV24X/AJZ3eElPGiwz/Zdn64
+         s8jQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b4si895710qkb.209.2018.04.25.07.19.06
+        by mx.google.com with ESMTPS id w25-v6si5221002qth.172.2018.04.25.07.20.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 25 Apr 2018 07:19:06 -0700 (PDT)
+        Wed, 25 Apr 2018 07:20:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37179 helo=lists.gnu.org)
+Received: from localhost ([::1]:37182 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fBLGD-0002AY-QG
-	for alex.bennee@linaro.org; Wed, 25 Apr 2018 10:19:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55619)
+	id 1fBLH8-0002sk-UE
+	for alex.bennee@linaro.org; Wed, 25 Apr 2018 10:20:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55572)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fBLDd-0000TH-2M
-	for qemu-arm@nongnu.org; Wed, 25 Apr 2018 10:16:27 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fBLDa-0005kg-KX
+	(envelope-from <eric.auger@redhat.com>) id 1fBLDa-0000SO-Qr
 	for qemu-arm@nongnu.org; Wed, 25 Apr 2018 10:16:25 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:39800 helo=mx1.redhat.com)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <eric.auger@redhat.com>) id 1fBLDW-0005hk-Ev
+	for qemu-arm@nongnu.org; Wed, 25 Apr 2018 10:16:22 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:55240 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1fBLDa-0005kB-ET; Wed, 25 Apr 2018 10:16:22 -0400
+	id 1fBLDW-0005h2-9f; Wed, 25 Apr 2018 10:16:18 -0400
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id F260B42709CE;
-	Wed, 25 Apr 2018 14:16:21 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 300F8406C747;
+	Wed, 25 Apr 2018 14:16:16 +0000 (UTC)
 Received: from localhost.localdomain.com (ovpn-116-141.ams2.redhat.com
 	[10.36.116.141])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 4AFFD2023239;
-	Wed, 25 Apr 2018 14:16:19 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 99C4C2023239;
+	Wed, 25 Apr 2018 14:16:13 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org, prem.mallappa@gmail.com
-Date: Wed, 25 Apr 2018 16:15:48 +0200
-Message-Id: <1524665762-31355-4-git-send-email-eric.auger@redhat.com>
+Date: Wed, 25 Apr 2018 16:15:46 +0200
+Message-Id: <1524665762-31355-2-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1524665762-31355-1-git-send-email-eric.auger@redhat.com>
 References: <1524665762-31355-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Wed, 25 Apr 2018 14:16:22 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Wed, 25 Apr 2018 14:16:22 +0000 (UTC) for IP:'10.11.54.4'
+	(mx1.redhat.com [10.11.55.5]);
+	Wed, 25 Apr 2018 14:16:16 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Wed, 25 Apr 2018 14:16:16 +0000 (UTC) for IP:'10.11.54.4'
 	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH v12 03/17] hw/arm/smmu-common: VMSAv8-64 page
- table walk
+Subject: [Qemu-arm] [PATCH v12 01/17] hw/arm/smmu-common: smmu base device
+ and datatypes
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,328 +97,101 @@ Cc: cdall@kernel.org, mst@redhat.com, jean-philippe.brucker@arm.com,
 	linuc.decode@gmail.com, bharat.bhushan@nxp.com, jintack@cs.columbia.edu
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JB2RKgV5jz3O
+X-TUID: hRHXc6HbQ8gK
 
-This patch implements the page table walk for VMSAv8-64.
+The patch introduces the smmu base device and class for the ARM
+smmu. Devices for specific versions will be derived from this
+base device.
+
+We also introduce some important datatypes.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 ---
-v11 -> v12:
-- typo fixes and added Peter's R-b
-- closer match with get_phys_addr_lpae()
-- take into account the input size when computing the offset
+v10 -> v11:
+- remove hash tables for configs and iotlb which will be
+  introduced later on
 
 v9 -> v10:
-- Add 64b single-copy atomicity comment related to PTE fetch
-- remove checks in get_block_pte_address and use formulae to compute
-  block address offset
-- remove check_perm
-- fix select_tt
-- in trace-events use PRIx64 instead of 0x%lx
-- commented the fact we cannot discriminate between user and
-  priviledged transactions
+- invoke the parent_realize
+- use device_class_set_parent_realize
+- use "" to include headers
+- fix indent in SMMUTransCfg
+- rename smmu_as_by_busptr into smmu_pcibus_by_busptr and
+         smmu_as_by_bus_num into smmu_pcibus_by_bus_num
+- mrtypename becomes const
+- add Peter's R-b
 
 v8 -> v9:
-- remove guest error log on PTE fetch fault
-- rename  trace functions
-- fix smmu_page_walk_level_res_invalid_pte last arg
-- fix PTE_ADDRESS
-- turn functions into macros
-- make sure to return the actual pte access permission
-  into tlbe->perm
-- change proto of smmu_ptw*
+- remove page walk callback type from this patch (vhost related)
+- add a new hash table for caching configuration data
+- add reset function
+- add asid
 
 v7 -> v8:
-- rework get_pte
-- use LOG_LEVEL_ERROR
-- remove error checking in get_block_pte_address
-- page table walk simplified (no VFIO replay anymore)
-- handle PTW error events
-- use dma_memory_read
-
-v6 -> v7:
-- fix wrong error handling in walk_page_table
-- check perm in smmu_translate
-
-v5 -> v6:
-- use IOMMUMemoryRegion
-- remove initial_lookup_level()
-- fix block replay
-
-v4 -> v5:
-- add initial level in translation config
-- implement block pte
-- rename must_translate into nofail
-- introduce call_entry_hook
-- small changes to dynamic traces
-- smmu_page_walk code moved from smmuv3.c to this file
-- remove smmu_translate*
+- add bus_num property
+- add primary-bus property
+- add realize and remove instance_init
+- rename TYPE and related macros to match naming convention using
+  for GIC
+- add SMMUPageTableWalkEventInfo
+- tt[2] in translation config
 
 v3 -> v4:
-- reworked page table walk to prepare for VFIO integration
-  (capability to scan a range of IOVA). Same function is used
-  for translate for a single iova. This is largely inspired
-  from intel_iommu.c
-- as the translate function was not straightforward to me,
-  I tried to stick more closely to the VMSA spec.
-- remove support of nested stage (kernel driver does not
-  support it anyway)
-- use error_report and trace events
+- added smmu_find_as_from_bus_num
+- SMMU_PCI_BUS_MAX and SMMU_PCI_DEVFN_MAX in smmu-common header
+- new fields in SMMUState:
+  - iommu_ops, smmu_as_by_busptr, smmu_as_by_bus_num
 - add aa64[] field in SMMUTransCfg
----
- hw/arm/smmu-common.c         | 222 +++++++++++++++++++++++++++++++++++++++++++
- hw/arm/smmu-internal.h       |  99 +++++++++++++++++++
- hw/arm/trace-events          |   9 +-
- include/hw/arm/smmu-common.h |  14 +++
- 4 files changed, 343 insertions(+), 1 deletion(-)
- create mode 100644 hw/arm/smmu-internal.h
 
+v3:
+- moved the base code in a separate patch to ease the review.
+- clearer separation between base class and smmuv3 class
+- translate_* only implemented as class methods
+
+Conflicts:
+	default-configs/aarch64-softmmu.mak
+
+Conflicts:
+	hw/arm/Makefile.objs
+---
+ default-configs/aarch64-softmmu.mak |   1 +
+ hw/arm/Makefile.objs                |   1 +
+ hw/arm/smmu-common.c                |  81 ++++++++++++++++++++++++
+ include/hw/arm/smmu-common.h        | 123 ++++++++++++++++++++++++++++++++++++
+ 4 files changed, 206 insertions(+)
+ create mode 100644 hw/arm/smmu-common.c
+ create mode 100644 include/hw/arm/smmu-common.h
+
+diff --git a/default-configs/aarch64-softmmu.mak b/default-configs/aarch64-softmmu.mak
+index 9ddccf8..6f790f0 100644
+--- a/default-configs/aarch64-softmmu.mak
++++ b/default-configs/aarch64-softmmu.mak
+@@ -8,3 +8,4 @@ CONFIG_DDC=y
+ CONFIG_DPCD=y
+ CONFIG_XLNX_ZYNQMP=y
+ CONFIG_XLNX_ZYNQMP_ARM=y
++CONFIG_ARM_SMMUV3=y
+diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+index 2885e3e..558436f 100644
+--- a/hw/arm/Makefile.objs
++++ b/hw/arm/Makefile.objs
+@@ -35,3 +35,4 @@ obj-$(CONFIG_MPS2) += mps2-tz.o
+ obj-$(CONFIG_MSF2) += msf2-soc.o msf2-som.o
+ obj-$(CONFIG_IOTKIT) += iotkit.o
+ obj-$(CONFIG_FSL_IMX7) += fsl-imx7.o mcimx7d-sabre.o
++obj-$(CONFIG_ARM_SMMUV3) += smmu-common.o
 diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index 3d64bcf..01c7be8 100644
---- a/hw/arm/smmu-common.c
-+++ b/hw/arm/smmu-common.c
-@@ -27,6 +27,228 @@
- 
- #include "qemu/error-report.h"
- #include "hw/arm/smmu-common.h"
-+#include "smmu-internal.h"
-+
-+/* VMSAv8-64 Translation */
-+
-+/**
-+ * get_pte - Get the content of a page table entry located at
-+ * @base_addr[@index]
-+ */
-+static int get_pte(dma_addr_t baseaddr, uint32_t index, uint64_t *pte,
-+                   SMMUPTWEventInfo *info)
-+{
-+    int ret;
-+    dma_addr_t addr = baseaddr + index * sizeof(*pte);
-+
-+    /* TODO: guarantee 64-bit single-copy atomicity */
-+    ret = dma_memory_read(&address_space_memory, addr,
-+                          (uint8_t *)pte, sizeof(*pte));
-+
-+    if (ret != MEMTX_OK) {
-+        info->type = SMMU_PTW_ERR_WALK_EABT;
-+        info->addr = addr;
-+        return -EINVAL;
-+    }
-+    trace_smmu_get_pte(baseaddr, index, addr, *pte);
-+    return 0;
-+}
-+
-+/* VMSAv8-64 Translation Table Format Descriptor Decoding */
-+
-+/**
-+ * get_page_pte_address - returns the L3 descriptor output address,
-+ * ie. the page frame
-+ * ARM ARM spec: Figure D4-17 VMSAv8-64 level 3 descriptor format
-+ */
-+static inline hwaddr get_page_pte_address(uint64_t pte, int granule_sz)
-+{
-+    return PTE_ADDRESS(pte, granule_sz);
-+}
-+
-+/**
-+ * get_table_pte_address - return table descriptor output address,
-+ * ie. address of next level table
-+ * ARM ARM Figure D4-16 VMSAv8-64 level0, level1, and level 2 descriptor formats
-+ */
-+static inline hwaddr get_table_pte_address(uint64_t pte, int granule_sz)
-+{
-+    return PTE_ADDRESS(pte, granule_sz);
-+}
-+
-+/**
-+ * get_block_pte_address - return block descriptor output address and block size
-+ * ARM ARM Figure D4-16 VMSAv8-64 level0, level1, and level 2 descriptor formats
-+ */
-+static inline hwaddr get_block_pte_address(uint64_t pte, int level,
-+                                           int granule_sz, uint64_t *bsz)
-+{
-+    int n = (granule_sz - 3) * (4 - level) + 3;
-+
-+    *bsz = 1 << n;
-+    return PTE_ADDRESS(pte, n);
-+}
-+
-+SMMUTransTableInfo *select_tt(SMMUTransCfg *cfg, dma_addr_t iova)
-+{
-+    bool tbi = extract64(iova, 55, 1) ? TBI1(cfg->tbi) : TBI0(cfg->tbi);
-+    uint8_t tbi_byte = tbi * 8;
-+
-+    if (cfg->tt[0].tsz &&
-+        !extract64(iova, 64 - cfg->tt[0].tsz, cfg->tt[0].tsz - tbi_byte)) {
-+        /* there is a ttbr0 region and we are in it (high bits all zero) */
-+        return &cfg->tt[0];
-+    } else if (cfg->tt[1].tsz &&
-+           !extract64(iova, 64 - cfg->tt[1].tsz, cfg->tt[1].tsz - tbi_byte)) {
-+        /* there is a ttbr1 region and we are in it (high bits all one) */
-+        return &cfg->tt[1];
-+    } else if (!cfg->tt[0].tsz) {
-+        /* ttbr0 region is "everything not in the ttbr1 region" */
-+        return &cfg->tt[0];
-+    } else if (!cfg->tt[1].tsz) {
-+        /* ttbr1 region is "everything not in the ttbr0 region" */
-+        return &cfg->tt[1];
-+    }
-+    /* in the gap between the two regions, this is a Translation fault */
-+    return NULL;
-+}
-+
-+/**
-+ * smmu_ptw_64 - VMSAv8-64 Walk of the page tables for a given IOVA
-+ * @cfg: translation config
-+ * @iova: iova to translate
-+ * @perm: access type
-+ * @tlbe: IOMMUTLBEntry (out)
-+ * @info: handle to an error info
-+ *
-+ * Return 0 on success, < 0 on error. In case of error, @info is filled
-+ * and tlbe->perm is set to IOMMU_NONE.
-+ * Upon success, @tlbe is filled with translated_addr and entry
-+ * permission rights.
-+ */
-+static int smmu_ptw_64(SMMUTransCfg *cfg,
-+                       dma_addr_t iova, IOMMUAccessFlags perm,
-+                       IOMMUTLBEntry *tlbe, SMMUPTWEventInfo *info)
-+{
-+    dma_addr_t baseaddr, indexmask;
-+    int stage = cfg->stage;
-+    SMMUTransTableInfo *tt = select_tt(cfg, iova);
-+    uint8_t level, granule_sz, inputsize, stride;
-+
-+    if (!tt || tt->disabled) {
-+        info->type = SMMU_PTW_ERR_TRANSLATION;
-+        goto error;
-+    }
-+
-+    granule_sz = tt->granule_sz;
-+    stride = granule_sz - 3;
-+    inputsize = 64 - tt->tsz;
-+    level = 4 - (inputsize - 4) / stride;
-+    indexmask = (1ULL << (inputsize - (stride * (4 - level)))) - 1;
-+    baseaddr = extract64(tt->ttb, 0, 48);
-+    baseaddr &= ~indexmask;
-+
-+    tlbe->iova = iova;
-+    tlbe->addr_mask = (1 << granule_sz) - 1;
-+
-+    while (level <= 3) {
-+        uint64_t subpage_size = 1ULL << level_shift(level, granule_sz);
-+        uint64_t mask = subpage_size - 1;
-+        uint32_t offset = iova_level_offset(iova, inputsize, level, granule_sz);
-+        uint64_t pte;
-+        dma_addr_t pte_addr = baseaddr + offset * sizeof(pte);
-+        uint8_t ap;
-+
-+        if (get_pte(baseaddr, offset, &pte, info)) {
-+                goto error;
-+        }
-+        trace_smmu_ptw_level(level, iova, subpage_size,
-+                             baseaddr, offset, pte);
-+
-+        if (is_invalid_pte(pte) || is_reserved_pte(pte, level)) {
-+            trace_smmu_ptw_invalid_pte(stage, level, baseaddr,
-+                                       pte_addr, offset, pte);
-+            info->type = SMMU_PTW_ERR_TRANSLATION;
-+            goto error;
-+        }
-+
-+        if (is_page_pte(pte, level)) {
-+            uint64_t gpa = get_page_pte_address(pte, granule_sz);
-+
-+            ap = PTE_AP(pte);
-+            if (is_permission_fault(ap, perm)) {
-+                info->type = SMMU_PTW_ERR_PERMISSION;
-+                goto error;
-+            }
-+
-+            tlbe->translated_addr = gpa + (iova & mask);
-+            tlbe->perm = PTE_AP_TO_PERM(ap);
-+            trace_smmu_ptw_page_pte(stage, level, iova,
-+                                    baseaddr, pte_addr, pte, gpa);
-+            return 0;
-+        }
-+        if (is_block_pte(pte, level)) {
-+            uint64_t block_size;
-+            hwaddr gpa = get_block_pte_address(pte, level, granule_sz,
-+                                               &block_size);
-+
-+            ap = PTE_AP(pte);
-+            if (is_permission_fault(ap, perm)) {
-+                info->type = SMMU_PTW_ERR_PERMISSION;
-+                goto error;
-+            }
-+
-+            trace_smmu_ptw_block_pte(stage, level, baseaddr,
-+                                     pte_addr, pte, iova, gpa,
-+                                     block_size >> 20);
-+
-+            tlbe->translated_addr = gpa + (iova & mask);
-+            tlbe->perm = PTE_AP_TO_PERM(ap);
-+            return 0;
-+        }
-+
-+        /* table pte */
-+        ap = PTE_APTABLE(pte);
-+
-+        if (is_permission_fault(ap, perm)) {
-+            info->type = SMMU_PTW_ERR_PERMISSION;
-+            goto error;
-+        }
-+        baseaddr = get_table_pte_address(pte, granule_sz);
-+        level++;
-+    }
-+
-+    info->type = SMMU_PTW_ERR_TRANSLATION;
-+
-+error:
-+    tlbe->perm = IOMMU_NONE;
-+    return -EINVAL;
-+}
-+
-+/**
-+ * smmu_ptw - Walk the page tables for an IOVA, according to @cfg
-+ *
-+ * @cfg: translation configuration
-+ * @iova: iova to translate
-+ * @perm: tentative access type
-+ * @tlbe: returned entry
-+ * @info: ptw event handle
-+ *
-+ * return 0 on success
-+ */
-+inline int smmu_ptw(SMMUTransCfg *cfg, dma_addr_t iova, IOMMUAccessFlags perm,
-+             IOMMUTLBEntry *tlbe, SMMUPTWEventInfo *info)
-+{
-+    if (!cfg->aa64) {
-+        /*
-+         * This code path is not entered as we check this while decoding
-+         * the configuration data in the derived SMMU model.
-+         */
-+        g_assert_not_reached();
-+    }
-+
-+    return smmu_ptw_64(cfg, iova, perm, tlbe, info);
-+}
- 
- /**
-  * The bus number is used for lookup when SID based invalidation occurs.
-diff --git a/hw/arm/smmu-internal.h b/hw/arm/smmu-internal.h
 new file mode 100644
-index 0000000..7794d6d
+index 0000000..e086ff5
 --- /dev/null
-+++ b/hw/arm/smmu-internal.h
-@@ -0,0 +1,99 @@
++++ b/hw/arm/smmu-common.c
+@@ -0,0 +1,81 @@
 +/*
-+ * ARM SMMU support - Internal API
-+ *
-+ * Copyright (c) 2017 Red Hat, Inc.
 + * Copyright (C) 2014-2016 Broadcom Corporation
++ * Copyright (c) 2017 Red Hat, Inc.
 + * Written by Prem Mallappa, Eric Auger
 + *
 + * This program is free software; you can redistribute it and/or modify
@@ -428,132 +201,204 @@ index 0000000..7794d6d
 + * This program is distributed in the hope that it will be useful,
 + * but WITHOUT ANY WARRANTY; without even the implied warranty of
 + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * General Public License for more details.
++ * GNU General Public License for more details.
 + *
-+ * You should have received a copy of the GNU General Public License along
-+ * with this program; if not, see <http://www.gnu.org/licenses/>.
++ * Author: Prem Mallappa <pmallapp@broadcom.com>
++ *
 + */
 +
-+#ifndef HW_ARM_SMMU_INTERNAL_H
-+#define HW_ARM_SMMU_INTERNAL_H
++#include "qemu/osdep.h"
++#include "sysemu/sysemu.h"
++#include "exec/address-spaces.h"
++#include "trace.h"
++#include "exec/target_page.h"
++#include "qom/cpu.h"
++#include "hw/qdev-properties.h"
++#include "qapi/error.h"
 +
-+#define TBI0(tbi) ((tbi) & 0x1)
-+#define TBI1(tbi) ((tbi) & 0x2 >> 1)
++#include "qemu/error-report.h"
++#include "hw/arm/smmu-common.h"
 +
-+/* PTE Manipulation */
++static void smmu_base_realize(DeviceState *dev, Error **errp)
++{
++    SMMUBaseClass *sbc = ARM_SMMU_GET_CLASS(dev);
++    Error *local_err = NULL;
 +
-+#define ARM_LPAE_PTE_TYPE_SHIFT         0
-+#define ARM_LPAE_PTE_TYPE_MASK          0x3
++    sbc->parent_realize(dev, &local_err);
++    if (local_err) {
++        error_propagate(errp, local_err);
++        return;
++    }
++}
 +
-+#define ARM_LPAE_PTE_TYPE_BLOCK         1
-+#define ARM_LPAE_PTE_TYPE_TABLE         3
++static void smmu_base_reset(DeviceState *dev)
++{
++    /* will be filled later on */
++}
 +
-+#define ARM_LPAE_L3_PTE_TYPE_RESERVED   1
-+#define ARM_LPAE_L3_PTE_TYPE_PAGE       3
++static Property smmu_dev_properties[] = {
++    DEFINE_PROP_UINT8("bus_num", SMMUState, bus_num, 0),
++    DEFINE_PROP_LINK("primary-bus", SMMUState, primary_bus, "PCI", PCIBus *),
++    DEFINE_PROP_END_OF_LIST(),
++};
 +
-+#define ARM_LPAE_PTE_VALID              (1 << 0)
++static void smmu_base_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    SMMUBaseClass *sbc = ARM_SMMU_CLASS(klass);
 +
-+#define PTE_ADDRESS(pte, shift) \
-+    (extract64(pte, shift, 47 - shift + 1) << shift)
++    dc->props = smmu_dev_properties;
++    device_class_set_parent_realize(dc, smmu_base_realize,
++                                    &sbc->parent_realize);
++    dc->reset = smmu_base_reset;
++}
 +
-+#define is_invalid_pte(pte) (!(pte & ARM_LPAE_PTE_VALID))
++static const TypeInfo smmu_base_info = {
++    .name          = TYPE_ARM_SMMU,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(SMMUState),
++    .class_data    = NULL,
++    .class_size    = sizeof(SMMUBaseClass),
++    .class_init    = smmu_base_class_init,
++    .abstract      = true,
++};
 +
-+#define is_reserved_pte(pte, level)                                      \
-+    ((level == 3) &&                                                     \
-+     ((pte & ARM_LPAE_PTE_TYPE_MASK) == ARM_LPAE_L3_PTE_TYPE_RESERVED))
++static void smmu_base_register_types(void)
++{
++    type_register_static(&smmu_base_info);
++}
 +
-+#define is_block_pte(pte, level)                                         \
-+    ((level < 3) &&                                                      \
-+     ((pte & ARM_LPAE_PTE_TYPE_MASK) == ARM_LPAE_PTE_TYPE_BLOCK))
++type_init(smmu_base_register_types)
 +
-+#define is_table_pte(pte, level)                                        \
-+    ((level < 3) &&                                                     \
-+     ((pte & ARM_LPAE_PTE_TYPE_MASK) == ARM_LPAE_PTE_TYPE_TABLE))
+diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+new file mode 100644
+index 0000000..d682be8
+--- /dev/null
++++ b/include/hw/arm/smmu-common.h
+@@ -0,0 +1,123 @@
++/*
++ * ARM SMMU Support
++ *
++ * Copyright (C) 2015-2016 Broadcom Corporation
++ * Copyright (c) 2017 Red Hat, Inc.
++ * Written by Prem Mallappa, Eric Auger
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 as
++ * published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ */
 +
-+#define is_page_pte(pte, level)                                         \
-+    ((level == 3) &&                                                    \
-+     ((pte & ARM_LPAE_PTE_TYPE_MASK) == ARM_LPAE_L3_PTE_TYPE_PAGE))
++#ifndef HW_ARM_SMMU_COMMON_H
++#define HW_ARM_SMMU_COMMON_H
 +
-+/* access permissions */
++#include "hw/sysbus.h"
++#include "hw/pci/pci.h"
 +
-+#define PTE_AP(pte) \
-+    (extract64(pte, 6, 2))
++#define SMMU_PCI_BUS_MAX      256
++#define SMMU_PCI_DEVFN_MAX    256
 +
-+#define PTE_APTABLE(pte) \
-+    (extract64(pte, 61, 2))
++#define SMMU_MAX_VA_BITS      48
 +
 +/*
-+ * TODO: At the moment all transactions are considered as privileged (EL1)
-+ * as IOMMU translation callback does not pass user/priv attributes.
++ * Page table walk error types
 + */
-+#define is_permission_fault(ap, perm) \
-+    (((perm) & IOMMU_WO) && ((ap) & 0x2))
++typedef enum {
++    SMMU_PTW_ERR_NONE,
++    SMMU_PTW_ERR_WALK_EABT,   /* Translation walk external abort */
++    SMMU_PTW_ERR_TRANSLATION, /* Translation fault */
++    SMMU_PTW_ERR_ADDR_SIZE,   /* Address Size fault */
++    SMMU_PTW_ERR_ACCESS,      /* Access fault */
++    SMMU_PTW_ERR_PERMISSION,  /* Permission fault */
++} SMMUPTWEventType;
 +
-+#define PTE_AP_TO_PERM(ap) \
-+    (IOMMU_ACCESS_FLAG(true, !((ap) & 0x2)))
++typedef struct SMMUPTWEventInfo {
++    SMMUPTWEventType type;
++    dma_addr_t addr; /* fetched address that induced an abort, if any */
++} SMMUPTWEventInfo;
 +
-+/* Level Indexing */
++typedef struct SMMUTransTableInfo {
++    bool disabled;             /* is the translation table disabled? */
++    uint64_t ttb;              /* TT base address */
++    uint8_t tsz;               /* input range, ie. 2^(64 -tsz)*/
++    uint8_t granule_sz;        /* granule page shift */
++} SMMUTransTableInfo;
 +
-+static inline int level_shift(int level, int granule_sz)
-+{
-+    return granule_sz + (3 - level) * (granule_sz - 3);
-+}
-+
-+static inline uint64_t level_page_mask(int level, int granule_sz)
-+{
-+    return ~(MAKE_64BIT_MASK(0, level_shift(level, granule_sz)));
-+}
-+
-+static inline
-+uint64_t iova_level_offset(uint64_t iova, int inputsize,
-+                           int level, int gsz)
-+{
-+    return ((iova & MAKE_64BIT_MASK(0, inputsize)) >> level_shift(level, gsz)) &
-+            MAKE_64BIT_MASK(0, gsz - 3);
-+}
-+
-+#endif
-diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index 8e8b53c..524964a 100644
---- a/hw/arm/trace-events
-+++ b/hw/arm/trace-events
-@@ -4,4 +4,11 @@
- virt_acpi_setup(void) "No fw cfg or ACPI disabled. Bailing out."
- 
- # hw/arm/smmu-common.c
--smmu_add_mr(const char *name) "%s"
-\ No newline at end of file
-+smmu_add_mr(const char *name) "%s"
-+smmu_page_walk(int stage, uint64_t baseaddr, int first_level, uint64_t start, uint64_t end) "stage=%d, baseaddr=0x%"PRIx64", first level=%d, start=0x%"PRIx64", end=0x%"PRIx64
-+smmu_lookup_table(int level, uint64_t baseaddr, int granule_sz, uint64_t start, uint64_t end, int flags, uint64_t subpage_size) "level=%d baseaddr=0x%"PRIx64" granule=%d, start=0x%"PRIx64" end=0x%"PRIx64" flags=%d subpage_size=0x%"PRIx64
-+smmu_ptw_level(int level, uint64_t iova, size_t subpage_size, uint64_t baseaddr, uint32_t offset, uint64_t pte) "level=%d iova=0x%"PRIx64" subpage_sz=0x%lx baseaddr=0x%"PRIx64" offset=%d => pte=0x%"PRIx64
-+smmu_ptw_invalid_pte(int stage, int level, uint64_t baseaddr, uint64_t pteaddr, uint32_t offset, uint64_t pte) "stage=%d level=%d base@=0x%"PRIx64" pte@=0x%"PRIx64" offset=%d pte=0x%"PRIx64
-+smmu_ptw_page_pte(int stage, int level,  uint64_t iova, uint64_t baseaddr, uint64_t pteaddr, uint64_t pte, uint64_t address) "stage=%d level=%d iova=0x%"PRIx64" base@=0x%"PRIx64" pte@=0x%"PRIx64" pte=0x%"PRIx64" page address = 0x%"PRIx64
-+smmu_ptw_block_pte(int stage, int level, uint64_t baseaddr, uint64_t pteaddr, uint64_t pte, uint64_t iova, uint64_t gpa, int bsize_mb) "stage=%d level=%d base@=0x%"PRIx64" pte@=0x%"PRIx64" pte=0x%"PRIx64" iova=0x%"PRIx64" block address = 0x%"PRIx64" block size = %d MiB"
-+smmu_get_pte(uint64_t baseaddr, int index, uint64_t pteaddr, uint64_t pte) "baseaddr=0x%"PRIx64" index=0x%x, pteaddr=0x%"PRIx64", pte=0x%"PRIx64
-diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-index 8b94777..c41eb5c3 100644
---- a/include/hw/arm/smmu-common.h
-+++ b/include/hw/arm/smmu-common.h
-@@ -128,4 +128,18 @@ static inline uint16_t smmu_get_sid(SMMUDevice *sdev)
- {
-     return PCI_BUILD_BDF(pci_bus_num(sdev->bus), sdev->devfn);
- }
-+
-+/**
-+ * smmu_ptw - Perform the page table walk for a given iova / access flags
-+ * pair, according to @cfg translation config
++/*
++ * Generic structure populated by derived SMMU devices
++ * after decoding the configuration information and used as
++ * input to the page table walk
 + */
-+int smmu_ptw(SMMUTransCfg *cfg, dma_addr_t iova, IOMMUAccessFlags perm,
-+             IOMMUTLBEntry *tlbe, SMMUPTWEventInfo *info);
++typedef struct SMMUTransCfg {
++    int stage;                 /* translation stage */
++    bool aa64;                 /* arch64 or aarch32 translation table */
++    bool disabled;             /* smmu is disabled */
++    bool bypassed;             /* translation is bypassed */
++    bool aborted;              /* translation is aborted */
++    uint64_t ttb;              /* TT base address */
++    uint8_t oas;               /* output address width */
++    uint8_t tbi;               /* Top Byte Ignore */
++    uint16_t asid;
++    SMMUTransTableInfo tt[2];
++} SMMUTransCfg;
 +
-+/**
-+ * select_tt - compute which translation table shall be used according to
-+ * the input iova and translation config and return the TT specific info
-+ */
-+SMMUTransTableInfo *select_tt(SMMUTransCfg *cfg, dma_addr_t iova);
++typedef struct SMMUDevice {
++    void               *smmu;
++    PCIBus             *bus;
++    int                devfn;
++    IOMMUMemoryRegion  iommu;
++    AddressSpace       as;
++} SMMUDevice;
 +
- #endif  /* HW_ARM_SMMU_COMMON */
++typedef struct SMMUNotifierNode {
++    SMMUDevice *sdev;
++    QLIST_ENTRY(SMMUNotifierNode) next;
++} SMMUNotifierNode;
++
++typedef struct SMMUPciBus {
++    PCIBus       *bus;
++    SMMUDevice   *pbdev[0]; /* Parent array is sparse, so dynamically alloc */
++} SMMUPciBus;
++
++typedef struct SMMUState {
++    /* <private> */
++    SysBusDevice  dev;
++    const char *mrtypename;
++    MemoryRegion iomem;
++
++    GHashTable *smmu_pcibus_by_busptr;
++    GHashTable *configs; /* cache for configuration data */
++    GHashTable *iotlb;
++    SMMUPciBus *smmu_pcibus_by_bus_num[SMMU_PCI_BUS_MAX];
++    PCIBus *pci_bus;
++    QLIST_HEAD(, SMMUNotifierNode) notifiers_list;
++    uint8_t bus_num;
++    PCIBus *primary_bus;
++} SMMUState;
++
++typedef struct {
++    /* <private> */
++    SysBusDeviceClass parent_class;
++
++    /*< public >*/
++
++    DeviceRealize parent_realize;
++
++} SMMUBaseClass;
++
++#define TYPE_ARM_SMMU "arm-smmu"
++#define ARM_SMMU(obj) OBJECT_CHECK(SMMUState, (obj), TYPE_ARM_SMMU)
++#define ARM_SMMU_CLASS(klass)                                    \
++    OBJECT_CLASS_CHECK(SMMUBaseClass, (klass), TYPE_ARM_SMMU)
++#define ARM_SMMU_GET_CLASS(obj)                              \
++    OBJECT_GET_CLASS(SMMUBaseClass, (obj), TYPE_ARM_SMMU)
++
++#endif  /* HW_ARM_SMMU_COMMON */
 -- 
 2.5.5
 

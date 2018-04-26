@@ -1,116 +1,93 @@
-Received: by 10.28.4.212 with SMTP id 203csp3996913wme;
-        Tue, 17 Apr 2018 09:10:14 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4+cQ1hUWrL+0o2CqYOXzUzokbiXLHO3NHiP9B00jI2ssBPHz8qIlnWUz85vv1zx8wpHmnwH
-X-Received: by 10.55.71.23 with SMTP id u23mr2758472qka.299.1523981413849;
-        Tue, 17 Apr 2018 09:10:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523981413; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp1939077wme;
+        Thu, 26 Apr 2018 03:25:13 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZp+ieR8pVqAwI+FUcLxoj1QgNTmjq7k6DqPbzG13HHmIg3N/wdJ1zMJwWuyria3ga2+5CHx
+X-Received: by 2002:ac8:4692:: with SMTP id g18-v6mr13106553qto.41.1524738313490;
+        Thu, 26 Apr 2018 03:25:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1524738313; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y5NRJsTqXrnOeZ4NC7Q4WKA+3CHdcJiPSg7jWPB1e6HKiOD5J9wEOYfUUhZaoCggpf
-         dlKrHyjkO9g1Rq3CZvhmC+ZzfDC5oQSSm7m+pmRMJ8oADXtPd/3bWaLJd6jPst4At7Yy
-         pbWmt0btDp8vZPidLn+TaT8wp7pLB+qf+BD/80gY6XhAplsa2JFrUFkrVd3XJaOOiqZE
-         MUnna+0wdU3yI8NhQpa0FpjJudS3YJ2lGIGtaiXSyCkvou/NAsE9UThBPL3nahPfKAN1
-         Ghxge6JGn5WS/NYYEeXPA1xuEHm3sw8hOdeQuoEdvfe7UV4vNDm0ZJSFACljrTpg1AuO
-         rUNg==
+        b=NO6+6ncS5TybGGlS9iIjmT0t5Lat4uJjfsoj0s5V7Q1WHL5FNBgOYJFtNw0O2OsmH2
+         Plf4wAoad8NaoymT3LqzjbKs9qrN5RHL7XUWXI559yr+GF7kMheVKPsomA3VDf8hWtnA
+         RrPgEej1heXGNKEtyCyE25l4Ks5jLGrdWs4NbLbNgw1ZyUoipcTOsOS8cJLzl2IrdNjN
+         QzKE/d1jTItpJNTGqjXsK09GCrojBN1V0xgayC4khfCN6HGrcDnlsmqgPU/K6MkX4LfE
+         YrsPkd1l7m3CR/hVWG2KVHdRNKNuR4HPlqu+Kk+PfvhyzWF2faQCwKUc20oyqtqB8q2M
+         F8tA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=nWmVN/vzaN3Tp6clCGcNpY8JhpY7wU1sPDXhaAYqO/M=;
-        b=uGHDbcMoxpZOs4XITYmbjvT0OtF5focA9hSwE5aG2SbD6g1vs8Q/OOcgfzAsclzweP
-         CMbG31seAU+rKP+moEILfvNhOuOiFU81a2Tajn5wgIl2wL7h7KDjMV7KQyY5yv3v+4mA
-         czAkEp4I4dOkEy3wKkbjlCV4wWCtm3qsl7oZudtII1eEqJVhtivwvIaZWx0BblyAVccC
-         Juhh9xaZ6JWV5RZU53H2BsM7GHrelU7NrdWuJnQRNaA9sQJjUCJYkkAUBYFNQCtRZwKK
-         MwqaPa3FVXmHRkCBVKdA1XVsNOLqg5JrArkGcvzXu3rSkAZkRZuTOxFYlOslGND6wAdq
-         JCPQ==
+         :user-agent:date:message-id:from:references:to
+         :arc-authentication-results;
+        bh=zirTn+iGbnNZUrVAGNKVY4k0x7usDgmmqhcSvwXe4xQ=;
+        b=vhVkyGv4OZGdETD6f2sUSSu6G8xNAT4UqzOJcedEz5wv/+57eQUOvEWL32j1X6O/op
+         KNjQeQpPuaNRF4E8ceu0D7+zv+4rzvJyekSbGQej9QUfPuxL/fCxciTzgT6Vlin3KWM5
+         080RUxGiMw3bC4x1er2vgkdcgD0XtUA8T4aAfBVuJuQc3zingXsOy4xP0iCbwtwDFZ1w
+         HchWj/BAyeKl5FRCKBxvvCvhbQG6Ca7ClxNi8wE6LxzwirdfA5QY35O9+XiH2SBfDcXW
+         BTBqR4m5X+FzdTwCBg5IQO07ben7YRwbtVPCmcRRW2K73lMPwEILWp/e+Y5O/ODDHOh+
+         DiOg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KS5zsoGK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k62si1541894qkb.28.2018.04.17.09.10.13
+        by mx.google.com with ESMTPS id p124si2688839qkd.353.2018.04.26.03.25.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 17 Apr 2018 09:10:13 -0700 (PDT)
+        Thu, 26 Apr 2018 03:25:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KS5zsoGK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:47783 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41334 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f8TBN-0005Ny-CI
-	for alex.bennee@linaro.org; Tue, 17 Apr 2018 12:10:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41453)
+	id 1fBe5R-0002BL-2O
+	for alex.bennee@linaro.org; Thu, 26 Apr 2018 06:25:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34253)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f8TB1-0005Fj-19
-	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 12:09:52 -0400
+	(envelope-from <thuth@redhat.com>) id 1fBe5J-0002B4-Vk
+	for qemu-arm@nongnu.org; Thu, 26 Apr 2018 06:25:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f8TAx-0006tT-Oq
-	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 12:09:50 -0400
-Received: from mail-vk0-x243.google.com ([2607:f8b0:400c:c05::243]:37702)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f8TAx-0006tC-JR; Tue, 17 Apr 2018 12:09:47 -0400
-Received: by mail-vk0-x243.google.com with SMTP id d9so7269495vka.4;
-	Tue, 17 Apr 2018 09:09:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=nWmVN/vzaN3Tp6clCGcNpY8JhpY7wU1sPDXhaAYqO/M=;
-	b=KS5zsoGKhYY674YMCAcI/TIHIiNVCm0tIOzLqn9qKDtzZGL1g9cQ5t9oLiEXlpBuj5
-	aRUOizcleaTNg+yA2d8LKFixSCtwoP8ENhM7ZtwpYTljSrEWaPmslqILc03Dnou5SC3/
-	6WA3Rq4g1Hew5ud1SojzJEcmjBzGOZH6LsKmEBhDHh8g5JB89z4UjpKr2Tn/Rz0/UC1a
-	IfTtMv7SGZsauZUrtZoRC6m6f1C2QdKxKI+1J+h+CIiEGax6n8sYuuB609Qgtd7DTz0N
-	dkSk/0YbZBF9ZXfkPdeDCGZ+4n1pUK0HJS3qA2QKXfq5bdtoJztszU2DDw0/x2fVvjVW
-	UtfQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=nWmVN/vzaN3Tp6clCGcNpY8JhpY7wU1sPDXhaAYqO/M=;
-	b=J+yFR4DNRW9PGkYK13oWvKnZIexlNIN0TAqvI+5cVQquibwPVOLF/Pnt203mLI86Bf
-	H/OtRVjrsN3EboUkbQGd1jnxZxAmsak67H9xhyniB7gkYSFpKZ2MrWqOicds7pjB/n1J
-	oHt/7aDEXFl34n4XG9nu7HVSkKPKq3HosfDJqHiVRQDkct77C04EIl9pgA5g7rOFjMmz
-	ZhuB/M+3hqbLfuVvp32bRUONZpwJmiG7D+mbK9+znh2dLAZ5rhyrtMb3etNSkgWpiSoo
-	VggjXw26sIT9MKKgi9loIOtpvW6W0XdEBMvlarM/tvM2JKem5zSPVl7d29/Z2nhqq4Dd
-	frmA==
-X-Gm-Message-State: ALQs6tA7kvHGF3BIvYVhLHgAPVHCvByHO+x7dlx0NmC0qc9iNNCfrF8o
-	LbNbvgIC3k2XlRW9iCG1c14t/eEc
-X-Received: by 10.31.54.4 with SMTP id d4mr1904701vka.33.1523981386796;
-	Tue, 17 Apr 2018 09:09:46 -0700 (PDT)
-Received: from [192.168.1.11] ([138.117.48.212])
-	by smtp.gmail.com with ESMTPSA id
-	c187sm6594166vkf.46.2018.04.17.09.09.43
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 17 Apr 2018 09:09:46 -0700 (PDT)
-To: Stefan Weil <sw@weilnetz.de>, Thomas Huth <thuth@redhat.com>,
-	qemu-devel@nongnu.org, Eric Blake <eblake@redhat.com>
-References: <20180415234307.28132-1-f4bug@amsat.org>
-	<20180415234307.28132-34-f4bug@amsat.org>
-	<f11c4eac-fcbf-0aa3-06bf-570ff57144c4@weilnetz.de>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <f798155d-7740-42cc-fd37-384bb0d4fb06@amsat.org>
-Date: Tue, 17 Apr 2018 13:09:40 -0300
+	(envelope-from <thuth@redhat.com>) id 1fBe5F-0008FD-3Q
+	for qemu-arm@nongnu.org; Thu, 26 Apr 2018 06:25:05 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:38768 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1fBe5E-0008Ew-Us; Thu, 26 Apr 2018 06:25:01 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2760642BDF0E;
+	Thu, 26 Apr 2018 10:24:56 +0000 (UTC)
+Received: from [10.36.116.75] (ovpn-116-75.ams2.redhat.com [10.36.116.75])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 519BE2166BAD;
+	Thu, 26 Apr 2018 10:24:50 +0000 (UTC)
+To: Markus Armbruster <armbru@redhat.com>
+References: <1521452376-25099-1-git-send-email-thuth@redhat.com>
+	<87in8qf2w3.fsf@dusky.pond.sub.org>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <62dba5cf-b497-1a98-0af5-971e169a3458@redhat.com>
+Date: Thu, 26 Apr 2018 12:24:48 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <f11c4eac-fcbf-0aa3-06bf-570ff57144c4@weilnetz.de>
+In-Reply-To: <87in8qf2w3.fsf@dusky.pond.sub.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400c:c05::243
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 33/41] hw/net: Use the
- BYTE-based definitions
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.7]);
+	Thu, 26 Apr 2018 10:24:56 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
+	Thu, 26 Apr 2018 10:24:56 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH] tests/device-introspect:
+ Test devices with all machines, not only with "none"
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -122,155 +99,64 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, Beniamino Galvani <b.galvani@gmail.com>,
-	Jason Wang <jasowang@redhat.com>,
-	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
-	"open list:Allwinner-a10" <qemu-arm@nongnu.org>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-devel@nongnu.org,
+	Eduardo Habkost <ehabkost@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hibp1R9dgHtl
+X-TUID: rRT5P6jA6Xin
 
-Hi Stefan,
+On 17.04.2018 14:12, Markus Armbruster wrote:
+> Thomas Huth <thuth@redhat.com> writes:
+> 
+>> Many device introspection crashes only happen if you are using a
+>> certain machine, e.g.:
+>>
+>> $ ppc-softmmu/qemu-system-ppc -S -M ref405ep,accel=qtest -qmp stdio
+>> {"QMP": {"version": {"qemu": {"micro": 50, "minor": 11, "major": 2},
+>>  "package": "build-all"}, "capabilities": []}}
+>> { 'execute': 'qmp_capabilities' }
+>> {"return": {}}
+>> { 'execute': 'device-list-properties',
+>>   'arguments': {'typename': 'macio-newworld'}}
+>> Unexpected error in qemu_chr_fe_init() at chardev/char-fe.c:222:
+>> Device 'serial0' is in use
+>> Aborted (core dumped)
+>>
+>> To be able to catch these problems, let's extend the device-introspect
+>> test to check the devices on all machine types. Since this is a rather
+>> slow operation, the test is only run in "SPEED=slow" mode.
+> 
+> If the device works with one machine type, it has a decent chance to
+> work with others, too.  Thus, testing each device with every machine
+> type is overkill.  I appreciate having overkill as an option :)
+> 
+> What I'd like to see for a quick "make check" is testing each device
+> once.  That should flush out most bugs.  
 
-On 04/16/2018 02:23 AM, Stefan Weil wrote:
-> Am 16.04.2018 um 01:42 schrieb Philippe Mathieu-Daudé:
->> It eases code review, unit is explicit.
->>
->> Patch generated using:
->>
->>   $ git grep -E '(1024|2048|4096|8192|(<<|>>).?(10|20|30))' hw/ include/hw/
->>
->> and modified manually.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+That's already done with the "none" machine.
+
+Anyway, do you think my patch here is useful and has a chance of getting
+included? I.e. shall I re-spin this as a non-RFC patch? Or shall we
+rather wait for Eduardo's python-based tests to get included into the
+repository?
+
+>> Signed-off-by: Thomas Huth <thuth@redhat.com>
 >> ---
->>  include/hw/net/allwinner_emac.h | 5 +++--
->>  hw/net/e1000e.c                 | 7 ++++---
->>  hw/net/e1000x_common.c          | 3 ++-
->>  hw/net/eepro100.c               | 7 +++----
->>  4 files changed, 12 insertions(+), 10 deletions(-)
->>
->> diff --git a/include/hw/net/allwinner_emac.h b/include/hw/net/allwinner_emac.h
->> index 4cc8aab7ec..4b53b6485c 100644
->> --- a/include/hw/net/allwinner_emac.h
->> +++ b/include/hw/net/allwinner_emac.h
->> @@ -23,6 +23,7 @@
->>  #ifndef ALLWINNER_EMAC_H
->>  #define ALLWINNER_EMAC_H
->>  
->> +#include "qemu/units.h"
->>  #include "net/net.h"
->>  #include "qemu/fifo8.h"
->>  #include "hw/net/mii.h"
->> @@ -125,8 +126,8 @@
->>  #define EMAC_INT_RX         (1 << 8)
->>  
->>  /* Due to lack of specifications, size of fifos is chosen arbitrarily */
->> -#define TX_FIFO_SIZE        (4 * 1024)
->> -#define RX_FIFO_SIZE        (32 * 1024)
->> +#define TX_FIFO_SIZE        (4 * K_BYTE)
->> +#define RX_FIFO_SIZE        (32 * K_BYTE)
->>  
->>  #define NUM_TX_FIFOS        2
->>  #define RX_HDR_SIZE         8
->> diff --git a/hw/net/e1000e.c b/hw/net/e1000e.c
->> index 16a9417a85..101efe7c83 100644
->> --- a/hw/net/e1000e.c
->> +++ b/hw/net/e1000e.c
->> @@ -34,6 +34,7 @@
->>  */
->>  
->>  #include "qemu/osdep.h"
->> +#include "qemu/units.h"
->>  #include "net/net.h"
->>  #include "net/tap.h"
->>  #include "qemu/range.h"
->> @@ -81,10 +82,10 @@ typedef struct E1000EState {
->>  #define E1000E_IO_IDX       2
->>  #define E1000E_MSIX_IDX     3
->>  
->> -#define E1000E_MMIO_SIZE    (128 * 1024)
->> -#define E1000E_FLASH_SIZE   (128 * 1024)
->> +#define E1000E_MMIO_SIZE    (128 * K_BYTE)
->> +#define E1000E_FLASH_SIZE   (128 * K_BYTE)
->>  #define E1000E_IO_SIZE      (32)
->> -#define E1000E_MSIX_SIZE    (16 * 1024)
->> +#define E1000E_MSIX_SIZE    (16 * K_BYTE)
->>  
->>  #define E1000E_MSIX_TABLE   (0x0000)
->>  #define E1000E_MSIX_PBA     (0x2000)
->> diff --git a/hw/net/e1000x_common.c b/hw/net/e1000x_common.c
->> index eb0e097137..58c8db77e9 100644
->> --- a/hw/net/e1000x_common.c
->> +++ b/hw/net/e1000x_common.c
->> @@ -23,6 +23,7 @@
->>  */
->>  
->>  #include "qemu/osdep.h"
->> +#include "qemu/units.h"
->>  #include "hw/hw.h"
->>  #include "hw/pci/pci.h"
->>  #include "net/net.h"
->> @@ -111,7 +112,7 @@ bool e1000x_is_oversized(uint32_t *mac, size_t size)
->>      static const int maximum_ethernet_vlan_size = 1522;
->>      /* this is the size past which hardware will
->>         drop packets when setting LPE=1 */
->> -    static const int maximum_ethernet_lpe_size = 16384;
->> +    static const int maximum_ethernet_lpe_size = 16 * K_BYTE;
->>  
->>      if ((size > maximum_ethernet_lpe_size ||
->>          (size > maximum_ethernet_vlan_size
->> diff --git a/hw/net/eepro100.c b/hw/net/eepro100.c
->> index a07a63247e..a02e2b55e8 100644
->> --- a/hw/net/eepro100.c
->> +++ b/hw/net/eepro100.c
->> @@ -41,6 +41,7 @@
->>   */
->>  
->>  #include "qemu/osdep.h"
->> +#include "qemu/units.h"
->>  #include "hw/hw.h"
->>  #include "hw/pci/pci.h"
->>  #include "net/net.h"
->> @@ -60,8 +61,6 @@
->>   * changed to pad short packets itself. */
->>  #define CONFIG_PAD_RECEIVED_FRAMES
->>  
->> -#define KiB 1024
->> -
->>  /* Debug EEPRO100 card. */
->>  #if 0
->>  # define DEBUG_EEPRO100
->> @@ -104,9 +103,9 @@
->>  /* Use 64 word EEPROM. TODO: could be a runtime option. */
->>  #define EEPROM_SIZE     64
->>  
->> -#define PCI_MEM_SIZE            (4 * KiB)
->> +#define PCI_MEM_SIZE            (4 * K_BYTE)
->>  #define PCI_IO_SIZE             64
->> -#define PCI_FLASH_SIZE          (128 * KiB)
->> +#define PCI_FLASH_SIZE          (128 * K_BYTE)
->>  
->>  #define BITS(n, m) (((0xffffffffU << (31 - n)) >> (31 - n + m)) << m)
+>>  In case someone wants to help with creating some bug fix patches
+>>  during the QEMU hard freeze phase: This test can now be used to
+>>  trigger lots of introspection bugs that we were not aware of yet.
+>>  I think most of the bugs are due to wrong handling of instance_init
+>>  vs. realize functions.
 > 
-> 
-> Technically this is fine, therefore
-> 
-> Reviewed-by: Stefan Weil <sw@weilnetz.de>
-> 
-> Practically I'd prefer replacing all K_BYTE by KiB, because that is the
-> standard name with a precise definition:
-> https://en.wikipedia.org/wiki/Kibibyte.
+> Yes, that's a common class of bugs.  There's little guidance on what
+> kind of work belongs where, and plenty of bad examples.
 
-"1 kibibyte is 1024 bytes. The unit symbol for the kibibyte is KiB."
+I think we urgently need a file in doc/devel/ that describes the various
+states / functions of a device, where we should properly describe the
+differences between instance_init and realize. ... I'll try to come up
+with something when I've got some spare time (unless somebody else
+volunteers to do that first).
 
-I like your suggestion :) Mostly because this shortens the code and
-keeps it readable (while respecting the SI).
+ Thomas
 
-If the other maintainers agree with this change, I'm OK to do the
-cleanup. I couldn't find a rule requiring #defines be all capital letter
-in CODING_STYLE, is this acceptable to have a lower case "i"?
-
-Regards,
-
-Phil.

@@ -1,88 +1,89 @@
-Received: by 10.28.4.212 with SMTP id 203csp1939077wme;
-        Thu, 26 Apr 2018 03:25:13 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZp+ieR8pVqAwI+FUcLxoj1QgNTmjq7k6DqPbzG13HHmIg3N/wdJ1zMJwWuyria3ga2+5CHx
-X-Received: by 2002:ac8:4692:: with SMTP id g18-v6mr13106553qto.41.1524738313490;
-        Thu, 26 Apr 2018 03:25:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1524738313; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp2052292wme;
+        Thu, 26 Apr 2018 04:55:00 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx49l9BfQuX7UbzHf6JkE9C62fqRZifQVLMnUngZ0rJjlwzzWsNeSRO8UKDzgT/8ddesxj7yN
+X-Received: by 10.233.223.69 with SMTP id t66mr32773314qkf.25.1524743700472;
+        Thu, 26 Apr 2018 04:55:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1524743700; cv=none;
         d=google.com; s=arc-20160816;
-        b=NO6+6ncS5TybGGlS9iIjmT0t5Lat4uJjfsoj0s5V7Q1WHL5FNBgOYJFtNw0O2OsmH2
-         Plf4wAoad8NaoymT3LqzjbKs9qrN5RHL7XUWXI559yr+GF7kMheVKPsomA3VDf8hWtnA
-         RrPgEej1heXGNKEtyCyE25l4Ks5jLGrdWs4NbLbNgw1ZyUoipcTOsOS8cJLzl2IrdNjN
-         QzKE/d1jTItpJNTGqjXsK09GCrojBN1V0xgayC4khfCN6HGrcDnlsmqgPU/K6MkX4LfE
-         YrsPkd1l7m3CR/hVWG2KVHdRNKNuR4HPlqu+Kk+PfvhyzWF2faQCwKUc20oyqtqB8q2M
-         F8tA==
+        b=tymCJl79KBFRA6GP3q2cS8eC0JBVbmRTbvjll/zud5yhLEDXmyjvqRftKG+MXyY6pf
+         Rz3pdwLUO/4nI9MyUeO5YSedlLoiVqnLr10JfWiXK0ivWl/7OgvNFArIo2TPHXcvjK5w
+         BqAA+lyPO+ZtKStU+dXAicfkBt4GF/Nq+E8kYm1njnmuWLoCs1qKyVfxHYbjRB/91ArE
+         KGCv0LgpVDrj8MSfn8DWjqhFHAq8PSR75zBdde7l5M8WULTB0s283btwNn4ovsT30EjS
+         ENvJQ6E9jVO7kZRTbtc6Qe3JueOhbvhVBHDkM48zwC+czucFQMmvth+AhKSBvJSAwEc5
+         YJ2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
+         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
+         :message-id:in-reply-to:date:references:to:from
          :arc-authentication-results;
-        bh=zirTn+iGbnNZUrVAGNKVY4k0x7usDgmmqhcSvwXe4xQ=;
-        b=vhVkyGv4OZGdETD6f2sUSSu6G8xNAT4UqzOJcedEz5wv/+57eQUOvEWL32j1X6O/op
-         KNjQeQpPuaNRF4E8ceu0D7+zv+4rzvJyekSbGQej9QUfPuxL/fCxciTzgT6Vlin3KWM5
-         080RUxGiMw3bC4x1er2vgkdcgD0XtUA8T4aAfBVuJuQc3zingXsOy4xP0iCbwtwDFZ1w
-         HchWj/BAyeKl5FRCKBxvvCvhbQG6Ca7ClxNi8wE6LxzwirdfA5QY35O9+XiH2SBfDcXW
-         BTBqR4m5X+FzdTwCBg5IQO07ben7YRwbtVPCmcRRW2K73lMPwEILWp/e+Y5O/ODDHOh+
-         DiOg==
+        bh=YgmHXMsolvZX3e+P6bNxiGjMI6rBo9/PGFkAP14hu8I=;
+        b=LidHV2HTQLloLxEokCt8YeDg88KbzOQgCzXf9XNZB5wNkoAy8lqBLaNpchABb/pHk/
+         DSrGz5CmZYwGxDFzhoEqoyXl9/VwhasGpnayjydO1MdCV3lI/Go+sescfwiEUh05xEuo
+         ggdYut8r/G74ADJCK4GTwNDyVLgdk1Bqm9x40YtBDLrPn7YM6YDt7vvjbPc/c1lWvjrO
+         70R/ja+Ttz+vvafgWl42/fxtfl1vw1aPEgQbYD8qviDOJsuPL3UHESIewr0ihnNl5ijI
+         +KvHPja99MUG+gZoLusP6HoY3FZahdu2Wb10qNWtcVv/qseUYmmLBMV5okKqlUpcF8Jn
+         gtIA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p124si2688839qkd.353.2018.04.26.03.25.13
+        by mx.google.com with ESMTPS id j43-v6si3154292qtf.281.2018.04.26.04.55.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 26 Apr 2018 03:25:13 -0700 (PDT)
+        Thu, 26 Apr 2018 04:55:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41334 helo=lists.gnu.org)
+Received: from localhost ([::1]:41696 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fBe5R-0002BL-2O
-	for alex.bennee@linaro.org; Thu, 26 Apr 2018 06:25:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34253)
+	id 1fBfUJ-0007nl-V1
+	for alex.bennee@linaro.org; Thu, 26 Apr 2018 07:54:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54617)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fBe5J-0002B4-Vk
-	for qemu-arm@nongnu.org; Thu, 26 Apr 2018 06:25:07 -0400
+	(envelope-from <armbru@redhat.com>) id 1fBfU8-0007nc-Sj
+	for qemu-arm@nongnu.org; Thu, 26 Apr 2018 07:54:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fBe5F-0008FD-3Q
-	for qemu-arm@nongnu.org; Thu, 26 Apr 2018 06:25:05 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:38768 helo=mx1.redhat.com)
+	(envelope-from <armbru@redhat.com>) id 1fBfU5-0001G6-S7
+	for qemu-arm@nongnu.org; Thu, 26 Apr 2018 07:54:48 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:58568 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fBe5E-0008Ew-Us; Thu, 26 Apr 2018 06:25:01 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1fBfU5-0001G0-Mq; Thu, 26 Apr 2018 07:54:45 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2760642BDF0E;
-	Thu, 26 Apr 2018 10:24:56 +0000 (UTC)
-Received: from [10.36.116.75] (ovpn-116-75.ams2.redhat.com [10.36.116.75])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 519BE2166BAD;
-	Thu, 26 Apr 2018 10:24:50 +0000 (UTC)
-To: Markus Armbruster <armbru@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 31DFF406C742;
+	Thu, 26 Apr 2018 11:54:45 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-129.ams2.redhat.com
+	[10.36.116.129])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0C1B410EE95C;
+	Thu, 26 Apr 2018 11:54:45 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id DE16D1138645; Thu, 26 Apr 2018 13:54:43 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
 References: <1521452376-25099-1-git-send-email-thuth@redhat.com>
 	<87in8qf2w3.fsf@dusky.pond.sub.org>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <62dba5cf-b497-1a98-0af5-971e169a3458@redhat.com>
-Date: Thu, 26 Apr 2018 12:24:48 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	<62dba5cf-b497-1a98-0af5-971e169a3458@redhat.com>
+Date: Thu, 26 Apr 2018 13:54:43 +0200
+In-Reply-To: <62dba5cf-b497-1a98-0af5-971e169a3458@redhat.com> (Thomas Huth's
+	message of "Thu, 26 Apr 2018 12:24:48 +0200")
+Message-ID: <877eou2nek.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.3 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <87in8qf2w3.fsf@dusky.pond.sub.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Thu, 26 Apr 2018 10:24:56 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Thu, 26 Apr 2018 10:24:56 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
+	(mx1.redhat.com [10.11.55.5]);
+	Thu, 26 Apr 2018 11:54:45 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Thu, 26 Apr 2018 11:54:45 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'armbru@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
@@ -99,64 +100,78 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-devel@nongnu.org,
-	Eduardo Habkost <ehabkost@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rRT5P6jA6Xin
+X-TUID: jqHAHFJAAqZX
 
-On 17.04.2018 14:12, Markus Armbruster wrote:
-> Thomas Huth <thuth@redhat.com> writes:
-> 
->> Many device introspection crashes only happen if you are using a
->> certain machine, e.g.:
->>
->> $ ppc-softmmu/qemu-system-ppc -S -M ref405ep,accel=qtest -qmp stdio
->> {"QMP": {"version": {"qemu": {"micro": 50, "minor": 11, "major": 2},
->>  "package": "build-all"}, "capabilities": []}}
->> { 'execute': 'qmp_capabilities' }
->> {"return": {}}
->> { 'execute': 'device-list-properties',
->>   'arguments': {'typename': 'macio-newworld'}}
->> Unexpected error in qemu_chr_fe_init() at chardev/char-fe.c:222:
->> Device 'serial0' is in use
->> Aborted (core dumped)
->>
->> To be able to catch these problems, let's extend the device-introspect
->> test to check the devices on all machine types. Since this is a rather
->> slow operation, the test is only run in "SPEED=slow" mode.
-> 
-> If the device works with one machine type, it has a decent chance to
-> work with others, too.  Thus, testing each device with every machine
-> type is overkill.  I appreciate having overkill as an option :)
-> 
-> What I'd like to see for a quick "make check" is testing each device
-> once.  That should flush out most bugs.  
+Thomas Huth <thuth@redhat.com> writes:
 
-That's already done with the "none" machine.
+> On 17.04.2018 14:12, Markus Armbruster wrote:
+>> Thomas Huth <thuth@redhat.com> writes:
+>> 
+>>> Many device introspection crashes only happen if you are using a
+>>> certain machine, e.g.:
+>>>
+>>> $ ppc-softmmu/qemu-system-ppc -S -M ref405ep,accel=qtest -qmp stdio
+>>> {"QMP": {"version": {"qemu": {"micro": 50, "minor": 11, "major": 2},
+>>>  "package": "build-all"}, "capabilities": []}}
+>>> { 'execute': 'qmp_capabilities' }
+>>> {"return": {}}
+>>> { 'execute': 'device-list-properties',
+>>>   'arguments': {'typename': 'macio-newworld'}}
+>>> Unexpected error in qemu_chr_fe_init() at chardev/char-fe.c:222:
+>>> Device 'serial0' is in use
+>>> Aborted (core dumped)
+>>>
+>>> To be able to catch these problems, let's extend the device-introspect
+>>> test to check the devices on all machine types. Since this is a rather
+>>> slow operation, the test is only run in "SPEED=slow" mode.
+>> 
+>> If the device works with one machine type, it has a decent chance to
+>> work with others, too.  Thus, testing each device with every machine
+>> type is overkill.  I appreciate having overkill as an option :)
+>> 
+>> What I'd like to see for a quick "make check" is testing each device
+>> once.  That should flush out most bugs.  
+>
+> That's already done with the "none" machine.
 
-Anyway, do you think my patch here is useful and has a chance of getting
-included? I.e. shall I re-spin this as a non-RFC patch? Or shall we
-rather wait for Eduardo's python-based tests to get included into the
-repository?
+I was too terse.  We test each device with -machine none for every
+target.  Fine if that's quick enough.  If not, we might want to reduce
+redundancy there.
 
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>  In case someone wants to help with creating some bug fix patches
->>  during the QEMU hard freeze phase: This test can now be used to
->>  trigger lots of introspection bugs that we were not aware of yet.
->>  I think most of the bugs are due to wrong handling of instance_init
->>  vs. realize functions.
-> 
-> Yes, that's a common class of bugs.  There's little guidance on what
-> kind of work belongs where, and plenty of bad examples.
+Actually, a worse offender in the "waste everybody's time via redunancy"
+department could be qom-test.
 
-I think we urgently need a file in doc/devel/ that describes the various
-states / functions of a device, where we should properly describe the
-differences between instance_init and realize. ... I'll try to come up
-with something when I've got some spare time (unless somebody else
-volunteers to do that first).
+> Anyway, do you think my patch here is useful and has a chance of getting
+> included? I.e. shall I re-spin this as a non-RFC patch? Or shall we
+> rather wait for Eduardo's python-based tests to get included into the
+> repository?
 
- Thomas
+I don't mind having make check SPEED=slow run more extensive tests.
+Assuming we actually run them at least once in a while, which seems
+doubtful.
 
+>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>>> ---
+>>>  In case someone wants to help with creating some bug fix patches
+>>>  during the QEMU hard freeze phase: This test can now be used to
+>>>  trigger lots of introspection bugs that we were not aware of yet.
+>>>  I think most of the bugs are due to wrong handling of instance_init
+>>>  vs. realize functions.
+>> 
+>> Yes, that's a common class of bugs.  There's little guidance on what
+>> kind of work belongs where, and plenty of bad examples.
+>
+> I think we urgently need a file in doc/devel/ that describes the various
+> states / functions of a device, where we should properly describe the
+> differences between instance_init and realize. ... I'll try to come up
+> with something when I've got some spare time (unless somebody else
+> volunteers to do that first).
+
+Please do.
+
+Widen the scope from just TYPE_DEVICE to all of QOM?

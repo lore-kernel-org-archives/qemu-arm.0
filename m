@@ -1,130 +1,157 @@
-Received: by 10.28.4.212 with SMTP id 203csp888281wme;
-        Fri, 27 Apr 2018 08:17:52 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZrzh/r3PkkCFuLqmDJ8BUB9fIwd3GwelO+4Sy+GoX/g/RloGeMfQ/8KhwH2Q0o1/kn1IJed
-X-Received: by 2002:aed:3069:: with SMTP id 96-v6mr2423015qte.283.1524842272736;
-        Fri, 27 Apr 2018 08:17:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1524842272; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp965141wme;
+        Fri, 27 Apr 2018 09:30:39 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZrNxASfxNrU2I62aGUVO6Q8ltO0/5vnHW+FKsuA/B3ejzcx1Gk4d4MsJIovIwYuI1SuRWe5
+X-Received: by 10.55.167.195 with SMTP id q186mr2437511qke.296.1524846639558;
+        Fri, 27 Apr 2018 09:30:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1524846639; cv=none;
         d=google.com; s=arc-20160816;
-        b=N9nc0/l3hQ5T3j6ozHAkOOCHbVn900FT7KDgawm3Pn+hfmSFSBo/figIhSG9Kb6CXa
-         HBytveCzrU1ZR2x9Yq0LTZ05aIhKDjkRlcgiEtSy1B6BTycJIp4aTVUK+jgnsCFRo3FR
-         B3l/kKRmh9Bcc6Kg1xU0WgZ4aTo1J/qEt+HCdmJEUOaHpjXVDkHb78alsYKqZO/yzIRe
-         0aG5i6+F3bvp+VN6e7NuY2wWjsK8KnAbQQGVES5JQ2aYjlmR4DyOhVnLxz8ZW/Bqn/sU
-         yy2pXMTuF4n6HOKYexEEuZjdHK+iGQAQ3f6qpO0Iy1IRtcacj1SggfFJXhAE4yCvi9n/
-         Q7aA==
+        b=rUQNnahngRmf72FZyMko3AcLHfHl9PhwUkSC+shGuEmjwWR3/41m+/6ZwUuuGmpQDo
+         8971S7C5sggJlFr+QiABYEJ29S71RcSvj1ueDpq9ep7Lb81rIfoLQM8s7S3TyUsInhaP
+         wpcloeS+fmtxGg0GcKmsQufhc4ik/Nkng2EGP8N1IXE3WYYOig+Bfjov0R4ZsSG+WMYc
+         nGJ1JE8wfcUmooA6mwmwuJb/QCi1BzJ6GKaAKH9AezyjbPBhJVKdbzTihxXOu6KBK15U
+         Tp4Fnbuy5KDvUJmg76KmccibMW0LCKFAUETMHpIKjIkSmjGOMeB4WKKbIYFcGGJNwgvQ
+         j6MQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
+         :message-id:in-reply-to:date:references:to:from
          :arc-authentication-results;
-        bh=x5g4Sa8NRQ9llAp2V44kI6ReX/Kmdu653CIjgwpVbV4=;
-        b=jx0LR9qYYZyHH0SX1/raZV2qLlNv/ozAZq6w7IobOMzLI5wYemrMdqpPhdCGxwNb5E
-         9mqRfMEGnELFU4mU4kQvQiD5K7f+kLdtnlFedGrCB8Cnll0f3f4gFxozQSQ8wL/ur1Rl
-         6ZmctFYT9rTjyQpcys7OzEfkinCXt7VWQuHEXMsm4DaAa092cvpJ5fTsfAnEJdWc+5J9
-         Thk7y7kFOkU+wjBmfsjjltUpHk0ZWqAiDx/ZU3IkPE/KsHGWLzpzxV+BoPWCKk+serJS
-         ElJuaytrTe1iIN4sLAKnN9e6pNo4BtvxfFyB++VGo8/cVG37VMw+c4JcaPrp+9cAl/KG
-         EpzQ==
+        bh=06z7ERgT3uPGgFBaLi6G4XGiIW33xJQqPnHKmhZr7AY=;
+        b=AW9rw27kQsla8Ov5FU7DpdJkK9Imbe+UxoMT+s0PAoH5k/YYGgTHncYEXIsq8nVY9Q
+         MoiVp44JSI2eWGxjQSJHPZ/OXdGqTVhB8kfDbD5h7QVdmOgLcq/0mKQ1OuPgXAwsFepo
+         LhB93PZNYi/8joCQgDiCP8oLjV0oFKgX5U/FzNlrNxgw4jNe2gZRcbUNd6QansE1s6Ql
+         HEYlKAennzhh4GY8M9adoXpJQuOTUMe4nmHvuJrHl7eZSiMrl5nIzlQ4XSzBbw80rRTa
+         v71wC5/m+rhfbamLDv05xUpkP7n1agKK89dCBmHwOZrY+vFVmCoGmNuoVejLyRTIPkh6
+         sFDw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=g89Fd1Rj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l9-v6si1567240qtp.398.2018.04.27.08.17.52
+        by mx.google.com with ESMTPS id n21-v6si1762345qtl.84.2018.04.27.09.30.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 27 Apr 2018 08:17:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 27 Apr 2018 09:30:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=g89Fd1Rj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:48678 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:49090 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fC58C-0003PP-6O
-	for alex.bennee@linaro.org; Fri, 27 Apr 2018 11:17:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50353)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fC6Gd-0003jI-39
+	for alex.bennee@linaro.org; Fri, 27 Apr 2018 12:30:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42934)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcmvbkbc@gmail.com>) id 1fC4xa-0002da-OV
-	for qemu-devel@nongnu.org; Fri, 27 Apr 2018 11:06:55 -0400
+	(envelope-from <armbru@redhat.com>) id 1fC6GX-0003jD-B7
+	for qemu-arm@nongnu.org; Fri, 27 Apr 2018 12:30:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jcmvbkbc@gmail.com>) id 1fC4xY-0003j8-QB
-	for qemu-devel@nongnu.org; Fri, 27 Apr 2018 11:06:54 -0400
-Received: from mail-yb0-x229.google.com ([2607:f8b0:4002:c09::229]:43134)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <jcmvbkbc@gmail.com>)
-	id 1fC4xY-0003ir-Lc; Fri, 27 Apr 2018 11:06:52 -0400
-Received: by mail-yb0-x229.google.com with SMTP id y123-v6so721310ybe.10;
-	Fri, 27 Apr 2018 08:06:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=x5g4Sa8NRQ9llAp2V44kI6ReX/Kmdu653CIjgwpVbV4=;
-	b=g89Fd1Rj3G1EazJHbTLuOL0HK2bzeWz2KVbTQ+5mfxlAeEUG4FAHYi4jW716Aktvex
-	V3CAeqsViYl/bFKZR/BhBAefKsgcbNVF/SE0owE3rEV5prsqOFaKzqwPhkFkSdIDjFH0
-	mPmuYZlM+rH8xiskZGbKdbCjEnd2wp3GdezbzHxvVLimV0U/sMXLGJIs2d7vUrmGcdL2
-	f8jr9fc3T4fdAr4TnfqKLxoCIgfWGBGcwa3wWBxbBtyJS9IwrlnmsSvnyFbeZ0GaNVqX
-	HPaXZ3cOfLx9mmmJYmd+VGznNwzXnNkbSXIi9YFieuGNPmRLwD2dWYvAxknSZX1fZNFN
-	F55Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=x5g4Sa8NRQ9llAp2V44kI6ReX/Kmdu653CIjgwpVbV4=;
-	b=q6EpjgCbe0w6Rfd51aeC7BD7+1+GMIkCEusSf+glGB6S/XvVY0lt5xM7LFqzUGJgTL
-	+30gXJ8ewniKVrvpsxjgzMRUEKihaiJfH+icR5eszRRW3bX2uYhYDr6pN4mg60vo3Qae
-	/708JRcGnMz3hkunJH0SamP08ivdfFi6RDZ9ydIoezcSAlFGHpC5eDEtjEP9KXkK51ZP
-	o72L9RaSn9aNoNc/Cw2Q3ZwKWyIVBUUVsAHXj5/P6ZT2dHlZ4lx91/oc4APWYSLS1Znm
-	Xizn1cC3aepGgi9OkuqOPry1INDclhdYJ+jD2PcrlDLobyMXKg7ZgtvfcFwzn7GNR+Ri
-	5eTg==
-X-Gm-Message-State: ALQs6tBqk99CULgWT+7PM3hK+/Xg770EEWu+/8983jE0lRj3ZJpCE0oN
-	ZFjhmlJkapKeNCJIsVYFnUB0QNGkz4dVJmSHKzs=
-X-Received: by 2002:a25:20d7:: with SMTP id
-	g206-v6mr1377331ybg.71.1524841612169; 
-	Fri, 27 Apr 2018 08:06:52 -0700 (PDT)
+	(envelope-from <armbru@redhat.com>) id 1fC6GS-00078p-5h
+	for qemu-arm@nongnu.org; Fri, 27 Apr 2018 12:30:33 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:37864 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1fC6GS-00078c-1x; Fri, 27 Apr 2018 12:30:28 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id C564D818B126;
+	Fri, 27 Apr 2018 16:30:23 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-129.ams2.redhat.com
+	[10.36.116.129])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 7AD5D215CDD0;
+	Fri, 27 Apr 2018 16:30:19 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 394F11138645; Fri, 27 Apr 2018 18:30:18 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+References: <1521452376-25099-1-git-send-email-thuth@redhat.com>
+	<87in8qf2w3.fsf@dusky.pond.sub.org>
+	<62dba5cf-b497-1a98-0af5-971e169a3458@redhat.com>
+	<877eou2nek.fsf@dusky.pond.sub.org>
+	<099d2af4-8fe3-f80c-693f-495accb26a17@redhat.com>
+	<CAFEAcA_VAckXDgARe5dJdxe9N19quUD5Dn+Dseuj=itLbFmG0g@mail.gmail.com>
+	<40c06711-f9a0-3440-9a47-8230cbcb3d55@redhat.com>
+Date: Fri, 27 Apr 2018 18:30:18 +0200
+In-Reply-To: <40c06711-f9a0-3440-9a47-8230cbcb3d55@redhat.com> (Thomas Huth's
+	message of "Fri, 27 Apr 2018 12:24:57 +0200")
+Message-ID: <87muxoehnp.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.3 (gnu/linux)
 MIME-Version: 1.0
-Received: by 2002:a25:3752:0:0:0:0:0 with HTTP; Fri, 27 Apr 2018 08:06:51
-	-0700 (PDT)
-In-Reply-To: <20180427002651.28356-4-richard.henderson@linaro.org>
-References: <20180427002651.28356-1-richard.henderson@linaro.org>
-	<20180427002651.28356-4-richard.henderson@linaro.org>
-From: Max Filippov <jcmvbkbc@gmail.com>
-Date: Fri, 27 Apr 2018 08:06:51 -0700
-Message-ID: <CAMo8Bf+z2w5hhdwQ+8zUoTeCUK3iCSeAeirB4tX7FvF8o14-tA@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4002:c09::229
-Subject: Re: [Qemu-devel] [PATCH 3/9] target/xtensa: Use new min/max
- expanders
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.8]);
+	Fri, 27 Apr 2018 16:30:23 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Fri, 27 Apr 2018 16:30:23 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'armbru@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [Qemu-devel]   qom-test
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XLD0LEPoUu0t
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>, qemu-ppc <qemu-ppc@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: YglKLgcg0UrT
 
-On Thu, Apr 26, 2018 at 5:26 PM, Richard Henderson
-<richard.henderson@linaro.org> wrote:
-> The generic expanders replace nearly identical code in the translator.
+Thomas Huth <thuth@redhat.com> writes:
+
+> On 27.04.2018 12:20, Peter Maydell wrote:
+>> On 27 April 2018 at 07:06, Thomas Huth <thuth@redhat.com> wrote:
+>>> On 26.04.2018 13:54, Markus Armbruster wrote:
+>>> [...]
+>>>> Actually, a worse offender in the "waste everybody's time via redunancy"
+>>>> department could be qom-test.
+
+Supporting numbers:
+
+$ time for i in *-softmmu/qemu-system-*; do [ -x $i ] || continue; QTEST_QEMU_BINARY=$i QTEST_QEMU_IMG=qemu-img MALLOC_PERTURB_=${MALLOC_PERTURB_:-$(( ${RANDOM:-0} % 255 + 1))} gtester -k --verbose -m=quick  tests/qom-test ; done
+[...]
+real	3m27.427s
+user	2m7.141s
+sys	1m44.354s
+
+aarch64, arm, i386, x86_64 each take more than 30s.
+
+For each target, we walk /machine and qom-get every property.  The test
+passes if qom-get doesn't crash, the values we get don't matter.
+
+For x86_64 alone, qom-test executes qom-get more than 45,000 times to
+test almost 9,500 objects.  It gets the properties of more than 5000
+qemu:memory-region objects, more than 2500 irq objects, almost 300
+smbus-eeprom objects, 110 IDE objects, ...  It's nice we can test
+qom-get doesn't crash on any of IDE's properties in 110 very slight
+variations.  But most of the time, one of the variations would be
+enough.
+
+>>> Shall we change qom-test to also only test with the "none" machine in
+>>> the normal "make check" mode and only do the full test with all machines
+>>> in "make check SPEED=slow" ?
+>> 
+>> We definitely want something that tries to instantiate every
+>> machine, because that does catch bugs.
 >
-> Cc: Max Filippov <jcmvbkbc@gmail.com>
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/xtensa/translate.c | 50 +++++++++++++++++++++++++++++++----------------
->  1 file changed, 33 insertions(+), 17 deletions(-)
+> Yes, after having a closer look at this one, I also think that we should
+> *not* change it to run with "none" by default only. The 'qom-list'
+> command results in quite a different output depending on which machine
+> you run it on.
 
-Acked-by: Max Filippov <jcmvbkbc@gmail.com>
-
--- 
-Thanks.
--- Max
+Only running "none" is too naive.

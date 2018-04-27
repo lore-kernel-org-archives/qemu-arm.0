@@ -1,622 +1,386 @@
-Received: by 10.28.91.67 with SMTP id p64csp1284220wmb;
-        Thu, 8 Mar 2018 06:27:58 -0800 (PST)
-X-Google-Smtp-Source: AG47ELvf9duSu2q7wnR6l9HPF0kN2TwtGukUb+CLoQojGNYf6hzQVOxP8/dqmsmUh7y31Snm/XVy
-X-Received: by 10.13.247.1 with SMTP id h1mr13610852ywf.23.1520519278306;
-        Thu, 08 Mar 2018 06:27:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520519278; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp168464wme;
+        Thu, 26 Apr 2018 17:29:43 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZoGw/TDd4C6XIrUH5b0BcUR4GnRTkzFCVcPphMtpZOu/xoISsw7uSSMEwKWrPel3Yh/AeCz
+X-Received: by 10.55.0.129 with SMTP id t1mr166120qkg.31.1524788983723;
+        Thu, 26 Apr 2018 17:29:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1524788983; cv=none;
         d=google.com; s=arc-20160816;
-        b=nPS0Gn6zfOwFp9NqTPXctpHKwGWKatruoxDbUqrf4d11egiNiqZoF3NTrFCInML1qp
-         4vRDDxzRdlpijkvIeFwGB+TwYk6y8NJYzxWbRhuwupgpgsk98+IjFBufdeCy74AW2H3M
-         5VGGve3q+ZeR+/3Pe+p0gAFX6UY1/F6myAyjYDUrZgTr/NPoeKFRNnKahds05FUDY8gn
-         3WRrYV4SUtqgzVVXedrZlnvLt0Tom5Pn9kiUuxOtQZhMvcCiYFrbRH2y+P5GBvKGB6JT
-         P8BcRL4KkQ29RNhqggY9Docxw39mgzug777Ypq2sS/8+amnczNSD9V6jW1cgqdwlnilb
-         WULQ==
+        b=cWCKfXFOh+KUa6W/pUe3AjXnM0C89MwtCWq9j8ZWr5/ynEldMNpGr4j9T5nkZdmajZ
+         3ZfDbewBjtShk8XMtHk3LnsMBjlAdYXXdvTanPh224b1IF+IZVNh/PSntM9YqQKV89P7
+         d3m0lZpLhKDAjvUG5rCtSAjAVVBZYHpi5mPR3deoG3Veuc+W+p4rooS2DOQ7Pinv5JWU
+         oUuKBGy8uuaymomdW9gbmp8LbY1zGHts3CuPgJeDDKIHROsivME+1g1nMJZ3+B5zynGS
+         0HB08AMYqfXZ3LBSKkhfyyJYQCvD4fNPYiR6j4wD1p7nO7VBkjm/V7lfsQXzOllNjUL6
+         YrYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=i/GQRismSn59DmrL6A9etUWiy6LYHPu0T3n1MdCHmyo=;
-        b=lQVL4PbokVyj+CMQB7+o9LWnzng8bcMSQBMAdoFq82scI6roJiZtkZXe/QNUgcQ7m+
-         QSHMc8MmuWWyKGJvH1sq/Ebc137gBivEiG9+rTavuZgZYsEmBmcjKxt1/jPeHwpNlbhX
-         5Fi1YV9vGpeTUBEtmI+jWFMo2axCG2nojt+RXePd0HFiPcnK823TuYplNRmXKQbuZeFL
-         220IvxV7JaPkGAXryIgI7JXiS3LDj9SBkVNv7fL8LU8QURba1x37AOSZdY+Nxeb3rypT
-         p3/uqOqWgRrVOrCT6ijONnYL8EeW7Hor50D9G9l6dLtjZxryFsevYpiPPBsXkDUjaLEa
-         vl3g==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=/OKQUbApuVUtLjo2vK1xvxA0ICytFh53I028FicEKSU=;
+        b=J0k3ubbpz1TyLidCfCS7UkuoxaL1EImG+7f0DbHVg0ZmJinJwS6FbQEfneB01dDA1q
+         okCJi/nrzLaxHMVxFXBUmTi2eJDszJ5jnb4aPN2C+ccgqEJpjuQZ9PVQotK5trA9JYuP
+         zImyYEBrPF1Kn3Zdcj/DeryA2iAsTcf46gXM8IpLHmIwp+28c8PzDPg0ZwXQBUdxbwbG
+         lky1gmEZm4U7QHkRmFe3jm6JmthDvH0EnqN9LOi7sWrNgsydtnzS8B97do5b2gKqiY0O
+         OWu6pOsEtXNQZGI0AMEdAqeZ/9RwhRCARnfKkKORZThFkcQTAUxs70KegoMNFNvz0DsH
+         9HXQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=L2x4H6i0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=fzApzNUT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b63-v6si3481908ybb.436.2018.03.08.06.27.58
+        by mx.google.com with ESMTPS id b3-v6si101126qvj.69.2018.04.26.17.29.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 08 Mar 2018 06:27:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 26 Apr 2018 17:29:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=L2x4H6i0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=fzApzNUT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39352 helo=lists.gnu.org)
+Received: from localhost ([::1]:45110 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1etwWT-0004N1-MA
-	for alex.bennee@linaro.org; Thu, 08 Mar 2018 09:27:57 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34946)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fBrGh-0003e5-5L
+	for alex.bennee@linaro.org; Thu, 26 Apr 2018 20:29:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51756)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1etwWG-0004LI-AG
-	for qemu-arm@nongnu.org; Thu, 08 Mar 2018 09:27:46 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1fBrEI-000291-5M
+	for qemu-devel@nongnu.org; Thu, 26 Apr 2018 20:27:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1etwWE-0006f9-5d
-	for qemu-arm@nongnu.org; Thu, 08 Mar 2018 09:27:44 -0500
-Received: from mail-ot0-x235.google.com ([2607:f8b0:4003:c0f::235]:46017)
+	(envelope-from <richard.henderson@linaro.org>) id 1fBrEG-0004Yo-LQ
+	for qemu-devel@nongnu.org; Thu, 26 Apr 2018 20:27:14 -0400
+Received: from mail-pf0-x242.google.com ([2607:f8b0:400e:c00::242]:33871)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1etwWD-0006ef-U0
-	for qemu-arm@nongnu.org; Thu, 08 Mar 2018 09:27:42 -0500
-Received: by mail-ot0-x235.google.com with SMTP id f11so5531138otj.12
-	for <qemu-arm@nongnu.org>; Thu, 08 Mar 2018 06:27:41 -0800 (PST)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1fBrEG-0004XI-DE
+	for qemu-devel@nongnu.org; Thu, 26 Apr 2018 20:27:12 -0400
+Received: by mail-pf0-x242.google.com with SMTP id a14so142478pfi.1
+	for <qemu-devel@nongnu.org>; Thu, 26 Apr 2018 17:27:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=i/GQRismSn59DmrL6A9etUWiy6LYHPu0T3n1MdCHmyo=;
-	b=L2x4H6i0Eb4s3jiXetscWGGXF00/m9wRsJHOGuCYAzpFSWgRMzfRTwv5HCofXaecI1
-	j2URqroOsOPKOMomx37N3fCeduZCUjYpsPUQVx0almiOqgYdQZFXtx0bAp5r/6wJyeFQ
-	0soWpv/OIcjMVTBA6zCwooGeJY50EaDpSe3wQ=
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=/OKQUbApuVUtLjo2vK1xvxA0ICytFh53I028FicEKSU=;
+	b=fzApzNUTfn5otIM2RgqTI757SUJiQVemakMS1Rhm8pEcQyQD/numKYdxcjTo4kEVgX
+	VBSb4rjFvLSt2e3R0rbs44fdUVTVM4mBWq/21zVfXVDQUoABVm/JYKHycUEqEwOJRP/2
+	OUwbaJ+dK1w7efd6hKIuIKrBQOJ4IFM1uuLGY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=i/GQRismSn59DmrL6A9etUWiy6LYHPu0T3n1MdCHmyo=;
-	b=IIx3/uQ8nEM7rod/t8ZX1rodsISFayYvYNQqWrTCU9kLtnV1cfws5f/ZOXmUX0oZ8H
-	HSQlsKLI2Yi8+7I0m0ScHHkUZcei34WKYYpdLGhHW6Do3Nn9gKj1itfqiC3MxftYY6du
-	378G20sGN9A6Wf1u6AFR+J0MwpmOLbAqrUa2m97SPFg+zFYp2so4rSsDOBAOWYAjzfdq
-	rIRpy2FACX1414pHF/9HJmCVxJSFpjHTqRpTvYYiJ9wtJLUqRTKHJCnnrVlLi53oNbIN
-	2eNXg6ty2gAynw08Ci+fV8+yi14y1F0W9CDx+x3XPTXnkiKUHym2aPIwaMc3vBLKdyfv
-	YHiw==
-X-Gm-Message-State: AElRT7EGSdOXyFjGo8+b2AeqSTL/CoUv5Ps7J1w81JBWPY7/PoqvOshx
-	Xvm8HBKaGmMmNnrW3LxZvQgKTFE8wkUC2c3BOTHyPw==
-X-Received: by 10.157.89.158 with SMTP id u30mr10954701oth.294.1520519260557; 
-	Thu, 08 Mar 2018 06:27:40 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.157.33.100 with HTTP; Thu, 8 Mar 2018 06:27:20 -0800 (PST)
-In-Reply-To: <1518893216-9983-5-git-send-email-eric.auger@redhat.com>
-References: <1518893216-9983-1-git-send-email-eric.auger@redhat.com>
-	<1518893216-9983-5-git-send-email-eric.auger@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 8 Mar 2018 14:27:20 +0000
-Message-ID: <CAFEAcA871Ju5cV8EYiXEg65Rofh=Pn2=2h8wy4-QXj-wUzoj+g@mail.gmail.com>
-To: Eric Auger <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references;
+	bh=/OKQUbApuVUtLjo2vK1xvxA0ICytFh53I028FicEKSU=;
+	b=c2b+K0vWj7BEqur9XEJVBregR4REtvsgR3iWXogtXBWowrOdmZzLNWr8+mhczzGfo0
+	p4gFE8Ije9AJ3ohWIs+hHP89Xv9kBJ9nl6oczi3SEeSaE0RM3p24J/ZSqHG8ji+Wb22W
+	4vcqbANmaNuj6Ts6TiJpq+rPxjciikbhpPPbmX18Kcr+MOyUJ/OoL5HjlbzM3gAGZKAK
+	AFRYXdOpBpXyczZNImCAJ0sNQvEMmTPz3DlMyyD+Kds77Y7HtLzUaX0+w1lJRg6g/YpQ
+	V8LwMxFQWoA1/zihxdAtGmSwB4wcw/Y88I76XawQWzSmZiZfeuweGV8pIKgYXZo4Fbyu
+	DBxg==
+X-Gm-Message-State: ALQs6tApMHNEu9BdIsHrGH5UuyoTeElNQ2szo2BuxUlIfbgRVS6iKBWs
+	yJAW9JpxPYhpDk7Ok5aOzmcwrh0kBts=
+X-Received: by 2002:a63:6110:: with SMTP id
+	v16-v6mr172686pgb.292.1524788830951; 
+	Thu, 26 Apr 2018 17:27:10 -0700 (PDT)
+Received: from cloudburst.twiddle.net.com
+	([2605:e000:112b:41da:c94c:5ee7:de92:7d78])
+	by smtp.gmail.com with ESMTPSA id g76sm86338pfj.102.2018.04.26.17.27.09
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Thu, 26 Apr 2018 17:27:10 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Thu, 26 Apr 2018 14:26:48 -1000
+Message-Id: <20180427002651.28356-7-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.14.3
+In-Reply-To: <20180427002651.28356-1-richard.henderson@linaro.org>
+References: <20180427002651.28356-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::235
-Subject: Re: [Qemu-arm] [PATCH v9 04/14] hw/arm/smmuv3: Skeleton
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400e:c00::242
+Subject: [Qemu-devel] [PATCH 6/9] target/arm: Introduce
+ ARM_FEATURE_V8_ATOMICS and initial decode
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
-	Jean-Philippe Brucker <jean-philippe.brucker@arm.com>,
-	Tomasz Nowicki <tn@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	Peter Xu <peterx@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Christoffer Dall <christoffer.dall@linaro.org>,
-	linuc.decode@gmail.com, Bharat Bhushan <bharat.bhushan@nxp.com>,
-	Prem Mallappa <prem.mallappa@gmail.com>, eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /mEhbhtQ3eJ0
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9KjO9uoAVehH
 
-On 17 February 2018 at 18:46, Eric Auger <eric.auger@redhat.com> wrote:
-> From: Prem Mallappa <prem.mallappa@broadcom.com>
->
-> This patch implements a skeleton for the smmuv3 device.
-> Datatypes and register definitions are introduced. The MMIO
-> region, the interrupts and the queue are initialized.
->
-> Only the MMIO read operation is implemented here.
->
-> Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+The insns in the ARMv8.1-Atomics are added to the existing
+load/store exclusive and load/store reg opcode spaces.
+Rearrange the top-level decoders for these to accomodate.
+The Atomics insns themselves still generate Unallocated.
 
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/cpu.h           |   1 +
+ linux-user/elfload.c       |   1 +
+ target/arm/translate-a64.c | 182 +++++++++++++++++++++++++++++++++------------
+ 3 files changed, 138 insertions(+), 46 deletions(-)
 
-I just have a few minor nits on this one...
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 44e6b77151..013f785306 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1449,6 +1449,7 @@ enum arm_features {
+     ARM_FEATURE_V8_SHA3, /* implements SHA3 part of v8 Crypto Extensions */
+     ARM_FEATURE_V8_SM3, /* implements SM3 part of v8 Crypto Extensions */
+     ARM_FEATURE_V8_SM4, /* implements SM4 part of v8 Crypto Extensions */
++    ARM_FEATURE_V8_ATOMICS, /* implements v8.1 Atomic Memory Extensions */
+     ARM_FEATURE_V8_RDM, /* implements v8.1 simd round multiply */
+     ARM_FEATURE_V8_FP16, /* implements v8.2 half-precision float */
+     ARM_FEATURE_V8_FCMA, /* has complex number part of v8.3 extensions.  */
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index c77ed1bb01..a12b7b9d8c 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -557,6 +557,7 @@ static uint32_t get_elf_hwcap(void)
+     GET_FEATURE(ARM_FEATURE_V8_SHA512, ARM_HWCAP_A64_SHA512);
+     GET_FEATURE(ARM_FEATURE_V8_FP16,
+                 ARM_HWCAP_A64_FPHP | ARM_HWCAP_A64_ASIMDHP);
++    GET_FEATURE(ARM_FEATURE_V8_ATOMICS, ARM_HWCAP_A64_ATOMICS);
+     GET_FEATURE(ARM_FEATURE_V8_RDM, ARM_HWCAP_A64_ASIMDRDM);
+     GET_FEATURE(ARM_FEATURE_V8_FCMA, ARM_HWCAP_A64_FCMA);
+ #undef GET_FEATURE
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index d916fea3a3..0706c8c394 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -2147,62 +2147,98 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
+     int rt = extract32(insn, 0, 5);
+     int rn = extract32(insn, 5, 5);
+     int rt2 = extract32(insn, 10, 5);
+-    int is_lasr = extract32(insn, 15, 1);
+     int rs = extract32(insn, 16, 5);
+-    int is_pair = extract32(insn, 21, 1);
+-    int is_store = !extract32(insn, 22, 1);
+-    int is_excl = !extract32(insn, 23, 1);
++    int is_lasr = extract32(insn, 15, 1);
++    int o2_L_o1_o0 = extract32(insn, 21, 3) * 2 | is_lasr;
+     int size = extract32(insn, 30, 2);
+     TCGv_i64 tcg_addr;
+ 
+-    if ((!is_excl && !is_pair && !is_lasr) ||
+-        (!is_excl && is_pair) ||
+-        (is_pair && size < 2)) {
+-        unallocated_encoding(s);
++    switch (o2_L_o1_o0) {
++    case 0x0: /* STXR */
++    case 0x1: /* STLXR */
++        if (rn == 31) {
++            gen_check_sp_alignment(s);
++        }
++        if (is_lasr) {
++            tcg_gen_mb(TCG_MO_ALL | TCG_BAR_STRL);
++        }
++        tcg_addr = read_cpu_reg_sp(s, rn, 1);
++        gen_store_exclusive(s, rs, rt, rt2, tcg_addr, size, false);
+         return;
+-    }
+ 
+-    if (rn == 31) {
+-        gen_check_sp_alignment(s);
+-    }
+-    tcg_addr = read_cpu_reg_sp(s, rn, 1);
+-
+-    /* Note that since TCG is single threaded load-acquire/store-release
+-     * semantics require no extra if (is_lasr) { ... } handling.
+-     */
+-
+-    if (is_excl) {
+-        if (!is_store) {
+-            s->is_ldex = true;
+-            gen_load_exclusive(s, rt, rt2, tcg_addr, size, is_pair);
+-            if (is_lasr) {
+-                tcg_gen_mb(TCG_MO_ALL | TCG_BAR_LDAQ);
+-            }
+-        } else {
+-            if (is_lasr) {
+-                tcg_gen_mb(TCG_MO_ALL | TCG_BAR_STRL);
+-            }
+-            gen_store_exclusive(s, rs, rt, rt2, tcg_addr, size, is_pair);
++    case 0x4: /* LDXR */
++    case 0x5: /* LDAXR */
++        if (rn == 31) {
++            gen_check_sp_alignment(s);
+         }
+-    } else {
+-        TCGv_i64 tcg_rt = cpu_reg(s, rt);
+-        bool iss_sf = disas_ldst_compute_iss_sf(size, false, 0);
++        tcg_addr = read_cpu_reg_sp(s, rn, 1);
++        s->is_ldex = true;
++        gen_load_exclusive(s, rt, rt2, tcg_addr, size, false);
++        if (is_lasr) {
++            tcg_gen_mb(TCG_MO_ALL | TCG_BAR_LDAQ);
++        }
++        return;
+ 
++    case 0x9: /* STLR */
+         /* Generate ISS for non-exclusive accesses including LASR.  */
+-        if (is_store) {
++        if (rn == 31) {
++            gen_check_sp_alignment(s);
++        }
++        tcg_gen_mb(TCG_MO_ALL | TCG_BAR_STRL);
++        tcg_addr = read_cpu_reg_sp(s, rn, 1);
++        do_gpr_st(s, cpu_reg(s, rt), tcg_addr, size, true, rt,
++                  disas_ldst_compute_iss_sf(size, false, 0), is_lasr);
++        return;
++
++    case 0xd: /* LDARB */
++        /* Generate ISS for non-exclusive accesses including LASR.  */
++        if (rn == 31) {
++            gen_check_sp_alignment(s);
++        }
++        tcg_addr = read_cpu_reg_sp(s, rn, 1);
++        do_gpr_ld(s, cpu_reg(s, rt), tcg_addr, size, false, false, true, rt,
++                  disas_ldst_compute_iss_sf(size, false, 0), is_lasr);
++        tcg_gen_mb(TCG_MO_ALL | TCG_BAR_LDAQ);
++        return;
++
++    case 0x2: case 0x3: /* CASP / STXP */
++        if (size & 2) { /* STXP / STLXP */
++            if (rn == 31) {
++                gen_check_sp_alignment(s);
++            }
+             if (is_lasr) {
+                 tcg_gen_mb(TCG_MO_ALL | TCG_BAR_STRL);
+             }
+-            do_gpr_st(s, tcg_rt, tcg_addr, size,
+-                      true, rt, iss_sf, is_lasr);
+-        } else {
+-            do_gpr_ld(s, tcg_rt, tcg_addr, size, false, false,
+-                      true, rt, iss_sf, is_lasr);
++            tcg_addr = read_cpu_reg_sp(s, rn, 1);
++            gen_store_exclusive(s, rs, rt, rt2, tcg_addr, size, true);
++            return;
++        }
++        /* CASP / CASPL */
++        break;
++
++    case 0x6: case 0x7: /* CASP / LDXP */
++        if (size & 2) { /* LDXP / LDAXP */
++            if (rn == 31) {
++                gen_check_sp_alignment(s);
++            }
++            tcg_addr = read_cpu_reg_sp(s, rn, 1);
++            s->is_ldex = true;
++            gen_load_exclusive(s, rt, rt2, tcg_addr, size, true);
+             if (is_lasr) {
+                 tcg_gen_mb(TCG_MO_ALL | TCG_BAR_LDAQ);
+             }
++            return;
+         }
++        /* CASPA / CASPAL */
++        break;
++
++    case 0xa: /* CAS */
++    case 0xb: /* CASL */
++    case 0xe: /* CASA */
++    case 0xf: /* CASAL */
++        break;
+     }
++    unallocated_encoding(s);
+ }
+ 
+ /*
+@@ -2715,6 +2751,55 @@ static void disas_ldst_reg_unsigned_imm(DisasContext *s, uint32_t insn,
+     }
+ }
+ 
++/* Atomic memory operations
++ *
++ *  31  30      27  26    24    22  21   16   15    12    10    5     0
++ * +------+-------+---+-----+-----+---+----+----+-----+-----+----+-----+
++ * | size | 1 1 1 | V | 0 0 | A R | 1 | Rs | o3 | opc | 0 0 | Rn |  Rt |
++ * +------+-------+---+-----+-----+--------+----+-----+-----+----+-----+
++ *
++ * Rt: the result register
++ * Rn: base address or SP
++ * Rs: the source register for the operation
++ * V: vector flag (always 0 as of v8.3)
++ * A: acquire flag
++ * R: release flag
++ */
++static void disas_ldst_atomic(DisasContext *s, uint32_t insn,
++                              int size, int rt, bool is_vector)
++{
++    int rs = extract32(insn, 16, 5);
++    int rn = extract32(insn, 5, 5);
++    int o3_opc = extract32(insn, 12, 4);
++    int feature = ARM_FEATURE_V8_ATOMICS;
++
++    if (is_vector) {
++        unallocated_encoding(s);
++        return;
++    }
++    switch (o3_opc) {
++    case 000: /* LDADD */
++    case 001: /* LDCLR */
++    case 002: /* LDEOR */
++    case 003: /* LDSET */
++    case 004: /* LDSMAX */
++    case 005: /* LDSMIN */
++    case 006: /* LDUMAX */
++    case 007: /* LDUMIN */
++    case 010: /* SWP */
++    default:
++        unallocated_encoding(s);
++        return;
++    }
++    if (!arm_dc_feature(s, feature)) {
++        unallocated_encoding(s);
++        return;
++    }
++
++    (void)rs;
++    (void)rn;
++}
++
+ /* Load/store register (all forms) */
+ static void disas_ldst_reg(DisasContext *s, uint32_t insn)
+ {
+@@ -2725,23 +2810,28 @@ static void disas_ldst_reg(DisasContext *s, uint32_t insn)
+ 
+     switch (extract32(insn, 24, 2)) {
+     case 0:
+-        if (extract32(insn, 21, 1) == 1 && extract32(insn, 10, 2) == 2) {
+-            disas_ldst_reg_roffset(s, insn, opc, size, rt, is_vector);
+-        } else {
++        if (extract32(insn, 21, 1) == 0) {
+             /* Load/store register (unscaled immediate)
+              * Load/store immediate pre/post-indexed
+              * Load/store register unprivileged
+              */
+             disas_ldst_reg_imm9(s, insn, opc, size, rt, is_vector);
++            return;
++        }
++        switch (extract32(insn, 10, 2)) {
++        case 0:
++            disas_ldst_atomic(s, insn, size, rt, is_vector);
++            return;
++        case 2:
++            disas_ldst_reg_roffset(s, insn, opc, size, rt, is_vector);
++            return;
+         }
+         break;
+     case 1:
+         disas_ldst_reg_unsigned_imm(s, insn, opc, size, rt, is_vector);
+-        break;
+-    default:
+-        unallocated_encoding(s);
+-        break;
++        return;
+     }
++    unallocated_encoding(s);
+ }
+ 
+ /* AdvSIMD load/store multiple structures
+-- 
+2.14.3
 
-
-> +static inline int smmu_enabled(SMMUv3State *s)
-> +{
-> +    return FIELD_EX32(s->cr[0], CR0, SMMU_ENABLE);
-> +}
-> +
-> +typedef struct Cmd {
-> +    uint32_t word[4];
-> +} Cmd;
-> +
-> +typedef struct Evt  {
-> +    uint32_t word[8];
-> +} Evt;
-
-Some one-liner comments noting what these structs are for
-would be helpful.
-
-> +
-> +static inline uint64_t smmu_read64(uint64_t r, unsigned offset,
-> +                                   unsigned size)
-
-A doc comment here would help in describing what the purpose of
-this utility function is.
-
-> +{
-> +    if (size =3D=3D 8 && !offset) {
-> +        return r;
-
-If you take my advice a bit further down about just checking
-up front that 8-byte accesses are to definitely permitted 64
-bit register offsets, you won't need the check on offset.
-
-> +    }
-> +
-> +    /* 32 bit access */
-> +
-> +    if (offset && offset !=3D 4)  {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "SMMUv3 MMIO read: bad offset/size %u/%u\n",
-> +                      offset, size);
-
-This isn't a guest error, because the function is only ever called
-with constant values for the 'offset' parameter. You should just
-assert that the offset is 0 or 4.
-
-> +        return 0;
-> +    }
-> +
-> +    return extract64(r, offset << 3, 32);
-> +}
-> +
-> +#endif
-
-> +static void smmuv3_init_regs(SMMUv3State *s)
-> +{
-> +    /**
-> +     * IDR0: stage1 only, AArch64 only, coherent access, 16b ASID,
-> +     *       multi-level stream table
-> +     */
-> +    s->idr[0] =3D FIELD_DP32(s->idr[0], IDR0, S1P, 1); /* stage 1 suppor=
-ted */
-> +    s->idr[0] =3D FIELD_DP32(s->idr[0], IDR0, TTF, 2); /* AArch64 PTW on=
-ly */
-> +    s->idr[0] =3D FIELD_DP32(s->idr[0], IDR0, COHACC, 1); /* IO coherent=
- */
-> +    s->idr[0] =3D FIELD_DP32(s->idr[0], IDR0, ASID16, 1); /* 16-bit ASID=
- */
-> +    s->idr[0] =3D FIELD_DP32(s->idr[0], IDR0, TTENDIAN, 2); /* little en=
-dian */
-> +    s->idr[0] =3D FIELD_DP32(s->idr[0], IDR0, STALL_MODEL, 1); /* No sta=
-ll */
-> +    /* terminated transaction will always be aborted/error returned */
-> +    s->idr[0] =3D FIELD_DP32(s->idr[0], IDR0, TERM_MODEL, 1);
-> +    /* 2-level stream table supported */
-> +    s->idr[0] =3D FIELD_DP32(s->idr[0], IDR0, STLEVEL, 1);
-> +
-> +    s->idr[1] =3D FIELD_DP32(s->idr[1], IDR1, SIDSIZE, SMMU_IDR1_SIDSIZE=
-);
-> +    s->idr[1] =3D FIELD_DP32(s->idr[1], IDR1, EVENTQS, 19);
-> +    s->idr[1] =3D FIELD_DP32(s->idr[1], IDR1, CMDQS,   19);
-> +
-> +   /* 4K and 64K granule support */
-> +    s->idr[5] =3D FIELD_DP32(s->idr[5], IDR5, GRAN4K, 1);
-> +    s->idr[5] =3D FIELD_DP32(s->idr[5], IDR5, GRAN64K, 1);
-> +    s->idr[5] =3D FIELD_DP32(s->idr[5], IDR5, OAS, SMMU_IDR5_OAS); /* 44=
- bits */
-> +
-> +    s->cmdq.base =3D deposit64(s->cmdq.base, 0, 5, 19); /* LOG2SIZE =3D =
-19 */
-> +    s->cmdq.prod =3D 0;
-> +    s->cmdq.cons =3D 0;
-> +    s->cmdq.entry_size =3D sizeof(struct Cmd);
-> +    s->eventq.base =3D deposit64(s->eventq.base, 0, 5, 19); /* LOG2SIZE =
-=3D 19 */
-
-Have some #defines for max cmd queue and event queue size, since
-we use them here and also above in filling in the IDR fields ?
-
-> +    s->eventq.prod =3D 0;
-> +    s->eventq.cons =3D 0;
-> +    s->eventq.entry_size =3D sizeof(struct Evt);
-> +
-> +    s->features =3D 0;
-> +    s->sid_split =3D 0;
-> +}
-> +
-> +static void smmu_write_mmio(void *opaque, hwaddr addr,
-> +                            uint64_t val, unsigned size)
-> +{
-> +    /* not yet implemented */
-> +}
-> +
-> +static uint64_t smmu_read_mmio(void *opaque, hwaddr addr, unsigned size)
-> +{
-> +    SMMUState *sys =3D opaque;
-> +    SMMUv3State *s =3D ARM_SMMUV3(sys);
-> +    uint64_t val;
-> +
-> +    /* CONSTRAINED UNPREDICTABLE choice to have page0/1 be exact aliases=
- */
-> +    addr &=3D ~0x10000;
-> +
-> +    if (size !=3D 4 && size !=3D 8) {
-> +        qemu_log_mask(LOG_GUEST_ERROR, "SMMUv3 MMIO read: bad size %u\n"=
-, size);
-
-Your MemoryRegionOps settings mean this can never happen, so you
-don't need to check it at runtime.
-
-> +        return 0;
-> +    }
-
-Consider specifically catching 8-byte accesses to non-64-bit registers?
-This is CONSTRAINED UNPREDICTABLE (see spec section 6.2), and "one
-of the registers is read/written and other half is RAZ/WI" is permitted
-behaviour, but it does mean you need to be a little careful about not
-letting the top 32 bits of val become non-zero for the 32-bit register
-codepaths. Logging bad 64-bit accesses as LOG_GUEST_ERROR and making
-them RAZ/WI might be nicer for guest software developers.
-
-> +
-> +    /* Primecell/Corelink ID registers */
-> +    switch (addr) {
-> +    case A_CIDR0:
-> +        val =3D 0x0D;
-> +        break;
-> +    case A_CIDR1:
-> +        val =3D 0xF0;
-> +        break;
-> +    case A_CIDR2:
-> +        val =3D 0x05;
-> +        break;
-> +    case A_CIDR3:
-> +        val =3D 0xB1;
-> +        break;
-> +    case A_PIDR0:
-> +        val =3D 0x84; /* Part Number */
-> +        break;
-> +    case A_PIDR1:
-> +        val =3D 0xB4; /* JEP106 ID code[3:0] for Arm and Part numver[11:=
-8] */
-> +        break;
-> +    case A_PIDR3:
-> +        val =3D 0x10; /* MMU600 p1 */
-> +        break;
-> +    case A_PIDR4:
-> +        val =3D 0x4; /* 4KB region count, JEP106 continuation code for A=
-rm */
-> +        break;
-> +    case 0xFD4 ... 0xFDC: /* SMMU_PDIR 5-7 */
-> +        val =3D 0;
-> +        break;
-
-I usually put all the const CIDR/PIDR values in a const array, since
-there are always 12 of them next to each other, but since you already
-have this code it's fine.
-
-> +    case A_IDR0 ... A_IDR5:
-> +        val =3D s->idr[(addr - A_IDR0) / 4];
-> +        break;
-> +    case A_IIDR:
-> +        val =3D s->iidr;
-> +        break;
-> +    case A_CR0:
-> +        val =3D s->cr[0];
-> +        break;
-> +    case A_CR0ACK:
-> +        val =3D s->cr0ack;
-> +        break;
-> +    case A_CR1:
-> +        val =3D s->cr[1];
-> +        break;
-> +    case A_CR2:
-> +        val =3D s->cr[2];
-> +        break;
-> +    case A_STATUSR:
-> +        val =3D s->statusr;
-> +        break;
-> +    case A_IRQ_CTRL:
-> +        val =3D s->irq_ctrl;
-> +        break;
-> +    case A_IRQ_CTRL_ACK:
-> +        val =3D s->irq_ctrl_ack;
-> +        break;
-> +    case A_GERROR:
-> +        val =3D s->gerror;
-> +        break;
-> +    case A_GERRORN:
-> +        val =3D s->gerrorn;
-> +        break;
-> +    case A_GERROR_IRQ_CFG0: /* 64b */
-> +        val =3D smmu_read64(s->gerror_irq_cfg0, 0, size);
-> +        break;
-> +    case A_GERROR_IRQ_CFG0 + 4:
-> +        val =3D smmu_read64(s->gerror_irq_cfg0, 4, size);
-> +        break;
-> +    case A_GERROR_IRQ_CFG1:
-> +        val =3D s->gerror_irq_cfg1;
-> +        break;
-> +    case A_GERROR_IRQ_CFG2:
-> +        val =3D s->gerror_irq_cfg2;
-> +        break;
-> +    case A_STRTAB_BASE: /* 64b */
-> +        val =3D smmu_read64(s->strtab_base, 0, size);
-> +        break;
-> +    case A_STRTAB_BASE + 4: /* 64b */
-> +        val =3D smmu_read64(s->strtab_base, 4, size);
-> +        break;
-> +    case A_STRTAB_BASE_CFG:
-> +        val =3D s->strtab_base_cfg;
-> +        break;
-> +    case A_CMDQ_BASE: /* 64b */
-> +        val =3D smmu_read64(s->cmdq.base, 0, size);
-> +        break;
-> +    case A_CMDQ_BASE + 4:
-> +        val =3D smmu_read64(s->cmdq.base, 4, size);
-> +        break;
-> +    case A_CMDQ_PROD:
-> +        val =3D s->cmdq.prod;
-> +        break;
-> +    case A_CMDQ_CONS:
-> +        val =3D s->cmdq.cons;
-> +        break;
-> +    case A_EVENTQ_BASE: /* 64b */
-> +        val =3D smmu_read64(s->eventq.base, 0, size);
-> +        break;
-> +    case A_EVENTQ_BASE + 4: /* 64b */
-> +        val =3D smmu_read64(s->eventq.base, 4, size);
-> +        break;
-> +    case A_EVENTQ_PROD:
-> +        val =3D s->eventq.prod;
-> +        break;
-> +    case A_EVENTQ_CONS:
-> +        val =3D s->eventq.cons;
-> +        break;
-> +    default:
-> +        error_report("%s unhandled access at 0x%"PRIx64, __func__, addr)=
-;
-
-This should be a LOG_GUEST_ERROR (if there are registers we don't
-implement, you can define the A_* constants for them and have those
-do a LOG_UNIMP.)
-
-> +        break;
-> +    }
-> +
-> +    trace_smmuv3_read_mmio(addr, val, size);
-> +    return val;
-> +}
-> +
-
-> +static void smmu_realize(DeviceState *d, Error **errp)
-> +{
-> +    SMMUState *sys =3D ARM_SMMU(d);
-> +    SMMUv3State *s =3D ARM_SMMUV3(sys);
-> +    SMMUv3Class *c =3D ARM_SMMUV3_GET_CLASS(s);
-> +    SysBusDevice *dev =3D SYS_BUS_DEVICE(d);
-> +    Error *local_err =3D NULL;
-> +
-> +    c->parent_realize(d, &local_err);
-> +    if (local_err) {
-> +        error_propagate(errp, local_err);
-> +        return;
-> +    }
-> +
-> +    memory_region_init_io(&sys->iomem, OBJECT(s),
-> +                          &smmu_mem_ops, sys, TYPE_ARM_SMMUV3, 0x20000);
-> +
-> +    sys->mrtypename =3D g_strdup(TYPE_SMMUV3_IOMMU_MEMORY_REGION);
-
-Nothing ever modifies this later, so I don't think you nede to
-do the g_strdup() ?  (The declaration of the struct field should
-probably have a 'const'.)
-
-> +
-> +    sysbus_init_mmio(dev, &sys->iomem);
-> +
-> +    smmu_init_irq(s, dev);
-> +}
-> +
-> +static const VMStateDescription vmstate_smmuv3 =3D {
-> +    .name =3D "smmuv3",
-> +    .version_id =3D 1,
-> +    .minimum_version_id =3D 1,
-> +    .fields =3D (VMStateField[]) {
-> +        VMSTATE_UINT32(features, SMMUv3State),
-> +        VMSTATE_UINT8(sid_size, SMMUv3State),
-> +        VMSTATE_UINT8(sid_split, SMMUv3State),
-> +
-> +        VMSTATE_UINT32_ARRAY(idr, SMMUv3State, 6),
-
-These are constant ID registers, right? You don't need to
-migrate anything that's a fixed value set when the device
-is created and never modified.
-
-> +        VMSTATE_UINT32(iidr, SMMUv3State),
-> +        VMSTATE_UINT32_ARRAY(cr, SMMUv3State, 3),
-> +        VMSTATE_UINT32(cr0ack, SMMUv3State),
-> +        VMSTATE_UINT32(statusr, SMMUv3State),
-> +        VMSTATE_UINT32(irq_ctrl, SMMUv3State),
-> +        VMSTATE_UINT32(irq_ctrl_ack, SMMUv3State),
-> +        VMSTATE_UINT32(gerror, SMMUv3State),
-> +        VMSTATE_UINT32(gerrorn, SMMUv3State),
-> +        VMSTATE_UINT64(gerror_irq_cfg0, SMMUv3State),
-> +        VMSTATE_UINT32(gerror_irq_cfg1, SMMUv3State),
-> +        VMSTATE_UINT32(gerror_irq_cfg2, SMMUv3State),
-> +        VMSTATE_UINT64(strtab_base, SMMUv3State),
-> +        VMSTATE_UINT32(strtab_base_cfg, SMMUv3State),
-> +        VMSTATE_UINT64(eventq_irq_cfg0, SMMUv3State),
-> +        VMSTATE_UINT32(eventq_irq_cfg1, SMMUv3State),
-> +        VMSTATE_UINT32(eventq_irq_cfg2, SMMUv3State),
-> +
-> +        VMSTATE_UINT64(cmdq.base, SMMUv3State),
-> +        VMSTATE_UINT32(cmdq.prod, SMMUv3State),
-> +        VMSTATE_UINT32(cmdq.cons, SMMUv3State),
-> +        VMSTATE_UINT8(cmdq.entry_size, SMMUv3State),
-> +        VMSTATE_UINT64(eventq.base, SMMUv3State),
-> +        VMSTATE_UINT32(eventq.prod, SMMUv3State),
-> +        VMSTATE_UINT32(eventq.cons, SMMUv3State),
-> +        VMSTATE_UINT8(eventq.entry_size, SMMUv3State),
-
-It's a little neater to define a separate VMStateDescription
-for the SMMUQueue struct and then just use it twice here with
-VMSTATE_STRUCT. (Example in hw/dma/pl330.c for vmstate_pl330_chan.)
-
-Also, isn't the entry_size constant and fixed at device creation?
-If so, you don't need to migrate it.
-
-> +
-> +        VMSTATE_END_OF_LIST(),
-> +    },
-> +};
-> +
-> +static void smmuv3_instance_init(Object *obj)
-> +{
-> +    /* Nothing much to do here as of now */
-> +}
-> +
-> +static void smmuv3_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> +    SMMUv3Class *c =3D ARM_SMMUV3_CLASS(klass);
-> +
-> +    dc->vmsd    =3D &vmstate_smmuv3;
-
-It would be nice to go through the patchset and remove these
-unnecessary extra spaces in various assignments and declarations.
-
-> +    device_class_set_parent_reset(dc, smmu_reset, &c->parent_reset);
-> +    c->parent_realize =3D dc->realize;
-> +    dc->realize =3D smmu_realize;
-> +}
-
-
-> +type_init(smmuv3_register_types)
-> +
-
-Stray blank line at end of file.
-
-> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-> index 3584974..64d2b9b 100644
-> --- a/hw/arm/trace-events
-> +++ b/hw/arm/trace-events
-> @@ -12,3 +12,6 @@ smmu_ptw_invalid_pte(int stage, int level, uint64_t bas=
-eaddr, uint64_t pteaddr,
->  smmu_ptw_page_pte(int stage, int level,  uint64_t iova, uint64_t baseadd=
-r, uint64_t pteaddr, uint64_t pte, uint64_t address) "stage=3D%d level=3D%d=
- iova=3D0x%"PRIx64" base@=3D0x%"PRIx64" pte@=3D0x%"PRIx64" pte=3D0x%"PRIx64=
-" page address =3D 0x%"PRIx64
->  smmu_ptw_block_pte(int stage, int level, uint64_t baseaddr, uint64_t pte=
-addr, uint64_t pte, uint64_t iova, uint64_t gpa, int bsize_mb) "stage=3D%d =
-level=3D%d base@=3D0x%"PRIx64" pte@=3D0x%"PRIx64" pte=3D0x%"PRIx64" iova=3D=
-0x%"PRIx64" block address =3D 0x%"PRIx64" block size =3D %d MiB"
->  smmu_get_pte(uint64_t baseaddr, int index, uint64_t pteaddr, uint64_t pt=
-e) "baseaddr=3D0x%"PRIx64" index=3D0x%x, pteaddr=3D0x%"PRIx64", pte=3D0x%"P=
-RIx64
-> +
-> +#hw/arm/smmuv3.c
-> +smmuv3_read_mmio(hwaddr addr, uint64_t val, unsigned size) "addr: 0x%"PR=
-Ix64" val:0x%"PRIx64" size: 0x%x"
-
-"hwaddr" isn't valid as a type for trace event parameters. This should
-be uint64_t; otherwise trace backends like 'ust' won't build. (There's a
-patch on list to tracetool that will make this mistake a compile error
-for all backends, so it's easier to catch.)
-
-
-> +#ifndef HW_ARM_SMMUV3_H
-> +#define HW_ARM_SMMUV3_H
-> +
-> +#include "hw/arm/smmu-common.h"
-> +#include "hw/registerfields.h"
-> +
-> +#define TYPE_SMMUV3_IOMMU_MEMORY_REGION "smmuv3-iommu-memory-region"
-> +
-> +#define SMMU_NREGS            0x200
-> +
-> +typedef struct SMMUQueue {
-> +     hwaddr base;
-> +     uint32_t prod;
-> +     uint32_t cons;
-> +     uint8_t entry_size;
-> +} SMMUQueue;
-> +
-> +typedef struct SMMUv3State {
-> +    SMMUState     smmu_state;
-> +
-> +    /* Local cache of most-frequently used registers */
-> +#define SMMU_FEATURE_2LVL_STE (1 << 0)
-
-Minor thing, I think it would be better for this define to
-not be in the middle of the struct definition.
-
-> +    uint32_t features;
-> +    uint8_t sid_size;
-> +    uint8_t sid_split;
-> +
-> +    uint32_t idr[6];
-> +    uint32_t iidr;
-> +    uint32_t cr[3];
-> +    uint32_t cr0ack;
-> +    uint32_t statusr;
-> +    uint32_t irq_ctrl;
-> +    uint32_t irq_ctrl_ack;
-> +    uint32_t gerror;
-> +    uint32_t gerrorn;
-> +    uint64_t gerror_irq_cfg0;
-> +    uint32_t gerror_irq_cfg1;
-> +    uint32_t gerror_irq_cfg2;
-> +    uint64_t strtab_base;
-> +    uint32_t strtab_base_cfg;
-> +    uint64_t eventq_irq_cfg0;
-> +    uint32_t eventq_irq_cfg1;
-> +    uint32_t eventq_irq_cfg2;
-> +
-> +    SMMUQueue eventq, cmdq;
-> +
-> +    qemu_irq     irq[4];
-> +} SMMUv3State;
-> +
-> +typedef enum {
-> +    SMMU_IRQ_EVTQ,
-> +    SMMU_IRQ_PRIQ,
-> +    SMMU_IRQ_CMD_SYNC,
-> +    SMMU_IRQ_GERROR,
-> +} SMMUIrq;
-> +
-> +typedef struct {
-> +    /*< private >*/
-> +    SMMUBaseClass smmu_base_class;
-> +    /*< public >*/
-> +
-> +    DeviceRealize parent_realize;
-> +    DeviceReset   parent_reset;
-> +} SMMUv3Class;
-> +
-> +#define TYPE_ARM_SMMUV3   "arm-smmuv3"
-> +#define ARM_SMMUV3(obj) OBJECT_CHECK(SMMUv3State, (obj), TYPE_ARM_SMMUV3=
-)
-> +#define ARM_SMMUV3_CLASS(klass)                              \
-> +    OBJECT_CLASS_CHECK(SMMUv3Class, (klass), TYPE_ARM_SMMUV3)
-> +#define ARM_SMMUV3_GET_CLASS(obj) \
-> +     OBJECT_GET_CLASS(SMMUv3Class, (obj), TYPE_ARM_SMMUV3)
-> +
-> +#endif
-
-thanks
--- PMM

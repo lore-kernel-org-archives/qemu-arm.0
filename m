@@ -1,99 +1,69 @@
-Received: by 10.28.4.212 with SMTP id 203csp3677037wme;
-        Tue, 17 Apr 2018 04:03:31 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4+HI7Xt291w8hGwURxiafk2GA9kTiLMK/j16LeS0VfE/vAaUyFsM1vDnBWSJg951D2ndCNN
-X-Received: by 2002:a25:b446:: with SMTP id c6-v6mr796498ybg.289.1523963011100;
-        Tue, 17 Apr 2018 04:03:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523963011; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp620050wme;
+        Fri, 27 Apr 2018 04:02:02 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZrpZt1D3c83OIsqFByq3eN5uUAcePklFDE5WZEPWdooNny5YkGYONbhi2wF67LzA7AX0wLM
+X-Received: by 2002:ac8:3f0c:: with SMTP id c12-v6mr1473548qtk.19.1524826922546;
+        Fri, 27 Apr 2018 04:02:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1524826922; cv=none;
         d=google.com; s=arc-20160816;
-        b=iq0BigZ2tA6cKRHJV0C4y3Sqej6UGE+dVwkuyIpcJAWLQU81Zsm673tasFAEhKa6dw
-         FXWEE9N6p5xo9nSgd2XdhsLEkdgRJ6c6HvWJBrBBDwy3JnnE1EbaEiT4/VB+Jkg90zGN
-         iB0SSnPkgHqj31YNvOjgV7h9SglO7+XiPzRseqHlteZIs/O3R2pLU9tJ+xxZt7Xh6OOf
-         yPg7ACe6XqBeKXvKhAuLGziwLMb5kZauvb2iRzUA9cuXu2LLJjdf3M73BFZuwxduzTHo
-         L/kALWNAEsnXMCI+ksQmKqI3n70h5IErkBDOmHuFfjvVxjS8yUI0zI25ibmGTISIODfV
-         9WwQ==
+        b=JcA0UMGkbdGfmr/vui4VjDK1MlrlDeeF8dz5Xr5hJvZI5aOwCPL5w4zFDl+hXdawgs
+         10F7vtF6KlBfsq1SjGIXW8MJSl7EgJlhG2lh0i+uiX2nr8NKiMaK0oZcp6FtZBdYPTti
+         ESVP33F2T9F9nr8Onn2f7e31kPlK8LVEP4MlrKltICJKgAjVQUcxGQZ/vFiTx7d5ngM0
+         ek199YV4/S3P7DwBDX3HOx9QengWTT3naYpapIoQZCECGn+FyH3luLSke4370106fPC9
+         lt/nwFdJZEOA1kxLKUMtG3Ev7WaH1O5fDeppQjGZX1UKxPQ0IL2142amgUcBvLsWFe/K
+         zZ2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
          :arc-authentication-results;
-        bh=uOQyhWw5I4SdgRieYm+XfoGcHDX505Vb/I0K0CbBFMI=;
-        b=lhPV2P5wf8S/2+8+laTgPHtS7JsZnuGvxnfIpYovWtl2EYvY40LIpzvSRlnHGVa5+G
-         JaddgrXL/P06JEr1dX+/VxPln1YgtgPJsru+tZnxekcE5lEBtwCOcsvPNhnvyAGLhre3
-         G9JL2j2vLnerpDjogGQdl4K39Cawpzkv82BNjv/N0RufnJXHV6c1gt0t3g9SYEHU+cmQ
-         e7DErCf+heu3vUrXFBQj+13Ar4JNIH0pdKhugEIBWFBX3cm/qv6uYfh01IfJa0upjzPw
-         KrcIYYNmTUP7LOMf7Pr09b+zRRmkz43EamEgHt/OG52UqmjjDx2LPCV5YI/opNXNGAxt
-         fDDw==
+        bh=swn1lAurhaZm4XlQrh6g36MlL8Tfx/eZZyJoe0auG+Q=;
+        b=FdlGn38Z7VUi677gP4zPm4S2SpA5JtVeo/UDu+2zFLtfHKqyJtvkg4D+rc4/iAIIQ+
+         iAkX1FYQMAjXb6lreE1ZCfW8+/KTzRrNVwm6kvuDjqnqsTFRe23pgsbidWsVYHWuy3rW
+         pmrrsaDL022bPlvv11f9zMOLthiOJdxmjEJtJ84cS25lqVrcRKXVpxyT8IrXq9BJOdcF
+         LzT4vzwpadn7JC4R1rLtFZjyXLkgW+VrknghKOF+rmodpa3o7tWJz2TqD5lukx4tZMmb
+         +adA3ewWHOaVCRetwHxodXNvws/rbNr0zg+vKvyvt6AUtwTXVDhdjOZHKERYGHHzjQCa
+         d25g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LsIaGrAO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v92si7925232qte.373.2018.04.17.04.03.30
+        by mx.google.com with ESMTPS id y58-v6si1078865qtb.234.2018.04.27.04.02.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 17 Apr 2018 04:03:31 -0700 (PDT)
+        Fri, 27 Apr 2018 04:02:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LsIaGrAO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59407 helo=lists.gnu.org)
+Received: from localhost ([::1]:47300 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f8OOY-0001Yr-Ka
-	for alex.bennee@linaro.org; Tue, 17 Apr 2018 07:03:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56973)
+	id 1fC18c-0003gu-26
+	for alex.bennee@linaro.org; Fri, 27 Apr 2018 07:02:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56821)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1f8OOL-0001Xq-VH
-	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 07:03:19 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1fC18O-0003gd-UB
+	for qemu-arm@nongnu.org; Fri, 27 Apr 2018 07:01:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1f8OOH-0003V0-Mm
-	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 07:03:18 -0400
-Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:35113)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1f8OOH-0003UX-Hm
-	for qemu-arm@nongnu.org; Tue, 17 Apr 2018 07:03:13 -0400
-Received: by mail-ot0-x244.google.com with SMTP id f47-v6so20890873oth.2
-	for <qemu-arm@nongnu.org>; Tue, 17 Apr 2018 04:03:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=uOQyhWw5I4SdgRieYm+XfoGcHDX505Vb/I0K0CbBFMI=;
-	b=LsIaGrAO3X+WhyHHOJiedAN7H4Hi+ET2w7Nh1xwsreOAFsjd75sP+1fDTHeZ9i0JWu
-	cwHeL9tq1jCCDfjLVZAa1lrIqjqyguD+oKqNFnH27SdVAV5Z0k/o3uqOeI4TXaoTzxi4
-	hU2BS0YLKJR3/LqcTZ6x/OSwSjz/DEJLEalRI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=uOQyhWw5I4SdgRieYm+XfoGcHDX505Vb/I0K0CbBFMI=;
-	b=gR7aBtACH8OP+IFzyBzrfXViIC7GAJm0OUsPPeRkluooc3d4j0BuqGeGs6La1kRCsF
-	swp2HnKRniv7erjGnkSWzq1bZQwy22nsUaZWB7W/8Z4rBvd2c8DqUnHEGzXAri7DSTql
-	6V+iyyumQUrijMYuThb7V+i23LkkIHCItr3WkasQ8vV1K18Bj88erlmsi2Rk9Jv6UOix
-	avS4Sf2zph9T5Fhv4zqq9fP/aD6rb0q1rG0P3DOA/y8K7Om5G+K9BHkkHWZQv7n4udQ1
-	AuU4Ij7rU2gu5UgyNENziTlT6rjl6w+H3s8ic62bNvfxHGRjg/oJf4cZ/CEHLW7F0J/G
-	gMGg==
-X-Gm-Message-State: ALQs6tBFVC9q7JvmURkV2ShhsLGV824zMEULCwSl0U9EHbbkIqkzERGt
-	z10EnaxYuU8UDzEeVpAMCZBq8Ga8otBJAOLEgvZU5A==
-X-Received: by 2002:a9d:5cc1:: with SMTP id r1-v6mr837726oti.258.1523962992614;
-	Tue, 17 Apr 2018 04:03:12 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Tue, 17 Apr 2018 04:02:52
-	-0700 (PDT)
-In-Reply-To: <1523518688-26674-12-git-send-email-eric.auger@redhat.com>
-References: <1523518688-26674-1-git-send-email-eric.auger@redhat.com>
-	<1523518688-26674-12-git-send-email-eric.auger@redhat.com>
+	(envelope-from <pm215@archaic.org.uk>) id 1fC18O-0003N3-71
+	for qemu-arm@nongnu.org; Fri, 27 Apr 2018 07:01:49 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:41194)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1fC18O-0003Lf-0T; Fri, 27 Apr 2018 07:01:48 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1fC18E-0001BU-EW; Fri, 27 Apr 2018 12:01:38 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 17 Apr 2018 12:02:52 +0100
-Message-ID: <CAFEAcA_hgGFmUmg2S7bb5nYeEh1z0kBNWrSud0_TMbkUcf7uxg@mail.gmail.com>
-To: Eric Auger <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Fri, 27 Apr 2018 12:01:37 +0100
+Message-Id: <20180427110137.19304-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.17.0
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::244
-Subject: Re: [Qemu-arm] [PATCH v11 11/17] target/arm/kvm: Translate the MSI
- doorbell in kvm_arch_fixup_msi_route
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH] hw/arm/iotkit.c: fix minor memory leak
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,108 +75,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Christoffer Dall <cdall@kernel.org>, "Michael S. Tsirkin" <mst@redhat.com>,
-	Jean-Philippe Brucker <jean-philippe.brucker@arm.com>,
-	Tomasz Nowicki <tn@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	Peter Xu <peterx@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>, linuc.decode@gmail.com,
-	Bharat Bhushan <bharat.bhushan@nxp.com>,
-	Jintack Lim <jintack@cs.columbia.edu>,
-	Prem Mallappa <prem.mallappa@gmail.com>,
-	Eric Auger <eric.auger.pro@gmail.com>
+Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: abMC3K0F3Rxq
+X-TUID: ZDwCAudO57Si
 
-On 12 April 2018 at 08:38, Eric Auger <eric.auger@redhat.com> wrote:
-> In case the MSI is translated by an IOMMU we need to fixup the
-> MSI route with the translated address.
->
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Signed-off-by: Bharat Bhushan <Bharat.Bhushan@nxp.com>
->
-> ---
-> v9 -> v10:
-> - use address_space_translate
->
-> v5 -> v6:
-> - use IOMMUMemoryRegionClass API
-> ---
->  target/arm/kvm.c        | 27 +++++++++++++++++++++++++++
->  target/arm/trace-events |  3 +++
->  2 files changed, 30 insertions(+)
->
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index ecc39ac..c6f6aa8 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -20,8 +20,10 @@
->  #include "sysemu/kvm.h"
->  #include "kvm_arm.h"
->  #include "cpu.h"
-> +#include "trace.h"
->  #include "internals.h"
->  #include "hw/arm/arm.h"
-> +#include "hw/pci/pci.h"
->  #include "exec/memattrs.h"
->  #include "exec/address-spaces.h"
->  #include "hw/boards.h"
-> @@ -649,6 +651,31 @@ int kvm_arm_vgic_probe(void)
->  int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
->                               uint64_t address, uint32_t data, PCIDevice *dev)
->  {
-> +    AddressSpace *as = pci_device_iommu_address_space(dev);
-> +    hwaddr xlat, len, doorbell_gpa;
-> +    MemoryRegionSection mrs;
-> +    MemoryRegion *mr;
-> +
-> +    if (as == &address_space_memory) {
-> +        return 0;
-> +    }
-> +
-> +    /* MSI doorbell address is translated by an IOMMU */
-> +
-> +    rcu_read_lock();
-> +    mr = address_space_translate(as, address, &xlat, &len, true);
-> +    if (!mr) {
-> +        return 1;
+Coverity (CID1390573) spots that we forgot to free the
+gpioname strings in a loop in the iotkit realize function.
+Correct the error.
 
-This early-return code path fails to release the rcu_read_lock.
+This isn't a significant leak, because this function
+only ever runs once.
 
-> +    }
-> +    mrs = memory_region_find(mr, xlat, 0);
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/arm/iotkit.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Is it really valid to pass a size of 0 to memory_region_find() ?
-We should probably use however big the doorbell write is.
+diff --git a/hw/arm/iotkit.c b/hw/arm/iotkit.c
+index c5f0a5b98a..234185e8f7 100644
+--- a/hw/arm/iotkit.c
++++ b/hw/arm/iotkit.c
+@@ -517,6 +517,7 @@ static void iotkit_realize(DeviceState *dev, Error **errp)
+                               qdev_get_gpio_in(DEVICE(&s->ppc_irq_orgate), i));
+         qdev_connect_gpio_out_named(DEVICE(ppc), "irq", 0,
+                                     qdev_get_gpio_in(devs, 0));
++        g_free(gpioname);
+     }
+ 
+     iotkit_forward_sec_resp_cfg(s);
+-- 
+2.17.0
 
-Do we need to do something here to handle the case where
-memory_region_find() doesn't find a a region, or does that
-just work automatically?
-
-> +    doorbell_gpa = mrs.offset_within_address_space;
-> +    rcu_read_unlock();
-> +
-> +    route->u.msi.address_lo = doorbell_gpa;
-> +    route->u.msi.address_hi = doorbell_gpa >> 32;
-> +
-> +    trace_kvm_arm_fixup_msi_route(address, doorbell_gpa);
-> +
->      return 0;
->  }
->
-> diff --git a/target/arm/trace-events b/target/arm/trace-events
-> index 9e37131..6b759f9 100644
-> --- a/target/arm/trace-events
-> +++ b/target/arm/trace-events
-> @@ -8,3 +8,6 @@ arm_gt_tval_write(int timer, uint64_t value) "gt_tval_write: timer %d value 0x%"
->  arm_gt_ctl_write(int timer, uint64_t value) "gt_ctl_write: timer %d value 0x%" PRIx64
->  arm_gt_imask_toggle(int timer, int irqstate) "gt_ctl_write: timer %d IMASK toggle, new irqstate %d"
->  arm_gt_cntvoff_write(uint64_t value) "gt_cntvoff_write: value 0x%" PRIx64
-> +
-> +# target/arm/kvm.c
-> +kvm_arm_fixup_msi_route(uint64_t iova, uint64_t gpa) "MSI iova = 0x%"PRIx64" is translated into 0x%"PRIx64
-> --
-> 2.5.5
-
-thanks
--- PMM

@@ -1,89 +1,99 @@
-Received: by 10.28.4.212 with SMTP id 203csp174072wme;
-        Thu, 26 Apr 2018 17:38:37 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZrag2g/VgRRkvtkIO0+jcz2mU+yeMJX4ligtycB1cRFGT6JmgnEV3q836493QPNa9SAIw70
-X-Received: by 2002:ac8:2a37:: with SMTP id k52-v6mr180969qtk.333.1524789517886;
-        Thu, 26 Apr 2018 17:38:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1524789517; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp179975wme;
+        Thu, 26 Apr 2018 17:48:06 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZqAggB+z9RVXJXJpbeKDLwETRbfkggtJ85+/i7KdbWhs2vaOddjFWFa3pqKrYiiX6khpnXL
+X-Received: by 10.55.119.199 with SMTP id s190mr182192qkc.357.1524790086727;
+        Thu, 26 Apr 2018 17:48:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1524790086; cv=none;
         d=google.com; s=arc-20160816;
-        b=JsxY7eu+znX/12xtpApdUTRMkI7qY4qALv8CgOLu0rSOh9ad9eIw7HKlB7UHMEePsl
-         X2LM7G9hB6p0FLoKW1YtG9UGX7iD1YSvxjfw/58BaRxiA26qdqZZGP9Br3jxhcVtY40e
-         ztTXxiS7hKrX0W3kateL9CFusV9gm2PsYeuQ9b9XukjNE4dgUgbzR8JSqTK30kIxhD28
-         LixdOEnUgWTT3MmOxHN+91ud5BArsRI/t+tkTpxP1etBwi5Vj4Ex7QwsnIQaSilKWzZk
-         F1EpbhmUxP+lGrjOoxos02ti0naWM8QxfBBAS6ePTSCs05oYOHcjQu/t9vKJDuOZENQm
-         GnKQ==
+        b=vJaR1pPQfTlqTqLxyY8SrALB8HTTj7IgheE1IqunH7RxQCWtol604JT9zm/gxfwy/p
+         5gnpvL1UzK+sdSNm/o6onhTY1o340R1OPIlOfKL1k4ujvwbzT4DN3gM7olK1b/g8LXv0
+         r1uu5xgTJ80x5jd710n8XjFF/hjLPjN6IdJ2p7NDpqOi8h13ZjtmLGXuuMAr6lzs9Zl/
+         7GwHDxCm5UDABls02G81znsvl31xlxsaLlHwptaohpKIggdRjQ2cNE2JK7Otjvp403hQ
+         lnO/xO5Y2mgjqE3zk1wHEeEpH7Dlr8CmapdKQXn1FDAhfx182SXonabNMo9p0JUbpyAy
+         WbpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :arc-authentication-results;
-        bh=K6AaHWCxPG9pjI+8rb10WjvmQiGrdIKUqWxg14H7R3M=;
-        b=vxArF4SeUO16UBCGJLSOZWPIQ30LLq+44BHeTI4PFRZCbxDChR3TrT13M7Th3FPpFl
-         GSS64BOBzr8O9L6c9S6t+q9T27wXnE/TnkW25KNYSBpQpvOr/SnwfJoRbrA6GUCca9s9
-         jQrqn4IFa6Y8IeTfKovwIGGfXwCroeiriSCGiEt3MqnUVNC5pm5skfda/xoMZVDUUVd1
-         LQ0yB/bS9NyCS9n7JYBKvP9QnBK61rBr3yYVZiGYa2K/ByaLYaovmc+ZKs7Xk36Xaeew
-         ol1YTLyGX27CBhH36hx+mWsWBJGqdHLbg+NcSmzPcEiEKFelqTZnbe/uDO3Lj7RQBMbX
-         UAlA==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=FcnQaKOY5FiYcN1YZAPz8IfJW4izctQEpJ8H6gTzcVU=;
+        b=AFFFnhMJVOEx2W0K5d33exHxf4Eb/sohsQjed3eD/w+CUzrfw08HUSJYppMKLfRycC
+         xFoZ1jOU94wOzFFFmxv0R1PVsHew9yXFK1/NbAV8sOdWaBhpavWxcgQXJnVTO5+Srg9O
+         gVdrj4UjsGpLYsR90TW+0GsShcOS33Plj4plOUpS4YY10oOf6rcr4oNgtTYQJQkjv7+d
+         cNWowqyEeZ1uxx8Mxe83i2lGmAmbAUB64wBUBb3n9AWwM0B3qWdMhQXhUDZtr+YTmyUM
+         bnq9tf59FjObn8siQUpKlVqUy0oQoKMiwAtzZagYHt5Mwwx25vj2EN7ZvamGXPZ0WD9U
+         r8Tw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=bPOys9K5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z190si135893qkd.16.2018.04.26.17.38.37
+        by mx.google.com with ESMTPS id f54-v6si138067qvh.216.2018.04.26.17.48.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 26 Apr 2018 17:38:37 -0700 (PDT)
+        Thu, 26 Apr 2018 17:48:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=bPOys9K5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45167 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45220 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fBrPJ-0003Ej-Ar
-	for alex.bennee@linaro.org; Thu, 26 Apr 2018 20:38:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53112)
+	id 1fBrYU-00022k-8T
+	for alex.bennee@linaro.org; Thu, 26 Apr 2018 20:48:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51631)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1fBrLA-0008Oo-9b
-	for qemu-arm@nongnu.org; Thu, 26 Apr 2018 20:34:21 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1fBrE9-0001xR-LR
+	for qemu-arm@nongnu.org; Thu, 26 Apr 2018 20:27:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1fBrL7-0007Pn-7h
-	for qemu-arm@nongnu.org; Thu, 26 Apr 2018 20:34:20 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47030)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1fBrL7-0007PT-0K; Thu, 26 Apr 2018 20:34:17 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 384F985543;
-	Fri, 27 Apr 2018 00:34:16 +0000 (UTC)
-Received: from localhost (ovpn-116-93.gru2.redhat.com [10.97.116.93])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B0F4817D58;
-	Fri, 27 Apr 2018 00:34:15 +0000 (UTC)
-Date: Thu, 26 Apr 2018 21:34:14 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Message-ID: <20180427003414.GV29865@localhost.localdomain>
-References: <1521452376-25099-1-git-send-email-thuth@redhat.com>
-	<87in8qf2w3.fsf@dusky.pond.sub.org>
-	<62dba5cf-b497-1a98-0af5-971e169a3458@redhat.com>
-	<877eou2nek.fsf@dusky.pond.sub.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <877eou2nek.fsf@dusky.pond.sub.org>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.9.2 (2017-12-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Fri, 27 Apr 2018 00:34:16 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH] tests/device-introspect:
- Test devices with all machines, not only with "none"
+	(envelope-from <richard.henderson@linaro.org>) id 1fBrE8-0004Px-Lw
+	for qemu-arm@nongnu.org; Thu, 26 Apr 2018 20:27:05 -0400
+Received: from mail-pg0-x244.google.com ([2607:f8b0:400e:c05::244]:36464)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1fBrE8-0004Pb-GS
+	for qemu-arm@nongnu.org; Thu, 26 Apr 2018 20:27:04 -0400
+Received: by mail-pg0-x244.google.com with SMTP id i6-v6so152450pgv.3
+	for <qemu-arm@nongnu.org>; Thu, 26 Apr 2018 17:27:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=FcnQaKOY5FiYcN1YZAPz8IfJW4izctQEpJ8H6gTzcVU=;
+	b=bPOys9K5bvbyeZ5Jm5EXU9ej0n7y4YpE61DBD2Hya2qVOFw3UfRqkuH5+aqeczPqoq
+	7vgfXPbvToFLBOyH7IbAT2IptIW/y9T49oPuWkYBajzPEVO8GfAFDDdf85onDkVo6Xcb
+	evYXjWVaep2YA0SM50AUfzFUllwmSkvpA4O3Q=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references;
+	bh=FcnQaKOY5FiYcN1YZAPz8IfJW4izctQEpJ8H6gTzcVU=;
+	b=O6GuxorS5R7kEgbXaT0NpAehM50tjRy13kQvVh+D0pEt001XNHawQ5anWywjV3pEbw
+	SQTdUSPS3nSjjgPJUEpW0Gtkyyo/Z3JdQi9VmaQh6CV9Yi8iVDqbpkoWUMHYYcDLbvTz
+	Wl9E+Ym+yF5zR45uZpL8epvFWd0VpiMLGAzUgH9AjV0ilm2ohYn1NyMki0zAw9ZDW5Yr
+	Q3P65VXgpKSR5ZMX8modKvb1vE3L7Iv2XWu0rDF/QDsBqQjoJRdyj/Fg2UIfmg8epZSG
+	HQ/aicdjbP00GoIjkO6atMXByGB+V6neQeP1Ce/7RSF21bS567sjRwod3oBips6/uP78
+	vqUA==
+X-Gm-Message-State: ALQs6tCzZ1RK2inkdI0BO2m890BD5gVO4FXzoD+O51TJUfzYA66tNDDJ
+	hAInorrdC+r9hqisWOMbW0q9bCaSDrQ=
+X-Received: by 2002:a63:6385:: with SMTP id
+	x127-v6mr190438pgb.50.1524788823585; 
+	Thu, 26 Apr 2018 17:27:03 -0700 (PDT)
+Received: from cloudburst.twiddle.net.com
+	([2605:e000:112b:41da:c94c:5ee7:de92:7d78])
+	by smtp.gmail.com with ESMTPSA id g76sm86338pfj.102.2018.04.26.17.27.02
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Thu, 26 Apr 2018 17:27:02 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Thu, 26 Apr 2018 14:26:44 -1000
+Message-Id: <20180427002651.28356-3-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.14.3
+In-Reply-To: <20180427002651.28356-1-richard.henderson@linaro.org>
+References: <20180427002651.28356-1-richard.henderson@linaro.org>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c05::244
+Subject: [Qemu-arm] [PATCH 2/9] target/arm: Use new min/max expanders
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,66 +105,112 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dGGBm6L7lRlD
+X-TUID: fYHcACwUlvdP
 
-On Thu, Apr 26, 2018 at 01:54:43PM +0200, Markus Armbruster wrote:
-> Thomas Huth <thuth@redhat.com> writes:
-> 
-> > On 17.04.2018 14:12, Markus Armbruster wrote:
-> >> Thomas Huth <thuth@redhat.com> writes:
-> >> 
-> >>> Many device introspection crashes only happen if you are using a
-> >>> certain machine, e.g.:
-> >>>
-> >>> $ ppc-softmmu/qemu-system-ppc -S -M ref405ep,accel=qtest -qmp stdio
-> >>> {"QMP": {"version": {"qemu": {"micro": 50, "minor": 11, "major": 2},
-> >>>  "package": "build-all"}, "capabilities": []}}
-> >>> { 'execute': 'qmp_capabilities' }
-> >>> {"return": {}}
-> >>> { 'execute': 'device-list-properties',
-> >>>   'arguments': {'typename': 'macio-newworld'}}
-> >>> Unexpected error in qemu_chr_fe_init() at chardev/char-fe.c:222:
-> >>> Device 'serial0' is in use
-> >>> Aborted (core dumped)
-> >>>
-> >>> To be able to catch these problems, let's extend the device-introspect
-> >>> test to check the devices on all machine types. Since this is a rather
-> >>> slow operation, the test is only run in "SPEED=slow" mode.
-> >> 
-> >> If the device works with one machine type, it has a decent chance to
-> >> work with others, too.  Thus, testing each device with every machine
-> >> type is overkill.  I appreciate having overkill as an option :)
-> >> 
-> >> What I'd like to see for a quick "make check" is testing each device
-> >> once.  That should flush out most bugs.  
-> >
-> > That's already done with the "none" machine.
-> 
-> I was too terse.  We test each device with -machine none for every
-> target.  Fine if that's quick enough.  If not, we might want to reduce
-> redundancy there.
-> 
-> Actually, a worse offender in the "waste everybody's time via redunancy"
-> department could be qom-test.
-> 
-> > Anyway, do you think my patch here is useful and has a chance of getting
-> > included? I.e. shall I re-spin this as a non-RFC patch? Or shall we
-> > rather wait for Eduardo's python-based tests to get included into the
-> > repository?
-> 
-> I don't mind having make check SPEED=slow run more extensive tests.
-> Assuming we actually run them at least once in a while, which seems
-> doubtful.
+The generic expanders replace nearly identical code in the translator.
 
-The infrastructure for Python-based tests might take a while to
-be included, as I'm busy with other stuff right now.  I wouldn't
-mind including this patch, as long as you don't mind seeing it
-deleted after we reimplement it in Python.
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/translate-a64.c | 46 ++++++++++++++--------------------------------
+ 1 file changed, 14 insertions(+), 32 deletions(-)
 
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index bff4e13bf6..d916fea3a3 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -6021,15 +6021,18 @@ static void disas_simd_across_lanes(DisasContext *s, uint32_t insn)
+                 tcg_gen_add_i64(tcg_res, tcg_res, tcg_elt);
+                 break;
+             case 0x0a: /* SMAXV / UMAXV */
+-                tcg_gen_movcond_i64(is_u ? TCG_COND_GEU : TCG_COND_GE,
+-                                    tcg_res,
+-                                    tcg_res, tcg_elt, tcg_res, tcg_elt);
++                if (is_u) {
++                    tcg_gen_umax_i64(tcg_res, tcg_res, tcg_elt);
++                } else {
++                    tcg_gen_smax_i64(tcg_res, tcg_res, tcg_elt);
++                }
+                 break;
+             case 0x1a: /* SMINV / UMINV */
+-                tcg_gen_movcond_i64(is_u ? TCG_COND_LEU : TCG_COND_LE,
+-                                    tcg_res,
+-                                    tcg_res, tcg_elt, tcg_res, tcg_elt);
+-                break;
++                if (is_u) {
++                    tcg_gen_umin_i64(tcg_res, tcg_res, tcg_elt);
++                } else {
++                    tcg_gen_smin_i64(tcg_res, tcg_res, tcg_elt);
++                }
+                 break;
+             default:
+                 g_assert_not_reached();
+@@ -9931,27 +9934,6 @@ static void disas_simd_3same_logic(DisasContext *s, uint32_t insn)
+     }
+ }
+ 
+-/* Helper functions for 32 bit comparisons */
+-static void gen_max_s32(TCGv_i32 res, TCGv_i32 op1, TCGv_i32 op2)
+-{
+-    tcg_gen_movcond_i32(TCG_COND_GE, res, op1, op2, op1, op2);
+-}
+-
+-static void gen_max_u32(TCGv_i32 res, TCGv_i32 op1, TCGv_i32 op2)
+-{
+-    tcg_gen_movcond_i32(TCG_COND_GEU, res, op1, op2, op1, op2);
+-}
+-
+-static void gen_min_s32(TCGv_i32 res, TCGv_i32 op1, TCGv_i32 op2)
+-{
+-    tcg_gen_movcond_i32(TCG_COND_LE, res, op1, op2, op1, op2);
+-}
+-
+-static void gen_min_u32(TCGv_i32 res, TCGv_i32 op1, TCGv_i32 op2)
+-{
+-    tcg_gen_movcond_i32(TCG_COND_LEU, res, op1, op2, op1, op2);
+-}
+-
+ /* Pairwise op subgroup of C3.6.16.
+  *
+  * This is called directly or via the handle_3same_float for float pairwise
+@@ -10051,7 +10033,7 @@ static void handle_simd_3same_pair(DisasContext *s, int is_q, int u, int opcode,
+                 static NeonGenTwoOpFn * const fns[3][2] = {
+                     { gen_helper_neon_pmax_s8, gen_helper_neon_pmax_u8 },
+                     { gen_helper_neon_pmax_s16, gen_helper_neon_pmax_u16 },
+-                    { gen_max_s32, gen_max_u32 },
++                    { tcg_gen_smax_i32, tcg_gen_umax_i32 },
+                 };
+                 genfn = fns[size][u];
+                 break;
+@@ -10061,7 +10043,7 @@ static void handle_simd_3same_pair(DisasContext *s, int is_q, int u, int opcode,
+                 static NeonGenTwoOpFn * const fns[3][2] = {
+                     { gen_helper_neon_pmin_s8, gen_helper_neon_pmin_u8 },
+                     { gen_helper_neon_pmin_s16, gen_helper_neon_pmin_u16 },
+-                    { gen_min_s32, gen_min_u32 },
++                    { tcg_gen_smin_i32, tcg_gen_umin_i32 },
+                 };
+                 genfn = fns[size][u];
+                 break;
+@@ -10516,7 +10498,7 @@ static void disas_simd_3same_int(DisasContext *s, uint32_t insn)
+                 static NeonGenTwoOpFn * const fns[3][2] = {
+                     { gen_helper_neon_max_s8, gen_helper_neon_max_u8 },
+                     { gen_helper_neon_max_s16, gen_helper_neon_max_u16 },
+-                    { gen_max_s32, gen_max_u32 },
++                    { tcg_gen_smax_i32, tcg_gen_umax_i32 },
+                 };
+                 genfn = fns[size][u];
+                 break;
+@@ -10527,7 +10509,7 @@ static void disas_simd_3same_int(DisasContext *s, uint32_t insn)
+                 static NeonGenTwoOpFn * const fns[3][2] = {
+                     { gen_helper_neon_min_s8, gen_helper_neon_min_u8 },
+                     { gen_helper_neon_min_s16, gen_helper_neon_min_u16 },
+-                    { gen_min_s32, gen_min_u32 },
++                    { tcg_gen_smin_i32, tcg_gen_umin_i32 },
+                 };
+                 genfn = fns[size][u];
+                 break;
 -- 
-Eduardo
+2.14.3
+

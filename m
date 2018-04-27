@@ -1,189 +1,119 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id a10-v6sm2515457wri.10.2018.04.27.12.19.20
+Received: by 10.28.4.212 with SMTP id 203csp1163611wme;
+        Fri, 27 Apr 2018 12:50:36 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZoDazf69ghZtYpbMPh0IVRYpPcNyhHzyIosZjK+rEmc2fL3RltAX/IUZFaSTODO/pyeivJD
+X-Received: by 2002:ac8:859:: with SMTP id x25-v6mr3559837qth.48.1524858636173;
+        Fri, 27 Apr 2018 12:50:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1524858636; cv=none;
+        d=google.com; s=arc-20160816;
+        b=yn0Lf2tW8yey4JG4WBqPc4YL120ojg+NSa1kBqP0Cx0F6+ug7xUqY5u1Vwl40VX1O5
+         ob2tDXoFmcktdA92xOd9y1n3V2epmSAZnhTihpfsldHALxWobVs2/AWrORohnCp8cCD8
+         pZkRHE5wcEcvB/b/vrrDhnswjjeoosQCNffZAXkcxjPY1j0Ct11AFkTLVr+8X+GI9a/k
+         WpX4DvPA2tzrncrm1PeqLDdj3JJvzkZtZlP8w5Tlf5BXsvNdw7hyxRWjC1LAe7InLW6d
+         jX/MNxj8BaCsle7jJXF4Kt8MmExNkASsxE54ZMQmV1iMIuECVlM4KyuUlRtlZvRt7HZw
+         9LkQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=in-reply-to:mime-version:user-agent:date:message-id:organization
+         :openpgp:from:cc:references:to:subject:arc-authentication-results;
+        bh=1d7PwCoFV59ZFIxvcr2z40ZbHyOfnh2IDjRADq9cbyM=;
+        b=kQ2w8idr164rF9/VMDnDMGbDjx3AVPCVyVNE5i/ug2EiSGHDKxWRvhdp6R2TuYQwB0
+         9gWOc6/79PTq5g4PUcVd77Ux/nN7YuTf0OWY/9yMlspRYm7voan44HoPTRD1S0blWYU6
+         AOT2gtFoiZIV45D3Ostf0QiTKQG41Q7CTj1ndBBGV+R70xxPnRxFU4A8bd3m51YNT02A
+         qYYzQAtZSnApYIWTL8C26Z+KZhTre36iLnImcmarMFFRCdIkshQ+kdjNnqP2LOk5Ob1J
+         2WJMSCUtpL0vTmvQ2OBZalKmPOVTK8lsY47/9Ioxg+u0BkU3DS8fUtFS5Wd9+Deqkazf
+         zc9w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of eblake@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=eblake@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <eblake@redhat.com>
+Received: from mx1.redhat.com (mx3-rdu2.redhat.com. [66.187.233.73])
+        by mx.google.com with ESMTPS id o36-v6si2057910qve.158.2018.04.27.12.50.36
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Apr 2018 12:19:20 -0700 (PDT)
-Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 516713E03EB;
-	Fri, 27 Apr 2018 20:19:20 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: richard.henderson@linaro.org
-Cc: peter.maydell@linaro.org,
-	qemu-devel@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-stable@nongnu.org,
-	qemu-arm@nongnu.org (open list:ARM)
-Subject: [PATCH] arm/translate-a64: add FP16 FCMP operations
-Date: Fri, 27 Apr 2018 20:19:16 +0100
-Message-Id: <20180427191916.26637-1-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.17.0
+        Fri, 27 Apr 2018 12:50:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eblake@redhat.com designates 66.187.233.73 as permitted sender) client-ip=66.187.233.73;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of eblake@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=eblake@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com [10.11.54.3])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id C77CC4027E11;
+	Fri, 27 Apr 2018 19:50:35 +0000 (UTC)
+Received: from [10.10.120.65] (ovpn-120-65.rdu2.redhat.com [10.10.120.65])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 481A810EE964;
+	Fri, 27 Apr 2018 19:50:35 +0000 (UTC)
+Subject: Re: [Qemu-devel] [PATCH] arm/translate-a64: add FP16 FCMP operations
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ richard.henderson@linaro.org
+References: <20180427191916.26637-1-alex.bennee@linaro.org>
+Cc: peter.maydell@linaro.org, "open list:ARM" <qemu-arm@nongnu.org>,
+ qemu-devel@nongnu.org, qemu-stable@nongnu.org
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <7781dba2-883b-52b2-2c80-316816779e15@redhat.com>
+Date: Fri, 27 Apr 2018 14:50:34 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: sXZ2Ru0zTqq+
+In-Reply-To: <20180427191916.26637-1-alex.bennee@linaro.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="lH8UHjazXymAow9HLzaV1QTruWMQqneUX"
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]); Fri, 27 Apr 2018 19:50:35 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]); Fri, 27 Apr 2018 19:50:35 +0000 (UTC) for IP:'10.11.54.3' DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com' HELO:'smtp.corp.redhat.com' FROM:'eblake@redhat.com' RCPT:''
+X-TUID: hWkpOo1nJoCq
 
-These where missed out from the rest of the half-precision work.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--lH8UHjazXymAow9HLzaV1QTruWMQqneUX
+Content-Type: multipart/mixed; boundary="aSwh12gp0DcqeH63R39E11eZSxRzJRShF";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ richard.henderson@linaro.org
+Cc: peter.maydell@linaro.org, "open list:ARM" <qemu-arm@nongnu.org>,
+ qemu-devel@nongnu.org, qemu-stable@nongnu.org
+Message-ID: <7781dba2-883b-52b2-2c80-316816779e15@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH] arm/translate-a64: add FP16 FCMP operations
+References: <20180427191916.26637-1-alex.bennee@linaro.org>
+In-Reply-To: <20180427191916.26637-1-alex.bennee@linaro.org>
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: qemu-stable@nongnu.org
----
- target/arm/helper-a64.c    | 10 +++++++
- target/arm/helper-a64.h    |  2 ++
- target/arm/translate-a64.c | 60 ++++++++++++++++++++++++++++++++------
- 3 files changed, 63 insertions(+), 9 deletions(-)
+--aSwh12gp0DcqeH63R39E11eZSxRzJRShF
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-index afb25ad20c..35df07adb9 100644
---- a/target/arm/helper-a64.c
-+++ b/target/arm/helper-a64.c
-@@ -85,6 +85,16 @@ static inline uint32_t float_rel_to_flags(int res)
-     return flags;
- }
- 
-+uint64_t HELPER(vfp_cmph_a64)(float16 x, float16 y, void *fp_status)
-+{
-+    return float_rel_to_flags(float16_compare_quiet(x, y, fp_status));
-+}
-+
-+uint64_t HELPER(vfp_cmpeh_a64)(float16 x, float16 y, void *fp_status)
-+{
-+    return float_rel_to_flags(float16_compare(x, y, fp_status));
-+}
-+
- uint64_t HELPER(vfp_cmps_a64)(float32 x, float32 y, void *fp_status)
- {
-     return float_rel_to_flags(float32_compare_quiet(x, y, fp_status));
-diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
-index ef4ddfe9d8..5c0b9bd799 100644
---- a/target/arm/helper-a64.h
-+++ b/target/arm/helper-a64.h
-@@ -19,6 +19,8 @@
- DEF_HELPER_FLAGS_2(udiv64, TCG_CALL_NO_RWG_SE, i64, i64, i64)
- DEF_HELPER_FLAGS_2(sdiv64, TCG_CALL_NO_RWG_SE, s64, s64, s64)
- DEF_HELPER_FLAGS_1(rbit64, TCG_CALL_NO_RWG_SE, i64, i64)
-+DEF_HELPER_3(vfp_cmph_a64, i64, f16, f16, ptr)
-+DEF_HELPER_3(vfp_cmpeh_a64, i64, f16, f16, ptr)
- DEF_HELPER_3(vfp_cmps_a64, i64, f32, f32, ptr)
- DEF_HELPER_3(vfp_cmpes_a64, i64, f32, f32, ptr)
- DEF_HELPER_3(vfp_cmpd_a64, i64, f64, f64, ptr)
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index c91329249d..d27f4f24d5 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -4461,16 +4461,27 @@ static void disas_data_proc_reg(DisasContext *s, uint32_t insn)
-     }
- }
- 
--static void handle_fp_compare(DisasContext *s, bool is_double,
-+static void handle_fp_compare(DisasContext *s, int type,
-                               unsigned int rn, unsigned int rm,
-                               bool cmp_with_zero, bool signal_all_nans)
- {
--    TCGv_i64 tcg_flags = tcg_temp_new_i64();
--    TCGv_ptr fpst = get_fpstatus_ptr(false);
-+    TCGv_i64 tcg_flags;
-+    TCGv_ptr fpst;
- 
--    if (is_double) {
-+    if (type == 2 ||
-+        (type == 3 && !arm_dc_feature(s, ARM_FEATURE_V8_FP16))) {
-+        unallocated_encoding(s);
-+        return;
-+    }
-+
-+    tcg_flags = tcg_temp_new_i64();
-+
-+    switch (type) {
-+    case 1: /* double */
-+    {
-         TCGv_i64 tcg_vn, tcg_vm;
- 
-+        fpst = get_fpstatus_ptr(false);
-         tcg_vn = read_fp_dreg(s, rn);
-         if (cmp_with_zero) {
-             tcg_vm = tcg_const_i64(0);
-@@ -4484,9 +4495,13 @@ static void handle_fp_compare(DisasContext *s, bool is_double,
-         }
-         tcg_temp_free_i64(tcg_vn);
-         tcg_temp_free_i64(tcg_vm);
--    } else {
-+        break;
-+    }
-+    case 0: /* single */
-+    {
-         TCGv_i32 tcg_vn, tcg_vm;
- 
-+        fpst = get_fpstatus_ptr(false);
-         tcg_vn = read_fp_sreg(s, rn);
-         if (cmp_with_zero) {
-             tcg_vm = tcg_const_i32(0);
-@@ -4500,6 +4515,33 @@ static void handle_fp_compare(DisasContext *s, bool is_double,
-         }
-         tcg_temp_free_i32(tcg_vn);
-         tcg_temp_free_i32(tcg_vm);
-+        break;
-+    }
-+    case 3: /* half */
-+    {
-+        TCGv_i32 tcg_vn = tcg_temp_new_i32();
-+        TCGv_i32 tcg_vm = tcg_temp_new_i32();
-+
-+        fpst = get_fpstatus_ptr(true);
-+        read_vec_element_i32(s, tcg_vn, rn, 0, MO_16);
-+
-+        if (cmp_with_zero) {
-+            tcg_vm = tcg_const_i32(0);
-+        } else {
-+            read_vec_element_i32(s, tcg_vm, rm, 0, MO_16);
-+        }
-+        if (signal_all_nans) {
-+            gen_helper_vfp_cmpeh_a64(tcg_flags, tcg_vn, tcg_vm, fpst);
-+        } else {
-+            gen_helper_vfp_cmph_a64(tcg_flags, tcg_vn, tcg_vm, fpst);
-+        }
-+        tcg_temp_free_i32(tcg_vn);
-+        tcg_temp_free_i32(tcg_vm);
-+        break;
-+    }
-+    default:
-+        g_assert_not_reached();
-+        break;
-     }
- 
-     tcg_temp_free_ptr(fpst);
-@@ -4520,14 +4562,14 @@ static void disas_fp_compare(DisasContext *s, uint32_t insn)
-     unsigned int mos, type, rm, op, rn, opc, op2r;
- 
-     mos = extract32(insn, 29, 3);
--    type = extract32(insn, 22, 2); /* 0 = single, 1 = double */
-+    type = extract32(insn, 22, 2);
-     rm = extract32(insn, 16, 5);
-     op = extract32(insn, 14, 2);
-     rn = extract32(insn, 5, 5);
-     opc = extract32(insn, 3, 2);
-     op2r = extract32(insn, 0, 3);
- 
--    if (mos || op || op2r || type > 1) {
-+    if (mos || op || op2r) {
-         unallocated_encoding(s);
-         return;
-     }
-@@ -4552,14 +4594,14 @@ static void disas_fp_ccomp(DisasContext *s, uint32_t insn)
-     TCGLabel *label_continue = NULL;
- 
-     mos = extract32(insn, 29, 3);
--    type = extract32(insn, 22, 2); /* 0 = single, 1 = double */
-+    type = extract32(insn, 22, 2);
-     rm = extract32(insn, 16, 5);
-     cond = extract32(insn, 12, 4);
-     rn = extract32(insn, 5, 5);
-     op = extract32(insn, 4, 1);
-     nzcv = extract32(insn, 0, 4);
- 
--    if (mos || type > 1) {
-+    if (mos) {
-         unallocated_encoding(s);
-         return;
-     }
--- 
-2.17.0
+On 04/27/2018 02:19 PM, Alex Benn=C3=A9e wrote:
+> These where missed out from the rest of the half-precision work.
+>=20
+
+s/where missed out from/were missed during/
+
+--=20
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
+
+
+--aSwh12gp0DcqeH63R39E11eZSxRzJRShF--
+
+--lH8UHjazXymAow9HLzaV1QTruWMQqneUX
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAlrjfwoACgkQp6FrSiUn
+Q2ptsgf/YVER4UoC9XqlpRFKOUB10lvesS6dUjDQrqFEwfeVkNY7cuzieEDjwBsu
+OZsS0480x18L/7vf3QX4MBUiT2K1pt+hkieWzNmtTGpgKIiwFbtWFBLwoNNBxitM
+okW+rYLb4sdg6htHRrn3frucX3rj68pHUou9fGkxYyx3pfGh8JrOHUMGbH8ywOHo
+vu2P0E9djlj+7w1Ko0cjIPUHByZwawDVaS4yskAhgT82/Nb+HqdhDDNn8mIJ2Ohs
+fZ51bcK7x26mIivUwM4QGWpX9QVkFBGhbSq/BmXfqbMla638rpDCzjhHdLn42G/w
+/BO6tV054xSJ5x1s15EiO59VA/SqJQ==
+=8FD2
+-----END PGP SIGNATURE-----
+
+--lH8UHjazXymAow9HLzaV1QTruWMQqneUX--

@@ -1,100 +1,86 @@
-Received: by 10.28.4.212 with SMTP id 203csp2717671wme;
-        Mon, 16 Apr 2018 07:31:02 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4/NI01ha90YYgnYvLyFvcFw0XIBn5NDaME/30HfE7ZsRV71TkBQcWSWiIPPafwJtFGpa58N
-X-Received: by 10.237.41.101 with SMTP id s92mr15002123qtd.114.1523889061823;
-        Mon, 16 Apr 2018 07:31:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523889061; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp4792021wme;
+        Tue, 1 May 2018 05:10:05 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZrma36cjHM7zxOoHemaAvk2wYnnHGP1ydRKPDHC/oS8PoBa2eFt9fIRovk330vVwqXwtlbH
+X-Received: by 2002:aed:3e45:: with SMTP id m5-v6mr12817906qtf.175.1525176605422;
+        Tue, 01 May 2018 05:10:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1525176605; cv=none;
         d=google.com; s=arc-20160816;
-        b=05n6jVVRhAU+/LxzLKlfXoHFoXVfMM6vKP17IBA/Vs3akuODBIPIhX7grl/FW58GnG
-         J+bBjPtUJ5Soy9YTMNWR6CyvwozZYLVEtvcocjmzH/ds2wqqblMOs0KjO2+dr4GV51s6
-         Eq8ykGv0tyXVT/CAfN7pyDl4rLAu7g3R166xVHknP/knIEKDPPi8icqvPNzqDARtPLQU
-         80rDM1rp/rTNgvl1NJ8uvM2w0501/4ZMHyUZ7wf+aLH1t1DVjF1QdOA8ROlijUemDFNx
-         UD+sjwAB1rbE5XOR0UZVg71MU5KwQcKJsA5V1Q0l/S9ZtDM9yAq6amsXeTFhzwbRU9iL
-         OGJw==
+        b=PMjuZBWgo1IO2Sf+/VgJGrNNeaH/tVcjDWwp+2dEtp7MGJ6o6ifxcpv7C10i3fT5NI
+         oEsJd6L5Ii3mlFwaFSCCJ/RVoJYW0UtS1g/dIeToB42CV+kNeh+dx5Pxkv+poFz6M+Bw
+         MafnVVHNQpRmWmW2CkhV9arJyQ0O2xAaV6co7qGQtTrfhpOogxDBgN5lNOagquiRwLF8
+         iUv9iFUvYGsEtpPO64WsMGMRefq154SSZj+ODWQYb3xU2kCGO/m8ugVyk7I4g5pl0T+4
+         Fz+wR5HrFniwrPma9sS68pMOyGwysJvLmYmYsbFHoCmt+dYN33iSb+0x+ZKhTsbRxslL
+         eF7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
          :arc-authentication-results;
-        bh=EyjVnTLfVCKCHQQ5+I+72qu+vf0o2VEG9daRAgDZUOE=;
-        b=NyFFugNc6SVWysDOcivfNrwM5OXxntM8lqJIJcD4ZpJs2ZcgSA1lG5UvPHOAKNPgEx
-         9rhdjDdKf3kZg1+5trpIKAriwz5Ipd/t2eX8NmVTyY+0RjbqGyrHdy8gbHiNSEiCFOMV
-         MP0epGvYQG+NUtTvD+VnqAYB9JG055rv2D1Cn/iOIUtGlW1U/wbTkhVEV352K4FJjQTk
-         OGXP8wf0DEO9V2HQHBFngKsrksqGB+QI1MESIUj2sNDgXcqjC9P8+CsgAjhM4whtMWWo
-         0aNEjHsg2v8VrLNw7bzk5WucXoKlqqSJafqVkpcZ4Brj/VIJGfCIHqpUXLEXzvF806eU
-         02YA==
+        bh=BJEr8fJk+uotJWvl4a6P6vNhgX3W6m5wD0UIoao5pCo=;
+        b=EcqxN1GryoeN+mc/n76C4/RfQbCxiY8uCQNDvU9HV7P86Gk5TfmNjpoPcBuXwdMurJ
+         2gwiOLWBhPO5aYBTchQmzRnp7osL0sUJ1zEvxxuHS6VinZVjBKznMKjTs+paJXFYCLAn
+         KcG+3Aqazn3MHfDB+kbrlmwApPe+4Y+o4DLfx+4Xo00jKjmz48xhRXBiSMM4vse9V39V
+         K481VbuV14aO8t1bVb8tkhhrkxvEBThslTEf27a7+QAu9ty2MafrU9ZBYlu4WpD1BBfe
+         ghah0f/UGe99c0yOtSO2Y0Fshgvy5wa/YI/0fX07Dogg1rUbuLvMGXw5MoJCwwShX7gJ
+         xA5g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=I/5/CmOV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p123si3207080qkd.218.2018.04.16.07.31.01
+        by mx.google.com with ESMTPS id d15si1912831qke.276.2018.05.01.05.10.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 16 Apr 2018 07:31:01 -0700 (PDT)
+        Tue, 01 May 2018 05:10:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=I/5/CmOV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49923 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:42247 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f859p-0005YW-9d
-	for alex.bennee@linaro.org; Mon, 16 Apr 2018 10:31:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56628)
+	id 1fDU6e-0005bJ-Pd
+	for alex.bennee@linaro.org; Tue, 01 May 2018 08:10:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52435)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1f859W-0005QS-3q
-	for qemu-arm@nongnu.org; Mon, 16 Apr 2018 10:30:47 -0400
+	(envelope-from <imammedo@redhat.com>) id 1fDU6N-0005aU-FP
+	for qemu-arm@nongnu.org; Tue, 01 May 2018 08:09:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1f859Q-0006Sr-83
-	for qemu-arm@nongnu.org; Mon, 16 Apr 2018 10:30:42 -0400
-Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:46777)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1f859Q-0006SR-38
-	for qemu-arm@nongnu.org; Mon, 16 Apr 2018 10:30:36 -0400
-Received: by mail-oi0-x242.google.com with SMTP id e123-v6so14685098oih.13
-	for <qemu-arm@nongnu.org>; Mon, 16 Apr 2018 07:30:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=EyjVnTLfVCKCHQQ5+I+72qu+vf0o2VEG9daRAgDZUOE=;
-	b=I/5/CmOVw09bgpXvQ5bTNc1uqJmXru9ZXO6HBDAfoEcc8QC3JnzzxyLqhiF9HgV6LN
-	WczljjPv9A85jvMYZivtusVc5JJ5RsRwuTgv1ttZ+RRcEmFXx1H9XsI7mnl5tJL8wJuk
-	I2rzXjgZ4a3xUa+H7wbTz86GVyILU87ybBeNk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=EyjVnTLfVCKCHQQ5+I+72qu+vf0o2VEG9daRAgDZUOE=;
-	b=sb7Gf0TBSndv3L2BWI4kktGzX6z8R7BjlBzML+ejbluGM9pqXjZS08Sy+0CB8WiRdk
-	tOIprxX2Bdkxxs7LxrJ1BHVe3WgH6R/dXM5yFG3p/bACbW/YUTdR/+qFqZnKZr+eHU7q
-	rcsxd9uofo+/YEaHRC6GkySo7b8XkKNwUPuex8tQEK7dAQUlYgZhURy5GjSA7TyGv8qd
-	1nba4rqkkMi45cUR2wL/MTa/x4ERWclgkR6QBsPeAtOM1Ep8cVKVbelCo1y6WWf+NeGH
-	8DzOs/RAlEhaZo3ys679NO99DINx6c+MZf7CzFFueg2kxkRJ5N+0zn49DGPur8WqZAP0
-	ftuA==
-X-Gm-Message-State: ALQs6tBwuxl/zVMtjau1D/17e3mQ3Py5KwOZV7jewxmIw90PtyegriKs
-	yOh8A6dJpb4DRzF+DG+SVlG/KUou4atGT0BEPxjOfg==
-X-Received: by 2002:aca:e043:: with SMTP id
-	x64-v6mr14096559oig.164.1523889035499; 
-	Mon, 16 Apr 2018 07:30:35 -0700 (PDT)
+	(envelope-from <imammedo@redhat.com>) id 1fDU6J-0003Q9-1R
+	for qemu-arm@nongnu.org; Tue, 01 May 2018 08:09:47 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:37590 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1fDU6I-0003Pk-SH; Tue, 01 May 2018 08:09:42 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 05C1C8DC4A;
+	Tue,  1 May 2018 12:09:39 +0000 (UTC)
+Received: from dell-r430-03.lab.eng.brq.redhat.com
+	(dell-r430-03.lab.eng.brq.redhat.com [10.37.153.18])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 243E72022C00;
+	Tue,  1 May 2018 12:09:33 +0000 (UTC)
+From: Igor Mammedov <imammedo@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue,  1 May 2018 14:08:37 +0200
+Message-Id: <1525176522-200354-1-git-send-email-imammedo@redhat.com>
 MIME-Version: 1.0
-Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Mon, 16 Apr 2018 07:30:14
-	-0700 (PDT)
-In-Reply-To: <a11d7ba8-4b29-5970-9574-b2ee2fa5c8c9@linaro.org>
-References: <20180412140222.2096-1-peter.maydell@linaro.org>
-	<a11d7ba8-4b29-5970-9574-b2ee2fa5c8c9@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 16 Apr 2018 15:30:14 +0100
-Message-ID: <CAFEAcA81fMyUdTAz2d1NkV2gk_hXFdz1PTVgZjq8kVefPz4-2A@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::242
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-2.12] linux-user/signal.c:
- Put AArch64 frame record in the right place
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.2]);
+	Tue, 01 May 2018 12:09:39 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Tue, 01 May 2018 12:09:39 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'imammedo@redhat.com' RCPT:''
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: [Qemu-arm] [PATCH v3 0/5] arm: isolate and clean up dtb generation
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,46 +92,98 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "patches@linaro.org" <patches@linaro.org>, Riku Voipio <riku.voipio@iki.fi>,
-	Laurent Vivier <laurent@vivier.eu>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Richard Henderson <rth@twiddle.net>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lWVM0ZG2lxl4
+X-TUID: nBtlSenoT8Ls
 
-On 13 April 2018 at 05:46, Richard Henderson
-<richard.henderson@linaro.org> wrote:
-> On 04/12/2018 04:02 AM, Peter Maydell wrote:
->> AArch64 stack frames include a 'frame record' which holds a pointer
->> to the next frame record in the chain and the LR on entry to the
->> function. The procedure calling standard doesn't mandate where
->> exactly this frame record is in the stack frame, but for signal
->> frames the kernel puts it right at the top. We used to put it
->> there too, but in commit 7f0f4208b3a96f22 we accidentally put
->> the "enlarge to the 4K reserved space minimum" check after the
->> "allow for the frame record" code, rather than before it, with
->> the effect that the frame record would be inside the reserved
->> space and immediately after the last used part of it.
->>
->> Move the frame record back out of the reserved space to where
->> we used to put it.
->>
->> This bug shouldn't break any sensible guest code, but test
->> programs that deliberately look at the internal details
->> of the signal frame layout will not find what they are
->> expecting to see.
->>
->> Fixes: 7f0f4208b3a96f22
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->> I'm marking this as for-2.12 on the basis that it puts our frame
->> layout back to exactly what 2.11 had, and so seems safest.
->> No sensible guest code should really care, though, so this is
->> in the "only if we're doing an rc4" bucket; but I think that the
->> softfloat fixes deserve an rc4 anyway.
 
-We needed an rc4, so I've applied this to master.
+Changelog v2->v3:
+   * drop already merged patches
+       'arm: always start from  first_cpu when registering loader cpu res=
+et callback'
+       'ppc: e500: switch E500 based  machines to full machine definition=
+'
+   * add small not related cleanup
+       'arm: boot: set boot_info starting from first_cpu'
+   * add extra suggested patch
+       'make sure that we aren't overwriting mc->get_hotplug_handler by a=
+ccident'
+   * make sure that dtb_limit initialized to 0
+   * drop stale comment
+   * drop not needed line movement
+   * drop not needed extra new line
+Changelog v1->v2:
+   * drop "arm: reuse  arm_boot_address_space() in armv7m_load_kernel()"
+   * move "arm: always start from first_cpu  when registering loader cpu =
+reset callback"
+     at the begigning of series and rebase
+   * add "ppc: e500: switch E500 based machines to full  machine definiti=
+on"
+     and rebase 4/5 on top of it
+   * fixup typo in virt_machine_get_hotpug_handler() name
+   * add doc comment to skip_dtb_autoload field
+   * 1-2/5 are queued in respective arm/ppc trees and are included for se=
+ries
+     completness so it would be easier to test, I expect series to go thr=
+ough
+     arm tree
+  =20
 
--- PMM
+While working on cpu hotplug for mach-virt, I've noticed that DTB
+is generated incrementally across whole machvirt_init(). While it's
+fine for machines with static DTB, it won't really work in case of
+cpu hotplug and followed up reset since machine will load old DTB
+that doesn't account for hotplugged CPUs.
+So I've set on a quest to consolidate DTB generation and make it
+reentrant so that on reset guest would see update DTB.
+
+It's preliminary series which makes possible to call load_dtb()
+later outside of arm_load_kernel() and in process of it drops
+several machine_done notifiers, that were introduced to make
+plaform-bus-devices work. Hopefully it makes code easier to follow.
+It replaces machine_done notifiers with device hotplug framework
+to allow for dynamic sysbus devices mapping at the moment they
+are created instead of waiting for machine_done time and trying to
+juggle with notifiers order to do initialization in propper order.
+
+Mostly 'make check' tested +
+manually with "ppce500" machine type and eTSEC device
+(eTSEC is still initialized with the same IRQs as before series)
+
+
+CC: qemu-arm@nongnu.org
+CC: peter.maydell@linaro.org
+CC: eric.auger@redhat.com
+
+
+Igor Mammedov (5):
+  pc: simplify MachineClass::get_hotplug_handler handling
+  platform-bus-device: use device plug callback instead of machine_done
+    notifier
+  arm/boot: split load_dtb() from arm_load_kernel()
+  arm: boot: set boot_info starting from first_cpu
+  make sure that we aren't overwriting mc->get_hotplug_handler by
+    accident
+
+ hw/ppc/e500.h               |  5 +++
+ include/hw/arm/arm.h        | 45 +++++++++++++++------
+ include/hw/arm/sysbus-fdt.h | 37 ++++-------------
+ include/hw/arm/virt.h       |  1 +
+ include/hw/i386/pc.h        |  8 ----
+ include/hw/platform-bus.h   |  4 +-
+ hw/arm/boot.c               | 74 ++++++++++------------------------
+ hw/arm/sysbus-fdt.c         | 64 ++----------------------------
+ hw/arm/virt.c               | 96 +++++++++++++++++++++++++++++----------=
+------
+ hw/core/platform-bus.c      | 29 +++-----------
+ hw/i386/pc.c                |  7 +---
+ hw/ppc/e500.c               | 38 ++++++++----------
+ hw/ppc/e500plat.c           | 32 +++++++++++++++
+ hw/ppc/spapr.c              |  1 +
+ hw/s390x/s390-virtio-ccw.c  |  1 +
+ 15 files changed, 193 insertions(+), 249 deletions(-)
+
+--=20
+2.7.4
+

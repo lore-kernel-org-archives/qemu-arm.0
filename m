@@ -1,244 +1,132 @@
-Received: by 10.28.4.212 with SMTP id 203csp445949wme;
-        Fri, 27 Apr 2018 00:25:09 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZpoQNQPRmBFcvSkNSQO06SERL7W+R+nPLXnsE/22AFHRx/Mo6CBxoLwPFynzJ2KBIXhYpqt
-X-Received: by 2002:ac8:34e7:: with SMTP id x36-v6mr557588qtb.416.1524813909325;
-        Fri, 27 Apr 2018 00:25:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1524813909; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp5139322wme;
+        Tue, 1 May 2018 11:05:18 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZqu2vKunWbDSFqIhupnJSydwUEoCc40nMAcj0ximteRuoOqLROQJ7YeKqPwS9wSpHm8lCtr
+X-Received: by 10.55.142.134 with SMTP id q128mr13377077qkd.76.1525197918689;
+        Tue, 01 May 2018 11:05:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1525197918; cv=none;
         d=google.com; s=arc-20160816;
-        b=jkEYP8WD0/pXjnfkh5UJ02OU/q+IH4bwugnMIqHkYxS2MNFLkLVJzaccgxtN2jnZlG
-         Lea4cD1si8IM2Jp2o9bLFOkUVYAQlEQoS+gpGZCTSQ6Is+twSNencJgxrqyBz24E7A0A
-         PJmWmE1znO2HKoOESD5s69W6T2AXN8/kEU5BXGgqawMn1e/1KxrUH0RVagm1jtOLAemQ
-         YGEFqY4aVVgG+2Cjb41UIUfZyMjsmrnKrOxMNvRFaRusRtG6PtH+b0yBXJLruAyHYAe+
-         W9laHjKKt41NOOpIo6kmOJD9Tzp2K53c3bLfDi99kGbv7qBVmnpOcSPCb8K4Zb8mY9MC
-         zHtw==
+        b=Q8fYO9by2xp7A6h4fHUBvuCovLzcFMb6eEpDi9eSXeeHFeN7lCR1H3ojOufX+yo5tC
+         6JvHF99Unq3CDf4gnwZE4ZxlSdhzwkZCHhNo75wk75+tA+CtOYpRJyynr2oSZFGDAR5c
+         2f0/MGiLRpZ6Gb9qjic7l+2vJdYmHYyizMD33RymzNzT8xg96138p0YXEHCe5cQDxOly
+         bCnJuCNQ/2R0zfmyMBnOemmlPyg6vKFKqtFXws2PduhVKcBmK00L9NfOr8yYJbfen9k7
+         5ay4v7e9t7ZjUe+SCoPfCq51bv6DWGwnXaXPHQPDgiTUHztTIC/LwAluWB68+q4WwpdO
+         i7RQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=RghBud1Mu2ZH0EcHB855VYllLM4HrzLGKuLOQxFlBto=;
-        b=LZynlXNG2C377ORA3Lc+S7ICRJdXzOIk+qRGW6fmj9NYCIqL9XAq3raNQrNJThbYRG
-         G8ims8+eLhNdBLXik8nBjt1cymYI8xmzPEalwQLsPLV62hwjIBRDTsYuWOIbr+45sS+6
-         Vs2a2IdiC760dMGRt0t0hqOpVRt8GEgEXsePGhX+JvbFlxEKUQB4FWOi/mZUumVzAH5J
-         otZ42q/46+S3QfbDw4NiC6iNkTZMAvCBVA7K9aPF+zTAMCq3hGC3ncEcAwpxEWzGnSnn
-         n+UXJHQq4YczaYr6vsYTvTIcm/vFqWS5EkH9UmN62S112DktQSqAxxRpnha5xf/dhcw+
-         5N1A==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=V1LlPnp9vNZHiPhtR+RK7W+cN80g2Hnuxhx3TU51Om4=;
+        b=uV63X0UXP21MclJDpt65JiDP0FxnmvkKZprhiNmgwrGZTkuC0z73H+jMZDo2N3d9lQ
+         +ZUspOFPdKzsBzYd6JJdvB8yec2mC/PpZKUNK+JBsFop4ga7elby7jv9z41FP/sTB77Y
+         EbtY2h32+DB6HtTPTbXBcG/2hyxzuT5f5yeoJnme2wnJAk8o4yY9pWC+0wnYPScUet5+
+         NK2XfLKls36qAGSkE9IlQwkLjDsIOtsHU5/t0CZQ1f+W1Y0duWecdGUoXNP32FrRkcaQ
+         wLIV9ZLQb7HBpbR4bBinYknT63MAsVaEayGdEJYXAK0nnlrPvwEkKkMRqGh+pUzR7N/3
+         OAgg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@sifive.com header.s=google header.b=RspGgfMz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=eCDb8j3F;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u37-v6si74936qtj.37.2018.04.27.00.25.09
+        by mx.google.com with ESMTPS id m46-v6si5126483qtb.241.2018.05.01.11.05.18
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 27 Apr 2018 00:25:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 01 May 2018 11:05:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@sifive.com header.s=google header.b=RspGgfMz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46123 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=eCDb8j3F;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45533 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fBxki-00035l-Rp
-	for alex.bennee@linaro.org; Fri, 27 Apr 2018 03:25:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58053)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fDZeQ-0008IM-7I
+	for alex.bennee@linaro.org; Tue, 01 May 2018 14:05:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57535)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjc@sifive.com>) id 1fBxkT-00034v-Bb
-	for qemu-devel@nongnu.org; Fri, 27 Apr 2018 03:24:55 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1fDZeC-0008HW-Fk
+	for qemu-arm@nongnu.org; Tue, 01 May 2018 14:05:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjc@sifive.com>) id 1fBxkR-0007UH-OW
-	for qemu-devel@nongnu.org; Fri, 27 Apr 2018 03:24:53 -0400
-Received: from mail-ot0-x229.google.com ([2607:f8b0:4003:c0f::229]:42670)
+	(envelope-from <richard.henderson@linaro.org>) id 1fDZeA-0000ZL-0d
+	for qemu-arm@nongnu.org; Tue, 01 May 2018 14:05:04 -0400
+Received: from mail-pf0-x243.google.com ([2607:f8b0:400e:c00::243]:39420)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <mjc@sifive.com>) id 1fBxkR-0007Tv-E8
-	for qemu-devel@nongnu.org; Fri, 27 Apr 2018 03:24:51 -0400
-Received: by mail-ot0-x229.google.com with SMTP id l13-v6so989834otk.9
-	for <qemu-devel@nongnu.org>; Fri, 27 Apr 2018 00:24:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=RD5yKWsJ9em7TdlZn7suPQhil2fSsoeqPSTz3TeICiw=;
-	b=RspGgfMzHGkG3do2MHziYytY0AEXVL2OsRdkAZmH98967JQUJvR47FUVmatM0+tieU
-	JkwsBHDrUWgoA1am48vUZUHXPHt4vg2byMUh3BNXACUrQ3nfm2zO2uzoTr5v1woG+gw4
-	SLc5OQ1u0ZYgdYhidrpkLCM3ly9DOLdycaH4fg+WFTfH2+CnfBAyx7+R8p/0MkqWKLOc
-	Y4suDoY/xGKH+OTwXJxpKg5UxPNYnjwtyi+Ku8xuOyU1hLntnI9DuUoKiyNgSg6Hi1S/
-	2x7i6yNJ5gCxelGqoNVF0wCxoOzhjAcwA9hsmDNjFy/37++/M7PHPNAh17+9GIz5UC4k
-	8rCQ==
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1fDZe9-0000XX-RS
+	for qemu-arm@nongnu.org; Tue, 01 May 2018 14:05:01 -0400
+Received: by mail-pf0-x243.google.com with SMTP id z9so9618505pfe.6
+	for <qemu-arm@nongnu.org>; Tue, 01 May 2018 11:05:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id;
+	bh=V1LlPnp9vNZHiPhtR+RK7W+cN80g2Hnuxhx3TU51Om4=;
+	b=eCDb8j3FsTOworYmkV65ymvxdKj5vPbc7ZU5kC+SwQB60KXo7np0gVBnuGD+QFtu9/
+	T3bSIERZuM8l+EFL2gmE/R2Qaaf+xSZ7w9BDKw5iSxc195cIfibJuZA17fc1GzNIqcJP
+	wzfhLKk3jA8qd2YfVDh4+vvU6ANZKdcIWAWpA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=RD5yKWsJ9em7TdlZn7suPQhil2fSsoeqPSTz3TeICiw=;
-	b=hew6zt9Cmqb2MR9aWcPZ7F9RQq5YDt5I/CCzeuQ39TVFvdxXEGONZkvs58Csm83YL6
-	D3s7BeRIncfJtJb+tEaLH7ByKVRZ6lYXHRCwo0gul5jCeAFL2LLi3L7B4w/9ZRZ9ybnO
-	iVH0rgzsmLSrJxLtMVQpkKVuehjyWCtGFeWDkWYZVWTnbNtYVWYM+EizGAYLru6n6Lkw
-	FQjuIctLNhSLaGJb1EgcY66K0CMcypyA9k4YWaimOJ3LYzcuKnIudiI5fy0urB3fcthr
-	Dzjw/Jp0Wx2ZrrV3jaStgO3MWBIoSZG7KCptRTbz6jP/8eQn8XOuKboJZav5JIbbi1ER
-	yXGg==
-X-Gm-Message-State: ALQs6tCeiRUjzbjyiRSuBmo4gLbn7Fae4/4FfLPQqHirIVxgptxdy6MT
-	KdQrsA+yNl4yKCM/4exFn2z7lFG0VF091gY2OmMiyA==
-X-Received: by 2002:a9d:3844:: with SMTP id r4-v6mr671569otd.13.1524813890568; 
-	Fri, 27 Apr 2018 00:24:50 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.74.25.195 with HTTP; Fri, 27 Apr 2018 00:24:50 -0700 (PDT)
-In-Reply-To: <20180427002651.28356-6-richard.henderson@linaro.org>
-References: <20180427002651.28356-1-richard.henderson@linaro.org>
-	<20180427002651.28356-6-richard.henderson@linaro.org>
-From: Michael Clark <mjc@sifive.com>
-Date: Fri, 27 Apr 2018 19:24:50 +1200
-Message-ID: <CAHNT7NujtwKtCtsxG91DtgriDd2sjVZwyqKhAp03LR=eJjdMtQ@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=V1LlPnp9vNZHiPhtR+RK7W+cN80g2Hnuxhx3TU51Om4=;
+	b=V8SCc9E+kINvHKADGiyiJSG6dGEcGKNkgKO70v9/3T2B7HfKJH85BYpK5NYqa3LLQn
+	+VUcQ+B8t/cpYmD70d+NWHqdh1gQmyX48Qm0K+Cm6uuMy7nQklRy6jKT1h+kikMlbtF/
+	sUT/Sk1xgH5DOVfmNqO34RdGonaOPe/IgxD+Pftnw50Yb3DpqFv9SuAGjHatE30wtcKU
+	6bbWFrdXzIEPRsLnVC5jcZtBeTEhW/G1METUvKL4h+0QV9Cyg3WPLwhabK+vXUP/1dJd
+	Su4V1yQFhYrHS94IP4YsUnW65Ip58EhAEWyLbGD+rZJevWAI0GHczrQE7FrE63QJr8bn
+	vANg==
+X-Gm-Message-State: ALQs6tDSrIj4r/++rCnklT03fkJB5kO8bNxnOWgE1T7AVAOZuPW6jqZt
+	pqypoB7mzGu+QIaGwnRWquQEkw==
+X-Received: by 10.98.73.215 with SMTP id r84mr15049723pfi.146.1525197899254;
+	Tue, 01 May 2018 11:04:59 -0700 (PDT)
+Received: from cloudburst.twiddle.net (97-113-2-170.tukw.qwest.net.
+	[97.113.2.170]) by smtp.gmail.com with ESMTPSA id
+	j5sm23732224pfe.119.2018.05.01.11.04.56
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Tue, 01 May 2018 11:04:58 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Tue,  1 May 2018 11:04:53 -0700
+Message-Id: <20180501180455.11214-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.14.3
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::229
-Content-Type: text/plain; charset="UTF-8"
-X-Content-Filtered-By: Mailman/MimeDel 2.1.21
-Subject: Re: [Qemu-devel] [PATCH 5/9] target/riscv: Use new atomic min/max
- expanders
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400e:c00::243
+Subject: [Qemu-arm] [PATCH 0/2] target/arm: Coverity fixups
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "Emilio G. Cota" <cota@braap.org>,
-	Sagar Karandikar <sagark@eecs.berkeley.edu>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Palmer Dabbelt <palmer@sifive.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: D5v9NgXuRKf9
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hSlLDKJFmfLX
 
-On Fri, Apr 27, 2018 at 12:26 PM, Richard Henderson <
-richard.henderson@linaro.org> wrote:
+The first patch covers four related false positives.  However, 
+we check the same condition twice and we certainly don't need
+to that.  Plus the assert might just help documentation-wise.
 
-> Cc: Michael Clark <mjc@sifive.com>
-> Cc: Palmer Dabbelt <palmer@sifive.com>
-> Cc: Sagar Karandikar <sagark@eecs.berkeley.edu>
-> Cc: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->
+The second patch covers dead code.  I believe that Coverity is
+right and that there are no paths that have !is_q at this point.
+Add the assert to check that is true.
 
-Reviewed-by: Michael Clark <mjc@sifive.com>
+The RISU tests that I ran over these insns came out clean.
 
-If you give me a remote I can pull into my local workspace and test. The
-change looks pretty straight-forward. There are tests for amos in
-riscv-tests but no parallel tests (i.e. contended case).
 
-Regarding this target/riscv/translate.c. I'd like to make a patch to
-remove CPURISCVState *env arguments from several gen functions.
+r~
 
----
->  target/riscv/translate.c | 72 ++++++++++++++----------------
-> ------------------
->  1 file changed, 20 insertions(+), 52 deletions(-)
->
-> diff --git a/target/riscv/translate.c b/target/riscv/translate.c
-> index 808eab7f50..9cab717088 100644
-> --- a/target/riscv/translate.c
-> +++ b/target/riscv/translate.c
-> @@ -725,7 +725,6 @@ static void gen_atomic(DisasContext *ctx, uint32_t opc,
->      TCGv src1, src2, dat;
->      TCGLabel *l1, *l2;
->      TCGMemOp mop;
-> -    TCGCond cond;
->      bool aq, rl;
->
->      /* Extract the size of the atomic operation.  */
-> @@ -823,60 +822,29 @@ static void gen_atomic(DisasContext *ctx, uint32_t
-> opc,
->          tcg_gen_atomic_fetch_or_tl(src2, src1, src2, ctx->mem_idx, mop);
->          gen_set_gpr(rd, src2);
->          break;
-> -
->      case OPC_RISC_AMOMIN:
-> -        cond = TCG_COND_LT;
-> -        goto do_minmax;
-> -    case OPC_RISC_AMOMAX:
-> -        cond = TCG_COND_GT;
-> -        goto do_minmax;
-> -    case OPC_RISC_AMOMINU:
-> -        cond = TCG_COND_LTU;
-> -        goto do_minmax;
-> -    case OPC_RISC_AMOMAXU:
-> -        cond = TCG_COND_GTU;
-> -        goto do_minmax;
-> -    do_minmax:
-> -        /* Handle the RL barrier.  The AQ barrier is handled along the
-> -           parallel path by the SC atomic cmpxchg.  On the serial path,
-> -           of course, barriers do not matter.  */
-> -        if (rl) {
-> -            tcg_gen_mb(TCG_MO_ALL | TCG_BAR_STRL);
-> -        }
-> -        if (tb_cflags(ctx->tb) & CF_PARALLEL) {
-> -            l1 = gen_new_label();
-> -            gen_set_label(l1);
-> -        } else {
-> -            l1 = NULL;
-> -        }
-> -
->          gen_get_gpr(src1, rs1);
->          gen_get_gpr(src2, rs2);
-> -        if ((mop & MO_SSIZE) == MO_SL) {
-> -            /* Sign-extend the register comparison input.  */
-> -            tcg_gen_ext32s_tl(src2, src2);
-> -        }
-> -        dat = tcg_temp_local_new();
-> -        tcg_gen_qemu_ld_tl(dat, src1, ctx->mem_idx, mop);
-> -        tcg_gen_movcond_tl(cond, src2, dat, src2, dat, src2);
-> -
-> -        if (tb_cflags(ctx->tb) & CF_PARALLEL) {
-> -            /* Parallel context.  Make this operation atomic by verifying
-> -               that the memory didn't change while we computed the
-> result.  */
-> -            tcg_gen_atomic_cmpxchg_tl(src2, src1, dat, src2,
-> ctx->mem_idx, mop);
-> -
-> -            /* If the cmpxchg failed, retry. */
-> -            /* ??? There is an assumption here that this will eventually
-> -               succeed, such that we don't live-lock.  This is not unlike
-> -               a similar loop that the compiler would generate for e.g.
-> -               __atomic_fetch_and_xor, so don't worry about it.  */
-> -            tcg_gen_brcond_tl(TCG_COND_NE, dat, src2, l1);
-> -        } else {
-> -            /* Serial context.  Directly store the result.  */
-> -            tcg_gen_qemu_st_tl(src2, src1, ctx->mem_idx, mop);
-> -        }
-> -        gen_set_gpr(rd, dat);
-> -        tcg_temp_free(dat);
-> +        tcg_gen_atomic_fetch_smin_tl(src2, src1, src2, ctx->mem_idx,
-> mop);
-> +        gen_set_gpr(rd, src2);
-> +        break;
-> +    case OPC_RISC_AMOMAX:
-> +        gen_get_gpr(src1, rs1);
-> +        gen_get_gpr(src2, rs2);
-> +        tcg_gen_atomic_fetch_smax_tl(src2, src1, src2, ctx->mem_idx,
-> mop);
-> +        gen_set_gpr(rd, src2);
-> +        break;
-> +    case OPC_RISC_AMOMINU:
-> +        gen_get_gpr(src1, rs1);
-> +        gen_get_gpr(src2, rs2);
-> +        tcg_gen_atomic_fetch_umin_tl(src2, src1, src2, ctx->mem_idx,
-> mop);
-> +        gen_set_gpr(rd, src2);
-> +        break;
-> +    case OPC_RISC_AMOMAXU:
-> +        gen_get_gpr(src1, rs1);
-> +        gen_get_gpr(src2, rs2);
-> +        tcg_gen_atomic_fetch_umax_tl(src2, src1, src2, ctx->mem_idx,
-> mop);
-> +        gen_set_gpr(rd, src2);
->          break;
->
->      default:
-> --
-> 2.14.3
->
->
+
+Richard Henderson (2):
+  target/arm: Tidy conditions in handle_vec_simd_shri
+  target/arm: Tidy condition in disas_simd_two_reg_misc
+
+ target/arm/translate-a64.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+-- 
+2.14.3
+

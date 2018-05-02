@@ -1,58 +1,144 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id 75sm19531824wmw.37.2018.05.02.08.43.44
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 May 2018 08:43:44 -0700 (PDT)
-Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 3756B3E01C9;
-	Wed,  2 May 2018 16:43:44 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: peter.maydell@linaro.org
-Cc: richard.henderson@linaro.org,
-	qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 0/3] refactor float-to-float conversions and fix AHP
-Date: Wed,  2 May 2018 16:43:41 +0100
-Message-Id: <20180502154344.10585-1-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.17.0
+Received: by 10.28.4.212 with SMTP id 203csp876430wme;
+        Wed, 2 May 2018 08:54:17 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZoZFSixS/aG3R2Va8M/O2SYJk24jeCb7rtA2uXxOj0vZCi4agySXEAyQvzPjn44BU3djhiM
+X-Received: by 2002:a9d:5a8b:: with SMTP id w11-v6mr13688965oth.130.1525276457506;
+        Wed, 02 May 2018 08:54:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1525276457; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ldvh+NacYfUDBw1LRxjy+WH2dlpiTQXCe8bbMpWqAtX23bkCMdZrcJczfxIOeyW9Wa
+         dLg6E0YT7y/C7j/uA2KmJHhi09rw5gY7tKHbVR8S0yLi8UpR6WgXCijHEcnrL1atPsMl
+         8gyDXhmMvxd3CJAhFXQwm9lJH/fAaAk5VXHxsE5Jt4EhmB9uDvH1EqSDt1tUnSIqtfcI
+         Z4j28YlvtHIbvB/QoFL1qF2Vx3nN1o8XdoC9JgP7iyLPg/GLp3S7+ooLRqPRp1jwEeHc
+         zT66cey7YHow38e7FrZRS09HoR9s+FIy+93KSKEMU+oIqhjN1ZWONpM5P83b1CNHXdUQ
+         CO1A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=date:cc:to:from:resent-from:content-transfer-encoding:mime-version
+         :message-id:subject:reply-to:in-reply-to:arc-authentication-results;
+        bh=navxm184JFWpQtlAVaHR+VRoV/UssTxOQEbnB9wMqck=;
+        b=KkYY4UoLidsdbYwdRl+YQpWjAVEqtfUvacqDa2mkhxqYlDYMXJu6wYMM+C7dsgWlZ5
+         hdX+ri6j+UgBUYcGRyHoxQkJ1KQ9oLlrn2O3IWugXVCmu19/Nf4Yr2vMi1BRYwtJv2wO
+         pnWKODKCEGEQC1M5dGLtPgvUZQwNmqexSTbqnfPXCij+XJEfY/HM5Hw7emmly0uH3Ehx
+         jIjTtrHWXBZ49WeNwZ3Lpo0ku/BVmx670Y1+luv7vyLbXlOZ6rFFGAWZeyPKSOyqcfLf
+         C6x1qSramyh/FGCHJ79lagEwcaM9dZJIYkMejMEIoKm3SyrnZO49qYzluiUvC/YxKNuy
+         XLWQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of no-reply@patchew.org designates 135.84.80.216 as permitted sender) smtp.mailfrom=no-reply@patchew.org
+Return-Path: <no-reply@patchew.org>
+Received: from sender-of-o51.zoho.com (sender-of-o51.zoho.com. [135.84.80.216])
+        by mx.google.com with ESMTPS id y9-v6si3254884otg.193.2018.05.02.08.54.15
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 02 May 2018 08:54:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of no-reply@patchew.org designates 135.84.80.216 as permitted sender) client-ip=135.84.80.216;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of no-reply@patchew.org designates 135.84.80.216 as permitted sender) smtp.mailfrom=no-reply@patchew.org
+Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by mx.zohomail.com
+	with SMTPS id 1525276452542544.2740136268935; Wed, 2 May 2018 08:54:12 -0700 (PDT)
+In-Reply-To: <20180502154344.10585-1-alex.bennee@linaro.org>
+Reply-To: <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-devel] [PATCH v2 0/3] refactor float-to-float conversions and fix AHP
+Message-ID: <152527645191.2448.363496519974040761@71c20359a636>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: lHR0mw8/CHZ2
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: alex.bennee@linaro.org
+Cc: famz@redhat.com, peter.maydell@linaro.org, alex.bennee@linaro.org, qemu-arm@nongnu.org, richard.henderson@linaro.org, qemu-devel@nongnu.org
+Date: Wed, 2 May 2018 08:54:12 -0700 (PDT)
+X-ZohoMailClient: External
+X-TUID: zEvjRvw6sQEk
 
-Hi,
-
-This is a more polished version of the re-factoring of the softfloat
-fcvt code. I've split apart the fixes for ARM alternative
-half-precision format for easier review. Rather than rely on some
-questionable hacks it introduces a new FloatFmt to allow cleaner
-handling of the differences in the common code. If there are other
-alternative floating point formats they can follow a similar approach.
-
-I've included the test case for reference although I expect it to be
-merged with my tcg-testing revival code which has the rest of the
-build and test machinery for the test case.
-
-checkpatch dumps a bunch of false-positives as it doesn't like
-scientific notation for floats or inline assembler used in the test
-case.
-
-Cheers,
-
-Alex Bennée (3):
-  fpu/softfloat: re-factor float to float conversions
-  fpu/softfloat: support ARM Alternative half-precision
-  tests/tcg/aarch64: add fcvt test cases for AArch64 (!UPSTREAM)
-
- fpu/softfloat-specialize.h |   40 -
- fpu/softfloat.c            |  524 +++------
- include/fpu/softfloat.h    |    8 +-
- tests/tcg/aarch64/fcvt.c   |  296 +++++
- tests/tcg/aarch64/fcvt.ref | 2138 ++++++++++++++++++++++++++++++++++++
- 5 files changed, 2588 insertions(+), 418 deletions(-)
- create mode 100644 tests/tcg/aarch64/fcvt.c
- create mode 100644 tests/tcg/aarch64/fcvt.ref
-
--- 
-2.17.0
+SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
+LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1l
+c3NhZ2UtaWQ6IDIwMTgwNTAyMTU0MzQ0LjEwNTg1LTEtYWxleC5iZW5uZWVAbGluYXJvLm9yZwpT
+dWJqZWN0OiBbUWVtdS1kZXZlbF0gW1BBVENIIHYyIDAvM10gcmVmYWN0b3IgZmxvYXQtdG8tZmxv
+YXQgY29udmVyc2lvbnMgYW5kIGZpeCBBSFAKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEv
+YmluL2Jhc2gKCkJBU0U9YmFzZQpuPTEKdG90YWw9JChnaXQgbG9nIC0tb25lbGluZSAkQkFTRS4u
+IHwgd2MgLWwpCmZhaWxlZD0wCgpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAw
+CmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwg
+ZGlmZi5hbGdvcml0aG0gaGlzdG9ncmFtCgpjb21taXRzPSIkKGdpdCBsb2cgLS1mb3JtYXQ9JUgg
+LS1yZXZlcnNlICRCQVNFLi4pIgpmb3IgYyBpbiAkY29tbWl0czsgZG8KICAgIGVjaG8gIkNoZWNr
+aW5nIFBBVENIICRuLyR0b3RhbDogJChnaXQgbG9nIC1uIDEgLS1mb3JtYXQ9JXMgJGMpLi4uIgog
+ICAgaWYgISBnaXQgc2hvdyAkYyAtLWZvcm1hdD1lbWFpbCB8IC4vc2NyaXB0cy9jaGVja3BhdGNo
+LnBsIC0tbWFpbGJhY2sgLTsgdGhlbgogICAgICAgIGZhaWxlZD0xCiAgICAgICAgZWNobwogICAg
+ZmkKICAgIG49JCgobisxKSkKZG9uZQoKZXhpdCAkZmFpbGVkCj09PSBURVNUIFNDUklQVCBFTkQg
+PT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0CkZy
+b20gaHR0cHM6Ly9naXRodWIuY29tL3BhdGNoZXctcHJvamVjdC9xZW11CiB0IFt0YWcgdXBkYXRl
+XSAgICAgICAgICAgIHBhdGNoZXcvMjAxODA1MDIxNDAzNTkuMTgyMjItMS1tcmVpdHpAcmVkaGF0
+LmNvbSAtPiBwYXRjaGV3LzIwMTgwNTAyMTQwMzU5LjE4MjIyLTEtbXJlaXR6QHJlZGhhdC5jb20K
+ICogW25ldyB0YWddICAgICAgICAgICAgICAgcGF0Y2hldy8yMDE4MDUwMjE1NDM0NC4xMDU4NS0x
+LWFsZXguYmVubmVlQGxpbmFyby5vcmcgLT4gcGF0Y2hldy8yMDE4MDUwMjE1NDM0NC4xMDU4NS0x
+LWFsZXguYmVubmVlQGxpbmFyby5vcmcKU3dpdGNoZWQgdG8gYSBuZXcgYnJhbmNoICd0ZXN0Jwpk
+ZjhkYjM0YmExIHRlc3RzL3RjZy9hYXJjaDY0OiBhZGQgZmN2dCB0ZXN0IGNhc2VzIGZvciBBQXJj
+aDY0ICghVVBTVFJFQU0pCmMyZmU5ODgyNjIgZnB1L3NvZnRmbG9hdDogc3VwcG9ydCBBUk0gQWx0
+ZXJuYXRpdmUgaGFsZi1wcmVjaXNpb24KZWM4YzcwYzAxMyBmcHUvc29mdGZsb2F0OiByZS1mYWN0
+b3IgZmxvYXQgdG8gZmxvYXQgY29udmVyc2lvbnMKCj09PSBPVVRQVVQgQkVHSU4gPT09CkNoZWNr
+aW5nIFBBVENIIDEvMzogZnB1L3NvZnRmbG9hdDogcmUtZmFjdG9yIGZsb2F0IHRvIGZsb2F0IGNv
+bnZlcnNpb25zLi4uCkNoZWNraW5nIFBBVENIIDIvMzogZnB1L3NvZnRmbG9hdDogc3VwcG9ydCBB
+Uk0gQWx0ZXJuYXRpdmUgaGFsZi1wcmVjaXNpb24uLi4KQ2hlY2tpbmcgUEFUQ0ggMy8zOiB0ZXN0
+cy90Y2cvYWFyY2g2NDogYWRkIGZjdnQgdGVzdCBjYXNlcyBmb3IgQUFyY2g2NCAoIVVQU1RSRUFN
+KS4uLgpFUlJPUjogc3BhY2VzIHJlcXVpcmVkIGFyb3VuZCB0aGF0ICcrJyAoY3R4OlZ4VikKIzg1
+OiBGSUxFOiB0ZXN0cy90Y2cvYWFyY2g2NC9mY3Z0LmM6NjE6CisgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAtMS4xMTFFKzMxLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF4K
+CkVSUk9SOiBzcGFjZXMgcmVxdWlyZWQgYXJvdW5kIHRoYXQgJysnIChjdHg6VnhWKQojODY6IEZJ
+TEU6IHRlc3RzL3RjZy9hYXJjaDY0L2ZjdnQuYzo2MjoKKyAgICAgICAgICAgICAgICAgICAgICAg
+ICAgIC0xLjExMUUrMzAsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXgoKRVJS
+T1I6IHNwYWNlcyByZXF1aXJlZCBhcm91bmQgdGhhdCAnLScgKGN0eDpWeFYpCiM4NzogRklMRTog
+dGVzdHMvdGNnL2FhcmNoNjQvZmN2dC5jOjYzOgorICAgICAgICAgICAgICAgICAgICAgICAgICAg
+LTEuMDg3MDA5ODJlLTEyLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+XgoKRVJST1I6IHNwYWNlcyByZXF1aXJlZCBhcm91bmQgdGhhdCAnLScgKGN0eDpWeFYpCiM4ODog
+RklMRTogdGVzdHMvdGNnL2FhcmNoNjQvZmN2dC5jOjY0OgorICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgLTEuNzgwNTExNzZlLTIwLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgXgoKRVJST1I6IHNwYWNlcyByZXF1aXJlZCBhcm91bmQgdGhhdCAnLScgKGN0eDpWeFYp
+CiM5MjogRklMRTogdGVzdHMvdGNnL2FhcmNoNjQvZmN2dC5jOjY4OgorICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgNS45NjA0NkUtOCwgLyogbWluIHBvc2l0aXZlIEZQMTYgc3Vibm9ybWFsICov
+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF4KCkVSUk9SOiBzcGFjZXMgcmVx
+dWlyZWQgYXJvdW5kIHRoYXQgJy0nIChjdHg6VnhWKQojOTM6IEZJTEU6IHRlc3RzL3RjZy9hYXJj
+aDY0L2ZjdnQuYzo2OToKKyAgICAgICAgICAgICAgICAgICAgICAgICAgIDYuMDk3NTZFLTUsIC8q
+IG1heCBzdWJub3JtYWwgRlAxNiAqLwogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICBeCgpFUlJPUjogc3BhY2VzIHJlcXVpcmVkIGFyb3VuZCB0aGF0ICctJyAoY3R4OlZ4VikKIzk0
+OiBGSUxFOiB0ZXN0cy90Y2cvYWFyY2g2NC9mY3Z0LmM6NzA6CisgICAgICAgICAgICAgICAgICAg
+ICAgICAgICA2LjEwMzUyRS01LCAvKiBtaW4gcG9zaXRpdmUgbm9ybWFsIEZQMTYgKi8KICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXgoKRVJST1I6IHNwYWNlcyByZXF1aXJlZCBh
+cm91bmQgdGhhdCAnKycgKGN0eDpWeFYpCiMxMDU6IEZJTEU6IHRlc3RzL3RjZy9hYXJjaDY0L2Zj
+dnQuYzo4MToKKyAgICAgICAgICAgICAgICAgICAgICAgICAgIDEuMTExRSszMCwKICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIF4KCkVSUk9SOiBzcGFjZXMgcmVxdWlyZWQgYXJvdW5k
+IHRoYXQgJy0nIChjdHg6VnhWKQojMTQ1OiBGSUxFOiB0ZXN0cy90Y2cvYWFyY2g2NC9mY3Z0LmM6
+MTIxOgorICAgICAgICAgICAgICAgICAgICAgICAgICAgIC1GTFRfTUFYLTEuMCwKICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIF4KCkVSUk9SOiBzcGFjZXMgcmVxdWlyZWQgYXJv
+dW5kIHRoYXQgJysnIChjdHg6VnhWKQojMTQ3OiBGSUxFOiB0ZXN0cy90Y2cvYWFyY2g2NC9mY3Z0
+LmM6MTIzOgorICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0xLjExMUUrMzEsCiAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIF4KCkVSUk9SOiBzcGFjZXMgcmVxdWlyZWQgYXJv
+dW5kIHRoYXQgJysnIChjdHg6VnhWKQojMTQ4OiBGSUxFOiB0ZXN0cy90Y2cvYWFyY2g2NC9mY3Z0
+LmM6MTI0OgorICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0xLjExMUUrMzAsIC8qIGhhbGYg
+cHJlYyAqLwogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBeCgpFUlJPUjogc3Bh
+Y2VzIHJlcXVpcmVkIGFyb3VuZCB0aGF0ICctJyAoY3R4OlZ4VikKIzE1NDogRklMRTogdGVzdHMv
+dGNnL2FhcmNoNjQvZmN2dC5jOjEzMDoKKyAgICAgICAgICAgICAgICAgICAgICAgICAgICA1Ljk2
+MDQ2RS04LCAvKiBtaW4gcG9zaXRpdmUgRlAxNiBzdWJub3JtYWwgKi8KICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgIF4KCkVSUk9SOiBzcGFjZXMgcmVxdWlyZWQgYXJvdW5kIHRo
+YXQgJy0nIChjdHg6VnhWKQojMTU1OiBGSUxFOiB0ZXN0cy90Y2cvYWFyY2g2NC9mY3Z0LmM6MTMx
+OgorICAgICAgICAgICAgICAgICAgICAgICAgICAgIDYuMDk3NTZFLTUsIC8qIG1heCBzdWJub3Jt
+YWwgRlAxNiAqLwogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXgoKRVJST1I6
+IHNwYWNlcyByZXF1aXJlZCBhcm91bmQgdGhhdCAnLScgKGN0eDpWeFYpCiMxNTY6IEZJTEU6IHRl
+c3RzL3RjZy9hYXJjaDY0L2ZjdnQuYzoxMzI6CisgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+Ni4xMDM1MkUtNSwgLyogbWluIHBvc2l0aXZlIG5vcm1hbCBGUDE2ICovCiAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICBeCgpFUlJPUjogc3BhY2VzIHJlcXVpcmVkIGFyb3VuZCB0
+aGF0ICctJyAoY3R4OlZ4VikKIzE2MDogRklMRTogdGVzdHMvdGNnL2FhcmNoNjQvZmN2dC5jOjEz
+NjoKKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAxLjM3ODk5NzI4NDg2MDcyMjhlLTMwOCwK
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXgoKRVJST1I6
+IHNwYWNlcyByZXF1aXJlZCBhcm91bmQgdGhhdCAnLScgKGN0eDpWeFYpCiMxNjE6IEZJTEU6IHRl
+c3RzL3RjZy9hYXJjaDY0L2ZjdnQuYzoxMzc6CisgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+MS40OTE0NzM4NzM2NjgxNjI0ZS0zMDgsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIF4KCkVSUk9SOiBzcGFjZSBwcm9oaWJpdGVkIGJlZm9yZSBvcGVuIHNx
+dWFyZSBicmFja2V0ICdbJwojMzA0OiBGSUxFOiB0ZXN0cy90Y2cvYWFyY2g2NC9mY3Z0LmM6Mjgw
+OgorICAgICAgICA6IC8qIG5vIG91dHB1dCAqLyA6IFtmbGFnc10gIm4iICgxIDw8IDI2KSA6ICJ4
+MSIgKTsKCkVSUk9SOiBzcGFjZSBwcm9oaWJpdGVkIGJlZm9yZSB0aGF0IGNsb3NlIHBhcmVudGhl
+c2lzICcpJwojMzA0OiBGSUxFOiB0ZXN0cy90Y2cvYWFyY2g2NC9mY3Z0LmM6MjgwOgorICAgICAg
+ICA6IC8qIG5vIG91dHB1dCAqLyA6IFtmbGFnc10gIm4iICgxIDw8IDI2KSA6ICJ4MSIgKTsKCnRv
+dGFsOiAxOCBlcnJvcnMsIDAgd2FybmluZ3MsIDI0MzQgbGluZXMgY2hlY2tlZAoKWW91ciBwYXRj
+aCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJy
+b3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNl
+ZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoKPT09IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNv
+bW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGlj
+YWxseSBieSBQYXRjaGV3IFtodHRwOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBm
+ZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=

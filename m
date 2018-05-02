@@ -1,93 +1,94 @@
-Received: by 10.28.4.212 with SMTP id 203csp1222789wme;
-        Wed, 2 May 2018 15:20:21 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZouJceI7fDQlQzgCI/aUUMgdub/31mEUqpUUTPS53jibA1JJ40gnmqFXuJ4Vc9Id3Nf0YnZ
-X-Received: by 2002:aed:2352:: with SMTP id i18-v6mr17294405qtc.77.1525299621186;
-        Wed, 02 May 2018 15:20:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1525299621; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp1224004wme;
+        Wed, 2 May 2018 15:21:59 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZp5CpVKBvvKWA7zloV1jqY4Ea8VZcXl6c0Sa/9MdqhtjNo2ohYWAo66PzyCjVo/s74D1fMl
+X-Received: by 2002:ac8:2aef:: with SMTP id c44-v6mr18069370qta.380.1525299719276;
+        Wed, 02 May 2018 15:21:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1525299719; cv=none;
         d=google.com; s=arc-20160816;
-        b=gETZ7SLc95DoxMOuSCSA60nuao+W2d79fpDrHm/NUP5Tadp5z1gAcmMp31sUj66VR8
-         Jdg7uOibDWy1OCfHq4ygZAwtU2//oMi71Ad1a7iPenCxe9GZLYovl7qFWsp+k0hFx+I6
-         mgw9+K50qpdBaU6F5NTN3pMGKJWxsWI6yliQ/VW+N8oE+l40mxdM/FVFy9JypAggQHng
-         aOFeFV3MMILwDk15wkt+0IO18LCKu1vkuiZu6KGhy1twPwVIZr7CkZ3ACrrnSjvKWa3j
-         y/rEaDqyyI39ns3hNHoWJFWshsExZ5ZLCuIiMQfFeC9m7H77WsvDo7rzxR4nwEW0mNyw
-         3/iA==
+        b=Iy9xVhOi39f7XB9zDWzNSCf+Bgms2XOwCdq+N5tU4oEbM9E1ESi/V5xKMWc6lOYMo4
+         cbXGPohGRPCb5Gt8mh/QQZ7QKm19RQE6Gc3QBRAhDkLWEBshtKxwq7aj6KwN4Vsr27L5
+         G2kPKmcvaxKBbD28Rwcq893RkDYgj0/6Yp4DBhoDVatuJIo3EOTJ9Mhz7+Pl4D7rkUH8
+         7UhWgR/o5hpK+XzYTNn71texj6X+QF2TAABJ1zZgHY6Cf9FTMAV2NnevW83CCUVvwBU8
+         HefDvrIiq3d1sv+V3IHup2J2nF1MAovnddLxtM/fyAOnONCOrnBna0LBIYa2rdnnAFtW
+         yC/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=f8miKIJRLY9NrBo+16MHxogxHquu/1wJws6BUD0nnSY=;
-        b=dChFzJ56/ZMFQ2E96ctVysVilEEOt1VdnGM1WjQjynaXJH/VzPeAqcHomqAw7ECFJR
-         DRa+qpWqdtZK/EBdFgVTEGeFsa88T5baWTX8M6NaTG5dZMkheP9tqWeoGImCs0CGDfvU
-         u0yMglNDp8HTnPl96ezDjCIkgXiGTotnCGto4H3hBQ4lDVe8TYolm31OkkliCPmDAly3
-         IEmNDzsmGJnjc6ZCphBQV8duvjUewOpYIy7E+g1RxgAbmZyPq/YC/BjZ4x7U8zqOj8WL
-         aiWtZ0gicWP6AWlJnB0jmXmlNwi0fyfZ9UDUXKoJMPjyQWNbOxvGP2CNuL//vOpmw9bD
-         DOjw==
+        bh=6YuI3pbqAJMHNcfp1+D7vk2rPkV7s0a8qv8kSCgMDvI=;
+        b=p9KUdYkBDD2DFojZ0N7THRxhtE/BcG/A/sW9sxbHLd3Vd7Ooxqx+oraz3CY5qZONK7
+         sjyFVudmFNOKRn8C7fCFhMYmYYLVX9yUA3/viK2Dis+2d5mNG9gEPNvMaTFInJei5HE5
+         aJGrEFZO0glAYQZTZTsuTu4n2qsV9nQbDZtJurawxnMvhJrrSrce8znKQ6i0Nmt3735B
+         q56j3dLZJliCOFxmvRXFM3eetONUJEePeH1FOccRVtr9eGyR+k390RXL56rbI38GZy6D
+         SFIIEI7LiTkBgIY6JToHpDZViPLrSlVMMdX3kTjkeuUXBdYNlei63xqxNC3QRvcKpYtT
+         awQA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=eAZtGX8X;
+       dkim=fail header.i=@linaro.org header.s=google header.b=AWA4CST/;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s37-v6si1483539qts.199.2018.05.02.15.20.21
+        by mx.google.com with ESMTPS id d36-v6si3155379qtk.39.2018.05.02.15.21.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 02 May 2018 15:20:21 -0700 (PDT)
+        Wed, 02 May 2018 15:21:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=eAZtGX8X;
+       dkim=fail header.i=@linaro.org header.s=google header.b=AWA4CST/;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52808 helo=lists.gnu.org)
+Received: from localhost ([::1]:52820 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fE06m-0003OS-MD
-	for alex.bennee@linaro.org; Wed, 02 May 2018 18:20:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58777)
+	id 1fE08M-0004qg-O0
+	for alex.bennee@linaro.org; Wed, 02 May 2018 18:21:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58653)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fE02f-0000hG-Mc
-	for qemu-devel@nongnu.org; Wed, 02 May 2018 18:16:08 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1fE02b-0000bc-GE
+	for qemu-devel@nongnu.org; Wed, 02 May 2018 18:16:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fE02e-0007uV-14
-	for qemu-devel@nongnu.org; Wed, 02 May 2018 18:16:05 -0400
-Received: from mail-pf0-x242.google.com ([2607:f8b0:400e:c00::242]:33251)
+	(envelope-from <richard.henderson@linaro.org>) id 1fE02a-0007rZ-5N
+	for qemu-devel@nongnu.org; Wed, 02 May 2018 18:16:01 -0400
+Received: from mail-pf0-x242.google.com ([2607:f8b0:400e:c00::242]:44362)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1fE02d-0007ty-PA
-	for qemu-devel@nongnu.org; Wed, 02 May 2018 18:16:03 -0400
-Received: by mail-pf0-x242.google.com with SMTP id f20so4172280pfn.0
-	for <qemu-devel@nongnu.org>; Wed, 02 May 2018 15:16:03 -0700 (PDT)
+	id 1fE02Z-0007qu-Sc
+	for qemu-devel@nongnu.org; Wed, 02 May 2018 18:16:00 -0400
+Received: by mail-pf0-x242.google.com with SMTP id q22so12956785pff.11
+	for <qemu-devel@nongnu.org>; Wed, 02 May 2018 15:15:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=f8miKIJRLY9NrBo+16MHxogxHquu/1wJws6BUD0nnSY=;
-	b=eAZtGX8XK4muXeHo9po3xDWX0Nto1AsHGbdqF5+zF2lq22bMv8q5cBNolQWwRKQXiD
-	2j2OXIKakyIYQl8oeTwgNQGrcNKOZwNwiH10j+zcwA7t9a+S5lDrh59p9eoGGm34vjD6
-	PXjRMypNzjb7gtfSwwkT3UlGd59K1VM73Tt1k=
+	bh=6YuI3pbqAJMHNcfp1+D7vk2rPkV7s0a8qv8kSCgMDvI=;
+	b=AWA4CST/V4XCKqnOsjV9w1VyzjERzkP1xDePT8NlgfNdxDk9ChufuoSwMynN0P4SLu
+	le0sI22Sb7t1R0nyITHGwMxO0wKgSlSecZU/we1mT034xGAt7nAh/LVQvEnAmrAv4R9A
+	edZT8vltTh/9JKqX/+gt6udT65adO8eqN3dTo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:mime-version:content-transfer-encoding;
-	bh=f8miKIJRLY9NrBo+16MHxogxHquu/1wJws6BUD0nnSY=;
-	b=PJDxkee3B/qKksxafNuZBTMcqP233YTMFHKJPt/V0Gf89TmmDgkzOqJRvbat7JnBaE
-	g2ozDsp2PKGH9tyGxAIfdD7mh9uJoXfrh8zMinriazwEXtl7jLXuGaTRELwC+RS8VbxX
-	pCi3QQLkHVPyTaoE/GeXfuNrrYDfqy/Xvl+Ki0JJcx3r0lKg5MrmYhfHikpV8/9bmCLK
-	b0TxPsHCKxmcFwBUB9urgeCiIACbU5xyOdSPgtMfHKe74G5SRQXeaw2473cl6uWv9sYQ
-	e6kXRNmKeH1rwF3zhe0RCCkyZv0E5wHZRckQzETnT4vB2htowJ5PYdN+drbUJ7CpXPS7
-	jFow==
-X-Gm-Message-State: ALQs6tDl8g4U55PovuZXRa10rj/LSPkYefistJel0Pa6EmSYg3wbsPql
-	YFnAsXyFpfPA8Cvw4kveT5D8UhcAmDo=
-X-Received: by 10.98.15.23 with SMTP id x23mr20998345pfi.3.1525299362491;
-	Wed, 02 May 2018 15:16:02 -0700 (PDT)
+	bh=6YuI3pbqAJMHNcfp1+D7vk2rPkV7s0a8qv8kSCgMDvI=;
+	b=LMp7Tad9ijqFDkcGcWcPQcZzdwXU5x+6OUMaHIi09GUYB6ec2t9r6H16yc9heDm3ox
+	g3/CDAo6RN3Dqr6od5G4xgnRaK02igsb+gHf7hxib/Hqeh/CruFLnW6r/mjc9mGUMkNU
+	NpaVzkC1SocCGpn2N8M8+Ph+eOz4bHOQT4y2WtXdz1hIeqdSfVtq29pPMXqz7hzBKesF
+	/hMJZx+VdsFXeg2x6WDljtbJnLGoTxQ331u4IJZQwq/Ih7Hmn4k7h3Yi8IDnzOiaKGXW
+	cQ6nwVdbxxFcqFLLZSFa6KYLoixJ+F5sJsir7/qqqQffGCxPHbf1N25BMD6dW2NmCIWl
+	Jzgg==
+X-Gm-Message-State: ALQs6tDl/BIcDEm0m+M0Wwu8EbyTNLfGDxyfmyG5zgxpGnChs17W5A+b
+	kvPOtEHUwZ6XScrGqCCKil3YxOrk04Y=
+X-Received: by 2002:a63:5fd1:: with SMTP id
+	t200-v6mr17819822pgb.246.1525299358617; 
+	Wed, 02 May 2018 15:15:58 -0700 (PDT)
 Received: from cloudburst.twiddle.net (97-113-2-170.tukw.qwest.net.
 	[97.113.2.170]) by smtp.gmail.com with ESMTPSA id
-	65sm26170145pft.74.2018.05.02.15.16.01
+	65sm26170145pft.74.2018.05.02.15.15.57
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Wed, 02 May 2018 15:16:01 -0700 (PDT)
+	Wed, 02 May 2018 15:15:57 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Wed,  2 May 2018 15:15:44 -0700
-Message-Id: <20180502221552.3873-7-richard.henderson@linaro.org>
+Date: Wed,  2 May 2018 15:15:41 -0700
+Message-Id: <20180502221552.3873-4-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.14.3
 In-Reply-To: <20180502221552.3873-1-richard.henderson@linaro.org>
 References: <20180502221552.3873-1-richard.henderson@linaro.org>
@@ -97,8 +98,7 @@ Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2607:f8b0:400e:c00::242
-Subject: [Qemu-devel] [PATCH v2 06/14] target/arm: Implement FCVT (scalar,
- integer) for fp16
+Subject: [Qemu-devel] [PATCH v2 03/14] target/arm: Fix float16 to/from int16
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -113,267 +113,125 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-stable@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vGzca5KuI7e+
+X-TUID: j9L0896fBohJ
+
+The instruction "ucvtf v0.4h, v04h, #2", with input 0x8000u,
+overflows the intermediate float16 to infinity before we have a
+chance to scale the output.  Use float64 as the intermediate type
+so that no input argument (uint32_t in this case) can overflow
+or round before scaling.  Given the declared argument, the signed
+int32_t function has the same problem.
+
+When converting from float16 to integer, using u/int32_t instead
+of u/int16_t means that the bounding is incorrect.
 
 Cc: qemu-stable@nongnu.org
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.h        |  6 +++
- target/arm/helper.c        | 38 +++++++++++++++++-
- target/arm/translate-a64.c | 96 ++++++++++++++++++++++++++++++++++++++--------
- 3 files changed, 122 insertions(+), 18 deletions(-)
+ target/arm/helper.h        |  4 ++--
+ target/arm/helper.c        | 53 ++++++++++++++++++++++++++++++++++++++++++++--
+ target/arm/translate-a64.c |  4 ++--
+ 3 files changed, 55 insertions(+), 6 deletions(-)
 
 diff --git a/target/arm/helper.h b/target/arm/helper.h
-index 1969b37f2d..ce89968b2d 100644
+index 34e8cc8904..1969b37f2d 100644
 --- a/target/arm/helper.h
 +++ b/target/arm/helper.h
-@@ -151,6 +151,10 @@ DEF_HELPER_3(vfp_touhd_round_to_zero, i64, f64, i32, ptr)
+@@ -149,8 +149,8 @@ DEF_HELPER_3(vfp_toshd_round_to_zero, i64, f64, i32, ptr)
+ DEF_HELPER_3(vfp_tosld_round_to_zero, i64, f64, i32, ptr)
+ DEF_HELPER_3(vfp_touhd_round_to_zero, i64, f64, i32, ptr)
  DEF_HELPER_3(vfp_tould_round_to_zero, i64, f64, i32, ptr)
- DEF_HELPER_3(vfp_touhh, i32, f16, i32, ptr)
- DEF_HELPER_3(vfp_toshh, i32, f16, i32, ptr)
-+DEF_HELPER_3(vfp_toulh, i32, f16, i32, ptr)
-+DEF_HELPER_3(vfp_toslh, i32, f16, i32, ptr)
-+DEF_HELPER_3(vfp_touqh, i64, f16, i32, ptr)
-+DEF_HELPER_3(vfp_tosqh, i64, f16, i32, ptr)
+-DEF_HELPER_3(vfp_toulh, i32, f16, i32, ptr)
+-DEF_HELPER_3(vfp_toslh, i32, f16, i32, ptr)
++DEF_HELPER_3(vfp_touhh, i32, f16, i32, ptr)
++DEF_HELPER_3(vfp_toshh, i32, f16, i32, ptr)
  DEF_HELPER_3(vfp_toshs, i32, f32, i32, ptr)
  DEF_HELPER_3(vfp_tosls, i32, f32, i32, ptr)
  DEF_HELPER_3(vfp_tosqs, i64, f32, i32, ptr)
-@@ -177,6 +181,8 @@ DEF_HELPER_3(vfp_ultod, f64, i64, i32, ptr)
- DEF_HELPER_3(vfp_uqtod, f64, i64, i32, ptr)
- DEF_HELPER_3(vfp_sltoh, f16, i32, i32, ptr)
- DEF_HELPER_3(vfp_ultoh, f16, i32, i32, ptr)
-+DEF_HELPER_3(vfp_sqtoh, f16, i64, i32, ptr)
-+DEF_HELPER_3(vfp_uqtoh, f16, i64, i32, ptr)
- 
- DEF_HELPER_FLAGS_2(set_rmode, TCG_CALL_NO_RWG, i32, i32, ptr)
- DEF_HELPER_FLAGS_2(set_neon_rmode, TCG_CALL_NO_RWG, i32, i32, env)
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index ba04cddda0..1fbf5fdec9 100644
+index 52a88e0297..ba04cddda0 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -11427,8 +11427,12 @@ VFP_CONV_FIX_A64(uq, s, 32, 64, uint64)
- #undef VFP_CONV_FIX_A64
+@@ -11420,11 +11420,60 @@ VFP_CONV_FIX_A64(sq, s, 32, 64, int64)
+ VFP_CONV_FIX(uh, s, 32, 32, uint16)
+ VFP_CONV_FIX(ul, s, 32, 32, uint32)
+ VFP_CONV_FIX_A64(uq, s, 32, 64, uint64)
+-VFP_CONV_FIX_A64(sl, h, 16, 32, int32)
+-VFP_CONV_FIX_A64(ul, h, 16, 32, uint32)
++
+ #undef VFP_CONV_FIX
+ #undef VFP_CONV_FIX_FLOAT
+ #undef VFP_CONV_FLOAT_FIX_ROUND
++#undef VFP_CONV_FIX_A64
++
++/* Conversion to/from f16 can overflow to infinity before/after scaling.
++ * Therefore we convert to f64 (which does not round), scale,
++ * and then convert f64 to f16 (which may round).
++ */
++
++static float16 do_postscale_fp16(float64 f, int shift, float_status *fpst)
++{
++    return float64_to_float16(float64_scalbn(f, -shift, fpst), true, fpst);
++}
++
++float16 HELPER(vfp_sltoh)(uint32_t x, uint32_t shift, void *fpst)
++{
++    return do_postscale_fp16(int32_to_float64(x, fpst), shift, fpst);
++}
++
++float16 HELPER(vfp_ultoh)(uint32_t x, uint32_t shift, void *fpst)
++{
++    return do_postscale_fp16(uint32_to_float64(x, fpst), shift, fpst);
++}
++
++static float64 do_prescale_fp16(float16 f, int shift, float_status *fpst)
++{
++    if (unlikely(float16_is_any_nan(f))) {
++        float_raise(float_flag_invalid, fpst);
++        return 0;
++    } else {
++        int old_exc_flags = get_float_exception_flags(fpst);
++        float64 ret;
++
++        ret = float16_to_float64(f, true, fpst);
++        ret = float64_scalbn(ret, shift, fpst);
++        old_exc_flags |= get_float_exception_flags(fpst)
++            & float_flag_input_denormal;
++        set_float_exception_flags(old_exc_flags, fpst);
++
++        return ret;
++    }
++}
++
++uint32_t HELPER(vfp_toshh)(float16 x, uint32_t shift, void *fpst)
++{
++    return float64_to_int16(do_prescale_fp16(x, shift, fpst), fpst);
++}
++
++uint32_t HELPER(vfp_touhh)(float16 x, uint32_t shift, void *fpst)
++{
++    return float64_to_uint16(do_prescale_fp16(x, shift, fpst), fpst);
++}
  
- /* Conversion to/from f16 can overflow to infinity before/after scaling.
-- * Therefore we convert to f64 (which does not round), scale,
-- * and then convert f64 to f16 (which may round).
-+ * Therefore we convert to f64, scale, and then convert f64 to f16; or
-+ * vice versa for conversion to integer.
-+ *
-+ * For 16- and 32-bit integers, the conversion to f64 never rounds.
-+ * For 64-bit integers, any integer that would cause rounding will also
-+ * overflow to f16 infinity, so there is no double rounding problem.
-  */
- 
- static float16 do_postscale_fp16(float64 f, int shift, float_status *fpst)
-@@ -11446,6 +11450,16 @@ float16 HELPER(vfp_ultoh)(uint32_t x, uint32_t shift, void *fpst)
-     return do_postscale_fp16(uint32_to_float64(x, fpst), shift, fpst);
- }
- 
-+float16 HELPER(vfp_sqtoh)(uint64_t x, uint32_t shift, void *fpst)
-+{
-+    return do_postscale_fp16(int64_to_float64(x, fpst), shift, fpst);
-+}
-+
-+float16 HELPER(vfp_uqtoh)(uint64_t x, uint32_t shift, void *fpst)
-+{
-+    return do_postscale_fp16(uint64_to_float64(x, fpst), shift, fpst);
-+}
-+
- static float64 do_prescale_fp16(float16 f, int shift, float_status *fpst)
- {
-     if (unlikely(float16_is_any_nan(f))) {
-@@ -11475,6 +11489,26 @@ uint32_t HELPER(vfp_touhh)(float16 x, uint32_t shift, void *fpst)
-     return float64_to_uint16(do_prescale_fp16(x, shift, fpst), fpst);
- }
- 
-+uint32_t HELPER(vfp_toslh)(float16 x, uint32_t shift, void *fpst)
-+{
-+    return float64_to_int32(do_prescale_fp16(x, shift, fpst), fpst);
-+}
-+
-+uint32_t HELPER(vfp_toulh)(float16 x, uint32_t shift, void *fpst)
-+{
-+    return float64_to_uint32(do_prescale_fp16(x, shift, fpst), fpst);
-+}
-+
-+uint64_t HELPER(vfp_tosqh)(float16 x, uint32_t shift, void *fpst)
-+{
-+    return float64_to_int64(do_prescale_fp16(x, shift, fpst), fpst);
-+}
-+
-+uint64_t HELPER(vfp_touqh)(float16 x, uint32_t shift, void *fpst)
-+{
-+    return float64_to_uint64(do_prescale_fp16(x, shift, fpst), fpst);
-+}
-+
  /* Set the current fp rounding mode and return the old one.
   * The argument is a softfloat float_round_ value.
-  */
 diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 247a4f0cce..d794744aec 100644
+index a64673575a..7021a31b89 100644
 --- a/target/arm/translate-a64.c
 +++ b/target/arm/translate-a64.c
-@@ -5274,11 +5274,11 @@ static void handle_fpfpcvt(DisasContext *s, int rd, int rn, int opcode,
-                            bool itof, int rmode, int scale, int sf, int type)
- {
-     bool is_signed = !(opcode & 1);
--    bool is_double = type;
-     TCGv_ptr tcg_fpstatus;
--    TCGv_i32 tcg_shift;
-+    TCGv_i32 tcg_shift, tcg_single;
-+    TCGv_i64 tcg_double;
- 
--    tcg_fpstatus = get_fpstatus_ptr(false);
-+    tcg_fpstatus = get_fpstatus_ptr(type == 3);
- 
-     tcg_shift = tcg_const_i32(64 - scale);
- 
-@@ -5296,8 +5296,9 @@ static void handle_fpfpcvt(DisasContext *s, int rd, int rn, int opcode,
-             tcg_int = tcg_extend;
-         }
- 
--        if (is_double) {
--            TCGv_i64 tcg_double = tcg_temp_new_i64();
-+        switch (type) {
-+        case 1: /* float64 */
-+            tcg_double = tcg_temp_new_i64();
-             if (is_signed) {
-                 gen_helper_vfp_sqtod(tcg_double, tcg_int,
-                                      tcg_shift, tcg_fpstatus);
-@@ -5307,8 +5308,10 @@ static void handle_fpfpcvt(DisasContext *s, int rd, int rn, int opcode,
+@@ -7269,9 +7269,9 @@ static void handle_simd_shift_fpint_conv(DisasContext *s, bool is_scalar,
+         switch (size) {
+         case MO_16:
+             if (is_u) {
+-                fn = gen_helper_vfp_toulh;
++                fn = gen_helper_vfp_touhh;
+             } else {
+-                fn = gen_helper_vfp_toslh;
++                fn = gen_helper_vfp_toshh;
              }
-             write_fp_dreg(s, rd, tcg_double);
-             tcg_temp_free_i64(tcg_double);
--        } else {
--            TCGv_i32 tcg_single = tcg_temp_new_i32();
-+            break;
-+
-+        case 0: /* float32 */
-+            tcg_single = tcg_temp_new_i32();
-             if (is_signed) {
-                 gen_helper_vfp_sqtos(tcg_single, tcg_int,
-                                      tcg_shift, tcg_fpstatus);
-@@ -5318,6 +5321,23 @@ static void handle_fpfpcvt(DisasContext *s, int rd, int rn, int opcode,
-             }
-             write_fp_sreg(s, rd, tcg_single);
-             tcg_temp_free_i32(tcg_single);
-+            break;
-+
-+        case 3: /* float16 */
-+            tcg_single = tcg_temp_new_i32();
-+            if (is_signed) {
-+                gen_helper_vfp_sqtoh(tcg_single, tcg_int,
-+                                     tcg_shift, tcg_fpstatus);
-+            } else {
-+                gen_helper_vfp_uqtoh(tcg_single, tcg_int,
-+                                     tcg_shift, tcg_fpstatus);
-+            }
-+            write_fp_sreg(s, rd, tcg_single);
-+            tcg_temp_free_i32(tcg_single);
-+            break;
-+
-+        default:
-+            g_assert_not_reached();
-         }
-     } else {
-         TCGv_i64 tcg_int = cpu_reg(s, rd);
-@@ -5334,8 +5354,9 @@ static void handle_fpfpcvt(DisasContext *s, int rd, int rn, int opcode,
- 
-         gen_helper_set_rmode(tcg_rmode, tcg_rmode, tcg_fpstatus);
- 
--        if (is_double) {
--            TCGv_i64 tcg_double = read_fp_dreg(s, rn);
-+        switch (type) {
-+        case 1: /* float64 */
-+            tcg_double = read_fp_dreg(s, rn);
-             if (is_signed) {
-                 if (!sf) {
-                     gen_helper_vfp_tosld(tcg_int, tcg_double,
-@@ -5353,9 +5374,14 @@ static void handle_fpfpcvt(DisasContext *s, int rd, int rn, int opcode,
-                                          tcg_shift, tcg_fpstatus);
-                 }
-             }
-+            if (!sf) {
-+                tcg_gen_ext32u_i64(tcg_int, tcg_int);
-+            }
-             tcg_temp_free_i64(tcg_double);
--        } else {
--            TCGv_i32 tcg_single = read_fp_sreg(s, rn);
-+            break;
-+
-+        case 0: /* float32 */
-+            tcg_single = read_fp_sreg(s, rn);
-             if (sf) {
-                 if (is_signed) {
-                     gen_helper_vfp_tosqs(tcg_int, tcg_single,
-@@ -5377,14 +5403,39 @@ static void handle_fpfpcvt(DisasContext *s, int rd, int rn, int opcode,
-                 tcg_temp_free_i32(tcg_dest);
-             }
-             tcg_temp_free_i32(tcg_single);
-+            break;
-+
-+        case 3: /* float16 */
-+            tcg_single = read_fp_sreg(s, rn);
-+            if (sf) {
-+                if (is_signed) {
-+                    gen_helper_vfp_tosqh(tcg_int, tcg_single,
-+                                         tcg_shift, tcg_fpstatus);
-+                } else {
-+                    gen_helper_vfp_touqh(tcg_int, tcg_single,
-+                                         tcg_shift, tcg_fpstatus);
-+                }
-+            } else {
-+                TCGv_i32 tcg_dest = tcg_temp_new_i32();
-+                if (is_signed) {
-+                    gen_helper_vfp_toslh(tcg_dest, tcg_single,
-+                                         tcg_shift, tcg_fpstatus);
-+                } else {
-+                    gen_helper_vfp_toulh(tcg_dest, tcg_single,
-+                                         tcg_shift, tcg_fpstatus);
-+                }
-+                tcg_gen_extu_i32_i64(tcg_int, tcg_dest);
-+                tcg_temp_free_i32(tcg_dest);
-+            }
-+            tcg_temp_free_i32(tcg_single);
-+            break;
-+
-+        default:
-+            g_assert_not_reached();
-         }
- 
-         gen_helper_set_rmode(tcg_rmode, tcg_rmode, tcg_fpstatus);
-         tcg_temp_free_i32(tcg_rmode);
--
--        if (!sf) {
--            tcg_gen_ext32u_i64(tcg_int, tcg_int);
--        }
-     }
- 
-     tcg_temp_free_ptr(tcg_fpstatus);
-@@ -5553,7 +5604,20 @@ static void disas_fp_int_conv(DisasContext *s, uint32_t insn)
-         /* actual FP conversions */
-         bool itof = extract32(opcode, 1, 1);
- 
--        if (type > 1 || (rmode != 0 && opcode > 1)) {
-+        if (rmode != 0 && opcode > 1) {
-+            unallocated_encoding(s);
-+            return;
-+        }
-+        switch (type) {
-+        case 0: /* float32 */
-+        case 1: /* float64 */
-+            break;
-+        case 3: /* float16 */
-+            if (arm_dc_feature(s, ARM_FEATURE_V8_FP16)) {
-+                break;
-+            }
-+            /* fallthru */
-+        default:
-             unallocated_encoding(s);
-             return;
-         }
+             break;
+         case MO_32:
 -- 
 2.14.3
 

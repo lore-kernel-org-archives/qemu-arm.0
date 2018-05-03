@@ -1,100 +1,99 @@
-Received: by 10.28.4.212 with SMTP id 203csp1998118wme;
-        Thu, 3 May 2018 07:55:36 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZquUK0B2TlVaqOVUNQ3KoAnDCcfsmZyJbS3i3bH9QMyeQW+FQvR3kDXgutkEWM68zI1vD2L
-X-Received: by 2002:aed:23f5:: with SMTP id k50-v6mr19688165qtc.367.1525359336536;
-        Thu, 03 May 2018 07:55:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1525359336; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp2008356wme;
+        Thu, 3 May 2018 08:04:09 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZrxgOyF0l5Gl0NAp8mBqwdsCyY6IVGZ3/Els/TEgYYkcHajfwqhvkfxAAOigJWg0xxB6ZUj
+X-Received: by 10.55.12.13 with SMTP id 13mr17962940qkm.320.1525359849397;
+        Thu, 03 May 2018 08:04:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1525359849; cv=none;
         d=google.com; s=arc-20160816;
-        b=F6N73DsrncbFl7l29l/NQT2HnN6Znumh+vbzQ+I7RnjHp6Eonij2lCjuf2wgiWJw55
-         FS5Qib3+tF1gGz4pWey0OeX3NwOKHqRkEHyNSJZiQY6ux5XDhYolqDaH1ybpH/Dedqec
-         K6BWCof2jyq1qecoERxqsp/7vxJRHaKKvPiKlYRph4sTg7kUZ/ZEBDpKm+xbro5Z280h
-         GkRzY+wE2J3jAbuojJx2lJyfqUmzx0xm9G40ZAk9TWp2JFs46qxNio7bUFWhUKE7GL4P
-         Q3YZZTF8WACHEKO0HJiFu3+PXqK4TwXFxsKsP6iJHApXq1qNYbsr7ZIgE2DUHhvpkzdh
-         4AoQ==
+        b=GKLvOzsK5oSuH901L+e55CRmEMbUWb9OWjqtwjuwE9xSLkRPXhIi9AK/7mb0TDx8VF
+         WjAq+9wX3tF59yCfaPd6CkBuw+IrrVaYm4biGg7lr5lRFsi3mAwRjZBaE4K24GzvmuQh
+         yNBi/rNlSLnT27WanctJaHuMkznm+wkLjYFXPjw0F1+dJaELpEd0slPyybL7Cawhl8cQ
+         H7X/vo8/6OC3SCS8c7xpSifW7++QwzGOvEXofQxx4B1KLSnsveOpdxOnc+k2XzfWkEUL
+         BaO+l2KE9l02VdjCO5i5DGvX25ulICzBSzQXcJ4dx6dagytam3RALzPvyk6KiDeK9oyh
+         KWHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=J5ISdLkZ39la8AyCUoBS8SnOchopA+b6Z/Pazv2LvSE=;
-        b=DUiWw/WNw/GhCQqIh2vRwr1d5zKxMWb3VlTRCplwfiKaXZC0iGUMk9nVfKC6CxkKvu
-         8ZOvxMXScbzfob01TEp3nSe8w/w0JLnFe1ZAIgWvQAKvrCjSwJjwDkH776MexPrs8nso
-         HvdT670ghWaxSbok6V9f/SAO0yIISEPFdVsQUDJmGzhRwtnv0iQ+XwuwbB22ZM/+nY8S
-         k/YvMakP73Q9GHRJEFfvRznJ+9bAX3jxscKfIOjKUHicxSewCuZoCoWEbeF8kcZDciuN
-         IqZtzhprSyesBc5ZP+wGyrjyW+30VfLa10LoCA277mB4UY9+A0jzWGxGq6hiP8himlNM
-         qGRg==
+        bh=b3hJJaRPrOVwoBGwn4Der8UGIA5UGy/D5C4JikSYAt0=;
+        b=N7TS8vdCucgAp8thXEhYMHSKCe7V5wE2bdsU8p09ZafdmXabM5cCzETt12jLxfVWVl
+         VvEOePY1KApD7ppl98r+S0FZKBK+Q4ny3kO6zAyLp62mVSFI8a+kUh8deiu780E0Qgsu
+         /TadIhnfra6Q8THRSh4gYCkRtjmOXOq2sY4zohx+KohwAULY7OXw+6OoJmQ7GJ/nfQuW
+         yOkReK4ze1OwCbjEuM8Zzrzuab23Vt9UcJgjAZLYEuGcEKEoX1SEdYGLNqY6/oxMaof/
+         UM8ztS3oGV4IbG5N7FydTWPFW5vbvdyxcmbVp3DaPiqJjRRg10YAw4+N0e7TeBgzLnwF
+         C2Tw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=K5OVhyXG;
+       dkim=fail header.i=@linaro.org header.s=google header.b=VIR0Za8F;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e10-v6si3278623qvm.131.2018.05.03.07.55.36
+        by mx.google.com with ESMTPS id n17-v6si1184955qvl.117.2018.05.03.08.04.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 03 May 2018 07:55:36 -0700 (PDT)
+        Thu, 03 May 2018 08:04:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=K5OVhyXG;
+       dkim=fail header.i=@linaro.org header.s=google header.b=VIR0Za8F;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57095 helo=lists.gnu.org)
+Received: from localhost ([::1]:57138 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fEFdv-00030S-UH
-	for alex.bennee@linaro.org; Thu, 03 May 2018 10:55:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58543)
+	id 1fEFmC-0006Ti-UN
+	for alex.bennee@linaro.org; Thu, 03 May 2018 11:04:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32863)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fEFdj-0002yb-RB
-	for qemu-arm@nongnu.org; Thu, 03 May 2018 10:55:24 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fEFlz-0006SP-GV
+	for qemu-arm@nongnu.org; Thu, 03 May 2018 11:03:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fEFdi-0001Uv-UC
-	for qemu-arm@nongnu.org; Thu, 03 May 2018 10:55:23 -0400
-Received: from mail-oi0-x231.google.com ([2607:f8b0:4003:c06::231]:44707)
+	(envelope-from <peter.maydell@linaro.org>) id 1fEFly-000540-Ft
+	for qemu-arm@nongnu.org; Thu, 03 May 2018 11:03:55 -0400
+Received: from mail-ot0-x22f.google.com ([2607:f8b0:4003:c0f::22f]:33955)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fEFdi-0001Ua-Or
-	for qemu-arm@nongnu.org; Thu, 03 May 2018 10:55:22 -0400
-Received: by mail-oi0-x231.google.com with SMTP id e80-v6so16305466oig.11
-	for <qemu-arm@nongnu.org>; Thu, 03 May 2018 07:55:22 -0700 (PDT)
+	id 1fEFly-00053r-BJ
+	for qemu-arm@nongnu.org; Thu, 03 May 2018 11:03:54 -0400
+Received: by mail-ot0-x22f.google.com with SMTP id i5-v6so9304242otf.1
+	for <qemu-arm@nongnu.org>; Thu, 03 May 2018 08:03:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=J5ISdLkZ39la8AyCUoBS8SnOchopA+b6Z/Pazv2LvSE=;
-	b=K5OVhyXGUUC5SXHqlv8Qi3Vt+KfIRiNJW1d+gPVCBGspTcVtS+4xEGyjIzlb49nvyD
-	6i+c0xu303mssHEUwYL7NBHKy1Sk0ysTwPBW0Io+0gur9XqwAxAgNSKCS82BVlVNWCf3
-	SQ9SyWl0BYIFcQgApMPTHy3cnev/i9/8yONxs=
+	:cc; bh=b3hJJaRPrOVwoBGwn4Der8UGIA5UGy/D5C4JikSYAt0=;
+	b=VIR0Za8FZzhtA0HzWAjeA8HbOSp8BAkw2b0Po1e9hiOjeHXhIISHsA+GVq8pRfAUCN
+	ypu0T487PNqsLWzJS3avelFNlmwIWUTn3OUXJhSqdwuxZAAD6zeI7A8Jh2JkVSZVCil1
+	TIr3LCN5qPteixUImKvFn+kAm8bV1Pma3ycJ8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=J5ISdLkZ39la8AyCUoBS8SnOchopA+b6Z/Pazv2LvSE=;
-	b=lgwmAEuo0mc02kGLbqIR1xCPf7HwdtPSj4OC3lG05PE+0GR6uUuyvFj6SowYx5jn4N
-	SLZSEar+DoObgYoqKy1Ttx0ahlpjd0+forKZOEq23cRQBWpVZX0azoCGCeNyVF46I36r
-	SJogqPv7acTpYo4NGpGY3MwNcL0PpzmKldCSG0QGq9MQpIkFpCBgpPQ4Sm3/1X2h0xTU
-	ZHhPwG127EbogeRSs9DJSHtiSLNxZ9j/HSas51jMhNumX6LQ6RBGCn3P9X3iMYxZO/cL
-	Us44x3cnNu9360je40fbRZuT0pELl5WjWi3xzBnnJPcnBHDuUpCOYb0Ooyjn5znaHZ52
-	zR0Q==
-X-Gm-Message-State: ALQs6tBypzD1NUjSDETI4rdmFYfsOZAPc5ZGjQ0N7cx70uty84moQZEZ
-	BY8fUg5v1kTIuM05L1YdVE/Nt6exdI/UUEJnMCY1UA==
-X-Received: by 2002:aca:cd0b:: with SMTP id
-	d11-v6mr13931272oig.337.1525359321939; 
-	Thu, 03 May 2018 07:55:21 -0700 (PDT)
+	bh=b3hJJaRPrOVwoBGwn4Der8UGIA5UGy/D5C4JikSYAt0=;
+	b=hFyh5IpilZw16waJSLh85vN/y7yhS5nylX+xbDzhAUrO/9PdfAQJ/KHsDZlwxXZJmv
+	kGG21iqdsN7bWCVz6zPYutci2sTeMrijF1n9KpvA8n1YYTel9QMN2oxcPv/jG5xaowoW
+	8AEPxoefDg1GcQrlQKjuJ3BSgeBVBgWXzJ/FCrPL8UyXYjCdLNP0XjeJflt24fFcc2n2
+	uV6bsz0WJ6DEX3rieLS/rB7r/081qVaLpt16aUXqQCAD/9g4/TIgWtcZ4HuFTiyIF982
+	6Qprf/xni8akRGjj89dtq9HSNiMw62BOAOBHlRjGhqH6Ylst4QRCcJq7kcAFYbifpQ0z
+	ToIA==
+X-Gm-Message-State: ALQs6tBhJQ4nCL5Qu1BPbb4xo0B4XJDy36kBDgld/iq08TFbewCtHBuY
+	MUwVvLAKGog031v/g19863Inu21j6XYKFFpw43TBuA==
+X-Received: by 2002:a9d:3bf5:: with SMTP id
+	k108-v6mr17252700otc.308.1525359833704; 
+	Thu, 03 May 2018 08:03:53 -0700 (PDT)
 MIME-Version: 1.0
 Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP;
-	Thu, 3 May 2018 07:55:01 -0700 (PDT)
-In-Reply-To: <20180427002651.28356-9-richard.henderson@linaro.org>
-References: <20180427002651.28356-1-richard.henderson@linaro.org>
-	<20180427002651.28356-9-richard.henderson@linaro.org>
+	Thu, 3 May 2018 08:03:33 -0700 (PDT)
+In-Reply-To: <1525176522-200354-1-git-send-email-imammedo@redhat.com>
+References: <1525176522-200354-1-git-send-email-imammedo@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 3 May 2018 15:55:01 +0100
-Message-ID: <CAFEAcA_ZaP8Wxe3P+5SKpmQxzJqOEQxnKcdh7StGytOi9iR0yg@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
+Date: Thu, 3 May 2018 16:03:33 +0100
+Message-ID: <CAFEAcA9nG0_Eq1QWsCJMA6TKbZ_tf6mXWCVTrkxrFO5-UkmEvw@mail.gmail.com>
+To: Igor Mammedov <imammedo@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::231
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 8/9] target/arm: Implement CAS
- and CASP
+X-Received-From: 2607:f8b0:4003:c0f::22f
+Subject: Re: [Qemu-arm] [PATCH v3 0/5] arm: isolate and clean up dtb
+ generation
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,108 +105,38 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kaKwC+4MpHcd
+X-TUID: x9Lj3y3ek6D6
 
-On 27 April 2018 at 01:26, Richard Henderson
-<richard.henderson@linaro.org> wrote:
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/helper-a64.h    |   2 +
->  target/arm/helper-a64.c    |  43 ++++++++++++++++
->  target/arm/translate-a64.c | 119 +++++++++++++++++++++++++++++++++++++++++++--
->  3 files changed, 161 insertions(+), 3 deletions(-)
+On 1 May 2018 at 13:08, Igor Mammedov <imammedo@redhat.com> wrote:
+>
+> Changelog v2->v3:
+>    * drop already merged patches
+>        'arm: always start from  first_cpu when registering loader cpu reset callback'
+>        'ppc: e500: switch E500 based  machines to full machine definition'
+>    * add small not related cleanup
+>        'arm: boot: set boot_info starting from first_cpu'
+>    * add extra suggested patch
+>        'make sure that we aren't overwriting mc->get_hotplug_handler by accident'
+>    * make sure that dtb_limit initialized to 0
+>    * drop stale comment
+>    * drop not needed line movement
+>    * drop not needed extra new line
+> Changelog v1->v2:
+>    * drop "arm: reuse  arm_boot_address_space() in armv7m_load_kernel()"
+>    * move "arm: always start from first_cpu  when registering loader cpu reset callback"
+>      at the begigning of series and rebase
+>    * add "ppc: e500: switch E500 based machines to full  machine definition"
+>      and rebase 4/5 on top of it
+>    * fixup typo in virt_machine_get_hotpug_handler() name
+>    * add doc comment to skip_dtb_autoload field
+>    * 1-2/5 are queued in respective arm/ppc trees and are included for series
+>      completness so it would be easier to test, I expect series to go through
+>      arm tree
+>
 
-> +static void gen_compare_and_swap_pair(DisasContext *s, int rs, int rt,
-> +                                      int rn, int size)
-> +{
-> +    TCGv_i64 s1 = cpu_reg(s, rs);
-> +    TCGv_i64 s2 = cpu_reg(s, rs + 1);
-> +    TCGv_i64 t1 = cpu_reg(s, rt);
-> +    TCGv_i64 t2 = cpu_reg(s, rt + 1);
-> +    TCGv_i64 addr = cpu_reg_sp(s, rn);
-> +    int memidx = get_mem_index(s);
-> +
-> +    if (rn == 31) {
-> +        gen_check_sp_alignment(s);
-> +    }
-> +
-> +    if (size == 2) {
-> +        TCGv_i64 cmp = tcg_temp_new_i64();
-> +        TCGv_i64 val = tcg_temp_new_i64();
-> +
-> +        if (s->be_data == MO_LE) {
-> +            tcg_gen_concat32_i64(val, t1, t2);
-> +            tcg_gen_concat32_i64(cmp, s1, s2);
-> +        } else {
-> +            tcg_gen_concat32_i64(val, t2, t1);
-> +            tcg_gen_concat32_i64(cmp, s2, s1);
-> +        }
-> +
-> +        tcg_gen_atomic_cmpxchg_i64(cmp, addr, cmp, val, memidx,
-> +                                   MO_64 | MO_ALIGN | s->be_data);
-> +        tcg_temp_free_i64(val);
-> +
-> +        if (s->be_data == MO_LE) {
-> +            tcg_gen_extr32_i64(s1, s2, cmp);
-> +        } else {
-> +            tcg_gen_extr32_i64(s2, s1, cmp);
-> +        }
-> +        tcg_temp_free_i64(cmp);
-> +    } else if (tb_cflags(s->base.tb) & CF_PARALLEL) {
-> +        TCGv_i32 tcg_rs = tcg_const_i32(rs);
-> +
-> +        if (s->be_data == MO_LE) {
-> +            gen_helper_casp_le_parallel(cpu_env, tcg_rs, addr, t1, t2);
-> +        } else {
-> +            gen_helper_casp_be_parallel(cpu_env, tcg_rs, addr, t1, t2);
-> +        }
-> +        tcg_temp_free_i32(tcg_rs);
-> +    } else {
-> +        TCGv_i64 d1 = tcg_temp_new_i64();
-> +        TCGv_i64 d2 = tcg_temp_new_i64();
-> +        TCGv_i64 a2 = tcg_temp_new_i64();
-> +        TCGv_i64 c1 = tcg_temp_new_i64();
-> +        TCGv_i64 c2 = tcg_temp_new_i64();
-> +        TCGv_i64 zero = tcg_const_i64(0);
-> +
-> +        /* Load the two words, in memory order.  */
-> +        tcg_gen_qemu_ld_i64(d1, addr, memidx,
-> +                            MO_64 | MO_ALIGN_16 | s->be_data);
-> +        tcg_gen_addi_i64(a2, addr, 8);
-> +        tcg_gen_qemu_ld_i64(d2, addr, memidx, MO_64 | s->be_data);
-> +
-> +        /* Compare the two words, also in memory order.  */
-> +        tcg_gen_setcond_i64(TCG_COND_EQ, c1, d1, s1);
-> +        tcg_gen_setcond_i64(TCG_COND_EQ, c2, d2, s2);
-> +        tcg_gen_and_i64(c2, c2, c1);
-> +
-> +        /* If compare equal, write back new data, else write back old data.  */
-> +        tcg_gen_movcond_i64(TCG_COND_NE, c1, c2, zero, t1, d1);
-> +        tcg_gen_movcond_i64(TCG_COND_NE, c2, c2, zero, t2, d2);
-> +        tcg_gen_qemu_st_i64(c1, addr, memidx, MO_64 | s->be_data);
-> +        tcg_gen_qemu_st_i64(c2, a2, memidx, MO_64 | s->be_data);
-
-I think this has the wrong behaviour if you do a CASP-with-mismatched-value
-to read-only memory -- architecturally this should fail the comparison
-and return the memory value in registers, it's not allowed to do a
-memory write and take a data abort because the memory isn't writable.
-
-> +        tcg_temp_free_i64(a2);
-> +        tcg_temp_free_i64(c1);
-> +        tcg_temp_free_i64(c2);
-> +        tcg_temp_free_i64(zero);
-> +
-> +        /* Write back the data from memory to Rs.  */
-> +        tcg_gen_mov_i64(s1, d1);
-> +        tcg_gen_mov_i64(s2, d2);
-> +        tcg_temp_free_i64(d1);
-> +        tcg_temp_free_i64(d2);
-> +    }
-> +}
-> +
-
-thanks
+Applied to target-arm.next, thanks.
 -- PMM

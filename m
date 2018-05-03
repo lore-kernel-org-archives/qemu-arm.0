@@ -1,129 +1,146 @@
-Received: by 10.28.4.212 with SMTP id 203csp207989wme;
-        Wed, 18 Apr 2018 07:57:18 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4/NMrdupLAtG9Ip0w2UHaT3OBI9uVweiwaGy9kmqMMls25XGmSCOiiYFQrA3rI3rEnNUyvG
-X-Received: by 2002:ac8:35b0:: with SMTP id k45-v6mr2351404qtb.81.1524063438042;
-        Wed, 18 Apr 2018 07:57:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1524063438; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp1686049wme;
+        Thu, 3 May 2018 02:38:53 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZqJ2tYo1J71jvH8sEn0SzBwKwnIWWyh7JMVonOTMQTX0m6yTPBrV0dZqmDUBpVrsmT//ibe
+X-Received: by 2002:ac8:3431:: with SMTP id u46-v6mr18908867qtb.193.1525340333486;
+        Thu, 03 May 2018 02:38:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1525340333; cv=none;
         d=google.com; s=arc-20160816;
-        b=spzCah4b5tpkk+tbvszpZcKTxyAgcvc2U/NYM0eqbCZymphL+zd2MhgPMP0GKs8XJ2
-         tufZXnxkENJXgdScI9vTGKgczvVGkYJUShOdSTPmieal1Ky0SuWMBxJsSlL2yrtU7H5o
-         5CupFGyCOArnBUOnhh7vFn6DglbK6RUGYGH1ixRgINp3jKaBjmcqPclAoOphwcAX3VWe
-         vVEtMpF5O2Hps9VWOjFf3ST4z7ok+fjZrQe7f3b+VLDIG9Zvh7SZpB++VnYp5l+bFQvi
-         oHgxhpWKUga9giwRcVHGFDZuu8+CrF7FP/N206N7GQU7qR9d7hcnbsogBOQeAJHsXz00
-         MiMg==
+        b=AfLffj+q80B0L1qQ+DsgEP57myOpFD+pS9EoDVFIG6gDLTMUoC/uSpLjBPzZZoIEnV
+         pTayE8eHpqWqKRVUMrg6adx42R2GB5vqvYSuKnkLqnE+TISMlFYxpcVCy58aKszEGBKW
+         vm/7Y4bhToJmMdSw2F5itV828vA94oOBbJ8/BYE1fEjLAe7xEEEWxaL/WQiQ0DAenniu
+         6rtE6p//pwwKFBkKQnvgZ0nB7raJHKbG4+ca1MSFnhgfMHIT68ttfHaJ0psb+O04XprK
+         7vGs01HfC//8aEVs6X6486S42nI/D42Dq7tAN8G+ZY3Py2g0CMnwxeg2DzssrMNlveDn
+         PZ/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=deXdUVZPDpW9uLqraXGqhEV/uudKIGBeMeBwyVa1/iI=;
-        b=KXhhAgr8GtPYS7jeW2cOcRAWROddWl89hynq0B/GrNatctlzELrO7WkYmhZ6UGIx/K
-         gI/aVluSgyi1D+3bFGeEHmQ9U6Rv91J/IMAqmKC+8f8iRqClk2YjtYEqja7NUxLTWl+h
-         pUds4tkefctvQ/nBDoHCf8vUU2hBv65Ekm23SQmZSAOTdSqgjFO+BUDfe/ZP39g8gYCg
-         bhdYzwzf2LtYrgjJDLFpgjpNuKZW0X2jbkSHBp8O/A99tTNfj/HrTX0qDxlO4ucAq+S6
-         +pBEFueL8IMlaHzwYa8s3Gh7mDO2INSpYJc13u3UG7GUmCa3VOqM/qPGZiJZMR5jJGFm
-         Nlsw==
+        bh=J+zuZUyPIfhdXW0AOjnOGdlG9jtWdI3TNPQzNXOxzhw=;
+        b=MJY6a7byihc2PwWR/NIr4L2TYneGTq2r02yvZ353ORHeaAriH6BidkNNitrENsHY2B
+         9GzXaIu7md/3yojvYVpAoZ3d430msIUcVBvxe5jvgbPsWJ6k3j6did05uG+IMGJI+JDZ
+         kLwmMcO9NKsDvVp24cpfzgcPtHXDBiaPy7pNphCyRc4VbVXIspD9uGqZ37LijUOwhOtL
+         O7cfu0I5ASoy44YlkMQzN/zsMW/AZ0Sjq52k92V0VFuasWc2XRJZbZ2Fg25XVajjeMEA
+         hsKB04nkSIJmeckVy2AgElpiiuvSCMmFPUth7Vj/RmV9uIwkO15kWOLDEXtx+Pdo0Hd3
+         IG8A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=aickkpvv;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 13-v6si1880520qtw.236.2018.04.18.07.57.17
+        by mx.google.com with ESMTPS id b29-v6si2147848qvf.142.2018.05.03.02.38.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 18 Apr 2018 07:57:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 03 May 2018 02:38:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33084 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=aickkpvv;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54934 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f8oWL-0000P1-I5
-	for alex.bennee@linaro.org; Wed, 18 Apr 2018 10:57:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33766)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fEAhQ-0008Ri-T6
+	for alex.bennee@linaro.org; Thu, 03 May 2018 05:38:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56606)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1f8oW6-0000Kf-GX
-	for qemu-arm@nongnu.org; Wed, 18 Apr 2018 10:57:06 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fEATk-0004zP-Gy
+	for qemu-devel@nongnu.org; Thu, 03 May 2018 05:24:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1f8oW2-00051p-P5
-	for qemu-arm@nongnu.org; Wed, 18 Apr 2018 10:57:02 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:57604)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1f8oW2-00051N-J5; Wed, 18 Apr 2018 10:56:58 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C06E9300442B;
-	Wed, 18 Apr 2018 14:56:57 +0000 (UTC)
-Received: from localhost (ovpn-116-12.gru2.redhat.com [10.97.116.12])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 3FF881838B;
-	Wed, 18 Apr 2018 14:56:10 +0000 (UTC)
-Date: Wed, 18 Apr 2018 11:56:03 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20180418145603.GN29865@localhost.localdomain>
-References: <1524061685-83305-1-git-send-email-imammedo@redhat.com>
-	<1524061685-83305-4-git-send-email-imammedo@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1fEATj-00073z-Ev
+	for qemu-devel@nongnu.org; Thu, 03 May 2018 05:24:44 -0400
+Received: from mail-ot0-x242.google.com ([2607:f8b0:4003:c0f::242]:43277)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fEATj-00073l-AA
+	for qemu-devel@nongnu.org; Thu, 03 May 2018 05:24:43 -0400
+Received: by mail-ot0-x242.google.com with SMTP id y10-v6so19826235otg.10
+	for <qemu-devel@nongnu.org>; Thu, 03 May 2018 02:24:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=J+zuZUyPIfhdXW0AOjnOGdlG9jtWdI3TNPQzNXOxzhw=;
+	b=aickkpvvvGVUaAIJzJw3WPgyR1CiL+DEwONgPSTmtS8VVFRZni4WdQHEUEFHhXFo9G
+	kp8KbwX7lieYMgkvG7ekocymenhoel9zXuHUw18MBTv4sDQWMz1HFSZJLO+Uqc61Fasm
+	27hS2jSN1G3jKkD04wKj9ftE2nwJFEk/RLjZc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=J+zuZUyPIfhdXW0AOjnOGdlG9jtWdI3TNPQzNXOxzhw=;
+	b=A6V3OOuwfkk/B09REJEIHKZynZsFZtzg3TL/0siVu7uxSCvH8ecAzbCZXKzA1vQYNR
+	oAqXm6fwFzb6E0MFOdEDgq8pYndTnTF593FsaSGgHKo/Y+ilPH5ZUu1A8avyFTsu0R+l
+	FlSOyUeIHGCl07vk61oYL7MHGxVsqojylIv0DiP/Tg74qhmhqtY7yP4Qpb8+jpNrl7fp
+	m8rfHnDYmfcNFjBb9wtk1MkmfCWYc6BnEpuDe+oeLcR0R1gV4RM5h/qIP8vSMVkhucPU
+	sYjaVIlZSLblA3qRVx7dijQp8GqP+V4HsXpeQDDgDRLQIPgB9mnn9kwdqaHySdg5bd3Q
+	I8gg==
+X-Gm-Message-State: ALQs6tBUKHr9PVHNVZLhhTTF8smlBEm5LWNmefa8dQMsauQfTO36HplG
+	2/w/T9tEB/+beT2GSaVR1MuPlmI5EbVC2l7xkgTcmw==
+X-Received: by 2002:a9d:2013:: with SMTP id
+	n19-v6mr15203808ota.258.1525339482555; 
+	Thu, 03 May 2018 02:24:42 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1524061685-83305-4-git-send-email-imammedo@redhat.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.9.2 (2017-12-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.44]);
-	Wed, 18 Apr 2018 14:56:57 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH for-2.13 v2 3/5] pc: simplify
- MachineClass::get_hotplug_handler handling
-X-BeenThere: qemu-arm@nongnu.org
+Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP;
+	Thu, 3 May 2018 02:24:22 -0700 (PDT)
+In-Reply-To: <20180503090532.3113-1-joel@jms.id.au>
+References: <20180503090532.3113-1-joel@jms.id.au>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 3 May 2018 10:24:22 +0100
+Message-ID: <CAFEAcA_dP5QRrZoX8P67xjNVpv7QssnMP9yd5sXqAEu2tQ5Lww@mail.gmail.com>
+To: Joel Stanley <joel@jms.id.au>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::242
+Subject: Re: [Qemu-devel] [PATCH 0/2] arm: Add nRF51 SoC and micro:bit
+ machine
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, mst@redhat.com,
-	qemu-devel@nongnu.org, eric.auger@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Er9HVAPlOMZd
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Stefan Hajnoczi <stefanha@gmail.com>,
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Jim Mussared <jim.mussared@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: IyNCsUX0zdYA
 
-On Wed, Apr 18, 2018 at 04:28:03PM +0200, Igor Mammedov wrote:
-> By default MachineClass::get_hotplug_handler is NULL and concrete board
-> should set it to it's own handler.
-> Considering there isn't any default handler, drop saving empty
-> MachineClass::get_hotplug_handler in child class and make PC code
-> consistent with spapr/s390x boards.
-> 
-> We can bring this back when actual usecase surfaces and do it
-> consistently across boards that use get_hotplug_handler().
-> 
-> Suggested-by: David Gibson <david@gibson.dropbear.id.au>
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+On 3 May 2018 at 10:05, Joel Stanley <joel@jms.id.au> wrote:
+> Hello,
+>
+> This short series implements a minimal definition of the Nordic
+> Semiconductor nRF51, a Cortex-M0 ARM SoC, and the BBC micro:bit, a
+> machine that will use this SoC.
+>
+> This work will serve as the base for our Google Summer of Code and
+> Outreachy interns who will work on implementing a number of features on
+> top of this base.
+>
+> I've tested this with a microbit micropython firmware, and checked that
+> it starts running by looking at it with gdb.
+>
+> I chose to keep the nrf51 and the microbit seperate, to not confuse the
+> peripherals that are on the microbit but are not part of the nrf51, and
+> vice versa.
+>
+> Please review!
 
-Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
+Hi; thanks for this patchset. I've done some quick overview review.
+It looks broadly ok but there are some details which don't follow
+our current preferences/practices for board and SoC models (we have
+a lot of legacy code in the codebase that follows older approaches
+or is just buggy, so it can be hard to get those right. The mps2
+boards and the iotkit SoC are the most recent I've written so
+probably not a bad pattern to look at.)
+We should probably not put this into master until we've got at least
+the cortex-m0 model, though.
 
-
-[...]
-> @@ -2344,7 +2341,6 @@ static void pc_machine_class_init(ObjectClass *oc, void *data)
->      HotplugHandlerClass *hc = HOTPLUG_HANDLER_CLASS(oc);
->      NMIClass *nc = NMI_CLASS(oc);
->  
-> -    pcmc->get_hotplug_handler = mc->get_hotplug_handler;
-
-What about assert(!mc->get_hotplug_handler) just before
-overwriting it?
-
--- 
-Eduardo
+thanks
+-- PMM

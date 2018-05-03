@@ -1,235 +1,100 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id s2sm771576wmf.0.2018.02.08.09.31.59
+Received: by 10.28.4.212 with SMTP id 203csp2304803wme;
+        Thu, 3 May 2018 13:09:50 -0700 (PDT)
+X-Received: by 2002:a17:902:a718:: with SMTP id w24-v6mr25736803plq.45.1525378190431;
+        Thu, 03 May 2018 13:09:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1525378190; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Ur8TwRtBLtultX0W7bvOVGk3KXh1oTaApiU07FWDzpSaFJpp4pgcy8X//YF+a3lo4S
+         EZkLOA3AfGUoDfJVgr9/UeGnvwLlwB7ThNuDJOaRpCHBdaXfWoj1tlGSdohVEFmer03Q
+         QgHCFDZmlD97Evh0gMDzqMelODTOsOeVhHichzksbq3Mz0II0p5qIs7PhB4p9LE5Auwq
+         8F1FwoOOKJP4gL3LenduyfgjVN86Pv3pzVEbKZqTARXi63LuC25NVSUPEKdFYsbk9EF/
+         cloZE7bko7kLecYVPAc4IzjmH5KrOfOI35B+b7iogjzgUtaS2CjM4mYFWfmB4haBmX2V
+         iYug==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+         :dkim-signature:arc-authentication-results;
+        bh=+tBYBfKLDLDCRME24BFmGnPnS68+FKA2KH085krEfhg=;
+        b=GNgxVbw4EGUzlwOdNDdUoDlikFL3XDZxLWPL1cUI2X+652YoNpBm14TIW83KYFictK
+         akPkULVPO7hLB1Ge6/HrQ7NIFDFC/zrQcmbF6zuPV0xLUfs0uNawRVhfuzsgePVG409b
+         CSxK33N+RrT4q1AJgiFXgVXoJZqjSsNYGMLk+ZhT58CRauucGapOGWnNn3qUgZA9lPMq
+         FukJiaCQGHbegx0WVtF4Vyc1mImKlMWX0QQvEV0NY+hhh0/Ik+e47VDuVJIlcPoFhuVG
+         Khc4ps4gH/K0p3qiRQ7A7/Ijvpi4m00dpnPBWMH34iksbCCpOyeAaZs8dKx5boVHBL7J
+         eDUg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DC8TgvN7;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id h132-v6sor3140136pgc.390.2018.05.03.13.09.50
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 03 May 2018 13:09:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DC8TgvN7;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=+tBYBfKLDLDCRME24BFmGnPnS68+FKA2KH085krEfhg=;
+        b=DC8TgvN7ZFR58L3avryAg4l3zooDQzJMNx7ai9ilrnWBGWujgWM62VS0jb7+lXvfcT
+         +glBq5Hn2rVtvqO+OxFpfndHO34nGeGeCuU9OnSklHStmA/Fo3z/NnE3M+SQUXG2jwL6
+         5KQgyXLuMeOx9mjaQuUEEXd+X+Jcun1GmhNgI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=+tBYBfKLDLDCRME24BFmGnPnS68+FKA2KH085krEfhg=;
+        b=pWZG8jVZd5M/Lkf1TwfbjwWutvz5udZD9Q76TXiU8L6cJXrB2hbzXrdlzHog5zrAOo
+         Tx/EGrGN2Gt5JLCKTRNajETVFrgdwahk4IizXcWCQpRO9+PV8SbWiiMRBYNPJ1018NZb
+         nQ+DRsBH99Vu9SASRI3aRCQFOu7MlzTMy4Lufij+WivknYWNLKRDClmW79UC3X2h4EIe
+         Vls53YDdiWYohw9zXalW3InEaSOMLsvN24bijtV2VVzflFAfunhs7EZ9sx8ZpWO2QFSK
+         2RPZrkyK7hjkGc3GAWV6TKfmWGPB0bLWZhTJEeNIpzviFWTxtV/51ULVMOf0k/dzGHxO
+         S/ZA==
+X-Gm-Message-State: ALQs6tAynS8BZ6baXfaT3kyuPQtvPtSwWcgUDMdc2RPu1ETTgDrj/jJ8
+	moc4qupzhxbfsyI6kjQgmsQ1hB1IdrmKjw==
+X-Google-Smtp-Source: AB8JxZrEc8HCJ2TC8HGubihZ50kEP8b9qO1j5roK2gqS6FWsKEuOSU1fWtmmhrubFf8Cn82WedyGEA==
+X-Received: by 2002:a65:4944:: with SMTP id q4-v6mr20648662pgs.424.1525378189852;
+        Thu, 03 May 2018 13:09:49 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from cloudburst.twiddle.net (97-113-2-170.tukw.qwest.net. [97.113.2.170])
+        by smtp.gmail.com with ESMTPSA id s88sm42199644pfe.43.2018.05.03.13.09.48
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 08 Feb 2018 09:32:00 -0800 (PST)
-Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 32D073E0BDF;
-	Thu,  8 Feb 2018 17:31:58 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 06/32] target/arm/helper: pass explicit fpst to set_rmode
-Date: Thu,  8 Feb 2018 17:31:31 +0000
-Message-Id: <20180208173157.24705-7-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.15.1
-In-Reply-To: <20180208173157.24705-1-alex.bennee@linaro.org>
-References: <20180208173157.24705-1-alex.bennee@linaro.org>
+        Thu, 03 May 2018 13:09:49 -0700 (PDT)
+Subject: Re: [PATCH v2 2/3] fpu/softfloat: support ARM Alternative
+ half-precision
+To: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Aurelien Jarno <aurelien@aurel32.net>
+References: <20180502154344.10585-1-alex.bennee@linaro.org>
+ <20180502154344.10585-3-alex.bennee@linaro.org>
+ <CAFEAcA80vTz25WHGKteTU3nxSi2fUHN8dp+z8paNP03conAghQ@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <9549d686-899d-7b3b-dae3-d3cc22528e50@linaro.org>
+Date: Thu, 3 May 2018 13:09:47 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: iC9IAO3ve3CT
+In-Reply-To: <CAFEAcA80vTz25WHGKteTU3nxSi2fUHN8dp+z8paNP03conAghQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: fwP0DbSFY/bt
 
-As the rounding mode is now split between FP16 and the rest of
-floating point we need to be explicit when tweaking it. Instead of
-passing the CPU env we now pass the appropriate fpst pointer directly.
+On 05/03/2018 11:17 AM, Peter Maydell wrote:
+> (target/i386 notably does not do this, we should check how
+> SSE and x87 handle NaNs in fp conversions first.)
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- target/arm/helper.c        |  4 ++--
- target/arm/helper.h        |  2 +-
- target/arm/translate-a64.c | 26 +++++++++++++-------------
- target/arm/translate.c     | 12 ++++++------
- 4 files changed, 22 insertions(+), 22 deletions(-)
+Hardware does silence NaNs.  I tested that earlier:
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 1cc3d43a9f..72522c125c 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -10974,9 +10974,9 @@ VFP_CONV_FIX_A64(uq, s, 32, 64, uint64)
- /* Set the current fp rounding mode and return the old one.
-  * The argument is a softfloat float_round_ value.
-  */
--uint32_t HELPER(set_rmode)(uint32_t rmode, CPUARMState *env)
-+uint32_t HELPER(set_rmode)(uint32_t rmode, void *fpstp)
- {
--    float_status *fp_status = &env->vfp.fp_status;
-+    float_status *fp_status = fpstp;
- 
-     uint32_t prev_rmode = get_float_rounding_mode(fp_status);
-     set_float_rounding_mode(rmode, fp_status);
-diff --git a/target/arm/helper.h b/target/arm/helper.h
-index 5dec2e6262..40dcd74cfd 100644
---- a/target/arm/helper.h
-+++ b/target/arm/helper.h
-@@ -167,7 +167,7 @@ DEF_HELPER_3(vfp_uhtod, f64, i64, i32, ptr)
- DEF_HELPER_3(vfp_ultod, f64, i64, i32, ptr)
- DEF_HELPER_3(vfp_uqtod, f64, i64, i32, ptr)
- 
--DEF_HELPER_FLAGS_2(set_rmode, TCG_CALL_NO_RWG, i32, i32, env)
-+DEF_HELPER_FLAGS_2(set_rmode, TCG_CALL_NO_RWG, i32, i32, ptr)
- DEF_HELPER_FLAGS_2(set_neon_rmode, TCG_CALL_NO_RWG, i32, i32, env)
- 
- DEF_HELPER_2(vfp_fcvt_f16_to_f32, f32, i32, env)
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 1afa669e6e..531ac5999c 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -4540,10 +4540,10 @@ static void handle_fp_1src_single(DisasContext *s, int opcode, int rd, int rn)
-     {
-         TCGv_i32 tcg_rmode = tcg_const_i32(arm_rmode_to_sf(opcode & 7));
- 
--        gen_helper_set_rmode(tcg_rmode, tcg_rmode, cpu_env);
-+        gen_helper_set_rmode(tcg_rmode, tcg_rmode, fpst);
-         gen_helper_rints(tcg_res, tcg_op, fpst);
- 
--        gen_helper_set_rmode(tcg_rmode, tcg_rmode, cpu_env);
-+        gen_helper_set_rmode(tcg_rmode, tcg_rmode, fpst);
-         tcg_temp_free_i32(tcg_rmode);
-         break;
-     }
-@@ -4596,10 +4596,10 @@ static void handle_fp_1src_double(DisasContext *s, int opcode, int rd, int rn)
-     {
-         TCGv_i32 tcg_rmode = tcg_const_i32(arm_rmode_to_sf(opcode & 7));
- 
--        gen_helper_set_rmode(tcg_rmode, tcg_rmode, cpu_env);
-+        gen_helper_set_rmode(tcg_rmode, tcg_rmode, fpst);
-         gen_helper_rintd(tcg_res, tcg_op, fpst);
- 
--        gen_helper_set_rmode(tcg_rmode, tcg_rmode, cpu_env);
-+        gen_helper_set_rmode(tcg_rmode, tcg_rmode, fpst);
-         tcg_temp_free_i32(tcg_rmode);
-         break;
-     }
-@@ -5126,7 +5126,7 @@ static void handle_fpfpcvt(DisasContext *s, int rd, int rn, int opcode,
- 
-         tcg_rmode = tcg_const_i32(arm_rmode_to_sf(rmode));
- 
--        gen_helper_set_rmode(tcg_rmode, tcg_rmode, cpu_env);
-+        gen_helper_set_rmode(tcg_rmode, tcg_rmode, tcg_fpstatus);
- 
-         if (is_double) {
-             TCGv_i64 tcg_double = read_fp_dreg(s, rn);
-@@ -5173,7 +5173,7 @@ static void handle_fpfpcvt(DisasContext *s, int rd, int rn, int opcode,
-             tcg_temp_free_i32(tcg_single);
-         }
- 
--        gen_helper_set_rmode(tcg_rmode, tcg_rmode, cpu_env);
-+        gen_helper_set_rmode(tcg_rmode, tcg_rmode, tcg_fpstatus);
-         tcg_temp_free_i32(tcg_rmode);
- 
-         if (!sf) {
-@@ -6946,8 +6946,8 @@ static void handle_simd_shift_fpint_conv(DisasContext *s, bool is_scalar,
-     assert(!(is_scalar && is_q));
- 
-     tcg_rmode = tcg_const_i32(arm_rmode_to_sf(FPROUNDING_ZERO));
--    gen_helper_set_rmode(tcg_rmode, tcg_rmode, cpu_env);
-     tcg_fpstatus = get_fpstatus_ptr(false);
-+    gen_helper_set_rmode(tcg_rmode, tcg_rmode, tcg_fpstatus);
-     tcg_shift = tcg_const_i32(fracbits);
- 
-     if (is_double) {
-@@ -6993,7 +6993,7 @@ static void handle_simd_shift_fpint_conv(DisasContext *s, bool is_scalar,
- 
-     tcg_temp_free_ptr(tcg_fpstatus);
-     tcg_temp_free_i32(tcg_shift);
--    gen_helper_set_rmode(tcg_rmode, tcg_rmode, cpu_env);
-+    gen_helper_set_rmode(tcg_rmode, tcg_rmode, tcg_fpstatus);
-     tcg_temp_free_i32(tcg_rmode);
- }
- 
-@@ -8262,8 +8262,8 @@ static void disas_simd_scalar_two_reg_misc(DisasContext *s, uint32_t insn)
- 
-     if (is_fcvt) {
-         tcg_rmode = tcg_const_i32(arm_rmode_to_sf(rmode));
--        gen_helper_set_rmode(tcg_rmode, tcg_rmode, cpu_env);
-         tcg_fpstatus = get_fpstatus_ptr(false);
-+        gen_helper_set_rmode(tcg_rmode, tcg_rmode, tcg_fpstatus);
-     } else {
-         tcg_rmode = NULL;
-         tcg_fpstatus = NULL;
-@@ -8328,7 +8328,7 @@ static void disas_simd_scalar_two_reg_misc(DisasContext *s, uint32_t insn)
-     }
- 
-     if (is_fcvt) {
--        gen_helper_set_rmode(tcg_rmode, tcg_rmode, cpu_env);
-+        gen_helper_set_rmode(tcg_rmode, tcg_rmode, tcg_fpstatus);
-         tcg_temp_free_i32(tcg_rmode);
-         tcg_temp_free_ptr(tcg_fpstatus);
-     }
-@@ -10249,14 +10249,14 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
-         return;
-     }
- 
--    if (need_fpstatus) {
-+    if (need_fpstatus || need_rmode) {
-         tcg_fpstatus = get_fpstatus_ptr(false);
-     } else {
-         tcg_fpstatus = NULL;
-     }
-     if (need_rmode) {
-         tcg_rmode = tcg_const_i32(arm_rmode_to_sf(rmode));
--        gen_helper_set_rmode(tcg_rmode, tcg_rmode, cpu_env);
-+        gen_helper_set_rmode(tcg_rmode, tcg_rmode, tcg_fpstatus);
-     } else {
-         tcg_rmode = NULL;
-     }
-@@ -10485,7 +10485,7 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
-     }
- 
-     if (need_rmode) {
--        gen_helper_set_rmode(tcg_rmode, tcg_rmode, cpu_env);
-+        gen_helper_set_rmode(tcg_rmode, tcg_rmode, tcg_fpstatus);
-         tcg_temp_free_i32(tcg_rmode);
-     }
-     if (need_fpstatus) {
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 55826b7e5a..9aee67f067 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -3144,7 +3144,7 @@ static int handle_vrint(uint32_t insn, uint32_t rd, uint32_t rm, uint32_t dp,
-     TCGv_i32 tcg_rmode;
- 
-     tcg_rmode = tcg_const_i32(arm_rmode_to_sf(rounding));
--    gen_helper_set_rmode(tcg_rmode, tcg_rmode, cpu_env);
-+    gen_helper_set_rmode(tcg_rmode, tcg_rmode, fpst);
- 
-     if (dp) {
-         TCGv_i64 tcg_op;
-@@ -3168,7 +3168,7 @@ static int handle_vrint(uint32_t insn, uint32_t rd, uint32_t rm, uint32_t dp,
-         tcg_temp_free_i32(tcg_res);
-     }
- 
--    gen_helper_set_rmode(tcg_rmode, tcg_rmode, cpu_env);
-+    gen_helper_set_rmode(tcg_rmode, tcg_rmode, fpst);
-     tcg_temp_free_i32(tcg_rmode);
- 
-     tcg_temp_free_ptr(fpst);
-@@ -3185,7 +3185,7 @@ static int handle_vcvt(uint32_t insn, uint32_t rd, uint32_t rm, uint32_t dp,
-     tcg_shift = tcg_const_i32(0);
- 
-     tcg_rmode = tcg_const_i32(arm_rmode_to_sf(rounding));
--    gen_helper_set_rmode(tcg_rmode, tcg_rmode, cpu_env);
-+    gen_helper_set_rmode(tcg_rmode, tcg_rmode, fpst);
- 
-     if (dp) {
-         TCGv_i64 tcg_double, tcg_res;
-@@ -3223,7 +3223,7 @@ static int handle_vcvt(uint32_t insn, uint32_t rd, uint32_t rm, uint32_t dp,
-         tcg_temp_free_i32(tcg_single);
-     }
- 
--    gen_helper_set_rmode(tcg_rmode, tcg_rmode, cpu_env);
-+    gen_helper_set_rmode(tcg_rmode, tcg_rmode, fpst);
-     tcg_temp_free_i32(tcg_rmode);
- 
-     tcg_temp_free_i32(tcg_shift);
-@@ -3893,13 +3893,13 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
-                         TCGv_ptr fpst = get_fpstatus_ptr(0);
-                         TCGv_i32 tcg_rmode;
-                         tcg_rmode = tcg_const_i32(float_round_to_zero);
--                        gen_helper_set_rmode(tcg_rmode, tcg_rmode, cpu_env);
-+                        gen_helper_set_rmode(tcg_rmode, tcg_rmode, fpst);
-                         if (dp) {
-                             gen_helper_rintd(cpu_F0d, cpu_F0d, fpst);
-                         } else {
-                             gen_helper_rints(cpu_F0s, cpu_F0s, fpst);
-                         }
--                        gen_helper_set_rmode(tcg_rmode, tcg_rmode, cpu_env);
-+                        gen_helper_set_rmode(tcg_rmode, tcg_rmode, fpst);
-                         tcg_temp_free_i32(tcg_rmode);
-                         tcg_temp_free_ptr(fpst);
-                         break;
--- 
-2.15.1
+https://lists.gnu.org/archive/html/qemu-devel/2018-04/msg03114.html
+
+
+r~

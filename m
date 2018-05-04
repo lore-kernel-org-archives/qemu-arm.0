@@ -1,193 +1,252 @@
-Received: by 10.28.4.212 with SMTP id 203csp179833wme;
-        Fri, 4 May 2018 08:56:14 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZpW0Hx7QfYvtejXUJ5MyBRJeztRcqcwjWHnnItwr9UqkM9tx5IwwhcytoWz1Dj/fZQNYR2I
-X-Received: by 2002:aed:3ead:: with SMTP id n42-v6mr24360772qtf.56.1525449374864;
-        Fri, 04 May 2018 08:56:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1525449374; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp195276wme;
+        Fri, 4 May 2018 09:09:20 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZp85ZVb28TWZFDZqtGY6EShYVF7wNS5awMfSACXu8a0wjRdnHz/bPCgag5d02RDVQrBqkp4
+X-Received: by 2002:a0c:afb2:: with SMTP id s47-v6mr24080706qvc.163.1525450160294;
+        Fri, 04 May 2018 09:09:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1525450160; cv=none;
         d=google.com; s=arc-20160816;
-        b=WkRp3w0Kka0oik+L9V6amfCmXkCA1NXvWZZfyB0F42ErfUBSlcMst2JHE5C7tfAeAf
-         3zQAbQCr9KxalOr/cqo35s9oyVZ3KSjn+cgmXNUbdGA/DNZ5wlLUU0CwjZ0PIMG76rgx
-         bSuzyLLWBT5eDtHfTViuEE9aVu/qE9Bf41JVNGTOossVxGsgImL3LOztaXtbM3fOX7Gh
-         L8zLyiO/KiXAa+I3ArvEDTSxt+qcJ1iBSZR1jVsaKsmxSa/H4G91NJEPuJI2tNxSNDi4
-         OvvZhBSocHsBQVEvSySgFf5zzmQodxZfF5m/QrfeeqWl2wfLWVrKTwQAK73TkQmbY4sQ
-         7wPw==
+        b=Rzsb2kDngsUhl+++jnxsQSHxGscrAvKp9oCOuJxKjMWc3nPFrKO/31T30UOZDebtn9
+         UdouQJhSg+cbDG4JgmbSPlRyAqEeIp9DY6JOsysc5WgIjitS5tYjUcusOlACvIGgg+/W
+         HN3jGRWwVNESSDzSECjg769iyR3ucQNKekrrK9NccHbwYScIvLgxHP2aHewIkfR937ww
+         8IzE3pzcXB2a/dF52r11MqhfsSZOzyrQPjHywARJR7vyPReKv1sEZKxopMXmHfnLZStb
+         YdhACWEO2DfRi98UW8uK0AhvBtQ1+rvx2yEl+WfUb/tBqhKvFJhMhV7PUldmOEW8lCii
+         +LkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=2VgQlPTGyUTR5Dp/fxpJ8qmGNE6nOOX5+J+ILbW3egY=;
-        b=uZ0k4jGuvx54+TBFWKx4OajPAiNUwFpjNF74DCOgZwVXmP7w/Y1AFPWbkLd3I7pL2P
-         q9TsMvEVx5et3fOIg3YmhE7SaeOKqw4fnvfU7iYMncmt5898yBksAEoHv3NDOkIplqkl
-         T6b3p8tE0zcIU4Hmkp2t1eCQDYdbDs10YG+Ow0Tczc8mb7ODYiQV3xShdJyJ0oW++JeL
-         Myb2SlXPkK2E3fEnrBjfqApWjdIIk1xJ8VURnp4tdd2qYraneHWGGmaD99ZzTNeXPAvP
-         QzRSUy2PTDL9m9rwWONO4iUFfuD/D714PVwnt5f+zVxXedZmhmxSTcTIQtQqmoF3btuG
-         Xv/A==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=AhZTNnmz2bExtwkTHOFywLwZ1lgVO/zx2vNRoK/6NTs=;
+        b=1IdJruMYA0SbxGvxteZulRH6eK1/3LpxbVhs6b0zeahVDngM5bvmSWNr+ySUNKEj/P
+         NdbjIEixLEswaxMP3yVOa8ky//Xy404lYr+QUoyNc40aeH1xfWHopsX7b3QayLI/opJk
+         nIdKvTxULb2UYA2QEqLWb4aWbaE3FeDdJcJ0Z65IxgVf8zZK2hO7Ai6ju1AothREnylO
+         m/L5fxC1LMEU1aRjvlIhhSJHNI/O5zAmIPxW8K2dvFUKVan1AOgv27KlOi9QMVjoWswy
+         e6v6VGhtYNiB+A9cfAfqq/V/s8906sw6jc9Mo5oHZ6okxZ9vNM0/OH/qxOD4vr9+Wt6a
+         4zUA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uDy5Jp3V;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=n4sFDJxR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v54-v6si9125756qvc.174.2018.05.04.08.56.14
+        by mx.google.com with ESMTPS id b10-v6si5035837qvj.239.2018.05.04.09.09.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 04 May 2018 08:56:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 04 May 2018 09:09:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uDy5Jp3V;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:34986 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=n4sFDJxR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:35080 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fEd4A-0008G6-At
-	for alex.bennee@linaro.org; Fri, 04 May 2018 11:56:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53733)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fEdGp-0001LC-Ni
+	for alex.bennee@linaro.org; Fri, 04 May 2018 12:09:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54951)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1fEd3j-00081t-Rh
-	for qemu-arm@nongnu.org; Fri, 04 May 2018 11:55:48 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fEd7b-0002bG-NQ
+	for qemu-devel@nongnu.org; Fri, 04 May 2018 11:59:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1fEd3i-0006yK-Pu
-	for qemu-arm@nongnu.org; Fri, 04 May 2018 11:55:47 -0400
-Received: from mail-pg0-x244.google.com ([2607:f8b0:400e:c05::244]:43584)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fEd7W-0001Uu-T8
+	for qemu-devel@nongnu.org; Fri, 04 May 2018 11:59:47 -0400
+Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:45535)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
-	id 1fEd3c-0006oZ-Au; Fri, 04 May 2018 11:55:40 -0400
-Received: by mail-pg0-x244.google.com with SMTP id k11-v6so14603367pgo.10;
-	Fri, 04 May 2018 08:55:39 -0700 (PDT)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fEd7W-0001Ui-O5; Fri, 04 May 2018 11:59:42 -0400
+Received: by mail-qt0-x241.google.com with SMTP id j42-v6so27941038qtj.12;
+	Fri, 04 May 2018 08:59:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=2VgQlPTGyUTR5Dp/fxpJ8qmGNE6nOOX5+J+ILbW3egY=;
-	b=uDy5Jp3VY0cEtI7V0HnHsJTzCju8ydy7IrqGnpH5tm9fJxmG7KWO5JOsjydBuw/ESK
-	ewP7wh6BGJFLauRHMZcsNQoTLpf0NwZ0LU9w7JX7jVP0/EhkSvxsGXQI5DN3y04w7j23
-	3Wx5eTjW2k4N0lVH6DtJ9ljFIV6eHnR5+3OofR02+gWG1QCAzLcYnMNjIiXt2HC9Oe/P
-	HgO4rOblqkRC5Azh9UmMInCJlhJGXsoWacR8gwr5r3iS5YHTacidMAYHd9ei2uOMm/GN
-	NQMcN7BgvowIK5vs6qyDjqBzVArItQrt54h2wunyM6VFL3jv2KtMCMA2jjkDPInUJcOV
-	zqFA==
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=AhZTNnmz2bExtwkTHOFywLwZ1lgVO/zx2vNRoK/6NTs=;
+	b=n4sFDJxR5fzjfK6EPh5th25Kd6+K9PUHKD7MG0jsuMiUiIptNU5JqBtJX9tOfEbC2G
+	dEgdNwlPIGQm9Z2Sv7U+MIV7C7cSryHqqN7xZfxJ/s9dMEO9PIcGCLJHpSyeALt5IT06
+	GW6Wv6SSsJ86pIkY3BpQALjO2t1eCjPj5TBPebXwhyb0MeQqin4qpRhgpibcqcPg/8ft
+	CJl3RyWgd5A2VlzEHPv6i42AuWQ8IU5rF6kWbTarnxkmpdyQlqjW+DhFlg4e65wx+GtG
+	3STzfGcwbSEC1GNx+KOwU7su9tZv3PzjIGAqZM1Su2nD8QIzow/2Pnyl7zReIA9LjORn
+	A5KA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=2VgQlPTGyUTR5Dp/fxpJ8qmGNE6nOOX5+J+ILbW3egY=;
-	b=uFgIItQfvOj8iomq9ySljKN9m1E21Ijl9Fvmvb26VP0Q10irEgkQHxO22xhMxw5v5a
-	IsdCoD4f16QDF6cMtHY63bUm9hsn8GskbE+GYwL/KZv7OBX3H+bDQfmwSnWgU49pcOEc
-	cLCFbVMy0UECC4vv1qe+R5aqP/NdBFBePz1MNil8GJ0/orxq3jWfUyQ4g6tN6/rlOXyp
-	t9o54jjsDqvqsxgCvjj78n7aMBcxsv20D5dl4TyvMnO9DnlecGuXWJeF8t3ROpfA1Y8q
-	/ghqlriVl9dOvcfK2wUXUHQAyISVFJlxS3OpWoQcprdx/IaU2VRvhIQwG3J4dNXs1cmi
-	Qevw==
-X-Gm-Message-State: ALQs6tATD7gEgUkAsPpk5R1aF+1VdowbWcMM8KsP4k9S/zh0NL2v4Pmt
-	U42ezU6iNc7ftLLh0/ZktD0V1/1A
-X-Received: by 2002:a63:6012:: with SMTP id
-	u18-v6mr17777289pgb.284.1525449338747; 
-	Fri, 04 May 2018 08:55:38 -0700 (PDT)
-Received: from cloudburst.twiddle.net (97-113-2-170.tukw.qwest.net.
-	[97.113.2.170]) by smtp.googlemail.com with ESMTPSA id
-	i72sm12501016pfe.22.2018.05.04.08.55.37
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=AhZTNnmz2bExtwkTHOFywLwZ1lgVO/zx2vNRoK/6NTs=;
+	b=BBR8WpdmiSAnk4VFkyY0VCW+1+79arfix6sE6J8/uLC85v2aSsd3UBOACAjnK2qI3y
+	zXiV+E4UGtc+hgIle2pxY1mH3RYU1xv3wXrHluw62kxI5st+2qcOJOeIN6GBC8xHng9y
+	jzTDOdTBFRvfHWDB9ZaIt+f4ttHZk5hx/YZZCgBF6GOST6v0RJmR48XlPe5u5+eiZQpL
+	nVqSxVm914WKPGfWdx2unxogWyygPFzNdL5NrxVY9Ts6XFa58aa4gbdRnKY///ArZSfo
+	GDO5GqrNSWBy7XRGJHiuUDLx8/ufODgTwmAhwO2fIcuK0XhW3t+29YK8TQsNQv/IIbqX
+	ILug==
+X-Gm-Message-State: ALQs6tC6391kYok89taVcFQbKzMIds+ZQDcM+nvE69vIb+e2H4rfxWUn
+	euMFdkLYEns2W1ivobvvDHw=
+X-Received: by 2002:ac8:35b0:: with SMTP id
+	k45-v6mr23023286qtb.81.1525449582158; 
+	Fri, 04 May 2018 08:59:42 -0700 (PDT)
+Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
+	a83sm8587066qkb.22.2018.05.04.08.59.39
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 04 May 2018 08:55:38 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-References: <20180504153431.5169-1-peter.maydell@linaro.org>
-From: Richard Henderson <rth@twiddle.net>
-Openpgp: preference=signencrypt
-Autocrypt: addr=rth@twiddle.net; prefer-encrypt=mutual; keydata=
-	xsBNBFGuLC8BCADcAoWcnW9lTsDMzbO3MBU+KbiGaj5JPatEUscRDkQYM2fyNjJp2tIWDK5a
-	n4yngeXB3eX61WbYR3QraRK8mlYLGxyAdHMEQfPipbqf3TmN043fssT2bc82ApJcs1zvLYgI
-	rhMht7Dck7A0wNC1jo+ZjVVFig5gDTN7gOzaAdBtV8tVNUddwkLzzaGpfihhSD6U46NdqKOG
-	Wlnn6TrkMy0QGdQ5NaXHkRlUjnnUTSW/nKfoxD+EI+A9V4sYOd8mc/TL4aJh/i/AiU57eLbo
-	n17uQI6/VTWDUWl8USiz4x9c8vmqlywLx00tAFxxoRWqk4KVJlj+Sh0up/D/sJ+vPpgBABEB
-	AAHNI1JpY2hhcmQgSGVuZGVyc29uIDxydGhAdHdpZGRsZS5uZXQ+wsCBBBMBAgArAhsDBgsJ
-	CAcDAgYVCAIJCgsEFgIDAQIeAQIXgAUJC7UHogUCWaDNVgIZAQAKCRCtEnDMTdAnm9N5CADO
-	cB8F/SudJ72IupxQf40hbJdBK176+gb3sHMsixyLtrU59lee+lIM1OZmlNjsnCYmiSnbA5ks
-	Q7p0HfO7DgdmfLzcK6xsHZukqSZy5LByw348Y913ZyjOrJZFdPP7kDg1MnqRqH4+3ZdzxV4y
-	eYBWFU9GYMIF06JbUubossOOO4ArNVZbnIPu8Vn2tDZVVqsCBqkoCSBMj519xrvyOu5z4mHS
-	LkCglXmVDOXMbqLuNAC3rfNXSnyM4hYkLUyfALJlAAy1Ro+jUqYhu7XUFV/MiwRuFMh5GbtY
-	Urkx7tqsWQXLT3GeDk/LqvpWJQwk4cHHckYjRih+70CHIenm81PVzsBNBFGuLC8BCACyEx3x
-	94HIkTX0CHu2sA0w75+h9wuoA8ggJ7+S4ri0y2YsijWad5TTt6z6MMiqxk9kSA5bppaj4HXh
-	86hBF/dWCtMpNr3Rb8FNOKyeA/qkYHVD6HiAiw9c6D8Dr9hWmOk3/HSmGrNURxeUFOckDXsv
-	I+yGGKBNshj59j7QZr7ZiuIi2rWlBL8dFN/OWa/o3x7HKsE4k6K8ngwvCKP/QbDLwLLBOWH+
-	VEUtpyeyxTr3OJ47ECTxdYvXoAV2iJaKr+6doVQiiR5eVFiMYrUPUECJeolOCwqc/JlWE18L
-	+PCAFaW1H+/mpPVfSpN4wnkJ5cQiQVB41IaCM4p20iRzx7ZJABEBAAHCwGUEGAECAA8CGwwF
-	AlmgzYEFCQu1CEoACgkQrRJwzE3QJ5s7rggAwABzDAGrZ6uWsMxg5PeiiAYPy6LBnCBJSpB5
-	Tfy5jH8QTmLfXW+u4Ib4sWXG7PYNR7sIrtqUHjRqXLVXrSnBX9ASGcYw/Xil45khW6LsRpO1
-	prHv9gkwQfa6fTiWXVfSfm2Nant6u02q+MaYtQpCVTiz/9ki4FfftUwUHFLU0MhIQogjd11y
-	/E08RJsqBwaHQdt14PwU1HphDOzSkhOXRXQLSd3ysyeGUXvL+gqQoXl5XYdvk8IId4PoJRo4
-	jcyJ4VbnldvXh5gdGhFA/f9JgkLk9tPW+C3wNtNWyRUq8azR9hF2fg2HJUf4IXQlIu8OOgh1
-	VcROBqvtH3ecaIL9iw==
-Message-ID: <780abdaa-a20f-d82d-fc3c-5df111887cd9@twiddle.net>
-Date: Fri, 4 May 2018 08:55:36 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	Fri, 04 May 2018 08:59:41 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	"Edgar E . Iglesias" <edgar.iglesias@xilinx.com>
+Date: Fri,  4 May 2018 12:59:03 -0300
+Message-Id: <20180504155918.21287-6-f4bug@amsat.org>
+X-Mailer: git-send-email 2.17.0
+In-Reply-To: <20180504155918.21287-1-f4bug@amsat.org>
+References: <20180504155918.21287-1-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20180504153431.5169-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c05::244
-Subject: Re: [Qemu-arm] [PATCH] tcg/i386: Fix dup_vec in non-AVX2 codepath
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400d:c0d::241
+Subject: [Qemu-devel] [PATCH 05/20] sdcard: Use the sd_prepare_request*()
+ functions
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-stable@nongnu.org, patches@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rruARUmP40+Y
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Alistair Francis <alistair@alistair23.me>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, Michael Walle <michael@walle.cc>,
+	"open list:PXA2XX" <qemu-arm@nongnu.org>,
+	Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Y93fQf9IaJR7
 
-On 05/04/2018 08:34 AM, Peter Maydell wrote:
-> The VPUNPCKLD* instructions are all "non-destructive source",
-> indicated by "NDS" in the encoding string in the x86 ISA manual.
-> This means that they take two source operands, one of which is
-> encoded in the VEX.vvvv field. We were incorrectly treating them
-> as if they were destructive-source and passing 0 as the 'v'
-> argument of tcg_out_vex_modrm(). This meant we were always
-> using %xmm0 as one of the source operands, causing incorrect
-> results if the register allocator happened to want to use
-> something else. For instance the input AArch64 insn:
->  DUP v26.16b, w21
-> which becomes TCG IR ops:
->  dup_vec v128,e8,tmp2,x21
->  st_vec v128,e8,tmp2,env,$0xa40
-> was assembled to:
-> 0x607c568c:  c4 c1 7a 7e 86 e8 00 00  vmovq    0xe8(%r14), %xmm0
-> 0x607c5694:  00
-> 0x607c5695:  c5 f9 60 c8              vpunpcklbw %xmm0, %xmm0, %xmm1
-> 0x607c5699:  c5 f9 61 c9              vpunpcklwd %xmm1, %xmm0, %xmm1
-> 0x607c569d:  c5 f9 70 c9 00           vpshufd  $0, %xmm1, %xmm1
-> 0x607c56a2:  c4 c1 7a 7f 8e 40 0a 00  vmovdqu  %xmm1, 0xa40(%r14)
-> 0x607c56aa:  00
-> 
-> when the vpunpcklwd insn should be "%xmm1, %xmm1, %xmm1".
-> This resulted in our incorrectly setting the output vector to
-> q26=0000320000003200:0000320000003200
-> when given an input of x21 == 0000000002803200
-> rather than the expected all-zeroes.
+This guaranties all SDRequest members are initialized.
 
-Oops.  Apparently I don't do enough testing on older machines.
+This silent the Coverity warning:
 
-> Pass the correct source register number to tcg_out_vex_modrm()
-> for these insns.
-> 
-> Fixes: 770c2fc7bb70804a
-> Cc: qemu-stable@nongnu.org
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  tcg/i386/tcg-target.inc.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+  "Use of an uninitialized variable (CWE-457)"
 
-Applied to tcg-next, thanks.
+and fixes the following issues (all "Uninitialized scalar variable"):
 
+- CID1386072 (hw/sd/sdhci.c::sdhci_end_transfer)
+- CID1386074 (hw/sd/bcm2835_sdhost.c::bcm2835_sdhost_send_command)
+- CID1386076 (hw/sd/sdhci.c::sdhci_send_command)
+- CID1390571 (hw/sd/ssi-sd.c::ssi_sd_transfer)
 
-r~
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/sd/bcm2835_sdhost.c    | 3 +--
+ hw/sd/milkymist-memcard.c | 7 +++----
+ hw/sd/omap_mmc.c          | 4 +---
+ hw/sd/pxa2xx_mmci.c       | 4 +---
+ hw/sd/sdhci.c             | 6 ++----
+ hw/sd/ssi-sd.c            | 5 ++---
+ 6 files changed, 10 insertions(+), 19 deletions(-)
+
+diff --git a/hw/sd/bcm2835_sdhost.c b/hw/sd/bcm2835_sdhost.c
+index ebf3b926c2..5134d7b5c7 100644
+--- a/hw/sd/bcm2835_sdhost.c
++++ b/hw/sd/bcm2835_sdhost.c
+@@ -110,8 +110,7 @@ static void bcm2835_sdhost_send_command(BCM2835SDHostState *s)
+     uint8_t rsp[16];
+     int rlen;
+ 
+-    request.cmd = s->cmd & SDCMD_CMD_MASK;
+-    request.arg = s->cmdarg;
++    sd_prepare_request(&request, s->cmd & SDCMD_CMD_MASK, s->cmdarg, false);
+ 
+     rlen = sdbus_do_command(&s->sdbus, &request, rsp);
+     if (rlen < 0) {
+diff --git a/hw/sd/milkymist-memcard.c b/hw/sd/milkymist-memcard.c
+index ff2b92dc64..d8cbb7b681 100644
+--- a/hw/sd/milkymist-memcard.c
++++ b/hw/sd/milkymist-memcard.c
+@@ -99,10 +99,9 @@ static void memcard_sd_command(MilkymistMemcardState *s)
+ {
+     SDRequest req;
+ 
+-    req.cmd = s->command[0] & 0x3f;
+-    req.arg = ldl_be_p(s->command + 1);
+-    req.crc = s->command[5];
+-
++    sd_prepare_request_with_crc(&req, s->command[0] & 0x3f,
++                                ldl_be_p(s->command + 1),
++                                s->command[5]);
+     s->response[0] = req.cmd;
+     s->response_len = sdbus_do_command(&s->sdbus, &req, s->response + 1);
+     s->response_read_ptr = 0;
+diff --git a/hw/sd/omap_mmc.c b/hw/sd/omap_mmc.c
+index 5b47cadf11..7b71984115 100644
+--- a/hw/sd/omap_mmc.c
++++ b/hw/sd/omap_mmc.c
+@@ -135,9 +135,7 @@ static void omap_mmc_command(struct omap_mmc_s *host, int cmd, int dir,
+     mask = 0;
+     rspstatus = 0;
+ 
+-    request.cmd = cmd;
+-    request.arg = host->arg;
+-    request.crc = 0; /* FIXME */
++    sd_prepare_request(&request, cmd, host->arg, false /* FIXME */);
+ 
+     rsplen = sd_do_command(host->card, &request, response);
+ 
+diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
+index 82f8ec0d50..fd5c1e7686 100644
+--- a/hw/sd/pxa2xx_mmci.c
++++ b/hw/sd/pxa2xx_mmci.c
+@@ -224,9 +224,7 @@ static void pxa2xx_mmci_wakequeues(PXA2xxMMCIState *s)
+     s->tx_len = 0;
+     s->cmdreq = 0;
+ 
+-    request.cmd = s->cmd;
+-    request.arg = s->arg;
+-    request.crc = 0;	/* FIXME */
++    sd_prepare_request(&request, s->cmd, s->arg, false /* FIXME */);
+ 
+     rsplen = sdbus_do_command(&s->sdbus, &request, response);
+     s->intreq |= INT_END_CMD;
+diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+index 63c44a4ee8..9260f59e80 100644
+--- a/hw/sd/sdhci.c
++++ b/hw/sd/sdhci.c
+@@ -336,8 +336,7 @@ static void sdhci_send_command(SDHCIState *s)
+ 
+     s->errintsts = 0;
+     s->acmd12errsts = 0;
+-    request.cmd = s->cmdreg >> 8;
+-    request.arg = s->argument;
++    sd_prepare_request(&request, s->cmdreg >> 8, s->argument, false);
+ 
+     trace_sdhci_send_command(request.cmd, request.arg);
+     rlen = sdbus_do_command(&s->sdbus, &request, response);
+@@ -393,8 +392,7 @@ static void sdhci_end_transfer(SDHCIState *s)
+         SDRequest request;
+         uint8_t response[16];
+ 
+-        request.cmd = 0x0C;
+-        request.arg = 0;
++        sd_prepare_request(&request, 12, 0, false);
+         trace_sdhci_end_transfer(request.cmd, request.arg);
+         sdbus_do_command(&s->sdbus, &request, response);
+         /* Auto CMD12 response goes to the upper Response register */
+diff --git a/hw/sd/ssi-sd.c b/hw/sd/ssi-sd.c
+index 0bb26e596d..c22967170c 100644
+--- a/hw/sd/ssi-sd.c
++++ b/hw/sd/ssi-sd.c
+@@ -95,9 +95,8 @@ static uint32_t ssi_sd_transfer(SSISlave *dev, uint32_t val)
+         if (s->arglen == 4) {
+             SDRequest request;
+             uint8_t longresp[16];
+-            /* FIXME: Check CRC.  */
+-            request.cmd = s->cmd;
+-            request.arg = ldl_be_p(s->cmdarg);
++            sd_prepare_request(&request, s->cmd,
++                               ldl_be_p(s->cmdarg), false /* FIXME */);
+             DPRINTF("CMD%d arg 0x%08x\n", s->cmd, request.arg);
+             s->arglen = sdbus_do_command(&s->sdbus, &request, longresp);
+             if (s->arglen <= 0) {
+-- 
+2.17.0
+

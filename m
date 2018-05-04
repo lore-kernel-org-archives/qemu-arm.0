@@ -1,100 +1,99 @@
-Received: by 10.28.4.212 with SMTP id 203csp339005wme;
-        Fri, 4 May 2018 11:37:08 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZpr2wZLP4PtiQfOHYn9Mn9ow8GWvlGuiU6KYhmjVwvkPMWkvxQi9KLs+WZZCk+ZvZ7+0FUW
-X-Received: by 2002:a0c:9825:: with SMTP id c34-v6mr24709515qvd.150.1525459027921;
-        Fri, 04 May 2018 11:37:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1525459027; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp341916wme;
+        Fri, 4 May 2018 11:40:37 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZpXTNS3rg2pG10G1TCI5Nx6JxRKs5W0kl4yg+QzWcypBTS3A7NMeES8jlYE0dkBvTGotw3u
+X-Received: by 2002:a0c:8995:: with SMTP id 21-v6mr8645005qvr.223.1525459237836;
+        Fri, 04 May 2018 11:40:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1525459237; cv=none;
         d=google.com; s=arc-20160816;
-        b=yXTC+M3sIbEK/MtpG+nv+sitteXMg5cNAFvxnwpuq+e4KOdyJN4WGtnQw0CroDXVtf
-         T0Tp17uofdYN+VHgqCuoUQEVdpiW8otJBdkYPx5ZGLKUGZvZU7mxxdIXu+gAuA7gUCGy
-         h7236dycfa+IU5GOJQ8tGShxTjJvkSgU/TneCtiMjkeAhJUlDv+duOtdHTIf2t6fMY7i
-         JVP4+bvsr948w6tSQrE52rHLayXfoCxr8RkoYEt2PQIKsgc4PPF2nno/gdQsKR3mJt5O
-         oNLk55YcbwtYikM/CYnCjIB6FBZaTDUBH+AlLTMOPW6BkLuYsjrB/hHs3or3seDMvua2
-         MTjg==
+        b=pv0pEY5lsokeu1suINGzORDKrOHFOqDY2RzKl5t9FnlucMGHk/JriEEv5u8vTNyOEM
+         f+iNpEhk5rsdV2I1bcEJLvN5Mk6lo2e9WVGMu5urSTz8+QtMuiV6yTHgqecjnCJzxC1Y
+         Su10qkrflrWZXCdNGVxOKdcwtWTyggIbaNykDXFLXVSUWTGBRic5oHznNo4L7fQK4Krc
+         FG4kzPCX0NZd14D8Z//sTQ3jn23s63iVAfER804AnWPmjK2Gpq/7JfTlPy0sl+V+5hmm
+         05J31pEHb4iy2BY9XITz+gS5TQcqbV7UlwSvrzLINDOvEkCxD2VlEX2NFVy8y52U2toF
+         gHIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=pKPiVaiwadysMdD9E0b+nOim1DheQytzhdVTzOKHZuY=;
-        b=kJ1zdylE7DLonYEy+hkRym6CTe8rn2/xbxKuZY0qO2uS+wl0Gvt/hF9n2O/ae+oX+v
-         cl3+z7SGOws6aBefiLa4DjQDPQIugUqW1vLVjG/1oZWcSaTF0X9E6DiGU8CHrDGGTZ0m
-         xpHXBY2oRcBVhyKK6KNS/XdI11E4Bla9XuSXo/leAYkxzdEeDDicOAHhfzYTITvMNuPU
-         v/QO46J5iEE9bwKoGMiS6gu13FCy0coHeoB8yR5cmvg7UBpOM7BIbt3T6HDZgGFqFyus
-         Q+lLnzHw7P8LU8VgeBw9sSnPUesKCfaY04vvCvOInGI9fUZ/3FQgCP/OQno6/aeFP32Z
-         yokA==
+        bh=CvitQzZ0KyAseNwhvu7lo9iCrZnSsdMX4Co5PcrM5L8=;
+        b=iKMwAkPM0UERTQsvRnP7Sj1u52K6D2g39EcEQ3/aYNVrjFPzxVm+Wx0OFansdOSO0V
+         DYQyvf2GjjXCV1myjlN0C5Um8K9EsynYfX9UqE+id3MDY4++gA/xHdONHftBAkEMqfGS
+         I0gdEPPwwNZ31+mz9kPGE0AP3VIDksRuBvV6B9Uy74VcCLAGiXjkSQOs/N5uaIgp2Bh3
+         dVMuElZ8r4RB0iV6LhvR7OhjrsgQJ5AGYa6q9yNB3meFhbRYILIvEyPSCzqb+6xvpkuN
+         g9tPMFxLb/mTAo7bNOS3I0nXsjKE6qL88l6iMV1d2l1iDbHqyGeK6kY71R5P0Oohco/v
+         l7tA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=BI3/nnhE;
+       dkim=fail header.i=@linaro.org header.s=google header.b=eSLjOtq4;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b129si6819099qkf.348.2018.05.04.11.37.07
+        by mx.google.com with ESMTPS id j23-v6si1327883qtl.173.2018.05.04.11.40.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 04 May 2018 11:37:07 -0700 (PDT)
+        Fri, 04 May 2018 11:40:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=BI3/nnhE;
+       dkim=fail header.i=@linaro.org header.s=google header.b=eSLjOtq4;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36009 helo=lists.gnu.org)
+Received: from localhost ([::1]:36031 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fEfZr-0004I7-DD
-	for alex.bennee@linaro.org; Fri, 04 May 2018 14:37:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45630)
+	id 1fEfdF-0007t7-B8
+	for alex.bennee@linaro.org; Fri, 04 May 2018 14:40:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45681)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fEfTZ-0007b0-Bn
-	for qemu-devel@nongnu.org; Fri, 04 May 2018 14:30:39 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1fEfTb-0007cC-97
+	for qemu-devel@nongnu.org; Fri, 04 May 2018 14:30:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fEfTX-0001CM-1c
-	for qemu-devel@nongnu.org; Fri, 04 May 2018 14:30:37 -0400
-Received: from mail-pg0-x241.google.com ([2607:f8b0:400e:c05::241]:45586)
+	(envelope-from <richard.henderson@linaro.org>) id 1fEfTZ-0001Fh-NO
+	for qemu-devel@nongnu.org; Fri, 04 May 2018 14:30:39 -0400
+Received: from mail-pf0-x243.google.com ([2607:f8b0:400e:c00::243]:43288)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1fEfTW-0001Bb-QZ
-	for qemu-devel@nongnu.org; Fri, 04 May 2018 14:30:34 -0400
-Received: by mail-pg0-x241.google.com with SMTP id i29-v6so15957636pgn.12
-	for <qemu-devel@nongnu.org>; Fri, 04 May 2018 11:30:34 -0700 (PDT)
+	id 1fEfTZ-0001EJ-Gf
+	for qemu-devel@nongnu.org; Fri, 04 May 2018 14:30:37 -0400
+Received: by mail-pf0-x243.google.com with SMTP id j20so3756695pff.10
+	for <qemu-devel@nongnu.org>; Fri, 04 May 2018 11:30:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=pKPiVaiwadysMdD9E0b+nOim1DheQytzhdVTzOKHZuY=;
-	b=BI3/nnhE2RYHw8AMd3jxvXNNmMBLiYK8ZQ3SzZOJcFOruk5LLR8TkrKSU5uXGaRpNh
-	7pgN46Z0IbgIAqkx/xr34t6dtMnnU0pgJF7egnV2Kxle2O7/TMl0pUdebrSLePzO+qDN
-	gy0YoPbPMppyzSLQJr/zUwttrFpPfOYWSXS6A=
+	bh=CvitQzZ0KyAseNwhvu7lo9iCrZnSsdMX4Co5PcrM5L8=;
+	b=eSLjOtq4tEm78a6CriSrEDngd2kg39lzMtIaM+vvUE/LFL9GfmMfQYN3+jTVWdmY0c
+	QdMnSQRb5PHTRwPSzO9E43gmsysPJrggBJbjfpTR2Nhpj1XupFzOHGNkjTGPpWeTSOub
+	jsKAg6GMAicNBCClaMwM2WofQRBNJR4H93roU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=pKPiVaiwadysMdD9E0b+nOim1DheQytzhdVTzOKHZuY=;
-	b=WI40S0K3gofkFRknp/iAyP0wUqifH40ao50su4GOz7CjA2CCKxTaIrpWast/Mm4zut
-	tB4hCm80IyHRMP5Si5t3/eWB5MKm6Xhk8CtV9XGUYdgJb4QwjwEAIkmhhvQzJ7+ZXP1B
-	nHgTwB6++eadvUP+m/RFe3hPZdLbEfJ939Wp6drB+Kwl2OdBe3HcOqzq9hrvVZTzB9yE
-	jJuZSdC/fJpDNT1DyjkGuNPKP3lOgzvUJxt4qsi6gUEXx/6sCv+XgYkO3gC1p8Smf2U+
-	lARhW+f2DccRNIlLpX0Ra0wDp+TkfvlUcnh6Bz4CUUEbGEuoXdkiqijjnjm/qLyiZnEs
-	RIlA==
-X-Gm-Message-State: ALQs6tCA05oWE/J32hjg9BjwyvnnMMZ/2KjETKsrxq9BN3Oo5awQjrG9
-	fH6W2t2kps8Fp39bmOuYCgGSFPp/lvo=
-X-Received: by 2002:a17:902:9883:: with SMTP id
-	s3-v6mr24367725plp.179.1525458633443; 
-	Fri, 04 May 2018 11:30:33 -0700 (PDT)
+	bh=CvitQzZ0KyAseNwhvu7lo9iCrZnSsdMX4Co5PcrM5L8=;
+	b=ndRitjK5zwciBxsK43oCaYDJ/SOGNMPz2ufyVFHa61e8qw8+N2fcTdBuEMxYH/8Spg
+	1ZUTBWAdg4pH8s/aHS9cGh4q4y+aEekE0LsRrguK+ZWdaRnqEMjyXpO5q7eJWFdJx8x4
+	fMFo1Fo8hiP8L+qdChAGSXM91esS1IoTBCsoQ6mKprtXSuuAc7HHYFLx3R5MmrXSMD8A
+	Mn5+DjLR7h7J3gAzuFOQBaPwQC/W9q5tcesgnHfQ4np0xL+TxCMNcNbbRRgArPdEhJ+W
+	eU7+StfVQDLvp7pRGaDKVobserUzghcb+Upe5+8dQTmIXXhDFUnXSoC7Afndfjw8KeHi
+	45OQ==
+X-Gm-Message-State: ALQs6tCc3f7Jr0LyasLLFsZpj5RXwxmRddEqwhxCaF6QBtQocSYqEINt
+	0ZeCpMD/PBeC3gvK0gYJ5awSLK6hsS4=
+X-Received: by 2002:a17:902:887:: with SMTP id
+	7-v6mr29551720pll.319.1525458635998; 
+	Fri, 04 May 2018 11:30:35 -0700 (PDT)
 Received: from cloudburst.twiddle.net (97-113-2-170.tukw.qwest.net.
 	[97.113.2.170]) by smtp.gmail.com with ESMTPSA id
-	r8-v6sm16987413pgn.2.2018.05.04.11.30.32
+	r8-v6sm16987413pgn.2.2018.05.04.11.30.34
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Fri, 04 May 2018 11:30:32 -0700 (PDT)
+	Fri, 04 May 2018 11:30:35 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Fri,  4 May 2018 11:30:18 -0700
-Message-Id: <20180504183021.19318-8-richard.henderson@linaro.org>
+Date: Fri,  4 May 2018 11:30:20 -0700
+Message-Id: <20180504183021.19318-10-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.14.3
 In-Reply-To: <20180504183021.19318-1-richard.henderson@linaro.org>
 References: <20180504183021.19318-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c05::241
-Subject: [Qemu-devel] [PATCH v2 07/10] target/arm: Introduce
- ARM_FEATURE_V8_ATOMICS and initial decode
+X-Received-From: 2607:f8b0:400e:c00::243
+Subject: [Qemu-devel] [PATCH v2 09/10] target/arm: Implement CAS and CASP
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -109,279 +108,235 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4pSDOq0ejzqt
+X-TUID: LokQOjF+0IQu
 
-The insns in the ARMv8.1-Atomics are added to the existing
-load/store exclusive and load/store reg opcode spaces.
-Rearrange the top-level decoders for these to accomodate.
-The Atomics insns themselves still generate Unallocated.
-
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h           |   2 +
- linux-user/elfload.c       |   1 +
- target/arm/translate-a64.c | 182 +++++++++++++++++++++++++++++++++------------
- 3 files changed, 139 insertions(+), 46 deletions(-)
+ target/arm/helper-a64.h    |   2 +
+ target/arm/helper-a64.c    |  43 ++++++++++++++++
+ target/arm/translate-a64.c | 119 +++++++++++++++++++++++++++++++++++++++++++--
+ 3 files changed, 161 insertions(+), 3 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 44e6b77151..f71a78d908 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1449,6 +1449,8 @@ enum arm_features {
-     ARM_FEATURE_V8_SHA3, /* implements SHA3 part of v8 Crypto Extensions */
-     ARM_FEATURE_V8_SM3, /* implements SM3 part of v8 Crypto Extensions */
-     ARM_FEATURE_V8_SM4, /* implements SM4 part of v8 Crypto Extensions */
-+    ARM_FEATURE_V8_1,
-+    ARM_FEATURE_V8_ATOMICS = ARM_FEATURE_V8_1, /* mandatory extension */
-     ARM_FEATURE_V8_RDM, /* implements v8.1 simd round multiply */
-     ARM_FEATURE_V8_FP16, /* implements v8.2 half-precision float */
-     ARM_FEATURE_V8_FCMA, /* has complex number part of v8.3 extensions.  */
-diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-index 36d52194bc..13bc78d0c8 100644
---- a/linux-user/elfload.c
-+++ b/linux-user/elfload.c
-@@ -581,6 +581,7 @@ static uint32_t get_elf_hwcap(void)
-     GET_FEATURE(ARM_FEATURE_V8_SHA512, ARM_HWCAP_A64_SHA512);
-     GET_FEATURE(ARM_FEATURE_V8_FP16,
-                 ARM_HWCAP_A64_FPHP | ARM_HWCAP_A64_ASIMDHP);
-+    GET_FEATURE(ARM_FEATURE_V8_ATOMICS, ARM_HWCAP_A64_ATOMICS);
-     GET_FEATURE(ARM_FEATURE_V8_RDM, ARM_HWCAP_A64_ASIMDRDM);
-     GET_FEATURE(ARM_FEATURE_V8_FCMA, ARM_HWCAP_A64_FCMA);
- #undef GET_FEATURE
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index d916fea3a3..6acad791e6 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -2147,62 +2147,98 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
-     int rt = extract32(insn, 0, 5);
-     int rn = extract32(insn, 5, 5);
-     int rt2 = extract32(insn, 10, 5);
--    int is_lasr = extract32(insn, 15, 1);
-     int rs = extract32(insn, 16, 5);
--    int is_pair = extract32(insn, 21, 1);
--    int is_store = !extract32(insn, 22, 1);
--    int is_excl = !extract32(insn, 23, 1);
-+    int is_lasr = extract32(insn, 15, 1);
-+    int o2_L_o1_o0 = extract32(insn, 21, 3) * 2 | is_lasr;
-     int size = extract32(insn, 30, 2);
-     TCGv_i64 tcg_addr;
- 
--    if ((!is_excl && !is_pair && !is_lasr) ||
--        (!is_excl && is_pair) ||
--        (is_pair && size < 2)) {
--        unallocated_encoding(s);
-+    switch (o2_L_o1_o0) {
-+    case 0x0: /* STXR */
-+    case 0x1: /* STLXR */
-+        if (rn == 31) {
-+            gen_check_sp_alignment(s);
-+        }
-+        if (is_lasr) {
-+            tcg_gen_mb(TCG_MO_ALL | TCG_BAR_STRL);
-+        }
-+        tcg_addr = read_cpu_reg_sp(s, rn, 1);
-+        gen_store_exclusive(s, rs, rt, rt2, tcg_addr, size, false);
-         return;
--    }
- 
--    if (rn == 31) {
--        gen_check_sp_alignment(s);
--    }
--    tcg_addr = read_cpu_reg_sp(s, rn, 1);
--
--    /* Note that since TCG is single threaded load-acquire/store-release
--     * semantics require no extra if (is_lasr) { ... } handling.
--     */
--
--    if (is_excl) {
--        if (!is_store) {
--            s->is_ldex = true;
--            gen_load_exclusive(s, rt, rt2, tcg_addr, size, is_pair);
--            if (is_lasr) {
--                tcg_gen_mb(TCG_MO_ALL | TCG_BAR_LDAQ);
--            }
--        } else {
--            if (is_lasr) {
--                tcg_gen_mb(TCG_MO_ALL | TCG_BAR_STRL);
--            }
--            gen_store_exclusive(s, rs, rt, rt2, tcg_addr, size, is_pair);
-+    case 0x4: /* LDXR */
-+    case 0x5: /* LDAXR */
-+        if (rn == 31) {
-+            gen_check_sp_alignment(s);
-         }
--    } else {
--        TCGv_i64 tcg_rt = cpu_reg(s, rt);
--        bool iss_sf = disas_ldst_compute_iss_sf(size, false, 0);
-+        tcg_addr = read_cpu_reg_sp(s, rn, 1);
-+        s->is_ldex = true;
-+        gen_load_exclusive(s, rt, rt2, tcg_addr, size, false);
-+        if (is_lasr) {
-+            tcg_gen_mb(TCG_MO_ALL | TCG_BAR_LDAQ);
-+        }
-+        return;
- 
-+    case 0x9: /* STLR */
-         /* Generate ISS for non-exclusive accesses including LASR.  */
--        if (is_store) {
-+        if (rn == 31) {
-+            gen_check_sp_alignment(s);
-+        }
-+        tcg_gen_mb(TCG_MO_ALL | TCG_BAR_STRL);
-+        tcg_addr = read_cpu_reg_sp(s, rn, 1);
-+        do_gpr_st(s, cpu_reg(s, rt), tcg_addr, size, true, rt,
-+                  disas_ldst_compute_iss_sf(size, false, 0), is_lasr);
-+        return;
-+
-+    case 0xd: /* LDAR */
-+        /* Generate ISS for non-exclusive accesses including LASR.  */
-+        if (rn == 31) {
-+            gen_check_sp_alignment(s);
-+        }
-+        tcg_addr = read_cpu_reg_sp(s, rn, 1);
-+        do_gpr_ld(s, cpu_reg(s, rt), tcg_addr, size, false, false, true, rt,
-+                  disas_ldst_compute_iss_sf(size, false, 0), is_lasr);
-+        tcg_gen_mb(TCG_MO_ALL | TCG_BAR_LDAQ);
-+        return;
-+
-+    case 0x2: case 0x3: /* CASP / STXP */
-+        if (size & 2) { /* STXP / STLXP */
-+            if (rn == 31) {
-+                gen_check_sp_alignment(s);
-+            }
-             if (is_lasr) {
-                 tcg_gen_mb(TCG_MO_ALL | TCG_BAR_STRL);
-             }
--            do_gpr_st(s, tcg_rt, tcg_addr, size,
--                      true, rt, iss_sf, is_lasr);
--        } else {
--            do_gpr_ld(s, tcg_rt, tcg_addr, size, false, false,
--                      true, rt, iss_sf, is_lasr);
-+            tcg_addr = read_cpu_reg_sp(s, rn, 1);
-+            gen_store_exclusive(s, rs, rt, rt2, tcg_addr, size, true);
-+            return;
-+        }
-+        /* CASP / CASPL */
-+        break;
-+
-+    case 0x6: case 0x7: /* CASP / LDXP */
-+        if (size & 2) { /* LDXP / LDAXP */
-+            if (rn == 31) {
-+                gen_check_sp_alignment(s);
-+            }
-+            tcg_addr = read_cpu_reg_sp(s, rn, 1);
-+            s->is_ldex = true;
-+            gen_load_exclusive(s, rt, rt2, tcg_addr, size, true);
-             if (is_lasr) {
-                 tcg_gen_mb(TCG_MO_ALL | TCG_BAR_LDAQ);
-             }
-+            return;
-         }
-+        /* CASPA / CASPAL */
-+        break;
-+
-+    case 0xa: /* CAS */
-+    case 0xb: /* CASL */
-+    case 0xe: /* CASA */
-+    case 0xf: /* CASAL */
-+        break;
-     }
-+    unallocated_encoding(s);
+diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
+index ef4ddfe9d8..b8028ac98c 100644
+--- a/target/arm/helper-a64.h
++++ b/target/arm/helper-a64.h
+@@ -51,6 +51,8 @@ DEF_HELPER_FLAGS_4(paired_cmpxchg64_le_parallel, TCG_CALL_NO_WG,
+ DEF_HELPER_FLAGS_4(paired_cmpxchg64_be, TCG_CALL_NO_WG, i64, env, i64, i64, i64)
+ DEF_HELPER_FLAGS_4(paired_cmpxchg64_be_parallel, TCG_CALL_NO_WG,
+                    i64, env, i64, i64, i64)
++DEF_HELPER_5(casp_le_parallel, void, env, i32, i64, i64, i64)
++DEF_HELPER_5(casp_be_parallel, void, env, i32, i64, i64, i64)
+ DEF_HELPER_FLAGS_3(advsimd_maxh, TCG_CALL_NO_RWG, f16, f16, f16, ptr)
+ DEF_HELPER_FLAGS_3(advsimd_minh, TCG_CALL_NO_RWG, f16, f16, f16, ptr)
+ DEF_HELPER_FLAGS_3(advsimd_maxnumh, TCG_CALL_NO_RWG, f16, f16, f16, ptr)
+diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
+index afb25ad20c..549ed3513e 100644
+--- a/target/arm/helper-a64.c
++++ b/target/arm/helper-a64.c
+@@ -636,6 +636,49 @@ uint64_t HELPER(paired_cmpxchg64_be_parallel)(CPUARMState *env, uint64_t addr,
+     return do_paired_cmpxchg64_be(env, addr, new_lo, new_hi, true, GETPC());
  }
  
- /*
-@@ -2715,6 +2751,55 @@ static void disas_ldst_reg_unsigned_imm(DisasContext *s, uint32_t insn,
-     }
- }
- 
-+/* Atomic memory operations
-+ *
-+ *  31  30      27  26    24    22  21   16   15    12    10    5     0
-+ * +------+-------+---+-----+-----+---+----+----+-----+-----+----+-----+
-+ * | size | 1 1 1 | V | 0 0 | A R | 1 | Rs | o3 | opc | 0 0 | Rn |  Rt |
-+ * +------+-------+---+-----+-----+--------+----+-----+-----+----+-----+
-+ *
-+ * Rt: the result register
-+ * Rn: base address or SP
-+ * Rs: the source register for the operation
-+ * V: vector flag (always 0 as of v8.3)
-+ * A: acquire flag
-+ * R: release flag
-+ */
-+static void disas_ldst_atomic(DisasContext *s, uint32_t insn,
-+                              int size, int rt, bool is_vector)
++/* Writes back the old data into Rs.  */
++void HELPER(casp_le_parallel)(CPUARMState *env, uint32_t rs, uint64_t addr,
++                              uint64_t new_lo, uint64_t new_hi)
 +{
-+    int rs = extract32(insn, 16, 5);
-+    int rn = extract32(insn, 5, 5);
-+    int o3_opc = extract32(insn, 12, 4);
-+    int feature = ARM_FEATURE_V8_ATOMICS;
++    uintptr_t ra = GETPC();
++#ifndef CONFIG_ATOMIC128
++    cpu_loop_exit_atomic(ENV_GET_CPU(env), ra);
++#else
++    Int128 oldv, cmpv, newv;
 +
-+    if (is_vector) {
-+        unallocated_encoding(s);
-+        return;
-+    }
-+    switch (o3_opc) {
-+    case 000: /* LDADD */
-+    case 001: /* LDCLR */
-+    case 002: /* LDEOR */
-+    case 003: /* LDSET */
-+    case 004: /* LDSMAX */
-+    case 005: /* LDSMIN */
-+    case 006: /* LDUMAX */
-+    case 007: /* LDUMIN */
-+    case 010: /* SWP */
-+    default:
-+        unallocated_encoding(s);
-+        return;
-+    }
-+    if (!arm_dc_feature(s, feature)) {
-+        unallocated_encoding(s);
-+        return;
-+    }
++    cmpv = int128_make128(env->xregs[rs], env->xregs[rs + 1]);
++    newv = int128_make128(new_lo, new_hi);
 +
-+    (void)rs;
-+    (void)rn;
++    int mem_idx = cpu_mmu_index(env, false);
++    TCGMemOpIdx oi = make_memop_idx(MO_LEQ | MO_ALIGN_16, mem_idx);
++    oldv = helper_atomic_cmpxchgo_le_mmu(env, addr, cmpv, newv, oi, ra);
++
++    env->xregs[rs] = int128_getlo(oldv);
++    env->xregs[rs + 1] = int128_gethi(oldv);
++#endif
 +}
 +
- /* Load/store register (all forms) */
- static void disas_ldst_reg(DisasContext *s, uint32_t insn)
- {
-@@ -2725,23 +2810,28 @@ static void disas_ldst_reg(DisasContext *s, uint32_t insn)
- 
-     switch (extract32(insn, 24, 2)) {
-     case 0:
--        if (extract32(insn, 21, 1) == 1 && extract32(insn, 10, 2) == 2) {
--            disas_ldst_reg_roffset(s, insn, opc, size, rt, is_vector);
--        } else {
-+        if (extract32(insn, 21, 1) == 0) {
-             /* Load/store register (unscaled immediate)
-              * Load/store immediate pre/post-indexed
-              * Load/store register unprivileged
-              */
-             disas_ldst_reg_imm9(s, insn, opc, size, rt, is_vector);
-+            return;
-+        }
-+        switch (extract32(insn, 10, 2)) {
-+        case 0:
-+            disas_ldst_atomic(s, insn, size, rt, is_vector);
-+            return;
-+        case 2:
-+            disas_ldst_reg_roffset(s, insn, opc, size, rt, is_vector);
-+            return;
-         }
-         break;
-     case 1:
-         disas_ldst_reg_unsigned_imm(s, insn, opc, size, rt, is_vector);
--        break;
--    default:
--        unallocated_encoding(s);
--        break;
-+        return;
-     }
-+    unallocated_encoding(s);
++void HELPER(casp_be_parallel)(CPUARMState *env, uint32_t rs, uint64_t addr,
++                              uint64_t new_hi, uint64_t new_lo)
++{
++    uintptr_t ra = GETPC();
++#ifndef CONFIG_ATOMIC128
++    cpu_loop_exit_atomic(ENV_GET_CPU(env), ra);
++#else
++    Int128 oldv, cmpv, newv;
++
++    cmpv = int128_make128(env->xregs[rs + 1], env->xregs[rs]);
++    newv = int128_make128(new_lo, new_hi);
++
++    int mem_idx = cpu_mmu_index(env, false);
++    TCGMemOpIdx oi = make_memop_idx(MO_LEQ | MO_ALIGN_16, mem_idx);
++    oldv = helper_atomic_cmpxchgo_be_mmu(env, addr, cmpv, newv, oi, ra);
++
++    env->xregs[rs + 1] = int128_getlo(oldv);
++    env->xregs[rs] = int128_gethi(oldv);
++#endif
++}
++
+ /*
+  * AdvSIMD half-precision
+  */
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 5af6028089..08debc7a93 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -2114,6 +2114,103 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
+     tcg_gen_movi_i64(cpu_exclusive_addr, -1);
  }
  
- /* AdvSIMD load/store multiple structures
++static void gen_compare_and_swap(DisasContext *s, int rs, int rt,
++                                 int rn, int size)
++{
++    TCGv_i64 tcg_rs = cpu_reg(s, rs);
++    TCGv_i64 tcg_rt = cpu_reg(s, rt);
++    int memidx = get_mem_index(s);
++    TCGv_i64 addr = cpu_reg_sp(s, rn);
++
++    if (rn == 31) {
++        gen_check_sp_alignment(s);
++    }
++    tcg_gen_atomic_cmpxchg_i64(tcg_rs, addr, tcg_rs, tcg_rt, memidx,
++                               size | MO_ALIGN | s->be_data);
++}
++
++static void gen_compare_and_swap_pair(DisasContext *s, int rs, int rt,
++                                      int rn, int size)
++{
++    TCGv_i64 s1 = cpu_reg(s, rs);
++    TCGv_i64 s2 = cpu_reg(s, rs + 1);
++    TCGv_i64 t1 = cpu_reg(s, rt);
++    TCGv_i64 t2 = cpu_reg(s, rt + 1);
++    TCGv_i64 addr = cpu_reg_sp(s, rn);
++    int memidx = get_mem_index(s);
++
++    if (rn == 31) {
++        gen_check_sp_alignment(s);
++    }
++
++    if (size == 2) {
++        TCGv_i64 cmp = tcg_temp_new_i64();
++        TCGv_i64 val = tcg_temp_new_i64();
++
++        if (s->be_data == MO_LE) {
++            tcg_gen_concat32_i64(val, t1, t2);
++            tcg_gen_concat32_i64(cmp, s1, s2);
++        } else {
++            tcg_gen_concat32_i64(val, t2, t1);
++            tcg_gen_concat32_i64(cmp, s2, s1);
++        }
++
++        tcg_gen_atomic_cmpxchg_i64(cmp, addr, cmp, val, memidx,
++                                   MO_64 | MO_ALIGN | s->be_data);
++        tcg_temp_free_i64(val);
++
++        if (s->be_data == MO_LE) {
++            tcg_gen_extr32_i64(s1, s2, cmp);
++        } else {
++            tcg_gen_extr32_i64(s2, s1, cmp);
++        }
++        tcg_temp_free_i64(cmp);
++    } else if (tb_cflags(s->base.tb) & CF_PARALLEL) {
++        TCGv_i32 tcg_rs = tcg_const_i32(rs);
++
++        if (s->be_data == MO_LE) {
++            gen_helper_casp_le_parallel(cpu_env, tcg_rs, addr, t1, t2);
++        } else {
++            gen_helper_casp_be_parallel(cpu_env, tcg_rs, addr, t1, t2);
++        }
++        tcg_temp_free_i32(tcg_rs);
++    } else {
++        TCGv_i64 d1 = tcg_temp_new_i64();
++        TCGv_i64 d2 = tcg_temp_new_i64();
++        TCGv_i64 a2 = tcg_temp_new_i64();
++        TCGv_i64 c1 = tcg_temp_new_i64();
++        TCGv_i64 c2 = tcg_temp_new_i64();
++        TCGv_i64 zero = tcg_const_i64(0);
++
++        /* Load the two words, in memory order.  */
++        tcg_gen_qemu_ld_i64(d1, addr, memidx,
++                            MO_64 | MO_ALIGN_16 | s->be_data);
++        tcg_gen_addi_i64(a2, addr, 8);
++        tcg_gen_qemu_ld_i64(d2, addr, memidx, MO_64 | s->be_data);
++
++        /* Compare the two words, also in memory order.  */
++        tcg_gen_setcond_i64(TCG_COND_EQ, c1, d1, s1);
++        tcg_gen_setcond_i64(TCG_COND_EQ, c2, d2, s2);
++        tcg_gen_and_i64(c2, c2, c1);
++
++        /* If compare equal, write back new data, else write back old data.  */
++        tcg_gen_movcond_i64(TCG_COND_NE, c1, c2, zero, t1, d1);
++        tcg_gen_movcond_i64(TCG_COND_NE, c2, c2, zero, t2, d2);
++        tcg_gen_qemu_st_i64(c1, addr, memidx, MO_64 | s->be_data);
++        tcg_gen_qemu_st_i64(c2, a2, memidx, MO_64 | s->be_data);
++        tcg_temp_free_i64(a2);
++        tcg_temp_free_i64(c1);
++        tcg_temp_free_i64(c2);
++        tcg_temp_free_i64(zero);
++
++        /* Write back the data from memory to Rs.  */
++        tcg_gen_mov_i64(s1, d1);
++        tcg_gen_mov_i64(s2, d2);
++        tcg_temp_free_i64(d1);
++        tcg_temp_free_i64(d2);
++    }
++}
++
+ /* Update the Sixty-Four bit (SF) registersize. This logic is derived
+  * from the ARMv8 specs for LDR (Shared decode for all encodings).
+  */
+@@ -2214,10 +2311,16 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
+             gen_store_exclusive(s, rs, rt, rt2, tcg_addr, size, true);
+             return;
+         }
+-        /* CASP / CASPL */
++        if (rt2 == 31
++            && ((rt | rs) & 1) == 0
++            && arm_dc_feature(s, ARM_FEATURE_V8_ATOMICS)) {
++            /* CASP / CASPL */
++            gen_compare_and_swap_pair(s, rs, rt, rn, size | 2);
++            return;
++        }
+         break;
+ 
+-    case 0x6: case 0x7: /* CASP / LDXP */
++    case 0x6: case 0x7: /* CASPA / LDXP */
+         if (size & 2) { /* LDXP / LDAXP */
+             if (rn == 31) {
+                 gen_check_sp_alignment(s);
+@@ -2230,13 +2333,23 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
+             }
+             return;
+         }
+-        /* CASPA / CASPAL */
++        if (rt2 == 31
++            && ((rt | rs) & 1) == 0
++            && arm_dc_feature(s, ARM_FEATURE_V8_ATOMICS)) {
++            /* CASPA / CASPAL */
++            gen_compare_and_swap_pair(s, rs, rt, rn, size | 2);
++            return;
++        }
+         break;
+ 
+     case 0xa: /* CAS */
+     case 0xb: /* CASL */
+     case 0xe: /* CASA */
+     case 0xf: /* CASAL */
++        if (rt2 == 31 && arm_dc_feature(s, ARM_FEATURE_V8_ATOMICS)) {
++            gen_compare_and_swap(s, rs, rt, rn, size);
++            return;
++        }
+         break;
+     }
+     unallocated_encoding(s);
 -- 
 2.14.3
 

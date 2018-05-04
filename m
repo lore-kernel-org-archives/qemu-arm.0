@@ -1,145 +1,233 @@
-Received: by 10.28.91.67 with SMTP id p64csp4772636wmb;
-        Wed, 21 Mar 2018 01:01:44 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELufEvAOzQbaazjRjvDGMffPsMAcwXIcKRzYBDGEK6sibJpUhve/diUrDwO9dx4J3svmeo/H
-X-Received: by 10.55.100.20 with SMTP id y20mr20871756qkb.21.1521619304193;
-        Wed, 21 Mar 2018 01:01:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521619304; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp334152wme;
+        Fri, 4 May 2018 11:31:11 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZo+8RJzHnwAapmY8oFfxx5+smfFkwEhK6DfboP5vrJ4rA5IinNe2bEoLebRISW1pTN1tLaw
+X-Received: by 10.55.145.1 with SMTP id t1mr5662127qkd.92.1525458671802;
+        Fri, 04 May 2018 11:31:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1525458671; cv=none;
         d=google.com; s=arc-20160816;
-        b=rqgDRaTPrC5I3zTHSXQVdE4HA+asTCYZzU2SWyooMu/2vualBihfbN20E5nBOxPshM
-         lLVMmGlcdVekklEfjrTQNskOSUdOApskdGTkQvUqJAgLwhUUGJHpGp8wi0HtvNIGAWhS
-         JJOWGkXxf/r1PqoFM1I5fyMDpHpmqb10Gg9Rniwa7F3f2LXo8665/F80JJse4H23uJe3
-         82MAfFQQwYraSXFFzOeJOqS9wmR4Yjby5mkoi1p5lYyIruGNJ97iDZcFsuHg3D4IzHsU
-         XHQ8xT2y0ngwqpXyIGH8WDA5wwElWdQUl0xS/aWxjjLVufE+hbSDL4/dHnBCNYyCQytF
-         NEkQ==
+        b=e3DYi5UYAKiY4liFHDjPH25gqxbpmJb9PXmLyePELrxpfBVs9ZwQJkRPNgkbhmKUXw
+         2ZtV2gy3zIdEhUjtx0TMa+NElKUW5fyJVIEX2hzlcRTW09DICJ3rFWuIDZ9Vrjr81uTH
+         tBZzkGnn95n7bAB4QL9nY4jqcLkViGuIAKHg5sal6mgQoN59WFdvuURJQ3e712Co5gev
+         jxkFs0X1QxcOjtR045NRj3ZiL9mAnLtHSR5wT2mbEHDQb8+QCxuUg8n0xdwAvmsCUk0h
+         cAeL91U3TMawgBgaXANZXTiHACD5Z/Ti1MYk75lOHp0vugSSPKQnMcEQRDC2u6yq6sO2
+         rYrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:references:to:mime-version
-         :user-agent:from:date:message-id:arc-authentication-results;
-        bh=8YfqMtixBSMtGVxYioew4KA2FEeBV6dLJSDjQtC+Uwk=;
-        b=mJR9m7w9Dv7MzSLvMMVmda6L+hfdrx9FgBGLITMil+Zrep4eu7WfyJeTK9lasx+Sr1
-         8UUnwPvwrtok1vjJYDHMbsUhhAoRYepyvxlIc3OWXbbn+HiiUwvnviQBgpmU3Ht+UTdC
-         zCH6H8X2dvMPWmmXQ4AgY4zeEiS94kjpz9oIIUbJmV1m70+4XynKG4jCpuXBAbtB5M0V
-         ZHfjbXju6m9HBEkCbxhvx96sOw3prVNDX+f3AMyJbxXpjKNt10a8+mcSsnE0AeyvtIfF
-         vq6lIcfoVisgz/ug1NpjNwl9FIAoMsapBKaIkqeuDxZbKrVGm20XR40TtADQ+wvdGF6h
-         Z+rg==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=nb233U1bSWEt1qvuLILy6QuTyZNRED2l7P5Q74E4EVA=;
+        b=NlBaD1+Yge4GvJwHd46DjvvMp/Gce67O96/P5ACiiob5zkmbgoJciecdk0HOVh1umo
+         PBcuUnP71wSF/R44+LKDBPwlyiq1DJx/bsUwJfl58YEu8LTKjAXLcZds+4/X+Ar4szVZ
+         jmVhfgeUZgr6GYVM6NzQMMD9oSAnn3QDnzyrDDm8fDAGy/YPNv8U8xnUwTyMZSU7lyxT
+         04i/w8im+erZxJmgn+IiBC49TvSv2Tpt+z7hREwJUi/Ywg+IS4mtkHF8zH6mGo2N0w/h
+         G6uiIejuwg1pZMLE9F2GATjQ56iibE5BJ9y5QYd3Kv882KsvMAIviuL6MIqARzhVpjZL
+         oAyg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=PTen3hXF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f93si4989998qkh.166.2018.03.21.01.01.43
+        by mx.google.com with ESMTPS id f15si3860686qkm.26.2018.05.04.11.31.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 21 Mar 2018 01:01:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 04 May 2018 11:31:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:53360 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=PTen3hXF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:35974 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eyYgp-0002TJ-Lj
-	for alex.bennee@linaro.org; Wed, 21 Mar 2018 04:01:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42506)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fEfU7-0007U1-8c
+	for alex.bennee@linaro.org; Fri, 04 May 2018 14:31:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45476)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1eyYgd-0002Ss-Oc
-	for qemu-arm@nongnu.org; Wed, 21 Mar 2018 04:01:37 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1fEfTQ-0007Sf-K6
+	for qemu-devel@nongnu.org; Fri, 04 May 2018 14:30:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1eyYgZ-0006kl-TH
-	for qemu-arm@nongnu.org; Wed, 21 Mar 2018 04:01:31 -0400
-Received: from [45.249.212.32] (port=59883 helo=huawei.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <zhaoshenglong@huawei.com>)
-	id 1eyYgZ-0006hH-IK; Wed, 21 Mar 2018 04:01:27 -0400
-Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.58])
-	by Forcepoint Email with ESMTP id E02AF8687BF99;
-	Wed, 21 Mar 2018 16:01:19 +0800 (CST)
-Received: from [127.0.0.1] (10.177.16.142) by DGGEMS404-HUB.china.huawei.com
-	(10.3.19.204) with Microsoft SMTP Server id 14.3.361.1; Wed, 21 Mar 2018
-	16:01:16 +0800
-Message-ID: <5AB21130.2020309@huawei.com>
-Date: Wed, 21 Mar 2018 16:00:48 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
-MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1521530809-11780-1-git-send-email-zhaoshenglong@huawei.com>
-	<1521530809-11780-3-git-send-email-zhaoshenglong@huawei.com>
-	<CAFEAcA96qV_f7i_36Yzb-QV7W9SRHKfJpg=rvv3tia2X-Xi7QQ@mail.gmail.com>
-	<5AB0F254.3050503@huawei.com>
-	<CAFEAcA-Ct3qa0OFZ4U+9RH68SQJgmkxJKKS5e+if_MuL2pSu3A@mail.gmail.com>
-In-Reply-To: <CAFEAcA-Ct3qa0OFZ4U+9RH68SQJgmkxJKKS5e+if_MuL2pSu3A@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 45.249.212.32
-Subject: Re: [Qemu-arm] [PATCH v2 2/2] arm_gicv3_kvm: kvm_dist_get/put: skip
- the registers banked by GICR
-X-BeenThere: qemu-arm@nongnu.org
+	(envelope-from <richard.henderson@linaro.org>) id 1fEfTO-00013Z-Pk
+	for qemu-devel@nongnu.org; Fri, 04 May 2018 14:30:28 -0400
+Received: from mail-pg0-x244.google.com ([2607:f8b0:400e:c05::244]:33876)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1fEfTO-000127-KB
+	for qemu-devel@nongnu.org; Fri, 04 May 2018 14:30:26 -0400
+Received: by mail-pg0-x244.google.com with SMTP id g20-v6so9292611pgv.1
+	for <qemu-devel@nongnu.org>; Fri, 04 May 2018 11:30:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=nb233U1bSWEt1qvuLILy6QuTyZNRED2l7P5Q74E4EVA=;
+	b=PTen3hXFDPB6ewhBLGwepyVzdGkJJcXsmwyZyceTI8gnGQSCRWcyFS4yChHAncSJOx
+	1ZR9XtyVoNLZwPZAVeMqbP62HmRNIyBnpeAoGfqwLV1i/5aah/PQ62L7Mje9z71kQuNJ
+	DTVlMpKqhcmV8pORzQEbZal9DUTHe4nKvfMeo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references;
+	bh=nb233U1bSWEt1qvuLILy6QuTyZNRED2l7P5Q74E4EVA=;
+	b=hZpXXffOrwvI1AHx09TWJ6V2Q7Qn6LeRwB0j0fqT7waFexSTGfzUF6si70vz+maF4v
+	ukgzp1xQcE4Wgy5BCmhkUD8oq+1HAZ1KQ5XaTlhVdfwLfH0ns3orwzCFhY7FXKGxHB/S
+	kagCmTaHw2yvdD5gSJYvz/EY4H8p6gPsvU9Lo29Hq212gBROrPZf0L+PpXERBPiK8kz7
+	oyfSU1LoM7IIlbwZp6vSXdl0L2RQ4d5Dz2tU1NC+T8lmf+h0+ujvTtMdvOgBwE5ejBQ5
+	Fh3l3a9qfzTaZYG5laPGADGmu822XQIWD7EMqbfowfK9DcISZMhJCRvmE0vgiIMFRpzq
+	iubA==
+X-Gm-Message-State: ALQs6tBTTKFigR4wCVJOdOgDtGEft3tWmmc9GV5ovxYm2K8SzaijZdE+
+	nRbnR7v6HfPQtJDrxoXZIKJg33wd1x8=
+X-Received: by 2002:a63:4383:: with SMTP id
+	q125-v6mr23640373pga.412.1525458625366; 
+	Fri, 04 May 2018 11:30:25 -0700 (PDT)
+Received: from cloudburst.twiddle.net (97-113-2-170.tukw.qwest.net.
+	[97.113.2.170]) by smtp.gmail.com with ESMTPSA id
+	r8-v6sm16987413pgn.2.2018.05.04.11.30.23
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Fri, 04 May 2018 11:30:24 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Fri,  4 May 2018 11:30:12 -0700
+Message-Id: <20180504183021.19318-2-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.14.3
+In-Reply-To: <20180504183021.19318-1-richard.henderson@linaro.org>
+References: <20180504183021.19318-1-richard.henderson@linaro.org>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c05::244
+Subject: [Qemu-devel] [PATCH v2 01/10] tcg: Introduce helpers for integer
+ min/max
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3zjlqvaMPQlh
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XIjYn+OWu1bG
 
+These operations are re-invented by several targets so far.
+Several supported hosts have insns for these, so place the
+expanders out-of-line for a future introduction of tcg opcodes.
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ tcg/tcg-op.h | 16 ++++++++++++++++
+ tcg/tcg-op.c | 40 ++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 56 insertions(+)
 
-On 2018/3/20 19:54, Peter Maydell wrote:
-> On 20 March 2018 at 11:36, Shannon Zhao <zhaoshenglong@huawei.com> wrote:
->>
->>
->> On 2018/3/20 19:22, Peter Maydell wrote:
->>> On 20 March 2018 at 07:26, Shannon Zhao <zhaoshenglong@huawei.com> wrote:
->>>> While we skip the GIC_INTERNAL irqs, we don't change the register offset
->>>> accordingly. This will overlap the GICR registers value and leave the
->>>> last GIC_INTERNAL irq's registers out of update.
->>>>
->>>> Fix this by skipping the registers banked by GICR.
->>>>
->>>
->>> I'm still not entirely sure what the underlying problem
->>> you're trying to fix is...
->>>
->>> Do we fail to correctly migrate a VM without this change?
->>> Does the code work on some host CPU/GIC implementations but
->>> not others? Is this just improving efficiency by avoiding
->>> doing some unnecessary work?
->>>
->> When we reboot a VM and before entering uefi or guest kernel, we expect
->> all these registers staying at the initial state. But currently these
->> registers of the last 32 irqs are not reset. For example, the PRIORITY
->> of irq from 32 to 255 is 0 but the PRIORITY of irq from 256 to 287 is
->> 0xa0(Linux kernel set the PRIORITY to 0xa0 by default).
->>
->> When migrating a VM, since we don't save and restore the registers of
->> the last 32 irq, so the PRIORITY is 0 while we expecting 0xa0.
->> And also it will overlap the PRIORITY of SGIs and PPIs.
->>
->> We don't fail to migrate a vm since currently we don't use the last 32
->> irqs in virt machine. But the bug is still there.
-> 
-> Oh, I see, the number of registers we transfer is accounting
-> for the first N registers in the bank not being used, but the
-> first register offset to transfer wasn't.
-> 
-> Can you still successfully migrate a VM from a QEMU version
-> without this bugfix to one with the bugfix ?
-> 
-I've tested this case. I can migrate a VM between these two versions.
-
-Thanks,
+diff --git a/tcg/tcg-op.h b/tcg/tcg-op.h
+index 5d2c91a1b6..0451e2752e 100644
+--- a/tcg/tcg-op.h
++++ b/tcg/tcg-op.h
+@@ -324,6 +324,10 @@ void tcg_gen_ext8u_i32(TCGv_i32 ret, TCGv_i32 arg);
+ void tcg_gen_ext16u_i32(TCGv_i32 ret, TCGv_i32 arg);
+ void tcg_gen_bswap16_i32(TCGv_i32 ret, TCGv_i32 arg);
+ void tcg_gen_bswap32_i32(TCGv_i32 ret, TCGv_i32 arg);
++void tcg_gen_smin_i32(TCGv_i32, TCGv_i32 arg1, TCGv_i32 arg2);
++void tcg_gen_smax_i32(TCGv_i32, TCGv_i32 arg1, TCGv_i32 arg2);
++void tcg_gen_umin_i32(TCGv_i32, TCGv_i32 arg1, TCGv_i32 arg2);
++void tcg_gen_umax_i32(TCGv_i32, TCGv_i32 arg1, TCGv_i32 arg2);
+ 
+ static inline void tcg_gen_discard_i32(TCGv_i32 arg)
+ {
+@@ -517,6 +521,10 @@ void tcg_gen_ext32u_i64(TCGv_i64 ret, TCGv_i64 arg);
+ void tcg_gen_bswap16_i64(TCGv_i64 ret, TCGv_i64 arg);
+ void tcg_gen_bswap32_i64(TCGv_i64 ret, TCGv_i64 arg);
+ void tcg_gen_bswap64_i64(TCGv_i64 ret, TCGv_i64 arg);
++void tcg_gen_smin_i64(TCGv_i64, TCGv_i64 arg1, TCGv_i64 arg2);
++void tcg_gen_smax_i64(TCGv_i64, TCGv_i64 arg1, TCGv_i64 arg2);
++void tcg_gen_umin_i64(TCGv_i64, TCGv_i64 arg1, TCGv_i64 arg2);
++void tcg_gen_umax_i64(TCGv_i64, TCGv_i64 arg1, TCGv_i64 arg2);
+ 
+ #if TCG_TARGET_REG_BITS == 64
+ static inline void tcg_gen_discard_i64(TCGv_i64 arg)
+@@ -1025,6 +1033,10 @@ void tcg_gen_stl_vec(TCGv_vec r, TCGv_ptr base, TCGArg offset, TCGType t);
+ #define tcg_gen_mulu2_tl tcg_gen_mulu2_i64
+ #define tcg_gen_muls2_tl tcg_gen_muls2_i64
+ #define tcg_gen_mulsu2_tl tcg_gen_mulsu2_i64
++#define tcg_gen_smin_tl tcg_gen_smin_i64
++#define tcg_gen_umin_tl tcg_gen_umin_i64
++#define tcg_gen_smax_tl tcg_gen_smax_i64
++#define tcg_gen_umax_tl tcg_gen_umax_i64
+ #define tcg_gen_atomic_cmpxchg_tl tcg_gen_atomic_cmpxchg_i64
+ #define tcg_gen_atomic_xchg_tl tcg_gen_atomic_xchg_i64
+ #define tcg_gen_atomic_fetch_add_tl tcg_gen_atomic_fetch_add_i64
+@@ -1123,6 +1135,10 @@ void tcg_gen_stl_vec(TCGv_vec r, TCGv_ptr base, TCGArg offset, TCGType t);
+ #define tcg_gen_mulu2_tl tcg_gen_mulu2_i32
+ #define tcg_gen_muls2_tl tcg_gen_muls2_i32
+ #define tcg_gen_mulsu2_tl tcg_gen_mulsu2_i32
++#define tcg_gen_smin_tl tcg_gen_smin_i32
++#define tcg_gen_umin_tl tcg_gen_umin_i32
++#define tcg_gen_smax_tl tcg_gen_smax_i32
++#define tcg_gen_umax_tl tcg_gen_umax_i32
+ #define tcg_gen_atomic_cmpxchg_tl tcg_gen_atomic_cmpxchg_i32
+ #define tcg_gen_atomic_xchg_tl tcg_gen_atomic_xchg_i32
+ #define tcg_gen_atomic_fetch_add_tl tcg_gen_atomic_fetch_add_i32
+diff --git a/tcg/tcg-op.c b/tcg/tcg-op.c
+index 34b96d68f3..5b82c3be8d 100644
+--- a/tcg/tcg-op.c
++++ b/tcg/tcg-op.c
+@@ -1033,6 +1033,26 @@ void tcg_gen_bswap32_i32(TCGv_i32 ret, TCGv_i32 arg)
+     }
+ }
+ 
++void tcg_gen_smin_i32(TCGv_i32 ret, TCGv_i32 a, TCGv_i32 b)
++{
++    tcg_gen_movcond_i32(TCG_COND_LT, ret, a, b, a, b);
++}
++
++void tcg_gen_umin_i32(TCGv_i32 ret, TCGv_i32 a, TCGv_i32 b)
++{
++    tcg_gen_movcond_i32(TCG_COND_LTU, ret, a, b, a, b);
++}
++
++void tcg_gen_smax_i32(TCGv_i32 ret, TCGv_i32 a, TCGv_i32 b)
++{
++    tcg_gen_movcond_i32(TCG_COND_LT, ret, a, b, b, a);
++}
++
++void tcg_gen_umax_i32(TCGv_i32 ret, TCGv_i32 a, TCGv_i32 b)
++{
++    tcg_gen_movcond_i32(TCG_COND_LTU, ret, a, b, b, a);
++}
++
+ /* 64-bit ops */
+ 
+ #if TCG_TARGET_REG_BITS == 32
+@@ -2438,6 +2458,26 @@ void tcg_gen_mulsu2_i64(TCGv_i64 rl, TCGv_i64 rh, TCGv_i64 arg1, TCGv_i64 arg2)
+     tcg_temp_free_i64(t2);
+ }
+ 
++void tcg_gen_smin_i64(TCGv_i64 ret, TCGv_i64 a, TCGv_i64 b)
++{
++    tcg_gen_movcond_i64(TCG_COND_LT, ret, a, b, a, b);
++}
++
++void tcg_gen_umin_i64(TCGv_i64 ret, TCGv_i64 a, TCGv_i64 b)
++{
++    tcg_gen_movcond_i64(TCG_COND_LTU, ret, a, b, a, b);
++}
++
++void tcg_gen_smax_i64(TCGv_i64 ret, TCGv_i64 a, TCGv_i64 b)
++{
++    tcg_gen_movcond_i64(TCG_COND_LT, ret, a, b, b, a);
++}
++
++void tcg_gen_umax_i64(TCGv_i64 ret, TCGv_i64 a, TCGv_i64 b)
++{
++    tcg_gen_movcond_i64(TCG_COND_LTU, ret, a, b, b, a);
++}
++
+ /* Size changing operations.  */
+ 
+ void tcg_gen_extrl_i64_i32(TCGv_i32 ret, TCGv_i64 arg)
 -- 
-Shannon
+2.14.3
 

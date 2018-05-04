@@ -1,94 +1,98 @@
-Received: by 10.28.4.212 with SMTP id 203csp3721720wme;
-        Mon, 23 Apr 2018 03:46:45 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZqfzViADiXZjVtOWHGMiX1W5X7aqpGyD78PpDNFZCCkN29p2wATMRPy5y7QHw5h3dAcgCRO
-X-Received: by 2002:ac8:684:: with SMTP id f4-v6mr21851560qth.306.1524480405199;
-        Mon, 23 Apr 2018 03:46:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1524480405; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp220499wme;
+        Fri, 4 May 2018 09:33:22 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZo+DiAOiFKG+8bZhqnsRt/ZaVNgUMYnsZvOmPBzFlZaJ5OprIXm+XHQbl91xJ2Wl7c0B+pe
+X-Received: by 10.55.72.79 with SMTP id v76mr23154168qka.193.1525451601909;
+        Fri, 04 May 2018 09:33:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1525451601; cv=none;
         d=google.com; s=arc-20160816;
-        b=z2Jgh0joKpAwYs3xapqPoMsWTKLqxbCyXeXUqB/o7zo+CY9qcrZZKAbi5/V9mhvtqF
-         92qQuNgdOsHD9/JjNQCH2hsCNH4DIOpugXxG2kM8nWInN7lpVZp+RwuQwLMp0y4F67mT
-         3Rm2xVay+8+RMRhMjx2p5/sw9fYPfpHg1L9YVPQa8Ux98aWOkeGU/po8ffifSpPwL+O0
-         6VMO+0CMGMh634wjmeG4AO/y4SO+kVTeJqhgbq9sSM+PyHTZ+sgEh923XPtmgsoFfVar
-         EBZ3ePCwBixxdXDVeSv2WNbNIqzDxaLXiXEDcZ2UUlNQQaLYzN1ao2Yjf+PaORxZ8Gdz
-         SQXg==
+        b=HtBE8B+nuwWRAEKGxUtkAJH4lAtPdlsP6hhpFvAFSxQgco2TCkrRB/sSZAJVreWgeO
+         cWcoIcH81RN6wIGBnY8w31ioUaU2j+ja0roS0fE1z2BZsQSbJ/FOw51LfwBHd//7uclr
+         ydzDDj6ilXHN/s0wHcwe/H3R0VPz9z8oGI5HxYzx5RLSRHXMYUGEfypgrzm1e07DlEeU
+         sfTxhUN1jxDsSYGK0kdqBf9V++iD2we9R7Lv89TqP1jSjERWAagYfzjCN3qvw4Ry0nUi
+         DXtrC1GCc7PSzdij/2jdnSKQyTJem5TH5bod1qEo0Kzn2L0SbVxt8Auyy7+5FcWM95IY
+         MLsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=nrrmShPpMW8Gp64QVae2ZMS3gWxP5gWi+LbwPAbOo7Q=;
-        b=mLFmV7kIOOEB4yodgrId2MLOSslw3Oq20iAtjCe8xxnU1TvYKRVJREYYFGKGT4Bdd8
-         iP2oyArXSkeMR6XRBgR42sBfxYAhFl+uYIB4F8w9NNhEIxdxgbskc3ZD4KNF1LtZn3Vn
-         1cGQLIrmj+6obfQ2ScKMEu+hQvklBGBVRge59o84xTkNpNOLmRWMwba01caawzxaMkhB
-         6uVuC6u2nIWteyZ81phHEO+UN24RKRiM/wHH1b4M+msOR5YZ8Ded00BKYd6xCiiiMh0Y
-         I45ZI61e/TX2itVW/JJ2rfTBUV45KD1Nzdu/bMZTcpGiWQ6T8NEro7obc460y0pqbXDB
-         X4TQ==
+        bh=tRQQMinIOJpObttEGP6NdaSLwsIzyfdvWx1Bzo61wq0=;
+        b=R7UfHtIApbeE/oUovU95CMTBwlH4vkxk4b6i+m3Y4sS3EHQlfgLLXhpI85rXD3iXQR
+         zpehgkMNu07j2mzDd2RsFVRpeDf1bPLjVuR9lqT/E64kfhfGt0wCI+jvFfujm2ZkC5VY
+         kLuh8Jj7P89ri+okLVk2E7XtYmqTOdwoVZqWdPkp3gcwBtaucjXOBBZxO1E57sf5NcGY
+         by5IRbLf8nQPRA+OJcMOqKDELOdL4nbdrle9klXE6I2+R6MSQjpfJn6qY/pZAVPLlX7r
+         C7rPiwwXakovy9v9wtfNP1d1r1jzyuQwKhQdv67uLwLCBsvxytXNsNuTov7fF5b6VznD
+         PJSg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=NSXN+8rv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m4-v6si13429706qtf.368.2018.04.23.03.46.45
+        by mx.google.com with ESMTPS id q33-v6si5306408qvc.14.2018.05.04.09.33.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 23 Apr 2018 03:46:45 -0700 (PDT)
+        Fri, 04 May 2018 09:33:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=NSXN+8rv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35497 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:35333 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fAYzc-0006mT-Mf
-	for alex.bennee@linaro.org; Mon, 23 Apr 2018 06:46:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51368)
+	id 1fEde5-0005l8-Cv
+	for alex.bennee@linaro.org; Fri, 04 May 2018 12:33:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37524)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1fAYzM-0006km-H5
-	for qemu-arm@nongnu.org; Mon, 23 Apr 2018 06:46:29 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fEddt-0005k3-9O
+	for qemu-arm@nongnu.org; Fri, 04 May 2018 12:33:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1fAYzL-0002VU-LE
-	for qemu-arm@nongnu.org; Mon, 23 Apr 2018 06:46:28 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:60698 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgilbert@redhat.com>)
-	id 1fAYzL-0002Uc-Fk; Mon, 23 Apr 2018 06:46:27 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5CC9E4077EEE;
-	Mon, 23 Apr 2018 10:46:26 +0000 (UTC)
-Received: from work-vm (ovpn-117-231.ams2.redhat.com [10.36.117.231])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 3C22B1208F6D;
-	Mon, 23 Apr 2018 10:46:25 +0000 (UTC)
-Date: Mon, 23 Apr 2018 11:46:23 +0100
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
-Message-ID: <20180423104622.GG2518@work-vm>
-References: <20180423064020.25434-1-clg@kaod.org>
-	<CAFEAcA-LtNpGTV08jvK4i5C5i64WjM5gMB4zGr8P4fkVSkNH7g@mail.gmail.com>
-	<53691cbf-08bf-e3f7-22d3-601a279aa08a@kaod.org>
-	<CAFEAcA9XBHE5YxN27M1ugprmSf=o5iiNakO2omrY+HBgCszV5Q@mail.gmail.com>
-	<a5ca89ac-7c8f-c565-30d0-357bacb1f61e@kaod.org>
+	(envelope-from <peter.maydell@linaro.org>) id 1fEdds-00015g-Ed
+	for qemu-arm@nongnu.org; Fri, 04 May 2018 12:33:09 -0400
+Received: from mail-ot0-x243.google.com ([2607:f8b0:4003:c0f::243]:40517)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fEdds-00015K-9s
+	for qemu-arm@nongnu.org; Fri, 04 May 2018 12:33:08 -0400
+Received: by mail-ot0-x243.google.com with SMTP id n1-v6so25156698otf.7
+	for <qemu-arm@nongnu.org>; Fri, 04 May 2018 09:33:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=tRQQMinIOJpObttEGP6NdaSLwsIzyfdvWx1Bzo61wq0=;
+	b=NSXN+8rvE3RDz0O5OHQStX1QywKMD8cAhp3Z9EeDcmLz6ymCTUi44bF/meK32wgrgb
+	BBLLh2OiyMLWlLjIbRg57Sb6MK+jkEGS7v5Bj9GRAVfyb5T1HUzjeyW56Efpoqiv/X9b
+	Kz/b01fy4xqw4YlqZ5rXW0xCGrUWhII8OS6BY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=tRQQMinIOJpObttEGP6NdaSLwsIzyfdvWx1Bzo61wq0=;
+	b=dDmVj5YK6ohQQL0cHaDzB58eHr/DBBiOAw31JNXLSdoGihM4ykmwkGx4xlApJkP+2R
+	SfhQq8DfrA7EwuHapb1JEJCHtFJf7bSvz+oUQUsnmjN7HjSsZvyNU5NsMfhIipyFa0yp
+	0rg5whRQ3Zxcl5DpIpmHPkZNy6xNdS54JLWn0Is/pZYX8n37rM7VfOvaMniHcpNGuFPL
+	E/VH6hwpOWwGE1D8u4Y5zNBFHrnqkBVAIy1TC0jf6tIK/e7lbbudRBV0JflXCZHpR+af
+	tBWz33ISQlcInmgxRS4oWzJv9eLyn2dW14PdDUsx7/XmPH3Ng3XpSuF7YS4cOh9Powf/
+	JRdw==
+X-Gm-Message-State: ALKqPwfya5RRxnm/OrlCs2Tq8WmfzK67sajFZz9GntIsfIuRV1ELa/lX
+	xVTh0zED2orw7I7h1T0CbRbLnaj/eAgjGge1xXcClw==
+X-Received: by 2002:a9d:2842:: with SMTP id h2-v6mr389676otd.210.1525451587634;
+	Fri, 04 May 2018 09:33:07 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <a5ca89ac-7c8f-c565-30d0-357bacb1f61e@kaod.org>
-User-Agent: Mutt/1.9.5 (2018-04-13)
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Mon, 23 Apr 2018 10:46:26 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Mon, 23 Apr 2018 10:46:26 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'dgilbert@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [PATCH] timer/aspeed: fix vmstate version id
+Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP;
+	Fri, 4 May 2018 09:32:47 -0700 (PDT)
+In-Reply-To: <1525326811-3233-1-git-send-email-thuth@redhat.com>
+References: <1525326811-3233-1-git-send-email-thuth@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 4 May 2018 17:32:47 +0100
+Message-ID: <CAFEAcA-JF1aeT1tcmLnyayRaEtHM2bY=77kQ4pOO_wLgAKk1Sg@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::243
+Subject: Re: [Qemu-arm] [PATCH] hw/arm: Don't fail qtest due to missing SD
+ card in -nodefaults mode
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,76 +104,29 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, Andrzej Zaborowski <balrogg@gmail.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Markus Armbruster <armbru@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +EmYJeN6eeLA
+X-TUID: EgzBnyP9pmOr
 
-* C=E9dric Le Goater (clg@kaod.org) wrote:
-> On 04/23/2018 11:34 AM, Peter Maydell wrote:
-> > On 23 April 2018 at 10:28, C=E9dric Le Goater <clg@kaod.org> wrote:
-> >> On 04/23/2018 11:12 AM, Peter Maydell wrote:
-> >>>> diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
-> >>>> index 50acbf530a3a..7df19bd9df91 100644
-> >>>> --- a/hw/timer/aspeed_timer.c
-> >>>> +++ b/hw/timer/aspeed_timer.c
-> >>>> @@ -498,8 +498,8 @@ static const VMStateDescription vmstate_aspeed=
-_timer =3D {
-> >>>>
-> >>>>  static const VMStateDescription vmstate_aspeed_timer_state =3D {
-> >>>>      .name =3D "aspeed.timerctrl",
-> >>>> -    .version_id =3D 1,
-> >>>> -    .minimum_version_id =3D 1,
-> >>>> +    .version_id =3D 2,
-> >>>> +    .minimum_version_id =3D 2,
-> >>>>      .fields =3D (VMStateField[]) {
-> >>>>          VMSTATE_UINT32(ctrl, AspeedTimerCtrlState),
-> >>>>          VMSTATE_UINT32(ctrl2, AspeedTimerCtrlState),
-> >>> Wouldn't it be simpler to just fix the incorrect value in
-> >>> the VMSTATE_STRUCT_ARRAY(timers, AspeedTimerCtrlState,
-> >>> line ?
-> >>
-> >> Yes. Also.
-> >>
-> >> Or bring back all the version ids to 1, as we never supported
-> >> migration before.
-> >=20
-> > I think it's nice to at least do the "bump version" thing, so you
-> > get a (hopefully comprehensible) error rather than just wrong
-> > data if you do try a cross version migration,=20
->=20
-> On that topic, the error message was :
->=20
-> 	Missing section footer for aspeed.timerctrl
->=20
-> which is not very comprehensible for a version mismatch issue.
+On 3 May 2018 at 06:53, Thomas Huth <thuth@redhat.com> wrote:
+> When running omap1/2 or pxa2xx based ARM machines with -nodefaults,
+> they bail out immediately complaining about a "missing SecureDigital
+> device". That's not how the "default" devices in vl.c are meant to
+> work - it should be possible for a board to also start up without
+> default devices. So let's turn the error message and exit() into
+> a warning instead.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  hw/arm/omap1.c  |  8 ++++----
+>  hw/arm/omap2.c  |  8 ++++----
+>  hw/arm/pxa2xx.c | 15 +++++++--------
+>  3 files changed, 15 insertions(+), 16 deletions(-)
 
-Was that before your patch?
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-The VMSTATE fields in the structure have no metadata stored
-for them to be parsed with; if you send a different number
-of array entries to the number the destination receives you end
-up with a corrupt stream. Section footers are just a canary
-that tells you something went wrong in that devices data.
-It has no more information to give you a more detailed error.
-
-Dave
-
-> Thanks,
->=20
-> C.=20
->=20
-> > so I would
-> > vote for just fixing the one thing that was wrong: the
-> > number in VMSTATE_STRUCT_ARRAY is the version to be used of
-> > the substruct, so it didn't need to be bumped in commit
-> > 1d3e65aa7a; the main version numbers for vmstate_aspeed_timer
-> > did need to be bumped because part of the main struct changed.
-> >=20
-> > thanks
-> > -- PMM
-> >=20
->=20
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+thanks
+-- PMM

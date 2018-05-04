@@ -1,98 +1,69 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp4088946wrq;
-        Mon, 11 Jun 2018 07:05:36 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKUZcfZFB1ySaIOiez4Dj4D/xB+eftDoXjJ0mdLpxRhMRwz6x5ORIAV16T7btCgoIQeam/L
-X-Received: by 2002:a0c:92f4:: with SMTP id c49-v6mr8759134qvc.101.1528725936200;
-        Mon, 11 Jun 2018 07:05:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528725936; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp159860wme;
+        Fri, 4 May 2018 08:34:52 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZrET4Df9inJO1/3GVyrcXCXrg3EHaMH0Yhe8Vx5NqCPQAtpMXGMQh6Q6qfN3tv10PZgbtDt
+X-Received: by 2002:ac8:668c:: with SMTP id d12-v6mr24017048qtp.344.1525448092338;
+        Fri, 04 May 2018 08:34:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1525448092; cv=none;
         d=google.com; s=arc-20160816;
-        b=aIpt38uZ9DzBaBgJRI5OP4RaOQGxc0yRGOaI/7cFcwVkKIRugYJlEZEboX11VuKGFr
-         iBRYwCGYRRs6DDl1OG5JmP8Le3m3J0ESS9QgxHXBH+Yb8lCEb0UR3Cy3hspSznqnykXX
-         XUtZy6+62T5pt+/Ekdt1lgYwROGEj3yYD5EHFbUQ5NPnmkNBMGTLSoFRPcxalL0mtfVM
-         ndOpVSWjKOkEetPKQfMKhOcIv3AA8rLYSmW2w42b5KWPgI/wiNVHwop5Gz3lfcjfx9MN
-         j8SEi4IV4JQhrlgfhSjGRSn4xv8Y5jyc4iYNnxDqRglEvswpUQnCZgz59B+Y6220oaWS
-         ULBA==
+        b=IR5GSwJwaQJj64R2ineZTWU4K8bpq6frEmIXOMRltIIfsdYDROtiXJfsLLSG/BBW86
+         UXKtpU0RQfF3HCjtvLYfnzE13vPQEC8GzOFvaMcKGnuL+lLNaNUtgqL3vERG0bCh61Wm
+         TLXscfUi4H3wgsA7NKlKQcLwP2SWC6tBBstAVM0YRo5dSV6PP5nCGXWGqEeETvHrXky6
+         UsGvp/j8hBlpRHlkMLMhYAG4tT1UhVlROligjgpZ/rjfLQrnnyUf2KqLqfQWnrTvY082
+         L6n8+cTVhw75qO8tzfTC1q8+lQnBTXotParWwGgxuCz4ALhIBceUrrGHeDCnmsnNrgwB
+         mb8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
          :arc-authentication-results;
-        bh=c5gh7v6Qcn8BTmvQmZ3Y2WimhX/WPpE/01VE1cCoRsI=;
-        b=ps3P9d1x66r+N23SgYQsOCC2R7YrY38GwJo0F2lFaCM0SCHmwPB2zh3uuDvjmrCxkV
-         mG17XqLpKyIeyS/Bz/D7Uz+8oxJobk744Ey6oZUf/IKGDn28+irjPW7bSUMLCPyIaoRa
-         BB4xK9xCwCvQZYhiR/yi0BYgLCpMR4YLOeHlt55rsrUj/kN7FORWHYzcQHH9Rr7jTHfv
-         D5fORSRNmG8Ikykvu6EI5TexqZKl2y7kDj7eiYzxh1EM5wadj4Qy46gx4QxEFjHlCaeV
-         02PeKIb2b06ba4slKmSi5qmdBtcek2mqieYdVF74ndmzl8wKHiZDGYmPMneS1nof9K7I
-         RiUA==
+        bh=F6s+LEZ+RiNHL99qcZDjeG71kp9aO/KPuht4xTYTogs=;
+        b=bo1vT8gdbQhI+EZeIz3HQWpuSJv5fGm1qBCQPfA0NLTtFw1z6M/Su4hKN7M16fjPRL
+         oPzN3W+XTh4LIa3h1GwsykSmu3n4h5L8/6KSZkTHfUi3bMH9Ccu3t+4E4RAeuDur5TOs
+         HoaSwGJmGHDBBn+p97ZFpBTp1c5z/e26BbBRztOKv+nOqkuvZhrekCFT7Qihk5DAo4sg
+         HyKXwK5k/k7d2t9fH59pnbwofSrtgWwugyLp24/MItfbtDDpdlgQQXSBb1kDFcVhEALw
+         pHuzXRRVv5C7CjctZDz+eq6VfTz8kkMxqOHe2TlhNLrIYc9V7ny04fj0KC4p+5Q/iYus
+         T/gw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MoRUdQMH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c6-v6si5877388qvo.55.2018.06.11.07.05.36
+        by mx.google.com with ESMTPS id g127si1566384qkb.90.2018.05.04.08.34.52
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 11 Jun 2018 07:05:36 -0700 (PDT)
+        Fri, 04 May 2018 08:34:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MoRUdQMH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49025 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:34884 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fSNRv-0002Ax-O8
-	for alex.bennee@linaro.org; Mon, 11 Jun 2018 10:05:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47018)
+	id 1fEcjT-0007No-Pg
+	for alex.bennee@linaro.org; Fri, 04 May 2018 11:34:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46795)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fSNRh-00029Y-Vy
-	for qemu-arm@nongnu.org; Mon, 11 Jun 2018 10:05:22 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1fEcjJ-0007NK-HS
+	for qemu-arm@nongnu.org; Fri, 04 May 2018 11:34:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fSNRh-00012A-22
-	for qemu-arm@nongnu.org; Mon, 11 Jun 2018 10:05:21 -0400
-Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:41707)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fSNRg-00011f-Tq
-	for qemu-arm@nongnu.org; Mon, 11 Jun 2018 10:05:20 -0400
-Received: by mail-oi0-x242.google.com with SMTP id a141-v6so17953066oii.8
-	for <qemu-arm@nongnu.org>; Mon, 11 Jun 2018 07:05:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=c5gh7v6Qcn8BTmvQmZ3Y2WimhX/WPpE/01VE1cCoRsI=;
-	b=MoRUdQMHs4Ze3RTlhstQiI4PHARJyPGb4HJ7yLiAelr7CnAMmiMHtLdrlux/T5rTDU
-	rB/SWjYWsRWpbZN1Z6LEHYVcriOPnK0kvW1QTtDqzHFx/oNzQIfRpqPARZPDCcip/7fV
-	N50IYepBNZUuVxF/nKJ8bnZboopH3rpSRYep4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=c5gh7v6Qcn8BTmvQmZ3Y2WimhX/WPpE/01VE1cCoRsI=;
-	b=ghHnCMvM2yqjfWPAwB8QILqkcFWRWRGlOgns0eY6BzPNuP/81ontfCx9pWJbCqURyj
-	Gc9sZyWrhh2/iCB4mxlUV9PAJQFiXHRntN2qPTSnZelX0UNixxx+S9B+P8F82ai5KGYr
-	lodM3lEvV8j5ZbCpD3truDNAHlxUmy2JSZ1URezCgNIwMx/zoE10umZlSiL1MT43cMDo
-	mRC0DHF7A1XFxIBAgAEXdXubKQFL7B35PuYl/tVhIveeBbvXROUuqPE4pXZz8RZpktbU
-	ipAMLsJXqLqGbBTS+Hr0bfAd/JZ0gN2bJ6Uq2tBUevH0tdKG7m1ytq+1ttvYl1iscZSs
-	qhZQ==
-X-Gm-Message-State: APt69E1bNz7Lok48cM0/LF5bikO2fHHPINmGfo1ajCZLYTs+SutInO1E
-	P9VvFRYX389VBQUQoGf82B8M6gc7IPfUMup3LBXydpYe
-X-Received: by 2002:aca:5383:: with SMTP id
-	h125-v6mr8840495oib.252.1528725920174; 
-	Mon, 11 Jun 2018 07:05:20 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Mon, 11 Jun 2018 07:04:59
-	-0700 (PDT)
-In-Reply-To: <20180601144328.23817-1-peter.maydell@linaro.org>
-References: <20180601144328.23817-1-peter.maydell@linaro.org>
+	(envelope-from <pm215@archaic.org.uk>) id 1fEcjI-0006el-JL
+	for qemu-arm@nongnu.org; Fri, 04 May 2018 11:34:41 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:41470)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1fEcjI-0006cu-AJ; Fri, 04 May 2018 11:34:40 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1fEcjA-0002tD-7h; Fri, 04 May 2018 16:34:32 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 11 Jun 2018 15:04:59 +0100
-Message-ID: <CAFEAcA__A1a3xwdP+_6vzraNafTu3NPY+mj=5vhEAJpEcAY=3Q@mail.gmail.com>
-To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Fri,  4 May 2018 16:34:31 +0100
+Message-Id: <20180504153431.5169-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.17.0
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::242
-Subject: Re: [Qemu-arm] [PATCH 0/2] armv7m: Remove armv7m_init() function
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH] tcg/i386: Fix dup_vec in non-AVX2 codepath
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,51 +75,77 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Jim Mussared <jim@groklearning.com>,
-	=?UTF-8?Q?Steffen_G=C3=B6rtz?= <mail@steffen-goertz.de>,
-	"patches@linaro.org" <patches@linaro.org>, Joel Stanley <joel@jms.id.au>,
-	Stefan Hajnoczi <stefanha@redhat.com>, Julia Suvorova <jusual@mail.ru>
+Cc: Richard Henderson <rth@twiddle.net>, qemu-stable@nongnu.org,
+	patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4q/n+jhnFL2h
+X-TUID: fCBOOElrKVwz
 
-Ping for code review?
+The VPUNPCKLD* instructions are all "non-destructive source",
+indicated by "NDS" in the encoding string in the x86 ISA manual.
+This means that they take two source operands, one of which is
+encoded in the VEX.vvvv field. We were incorrectly treating them
+as if they were destructive-source and passing 0 as the 'v'
+argument of tcg_out_vex_modrm(). This meant we were always
+using %xmm0 as one of the source operands, causing incorrect
+results if the register allocator happened to want to use
+something else. For instance the input AArch64 insn:
+ DUP v26.16b, w21
+which becomes TCG IR ops:
+ dup_vec v128,e8,tmp2,x21
+ st_vec v128,e8,tmp2,env,$0xa40
+was assembled to:
+0x607c568c:  c4 c1 7a 7e 86 e8 00 00  vmovq    0xe8(%r14), %xmm0
+0x607c5694:  00
+0x607c5695:  c5 f9 60 c8              vpunpcklbw %xmm0, %xmm0, %xmm1
+0x607c5699:  c5 f9 61 c9              vpunpcklwd %xmm1, %xmm0, %xmm1
+0x607c569d:  c5 f9 70 c9 00           vpshufd  $0, %xmm1, %xmm1
+0x607c56a2:  c4 c1 7a 7f 8e 40 0a 00  vmovdqu  %xmm1, 0xa40(%r14)
+0x607c56aa:  00
 
-thanks
--- PMM
+when the vpunpcklwd insn should be "%xmm1, %xmm1, %xmm1".
+This resulted in our incorrectly setting the output vector to
+q26=0000320000003200:0000320000003200
+when given an input of x21 == 0000000002803200
+rather than the expected all-zeroes.
 
-On 1 June 2018 at 15:43, Peter Maydell <peter.maydell@linaro.org> wrote:
-> The armv7m_init() function is a legacy from before we properly QOMified
-> ARMv7M, and it has some flaws:
->
->  * it combines work that needs to be done by an SoC object (creating
->    and initializing the TYPE_ARMV7M object) with work that needs to
->    be done by the board model (setting the system up to load the ELF
->    file specified with -kernel)
->  * TYPE_ARMV7M creation failure is fatal, but an SoC object wants to
->    arrange to propagate the failure outward
->  * it uses allocate-and-create via qdev_create() whereas the current
->    preferred style for SoC objects is to do creation in-place
->
-> This patchset fixes the only current caller (the stellaris board)
-> to not use it, and then removes the function.
->
-> New board and SoC models should do the two jobs this function
-> was doing themselves, in the right places and with whatever their
-> preferred style/error handling is.
->
-> (I've cc'd the people working on the nRF51 SoC model, as a heads-up
-> that they'll need to update their code so it compiles once this
-> hits master.)
->
-> thanks
-> -- PMM
->
-> Peter Maydell (2):
->   stellaris: Stop using armv7m_init()
->   hw/arm/armv7m: Remove unused armv7m_init() function
->
->  include/hw/arm/arm.h |  8 ++------
->  hw/arm/armv7m.c      | 21 ---------------------
->  hw/arm/stellaris.c   | 12 ++++++++++--
->  3 files changed, 12 insertions(+), 29 deletions(-)
+Pass the correct source register number to tcg_out_vex_modrm()
+for these insns.
+
+Fixes: 770c2fc7bb70804a
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ tcg/i386/tcg-target.inc.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tcg/i386/tcg-target.inc.c b/tcg/i386/tcg-target.inc.c
+index d7e59e79c5..5357909fff 100644
+--- a/tcg/i386/tcg-target.inc.c
++++ b/tcg/i386/tcg-target.inc.c
+@@ -854,11 +854,11 @@ static void tcg_out_dup_vec(TCGContext *s, TCGType type, unsigned vece,
+         switch (vece) {
+         case MO_8:
+             /* ??? With zero in a register, use PSHUFB.  */
+-            tcg_out_vex_modrm(s, OPC_PUNPCKLBW, r, 0, a);
++            tcg_out_vex_modrm(s, OPC_PUNPCKLBW, r, a, a);
+             a = r;
+             /* FALLTHRU */
+         case MO_16:
+-            tcg_out_vex_modrm(s, OPC_PUNPCKLWD, r, 0, a);
++            tcg_out_vex_modrm(s, OPC_PUNPCKLWD, r, a, a);
+             a = r;
+             /* FALLTHRU */
+         case MO_32:
+@@ -867,7 +867,7 @@ static void tcg_out_dup_vec(TCGContext *s, TCGType type, unsigned vece,
+             tcg_out8(s, 0);
+             break;
+         case MO_64:
+-            tcg_out_vex_modrm(s, OPC_PUNPCKLQDQ, r, 0, a);
++            tcg_out_vex_modrm(s, OPC_PUNPCKLQDQ, r, a, a);
+             break;
+         default:
+             g_assert_not_reached();
+-- 
+2.17.0
+

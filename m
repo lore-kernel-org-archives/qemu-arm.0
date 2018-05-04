@@ -1,252 +1,249 @@
-Received: by 10.28.4.212 with SMTP id 203csp195276wme;
-        Fri, 4 May 2018 09:09:20 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZp85ZVb28TWZFDZqtGY6EShYVF7wNS5awMfSACXu8a0wjRdnHz/bPCgag5d02RDVQrBqkp4
-X-Received: by 2002:a0c:afb2:: with SMTP id s47-v6mr24080706qvc.163.1525450160294;
-        Fri, 04 May 2018 09:09:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1525450160; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp211679wme;
+        Fri, 4 May 2018 09:24:38 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZqo6EJYym5TxK58z5Ah49t4aa6qP+JZzIGZty9NfVhvOc5dcza1MP7TLMfxuS3Nkc/SHS2e
+X-Received: by 10.55.24.229 with SMTP id 98mr22330402qky.347.1525451078541;
+        Fri, 04 May 2018 09:24:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1525451078; cv=none;
         d=google.com; s=arc-20160816;
-        b=Rzsb2kDngsUhl+++jnxsQSHxGscrAvKp9oCOuJxKjMWc3nPFrKO/31T30UOZDebtn9
-         UdouQJhSg+cbDG4JgmbSPlRyAqEeIp9DY6JOsysc5WgIjitS5tYjUcusOlACvIGgg+/W
-         HN3jGRWwVNESSDzSECjg769iyR3ucQNKekrrK9NccHbwYScIvLgxHP2aHewIkfR937ww
-         8IzE3pzcXB2a/dF52r11MqhfsSZOzyrQPjHywARJR7vyPReKv1sEZKxopMXmHfnLZStb
-         YdhACWEO2DfRi98UW8uK0AhvBtQ1+rvx2yEl+WfUb/tBqhKvFJhMhV7PUldmOEW8lCii
-         +LkQ==
+        b=ucsNybuY27JDxQPdjlmq2a/9FG/WzpMne3D0hepeIRu89qzppdQwj4YYkkojXMmYYH
+         +xojIUGSgvL9rHnjIRvTFgc7cu3J3QBRHcfdBr66SaV1zjtTksl5U2D+ablJELf61IOH
+         H1BN9NutMW/LjV1M4xXJXG6GUxY7Opx6fLpC2t9CTC+DDL/+5+nsUKnDjbOFBqKgHPJe
+         xx/U95mEqTgG+yR/Y5IUa/9k5h7y3DRUFvecMazhHJ8uLkhoz4QiYyTpvRxL3MWuWEOA
+         JvG6g9OcA2crqiaRmzodV3xgOIp8Cjc+/v2q7FdBWRTxkKIuTPCrtl2+ULZJxngcPhsZ
+         IPEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=AhZTNnmz2bExtwkTHOFywLwZ1lgVO/zx2vNRoK/6NTs=;
-        b=1IdJruMYA0SbxGvxteZulRH6eK1/3LpxbVhs6b0zeahVDngM5bvmSWNr+ySUNKEj/P
-         NdbjIEixLEswaxMP3yVOa8ky//Xy404lYr+QUoyNc40aeH1xfWHopsX7b3QayLI/opJk
-         nIdKvTxULb2UYA2QEqLWb4aWbaE3FeDdJcJ0Z65IxgVf8zZK2hO7Ai6ju1AothREnylO
-         m/L5fxC1LMEU1aRjvlIhhSJHNI/O5zAmIPxW8K2dvFUKVan1AOgv27KlOi9QMVjoWswy
-         e6v6VGhtYNiB+A9cfAfqq/V/s8906sw6jc9Mo5oHZ6okxZ9vNM0/OH/qxOD4vr9+Wt6a
-         4zUA==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=j4p3uPtTK4F2hPKkxlV2AD5yDWGggeiaZV9PAoYe5Cw=;
+        b=rFby+bvRHj7mIMPVrQ65cI2RgbZGjln0BP7PTbcYev4RUC85l5Ls6VQFkL5iQPa3vX
+         C8uGRdGJB/sFGlQJI/J3x//ADnlgCGDMYFM+yddbrKXdKAZX6j5Hh7d+i5/6zw4GIbrN
+         NsTcp75ZVXF76DO+B0K9pTEH4Sq03iB/mwxJqKyYtBRgwTuy9Cxjhh+CVHs0ixupMQPE
+         IDq8xxMu+anGx/XW/U5hhXOllrUW2v8UkQQUTMNOuxTBe2+t+NA9m4B8AP1wX3kEOsOX
+         Je5dwhEhsGeJl3XDntakKpRJ7cjgBLgheN8WKqdSjHGw5iGRESicedqvripvKQ0vXEeO
+         WLtQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=n4sFDJxR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YZ/jrM24;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b10-v6si5035837qvj.239.2018.05.04.09.09.20
+        by mx.google.com with ESMTPS id i51-v6si10021950qta.358.2018.05.04.09.24.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 04 May 2018 09:09:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 04 May 2018 09:24:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=n4sFDJxR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:35080 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YZ/jrM24;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:35264 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fEdGp-0001LC-Ni
-	for alex.bennee@linaro.org; Fri, 04 May 2018 12:09:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54951)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fEdVe-0007Fa-1i
+	for alex.bennee@linaro.org; Fri, 04 May 2018 12:24:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60558)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fEd7b-0002bG-NQ
-	for qemu-devel@nongnu.org; Fri, 04 May 2018 11:59:49 -0400
+	id 1fEdQ8-0002QK-9N
+	for qemu-arm@nongnu.org; Fri, 04 May 2018 12:18:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fEd7W-0001Uu-T8
-	for qemu-devel@nongnu.org; Fri, 04 May 2018 11:59:47 -0400
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:45535)
+	id 1fEdQ6-0006ON-W2
+	for qemu-arm@nongnu.org; Fri, 04 May 2018 12:18:56 -0400
+Received: from mail-qk0-x233.google.com ([2607:f8b0:400d:c09::233]:38391)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fEd7W-0001Ui-O5; Fri, 04 May 2018 11:59:42 -0400
-Received: by mail-qt0-x241.google.com with SMTP id j42-v6so27941038qtj.12;
-	Fri, 04 May 2018 08:59:42 -0700 (PDT)
+	id 1fEdQ6-0006O5-Rs; Fri, 04 May 2018 12:18:54 -0400
+Received: by mail-qk0-x233.google.com with SMTP id b39so17024690qkb.5;
+	Fri, 04 May 2018 09:18:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=AhZTNnmz2bExtwkTHOFywLwZ1lgVO/zx2vNRoK/6NTs=;
-	b=n4sFDJxR5fzjfK6EPh5th25Kd6+K9PUHKD7MG0jsuMiUiIptNU5JqBtJX9tOfEbC2G
-	dEgdNwlPIGQm9Z2Sv7U+MIV7C7cSryHqqN7xZfxJ/s9dMEO9PIcGCLJHpSyeALt5IT06
-	GW6Wv6SSsJ86pIkY3BpQALjO2t1eCjPj5TBPebXwhyb0MeQqin4qpRhgpibcqcPg/8ft
-	CJl3RyWgd5A2VlzEHPv6i42AuWQ8IU5rF6kWbTarnxkmpdyQlqjW+DhFlg4e65wx+GtG
-	3STzfGcwbSEC1GNx+KOwU7su9tZv3PzjIGAqZM1Su2nD8QIzow/2Pnyl7zReIA9LjORn
-	A5KA==
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=j4p3uPtTK4F2hPKkxlV2AD5yDWGggeiaZV9PAoYe5Cw=;
+	b=YZ/jrM24A0SjyZqlePrrkFx/TmMeUjC9AgfL2TsRpBkSadySuL78d38fzd5LlcPOvL
+	R3V8D/fL1uGr8InBvmH4VVq8E4zU/F68wdbwdLYS4A4jQEgYFj/Qucr/QFTS+qhJGcuC
+	X4IHHQ9djpQm2LcnpPagqVslI9k/+ceJZNRTjCqD2gd6zUcB9G9v2C4EXQD4BybxXPW7
+	dzuZSvCOY1V8lr/fZASrq79/tny/4QCzIbo43A2RQ3wwYBrIbjUt+wNa6FwrULrKxIv/
+	XQh5r9tjeohsrY7MzY0U/mCTHmyqQL//WDbwA9OpR2rXFueWDgANLP+btv6mMZd31Tgm
+	3f6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=AhZTNnmz2bExtwkTHOFywLwZ1lgVO/zx2vNRoK/6NTs=;
-	b=BBR8WpdmiSAnk4VFkyY0VCW+1+79arfix6sE6J8/uLC85v2aSsd3UBOACAjnK2qI3y
-	zXiV+E4UGtc+hgIle2pxY1mH3RYU1xv3wXrHluw62kxI5st+2qcOJOeIN6GBC8xHng9y
-	jzTDOdTBFRvfHWDB9ZaIt+f4ttHZk5hx/YZZCgBF6GOST6v0RJmR48XlPe5u5+eiZQpL
-	nVqSxVm914WKPGfWdx2unxogWyygPFzNdL5NrxVY9Ts6XFa58aa4gbdRnKY///ArZSfo
-	GDO5GqrNSWBy7XRGJHiuUDLx8/ufODgTwmAhwO2fIcuK0XhW3t+29YK8TQsNQv/IIbqX
-	ILug==
-X-Gm-Message-State: ALQs6tC6391kYok89taVcFQbKzMIds+ZQDcM+nvE69vIb+e2H4rfxWUn
-	euMFdkLYEns2W1ivobvvDHw=
-X-Received: by 2002:ac8:35b0:: with SMTP id
-	k45-v6mr23023286qtb.81.1525449582158; 
-	Fri, 04 May 2018 08:59:42 -0700 (PDT)
-Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	a83sm8587066qkb.22.2018.05.04.08.59.39
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=j4p3uPtTK4F2hPKkxlV2AD5yDWGggeiaZV9PAoYe5Cw=;
+	b=UqE504tuBlc2/IYxBzjDGMYWYyi9T2Mnozg6NsgVt3dewhR8CcSdwpYeILlnJBoj7c
+	ZSYCVpCqLH3fEp9KyQDMlwn6j90zuW6r7Vc1sScro2GDUPB/0c6hzOqP6lHPODwS+eQg
+	3VtLDu/dLuL7I9mCQj5Ou1hx2RKrZ73ufaXpK/urVh2DAd2IKT2FPBjv9j6kreZzhOjb
+	/z3XLmkMBLUPVqKbHjobD65P24dzQSAS8cnlc+WvIY166XkD1LPrCBppb0CF/9cAd+w9
+	AvH+9DJK3AzBm8g9uRFnm/8ktyMbXXTItmar5im1srZQNVsoM7tH5rcupknOMMvzBxqt
+	vdhQ==
+X-Gm-Message-State: ALQs6tAFAFtCu44V6HOChwglaKT/KGbGIYV38vHa1wKgpQnsP17QiAHG
+	xCweoOboV5SR1mWXwmrFY9Y=
+X-Received: by 10.55.168.140 with SMTP id r134mr22722981qke.41.1525450734235; 
+	Fri, 04 May 2018 09:18:54 -0700 (PDT)
+Received: from [192.168.1.11] ([138.117.48.222])
+	by smtp.gmail.com with ESMTPSA id
+	g199sm13338986qke.29.2018.05.04.09.18.52
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 04 May 2018 08:59:41 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	"Edgar E . Iglesias" <edgar.iglesias@xilinx.com>
-Date: Fri,  4 May 2018 12:59:03 -0300
-Message-Id: <20180504155918.21287-6-f4bug@amsat.org>
-X-Mailer: git-send-email 2.17.0
-In-Reply-To: <20180504155918.21287-1-f4bug@amsat.org>
-References: <20180504155918.21287-1-f4bug@amsat.org>
+	Fri, 04 May 2018 09:18:53 -0700 (PDT)
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+References: <1525326811-3233-1-git-send-email-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <e25a5a9f-9738-18b2-c30d-890bf136dd46@amsat.org>
+Date: Fri, 4 May 2018 13:18:50 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <1525326811-3233-1-git-send-email-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: [Qemu-devel] [PATCH 05/20] sdcard: Use the sd_prepare_request*()
- functions
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400d:c09::233
+Subject: Re: [Qemu-arm] [PATCH] hw/arm: Don't fail qtest due to missing SD
+ card in -nodefaults mode
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair@alistair23.me>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, Michael Walle <michael@walle.cc>,
-	"open list:PXA2XX" <qemu-arm@nongnu.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Y93fQf9IaJR7
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, Andrzej Zaborowski <balrogg@gmail.com>,
+	Markus Armbruster <armbru@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mOno+tpFzSAb
 
-This guaranties all SDRequest members are initialized.
+On 05/03/2018 02:53 AM, Thomas Huth wrote:
+> When running omap1/2 or pxa2xx based ARM machines with -nodefaults,
+> they bail out immediately complaining about a "missing SecureDigital
+> device". That's not how the "default" devices in vl.c are meant to
+> work - it should be possible for a board to also start up without
+> default devices. So let's turn the error message and exit() into
+> a warning instead.
 
-This silent the Coverity warning:
+Ideally we'd QOM'ify them.
 
-  "Use of an uninitialized variable (CWE-457)"
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-and fixes the following issues (all "Uninitialized scalar variable"):
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-- CID1386072 (hw/sd/sdhci.c::sdhci_end_transfer)
-- CID1386074 (hw/sd/bcm2835_sdhost.c::bcm2835_sdhost_send_command)
-- CID1386076 (hw/sd/sdhci.c::sdhci_send_command)
-- CID1390571 (hw/sd/ssi-sd.c::ssi_sd_transfer)
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/sd/bcm2835_sdhost.c    | 3 +--
- hw/sd/milkymist-memcard.c | 7 +++----
- hw/sd/omap_mmc.c          | 4 +---
- hw/sd/pxa2xx_mmci.c       | 4 +---
- hw/sd/sdhci.c             | 6 ++----
- hw/sd/ssi-sd.c            | 5 ++---
- 6 files changed, 10 insertions(+), 19 deletions(-)
-
-diff --git a/hw/sd/bcm2835_sdhost.c b/hw/sd/bcm2835_sdhost.c
-index ebf3b926c2..5134d7b5c7 100644
---- a/hw/sd/bcm2835_sdhost.c
-+++ b/hw/sd/bcm2835_sdhost.c
-@@ -110,8 +110,7 @@ static void bcm2835_sdhost_send_command(BCM2835SDHostState *s)
-     uint8_t rsp[16];
-     int rlen;
- 
--    request.cmd = s->cmd & SDCMD_CMD_MASK;
--    request.arg = s->cmdarg;
-+    sd_prepare_request(&request, s->cmd & SDCMD_CMD_MASK, s->cmdarg, false);
- 
-     rlen = sdbus_do_command(&s->sdbus, &request, rsp);
-     if (rlen < 0) {
-diff --git a/hw/sd/milkymist-memcard.c b/hw/sd/milkymist-memcard.c
-index ff2b92dc64..d8cbb7b681 100644
---- a/hw/sd/milkymist-memcard.c
-+++ b/hw/sd/milkymist-memcard.c
-@@ -99,10 +99,9 @@ static void memcard_sd_command(MilkymistMemcardState *s)
- {
-     SDRequest req;
- 
--    req.cmd = s->command[0] & 0x3f;
--    req.arg = ldl_be_p(s->command + 1);
--    req.crc = s->command[5];
--
-+    sd_prepare_request_with_crc(&req, s->command[0] & 0x3f,
-+                                ldl_be_p(s->command + 1),
-+                                s->command[5]);
-     s->response[0] = req.cmd;
-     s->response_len = sdbus_do_command(&s->sdbus, &req, s->response + 1);
-     s->response_read_ptr = 0;
-diff --git a/hw/sd/omap_mmc.c b/hw/sd/omap_mmc.c
-index 5b47cadf11..7b71984115 100644
---- a/hw/sd/omap_mmc.c
-+++ b/hw/sd/omap_mmc.c
-@@ -135,9 +135,7 @@ static void omap_mmc_command(struct omap_mmc_s *host, int cmd, int dir,
-     mask = 0;
-     rspstatus = 0;
- 
--    request.cmd = cmd;
--    request.arg = host->arg;
--    request.crc = 0; /* FIXME */
-+    sd_prepare_request(&request, cmd, host->arg, false /* FIXME */);
- 
-     rsplen = sd_do_command(host->card, &request, response);
- 
-diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
-index 82f8ec0d50..fd5c1e7686 100644
---- a/hw/sd/pxa2xx_mmci.c
-+++ b/hw/sd/pxa2xx_mmci.c
-@@ -224,9 +224,7 @@ static void pxa2xx_mmci_wakequeues(PXA2xxMMCIState *s)
-     s->tx_len = 0;
-     s->cmdreq = 0;
- 
--    request.cmd = s->cmd;
--    request.arg = s->arg;
--    request.crc = 0;	/* FIXME */
-+    sd_prepare_request(&request, s->cmd, s->arg, false /* FIXME */);
- 
-     rsplen = sdbus_do_command(&s->sdbus, &request, response);
-     s->intreq |= INT_END_CMD;
-diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-index 63c44a4ee8..9260f59e80 100644
---- a/hw/sd/sdhci.c
-+++ b/hw/sd/sdhci.c
-@@ -336,8 +336,7 @@ static void sdhci_send_command(SDHCIState *s)
- 
-     s->errintsts = 0;
-     s->acmd12errsts = 0;
--    request.cmd = s->cmdreg >> 8;
--    request.arg = s->argument;
-+    sd_prepare_request(&request, s->cmdreg >> 8, s->argument, false);
- 
-     trace_sdhci_send_command(request.cmd, request.arg);
-     rlen = sdbus_do_command(&s->sdbus, &request, response);
-@@ -393,8 +392,7 @@ static void sdhci_end_transfer(SDHCIState *s)
-         SDRequest request;
-         uint8_t response[16];
- 
--        request.cmd = 0x0C;
--        request.arg = 0;
-+        sd_prepare_request(&request, 12, 0, false);
-         trace_sdhci_end_transfer(request.cmd, request.arg);
-         sdbus_do_command(&s->sdbus, &request, response);
-         /* Auto CMD12 response goes to the upper Response register */
-diff --git a/hw/sd/ssi-sd.c b/hw/sd/ssi-sd.c
-index 0bb26e596d..c22967170c 100644
---- a/hw/sd/ssi-sd.c
-+++ b/hw/sd/ssi-sd.c
-@@ -95,9 +95,8 @@ static uint32_t ssi_sd_transfer(SSISlave *dev, uint32_t val)
-         if (s->arglen == 4) {
-             SDRequest request;
-             uint8_t longresp[16];
--            /* FIXME: Check CRC.  */
--            request.cmd = s->cmd;
--            request.arg = ldl_be_p(s->cmdarg);
-+            sd_prepare_request(&request, s->cmd,
-+                               ldl_be_p(s->cmdarg), false /* FIXME */);
-             DPRINTF("CMD%d arg 0x%08x\n", s->cmd, request.arg);
-             s->arglen = sdbus_do_command(&s->sdbus, &request, longresp);
-             if (s->arglen <= 0) {
--- 
-2.17.0
-
+> ---
+>  hw/arm/omap1.c  |  8 ++++----
+>  hw/arm/omap2.c  |  8 ++++----
+>  hw/arm/pxa2xx.c | 15 +++++++--------
+>  3 files changed, 15 insertions(+), 16 deletions(-)
+> 
+> diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
+> index 24673ab..e54c1f8 100644
+> --- a/hw/arm/omap1.c
+> +++ b/hw/arm/omap1.c
+> @@ -30,6 +30,7 @@
+>  #include "hw/arm/soc_dma.h"
+>  #include "sysemu/block-backend.h"
+>  #include "sysemu/blockdev.h"
+> +#include "sysemu/qtest.h"
+>  #include "qemu/range.h"
+>  #include "hw/sysbus.h"
+>  #include "qemu/cutils.h"
+> @@ -3987,12 +3988,11 @@ struct omap_mpu_state_s *omap310_mpu_init(MemoryRegion *system_memory,
+>                                  omap_findclk(s, "dpll3"));
+>  
+>      dinfo = drive_get(IF_SD, 0, 0);
+> -    if (!dinfo) {
+> -        error_report("missing SecureDigital device");
+> -        exit(1);
+> +    if (!dinfo && !qtest_enabled()) {
+> +        warn_report("missing SecureDigital device");
+>      }
+>      s->mmc = omap_mmc_init(0xfffb7800, system_memory,
+> -                           blk_by_legacy_dinfo(dinfo),
+> +                           dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
+>                             qdev_get_gpio_in(s->ih[1], OMAP_INT_OQN),
+>                             &s->drq[OMAP_DMA_MMC_TX],
+>                      omap_findclk(s, "mmc_ck"));
+> diff --git a/hw/arm/omap2.c b/hw/arm/omap2.c
+> index 8066353..b8d0910 100644
+> --- a/hw/arm/omap2.c
+> +++ b/hw/arm/omap2.c
+> @@ -25,6 +25,7 @@
+>  #include "cpu.h"
+>  #include "sysemu/block-backend.h"
+>  #include "sysemu/blockdev.h"
+> +#include "sysemu/qtest.h"
+>  #include "hw/boards.h"
+>  #include "hw/hw.h"
+>  #include "hw/arm/arm.h"
+> @@ -2486,12 +2487,11 @@ struct omap_mpu_state_s *omap2420_mpu_init(MemoryRegion *sysmem,
+>                               s->drq[OMAP24XX_DMA_GPMC]);
+>  
+>      dinfo = drive_get(IF_SD, 0, 0);
+> -    if (!dinfo) {
+> -        error_report("missing SecureDigital device");
+> -        exit(1);
+> +    if (!dinfo && !qtest_enabled()) {
+> +        warn_report("missing SecureDigital device");
+>      }
+>      s->mmc = omap2_mmc_init(omap_l4tao(s->l4, 9),
+> -                    blk_by_legacy_dinfo(dinfo),
+> +                    dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
+>                      qdev_get_gpio_in(s->ih[0], OMAP_INT_24XX_MMC_IRQ),
+>                      &s->drq[OMAP24XX_DMA_MMC1_TX],
+>                      omap_findclk(s, "mmc_fclk"), omap_findclk(s, "mmc_iclk"));
+> diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
+> index 928a043..a2803fd 100644
+> --- a/hw/arm/pxa2xx.c
+> +++ b/hw/arm/pxa2xx.c
+> @@ -21,6 +21,7 @@
+>  #include "chardev/char-fe.h"
+>  #include "sysemu/block-backend.h"
+>  #include "sysemu/blockdev.h"
+> +#include "sysemu/qtest.h"
+>  #include "qemu/cutils.h"
+>  
+>  static struct {
+> @@ -2095,12 +2096,11 @@ PXA2xxState *pxa270_init(MemoryRegion *address_space,
+>      s->gpio = pxa2xx_gpio_init(0x40e00000, s->cpu, s->pic, 121);
+>  
+>      dinfo = drive_get(IF_SD, 0, 0);
+> -    if (!dinfo) {
+> -        error_report("missing SecureDigital device");
+> -        exit(1);
+> +    if (!dinfo && !qtest_enabled()) {
+> +        warn_report("missing SecureDigital device");
+>      }
+>      s->mmc = pxa2xx_mmci_init(address_space, 0x41100000,
+> -                    blk_by_legacy_dinfo(dinfo),
+> +                    dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
+>                      qdev_get_gpio_in(s->pic, PXA2XX_PIC_MMC),
+>                      qdev_get_gpio_in(s->dma, PXA2XX_RX_RQ_MMCI),
+>                      qdev_get_gpio_in(s->dma, PXA2XX_TX_RQ_MMCI));
+> @@ -2220,12 +2220,11 @@ PXA2xxState *pxa255_init(MemoryRegion *address_space, unsigned int sdram_size)
+>      s->gpio = pxa2xx_gpio_init(0x40e00000, s->cpu, s->pic, 85);
+>  
+>      dinfo = drive_get(IF_SD, 0, 0);
+> -    if (!dinfo) {
+> -        error_report("missing SecureDigital device");
+> -        exit(1);
+> +    if (!dinfo && !qtest_enabled()) {
+> +        warn_report("missing SecureDigital device");
+>      }
+>      s->mmc = pxa2xx_mmci_init(address_space, 0x41100000,
+> -                    blk_by_legacy_dinfo(dinfo),
+> +                    dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
+>                      qdev_get_gpio_in(s->pic, PXA2XX_PIC_MMC),
+>                      qdev_get_gpio_in(s->dma, PXA2XX_RX_RQ_MMCI),
+>                      qdev_get_gpio_in(s->dma, PXA2XX_TX_RQ_MMCI));
+> 

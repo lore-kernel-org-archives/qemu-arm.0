@@ -1,102 +1,91 @@
-Received: by 10.28.4.212 with SMTP id 203csp3911328wme;
-        Mon, 23 Apr 2018 07:03:43 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx48ylyrw5OelyfDR92+ESCJ2ty94QIMsFdu57pt8uMhNb387FZZcNv+sTGOHiI9UPC+BARkw
-X-Received: by 10.233.232.197 with SMTP id a188mr22748415qkg.312.1524492223666;
-        Mon, 23 Apr 2018 07:03:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1524492223; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp239223wme;
+        Fri, 4 May 2018 09:53:25 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZqIhoKjgzs56Z8udvoGimJnCsMVB3g+KxtVqbSsThoZBi79PlSOKQqiV/AGgx2tesBrAizf
+X-Received: by 2002:ac8:2c98:: with SMTP id 24-v6mr24592721qtw.420.1525452805377;
+        Fri, 04 May 2018 09:53:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1525452805; cv=none;
         d=google.com; s=arc-20160816;
-        b=aqpc49fOo2j1FA9iU5WOTyEzBOUupzIdY0nVT0Gd1SR6IMz0KKGhW+WMxsE/Cqvsdx
-         jTCoCb+R/9SSMSucFL83ozdLv8aJ91ToOHQg201RDMSrOuhOAMr4EY71iC0iwV8+Vz06
-         jbmmDGOPYs8HoVcy6ofEAHQuFv+Sw+snqYmtvxoXexWiBevoT12aIRMNEc4fVtCUgOr7
-         iqc7uOgsEiUODVSffbEfAox84qj+1eAPu3/jkn5d/0HrUPTkIC1hHQ2EImqRZnDNPv6x
-         uxH6koK8LDEYs34SEu9WSXQ2GID4t9fbLDF20Fx0KaGUYIx+dzZAgldLv0Qp8FvJtGbD
-         7QjA==
+        b=IjVZHsK2kh6DE6usvg1fryZSz4DO0vvW8Vf+zPhX8yYk9W2OMI5JWZD2FSjSV7T94f
+         CzaUu+D/Zk7Y8phoRGgIvQiSy5c19xGvgGAZa+mlNx5wZkQVIHrajneWcgIIxq2SmlTU
+         brvdmMF1guxK1o//Q9NAKcELpFZEMOjHFiNJOOpdZgTLds5rZD57UilAFpQe67kBVCwi
+         vZRX9CamOmBhAU3JqZstUrx7dd5oe8mEHSLqX58hYQ2cMCIRPsF6Mkcp5mbQh5dqih4o
+         C6fJC7xSx6aIJ8zIIW/4gV55fi5fPVKr0Ngs9hXe+wnlNHQ0P0bVWgmnvkpx5ADeYY63
+         HKtg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=Yg8zEX7+j8VpBCyHHuTz5nsrVWrBdQlya0F0FxGIwHc=;
-        b=qTHicAJzUyrWBR5jXQU339tflyZUxl/0GMHvIPaekp/HnfMGdxsb0PT4dIAU9+r8d9
-         8fFovIVqmTN6la/J3wrs5C/SIFgwhfWJ37v4a4peZQl74fwPnHiyPMTsVYeupUEKVrJ9
-         eK8/hgMt5tPD0RKrPKNrXtwd2E5IyIZOYEgzB6IZz4tu6NEiXWXseBVL3J4YP4r3kVXm
-         6qePwXll7iJN38IH7iiQu28BoE7lpmaXvyXHP4+lnGI/1dXZH0ookfkxYFxx3loSnc3s
-         BBHTt8RgY0tQqNkmgcaNySJAFBCuH0SPgLV5+18XlvfqyR6EU3t/QRJLobljJWXEL2x2
-         wy0g==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=yHvEvxZ58sVv+tSNkf8oIHI5+0AxfwFfeo/byG6t0Pw=;
+        b=j0kKlA0W7Lnq9qssIVvH7pMZF1108KEgCGunKCymV9eo0mp5Xs8tKB0YBUDOsYqePk
+         rHSDHp5KK8qaQNpOFVOb3fikc7pGoSdYtPOgwm4iUyLRKZsFlSKmI+Fv0vobRRi2tkxP
+         SETqPS8xIXxJhdZHH7I/7A4qgph0gG4wDxWhJlBoxTdY6P9HyVtqk31v+jZctIrEU0iv
+         c29vZREf0pKfff779gxnb6K9hVFP1bR1ECsQ+2Y7UyU708ycBuFwCkcUd3MoU57b2KMB
+         s9HsFTEqb9OmxfqJ1sUYxaK3DMhvLAfKsmm9PSGDJFhZqoMvJ6d35OxBBD1Pap/oMfR4
+         +ZBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=GGrx8kju;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o21-v6si8668697qtm.123.2018.04.23.07.03.43
+        by mx.google.com with ESMTPS id u5si3321715qkh.146.2018.05.04.09.53.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 23 Apr 2018 07:03:43 -0700 (PDT)
+        Fri, 04 May 2018 09:53:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=GGrx8kju;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49625 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:35481 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fAc4F-00007n-6S
-	for alex.bennee@linaro.org; Mon, 23 Apr 2018 10:03:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56668)
+	id 1fEdxU-00015B-UU
+	for alex.bennee@linaro.org; Fri, 04 May 2018 12:53:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44391)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fAc3z-00005z-EG
-	for qemu-arm@nongnu.org; Mon, 23 Apr 2018 10:03:33 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1fEdxN-000153-CS
+	for qemu-arm@nongnu.org; Fri, 04 May 2018 12:53:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fAc3y-0002jw-Fk
-	for qemu-arm@nongnu.org; Mon, 23 Apr 2018 10:03:27 -0400
-Received: from mail-ot0-x233.google.com ([2607:f8b0:4003:c0f::233]:33104)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fAc3y-0002jJ-8C
-	for qemu-arm@nongnu.org; Mon, 23 Apr 2018 10:03:26 -0400
-Received: by mail-ot0-x233.google.com with SMTP id l22-v6so6777125otj.0
-	for <qemu-arm@nongnu.org>; Mon, 23 Apr 2018 07:03:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=Yg8zEX7+j8VpBCyHHuTz5nsrVWrBdQlya0F0FxGIwHc=;
-	b=GGrx8kjuepouPiJtmJIAdr/bLbBT44tWjNEfCtSim+PjZyedHf7B1xzov+cHOpTpmZ
-	byaX/btJbBdaZ1O0nO3LfcuccAhH/T+1DKKknKQp2c1mn8/BWkIhvL5ls7+ZY3yw67qj
-	ehgxz+/7zhrFuxgCfll4YDdlIE/rJ6i7M2zjI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=Yg8zEX7+j8VpBCyHHuTz5nsrVWrBdQlya0F0FxGIwHc=;
-	b=kfzTH7Fi9gbkwcYJeb9M+NH0Kn9sPs2EHVxpNrM+ko1z4JsEyYtjP6d1wjCHULD3SE
-	c6I58jGwJuzbQmQyp8rkgtzWp8XXLAzNGit2Yno9XNkGQ+06Z1uQ4MZMtHjJNA4AMHfz
-	rh8ZzqRO3ckw5fi3yuUIozd38uAsnnn0tannRNeGFDBoIel0zXNDK7VynHGmcqNKdj51
-	gBxiSzm8KsSQ5GCwU5mcPk9b8sXD/FSQrsDHmnk12txzIWr30/HzVgd2V64xSmyv8jFn
-	CcAJqyAVbEONWsOFzzjb+NWG6nyGi1/30yc8pTs2jaCJYM94viAiDO/is5CxkK2NxwHV
-	uD5g==
-X-Gm-Message-State: ALQs6tBvp6y/jQyGyqKpE8gDdv4OBv0jIkt2nzWJZ3HtoPOMpP3vEUWv
-	qSl2XCT1v+MXM8KFG553HdCQUY6eTozhrC9mLrkunQ==
-X-Received: by 2002:a9d:2842:: with SMTP id
-	h2-v6mr9397754otd.210.1524492204874; 
-	Mon, 23 Apr 2018 07:03:24 -0700 (PDT)
+	(envelope-from <eric.auger@redhat.com>) id 1fEdxI-0007qT-EA
+	for qemu-arm@nongnu.org; Fri, 04 May 2018 12:53:17 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:51352 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1fEdxI-0007pj-8O; Fri, 04 May 2018 12:53:12 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id F2B814025F12;
+	Fri,  4 May 2018 16:53:09 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-57.ams2.redhat.com
+	[10.36.116.57])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 163667C49;
+	Fri,  4 May 2018 16:52:58 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1524665762-31355-1-git-send-email-eric.auger@redhat.com>
+	<CAFEAcA9SyY=1eVdXkHpxyES004T5WAx_h9axDSSo-vk440sfiA@mail.gmail.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <0df11de9-aaa4-0fb4-afc2-f4841bb9006b@redhat.com>
+Date: Fri, 4 May 2018 18:52:57 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Mon, 23 Apr 2018 07:03:04
-	-0700 (PDT)
-In-Reply-To: <677f3faa-24bd-0679-47ae-2dc9bd1c9bda@redhat.com>
-References: <1523518688-26674-1-git-send-email-eric.auger@redhat.com>
-	<1523518688-26674-4-git-send-email-eric.auger@redhat.com>
-	<CAFEAcA84iZV8vUK4DxPpuO6LwUqE=LEoW63qy=FTiF6KHvYhEw@mail.gmail.com>
-	<677f3faa-24bd-0679-47ae-2dc9bd1c9bda@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 23 Apr 2018 15:03:04 +0100
-Message-ID: <CAFEAcA9C2uuvE7MRt+TUnRARytKU5aH62FHf7c6F49KwRV-nFg@mail.gmail.com>
-To: Auger Eric <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::233
-Subject: Re: [Qemu-arm] [PATCH v11 03/17] hw/arm/smmu-common: VMSAv8-64 page
- table walk
+In-Reply-To: <CAFEAcA9SyY=1eVdXkHpxyES004T5WAx_h9axDSSo-vk440sfiA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.6]);
+	Fri, 04 May 2018 16:53:10 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Fri, 04 May 2018 16:53:10 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [PATCH v12 00/17] ARM SMMUv3 Emulation Support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -119,46 +108,36 @@ Cc: Christoffer Dall <cdall@kernel.org>, "Michael S. Tsirkin" <mst@redhat.com>,
 	Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: idD1VYwT/7vC
+X-TUID: cY/4hyHGnRml
 
-On 23 April 2018 at 13:10, Auger Eric <eric.auger@redhat.com> wrote:
-> Hi Peter,
->
-> On 04/16/2018 02:59 PM, Peter Maydell wrote:
->> On 12 April 2018 at 08:37, Eric Auger <eric.auger@redhat.com> wrote:
+Hi Peter,
 
->>> +/**
->>> + * TODO: handle the case where the level resolves less than
->>> + * granule_sz -3 IA bits.
->>> + */
->>> +static inline
->>> +uint64_t iova_level_offset(uint64_t iova, int level, int granule_sz)
->>> +{
->>> +    return (iova >> level_shift(level, granule_sz)) &
->>> +            MAKE_64BIT_MASK(0, granule_sz - 3);
->>> +}
->>> +
->>> +#endif
+On 05/04/2018 06:51 PM, Peter Maydell wrote:
+> On 25 April 2018 at 15:15, Eric Auger <eric.auger@redhat.com> wrote:
+>> This series implements the emulation code for ARM SMMUv3.
 >>
->> When does the TODO case happen, and what goes wrong?
-> Sorry for the delay [back to the office].
->
-> This refers to
-> D4.2 of ARM ARM , Effect of granule size on translation table addressing
-> and indexing/ Reduced IA width.
->
-> "
-> Depending on the configuration and implementation choices, the required
-> input address width for the initial level of lookup might be smaller
-> than the number of address bits that can be resolved at that level"
->
-> For instance with 4k granule and IA limited to 35 bit, we use a 9-bit
-> mask here and initial level 1 offset is based on IA[30, 38] although IA
-> is limited to 35.
+>> SMMUv3 gets instantiated by adding ",iommu=smmuv3" to the virt
+>> machine option.
+>>
+>> Only stage 1 and AArch64 PTW are supported. [1 - 14] bring the core
+>> emulation code. [15, 16] bring optimizations and 17 brings the vhost
+>> integration.
+>>
+>> Important Note:
+>> I added the last 3 patches for consistency but I would be happy
+>> if [1 - 14] could land upstream first, without waiting for the last
+>> 3 patch additional review cycles.
+> 
+> I have applied 1-14 to target-arm.next; haven't looked at 15-17,
+> so I suggest you repost those as their own series once 1-14 are
+> in master.
 
-Hmm. We do get this right for the table walk code in
-target/arm/helper.c, so it would be kind of nice to get it
-right here too.
+Sure.
 
-thanks
--- PMM
+Thanks
+
+Eric
+> 
+> thanks
+> -- PMM
+> 

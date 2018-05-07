@@ -1,69 +1,88 @@
-Received: by 10.28.4.212 with SMTP id 203csp3205225wme;
-        Mon, 7 May 2018 10:02:37 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZocuQTeXhJnoVkxtYI53yLBdtpe1khou9ox0ZZ14UK/HAar56SRcN8ot0tp1ywbv2DVuO5E
-X-Received: by 2002:a0c:b128:: with SMTP id q37-v6mr18605737qvc.19.1525712557783;
-        Mon, 07 May 2018 10:02:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1525712557; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp3214493wme;
+        Mon, 7 May 2018 10:10:58 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZodz2KmCptFzg1/GjAXtO0I65BbGL5Oepry45Rcz4mXAFBSE8EAnIY+f93D+oKc80YXMjkW
+X-Received: by 2002:aed:2805:: with SMTP id r5-v6mr35114403qtd.28.1525713058745;
+        Mon, 07 May 2018 10:10:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1525713058; cv=none;
         d=google.com; s=arc-20160816;
-        b=SXuEAqFaDaYKa7whBQN4UA9kSJJRGDwHiujfvYsew817LNmeb5M8LAvtsfIeOG6VOj
-         6Daiz/GeAbxShMSvbiY0kLwvEkgkEC/lecD6CdFwTFU4tb79jOZJsGJi2bUHMKRgzWkb
-         L5VCDWH7TcjI5UgY3Ge5ktJVvWPd82Wg9gEo7RoUXy+R0T/h01Rv3lnkwlYIfHP4Z4nB
-         8nNhyYnL8qNhTX65rWVm0f94IhEVYj3Nn8UbehIyb4gHxiQAEObKjcP+BfQi9EyBMLuB
-         S8wDXeQL8mQG6Y8sD1mQp0Bt1tjNxjD10Ys0cQdoeHIij0Wv1/aS/b+sYGR+os5hES6o
-         XthQ==
+        b=Z9PbX6KoAZKJkXk/wzwRULoIruIskx7HTMlnYwgJZ5IHsvscvsJosDXaNLzBLMpQUh
+         uhWPgFXrWPyIzg+kTWp3oNDsyinFyQxffODMe9IwcG68kriy8jvpYm5JkYF09FnVDFCB
+         XRD64yCBm+w0OvnKmwb7akuCeFnhdTjl6sV4EtXSlp2UYmkdz/fyrtxcn39Ej5nawSje
+         EaNfdD5ZMdz3FDIntId+rmlTZ8M1QvvmR1XNugjo8jbCvRWy3xRRNfOLAL5iG1xdLRW1
+         2vwzYDmqCWQUstIdqNzrYroloTEMWGJgr3QFwF5nEpCKZ1NVbgwBWzcC6xdEHaBSqpIW
+         gKjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=40ESzXRnNDOutVPeN3gS3bgekwU5bhtk8OFvh7KnsXM=;
-        b=yz6ro4hf8pupkFUULTbg7ETs0TI0O7xx/Tjnh/m/VqfiYIR9wfSAi8KqyGBLh41iu7
-         26tq4zF4XPgvnitI/8ImyzPD7+Z1M1YmoRTtV2oVfUHYHA26cZm0CGDCwjWK55eNp9d1
-         9dxYCRoKatbNKMdFhk3uGhdyNSXNs7yoTTditq7hsEMw4UBCPRCO5GFBqAa4f8iB8VBR
-         GvSYB1KX+YzQ2lbFG+/u4G6PU72or1hr6W7h6u6Ukyw1yT621mGZ/RC1x/ehZvjKp/yy
-         hhI3Vphdx+Rtk803ufMTRVjkCklkCbqoWlIetjQuf++zAp4Nfn2TFcmNgU228mvcwHCo
-         p6qQ==
+        bh=oybINZFk3mG+PEj6kJthBrcOfGuYFa+3wgsvhXZVRP0=;
+        b=ImEp3N79bv0at2aMtEpGo42uKX137XUEdEDcvwzlpnABZ+j/wzSY6Qm1ln7jbBZ7aw
+         u6GW2gBkxTwQ3riX6/3m5eOw5rseZ+qKOCgMsKyOCmxTNN6j097dJEixh9cRIDW2Q032
+         o8mKdfG3D3J7P/upHAON4q8lFzED7KvdrVWkK1LX2/Zzgi6Y4tXZANJFx6QCvm026KM5
+         bMIoZFHw6T5rc7bR+ZEzJTllROehjJhY7k49FhKmlfNCgpagdUTTan4svvSMe8Jk00l3
+         IldvxbN/iK4N3r47x2Fmibg41suZi/+YRd2uOpaPAhSCTTcCeRZu0CPbXH/lekPLQPt0
+         NGRA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=a+SjNXxX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z7-v6si5036833qvc.143.2018.05.07.10.02.37
+        by mx.google.com with ESMTPS id y44-v6si3233896qth.51.2018.05.07.10.10.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 07 May 2018 10:02:37 -0700 (PDT)
+        Mon, 07 May 2018 10:10:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=a+SjNXxX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47232 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:47276 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fFjX3-0005d1-Ae
-	for alex.bennee@linaro.org; Mon, 07 May 2018 13:02:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37921)
+	id 1fFjf8-0003s9-80
+	for alex.bennee@linaro.org; Mon, 07 May 2018 13:10:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38809)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fFjWn-0005bB-HN
-	for qemu-arm@nongnu.org; Mon, 07 May 2018 13:02:22 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fFjYk-000758-QC
+	for qemu-arm@nongnu.org; Mon, 07 May 2018 13:04:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fFjWk-0006LS-Fo
-	for qemu-arm@nongnu.org; Mon, 07 May 2018 13:02:21 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:43104 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fFjWk-0006LM-BI; Mon, 07 May 2018 13:02:18 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D8831814DF4C;
-	Mon,  7 May 2018 17:02:17 +0000 (UTC)
-Received: from [10.36.116.61] (ovpn-116-61.ams2.redhat.com [10.36.116.61])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 66257215CDA7;
-	Mon,  7 May 2018 17:02:16 +0000 (UTC)
-To: Markus Armbruster <armbru@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1fFjYk-0008AM-1w
+	for qemu-arm@nongnu.org; Mon, 07 May 2018 13:04:22 -0400
+Received: from mail-oi0-x22e.google.com ([2607:f8b0:4003:c06::22e]:47042)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fFjYj-00089d-U4
+	for qemu-arm@nongnu.org; Mon, 07 May 2018 13:04:22 -0400
+Received: by mail-oi0-x22e.google.com with SMTP id y15-v6so25802097oia.13
+	for <qemu-arm@nongnu.org>; Mon, 07 May 2018 10:04:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=oybINZFk3mG+PEj6kJthBrcOfGuYFa+3wgsvhXZVRP0=;
+	b=a+SjNXxX3+9owmM9V2rbc72SawQB28pI7hhtbg+QKcBRoigg9lT3CX1QWrUHwMVLSQ
+	qA5SCOC3PqtDTA1W5oVjowchztntc7WtLRHIJxAb+gmBFIApbSL0qvyrQlge3/PFWFi1
+	Q5J8NiosJcjIJejIspzm5L/J6qW4YxAQxsu3o=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=oybINZFk3mG+PEj6kJthBrcOfGuYFa+3wgsvhXZVRP0=;
+	b=MkiZsubBxSU+30O+ptigL7sTl+seiJvbaombNHleWyMdtjoC++DWLVlCqwLmFRvKo9
+	ON6sTaXJBDrK8i0azc2oJ8Xgc/0ygtH9ifuG+mK16LOewZm7CbhY3la9AwRI5Q0CD2v8
+	iV1vsP6OKWZhLHJ00aeSnQUa5yAYpbhwPfwX1Fv59sP2KoSBVwscXuHyTcvH1MCEPXlB
+	bJY6J4/Xt2hHNyJ3S32lxgqoQoHKR4chBRRYQkbtf+DNPBQi558I1/HdeiaGsYNSAwaD
+	7oT4OF012bulGFlG7vcBWZwsLTjE45hkLPB96hFAXEpLPve+cVHnUCi+5R1bVzpJegQ5
+	jFmQ==
+X-Gm-Message-State: ALQs6tCsuqpDHUUMJa87bhGZf8f3cn7xu5LQPoYySDfa4gPe0AySkx22
+	FG790b3Mh012a0pdkVg8WJwU7Cxxngi4SrULBM694g==
+X-Received: by 2002:aca:b855:: with SMTP id
+	i82-v6mr24308115oif.12.1525712661175; 
+	Mon, 07 May 2018 10:04:21 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP;
+	Mon, 7 May 2018 10:04:00 -0700 (PDT)
+In-Reply-To: <87h8njtnok.fsf@dusky.pond.sub.org>
 References: <1521452376-25099-1-git-send-email-thuth@redhat.com>
 	<87bme62nu0.fsf@dusky.pond.sub.org>
 	<068649bc-1546-6fc5-3e41-63512196cbf8@redhat.com>
@@ -71,27 +90,14 @@ References: <1521452376-25099-1-git-send-email-thuth@redhat.com>
 	<87o9i5uplt.fsf@dusky.pond.sub.org>
 	<20180507135330.GS25013@localhost.localdomain>
 	<87h8njtnok.fsf@dusky.pond.sub.org>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <4d960efd-e31b-efdd-35d8-ec9e27cb3f9e@redhat.com>
-Date: Mon, 7 May 2018 19:02:14 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
-MIME-Version: 1.0
-In-Reply-To: <87h8njtnok.fsf@dusky.pond.sub.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Mon, 07 May 2018 17:02:17 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Mon, 07 May 2018 17:02:17 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 7 May 2018 18:04:00 +0100
+Message-ID: <CAFEAcA_Hmrr4v3HW17WyCFz=dmfLMqZCyu4fGpFqcsfocUKetQ@mail.gmail.com>
+To: Markus Armbruster <armbru@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::22e
 Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH] tests/device-introspect:
  Test devices with all machines, not only with "none"
 X-BeenThere: qemu-arm@nongnu.org
@@ -105,97 +111,31 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+	qemu-arm <qemu-arm@nongnu.org>, qemu-ppc <qemu-ppc@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zeVjAgC9Rgo9
+X-TUID: oNhVB+GbE2OV
 
-On 07.05.2018 18:50, Markus Armbruster wrote:
-> Eduardo Habkost <ehabkost@redhat.com> writes:
->=20
->> On Fri, Apr 27, 2018 at 08:31:58AM +0200, Markus Armbruster wrote:
->>> Eduardo Habkost <ehabkost@redhat.com> writes:
->>>
->>>> On Thu, Apr 26, 2018 at 05:20:25PM +0200, Thomas Huth wrote:
->>>>> On 26.04.2018 13:45, Markus Armbruster wrote:
->>>>>> Thomas Huth <thuth@redhat.com> writes:
->>>>> [...]
->>>>>>> @@ -260,6 +263,26 @@ static void test_abstract_interfaces(void)
->>>>>>>      qtest_end();
->>>>>>>  }
->>>>>>> =20
->>>>>>> +static void add_machine_test_case(const char *mname)
->>>>>>> +{
->>>>>>> +    char *path, *args;
->>>>>>> +
->>>>>>> +    /* Ignore blacklisted machines */
->>>>>>> +    if (g_str_equal("xenfv", mname) || g_str_equal("xenpv", mnam=
-e)) {
->>>>>>> +        return;
->>>>>>> +    }
->>>>>>> +
->>>>>>> +    path =3D g_strdup_printf("device/introspect/concrete-default=
-s-%s", mname);
->>>>>>> +    args =3D g_strdup_printf("-machine %s", mname);
->>>>>>> +    qtest_add_data_func(path, args, test_device_intro_concrete);
->>>>>>
->>>>>> This runs test_device_intro_concrete() with "-machine M" for all m=
-achine
->>>>>> types M, in SPEED=3Dslow mode.
->>>>>>
->>>>>>> +    g_free(path);
->>>>>>> +
->>>>>>> +    path =3D g_strdup_printf("device/introspect/concrete-nodefau=
-lts-%s", mname);
->>>>>>> +    args =3D g_strdup_printf("-nodefaults -machine %s", mname);
->>>>>>> +    qtest_add_data_func(path, args, test_device_intro_concrete);
->>>>>>
->>>>>> This runs test_device_intro_concrete() with "-nodefaults -machine =
-M" for
->>>>>> all machine types M, in SPEED=3Dslow mode.
->>>>>>
->>>>>> Has "without -nodefaults" exposed additional bugs?
->>>>>
->>>>> After testing this with all machines, I had to discover that
->>>>> "-nodefaults" does not work so easily: A lot of the embedded machin=
-es
->>>>> (especially the ARM machines) simply refuse to work with "-nodefaul=
-ts"
->>>>> and exit immediately instead. E.g.:
->>>>>
->>>>> $ arm-softmmu/qemu-system-arm -nodefaults -nographic -M n810,accel=3D=
-qtest
->>>>> qemu-system-arm: missing SecureDigital device
->>>
->>> These are all bugs.  --nodefaults is supposed to suppress *optional*
->>> devices, not mandatory ones.
->>
->> I'm not sure I understand the requirements.  What exactly is the
->> definition of "mandatory"?
->>
->> A machine created by "qemu-system-x86_64 -machine pc -nodefaults"
->> is useless because it has no any device to boot from.  How is
->> that different from a n810 machine not booting because there's no
->> SD device?
->=20
+On 7 May 2018 at 17:50, Markus Armbruster <armbru@redhat.com> wrote:
 > I propose:
->=20
-> * Stuff that's required for QEMU to run is not suppressed by -nodefault=
-s
->=20
+>
+> * Stuff that's required for QEMU to run is not suppressed by -nodefaults
+>
 > * Stuff that a real machine has soldered on is also not suppressed
->=20
-> * Stuff that can be pulled out of a real machine may be suppressed, eve=
-n
+>
+> * Stuff that can be pulled out of a real machine may be suppressed, even
 >   when that means the guest won't run
->=20
+>
 > Does that make some sense?
 
-Makes sense. On a real machine, you could likely also remove the SD card
-and load a kernel by other means, e.g. with a JTAG debug connector. So
-it makes sense that you could also start the machine in QEMU without SD
-card and load a kernel e.g. with the gdb stub instead.
+We might also want
+ * Stuff that you can't add back in with an appropriate command line
+   argument is not suppressed
 
- Thomas
+though we might optimistically hope that the category is empty :-)
+
+thanks
+-- PMM

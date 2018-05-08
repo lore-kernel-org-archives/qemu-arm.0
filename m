@@ -1,185 +1,312 @@
-Received: by 10.28.4.212 with SMTP id 203csp4286300wme;
-        Tue, 8 May 2018 08:13:06 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZpA+xRsM/oUtV1U8+it9eoFKOISCVgwwKxjSRC9QAQ+Q6BdffsJ3n5rPzYyortY1iSS7UHF
-X-Received: by 2002:a0c:f513:: with SMTP id j19-v6mr118229qvm.84.1525792386819;
-        Tue, 08 May 2018 08:13:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1525792386; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp4380921wme;
+        Tue, 8 May 2018 09:40:59 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZpNyr+T8bSK8HObmfSr449vTsn+nX5rRmQVDDwoAcYt2f0KjVyWfHJPmYdRa7jzQeCuF/e+
+X-Received: by 2002:a0c:ba12:: with SMTP id w18-v6mr21617309qvf.114.1525797659476;
+        Tue, 08 May 2018 09:40:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1525797659; cv=none;
         d=google.com; s=arc-20160816;
-        b=0CG4ir9cuc5rbgXiLtP/2ePe3e/qYR2+qn8EA6YoWXZ/QgyX5K8vupPjFp42klr04i
-         G50/VAt4rafCuHAc1LEPv7ECz/ZszIeRdUOESvHyNRqMC6/0NdEq8jnDO1SADn0FQetS
-         2hhdlZe3F3F1QPQiCk+e/LI+iit7Uh01i6nIpmzEBHuIju4UKGzyPYmR3cT9jGEe+7J0
-         k2eo04Ktk+kmZNDo6M2FVF1QUDGAbAQJQLTSxgc+yj7v8fK+uE2oyP5DZF+PSeUsltky
-         sf5cLX5QRPWn4xBlF4JMy54F2XwwwKoyRUTXv71L1wa5K68/aMho3rH7JRIluu2JyEps
-         0Bzg==
+        b=JjCo5pqCCst3tzQS3Llub205MAWrq/XbDVrzKdunYDzzf/fFsLLn/0NOWh8NxY5jF8
+         atzik00+mc5DqOn1a5UEHswotbDbF1xKuU5TiNapl40YJkYsji+ow1MecjyTMHgDXnK0
+         jxFHK8dEPgc95ZCn3XrMus9wjmnXvHaJdYTALSxuhaZHk+nohwrXZMVf7maebzOYwCiY
+         iBFLZQPH0+2c2PqUwXwCMuThFZmVTbB+H29tQ2WRFPkQnfHzQ+MvNJwoNqFds3iCB8kW
+         oV+xUgLzUA2j+tMVIPA4EiylGf9KHOR7Dk80ngoyu5fSYfoTBXn5PydBU8vR2gt7Kjp+
+         Qp/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=8MsjvdO7/TSnKav+lO9zd9hVrZKYxN28gXu7dITE7sg=;
-        b=PyBMzMykQkvnkwhznDFgUbf+NrcY7hpoerM3UgxMBe/jEALPeY26b9HzW1t/yQ9d9X
-         HuPVIYCCf5Kac5FfbYAp5Dvsey3EqmjnHEuFKGDUJOMyIyFSGyOijgPkeJVVFi2EYCsa
-         LSWKJ25ABRgHsTVUnxCGb8+x2ykXnsCghBnt/vQCMLXDee/UlqizosD32R7MEk1VzzSC
-         76Wc4+P5kGzP4+SYv+VNIjx0txVKjXtUBPJzH0Bc+y6yC+JmV6r9wj4S46LAC58I5NoL
-         mEi1a/fk3jVPsrbxxy8spi9hTOekY81jAAvgvLrfuzUdGobM82MRvoau5LxZDoCvbySx
-         V5wQ==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :arc-authentication-results;
+        bh=jL+umas4ZjTdHhYjBokB+Dn85ay/04zygpoW5oUI1ok=;
+        b=Cw92Wg2La/WUvnfezrWiWH1/Ba8EFC3St92VeSBzAw4ikqwQcGDAZJEDh/TBoD3yYz
+         bgFzL4nqJs5553LpuNBPZGfHJ8d/HZX0YLNb5Q3NjcLj+ni5NkAfwREJCatL6PRHRpOi
+         R0kwkK0/aV58AoLz3cldlofsJbeOqIcN+VD4dOjmK7FNia/hNPky5xNBxEDyVuqSCesl
+         w+myfuDl/DjSudL9FIrrGFUta64PmpuZhH2QEaKjOSGrBe2L7iGQ+1gornpIs9Iuh2++
+         wEUb5FImbTVhoc8U+f0RhD5+qKB6Z2eQuq1/Jh1ZRgp4Gw2NK/+RjAOsPp7HP1aKYHnM
+         wzcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rcUKLq3W;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o66si1490140qki.77.2018.05.08.08.13.06
+        by mx.google.com with ESMTPS id a82si4972661qka.228.2018.05.08.09.40.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 08 May 2018 08:13:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 08 May 2018 09:40:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rcUKLq3W;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51763 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52348 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fG4Ic-0003x2-7S
-	for alex.bennee@linaro.org; Tue, 08 May 2018 11:13:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57939)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fG5fe-0004uH-Up
+	for alex.bennee@linaro.org; Tue, 08 May 2018 12:40:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57395)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fG4GQ-0002gp-HR
-	for qemu-devel@nongnu.org; Tue, 08 May 2018 11:10:56 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1fG5fU-0004tX-Tw
+	for qemu-arm@nongnu.org; Tue, 08 May 2018 12:40:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fG4GP-000555-Hw
-	for qemu-devel@nongnu.org; Tue, 08 May 2018 11:10:50 -0400
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:33008)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fG4GP-00054c-D5; Tue, 08 May 2018 11:10:49 -0400
-Received: by mail-qk0-x242.google.com with SMTP id c11so1259802qkm.0;
-	Tue, 08 May 2018 08:10:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=8MsjvdO7/TSnKav+lO9zd9hVrZKYxN28gXu7dITE7sg=;
-	b=rcUKLq3WtnNmd4azcTG4r5wDVx+anZgToCi5jBoqhTFaSk/Tu0NQhvETAx0VMwEGCL
-	E9RDXo2pJOhLh0TTZLp4AMc2y0RWkwVyW3r2ZG7BSDbF2f3bIZ2bKviRn1PCQ0vNMhug
-	ZbVYuMK/1aY9ydrRzweJUWs7Sfi4/IsA/k1Iij5UjxtcD/HGPJChaQDeocjZiH8G1NJe
-	vn7D0oFiTXpHU8GC4A4rx6nTYR17JrTsqSOSxY1YjYzs1d6zvKcu989xce0RA8JGQtsO
-	vHfbt+uAsyN4Dppjl+A5uDrAHgg2kkarrED/JVrAhJWeyIu/xHMvdpQMwTwzkfTTEfEb
-	Fisg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=8MsjvdO7/TSnKav+lO9zd9hVrZKYxN28gXu7dITE7sg=;
-	b=fnfq/esqWNAQDR1knhYqL7K6uEa40S9lUHK+x8DrLBsHIqh8B0j6D93x8NgqxfRrRX
-	eZwFI0u0Fc7asF9mFj6yQxwjHuUN68BkVUol4nYxg04CzwRU9KwljRprb/KCYSVD6ysX
-	+zo3WuxJ3iWbl/OKpBE6rcC5l6VIGegubBDisgFGsRsxR3lXGBoxeycT4gAES7u98SFF
-	y02WA8oO9cJRHRPtgw57czeuZdKtwxEun/oKJhoElNKPabHIttzbvJ3nJ9kIjzfmrG8w
-	z85xZPvVLfkwaq4FlsYEgtn44LeOgZv3ApVyvu20u+McnHm3VMYkPcD8PbYUQE/wJQVD
-	uYhg==
-X-Gm-Message-State: ALKqPwf9IFpH/h7OxE7zPRRU+jSwbjk5YIPua6tErW37CytCsS+cheBM
-	Riw8x/+49nG3n2iHEj8GxvM=
-X-Received: by 10.55.125.131 with SMTP id y125mr7808530qkc.60.1525792248946;
-	Tue, 08 May 2018 08:10:48 -0700 (PDT)
-Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	w12-v6sm13305015qtb.80.2018.05.08.08.10.46
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 08 May 2018 08:10:48 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Thomas Huth <thuth@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>
-Date: Tue,  8 May 2018 12:10:34 -0300
-Message-Id: <20180508151035.16774-4-f4bug@amsat.org>
-X-Mailer: git-send-email 2.17.0
-In-Reply-To: <20180508151035.16774-1-f4bug@amsat.org>
-References: <20180508151035.16774-1-f4bug@amsat.org>
+	(envelope-from <ehabkost@redhat.com>) id 1fG5fP-0006bb-PC
+	for qemu-arm@nongnu.org; Tue, 08 May 2018 12:40:48 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39004)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1fG5fP-0006bQ-G6; Tue, 08 May 2018 12:40:43 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7445761B8C;
+	Tue,  8 May 2018 16:40:42 +0000 (UTC)
+Received: from localhost (ovpn-116-33.gru2.redhat.com [10.97.116.33])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D8CD6608F0;
+	Tue,  8 May 2018 16:40:41 +0000 (UTC)
+Date: Tue, 8 May 2018 13:40:40 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Message-ID: <20180508164040.GL25013@localhost.localdomain>
+References: <87bme62nu0.fsf@dusky.pond.sub.org>
+	<068649bc-1546-6fc5-3e41-63512196cbf8@redhat.com>
+	<20180427003215.GU29865@localhost.localdomain>
+	<87o9i5uplt.fsf@dusky.pond.sub.org>
+	<20180507135330.GS25013@localhost.localdomain>
+	<87h8njtnok.fsf@dusky.pond.sub.org>
+	<20180507182126.GC25013@localhost.localdomain>
+	<4bba0be5-a52c-48ad-3df4-4e9be3624dc0@redhat.com>
+	<20180507193220.GF25013@localhost.localdomain>
+	<5837d14a-b562-c382-f95a-32ef12a4e25c@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::242
-Subject: [Qemu-devel] [RFC PATCH 3/4] hw/ssi: Remove SSIBus from
- qemu/typedefs.h
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <5837d14a-b562-c382-f95a-32ef12a4e25c@redhat.com>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.9.2 (2017-12-15)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Tue, 08 May 2018 16:40:42 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] Running QEMU without default devices /
+ kernel / bios (was: Test devices with all machines, not only with "none")
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 43eXEoAvAMbc
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-devel@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ECZqw0XBt2FT
 
-There are only two files requiring this typedef (strongarm.h
-and hw/arm/pxa.h), let them include "hw/pcmcia.h" directly to
-simplify qemu/typedefs.h.
+On Tue, May 08, 2018 at 07:33:46AM +0200, Thomas Huth wrote:
+> On 07.05.2018 21:32, Eduardo Habkost wrote:
+> > On Mon, May 07, 2018 at 09:13:57PM +0200, Thomas Huth wrote:
+> >> On 07.05.2018 20:21, Eduardo Habkost wrote:
+> >>> On Mon, May 07, 2018 at 06:50:35PM +0200, Markus Armbruster wrote:
+> >>>> Eduardo Habkost <ehabkost@redhat.com> writes:
+> >>>>
+> >>>>> On Fri, Apr 27, 2018 at 08:31:58AM +0200, Markus Armbruster wrote:
+> >>>>>> Eduardo Habkost <ehabkost@redhat.com> writes:
+> >>>>>>
+> >>>>>>> On Thu, Apr 26, 2018 at 05:20:25PM +0200, Thomas Huth wrote:
+> >>>>>>>> On 26.04.2018 13:45, Markus Armbruster wrote:
+> >>>>>>>>> Thomas Huth <thuth@redhat.com> writes:
+> >>>>>>>> [...]
+> >>>>>>>>>> @@ -260,6 +263,26 @@ static void test_abstract_interfaces(void)
+> >>>>>>>>>>      qtest_end();
+> >>>>>>>>>>  }
+> >>>>>>>>>>  
+> >>>>>>>>>> +static void add_machine_test_case(const char *mname)
+> >>>>>>>>>> +{
+> >>>>>>>>>> +    char *path, *args;
+> >>>>>>>>>> +
+> >>>>>>>>>> +    /* Ignore blacklisted machines */
+> >>>>>>>>>> +    if (g_str_equal("xenfv", mname) || g_str_equal("xenpv", mname)) {
+> >>>>>>>>>> +        return;
+> >>>>>>>>>> +    }
+> >>>>>>>>>> +
+> >>>>>>>>>> +    path = g_strdup_printf("device/introspect/concrete-defaults-%s", mname);
+> >>>>>>>>>> +    args = g_strdup_printf("-machine %s", mname);
+> >>>>>>>>>> +    qtest_add_data_func(path, args, test_device_intro_concrete);
+> >>>>>>>>>
+> >>>>>>>>> This runs test_device_intro_concrete() with "-machine M" for all machine
+> >>>>>>>>> types M, in SPEED=slow mode.
+> >>>>>>>>>
+> >>>>>>>>>> +    g_free(path);
+> >>>>>>>>>> +
+> >>>>>>>>>> +    path = g_strdup_printf("device/introspect/concrete-nodefaults-%s", mname);
+> >>>>>>>>>> +    args = g_strdup_printf("-nodefaults -machine %s", mname);
+> >>>>>>>>>> +    qtest_add_data_func(path, args, test_device_intro_concrete);
+> >>>>>>>>>
+> >>>>>>>>> This runs test_device_intro_concrete() with "-nodefaults -machine M" for
+> >>>>>>>>> all machine types M, in SPEED=slow mode.
+> >>>>>>>>>
+> >>>>>>>>> Has "without -nodefaults" exposed additional bugs?
+> >>>>>>>>
+> >>>>>>>> After testing this with all machines, I had to discover that
+> >>>>>>>> "-nodefaults" does not work so easily: A lot of the embedded machines
+> >>>>>>>> (especially the ARM machines) simply refuse to work with "-nodefaults"
+> >>>>>>>> and exit immediately instead. E.g.:
+> >>>>>>>>
+> >>>>>>>> $ arm-softmmu/qemu-system-arm -nodefaults -nographic -M n810,accel=qtest
+> >>>>>>>> qemu-system-arm: missing SecureDigital device
+> >>>>>>
+> >>>>>> These are all bugs.  --nodefaults is supposed to suppress *optional*
+> >>>>>> devices, not mandatory ones.
+> >>>>>
+> >>>>> I'm not sure I understand the requirements.  What exactly is the
+> >>>>> definition of "mandatory"?
+> >>>>>
+> >>>>> A machine created by "qemu-system-x86_64 -machine pc -nodefaults"
+> >>>>> is useless because it has no any device to boot from.  How is
+> >>>>> that different from a n810 machine not booting because there's no
+> >>>>> SD device?
+> >>>>
+> >>>> I propose:
+> >>>>
+> >>>> * Stuff that's required for QEMU to run is not suppressed by -nodefaults
+> >>>>
+> >>>> * Stuff that a real machine has soldered on is also not suppressed
+> >>>>
+> >>>> * Stuff that can be pulled out of a real machine may be suppressed, even
+> >>>>   when that means the guest won't run
+> >>>
+> >>> Makes sense to me.  It looks like the only obstacle for
+> >>> tests/device-introspect and device-crash-test is the first rule.
+> >>> "Guest won't boot" isn't a problem, but "QEMU won't run" is.
+> >>>
+> >>> The first rule is easily testable, too: running
+> >>> "$QEMU -machine $MACHINE -nodefaults" and not having a working
+> >>> QMP monitor should be reported as a bug by automated tests.
+> >>
+> >> You mean with "-accel qtest" or without? With "-accel qtest" we should
+> >> pretty soon be fine, after Peter's current PULL request has been merged
+> >> (which contains a patch from me for fixing these SD card problems with
+> >> ARM machines).
+> >> Without "-accel qtest", things are not that easy, unfortunately. Lots of
+> >> boards require "-kernel" or "-bios" and refuse to work without. So you
+> >> can hardly test "-nodefaults" automatically in the normal tcg mode. (But
+> >> maybe all boards should allow to start QEMU in case you've at least also
+> >> specified "-S" ? ... in that case we've got plenty of work for
+> >> BiteSizeTasks ;-) )
+> > 
+> > Hmm, maybe it's not a bite-sized task after all.  :)
+> > 
+> > Should we do this gradually?
+> > 
+> > * Working with -accel qtest is useful, and sounds like an easier goal;
+> 
+> We're pretty much there already. Apart from the SD card problem (and the
+> xen boards), all machines should work with -nodefaults in qtest mode now.
+> 
+> > * working with -S seems desirable too;
+> 
+> Yes, it could be interesting to load the firmware / OS via HMP or GDB
+> after QEMU has been started.
+> 
+> Maybe we'd simply need a new function a la:
+> 
+> bool cpu_starts_automatically()
+> {
+>     return autostart && !qtest_enabled();
+> }
+> 
+> And then replace all spots where we exit due to missing -kernel or -bios
+> parameters, e.g.:
+> 
+> diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
+> --- a/hw/m68k/mcf5208.c
+> +++ b/hw/m68k/mcf5208.c
+> @@ -286,7 +286,7 @@ static void mcf5208evb_init(MachineState *machine)
+> 
+>      /* Load kernel.  */
+>      if (!kernel_filename) {
+> -        if (qtest_enabled()) {
+> +        if (!cpu_starts_automatically()) {
+>              return;
+>          }
+>          error_report("Kernel image must be specified");
+> 
+> Does that sound like a plan?
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/arm/strongarm.h      | 1 +
- include/hw/arm/pxa.h    | 1 +
- include/hw/ssi/ssi.h    | 1 +
- include/qemu/typedefs.h | 1 -
- 4 files changed, 3 insertions(+), 1 deletion(-)
+Not sure.  If a given command-line fails without -S, I would
+expect it to also fail if using -S and the "cont" monitor command
+is issued.  (But not necessarily if "-S" is used and "cont" is
+never issued.)
 
-diff --git a/hw/arm/strongarm.h b/hw/arm/strongarm.h
-index e98840b461..ae51a1ae34 100644
---- a/hw/arm/strongarm.h
-+++ b/hw/arm/strongarm.h
-@@ -3,6 +3,7 @@
- 
- #include "exec/memory.h"
- #include "target/arm/cpu-qom.h"
-+#include "hw/ssi/ssi.h"
- 
- #define SA_CS0          0x00000000
- #define SA_CS1          0x08000000
-diff --git a/include/hw/arm/pxa.h b/include/hw/arm/pxa.h
-index f6dfb5c0cf..f184349f02 100644
---- a/include/hw/arm/pxa.h
-+++ b/include/hw/arm/pxa.h
-@@ -13,6 +13,7 @@
- #include "exec/memory.h"
- #include "target/arm/cpu-qom.h"
- #include "hw/pcmcia.h"
-+#include "hw/ssi/ssi.h"
- 
- /* Interrupt numbers */
- # define PXA2XX_PIC_SSP3	0
-diff --git a/include/hw/ssi/ssi.h b/include/hw/ssi/ssi.h
-index 6a0c3c3cdb..bdbf3c51f5 100644
---- a/include/hw/ssi/ssi.h
-+++ b/include/hw/ssi/ssi.h
-@@ -13,6 +13,7 @@
- 
- #include "hw/qdev.h"
- 
-+typedef struct SSIBus SSIBus;
- typedef struct SSISlave SSISlave;
- typedef struct SSISlaveClass SSISlaveClass;
- typedef enum SSICSMode SSICSMode;
-diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
-index c7a0159bd2..b4dc63a466 100644
---- a/include/qemu/typedefs.h
-+++ b/include/qemu/typedefs.h
-@@ -106,7 +106,6 @@ typedef struct Range Range;
- typedef struct SerialState SerialState;
- typedef struct SHPCDevice SHPCDevice;
- typedef struct SMBusDevice SMBusDevice;
--typedef struct SSIBus SSIBus;
- typedef struct uWireSlave uWireSlave;
- typedef struct VirtIODevice VirtIODevice;
- typedef struct Visitor Visitor;
+> 
+> > * working without -S (even if the emulated CPU crashes and burns)
+> >   would be interesting.
+> 
+> Not sure whether we really need this. It's likely better to give the
+> user a proper error message to use "-kernel" instead of just showing a
+> crash.
+
+I think I agree.
+
+> 
+> > Related question: what are the use cases where we require
+> > "-accel qtest" and "-S" wouldn't work?
+> 
+> Maybe there are some boards where you can not load code via HMP or GDB
+> once you've started QEMU with "-S"? You'd end up with a mostly useless
+> HMP prompt in that case, which is a little bit ugly, but not fatal.
+
+You have a point.  I guess the definition of "useless" here
+depend on what are the use cases we want to address with -S: are
+there reasonable use cases for using -S and never issuing "cont"?
+
+Would it be OK if we reported errors like "kernel image must be
+specified"  only when/if "cont" is issued?
+
+
+> Apart from that ... I can't think of a case where "-S" would not work at
+> all once we've introduce something like cpu_starts_automatically().
+
+I'm being convinced that "-accel qtest" and "-S" are not expected
+to be equivalent, so my main priority right now is to document
+what are the differences.
+
+
+> 
+> > Are the requirements and goals of "-accel qtest" documented
+> > somewhere?  Without documentation, it's hard to say when a given
+> > qtest_enabled() call in the code is reasonable, or a hack we want
+> > to get rid of.
+> 
+> There's some few documentation in docs/devel/testing.rst and
+> https://wiki.qemu.org/Features/QTest - but the quintessence is that
+> qtest basically rips out the CPU of the emulated machine and replaces it
+> with the qtest stub. So in this case there is no CPU that can run code
+> automatically. Thus I think if we abstract this with a function a la
+> cpu_starts_automatically(), we should be fine.
+
+If ripping out the CPU is the only purpose of "-accel qtest",
+then it sounds equivalent to -S.  But I have the impression that
+this is not its only purpose.
+
+
+I'm reaching two conclusions from this thread:
+
+1) "-accel qtest" has additional purposes other than the "don't
+   run any guest code".  We need to document them clearly,
+   and it probably can't be replaced by -S directly.
+
+2) It would be nice if we allowed the "cont" command to report
+   errors.  This would allow us to report things that prevent a
+   VM from running through QMP instead of stderr.  I have
+   considered using that to report "host doesn't support CPU
+   feature" errors in the past.
+
 -- 
-2.17.0
-
+Eduardo

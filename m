@@ -1,102 +1,107 @@
-Received: by 10.28.4.212 with SMTP id 203csp4007407wme;
-        Tue, 8 May 2018 03:47:59 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZq1XWWZ3E9AIvHC7YPEcz4AxjwWl5wPvXFJBd+RLH2vLHyKnUO3+SH+HjOuNItou33BsCKb
-X-Received: by 2002:a0c:ac83:: with SMTP id m3-v6mr21562656qvc.12.1525776479853;
-        Tue, 08 May 2018 03:47:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1525776479; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp4085378wme;
+        Tue, 8 May 2018 05:09:07 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZoWSUiueRukLNHdoTlx/UcIlNBE1ya6o6Ei2oAkLkoWVXiQNUe/CyfMg3Qtgh5ybqDJfmBg
+X-Received: by 2002:ac8:364d:: with SMTP id n13-v6mr35002026qtb.174.1525781347283;
+        Tue, 08 May 2018 05:09:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1525781347; cv=none;
         d=google.com; s=arc-20160816;
-        b=naV7N60oYkBKC78rBAu5w+rIxbowIZQ/G3uB8Nb7Nd6YQweRImxEju4OBpWJaUhmPp
-         6LWOyTgiloVFrUQg3AhkcLdmdxcpM81iFQxWHcAX+jHHKZ3i60mqaXYJmTkvNNBKCvTL
-         U5MyS5zfXZBuCEjt/cQIaWKpbAPNbmd0mjOGNxxzOrOPEfy6/nbjviYRBdaDgvYmxEIy
-         AG6l2LVTsqq8rdmRcx3wVOA+WfAEm1VWwDfM7h3YNaWIBb4prkI92olKUWDe7+lAWw68
-         CZsLsK+AbCfTRYA9yNO89Po9FlCtyAHneAUuuXd7MoHGjCHShIda2HLClSpb4iG5oQEf
-         2XCw==
+        b=ekXwwQ+FqwMwuxbPrWl3nw2zWxoe58ZLE9azKlRbB5XhxzwgH3i807chjuFHPQ2WNS
+         yx0AFRlu3yv+wpteUXeR4LWEA95u5U4nD2Kgo8jYWX0t/ZGDlVS7ef7hY45d8MCyNf9N
+         0eZMfjcKVMln5cdxTt+/5loY5hGv4rLWj1VAOcw/c2VXD5+0KX46ZSaHuy6Zb+1HQVAH
+         oCdjRQIDhODMgj4flSQU7F764TLF7jd05CmWG37bVRL2WglUrQMdrmzq/ZQNA+TWtSfP
+         Wpi72R5gV/FaL1p/traF4XIEZKmMpZEXFg93tZ0XO5b6AtQItD9nPf0+lBJNYKzco9Ym
+         y9CA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:references:to:from
-         :arc-authentication-results;
-        bh=0PcFgweqAp5llcjlMvoOgxTp6/QDZ6iEixeczbAk1yw=;
-        b=QozbAf5GeU7G92hg+SyujCib1pCC/mtJZYkx4c9JD7TiI3e6qXEvr+owFtUWwgIepR
-         lRzXJjyXqPAKNeQpJ1KJ5Z5RmKaQQp9BFXCnHqybimytJW3wiypZcD4zhX7LLgMYsgkF
-         LxAVo2cg0YtHr48LR1wmPF0exm3lM9iJSDQwSQ1JvJZgT4/5xf1Q95Qyg+Co8ta7ITJB
-         BEuZ8EhQ+53/AecSZl2L939MSewSrULEDeMWb9nTJ2xxYXKuYTYhhOhgowYiq/elz2aj
-         M2/6qvzA/OV4WyFLSDKrOtt+H+6kfQ0FA5z+wuUxVzpD03jXZ8WnJZ2vltOj1J0J7AHT
-         7p1w==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature:arc-authentication-results;
+        bh=JlesEEkl2apF0Vgehu4sGXp5PvKuQlJUnNfMhYlLPbA=;
+        b=XfIYgiQziO2ecVqc6qBOdie8iioYFdkCPVOiKE8+YpDup6fynKYN2rhZiYLh/LghVP
+         Ltb3o3gfUGdZzGqDbxE9Fz0QJjfX0tzzHBu8zg2G1EObXNRcfT3nF3v/6BkS3BrW51Ej
+         xtvzw34AxaJe6YqBxGHqv6bQTcXgciW8QlSaE9rosFpfEni4cOHletdSO/i2rKjwBn+6
+         PB48OOy5KSJpf4iJ7XBNNA/JmNqlykGbhWEh/fdsiFnJmm3OUFHWmrZ9GRXl2H2RpafX
+         9lRq7QW69hXBvJ2S/uj5vBICWJ0cbQ43xQy6aP9GcFzz9lG68bdyfUG9F7PyCus1iV7Y
+         EVDA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cOe5lyGZ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f58-v6si1730663qta.307.2018.05.08.03.47.59
+        by mx.google.com with ESMTPS id w26-v6si815706qto.58.2018.05.08.05.09.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 08 May 2018 03:47:59 -0700 (PDT)
+        Tue, 08 May 2018 05:09:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cOe5lyGZ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50332 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:50839 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fG0A3-0007XT-CF
-	for alex.bennee@linaro.org; Tue, 08 May 2018 06:47:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43651)
+	id 1fG1QY-00069t-In
+	for alex.bennee@linaro.org; Tue, 08 May 2018 08:09:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35300)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fG09Z-0007WF-FZ
-	for qemu-devel@nongnu.org; Tue, 08 May 2018 06:47:32 -0400
+	(envelope-from <stefanha@gmail.com>) id 1fG1QJ-00069n-4R
+	for qemu-devel@nongnu.org; Tue, 08 May 2018 08:08:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fG09W-000594-Ag
-	for qemu-devel@nongnu.org; Tue, 08 May 2018 06:47:29 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:48276 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fG09T-00055r-BM; Tue, 08 May 2018 06:47:23 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C9429406E8A4;
-	Tue,  8 May 2018 10:47:22 +0000 (UTC)
-Received: from [10.36.116.77] (ovpn-116-77.ams2.redhat.com [10.36.116.77])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 42CD6202342D;
-	Tue,  8 May 2018 10:47:21 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-References: <1521452376-25099-1-git-send-email-thuth@redhat.com>
-	<87bme62nu0.fsf@dusky.pond.sub.org>
-	<068649bc-1546-6fc5-3e41-63512196cbf8@redhat.com>
-	<20180427003215.GU29865@localhost.localdomain>
-	<87o9i5uplt.fsf@dusky.pond.sub.org>
-	<20180507135330.GS25013@localhost.localdomain>
-	<87h8njtnok.fsf@dusky.pond.sub.org>
-	<20180507182126.GC25013@localhost.localdomain>
-	<4bba0be5-a52c-48ad-3df4-4e9be3624dc0@redhat.com>
-	<20180507193220.GF25013@localhost.localdomain>
-	<5837d14a-b562-c382-f95a-32ef12a4e25c@redhat.com>
-Message-ID: <271ae0da-3474-85ab-8378-68fa572dc778@redhat.com>
-Date: Tue, 8 May 2018 12:47:19 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	(envelope-from <stefanha@gmail.com>) id 1fG1QF-0000bN-4t
+	for qemu-devel@nongnu.org; Tue, 08 May 2018 08:08:51 -0400
+Received: from mail-wr0-x241.google.com ([2a00:1450:400c:c0c::241]:34735)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
+	id 1fG1QE-0000bE-TC; Tue, 08 May 2018 08:08:47 -0400
+Received: by mail-wr0-x241.google.com with SMTP id p18-v6so32085412wrm.1;
+	Tue, 08 May 2018 05:08:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=JlesEEkl2apF0Vgehu4sGXp5PvKuQlJUnNfMhYlLPbA=;
+	b=cOe5lyGZqnYlSaOPOHHN8ihDU86b/m2DK6My7KeTe/VK/borxvenx1dHsaSOOfv3i9
+	9X51yX5KOWXVoUaJzpQwk3csjrLHW8Wvk/5MZj0EDvi4Ca0uVgfp58j/fm/4n4HjjVYL
+	bv88BkpTdY76sYvt7VqHQoEVeY/dggJLRthkCF0ima9WmU8CB/SE1XPlphk6oqvekIUc
+	iuVJR8QVnU5NDVoysDK1sx2yNoRb4WQxpLEBAdZvKXJjO5cNhm3liyBKznm43tsiO0wG
+	DJ39emhQw58ibLOQI+l/4iHbEN/8qfi5Mf2JkCR+rzDKOApCs1XZIGq15JXtZP2NkYMm
+	ROdw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=JlesEEkl2apF0Vgehu4sGXp5PvKuQlJUnNfMhYlLPbA=;
+	b=fRVu8nlweU04g4Y5wbWpJduRKYYcDPHr5F9wS98sFb2b5clmLD09yM9QdunYLPq6aH
+	wJ0dnywDYPERmOc050sv9QuaKhI8+kRcmWCuogJVAlBYOo2cUl/z43U8EYyGXR1ra0sS
+	CI4DMwHoONA+sN1kK400SB/hepa1X8ig6fbnUwvL0yZDC8/GrkLaWPvDuUvlGU1QtDVE
+	zL0UYszS8iUK3uRe5siXdZR5eUl3ERCLRUgFCiXfIDHyRyvZ11rGvXM5slhOHW9cRhTZ
+	lo6CEwfxu6iShmGwtlCXdRQ8oPC53VPDpEIBpJZ634BQnYM6m1ieBSGYe0l02W5sGvP6
+	4b0A==
+X-Gm-Message-State: ALQs6tAnOXmiF0Mgc0A5Nsfw/sPOcBm3XVJUfi6rrvsRYnwMzmoRIigE
+	CjGhuQxICxGwbu31pwc+BzM=
+X-Received: by 2002:adf:b11a:: with SMTP id
+	l26-v6mr20911242wra.258.1525781326009; 
+	Tue, 08 May 2018 05:08:46 -0700 (PDT)
+Received: from localhost ([51.15.41.238]) by smtp.gmail.com with ESMTPSA id
+	b57-v6sm39412470wra.9.2018.05.08.05.08.44
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Tue, 08 May 2018 05:08:45 -0700 (PDT)
+Date: Tue, 8 May 2018 13:08:44 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Joel Stanley <joel@jms.id.au>
+Message-ID: <20180508120844.GL19710@stefanha-x1.localdomain>
+References: <20180503090532.3113-1-joel@jms.id.au>
 MIME-Version: 1.0
-In-Reply-To: <5837d14a-b562-c382-f95a-32ef12a4e25c@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Tue, 08 May 2018 10:47:22 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Tue, 08 May 2018 10:47:22 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-devel] Running QEMU without default devices / kernel /
- bios
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="VBq/nvTu32OVLBUP"
+Content-Disposition: inline
+In-Reply-To: <20180503090532.3113-1-joel@jms.id.au>
+User-Agent: Mutt/1.9.2 (2017-12-15)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::241
+Subject: Re: [Qemu-devel] [PATCH 0/2] arm: Add nRF51 SoC and micro:bit
+ machine
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,148 +113,74 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	Jim Mussared <jim.mussared@gmail.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3ZtZ4WAZL2tm
+X-TUID: a1uFAUT5mGSW
 
-On 08.05.2018 07:33, Thomas Huth wrote:
-> On 07.05.2018 21:32, Eduardo Habkost wrote:
->> On Mon, May 07, 2018 at 09:13:57PM +0200, Thomas Huth wrote:
->>> On 07.05.2018 20:21, Eduardo Habkost wrote:
->>>> On Mon, May 07, 2018 at 06:50:35PM +0200, Markus Armbruster wrote:
->>>>> Eduardo Habkost <ehabkost@redhat.com> writes:
->>>>>
->>>>>> On Fri, Apr 27, 2018 at 08:31:58AM +0200, Markus Armbruster wrote:
->>>>>>> Eduardo Habkost <ehabkost@redhat.com> writes:
->>>>>>>
->>>>>>>> On Thu, Apr 26, 2018 at 05:20:25PM +0200, Thomas Huth wrote:
->>>>>>>>> On 26.04.2018 13:45, Markus Armbruster wrote:
->>>>>>>>>> Thomas Huth <thuth@redhat.com> writes:
->>>>>>>>> [...]
->>>>>>>>>>> @@ -260,6 +263,26 @@ static void test_abstract_interfaces(voi=
-d)
->>>>>>>>>>>      qtest_end();
->>>>>>>>>>>  }
->>>>>>>>>>> =20
->>>>>>>>>>> +static void add_machine_test_case(const char *mname)
->>>>>>>>>>> +{
->>>>>>>>>>> +    char *path, *args;
->>>>>>>>>>> +
->>>>>>>>>>> +    /* Ignore blacklisted machines */
->>>>>>>>>>> +    if (g_str_equal("xenfv", mname) || g_str_equal("xenpv", =
-mname)) {
->>>>>>>>>>> +        return;
->>>>>>>>>>> +    }
->>>>>>>>>>> +
->>>>>>>>>>> +    path =3D g_strdup_printf("device/introspect/concrete-def=
-aults-%s", mname);
->>>>>>>>>>> +    args =3D g_strdup_printf("-machine %s", mname);
->>>>>>>>>>> +    qtest_add_data_func(path, args, test_device_intro_concre=
-te);
->>>>>>>>>>
->>>>>>>>>> This runs test_device_intro_concrete() with "-machine M" for a=
-ll machine
->>>>>>>>>> types M, in SPEED=3Dslow mode.
->>>>>>>>>>
->>>>>>>>>>> +    g_free(path);
->>>>>>>>>>> +
->>>>>>>>>>> +    path =3D g_strdup_printf("device/introspect/concrete-nod=
-efaults-%s", mname);
->>>>>>>>>>> +    args =3D g_strdup_printf("-nodefaults -machine %s", mnam=
-e);
->>>>>>>>>>> +    qtest_add_data_func(path, args, test_device_intro_concre=
-te);
->>>>>>>>>>
->>>>>>>>>> This runs test_device_intro_concrete() with "-nodefaults -mach=
-ine M" for
->>>>>>>>>> all machine types M, in SPEED=3Dslow mode.
->>>>>>>>>>
->>>>>>>>>> Has "without -nodefaults" exposed additional bugs?
->>>>>>>>>
->>>>>>>>> After testing this with all machines, I had to discover that
->>>>>>>>> "-nodefaults" does not work so easily: A lot of the embedded ma=
-chines
->>>>>>>>> (especially the ARM machines) simply refuse to work with "-node=
-faults"
->>>>>>>>> and exit immediately instead. E.g.:
->>>>>>>>>
->>>>>>>>> $ arm-softmmu/qemu-system-arm -nodefaults -nographic -M n810,ac=
-cel=3Dqtest
->>>>>>>>> qemu-system-arm: missing SecureDigital device
->>>>>>>
->>>>>>> These are all bugs.  --nodefaults is supposed to suppress *option=
-al*
->>>>>>> devices, not mandatory ones.
->>>>>>
->>>>>> I'm not sure I understand the requirements.  What exactly is the
->>>>>> definition of "mandatory"?
->>>>>>
->>>>>> A machine created by "qemu-system-x86_64 -machine pc -nodefaults"
->>>>>> is useless because it has no any device to boot from.  How is
->>>>>> that different from a n810 machine not booting because there's no
->>>>>> SD device?
->>>>>
->>>>> I propose:
->>>>>
->>>>> * Stuff that's required for QEMU to run is not suppressed by -nodef=
-aults
->>>>>
->>>>> * Stuff that a real machine has soldered on is also not suppressed
->>>>>
->>>>> * Stuff that can be pulled out of a real machine may be suppressed,=
- even
->>>>>   when that means the guest won't run
->>>>
->>>> Makes sense to me.  It looks like the only obstacle for
->>>> tests/device-introspect and device-crash-test is the first rule.
->>>> "Guest won't boot" isn't a problem, but "QEMU won't run" is.
->>>>
->>>> The first rule is easily testable, too: running
->>>> "$QEMU -machine $MACHINE -nodefaults" and not having a working
->>>> QMP monitor should be reported as a bug by automated tests.
->>>
->>> You mean with "-accel qtest" or without? With "-accel qtest" we shoul=
-d
->>> pretty soon be fine, after Peter's current PULL request has been merg=
-ed
->>> (which contains a patch from me for fixing these SD card problems wit=
-h
->>> ARM machines).
->>> Without "-accel qtest", things are not that easy, unfortunately. Lots=
- of
->>> boards require "-kernel" or "-bios" and refuse to work without. So yo=
-u
->>> can hardly test "-nodefaults" automatically in the normal tcg mode. (=
-But
->>> maybe all boards should allow to start QEMU in case you've at least a=
-lso
->>> specified "-S" ? ... in that case we've got plenty of work for
->>> BiteSizeTasks ;-) )
->>
->> Hmm, maybe it's not a bite-sized task after all.  :)
->>
->> Should we do this gradually?
->>
->> * Working with -accel qtest is useful, and sounds like an easier goal;
+
+--VBq/nvTu32OVLBUP
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, May 03, 2018 at 06:35:30PM +0930, Joel Stanley wrote:
+> Hello,
 >=20
-> We're pretty much there already. Apart from the SD card problem (and th=
-e
-> xen boards), all machines should work with -nodefaults in qtest mode no=
-w.
+> This short series implements a minimal definition of the Nordic
+> Semiconductor nRF51, a Cortex-M0 ARM SoC, and the BBC micro:bit, a
+> machine that will use this SoC.
+>=20
+> This work will serve as the base for our Google Summer of Code and
+> Outreachy interns who will work on implementing a number of features on
+> top of this base.
+>=20
+> I've tested this with a microbit micropython firmware, and checked that
+> it starts running by looking at it with gdb.
+>=20
+> I chose to keep the nrf51 and the microbit seperate, to not confuse the
+> peripherals that are on the microbit but are not part of the nrf51, and
+> vice versa.
+>=20
+> Please review!
+>=20
+> Joel Stanley (2):
+>   arm: Add Nordic Semiconductor nRF51 SoC
+>   arm: Add BBC micro:bit machine
+>=20
+>  default-configs/arm-softmmu.mak |   1 +
+>  hw/arm/Makefile.objs            |   1 +
+>  hw/arm/microbit.c               |  33 +++++++++++
+>  hw/arm/nrf51_soc.c              | 101 ++++++++++++++++++++++++++++++++
+>  include/hw/arm/nrf51_soc.h      |  31 ++++++++++
+>  5 files changed, 167 insertions(+)
+>  create mode 100644 hw/arm/microbit.c
+>  create mode 100644 hw/arm/nrf51_soc.c
+>  create mode 100644 include/hw/arm/nrf51_soc.h
 
-I forgot to mention that some sparc machines also still have problems.
-Patches are available here:
+Thanks for sending this!
 
-https://lists.gnu.org/archive/html/qemu-devel/2018-04/msg00543.html
+Please add a MAINTAINERS file entry.  If you're up for it, I suggest
+adding yourself for now.  Julia and Steffen could add themselves later,
+depending on their willingness to stay involved after GSoC and Outreachy
+end.
 
-and
+Stefan
 
-https://lists.gnu.org/archive/html/qemu-devel/2018-04/msg00546.html
+--VBq/nvTu32OVLBUP
+Content-Type: application/pgp-signature; name="signature.asc"
 
-... but they have not been merged yet.
+-----BEGIN PGP SIGNATURE-----
 
- Thomas
+iQEcBAEBAgAGBQJa8ZNMAAoJEJykq7OBq3PIVogIAKW2xJTXgbP80Y1UooZpb2pk
+yipmYonwAFp3MrGx0wGFgnkemvcO9kpKlU5CfthHyHejhSkwM64NEtSSXLPqjtDL
+UbVrWNlKoWIx+7UXzy6V2ujLHQtd6l1USe3NyaiaekQllk/UPr58RPZVfIchecaP
+DZXPyyFsIzACyXN4zvkrgQMTv9qIkmW5goFhiXAu9z+y1vZUkic4OjGoTDGNg9ar
+J+lEHxgQ34UWwHAk1dgvF76Yopi/9OIms4Cfgl6fa2lvXfytbxifquW3m5sf6y8N
++BAI/YEIVBXFMiirEJIZdfw1vdMCak3E7fVcg16k+wSQmgLnd6WAky5LSn52Dsw=
+=YQh7
+-----END PGP SIGNATURE-----
+
+--VBq/nvTu32OVLBUP--

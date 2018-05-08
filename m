@@ -1,107 +1,116 @@
-Received: by 10.28.4.212 with SMTP id 203csp4085378wme;
-        Tue, 8 May 2018 05:09:07 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZoWSUiueRukLNHdoTlx/UcIlNBE1ya6o6Ei2oAkLkoWVXiQNUe/CyfMg3Qtgh5ybqDJfmBg
-X-Received: by 2002:ac8:364d:: with SMTP id n13-v6mr35002026qtb.174.1525781347283;
-        Tue, 08 May 2018 05:09:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1525781347; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp4142607wme;
+        Tue, 8 May 2018 06:05:01 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZqGmfXlsCInhLNt3QQlDs4x5Yerwm8w8duJ1ZpUUOLqxTOKfsivGrHhPxV7k8YKxN2HPpZA
+X-Received: by 2002:ac8:108d:: with SMTP id a13-v6mr37542881qtj.214.1525784701665;
+        Tue, 08 May 2018 06:05:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1525784701; cv=none;
         d=google.com; s=arc-20160816;
-        b=ekXwwQ+FqwMwuxbPrWl3nw2zWxoe58ZLE9azKlRbB5XhxzwgH3i807chjuFHPQ2WNS
-         yx0AFRlu3yv+wpteUXeR4LWEA95u5U4nD2Kgo8jYWX0t/ZGDlVS7ef7hY45d8MCyNf9N
-         0eZMfjcKVMln5cdxTt+/5loY5hGv4rLWj1VAOcw/c2VXD5+0KX46ZSaHuy6Zb+1HQVAH
-         oCdjRQIDhODMgj4flSQU7F764TLF7jd05CmWG37bVRL2WglUrQMdrmzq/ZQNA+TWtSfP
-         Wpi72R5gV/FaL1p/traF4XIEZKmMpZEXFg93tZ0XO5b6AtQItD9nPf0+lBJNYKzco9Ym
-         y9CA==
+        b=iU4khe+1tIg6aENiDAyV4S9l3MPDj2oymK3UxKar4pZhwW7+hedFUWjsckGlvRyELN
+         OwP0q0/xIcOnSY133iWms3IvP3ViMYN37mSHjR5kz/fvD9jqEv+lx/LKE3N5S3/ll1+k
+         LFMTjHtNWkBoEwivMTg9amElRBOFzxmWRQE7wITJFSVeovqHaqnBud/y1xRvdUYGnzb4
+         Txo9/uRx8trM6aoJlz3yf/ZDlSvwRgaQnQKc9HgPcBVQQuIg5q8uf5FAER9eM5TRLIuk
+         2VHpC7b8OrTcj04DU8t8UiZe2dFsmsc/iddWDnDcOHo/He0YAf3h2jmPIh1uZ9UX37VD
+         QL6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
          :dkim-signature:arc-authentication-results;
-        bh=JlesEEkl2apF0Vgehu4sGXp5PvKuQlJUnNfMhYlLPbA=;
-        b=XfIYgiQziO2ecVqc6qBOdie8iioYFdkCPVOiKE8+YpDup6fynKYN2rhZiYLh/LghVP
-         Ltb3o3gfUGdZzGqDbxE9Fz0QJjfX0tzzHBu8zg2G1EObXNRcfT3nF3v/6BkS3BrW51Ej
-         xtvzw34AxaJe6YqBxGHqv6bQTcXgciW8QlSaE9rosFpfEni4cOHletdSO/i2rKjwBn+6
-         PB48OOy5KSJpf4iJ7XBNNA/JmNqlykGbhWEh/fdsiFnJmm3OUFHWmrZ9GRXl2H2RpafX
-         9lRq7QW69hXBvJ2S/uj5vBICWJ0cbQ43xQy6aP9GcFzz9lG68bdyfUG9F7PyCus1iV7Y
-         EVDA==
+        bh=+HUB0ui9czOKwn0fhB/Xf+/alIEKN8j2EEay42R3REY=;
+        b=OVT9D2FiXwloi6/ZM5Y3/suq3wjBy23fClz2bDrXd6nzG8szFbnXKYUgF/dJSOO1GS
+         t437RpcXJvSfat17pqYFAE0tCzVFGghZfuFlCTlwJwSHOLeGqBWkw27djuwQghe41BY6
+         gxDW1RybP2jadQOBFu/lyDkhb26IuiljmkA4rQ3CM8AffIeOuOhT8Fwq5L6AXSr9WL9K
+         iKlo9dBFLGZ/ppKak6whVB8loIY92wDbGAs9Bcd7nc64QZZlaShhWPqLXz9gDKIaBbeS
+         HvmXoHO36pnkgr7+Wk3AfW3S/kxduUIrBYP7Mqgo8Jiu4ejFdP3FeiNqTwvlJA51bF8J
+         08xg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cOe5lyGZ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jOAUSXmM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w26-v6si815706qto.58.2018.05.08.05.09.07
+        by mx.google.com with ESMTPS id l2-v6si19583176qvo.196.2018.05.08.06.05.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 08 May 2018 05:09:07 -0700 (PDT)
+        Tue, 08 May 2018 06:05:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cOe5lyGZ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:50839 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jOAUSXmM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:51137 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fG1QY-00069t-In
-	for alex.bennee@linaro.org; Tue, 08 May 2018 08:09:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35300)
+	id 1fG2If-00071b-9J
+	for alex.bennee@linaro.org; Tue, 08 May 2018 09:05:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50209)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1fG1QJ-00069n-4R
-	for qemu-devel@nongnu.org; Tue, 08 May 2018 08:08:52 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fG2IL-00071G-1B
+	for qemu-devel@nongnu.org; Tue, 08 May 2018 09:04:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1fG1QF-0000bN-4t
-	for qemu-devel@nongnu.org; Tue, 08 May 2018 08:08:51 -0400
-Received: from mail-wr0-x241.google.com ([2a00:1450:400c:c0c::241]:34735)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fG2IH-0004nF-9K
+	for qemu-devel@nongnu.org; Tue, 08 May 2018 09:04:41 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:40849)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
-	id 1fG1QE-0000bE-TC; Tue, 08 May 2018 08:08:47 -0400
-Received: by mail-wr0-x241.google.com with SMTP id p18-v6so32085412wrm.1;
-	Tue, 08 May 2018 05:08:46 -0700 (PDT)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fG2IH-0004mr-5b; Tue, 08 May 2018 09:04:37 -0400
+Received: by mail-qt0-x243.google.com with SMTP id h2-v6so40846332qtp.7;
+	Tue, 08 May 2018 06:04:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=JlesEEkl2apF0Vgehu4sGXp5PvKuQlJUnNfMhYlLPbA=;
-	b=cOe5lyGZqnYlSaOPOHHN8ihDU86b/m2DK6My7KeTe/VK/borxvenx1dHsaSOOfv3i9
-	9X51yX5KOWXVoUaJzpQwk3csjrLHW8Wvk/5MZj0EDvi4Ca0uVgfp58j/fm/4n4HjjVYL
-	bv88BkpTdY76sYvt7VqHQoEVeY/dggJLRthkCF0ima9WmU8CB/SE1XPlphk6oqvekIUc
-	iuVJR8QVnU5NDVoysDK1sx2yNoRb4WQxpLEBAdZvKXJjO5cNhm3liyBKznm43tsiO0wG
-	DJ39emhQw58ibLOQI+l/4iHbEN/8qfi5Mf2JkCR+rzDKOApCs1XZIGq15JXtZP2NkYMm
-	ROdw==
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=+HUB0ui9czOKwn0fhB/Xf+/alIEKN8j2EEay42R3REY=;
+	b=jOAUSXmM/woRnHfeJnMfiWuSXBs7CkGUfCTsAFZHQ7HIrs7the3sXZm/CIQYVSVHGF
+	4M2pgryTpVOzLo2416kakYTAB+9Dsd540XTVqxOjU56PvxbGXGTYS3qCbTYjDU47eDM8
+	EyHMN2aaMSqFew4nnA4XP6+TU0qpXlqK7wrzTD6n/smOqO2kf57vkE18eyPqIn7kA/f/
+	rJqDRSIssrQTbELIdGoJptmorZ1h9b8m11ZHFuEvnnRb/7ke9E3k9n+qXBgBCAP3j3Pc
+	muPJcKNCD4JH0vAzrzY3E6xMF4mrUg6SQFAtJskkQFvklo1n10zQn2Tps/7uLNdLT7wE
+	rbbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=JlesEEkl2apF0Vgehu4sGXp5PvKuQlJUnNfMhYlLPbA=;
-	b=fRVu8nlweU04g4Y5wbWpJduRKYYcDPHr5F9wS98sFb2b5clmLD09yM9QdunYLPq6aH
-	wJ0dnywDYPERmOc050sv9QuaKhI8+kRcmWCuogJVAlBYOo2cUl/z43U8EYyGXR1ra0sS
-	CI4DMwHoONA+sN1kK400SB/hepa1X8ig6fbnUwvL0yZDC8/GrkLaWPvDuUvlGU1QtDVE
-	zL0UYszS8iUK3uRe5siXdZR5eUl3ERCLRUgFCiXfIDHyRyvZ11rGvXM5slhOHW9cRhTZ
-	lo6CEwfxu6iShmGwtlCXdRQ8oPC53VPDpEIBpJZ634BQnYM6m1ieBSGYe0l02W5sGvP6
-	4b0A==
-X-Gm-Message-State: ALQs6tAnOXmiF0Mgc0A5Nsfw/sPOcBm3XVJUfi6rrvsRYnwMzmoRIigE
-	CjGhuQxICxGwbu31pwc+BzM=
-X-Received: by 2002:adf:b11a:: with SMTP id
-	l26-v6mr20911242wra.258.1525781326009; 
-	Tue, 08 May 2018 05:08:46 -0700 (PDT)
-Received: from localhost ([51.15.41.238]) by smtp.gmail.com with ESMTPSA id
-	b57-v6sm39412470wra.9.2018.05.08.05.08.44
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 08 May 2018 05:08:45 -0700 (PDT)
-Date: Tue, 8 May 2018 13:08:44 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Joel Stanley <joel@jms.id.au>
-Message-ID: <20180508120844.GL19710@stefanha-x1.localdomain>
-References: <20180503090532.3113-1-joel@jms.id.au>
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=+HUB0ui9czOKwn0fhB/Xf+/alIEKN8j2EEay42R3REY=;
+	b=tYDGrtplEn3D8vEbspjmtcws6ICNdqxw4TGDzrTzrOX+5YhnZkRmhfgut/rGkCXcRl
+	ZZ7bkNax7nq74pjeff5XnEWg/ctsXrOB8vit63k7sCztA4ln3DCG9OoRe+lKlismOTIn
+	NWKsDeZrlzo/AhRI2ENbv4q5oQHD1esisHqjtwcD4pPdQf1AcPI3qN+1L0CULBo0yuse
+	w+HTMvgZQYmuD2u07I4vyHsO1Dzltbjyj3HkTCfFVTb//x7vrRJniMlhPxxLz5SQbP24
+	QF3PCHuKDjiexIplAs6VgEjT2CteziYFQ8lsIFlq+hzuELxb9GC3PEGfsjeWq8/5K6RY
+	tlmw==
+X-Gm-Message-State: ALQs6tBCNQiLaOfEuJQspCWROYI9UGoUjLy4BdXFIdef83L2BkmKNtqe
+	pMJG05C2ffGn5kg9MwCaaQg=
+X-Received: by 2002:a0c:a3c3:: with SMTP id
+	v61-v6mr29673788qvv.72.1525784676629; 
+	Tue, 08 May 2018 06:04:36 -0700 (PDT)
+Received: from [192.168.1.11] ([138.117.48.222])
+	by smtp.gmail.com with ESMTPSA id
+	x127sm17947061qke.87.2018.05.08.06.04.34
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 08 May 2018 06:04:36 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>
+References: <20180427110137.19304-1-peter.maydell@linaro.org>
+	<CAFEAcA-X1-D4G4KLmXrTpQ_Yz6O3Pyzj63ir3MjiR4ZkqOF=kw@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <f01b4c93-efe1-572a-5e14-7d0ca3d40ac2@amsat.org>
+Date: Tue, 8 May 2018 10:04:33 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.7.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="VBq/nvTu32OVLBUP"
-Content-Disposition: inline
-In-Reply-To: <20180503090532.3113-1-joel@jms.id.au>
-User-Agent: Mutt/1.9.2 (2017-12-15)
+In-Reply-To: <CAFEAcA-X1-D4G4KLmXrTpQ_Yz6O3Pyzj63ir3MjiR4ZkqOF=kw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::241
-Subject: Re: [Qemu-devel] [PATCH 0/2] arm: Add nRF51 SoC and micro:bit
- machine
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH] hw/arm/iotkit.c: fix minor
+ memory leak
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -113,74 +122,45 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org, qemu-devel@nongnu.org,
-	Jim Mussared <jim.mussared@gmail.com>
+Cc: "patches@linaro.org" <patches@linaro.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: a1uFAUT5mGSW
+X-TUID: R9EURuNKmbaE
 
+On 05/08/2018 06:16 AM, Peter Maydell wrote:
+> ping for review?
+> 
+> thanks
+> -- PMM
+> 
+> On 27 April 2018 at 12:01, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> Coverity (CID1390573) spots that we forgot to free the
+>> gpioname strings in a loop in the iotkit realize function.
+>> Correct the error.
+>>
+>> This isn't a significant leak, because this function
+>> only ever runs once.
+>>
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
---VBq/nvTu32OVLBUP
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-On Thu, May 03, 2018 at 06:35:30PM +0930, Joel Stanley wrote:
-> Hello,
->=20
-> This short series implements a minimal definition of the Nordic
-> Semiconductor nRF51, a Cortex-M0 ARM SoC, and the BBC micro:bit, a
-> machine that will use this SoC.
->=20
-> This work will serve as the base for our Google Summer of Code and
-> Outreachy interns who will work on implementing a number of features on
-> top of this base.
->=20
-> I've tested this with a microbit micropython firmware, and checked that
-> it starts running by looking at it with gdb.
->=20
-> I chose to keep the nrf51 and the microbit seperate, to not confuse the
-> peripherals that are on the microbit but are not part of the nrf51, and
-> vice versa.
->=20
-> Please review!
->=20
-> Joel Stanley (2):
->   arm: Add Nordic Semiconductor nRF51 SoC
->   arm: Add BBC micro:bit machine
->=20
->  default-configs/arm-softmmu.mak |   1 +
->  hw/arm/Makefile.objs            |   1 +
->  hw/arm/microbit.c               |  33 +++++++++++
->  hw/arm/nrf51_soc.c              | 101 ++++++++++++++++++++++++++++++++
->  include/hw/arm/nrf51_soc.h      |  31 ++++++++++
->  5 files changed, 167 insertions(+)
->  create mode 100644 hw/arm/microbit.c
->  create mode 100644 hw/arm/nrf51_soc.c
->  create mode 100644 include/hw/arm/nrf51_soc.h
-
-Thanks for sending this!
-
-Please add a MAINTAINERS file entry.  If you're up for it, I suggest
-adding yourself for now.  Julia and Steffen could add themselves later,
-depending on their willingness to stay involved after GSoC and Outreachy
-end.
-
-Stefan
-
---VBq/nvTu32OVLBUP
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEcBAEBAgAGBQJa8ZNMAAoJEJykq7OBq3PIVogIAKW2xJTXgbP80Y1UooZpb2pk
-yipmYonwAFp3MrGx0wGFgnkemvcO9kpKlU5CfthHyHejhSkwM64NEtSSXLPqjtDL
-UbVrWNlKoWIx+7UXzy6V2ujLHQtd6l1USe3NyaiaekQllk/UPr58RPZVfIchecaP
-DZXPyyFsIzACyXN4zvkrgQMTv9qIkmW5goFhiXAu9z+y1vZUkic4OjGoTDGNg9ar
-J+lEHxgQ34UWwHAk1dgvF76Yopi/9OIms4Cfgl6fa2lvXfytbxifquW3m5sf6y8N
-+BAI/YEIVBXFMiirEJIZdfw1vdMCak3E7fVcg16k+wSQmgLnd6WAky5LSn52Dsw=
-=YQh7
------END PGP SIGNATURE-----
-
---VBq/nvTu32OVLBUP--
+>> ---
+>>  hw/arm/iotkit.c | 1 +
+>>  1 file changed, 1 insertion(+)
+>>
+>> diff --git a/hw/arm/iotkit.c b/hw/arm/iotkit.c
+>> index c5f0a5b98a..234185e8f7 100644
+>> --- a/hw/arm/iotkit.c
+>> +++ b/hw/arm/iotkit.c
+>> @@ -517,6 +517,7 @@ static void iotkit_realize(DeviceState *dev, Error **errp)
+>>                                qdev_get_gpio_in(DEVICE(&s->ppc_irq_orgate), i));
+>>          qdev_connect_gpio_out_named(DEVICE(ppc), "irq", 0,
+>>                                      qdev_get_gpio_in(devs, 0));
+>> +        g_free(gpioname);
+>>      }
+>>
+>>      iotkit_forward_sec_resp_cfg(s);
+>> --
+>> 2.17.0
+> 

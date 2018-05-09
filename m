@@ -1,99 +1,99 @@
-Received: by 10.28.4.212 with SMTP id 203csp57725wme;
-        Wed, 9 May 2018 11:04:16 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZoTgYINjCXwIbNy9EKEpIhm9xr3eGsnJ6ABu3moESjiKvesijRkh4YhJW2MYdPvJ3hqR8Uz
-X-Received: by 10.55.33.24 with SMTP id h24mr38898705qkh.431.1525889056084;
-        Wed, 09 May 2018 11:04:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1525889056; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp59587wme;
+        Wed, 9 May 2018 11:05:59 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZqRFbXcVzXfnTfV+TbaW1waqovx/Qu41OlnhfrZZJBr34ZWAnJmNLwBG9MLp3oOw2dO004y
+X-Received: by 10.55.33.7 with SMTP id h7mr38621009qkh.438.1525889159658;
+        Wed, 09 May 2018 11:05:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1525889159; cv=none;
         d=google.com; s=arc-20160816;
-        b=xWcin47FWIkhgPO22cgpOY4Dm+WP1iflCIaMjyLAryVSqEjUbVSgPNRvh+2anGnOli
-         62CP2Ah8Vs3IupgY3Pj0D9O/bJ604EmORljsmkbm29ojeInvYJKrnPb6t8ybEOuthZYd
-         QPK5M7NF9Heggjua+uW+CQmom3EoW3wxbm/6Uv5Qmn6gYVFDzfe/ehz+FyFyqS0WUI3/
-         RHfFVOXv4nt0iKP7Maq4MW71gmWkSl/2HygHsvOBnDvoiqHGnJ+8gugXX6860UoasgKF
-         mwJwCJqLtAHztOydRfYW5qfnbCKhBPwx9TOvMZ/A1rgM9bdmdk7perIO2RjVgTHdRFZr
-         nuIQ==
+        b=JK+tYnVYPw0UuGsuHfDM9nsVlUTr0cznsqj6FNbxHrA2vDCnnMxcq5XvWPMmnDTIeo
+         f6iR5vt7x+pDI99F+Qp6Gjoj23k6LN23QXAaZgTbHSiI8JKEjf3Hn44ZOpf6vmZBTn2R
+         URxNsatkCO7jd458jH5RVhqUQNw3UPraoW3NJr5fMkOniMV1phtCzsEd+wpbVyK+h6nr
+         C26VCZBJpdxth0VHE7UAeAugCfR1avRZ/sGJe3uNmBHVWLp0j68p1mmAybmfrcuMG9ty
+         R6LHX7tycrvse7txaqlQ7J9cavwPPwpsoJ1mwGXkZtM4F2ISz9m3CimIN65ao2iu8vV7
+         X17g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=bmNH3/Xt87KSPREfiGWU2svReCznKpFcDCnBU4R99pQ=;
-        b=OSu/X5CJIXFzSHY4vaKXxJy21BUJh8FxHdteRtaUcYbGWkZpbDDUrY3tdQ/y1Acm9g
-         5+aRtnbJWStGcvaIAtN8bHM+sgMDIivVpB3KvQ8xdyQR1HWLsRmCrMjWX6mcMqNNHfTG
-         yYKncy59YyMVdUC70BvF/36LCEe25M1g9+RTkqdFocDhOuu2PFkh5BftBxQYVHH/e1kz
-         +MdZUsbyB8aj9MxpxmcDzn9nOZaaryHZrJFaS8Qii7oJmi1oIaEBTWc/Sbr3Jgmk3zTC
-         VhXYqX8xcimb/oAvWLgMM5rHj3m6zw1WokQMB577zxSx9HgrM5zbP1bs/EiyRQZ9vjBO
-         uZ1A==
+        bh=6LffsiiHs7lxOOvqYb43jpsKoKbfnr5G0u8u8SMXtOQ=;
+        b=YoH87v2yY90hIvEbALmLCoD8ouCCTTZxtduXEPodtgesJaPySkRtzROGcRH7xt1E6E
+         vAFcYO/68w7xu1bO1FCaB87T0DoA0bjZoI7VsYfglgHLMXL0mQLRNaE+VOucIYZ2d7KF
+         Rl8oYaD2ghDboxzWOeTI6LFHeS2JxuLOv/IIvlRqdQ5hBPkQo6VBIL8owUJHJg9AY26J
+         OaRJiXmhHoR7V8py7XRX3ZtY6x/1T8g9ex/ovakKnFUSoWQUUTjfvPfwG0Gx6NoBxuO4
+         UWLSXQvnZUImiKZZnJOl29dWNOEyYRUAksQLx1rUUq1xP12XsTLhlMgpSu17wgCI/kVB
+         vsIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=I9DmCdQU;
+       dkim=fail header.i=@linaro.org header.s=google header.b=MntaApi6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v7-v6si3954931qve.259.2018.05.09.11.04.15
+        by mx.google.com with ESMTPS id e64si1334102qkh.332.2018.05.09.11.05.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 09 May 2018 11:04:16 -0700 (PDT)
+        Wed, 09 May 2018 11:05:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=I9DmCdQU;
+       dkim=fail header.i=@linaro.org header.s=google header.b=MntaApi6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58154 helo=lists.gnu.org)
+Received: from localhost ([::1]:58168 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fGTRl-0005h1-8U
-	for alex.bennee@linaro.org; Wed, 09 May 2018 14:04:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48357)
+	id 1fGTTT-0007V7-4z
+	for alex.bennee@linaro.org; Wed, 09 May 2018 14:05:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48018)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fGTJK-00058L-8h
-	for qemu-devel@nongnu.org; Wed, 09 May 2018 13:55:32 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1fGTJ8-0004g8-NA
+	for qemu-devel@nongnu.org; Wed, 09 May 2018 13:55:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fGTJF-0005js-P4
-	for qemu-devel@nongnu.org; Wed, 09 May 2018 13:55:30 -0400
-Received: from mail-pf0-x243.google.com ([2607:f8b0:400e:c00::243]:33534)
+	(envelope-from <richard.henderson@linaro.org>) id 1fGTJ7-0005Rv-Et
+	for qemu-devel@nongnu.org; Wed, 09 May 2018 13:55:18 -0400
+Received: from mail-pg0-x241.google.com ([2607:f8b0:400e:c05::241]:46105)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1fGTJE-0005h7-VM
-	for qemu-devel@nongnu.org; Wed, 09 May 2018 13:55:25 -0400
-Received: by mail-pf0-x243.google.com with SMTP id f20so17212350pfn.0
-	for <qemu-devel@nongnu.org>; Wed, 09 May 2018 10:55:24 -0700 (PDT)
+	id 1fGTJ7-0005Q7-9b
+	for qemu-devel@nongnu.org; Wed, 09 May 2018 13:55:17 -0400
+Received: by mail-pg0-x241.google.com with SMTP id z4-v6so22986552pgu.13
+	for <qemu-devel@nongnu.org>; Wed, 09 May 2018 10:55:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=bmNH3/Xt87KSPREfiGWU2svReCznKpFcDCnBU4R99pQ=;
-	b=I9DmCdQUbgG/tqDD28ySxVD0mM91yUW+3c2dLKyfF/8gO1jVVUOFEs0kFsbuqIsbOd
-	X2rDIdxVKjZ/Obco9xh0MvSqLJYkU70Nfb8oMrWY0V2o7aPToIT7uMdgM9FTxmFHToIN
-	EwgWFDt4stvmpg6pr90BnjhK3mVfvB8/dSTfs=
+	bh=6LffsiiHs7lxOOvqYb43jpsKoKbfnr5G0u8u8SMXtOQ=;
+	b=MntaApi64e2bNVvjDc3rJx6Zc9OLgTK2OS+r2wOfN7QmCjKNRQV6JCQRm8mPGF7rly
+	pWomKlJVi0UGqEClOFANFI/1ywJuJWB74uZiVGIvKvk57rFWuAPvBoWud7IQY9oWKQGO
+	XxzNWz60hQpNJxi3/0xuwzS0jeQhV9srkGoWI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=bmNH3/Xt87KSPREfiGWU2svReCznKpFcDCnBU4R99pQ=;
-	b=F983uXhhQ74FdM9MfmRfR2Pf8SO65gibd5a3vSmhH4xSbg0Ftef7rv6FFqYA6pu9D8
-	xW5WmE+ThGA8AhctKHOFv1QhqngFc64Eiql4hV4AaV0Iv0urOHOJiWeSkxvN1lqj76Ih
-	L7I4DOXoquXgntYJns3fxDDWpRR/1Q+/Ux2YxAklkKDOyw7F7p+A4N5J63rGVy7stvad
-	nBjHyzHlJzy9OfZEL4/tjPTXO1BOB8vBUTYcW06vxZ/2wmewkgadk9Rub6b5K9+U0N9V
-	EWPVEQh5ruwlBH8fVlbGKln1l4dNeOMPkwEHTznIIHVNpxb/TyvnHiCCW+xXs1X62JTz
-	tWGg==
-X-Gm-Message-State: ALQs6tBeR9YdUws6+jqkawd6kda4sVqWufxG3r6TputgkOzPgZ0MnkQ4
-	DCQGVX7aVSGUBcjaY1/SqEITzqvBaRo=
-X-Received: by 2002:a63:66c3:: with SMTP id
-	a186-v6mr25525339pgc.408.1525888523523; 
-	Wed, 09 May 2018 10:55:23 -0700 (PDT)
+	bh=6LffsiiHs7lxOOvqYb43jpsKoKbfnr5G0u8u8SMXtOQ=;
+	b=hmjonv5sIqjwMyN/5ESYszx9phBMAW8p4GbHJ9+pPoQ8jTdWHc+bleZeot0M2pRqMk
+	TwdtdN4Y3mXgz6B2LghT1yKYd0M0awRKHONM920aYgDZwnK9mldExFrkF1pzOgjQj3UL
+	oPaol6WwPUM5A/6G70wfhNLMjt0o4NUm/IIr+kpWFfJ89wS3wALZjkzrEvcdzlzf+ipq
+	DdcxqgdpisX9QFYMqXQUgACxKVpDFpQqdQnlp/sdz0FBRZGLNH8TNgCQuEoMuQvTi4zH
+	qO48EQxHsgbw7ArqskMVYZPLdinmF4pSRLyXjUZ000Ctv99nVNaGNnaqp1PGRC+frJU3
+	QgXw==
+X-Gm-Message-State: ALQs6tD6ljd4FNMRyoAv8TdJG3rRqHEPVODpvFJP1Inm6zhr39relos7
+	SraNq+7V8L+zLq5BucZmTXFr9ZdZ/6Q=
+X-Received: by 10.98.202.74 with SMTP id n71mr44855410pfg.149.1525888515954;
+	Wed, 09 May 2018 10:55:15 -0700 (PDT)
 Received: from cloudburst.twiddle.net (97-113-2-170.tukw.qwest.net.
 	[97.113.2.170]) by smtp.gmail.com with ESMTPSA id
-	l90sm60332813pfb.149.2018.05.09.10.55.21
+	l90sm60332813pfb.149.2018.05.09.10.55.14
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Wed, 09 May 2018 10:55:22 -0700 (PDT)
+	Wed, 09 May 2018 10:55:14 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Wed,  9 May 2018 10:54:43 -0700
-Message-Id: <20180509175458.15642-14-richard.henderson@linaro.org>
+Date: Wed,  9 May 2018 10:54:39 -0700
+Message-Id: <20180509175458.15642-10-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.0
 In-Reply-To: <20180509175458.15642-1-richard.henderson@linaro.org>
 References: <20180509175458.15642-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c00::243
-Subject: [Qemu-devel] [PULL 13/28] target/sparc: convert to DisasJumpType
+X-Received-From: 2607:f8b0:400e:c05::241
+Subject: [Qemu-devel] [PULL 09/28] target/s390x: avoid integer overflow in
+ next_page PC check
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -124,149 +124,58 @@ Cc: peter.maydell@linaro.org, Sagar Karandikar <sagark@eecs.berkeley.edu>,
 	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3Qq3yDjxVj6b
+X-TUID: 018YJm94dJ5O
 
 From: "Emilio G. Cota" <cota@braap.org>
 
+If the PC is in the last page of the address space, next_page_start
+overflows to 0. Fix it.
+
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Cc: Artyom Tarasenko <atar4qemu@gmail.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: David Hildenbrand <david@redhat.com>
+Acked-by: Cornelia Huck <cohuck@redhat.com>
+Cc: Cornelia Huck <cohuck@redhat.com>
+Cc: Alexander Graf <agraf@suse.de>
+Cc: David Hildenbrand <david@redhat.com>
+Cc: qemu-s390x@nongnu.org
 Signed-off-by: Emilio G. Cota <cota@braap.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/sparc/translate.c | 27 +++++++++++++++------------
- 1 file changed, 15 insertions(+), 12 deletions(-)
+ target/s390x/translate.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/target/sparc/translate.c b/target/sparc/translate.c
-index 5aa367a182..03c6510717 100644
---- a/target/sparc/translate.c
-+++ b/target/sparc/translate.c
-@@ -30,6 +30,7 @@
- #include "exec/helper-gen.h"
+diff --git a/target/s390x/translate.c b/target/s390x/translate.c
+index 7d39ab350d..44449f11ab 100644
+--- a/target/s390x/translate.c
++++ b/target/s390x/translate.c
+@@ -6163,7 +6163,7 @@ void gen_intermediate_code(CPUState *cs, struct TranslationBlock *tb)
+     CPUS390XState *env = cs->env_ptr;
+     DisasContext dc;
+     target_ulong pc_start;
+-    uint64_t next_page_start;
++    uint64_t page_start;
+     int num_insns, max_insns;
+     ExitStatus status;
+     bool do_debug;
+@@ -6181,7 +6181,7 @@ void gen_intermediate_code(CPUState *cs, struct TranslationBlock *tb)
+     dc.ex_value = tb->cs_base;
+     do_debug = dc.singlestep_enabled = cs->singlestep_enabled;
  
- #include "trace-tcg.h"
-+#include "exec/translator.h"
- #include "exec/log.h"
- #include "asi.h"
+-    next_page_start = (pc_start & TARGET_PAGE_MASK) + TARGET_PAGE_SIZE;
++    page_start = pc_start & TARGET_PAGE_MASK;
  
-@@ -69,7 +70,7 @@ typedef struct DisasContext {
-     target_ulong pc;    /* current Program Counter: integer or DYNAMIC_PC */
-     target_ulong npc;   /* next PC: integer or DYNAMIC_PC or JUMP_PC */
-     target_ulong jump_pc[2]; /* used when JUMP_PC pc value is used */
--    int is_br;
-+    DisasJumpType is_jmp;
-     int mem_idx;
-     bool fpu_enabled;
-     bool address_mask_32bit;
-@@ -995,7 +996,7 @@ static void gen_branch_a(DisasContext *dc, target_ulong pc1)
-     gen_set_label(l1);
-     gen_goto_tb(dc, 1, npc + 4, npc + 8);
- 
--    dc->is_br = 1;
-+    dc->is_jmp = DISAS_NORETURN;
- }
- 
- static void gen_branch_n(DisasContext *dc, target_ulong pc1)
-@@ -1078,7 +1079,7 @@ static void gen_exception(DisasContext *dc, int which)
-     t = tcg_const_i32(which);
-     gen_helper_raise_exception(cpu_env, t);
-     tcg_temp_free_i32(t);
--    dc->is_br = 1;
-+    dc->is_jmp = DISAS_NORETURN;
- }
- 
- static void gen_check_align(TCGv addr, int mask)
-@@ -3351,7 +3352,7 @@ static void disas_sparc_insn(DisasContext * dc, unsigned int insn)
- 
-                 if (cond == 8) {
-                     /* An unconditional trap ends the TB.  */
--                    dc->is_br = 1;
-+                    dc->is_jmp = DISAS_NORETURN;
-                     goto jmp_insn;
-                 } else {
-                     /* A conditional trap falls through to the next insn.  */
-@@ -4331,7 +4332,7 @@ static void disas_sparc_insn(DisasContext * dc, unsigned int insn)
-                                 save_state(dc);
-                                 gen_op_next_insn();
-                                 tcg_gen_exit_tb(0);
--                                dc->is_br = 1;
-+                                dc->is_jmp = DISAS_NORETURN;
-                                 break;
-                             case 0x6: /* V9 wrfprs */
-                                 tcg_gen_xor_tl(cpu_tmp0, cpu_src1, cpu_src2);
-@@ -4340,7 +4341,7 @@ static void disas_sparc_insn(DisasContext * dc, unsigned int insn)
-                                 save_state(dc);
-                                 gen_op_next_insn();
-                                 tcg_gen_exit_tb(0);
--                                dc->is_br = 1;
-+                                dc->is_jmp = DISAS_NORETURN;
-                                 break;
-                             case 0xf: /* V9 sir, nop if user */
- #if !defined(CONFIG_USER_ONLY)
-@@ -4468,7 +4469,7 @@ static void disas_sparc_insn(DisasContext * dc, unsigned int insn)
-                             save_state(dc);
-                             gen_op_next_insn();
-                             tcg_gen_exit_tb(0);
--                            dc->is_br = 1;
-+                            dc->is_jmp = DISAS_NORETURN;
- #endif
-                         }
-                         break;
-@@ -4624,7 +4625,7 @@ static void disas_sparc_insn(DisasContext * dc, unsigned int insn)
-                                 save_state(dc);
-                                 gen_op_next_insn();
-                                 tcg_gen_exit_tb(0);
--                                dc->is_br = 1;
-+                                dc->is_jmp = DISAS_NORETURN;
-                                 break;
-                             case 1: // htstate
-                                 // XXX gen_op_wrhtstate();
-@@ -5690,7 +5691,7 @@ static void disas_sparc_insn(DisasContext * dc, unsigned int insn)
-     } else if (dc->npc == JUMP_PC) {
-         /* we can do a static jump */
-         gen_branch2(dc, dc->jump_pc[0], dc->jump_pc[1], cpu_cond);
--        dc->is_br = 1;
-+        dc->is_jmp = DISAS_NORETURN;
-     } else {
-         dc->pc = dc->npc;
-         dc->npc = dc->npc + 4;
-@@ -5752,6 +5753,7 @@ void gen_intermediate_code(CPUState *cs, TranslationBlock * tb)
-     pc_start = tb->pc;
-     dc->pc = pc_start;
-     last_pc = dc->pc;
-+    dc->is_jmp = DISAS_NEXT;
-     dc->npc = (target_ulong) tb->cs_base;
-     dc->cc_op = CC_OP_DYNAMIC;
-     dc->mem_idx = tb->flags & TB_FLAG_MMU_MASK;
-@@ -5796,7 +5798,7 @@ void gen_intermediate_code(CPUState *cs, TranslationBlock * tb)
-             }
-             gen_helper_debug(cpu_env);
-             tcg_gen_exit_tb(0);
--            dc->is_br = 1;
-+            dc->is_jmp = DISAS_NORETURN;
-             goto exit_gen_loop;
-         }
- 
-@@ -5808,8 +5810,9 @@ void gen_intermediate_code(CPUState *cs, TranslationBlock * tb)
- 
-         disas_sparc_insn(dc, insn);
- 
--        if (dc->is_br)
-+        if (dc->is_jmp == DISAS_NORETURN) {
-             break;
-+        }
-         /* if the next PC is different, we abort now */
-         if (dc->pc != (last_pc + 4))
-             break;
-@@ -5830,7 +5833,7 @@ void gen_intermediate_code(CPUState *cs, TranslationBlock * tb)
-     if (tb_cflags(tb) & CF_LAST_IO) {
-         gen_io_end();
-     }
--    if (!dc->is_br) {
-+    if (dc->is_jmp != DISAS_NORETURN) {
-         if (dc->pc != DYNAMIC_PC &&
-             (dc->npc != DYNAMIC_PC && dc->npc != JUMP_PC)) {
-             /* static PC and NPC: we can use direct chaining */
+     num_insns = 0;
+     max_insns = tb_cflags(tb) & CF_COUNT_MASK;
+@@ -6218,7 +6218,7 @@ void gen_intermediate_code(CPUState *cs, struct TranslationBlock *tb)
+         /* If we reach a page boundary, are single stepping,
+            or exhaust instruction count, stop generation.  */
+         if (status == NO_EXIT
+-            && (dc.pc >= next_page_start
++            && (dc.pc - page_start >= TARGET_PAGE_SIZE
+                 || tcg_op_buf_full()
+                 || num_insns >= max_insns
+                 || singlestep
 -- 
 2.17.0
 

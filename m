@@ -1,270 +1,173 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp311083wme;
-        Mon, 21 May 2018 07:04:06 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZqSHmrsMCdT0wDZOkmZNp36XqPukLpBcnZDyXFtY7toKj8TGDWaK9Uti4Fyzf/TZFGYuv6X
-X-Received: by 2002:adf:8124:: with SMTP id 33-v6mr14949324wrm.109.1526911446381;
-        Mon, 21 May 2018 07:04:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1526911446; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp50413wme;
+        Wed, 9 May 2018 10:57:33 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZqpu6xXIRCOJ9Jb4IOjkY5pDgena+TKCpke4LzLb99RtR+J2XzDwwwHSQnL94AA9LKgo7Z2
+X-Received: by 2002:a0c:e609:: with SMTP id z9-v6mr42975328qvm.158.1525888652923;
+        Wed, 09 May 2018 10:57:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1525888652; cv=none;
         d=google.com; s=arc-20160816;
-        b=v/KRyiuwEK+zbxSQjlTxLSjc19d4gg/Wnx5f6evlfMfav4tLOImkHOx8DVN78zJtcC
-         TydKu18OxOrUCz6M7Ou4d/pxu/t5fNvrgBOhQevT8MBJSdNKTpZLJNi5sC8JSwC3xj8z
-         1GoI0cmoBocJ0/vDLRf9al1xKYmOj2LlyS/JZJCYPLkOMxbwvvxOpVYXMgLTbSYEG28S
-         0umOpisPhfkRPuDUL7r2A3VkWpkg50RcN1P2BpfJ056l8NDDvag//tApizB78CzrJaTT
-         Xah1PLhyUxxsTxuRvet7kgA9TK7gtZlpGQfrKJQNrH7BX06aEap0dhjCmzIwDEFOYjLD
-         TnXg==
+        b=wenB3uyA5oUt9i9I/78gGeTz5e6kMNkgl4Fhj+qZnb3aKWjhJrnEs0akEE4mOtLqOH
+         ONcjBPjDpiI5/Cqfzckmwm6bUtJ8j5+C5aDFynzV31p9r7QRa/PYgCdl6PpNYxc2iZ4i
+         ZjTGtKq50bvrUrBqvCVrpuitRCj6ReW3EB7tKfPIZdUUL/0iBJw2FLyOnJYBxho2JkjL
+         eN/DyJlS6qfdNe09sjHIZ+j9V8H1JUqr6vYOeFoTzm5JYjM4umIHEZDtW8BCIz3D6OXY
+         JSfmcVkosJDx7OF8aMufv5MErH0bnysMgIv1LD98bU0XW4drpIQtInCEVkX8iU4U5JkO
+         Ro4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :arc-authentication-results;
-        bh=EcWKQwpckbPjSqgQoXxZK2f0szd3l33Q5RSzo6JMlqE=;
-        b=kyR5MhzHCQaF+1hZsJT1iAiFJyLl+3IB5JDBbKTIsQiEfHXm/Uc+0L43a6ndaVgK0O
-         3A4KtDg1VsMdCx87tg/auOvdKMaBdwHKPviQD2MCvMxSoMUbpEnzNcMALupNyUPaOp1i
-         cL9Dr1pBDBpIoa43YqAwEflg7lOr3Cs+VzZTWORK9XC72VP+GUzXqu3rtVtl3bxDoLDu
-         3WeTd2eNEGsGsUwvfMSuW0LS0UXucjg3AvWooz6gXbJ2EmrdcqljHsi0VywkuHOKiVgr
-         amSYN/JmmmMeTBjq80nm4LJXqbwu+6uRm8iyMI/klCZdiz0jYOE+hhWQkcbPSTp+eZq7
-         Ixkg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=S/2JGGydUpeF2M5E3pq1XD2DFxk3JsLAsIrsUVrcu1E=;
+        b=aBu4MBecYRDqGCTOjXAp8SDKgXVQAtuw/pqHVOv2yjEBnpjGZlhWGYXp9oIn8cqBGK
+         wgHMB0EKpr26tcWWnXSLpdzWjnV/fK+H6oUHvAQ0yWAq6rQ76aYHEksp/aTYa6PirkWo
+         Rx+pjZroSc54+STTIcOvlgDSqm4Twe5t1qIAThjhhq9HpzPAGU5tociMA0pfY+Mmhyrs
+         aw4YzSCvdThGJ4UNbwzLqDk/sO0R6Pc7ovCIvzFyToUgYQc2UbVBIIiaE9ohrZIh5uPM
+         h9mo+omK/Syoue9FGqqQAZvFDFe/0azOrNGm2vH53Jjy/QrlBg57eZaxMOibgVQX0Opq
+         KDfg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
+       dkim=fail header.i=@linaro.org header.s=google header.b=DzwQoQdH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <pm215@archaic.org.uk>
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by mx.google.com with ESMTPS id c4-v6si9927721wmf.143.2018.05.21.07.04.06
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 May 2018 07:04:06 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id 8-v6si8815250qto.347.2018.05.09.10.57.32
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Wed, 09 May 2018 10:57:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
+       dkim=fail header.i=@linaro.org header.s=google header.b=DzwQoQdH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1fKlPx-0007dc-EB; Mon, 21 May 2018 15:04:05 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: patches@linaro.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <rth@twiddle.net>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 03/27] Make address_space_translate{,_cached}() take a MemTxAttrs argument
-Date: Mon, 21 May 2018 15:03:38 +0100
-Message-Id: <20180521140402.23318-4-peter.maydell@linaro.org>
+Received: from localhost ([::1]:58092 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fGTLI-0007PP-Ah
+	for alex.bennee@linaro.org; Wed, 09 May 2018 13:57:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48132)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <richard.henderson@linaro.org>) id 1fGTJC-0004sp-4k
+	for qemu-arm@nongnu.org; Wed, 09 May 2018 13:55:26 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <richard.henderson@linaro.org>) id 1fGTJ9-0005Wf-5r
+	for qemu-arm@nongnu.org; Wed, 09 May 2018 13:55:22 -0400
+Received: from mail-pg0-x241.google.com ([2607:f8b0:400e:c05::241]:36131)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1fGTJ8-0005U1-Hw
+	for qemu-arm@nongnu.org; Wed, 09 May 2018 13:55:18 -0400
+Received: by mail-pg0-x241.google.com with SMTP id z70-v6so2800118pgz.3
+	for <qemu-arm@nongnu.org>; Wed, 09 May 2018 10:55:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=S/2JGGydUpeF2M5E3pq1XD2DFxk3JsLAsIrsUVrcu1E=;
+	b=DzwQoQdHgXYDTu8EPEgY37Ii0/fGlmbiRVuHuH/kSt8KLyjZ080/YhQ8m/SzJ25Khy
+	G0onN7A/Xp2wUcQV+p89pfQEkBUwuGxIwlcMgSmbt5YVBigIbQx88cTw2MqglJZ0YZTe
+	RH3KET/yx4PpceB2F230ftNxCQ5WV46aPCbCQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references;
+	bh=S/2JGGydUpeF2M5E3pq1XD2DFxk3JsLAsIrsUVrcu1E=;
+	b=qn7PFaIGXYC9Q3TeY7ryWWsjOu1bx23dtfa8gdadFTNoFKblxJ0uJZnRSpLgpHbTmi
+	wbn0wFM1Dv7IyZcvLeEJZKefHaVj783k638QJB673iNHqpjQZNjxids6dXDAB1hb5+B7
+	FppTQekPufG+lCsGx40ZJNdVqMM/N++V7i0Ld9zi1uKDQRvBh4cPeFUM7AsxyTMBb+qB
+	zk/ILJmTjvNNXUN075W6R8G2YVRbCUI8C0xbVIsz2HmwF8gV8gdkXHXxcRo4L8hiuyFB
+	UQIK+urnfK5uLxj7OK/M3tjaMGZjhIh/o2h/75IO1bnARvBVrEz+cl6e8FyHZ6Kyzg3o
+	OhxQ==
+X-Gm-Message-State: ALQs6tCSTHOx3Y4bS0/Pb7CUcWRZjo6BSNBzzD/n8iLUVST63i9JosaR
+	me2HKsaJzPepu8n/u+kXGB91kQ==
+X-Received: by 10.98.157.137 with SMTP id a9mr44574172pfk.206.1525888517560;
+	Wed, 09 May 2018 10:55:17 -0700 (PDT)
+Received: from cloudburst.twiddle.net (97-113-2-170.tukw.qwest.net.
+	[97.113.2.170]) by smtp.gmail.com with ESMTPSA id
+	l90sm60332813pfb.149.2018.05.09.10.55.16
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Wed, 09 May 2018 10:55:16 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Wed,  9 May 2018 10:54:40 -0700
+Message-Id: <20180509175458.15642-11-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.0
-In-Reply-To: <20180521140402.23318-1-peter.maydell@linaro.org>
-References: <20180521140402.23318-1-peter.maydell@linaro.org>
-X-TUID: WTAl/5mZJO7d
+In-Reply-To: <20180509175458.15642-1-richard.henderson@linaro.org>
+References: <20180509175458.15642-1-richard.henderson@linaro.org>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c05::241
+Subject: [Qemu-arm] [PULL 10/28] target/mips: avoid integer overflow in
+ next_page PC check
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, Sagar Karandikar <sagark@eecs.berkeley.edu>,
+	David Hildenbrand <david@redhat.com>, Palmer Dabbelt <palmer@sifive.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Max Filippov <jcmvbkbc@gmail.com>, Michael Clark <mjc@sifive.com>,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>, Yongbok Kim <yongbok.kim@mips.com>,
+	Alexander Graf <agraf@suse.de>, "Emilio G. Cota" <cota@braap.org>,
+	Richard Henderson <rth@twiddle.net>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-s390x@nongnu.org,
+	qemu-arm@nongnu.org, Stafford Horne <shorne@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Cornelia Huck <cohuck@redhat.com>,
+	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: w9YCmCDwI0NK
 
-As part of plumbing MemTxAttrs down to the IOMMU translate method,
-add MemTxAttrs as an argument to address_space_translate()
-and address_space_translate_cached(). Callers either have an
-attrs value to hand, or don't care and can use MEMTXATTRS_UNSPECIFIED.
+From: "Emilio G. Cota" <cota@braap.org>
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+If the PC is in the last page of the address space, next_page_start
+overflows to 0. Fix it.
+
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Cc: Aurelien Jarno <aurelien@aurel32.net>
+Cc: Yongbok Kim <yongbok.kim@mips.com>
+Signed-off-by: Emilio G. Cota <cota@braap.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/exec/memory.h     |  4 +++-
- accel/tcg/translate-all.c |  2 +-
- exec.c                    | 14 +++++++++-----
- hw/vfio/common.c          |  3 ++-
- memory_ldst.inc.c         | 18 +++++++++---------
- target/riscv/helper.c     |  2 +-
- 6 files changed, 25 insertions(+), 18 deletions(-)
+ target/mips/translate.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index cce355d2d8..9a30a1bb9e 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -1908,6 +1908,7 @@ IOMMUTLBEntry address_space_get_iotlb_entry(AddressSpace *as, hwaddr addr,
-  * #MemoryRegion.
-  * @len: pointer to length
-  * @is_write: indicates the transfer direction
-+ * @attrs: memory attributes
-  */
- MemoryRegion *flatview_translate(FlatView *fv,
-                                  hwaddr addr, hwaddr *xlat,
-@@ -1915,7 +1916,8 @@ MemoryRegion *flatview_translate(FlatView *fv,
+diff --git a/target/mips/translate.c b/target/mips/translate.c
+index d05ee67e63..d8e717dacf 100644
+--- a/target/mips/translate.c
++++ b/target/mips/translate.c
+@@ -20202,14 +20202,14 @@ void gen_intermediate_code(CPUState *cs, struct TranslationBlock *tb)
+     CPUMIPSState *env = cs->env_ptr;
+     DisasContext ctx;
+     target_ulong pc_start;
+-    target_ulong next_page_start;
++    target_ulong page_start;
+     int num_insns;
+     int max_insns;
+     int insn_bytes;
+     int is_slot;
  
- static inline MemoryRegion *address_space_translate(AddressSpace *as,
-                                                     hwaddr addr, hwaddr *xlat,
--                                                    hwaddr *len, bool is_write)
-+                                                    hwaddr *len, bool is_write,
-+                                                    MemTxAttrs attrs)
- {
-     return flatview_translate(address_space_to_flatview(as),
-                               addr, xlat, len, is_write);
-diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-index f04a922ef7..52f7bd59a9 100644
---- a/accel/tcg/translate-all.c
-+++ b/accel/tcg/translate-all.c
-@@ -1679,7 +1679,7 @@ void tb_invalidate_phys_addr(AddressSpace *as, hwaddr addr, MemTxAttrs attrs)
-     hwaddr l = 1;
+     pc_start = tb->pc;
+-    next_page_start = (pc_start & TARGET_PAGE_MASK) + TARGET_PAGE_SIZE;
++    page_start = pc_start & TARGET_PAGE_MASK;
+     ctx.pc = pc_start;
+     ctx.saved_pc = -1;
+     ctx.singlestep_enabled = cs->singlestep_enabled;
+@@ -20320,7 +20320,7 @@ void gen_intermediate_code(CPUState *cs, struct TranslationBlock *tb)
+             break;
+         }
  
-     rcu_read_lock();
--    mr = address_space_translate(as, addr, &addr, &l, false);
-+    mr = address_space_translate(as, addr, &addr, &l, false, attrs);
-     if (!(memory_region_is_ram(mr)
-           || memory_region_is_romd(mr))) {
-         rcu_read_unlock();
-diff --git a/exec.c b/exec.c
-index c3a197e67b..d314c7cc39 100644
---- a/exec.c
-+++ b/exec.c
-@@ -3322,7 +3322,8 @@ static inline void cpu_physical_memory_write_rom_internal(AddressSpace *as,
-     rcu_read_lock();
-     while (len > 0) {
-         l = len;
--        mr = address_space_translate(as, addr, &addr1, &l, true);
-+        mr = address_space_translate(as, addr, &addr1, &l, true,
-+                                     MEMTXATTRS_UNSPECIFIED);
+-        if (ctx.pc >= next_page_start) {
++        if (ctx.pc - page_start >= TARGET_PAGE_SIZE) {
+             break;
+         }
  
-         if (!(memory_region_is_ram(mr) ||
-               memory_region_is_romd(mr))) {
-@@ -3699,7 +3700,7 @@ void address_space_cache_destroy(MemoryRegionCache *cache)
-  */
- static inline MemoryRegion *address_space_translate_cached(
-     MemoryRegionCache *cache, hwaddr addr, hwaddr *xlat,
--    hwaddr *plen, bool is_write)
-+    hwaddr *plen, bool is_write, MemTxAttrs attrs)
- {
-     MemoryRegionSection section;
-     MemoryRegion *mr;
-@@ -3733,7 +3734,8 @@ address_space_read_cached_slow(MemoryRegionCache *cache, hwaddr addr,
-     MemoryRegion *mr;
- 
-     l = len;
--    mr = address_space_translate_cached(cache, addr, &addr1, &l, false);
-+    mr = address_space_translate_cached(cache, addr, &addr1, &l, false,
-+                                        MEMTXATTRS_UNSPECIFIED);
-     flatview_read_continue(cache->fv,
-                            addr, MEMTXATTRS_UNSPECIFIED, buf, len,
-                            addr1, l, mr);
-@@ -3750,7 +3752,8 @@ address_space_write_cached_slow(MemoryRegionCache *cache, hwaddr addr,
-     MemoryRegion *mr;
- 
-     l = len;
--    mr = address_space_translate_cached(cache, addr, &addr1, &l, true);
-+    mr = address_space_translate_cached(cache, addr, &addr1, &l, true,
-+                                        MEMTXATTRS_UNSPECIFIED);
-     flatview_write_continue(cache->fv,
-                             addr, MEMTXATTRS_UNSPECIFIED, buf, len,
-                             addr1, l, mr);
-@@ -3848,7 +3851,8 @@ bool cpu_physical_memory_is_io(hwaddr phys_addr)
- 
-     rcu_read_lock();
-     mr = address_space_translate(&address_space_memory,
--                                 phys_addr, &phys_addr, &l, false);
-+                                 phys_addr, &phys_addr, &l, false,
-+                                 MEMTXATTRS_UNSPECIFIED);
- 
-     res = !(memory_region_is_ram(mr) || memory_region_is_romd(mr));
-     rcu_read_unlock();
-diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-index 07ffa0ba10..8e57265edf 100644
---- a/hw/vfio/common.c
-+++ b/hw/vfio/common.c
-@@ -324,7 +324,8 @@ static bool vfio_get_vaddr(IOMMUTLBEntry *iotlb, void **vaddr,
-      */
-     mr = address_space_translate(&address_space_memory,
-                                  iotlb->translated_addr,
--                                 &xlat, &len, writable);
-+                                 &xlat, &len, writable,
-+                                 MEMTXATTRS_UNSPECIFIED);
-     if (!memory_region_is_ram(mr)) {
-         error_report("iommu map to non memory area %"HWADDR_PRIx"",
-                      xlat);
-diff --git a/memory_ldst.inc.c b/memory_ldst.inc.c
-index 25d6125747..15483987fe 100644
---- a/memory_ldst.inc.c
-+++ b/memory_ldst.inc.c
-@@ -33,7 +33,7 @@ static inline uint32_t glue(address_space_ldl_internal, SUFFIX)(ARG1_DECL,
-     bool release_lock = false;
- 
-     RCU_READ_LOCK();
--    mr = TRANSLATE(addr, &addr1, &l, false);
-+    mr = TRANSLATE(addr, &addr1, &l, false, attrs);
-     if (l < 4 || !IS_DIRECT(mr, false)) {
-         release_lock |= prepare_mmio_access(mr);
- 
-@@ -109,7 +109,7 @@ static inline uint64_t glue(address_space_ldq_internal, SUFFIX)(ARG1_DECL,
-     bool release_lock = false;
- 
-     RCU_READ_LOCK();
--    mr = TRANSLATE(addr, &addr1, &l, false);
-+    mr = TRANSLATE(addr, &addr1, &l, false, attrs);
-     if (l < 8 || !IS_DIRECT(mr, false)) {
-         release_lock |= prepare_mmio_access(mr);
- 
-@@ -183,7 +183,7 @@ uint32_t glue(address_space_ldub, SUFFIX)(ARG1_DECL,
-     bool release_lock = false;
- 
-     RCU_READ_LOCK();
--    mr = TRANSLATE(addr, &addr1, &l, false);
-+    mr = TRANSLATE(addr, &addr1, &l, false, attrs);
-     if (!IS_DIRECT(mr, false)) {
-         release_lock |= prepare_mmio_access(mr);
- 
-@@ -219,7 +219,7 @@ static inline uint32_t glue(address_space_lduw_internal, SUFFIX)(ARG1_DECL,
-     bool release_lock = false;
- 
-     RCU_READ_LOCK();
--    mr = TRANSLATE(addr, &addr1, &l, false);
-+    mr = TRANSLATE(addr, &addr1, &l, false, attrs);
-     if (l < 2 || !IS_DIRECT(mr, false)) {
-         release_lock |= prepare_mmio_access(mr);
- 
-@@ -296,7 +296,7 @@ void glue(address_space_stl_notdirty, SUFFIX)(ARG1_DECL,
-     bool release_lock = false;
- 
-     RCU_READ_LOCK();
--    mr = TRANSLATE(addr, &addr1, &l, true);
-+    mr = TRANSLATE(addr, &addr1, &l, true, attrs);
-     if (l < 4 || !IS_DIRECT(mr, true)) {
-         release_lock |= prepare_mmio_access(mr);
- 
-@@ -333,7 +333,7 @@ static inline void glue(address_space_stl_internal, SUFFIX)(ARG1_DECL,
-     bool release_lock = false;
- 
-     RCU_READ_LOCK();
--    mr = TRANSLATE(addr, &addr1, &l, true);
-+    mr = TRANSLATE(addr, &addr1, &l, true, attrs);
-     if (l < 4 || !IS_DIRECT(mr, true)) {
-         release_lock |= prepare_mmio_access(mr);
- 
-@@ -405,7 +405,7 @@ void glue(address_space_stb, SUFFIX)(ARG1_DECL,
-     bool release_lock = false;
- 
-     RCU_READ_LOCK();
--    mr = TRANSLATE(addr, &addr1, &l, true);
-+    mr = TRANSLATE(addr, &addr1, &l, true, attrs);
-     if (!IS_DIRECT(mr, true)) {
-         release_lock |= prepare_mmio_access(mr);
-         r = memory_region_dispatch_write(mr, addr1, val, 1, attrs);
-@@ -438,7 +438,7 @@ static inline void glue(address_space_stw_internal, SUFFIX)(ARG1_DECL,
-     bool release_lock = false;
- 
-     RCU_READ_LOCK();
--    mr = TRANSLATE(addr, &addr1, &l, true);
-+    mr = TRANSLATE(addr, &addr1, &l, true, attrs);
-     if (l < 2 || !IS_DIRECT(mr, true)) {
-         release_lock |= prepare_mmio_access(mr);
- 
-@@ -511,7 +511,7 @@ static void glue(address_space_stq_internal, SUFFIX)(ARG1_DECL,
-     bool release_lock = false;
- 
-     RCU_READ_LOCK();
--    mr = TRANSLATE(addr, &addr1, &l, true);
-+    mr = TRANSLATE(addr, &addr1, &l, true, attrs);
-     if (l < 8 || !IS_DIRECT(mr, true)) {
-         release_lock |= prepare_mmio_access(mr);
- 
-diff --git a/target/riscv/helper.c b/target/riscv/helper.c
-index 95889f23b9..29e1a603dc 100644
---- a/target/riscv/helper.c
-+++ b/target/riscv/helper.c
-@@ -210,7 +210,7 @@ restart:
-                 MemoryRegion *mr;
-                 hwaddr l = sizeof(target_ulong), addr1;
-                 mr = address_space_translate(cs->as, pte_addr,
--                    &addr1, &l, false);
-+                    &addr1, &l, false, MEMTXATTRS_UNSPECIFIED);
-                 if (memory_access_is_direct(mr, true)) {
-                     target_ulong *pte_pa =
-                         qemu_map_ram_ptr(mr->ram_block, addr1);
 -- 
 2.17.0
+

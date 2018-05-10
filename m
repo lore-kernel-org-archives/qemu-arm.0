@@ -1,59 +1,49 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id j9-v6sm318223wri.55.2018.05.10.02.42.07
+        by smtp.gmail.com with ESMTPSA id d54-v6sm616952wrd.94.2018.05.10.02.42.07
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
         Thu, 10 May 2018 02:42:07 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id E44A63E00CB;
-	Thu, 10 May 2018 10:42:06 +0100 (BST)
+	by zen.linaro.local (Postfix) with ESMTP id 0276A3E0335;
+	Thu, 10 May 2018 10:42:07 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: peter.maydell@linaro.org
 Cc: richard.henderson@linaro.org,
 	qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v3 0/5] refactor float-to-float and fix AHP
-Date: Thu, 10 May 2018 10:42:01 +0100
-Message-Id: <20180510094206.15354-1-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Aurelien Jarno <aurelien@aurel32.net>
+Subject: [PATCH v3 1/5] fpu/softfloat: int_to_float ensure r fully initialised
+Date: Thu, 10 May 2018 10:42:02 +0100
+Message-Id: <20180510094206.15354-2-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.17.0
+In-Reply-To: <20180510094206.15354-1-alex.bennee@linaro.org>
+References: <20180510094206.15354-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: MS5Y19jAoH6q
+X-TUID: FnxqgJcQL+O1
 
-Hi,
+Reported by Coverity (CID1390635). We ensure this for uint_to_float
+later on so we might as well mirror that.
 
-Hi,
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ fpu/softfloat.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-I've not included the test case in the series but you can find it in
-my TCG fixup branch:
-
-  https://github.com/stsquad/qemu/blob/testing/tcg-tests-revival-v4/tests/tcg/arm/fcvt.c
-
-Some of the ARMv7 versions are commented out as they where not
-supported until later revs. I do have a build that includes that but
-unfortunately the Debian compiler it too old to build it.
-
-: patch 0001/fpu softfloat int_to_float ensure r fully initial.patch needs review
-: patch 0004/target arm convert conversion helpers to fpst ahp.patch needs review
-: patch 0005/target arm squash FZ16 behaviour for conversions.patch needs review
-
-Alex Bennée (5):
-  fpu/softfloat: int_to_float ensure r fully initialised
-  fpu/softfloat: re-factor float to float conversions
-  fpu/softfloat: support ARM Alternative half-precision
-  target/arm: convert conversion helpers to fpst/ahp_flag
-  target/arm: squash FZ16 behaviour for conversions
-
- fpu/softfloat-specialize.h |  40 ---
- fpu/softfloat.c            | 546 +++++++++++--------------------------
- include/fpu/softfloat.h    |   8 +-
- target/arm/helper.c        |  66 ++---
- target/arm/helper.h        |  12 +-
- target/arm/translate-a64.c |  38 ++-
- target/arm/translate.c     |  70 +++--
- target/arm/translate.h     |  15 +
- 8 files changed, 306 insertions(+), 489 deletions(-)
-
+diff --git a/fpu/softfloat.c b/fpu/softfloat.c
+index 70e0c40a1c..3adf6a06e4 100644
+--- a/fpu/softfloat.c
++++ b/fpu/softfloat.c
+@@ -1517,7 +1517,7 @@ FLOAT_TO_UINT(64, 64)
+ 
+ static FloatParts int_to_float(int64_t a, float_status *status)
+ {
+-    FloatParts r;
++    FloatParts r = {};
+     if (a == 0) {
+         r.cls = float_class_zero;
+         r.sign = false;
 -- 
 2.17.0

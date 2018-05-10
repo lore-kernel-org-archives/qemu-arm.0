@@ -1,91 +1,92 @@
-Received: by 10.28.4.212 with SMTP id 203csp1258157wme;
-        Thu, 10 May 2018 10:01:21 -0700 (PDT)
-X-Received: by 2002:aca:5405:: with SMTP id i5-v6mr1313213oib.262.1525971681415;
-        Thu, 10 May 2018 10:01:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1525971681; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp1260278wme;
+        Thu, 10 May 2018 10:02:46 -0700 (PDT)
+X-Received: by 2002:a9d:14e:: with SMTP id 72-v6mr1436470otu.365.1525971766600;
+        Thu, 10 May 2018 10:02:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1525971766; cv=none;
         d=google.com; s=arc-20160816;
-        b=cZEb5Xq4JeMeYn9YM0CXbj+KwBt/YHNR4sxnvWJ28t/RybpPMm7p1mqD5x0Gv7RWLG
-         k9giLhx1DZMl+RYhkMZZleqGzEuX2/sBNXeZ00c6uuptv5dLT4Y+k6t3zPZ3djEHIhQW
-         NunFnHQ++mpI3LyWwm5jwESOh1cPIj9kQVuCYUWHqi7I2YnP5geJGkYDW6N7MxkFo9Xj
-         nTT17QmJTxyW+q15AuBByG3adUQn/cKX42Lw1uKu9MyP0bnBmvrKCmUZab4bo2Zp1hAj
-         CI1NXn40NLvmOuQ6KtBSgzOMUU3uikugcA3qNXpuISfhWLy1MHEfixlRIdUn3g3i/4H5
-         SVvA==
+        b=agdHwELhZKVMRWBC2AnzEgfbvxj3qsSTvYPtiTRBMyiOBcpYIYUIeygnrQwi7ODlar
+         4yvdkxy5ziVX9QYqwapYxWd8Txj47eBmK3ZxMCdyMfy/Gp+v4fBNpx7q8nP4FPPfaHjI
+         Jdche+K3jou9c5DSY/4KUBhQvGf33Cx4iK7Y/mpevX/HiB/Z0KITPg8OtcoPvTF5mt/R
+         tmKCt+PC3XEg4iO9+IX7VhWY9gdjSFVYKs5ffqmnUo7V0nAoQQM7SOtyA7ELr2jFnvzZ
+         oABO2/GUFKG8RfYSqTh6chdlFLRqehF3E4kw/O1tHK3wrWgnKuo+fA3k9gZkvuEZmdj3
+         yR+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=r7YnDvR03sC9bc7Sm12GtFBAT4UW36+ppPALb2O6PlA=;
-        b=ZfVBY3G/yU1tOTCtvqcYTjl1xR/298anWPPE/Mmq3NaG/aOxFrhYr6kPSPNijhmvwJ
-         NvZc9hrlFQuXLeK9YcEOoqnOPamZXnoSI0NkcA9fXrDkmkgqQVZOSYocDJy93IIHA/dG
-         ygommeBCfij7bvW4RmPJOsZ+ibvIhYc09AGeJX37dXp92eWohqW5BylvAAxlFm2JEfMd
-         7trrtNK3v0beHiHvQpcJeNM+McSE3dasl9lwc8qrKoiJlSTQz3CVEBNA0V0wZKJ0aNSk
-         izMnj/TOXiHCVHqy+iHNI60RWDpxG4sa34jcCo90C8g0/ZW+6/qdpi6XQUo822HIbHEU
-         L3MQ==
+        bh=syxnbJ6Ee+0kQbVgF4FVxAbONeptA9UWXqsd1lJROgY=;
+        b=EfW/p+HcfMb+896P8tH+WhT3d3jLCvtiH7MkQSvkS4gftt3sHUpBdLTfFycnkAmT9E
+         8ATebhaBneDyzyBarZsLIz4LrqJ8yjMvJ8rNEtNky5ZkiXrdMFLJJ5HdtpGgI8d0d0MH
+         nUCps6dAPV/mOxd31lSg8EjiuFmwDTQatBVdb50lA+2L78j+3sH4dkgjJIOAPiZ2ftO8
+         uYLOZBrg4z7kszMDvhLjXXVFSVM7yo39LfTUq+jk3NG021b9O5ordVzmne97rr8q9okG
+         IjXWZSV6XWQKEehalvtkhPTRm/srwXk3tylTLxhlagccssAKdUo/TGGV63wx3/dauUWa
+         e7Ag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PDlps7T7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Wp2rZt1V;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id z12-v6sor623392oti.267.2018.05.10.10.01.21
+        by mx.google.com with SMTPS id r96-v6sor561876ota.33.2018.05.10.10.02.46
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 10 May 2018 10:01:21 -0700 (PDT)
+        Thu, 10 May 2018 10:02:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PDlps7T7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Wp2rZt1V;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:in-reply-to:references:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=r7YnDvR03sC9bc7Sm12GtFBAT4UW36+ppPALb2O6PlA=;
-        b=PDlps7T7H01EMw0Ltcl271WuHg1ik6BNZYGM2tpy6YenLIoRc8N0KL6jCJk+BNlP1C
-         sPlnuL0QlZeiDL5VGsaTUNcJxqHgjrvWQe2Ky/UNEe3MeOIfa20TegXtvgaBz/5o4a4R
-         0+S3m9NTys9B94BBg1h38/pfmqZbkrJCuTXcA=
+        bh=syxnbJ6Ee+0kQbVgF4FVxAbONeptA9UWXqsd1lJROgY=;
+        b=Wp2rZt1VKoASRUKl5ab4NLjp3Lc48+B+xxNcf4OWKDYRItk/k13Lz8QAoTEXkdy7HH
+         /q0E5dVRl112ZsAmVOt5ysvSK2x26FkhY/mpqh4CTKSMacYzVhuwAcwNPGB7t7vZh4Vp
+         EO7NQQnJ2J26xER1peivyFYkLUCGE3BvSJEw0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:in-reply-to:references:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=r7YnDvR03sC9bc7Sm12GtFBAT4UW36+ppPALb2O6PlA=;
-        b=DIunMDZNWGMVSObpDtzwxTjroU5R+GdxtkoZ7Z0xTNF8oKCvjtMeHBSjuA1QfhWr/I
-         THWLwm9c2vb8mwKkYT5JCX/XPPTpy0wvKAfQV8fGmzotkDHixPzEkwAG32bx6EAn8tYF
-         2jEbSIf+oKiHNi5yC1PvouxrjJY0FW/y8QYROHdc2PoB01IFBY3x4WjVXAzO9vEOIyyY
-         KIXvTsAIA/ptzMC/9f/BbShJnbGzD4t46uZwhjvP7kKdmlH3iqu5EnYNzjKkPjTq1MR9
-         3VDL7u1F9xBOpb5AriEE14tUulh/PyKvRAbuZQEtrAkXJNJnMO4/513wTwhpLqk4j6XC
-         S1Ew==
-X-Gm-Message-State: ALKqPweNv0Prk+GvumC1ZYTvUvTMLR02YX+fq3k/3nDkuxifPqReEV9p
-	94dkWTexZQ2ZJAnuMTnkT2CRHVJw3kITm/elMuhUOerJ
-X-Google-Smtp-Source: AB8JxZqU7j+/as3e4GLG2J1iRgUl5EbuWD0WqoqHXK9mrbQBWXF+IvDWWCYZX2+HO7rOa37KiCFTFLPvKFQIyjlypF4=
-X-Received: by 2002:a9d:5014:: with SMTP id a20-v6mr1393510oth.205.1525971680636;
- Thu, 10 May 2018 10:01:20 -0700 (PDT)
+        bh=syxnbJ6Ee+0kQbVgF4FVxAbONeptA9UWXqsd1lJROgY=;
+        b=duGdMRiXadvkjzA8//cT1qu81/qdBlT9MSGotxDmnRkRH+80ARdQ1Izqk5N67HvsyI
+         hxgf8W/3Ju23pTnonpOneYkZxxsVnlPHhaDkoxgtRjfejMBfr8N5xumSxtRuF21o8t0h
+         LCYz0MUCFWvt/AFj0iTDWvoi2E5hrIF+5+osvjWnhRcNfCQVieMyrXGyUt/thVNo/mKh
+         FDLNGFTcmixfov7T6Z3Gadg0YZOYfIoLw/UMcCpD4whvh1Vm3v4CU9LPwEw5KDByYrGD
+         4adOAHfS3aQGnnoX04SyqqEUWtph7QYaMbSoTCjFQeScIRB/R67Z+AOgHPiOIXIN24jp
+         NWIA==
+X-Gm-Message-State: ALKqPwcxwg86aj/0JyywPxp0wIuIJZ1m1/uA+FcolwoHrW6oFZPv2kJP
+	pf+p2zJ99onGqUtJTqI8xtGDsMB7tvpxEzGRnqQq06SG
+X-Google-Smtp-Source: AB8JxZoekHZ8RqFjaiJWaJoZhsH7sLnghSeHbOhxGY35zYN4htS7UV0mCdqiuolSswgPpONaM2+SFZcM1KpErljUlo8=
+X-Received: by 2002:a9d:2842:: with SMTP id h2-v6mr1618062otd.210.1525971766300;
+ Thu, 10 May 2018 10:02:46 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Thu, 10 May 2018 10:01:00
+Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Thu, 10 May 2018 10:02:25
  -0700 (PDT)
-In-Reply-To: <20180502221552.3873-13-richard.henderson@linaro.org>
-References: <20180502221552.3873-1-richard.henderson@linaro.org> <20180502221552.3873-13-richard.henderson@linaro.org>
+In-Reply-To: <20180502221552.3873-14-richard.henderson@linaro.org>
+References: <20180502221552.3873-1-richard.henderson@linaro.org> <20180502221552.3873-14-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 10 May 2018 18:01:00 +0100
-Message-ID: <CAFEAcA9xJMmi2NqdsmtaMu36+tvBu7Ang3jRmSJrU8Y=iQTNNw@mail.gmail.com>
-Subject: Re: [PATCH v2 12/14] target/arm: Implement FCSEL for fp16
+Date: Thu, 10 May 2018 18:02:25 +0100
+Message-ID: <CAFEAcA_v5kVGLKwdX-U6AA1qEkU9KTJBCdh-ZRGMJqSMqjna8g@mail.gmail.com>
+Subject: Re: [PATCH v2 13/14] target/arm: Implement FMOV (immediate) for fp16
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
 	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
 	qemu-stable <qemu-stable@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: JAHKgYaWpeUw
+X-TUID: AVKjiO7uFbns
 
 On 2 May 2018 at 23:15, Richard Henderson <richard.henderson@linaro.org> wr=
 ote:
 > From: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 >
-> These were missed out from the rest of the half-precision work.
+> All the hard work is already done by vfp_expand_imm, we just need to
+> make sure we pick up the correct size.
 >
 > Cc: qemu-stable@nongnu.org
 > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> [rth: Fix erroneous check vs type]
+> [rth: Merge unallocated_encoding check with TCGMemOp conversion.]
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
 

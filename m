@@ -1,67 +1,64 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id m35-v6sm943593wrm.51.2018.05.10.06.12.09
+        by smtp.gmail.com with ESMTPSA id 44-v6sm1814859wrv.47.2018.05.10.06.34.36
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 May 2018 06:12:09 -0700 (PDT)
+        Thu, 10 May 2018 06:34:36 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 532A23E03C0;
-	Thu, 10 May 2018 14:12:09 +0100 (BST)
-References: <1524153386-3550-1-git-send-email-abdallah.bouassida@lauterbach.com>
+	by zen.linaro.local (Postfix) with ESMTPS id C87A93E03C0;
+	Thu, 10 May 2018 14:34:35 +0100 (BST)
+References: <20180510094206.15354-1-alex.bennee@linaro.org> <CAFEAcA88-EFYN3y-sU=YbzeT-eXCBk7md-y2rEQfpJtZ+MF-wQ@mail.gmail.com>
 User-agent: mu4e 1.1.0; emacs 26.1
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Abdallah Bouassida <abdallah.bouassida@lauterbach.com>
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, qemu-arm@nongnu.org, khaled.jmal@lauterbach.com
-Subject: Re: [PATCH v6 0/3] target/arm: Add a dynamic XML-description of the cp-registers to GDB
-In-reply-to: <1524153386-3550-1-git-send-email-abdallah.bouassida@lauterbach.com>
-Date: Thu, 10 May 2018 14:12:09 +0100
-Message-ID: <87lgcrvemu.fsf@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v3 0/5] refactor float-to-float and fix AHP
+In-reply-to: <CAFEAcA88-EFYN3y-sU=YbzeT-eXCBk7md-y2rEQfpJtZ+MF-wQ@mail.gmail.com>
+Date: Thu, 10 May 2018 14:34:35 +0100
+Message-ID: <87k1sbvdlg.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: GSVURfIJVgGy
+X-TUID: REBfCUPKc1bc
 
 
-Abdallah Bouassida <abdallah.bouassida@lauterbach.com> writes:
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-> The previous version:
-> http://patchwork.ozlabs.org/project/qemu-devel/list/?series=3D33714
+> On 10 May 2018 at 10:42, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrote:
+>> Hi,
+>>
+>> Hi,
+>>
+>> I've not included the test case in the series but you can find it in
+>> my TCG fixup branch:
+>>
+>>   https://github.com/stsquad/qemu/blob/testing/tcg-tests-revival-v4/test=
+s/tcg/arm/fcvt.c
+>>
+>> Some of the ARMv7 versions are commented out as they where not
+>> supported until later revs. I do have a build that includes that but
+>> unfortunately the Debian compiler it too old to build it.
+>>
+>> : patch 0001/fpu softfloat int_to_float ensure r fully initial.patch nee=
+ds review
+>> : patch 0004/target arm convert conversion helpers to fpst ahp.patch nee=
+ds review
+>> : patch 0005/target arm squash FZ16 behaviour for conversions.patch need=
+s review
 >
-> Abdallah Bouassida (3):
->   target/arm: Add "ARM_CP_NO_GDB" as a new bit field for ARMCPRegInfo
->     type
->   target/arm: Add "_S" suffix to the secure version of a sysreg
->   target/arm: Add the XML dynamic generation
+> This still seems to regress the NaN conversion case I mentioned
+> in review of the previous series:
 >
+> (3) Here's a NaN case we get wrong now: 64 to IEEE-16 conversion,
+> input is 0x7ff0000000000001 (an SNaN), we produce
+> 0x7c00 (infinity) but should produce 0x7e00 (a QNaN).
 
-So I got a fixed up gdb and I was testing the reading of the virtual
-counter:
+Hmm I had added the test case but due to another bug it never actually
+ran :-/
 
-=3D> 0xffffff800854a118 <arch_counter_get_cntvct+16>:	mrs	x0, cntvct_el0
-   0xffffff800854a11c <arch_counter_get_cntvct+20>:	b	0xffffff800854a148 <a=
-rch_counter_get_cntvct+64>
-   0xffffff800854a120 <arch_counter_get_cntvct+24>:	adrp	x0, 0xffffff800896=
-a000 <scsi_format_log+3568>
-   0xffffff800854a124 <arch_counter_get_cntvct+28>:	add	x0, x0, #0x5a0
-   0xffffff800854a128 <erratum_set_next_event_tval_virt+4294964112>:	mrs	x1=
-, tpidr_el1
+>
+> thanks
+> -- PMM
 
-p/x $x0
- $6 =3D 0xffffff800854a108
-p/x $cntvct_el0
- $7 =3D 0x0
-stepi
-0xffffff800854a11c	160		return arch_timer_reg_read_stable(cntvct_el0);
-=3D> 0xffffff800854a11c <arch_counter_get_cntvct+20>:	b	0xffffff800854a148 =
-<arch_counter_get_cntvct+64>
-   0xffffff800854a120 <arch_counter_get_cntvct+24>:	adrp	x0, 0xffffff800896=
-a000 <scsi_format_log+3568>
-   0xffffff800854a124 <arch_counter_get_cntvct+28>:	add	x0, x0, #0x5a0
-p/x $x0
-  $8 =3D 0x7a5b32b
-p/x $cntvct_el0
-  $9 =3D 0x0
-
-So I'm wondering why there is a disparity here?
 
 --
 Alex Benn=C3=A9e

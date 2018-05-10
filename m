@@ -1,92 +1,81 @@
-Received: by 10.28.4.212 with SMTP id 203csp1053440wme;
-        Thu, 10 May 2018 07:01:42 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZqKRLXwhU8uzZhZol+4aaX9wUxmJO0dG0GYb+piVuQdTec6E9Kse76JL0TaFit2ce7pTKKK
-X-Received: by 2002:a1c:58ce:: with SMTP id m197-v6mr1284408wmb.110.1525960902925;
-        Thu, 10 May 2018 07:01:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1525960902; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp1064299wme;
+        Thu, 10 May 2018 07:09:36 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZrSB2Be1fJdr84mXZBpJPF7PBX8chtF+3Js0/Y9PDuN+N13gZzNmosmWSnpJwQkwFTuD7Tt
+X-Received: by 2002:a1c:9015:: with SMTP id s21-v6mr1334131wmd.75.1525961376473;
+        Thu, 10 May 2018 07:09:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1525961376; cv=none;
         d=google.com; s=arc-20160816;
-        b=tx8B250BxXcwjUGix8QJkR1QTXFfOP6/NlBgWjfOa0iyfCd1kBmA4NA+QOuQ4/KQxl
-         BxvohSOH5CCrFpTz7C/NXrqg1UVmwKg0G8QnSsIuKFwO2MkpZtDEI/4Gvb7n6uuz49Td
-         BWfwZaeh66fzv9tb5vhZ4nSBBCDaVuJokDCv7Bdoz1WPcw3t157cfmSHxW4722ZiQFmB
-         0DKKtgMLaYXEhmWzEurcNyk4b4ns35a4GgBt419vNbps2hUa25HZAZs40NTuXAcbnpHA
-         +Ia3SKzTWKsU27uNzRCwTfqYSJRXCEphfMTk2zpsPLqPcZmfAiOdQ97QhdUVV1MTCLKn
-         P4RA==
+        b=czWZIXZMi3nStRm+9F8+ZHeq2ZkKcAyb1HtcHseNQmJGrYjGH4hwGM4qAFGvm9JlYw
+         wN1CvGuy3KT9YsfwdtJoQ1MwZTL0MpbyfIKdzP50wCLOotn52X7Fs2pDCCCRsBmQybF/
+         /DjjZargP1rt/FyBGcBXrWlOuf3Hm1LV9/tK1jA1RGMd/1SYCEeUyoLFhHuidgMLyvm9
+         DM9veODCyPGNSXtAVgde93VhtEp73hGRQRPOQI805R783blWDipL526+Anzf0h+82iKP
+         de66LrJKSHRMCR1tY0NwR2BwjPmi3Ql7uFWOUqiY0aK7Iw93JRGeJCD3mIXAg+aIB1Lo
+         cykg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=message-id:date:subject:cc:to:from:arc-authentication-results;
-        bh=WTBh2ZEHdmYheTN8DSe6+SivjfO8GXR0Fp/4es2yneA=;
-        b=H0yxP5DjRpbGFt+8+ihcpwcVrTcY5BV8RpzEk1WWw+9zc4zpyKmWFqzogS9lE2jO3N
-         z/XB/cXe0M9+ytY9Yv8g1ss2jXvJY01uiF2mQAzII7b4HvM2oQq0GucocKEm+F69SbDp
-         3USWSYBdfgqR9js494AzeBD4aO95PODa5y2g/CD6iqJlILN+hikggAJpMbvX8Hrg+yif
-         T+38r1KbyoTm4cf8zntXkLwjfsrs3EIZHxoCb3FexA6p4YtZeKqcLKDlD8tmzX6s1mAx
-         ufnXPS7K/8zJMP5pXjyM1FcrvEDmAgyKRjNiWIRjz1w/9gIjrR7pahpdzotCnkM0O4/S
-         6+VQ==
+        bh=phvNjbdXKwF6gAiGMKPp/9bnC+Uma0HqzuJu0Ayam9A=;
+        b=T3jyR+iNH3CEWakEoZmaYW1zHku4wH28RIMfGldIPPYYXRhXK9V5xRH2gIM2sZLAJH
+         dVoaW7/nheJvA6wsxjpp4ZfXIjSvWtl6HlG2Xvi27gXGw7SzrRnE5+917K60m8OIoNkx
+         HBX5GRZOhwqiEUgk/8BwuwckJxfpbjBIAldUJh+5QAfWKuSLeZ9DWLNCb1SiJGxvalyE
+         cuPrA5RHbCDQ8Hr9jjU7I2kIQEtCrS5V4pc28Kvcx6uTaOGHkWmsU5ZUFZYUWwKPXABo
+         7QD4zsCt6Yd+fvpct/EwjcRi1lfJ9ogyNvCABQJRXyXzupdBIwYE7+D2qmdtURZw8uUP
+         Da2A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <pm215@archaic.org.uk>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by mx.google.com with ESMTPS id z126-v6si998964wmd.221.2018.05.10.07.01.42
+        by mx.google.com with ESMTPS id 60-v6si831559wrj.64.2018.05.10.07.09.36
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 May 2018 07:01:42 -0700 (PDT)
+        Thu, 10 May 2018 07:09:36 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1fGm8b-0003Hu-U0; Thu, 10 May 2018 15:01:41 +0100
+	id 1fGmGF-0003Ir-Bx; Thu, 10 May 2018 15:09:35 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: patches@linaro.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH] fpu/softfloat: Don't set Invalid for float-to-int(MAXINT)
-Date: Thu, 10 May 2018 15:01:41 +0100
-Message-Id: <20180510140141.12120-1-peter.maydell@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <rth@twiddle.net>
+Subject: [PATCH] fix fp16 tininess
+Date: Thu, 10 May 2018 15:09:34 +0100
+Message-Id: <20180510140934.22855-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.17.0
-X-TUID: XKX8ggyFytuL
+X-TUID: IW0GxD/cFg6g
 
-In float-to-integer conversion, if the floating point input
-converts exactly to the largest or smallest integer that
-fits in to the result type, this is not an overflow.
-In this situation we were producing the correct result value,
-but were incorrectly setting the Invalid flag.
-For example for Arm A64, "FCVTAS w0, d0" on an input of
-0x41dfffffffc00000 should produce 0x7fffffff and set no flags.
+In commit d81ce0ef2c4f105 we added an extra float_status field
+fp_status_fp16 for Arm, but forgot to initialize it correctly
+by setting it to float_tininess_before_rounding. This currently
+will only cause problems for the new V8_FP16 feature, since the
+float-to-float conversion code doesn't use it yet. The effect
+would be that we failed to set the Underflow IEEE exception flag
+in all the cases where we should.
 
-Fix the boundary case to take the right half of the if()
-statements.
+Add the missing initialization.
 
-This fixes a regression from 2.11 introduced by the softfloat
-refactoring.
-
+Fixes: d81ce0ef2c4f105
 Cc: qemu-stable@nongnu.org
-Fixes: ab52f973a50
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- fpu/softfloat.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ target/arm/cpu.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/fpu/softfloat.c b/fpu/softfloat.c
-index 8401b37bd4..9bcaaebe4f 100644
---- a/fpu/softfloat.c
-+++ b/fpu/softfloat.c
-@@ -1368,14 +1368,14 @@ static int64_t round_to_int_and_pack(FloatParts in, int rmode,
-             r = UINT64_MAX;
-         }
-         if (p.sign) {
--            if (r < -(uint64_t) min) {
-+            if (r <= -(uint64_t) min) {
-                 return -r;
-             } else {
-                 s->float_exception_flags = orig_flags | float_flag_invalid;
-                 return min;
-             }
-         } else {
--            if (r < max) {
-+            if (r <= max) {
-                 return r;
-             } else {
-                 s->float_exception_flags = orig_flags | float_flag_invalid;
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index d175c5e94f..7939c6b8ae 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -324,6 +324,8 @@ static void arm_cpu_reset(CPUState *s)
+                               &env->vfp.fp_status);
+     set_float_detect_tininess(float_tininess_before_rounding,
+                               &env->vfp.standard_fp_status);
++    set_float_detect_tininess(float_tininess_before_rounding,
++                              &env->vfp.fp_status_f16);
+ #ifndef CONFIG_USER_ONLY
+     if (kvm_enabled()) {
+         kvm_arm_reset_vcpu(cpu);
 -- 
 2.17.0

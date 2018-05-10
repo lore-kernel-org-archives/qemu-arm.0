@@ -1,172 +1,175 @@
-Received: by 10.28.4.212 with SMTP id 203csp1317319wme;
-        Thu, 10 May 2018 11:00:32 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZov7e7c6X9LQK5syvVPEljS1A1CPYeEcPF6+16hvpFPiU3BFnO/JZwpz0mIdPKWXSW0SYmP
-X-Received: by 2002:ae9:ed8c:: with SMTP id c134-v6mr2148636qkg.323.1525975231856;
-        Thu, 10 May 2018 11:00:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1525975231; cv=none;
+Received: by 10.28.4.212 with SMTP id 203csp1328157wme;
+        Thu, 10 May 2018 11:10:09 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZo1knn+61apRjv36+jvgEEXt5rxzcOcXdKND0vLnItAWNbZNhIuwKneaXjRRxENSSV+I79y
+X-Received: by 2002:ac8:1766:: with SMTP id u35-v6mr2401778qtk.209.1525975809852;
+        Thu, 10 May 2018 11:10:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1525975809; cv=none;
         d=google.com; s=arc-20160816;
-        b=ltl+zVVMSYVG07hKUJiQLdhi9LsL5eeprzrQsQjgv0LDGeGtrz7XO9b4MvyYRBOvzj
-         ewnGICuCQCcRz16WzuWTnJEYpNZr74PfXLu2N0AHs+CkpdIEwejwmAz3VfKLY894y9QI
-         jad2qyWLjEJbCH7QB7exeYvlxwd/biQF3i2QsTU8R6ltWBNmlMmrGfb6nkA/Mv5kPMoc
-         Ov6zDe1wzwUAizMWcKtZNFmzH7+26r7kf76vcCo7qTKwwMFdXwae9Xx8/Iiw0v4EHE9I
-         2V6+e00t3lW7uQ0aDsiqpSXcUZ/c14Y4l70SEP3+25PyjaFAiFY+Do+8CZ5gMx2NWLnT
-         p10g==
+        b=uTX2yLQ9j0UqalCF/zkr8w6+5WtRPAcKH3GxaGcxQ8peAlHMZXuB1nDwj3CZVnbB6E
+         AU37AhjIrOUQ7+OhzAGMr0B2usa+zJ2kw2WOAhAar7LTVu8lsif4MDyTLy4jmp69M7PA
+         axTMLUMhbX12uJyjkBUSZSne033gEwQG8lT2LNfEaZpIHTrgCsrp4ldSNRL49CKgTUgD
+         ZzkJ707nA6dmyEXc+QLpqg/jaq0uBUOOpSEqTzDY8iQS4695vuXRkty40DfXRdr0iugR
+         zVqrLg4HBgjietVyRzYfGTUxeXkXoJhjz6BfT9JwnKzplZopijLCCCUfQ/J9jHCM7XcO
+         F4/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:to
          :dkim-signature:arc-authentication-results;
-        bh=rkO3l92A/UWb0kDq3TQCevydgtIVy8V33UG2eqPEnk8=;
-        b=QArDDaRB31EN/xeseLV4WrLjSuOlYT2nqpGPnwW0yVT2Pg6S/sJxEMGAKW6wiwxcP4
-         bLacduahtd970/4KpNyAZDusrPehHrCcOsnJ9TE65KA97WenIy2Vlx26wjwWDfFV5HcD
-         w682HI7TgeR59Gc3AjSYOFSKkp90gA+VkN1mi0JiYP4XVdAg6ZpnN256hn2SDirWwL26
-         jI4Mx2mPtVxQhyrTY1hJNo9C0tM0LqNJyVNtx5V19zM4ZlSPxfHf7yXfhPjRZfshXLXE
-         kaQ/EvA+FYDibKyTmIvv9bBtLWhN916VlISPIN12bh39/ccfc/wms71hHTSgflihuRiW
-         /ppg==
+        bh=7I7kjHAQKhd4Q8hyIv5bpPQ1kJafzdP5nP/u/EAzf5Q=;
+        b=zcCRhDzJp43rmQDw7vvtZQoa5q2LsckXg/7JRM6gbOCvKtuj1hUExw63xn5QvfJDvl
+         EZo6HOSGgOdV3oxRfeDKHCFcrXm6EEdOGwCwm6NYjLHz471r0TZXKNShqcoQWCllVasm
+         oOskRCJna1Zdd5UygEe7xeubYS4/MX0Woyzili6P7o904yHteai0kuWPHxDC0wZ7Q5z4
+         ChzimWEop+XCn/WOfrV2a/RBFVUau2ACpRLDQD+t4vK10UEXbHmfmEz4Wu8+zLsRhrTs
+         CP2NxDM2+85L9FaRZgfSa64JqAPNTJMCa7CK3J8biORHCFIpVryYDtOJzPVFY6vzoswb
+         59Kg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Cu5FjqyN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FweHhDp5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z13-v6si1299380qtb.231.2018.05.10.11.00.31
+        by mx.google.com with ESMTPS id d10-v6si1206450qtl.391.2018.05.10.11.10.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 10 May 2018 11:00:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 10 May 2018 11:10:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Cu5FjqyN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:35051 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FweHhDp5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:35155 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fGprj-0005vx-9R
-	for alex.bennee@linaro.org; Thu, 10 May 2018 14:00:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51765)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fGq13-0005Qy-5q
+	for alex.bennee@linaro.org; Thu, 10 May 2018 14:10:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56320)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fGpr2-0005Qp-1G
-	for qemu-devel@nongnu.org; Thu, 10 May 2018 13:59:49 -0400
+	id 1fGq0r-0005PL-9S
+	for qemu-arm@nongnu.org; Thu, 10 May 2018 14:09:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fGpr1-0002KR-8y
-	for qemu-devel@nongnu.org; Thu, 10 May 2018 13:59:48 -0400
-Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:34362)
+	id 1fGq0o-0007cy-4l
+	for qemu-arm@nongnu.org; Thu, 10 May 2018 14:09:57 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:34574)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fGpqw-0002Io-QH; Thu, 10 May 2018 13:59:42 -0400
-Received: by mail-qt0-x242.google.com with SMTP id m5-v6so3712789qti.1;
-	Thu, 10 May 2018 10:59:42 -0700 (PDT)
+	id 1fGq0o-0007cq-1P; Thu, 10 May 2018 14:09:54 -0400
+Received: by mail-qt0-x243.google.com with SMTP id m5-v6so3757855qti.1;
+	Thu, 10 May 2018 11:09:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=rkO3l92A/UWb0kDq3TQCevydgtIVy8V33UG2eqPEnk8=;
-	b=Cu5FjqyN6rOpayBNb6W/CKKZcYRjYagdfyxKaSJYBrpQCQ02Sa7dUmPevERRwW7j+N
-	M0Devu2vmaupuEdmkKA6JS/7J6LkY/bR4/zspf0hHeSi+ioM5H+2MsGYXQEbAj/1oBBG
-	cKjiVeiY2Fy84fCpritl1fgaI05vQ0wa+06MdR2APBEt2df/7GHb1fYpsxvT7Qrb6E7S
-	MT0nAy75u86cD8sPUTxEhgQA4uBjh/nXFJ5Ng7Y5qHAkqG4QtwL+7NW5eXdOmLxEqrR/
-	bZs5cwX3NprtOihZQyq0Kp1MJG7LPxEFOEfgs25ogs5kd70FaUDGMd51H5cjq6kIY8/i
-	1sgw==
+	bh=7I7kjHAQKhd4Q8hyIv5bpPQ1kJafzdP5nP/u/EAzf5Q=;
+	b=FweHhDp5xHw0DVeYtXudxNjywlcb+KNFawttY3zxv6AoivS4pVM4CYPBR4j+t/1xQz
+	bY822lUulBnzE80/5yp4gvWk7vuoFAyBkGSKRg824IX8qBFzWZpm8l6Wu3byyyw23RjO
+	oAiV545MongXnb0G40oAF4DL0J3Q88PoJ6JYBX1EUo33xMttiaIdW4lYAyc4xyj4o4vg
+	5mPIHPrcb+otqxYL1ziMN7aCdjZizp5etFRz50y9M6NRi1NRggRFsXJOIcKWKGMkSfNz
+	jhE4NgfqiMgvpITD65uchvgOpLvUNREh7EMDNPLc6H0HPXNCzpdkTsPd7fd2/ULKo8aw
+	6hGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=rkO3l92A/UWb0kDq3TQCevydgtIVy8V33UG2eqPEnk8=;
-	b=t1WDLuAXg06D2w/ty6ESnezvzYk5fU3LSk/D+NzNIcG8PLskH/g3FX1LUGLIBsvI1Z
-	SZCFicpW1Nb4Clf5yN8D4bcutavuhCqDkZt3U5ilIpAv3IiPkOiTfAYB6ABOwlp8RbKq
-	TxZC0F1gcwGKYOlA15qDcZSoxnYuymbd+Si9RygAtigbIXHJcZyGRL/Xdys5yn3RWbXE
-	dQ0e+eV3FBMVO5VKRwrBqd5kGzzBLyWOM58PeFQu8yzfIbA2AxsOyBPZ6K8oJZkCJW0N
-	cqPAm8FcksQjdZjPEbedavC/dqZ8oR7irfp9/JRofJ8/iJcjXiieofZYdAi4a+f+sG7j
-	d+yg==
-X-Gm-Message-State: ALKqPwfsStHJSrEUSYTVtarx71dw7uIwsgTkX+cSo4mmNPnIkr81WaJW
-	1OUQ7i28NKcTM9wpiCRNkmEKvmkA
-X-Received: by 2002:ac8:7350:: with SMTP id
-	q16-v6mr2468754qtp.132.1525975181921; 
-	Thu, 10 May 2018 10:59:41 -0700 (PDT)
+	bh=7I7kjHAQKhd4Q8hyIv5bpPQ1kJafzdP5nP/u/EAzf5Q=;
+	b=EoGpiTbM3hc4mOxiPfv7gN/tFaBXtbyM8p0p40+LtKBgfsairGXgp9s/neKRsCSRlH
+	Pdbtn23lqTiWi2tNtT/DtkZvYBd3PmzgllozutaIYdP5hA51r1DZtcEi4IOIsSlQe8Uj
+	Zrze3sV6YxHt8wgaJrHcI2HSdXW3DaEkZ/38lGP5bw2F0INRJ13gmXctB3/SFG4GPTVM
+	Sdk4gTZLDVUHs02eGKbE9vLrd4nbQE3st06koyyDtHNDzi2cfwOTeWURHXAkZcsn/Fub
+	nHOboAiGg0sM1R7S7C0O6ytT2zuC2oYSp4ow13B37pKbF0QXBmYVE4ZbuYlvjL4sR1R4
+	8i2Q==
+X-Gm-Message-State: ALKqPwcxPOkQFttuomgUHN4k9Zb8I19MfM21nqnldPuNHo/UaIPIqZ37
+	cQ9U6SlUS1ni+qGz70p7aSDhCFhR
+X-Received: by 2002:ac8:d1:: with SMTP id d17-v6mr2482583qtg.356.1525975793387;
+	Thu, 10 May 2018 11:09:53 -0700 (PDT)
 Received: from [192.168.1.11] ([138.117.48.222])
 	by smtp.gmail.com with ESMTPSA id
-	p25-v6sm1035369qte.83.2018.05.10.10.59.38
+	l17-v6sm972607qkj.47.2018.05.10.11.09.50
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 10 May 2018 10:59:41 -0700 (PDT)
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org
+	Thu, 10 May 2018 11:09:52 -0700 (PDT)
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, peter.maydell@linaro.org
 References: <20180503115620.10596-1-edgar.iglesias@gmail.com>
-	<20180503115620.10596-2-edgar.iglesias@gmail.com>
+	<20180503115620.10596-3-edgar.iglesias@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <c598019a-b635-bc36-84d3-f87bbb69c4b6@amsat.org>
-Date: Thu, 10 May 2018 14:59:37 -0300
+Message-ID: <c7409bf9-b336-8df2-bc2a-ace45077bcce@amsat.org>
+Date: Thu, 10 May 2018 15:09:46 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <20180503115620.10596-2-edgar.iglesias@gmail.com>
+In-Reply-To: <20180503115620.10596-3-edgar.iglesias@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::242
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH v1 1/2] target-arm: Add the
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: Re: [Qemu-arm] [PATCH v1 2/2] xlnx-zynqmp: Swap Cortex-R5 for
  Cortex-R5F
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org,
-	sai.pavan.boddu@xilinx.com, frasse.iglesias@gmail.com,
-	alistair@alistair23.me, frederic.konrad@adacore.com, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: C2sciJAu2Hnh
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
+	frasse.iglesias@gmail.com, alistair@alistair23.me,
+	qemu-devel@nongnu.org, frederic.konrad@adacore.com, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3Dogi771/Eq9
+
+Hi Edgar,
 
 On 05/03/2018 08:56 AM, Edgar E. Iglesias wrote:
 > From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 > 
-> Add the Cortex-R5F with the optional FPU enabled.
+> The ZynqMP has Cortex-R5Fs with the optional FPU enabled.
+
+What about updating the xlnx-zcu102 machine description too?
+
+  mc->desc = "Xilinx ZynqMP ZCU102 board with 4xA53s and 2xR5Fs ..."
+
 > 
 > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
+I just noticed we can not get information for the R profile cores via
+the monitor:
+
+(qemu) info cpus
+* CPU #0: thread_id=19283
+  CPU #1: thread_id=19284
+  CPU #2: thread_id=19285
+  CPU #3: thread_id=19286
+
+same with "info registers -a"
+
 > ---
->  target/arm/cpu.c | 9 +++++++++
->  1 file changed, 9 insertions(+)
+>  hw/arm/xlnx-zynqmp.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index d175c5e94f..7a7035c037 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -1341,6 +1341,14 @@ static void cortex_r5_initfn(Object *obj)
->      define_arm_cp_regs(cpu, cortexr5_cp_reginfo);
->  }
+> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+> index 505253e0d2..efeb53c732 100644
+> --- a/hw/arm/xlnx-zynqmp.c
+> +++ b/hw/arm/xlnx-zynqmp.c
+> @@ -116,7 +116,7 @@ static void xlnx_zynqmp_create_rpu(XlnxZynqMPState *s, const char *boot_cpu,
+>          char *name;
 >  
-> +static void cortex_r5f_initfn(Object *obj)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(obj);
-> +
-> +    cortex_r5_initfn(obj);
-> +    set_feature(&cpu->env, ARM_FEATURE_VFP3);
-> +}
-> +
->  static const ARMCPRegInfo cortexa8_cp_reginfo[] = {
->      { .name = "L2LOCKDOWN", .cp = 15, .crn = 9, .crm = 0, .opc1 = 1, .opc2 = 0,
->        .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-> @@ -1801,6 +1809,7 @@ static const ARMCPUInfo arm_cpus[] = {
->      { .name = "cortex-m33",  .initfn = cortex_m33_initfn,
->                               .class_init = arm_v7m_class_init },
->      { .name = "cortex-r5",   .initfn = cortex_r5_initfn },
-> +    { .name = "cortex-r5f",  .initfn = cortex_r5f_initfn },
->      { .name = "cortex-a7",   .initfn = cortex_a7_initfn },
->      { .name = "cortex-a8",   .initfn = cortex_a8_initfn },
->      { .name = "cortex-a9",   .initfn = cortex_a9_initfn },
+>          object_initialize(&s->rpu_cpu[i], sizeof(s->rpu_cpu[i]),
+> -                          "cortex-r5-" TYPE_ARM_CPU);
+> +                          "cortex-r5f-" TYPE_ARM_CPU);
+>          object_property_add_child(OBJECT(s), "rpu-cpu[*]",
+>                                    OBJECT(&s->rpu_cpu[i]), &error_abort);
+>  
 > 

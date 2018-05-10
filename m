@@ -1,609 +1,130 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id x16-v6sm321060wmc.42.2018.05.10.02.42.07
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 May 2018 02:42:08 -0700 (PDT)
-Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 1D18D3E0348;
-	Thu, 10 May 2018 10:42:07 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: peter.maydell@linaro.org
-Cc: richard.henderson@linaro.org,
-	qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Aurelien Jarno <aurelien@aurel32.net>
-Subject: [PATCH v3 2/5] fpu/softfloat: re-factor float to float conversions
-Date: Thu, 10 May 2018 10:42:03 +0100
-Message-Id: <20180510094206.15354-3-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.17.0
-In-Reply-To: <20180510094206.15354-1-alex.bennee@linaro.org>
-References: <20180510094206.15354-1-alex.bennee@linaro.org>
+Received: by 10.28.4.212 with SMTP id 203csp1067319wme;
+        Thu, 10 May 2018 07:12:10 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZpboXKZo3poAgL/qF9jUifIxlDCnEzmARVy+RK6CO3e63sB9761uwLecPYvP3spR87cpO8V
+X-Received: by 2002:a0c:bd1a:: with SMTP id m26-v6mr1404555qvg.232.1525961530214;
+        Thu, 10 May 2018 07:12:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1525961530; cv=none;
+        d=google.com; s=arc-20160816;
+        b=lXbKz0Yj473DuJvofD0Cl7pCLWdR4wUHh03S6S7ur8GsDUS7Zk4uZ6bnWZNG3X5FYJ
+         ICTciIjgxhj8mGPZE8JBEjkhcEGBfcuas1aHiK7/XlzIoZIaQAHahWLpT8nmgEakMYhY
+         mPbjo67xLZwDM6wGG8SzLWzIcauC7zWCC+3NJel7jn59EskRoVSG1HrfgUvVG/dAwD+U
+         pB5lG9kGrMDRArKDTo4Caz0x9VZsm0yAFSFQwl8TdQKWZpDoOW4wmwuhUZ6GlYl+y78v
+         1l0QhADIG11kYHYac9rf3qctO33UvBSw5G23C14iakYaqq44YObU6jv0gmzLdaACUfpu
+         KNlQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=eOrk6s/BivvrS8rjdUA8q9Tmuz8WICB6//R7viWhv6E=;
+        b=RaF8IC9TM+1QPmdcSFyu8HG022+eJCu+1YQblv6UjIJBZfkR3WnrKl+qKTGDT5TNP0
+         6HveLmiqQOsV7BdeZ4CWPDXi6+OGrhj/Z+/JZ/DyIPPcGHBc3PkUOmQsYy3tfrSz3bVE
+         FOQjywBkJL5btvF0+Bm2dH7p+LtY/oht2mXlOaMw8Q3O6Z2xE7eiwAArvj4X8jC7DfZS
+         mNdnNuwoF8mJIlu/XFlblw1OLrpSnyTTOpVLIwOQlpfSfOZAl+fPi0K2M6Fd6how+8kR
+         dUQcZn0hPe5DWya6xZL8qENLjw3pCz6DjXOHFmZATsaVoE0psvJ4A0mUZyGLxXNN2Rjk
+         73hQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=OmpTv/Uv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id v89-v6si813283qte.69.2018.05.10.07.12.10
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 10 May 2018 07:12:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=OmpTv/Uv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:34152 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fGmIj-0004aU-MX
+	for alex.bennee@linaro.org; Thu, 10 May 2018 10:12:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56349)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1fGmIZ-0004YU-QI
+	for qemu-arm@nongnu.org; Thu, 10 May 2018 10:12:00 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1fGmIZ-0004dr-3G
+	for qemu-arm@nongnu.org; Thu, 10 May 2018 10:11:59 -0400
+Received: from mail-oi0-x230.google.com ([2607:f8b0:4003:c06::230]:33318)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fGmIY-0004db-VZ
+	for qemu-arm@nongnu.org; Thu, 10 May 2018 10:11:59 -0400
+Received: by mail-oi0-x230.google.com with SMTP id k5-v6so1886169oiw.0
+	for <qemu-arm@nongnu.org>; Thu, 10 May 2018 07:11:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=eOrk6s/BivvrS8rjdUA8q9Tmuz8WICB6//R7viWhv6E=;
+	b=OmpTv/UvN1YOb9UWs0uVEOdnfIwLQzm6xOfrx/4Km07kCxHdgUIAHV3VREPJM5v35I
+	kUtmpYgLGj8CekBlIpqnPXw36qqx2avgbAvNNqU+FU/D8uBfr3GzrpVg5arUEXr78MRz
+	9ZlwaOfOaO6CPAIEECRYA4I5p4lSzWga4gjPs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=eOrk6s/BivvrS8rjdUA8q9Tmuz8WICB6//R7viWhv6E=;
+	b=sNrL2xVUlVEu4yRFC3R2VKKik7dQN3DqIBMSlAOvy7/7SY5y0TbCeCENxTkc3Lwy8M
+	Riw1g6KlwZXcSlknQ0P/d4QO3/sfLrUcIzlgSzxEpDJthrqx2yqixOChuulQqffVpyZn
+	dc4aq3ikAfNVbM4mxnJVQQV8sx8LxTpOn79TY7Fmxyrm4/yGJjZnr2pKaXwilizeVAL6
+	jR0tH3QQgPe73/W/f2OBAH1oswImoqwjZN1YYIssHnFkveemUkp1v5OXoTrOlm3SlznF
+	7WMbUDtr2b7aYYivxkpnk4DCAWzNxg8S2LAK/9PsNpLcSqTAM3kJDQsDYry940Q8gO5d
+	YWKw==
+X-Gm-Message-State: ALKqPwf8h9xETyqUShKAouALtHATVckSmThNQopGvOdamfHjlceGGKqF
+	euSMr3cJc8S4tgtnloXhgrZU1W1530tES8oTOSAFfIX2
+X-Received: by 2002:aca:cd0b:: with SMTP id
+	d11-v6mr816737oig.337.1525961518214; 
+	Thu, 10 May 2018 07:11:58 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: uxaFUV/tftwX
+Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Thu, 10 May 2018 07:11:37
+	-0700 (PDT)
+In-Reply-To: <20180510140934.22855-1-peter.maydell@linaro.org>
+References: <20180510140934.22855-1-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 10 May 2018 15:11:37 +0100
+Message-ID: <CAFEAcA9xoFxqkCKzXTXHZ4D+chhaJP9=RFmyfx2HnJfFhvJWpg@mail.gmail.com>
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::230
+Subject: Re: [Qemu-arm] [PATCH] fix fp16 tininess
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "patches@linaro.org" <patches@linaro.org>,
+	Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: m8FarSyzcngT
 
-This allows us to delete a lot of additional boilerplate code which is
-no longer needed. Currently the ieee flag is ignored (everything is
-assumed to be ieee). Handling for ARM AHP will be in the next patch.
+On 10 May 2018 at 15:09, Peter Maydell <peter.maydell@linaro.org> wrote:
+> In commit d81ce0ef2c4f105 we added an extra float_status field
+> fp_status_fp16 for Arm, but forgot to initialize it correctly
+> by setting it to float_tininess_before_rounding. This currently
+> will only cause problems for the new V8_FP16 feature, since the
+> float-to-float conversion code doesn't use it yet. The effect
+> would be that we failed to set the Underflow IEEE exception flag
+> in all the cases where we should.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Oops, I forgot to fix the patch summary line from my
+quick-hack commit. Something like:
 
----
-v2
-  - pass FloatFmt to float_to_float instead of sizes
-  - split AHP handling to another patch
-  - use rth's suggested re-packing (+ setting .exp)
-v3
-  - also rm extractFloat16Sign
----
- fpu/softfloat-specialize.h |  40 ----
- fpu/softfloat.c            | 452 +++++++------------------------------
- include/fpu/softfloat.h    |   8 +-
- 3 files changed, 88 insertions(+), 412 deletions(-)
+target/arm: Fix tininess detection for fp16 arithmetic
 
-diff --git a/fpu/softfloat-specialize.h b/fpu/softfloat-specialize.h
-index 27834af0de..a20b440159 100644
---- a/fpu/softfloat-specialize.h
-+++ b/fpu/softfloat-specialize.h
-@@ -293,46 +293,6 @@ float16 float16_maybe_silence_nan(float16 a_, float_status *status)
-     return a_;
- }
- 
--/*----------------------------------------------------------------------------
--| Returns the result of converting the half-precision floating-point NaN
--| `a' to the canonical NaN format.  If `a' is a signaling NaN, the invalid
--| exception is raised.
--*----------------------------------------------------------------------------*/
--
--static commonNaNT float16ToCommonNaN(float16 a, float_status *status)
--{
--    commonNaNT z;
--
--    if (float16_is_signaling_nan(a, status)) {
--        float_raise(float_flag_invalid, status);
--    }
--    z.sign = float16_val(a) >> 15;
--    z.low = 0;
--    z.high = ((uint64_t) float16_val(a)) << 54;
--    return z;
--}
--
--/*----------------------------------------------------------------------------
--| Returns the result of converting the canonical NaN `a' to the half-
--| precision floating-point format.
--*----------------------------------------------------------------------------*/
--
--static float16 commonNaNToFloat16(commonNaNT a, float_status *status)
--{
--    uint16_t mantissa = a.high >> 54;
--
--    if (status->default_nan_mode) {
--        return float16_default_nan(status);
--    }
--
--    if (mantissa) {
--        return make_float16(((((uint16_t) a.sign) << 15)
--                             | (0x1F << 10) | mantissa));
--    } else {
--        return float16_default_nan(status);
--    }
--}
--
- #ifdef NO_SIGNALING_NANS
- int float32_is_quiet_nan(float32 a_, float_status *status)
- {
-diff --git a/fpu/softfloat.c b/fpu/softfloat.c
-index 3adf6a06e4..042e5c901d 100644
---- a/fpu/softfloat.c
-+++ b/fpu/softfloat.c
-@@ -123,15 +123,6 @@ static inline int extractFloat16Exp(float16 a)
-     return (float16_val(a) >> 10) & 0x1f;
- }
- 
--/*----------------------------------------------------------------------------
--| Returns the sign bit of the single-precision floating-point value `a'.
--*----------------------------------------------------------------------------*/
--
--static inline flag extractFloat16Sign(float16 a)
--{
--    return float16_val(a)>>15;
--}
--
- /*----------------------------------------------------------------------------
- | Returns the fraction bits of the single-precision floating-point value `a'.
- *----------------------------------------------------------------------------*/
-@@ -1194,6 +1185,90 @@ float64 float64_div(float64 a, float64 b, float_status *status)
-     return float64_round_pack_canonical(pr, status);
- }
- 
-+/*
-+ * Float to Float conversions
-+ *
-+ * Returns the result of converting one float format to another. The
-+ * conversion is performed according to the IEC/IEEE Standard for
-+ * Binary Floating-Point Arithmetic.
-+ *
-+ * The float_to_float helper only needs to take care of raising
-+ * invalid exceptions and handling the conversion on NaNs.
-+ */
-+
-+static FloatParts float_to_float(FloatParts a,
-+                                 const FloatFmt *srcf, const FloatFmt *dstf,
-+                                 float_status *s)
-+{
-+    if (is_nan(a.cls)) {
-+
-+        if (is_snan(a.cls)) {
-+            s->float_exception_flags |= float_flag_invalid;
-+        }
-+
-+        if (s->default_nan_mode) {
-+            a.cls = float_class_dnan;
-+            return a;
-+        }
-+
-+        /*
-+         * Our only option now is to "re-pack" the NaN. As the
-+         * canonilization process doesn't mess with fraction bits for
-+         * NaNs we do it all here. We also reset a.exp to the
-+         * destination format exp_max as the maybe_silence_nan code
-+         * assumes it is correct (which is would be for non-conversions).
-+         */
-+        a.frac = a.frac << (64 - srcf->frac_size) >> (64 - dstf->frac_size);
-+        a.exp = dstf->exp_max;
-+        a.cls = float_class_msnan;
-+    }
-+
-+    return a;
-+}
-+
-+float32 float16_to_float32(float16 a, bool ieee, float_status *s)
-+{
-+    FloatParts p = float16_unpack_canonical(a, s);
-+    FloatParts pr = float_to_float(p, &float16_params, &float32_params, s);
-+    return float32_round_pack_canonical(pr, s);
-+}
-+
-+float64 float16_to_float64(float16 a, bool ieee, float_status *s)
-+{
-+    FloatParts p = float16_unpack_canonical(a, s);
-+    FloatParts pr = float_to_float(p, &float16_params, &float64_params, s);
-+    return float64_round_pack_canonical(pr, s);
-+}
-+
-+float16 float32_to_float16(float32 a, bool ieee, float_status *s)
-+{
-+    FloatParts p = float32_unpack_canonical(a, s);
-+    FloatParts pr = float_to_float(p, &float32_params, &float16_params, s);
-+    return float16_round_pack_canonical(pr, s);
-+}
-+
-+float64 float32_to_float64(float32 a, float_status *s)
-+{
-+    FloatParts p = float32_unpack_canonical(a, s);
-+    FloatParts pr = float_to_float(p, &float32_params, &float64_params, s);
-+    return float64_round_pack_canonical(pr, s);
-+}
-+
-+float16 float64_to_float16(float64 a, bool ieee, float_status *s)
-+{
-+    FloatParts p = float64_unpack_canonical(a, s);
-+    FloatParts pr = float_to_float(p, &float64_params, &float16_params, s);
-+    return float16_round_pack_canonical(pr, s);
-+}
-+
-+float32 float64_to_float32(float64 a, float_status *s)
-+{
-+    FloatParts p = float64_unpack_canonical(a, s);
-+    FloatParts pr = float_to_float(p, &float64_params, &float32_params, s);
-+    return float32_round_pack_canonical(pr, s);
-+}
-+
-+
- /*
-  * Rounds the floating-point value `a' to an integer, and returns the
-  * result as a floating-point value. The operation is performed
-@@ -3142,41 +3217,6 @@ float128 uint64_to_float128(uint64_t a, float_status *status)
-     return normalizeRoundAndPackFloat128(0, 0x406E, a, 0, status);
- }
- 
--
--
--
--/*----------------------------------------------------------------------------
--| Returns the result of converting the single-precision floating-point value
--| `a' to the double-precision floating-point format.  The conversion is
--| performed according to the IEC/IEEE Standard for Binary Floating-Point
--| Arithmetic.
--*----------------------------------------------------------------------------*/
--
--float64 float32_to_float64(float32 a, float_status *status)
--{
--    flag aSign;
--    int aExp;
--    uint32_t aSig;
--    a = float32_squash_input_denormal(a, status);
--
--    aSig = extractFloat32Frac( a );
--    aExp = extractFloat32Exp( a );
--    aSign = extractFloat32Sign( a );
--    if ( aExp == 0xFF ) {
--        if (aSig) {
--            return commonNaNToFloat64(float32ToCommonNaN(a, status), status);
--        }
--        return packFloat64( aSign, 0x7FF, 0 );
--    }
--    if ( aExp == 0 ) {
--        if ( aSig == 0 ) return packFloat64( aSign, 0, 0 );
--        normalizeFloat32Subnormal( aSig, &aExp, &aSig );
--        --aExp;
--    }
--    return packFloat64( aSign, aExp + 0x380, ( (uint64_t) aSig )<<29 );
--
--}
--
- /*----------------------------------------------------------------------------
- | Returns the result of converting the single-precision floating-point value
- | `a' to the extended double-precision floating-point format.  The conversion
-@@ -3695,173 +3735,6 @@ int float32_unordered_quiet(float32 a, float32 b, float_status *status)
-     return 0;
- }
- 
--
--/*----------------------------------------------------------------------------
--| Returns the result of converting the double-precision floating-point value
--| `a' to the single-precision floating-point format.  The conversion is
--| performed according to the IEC/IEEE Standard for Binary Floating-Point
--| Arithmetic.
--*----------------------------------------------------------------------------*/
--
--float32 float64_to_float32(float64 a, float_status *status)
--{
--    flag aSign;
--    int aExp;
--    uint64_t aSig;
--    uint32_t zSig;
--    a = float64_squash_input_denormal(a, status);
--
--    aSig = extractFloat64Frac( a );
--    aExp = extractFloat64Exp( a );
--    aSign = extractFloat64Sign( a );
--    if ( aExp == 0x7FF ) {
--        if (aSig) {
--            return commonNaNToFloat32(float64ToCommonNaN(a, status), status);
--        }
--        return packFloat32( aSign, 0xFF, 0 );
--    }
--    shift64RightJamming( aSig, 22, &aSig );
--    zSig = aSig;
--    if ( aExp || zSig ) {
--        zSig |= 0x40000000;
--        aExp -= 0x381;
--    }
--    return roundAndPackFloat32(aSign, aExp, zSig, status);
--
--}
--
--
--/*----------------------------------------------------------------------------
--| Packs the sign `zSign', exponent `zExp', and significand `zSig' into a
--| half-precision floating-point value, returning the result.  After being
--| shifted into the proper positions, the three fields are simply added
--| together to form the result.  This means that any integer portion of `zSig'
--| will be added into the exponent.  Since a properly normalized significand
--| will have an integer portion equal to 1, the `zExp' input should be 1 less
--| than the desired result exponent whenever `zSig' is a complete, normalized
--| significand.
--*----------------------------------------------------------------------------*/
--static float16 packFloat16(flag zSign, int zExp, uint16_t zSig)
--{
--    return make_float16(
--        (((uint32_t)zSign) << 15) + (((uint32_t)zExp) << 10) + zSig);
--}
--
--/*----------------------------------------------------------------------------
--| Takes an abstract floating-point value having sign `zSign', exponent `zExp',
--| and significand `zSig', and returns the proper half-precision floating-
--| point value corresponding to the abstract input.  Ordinarily, the abstract
--| value is simply rounded and packed into the half-precision format, with
--| the inexact exception raised if the abstract input cannot be represented
--| exactly.  However, if the abstract value is too large, the overflow and
--| inexact exceptions are raised and an infinity or maximal finite value is
--| returned.  If the abstract value is too small, the input value is rounded to
--| a subnormal number, and the underflow and inexact exceptions are raised if
--| the abstract input cannot be represented exactly as a subnormal half-
--| precision floating-point number.
--| The `ieee' flag indicates whether to use IEEE standard half precision, or
--| ARM-style "alternative representation", which omits the NaN and Inf
--| encodings in order to raise the maximum representable exponent by one.
--|     The input significand `zSig' has its binary point between bits 22
--| and 23, which is 13 bits to the left of the usual location.  This shifted
--| significand must be normalized or smaller.  If `zSig' is not normalized,
--| `zExp' must be 0; in that case, the result returned is a subnormal number,
--| and it must not require rounding.  In the usual case that `zSig' is
--| normalized, `zExp' must be 1 less than the ``true'' floating-point exponent.
--| Note the slightly odd position of the binary point in zSig compared with the
--| other roundAndPackFloat functions. This should probably be fixed if we
--| need to implement more float16 routines than just conversion.
--| The handling of underflow and overflow follows the IEC/IEEE Standard for
--| Binary Floating-Point Arithmetic.
--*----------------------------------------------------------------------------*/
--
--static float16 roundAndPackFloat16(flag zSign, int zExp,
--                                   uint32_t zSig, flag ieee,
--                                   float_status *status)
--{
--    int maxexp = ieee ? 29 : 30;
--    uint32_t mask;
--    uint32_t increment;
--    bool rounding_bumps_exp;
--    bool is_tiny = false;
--
--    /* Calculate the mask of bits of the mantissa which are not
--     * representable in half-precision and will be lost.
--     */
--    if (zExp < 1) {
--        /* Will be denormal in halfprec */
--        mask = 0x00ffffff;
--        if (zExp >= -11) {
--            mask >>= 11 + zExp;
--        }
--    } else {
--        /* Normal number in halfprec */
--        mask = 0x00001fff;
--    }
--
--    switch (status->float_rounding_mode) {
--    case float_round_nearest_even:
--        increment = (mask + 1) >> 1;
--        if ((zSig & mask) == increment) {
--            increment = zSig & (increment << 1);
--        }
--        break;
--    case float_round_ties_away:
--        increment = (mask + 1) >> 1;
--        break;
--    case float_round_up:
--        increment = zSign ? 0 : mask;
--        break;
--    case float_round_down:
--        increment = zSign ? mask : 0;
--        break;
--    default: /* round_to_zero */
--        increment = 0;
--        break;
--    }
--
--    rounding_bumps_exp = (zSig + increment >= 0x01000000);
--
--    if (zExp > maxexp || (zExp == maxexp && rounding_bumps_exp)) {
--        if (ieee) {
--            float_raise(float_flag_overflow | float_flag_inexact, status);
--            return packFloat16(zSign, 0x1f, 0);
--        } else {
--            float_raise(float_flag_invalid, status);
--            return packFloat16(zSign, 0x1f, 0x3ff);
--        }
--    }
--
--    if (zExp < 0) {
--        /* Note that flush-to-zero does not affect half-precision results */
--        is_tiny =
--            (status->float_detect_tininess == float_tininess_before_rounding)
--            || (zExp < -1)
--            || (!rounding_bumps_exp);
--    }
--    if (zSig & mask) {
--        float_raise(float_flag_inexact, status);
--        if (is_tiny) {
--            float_raise(float_flag_underflow, status);
--        }
--    }
--
--    zSig += increment;
--    if (rounding_bumps_exp) {
--        zSig >>= 1;
--        zExp++;
--    }
--
--    if (zExp < -10) {
--        return packFloat16(zSign, 0, 0);
--    }
--    if (zExp < 0) {
--        zSig >>= -zExp;
--        zExp = 0;
--    }
--    return packFloat16(zSign, zExp, zSig >> 13);
--}
--
- /*----------------------------------------------------------------------------
- | If `a' is denormal and we are in flush-to-zero mode then set the
- | input-denormal exception and return zero. Otherwise just return the value.
-@@ -3877,163 +3750,6 @@ float16 float16_squash_input_denormal(float16 a, float_status *status)
-     return a;
- }
- 
--static void normalizeFloat16Subnormal(uint32_t aSig, int *zExpPtr,
--                                      uint32_t *zSigPtr)
--{
--    int8_t shiftCount = countLeadingZeros32(aSig) - 21;
--    *zSigPtr = aSig << shiftCount;
--    *zExpPtr = 1 - shiftCount;
--}
--
--/* Half precision floats come in two formats: standard IEEE and "ARM" format.
--   The latter gains extra exponent range by omitting the NaN/Inf encodings.  */
--
--float32 float16_to_float32(float16 a, flag ieee, float_status *status)
--{
--    flag aSign;
--    int aExp;
--    uint32_t aSig;
--
--    aSign = extractFloat16Sign(a);
--    aExp = extractFloat16Exp(a);
--    aSig = extractFloat16Frac(a);
--
--    if (aExp == 0x1f && ieee) {
--        if (aSig) {
--            return commonNaNToFloat32(float16ToCommonNaN(a, status), status);
--        }
--        return packFloat32(aSign, 0xff, 0);
--    }
--    if (aExp == 0) {
--        if (aSig == 0) {
--            return packFloat32(aSign, 0, 0);
--        }
--
--        normalizeFloat16Subnormal(aSig, &aExp, &aSig);
--        aExp--;
--    }
--    return packFloat32( aSign, aExp + 0x70, aSig << 13);
--}
--
--float16 float32_to_float16(float32 a, flag ieee, float_status *status)
--{
--    flag aSign;
--    int aExp;
--    uint32_t aSig;
--
--    a = float32_squash_input_denormal(a, status);
--
--    aSig = extractFloat32Frac( a );
--    aExp = extractFloat32Exp( a );
--    aSign = extractFloat32Sign( a );
--    if ( aExp == 0xFF ) {
--        if (aSig) {
--            /* Input is a NaN */
--            if (!ieee) {
--                float_raise(float_flag_invalid, status);
--                return packFloat16(aSign, 0, 0);
--            }
--            return commonNaNToFloat16(
--                float32ToCommonNaN(a, status), status);
--        }
--        /* Infinity */
--        if (!ieee) {
--            float_raise(float_flag_invalid, status);
--            return packFloat16(aSign, 0x1f, 0x3ff);
--        }
--        return packFloat16(aSign, 0x1f, 0);
--    }
--    if (aExp == 0 && aSig == 0) {
--        return packFloat16(aSign, 0, 0);
--    }
--    /* Decimal point between bits 22 and 23. Note that we add the 1 bit
--     * even if the input is denormal; however this is harmless because
--     * the largest possible single-precision denormal is still smaller
--     * than the smallest representable half-precision denormal, and so we
--     * will end up ignoring aSig and returning via the "always return zero"
--     * codepath.
--     */
--    aSig |= 0x00800000;
--    aExp -= 0x71;
--
--    return roundAndPackFloat16(aSign, aExp, aSig, ieee, status);
--}
--
--float64 float16_to_float64(float16 a, flag ieee, float_status *status)
--{
--    flag aSign;
--    int aExp;
--    uint32_t aSig;
--
--    aSign = extractFloat16Sign(a);
--    aExp = extractFloat16Exp(a);
--    aSig = extractFloat16Frac(a);
--
--    if (aExp == 0x1f && ieee) {
--        if (aSig) {
--            return commonNaNToFloat64(
--                float16ToCommonNaN(a, status), status);
--        }
--        return packFloat64(aSign, 0x7ff, 0);
--    }
--    if (aExp == 0) {
--        if (aSig == 0) {
--            return packFloat64(aSign, 0, 0);
--        }
--
--        normalizeFloat16Subnormal(aSig, &aExp, &aSig);
--        aExp--;
--    }
--    return packFloat64(aSign, aExp + 0x3f0, ((uint64_t)aSig) << 42);
--}
--
--float16 float64_to_float16(float64 a, flag ieee, float_status *status)
--{
--    flag aSign;
--    int aExp;
--    uint64_t aSig;
--    uint32_t zSig;
--
--    a = float64_squash_input_denormal(a, status);
--
--    aSig = extractFloat64Frac(a);
--    aExp = extractFloat64Exp(a);
--    aSign = extractFloat64Sign(a);
--    if (aExp == 0x7FF) {
--        if (aSig) {
--            /* Input is a NaN */
--            if (!ieee) {
--                float_raise(float_flag_invalid, status);
--                return packFloat16(aSign, 0, 0);
--            }
--            return commonNaNToFloat16(
--                float64ToCommonNaN(a, status), status);
--        }
--        /* Infinity */
--        if (!ieee) {
--            float_raise(float_flag_invalid, status);
--            return packFloat16(aSign, 0x1f, 0x3ff);
--        }
--        return packFloat16(aSign, 0x1f, 0);
--    }
--    shift64RightJamming(aSig, 29, &aSig);
--    zSig = aSig;
--    if (aExp == 0 && zSig == 0) {
--        return packFloat16(aSign, 0, 0);
--    }
--    /* Decimal point between bits 22 and 23. Note that we add the 1 bit
--     * even if the input is denormal; however this is harmless because
--     * the largest possible single-precision denormal is still smaller
--     * than the smallest representable half-precision denormal, and so we
--     * will end up ignoring aSig and returning via the "always return zero"
--     * codepath.
--     */
--    zSig |= 0x00800000;
--    aExp -= 0x3F1;
--
--    return roundAndPackFloat16(aSign, aExp, zSig, ieee, status);
--}
--
- /*----------------------------------------------------------------------------
- | Returns the result of converting the double-precision floating-point value
- | `a' to the extended double-precision floating-point format.  The conversion
-diff --git a/include/fpu/softfloat.h b/include/fpu/softfloat.h
-index 36626a501b..01ef1c6b81 100644
---- a/include/fpu/softfloat.h
-+++ b/include/fpu/softfloat.h
-@@ -211,10 +211,10 @@ float128 uint64_to_float128(uint64_t, float_status *status);
- /*----------------------------------------------------------------------------
- | Software half-precision conversion routines.
- *----------------------------------------------------------------------------*/
--float16 float32_to_float16(float32, flag, float_status *status);
--float32 float16_to_float32(float16, flag, float_status *status);
--float16 float64_to_float16(float64 a, flag ieee, float_status *status);
--float64 float16_to_float64(float16 a, flag ieee, float_status *status);
-+float16 float32_to_float16(float32, bool ieee, float_status *status);
-+float32 float16_to_float32(float16, bool ieee, float_status *status);
-+float16 float64_to_float16(float64 a, bool ieee, float_status *status);
-+float64 float16_to_float64(float16 a, bool ieee, float_status *status);
- int16_t float16_to_int16(float16, float_status *status);
- uint16_t float16_to_uint16(float16 a, float_status *status);
- int16_t float16_to_int16_round_to_zero(float16, float_status *status);
--- 
-2.17.0
+would be a bit clearer.
+
+thanks
+-- PMM

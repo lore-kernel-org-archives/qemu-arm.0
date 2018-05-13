@@ -1,85 +1,79 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp2089465wrq;
-        Sat, 9 Jun 2018 07:23:52 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKu4tvVEUx1Mp25GsNWx69bYAQBLnkjbRYHIyE+OyL+ku0KR4Wts1K/syWBXqfmNgAcCQ1I
-X-Received: by 2002:ac8:6705:: with SMTP id e5-v6mr9722409qtp.79.1528554232749;
-        Sat, 09 Jun 2018 07:23:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528554232; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp2866898wme;
+        Sun, 13 May 2018 02:06:39 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZpf665VMghGJhbSRXn3mWme5mUV0JRyzj6fggx2W20x4AlkwPa0kgBYpCSViyeKIrAmSqnI
+X-Received: by 2002:aed:2785:: with SMTP id a5-v6mr4624073qtd.249.1526202399243;
+        Sun, 13 May 2018 02:06:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1526202399; cv=none;
         d=google.com; s=arc-20160816;
-        b=QBJC31MX+Bue+QERTyOO//JMIDbhbiRxsC8iCpmbdHa/vqpvntuMqUlkD1KmdHDE8A
-         I7KU/H0QeDNkJgWZSxF1qcCNEwlM12beW4tyPSjMZRGkOgXGLP4s3a3wIS0medhy2mZb
-         o7fzAFOAJ0byHwO2VwV8yiDI+E+tQFlmfj4sOnD9Lc+0MFzs9cHJ3EwBrzmTD7eIGJAm
-         JT5SrBxwBa5LfUFbEuOoUkiDyGBAE5t3l30+snm3uJu1JoI3mnuEjfPx1qgckkYu3nBN
-         k9JBSZdws7C9EBBaS0Ea55KLFM0wM0gqFNL8MNHhNicLXa579T+iW13o+egMaSgesctz
-         +KVg==
+        b=eaeXL9RwJ72M8AbR2cn7o6GZNx3vFFgjIBY6FCsn3E1mCHR6NPnqWrk71eIqv/FhYP
+         ygLV/B8hOy1JQZp2rPX7WjpQWAoGT8Q1GvVqBUVlWGtavW5yEJ+Ek1yxCzUYbz+rGkuW
+         IF36RGDEkAUEOkCtSn83w/JWNmHBHhLEZZbspuvYPLqXybFl9yaMuk3BoiKXFahGM9rg
+         LapAcSgNVMT/Z65tse9E1CYPJjCzH+Yt77RBG1old+usOYIX8JNsb9L25hjcvRI9IsvP
+         IDSlTZvUsjD80wfWPNMTWOPYGpPYS7jYVDFET2rye6O7OHBkw+ceQ4RhW5lhGurWe1yR
+         rhMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=y+27weiqZ85HrDzVbt+wnVyiW17oVFqlrof9F6xh7G8=;
-        b=cbXcwwPrbf7Aj+qnqzdQhj67RAp28npExgXesIqN2ovpuL2rcqDgsmM7en0gx0nORs
-         NRJNhomTItc2v8b6ka8Bb4+b7v9Gh1IAX77rkLJEj0LCPDu1sP5F0NaPpFAVrN8nfgSx
-         9aIPJjJiFt2dCm2iZOrjr/Sc9aLDBqrd0k8w9oAfEPd7ea1pIy+l6pH6twiOhIJPMOgr
-         Md1naWHWxUvdSwfw7mxVS4d/EfygqsvlC3LDS+LsaLxd64VH3EQaCaJVRvxUgZ+si8++
-         6iutY2MZ1ehK7lePZ0aCM39L9nFo+PgyVxzfbS8I/GdNzpHMwi/H59kYVit8vGxrtkAa
-         2vBg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :arc-authentication-results;
+        bh=by84IM5/Xh5UyF/ep2/UJOwBJ+Df6/3YRZ1lVjvKr5Y=;
+        b=Qhvq/1IYnDLb6Dp5tz7FzNHGGiDFqYBAtSdPhU9pcocL1S5O8yArT+p5ctWIeEoxQG
+         EreSIokT5V4LFS07sZOSBDi6VZALY2zqsaR5jy56Fyc+Yp7U0WfnDvwV69nECdFQkUqx
+         wM0MhB5TOzy3eGbIvzBocT62/CgUtKPmnfTAQ83WYU8Hh3S2W28iqIaKZpa2hizkVLMm
+         VQ/X67oEuwv3x5oQzB2bngegGSUpv/NsxiuPGJiM15Z/48c9svcjhLs3lc2+g5AB9HMf
+         r2WBqo/7VZSxTJQB3zHNJNy/92tLbGzjy2UQ5uUj3CRND2N1NszTlb1bL39y4/aFTB85
+         3cvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 55-v6si8171103qts.128.2018.06.09.07.23.52
+        by mx.google.com with ESMTPS id k31-v6si2747091qvh.111.2018.05.13.02.06.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 09 Jun 2018 07:23:52 -0700 (PDT)
+        Sun, 13 May 2018 02:06:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40489 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:53786 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fRemW-0007q9-7f
-	for alex.bennee@linaro.org; Sat, 09 Jun 2018 10:23:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58720)
+	id 1fHmxi-0004IO-QL
+	for alex.bennee@linaro.org; Sun, 13 May 2018 05:06:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34016)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fRem4-0007e5-UB
-	for qemu-arm@nongnu.org; Sat, 09 Jun 2018 10:23:26 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1fHmxb-0003K7-Bf
+	for qemu-arm@nongnu.org; Sun, 13 May 2018 05:06:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fRem1-0004MZ-Rr
-	for qemu-arm@nongnu.org; Sat, 09 Jun 2018 10:23:24 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:57024 helo=mx1.redhat.com)
+	(envelope-from <stefan@weilnetz.de>) id 1fHmxY-0003qd-7B
+	for qemu-arm@nongnu.org; Sun, 13 May 2018 05:06:31 -0400
+Received: from mail.weilnetz.de ([37.120.169.71]:41714
+	helo=v2201612906741603.powersrv.de)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1fRem1-0004LK-LT; Sat, 09 Jun 2018 10:23:21 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 89B67818BAF3;
-	Sat,  9 Jun 2018 14:23:19 +0000 (UTC)
-Received: from localhost.localdomain.com (ovpn-116-69.ams2.redhat.com
-	[10.36.116.69])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 78491217B409;
-	Sat,  9 Jun 2018 14:23:18 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, peter.maydell@linaro.org
-Date: Sat,  9 Jun 2018 16:23:12 +0200
-Message-Id: <1528554193-27270-2-git-send-email-eric.auger@redhat.com>
-In-Reply-To: <1528554193-27270-1-git-send-email-eric.auger@redhat.com>
-References: <1528554193-27270-1-git-send-email-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Sat, 09 Jun 2018 14:23:19 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Sat, 09 Jun 2018 14:23:19 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+	(Exim 4.71) (envelope-from <stefan@weilnetz.de>)
+	id 1fHmxY-0003qL-0m; Sun, 13 May 2018 05:06:28 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by v2201612906741603.powersrv.de (Postfix) with ESMTP id 7BC0FDAC716;
+	Sun, 13 May 2018 11:06:26 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
+Received: from v2201612906741603.powersrv.de ([127.0.0.1])
+	by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id jdN7jQC1xjEU; Sun, 13 May 2018 11:06:23 +0200 (CEST)
+Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
+	by v2201612906741603.powersrv.de (Postfix) with ESMTP id A1286DAC715;
+	Sun, 13 May 2018 11:06:23 +0200 (CEST)
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+	id 8FD46460013; Sun, 13 May 2018 11:06:23 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	QEMU Developer <qemu-devel@nongnu.org>
+Date: Sun, 13 May 2018 11:06:13 +0200
+Message-Id: <20180513090613.27960-1-sw@weilnetz.de>
+X-Mailer: git-send-email 2.11.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH 1/2] hw/arm/virt: Silence dtc /intc warnings
+X-Received-From: 37.120.169.71
+Subject: [Qemu-arm] [PATCH] disas/libvixl: Fix VIXL_FALLTHROUGH macro for
+ QEMU
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,134 +85,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Stefan Weil <sw@weilnetz.de>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +8mS6VC49OGy
+X-TUID: iO6vgFHjq4ij
 
-When running dtc on the guest /proc/device-tree we get the
-following warnings: "Warning (unit_address_vs_reg): Node <name>
-has a reg or ranges property, but no unit name", with name:
-/intc, /intc/its, /intc/v2m.
+It now prevents compiler warnings (enabled with -Wimplicit-fallthrough=
+or -Wextra) as intended.
 
-Nodes should have a name in the form <name>[@<unit-address>] where
-unit-address is the primary address used to access the device, listed
-in the node's reg property. This fix seems to make dtc happy.
-
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
----
- hw/arm/virt.c | 59 +++++++++++++++++++++++++++++++++++++----------------------
- 1 file changed, 37 insertions(+), 22 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 11b9f59..b1e9a6b 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -368,66 +368,81 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
- 
- static void fdt_add_its_gic_node(VirtMachineState *vms)
- {
-+    char *nodename;
-+
-     vms->msi_phandle = qemu_fdt_alloc_phandle(vms->fdt);
--    qemu_fdt_add_subnode(vms->fdt, "/intc/its");
--    qemu_fdt_setprop_string(vms->fdt, "/intc/its", "compatible",
-+    nodename = g_strdup_printf("/intc/its@%" PRIx64,
-+                               vms->memmap[VIRT_GIC_ITS].base);
-+    qemu_fdt_add_subnode(vms->fdt, nodename);
-+    qemu_fdt_setprop_string(vms->fdt, nodename, "compatible",
-                             "arm,gic-v3-its");
--    qemu_fdt_setprop(vms->fdt, "/intc/its", "msi-controller", NULL, 0);
--    qemu_fdt_setprop_sized_cells(vms->fdt, "/intc/its", "reg",
-+    qemu_fdt_setprop(vms->fdt, nodename, "msi-controller", NULL, 0);
-+    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
-                                  2, vms->memmap[VIRT_GIC_ITS].base,
-                                  2, vms->memmap[VIRT_GIC_ITS].size);
--    qemu_fdt_setprop_cell(vms->fdt, "/intc/its", "phandle", vms->msi_phandle);
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle", vms->msi_phandle);
-+    g_free(nodename);
- }
- 
- static void fdt_add_v2m_gic_node(VirtMachineState *vms)
- {
-+    char *nodename;
-+
-+    nodename = g_strdup_printf("/intc/v2m@%" PRIx64,
-+                               vms->memmap[VIRT_GIC_V2M].base);
-     vms->msi_phandle = qemu_fdt_alloc_phandle(vms->fdt);
--    qemu_fdt_add_subnode(vms->fdt, "/intc/v2m");
--    qemu_fdt_setprop_string(vms->fdt, "/intc/v2m", "compatible",
-+    qemu_fdt_add_subnode(vms->fdt, nodename);
-+    qemu_fdt_setprop_string(vms->fdt, nodename, "compatible",
-                             "arm,gic-v2m-frame");
--    qemu_fdt_setprop(vms->fdt, "/intc/v2m", "msi-controller", NULL, 0);
--    qemu_fdt_setprop_sized_cells(vms->fdt, "/intc/v2m", "reg",
-+    qemu_fdt_setprop(vms->fdt, nodename, "msi-controller", NULL, 0);
-+    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
-                                  2, vms->memmap[VIRT_GIC_V2M].base,
-                                  2, vms->memmap[VIRT_GIC_V2M].size);
--    qemu_fdt_setprop_cell(vms->fdt, "/intc/v2m", "phandle", vms->msi_phandle);
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle", vms->msi_phandle);
-+    g_free(nodename);
- }
- 
- static void fdt_add_gic_node(VirtMachineState *vms)
- {
-+    char *nodename;
-+
-     vms->gic_phandle = qemu_fdt_alloc_phandle(vms->fdt);
-     qemu_fdt_setprop_cell(vms->fdt, "/", "interrupt-parent", vms->gic_phandle);
- 
--    qemu_fdt_add_subnode(vms->fdt, "/intc");
--    qemu_fdt_setprop_cell(vms->fdt, "/intc", "#interrupt-cells", 3);
--    qemu_fdt_setprop(vms->fdt, "/intc", "interrupt-controller", NULL, 0);
--    qemu_fdt_setprop_cell(vms->fdt, "/intc", "#address-cells", 0x2);
--    qemu_fdt_setprop_cell(vms->fdt, "/intc", "#size-cells", 0x2);
--    qemu_fdt_setprop(vms->fdt, "/intc", "ranges", NULL, 0);
-+    nodename = g_strdup_printf("/intc@%" PRIx64,
-+                               vms->memmap[VIRT_GIC_DIST].base);
-+    qemu_fdt_add_subnode(vms->fdt, nodename);
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "#interrupt-cells", 3);
-+    qemu_fdt_setprop(vms->fdt, nodename, "interrupt-controller", NULL, 0);
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "#address-cells", 0x2);
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "#size-cells", 0x2);
-+    qemu_fdt_setprop(vms->fdt, nodename, "ranges", NULL, 0);
-     if (vms->gic_version == 3) {
--        qemu_fdt_setprop_string(vms->fdt, "/intc", "compatible",
-+        qemu_fdt_setprop_string(vms->fdt, nodename, "compatible",
-                                 "arm,gic-v3");
--        qemu_fdt_setprop_sized_cells(vms->fdt, "/intc", "reg",
-+        qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
-                                      2, vms->memmap[VIRT_GIC_DIST].base,
-                                      2, vms->memmap[VIRT_GIC_DIST].size,
-                                      2, vms->memmap[VIRT_GIC_REDIST].base,
-                                      2, vms->memmap[VIRT_GIC_REDIST].size);
-         if (vms->virt) {
--            qemu_fdt_setprop_cells(vms->fdt, "/intc", "interrupts",
-+            qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupts",
-                                    GIC_FDT_IRQ_TYPE_PPI, ARCH_GICV3_MAINT_IRQ,
-                                    GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-         }
-     } else {
-         /* 'cortex-a15-gic' means 'GIC v2' */
--        qemu_fdt_setprop_string(vms->fdt, "/intc", "compatible",
-+        qemu_fdt_setprop_string(vms->fdt, nodename, "compatible",
-                                 "arm,cortex-a15-gic");
--        qemu_fdt_setprop_sized_cells(vms->fdt, "/intc", "reg",
-+        qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
-                                       2, vms->memmap[VIRT_GIC_DIST].base,
-                                       2, vms->memmap[VIRT_GIC_DIST].size,
-                                       2, vms->memmap[VIRT_GIC_CPU].base,
-                                       2, vms->memmap[VIRT_GIC_CPU].size);
-     }
- 
--    qemu_fdt_setprop_cell(vms->fdt, "/intc", "phandle", vms->gic_phandle);
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle", vms->gic_phandle);
-+    g_free(nodename);
- }
- 
- static void fdt_add_pmu_nodes(const VirtMachineState *vms)
+I suggest to add and use a similar macro QEMU_FALLTHROUGH()
+for the rest of the code and can provide a patch if that's
+fine for everyone.
+
+Regards
+Stefan
+
+ disas/libvixl/vixl/globals.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/disas/libvixl/vixl/globals.h b/disas/libvixl/vixl/globals.h
+index 61dc9f7f7e..33c4231d91 100644
+--- a/disas/libvixl/vixl/globals.h
++++ b/disas/libvixl/vixl/globals.h
+@@ -112,6 +112,8 @@ inline void USE(T1, T2, T3, T4) {}
+ // C++11(201103L).
+ #if __has_warning("-Wimplicit-fallthrough") && __cplusplus >= 201103L
+   #define VIXL_FALLTHROUGH() [[clang::fallthrough]] //NOLINT
++#elif defined(__GNUC__)
++  #define VIXL_FALLTHROUGH() __attribute__((fallthrough))
+ #else
+   #define VIXL_FALLTHROUGH() do {} while (0)
+ #endif
 -- 
-2.5.5
+2.11.0
 

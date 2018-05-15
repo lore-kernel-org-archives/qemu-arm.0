@@ -1,168 +1,145 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp3114234wme;
-        Sun, 13 May 2018 07:42:24 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZq90z+yrcWUtxkAfvUlY5uAROOtTKDAKBfQaIDmeRLjur8fgXCEt571AVuFg4lrfK9QevPz
-X-Received: by 2002:a0c:a9de:: with SMTP id c30-v6mr5424043qvb.53.1526222544434;
-        Sun, 13 May 2018 07:42:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1526222544; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp371484wme;
+        Tue, 15 May 2018 07:54:00 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZptud+dGSsvMb/ykLp/6fzBf1P8iqRiGCEfl7kkrWUuTtzy1ppui+NWIt8uAum5WjKzmzFh
+X-Received: by 2002:ac8:108d:: with SMTP id a13-v6mr14288053qtj.214.1526396040626;
+        Tue, 15 May 2018 07:54:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1526396040; cv=none;
         d=google.com; s=arc-20160816;
-        b=nmmpw62NlHLSOhbqqygCztn4h91LcZ6GicFDPQxTlEXGET1nRFzugXFG641RqUlCML
-         N7C1POoJJPVunuvaii2SUS7D39kO9eo8xC545Pux88JUV8v1fcaBiFxSyx4vAqLe+Vx4
-         pjvrgcIk08CaioSsm/U/e9IvmZfF5261jjXWb5V+rv3sQfkDIt1FVcZcUC2h9ZPA4mb/
-         HVTW7QYeRetpJqp1OiGyJp0/XoNeOdy88kPd9QOTYP1wOMGyvbtVV5txSXDRDYDvKMsH
-         NoLP98UC/wrc7WJGAuxG7PJi6rKm+IdEHviCVbhlA2NBY05PewfV+L3VSO2nkY1FIEdO
-         1sXg==
+        b=jLXAbtvzARFKI+q6Z7gvjRU6xgG27Mrf4m5yt932VXv8uzh8Z2240S/cD9SukAf5jY
+         7r41tXU2COL9p4R9Fg2lGk02t1yX+Gr2KhOwnWdOuVJMOFQ3ADkBu21YBkyCAfbl474Q
+         28pUuNNKincCNv982FQA1TYN3ZHgWI7/TQZMu/i2JWNS0GC3OD1Aafp5VTeW4wS3AeOU
+         mudlVzG3QAo0y1XniHZpkCM6t7bTMQ5bFSdZPHV/fgkLWK9XoyLnRwG0UQLN6VZZbV7G
+         Nss2hNhvrkpaLaPwQbE0r27Xv5wQTtvKcUJkYS1e1kHBUbVdWUzNC4Mig3NDritRusjH
+         JpYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=jXQi425TGPO65l3pM5aKCOrgFXqsW4RJp3pulz7a7wY=;
-        b=oG8ROltPPYkqHM/O3qTak0LpBnLgycE1njKdMugGga4VbYRO56xDCmg1LDUJUPAONv
-         PPy/XDb7uFn9waQ7m6Eoqq+fJNvBemEgE4nKZcHPQFk0bnbixWeGlonoz2yasXa4OOFo
-         ZyjdtD8x1RuBgP2iM3OLI5yz3pZ81i9sEbdW5u/+OHTNNWvl9Rn5feAwmHoMObtEx5tD
-         R3S7xiTPYMyWl0CKXZXkgRiOVJwnh8Y377NUVt9UgBpKZ0fxfQPxqWTuaR8PCYRDs/IL
-         MSTvkvdQa3MNJrgg60FGUq5i7ir2PH4ljRb8UlMh1cSckVO9tfqq3MesJPmi8uEohS/c
-         r3Sg==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=WblDzjtC/WQD0qv0L4bRcTKtq8hgD337epbfV/8WFSI=;
+        b=DlvvZqA/O2D7CQ2KQJZDHofyz9tdR7FWpfj5oMqVxcEbpNoxeY+CEPy4e4DIFgx/hz
+         GP0DX2y6Y8wLWofez6V+qYnoYgoY6BU/UwIs8ybfvBpPvi7jx+im3om7o7ayY+qkxK56
+         RjRgPXjTSlcj+A6TiXC7TTR774jrjG1ma3otUitUN7tMSPJCcsShXQS3SznUHta2BA1Y
+         o5igz/t5og60EYCZDeCiKfoWRNXr7A0paMQAWQmki3Let15Ynp0+A99S3gShU/ws+eDX
+         ECq5VjQh8J/+w4RA4WVAydvBjC5sLZCTOo7G6dYZyHkRvqF7H2MObJX34U8vY6f22LDD
+         Wz7w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=hdtTG7E0;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y58-v6si583860qtb.234.2018.05.13.07.42.24
+        by mx.google.com with ESMTPS id t126-v6si232032qkc.131.2018.05.15.07.54.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 13 May 2018 07:42:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 15 May 2018 07:54:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44196 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=hdtTG7E0;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42024 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fHsCd-0001Mv-Vl
-	for alex.bennee@linaro.org; Sun, 13 May 2018 10:42:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53948)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fIbKy-0008Hp-4f
+	for alex.bennee@linaro.org; Tue, 15 May 2018 10:54:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51841)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fHs66-00088I-6q
-	for qemu-arm@nongnu.org; Sun, 13 May 2018 10:35:39 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fIbJ7-0007FR-Ha
+	for qemu-devel@nongnu.org; Tue, 15 May 2018 10:52:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fHs65-0006Sa-Bf
-	for qemu-arm@nongnu.org; Sun, 13 May 2018 10:35:38 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:41580 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1fHs65-0006ST-6E; Sun, 13 May 2018 10:35:37 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id AB7AC4075757;
-	Sun, 13 May 2018 14:35:36 +0000 (UTC)
-Received: from localhost.localdomain.com (ovpn-116-92.ams2.redhat.com
-	[10.36.116.92])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 255358445A;
-	Sun, 13 May 2018 14:35:35 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, peter.maydell@linaro.org
-Date: Sun, 13 May 2018 16:35:14 +0200
-Message-Id: <1526222114-5324-8-git-send-email-eric.auger@redhat.com>
-In-Reply-To: <1526222114-5324-1-git-send-email-eric.auger@redhat.com>
-References: <1526222114-5324-1-git-send-email-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Sun, 13 May 2018 14:35:36 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Sun, 13 May 2018 14:35:36 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [RFC v2 7/7] hw/arm/virt: Register two redistributor
- regions when necessary
-X-BeenThere: qemu-arm@nongnu.org
+	(envelope-from <peter.maydell@linaro.org>) id 1fIbJ6-0008QO-Mc
+	for qemu-devel@nongnu.org; Tue, 15 May 2018 10:52:05 -0400
+Received: from mail-ot0-x243.google.com ([2607:f8b0:4003:c0f::243]:41043)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fIbJ6-0008Pl-Hn
+	for qemu-devel@nongnu.org; Tue, 15 May 2018 10:52:04 -0400
+Received: by mail-ot0-x243.google.com with SMTP id t1-v6so495986oth.8
+	for <qemu-devel@nongnu.org>; Tue, 15 May 2018 07:52:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=WblDzjtC/WQD0qv0L4bRcTKtq8hgD337epbfV/8WFSI=;
+	b=hdtTG7E05bV0Mtz37ttEKnW0lJNPrffU3RMfyYEtmeZME2hLON5xavnoFZmf3vYQs6
+	TvSJuPUJWYOAVmzHnE8+vy8JNVe7NbC3o7JuIwmcGE/aeMWvXTjMCDFR06nc+TNvCe93
+	Muao31H8GMenprbwupmn1ZZ8zatbGIrC7tJeA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=WblDzjtC/WQD0qv0L4bRcTKtq8hgD337epbfV/8WFSI=;
+	b=XOielPq/o0+OB6n5A/Pnm4NxklMYki7a6Raa++j6He4+Ur/Fr7ZinNQp6zmkpJ1DL1
+	bh/lrAutncu/kQM2mNI7Y6Yxi+2XVy+b8E3ptp5vopgWQVZZYAlepciSeLgb6BmfDMjs
+	f0n6Zacm54CQGd4qP/b5o85PdvVyLuKvyeuyKYKZEvyC4fO1oZR9lLoCWg0hwlr5PP8z
+	L9x55OQ7QMb/XL0PvOXScfItPs8+LsT3a55hUmn4LGPpnDROt1B42aKa8xGbi3ZGIbZz
+	ZVmmSI9kwupPFLSHek4kcaLcmDnmv+wqHpoP5l4mEalTiXV8hkTV7lxE5t7BlH2ee7ds
+	77ew==
+X-Gm-Message-State: ALKqPwczsDZ03sUEOEQMSafBcj6E4cR4POZGGsldfcCdPncwq5LDBGo5
+	yLgctLsSi189FM5ZHLTbKA78I7sp7nGMEg1N4eHxvw==
+X-Received: by 2002:a9d:2842:: with SMTP id
+	h2-v6mr11480329otd.210.1526395923431; 
+	Tue, 15 May 2018 07:52:03 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Tue, 15 May 2018 07:51:42
+	-0700 (PDT)
+In-Reply-To: <291b8b6f-1692-a5ee-f44c-4f8c4dd614fa@twiddle.net>
+References: <20180513090613.27960-1-sw@weilnetz.de>
+	<cc3f26a7-a8b7-35a8-9ffa-c5940c9c1927@weilnetz.de>
+	<CAFEAcA9kcKb28uQJOnqCAC4Gf9b7Hnu0wJbG1nHQLF4U1T9sKA@mail.gmail.com>
+	<99693ba4-c282-a10b-e811-697617f7ee06@weilnetz.de>
+	<CAFEAcA81y1r5N2zi5fPoV5iZ9dd0YBeThcX=qXdJXdNSNO8nsA@mail.gmail.com>
+	<291b8b6f-1692-a5ee-f44c-4f8c4dd614fa@twiddle.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 15 May 2018 15:51:42 +0100
+Message-ID: <CAFEAcA_WPidxh81a9vgCTm2fe3G_zKybNTfA0PFGYn=UKFfxGg@mail.gmail.com>
+To: Richard Henderson <rth@twiddle.net>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::243
+Subject: Re: [Qemu-devel] [PATCH] disas/libvixl: Fix VIXL_FALLTHROUGH macro
+ for QEMU
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: marc.zyngier@arm.com, drjones@redhat.com, christoffer.dall@arm.com,
-	zhaoshenglong@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: K9Xz8dh1vsr3
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Stefan Weil <sw@weilnetz.de>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developer <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: GcvzKjOpvLU3
 
-With a VGICv3 KVM device, if the number of vcpus exceeds the
-capacity of the legacy redistributor region (123 redistributors),
-we now attempt to register the second redistributor region. This
-extends the number of vcpus to 512 assuming the host kernel supports:
-- up to 512 vcpus
-- VGICv3 KVM device group/attribute:
-  KVM_DEV_ARM_VGIC_GRP_ADDR/KVM_VGIC_V3_ADDR_TYPE_REDIST_REGION
+On 15 May 2018 at 15:46, Richard Henderson <rth@twiddle.net> wrote:
+> On 05/15/2018 06:25 AM, Peter Maydell wrote:
+>> I guess that having the compiler check is better than finding them
+>> later with coverity. It's a shame gcc doesn't support the standard
+>> mechanism of using /* fallthrough */ to mark these, though.
+>
+> It does.  Apparently not by default anymore, however:
+>
+> @item @option{-Wimplicit-fallthrough=0} disables the warning altogether.
+>
+> @item @option{-Wimplicit-fallthrough=1} matches @code{.*} regular
+> expression, any comment is used as fallthrough comment.
+>
+> @item @option{-Wimplicit-fallthrough=2} case insensitively matches
+> @code{.*falls?[ \t-]*thr(ough|u).*} regular expression.
+>
+> @item @option{-Wimplicit-fallthrough=3} case sensitively matches one of the
+> following regular expressions:
+> ...
+>
+> I think either =2 or =1 would work for us in QEMU.
 
-In case the host kernel does not support the registration of several
-redistributor regions, the GICv3 device initialization fails
-with a proper error message and qemu exits.
+1 sounds too broad, we don't want any old comment to count.
+2 is probably what we want.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- hw/arm/virt.c | 15 ++++++++++++++-
- 1 file changed, 14 insertions(+), 1 deletion(-)
-
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index f35962a..8d43c51 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -531,6 +531,7 @@ static void create_gic(VirtMachineState *vms, qemu_irq *pic)
-     SysBusDevice *gicbusdev;
-     const char *gictype;
-     int type = vms->gic_version, i;
-+    uint32_t nb_redist_regions = 0;
- 
-     gictype = (type == 3) ? gicv3_class_name() : gic_class_name();
- 
-@@ -546,15 +547,26 @@ static void create_gic(VirtMachineState *vms, qemu_irq *pic)
-     }
- 
-     if (type == 3) {
--        qdev_prop_set_uint32(gicdev, "len-redist-region-count", 1);
-+        nb_redist_regions = virt_gicv3_redist_region_count(vms);
-+
-+        qdev_prop_set_uint32(gicdev, "len-redist-region-count",
-+                             nb_redist_regions);
-         qdev_prop_set_uint32(gicdev , "redist-region-count[0]",
-                              vms->memmap[VIRT_GIC_REDIST].size / 0x20000);
-+
-+        if (nb_redist_regions == 2) {
-+            qdev_prop_set_uint32(gicdev , "redist-region-count[1]",
-+                                 vms->memmap[VIRT_GIC_REDIST2].size / 0x20000);
-+        }
-     }
-     qdev_init_nofail(gicdev);
-     gicbusdev = SYS_BUS_DEVICE(gicdev);
-     sysbus_mmio_map(gicbusdev, 0, vms->memmap[VIRT_GIC_DIST].base);
-     if (type == 3) {
-         sysbus_mmio_map(gicbusdev, 1, vms->memmap[VIRT_GIC_REDIST].base);
-+        if (nb_redist_regions == 2) {
-+            sysbus_mmio_map(gicbusdev, 2, vms->memmap[VIRT_GIC_REDIST2].base);
-+        }
-     } else {
-         sysbus_mmio_map(gicbusdev, 1, vms->memmap[VIRT_GIC_CPU].base);
-     }
-@@ -1346,6 +1358,7 @@ static void machvirt_init(MachineState *machine)
-      */
-     if (vms->gic_version == 3) {
-         virt_max_cpus = vms->memmap[VIRT_GIC_REDIST].size / 0x20000;
-+        virt_max_cpus += vms->memmap[VIRT_GIC_REDIST2].size / 0x20000;
-     } else {
-         virt_max_cpus = GIC_NCPU;
-     }
--- 
-2.5.5
-
+thanks
+-- PMM

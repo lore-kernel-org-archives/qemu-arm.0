@@ -1,196 +1,142 @@
-Received: by 10.28.71.155 with SMTP id m27csp125701wmi;
-        Tue, 27 Mar 2018 23:54:06 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4+HDXbxv76vWTs9SlFZEWZ3DezVM6UWQg3UOHw5U7OswFVlWtMS541tq0//NZzJc/4c+xYm
-X-Received: by 10.55.33.37 with SMTP id h37mr3545774qkh.208.1522220046608;
-        Tue, 27 Mar 2018 23:54:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1522220046; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp191330wme;
+        Tue, 15 May 2018 05:13:44 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZqRG0RmJWpejJRl7oaMVqlLm2ji4Z832DCkGC/bzFulsl0EwEdswrPZ48nk/Ox5dmeGP9aH
+X-Received: by 2002:ac8:23b0:: with SMTP id q45-v6mr12589323qtq.91.1526386423998;
+        Tue, 15 May 2018 05:13:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1526386423; cv=none;
         d=google.com; s=arc-20160816;
-        b=g144tvrEDd/of1wIHwZvKJKsjVnaclJOJuTAqhpN2r62HCxUMu2qmcPkUazAjDShiw
-         itkm3AxbEpCuH4pZHgcMpeffNtt1/FXwK5KZ004eX0jDtkXzP6sIVNnUnTLS90GHZpuQ
-         nSwEnoXST6KgOHna7hwWCcbeyJKzrmpeQOQ7a8UiMz/vVopOtXJO13ifAL21jBCaKvcO
-         6ZzuUBJbW6wXKKqkYkdH46YlAgJn99LgtesEwEjnkSEGzMPYjKJ4I40G1U1bUDLDvaU/
-         O6znQe88NQLgtyTUKKaP+PXMuQJzMUkqsxspdSHpydb7gm0bSgSDvtuog9Wagy3oiXet
-         fmlQ==
+        b=QQ+7vtJqqPvQUKpflwAZ6Ykym+cNFZloYNm+JKAWTYpHAx0VYN/2/rkPtAjApaQSyi
+         XTq+OT8/1BrsMvdFs0vlwfws6xLWQ7Jljjt+UJTiCTePAG3hXIFNdjjBmNXcB7v/FrNu
+         slXtK7xLjHk63bISRl56KjP+akfE9Lrpk/7j4H+iOVmh90EyaLijA5F4QjgYQHa4dUGJ
+         JOWIBURaiwtGiKddwhjDKlegWshbqoKlgOoPOFHxNogigUqNLfXDc1a475HTPTQTx7Px
+         iDqjEHck1uWKYk7S2E1H7ROcExUDVwr+zHWbfUFdYUuUsfi7X3k+C1NTmZ7p7ahDpEpM
+         tPwg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:arc-authentication-results;
-        bh=J9KTlO3sJuOxMQZ2H8nox4Lb07Y/uzKZVhUoKavnYe8=;
-        b=RXiLRv1CG74lqtMKjmgHNufF0OKvDRrd0xCRMfe8bZFLM2unDyemaR8SfQY3wNOJKB
-         XxBgvDG0Yp4mZj3tEQGchKrhi8i6lSuxFDAs+hGwLB8kh4eq54R/C/iAUF4fC5WlpWFe
-         qvjX4qZIAhB9Mvmi8bZraOgw8BDm/D0iAbWBvaS+YjLOhBBjBwgansfTgsLPccDiakZQ
-         JlKWGi1FCcG4VoPqDu5QSPZFi/ZoxsvWW+5Jd217brpucEzNznYBPvCs+FXQKDqt62TO
-         SCkYAn6twWQ/cf6pASPisMFrEncdcQmW2Hbvc5mWJCRn3rF9qjW4ulemxIvDLqXrmv8R
-         Q5Sw==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=qFHOeYK4ex+R/DPbrn2CDWJBtrm1YyyHDwB+5/dP0fM=;
+        b=eRnPnD+LNzlmYZKxDv7m84zXaNOhPde6rfitHW1c90FtnORCNle7FsJKKYjXel69q/
+         D4CmjPaZ2RrHyLUp9u0VuT8q93w14IG+frwfRxE2343BHhrIq4HVoSkYKISmOg+16phr
+         OvI6w2+sHr7NzeCRLieBCObn9U1MgBFqniplgCiu0WHxJzftu4u5AV2S+G1oACyIKkis
+         Zkqi62TIA88yXl5QaR61Pk5WvQHWaUZgABLdpu8lDmjU9X9E/sUv+NIjTLnXyDSegklG
+         6T0CNHOXU+ZziPMKMjeoQJ1JYUhZxDaM6F9yid9XS8g2Yzo40gMEX9ZMnI4ZGtKd7X12
+         aC+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=SYAIQcL5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o29si3304076qtl.366.2018.03.27.23.54.06
+        by mx.google.com with ESMTPS id a83-v6si447184qkc.307.2018.05.15.05.13.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 27 Mar 2018 23:54:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 15 May 2018 05:13:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37680 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=SYAIQcL5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:34833 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f14yE-0001S4-3g
-	for alex.bennee@linaro.org; Wed, 28 Mar 2018 02:54:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59375)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fIYpr-0006je-HS
+	for alex.bennee@linaro.org; Tue, 15 May 2018 08:13:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40325)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1f14sI-0005DZ-7m
-	for qemu-devel@nongnu.org; Wed, 28 Mar 2018 02:47:59 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fIYpl-0006j9-8f
+	for qemu-arm@nongnu.org; Tue, 15 May 2018 08:13:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1f14sH-0004jx-9i
-	for qemu-devel@nongnu.org; Wed, 28 Mar 2018 02:47:58 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:52318 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1f14s9-0004fq-OS; Wed, 28 Mar 2018 02:47:49 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5236740704B6;
-	Wed, 28 Mar 2018 06:47:43 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-135.ams2.redhat.com
-	[10.36.116.135])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 89CDE2026DFD;
-	Wed, 28 Mar 2018 06:47:37 +0000 (UTC)
-To: Shannon Zhao <zhaoshenglong@huawei.com>, eric.auger.pro@gmail.com,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
-References: <1522160122-10744-1-git-send-email-eric.auger@redhat.com>
-	<1522160122-10744-9-git-send-email-eric.auger@redhat.com>
-	<5ABB13BC.8060809@huawei.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <578156db-afbd-a4d7-3899-ec96e2cfd8fb@redhat.com>
-Date: Wed, 28 Mar 2018 08:47:36 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	(envelope-from <peter.maydell@linaro.org>) id 1fIYpk-0007pg-1I
+	for qemu-arm@nongnu.org; Tue, 15 May 2018 08:13:37 -0400
+Received: from mail-ot0-x235.google.com ([2607:f8b0:4003:c0f::235]:42474)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fIYpj-0007p6-SF
+	for qemu-arm@nongnu.org; Tue, 15 May 2018 08:13:35 -0400
+Received: by mail-ot0-x235.google.com with SMTP id l13-v6so18156632otk.9
+	for <qemu-arm@nongnu.org>; Tue, 15 May 2018 05:13:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=qFHOeYK4ex+R/DPbrn2CDWJBtrm1YyyHDwB+5/dP0fM=;
+	b=SYAIQcL5HtPlR5XF7tEHw8gliQLAm0YpA0HLnJTBt/VxGrnyr3O8PBOAgKg74FOh7y
+	dbOEtA7cHwM7aPR8P8vhQrerf+b1hLb5XFETGDcNRT1yIcDeWCLmOVrNL2nXJ1WkTyI+
+	c66ShJH+qLZDmQAz0NGtnqXV51Hva5Le9CLOk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=qFHOeYK4ex+R/DPbrn2CDWJBtrm1YyyHDwB+5/dP0fM=;
+	b=rEiq/vBZNfXOgPoOjzk0WUrSdcTOC9UfhNYixbLxsVaAY7VvPKFbcF2a7TxE3PPqQQ
+	R1kBh8CYKjMtiBZAIPZBC/2xhsEM+ShZiaP0xY361cvuALTKcCQm4NtI2hAWgKXR7Ebz
+	y+mXNRa/pbHL1ZhJbGjkV7dm7FgjbG1bFC5lyiv10tPdaJ8mOC4GKWN45T+H/1vb//6L
+	5ukl34tnJSq3gophbJGQMWf1j1trs7z/UDz7F4isPiDw905mhB+wUYOXgG24lGhkjj6Q
+	uKaAHY+ENAOHCf7x0WTBbiufleJiTiKsEfFScKRchZHO5SxZe6zYgmwkllI0mpSDAzuX
+	JGKw==
+X-Gm-Message-State: ALKqPwdYEqB9eIqJc8Dw3PcKDLVsQ9nDczQkQ9ZM5EE8cwFPfWk9oss0
+	xRmEGVB9EpsfSArwcBSGzbUm7cK+d89lhsjijy5JQted
+X-Received: by 2002:a9d:2842:: with SMTP id
+	h2-v6mr11021234otd.210.1526386415077; 
+	Tue, 15 May 2018 05:13:35 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <5ABB13BC.8060809@huawei.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Wed, 28 Mar 2018 06:47:44 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Wed, 28 Mar 2018 06:47:44 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-devel] [RFC 8/8] hw/arm/virt: Allow up to 512 vcpus along
- with KVM VGICv3
-X-BeenThere: qemu-devel@nongnu.org
+Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Tue, 15 May 2018 05:13:14
+	-0700 (PDT)
+In-Reply-To: <cc3f26a7-a8b7-35a8-9ffa-c5940c9c1927@weilnetz.de>
+References: <20180513090613.27960-1-sw@weilnetz.de>
+	<cc3f26a7-a8b7-35a8-9ffa-c5940c9c1927@weilnetz.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 15 May 2018 13:13:14 +0100
+Message-ID: <CAFEAcA9kcKb28uQJOnqCAC4Gf9b7Hnu0wJbG1nHQLF4U1T9sKA@mail.gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::235
+Subject: Re: [Qemu-arm] [PATCH] disas/libvixl: Fix VIXL_FALLTHROUGH macro
+ for QEMU
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: wei@redhat.com, marc.zyngier@arm.com, drjones@redhat.com, cdall@kernel.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8zqbL73SNv3G
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developer <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: KfL8/1UeARcR
 
-Hi Shannon,
+On 13 May 2018 at 10:57, Stefan Weil <sw@weilnetz.de> wrote:
+> Even with the above patch, disas/libvixl raises a compiler warning for a
+> fall through case. The patch below fixes that warning, but I am not sure
+> whether a fall through is correct there.
+>
+> Stefan
+>
+>
+> diff --git a/disas/libvixl/vixl/a64/disasm-a64.cc
+> b/disas/libvixl/vixl/a64/disasm-a64.cc
+> index 7a58a5c087..5481d94209 100644
+> --- a/disas/libvixl/vixl/a64/disasm-a64.cc
+> +++ b/disas/libvixl/vixl/a64/disasm-a64.cc
+> @@ -2986,6 +2986,7 @@ int Disassembler::SubstituteImmediateField(const
+> Instruction* instr,
+>            return 3;
+>          }
+>        }
+> +      VIXL_FALLTHROUGH(); // ???
+>      }
+>      case 'C': {  // ICondB - Immediate Conditional Branch.
+>        int64_t offset = instr->ImmCondBranch() << 2;
 
-On 28/03/18 06:02, Shannon Zhao wrote:
-> 
-> 
-> On 2018/3/27 22:15, Eric Auger wrote:
->> With KVM acceleration and if KVM VGICV3 supports to set multiple
->> redistributor regions, we now allow up to 512 vcpus.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> ---
->>  hw/arm/virt.c         | 17 ++++++++++++++++-
->>  include/hw/arm/virt.h |  1 +
->>  2 files changed, 17 insertions(+), 1 deletion(-)
->>
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index 8258f6f..cdb1a75 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -149,8 +149,10 @@ static const MemMapEntry a15memmap[] = {
->>      [VIRT_PCIE_PIO] =           { 0x3eff0000, 0x00010000 },
->>      [VIRT_PCIE_ECAM] =          { 0x3f000000, 0x01000000 },
->>      [VIRT_MEM] =                { 0x40000000, RAMLIMIT_BYTES },
->> +    /* Allows 512 - 123 additional vcpus (each 2x64kB) */
->> +    [VIRT_GIC_REDIST2] =        { 0x4000000000ULL, 0x30A0000LL },
-> One concern that this will limit the guest ram size to RAMLIMIT_BYTES.
-> If we want to support larger ram size in the future, this may be a problem.
-There is comment before  #define RAMLIMIT_GB 255
-saying that RAM extension should rather happen at 2TB base.
-"../.. We don't want to fill all the way up to 512GB with RAM because
- * we might want it for non-RAM purposes later"
+This is fixed in upstream vixl, in fact:
 
-This REDIST2 region could also be allocated at the top of the [256GB -
-512GB] region.
+https://git.linaro.org/arm/vixl.git/commit/?id=de326f850f736c3a337fda52845ed3d2e620cc02
 
-I will start working on extending the RAM as suggested by this comment.
-
-Thanks
-
-Eric
-
-> 
->>      /* Second PCIe window, 512GB wide at the 512GB boundary */
->> -    [VIRT_PCIE_MMIO_HIGH] =   { 0x8000000000ULL, 0x8000000000ULL },
->> +    [VIRT_PCIE_MMIO_HIGH] =     { 0x8000000000ULL, 0x8000000000ULL },
->>  };
->>  
->>  static const int a15irqmap[] = {
->> @@ -553,6 +555,11 @@ static void create_gic(VirtMachineState *vms, qemu_irq *pic)
->>          agcc->register_redist_region((GICv3State *)gicdev,
->>                                   vms->memmap[VIRT_GIC_REDIST].base,
->>                                   vms->memmap[VIRT_GIC_REDIST].size >> 17);
->> +        if (vms->smp_cpus > 123) {
->> +            agcc->register_redist_region((GICv3State *)gicdev,
->> +                     vms->memmap[VIRT_GIC_REDIST2].base,
->> +                                 vms->memmap[VIRT_GIC_REDIST2].size >> 17);
->> +        }
->>      } else {
->>          sysbus_mmio_map(gicbusdev, 1, vms->memmap[VIRT_GIC_CPU].base);
->>      }
->> @@ -1284,6 +1291,14 @@ static void machvirt_init(MachineState *machine)
->>       */
->>      if (vms->gic_version == 3) {
->>          virt_max_cpus = vms->memmap[VIRT_GIC_REDIST].size / 0x20000;
->> +        if (kvm_max_vcpus(kvm_state) > 255) {
->> +            /*
->> +             * VGICv3 KVM device capability to set multiple redistributor
->> +             * was introduced at the same time KVM_MAX_VCPUS was bumped
->> +             * from 255 to 512
->> +             */
->> +            virt_max_cpus += vms->memmap[VIRT_GIC_REDIST2].size / 0x20000;
->> +        }
->>      } else {
->>          virt_max_cpus = GIC_NCPU;
->>      }
->> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
->> index d168291..801a4ad 100644
->> --- a/include/hw/arm/virt.h
->> +++ b/include/hw/arm/virt.h
->> @@ -60,6 +60,7 @@ enum {
->>      VIRT_GIC_V2M,
->>      VIRT_GIC_ITS,
->>      VIRT_GIC_REDIST,
->> +    VIRT_GIC_REDIST2,
->>      VIRT_UART,
->>      VIRT_MMIO,
->>      VIRT_RTC,
->>
-> 
+thanks
+-- PMM

@@ -1,93 +1,77 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp691053wme;
-        Thu, 17 May 2018 02:43:34 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZpWS1GgS0c6n60rARBcB5p60HhM8YOz28wycU4fn0BYWJLFrrO5H1a7+cGS7LJ8Uk2CuPVa
-X-Received: by 2002:a37:338f:: with SMTP id z137-v6mr4028652qkz.233.1526550214429;
-        Thu, 17 May 2018 02:43:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1526550214; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp747513wme;
+        Thu, 17 May 2018 03:48:06 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZr2xY+Zg36OtXWd4oM+jw/sJv3M74FlGihAHzShMZgtiaSfiPXDD7V5P1HjsSg1Zkgj6jAk
+X-Received: by 2002:ac8:4091:: with SMTP id p17-v6mr4677749qtl.411.1526554086342;
+        Thu, 17 May 2018 03:48:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1526554086; cv=none;
         d=google.com; s=arc-20160816;
-        b=Upyw9ws4x8LqZGZADfmKnigxxaccxD0/i6G2cTuAK98KNPIjolEesohG6CenFV8jAk
-         5YSGzATZfARxI68/ylCsvTD08zwY4YkNsuYJxvXevc6BBthIfBxCbIT3A3QMxmzyDxOf
-         VCd1daYF3UAZIuBSj12Zy6fkzwi7klQ3GO/bViu4GHzsYNRLU4SuaEdgiyK6HzogZFdT
-         TY56OKfwb+1Prg6mYPeIRmgDpIhoDMZ7J9DDw2sFpGPIv94mmyd4UnZ/5Zyuo5ILLofg
-         T23f4n5pR3Bp1LxNdGH1ylRKPYNvrjuTPJbOdFZessMT6kSg90Z4JnzJFNGlwbCX85N0
-         mcvw==
+        b=qgJUWtR9Ftb0f3lSsIklkFhyf2GHOwh8t6Twf+aDLGqRoraEZJjbYTr+CEpljLD59s
+         UA98fmGBAskzrM658oSE9AiP8TH5V/QS1n4pIfI9MPI64IL6Cil0KIqUwkvT9g+RVMOO
+         iaFHtVFZjLJUURuUiGAgNp1Duel68nIELSC4QFq12SnK2is3rgYp8Yg4JHZSKNEVPwHm
+         CLQ5thAfAxGYsp0O94AYxCviXvAVf8z4k/c8mXQxsB+dp0pnFMSJNAKayRjocZZCSEPd
+         mAFRPhc/lFbCt5vAljCV9kdVZ6ipp6tITnrFbC76higCYh603Y5perSgg43dEicqvovs
+         8RMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:arc-authentication-results;
-        bh=P8jqaCpUd8f2Yh1Ldmh+hlzox6LrneDuF8L9v9AM6ZA=;
-        b=mHRvZ3MRaBgqoBDjfv5a6MBINfpnGR1aFX+YgyJQVycTd9MEooLzB8HTCp/jWPEtBC
-         hMDS3GRj7SW8dTnfHkxRTe+TbhRjg08oAhPMrn9vpcQybt2CljKS9ZRpILs4VqfA687M
-         fijalKXwVZ8oxWtIJ41oYT6gX5QXe+yMYE3tV/gal2ln6fQwMY2o+L8UwnYNxAF2VFll
-         RqrLL6YRTe3Y5r4DGEG2TjIoRpyJII1Wlg7j6S8qpry9i/uunjmMAh3QBZS+3adHgiCy
-         bIFQ+6un/DPnAV5rYlxPaaGoSeF8tVQ772G9dTlyX3BluS2/rvLJE8AxxbxpEuG7QWDg
-         fJXw==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:subject:date:to
+         :from:resent-from:content-transfer-encoding:mime-version:message-id
+         :in-reply-to:resent-message-id:resent-date
+         :arc-authentication-results;
+        bh=5IKXafLDHFIpAxNSK48SobPjT3KTYho9hlOpwAYgDfU=;
+        b=o3EpAfLr/f9h0/9tlJ5GcHMXJmUC809KhG9lrrXa8p1iljjeT/usOEkV/STknRWeXZ
+         6xBgFgpMjg+sCSMhCUpnrN+A4RAc5onjv9rfDlWYLy2/0Xj+SXdq1g2Vt7bhYtVP3KID
+         jnGz4PKuV7lrIwfPjpsDsno7F62YlDDPV2vCF6B0wEDqYCEKTa+Xgy3uSKISFlXVZBdN
+         LoRbHxmofhV7r0Db/IQOydhPX5X9YpKV9H8mZQ/7N2K9b/YTQTo/8VM//EsqxQRfecT4
+         qDDEXFy7mMHUE8S15z0K2eeQeexx7rled0H4B4byS2qgEMlYCSEdh0EFevCmJ+zXJ7c7
+         CfWA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b26-v6si3388238qto.48.2018.05.17.02.43.34
+        by mx.google.com with ESMTPS id x5-v6si4582472qke.146.2018.05.17.03.48.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 17 May 2018 02:43:34 -0700 (PDT)
+        Thu, 17 May 2018 03:48:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45712 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:48416 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fJFRe-0006ew-0C
-	for alex.bennee@linaro.org; Thu, 17 May 2018 05:43:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40446)
+	id 1fJGS5-0002fO-OE
+	for alex.bennee@linaro.org; Thu, 17 May 2018 06:48:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56792)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fJFRV-0006eS-H8
-	for qemu-arm@nongnu.org; Thu, 17 May 2018 05:43:27 -0400
+	(envelope-from <no-reply@patchew.org>) id 1fJGRt-0002eY-S1
+	for qemu-arm@nongnu.org; Thu, 17 May 2018 06:47:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fJFRR-0005Qe-HQ
-	for qemu-arm@nongnu.org; Thu, 17 May 2018 05:43:25 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:53146 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1fJFRR-0005QB-BI; Thu, 17 May 2018 05:43:21 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 91C8B40200A6;
-	Thu, 17 May 2018 09:43:20 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-117-111.ams2.redhat.com
-	[10.36.117.111])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id B220C6F9E5;
-	Thu, 17 May 2018 09:43:19 +0000 (UTC)
-To: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-	peter.maydell@linaro.org
-References: <1526495474-26394-1-git-send-email-eric.auger@redhat.com>
-	<1526495474-26394-2-git-send-email-eric.auger@redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <0c16c6ac-7bd6-03b7-b67f-50b8737e57a1@redhat.com>
-Date: Thu, 17 May 2018 11:43:18 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	(envelope-from <no-reply@patchew.org>) id 1fJGRr-0001iv-Jf
+	for qemu-arm@nongnu.org; Thu, 17 May 2018 06:47:53 -0400
+Resent-Date: Thu, 17 May 2018 06:47:53 -0400
+Resent-Message-Id: <E1fJGRr-0001iv-Jf@eggs.gnu.org>
+Received: from sender-of-o51.zoho.com ([135.84.80.216]:21104)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1fJGRr-0001id-Ax
+	for qemu-arm@nongnu.org; Thu, 17 May 2018 06:47:51 -0400
+Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 1526511701531994.7959207099848;
+	Wed, 16 May 2018 16:01:41 -0700 (PDT)
+In-Reply-To: <20180516223007.10256-1-richard.henderson@linaro.org>
+Message-ID: <152651170062.258.10553300984590992969@1f70390a8372>
 MIME-Version: 1.0
-In-Reply-To: <1526495474-26394-2-git-send-email-eric.auger@redhat.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Thu, 17 May 2018 09:43:20 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Thu, 17 May 2018 09:43:20 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: richard.henderson@linaro.org
+Date: Wed, 16 May 2018 16:01:41 -0700 (PDT)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [PATCH 1/3] hw/arm/smmuv3: Cache/invalidate config
- data
+X-Received-From: 135.84.80.216
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3-a 00/27] target/arm: Scalable
+ Vector Extension
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,331 +83,146 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, famz@redhat.com,
+	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0FAD7/N9luKt
+X-TUID: 1ZZy54fL03Ay
 
-Hi Peter,
+SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
+LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1l
+c3NhZ2UtaWQ6IDIwMTgwNTE2MjIzMDA3LjEwMjU2LTEtcmljaGFyZC5oZW5kZXJzb25AbGluYXJv
+Lm9yZwpTdWJqZWN0OiBbUWVtdS1kZXZlbF0gW1BBVENIIHYzLWEgMDAvMjddIHRhcmdldC9hcm06
+IFNjYWxhYmxlIFZlY3RvciBFeHRlbnNpb24KCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEv
+YmluL2Jhc2gKCkJBU0U9YmFzZQpuPTEKdG90YWw9JChnaXQgbG9nIC0tb25lbGluZSAkQkFTRS4u
+IHwgd2MgLWwpCmZhaWxlZD0wCgpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAw
+CmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwg
+ZGlmZi5hbGdvcml0aG0gaGlzdG9ncmFtCgpjb21taXRzPSIkKGdpdCBsb2cgLS1mb3JtYXQ9JUgg
+LS1yZXZlcnNlICRCQVNFLi4pIgpmb3IgYyBpbiAkY29tbWl0czsgZG8KICAgIGVjaG8gIkNoZWNr
+aW5nIFBBVENIICRuLyR0b3RhbDogJChnaXQgbG9nIC1uIDEgLS1mb3JtYXQ9JXMgJGMpLi4uIgog
+ICAgaWYgISBnaXQgc2hvdyAkYyAtLWZvcm1hdD1lbWFpbCB8IC4vc2NyaXB0cy9jaGVja3BhdGNo
+LnBsIC0tbWFpbGJhY2sgLTsgdGhlbgogICAgICAgIGZhaWxlZD0xCiAgICAgICAgZWNobwogICAg
+ZmkKICAgIG49JCgobisxKSkKZG9uZQoKZXhpdCAkZmFpbGVkCj09PSBURVNUIFNDUklQVCBFTkQg
+PT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0CkZy
+b20gaHR0cHM6Ly9naXRodWIuY29tL3BhdGNoZXctcHJvamVjdC9xZW11CiAqIFtuZXcgdGFnXSAg
+ICAgICAgICAgICAgIHBhdGNoZXcvMjAxODA1MTYyMjMwMDcuMTAyNTYtMS1yaWNoYXJkLmhlbmRl
+cnNvbkBsaW5hcm8ub3JnIC0+IHBhdGNoZXcvMjAxODA1MTYyMjMwMDcuMTAyNTYtMS1yaWNoYXJk
+LmhlbmRlcnNvbkBsaW5hcm8ub3JnClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKZDVk
+NmM4ZjFjMSB0YXJnZXQvYXJtOiBJbXBsZW1lbnQgU1ZFIFBlcm11dGUgLSBVbnByZWRpY2F0ZWQg
+R3JvdXAKM2U4MWQ1ODVlYSB0YXJnZXQvYXJtOiBFeHRlbmQgdmVjX3JlZ19vZmZzZXQgdG8gbGFy
+Z2VyIHNpemVzCmIxZmQwYjM1ZWQgdGFyZ2V0L2FybTogSW1wbGVtZW50IFNWRSBQZXJtdXRlIC0g
+RXh0cmFjdCBHcm91cAo3NDQwZDQxOGI0IHRhcmdldC9hcm06IEltcGxlbWVudCBTVkUgSW50ZWdl
+ciBXaWRlIEltbWVkaWF0ZSAtIFByZWRpY2F0ZWQgR3JvdXAKYzM1MjMwNTM4YyB0YXJnZXQvYXJt
+OiBJbXBsZW1lbnQgU1ZFIEJpdHdpc2UgSW1tZWRpYXRlIEdyb3VwCmI3NDQ5MjQxNWUgdGFyZ2V0
+L2FybTogSW1wbGVtZW50IFNWRSBFbGVtZW50IENvdW50IEdyb3VwCjRjNGQ1NmFiNjAgdGFyZ2V0
+L2FybTogSW1wbGVtZW50IFNWRSBmbG9hdGluZy1wb2ludCB0cmlnIHNlbGVjdCBjb2VmZmljaWVu
+dAo5MDM3ZDdkYjg5IHRhcmdldC9hcm06IEltcGxlbWVudCBTVkUgZmxvYXRpbmctcG9pbnQgZXhw
+b25lbnRpYWwgYWNjZWxlcmF0b3IKNGRjYjBlMWUwZCB0YXJnZXQvYXJtOiBJbXBsZW1lbnQgU1ZF
+IENvbXB1dGUgVmVjdG9yIEFkZHJlc3MgR3JvdXAKNmViZDAzOGIzZiB0YXJnZXQvYXJtOiBJbXBs
+ZW1lbnQgU1ZFIEJpdHdpc2UgU2hpZnQgLSBVbnByZWRpY2F0ZWQgR3JvdXAKNmYzMTMxNzBkNyB0
+YXJnZXQvYXJtOiBJbXBsZW1lbnQgU1ZFIFN0YWNrIEFsbG9jYXRpb24gR3JvdXAKM2FjNDQxNzY5
+ZSB0YXJnZXQvYXJtOiBJbXBsZW1lbnQgU1ZFIEluZGV4IEdlbmVyYXRpb24gR3JvdXAKNTViYjNm
+NmUwZiB0YXJnZXQvYXJtOiBJbXBsZW1lbnQgU1ZFIEludGVnZXIgQXJpdGhtZXRpYyAtIFVucHJl
+ZGljYXRlZCBHcm91cAphOTAzOTQ3YzZlIHRhcmdldC9hcm06IEltcGxlbWVudCBTVkUgSW50ZWdl
+ciBNdWx0aXBseS1BZGQgR3JvdXAKNjFjYTE5NThlYiB0YXJnZXQvYXJtOiBJbXBsZW1lbnQgU1ZF
+IEludGVnZXIgQXJpdGhtZXRpYyAtIFVuYXJ5IFByZWRpY2F0ZWQgR3JvdXAKMTBlYmQwZmRiNiB0
+YXJnZXQvYXJtOiBJbXBsZW1lbnQgU1ZFIGJpdHdpc2Ugc2hpZnQgYnkgd2lkZSBlbGVtZW50cyAo
+cHJlZGljYXRlZCkKMmJjNzBjMTkyYSB0YXJnZXQvYXJtOiBJbXBsZW1lbnQgU1ZFIGJpdHdpc2Ug
+c2hpZnQgYnkgdmVjdG9yIChwcmVkaWNhdGVkKQpkZjY4YzQ5MTg4IHRhcmdldC9hcm06IEltcGxl
+bWVudCBTVkUgYml0d2lzZSBzaGlmdCBieSBpbW1lZGlhdGUgKHByZWRpY2F0ZWQpCmY3ZmY5NDE2
+M2QgdGFyZ2V0L2FybTogSW1wbGVtZW50IFNWRSBJbnRlZ2VyIFJlZHVjdGlvbiBHcm91cApiMTQ5
+NmRlYjAwIHRhcmdldC9hcm06IEltcGxlbWVudCBTVkUgSW50ZWdlciBCaW5hcnkgQXJpdGhtZXRp
+YyAtIFByZWRpY2F0ZWQgR3JvdXAKYzVmMjIzYjVmYiB0YXJnZXQvYXJtOiBJbXBsZW1lbnQgU1ZF
+IFByZWRpY2F0ZSBNaXNjIEdyb3VwCmE0MzdiYThjMjEgdGFyZ2V0L2FybTogSW1wbGVtZW50IFNW
+RSBQcmVkaWNhdGUgTG9naWNhbCBPcGVyYXRpb25zIEdyb3VwCmMyZWI5NmRkMmYgdGFyZ2V0L2Fy
+bTogSW1wbGVtZW50IFNWRSBwcmVkaWNhdGUgdGVzdApkOGM2NmQ2NTY4IHRhcmdldC9hcm06IElt
+cGxlbWVudCBTVkUgbG9hZCB2ZWN0b3IvcHJlZGljYXRlCjM1NmM5Yzg4M2MgdGFyZ2V0L2FybTog
+SW1wbGVtZW50IFNWRSBCaXR3aXNlIExvZ2ljYWwgLSBVbnByZWRpY2F0ZWQgR3JvdXAKOTMyYTQx
+NzNhYSB0YXJnZXQvYXJtOiBBZGQgU1ZFIGRlY29kZSBza2VsZXRvbgozMTMyOTRjNzhjIHRhcmdl
+dC9hcm06IEludHJvZHVjZSB0cmFuc2xhdGUtYTY0LmgKCj09PSBPVVRQVVQgQkVHSU4gPT09CkNo
+ZWNraW5nIFBBVENIIDEvMjc6IHRhcmdldC9hcm06IEludHJvZHVjZSB0cmFuc2xhdGUtYTY0Lmgu
+Li4KV0FSTklORzogYWRkZWQsIG1vdmVkIG9yIGRlbGV0ZWQgZmlsZShzKSwgZG9lcyBNQUlOVEFJ
+TkVSUyBuZWVkIHVwZGF0aW5nPwojMjU2OiAKbmV3IGZpbGUgbW9kZSAxMDA2NDQKCnRvdGFsOiAw
+IGVycm9ycywgMSB3YXJuaW5ncywgMzM3IGxpbmVzIGNoZWNrZWQKCllvdXIgcGF0Y2ggaGFzIHN0
+eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUg
+ZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQ
+QVRDSCBpbiBNQUlOVEFJTkVSUy4KQ2hlY2tpbmcgUEFUQ0ggMi8yNzogdGFyZ2V0L2FybTogQWRk
+IFNWRSBkZWNvZGUgc2tlbGV0b24uLi4KV0FSTklORzogYWRkZWQsIG1vdmVkIG9yIGRlbGV0ZWQg
+ZmlsZShzKSwgZG9lcyBNQUlOVEFJTkVSUyBuZWVkIHVwZGF0aW5nPwojNDE6IApuZXcgZmlsZSBt
+b2RlIDEwMDY0NAoKdG90YWw6IDAgZXJyb3JzLCAxIHdhcm5pbmdzLCAxNDAgbGluZXMgY2hlY2tl
+ZAoKWW91ciBwYXRjaCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkg
+b2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1h
+aW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgpDaGVja2luZyBQQVRDSCAz
+LzI3OiB0YXJnZXQvYXJtOiBJbXBsZW1lbnQgU1ZFIEJpdHdpc2UgTG9naWNhbCAtIFVucHJlZGlj
+YXRlZCBHcm91cC4uLgpDaGVja2luZyBQQVRDSCA0LzI3OiB0YXJnZXQvYXJtOiBJbXBsZW1lbnQg
+U1ZFIGxvYWQgdmVjdG9yL3ByZWRpY2F0ZS4uLgpDaGVja2luZyBQQVRDSCA1LzI3OiB0YXJnZXQv
+YXJtOiBJbXBsZW1lbnQgU1ZFIHByZWRpY2F0ZSB0ZXN0Li4uCldBUk5JTkc6IGFkZGVkLCBtb3Zl
+ZCBvciBkZWxldGVkIGZpbGUocyksIGRvZXMgTUFJTlRBSU5FUlMgbmVlZCB1cGRhdGluZz8KIzIx
+OiAKbmV3IGZpbGUgbW9kZSAxMDA2NDQKCnRvdGFsOiAwIGVycm9ycywgMSB3YXJuaW5ncywgMTk3
+IGxpbmVzIGNoZWNrZWQKCllvdXIgcGF0Y2ggaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2
+aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0
+aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KQ2hl
+Y2tpbmcgUEFUQ0ggNi8yNzogdGFyZ2V0L2FybTogSW1wbGVtZW50IFNWRSBQcmVkaWNhdGUgTG9n
+aWNhbCBPcGVyYXRpb25zIEdyb3VwLi4uCkNoZWNraW5nIFBBVENIIDcvMjc6IHRhcmdldC9hcm06
+IEltcGxlbWVudCBTVkUgUHJlZGljYXRlIE1pc2MgR3JvdXAuLi4KQ2hlY2tpbmcgUEFUQ0ggOC8y
+NzogdGFyZ2V0L2FybTogSW1wbGVtZW50IFNWRSBJbnRlZ2VyIEJpbmFyeSBBcml0aG1ldGljIC0g
+UHJlZGljYXRlZCBHcm91cC4uLgpDaGVja2luZyBQQVRDSCA5LzI3OiB0YXJnZXQvYXJtOiBJbXBs
+ZW1lbnQgU1ZFIEludGVnZXIgUmVkdWN0aW9uIEdyb3VwLi4uCkNoZWNraW5nIFBBVENIIDEwLzI3
+OiB0YXJnZXQvYXJtOiBJbXBsZW1lbnQgU1ZFIGJpdHdpc2Ugc2hpZnQgYnkgaW1tZWRpYXRlIChw
+cmVkaWNhdGVkKS4uLgpDaGVja2luZyBQQVRDSCAxMS8yNzogdGFyZ2V0L2FybTogSW1wbGVtZW50
+IFNWRSBiaXR3aXNlIHNoaWZ0IGJ5IHZlY3RvciAocHJlZGljYXRlZCkuLi4KQ2hlY2tpbmcgUEFU
+Q0ggMTIvMjc6IHRhcmdldC9hcm06IEltcGxlbWVudCBTVkUgYml0d2lzZSBzaGlmdCBieSB3aWRl
+IGVsZW1lbnRzIChwcmVkaWNhdGVkKS4uLgpFUlJPUjogc3BhY2VzIHJlcXVpcmVkIGFyb3VuZCB0
+aGF0ICcqJyAoY3R4Old4VikKIzExODogRklMRTogdGFyZ2V0L2FybS90cmFuc2xhdGUtc3ZlLmM6
+NTA1Ogorc3RhdGljIGJvb2wgdHJhbnNfIyNOQU1FIyNfenB6dyhEaXNhc0NvbnRleHQgKnMsIGFy
+Z19ycHJyX2VzeiAqYSwgICAgICAgICBcCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF4KCnRvdGFsOiAxIGVycm9ycywgMCB3YXJu
+aW5ncywgMTEwIGxpbmVzIGNoZWNrZWQKCllvdXIgcGF0Y2ggaGFzIHN0eWxlIHByb2JsZW1zLCBw
+bGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVz
+IHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJ
+TkVSUy4KCkNoZWNraW5nIFBBVENIIDEzLzI3OiB0YXJnZXQvYXJtOiBJbXBsZW1lbnQgU1ZFIElu
+dGVnZXIgQXJpdGhtZXRpYyAtIFVuYXJ5IFByZWRpY2F0ZWQgR3JvdXAuLi4KRVJST1I6IHNwYWNl
+cyByZXF1aXJlZCBhcm91bmQgdGhhdCAnLScgKGN0eDpWeFYpCiMxODU6IEZJTEU6IHRhcmdldC9h
+cm0vc3ZlX2hlbHBlci5jOjU2NDoKKyNkZWZpbmUgRE9fRkFCUyhOKSAgICAoTiAmICgoX190eXBl
+b2YoTikpLTEgPj4gMSkpCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IF4KCkVSUk9SOiBzcGFjZXMgcmVxdWlyZWQgYXJvdW5kIHRoYXQgJy0nIChjdHg6VnhWKQojMTkx
+OiBGSUxFOiB0YXJnZXQvYXJtL3N2ZV9oZWxwZXIuYzo1NzA6CisjZGVmaW5lIERPX0ZORUcoTikg
+ICAgKE4gXiB+KChfX3R5cGVvZihOKSktMSA+PiAxKSkKICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgIF4KCnRvdGFsOiAyIGVycm9ycywgMCB3YXJuaW5ncywgMzQ3IGxp
+bmVzIGNoZWNrZWQKCllvdXIgcGF0Y2ggaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3
+LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVt
+IHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KCkNoZWNr
+aW5nIFBBVENIIDE0LzI3OiB0YXJnZXQvYXJtOiBJbXBsZW1lbnQgU1ZFIEludGVnZXIgTXVsdGlw
+bHktQWRkIEdyb3VwLi4uCkNoZWNraW5nIFBBVENIIDE1LzI3OiB0YXJnZXQvYXJtOiBJbXBsZW1l
+bnQgU1ZFIEludGVnZXIgQXJpdGhtZXRpYyAtIFVucHJlZGljYXRlZCBHcm91cC4uLgpDaGVja2lu
+ZyBQQVRDSCAxNi8yNzogdGFyZ2V0L2FybTogSW1wbGVtZW50IFNWRSBJbmRleCBHZW5lcmF0aW9u
+IEdyb3VwLi4uCkNoZWNraW5nIFBBVENIIDE3LzI3OiB0YXJnZXQvYXJtOiBJbXBsZW1lbnQgU1ZF
+IFN0YWNrIEFsbG9jYXRpb24gR3JvdXAuLi4KQ2hlY2tpbmcgUEFUQ0ggMTgvMjc6IHRhcmdldC9h
+cm06IEltcGxlbWVudCBTVkUgQml0d2lzZSBTaGlmdCAtIFVucHJlZGljYXRlZCBHcm91cC4uLgpD
+aGVja2luZyBQQVRDSCAxOS8yNzogdGFyZ2V0L2FybTogSW1wbGVtZW50IFNWRSBDb21wdXRlIFZl
+Y3RvciBBZGRyZXNzIEdyb3VwLi4uCkNoZWNraW5nIFBBVENIIDIwLzI3OiB0YXJnZXQvYXJtOiBJ
+bXBsZW1lbnQgU1ZFIGZsb2F0aW5nLXBvaW50IGV4cG9uZW50aWFsIGFjY2VsZXJhdG9yLi4uCkNo
+ZWNraW5nIFBBVENIIDIxLzI3OiB0YXJnZXQvYXJtOiBJbXBsZW1lbnQgU1ZFIGZsb2F0aW5nLXBv
+aW50IHRyaWcgc2VsZWN0IGNvZWZmaWNpZW50Li4uCkNoZWNraW5nIFBBVENIIDIyLzI3OiB0YXJn
+ZXQvYXJtOiBJbXBsZW1lbnQgU1ZFIEVsZW1lbnQgQ291bnQgR3JvdXAuLi4KQ2hlY2tpbmcgUEFU
+Q0ggMjMvMjc6IHRhcmdldC9hcm06IEltcGxlbWVudCBTVkUgQml0d2lzZSBJbW1lZGlhdGUgR3Jv
+dXAuLi4KQ2hlY2tpbmcgUEFUQ0ggMjQvMjc6IHRhcmdldC9hcm06IEltcGxlbWVudCBTVkUgSW50
+ZWdlciBXaWRlIEltbWVkaWF0ZSAtIFByZWRpY2F0ZWQgR3JvdXAuLi4KQ2hlY2tpbmcgUEFUQ0gg
+MjUvMjc6IHRhcmdldC9hcm06IEltcGxlbWVudCBTVkUgUGVybXV0ZSAtIEV4dHJhY3QgR3JvdXAu
+Li4KQ2hlY2tpbmcgUEFUQ0ggMjYvMjc6IHRhcmdldC9hcm06IEV4dGVuZCB2ZWNfcmVnX29mZnNl
+dCB0byBsYXJnZXIgc2l6ZXMuLi4KQ2hlY2tpbmcgUEFUQ0ggMjcvMjc6IHRhcmdldC9hcm06IElt
+cGxlbWVudCBTVkUgUGVybXV0ZSAtIFVucHJlZGljYXRlZCBHcm91cC4uLgpFUlJPUjogc3BhY2Ug
+cHJvaGliaXRlZCBiZWZvcmUgdGhhdCBjbG9zZSBwYXJlbnRoZXNpcyAnKScKIzExNjogRklMRTog
+dGFyZ2V0L2FybS9zdmVfaGVscGVyLmM6MTU3NToKK0RPX0lOU1Ioc3ZlX2luc3JfZCwgdWludDY0
+X3QsICkKCkVSUk9SOiBzcGFjZSBwcm9oaWJpdGVkIGJlZm9yZSB0aGF0IGNsb3NlIHBhcmVudGhl
+c2lzICcpJwojMTkwOiBGSUxFOiB0YXJnZXQvYXJtL3N2ZV9oZWxwZXIuYzoxNjQ5OgorRE9fVEJM
+KHN2ZV90YmxfZCwgdWludDY0X3QsICkKCnRvdGFsOiAyIGVycm9ycywgMCB3YXJuaW5ncywgMzMw
+IGxpbmVzIGNoZWNrZWQKCllvdXIgcGF0Y2ggaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2
+aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0
+aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KCj09
+PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgotLS0K
+RW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cDovL3BhdGNoZXcu
+b3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQu
+Y29t
 
-On 05/16/2018 08:31 PM, Eric Auger wrote:
-> Let's cache config data to avoid fetching and parsing STE/CD
-> structures on each translation. We invalidate them on data structure
-> invalidation commands.
-
-You may remember that initially I was taking a QemuMutex to protect
-IOTLB/cache structures against concurrent access. I checked whether the
-BQL was hold on translate and I did not notice any case where it isn't.
-However I may have missed some, featuring virtio-blk-pci where
-translates are called from IO threads. Looks the problem was reported on
-Intel and Peter's is trying to fix the issue with the introduction of a
-local mutex.
-
-[Qemu-devel] [PATCH v2 03/10] intel-iommu: add iommu lock
-http://patchwork.ozlabs.org/patch/908464/
-
-Also please see the original thread:
-https://lists.gnu.org/archive/html/qemu-devel/2018-04/msg04153.html
-
-So I think I may respin this series with the addition of the QemuMutex.
-
-Thanks
-
-Eric
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> 
-> ---
-> 
-> v11 -> v12:
-> - only insert the new config if decode_cfg succeeds
-> - use smmu_get_sid for trace_* and store hits/misses in the SMMUDevice
-> - s/smmuv3_put_config/smmuv3_flush_config
-> - document smmuv3_get_config
-> - removing the mutex as BQL does the job
-> ---
->  hw/arm/smmu-common.c         |  26 ++++++++-
->  hw/arm/smmuv3.c              | 130 +++++++++++++++++++++++++++++++++++++++++--
->  hw/arm/trace-events          |   6 ++
->  include/hw/arm/smmu-common.h |   5 ++
->  4 files changed, 159 insertions(+), 8 deletions(-)
-> 
-> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-> index 3c5f724..7e9827d 100644
-> --- a/hw/arm/smmu-common.c
-> +++ b/hw/arm/smmu-common.c
-> @@ -297,6 +297,8 @@ static AddressSpace *smmu_find_add_as(PCIBus *bus, void *opaque, int devfn)
->          sdev->smmu = s;
->          sdev->bus = bus;
->          sdev->devfn = devfn;
-> +        sdev->cfg_cache_misses = 0;
-> +        sdev->cfg_cache_hits = 0;
->  
->          memory_region_init_iommu(&sdev->iommu, sizeof(sdev->iommu),
->                                   s->mrtypename,
-> @@ -310,6 +312,24 @@ static AddressSpace *smmu_find_add_as(PCIBus *bus, void *opaque, int devfn)
->      return &sdev->as;
->  }
->  
-> +IOMMUMemoryRegion *smmu_iommu_mr(SMMUState *s, uint32_t sid)
-> +{
-> +    uint8_t bus_n, devfn;
-> +    SMMUPciBus *smmu_bus;
-> +    SMMUDevice *smmu;
-> +
-> +    bus_n = PCI_BUS_NUM(sid);
-> +    smmu_bus = smmu_find_smmu_pcibus(s, bus_n);
-> +    if (smmu_bus) {
-> +        devfn = sid & 0x7;
-> +        smmu = smmu_bus->pbdev[devfn];
-> +        if (smmu) {
-> +            return &smmu->iommu;
-> +        }
-> +    }
-> +    return NULL;
-> +}
-> +
->  static void smmu_base_realize(DeviceState *dev, Error **errp)
->  {
->      SMMUState *s = ARM_SMMU(dev);
-> @@ -321,7 +341,7 @@ static void smmu_base_realize(DeviceState *dev, Error **errp)
->          error_propagate(errp, local_err);
->          return;
->      }
-> -
-> +    s->configs = g_hash_table_new_full(NULL, NULL, NULL, g_free);
->      s->smmu_pcibus_by_busptr = g_hash_table_new(NULL, NULL);
->  
->      if (s->primary_bus) {
-> @@ -333,7 +353,9 @@ static void smmu_base_realize(DeviceState *dev, Error **errp)
->  
->  static void smmu_base_reset(DeviceState *dev)
->  {
-> -    /* will be filled later on */
-> +    SMMUState *s = ARM_SMMU(dev);
-> +
-> +    g_hash_table_remove_all(s->configs);
->  }
->  
->  static Property smmu_dev_properties[] = {
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 42dc521..d3b64c2 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -537,6 +537,58 @@ static int smmuv3_decode_config(IOMMUMemoryRegion *mr, SMMUTransCfg *cfg,
->      return decode_cd(cfg, &cd, event);
->  }
->  
-> +/**
-> + * smmuv3_get_config - Look up for a cached copy of configuration data for
-> + * @sdev and on cache miss performs a configuration structure decoding from
-> + * guest RAM.
-> + *
-> + * @sdev: SMMUDevice handle
-> + * @event: output event info
-> + *
-> + * The configuration cache contains data resulting from both STE and CD
-> + * decoding under the form of an SMMUTransCfg struct. The hash table is indexed
-> + * by the SMMUDevice handle.
-> + */
-> +static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev, SMMUEventInfo *event)
-> +{
-> +    SMMUv3State *s = sdev->smmu;
-> +    SMMUState *bc = &s->smmu_state;
-> +    SMMUTransCfg *cfg;
-> +
-> +    cfg = g_hash_table_lookup(bc->configs, sdev);
-> +    if (cfg) {
-> +        sdev->cfg_cache_hits += 1;
-> +        trace_smmuv3_config_cache_hit(smmu_get_sid(sdev),
-> +                            sdev->cfg_cache_hits, sdev->cfg_cache_misses,
-> +                            100 * sdev->cfg_cache_hits /
-> +                            (sdev->cfg_cache_hits + sdev->cfg_cache_misses));
-> +    } else {
-> +        sdev->cfg_cache_misses += 1;
-> +        trace_smmuv3_config_cache_miss(smmu_get_sid(sdev),
-> +                            sdev->cfg_cache_hits, sdev->cfg_cache_misses,
-> +                            100 * sdev->cfg_cache_hits /
-> +                            (sdev->cfg_cache_hits + sdev->cfg_cache_misses));
-> +        cfg = g_new0(SMMUTransCfg, 1);
-> +
-> +        if (!smmuv3_decode_config(&sdev->iommu, cfg, event)) {
-> +            g_hash_table_insert(bc->configs, sdev, cfg);
-> +        } else {
-> +            g_free(cfg);
-> +            cfg = NULL;
-> +        }
-> +    }
-> +    return cfg;
-> +}
-> +
-> +static void smmuv3_flush_config(SMMUDevice *sdev)
-> +{
-> +    SMMUv3State *s = sdev->smmu;
-> +    SMMUState *bc = &s->smmu_state;
-> +
-> +    trace_smmuv3_config_cache_inv(smmu_get_sid(sdev));
-> +    g_hash_table_remove(bc->configs, sdev);
-> +}
-> +
->  static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
->                                        IOMMUAccessFlags flag)
->  {
-> @@ -545,7 +597,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
->      uint32_t sid = smmu_get_sid(sdev);
->      SMMUEventInfo event = {.type = SMMU_EVT_OK, .sid = sid};
->      SMMUPTWEventInfo ptw_info = {};
-> -    SMMUTransCfg cfg = {};
-> +    SMMUTransCfg *cfg = NULL;
->      IOMMUTLBEntry entry = {
->          .target_as = &address_space_memory,
->          .iova = addr,
-> @@ -559,16 +611,17 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
->          goto out;
->      }
->  
-> -    ret = smmuv3_decode_config(mr, &cfg, &event);
-> -    if (ret) {
-> +    cfg = smmuv3_get_config(sdev, &event);
-> +    if (!cfg) {
-> +        ret = -EINVAL;
->          goto out;
->      }
->  
-> -    if (cfg.aborted) {
-> +    if (cfg->aborted) {
->          goto out;
->      }
->  
-> -    ret = smmu_ptw(&cfg, addr, flag, &entry, &ptw_info);
-> +    ret = smmu_ptw(cfg, addr, flag, &entry, &ptw_info);
->      if (ret) {
->          switch (ptw_info.type) {
->          case SMMU_PTW_ERR_WALK_EABT:
-> @@ -617,7 +670,7 @@ out:
->                        mr->parent_obj.name, addr, ret);
->          entry.perm = IOMMU_NONE;
->          smmuv3_record_event(s, &event);
-> -    } else if (!cfg.aborted) {
-> +    } else if (!cfg->aborted) {
->          entry.perm = flag;
->          trace_smmuv3_translate(mr->parent_obj.name, sid, addr,
->                                 entry.translated_addr, entry.perm);
-> @@ -628,6 +681,7 @@ out:
->  
->  static int smmuv3_cmdq_consume(SMMUv3State *s)
->  {
-> +    SMMUState *bs = ARM_SMMU(s);
->      SMMUCmdError cmd_error = SMMU_CERROR_NONE;
->      SMMUQueue *q = &s->cmdq;
->      SMMUCommandType type = 0;
-> @@ -670,10 +724,74 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->              break;
->          case SMMU_CMD_PREFETCH_CONFIG:
->          case SMMU_CMD_PREFETCH_ADDR:
-> +            break;
->          case SMMU_CMD_CFGI_STE:
-> +        {
-> +            uint32_t sid = CMD_SID(&cmd);
-> +            IOMMUMemoryRegion *mr = smmu_iommu_mr(bs, sid);
-> +            SMMUDevice *sdev;
-> +
-> +            if (CMD_SSEC(&cmd)) {
-> +                cmd_error = SMMU_CERROR_ILL;
-> +                break;
-> +            }
-> +
-> +            if (!mr) {
-> +                break;
-> +            }
-> +
-> +            trace_smmuv3_cmdq_cfgi_ste(sid);
-> +            sdev = container_of(mr, SMMUDevice, iommu);
-> +            smmuv3_flush_config(sdev);
-> +
-> +            break;
-> +        }
->          case SMMU_CMD_CFGI_STE_RANGE: /* same as SMMU_CMD_CFGI_ALL */
-> +        {
-> +            uint32_t start = CMD_SID(&cmd), end, i;
-> +            uint8_t range = CMD_STE_RANGE(&cmd);
-> +
-> +            if (CMD_SSEC(&cmd)) {
-> +                cmd_error = SMMU_CERROR_ILL;
-> +                break;
-> +            }
-> +
-> +            end = start + (1 << (range + 1)) - 1;
-> +            trace_smmuv3_cmdq_cfgi_ste_range(start, end);
-> +
-> +            for (i = start; i <= end; i++) {
-> +                IOMMUMemoryRegion *mr = smmu_iommu_mr(bs, i);
-> +                SMMUDevice *sdev;
-> +
-> +                if (!mr) {
-> +                    continue;
-> +                }
-> +                sdev = container_of(mr, SMMUDevice, iommu);
-> +                smmuv3_flush_config(sdev);
-> +            }
-> +            break;
-> +        }
->          case SMMU_CMD_CFGI_CD:
->          case SMMU_CMD_CFGI_CD_ALL:
-> +        {
-> +            uint32_t sid = CMD_SID(&cmd);
-> +            IOMMUMemoryRegion *mr = smmu_iommu_mr(bs, sid);
-> +            SMMUDevice *sdev;
-> +
-> +            if (CMD_SSEC(&cmd)) {
-> +                cmd_error = SMMU_CERROR_ILL;
-> +                break;
-> +            }
-> +
-> +            if (!mr) {
-> +                break;
-> +            }
-> +
-> +            trace_smmuv3_cmdq_cfgi_cd(sid);
-> +            sdev = container_of(mr, SMMUDevice, iommu);
-> +            smmuv3_flush_config(sdev);
-> +            break;
-> +        }
->          case SMMU_CMD_TLBI_NH_ALL:
->          case SMMU_CMD_TLBI_NH_ASID:
->          case SMMU_CMD_TLBI_NH_VA:
-> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-> index 2d92727..fe4c2a8 100644
-> --- a/hw/arm/trace-events
-> +++ b/hw/arm/trace-events
-> @@ -39,3 +39,9 @@ smmuv3_get_cd(uint64_t addr) "CD addr: 0x%"PRIx64
->  smmuv3_translate(const char *n, uint16_t sid, uint64_t iova, uint64_t translated, int perm) "%s sid=%d iova=0x%"PRIx64" translated=0x%"PRIx64" perm=0x%x"
->  smmuv3_decode_cd(uint32_t oas) "oas=%d"
->  smmuv3_decode_cd_tt(int i, uint32_t tsz, uint64_t ttb, uint32_t granule_sz) "TT[%d]:tsz:%d ttb:0x%"PRIx64" granule_sz:%d"
-> +smmuv3_cmdq_cfgi_ste(int streamid) "     |_ streamid =%d"
-> +smmuv3_cmdq_cfgi_ste_range(int start, int end) "     |_ start=0x%d - end=0x%d"
-> +smmuv3_cmdq_cfgi_cd(uint32_t sid) "     |_ streamid = %d"
-> +smmuv3_config_cache_hit(uint32_t sid, uint32_t hits, uint32_t misses, float perc) "Config cache HIT for sid %d (hits=%d, misses=%d, hit rate=%.1f)"
-> +smmuv3_config_cache_miss(uint32_t sid, uint32_t hits, uint32_t misses, float perc) "Config cache MISS for sid %d (hits=%d, misses=%d, hit rate=%.1f)"
-> +smmuv3_config_cache_inv(uint32_t sid) "Config cache INV for sid %d"
-> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-> index c41eb5c..7ce95ca 100644
-> --- a/include/hw/arm/smmu-common.h
-> +++ b/include/hw/arm/smmu-common.h
-> @@ -75,6 +75,8 @@ typedef struct SMMUDevice {
->      int                devfn;
->      IOMMUMemoryRegion  iommu;
->      AddressSpace       as;
-> +    uint32_t           cfg_cache_hits;
-> +    uint32_t           cfg_cache_misses;
->  } SMMUDevice;
->  
->  typedef struct SMMUNotifierNode {
-> @@ -142,4 +144,7 @@ int smmu_ptw(SMMUTransCfg *cfg, dma_addr_t iova, IOMMUAccessFlags perm,
->   */
->  SMMUTransTableInfo *select_tt(SMMUTransCfg *cfg, dma_addr_t iova);
->  
-> +/* Return the iommu mr associated to @sid, or NULL if none */
-> +IOMMUMemoryRegion *smmu_iommu_mr(SMMUState *s, uint32_t sid);
-> +
->  #endif  /* HW_ARM_SMMU_COMMON */
-> 

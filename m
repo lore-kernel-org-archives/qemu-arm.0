@@ -1,85 +1,86 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1182834wme;
-        Wed, 16 May 2018 07:29:42 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZqQ9z5yitgwW+lsQTnTJ1T+yb0YEPwUZhW6UtwFZC1zIbPTgbR1hxDzCHct4184nGyeWan+
-X-Received: by 2002:a37:11d3:: with SMTP id 80-v6mr991384qkr.445.1526480982338;
-        Wed, 16 May 2018 07:29:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1526480982; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1183069wme;
+        Wed, 16 May 2018 07:29:56 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZrTORdCo+uQcIc7RO6+xvu6WfM1Mw9lu0K+cocYrNpphLoZHIS7i1FfnQ1TXwggmjJOTfWz
+X-Received: by 2002:a37:2ba8:: with SMTP id r40-v6mr1018466qkr.432.1526480996149;
+        Wed, 16 May 2018 07:29:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1526480996; cv=none;
         d=google.com; s=arc-20160816;
-        b=FXW+cKUTbCR2NapXKLQ/3dVnCqQmPO4sg4XWdW5JDimc0VQjzr5kwfFNxX7CIwUW7y
-         II0cWYCmijQXi5Fbi8vTdGmwWCLI0QxnJkFa1N0ayuLsyySOOF0/NDRC8KdhTyznKbKF
-         3GUDaqESFZNgPDeB3/qvFQ8SMr2l0ucvGIqOcA61d5Bb4MDt3VpLwhG2nH2+VrWcdDQI
-         edluqWaAnufKPc20GmhIJC/Cma2UnrSE1CjQu5Jc/T307hi7WIM2UUXSVHz9YbfJOc48
-         Xac2KXBRDGisbKK5lhO2TpgDmW7Desv72I/f4HFqgKKm2Kisry+IgsT05oz/oHYSs9c3
-         gRmA==
+        b=Z8/wUBxX6sx/+yTo45cpC76mJZRG/GmTg7kdpHPTv9INp7B8yIuIGDPkrvED0PWCMJ
+         zykl1y1dolSIHo7S7H9mwcfe2afRBv24smDi7YamzLyPDWCTgSNWo25G11HkcUpQijK7
+         DKWDMC9eh+OxJl6Nev+G6XKzvBAWFqCWpnhqXYfg7jzSB+MAbSUbFlkuiP1Pz6Hrdlea
+         8sNbO7VXOaurLpU25+TCjcOz/PAK59MrozQUJosZs5p53zgM77FoCiVuC/fZ2dBZK/Go
+         W1h/Gb3vxEyR2u9SXC/3tBYLgeHdGJlFsqVZJ8h6XZfvQOU6MrJ75oQL+LpqgPNa/S9P
+         09Ag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=ycHLTuRYEjQLERiOiTm/N7MmZeaiyQlcxGi43vvlGKE=;
-        b=WCighZAoWyZX8wsKMKQY0tPphAQa50kLm7jsod00IP+PQkS3o219/A0FC3QpvgD/lm
-         jZaNDk97GfssXI6datoL/j9MAL02ugIP0fxaVShRTUUvNFJOCJpu098QgKbMO3cv6j/d
-         YjCn4t0NFg//brENe/vFrQ6kA273GxIxeFEsg5zoQQzKH5Rnilgr835xnKplkw+Z3yz8
-         aSJ1AILB2INtumkzGRfjc1Wos3ef/8NiTi7UHCOb5UfOgD+MPmg6lyWNRajGPQRgu7fu
-         Jbw6b20JaGoN+PjFGf1V36XQ9l+NyvcHeChCpuonKd7HNxT/S3X7jAniEziHXGlDhs2b
-         IXxw==
+        bh=FSHnnTiEFt4TaUYiGjrCIIy9sHmxFxXcQnMqJ+Se+NE=;
+        b=CUw3uTyGPJQt+iyMvuboJi4ENSyH/CpBiWlsOpkvRBYdqcJ5SfSHLwXT35YBW6MHzb
+         JhrRba1DbsSQmXopkrxPMNG889XqMf2kQyrSyiAw+IbOjIeaNkBe1ZBxm/Aix7kRsCuz
+         o/porbYKXlaCjzGfS/IvuedNA4rybAESynbZIrk5OCV2rqQblk5TKQRXPFzOuovEa/ih
+         sB5lU4YS/aUyluuMR0CYzIlx0cA4iT4okBshK5fr4KNPTN5WsZhzrL3I4Klx6jqBAMRa
+         GEgKBfxIdqXR/Lsd4xRg/OIEzKCCcz17/c+zTv93G7FWKhlm2r05t7WzFmroaqDu0qtQ
+         r9LQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v4-v6si1992091qkb.138.2018.05.16.07.29.41
+        by mx.google.com with ESMTPS id d36-v6si2787611qtf.7.2018.05.16.07.29.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 16 May 2018 07:29:42 -0700 (PDT)
+        Wed, 16 May 2018 07:29:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48906 helo=lists.gnu.org)
+Received: from localhost ([::1]:48915 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fIxQz-0004jr-IH
-	for alex.bennee@linaro.org; Wed, 16 May 2018 10:29:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42511)
+	id 1fIxRD-0004xJ-AJ
+	for alex.bennee@linaro.org; Wed, 16 May 2018 10:29:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42536)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fIxOX-0002jg-LJ
-	for qemu-arm@nongnu.org; Wed, 16 May 2018 10:27:11 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1fIxOZ-0002lM-Nk
+	for qemu-arm@nongnu.org; Wed, 16 May 2018 10:27:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fIxOV-0000PI-2n
-	for qemu-arm@nongnu.org; Wed, 16 May 2018 10:27:09 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:55244 helo=mx1.redhat.com)
+	(envelope-from <eric.auger@redhat.com>) id 1fIxOV-0000PP-8w
+	for qemu-arm@nongnu.org; Wed, 16 May 2018 10:27:11 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:60724 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1fIxOU-0000P3-Te; Wed, 16 May 2018 10:27:07 -0400
+	id 1fIxOV-0000P7-3l; Wed, 16 May 2018 10:27:07 -0400
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.3])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6382781FE17A;
+	by mx1.redhat.com (Postfix) with ESMTPS id AF945BB40E;
 	Wed, 16 May 2018 14:27:06 +0000 (UTC)
 Received: from dhcp19-241-177.khw3.lab.eng.bos.redhat.com
 	(gigabyte-r120-16.khw3.lab.eng.bos.redhat.com [10.19.240.61])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 255E710EE961;
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 6FD39112D199;
 	Wed, 16 May 2018 14:27:06 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org
-Date: Wed, 16 May 2018 14:31:13 -0400
-Message-Id: <1526495474-26394-3-git-send-email-eric.auger@redhat.com>
+Date: Wed, 16 May 2018 14:31:14 -0400
+Message-Id: <1526495474-26394-4-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1526495474-26394-1-git-send-email-eric.auger@redhat.com>
 References: <1526495474-26394-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
+	(mx1.redhat.com [10.11.55.1]);
 	Wed, 16 May 2018 14:27:06 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
 	Wed, 16 May 2018 14:27:06 +0000 (UTC) for IP:'10.11.54.3'
 	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH 2/3] hw/arm/smmuv3: IOTLB emulation
+Subject: [Qemu-arm] [PATCH 3/3] hw/arm/smmuv3: Add notifications on
+ invalidation
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,360 +94,246 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CVM600dPHWBH
+X-TUID: jU8Z2F2e1NBc
 
-We emulate a TLB cache of size SMMU_IOTLB_MAX_SIZE=256.
-It is implemented as a hash table whose key is a combination
-of the 16b asid and 48b IOVA.
+On TLB invalidation commands, let's call registered
+IOMMU notifiers. Those can only be UNMAP notifiers.
+SMMUv3 does not support notification on MAP (VFIO).
 
-Entries are invalidated on TLB invalidation commands, either
-globally, or per asid, or per asid/iova.
+This patch allows vhost use case where IOTLB API is notified
+on each guest IOTLB invalidation.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
 ---
-
-v11 -> v12:
-- Add new trace point when smmu is bypassed
-- s/iotlb_miss/iotlb_misses, s/iotlb_hit/iotlb_hits
-- use SMMUIOTLBKey as a key
-
-Credit to Tomasz Nowicki who did the first implementation of
-this IOTLB implementation, inspired of intel_iommu implementation.
----
- hw/arm/smmu-common.c         |  59 ++++++++++++++++++++++++
- hw/arm/smmuv3.c              | 105 ++++++++++++++++++++++++++++++++++++++++---
- hw/arm/trace-events          |  10 +++++
- include/hw/arm/smmu-common.h |  13 ++++++
- 4 files changed, 181 insertions(+), 6 deletions(-)
+ hw/arm/smmu-common.c         | 34 +++++++++++++++
+ hw/arm/smmuv3.c              | 99 +++++++++++++++++++++++++++++++++++++++++++-
+ hw/arm/trace-events          |  5 +++
+ include/hw/arm/smmu-common.h |  6 +++
+ 4 files changed, 142 insertions(+), 2 deletions(-)
 
 diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index 7e9827d..e4408c4 100644
+index e4408c4..9caa149 100644
 --- a/hw/arm/smmu-common.c
 +++ b/hw/arm/smmu-common.c
-@@ -24,11 +24,43 @@
- #include "qom/cpu.h"
- #include "hw/qdev-properties.h"
- #include "qapi/error.h"
-+#include "qemu/jhash.h"
- 
- #include "qemu/error-report.h"
- #include "hw/arm/smmu-common.h"
- #include "smmu-internal.h"
- 
-+/* IOTLB Management */
-+
-+inline void smmu_iotlb_inv_all(SMMUState *s)
-+{
-+    trace_smmu_iotlb_inv_all();
-+    g_hash_table_remove_all(s->iotlb);
-+}
-+
-+static gboolean smmu_hash_remove_by_asid(gpointer key, gpointer value,
-+                                         gpointer user_data)
-+{
-+    uint16_t asid = *(uint16_t *)user_data;
-+    SMMUIOTLBKey *iotlb_key = (SMMUIOTLBKey *)key;
-+
-+    return iotlb_key->asid == asid;
-+}
-+
-+inline void smmu_iotlb_inv_iova(SMMUState *s, uint16_t asid, dma_addr_t iova)
-+{
-+    SMMUIOTLBKey key = {.asid = asid, .iova = iova};
-+
-+    trace_smmu_iotlb_inv_iova(asid, iova);
-+    g_hash_table_remove(s->iotlb, &key);
-+}
-+
-+inline void smmu_iotlb_inv_asid(SMMUState *s, uint16_t asid)
-+{
-+    trace_smmu_iotlb_inv_asid(asid);
-+    g_hash_table_foreach_remove(s->iotlb, smmu_hash_remove_by_asid, &asid);
-+}
-+
- /* VMSAv8-64 Translation */
- 
- /**
-@@ -330,6 +362,30 @@ IOMMUMemoryRegion *smmu_iommu_mr(SMMUState *s, uint32_t sid)
-     return NULL;
+@@ -386,6 +386,40 @@ static gboolean smmu_iotlb_key_equal(gconstpointer v1, gconstpointer v2)
+     return (k1->asid == k2->asid) && (k1->iova == k2->iova);
  }
  
-+static guint smmu_iotlb_key_hash(gconstpointer v)
++/* Unmap the whole notifier's range */
++static void smmu_unmap_notifier_range(IOMMUNotifier *n)
 +{
-+    SMMUIOTLBKey *key = (SMMUIOTLBKey *)v;
-+    uint32_t a, b, c;
++    IOMMUTLBEntry entry;
 +
-+    a = b = c = JHASH_INITVAL + sizeof(*key);
-+    a += key->asid;
-+    b += extract64(key->iova, 0, 32);
-+    c += extract64(key->iova, 32, 32);
++    entry.target_as = &address_space_memory;
++    entry.iova = n->start;
++    entry.perm = IOMMU_NONE;
++    entry.addr_mask = n->end - n->start;
 +
-+    __jhash_mix(a, b, c);
-+    __jhash_final(a, b, c);
-+
-+    return c;
++    memory_region_notify_one(n, &entry);
 +}
 +
-+static gboolean smmu_iotlb_key_equal(gconstpointer v1, gconstpointer v2)
++/* Unmap all notifiers attached to @mr */
++inline void smmu_inv_notifiers_mr(IOMMUMemoryRegion *mr)
 +{
-+    SMMUIOTLBKey *k1 = (SMMUIOTLBKey *)v1;
-+    SMMUIOTLBKey *k2 = (SMMUIOTLBKey *)v2;
++    IOMMUNotifier *n;
 +
-+    return (k1->asid == k2->asid) && (k1->iova == k2->iova);
++    trace_smmu_inv_notifiers_mr(mr->parent_obj.name);
++    IOMMU_NOTIFIER_FOREACH(n, mr) {
++        smmu_unmap_notifier_range(n);
++    }
++}
++
++/* Unmap all notifiers of all mr's */
++void smmu_inv_notifiers_all(SMMUState *s)
++{
++    SMMUNotifierNode *node;
++
++    QLIST_FOREACH(node, &s->notifiers_list, next) {
++        smmu_inv_notifiers_mr(&node->sdev->iommu);
++    }
 +}
 +
  static void smmu_base_realize(DeviceState *dev, Error **errp)
  {
      SMMUState *s = ARM_SMMU(dev);
-@@ -342,6 +398,8 @@ static void smmu_base_realize(DeviceState *dev, Error **errp)
-         return;
-     }
-     s->configs = g_hash_table_new_full(NULL, NULL, NULL, g_free);
-+    s->iotlb = g_hash_table_new_full(smmu_iotlb_key_hash, smmu_iotlb_key_equal,
-+                                     g_free, g_free);
-     s->smmu_pcibus_by_busptr = g_hash_table_new(NULL, NULL);
- 
-     if (s->primary_bus) {
-@@ -356,6 +414,7 @@ static void smmu_base_reset(DeviceState *dev)
-     SMMUState *s = ARM_SMMU(dev);
- 
-     g_hash_table_remove_all(s->configs);
-+    g_hash_table_remove_all(s->iotlb);
- }
- 
- static Property smmu_dev_properties[] = {
 diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index d3b64c2..6c89a71 100644
+index 6c89a71..01ec6ee 100644
 --- a/hw/arm/smmuv3.c
 +++ b/hw/arm/smmuv3.c
-@@ -572,6 +572,8 @@ static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev, SMMUEventInfo *event)
+@@ -744,6 +744,68 @@ out:
+     return entry;
+ }
  
-         if (!smmuv3_decode_config(&sdev->iommu, cfg, event)) {
-             g_hash_table_insert(bc->configs, sdev, cfg);
-+            cfg->iotlb_misses = 0;
-+            cfg->iotlb_hits = 0;
-         } else {
-             g_free(cfg);
-             cfg = NULL;
-@@ -595,8 +597,12 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
-     SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
-     SMMUv3State *s = sdev->smmu;
-     uint32_t sid = smmu_get_sid(sdev);
-+    SMMUState *bs = ARM_SMMU(s);
-     SMMUEventInfo event = {.type = SMMU_EVT_OK, .sid = sid};
-+    uint64_t page_mask, aligned_addr;
-+    IOMMUTLBEntry *cached_entry = NULL;
-     SMMUPTWEventInfo ptw_info = {};
++/**
++ * smmuv3_notify_iova - call the notifier @n for a given
++ * @asid and @iova tuple.
++ *
++ * @mr: IOMMU mr region handle
++ * @n: notifier to be called
++ * @asid: address space ID or negative value if we don't care
++ * @iova: iova
++ */
++static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
++                               IOMMUNotifier *n,
++                               int asid,
++                               dma_addr_t iova)
++{
++    SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
++    SMMUEventInfo event = {};
 +    SMMUTransTableInfo *tt;
-     SMMUTransCfg *cfg = NULL;
-     IOMMUTLBEntry entry = {
-         .target_as = &address_space_memory,
-@@ -605,10 +611,13 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
-         .addr_mask = ~(hwaddr)0,
-         .perm = IOMMU_NONE,
-     };
-+    SMMUIOTLBKey key, *new_key;
-     int ret = 0;
- 
-     if (!smmu_enabled(s)) {
--        goto out;
-+        entry.perm = flag;
-+        trace_smmuv3_translate_pt(mr->parent_obj.name, sid, addr, flag);
-+        return entry;
-     }
- 
-     cfg = smmuv3_get_config(sdev, &event);
-@@ -621,8 +630,61 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
-         goto out;
-     }
- 
--    ret = smmu_ptw(cfg, addr, flag, &entry, &ptw_info);
--    if (ret) {
-+    tt = select_tt(cfg, addr);
++    SMMUTransCfg *cfg;
++    IOMMUTLBEntry entry;
++
++    cfg = smmuv3_get_config(sdev, &event);
++    if (!cfg) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s error decoding the configuration for iommu mr=%s\n",
++                      __func__, mr->parent_obj.name);
++        return;
++    }
++
++    if (asid >= 0 && cfg->asid != asid) {
++        return;
++    }
++
++    tt = select_tt(cfg, iova);
 +    if (!tt) {
-+        if (event.record_trans_faults) {
-+            event.type = SMMU_EVT_F_TRANSLATION;
-+            event.u.f_translation.addr = addr;
-+            event.u.f_translation.rnw = flag & 0x1;
++        return;
++    }
++
++    entry.target_as = &address_space_memory;
++    entry.iova = iova;
++    entry.addr_mask = (1 << tt->granule_sz) - 1;
++    entry.perm = IOMMU_NONE;
++
++    memory_region_notify_one(n, &entry);
++}
++
++/* invalidate an asid/iova tuple in all mr's */
++static void smmuv3_inv_notifiers_iova(SMMUState *s, int asid, dma_addr_t iova)
++{
++    SMMUNotifierNode *node;
++
++    QLIST_FOREACH(node, &s->notifiers_list, next) {
++        IOMMUMemoryRegion *mr = &node->sdev->iommu;
++        IOMMUNotifier *n;
++
++        trace_smmuv3_inv_notifiers_iova(mr->parent_obj.name, asid, iova);
++
++        IOMMU_NOTIFIER_FOREACH(n, mr) {
++            smmuv3_notify_iova(mr, n, asid, iova);
 +        }
-+        ret = -EINVAL;
-+        goto out;
 +    }
++}
 +
-+    page_mask = (1ULL << (tt->granule_sz)) - 1;
-+    aligned_addr = addr & ~page_mask;
-+
-+    key.asid = cfg->asid;
-+    key.iova = aligned_addr;
-+
-+    cached_entry = g_hash_table_lookup(bs->iotlb, &key);
-+    if (cached_entry) {
-+        cfg->iotlb_hits += 1;
-+        trace_smmu_iotlb_cache_hit(cfg->asid, aligned_addr,
-+                                   cfg->iotlb_hits, cfg->iotlb_misses,
-+                                   100 * cfg->iotlb_hits /
-+                                   (cfg->iotlb_hits + cfg->iotlb_misses));
-+        if ((flag & IOMMU_WO) && !(cached_entry->perm & IOMMU_WO)) {
-+            ret = -EPERM;
-+            if (event.record_trans_faults) {
-+                event.type = SMMU_EVT_F_PERMISSION;
-+                event.u.f_permission.addr = addr;
-+                event.u.f_permission.rnw = flag & 0x1;
-+            }
-+        }
-+        goto out;
-+    }
-+
-+    cfg->iotlb_misses += 1;
-+    trace_smmu_iotlb_cache_miss(cfg->asid, addr & ~page_mask,
-+                                cfg->iotlb_hits, cfg->iotlb_misses,
-+                                100 * cfg->iotlb_hits /
-+                                (cfg->iotlb_hits + cfg->iotlb_misses));
-+
-+    if (g_hash_table_size(bs->iotlb) >= SMMU_IOTLB_MAX_SIZE) {
-+        smmu_iotlb_inv_all(bs);
-+    }
-+
-+    cached_entry = g_new0(IOMMUTLBEntry, 1);
-+
-+    ret = smmu_ptw(cfg, aligned_addr, flag, cached_entry, &ptw_info);
-+    if (!ret) {
-+        new_key = g_new0(SMMUIOTLBKey, 1);
-+        new_key->asid = cfg->asid;
-+        new_key->iova = aligned_addr;
-+        g_hash_table_insert(bs->iotlb, new_key, cached_entry);
-+    } else {
-+        g_free(cached_entry);
-         switch (ptw_info.type) {
-         case SMMU_PTW_ERR_WALK_EABT:
-             event.type = SMMU_EVT_F_WALK_EABT;
-@@ -672,6 +734,9 @@ out:
-         smmuv3_record_event(s, &event);
-     } else if (!cfg->aborted) {
-         entry.perm = flag;
-+        entry.translated_addr = cached_entry->translated_addr +
-+                                    (addr & page_mask);
-+        entry.addr_mask = cached_entry->addr_mask;
-         trace_smmuv3_translate(mr->parent_obj.name, sid, addr,
-                                entry.translated_addr, entry.perm);
-     }
-@@ -792,10 +857,39 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-             smmuv3_flush_config(sdev);
+ static int smmuv3_cmdq_consume(SMMUv3State *s)
+ {
+     SMMUState *bs = ARM_SMMU(s);
+@@ -862,12 +924,14 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
+             uint16_t asid = CMD_ASID(&cmd);
+ 
+             trace_smmuv3_cmdq_tlbi_nh_asid(asid);
++            smmu_inv_notifiers_all(&s->smmu_state);
+             smmu_iotlb_inv_asid(bs, asid);
              break;
          }
--        case SMMU_CMD_TLBI_NH_ALL:
-         case SMMU_CMD_TLBI_NH_ASID:
--        case SMMU_CMD_TLBI_NH_VA:
-+        {
-+            uint16_t asid = CMD_ASID(&cmd);
-+
-+            trace_smmuv3_cmdq_tlbi_nh_asid(asid);
-+            smmu_iotlb_inv_asid(bs, asid);
-+            break;
-+        }
-+        case SMMU_CMD_TLBI_NH_ALL:
-+        case SMMU_CMD_TLBI_NSNH_ALL:
-+            trace_smmuv3_cmdq_tlbi_nh();
-+            smmu_iotlb_inv_all(bs);
-+            break;
+         case SMMU_CMD_TLBI_NH_ALL:
+         case SMMU_CMD_TLBI_NSNH_ALL:
+             trace_smmuv3_cmdq_tlbi_nh();
++            smmu_inv_notifiers_all(&s->smmu_state);
+             smmu_iotlb_inv_all(bs);
+             break;
          case SMMU_CMD_TLBI_NH_VAA:
-+        {
-+            dma_addr_t addr = CMD_ADDR(&cmd);
-+            uint16_t vmid = CMD_VMID(&cmd);
+@@ -876,6 +940,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
+             uint16_t vmid = CMD_VMID(&cmd);
+ 
+             trace_smmuv3_cmdq_tlbi_nh_vaa(vmid, addr);
++            smmuv3_inv_notifiers_iova(bs, -1, addr);
+             smmu_iotlb_inv_all(bs);
+             break;
+         }
+@@ -887,6 +952,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
+             bool leaf = CMD_LEAF(&cmd);
+ 
+             trace_smmuv3_cmdq_tlbi_nh_va(vmid, asid, addr, leaf);
++            smmuv3_inv_notifiers_iova(bs, asid, addr);
+             smmu_iotlb_inv_iova(bs, asid, addr);
+             break;
+         }
+@@ -1362,9 +1428,38 @@ static void smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
+                                        IOMMUNotifierFlag old,
+                                        IOMMUNotifierFlag new)
+ {
++    SMMUDevice *sdev = container_of(iommu, SMMUDevice, iommu);
++    SMMUv3State *s3 = sdev->smmu;
++    SMMUState *s = &(s3->smmu_state);
++    SMMUNotifierNode *node = NULL;
++    SMMUNotifierNode *next_node = NULL;
 +
-+            trace_smmuv3_cmdq_tlbi_nh_vaa(vmid, addr);
-+            smmu_iotlb_inv_all(bs);
-+            break;
-+        }
-+        case SMMU_CMD_TLBI_NH_VA:
-+        {
-+            uint16_t asid = CMD_ASID(&cmd);
-+            uint16_t vmid = CMD_VMID(&cmd);
-+            dma_addr_t addr = CMD_ADDR(&cmd);
-+            bool leaf = CMD_LEAF(&cmd);
++    if (new == IOMMU_NOTIFIER_MAP) {
++        int bus_num = pci_bus_num(sdev->bus);
++        PCIDevice *pcidev = pci_find_device(sdev->bus, bus_num, sdev->devfn);
 +
-+            trace_smmuv3_cmdq_tlbi_nh_va(vmid, asid, addr, leaf);
-+            smmu_iotlb_inv_iova(bs, asid, addr);
-+            break;
++        warn_report("SMMUv3 does not support notification on MAP: "
++                     "device %s will not function properly", pcidev->name);
++    }
++
+     if (old == IOMMU_NOTIFIER_NONE) {
+-        warn_report("SMMUV3 does not support vhost/vfio integration yet: "
+-                    "devices of those types will not function properly");
++        trace_smmuv3_notify_flag_add(iommu->parent_obj.name);
++        node = g_malloc0(sizeof(*node));
++        node->sdev = sdev;
++        QLIST_INSERT_HEAD(&s->notifiers_list, node, next);
++        return;
++    }
++
++    /* update notifier node with new flags */
++    QLIST_FOREACH_SAFE(node, &s->notifiers_list, next, next_node) {
++        if (node->sdev == sdev) {
++            if (new == IOMMU_NOTIFIER_NONE) {
++                trace_smmuv3_notify_flag_del(iommu->parent_obj.name);
++                QLIST_REMOVE(node, next);
++                g_free(node);
++            }
++            return;
 +        }
-         case SMMU_CMD_TLBI_EL3_ALL:
-         case SMMU_CMD_TLBI_EL3_VA:
-         case SMMU_CMD_TLBI_EL2_ALL:
-@@ -804,7 +898,6 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-         case SMMU_CMD_TLBI_EL2_VAA:
-         case SMMU_CMD_TLBI_S12_VMALL:
-         case SMMU_CMD_TLBI_S2_IPA:
--        case SMMU_CMD_TLBI_NSNH_ALL:
-         case SMMU_CMD_ATC_INV:
-         case SMMU_CMD_PRI_RESP:
-         case SMMU_CMD_RESUME:
+     }
+ }
+ 
 diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index fe4c2a8..3eb9180 100644
+index 3eb9180..f1198f7 100644
 --- a/hw/arm/trace-events
 +++ b/hw/arm/trace-events
-@@ -12,6 +12,11 @@ smmu_ptw_invalid_pte(int stage, int level, uint64_t baseaddr, uint64_t pteaddr,
- smmu_ptw_page_pte(int stage, int level,  uint64_t iova, uint64_t baseaddr, uint64_t pteaddr, uint64_t pte, uint64_t address) "stage=%d level=%d iova=0x%"PRIx64" base@=0x%"PRIx64" pte@=0x%"PRIx64" pte=0x%"PRIx64" page address = 0x%"PRIx64
- smmu_ptw_block_pte(int stage, int level, uint64_t baseaddr, uint64_t pteaddr, uint64_t pte, uint64_t iova, uint64_t gpa, int bsize_mb) "stage=%d level=%d base@=0x%"PRIx64" pte@=0x%"PRIx64" pte=0x%"PRIx64" iova=0x%"PRIx64" block address = 0x%"PRIx64" block size = %d MiB"
- smmu_get_pte(uint64_t baseaddr, int index, uint64_t pteaddr, uint64_t pte) "baseaddr=0x%"PRIx64" index=0x%x, pteaddr=0x%"PRIx64", pte=0x%"PRIx64
-+smmu_iotlb_cache_hit(uint16_t asid, uint64_t addr, uint32_t hit, uint32_t miss, float p) "IOTLB cache HIT asid=%d addr=0x%"PRIx64" hit=%d miss=%d hit rate=%.1f"
-+smmu_iotlb_cache_miss(uint16_t asid, uint64_t addr, uint32_t hit, uint32_t miss, float p) "IOTLB cache MISS asid=%d addr=0x%"PRIx64" hit=%d miss=%d hit rate=%.1f"
-+smmu_iotlb_inv_all(void) "IOTLB invalidate all"
-+smmu_iotlb_inv_asid(uint16_t asid) "IOTLB invalidate asid=%d"
-+smmu_iotlb_inv_iova(uint16_t asid, uint64_t addr) "IOTLB invalidate asid=%d addr=0x%"PRIx64
+@@ -17,6 +17,7 @@ smmu_iotlb_cache_miss(uint16_t asid, uint64_t addr, uint32_t hit, uint32_t miss,
+ smmu_iotlb_inv_all(void) "IOTLB invalidate all"
+ smmu_iotlb_inv_asid(uint16_t asid) "IOTLB invalidate asid=%d"
+ smmu_iotlb_inv_iova(uint16_t asid, uint64_t addr) "IOTLB invalidate asid=%d addr=0x%"PRIx64
++smmu_inv_notifiers_mr(const char *name) "iommu mr=%s"
  
  #hw/arm/smmuv3.c
  smmuv3_read_mmio(uint64_t addr, uint64_t val, unsigned size, uint32_t r) "addr: 0x%"PRIx64" val:0x%"PRIx64" size: 0x%x(%d)"
-@@ -37,10 +42,15 @@ smmuv3_translate_bypass(const char *n, uint16_t sid, uint64_t addr, bool is_writ
- smmuv3_translate_in(uint16_t sid, int pci_bus_num, uint64_t strtab_base) "SID:0x%x bus:%d strtab_base:0x%"PRIx64
- smmuv3_get_cd(uint64_t addr) "CD addr: 0x%"PRIx64
- smmuv3_translate(const char *n, uint16_t sid, uint64_t iova, uint64_t translated, int perm) "%s sid=%d iova=0x%"PRIx64" translated=0x%"PRIx64" perm=0x%x"
-+smmuv3_translate_pt(const char *n, uint16_t sid, uint64_t iova, int perm) "%s sid=%d iova=0x%"PRIx64" perm=0x%x PASSTHROUGH"
- smmuv3_decode_cd(uint32_t oas) "oas=%d"
- smmuv3_decode_cd_tt(int i, uint32_t tsz, uint64_t ttb, uint32_t granule_sz) "TT[%d]:tsz:%d ttb:0x%"PRIx64" granule_sz:%d"
- smmuv3_cmdq_cfgi_ste(int streamid) "     |_ streamid =%d"
- smmuv3_cmdq_cfgi_ste_range(int start, int end) "     |_ start=0x%d - end=0x%d"
-+smmuv3_cmdq_tlbi_nh_va(int vmid, int asid, uint64_t addr, bool leaf) "     |_ vmid =%d asid =%d addr=0x%"PRIx64" leaf=%d"
-+smmuv3_cmdq_tlbi_nh_vaa(int vmid, uint64_t addr) "     |_ vmid =%d addr=0x%"PRIx64
-+smmuv3_cmdq_tlbi_nh(void) ""
-+smmuv3_cmdq_tlbi_nh_asid(uint16_t asid) "asid=%d"
- smmuv3_cmdq_cfgi_cd(uint32_t sid) "     |_ streamid = %d"
+@@ -55,3 +56,7 @@ smmuv3_cmdq_cfgi_cd(uint32_t sid) "     |_ streamid = %d"
  smmuv3_config_cache_hit(uint32_t sid, uint32_t hits, uint32_t misses, float perc) "Config cache HIT for sid %d (hits=%d, misses=%d, hit rate=%.1f)"
  smmuv3_config_cache_miss(uint32_t sid, uint32_t hits, uint32_t misses, float perc) "Config cache MISS for sid %d (hits=%d, misses=%d, hit rate=%.1f)"
+ smmuv3_config_cache_inv(uint32_t sid) "Config cache INV for sid %d"
++smmuv3_notify_flag_add(const char *iommu) "ADD SMMUNotifier node for iommu mr=%s"
++smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iommu mr=%s"
++smmuv3_inv_notifiers_iova(const char *name, uint16_t asid, uint64_t iova) "iommu mr=%s asid=%d iova=0x%"PRIx64
++
 diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-index 7ce95ca..d173806 100644
+index d173806..50e2912 100644
 --- a/include/hw/arm/smmu-common.h
 +++ b/include/hw/arm/smmu-common.h
-@@ -67,6 +67,8 @@ typedef struct SMMUTransCfg {
-     uint8_t tbi;               /* Top Byte Ignore */
-     uint16_t asid;
-     SMMUTransTableInfo tt[2];
-+    uint32_t iotlb_hits;       /* counts IOTLB hits for this asid */
-+    uint32_t iotlb_misses;     /* counts IOTLB misses for this asid */
- } SMMUTransCfg;
+@@ -160,4 +160,10 @@ void smmu_iotlb_inv_all(SMMUState *s);
+ void smmu_iotlb_inv_asid(SMMUState *s, uint16_t asid);
+ void smmu_iotlb_inv_iova(SMMUState *s, uint16_t asid, dma_addr_t iova);
  
- typedef struct SMMUDevice {
-@@ -89,6 +91,11 @@ typedef struct SMMUPciBus {
-     SMMUDevice   *pbdev[0]; /* Parent array is sparse, so dynamically alloc */
- } SMMUPciBus;
- 
-+typedef struct SMMUIOTLBKey {
-+    uint64_t iova;
-+    uint16_t asid;
-+} SMMUIOTLBKey;
++/* Unmap the range of all the notifiers registered to any IOMMU mr */
++void smmu_inv_notifiers_all(SMMUState *s);
 +
- typedef struct SMMUState {
-     /* <private> */
-     SysBusDevice  dev;
-@@ -147,4 +154,10 @@ SMMUTransTableInfo *select_tt(SMMUTransCfg *cfg, dma_addr_t iova);
- /* Return the iommu mr associated to @sid, or NULL if none */
- IOMMUMemoryRegion *smmu_iommu_mr(SMMUState *s, uint32_t sid);
- 
-+#define SMMU_IOTLB_MAX_SIZE 256
-+
-+void smmu_iotlb_inv_all(SMMUState *s);
-+void smmu_iotlb_inv_asid(SMMUState *s, uint16_t asid);
-+void smmu_iotlb_inv_iova(SMMUState *s, uint16_t asid, dma_addr_t iova);
++/* Unmap the range of all the notifiers registered to @mr */
++void smmu_inv_notifiers_mr(IOMMUMemoryRegion *mr);
 +
  #endif  /* HW_ARM_SMMU_COMMON */
 -- 

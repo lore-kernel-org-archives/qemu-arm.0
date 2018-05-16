@@ -1,248 +1,180 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1300280wme;
-        Wed, 16 May 2018 09:12:36 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZqQB0baSi7uM+Jgr6VsUwWwP9PGRVEF6Kl0O662VgKQuEGeuxQHp0lE5MWpCrR+gQGgUPkj
-X-Received: by 2002:a37:21a0:: with SMTP id f32-v6mr1496820qki.153.1526487156166;
-        Wed, 16 May 2018 09:12:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1526487156; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1306375wme;
+        Wed, 16 May 2018 09:17:21 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZq+4/Mn7r7/4ZANjJ4OobeP8T60erqUTNg752nbNdHDsW9gyZgJY7t/DkDSL7AV5c3ED1du
+X-Received: by 2002:aed:26c3:: with SMTP id q61-v6mr1720787qtd.60.1526487441587;
+        Wed, 16 May 2018 09:17:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1526487441; cv=none;
         d=google.com; s=arc-20160816;
-        b=guSHJ6mMjgucKNrpzeJ0DWZTxfFxTrh6sDyrWChE+ukhDrJPLehkQXy/OfIA+Zfrb2
-         REr4Qga7p1/Mp90cDg0zZ1JTE3XRSmPpErEusuXLQuZsZg3l5dgIf1gpEsnJ4eO7b4Uf
-         2i9pK0N6axna9lQwMLaCsBZXwbV0POMhWAjuQn2MUcmP5hXYGJOvo97T+kyTMLAIG+pW
-         6fsOmDF/VI7vLj+X+O+EmZFSVT54lTCfsO1/+aFXkBZKYSGJCp2a1d96UbkNY0e8zywo
-         snNWWFRUG6ycMnKObovzMIgvjAn2XBkDfVqG7jXlRtgKOtkYQN4CSfTxd/4QeLYOOLO7
-         KrWw==
+        b=l1fMEI5eXutz/qyBkLqowHe0n7IkJn9xFUtgkLVLwBAZPey8Mlp5bToOvrTtJxBqZo
+         5xM96AJqFcGZqFS/FU/TLhozcaho/xtWQNJoLP0hpSqWxHaXSNV2H64b7M3ABrfB9Wvf
+         WYOfauiOkTNP6066Aluv0mKwp2KyHoO8CmXOgwA7GYVMgY0RzhsJDSmfuYKiFfs5bnZS
+         iafpJrqjk5Ile2+Vo+O/ghWHh3LNbGsyQoaqYmeXG8WpA+1wNS+R0+xPT4MMcHpT+9eI
+         8MM7MzEPxXkBnsbeVjIJwuPunfjnhHGkpu2pbnXCdrNLv1tm1Y4X7+ozxmeSjDrauXcV
+         Ilaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:references
-         :in-reply-to:message-id:date:to:from:arc-authentication-results;
-        bh=DZ5ucGknKUl4UPbUqlwbWO++nJgtnqQPoRnewCNgLnQ=;
-        b=nDo9DIEKILBeOVzR11Ro4K6wnU3c4wzFwPPP3dW7x/ZAvGwwmgEYnjo+PDsViwzY0Q
-         VWw3C0d4d+JCkjjheqgN+RGVCu39KHl17JK9Mewlx9wm3/vaCd1hLWwK7SaXGRuOBLRF
-         NPG8LpnCXjfCmaPEven5CqyWFf6nPGXIa76LIfTggsJogD7Lc7nwS8A6HV64np/7iN3u
-         r6/ZJZlSme6yCBZRi3lrIa4PncTtWNg4SG6OcrWEKa+Rg9O4UlYgcr21aNd58k0oW5jv
-         dUxNBbbG1+1HOYIW4rSryAZlg5XNIztpGVideO6Xkd1Dg3YkqMRmGSgpiA3NJFIQOHRm
-         dS/Q==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=NTMtIYBBwPnbfy06eeXQMmGC5C76PWpUAFU3G0mX+gY=;
+        b=ApeelL4WCerDjirkx1emFmRb+0KNKcrtrdrw0NDqqMbxJTAzB0Ig/kujyfDHrgwo/b
+         Rg527GGF0RI65D0/BWA9rMAUAsvh2sngUpg5tnnjLadoxa8wjkVkiheVBY/pfYTefizj
+         TTfin12Aet05ZLMsFWIupnbgH29Z+y33AHUlNzoot08SZKyyy1KLv9dKhlqasLx4w5nk
+         PBPK/UGTehD2LDkOm6k5Vf55CbVYnYUG37k1LFJS551tNVe3KphJpbD4f0wAc5BbkjTo
+         ABUWm4jzbVOndTaS/9OXWduuzmuJEdETDIfGLfLEWRZysmZ6gNsK1PR4qYXMAkWhkK8L
+         DjsA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=c92c8ZWU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z5-v6si505943qkf.71.2018.05.16.09.12.36
+        by mx.google.com with ESMTPS id x4-v6si1793388qtk.160.2018.05.16.09.17.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 16 May 2018 09:12:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 16 May 2018 09:17:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:53334 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=c92c8ZWU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:53652 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fIz2Z-0003CX-Fo
-	for alex.bennee@linaro.org; Wed, 16 May 2018 12:12:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51900)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fIz7A-0007cL-WD
+	for alex.bennee@linaro.org; Wed, 16 May 2018 12:17:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57016)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1fIyzQ-0000oH-VU
-	for qemu-devel@nongnu.org; Wed, 16 May 2018 12:09:22 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fIz6r-0007W3-4f
+	for qemu-arm@nongnu.org; Wed, 16 May 2018 12:17:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1fIyzP-0004fT-Oe
-	for qemu-devel@nongnu.org; Wed, 16 May 2018 12:09:20 -0400
-Received: from [45.249.212.35] (port=58059 helo=huawei.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1fIyzK-0004au-W5; Wed, 16 May 2018 12:09:15 -0400
-Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.58])
-	by Forcepoint Email with ESMTP id 6C751BB0E397D;
-	Wed, 16 May 2018 23:21:56 +0800 (CST)
-Received: from S00345302A-PC.china.huawei.com (10.202.227.237) by
-	DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server
-	id 14.3.361.1; Wed, 16 May 2018 23:21:49 +0800
-From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Date: Wed, 16 May 2018 16:20:23 +0100
-Message-ID: <20180516152026.2920-4-shameerali.kolothum.thodi@huawei.com>
-X-Mailer: git-send-email 2.12.0.windows.1
-In-Reply-To: <20180516152026.2920-1-shameerali.kolothum.thodi@huawei.com>
-References: <20180516152026.2920-1-shameerali.kolothum.thodi@huawei.com>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fIz6o-0001jI-8v
+	for qemu-arm@nongnu.org; Wed, 16 May 2018 12:17:01 -0400
+Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:45933)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fIz6o-0001ik-5g; Wed, 16 May 2018 12:16:58 -0400
+Received: by mail-qt0-x244.google.com with SMTP id j42-v6so1763661qtj.12;
+	Wed, 16 May 2018 09:16:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=NTMtIYBBwPnbfy06eeXQMmGC5C76PWpUAFU3G0mX+gY=;
+	b=c92c8ZWULoKmMPXA2av9Ih4iNZ/jUG5H0JV1KUa5LuXpz6NWQE5FE/yX5whZhVfwv7
+	fV4f5AaaeuwMuK2yPsVJKg9saXA7nINz5CDWdUltkK1aLfvp+iyx24SiIKWFRtACYbpl
+	N/qNkl9HPNpTGkMmB+Cuw3TVwBC39mQGE7lBaja1ip3VGpmtiXCAKkm7Ft11PtQow+a1
+	QbXnqGeusL2Nv6rHKYl49tWL+mHW0IdrkvQ8lZanO0ImhCSTdyHeZ59Z9a4tvMRdPDZK
+	0s5itOFecD0J39B14b8ZjkmBQGWLfr2IcPBvtyYaKHzZ5CfkC83exCp5/cGxTJFq1fvS
+	Yz+g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=NTMtIYBBwPnbfy06eeXQMmGC5C76PWpUAFU3G0mX+gY=;
+	b=LpS59d5YwIUe53hUQQkmlPEwbpAo0ipQcMJiWcME7oNmr8go731enxb3sP4o6iq0Su
+	Tt9BxAtLkDWI/1GQGkZpl0b0jBOrLU7Ycap59HAXHvNt81qbJ1PQjKrgZYGoswl7e6m6
+	R17fUBbBgSnvhcQD7Q6FoKoYaKIviv7/20FEhiy7FcbDjPykngiNWP7a5+ORqsP35B0Y
+	G+04AX0B65gBJ/ag8a4S1Lh6DpN+T4non47BOLt9c8sVz+zBRdOM1t9vJN8cP5XZc/o1
+	rO1x5KTyHKTmcK/6DczeGAX5zF9myBLSi2qtbuK60H9DJlEFsdoKoxy4j2LdxUFbT8+A
+	SYMA==
+X-Gm-Message-State: ALKqPwdEMMe7LOh3SqIJfD9o2GBne6OpTmmimy3hmENItPtfdwclI2CW
+	qm3qYZCR1oH1yOsZDYzFMO4=
+X-Received: by 2002:aed:2027:: with SMTP id
+	36-v6mr1617929qta.275.1526487417648; 
+	Wed, 16 May 2018 09:16:57 -0700 (PDT)
+Received: from [192.168.1.11] ([138.117.48.222])
+	by smtp.gmail.com with ESMTPSA id
+	r32-v6sm2374406qtr.55.2018.05.16.09.16.55
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 16 May 2018 09:16:57 -0700 (PDT)
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
+References: <1526493784-25328-1-git-send-email-eric.auger@redhat.com>
+	<1526493784-25328-3-git-send-email-eric.auger@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <2c55370d-fa43-12a1-5baf-ec7cf824c0dc@amsat.org>
+Date: Wed, 16 May 2018 13:16:54 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.7.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.202.227.237]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 45.249.212.35
-Subject: [Qemu-devel] [RFC v2 3/6] hw/arm/virt: Add pc-dimm mem hotplug
- framework
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <1526493784-25328-3-git-send-email-eric.auger@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::244
+Subject: Re: [Qemu-arm] [PATCH 2/2] hw/arm/smmu-common: Fix coverity issue
+ in get_block_pte_address
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, jonathan.cameron@huawei.com,
-	linuxarm@huawei.com,
-	Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
-	eric.auger@redhat.com, alex.williamson@redhat.com,
-	zhaoshenglong@huawei.com, imammedo@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xC3az5fTRiFx
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ZfrkehQ7K+FM
 
-This will be used in subsequent patches to model a chunk of
-memory as pc-dimm(cold plug) if the valid iova regions are
-non-contiguous. This is not yet a full hotplug support.
+Hi Eric,
 
-Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
----
- default-configs/aarch64-softmmu.mak |  1 +
- hw/arm/virt.c                       | 82 +++++++++++++++++++++++++++++++++++++
- include/hw/arm/virt.h               |  2 +
- 3 files changed, 85 insertions(+)
+On 05/16/2018 03:03 PM, Eric Auger wrote:
+> Coverity points out that this can overflow if n > 31,
+> because it's only doing 32-bit arithmetic. Let's use 1ULL instead
+> of 1. Also the formulae used to compute n can be replaced by
+> the level_shift() macro.
 
-diff --git a/default-configs/aarch64-softmmu.mak b/default-configs/aarch64-softmmu.mak
-index 9ddccf8..7a82ed8 100644
---- a/default-configs/aarch64-softmmu.mak
-+++ b/default-configs/aarch64-softmmu.mak
-@@ -8,3 +8,4 @@ CONFIG_DDC=y
- CONFIG_DPCD=y
- CONFIG_XLNX_ZYNQMP=y
- CONFIG_XLNX_ZYNQMP_ARM=y
-+CONFIG_MEM_HOTPLUG=y
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 05fcb62..be3ad14 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1552,9 +1552,82 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
-     return ms->possible_cpus;
- }
- 
-+static void virt_dimm_plug(HotplugHandler *hotplug_dev,
-+                         DeviceState *dev, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-+    PCDIMMDevice *dimm = PC_DIMM(dev);
-+    PCDIMMDeviceClass *ddc = PC_DIMM_GET_CLASS(dimm);
-+    MemoryRegion *mr;
-+    uint64_t align;
-+    Error *local_err = NULL;
-+
-+    mr = ddc->get_memory_region(dimm, &local_err);
-+    if (local_err) {
-+        goto out;
-+    }
-+
-+    align = memory_region_get_alignment(mr);
-+    pc_dimm_memory_plug(dev, &vms->hotplug_memory, mr, align, &local_err);
-+    if (local_err) {
-+        goto out;
-+    }
-+
-+out:
-+    error_propagate(errp, local_err);
-+}
-+
-+static void virt_dimm_unplug(HotplugHandler *hotplug_dev,
-+                           DeviceState *dev, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-+    PCDIMMDevice *dimm = PC_DIMM(dev);
-+    PCDIMMDeviceClass *ddc = PC_DIMM_GET_CLASS(dimm);
-+    MemoryRegion *mr;
-+    Error *local_err = NULL;
-+
-+    mr = ddc->get_memory_region(dimm, &local_err);
-+    pc_dimm_memory_unplug(dev, &vms->hotplug_memory, mr);
-+    object_unparent(OBJECT(dev));
-+
-+    error_propagate(errp, local_err);
-+}
-+
-+static void virt_machinedevice_plug_cb(HotplugHandler *hotplug_dev,
-+                                      DeviceState *dev, Error **errp)
-+{
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-+        virt_dimm_plug(hotplug_dev, dev, errp);
-+    } else {
-+        error_setg(errp, "device plug request for not supported device"
-+                   " type: %s", object_get_typename(OBJECT(dev)));
-+    }
-+}
-+
-+static void virt_machinedevice_unplug_cb(HotplugHandler *hotplug_dev,
-+                                        DeviceState *dev, Error **errp)
-+{
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-+        virt_dimm_unplug(hotplug_dev, dev, errp);
-+    } else {
-+        error_setg(errp, "device unplug for not supported device"
-+                   " type: %s", object_get_typename(OBJECT(dev)));
-+    }
-+}
-+
-+static HotplugHandler *virt_get_hotplug_handler(MachineState *machine,
-+                                             DeviceState *dev)
-+{
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-+        return HOTPLUG_HANDLER(machine);
-+    }
-+    return NULL;
-+}
-+
- static void virt_machine_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
-+    HotplugHandlerClass *hc = HOTPLUG_HANDLER_CLASS(oc);
- 
-     mc->init = machvirt_init;
-     /* Start max_cpus at the maximum QEMU supports. We'll further restrict
-@@ -1573,6 +1646,11 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-     mc->cpu_index_to_instance_props = virt_cpu_index_to_props;
-     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a15");
-     mc->get_default_cpu_node_id = virt_get_default_cpu_node_id;
-+
-+    mc->get_hotplug_handler = virt_get_hotplug_handler;
-+    hc->plug = virt_machinedevice_plug_cb;
-+    hc->unplug = virt_machinedevice_unplug_cb;
-+
- }
- 
- static const TypeInfo virt_machine_info = {
-@@ -1582,6 +1660,10 @@ static const TypeInfo virt_machine_info = {
-     .instance_size = sizeof(VirtMachineState),
-     .class_size    = sizeof(VirtMachineClass),
-     .class_init    = virt_machine_class_init,
-+    .interfaces = (InterfaceInfo[]) {
-+         { TYPE_HOTPLUG_HANDLER },
-+         { }
-+    },
- };
- 
- static void machvirt_machine_init(void)
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index fc24f3a..a39f29e 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -35,6 +35,7 @@
- #include "qemu/notify.h"
- #include "hw/boards.h"
- #include "hw/arm/arm.h"
-+#include "hw/mem/pc-dimm.h"
- 
- #define NUM_GICV2M_SPIS       64
- #define NUM_VIRTIO_TRANSPORTS 32
-@@ -108,6 +109,7 @@ typedef struct {
-     uint32_t gic_phandle;
-     uint32_t msi_phandle;
-     int psci_conduit;
-+    MemoryHotplugState hotplug_memory;
- } VirtMachineState;
- 
- #define TYPE_VIRT_MACHINE   MACHINE_TYPE_NAME("virt")
--- 
-2.7.4
+This level_shift() replacement doesn't seems that obvious to me, can you
+split it in another patch?
 
+> 
+> Reported-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>  hw/arm/smmu-common.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+> index 01c7be8..3c5f724 100644
+> --- a/hw/arm/smmu-common.c
+> +++ b/hw/arm/smmu-common.c
+> @@ -83,9 +83,9 @@ static inline hwaddr get_table_pte_address(uint64_t pte, int granule_sz)
+>  static inline hwaddr get_block_pte_address(uint64_t pte, int level,
+>                                             int granule_sz, uint64_t *bsz)
+>  {
+> -    int n = (granule_sz - 3) * (4 - level) + 3;
+> +    int n = level_shift(level, granule_sz);
 
+Shouldn't this be level_shift(level + 1, granule_sz)?
+Using level_shift() you replaced the trailing 3 by granule_sz. This
+means the previous code was only correct for the granule_sz==3 case.
+
+   level_shift(level + 1, granule_sz)
+== (granule_sz - 3) * (3 - (level + 1)) + granule_sz;
+== (granule_sz - 3) * (4 - level) + granule_sz;
+!= (granule_sz - 3) * (4 - level) + 3;
+
+>  
+> -    *bsz = 1 << n;
+> +    *bsz = 1ULL << n;
+
+For the coverity fix (patch splitted):
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+>      return PTE_ADDRESS(pte, n);
+>  }
+>  
+
+Regards,
+
+Phil.

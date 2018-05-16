@@ -1,66 +1,66 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1242941wme;
-        Wed, 16 May 2018 08:22:30 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZq3qKx7e4C1N7xu1J1TCRs4u1HTYIMAMw0bdTrH6329P8aJH3U/P3cN4jnFc03MVfGd6hkU
-X-Received: by 2002:aed:2198:: with SMTP id l24-v6mr1392997qtc.87.1526484150280;
-        Wed, 16 May 2018 08:22:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1526484150; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1243185wme;
+        Wed, 16 May 2018 08:22:44 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZrJFTsLHMsNnLxW3O8ImASunK7ZSA54aAP5ioSxGltphPmXGqNi+b7MrhEmLd+7mCbn1HMc
+X-Received: by 2002:aed:2c81:: with SMTP id g1-v6mr1382637qtd.285.1526484163900;
+        Wed, 16 May 2018 08:22:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1526484163; cv=none;
         d=google.com; s=arc-20160816;
-        b=Hna3dFrR0GMCjhrfLzIwZXR/gWo3DFeF0kFho7SvCn7Tnht4f2sXBQa67/FaV1+oKN
-         z4Lvv5M6M8Y3UOQppCRJlk1+duK0DB+q0u4stcVjuoa97gpIfgyL7730r6OMClO+cO59
-         5QjYgHmFmT9iM2lAGCsDrGgDVrZpl/L+ZPTSal5TE4gbpv26/IgtY0m8cmOit0vYr84X
-         nZ/+SwGhb8+9TAUCqwRtsIUuEQvhlQxWBiLfelU/vALsiuNB96UV0+MqXUJyOnV+/mxQ
-         CHqggPBK5rFySDXXfRMPIKzzmfosRipj4heicWnmvVkLACWrsc+IkI1ZP89amkYumE7Z
-         soyA==
+        b=klk2LRSEM+VFVvQRpt/UEbuTHcaTSRZguOHWbcYLLCda5DJYaXDFW8WYaLNkJolvwM
+         CVo7tJ5QZJTOy5OaAH1WxzCe0GTzPvC2c2FyyHDzZ5xBEJBKZxpV2TXHdP1o7Ky4q5Vr
+         3y45QcVxBM3fr9CrReStdC29cr11L+CIHJUmUe9OJh4rwjT5ZdXoO3qLTjhbhj9ba/qj
+         YreULk52qyyep5aXpVo0kzwK+PneCF0ww7p1nQ9Y4Axoybmvids5GBK5YLwZ9qoGRHF9
+         fH/J9aODwHrbUgNT345nhEYs3RQrUponcBO3ENHGlhsRYmlKh1gna2zCNnIjmrqCfS7g
+         OspA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version:references
          :in-reply-to:message-id:date:to:from:arc-authentication-results;
-        bh=wWUWHGcsDFzqG+NQLYWXDcxorLaXMH8nQVdeCrHH4+I=;
-        b=IjXDYZKn6851Lis8iaY4gg5fsoInjXifkHwT/lc6IcVQu/BJZqCkStcyCmKhrBTBq9
-         xgJz8BWUBMWjD34qWgdrgeA1CwO+58IkUkYSApS/Ld2eprXLWHY2eAwKFLoXs3OKhocU
-         OQxdJeICP4uuhmQHhmIlwskBTPWlzzyd48t5WuF1ezc1vKjFMeNGw5vyIRXpVrfIOXOz
-         mdkJpVeUoeF+0XWCDe+H3NaMnl3KKzThpEp/IE9bB3QRdnIhB23YYJWKaMLKFaztLjbp
-         Ab085ADL8+n/I3u+WTNBKAj2zolGdMhTf810nNFzvQtYu5d23LgIKL4U8ALycsc2fCWX
-         ODEg==
+        bh=Uvi2Erl9aJDgJiDZ/uKw+pAyIWunAY5jNTAwP+VGb0g=;
+        b=dxnFnbNCA57wPBsMCUkPWiYfbCiTXQn2druObTsdnIFEvUfmaX08bBai+flf9TV8yA
+         WxYJLwedFMpcCWtLPv4eWWW8OyTnU7ZK5rXlA0hfoSGJRbWUdkyE1YJfn+mJbSny2UrI
+         ntyKzsYC9aroDuFAThQ7zdMD49svDpsizHoNEhbQ8LHvPQWV1rCVOVC+TH4NtdjEs0Bt
+         6kNpSLW3K7QnaPA5k5GznaBARyQdgx1jRbdtbyX3BbpWqdJ5Jkdkk1GCBQoapjvPu0JZ
+         p2EArgP2uNx4pQbhvtE7EXGS+/gnTJ9x68lOUYwXDwQ6lxVjbZ4W2n8qW7zMHrFcHCT2
+         PEMQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n20-v6si2906173qtb.20.2018.05.16.08.22.30
+        by mx.google.com with ESMTPS id r41-v6si2846561qtc.165.2018.05.16.08.22.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 16 May 2018 08:22:30 -0700 (PDT)
+        Wed, 16 May 2018 08:22:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51210 helo=lists.gnu.org)
+Received: from localhost ([::1]:51216 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fIyG5-0007xE-RG
-	for alex.bennee@linaro.org; Wed, 16 May 2018 11:22:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54080)
+	id 1fIyGJ-00086B-BG
+	for alex.bennee@linaro.org; Wed, 16 May 2018 11:22:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54134)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1fIyFl-0007nc-H8
-	for qemu-arm@nongnu.org; Wed, 16 May 2018 11:22:10 -0400
+	id 1fIyFo-0007qj-EP
+	for qemu-arm@nongnu.org; Wed, 16 May 2018 11:22:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1fIyFk-0005lo-5T
-	for qemu-arm@nongnu.org; Wed, 16 May 2018 11:22:09 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2617 helo=huawei.com)
+	id 1fIyFj-0005lV-OY
+	for qemu-arm@nongnu.org; Wed, 16 May 2018 11:22:12 -0400
+Received: from [45.249.212.32] (port=54447 helo=huawei.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1fIyFj-0005iu-CG; Wed, 16 May 2018 11:22:08 -0400
-Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.60])
-	by Forcepoint Email with ESMTP id C2EEEBB4595AC;
-	Wed, 16 May 2018 23:21:51 +0800 (CST)
+	id 1fIyFi-0005iq-Bm; Wed, 16 May 2018 11:22:07 -0400
+Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.58])
+	by Forcepoint Email with ESMTP id 6E18C6500791A;
+	Wed, 16 May 2018 23:22:01 +0800 (CST)
 Received: from S00345302A-PC.china.huawei.com (10.202.227.237) by
 	DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server
-	id 14.3.361.1; Wed, 16 May 2018 23:21:44 +0800
+	id 14.3.361.1; Wed, 16 May 2018 23:21:53 +0800
 From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Date: Wed, 16 May 2018 16:20:22 +0100
-Message-ID: <20180516152026.2920-3-shameerali.kolothum.thodi@huawei.com>
+Date: Wed, 16 May 2018 16:20:24 +0100
+Message-ID: <20180516152026.2920-5-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: git-send-email 2.12.0.windows.1
 In-Reply-To: <20180516152026.2920-1-shameerali.kolothum.thodi@huawei.com>
 References: <20180516152026.2920-1-shameerali.kolothum.thodi@huawei.com>
@@ -69,9 +69,9 @@ Content-Type: text/plain
 X-Originating-IP: [10.202.227.237]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 45.249.212.190
-Subject: [Qemu-arm] [RFC v2 2/6] hw/arm/virt: Enable dynamic generation of
- guest RAM memory regions
+X-Received-From: 45.249.212.32
+Subject: [Qemu-arm] [RFC v2 4/6] hw/arm: Changes required to accommodate
+ non-contiguous DT mem nodes
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -90,98 +90,173 @@ Cc: peter.maydell@linaro.org, drjones@redhat.com, jonathan.cameron@huawei.com,
 	zhaoshenglong@huawei.com, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3E0ukHpIQSoT
+X-TUID: +qlFEVTE4ahi
 
-Register ram_memory_region_init notifier to allocate memory region
-from system memory.
+This makes changes to the DT mem node creation such that its easier
+to add non-contiguous mem modeled as non-pluggable and a pc-dimm
+mem later.
 
-Signed-off-by: Zhu Yijun <zhuyijun@huawei.com>
 Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 ---
- hw/arm/virt.c         | 28 ++++++++++++++++++++++------
- include/hw/arm/virt.h |  1 +
- 2 files changed, 23 insertions(+), 6 deletions(-)
+ hw/arm/boot.c        | 91 ++++++++++++++++++++++++++++++++++++----------------
+ include/hw/arm/arm.h | 12 +++++++
+ 2 files changed, 75 insertions(+), 28 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 94dcb12..05fcb62 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1171,6 +1171,19 @@ void virt_machine_done(Notifier *notifier, void *data)
-     virt_build_smbios(vms);
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index 26184bc..73db0aa 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -486,6 +486,27 @@ static void fdt_add_psci_node(void *fdt)
+     qemu_fdt_setprop_cell(fdt, "/psci", "migrate", migrate_fn);
  }
  
-+static void virt_ram_memory_region_init(Notifier *notifier, void *data)
++static char *create_memory_fdt(void *fdt, uint32_t acells, hwaddr mem_base,
++                                          uint32_t scells, hwaddr mem_len)
 +{
-+    MemoryRegion *sysmem = get_system_memory();
-+    MemoryRegion *ram = g_new(MemoryRegion, 1);
-+    VirtMachineState *vms = container_of(notifier, VirtMachineState,
-+                                         ram_memory_region_init);
-+    MachineState *machine = MACHINE(vms);
++    char *nodename = NULL;
++    int rc;
 +
-+    memory_region_allocate_system_memory(ram, NULL, "mach-virt.ram",
-+                                         machine->ram_size);
-+    memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base, ram);
++    nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
++    qemu_fdt_add_subnode(fdt, nodename);
++    qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
++    rc = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg", acells, mem_base,
++                                      scells, mem_len);
++    if (rc < 0) {
++        fprintf(stderr, "couldn't set %s/reg\n", nodename);
++        g_free(nodename);
++        return NULL;
++    }
++
++    return nodename;
 +}
 +
- static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
- {
-     uint8_t clustersz = ARM_DEFAULT_CPUS_PER_CLUSTER;
-@@ -1204,7 +1217,6 @@ static void machvirt_init(MachineState *machine)
-     MemoryRegion *sysmem = get_system_memory();
-     MemoryRegion *secure_sysmem = NULL;
-     int n, virt_max_cpus;
--    MemoryRegion *ram = g_new(MemoryRegion, 1);
-     bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
- 
-     /* We can probe only here because during property set
-@@ -1361,10 +1373,6 @@ static void machvirt_init(MachineState *machine)
-     fdt_add_timer_nodes(vms);
-     fdt_add_cpu_nodes(vms);
- 
--    memory_region_allocate_system_memory(ram, NULL, "mach-virt.ram",
--                                         machine->ram_size);
--    memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base, ram);
--
-     create_flash(vms, sysmem, secure_sysmem ? secure_sysmem : sysmem);
- 
-     create_gic(vms, pic);
-@@ -1405,15 +1413,23 @@ static void machvirt_init(MachineState *machine)
-     vms->bootinfo.loader_start = vms->memmap[VIRT_MEM].base;
-     vms->bootinfo.get_dtb = machvirt_dtb;
-     vms->bootinfo.firmware_loaded = firmware_loaded;
 +
-+    /* Register notifiers. They are executed in registration reverse order */
-     arm_load_kernel(ARM_CPU(first_cpu), &vms->bootinfo);
+ /**
+  * load_dtb() - load a device tree binary image into memory
+  * @addr:       the address to load the image at
+@@ -567,50 +588,64 @@ static int load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+         goto fail;
+     }
  
-     /*
-      * arm_load_kernel machine init done notifier registration must
-      * happen before the platform_bus_create call. In this latter,
-      * another notifier is registered which adds platform bus nodes.
--     * Notifiers are executed in registration reverse order.
-      */
-     create_platform_bus(vms, pic);
-+
 +    /*
-+     * Register memory region notifier last as this has to be executed
-+     * first.
++     * Turn the /memory node created before into a NOP node, then create
++     * /memory@addr nodes for all numa nodes respectively.
 +     */
-+    vms->ram_memory_region_init.notify = virt_ram_memory_region_init;
-+    qemu_add_machine_init_done_notifier(&vms->ram_memory_region_init);
- }
++    qemu_fdt_nop_node(fdt, "/memory");
++
+     if (nb_numa_nodes > 0) {
+-        /*
+-         * Turn the /memory node created before into a NOP node, then create
+-         * /memory@addr nodes for all numa nodes respectively.
+-         */
+-        qemu_fdt_nop_node(fdt, "/memory");
++        hwaddr mem_sz;
++
+         mem_base = binfo->loader_start;
++        mem_sz = binfo->ram_size;
+         for (i = 0; i < nb_numa_nodes; i++) {
+-            mem_len = numa_info[i].node_mem;
+-            nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
+-            qemu_fdt_add_subnode(fdt, nodename);
+-            qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
+-            rc = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
+-                                              acells, mem_base,
++            mem_len = MIN(numa_info[i].node_mem, mem_sz);
++
++            nodename = create_memory_fdt(fdt, acells, mem_base,
+                                               scells, mem_len);
+-            if (rc < 0) {
+-                fprintf(stderr, "couldn't set %s/reg for node %d\n", nodename,
+-                        i);
++            if (!nodename) {
+                 goto fail;
+             }
  
- static bool virt_get_secure(Object *obj, Error **errp)
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index ba0c1a4..fc24f3a 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -91,6 +91,7 @@ typedef struct {
- typedef struct {
-     MachineState parent;
-     Notifier machine_done;
-+    Notifier ram_memory_region_init;
-     FWCfgState *fw_cfg;
-     bool secure;
-     bool highmem;
+             qemu_fdt_setprop_cell(fdt, nodename, "numa-node-id", i);
+-            mem_base += mem_len;
+             g_free(nodename);
++            mem_base += mem_len;
++            mem_sz -= mem_len;
++            if (!mem_sz) {
++                break;
++           }
+         }
+-    } else {
+-        Error *err = NULL;
+ 
+-        rc = fdt_path_offset(fdt, "/memory");
+-        if (rc < 0) {
+-            qemu_fdt_add_subnode(fdt, "/memory");
+-        }
++        /* Create the node for initial pc-dimm ram, if any */
++        if (binfo->dimm_mem) {
+ 
+-        if (!qemu_fdt_getprop(fdt, "/memory", "device_type", NULL, &err)) {
+-            qemu_fdt_setprop_string(fdt, "/memory", "device_type", "memory");
++            nodename = create_memory_fdt(fdt, acells, binfo->dimm_mem->base,
++                                              scells, binfo->dimm_mem->size);
++            if (!nodename) {
++                goto fail;
++            }
++            qemu_fdt_setprop_cell(fdt, nodename, "numa-node-id",
++                                                 binfo->dimm_mem->node);
++            g_free(nodename);
+         }
+ 
+-        rc = qemu_fdt_setprop_sized_cells(fdt, "/memory", "reg",
+-                                          acells, binfo->loader_start,
+-                                          scells, binfo->ram_size);
+-        if (rc < 0) {
+-            fprintf(stderr, "couldn't set /memory/reg\n");
++    } else {
++
++        nodename = create_memory_fdt(fdt, acells, binfo->loader_start,
++                                         scells, binfo->ram_size);
++        if (!nodename) {
+             goto fail;
+         }
++
++        if (binfo->dimm_mem) {
++            nodename = create_memory_fdt(fdt, acells, binfo->dimm_mem->base,
++                                              scells, binfo->dimm_mem->size);
++            if (!nodename) {
++                goto fail;
++            }
++            g_free(nodename);
++        }
+     }
+ 
+     rc = fdt_path_offset(fdt, "/chosen");
+diff --git a/include/hw/arm/arm.h b/include/hw/arm/arm.h
+index ce769bd..0ee3b4e 100644
+--- a/include/hw/arm/arm.h
++++ b/include/hw/arm/arm.h
+@@ -48,6 +48,12 @@ typedef struct {
+     ARMCPU *cpu; /* handle to the first cpu object */
+ } ArmLoadKernelNotifier;
+ 
++struct dimm_mem_info {
++    int node;
++    hwaddr base;
++    hwaddr size;
++};
++
+ /* arm_boot.c */
+ struct arm_boot_info {
+     uint64_t ram_size;
+@@ -124,6 +130,12 @@ struct arm_boot_info {
+     bool secure_board_setup;
+ 
+     arm_endianness endianness;
++
++    /* This is used to model a pc-dimm based mem if the valid iova region
++     * is non-contiguous.
++     */
++    struct dimm_mem_info *dimm_mem;
++
+ };
+ 
+ /**
 -- 
 2.7.4
 

@@ -1,116 +1,77 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1295385wme;
-        Wed, 16 May 2018 09:08:46 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZpCpjKtuwwkMHHXGLVSS1Du8YMZmX3XSNBSkvYF5AD8ap0DugkW0RojJrEgt2dlre9E6k1D
-X-Received: by 2002:a37:1fa1:: with SMTP id n33-v6mr1469596qkh.393.1526486926189;
-        Wed, 16 May 2018 09:08:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1526486926; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1300280wme;
+        Wed, 16 May 2018 09:12:36 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZqQB0baSi7uM+Jgr6VsUwWwP9PGRVEF6Kl0O662VgKQuEGeuxQHp0lE5MWpCrR+gQGgUPkj
+X-Received: by 2002:a37:21a0:: with SMTP id f32-v6mr1496820qki.153.1526487156166;
+        Wed, 16 May 2018 09:12:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1526487156; cv=none;
         d=google.com; s=arc-20160816;
-        b=aH71Cb7S/KEfJAxjN2Rh2oy71mMSARSFgmIoHBWGkJql8CB/vCW8CUB6AbzSk0F0eq
-         2xxS05sQt8N2uMlFXt8gtRPA9w+TBwSzjrwGxDBXUskPNGiT4tY+n2yaPBM+zbexTuPo
-         mwR9ocIKOoAXG02PStWTyZojq810uRno/akCRx95Vwd1e6Nm/Z9v8bc9LymLsrkcWoaw
-         ylaGTYyNanDdyOEHXAIHMYBLfo6vVQyqNXqAvEOL2fQLnVZ+3TmXFhrpHGzNwey9d5G5
-         I6D+B8rY40tqePq3OUBLJmv38k1ltYS+6LmRuTZqOpR5ZPtDYYdBxjYm1H4K7phoH+Zd
-         ZdUw==
+        b=guSHJ6mMjgucKNrpzeJ0DWZTxfFxTrh6sDyrWChE+ukhDrJPLehkQXy/OfIA+Zfrb2
+         REr4Qga7p1/Mp90cDg0zZ1JTE3XRSmPpErEusuXLQuZsZg3l5dgIf1gpEsnJ4eO7b4Uf
+         2i9pK0N6axna9lQwMLaCsBZXwbV0POMhWAjuQn2MUcmP5hXYGJOvo97T+kyTMLAIG+pW
+         6fsOmDF/VI7vLj+X+O+EmZFSVT54lTCfsO1/+aFXkBZKYSGJCp2a1d96UbkNY0e8zywo
+         snNWWFRUG6ycMnKObovzMIgvjAn2XBkDfVqG7jXlRtgKOtkYQN4CSfTxd/4QeLYOOLO7
+         KrWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=Fa0VkLYlMAQOPlS6prcxodNzmF7z/eK0XDs5Qj8IPPc=;
-        b=SZlm7R7UYUUyjLmqBfe85hVnnS1NWu7T7if7FxWgUAbKaLHW8dJ6WDgMCXsF3ZaHfX
-         SIJsGjvWR+sYtrgyw3T/lFP3RSMGqLDgiWGlk26up7si72m9AnznFylJ1k7AjbmJKyhl
-         6STjyyY+luPoyLJdvweIAJZ8rCvn/VFE1MvnGcflPtfF/krAs7ZSWrybKOvLV5d93TeY
-         y+ZrG2ODxtyCLe4X+F0/kX6UhxgA7OEfVpqtvFkMNqN2l8oZSJ/wGoM//WM6+g+78Xir
-         T9hFg/mcnwkJXKScUD4mMkSqqLCX/CiFvUcEIXkYMIqj4TxF4I1B6yfMg9F3WtrlDeAp
-         RLMA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:mime-version:references
+         :in-reply-to:message-id:date:to:from:arc-authentication-results;
+        bh=DZ5ucGknKUl4UPbUqlwbWO++nJgtnqQPoRnewCNgLnQ=;
+        b=nDo9DIEKILBeOVzR11Ro4K6wnU3c4wzFwPPP3dW7x/ZAvGwwmgEYnjo+PDsViwzY0Q
+         VWw3C0d4d+JCkjjheqgN+RGVCu39KHl17JK9Mewlx9wm3/vaCd1hLWwK7SaXGRuOBLRF
+         NPG8LpnCXjfCmaPEven5CqyWFf6nPGXIa76LIfTggsJogD7Lc7nwS8A6HV64np/7iN3u
+         r6/ZJZlSme6yCBZRi3lrIa4PncTtWNg4SG6OcrWEKa+Rg9O4UlYgcr21aNd58k0oW5jv
+         dUxNBbbG1+1HOYIW4rSryAZlg5XNIztpGVideO6Xkd1Dg3YkqMRmGSgpiA3NJFIQOHRm
+         dS/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=O0J7zU7X;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g28-v6si1117087qvb.234.2018.05.16.09.08.46
+        by mx.google.com with ESMTPS id z5-v6si505943qkf.71.2018.05.16.09.12.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 16 May 2018 09:08:46 -0700 (PDT)
+        Wed, 16 May 2018 09:12:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=O0J7zU7X;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:53219 helo=lists.gnu.org)
+Received: from localhost ([::1]:53334 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fIyyr-0008DT-JJ
-	for alex.bennee@linaro.org; Wed, 16 May 2018 12:08:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44937)
+	id 1fIz2Z-0003CX-Fo
+	for alex.bennee@linaro.org; Wed, 16 May 2018 12:12:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51900)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fIysg-0003FS-6Q
-	for qemu-devel@nongnu.org; Wed, 16 May 2018 12:02:25 -0400
+	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1fIyzQ-0000oH-VU
+	for qemu-devel@nongnu.org; Wed, 16 May 2018 12:09:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fIysd-00009Y-1M
-	for qemu-devel@nongnu.org; Wed, 16 May 2018 12:02:22 -0400
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:40136)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fIysT-000068-To; Wed, 16 May 2018 12:02:10 -0400
-Received: by mail-qt0-x241.google.com with SMTP id h2-v6so1716841qtp.7;
-	Wed, 16 May 2018 09:02:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=Fa0VkLYlMAQOPlS6prcxodNzmF7z/eK0XDs5Qj8IPPc=;
-	b=O0J7zU7XBNuEF9bm7bSYt6Z4xZRJdaICApzq84ohRu0cKTj+vhQ0BZ0MKxioQhoUPH
-	9TO4qSIkU4XTWYu7W76nATCSxKwq6DDw5v5lcBnUsWK0Wj2hGUfJjwq0CKtTlyagxGgd
-	e+YGrHX4N1tUAkenWZB0Cg23ZqKazX4HJ/hYt4QpY44CNJu3B7GUofHIr7fh9jotojO6
-	uvaSJUUlt4aGJoMIZozBQ3BySoQ5OjHmClCVmIT1JOBoxtqAeUu/oWkpqJPtoJnPdDIs
-	xv2HdxQevSAEBXcTDRuPToqLfFWCbmxdVt0bD6GN4ewT0hqlfUdHsi8r8muuhjIefRC0
-	Sh6Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=Fa0VkLYlMAQOPlS6prcxodNzmF7z/eK0XDs5Qj8IPPc=;
-	b=Ewa5QC/AV6Vdyi5eoZSWNG46+J7gtaK1nymaB72XvdFyySspvFZFKTJuhlzC1UjJbZ
-	mTxLwZWyxG1FoIGJvOlHO+B9WxWDN9iFw8zTteewQYaxsMuk4do0xwsKWhUnLYt9QHYi
-	VyUEUba2RvukhPStdDgyzebY64XzOI5bUzWhGjMknDI4z42yP2cG6mzYTLntGG/7fft9
-	wjz8mKGEdI+LzOx+Fj87vHXZCc/+lG5u6iB8HwU+o8aLUovruEBmJDgbFDN3GHxq6m3N
-	na6i5AmTw5kFkIxZersw94gME3UE28SWqHwOpolB4Fy88GjWeOviiAMiSdQoBI11SGyq
-	U/Yw==
-X-Gm-Message-State: ALKqPwey9jmbJr6+j2IJRbmysW+GiVPqM79cGstclLfheSx69WSzfZWJ
-	KbZDZj3k7g6aV71w2P5RsgI=
-X-Received: by 2002:ac8:6d2:: with SMTP id
-	j18-v6mr1515165qth.306.1526486529013; 
-	Wed, 16 May 2018 09:02:09 -0700 (PDT)
-Received: from [192.168.1.11] ([138.117.48.222])
-	by smtp.gmail.com with ESMTPSA id
-	g47-v6sm2210543qtk.87.2018.05.16.09.02.06
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 16 May 2018 09:02:08 -0700 (PDT)
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
-References: <1526493784-25328-1-git-send-email-eric.auger@redhat.com>
-	<1526493784-25328-2-git-send-email-eric.auger@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <85f12e3c-f3a5-3627-6865-4508f3492a6f@amsat.org>
-Date: Wed, 16 May 2018 13:02:03 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1fIyzP-0004fT-Oe
+	for qemu-devel@nongnu.org; Wed, 16 May 2018 12:09:20 -0400
+Received: from [45.249.212.35] (port=58059 helo=huawei.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1fIyzK-0004au-W5; Wed, 16 May 2018 12:09:15 -0400
+Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.58])
+	by Forcepoint Email with ESMTP id 6C751BB0E397D;
+	Wed, 16 May 2018 23:21:56 +0800 (CST)
+Received: from S00345302A-PC.china.huawei.com (10.202.227.237) by
+	DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server
+	id 14.3.361.1; Wed, 16 May 2018 23:21:49 +0800
+From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+Date: Wed, 16 May 2018 16:20:23 +0100
+Message-ID: <20180516152026.2920-4-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: git-send-email 2.12.0.windows.1
+In-Reply-To: <20180516152026.2920-1-shameerali.kolothum.thodi@huawei.com>
+References: <20180516152026.2920-1-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <1526493784-25328-2-git-send-email-eric.auger@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH 1/2] hw/arm/smmuv3: Fix Coverity
- issue in smmuv3_record_event
+Content-Type: text/plain
+X-Originating-IP: [10.202.227.237]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 45.249.212.35
+Subject: [Qemu-devel] [RFC v2 3/6] hw/arm/virt: Add pc-dimm mem hotplug
+ framework
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -122,41 +83,166 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, jonathan.cameron@huawei.com,
+	linuxarm@huawei.com,
+	Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+	eric.auger@redhat.com, alex.williamson@redhat.com,
+	zhaoshenglong@huawei.com, imammedo@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /TjNBgZGXPWb
+X-TUID: xC3az5fTRiFx
 
-On 05/16/2018 03:03 PM, Eric Auger wrote:
-> Coverity complains about use of uninitialized Evt struct.
-> The EVT_SET_TYPE and similar setters use deposit32() on fields
-> in the struct, so they read the uninitialized existing values.
-> In cases where we don't set all the fields in the event struct
-> we'll end up leaking random uninitialized data from QEMU's
-> stack into the guest.
-> 
-> Initializing the struct with "Evt evt = {};" ought to satisfy
-> Coverity and fix the data leak.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Reported-by: Peter Maydell <peter.maydell@linaro.org>
+This will be used in subsequent patches to model a chunk of
+memory as pc-dimm(cold plug) if the valid iova regions are
+non-contiguous. This is not yet a full hotplug support.
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+---
+ default-configs/aarch64-softmmu.mak |  1 +
+ hw/arm/virt.c                       | 82 +++++++++++++++++++++++++++++++++++++
+ include/hw/arm/virt.h               |  2 +
+ 3 files changed, 85 insertions(+)
 
-> ---
->  hw/arm/smmuv3.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index b3026de..42dc521 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -143,7 +143,7 @@ static MemTxResult smmuv3_write_eventq(SMMUv3State *s, Evt *evt)
->  
->  void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *info)
->  {
-> -    Evt evt;
-> +    Evt evt = {};
->      MemTxResult r;
->  
->      if (!smmuv3_eventq_enabled(s)) {
-> 
+diff --git a/default-configs/aarch64-softmmu.mak b/default-configs/aarch64-softmmu.mak
+index 9ddccf8..7a82ed8 100644
+--- a/default-configs/aarch64-softmmu.mak
++++ b/default-configs/aarch64-softmmu.mak
+@@ -8,3 +8,4 @@ CONFIG_DDC=y
+ CONFIG_DPCD=y
+ CONFIG_XLNX_ZYNQMP=y
+ CONFIG_XLNX_ZYNQMP_ARM=y
++CONFIG_MEM_HOTPLUG=y
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 05fcb62..be3ad14 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1552,9 +1552,82 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+     return ms->possible_cpus;
+ }
+ 
++static void virt_dimm_plug(HotplugHandler *hotplug_dev,
++                         DeviceState *dev, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
++    PCDIMMDevice *dimm = PC_DIMM(dev);
++    PCDIMMDeviceClass *ddc = PC_DIMM_GET_CLASS(dimm);
++    MemoryRegion *mr;
++    uint64_t align;
++    Error *local_err = NULL;
++
++    mr = ddc->get_memory_region(dimm, &local_err);
++    if (local_err) {
++        goto out;
++    }
++
++    align = memory_region_get_alignment(mr);
++    pc_dimm_memory_plug(dev, &vms->hotplug_memory, mr, align, &local_err);
++    if (local_err) {
++        goto out;
++    }
++
++out:
++    error_propagate(errp, local_err);
++}
++
++static void virt_dimm_unplug(HotplugHandler *hotplug_dev,
++                           DeviceState *dev, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
++    PCDIMMDevice *dimm = PC_DIMM(dev);
++    PCDIMMDeviceClass *ddc = PC_DIMM_GET_CLASS(dimm);
++    MemoryRegion *mr;
++    Error *local_err = NULL;
++
++    mr = ddc->get_memory_region(dimm, &local_err);
++    pc_dimm_memory_unplug(dev, &vms->hotplug_memory, mr);
++    object_unparent(OBJECT(dev));
++
++    error_propagate(errp, local_err);
++}
++
++static void virt_machinedevice_plug_cb(HotplugHandler *hotplug_dev,
++                                      DeviceState *dev, Error **errp)
++{
++    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
++        virt_dimm_plug(hotplug_dev, dev, errp);
++    } else {
++        error_setg(errp, "device plug request for not supported device"
++                   " type: %s", object_get_typename(OBJECT(dev)));
++    }
++}
++
++static void virt_machinedevice_unplug_cb(HotplugHandler *hotplug_dev,
++                                        DeviceState *dev, Error **errp)
++{
++    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
++        virt_dimm_unplug(hotplug_dev, dev, errp);
++    } else {
++        error_setg(errp, "device unplug for not supported device"
++                   " type: %s", object_get_typename(OBJECT(dev)));
++    }
++}
++
++static HotplugHandler *virt_get_hotplug_handler(MachineState *machine,
++                                             DeviceState *dev)
++{
++    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
++        return HOTPLUG_HANDLER(machine);
++    }
++    return NULL;
++}
++
+ static void virt_machine_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
++    HotplugHandlerClass *hc = HOTPLUG_HANDLER_CLASS(oc);
+ 
+     mc->init = machvirt_init;
+     /* Start max_cpus at the maximum QEMU supports. We'll further restrict
+@@ -1573,6 +1646,11 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+     mc->cpu_index_to_instance_props = virt_cpu_index_to_props;
+     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a15");
+     mc->get_default_cpu_node_id = virt_get_default_cpu_node_id;
++
++    mc->get_hotplug_handler = virt_get_hotplug_handler;
++    hc->plug = virt_machinedevice_plug_cb;
++    hc->unplug = virt_machinedevice_unplug_cb;
++
+ }
+ 
+ static const TypeInfo virt_machine_info = {
+@@ -1582,6 +1660,10 @@ static const TypeInfo virt_machine_info = {
+     .instance_size = sizeof(VirtMachineState),
+     .class_size    = sizeof(VirtMachineClass),
+     .class_init    = virt_machine_class_init,
++    .interfaces = (InterfaceInfo[]) {
++         { TYPE_HOTPLUG_HANDLER },
++         { }
++    },
+ };
+ 
+ static void machvirt_machine_init(void)
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index fc24f3a..a39f29e 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -35,6 +35,7 @@
+ #include "qemu/notify.h"
+ #include "hw/boards.h"
+ #include "hw/arm/arm.h"
++#include "hw/mem/pc-dimm.h"
+ 
+ #define NUM_GICV2M_SPIS       64
+ #define NUM_VIRTIO_TRANSPORTS 32
+@@ -108,6 +109,7 @@ typedef struct {
+     uint32_t gic_phandle;
+     uint32_t msi_phandle;
+     int psci_conduit;
++    MemoryHotplugState hotplug_memory;
+ } VirtMachineState;
+ 
+ #define TYPE_VIRT_MACHINE   MACHINE_TYPE_NAME("virt")
+-- 
+2.7.4
+
+

@@ -1,70 +1,96 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1058wme;
-        Tue, 15 May 2018 10:15:07 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZoSskJdSCjRF0X5R2Xpw//xfydbHsQncfXGughdeE33jvIQ/s/Cjf8uxvK/tXM8wgNkNWB1
-X-Received: by 2002:ac8:1a9a:: with SMTP id x26-v6mr15191314qtj.113.1526404507565;
-        Tue, 15 May 2018 10:15:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1526404507; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp562917wme;
+        Thu, 17 May 2018 00:07:48 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZpPGXtUsrjD+nfY+b/OvhrR47Ay977sTRS8GUq+JiKPrq1ogI8gKjuEyBFNoruPBDO+ET9v
+X-Received: by 2002:ac8:7259:: with SMTP id l25-v6mr4060608qtp.325.1526540868348;
+        Thu, 17 May 2018 00:07:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1526540868; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZkVlQjJH8jk4aj/cnJCdCrDGYNYe1BCrqyYnIE/A6ZCmukbwizTFJQnRlqsUkGBerR
-         UQ9/H1qR3nMXywdoC+eJs1xpVcckY7bkJ6sPTEwYL3A/flz0I4kLCYUJkG2tGGgzGRCH
-         TGzq+Lt7o4ZOWKCHmyvKsdFlhddjGYE0f+7XYFUiDryDbp5fcTzliGTACOlazJF57twk
-         e+RQAqMW41QnDUpXc7dylJM6U9UrZwweGQztBXgM6v+DAH7etldwnMgtZtOeowX8Nrfx
-         dsXK3n2re5WLeLL2T6V9nILl7YKils4AsR7f7y4twkx/z1/h3rghpPotraN9HMXHjySs
-         nTcA==
+        b=rt7u0lYoOOsNPMOT63wADcZsqu/B1Oj2r+75cx8ILC8ONQe191PZk4u+TmOBitVtOS
+         bL7dHHdpw/NOO2u6VTeu6LAycfhLjbdCYBd3mVFdKpuuVhbHjCAZW0MvP1fdgQIh2SQb
+         ulUhcB5VRP5rPjEm29ry99hJfZrlFb7VsLMzHAz37pijNkbNKShKutTaqo/27FiX7NPj
+         ueXdQ/5n6JjsX+EcXPp1InUsvuRIy9vh99kulOdaYG01Smfm3WtH9JmCbz9WoJBi6eco
+         3Z5V8lkn+ZxyHi6g5xOyje9IHxKWfaL9NUe07l6fVYv/KTluIQt9AWdu7nnwaby+5roS
+         tu2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :arc-authentication-results;
-        bh=OGaUEwMyjybu4AXzu4/+uJOMs/d7OgZM52Q3aZflkpU=;
-        b=PvcEy+OKCa5mrQZqJAXfspIfHUkzrzk4FHbi+9yMLDvj0mPeCraP+BbTQCQSw6lFh4
-         0eLQ8mvtrJcpJlf1gxaJ/05FhqubL1SFQt23HPd2rv7GEuMVq5f9tDNxaUoVNYUoGcCy
-         /quBa7PcZ8fvvqYrd0qYu2WWQE+p+IcaQxWHJ+4wAJfs4z28r66iAAR1m+9n5os1K4Y9
-         C5tDztvATA9xml26JM1kMgzltPb1i5cT/+U8HgOenf6ycBA5n8xp5urmn7EiH33WuOug
-         myNvpM6Fj9eU00bNtiJ9tcrDUIggIVKZFBVnCOO7lAy/AgxUuqPKaGAlwLcrwjQGA4yZ
-         HsUw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=Zu/kL/z9iU6Pu+kv0J12bIF4M/lJ7ajDfHK8X+Hu7Tw=;
+        b=fnvIuWgXxMQr8ZvltavNNKRCJesSSVxP2iiXXDkrYgeoXjJM+tTfv7B2NKKTFPTUSw
+         Y1X8/v6QB6fDcNPJ9uc4ZiCQmJaHeq60Bdfv9FShML+ynpr2qK7YEOpkfHVvi1poqqH+
+         kHo91TjuJMRo9ybQnI4h4+2lHyNDldJNMCB8HEuGeGMUU6vINUtCJYWPYMAneumGAzUX
+         Crl+ui18Xpcl/AMPWreg8NHpM2G4OOZGAsBPHVVrrmMQeIqwH0LeevA8Jms9Ayu0dd5C
+         uBj6FiA0hL1MoiR9Hpl47GKUh63YL3xa6F39JZvbPcDQQB3rCyHpNGsim8zpbBhOL+0L
+         3gcA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j7-v6si514186qth.269.2018.05.15.10.15.07
+        by mx.google.com with ESMTPS id w2-v6si4153377qvn.267.2018.05.17.00.07.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 15 May 2018 10:15:07 -0700 (PDT)
+        Thu, 17 May 2018 00:07:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49366 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39005 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fIdXX-0002LS-26
-	for alex.bennee@linaro.org; Tue, 15 May 2018 13:15:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42649)
+	id 1fJD0t-0001z0-RD
+	for alex.bennee@linaro.org; Thu, 17 May 2018 03:07:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34649)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1fIdXH-0002Js-AZ
-	for qemu-arm@nongnu.org; Tue, 15 May 2018 13:14:52 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1fJD0i-0001yB-Vq
+	for qemu-arm@nongnu.org; Thu, 17 May 2018 03:07:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1fIdXG-0006cU-6w
-	for qemu-arm@nongnu.org; Tue, 15 May 2018 13:14:51 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:41712)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1fIdXF-0006c1-Vw; Tue, 15 May 2018 13:14:50 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1fIdXD-0001cS-Vt; Tue, 15 May 2018 18:14:47 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Tue, 15 May 2018 18:14:46 +0100
-Message-Id: <20180515171446.10834-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.17.0
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH] hw/arm/mps2-tz: Put ethernet controller behind
- PPC
+	(envelope-from <eric.auger@redhat.com>) id 1fJD0e-0007df-JC
+	for qemu-arm@nongnu.org; Thu, 17 May 2018 03:07:37 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:52726 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1fJD0e-0007dM-F5; Thu, 17 May 2018 03:07:32 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id BDD7481FE147;
+	Thu, 17 May 2018 07:07:31 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-117-111.ams2.redhat.com
+	[10.36.117.111])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 997662166BAD;
+	Thu, 17 May 2018 07:07:30 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+References: <1526493784-25328-1-git-send-email-eric.auger@redhat.com>
+	<1526493784-25328-3-git-send-email-eric.auger@redhat.com>
+	<2c55370d-fa43-12a1-5baf-ec7cf824c0dc@amsat.org>
+	<CAFEAcA-GxScM9StKESYAqJ2sbiSH+hWjJXvF7COjJPojs5J5QQ@mail.gmail.com>
+	<8324a612-8785-9db9-b0d4-ab943645a16d@amsat.org>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <f7bd0127-a430-3672-17a4-04fd33b41f51@redhat.com>
+Date: Thu, 17 May 2018 09:07:29 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
+MIME-Version: 1.0
+In-Reply-To: <8324a612-8785-9db9-b0d4-ab943645a16d@amsat.org>
+Content-Type: text/plain; charset=utf-8
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.8]);
+	Thu, 17 May 2018 07:07:31 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Thu, 17 May 2018 07:07:31 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 2/2] hw/arm/smmu-common: Fix
+ coverity issue in get_block_pte_address
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,103 +102,68 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GgQkerhJ1rPr
+X-TUID: HaoHuA8GwcFN
 
-The ethernet controller in the AN505 MPC FPGA image is behind
-the same AHB Peripheral Protection Controller that handles
-the graphics and GPIOs. (In the documentation this is clear
-in the block diagram but the ethernet controller was omitted
-from the table listing devices connected to the PPC.)
-The ethernet sits behind AHB PPCEXP0 interface 5. We had
-incorrectly claimed that this was a "gpio4", but there are
-only 4 GPIOs in this image.
+Hi Philippe,
+On 05/16/2018 10:01 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> On 05/16/2018 01:23 PM, Peter Maydell wrote:
+>> On 16 May 2018 at 16:16, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
+>>> Hi Eric,
+>>>
+>>> On 05/16/2018 03:03 PM, Eric Auger wrote:
+>>>> Coverity points out that this can overflow if n > 31,
+>>>> because it's only doing 32-bit arithmetic. Let's use 1ULL instead
+>>>> of 1. Also the formulae used to compute n can be replaced by
+>>>> the level_shift() macro.
+>>>
+>>> This level_shift() replacement doesn't seems that obvious to me, can =
+you
+>>> split it in another patch?
+>>>
+>>>>
+>>>> Reported-by: Peter Maydell <peter.maydell@linaro.org>
+>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>>> ---
+>>>>  hw/arm/smmu-common.c | 4 ++--
+>>>>  1 file changed, 2 insertions(+), 2 deletions(-)
+>>>>
+>>>> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+>>>> index 01c7be8..3c5f724 100644
+>>>> --- a/hw/arm/smmu-common.c
+>>>> +++ b/hw/arm/smmu-common.c
+>>>> @@ -83,9 +83,9 @@ static inline hwaddr get_table_pte_address(uint64_=
+t pte, int granule_sz)
+>>>>  static inline hwaddr get_block_pte_address(uint64_t pte, int level,
+>>>>                                             int granule_sz, uint64_t=
+ *bsz)
+>>>>  {
+>>>> -    int n =3D (granule_sz - 3) * (4 - level) + 3;
+>>>> +    int n =3D level_shift(level, granule_sz);
+>>>
+>>> Shouldn't this be level_shift(level + 1, granule_sz)?
+>>
+>> No. The two expressions are equivalent, they're
+>> just arranged differently:
+>>
+>>    level_shift(lvl, gsz)
+>>       =3D=3D gsz + (3 - lvl) * (gsz - 3)
+>>       =3D=3D gsz + (4 - lvl) * (gsz - 3) - (gsz - 3)
+>>       =3D=3D gsz - gsz + (4 - lvl) * (gsz - 3) + 3
+>>       =3D=3D (gsz - 3) * (4 - lvl) + 3
+>=20
+> Argh I failed this middle school demonstrations...
+>=20
+> Thanks Peter :)
+>=20
+> So for the much cleaner level_shift() use:
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-Correct the QEMU model to match the hardware.
+Thank you for the review!
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-A minor nit that I didn't notice when I was modelling this.
-
-NB: I think the PSRAM is also supposed to be behind this
-interface of the PPC, but we definitely can't model that
-because our PPC implementation won't work for executing
-code from RAM that sits behind it.
-
- hw/arm/mps2-tz.c | 32 +++++++++++++++++++++++---------
- 1 file changed, 23 insertions(+), 9 deletions(-)
-
-diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index 8dc8bfd4ab..c5ef95e4cc 100644
---- a/hw/arm/mps2-tz.c
-+++ b/hw/arm/mps2-tz.c
-@@ -74,12 +74,13 @@ typedef struct {
-     UnimplementedDeviceState spi[5];
-     UnimplementedDeviceState i2c[4];
-     UnimplementedDeviceState i2s_audio;
--    UnimplementedDeviceState gpio[5];
-+    UnimplementedDeviceState gpio[4];
-     UnimplementedDeviceState dma[4];
-     UnimplementedDeviceState gfx;
-     CMSDKAPBUART uart[5];
-     SplitIRQ sec_resp_splitter;
-     qemu_or_irq uart_irq_orgate;
-+    DeviceState *lan9118;
- } MPS2TZMachineState;
- 
- #define TYPE_MPS2TZ_MACHINE "mps2tz"
-@@ -224,6 +225,26 @@ static MemoryRegion *make_fpgaio(MPS2TZMachineState *mms, void *opaque,
-     return sysbus_mmio_get_region(SYS_BUS_DEVICE(fpgaio), 0);
- }
- 
-+static MemoryRegion *make_eth_dev(MPS2TZMachineState *mms, void *opaque,
-+                                  const char *name, hwaddr size)
-+{
-+    SysBusDevice *s;
-+    DeviceState *iotkitdev = DEVICE(&mms->iotkit);
-+    NICInfo *nd = &nd_table[0];
-+
-+    /* In hardware this is a LAN9220; the LAN9118 is software compatible
-+     * except that it doesn't support the checksum-offload feature.
-+     */
-+    qemu_check_nic_model(nd, "lan9118");
-+    mms->lan9118 = qdev_create(NULL, "lan9118");
-+    qdev_set_nic_properties(mms->lan9118, nd);
-+    qdev_init_nofail(mms->lan9118);
-+
-+    s = SYS_BUS_DEVICE(mms->lan9118);
-+    sysbus_connect_irq(s, 0, qdev_get_gpio_in_named(iotkitdev, "EXP_IRQ", 16));
-+    return sysbus_mmio_get_region(s, 0);
-+}
-+
- static void mps2tz_common_init(MachineState *machine)
- {
-     MPS2TZMachineState *mms = MPS2TZ_MACHINE(machine);
-@@ -363,7 +384,7 @@ static void mps2tz_common_init(MachineState *machine)
-                 { "gpio1", make_unimp_dev, &mms->gpio[1], 0x40101000, 0x1000 },
-                 { "gpio2", make_unimp_dev, &mms->gpio[2], 0x40102000, 0x1000 },
-                 { "gpio3", make_unimp_dev, &mms->gpio[3], 0x40103000, 0x1000 },
--                { "gpio4", make_unimp_dev, &mms->gpio[4], 0x40104000, 0x1000 },
-+                { "eth", make_eth_dev, NULL, 0x42000000, 0x100000 },
-             },
-         }, {
-             .name = "ahb_ppcexp1",
-@@ -447,13 +468,6 @@ static void mps2tz_common_init(MachineState *machine)
-                                                      "cfg_sec_resp", 0));
-     }
- 
--    /* In hardware this is a LAN9220; the LAN9118 is software compatible
--     * except that it doesn't support the checksum-offload feature.
--     * The ethernet controller is not behind a PPC.
--     */
--    lan9118_init(&nd_table[0], 0x42000000,
--                 qdev_get_gpio_in_named(iotkitdev, "EXP_IRQ", 16));
--
-     create_unimplemented_device("FPGA NS PC", 0x48007000, 0x1000);
- 
-     armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename, 0x400000);
--- 
-2.17.0
-
+Eric
+>=20

@@ -1,202 +1,126 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp311533wme;
-        Mon, 21 May 2018 07:04:23 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZosrlWRw1LeSmt19qnTO4zwsmnSDUiEXF47MgP8iajMWfMRj7KH4hkBtsqlF734riO1wwdg
-X-Received: by 2002:a50:ed06:: with SMTP id j6-v6mr24524288eds.143.1526911463317;
-        Mon, 21 May 2018 07:04:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1526911463; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp160351wme;
+        Thu, 17 May 2018 09:05:01 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZrzW0wVHTt1B8X9YvAq+F6PmNYvmicpC6km5ceqNioNsQLaeoCm+RbUMKWzwWtfHVHp+ZAx
+X-Received: by 2002:aed:2a67:: with SMTP id k36-v6mr5914458qtf.302.1526573101244;
+        Thu, 17 May 2018 09:05:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1526573101; cv=none;
         d=google.com; s=arc-20160816;
-        b=RG8PjlNB/IMTFrVcWJNTU9h2lw4cp4+FC8fXyeuQuZ4j+vf5XdJbK8LL51cl8gI8rO
-         5nLAxW8hbrWwoP/1TXVVv8Yo3hUIGqAqaPDB4l3Js5HkabiDOZKRA7QtfFVJM9IFJ2Zq
-         LN9isnVRGp9jzNMW9IP+C28mX/zqb5SGqJFX3W8UNBbZTIJtrLjA3dKiqN+/hLn2Ik9x
-         v3YMgVrjppRl9IHULPIvp/znG44RmEh0xMcQ5xEPm0+jvX42hFX32gmBsEKI8VKCvP93
-         zTGUJmbi3lYb6vY97L9VoWEggNCcMA79iEd4Ky9OBAZHKikqTxNn+1/F3aIVbtzyBKrg
-         BtlQ==
+        b=aSdSvwo3k//TVNWTLyduSEuQzyOFdyGnQ0jPBRrHSgfdsw4f44IsodK57U8r8yKSg4
+         iyGOf6JPuEniTiVmuBq/NvkwylaPBgjFMZMvs+PThe2GZKj7oDTeTR73GTS+DASOiJXQ
+         SqQ9sxTAw+BMCMvK8LvnSx33Y0JPw2A0seke8OEC05SXyKEuPfQmO4OY2yl5mfXjPWub
+         +23SsL2hGLahVNihhyIIddVDscPJX4EUy1Zc+nU0g9eLFBTTaGinhTCRxeiBFa5L4e34
+         4giO4Boncr1FHeg3cDYGio5GXXHK1aj+Dfty8xGSpbhz15Na3UwOsBRV4M1x1uBB8k5k
+         9iqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=H25QgJHfAjM+ekA5nWDePXAg/SgMhvXQE9RK6X+Eq2w=;
-        b=Ehb7uKBaGcarzGF+g1vt2vHvbDT8a1mMH9GlocVRoLdrYH8iapibSSi6g1g7AjnvnD
-         ginlcHNXZyslA/d5nYFwJPn7O5yBmWnAbckwQRifo7DkLuIrxJ13o0BTUHAw0+Is+F9M
-         pPHmBbr6T7UYW8rbbzErLXILQbRvuSrUAbwmykgi7Ap3XPVzHb/rCOyzaqoPlvU7lX9e
-         oPERO3uIVb24vMPcInFIVzv4TeEsqyu2ACKUwnNRb4dADqg4ZhkgqlKPRQEyb4UlEh3y
-         tKthV5eMiAc36dpriA8oMS2SON759yJDtO06xHzOmYhF/R8wmikNt/VvHAGVpBzizkvE
-         zjlw==
+        bh=s0gYKSAqDtNMntdE2GA/cV7kQXB3du+6bnecPJHIifw=;
+        b=veccgy2LSPvlmQg5ZukH10eNPDouQ2L9I9gY72icWBTzn4FRg1hFdg1ZlLIA+qDKmu
+         EbCTziX3+q764pDQ+eP6F3RQ5/ebTXCFZNSXIy49dDMjlYne8gUPsJLMv4KjazzNHG+R
+         pHtdPUOLnFX34IXTH7X62cFsonrhz9HpoYgd/aeNKdfNuiSKJE1NHp4N0jW+VeBf8Z9w
+         kJVORw2ON96FdSqO98FArdDgIKDsyuTbjBo/KU9J8squFqOpYAZfMLGke55aFFGh4qLz
+         GveI6IkqrA+iokhQU9VIgqcR3LTLJvV9hj5GrXyg3GQN4FxtTD8QdGil9TUwEzCrXNZ/
+         smnA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
+       dkim=fail header.i=@linaro.org header.s=google header.b=X+iaXSHf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <pm215@archaic.org.uk>
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by mx.google.com with ESMTPS id n15-v6si3238291wmh.2.2018.05.21.07.04.23
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 May 2018 07:04:23 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id t19-v6si2806749qtb.266.2018.05.17.09.05.01
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 17 May 2018 09:05:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
+       dkim=fail header.i=@linaro.org header.s=google header.b=X+iaXSHf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1fKlQE-0007pp-La; Mon, 21 May 2018 15:04:22 +0100
+Received: from localhost ([::1]:34364 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fJLOm-00045y-N2
+	for alex.bennee@linaro.org; Thu, 17 May 2018 12:05:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58006)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1fJLO9-00043q-Ng
+	for qemu-devel@nongnu.org; Thu, 17 May 2018 12:04:22 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1fJLO5-000394-SF
+	for qemu-devel@nongnu.org; Thu, 17 May 2018 12:04:21 -0400
+Received: from mail-ot0-x230.google.com ([2607:f8b0:4003:c0f::230]:36745)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fJLO5-00038t-O7
+	for qemu-devel@nongnu.org; Thu, 17 May 2018 12:04:17 -0400
+Received: by mail-ot0-x230.google.com with SMTP id m11-v6so5648907otf.3
+	for <qemu-devel@nongnu.org>; Thu, 17 May 2018 09:04:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=s0gYKSAqDtNMntdE2GA/cV7kQXB3du+6bnecPJHIifw=;
+	b=X+iaXSHfWjKv4OGZpfD/Jvesqo5eKSM8+LirUquY7l6iZWJZY1sB584k5xS8ZFizeI
+	gkpeJF5bbQziFPTdfmYwEfE68gF1DKUjysqgqws9G05G+BZM0YpAuI0w+0umbFmMdqpu
+	7BGzz5xkazmo9F3ac49ntrIDbFCwreMtAacdg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=s0gYKSAqDtNMntdE2GA/cV7kQXB3du+6bnecPJHIifw=;
+	b=dFGBK3m/y6jPWLe0WqBcrsX+yziILkcSmUCqduXSUmqOG5n2y1Q+a7f2NJ9R0EP3BK
+	b9jpIqJxFE0JW200Lt42o2J9z14zaOV117TDAK8dxmdjNiX7T+SySgoXFuKkfsvqiuPX
+	9dHpZfygEeSnlnfwFEHbbZxl4pUOlBpR2EN+M5zO67CAJgElk5dYosCLBj+nrIBn0SGD
+	q0VbekdFXFREdi6d1S7Tes9g8BaRpbuwX/b5xav50iIIwOV6bKioWTGljbrazVP6IOC+
+	+NNfMMeIls8mapmE+65CPD0PnVePDuZMbqyCyWwhhkzfQLAS9bURJAGJ0GQldCsln/4f
+	u9hQ==
+X-Gm-Message-State: ALKqPwfNsAb9aACRytMvJEWZoUjnznn+4jhAZW3zqMvy3rmstnAcBUiD
+	Dx7SMPw6A9WC+J/naC4LugwzSRwLbTrio5HVjz3m5w==
+X-Received: by 2002:a9d:255b:: with SMTP id
+	j27-v6mr4257955otd.316.1526573057111; 
+	Thu, 17 May 2018 09:04:17 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Thu, 17 May 2018 09:03:56
+	-0700 (PDT)
+In-Reply-To: <20180516223007.10256-9-richard.henderson@linaro.org>
+References: <20180516223007.10256-1-richard.henderson@linaro.org>
+	<20180516223007.10256-9-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: patches@linaro.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <rth@twiddle.net>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 26/27] hw/arm/iotkit: Wire up MPC interrupt lines
-Date: Mon, 21 May 2018 15:04:01 +0100
-Message-Id: <20180521140402.23318-27-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.17.0
-In-Reply-To: <20180521140402.23318-1-peter.maydell@linaro.org>
-References: <20180521140402.23318-1-peter.maydell@linaro.org>
-X-TUID: fSvyrkCVE94m
+Date: Thu, 17 May 2018 17:03:56 +0100
+Message-ID: <CAFEAcA8ATbdfprPZRJmPjF_KBnnBsmrW+kH6Cm2_8QqGufQkAg@mail.gmail.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::230
+Subject: Re: [Qemu-devel] [PATCH v3-a 08/27] target/arm: Implement SVE
+ Integer Binary Arithmetic - Predicated Group
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Ng4/0vZUwRw9
 
-The interrupt outputs from the MPC in the IoTKit and the expansion
-MPCs in the board must be wired up to the security controller, and
-also all ORed together to produce a single line to the NVIC.
+On 16 May 2018 at 23:29, Richard Henderson <richard.henderson@linaro.org> wrote:
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/helper-sve.h    | 145 +++++++++++++++++++++++++++
+>  target/arm/sve_helper.c    | 194 +++++++++++++++++++++++++++++++++++++
+>  target/arm/translate-sve.c |  68 +++++++++++++
+>  target/arm/sve.decode      |  42 ++++++++
+>  4 files changed, 449 insertions(+)
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- include/hw/arm/iotkit.h |  6 ++++
- hw/arm/iotkit.c         | 74 +++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 80 insertions(+)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/include/hw/arm/iotkit.h b/include/hw/arm/iotkit.h
-index b21cf1ab9d..2cddde55dd 100644
---- a/include/hw/arm/iotkit.h
-+++ b/include/hw/arm/iotkit.h
-@@ -42,6 +42,9 @@
-  *  + named GPIO outputs ahb_ppcexp{0,1,2,3}_irq_enable
-  *  + named GPIO outputs ahb_ppcexp{0,1,2,3}_irq_clear
-  *  + named GPIO inputs ahb_ppcexp{0,1,2,3}_irq_status
-+ * Controlling each of the 16 expansion MPCs which a system using the IoTKit
-+ * might provide:
-+ *  + named GPIO inputs mpcexp_status[0..15]
-  */
- 
- #ifndef IOTKIT_H
-@@ -81,6 +84,8 @@ typedef struct IoTKit {
-     qemu_or_irq ppc_irq_orgate;
-     SplitIRQ sec_resp_splitter;
-     SplitIRQ ppc_irq_splitter[NUM_PPCS];
-+    SplitIRQ mpc_irq_splitter[IOTS_NUM_EXP_MPC + IOTS_NUM_MPC];
-+    qemu_or_irq mpc_irq_orgate;
- 
-     UnimplementedDeviceState dualtimer;
-     UnimplementedDeviceState s32ktimer;
-@@ -99,6 +104,7 @@ typedef struct IoTKit {
-     qemu_irq nsc_cfg_in;
- 
-     qemu_irq irq_status_in[NUM_EXTERNAL_PPCS];
-+    qemu_irq mpcexp_status_in[IOTS_NUM_EXP_MPC];
- 
-     uint32_t nsccfg;
- 
-diff --git a/hw/arm/iotkit.c b/hw/arm/iotkit.c
-index 160e40c744..133d5bb34f 100644
---- a/hw/arm/iotkit.c
-+++ b/hw/arm/iotkit.c
-@@ -131,6 +131,18 @@ static void iotkit_init(Object *obj)
-     init_sysbus_child(obj, "apb-ppc1", &s->apb_ppc1, sizeof(s->apb_ppc1),
-                       TYPE_TZ_PPC);
-     init_sysbus_child(obj, "mpc", &s->mpc, sizeof(s->mpc), TYPE_TZ_MPC);
-+    object_initialize(&s->mpc_irq_orgate, sizeof(s->mpc_irq_orgate),
-+                      TYPE_OR_IRQ);
-+    object_property_add_child(obj, "mpc-irq-orgate",
-+                              OBJECT(&s->mpc_irq_orgate), &error_abort);
-+    for (i = 0; i < ARRAY_SIZE(s->mpc_irq_splitter); i++) {
-+        char *name = g_strdup_printf("mpc-irq-splitter-%d", i);
-+        SplitIRQ *splitter = &s->mpc_irq_splitter[i];
-+
-+        object_initialize(splitter, sizeof(*splitter), TYPE_SPLIT_IRQ);
-+        object_property_add_child(obj, name, OBJECT(splitter), &error_abort);
-+        g_free(name);
-+    }
-     init_sysbus_child(obj, "timer0", &s->timer0, sizeof(s->timer0),
-                       TYPE_CMSDK_APB_TIMER);
-     init_sysbus_child(obj, "timer1", &s->timer1, sizeof(s->timer1),
-@@ -163,6 +175,12 @@ static void iotkit_exp_irq(void *opaque, int n, int level)
-     qemu_set_irq(s->exp_irqs[n], level);
- }
- 
-+static void iotkit_mpcexp_status(void *opaque, int n, int level)
-+{
-+    IoTKit *s = IOTKIT(opaque);
-+    qemu_set_irq(s->mpcexp_status_in[n], level);
-+}
-+
- static void iotkit_realize(DeviceState *dev, Error **errp)
- {
-     IoTKit *s = IOTKIT(dev);
-@@ -328,6 +346,22 @@ static void iotkit_realize(DeviceState *dev, Error **errp)
-                                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->mpc),
-                                                        0));
- 
-+    /* We must OR together lines from the MPC splitters to go to the NVIC */
-+    object_property_set_int(OBJECT(&s->mpc_irq_orgate),
-+                            IOTS_NUM_EXP_MPC + IOTS_NUM_MPC, "num-lines", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    object_property_set_bool(OBJECT(&s->mpc_irq_orgate), true,
-+                             "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    qdev_connect_gpio_out(DEVICE(&s->mpc_irq_orgate), 0,
-+                          qdev_get_gpio_in(DEVICE(&s->armv7m), 9));
-+
-     /* Devices behind APB PPC0:
-      *   0x40000000: timer0
-      *   0x40001000: timer1
-@@ -536,6 +570,46 @@ static void iotkit_realize(DeviceState *dev, Error **errp)
-         g_free(gpioname);
-     }
- 
-+    /* Wire up the splitters for the MPC IRQs */
-+    for (i = 0; i < IOTS_NUM_EXP_MPC + IOTS_NUM_MPC; i++) {
-+        SplitIRQ *splitter = &s->mpc_irq_splitter[i];
-+        DeviceState *dev_splitter = DEVICE(splitter);
-+
-+        object_property_set_int(OBJECT(splitter), 2, "num-lines", &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-+        object_property_set_bool(OBJECT(splitter), true, "realized", &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-+
-+        if (i < IOTS_NUM_EXP_MPC) {
-+            /* Splitter input is from GPIO input line */
-+            s->mpcexp_status_in[i] = qdev_get_gpio_in(dev_splitter, 0);
-+            qdev_connect_gpio_out(dev_splitter, 0,
-+                                  qdev_get_gpio_in_named(dev_secctl,
-+                                                         "mpcexp_status", i));
-+        } else {
-+            /* Splitter input is from our own MPC */
-+            qdev_connect_gpio_out_named(DEVICE(&s->mpc), "irq", 0,
-+                                        qdev_get_gpio_in(dev_splitter, 0));
-+            qdev_connect_gpio_out(dev_splitter, 0,
-+                                  qdev_get_gpio_in_named(dev_secctl,
-+                                                         "mpc_status", 0));
-+        }
-+
-+        qdev_connect_gpio_out(dev_splitter, 1,
-+                              qdev_get_gpio_in(DEVICE(&s->mpc_irq_orgate), i));
-+    }
-+    /* Create GPIO inputs which will pass the line state for our
-+     * mpcexp_irq inputs to the correct splitter devices.
-+     */
-+    qdev_init_gpio_in_named(dev, iotkit_mpcexp_status, "mpcexp_status",
-+                            IOTS_NUM_EXP_MPC);
-+
-     iotkit_forward_sec_resp_cfg(s);
- 
-     system_clock_scale = NANOSECONDS_PER_SECOND / s->mainclk_frq;
--- 
-2.17.0
+thanks
+-- PMM

@@ -1,98 +1,101 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp174330wme;
-        Fri, 18 May 2018 03:40:04 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZpX20B97yEOm0gjG4orVLi9efSaHmJ74pd91fha7rk0iDNqISslSUI61j0rNqwcmqBRrw6b
-X-Received: by 2002:a37:1f07:: with SMTP id f7-v6mr8156684qkf.433.1526640004202;
-        Fri, 18 May 2018 03:40:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1526640004; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp522597wme;
+        Thu, 17 May 2018 15:50:18 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZoCn+KlLEji7CDw9Zrx32fYftco8TRVSfeyFmV7mO02CACoPPtSdMiSfbvICRpSKGkVxthV
+X-Received: by 2002:a0c:946c:: with SMTP id i41-v6mr6970519qvi.139.1526597418079;
+        Thu, 17 May 2018 15:50:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1526597418; cv=none;
         d=google.com; s=arc-20160816;
-        b=DJheKFAm3WjLirksXMUqDXnIqlZgdri5ej5oMLhC5qfHYMS7GD4vMz7+AzcWlZanbg
-         lmSg0q5xUDegFnnd8YXPgGQhqSsl0Nz5UZKXNCbt3L8eFLTaisRnbv8uCS1SGfVdSbtZ
-         Aj+1fUsMcpx+vXQuQZdO8eITw0HxdT1+K+Zm3NNpVB99DXcqaLwpHJmQ+ozdMl/mbgz2
-         i6TCUmU1+qyC2tVnXorzgeDFbUhc/DIvNs10XgxRaX7sqm0Rm9hcl0uz5R38c7ediLPP
-         aSQtUE2iiAJC9Ca4zS8bpaajzjbErhHpISlnlacHFzsb3k3UpUawZJZ1sT9D8qC65Qmd
-         bwFw==
+        b=cKEtOhHLvzowG3G55NSgtFVrX6vu40AdGBar2y4ZTfLBTm+C/H7EPhVfeIv5E3zHmC
+         SC3ym6UxZFoBOFIX4TmwNYZKaRLexvPrRICuoEHo4euwkUZQVVhhcSbAkk/HUqDfL070
+         wKHwBJf7usNpOACtmU8psKkyzr2CQ31ukiI6tALZbDloYprI4gcIx7dJHoaN53Z1cK03
+         LWGpH6QS/Mc2ddDLlAgaSXSi06Xt91coW7q4U1SbxvhDqaLw65SYE0MjrcXHFSVhJEJx
+         4pg2uDa4yc1WJUq85xrTJ9tNbpjRQOEYdXbtKRayyBhGlTUzVweqF73vmWFjGA1NsHzM
+         hO0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=wOXsig4LSNKognjZMic6o5C08hy+yS9Hw13vtz+cAWs=;
-        b=ob6Z43By1FjCbLqQnujdGsjfJD07weBX8PSRr415ApeLzavO1GZKRgjuIoIQfaEI+d
-         Oagz4AkqOPFg4EWPYGmH65lier970ba/cQKfLHHjY9BxnBdcoJinTPOIWEg2+1rUBENb
-         qGd+W3uSNYQPIGyZdCmBk7sZB4pqudGLiXSGfBy/MF6G8mgZo9M+EpIasz7/sHHZABUX
-         KdzUq/gQ7lnjo4ui1VbRXq5Sknd6AHHbDosTs/YFQcyXpfr0UENuMoGGAqb44GbUpWth
-         IDtKrG8gy25vRdglpKhhgeP5uFbQAj+VfS8NLrxGhYsd/X2pty3rRQ1wLXS+ll0YtvbZ
-         EARA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=TtDHod7a37VSGFWO0WL3be2X5UYNkIhi8hi6Ty9xlxo=;
+        b=D4GoLIDkNvntQZ87flOSTxrNFDfncJvVMjB4iG2jp+jBTTRwxg+O34mMHzwHILzTpl
+         tZkySH/dbbCiS4+hu2tLzk5qX1deTLVAUx2HuxgP7WxmOkr64adHLwDN/pXf27AIhO/E
+         ZzaQM4GfjqIiNfplJlhWW/ctLx6hz2rnIyNs1h8hRHX94FhUKTvHXYiE7iG4S0TMqC9Z
+         1V78Q2kpe5aHrDWKfHrmbwpglzxXdNmEHr/1+iJhOAqBU9WCySH6qsR+DULRIDRZHQ88
+         GE53KHtqEpkj5IRZ2b9LlD9x0uyDWllyW0pVrd97pO+V6efkAeSgKoM/ohvofkOW1wcQ
+         85Hg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Jccs0J2q;
+       dkim=fail header.i=@linaro.org header.s=google header.b=iNvg/pjd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r34-v6si7203622qtd.204.2018.05.18.03.40.04
+        by mx.google.com with ESMTPS id g33-v6si5777867qve.160.2018.05.17.15.50.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 18 May 2018 03:40:04 -0700 (PDT)
+        Thu, 17 May 2018 15:50:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Jccs0J2q;
+       dkim=fail header.i=@linaro.org header.s=google header.b=iNvg/pjd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37952 helo=lists.gnu.org)
+Received: from localhost ([::1]:35365 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fJcnr-0005lW-PW
-	for alex.bennee@linaro.org; Fri, 18 May 2018 06:40:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55096)
+	id 1fJRiz-0001TM-GH
+	for alex.bennee@linaro.org; Thu, 17 May 2018 18:50:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47687)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fJcng-0005k5-AM
-	for qemu-arm@nongnu.org; Fri, 18 May 2018 06:39:53 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1fJRii-0001Ss-Bk
+	for qemu-arm@nongnu.org; Thu, 17 May 2018 18:50:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fJcnf-00088M-HM
-	for qemu-arm@nongnu.org; Fri, 18 May 2018 06:39:52 -0400
-Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:36763)
+	(envelope-from <richard.henderson@linaro.org>) id 1fJRif-0006Ai-5A
+	for qemu-arm@nongnu.org; Thu, 17 May 2018 18:50:00 -0400
+Received: from mail-pg0-x242.google.com ([2607:f8b0:400e:c05::242]:46980)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fJcnf-00087E-Ct
-	for qemu-arm@nongnu.org; Fri, 18 May 2018 06:39:51 -0400
-Received: by mail-oi0-x243.google.com with SMTP id v2-v6so6693505oif.3
-	for <qemu-arm@nongnu.org>; Fri, 18 May 2018 03:39:51 -0700 (PDT)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1fJRie-00069a-T4
+	for qemu-arm@nongnu.org; Thu, 17 May 2018 18:49:57 -0400
+Received: by mail-pg0-x242.google.com with SMTP id u8-v6so2429955pgp.13
+	for <qemu-arm@nongnu.org>; Thu, 17 May 2018 15:49:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=wOXsig4LSNKognjZMic6o5C08hy+yS9Hw13vtz+cAWs=;
-	b=Jccs0J2qQWpjEekQw344J+kRFAVjCzhUQmYt7VRv4OKLttUbc58Ui38QnV6CR6XShd
-	iNnpfMJ0qfKqDWveukbHIncQv2mU6lE8epzetbj7P9m6kZCuh1URCVi7l+OxYpc6zD2F
-	FS9rq0nOjD0FQu4nBg9zWHdvPlSiCQofU7JJ0=
+	h=from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=TtDHod7a37VSGFWO0WL3be2X5UYNkIhi8hi6Ty9xlxo=;
+	b=iNvg/pjd7Kn4K1Qxy/6mNSddj7sG7bFzWCU2dCgCVs8jcvpa+8qbHoR4znsXIpn9oV
+	iXAEIJvz5+z7OCkE1OukQiZm6FbWc+nzMZj2/FfxNDl6Xl0tTRz6hv818zf9Cs1lCK10
+	G3TGompWSufATxCK7AoSR9tKd+BI4Jy3TRgi4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=wOXsig4LSNKognjZMic6o5C08hy+yS9Hw13vtz+cAWs=;
-	b=ZqDNLcq9ouGZbAljTM/lfNWFbOLCC7XNVeQ5EaIr4r2b9qKK74ecXSfhYn2YlLhIjW
-	hUsLE9dh462UWRas6MioK3Cwhx7J+81x/iYItkJqW6Y0563oTPtyZoK99tdLFf6p4Mjb
-	vbN8MOjftxOmnz4JqWM0J1o74YYwrnRQFGEky5RfSyodZ7ronQ0ZNeL51LvCIoTBIxUJ
-	EZJtClQmA0RraAp2J7LAwH1DNIra2wfnl9vIysxJYZfD5TYC60mX61kGbz8Os+EuTxoX
-	uCxceaQvRiUMX52ZBxyxJEg/i1FysQRj11XT3GxbdZO/eFxQprJPll10N4lNKXgtxRjF
-	rUeQ==
-X-Gm-Message-State: ALKqPwdl0IYqO44oHVUg5zswWfEtj28O82iF78w+AHYYhtuB3lm7XQFW
-	Te1hYgfGji1jQQLVzo5Y7VYFVLgERZ8X/zEzZWNSeg==
-X-Received: by 2002:aca:cd0b:: with SMTP id
-	d11-v6mr4988717oig.337.1526639990705; 
-	Fri, 18 May 2018 03:39:50 -0700 (PDT)
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=TtDHod7a37VSGFWO0WL3be2X5UYNkIhi8hi6Ty9xlxo=;
+	b=SLHhYbsq74eXlMyfsD7X8u0UkAhFT2vXqCf0c2pGYla5nTRDH7j7bzNxvqFKuC3ay5
+	s+6vh2dUbxyyRCxlxfc7AUOGjB4bbjb0rNUZECgRR5vqSfy5tISJna+wvoZ/wwex9PiJ
+	Du9KHlptyqANQpzT57St3vRH6k3a0sTl2FphdmNYefGt6/EJefTHOs5QDas3idG9b4sM
+	8Ou60gHAlRQmXRH0PUDeCV1xp7fZFldXGJl+ktmX3OC2TpUClcigVc9alRLlmKnsWe2Q
+	XVN/9d6rpBIkDR/jLFgW5QgTl8wARcuZQL4Gxjljuqub6prprhElZltqmBqdSSnGhxaq
+	pQoA==
+X-Gm-Message-State: ALKqPwd1mM6IH3HL9ofSUZLwqHZfBoXLHEB2EvgMnHoyaR+E+6eWbr+M
+	8/seBoIPiAzve7LNuW6JzIVAfw==
+X-Received: by 2002:a62:4387:: with SMTP id l7-v6mr6747462pfi.55.1526597395371;
+	Thu, 17 May 2018 15:49:55 -0700 (PDT)
+Received: from cloudburst.twiddle.net (97-113-2-170.tukw.qwest.net.
+	[97.113.2.170]) by smtp.gmail.com with ESMTPSA id
+	a11-v6sm8678809pgn.64.2018.05.17.15.49.53
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Thu, 17 May 2018 15:49:54 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Thu, 17 May 2018 15:49:52 -0700
+Message-Id: <20180517224953.11642-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.17.0
 MIME-Version: 1.0
-Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Fri, 18 May 2018 03:39:30
-	-0700 (PDT)
-In-Reply-To: <20180517224953.11642-1-richard.henderson@linaro.org>
-References: <20180517224953.11642-1-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 18 May 2018 11:39:30 +0100
-Message-ID: <CAFEAcA_ofttPqmKOpm1XJJzV_XEEs0SU97bbaFQLYUNwrE8rMw@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::243
-Subject: Re: [Qemu-arm] [PULL v2 00/28] softfloat patch roundup
+X-Received-From: 2607:f8b0:400e:c05::242
+Subject: [Qemu-arm] [PULL v2 00/28] softfloat patch roundup
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,40 +107,89 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lPU5GqbuSdHB
+X-TUID: 5eq+nd7h02ls
 
-On 17 May 2018 at 23:49, Richard Henderson <richard.henderson@linaro.org> wrote:
-> V2 fixing the two erroneous uses of get_fpstatus_ptr
-> within the aa32 translator in patch 9.
->
-> Only reposting 9/28 here.
->
->
-> r~
->
->
->
-> The following changes since commit a4207e3b00e89f934adb231057dcf9a75ac2ae45:
->
->   Merge remote-tracking branch 'remotes/cody/tags/block-pull-request' into staging (2018-05-17 11:59:50 +0100)
->
-> are available in the Git repository at:
->
->   git://github.com/rth7680/qemu.git pull-fpu-20180517
+V2 fixing the two erroneous uses of get_fpstatus_ptr
+within the aa32 translator in patch 9.
 
-Something in your pullreq generation flow is a bit off, this
-should have read "tags/pull-fpu-20180517" I think.
+Only reposting 9/28 here.
 
-> for you to fetch changes up to 377ed92679a2a5f838bc0a095112ea5020720fff:
->
->   fpu/softfloat: Define floatN_silence_nan in terms of parts_silence_nan (2018-05-17 15:27:15 -0700)
->
-> ----------------------------------------------------------------
-> Roundup of softfloat patches
 
-Applied, thanks.
+r~
 
--- PMM
+
+
+The following changes since commit a4207e3b00e89f934adb231057dcf9a75ac2ae45:
+
+  Merge remote-tracking branch 'remotes/cody/tags/block-pull-request' into staging (2018-05-17 11:59:50 +0100)
+
+are available in the Git repository at:
+
+  git://github.com/rth7680/qemu.git pull-fpu-20180517
+
+for you to fetch changes up to 377ed92679a2a5f838bc0a095112ea5020720fff:
+
+  fpu/softfloat: Define floatN_silence_nan in terms of parts_silence_nan (2018-05-17 15:27:15 -0700)
+
+----------------------------------------------------------------
+Roundup of softfloat patches
+
+----------------------------------------------------------------
+Alex Bennée (4):
+      target/arm: convert conversion helpers to fpst/ahp_flag
+      target/arm: squash FZ16 behaviour for conversions
+      fpu/softfloat: Partial support for ARM Alternative half-precision
+      fpu/softfloat: re-factor float to float conversions
+
+Petr Tesarik (1):
+      fpu/softfloat: Fix conversion from uint64 to float128
+
+Richard Henderson (23):
+      fpu/softfloat: Merge NO_SIGNALING_NANS definitions
+      fpu/softfloat: Split floatXX_silence_nan from floatXX_maybe_silence_nan
+      fpu/softfloat: Move softfloat-specialize.h below FloatParts definition
+      fpu/softfloat: Canonicalize NaN fraction
+      fpu/softfloat: Introduce parts_is_snan_frac
+      fpu/softfloat: Replace float_class_dnan with parts_default_nan
+      fpu/softfloat: Replace float_class_msnan with parts_silence_nan
+      target/arm: Use floatX_silence_nan when we have already checked for SNaN
+      target/arm: Remove floatX_maybe_silence_nan from conversions
+      target/hppa: Remove floatX_maybe_silence_nan from conversions
+      target/m68k: Use floatX_silence_nan when we have already checked for SNaN
+      target/mips: Remove floatX_maybe_silence_nan from conversions
+      target/riscv: Remove floatX_maybe_silence_nan from conversions
+      target/s390x: Remove floatX_maybe_silence_nan from conversions
+      fpu/softfloat: Use float*_silence_nan in propagateFloat*NaN
+      fpu/softfloat: Remove floatX_maybe_silence_nan
+      fpu/softfloat: Specialize on snan_bit_is_one
+      fpu/softfloat: Make is_nan et al available to softfloat-specialize.h
+      fpu/softfloat: Pass FloatClass to pickNaN
+      fpu/softfloat: Pass FloatClass to pickNaNMulAdd
+      fpu/softfloat: Define floatN_default_nan in terms of parts_default_nan
+      fpu/softfloat: Clean up parts_default_nan
+      fpu/softfloat: Define floatN_silence_nan in terms of parts_silence_nan
+
+ fpu/softfloat-specialize.h    | 691 ++++++++++++++++------------------------
+ include/fpu/softfloat-types.h |   1 +
+ include/fpu/softfloat.h       |  18 +-
+ target/arm/helper.h           |  10 +-
+ target/arm/translate.h        |  12 +
+ fpu/softfloat.c               | 726 +++++++++++++++---------------------------
+ target/arm/helper-a64.c       |   7 +-
+ target/arm/helper.c           | 114 +++----
+ target/arm/translate-a64.c    |  37 ++-
+ target/arm/translate.c        |  74 ++++-
+ target/hppa/cpu.c             |   1 -
+ target/hppa/op_helper.c       |   2 -
+ target/m68k/softfloat.c       |   3 +-
+ target/mips/msa_helper.c      |   4 -
+ target/mips/op_helper.c       |   2 -
+ target/ppc/fpu_helper.c       |   1 -
+ target/riscv/fpu_helper.c     |   6 +-
+ target/s390x/fpu_helper.c     |  12 +-
+ target/sh4/cpu.c              |   1 -
+ target/unicore32/cpu.c        |   2 -
+ 20 files changed, 718 insertions(+), 1006 deletions(-)

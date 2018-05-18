@@ -1,152 +1,170 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp7244489wrq;
-        Thu, 28 Jun 2018 03:22:31 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpfWQwaM0fW8MxcVVoQmCZzXbD/hEi3SpO2aL1JORgJHCzFcP58vWnsmPFn6w4fvO6vCUmCn
-X-Received: by 2002:a0c:d789:: with SMTP id z9-v6mr8607702qvi.87.1530181351412;
-        Thu, 28 Jun 2018 03:22:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530181351; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp435939wme;
+        Fri, 18 May 2018 07:53:52 -0700 (PDT)
+X-Received: by 2002:aed:21d1:: with SMTP id m17-v6mr9442837qtc.351.1526655232728;
+        Fri, 18 May 2018 07:53:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1526655232; cv=none;
         d=google.com; s=arc-20160816;
-        b=pHMfvDr8qus73xP6GuG+n+n2eSAttevoR1L4e61i7Ehx3chrNp5MZmpCr0RA34nVIn
-         H4c7b4kWRILSF6A84aRS6h/jw3++kfqX1JP942aZM4e4x63U0tz4qxIlCtp0bt7mXfeA
-         E0hMxnl40zxBsU8raoRQ/sZ6tUdV3bVKz7xjgF4hLBS49xovTCzqSRPU7MnLn/i09qzd
-         YkxT3hodPR0gB5xS/fwWNncDnkLaKWH7yV//6lgmBNXFRwWe5RgcN6MC3sIM/H6gUP/I
-         ZHkH/gcF3pijndBgj4+oWtFObnmeUsJki4jm+RVxLJZLOQKrzqlW8kkX4Wb01RcLAEQx
-         D6Xg==
+        b=ItRHiVmk0I9G6wTNzZSQjyPupJON8DmPdeefYx43UdmVYLKCE3Gi09TjaizSGVHC0d
+         /HoKv1aEi+jPDd2KjsAJ931xuN7BxwP4BSa4cXQMC/uwZot5mvhXYrod9u/geU9kRS06
+         hKqlUkyoIYNKrCR/rGU6+XBv55LdWU0t9oIdloC2OaJ1qF/8sxOoz/OvqUAzGTX4caEG
+         uXa1Tk2FOKGSCYg94wCmZpQ8CcbhQNXFLjcMbnUk6QFrizCw5LNuQEC5w3V+kBN+oc6V
+         OajPIJnjrfGCWS/K6vQ0JlV02viiu3asb2MnutnNxrI3PZ4P6q9peC7/47+LxNK3N/+g
+         2SZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:subject:user-agent
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :to:from:date:arc-authentication-results;
-        bh=I55SGFbXYXyVtVxpDUPVYUXNgJMfCjIwVv61WXW1Ca4=;
-        b=rRbRn8Mq3+4/qpcbcJcKOOC2pJ3mRdjcTss1q1QOg8C4fdr3TI7nGEbAmHC09zLVwu
-         8XCcpPZMODVbOxcf66f0CTeaebndnxMiSyak4GRCQ8N3VMNd33VktifQxnfsSAO9akkr
-         oeATgO2sdQ1n40zVh5u6vvDSc6GnF/6E2G8eiPSl1OLShfknPLtTH2hLFufsGCttPO1b
-         k1oyAbKcULVuMr+oE+KnXy5uetQU3fMBwWCRem4ImOTiTO6GPGNA40yeILZFma3xgFNG
-         utjUWXpUsQ+mC1xoWn6jPqa9xJqFuf4VCDPAxynexVN8nOfAJLOto3Gm5qHkcjOcyytr
-         toSg==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+         :sender:dkim-signature:arc-authentication-results;
+        bh=ohJksjvj+vTJJ/UGT6KcU0so/NbUA9/YveYn7Ly0vC8=;
+        b=j9FlH9lY7OrCobKrytdP1LaXUnd+ACmTjrfUFRDVCsJGclsjzlbBcKYOAjFiM8YDYq
+         kAEGNK1+iUj4uVwAc//JVV5cMs2npZHOMeugidQ8pnbbAaTszM77gbFNW/VGRZaNFiUP
+         3YFYDxw5n1gesIr0Lp+XLIM/hX/mr+rmVBlOcTOpqlaQWzb0MHW5o/Gzrzpp4yY5IN2L
+         1/OAfngTSYup9iOd5+1LluQ/xy5hpQFKpOegsWBUiYPtcsgDQlSVTUCoYwgWn7ougUmB
+         lSt6JhsvewA+J+KSs6FV2gwPRiUJDVFC88zv/zbHnOxiJyIPxngibhX6CiefAwtoK5u8
+         dj1g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u2-v6si1856396qki.143.2018.06.28.03.22.31
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Jun 2018 03:22:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fgAazM6A;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id k53-v6sor6154220qtc.79.2018.05.18.07.53.52
+        (Google Transport Security);
+        Fri, 18 May 2018 07:53:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35551 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fYU4M-00044U-VL
-	for alex.bennee@linaro.org; Thu, 28 Jun 2018 06:22:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38743)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1fYU4G-00044O-5D
-	for qemu-arm@nongnu.org; Thu, 28 Jun 2018 06:22:25 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1fYU4C-0007Zt-RX
-	for qemu-arm@nongnu.org; Thu, 28 Jun 2018 06:22:24 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:58522 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <berrange@redhat.com>)
-	id 1fYU4C-0007Yt-ME; Thu, 28 Jun 2018 06:22:20 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0C656818F03A;
-	Thu, 28 Jun 2018 10:22:20 +0000 (UTC)
-Received: from redhat.com (unknown [10.33.36.48])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id A9AB31C723;
-	Thu, 28 Jun 2018 10:22:18 +0000 (UTC)
-Date: Thu, 28 Jun 2018 11:22:16 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Message-ID: <20180628102216.GC3513@redhat.com>
-References: <1530094388-607-1-git-send-email-hongbo.zhang@linaro.org>
-	<20180627123116.GB2424@work-vm>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fgAazM6A;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:cc:references:from:openpgp:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=ohJksjvj+vTJJ/UGT6KcU0so/NbUA9/YveYn7Ly0vC8=;
+        b=fgAazM6Ar6BtKpwtzaZgrrq1OozaL19B4Xzyh5zNGZtQL+7RfU7fTfw7pM3udSPsJa
+         N0Ur3sD5vkQY6gVpIn7DjiDFO3xjbPjCijwa5kLLMjxWi0a0qamLv1CSIgUYcHXjTp1z
+         NSnLpYTBBihzABs/V5LB8gTzk03srDO3+fGiIk9VFcRcdd2Yb7o3i94gAjuvxSpzBU4K
+         c5Gebilmd6kq/JU9nP/Yy61byIC0PkfRZlNKQwhitkuUfiHHDOdJzbLAtWzdRNQ9EHP/
+         Hnm9UjNcsvxo5Q3l99rm7pMSPyHYjGSEj90I3YMWJ4j7413c70QrTRWx2dc1ZiSVD1es
+         tyuQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+         :message-id:date:user-agent:mime-version:in-reply-to
+         :content-language:content-transfer-encoding;
+        bh=ohJksjvj+vTJJ/UGT6KcU0so/NbUA9/YveYn7Ly0vC8=;
+        b=SgRK+89+PO71D2WryjnLr/7QkylPRPd3Wo4mTZtKIWhLEUcZ3ybFFHQD4N6qfhjZ8y
+         edH2GCMPDkr+SkVBPG/p/8uRGsjvsCrU+uMUcG9J39KTChpSNhuJ6naQu4GaK53I6gc4
+         4MmAfamXNRVEHBL7ULc7Z6VTqDxitWwQstofL62GAB4s7n8PWSzsVldj/eNQIApAb6uv
+         ddTI/rxorPtLMJP2sQCEQ7qK8AnQj6Q9v5qftcDiahWk8riSO0txSTvy09efSwM4fgx5
+         /9jd13GxFedje+tGnKbEJ+H1rx7dGKbc4Q2NC5bBNVuzWpRgtix+APPZN97GoHpSUT/G
+         ab3w==
+X-Gm-Message-State: ALKqPweBhHqZFd6iugqrIBKel/Gb9rUwcL0ahgdmEQTJYPUmk67RwmeZ
+	UN1urlpZMNRnDyMJO4MXtA0=
+X-Google-Smtp-Source: AB8JxZqiqpeOw/hEhGs9axakbEKrjs9hj2Af0313rOjerLbTCrVVn4PgdVgh74lvoWJFhe0prfcBlQ==
+X-Received: by 2002:ac8:668c:: with SMTP id d12-v6mr9520089qtp.344.1526655232393;
+        Fri, 18 May 2018 07:53:52 -0700 (PDT)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from [192.168.1.11] ([138.117.48.222])
+        by smtp.gmail.com with ESMTPSA id w70-v6sm6765539qkg.13.2018.05.18.07.53.48
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 18 May 2018 07:53:51 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH v4 32/49] tests/tcg/arm: add fcvt test cases for
+ AArch32/64
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: Richard Henderson <richard.henderson@linaro.org>, cota@braap.org,
+ famz@redhat.com, berrange@redhat.com, balrogg@gmail.com,
+ aurelien@aurel32.net, agraf@suse.de, qemu-devel@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, "open list:ARM"
+ <qemu-arm@nongnu.org>
+References: <20180517174718.10107-1-alex.bennee@linaro.org>
+ <20180517174718.10107-33-alex.bennee@linaro.org>
+ <9ef2bc85-cead-080c-8313-bf0113d5019e@linaro.org>
+ <927cd32b-6de1-3702-5125-e682fb2ffcd4@amsat.org> <87k1s1e5vd.fsf@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <80c70a91-5071-7784-f3cf-d175f4d7fffb@amsat.org>
+Date: Fri, 18 May 2018 11:53:47 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.7.0
 MIME-Version: 1.0
+In-Reply-To: <87k1s1e5vd.fsf@linaro.org>
 Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20180627123116.GB2424@work-vm>
-User-Agent: Mutt/1.10.0 (2018-05-17)
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Thu, 28 Jun 2018 10:22:20 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Thu, 28 Jun 2018 10:22:20 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'berrange@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/arm: Add SBSA machine type
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Cc: Hongbo Zhang <hongbo.zhang@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, peter.maydell@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nhT848L3NBL0
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: 120vM/gg+gpp
 
-On Wed, Jun 27, 2018 at 01:31:17PM +0100, Dr. David Alan Gilbert wrote:
-> * Hongbo Zhang (hongbo.zhang@linaro.org) wrote:
-> > This patch introduces a new Arm machine type 'SBSA' with features:
-> >  - Based on legacy 'virt' machine type.
-
-The 'virt' machine type is absolutely *not* legacy. It is the preferred
-modern, legacy-free machine type when running virtual machines. Since
-aarch64 is greenfield, there is no compelling reason to emulate a
-specific physical machine for VMs, hence the 'virt' machine type.
-
-> >  - Newly designed memory map.
-> >  - EL2 and EL3 are enabled by default.
-> >  - AHCI controller attached to system bus, and then CDROM and hard disc
-> >    can be added to it.
-> >  - EHCI controller attached to system bus, with USB mouse and key board
-> >    installed by default.
-> >  - E1000 ethernet card on PCIE bus.
-
-> >  - VGA display adaptor on PCIE bus.
-> >  - Default CPU type cortex-a57, 4 cores, and 1G bytes memory.
-> >  - No virtio functions enabled, since this is to emulate real hardware.
+On 05/18/2018 05:16 AM, Alex Bennée wrote:
 > 
-> I'm a bit confused; do you have real modern ARM hardware that has an
-> e1000 on it?  If I understand correctly, e1000 is the old PCI version
-> and the e1000e is at least the more modern PCIe version which makes
-> more sense if you're building on PCIe.
-
-Indeed, it makes little sense to default to e1000 if the goal is to make
-it legacy-free
-
-> However, if you:
->   a) Don't have real hardware with the e1000 on
->   b) Do have PCIe
+> Philippe Mathieu-Daudé <f4bug@amsat.org> writes:
 > 
-> then to my mind it makes sense to use virtio-net-pci rather than
-> an e1000e.
+>> On 05/17/2018 05:30 PM, Richard Henderson wrote:
+>>> On 05/17/2018 10:47 AM, Alex Bennée wrote:
+>>>> This runs through the usual float to float conversions and crucially
+>>>> also runs with ARM Alternative Half Precision Format.
+>>>>
+>>>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>>>> [rth: tweak vcvtb.f16.f32/vctb.f32.f16 code and regen]
+>>>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>>>>
+>>>> ---
+>>>> v4
+>>>>   - add fcvt.ref and check results against it
+>>>>   - fix single_to_half, single_to_double conversions
+>>>>   - properly toggle AHP mode (fpsr->fpcr)
+>>>>   - more values around the AHP margins
+>>>>   - add INF/NAN/SNAN inputs
+>>>>   - build for ARM and AArch64
+>>>>   - fix bug for hex literals
+>>>>   - add float-to-int
+>>>>   - checkpatch fix
+>>>> ---
+>>>
+>>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>>
+>> Thanks Richard, I was not very motivated to review each line of the
+>> fcvt.ref files =)
+>>
+>>> diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
+>>> index 9d2b551732..7bb777f442 100644
+>>> --- a/tests/tcg/arm/Makefile.target
+>>> +++ b/tests/tcg/arm/Makefile.target
+>>> @@ -8,7 +8,9 @@ ARM_SRC=$(SRC_PATH)/tests/tcg/arm
+>>>  # Set search path for all sources
+>>>  VPATH 		+= $(ARM_SRC)
+>>>
+>>> -TESTS += hello-arm test-arm-iwmmxt
+>>> +ARM_TESTS=hello-arm test-arm-iwmmxt
+>>> +
+>>> +TESTS += $(ARM_TESTS) fcvt
+>>>
+>>>  hello-arm: CFLAGS+=-marm -ffreestanding
+>>>  hello-arm: LDFLAGS+=-nostdlib
+>>> @@ -24,3 +26,14 @@ run-test-mmap: test-mmap
+>>>  	$(call quiet-command, $(QEMU) -p 8192 $< 8192 > test-mmap-8192.out,
+>> "TEST", "$< (8k pages) on $(TARGET_NAME)")
+>>>  	$(call quiet-command, $(QEMU) -p 16384 $< 16384 >
+>> test-mmap-16384.out, "TEST", "$< (16k pages) on $(TARGET_NAME)")
+>>>  endif
+>>> +
+>>> +ifeq ($(TARGET_NAME), arm)
+>>> +fcvt: LDFLAGS+=-lm
+>>> +# fcvt: CFLAGS+=-march=armv8.2-a+fp16 -mfpu=neon-fp-armv8
+>>
+>> Alex, What is your idea here, enable this later?
+>> Maybe add some TODO comment around..
+> 
+> How about:
+> 
+> # AArch32 doesn't support all combinations of FP16<->FOO in it's base
+> # profile. Once the AArch32 profile is caught up we should build an
+> # additional binary and reference to test the additional combinations.
+> 
+> I backed the change out when I realised the stretch compiler didn't
+> support the same range as my local (18.04) gcc's.
 
-If it does down the virtio-* route though, I fail to see any point in
-adding the new machine type at all -  'virt' machine type is intended
-to be used for guests where everything is paravirtualized, ignoring
-physical hardware constraints.
+Fine by me, thanks.
 
-Regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+>>
+>> Except this nit, for both Makefile.target:
+>> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

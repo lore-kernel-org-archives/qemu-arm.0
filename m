@@ -1,128 +1,84 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id q2-v6sm6858863wrj.57.2018.05.18.01.16.07
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 May 2018 01:16:07 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id DBFDF3E00E2;
-	Fri, 18 May 2018 09:16:06 +0100 (BST)
-References: <20180517174718.10107-1-alex.bennee@linaro.org> <20180517174718.10107-33-alex.bennee@linaro.org> <9ef2bc85-cead-080c-8313-bf0113d5019e@linaro.org> <927cd32b-6de1-3702-5125-e682fb2ffcd4@amsat.org>
-User-agent: mu4e 1.1.0; emacs 26.1
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: Richard Henderson <richard.henderson@linaro.org>, cota@braap.org, famz@redhat.com, berrange@redhat.com, balrogg@gmail.com, aurelien@aurel32.net, agraf@suse.de, qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, "open list\:ARM" <qemu-arm@nongnu.org>
-Subject: Re: [PATCH v4 32/49] tests/tcg/arm: add fcvt test cases for AArch32/64
-In-reply-to: <927cd32b-6de1-3702-5125-e682fb2ffcd4@amsat.org>
-Date: Fri, 18 May 2018 09:16:06 +0100
-Message-ID: <87k1s1e5vd.fsf@linaro.org>
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp171181wme;
+        Fri, 18 May 2018 03:36:21 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZpXaG6EjLEPkReqgpStBMR8oy+YyGHMBxb26WRkzDdtUbJ4PXeVOwAFv6yeioCOzZtyhgsI
+X-Received: by 2002:a1c:4406:: with SMTP id r6-v6mr3856169wma.99.1526639781465;
+        Fri, 18 May 2018 03:36:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1526639781; cv=none;
+        d=google.com; s=arc-20160816;
+        b=GbWpXUOczuljwO0UBKaNbiC/Pj8Zcg9ZhSZpEX/aKKtaskGI2xtMq9i6IqXUSRSHpE
+         2xgymJM8CCPYH0RoEIRqGESS2d/89/sShWGSOJBADafUvZ/ewHwFELIiyokr1AxzKD71
+         ftTs5660tnGStB6bE59wxdo+c5fDUQdpW+p2rY7UxEWjRDUXlXxqwIhHWF/Wo99xLyUr
+         cxJfbAYLLm4oSf24Xr5iM0S2GJbAD57AUlYWnAwmYYyIOylUgE9enWaggPSGAgi5ldte
+         cHdolYVfMAWw+kg057bieQHCU55xck7HCeTXnBBOy0zgH0iIXGlpOqx/lP6trKLWYupE
+         6oKA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-language:content-transfer-encoding:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :arc-authentication-results;
+        bh=guyU2Ul7LaP/lMfUvp5vuqrTHOBp3jKsOdptUsIbVVk=;
+        b=h0D/LP/vuuWL+4S0+POU/S0zIFpIMUJAOL7GPM3+EBJyDxU3Q1/usg2t4hA40DuXkc
+         WApMyyZWRlCgxmXijDV9oqIEQZDm/enj7hHC/1VZ/yVgepXkudASCsZFzkBJ2c4sMhbQ
+         XY6oAmW1AD4dJ2nQRO0pq55MiUWjsuwG8NYQMtlc4ePZu6iwoSMhZxIvoJedE6fQPUZ/
+         BBs6HmT8VJAqUEnuvaS8JudqUP0OfITtmhXWtnkAe2YYZh2IXnkKhQEGyrwxckN21IVm
+         kSGqa87ZlJ/GHI7z+dnnA8LT1vJLgF5kHkYanj7RnSW5ZqAKx40KCXjrzoS//oGwfMST
+         mIHQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of abdallah.bouassida@lauterbach.com designates 62.154.241.196 as permitted sender) smtp.mailfrom=abdallah.bouassida@lauterbach.com
+Return-Path: <abdallah.bouassida@lauterbach.com>
+Received: from smtp1.lauterbach.com (smtp1.lauterbach.com. [62.154.241.196])
+        by mx.google.com with ESMTPS id b132-v6si5101588wme.56.2018.05.18.03.36.21
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 18 May 2018 03:36:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of abdallah.bouassida@lauterbach.com designates 62.154.241.196 as permitted sender) client-ip=62.154.241.196;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of abdallah.bouassida@lauterbach.com designates 62.154.241.196 as permitted sender) smtp.mailfrom=abdallah.bouassida@lauterbach.com
+Received: (qmail 9560 invoked by uid 484); 18 May 2018 10:35:01 -0000
+X-Qmail-Scanner-Diagnostics: from 41.224.44.126 by smtp1.lauterbach.com (envelope-from <abdallah.bouassida@lauterbach.com>, uid 484) with qmail-scanner-2.11 
+ (mhr: 1.0. clamdscan: 0.99/21437. spamassassin: 3.4.0.  
+ Clear:RC:1(41.224.44.126):. 
+ Processed in 0.0528 secs); 18 May 2018 10:35:01 -0000
+Received: from unknown (HELO [192.168.187.23]) (Authenticated_SSL:abouassida@[41.224.44.126])
+          (envelope-sender <abdallah.bouassida@lauterbach.com>)
+          by smtp1.lauterbach.com (qmail-ldap-1.03) with ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
+          for <khaled.jmal@lauterbach.com>; 18 May 2018 10:35:00 -0000
+Subject: Re: [PATCH v6 0/3] target/arm: Add a dynamic XML-description of the
+ cp-registers to GDB
+To: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Khaled Jmal <khaled.jmal@lauterbach.com>
+References: <1524153386-3550-1-git-send-email-abdallah.bouassida@lauterbach.com>
+ <87lgcrvemu.fsf@linaro.org>
+ <CAFEAcA_3Rg-qhLRmg=TtakVtzOffKrdOKU8z=-=cGts4TTC2+A@mail.gmail.com>
+ <87y3gkdlab.fsf@linaro.org>
+ <CAFEAcA8tcspnmGBOOF8zYX22dPRrD_HZ2z+Ot2CSqUo2RdKp1Q@mail.gmail.com>
+From: Abdallah Bouassida <abdallah.bouassida@lauterbach.com>
+Message-ID: <2fb67f0e-b8a1-ff74-531f-6f5a668cf166@lauterbach.com>
+Date: Fri, 18 May 2018 11:35:05 +0100
+User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.7.0
 MIME-Version: 1.0
+In-Reply-To: <CAFEAcA8tcspnmGBOOF8zYX22dPRrD_HZ2z+Ot2CSqUo2RdKp1Q@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: KACfWxeSdADA
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
+X-TUID: AG4mv4cIiUIE
 
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
-
-> On 05/17/2018 05:30 PM, Richard Henderson wrote:
->> On 05/17/2018 10:47 AM, Alex Benn=C3=A9e wrote:
->>> This runs through the usual float to float conversions and crucially
->>> also runs with ARM Alternative Half Precision Format.
->>>
->>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->>> [rth: tweak vcvtb.f16.f32/vctb.f32.f16 code and regen]
->>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->>>
->>> ---
->>> v4
->>>   - add fcvt.ref and check results against it
->>>   - fix single_to_half, single_to_double conversions
->>>   - properly toggle AHP mode (fpsr->fpcr)
->>>   - more values around the AHP margins
->>>   - add INF/NAN/SNAN inputs
->>>   - build for ARM and AArch64
->>>   - fix bug for hex literals
->>>   - add float-to-int
->>>   - checkpatch fix
->>> ---
+>> So finally:
 >>
->> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>> Tested-by: Alex Bennée <alex.bennee@linaro.org>
+> Thanks for the testing.
 >
-> Thanks Richard, I was not very motivated to review each line of the
-> fcvt.ref files =3D)
+> Abdallah: I've added this series to my target-arm.next queue,
+> so it should reach QEMU master some time next week. Thanks for
+> your efforts in working through QEMU's review process, and
+> sorry this took us so long to deal with.
 >
->> diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.targ=
-et
->> index 9d2b551732..7bb777f442 100644
->> --- a/tests/tcg/arm/Makefile.target
->> +++ b/tests/tcg/arm/Makefile.target
->> @@ -8,7 +8,9 @@ ARM_SRC=3D$(SRC_PATH)/tests/tcg/arm
->>  # Set search path for all sources
->>  VPATH 		+=3D $(ARM_SRC)
->>
->> -TESTS +=3D hello-arm test-arm-iwmmxt
->> +ARM_TESTS=3Dhello-arm test-arm-iwmmxt
->> +
->> +TESTS +=3D $(ARM_TESTS) fcvt
->>
->>  hello-arm: CFLAGS+=3D-marm -ffreestanding
->>  hello-arm: LDFLAGS+=3D-nostdlib
->> @@ -24,3 +26,14 @@ run-test-mmap: test-mmap
->>  	$(call quiet-command, $(QEMU) -p 8192 $< 8192 > test-mmap-8192.out,
-> "TEST", "$< (8k pages) on $(TARGET_NAME)")
->>  	$(call quiet-command, $(QEMU) -p 16384 $< 16384 >
-> test-mmap-16384.out, "TEST", "$< (16k pages) on $(TARGET_NAME)")
->>  endif
->> +
->> +ifeq ($(TARGET_NAME), arm)
->> +fcvt: LDFLAGS+=3D-lm
->> +# fcvt: CFLAGS+=3D-march=3Darmv8.2-a+fp16 -mfpu=3Dneon-fp-armv8
->
-> Alex, What is your idea here, enable this later?
-> Maybe add some TODO comment around..
+> -- PMM
+Happy to collaborate with you guys!
+Thank you both for your reviews and your advises :)
 
-How about:
-
-# AArch32 doesn't support all combinations of FP16<->FOO in it's base
-# profile. Once the AArch32 profile is caught up we should build an
-# additional binary and reference to test the additional combinations.
-
-I backed the change out when I realised the stretch compiler didn't
-support the same range as my local (18.04) gcc's.
-
->
-> Except this nit, for both Makefile.target:
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->
->> +
->> +run-fcvt: fcvt
->> +	$(call quiet-command, \
->> +		$(QEMU) $< > fcvt.out && \
->> +		diff -u $(ARM_SRC)/fcvt.ref fcvt.out, \
->> +		"TEST", "$< (default) on $(TARGET_NAME)")
->> +endif
->
-> $ make -j1 run-tcg-tests-aarch64-linux-user
->   BUILD   debian9
->   BUILD   debian-arm64-cross
->   CROSS-BUILD aarch64 guest-tests with docker qemu:debian-arm64-cross
->   BUILD   debian9
->   BUILD   debian-arm64-cross
->   CROSS-BUILD aarch64 guest-tests with docker qemu:debian-arm64-cross
->   RUN-TESTS for aarch64
->   TEST    test-mmap (default) on aarch64
->   TEST    test-mmap (8k pages) on aarch64
->   TEST    test-mmap (16k pages) on aarch64
->   TEST    test-mmap (32k pages) on aarch64
->   TEST    sha1 on aarch64
->   TEST    linux-test on aarch64
->   TEST    testthread on aarch64
->   TEST    fcvt (default) on aarch64
->   TEST    sysregs on aarch64
->
-> \o/
->
-> Tested-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-
-
---
-Alex Benn=C3=A9e
+Best regards,
+Abdallah

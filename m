@@ -1,174 +1,138 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp311225wme;
-        Mon, 21 May 2018 07:04:11 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZo4GUVmeUIOVdz5kmU1DXvnexwIh5OZdbUw3bYTkGotuffNhwsxP86iLC6TkAyBhCeZaGSE
-X-Received: by 2002:adf:b244:: with SMTP id y4-v6mr5365553wra.99.1526911450929;
-        Mon, 21 May 2018 07:04:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1526911450; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp642839wme;
+        Mon, 21 May 2018 12:46:42 -0700 (PDT)
+X-Received: by 2002:a17:902:3c5:: with SMTP id d63-v6mr21374597pld.163.1526932002537;
+        Mon, 21 May 2018 12:46:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1526932002; cv=none;
         d=google.com; s=arc-20160816;
-        b=Kpy12EJcSjdyFJKREIZuFHC0DL3ttFq0oxP1mggpvhpPU8ZSbP/abAAiXJi4olio2r
-         hDix4ht0ys/2aYJrB5qGg15wz1A77qEdEl3WzwkGy71SofPDbOhidOt+myo1jFWwF8xI
-         pPAju8gU/Q/3RLNQfSr+i1pxESBUgzGeXBYyl/+wqzHXsu/W8LskNmuX90pCRZ6a0QNg
-         WMdao5XvVX4Zc7UznLp5iysYWpOjUY6HcwiEFKRN0r5eLHZZPV9aYQpo/lSe3T6Z0IFu
-         qE0ku8LVKkj9oQlbwvtc+WIvsI+NITqDjz0eXdgHXGOgxVxI5Gi2CZV5CxFMIhviOfWU
-         Tmew==
+        b=CcTj7+zT2+vCFyKdtdAr4x2fuX5D5sWVIzFahAn+ad+uCspn1iIQlabbcYHNskYrhA
+         KtIL2IWLiFxVmOiuLhu0ge8+t0e0cC0e1RZQAwk4YWG1hGAmi5kLIrZenq+8BT2WxA1Z
+         UDj8D1L8So7op/OJytRkuWctAYm8djpfZs0rGYozVMyXtZcc2qjmh3dHabkZVOqElkaH
+         U0gLf7/NZTvFR619WAa7chP7tmjq5LDrRePHbFYCfsgo0Xa2vJmIxBsZvuY6TPFGIeM7
+         OgEM1u7LhDNysXNnnYWyMUW4ZzLSO5juqeYGvPsKDvYc/XCWvP0TY0oOLpn8EWIqIW1C
+         qdZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :arc-authentication-results;
-        bh=5wJvBtXvTMPgovwT0Jqp8vaeLb19EkOjcXXBCjAPSsA=;
-        b=Nwmq8Gdgnq2sWsDm+X3PgmwGAPeE1LAyD0wxWDgDBp36H5TDhB9EFmc+xeJDyzPe1A
-         OqNy+N3xO5oXENYlKS0EIHhvCOBkleP6aHn2HajjfZgvI3/uhQCuEednFG7jtLmN9a+K
-         LuTvU1QF9BOTt1f4kbPKlN1+dBMqxROaK/GTF0hisP3CZBHnc6ZWYST0WjS2hLAraDP2
-         I72pBepHFFda2hwrjW3XeYLjFhX6OqWD48+gN2QZFsokWWg1RlxR5zmCdYAbZ6ta45Pl
-         Xs4pF0AvsPVklsgflBEglW+AYpTTlIzmyNSlxL5W3/a94SWsAzb3uADsN8LP+DI4PCl/
-         LT8w==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:openpgp:from:references:cc:to
+         :subject:sender:dkim-signature:arc-authentication-results;
+        bh=juwllGhGU+k+0us8mVBFU2rdFl9ISovVSWopGYFHPwU=;
+        b=aAxNrgk17DCNwcKClF0pYSvX5zzRmTGkrF/SEHTafMxfzx6lvnvEzpIM3kd4h1oyjc
+         2oAHzAHWJcUGfngsm7xeApufmKwT2seSOqwP7zQB2HzsVPeT13qO8QU+LnOOTXwUcRpU
+         uAKSYFEq/44nAd/IxVKxCgm29BDEbpufnoWtpd1mBQBLCEC5P+gmq/p7HFveDZRlBrkQ
+         dl3NsVLHHxYjWYtSd621zpA6t1nNBEninI+3RG+O0TiUKVa2fdfSTvskvYAUOVpHMQkx
+         kCgcCU6dT/xdY8EEYyHqHe1rrLpBaa9M1K1JnoMRLO39euVmLb23WZUsCFQTn8vXzNge
+         nyGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <pm215@archaic.org.uk>
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by mx.google.com with ESMTPS id p62-v6si12617589wrb.385.2018.05.21.07.04.10
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 May 2018 07:04:10 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rimOs9Ai;
+       spf=pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+Return-Path: <rth7680@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id x4-v6sor6019904plv.130.2018.05.21.12.46.42
+        (Google Transport Security);
+        Mon, 21 May 2018 12:46:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1fKlQ2-0007gm-CM; Mon, 21 May 2018 15:04:10 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: patches@linaro.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <rth@twiddle.net>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 10/27] Make flatview_translate() take a MemTxAttrs argument
-Date: Mon, 21 May 2018 15:03:45 +0100
-Message-Id: <20180521140402.23318-11-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.17.0
-In-Reply-To: <20180521140402.23318-1-peter.maydell@linaro.org>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rimOs9Ai;
+       spf=pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=juwllGhGU+k+0us8mVBFU2rdFl9ISovVSWopGYFHPwU=;
+        b=rimOs9AiU2qHGLDz1rgFYm6yoFgfSEJCwuDx76rrO2uuEkLqUCGFZDNGOo6FjW1tZT
+         c6RilLv3xMUrdnk1AN2DL7ryitcWtOt1ayRmEkBw5vqb9LEfAMw4ZERkojjHONzdqeHQ
+         yTYAiTr0zkz3wK4N+OJpq8X2i7YrQ+DHqF66WqCdqBWZqjXg7aWP7WU381oOxddWhfeC
+         jZIBICQKLhM93zBJDSdj+hpTdJBoqcVsWKlEPRcpvJCommQoJbm45nayUeIZ3Q5ni/B+
+         CNxEhlcq3xJ1IwKmCp8vukgCUD3t3X4YYX+Si4FaSBk+rUNVwNJ8BqNqWXsv43iioBzM
+         iIQw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+         :autocrypt:message-id:date:user-agent:mime-version:in-reply-to
+         :content-language:content-transfer-encoding;
+        bh=juwllGhGU+k+0us8mVBFU2rdFl9ISovVSWopGYFHPwU=;
+        b=o+Q5WoZxvQ+WVmacmKPTbdTriXaMVdzUp6eISQszHQJTO2elxOoUSzh+WLpiSNB9xK
+         M5kbrPqtQngKnigQVztI3eFO0Q2sSDslgauAy70+Z8zZu33ElNFwMI6DEeACzgZYHE+o
+         UR7SQ6VkA6UuJVXXQ2Kl76zbSmFIjTMu2tZMHF2pIYF9MTjbVaYSOj2X0l/K2zugQlEp
+         14L/stODwfDN0i76BfHiNgQ8d7uN3mbZEkowRfLMywq8of6GNca0ZoOk2GD8Q70Z/P8h
+         hiwkkDeDkKu4b0mYkO1sbZfGCOQ7XSUgn95KAhpNJRSsWTP4Q3UbamXS4s31rvtgWRj0
+         V/rQ==
+X-Gm-Message-State: ALKqPweuTKJYCDFXGbM3Z1jvclrtBCNOkdiZUC3iD+zhT2ewCJQtZS/4
+	A79MnsfLRgCfwcnbktu6BJz+GdR0
+X-Google-Smtp-Source: AB8JxZraRtPMVk6vBvY17dfKPBkmX9AbYbE1C3abOaGhC1t2uKd66EzLdI9eNw5XNYmPWUjscQHb/g==
+X-Received: by 2002:a17:902:2983:: with SMTP id h3-v6mr21850422plb.232.1526932001624;
+        Mon, 21 May 2018 12:46:41 -0700 (PDT)
+Return-Path: <rth7680@gmail.com>
+Received: from cloudburst.twiddle.net (97-113-173-254.tukw.qwest.net. [97.113.173.254])
+        by smtp.googlemail.com with ESMTPSA id c18-v6sm20200461pgu.63.2018.05.21.12.46.36
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 21 May 2018 12:46:40 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+Subject: Re: [PATCH 01/27] memory.h: Improve IOMMU related documentation
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: patches@linaro.org, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
 References: <20180521140402.23318-1-peter.maydell@linaro.org>
-X-TUID: 51edjWr8AmLl
+ <20180521140402.23318-2-peter.maydell@linaro.org>
+From: Richard Henderson <rth@twiddle.net>
+Openpgp: preference=signencrypt
+Autocrypt: addr=rth@twiddle.net; prefer-encrypt=mutual; keydata=
+ xsBNBFGuLC8BCADcAoWcnW9lTsDMzbO3MBU+KbiGaj5JPatEUscRDkQYM2fyNjJp2tIWDK5a
+ n4yngeXB3eX61WbYR3QraRK8mlYLGxyAdHMEQfPipbqf3TmN043fssT2bc82ApJcs1zvLYgI
+ rhMht7Dck7A0wNC1jo+ZjVVFig5gDTN7gOzaAdBtV8tVNUddwkLzzaGpfihhSD6U46NdqKOG
+ Wlnn6TrkMy0QGdQ5NaXHkRlUjnnUTSW/nKfoxD+EI+A9V4sYOd8mc/TL4aJh/i/AiU57eLbo
+ n17uQI6/VTWDUWl8USiz4x9c8vmqlywLx00tAFxxoRWqk4KVJlj+Sh0up/D/sJ+vPpgBABEB
+ AAHNI1JpY2hhcmQgSGVuZGVyc29uIDxydGhAdHdpZGRsZS5uZXQ+wsCBBBMBAgArAhsDBgsJ
+ CAcDAgYVCAIJCgsEFgIDAQIeAQIXgAUJC7UHogUCWaDNVgIZAQAKCRCtEnDMTdAnm9N5CADO
+ cB8F/SudJ72IupxQf40hbJdBK176+gb3sHMsixyLtrU59lee+lIM1OZmlNjsnCYmiSnbA5ks
+ Q7p0HfO7DgdmfLzcK6xsHZukqSZy5LByw348Y913ZyjOrJZFdPP7kDg1MnqRqH4+3ZdzxV4y
+ eYBWFU9GYMIF06JbUubossOOO4ArNVZbnIPu8Vn2tDZVVqsCBqkoCSBMj519xrvyOu5z4mHS
+ LkCglXmVDOXMbqLuNAC3rfNXSnyM4hYkLUyfALJlAAy1Ro+jUqYhu7XUFV/MiwRuFMh5GbtY
+ Urkx7tqsWQXLT3GeDk/LqvpWJQwk4cHHckYjRih+70CHIenm81PVzsBNBFGuLC8BCACyEx3x
+ 94HIkTX0CHu2sA0w75+h9wuoA8ggJ7+S4ri0y2YsijWad5TTt6z6MMiqxk9kSA5bppaj4HXh
+ 86hBF/dWCtMpNr3Rb8FNOKyeA/qkYHVD6HiAiw9c6D8Dr9hWmOk3/HSmGrNURxeUFOckDXsv
+ I+yGGKBNshj59j7QZr7ZiuIi2rWlBL8dFN/OWa/o3x7HKsE4k6K8ngwvCKP/QbDLwLLBOWH+
+ VEUtpyeyxTr3OJ47ECTxdYvXoAV2iJaKr+6doVQiiR5eVFiMYrUPUECJeolOCwqc/JlWE18L
+ +PCAFaW1H+/mpPVfSpN4wnkJ5cQiQVB41IaCM4p20iRzx7ZJABEBAAHCwGUEGAECAA8CGwwF
+ AlmgzYEFCQu1CEoACgkQrRJwzE3QJ5s7rggAwABzDAGrZ6uWsMxg5PeiiAYPy6LBnCBJSpB5
+ Tfy5jH8QTmLfXW+u4Ib4sWXG7PYNR7sIrtqUHjRqXLVXrSnBX9ASGcYw/Xil45khW6LsRpO1
+ prHv9gkwQfa6fTiWXVfSfm2Nant6u02q+MaYtQpCVTiz/9ki4FfftUwUHFLU0MhIQogjd11y
+ /E08RJsqBwaHQdt14PwU1HphDOzSkhOXRXQLSd3ysyeGUXvL+gqQoXl5XYdvk8IId4PoJRo4
+ jcyJ4VbnldvXh5gdGhFA/f9JgkLk9tPW+C3wNtNWyRUq8azR9hF2fg2HJUf4IXQlIu8OOgh1
+ VcROBqvtH3ecaIL9iw==
+Message-ID: <7c621d84-8909-5a23-2fad-9e5bf8915a8e@twiddle.net>
+Date: Mon, 21 May 2018 12:46:34 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.7.0
+MIME-Version: 1.0
+In-Reply-To: <20180521140402.23318-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: +YITIBW67h91
 
-As part of plumbing MemTxAttrs down to the IOMMU translate method,
-add MemTxAttrs as an argument to flatview_translate(); all its
-callers now have attrs available.
+On 05/21/2018 07:03 AM, Peter Maydell wrote:
+> Add more detail to the documentation for memory_region_init_iommu()
+> and other IOMMU-related functions and data structures.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> v2->v3 changes:
+>  * minor wording tweaks per Eric's review
+>  * moved the bit about requirements to notify out from the translate
+>    method docs to the top level class doc comment
+>  * added description of flags argument and in particular that it's
+>    just an optimization and callers can pass IOMMU_NONE to get the
+>    full permissions
+> v1 -> v2 changes:
+>  * documented replay method
+>  * added note about wanting RCU or big qemu lock while calling
+>    translate
+> ---
+>  include/exec/memory.h | 105 ++++++++++++++++++++++++++++++++++++++----
+>  1 file changed, 95 insertions(+), 10 deletions(-)
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- include/exec/memory.h |  7 ++++---
- exec.c                | 17 +++++++++--------
- 2 files changed, 13 insertions(+), 11 deletions(-)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index 444fceac55..3980ab47ed 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -1913,7 +1913,8 @@ IOMMUTLBEntry address_space_get_iotlb_entry(AddressSpace *as, hwaddr addr,
-  */
- MemoryRegion *flatview_translate(FlatView *fv,
-                                  hwaddr addr, hwaddr *xlat,
--                                 hwaddr *len, bool is_write);
-+                                 hwaddr *len, bool is_write,
-+                                 MemTxAttrs attrs);
- 
- static inline MemoryRegion *address_space_translate(AddressSpace *as,
-                                                     hwaddr addr, hwaddr *xlat,
-@@ -1921,7 +1922,7 @@ static inline MemoryRegion *address_space_translate(AddressSpace *as,
-                                                     MemTxAttrs attrs)
- {
-     return flatview_translate(address_space_to_flatview(as),
--                              addr, xlat, len, is_write);
-+                              addr, xlat, len, is_write, attrs);
- }
- 
- /* address_space_access_valid: check for validity of accessing an address
-@@ -2030,7 +2031,7 @@ MemTxResult address_space_read(AddressSpace *as, hwaddr addr,
-             rcu_read_lock();
-             fv = address_space_to_flatview(as);
-             l = len;
--            mr = flatview_translate(fv, addr, &addr1, &l, false);
-+            mr = flatview_translate(fv, addr, &addr1, &l, false, attrs);
-             if (len == l && memory_access_is_direct(mr, false)) {
-                 ptr = qemu_map_ram_ptr(mr->ram_block, addr1);
-                 memcpy(buf, ptr, len);
-diff --git a/exec.c b/exec.c
-index 9229fb4058..b818ba87f4 100644
---- a/exec.c
-+++ b/exec.c
-@@ -618,7 +618,8 @@ iotlb_fail:
- 
- /* Called from RCU critical section */
- MemoryRegion *flatview_translate(FlatView *fv, hwaddr addr, hwaddr *xlat,
--                                 hwaddr *plen, bool is_write)
-+                                 hwaddr *plen, bool is_write,
-+                                 MemTxAttrs attrs)
- {
-     MemoryRegion *mr;
-     MemoryRegionSection section;
-@@ -3152,7 +3153,7 @@ static MemTxResult flatview_write_continue(FlatView *fv, hwaddr addr,
-         }
- 
-         l = len;
--        mr = flatview_translate(fv, addr, &addr1, &l, true);
-+        mr = flatview_translate(fv, addr, &addr1, &l, true, attrs);
-     }
- 
-     return result;
-@@ -3168,7 +3169,7 @@ static MemTxResult flatview_write(FlatView *fv, hwaddr addr, MemTxAttrs attrs,
-     MemTxResult result = MEMTX_OK;
- 
-     l = len;
--    mr = flatview_translate(fv, addr, &addr1, &l, true);
-+    mr = flatview_translate(fv, addr, &addr1, &l, true, attrs);
-     result = flatview_write_continue(fv, addr, attrs, buf, len,
-                                      addr1, l, mr);
- 
-@@ -3239,7 +3240,7 @@ MemTxResult flatview_read_continue(FlatView *fv, hwaddr addr,
-         }
- 
-         l = len;
--        mr = flatview_translate(fv, addr, &addr1, &l, false);
-+        mr = flatview_translate(fv, addr, &addr1, &l, false, attrs);
-     }
- 
-     return result;
-@@ -3254,7 +3255,7 @@ static MemTxResult flatview_read(FlatView *fv, hwaddr addr,
-     MemoryRegion *mr;
- 
-     l = len;
--    mr = flatview_translate(fv, addr, &addr1, &l, false);
-+    mr = flatview_translate(fv, addr, &addr1, &l, false, attrs);
-     return flatview_read_continue(fv, addr, attrs, buf, len,
-                                   addr1, l, mr);
- }
-@@ -3468,7 +3469,7 @@ static bool flatview_access_valid(FlatView *fv, hwaddr addr, int len,
- 
-     while (len > 0) {
-         l = len;
--        mr = flatview_translate(fv, addr, &xlat, &l, is_write);
-+        mr = flatview_translate(fv, addr, &xlat, &l, is_write, attrs);
-         if (!memory_access_is_direct(mr, is_write)) {
-             l = memory_access_size(mr, l, addr);
-             /* When our callers all have attrs we'll pass them through here */
-@@ -3517,7 +3518,7 @@ flatview_extend_translation(FlatView *fv, hwaddr addr,
- 
-         len = target_len;
-         this_mr = flatview_translate(fv, addr, &xlat,
--                                                   &len, is_write);
-+                                     &len, is_write, attrs);
-         if (this_mr != mr || xlat != base + done) {
-             return done;
-         }
-@@ -3550,7 +3551,7 @@ void *address_space_map(AddressSpace *as,
-     l = len;
-     rcu_read_lock();
-     fv = address_space_to_flatview(as);
--    mr = flatview_translate(fv, addr, &xlat, &l, is_write);
-+    mr = flatview_translate(fv, addr, &xlat, &l, is_write, attrs);
- 
-     if (!memory_access_is_direct(mr, is_write)) {
-         if (atomic_xchg(&bounce.in_use, true)) {
--- 
-2.17.0
+r~

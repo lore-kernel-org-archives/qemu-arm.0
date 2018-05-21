@@ -1,213 +1,204 @@
-Received: by 10.28.71.27 with SMTP id u27csp3993545wma;
-        Tue, 23 Jan 2018 04:32:11 -0800 (PST)
-X-Google-Smtp-Source: AH8x224YnysF5WW7LO/rguQ03HN2nuOUKj0m6gIgZTMSSIzGgtptE+fFz1+vPPAIZXEmEfR1pEIX
-X-Received: by 10.129.207.11 with SMTP id u11mr2190702ywi.126.1516710731421;
-        Tue, 23 Jan 2018 04:32:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516710731; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp311109wme;
+        Mon, 21 May 2018 07:04:07 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZr2m/JLiXurqBQ6KynZFMVWCGIMvK+c4mvOtEbxaSDpwmML9KtH3f5rn3XAvL1wA/2WvvRn
+X-Received: by 2002:a2e:998c:: with SMTP id w12-v6mr12681096lji.64.1526911447006;
+        Mon, 21 May 2018 07:04:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1526911447; cv=none;
         d=google.com; s=arc-20160816;
-        b=sP7nr/sMaePU8Kyb64AgS6X0sWRwGRsbDe0keAH0qoMz8VFwxsrXvmLjcdeEoEKN5k
-         jx9xCnT32KnwYcGzpoRTnSsouqpCGnL2p9ZUz+KkIf0kybJj2mQZF3h0zVrxogKe6LLt
-         f8j1jl4CJd0+ieO8JKdKoQeIBmRkjlSbA4t1HIhHMQciZQwyShE7JUYAh/WB6RpqBalZ
-         znALfV3R8frpfygTf6UK/z3vAnfPM/ldYu1oNMr4SETS9c5XoR2I0FK7N7H8IhwYRIqi
-         fdhHSRxQ22Vo/1qzUy7DLCgGvKUGRMqemmDQNz3XQdnVBOrT/wbE0tNTVVYCPNAQoN0D
-         ZqGA==
+        b=F1qjtHOURnkWE0g9kQyUCuR1Wp2qkWqDwigHRh34qhVET9+T8RoCaGWABtPd5JtzUl
+         mccTbJ4mHTMswMGQvjD8LYU2asXidGNy1FSpfpa+br+RZiiXY3zLtq8//dZwrgJA2trm
+         /VS3inizHTOFbiYwmfhsbvvLqraQQycRy23orGvxxw0v2w3nysWvN3dYVq6f7HelKkbF
+         LpeKzdwpaUxmCABsHTxMD8l0DWNN7REn6e4FICHy5e7SfmHDse84+2pFfOjUqHS8fazF
+         jVAwLFbbpV1R20CctwtQYFxzmteJFGQjHgUW4tcL5mnyw7zUtYPYQ4z1/Bv+JkNUnY7T
+         VHgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=+Y+LNS6IaCePq1bCG2NbBURU9mbfoH3QMrajcVRMWC0=;
-        b=BGRU207jEN0c5ZTpgAm2+bT+zNLaoaP7u5mGUKImX8qtd4m2mu9ZX+EEOvV20Ei4gF
-         Eqm6lI866DqQIr2EJJY0A/VWr/m/mzLdIZrEzxhwKUVukA4p+SU35qgd38guvl4U3tdO
-         d7ca6Nk214XZFWIpoJigyTcZSnoxavt7OkMzfF6nrrq0bEE5Rbps880keMfnpMrrvZ0t
-         YlFXAi9tLax4DD/y97xbnrfVNQBKhylVRirHRbs3rZovbWzUhGZCPbqSILR/9uorivA4
-         OWThAf3Q+f9mVeo1P0HXHO/atxSCjOcr+eteDsA4A8cVYYreqhQerNuJX6oiweZa54zR
-         DmmQ==
+        h=message-id:date:subject:cc:to:from:arc-authentication-results;
+        bh=/oS+D6TmFqxhdJwsw1Nl1ijXj2KbPdU1S0YajLVf7Y0=;
+        b=WeEYf68JVedXWG4pU+7C+JPc8e6HNZQxvJ/qNmVpYNW3khTC1MwIunc3Oq9VVvzZjG
+         Vs1Q0FQ+ZwR+7y67iDoV8sVWYBkxES8t3NyqQPAW/S65BrPg08D3AFAzLnE4KXLMJHso
+         Ghx2cURzWZpzeyLB2M7RdvEwVWc2IGvkGV/zKl0Bzbu3gt4tOag/TXSfkaTxgQIlHf29
+         HB+clphMjotz4JVfrkN6igjmm+BulzVLPopeQuWEMBS5PGLKuhpLS+S1DmQ1bF6nneaz
+         Vn0Gk4cuT+5iKzfpNbyDSdlZO2KnlDIOh+wnkz9bcqGpiuNxzCV7yMnJGtYzr12LymvK
+         nOoQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=D0r2iarX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e2si1141099ybj.738.2018.01.23.04.32.11
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 23 Jan 2018 04:32:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <pm215@archaic.org.uk>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+        by mx.google.com with ESMTPS id r15-v6si5045987ljj.18.2018.05.21.07.04.06
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 21 May 2018 07:04:06 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=D0r2iarX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:55594 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1edxkI-0006Qb-Rm
-	for alex.bennee@linaro.org; Tue, 23 Jan 2018 07:32:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35582)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <bztemail@gmail.com>) id 1edxkA-0006QI-Ts
-	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 07:32:03 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <bztemail@gmail.com>) id 1edxkA-00018k-1t
-	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 07:32:02 -0500
-Received: from mail-pg0-x242.google.com ([2607:f8b0:400e:c05::242]:39953)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <bztemail@gmail.com>)
-	id 1edxk9-00018J-QJ; Tue, 23 Jan 2018 07:32:01 -0500
-Received: by mail-pg0-x242.google.com with SMTP id g16so180788pgn.7;
-	Tue, 23 Jan 2018 04:32:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=+Y+LNS6IaCePq1bCG2NbBURU9mbfoH3QMrajcVRMWC0=;
-	b=D0r2iarXq4iYZ2VPaiOCgqtwbN38jGI4OasRF4f5j8g/nyOkcqUiK5dXMu+HHbRvfX
-	8fqKETpwum49dkSpR7j71UZtusfFrPYCw5po2QjylIrbiuY2FdEzz2dr7RUhONsLPnHN
-	KQu8unXMGuWmAkhInRH+R0HNgjGz/7DCPl2zyi4FRsUEW0xNfgJz330ZcXjKbnHQv45M
-	Z+RvvS0FB1o0yklHdv4uFK3w0y22kAJlZwE0zj5Tesxgfk4oDkJMh65ztY/aweeklCLT
-	axDoJHYaZDlINmNQ5lf45Wdm7/j39YvxErz/MdA4OM28Hip1b8QoBNaYdVc/V3sQBnOB
-	uTFA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=+Y+LNS6IaCePq1bCG2NbBURU9mbfoH3QMrajcVRMWC0=;
-	b=XKmZUDkoBYRD0868vzyvz2UvnBA/h1KvPQDPdPKHOG+9om/3qXYlwrwgUIshI9LKTB
-	ha6CAd38ewpyLOn+txT9VFxR45H23Jo41hi6i4ImRIktx6nYC19i38/fqPUfUPbnRXrz
-	QSE0AJg2k7eK9YQSidcqneu+VkmlxrCWuPEAXO82h2EyqTIKKyXuAM132yNmCKW7Zk1v
-	GCHQrgG+/kISxsr809Vc7u5d8rm59v5z7Py03y6tZmPjYSbO7RNQuiG/ppmdADB3S8Hq
-	71WP4jpdjBD0tuqOK2/uPbYaUbRt5wWXrD4fxH10GryWaLCRO1LWM4SKOSvf2l7EoIWD
-	tiVA==
-X-Gm-Message-State: AKwxytcqbCM7BKR/D21Dppri5Vx4ehSPZ7W078jjbNIWy2ntjLvwONwR
-	dC0Ih/6Iy/31lBOXNEtRwmgdHZqSXi9hyjMel0M=
-X-Received: by 2002:a17:902:854a:: with SMTP id
-	d10-v6mr5515261plo.314.1516710720649; 
-	Tue, 23 Jan 2018 04:32:00 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.100.163.101 with HTTP; Tue, 23 Jan 2018 04:32:00 -0800 (PST)
-In-Reply-To: <CAFEAcA-uedKpcQGXb1UY_orGpD65Xra3aBpUpwb2RxFo3hB4Kw@mail.gmail.com>
-References: <CADYoBw2dogvU6-3vChG4js0BNdyTPG8eDvMSRoU50eTX_9DdEQ@mail.gmail.com>
-	<MWHPR21MB01590CD596A992C93E01B5079E460@MWHPR21MB0159.namprd21.prod.outlook.com>
-	<CADYoBw1ksGDo26-PC4eMnyqxZQoZkXNLDeGoWfcRHs-SfTCJkw@mail.gmail.com>
-	<MWHPR21MB01591543E188B048145985709E470@MWHPR21MB0159.namprd21.prod.outlook.com>
-	<CADYoBw0RjiW2as9jGtPg92E8XK3KR+gM9C5vjC7HHsBauFn4ug@mail.gmail.com>
-	<CADYoBw19GifmUR=Rztkzzc-v3-zWR6frjiNb_wjzsevreAqPDQ@mail.gmail.com>
-	<CAFEAcA9_+wZJa7Ht6EHCCZYm+hrfdbjd9gUmVJPGgZ0yvbZOPA@mail.gmail.com>
-	<MWHPR21MB0480DE1F826056BC8377EE289E250@MWHPR21MB0480.namprd21.prod.outlook.com>
-	<CADYoBw31C0Z2vp0S0ZFBOC6A3146wxtZWvzJabACkGh44ZwC0w@mail.gmail.com>
-	<MWHPR21MB0480A1F01D2CEF51E7CE21B09E3A0@MWHPR21MB0480.namprd21.prod.outlook.com>
-	<CADYoBw1Ro5gxROvhCVXGv0=-Y8zXmGbKR3D6xOqhkb0zp__LkA@mail.gmail.com>
-	<CADYoBw27wU3CsYPeP7ONFWt4aj+6tvzwU5roDSOKz8qq1n8GSg@mail.gmail.com>
-	<alpine.BSF.2.21.1801221224400.67089@zero.eik.bme.hu>
-	<CADYoBw3qjq_CJpp3dQvpHvAgfx-FjhPvPgZ4xTpSBt4LEGiiOw@mail.gmail.com>
-	<CAFEAcA-uedKpcQGXb1UY_orGpD65Xra3aBpUpwb2RxFo3hB4Kw@mail.gmail.com>
-From: bzt bzt <bztemail@gmail.com>
-Date: Tue, 23 Jan 2018 13:32:00 +0100
-Message-ID: <CADYoBw0wKW-Z1qk+SKK+bMjX3Gm205xXN0YaqVyWhK=BuEVFUQ@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary="000000000000bb3e09056370bb30"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c05::242
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] BCM2837 and machine raspi3
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>,
-	BALATON Zoltan <balaton@eik.bme.hu>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gVGrtnCumv16
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1fKlPv-0007cz-Ed; Mon, 21 May 2018 15:04:03 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: patches@linaro.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <rth@twiddle.net>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH 00/27] iommu: support txattrs, support TCG execution, implement TZ MPC
+Date: Mon, 21 May 2018 15:03:35 +0100
+Message-Id: <20180521140402.23318-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.17.0
+X-TUID: masSYXvrEZyK
 
---000000000000bb3e09056370bb30
-Content-Type: text/plain; charset="UTF-8"
+This patchset is a rather large one, but the first half is all
+fairly simple plumbing. It does four things:
+ * support IOMMUs that are aware of memory transaction attributes and
+   may generate different translations for different attributes
+ * support TCG execution out of memory which is behind an IOMMU
+ * implement the Arm TrustZone Memory Protection Controller
+   (which needs both the above features in the IOMMU core code)
+ * use the MPC in the mps2-an505 board
 
-On Tue, Jan 23, 2018 at 12:22 PM, Peter Maydell <peter.maydell@linaro.org>
-wrote:
-
-> On 23 January 2018 at 11:13, bzt bzt <bztemail@gmail.com> wrote:
-> > There's a huge misunderstanding here. I have a working qemu for about
-> half a
-> > year now, and I don't need it merged. It's not my goal to submit a patch
-> to
-> > qemu in any way, I just did that because I had modified an Open Source
-> > software and wanted to share it with the community. If you don't merge my
-> > patch, I don't care. Other users will.
->
-> Unfortunately we legally can't merge your patch (even if somebody
-> else is willing to do the work of cleaning it up) because you
-> haven't provided a signed-off-by line...
->
-
-You have to came up with a better excuse for your incompetence.
-
-Date: Sun, 22 Oct 2017 14:59:20 +0200
-Subject: [PATCH] BCM2837 and machine raspi3
-
-Signed-off-by: bzt <bztemail@gmail.com>
-
-And no, I don't feel bad at all about not letting you take advantage on my
-programming skills. Now you're on your own, when users starts to demand
-raspi3 support in qemu don't expect me to help.
-
-Have a nice day,
-bzt
+I'm happy to split this up (eg taking the IOMMU core code
+changes through Paolo's tree and then the MPS stuff via
+target-arm), but I figured it would be useful to see the
+reason and the user of the new APIs in the same series.
 
 
->
-> thanks
-> -- PMM
->
+Patch 1 is my "improve the IOMMU API documentation" patch (included
+here because otherwise the added API documentation for new methods
+would conflict).
 
---000000000000bb3e09056370bb30
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Patches 2-13 are the boring plumbing: we pass down MemTxAttrs
+through enough of the memory subsystem that we have access to
+them at the point where we call the IOMMU translate method.
+(A previous version of these was posted separately; I've rebased
+them and updated to account for new changes in the code since then,
+but the general principles remain the same.)
 
-<div dir=3D"ltr"><br><div class=3D"gmail_extra"><br><div class=3D"gmail_quo=
-te">On Tue, Jan 23, 2018 at 12:22 PM, Peter Maydell <span dir=3D"ltr">&lt;<=
-a target=3D"_blank" href=3D"mailto:peter.maydell@linaro.org">peter.maydell@=
-linaro.org</a>&gt;</span> wrote:<br><blockquote style=3D"margin:0px 0px 0px=
- 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex" class=3D"gm=
-ail_quote"><span class=3D"gmail-">On 23 January 2018 at 11:13, bzt bzt &lt;=
-<a href=3D"mailto:bztemail@gmail.com">bztemail@gmail.com</a>&gt; wrote:<br>
-&gt; There&#39;s a huge misunderstanding here. I have a working qemu for ab=
-out half a<br>
-&gt; year now, and I don&#39;t need it merged. It&#39;s not my goal to subm=
-it a patch to<br>
-&gt; qemu in any way, I just did that because I had modified an Open Source=
-<br>
-&gt; software and wanted to share it with the community. If you don&#39;t m=
-erge my<br>
-&gt; patch, I don&#39;t care. Other users will.<br>
-<br>
-</span>Unfortunately we legally can&#39;t merge your patch (even if somebod=
-y<br>
-else is willing to do the work of cleaning it up) because you<br>
-haven&#39;t provided a signed-off-by line...<br></blockquote><div><br></div=
-><div>You have to came up with a better excuse for your incompetence.<br><b=
-r><div><span style=3D"font-family:monospace,monospace">Date: Sun, 22 Oct 20=
-17 14:59:20 +0200</span></div><div><span style=3D"font-family:monospace,mon=
-ospace">Subject: [PATCH] BCM2837 and machine raspi3</span></div><div><span =
-style=3D"font-family:monospace,monospace"><br></span></div><div><span style=
-=3D"font-family:monospace,monospace">Signed-off-by: bzt &lt;<a target=3D"_b=
-lank" href=3D"mailto:bztemail@gmail.com">bztemail@gmail.com</a>&gt;<br></sp=
-an><br></div><div>And no, I don&#39;t feel bad at all about not letting you=
- take advantage on my programming skills. Now you&#39;re on your own, when =
-users starts to demand raspi3 support in qemu don&#39;t expect me to help.<=
-br><br>Have a nice day,<br></div><div>bzt<br></div>=C2=A0</div><blockquote =
-style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);pa=
-dding-left:1ex" class=3D"gmail_quote">
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div><br></div></div>
+Patches 14, 15 and 16 add the support for memory-transaction-aware
+IOMMUs. The general approach is that we have the concept of an
+IOMMU index (similar to the TCG MMU index), which selects which of
+multiple possible translation tables in the IOMMU we're trying to use.
+Most IOMMUs will support just a single index. When you register an
+IOMMU notifier and when you call the translate method you have to
+specify which IOMMU index you want. There's a method for getting the
+index that applies for a particular set of transaction attributes.
+All the current IOMMU implementations have just one iommu index, and
+all the current users of the notify API assume that.
 
---000000000000bb3e09056370bb30--
+Patch 17 adds the support for TCG execution from memory that sits
+behind an IOMMU. We do this in a fairly simple way on the assumption
+that changes to the IOMMU config at runtime will be fairly uncommon:
+we just flush the CPU TLB so it forgets about any cached results
+when we get an IOMMU unmap notification. (This is similar to how
+we handle reconfigurations of the memory map done by mapping or
+unmapping MemoryRegions.) NB: I'm not completely sure that calling
+tlb_flush() here is sufficient to be non-racy in the case where CPU A
+has triggered the IOMMU unmap notify by changing the IOMMU config
+while CPU B is executing from memory behind the IOMMU, but tlb_flush()
+is what tcg_commit() uses so I guess it's OK. I think the idea here
+is that any delay in flushing B's TLB is just equivalent to B having
+executed a little bit further before A got to changing the config?
+
+Patches 18-21 implement the TrustZone Memory Protection Controller,
+which is a fairly simple piece of hardware that just configurably
+either allows or blocks transactions depending on attrs.secure.
+
+Patches 22 and 23 deal with a limitation in our or-irq device, which
+currently only allows 16 input lines (we need 17 for one of the OR
+gates in the IoTKit object). The patches raise the limit to 32, but
+in a way that means we can easily raise it further in future without
+migration compatibility problems.
+
+Patches 24-27 add MPCs to the IoTKit SoC object and to the mps2-an505
+board model, and wire them up appropriately.
+
+Based-on: 20180518153157.14899-1-peter.maydell@linaro.org
+[MAINTAINERS: Add entries for newer MPS2 boards and devices]
+purely to avoid the textual conflict when we add MAINTAINERS entries
+
+
+
+
+Peter Maydell (27):
+  memory.h: Improve IOMMU related documentation
+  Make tb_invalidate_phys_addr() take a MemTxAttrs argument
+  Make address_space_translate{,_cached}() take a MemTxAttrs argument
+  Make address_space_map() take a MemTxAttrs argument
+  Make address_space_access_valid() take a MemTxAttrs argument
+  Make flatview_extend_translation() take a MemTxAttrs argument
+  Make memory_region_access_valid() take a MemTxAttrs argument
+  Make MemoryRegion valid.accepts callback take a MemTxAttrs argument
+  Make flatview_access_valid() take a MemTxAttrs argument
+  Make flatview_translate() take a MemTxAttrs argument
+  Make address_space_get_iotlb_entry() take a MemTxAttrs argument
+  Make flatview_do_translate() take a MemTxAttrs argument
+  Make address_space_translate_iommu take a MemTxAttrs argument
+  iommu: Add IOMMU index concept to IOMMU API
+  iommu: Add IOMMU index argument to notifier APIs
+  iommu: Add IOMMU index argument to translate method
+  exec.c: Handle IOMMUs in address_space_translate_for_iotlb()
+  hw/misc/tz-mpc.c: Implement the Arm TrustZone Memory Protection
+    Controller
+  hw/misc/tz-mpc.c: Implement registers
+  hw/misc/tz-mpc.c: Implement correct blocked-access behaviour
+  hw/misc/tz_mpc.c: Honour the BLK_LUT settings in translate
+  vmstate.h: Provide VMSTATE_BOOL_SUB_ARRAY
+  hw/core/or-irq: Support more than 16 inputs to an OR gate
+  hw/misc/iotkit-secctl.c: Implement SECMPCINTSTATUS
+  hw/arm/iotkit: Instantiate MPC
+  hw/arm/iotkit: Wire up MPC interrupt lines
+  hw/arm/mps2-tz.c: Instantiate MPCs
+
+ hw/misc/Makefile.objs           |   1 +
+ include/exec/exec-all.h         |   8 +-
+ include/exec/memory-internal.h  |   3 +-
+ include/exec/memory.h           | 194 ++++++++--
+ include/hw/arm/iotkit.h         |   8 +
+ include/hw/misc/iotkit-secctl.h |   8 +
+ include/hw/misc/tz-mpc.h        |  80 +++++
+ include/hw/or-irq.h             |   5 +-
+ include/migration/vmstate.h     |   3 +
+ include/qom/cpu.h               |   3 +
+ include/sysemu/dma.h            |   6 +-
+ accel/tcg/cputlb.c              |   3 +-
+ accel/tcg/translate-all.c       |   4 +-
+ exec.c                          | 254 +++++++++++---
+ hw/alpha/typhoon.c              |   3 +-
+ hw/arm/iotkit.c                 | 112 +++++-
+ hw/arm/mps2-tz.c                |  71 ++--
+ hw/arm/smmuv3.c                 |   2 +-
+ hw/core/or-irq.c                |  39 ++-
+ hw/dma/rc4030.c                 |   2 +-
+ hw/hppa/dino.c                  |   3 +-
+ hw/i386/amd_iommu.c             |   2 +-
+ hw/i386/intel_iommu.c           |   6 +-
+ hw/misc/iotkit-secctl.c         |  38 +-
+ hw/misc/tz-mpc.c                | 604 ++++++++++++++++++++++++++++++++
+ hw/nvram/fw_cfg.c               |  12 +-
+ hw/ppc/spapr_iommu.c            |   5 +-
+ hw/s390x/s390-pci-bus.c         |   2 +-
+ hw/s390x/s390-pci-inst.c        |   7 +-
+ hw/scsi/esp.c                   |   3 +-
+ hw/sparc/sun4m_iommu.c          |   3 +-
+ hw/sparc64/sun4u_iommu.c        |   2 +-
+ hw/vfio/common.c                |   9 +-
+ hw/virtio/vhost.c               |  10 +-
+ hw/xen/xen_pt_msi.c             |   3 +-
+ memory.c                        |  45 ++-
+ memory_ldst.inc.c               |  18 +-
+ target/ppc/mmu-hash64.c         |   3 +-
+ target/riscv/helper.c           |   2 +-
+ target/s390x/diag.c             |   6 +-
+ target/s390x/excp_helper.c      |   3 +-
+ target/s390x/mmu_helper.c       |   3 +-
+ target/s390x/sigp.c             |   3 +-
+ target/xtensa/op_helper.c       |   3 +-
+ MAINTAINERS                     |   2 +
+ default-configs/arm-softmmu.mak |   1 +
+ hw/misc/trace-events            |   8 +
+ 47 files changed, 1452 insertions(+), 163 deletions(-)
+ create mode 100644 include/hw/misc/tz-mpc.h
+ create mode 100644 hw/misc/tz-mpc.c
+
+-- 
+2.17.0

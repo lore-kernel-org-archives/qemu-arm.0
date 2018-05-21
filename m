@@ -1,41 +1,41 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp311378wme;
-        Mon, 21 May 2018 07:04:16 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZp7eUmJe8/m2uz8eoehW3CK2AX5Eg1rbqBHT9J+Cp4hY4efl6Sj/RS8M01f3nU3xNQkbmWN
-X-Received: by 2002:a19:a113:: with SMTP id k19-v6mr5021393lfe.59.1526911456249;
-        Mon, 21 May 2018 07:04:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1526911456; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp311395wme;
+        Mon, 21 May 2018 07:04:17 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZoKpzMHrnbelz9z5gmQ6LeuJfGaZyLiCJii9h0rW/2ul0IJDdHVhhYps8e7X7SQ8ffclr2h
+X-Received: by 2002:adf:8442:: with SMTP id 60-v6mr15047467wrf.138.1526911457092;
+        Mon, 21 May 2018 07:04:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1526911457; cv=none;
         d=google.com; s=arc-20160816;
-        b=bHhTvpkMkBVUdoE5drEu+TeyBeYdruQL79A6RyxCkyJEuoIw66m7PN3+d64F9nzzU8
-         IuWefwnDkZD4Dun2kbxDfhnQhoASJHHNFq5J/IDTSnPqitRPN0UBh/YOwRjh8xZQAHO8
-         W4h3gPCTAWH6E+LDefnCFSnXR34AlXqQfJRZ4lqUM6qNoBOtZCG05+FF7hXKvQ1B2C7d
-         LTLFzxv58CRtM2OW7mZq2ERYLT86hX8Wmnga4kCAid7coTAJLRWgMi0KvtjsBKlpThom
-         1055HpAdoLWPk7JduwrcYGCkhqnbLsIMqx/RS5YKaZEdJdbQvPx3kAZO68eDDv4KJvUV
-         7x8g==
+        b=KMO+YxYo/FuMachNJyyxkkpWLUWI1IsoYo31aCF8OV/dl7ESKldjE6OYGc9jMTZR92
+         u/DiTtRObVhZF2c8QuCxPHmqSY98TfmBzffzHaZfp/DANGED4Yqq64ei5Pgc3orMSRAm
+         FBQVKIwa1Fm6BdeTdIWAf7cf+7uC8fhiyflY/B3Pjv1QURYt8tX2YspmMMxDh4EKbowM
+         iSccyw3xDozeEMsOfZeP8uZ8QajKL4EKagbTLNhsv93Vzr/50AO5v0SHZPR3Nt7Hu7c2
+         XExE7eWNNFLuhL3ahKCxAQ63zspuO6hyDINWAiedRx/46t2GzoxRY3AE00Sqe6DjBG9R
+         ETgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :arc-authentication-results;
-        bh=HQoN7mI2HcAI4KNHeYWJl7N2lE/y2r3LQXdXGEWg6SI=;
-        b=VFIYGmSIe2QbGWS1sKuj40BcHw1yykbm1q7fqjHPqPHXGiLe4sO3adl5ySmnlwoVu/
-         /DBAaehh3qyW6EkSqReSOepV/iFTkAbOx7LSO/hAHmeRrMm/5Rrx928FaMID+SIaXVcK
-         yYUN8xEebvTKwfl4zNK03QY+uE3VaC2xlZG2i6eZs4XrQc3t9Fw8x6ewino9a+HRL9U6
-         vbUO9vSm0Uq8HsHEJcLXI7Ukx6BurECl6eRXrHo/P0hZXQLkzEZIDE8+Uyi9E8oFeMBQ
-         m9fgBgzqI49C92njp+CvhoGNAwK99IBVUDEr0bOMdglf9Bmyt/jK+4YJEttgVo0TGSgW
-         Kqcg==
+        bh=D80E2b4m1W+Wq0v70m4jU55uIulQoUvMO0C+YOIIuaQ=;
+        b=d8LbNiC4St21qjKOgeVchaC0ZatGuVa+qJD8cBq7SMoVSWm4zjtcnmDTvgnZIXPp0k
+         8IZxG7tez6XUij6n06U38xy4m1K17LcLcwrOZnoeACF1nDDx65EB+z4w18GpEI4Xqv21
+         AgsgOFK2cHgq66AQtnAWaS1vYba8b27tuU/fPKSfTfK5tiThORPiJg9tre7BXzO3ul/p
+         DNrQvuxJd1iULZbqROSsy7mJZgiybcROiJSjZ9nzZXekH37jomuM3PjDfpZZ4it/J0XK
+         j6qxPjbDuKJI/Z/gARbNn1FJnLyZjH0GHFVY1jhDTjMFFmoCEA7r4cZ5Gfwye0e1jubU
+         SW8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <pm215@archaic.org.uk>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by mx.google.com with ESMTPS id s22-v6si5760233lfg.224.2018.05.21.07.04.16
+        by mx.google.com with ESMTPS id h34-v6si12586780wrf.259.2018.05.21.07.04.16
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 May 2018 07:04:16 -0700 (PDT)
+        Mon, 21 May 2018 07:04:17 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1fKlQ6-0007ju-36; Mon, 21 May 2018 15:04:14 +0100
+	id 1fKlQ8-0007lA-8z; Mon, 21 May 2018 15:04:16 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -43,241 +43,557 @@ Cc: patches@linaro.org,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Richard Henderson <rth@twiddle.net>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 15/27] iommu: Add IOMMU index argument to notifier APIs
-Date: Mon, 21 May 2018 15:03:50 +0100
-Message-Id: <20180521140402.23318-16-peter.maydell@linaro.org>
+Subject: [PATCH 18/27] hw/misc/tz-mpc.c: Implement the Arm TrustZone Memory Protection Controller
+Date: Mon, 21 May 2018 15:03:53 +0100
+Message-Id: <20180521140402.23318-19-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.17.0
 In-Reply-To: <20180521140402.23318-1-peter.maydell@linaro.org>
 References: <20180521140402.23318-1-peter.maydell@linaro.org>
-X-TUID: +OfdRMir48dq
+X-TUID: +0ruwgYB7o7h
 
-Add support for multiple IOMMU indexes to the IOMMU notifier APIs.
-When initializing a notifier with iommu_notifier_init(), the caller
-must pass the IOMMU index that it is interested in. When a change
-happens, the IOMMU implementation must pass
-memory_region_notify_iommu() the IOMMU index that has changed and
-that notifiers must be called for.
+Implement the Arm TrustZone Memory Protection Controller, which sits
+in front of RAM and allows secure software to configure it to either
+pass through or reject transactions.
 
-IOMMUs which support only a single index don't need to change.
-Callers which only really support working with IOMMUs with a single
-index can use the result of passing MEMTXATTRS_UNSPECIFIED to
-memory_region_iommu_attrs_to_index().
+We implement the MPC as a QEMU IOMMU, which will direct transactions
+either through to the devices and memory behind it or to a special
+"never works" AddressSpace if they are blocked.
+
+This initial commit implements the skeleton of the device:
+ * it always permits accesses
+ * it doesn't implement most of the registers
+ * it doesn't implement the interrupt or other behaviour
+   for blocked transactions
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/exec/memory.h    | 11 ++++++++++-
- hw/i386/intel_iommu.c    |  4 ++--
- hw/ppc/spapr_iommu.c     |  2 +-
- hw/s390x/s390-pci-inst.c |  4 ++--
- hw/vfio/common.c         |  6 +++++-
- hw/virtio/vhost.c        |  7 ++++++-
- memory.c                 |  8 +++++++-
- 7 files changed, 33 insertions(+), 9 deletions(-)
+ hw/misc/Makefile.objs           |   1 +
+ include/hw/misc/tz-mpc.h        |  70 ++++++
+ hw/misc/tz-mpc.c                | 381 ++++++++++++++++++++++++++++++++
+ MAINTAINERS                     |   2 +
+ default-configs/arm-softmmu.mak |   1 +
+ hw/misc/trace-events            |   7 +
+ 6 files changed, 462 insertions(+)
+ create mode 100644 include/hw/misc/tz-mpc.h
+ create mode 100644 hw/misc/tz-mpc.c
 
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index f6226fb263..4e6b125add 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -71,6 +71,7 @@ struct IOMMUTLBEntry {
-     hwaddr           iova;
-     hwaddr           translated_addr;
-     hwaddr           addr_mask;  /* 0xfff = 4k translation */
-+    int              iommu_idx;
-     IOMMUAccessFlags perm;
- };
+diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+index 00e834d0f0..7295e676a6 100644
+--- a/hw/misc/Makefile.objs
++++ b/hw/misc/Makefile.objs
+@@ -61,6 +61,7 @@ obj-$(CONFIG_MIPS_ITU) += mips_itu.o
+ obj-$(CONFIG_MPS2_FPGAIO) += mps2-fpgaio.o
+ obj-$(CONFIG_MPS2_SCC) += mps2-scc.o
  
-@@ -98,18 +99,21 @@ struct IOMMUNotifier {
-     /* Notify for address space range start <= addr <= end */
-     hwaddr start;
-     hwaddr end;
-+    int iommu_idx;
-     QLIST_ENTRY(IOMMUNotifier) node;
- };
- typedef struct IOMMUNotifier IOMMUNotifier;
++obj-$(CONFIG_TZ_MPC) += tz-mpc.o
+ obj-$(CONFIG_TZ_PPC) += tz-ppc.o
+ obj-$(CONFIG_IOTKIT_SECCTL) += iotkit-secctl.o
  
- static inline void iommu_notifier_init(IOMMUNotifier *n, IOMMUNotify fn,
-                                        IOMMUNotifierFlag flags,
--                                       hwaddr start, hwaddr end)
-+                                       hwaddr start, hwaddr end,
-+                                       int iommu_idx)
- {
-     n->notify = fn;
-     n->notifier_flags = flags;
-     n->start = start;
-     n->end = end;
-+    n->iommu_idx = iommu_idx;
- }
- 
- /*
-@@ -323,7 +327,10 @@ typedef struct IOMMUMemoryRegionClass {
-      * Optional method: if this method is not provided, then
-      * memory_region_iommu_num_indexes() will return 1, indicating that
-      * only a single IOMMU index is supported.
-+     *
-+     * @iommu: the IOMMUMemoryRegion
-      */
-+    int (*num_indexes)(IOMMUMemoryRegion *iommu);
- } IOMMUMemoryRegionClass;
- 
- typedef struct CoalescedMemoryRange CoalescedMemoryRange;
-@@ -1028,11 +1035,13 @@ uint64_t memory_region_iommu_get_min_page_size(IOMMUMemoryRegion *iommu_mr);
-  * should be notified with an UNMAP followed by a MAP.
-  *
-  * @iommu_mr: the memory region that was changed
-+ * @iommu_idx: the IOMMU index for the translation table which has changed
-  * @entry: the new entry in the IOMMU translation table.  The entry
-  *         replaces all old entries for the same virtual I/O address range.
-  *         Deleted entries have .@perm == 0.
-  */
- void memory_region_notify_iommu(IOMMUMemoryRegion *iommu_mr,
-+                                int iommu_idx,
-                                 IOMMUTLBEntry entry);
- 
- /**
-diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-index fb31de9416..b8c9354b0b 100644
---- a/hw/i386/intel_iommu.c
-+++ b/hw/i386/intel_iommu.c
-@@ -1376,7 +1376,7 @@ static void vtd_iotlb_domain_invalidate(IntelIOMMUState *s, uint16_t domain_id)
- static int vtd_page_invalidate_notify_hook(IOMMUTLBEntry *entry,
-                                            void *private)
- {
--    memory_region_notify_iommu((IOMMUMemoryRegion *)private, *entry);
-+    memory_region_notify_iommu((IOMMUMemoryRegion *)private, 0, *entry);
-     return 0;
- }
- 
-@@ -1826,7 +1826,7 @@ static bool vtd_process_device_iotlb_desc(IntelIOMMUState *s,
-     entry.iova = addr;
-     entry.perm = IOMMU_NONE;
-     entry.translated_addr = 0;
--    memory_region_notify_iommu(&vtd_dev_as->iommu, entry);
-+    memory_region_notify_iommu(&vtd_dev_as->iommu, 0, entry);
- 
- done:
-     return true;
-diff --git a/hw/ppc/spapr_iommu.c b/hw/ppc/spapr_iommu.c
-index aaa6010d5c..301708e45e 100644
---- a/hw/ppc/spapr_iommu.c
-+++ b/hw/ppc/spapr_iommu.c
-@@ -428,7 +428,7 @@ static target_ulong put_tce_emu(sPAPRTCETable *tcet, target_ulong ioba,
-     entry.translated_addr = tce & page_mask;
-     entry.addr_mask = ~page_mask;
-     entry.perm = spapr_tce_iommu_access_flags(tce);
--    memory_region_notify_iommu(&tcet->iommu, entry);
-+    memory_region_notify_iommu(&tcet->iommu, 0, entry);
- 
-     return H_SUCCESS;
- }
-diff --git a/hw/s390x/s390-pci-inst.c b/hw/s390x/s390-pci-inst.c
-index d1a5f79678..7b61367ee3 100644
---- a/hw/s390x/s390-pci-inst.c
-+++ b/hw/s390x/s390-pci-inst.c
-@@ -589,7 +589,7 @@ static void s390_pci_update_iotlb(S390PCIIOMMU *iommu, S390IOTLBEntry *entry)
-             }
- 
-             notify.perm = IOMMU_NONE;
--            memory_region_notify_iommu(&iommu->iommu_mr, notify);
-+            memory_region_notify_iommu(&iommu->iommu_mr, 0, notify);
-             notify.perm = entry->perm;
-         }
- 
-@@ -601,7 +601,7 @@ static void s390_pci_update_iotlb(S390PCIIOMMU *iommu, S390IOTLBEntry *entry)
-         g_hash_table_replace(iommu->iotlb, &cache->iova, cache);
-     }
- 
--    memory_region_notify_iommu(&iommu->iommu_mr, notify);
-+    memory_region_notify_iommu(&iommu->iommu_mr, 0, notify);
- }
- 
- int rpcit_service_call(S390CPU *cpu, uint8_t r1, uint8_t r2, uintptr_t ra)
-diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-index 8e57265edf..fb396cf00a 100644
---- a/hw/vfio/common.c
-+++ b/hw/vfio/common.c
-@@ -507,6 +507,7 @@ static void vfio_listener_region_add(MemoryListener *listener,
-     if (memory_region_is_iommu(section->mr)) {
-         VFIOGuestIOMMU *giommu;
-         IOMMUMemoryRegion *iommu_mr = IOMMU_MEMORY_REGION(section->mr);
-+        int iommu_idx;
- 
-         trace_vfio_listener_region_add_iommu(iova, end);
-         /*
-@@ -523,10 +524,13 @@ static void vfio_listener_region_add(MemoryListener *listener,
-         llend = int128_add(int128_make64(section->offset_within_region),
-                            section->size);
-         llend = int128_sub(llend, int128_one());
-+        iommu_idx = memory_region_iommu_attrs_to_index(iommu_mr,
-+                                                       MEMTXATTRS_UNSPECIFIED);
-         iommu_notifier_init(&giommu->n, vfio_iommu_map_notify,
-                             IOMMU_NOTIFIER_ALL,
-                             section->offset_within_region,
--                            int128_get64(llend));
-+                            int128_get64(llend),
-+                            iommu_idx);
-         QLIST_INSERT_HEAD(&container->giommu_list, giommu, giommu_next);
- 
-         memory_region_register_iommu_notifier(section->mr, &giommu->n);
-diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
-index 48f4fd7cc9..6218df7683 100644
---- a/hw/virtio/vhost.c
-+++ b/hw/virtio/vhost.c
-@@ -657,6 +657,8 @@ static void vhost_iommu_region_add(MemoryListener *listener,
-                                          iommu_listener);
-     struct vhost_iommu *iommu;
-     Int128 end;
-+    int iommu_idx;
-+    IOMMUMemoryRegion *iommu_mr = IOMMU_MEMORY_REGION(section->mr);
- 
-     if (!memory_region_is_iommu(section->mr)) {
-         return;
-@@ -666,10 +668,13 @@ static void vhost_iommu_region_add(MemoryListener *listener,
-     end = int128_add(int128_make64(section->offset_within_region),
-                      section->size);
-     end = int128_sub(end, int128_one());
-+    iommu_idx = memory_region_iommu_attrs_to_index(iommu_mr,
-+                                                   MEMTXATTRS_UNSPECIFIED);
-     iommu_notifier_init(&iommu->n, vhost_iommu_unmap_notify,
-                         IOMMU_NOTIFIER_UNMAP,
-                         section->offset_within_region,
--                        int128_get64(end));
-+                        int128_get64(end),
-+                        iommu_idx);
-     iommu->mr = section->mr;
-     iommu->iommu_offset = section->offset_within_address_space -
-                           section->offset_within_region;
-diff --git a/memory.c b/memory.c
-index 07d5fa7862..accb28d694 100644
---- a/memory.c
-+++ b/memory.c
-@@ -1802,6 +1802,9 @@ void memory_region_register_iommu_notifier(MemoryRegion *mr,
-     iommu_mr = IOMMU_MEMORY_REGION(mr);
-     assert(n->notifier_flags != IOMMU_NOTIFIER_NONE);
-     assert(n->start <= n->end);
-+    assert(n->iommu_idx >= 0 &&
-+           n->iommu_idx < memory_region_iommu_num_indexes(iommu_mr));
+diff --git a/include/hw/misc/tz-mpc.h b/include/hw/misc/tz-mpc.h
+new file mode 100644
+index 0000000000..b5eaf1699e
+--- /dev/null
++++ b/include/hw/misc/tz-mpc.h
+@@ -0,0 +1,70 @@
++/*
++ * ARM TrustZone memory protection controller emulation
++ *
++ * Copyright (c) 2018 Linaro Limited
++ * Written by Peter Maydell
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 or
++ * (at your option) any later version.
++ */
 +
-     QLIST_INSERT_HEAD(&iommu_mr->iommu_notify, n, node);
-     memory_region_update_iommu_notify_flags(iommu_mr);
- }
-@@ -1894,6 +1897,7 @@ void memory_region_notify_one(IOMMUNotifier *notifier,
- }
- 
- void memory_region_notify_iommu(IOMMUMemoryRegion *iommu_mr,
-+                                int iommu_idx,
-                                 IOMMUTLBEntry entry)
- {
-     IOMMUNotifier *iommu_notifier;
-@@ -1901,7 +1905,9 @@ void memory_region_notify_iommu(IOMMUMemoryRegion *iommu_mr,
-     assert(memory_region_is_iommu(MEMORY_REGION(iommu_mr)));
- 
-     IOMMU_NOTIFIER_FOREACH(iommu_notifier, iommu_mr) {
--        memory_region_notify_one(iommu_notifier, &entry);
-+        if (iommu_notifier->iommu_idx == iommu_idx) {
-+            memory_region_notify_one(iommu_notifier, &entry);
++/* This is a model of the TrustZone memory protection controller (MPC).
++ * It is documented in the ARM CoreLink SIE-200 System IP for Embedded TRM
++ * (DDI 0571G):
++ * https://developer.arm.com/products/architecture/m-profile/docs/ddi0571/g
++ *
++ * The MPC sits in front of memory and allows secure software to
++ * configure it to either pass through or reject transactions.
++ * Rejected transactions may be configured to either be aborted, or to
++ * behave as RAZ/WI. An interrupt can be signalled for a rejected transaction.
++ *
++ * The MPC has a register interface which the guest uses to configure it.
++ *
++ * QEMU interface:
++ * + sysbus MMIO region 0: MemoryRegion for the MPC's config registers
++ * + sysbus MMIO region 1: MemoryRegion for the upstream end of the MPC
++ * + Property "downstream": MemoryRegion defining the downstream memory
++ * + Named GPIO output "irq": set for a transaction-failed interrupt
++ */
++
++#ifndef TZ_MPC_H
++#define TZ_MPC_H
++
++#include "hw/sysbus.h"
++
++#define TYPE_TZ_MPC "tz-mpc"
++#define TZ_MPC(obj) OBJECT_CHECK(TZMPC, (obj), TYPE_TZ_MPC)
++
++#define TZ_NUM_PORTS 16
++
++#define TYPE_TZ_MPC_IOMMU_MEMORY_REGION "tz-mpc-iommu-memory-region"
++
++typedef struct TZMPC TZMPC;
++
++struct TZMPC {
++    /*< private >*/
++    SysBusDevice parent_obj;
++
++    /*< public >*/
++
++    qemu_irq irq;
++
++    /* Properties */
++    MemoryRegion *downstream;
++
++    hwaddr blocksize;
++    uint32_t blk_max;
++
++    /* MemoryRegions exposed to user */
++    MemoryRegion regmr;
++    IOMMUMemoryRegion upstream;
++
++    /* MemoryRegion used internally */
++    MemoryRegion blocked_io;
++
++    AddressSpace downstream_as;
++    AddressSpace blocked_io_as;
++};
++
++#endif
+diff --git a/hw/misc/tz-mpc.c b/hw/misc/tz-mpc.c
+new file mode 100644
+index 0000000000..d4467ccc3b
+--- /dev/null
++++ b/hw/misc/tz-mpc.c
+@@ -0,0 +1,381 @@
++/*
++ * ARM TrustZone memory protection controller emulation
++ *
++ * Copyright (c) 2018 Linaro Limited
++ * Written by Peter Maydell
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 or
++ * (at your option) any later version.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "qapi/error.h"
++#include "trace.h"
++#include "hw/sysbus.h"
++#include "hw/registerfields.h"
++#include "hw/misc/tz-mpc.h"
++
++/* Our IOMMU has two IOMMU indexes, one for secure transactions and one for
++ * non-secure transactions.
++ */
++enum {
++    IOMMU_IDX_S,
++    IOMMU_IDX_NS,
++    IOMMU_NUM_INDEXES,
++};
++
++/* Config registers */
++REG32(CTRL, 0x00)
++REG32(BLK_MAX, 0x10)
++REG32(BLK_CFG, 0x14)
++REG32(BLK_IDX, 0x18)
++REG32(BLK_LUT, 0x1c)
++REG32(INT_STAT, 0x20)
++REG32(INT_CLEAR, 0x24)
++REG32(INT_EN, 0x28)
++REG32(INT_INFO1, 0x2c)
++REG32(INT_INFO2, 0x30)
++REG32(INT_SET, 0x34)
++REG32(PIDR4, 0xfd0)
++REG32(PIDR5, 0xfd4)
++REG32(PIDR6, 0xfd8)
++REG32(PIDR7, 0xfdc)
++REG32(PIDR0, 0xfe0)
++REG32(PIDR1, 0xfe4)
++REG32(PIDR2, 0xfe8)
++REG32(PIDR3, 0xfec)
++REG32(CIDR0, 0xff0)
++REG32(CIDR1, 0xff4)
++REG32(CIDR2, 0xff8)
++REG32(CIDR3, 0xffc)
++
++static const uint8_t tz_mpc_idregs[] = {
++    0x04, 0x00, 0x00, 0x00,
++    0x60, 0xb8, 0x1b, 0x00,
++    0x0d, 0xf0, 0x05, 0xb1,
++};
++
++static MemTxResult tz_mpc_reg_read(void *opaque, hwaddr addr,
++                                   uint64_t *pdata,
++                                   unsigned size, MemTxAttrs attrs)
++{
++    uint64_t r;
++    uint32_t offset = addr & ~0x3;
++
++    switch (offset) {
++    case A_PIDR4:
++    case A_PIDR5:
++    case A_PIDR6:
++    case A_PIDR7:
++    case A_PIDR0:
++    case A_PIDR1:
++    case A_PIDR2:
++    case A_PIDR3:
++    case A_CIDR0:
++    case A_CIDR1:
++    case A_CIDR2:
++    case A_CIDR3:
++        r = tz_mpc_idregs[(offset - A_PIDR4) / 4];
++        break;
++    case A_INT_CLEAR:
++    case A_INT_SET:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "TZ MPC register read: write-only offset 0x%x\n",
++                      offset);
++        r = 0;
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "TZ MPC register read: bad offset 0x%x\n", offset);
++        r = 0;
++        break;
++    }
++
++    if (size != 4) {
++        /* None of our registers are read-sensitive (except BLK_LUT,
++         * which can special case the "size not 4" case), so just
++         * pull the right bytes out of the word read result.
++         */
++        r = extract32(r, (addr & 3) * 8, size * 8);
++    }
++
++    trace_tz_mpc_reg_read(addr, r, size);
++    *pdata = r;
++    return MEMTX_OK;
++}
++
++static MemTxResult tz_mpc_reg_write(void *opaque, hwaddr addr,
++                                    uint64_t value,
++                                    unsigned size, MemTxAttrs attrs)
++{
++    uint32_t offset = addr & ~0x3;
++
++    trace_tz_mpc_reg_write(addr, value, size);
++
++    if (size != 4) {
++        /* Expand the byte or halfword write to a full word size.
++         * In most cases we can do this with zeroes; the exceptions
++         * are CTRL, BLK_IDX and BLK_LUT.
++         */
++        uint32_t oldval;
++
++        switch (offset) {
++            /* As we add support for registers which need expansions
++             * other than zeroes we'll fill in cases here.
++             */
++        default:
++            oldval = 0;
++            break;
 +        }
-     }
- }
++        value = deposit32(oldval, (addr & 3) * 8, size * 8, value);
++    }
++
++    switch (offset) {
++    case A_PIDR4:
++    case A_PIDR5:
++    case A_PIDR6:
++    case A_PIDR7:
++    case A_PIDR0:
++    case A_PIDR1:
++    case A_PIDR2:
++    case A_PIDR3:
++    case A_CIDR0:
++    case A_CIDR1:
++    case A_CIDR2:
++    case A_CIDR3:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "TZ MPC register write: read-only offset 0x%x\n", offset);
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "TZ MPC register write: bad offset 0x%x\n", offset);
++        break;
++    }
++
++    return MEMTX_OK;
++}
++
++static const MemoryRegionOps tz_mpc_reg_ops = {
++    .read_with_attrs = tz_mpc_reg_read,
++    .write_with_attrs = tz_mpc_reg_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid.min_access_size = 1,
++    .valid.max_access_size = 4,
++    .impl.min_access_size = 1,
++    .impl.max_access_size = 4,
++};
++
++/* Accesses only reach these read and write functions if the MPC is
++ * blocking them; non-blocked accesses go directly to the downstream
++ * memory region without passing through this code.
++ */
++static MemTxResult tz_mpc_mem_blocked_read(void *opaque, hwaddr addr,
++                                           uint64_t *pdata,
++                                           unsigned size, MemTxAttrs attrs)
++{
++    trace_tz_mpc_mem_blocked_read(addr, size, attrs.secure);
++
++    *pdata = 0;
++    return MEMTX_OK;
++}
++
++static MemTxResult tz_mpc_mem_blocked_write(void *opaque, hwaddr addr,
++                                            uint64_t value,
++                                            unsigned size, MemTxAttrs attrs)
++{
++    trace_tz_mpc_mem_blocked_write(addr, value, size, attrs.secure);
++
++    return MEMTX_OK;
++}
++
++static const MemoryRegionOps tz_mpc_mem_blocked_ops = {
++    .read_with_attrs = tz_mpc_mem_blocked_read,
++    .write_with_attrs = tz_mpc_mem_blocked_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid.min_access_size = 1,
++    .valid.max_access_size = 8,
++    .impl.min_access_size = 1,
++    .impl.max_access_size = 8,
++};
++
++static IOMMUTLBEntry tz_mpc_translate(IOMMUMemoryRegion *iommu,
++                                      hwaddr addr, IOMMUAccessFlags flags,
++                                      int iommu_idx)
++{
++    TZMPC *s = TZ_MPC(container_of(iommu, TZMPC, upstream));
++    bool ok;
++
++    IOMMUTLBEntry ret = {
++        .iova = addr & ~(s->blocksize - 1),
++        .translated_addr = addr & ~(s->blocksize - 1),
++        .addr_mask = s->blocksize - 1,
++        .perm = IOMMU_RW,
++    };
++
++    /* Look at the per-block configuration for this address, and
++     * return a TLB entry directing the transaction at either
++     * downstream_as or blocked_io_as, as appropriate.
++     * For the moment, always permit accesses.
++     */
++    ok = true;
++
++    trace_tz_mpc_translate(addr, flags,
++                           iommu_idx == IOMMU_IDX_S ? "S" : "NS",
++                           ok ? "pass" : "block");
++
++    ret.target_as = ok ? &s->downstream_as : &s->blocked_io_as;
++    return ret;
++}
++
++static int tz_mpc_attrs_to_index(IOMMUMemoryRegion *iommu, MemTxAttrs attrs)
++{
++    /* We treat unspecified attributes like secure. Transactions with
++     * unspecified attributes come from places like
++     * cpu_physical_memory_write_rom() for initial image load, and we want
++     * those to pass through the from-reset "everything is secure" config.
++     * All the real during-emulation transactions from the CPU will
++     * specify attributes.
++     */
++    return (attrs.unspecified || attrs.secure) ? IOMMU_IDX_S : IOMMU_IDX_NS;
++}
++
++static int tz_mpc_num_indexes(IOMMUMemoryRegion *iommu)
++{
++    return IOMMU_NUM_INDEXES;
++}
++
++static void tz_mpc_reset(DeviceState *dev)
++{
++}
++
++static void tz_mpc_init(Object *obj)
++{
++    DeviceState *dev = DEVICE(obj);
++    TZMPC *s = TZ_MPC(obj);
++
++    qdev_init_gpio_out_named(dev, &s->irq, "irq", 1);
++}
++
++static void tz_mpc_realize(DeviceState *dev, Error **errp)
++{
++    Object *obj = OBJECT(dev);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
++    TZMPC *s = TZ_MPC(dev);
++    uint64_t size;
++
++    /* We can't create the upstream end of the port until realize,
++     * as we don't know the size of the MR used as the downstream until then.
++     * We insist on having a downstream, to avoid complicating the code
++     * with handling the "don't know how big this is" case. It's easy
++     * enough for the user to create an unimplemented_device as downstream
++     * if they have nothing else to plug into this.
++     */
++    if (!s->downstream) {
++        error_setg(errp, "MPC 'downstream' link not set");
++        return;
++    }
++
++    size = memory_region_size(s->downstream);
++
++    memory_region_init_iommu(&s->upstream, sizeof(s->upstream),
++                             TYPE_TZ_MPC_IOMMU_MEMORY_REGION,
++                             obj, "tz-mpc-upstream", size);
++
++    /* In real hardware the block size is configurable. In QEMU we could
++     * make it configurable but will need it to be at least as big as the
++     * target page size so we can execute out of the resulting MRs. Guest
++     * software is supposed to check the block size using the BLK_CFG
++     * register, so make it fixed at the page size.
++     */
++    s->blocksize = memory_region_iommu_get_min_page_size(&s->upstream);
++    if (size % s->blocksize != 0) {
++        error_setg(errp,
++                   "MPC 'downstream' size %" PRId64
++                   " is not a multiple of %" HWADDR_PRIx " bytes",
++                   size, s->blocksize);
++        object_unref(OBJECT(&s->upstream));
++        return;
++    }
++
++    /* BLK_MAX is the max value of BLK_IDX, which indexes an array of 32-bit
++     * words, each bit of which indicates one block.
++     */
++    s->blk_max = DIV_ROUND_UP(size / s->blocksize, 32);
++
++    memory_region_init_io(&s->regmr, obj, &tz_mpc_reg_ops,
++                          s, "tz-mpc-regs", 0x1000);
++    sysbus_init_mmio(sbd, &s->regmr);
++
++    sysbus_init_mmio(sbd, MEMORY_REGION(&s->upstream));
++
++    /* This memory region is not exposed to users of this device as a
++     * sysbus MMIO region, but is instead used internally as something
++     * that our IOMMU translate function might direct accesses to.
++     */
++    memory_region_init_io(&s->blocked_io, obj, &tz_mpc_mem_blocked_ops,
++                          s, "tz-mpc-blocked-io", size);
++
++    address_space_init(&s->downstream_as, s->downstream,
++                       "tz-mpc-downstream");
++    address_space_init(&s->blocked_io_as, &s->blocked_io,
++                       "tz-mpc-blocked-io");
++}
++
++static const VMStateDescription tz_mpc_vmstate = {
++    .name = "tz-mpc",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static Property tz_mpc_properties[] = {
++    DEFINE_PROP_LINK("downstream", TZMPC, downstream,
++                     TYPE_MEMORY_REGION, MemoryRegion *),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void tz_mpc_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = tz_mpc_realize;
++    dc->vmsd = &tz_mpc_vmstate;
++    dc->reset = tz_mpc_reset;
++    dc->props = tz_mpc_properties;
++}
++
++static const TypeInfo tz_mpc_info = {
++    .name = TYPE_TZ_MPC,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(TZMPC),
++    .instance_init = tz_mpc_init,
++    .class_init = tz_mpc_class_init,
++};
++
++static void tz_mpc_iommu_memory_region_class_init(ObjectClass *klass,
++                                                  void *data)
++{
++    IOMMUMemoryRegionClass *imrc = IOMMU_MEMORY_REGION_CLASS(klass);
++
++    imrc->translate = tz_mpc_translate;
++    imrc->attrs_to_index = tz_mpc_attrs_to_index;
++    imrc->num_indexes = tz_mpc_num_indexes;
++}
++
++static const TypeInfo tz_mpc_iommu_memory_region_info = {
++    .name = TYPE_TZ_MPC_IOMMU_MEMORY_REGION,
++    .parent = TYPE_IOMMU_MEMORY_REGION,
++    .class_init = tz_mpc_iommu_memory_region_class_init,
++};
++
++static void tz_mpc_register_types(void)
++{
++    type_register_static(&tz_mpc_info);
++    type_register_static(&tz_mpc_iommu_memory_region_info);
++}
++
++type_init(tz_mpc_register_types);
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 1823f900b9..9cddb699df 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -449,6 +449,8 @@ F: hw/char/cmsdk-apb-uart.c
+ F: include/hw/char/cmsdk-apb-uart.h
+ F: hw/misc/tz-ppc.c
+ F: include/hw/misc/tz-ppc.h
++F: hw/misc/tz-mpc.c
++F: include/hw/misc/tz-mpc.h
  
+ ARM cores
+ M: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+index dd29e741c2..30e73847ac 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -106,6 +106,7 @@ CONFIG_CMSDK_APB_UART=y
+ CONFIG_MPS2_FPGAIO=y
+ CONFIG_MPS2_SCC=y
+ 
++CONFIG_TZ_MPC=y
+ CONFIG_TZ_PPC=y
+ CONFIG_IOTKIT=y
+ CONFIG_IOTKIT_SECCTL=y
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index 562d9ed005..d4835c8970 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -84,6 +84,13 @@ mos6522_set_sr_int(void) "set sr_int"
+ mos6522_write(uint64_t addr, uint64_t val) "reg=0x%"PRIx64 " val=0x%"PRIx64
+ mos6522_read(uint64_t addr, unsigned val) "reg=0x%"PRIx64 " val=0x%x"
+ 
++# hw/misc/tz-mpc.c
++tz_mpc_reg_read(uint32_t offset, uint64_t data, unsigned size) "TZ MPC regs read: offset 0x%x data 0x%" PRIx64 " size %u"
++tz_mpc_reg_write(uint32_t offset, uint64_t data, unsigned size) "TZ MPC regs write: offset 0x%x data 0x%" PRIx64 " size %u"
++tz_mpc_mem_blocked_read(uint64_t addr, unsigned size, bool secure) "TZ MPC blocked read: offset 0x%" PRIx64 " size %u secure %d"
++tz_mpc_mem_blocked_write(uint64_t addr, uint64_t data, unsigned size, bool secure) "TZ MPC blocked write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u secure %d"
++tz_mpc_translate(uint64_t addr, int flags, const char *idx, const char *res) "TZ MPC translate: addr 0x%" PRIx64 " flags 0x%x iommu_idx %s: %s"
++
+ # hw/misc/tz-ppc.c
+ tz_ppc_reset(void) "TZ PPC: reset"
+ tz_ppc_cfg_nonsec(int n, int level) "TZ PPC: cfg_nonsec[%d] = %d"
 -- 
 2.17.0

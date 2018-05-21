@@ -1,568 +1,181 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp7201605wrq;
-        Thu, 28 Jun 2018 02:30:56 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpfxjmzO0vj4D/A10MZW+4ZcR/IDkflTBS1RzcAO/RIatpL8jOEFvk4xrpA8GCu2JUDn6kUl
-X-Received: by 2002:ac8:1631:: with SMTP id p46-v6mr8776697qtj.72.1530178256239;
-        Thu, 28 Jun 2018 02:30:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530178256; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp311117wme;
+        Mon, 21 May 2018 07:04:07 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZqQL9bKayl0Ib6flkKP1Y7TYCx1VpC2upI/rtllZ1jv4S+Rqmt5tSRQL3AGa/DXMlI0J2EJ
+X-Received: by 2002:a1c:1047:: with SMTP id 68-v6mr10681915wmq.132.1526911447286;
+        Mon, 21 May 2018 07:04:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1526911447; cv=none;
         d=google.com; s=arc-20160816;
-        b=oKiE/3LEQr5kKoK0wbxEY45VXtI3pUEfzAJC15rhdcD1yIZNWpgpk9Pda18E2MJbpl
-         MVVJIUKbVCDjYSFJmeL+AdgRVGKDa0m9Hc9xUDTmP3bm7/gF7WAIuGIGPGsrC3UbcNlj
-         tcaauodQyb/E2wT4Wr9kaG8V4LMxqRfcvi8KFRxb9LsjwNJpN5XAc2t5YWc0Buwxaj7i
-         +xHP9E/88VvEcliZNaiMzLkGH9qiGWnvtBMa4cW9zylOsNIVJ876p4qsnH/1isyl3bd4
-         wQumSBGjFtwJ8msTRtA5pX+6TTBxbms6lwWgIBSoJ1PfiYgZXZeiBVZlYNCnNRHgNZdd
-         bIJg==
+        b=AdD3vxTmIXbH682f6xhZjS0tHzI7PpjF+6qnxfXyYAtHn0nBLxUDQh6IBezi8a50ab
+         7r2GrzWHMIDefdb1BaA9vxF6s6qK9ZzWz3wqUSQbMcoDk8sxsLPOuquor5sv0jh9JClo
+         NXPt/tlKp0A3/428KBZddIpUhFTm01oyAwEyrb0TDNCqvPP+6/EJowdtIwPtD9muUWkI
+         L5lErx5v3ZkN40p7wLT7Qkmk34CZmjNpSoxAhZenwZnpPg2GMnSOEVo8g29V5Tnf2iSV
+         7mINCG6E5jyKzXlJqeSVsH2kPs4/QnSjnQ1aYjhxcQm4gK99JzfvRLi30VabkHq9d/9+
+         0jTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
          :arc-authentication-results;
-        bh=qbbXaxxNVWXsngzSqBo+n5KvLlj7AYeXE9xdGhcPA4E=;
-        b=Ukf4MoDnVE541tG4cJJ562umm6IYFKz/aCbY/3RFjqlms8KWGKwDSF6p070VwI9YV3
-         mQBgr+2KQWEXb6lsSTJ8LOZBBxg3Ay8I8iMUd7FULQg0VJdJjt8e/SU2Ni3HN7lM23+0
-         jaO0albgIB4yr+BLKGTnWDDj+bnArset1YpHt1vyFMW3540I41FowtyMyNcAyZ9F/LOT
-         b1NX/mHh5AMAiz6IoFbXSi6RRyABAtd48na/sBOwGqJPUHX61DKc+qntgdLrMoCtZ01n
-         8fPvxSLw/ez0eXceg/VXYteXirp5xMlS/zFJjJQXhDUb0vwYzJsN+8G0cn4IllKALXDq
-         2Hdg==
+        bh=on1S9H5+22N32L1QI/5Yf24zKxkoMS+XYc21xzXvQtc=;
+        b=cbHF+dTS63muM6ttpMFOt06+ixrumrkxYusqpI0AymkJNKcT9vcbQxyxrBM1mDD29f
+         KsaZhBY1ndUarcZQS7AEs+JoViH2uWQfKTSCHWV9lizsI4jFsqDw8/06dNPyqpKeMp6s
+         HNYLBEcfOGzd5LbIFFNSJLr3p6hvNeGrduVfLndrbxBGP60RNfh3U4X2v8PUwrtpJcm9
+         gZHs1tZFD57TU4kpftkLWjOEaChIbo3Gk0tNmzfcmZH5GVGP35WnHqVtplb4kLoqtzL4
+         QSEjekvBwacmNoMljZooAkVkm6W+yBFopkipgoXe5Vcg0YF7y0Nlkjl4QVoBh9bw3FEO
+         8vwA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=HsQydKFu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d12-v6si2176026qvl.194.2018.06.28.02.30.56
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Jun 2018 02:30:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Return-Path: <pm215@archaic.org.uk>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+        by mx.google.com with ESMTPS id g188-v6si10395296wmg.58.2018.05.21.07.04.07
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 21 May 2018 07:04:07 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=HsQydKFu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35244 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fYTGR-0002Iu-Mt
-	for alex.bennee@linaro.org; Thu, 28 Jun 2018 05:30:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50036)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hongbo.zhang@linaro.org>) id 1fYTGC-0002Gd-Us
-	for qemu-arm@nongnu.org; Thu, 28 Jun 2018 05:30:43 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <hongbo.zhang@linaro.org>) id 1fYTGA-0002bB-AJ
-	for qemu-arm@nongnu.org; Thu, 28 Jun 2018 05:30:40 -0400
-Received: from mail-it0-x242.google.com ([2607:f8b0:4001:c0b::242]:39035)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <hongbo.zhang@linaro.org>)
-	id 1fYTG9-0002a6-Qt
-	for qemu-arm@nongnu.org; Thu, 28 Jun 2018 05:30:38 -0400
-Received: by mail-it0-x242.google.com with SMTP id p185-v6so11531933itp.4
-	for <qemu-arm@nongnu.org>; Thu, 28 Jun 2018 02:30:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=qbbXaxxNVWXsngzSqBo+n5KvLlj7AYeXE9xdGhcPA4E=;
-	b=HsQydKFu4gyas/sZKDcygfCBIiN25yBPKBTpP99JIIsZ9ZrORsQwMYjIaLJkbCrak6
-	IDNunSuwJSJE4O7d2OHTglp0vgb4HnktRk1CG8zndxnTutTExIuFGR8ZHjuob3KsX8Ye
-	aUA4I+I8n7C28sNVBXrPh6VSf/BSbGdfm/UIs=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=qbbXaxxNVWXsngzSqBo+n5KvLlj7AYeXE9xdGhcPA4E=;
-	b=sMq/S7cEP9GwczVZnwMTgepn816dQy9t6mVwVgriZmkMOpbTVZfXqHn94AhYtp2Fxp
-	cDyB065eJEgxPQEu7aZ1Q89AONZKnxTbAbDytPkesSCZo+KyFAZ9zTtqdPLGCUUp/6Kn
-	G2M0X3e5uHvrxEuCDgz/OgJCBlJ9Q1VihGzuZZI4crLhRPR6+iyOg8oJYSaryxTjBL5c
-	x4X+WyV8JeIrHuJ8X8U0owu60vOATbhsV4WpqQYYASPy9Z3Nv0WPpudBCXMNQelkIE4X
-	MSNQQT6Wqx0Jfsd6ByZ3q2/F0NyKCB+3ZKfeySIgGSAtw6qTMpBCx4EIZVNBdCT8iRz3
-	+jpw==
-X-Gm-Message-State: APt69E0k8pXhFE5rxtvaBLcBB6Zyy/KSGVjzLedC/wDQ9qEh93yb89Vb
-	y/rtrai0xaoECG9jerWR9gbId84kUqv5s1fMFiTxmg==
-X-Received: by 2002:a24:b887:: with SMTP id
-	m129-v6mr7672526ite.3.1530178236945; 
-	Thu, 28 Jun 2018 02:30:36 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:ac0:a65a:0:0:0:0:0 with HTTP; Thu, 28 Jun 2018 02:30:36
-	-0700 (PDT)
-In-Reply-To: <20180628081216.GA2536@work-vm>
-References: <1530094388-607-1-git-send-email-hongbo.zhang@linaro.org>
-	<20180627123116.GB2424@work-vm>
-	<CAHmQWvB2tPRXHOm08CQ+2R34gepULw8+pvKPa693coFbs-YvZg@mail.gmail.com>
-	<20180628081216.GA2536@work-vm>
-From: Hongbo Zhang <hongbo.zhang@linaro.org>
-Date: Thu, 28 Jun 2018 17:30:36 +0800
-Message-ID: <CAHmQWvDnzxv1yJrisu1mF0o-p+Pfnq_q5s9ZbzAn--Zhdnf_ww@mail.gmail.com>
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4001:c0b::242
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/arm: Add SBSA machine type
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	jsnow@redhat.com, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UgF6xTnTDvfF
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1fKlPy-0007eb-Pq; Mon, 21 May 2018 15:04:06 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: patches@linaro.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <rth@twiddle.net>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH 05/27] Make address_space_access_valid() take a MemTxAttrs argument
+Date: Mon, 21 May 2018 15:03:40 +0100
+Message-Id: <20180521140402.23318-6-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.17.0
+In-Reply-To: <20180521140402.23318-1-peter.maydell@linaro.org>
+References: <20180521140402.23318-1-peter.maydell@linaro.org>
+X-TUID: VCUwDrQVLda6
 
-On 28 June 2018 at 16:12, Dr. David Alan Gilbert <dgilbert@redhat.com> wrote:
-> * Hongbo Zhang (hongbo.zhang@linaro.org) wrote:
->> On 27 June 2018 at 20:31, Dr. David Alan Gilbert <dgilbert@redhat.com> wrote:
->> > * Hongbo Zhang (hongbo.zhang@linaro.org) wrote:
->> >> This patch introduces a new Arm machine type 'SBSA' with features:
->> >>  - Based on legacy 'virt' machine type.
->> >>  - Newly designed memory map.
->> >>  - EL2 and EL3 are enabled by default.
->> >>  - AHCI controller attached to system bus, and then CDROM and hard disc
->> >>    can be added to it.
->> >>  - EHCI controller attached to system bus, with USB mouse and key board
->> >>    installed by default.
->> >>  - E1000 ethernet card on PCIE bus.
->> >>  - VGA display adaptor on PCIE bus.
->> >>  - Default CPU type cortex-a57, 4 cores, and 1G bytes memory.
->> >>  - No virtio functions enabled, since this is to emulate real hardware.
->> >
->> > I'm a bit confused; do you have real modern ARM hardware that has an
->> > e1000 on it?  If I understand correctly, e1000 is the old PCI version
->> > and the e1000e is at least the more modern PCIe version which makes
->> > more sense if you're building on PCIe.
->> > However, if you:
->> >   a) Don't have real hardware with the e1000 on
->> >   b) Do have PCIe
->> >
->> Thanks for review.
->>
->> Yes, e1000e is used on modern hardware PCIe, using e1000e can reflect
->> the real world.
->> I like e1000e too, but I checked q35, it still uses an e1000 attached
->> to pcie bus.
->
-> I think we think of that choice on q35 as a mistake / or we didn't
-> have e1000e at the time.  If you used an e1000e then people could
-> actually buy an e1000e card to plug into the test system to compare.
->
-Yes q35 is old, I just wanted some reference at the beginning.
-I re-checked latest kernel just now, arm64 defconfig has already added
-e1000e support, so considering use e1000e too in next iteration.
+As part of plumbing MemTxAttrs down to the IOMMU translate method,
+add MemTxAttrs as an argument to address_space_access_valid().
+Its callers either have an attrs value to hand, or don't care
+and can use MEMTXATTRS_UNSPECIFIED.
 
-Thanks.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ include/exec/memory.h      | 4 +++-
+ include/sysemu/dma.h       | 3 ++-
+ exec.c                     | 3 ++-
+ target/s390x/diag.c        | 6 ++++--
+ target/s390x/excp_helper.c | 3 ++-
+ target/s390x/mmu_helper.c  | 3 ++-
+ target/s390x/sigp.c        | 3 ++-
+ 7 files changed, 17 insertions(+), 8 deletions(-)
 
->> Another fact is, when compile the arm64 kernel by defconfig, the e1000
->> isn't selected by default, but e1000e is.
->> That is why I still chose e1000 here.
->> (Maybe we can change the kernel defconfig to e1000e, then we chose
->> e1000e here too)
->>
->> > then to my mind it makes sense to use virtio-net-pci rather than
->> > an e1000e.
->> >
->> Well, this is to emulate a 'true' hardware for firmware etc
->> development, primary purpose it to emulate hardware functions, not for
->> performance, so virtio is disabled, some firmware, boot loaders etc
->> may not work with virtio either, if people want virtio, they can use
->> the legacy 'virt' machine.
->
-> The virtio-mmio that the 'virt' machine has is quite odd; however
-> virtio-pci devices are much less special.
->
-> Dave
->
->> > Dave
->> >
->> >> This is the prototype, more features can be added in futrue.
->> >>
->> >> Purpose of this is to have a standard QEMU platform for Arm firmware
->> >> developement etc. where the legacy machines cannot meets requirements.
->> >>
->> >> Arm Trusted Firmware and UEFI porting to this are done seperately.
->> >>
->> >> Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
->> >> ---
->> >>  hw/arm/virt-acpi-build.c |  59 +++++++++++++-
->> >>  hw/arm/virt.c            | 196 ++++++++++++++++++++++++++++++++++++++++++++++-
->> >>  include/hw/arm/virt.h    |   3 +
->> >>  3 files changed, 254 insertions(+), 4 deletions(-)
->> >>
->> >> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->> >> index 6ea47e2..60af414 100644
->> >> --- a/hw/arm/virt-acpi-build.c
->> >> +++ b/hw/arm/virt-acpi-build.c
->> >> @@ -84,6 +84,52 @@ static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
->> >>      aml_append(scope, dev);
->> >>  }
->> >>
->> >> +static void acpi_dsdt_add_ahci(Aml *scope, const MemMapEntry *ahci_memmap,
->> >> +                                           uint32_t ahci_irq)
->> >> +{
->> >> +    Aml *dev = aml_device("AHC0");
->> >> +    aml_append(dev, aml_name_decl("_HID", aml_string("LNRO001E")));
->> >> +    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
->> >> +    aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
->> >> +
->> >> +    Aml *crs = aml_resource_template();
->> >> +    aml_append(crs, aml_memory32_fixed(ahci_memmap->base,
->> >> +                                       ahci_memmap->size, AML_READ_WRITE));
->> >> +    aml_append(crs,
->> >> +               aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
->> >> +                             AML_EXCLUSIVE, &ahci_irq, 1));
->> >> +    aml_append(dev, aml_name_decl("_CRS", crs));
->> >> +
->> >> +    Aml *pkg = aml_package(3);
->> >> +    aml_append(pkg, aml_int(0x1));
->> >> +    aml_append(pkg, aml_int(0x6));
->> >> +    aml_append(pkg, aml_int(0x1));
->> >> +
->> >> +    /* append the SATA class id */
->> >> +    aml_append(dev, aml_name_decl("_CLS", pkg));
->> >> +
->> >> +    aml_append(scope, dev);
->> >> +}
->> >> +
->> >> +static void acpi_dsdt_add_ehci(Aml *scope, const MemMapEntry *ehci_memmap,
->> >> +                                           uint32_t ehci_irq)
->> >> +{
->> >> +    Aml *dev = aml_device("EHC0");
->> >> +    aml_append(dev, aml_name_decl("_HID", aml_string("PNP0D20")));
->> >> +    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
->> >> +    aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
->> >> +
->> >> +    Aml *crs = aml_resource_template();
->> >> +    aml_append(crs, aml_memory32_fixed(ehci_memmap->base,
->> >> +                                       ehci_memmap->size, AML_READ_WRITE));
->> >> +    aml_append(crs,
->> >> +               aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
->> >> +                             AML_EXCLUSIVE, &ehci_irq, 1));
->> >> +    aml_append(dev, aml_name_decl("_CRS", crs));
->> >> +
->> >> +    aml_append(scope, dev);
->> >> +}
->> >> +
->> >>  static void acpi_dsdt_add_fw_cfg(Aml *scope, const MemMapEntry *fw_cfg_memmap)
->> >>  {
->> >>      Aml *dev = aml_device("FWCF");
->> >> @@ -768,14 +814,23 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->> >>                         (irqmap[VIRT_UART] + ARM_SPI_BASE));
->> >>      acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
->> >>      acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
->> >> -    acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
->> >> -                    (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANSPORTS);
->> >> +    if (!vms->sbsa) {
->> >> +        acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
->> >> +                   (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANSPORTS);
->> >> +    }
->> >>      acpi_dsdt_add_pci(scope, memmap, (irqmap[VIRT_PCIE] + ARM_SPI_BASE),
->> >>                        vms->highmem, vms->highmem_ecam);
->> >>      acpi_dsdt_add_gpio(scope, &memmap[VIRT_GPIO],
->> >>                         (irqmap[VIRT_GPIO] + ARM_SPI_BASE));
->> >>      acpi_dsdt_add_power_button(scope);
->> >>
->> >> +    if (vms->sbsa) {
->> >> +        acpi_dsdt_add_ahci(scope, &memmap[VIRT_AHCI],
->> >> +                           (irqmap[VIRT_AHCI] + ARM_SPI_BASE));
->> >> +        acpi_dsdt_add_ehci(scope, &memmap[VIRT_EHCI],
->> >> +                           (irqmap[VIRT_EHCI] + ARM_SPI_BASE));
->> >> +    }
->> >> +
->> >>      aml_append(dsdt, scope);
->> >>
->> >>      /* copy AML table into ACPI tables blob and patch header there */
->> >> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> >> index 742f68a..491f23b 100644
->> >> --- a/hw/arm/virt.c
->> >> +++ b/hw/arm/virt.c
->> >> @@ -59,6 +59,10 @@
->> >>  #include "qapi/visitor.h"
->> >>  #include "standard-headers/linux/input.h"
->> >>  #include "hw/arm/smmuv3.h"
->> >> +#include "hw/ide/internal.h"
->> >> +#include "hw/ide/ahci_internal.h"
->> >> +#include "hw/usb.h"
->> >> +#include "qemu/cutils.h"
->> >>
->> >>  #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
->> >>      static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
->> >> @@ -94,6 +98,8 @@
->> >>
->> >>  #define PLATFORM_BUS_NUM_IRQS 64
->> >>
->> >> +#define SATA_NUM_PORTS 6
->> >> +
->> >>  /* RAM limit in GB. Since VIRT_MEM starts at the 1GB mark, this means
->> >>   * RAM can go up to the 256GB mark, leaving 256GB of the physical
->> >>   * address space unallocated and free for future use between 256G and 512G.
->> >> @@ -168,6 +174,47 @@ static const int a15irqmap[] = {
->> >>      [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
->> >>  };
->> >>
->> >> +static const MemMapEntry sbsa_memmap[] = {
->> >> +    /* Space up to 0x8000000 is reserved for a boot ROM */
->> >> +    [VIRT_FLASH] =              {          0, 0x08000000 },
->> >> +    [VIRT_CPUPERIPHS] =         { 0x08000000, 0x00020000 },
->> >> +    /* GIC distributor and CPU interfaces sit inside the CPU peripheral space */
->> >> +    [VIRT_GIC_DIST] =           { 0x08000000, 0x00010000 },
->> >> +    [VIRT_GIC_CPU] =            { 0x08010000, 0x00010000 },
->> >> +    [VIRT_GIC_V2M] =            { 0x08020000, 0x00001000 },
->> >> +    /* The space in between here is reserved for GICv3 CPU/vCPU/HYP */
->> >> +    [VIRT_GIC_ITS] =            { 0x08080000, 0x00020000 },
->> >> +    /* This redistributor space allows up to 2*64kB*123 CPUs */
->> >> +    [VIRT_GIC_REDIST] =         { 0x080A0000, 0x00F60000 },
->> >> +    [VIRT_UART] =               { 0x09000000, 0x00001000 },
->> >> +    [VIRT_RTC] =                { 0x09010000, 0x00001000 },
->> >> +    [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
->> >> +    [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
->> >> +    [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
->> >> +    [VIRT_AHCI] =               { 0x09050000, 0x00010000 },
->> >> +    [VIRT_EHCI] =               { 0x09060000, 0x00010000 },
->> >> +    [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
->> >> +    [VIRT_SECURE_MEM] =         { 0x0e000000, 0x01000000 },
->> >> +    [VIRT_PCIE_MMIO] =          { 0x10000000, 0x7fff0000 },
->> >> +    [VIRT_PCIE_PIO] =           { 0x8fff0000, 0x00010000 },
->> >> +    [VIRT_PCIE_ECAM] =          { 0x90000000, 0x10000000 },
->> >> +    /* Second PCIe window, 508GB wide at the 4GB boundary */
->> >> +    [VIRT_PCIE_MMIO_HIGH] =     { 0x100000000ULL, 0x7F00000000ULL },
->> >> +    [VIRT_MEM] =                { 0x8000000000ULL, RAMLIMIT_BYTES },
->> >> +};
->> >> +
->> >> +static const int sbsa_irqmap[] = {
->> >> +    [VIRT_UART] = 1,
->> >> +    [VIRT_RTC] = 2,
->> >> +    [VIRT_PCIE] = 3, /* ... to 6 */
->> >> +    [VIRT_GPIO] = 7,
->> >> +    [VIRT_SECURE_UART] = 8,
->> >> +    [VIRT_AHCI] = 9,
->> >> +    [VIRT_EHCI] = 10,
->> >> +    [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
->> >> +    [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
->> >> +};
->> >> +
->> >>  static const char *valid_cpus[] = {
->> >>      ARM_CPU_TYPE_NAME("cortex-a15"),
->> >>      ARM_CPU_TYPE_NAME("cortex-a53"),
->> >> @@ -696,6 +743,72 @@ static void create_rtc(const VirtMachineState *vms, qemu_irq *pic)
->> >>      g_free(nodename);
->> >>  }
->> >>
->> >> +static void create_ahci(const VirtMachineState *vms, qemu_irq *pic)
->> >> +{
->> >> +    char *nodename;
->> >> +    hwaddr base = vms->memmap[VIRT_AHCI].base;
->> >> +    hwaddr size = vms->memmap[VIRT_AHCI].size;
->> >> +    int irq = vms->irqmap[VIRT_AHCI];
->> >> +    const char compat[] = "qemu,mach-virt-ahci\0generic-ahci";
->> >> +    DeviceState *dev;
->> >> +    DriveInfo *hd[SATA_NUM_PORTS];
->> >> +    SysbusAHCIState *sysahci;
->> >> +    AHCIState *ahci;
->> >> +    int i;
->> >> +
->> >> +    dev = qdev_create(NULL, "sysbus-ahci");
->> >> +    qdev_prop_set_uint32(dev, "num-ports", SATA_NUM_PORTS);
->> >> +    qdev_init_nofail(dev);
->> >> +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
->> >> +    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[irq]);
->> >> +
->> >> +    sysahci = SYSBUS_AHCI(dev);
->> >> +    ahci = &sysahci->ahci;
->> >> +    ide_drive_get(hd, ARRAY_SIZE(hd));
->> >> +    for (i = 0; i < ahci->ports; i++) {
->> >> +        if (hd[i] == NULL) {
->> >> +            continue;
->> >> +        }
->> >> +        ide_create_drive(&ahci->dev[i].port, 0, hd[i]);
->> >> +    }
->> >> +
->> >> +    nodename = g_strdup_printf("/sata@%" PRIx64, base);
->> >> +    qemu_fdt_add_subnode(vms->fdt, nodename);
->> >> +    qemu_fdt_setprop(vms->fdt, nodename, "compatible", compat, sizeof(compat));
->> >> +    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
->> >> +                                 2, base, 2, size);
->> >> +    qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupts",
->> >> +                           GIC_FDT_IRQ_TYPE_SPI, irq,
->> >> +                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
->> >> +    g_free(nodename);
->> >> +}
->> >> +
->> >> +static void create_ehci(const VirtMachineState *vms, qemu_irq *pic)
->> >> +{
->> >> +    char *nodename;
->> >> +    hwaddr base = vms->memmap[VIRT_EHCI].base;
->> >> +    hwaddr size = vms->memmap[VIRT_EHCI].size;
->> >> +    int irq = vms->irqmap[VIRT_EHCI];
->> >> +    const char compat[] = "qemu,mach-virt-ehci\0generic-ehci";
->> >> +    USBBus *usb_bus;
->> >> +
->> >> +    sysbus_create_simple("exynos4210-ehci-usb", base, pic[irq]);
->> >> +
->> >> +    usb_bus = usb_bus_find(-1);
->> >> +    usb_create_simple(usb_bus, "usb-kbd");
->> >> +    usb_create_simple(usb_bus, "usb-mouse");
->> >> +
->> >> +    nodename = g_strdup_printf("/ehci@%" PRIx64, base);
->> >> +    qemu_fdt_add_subnode(vms->fdt, nodename);
->> >> +    qemu_fdt_setprop(vms->fdt, nodename, "compatible", compat, sizeof(compat));
->> >> +    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
->> >> +                                 2, base, 2, size);
->> >> +    qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupts",
->> >> +                           GIC_FDT_IRQ_TYPE_SPI, irq,
->> >> +                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
->> >> +    g_free(nodename);
->> >> +}
->> >> +
->> >>  static DeviceState *gpio_key_dev;
->> >>  static void virt_powerdown_req(Notifier *n, void *opaque)
->> >>  {
->> >> @@ -1107,13 +1220,21 @@ static void create_pcie(VirtMachineState *vms, qemu_irq *pic)
->> >>              NICInfo *nd = &nd_table[i];
->> >>
->> >>              if (!nd->model) {
->> >> -                nd->model = g_strdup("virtio");
->> >> +                if (vms->sbsa) {
->> >> +                    nd->model = g_strdup("e1000");
->> >> +                } else {
->> >> +                    nd->model = g_strdup("virtio");
->> >> +                }
->> >>              }
->> >>
->> >>              pci_nic_init_nofail(nd, pci->bus, nd->model, NULL);
->> >>          }
->> >>      }
->> >>
->> >> +    if (vms->sbsa) {
->> >> +        pci_create_simple(pci->bus, -1, "VGA");
->> >> +    }
->> >> +
->> >>      nodename = g_strdup_printf("/pcie@%" PRIx64, base);
->> >>      qemu_fdt_add_subnode(vms->fdt, nodename);
->> >>      qemu_fdt_setprop_string(vms->fdt, nodename,
->> >> @@ -1502,11 +1623,18 @@ static void machvirt_init(MachineState *machine)
->> >>
->> >>      create_gpio(vms, pic);
->> >>
->> >> +    if (vms->sbsa) {
->> >> +        create_ahci(vms, pic);
->> >> +        create_ehci(vms, pic);
->> >> +    }
->> >> +
->> >>      /* Create mmio transports, so the user can create virtio backends
->> >>       * (which will be automatically plugged in to the transports). If
->> >>       * no backend is created the transport will just sit harmlessly idle.
->> >>       */
->> >> -    create_virtio_devices(vms, pic);
->> >> +    if (!vms->sbsa) {
->> >> +        create_virtio_devices(vms, pic);
->> >> +    }
->> >>
->> >>      vms->fw_cfg = create_fw_cfg(vms, &address_space_memory);
->> >>      rom_set_fw(vms->fw_cfg);
->> >> @@ -1818,6 +1946,7 @@ static void virt_3_0_instance_init(Object *obj)
->> >>
->> >>      vms->memmap = a15memmap;
->> >>      vms->irqmap = a15irqmap;
->> >> +    vms->sbsa = false;
->> >>  }
->> >>
->> >>  static void virt_machine_3_0_options(MachineClass *mc)
->> >> @@ -1950,3 +2079,66 @@ static void virt_machine_2_6_options(MachineClass *mc)
->> >>      vmc->no_pmu = true;
->> >>  }
->> >>  DEFINE_VIRT_MACHINE(2, 6)
->> >> +
->> >> +static void sbsa_instance_init(Object *obj)
->> >> +{
->> >> +    VirtMachineState *vms = VIRT_MACHINE(obj);
->> >> +
->> >> +    vms->secure = true;
->> >> +    object_property_add_bool(obj, "secure", virt_get_secure,
->> >> +                             virt_set_secure, NULL);
->> >> +    object_property_set_description(obj, "secure",
->> >> +                                    "Set on/off to enable/disable the ARM "
->> >> +                                    "Security Extensions (TrustZone)",
->> >> +                                    NULL);
->> >> +
->> >> +    vms->virt = true;
->> >> +    object_property_add_bool(obj, "virtualization", virt_get_virt,
->> >> +                             virt_set_virt, NULL);
->> >> +    object_property_set_description(obj, "virtualization",
->> >> +                                    "Set on/off to enable/disable emulating a "
->> >> +                                    "guest CPU which implements the ARM "
->> >> +                                    "Virtualization Extensions",
->> >> +                                    NULL);
->> >> +
->> >> +    vms->highmem = true;
->> >> +
->> >> +    /* This can be changed to GICv3 when firmware is ready*/
->> >> +    vms->gic_version = 2;
->> >> +    object_property_add_str(obj, "gic-version", virt_get_gic_version,
->> >> +                        virt_set_gic_version, NULL);
->> >> +    object_property_set_description(obj, "gic-version",
->> >> +                                    "Set GIC version. "
->> >> +                                    "Valid values are 2, 3, host, max", NULL);
->> >> +    vms->its = true;
->> >> +
->> >> +    vms->memmap = sbsa_memmap;
->> >> +    vms->irqmap = sbsa_irqmap;
->> >> +    vms->sbsa = true;
->> >> +}
->> >> +
->> >> +static void sbsa_class_init(ObjectClass *oc, void *data)
->> >> +{
->> >> +    MachineClass *mc = MACHINE_CLASS(oc);
->> >> +
->> >> +    mc->max_cpus = 246;
->> >> +    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a57");
->> >> +    mc->block_default_type = IF_IDE;
->> >> +    mc->default_ram_size = 1 * G_BYTE;
->> >> +    mc->default_cpus = 4;
->> >> +    mc->desc = "QEMU 'SBSA' ARM Virtual Machine";
->> >> +}
->> >> +
->> >> +static const TypeInfo sbsa_info = {
->> >> +    .name          = MACHINE_TYPE_NAME("sbsa"),
->> >> +    .parent        = TYPE_VIRT_MACHINE,
->> >> +    .instance_init = sbsa_instance_init,
->> >> +    .class_init    = sbsa_class_init,
->> >> +};
->> >> +
->> >> +static void sbsa_machine_init(void)
->> >> +{
->> >> +    type_register_static(&sbsa_info);
->> >> +}
->> >> +
->> >> +type_init(sbsa_machine_init);
->> >> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
->> >> index 9a870cc..619473e 100644
->> >> --- a/include/hw/arm/virt.h
->> >> +++ b/include/hw/arm/virt.h
->> >> @@ -78,6 +78,8 @@ enum {
->> >>      VIRT_GPIO,
->> >>      VIRT_SECURE_UART,
->> >>      VIRT_SECURE_MEM,
->> >> +    VIRT_AHCI,
->> >> +    VIRT_EHCI,
->> >>  };
->> >>
->> >>  typedef enum VirtIOMMUType {
->> >> @@ -124,6 +126,7 @@ typedef struct {
->> >>      uint32_t msi_phandle;
->> >>      uint32_t iommu_phandle;
->> >>      int psci_conduit;
->> >> +    bool sbsa;
->> >>  } VirtMachineState;
->> >>
->> >>  #define VIRT_ECAM_ID(high) (high ? VIRT_PCIE_ECAM_HIGH : VIRT_PCIE_ECAM)
->> >> --
->> >> 2.7.4
->> >>
->> >>
->> > --
->> > Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
-> --
-> Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index b1bdb376d4..54263bd23b 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -1937,8 +1937,10 @@ static inline MemoryRegion *address_space_translate(AddressSpace *as,
+  * @addr: address within that address space
+  * @len: length of the area to be checked
+  * @is_write: indicates the transfer direction
++ * @attrs: memory attributes
+  */
+-bool address_space_access_valid(AddressSpace *as, hwaddr addr, int len, bool is_write);
++bool address_space_access_valid(AddressSpace *as, hwaddr addr, int len,
++                                bool is_write, MemTxAttrs attrs);
+ 
+ /* address_space_map: map a physical memory region into a host virtual address
+  *
+diff --git a/include/sysemu/dma.h b/include/sysemu/dma.h
+index 0d73902634..5da3c4e3c5 100644
+--- a/include/sysemu/dma.h
++++ b/include/sysemu/dma.h
+@@ -77,7 +77,8 @@ static inline bool dma_memory_valid(AddressSpace *as,
+                                     DMADirection dir)
+ {
+     return address_space_access_valid(as, addr, len,
+-                                      dir == DMA_DIRECTION_FROM_DEVICE);
++                                      dir == DMA_DIRECTION_FROM_DEVICE,
++                                      MEMTXATTRS_UNSPECIFIED);
+ }
+ 
+ static inline int dma_memory_rw_relaxed(AddressSpace *as, dma_addr_t addr,
+diff --git a/exec.c b/exec.c
+index 1dc81cfe4a..22af4e8cb9 100644
+--- a/exec.c
++++ b/exec.c
+@@ -3480,7 +3480,8 @@ static bool flatview_access_valid(FlatView *fv, hwaddr addr, int len,
+ }
+ 
+ bool address_space_access_valid(AddressSpace *as, hwaddr addr,
+-                                int len, bool is_write)
++                                int len, bool is_write,
++                                MemTxAttrs attrs)
+ {
+     FlatView *fv;
+     bool result;
+diff --git a/target/s390x/diag.c b/target/s390x/diag.c
+index ac2c40f363..d1d3433aa7 100644
+--- a/target/s390x/diag.c
++++ b/target/s390x/diag.c
+@@ -87,7 +87,8 @@ void handle_diag_308(CPUS390XState *env, uint64_t r1, uint64_t r3, uintptr_t ra)
+             return;
+         }
+         if (!address_space_access_valid(&address_space_memory, addr,
+-                                        sizeof(IplParameterBlock), false)) {
++                                        sizeof(IplParameterBlock), false,
++                                        MEMTXATTRS_UNSPECIFIED)) {
+             s390_program_interrupt(env, PGM_ADDRESSING, ILEN_AUTO, ra);
+             return;
+         }
+@@ -116,7 +117,8 @@ out:
+             return;
+         }
+         if (!address_space_access_valid(&address_space_memory, addr,
+-                                        sizeof(IplParameterBlock), true)) {
++                                        sizeof(IplParameterBlock), true,
++                                        MEMTXATTRS_UNSPECIFIED)) {
+             s390_program_interrupt(env, PGM_ADDRESSING, ILEN_AUTO, ra);
+             return;
+         }
+diff --git a/target/s390x/excp_helper.c b/target/s390x/excp_helper.c
+index dfee221111..f0ce60cff2 100644
+--- a/target/s390x/excp_helper.c
++++ b/target/s390x/excp_helper.c
+@@ -120,7 +120,8 @@ int s390_cpu_handle_mmu_fault(CPUState *cs, vaddr orig_vaddr, int size,
+ 
+     /* check out of RAM access */
+     if (!address_space_access_valid(&address_space_memory, raddr,
+-                                    TARGET_PAGE_SIZE, rw)) {
++                                    TARGET_PAGE_SIZE, rw,
++                                    MEMTXATTRS_UNSPECIFIED)) {
+         DPRINTF("%s: raddr %" PRIx64 " > ram_size %" PRIx64 "\n", __func__,
+                 (uint64_t)raddr, (uint64_t)ram_size);
+         trigger_pgm_exception(env, PGM_ADDRESSING, ILEN_AUTO);
+diff --git a/target/s390x/mmu_helper.c b/target/s390x/mmu_helper.c
+index a25deef5dd..145b62a7ef 100644
+--- a/target/s390x/mmu_helper.c
++++ b/target/s390x/mmu_helper.c
+@@ -461,7 +461,8 @@ static int translate_pages(S390CPU *cpu, vaddr addr, int nr_pages,
+             return ret;
+         }
+         if (!address_space_access_valid(&address_space_memory, pages[i],
+-                                        TARGET_PAGE_SIZE, is_write)) {
++                                        TARGET_PAGE_SIZE, is_write,
++                                        MEMTXATTRS_UNSPECIFIED)) {
+             trigger_access_exception(env, PGM_ADDRESSING, ILEN_AUTO, 0);
+             return -EFAULT;
+         }
+diff --git a/target/s390x/sigp.c b/target/s390x/sigp.c
+index aff1530c82..c1f9245797 100644
+--- a/target/s390x/sigp.c
++++ b/target/s390x/sigp.c
+@@ -280,7 +280,8 @@ static void sigp_set_prefix(CPUState *cs, run_on_cpu_data arg)
+     cpu_synchronize_state(cs);
+ 
+     if (!address_space_access_valid(&address_space_memory, addr,
+-                                    sizeof(struct LowCore), false)) {
++                                    sizeof(struct LowCore), false,
++                                    MEMTXATTRS_UNSPECIFIED)) {
+         set_sigp_status(si, SIGP_STAT_INVALID_PARAMETER);
+         return;
+     }
+-- 
+2.17.0

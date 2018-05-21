@@ -1,149 +1,270 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2218682wre;
-        Thu, 24 May 2018 12:14:01 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKresud2Zs/Krvc9H4r3mM7pR/jaMO/o+1bDsFBL3HF7mrVj2YB/48kj4PH5wyWu370eUqA
-X-Received: by 2002:aed:2461:: with SMTP id s30-v6mr706240qtc.4.1527189240997;
-        Thu, 24 May 2018 12:14:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527189240; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp311083wme;
+        Mon, 21 May 2018 07:04:06 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZqSHmrsMCdT0wDZOkmZNp36XqPukLpBcnZDyXFtY7toKj8TGDWaK9Uti4Fyzf/TZFGYuv6X
+X-Received: by 2002:adf:8124:: with SMTP id 33-v6mr14949324wrm.109.1526911446381;
+        Mon, 21 May 2018 07:04:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1526911446; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z9WLpOZ1495m/8FOt1e6lAOFkBJyOKwtRTF/nPwZMZ0897l3ucOLV0pbNKGLOsGfr+
-         wphrrScj8cWDqZgu44pQPxgTPuYq/fSgfEGgLQO4iZX9nJNVzqLZfeB/JUL7hGLf8DCT
-         82ozCf2PT3tC4HGPNbDN0Ic3Jo+PEpsgfdeNUYxIuxl0gmCN6+1pf5UuKIi+cu3tgeMu
-         t9h+lbyE/CKw3Lj9m1imBYaRwZB5qCy6PTYx8dMYMpVj05+ezcI/xneb0VXoosAlpFWK
-         C8xXeeES6RyW3sy8WvVodtBgrmEP8RgxESHKd471SKBsZ9d5/Scw1HZiGmnM0+EW4rMz
-         jL8Q==
+        b=v/KRyiuwEK+zbxSQjlTxLSjc19d4gg/Wnx5f6evlfMfav4tLOImkHOx8DVN78zJtcC
+         TydKu18OxOrUCz6M7Ou4d/pxu/t5fNvrgBOhQevT8MBJSdNKTpZLJNi5sC8JSwC3xj8z
+         1GoI0cmoBocJ0/vDLRf9al1xKYmOj2LlyS/JZJCYPLkOMxbwvvxOpVYXMgLTbSYEG28S
+         0umOpisPhfkRPuDUL7r2A3VkWpkg50RcN1P2BpfJ056l8NDDvag//tApizB78CzrJaTT
+         Xah1PLhyUxxsTxuRvet7kgA9TK7gtZlpGQfrKJQNrH7BX06aEap0dhjCmzIwDEFOYjLD
+         TnXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:cc:references:to:subject:arc-authentication-results;
-        bh=SQMMTGOBN15wDS8uaNzr/Vd0NXr0xrFqDAOZb6iurIs=;
-        b=p00RZeQjYNmdnAM5pHcDUV7BOm5km4CJamisGTMeeLGxtnq5cqcX8c/wBi0JD6ghkE
-         gBkpgFoCzeqQhvjj9ujoKfu3oI6bPRnITIkZr4mGLszq7LWKjyQAUnnW8VGU2siQt4dZ
-         MaWil/b/92TiaDOb3fI5z53HaUX+vMUcjSsVeeScQEzLiIIBbppRtI6nSqtRTGy1vwnq
-         BdKFFIPKhP3hNLEJ1HZoyu4mqWmKfi1fCtUc/wpc4vwf2KG8nNYzLku9gQGlL9Lt8/Wf
-         bWx5vm2P8Uwp3K3M2zj2l3ox0IVL/IBwnGu8AZKiw2NaqTROAmvYYROoHpr+TCsF9vPM
-         RWEQ==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :arc-authentication-results;
+        bh=EcWKQwpckbPjSqgQoXxZK2f0szd3l33Q5RSzo6JMlqE=;
+        b=kyR5MhzHCQaF+1hZsJT1iAiFJyLl+3IB5JDBbKTIsQiEfHXm/Uc+0L43a6ndaVgK0O
+         3A4KtDg1VsMdCx87tg/auOvdKMaBdwHKPviQD2MCvMxSoMUbpEnzNcMALupNyUPaOp1i
+         cL9Dr1pBDBpIoa43YqAwEflg7lOr3Cs+VzZTWORK9XC72VP+GUzXqu3rtVtl3bxDoLDu
+         3WeTd2eNEGsGsUwvfMSuW0LS0UXucjg3AvWooz6gXbJ2EmrdcqljHsi0VywkuHOKiVgr
+         amSYN/JmmmMeTBjq80nm4LJXqbwu+6uRm8iyMI/klCZdiz0jYOE+hhWQkcbPSTp+eZq7
+         Ixkg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from mx1.redhat.com (mx3-rdu2.redhat.com. [66.187.233.73])
-        by mx.google.com with ESMTPS id t35-v6si13409091qvc.208.2018.05.24.12.14.00
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 24 May 2018 12:14:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 66.187.233.73 as permitted sender) client-ip=66.187.233.73;
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <pm215@archaic.org.uk>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+        by mx.google.com with ESMTPS id c4-v6si9927721wmf.143.2018.05.21.07.04.06
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 21 May 2018 07:04:06 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com [10.11.54.3])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7501E818BAF4;
-	Thu, 24 May 2018 19:14:00 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-69.ams2.redhat.com [10.36.116.69])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 25BBA10AF9EA;
-	Thu, 24 May 2018 19:13:59 +0000 (UTC)
-Subject: Re: [Qemu-devel] [PATCH 15/27] iommu: Add IOMMU index argument to
- notifier APIs
-To: Peter Maydell <peter.maydell@linaro.org>
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1fKlPx-0007dc-EB; Mon, 21 May 2018 15:04:05 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: patches@linaro.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <rth@twiddle.net>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH 03/27] Make address_space_translate{,_cached}() take a MemTxAttrs argument
+Date: Mon, 21 May 2018 15:03:38 +0100
+Message-Id: <20180521140402.23318-4-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.17.0
+In-Reply-To: <20180521140402.23318-1-peter.maydell@linaro.org>
 References: <20180521140402.23318-1-peter.maydell@linaro.org>
- <20180521140402.23318-16-peter.maydell@linaro.org>
- <0774094d-d3e1-5983-ccb8-3d3412bf44fc@redhat.com>
- <CAFEAcA95XD7_4q0p0Q6aPCxHHxHoRrVaKc+Nq+niZp-4PV8JLw@mail.gmail.com>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- "patches@linaro.org" <patches@linaro.org>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <8b0353e6-18f1-6e7f-5f4e-2d1a06a20b29@redhat.com>
-Date: Thu, 24 May 2018 21:13:57 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
- Thunderbird/45.4.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA95XD7_4q0p0Q6aPCxHHxHoRrVaKc+Nq+niZp-4PV8JLw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]); Thu, 24 May 2018 19:14:00 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]); Thu, 24 May 2018 19:14:00 +0000 (UTC) for IP:'10.11.54.3' DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com' HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
-X-TUID: NbtG7IxDo8s9
+X-TUID: WTAl/5mZJO7d
 
-Hi Peter,
-On 05/24/2018 07:03 PM, Peter Maydell wrote:
-> On 24 May 2018 at 16:29, Auger Eric <eric.auger@redhat.com> wrote:
->> On 05/21/2018 04:03 PM, Peter Maydell wrote:
->>> diff --git a/include/exec/memory.h b/include/exec/memory.h
->>> index f6226fb263..4e6b125add 100644
->>> --- a/include/exec/memory.h
->>> +++ b/include/exec/memory.h
->>> @@ -71,6 +71,7 @@ struct IOMMUTLBEntry {
->>>      hwaddr           iova;
->>>      hwaddr           translated_addr;
->>>      hwaddr           addr_mask;  /* 0xfff = 4k translation */
->>> +    int              iommu_idx;
->> I don't get why ne need iommu_idx field here. On translate the caller
->> has it. On notify the notifier has it?
-> 
-> I think this is an accidental leftover from some earlier draft;
-> nothing in the patchset actually reads or writes this field, and
-> it should be deleted.
-> 
->>>      IOMMUAccessFlags perm;
->>>  };
->>>
-> 
->>> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
->>> index 8e57265edf..fb396cf00a 100644
->>> --- a/hw/vfio/common.c
->>> +++ b/hw/vfio/common.c
->>> @@ -507,6 +507,7 @@ static void vfio_listener_region_add(MemoryListener *listener,
->>>      if (memory_region_is_iommu(section->mr)) {
->>>          VFIOGuestIOMMU *giommu;
->>>          IOMMUMemoryRegion *iommu_mr = IOMMU_MEMORY_REGION(section->mr);
->>> +        int iommu_idx;
->>>
->>>          trace_vfio_listener_region_add_iommu(iova, end);
->>>          /*
->>> @@ -523,10 +524,13 @@ static void vfio_listener_region_add(MemoryListener *listener,
->>>          llend = int128_add(int128_make64(section->offset_within_region),
->>>                             section->size);
->>>          llend = int128_sub(llend, int128_one());
->>> +        iommu_idx = memory_region_iommu_attrs_to_index(iommu_mr,
->>> +                                                       MEMTXATTRS_UNSPECIFIED);
->> In that case VFIO ideally wants to be notified for any guest update
->> (whatever the page set) to reprogram the physical IOMMU corresponding
->> entries and doesn't want to register a notifier per iommu_idx. Also it
->> does not know which ones are supported. Is there a corresponding
->> iommu_idx value? MEMTXATTRS_ANY?
-> 
-> If VFIO is actually dealing with an IOMMU that needs to handle
-> multiple possible transactions for different tx attributes, then
-> it needs to know about all of them, because how it programs
-> the physical IOMMU needs to be different for "map X to Y for
-> Secure transactions" versus "map X to Y for NonSecure" (say).
-> (This would require new kernel APIs, I assume.)
+As part of plumbing MemTxAttrs down to the IOMMU translate method,
+add MemTxAttrs as an argument to address_space_translate()
+and address_space_translate_cached(). Callers either have an
+attrs value to hand, or don't care and can use MEMTXATTRS_UNSPECIFIED.
 
-Hum agreed. In any case the iommu_idx must be passed to VFIO along with
-the notification, either as part of the notifier itself or in the
-IOMMUTLBEntry. So VFIO may need to enumerate the supported iommu_idx and
-register a notifier for relevant ones.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ include/exec/memory.h     |  4 +++-
+ accel/tcg/translate-all.c |  2 +-
+ exec.c                    | 14 +++++++++-----
+ hw/vfio/common.c          |  3 ++-
+ memory_ldst.inc.c         | 18 +++++++++---------
+ target/riscv/helper.c     |  2 +-
+ 6 files changed, 25 insertions(+), 18 deletions(-)
 
-Thanks
-
-Eric
-> 
-> If, as is currently the case, the VFIO infrastructure assumes that
-> the IOMMU will always translate any transaction from a device
-> identically regardless of its transaction attributes, then it
-> should just use MEMTXATTRS_UNSPECIFIED, and trust that the
-> emulated IOMMU will translate those correctly. (There might be
-> scope for VFIO checking that the IOMMU really does, eg that
-> it is only using one iommu index?)
-> 
-> Basically, VFIO is shadowing the behaviour of the emulated
-> IOMMU to reflect it into the kernel; if the IOMMU it's shadowing
-> is complicated then VFIO is going to need to be similarly
-> complicated, and "merge updates for different page tables
-> down into one" is not going to be the right behaviour.
-> 
-> thanks
-> -- PMM
-> 
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index cce355d2d8..9a30a1bb9e 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -1908,6 +1908,7 @@ IOMMUTLBEntry address_space_get_iotlb_entry(AddressSpace *as, hwaddr addr,
+  * #MemoryRegion.
+  * @len: pointer to length
+  * @is_write: indicates the transfer direction
++ * @attrs: memory attributes
+  */
+ MemoryRegion *flatview_translate(FlatView *fv,
+                                  hwaddr addr, hwaddr *xlat,
+@@ -1915,7 +1916,8 @@ MemoryRegion *flatview_translate(FlatView *fv,
+ 
+ static inline MemoryRegion *address_space_translate(AddressSpace *as,
+                                                     hwaddr addr, hwaddr *xlat,
+-                                                    hwaddr *len, bool is_write)
++                                                    hwaddr *len, bool is_write,
++                                                    MemTxAttrs attrs)
+ {
+     return flatview_translate(address_space_to_flatview(as),
+                               addr, xlat, len, is_write);
+diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
+index f04a922ef7..52f7bd59a9 100644
+--- a/accel/tcg/translate-all.c
++++ b/accel/tcg/translate-all.c
+@@ -1679,7 +1679,7 @@ void tb_invalidate_phys_addr(AddressSpace *as, hwaddr addr, MemTxAttrs attrs)
+     hwaddr l = 1;
+ 
+     rcu_read_lock();
+-    mr = address_space_translate(as, addr, &addr, &l, false);
++    mr = address_space_translate(as, addr, &addr, &l, false, attrs);
+     if (!(memory_region_is_ram(mr)
+           || memory_region_is_romd(mr))) {
+         rcu_read_unlock();
+diff --git a/exec.c b/exec.c
+index c3a197e67b..d314c7cc39 100644
+--- a/exec.c
++++ b/exec.c
+@@ -3322,7 +3322,8 @@ static inline void cpu_physical_memory_write_rom_internal(AddressSpace *as,
+     rcu_read_lock();
+     while (len > 0) {
+         l = len;
+-        mr = address_space_translate(as, addr, &addr1, &l, true);
++        mr = address_space_translate(as, addr, &addr1, &l, true,
++                                     MEMTXATTRS_UNSPECIFIED);
+ 
+         if (!(memory_region_is_ram(mr) ||
+               memory_region_is_romd(mr))) {
+@@ -3699,7 +3700,7 @@ void address_space_cache_destroy(MemoryRegionCache *cache)
+  */
+ static inline MemoryRegion *address_space_translate_cached(
+     MemoryRegionCache *cache, hwaddr addr, hwaddr *xlat,
+-    hwaddr *plen, bool is_write)
++    hwaddr *plen, bool is_write, MemTxAttrs attrs)
+ {
+     MemoryRegionSection section;
+     MemoryRegion *mr;
+@@ -3733,7 +3734,8 @@ address_space_read_cached_slow(MemoryRegionCache *cache, hwaddr addr,
+     MemoryRegion *mr;
+ 
+     l = len;
+-    mr = address_space_translate_cached(cache, addr, &addr1, &l, false);
++    mr = address_space_translate_cached(cache, addr, &addr1, &l, false,
++                                        MEMTXATTRS_UNSPECIFIED);
+     flatview_read_continue(cache->fv,
+                            addr, MEMTXATTRS_UNSPECIFIED, buf, len,
+                            addr1, l, mr);
+@@ -3750,7 +3752,8 @@ address_space_write_cached_slow(MemoryRegionCache *cache, hwaddr addr,
+     MemoryRegion *mr;
+ 
+     l = len;
+-    mr = address_space_translate_cached(cache, addr, &addr1, &l, true);
++    mr = address_space_translate_cached(cache, addr, &addr1, &l, true,
++                                        MEMTXATTRS_UNSPECIFIED);
+     flatview_write_continue(cache->fv,
+                             addr, MEMTXATTRS_UNSPECIFIED, buf, len,
+                             addr1, l, mr);
+@@ -3848,7 +3851,8 @@ bool cpu_physical_memory_is_io(hwaddr phys_addr)
+ 
+     rcu_read_lock();
+     mr = address_space_translate(&address_space_memory,
+-                                 phys_addr, &phys_addr, &l, false);
++                                 phys_addr, &phys_addr, &l, false,
++                                 MEMTXATTRS_UNSPECIFIED);
+ 
+     res = !(memory_region_is_ram(mr) || memory_region_is_romd(mr));
+     rcu_read_unlock();
+diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+index 07ffa0ba10..8e57265edf 100644
+--- a/hw/vfio/common.c
++++ b/hw/vfio/common.c
+@@ -324,7 +324,8 @@ static bool vfio_get_vaddr(IOMMUTLBEntry *iotlb, void **vaddr,
+      */
+     mr = address_space_translate(&address_space_memory,
+                                  iotlb->translated_addr,
+-                                 &xlat, &len, writable);
++                                 &xlat, &len, writable,
++                                 MEMTXATTRS_UNSPECIFIED);
+     if (!memory_region_is_ram(mr)) {
+         error_report("iommu map to non memory area %"HWADDR_PRIx"",
+                      xlat);
+diff --git a/memory_ldst.inc.c b/memory_ldst.inc.c
+index 25d6125747..15483987fe 100644
+--- a/memory_ldst.inc.c
++++ b/memory_ldst.inc.c
+@@ -33,7 +33,7 @@ static inline uint32_t glue(address_space_ldl_internal, SUFFIX)(ARG1_DECL,
+     bool release_lock = false;
+ 
+     RCU_READ_LOCK();
+-    mr = TRANSLATE(addr, &addr1, &l, false);
++    mr = TRANSLATE(addr, &addr1, &l, false, attrs);
+     if (l < 4 || !IS_DIRECT(mr, false)) {
+         release_lock |= prepare_mmio_access(mr);
+ 
+@@ -109,7 +109,7 @@ static inline uint64_t glue(address_space_ldq_internal, SUFFIX)(ARG1_DECL,
+     bool release_lock = false;
+ 
+     RCU_READ_LOCK();
+-    mr = TRANSLATE(addr, &addr1, &l, false);
++    mr = TRANSLATE(addr, &addr1, &l, false, attrs);
+     if (l < 8 || !IS_DIRECT(mr, false)) {
+         release_lock |= prepare_mmio_access(mr);
+ 
+@@ -183,7 +183,7 @@ uint32_t glue(address_space_ldub, SUFFIX)(ARG1_DECL,
+     bool release_lock = false;
+ 
+     RCU_READ_LOCK();
+-    mr = TRANSLATE(addr, &addr1, &l, false);
++    mr = TRANSLATE(addr, &addr1, &l, false, attrs);
+     if (!IS_DIRECT(mr, false)) {
+         release_lock |= prepare_mmio_access(mr);
+ 
+@@ -219,7 +219,7 @@ static inline uint32_t glue(address_space_lduw_internal, SUFFIX)(ARG1_DECL,
+     bool release_lock = false;
+ 
+     RCU_READ_LOCK();
+-    mr = TRANSLATE(addr, &addr1, &l, false);
++    mr = TRANSLATE(addr, &addr1, &l, false, attrs);
+     if (l < 2 || !IS_DIRECT(mr, false)) {
+         release_lock |= prepare_mmio_access(mr);
+ 
+@@ -296,7 +296,7 @@ void glue(address_space_stl_notdirty, SUFFIX)(ARG1_DECL,
+     bool release_lock = false;
+ 
+     RCU_READ_LOCK();
+-    mr = TRANSLATE(addr, &addr1, &l, true);
++    mr = TRANSLATE(addr, &addr1, &l, true, attrs);
+     if (l < 4 || !IS_DIRECT(mr, true)) {
+         release_lock |= prepare_mmio_access(mr);
+ 
+@@ -333,7 +333,7 @@ static inline void glue(address_space_stl_internal, SUFFIX)(ARG1_DECL,
+     bool release_lock = false;
+ 
+     RCU_READ_LOCK();
+-    mr = TRANSLATE(addr, &addr1, &l, true);
++    mr = TRANSLATE(addr, &addr1, &l, true, attrs);
+     if (l < 4 || !IS_DIRECT(mr, true)) {
+         release_lock |= prepare_mmio_access(mr);
+ 
+@@ -405,7 +405,7 @@ void glue(address_space_stb, SUFFIX)(ARG1_DECL,
+     bool release_lock = false;
+ 
+     RCU_READ_LOCK();
+-    mr = TRANSLATE(addr, &addr1, &l, true);
++    mr = TRANSLATE(addr, &addr1, &l, true, attrs);
+     if (!IS_DIRECT(mr, true)) {
+         release_lock |= prepare_mmio_access(mr);
+         r = memory_region_dispatch_write(mr, addr1, val, 1, attrs);
+@@ -438,7 +438,7 @@ static inline void glue(address_space_stw_internal, SUFFIX)(ARG1_DECL,
+     bool release_lock = false;
+ 
+     RCU_READ_LOCK();
+-    mr = TRANSLATE(addr, &addr1, &l, true);
++    mr = TRANSLATE(addr, &addr1, &l, true, attrs);
+     if (l < 2 || !IS_DIRECT(mr, true)) {
+         release_lock |= prepare_mmio_access(mr);
+ 
+@@ -511,7 +511,7 @@ static void glue(address_space_stq_internal, SUFFIX)(ARG1_DECL,
+     bool release_lock = false;
+ 
+     RCU_READ_LOCK();
+-    mr = TRANSLATE(addr, &addr1, &l, true);
++    mr = TRANSLATE(addr, &addr1, &l, true, attrs);
+     if (l < 8 || !IS_DIRECT(mr, true)) {
+         release_lock |= prepare_mmio_access(mr);
+ 
+diff --git a/target/riscv/helper.c b/target/riscv/helper.c
+index 95889f23b9..29e1a603dc 100644
+--- a/target/riscv/helper.c
++++ b/target/riscv/helper.c
+@@ -210,7 +210,7 @@ restart:
+                 MemoryRegion *mr;
+                 hwaddr l = sizeof(target_ulong), addr1;
+                 mr = address_space_translate(cs->as, pte_addr,
+-                    &addr1, &l, false);
++                    &addr1, &l, false, MEMTXATTRS_UNSPECIFIED);
+                 if (memory_access_is_direct(mr, true)) {
+                     target_ulong *pte_pa =
+                         qemu_map_ram_ptr(mr->ram_block, addr1);
+-- 
+2.17.0

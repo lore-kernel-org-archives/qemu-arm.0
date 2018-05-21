@@ -1,41 +1,41 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp311311wme;
-        Mon, 21 May 2018 07:04:13 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZrKHbMLh6wulaXra3Czhe810FZIdN8x7/X8C+0FApysw3ovQ8/9QZekBtLZQdajVskQVnJc
-X-Received: by 2002:adf:dd03:: with SMTP id a3-v6mr17292787wrm.0.1526911453838;
-        Mon, 21 May 2018 07:04:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1526911453; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp311143wme;
+        Mon, 21 May 2018 07:04:08 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZoJ9SAn5cSqnZQmOdLk7fy/JdLgeASWR0gjORNMxaq1fdJm7pySUCmjs65x47hZAr9fcpJi
+X-Received: by 2002:a2e:88d7:: with SMTP id a23-v6mr12560929ljk.117.1526911448360;
+        Mon, 21 May 2018 07:04:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1526911448; cv=none;
         d=google.com; s=arc-20160816;
-        b=Qfa4LTgARSSX8gZdoeFCqYXSh2TsCQ6anlx4vvTCXsjZ+SgL2c6tJvspt3rzvlu0Nf
-         1qx0tiOuqnZ6WGINidDXTUyoN83Q5y83rTPI1gZ08ASVEYBfCsP2nn7UVpbxbnikfVa2
-         /a+5SpwKBWxQCWjSAU86U6lkTfUkaMGZ8lhbgvsvSpIMz01R78fvGaky7FYbpViD5ySq
-         co7TQb8j61oozEn1423w7dWKVhCP1dUeqCxZjtCMhHtCVb6QTo5t9SBc2zZUGPTgLAXm
-         8/345eKu2EnUrhwwmqBzwynGgcRzUaYukyuJGwh+M4cU07MwBsakx/tQUNuELv2kAByR
-         NwbA==
+        b=lCIerKy+L4adAc8y/UJeRFAHtCc4uoDt7RSAgKy6JL0m01sWkD5f8hGCqSnnZdV0af
+         tbo1I8gDBt/UesPkdLgyzCb2e1exjQpR6dM3+p5owRcutqJAe1caBKNaKpcSuMAhxfMX
+         eVDd+5UZcBq/+Se1RpTgpl2GLRFSQtFJTKk8plWLGQ3X6EBXrQ6G1afQvQRpFdFRoUHG
+         rtLADRAoC2Wvr3P9K2toL2dz40c79qA7PCe+ySrzU5UInSLtj4o6CBMKByGil6m8du5D
+         D3QkyyyEqQV+EWDi62XdWWVyRW2+pLXuPCvXFGN4uVekOJERIcG9MRlon9eTO61XBt57
+         GINQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :arc-authentication-results;
-        bh=RDuOLuW+bw/W+Z36lEaYTXjQjWuXOhatX2OGI+6mwgI=;
-        b=QG2xrvKUeQu7coNZkv1cMcMF9Z8uDDga/W17mI9DFDzZGc8tQ4PgQBx25I5UW90Y2X
-         xiKiDlOHn11dkAKR/P9niZWILn9uy6HDl2p+JZhzuSPpC+AXxjfD9KjDB1DrohGKKt/H
-         3yepbmanXqEvGnWQngcI4y/Zi4eN0QC23a5dx/xLN0aEQbv1I8+Muji0sLIfL3Y1tinS
-         7wX6e1fShkqBsvdZaNu590m8F6uUzn6q+hHYDzE0Tkp97FMZH1PZqzK+aZUrtSnhrp6A
-         mBkMW5rZ/D0jyI/RcYEy0OJoqtg6s+H5dR0zNV0mcTwN/3DXHjq4Rr6ABrGj3GWDolY3
-         fqZw==
+        bh=M0O8wDSdxS7N00zy1N3pbDjulAg7dSzHTq2p7ColeQk=;
+        b=C6arHUu6VPRNLkjPTYwT/EbhoccP9UQ/JwvpMK44X9LgUQZ8ZLhA3bmoJu7V9LQA4j
+         nQ3YJvt/e4fgF3NkpAjtR/SHtw1tLLcZRdLmfAqLauCy3mCmIO+4+37qh8XeAPCe+eft
+         ZOgxV5Lrf/1QQ7HOcFdkLsZtuSZsJz7VW0qu8I3htvljqL2BvFW3CVwnn+TgxRmwdlSv
+         xILEkc7DiF5hjFTB7516q15G942tgTwrsfY/P2kE6Ohw1uLgxQPgMbgnDZ1X1Zza7jyO
+         L1+A8hoUKoVRh75qjH9IXF6kdPcoGI+xLK1/rsAmf+kzs+D1rlVvqRsOXEQP01valSm+
+         dGYw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <pm215@archaic.org.uk>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by mx.google.com with ESMTPS id g43-v6si11919506wrd.88.2018.05.21.07.04.13
+        by mx.google.com with ESMTPS id b202-v6si5877971lfg.145.2018.05.21.07.04.08
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 May 2018 07:04:13 -0700 (PDT)
+        Mon, 21 May 2018 07:04:08 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1fKlQ5-0007iy-BZ; Mon, 21 May 2018 15:04:13 +0100
+	id 1fKlPw-0007dP-Ov; Mon, 21 May 2018 15:04:04 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -43,136 +43,89 @@ Cc: patches@linaro.org,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Richard Henderson <rth@twiddle.net>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 14/27] iommu: Add IOMMU index concept to IOMMU API
-Date: Mon, 21 May 2018 15:03:49 +0100
-Message-Id: <20180521140402.23318-15-peter.maydell@linaro.org>
+Subject: [PATCH 02/27] Make tb_invalidate_phys_addr() take a MemTxAttrs argument
+Date: Mon, 21 May 2018 15:03:37 +0100
+Message-Id: <20180521140402.23318-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.17.0
 In-Reply-To: <20180521140402.23318-1-peter.maydell@linaro.org>
 References: <20180521140402.23318-1-peter.maydell@linaro.org>
-X-TUID: LdFWEkS05m9Y
+X-TUID: 6oT9FlEUJjdQ
 
-If an IOMMU supports mappings that care about the memory
-transaction attributes, then it no longer has a unique
-address -> output mapping, but more than one. We can
-represent these using an IOMMU index, analogous to TCG's
-mmu indexes.
+As part of plumbing MemTxAttrs down to the IOMMU translate method,
+add MemTxAttrs as an argument to tb_invalidate_phys_addr().
+Its callers either have an attrs value to hand, or don't care
+and can use MEMTXATTRS_UNSPECIFIED.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/exec/memory.h | 52 +++++++++++++++++++++++++++++++++++++++++++
- memory.c              | 23 +++++++++++++++++++
- 2 files changed, 75 insertions(+)
+ include/exec/exec-all.h   | 5 +++--
+ accel/tcg/translate-all.c | 2 +-
+ exec.c                    | 2 +-
+ target/xtensa/op_helper.c | 3 ++-
+ 4 files changed, 7 insertions(+), 5 deletions(-)
 
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index 309fdfb89b..f6226fb263 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -206,6 +206,20 @@ enum IOMMUMemoryRegionAttr {
-  * to report whenever mappings are changed, by calling
-  * memory_region_notify_iommu() (or, if necessary, by calling
-  * memory_region_notify_one() for each registered notifier).
-+ *
-+ * Conceptually an IOMMU provides a mapping from input address
-+ * to an output TLB entry. If the IOMMU is aware of memory transaction
-+ * attributes and the output TLB entry depends on the transaction
-+ * attributes, we represent this using IOMMU indexes. Each index
-+ * selects a particular translation table that the IOMMU has:
-+ *   @attrs_to_index returns the IOMMU index for a set of transaction attributes
-+ *   @translate takes an input address and an IOMMU index
-+ * and the mapping returned can only depend on the input address and the
-+ * IOMMU index.
-+ *
-+ * Most IOMMUs don't care about the transaction attributes and support
-+ * only a single IOMMU index. A more complex IOMMU might have one index
-+ * for secure transactions and one for non-secure transactions.
-  */
- typedef struct IOMMUMemoryRegionClass {
-     /* private */
-@@ -290,6 +304,26 @@ typedef struct IOMMUMemoryRegionClass {
-      */
-     int (*get_attr)(IOMMUMemoryRegion *iommu, enum IOMMUMemoryRegionAttr attr,
-                     void *data);
-+
-+    /* Return the IOMMU index to use for a given set of transaction attributes.
-+     *
-+     * Optional method: if an IOMMU only supports a single IOMMU index then
-+     * the default implementation of memory_region_iommu_attrs_to_index()
-+     * will return 0.
-+     *
-+     * The indexes supported by an IOMMU must be contiguous, starting at 0.
-+     *
-+     * @iommu: the IOMMUMemoryRegion
-+     * @attrs: memory transaction attributes
-+     */
-+    int (*attrs_to_index)(IOMMUMemoryRegion *iommu, MemTxAttrs attrs);
-+
-+    /* Return the number of IOMMU indexes this IOMMU supports.
-+     *
-+     * Optional method: if this method is not provided, then
-+     * memory_region_iommu_num_indexes() will return 1, indicating that
-+     * only a single IOMMU index is supported.
-+     */
- } IOMMUMemoryRegionClass;
- 
- typedef struct CoalescedMemoryRange CoalescedMemoryRange;
-@@ -1077,6 +1111,24 @@ int memory_region_iommu_get_attr(IOMMUMemoryRegion *iommu_mr,
-                                  enum IOMMUMemoryRegionAttr attr,
-                                  void *data);
- 
-+/**
-+ * memory_region_iommu_attrs_to_index: return the IOMMU index to
-+ * use for translations with the given memory transaction attributes.
-+ *
-+ * @iommu_mr: the memory region
-+ * @attrs: the memory transaction attributes
-+ */
-+int memory_region_iommu_attrs_to_index(IOMMUMemoryRegion *iommu_mr,
-+                                       MemTxAttrs attrs);
-+
-+/**
-+ * memory_region_iommu_num_indexes: return the total number of IOMMU
-+ * indexes that this IOMMU supports.
-+ *
-+ * @iommu_mr: the memory region
-+ */
-+int memory_region_iommu_num_indexes(IOMMUMemoryRegion *iommu_mr);
-+
- /**
-  * memory_region_name: get a memory region's name
-  *
-diff --git a/memory.c b/memory.c
-index 10fa2ddd31..07d5fa7862 100644
---- a/memory.c
-+++ b/memory.c
-@@ -1918,6 +1918,29 @@ int memory_region_iommu_get_attr(IOMMUMemoryRegion *iommu_mr,
-     return imrc->get_attr(iommu_mr, attr, data);
+diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+index bd68328ed9..4d09eaba72 100644
+--- a/include/exec/exec-all.h
++++ b/include/exec/exec-all.h
+@@ -255,7 +255,7 @@ void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr,
+ void tlb_set_page(CPUState *cpu, target_ulong vaddr,
+                   hwaddr paddr, int prot,
+                   int mmu_idx, target_ulong size);
+-void tb_invalidate_phys_addr(AddressSpace *as, hwaddr addr);
++void tb_invalidate_phys_addr(AddressSpace *as, hwaddr addr, MemTxAttrs attrs);
+ void probe_write(CPUArchState *env, target_ulong addr, int size, int mmu_idx,
+                  uintptr_t retaddr);
+ #else
+@@ -303,7 +303,8 @@ static inline void tlb_flush_by_mmuidx_all_cpus_synced(CPUState *cpu,
+                                                        uint16_t idxmap)
+ {
+ }
+-static inline void tb_invalidate_phys_addr(AddressSpace *as, hwaddr addr)
++static inline void tb_invalidate_phys_addr(AddressSpace *as, hwaddr addr,
++                                           MemTxAttrs attrs)
+ {
+ }
+ #endif
+diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
+index f409d42d54..f04a922ef7 100644
+--- a/accel/tcg/translate-all.c
++++ b/accel/tcg/translate-all.c
+@@ -1672,7 +1672,7 @@ static TranslationBlock *tb_find_pc(uintptr_t tc_ptr)
  }
  
-+int memory_region_iommu_attrs_to_index(IOMMUMemoryRegion *iommu_mr,
-+                                       MemTxAttrs attrs)
-+{
-+    IOMMUMemoryRegionClass *imrc = IOMMU_MEMORY_REGION_GET_CLASS(iommu_mr);
-+
-+    if (!imrc->attrs_to_index) {
-+        return 0;
-+    }
-+
-+    return imrc->attrs_to_index(iommu_mr, attrs);
-+}
-+
-+int memory_region_iommu_num_indexes(IOMMUMemoryRegion *iommu_mr)
-+{
-+    IOMMUMemoryRegionClass *imrc = IOMMU_MEMORY_REGION_GET_CLASS(iommu_mr);
-+
-+    if (!imrc->num_indexes) {
-+        return 1;
-+    }
-+
-+    return imrc->num_indexes(iommu_mr);
-+}
-+
- void memory_region_set_log(MemoryRegion *mr, bool log, unsigned client)
+ #if !defined(CONFIG_USER_ONLY)
+-void tb_invalidate_phys_addr(AddressSpace *as, hwaddr addr)
++void tb_invalidate_phys_addr(AddressSpace *as, hwaddr addr, MemTxAttrs attrs)
  {
-     uint8_t mask = 1 << client;
+     ram_addr_t ram_addr;
+     MemoryRegion *mr;
+diff --git a/exec.c b/exec.c
+index ffa1099547..c3a197e67b 100644
+--- a/exec.c
++++ b/exec.c
+@@ -898,7 +898,7 @@ static void breakpoint_invalidate(CPUState *cpu, target_ulong pc)
+     if (phys != -1) {
+         /* Locks grabbed by tb_invalidate_phys_addr */
+         tb_invalidate_phys_addr(cpu->cpu_ases[asidx].as,
+-                                phys | (pc & ~TARGET_PAGE_MASK));
++                                phys | (pc & ~TARGET_PAGE_MASK), attrs);
+     }
+ }
+ #endif
+diff --git a/target/xtensa/op_helper.c b/target/xtensa/op_helper.c
+index e3bcbe10d6..8a8c763c63 100644
+--- a/target/xtensa/op_helper.c
++++ b/target/xtensa/op_helper.c
+@@ -105,7 +105,8 @@ static void tb_invalidate_virtual_addr(CPUXtensaState *env, uint32_t vaddr)
+     int ret = xtensa_get_physical_addr(env, false, vaddr, 2, 0,
+             &paddr, &page_size, &access);
+     if (ret == 0) {
+-        tb_invalidate_phys_addr(&address_space_memory, paddr);
++        tb_invalidate_phys_addr(&address_space_memory, paddr,
++                                MEMTXATTRS_UNSPECIFIED);
+     }
+ }
+ 
 -- 
 2.17.0

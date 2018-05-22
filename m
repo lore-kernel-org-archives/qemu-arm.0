@@ -1,81 +1,81 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1691508wme;
-        Tue, 22 May 2018 09:15:14 -0700 (PDT)
-X-Received: by 2002:a17:902:bd84:: with SMTP id q4-v6mr25890676pls.254.1527005714488;
-        Tue, 22 May 2018 09:15:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527005714; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1693807wme;
+        Tue, 22 May 2018 09:17:08 -0700 (PDT)
+X-Received: by 2002:a62:6883:: with SMTP id d125-v6mr24999441pfc.26.1527005828502;
+        Tue, 22 May 2018 09:17:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527005828; cv=none;
         d=google.com; s=arc-20160816;
-        b=mHNCpNtRc1iNsVmauGyt8rHZ+i+oDF2qnBRqq0/CgoU9Xr9K9y1o3RU3T5x1G6XPRs
-         kvumZ3/f8glGXJJI7HFK7pMkPIEs9MOeF+/qMlc+DcJQZgk6KnXfjY9aAO/s/EN2LEn8
-         oaRdTEdigouE1Y5JL50NqIOUpP+oO0GR4E8a9X97ALr9BHFD6RB34vvizdiG01kXFPuf
-         Rq6Mj0mYBetObFtEzpvnJ3cZ4hAVmIU6GFfdhBmR+byPv3KfR1mg0JP5I+A6eLHgp0i8
-         8chCm2iHv7KcpG+/ul6bJX9RLmj7ueWOFFNapLNurdgwrTjYHbSM1hFjrnYtAgc2SlOv
-         VBbg==
+        b=r8klEZsP3EfpBA6ZbgaJZABtYDjYzuZVBy29UW81suD3RyO4n0IP1gZXZhJeo66nNP
+         S1LowynrJJYMkhVAzr6lO4urANAtstmAdYmGWUk6MZ2NI9pK8CiK3OaMod9FmkBKNiu+
+         Ph6ykxosBFwfc+r+dc+pp5bR4vFVdwum04kGQ6iDtwUBTI7IurCNdViv3vCSGQTAqq9r
+         QCPFS4BX5GisMRpnCEeUZuIUHhP4SfsbxEsgM19EsSmX2UGO+MJSJN3nXYESOcaAHnX8
+         Z/gd4QnVEfuGcuvlv+Py/EI/dCSitTjWxO6GR+fFfiSJc/soH50EXGAlC1cQLpUPHWii
+         CUQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:openpgp:from:references:cc:to
          :subject:sender:dkim-signature:arc-authentication-results;
-        bh=b0cvlkdVUjtCQ6ukNC7No72aQPtsZYs+sXhJ7bmxnHs=;
-        b=h/POYd1KlRQBFXKe2kzidPswbikVvdEkjrk0p+gQDM294IDghVqktQXhygGLIOMfCh
-         92DuBluOOU7M3cKfLd+GtpdAUR3a8khspqYePhM0c/vPXmF1Mt+6jpNyY6fTENjJoo1N
-         avLmZ96Yk5af6Q03fvc0XRFUPQZxTq2Ar76GKuYcwxn6JJ8DoQQPh9vG3beVfnz7FnU7
-         qgfyXB7c0x7BQW7GxPliEbqtKECZZMKEHr9yux2EXTdn0G8ulwLCQYxPf/fmlzDuiHKb
-         bHdXtSmX6bOTp3Ywiw29bjmQgj5U1XE1Avi2Upe0/rSx7W/d7mNNQ2W0LFOvS4Iw72e8
-         SDsg==
+        bh=4XyHDSQWNTySvEPYxN1IhFKXZA0X/tKalnGFreG72oY=;
+        b=jNCLrjVtlis64WBjpoARgnUSXyBsyWl4Z/kwVmZCmz3wjqtYlcl4SRWdDaKfWzoHKH
+         SJUVUPY91+5JuNKvw9VXxOQJF9UxdZc93GtGQOkJ3LKKRnf1yNpzrl9FK/uLgodVwEkJ
+         qLMAO9IhKo0epKrMsU6s7eO+EVBxGHWj93iMlmELBbx9o4S8BfFTCUgBHSXo8pIY0zW8
+         uvtYqrJAZI1Hqn3oc95t1aEtUuJ8NCXByQQNOZqFUSDqWssiPVEf6s/OOVPd9nsdzgBF
+         3xRAPdRRc0lUXTi5Rda0ioHDWhIZwapp0tmZOPmlfZvqc/UNeq2Sf7f3j9zzpZ4bWjIM
+         K8hw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=m5JKM2Vj;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ExhgEscA;
        spf=pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=rth7680@gmail.com
 Return-Path: <rth7680@gmail.com>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id d7-v6sor1997442pgc.354.2018.05.22.09.15.14
+        by mx.google.com with SMTPS id h192-v6sor4519796pgc.332.2018.05.22.09.17.08
         (Google Transport Security);
-        Tue, 22 May 2018 09:15:14 -0700 (PDT)
+        Tue, 22 May 2018 09:17:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=m5JKM2Vj;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ExhgEscA;
        spf=pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=rth7680@gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=b0cvlkdVUjtCQ6ukNC7No72aQPtsZYs+sXhJ7bmxnHs=;
-        b=m5JKM2Vjqy4H+HFhp1z2L1QWCJP1P2s8fROP0iZCged1omKVdaw86AMIPyE6eX3pJd
-         usQduOvyj/xmo6QmSz9Wa4SELokrE6+hK8Bkt99MynaV1eDn0Uh8NaY8NYID0he3Qz37
-         ++0uaxtIwNnmu0fQNiDNe/KPqfjMvrcZnGebstI4DeMwYRR/uYsntliDxRuZiZhsODA1
-         vaYyGmR7lCVMuCmXJYSSkkXEVeG9kmraNQGWNuvZRjyQ8IZlzEzr6qiWApaKrI1+ZVHm
-         jQ7rYz7U4Fpc+hkp/2slyc0cc1q2YS1Z4nP1f7NLcivFVHTD3R+Ar3hX3Dr4LbjVB3I1
-         2Qlw==
+        bh=4XyHDSQWNTySvEPYxN1IhFKXZA0X/tKalnGFreG72oY=;
+        b=ExhgEscApxcRYnxRx8I+OX1S5KlRWNWij0D5o7kgXmfyGwIIqkGMkigcI5v4Je2VMC
+         EQ5Ycdwt2mcX4MhE1LhfXlEqUuKG+FpmuhPIwD9tCbGNlUEkpK/ta88nGBQEJkBHxCkb
+         TlOO5gUyi21GQ0K772cRHK5cYbQK1TA6Z4tXiwhuRU58yYDtyqZBflLVRUZvIU6Zu+Or
+         Vw/GxPzkLw2eJvSdVALhkrAOwn3hMZz2sRaXmHixAFW+Nw00rGvcNiEl27owZ4eZt9ZD
+         vW8L27R+zFr0/WjTXlfsQ/pmHxFoleZYNEUiw6vpmLqbet6NCY9+LESS9SiE8qgH1ED3
+         CLeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
          :autocrypt:message-id:date:user-agent:mime-version:in-reply-to
          :content-language:content-transfer-encoding;
-        bh=b0cvlkdVUjtCQ6ukNC7No72aQPtsZYs+sXhJ7bmxnHs=;
-        b=ZBdy7S/qalSP7ryCA2ew59DpFkBflzYggouoanE+EyXh8LRX/OMUIAUMeXSwpfnqW3
-         0fb2/7X2Ea86mu21LJnstzjmlaSWjSmUg8BwBumqIxF24ZCTt8x55uGrNniEkdPyWaF+
-         ouionzkrtvsjLJDa0vvV5TzmAoUPCvV4FV+L3y+Hy9ObJ5bjW1XHmbobAfmp03BNVbCc
-         bhj9P6IYYgrNMqpdqou6NEh7dCHFDOAM/WdrFjQgeH+kfdmoeg701W3vF5DJkkH0Q+h8
-         xzCqrDxxU9MwwMgkG3hZ2IHIjn4bavCS8LXSUTyFaT8KuxAQ73zt17SXn20UnYNoN+HJ
-         uwOw==
-X-Gm-Message-State: ALKqPweeWTaS+a9VaPKn/w5upOwwpwk6mZ1FdTu/iJOp/64xLe22iLs4
-	Xb8BXSUYeFmfWMxhcrt1rM6pym7z
-X-Google-Smtp-Source: AB8JxZoH/IRLxUvJBzKcSa//RSFKlyCWTKHbf5ZJTZiOdF1X75ThvhdK+EJRos3ii1mg6APzEd4Cdw==
-X-Received: by 2002:a65:550d:: with SMTP id f13-v6mr19723188pgr.324.1527005713784;
-        Tue, 22 May 2018 09:15:13 -0700 (PDT)
+        bh=4XyHDSQWNTySvEPYxN1IhFKXZA0X/tKalnGFreG72oY=;
+        b=XtPzEvdNTF/PTh2F6Ab87zNBzut53Ow1vUqOgURZdLKQC2Akkooevfvkc4LeN1gk0e
+         M66UjtTsBf0Q8eWpq/rHCPDgmYzDCYwDKdNH3+HlvkC8xQWU2ViRDAKGCj3qIztaDvdm
+         uKmNYr0TAXBDjyInigza454IBtCGRCrBo9awhKfGUoebC4m+6u0TZazMfAvpQjyPt7d8
+         L/ZK5/ArRXigoSO8MUWgcfndE+uW02H9E/iZE9KQM0HK/I3ikr1uxt0NIAamlsrTqgtU
+         qbaqoYtXCvS1gLJHe0rW0VLZ5C2BYHKmryD9uEVjDcI/LUfpxeX+AGLCvTlEHolahdcJ
+         t4QA==
+X-Gm-Message-State: ALKqPwfpecHCFwfaLgeAhwTxFVcgMvKeeabYHFPWLc7C41fpcktrNpmr
+	+7m4gAc9l8jsv7ljxzCwBqu1gmME
+X-Google-Smtp-Source: AB8JxZrn1YlFGbl/veQKMjTogodicWAsRnbqytJG/8ZX39ljcI2rjPd0L1utGGGWE56O214cy0xYWw==
+X-Received: by 2002:a65:4dc7:: with SMTP id q7-v6mr20070840pgt.48.1527005827834;
+        Tue, 22 May 2018 09:17:07 -0700 (PDT)
 Return-Path: <rth7680@gmail.com>
 Received: from cloudburst.twiddle.net (97-113-173-254.tukw.qwest.net. [97.113.173.254])
-        by smtp.googlemail.com with ESMTPSA id c8-v6sm27862248pfi.96.2018.05.22.09.15.13
+        by smtp.googlemail.com with ESMTPSA id j11-v6sm21179243pgp.2.2018.05.22.09.17.06
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 22 May 2018 09:15:13 -0700 (PDT)
+        Tue, 22 May 2018 09:17:07 -0700 (PDT)
 Sender: Richard Henderson <rth7680@gmail.com>
-Subject: Re: [PATCH 06/27] Make flatview_extend_translation() take a
- MemTxAttrs argument
+Subject: Re: [PATCH 07/27] Make memory_region_access_valid() take a MemTxAttrs
+ argument
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: patches@linaro.org, Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
 References: <20180521140402.23318-1-peter.maydell@linaro.org>
- <20180521140402.23318-7-peter.maydell@linaro.org>
+ <20180521140402.23318-8-peter.maydell@linaro.org>
 From: Richard Henderson <rth@twiddle.net>
 Openpgp: preference=signencrypt
 Autocrypt: addr=rth@twiddle.net; prefer-encrypt=mutual; keydata=
@@ -102,22 +102,29 @@ Autocrypt: addr=rth@twiddle.net; prefer-encrypt=mutual; keydata=
  /E08RJsqBwaHQdt14PwU1HphDOzSkhOXRXQLSd3ysyeGUXvL+gqQoXl5XYdvk8IId4PoJRo4
  jcyJ4VbnldvXh5gdGhFA/f9JgkLk9tPW+C3wNtNWyRUq8azR9hF2fg2HJUf4IXQlIu8OOgh1
  VcROBqvtH3ecaIL9iw==
-Message-ID: <6c6e0c6d-0d04-40c9-dd23-539fb797d38e@twiddle.net>
-Date: Tue, 22 May 2018 09:15:11 -0700
+Message-ID: <a6f30a3b-677f-f37a-e651-480b82d206aa@twiddle.net>
+Date: Tue, 22 May 2018 09:17:05 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
  Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <20180521140402.23318-7-peter.maydell@linaro.org>
+In-Reply-To: <20180521140402.23318-8-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-TUID: EPR1WUAW8JLN
+X-TUID: unuEgvKcZkdW
 
 On 05/21/2018 07:03 AM, Peter Maydell wrote:
 > As part of plumbing MemTxAttrs down to the IOMMU translate method,
-> add MemTxAttrs as an argument to flatview_extend_translation().
+> add MemTxAttrs as an argument to memory_region_access_valid().
 > Its callers either have an attrs value to hand, or don't care
 > and can use MEMTXATTRS_UNSPECIFIED.
+> 
+> The callsite in flatview_access_valid() is part of a recursive
+> loop flatview_access_valid() -> memory_region_access_valid() ->
+>  subpage_accepts() -> flatview_access_valid(); we make it pass
+> MEMTXATTRS_UNSPECIFIED for now, until the next several commits
+> have plumbed an attrs parameter through the rest of the loop
+> and we can add an attrs parameter to flatview_access_valid().
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---

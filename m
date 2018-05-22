@@ -1,114 +1,267 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id 109-v6sm13954267wra.32.2018.05.22.02.21.39
+        by smtp.gmail.com with ESMTPSA id 194-v6sm21909897wml.20.2018.05.22.03.49.18
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 May 2018 02:21:39 -0700 (PDT)
+        Tue, 22 May 2018 03:49:18 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 3241B3E01DB;
-	Tue, 22 May 2018 10:21:39 +0100 (BST)
-References: <20180521140402.23318-1-peter.maydell@linaro.org> <20180521140402.23318-3-peter.maydell@linaro.org>
+	by zen.linaro.local (Postfix) with ESMTPS id 4B5F33E01DB;
+	Tue, 22 May 2018 11:49:17 +0100 (BST)
+References: <20180521140402.23318-1-peter.maydell@linaro.org> <20180521140402.23318-4-peter.maydell@linaro.org>
 User-agent: mu4e 1.1.0; emacs 26.1
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org, Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-Subject: Re: [PATCH 02/27] Make tb_invalidate_phys_addr() take a MemTxAttrs argument
-In-reply-to: <20180521140402.23318-3-peter.maydell@linaro.org>
-Date: Tue, 22 May 2018 10:21:39 +0100
-Message-ID: <87muwsujto.fsf@linaro.org>
+Subject: Re: [PATCH 03/27] Make address_space_translate{,_cached}() take a MemTxAttrs argument
+In-reply-to: <20180521140402.23318-4-peter.maydell@linaro.org>
+Date: Tue, 22 May 2018 11:49:17 +0100
+Message-ID: <87lgccufrm.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: FucNHcFKRvyB
+X-TUID: ulsuxCDnmawg
 
 
 Peter Maydell <peter.maydell@linaro.org> writes:
 
 > As part of plumbing MemTxAttrs down to the IOMMU translate method,
-> add MemTxAttrs as an argument to tb_invalidate_phys_addr().
-> Its callers either have an attrs value to hand, or don't care
-> and can use MEMTXATTRS_UNSPECIFIED.
+> add MemTxAttrs as an argument to address_space_translate()
+> and address_space_translate_cached(). Callers either have an
+> attrs value to hand, or don't care and can use MEMTXATTRS_UNSPECIFIED.
 >
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Following the chain down I discovered yet another set of not quite
+templates leading to the bottom, but not this patches fault...
 
 Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
 > ---
->  include/exec/exec-all.h   | 5 +++--
->  accel/tcg/translate-all.c | 2 +-
->  exec.c                    | 2 +-
->  target/xtensa/op_helper.c | 3 ++-
->  4 files changed, 7 insertions(+), 5 deletions(-)
+>  include/exec/memory.h     |  4 +++-
+>  accel/tcg/translate-all.c |  2 +-
+>  exec.c                    | 14 +++++++++-----
+>  hw/vfio/common.c          |  3 ++-
+>  memory_ldst.inc.c         | 18 +++++++++---------
+>  target/riscv/helper.c     |  2 +-
+>  6 files changed, 25 insertions(+), 18 deletions(-)
 >
-> diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
-> index bd68328ed9..4d09eaba72 100644
-> --- a/include/exec/exec-all.h
-> +++ b/include/exec/exec-all.h
-> @@ -255,7 +255,7 @@ void tlb_set_page_with_attrs(CPUState *cpu, target_ul=
-ong vaddr,
->  void tlb_set_page(CPUState *cpu, target_ulong vaddr,
->                    hwaddr paddr, int prot,
->                    int mmu_idx, target_ulong size);
-> -void tb_invalidate_phys_addr(AddressSpace *as, hwaddr addr);
-> +void tb_invalidate_phys_addr(AddressSpace *as, hwaddr addr, MemTxAttrs a=
-ttrs);
->  void probe_write(CPUArchState *env, target_ulong addr, int size, int mmu=
-_idx,
->                   uintptr_t retaddr);
->  #else
-> @@ -303,7 +303,8 @@ static inline void tlb_flush_by_mmuidx_all_cpus_synce=
-d(CPUState *cpu,
->                                                         uint16_t idxmap)
+> diff --git a/include/exec/memory.h b/include/exec/memory.h
+> index cce355d2d8..9a30a1bb9e 100644
+> --- a/include/exec/memory.h
+> +++ b/include/exec/memory.h
+> @@ -1908,6 +1908,7 @@ IOMMUTLBEntry address_space_get_iotlb_entry(Address=
+Space *as, hwaddr addr,
+>   * #MemoryRegion.
+>   * @len: pointer to length
+>   * @is_write: indicates the transfer direction
+> + * @attrs: memory attributes
+>   */
+>  MemoryRegion *flatview_translate(FlatView *fv,
+>                                   hwaddr addr, hwaddr *xlat,
+> @@ -1915,7 +1916,8 @@ MemoryRegion *flatview_translate(FlatView *fv,
+>
+>  static inline MemoryRegion *address_space_translate(AddressSpace *as,
+>                                                      hwaddr addr, hwaddr =
+*xlat,
+> -                                                    hwaddr *len, bool is=
+_write)
+> +                                                    hwaddr *len, bool is=
+_write,
+> +                                                    MemTxAttrs attrs)
 >  {
->  }
-> -static inline void tb_invalidate_phys_addr(AddressSpace *as, hwaddr addr)
-> +static inline void tb_invalidate_phys_addr(AddressSpace *as, hwaddr addr,
-> +                                           MemTxAttrs attrs)
->  {
->  }
->  #endif
+>      return flatview_translate(address_space_to_flatview(as),
+>                                addr, xlat, len, is_write);
 > diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-> index f409d42d54..f04a922ef7 100644
+> index f04a922ef7..52f7bd59a9 100644
 > --- a/accel/tcg/translate-all.c
 > +++ b/accel/tcg/translate-all.c
-> @@ -1672,7 +1672,7 @@ static TranslationBlock *tb_find_pc(uintptr_t tc_pt=
-r)
->  }
+> @@ -1679,7 +1679,7 @@ void tb_invalidate_phys_addr(AddressSpace *as, hwad=
+dr addr, MemTxAttrs attrs)
+>      hwaddr l =3D 1;
 >
->  #if !defined(CONFIG_USER_ONLY)
-> -void tb_invalidate_phys_addr(AddressSpace *as, hwaddr addr)
-> +void tb_invalidate_phys_addr(AddressSpace *as, hwaddr addr, MemTxAttrs a=
-ttrs)
->  {
->      ram_addr_t ram_addr;
->      MemoryRegion *mr;
+>      rcu_read_lock();
+> -    mr =3D address_space_translate(as, addr, &addr, &l, false);
+> +    mr =3D address_space_translate(as, addr, &addr, &l, false, attrs);
+>      if (!(memory_region_is_ram(mr)
+>            || memory_region_is_romd(mr))) {
+>          rcu_read_unlock();
 > diff --git a/exec.c b/exec.c
-> index ffa1099547..c3a197e67b 100644
+> index c3a197e67b..d314c7cc39 100644
 > --- a/exec.c
 > +++ b/exec.c
-> @@ -898,7 +898,7 @@ static void breakpoint_invalidate(CPUState *cpu, targ=
-et_ulong pc)
->      if (phys !=3D -1) {
->          /* Locks grabbed by tb_invalidate_phys_addr */
->          tb_invalidate_phys_addr(cpu->cpu_ases[asidx].as,
-> -                                phys | (pc & ~TARGET_PAGE_MASK));
-> +                                phys | (pc & ~TARGET_PAGE_MASK), attrs);
->      }
->  }
->  #endif
-> diff --git a/target/xtensa/op_helper.c b/target/xtensa/op_helper.c
-> index e3bcbe10d6..8a8c763c63 100644
-> --- a/target/xtensa/op_helper.c
-> +++ b/target/xtensa/op_helper.c
-> @@ -105,7 +105,8 @@ static void tb_invalidate_virtual_addr(CPUXtensaState=
- *env, uint32_t vaddr)
->      int ret =3D xtensa_get_physical_addr(env, false, vaddr, 2, 0,
->              &paddr, &page_size, &access);
->      if (ret =3D=3D 0) {
-> -        tb_invalidate_phys_addr(&address_space_memory, paddr);
-> +        tb_invalidate_phys_addr(&address_space_memory, paddr,
-> +                                MEMTXATTRS_UNSPECIFIED);
->      }
->  }
+> @@ -3322,7 +3322,8 @@ static inline void cpu_physical_memory_write_rom_in=
+ternal(AddressSpace *as,
+>      rcu_read_lock();
+>      while (len > 0) {
+>          l =3D len;
+> -        mr =3D address_space_translate(as, addr, &addr1, &l, true);
+> +        mr =3D address_space_translate(as, addr, &addr1, &l, true,
+> +                                     MEMTXATTRS_UNSPECIFIED);
+>
+>          if (!(memory_region_is_ram(mr) ||
+>                memory_region_is_romd(mr))) {
+> @@ -3699,7 +3700,7 @@ void address_space_cache_destroy(MemoryRegionCache =
+*cache)
+>   */
+>  static inline MemoryRegion *address_space_translate_cached(
+>      MemoryRegionCache *cache, hwaddr addr, hwaddr *xlat,
+> -    hwaddr *plen, bool is_write)
+> +    hwaddr *plen, bool is_write, MemTxAttrs attrs)
+>  {
+>      MemoryRegionSection section;
+>      MemoryRegion *mr;
+> @@ -3733,7 +3734,8 @@ address_space_read_cached_slow(MemoryRegionCache *c=
+ache, hwaddr addr,
+>      MemoryRegion *mr;
+>
+>      l =3D len;
+> -    mr =3D address_space_translate_cached(cache, addr, &addr1, &l, false=
+);
+> +    mr =3D address_space_translate_cached(cache, addr, &addr1, &l, false,
+> +                                        MEMTXATTRS_UNSPECIFIED);
+>      flatview_read_continue(cache->fv,
+>                             addr, MEMTXATTRS_UNSPECIFIED, buf, len,
+>                             addr1, l, mr);
+> @@ -3750,7 +3752,8 @@ address_space_write_cached_slow(MemoryRegionCache *=
+cache, hwaddr addr,
+>      MemoryRegion *mr;
+>
+>      l =3D len;
+> -    mr =3D address_space_translate_cached(cache, addr, &addr1, &l, true);
+> +    mr =3D address_space_translate_cached(cache, addr, &addr1, &l, true,
+> +                                        MEMTXATTRS_UNSPECIFIED);
+>      flatview_write_continue(cache->fv,
+>                              addr, MEMTXATTRS_UNSPECIFIED, buf, len,
+>                              addr1, l, mr);
+> @@ -3848,7 +3851,8 @@ bool cpu_physical_memory_is_io(hwaddr phys_addr)
+>
+>      rcu_read_lock();
+>      mr =3D address_space_translate(&address_space_memory,
+> -                                 phys_addr, &phys_addr, &l, false);
+> +                                 phys_addr, &phys_addr, &l, false,
+> +                                 MEMTXATTRS_UNSPECIFIED);
+>
+>      res =3D !(memory_region_is_ram(mr) || memory_region_is_romd(mr));
+>      rcu_read_unlock();
+> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+> index 07ffa0ba10..8e57265edf 100644
+> --- a/hw/vfio/common.c
+> +++ b/hw/vfio/common.c
+> @@ -324,7 +324,8 @@ static bool vfio_get_vaddr(IOMMUTLBEntry *iotlb, void=
+ **vaddr,
+>       */
+>      mr =3D address_space_translate(&address_space_memory,
+>                                   iotlb->translated_addr,
+> -                                 &xlat, &len, writable);
+> +                                 &xlat, &len, writable,
+> +                                 MEMTXATTRS_UNSPECIFIED);
+>      if (!memory_region_is_ram(mr)) {
+>          error_report("iommu map to non memory area %"HWADDR_PRIx"",
+>                       xlat);
+> diff --git a/memory_ldst.inc.c b/memory_ldst.inc.c
+> index 25d6125747..15483987fe 100644
+> --- a/memory_ldst.inc.c
+> +++ b/memory_ldst.inc.c
+> @@ -33,7 +33,7 @@ static inline uint32_t glue(address_space_ldl_internal,=
+ SUFFIX)(ARG1_DECL,
+>      bool release_lock =3D false;
+>
+>      RCU_READ_LOCK();
+> -    mr =3D TRANSLATE(addr, &addr1, &l, false);
+> +    mr =3D TRANSLATE(addr, &addr1, &l, false, attrs);
+>      if (l < 4 || !IS_DIRECT(mr, false)) {
+>          release_lock |=3D prepare_mmio_access(mr);
+>
+> @@ -109,7 +109,7 @@ static inline uint64_t glue(address_space_ldq_interna=
+l, SUFFIX)(ARG1_DECL,
+>      bool release_lock =3D false;
+>
+>      RCU_READ_LOCK();
+> -    mr =3D TRANSLATE(addr, &addr1, &l, false);
+> +    mr =3D TRANSLATE(addr, &addr1, &l, false, attrs);
+>      if (l < 8 || !IS_DIRECT(mr, false)) {
+>          release_lock |=3D prepare_mmio_access(mr);
+>
+> @@ -183,7 +183,7 @@ uint32_t glue(address_space_ldub, SUFFIX)(ARG1_DECL,
+>      bool release_lock =3D false;
+>
+>      RCU_READ_LOCK();
+> -    mr =3D TRANSLATE(addr, &addr1, &l, false);
+> +    mr =3D TRANSLATE(addr, &addr1, &l, false, attrs);
+>      if (!IS_DIRECT(mr, false)) {
+>          release_lock |=3D prepare_mmio_access(mr);
+>
+> @@ -219,7 +219,7 @@ static inline uint32_t glue(address_space_lduw_intern=
+al, SUFFIX)(ARG1_DECL,
+>      bool release_lock =3D false;
+>
+>      RCU_READ_LOCK();
+> -    mr =3D TRANSLATE(addr, &addr1, &l, false);
+> +    mr =3D TRANSLATE(addr, &addr1, &l, false, attrs);
+>      if (l < 2 || !IS_DIRECT(mr, false)) {
+>          release_lock |=3D prepare_mmio_access(mr);
+>
+> @@ -296,7 +296,7 @@ void glue(address_space_stl_notdirty, SUFFIX)(ARG1_DE=
+CL,
+>      bool release_lock =3D false;
+>
+>      RCU_READ_LOCK();
+> -    mr =3D TRANSLATE(addr, &addr1, &l, true);
+> +    mr =3D TRANSLATE(addr, &addr1, &l, true, attrs);
+>      if (l < 4 || !IS_DIRECT(mr, true)) {
+>          release_lock |=3D prepare_mmio_access(mr);
+>
+> @@ -333,7 +333,7 @@ static inline void glue(address_space_stl_internal, S=
+UFFIX)(ARG1_DECL,
+>      bool release_lock =3D false;
+>
+>      RCU_READ_LOCK();
+> -    mr =3D TRANSLATE(addr, &addr1, &l, true);
+> +    mr =3D TRANSLATE(addr, &addr1, &l, true, attrs);
+>      if (l < 4 || !IS_DIRECT(mr, true)) {
+>          release_lock |=3D prepare_mmio_access(mr);
+>
+> @@ -405,7 +405,7 @@ void glue(address_space_stb, SUFFIX)(ARG1_DECL,
+>      bool release_lock =3D false;
+>
+>      RCU_READ_LOCK();
+> -    mr =3D TRANSLATE(addr, &addr1, &l, true);
+> +    mr =3D TRANSLATE(addr, &addr1, &l, true, attrs);
+>      if (!IS_DIRECT(mr, true)) {
+>          release_lock |=3D prepare_mmio_access(mr);
+>          r =3D memory_region_dispatch_write(mr, addr1, val, 1, attrs);
+> @@ -438,7 +438,7 @@ static inline void glue(address_space_stw_internal, S=
+UFFIX)(ARG1_DECL,
+>      bool release_lock =3D false;
+>
+>      RCU_READ_LOCK();
+> -    mr =3D TRANSLATE(addr, &addr1, &l, true);
+> +    mr =3D TRANSLATE(addr, &addr1, &l, true, attrs);
+>      if (l < 2 || !IS_DIRECT(mr, true)) {
+>          release_lock |=3D prepare_mmio_access(mr);
+>
+> @@ -511,7 +511,7 @@ static void glue(address_space_stq_internal, SUFFIX)(=
+ARG1_DECL,
+>      bool release_lock =3D false;
+>
+>      RCU_READ_LOCK();
+> -    mr =3D TRANSLATE(addr, &addr1, &l, true);
+> +    mr =3D TRANSLATE(addr, &addr1, &l, true, attrs);
+>      if (l < 8 || !IS_DIRECT(mr, true)) {
+>          release_lock |=3D prepare_mmio_access(mr);
+>
+> diff --git a/target/riscv/helper.c b/target/riscv/helper.c
+> index 95889f23b9..29e1a603dc 100644
+> --- a/target/riscv/helper.c
+> +++ b/target/riscv/helper.c
+> @@ -210,7 +210,7 @@ restart:
+>                  MemoryRegion *mr;
+>                  hwaddr l =3D sizeof(target_ulong), addr1;
+>                  mr =3D address_space_translate(cs->as, pte_addr,
+> -                    &addr1, &l, false);
+> +                    &addr1, &l, false, MEMTXATTRS_UNSPECIFIED);
+>                  if (memory_access_is_direct(mr, true)) {
+>                      target_ulong *pte_pa =3D
+>                          qemu_map_ram_ptr(mr->ram_block, addr1);
 
 
 --

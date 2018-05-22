@@ -1,30 +1,30 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id y45-v6sm14938121wrd.97.2018.05.22.03.49.52
+        by smtp.gmail.com with ESMTPSA id x24-v6sm11719864wmh.18.2018.05.22.03.50.17
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 May 2018 03:49:52 -0700 (PDT)
+        Tue, 22 May 2018 03:50:18 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id DD6B23E01DB;
-	Tue, 22 May 2018 11:49:51 +0100 (BST)
-References: <20180521140402.23318-1-peter.maydell@linaro.org> <20180521140402.23318-5-peter.maydell@linaro.org>
+	by zen.linaro.local (Postfix) with ESMTPS id 833983E01DB;
+	Tue, 22 May 2018 11:50:15 +0100 (BST)
+References: <20180521140402.23318-1-peter.maydell@linaro.org> <20180521140402.23318-6-peter.maydell@linaro.org>
 User-agent: mu4e 1.1.0; emacs 26.1
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org, Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-Subject: Re: [PATCH 04/27] Make address_space_map() take a MemTxAttrs argument
-In-reply-to: <20180521140402.23318-5-peter.maydell@linaro.org>
-Date: Tue, 22 May 2018 11:49:51 +0100
-Message-ID: <87k1rwufqo.fsf@linaro.org>
+Subject: Re: [PATCH 05/27] Make address_space_access_valid() take a MemTxAttrs argument
+In-reply-to: <20180521140402.23318-6-peter.maydell@linaro.org>
+Date: Tue, 22 May 2018 11:50:15 +0100
+Message-ID: <87in7gufq0.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 1x3ipWXSCyJT
+X-TUID: HlcC+ZZ52YdS
 
 
 Peter Maydell <peter.maydell@linaro.org> writes:
 
 > As part of plumbing MemTxAttrs down to the IOMMU translate method,
-> add MemTxAttrs as an argument to address_space_map().
+> add MemTxAttrs as an argument to address_space_access_valid().
 > Its callers either have an attrs value to hand, or don't care
 > and can use MEMTXATTRS_UNSPECIFIED.
 >
@@ -33,88 +33,138 @@ Peter Maydell <peter.maydell@linaro.org> writes:
 Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
 > ---
->  include/exec/memory.h   | 3 ++-
->  include/sysemu/dma.h    | 3 ++-
->  exec.c                  | 6 ++++--
->  target/ppc/mmu-hash64.c | 3 ++-
->  4 files changed, 10 insertions(+), 5 deletions(-)
+>  include/exec/memory.h      | 4 +++-
+>  include/sysemu/dma.h       | 3 ++-
+>  exec.c                     | 3 ++-
+>  target/s390x/diag.c        | 6 ++++--
+>  target/s390x/excp_helper.c | 3 ++-
+>  target/s390x/mmu_helper.c  | 3 ++-
+>  target/s390x/sigp.c        | 3 ++-
+>  7 files changed, 17 insertions(+), 8 deletions(-)
 >
 > diff --git a/include/exec/memory.h b/include/exec/memory.h
-> index 9a30a1bb9e..b1bdb376d4 100644
+> index b1bdb376d4..54263bd23b 100644
 > --- a/include/exec/memory.h
 > +++ b/include/exec/memory.h
-> @@ -1952,9 +1952,10 @@ bool address_space_access_valid(AddressSpace *as, =
-hwaddr addr, int len, bool is_
+> @@ -1937,8 +1937,10 @@ static inline MemoryRegion *address_space_translat=
+e(AddressSpace *as,
 >   * @addr: address within that address space
->   * @plen: pointer to length of buffer; updated on return
+>   * @len: length of the area to be checked
 >   * @is_write: indicates the transfer direction
 > + * @attrs: memory attributes
 >   */
->  void *address_space_map(AddressSpace *as, hwaddr addr,
-> -                        hwaddr *plen, bool is_write);
-> +                        hwaddr *plen, bool is_write, MemTxAttrs attrs);
+> -bool address_space_access_valid(AddressSpace *as, hwaddr addr, int len, =
+bool is_write);
+> +bool address_space_access_valid(AddressSpace *as, hwaddr addr, int len,
+> +                                bool is_write, MemTxAttrs attrs);
 >
->  /* address_space_unmap: Unmaps a memory region previously mapped by addr=
-ess_space_map()
+>  /* address_space_map: map a physical memory region into a host virtual a=
+ddress
 >   *
 > diff --git a/include/sysemu/dma.h b/include/sysemu/dma.h
-> index c228c66513..0d73902634 100644
+> index 0d73902634..5da3c4e3c5 100644
 > --- a/include/sysemu/dma.h
 > +++ b/include/sysemu/dma.h
-> @@ -132,7 +132,8 @@ static inline void *dma_memory_map(AddressSpace *as,
->      hwaddr xlen =3D *len;
->      void *p;
->
-> -    p =3D address_space_map(as, addr, &xlen, dir =3D=3D DMA_DIRECTION_FR=
-OM_DEVICE);
-> +    p =3D address_space_map(as, addr, &xlen, dir =3D=3D DMA_DIRECTION_FR=
-OM_DEVICE,
-> +                          MEMTXATTRS_UNSPECIFIED);
->      *len =3D xlen;
->      return p;
+> @@ -77,7 +77,8 @@ static inline bool dma_memory_valid(AddressSpace *as,
+>                                      DMADirection dir)
+>  {
+>      return address_space_access_valid(as, addr, len,
+> -                                      dir =3D=3D DMA_DIRECTION_FROM_DEVI=
+CE);
+> +                                      dir =3D=3D DMA_DIRECTION_FROM_DEVI=
+CE,
+> +                                      MEMTXATTRS_UNSPECIFIED);
 >  }
+>
+>  static inline int dma_memory_rw_relaxed(AddressSpace *as, dma_addr_t add=
+r,
 > diff --git a/exec.c b/exec.c
-> index d314c7cc39..1dc81cfe4a 100644
+> index 1dc81cfe4a..22af4e8cb9 100644
 > --- a/exec.c
 > +++ b/exec.c
-> @@ -3529,7 +3529,8 @@ flatview_extend_translation(FlatView *fv, hwaddr ad=
-dr,
->  void *address_space_map(AddressSpace *as,
->                          hwaddr addr,
->                          hwaddr *plen,
-> -                        bool is_write)
-> +                        bool is_write,
-> +                        MemTxAttrs attrs)
->  {
->      hwaddr len =3D *plen;
->      hwaddr l, xlat;
-> @@ -3616,7 +3617,8 @@ void *cpu_physical_memory_map(hwaddr addr,
->                                hwaddr *plen,
->                                int is_write)
->  {
-> -    return address_space_map(&address_space_memory, addr, plen, is_write=
-);
-> +    return address_space_map(&address_space_memory, addr, plen, is_write,
-> +                             MEMTXATTRS_UNSPECIFIED);
+> @@ -3480,7 +3480,8 @@ static bool flatview_access_valid(FlatView *fv, hwa=
+ddr addr, int len,
 >  }
 >
->  void cpu_physical_memory_unmap(void *buffer, hwaddr len,
-> diff --git a/target/ppc/mmu-hash64.c b/target/ppc/mmu-hash64.c
-> index a1db20e3a8..aa200cba4c 100644
-> --- a/target/ppc/mmu-hash64.c
-> +++ b/target/ppc/mmu-hash64.c
-> @@ -431,7 +431,8 @@ const ppc_hash_pte64_t *ppc_hash64_map_hptes(PowerPCC=
-PU *cpu,
->          return NULL;
->      }
+>  bool address_space_access_valid(AddressSpace *as, hwaddr addr,
+> -                                int len, bool is_write)
+> +                                int len, bool is_write,
+> +                                MemTxAttrs attrs)
+>  {
+>      FlatView *fv;
+>      bool result;
+> diff --git a/target/s390x/diag.c b/target/s390x/diag.c
+> index ac2c40f363..d1d3433aa7 100644
+> --- a/target/s390x/diag.c
+> +++ b/target/s390x/diag.c
+> @@ -87,7 +87,8 @@ void handle_diag_308(CPUS390XState *env, uint64_t r1, u=
+int64_t r3, uintptr_t ra)
+>              return;
+>          }
+>          if (!address_space_access_valid(&address_space_memory, addr,
+> -                                        sizeof(IplParameterBlock), false=
+)) {
+> +                                        sizeof(IplParameterBlock), false,
+> +                                        MEMTXATTRS_UNSPECIFIED)) {
+>              s390_program_interrupt(env, PGM_ADDRESSING, ILEN_AUTO, ra);
+>              return;
+>          }
+> @@ -116,7 +117,8 @@ out:
+>              return;
+>          }
+>          if (!address_space_access_valid(&address_space_memory, addr,
+> -                                        sizeof(IplParameterBlock), true)=
+) {
+> +                                        sizeof(IplParameterBlock), true,
+> +                                        MEMTXATTRS_UNSPECIFIED)) {
+>              s390_program_interrupt(env, PGM_ADDRESSING, ILEN_AUTO, ra);
+>              return;
+>          }
+> diff --git a/target/s390x/excp_helper.c b/target/s390x/excp_helper.c
+> index dfee221111..f0ce60cff2 100644
+> --- a/target/s390x/excp_helper.c
+> +++ b/target/s390x/excp_helper.c
+> @@ -120,7 +120,8 @@ int s390_cpu_handle_mmu_fault(CPUState *cs, vaddr ori=
+g_vaddr, int size,
 >
-> -    hptes =3D address_space_map(CPU(cpu)->as, base + pte_offset, &plen, =
-false);
-> +    hptes =3D address_space_map(CPU(cpu)->as, base + pte_offset, &plen, =
-false,
-> +                              MEMTXATTRS_UNSPECIFIED);
->      if (plen < (n * HASH_PTE_SIZE_64)) {
->          hw_error("%s: Unable to map all requested HPTEs\n", __func__);
+>      /* check out of RAM access */
+>      if (!address_space_access_valid(&address_space_memory, raddr,
+> -                                    TARGET_PAGE_SIZE, rw)) {
+> +                                    TARGET_PAGE_SIZE, rw,
+> +                                    MEMTXATTRS_UNSPECIFIED)) {
+>          DPRINTF("%s: raddr %" PRIx64 " > ram_size %" PRIx64 "\n", __func=
+__,
+>                  (uint64_t)raddr, (uint64_t)ram_size);
+>          trigger_pgm_exception(env, PGM_ADDRESSING, ILEN_AUTO);
+> diff --git a/target/s390x/mmu_helper.c b/target/s390x/mmu_helper.c
+> index a25deef5dd..145b62a7ef 100644
+> --- a/target/s390x/mmu_helper.c
+> +++ b/target/s390x/mmu_helper.c
+> @@ -461,7 +461,8 @@ static int translate_pages(S390CPU *cpu, vaddr addr, =
+int nr_pages,
+>              return ret;
+>          }
+>          if (!address_space_access_valid(&address_space_memory, pages[i],
+> -                                        TARGET_PAGE_SIZE, is_write)) {
+> +                                        TARGET_PAGE_SIZE, is_write,
+> +                                        MEMTXATTRS_UNSPECIFIED)) {
+>              trigger_access_exception(env, PGM_ADDRESSING, ILEN_AUTO, 0);
+>              return -EFAULT;
+>          }
+> diff --git a/target/s390x/sigp.c b/target/s390x/sigp.c
+> index aff1530c82..c1f9245797 100644
+> --- a/target/s390x/sigp.c
+> +++ b/target/s390x/sigp.c
+> @@ -280,7 +280,8 @@ static void sigp_set_prefix(CPUState *cs, run_on_cpu_=
+data arg)
+>      cpu_synchronize_state(cs);
+>
+>      if (!address_space_access_valid(&address_space_memory, addr,
+> -                                    sizeof(struct LowCore), false)) {
+> +                                    sizeof(struct LowCore), false,
+> +                                    MEMTXATTRS_UNSPECIFIED)) {
+>          set_sigp_status(si, SIGP_STAT_INVALID_PARAMETER);
+>          return;
 >      }
 
 
